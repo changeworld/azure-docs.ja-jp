@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure Project Properties"
-    description="Describes the Azure Project Properties settings in the Azure Toolkit for Eclipse."
+    pageTitle="Azure プロジェクトのプロパティ"
+    description="Azure Toolkit for Eclipse での Azure プロジェクトのプロパティの設定について説明します。"
     services=""
     documentationCenter="java"
     authors="rmcmurray"
@@ -16,54 +16,49 @@
     ms.date="08/11/2016" 
     ms.author="robmcm"/>
 
-
 <!-- Legacy MSDN URL = https://msdn.microsoft.com/library/azure/jj835232.aspx -->
 
-# <a name="azure-project-properties"></a>Azure Project Properties #
+# Azure プロジェクトのプロパティ #
 
-Various settings for your Azure project can be set within the Azure Toolkit for Eclipse.
+Azure Toolkit for Eclipse では、Azure プロジェクトのさまざまな設定を指定できます。
 
-## <a name="configuring-azure-project-properties"></a>Configuring Azure Project Properties ##
+## Azure プロジェクトのプロパティを構成する ##
 
-Configuring your Azure Project Properties is accomplished through the property dialogs for your Azure project. Right-click the project in Eclipse's Project Explorer pane, click **Properties**, and then select the **Azure** sub-menu.
+Azure プロジェクトのプロパティは、Azure プロジェクトのプロパティ ダイアログ ボックスで構成します。Eclipse のプロジェクト エクスプローラー ウィンドウでプロジェクトを右クリックし、**[プロパティ]** をクリックし、**[Azure]** サブメニューを選択します。
 
 ![][ic719480]
 
-Within this property page, you can change the following items: 
+このプロパティ ページでは、次の項目を変更できます。
 
-* **Service name:** The name for your Azure project.
-* **Build for:** Whether the project is set for building to the compute emulator or deployment to Azure.
-* **Target OS:** The operating system to use when your project is deployed to Azure.
+* **サービス名:** Azure プロジェクトの名前。
+* **ビルド:** プロジェクトがコンピューティング エミュレーターに対するビルド向けか、Azure へのデプロイメント向けかを指定します。
+* **ターゲット OS:** プロジェクトを Azure にデプロイするときに使用するオペレーティング システム。
 
-## <a name="see-also"></a>See Also ##
+## 関連項目 ##
 
 [Azure Toolkit for Eclipse][]
 
-[Installing the Azure Toolkit for Eclipse][] 
+[Azure Toolkit for Eclipse のインストール][]
 
-[Creating a Hello World Application for Azure in Eclipse][]
+[Azure の Hello World アプリケーションを Eclipse で作成する][]
 
-[Azure Role Properties][]
+[Azure ロールのプロパティ][]
 
-[Azure Storage Account List][]
+[Azure ストレージ アカウントの一覧][]
 
-For more information about using Azure with Java, see the [Azure Java Developer Center][].
+Java での Azure の使用の詳細については、[Azure Java デベロッパー センター][]を参照してください。
 
 <!-- URL List -->
 
-[Azure Java Developer Center]: http://go.microsoft.com/fwlink/?LinkID=699547
+[Azure Java デベロッパー センター]: http://go.microsoft.com/fwlink/?LinkID=699547
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Azure Role Properties]: http://go.microsoft.com/fwlink/?LinkID=699525
-[Azure Storage Account List]: http://go.microsoft.com/fwlink/?LinkID=699528
-[Creating a Hello World Application for Azure in Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699533
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Azure ロールのプロパティ]: http://go.microsoft.com/fwlink/?LinkID=699525
+[Azure ストレージ アカウントの一覧]: http://go.microsoft.com/fwlink/?LinkID=699528
+[Azure の Hello World アプリケーションを Eclipse で作成する]: http://go.microsoft.com/fwlink/?LinkID=699533
+[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
 [ic719480]: ./media/azure-toolkit-for-eclipse-azure-project-properties/ic719480.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

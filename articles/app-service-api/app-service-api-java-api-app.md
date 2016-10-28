@@ -1,43 +1,42 @@
 <properties
-    pageTitle="Build and deploy a Java API app in Azure App Service"
-    description="Learn how to create a Java API app package and deploy it to Azure App Service."
-    services="app-service\api"
-    documentationCenter="java"
-    authors="bradygaster"
-    manager="mohisri"
-    editor="tdykstra"/>
+	pageTitle="Azure App Service での Java API アプリの構築とデプロイ"
+	description="Java API アプリ パッケージを作成して Azure App Service にデプロイする方法について説明します。"
+	services="app-service\api"
+	documentationCenter="java"
+	authors="bradygaster"
+	manager="mohisri"
+	editor="tdykstra"/>
 
 <tags
-    ms.service="app-service-api"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="java"
-    ms.topic="get-started-article"
-    ms.date="08/31/2016"
-    ms.author="rachelap"/>
+	ms.service="app-service-api"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="java"
+	ms.topic="get-started-article"
+	ms.date="08/31/2016"
+	ms.author="rachelap"/>
 
-
-# <a name="build-and-deploy-a-java-api-app-in-azure-app-service"></a>Build and deploy a Java API app in Azure App Service
+# Azure App Service での Java API アプリの構築とデプロイ
 
 [AZURE.INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-This tutorial shows how to create a Java application and deploy it to Azure App Service API Apps using [Git]. The instructions in this tutorial can be followed on any operating system that is capable of running Java. The code in this tutorial is built using [Maven]. [Jax-RS] is used to create the RESTful Service, and is generated based on the [Swagger] metadata specification using the [Swagger Editor].
+このチュートリアルでは、Java アプリケーションを作成し、[Git] を使用して Azure App Service API Apps にデプロイする方法について説明します。このチュートリアルの手順は、Java を実行できる任意のオペレーティング システムで使用できます。このチュートリアルのコードは、[Maven] を使用して作成されています。[Jax-RS] は RESTful サービスの作成に使用され、[Swagger Editor] を使用して [Swagger] メタデータの仕様に基づいて生成されます。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-1. [Java Developer's Kit 8] \(or later)
-1. [Maven] installed on your development machine
-1. [Git] installed on your development machine
-1. A paid or [free trial] subscription to [Microsoft Azure]
-1. An HTTP test application like [Postman]
+1. [Java Development Kit 8] \(以降)
+1. 開発用コンピューターにインストールされた [Maven]
+1. 開発用コンピューターにインストールされた [Git]
+1. [Microsoft Azure] の有料または[無料試用版]サブスクリプション
+1. [Postman] などの HTTP テスト アプリケーション
 
-## <a name="scaffold-the-api-using-swagger.io"></a>Scaffold the API using Swagger.IO
+## Swagger.IO を使用して API をスキャフォールディングする
 
-Using the swagger.io online editor, you can enter Swagger JSON or YAML code representing the structure of your API. Once you have the API surface area designed, you can export code for a variety of platforms and frameworks. In the next section, the scaffolded code will be modified to include mock functionality. 
+swagger.io オンライン エディターを使用して、API の構造を表す Swagger JSON または YAML コードを入力できます。API のセキュリティを設計した後は、さまざまなプラットフォームやフレームワークのコードをエクスポートできます。次のセクションでは、スキャフォールディングされたコードに変更を加え、モック機能を含めます。
 
-This demonstration will begin with a Swagger JSON body that you will paste into the swagger.io editor, which will then be used to generate code making use of JAX-RS to access a REST API endpoint. Then, you'll edit the scaffolded code to return mock data, simulating a REST API built atop a data persistence mechanism.  
+このデモでは、初めに Swagger JSON 本文を swagger.io エディターに貼り付け、それと JAX-RS を使って、REST API エンドポイントにアクセスするコードを生成します。次に、スキャフォールディングされたコードを編集してモック データが返されるようにし、データの永続化メカニズムに基づいて構築された REST API をシミュレートします。
 
-1. Copy the following Swagger JSON code to your clipboard:
+1. 次の Swagger JSON コードをクリップボードにコピーします。
 
         {
             "swagger": "2.0",
@@ -132,33 +131,33 @@ This demonstration will begin with a Swagger JSON body that you will paste into 
             }
         }
 
-1. Navigate to the [Online Swagger Editor]. Once there, click the **File -> Paste JSON** menu item.
+1. [オンライン Swagger Editor] に移動します。**[File]、[Paste JSON]** の順にクリックします。
 
     ![Paste JSON menu item][paste-json]
 
-1. Paste in the Contacts List API Swagger JSON you copied earlier. 
+1. 前にコピーした Contacts List API Swagger JSON を貼り付けます。
 
     ![Pasting JSON code into Swagger][pasted-swagger]
 
-1. View the documentation pages and API summary rendered in the editor. 
+1. エディターに表示されるドキュメントのページと API の概要を確認します。
 
     ![View Swagger Generated Docs][view-swagger-generated-docs]
 
-1. Select the **Generate Server -> JAX-RS** menu option to scaffold the server-side code you'll edit later to add mock implementation. 
+1. **[Generate Server]、\[JAX-RS]** メニュー オプションの順に選択し、後で編集してモック実装を追加するサーバー側のコードをスキャフォールディングします。
 
     ![Generate Code Menu Item][generate-code-menu-item]
 
-    Once the code is generated, you'll be provided a ZIP file to download. This file contains the code scaffolded by the Swagger code generator and all associated build scripts. Unzip the entire library to a directory on your development workstation. 
+    コードが生成されると、ダウンロード用の zip ファイルが提供されます。このファイルには、Swagger コード ジェネレーターによってスキャフォールディングされたコードと、関連するすべてのビルド スクリプトが含まれています。ライブラリ全体を開発用ワークステーション上のディレクトリに解凍します。
 
-## <a name="edit-the-code-to-add-api-implementation"></a>Edit the Code to add API Implementation
+## コードを編集して API 実装を追加する
 
-In this section, you'll replace the Swagger-generated code's server-side implementation with your custom code. The new code will return an ArrayList of Contact entities to the calling client. 
+このセクションでは、Swagger によって生成されたコードのサーバー側の実装をカスタム コードに置き換えます。新しいコードは、Contact エンティティの ArrayList を呼び出し元のクライアントに返します。
 
-1. Open the *Contact.java* model file, which is located in the *src/gen/java/io/swagger/model* folder, using [Visual Studio Code] or your favorite text editor. 
+1. [Visual Studio Code] または使い慣れたテキスト エディターを使用して、*Contact.java* モデル ファイルを開きます。このファイルは、*src/gen/java/io/swagger/model* フォルダーにあります。
 
     ![Open Contact Model File][open-contact-model-file]
 
-1. Add the following constructor to the **Contact** class. 
+1. **Contact** クラスに次のコンストラクターを追加します。
 
         public Contact(Integer id, String name, String email) 
         {
@@ -167,11 +166,11 @@ In this section, you'll replace the Swagger-generated code's server-side impleme
             this.emailAddress = email;
         }
 
-1. Open the *ContactsApiServiceImpl.java* service implementation file, which is located in the *src/main/java/io/swagger/api/impl* folder, using [Visual Studio Code] or your favorite text editor.
+1. [Visual Studio Code] または使い慣れたテキスト エディターを使用して、*ContactsApiServiceImpl.java* サービス実装ファイルを開きます。このファイルは、*src/main/java/io/swagger/api/impl* フォルダーにあります。
 
     ![Open Contact Service Code File][open-contact-service-code-file]
 
-1. Overwrite the code in the file with this new code to add a mock implementation to the service code. 
+1. この新しいコードでファイル内のコードを上書きし、サービス コードにモック実装を追加します。
 
         package io.swagger.api.impl;
 
@@ -223,64 +222,64 @@ In this section, you'll replace the Swagger-generated code's server-side impleme
             }
         }
 
-1. Open a command prompt and change directory to the root folder of your application.
+1. コマンド プロンプトを開き、ディレクトリをアプリケーションのルート フォルダーに変更します。
 
-1. Execute the following Maven command to build the code and run it using the Jetty app server locally. 
+1. 次の Maven コマンドを実行してコードをビルドし、Jetty アプリケーション サーバーを使用してローカルで実行します。
 
         mvn package jetty:run
 
-1. You should see the command window reflect that Jetty has started your code on port 8080. 
+1. Jetty がポート 8080 でコードを開始したことがコマンド ウィンドウに表示されます。
 
     ![Open Contact Service Code File][run-jetty-war]
 
-1. Use [Postman] to make a request to the "get all contacts" API method at http://localhost:8080/api/contacts.
+1. [Postman] を使用して、http://localhost:8080/api/contacts にある "get all contacts" API メソッドを要求します。
 
     ![Call the Contacts API][calling-contacts-api]
 
-1. Use [Postman] to make a request to the "get specific contact" API method located at http://localhost:8080/api/contacts/2.
+1. [Postman] を使用して、http://localhost:8080/api/contacts/2 にある "get specific contact" API メソッドを要求します。
 
     ![Call the Contacts API][calling-specific-contact-api]
 
-1. Finally, build the Java WAR (Web ARchive) file by executing the following Maven command in your console. 
+1. 最後に、コンソールで次の Maven コマンドを実行することにより、Java WAR (Web ARchive) ファイルをビルドします。
 
         mvn package war:war
 
-1. Once the WAR file is built, it will be placed into the **target** folder. Navigate into the **target** folder and rename the WAR file to **ROOT.war**. (Make sure the capitalization matches this format).
+1. WAR ファイルをビルドしたら、**target** フォルダーに配置します。**target** フォルダーに移動し、WAR ファイルの名前を **ROOT.war** に変更します (大文字と小文字もこの形式に一致していることを確認してください)。
 
          rename swagger-jaxrs-server-1.0.0.war ROOT.war
 
-1. Finally, execute the following commands from the root folder of your application to create a **deploy** folder to use to deploy the WAR file to Azure. 
+1. 最後に、アプリケーションのルート フォルダーから次のコマンドを実行して、WAR ファイルを Azure にデプロイするために使用する **deploy** フォルダーを作成します。
 
          mkdir deploy
          mkdir deploy\webapps
          copy target\ROOT.war deploy\webapps
          cd deploy
 
-## <a name="publish-the-output-to-azure-app-service"></a>Publish the output to Azure App Service
+## 出力を Azure App Service に発行する
 
-In this section you'll learn how to create a new API App using the Azure Portal, prepare that API App for hosting Java applications, and deploy the newly-created WAR file to Azure App Service to run your new API App. 
+このセクションでは、Azure ポータルを使用して新しい API アプリを作成する方法、Java アプリケーションをホストするためにこの API アプリを準備する方法、新しく作成した WAR ファイルを Azure App Service にデプロイして新しい API アプリを実行する方法について説明します。
 
-1. Create a new API app in the [Azure portal], by clicking the **New -> Web + Mobile -> API app** menu item, entering your app details, and then clicking **Create**.
+1. [Azure ポータル]で新しい API アプリを作成します。手順として、**[新規]、[Web + モバイル]、[API アプリ]** の順にクリックし、アプリの詳細を入力して、**[作成]** をクリックします。
 
     ![Create a new API App][create-api-app]
 
-1. Once your API app has been created, open your app's **Settings** blade, and then click the **Application settings** menu item. Select the latest Java versions from the available options, then select the latest Tomcat from the **Web container** menu, and then click **Save**.
+1. API アプリを作成したら、アプリの **[設定]** ブレードを開き、**[アプリケーションの設定]** をクリックします。使用可能なオプションから最新の Java バージョンを選択し、**[Web コンテナー]** メニューから最新の Tomcat を選択して、**[保存]** をクリックします。
 
     ![Set up Java in the API App blade][set-up-java]
 
-1. Click the **Deployment credentials** settings menu item, and provide a username and password you wish to use for publishing files to your API App. 
+1. **[デプロイ資格情報]** 設定メニュー項目をクリックし、API アプリへのファイル発行に使用するユーザー名とパスワードを指定します。
 
-    ![Set deployment credentials][deployment-credentials]
+    ![デプロイメント資格情報の設定][deployment-credentials]
 
-1. Click the **Deployment source** settings menu item. Once there, click the **Choose source** button, select the **Local Git Repository** option, and then click **OK**. This will create a Git repository running in Azure, that has an association with your API App. Each time you commit code to the *master* branch of your Git repository, your code will be published into your live running API App instance. 
+1. **[展開元]** 設定メニュー項目をクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** を選択して、**[OK]**をクリックします。これにより、Azure で実行される、API アプリに関連付けられた Git リポジトリが作成されます。Git リポジトリの*マスター*分岐に対してコードをコミットするたびに、コードは実行中の API アプリ インスタンスに発行されます。
 
-    ![Set up a new local Git repository][select-git-repo]
+    ![新しいローカル Git リポジトリの設定][select-git-repo]
 
-1. Copy the new Git repository's URL to your clipboard. Save this as it will be important in a moment. 
+1. 新しい Git リポジトリの URL をクリップボードにコピーします。後で重要になるため、これを保存します。
 
     ![Set up a new Git repository for your app][copy-git-repo-url]
 
-1. Git push the WAR file to the online repository. To do this, navigate into the **deploy** folder you created earlier so that you can easily commit the code up to the repository running in your App Service. Once you're in the console window and navigated into the folder where the webapps folder is located, issue the following Git commands to launch the process and fire off a deployment. 
+1. Git は WAR ファイルをオンラインのリポジトリにプッシュします。そのためには、前に作成した **deploy** フォルダーに移動して、App Service で実行されているリポジトリに簡単にコードをコミットできるようにします。コンソール ウィンドウから webapps フォルダーのあるフォルダーに移動したら、次の Git コマンドを発行してプロセスを起動し、デプロイメントを実行します。
 
          git init
          git add .
@@ -288,33 +287,33 @@ In this section you'll learn how to create a new API App using the Azure Portal,
          git remote add azure [YOUR GIT URL]
          git push azure master
 
-    Once you issue the **push** request, you'll be asked for the password you created for the deployment credential earlier. After you enter your credentials, you should see your portal display that the update was deployed.
+    **プッシュ**要求を発行すると、前にデプロイ資格情報用に作成したパスワードの入力を求められます。資格情報を入力すると、更新がデプロイされたことがポータルに表示されます。
 
-1. If you once again use Postman to hit the newly-deployed API App running in Azure App Service, you'll see that the behavior is consistent and that now it is returning contact data as expected, and using simple code changes to the Swagger.io scaffolded Java code. 
+1. 再度 Postman を使用して Azure App Service で動作している新しくデプロイされた API アプリにヒットすると、一貫した動作であること、期待どおりの連絡先データが返されていること、Swagger.io でスキャフォールディングされた Java コードへの単純なコード変更が使用されていることを確認できます。
 
     ![Using your Java Contacts REST API live in Azure][postman-calling-azure-contacts]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-In this article, you were able to start with a Swagger JSON file and some scaffolded Java code obtained from the Swagger.io editor. From there, your simple changes and a Git deploy process resulted in having a functional API app written in Java. The next tutorial shows how to [consume API apps from JavaScript clients, using CORS][App Service API CORS]. Later tutorials in the series show how to implement authentication and authorization.
+この記事では、初めに Swagger JSON ファイルを使用し、Swagger.io エディターでスキャフォールディングされた Java コードを作成しました。そこから、単純な変更と Git デプロイ プロセスにより、Java で記述された機能的な API アプリを作成しました。次のチュートリアルでは、[CORS を利用し、JavaScript クライアントから API アプリを使用する][App Service API CORS]方法について説明します。それ以降のチュートリアルでは、認証と承認を実装する方法について説明します。
 
-To build on this sample, you can learn more about the [Storage SDK for Java] to persist the JSON blobs. Or, you could use the [Document DB Java SDK] to save your Contact data to Azure Document DB. 
+[Storage SDK for Java] についての理解を深めれば、このサンプルを応用して JSON BLOB を永続化することができます。または、[Document DB Java SDK] を使用して、Azure Document DB に Contact データを保存することもできます。
 
-For more information about using Java in Azure, see the [Java Developer Center].
+Azure での Java の使用に関する詳細については、「[Java デベロッパー センター]」を参照してください。
 
 <!-- URL List -->
 
 [App Service API CORS]: app-service-api-cors-consume-javascript.md
-[Azure portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [Document DB Java SDK]: ../documentdb/documentdb-java-application.md
-[free trial]: https://azure.microsoft.com/pricing/free-trial/
+[無料試用版]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: http://www.git-scm.com/
-[Java Developer Center]: /develop/java/
-[Java Developer's Kit 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+[Java デベロッパー センター]: /develop/java/
+[Java Development Kit 8]: http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [Jax-RS]: https://jax-rs-spec.java.net/
 [Maven]: https://maven.apache.org/
 [Microsoft Azure]: https://azure.microsoft.com/
-[Online Swagger Editor]: http://editor.swagger.io/
+[オンライン Swagger Editor]: http://editor.swagger.io/
 [Postman]: https://www.getpostman.com/
 [Storage SDK for Java]: ../storage/storage-java-how-to-use-blob-storage.md
 [Swagger]: http://swagger.io/
@@ -339,8 +338,4 @@ For more information about using Java in Azure, see the [Java Developer Center].
 [copy-git-repo-url]: ./media/app-service-api-java-api-app/copy-git-repo-url.png
 [postman-calling-azure-contacts]: ./media/app-service-api-java-api-app/postman-calling-azure-contacts.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

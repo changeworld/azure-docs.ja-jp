@@ -1,100 +1,98 @@
 <properties 
-    pageTitle="Azure Mobile Engagement implementation for Media App"
-    description="Media app scenario to implement Azure Mobile Engagement" 
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="実装メディア アプリでの Azure Mobile Engagement "
+	description="Azure Mobile Engagement を実装するためのメディア アプリのシナリオ" 
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="mobile-engagement"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.workload="mobile" 
-    ms.date="08/19/2016"
-    ms.author="piyushjo"/>
+	ms.service="mobile-engagement"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.workload="mobile" 
+	ms.date="08/19/2016"
+	ms.author="piyushjo"/>
 
+#メディア アプリで Mobile Engagement を実装する
 
-#<a name="implement-mobile-engagement-with-media-app"></a>Implement Mobile Engagement with Media App
+## Overview
 
-## <a name="overview"></a>Overview
+John は、大きなメディア会社のモバイル プロジェクト マネージャーです。最近、ダウンロード数が非常に高い、新しいアプリを公開しました。ダウンロードの目標は達成しましたが、ユーザーあたりの投資利益率 (ROI) は、まだ要件を満たしていません。
 
-John is a mobile project manager for a big media company. He recently launched a new app that has a very high download count. He has hit his goals for download but, still his Return On Investment(ROI) per user does not meet his requirements. 
+ROI が低すぎる理由は、既に特定しています。ユーザーが 2 週間後にはアプリケーションを使わなくなってしまうことが多く、使用が再開されることはほとんどありません。アプリのリテンション期間を長くする必要があります。
 
-John has already identified why his ROI is too low. Users frequently stop using his app after only 2 weeks and most of them never come back. He wants to increase the retention of his app.
+いくつかの初期テストによって、プッシュ通知でユーザーに関与した場合にはアプリが使い続けられる傾向があることがわかりました。また、アクティブでなかったユーザーも、通知を送信するとアプリの使用を再開することが多いことがわかりました。そこで、アプリのために、プッシュ通知で高度なターゲティングを使用できる、ある種のエンゲージメント プログラムに投資することにしました。
 
-After some initial testing, he has learned when he engages his users with push notifications, they tend to continue using his app. Also users that were inactive will often return to the app depending on notifications he sends them. John decides to invest in some kind of Engagement Program for his app which uses advanced targeting with push notifications.
+最近読んだ「[Azure Mobile Engagement - 概要とベスト プラクティス](mobile-engagement-getting-started-best-practices.md)」のガイドの推奨事項も実装することにしました。
 
-John has recently read the [Azure Mobile Engagement - Getting Started Guide with Best practices](mobile-engagement-getting-started-best-practices.md) and has decided to implement the recommendations from the guide.
+##目標と KPI
 
-##<a name="objectives-and-kpis"></a>Objectives and KPIs
+John のアプリの主な関係者がミーティングを行います。ユーザーはメディアを利用しているので、ビジネスは広告から生じます。ユーザーごとの使用されるコンテンツが増えると、John の収益が増えます。全員が合意している主要な目標は、広告からの売上を 25% 増やすことです。この目標の測定と推進のために、次のようなビジネスの主要業績評価指標 (KPI) を作成します。
 
-Key stakeholders for John's app meet. Business is generated from ads as users consume his media. By increasing content consumed per user, John increases his revenues. All agree on one main objective: To increase sales from ads by 25%. They create Business Key Performance Indicators (KPIs) to measure and drive this objective
+* ユーザーごとのクリックされた広告の数
+* アクセスされた記事のページ数 (ユーザーごと、セッションごと、週ごと、月ごと、など)
+* 人気のあるカテゴリ
 
-* Number of ads clicked per user
-* How many article pages visited (per user/ per session/ per week / per month…)
-* What are favorite categories
+主要関係者とのミーティングに基づいて、ビジネス KPI を定義します。「[Azure Mobile Engagement - 概要とベスト プラクティス](mobile-engagement-getting-started-best-practices.md)」のパート 1 に準拠します。
 
-Based on John's meeting with key stakeholders he has defined his Business KPIs. He follows Part 1 of the [Azure Mobile Engagement - Getting Started Guide with Best practices](mobile-engagement-getting-started-best-practices.md). 
+次に、目標を達成するために、次のエンゲージメント KPI を作成します。
 
-Next, he creates the following Engagement KPIs to ensure that objectives are reached:
+* 毎日、毎週、隔週、および毎月の間隔で、リテンション状況を監視します。
+* アクティブ ユーザー数
+* アプリ ストアでのアプリの評価
 
-* Monitor retention across the following intervals: daily, weekly, bi-weekly and monthly.
-* Active users counts
-* The app rating in the app stores
+IT チームからの推奨事項に基づき、次の質問に答えるためのテクニカル KPI が追加されました。
 
-Based on recommendations from the IT team, the following Technical KPIs were added to answer the following questions:
+* ユーザー パス (どのページにアクセスされているか、そのページにユーザーがどれくらい滞在したか)
+* セッションごとに発生したクラッシュまたはバグの数
+* ユーザーが実行している OS のバージョン
+* ユーザーの画面の平均サイズ
+* ユーザーが使用するインターネット接続の種類
 
-* What is my user path (which page is visited, how many time users spend on it)
-* Number of crashes or bugs encountered per session?
-* What OS versions are my users running?
-* What is the average size of screen for my users?
-* What kind of internet connections do my users have?
+KPI ごとに必要なデータを分類し、プレイブックの適切な場所に記録します。
 
-For each KPI, he classifies the data required and he records it in the proper location of his playbook.
+## エンゲージメント プログラムおよび統合
 
-## <a name="engagement-program-and-integration"></a>Engagement program and integration
+KPI の定義が完了したので、エンゲージメント戦略のフェーズを開始し、4 つのエンゲージメント プログラムとそれらの目標を定義します。![][1]
 
-Now that John has finished defining his KPIs, he starts his Engagement strategy phase by defining 4 engagement programs and their objectives:     ![][1]
+さらに、各プログラムのプッシュ通知の詳細を決めます。プッシュ通知は、次の 5 つの要素で定義されます。
 
-Then John goes deeper by detailing push notifications for each program. Push notification are defined by five elements:
+1. 目標: 通知の目標は何か
+2. どうやって目標を達成するか
+3. 対象: 通知を受け取るのはだれか
+4. コンテンツ: 通知の表現や形式をどうするか (アプリ内/アプリ外)
+5. タイミング: このプッシュ通知を送信する最適なタイミングはいつか
 
-1. Objective: what is the objective of the notification
-2. How the objective will be reached
-3. Target: who will receive the notification?
-4. Content: What is the wording and the format of the notification (In App/Out of App)
-5. When: what is the best moment to send this push notification
+	![][2]
 
-    ![][2]
+詳しくは、[プレイブック](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)を参照してください。
 
-For more information refer to the [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks).
+ホワイト ペーパーのパート 2 に従って、ターゲット セクションを使用し、どのデータを収集する必要があるかを定義します。また、ソリューションを実装するために IT チームと共同でタグ プランを記述します。実装とユーザー承認テストの 1 週間後に、プログラムを開始します。
 
-According to the part 2 of the white paper John uses target section to define what data he has to collect and writes his Tag Plan jointly with IT team to implement the solution. After 1 week of implementation and user acceptance testing, John can finally launch his programs.
+##プログラムの結果
 
-##<a name="program-results"></a>Program Results
+4 か月後に、プログラムのパフォーマンスを確認します。スタート時プログラムと週次プログラムは、目標を達成しています。セッションが 1 つだけのユーザーの数が減少し、アプリのより多くの機能が使用され、1 週間あたりの接続数が 2 倍になりました。
 
-4 months later, John reviews performances of programs. The Welcome Program and the Weekly Program are meeting his goals. The number of user with only one session decreases, more features of the app are being used and the number of connections per week has doubled.
+**非アクティブ プログラム**は、ユーザーの傾向を理解するために役立ちます。非アクティブなユーザーの 15% が、またアプリを使用するようになっていることがわかります。ただし、そのほとんどは、アクティブな状態が 1 か月以上続きません。このような推移は、通知を追加し、コンテンツの選択肢を増やすことで、最適化できると予測しました。
 
-The **Inactive Program** is helping John understand user tendencies. It appears that 15% of the inactive users come back to the app. However most of them don’t stay active more than 1 month. John foresees a potential optimization of this sequence with additional notifications and expanding his content choices.
+**発見プログラム**は、うまくいっていません。抱き合わせ販売は増えていますが、目標の達成には不十分です。適切なターゲティングを行い、妥当なコンテンツを提示するためのデータが足りないと判断しました。このプログラムは停止し、Azure Mobile Engagement による "読み物プッシュ通知" の送信に集中することにしました。記者たちは既にプッシュ通知を送信するための CMS ソリューションを持っており、変更は望んでいません。
 
-The **Discover Program** doesn’t work well. It increases cross selling but not enough to reach his objectives. John identifies that he doesn’t have enough data to make relevant targeting and propose appropriate content. He stops this program and focuses on sending “editorial push notifications” with Azure Mobile Engagement. His journalists already have a CMS solution to send push notifications and they don’t want to change.
+そこで、AZME Web インターフェイスを使用せずにリーチ キャンペーンを管理できる HTTP REST API である、Reach API を使用することにしました。この方法では、必要なデータを収集することができ、記者も引き続き CMS ソリューションを使用できます。
 
-John decides to use the Reach API which is an HTTP REST API that allows managing Reach campaigns without having to use AZME Web interface. With this approach John can collect the data he needs and allow his writers to keep using the CMS solution.
+この機能が正しく動作するように、IT チームに以下の点に注意するように依頼しました。
 
-To ensure that feature works correctly, John asks IT team to be vigilant on the following points:
+1. **操作システム**: 各自にプッシュ通知を管理するための独自の規則があるため、すべてのケースの一覧を作成し、API が処理できるかどうかを確認することにしました。例: Android のプッシュ システムでは大きな画像を使用できますが、iOS ではできません。
 
-1. **Operation Systems** : They all have their own rules to administrate push notifications, so John decides to list all cases and checks if the APIs handle it.
-E.g : Android push system allows big picture which is not the case with iOS.
+2. **期間**: 期間を設定し、キャンペーンの終了を設定できる API が必要です。ユーザーをわずらわせるような大量の通知は送信しないようにします。
 
-2. **Time frame**: John wants an API, which set the time frame and set an end to campaigns. He wants to preserve users from any disruptive notification bombing.
+3. **カテゴリ**: マーケティング チームが各種のアラートのテンプレートを用意します。IT チームに、API 内にカテゴリを設定するように依頼します。
 
-3. **Categories**: Marketing team prepares template for each type of alerting. John asks IT team to set categories inside the API.
+いくつかのテストをして、問題がないことを確認します。この API によって、記者は引き続き CMS でプッシュ通知を送信し、Azure Mobile Engagement は記者のためにすべての行動データを収集できます。
 
-After some tests John is satisfied. Thanks to this API, journalists can still send push notifications with their CMS and Azure Mobile Engagement collects all behavioral data for them
-
-After these 4 first months, results reflect a good overall performance and gives confidence for John and his board, ROI per user increases per 15% and mobile sales represent 17.5 % of total sales, an increase of 7.5% in only four months.
+この最初の 4 か月の後、全体的なパフォーマンスが良好であることを示す結果が出て、John と彼のチームは自信を持つことができました。ユーザーごとの ROI は 15% 増加し、モバイルの売上は総売り上げの 17.5% を占め、4 か月だけで 7.5% 増加しました。
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-media-scenario/engagement-strategy.png
@@ -103,8 +101,4 @@ After these 4 first months, results reflect a good overall performance and gives
 <!--Link references-->
 [Media Playbook link]: https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

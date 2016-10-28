@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple 8000 Release version release notes | Microsoft Azure"
-   description="Describes the new features, open issues, and available workarounds for the July 2014 Microsoft Azure StorSimple release."
+   pageTitle="StorSimple 8000 リリース バージョンのリリース ノート | Microsoft Azure"
+   description="Microsoft Azure StorSimple の 2014 年 7 月リリースにおける新機能、未解決の問題、利用可能な回避策について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,36 +15,31 @@
    ms.date="04/18/2016"
    ms.author="v-sharos" />
 
+# StorSimple 8000 シリーズ リリース バージョンのリリース ノート - 2014 年 7 月 
 
-# <a name="storsimple-8000-series-release-version-release-notes---july-2014"></a>StorSimple 8000 Series Release Version release notes - July 2014 
+## 概要
 
-## <a name="overview"></a>Overview
+次のリリース ノートには、2014 年 7 月に一般公開 (GA) リリースされた Microsoft Azure StorSimple の StorSimple 8000 シリーズに関する未解決の重大な問題が示されています。このリリースは、ソフトウェア バージョン 6.3.9600.17215 に対応します。
 
-The follow release notes identify the critical open issues for the StorSimple 8000 Series July 2014 general availability (GA) release of Microsoft Azure StorSimple. This release corresponds to software version 6.3.9600.17215.  
+特に断りのない限り、これらのリリース ノートは StorSimple デバイスの全モデルに当てはまります。リリース ノートは継続的に更新されます。回避策を必要とする重大な問題が見つかった場合は追加されます。Microsoft Azure StorSimple ソリューションをデプロイする前に、次の情報を考慮してください。
 
-Unless otherwise specified, these release notes apply to all models of the StorSimple device. The release notes are continuously updated; as critical issues requiring a workaround are discovered, they are added. Before you deploy your Microsoft Azure StorSimple solution, consider the following information.  
-
-## <a name="known-issues-in-this-release"></a>Known issues in this release
-The following table provides a summary of known issues in this release.  
+## このリリースの既知の問題
+次の表に、このリリースでの既知の問題の概要を示します。
  
-| No. | Feature | Issue | Comments/workaround | Applies to physical device | Applies to virtual device |
+| 番号 | 機能 | 問題 | コメント/回避策 | 物理デバイスへの適用 | 仮想デバイスへの適用 |
 |-----|---------|-------|----------------------------|----------------------------|---------------------------|
-| 1 | Factory reset | In some instances, when you perform a factory reset, the StorSimple device may be stuck and display this message: **Reset to factory is in progress (phase 8)**. This happens if you press CTRL+C while the cmdlet is in progress. | Do not press CTRL+C after initiating a factory reset. If you are already in this state, please contact Microsoft Support for next steps. | Yes | No |
-| 2 | Disk quorum | In rare instances, if the majority of disks in the EBOD enclosure of an 8600 device are disconnected resulting in no disk quorum, then the storage pool will be offline. It will stay offline even if the disks are reconnected. | You will need to reboot the device. If the issue persists, please contact Microsoft Support for next steps. | Yes | No |
-| 3 | Cloud snapshot failures | In rare instances, a cloud snapshot may fail with the error **Maximum backup limit reached**. This occurs if you exceed 255 online clones on the same device, from the same original volume which has been deleted. | | Yes | Yes |
-| 4 | Incorrect controller ID | When a controller replacement is performed, controller 0 may show up as controller 1. During controller replacement, when the image is loaded from the peer node, the controller ID can show up initially as the peer controller’s ID. In rare instances, this behavior may also be seen after a system reboot. | No user action is required. This situation will resolve itself after the controller replacement is complete. | Yes | No |
-| 5 | Device monitoring charts | In the StorSimple Manager service, the device monitoring charts do not work when Basic or NTLM authentication is enabled in the proxy server configuration for the device. | Modify the web proxy configuration for the device registered with your StorSimple Manager service so that authentication is set to NONE. To do this, run the the Windows PowerShell for StorSimple Set-HcsWebProxy cmdlet. | Yes | Yes |
-| 6 | Storage accounts | Using the Storage service to delete the storage account is an unsupported scenario. This will lead to a situation in which user data cannot be retrieved. | | Yes | Yes |
-| 7 | Failback | A failback within 24 hours of disaster recovery (DR) is not supported. | | Yes | No |
-| 8 | Device failover | Multiple failovers of a volume container from the same source device to different target devices is not supported. Failover from a single dead device to multiple devices will make the volume containers on the first failed over device lose data ownership. After such a failover, these volume containers will appear or behave differently when you view them in the Azure classic portal. | | Yes | No |
-| 9 | Installation | During StorSimple Adapter for SharePoint installation, you need to provide a device IP for the install to finish successfully. | | Yes | No |
-| 10 | Network interfaces | Network interfaces DATA 2 and DATA 3 were swapped in the software. | Please contact Microsoft Support if you need to configure these interfaces. | Yes | No |
+| 1 | 出荷時の設定へのリセット | 出荷時の設定にリセットする際、StorSimple デバイスがスタックし、"**出荷時の設定にリセットしています (フェーズ 8)**" というメッセージが表示される場合があります。これは、コマンドレットの実行中に Ctrl キーを押しながら C キーを押すと発生します。 | 出荷時の設定へのリセットを開始した後で、Ctrl キーを押しながら C キーを押さないでください。既にこの症状が発生している場合は、Microsoft サポートに対処法をお問い合わせください。 | あり | いいえ |
+| 2 | ディスク クォーラム | まれに、8600 デバイスの EBOD エンクロージャに搭載されているディスクの大半が切断され、ディスク クォーラムが存在しない状況になり、記憶域プールがオフラインになるケースがあります。ディスクを再接続してもオフラインの状態は変わりません。 | ユーザーは、デバイスを再起動する必要があります。問題が解消しない場合は、Microsoft サポートに対処法をお問い合わせください。 | あり | いいえ |
+| 3 | クラウド スナップショットの失敗 | まれに、クラウド スナップショットが **"バックアップの上限に達しました"** というエラーで失敗することがあります。これは、同じボリュームから作成されたオンラインの複製の数が同じデバイス上で 255 個を超えたときに、複製元ボリュームが既に削除されていると発生します。 | | あり | あり |
+| 4 | 不正確なコントローラー ID | コントローラーの交換を実施すると、コントローラー 0 がコントローラー 1 として表示されることがあります。コントローラーの交換中、ピア ノードからイメージが読み込まれるときに、コントローラー ID が最初、ピア コントローラーの ID として表示される場合があります。まれなケースですが、この動作がシステムの再起動後に生じることもあります。 | ユーザーによる対処は不要です。この状況は、コントローラーの交換が完了すると自然に解決します。 | あり | いいえ |
+| 5 | デバイス監視チャート | StorSimple Manager サービスのデバイス監視チャートは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっていると正しく機能しません。 | StorSimple Manager サービスに登録されているデバイスの Web プロキシ構成を変更し、認証を [なし] に設定してください。そのためには、StorSimple 用 Windows PowerShell の Set-HcsWebProxy コマンドレットを実行します。 | あり | あり |
+| 6 | ストレージ アカウント | Storage サービスを使用したストレージ アカウントの削除は、サポートされていないシナリオです。これにより、ユーザー データを取得できなくなります。 | | あり | あり |
+| 7 | フェールバック | 障害復旧 (DR) の 24 時間以内のフェールバックはサポートされていません。 | | あり | いいえ |
+| 8 | デバイスのフェールオーバー | 同じソース デバイスのボリューム コンテナーについて、複数のフェールオーバーを異なるターゲット デバイスに対して実行することはサポートされません。1 つの障害発生デバイスから複数のデバイスにフェールオーバーすると、フェールオーバーされた最初のデバイス上のボリューム コンテナーがデータの所有権を失います。このようなフェールオーバーが発生した後、これらのボリューム コンテナーを Azure クラシック ポータルで表示するとその表示や動作が変わります。 | | あり | いいえ |
+| 9 | インストール | SharePoint 用 StorSimple アダプターのインストール中にインストールを正常に完了するためには、デバイスの IP を指定する必要があります。 | | あり | いいえ |
+| 10 | ネットワーク インターフェイス | 以前は、ネットワーク インターフェイスの DATA 2 と DATA 3 はソフトウェアでスワップされました。 | これらのインターフェイスを構成する必要がある場合は、Microsoft サポートにお問い合わせください。 | あり | いいえ |
 
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0427_2016-->

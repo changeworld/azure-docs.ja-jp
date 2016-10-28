@@ -1,305 +1,300 @@
 <properties
-    pageTitle="How to Use the Engagement API on Android"
-    description="Latest Android SDK - How to Use the Engagement API on Android"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+	pageTitle="Engagement API を Android で使用する方法"
+	description="最新の Android SDK - Engagement API を Android で使用する方法"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-android"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/25/2016"
-    ms.author="piyushjo;ricksal" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/25/2016"
+	ms.author="piyushjo;ricksal" />
 
+#Engagement API を Android で使用する方法
 
-#<a name="how-to-use-the-engagement-api-on-android"></a>How to Use the Engagement API on Android
+このドキュメントは、[Android Mobile Engagement SDK の詳細なレポート オプション](mobile-engagement-android-advanced-reporting.md)に関する記事の追加ドキュメントです。エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
 
-This document is an add-on to the document [Advanced Reporting options for Android Mobile Engagement SDK](mobile-engagement-android-advanced-reporting.md). It provides in depth details about how to use the Engagement API to report your application statistics.
+Engagement を使用してアプリケーションのセッション、アクティビティ、クラッシュ、および技術情報に関するレポートのみを作成する場合、すべての `Activity` サブクラスを対応する `EngagementActivity` クラスから継承するように設定する方法が簡単です。
 
-Keep in mind that if you only want Engagement to report your application's sessions, activities, crashes and technical information, then the simplest way is to make all your `Activity` sub-classes inherit from the corresponding `EngagementActivity` class.
+他の操作を実行する場合、たとえば、アプリケーションの特定のイベント、エラー、ジョブを報告する場合や、`EngagementActivity` クラスに実装されているのとは別の方法でアプリケーションのアクティビティを報告する必要がある場合は、エンゲージメント API を使用する必要があります。
 
-If you want to do more, for example if you need to report application specific events, errors and jobs, or if you have to report your application's activities in a different way than the one implemented in the `EngagementActivity` classes, then you need to use the Engagement API.
+エンゲージメント API は `EngagementAgent` クラスによって提供されます。このクラスのインスタンスは、`EngagementAgent.getInstance(Context)` 静的メソッドを呼び出すことで取得できます (返される `EngagementAgent` オブジェクトはシングルトンです)。
 
-The Engagement API is provided by the `EngagementAgent` class. An instance of this class can be retrieved by calling the `EngagementAgent.getInstance(Context)` static method (note that the `EngagementAgent` object returned is a singleton).
+##エンゲージメントの概念
 
-##<a name="engagement-concepts"></a>Engagement concepts
+次のパートは、Android プラットフォームの一般的な[モバイル エンゲージメントの概念](mobile-engagement-concepts.md)を改善するものです。
 
-The following parts refine the common [Mobile Engagement Concepts](mobile-engagement-concepts.md), for the Android platform.
+### `Session` と `Activity`
 
-### <a name="`session`-and-`activity`"></a>`Session` and `Activity`
+2 つの*アクティビティ*間で数秒の休止が発生する場合、*アクティビティ*のシーケンスは 2 つの別個の*セッション*に分割されます。この数秒間のことを「セッション タイムアウト」と呼びます。
 
-If the user stays more than a few seconds idle between two *activities*, then his sequence of *activities* is split in two distinct *sessions*. These few seconds are called the "session timeout".
+*アクティビティ*は通常、アプリケーションの 1 つの画面に関連付けられます。つまり、*アクティビティ*は画面が表示されると開始され、画面を閉じると停止します。この場合、エンゲージメント SDK は `EngagementActivity` クラスを使用して統合されています。
 
-An *activity* is usually associated with one screen of the application, that is to say the *activity* starts when the screen is displayed and stops when the screen is closed: this is the case when the Engagement SDK is integrated by using the `EngagementActivity` classes.
+ただし、*アクティビティ*はエンゲージメント API を使用して手動で制御することも可能です。これにより、特定の画面をいくつかのサブ パートに分割して、この画面の使用状況の詳細情報を取得できます (たとえば、ダイアログがこの画面内で使用される頻度や時間を知ることができます)。
 
-But *activities* can also be controlled manually by using the Engagement API. This allows to split a given screen in several sub parts to get more details about the usage of this screen (for example to known how often and how long dialogs are used inside this screen).
+##アクティビティを報告する
 
-##<a name="reporting-activities"></a>Reporting Activities
+> [AZURE.IMPORTANT] 「Engagement を Android に統合する方法」のドキュメントで説明しているとおり、`EngagementActivity` クラスとそのバリアントを使用している場合は、このセクションで説明するような方法でアクティビティに関するレポートを作成する必要はありません。
 
-> [AZURE.IMPORTANT] You don't need to report activities like described in this section if you are using the `EngagementActivity` class and its variants as explained in the How to Integrate Engagement on Android document.
+### ユーザーが新しいアクティビティを開始する
 
-### <a name="user-starts-a-new-activity"></a>User starts a new Activity
+			EngagementAgent.getInstance(this).startActivity(this, "MyUserActivity", null);
+			// Passing the current activity is required for Reach to display in-app notifications, passing null will postpone such announcements and polls.
 
-            EngagementAgent.getInstance(this).startActivity(this, "MyUserActivity", null);
-            // Passing the current activity is required for Reach to display in-app notifications, passing null will postpone such announcements and polls.
+ユーザー アクティビティが変更されるたびに `startActivity()` を呼び出す必要があります。この関数の最初の呼び出しで、新しいユーザー セッションが開始します。
 
-You need to call `startActivity()` each time the user activity changes. The first call to this function starts a new user session.
+この関数は、各アクティビティの `onResume` コールバックで呼び出すのが最適です。
 
-The best place to call this function is on each activity `onResume` callback.
+### ユーザーが現在のアクティビティを終了する
 
-### <a name="user-ends-his-current-activity"></a>User ends his current Activity
+			EngagementAgent.getInstance(this).endActivity();
 
-            EngagementAgent.getInstance(this).endActivity();
+ユーザーが最後のアクティビティを終了する際には、`endActivity()` を少なくとも 1 回呼び出す必要があります。これにより、ユーザーが現在休止状態にあり、セッション タイムアウトの期限が終了したタイミングでユーザー セッションを閉じる必要があることを Engagement SDK に通知します (セッション タイムアウトの期限が終了する前に `startActivity()` を呼び出すと、そのセッションが再開されます)。
 
-You need to call `endActivity()` at least once when the user finishes his last activity. This informs the Engagement SDK that the user is currently idle, and that the user session need to be closed once the session timeout will expire (if you call `startActivity()` before the session timeout expires, the session is simply resumed).
+この関数は、各アクティビティの `onPause` コールバックで呼び出すのが最適です。
 
-The best place to call this function is on each activity `onPause` callback.
+##イベントを報告する
 
-##<a name="reporting-events"></a>Reporting Events
+### セッション イベント
 
-### <a name="session-events"></a>Session events
+通常、セッション イベントは、セッション中にユーザーによって実行されるアクションの報告に使用されます。
 
-Session events are usually used to report the actions performed by a user during his session.
+**余分なデータがない例:**
 
-**Example without extra data:**
+			public MyActivity extends EngagementActivity {
+			   [...]
+			   @Override
+			   public boolean onPrepareOptionsMenu(Menu menu) {
+			      getEngagementAgent().sendSessionEvent("menu_shown", null);
+			   }
+			   [...]
+			}
 
-            public MyActivity extends EngagementActivity {
-               [...]
-               @Override
-               public boolean onPrepareOptionsMenu(Menu menu) {
-                  getEngagementAgent().sendSessionEvent("menu_shown", null);
-               }
-               [...]
-            }
+**余分なデータがある例:**
 
-**Example with extra data:**
+			public MyActivity extends EngagementActivity {
+			  [...]
+			  @Override
+			  public boolean onMenuItemSelected(int featureId, MenuItem item) {
+			    Bundle extras = new Bundle();
+			    extras.putInt("id", item.getItemId());
+			    getEngagementAgent().sendSessionEvent("menu_selected", extras);
+			  }
+			  [...]
+			}
 
-            public MyActivity extends EngagementActivity {
-              [...]
-              @Override
-              public boolean onMenuItemSelected(int featureId, MenuItem item) {
-                Bundle extras = new Bundle();
-                extras.putInt("id", item.getItemId());
-                getEngagementAgent().sendSessionEvent("menu_selected", extras);
-              }
-              [...]
-            }
+### スタンドアロン イベント
 
-### <a name="standalone-events"></a>Standalone Events
+セッション イベントとは逆に、スタンドアロン イベントはセッション外でも発生する場合があります。
 
-Contrary to session events, standalone events can occur outside of the context of a session.
+**例:**
 
-**Example:**
+ブロードキャスト受信者がトリガーされたときに発生するイベントについてレポートを作成する場合は、次のとおりです。
 
-Suppose you want to report events occurring when a broadcast receiver is triggered:
+			/** Triggered by Intent.ACTION_BATTERY_LOW */
+			public BatteryLowReceiver extends BroadcastReceiver {
+			  [...]
+			  @Override
+			  public void onReceive(Context context, Intent intent) {
+			    EngagementAgent.getInstance(context).sendEvent("battery_low", null);
+			  }
+			  [...]
+			}
 
-            /** Triggered by Intent.ACTION_BATTERY_LOW */
-            public BatteryLowReceiver extends BroadcastReceiver {
-              [...]
-              @Override
-              public void onReceive(Context context, Intent intent) {
-                EngagementAgent.getInstance(context).sendEvent("battery_low", null);
-              }
-              [...]
-            }
+##エラーの報告
 
-##<a name="reporting-errors"></a>Reporting Errors
+### セッション エラー
 
-### <a name="session-errors"></a>Session errors
+通常、セッション エラーは、セッション中にユーザーに影響するエラーの報告に使用されます。
 
-Session errors are usually used to report the errors impacting the user during his session.
+**例:**
 
-**Example:**
+			/** The user has entered invalid data in a form */
+			public MyActivity extends EngagementActivity {
+			  [...]
+			  public void onMyFormSubmitted(MyForm form) {
+			    [...]
+			    /* The user has entered an invalid email address */
+			    getEngagementAgent().sendSessionError("sign_up_email", null);
+			    [...]
+			  }
+			  [...]
+			}
 
-            /** The user has entered invalid data in a form */
-            public MyActivity extends EngagementActivity {
-              [...]
-              public void onMyFormSubmitted(MyForm form) {
-                [...]
-                /* The user has entered an invalid email address */
-                getEngagementAgent().sendSessionError("sign_up_email", null);
-                [...]
-              }
-              [...]
-            }
+### スタンドアロン エラー
 
-### <a name="standalone-errors"></a>Standalone errors
+セッション エラーとは反対に、スタンドアロン エラーはセッションのコンテキストの外で発生します。
 
-Contrary to session errors, standalone errors can occur outside of the context of a session.
+**例:**
 
-**Example:**
+次の例は、アプリケーション プロセスの実行中に携帯電話のメモリーが少なくなったタイミングで出力されるエラーについてレポートを作成する方法を示します。
 
-The following example shows how to report an error whenever the memory becomes low on the phone while your application process is running.
+			public MyApplication extends EngagementApplication {
 
-            public MyApplication extends EngagementApplication {
+			  @Override
+			  protected void onApplicationProcessLowMemory() {
+			    EngagementAgent.getInstance(this).sendError("low_memory", null);
+			  }
+			}
 
-              @Override
-              protected void onApplicationProcessLowMemory() {
-                EngagementAgent.getInstance(this).sendError("low_memory", null);
-              }
-            }
+##ジョブを報告する
 
-##<a name="reporting-jobs"></a>Reporting Jobs
+### 例
 
-### <a name="example"></a>Example
+ログイン プロセスの実行時間を報告する場合を想定します。
 
-Suppose you want to report the duration of your login process:
+			[...]
+			public void signIn(Context context, ...) {
 
-            [...]
-            public void signIn(Context context, ...) {
+			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
+			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
-              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
-              EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
+			  /* Report sign in job has started */
+			  engagementAgent.startJob("sign_in", null);
 
-              /* Report sign in job has started */
-              engagementAgent.startJob("sign_in", null);
+			  [... sign in ...]
 
-              [... sign in ...]
+			  /* Report sign in job is now ended */
+			  engagementAgent.endJob("sign_in");
+			}
+			[...]
 
-              /* Report sign in job is now ended */
-              engagementAgent.endJob("sign_in");
-            }
-            [...]
+### ジョブ中のエラーを報告する
 
-### <a name="report-errors-during-a-job"></a>Report Errors during a Job
+エラーは、現在のユーザー セッションに関連付ける代わりに、実行中のジョブに関連付けることができます。
 
-Errors can be related to a running job instead of being related to the current user session.
+**例:**
 
-**Example:**
-
-Suppose you want to report an error during you login process:
+ログイン プロセス中に発生したエラーについてレポートを作成する場合は、次のとおりです。
 
 [...] public void signIn(Context context, ...) {
 
-              /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
-              EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
+			  /* We need an Android context to call the Engagement API, if you are extending Activity, Service, you can pass "this" */
+			  EngagementAgent engagementAgent = EngagementAgent.getInstance(context);
 
-              /* Report sign in job has been started */
-              engagementAgent.startJob("sign_in", null);
+			  /* Report sign in job has been started */
+			  engagementAgent.startJob("sign_in", null);
 
-              /* Try to sign in */
-              while(true)
-                try {
-                  trySignin();
-                  break;
-                }
-                catch(Exception e) {
-                  /* Report the error to Engagement */
-                  engagementAgent.sendJobError("sign_in_error", "sign_in", null);
+			  /* Try to sign in */
+			  while(true)
+			    try {
+			      trySignin();
+			      break;
+			    }
+			    catch(Exception e) {
+			      /* Report the error to Engagement */
+			      engagementAgent.sendJobError("sign_in_error", "sign_in", null);
 
-                  /* Retry after a moment */
-                  sleep(2000);
-                }
-              [...]
-              /* Report sign in job is now ended */
-              engagementAgent.endJob("sign_in");
-            }
-            [...]
+			      /* Retry after a moment */
+			      sleep(2000);
+			    }
+			  [...]
+			  /* Report sign in job is now ended */
+			  engagementAgent.endJob("sign_in");
+			}
+			[...]
 
-### <a name="reporting-events-during-a-job"></a>Reporting Events during a job
+### ジョブ中のイベントに関するレポートを作成する
 
-Events can be related to a running job instead of being related to the current user session.
+イベントは、現在のユーザー セッションではなく、実行中のジョブに関連付けることができます。
 
-**Example:**
+**例:**
 
-Suppose we have a social network, and we use a job to report the total time during which the user is connected to the server. The user can stay connected in background even when he's using another application or when the phone is sleeping, so there is no session.
+ソーシャル ネットワークを持っていて、ジョブを使用して、ユーザーがサーバーに接続している合計時間を報告する場合を想定します。ユーザーは別のアプリケーションを使用している場合や携帯電話がスリープ状態にある場合でもバックグラウンドで接続されていることがあるため、セッションはありません。
 
-The user can receive messages from his friends, this is a job event.
+ユーザーは友達からメッセージを受信できます。これがジョブ イベントです。
 
-            [...]
-            public void signin(Context context, ...) {
-              [...Sign in code...]
-              EngagementAgent.getInstance(context).startJob("connection", null);
-            }
-            [...]
-            public void signout(Context context) {
-              [...Sign out code...]
-              EngagementAgent.getInstance(context).endJob("connection");
-            }
-            [...]
-            public void onMessageReceived(Context context) {
-              [...Notify in status bar...]
-              EngagementAgent.getInstance(context).sendJobEvent("message_received", "connection", null);
-            }
-            [...]
+			[...]
+			public void signin(Context context, ...) {
+			  [...Sign in code...]
+			  EngagementAgent.getInstance(context).startJob("connection", null);
+			}
+			[...]
+			public void signout(Context context) {
+			  [...Sign out code...]
+			  EngagementAgent.getInstance(context).endJob("connection");
+			}
+			[...]
+			public void onMessageReceived(Context context) {
+			  [...Notify in status bar...]
+			  EngagementAgent.getInstance(context).sendJobEvent("message_received", "connection", null);
+			}
+			[...]
 
-##<a name="extra-parameters"></a>Extra parameters
+##追加のパラメーター
 
-Arbitrary data can be attached to events, errors, activities and jobs.
+任意のデータをイベント、エラー、アクティビティ、ジョブに添付できます。
 
-This data can be structured, it uses Android's Bundle class (actually, it works like extra parameters in Android Intents). Note that a Bundle can contain arrays or another Bundle instances.
+このデータは構造化可能で、Android の Bundle クラスを使用します (実際は Android Intent の追加パラメーターとして機能します)。Bundle にはアレイや他の Bundle インスタンスが含まれる場合があります。
 
-> [AZURE.IMPORTANT] If you put in parcelable or serializable parameters, make sure their `toString()` method is implemented to return a human-readable string. Serializable classes that contain non transient fields that are not serializable will make Android crash when you will call `bundle.putSerializable("key",value);`
+> [AZURE.IMPORTANT] Parcelable パラメーターや Serializable パラメーターを追加する際には、`toString()` メソッドが実装されていることを確認し、人が読める文字列を返すようにします。Serializable クラスにシリアライズできない永続的なフィールドが含まれている場合、`bundle.putSerializable("key",value);` を呼び出すと Android がクラッシュします。
 
-> [AZURE.WARNING] Sparse arrays in extra parameters are not supported, that is, it won't be serialized as an array. You should convert them into standard arrays before using it in extra parameters.
+> [AZURE.WARNING] 追加パラメーターのスパース アレイはサポートされないため、アレイとしてシリアライズされません。追加パラメーターで使用する前に標準アレイに変換してください。
 
-### <a name="example"></a>Example
+### 例
 
-            Bundle extras = new Bundle();
-            extras.putString("video_id", 123);
-            extras.putString("ref_click", "http://foobar.com/blog");
-            EngagementAgent.getInstance(context).sendEvent("video_clicked", extras);
+			Bundle extras = new Bundle();
+			extras.putString("video_id", 123);
+			extras.putString("ref_click", "http://foobar.com/blog");
+			EngagementAgent.getInstance(context).sendEvent("video_clicked", extras);
 
-### <a name="limits"></a>Limits
+### 制限
 
-#### <a name="keys"></a>Keys
+#### 構成する
 
-Each key in the `Bundle` must match the following regular expression:
-
-`^[a-zA-Z][a-zA-Z_0-9]*`
-
-It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
-
-#### <a name="size"></a>Size
-
-Extras are limited to **1024** characters per call (once encoded in JSON by the Engagement service).
-
-In the previous example, the JSON sent to the server is 58 characters long:
-
-            {"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
-
-##<a name="reporting-application-information"></a>Reporting Application Information
-
-You can manually report tracking information (or any other application specific information) using the `sendAppInfo()` function.
-
-Note that these information can be sent incrementally: only the latest value for a given key will be kept for a given device.
-
-Like event extras, the Bundle class is used to abstract application information, note that arrays or sub-bundles will be treated as flat strings (using JSON serialization).
-
-### <a name="example"></a>Example
-
-Here is a code sample to send user gender and birthdate:
-
-            Bundle appInfo = new Bundle();
-            appInfo.putString("status", "premium");
-            appInfo.putString("expiration", "2016-12-07"); // December 7th 2016
-            EngagementAgent.getInstance(context).sendAppInfo(appInfo);
-
-### <a name="limits"></a>Limits
-
-#### <a name="keys"></a>Keys
-
-Each key in the `Bundle` must match the following regular expression:
+`Bundle` の各キーは、次の正規表現と一致する必要があります。
 
 `^[a-zA-Z][a-zA-Z_0-9]*`
 
-It means that keys must start with at least one letter, followed by letters, digits or underscores (\_).
+キーは、文字、数字、アンダー スコア (\_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
 
-#### <a name="size"></a>Size
+#### サイズ
 
-Application information are limited to **1024** characters per call (once encoded in JSON by the Engagement service).
+追加分は 1 回の呼び出しにつき **1024** 文字に制限されます (Engagement サービスによって一度 JSON にエンコードされます)。
 
-In the previous example, the JSON sent to the server is 44 characters long:
+前の例では、サーバーに送信される JSON は 58 文字です。
 
-            {"expiration":"2016-12-07","status":"premium"}
+			{"ref_click":"http:\/\/foobar.com\/blog","video_id":"123"}
 
+##アプリケーションの情報を報告する
 
+`sendAppInfo()` 関数を使用して、追跡情報 (または他のアプリケーション固有の情報) を手動で報告できます。
 
-<!--HONumber=Oct16_HO2-->
+これらの情報は段階的に送信される可能性があることにご注意ください。特定のキーの最新の値のみが特定のデバイスに保持されます。
 
+イベントの追加分などでは、アプリケーション情報の抽出に Bundle クラスが使用され、アレイやサブバンドルが (JSON シリアル化を使用して) フラットな文字列として扱われるのでご注意ください。
 
+### 例
+
+ユーザーの性別や誕生日を送信するサンプル コードはこちらです。
+
+			Bundle appInfo = new Bundle();
+			appInfo.putString("status", "premium");
+			appInfo.putString("expiration", "2016-12-07"); // December 7th 2016
+			EngagementAgent.getInstance(context).sendAppInfo(appInfo);
+
+### 制限
+
+#### 構成する
+
+`Bundle` の各キーは、次の正規表現と一致する必要があります。
+
+`^[a-zA-Z][a-zA-Z_0-9]*`
+
+キーは、文字、数字、アンダー スコア (\_) が後に続く、少なくとも 1 つの文字で始まる必要があることを意味します。
+
+#### サイズ
+
+アプリケーション情報は 1 回の呼び出しにつき **1024** 文字に制限されます (Engagement サービスによって一度 JSON にエンコードされます)。
+
+前の例では、サーバーに送信される JSON は 44 文字です。
+
+			{"expiration":"2016-12-07","status":"premium"}
+
+<!---HONumber=AcomDC_0727_2016-->

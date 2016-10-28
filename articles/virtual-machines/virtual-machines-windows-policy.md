@@ -1,43 +1,42 @@
 <properties
-    pageTitle="Apply policies to Azure Resource Manager Virtual Machines | Microsoft Azure"
-    description="How to apply a policy to an Azure Resource Manager Windows Virtual Machine"
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="singhkays"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Azure Resource Manager 仮想マシンにポリシーを適用する | Microsoft Azure"
+	description="Azure Resource Manager Windows 仮想マシンにポリシーを適用する方法"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="singhkays"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="04/13/2016"
-    ms.author="singhkay"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/13/2016"
+	ms.author="singhkay"/>
 
+# Azure Resource Manager 仮想マシンにポリシーを適用する
 
-# <a name="apply-policies-to-azure-resource-manager-virtual-machines"></a>Apply policies to Azure Resource Manager Virtual Machines
+ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。この記事では、Azure Resource Manager ポリシーを使用して、組織の仮想マシンの望ましい行動を定義する方法について説明します。
 
-By using policies, an organization can enforce various conventions and rules throughout the enterprise. Enforcement of the desired behavior can help mitigate risk while contributing to the success of the organization. In this article, we will describe how you can use Azure Resource Manager policies to define the desired behavior for your organization’s Virtual Machines.
+これを実現するための手順の概要を、以下に示します
 
-The outline for the steps to accomplish this is as below
+1. Azure Resource Manager ポリシー 101
+2. 仮想マシンのポリシーの定義
+3. ポリシーの作成
+4. ポリシーの適用
 
-1. Azure Resource Manager Policy 101
-2. Define a policy for your Virtual Machine
-3. Create the policy
-4. Apply the policy
+## Azure Resource Manager ポリシー 101
 
-## <a name="azure-resource-manager-policy-101"></a>Azure Resource Manager Policy 101
+Azure Resource Manager ポリシーの作業を開始するにあたって、この記事の手順を実行する前に、次の記事を読むことをお勧めします。次の記事では、ポリシーの基本的な定義と構造や、ポリシーが評価されるしくみが説明されています。ポリシーの定義のさまざまな例も示されています。
 
-For getting started with Azure Resource Manager policies, we recommend reading the article below and then continuing with the steps in this article. The article below describes the basic definition and structure of a policy, how policies get evaluated and gives various examples of policy definitions.
+* [ポリシーを使用したリソース管理とアクセス制御](../resource-manager-policy.md)
 
-* [Use Policy to manage resources and control access](../resource-manager-policy.md)
+## 仮想マシンのポリシーの定義
 
-## <a name="define-a-policy-for-your-virtual-machine"></a>Define a policy for your Virtual Machine
-
-One of the common scenarios for an enterprise might be to only allow their users to create Virtual Machines from specific operating systems that have been tested to be compatible with a LOB application. Using an Azure Resource Manager policy this task can be accomplished in a few steps. In this policy example, we are going to allow only Windows Server 2012 R2 Datacenter Virtual Machines to be created. The policy definition looks like below
+企業の一般的なシナリオでは、LOB アプリケーションとの互換性をテスト済みの特定のオペレーティング システムからだけ、ユーザーが仮想マシンを作成することを許可します。Azure Resource Manager ポリシーを使用すると、このタスクをわずかな手順で完了できます。このポリシーの例では、Windows Server 2012 R2 Datacenter 仮想マシンの作成のみを許可することにします。ポリシー定義は、次のようになります。
 
 ```
 "if": {
@@ -71,7 +70,7 @@ One of the common scenarios for an enterprise might be to only allow their users
 }
 ```
 
-The above policy can easily be modified to a scenario where you might want to allow any Windows Server Datacenter image to be used for a Virtual Machine deployment with the below change
+上のポリシーは、以下のように変更することで、仮想マシンのデプロイに任意の Windows Server Datacenter イメージの使用を許可するシナリオに簡単に変更できます。
 
 ```
 {
@@ -80,35 +79,31 @@ The above policy can easily be modified to a scenario where you might want to al
 }
 ```
 
-#### <a name="virtual-machine-property-fields"></a>Virtual Machine Property Fields
+#### 仮想マシンのプロパティ フィールド
 
-The table below describes the Virtual Machine properties that can be used as fields in your policy definition. For more on policy fields, see the article below:
+次の表は、ポリシー定義内のフィールドとして使用できる仮想マシン プロパティを示しています。ポリシー フィールドの詳細については、以下の記事を参照してください。
 
-* [Fields and Sources](../resource-manager-policy.md#fields-and-sources)
+* [フィールドおよびソース](../resource-manager-policy.md#fields-and-sources)
 
 
-| Field Name     | Description                                        |
+| フィールド名 | Description |
 |----------------|----------------------------------------------------|
-| imagePublisher | Specifies the publisher of the image               |
-| imageOffer     | Specifies the offer for the chosen image publisher |
-| imageSku       | Specifies the SKU for the chosen offer             |
-| imageVersion   | Specifies the image version for the chosen SKU     |
+| imagePublisher | イメージの発行元を指定します |
+| imageOffer | 選択したイメージの発行元に対するオファーを指定します |
+| imageSku | 選択したオファーの SKU を指定します |
+| imageVersion | 選択した SKU のイメージのバージョンを指定します |
 
-## <a name="create-the-policy"></a>Create the Policy
+## ポリシーの作成
 
-A policy can easily be created using the REST API directly or the PowerShell cmdlets. For creating the policy, see the article below:
+ポリシーは、REST API を直接使用するか、PowerShell コマンドレットを使用して、簡単に作成できます。ポリシーの作成については、以下の記事を参照してください。
 
-* [Creating a Policy](../resource-manager-policy.md#creating-a-policy)
-
-
-## <a name="apply-the-policy"></a>Apply the Policy
-
-After creating the policy you’ll need to apply it on a defined scope. The scope can be a subscription, resource group or even the resource. For applying the policy, see the article below:
-
-* [Creating a Policy](../resource-manager-policy.md#applying-a-policy)
+* [ポリシーの作成](../resource-manager-policy.md#creating-a-policy)
 
 
+## ポリシーの適用
 
-<!--HONumber=Oct16_HO2-->
+ポリシーを作成した後は、定義されたスコープに対して適用する必要があります。スコープには、サブスクリプション、リソース グループ、またはリソースを使用できます。ポリシーの適用については、以下の記事を参照してください。
 
+* [ポリシーの作成](../resource-manager-policy.md#applying-a-policy)
 
+<!---HONumber=AcomDC_0824_2016-->

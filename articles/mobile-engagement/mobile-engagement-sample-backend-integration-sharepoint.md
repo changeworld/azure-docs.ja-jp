@@ -1,44 +1,43 @@
 <properties 
-    pageTitle="Azure Mobile Engagement - backend integration" 
-    description="Connect Azure Mobile Engagement with a SharePoint backend to create campaigns from SharePoint" 
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo" 
-    manager="dwrede" 
-    editor=""/>
+	pageTitle="Azure Mobile Engagement - バックエンドの統合" 
+	description="SharePoint バックエンドに Azure Mobile Engagement を接続して SharePoint からキャンペーンを作成する" 
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="dwrede" 
+	editor=""/>
 
 <tags 
-    ms.service="mobile-engagement" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="mobile-multiple" 
-    ms.devlang="dotnet" 
-    ms.topic="article" 
-    ms.date="08/19/2016" 
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-multiple" 
+	ms.devlang="dotnet" 
+	ms.topic="article" 
+	ms.date="08/19/2016" 
+	ms.author="piyushjo" />
 
+# Azure Mobile Engagement - API の統合
 
-# <a name="azure-mobile-engagement---api-integration"></a>Azure Mobile Engagement - API integration
+自動化されたマーケティング システムでは、マーケティング キャンペーンの作成とアクティブ化も自動で行われます。この目的のために、Azure Mobile Engagement では API を使用して自動マーケティング キャンペーンを作成することもできます。
 
-In an automated marketing system, creating and activating the marketing campaigns also occur automatically. For this purpose - Azure Mobile Engagement enables creating such automated marketing campaigns using APIs as well. 
-
-Typically customers use the Mobile Engagement front end interface to create announcements/polls etc as part of their marketing campaigns. However as the marketing campaigns become mature, there is a need to leverage the data locked in the backend systems (like any CRM system or CMS system like SharePoint) so that a fully automated pipeline can be created which creates campaigns in Mobile Engagement dynamically based on the data flowing in from the backend systems. 
+一般に顧客は、マーケティング キャンペーンの一環として、Mobile Engagement のフロント エンド インターフェイスを使用してアナウンスやポーリングなどを作成します。しかし、マーケティング キャンペーンが成熟するにつれて、完全に自動化されたパイプラインを作成し、バックエンド システム (CRM システムや、SharePoint のような CMS システムなど) から入力されたデータに基づいて Mobile Engagement でキャンペーンを動的に作成できるようにするために、バックエンド システムに封じ込められたデータを活用することが必要になります。
 
 ![][5]
 
-This tutorial goes through such a scenario where a SharePoint business user populates a SharePoint list with marketing data and an automated process picks up items from the list and connects with the Mobile Engagement system using the available REST APIs to create a marketing campaign from the SharePoint data. 
+このチュートリアルで扱うシナリオでは、まず SharePoint のビジネス ユーザーが SharePoint リストにマーケティング データを入力します。そして、自動化されたプロセスが利用可能な REST API を使用してこのリストから項目を取得し、Mobile Engagement システムと通信して、SharePoint のデータからマーケティング キャンペーンを作成します。
  
-> [AZURE.IMPORTANT] In general, you can use this sample as a starting point for understanding how to call any Mobile Engagement REST API as it details the two key aspects of calling the APIs - authenticating and passing parameters. 
+> [AZURE.IMPORTANT] おおまかに言うと、このサンプルでは認証およびパラメーターの受け渡しという、API の呼び出しに関する 2 つの主要な側面を詳細に扱っているため、ここを出発点として、あらゆる Mobile Engagement REST API を呼び出す方法を身に付けることができます。
 
-## <a name="sharepoint-integration"></a>SharePoint integration
-1. Here is what the sample SharePoint list looks like. **Title**, **Category**, **NotificationTitle**, **Message** and **URL** are used for creating the announcement. There is a column called **IsProcessed** which is used by the sample automation process in the form of a console program. You can either run this console program as an Azure WebJob so that you can schedule it or you can directly use the SharePoint workflow to program creating and activating the announcement when an item is inserted into the SharePoint list. In this sample we use the console program which goes through the items in the SharePoint list and create announcement in Azure Mobile Engagement for each of them and then finally marks the **IsProcessed** flag to be true on successful announcement creation.
+## SharePoint の統合
+1. サンプルの SharePoint リストは次のようなものです。**Title**、**Category**、**NotificationTitle**、**Message**、**URL** はアナウンスの作成に使用されます。**IsProcessed** という名前の列がありますが、これはコンソール プログラム形式のサンプル自動化プロセスで使用されます。このコンソール プログラムを Azure WebJob として実行しスケジュールを設定することも、SharePoint ワークフローを直接使用して、この SharePoint リストに項目が挿入された場合にアナウンスが作成およびアクティブ化されるように設定することもできます。このサンプルで使用するコンソール プログラムは、SharePoint リスト内の項目を調べ、項目ごとに Azure Mobile Engagement でアナウンスを作成してから、最後にアナウンスの作成が成功した場合に **IsProcessed** フラグを true にマークします。
 
-    ![][1]
+	![][1]
 
-2. We are using the code from the sample *Remote Authentication in SharePoint Online Using the Client Object Model* [here](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c) to authenticate with the SharePoint list.
+2. [こちら](https://code.msdn.microsoft.com/Remote-Authentication-in-b7b6f43c)にある *Remote Authentication in SharePoint Online Using the Client Object Model* (クライアント オブジェクト モデルを使用した SharePoint Online のリモート認証) サンプルのコードを使用して、SharePoint リストの認証を行っています。
  
-3. Once authenticated, we loop through the list items to find out any newly created items (which will have **IsProcessed** = false). 
+3. 認証後に、リスト項目内をループして新規に作成された項目 (**IsProcessed** が false となっています) を検索します。
 
-        static async void CreateCampaignFromSharepoint()
+ 		static async void CreateCampaignFromSharepoint()
         {
             using (ClientContext clientContext = ClaimClientContext.GetAuthenticatedContext(targetSharepointSite))
             {
@@ -86,12 +85,12 @@ This tutorial goes through such a scenario where a SharePoint business user popu
             }
         }
 
-## <a name="mobile-engagement-integration"></a>Mobile Engagement integration
-1.  Once we find an item which requires processing - we extract the information required to create an announcement from the list item and call `CreateAzMECampaign` to create it and subsequently `ActivateAzMECampaign` to activate it. These are essentially REST API calls calling to the Mobile Engagement backend. 
+## Mobile Engagement の統合
+1.  処理をする必要がある項目を発見すると、そのリスト項目からアナウンスを作成するのに必要な情報を抽出し、`CreateAzMECampaign` を呼び出してアナウンスを作成してから、`ActivateAzMECampaign` を呼び出してアクティブ化します。これらは、本質的には Mobile Engagement バックエンドを呼び出す REST API 呼び出しです。
 
-2.  The Mobile Engagement REST APIs require a **Basic auth scheme authorization HTTP header** which is composed of the `ApplicationId` and the `ApiKey` which you get from the Azure portal. Make sure that you are using the Key from the **api keys** section and *not* from the **sdk keys** section. 
+2.  Mobile Engagement REST API では、**基本認証スキームによる HTTP 認証ヘッダー**が必要です。このヘッダーは、`ApplicationId` と、Azure ポータルから取得できる `ApiKey` で構成されています。**[SDK キー]** セクション*ではなく*、**[API キー]** セクションのキーを使用していることを確認します。
 
-    ![][2]
+	![][2]
 
         static string CreateAuthZHeader()
         {
@@ -106,9 +105,9 @@ This tutorial goes through such a scenario where a SharePoint business user popu
             return returnValue;
         }  
 
-3. For creating the announcement type campaign - refer to the [documentation](https://msdn.microsoft.com/library/azure/mt683750.aspx). You need to make sure that you are specifying the campaign `kind` as *announcement* and the [payload](https://msdn.microsoft.com/library/azure/mt683751.aspx) and passing it as FormUrlEncodedContent. 
+3. アナウンス形式のキャンペーンの作成については、[ドキュメント](https://msdn.microsoft.com/library/azure/mt683750.aspx)を参照してください。キャンペーンの `kind` を*アナウンス*に設定し、[ペイロード](https://msdn.microsoft.com/library/azure/mt683751.aspx)を指定して FormUrlEncodedContent として渡すようにする必要があります。
 
-        static async Task<int> CreateAzMECampaign(string campaignName, string notificationTitle, 
+		static async Task<int> CreateAzMECampaign(string campaignName, string notificationTitle, 
             string notificationMessage, string notificationCategory, string actionURL)
         {
             string createURIFragment = "/reach/1/create";
@@ -152,13 +151,13 @@ This tutorial goes through such a scenario where a SharePoint business user popu
             }
         }
 
-4. Once you have the announcement created, you will see something like the following on the Mobile Engagement portal (note that the State=Draft and Activated = N/A)
+4. お知らせを作成すると、Mobile Engagement ポータルに次のような結果が表示されます (State が Draft であり、Acitivated が N/A であることに注意してください)。
 
-    ![][3]
+	![][3]
 
-5. `CreateAzMECampaign` creates an announcement campaign and returns its Id to the caller. `ActivateAzMECampaign` requires this Id as the parameter to activate the campaign. 
+5. `CreateAzMECampaign` はアナウンス キャンペーンを作成し、その ID を呼び出し元に返します。`ActivateAzMECampaign` はこの ID をキャンペーンのアクティブ化のパラメーターとして要求します。
 
-        static async Task<bool> ActivateAzMECampaign(int campaignId)
+		static async Task<bool> ActivateAzMECampaign(int campaignId)
         {
             string activateUriFragment = "/reach/1/activate";
             using (var client = new HttpClient())
@@ -188,15 +187,15 @@ This tutorial goes through such a scenario where a SharePoint business user popu
             }
         }
 
-6. Once you have the announcement activated, you will see something like the following on the Mobile Engagement portal:
+6. お知らせを作成すると、Mobile Engagement ポータルに次のような結果が表示されます。
 
-    ![][4]
+	![][4]
 
-7. As soon as the campaign gets activated, any devices which satisfy the criterion on the campaign will start seeing notifications. 
+7. キャンペーンがアクティブ化されるとすぐに、キャンペーンの基準を満たすデバイスで通知が表示されるようになります。
 
-8. You will also notice that the list item marked with IsProcessed = false has been set to True once the announcement campaign is created.  
+8. アナウンス キャンペーンが作成されると、IsProcessed が false であったリスト項目が true に設定されることにも注目してください。
 
-This sample created a simple announcement campaign specifying mostly the required properties. You can customize this as much as you can from the portal by using the information [here](https://msdn.microsoft.com/library/azure/mt683751.aspx). 
+このサンプルでは、ほとんどの必須プロパティを指定する単純なアナウンス キャンペーンを作成しました。このサンプルは、[こちら](https://msdn.microsoft.com/library/azure/mt683751.aspx)の情報を参考にしてポータルから好きなだけカスタマイズすることができます。
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-sample-backend-integration-sharepoint/sharepointlist.png
@@ -208,8 +207,4 @@ This sample created a simple announcement campaign specifying mostly the require
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

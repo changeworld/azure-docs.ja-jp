@@ -1,100 +1,99 @@
 <properties
-    pageTitle="Deploy Virtual Machine Scale Set using Visual Studio | Microsoft Azure"
-    description="Deploy Virtual Machine Scale Sets using Visual Studio and a Resource Manager template"
-    services="virtual-machine-scale-sets"
-    documentationCenter=""
-    authors="gbowerman"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Visual Studio を利用して仮想マシン スケール セットをデプロイする | Microsoft Azure"
+	description="Visual Studio とリソース マネージャーのテンプレートを利用して仮想マシン スケール セットをデプロイする"
+	services="virtual-machine-scale-sets"
+	documentationCenter=""
+	authors="gbowerman"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machine-scale-sets"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/13/2016"
-    ms.author="guybo"/>
+	ms.service="virtual-machine-scale-sets"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/13/2016"
+	ms.author="guybo"/>
+
+# Visual Studio を利用して仮想マシン スケールをデプロイする
+
+この記事では、Visual Studio の "リソース グループの配置" を使用して Azure 仮想マシン スケール セットをデプロイする方法について説明します。
 
 
-# <a name="deploy-virtual-machine-scale-set-using-visual-studio"></a>Deploy Virtual Machine Scale Set using Visual Studio
+[Azure 仮想マシン スケール セット](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)は、自動スケールと負荷分散のためのオプションを簡単に組み込んで、同様の仮想マシンを一元的にデプロイし、管理するための Azure コンピューティング リソースです。VM スケール セットのプロビジョニングとデプロイは、[Azure リソース マネージャー (ARM) テンプレート](https://github.com/Azure/azure-quickstart-templates)を使って行うことができます。ARM テンプレートは、Azure CLI、PowerShell、REST を使ってデプロイできるほか、Visual Studio から直接デプロイすることもできます。Visual Studio には、"Azure リソース グループの配置" プロジェクトの一環としてデプロイできるサンプル テンプレート一式が用意されています。
 
-This article shows you how to deploy an Azure Virtual Machine Scale Set using a Visual Studio Resource Group Deployment.
+Azure リソース グループとしてデプロイすることによって、関連する一連の Azure リソースを集約し、1 回のデプロイ操作で発行することができます。詳細については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
+## 前提条件
 
-[Azure Virtual Machine Scale Sets](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/) are an Azure Compute resource to deploy and manage a collection of similar virtual machines with easily integrated options for auto-scale and load balancing. You can provision and deploy VM Scale Sets using [Azure Resource Manager (ARM) Templates](https://github.com/Azure/azure-quickstart-templates). ARM Templates can be deployed using Azure CLI, PowerShell, REST and also directly from Visual Studio. Visual Studio provides a set of example Templates which can be deployed as part of an Azure Resource Group Deployment project.
+Visual Studio で VM スケール セットをデプロイするには、次のものが必要です。
 
-Azure Resource Group deployments are a way to group together and publish a set of related Azure resources in a single deployment operation. You can learn more about them here: [Creating and deploying Azure resource groups through Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+- Visual Studio 2013 または 2015
+- Azure SDK 2.7、2.8、または 2.9
 
-## <a name="pre-requisites"></a>Pre-requisites
+注: 以降の手順は、Visual Studio 2015 と [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/) を使用していることを前提としています。
 
-To get started deploying VM Scale Sets in Visual Studio you need the following:
+## プロジェクトの作成
 
-- Visual Studio 2013 or 2015
-- Azure SDK 2.7, 2.8 or 2.9
+1. Visual Studio 2015 で **[ファイル]、[新規作成]、[プロジェクト]** の順に選択し、新しいプロジェクトを作成します。
 
-Note: These instructions assume you are using Visual Studio 2015 with [Azure SDK 2.8](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/).
+	![File New][file_new]
 
-## <a name="creating-a-project"></a>Creating a Project
+2. **[Visual C#] の [Cloud]** で **[Azure リソース マネージャー]** を選択し、ARM テンプレートをデプロイするためのプロジェクトを作成します。
 
-1. Create a new project in Visual Studio 2015 by choosing **File | New | Project**.
+	![Create Project][create_project]
 
-    ![File New][file_new]
+3.  テンプレートの一覧から、Linux または Windows の仮想マシン スケール セット テンプレートを選択します。
 
-2. Under **Visual C# | Cloud**, choose **Azure Resource Manager** to create a project for deploying an ARM Template.
+	![Select Template][select_Template]
 
-    ![Create Project][create_project]
+4. プロジェクトの作成後、PowerShell デプロイ スクリプト、Azure リソース マネージャー テンプレート、仮想マシン スケール セットのパラメーター ファイルが表示されます。
 
-3.  From the list of Templates, select either the Linux or Windows Virtual Machine Scale Set Template.
+	![Solution Explorer][solution_explorer]
 
-    ![Select Template][select_Template]
+## プロジェクトのカスタマイズ
 
-4. Once your project is created you’ll see PowerShell deployment scripts, an Azure Resource Manager Template, and a parameter file for the Virtual Machine Scale Set.
+これで、アプリケーションのニーズに応じてテンプレートを編集してカスタマイズできます。たとえば、VM 拡張機能のプロパティを追加したり、負荷分散の規則を編集したりできます。既定では、自動スケール規則を簡単に追加できる AzureDiagnostics 拡張機能をデプロイするように VM スケール セット テンプレートが構成されています。また、パブリック IP アドレスでロード バランサーがデプロイされ、SSH (Linux) または RDP (Windows) で VM インスタンスに接続できるように受信 NAT 規則が設定されます。フロントエンド ポートの範囲の開始は 50000 です。つまり Linux の場合、パブリック IP アドレス (またはドメイン名) のポート 50000 に SSH で接続すると、スケール セットにおける最初の VM のポート 22 にルーティングされます。同様に、ポート 50001 に接続すると、2 つ目の VM のポート 22 にルーティングされます。
 
-    ![Solution Explorer][solution_explorer]
-
-## <a name="customize-your-project"></a>Customize your project
-
-Now you can edit the Template to customize it for your application's needs, such as adding VM extension properties or editing load balancing rules. By default the VM Scale Set Templates are configured to deploy the AzureDiagnostics extension which makes it easy to add autoscale rules. It also deploys a load balancer with a public IP address, configured with inbound NAT rules which let you connect to the VM instances with SSH (Linux) or RDP (Windows) – the front end port range starts at 50000, which means in the case of Linux, if you SSH to port 50000 of the public IP address (or domain name) you will be routed to port 22 of the first VM in the Scale Set. Connecting to port 50001 will be routed to port 22 of the second VM and so on.
-
- A good way to edit your Templates with Visual Studio is to use the JSON Outline to organize the parameters, variables and resources. With an understanding of the schema Visual Studio can point out errors in your Template before you deploy it.
+ Visual Studio でテンプレートを編集するときは、JSON アウトラインを使用してパラメーター、変数、リソースを整理することをお勧めします。スキーマを認識させることによって、デプロイするテンプレートのエラーを事前に Visual Studio で検出することができます。
 
 ![JSON Explorer][json_explorer]
 
-## <a name="deploy-the-project"></a>Deploy the project
+## プロジェクトをデプロイする
 
-6. Deploy the ARM Template to Azure to create the VM Scale Set resource. Right click on the project node, choose **Deploy | New Deployment**.
+6. ARM テンプレートを Azure にデプロイして VM スケール セット リソースを作成します。プロジェクト ノードを右クリックして **[配置]、[新しい配置]** の順に選択します。
 
-    ![Deploy Template][5deploy_Template]
+	![Deploy Template][5deploy_Template]
 
-7. Select your subscription in the “Deploy to Resource Group” dialog.
+7. [リソース グループに配置する] ダイアログで該当するサブスクリプションを選択します。
 
-    ![Deploy Template][6deploy_Template]
+	![Deploy Template][6deploy_Template]
 
-8. From here you can also create a new Azure Resource Group to deploy your Template to.
+8. ここから、テンプレートのデプロイ先となる新しい Azure リソース グループを作成することもできます。
 
-    ![New Resource Group][new_resource]
+	![New Resource Group][new_resource]
 
-9. Next select the **Edit Parameters** button to enter parameters which will be passed to your Template, Certain values such as the username and password for the OS are required to create the deployment. If you don't have PowerShell Tools for Visual Studio installed, it is recommended to check "Save passwords" in order to avoid a hidden PowerShell command line prompt, or use [keyvault support](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/).
+9. 次に、**[パラメーターの編集]** ボタンを選択して、テンプレートに渡すパラメーターを入力します。デプロイを作成するには、所定の値 (OS のユーザー名とパスワードなど) を入力する必要があります。PowerShell Tools for Visual Studio をインストールしていない場合は、隠された PowerShell コマンド ライン プロンプトを回避するために [パスワードの保存] チェック ボックスをオンにするか、[KeyVault のサポート](https://azure.microsoft.com/blog/keyvault-support-for-arm-templates/)を使用します。
 
-    ![Edit Parameters][edit_parameters]
+	![Edit Parameters][edit_parameters]
 
-10. Now click **Deploy**. The **Output** window will show the deployment progress. Note that the the action is executing the **Deploy-AzureResourceGroup.ps1** script.
+10. **[配置]** をクリックします。**出力**ウィンドウにデプロイの進行状況が表示されます。ここで実行されているのは **Deploy-AzureResourceGroup.ps1** スクリプトの処理です。
 
-    ![Output Window][output_window]
+	![Output Window][output_window]
 
-## <a name="exploring-your-vm-scale-set"></a>Exploring your VM Scale Set
+## VM スケール セットについて
 
-Once the deployment completes, you can view the new VM Scale Set in the Visual Studio **Cloud Explorer** (refresh the list). Cloud Explorer lets you manage Azure resources in Visual Studio while developing applications. You can also view your VM Scale Set in the [Azure Portal](https://portal.azure.com) and [Azure Resource Explorer](https://resources.azure.com/).
+デプロイが完了すると、Visual Studio の**クラウド エクスプローラー**で新しい VM スケール セットを確認できます (一覧を最新の情報に更新してください)。アプリケーションの開発中に、Visual Studio からクラウド エクスプローラーを使って Azure のリソースを管理できます。VM スケール セットは、[Azure ポータル](https://portal.azure.com)や [Azure リソース エクスプローラー](https://resources.azure.com/)で表示することもできます。
 
 ![Cloud Explorer][cloud_explorer]
 
- The portal provides the best way to visually manage your Azure infrastructure with a web browser, while Azure Resource Explorer provides an easy way to explorer and debug Azure resources, giving a window into the “instance view” and also showing PowerShell commands for the resources you are looking at. While VM Scale Sets are in preview, the Resource Explorer will show the most detail for your VM Scale Sets.
+ ポータルの優れている点は、Azure のインフラストラクチャを Web ブラウザーを使って視覚的に管理できることです。一方、Azure リソース エクスプローラーの利点は、Azure のリソースを手軽に調査し、デバッグできることです。"インスタンス ビュー" を観察したり、着目しているリソースの PowerShell コマンドを表示したりすることができます。VM スケール セットはプレビュー版ですが、VM スケール セットに関する大半の情報は、リソース エクスプローラーで表示することができます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Once you’ve successfully deployed VM Scale Sets through Visual Studio you can further customize your project to suit your application requirements. For example setting up autoscale by adding an Insights resource, adding infrastructure to your Template like standalone VMs, or deploying applications using the custom script extension. A good source of example Templates can be found in the [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) GitHub repository (search for "vmss").
+Visual Studio を使って VM スケール セットを正常にデプロイしたら、実際のアプリケーションの要件に応じてプロジェクトをさらにカスタマイズすることができます。たとえば、Insights リソースを追加したり、スタンドアロン VM などのインフラストラクチャをテンプレートに追加したり、カスタム スクリプト拡張機能を使ってアプリケーションをデプロイしたりすることによって、自動スケールをセットアップすることが考えられます。サンプル テンプレートは、[Azure クイック スタート テンプレート](https://github.com/Azure/azure-quickstart-templates) GitHub リポジトリから入手できます (「vmss」で検索してください)。
 
 [file_new]: ./media/virtual-machine-scale-sets-vs-create/1-FileNew.png
 [create_project]: ./media/virtual-machine-scale-sets-vs-create/2-CreateProject.png
@@ -108,8 +107,4 @@ Once you’ve successfully deployed VM Scale Sets through Visual Studio you can 
 [output_window]: ./media/virtual-machine-scale-sets-vs-create/9-Output.png
 [cloud_explorer]: ./media/virtual-machine-scale-sets-vs-create/12-CloudExplorer.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

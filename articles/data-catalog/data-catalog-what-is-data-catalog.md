@@ -1,6 +1,6 @@
 <properties
-   pageTitle="What is Azure Data Catalog? | Microsoft Azure"
-   description="This article provides an overview of Microsoft Azure Data Catalog, including its features and the problems it is designed to address. Data Catalog provides capabilities that enable any user – from analysts to data scientists to developers – to register, discover, understand, and consume data sources."
+   pageTitle="Azure Data Catalog とは | Microsoft Azure"
+   description="この記事では、Microsoft Azure Data Catalog の概要 (機能や対処できる問題など) について説明します。Data Catalog は、アナリストからデータ サイエンティスト、開発者まで、すべてのユーザーによるデータ ソースの登録、検出、理解、および使用を可能にする機能を備えています。"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -16,67 +16,62 @@
    ms.date="09/21/2016"
    ms.author="maroche"/>
 
+# Azure Data Catalog とは何ですか
 
-# <a name="what-is-azure-data-catalog?"></a>What is Azure Data Catalog?
+Azure Data Catalog は、完全に管理されたクラウド サービスです。Azure Data Catalog を通じて、ユーザーは必要なデータ ソースを検出したり、見つけたデータ ソースについての知見を得たりすることができ、組織は既存の投資からさらに大きな価値を引き出すことができます。アナリストからデータ サイエンティスト、開発者に至るまで、あらゆるユーザーが Data Catalog の機能を利用してデータ ソースを検出し、理解して利用することができます。Data Catalog には、メタデータや注釈のクラウドソーシング モデルが組み込まれており、すべてのユーザーがその知見を持ち寄ってデータのコミュニティや文化を構築することができます。
 
-Azure Data Catalog is a fully managed cloud service that enables users to discover the data sources they need, and to understand the data sources they find, while helping organizations get more value from their existing investments. Data Catalog provides capabilities that enable any user – from analysts to data scientists to developers – to discover, understand, and consume data sources. Data Catalog includes a crowdsourcing model of metadata and annotations, and allows all users to contribute their knowledge to build a community and culture of data.
+## データの利用者にとっての検出の難しさ
 
-## <a name="discovery-challenges-for-data-consumers"></a>Discovery challenges for data consumers
+従来、エンタープライズ データ ソースの検出は、仲間の知識に基づいた組織的プロセスでした。このプロセスは、情報資産の活用を考える企業にとって多数の課題があります。
 
-Traditionally, discovering enterprise data sources has been an organic process based on tribal knowledge. This presents numerous challenges for companies wanting to get the most value from their information assets.
+-	ユーザーは、別のプロセスの一環でデータ ソースを利用するまで、そのデータ ソースが存在することを知りません。データ ソースが一元的に登録されている場所はありません。
+-	ユーザーがデータ ソースの場所を知らない場合、クライアント アプリケーションを使用してデータに接続できません。データを利用するには、ユーザーが接続文字列またはパスを知っている必要があります。
+-	ユーザーがデータ ソースのドキュメントの場所を知らない場合、データの用途を理解できません。データ ソースとドキュメントが複数の場所に保存され、さまざまな状況で使用されます。
+-	情報資産について不明な点がある場合、ユーザーはデータを担当するエキスパートまたはチームを特定し、オフラインでエキスパートに確認する必要があります。データと、データの用途に関するエキスパートの観点との間に明確なつながりはありません。
+-  データ ソースへのアクセスを要求するプロセスを理解しない限り、データ ソースやそのドキュメントを検出できても、必要なデータにアクセスすることはできません。
 
--   Users are not aware that data sources exist unless they come into contact with it as part of another process; there is no central location where data sources are registered.
--   Unless a user knows the location of a data source, he cannot connect to the data using a client application; data consumption experiences require users to know the connection string or path.
--   Unless a user knows the location of a data source's documentation, he cannot understand the intended uses of the data; data sources and documentation live in different places and are consumed through different experiences.
--   If a user has questions about an information asset, he must locate the expert or team responsible for the data and engage those experts offline; there is no explicit connection between data and those with expert perspectives on its use.
--  Unless a user understands the process for requesting access to the data source, discovering the data source and its documentation still does not enable him to access the data he requires.
+## データの作成者にとっての検出の難しさ
 
-## <a name="discovery-challenges-for-data-producers"></a>Discovery challenges for data producers
+データの利用者が、以上に挙げた課題に直面する一方で、情報資産の作成と保守を担当するユーザーも固有の課題を抱えています。
 
-While data consumers face these challenges, users responsible for producing and maintaining information assets face challenges of their own.
+-	データ ソースに記述メタデータを使用して注釈を付ける作業は、多くの場合、無駄になります。通常、クライアント アプリケーションは、データ ソースに保存されている記述を無視するためです。
+-	データ ソースのドキュメントを作成する作業も、多くの場合は無駄になります。ドキュメントとデータ ソースの同期を維持することは継続的な責任であり、内容が古いと見なされてドキュメントを信頼しなくなることがよくあります。
+- データ ソースへのアクセスを制限し、データの利用者がアクセス権の要求方法を確実に理解するようにすることが、現在の課題です。
 
--   Annotating data sources with descriptive metadata is often a lost effort; client applications typically ignore descriptions stored in the data source.
--   Creating documentation for data sources is often a lost effort; keeping documentation in sync with the data source is an ongoing responsibility, and users lack trust in documentation as it is often perceived as being out of date.
-- Restricting access to the data source, and ensuring that data consumers know how to request access is an ongoing challenge.
+データ ソースのドキュメントの作成と保守は複雑で、時間がかかる作業です。データ ソースを使用する全員がすぐにドキュメントを利用できるようにするという課題は、さらに大変です。
 
-Creating and maintaining documentation for a data source is complex and time-consuming. The challenge of making that documentation readily available to everyone who uses the data source is often even more so.
+このような課題が複数存在すると、エンタープライズ データの使用と理解を推奨したいと考える会社にとって大きな障壁になりまする
 
-When combined, these challenges present a significant barrier for companies who want to encourage and promote the use and understanding of enterprise data.
+## Azure Data Catalog が解決するもの
 
-## <a name="azure-data-catalog-can-help"></a>Azure Data Catalog can help
+Data Catalog はこれまでに述べた問題の解決を目指して設計されており、企業は Data Catalog によって、既存の情報資産から最大の価値を引き出すことができます。Data Catalog の利点は、管理下のデータを必要とするユーザーが、そのデータ ソースを容易に検出し、把握できるようになることです。
 
-Data Catalog is designed to address these problems and to enable enterprises to get the most value from their existing information assets. Data Catalog helps by making data sources easily discoverable, and understandable by the users who need the data they manage.
+Data Catalog は、データ ソースを登録できるクラウドベースのサービスを提供しています。データは元の場所に残りますが、メタデータのコピーと、データ ソースの場所に対する参照が Data Catalog に追加されます。このメタデータのインデックスも作成されるので、検索で簡単に各データ ソースを見つけられるようになり、検出するユーザーにとって理解しやすくなります。
 
-Data Catalog provides a cloud-based service into which data source can be registered. The data remains in in its existing location, but a copy of the metadata is added to Data Catalog, along with a reference to the data source location. This metadata is also indexed to make each data source easily discoverable via search, and understandable to users who discover it.
+データ ソースを登録すると、登録したユーザーまたは社内の他のユーザーがメタデータを強化できるようになります。すべてのユーザーが、記述、タグ、その他のメタデータ (ドキュメントやデータ ソースへのアクセス要求のプロセスなど) を指定してデータ ソースに注釈を設定できます。この記述メタデータで、データ ソースから登録される構造メタデータ (列名やデータ型など) が補足されます。
 
-Once a data source has been registered, its metadata can then be enriched, either by the user who performed the registration, or by other users in the enterprise. Any user can annotate a data source by providing descriptions, tags, or other metadata, such as documentation and processes for requesting data source access. This descriptive metadata supplements the structural metadata (such as column names and data types) registered from the data source.
+データ ソースとその用途の検出することは、ソースの登録の主な目的です。エンタープライズ ユーザーが仕事 (ビジネス インテリジェンス、アプリケーション開発、データ サイエンスなど、適切なデータが必要な作業) のためにデータが必要な場合、Data Catalog の検出エクスペリエンスを使用すると、ニーズに合うデータを簡単に検出し、データを理解して目的に合っているかどうかを評価し、好みのツールでデータ ソースを開いてデータを使用することができます。同時に、ユーザーは Data Catalog を使用し、カタログに対し、登録済みのデータ ソースをタグ付け、文書化、注釈付け、およびカタログ ユーザーのコミュニティが検出、理解、および使用できる新しいデータ ソースを登録することができます。
 
-Discovering and understanding data sources and their use is the primary purpose of registering the sources. When enterprise users need data for their efforts (which could be business intelligence, application development, data science, or any other task where the right data is required) they can use the Data Catalog discovery experience to quickly find data that matches their needs, understand the data to evaluate its fitness for purpose, and consume that data by opening the data source in their tool of choice. At the same time, Data Catalog allows users to contribute to the catalog, by tagging, documenting, and annotating data sources that have already been registered, and by registering new data sources which can then be discovered, understood, and consumed by the community of catalog users.
+![Data Catalog の機能](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
 
-![Data Catalog Capabilities](./media/data-catalog-what-is-data-catalog/data-catalog-capabilities.png)
+## Data Catalog を使ってみる
 
-## <a name="get-started-with-data-catalog"></a>Get started with Data Catalog
+Data Catalog を今すぐ使用するには、[www.azuredatacatalog.com](https://www.azuredatacatalog.com) にアクセスしてください。
 
-To get started with Data Catalog today, visit [www.azuredatacatalog.com](https://www.azuredatacatalog.com).
+[こちら](data-catalog-get-started.md)で概要をご覧いただけます。
 
-A getting started guide is available [here](data-catalog-get-started.md).
+## Data Catalog についてさらに理解を深める
 
-## <a name="learn-more-about-data-catalog"></a>Learn more about Data Catalog
+Data Catalog の機能の詳細については、以下のページを参照してください。
 
-To learn more about the capabilities of Data Catalog, see:
+* [データ ソースの登録方法](data-catalog-how-to-register.md)
+* [データ ソースの探索方法](data-catalog-how-to-discover.md)
+* [データ ソースに注釈を付ける方法](data-catalog-how-to-annotate.md)
+* [データ ソースの文書化の方法](data-catalog-how-to-documentation.md)
+* [データ ソースへの接続方法](data-catalog-how-to-connect.md)
+* [ビッグ データを操作する方法](data-catalog-how-to-big-data.md)
+* [データ資産を管理する方法](data-catalog-how-to-manage.md)
+* [ビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)
+* [よく寄せられる質問](data-catalog-frequently-asked-questions.md)
 
-* [How to register data sources](data-catalog-how-to-register.md)
-* [How to discover data sources](data-catalog-how-to-discover.md)
-* [How to annotate data sources](data-catalog-how-to-annotate.md)
-* [How to document data sources](data-catalog-how-to-documentation.md)
-* [How to connect to data sources](data-catalog-how-to-connect.md)
-* [How to work with big data](data-catalog-how-to-big-data.md)
-* [How to manage data assets](data-catalog-how-to-manage.md)
-* [How to set up the Business Glossary](data-catalog-how-to-business-glossary.md)
-* [Frequently Asked Questions](data-catalog-frequently-asked-questions.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!-------HONumber=AcomDC_0921_2016-->

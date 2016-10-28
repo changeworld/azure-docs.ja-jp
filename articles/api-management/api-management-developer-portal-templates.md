@@ -1,190 +1,189 @@
 <properties 
-    pageTitle="How to customize the Azure API Management developer portal using templates | Microsoft Azure" 
-    description="Learn how to customize the Azure API Management developer portal using templates." 
-    services="api-management" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法 | Microsoft Azure" 
+	description="Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="api-management" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/25/2016" 
-    ms.author="sdanie"/>
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/09/2016" 
+	ms.author="sdanie"/>
 
 
+# Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>How to customize the Azure API Management developer portal using templates
+Azure API Management には、管理者が[管理者ポータルの外観をカスタマイズ](api-management-customize-portal.md)したり、ページそのものの内容を構成するテンプレート セットを使用して開発者ポータルのページの内容をカスタマイズしたりできる多様なカスタマイズ機能が用意されています。[DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットをテンプレートで使用して、表示されるページの内容を自由に構成できます。
 
-Azure API Management provides several customization features to allow administrators to [customize the look and feel of the developer portal](api-management-customize-portal.md), as well as customize the content of the developer portal pages using a set of templates that configure the content of the pages themselves. Using [DotLiquid](http://dotliquidmarkup.org/) syntax, and a provided set of localized string resources, icons, and page controls, you have great flexibility to configure the content of the pages as you see fit using these templates.
+## 開発者ポータル テンプレートの概要
 
-## <a name="developer-portal-templates-overview"></a>Developer portal templates overview
+開発者ポータル テンプレートは、API Management サービス インスタンスの管理者によって、管理者ポータルで管理されます。開発者ポータル テンプレートを管理するには、Azure クラシック ポータルで API Management サービス インスタンスに移動し、**[参照]** をクリックします。
 
-Developer portal templates are managed in the developer portal by administrators of the API Management service instance. To manage developer templates, navigate to your API Management service instance in the Azure Classic Portal and click **Browse**.
+![開発者ポータル][api-management-browse]
 
-![Developer portal][api-management-browse]
+既にパブリッシャー ポータルにいる場合は、**[管理者ポータル]** をクリックすることで、開発者ポータルにアクセスできます。
 
-If you are already in the publisher portal, you can access the developer portal by clicking **Developer portal**.
+![開発者ポータル メニュー][api-management-developer-portal-menu]
 
-![Developer portal menu][api-management-developer-portal-menu]
+開発者ポータル テンプレートにアクセスするには、左側のカスタマイズ アイコンをクリックしてカスタマイズ メニューを表示し、**[テンプレート]** をクリックします。
 
-To access the developer portal templates, click the customize icon on the left to display the customization menu, and click **Templates**.
+![開発者ポータル テンプレート][api-management-customize-menu]
 
-![Developer portal templates][api-management-customize-menu]
+テンプレートの一覧には、開発者ポータルのさまざまなページをカバーするテンプレートのカテゴリが表示されます。各テンプレートは異なりますが、それらを編集して変更を発行する手順は同じです。テンプレートを編集するには、テンプレートの名前をクリックします。
 
-The templates list displays several categories of templates covering the different pages in the developer portal. Each template is different, but the steps to edit them and publish the changes are the same. To edit a template, click the name of the template.
+![開発者ポータル テンプレート][api-management-templates-menu]
 
-![Developer portal templates][api-management-templates-menu]
+テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。この例では、**製品リスト** テンプレートが表示されています。**製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。
 
-Clicking a template takes you to the developer portal page that is customizable by that template. In this example the **Product list** template is displayed. The **Product list** template controls the area of the screen indicated by the red rectangle. 
+![製品リスト テンプレート][api-management-developer-portal-templates-overview]
 
-![Products list template][api-management-developer-portal-templates-overview]
+**ユーザー プロファイル** テンプレートなどのいくつかのテンプレートと同じように、同じページのさまざまな部分をカスタマイズします。
 
-Some templates, like the **User Profile** templates, customize different parts of the same page. 
+![ユーザー プロファイル テンプレート][api-management-user-profile-templates]
 
-![User profile templates][api-management-user-profile-templates]
+各開発者ポータル テンプレート用のエディターでは、ページの下部に 2 つのセクションが表示されます。左側にはテンプレートの編集ウィンドウが表示され、右側にはテンプレートのデータ モデルが表示されます。
 
-The editor for each developer portal template has two sections displayed at the bottom of the page. The left-hand side displays the editing pane for the template, and the right-hand side displays the data model for the template. 
+テンプレート編集ウィンドウには、開発者ポータルの対応するページの外観と動作を制御するマークアップが含まれています。テンプレートのマークアップでは、[DotLiquid](http://dotliquidmarkup.org/) 構文を使用します。DotLiquid 用の一般的なエディターの 1 つに、[設計者向け DotLiquid](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers) があります。編集中にテンプレートに加えられた変更はブラウザーにリアルタイムで表示されますが、テンプレートを[保存](#to-save-a-template)して[発行](#to-publish-a-template)するまで顧客の目に触れることはありません。
 
-The template editing pane contains the markup that controls the appearance and behavior of the corresponding page in the developer portal. The markup in the template uses the [DotLiquid](http://dotliquidmarkup.org/) syntax. One popular editor for DotLiquid is [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers). Any changes made to the template during editing are displayed in real-time in the browser, but are not visible to your customers until you [save](#to-save-a-template) and [publish](#to-publish-a-template) the template.
+![テンプレートのマークアップ][api-management-template]
 
-![Template markup][api-management-template]
+**テンプレート データ** ウィンドウには、特定のテンプレートで使用できるエンティティのデータ モデル用のガイドが提供されます。このガイドは、開発者ポータルに現在表示されているライブ データを表示することによって提供されます。テンプレート ウィンドウは、**テンプレート データ** ウィンドウの右上にある長方形をクリックすることで拡大できます。
 
-The **Template data** pane provides a guide to the data model for the entities that are available for use in a particular template. It provides this guide by displaying the live data that are currently displayed in the developer portal. You can expand the template panes by clicking the rectangle in the upper-right corner of the **Template data** pane.
+![テンプレートのデータ モデル][api-management-template-data]
 
-![Template data model][api-management-template-data]
+前の例には、次の例に示す**テンプレート データ** ウィンドウに表示されたデータから取得され、開発者ポータルに表示される 2 つの製品があります。
 
-In the previous example there are two products displayed in the developer portal that were retrieved from the data displayed in the **Template data** pane, as shown in the following example.
+	{
+		"Paging": {
+			"Page": 1,
+			"PageSize": 10,
+			"TotalItemCount": 2,
+			"ShowAll": false,
+			"PageCount": 1
+		},
+		"Filtering": {
+			"Pattern": null,
+			"Placeholder": "Search products"
+		},
+		"Products": [
+			{
+				"Id": "56ec64c380ed850042060001",
+				"Title": "Starter",
+				"Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",
+				"Terms": "",
+				"ProductState": 1,
+				"AllowMultipleSubscriptions": false,
+				"MultipleSubscriptionsCount": 1
+			},
+			{
+				"Id": "56ec64c380ed850042060002",
+				"Title": "Unlimited",
+				"Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",
+				"Terms": null,
+				"ProductState": 1,
+				"AllowMultipleSubscriptions": false,
+				"MultipleSubscriptionsCount": 1
+			}
+		]
+	}
 
-    {
-        "Paging": {
-            "Page": 1,
-            "PageSize": 10,
-            "TotalItemCount": 2,
-            "ShowAll": false,
-            "PageCount": 1
-        },
-        "Filtering": {
-            "Pattern": null,
-            "Placeholder": "Search products"
-        },
-        "Products": [
-            {
-                "Id": "56ec64c380ed850042060001",
-                "Title": "Starter",
-                "Description": "Subscribers will be able to run 5 calls/minute up to a maximum of 100 calls/week.",
-                "Terms": "",
-                "ProductState": 1,
-                "AllowMultipleSubscriptions": false,
-                "MultipleSubscriptionsCount": 1
-            },
-            {
-                "Id": "56ec64c380ed850042060002",
-                "Title": "Unlimited",
-                "Description": "Subscribers have completely unlimited access to the API. Administrator approval is required.",
-                "Terms": null,
-                "ProductState": 1,
-                "AllowMultipleSubscriptions": false,
-                "MultipleSubscriptionsCount": 1
-            }
-        ]
-    }
+**製品リスト** テンプレートのマークアップは、製品のコレクションを反復処理して各製品の情報とリンクを表示することによってデータを処理して、目的の出力を提供します。マークアップの `<search-control>` 要素と `<page-control>` 要素に注目してください。これらは、ページでの検索コントロールとページング コントロールの表示を制御します。`ProductsStrings|PageTitleProducts` は、ページの `h2` ヘッダー テキストを含むローカライズされた文字列参照です。開発者ポータル テンプレートで使用できる文字列リソース、ページ コントロール、およびアイコンの一覧については、[API Management 開発者ポータル テンプレート リファレンスに関するページ](https://msdn.microsoft.com/library/azure/mt697540.aspx)を参照してください。
 
-The markup in the **Product list** template processes the data to provide the desired output by iterating through the collection of products to display information and a link to each individual product. Note the `<search-control>` and `<page-control>` elements in the markup. These control the display of the searching and paging controls on the page. `ProductsStrings|PageTitleProducts` is a localized string reference that contains the `h2` header text for the page. For a list of string resources, page controls, and icons available for use in developer portal templates, see [API Management developer portal templates reference](https://msdn.microsoft.com/library/azure/mt697540.aspx).
+	<search-control></search-control>
+	<div class="row">
+	    <div class="col-md-9">
+	        <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>
+	    </div>
+	</div>
+	<div class="row">
+	    <div class="col-md-12">
+		{% if products.size > 0 %}
+		<ul class="list-unstyled">
+		{% for product in products %}
+			<li>
+				<h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
+				{{product.description}}
+			</li>	
+		{% endfor %}
+		</ul>
+		<paging-control></paging-control>
+		{% else %}
+		{% localized "CommonResources|NoItemsToDisplay" %}
+		{% endif %}
+		</div>
+	</div>
 
-    <search-control></search-control>
-    <div class="row">
-        <div class="col-md-9">
-            <h2>{% localized "ProductsStrings|PageTitleProducts" %}</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-        {% if products.size > 0 %}
-        <ul class="list-unstyled">
-        {% for product in products %}
-            <li>
-                <h3><a href="/products/{{product.id}}">{{product.title}}</a></h3>
-                {{product.description}}
-            </li>   
-        {% endfor %}
-        </ul>
-        <paging-control></paging-control>
-        {% else %}
-        {% localized "CommonResources|NoItemsToDisplay" %}
-        {% endif %}
-        </div>
-    </div>
+## テンプレートを保存するには
 
-## <a name="to-save-a-template"></a>To save a template
+テンプレートを保存するには、テンプレート エディターで [保存] をクリックします。
 
-To save a template, click save in the template editor.
+![テンプレートを保存する][api-management-save-template]
 
-![Save template][api-management-save-template]
+保存された変更は、発行されるまで、開発者ポータルに反映されません。
 
-Saved changes are not live in the developer portal until they are published.
+## テンプレートを発行するには
 
-## <a name="to-publish-a-template"></a>To publish a template
+保存したテンプレートは、個別に発行することもすべてをまとめて発行することもできます。個々のテンプレートを発行するには、テンプレート エディターで [発行] をクリックします。
 
-Saved templates can be published either individually, or all together. To publish an individual template, click publish in the template editor.
+![テンプレートを発行する][api-management-publish-template]
 
-![Publish template][api-management-publish-template]
+**[はい]** をクリックして確認すると、テンプレートが開発者ポータルで有効になります。
 
-Click **Yes** to confirm and make the template live on the developer portal.
+![発行を確認する][api-management-publish-template-confirm]
 
-![Confirm publish][api-management-publish-template-confirm]
+現在未発行のテンプレートのすべてのバージョンを発行するには、テンプレートの一覧で **[発行]** をクリックします。未発行のテンプレートは、テンプレート名の後ろのアスタリスクによって示されます。この例では、**製品リスト** テンプレートと**製品**テンプレートが発行されます。
 
-To publish all currently unpublished template versions, click **Publish** in the templates list. Unpublished templates are designated by an asterisk following the template name. In this example, the **Product list** and **Product** templates are being published.
+![テンプレートを発行する][api-management-publish-templates]
 
-![Publish templates][api-management-publish-templates]
+**[Publish customizations (カスタマイズの発行)]** をクリックして確認します。
 
-Click **Publish customizations** to confirm.
+![発行を確認する][api-management-publish-customizations]
 
-![Confirm publish][api-management-publish-customizations]
+新しく発行されたテンプレートは、開発者ポータルですぐに有効になります。
 
-Newly published templates are effective immediately in the developer portal.
+## テンプレートを前のバージョンに戻すには
 
-## <a name="to-revert-a-template-to-the-previous-version"></a>To revert a template to the previous version
+テンプレートを前に発行したバージョンに戻すには、テンプレート エディターで [戻す] をクリックします。
 
-To revert a template to the previous published version, click revert in the template editor.
+![テンプレートを元に戻す][api-management-revert-template]
 
-![Revert template][api-management-revert-template]
+**[はい]** をクリックして確定します。
 
-Click **Yes** to confirm.
+![確認][api-management-revert-template-confirm]
 
-![Confirm][api-management-revert-template-confirm]
+元に戻す操作が完了すると、前に発行したバージョンのテンプレートが開発者ポータルで有効になります。
 
-The previously published version of a template is live in the developer portal once the revert operation is complete.
+## テンプレートを既定のバージョンに復元するには
 
-## <a name="to-restore-a-template-to-the-default-version"></a>To restore a template to the default version
+テンプレートを既定のバージョンに復元する操作は、2 段階のプロセスです。まずテンプレートを復元し、その後復元したバージョンを発行する必要があります。
 
-Restoring templates to their default version is a two-step process. First the templates must be restored, and then the restored versions must be published.
+1 つのテンプレートを既定のバージョンに復元するには、テンプレート エディターで [復元] をクリックします。
 
-To restore a single template to the default version click restore in the template editor.
+![テンプレートを元に戻す][api-management-reset-template]
 
-![Revert template][api-management-reset-template]
+**[はい]** をクリックして確定します。
 
-Click **Yes** to confirm.
+![確認][api-management-reset-template-confirm]
 
-![Confirm][api-management-reset-template-confirm]
+すべてのテンプレートを既定のバージョンに復元するには、テンプレートの一覧で **[Restore default templates (既定のテンプレートの復元)]** をクリックします。
 
-To restore all templates to their default versions, click **Restore default templates** on the template list.
+![テンプレートを復元する][api-management-restore-templates]
 
-![Restore templates][api-management-restore-templates]
+その後、復元したテンプレートを、「[テンプレートを発行するには](#to-publish-a-template)」の手順に従って、個別にまたはまとめて発行する必要があります。
 
-The restored templates must then be published individually or all at once by following the steps in [To publish a template](#to-publish-a-template).
+## 開発者ポータル テンプレート リファレンス
 
-## <a name="developer-portal-templates-reference"></a>Developer portal templates reference
+開発者ポータル テンプレート、文字列リソース、アイコン、およびページ コントロールのリファレンス情報については、[API Management 開発者ポータル テンプレート リファレンスに関するページ](https://msdn.microsoft.com/library/azure/mt697540.aspx)を参照してください。
 
-For reference information for developer portal templates, string resources, icons, and page controls, see [API Management developer portal templates reference](https://msdn.microsoft.com/library/azure/mt697540.aspx).
+## ビデオの概要を見る
 
-## <a name="watch-a-video-overview"></a>Watch a video overview
-
-Watch the following video to see how to add a discussion board and ratings to the API and operation pages in the developer portal using templates.
+テンプレートを使用して、開発者ポータルの API ページと操作ページにディスカッション ボードと評価を追加する方法については、次のビデオをご覧ください。
 
 > [AZURE.VIDEO adding-developer-portal-functionality-using-templates-in-azure-api-management]
 
@@ -208,15 +207,4 @@ Watch the following video to see how to add a discussion board and ratings to th
 [api-management-reset-template-confirm]: ./media/api-management-developer-portal-templates/api-management-reset-template-confirm.png
 [api-management-restore-templates]: ./media/api-management-developer-portal-templates/api-management-restore-templates.png
 
-
-
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

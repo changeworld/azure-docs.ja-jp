@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Data types for tables in SQL Data Warehouse | Microsoft Azure"
-   description="Getting started with data types for Azure SQL Data Warehouse tables."
+   pageTitle="SQL Data Warehouse のテーブルのデータ型 | Microsoft Azure"
+   description="Azure SQL Data Warehouse のテーブルのデータ型の概要です。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -16,21 +16,20 @@
    ms.date="06/29/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
-
-# <a name="data-types-for-tables-in-sql-data-warehouse"></a>Data types for tables in SQL Data Warehouse
+# SQL Data Warehouse のテーブルのデータ型
 
 > [AZURE.SELECTOR]
-- [Overview][]
-- [Data Types][]
-- [Distribute][]
+- [概要][]
+- [データ型][]
+- [分散][]
 - [Index][]
 - [Partition][]
-- [Statistics][]
-- [Temporary][]
+- [統計][]
+- [一時][]
 
-SQL Data Warehouse supports the most commonly used data types.  Below is a list of the data types supported by SQL Data Warehouse.  For additional details on data type support, see [create table][].
+SQL Data Warehouse では、最もよく使用されるデータ型がサポートされています。SQL Data Warehouse でサポートされるデータ型の一覧を以下に示します。データ型のサポートの詳細については、[CREATE TABLE][] に関するページを参照してください。
 
-|**Supported Data Types**|||
+|**サポートされているデータ型**|||
 |---|---|---|
 [bigint][]|[decimal][]|[smallint][]|
 [binary][]|[float][]|[smallmoney][]|
@@ -42,34 +41,34 @@ SQL Data Warehouse supports the most commonly used data types.  Below is a list 
 [datetimeoffset][]|[smalldatetime][]|[varchar][]|
 
 
-## <a name="data-type-best-practices"></a>Data type best practices
+## データ型のベスト プラクティス
 
- When defining your column types, using the smallest data type which will support your data will improve query performance. This is especially important for CHAR and VARCHAR columns. If the longest value in a column is 25 characters, then define your column as VARCHAR(25). Avoid defining all character columns to a large default length. In addition, define columns as VARCHAR when that is all that is needed rather than use [NVARCHAR][].  Use NVARCHAR(4000) or VARCHAR(8000) when possible instead of NVARCHAR(MAX) or VARCHAR(MAX).
+ 列の型を定義するときに、データをサポートする最小のデータ型を使用すると、クエリのパフォーマンスが向上します。これは、CHAR および VARCHAR 列の場合に特に重要です。列の最長の値が 25 文字の場合は、列を VARCHAR(25) として定義します。すべての文字列を既定の長さで定義しないようにします。さらに、VARCHAR で済む場合は、[NVARCHAR][] を使用せずに、列を VARCHAR として定義します。可能なときは、NVARCHAR(MAX) または VARCHAR(MAX) の代わりに、NVARCHAR(4000) または VARCHAR(8000) を使用します。
 
-## <a name="polybase-limitation"></a>Polybase limitation
+## Polybase の制限事項
 
-If you are using Polybase to load your tables, define your tables so that the maximum possible row size, including the full length of variable length columns, does not exceed 32,767 bytes.  While you can define a row with variable length data that can exceed this width and load rows with BCP, you will not be able to use Polybase to load this data.  Polybase support for wide rows will be added soon.
+テーブルの読み込みに Polybase を使用している場合は、可変長列の全長を含め、行の最大サイズが 32,767 バイトを超えないように、テーブルを定義します。この幅を超える可能性のある可変長データを含む行を定義し、BCP を含む行を読み込むことはできますが、Polybase を使用して、このデータを完全に読み込むことはできません。行のサイズが大きな Polybase のサポートはまもなく追加されます。
 
-## <a name="unsupported-data-types"></a>Unsupported data types
+## サポートされていないデータ型
 
-If you are migrating your database from another SQL platform like Azure SQL Database, as you migrate, you may encounter some data types that are not supported on SQL Data Warehouse.  Below are unsupported data types as well as some alternatives you can use in place of unsupported data types.
+Azure SQL Database などの別の SQL プラットフォームからデータベースを移行する場合は、一部のデータ型が SQL Data Warehouse でサポートされていない可能性があります。以下に、サポートされていないデータ型とサポートされていないデータ型の代わりに使用できるデータ型をいくつか示します。
 
-|Data Type|Workaround|
+|データ型|対処法|
 |---|---|
-|[geometry][]|[varbinary][]|
-|[geography][]|[varbinary][]|
+|[ジオメトリ][]|[varbinary][]|
+|[地理][]|[varbinary][]|
 |[hierarchyid][]|[nvarchar][](4000)|
 |[image][ntext,text,image]|[varbinary][]|
 |[text][ntext,text,image]|[varchar][]|
 |[ntext][ntext,text,image]|[nvarchar][]|
-|[sql_variant][]|Split column into several strongly typed columns.|
-|[table][]|Convert to temporary tables.|
-|[timestamp][]|Rework code to use [datetime2][] and `CURRENT_TIMESTAMP` function.  Only constants are supported as defaults, therefore current_timestamp cannot be defined as a default constraint. If you need to migrate row version values from a timestamp typed column then use [BINARY][](8) or [VARBINARY][BINARY](8) for NOT NULL or NULL row version values.|
+|[sql\_variant][]|列を厳密に型指定された複数の列に分割します。|
+|[table][]|一時テーブルに変換します。|
+|[timestamp][]|[datetime2][] と `CURRENT_TIMESTAMP` 関数を使用するようにコードを再作成します。定数のみが既定値としてサポートされているため、current\_timestamp を既定の制約として定義できません。timestamp で型指定された列から行バージョンの値を移行する必要がある場合は、行バージョンの値 NOT NULL または NULL に [BINARY][](8) または [VARBINARY][BINARY](8) を使用します。|
 |[xml][]|[varchar][]|
-|[user defined types][]|convert back to their native types where possible|
-|default values|default values support literals and constants only.  Non-deterministic expressions or functions, such as `GETDATE()` or `CURRENT_TIMESTAMP`, are not supported.|
+|[ユーザー定義型][]|可能な限り、ネイティブ型に変換します。|
+|既定値|既定値では、リテラルと定数のみがサポートされます。`GETDATE()` や `CURRENT_TIMESTAMP` など、不明確な式または関数はサポートされていません。|
 
-The below SQL can be run on your current SQL database to identify columns which are not be supported by Azure SQL Data Warehouse:
+Azure SQL Data Warehouse でサポートされていない列を識別するために、現在の SQL データベースで以下の SQL を実行できます。
 
 ```sql
 SELECT  t.[name], c.[name], c.[system_type_id], c.[user_type_id], y.[is_user_defined], y.[name]
@@ -80,21 +79,25 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
  AND  y.[is_user_defined] = 1;
 ```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn more, see the articles on [Table Overview][Overview], [Distributing a Table][Distribute], [Indexing a Table][Index],  [Partitioning a Table][Partition], [Maintaining Table Statistics][Statistics] and [Temporary Tables][Temporary].  For more about best practices, see [SQL Data Warehouse Best Practices][].
+詳細について、[テーブルの概要][Overview]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルのパーティション分割][Partition]、[テーブル統計の更新][Statistics]、[一時テーブル][Temporary]に関する各記事を参照します。ベスト プラクティスの詳細について、[SQL Data Warehouse のベスト プラクティス][]に関するページを参照します。
 
 <!--Image references-->
 
 <!--Article references-->
 [Overview]: ./sql-data-warehouse-tables-overview.md
-[Data Types]: ./sql-data-warehouse-tables-data-types.md
+[概要]: ./sql-data-warehouse-tables-overview.md
+[データ型]: ./sql-data-warehouse-tables-data-types.md
 [Distribute]: ./sql-data-warehouse-tables-distribute.md
+[分散]: ./sql-data-warehouse-tables-distribute.md
 [Index]: ./sql-data-warehouse-tables-index.md
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
+[一時]: ./sql-data-warehouse-tables-temporary.md
+[SQL Data Warehouse のベスト プラクティス]: ./sql-data-warehouse-best-practices.md
 
 <!--MSDN references-->
 
@@ -110,8 +113,8 @@ To learn more, see the articles on [Table Overview][Overview], [Distributing a T
 [datetimeoffset]: https://msdn.microsoft.com/library/bb630289.aspx
 [decimal]: https://msdn.microsoft.com/library/ms187746.aspx
 [float]: https://msdn.microsoft.com/library/ms173773.aspx
-[geometry]: https://msdn.microsoft.com/library/cc280487.aspx
-[geography]: https://msdn.microsoft.com/library/cc280766.aspx
+[ジオメトリ]: https://msdn.microsoft.com/library/cc280487.aspx
+[地理]: https://msdn.microsoft.com/library/cc280766.aspx
 [hierarchyid]: https://msdn.microsoft.com/library/bb677290.aspx
 [int]: https://msdn.microsoft.com/library/ms187745.aspx
 [money]: https://msdn.microsoft.com/library/ms179882.aspx
@@ -122,7 +125,7 @@ To learn more, see the articles on [Table Overview][Overview], [Distributing a T
 [smalldatetime]: https://msdn.microsoft.com/library/ms182418.aspx
 [smallint]: https://msdn.microsoft.com/library/ms187745.aspx
 [smallmoney]: https://msdn.microsoft.com/library/ms179882.aspx
-[sql_variant]: https://msdn.microsoft.com/library/ms173829.aspx
+[sql\_variant]: https://msdn.microsoft.com/library/ms173829.aspx
 [sysname]: https://msdn.microsoft.com/library/ms186939.aspx
 [table]: https://msdn.microsoft.com/library/ms175010.aspx
 [time]: https://msdn.microsoft.com/library/bb677243.aspx
@@ -132,10 +135,6 @@ To learn more, see the articles on [Table Overview][Overview], [Distributing a T
 [varbinary]: https://msdn.microsoft.com/library/ms188362.aspx
 [varchar]: https://msdn.microsoft.com/library/ms186939.aspx
 [xml]: https://msdn.microsoft.com/library/ms187339.aspx
-[user defined types]: https://msdn.microsoft.com/library/ms131694.aspx
+[ユーザー定義型]: https://msdn.microsoft.com/library/ms131694.aspx
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

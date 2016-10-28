@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create an index for documents in multiple languages in Azure Search | Microsoft Azure | Hosted cloud search service"
-   description=" Azure Search supports 56 languages, leveraging language analyzers from Lucene and Natural Language Processing technology from Microsoft."
+   pageTitle="Azure Search でドキュメントのインデックスを複数の言語で作成する | Microsoft Azure | ホスト型クラウド検索サービス"
+   description=" Azure Search では 56 の言語がサポートされており、Lucene の言語アナライザーや Microsoft の自然言語処理テクノロジが利用されています。"
    services="search"
    documentationCenter=""
    authors="yahnoosh"
@@ -16,57 +16,53 @@
    ms.date="07/14/2016"
    ms.author="jlembicz"/>
 
-
-# <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>Create an index for documents in multiple languages in Azure Search
+# Azure Search でドキュメントのインデックスを複数の言語で作成する
 > [AZURE.SELECTOR]
-- [Portal](search-language-support.md)
-- [REST](https://msdn.microsoft.com/library/azure/dn879793.aspx)
+- [ポータル](search-language-support.md)
+- [REST ()](https://msdn.microsoft.com/library/azure/dn879793.aspx)
 - [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.search.models.analyzername.aspx)
 
-Unleashing the power of language analyzers is as easy as setting one property on a searchable field in the index definition. Now you can do this step in the portal.
+インデックス定義内で検索可能フィールドにプロパティを 1 つ設定するのと同じくらい簡単に、言語アナライザーの機能を最大限に引き出すことができます。この手順はポータルで実行できるようになりました。
 
-Below are screenshots of the Azure Portal blades for Azure Search that allow users to define an index schema. From this blade, users can create all of the fields and set the analyzer property for each of them.
+ユーザーがインデックス スキーマを定義できる、Azure ポータルの Azure Search 用のブレードのスクリーンショットを以下に示します。ユーザーは、このブレードからすべてのフィールドを作成し、各フィールドのアナライザー プロパティを設定できます。
 
-> [AZURE.IMPORTANT] You can only set a language analyzer during field definition, as in when creating a new index from the ground up, or when adding a new field to an existing index. Make sure you fully specify all attributes, including the analyzer, while creating the field. You won't be able to edit the attributes or change the analyzer type once you save your changes.
+> [AZURE.IMPORTANT] 新しいインデックスを一から作成する場合や既存のインデックスに新しいフィールドを追加する場合と同様、フィールドの定義中に設定できる言語アナライザーは 1 つだけです。フィールドの作成中に、アナライザーを含むすべての属性を完全に指定するようにしてください。変更を保存すると、属性を編集したり、アナライザーの種類を変更したりできなくなります。
 
-## <a name="define-a-new-field-definition"></a>Define a new field definition
+## 新しいフィールド定義を定義する
 
-1. Sign in to the [Azure Portal](https://portal.azure.com) and open the service blade of your search service.
-2. Click **Add index** in the command bar at the top of the service dashboard to start a new index, or open an existing index to set an analyzer on new fields you're adding to an existing index.
-3. The Fields blade appears, giving you options for defining the schema of the index, including the Analyzer tab used for choosing a language analyzer.
-4. In Fields, start a field definition by providing a name, choosing the data type, and setting  attributes to mark the field as full text searchable, retrievable in search results, usable in facet navigation structures, sortable, and so forth. 
-5. Before moving on to the next field, open the **Analyzer** tab. 
+1. [Azure ポータル](https://portal.azure.com)にサインインし、検索サービスのサービス ブレードを開きます。
+2. サービス ダッシュボードの上部にあるコマンド バーの **[インデックスの追加]** をクリックして新しいインデックスを開始するか、既存のインデックスを開いて、既存のインデックスに追加する新しいフィールドでアナライザーを設定します。
+3. [フィールド] ブレードが表示され、言語アナライザーの選択に使用する [アナライザー] タブなど、インデックスのスキーマを定義するためのオプションが表示されます。
+4. [フィールド] ブレードで、フィールドの定義を開始します。名前の指定、データ型の選択、および属性の設定を行い、フルテキスト検索可能、検索結果で取得可能、ファセット ナビゲーション構造で使用可能、並べ替え可能などとしてフィールドにマークします。
+5. 次のフィールドに移動する前に、**[アナライザー]** タブを開きます。
 
    
-![][1]
-*To select an analyzer, click the Analyzer tab on the Fields blade*
+![][1] *アナライザーを選択するには、[フィールド] ブレードの [アナライザー] タブをクリックする*
 
-## <a name="choose-an-analyzer"></a>Choose an analyzer
+## アナライザーを選択する
 
-6. Scroll to find the field you are defining. 
-7. If you haven't marked the field as searchable, click the checkbox now to mark it as **Searchable**.
-8. Click the Analyzer area to display the list of available analyzers.
-9. Choose the analyzer you want to use.
+6. 定義するフィールドが見つかるまでスクロールします。
+7. 検索可能としてフィールドをマークしていない場合は、ここでチェック ボックスをオンにし、フィールドを**検索可能**としてマークします。
+8. [アナライザー] 領域をクリックすると、使用可能なアナライザーの一覧が表示されます。
+9. 使用するアナライザーを選択します。
 
-![][2]
-*Select one of the supported analyzers for each field*
+![][2] *フィールドごとにサポートされているアナライザーを 1 つ選択する*
 
-By default, all searchable fields use the [Standard Lucene analyzer](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) which is language agnostic. To view the full list of supported analyzers, see [Language Support in Azure Search](https://msdn.microsoft.com/library/azure/dn879793.aspx).
+既定では、検索可能なすべてのフィールドで、言語に依存しない[標準の Lucene アナライザー](http://lucene.apache.org/core/4_10_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)を使用します。サポートされているアナライザーの詳細な一覧を参照するには、[Azure Search の言語サポート](https://msdn.microsoft.com/library/azure/dn879793.aspx)に関するページを参照してください。
 
-Once the language analyzer is selected for a field, it will be used with each indexing and search request for that field. When a query is issued against multiple fields using different analyzers, the query will be processed independently by the right analyzers for each field.
+フィールドに言語アナライザーが選択されると、そのフィールドのインデックス作成と検索要求それぞれに、選択した言語アナライザーが使用されます。さまざまなアナライザーを使用して複数のフィールドに対してクエリを実行すると、そのクエリは各フィールドに適切なアナライザーによって処理されます。
 
-Many web and mobile applications serve users around the globe using different languages. It’s possible to define an index for a scenario like this by creating a field for each language supported.
+多くの Web アプリケーションやモバイル アプリケーションは、さまざまな言語を使用して世界中のユーザーに提供されます。このようなシナリオでは、サポートされている言語ごとにフィールドを作成してインデックスを定義できます。
 
-![][3]
-*Index definition with a description field for each language supported*
+![][3] *サポートされている言語ごとに説明フィールドが用意されたインデックスの定義*
 
-If the language of the agent issuing a query is known, a search request can be scoped to a specific field using the **searchFields** query parameter. The following query will be issued only against the description in Polish:
+クエリを発行するエージェントの言語がわかっている場合は、**searchFields** クエリ パラメーターを使用して、検索要求を特定のフィールドに制限できます。次のクエリは、ポーランド語の説明に対してのみ発行されます。
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=darmowy&searchFields=description_pl&api-version=2015-02-28`
 
-You can query your index from the portal, using **Search explorer** to paste in a query similar to the one shown above. Search explorer is available from the command bar in the service blade. See [Query your Azure Search index in the portal](search-explorer.md) for details.
+ポータルでは、インデックスをクエリし、**検索エクスプローラー**を使用して上記のようなクエリに貼り付けることができます。検索エクスプローラーは、サービス ブレードのコマンド バーから使用できます。詳細については、「[Query your Azure Search index in the portal (ポータルでの Azure Search インデックスのクエリ)](search-explorer.md)」を参照してください。
 
-Sometimes the language of the agent issuing a query is not known, in which case the query can be issued against all fields simultaneously. If needed, preference for results in a certain language can be defined using [scoring profiles](https://msdn.microsoft.com/library/azure/dn798928.aspx). In the example below, matches found in the description in English will be scored higher relative to matches in Polish and French:
+クエリを発行するエージェントの言語が不明な場合もありますが、その場合は、すべてのフィールドに対して同時にクエリを発行できます。必要に応じて、[スコアリング プロファイル](https://msdn.microsoft.com/library/azure/dn798928.aspx)を使用すると、特定言語の結果に対する優先度を定義できます。次の例では、英語の説明で見つかった一致項目には、ポーランド語とフランス語の一致項目に比べて高いスコアが付けられます。
 
     "scoringProfiles": [
       {
@@ -79,15 +75,11 @@ Sometimes the language of the agent issuing a query is not known, in which case 
 
 `https://[service name].search.windows.net/indexes/[index name]/docs?search=Microsoft&scoringProfile=englishFirst&api-version=2015-02-28`
 
-If you're a .NET developer, note that you can configure language analyzers using the [Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search). The latest release includes support for the Microsoft language analyzers as well.
+.NET 開発者の場合は、[Azure Search .NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Search) を使用して言語アナライザーを構成できます。最新リリースには、Microsoft 言語アナライザーのサポートも含まれています。
 
 <!-- Image References -->
 [1]: ./media/search-language-support/AnalyzerTab.png
 [2]: ./media/search-language-support/SelectAnalyzer.png
 [3]: ./media/search-language-support/IndexDefinition.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

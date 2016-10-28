@@ -3,6 +3,4 @@
 - [PowerShell](virtual-networks-static-private-ip-classic-ps.md)
 - [Azure CLI](virtual-networks-static-private-ip-classic-cli.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0204_2016-->

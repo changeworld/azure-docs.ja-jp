@@ -1,67 +1,61 @@
 <properties
-    pageTitle="Azure Active Directory hybrid identity design considerations - determine multi-factor authentication requirements"
-    description="With Conditional access control, Azure Active Directory checks the specific conditions you pick when authenticating the user and before allowing access to the application. Once those conditions are met, the user is authenticated and allowed access to the application."
-    documentationCenter=""
-    services="active-directory"
-    authors="femila"
-    manager="billmath"
-    editor=""/>
+	pageTitle="Azure Active Directory ハイブリッド ID の設計上の考慮事項 - 多要素認証要件の決定"
+	description="条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
+	documentationCenter=""
+	services="active-directory"
+	authors="femila"
+	manager="billmath"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="article"
+	ms.service="active-directory"
+	ms.devlang="na"
+	ms.topic="article"
     ms.tgt_pltfrm="na"
     ms.workload="identity" 
-    ms.date="08/08/2016"
-    ms.author="billmath"/>
+	ms.date="08/08/2016"
+	ms.author="billmath"/>
 
+# ハイブリッド ID ソリューションの多要素認証要件の決定
 
-# <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Determine multi-factor authentication requirements for your hybrid identity solution
-
-In this world of mobility, with users accessing data and applications in the cloud and from any device, securing this information has become paramount.  Every day there is a new headline about a security breach.  Although, there is no guarantee against such breaches, multi-factor authentication, provides an additional layer of security to help prevent these breaches.
-Start by evaluating the organizations requirements for multi-factor authentication. That is, what is the organization trying to secure.  This evaluation is important to define the technical requirements for setting up and enabling the organizations users for multi-factor authentication.
+ユーザーがクラウドのデータとアプリケーションにあらゆるデバイスからアクセスするこのモバイルの世界では、情報を守ることが最重要事項になりました。毎日、セキュリティ違反に関する話題がニュースになっています。そのような違反に対抗できる保証はありませんが、多要素認証はセキュリティの層を厚くし、違反防止に役立ちます。最初に多要素認証の組織要件を評価します。要件とは、つまり、組織が守ろうとするものです。多要素認証を設定し、組織のユーザーに使用させるための技術的要件を決める際に、この評価は重要となります。
 
 >[AZURE.NOTE]
-If you are not familiar with MFA and what it does, it is strongly recommended that you read the article [What is Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md) prior to continue reading this section.
+MFA とその機能についてよく知らない場合、このセクションを読む前に [Azure Multi-Factor Authentication の概要](../multi-factor-authentication/multi-factor-authentication.md)に関する記事を読むことが推奨されます。
 
-Make sure to answer the following:
+以下に回答してください。
 
-- Is your company trying to secure Microsoft apps? 
-- How these apps are published?
-- Does your company provide remote access to allow employees to access on-premises apps?
+- 会社は Microsoft アプリを保護する予定ですか。
+- そのアプリはどのような方法で公開されていますか。
+- 会社は社員がリモート アクセスでオンプレミス アプリにアクセスできるようにしていますか。
 
-If yes, what type of remote access?You also need to evaluate where the users who are accessing these applications will be located. This evaluation is another important step to define the proper multi-factor authentication strategy. Make sure to answer the following questions:
+アクセスできるようにしている場合、それはどのような種類のリモート アクセスですか。また、アプリにアクセスするユーザーの所在地を評価する必要があります。この評価は、適切な多要素認証戦略を決定する際に重要なもう 1 つのステップとなります。次のチェック項目に回答してください。
 
-- Where are the users going to be located?
-- Can they be located anywhere?
-- Does your company want to establish restrictions according to the user’s location?
+- ユーザーはどのような場所からアクセスしますか。
+- どこからでもアクセスしますか。
+- 会社はユーザーの所在に制約を与える予定ですか。
 
-Once you understand these requirements, it is important to also evaluate the user’s requirements for multi-factor authentication. This evaluation is important because it will define the requirements for rolling out multi-factor authentication. Make sure to answer the following questions:
+以上の要件を理解したら、次に行う重要な作業は多要素認証のユーザーの要件も評価することです。この評価は、多要素認証の展開要件を決定するので重要です。次のチェック項目に回答してください。
 
-- Are the users familiar with multi-factor authentication?
-- Will some uses be required to provide additional authentication?  
- - If yes, all the time, when coming from external networks, or accessing specific applications, or under other conditions?
-- Will the users require training on how to setup and implement multi-factor authentication?
-- What are the key scenarios that your company wants to enable multi-factor authentication for their users?
+- ユーザーは多要素認証についてよく知っていますか。
+- 一部のユーザーには追加認証が必要になりますか。
+ - 必要になる場合、それは常にですか。外部ネットワークからアクセスしたときですか。特定のアプリにアクセスしたときですか。あるいは、他に条件がありますか。
+- 多要素認証の設定方法と実装方法を学習するためのトレーニングがユーザーに求められますか。
+- 会社がユーザー用の多要素認証を有効にする主なシナリオはどのようなものですか。
 
-After answering the previous questions, you will be able to understand if there are multi-factor authentication already implemented on-premises. This evaluation is important to define the technical requirements for setting up and enabling the organizations users for multi-factor authentication. Make sure to answer the following questions:
+以上の質問に答えると、多要素認証がオンプレミスで既に実装されているかどうかがわかります。多要素認証を設定し、組織のユーザーに使用させるための技術的要件を決める際に、この評価は重要となります。次のチェック項目に回答してください。
 
-- Does your company need to protect privileged accounts with MFA?
-- Does your company need to enable MFA for certain application for compliance reasons?
-- Does your company need to enable MFA for all eligible users of these application or only administrators?
-- Do you need have MFA always enabled or only when the users are logged outside of your corporate network?
-
-
-## <a name="next-steps"></a>Next steps
-[Define a hybrid identity adoption strategy](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
+- 会社は MFA で特権アカウントを保護する必要がありますか。
+- 会社はコンプライアンス上の理由から特定のアプリに対して MFA を有効にする必要がありますか。
+- 会社はアプリのすべての有資格ユーザーに対して MFA を有効にする必要がありますか。それとも、管理者だけですか。
+- MFA を常に有効にする必要がありますか。それとも、ユーザーが企業ネットワークの外からログインしたときだけですか。
 
 
-## <a name="see-also"></a>See also
-[Design considerations overview](active-directory-hybrid-identity-design-considerations-overview.md)
+## 次のステップ
+[ハイブリッド ID 導入戦略の定義](active-directory-hybrid-identity-design-considerations-identity-adoption-strategy.md)
 
 
+## 関連項目
+[設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

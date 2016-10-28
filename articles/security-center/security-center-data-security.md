@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Center Data Security | Microsoft Azure"
-   description="This document explains how data is managed and safeguarded in Azure Security Center."
+   pageTitle="Azure Security Center のデータ セキュリティ | Microsoft Azure"
+   description="このドキュメントでは、Azure Security Center でデータがどのように管理および保護されているかについて説明します。"
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,55 +16,50 @@
    ms.date="08/08/2016"
    ms.author="yurid"/>
 
+# Azure Security Center のデータ セキュリティ
+Azure Security Center では、脅威に対する防御と検出、対応を支援するために、構成情報、メタデータ、イベント ログ、クラッシュ ダンプ ファイルなど、Azure リソースに関するさまざまなデータを収集、処理しています。このデータのプライバシーとセキュリティは厳密に保護されています。Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
 
-# <a name="azure-security-center-data-security"></a>Azure Security Center Data Security
-To help customers prevent, detect, and respond to threats, Azure Security Center collects and processes data about your Azure resources, including configuration information, metadata, event logs, crash dump files, and more. We make strong commitments to protect the privacy and security of this data. Microsoft adheres to strict compliance and security guidelines—from coding to operating a service. 
+この記事では、Azure Security Center でデータがどのように管理および保護されているかについて説明します。
 
-This article explains how data is managed and safeguarded in Azure Security Center.
+## データ ソース
+Azure Security Center は、以下のソースのデータを分析します。
 
-## <a name="data-sources"></a>Data Sources
-Azure Security Center analyzes data from the following sources:
+- Azure サービス: デプロイされた Azure サービスの構成についての情報を、サービスのリソース プロバイダーと通信して読み取ります。
+- ネットワーク トラフィック: 送信元/送信先 IP/ポート、パケット サイズ、ネットワーク プロトコルなど、Microsoft のインフラストラクチャからサンプリングされたネットワーク トラフィック メタデータを読み取ります。
+- パートナー ソリューション: ファイアウォールやマルウェア対策ソリューションなど、統合されたパートナー ソリューションからセキュリティの警告を収集します。このデータは、現時米国にある Azure Security Center ストレージに格納されます。
+- 仮想マシン: Azure Security Center は、データ収集エージェントを使用して、仮想マシンから構成情報とセキュリティ イベントについての情報 (Windows のイベントおよび監査ログ、IIS ログ、syslog メッセージ、クラッシュ ダンプ ファイルなど) を収集できます。詳細については、後のデータ収集の管理に関するセクションを参照してください。
 
-- Azure Services: Reads information about the configuration of Azure services you have deployed by communicating with that service’s resource provider.
-- Network Traffic: Reads sampled network traffic metadata from Microsoft’s infrastructure, such as source/destination IP/port, packet size, and network protocol.
-- Partner Solutions: Collects security alerts from integrated partner solutions, such as firewalls and antimalware solutions. This data is stored in Azure Security Center storage, currently located in the United States.
-- Your Virtual Machines: Azure Security Center can collect configuration information and information about security events, such as Windows event and audit logs, IIS logs, syslog messages, and crash dump files from your virtual machines using data collection agents. See the “Managing Data Collection” section below for additional details.  
+さらに、セキュリティ警告、推奨事項、およびセキュリティの正常性状態に関する情報が、現在米国にある Azure Security Center ストレージに格納されます。この情報には、仮想マシンから収集された関連の構成情報やセキュリティ イベントが含まれる場合があります。これらは、セキュリティ警告、推奨事項、またはセキュリティの正常性状態をユーザーに提供するために必要な情報です。
 
-In addition, information about security alerts, recommendations, and security health status is stored in Azure Security Center storage, currently located in the United States. This information may include related configuration information and security events collected from your virtual machines as needed to provide you with the security alert, recommendation, or security health status.
+## データ保護
+**データの分離**: データはサービス全体を通じて、各コンポーネントに論理的に分割されて保存されます。すべてのデータは組織ごとにタグ付けされます。このタグ付けはデータのライフ サイクルにおいて継続され、サービスの各層で強制されます。さらに、仮想マシンから収集されたデータは、ストレージ アカウントに格納されます。
 
-## <a name="data-protection"></a>Data Protection
-**Data segregation**: Data is kept logically separate on each component throughout the service. All data is tagged per organization. This tagging persists throughout the data lifecycle, and it is enforced at each layer of the service. In addition, data collected from your virtual machines is stored in your storage account(s).
+**データ アクセス**: セキュリティの推奨事項を提供したり、潜在的なセキュリティの脅威を調査したりするために、Microsoft の担当者は Azure サービスによって収集または分析された情報 (クラッシュ ダンプ ファイルなど) にアクセスする場合があります。クラッシュ ダンプ ファイルとプロセス作成イベントには、仮想マシンにある顧客データまたは個人データが意図せずに含まれる場合があります。Microsoft は、[Microsoft オンライン サービスの使用条件](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)と[プライバシーに関する声明](https://www.microsoft.com/privacystatement/ja-JP/OnlineServices/Default.aspx)を遵守しています。これらの文書には、Microsoft が宣伝や他の商業上の目的のために顧客データを使用したり、そのデータから情報を取り出したりすることはないと記載されています。ユーザーに Azure サービスを提供するため、およびそれに準じた目的のためにだけ、顧客データを使用します。顧客データに対するすべての権限は、お客様が保持します。
 
-**Data access**: In order to provide security recommendations and investigate potential security threats, Microsoft personnel may access information collected or analyzed by Azure services, including crash dump files. Crash dump files and process creation events may unintentionally include Customer Data or personal data from your virtual machines. We adhere to the [Microsoft Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) and [Privacy Statement](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx), which state that Microsoft will not use Customer Data or derive information from it for any advertising or similar commercial purposes. We only use Customer Data as needed to provide you with Azure services, including purposes compatible with providing those services. You retain all rights to Customer Data.
+**データの使用**: Microsoft は、防止と検出の機能を強化するために、複数のテナントにわたって見られるパターンおよび脅威インテリジェンスを使用します。その際に、[プライバシーに関する声明](https://www.microsoft.com/privacystatement/ja-JP/OnlineServices/Default.aspx)で説明されている誓約に従います。
 
-**Data use**: Microsoft uses patterns and threat intelligence seen across multiple tenants to enhance our prevention and detection capabilities; we do so in accordance with the privacy commitments described in our [Privacy Statement](https://www.microsoft.com/privacystatement/en-us/OnlineServices/Default.aspx).
+**データの場所**: ストレージ アカウントは、仮想マシンが実行されているリージョンごとに指定されます。そうすることで、データの収集元となる仮想マシンと同じリージョンにデータを格納することができます。このデータは、クラッシュ ダンプ ファイルを含んでおり、ストレージ アカウントに永続的に格納されます。サービスは、現在米国にある Azure Security Center ストレージのセキュリティ警告 (統合されたパートナー ソリューションからの警告も含む)、推奨事項、およびセキュリティの正常性状態に関する情報も格納します。
 
-**Data location**: A storage account is specified for each region where virtual machines are running. This enables you to store data in the same region as the virtual machine from which the data is collected. This data, including crash dump files, will be persistently stored in your storage account. The service also stores information about security alerts, including alerts from integrated partner solutions, recommendations, and security health status in Azure Security Center storage, currently located in the United States.
+## 仮想マシンからのデータ収集の管理
 
-## <a name="managing-data-collection-from-virtual-machines"></a>Managing Data Collection from Virtual Machines
+Azure Security Center を有効にすると、各サブスクリプションのデータ収集が有効になります。Azure Security Center ダッシュボードの [セキュリティ ポリシー] セクションで、データ収集を無効にすることができます。データ収集が有効になっている場合、Azure Security Center は、サポートされている既存の全仮想マシンと新規に作成される仮想マシンに、Azure Monitoring Agent をプロビジョニングします。Azure セキュリティ監視拡張機能は、さまざまなセキュリティ関連の構成をスキャンして、[Windows イベント トレーシング](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) トレースにイベント化します。さらに、オペレーティング システムは、マシンの実行中にイベント ログ イベントを発生させます。このようなデータの例として、オペレーティング システムの種類とバージョン、オペレーティング システムのログ (Windows イベント ログ)、実行中のプロセス、コンピューター名、IP アドレス、ログイン ユーザー、テナント ID などがあります。Azure Monitoring Agent は、イベント ログ エントリと ETW トレースを読み取り、分析のためにそれらをストレージ アカウントにコピーします。
 
-When you choose to enable Azure Security Center, data collection is turned on for each of your subscriptions. You can turn off data collection in the “Security Policy” section of your Azure Security Center Dashboard. When Data collection is turned on, Azure Security Center provisions the Azure Monitoring Agent on all existing supported virtual machines and any new ones that are created. The Azure Security Monitoring extension scans for various security related configurations and events it into [Event Tracing for Windows](https://msdn.microsoft.com/library/windows/desktop/bb968803.aspx) (ETW) traces. In addition, the operating system will raise event log events during the course of running the machine. Examples of such data are: operating system type and version, operating system logs (Windows event logs), running processes, machine name, IP addresses, logged in user, and tenant ID. The Azure Monitoring Agent reads event log entries and ETW traces and copies them to your storage account for analysis. 
+仮想マシンを実行している各リージョンに対して、ストレージ アカウントが指定されます。これに、同じリージョン内の仮想マシンから収集されたデータが格納されます。これにより、プライバシーとデータ主権目的で、同じ地域にデータを保持することが容易になります。Azure Security Center ダッシュボードの [セキュリティ ポリシー] セクションで、各リージョンのストレージ アカウントを構成することができます。
 
-A storage account is specified for each region in which you have virtual machines running, where data collected from virtual machines in that same region is stored. This makes it easy for you to keep data in the same geographic area for privacy and data sovereignty purposes. You can configure storage accounts for each region in the “Security Policy” section of your Azure Security Center Dashboard.
+Azure Monitoring Agent は、クラッシュ ダンプ ファイルもストレージ アカウントにコピーします。Azure Security Center は、クラッシュ ダンプ ファイルの一時的なコピーを収集し、悪用の試行と成功した侵害の証拠がないか分析します。Azure Security Center は、この分析をストレージ アカウントと同じ地理的リージョン内で行い、分析が完了すると、一時的なコピーを削除します。
 
-The Azure Monitoring Agent also copies crash dump files to your storage account.  Azure Security Center collects ephemeral copies of your crash dump files and analyzes them for evidence of exploit attempts and successful compromises.  Azure Security Center performs this analysis within the same geographic region as the storage account, and deletes the ephemeral copies when analysis is complete.
-
-You can disable data collection from virtual machines at any time, which will remove any Monitoring Agents previously installed by Azure Security Center.
-
-
-## <a name="next-steps"></a>Next steps
-
-In this document, you learned how data is managed and safeguarded in Azure Security Center. To learn more about Azure Security Center, see:
-
-- [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) — Learn how to plan and understand the design considerations to adopt Azure Security Center.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md) — Learn how to monitor the health of your Azure resources
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) — Learn how to manage and respond to security alerts
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) — Learn how to monitor the health status of your partner solutions.
-- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) — Find blog posts about Azure security and compliance
+仮想マシンからのデータの収集はいつでも無効にすることができます。無効にすると、前に Azure Security Center によってインストールされた Monitoring Agent がすべて削除されます。
 
 
+## 次のステップ
 
-<!--HONumber=Oct16_HO2-->
+この記事では、Azure Security Center でデータがどのように管理および保護されているかについて説明しました。Azure Security Center の詳細については、以下の記事を参照してください。
 
+- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 -- Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
+<!---HONumber=AcomDC_0817_2016-->

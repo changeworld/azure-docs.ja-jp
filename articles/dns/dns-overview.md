@@ -1,10 +1,10 @@
-<properties
-   pageTitle="Overview of Azure DNS | Microsoft Azure"
-   description="Overview of Azure DNS hosting services on Microsoft Azure. Host your domain on Microsoft Azure."
-   services="dns"
-   documentationCenter="na"
-   authors="sdwheeler"
-   manager="carmonm"
+<properties 
+   pageTitle="Azure DNS の概要 | Microsoft Azure" 
+   description="Microsoft Azure の Azure DNS ホスティング サービスの概要Microsoft Azure でドメインをホストします。" 
+   services="dns" 
+   documentationCenter="na" 
+   authors="cherylmc" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -12,35 +12,30 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
+   ms.workload="infrastructure-services" 
    ms.date="08/16/2016"
-   ms.author="sewhee"/>
+   ms.author="cherylmc"/>
+
+# Azure DNS の概要
 
 
-# <a name="azure-dns-overview"></a>Azure DNS Overview
+ドメイン ネーム システム (DNS) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
 
 
-The Domain Name System, or DNS, is responsible for translating (or resolving) a website or service name to its IP address. Azure DNS is a hosting service for DNS domains, providing name resolution using Microsoft Azure infrastructure. By hosting your domains in Azure, you can manage your DNS records using the same credentials, APIs, tools, and billing as your other Azure services.
+Azure DNS 内の DNS ドメインは、DNS ネーム サーバーの Azure のグローバル ネットワーク上でホストされます。エニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。これによって、ドメインには高速なパフォーマンスと高可用性の両方が提供されます。
+
+この Azure DNS サービスは、Azure Resource Manager (ARM) に基づいています。そのため、ロールに基づくアクセス制御、監査ログ、リソース ロックなどの ARM 機能を利用できます。ドメインとレコードは、Azure ポータル、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。DNS の自動管理を必要とするアプリケーションは、REST API および SDK を使用してサービスと統合できます。
+
+Azure DNS では、現在、ドメイン名の購入はサポートされていません。ドメインを購入する場合、サードパーティのドメイン名レジストラーを利用する必要があります。レジストラーは、通常、少額の年間料金を請求します。購入後、ドメインを Azure DNS でホストし、DNS レコードを管理できます。詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
 
 
-DNS domains in Azure DNS are hosted on Azure’s global network of DNS name servers. We use Anycast networking so that each DNS query is answered by the closest available DNS server. This provides both fast performance and high availability for your domain.
+## 次のステップ
 
-The Azure DNS service is based on Azure Resource Manager (ARM). As such, it benefits from ARM features such as role-based access control, audit logs, and resource locking. Your domains and records can be managed via the Azure portal, Azure PowerShell cmdlets, and the cross-platform Azure CLI. Applications requiring automatic DNS management can integrate with the service via the REST API and SDKs.
-
-Azure DNS does not currently support purchasing of domain names. If you want to purchase domains, you'll need to use a third-party domain name registrar. The registrar will typically charge a small annual fee. The domains can then be hosted in Azure DNS for management of DNS records. See [Delegate a Domain to Azure DNS](dns-domain-delegation.md) for details.
-
-
-## <a name="next-steps"></a>Next steps
-
-[Create a DNS zone](dns-getstarted-create-dnszone-portal.md)
-
-
+[DNS ゾーンの作成](dns-getstarted-create-dnszone-portal.md)
 
 
 
 
+ 
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

@@ -4,7 +4,4 @@
 - [Create features for data in SQL Server](../articles/machine-learning/machine-learning-data-science-create-features-sql-server.md)
 - [Create features for data in an Hadoop cluster using Hive queries](../articles/machine-learning/machine-learning-data-science-create-features-hive.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO4-->

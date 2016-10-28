@@ -1,57 +1,53 @@
 <properties
-    pageTitle="Why DevTest Labs? | Microsoft Azure"
-    description="Learn how DevTest Labs can make it easy to create, manage, and monitor Azure virtual machines"
-    services="devtest-lab,virtual-machines"
-    documentationCenter="na"
-    authors="tomarcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="DevTest Labs を使用する理由 | Microsoft Azure"
+	description="Azure Virtual Machines を簡単に作成、管理、監視するために DevTest ラボを使用する方法について説明します"
+	services="devtest-lab,virtual-machines"
+	documentationCenter="na"
+	authors="tomarcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="devtest-lab"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/22/2016"
-    ms.author="tarcher"/>
+	ms.service="devtest-lab"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="tarcher"/>
 
-
-#<a name="why-devtest-labs?"></a>Why DevTest Labs?
+#DevTest ラボを使用する理由
 
 > [AZURE.NOTE]
-> This article is part 2 of a 3 part series:
+この記事は、3 部構成のシリーズの第 2 部です。
 > 
-> 1. [What is DevTest Labs?](devtest-lab-overview.md)
-> 1. **[Why DevTest Labs?](devtest-lab-why.md)**
-> 1. [DevTest Labs concepts](devtest-lab-concepts.md)
+> 1. [DevTest ラボとは](devtest-lab-overview.md)
+> 1. **[DevTest Labs を使用する理由](devtest-lab-why.md)**
+> 1. [DevTest ラボの概念](devtest-lab-concepts.md)
 
-##<a name="overview"></a>Overview
-DevTest Labs provides the following benefits in creating, configuring, and managing developer and test environments in the cloud
+##Overview
+DevTest ラボを使用することで、クラウド内の開発者とテスト向けの環境の作成、構成、管理において次の利点が提供されます。
 
-##<a name="worry-free-self-service"></a>Worry-free self-service
+##心配無用のセルフサービス
 
-DevTest Labs makes it easier to control costs by allowing you to set policies on your lab - such as number of virtual machines (VM) per user and number of VMs per lab. DevTest Labs also enables you to create policies to automatically shut down and start VMs.
+DevTest ラボを使用することで、ユーザーごとの仮想マシン (VM) の数やラボあたりの VM の数など、ラボでのポリシーの設定が可能になり、コストの管理が容易になります。DevTest ラボでは、VM を自動的にシャット ダウンし、起動するためのポリシーを作成することもできます。
 
-##<a name="quickly-get-to-ready-to-test"></a>Quickly get to ready-to-test
+##すばやくテスト準備完了状態へ
 
-DevTest Labs enables you to create pre-provisioned environments with everything your team needs to start developing and testing applications. Simply claim the environments where the last good build of your application is installed and get working right away. Or, use containers for even faster and leaner environment creation.
+DevTest ラボを使用することで、チームがアプリケーションの開発とテストを開始するために必要なものがすべて事前にプロビジョニングされている環境を作成できます。アプリケーションの最新の良好なビルドがインストールされた環境を要求し、作業を開始するだけです。あるいは、コンテナーを使えば環境の作成が一層迅速かつ効率的になります。
 
-##<a name="create-once,-use-everywhere"></a>Create once, use everywhere
+##1 回作成すれば、どこでも使える
 
-Capture and share environment templates and artifacts within your team or organization - all in source control - to create developer and test environments easily.
+チーム内や組織内で環境テンプレートとアーティファクトのキャプチャと共有を行い、開発者とテスト向けの環境を簡単に作成できます。これらすべてをソース管理の制御のもとで行えます。
 
-##<a name="integrates-with-your-existing-toolchain"></a>Integrates with your existing toolchain
+##既存のツール チェーンとの統合
 
-Leverage pre-made plug-ins or our API to provision Dev/Test environments directly from your preferred continuous integration (CI) tool, integrated development environment (IDE), or automated release pipeline. You can also use our comprehensive command-line tool.
+事前作成済みのプラグインや Microsoft の API を活用して、好みの継続的インテグレーション (CI) ツール、統合開発環境 (IDE)、自動リリース パイプラインから、開発/テスト環境のプロビジョニングを直接行うことができます。Microsoft の包括的なコマンド ライン ツールを使用することもできます。
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-[DevTest Labs concepts](devtest-lab-concepts.md)
+[DevTest ラボの概念](devtest-lab-concepts.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

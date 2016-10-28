@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Contact Microsoft Support | Microsoft Azure"
-   description="Learn how to create a support request and start a support session on your StorSimple device."
+   pageTitle="Microsoft サポートに問い合わせる | Microsoft Azure"
+   description="サポート要求を作成する方法と StorSimple デバイスでサポート セッションを開始する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,96 +15,91 @@
    ms.date="09/21/2016"
    ms.author="alkohli" />
 
+# Microsoft サポートに問い合わせる
 
-# <a name="contact-microsoft-support"></a>Contact Microsoft Support
+Microsoft Azure StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。この記事で説明する内容は次のとおりです。
 
-If you encounter any issues with your Microsoft Azure StorSimple solution, you can create a service request for technical support. In an online session with your support engineer, you may also need to start a support session on your StorSimple device. This article walks you through:
+- サポート要求を作成する方法
+- StorSimple デバイスの Windows PowerShell インターフェイスでサポート セッションを開始する方法
 
-- How to create a support request.
-- How to start a support session in the Windows PowerShell interface of your StorSimple device.
+サポート要求を作成する前に、[StorSimple 8000 シリーズのサポート SLA および情報](https://msdn.microsoft.com/library/mt433077.aspx)を確認してください。
 
-Review the [StorSimple 8000 Series Support SLAs and information](https://msdn.microsoft.com/library/mt433077.aspx) before you create a Support request.
+## サポート要求の作成
 
-## <a name="create-a-support-request"></a>Create a support request
+サポート要求を作成するには、次の手順を実行します。
 
-Perform the following steps to create a support request:
+#### サポート要求を作成するには
 
-#### <a name="to-create-a-support-request"></a>To create a support request
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)の右上隅でアカウント名をクリックし、**[Microsoft サポートに問い合わせる]** をクリックします。
 
-1. In the [Azure classic portal](https://manage.windowsazure.com/), in the upper right corner, click your account name and then click **Contact Microsoft Support**.
+	![クラシック ポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/Ibiza1.png)
 
-    ![Contact MS Support via ManagementPortal](./media/storsimple-contact-microsoft-support/Ibiza1.png)
+2. 新しい Azure ポータル (portal.azure.com) にリダイレクトされます。**[新しいサポート要求]** タイルをクリックします。
 
-2. You will be redirected to the new Azure portal (portal.azure.com). Click the **New support request** tile.
+	![新しいポータルでの MS サポートへの問い合わせ](./media/storsimple-contact-microsoft-support/Ibiza2.png)
 
-    ![Contact MS Support via new portal](./media/storsimple-contact-microsoft-support/Ibiza2.png)
+    画面の右側に、**[新しいサポート要求]** ウィンドウが表示されます。
 
-    On the right side of the screen, the **New support request** pane appears. 
+	![[新しいサポート要求] ウィンドウ](./media/storsimple-contact-microsoft-support/Ibiza3a.png)
 
-    ![New support request pane](./media/storsimple-contact-microsoft-support/Ibiza3a.png)
+3. **[基本]** ダイアログ ボックスに次の情報を入力します。
+	1. **[問題の種類]** ドロップダウン リストで **[技術]** を選択します。
+	2. **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。
+	3. **[サービス]** ドロップダウン リストで **[StorSimple]** を選択します。
+	4. ドロップダウン リストで **[サポート プラン]** を選択します。テクニカル サポートを利用するには、有料サポート プランに加入している必要があります。
 
-3. In the **Basics** dialog box, complete the following:                                
-    1. From the **Issue type** drop-down list , select **Technical**.
-    2. Select a **Subscription** from the drop-down list.
-    3. From the **Service** drop-down list, select **StorSimple**. 
-    4. Select a **Support plan** from the drop-down list. You need a paid support plan to enable Technical Support.
+4. **[次へ]** をクリックします。**[問題点]** ダイアログ ボックスが表示されます。
 
-4. Click **Next**. The **Problem** dialog box appears.
+	![[新しいサポート要求] ウィンドウ](./media/storsimple-contact-microsoft-support/Ibiza5a.png)
 
-    ![New support request pane](./media/storsimple-contact-microsoft-support/Ibiza5a.png) 
+5. **[問題点]** ダイアログ ボックスに次の情報を入力します。
 
-5. In the **Problem** dialog box, complete the following:
+    1.  ドロップダウン リストで **[重要度]** レベルを選択します。
+    2.  ドロップダウン リストで **[問題の種類]** を選択します。
+    3.  ドロップダウン リストで **[カテゴリ]** を選択します。
+    4.  **[詳細]** ボックスに問題の簡単な説明を入力します。
+    5.  **[期間]** ボックスに問題が最後に発生したときの日付、時間、タイム ゾーンを指定します。
+    6.  **[ファイルのアップロード]** でフォルダー アイコンをクリックしてサポート パッケージを参照します。
+    7.  **[診断情報の共有]** チェック ボックスをオンします。
 
-    1.  Select a **Severity** level from the drop-down list.
-    2.  Select a **Problem type** from the drop-down list.
-    3.  Select a **Category** from the drop-down list. 
-    4.  In the **Details** box, briefly describe your issue.
-    5.  In the **Time frame** box, indicate the date, time, and time zone that corresponds to the most recent occurrence of your issue.
-    6.  Under **File upload**, click the folder icon to browse to your support package.
-    7.  Select the **Share diagnostic information** check box.
+6. **[次へ]** をクリックします。**[連絡先情報]** ダイアログ ボックスが表示されます。
 
-6. Click **Next**. The **Contact information** dialog box appears.
+	![[新しいサポート要求] ウィンドウ](./media/storsimple-contact-microsoft-support/Ibiza6a.png)
 
-    ![New support request pane](./media/storsimple-contact-microsoft-support/Ibiza6a.png) 
+7. 連絡先情報を入力し、連絡方法 (電話または電子メール) を選択します。
 
-7. Enter your contact information and select a contact method (phone or email). 
+8. **[今後のサポート要求用に連絡先の変更を保存]** チェック ボックスをオンにします。
 
-8. Select the **Save contact changes for future support requests** check box.
+9. **[作成]** をクリックします。
 
-9. Click **Create**.
+要求を送信した後、その要求を処理するサポート エンジニアから速やかに連絡があります。
 
-After you have submitted your request, a Support engineer will contact you as soon as possible to proceed with your request.
+## StorSimple 用 Windows PowerShell でのサポート セッションの開始
 
-## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Start a support session in Windows PowerShell for StorSimple
+StorSimple デバイスで発生した問題のトラブルシューティングを行うには、Microsoft サポート チームと情報交換する必要があります。Microsoft サポートがサポート セッションを使用してユーザーのデバイスにログオンすることが必要になる場合があります。
 
-To troubleshoot any issues that you might experience with the StorSimple device, you will need to engage with the Microsoft Support team. Microsoft Support may need to use a support session to log on to your device. 
+サポート セッションを開始するには、次の手順を実行します。
 
-Perform the following steps to start a support session:
+#### サポート セッションを開始するには
 
-#### <a name="to-start-a-support-session"></a>To start a support session
+1. シリアル コンソールから直接デバイスにアクセスするか、リモート コンピューターから telnet セッションを使用してデバイスにアクセスします。そのためには、「[PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)」の手順を実行します。
 
-1. Access the device directly by using the serial console or through a telnet session from a remote computer. To do this, follow the steps in [Use PuTTY to connect to the device serial console](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console).
+2. 開いたセッションで、**Enter** キーを押して、コマンド プロンプトを開きます。
 
-2. In the session that opens, press the **Enter** key to get a command prompt.
+3. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択します。
 
-3. In the serial console menu, select option 1, **Log in with full access**.
+4. プロンプトで、次のパスワードを入力します。
 
-4. At the prompt, type the following password: 
+	`Password1`
 
-    `Password1`
+5. プロンプトで、次のコマンドを入力します。
 
-5. At the prompt, type the following command:
+	`Enable-HcsSupportAccess`
 
-    `Enable-HcsSupportAccess`
+6. 暗号化された文字列が表示されます。この文字列をメモ帳などのテキスト エディターにコピーします。
 
-6. An encrypted string will be presented to you. Copy this string into a text editor such as Notepad.
+7. この文字列を保存し、電子メール メッセージで Microsoft サポートに送信します。
 
-7. Save this string and send it in an email message to Microsoft Support. 
+> [AZURE.IMPORTANT] サポートへのアクセスは、`Disable-HcsSupportAccess` を実行して無効にできます。また、StorSimple デバイスでは、セッションの開始後 8 時間が経過すると、サポートへのアクセスが無効になります。サポート セッションを開始した後、StorSimple デバイスの資格情報を変更することをお勧めします。
 
-> [AZURE.IMPORTANT] You can disable support access by running `Disable-HcsSupportAccess`. The StorSimple device will also attempt to disable support access 8 hours after the session was initiated. It is a best practice to change your StorSimple device credentials after initiating a support session.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

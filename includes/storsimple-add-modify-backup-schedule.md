@@ -1,37 +1,33 @@
 
 <!--author=SharS last changed: 9/15/15-->
 
-#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>To add or modify a StorSimple backup schedule
+#### StorSimple のバックアップ スケジュールを追加または変更するには
 
-1. On the device **Quick Start** page, click the **Backup Policies** tab. This will take you to the **Backup Policies** page.
+1. デバイスの **[クイック スタート]** ページで、**[バックアップ ポリシー]** タブをクリックします。この操作により、**[バックアップ ポリシー]** ページが表示されます。
 
-2. In the tabular listing of the policies, select and click the policy that you want to edit.
+2. ポリシーの表形式の一覧で、編集するポリシーを選択してクリックします。
 
-3. Under **general**, you can modify the backup policy name.
+3. **[全般]** では、バックアップ ポリシー名を変更できます。
 
-4. Under **schedules**, click **manage schedules** to add or remove schedules. In the **Manage Schedule** dialog box, do the following:
+4. **[スケジュール]** で、**[スケジュールの管理]** をクリックして、スケジュールを追加または削除します。**[スケジュールの管理]** ダイアログ ボックスで、次の手順を実行します。
 
-    1. Choose an existing schedule or create a new schedule.
+    1. 既存のスケジュールを選択するか、新しいスケジュールを作成します。
 
-    2. Select the type of backup as local or cloud snapshot.
+    2. バックアップの種類 (ローカル スナップショットまたはクラウド スナップショット) を選択します。
 
-    3. Specify the backup frequency, retention, and starting time of the schedule.
+    3. バックアップの頻度、保有期間、スケジュールの開始時刻を指定します。
 
-    4. Enable or disable the schedule.
+    4. スケジュールを有効または無効にします。
 
-    5. Click the check icon ![check icon](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) to save the changes to the schedule.
+    5. チェック アイコン ![チェック マーク アイコン](./media/storsimple-add-modify-backup-schedule/HCS_CheckIcon-include.png) をクリックして、スケジュールの変更を保存します。
 
-5. In the **Volumes** section, add or remove the volumes to this policy.
+5. **[ボリューム]** セクションで、このポリシーに対してボリュームを追加または削除します。
 
-6. Save the changes to this policy.
+6. このポリシーの変更を保存します。
 
-7. You will prompted for confirmation. Click **OK** to save the policy.
+7. 確認を求めるメッセージが表示されます。**[OK]** をクリックしてポリシーを保存します。
 
-The **Backup Policies** page will be updated to save the changes to the policy.
+**[バックアップ ポリシー]** ページが更新され、ポリシーの変更が保存されます。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

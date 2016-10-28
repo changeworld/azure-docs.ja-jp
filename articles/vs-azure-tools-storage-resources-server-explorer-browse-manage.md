@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Browsing and managing storage resources with Server Explorer | Microsoft Azure"
-   description="Browsing and managing storage resources with Server Explorer"
+   pageTitle="サーバー エクスプローラーを使用したストレージ リソースの参照と管理 | Microsoft Azure"
+   description="サーバー エクスプローラーを使用したストレージ リソースの参照と管理"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,311 +15,306 @@
    ms.date="07/18/2016"
    ms.author="tarcher" />
 
-
-# <a name="browsing-and-managing-storage-resources-with-server-explorer"></a>Browsing and Managing Storage Resources with Server Explorer
+# サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 
 [AZURE.INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Overview
-If you've installed the Azure Tools for Microsoft Visual Studio, you can view blob, queue, and table data from your storage accounts for Azure. The Azure Storage node in Server Explorer shows data that’s in your local storage emulator account and your other Azure storage accounts.
+## 概要
+Azure Tools for Visual Studio をインストール済みである場合、Azure のストレージ アカウントから、BLOB、キュー、テーブルのデータを表示できます。サーバー エクスプローラーの Azure の [Storage] ノードに、ローカル ストレージ エミュレーター アカウントをはじめとする Azure ストレージ アカウント内のデータが表示されます。
 
-To view Server Explorer in Visual Studio, on the menu bar, choose **View**, **Server Explorer**. The storage node shows all of the storage accounts that exist under each Azure subscription/certificate you're connected to. If your storage account doesn't appear, you can add it by following the instructions [later in this topic](#add-storage-accounts-by-using-server-explorer).
+Visual Studio でサーバー エクスプローラーを表示するには、メニュー バーで **[表示]**、**[サーバー エクスプローラー]** の順にクリックします。ストレージ ノードは、接続されている各 Azure サブスクリプション/証明書に存在するすべてのストレージ アカウントを示します。ストレージ アカウントが表示されない場合は、[このトピックの最後](#add-storage-accounts-by-using-server-explorer)に記載した手順で追加できます。
 
-Starting in Azure SDK 2.7, you can also use the new Cloud Explorer to view and manage your Azure resources. See [Managing Azure Resources with Cloud Explorer](./vs-azure-tools-resources-managing-with-cloud-explorer.md) for more information.
+Azure SDK 2.7 以降では、新しいクラウド エクスプローラーを使用して Azure のリソースを表示したり管理したりすることもできます。詳細については、「[クラウド エクスプローラーを使用した Azure リソースの管理](./vs-azure-tools-resources-managing-with-cloud-explorer.md)」を参照してください。
 
 
-## <a name="view-and-manage-storage-resources-in-visual-studio"></a>View and manage storage resources in Visual Studio
+## Visual Studio でのストレージ リソースの表示と管理
 
-Server Explorer automatically shows a list of blobs, queues, and tables in your storage emulator account. The storage emulator account is listed in Server Explorer under the Storage node as the **Development** node.
+サーバー エクスプローラーには、ストレージ エミュレーター アカウント内の BLOB、キュー、テーブルの一覧が自動的に表示されます。ストレージ エミュレーター アカウントは、サーバー エクスプローラーの [Storage] ノードの下に **[開発]** というノードとして表示されます。
 
-To see the storage emulator account’s resources, expand the **Development** node. If the storage emulator hasn’t been started when you expand the **Development** node, it will automatically start. This can take several seconds. You can continue to work in other areas of Visual Studio while the storage emulator starts.
+ストレージ エミュレーター アカウントのリソースを表示するには、**[開発]** ノードを展開します。**[開発]** ノードを展開したとき、まだストレージ エミュレーターが起動していない場合は、自動的に起動します。これには数秒かかる場合があります。ストレージ エミュレーターの起動中、Visual Studio の他の領域では作業を続行できます。
 
-To view resources in a storage account, expand the storage account’s node in Server Explorer. The following sub-nodes appear:
+ストレージ アカウントのリソースを表示するには、サーバー エクスプローラーでストレージ アカウントのノードを展開します。次のサブノードが表示されます。
 
-- Blobs
+- BLOB
 
-- Queues
+- キュー
 
-- Tables
+- テーブル
 
-## <a name="work-with-blob-resources"></a>Work with Blob Resources
+## BLOB リソースの操作
 
-The Blobs node displays a list of containers for the selected storage account. Blob containers contain blob files, and you can organize these blobs into folders and subfolders. See [How to use Blob Storage from .NET](./storage/storage-dotnet-how-to-use-blobs.md) for more information.
+[BLOB] ノードには、選択したストレージ アカウントのコンテナーの一覧が表示されます。BLOB コンテナーには BLOB ファイルが含まれており、これらの BLOB をフォルダーとサブフォルダーにまとめることができます。詳細については、「[.NET から BLOB ストレージを使用する方法](./storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。
 
-### <a name="to-create-a-blob-container"></a>To create a blob container
+### BLOB コンテナーを作成するには
 
-1. Open the shortcut menu for the **Blobs** node, and then choose **Create Blob Container**.
+1. **[BLOB]** ノードのショートカット メニューを開き、**[BLOB コンテナーの作成]** をクリックします。
 
-1. Enter the name of the new container in the **Create Blob Container** dialog box and then choose **Ok**.
+1. **[BLOB コンテナーの作成]** ダイアログ ボックスで新しいコンテナーの名前を入力し、**[OK]** をクリックします。
 
     ![Adding a new blob container](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744153.bmp)
 
-    >[AZURE.NOTE] The blob container name must begin with a number (0-9) or lowercase letter (a-z).
+    >[AZURE.NOTE] BLOB コンテナーの名前は、数字 (0 ～ 9) または小文字の英字 (a ～ z) で始める必要があります。
 
-### <a name="to-delete-a-blob-container"></a>To delete a blob container
+### BLOB コンテナーを削除するには
 
-- Open the shortcut menu for the blob container you want to remove and then choose **Delete**.
+- 削除する BLOB コンテナーのショートカット メニューを開き、**[削除]** をクリックします。
 
-### <a name="to-display-a-list-of-the-items-contained-in-a-blob-container"></a>To display a list of the items contained in a blob container
+### BLOB コンテナーの内容を表示するには
 
-- Open the shortcut menu for a blob container name in the list and then choose **View Blob Container**.
+- 一覧から BLOB コンテナー名のショートカット メニューを開き、**[BLOB コンテナーの表示]** をクリックします。
 
-    When you view the contents of a blob container, it appears in a tab known as the blob container view.
+    表示した BLOB コンテナーの内容は、BLOB コンテナーのビューと呼ばれるタブに表示されます。
 
-    ![VST_SE_BlobDesigner](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC749016.png)
+    ![VST\_SE\_BlobDesigner](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC749016.png)
 
-    You can perform the following operations on blobs by using the buttons in the top-right corner of the blob container view:
+    BLOB コンテナーのビューの右上隅にあるボタンを使用して、BLOB に次の操作を実行できます。
 
-    - Enter a filter value and apply it
+    - フィルター値を入力して適用する
 
-    - Refresh the list of blobs in the container
+    - コンテナー内の BLOB の一覧を更新する
 
-    - Upload a file
+    - ファイルをアップロードする
 
-    - Delete a blob
+    - BLOB を削除する
 
-      >[AZURE.NOTE] Deleting a file from a blob container doesn’t delete the underlying file; it only removes it from the blob container.
+      >[AZURE.NOTE] BLOB コンテナーからファイルを削除しても、基になるファイルは削除されません。BLOB コンテナーから除去されるだけです。
 
-    - Open a blob
+    - BLOB を開く
 
-    - Save a blob to the local computer
+    - BLOB をローカル コンピューターに保存する
 
-### <a name="to-create-a-folder-or-subfolder-in-a-blob-container"></a>To create a folder or subfolder in a blob container
+### BLOB コンテナーにフォルダーまたはサブフォルダーを作成するには
 
-1. Choose the blob container in Server Explorer. In the container window, choose the **Upload Blob** button.
+1. サーバー エクスプローラーで BLOB コンテナーを選択します。コンテナー ウィンドウで **[BLOB のアップロード]** ボタンをクリックします。
 
     ![Uploading a file into a blob folder](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766037.png)
 
-1. In the **Upload New File** dialog box, choose the **Browse** button to specify the file you want to upload, and then enter a folder name in the **Folder (optional)** box.
+1. **[新しいファイルのアップロード]** ダイアログ ボックスで **[参照]** ボタンをクリックし、アップロードするファイルを指定してから **[フォルダー (省略可)]** ボックスにフォルダー名を入力します。
 
-    You can add subfolders in container folders by following the same procedure. If you don’t specify a folder name, the file will be uploaded to the top level of the blob container.The file appears in the specified folder in the container.
+    同じ手順に従って、コンテナーのフォルダーにサブフォルダーを追加できます。フォルダー名を指定しない場合、ファイルは BLOB コンテナーの最上位にアップロードされます。コンテナー内の指定したフォルダーにファイルが表示されます。
 
     ![Folder added to a blob container](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766038.png)
 
-1. Double-click the folder or press ENTER to see the contents of the folder. When you’re in the container’s folder, you can navigate back to the root of the container by choosing the **Open Parent Directory** (up arrow) button.
+1. フォルダーをダブルクリックするか、Enter キーを押してフォルダーの内容を表示します。コンテナーのフォルダーで、**[親ディレクトリを開く]** (上矢印) ボタンをクリックすれば、コンテナーのルートに戻ることができます。
 
-### <a name="to-delete-a-container-folder"></a>To delete a container folder
+### コンテナーのフォルダーを削除するには
 
- - Delete all of the files in the folder
+ - フォルダー内のファイルをすべて削除します。
 
-    >[AZURE.NOTE] Because folders in blob containers are virtual folders, you can’t create an empty folder, nor can you delete a folder to delete its file contents. You have to delete the entire contents of a folder to delete the folder.
+    >[AZURE.NOTE] BLOB コンテナー内のフォルダーは仮想フォルダーであるため、空のフォルダーを作成したり、フォルダーを削除してそのファイルの内容を削除したりすることはできません。フォルダーを削除するには、フォルダーの内容全体を削除する必要があります。
 
-### <a name="to-filter-blobs-in-a-container"></a>To filter blobs in a container
+### コンテナー内の BLOB をフィルター処理するには
 
-You can filter the blobs that are displayed by specifying a common prefix.
+共通のプレフィックスを指定すると、表示される BLOB をフィルター処理できます。
 
-For example, if you enter the prefix `hello` in the filter text box and then choose the **Execute** (**!**)button, only blobs that begin with 'hello' appear.
+たとえば、`hello` というプレフィックスをフィルターのテキスト ボックスに入力し、**[実行]** (**!**) をクリックすると、'hello' で始まる BLOB のみが表示されます。
 
-![VST_SE_FilterBlobs](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC519076.png)
+![VST\_SE\_FilterBlobs](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC519076.png)
 
 
->[AZURE.NOTE] The filter field is case-sensitive and doesn’t support filtering with wildcard characters. Blobs can only be filtered by prefix. The prefix may include a delimiter if you are using a delimiter to organize blobs in a virtual hierarchy. For example, filtering on the prefix HelloFabric/ returns all blobs beginning with that string.
+>[AZURE.NOTE] フィルター フィールドでは大文字と小文字が区別され、ワイルド カード文字によるフィルター処理はサポートされていません。BLOB はプレフィックスでのみフィルター処理できます。仮想階層で区切り記号を使用して BLOB を整理している場合は、プレフィックスに区切り記号を含めることができます。たとえば、「HelloFabric/」というプレフィックスでフィルター処理を行うと、この文字列で始まる BLOB がすべて返されます。
 
-### <a name="to-download-blob-data"></a>To download blob data
+### BLOB データをダウンロードするには
 
-- In **Server Explorer**, open the shortcut menu for one or more blobs and then choose **Open**, or choose the blob name and then choose the **Open** button, or double-click the blob name.
+- **サーバー エクスプローラー**で 1 つ以上の BLOB のショートカット メニューを開いて **[開く]** を選択するか、BLOB 名を選択して **[開く]** ボタンをクリックするか、BLOB 名をダブルクリックします。
 
-    The progress of a blob download appears in the **Azure Activity Log** window.
+    **[Azure のアクティビティ ログ]** ウィンドウに BLOB のダウンロードの進行状況が表示されます。
 
-    The blob opens in the default editor for that file type. If the operating system recognizes the file type, the file opens in a locally installed application; otherwise, you're prompted to choose an application that’s appropriate for the file type of the blob. The local file that’s created when you download a blob is marked as read-only.
+    その種類のファイルの既定のエディターで BLOB が開きます。そのファイルの種類がオペレーティング システムで認識された場合、ファイルは、ローカルにインストールされているアプリケーションで開かれます。それ以外の場合は、BLOB のファイルの種類に対応したアプリケーションを選択するように求めるメッセージが表示されます。BLOB をダウンロードしたときに作成されるローカル ファイルは、読み取り専用としてマークされます。
 
-    Blob data is cached locally and checked against the blob's last modified time in the Blob service. If the blob has been updated since it was last downloaded, it will be downloaded again; otherwise the blob will be loaded from the local disk. By default a blob is downloaded to a temporary directory. To download blobs to a specific directory, open the shortcut menu for the selected blob names and choose **Save As**. When you save a blob in this manner, the blob file is not opened, and the local file is created with read-write attributes.
+    BLOB データは、ローカルにキャッシュされ、BLOB サービス内の BLOB の最終更新時刻に照らしてチェックされます。最後にダウンロードされたときから BLOB が更新されている場合は、BLOB が再度ダウンロードされます。それ以外の場合は、ローカル ディスクから BLOB が読み込まれます。既定では、BLOB が一時ディレクトリにダウンロードされます。特定のディレクトリに BLOB をダウンロードするには、選択した BLOB 名のショートカット メニューを開き、**[名前を付けて保存]** をクリックします。この方法で BLOB を保存すると、BLOB ファイルは開かれません。また、読み取り/書き込み属性のローカル ファイルが作成されます。
 
-### <a name="to-upload-blobs"></a>To upload blobs
+### BLOB をアップロードするには
 
-- Choose the **Upload Blob** button when the container is open for viewing in the blob container view.
+- BLOB コンテナーのビューで閲覧用にコンテナーを開き、**[BLOB のアップロード]** をクリックします。
 
-    You can choose one or more files to upload, and you can upload files of any type. The **Azure Activity Log** shows the progress of the upload. For more information about how to work with blob data, see [How to use the Azure Blob Storage Service in .NET](http://go.microsoft.com/fwlink/p/?LinkId=267911).
+    アップロード対象ファイル (複数可) を選択し、任意の種類のファイルをアップロードできます。**[Azure のアクティビティ ログ]** にアップロードの進行状況が表示されます。BLOB データを操作する方法の詳細については、「[.NET から BLOB ストレージを使用する方法](http://go.microsoft.com/fwlink/p/?LinkId=267911)」を参照してください。
 
-### <a name="to-view-logs-transferred-to-blobs"></a>To view logs transferred to blobs
+### BLOB に転送されたログを表示するには
 
-- If you are using Azure Diagnostics to log data from your Azure application and you have transferred logs to your storage account, you’ll see containers that were created by Azure for these logs. Viewing these logs in Server Explorer is an easy way to identify problems with your application, especially if it’s been deployed to Azure. For more information about Azure Diagnostics, see [Collect Logging Data by Using Azure Diagnostics](https://msdn.microsoft.com/library/azure/gg433048.aspx).
+- Azure 診断を使用して Azure アプリケーションからデータのログを記録し、ログをストレージ アカウントに転送した場合は、これらのログ用に Azure で作成されたコンテナーが表示されます。サーバー エクスプローラーでこれらのログを表示すれば、アプリケーション、特に Azure にデプロイされたアプリケーションの問題を簡単に特定できます。Azure 診断の詳細については、「[Azure 診断を使用したログ データの収集](https://msdn.microsoft.com/library/azure/gg433048.aspx)」を参照してください。
 
-### <a name="to-get-the-url-for-a-blob"></a>To get the URL for a blob
+### BLOB の URL を取得するには
 
-- Open the blob’s shortcut menu and then choose **Copy URL**.
+- BLOB のショートカット メニューを開き、**[URL のコピー]** をクリックします。
 
-### <a name="to-edit-a-blob"></a>To edit a blob
+### BLOB を編集するには
 
-- Select the blob and then choose the **Open Blob** button.
+- BLOB を選択し、**[BLOB を開く]** をクリックします。
 
-    The file is downloaded to a temporary location and opened on the local computer. You must upload the blob again after you make changes.
+    ファイルは一時的な場所にダウンロードされ、ローカル コンピューター上で開かれます。変更を行った後は、BLOB を再度アップロードする必要があります。
 
-## <a name="work-with-queue-resources"></a>Work with Queue Resources
+## キュー リソースの操作
 
-Storage services queues are hosted in an Azure storage account and you can use them to allow your cloud service roles to communicate with each other and with other services by a message passing mechanism. You can access the queue programmatically through a cloud service and over a web service for external clients. You can also access the queue directly by using Server Explorer in Visual Studio.
+ストレージ サービスのキューは、ストレージ アカウント内でホストされています。ストレージ サービスを使用すると、メッセージを渡す機能によって、クラウド サービスのロールが互いにやり取りしたり、他のサービスとやり取りしたりすることができます。キューは、クラウド サービス、および外部クライアントの Web サービスからプログラムによってアクセスできます。キューは、Visual Studio のサーバー エクスプローラーを使用して直接アクセスすることもできます。
 
-When you develop a cloud service that uses queues, you might want to use Visual Studio to create queues and work with them interactively while you develop and test your code.
+キューを使用するクラウド サービスを開発する場合は、コードを開発およびテストするときに、Visual Studio を使用してキューを対話的に作成したり操作したりすることができます。
 
-In Server Explorer, you can view the queues in a storage account, create and delete queues, open a queue to view its messages, and add messages to a queue. When you open a queue for viewing, you can view the individual messages, and you can perform the following actions on the queue by using the buttons in the top-left corner:
+サーバー エクスプローラーでは、ストレージ アカウント内のキューを表示したり、キューを作成 (または削除) したりすることができるほか、キューを開いてメッセージを表示したり、メッセージをキューに追加したりすることができます。キューを閲覧用に開くと、個々のメッセージを表示できます。左上隅のボタンを使用して、キューに対して次の操作を実行することが可能です。
 
-- Refresh the view of the queue
+- キューの表示を更新する
 
-- Add a message to the queue
+- メッセージをキューに追加する
 
-- Dequeue the topmost message.
+- 最上位のメッセージをデキューする
 
-- Clear the entire queue
+- キュー全体をクリアする
 
-The following image shows a queue that contains two messages.
+次の図は、2 つのメッセージを含むキューを示しています。
 
 ![Viewing a Queue](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-For more information about storage services queues, see [How to: Use the Queue Storage Service](http://go.microsoft.com/fwlink/?LinkID=264702). For information about the web service for storage services queues, see [Queue Service Concepts](http://go.microsoft.com/fwlink/?LinkId=264788). For information about how to send messages to a storage services queue by using Visual Studio, see [Sending Messages to a Storage Services Queue](https://msdn.microsoft.com/library/azure/jj649344.aspx).
+ストレージ サービス キューの詳細については、「[.NET から Queue ストレージを使用する方法](http://go.microsoft.com/fwlink/?LinkID=264702)」を参照してください。ストレージ サービス キューの Web サービスについては、「[キュー サービスの概念](http://go.microsoft.com/fwlink/?LinkId=264788)」を参照してください。Visual Studio を使用して、ストレージ サービス キューにメッセージを送信する方法については、「[ストレージ サービスのキューにメッセージを送信する](https://msdn.microsoft.com/library/azure/jj649344.aspx)」を参照してください。
 
->[AZURE.NOTE] Storage services queues are distinct from service bus queues. For more information about service bus queues, see Service Bus Queues, Topics, and Subscriptions.
+>[AZURE.NOTE] ストレージ サービスのキューは、Service Bus キューとは異なります。Service Bus キューの詳細については、Service Bus のキュー、トピック、サブスクリプションに関するページを参照してください。
 
-## <a name="work-with-table-resources"></a>Work with Table Resources
+## テーブル リソースの操作
 
-The Azure Table storage service stores large amounts of structured data. The service is a NoSQL datastore which accepts authenticated calls from inside and outside the Azure cloud. Azure tables are ideal for storing structured, non-relational data.
+Azure Table Storage サービスは、大量の構造化データを格納します。このサービスは、Azure クラウドの内部および外部からの認証された呼び出しを受け付ける NoSQL データストアです。Azure のテーブルは、構造化された非リレーショナル データを格納するのに最適です。
 
-### <a name="to-create-a-table"></a>To create a table
+### テーブルを作成するには
 
-1. In Server Explorer, select the **Tables** node of the storage account, and then choose **Create Table**.
+1. サーバー エクスプローラーで、ストレージ アカウントの **[テーブル]** ノードを選択してから、**[テーブルの作成]** を選択します。
 
-1. In the **Create Table** dialog box, enter a name for the table.
+1. **[テーブルの作成]** ダイアログ ボックスでテーブルの名前を入力します。
 
-### <a name="to-view-table-data"></a>To view table data
+### テーブル データを表示するには
 
-1. In Server Explorer, open the **Azure** node, and then open the **Storage** node.
+1. サーバー エクスプローラーで **[Azure]** ノードを開き、**[Storage]** ノードを開きます。
 
-1. Open the storage account node that you are interested in, and then open the **Tables** node to see a list of tables for the storage account.
+1. 目的のストレージ アカウント ノードを開き、**[テーブル]** ノードを開いて、そのストレージ アカウントのテーブルの一覧を表示します。
 
-1. Open the shortcut menu for a table and then choose **View Table**.
+1. テーブルのショートカット メニューを開き、**[テーブルの表示]** を選択します。
 
     ![An Azure table in Solution Explorer](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744165.png)
 
-The table is organized by entities (shown in rows) and properties (shown in columns). For example, the following illustration shows entities listed in the **Table Designer**:
+テーブルは、エンティティ (行に表示) とプロパティ (列に表示) で構成されています。**テーブル デザイナー**に一覧表示されたエンティティの例を次の図に示します。
 
-### <a name="to-edit-table-data"></a>To edit table data
+### テーブル データを編集するには
 
-1. In the **Table Designer**, open the shortcut menu for an entity (a single row) or a property (a single cell) and then choose **Edit**.
+1. **テーブル デザイナー**で、エンティティ (単一の行) またはプロパティ (単一のセル) のショートカット メニューを開き、**[編集]** を選択します。
 
     ![Add or Edit a Table Entity](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC656238.png)
 
-    Entities in a single table aren’t required to have the same set of properties (columns). Keep in mind the following restrictions on viewing and editing table data.
-    - You can’t view or edit binary data (type byte[]), but you can store it in a table.
+    単一テーブルのエンティティが、同じ一連のプロパティ (列) を持っている必要はありません。テーブル データの表示と編集には、次の制限があることに留意してください。
+    - バイナリ データ (byte 型) は、表示することも編集することもできませんが、テーブルに格納することはできます。
 
-    - You can’t edit the **PartitionKey** or **RowKey** values, because table storage in Azure doesn't support that operation.
+    - **PartitionKey** と **RowKey** の値は編集できません。この操作は、Azure のテーブル ストレージではサポートされません。
 
-    - You can’t create a property called Timestamp, Azure Storage services use a property with that name.
+    - Timestamp という名前のプロパティは作成できません。Azure ストレージ サービスで、同名のプロパティが使用されています。
 
-    - If you enter a DateTime value, you must follow a format that's appropriate to the region and language settings of your computer (for example, MM/DD/YYYY HH:MM:SS [AM|PM] for U.S. English).
+    - DateTime 値を入力する場合、ご利用のコンピューターの地域と言語の設定に合った適切な形式で入力する必要があります (たとえば、英語 (U.S) の場合であれば、MM/DD/YYYY HH:MM:SS [AM|PM])。
 
-### <a name="to-add-entities"></a>To add entities
+### エンティティを追加するには
 
-1. In the **Table Designer**, choose the **Add Entity** button, which is near the top-right corner of the table view.
+1. **テーブル デザイナー**で、テーブル ビューの右上隅近くにある **[エンティティの追加]** をクリックします。
 
     ![Add Entity](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655336.png)
 
-1. In the **Add Entity** dialog box, enter the values of the **PartitionKey** and **RowKey** properties.
+1. **[エンティティの追加]** ダイアログ ボックスで、**PartitionKey** プロパティと **RowKey** プロパティの値を入力します。
 
     ![Add Entity Dialog Box](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655335.png)
 
-    Enter the values carefully because you can't change them after you close the dialog box unless you delete the entity and add it again.
+    ダイアログ ボックスを閉じた後に変更することはできないので、値は慎重に入力してください。変更するには、エンティティを削除してから追加し直す必要があります。
 
-### <a name="to-filter-entities"></a>To filter entities
+### エンティティをフィルター処理するには
 
-You can customize the set of entities that appear in a table if you use the query builder.
+クエリ ビルダーを使用する場合、テーブルに表示されるエンティティ セットをカスタマイズすることができます。
 
-1. To open the query builder, open a table for viewing.
+1. クエリ ビルダーを開くには、テーブルを閲覧用に開きます。
 
-1. Choose the rightmost button on the table view’s toolbar.
+1. テーブル ビューのツール バーの右端にあるボタンをクリックします。
 
-    The **Query Builder** dialog box appears. The following illustration shows a query that's being built in the query builder.
+    **[クエリ ビルダー]** ダイアログ ボックスが表示されます。次の図は、クエリ ビルダーで作成しているクエリを示しています。
 
     ![Query Builder](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC652231.png)
 
-1. When you’re done building the query, close the dialog box. The resulting text form of the query appears in a text box as a WCF Data Services filter.
+1. クエリの作成を終えたら、ダイアログ ボックスを閉じます。クエリの結果であるテキスト形式が WCF Data Services フィルターとしてテキスト ボックスに表示されます。
 
-1. To run the query, choose the green triangle icon.
+1. クエリを実行するには、緑の三角形のアイコンをクリックします。
 
-    You can also filter entity data that appears in the **Table Designer** if you enter a WCF Data Services filter string directly in the filter field. This kind of string is similar to a SQL WHERE clause but is sent to the server as an HTTP request. For information about how to construct filter strings, see [Constructing Filter Strings for the Table Designer](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+    また、**テーブル デザイナー**に表示されるエンティティ データは、フィルター フィールドに WCF Data Services フィルター文字列を直接入力することでもフィルター処理できます。この種の文字列は、SQL の WHERE 句に似ていますが、サーバーには HTTP 要求として送信されます。フィルター文字列を作成する方法の詳細については、「[テーブル デザイナー用のフィルター文字列の作成](https://msdn.microsoft.com/library/azure/ff683669.aspx)」を参照してください。
 
-    The following illustration shows an example of a valid filter string:
+    有効なフィルター文字列の例を次の図に示します。
 
-    ![VST_SE_TableFilter](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655337.png)
+    ![VST\_SE\_TableFilter](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC655337.png)
 
-### <a name="refresh-storage-data"></a>Refresh storage data
+### ストレージ データの更新
 
-When Server Explorer connects to or gets data from a storage account, it might take up to a minute for the operation to complete. If it can’t connect, the operation might time out. While data is retrieved, you can continue to work in other parts of Visual Studio. To cancel the operation if it’s taking too long, choose the **Stop Refresh** button on the Server Explorer toolbar.
+サーバー エクスプローラーでストレージ アカウントからデータに接続したり、データを取得したりするときには、処理が完了するまでに最大で 1 分かかる場合があります。接続できない場合は、操作がタイムアウトする可能性があります。データの取得中、Visual Studio の他の部分では作業を続行できます。操作に時間がかかりすぎる場合に操作を取り消すには、サーバー エクスプローラー ツール バーの **[更新の中止]** をクリックします。
 
-#### <a name="to-refresh-blob-container-data"></a>To refresh blob container data
+#### BLOB コンテナー データを更新するには
 
-- Select the **Blobs** node beneath **Storage** and choose the **Refresh** button on the Server Explorer toolbar.
+- **[Storage]** の下にある **[BLOB]** ノードを選択し、サーバー エクスプローラー ツール バーの **[最新の情報に更新]** をクリックします。
 
-- To refresh the list of blobs that is displayed, choose the **Execute** button.
+- 表示される BLOB の一覧を更新するには、**[実行]** をクリックします。
 
-#### <a name="to-refresh-table-data"></a>To refresh table data
+#### テーブル データを更新するには
 
-- Select the **Tables** node beneath **Storage** and choose the **Refresh** button.
+- **[Storage]** の下にある **[テーブル]** ノードを選択し、**[最新の情報に更新]** をクリックします。
 
-- To refresh the list of entities that is displayed in the **Table Designer**, choose the **Execute** button on the **Table Designer**.
+- **[テーブル デザイナー]** に表示されるエンティティの一覧を更新するには、**テーブル デザイナー**の **[実行]** をクリックします。
 
-#### <a name="to-refresh-queue-data"></a>To refresh queue data
+#### キュー データを更新するには
 
-- Select the **Queues** node, and then choose the **Refresh** button.
+- **[キュー]** ノードを選択し、**[最新の情報に更新]** をクリックします。
 
-#### <a name="to-refresh-all-items-in-a-storage-account"></a>To refresh all items in a storage account
+#### ストレージ アカウントのすべてのアイテムを更新するには
 
-- Choose the account name, and then choose the **Refresh** button on the toolbar for Server Explorer.
+- アカウント名を選択し、サーバー エクスプローラーのツール バーの **[最新の情報に更新]** をクリックします。
 
-### <a name="add-storage-accounts-by-using-server-explorer"></a>Add storage accounts by using Server Explorer
+### サーバー エクスプローラーを使用してストレージ アカウントを追加する
 
-There are two ways to add storage accounts by using Server Explorer. You can create a new storage account in your Azure subscription, or you can attach an existing storage account.
+サーバー エクスプローラーを使用してストレージ アカウントを追加する方法は 2 つあります。Azure サブスクリプションで新しいストレージ アカウントを作成することも、既存のストレージ アカウントを接続することもできます。
 
-#### <a name="to-create-a-new-storage-account-by-using-server-explorer"></a>To create a new storage account by using Server Explorer
+#### サーバー エクスプローラーを使用して新しいストレージ アカウントを作成するには
 
-1. In Server Explorer, open the shortcut menu for the Storage node, and then choose Create Storage Account.
+1. サーバー エクスプローラーで [Storage] ノードのショートカット メニューを開き、[ストレージ アカウントの作成] をクリックします。
 
     ![Create a new Azure storage account](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC744166.png)
 
-1. Select or enter the following information for the new storage account in the **Create Storage Account** dialog box.
+1. **[ストレージ アカウントの作成]** ダイアログ ボックスで、新しいストレージ アカウントの次の情報を選択または入力します。
 
-    - The Azure subscription to which you want to add the storage account.
+    - ストレージ アカウントを追加する Azure サブスクリプション。
 
-    - The name you want to use for the new storage account.
+    - 新しいストレージ アカウントに使用する名前。
 
-    - The region or affinity group (such as West US or East Asia).
+    - リージョンまたはアフィニティ グループ (米国西部や東アジアなど)。
 
-    - The type of replication you want to use for the storage account, such as Geo-Redundant.
+    - geo 冗長など、ストレージ アカウントで使用するレプリケーションの種類。
 
-1. Choose **Create**.
+1. **[作成]** を選択します。
 
-    The new storage account appears in the **Storage** list in Solution Explorer.
+    新しいストレージ アカウントがソリューション エクスプローラーの **[Storage]** ボックスの一覧に表示されます。
 
-#### <a name="to-attach-an-existing-storage-account-by-using-server-explorer"></a>To attach an existing storage account by using Server Explorer
+#### サーバー エクスプローラーを使用して既存のストレージ アカウントを接続するには
 
-1. In Server Explorer, open the shortcut menu for the Azure storage node, and then choose **Attach External Storage**.
+1. [サーバー エクスプローラー] で、[Azure Storage] ノードのショートカット メニューを開き、**[外部ストレージのアタッチ]** をクリックします。
 
     ![Adding an existing storage account](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766039.png)
 
-1. Select or enter the following information for the new storage account in the **Create Storage Account** dialog box.
+1. **[ストレージ アカウントの作成]** ダイアログ ボックスで、新しいストレージ アカウントの次の情報を選択または入力します。
 
-    - The name of the existing storage account you want to attach. You can enter a name or select it from the list.
+    - 接続する既存のストレージ アカウントの名前。名前を入力するか、一覧から選択できます。
 
-    - The key for the selected storage account. This value is typically provided for you when you select a storage account. If you want Visual Studio to remember the storage account key, select the Remember account key box.
+    - 選択したストレージ アカウントのキー。この値は通常、ストレージ アカウントを選択したときに提供されます。ストレージ アカウントのキーを Visual Studio に記憶させるには、[アカウント キーを記憶する] チェック ボックスをオンにします。
 
-    - The protocol to use to connect to the storage account, such as HTTP, HTTPS, or a custom endpoint. See [How to Configure Connection Strings](https://msdn.microsoft.com/library/azure/ee758697.aspx) for more information about custom endpoints.
+    - HTTP、HTTPS、カスタム エンドポイントなど、ストレージ アカウントへの接続に使用するプロトコル。カスタム エンドポイントの詳細については、[接続文字列の構成方法](https://msdn.microsoft.com/library/azure/ee758697.aspx)に関するページを参照してください。
 
-### <a name="to-view-the-secondary-endpoints"></a>To view the secondary endpoints
+### セカンダリ エンドポイントを表示するには
 
-- If you created a storage account using the **Read-Access Geo Redundant** replication option, you can view its secondary endpoints. Open the shortcut menu for the account name, and then choose **Properties**.
+- **[Read-Access Geo Redundant]** レプリケーション オプションを使用してストレージ アカウントを作成した場合は、そのセカンダリ エンドポイントを表示することができます。アカウント名のショートカット メニューを開き、**[プロパティ]** を選択します。
 
     ![Storage secondary endpoints](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC766040.png)
 
-### <a name="to-remove-a-storage-account-from-server-explorer"></a>To remove a storage account from Server Explorer
+### サーバー エクスプローラーからストレージ アカウントを削除するには
 
-- In Server Explorer, open the shortcut menu for the account name, and then choose **Delete**. If you delete a storage account, any saved key information for that account is also removed.
+- サーバー エクスプローラーでアカウント名のショートカット メニューを開き、**[削除]** をクリックします。ストレージ アカウントを削除すると、そのアカウントに関して保存されていたキー情報もすべて削除されます。
 
-    >[AZURE.NOTE] If you delete a storage account from Server Explorer, it doesn’t affect your storage account or any data that it contains; it simply removes the reference from Server Explorer. To permanently delete a storage account, use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
+    >[AZURE.NOTE] サーバー エクスプローラーからストレージ アカウントを削除しても、サーバー エクスプローラーからの参照が削除されるだけで、ストレージ アカウントやアカウントに含まれるデータへの影響はありません。ストレージ アカウントを完全に削除するには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn more about how use Azure storage services, see [Accessing the Azure Storage Services](https://msdn.microsoft.com/library/azure/ee405490.aspx).
+Azure ストレージ サービスの使用方法の詳細については、「[Azure ストレージ サービスへのアクセス](https://msdn.microsoft.com/library/azure/ee405490.aspx)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Add Azure Storage by using Connected Services in Visual Studio | Microsoft Azure"
-   description="Add Azure Storage to your app by using the Visual Studio Add Connected Services dialog box"
+   pageTitle="Visual Studio の接続済みサービスを使用して Azure Storage を追加する | Microsoft Azure"
+   description="Visual Studio の [接続済みサービスの追加] ダイアログ ボックスを使用してアプリに Azure Storage を追加する"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,89 +15,83 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Visual Studio 接続済みサービスを使用した Azure ストレージの追加
 
-# <a name="adding-azure-storage-by-using-visual-studio-connected-services"></a>Adding Azure storage by using Visual Studio Connected Services
+## Overview
 
-## <a name="overview"></a>Overview
+Visual Studio 2015 では、**[接続済みサービスの追加]** ダイアログを使用して、Azure Storage に C# クラウド サービス、.NET バックエンド モバイル サービス、ASP.NET Web サイトまたはサービス、ASP.NET 5 サービス、あるいは Azure Web ジョブ サービスを接続できます。接続済みサービス機能は、必要なすべての参照と接続コードを追加し、構成ファイルを適切に変更します。また、ダイアログでは、次の手順が BLOB ストレージ、キュー、およびテーブルの開始であることを知らせるドキュメントが示されます。
 
-With Visual Studio 2015, you can connect any C# cloud service, .NET backend mobile service, ASP.NET website or service, ASP.NET 5 service, or Azure WebJob service to Azure Storage by using the **Add Connected Services** dialog. The connected service functionality adds all the needed references and connection code, and modifies your configuration files appropriately. The dialog also takes you to documentation that tells you what the next steps are to start blob storage, queues, and tables.
+## サポートされているプロジェクトの種類
 
-## <a name="supported-project-types"></a>Supported Project Types
+[接続済みサービス] ダイアログを使用して、次の種類のプロジェクトで Azure Storage に接続することができます。
 
-You can use the Connected Services dialog to connect to Azure Storage in the following project types.
+- ASP.NET Web プロジェクト
 
-- ASP.NET Web Projects
+- ASP.NET 5 プロジェクト
 
-- ASP.NET 5 Projects
+- .NET クラウド サービスの Web ロールと worker ロール プロジェクト
 
-- .NET Cloud Service Web Role and Worker Role Projects
+- .NET Mobile Services プロジェクト
 
-- .NET Mobile Services Projects
-
-- Azure WebJob Projects
+- Azure WebJob プロジェクト
 
 
-## <a name="connect-to-azure-storage-using-the-connected-services-dialog"></a>Connect to Azure Storage using the Connected Services dialog
+## [接続済みサービス] ダイアログを使用して Azure Storage に接続する
 
-1. Make sure you have an Azure account. If you don't have an Azure account, you can sign up for a [free trial](http://go.microsoft.com/fwlink/?LinkId=518146). Once you have an Azure account, you can create storage accounts, create mobile services, and configure Azure Active Directory.
+1. Azure アカウントがあることを確認します。Azure アカウントを持っていない場合、[無料試用版](http://go.microsoft.com/fwlink/?LinkId=518146)でサインアップできます。Azure アカウントを取得したら、ストレージ アカウントを作成し、モバイル サービスを作成して、Azure Active Directory を構成することができます。
 
-1. Open your project in Visual Studio, open the context menu for the **References** node in Solution Explorer, and then choose **Add Connected Service**.
+1. Visual Studio でプロジェクトを開き、ソリューション エクスプローラーで **[参照]** ノードのコンテキスト メニューを開いて、**[接続済みサービスの追加]** を選択します。
 
     ![Adding a connected service](./media/vs-azure-tools-connected-services-storage/IC796702.png)
 
-1. In the **Add Connected Service** dialog box, choose **Azure Storage**, and then choose the **Configure** button. You may be prompted to log into Azure if you haven't already done so.
+1. **[接続済みサービスの追加]** ダイアログ ボックスで、**[Azure Storage]** を選択し、**[構成]** をクリックします。Azure にまだログインしていない場合は、ログインを促すメッセージが表示される場合があります。
 
     ![Add Connected Service dialog box - Storage](./media/vs-azure-tools-connected-services-storage/IC796703.png)
 
-1. In the **Azure Storage** dialog box, select an existing storage account, and select **Add**.
+1. **[Azure Storage]** ダイアログ ボックスで、既存のストレージ アカウントを選択し、**[追加]** を選択します。
 
-    If you need to create a new storage account, go to the next step. Otherwise, skip to step 6.
+    新しいストレージ アカウントを作成する必要がある場合は、次の手順に進みます。必要ない場合は、手順 6 に進みます。
 
     ![Azure Storage dialog box](./media/vs-azure-tools-connected-services-storage/IC796704.png)
 
-1. To create a new storage account: 
+1. 新しいストレージ アカウントを作成するには
 
-    1. Choose the **Create a New Storage Account** button at the bottom of the Azure Storage dialog box.
+    1. [Azure Storage] ダイアログ ボックスの下部にある **[ストレージ アカウントの作成]** ボタンをクリックします。
 
-    1. Fill out the **Create Storage Account** dialog box and then choose the **Create** button.
+    1. **[ストレージ アカウントの作成** ] ダイアログ ボックスに入力し、**[作成]** ボタンをクリックします。
     
         ![Azure Storage dialog box](./media/vs-azure-tools-connected-services-storage/create-storage-account.png)
 
-        When you're back in the **Azure Storage** dialog box, the new storage appears in the list.
+        **[Azure Storage]** ダイアログ ボックスに戻ると、新しいストレージが一覧に表示されます。
 
-    1. Select the new storage in the list, and select **Add**.
+    1. 一覧の中から新しいストレージを選択し、**[追加]** を選択します。
 
-1. The  storage connected service appears under the Service References node of your WebJob project.
+1. WebJob プロジェクトの [サービス参照] ノードの下に、ストレージの接続済みサービスが表示されます。
 
     ![Azure storage in web jobs project](./media/vs-azure-tools-connected-services-storage/IC796705.png)
 
-1. Review the Getting Started page that appears and find out how your project was modified. A Getting Started page appears in your browser whenever you add a connected service. You can review the suggested next steps and code examples, or switch to the What Happened page to see what references were added to your project, and how your code and configuration files were modified.
+1. 表示された作業の開始ページを確認し、プロジェクトがどのように変更されたかを確認します。作業の開始ページは、接続済みサービスを追加したかどうかに関係なく、ブラウザーに表示されます。推奨される次の手順とコード例を確認したり、[変更内容] ページに切り替えて、プロジェクトに追加された参照と、コードと構成ファイルがどのように変更されたかを確認したりすることができます。
 
-## <a name="how-your-project-is-modified"></a>How your project is modified
+## プロジェクトを変更する方法
 
-When you finish the dialog, Visual Studio adds references and modifies certain configuration files. The specific changes depend on the project type. 
+ダイアログが完了すると、Visual Studio は参照を追加し、特定の構成ファイルを変更します。特定の変更はプロジェクトの種類によって異なります。
 
- - For ASP.NET projects, see [What happened – ASP.NET Projects](http://go.microsoft.com/fwlink/p/?LinkId=513126). 
- - For ASP.NET 5 projects, see [What happened – ASP.NET 5 Projects](http://go.microsoft.com/fwlink/p/?LinkId=513124). 
- - For cloud service projects (web roles and worker roles), see [What happened – Cloud Service projects](http://go.microsoft.com/fwlink/p/?LinkId=516965). 
- - For WebJob projects, see [What happened - WebJob projects](./storage/vs-storage-webjobs-what-happened.md).
+ - ASP.NET プロジェクトの場合は、[変更内容 – ASP.NET プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513126)を参照してください。
+ - ASP.NET 5 プロジェクトの場合は、[変更内容 – ASP.NET 5 プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=513124)を参照してください。
+ - クラウド サービス プロジェクト (Web ロールおよび worker ロール) の場合は、[変更内容 – クラウド サービス プロジェクト](http://go.microsoft.com/fwlink/p/?LinkId=516965)を参照してください。
+ - WebJob プロジェクトの場合は、[変更内容 - WebJob プロジェクト](./storage/vs-storage-webjobs-what-happened.md)を参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-1. Using the Getting Started code samples as a guide, create the type of storage that you want, and then start writing code to access your storage account!
+1. 作業の開始のコード サンプルを使用して、必要なストレージの種類を作成し、ストレージ アカウントにアクセスするためのコードを記述し始めます。
 
-1. Ask questions and get help
-     - [MSDN Forum: Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
+1. 質問してヘルプを表示します。
+     - [MSDN フォーラム: Azure Storage](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 
-     - [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/)
+     - [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-     - [Storage at azure.microsoft.com](https://azure.microsoft.com/services/storage/)
+     - [Storage (azure.microsoft.com)](https://azure.microsoft.com/services/storage/)
 
-     - [Storage Documentation at azure.microsoft.com](https://azure.microsoft.com/documentation/services/storage/)
+     - [Storage のドキュメント (azure.microsoft.com)](https://azure.microsoft.com/documentation/services/storage/)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

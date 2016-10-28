@@ -1,57 +1,52 @@
 <properties 
-    pageTitle="Monitor encoding job progress with the Azure portal" 
-    description="This tutorial walks you through the steps of monitoring your job progress using the Azure portal." 
-    services="media-services" 
-    documentationCenter="" 
-    authors="juliako" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Azure ポータルを使用したエンコード ジョブの進行状況の監視" 
+	description="このチュートリアルでは、Azure ポータルを使用して、ジョブの進行状況を監視する手順について説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/29/2016"  
-    ms.author="juliako"/>
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/29/2016"  
+	ms.author="juliako"/>
 
-
-#<a name="monitor-encoding-job-progress-with-the-azure-portal"></a>Monitor encoding job progress with the Azure portal
+#Azure ポータルを使用したエンコード ジョブの進行状況の監視
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-check-job-progress.md)
+- [ポータル](media-services-portal-check-job-progress.md)
 - [.NET](media-services-check-job-progress.md)
-- [REST](media-services-rest-check-job-progress.md)
+- [REST ()](media-services-rest-check-job-progress.md)
 
-## <a name="overview"></a>Overview
+## Overview
 
-> [AZURE.NOTE] To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/). 
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-When you run jobs, you often require a way to track job progress. 
+ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。
 
-To monitor the progress of the encoding job, click **Settings** (at the top of the page) and then select **Jobs**.
+エンコード ジョブの進行状況を監視するには、ページの上部にある **[設定]** をクリックし、**[ジョブ]** を選択します。
 
-![Jobs](./media/media-services-portal-vod-get-started/media-services-jobs.png)
+![ジョブ](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
-You can click the job to see more details.
+ジョブをクリックして詳細を確認します。
 
-![Jobs](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
+![ジョブ](./media/media-services-portal-vod-get-started/media-services-job-progress2.png)
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-After your encoding job is one, you can publish and play your assets, as described [here](media-services-portal-publish.md).
+エンコード ジョブが完了したら、[こちら](media-services-portal-publish.md)の説明に従って資産を発行し、再生できます。
 
-##<a name="media-services-learning-paths"></a>Media Services learning paths
+##Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

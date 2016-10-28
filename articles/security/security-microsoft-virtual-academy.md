@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure security courses from Microsoft Virtual Academy | Microsoft Azure"
-   description="This article provides a curated collection of Azure security related courses from Microsoft Virtual Academy.  Microsoft Virtual Academy provides free, online training to help Developers, IT and Data Professionals, and students learn the latest technology, build their skills, and advance their careers."
+   pageTitle="Microsoft Virtual Academy の Azure セキュリティ関連コース | Microsoft Azure"
+   description="この記事には、Microsoft Virtual Academy から、Azure のセキュリティ関連のコースを精選して集めてあります。Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,55 +16,50 @@
    ms.date="08/09/2016"
    ms.author="terrylan"/>
 
+# Microsoft Virtual Academy の Azure セキュリティ関連コース
 
-# <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Azure security courses from Microsoft Virtual Academy
+Microsoft Virtual Academy は、開発者、IT およびデータの専門家、学生が最新テクノロジを学習し、スキルを身に付け、キャリアを積めるように支援する、無料のオンライン トレーニングを提供します。
 
-Microsoft Virtual Academy provides free, online training to help Developers, IT and Data Professionals, and students learn the latest technology, build their skills, and advance their careers.
+このページには、Azure のセキュリティ関連のコースを精選して集めてあります。利用できるすべてのコースを参照するには、[Microsoft Virtual Academy](https://mva.microsoft.com/) にアクセスしてください。
 
-On this page, you find a curated collection of Azure security-related courses. Visit the [Microsoft Virtual Academy](https://mva.microsoft.com/) to see all the courses they have available.
+[Dev/Test in the Cloud (クラウドでの開発/テスト)](https://mva.microsoft.com/ja-JP/training-courses/devtest-in-the-cloud-16274?l=9aAijd7LC_2005190311)
 
-[Dev/Test in the Cloud](https://mva.microsoft.com/en-us/training-courses/devtest-in-the-cloud-16274?l=9aAijd7LC_2005190311)
+開発者は、速くて高性能なアプリケーションを提供しなければなりません。 開発とテストの環境をクラウドに移行することで、その課題を解決できます。 その方法を学習し、移行の利点を確認してください。さらに、Microsoft Azure がどのように開発およびテストのニーズをサポートするかを示すデモとプレゼンテーションをご覧ください。セキュリティ開発に関するレッスンやデプロイのプラクティスが含まれています。
 
-Are you a developer who needs to deliver faster and better applications? Moving your development and testing environments to the cloud can help you achieve exactly that! Learn how to get it done, and find out the benefits of making the move. Plus, see demonstrations and presentations that show you how Microsoft Azure can support your development and testing needs. Included are lesson on security development and deployment practices.
+[Common Tasks for Linux on Azure (Azure での Linux 用の一般的なタスク)](https://mva.microsoft.com/ja-JP/training-courses/common-tasks-for-linux-on-azure-16191?l=J0Hvb7qJC_1204668937)
 
-[Common Tasks for Linux on Azure](https://mva.microsoft.com/en-us/training-courses/common-tasks-for-linux-on-azure-16191?l=J0Hvb7qJC_1204668937)
+Microsoft Azure Platform での Linux の使用に関して疑問がある場合は、このコースで答えが見つかります。[Linux Academy](https://linuxacademy.com/) のエキスパートと共に、いくつかの一般的なタスクを見てみましょう。Azure での Linux 仮想マシン (VM) の作成、リモート デスクトップ ソフトウェアによる Linux VM へのアクセス、仮想ホストの実行について説明します。多くのセキュリティ テクノロジや構成が、このコースで扱われています。
 
-If you have questions about using Linux on the Microsoft Azure platform, this detailed course has answers for you. Explore some common tasks with the experts from [Linux Academy](https://linuxacademy.com/). Learn about creating a Linux virtual machine (VM) in Azure, accessing the Linux VM using remote desktop software, and running virtual hosts. Many security technologies and configurations are addressed in this course.
+[Secure the Cloud (クラウドの保護)](https://mva.microsoft.com/ja-JP/training-courses/secure-the-cloud-14037?l=lQIkkst0B_5300115881)
 
-[Secure the Cloud](https://mva.microsoft.com/en-us/training-courses/secure-the-cloud-14037?l=lQIkkst0B_5300115881)
+このセッションでは、新しいセキュリティ制御によって ISO 27001/27018、FedRAMP、PCI、HIPAA などのグローバルなコンプライアンス要件を満たせるように Microsoft が支援する方法について説明します。こうした制御は、保管データの暗号化、キー管理、仮想マシン保護、ログ記録と監視から、マルウェア対策サービス、ID 管理、アクセス制御などに及びます。
 
-In this session, learn how Microsoft can help you meet global compliance requirements, such as ISO 27001 / 27018, FedRAMP, PCI, and HIPAA, with new security controls. These controls range from at-rest data encryption, key management, VM protection, logging and monitoring, to anti-malware services, identity management, access controls, and more.
+[Design and Implement Cloud Data Platform Solutions (クラウド データ プラットフォーム ソリューションの設計と実装)](https://mva.microsoft.com/ja-JP/training-courses/design-and-implement-cloud-data-platform-solutions-15711?l=jbCdW0j1B_3005244527)
 
-[Design and Implement Cloud Data Platform Solutions](https://mva.microsoft.com/en-us/training-courses/design-and-implement-cloud-data-platform-solutions-15711?l=jbCdW0j1B_3005244527)
+Microsoft クラウド データ プラットフォーム ソリューションの機能について説明します。プラットフォームの概要を把握し、セキュリティ機能、高可用性のオプション、クラウド データの監視および管理の手法などについての説明をお聞きください。さらに、Microsoft クラウド データ プラットフォーム機能を使用してパブリックおよびハイブリッド クラウド ソリューションを設計する際に、トレードオフを特定して判断するためのガイダンスも利用できます。
 
-Learn the features and capabilities of Microsoft cloud data platform solutions. Get a platform overview and hear about security features, options for high availability, techniques for monitoring and managing cloud data, and more. Plus, get guidance on how to identify tradeoffs and make decisions for designing public and hybrid cloud solutions using Microsoft cloud data platform features.
+[Manage and Secure Identities in a Cloud and Mobile World (クラウドとモバイルの世界での ID の管理と保護)](https://mva.microsoft.com/ja-JP/training-courses/manage-and-secure-identities-in-a-cloud-and-mobile-world-14013?l=GIJ2GcvrB_405192797)
 
-[Manage and Secure Identities in a Cloud and Mobile World](https://mva.microsoft.com/en-us/training-courses/manage-and-secure-identities-in-a-cloud-and-mobile-world-14013?l=GIJ2GcvrB_405192797)
+このセッションでは、Azure Active Directory と Microsoft Advanced Threat Analytics が、お客様のユーザー ID を保護および管理し、被害が生じる前にセキュリティ侵害を特定して、すべての企業リソースにアクセスするための単一の ID をユーザーに提供できるように支援する方法について説明します。高度なセキュリティ レポート、ユーザー行動分析、監査、およびアラートを通じて、シャドウ IT の発見、アプリケーション アクセスの管理、不審なアクティビティの監視のために使用されるテクノロジを見て行きましょう。
 
-In this session, learn how Azure Active Directory and Microsoft Advanced Threat Analytics helps you secure and manage user identity, identify security breaches before they cause damage, and provide your users a single identity for accessing all corporate resources. Explore the technologies used to discover Shadow IT, manage application access, and monitor suspicious activity through advanced security reporting, user behavioral analytics, auditing, and alerting.
+[Security in a Cloud-Enabled World (クラウド対応世界のセキュリティ)](https://mva.microsoft.com/ja-JP/training-courses/security-in-a-cloudenabled-world-12725?l=CfLHobAcB_3904300474)
 
-[Security in a Cloud-Enabled World](https://mva.microsoft.com/en-us/training-courses/security-in-a-cloudenabled-world-12725?l=CfLHobAcB_3904300474)
+[エンタープライズ アーキテクト向けの Microsoft Cloud セキュリティについて](http://www.microsoft.com/download/48121)のポスターで、お客様の責任に関するロードマップをエキスパートが説明します。エキスパートはセキュリティ対策の各部を最新化するための推奨事項も示します。たとえば、ガバナンス、コンテインメント戦略、セキュリティ操作、高価値資産保護、情報保護、ユーザーおよびデバイスのセキュリティなどについて、特に管理制御の保護に重点を置いて説明します。Microsoft サイバーセキュリティ チームがお客様のクラウドのセキュリティの評価やセキュリティ ロードマップの作成に使用しているのと同じフレームワークを基にして学習します。
 
-Experts lead you through the customer responsibility roadmap in the [Microsoft Cloud Security for Enterprise Architects](http://www.microsoft.com/download/48121) poster. The experts also provide recommendations for modernizing each part of your security posture, including governance, containment strategies, security operations, high-value asset protection, information protection, and user and device security, with a particular emphasis on protecting administrative control. Learn from the same framework that the Microsoft cybersecurity team uses to assess customers' cloud security and to build them a security roadmap.
+[Microsoft Azure IaaS Deep Dive (Microsoft Azure IaaS の詳細)](https://mva.microsoft.com/ja-JP/training-courses/microsoft-azure-iaas-deep-dive-14339?l=PtppYVQgB_8300115888)
 
-[Microsoft Azure IaaS Deep Dive](https://mva.microsoft.com/en-us/training-courses/microsoft-azure-iaas-deep-dive-14339?l=PtppYVQgB_8300115888)
+Microsoft Azure のインフラストラクチャ機能の使用方法について説明します。IT プロフェッショナルは、これまでに Azure の経験がなくてもかまいません。このコースでは、Azure VM、Azure Virtual Networks、およびクロスプレミス接続を作成および構成して、クラウドを活用できるようにします。コースの各所で、セキュリティ機能と考慮事項が説明されています。
 
-Learn how to use Microsoft Azure infrastructure capabilities. If you are an IT Pro, no need to have previous experience with Azure. This course walks you through creating and configuring Azure VMs, Azure Virtual Networks, and cross-premises connectivity to get things up and running on the cloud. Security features and considerations are included throughout the course.
+[Getting Started with Azure Security for the IT Professional (IT プロフェッショナル向けの Azure セキュリティ入門)](https://mva.microsoft.com/training-courses/getting-started-with-azure-security-for-the-it-professional-11165?l=HfHzCXSAB_7404300474)
 
-[Getting Started with Azure Security for the IT Professional](https://mva.microsoft.com/training-courses/getting-started-with-azure-security-for-the-it-professional-11165?l=HfHzCXSAB_7404300474)
+多くのデモが含まれているこのコースでは、セキュリティのエキスパートと Azure エンジニアのチームが、基本認定以上の内容を紹介し、Azure 内で何が可能なのかを探ります。さまざまなテクノロジを設計および使用する方法を確認して、プロジェクトをクラウドで正常に開始するために必要なセキュリティとアーキテクチャを確立できるようにしてください。データセンター業務、VM の構成、ネットワーク アーキテクチャ、ストレージ インフラストラクチャにも取り組んでみましょう。
 
-In this demo-filled course, a team of security experts and Azure engineers takes you beyond the basic certifications and explores what's possible inside Azure. See how to design and use various technologies to ensure that you have the security and architecture you need to successfully launch your projects in the cloud. Dive into datacenter operations, VM configuration, network architecture, and storage infrastructure.
+[Deep Dive into Azure Resource Manager Scenarios and Patterns (Azure Resource Manager のシナリオとパターンの詳細)](https://mva.microsoft.com/ja-JP/training-courses/deep-dive-into-azure-resource-manager-scenarios-and-patterns-13793?l=i1m06ZJYB_7001937557)
 
-[Deep Dive into Azure Resource Manager Scenarios and Patterns](https://mva.microsoft.com/en-us/training-courses/deep-dive-into-azure-resource-manager-scenarios-and-patterns-13793?l=i1m06ZJYB_7001937557)
+チームのエキスパートと共に、Azure Resource Manager を使ってみましょう。アプリケーション インフラストラクチャの要素を簡単にスピンアップしたりスピンダウンしたりできるスクリプトとツールを紹介します。Azure Resource Manager でセキュリティを実装するために、ロールベースのアクセス制御 (RBAC) を使用してみましょう。
 
-Explore Azure Resource Manager with a team of experts, who show you scripts and tools that make it easy to spin up or spin down elements of your application infrastructure. Explore the use of role-based access control (RBAC) to implement security with Azure Resource Manager.
+[Azure Rights Management Services Core Skills (Azure Rights Management サービスの主要なスキル)](https://mva.microsoft.com/ja-JP/training-courses/azure-rights-management-services-core-skills-10500?l=QLoxMwuCB_1805094681)
 
-[Azure Rights Management Services Core Skills](https://mva.microsoft.com/en-us/training-courses/azure-rights-management-services-core-skills-10500?l=QLoxMwuCB_1805094681)
+組織で情報保護が "必須" の要件である理由と、組織の知的財産がデバイスとクラウド間のどこにあっても Rights Management で保護できるしくみについて説明します。Microsoft のエキスパートから、実践的な経験と技術的なノウハウを学んでください。
 
-Find out why information protection is a "must have" requirement in your organization and how rights management protects your organization's intellectual property, wherever it travels across devices and the cloud. Get hands-on experience and technical know-how from Microsoft experts.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

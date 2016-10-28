@@ -1,162 +1,157 @@
 <properties
-    pageTitle="Install and use Giraph on Linux-based HDInsight (Hadoop) | Microsoft Azure"
-    description="Learn how to install Giraph on Linux-based HDInsight clusters using Script Actions. Script Actions allow you to customize the cluster during creation, by changing cluster configuration or installing services and utilities."
-    services="hdinsight"
-    documentationCenter=""
-    authors="Blackmist"
-    manager="jhubbard"
-    editor="cgronlun"
-    tags="azure-portal"/>
+	pageTitle="Linux ベースの HDInsight (Hadoop) に Giraph をインストールして使用する | Microsoft Azure"
+	description="スクリプト アクションを使用して Linux ベースの HDInsight クラスターに Giraph をインストールする方法について説明します。スクリプト アクションでは、クラスター構成を変更するか、サービスとユーティリティをインストールすることで、クラスターを作成時にカスタマイズできます。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	manager="jhubbard"
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/02/2016"
-    ms.author="larryfr"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/02/2016"
+	ms.author="larryfr"/>
 
+# HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
-# <a name="install-giraph-on-hdinsight-hadoop-clusters,-and-use-giraph-to-process-large-scale-graphs"></a>Install Giraph on HDInsight Hadoop clusters, and use Giraph to process large-scale graphs
+**Script Action** を使用してクラスターをカスタマイズして、Azure HDInsight の Hadoop の任意の種類のクラスターに Giraph をインストールできます。
 
-You can install Giraph on any type of cluster in Hadoop on Azure HDInsight by using **Script Action** to customize a cluster.
+このトピックでは、Script Action を使用して Giraph をインストールする方法を学習します。Giraph をインストールした後は、大規模なグラフを処理する多くの一般的なアプリケーションで Giraph を使用する方法についても説明します。
 
-In this topic, you will learn how to install Giraph by using Script Action. Once you have installed Giraph, you'll also learn how to use Giraph for most typical applications, which is to process large-scale graphs.
+> [AZURE.NOTE] この記事の情報は、Linux ベースの HDInsight クラスターに固有のものです。Windows ベースのクラスターの操作については、[HDInsight Hadoop クラスターへの Giraph のインストール (Windows)](hdinsight-hadoop-giraph-install.md) に関するページを参照してください。
 
-> [AZURE.NOTE] The information in this article is specific to Linux-based HDInsight clusters. For information on working with Windows-based clusters, see [Install Giraph on HDInsight Hadoop clusters (Windows)](hdinsight-hadoop-giraph-install.md)
+## <a name="whatis"></a>Giraph とは
 
-## <a name="<a-name="whatis"></a>what-is-giraph?"></a><a name="whatis"></a>What is Giraph?
+[Apache Giraph](http://giraph.apache.org/) は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。グラフでは、オブジェクト間の関係 (インターネットのような大規模ネットワークでのルーター間の接続など) や、ソーシャル ネットワークでの人々の関係 (ソーシャル グラフとも呼ばれる) をモデル化します。グラフの処理により、次のようなグラフ内のオブジェクト間の関係について推論できます。
 
-[Apache Giraph](http://giraph.apache.org/) allows you to perform graph processing by using Hadoop, and can be used with Azure HDInsight. Graphs model relationships between objects, such as the connections between routers on a large network like the Internet, or relationships between people on social networks (sometimes referred to as a social graph). Graph processing allows you to reason about the relationships between objects in a graph, such as:
+- 現在の関係に基づいて潜在的な友人を識別する
+- ネットワーク内の 2 台のコンピューター間の最短ルートを識別する
+- Web ページのページ順位を計算する
 
-- Identifying potential friends based on your current relationships.
-- Identifying the shortest route between two computers in a network.
-- Calculating the page rank of webpages.
-
-> [AZURE.WARNING] Components provided with the HDInsight cluster are fully supported and Microsoft Support will help to isolate and resolve issues related to these components.
+> [AZURE.WARNING] HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> Custom components, such as Giraph, receive commercially reasonable support to help you to further troubleshoot the issue. This might result in resolving the issue OR asking you to engage available channels for the open source technologies where deep expertise for that technology is found. For example, there are many community sites that can be used, like: [MSDN forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight), [http://stackoverflow.com](http://stackoverflow.com). Also Apache projects have project sites on [http://apache.org](http://apache.org), for example: [Hadoop](http://hadoop.apache.org/).
+> Giraph といったカスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
-##<a name="what-the-script-does"></a>What the script does
+##スクリプトの機能
 
-This script performs the following actions:
+このスクリプトは、次のアクションを実行します。
 
-* Installs Giraph to `/usr/hdp/current/giraph`
-* Copies the `giraph-examples.jar` file to default storage (WASB) for your cluster: `/example/jars/giraph-examples.jar`
+* Giraph を `/usr/hdp/current/giraph` にインストールする。
+* `/example/jars/giraph-examples.jar` のように、`giraph-examples.jar` ファイルをクラスターの既定のストレージ (WASB) にコピーする。
 
-## <a name="<a-name="install"></a>install-giraph-using-script-actions"></a><a name="install"></a>Install Giraph using Script Actions
+## <a name="install"></a>スクリプト アクションを使用した Giraph のインストール
 
-A sample script to install Giraph on an HDInsight cluster is available at the following location.
+HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、次の場所にあります。
 
     https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
 
-This section provides instructions on how to use the sample script while creating the cluster by using the Azure Portal. 
+このセクションでは、Azure ポータルを使用してクラスターを作成する際に、サンプル スクリプトを使用する方法について説明します。
 
-> [AZURE.NOTE] Azure PowerShell, the Azure CLI, the HDInsight .NET SDK, or Azure Resource Manager templates can also be used to apply script actions. You can also apply script actions to already running clusters. For more information, see [Customize HDInsight clusters with Script Actions](hdinsight-hadoop-customize-cluster-linux.md).
+> [AZURE.NOTE] スクリプト アクションは、Azure PowerShell、Azure CLI、HDInsight .NET SDK、または Azure Resource Manager のテンプレートを使用して適用することもできます。既に実行しているクラスターにスクリプト アクションを適用することもできます。詳細については、[スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)に関する記事を参照してください。
 
-1. Start creating a cluster by using the steps in [Create Linux-based HDInsight clusters](hdinsight-provision-linux-clusters.md#portal), but do not complete creation.
+1. [Linux ベースの HDInsight クラスターの作成](hdinsight-provision-linux-clusters.md#portal)に関するページに記載されている手順を使用して、クラスターの作成を開始します。ただし、作成を完了しないでください。
 
-2. On the **Optional Configuration** blade, select **Script Actions**, and provide the information below:
+2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
-    * __NAME__: Enter a friendly name for the script action.
-    * __SCRIPT URI__: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
-    * __HEAD__: Check this option
-    * __WORKER__: Check this option
-    * __ZOOKEEPER__: Check this option to install on the Zookeeper node.
-    * __PARAMETERS__: Leave this field blank
+	* __[名前]__: スクリプト アクションの表示名を入力します。
+	* __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh
+	* __[ヘッド]__: このオプションをオンにします。
+	* __[ワーカー]__: このオプションをオンにします。
+	* __[Zookeeper]__: Zookeeper ノードにインストールするには、このオプションをオンにします。
+	* __[パラメーター]__: このフィールドは空のままにします。
 
-3. At the bottom of the **Script Actions**, use the **Select** button to save the configuration. Finally, use the **Select** button at the bottom of the **Optional Configuration** blade to save the optional configuration information.
+3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-4. Continue creating the cluster as described in [Create Linux-based HDInsight clusters](hdinsight-hadoop-create-linux-clusters-portal.md).
+4. 「[Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターの作成を続行します。
 
-## <a name="<a-name="usegiraph"></a>how-do-i-use-giraph-in-hdinsight?"></a><a name="usegiraph"></a>How do I use Giraph in HDInsight?
+## <a name="usegiraph"></a>HDInsight で Giraph を使用する方法
 
-Once the cluster has finished creating, use the following steps to run the SimpleShortestPathsComputation example included with Giraph. This implements the basic <a href = "http://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> implementation for finding the shortest path between objects in a graph.
+クラスターの作成が完了したら、次の手順を使用して、Giraph に含まれているサンプル SimpleShortestPathsComputation を実行します。これにより、グラフのオブジェクト間の最短パスを見つけるための基本的な <a href = "http://people.apache.org/~edwardyoon/documents/pregel.pdf">Pregel</a> が実装されます。
 
-1. Connect to the HDInsight cluster using SSH:
+1. SSH を使用して HDInsight クラスターに接続します。
 
-        ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
+		ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    For more information on using SSH with HDInsight, see the following:
+	HDInsight での SSH の使用方法の詳細については、以下の記事を参照してください。
 
-    * [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
+	* [Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-    * [Use SSH with Linux-based Hadoop on HDInsight from Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
+	* [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)
 
-1. Use the following to create a new file named __tiny_graph.txt__:
+1. 次のコマンドを使用して、__tiny\_graph.txt__ という名前の新しいファイルを作成します。
 
-        nano tiny_graph.txt
+		nano tiny_graph.txt
 
-    Use the following as the contents of this file:
+	このファイルの内容として以下を使用します。
 
-        [0,0,[[1,1],[3,3]]]
-        [1,0,[[0,1],[2,2],[3,1]]]
-        [2,0,[[1,2],[4,4]]]
-        [3,0,[[0,3],[1,1],[4,4]]]
-        [4,0,[[3,4],[2,4]]]
+		[0,0,[[1,1],[3,3]]]
+		[1,0,[[0,1],[2,2],[3,1]]]
+		[2,0,[[1,2],[4,4]]]
+		[3,0,[[0,3],[1,1],[4,4]]]
+		[4,0,[[3,4],[2,4]]]
 
-    This data describes a relationship between objects in a directed graph, by using the format [source\_id, source\_value,[[dest\_id], [edge\_value],...]]. Each line represents a relationship between a **source\_id** object and one or more **dest\_id** objects. The **edge\_value** (or weight) can be thought of as the strength or distance of the connection between **source_id** and **dest\_id**.
+	このデータは、[source\_id, source\_value,[[dest\_id], [edge\_value],...]] の形式を使用して有向グラフ内のオブジェクト間の関係を示しています。各行は、**source\_id** オブジェクトと 1 つ以上の **dest\_id** オブジェクトとの関係を表現しています。**edge\_value** (重み) は、**source\_id** と **dest\_id** の間のつながりの強さまたは距離であると考えられます。
 
-    Drawn out, and using the value (or weight) as the distance between objects, the above data might look like this:
+	この値 (重み) を使用し、オブジェクト間の距離に応じて線を引くと、先のデータは次の図のようになります。
 
-    ![tiny_graph.txt drawn as circles with lines of varying distance between](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
+	![円で表した tiny\_graph.txt (線はオブジェクト間の距離)](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph.png)
 
-2. To save the file, use __Ctrl+X__, then __Y__, and finally __Enter__ to accept the file name.
+2. ファイルを保存するには、__Ctrl キーを押しながら X キー__を押し、__Y__ キー、__Enter__ キーの順に押してファイル名を確定します。
 
-3. Use the following to store the data into primary storage for your HDInsight cluster:
+3. 次のコマンドを使用して、HDInsight クラスターのプライマリ ストレージにデータを格納します。
 
-        hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
+		hdfs dfs -put tiny_graph.txt /example/data/tiny_graph.txt
 
-4. Run the SimpleShortestPathsComputation example using the following command.
+4. 次のコマンドを使用して、サンプル SimpleShortestPathsComputation を実行します。
 
-         yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
+		 yarn jar /usr/hdp/current/giraph/giraph-examples.jar org.apache.giraph.GiraphRunner org.apache.giraph.examples.SimpleShortestPathsComputation -ca mapred.job.tracker=headnodehost:9010 -vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFormat -vip /example/data/tiny_graph.txt -vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat -op /example/output/shortestpaths -w 2
 
-    The parameters used with this command are described in the following table.
+	このコマンドで使用されるパラメーターを次の表に示します。
 
-  	| Parameter | What it does |
-  	| --------- | ------------ |
-  	| `jar /usr/hdp/current/giraph/giraph-examples.jar` | The jar file containing the examples. |
-  	| `org.apache.giraph.GiraphRunner` | The class used to start the examples. |
-  	| `org.apache.giraph.examples.SimpleShortestPathsCoputation` | The example that will be ran. In this case, it will compute the shortest path between ID 1 and all other IDs in the graph. |
-  	| `-ca mapred.job.tracker=headnodehost:9010` | The headnode for the cluster. |
-  	| `-vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFromat` | The input format to use for the input data. |
-  	| `-vip /example/data/tiny_graph.txt` | The input data file. |
-  	| `-vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat` | The output format. In this case, ID and value as plain text. |
-  	| `-op /example/output/shortestpaths` | The output location. |
-  	| `-w 2` | The number of workers to use. In this case, 2. |
+	| パラメーター | 実行内容 |
+	| --------- | ------------ |
+	| `jar /usr/hdp/current/giraph/giraph-examples.jar` | サンプルを含む jar ファイル。 |
+	| `org.apache.giraph.GiraphRunner` | サンプルを開始するために使用するクラス。 |
+	| `org.apache.giraph.examples.SimpleShortestPathsCoputation` | 実行されるサンプル。この場合は、ID 1 とグラフ内の他のすべての ID の間の最短パスを計算します。 |
+	| `-ca mapred.job.tracker=headnodehost:9010` | クラスターのヘッド ノード。 |
+	| `-vif org.apache.giraph.io.formats.JsonLongDoubleFloatDoubleVertexInputFromat` | 入力データに使用する入力形式。 |
+	| `-vip /example/data/tiny_graph.txt` | 入力データ ファイル。 |
+	| `-vof org.apache.giraph.io.formats.IdWithValueTextOutputFormat` | 出力形式。この場合は、ID と値をプレーンテキストとして出力します。 |
+	| `-op /example/output/shortestpaths` | 出力場所。 |
+	| `-w 2` | 使用する worker の数。この場合は 2 です。 |
 
-    For more information on these, and other parameters used with Giraph samples, see the [Giraph quickstart](http://giraph.apache.org/quick_start.html).
+	これらのパラメーターと Giraph サンプルで使用されるその他のパラメーターの詳細については、[Giraph のクイックスタート](http://giraph.apache.org/quick_start.html)のページを参照してください。
 
-5. Once the job has finished, the results will be stored in the __wasbs:///example/out/shotestpaths__ directory. The files created will begin with __part-m-__ and end with a number indicating the first, second, etc. file. Use the following to view the output:
+5. ジョブが完了すると、結果が __wasbs:///example/out/shotestpaths__ ディレクトリに格納されます。作成されたファイルの名前の先頭は "__part-m-\_\_"、末尾はファイルの順番を示す数字です。次のコマンドを使用して、出力を表示します。
 
-        hdfs dfs -text /example/output/shortestpaths/*
+		hdfs dfs -text /example/output/shortestpaths/*
 
-    The output should appear similar to the following:
+	出力は次のようになります。
 
-        0   1.0
-        4   5.0
-        2   2.0
-        1   0.0
-        3   1.0
+		0	1.0
+		4	5.0
+		2	2.0
+		1	0.0
+		3	1.0
 
-    The SimpleShortestPathComputation example is hard coded to start with object ID 1 and find the shortest path to other objects. So the output should be read as `destination_id distance`, where distance is the value (or weight) of the edges traveled between object ID 1 and the target ID.
+	SimpleShortestPathComputation サンプルは、オブジェクト ID 1 から開始して他のオブジェクトへの最短パスを見つけるようにハードコーディングされています。したがって、出力は `destination_id distance` として読み取られます。distance はオブジェクト ID 1 とターゲット ID の間を結ぶエッジの値 (重み) です。
 
-    Visualizing this, you can verify the results by traveling the shortest paths between ID 1 and all other objects. Note that the shortest path between ID 1 and ID 4 is 5. This is the total distance between <span style="color:orange">ID 1 and 3</span>, and then <span style="color:red">ID 3 and 4</span>.
+	これを視覚化して、ID 1 と他のすべてのオブジェクトの間で最短パスを結ぶことにより、結果を検証できます。ID 1 と ID 4 の最短パスは 5 です。これは、<span style="color:orange">ID 1 と 3</span>、<span style="color:red">ID 3 と 4</span> を結ぶ距離の合計です。
 
-    ![Drawing of objects as circles with shortest paths drawn between](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
-
-
-## <a name="next-steps"></a>Next steps
-
-- [Install and use Hue on HDInsight clusters](hdinsight-hadoop-hue-linux.md). Hue is a web UI that makes it easy to create, run and save Pig and Hive jobs, as well as browse the default storage for your HDInsight cluster.
-
-- [Install R on HDInsight clusters](hdinsight-hadoop-r-scripts-linux.md): Instructions on how to use cluster customization to install and use R on HDInsight Hadoop clusters. R is an open-source language and environment for statistical computing. It provides hundreds of built-in statistical functions and its own programming language that combines aspects of functional and object-oriented programming. It also provides extensive graphical capabilities.
-
-- [Install Solr on HDInsight clusters](hdinsight-hadoop-solr-install-linux.md). Use cluster customization to install Solr on HDInsight Hadoop clusters. Solr allows you to perform powerful search operations on data stored.
+	![オブジェクトを円で表し、最短パスで結んだ図](./media/hdinsight-hadoop-giraph-install-linux/giraph-graph-out.png)
 
 
+## 次のステップ
 
-<!--HONumber=Oct16_HO2-->
+- [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。Hue は、Pig ジョブや Hive ジョブの作成、実行、保存や、HDInsight クラスターの既定のストレージの参照を容易にする Web UI です。
 
+- [HDInsight Hadoop クラスターで R をインストールする](hdinsight-hadoop-r-scripts-linux.md)。HDInsight Hadoop クラスターで R をインストールして使用するためのクラスター カスタマイズの使用法に関する手順が説明されています。R は、統計計算用のオープン ソースの言語および環境です。R は、数百の組み込み統計関数と、関数型プログラミングとオブジェクト指向のプログラミングの特徴を結合した独自のプログラミング言語を提供します。また、広範なグラフィカル機能も提供します。
 
+- [HDInsight クラスターでの Solr のインストール](hdinsight-hadoop-solr-install-linux.md):クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Solr をインストールします。Solr は、格納されたデータに対して強力な検索操作を実行することができます。
+
+<!---HONumber=AcomDC_0914_2016-->

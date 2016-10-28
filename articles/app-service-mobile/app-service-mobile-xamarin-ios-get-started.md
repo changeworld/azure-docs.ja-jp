@@ -1,94 +1,94 @@
 <properties
-    pageTitle="Get started with Azure App Service Mobile Apps for Xamarin.iOS apps | Microsoft Azure"
-    description="Follow this tutorial to get started with using Mobile Apps for Xamarin.iOS development."
-    services="app-service\mobile"
-    documentationCenter="xamarin"
-    authors="adrianhall"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="Xamarin.iOS アプリに対して Azure App Service Mobile Apps を使用する | Microsoft Azure"
+	description="このチュートリアルに従って、Xamarin.iOS 開発用の Azure Mobile Apps を使用します。"
+	services="app-service\mobile"
+	documentationCenter="xamarin"
+	authors="adrianhall"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="na"
-    ms.tgt_pltfrm="mobile-xamarin-ios"
-    ms.devlang="dotnet"
-    ms.topic="hero-article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+	ms.service="app-service-mobile"
+	ms.workload="na"
+	ms.tgt_pltfrm="mobile-xamarin-ios"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="10/01/2016"
+	ms.author="adrianha"/>
 
 
-
-#<a name="create-a-xamarin.ios-app"></a>Create a Xamarin.iOS app
+#Xamarin.iOS アプリを作成する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-##<a name="overview"></a>Overview
+##Overview
 
-This tutorial shows you how to add a cloud-based backend service to a Xamarin.iOS mobile app by using an Azure mobile app backend.  You create both a new mobile app backend and a simple _Todo list_ Xamarin.iOS app that stores app data in Azure.
+このチュートリアルでは、Azure Mobile Apps バックエンドを使用して Xamarin.iOS モバイル アプリにクラウドベースのバックエンド サービスを追加する方法を示します。新しいモバイル アプリ バックエンドと、アプリのデータを Azure に保存する簡単な _Todo list_ Xaamrin.iOS アプリの両方を作成します。
 
-Completing this tutorial is a prerequisite for all other Xamarin.iOS tutorials about using the Mobile Apps feature in Azure App Service.
+このチュートリアルは、Azure App Service での Mobile Apps 機能の使用に関する他のすべての Xamarin.iOS チュートリアルを実行する前に完了しておく必要があります。
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
-To complete this tutorial, you need the following prerequisites:
+このチュートリアルを完了するには、以下が必要です。
 
-* An active Azure account. If you don't have an account, sign up for an Azure trial and get up to 10 free mobile apps that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
+* アクティブな Azure アカウント。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* Visual Studio with Xamarin. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) for instructions.
+* Visual Studio with Xamarin。手順については、「[Visual Studio と Xamarin の設定とインストール](https://msdn.microsoft.com/library/mt613162.aspx)」を参照してください。
 
-* A Mac with Xcode v7.0 or later and Xamarin Studio Community installed. See [Setup and install for Visual Studio and Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) and [Setup, install, and verifications for Mac users](https://msdn.microsoft.com/library/mt488770.aspx) (MSDN).
+* Xcode v7.0 以降と Xamarin Studio Community がインストールされた Mac。「[Setup and install for Visual Studio and Xamarin (Visual Studio と Xamarin を対象にしたセットアップとインストール)](https://msdn.microsoft.com/library/mt613162.aspx)」と「[Setup, install, and verifications for Mac users (Mac ユーザーを対象にしたセットアップ、インストール、および確認)](https://msdn.microsoft.com/library/mt488770.aspx)」 (MSDN) を参照してください。
 
->[AZURE.NOTE] If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile). You can immediately create a short-lived starter mobile app in App Service—no credit card required, and no commitments.
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="create-an-azure-mobile-app-backend"></a>Create an Azure Mobile App backend
+## 新しい Azure Mobile App バックエンドの作成
 
-Follow these steps to create a Mobile App backend.
+新しいモバイル アプリ バックエンドを作成するには、次の手順に従います。
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="configure-the-server-project"></a>Configure the server project
+## サーバー プロジェクトの構成
 
-You have now provisioned an Azure Mobile App backend that can be used by your mobile client applications. Next, download a server project for a simple "todo list" backend and publish it to Azure.
+これで、モバイル クライアント アプリケーションで使用できる Azure モバイル アプリ バックエンドのプロビジョニングが完了しました。次は、簡単な "todo list" バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
 
-Follow the following steps to configure the server project to use either the Node.js or .NET backend.
+以下の手順に従って、Node.js または .NET バックエンドを使用するようにサーバー プロジェクトを構成します。
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-xamarin.ios-app"></a>Download and run the Xamarin.iOS app
+## Xamarin.iOS アプリのダウンロードと実行
 
-1. Open the [Azure portal] in a browser window.
+1. [Azure ポータル]をブラウザー ウィンドウで開きます。
 
-2. On the settings blade for your Mobile App, click **Get Started** > **Xamarin.iOS**. Under step 3, click **Create a new app** if it's not already selected.  Next click the **Download** button.
+2. モバイル アプリの [設定] ブレードで、**[開始]**、**[Xamarin.iOS]** の順にクリックします。手順 3 で、まだ選択されていない場合は **[新しいアプリを作成する]** をクリックします。次に、**[ダウンロード]** ボタンをクリックします。
 
-    A client application that connects to your mobile backend is downloaded. Save the compressed project file to your local computer, and make a note of where you save it.
+  	これにより、モバイル アプリに接続されているクライアント アプリケーションが含まれているプロジェクトがダウンロードされます。圧縮されたプロジェクト ファイルをローカル コンピューターに保存し、保存場所を書き留めておいてください。
 
-3. Extract the project that you downloaded, and then open it in Xamarin Studio (or Visual Studio).
+3. ダウンロードしたプロジェクトを抽出し、Xamarin Studio または Visual Studio で開きます。
 
-    ![][9]
+	![][9]
 
-    ![][8]
+	![][8]
 
-4. Press the F5 key to build the project and start the app in the iPhone emulator.
+4. F5 キーを押してプロジェクトをビルドし、iPhone エミュレーターでアプリを起動します。
 
-5. In the app, type meaningful text, such as _Learn Xamarin_, and then click the **+** button.
+5. アプリで、意味のあるテキスト (「_Xamarin の学習_」など) を入力し、**+** ボタンをクリックします。
 
-    ![][10]
+	![][10]
 
-    Data from the request is inserted into the TodoItem table. Items stored in the table are returned by the mobile app backend, and the data is displayed in the list.
+	これで、Azure でホストされている新しいモバイル アプリ バックエンドに POST 要求が送信されます。要求のデータは TodoItem テーブルに挿入されます。テーブルに格納された項目がモバイル アプリ バックエンドによって返され、データが一覧に表示されます。
 
->[AZURE.NOTE]You can review the code that accesses your mobile app backend to query and insert data in the QSTodoService.cs C# file.
+>[AZURE.NOTE]モバイル アプリ バックエンドにアクセスして QSTodoService.cs C# ファイルにあるデータを照会および挿入するコードを確認できます。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-* [Add Offline Sync to your app](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-* [Add authentication to your app ](app-service-mobile-xamarin-ios-get-started-users.md)
-* [Add push notifications to your Xamarin.Android app](app-service-mobile-xamarin-ios-get-started-push.md)
-* [How to use the managed client for Azure Mobile Apps](app-service-mobile-dotnet-how-to-use-client-library.md)
+* [アプリへの認証の追加](app-service-mobile-xamarin-ios-get-started-users.md) <br/>ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
+
+* [アプリケーションにプッシュ通知を追加する](app-service-mobile-xamarin-ios-get-started-push.md) <br/>アプリにごく基本的なプッシュ通知を送信する方法について説明します。
 
 <!-- Anchors. -->
-[Getting started with mobile app backends]:#getting-started
-[Create a new mobile app backend]:#create-new-service
-[Next Steps]:#next-steps
+[Getting started with mobile app backends]: #getting-started
+[Create a new mobile app backend]: #create-new-service
+[Next Steps]: #next-steps
+
+
 
 <!-- Images. -->
 [6]: ./media/app-service-mobile-xamarin-ios-get-started/xamarin-ios-quickstart.png
@@ -97,10 +97,6 @@ Follow the following steps to configure the server project to use either the Nod
 [10]: ./media/app-service-mobile-xamarin-ios-get-started/mobile-quickstart-startup-ios.png
 
 <!-- URLs. -->
-[Azure portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

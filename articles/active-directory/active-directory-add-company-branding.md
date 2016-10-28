@@ -1,234 +1,232 @@
 <properties
-    pageTitle="Add company branding to your sign-in and Access Panel pages"
-    description="Learn how to add a company branding to the Azure sign-in page and the access panel page"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="サインイン ページとアクセス パネル ページに対する会社のブランドの追加"
+	description="Azure サインイン ページとアクセス パネル ページに会社のブランドを追加する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/30/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/30/2016"
+	ms.author="curtand"/>
+
+# サインイン ページとアクセス パネル ページに対する会社のブランドの追加
 
 
-# <a name="add-company-branding-to-your-sign-in-and-access-panel-pages"></a>Add company branding to your sign-in and Access Panel pages
+多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。Azure Active Directory では、以下に示す Web ページの外観をカスタマイズして、会社のロゴや独自のカラー スキームを含めることで、一貫したルック アンド フィールを適用できます。
 
+- **サインイン ページ** - Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。ホーム領域の検出時や資格情報の入力時にこのページが表示されます。フェデレーション ユーザーをそのオンプレミス STS (AD FS など) にリダイレクトできるのは、ホーム領域検出の働きによるものです。
 
-To avoid confusion, many companies want to apply a consistent look and feel across all the websites and services they manage. Azure Active Directory provides this capability by allowing you to customize the appearance of the following web pages with your company logo and custom color schemes:
+- **アクセス パネル ページ** - アクセス パネルは、Azure AD 管理者からアクセスを許されたクラウドベースのアプリケーションを表示したり起動したりすることができる Web ベースのポータルです。アクセス パネルにアクセスするには、[https://myapps.microsoft.com](https://myapps.microsoft.com) という URL を使用します。
 
-- **Sign-in page** - This is the page that appears when you sign in to Office 365 or other web-based applications that are using Azure AD as your identity provider. You interact with this page either during a Home Realm Discovery or to enter your credentials. The Home Realm Discovery allows the system to redirect federated users to their on-premises STS (such as AD FS).
-
-- **Access Panel page** - The Access Panel is a web-based portal that allows you to view and launch the cloud-based applications your Azure AD administrator has granted you access to. To access the Access Panel, use the following URL: [https://myapps.microsoft.com](https://myapps.microsoft.com).
-
-This topic explains how you can customize the sign-in page and the access panel page.
-
-> [AZURE.NOTE]
->
-- Company branding is a feature that is available only if you upgraded to the Premium or Basic edition of Azure Active Directory, or are an Office 365 user. For more information, see [Azure Active Directory editions](active-directory-editions.md).
-- Azure Active Directory Premium and Basic editions are available for customers in China using the worldwide instance of Azure Active Directory. Azure Active Directory Premium and Basic editions are not currently supported in the Microsoft Azure service operated by 21Vianet in China. For more information, contact us at the [Azure Active Directory Forum](https://feedback.azure.com/forums/169401-azure-active-directory/).
-
-
-
-## <a name="customizing-the-sign-in-page"></a>Customizing the sign-in page
-
-Typically, if you need browser-based access to your cloud apps and services that your organization subscribes to, you use the sign-in page.
-
-If you have applied changes to your sign-in page, it can take up to an hour for the changes to appear.
-
-A branded sign-in page only appears when you visit a service with a tenant-specific URL such as https://outlook.com/**contoso**.com, or https://mail.**contoso**.com.
-
-When you visit a service with non-tenant specific URLs (e.g.: https://mail.office365.com), a non-branded sign-in page appears. in this case, your branding appears once you have entered your user ID or you have selected a user tile.
+このトピックでは、サインイン ページとアクセス パネル ページをカスタマイズする方法について説明します。
 
 > [AZURE.NOTE]
 >
-- Your domain name must appear as “Active” in the **Active Directory** > **Directory** > **Domains** section of the Azure classic portal where you have configured branding.
-- Sign-in page branding doesn’t carry over to the consumer sign in page of Microsoft. If you sign in with a personal Microsoft account, you may see a branded list of user tiles rendered by Azure AD, but the branding of your organization does not apply to the Microsoft account sign-in page.
+- 会社のブランド化は、Azure Active Directory の Premium または Basic エディションにアップグレードした場合か、Office 365 ユーザーである場合にのみ使用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+- 中国のお客様は、Azure Active Directory の世界中のインスタンスを使用して、Azure Active Directory Premium および Basic エディションを利用できます。中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 
 
-If you want to show your company brand, colors and other customizable elements on this page, see the following images to understand the difference between the two experiences.
 
-The following screenshot shows and example for the Office 365 sign-in page on a desktop computer **before** a customization:
+## サインイン ページのカスタマイズ
+
+クラウド アプリやクラウド サービスを勤務先の会社がサブスクライブしているとき、それらがブラウザーでアクセスする仕様になっている場合、通常、サインイン ページが使用されます。
+
+サインイン ページに変更を適用した場合、変更が反映されるまでに最大 1 時間かかる場合があります。
+
+ブランド化されたサインイン ページが表示されるのは、テナント固有の URL (https://outlook.com/**contoso**.com や https://mail.**contoso**.com など) でサービスにアクセスしたときだけです。
+
+テナント固有ではない URL (例: https://mail.office365.com) でサービスにアクセスした場合、ブランド表示のないサインイン ページが表示されます。この場合ブランドは、自分のユーザー ID を入力した後、またはユーザー タイルを選択した後に表示されます。
+
+> [AZURE.NOTE]
+>
+- ブランド化を構成した Azure クラシック ポータルの **[Active Directory]** にある **[ディレクトリ]** の **[ドメイン]** セクションで、ドメイン名が "アクティブ" と表示されます。
+- サインイン ページのブランド化は、Microsoft のコンシューマー向けサインイン ページには継承されません。個人の Microsoft アカウントでサインインしているユーザーには、Azure AD によってレンダリングされるユーザー タイルのブランド化された一覧が表示される可能性がありますが、組織のブランドは Microsoft アカウントのサインイン ページには適用されません。
+
+
+このページに会社のブランド、色、およびその他のカスタマイズ可能な要素を表示する場合は、次の画像を参照して、2 つのエクスペリエンスの違いを理解してください。
+
+次のスクリーンショットは、デスクトップ コンピューターに表示された、カスタマイズ**前**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page before customization][1]
 
-The following screenshot shows and example for the Office 365 sign-in page on a desktop computer **after** a customization:
+次のスクリーンショットは、デスクトップ コンピューターに表示された、カスタマイズ**後**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page after customization][2]
 
-The following screenshot shows an example of the Office 365 sign-in page on a mobile device **before** a customization:
+次のスクリーンショットは、モバイル デバイスに表示される、カスタマイズ**前**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page before customization][3]
 
 
-The following screenshot shows an example of the Office 365 sign-in page on a mobile device **after** a customization:
+次のスクリーンショットは、モバイル デバイスに表示される、カスタマイズ**後**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page after customization][4]
 
 
-When you resize a browser window, the large Illustration, like the one shown previously, is often cropped to accommodate different screen aspect ratios. With this in mind, you should try to keep the key visual elements in the illustration so that they always appear in the top-left corner (top-right for right-to-left languages). This is important because resizing typically occurs from the bottom-right corner going towards the top / left or from the bottom towards the top.
+ブラウザー ウィンドウのサイズを変更すると、上で示したような大きな図は、ほとんどの場合、画面の縦横比に合わせてトリミングされます。これを踏まえて、図には重要な表示要素を保持して、常に左上隅 (右から左へ記述する言語では右上隅) に表示されるようにする必要があります。このことが重要なのは、通常、サイズは右下隅から左上隅に、または下から上に向かって変更されるためです。
 
-The following picture shows how the illustration is cropped when the browser is resized to the left:
+次の図は、左方向にブラウザーのサイズを変更したときに、図がトリミングされた状態を示しています。
 
 ![][6]
 
-Here is how it appears after the browser is resized toward the top:
+この図は、ブラウザーのサイズを上方向に変更した後の表示状態を示しています。
 
 ![][7]
 
-## <a name="what-elements-on-the-page-can-i-customize?"></a>What elements on the page can I customize?
+## カスタマイズ可能なページ上の要素
 
-You can customize the following elements on the sign-in page:
+サインイン ページでは、次の要素をカスタマイズできます。
 
 ![][5]
 
 
 
-| Page element  | Location on the page |
+| ページ要素 | ページ上の場所 |
 |:--            | ---                  |
-|Banner Logo    | Shown at the top-right of the page. Replaces the logo the destination site you are signing in to displays (For example. Office 365 or Azure).|
-|Large Illustration / Background Color | Shown at the left of the page. Replaces the image the destination site you are signing in to displays. The Background Color may be shown in place of the Large Illustration on low bandwidth connections, or on narrow screens.|
-|Keep me signed-in | Shown under the Password textbox. |
-|Sign-in Page Text | Shown above the page footer when you need to convey helpful information before a sign-in with a work or school account. For example, you may want to include the phone number to your help desk, or a legal statement.|
+|バナー ロゴ | ページの右上に表示されます。ユーザーがサインインする目的のサイトに表示されるロゴを置き換えます (たとえば、Office 365 または Azure)。|
+|大きな図および背景色 | ページの左側に表示されます。ユーザーがサインインする目的のサイトに表示される画像を置き換えます。背景色は、低帯域幅接続、または狭い画面上では、大きな図の代わりに表示される可能性があります。|
+|サインインしたままにする | [パスワード] ボックスの下に表示されます。 |
+|サインイン ページのテキスト | ページ フッターの上に表示されます。ユーザーが職場または学校のアカウントを使用してサインインする前にユーザーに有用な情報を伝えるために使用します。たとえば、ヘルプ デスクへの電話番号や法的声明を記載できます。|
 
 
 > [AZURE.NOTE]
-All elements are optional. For example, if you specify a Banner Logo but no Large Illustration, the sign-in page shows your logo and the illustration for the destination site (that is, the Office 365 California highway image).
+すべての要素は省略できます。たとえば、バナー ロゴを指定して、大きな図を指定しなかった場合、サインイン ページには、そのバナー ロゴと目的のサイトの図 (つまり、Office 365 のカリフォルニア幹線道路の画像) が表示されます。
 
 
-On your sign-in page, the **Keep me signed in** checkbox allows a user to remain signed in when they close and re-open their browser. It does not effect session lifetime. You can hide the checkbox on the Azure Active Directory sign-in page.
+サインイン ページで **[サインインしたままにする]** チェック ボックスをオンにすると、ユーザーはブラウザーを閉じて開き直したときにもサインインしたままにしておくことができます。セッションの有効期間には影響しません。Azure Active Directory サインイン ページのチェック ボックスを非表示にすることができます。
 
-Whether the checkbox is displayed depends on the setting of **Hide KMSI**.
+チェック ボックスが表示されるかどうかは、**[[サインインしたままにする] の非表示]** の設定に依存します。
 
 ![][9]
 
 
-To hide the checkbox, configure this setting to **Hidden**. 
+チェック ボックスを非表示にするには、この設定を **[非表示]** に構成します。
 
-> [AZURE.NOTE] Some features of SharePoint Online and Office 2010 depend on users being able to check this box. If you configure this setting to hidden, your users may see additional and unexpected prompts to sign-in.
-
-
-
-
-You can also localize all elements on this page. Once you’ve configured a “default” set of customization elements, you can configure more versions for different locales. You can also mix and match various elements. For example, you can:
-
-- Create a “default” Large Illustration that works for all cultures, then create specific versions for English and French. When you set your browsers to one of these two languages, the specific image appears, while the default illustration appears for all other languages.
-
-- Configure different logos for your organization (e.g. Japanese or Hebrew versions).
+> [AZURE.NOTE] SharePoint Online と Office 2010 の一部の機能は、ユーザーがこのチェック ボックスをオンにできるかどうかに依存します。この設定を非表示に構成する場合、ユーザーにサインインを求める追加のメッセージが予期せず表示されることがあります。
 
 
 
-## <a name="access-panel-page-customization"></a>Access panel page customization
 
-The Access Panel page is essentially a portal page for quick access to the cloud apps you have been granted access to by your administrator. On this page, your apps appear as clickable application tiles.
+このページのすべての要素をローカライズすることもできます。カスタマイズ可能な要素の “既定” のセットを構成した後は、さまざまなロケールに対して追加のバージョンを構成できます。さまざまな要素を混在させたり、一致させたりすることもできます。たとえば、次のようなことができます。
+
+- ”既定” の大きな図を作成してから、英語とフランス語専用のバージョンを作成できます。この 2 つの言語のいずれかにブラウザーを設定すると、指定した画像が表示されます。それ以外の言語ではすべて既定の図が表示されます。
+
+- 組織用に別のロゴ (例: 日本語やヘブライ語のバージョン) を構成します。
 
 
-The following screenshot shows an example of an access panel page after customization.
+
+## アクセス パネル ページのカスタマイズ
+
+基本的にアクセス パネル ページは、管理者からアクセスを許されたクラウド アプリにすばやくアクセスするためのポータルです。このページには、クリック可能なアプリケーション タイルとしてアプリが表示されます。
+
+
+次のスクリーンショットは、カスタマイズ後のアクセス パネル ページの例を示しています。
 
 ![][8]
 
-## <a name="configure-your-directory-with-company-branding"></a>Configure your directory with company branding
+## 会社のブランド化によるディレクトリの構成
 
-You can configure one default set of customizable elements per directory in the Azure classic portal. After the defaults have been saved, an administrator can add localized versions of each element, for different languages / locales. All customizable elements are optional.
+Azure クラシック ポータルでは、ディレクトリごとに、カスタマイズ可能な要素の既定のセットを 1 つ構成できます。既定値が保存された後、管理者は別の言語やロケール向けに各要素のローカライズ版を追加できます。すべてのカスタマイズ可能な要素は省略できます。
 
-For example, if you configure a default Banner Logo but no Large Illustration, the sign-in page displays your logo in the upper-right corner. However the default illustration of the site is displayed.
+たとえば、既定のバナー ロゴを構成し、大きな図を構成しない場合、サインイン ページには、ロゴが右上隅に表示されます。ただし、図はサイトの既定の図が使用されます。
 
-Imagine the following configuration:
+次のような構成を考えてみます。
 
-- A default Banner Logo and Sign-In Page Text in English
-- A language-specific sign in Page Text for German
+- 既定のバナー ロゴとサインイン ページのテキスト (英語)
+- 言語固有のサインイン ページ テキスト (ドイツ語)
 
-If your language preference is German, you get the default Banner Logo but the German text.
+言語の優先順位がドイツ語である場合、既定のバナー ロゴは適用されますが、ドイツ語のテキストは適用されません。
 
-While you could technically configure a different set for each language supported by Azure AD, we recommend that you keep the number of variations low, for maintenance and performance reasons.
+技術的には、Azure AD でサポートされている各言語に対して多様なセットを構成することができますが、メンテナンス、およびパフォーマンス上の理由から、バリエーションの数は少なくすることをお勧めします。
 
-**To add company branding to your directory, perform the following steps:**
+**ディレクトリに会社のブランドを追加するには、次の手順を実行します。**
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) as an administrator of the directory you want to customize.
-2. Select the directory you want to customize.
-3. In the toolbar on the top, click **Configure**.
-4. Click **Customize Branding**.
-4. Modify the elements you want to customize. All fields are optional.
-5. Click **Save**.
+1. カスタマイズするディレクトリの管理者として、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
+2. カスタマイズするディレクトリを選択します。
+3. 上部のツール バーで **[構成]** をクリックします。
+4. **[ブランドのカスタマイズ]** をクリックします。
+4. カスタマイズする要素に変更を加えます。すべてのフィールドは省略可能です。
+5. [**Save**] をクリックします。
 
-It can take up to an hour for new change you made to the sign-in page branding to appear.
+サインイン ページのブランドに加えた変更が表示されるまでに、最大で 1 時間かかる場合があります。
 
-**To add language-specific company branding, perform the following steps:**
+**言語固有の会社のブランドを追加するには、次の手順を実行します。**
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) as an administrator of the directory you want to customize.
-2. Select the directory you want to customize.
-3. In the toolbar on the top, click **Configure**.
-4. Click **Customize Branding**.
-2. Click **Add branding for a specific language**.
-3. Select the language you want to customize the logo for, and then click **Next**.
-3. Edit only the elements for which you want to configure language-specific overrides. All fields are optional. If a field is left blank, then the custom default value is displayed instead (or the Microsoft default if a custom default is not configured).
-4. Click **Save**.
+1. カスタマイズするディレクトリの管理者として、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
+2. カスタマイズするディレクトリを選択します。
+3. 上部のツール バーで **[構成]** をクリックします。
+4. **[ブランドのカスタマイズ]** をクリックします。
+2. **[特定の言語のブランド設定を追加する]** をクリックします。
+3. ロゴをカスタマイズする言語を選択し、**[次へ]** をクリックします。
+3. 言語固有の上書きを構成する要素のみを編集します。すべてのフィールドは省略可能です。フィールドが空白の場合は、カスタムの既定値 (または、カスタムの既定値が構成されていない場合は、Microsoft の既定値) が代わりに表示されます。
+4. [**Save**] をクリックします。
 
-**To remove company branding from your directory, perform the following steps:**
+**ディレクトリから会社のブランドを削除するには、次の手順を実行します。**
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) as an administrator of the directory you want to customize.
-2. Select the directory you want to customize.
-3. In the toolbar on the top, click **Configure**.
-4. Click **Customize Branding**.
-5. On the Customize Branding page, select **Edit Existing Branding Settings** and then go to the next page.
-3. Depending on which elements you want to remove, do one or more of the following:
+1. カスタマイズするディレクトリの管理者として、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
+2. カスタマイズするディレクトリを選択します。
+3. 上部のツール バーで **[構成]** をクリックします。
+4. **[ブランドのカスタマイズ]** をクリックします。
+5. [ブランドのカスタマイズ] ページで、**[既存のブランド設定を編集する]** を選択し、次のページに移動します。
+3. 削除する要素に応じて、次の 1 つ以上の操作行います。
 
-    a. Under **Banner Logo**, select **Remove uploaded logo**.
+	a.**[バナー ロゴ]** で **[アップロードしたロゴの削除]** を選択します。
 
-    b. Under **Tile Logo**, select **Remove uploaded logo**.
+    b.**[タイル ロゴ]** で **[アップロードしたロゴの削除]** を選択します。
 
-    c. Remove the text from all textboxes.
+    c.すべてのテキスト ボックスからテキストを削除します。
 
-    d. Click **Next**.
+    d.**[次へ]** をクリックします。
 
-    e. Remove the text from all textboxes.
+    e.すべてのテキスト ボックスからテキストを削除します。
 
-4. Click **Save** to remove the elements.
-5. If necessary, click **Customize Branding** again and repeat these steps for all language-specific branding that needs to be removed.
-    All branding settings have been removed when you click **Customize Branding** and see the **Customize Default Branding** form with no existing settings configured.
+4. **[保存]** クリックして要素を削除します。
+5. 必要に応じて、**[ブランドのカスタマイズ]** をもう一度クリックして、削除する必要があるすべての言語固有のブランドに、この手順を繰り返します。**[ブランドのカスタマイズ]** をクリックし、**[既定ブランドのカスタマイズ]** フォームに既存の設定が構成されていない場合は、すべてのブランド設定は削除されています。
 
-## <a name="testing-and-examples"></a>Testing and examples
+## テストと例
 
-We recommend that you experiment with a test tenant before making changes in your production environment.
+運用環境で変更を加える前に、テスト テナントで実験することをお勧めします。
 
-**To verify whether your branding has been applied:**
+**ブランドが適用されているかどうかを確認するには、次の手順に従います。**
 
-1. Open an InPrivate or Incognito browser session.
-2. Visit https://outlook.com/contoso.com, replacing contoso.com with the domain you’ve customized.
+1. プライベート モードまたはシークレット モードでブラウザーを起動します。
+2. https://outlook.com/contoso.com にアクセスします。contoso.com の部分は、カスタマイズしたドメインに置き換えてください。
 
-This also works with domains that look like contoso.onmicrosoft.com.
+この方法は、contoso.onmicrosoft.com のようなドメインでも利用できます。
 
-To help you create effective customization sets, we have customized the following two fictitious sign-in pages:
+効果的なカスタマイズのセットの作成を支援するために、次の 2 つの架空のサインイン ページをカスタマイズしました。
 
 - [http://aka.ms/aaddemo001](http://aka.ms/aaddemo001)
 - [http://aka.ms/aaddemo002](http://aka.ms/aaddemo002)
 
-To test the language-specific settings, you need to modify the default language preferences in your web browser to a language you have set in your customization. In Internet Explorer, you configure this in the **Internet Options** menu.
+言語固有の設定をテストするには、カスタマイズで設定した言語に対する、Web ブラウザーの既定の言語設定を変更する必要があります。Internet Explorer の場合、この構成は **[インターネット オプション]** メニューで行います。
 
-## <a name="customizable-elements"></a>Customizable elements
+## カスタマイズ可能な要素
 
-Some customizable elements in Azure AD have multiple use cases. You can configure company logos once per directory and is used on both, the sign-in and Access Panel pages. Some customizable elements are specific only to the sign-in page. The following table provides details for the different customizable elements.
+Azure AD でカスタマイズ可能な要素には、複数のユース ケースに対応するものがあります。会社のロゴはディレクトリごとに 1 回構成でき、サインイン ページとアクセス パネル ページの両方で使用されます。カスタマイズ可能な要素の中には、サインイン ページにしか適用できないものもあります。次の表では、さまざまなカスタマイズ可能な要素の詳細を説明します。
 
-Name | Description | Constraints | Recommendations
-    ------------- | ------------- | ------------- | -------------
-Banner Logo | The Banner Logo is displayed on the sign-in page and the Access panel. | <p>JPG or PNG</p><p>60x280 pixels</p><p>10 KB</p> | <p>Use your organization’s full logo (including pictogram and logotype)</p><p>Keep it under 30 pixels high to avoid introducing scrollbars on mobile devices</p><p>Keep it under 4 KB</p><p>Use a transparent PNG (don’t assume that the sign-in page always has a white background)</p>
-Tile Logo | (currently not used in the sign-in page) In the future, this text may be used to replace the generic “work or school account” pictogram in different places of the experience. | <p>JPG or PNG</p><p>120x120 pixels</p><p>10 KB</p> | <p>Keep it simple (no small text), as this image may be resized to 50%
+名前 | Description | 制約 | 推奨事項
+	------------- | ------------- | ------------- | -------------
+バナー ロゴ | バナー ロゴはサインイン ページとアクセス パネルに表示されます。 | <p>JPG または PNG</p><p>60 x 280 ピクセル</p><p>10 KB</p> | <p>組織の完全なロゴ (ピクトグラムとロゴタイプを含む) を使用する</p><p>高さは 30 ピクセル以内にして、モバイル デバイスでスクロール バーが表示されないようにする</p><p>常に 4 KB 未満にする</p><p>透過 PNG を使用する (サインイン ページの背景が常に白であるとは仮定しないこと)</p>
+タイル ロゴ | (現在サインイン ページでは未使用) 今後、このテキストを使用して、エクスペリエンスのさまざまな場面で "職場または学校のアカウント" の汎用ピクトグラムを置換する場合があります。 | <p>JPG または PNG</p><p>120 x 120 ピクセル</p><p>10 KB</p> | <p>このイメージのサイズは 50% に変更される場合があるため、常にシンプルにする (小さなテキストは含めない)
 </p> |
-Sign-in Page User Name Label | (currently not used in the sign-in page) In the future, this text may be used to replace the generic “work or school account” string in different places of the experience. You can set it to something like “Contoso account” or “Contoso ID.” | <p>Unicode text, up to 50 characters</p><p>Plain text only (no links or HTML tags)</p> | <p>Keep it short and simple</p><p>Ask your users how they usually refer to the work or school account you provide them with.</p>
-Sign-in Page Text | This “boilerplate” text appears below the sign-in page form and can be used to communicate additional instructions, or where to get help and support. | <p>Unicode text, up to 256 characters</p><p>Plain text only (no links or HTML tags)</p> | Keep it under 250 characters (approximately 3 lines of text)
-Sign-in Page Illustration | The illustration is a large image that is displayed on the sign-in page to the left of the sign-in page form. | <p>JPG or PNG</p><p>1420x1200</p><p>500 KB</p> | <p>1420x1200 pixels</p><p>Important: Keep it as small as possible, ideally under 200 KB. If this image is too large, the performance of the Sign-in page is impacted when the image isn’t cached</p><p>This image is often cropped, to accommodate different screen ratios. Keep the primary visual elements in the top left corner (top right for RTL languages), because resizing occurs from the bottom/right corner, going towards the top / left, as the browser window shrinks.</p>
-Sign-in Page Background Color | The sign-in page background color is used in the area to the left of the sign-in page form. | Must be an RGB color in hexadecimal form (example: #FFFFFF) | <p>The background color may be shown in place of the large Illustration on low-bandwidth connections</p><p>We suggest picking the primary color of the Banner Logo</p>
+サインイン ページのユーザー名ラベル | (現在サインイン ページでは未使用) 今後、このテキストを使用して、エクスペリエンスのさまざまな場面で "職場または学校のアカウント" の汎用文字列を置換する場合があります。このラベルは、“Contoso アカウント” や “Contoso ID” のように設定することができます。 | <p>最大 50 文字の Unicode テキスト</p><p>プレーン テキストのみ (リンクまたは HTML タグはなし)</p> | <p>常に短くシンプルにする</p><p>提供するユーザーに対して、職場または学校のアカウントの通常の呼び方を尋ねる。</p>
+サインイン ページのテキスト | この "定型" テキストが、サインイン ページ フォームの下部に表示され、その他の指示やヘルプとサポートの入手先を伝えるために使用できます。 | <p>最大 256 文字の Unicode テキスト</p><p>プレーン テキストのみ (リンクまたは HTML タグはなし)</p> | 常に 250 文字未満 (約 3 行のテキスト) にする
+サインイン ページの図 | 図は、サインイン ページ内で、サインイン ページ フォームの左側に表示されている大きな画像です。 | <p>JPG または PNG</p><p>1420 x 1200</p><p>500 KB</p> | <p>1420 x 1200 ピクセル</p><p>重要: できる限り小さく保つ。理想的には 200 KB 未満。この画像が大きすぎる場合、画像がキャッシュされていないときに、サインイン ページのパフォーマンスに影響を与えます。</p><p>この画像は、ほとんどの場合、さまざまな画面の縦横比に合わせてトリミングされます。重要な表示要素を常に左上隅 (右から左へ記述する言語では右上隅) に表示されるようにします。これは、通常、ブラウザーのウィンドウが縮小されるのに合わせて、サイズは右下隅から左上隅に向かって変更されるためです。</p>
+サインイン ページの背景色 | サインイン ページの背景色は、サインイン ページ フォームの左側にある領域で使用されます。 | RGB 色を 16 進数形式で指定 (例: #FFFFFF) | <p>背景色は、低帯域幅接続、または非常に狭い画面上では、大きな図の代わりに表示される可能性があります。</p><p>バナー ロゴの主要な色を使用することをお勧めします。</p>
 
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-- [Getting started with Azure Active Directory Premium](active-directory-get-started-premium.md)
-- [View your access and usage reports](active-directory-view-access-usage-reports.md)
+- [Azure Active Directory Premium の概要](active-directory-get-started-premium.md)
+- [アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-add-company-branding/SignInPage_beforecustomization.png
@@ -241,8 +239,4 @@ Sign-in Page Background Color | The sign-in page background color is used in the
 [8]: ./media/active-directory-add-company-branding/APBranding.png
 [9]: ./media/active-directory-add-company-branding/hidekmsi.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

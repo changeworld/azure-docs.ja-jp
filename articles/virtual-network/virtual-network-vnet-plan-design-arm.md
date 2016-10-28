@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Virtual Network (VNet) Plan and Design Guide | Microsoft Azure"
-   description="Learn how to plan and design virtual networks in Azure based on your isolation, connectivity, and location requirements."
+   pageTitle="Azure Virtual Network (VNet) の計画と設計ガイド | Microsoft Azure"
+   description="分離、接続、場所の要件に基づき、Azure で仮想ネットワークを計画し、設計する方法について学習します。"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,259 +15,255 @@
    ms.date="02/08/2016"
    ms.author="jdial" />
 
+# Azure Virtual Network の計画と設計
 
-# <a name="plan-and-design-azure-virtual-networks"></a>Plan and design Azure Virtual Networks
+試験的に VNet を作成することは簡単ですが、あなたはおそらく、組織の運用ニーズに対応するために、時間の経過と共に複数の VNet をデプロイすることになるでしょう。ある程度の計画と設計を行うことで、より効率的に VNet をデプロイし、必要なリソースを接続できます。VNet に慣れていない場合、続行する前に [VNet の概要](virtual-networks-overview.md)と[デプロイ方法](virtual-networks-create-vnet-arm-pportal.md)について学習することが推奨されます。
 
-Creating a VNet to experiment with is easy enough, but chances are, you will deploy multiple VNets over time to support the production needs of your organization. With some planning and design, you will be able to deploy VNets and connect the resources you need more effectively. If you are not familiar with VNets, it's recommended that you [learn about VNets](virtual-networks-overview.md) and [how to deploy](virtual-networks-create-vnet-arm-pportal.md) one before proceeding. 
+## プラン
 
-## <a name="plan"></a>Plan
+Azure サブスクリプション、リージョン、ネットワーク リソースについて完全に理解することが成功のために不可欠です。出発点として以下の考慮事項一覧をご利用ください。これらの考慮事項を理解すると、ネットワーク設計の要件が決まります。
 
-A thorough understanding of Azure subscriptions, regions, and network resources is critical for success. You can use the list of considerations below as a starting point. Once you understand those considerations, you can define the requirements for your network design.
+### 考慮事項
 
-### <a name="considerations"></a>Considerations
+下の計画に関する質問に答える前に、次の点について検討してください。
 
-Before answering the planning questions below, consider the following:
+- Azure で作成するものはすべて 1 つまたは複数のリソースで構成されます。仮想マシン (VM) はリソースです。VM で利用されるネットワーク アダプター カード (NIC) はリソースです。NIC で利用されるパブリック IP アドレスはリソースです。NIC の接続先となる VNet はリソースです。
+- リソースを [Azure リージョン](https://azure.microsoft.com/regions/#services)とサブスクリプションの内部に作成します。リソースの接続先となるのは、それが入っているリージョンとサブスクリプションに存在する VNet だけです。
+- [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md) を利用し、VNet を互いに接続できます。この方法で、リージョンとサブスクリプションをまたいで VNet を接続することもできます。
+- Azure で利用できる[接続オプション](../vpn-gateway/vpn-gateway-cross-premises-options.md)のいずれかを利用し、オンプレミス ネットワークに VNet を接続できます。
+- 複数のリソースを[リソース グループ](../resource-group-overview.md#resource-groups)にグループ化できます。リソースの単位管理が簡単になります。リソースが同じサブスクリプションに属する限り、リソース グループには複数のリージョンのリソースを含めることができます。
 
-- Everything you create in Azure is composed of one or more resources. A virtual machine (VM) is a resource, the network adapter interface (NIC) used by a VM is a resource, the public IP address used by a NIC is a resource, the VNet the NIC is connected to is a resource.
-- You create resources within an [Azure region](https://azure.microsoft.com/regions/#services) and subscription. And resources can only be connected to a VNet that exists in the same region and subscription they are in. 
-- You can connect VNets to each other by using an Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md). You can also connect VNets across regions and subscriptions this way.
-- You can connect VNets to your on-premises network by using one of the [connectivity options](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site) available in Azure. 
-- Different resources can be grouped together in [resource groups](../resource-group-overview.md#resource-groups), making it easier to manage the resource as a unit. A resource group can contain resources from multiple regions, as long as the resources belong to the same subscription.
+### 要件の定義
 
-### <a name="define-requirements"></a>Define requirements
+Azure ネットワークを設計するときには、出発点として以下の質問をご利用ください。
 
-Use the questions below as a starting point for your Azure network design.  
+1. どの Azure の場所を VNet のホストに利用しますか。
+2. これらの Azure の場所の間で通信を提供する必要がありますか。
+3. Azure VNet とオンプレミス データセンターの間で通信を提供する必要はありますか。
+4. ソリューションにはいくつの IaaS (サービスとしてのインフラストラクチャ) VM、クラウド サービス ロール、Web アプリが必要ですか。
+5. VM のグループ (すなわち、フロントエンド Web サーバーとバックエンド データベース サーバー) に基づいてトラフィックを分離する必要はありますか。
+6. 仮想アプライアンスを利用してトラフィック フローを制御する必要がありますか。
+7. ユーザーには異なる Azure リソースにアクセスするために異なるアクセス許可セットが必要になりますか。
 
-1. What Azure locations will you use to host VNets?
-2. Do you need to provide communication between these Azure locations?
-3. Do you need to provide communication between your Azure VNet(s) and your on-premises datacenter(s)?
-4. How many Infrastructure as a Service (IaaS) VMs, cloud services roles, and web apps do you need for your solution?
-5. Do you need to isolate traffic based on groups of VMs (i.e. front end web servers and back end database servers)?
-6. Do you need to control traffic flow using virtual appliances?
-7. Do users need different sets of permissions to different Azure resources?
+### VNet とサブネットのプロパティを理解する
 
-### <a name="understand-vnet-and-subnet-properties"></a>Understand VNet and subnet properties
+VNet とサブネット リソースは、Azure で実行するワークロードのセキュリティ境界を定義するときに役立ちます。VNET は、(CIDR ブロックとして定義される) アドレス空間のコレクションを特徴としています。
 
-VNet and subnets resources help define a security boundary for workloads running in Azure. A VNet is characterized by a collection of address spaces, defined as CIDR blocks. 
+>[AZURE.NOTE] ネットワーク管理者は、CIDR 表記に慣れています。CIDR に慣れていない場合は、[詳細を確認してください](http://whatismyipaddress.com/cidr)。
 
->[AZURE.NOTE] Network administrators are familiar with CIDR notation. If you are not familiar with CIDR, [learn more about it](http://whatismyipaddress.com/cidr).
+VNet には、次のプロパティが含まれています。
 
-VNets contain the following properties.
-
-|Property|Description|Constraints|
+|プロパティ|Description|制約|
 |---|---|---|
-|**name**|VNet name|String of up to 80 characters. May contain letters, numbers, underscore, periods, or hyphens. Must start with a letter or number. Must end with a letter, number, or underscore. Can contains upper or lower case letters.|  
-|**location**|Azure location (also referred to as region).|Must be one of the valid Azure locations.|
-|**addressSpace**|Collection of address prefixes that make up the VNet in CIDR notation.|Must be an array of valid CIDR address blocks, including public IP address ranges.|
-|**subnets**|Collection of subnets that make up the VNet|see the subnet properties table below.||
-|**dhcpOptions**|Object that contains a single required property named **dnsServers**.||
-|**dnsServers**|Array of DNS servers used by the VNet. If no server is specified, Azure internal name resolution is used.|Must be an array of up to 10 DNS servers, by IP address.| 
+|**name**|VNet の名前|最大 80 文字の文字列。文字、数字、アンダー スコア、ピリオド、ハイフンを使用できます。先頭は文字か数字にします。末尾は文字、数字、アンダー スコアのいずれかにします。大文字または小文字を使用できます。|  
+|**location**|Azure の場所 (リージョンとも呼ばれます)。|有効な Azure の場所にする必要があります。|
+|**addressSpace**|VNet を構成するアドレス プレフィックスのコレクション (CIDR 表記)。|パブリック IP アドレス範囲を含む、有効な CIDR アドレス ブロックの配列にする必要があります。|
+|**サブネット**|VNet を構成するサブネットのコレクション|次のサブネットのプロパティの表を参照してください。||
+|**dhcpOptions**|「**dnsServers**」という名前の必須プロパティを 1 つ含むオブジェクト。||
+|**dnsServers**|VNet で使用される DNS サーバーの配列。サーバーが指定されていない場合、Azure の内部の名前解決が使用されます。|IP アドレスによる最大 10 の DNS サーバーの配列にする必要があります。| 
 
-A subnet is a child resource of a VNet, and helps define segments of address spaces within a CIDR block, using IP address prefixes. NICs can be added to subnets, and connected to VMs, providing connectivity for various workloads.
+サブネットは、VNet の子リソースで、IP アドレスのプレフィックスを使用して、CIDR ブロック内のアドレス空間のセグメントの定義に役立ちます。NIC をサブネットに追加し、VM に接続して、さまざまなワークロードへの接続を提供できます。
 
-Subnets contain the following properties. 
+サブネットには、次のプロパティが含まれています。
 
-|Property|Description|Constraints|
+|プロパティ|Description|制約|
 |---|---|---|
-|**name**|Subnet name|String of up to 80 characters. May contain letters, numbers, underscore, periods, or hyphens. Must start with a letter or number. Must end with a letter, number, or underscore. Can contains upper or lower case letters.|
-|**location**|Azure location (also referred to as region).|Must be one of the valid Azure locations.|
-|**addressPrefix**|Single address prefix that make up the subnet in CIDR notation|Must be a single CIDR block that is part of one of the VNet's address spaces.|
-|**networkSecurityGroup**|NSG applied to the subnet|see [NSGs](resource-groups-networking.md#Network-Security-Group)|
-|**routeTable**|Route table applied to the subnet|see [UDR](resource-groups-networking.md#Route-table)|
-|**ipConfigurations**|Collection of IP configuration objects used by NICs connected to the subnet|see [IP configuration](../resource-groups-networking.md#IP-configurations)|
+|**name**|サブネット名|最大 80 文字の文字列。文字、数字、アンダー スコア、ピリオド、ハイフンを使用できます。先頭は文字か数字にします。末尾は文字、数字、アンダー スコアのいずれかにします。大文字または小文字を使用できます。|
+|**location**|Azure の場所 (リージョンとも呼ばれます)。|有効な Azure の場所にする必要があります。|
+|**addressPrefix**|サブネットを構成する単一のアドレス プレフィックス (CIDR 表記)|VNet のアドレス空間の 1 つに属する 1 つの CIDR ブロックにする必要があります。|
+|**networkSecurityGroup**|サブネットに適用される NSG|[NSG](resource-groups-networking.md#Network-Security-Group) に関するセクションを参照してください|
+|**routeTable**|サブネットに適用されるルート テーブル|[UDR](resource-groups-networking.md#Route-table) に関するセクションを参照してください|
+|**ipConfigurations**|サブネットに接続されている NIC で使用される IP 構成オブジェクトのコレクション|「[IP 構成](../resource-groups-networking.md#IP-configurations)」参照|
 
-### <a name="name-resolution"></a>Name resolution
+### 名前解決
 
-By default, your VNet uses [Azure-provided name resolution.](virtual-networks-name-resolution-for-vms-and-role-instances.md#Azure-provided-name-resolution) to resolve names inside the VNet, and on the public Internet. However, if you connect your VNets to your on-premises data centers, you need to provide [your own DNS server](virtual-networks-name-resolution-for-vms-and-role-instances.md#Name-resolution-using-your-own-DNS-server) to resolve names between your networks.  
+既定では、VNet は [ Azure が提供する名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#Azure-provided-name-resolution)を利用し、VNet 内とパブリック インターネット上で名前を解決します。ただし、VNet をオンプレミスのデータ センターに接続する場合、[独自の DNS サーバー](virtual-networks-name-resolution-for-vms-and-role-instances.md#Name-resolution-using-your-own-DNS-server)を指定し、ネットワーク間で名前を解決する必要があります。
 
-### <a name="limits"></a>Limits
+### 制限
 
-Make sure you view all the [limits related to networking services in Azure](../azure-subscription-service-limits.md#networking-limits) before designing your solution. Some limits can be increased by opening a support ticket.
+ソリューションを設計する前に、[Azure のネットワーク サービスに関連するすべての制限事項](../azure-subscription-service-limits.md#networking-limits)を確認してください。一部の制限は、サポート チケットを開いて引き上げることができます。
 
-### <a name="role-based-access-control-(rbac)"></a>Role-Based Access Control (RBAC)
+### ロール ベースのアクセス制御 (RBAC)
 
-You can use [Azure RBAC](../active-directory/role-based-access-built-in-roles.md) to control the level of access different users may have to different resources in Azure. That way you can segregate the work done by your team based on their needs. 
+[Azure RBAC](../active-directory/role-based-access-built-in-roles.md) を利用し、さまざまなユーザーが Azure のさまざまなリソースにアクセスするために必要なアクセス権のレベルを制御できます。この方法で、チームが行う作業をチームのニーズに基づいて分離できます。
 
-As far as virtual networks are concerned, users in the **Network Contributor** role have full control over Azure Resource Manager virtual network resources. Similarly, users in the **Classic Network Contributor** role have full control over classic virtual network resources.
+仮想ネットワークに関する限り、**ネットワークの共同作業者**ロールのユーザーは Azure リソース マネージャーの仮想ネットワーク リソースを自由に利用できます。同様に、**従来のネットワークの共同作業者**ロールのユーザーは従来の仮想ネットワーク リソースを自由に利用できます。
 
->[AZURE.NOTE] You can also [create your own roles](../active-directory/role-based-access-control-configure.md) to separate your administrative needs.
+>[AZURE.NOTE] [独自のロールを作成](../active-directory/role-based-access-control-configure.md)し、管理ニーズを分離することもできます。
 
-## <a name="design"></a>Design
+## 設計
 
-Once you know the answers to the questions in the [Plan](#Plan) section, review the following before defining your VNets.
+「[計画](#Plan)」セクションの質問に対する回答を用意できたら、VNet を定義する前に、以下を確認します。
 
-### <a name="number-of-subscriptions-and-vnets"></a>Number of subscriptions and VNets
+### サブスクリプションと VNet の数
 
-You should consider creating multiple VNets in the following scenarios:
+次のシナリオでは、複数の VNet を作成することを検討します。
 
-- **VMs that need to be placed in different Azure locations**. VNets in Azure are regional. They cannot span locations. Therefore you need at least one VNet for each Azure location you want to host VMs in.
-- **Workloads that need to be completely isolated from one another**. You can create separate VNets, that even use the same IP address spaces, to isolate different workloads from one another. 
-- **Avoid platform limits**. As seen in the [limits](#Limits) section, you cannot have more than 2048 VMs in a single VNet. 
+- **さまざまな Azure の場所に配置する必要がある VM**。Azure の VNet はリージョン限定です。場所をまたがることはできません。そのため、VM をホストする Azure の場所ごとに VM が少なくとも 1 つ必要になります。
+- **互いから完全に分離する必要があるワークロード**。ワークロードを互いから分離するために別個の VNet を作成できます。別個の VNet は同じ IP アドレス空間を使用することもあります。
+- **プラットフォームの制限を回避する**。「[制限](#Limits)」セクションにあるように、1 つの VNet で 2048 以上の VM を持つことはできません。
 
-Keep in mind that the limits you see above are per region, per subscription. That means you can use multiple subscriptions to increase the limit of resources you can maintain in Azure. You can use a site-to-site VPN, or an ExpressRoute circuit, to connect VNets in different subscriptions.
+上記の制限はリージョン単位であり、サブスクリプション単位です。つまり、複数のサブスクリプションを使用し、Azure で保持できるリソースの上限を増やすことができます。サイト間 VPN または ExpressRoute 回線を使用し、異なるサブスクリプションの VNet を接続できます。
 
-### <a name="subscription-and-vnet-design-patterns"></a>Subscription and VNet design patterns
+### サブスクリプションと VNet の設計パターン
 
-The table below shows some common design patterns for using subscriptions and VNets.
+次の表は、サブスクリプションと VNet を使用した一般的な設計パターンをいくつかまとめたものです。
 
-|Scenario|Diagram|Pros|Cons|
+|シナリオ|ダイアグラム|長所|短所|
 |---|---|---|---|
-|Single subscription, two VNets per app|![Single subscription](./media/virtual-network-vnet-plan-design-arm/figure1.png)|Only one subscription to manage.|Maximum of 25 apps per Azure region. You need more subscriptions after that.|
-|One subscription per app, two VNets per app|![Single subscription](./media/virtual-network-vnet-plan-design-arm/figure2.png)|Uses only two VNets per subscription.|Harder to manage when there are too many apps.|
-|One subscription per business unit, two VNets per app.|![Single subscription](./media/virtual-network-vnet-plan-design-arm/figure3.png)|Balance between number of subscriptions and VNets.|Maximum of 25 apps per business unit (subscription).|
-|One subscription per business unit, two VNets per group of apps.|![Single subscription](./media/virtual-network-vnet-plan-design-arm/figure4.png)|Balance between number of subscriptions and VNets.|Apps must be isolated by using subnets and NSGs.|
+|1 つのサブスクリプション、アプリごとに 2 つの VNet|![1 つのサブスクリプション](./media/virtual-network-vnet-plan-design-arm/figure1.png)|管理するサブスクリプションは 1 つだけ。|Azure リージョンごとに最大 25 のアプリ。それ以上にはサブスクリプションを追加する必要があります。|
+|アプリごとに 1 つのサブスクリプション、アプリごとに 2 つの VNet|![1 つのサブスクリプション](./media/virtual-network-vnet-plan-design-arm/figure2.png)|サブスクリプションあたり 2 つだけ VNet を使用します。|アプリの数が多すぎると、管理が難しくなります。|
+|事業単位ごとに 1 つのサブスクリプション、アプリごとに 2 つの VNet|![1 つのサブスクリプション](./media/virtual-network-vnet-plan-design-arm/figure3.png)|サブスクリプションと VNet の数の間のバランス。|事業単位ごとに最大 25 アプリ (サブスクリプション)。|
+|事業単位ごとに 1 つのサブスクリプション、アプリのグループごとに 2 つの VNet|![1 つのサブスクリプション](./media/virtual-network-vnet-plan-design-arm/figure4.png)|サブスクリプションと VNet の数の間のバランス。|サブネットと NSG を利用し、アプリを分離する必要があります。|
 
 
-### <a name="number-of-subnets"></a>Number of subnets
+### サブネットの数
 
-You should consider multiple subnets in a VNet in the following scenarios:
+次のシナリオでは、1 つの VNet で複数のサブネットを作成することを検討します。
 
-- **Not enough private IP addresses for all NICs in a subnet**. If your subnet address space does not contain enough IP addresses for the number of NICs in the subnet, you need to create multiple subnets. Keep in mind that Azure reserves 5 private IP addresses from each subnet that cannot be used: the first and last addresses of the address space (for the subnet address, and multicast) and 3 addresses to be used internally (for DHCP and DNS purposes). 
-- **Security**. You can use subnets to separate groups of VMs from one another for workloads that have a multi-layer structure, and apply different [network security groups (NSGs)](virtual-networks-nsg.md#subnets) for those subnets.
-- **Hybrid connectivity**. You can use VPN gateways and ExpressRoute circuits to [connect](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site) your VNets to one another, and to your on-premises data center(s). VPN gateways and ExpressRoute circuits require a subnet of their own to be created.
-- **Virtual appliances**. You can use a virtual appliance, such as a firewall, WAN accelerator, or VPN gateway in an Azure VNet. When you do so, you need to [route traffic](virtual-networks-udr-overview.md) to those appliances and isolate them in their own subnet.
+- **1 つのサブネットですべての NIC のためのプライベート IP アドレスが足りません**。サブネット アドレス空間にサブネットの NIC 数に足りる IP アドレスがない場合、複数のサブネットを作成する必要があります。Azure はサブネットにつき 5 つのプライベート IP アドレスを予約します。アドレス空間の最初のアドレスと最後のアドレス (サブネット アドレスとマルチキャスト) とさらに 3 つのアドレス (DHCP と DNS) が内部で使用されます。
+- **セキュリティ**。サブネットを利用し、複数層の構造を持つワークロードに対して VM のグループを互いから分離し、それらのサブネットに異なる[ネットワーク セキュリティ グループ (NSG)](virtual-networks-nsg.md#subnets) を適用できます。
+- **ハイブリッド接続**。VPN ゲートウェイと ExpressRoute 回線を利用し、VNet を互いに、またはオンプレミスのデータ センターに[接続](../vpn-gateway/vpn-gateway-cross-premises-options.md)できます。VPN ゲートウェイと ExpressRoute 回線を利用するには、独自のサブネットを作成する必要があります。
+- **仮想アプライアンス**。ファイアウォール、WAN アクセラレータ、VPN ゲートウェイなどの仮想アプライアンスを Azure VNet で使用できます。その場合、それらのアプライアンスに[トラフィックを送信](virtual-networks-udr-overview.md)し、独自のサブネットでアプライアンスを分離する必要があります。
 
-### <a name="subnet-and-nsg-design-patterns"></a>Subnet and NSG design patterns
+### サブネットと NSG の設計パターン
 
-The table below shows some common design patterns for using subnets.
+次の表は、サブネットを使用した一般的な設計パターンをいくつかまとめたものです。
 
-|Scenario|Diagram|Pros|Cons|
+|シナリオ|ダイアグラム|長所|短所|
 |---|---|---|---|
-|Single subnet, NSGs per application layer, per app|![Single subnet](./media/virtual-network-vnet-plan-design-arm/figure5.png)|Only one subnet to manage.|Multiple NSGs necessary to isolate each application.|
-|One subnet per app, NSGs per application layer|![Subnet per app](./media/virtual-network-vnet-plan-design-arm/figure6.png)|Fewer NSGs to manage.|Multiple subnets to manage.|
-|One subnet per application layer, NSGs per app.|![Subnet per layer](./media/virtual-network-vnet-plan-design-arm/figure7.png)|Balance between number of subnets and NSGs.|Maximum of 100 NSGs. 50 apps if each apps requires 2 distinct NSGs.|
-|One subnet per application layer, per app, NSGs per subnet|![Subnet per layer per app](./media/virtual-network-vnet-plan-design-arm/figure8.png)|Possibly smaller number of NSGs.|Multiple subnets to manage.|
+|1 つのサブネット、アプリケーション層ごとに、アプリごとに NSG|![1 つのサブネット](./media/virtual-network-vnet-plan-design-arm/figure5.png)|管理するサブネットは 1 つだけ。|各アプリケーションを分離するために複数の NSG が必要。|
+|アプリごとに 1 つのサブネット、アプリケーション層ごとに NSG|![アプリごとのサブネット](./media/virtual-network-vnet-plan-design-arm/figure6.png)|管理する NSG が少なくなります。|複数のサブネットを管理します。|
+|アプリケーション層ごとに 1 つのサブネット、アプリごとに NSG。|![層ごとのサブネット](./media/virtual-network-vnet-plan-design-arm/figure7.png)|サブネットと NSG の数のバランスが取れます。|最大 100 NSG。各アプリで 2 つの異なる NSG を必要とする場合、50 アプリ。|
+|アプリケーション層ごとに、アプリごとに 1 つのサブネット、サブネットごとに NSG|![層ごとに、アプリごとにサブネット](./media/virtual-network-vnet-plan-design-arm/figure8.png)|潜在的に NSG の数が少なくなります。|複数のサブネットを管理します。|
 
-## <a name="sample-design"></a>Sample design
+## サンプル設計
 
-To illustrate the application of the information in this article, consider the following scenario.
+この記事の情報の応用例として、次のシナリオを検討してください。
 
-You work for a company that has 2 data centers in North America, and two data centers Europe. You identified 6 different customer facing applications maintained by 2 different business units that you want to migrate to Azure as a pilot. The basic architecture for the applications are as follows:
+あなたはデータセンターを北米に 2 棟、欧州に 2 棟所有する会社で働いています。あなたは顧客に利用されている 6 つの異なるアプリケーションが 2 つの異なる事業単位で保守管理されていることを確認しました。あなたは試験的にそのアプリケーションを Azure に移行します。アプリケーションの基本的なアーキテクチャは次のとおりです。
 
-- App1, App2, App3, and App4 are web applications hosted on Linux servers running Ubuntu. Each application connects to a separate application server that hosts RESTful services on Linux servers. The RESTful services connect to a back end MySQL database.
-- App5 and App6 are web applications hosted on Windows servers running Windows Server 2012 R2. Each application connects to a back end SQL Server database.
-- All apps are currently hosted in one of the company's data centers in North America.
-- The on-premises data centers use the 10.0.0.0/8 address space.
+- App1、App2、App3、App4 は、Ubuntu を実行している Linux サーバーでホストされている Web アプリケーションです。各アプリケーションは、Linux サーバーで RESTful サービスをホストする個々のアプリケーション サーバーに接続します。RESTful サービスはバックエンド MySQL データベースに接続します。
+- App5 と App6 は、Windows Server 2012 R2 を実行している Windows サーバーでホストされている Web アプリケーションです。各アプリケーションはバックエンド SQL データベースに接続します。
+- 現在、アプリはすべて北米にある会社のデータセンターの 1 つでホストされています。
+- オンプレミスのデータ センターでは 10.0.0.0/8 名前空間が使用されます。
 
-You need to design a virtual network solution that meets the following requirements:
+次の要件を満たす仮想ネットワーク ソリューションを設計する必要があります。
 
-- Each business unit should not be affected by resource consumption of other business units.
-- You should minimize the amount of VNets and subnets to make management easier.
-- Each business unit should have a single test/development VNet used for all applications.
-- Each application is hosted in 2 different Azure data centers per continent (North America and Europe).
-- Each application is completely isolated from each other.
-- Each application can be accessed by customers over the Internet using HTTP.
-- Each application can be accessed by users connected to the on-premises data centers by using an encrypted tunnel.
-- Connection to on-premises data centers should use existing VPN devices.
-- The company's networking group should have full control over the VNet configuration.
-- Developers in each business unit should only be able to deploy VMs to existing subnets.
-- All applications will be migrated as they are to Azure (lift-and-shift).
-- The databases in each location should replicate to other Azure locations once a day.
-- Each application should use 5 front end web servers, 2 application servers (when necessary), and 2 database servers.
+- いずれの事業単位も他の事業単位のリソース利用の影響を受けないようにする必要があります。
+- VNet とサブネットの数を最小限に抑え、管理を簡単にする必要があります。
+- いずれの事業単位も、すべてのアプリケーションに 1 つのテスト/開発 VNet を使用する必要があります。
+- 各アプリケーションは、大陸 (北米と欧州) ごとに 2 つの異なる Azure データ センターでホストされます。
+- 各アプリケーションは互いから完全に分離されます。
+- 顧客は HTTP を使用したインターネット経由で各アプリケーションにアクセスできます。
+- オンプレミスのデータ センターにアクセスできるユーザーは、暗号化トンネルを利用し、各アプリケーションにアクセスできます。
+- オンプレミスのデータ センターへの接続には既存の VPN デバイスを使用する必要があります。
+- 会社のネットワーク グループは VNet 構成を自由に利用できます。
+- 各事業単位の開発者は既存のサブネットだけに VM をデプロイできるようにする必要があります。
+- Azure に移行する場合と同じにすべてのアプリケーションは移行されます (リフトとシフト)。
+- 各場所のデータベースは、1 日に 1 回、他の Azure の場所に複製する必要があります。
+- 各アプリケーションで 5 つのフロントエンド Web サーバー、2つのアプリケーション サーバー (必要な場合)、2 つのデータベース サーバーを使用する必要があります。
 
-### <a name="plan"></a>Plan
+### プラン
 
-You should start your design planning by answering the question in the [Define requirements](#Define-requirements) section as shown below.
+「[要件の定義](#Define-requirements)」セクションの質問に以下のように回答し、設計計画を開始してください。
 
-1. What Azure locations will you use to host VNets?
+1. どの Azure の場所を VNet のホストに利用しますか。
 
-    2 locations in North America, and 2 locations in Europe. You should pick those based on the physical location of your existing on-premises data centers. That way your connection from your physical locations to Azure will have a better latency.
+	North America の 2 つの場所とヨーロッパでの 2 つの場所。既存のオンプレミスのデータ センターの物理的場所に基づいて選択してください。その方法により、物理的場所から Azure への接続で待ち時間が短くなります。
 
-2. Do you need to provide communication between these Azure locations?
+2. これらの Azure の場所の間で通信を提供する必要がありますか。
 
-    Yes. Since the databases must be replicated to all locations.
+	はい。データベースはすべての場所に複製する必要があります。
 
-3. Do you need to provide communication between your Azure VNet(s) and your on-premises data center(s)?
+3. Azure VNet とオンプレミス データセンターの間で通信を提供する必要はありますか。
 
-    Yes. Since users connected to the on-premises data centers must be able to access the applications through an encrypted tunnel.
+	はい。オンプレミスのデータ センターにアクセスできるユーザーは暗号化トンネルを利用してアプリケーションにアクセスできなければならないからです。
  
-4. How many IaaS VMs do you need for your solution?
+4. ソリューションには IaaS VM がいくつ必要ですか。
 
-    200 IaaS VMs. App1, App2 and App3 require 5 web servers each, 2 applications servers each, and 2 database servers each. That's a total of 9 IaaS VMs per application, or 36 IaaS VMs. App5 and App6 require 5 web servers and 2 database servers each. That's a total of 7 IaaS VMs per application, or 14 IaaS VMs. Therefore, you need 50 IaaS VMs for all applications in each Azure region. Since we need to use 4 regions, there will be 200 IaaS VMs.
+	200 IaaS VM。App1、App2、App3 は 5 つの Web サーバー、2 つアプリケーション サーバー、2 つのデータベース サーバーをそれぞれ必要とします。アプリケーションあたり 9 つの IaaS VM が、合計で 36 の IaaS VM が必要になります。App5 と App6 は 5 つの Web サーバーと 2 つのデータベース サーバーをそれぞれ必要とします。アプリケーションあたり 7 つの IaaS VM が、合計で 14 の IaaS VM が必要になります。そのため、Azure リージョンごとにすべてのアプリケーションのために 50 の IaaS VM が必要になります。4 つのリージョンを使用する必要があるので、200 の IaaS VM が必要になります。
 
-    You will also need to provide DNS servers in each VNet, or in your on-premises data centers to resolve name between your Azure IaaS VMs and your on-premises network. 
+	また、各 VNet に、あるいはオンプレミスのデータ センターに DNS サーバーを用意し、Azure IaaS VM とオンプレミスのネットワークの間で名前を解決する必要があります。
 
-5. Do you need to isolate traffic based on groups of VMs (i.e. front end web servers and back end database servers)?
+5. VM のグループ (すなわち、フロントエンド Web サーバーとバックエンド データベース サーバー) に基づいてトラフィックを分離する必要はありますか。
 
-    Yes. Each application should be completely isolated from each other, and each application layer should also be isolated. 
+	はい。各アプリケーションは互いから完全に分離する必要があります。各アプリケーション層も分離する必要があります。
 
-6. Do you need to control traffic flow using virtual appliances?
+6. 仮想アプライアンスを利用してトラフィック フローを制御する必要がありますか。
 
-    No. Virtual appliances can be used to provide more control over traffic flow, including more detailed data plane logging. 
+	いいえ。仮想アプライアンスを利用し、詳細なデータ プレーン ロギングなど、トラフィック フローをより細かく制御できます。
 
-7. Do users need different sets of permissions to different Azure resources?
+7. ユーザーには異なる Azure リソースにアクセスするために異なるアクセス許可セットが必要になりますか。
 
-    Yes. The networking team needs full control on the virtual networking settings, while developers should only be able to deploy their VMs to pre-existing subnets. 
+	はい。ネットワーク チームは仮想ネットワーク設定を自由に変更できなければなりません。開発者には既存のサブネットに自分の VM をデプロイする権限だけを与えます。
 
-### <a name="design"></a>Design
+### 設計
 
-You should follow the design specifying subscriptions, VNets, subnets, and NSGs. We will discuss NSGs here, but you should learn more about [NSGs](virtual-networks-nsg.md) before finishing your design.
+設計に基づき、サブスクリプション、VNet、サブネット、NSG を指定します。ここで NSG について説明しますが、設計を完了する前に [NSG](virtual-networks-nsg.md) について詳しく知っておく必要があります。
 
-**Number of subscriptions and VNets**
+**サブスクリプションと VNet の数**
 
-The following requirements are related to subscriptions and VNets:
+次の要件はサブスクリプションと VNet に関連します。
 
-- Each business unit should not be affected by resource consumption of other business units.
-- You should minimize the amount of VNets and subnets.
-- Each business unit should have a single test/development VNet used for all applications.
-- Each application is hosted in 2 different Azure data centers per continent (North America and Europe).
+- いずれの事業単位も他の事業単位のリソース利用の影響を受けないようにする必要があります。
+- VNet とサブネットの数を最小限に抑える必要があります。
+- いずれの事業単位も、すべてのアプリケーションに 1 つのテスト/開発 VNet を使用する必要があります。
+- 各アプリケーションは、大陸 (北米と欧州) ごとに 2 つの異なる Azure データ センターでホストされます。
 
-Based on those requirements, you need a subscription for each business unit. That way, consumption of resources from a business unit will not count towards limits for other business units. And since you want to minimize the number of VNets, you should consider using the **one subscription per business unit, two VNets per group of apps** pattern as seen below.
+以上の要件に基づき、事業単位ごとにサブスクリプションが必要になります。そのため、ある事業単位のリソースを利用して他の事業単位の上限に近づくことはありません。VNet の数を最小限に抑えるのであれば、下のような「**事業単位ごとに 1 つのサブスクリプション、アプリのグループごとに 2 つの VNet**」のパターンを利用することを検討してください。
 
-![Single subscription](./media/virtual-network-vnet-plan-design-arm/figure9.png)
+![1 つのサブスクリプション](./media/virtual-network-vnet-plan-design-arm/figure9.png)
 
-You also need to specify the address space for each VNet. Since you need connectivity between the on-premises data centers and the Azure regions, the address space used for Azure VNets cannot clash with the on-premises network, and the address space used by each VNet should not clash with other existing VNets. You could use the address spaces in the table below to satisfy these requirements.  
+VNet ごとにアドレス空間を指定する必要もあります。オンプレミスのデータ センターと Azure リージョンの間に接続が必要になるため、Azure VNet に使用されるアドレス空間をオンプレミスのネットワークと競合させることはできません。各 VNet で使用されるアドレス空間を他の既存の VNet と競合させることもできません。下の表のアドレス空間を利用すれば、以上の要件を満たせる場合があります。
 
-|**Subscription**|**VNet**|**Azure region**|**Address space**|
+|**サブスクリプション**|**VNet**|**Azure のリージョン**|**アドレス空間**|
 |---|---|---|---|
-|BU1|ProdBU1US1|West US|172.16.0.0/16|
-|BU1|ProdBU1US2|East US|172.17.0.0/16|
-|BU1|ProdBU1EU1|North Europe|172.18.0.0/16|
-|BU1|ProdBU1EU2|West Europe|172.19.0.0/16|
-|BU1|TestDevBU1|West US|172.20.0.0/16|
-|BU2|TestDevBU2|West US|172.21.0.0/16|
-|BU2|ProdBU2US1|West US|172.22.0.0/16|
-|BU2|ProdBU2US2|East US|172.23.0.0/16|
-|BU2|ProdBU2EU1|North Europe|172.24.0.0/16|
-|BU2|ProdBU2EU2|West Europe|172.25.0.0/16|
+|BU1|ProdBU1US1|米国西部|172\.16.0.0/16|
+|BU1|ProdBU1US2|米国東部|172\.17.0.0/16|
+|BU1|ProdBU1EU1|北ヨーロッパ|172\.18.0.0/16|
+|BU1|ProdBU1EU2|西ヨーロッパ|172\.19.0.0/16|
+|BU1|TestDevBU1|米国西部|172\.20.0.0/16|
+|BU2|TestDevBU2|米国西部|172\.21.0.0/16|
+|BU2|ProdBU2US1|米国西部|172\.22.0.0/16|
+|BU2|ProdBU2US2|米国東部|172\.23.0.0/16|
+|BU2|ProdBU2EU1|北ヨーロッパ|172\.24.0.0/16|
+|BU2|ProdBU2EU2|西ヨーロッパ|172\.25.0.0/16|
 
-**Number of subnets and NSGs**
+**サブネットと NSG の数**
 
-The following requirements are related to subnets and NSGs:
+次の要件はサブネットと NSG に関連します。
 
-- You should minimize the amount of VNets and subnets.
-- Each application is completely isolated from each other.
-- Each application can be accessed by customers over the Internet using HTTP.
-- Each application can be accessed by users connected to the on-premises data centers by using an encrypted tunnel.
-- Connection to on-premises data centers should use existing VPN devices.
-- The databases in each location should replicate to other Azure locations once a day.
+- VNet とサブネットの数を最小限に抑える必要があります。
+- 各アプリケーションは互いから完全に分離されます。
+- 顧客は HTTP を使用したインターネット経由で各アプリケーションにアクセスできます。
+- オンプレミスのデータ センターにアクセスできるユーザーは、暗号化トンネルを利用し、各アプリケーションにアクセスできます。
+- オンプレミスのデータ センターへの接続には既存の VPN デバイスを使用する必要があります。
+- 各場所のデータベースは、1 日に 1 回、他の Azure の場所に複製する必要があります。
 
-Based on those requirements, you could use one subnet per application layer, and use NSGs to filter traffic per application. That way, you only have 3 subnets in each VNet (front end, application layer, and data layer) and one NSG per application per subnet. In this case, you should consider using the **one subnet per application layer, NSGs per app** design pattern. The figure below shows the use of the design pattern representing the **ProdBU1US1** VNet.
+以上の要件に基づき、アプリケーション層あたり 1 つのサブネットを利用し、NSG を利用してアプリケーション別にトラフィックをフィルター処理できます。この方法で、VNet ごとにわずかに 3 つのサブネット (フロントエンド、アプリケーション、データ層) とサブネットごとにたった 1 つの NSG が与えられます。この場合、「**アプリケーション層ごとに 1 つのサブネット、アプリごとに NSG**」の設計パターンを利用することを検討してください。下の図では、**ProdBU1US1** VNet を表す設計パターンが使用されています。
 
-![One subnet per layer, one NSG per application per layer](./media/virtual-network-vnet-plan-design-arm/figure11.png)
+![層ごとに 1 つのサブネット、アプリケーションごとに、層ごとに 1 つの NSG](./media/virtual-network-vnet-plan-design-arm/figure11.png)
 
-However, you also need to create an extra subnet for the VPN connectivity between the VNets, and your on-premises data centers. And you need to specify the address space for each subnet. The figure below shows a sample solution for **ProdBU1US1** VNet. You would replicate this scenario for each VNet. Each color represents a different application.
+ただし、VNet とオンプレミスのデータ センターの間の VPN 接続のために追加のサブネットを作成する必要もあります。また、サブネットごとにアドレス空間を指定する必要があります。下の図は **ProdBU1US1** VNet のサンプル ソリューションを表しています。このシナリオを VNet ごとに複製します。それぞれの色は異なるアプリケーションを表します。
 
-![Sample VNet](./media/virtual-network-vnet-plan-design-arm/figure10.png)
+![サンプル VNet](./media/virtual-network-vnet-plan-design-arm/figure10.png)
 
-**Access Control**
+**Access Control  
+**
 
-The following requirements are related to access control:
+次の要件はアクセス制御に関連します。
 
-- The company's networking group should have full control over the VNet configuration.
-- Developers in each business unit should only be able to deploy VMs to existing subnets.
+- 会社のネットワーク グループは VNet 構成を自由に利用できます。
+- 各事業単位の開発者は既存のサブネットだけに VM をデプロイできるようにする必要があります。
 
-Based on those requirements, you could add users from the networking team to the built-in **Network Contributor** role in each subscription; and create a custom role for the application developers in each subscription giving them rights to add VMs to existing subnets.
+以上の要件に基づき、ネットワーク チームから各サブスクリプションに組み込まれている**ネットワークの共同作業者**にユーザーを追加し、各サブスクリプションでアプリケーション開発者にカスタム ロールを作成し、既存のサブネットに VM を追加する権限を与えることができます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Deploy a virtual network](virtual-networks-create-vnet-arm-template-click.md) based on a scenario.
-- Understand how to [load balance](../load-balancer/load-balancer-overview.md) IaaS VMs and [manage routing over multiple Azure regions](../traffic-manager/traffic-manager-overview.md).
-- Learn more about [NSGs and how to plan and design](virtual-networks-nsg.md) an NSG solution.
-- Learn more about your [cross-premises and VNet connectivity options](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site).
+- シナリオに基づいて[仮想ネットワークをデプロイ](virtual-networks-create-vnet-arm-template-click.md)します。
+- IaaS VM の[負荷を分散](../load-balancer/load-balancer-overview.md)し、[複数の Azure リージョンでルーティングを管理](../traffic-manager/traffic-manager-overview.md)する方法を理解します。
+- [NSG の概要と NSG ソリューションの計画と設計の方法](virtual-networks-nsg.md)について詳しく学習します。
+- [プレミス間と VNet の接続オプション](../vpn-gateway/vpn-gateway-cross-premises-options.md)について詳しく学習します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

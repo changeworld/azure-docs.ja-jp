@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Configure multiple NICs on a Linux VM | Microsoft Azure"
-   description="Learn how to create a VM with multiple NICs attached to it using the Azure CLI or Resource Manager templates."
+   pageTitle="Linux VM での複数 NIC の構成 | Microsoft Azure"
+   description="Azure CLI または Resource Manager テンプレートを使用して、複数の NIC を持つ VM を作成する方法について説明します。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,36 +16,35 @@
    ms.date="08/02/2016"
    ms.author="iainfou"/>
 
+# 複数 NIC を持つ VM の作成
+Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。この記事では、複数の NIC を持つ VM を作成するためのクイック コマンドを紹介します。独自の Bash スクリプト内に複数の NIC を作成する方法など、詳しくは、[複数 NIC の VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-cli.md)に関する記事を参照してください。[VM のサイズ](virtual-machines-linux-sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
 
-# <a name="creating-a-vm-with-multiple-nics"></a>Creating a VM with multiple NICs
-You can create a virtual machine (VM) in Azure that has multiple virtual network interfaces (NICs) attached to it. A common scenario would be to have different subnets for front-end and back-end connectivity, or a network dedicated to a monitoring or backup solution. This article provides quick commands to create a VM with multiple NICs attached to it. For detailed information, including how to create multiple NICs within your own Bash scripts, read more about [deploying multi-NIC VMs](../virtual-network/virtual-network-deploy-multinic-arm-cli.md). Different [VM sizes](virtual-machines-linux-sizes.md) support a varying number of NICs, so size your VM accordingly.
+>[AZURE.WARNING] VM の作成時に複数の NIC をアタッチする必要があります。既存の VM に NIC を追加することはできません。[元の仮想ディスクに基づいて新しい VM を作成](virtual-machines-linux-copy-vm.md)し、VM をデプロイするときに複数の NIC を作成できます。
 
->[AZURE.WARNING] You must attach multiple NICs when you create a VM - you cannot add NICs to an existing VM. You can [create a new VM based on the original virtual disk(s)](virtual-machines-linux-copy-vm.md) and create multiple NICs as you deploy the VM.
+## クイック コマンド
+[Azure CLI](../xplat-cli-install.md) でログインし、Resource Manager モードを使用していることを確認します (`azure config mode arm`)。
 
-## <a name="quick-commands"></a>Quick commands
-Make sure that you have the [Azure CLI](../xplat-cli-install.md) logged in and using Resource Manager mode (`azure config mode arm`).
-
-First, create a resource group:
+まず、リソース グループを作成します。
 
 ```bash
 azure group create TestRG --location WestUS
 ```
 
-Create a storage account to hold your VMs:
+VM を保持するストレージ アカウントを作成します。
 
 ```bash
 azure storage account create teststorage --resource-group TestRG \
     --location WestUS --kind Storage --sku-name PLRS
 ```
 
-Create a virtual network to connect your VMs to:
+VM を接続する仮想ネットワークを作成します。
 
 ```bash
 azure network vnet create --resource-group TestRG --location WestUS \
     --name TestVNet --address-prefixes 192.168.0.0/16 
 ```
 
-Create two virtual network subnets - one for front-end traffic and one for back-end traffic:
+2 つの仮想ネットワーク サブネットを作成します。1 つはフロント エンド トラフィック用、もう 1 つはバック エンド トラフィック用です。
 
 ```bash
 azure network vnet subnet create --resource-group TestRG --vnet-name TestVNet \
@@ -54,7 +53,7 @@ azure network vnet subnet create --resource-group TestRG --vnet-name TestVNet \
     --name BackEnd --address-prefix 192.168.2.0/24
 ```
 
-Create two NICs, attaching one NIC to the front-end subnet and one NIC to the back-end subnet:
+2 つの NIC を作成します。1 つをフロント エンド サブネットに、もう 1 つをバック エンド サブネットにアタッチします。
 
 ```bash
 azure network nic create --resource-group TestRG --location WestUS \
@@ -63,7 +62,7 @@ azure network nic create --resource-group TestRG --location WestUS \
     -n NIC2 --subnet-vnet-name TestVNet --subnet-name BackEnd
 ```
 
-Finally create your VM, attaching the two NICs you previously created:
+最後に VM を作成します。ここに、先ほど作成した 2 つの NIC をアタッチします。
 
 ```bash
 azure vm create \            
@@ -79,10 +78,10 @@ azure vm create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="creating-multiple-nics-using-azure-cli"></a>Creating multiple NICs using Azure CLI
-If you have previously created a VM using the Azure CLI, the quick commands should be familiar. The process is the same to create one NIC or multiple NICs. You can read more details about [deploying multiple NICs using the Azure CLI](../virtual-network/virtual-network-deploy-multinic-arm-cli.md), including scripting the process of looping through to create all the NICs.
+## Azure CLI を使用して複数の NIC を作成する
+Azure CLI を使用して VM を作成済みであれば、クイック コマンドは難しくありません。NIC を 1 つ作成する場合も、複数作成する場合も、プロセスは同じです。詳しくは、「[Azure CLI を使用した複数の NIC VM のデプロイ](../virtual-network/virtual-network-deploy-multinic-arm-cli.md)」をご覧ください。ここでは、すべての NIC を作成するループ プロセスのスクリプトを作成する方法についても解説しています。
 
-The following example creates two NICs, with one NIC connecting to each subnet:
+次の例では 2 つの NIC を作成し、それぞれサブネットに接続します。
 
 ```bash
 azure network nic create --resource-group TestRG --location WestUS \
@@ -91,14 +90,14 @@ azure network nic create --resource-group TestRG --location WestUS \
     -n NIC2 --subnet-vnet-name TestVNet --subnet-name BackEnd
 ```
 
-Typically you would also create a [network security group](../virtual-network/virtual-networks-nsg.md) or [load balancer](../load-balancer/load-balancer-overview.md) to help manage and distribute traffic across your VMs. Again, the commands are the same when working with multiple NICs. The NICs you create get bound to a network security group or load balancer using `azure network nic set`, such as in the following example:
+通常は、VM 間でトラフィックを管理、分散するために、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)や[ロード バランサー](../load-balancer/load-balancer-overview.md)も作成します。ここでもまた、コマンドは複数の NIC を扱う場合と同じです。作成した NIC は、`azure network nic set` を使用して、ネットワーク セキュリティ グループまたはロード バランサーにバインドします。例を次に示します。
 
 ```bash
 azure network nic set --resource-group TestRG --name NIC1 \
     --network-security-group-name TestNSG
 ```
 
-When creating the VM, you now specify multiple NICs. Rather using `--nic-name` to provide a single NIC, instead you use `--nic-names` and provide a comma-separated list of NICs. You also need to take care when you select the VM size. There are limits for the total number of NICs that you can add to a VM. Read more about [Linux VM sizes](virtual-machines-linux-sizes.md). The following example shows how to specify multiple NICs and then a VM size that supports using multiple NICs (`Standard_DS2_v2`):
+VM を作成するときに、複数の NIC を指定します。`--nic-name` を使用して 1 つの NIC を指定する代わりに、`--nic-names` を使用して NIC のコンマ区切りのリストを指定します。VM のサイズを選択する際には注意が必要です。1 つの VM に追加できる NIC の合計数には制限があります。詳しくは、[Linux VM のサイズ](virtual-machines-linux-sizes.md)に関する記事をご覧ください。次の例は、複数の NIC を指定し、複数 NIC の使用をサポートする VM のサイズを指定する方法を示しています (`Standard_DS2_v2`)。
 
 ```bash
 azure vm create \            
@@ -114,8 +113,8 @@ azure vm create \
     --ssh-publickey-file ~/.ssh/id_rsa.pub
 ```
 
-## <a name="creating-multiple-nics-using-resource-manager-templates"></a>Creating multiple NICs using Resource Manager templates
-Azure Resource Manager templates use declarative JSON files to define your environment. You can read an [overview of Azure Resource Manager](../resource-group-overview.md). Resource Manager templates provide a way to create multiple instances of a resource during deployment, such as creating multiple NICs. You use *copy* to specify the number of instances to create:
+## Resource Manager テンプレートを使用して複数の NIC を作成する
+Azure Resource Manager テンプレートで宣言型の JSON ファイルを使用して環境を定義します。詳しくは、「[Azure Resource Manager の概要](../resource-group-overview.md)」をご覧ください。Resource Manager テンプレートでは、複数の NIC の作成など、デプロイ時にリソースの複数のインスタンスを作成することができます。*copy* を使用して、作成するインスタンスの数を指定します。
 
 ```bash
 "copy": {
@@ -124,22 +123,19 @@ Azure Resource Manager templates use declarative JSON files to define your envir
 }
 ```
 
-Read more about [creating multiple instances using *copy*](../resource-group-create-multiple.md). 
+詳しくは、[*copy* を使用した複数のインスタンスの作成](../resource-group-create-multiple.md)に関する記事を参照してください。
 
-You can also use a `copyIndex()` to then append a number to a resource name, which allows you to create `NIC1`, `NIC2`, etc. The following shows an example of appending the index value:
+`copyIndex()` を使用してリソース名に数値を追加することもできます。これにより、`NIC1`、`NIC2` などを作成することができます。インデックス値を追加する例を次に示します。
 
 ```bash
 "name": "[concat('NIC-', copyIndex())]", 
 ```
 
-You can read a complete example of [creating multiple NICs using Resource Manager templates](../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+完全な例については、「[Resource Manager テンプレートを使用して複数の NIC を作成する](../virtual-network/virtual-network-deploy-multinic-arm-template.md)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
-Make sure to review [Linux VM sizes](virtual-machines-linux-sizes.md) when trying to creating a VM with multiple NICs. Pay attention to the maximum number of NICs each VM size supports. 
+## 次のステップ
+複数の NIC を持つ VM を作成する際は、[Linux VM のサイズ](virtual-machines-linux-sizes.md)を必ず確認してください。各 VM サイズがサポートしている NIC の最大数に注意してください。
 
-Remember that you cannot add additional NICs to an existing VM, you must create all the NICs when you deploy the VM. Take care when planning your deployments to make sure that you have all the required network connectivity from the outset.
+既存の VM に NIC を追加することはできません。VM をデプロイするときに、すべての NIC を作成する必要があります。デプロイメントの計画時に、初めから必要なすべてのネットワーク接続があることを確認してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure virtual machine deployment with Chef | Microsoft Azure"
-   description="Learn how to use Chef to do automated virtual machine deployment and configuration on Microsoft Azure"
+   pageTitle="Chef による Azure 仮想マシンのデプロイ | Microsoft Azure"
+   description="Chef を使用して自動化された仮想マシンのデプロイと構成を Microsoft Azure で実行する方法について説明します。"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="diegoviso"
@@ -15,213 +15,212 @@ ms.topic="article"
 ms.date="05/19/2015"
 ms.author="diviso"/>
 
-
-# <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automating Azure virtual machine deployment with Chef
+# Chef で Azure 仮想マシンのデプロイメントを自動化する
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-Chef is a great tool for delivering automation and desired state configurations.
+Chef は自動化と必要な状態の構成を提供する優れたツールです。
 
-With our latest cloud-api release, Chef provides seamless integration with Azure, giving you the ability to provision and deploy configuration states through a single command.
+Chef は最新の cloud-api リリースで Azure とのシームレスな統合を提供しており、1 つのコマンドで構成状態をプロビジョニングしてデプロイできます。
 
-In this article, I’ll show you how to set up your Chef environment to provision Azure virtual machines and walk you through creating a policy or “CookBook” and then deploying this cookbook to an Azure virtual machine.
+この記事では、Chef 環境を設定し、Azure 仮想マシンをプロビジョニングする方法と、ポリシーまたは「CookBook」を作成し、それを Azure 仮想マシンに導入する方法について説明します。
 
-Let’s begin!
+早速始めましょう。
 
-## <a name="chef-basics"></a>Chef basics
+## Chef の基礎
 
-Before you begin, I suggest you review the basic concepts of Chef. There is great material <a href="http://www.chef.io/chef" target="_blank">here</a> and I recommend you have a quick read before you attempt this walkthrough. I will however recap the basics before we get started.
+開始する前に Chef の基本的な概念を確認しておくことをお勧めします。<a href="http://www.chef.io/chef" target="_blank">こちら</a>に優れた資料があるので、このチュートリアルを開始する前に一読することをお勧めします。基礎については開始する前に要約します。
 
-The following diagram depicts the high-level Chef architecture.
+次の図は、大まかな Chef アーキテクチャを示しています。
 
 ![][2]
 
-Chef has three main architectural components: Chef Server, Chef Client (node), and Chef Workstation.
+Chef には、Chef サーバー、Chef クライアント (ノード)、および Chef ワークステーションという 3 つの主要なアーキテクチャ コンポーネントがあります。
 
-The Chef Server is our management point and there are two options for the Chef Server: a hosted solution or an on-premises solution. We will be using a hosted solution.
+Chef サーバーは管理ポイントとなります。Chef サーバーにはホスト型ソリューションとオンプレミスのソリューションの 2 つのオプションがあります。ここではホスト型ソリューションを使用します。
 
-The Chef Client (node) is the agent that sits on the servers you are managing.
+Chef クライアント (ノード) は管理対象のサーバーに置かれるエージェントです。
 
-The Chef Workstation is our admin workstation where we create our policies and execute our management commands. We run the **knife** command from the Chef Workstation to manage our infrastructure.
+Chef ワークステーションは管理者用のワークステーションで、ポリシーを作成したり、管理コマンドを実行します。Chef ワークステーションから **knife** コマンドを実行してインフラストラクチャを管理します。
 
-There is also the concept of “Cookbooks” and “Recipes”. These are effectively the policies we define and apply to our servers.
+また「Cookbook」と「Recipe」の概念もあります。これらの概念が、実際に定義して、サーバーに適用するポリシーになります。
 
-## <a name="preparing-the-workstation"></a>Preparing the workstation
+## ワークステーションを準備する
 
-First, lets prep the workstation. I’m using a standard Windows workstation. We need to create a directory to store our config files and cookbooks.
+まずはワークステーションを準備します。ここでは、標準の Windows ワークステーションを使用します。構成ファイルと Cookbook を保存するディレクトリを作成する必要があります。
 
-First create a directory called C:\chef.
+最初に C:\\chef というディレクトリを作成します。
 
-Then create a second directory called c:\chef\cookbooks.
+次に 2 個目のディレクトリ c:\\chef\\cookbooks を作成します。
 
-We now need to download our Azure settings file so Chef can communicate with our Azure subscription.
+Azure 設定ファイルをダウンロードして Chef が Azure のサブスクリプションと通信できるようにする必要があります。
 
-Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).
+パブリッシュ設定は、[ここ](https://manage.windowsazure.com/publishsettings/)からダウンロードしてください。
 
-Save the publish settings file in C:\chef.
+発行設定ファイルを C:\\chef に保存します。
 
-##<a name="creating-a-managed-chef-account"></a>Creating a managed Chef account
+##管理された Chef アカウントの作成
 
-Sign up for a hosted Chef account [here](https://manage.chef.io/signup).
+ホストされる Chef アカウントに[ここ](https://manage.chef.io/signup)からサインアップします。
 
-During the signup process, you will be asked to create a new organization.
+サインアップ プロセス中、新しい組織を作成するように尋ねられます。
 
 ![][3]
 
-Once your organization is created, download the starter kit.
+組織を作成したら、スターター キットをダウンロードします。
 
 ![][4]
 
-> [AZURE.NOTE] If you receive a prompt warning you that your keys will be reset, it’s ok to proceed as we have no existing infrastructure configured as yet.
+> [AZURE.NOTE] キーがリセットされるという警告が表示されても、構成済みのインフラストラクチャがまだないため、そのまま進んでかまいません。
 
-This starter kit zip file contains your organization config files and keys.
+このスターター キットの zip ファイルには、組織の構成ファイルとキーが含まれています。
 
-##<a name="configuring-the-chef-workstation"></a>Configuring the Chef workstation
+##Chef ワークステーションの構成
 
-Extract the content of the chef-starter.zip to C:\chef.
+chef-starter.zip を C:\\chef に展開します。
 
-Copy all files under chef-starter\chef-repo\.chef to your c:\chef directory.
+chef-starter\\chef-repo.chef にあるすべてのファイルを c:\\chef ディレクトリにコピーします。
 
-Your directory should now look something like the following example.
+これでディレクトリは次の例のようになります。
 
 ![][5]
 
-You should now have four files including the Azure publishing file in the root of c:\chef.
+c:\\chef のルートには Azure パブリッシュ ファイルを含む 4 つのファイルがあります。
 
-The PEM files contain your organization and admin private keys for communication while the knife.rb file contains your knife configuration. We will need to edit the knife.rb file.
+PEM ファイルには組織と管理者の通信用秘密キーが含まれ、knife.rb ファイルには knife 構成が含まれています。knife.rb ファイルを編集する必要があります。
 
-Open the file in your editor of choice and modify the “cookbook_path” by removing the /../ from the path so it appears as shown next.
+任意のエディターでファイルを開き、パスから「/../」を削除して「cookbook\_path」を変更し、次のようにします。
 
-    cookbook_path  ["#{current_dir}/cookbooks"]
+	cookbook_path  ["#{current_dir}/cookbooks"]
 
-Also add the following line reflecting the name of your Azure publish settings file.
+また、Azure パブリッシュ設定ファイルの名前を反映する次の行を追加します。
 
-    knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
+	knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 
-Your knife.rb file should now look similar to the following example.
+これで、knife.rb ファイルは次の例のようになります。
 
 ![][6]
 
-These lines will ensure that Knife references the cookbooks directory under c:\chef\cookbooks, and also uses our Azure Publish Settings file during Azure operations.
+これらの行によって、Knife が c:\\chef\\cookbooks の cookbook ディレクトリを参照し、Azure 操作中に Azure パブリッシュ設定を使用するようになります。
 
-## <a name="installing-the-chef-development-kit"></a>Installing the Chef Development Kit
+## Chef 開発キットのインストール
 
-Next [download and install](http://downloads.getchef.com/chef-dk/windows) the ChefDK (Chef Development Kit) to set up your Chef Workstation.
+次に ChefDK (Chef 開発キット) を[ダウンロードしてインストール](http://downloads.getchef.com/chef-dk/windows)し、Chef Workstation を設定します。
 
 ![][7]
 
-Install in the default location of c:\opscode. This install will take around 10 minutes.
+既定の場所である c:\\opscode にインストールします。このインストールは約 10 分かかります。
 
-Confirm your PATH variable contains entries for C:\opscode\chefdk\bin;C:\opscode\chefdk\embedded\bin;c:\users\yourusername\.chefdk\gem\ruby\2.0.0\bin
+PATH 変数に C:\\opscode\\chefdk\\bin;C:\\opscode\\chefdk\\embedded\\bin;c:\\users\\yourusername\\.chefdk\\gem\\ruby\\2.0.0\\bin のエントリが含まれていることを確認します。
 
-If they are not there, make sure you add these paths!
+ない場合は必ずこのパスを追加してください。
 
-*NOTE THE ORDER OF THE PATH IS IMPORTANT!* If your opscode paths are not in the correct order you will have issues.
+*パスの順序が重要ですのでご注意ください。* opscode パスの順序が正しくない場合は、問題が生じます。
 
-Reboot your workstation before you continue.
+続行する前にワークステーションを再起動します。
 
-Next, we will install the Knife Azure extension. This provides Knife with the “Azure Plugin”.
+次に Knife Azure 拡張機能をインストールします。これで Knife に「Azure プラグイン」が提供されます。
 
-Run the following command.
+次のコマンドを実行します。
 
-    chef gem install knife-azure ––pre
+	chef gem install knife-azure ––pre
 
-> [AZURE.NOTE] The –pre argument ensures you are receiving the latest RC version of the Knife Azure Plugin which provides access to the latest set of APIs.
+> [AZURE.NOTE] –pre 引数は、最新の API セットへのアクセスを提供する Knife Azure プラグインの最新 RC バージョンを、確実に受け取るようにします。
 
-It’s likely that a number of dependencies will also be installed at the same time.
+さまざまな依存関係も同時にインストールされる場合があります。
 
 ![][8]
 
 
-To ensure everything is configured correctly, run the following command.
+すべてが正しく構成されたことを確認するには、次のコマンドを実行します。
 
-    knife azure image list
+	knife azure image list
 
-If everything is configured correctly, you will see a list of available Azure images scroll through.
+すべてが正しく構成されていると、利用できる Azure イメージの一覧がスクロール表示されます。
 
-Congratulations. The workstation is set up!
+おめでとうございます。ワークステーションがセットアップされました。
 
-##<a name="creating-a-cookbook"></a>Creating a Cookbook
+##Cookbook の作成
 
-A Cookbook is used by Chef to define a set of commands that you wish to execute on your managed client. Creating a Cookbook is straightforward and we use the **chef generate cookbook** command to generate our Cookbook template. I will be calling my Cookbook web server as I would like a policy that automatically deploys IIS.
+Cookbookは管理するクライアント上で実行する一連のコマンドを定義するために Chef で使用します。Cookbook は簡単に作成でき、**chef generate cookbook** コマンドを使用して Cookbook のテンプレートを生成します。ポリシーで IIS を自動的にデプロイさせるため、Cookbook webserver を呼び出します。
 
-Under your C:\Chef directory run the following command.
+C:\\Chef ディレクトリで次のコマンドを実行します。
 
-    chef generate cookbook webserver
+	chef generate cookbook webserver
 
-This will generate a set of files under the directory C:\Chef\cookbooks\webserver. We now need to define the set of commands we would like our Chef client to execute on our managed virtual machine.
+これで、ディレクトリ C:\\Chef\\cookbooks\\webserver に一連のファイルが生成されます。次に、管理する仮想マシンで Chef クライアントに実行させる一連のコマンドを定義する必要があります。
 
-The commands are stored in the file default.rb. In this file, I’ll be defining a set of commands that installs IIS, starts IIS and copies a template file to the wwwroot folder.
+コマンドはファイル default.rb に保存されています。このファイルでは、IIS をインストールして、起動し、wwwroot フォルダーにテンプレートをコピーする一連のコマンドを定義します。
 
-Modify the C:\chef\cookbooks\webserver\recipes\default.rb file and add the following lines.
+C:\\chef\\cookbooks\\webserver\\recipes\\default.rb ファイルを変更し、次の行を追加します。
 
-    powershell_script 'Install IIS' do
-        action :run
-        code 'add-windowsfeature Web-Server'
-    end
+	powershell_script 'Install IIS' do
+ 		action :run
+ 		code 'add-windowsfeature Web-Server'
+	end
 
-    service 'w3svc' do
-        action [ :enable, :start ]
-    end
+	service 'w3svc' do
+ 		action [ :enable, :start ]
+	end
 
-    template 'c:\inetpub\wwwroot\Default.htm' do
-        source 'Default.htm.erb'
-        rights :read, 'Everyone'
-    end
+	template 'c:\inetpub\wwwroot\Default.htm' do
+ 		source 'Default.htm.erb'
+ 		rights :read, 'Everyone'
+	end
 
-Save the file once you are done.
+完了したらファイルを保存します。
 
-## <a name="creating-a-template"></a>Creating a template
+## テンプレートの作成
 
-As we mentioned previously, we need to generate a template file which will be used as our default.html page.
+既に説明したように、default.html ページとして使用するテンプレート ファイルを生成する必要があります。
 
-Run the following command to generate the template.
+次のコマンドを実行してテンプレートを生成します。
 
-    chef generate template webserver Default.htm
+	chef generate template webserver Default.htm
 
-Now navigate to the C:\chef\cookbooks\webserver\templates\default\Default.htm.erb file. Edit the file by adding some simple “Hello World” HTML code, and then save the file.
+C:\\chef\\cookbooks\\webserver\\templates\\default\\Default.htm.erb ファイルに移動します。シンプルな「Hello World」 HTML コードを追加して、ファイルを編集した後、ファイルを保存します。
 
 
 
-## <a name="upload-the-cookbook-to-the-chef-server"></a>Upload the Cookbook to the Chef Server
+## Chef サーバーに Cookbook をアップロードする
 
-In this step, we are taking a copy of the Cookbook that we have created on our local machine and uploading it to the Chef Hosted Server. Once uploaded, the Cookbook will appear under the **Policy** tab.
+このステップでは、ローカル コンピューターに作成した Cookbook のコピーを、Chef がホストするサーバーにアップロードします。アップロードが完了すると、Cookbook が **[ポリシー]** タブに表示されます。
 
-    knife cookbook upload webserver
+	knife cookbook upload webserver
 
 ![][9]
 
-## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Deploy a virtual machine with Knife Azure
+## Knife Azure で仮想マシンをデプロイする
 
-We will now deploy an Azure virtual machine and apply the “Webserver” Cookbook which will install our IIS web service and default web page.
+Azure 仮想マシンをデプロイして、IIS Web サービスと既定のWeb ページをインストールする "Webserver" Cookbook を適用します。
 
-In order to do this, use the **knife azure server create** command.
+これを実行するには **knife azure server create** コマンドを使用します。
 
-Am example of the command appears next.
+コマンドの例を次に示します。
 
-    knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
+	knife azure server create --azure-dns-name 'diegotest01' --azure-vm-name 'testserver01' --azure-vm-size 'Small' --azure-storage-account 'portalvhdsxxxx' --bootstrap-protocol 'cloud-api' --azure-source-image 'a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-Datacenter-201411.01-en.us-127GB.vhd' --azure-service-location 'Southeast Asia' --winrm-user azureuser --winrm-password 'myPassword123' --tcp-endpoints 80,3389 --r 'recipe[webserver]'
 
-The parameters are self-explanatory. Substitute your particular variables and run.
+パラメーターを見ればすぐにわかります。特定の変数に置き換えて実行してください。
 
-> [AZURE.NOTE] Through the the command line, I’m also automating my endpoint network filter rules by using the –tcp-endpoints parameter. I’ve opened up ports 80 and 3389 to provide access to my web page and RDP session.
+> [AZURE.NOTE] このコマンド ラインでは –tcp-endpoints パラメーターを使用し、エンドポイント ネットワーク フィルター ルールも自動化しています。ここではポート 80 と 3389 を開き、Web ページと RDP セッションにアクセスできるようにしています。
 
-Once you run the command, go to the Azure portal and you will see your machine begin to provision.
+コマンドを実行したら、Azure ポータルに移動し、コンピューターでプロビジョニングが開始することを確認します。
 
 ![][13]
 
-The command prompt appears next.
+次にコマンド プロンプトが表示されます。
 
 ![][10]
 
-Once the deployment is complete, we should be able to connect to the web service over port 80 as we had opened the port when we provisioned the virtual machine with the Knife Azure command. As this virtual machine is the only virtual machine in my cloud service, I’ll connect it with the cloud service url.
+デプロイメントが完了したら、ポート 80 で Web サービスに接続できるようになります。このポートは knife azure コマンドで仮想マシンをプロビジョニングした際に開きました。この仮想マシンはクラウド サービスで唯一の仮想マシンであるため、クラウド サービスの URL で接続します。
 
 ![][11]
 
-As you can see, I got creative with my HTML code.
+ご覧のように、クリエイティブな html コードにしました。
 
-Don’t forget we can also connect through an RDP session from the Azure classic portal via port 3389.
+また、ポート 3389 を経由して Azure クラシック ポータルから RDP セッションを通じて接続できます。
 
-I hope this has been helpful! Go  and start your infrastructure as code journey with Azure today!
+お役に立てれば幸いです。 今すぐ Azure でコードを工夫したインフラストラクチャを始めてください。
 
 
 <!--Image references-->
@@ -240,8 +239,4 @@ I hope this has been helpful! Go  and start your infrastructure as code journey 
 
 <!--Link references-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0323_2016-->

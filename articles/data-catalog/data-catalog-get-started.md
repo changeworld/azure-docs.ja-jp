@@ -1,379 +1,369 @@
 <properties
-    pageTitle="Get started with Data Catalog | Microsoft Azure"
-    description="End-to-end tutorial presenting the scenarios and capabilities of Azure Data Catalog."
-    documentationCenter=""
-    services="data-catalog"
-    authors="steelanddata"
-    manager=""
-    editor=""
-    tags=""/>
+	pageTitle="Data Catalog を使ってみる | Microsoft Azure"
+	description="Azure Data Catalog のシナリオと機能を紹介するエンド ツー エンドのチュートリアルです。"
+	documentationCenter=""
+	services="data-catalog"
+	authors="steelanddata"
+	manager=""
+	editor=""
+	tags=""/>
 <tags
-    ms.service="data-catalog"
-    ms.devlang="NA"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="data-catalog"
-    ms.date="09/20/2016"
-    ms.author="spelluru"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="09/20/2016"
+	ms.author="spelluru"/>
 
+# Azure Data Catalog の概要
+Azure Data Catalog は、完全に管理されたクラウド サービスで、エンタープライズ データ資産の登録システムと検出システムとして機能します。詳細については、「[Azure Data Catalog とは何ですか](data-catalog-what-is-data-catalog.md)」を参照してください。
 
-# <a name="get-started-with-azure-data-catalog"></a>Get started with Azure Data Catalog
-Azure Data Catalog is a fully managed cloud service that serves as a system of registration and system of discovery for enterprise data assets. For a detailed overview, see [What is Azure Data Catalog](data-catalog-what-is-data-catalog.md).
+このチュートリアルでは、Azure Data Catalog の概要について説明します。このチュートリアルでは、以下の手順を実施します。
 
-This tutorial helps you get started with Azure Data Catalog. You perform the following procedures in this tutorial:
-
-| Procedure | Description |
+| 手順 | 説明 |
 | :--- | :---------- |
-| [Provision data catalog](#provision-data-catalog) | In this procedure, you provision or set up Azure Data Catalog. You do this step only if the catalog has not been set up before. You can have only one data catalog per organization (Microsoft Azure Active Directory domain) even though there are multiple subscriptions associated with your Azure account. |
-| [Register data assets](#register-data-assets) | In this procedure, you register data assets from the AdventureWorks2014 sample database with the data catalog. Registration is the process of extracting key structural metadata such as names, types, and locations from the data source and copying that metadata to the catalog. The data source and data assets remain where they are, but the metadata is used by the catalog to make them more easily discoverable and understandable. |
-| [Discover data assets](#discover-data-assets) | In this procedure, you use the Azure Data Catalog portal to discover data assets that were registered in the previous step. After a data source has been registered with Azure Data Catalog, its metadata is indexed by the service so that users can easily search for the data they need. |
-| [Annotate data assets](#annotate-data-assets) | In this procedure, you provide annotations (information such as descriptions, tags, documentation, or experts) for the data assets. This information supplements the metadata extracted from the data source, and to make the data source more understandable to more people. |
-| [Connect to data assets](#connect-to-data-assets) | In this procedure, you open data assets in integrated client tools (such as Excel and SQL Server Data Tools) and a non-integrated tool (SQL Server Management Studio). |
-| [Manage data assets](#manage-data-assets) | In this procedure, you set up security for your data assets. Data Catalog does not give users access to the data itself. The owner of the data source controls data access. <br/><br/> With Data Catalog, you can discover data sources and view the **metadata** related to the sources registered in the catalog. There may be situations, however, where data sources should be visible only to specific users or to members of specific groups. For these scenarios, you can use Data Catalog to take ownership of registered data assets within the catalog and control the visibility of the assets you own. |
-| [Remove data assets](#remove-data-assets) | In this procedure, you learn how to remove data assets from the data catalog. |  
+| [データ カタログのプロビジョニング](#provision-data-catalog) | この手順では、Azure Data Catalog をプロビジョニングまたはセットアップします。この手順は、これまでにカタログを設定したことがない場合のみ実行します。Azure アカウントに関連付けられているサブスクリプションが複数ある場合でも、持つことができるデータ カタログは組織 (Microsoft Azure Active Directory ドメイン) ごとに 1 つだけです。 |
+| [データ資産の登録](#register-data-assets) | この手順では、AdventureWorks2014 サンプル データベースのデータ資産をデータ カタログに登録します。登録とは、データ ソースから重要な構造メタデータ (名前、型、場所など) を抽出し、そのメタデータをカタログにコピーするプロセスです。データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。 |
+| [データ資産の検出](#discover-data-assets) | この手順では、Azure Data Catalog ポータルを使用して、前の手順で登録したデータ資産を検出します。データ ソースが Azure Data Catalog に登録されると、そのメタデータにはサービスによってインデックスが付けられます。これにより、ユーザーは必要なデータを簡単に検索できるようになります。 |
+| [データ資産への注釈付け](#annotate-data-assets) | この手順では、データ資産に注釈 (説明、タグ、ドキュメント、エキスパートなどの情報) を指定します。この情報は、データ ソースから抽出されたメタデータを補足し、より多くの人がデータ ソースについて理解できるようにします。 |
+| [データ資産への接続](#connect-to-data-assets) | この手順では、統合クライアント ツール (Excel や SQL Server Data Tools など) や非統合ツール (SQL Server Management Studio) でデータ資産を開きます。 |
+| [データ資産の管理](#manage-data-assets) | この手順では、データ資産のセキュリティを設定します。Data Catalog のユーザーにデータ自体へのアクセス権は与えられません。データ ソースの所有者がデータへのアクセスを管理します。<br/><br/>Data Catalog では、データ ソースを検出して、カタログに登録されたソースに関連する**メタデータ**を閲覧できます。しかし、場合によっては、データ ソースの可視性を特定のユーザーまたは特定のグループのメンバーに限定する必要があります。そのような場合は、Data Catalog を使用してカタログ内の登録済みデータ資産の所有権を取得し、所有する資産の可視性を制御することができます。 |
+| [データ資産の削除](#remove-data-assets) | この手順では、データ カタログからデータ資産を削除する方法について説明します。 |  
 
-## <a name="tutorial-prerequisites"></a>Tutorial prerequisites
+## チュートリアルの前提条件
 
-### <a name="azure-subscription"></a>Azure subscription
-To set up Azure Data Catalog, you must be the owner or co-owner of an Azure subscription.
+### Azure サブスクリプション
+Azure Data Catalog をセットアップするには、Azure サブスクリプションの所有者または共同所有者であることが必要です。
 
-Azure subscriptions help you organize access to cloud service resources like Azure Data Catalog. They also help you control how resource usage is reported, billed, and paid for. Each subscription can have a different billing and payment setup, so you can have different subscriptions and different plans by department, project, regional office, and so on. Every cloud service belongs to a subscription, and you need to have a subscription before setting up Azure Data Catalog. To learn more, see [Manage accounts, subscriptions, and administrative roles](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Azure サブスクリプションは、Azure Data Catalog のようなクラウド サービス リソースへのアクセスを整理するために役立ちます。さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。サブスクリプションごとに異なる課金および支払いを設定することができるため、部門別、プロジェクト別、支社別などで、異なるサブスクリプションや異なるプランを利用することができます。すべてのクラウド サービスがサブスクリプションに属しているため、Azure Data Catalog をセットアップする前に、サブスクリプションが必要です。詳細については、[アカウント、サブスクリプション、管理ロールの管理](../active-directory/active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
 
-If you don't have a subscription, you can create a free trial account in just a couple of minutes. See [Free Trial](https://azure.microsoft.com/pricing/free-trial/) for details.
+サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-### <a name="azure-active-directory"></a>Azure Active Directory
-To set up Azure Data Catalog, you must be signed in with an Azure Active Directory (Azure AD) user account. You must be the owner or co-owner of an Azure subscription.  
+### Azure Active Directory
+Azure Data Catalog をセットアップするには、Azure Active Directory (Azure AD) ユーザー アカウントでサインインする必要があります。Azure サブスクリプションの所有者または共同所有者であることが必要です。
 
-Azure AD provides an easy way for your business to manage identity and access, both in the cloud and on-premises. You can use a single work or school account to sign in to any cloud or on-premises web application. Azure Data Catalog uses Azure AD to authenticate sign-in. To learn more, see [What is Azure Active Directory](../active-directory/active-directory-whatis.md).
+Azure AD は、企業がクラウドとオンプレミス環境の両方で ID とアクセスを簡単に管理できるサービスです。1 つの職場または学校アカウントを使用して、任意のクラウドまたはオンプレミス Web アプリケーションにサインインできます。Azure Data Catalog は、Azure AD を使用してサインインを認証します。詳細については、「[Azure Active Directory とは](../active-directory/active-directory-whatis.md)」を参照してください。
 
-### <a name="azure-active-directory-policy-configuration"></a>Azure Active Directory policy configuration
+### Azure Active Directory ポリシーの構成
 
-You may encounter a situation where you can sign in to the Azure Data Catalog portal, but when you attempt to sign in to the data source registration tool, you encounter an error message that prevents you from signing in. This error may occur when you are on the company network or when you are connecting from outside the company network.
+Azure Data Catalog ポータルにはサインインできるものの、データ ソース登録ツールにサインインしようとするとエラー メッセージが表示され、サインインできないという状況に直面することがあります。このようなエラーは、企業ネットワーク上にいる場合や、企業ネットワークの外部から接続している場合に発生する可能性があります。
 
-The registration tool uses *forms authentication* to validate user sign-ins against Azure Active Directory. For successful sign-in, an Azure Active Directory administrator must enable forms authentication in the *global authentication policy*.
+登録ツールでは、"*フォーム認証*" を使用して、Azure Active Directory に対するユーザーのサインインを検証します。サインインを成功させるためには、Azure Active Directory 管理者が、"*グローバル認証ポリシー*" でフォーム認証を有効にする必要があります。
 
-With the global authentication policy, you can enable authentication separately for intranet and extranet connections, as shown in the following image. Sign-in errors may occur if forms authentication is not enabled for the network from which you're connecting.
+グローバル認証ポリシーでは、次の画像に示すように、イントラネット接続とエクストラネット接続で個別に認証を有効にすることができます。サインイン エラーは、接続元のネットワークで、フォーム認証が有効にされていない場合に発生する可能性があります。
 
  ![Azure Active Directory global authentication policy](./media/data-catalog-prerequisites/global-auth-policy.png)
 
-For more information, see [Configuring authentication policies](https://technet.microsoft.com/library/dn486781.aspx).
+詳細については、「[認証ポリシーの構成](https://technet.microsoft.com/library/dn486781.aspx)」を参照してください。
 
-## <a name="provision-data-catalog"></a>Provision data catalog
-You can provision only one data catalog per organization (Azure Active Directory domain). Therefore, if the owner or co-owner of an Azure subscription who belongs to this Azure Active Directory domain has already created a catalog, you will not be able to create a catalog again even if you have multiple Azure subscriptions. To test whether a data catalog has been created by a user in your Azure Active Directory domain, go to the [Azure Data Catalog home page](http://azuredatacatalog.com) and verify whether you see the catalog. If a catalog has already been created for you, skip the following procedure and go to the next section.    
+## データ カタログのプロビジョニング
+組織 (Azure Active Directory ドメイン) ごとにプロビジョニングできるデータ カタログは 1 つだけです。そのため、この Azure Active Directory ドメインに属している、Azure サブスクリプションの所有者または共同所有者が既にカタログを作成している場合、複数の Azure サブスクリプションを所有していても、もう一度カタログを作成することはできません。データ カタログが Azure Active Directory ドメイン内のユーザーによって作成されているかどうかをテストするには、[Azure Data Catalog ホーム ページ](http://azuredatacatalog.com)に移動し、カタログが表示されるかどうかを確認してください。カタログが既に作成されている場合は、以下の手順をスキップし、次のセクションに進んでください。
 
-1. Go to the [Data Catalog service page](https://azure.microsoft.com/services/data-catalog) and click **Get started**.
+1. [Data Catalog サービス ページ](https://azure.microsoft.com/services/data-catalog)に移動し、**[はじめる]** をクリックします。
 
-    ![Azure Data Catalog--marketing landing page](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
-2. Sign in with a user account that is the owner or co-owner of an Azure subscription. You see the following page after signing in.
+	![Azure Data Catalog--marketing landing page](media/data-catalog-get-started/data-catalog-marketing-landing-page.png)
+2. Azure サブスクリプションの所有者または共同所有者であるユーザー アカウントを使用してサインインします。サインイン後に、次のページが表示されます。
 
-    ![Azure Data Catalog--provision data catalog](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
-3. Specify a **name** for the data catalog, the **subscription** you want to use, and the **location** for the catalog.
-4. Expand **Pricing** and select an Azure Data Catalog **edition** (Free or Standard).
-    ![Azure Data Catalog--select edition](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
-5. Expand **Catalog Users** and click **Add** to add users for the data catalog. You are automatically added to this group.
-    ![Azure Data Catalog--users](media/data-catalog-get-started/data-catalog-add-catalog-user.png)
-6. Expand **Catalog Administrators** and click **Add** to add additional administrators for the data catalog. You are automatically added to this group.
-    ![Azure Data Catalog--administrators](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
-7. Click **Create Catalog** to create the data catalog for your organization. You see the home page for the data catalog after it is created.
-    ![Azure Data Catalog--created](media/data-catalog-get-started/data-catalog-created.png)    
+	![Azure Data Catalog--provision data catalog](media/data-catalog-get-started/data-catalog-create-azure-data-catalog.png)
+3. データ カタログの**名前**、使用する**サブスクリプション**、カタログの**場所**を指定します。
+4. **[価格設定]** を展開し、Azure Data Catalog の**エディション** (Free または Standard) を選択します。![Azure Data Catalog--select edition](media/data-catalog-get-started/data-catalog-create-catalog-select-edition.png)
+5. **[カタログ ユーザー]** を展開し、**[追加]** をクリックしてデータ カタログのユーザーを追加します。自身はこのグループに自動的に追加されます。![Azure Data Catalog--users](media/data-catalog-get-started/data-catalog-add-catalog-user.png)
+6. **[カタログの管理者]** を展開し、**[追加]** をクリックしてデータ カタログの他の管理者を追加します。自身はこのグループに自動的に追加されます。![Azure Data Catalog--administrators](media/data-catalog-get-started/data-catalog-add-catalog-admins.png)
+7. **[カタログの作成]** をクリックして、組織のデータ カタログを作成します。データ カタログが作成されると、そのデータ カタログのホーム ページが表示されます。![Azure Data Catalog--created](media/data-catalog-get-started/data-catalog-created.png)
 
-### <a name="find-a-data-catalog-in-the-azure-portal"></a>Find a data catalog in the Azure portal
-1. On a separate tab in the web browser or in a separate web browser window, go to the [Azure portal](https://portal.azure.com) and sign in with the same account that you used to create the data catalog in the previous step.
-2. Select **Browse** and then click **Data Catalog**.
+### Azure ポータルでのデータ カタログの検索
+1. Web ブラウザーの別のタブまたは別の Web ブラウザー ウィンドウで、[Azure Portal](https://portal.azure.com) に移動し、前の手順でデータ カタログを作成する際に使用したのと同じアカウントでサインインします。
+2. **[参照]** を選択し、**[Data Catalog]** をクリックします。
 
-    ![Azure Data Catalog--browse Azure](media/data-catalog-get-started/data-catalog-browse-azure-portal.png) You see the data catalog you created.
+	![Azure Data Catalog--browse Azure](media/data-catalog-get-started/data-catalog-browse-azure-portal.png)作成したデータ カタログが表示されます。
 
-    ![Azure Data Catalog--view catalog in list](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
-4.  Click the catalog that you created. You see the **Data Catalog** blade in the portal.
+	![Azure Data Catalog--view catalog in list](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
+4.  作成したカタログをクリックします。ポータルに **[Data Catalog]** ブレードが表示されます。
 
-    ![Azure Data Catalog--blade in portal ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
-5. You can view properties of the data catalog and update them. For example, click **Pricing tier** and change the edition.
+	![Azure Data Catalog--blade in portal](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+5. データ カタログのプロパティが表示され、更新することができます。たとえば、**[価格レベル]** をクリックし、エディションを変更します。
 
-    ![Azure Data Catalog--pricing tier](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
+	![Azure Data Catalog--pricing tier](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
 
-### <a name="adventure-works-sample-database"></a>Adventure Works sample database
-In this tutorial, you register data assets (tables) from the AdventureWorks2014 sample database for the SQL Server Database Engine, but you can use any supported data source if you would prefer to work with data that is familiar and relevant to your role. For a list of supported data sources, see [Supported data sources](data-catalog-dsr.md).
+### Adventure Works サンプル データベース
+このチュートリアルでは、SQL Server データベース エンジンの AdventureWorks2014 サンプル データベースからデータ資産 (テーブル) を登録しますが、自分のロールに関連のある使い慣れたデータを使用したい場合は、サポートされている任意のデータ ソースも使用できます。サポート対象のデータ ソースの一覧については、[サポートされるデータ ソース](data-catalog-dsr.md)に関する記事を参照してください。
 
-### <a name="install-the-adventure-works-2014-oltp-database"></a>Install the Adventure Works 2014 OLTP database
-The Adventure Works database supports standard online transaction-processing scenarios for a fictitious bicycle manufacturer (Adventure Works Cycles), which includes products, sales, and purchasing. In this tutorial, you register information about products into Azure Data Catalog.
+### Adventure Works 2014 OLTP データベースのインストール
+Adventure Works データベースでは、製品、販売、購入を含む、架空の自転車メーカー (Adventure Works Cycles) の標準的なオンライン トランザクション処理シナリオをサポートしています。このチュートリアルでは、製品に関する情報を Azure Data Catalog に登録します。
 
-To install the Adventure Works sample database:
+Adventure Works サンプル データベースのインストール方法を次に示します。
 
-1. Download [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) on CodePlex.
-2. To restore the database on your machine, follow the instructions in [Restore a Database Backup by using SQL Server Management Studio](http://msdn.microsoft.com/library/ms177429.aspx), or by following these steps:
-    1. Open SQL Server Management Studio and connect to the SQL Server Database Engine.
-    2. Right-click **Databases** and click **Restore Database**.
-    3. Under **Restore Database**, click the **Device** option for **Source** and click **Browse**.
-    4. Under **Select backup devices**, click **Add**.
-    5. Go to the folder where you have the **AdventureWorks2014.bak** file, select the file, and click **OK** to close the **Locate Backup File** dialog box.
-    6. Click **OK** to close the **Select backup devices** dialog box.    
-    7. Click **OK** to close the **Restore Database** dialog box.
+1. CodePlex で [Adventure Works 2014 Full Database Backup.zip](https://msftdbprodsamples.codeplex.com/downloads/get/880661) をダウンロードします。
+2. [SQL Server Management Studio を使用したデータベース バックアップの復元](http://msdn.microsoft.com/library/ms177429.aspx)に関する記事の手順、または以下の手順に従って、お使いのコンピューターにデータベースを復元します。
+	1. SQL Server Management Studio を開き、SQL Server データベース エンジンに接続します。
+	2. **[データベース]** を右クリックし、**[データベースの復元]** をクリックします。
+	3. **[データベースの復元]** で、**[ソース]** の **[デバイス]** オプションを選択し、**[参照]** をクリックします。
+	4. **[バックアップ デバイスの選択]** で、**[追加]** をクリックします。
+	5. **AdventureWorks2014.bak** ファイルがあるフォルダーに移動して、そのファイルを選択し、**[OK]** をクリックして **[バックアップ ファイルの検索]** ダイアログ ボックスを閉じます。
+	6. **[OK]** をクリックして **[バックアップ デバイスの選択]** ダイアログ ボックスを閉じます。
+	7. **[OK]** をクリックして **[データベースの復元]** ダイアログ ボックスを閉じます。
 
-You can now register data assets from the Adventure Works sample database by using Azure Data Catalog.
+これで、Adventure Works サンプル データベースのデータ資産を、Azure Data Catalog を使用して登録することができます。
 
-## <a name="register-data-assets"></a>Register data assets
+## データ資産の登録
 
-In this exercise, you use the registration tool to register data assets from the Adventure Works database with the catalog. Registration is the process of extracting key structural metadata such as names, types, and locations from the data source and the assets it contains, and copying that metadata to the catalog. The data source and data assets remain where they are, but the metadata is used by the catalog to make them more easily discoverable and understandable.
+この演習では、登録ツールを使用して、Adventure Works データベースのデータ資産をカタログに登録します。登録は、データ ソースおよびそれに格納されている資産から、名前、型、場所などの重要な構造メタデータを抽出し、そのメタデータをカタログにコピーするプロセスです。データ ソースとデータ資産はそのままの場所に残りますが、メタデータは、それらを簡単に検出して理解できるようにカタログで使用されます。
 
-### <a name="register-a-data-source"></a>Register a data source
+### データ ソースの登録
 
-1.  Go to the [Azure Data Catalog home page](https://azuredatacatalog.com) and click **Publish Data**.
+1.	[Azure Data Catalog ホーム ページ](https://azuredatacatalog.com)に移動し、**[データの発行]** をクリックします。
 
     ![Azure Data Catalog--Publish Data button](media/data-catalog-get-started/data-catalog-publish-data.png)
 
-2.  Click **Launch Application** to download, install, and run the registration tool on your computer.
+2.	**[アプリケーションを起動]** をクリックして、お使いのコンピューターで登録ツールをダウンロード、インストール、実行します。
 
     ![Azure Data Catalog--Launch button](media/data-catalog-get-started/data-catalog-launch-application.png)
 
-3. On the **Welcome** page, click **Sign in** and enter your credentials.    
+3. **[ようこそ]** ページで、**[サインイン]** をクリックし、資格情報を入力します。
 
-    ![Azure Data Catalog--Welcome page](media/data-catalog-get-started/data-catalog-welcome-dialog.png)
+	![Azure Data Catalog--Welcome page](media/data-catalog-get-started/data-catalog-welcome-dialog.png)
 
-4. On the **Microsoft Azure Data Catalog** page, click **SQL Server** and **Next**.
+4. **[Microsoft Azure Data Catalog]** ページで、**[SQL Server]** をクリックし、**[次へ]** をクリックします。
 
     ![Azure Data Catalog--data sources](media/data-catalog-get-started/data-catalog-data-sources.png)
 
-5.  Enter the SQL Server connection properties for **AdventureWorks2014** (see the following example) and click **CONNECT**.
+5.	**AdventureWorks2014** の SQL Server 接続のプロパティを入力し (以下の例を参照)、**[接続]** をクリックします。
 
     ![Azure Data Catalog--SQL Server connection settings](media/data-catalog-get-started/data-catalog-sql-server-connection.png)
 
-6.  Register the metadata of your data asset. In this example, you register **Production/Product** objects from the AdventureWorks Production namespace:
+6.	データ資産のメタデータを登録します。この例では、AdventureWorks Production 名前空間から **Production/Product** オブジェクトを登録します。
 
-    1. In the **Server Hierarchy** tree, expand **AdventureWorks2014** and click **Production**.
-    2. Select **Product**, **ProductCategory**, **ProductDescription**, and **ProductPhoto** by using Ctrl+click.
-    3. Click the **move selected arrow** (**>**). This action moves all selected objects into the **Objects to be registered** list.
+	1. **[サーバー階層]** のツリーで、**AdventureWorks2014** を展開し、**Production** をクリックします。
+	2. Ctrl キーを押しながら、**[Product]**、**[ProductCategory]**、**[ProductDescription]**、**[ProductPhoto]** をクリックして選択します。
+	3. **選択項目の移動用の矢印** (**>**) をクリックします。この操作により、選択したすべてのオブジェクトが **[登録されるオブジェクト]** の一覧に移動されます。
 
-        ![Azure Data Catalog tutorial--browse and select objects](media/data-catalog-get-started/data-catalog-server-hierarchy.png)
-    4. Select **Include a Preview** to include a snapshot preview of the data. The snapshot includes up to 20 records from each table, and it is copied into the catalog.
-    5. Select **Include Data Profile** to include a snapshot of the object statistics for the data profile (for example: minimum, maximum, and average values for a column, number of rows).
-    6. In the **Add tags** field, enter **adventure works, cycles**. This action adds search tags for these data assets. Tags are a great way to help users find a registered data source.
-    7. Specify the name of an **expert** on this data (optional).
+    	![Azure Data Catalog tutorial--browse and select objects](media/data-catalog-get-started/data-catalog-server-hierarchy.png)
+	4. **[プレビューを含める]** チェック ボックスをオンにして、データのスナップショット プレビューを含めます。スナップショットには、各テーブルから最大 20 個のレコードが含まれており、これはカタログにコピーされます。
+	5. **[データ プロファイルを含める]** チェック ボックスをオンにして、データ プロファイルのオブジェクト統計情報のスナップショットを含めます (列の最小値、最大値、平均値、行数など)。
+	6. **[コンマで区切られたタグを追加しています]** フィールドに、「**adventure works, cycles**」と入力します。この操作により、これらのデータ資産に検索タグが追加されます。タグは、ユーザーが登録されているデータ ソースを見つけるために役立つ優れた方法です。
+	7. このデータの**エキスパート**の名前を指定します (オプション)。
 
-        ![Azure Data Catalog tutorial--objects to be registered](media/data-catalog-get-started/data-catalog-objects-register.png)
+    	![Azure Data Catalog tutorial--objects to be registered](media/data-catalog-get-started/data-catalog-objects-register.png)
 
-    8. Click **REGISTER**. Azure Data Catalog registers your selected objects. In this exercise, the selected objects from Adventure Works are registered. The registration tool extracts metadata from the data asset and copies that data into the Azure Data Catalog service. The data remains where it currently resides, and it remains under the control of the administrators and policies of the current system.
+	8. [**登録**] をクリックします。Azure Data Catalog は、選択したオブジェクトを登録します。この演習では、Adventure Works から選択したオブジェクトが登録されます。登録ツールは、データ資産からメタデータを抽出し、そのデータを Azure Data Catalog サービスにコピーします。データは現在存在する場所に残り、現在のシステムの管理者とポリシーの制御下に留まります。
 
-        ![Azure Data Catalog--registered objects](media/data-catalog-get-started/data-catalog-registered-objects.png)
+		![Azure Data Catalog--registered objects](media/data-catalog-get-started/data-catalog-registered-objects.png)
 
-    9. To see your registered data source objects, click **View Portal**. In the Azure Data Catalog portal, confirm that you see all four tables and the database in the grid view.
+	9. 登録されているデータ ソース オブジェクトを表示するには、[**ポータルの表示**] をクリックします。Azure Data Catalog ポータルで、4 つのテーブルとデータベースすべてがグリッド ビューに表示されていることを確認します。
 
-        ![Objects in the Azure Data Catalog portal ](media/data-catalog-get-started/data-catalog-view-portal.png)
-
-
-In this exercise, you registered objects from the Adventure Works sample database so that they can be easily discovered by users across your organization. In the next exercise, you learn how to discover registered data assets.
-
-## <a name="discover-data-assets"></a>Discover data assets
-Discovery in Azure Data Catalog uses two primary mechanisms: searching and filtering.
-
-Searching is designed to be both intuitive and powerful. By default, search terms are matched against any property in the catalog, including user-provided annotations.
-
-Filtering is designed to complement searching. You can select specific characteristics such as experts, data source type, object type, and tags to view matching data assets and to constrain search results to matching assets.
-
-By using a combination of searching and filtering, you can quickly navigate the data sources that have been registered with Azure Data Catalog to discover the data assets you need.
-
-In this exercise, you use the Azure Data Catalog portal to discover data assets you registered in the previous exercise. See [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) for details about search syntax.
-
-Following are a few examples for discovering data assets in the catalog.  
-
-### <a name="discover-data-assets-with-basic-search"></a>Discover data assets with basic search
-Basic search helps you search a catalog by using one or more search terms. Results are any assets that match on any property with one or more of the terms specified.
-
-1. Click **Home** in the Azure Data Catalog portal. If you have closed the web browser, go to the [Azure Data Catalog home page](https://www.azuredatacatalog.com).
-2. In the search box, enter `cycles` and press **ENTER**.
-
-    ![Azure Data Catalog--basic text search](media/data-catalog-get-started/data-catalog-basic-text-search.png)
-3. Confirm that you see all four tables and the database (AdventureWorks2014) in the results. You can switch between **grid view** and **list view** by clicking buttons on the toolbar as shown in the following image. Notice that the search keyword is highlighted in the search results because the **Highlight** option is **ON**. You can also specify the number of **results per page** in search results.
-
-    ![Azure Data Catalog--basic text search results](media/data-catalog-get-started/data-catalog-basic-text-search-results.png)
-
-    The **Searches** panel is on the left and the **Properties** panel is on the right. On the **Searches** panel, you can change search criteria and filter results. The **Properties** panel displays properties of a selected object in the grid or list.
-
-4. Click **Product** in the search results. Click the **Preview**, **Columns**, **Data Profile**, and **Documentation** tabs, or click the arrow to expand the bottom pane.  
-
-    ![Azure Data Catalog--bottom pane](media/data-catalog-get-started/data-catalog-data-asset-preview.png)
-
-    On the **Preview** tab, you see a preview of the data in the **Product** table.  
-5. Click the **Columns** tab to find details about columns (such as **name** and **data type**) in the data asset.
-6. Click the **Data Profile** tab to see the profiling of data (for example: number of rows, size of data, or minimum value in a column) in the data asset.
-7. Filter the results by using **Filters** on the left. For example, click **Table** for **Object Type**, and you see only the four tables, not the database.
-
-    ![Azure Data Catalog--filter search results](media/data-catalog-get-started/data-catalog-filter-search-results.png)
-
-### <a name="discover-data-assets-with-property-scoping"></a>Discover data assets with property scoping
-Property scoping helps you discover data assets where the search term is matched with the specified property.
-
-1. Clear the **Table** filter under **Object Type** in **Filters**.  
-2. In the search box, enter `tags:cycles` and press **ENTER**. See [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) for all the properties you can use for searching the data catalog.
-3. Confirm that you see all four tables and the database (AdventureWorks2014) in the results.  
-
-    ![Data Catalog--property scoping search results](media/data-catalog-get-started/data-catalog-property-scoping-results.png)
-
-### <a name="save-the-search"></a>Save the search
-1. In the **Searches** pane in the **Current Search** section, enter a name for the search and click **Save**.
-
-    ![Azure Data Catalog--save search](media/data-catalog-get-started/data-catalog-save-search.png)
-2. Confirm that the saved search shows up under **Saved Searches**.
-
-    ![Azure Data Catalog--saved searches](media/data-catalog-get-started/data-catalog-saved-search.png)
-3. Select one of the actions you can take on the saved search (**Rename**, **Delete**, **Save As Default** search).
-
-    ![Azure Data Catalog--saved search options](media/data-catalog-get-started/data-catalog-saved-search-options.png)
-
-### <a name="boolean-operators"></a>Boolean operators
-You can broaden or narrow your search with Boolean operators.
-
-1. In the search box, enter `tags:cycles AND objectType:table`, and press **ENTER**.
-2. Confirm that you see only tables (not the database) in the results.  
-
-    ![Azure Data Catalog--Boolean operator in search](media/data-catalog-get-started/data-catalog-search-boolean-operator.png)
-
-### <a name="grouping-with-parentheses"></a>Grouping with parentheses
-By grouping with parentheses, you can group parts of the query to achieve logical isolation, especially along with Boolean operators.
-
-1. In the search box, enter `name:product AND (tags:cycles AND objectType:table)` and press **ENTER**.
-2. Confirm that you see only the **Product** table in the search results.
-
-    ![Azure Data Catalog--grouping search](media/data-catalog-get-started/data-catalog-grouping-search.png)   
-
-### <a name="comparison-operators"></a>Comparison operators
-With comparison operators, you can use comparisons other than equality for properties that have numeric and date data types.
-
-1. In the search box, enter `lastRegisteredTime:>"06/09/2016"`.
-2. Clear the **Table** filter under **Object Type**.
-3. Press **ENTER**.
-4. Confirm that you see the **Product**, **ProductCategory**, **ProductDescription**, and **ProductPhoto** tables and the AdventureWorks2014 database you registered in search results.
-
-    ![Azure Data Catalog--comparison search results](media/data-catalog-get-started/data-catalog-comparison-operator-results.png)
-
-See [How to discover data assets](data-catalog-how-to-discover.md) for detailed information about discovering data assets and [Data Catalog Search syntax reference](https://msdn.microsoft.com/library/azure/mt267594.aspx) for search syntax.
-
-## <a name="annotate-data-assets"></a>Annotate data assets
-In this exercise, you use the Azure Data Catalog portal to annotate (add information such as descriptions, tags, or experts) data assets you have previously registered in the catalog. The annotations supplement and enhance the structural metadata extracted from the data source during registration and makes the data assets much easier to discover and understand.
-
-In this exercise, you annotate a single data asset (ProductPhoto). You add a friendly name and description to the ProductPhoto data asset.  
-
-1.  Go to the [Azure Data Catalog home page](https://www.azuredatacatalog.com) and search with `tags:cycles` to find the data assets you have registered.  
-2. Click **ProductPhoto** in search results.  
-3. Enter **Product images** for **Friendly Name** and **Product photos for marketing materials** for the **Description**.
-
-    ![Azure Data Catalog--ProductPhoto description](media/data-catalog-get-started/data-catalog-productphoto-description.png)
-
-    The **Description** helps others discover and understand why and how to use the selected data asset. You can also add more tags and view columns. Now you can try searching and filtering to discover data assets by using the descriptive metadata you’ve added to the catalog.
-
-You can also do the following on this page:
-
-- Add experts for the data asset. Click **Add** in the **Experts** area.
-- Add tags at the dataset level. Click **Add** in the **Tags** area. A tag can be a user tag or a glossary tag. The Standard Edition of Data Catalog includes a business glossary that helps catalog administrators define a central business taxonomy. Catalog users can then annotate data assets with glossary terms. For more information, see [How to set up the Business Glossary for Governed Tagging](data-catalog-how-to-business-glossary.md)
-- Add tags at the column level. Click **Add** under **Tags** for the column you want to annotate.
-- Add description at the column level. Enter **Description** for a column. You can also view the description metadata extracted from the data source.
-- Add **Request access** information that shows users how to request access to the data asset.
-
-    ![Azure Data Catalog--add tags, descriptions](media/data-catalog-get-started/data-catalog-add-tags-experts-descriptions.png)
-
-- Choose the **Documentation** tab and provide documentation for the data asset. With Azure Data Catalog documentation, you can use your data catalog as a content repository to create a complete narrative of your data assets.
-
-    ![Azure Data Catalog--Documentation tab](media/data-catalog-get-started/data-catalog-documentation.png)
+    	![Objects in the Azure Data Catalog portal](media/data-catalog-get-started/data-catalog-view-portal.png)
 
 
-You can also add an annotation to multiple data assets. For example, you can select all the data assets you registered and specify an expert for them.
+この演習では、組織全体のユーザーがオブジェクトを簡単に検出できるように、Adventure Works サンプル データベースからオブジェクトを登録しました。次の演習では、登録されているデータ資産を検出する方法を学習します。
+
+## データ資産の検出
+Azure Data Catalog での検出では、検索とフィルター処理という 2 つの主要なメカニズムを使用します。
+
+検索は、直感的かつ強力な検出方法です。既定では、検索語句はカタログ内の任意のプロパティと照合されます (ユーザーが指定した注釈を含む)。
+
+フィルター処理は、検索を補完するものです。エキスパート、データ ソースの種類、オブジェクトの種類、タグなどの特定の特性を選択することで、一致するデータ資産を表示することや、検索結果を一致する資産に制限することができます。
+
+検索とフィルター処理を組み合わせて使用することで、Azure Data Catalog に登録されたデータ ソースをすばやく移動し、必要なデータ資産を検出することができます。
+
+この演習では、Azure Data Catalog ポータルを使用して、前の演習で登録したデータ資産を検出します。検索構文の詳細については、「[Data Catalog Search syntax reference (Data Catalog の検索構文のリファレンス)](https://msdn.microsoft.com/library/azure/mt267594.aspx)」を参照してください。
+
+カタログ内のデータ資産の検出方法について、いくつかの例を以下に示します。
+
+### 基本的な検索を使用したデータ資産の検出
+基本的な検索では、1 つ以上の検索語句を使用してカタログを検索できます。任意のプロパティで、指定した 1 つまたは複数の語句と一致する任意の資産が返されます。
+
+1. Azure Data Catalog ポータルの **[ホーム]** をクリックします。Web ブラウザーを閉じた場合は、もう一度開いて [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。
+2. 検索ボックスに「`cycles`」と入力し、**Enter** キーを押します。
+
+	![Azure Data Catalog--basic text search](media/data-catalog-get-started/data-catalog-basic-text-search.png)
+3. 結果に 4 つのテーブルとデータベース (AdventureWorks2014) が表示されることを確認します。以下の画像に示すように、ツール バーのボタンをクリックすることで、**グリッド ビュー**と**リスト ビュー**を切り替えることができます。**[ハイライト]** オプションが**オン**になっているため、検索結果内で検索キーワードが強調表示されています。検索結果で、**ページごとの結果**の数を指定することもできます。
+
+	![Azure Data Catalog--basic text search results](media/data-catalog-get-started/data-catalog-basic-text-search-results.png)
+
+	左側に **[検索]** パネル、右側に **[プロパティ]** パネルが表示されます。**[検索]** パネルでは、検索条件を変更したり、結果をフィルター処理したりできます。**[プロパティ]** パネルには、グリッドまたはリストで選択したオブジェクトのプロパティが表示されます。
+
+4. 検索結果にある **[Product]** をクリックします。**[プレビュー]**、**[列]**、**[データ プロファイル]**、**[ドキュメント]** の各タブをクリックするか、矢印をクリックして、下部にあるウィンドウを展開します。
+
+	![Azure Data Catalog--bottom pane](media/data-catalog-get-started/data-catalog-data-asset-preview.png)
+
+	**[プレビュー]** タブには、**Product** テーブルのデータのプレビューが表示されます。
+5. **[列]** タブをクリックすると、データ資産の列の詳細 (**名前**や**データ型**など) がわかります。
+6. **[データ プロファイル]** タブをクリックすると、データ資産のデータのプロファイル (行数、データ サイズ、列の最小値など) が表示されます。
+7. 左側にある **[フィルター]** を使用して、結果をフィルター処理します。たとえば、**[オブジェクトの種類]** の **[テーブル]** をクリックすると、4 つのテーブルのみが表示され、データベースは表示されません。
+
+	![Azure Data Catalog--filter search results](media/data-catalog-get-started/data-catalog-filter-search-results.png)
+
+### プロパティ スコープを使用したデータ資産の検出
+プロパティ スコープを使用すると、指定したプロパティと検索語句が一致するデータ資産を検出できます。
+
+1. **[フィルター]** で、**[オブジェクトの種類]** の **[テーブル]** フィルターをオフにします。
+2. 検索ボックスに「`tags:cycles`」と入力し、**Enter** キーを押します。データ カタログの検索に使用できるすべてのプロパティについては、「[Data Catalog Search syntax reference (Data Catalog の検索構文のリファレンス)](https://msdn.microsoft.com/library/azure/mt267594.aspx)」を参照してください。
+3. 結果に 4 つのテーブルとデータベース (AdventureWorks2014) が表示されることを確認します。
+
+	![Data Catalog--property scoping search results](media/data-catalog-get-started/data-catalog-property-scoping-results.png)
+
+### 検索の保存
+1. **[検索]** ペインの **[現在の検索]** セクションで、検索条件の名前を入力して **[保存]** をクリックします。
+
+	![Azure Data Catalog--save search](media/data-catalog-get-started/data-catalog-save-search.png)
+2. 保存した検索条件が **[保存された検索条件]** の下に表示されていることを確認します。
+
+	![Azure Data Catalog--saved searches](media/data-catalog-get-started/data-catalog-saved-search.png)
+3. 保存した検索条件に対して実行できるアクション (**[名前の変更]**、**[削除]**、**[既定値として保存]**) のうち、いずれかを選択します。
+
+	![Azure Data Catalog--saved search options](media/data-catalog-get-started/data-catalog-saved-search-options.png)
+
+### ブール演算子
+ブール演算子を使用して、検索範囲を広げることや絞り込むことができます。
+
+1. 検索ボックスに「`tags:cycles AND objectType:table`」と入力し、**Enter** キーを押します。
+2. 結果にテーブルのみが表示され、データベースが表示されていないことを確認します。
+
+	![Azure Data Catalog--Boolean operator in search](media/data-catalog-get-started/data-catalog-search-boolean-operator.png)
+
+### かっこを使用したグループ化
+かっこを使用したグループ化によって、クエリの一部をグループ化して論理的に分離できます。特にブール演算子と組み合わせて使用します。
+
+1. 検索ボックスに「`name:product AND (tags:cycles AND objectType:table)`」と入力し、**Enter** キーを押します。
+2. 検索結果に **Product** テーブルのみが表示されていることを確認します。
+
+	![Azure Data Catalog--grouping search](media/data-catalog-get-started/data-catalog-grouping-search.png)
+
+### 比較演算子
+比較演算子では、数値データ型および日付データ型を持つプロパティに対して、等値演算子以外の比較演算子を使用できます。
+
+1. 検索ボックスに「`lastRegisteredTime:>"06/09/2016"`」と入力します。
+2. **[オブジェクトの種類]** で **[テーブル]** フィルターをオフにします。
+3. **Enter** キーを押します。
+4. 検索結果に、登録した **Product**、**ProductCategory**、**ProductDescription**、**ProductPhoto** の各テーブルと AdventureWorks2014 データベースが表示されていることを確認します。
+
+	![Azure Data Catalog--comparison search results](media/data-catalog-get-started/data-catalog-comparison-operator-results.png)
+
+データ資産の検出の詳細については「[データ資産の探索方法](data-catalog-how-to-discover.md)」、検索構文については「[Data Catalog Search syntax reference (Data Catalog の検索構文のリファレンス)](https://msdn.microsoft.com/library/azure/mt267594.aspx)」を参照してください。
+
+## データ資産への注釈付け
+この演習では、Azure Data Catalog ポータルを使用して、前の手順でカタログに登録したデータ資産に注釈を設定 (説明、タグ、エキスパートなどの情報を追加) します。注釈は、登録時にデータ ソースから抽出された構造型メタデータを補完、拡張して、データ資産をさらに検出および理解しやすくします。
+
+この演習では、1 つのデータ資産 (ProductPhoto) に注釈を設定します。ProductPhoto データ資産にフレンドリ名と説明を追加します。
+
+1.  [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動し、「`tags:cycles`」を検索して、登録したデータ資産を検出します。
+2. 検索結果で **ProductPhoto** をクリックします。
+3. **[フレンドリ名]** に「**Product images**」と入力し、**[説明]** に「**Product photos for marketing materials**」と入力します。
+
+	![Azure Data Catalog--ProductPhoto description](media/data-catalog-get-started/data-catalog-productphoto-description.png)
+
+	**[説明]** は、他のユーザーがデータ資産を検出したり、選択したデータ資産の使用理由や使用方法を理解したりするのに役立ちます。さらに、タグとビュー列を追加することもできます。これで、カタログに追加した説明用のメタデータを使用して、データ資産を検出するために検索やフィルター処理を試してみることができます。
+
+このページでは、次のことも実行できます。
+
+- データ資産のエキスパートを追加する。**[エキスパート]** 部分の **[追加]** をクリックします。
+- データセット レベルでタグを追加する。**[タグ]** 部分の **[追加]** をクリックします。タグは、ユーザー タグにも用語集タグにもすることができます。Data Catalog Standard Edition には、カタログ管理者が主なビジネスの分類を定義するために利用できるビジネス用語集が含まれています。そのため、Catalog ユーザーは用語集の用語を使ってデータ資産に注釈を付けることができます。詳細については、「[管理タグ付け用のビジネス用語集を設定する方法](data-catalog-how-to-business-glossary.md)」を参照してください。
+- 列レベルでタグを追加する。注釈を設定する列の **[タグ]** の下にある **[追加]** をクリックします。
+- 列レベルで説明を追加する。列の **[説明]** を入力します。また、データ ソースから抽出された説明メタデータを表示することもできます。
+- データ資産へのアクセスを要求する方法をユーザーに示す **[アクセスの要求]** 情報を追加する。
+
+	![Azure Data Catalog--add tags, descriptions](media/data-catalog-get-started/data-catalog-add-tags-experts-descriptions.png)
+
+- **[ドキュメント]** タブを選択し、データ資産に関するドキュメントを指定する。Azure Data Catalog での文書化により、データ カタログをコンテンツのリポジトリとして使用して、既にあるデータ資産を網羅した概要を作成できます。
+
+	![Azure Data Catalog--Documentation tab](media/data-catalog-get-started/data-catalog-documentation.png)
+
+
+複数のデータ資産に対して注釈を追加することもできます。たとえば、登録したすべてのデータ資産を選択し、それらにエキスパートを指定することができます。
 
 ![Azure Data Catalog--annotate multiple data assets](media/data-catalog-get-started/data-catalog-multi-select-annotate.png)
 
-Azure Data Catalog supports a crowd-sourcing approach to annotations. Any Data Catalog user can add tags (user or glossary), descriptions, and other metadata, so that any user with a perspective on a data asset and its use can have that perspective captured and available to other users.
+Azure Data Catalog では、注釈に対するクラウドソーシング手法をサポートしています。すべての Data Catalog ユーザーがタグ (ユーザーまたは用語集)、説明などのメタデータを追加できるため、データ資産とその使用に関して特定の見方を持つ任意のユーザーは、その見方を捉えて、他のユーザーが使用できるようにすることも可能です。
 
-See [How to annotate data assets](data-catalog-how-to-annotate.md) for detailed information about annotating data assets.
+データ資産への注釈付けの詳細については、[データ資産に注釈を付ける方法](data-catalog-how-to-annotate.md)に関する記事を参照してください。
 
-## <a name="connect-to-data-assets"></a>Connect to data assets
-In this exercise, you open data assets in an integrated client tool (Excel) and a non-integrated tool (SQL Server Management Studio) by using connection information.
+## データ資産への接続
+この演習では、統合クライアント ツール (Excel) と非統合ツール (SQL Server Management Studio) で接続情報を使ってデータ資産を開きます。
 
-> [AZURE.NOTE] It’s important to remember that Azure Data Catalog doesn’t give you access to the actual data source—it simply makes it easier for you to discover and understand it. When you connect to a data source, the client application you choose uses your Windows credentials or prompts you for credentials as necessary. If you have not previously been granted access to the data source, you need to be granted access before you can connect.
+> [AZURE.NOTE] Azure Data Catalog では、実際のデータ ソースへのアクセス権が付与されるのではなく、単にそのデータ ソースの検出や把握が簡単になるだけであるという点に注意してください。データ ソースへの接続時には、選択したクライアント アプリケーションにより Windows 資格情報が使用されるか、必要に応じて資格情報の入力が求められます。事前にデータ ソースへのアクセス権が付与されていない場合、データ ソースに接続する前に、アクセス権の付与を受ける必要があります。
 
-### <a name="connect-to-a-data-asset-from-excel"></a>Connect to a data asset from Excel
+### Excel からのデータ資産への接続
 
-1. Select **Product** from search results. Click **Open In** on the toolbar and click **Excel**.
+1. 検索結果から **[Product]** を選択します。ツール バーの **[開く]** をクリックし、**[Excel]** をクリックします。
 
     ![Azure Data Catalog--connect to data asset](media/data-catalog-get-started/data-catalog-connect1.png)
-2. Click **Open** in the download pop-up window. This experience may vary depending on the browser.
+2. ダウンロードのポップアップ ウィンドウで、**[ファイルを開く]** をクリックします。この操作は、ブラウザーによって異なる場合があります。
 
-    ![Azure Data Catalog--downloaded Excel connection file](media/data-catalog-get-started/data-catalog-download-open.png)
-3. In the **Microsoft Excel Security Notice** window, click **Enable**.
+	![Azure Data Catalog--downloaded Excel connection file](media/data-catalog-get-started/data-catalog-download-open.png)
+3. [**Microsoft Excel のセキュリティに関する通知**] ウィンドウで、[**有効にする**] をクリックします。
 
-    ![Azure Data Catalog--Excel security popup](media/data-catalog-get-started/data-catalog-excel-security-popup.png)
-4. Keep the defaults in the **Import Data** dialog box and click **OK**.
+	![Azure Data Catalog--Excel security popup](media/data-catalog-get-started/data-catalog-excel-security-popup.png)
+4. **[データの取り込み]** ダイアログ ボックスの既定値はそのままにして、**[OK]** をクリックします。
 
-    ![Azure Data Catalog--Excel import data](media/data-catalog-get-started/data-catalog-excel-import-data.png)
-5. View the data source in Excel.
+	![Azure Data Catalog--Excel import data](media/data-catalog-get-started/data-catalog-excel-import-data.png)
+5. データ ソースを Excel で確認します。
 
     ![Azure Data Catalog--product table in Excel](media/data-catalog-get-started/data-catalog-connect2.png)
 
-In this exercise, you connected to data assets discovered by using Azure Data Catalog. With the Azure Data Catalog portal, you can connect directly by using the client applications integrated into the **Open in** menu. You can also connect with any application you choose by using the connection location information included in the asset metadata. For example, you can use SQL Server Management Studio to connect to the AdventureWorks2014 database to access the data in the data assets registered in this tutorial.
+この演習では、Azure Data Catalog を使用して検出されたデータ資産に接続しました。Azure Data Catalog ポータルでは、**[開く]** メニューに統合されたクライアント アプリケーションを使用して、データ資産に直接接続できます。また、資産メタデータに含まれる接続場所の情報を使用して、任意のアプリケーションに接続することもできます。たとえば、SQL Server Management Studio を使用すると、AdventureWorks2014 データベースに接続し、このチュートリアルで登録されたデータ資産のデータにアクセスできます。
 
-1. Open **SQL Server Management Studio**.
-2. In the **Connect to Server** dialog box, enter the server name from the **Properties** pane in the Azure Data Catalog portal.
-3. Use appropriate authentication and credentials to access the data asset. If you don't have access, use information in the **Request Access** field to get it.
+1. **SQL Server Management Studio** を開きます。
+2. **[サーバーへの接続]** ダイアログ ボックスで、Azure Data Catalog ポータルの **[プロパティ]** ペインに表示されているサーバー名を入力します。
+3. 適切な認証と資格情報を使用してデータ資産にアクセスします。アクセス権がない場合は、**[アクセスの要求]** フィールドの情報を使用して取得します。
 
-    ![Azure Data Catalog--request access](media/data-catalog-get-started/data-catalog-request-access.png)
+	![Azure Data Catalog--request access](media/data-catalog-get-started/data-catalog-request-access.png)
 
-Click **View Connection Strings** to view and copy ADF.NET, ODBC, and OLEDB connection strings to the clipboard for use in your application.
+**[接続文字列の表示]** をクリックして、ADF.NET、ODBC、OLEDB の接続文字列を表示し、アプリケーションで使用するためにクリップボードにコピーします。
 
-## <a name="manage-data-assets"></a>Manage data assets
-In this step, you see how to set up security for your data assets. Data Catalog does not give users access to the data itself. The owner of the data source controls data access.
+## データ資産の管理
+この手順では、データ資産のセキュリティを設定する方法を説明します。Data Catalog のユーザーにデータ自体へのアクセス権は与えられません。データ ソースの所有者がデータへのアクセスを管理します。
 
-You can use Data Catalog to discover data sources and to view the metadata related to the sources registered in the catalog. There may be situations, however, where data sources should only be visible to specific users or to members of specific groups. For these scenarios, you can use Data Catalog to take ownership of registered data assets within the catalog, and to then control the visibility of the assets you own.
+Data Catalog を通じてデータ ソースを検出し、カタログに登録されたソースに関連したメタデータを閲覧できます。しかし、場合によっては、データ ソースの可視性を特定のユーザーまたは特定のグループのメンバーのみに限定する必要があります。そのような場合は、Data Catalog を使用してカタログ内の登録済みデータ資産の所有権を取得したうえで、所有する資産の可視性を制御することができます。
 
-> [AZURE.NOTE] The management capabilities described in this exercise are available only in the Standard Edition of Azure Data Catalog, not in the Free Edition.
-In Azure Data Catalog, you can take ownership of data assets, add co-owners to data assets, and set the visibility of data assets.
+> [AZURE.NOTE] この演習で説明している管理機能は、Azure Data Catalog の Standard Edition でのみ使用できます。Free Edition では使用できません。Azure Data Catalog では、データ資産の所有権の取得、共同所有者のデータ資産への追加、データ資産の可視性の設定ができます。
 
-### <a name="take-ownership-of-data-assets-and-restrict-visibility"></a>Take ownership of data assets and restrict visibility
+### データ資産の所有権の取得と可視性の制限
 
-1. Go to the [Azure Data Catalog home page](https://www.azuredatacatalog.com). In the **Search** text box, enter `tags:cycles` and press **ENTER**.
-2. Click an item in the result list and click **Take Ownership** on the toolbar.
-3. In the **Management** section of the **Properties** panel, click **Take Ownership**.
+1. [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。**検索**ボックスに「`tags:cycles`」と入力し、**Enter** キーを押します。
+2. 結果の一覧でアイテムをクリックし、ツール バーの **[所有権の取得]** をクリックします。
+3. **[プロパティ]** パネルの **[管理]** セクションで、**[所有権の取得]** をクリックします。
 
-    ![Azure Data Catalog--take ownership](media/data-catalog-get-started/data-catalog-take-ownership.png)
-4. To restrict visibility, choose **Owners & These Users** in the **Visibility** section and click **Add**. Enter user email addresses in the text box and press **ENTER**.
+	![Azure Data Catalog--take ownership](media/data-catalog-get-started/data-catalog-take-ownership.png)
+4. 可視性を制限するには、**[表示]** セクションで **[所有者とこれらのユーザー]** を選択し、**[追加]** をクリックします。テキスト ボックスにユーザーのメール アドレスを入力し、**Enter** キーを押します。
 
     ![Azure Data Catalog--restrict access](media/data-catalog-get-started/data-catalog-ownership.png)
 
-## <a name="remove-data-assets"></a>Remove data assets
+## データ資産の削除
 
-In this exercise, you use the Azure Data Catalog portal to remove preview data from registered data assets and delete data assets from the catalog.
+この演習では、Azure Data Catalog ポータルを使用して、登録されているデータ資産からプレビュー データを削除し、カタログからデータ資産を削除します。
 
-In Azure Data Catalog, you can delete an individual asset or delete multiple assets.
+Azure Data Catalog では、個々の資産を削除することも、複数の資産を削除することもできます。
 
-1. Go to the [Azure Data Catalog home page](https://www.azuredatacatalog.com).
-2. In the **Search** text box, enter `tags:cycles` and click **ENTER**.
-3. Select an item in the result list and click **Delete** on the toolbar as shown in the following image:
+1. [Azure Data Catalog ホーム ページ](https://www.azuredatacatalog.com)に移動します。
+2. **検索**ボックスに「`tags:cycles`」と入力し、**Enter** キーを押します。
+3. 次の画像のように、結果の一覧でアイテムを選択し、ツール バーの **[削除]** をクリックします。
 
-    ![Azure Data Catalog--delete grid item](media/data-catalog-get-started/data-catalog-delete-grid-item.png)
+	![Azure Data Catalog--delete grid item](media/data-catalog-get-started/data-catalog-delete-grid-item.png)
 
-    If you are using the list view, the check box is to the left of the item as shown in the following image:
+	リスト ビューを使用している場合は、次の画像に示すように、チェック ボックスがアイテムの左側にあります。
 
-    ![Azure Data Catalog--delete list item](media/data-catalog-get-started/data-catalog-delete-list-item.png)
+	![Azure Data Catalog--delete list item](media/data-catalog-get-started/data-catalog-delete-list-item.png)
 
-    You can also select multiple data assets and delete them as shown in the following image:
+	次の画像に示すように、複数のデータ資産を選択して削除することもできます。
 
-    ![Azure Data Catalog--delete multiple data assets](media/data-catalog-get-started/data-catalog-delete-assets.png)
-
-
-> [AZURE.NOTE] The default behavior of the catalog is to allow any user to register any data source, and to allow any user to delete any data asset that has been registered. The management capabilities included in the Standard Edition of Azure Data Catalog provide additional options for taking ownership of assets, restricting who can discover assets, and restricting who can delete assets.
+	![Azure Data Catalog--delete multiple data assets](media/data-catalog-get-started/data-catalog-delete-assets.png)
 
 
-## <a name="summary"></a>Summary
-
-In this tutorial, you explored essential capabilities of Azure Data Catalog, including registering, annotating, discovering, and managing enterprise data assets. Now that you’ve completed the tutorial, it’s time to get started. You can begin today by registering the data sources you and your team rely on, and by inviting colleagues to use the catalog.
-
-## <a name="references"></a>References
-
-- [How to register data assets](data-catalog-how-to-register.md)
-- [How to discover data assets](data-catalog-how-to-discover.md)
-- [How to annotate data assets](data-catalog-how-to-annotate.md)
-- [How to document data assets](data-catalog-how-to-documentation.md)
-- [How to connect to data assets](data-catalog-how-to-connect.md)
-- [How to manage data assets](data-catalog-how-to-manage.md)
+> [AZURE.NOTE] カタログの既定の動作は、すべてのユーザーが任意のデータ ソースを登録でき、すべてのユーザーが登録されている任意のデータ資産を削除できることです。Azure Data Catalog の Standard Edition に含まれる管理機能には、資産の所有権の取得、資産を検出できるユーザーの制限、および資産を削除できるユーザーの制限を行うための追加のオプションがあります。
 
 
+## 概要
 
-<!--HONumber=Oct16_HO2-->
+このチュートリアルでは、Azure Data Catalog の重要な機能 (エンタープライズ データ資産の登録、注釈付け、検出、管理など) について学習しました。これでチュートリアルは完了したので、使用を開始できます。自分やチームが依存するデータ ソースを登録し、カタログを使用する同僚を招待することによって、今すぐ始めることができます。
 
+## 参照
 
+- [データ資産の登録方法](data-catalog-how-to-register.md)
+- [データ資産の探索方法](data-catalog-how-to-discover.md)
+- [データ資産に注釈を付ける方法](data-catalog-how-to-annotate.md)
+- [データ資産を文書化する方法](data-catalog-how-to-documentation.md)
+- [データ資産への接続方法](data-catalog-how-to-connect.md)
+- [データ資産を管理する方法](data-catalog-how-to-manage.md)
+
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get started with SQL Database Dynamic Data Masking (Azure Portal)"
-   description="How to get started with SQL Database Dynamic Data Masking in the Azure Portal"
+   pageTitle="SQL Database 動的データ マスクの使用 (Azure ポータル)"
+   description="Azure ポータルでの SQL Database 動的データ マスクの使用方法"
    services="sql-database"
    documentationCenter=""
    authors="ronitr"
@@ -17,101 +17,96 @@
    ms.author="ronitr; ronmat; v-romcal; sstein"/>
 
 
-
-# <a name="get-started-with-sql-database-dynamic-data-masking-(azure-portal)"></a>Get started with SQL Database Dynamic Data Masking (Azure Portal)
+# SQL Database 動的データ マスクの使用 (Azure ポータル)
 
 > [AZURE.SELECTOR]
-- [Dynamic Data Masking - Azure Classic Portal](sql-database-dynamic-data-masking-get-started-portal.md)
+- [動的データ マスク - Azure クラシック ポータル](sql-database-dynamic-data-masking-get-started-portal.md)
 
-## <a name="overview"></a>Overview
+## 概要
 
-SQL Database Dynamic Data Masking limits sensitive data exposure by masking it to non-privileged users. Dynamic data masking is supported for the V12 version of Azure SQL Database.
+SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。Azure SQL Database の V12 バージョンでは、動的データ マスクがサポートされています。
 
-Dynamic data masking helps prevent unauthorized access to sensitive data by enabling customers to designate how much of the sensitive data to reveal with minimal impact on the application layer. It’s a policy-based security feature that hides the sensitive data in the result set of a query over designated database fields, while the data in the database is not changed.
+動的データ マスクでは、公開するデリケートなデータの量を指定することで、デリケートなデータに対する未承認のアクセスを防ぎ、アプリケーション レイヤーへの影響は最小限に抑えられます。これはポリシー ベースのセキュリティ機能であり、指定されたデータベース フィールドに対するクエリの結果セットに含まれるデリケートなデータが表示されないようにします。データベース内のデータは変更されません。
 
-For example, a service representative at a call center may identify callers by several digits of their social security number or credit card number, but those data items should not be fully exposed to the service representative. A masking rule can be defined that masks all but the last four digits of any social security number or credit card number in the result set of any query. As another example, an appropriate data mask can be defined to protect personally identifiable information (PII) data, so that a developer can query production environments for troubleshooting purposes without violating compliance regulations.
+たとえば、コール センターのサポート担当者は、社会保障番号やクレジット カード番号の一部の数字から電話の相手を特定できますが、このようなデータ項目をサポート担当者にすべて公開してはなりません。クエリの結果セットの社会保障番号やクレジット カード番号の末尾 4 桁を除くすべての数字をマスクするマスク ルールを定義できます。別の例として、開発者は、適切なデータ マスクを定義し、個人を特定できる情報 (PII) データを保護し、法令遵守規定に違反することなくトラブルシューティングの目的で運用環境に対して照会を行うことができます。
 
-## <a name="sql-database-dynamic-data-masking-basics"></a>SQL Database Dynamic Data Masking basics
+## SQL Database 動的データ マスクの基礎
 
-You set up a dynamic data masking policy in the Azure Portal by selecting the Dynamic Data Masking operation in your SQL Database configuration blade or settings blade.
+SQL Database の構成ブレードまたは設定ブレードの動的データ マスク操作を選択することで、Azure ポータルで動的データ マスク ポリシーを設定します。
 
 
-### <a name="dynamic-data-masking-permissions"></a>Dynamic data masking permissions
+### 動的データ マスクのアクセス許可
 
-Dynamic data masking can be configured by the Azure Database admin, server admin, or security officer roles.
+動的データ マスクを構成できるのは、Azure Database 管理者、サーバー管理者、またはセキュリティ責任者の各ロールです。
 
-### <a name="dynamic-data-masking-policy"></a>Dynamic data masking policy
+### 動的データ マスク ポリシー
 
-* **SQL users excluded from masking** - A set of SQL users or AAD identities that will get unmasked data in the SQL query results. Note that users with administrator privileges will always be excluded from masking, and will see the original data without any mask.
+* **マスクから除外する SQL ユーザー** - SQL クエリの結果でデータがマスクされない SQL ユーザーまたは AAD の ID のセット。管理者特権を持つユーザーは常にマスクから除外され、マスクのない元のデータを見ることができることに注意してください。
 
-* **Masking rules** - A set of rules that define the designated fields to be masked and the masking function that will be used. The designated fields can be defined using a database schema name, table name and column name.
+* **マスク ルール** - マスクされる指定のフィールドと使用されるマスク関数を定義するルールのセット。データベースのスキーマ名、テーブル名、列名を使用し、指定のフィールドを定義できます。
 
-* **Masking functions** - A set of methods that control the exposure of data for different scenarios.
+* **マスク関数** - さまざまなシナリオに対応してデータの公開を制御する方法のセット。
 
-| Masking Function | Masking Logic |
+| マスク関数 | マスク ロジック |
 |----------|---------------|
-| **Default**  |**Full masking according to the data types of the designated fields**<br/><br/>• Use XXXX or fewer Xs if the size of the field is less than 4 characters for string data types (nchar, ntext, nvarchar).<br/>• Use a zero value for numeric data types (bigint, bit, decimal, int, money, numeric, smallint, smallmoney, tinyint, float, real).<br/>• Use 01-01-1900 for date/time data types (date, datetime2, datetime, datetimeoffset, smalldatetime, time).<br/>• For SQL variant, the default value of the current type is used.<br/>• For XML the document <masked/> is used.<br/>• Use an empty value for special data types (timestamp  table, hierarchyid, GUID, binary, image, varbinary spatial types).
-| **Credit card** |**Masking method which exposes the last four digits of the designated fields** and adds a constant string as a prefix in the form of a credit card.<br/><br/>XXXX-XXXX-XXXX-1234|
-| **Social security number** |**Masking method which exposes the last four digits of the designated fields** and adds a constant string as a prefix in the form of an American social security number.<br/><br/>XXX-XX-1234 |
-| **Email** | **Masking method which exposes the first letter and replaces the domain with XXX.com** using a constant string prefix in the form of an email address.<br/><br/>aXX@XXXX.com |
-| **Random number** | **Masking method which generates a random number** according to the selected boundaries and actual data types. If the designated boundaries are equal, then the masking function will be a constant number.<br/><br/>![Navigation pane](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Custom text** | **Masking method which exposes the first and last characters** and adds a custom padding string in the middle. If the original string is shorter than the exposed prefix and suffix, only the padding string will be used. <br/>prefix[padding]suffix<br/><br/>![Navigation pane](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **既定値** |**指定のフィールドのデータ型に応じたフル マスク**<br/><br/>• 文字列データ型 (nchar、ntext、nvarchar) のフィールドのサイズが 4 文字未満の場合は、XXXX またはそれ未満の数の X を使用します。<br/>• 数値データ型 (bigint、bit、decimal、int、money、numeric、smallint、smallmoney、tinyint、float、real) の場合は、値 0 を使用します。<br/>• 日付/時刻データ型 (date、datetime2、datetime、datetimeoffset、smalldatetime、time) の場合は、01-01-1900 を使用します。<br/>• SQL バリアントの場合は、現在の型の既定値が使用されます。<br/>• XML の場合は、ドキュメント <masked/> が使用されます。<br/>• 特殊なデータ型 (タイムスタンプ テーブル、hierarchyid、GUID、binary、image、varbinary 空間型) の場合は、空の値を使用します。
+| **クレジット カード** |クレジット カードのフォームでプレフィックスとして定数文字列を追加し、**指定のフィールドの末尾 4 桁を公開するマスク方法**。<br/><br/>XXXX-XXXX-XXXX-1234|
+| **社会保障番号** |米国の社会保障番号のフォームでプレフィックスとして定数文字列を追加し、**指定のフィールドの末尾 4 桁を公開するマスク方法**。<br/><br/>XXX-XX-1234 |
+| **電子メール** | 電子メール アドレスのフォームでプレフィックスとして定数文字列を使用し、**最初の文字を公開し、ドメインを XXX.com に交換するマスク方法**。<br/><br/>aXX@XXXX.com |
+| **ランダムな数値** | 選択した境界と実際のデータ型に応じて**乱数を生成するマスク方法**。指定された境界が等しい場合、マスク関数は定数になります。<br/><br/>![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
+| **カスタム テキスト** | 間にカスタム埋め込み文字列を追加し、**最初と最後の文字を公開するマスク方法**。元の文字列が公開されたプレフィックスやサフィックスより短い場合、埋め込み文字列のみが使用されます。 <br/>プレフィックス[埋め込み]サフィックス<br/><br/>![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
 
 <a name="Anchor1"></a>
-### <a name="recommended-fields-to-mask"></a>Recommended fields to mask
+### マスクが推奨されるフィールド
 
-The DDM recommendations engine flags certain fields from your database as potentially sensitive fields, which may be good candidates for masking. In the Dynamic Data Masking blade in the portal, you will see the recommended columns for your database. All you need to do is click **Add Mask** for one or more columns and then **Save** in order to apply a mask for these fields.
+DDM の推奨エンジンでは、データベースの特定のフィールドに「機密データの可能性あり」の注意が付けられます。この注意を参考にマスク候補を選択できます。ポータルの動的データ マスク ブレードには、データベースの推奨列が表示されます。1 つまたは複数の列の **[マスクの追加]** をクリックし、**[保存]** をクリックするだけでそれらのフィールドにマスクを適用できます。
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-the-azure-portal"></a>Set up dynamic data masking for your database using the Azure Portal
+## Azure ポータル使用によるデータベースの動的データ マスク設定
 
-1. Launch the Azure Portal at [https://portal.azure.com](https://portal.azure.com).
+1. [https://portal.azure.com](https://portal.azure.com) で Azure ポータルを起動します。
 
-2. Navigate to the settings blade of the database that includes the sensitive data you want to mask.
+2. マスクするデリケートなデータを含むデータベースの設定ブレードに移動します。
 
-3. Click the **Dynamic Data Masking** tile which launches the **Dynamic Data Masking** configuration blade.
+3. **[動的データ マスク]** タイルをクリックして、**[動的データ マスク]** 構成ブレードを起動します。
 
-    * Alternatively, you can scroll down to the **Operations** section and click **Dynamic Data Masking**.
+	* この方法に代わって、下にスクロールして **[操作]** セクションを表示し、**[動的データ マスク]** をクリックすることもできます。
 
-    ![Navigation pane](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)<br/><br/>
-
-
-4. In the **Dynamic Data Masking** configuration blade you may see some database columns that the recommendations engine has flagged for masking. In order to accept the recommendations, just click **Add Mask** for one or more columns and a mask will be created based on the default type for this column. You can change the masking function by clicking on the masking rule and editing the masking field format to a different format of your choice. Be sure to click **Save** to save your settings.
-
-    ![Navigation pane](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)<br/><br/>
+    ![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started/4_ddm_settings_tile.png)<br/><br/>
 
 
-5. To add a mask for any column in your database, at the top of the **Dynamic Data Masking** configuration blade click **Add Mask** to open the **Add Masking Rule** configuration blade
+4. **動的データ マスク**構成ブレードには、推奨エンジンがマスク対象として推奨したデータベース列がいくつか表示される場合があります。推奨を受け入れるには、1 つまたは複数の列の **[マスクの追加]** をクリックします。その列の既定タイプに基づきマスクが作成されます。マスク機能を変更できます。その場合、マスク ルールをクリックし、マスク フィールド形式を別の形式に変更します。必ず **[保存]** をクリックして設定を保存します。
 
-    ![Navigation pane](./media/sql-database-dynamic-data-masking-get-started/6_ddm_add_mask.png)<br/><br/>
-
-6. Select the **Schema**, **Table** and **Column** to define the designated field that will be masked.
-
-7. Choose a **Masking Field Format** from the list of sensitive data masking categories.
-
-    ![Navigation pane](./media/sql-database-dynamic-data-masking-get-started/7_ddm_mask_field_format.png)<br/><br/>     
-
-8. Click **Save** in the data masking rule blade to update the set of masking rules in the dynamic data masking policy.
-
-9. Type the SQL users or AAD identities that should be excluded from masking, and have access to the unmasked sensitive data. This should be a semicolon-separated list of users. Note that users with administrator privileges always have access to the original unmasked data.
-
-    ![Navigation pane](./media/sql-database-dynamic-data-masking-get-started/8_ddm_excluded_users.png)
-
-    >[AZURE.TIP] To make it so the application layer can display sensitive data for application privileged users, add the SQL user or AAD identity the application uses to query the database. It is highly recommended that this list contain a minimal number of privileged users to minimize exposure of the sensitive data.
-
-10. Click **Save** in the data masking configuration blade to save the new or updated masking policy.
-
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Set up dynamic data masking for your database using Powershell cmdlets
-
-See [Azure SQL Database Cmdlets](https://msdn.microsoft.com/library/azure/mt574084.aspx).
+    ![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started/5_ddm_recommendations.png)<br/><br/>
 
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Set up dynamic data masking for your database using REST API
+5. データベースの列にマスクを追加するには、**[動的データ マスク]** 構成ブレードの一番上にある **[マスクの追加]** をクリックし、**[マスク ルールの追加]** 構成ブレードを開きます。
 
-See [Operations for Azure SQL Databases](https://msdn.microsoft.com/library/dn505719.aspx).
+    ![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started/6_ddm_add_mask.png)<br/><br/>
+
+6. **[スキーマ]**、**[テーブル]**、**[列]** を選択し、マスクする指定のフィールドを定義します。
+
+7. 機密データのマスク カテゴリの一覧から **[マスク フィールド形式]** を選択します。
+
+    ![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started/7_ddm_mask_field_format.png)<br/><br/>
+
+8. データ マスク ルール ブレードの **[保存]** をクリックして、動的データ マスク ポリシーのマスク ルールのセットを更新します。
+
+9. マスクから除外し、マスクされていない機密データへのアクセスを与える SQL ユーザーまたは AAD の ID を入力します。ユーザーをセミコロンで区切った一覧にします。管理者特権を持つユーザーは常にマスクされていない元のデータにアクセスできることに注意してください。
+
+    ![ナビゲーション ウィンドウ](./media/sql-database-dynamic-data-masking-get-started/8_ddm_excluded_users.png)
+
+	>[AZURE.TIP] アプリケーションの特権を持つユーザーに対してアプリケーション レイヤーがデリケートなデータを表示できるようにするには、アプリケーションストアでデータベースの照会に使用される SQL ユーザーまたは AAD の ID を追加します。デリケートなデータの公開を最小限に抑えるには、この一覧に含める特権ユーザーの数を最小限にすることを強くお勧めします。
+
+10. データ マスク構成ブレードの **[保存]** をクリックして、新しいマスク ルールまたは更新されたマスク ポリシーを保存します。
+
+## Powershell コマンドレットを使用して、データベースの動的データ マスクを設定する
+
+「[Azure SQL Database コマンドレット](https://msdn.microsoft.com/library/azure/mt574084.aspx)」をご覧ください。
 
 
+## REST API を使用してデータベース用の動的データ マスクを設定する
 
-<!--HONumber=Oct16_HO2-->
+「[Azure SQL Database の操作](https://msdn.microsoft.com/library/dn505719.aspx)」を参照してください。
 
-
+<!---HONumber=AcomDC_0713_2016-->

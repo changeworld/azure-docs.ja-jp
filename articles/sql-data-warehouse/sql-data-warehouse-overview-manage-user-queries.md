@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Monitor user queries in Azure SQL Data Warehouse | Microsoft Azure"
-   description="Overview of the considerations, best practices, and tasks for monitoring user queries in Azure SQL Data Warehouse"
+   pageTitle="Azure SQL Data Warehouse でのユーザー クエリの監視 | Microsoft Azure"
+   description="Azure SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項、ベスト プラクティス、およびタスクの概要。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="jrowlandjones"
@@ -16,41 +16,36 @@
    ms.date="08/17/2016"
    ms.author="jrj;barbkess;sonyama"/>
 
+# Azure SQL Data Warehouse でのユーザー クエリの監視
 
-# <a name="monitor-user-queries-in-azure-sql-data-warehouse"></a>Monitor user queries in Azure SQL Data Warehouse
-
-Overview of the considerations, best practices, and tasks for monitoring user queries in SQL Data Warehouse.
-
+SQL Data Warehouse でのユーザー クエリの監視に関する考慮事項、ベスト プラクティス、およびタスクの概要。
 
 
-| Category                | Task or consideration                           | Description  |
+
+| カテゴリ | タスクまたは考慮事項 | Description |
 | :-----------------------| :---------------------------------------------- | :----------- |
-| Slow performance        | Find a long-running user query                  | [Find long-running queries][] |
-| Concurrency             | Assign concurrent resources to user queries     | [Concurrency and workload management][] |
+| 低パフォーマンス | 実行時間の長いユーザー クエリを検索する | [実行時間の長いクエリの検索][] |
+| 同時実行 | 同時実行リソースをユーザー クエリに割り当てる | [同時実行とワークロード管理][] |
 
 
 
 
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For more management tips, head over to the [Management overview][].
+管理に関するその他のヒントについては、[管理の概要][]に関する記事をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[Find long-running queries]: sql-data-warehouse-manage-monitor.md
-[Concurrency and workload management]: sql-data-warehouse-develop-concurrency.md
-[Management overview]: sql-data-warehouse-overview-manage.md
+[実行時間の長いクエリの検索]: sql-data-warehouse-manage-monitor.md
+[同時実行とワークロード管理]: sql-data-warehouse-develop-concurrency.md
+[管理の概要]: sql-data-warehouse-overview-manage.md
 
 <!--MSDN references-->
 
 
 <!--Other Web references-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

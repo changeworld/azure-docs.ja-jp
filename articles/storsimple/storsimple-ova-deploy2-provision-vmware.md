@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Deploy StorSimple Virtual Array - Provision in VMware"
-   description="This second tutorial in StorSimple Virtual Array deployment series involves provisioning a virtual device in VMware."
+   pageTitle="StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする"
+   description="StorSimple Virtual Array のデプロイ シリーズの 2 番目のチュートリアルには、VMware での仮想デバイスのプロビジョニングが含まれます。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -17,300 +17,293 @@
    ms.author="alkohli"/>
 
 
-
-# <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-vmware"></a>Deploy StorSimple Virtual Array - Provision a Virtual Array in VMware
+# StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする
 
 ![](./media/storsimple-ova-deploy2-provision-vmware/vmware4.png)
 
-## <a name="overview"></a>Overview 
-This provisioning tutorial applies to StorSimple Virtual Arrays (also known as StorSimple on-premises virtual devices or StorSimple virtual devices) running March 2016 general availability (GA) release. This tutorial describes how to provision and connect to a StorSimple Virtual Array on a host system running VMware ESXi 5.5 and above. This article applies to the deployment of StorSimple Virtual Arrays in Azure classic portal as well as Microsoft Azure Government Cloud.
+## 概要 
+このプロビジョニング チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、VMware ESXi 5.5 以降を実行するホスト システム上に StorSimple Virtual Array をプロビジョニングして接続する方法について説明します。この記事は、Azure クラシック ポータルだけでなく、Microsoft Azure Government Cloud での StorSimple Virtual Arrays のデプロイに適用されます。
 
-You will need administrator privileges to provision and connect to a virtual device. The provisioning and initial setup can take around 10 minutes to complete.
+仮想デバイスをプロビジョニングして接続するには、管理者特権が必要です。プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
 
-## <a name="provisioning-prerequisites"></a>Provisioning prerequisites
+## プロビジョニングの前提条件
 
-Here you will find the prerequisites to provision a virtual device on a host system running VMware ESXi 5.5 and above.
+ここでは、VMware ESXi 5.5 を実行しているホスト システム上に仮想デバイスをプロビジョニングするための前提条件について説明します。
 
-### <a name="for-the-storsimple-manager-service"></a>For the StorSimple Manager service
+### StorSimple Manager サービスの場合
 
-Before you begin, make sure that:
+開始する前に次の点を確認します。
 
--   You have completed all the steps in [Prepare the portal for StorSimple Virtual Array](storsimple-ova-deploy1-portal-prep.md).
+-   [StorSimple Virtual Array のポータルの準備](storsimple-ova-deploy1-portal-prep.md)に関するページの手順がすべて完了していること。
 
--   You have downloaded the virtual device image for VMware from the Azure portal. For more information, see [Step 3: Download the virtual device image](storsimple-ova-deploy1-portal-prep.md#step-3-download-the-virtual-device-image).
+-   Azure ポータルから VMware の仮想デバイスのイメージをダウンロードしていること。詳細については、「[手順 3: 仮想デバイスのイメージをダウンロードする](storsimple-ova-deploy1-portal-prep.md#step-3-download-the-virtual-device-image)」を参照してください。
 
-### <a name="for-the-storsimple-virtual-device"></a>For the StorSimple virtual device 
+### StorSimple 仮想デバイスの場合 
 
-Before you deploy a virtual device, make sure that:
+仮想デバイスをデプロイする前に次の点を確認します。
 
--   You have access to a host system running Hyper-V (2008 R2 or later) that can be used to a provision a device.
+-   Hyper-V (2008 R2 以降) を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 
--   The host system is able to dedicate the following resources to provision your virtual device:
+-   ホスト システムで、次のリソースを仮想デバイスのプロビジョニング専用に使用できること。
 
-    -   A minimum of 4 cores.
+	-   最小で 4 コア。
 
-    -   At least 8 GB of RAM.
+	-   少なくとも 8 GB の RAM。
 
-    -   One network interface.
+	-   ネットワーク インターフェイス 1 つ。
 
-    -   A 500 GB virtual disk for system data.
+	-   システム データ用の 500 GB の仮想ディスク。
 
-### <a name="for-the-network-in-datacenter"></a>For the network in datacenter 
+### データセンターのネットワークの場合 
 
-Before you begin, make sure that:
+開始する前に次の点を確認します。
 
--   You have reviewed the networking requirements to deploy a StorSimple virtual device and configured the datacenter network as per the requirements. For more information, see [StorSimple Virtual Array system requirements](storsimple-ova-system-requirements.md).
+-   StorSimple 仮想デバイスをデプロイするためのネットワーク要件を確認し、その要件に従ってデータセンター ネットワークを構成していること。詳細については、「[StorSimple Virtual Array のシステム要件](storsimple-ova-system-requirements.md)」を参照してください。
 
-## <a name="step-by-step-provisioning"></a>Step-by-step provisioning 
+## プロビジョニングの手順 
 
-To provision and connect to a virtual device, you will need to perform the following steps:
+仮想デバイスをプロビジョニングして接続するには、次の手順を実行する必要があります。
 
-1.  Ensure that the host system has sufficient resources to meet the minimum virtual device requirements.
+1.  ホスト システムに仮想デバイスの最小要件を満たすための十分なリソースがあることを確認します。
 
-2.  Provision a virtual device in your hypervisor.
+2.  ハイパーバイザーで仮想デバイスをプロビジョニングします。
 
-3.  Start the virtual device and get the IP address.
+3.  仮想デバイスを起動し、IP アドレスを取得します。
 
-## <a name="step-1:-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Step 1: Ensure host system meets minimum virtual device requirements
+## 手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する
 
-To create a virtual device, you will need:
+仮想デバイスを作成するには、次の要件が必要です。
 
--   Access to a host system running VMware ESXi Server 5.5 and above.
+-   VMware ESXi サーバー 5.5 以降を実行しているホスト システムへのアクセス権があること。
 
--   VMware vSphere client on your system to manage the ESXi host.
+-   システムに、ESXi ホストを管理するための VMware vSphere client があること。
 
-    -   A minimum of 4 cores.
+	-   最小で 4 コア。
 
-    -   At least 8 GB of RAM.
+	-   少なくとも 8 GB の RAM。
 
-    -   One network interface connected to the network capable of routing traffic to Internet. The minimum Internet bandwidth should be 5 Mbps to allow for optimal working of the device.
+	-   トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。インターネットの最小帯域幅は、デバイスが最適に動作するように 5 Mbps にする必要があります。
 
-    -   A 500 GB virtual disk for data.
+	-   データ用の 500 GB の仮想ディスク。
 
-## <a name="step-2:-provision-a-virtual-device-in-hypervisor"></a>Step 2: Provision a virtual device in hypervisor
+## 手順 2: ハイパーバイザーで仮想デバイスをプロビジョニングする
 
-Perform the following steps to provision a virtual device in your hypervisor.
+ハイパーバイザーで仮想デバイスをプロビジョニングするには、次の手順を実行します。
 
-1.  Copy the virtual device image on your system. This is the image that you have downloaded through the Azure classic portal. 
-    1.  Ensure that this is the latest image file that you have downloaded. If you downloaded the image earlier, download it again to ensure you have the latest image. The latest image has two files (instead of one).
-    2.  Make a note of the location where you copied the image as you will be using this later in the procedure.
+1.  システム上にある仮想デバイスのイメージをコピーします。これは、Azure クラシック ポータルからダウンロードしたイメージです。 
+	1.  ダウンロードした最新のイメージ ファイルであることを確認します。以前にイメージをダウンロードした場合は、必ず最新のイメージを保つため、再度ダウンロードします。最新のイメージには 2 つのファイルがあります (1 つではありません)。
+	2.  このイメージは手順の後半で使用するため、コピーした場所をメモしておきます。
 
-2.  Log into the ESXi server using the vSphere client. You will need to have administrator privileges to create a virtual machine.
+2.  vSphere client を使用して、ESXi サーバーにログインします。仮想マシンを作成するには、管理者特権を持っている必要があります。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image1.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image1.png)
 
-1.  In the vSphere client, in the inventory section in the left pane, select the ESXi Server.
+1.  vSphere client の左側のウィンドウのインベントリ セクションで、ESXi サーバーを選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image2.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image2.png)
 
-1.  You will first upload the VMDK to the ESXi server. Navigate to the **Configuration** tab in the right pane. Under **Hardware**, select **Storage**.
+1.  まず、VMDK を ESXi サーバーにアップロードします。右側のウィンドウの **[Configuration]** タブに移動します。**[Hardware]** で **[Storage]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image3.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image3.png)
 
-1.  In the right pane, under **Datastores**, select the datastore where you want to upload the VMDK. The datastore must have enough free space for the OS and data disks.
+1.  右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。データストアには、OS とデータ ディスク用の十分な空き領域が必要です。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image4.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image4.png)
 
-1.  Right click and select **Browse Datastore**.
+1.  右クリックして **[Browse Datastore]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image5.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image5.png)
 
-1.  A **Datastore Browser** window will appear.
+1.  **[Datastore Browser]** ウィンドウが表示されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image6.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image6.png)
 
-1.  In the tool bar, click ![](./media/storsimple-ova-deploy2-provision-vmware/image7.png) icon to create a new folder. Specify the folder name and make a note of it. You will use this folder name later when creating a virtual machine (recommended best practice). Click **OK**.
+1.  ツール バーで ![](./media/storsimple-ova-deploy2-provision-vmware/image7.png) アイコンをクリックして新しいフォルダーを作成します。フォルダー名を指定して、メモしておきます。このフォルダー名は後で仮想マシンを作成するときに使用します (推奨されるベスト プラクティス)。**[OK]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image8.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image8.png)
 
-1.  The new folder will appear in the left pane of the **Datastore Browser**.
+1.  **Datastore Browser** の左側のウィンドウに新しいフォルダーが表示されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image9.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image9.png)
 
-1.  Click the Upload icon ![](./media/storsimple-ova-deploy2-provision-vmware/image10.png) and select **Upload File**.
+1.  アップロード アイコン ![](./media/storsimple-ova-deploy2-provision-vmware/image10.png) をクリックして、**[Upload File]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image11.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image11.png)
 
-1.  You should now browse and point to the VMDK files that you downloaded. There will be two files. Select a file to upload.
+1.  ここで、ダウンロードした VMDK ファイルを参照してポイントする必要があります。2 つのファイルがあります。アップロードするファイルを選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image12m.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image12m.png)
 
-1.  Click **Open**. This will now start the upload of the VMDK file to the specified datastore. It may take several minutes for the file to upload.
+1.  **[開く]** をクリックします。指定されたデータストアへの VMDK ファイルのアップロードが開始されます。ファイルのアップロードには数分かかる場合があります。
 
 
-1.  After the upload is complete, you will see the file in the datastore in the folder you created. 
+1.  アップロードが完了すると、作成したフォルダー内にデータストアのファイルが表示されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image14.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image14.png)
 
-    You will now need to upload the second VMDK file to the same datastore.
+	ここで、2 つ目の VMDK ファイルを同じデータストアにアップロードする必要があります。
 
-1.  Return to the vSphere client window. With ESXi server selected, right-click and select **New Virtual Machine**.
+1.  vSphere client のウィンドウに戻ります。ESXi サーバーを選択して右クリックし、**[新しい仮想マシン]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image15.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image15.png)
 
-1.  A **Create New Virtual Machine** window will appear. On the **Configuration** page, select the **Custom** option. Click **Next**.
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image16.png)
+1.  A **[New Virtual Machine]** ウィンドウが表示されます。**[Configuration]** ページで **[Custom]** を選択します。**[Next]** をクリックします。![](./media/storsimple-ova-deploy2-provision-vmware/image16.png)
 
-2.  On the **Name and Location** page, specify the name of your virtual machine. This name should match the folder name (recommended best practice) you specified earlier in Step 8.
+2.  **[Name and Location]** ページで、仮想マシンの名前を指定します。この名前は、手順 8 で指定したフォルダー名と一致する必要があります (推奨されるベスト プラクティス)。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image17.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image17.png)
 
-1.  On the **Storage** page, select a datastore you want to use to provision your VM.
+1.  **[Storage]** ページで、VM のプロビジョニングに使用するデータストアを選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image18.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image18.png)
 
-1.  On the **Virtual Machine Version** page, select **Virtual Machine Version: 8**. Note that versions 8 to 11 are all supported.
+1.  **[Virtual Machine Version]** ページで **[Virtual Machine Version: 8]** を選択します。8 ～ 11 のバージョンがすべてサポートされていることに注意してください。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image19.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image19.png)
 
-1.  On the **Guest Operating System** page, select the **Guest Operating System** as **Windows**. For **Version**, from the dropdown list, select **Microsoft Windows Server 2012 (64-bit)**.
+1.  **[Guest Operating System]** ページで、**[Guest Operating System]** に **[Windows]** を選択します。**[Version]** には、ドロップダウンリストから **[Microsoft Windows Server 2012 (64-bit)]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image20.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image20.png)
 
-1.  On the **CPUs** page, adjust the **Number of virtual sockets** and **Number of cores per virtual socket** so that the **Total number of cores** is 4 (or more). Click **Next**.
+1.  **[CPUs]** ページで、**[Number of virtual sockets]** と **[Number of cores per virtual socket]** を **[Total number of cores]** が 4 (またはそれ以上) になるように調整します。**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image21.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image21.png)
 
-1.  On the **Memory** page, specify 8 GB (or more) of RAM. Click **Next**.
+1.  **[Memory]** ページで RAM を 8 GB (またはそれ以上) に指定します。**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image22.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image22.png)
 
-1.  On the **Network** page, specify the number of the network interfaces. The minimum requirement is one network interface.
+1.  **[Network]** ページでネットワーク インターフェイスの数を指定します。ネットワーク インターフェイスの最小要件は 1 つです。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image23.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image23.png)
 
-1.  On the **SCSI Controller** page, accept the default **LSI Logic SAS controller**.
+1.  **[SCSI Controller]** ページで、規定値の **[LSI Logic SAS]** をそのまま使用します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image24.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image24.png)
 
-1.  On the **Select a Disk** page, choose **Use an existing virtual disk**. Click **Next**.
+1.  **[Select a Disk]** ページで **[Use an existing virtual disk]** を選択します。**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image25.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image25.png)
 
-1.  On the **Select Existing Disk** page, under **Disk File Path**, click **Browse**. This opens a **Browse Datastores** dialog. Navigate to the location where you uploaded the VMDK. You will now see only one file in the datastore as the two files that you initially uploaded have been merged. Select the file and click **OK**. Click **Next**.
+1.  **[Select Existing Disk]** ページの **[Disk File Path]** で **[Browse]** をクリックします。**[Browse Datastores]** ダイアログ ボックスが開きます。VMDK をアップロードした場所に移動します。最初にアップロードした 2 つのファイルがマージされたため、データストアには 1 つのファイルのみが表示されます。ファイルを選択し、**[OK]** をクリックします。**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image26.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image26.png)
 
-1.  On the **Advanced Options** page, accept the default and click **Next**.
+1.  **[Advanced Options]** ページで既定値をそのまま使用して、**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image27.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image27.png)
 
-1.  On the **Ready to Complete** page, review all the settings associated with the new virtual machine. Check **Edit the virtual machine settings before completion**. Click **Continue**.
+1.  **[Ready to Complete]** ページで、新しい仮想マシンに関連するすべての設定を確認します。**[Edit the virtual machine settings before completion]** をオンにします。**[Continue]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image28.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image28.png)
 
-1.  On the **Virtual Machines Properties** page, in the **Hardware** tab, locate the device hardware. Select **New Hard Disk**. Click **Add**.
+1.  **[Virtual Machines Properties]** ページの **[Hardware]** タブでデバイス ハードウェアを見つけます。**[New Hard Disk]** を選択します。**[Add]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image29.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image29.png)
 
-1.  This brings up the **Add Hardware** window. On the **Device Type** page, under **Choose the type of device you wish to add**, select **Hard Disk** and click **Next**.
+1.  **[Add Hardware]** ウィンドウが表示されます。**[Device Type]** ページの **[Choose the type of device you wish to add]** から **[Hard Disk]** を選択して、**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image30.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image30.png)
 
-1.  On the **Select a Disk** page, choose **Create a new virtual disk**. Click **Next**.
+1.  **[Select a Disk]** ページで **[Create a new virtual disk]** を選択します。**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image31.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image31.png)
 
-1.  On the **Create a Disk** page, change the **Disk Size** to 500 GB (or more). Under **Disk Provisioning**, select **Thin Provision**. Click **Next**.
+1.  **[Create a Disk]** ページで **[Disk Size]** を 500 GB (またはそれ以上) に変更します。**[Disk Provisioning]** で **[Thin Provision]** を選択します。**[Next]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image32.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image32.png)
 
-1.  On the **Advanced Options** page, accept the default.
+1.  **[Advanced Options]** ページで既定値をそのまま使用します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image33.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image33.png)
 
-1.  On the **Ready to Complete** page, review the disk options. Click **Finish**.
+1.  **[Ready to Complete]** ページでディスク オプションを確認します。**[Finish]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image34.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image34.png)
 
-1.  You will now return to the Virtual Machine Properties page. A new hard disk is added to your virtual machine. Click **Finish**.
+1.  [Virtual Machine Properties] ページに戻ります。新しいハード ディスクが仮想マシンに追加されます。**[Finish]** をクリックします。
   
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image35.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image35.png)
 
-2.  With your virtual machine selected in the right pane, navigate to the **Summary** tab. Review the settings for your virtual machine.
+2.  仮想マシンを選択した状態で、右側のウィンドウで **[Summary]** タブに移動します。仮想マシンの設定を確認します。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image36.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image36.png)
 
-Your virtual machine is now provisioned. The next step is to power on this machine and get the IP address.
+これで仮想マシンがプロビジョニングされました。次はこのマシンを起動して IP アドレスを取得します。
 
-## <a name="step-3:-start-the-virtual-device-and-get-the-ip"></a>Step 3: Start the virtual device and get the IP
+## 手順 3: 仮想デバイスを起動し、IP アドレスを取得する
 
-Perform the following steps to start your virtual device and connect to it.
+仮想デバイスを起動して接続するには、次の手順を実行します。
 
-#### <a name="to-start-the-virtual-device"></a>To start the virtual device
+#### 仮想デバイスを起動するには
 
-1.  Start the virtual device. In the vSphere Configuration Manager, in the left pane, select your device and right-click to bring up the context menu. Select **Power** and then select **Power on**. This should power on your virtual machine. You can view the status in the bottom **Recent Tasks** pane of the vSphere client.
+1.  仮想デバイスを起動します。vSphere Configuration Manager の左側のウィンドウでデバイスを選択して右クリックし、コンテキスト メニューを表示します。**[Power]**、**[Power on]** の順に選択します。これで、仮想マシンの電源がオンになります。vSphere client のページ下部の **[Recent Tasks]** ウィンドウで状態を確認できます。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image37.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image37.png)
 
-1.  The setup tasks will take a few minutes to complete. Once the device is running, navigate to the **Console** tab. Send Ctrl+Alt+Delete to log into the device. Alternatively, you can point the cursor on the console window and press Ctrl+Alt+Insert. The default user is *StorSimpleAdmin* and the default password is *Password1*.
+1.  設定タスクの完了には数分かかります。デバイスが起動したら **[Console]** タブに移動します。デバイスにログインするには Ctrl + Alt + Del キーを押します。[Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image38.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image38.png)
 
-1.  For security reasons, the device administrator password expires at the first log on. You will be prompted to change the password.
+1.  セキュリティ上の理由から、デバイス管理者のパスワードは初回ログオン後に有効期限が切れます。パスワードを変更するように促されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image39.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image39.png)
 
-1.  Enter a password that contains at least 8 characters. The password must contain 3 out of 4 of these requirements: uppercase, lowercase, numeric, and special characters. Reenter the password to confirm it. You will be notified that the password has changed.
+1.  8 文字以上を含むパスワードを入力します。パスワードは、4 つの要件 (大文字、小文字、数字、および特殊文字) のうち 3 つを満たす必要があります。確認のためにパスワードを再入力します。パスワードが変更されたことが通知されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image40.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image40.png)
 
-1.  After the password is successfully changed, the virtual device may reboot. Wait for the reboot to complete. The Windows PowerShell console of the device may be displayed along with a progress bar.
+1.  パスワードが正常に変更されると、仮想デバイスが再起動することがあります。再起動が完了するのを待ちます。デバイスの Windows PowerShell コンソールが、進行状況バーと共に表示される場合があります。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image41.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image41.png)
 
-1.  Steps 6-8 only apply when booting up in a non DHCP environment. If you are in a DHCP environment, then skip these steps and go to step 9. If you booted up your device in non DHCP environment, you will see the following screen. 
+1.  手順 6 ～ 8 は、非 DHCP 環境での起動時にのみ適用されます。DHCP 環境の場合は、手順 6 ～ 8 をスキップし、手順 9 に進みます。非 DHCP 環境でデバイスを起動した場合は、次の画面が表示されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image42m.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image42m.png)
 
-    You will now need to configure the network.
+	次にネットワークを構成する必要があります。
 
-1.  Use the `Get-HcsIpAddress` command to list the network interfaces enabled on your virtual device. If your device has a single network interface enabled, the default name assigned to this interface is `Ethernet`.
+1.  `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet` です。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image43m.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image43m.png)
 
-1.  Use the `Set-HcsIpAddress` cmdlet to configure the network. An example is shown below:
+1.  `Set-HcsIpAddress` コマンドレットを使用してネットワークを構成します。例を次に示します。
 
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image44.png)
+	![](./media/storsimple-ova-deploy2-provision-vmware/image44.png)
 
-1.  After the initial setup is complete and the device has booted up, you will see the device banner text. Make a note of the IP address and the URL displayed in the banner text to manage the device. You will use this IP address to connect to the web UI of your virtual device and complete the local setup and registration.
+1.  初期セットアップが完了し、デバイスが再起動すると、デバイスのバナー テキストが表示されます。デバイスを管理するため、バナー テキストに表示される IP アドレスと URL をメモしておきます。この IP アドレスを使用して、仮想デバイスの Web UI に接続し、ローカル セットアップと登録を行います。
 
-    ![](./media/storsimple-ova-deploy2-provision-vmware/image45.png)
-
-
-1. (Optional) Perform this step only if you are deploying your device in the Government Cloud. You will now enable the United States Federal Information Processing Standard (FIPS) mode on your device. The FIPS 140 standard defines cryptographic algorithms approved for use by US Federal government computer systems for the protection of sensitive data.
-    1. To enable the FIPS mode, run the following cmdlet:
-        
-        `Enter-HcsFIPSMode`
-
-    2. Reboot your device after you have enabled the FIPS mode so that the cryptographic validations take effect.
-
-        > [AZURE.NOTE] You can either enable or disable FIPS mode on your device. Alternating the device between FIPS and non-FIPS mode is not supported.
+	![](./media/storsimple-ova-deploy2-provision-vmware/image45.png)
 
 
-If your device does not meet the minimum configuration requirements, you will see an error in the banner text (shown below). You will need to modify the device configuration so that it has adequate resources to meet the minimum requirements. You can then restart and connect to the device. Refer to the minimum configuration requirements in [Step 1: Ensure that the host system meets minimum virtual device requirements](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
+1. (省略可能) デバイスを Government Cloud にデプロイする場合にのみ、この手順を実行します。デバイスで米国連邦情報処理標準 (FIPS) モードを有効にできるようになります。FIPS 140 標準には、機密データ保護のために米国連邦政府のコンピューター システムに使用することが承認されている暗号化アルゴリズムが定義されています。
+	1. FIPS モードを有効にするには、次のコマンドレットを実行します。
+		
+		`Enter-HcsFIPSMode`
+
+	2. FIPS モードを有効にした後はデバイスを再起動して、暗号化の検証が有効になるようにします。
+
+		> [AZURE.NOTE] デバイスで FIPS モードを有効または無効にすることができます。デバイスの FIPS モードと非 FIPS モードを切り替えることはサポートされていません。
+
+
+デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。その後、再起動し、デバイスに接続します。「[手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)」にある最小構成要件を参照してください。
 
 ![](./media/storsimple-ova-deploy2-provision-vmware/image46.png)
 
-If you face any other error during the initial configuration using the local web UI, refer to the following workflows in [Manage your StorSimple Virtual Array using the local web UI](storsimple-ova-web-ui-admin.md).
+ローカル Web UI を使って初期構成を行っている間に他のエラーが発生した場合は、「[Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)」の次のワークフローを参照してください。
 
--   Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
+-   診断テストを実行して [Web UI 設定のトラブルシューティング](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)を行う。
 
--   [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package)..
+-   [ログ パッケージを生成してログ ファイルを表示する](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
--   [Set up your StorSimple Virtual Array as a file server](storsimple-ova-deploy3-fs-setup.md)
+-   [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-ova-deploy3-fs-setup.md)
 
--   [Set up your StorSimple Virtual Array as an iSCSI server](storsimple-ova-deploy3-iscsi-setup.md)
+-   [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

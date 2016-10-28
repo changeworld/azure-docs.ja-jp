@@ -2,7 +2,4 @@
 - [.NET](../articles/media-services/media-services-dotnet-how-to-use.md)
 - [REST API](../articles/media-services/media-services-rest-how-to-use.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

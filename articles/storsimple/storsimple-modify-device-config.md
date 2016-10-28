@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Modify the StorSimple device configuration | Microsoft Azure" 
-   description="Describes how to use the StorSimple Manager service to reconfigure a StorSimple device that has already been deployed." 
+   pageTitle="StorSimple デバイスの構成の変更 |Microsoft Azure" 
+   description="StorSimple Manager サービスを使用して、デプロイ済みの StorSimple デバイスを再構成する方法について説明します。" 
    services="storsimple" 
    documentationCenter="NA" 
    authors="SharS" 
@@ -13,125 +13,120 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="TBD" 
-   ms.date="09/29/2016"
+   ms.date="05/16/2016"
    ms.author="v-sharos"/>
 
+# StorSimple Manager サービスを使用した StorSimple デバイス構成の変更
 
-# <a name="use-the-storsimple-manager-service-to-modify-your-storsimple-device-configuration"></a>Use the StorSimple Manager service to modify your StorSimple device configuration
+## 概要 
 
-## <a name="overview"></a>Overview 
+Azure クラシック ポータルの **[構成]** ページには、StorSimple Manager サービスの管理対象の StorSimple デバイスで再構成することができるすべてのデバイス パラメーターが含まれます。このチュートリアルでは、**[構成]** ページを使用して以下のデバイス レベルのタスクを実行する方法について説明します。
 
-The Azure classic portal **Configure** page contains all the device parameters that you can reconfigure on a StorSimple device that is managed by a StorSimple Manager service. This tutorial explains how you can use the **Configure** page to perform the following device-level tasks:
+- デバイスの設定の変更 
+- 時刻の設定の変更 
+- DNS 設定の変更 
+- ネットワーク インターフェイスの変更
+- IP のスワップまたは再割り当て
 
-- Modify device settings 
-- Modify time settings 
-- Modify DNS settings 
-- Modify network interfaces
-- Swap or reassign IPs
+## デバイスの設定の変更
 
-## <a name="modify-device-settings"></a>Modify device settings
+デバイスの設定には、デバイスの表示名とデバイスの説明が含まれます。
 
-The device settings include the friendly name of the device and the device description.
+StorSimple Manager サービスに接続されている StorSimple デバイスには、既定の名前が割り当てられます。通常、既定の名前はデバイスのシリアル番号を示します。たとえば、8600-SHX0991003G44HT などの 15 文字の既定デバイス名は、次のような意味を持ちます。
 
-A StorSimple device that is connected to the StorSimple Manager service is assigned a default name. The default name typically reflects the serial number of the device. For example, a default device name that is 15 characters long, such as 8600-SHX0991003G44HT, indicates the following:
+- **8600** - デバイスのモデルを示します。
+- **SHX** - 製造所を示します。
+- **0991003** - 特定の製品を示します。
+- **G44HT** - この最後の 5 桁の数字を増加させて、一意のシリアル番号を作成します。この数字は、連番でない場合があります。
 
-- **8600**  – Indicates the device model.
-- **SHX** – Indicates the manufacturing site.
-- **0991003** - Indicates a specific product.
-- **G44HT**- The last 5 digits are incremented to create unique serial numbers. This might not be a sequential set.
+Azure クラシック ポータルを使用してデバイス名を変更し、一意の表示名を自由に割り当てることができます。表示名には、64 文字以内で任意の文字を含めることができます。
 
-You can use the Azure classic portal to change the device name and assign it a unique friendly name of your choice. The friendly name can contain any characters and can be a maximum of 64 characters long.
-
-You can also specify a device description. A device description usually helps identify the owner and the physical location of the device. The description field must contain fewer than 256 characters.
+デバイスの説明を指定することもできます。一般に、デバイスの説明は、デバイスの所有者と物理的な場所を特定するのに役立ちます。[説明] フィールドの文字数は 256 文字未満にする必要があります。
  
-## <a name="modify-time-settings"></a>Modify time settings
+## 時刻の設定の変更
 
-Your device must synchronize time in order to authenticate with your cloud storage service provider. Select your time zone from the drop-down list, and specify up to two Network Time Protocol (NTP) servers. The primary NTP server is required and is specified when you use Windows PowerShell for StorSimple to configure your device. You can specify the default Windows Server **time.windows.com** as your NTP server. You can view the primary NTP server configuration through the Azure classic portal, but you must use the Windows PowerShell interface to change it.
+デバイスは、クラウド ストレージ サービス プロバイダーで認証を行うために時刻を同期する必要があります。タイム ゾーンをドロップダウン リストから選択し、ネットワーク タイム プロトコル (NTP) サーバーを 2 つまで指定します。プライマリ NTP サーバーは必須であり、StorSimple 用 Windows PowerShell を使用してデバイスを構成する場合に指定します。NTP サーバーとして、既定の Windows Server である **time.windows.com** を指定できます。プライマリ NTP サーバーの構成は Azure クラシック ポータルから確認できますが、変更するには Windows PowerShell インターフェイスを使用する必要があります。
 
-The secondary NTP server configuration is optional. You can use the classic portal to configure a secondary NTP server. 
+セカンダリ NTP サーバーの構成は省略可能です。クラシック ポータルを使用して、セカンダリ NTP サーバーを構成することができます。
 
-When configuring the NTP server, ensure that your network allows the NTP traffic to pass from your datacenter to the Internet. When specifying a public NTP server, you must make sure that your network firewalls and other security devices are configured to allow NTP traffic to travel to and from the outside network. If bidirectional NTP traffic is not permitted, you must use an internal NTP server (a Windows domain controller provides this function). If your device cannot synchronize time, it may not be able to communicate with your cloud storage provider.
+NTP サーバーの構成時には、データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。パブリック NTP サーバーを指定する場合、外部ネットワークとの間を NTP トラフィックが行き来できるように、ネットワーク ファイアウォールやその他のセキュリティ デバイスを設定する必要があります。双方向の NTP トラフィックが許可されていない場合は、内部 NTP サーバーを使用する必要があります (Windows ドメイン コントローラーにこの機能があります)。デバイスは、時刻を同期できない場合、クラウド ストレージ プロバイダーと通信できない可能性があります。
 
-To see a list of public NTP servers, go to the [NTP Servers Web](http://support.ntp.org/bin/view/Servers/WebHome). 
+パブリック NTP サーバーの一覧については、[NTP Servers Web](http://support.ntp.org/bin/view/Servers/WebHome) を参照してください。
 
-### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone?"></a>What happens if the device is deployed in a different time zone?
+### デバイスが異なるタイム ゾーンでデプロイされた場合の処理
 
-If the device is deployed in a different time zone, the device time zone will change. Given that all the backup policies use the device time zone, the backup policies will automatically adjust in accordance with the new time zone. No user intervention is required.
+デバイスが異なるタイム ゾーンでデプロイされると、そのデバイスのタイム ゾーンが変更されます。すべてのバックアップ ポリシーではデバイスのタイム ゾーンが使用されるため、バックアップ ポリシーでは新しいタイム ゾーンに合わせて自動的に調整が行われます。ユーザーが操作を行う必要はありません。
 
-## <a name="modify-dns-settings"></a>Modify DNS settings
+## DNS 設定の変更
 
-A DNS server is used when your device attempts to communicate with your cloud storage service provider. For high availability, you are required to configure both the primary and the secondary DNS servers during the initial device deployment. To reconfigure the primary DNS server, you will need to use the Windows PowerShell interface on your StorSimple device.
+DNS サーバーは、デバイスがクラウド ストレージ サービス プロバイダーと通信しようとする場合に使用されます。可用性を高めるには、デバイスの初期デプロイ時にプライマリ DNS サーバーとセカンダリ DNS サーバーの両方を構成する必要があります。プライマリ DNS サーバーを再構成するには、StorSimple デバイスの Windows PowerShell インターフェイスを使用する必要があります。
 
-To modify the secondary DNS server, you can use the Azure classic portal.
+セカンダリ DNS サーバーの変更は、Azure クラシック ポータルを使用して行うことができます。
 
+<!-- If a secondary DNS server is not configured, you will not be able to create volume containers or provision volumes on the device.-->
 
+## ネットワーク インターフェイスの変更
 
-## <a name="modify-network-interfaces"></a>Modify network interfaces
+デバイスには 6 つのデバイス ネットワーク インターフェイスがあり、そのうちの 4 つは 1 GbE、2 つは 10 GbE です。これらのインターフェイスには、DATA 0 ～ DATA 5 のラベルが付けられています。DATA 0、DATA 1、DATA 4、DATA 5 は 1 GbE ネットワーク インターフェイスですが、DATA 2 と DATA 3 は 10 GbE ネットワーク インターフェイスです。
 
-Your device has six device network interfaces, four of which are 1 GbE and two of which are 10 GbE. These interfaces are labeled as DATA 0 – DATA 5. DATA 0, DATA 1, DATA 4, and DATA 5 are 1 GbE, whereas DATA 2 and DATA 3 are 10 GbE network interfaces.
+**ネットワーク インターフェイスの設定**は、使用するインターフェイスごとに行います。高可用性を確保するためには、デバイスに少なくとも 2 つの iSCSI インターフェイスと 2 つのクラウド対応インターフェイスを設定することをお勧めします。使用しないインターフェイスは無効にすることをおすすめしますが、必須ではありません。
 
-Configure **Network Interface Settings** for each of the interfaces to be used. To ensure high availability, we recommend that you have at least two iSCSI interfaces and two cloud-enabled interfaces on your device. We recommend but do not require that unused interfaces be disabled.
+いずれかのネットワーク インターフェイスを設定するときに、仮想 IP (VIP) を設定する必要があります。
 
-When you configure any of the network interfaces, you must configure a virtual IP (VIP).
+DATA 0 は、既定ではクラウドに対応しています。DATA 0 を設定する場合、2 つの固定 IP アドレス (各コントローラーに 1 つ) も設定する必要があります。これらの固定 IP アドレスを使用するとデバイス コントローラーに直接アクセスできるため、デバイスに更新をインストールするときや、トラブルシューティングのためにコントローラーにアクセスするときに役立ちます。
 
-DATA 0 is cloud-enabled by default. When configuring DATA 0, you are also required to configure two fixed IP addresses, one for each controller. These fixed IP addresses can be used to access the device controllers directly and are useful when you install updates on the device or when you access the controllers for the purpose of troubleshooting.
+StorSimple 8000 シリーズ Update 1 では、DATA 0 のルーティング メトリックが最低に設定されています。このため、デバイスで StorSimple 8000 シリーズ Update 1 を実行している場合、すべてのクラウド トラフィックが DATA 0 経由でルーティングされます。StorSimple デバイス上に複数のクラウド対応ネットワーク インターフェイスがある場合は、このことを覚えておいてください。
 
-In StorSimple 8000 Series Update 1, the routing metric of DATA 0 is set to the lowest; therefore, if your device is running StorSimple 8000 Series Update 1, all the cloud traffic will be routed through DATA 0. Make a note of this if you have more than one cloud-enabled network interface on your StorSimple device.
+>[AZURE.NOTE] コントローラー用の固定 IP アドレスは、デバイスに更新を提供するために使用されます。このため、固定 IP はルーティング可能でありインターネットに接続できる必要があります。
 
->[AZURE.NOTE] The fixed IP addresses for the controller are used for servicing the updates to the device. Therefore, the fixed IPs must be routable and able to connect to the Internet.
+各ネットワーク インターフェイスには、以下のパラメーターが表示されます。
 
-For each network interface, the following parameters are displayed:
+- **速度** - ユーザーが設定可能なパラメーターではありません。DATA 0、DATA 1、DATA 4、DATA 5 は常に 1 GbE インターフェイスですが、DATA 2 と DATA 3 は 10 GbE インターフェイスです。
 
-- **Speed** – Not a user-configurable parameter. DATA 0, DATA 1, DATA 4, and DATA 5 are always 1 GbE, whereas DATA 2 and DATA 3 are 10 GbE interfaces.
-
-     >[AZURE.NOTE] Speed and duplex are always auto-negotiated. Jumbo frames are not supported.
+     >[AZURE.NOTE] 速度と二重通信形式は常に自動的にネゴシエートされます。Jumbo Frame はサポートされません。
  
-- **Interface state** – An interface can be enabled or disabled. If enabled, the device will attempt to use the interface. We recommend that only those interfaces that are connected to the network and used be enabled. Disable any interfaces that you are not using.
+- **インターフェイスの状態** - インターフェイスは有効または無効にできます。有効にすると、デバイスがそのインターフェイスを使用しようとします。ネットワークに接続され使用されているインターフェイスだけを有効にすることをお勧めします。使用していないインターフェイスはすべて無効にします。
 
-- **Interface type** – This parameter allows you to isolate iSCSI traffic from cloud storage traffic. This parameter can be one of the following:
+- **インターフェイスの種類** - このパラメーターを使用すると、クラウド ストレージのトラフィックから iSCSI トラフィックを分離することができます。このパラメーターには、次のいずれかを指定できます。
 
-    - **Cloud enabled** – when enabled, the device will use this interface to communicate with the cloud.
-    - **iSCSI enabled** – when enabled, the device will use this interface to communicate with the iSCSI host.
+    - **クラウド対応** - 有効にすると、デバイスはクラウドとの通信にこのインターフェイスを使用します。
+    - **iSCSI対応** - 有効にすると、デバイスは iSCSI ホストとの通信にこのインターフェイスを使用します。
 
-    We recommend that you isolate iSCSI traffic from cloud storage traffic. Also note if your host is within the same subnet as your device, you do not need to assign a gateway; however, if your host is in a different subnet than your device, you will need to assign a gateway.
+    クラウド ストレージのトラフィックから iSCSI トラフィックを分離することをお勧めします。また、ホストがデバイスと同じサブネット内にある場合、ゲートウェイを割り当てる必要はないことに注意してください。ただし、ホストがデバイスと異なるサブネットにある場合は、ゲートウェイを割り当てる必要があります。
 
-- **IP address** – This can be IPv4 or IPv6 or both. Both the IPv4 and IPv6 address families are supported for the device network interfaces. When using IPv4, specify a 32-bit IP address (*xxx.xxx.xxx.xxx*) in dot-decimal notation. When using IPv6, simply supply a 4-digit prefix, and a 128-bit address will be generated automatically for your device network interface based on that prefix.
+- **IP アドレス** - IPv4、IPv6、またはその両方に設定できます。デバイス ネットワーク インターフェイスでは、IPv4 と IPv6 の両方のアドレス ファミリがサポートされます。IPv4 を使用する場合は、ドットを使用した 10 進法で 32 ビットの IP アドレス (*xxx.xxx.xxx.xxx*) を指定します。IPv6 を使用する場合は、4 桁のプレフィックスを付けるだけで済みます。このプレフィックスに基づいて、デバイス ネットワーク インターフェイスの 128 ビットのアドレスが自動で生成されます。
 
-- **Subnet** – This refers to the subnet mask and is configured via the Windows PowerShell interface.
+- **サブネット** - サブネット マスクを指し、Windows PowerShell インターフェイスを使用して構成されます。
 
-- **Gateway** – This is the default gateway that should be used by this interface when it attempts to communicate with nodes that are not within the same IP address space (subnet). The default gateway must be in the same address space (subnet) as the interface IP address, as determined by the subnet mask.
+- **ゲートウェイ** - 同じ IP アドレス空間 (サブネット) にないノードとこのインターフェイスが通信する場合に使用される、デフォルト ゲートウェイです。デフォルト ゲートウェイは、サブネット マスクによって決定されるインターフェイスの IP アドレスと同じアドレス空間 (サブネット) にある必要があります。
 
-- **Fixed IP address** – This field is available only while you configure the DATA 0 interface. For operations such as updates or troubleshooting the device, you may need to connect directly to the device controller. The fixed IP address can be used to access both the active and the passive controller on your device.
+- **固定 IP アドレス** - このフィールドは、DATA 0 インターフェイスの設定時にのみ使用できます。更新やデバイスのトラブルシューティングなどの操作では、デバイス コントローラーに直接接続する必要がある場合があります。固定 IP アドレスを使用すると、デバイス上のアクティブ コントローラーおよびパッシブ コントローラーの両方にアクセスできます。
 
-You can reconfigure Controller 0 and Controller 1 through the Azure classic portal.
+コントローラー 0 とコントローラー 1 は Azure クラシック ポータルから再構成することができます。
 
 >[AZURE.NOTE] 
 >
->- To ensure proper operation, verify the interface speed and duplex on the switch that each device interface is connected to. Switch interfaces should either negotiate with or be configured for Gigabit Ethernet (1000 Mbps) and be full-duplex. Interfaces operating at slower speeds or in half-duplex will result in performance issues.
+>- 適切に動作させるには、各デバイス インターフェイスの接続先のスイッチでインターフェイスの速度と二重化を確認します。スイッチ インターフェイスは、ギガビット イーサネット (1000 Mbps) でネゴシエートするかまたはこれに合わせて構成されて、全二重である必要があります。インターフェイスが低速または半二重で動作している場合、パフォーマンスの問題が発生します。
 >
->- To minimize disruptions and downtime, we recommend that you enable portfast on each of the switch ports that the iSCSI network interface of your device will be connecting to. This will ensure that network connectivity can be established quickly in the event of a failover.
+>- 中断やダウンタイムを最小限に抑えるには、デバイスの iSCSI ネットワーク インターフェイスの接続先となる各スイッチ ポートで、PortFast を有効にすることをお勧めします。これにより、フェールオーバーの発生時にネットワーク接続を素早く確立できるようになります。
  
-## <a name="swap-or-reassign-ips"></a>Swap or reassign IPs
+## IP のスワップまたは再割り当て
 
-Currently, if any network interface on the controller is assigned a VIP that is in use (by the same device or another device in the network), then the controller will fail over. Therefore, you have to follow the proper procedure if you are swapping VIPs for the device network interface, because you will create a duplicate IP situation.
+現時点では、コントローラーのすべてのネットワーク インターフェイスが (同じデバイスまたはネットワーク内の別のデバイスによって) 使用中の VIP に割り当てられている場合、コントローラーでフェールオーバーが行われます。したがって、デバイス ネットワーク インターフェイスの VIP をスワップする場合は適切な手順に従う必要があります。これは、IP が重複する状況が発生するためです。
 
-Perform the following steps to swap or reassign the VIPs for any of the network interfaces:
+いずれかのネットワーク インターフェイスの VIP をスワップまたは再割り当てするには、以下の手順を実行します。
 
-#### <a name="to-reassign-ips"></a>To reassign IPs
+#### IP を再割り当てするには
 
-1. Clear the IP address for both interfaces.
+1. 両方のインターフェイスの IP アドレスをクリアします。
 
-2. After the IP addresses are cleared, assign the new IP addresses to the respective interfaces.
+2. IP アドレスがクリアされた後に、それぞれのインターフェイスに新しい IP アドレスを割り当てます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [configure MPIO for your StorSimple device](storsimple-configure-mpio-windows-server.md).
+- [StorSimple デバイスの MPIO の構成方法](storsimple-configure-mpio-windows-server.md)。
 
-- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
      
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0518_2016-->

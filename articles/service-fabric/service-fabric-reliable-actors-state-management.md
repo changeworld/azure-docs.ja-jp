@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Actors state management | Microsoft Azure"
-   description="Describes how Reliable Actors state is managed, persisted, and replicated for high-availability."
+   pageTitle="Reliable Actors の状態管理 | Microsoft Azure"
+   description="Reliable Actors の状態が、高可用性のためにどのように管理、永続化、およびレプリケートされるかについて説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,45 +13,44 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/19/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
+# Reliable Actors の状態管理
 
-# <a name="reliable-actors-state-management"></a>Reliable Actors state management
+Reliable Actors は、ロジックと状態の両方をカプセル化できるシングル スレッド オブジェクトです。アクターは Reliable Services 上で実行されるため、Reliable Services によって使用されるのと同じ永続化およびレプリケーション メカニズムを使用して、状態を確実に保持することができます。このため、エラー後や、ガベージ コレクションに続く再アクティブ化の後や、リソース分散またはアップグレードのためにクラスター内のノード間を移動されたときでも、アクターは状態を失いません。
 
-Reliable Actors are single-threaded objects that can encapsulate both logic and state. Since actors run on Reliable Services, they can maintain state reliably using the same persistence and replication mechanisms used by Reliable Services. This way, actors don't lose their state after failures, re-activation after garbage collection, or when they are moved around between nodes in a cluster due to resource balancing or upgrades.
+## 状態の永続性とレプリケーション
 
-## <a name="state-persistence-and-replication"></a>State persistence and replication
+各アクター インスタンスは一意の ID にマッピングされるため、すべての Reliable Actors は、*ステートフル*であると見なされます。つまり、同じアクター ID を繰り返し呼び出すと、同じアクター インスタンスにルーティングされます。これは、クライアント呼び出しが常に同じサーバーにルーティングされるとは限らないステートレス システムとは異なります。このため、アクター サービスは常にステートフルなサービスです。
 
-All Reliable Actors are considered *stateful* because each actor instance maps to a unique ID. This means that repeated calls to the same actor ID will be routed to the same actor instance. This is in contrast to a stateless system in which client calls are not guaranteed to be routed to the same server every time. For this reason, actor services are always stateful services.
+ただし、アクターはステートフルと見なせるとしても、状態を確実に格納しているとは限りません。アクターは、データ ストレージの要件に基づいて、次のような状態の永続性とレプリケーションのレベルを選択できます。
 
-However, even though actors are considered stateful, it does not mean they must store state reliably. Actors can choose the level of state persistence and replication based on their data storage requirements:
-
- - **Persisted state:** State is persisted to disk and is replicated to 3 or more replicas. This is the most durable state storage option, where state can persist through complete cluster outage.
- - **Volatile state:** State is replicated to 3 or more replicas and only kept in memory. This provides resilience against node failure, actor failure, and during upgrades and resource balancing. However, state is not persisted to disk, so if all replicas are lost at once, the state is lost as well.
- - **No persisted state:** State is not replicated nor is it written to disk. For actors that simply don't need to maintain state reliably.
+ - **永続化状態:** 状態はディスクに永続化され、3 つ以上のレプリカにレプリケートされます。これは、完全なクラスター停止があっても状態を永続化できる、最も持続性のある状態ストレージ オプションです。
+ - **揮発状態:** 状態は 3 つ以上のレプリカにレプリケートされ、メモリだけに保持されます。これにより、ノード障害時、アクター障害時、およびアップグレードとリソース分散中の回復力が得られます。ただし、状態はディスクに永続化されないため、すべてのレプリカが同時に失われると、状態も失われます。
+ - **非永続化状態:** 状態はレプリケートされず、ディスクにも書き込まれません。単に状態を確実に保持する必要がないアクター用です。
  
-Each level of persistence is simply a different *state provider* and *replication* configuration of your service. Whether or not state is written to disk depends on the *state provider* - the component in a Reliable Service that stores state - and replication depends on how many replicas a service is deployed with. Just as with Reliable Services, both the state provider and replica count can easily be set manually. The actor framework provides an attribute, that, when used on an actor will automatically select a default state provider and auto-generate settings for replica count to achieve one of these three persistence settings.
+永続性の各レベルは、単にサービスの*状態プロバイダー*と*レプリケーション*構成が異なるだけです。状態がディスクに書き込まれるかどうかは、*状態プロバイダー*によって決まります。これは、状態を格納する Reliable Service のコンポーネントです。また、レプリケーションによって、いくつのレプリカにサービスがデプロイされるかが決まります。Reliable Services と同様に、状態プロバイダーもレプリカ数も手動で簡単に設定できます。アクター フレームワークは、属性を提供します。これは、アクターに使用された場合に、既定の状態プロバイダーとレプリカ数の自動生成設定を自動的に選択して、上記の 3 つの永続性設定のいずれかを実現します。
 
-### <a name="persisted-state"></a>Persisted state
+### 永続化状態
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
 {
 }
 ```  
-This setting uses a state provider that stores data on disk and automatically sets the service replica count to 3.
+この設定は、ディスクにデータを格納する状態プロバイダーを使用し、自動的にサービス レプリカ数を 3 に設定します。
 
-### <a name="volatile-state"></a>Volatile state
+### 揮発状態
 ```csharp
 [StatePersistence(StatePersistence.Volatile)]
 class MyActor : Actor, IMyActor
 {
 }
 ```
-This setting uses an in-memory-only state provider and sets the replica count to 3.
+この設定は、メモリ内のみの状態プロバイダーを使用し、レプリカ数を 3 に設定します。
 
-### <a name="no-persisted-state"></a>No persisted state
+### 非永続化状態
 
 ```csharp
 [StatePersistence(StatePersistence.None)]
@@ -59,17 +58,17 @@ class MyActor : Actor, IMyActor
 {
 }
 ```
-This setting uses an in-memory-only state provider and sets the replica count to 1.
+この設定は、メモリ内のみの状態プロバイダーを使用し、レプリカ数を 1 に設定します。
 
-### <a name="defaults-and-generated-settings"></a>Defaults and generated settings
+### 既定値と生成される設定
 
-When using the `StatePersistence` attribute, a state provider is automatically selected for you at runtime when the actor service starts. The replica count, however, is set at compile time by the Visual Studio actor build tools. The build tools automatically generate a *default service* for the actor service in ApplicationManifest.xml. Parameters are created for **min replica set size** and **target replica set size**. You can of course change these parameters manually, however each time the `StatePersistence` attribute is changed, the parameters will be set to the default replica set size values for the selected `StatePersistence` attribute, overriding any previous values. In other words, the values you set in ServiceManifest.xml will **only** be overridden at build time when you change the `StatePersistence` attribute value. 
+`StatePersistence` 属性を使用する場合、状態プロバイダーは実行時にアクター サービスが開始されるときに自動的に選択されます。ただし、レプリカ数は、コンパイル時に Visual Studio アクター ビルド ツールによって設定されます。ビルド ツールは自動的にアクター サービスの*既定のサービス*を ApplicationManifest.xml 内に生成します。**最小レプリカ セット サイズ**と**ターゲット レプリカ セット サイズ**のために、パラメーターが作成されます。もちろん、これらのパラメーターは手動で変更できます。ただし、`StatePersistence` 属性が変更されるたびに、パラメーターは選択された `StatePersistence` 属性の既定のレプリカ セット サイズ値に設定され、前の値は上書きされます。つまり、`StatePersistence` 属性の値を変更すると、ServiceManifest.xml に設定した値**のみ**がビルド時にオーバーライドされます。
 
 ```xml
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
       <Parameter Name="MyActorService_PartitionCount" DefaultValue="10" />
-      <Parameter Name="MyActorService_MinReplicaSetSize" DefaultValue="3" />
+      <Parameter Name="MyActorService_MinReplicaSetSize" DefaultValue="2" />
       <Parameter Name="MyActorService_TargetReplicaSetSize" DefaultValue="3" />
    </Parameters>
    <ServiceManifestImport>
@@ -85,33 +84,28 @@ When using the `StatePersistence` attribute, a state provider is automatically s
 </ApplicationManifest>
 ```
 
-## <a name="state-manager"></a>State Manager
+## 状態マネージャー
 
-Every actor instance has its own State Manager: A dictionary-like data structure that reliably stores key-value pairs. The State Manager is a wrapper around a state provider. It can be used to store data regardless of which persistence setting is used, but it does not provide any guarantees that a running actor service can be changed from a volatile (in-memory-only) state setting to a persisted state setting through a rolling upgrade while preserving data. However, it is possible to change replica count for a running service. 
+各アクター インスタンスは、独自の状態マネージャーを持ちます。これは、辞書のようなデータ構造で、キーと値のペアを確実に保持します。状態マネージャーは、状態プロバイダーのラッパーです。どの永続性設定が使用されるかにかかわらず、データを格納するために使用できますが、ローリング アップグレードを通じて、データを保持しつつ、実行中のアクター サービスを揮発 (メモリ内のみ) 状態設定から永続化状態設定に変更できることは保証されません。ただし、実行中のサービスのレプリカ数を変更することはできます。
 
-State Manager keys must be strings, while values are generic and can be any type, including custom types. Values stored in the State Manager must be Data Contract serializable because they may be transmitted over the network to other nodes during replication and may be written to disk, depending on an actor's state persistence setting. 
+状態マネージャー キーは、文字列である必要があります。一方、値はジェネリックであり、カスタム型も含めて、任意の型にすることができます。状態マネージャーに格納される値は、データ コントラクト シリアル化可能である必要があります。これらの値は、アクターの状態の永続性設定によっては、レプリケーション中にネットワーク経由で他のノードに送信されたり、ディスクに書き込まれたりする可能性があるためです。
 
-The State Manager exposes common dictionary methods for managing state, similar to those found in Reliable Dictionary.
+状態マネージャーは、Reliable Dictionary に含まれているような、状態を管理するための一般的な辞書メソッドを公開します。
 
-### <a name="accessing-state"></a>Accessing state
+### 状態へのアクセス
 
-State can be accessed through the State Manager by key. State Manager methods are all asynchronous as they may require disk I/O when actors have persisted state. Upon first access, state objects are cached in memory. Repeat access operations access objects directly from memory and return synchronously without incurring disk I/O or asynchronous context switching overhead. A state object is removed from the cache in the following cases:
+状態には、状態マネージャーからキーでアクセスできます。状態マネージャーのメソッドは、すべて非同期です。アクターが永続化状態を持つ場合に、ディスク I/O が必要になる可能性があるためです。最初のアクセス時に、状態オブジェクトがメモリにキャッシュされます。その後のアクセス操作では、メモリのオブジェクトに直接アクセスし、同期的に戻ります。ディスク I/O や、非同期のコンテキスト切り替えのオーバーヘッドは生じません。状態オブジェクトは、次の場合に、キャッシュから削除されます。
 
- - An actor method throws an unhandled exception after retrieving an object from the State Manager.
- - An actor is re-activated, either after being deactivated or due to failure.
- - If the state provider pages state to disk. This behavior depends on the state provider implementation. The default state provider for the `Persisted` setting has this behavior. 
+ - アクター メソッドが、状態マネージャーからオブジェクトを取得した後に、未処理の例外をスローする。
+ - アクターが、非アクティブ化の後、またはエラーのために、再アクティブ化される。
+ - 状態プロバイダーが、状態をディスクにページングする場合。この動作は、状態プロバイダーの実装に依存します。`Persisted` 設定用の既定の状態プロバイダーは、この動作を行います。
 
-State can be retrieved using a standard *Get* operation that throws `KeyNotFoundException` if an entry does not exist for the given key: 
+状態は、次のように標準の *Get* 操作を使用して取得できます。指定されたキーのエントリが存在しない場合は、`KeyNotFoundException` がスローされます。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
 {
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
     public Task<int> GetCountAsync()
     {
         return this.StateManager.GetStateAsync<int>("MyState");
@@ -119,16 +113,11 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-State can also be retrieved using a *TryGet* method that does not throw if an entry does not exist for a given key:
+状態は、次のように *TryGet* メソッドを使用して取得することもできます。指定されたキーのエントリが存在しない場合も、例外はスローされません。
 
 ```csharp
 class MyActor : Actor, IMyActor
 {
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
     public async Task<int> GetCountAsync()
     {
         ConditionalValue<int> result = await this.StateManager.TryGetStateAsync<int>("MyState");
@@ -142,21 +131,16 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-### <a name="saving-state"></a>Saving state
+### 状態の保存
 
-The State Manager retrieval methods return a reference to an object in local memory. Modifying this object in local memory alone does not cause it to be saved durably. When an object is retrieved from the State Manager and modified, it must be re-inserted into the State Manager to be saved durably.
+状態マネージャーの取得メソッドは、ローカル メモリ内のオブジェクトへの参照を返します。ローカル メモリ内のこのオブジェクトを変更しただけでは、変更は永続的に保存されません。オブジェクトが状態マネージャーから取得され、変更された場合、それを永続的に保存するには、状態マネージャーに再挿入する必要があります。
 
-State can be inserted using an unconditional *Set*, which is the equivalent of the `dictionary["key"] = value` syntax:
+状態を挿入するには、次のように、無条件の *Set* を使用します。これは、`dictionary["key"] = value` 構文と同等です。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
 {
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
     public Task SetCountAsync(int value)
     {
         return this.StateManager.SetStateAsync<int>("MyState", value);
@@ -164,17 +148,12 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-State can be added using an *Add* method, which will throw `InvalidOperationException` when trying to add a key that already exists:
+状態を追加するには、次のように、*Add* メソッドを使用します。既に存在するキーを追加しようとすると、`InvalidOperationException` がスローされます。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
 {
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
     public Task AddCountAsync(int value)
     {
         return this.StateManager.AddStateAsync<int>("MyState", value);
@@ -182,17 +161,12 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-State can also be added using a *TryAdd* method, which will not throw when trying to add a key that already exists:
+状態の追加には、次のように、*TryAdd* メソッドを使用することもできます。既に存在するキーを追加しようとしても、例外はスローされません。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
 {
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
     public async Task AddCountAsync(int value)
     {
         bool result = await this.StateManager.TryAddStateAsync<int>("MyState", value);
@@ -205,9 +179,9 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-At the end of an actor method, the State Manager automatically saves any values that have been added or modified by an insert or update operation. A "save" can include persisting to disk and replication, depending on the settings used. Values that have not been modified are not persisted or replicated. If no values have been modified, the save operation does nothing. In the event that saving fails, the modified state is discarded and the original state is reloaded.
+アクター メソッドの最後に、状態マネージャーは、挿入または更新操作によって追加または変更されたすべての値を自動的に保存します。"保存" には、使用されている設定に応じて、ディスクへの永続化やレプリケーションも含まれます。変更されていない値は、永続化もレプリケートもされません。値が変更されなかった場合、保存操作では何も行われません。保存が失敗した場合、変更された状態は破棄され、元の状態が再度読み込まれます。
 
-State can also be saved manually be calling the `SaveStateAsync` method on the actor base:
+状態は、次のように、アクター ベースの `SaveStateAsync` メソッドを呼び出すことで、手動で保存することもできます。
 
 ```csharp
 async Task IMyActor.SetCountAsync(int count)
@@ -218,19 +192,14 @@ async Task IMyActor.SetCountAsync(int count)
 }
 ```
 
-### <a name="removing-state"></a>Removing state
+### 状態の削除
 
-State can be removed permanently from an actor's State Manager by calling the *Remove* method. This method will throw `KeyNotFoundException` when trying to remove a key that doesn't exist:
+状態は、*Remove* メソッドを呼び出すことによって、アクターの状態マネージャーから完全に削除することができます。このメソッドは、存在しないキーを削除しようとすると、`KeyNotFoundException` をスローします。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
 {
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
     public Task RemoveCountAsync()
     {
         return this.StateManager.RemoveStateAsync("MyState");
@@ -238,17 +207,12 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-State can also be removed permanently by using the *TryRemove* method, which will not throw when trying to remove a key that doesn't exist:
+状態は、*TryRemove* メソッドを使用して完全に削除することもできます。この場合は、存在しないキーを削除しようとしても、例外はスローされません。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 class MyActor : Actor, IMyActor
 {
-    public MyActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-    
     public async Task RemoveCountAsync()
     {
         bool result = await this.StateManager.TryRemoveStateAsync("MyState");
@@ -261,15 +225,11 @@ class MyActor : Actor, IMyActor
 }
 ```
 
-## <a name="next-steps"></a>Next steps
- - [Actor type serialization](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
- - [Actor polymorphism and object-oriented design patterns](service-fabric-reliable-actors-polymorphism.md)
- - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
- - [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [Sample code](https://github.com/Azure/servicefabric-samples)
+## 次のステップ
+ - [アクター型のシリアル化](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+ - [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
+ - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
+ - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

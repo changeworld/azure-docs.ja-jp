@@ -1,13 +1,10 @@
 > [AZURE.SELECTOR]
-- [First web app](app-service-web-get-started.md)
+- [最初の Web アプリ](app-service-web-get-started.md)
 - [.NET](web-sites-dotnet-get-started.md)
 - [PHP](app-service-web-php-get-started.md)
-- [Node.js](app-service-web-nodejs-get-started.md)
+- [Node.JS](app-service-web-nodejs-get-started.md)
 - [Python](web-sites-python-ptvs-django-mysql.md)
 - [Java](web-sites-java-get-started.md)
-- [Marketplace app](app-service-web-create-web-app-from-marketplace.md)
+- [Marketplace アプリ](app-service-web-create-web-app-from-marketplace.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

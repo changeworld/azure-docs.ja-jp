@@ -1,18 +1,16 @@
-In this walk-through, you will learn how to use the **Salesforce - When an object is created** trigger to initiate a logic app workflow when a new lead is created in your Salesforce.
+このチュートリアルでは、Salesforce で新しい潜在顧客が作成される場合、ロジック アプリ ワークフローを開始するために、**[Salesforce - When an object is created (Salesforce - オブジェクトが作成される場合)]** トリガーがどのように使用されるのかを学習します。
 
->[AZURE.NOTE]You will get prompted to sign into your Salesforce account if you have not already created a *connection* to Salesforce.  
+>[AZURE.NOTE]まだ Salesforce に*"接続"*を作成していない場合は、Salesforce アカウントにサインインするよう求められます。
 
-1. Enter *salesforce* in the search box on the logic apps designer then select the **Salesforce - When an object is created**  trigger.  
-![Salesforce trigger image 1](./media/connectors-create-api-salesforce/trigger-1.png)   
-- The **When an object is created** control is displayed.  
-![Salesforce trigger image 2](./media/connectors-create-api-salesforce/trigger-2.png)   
-- Select the **Object Type** then select *Lead* from the list of objects. In this step you are indicating that you are creating a trigger that will notify your logic app whenever a new lead is created in Salesforce.   
-![Salesforce trigger image 3](./media/connectors-create-api-salesforce/trigger-3.png)   
-- That's it. You've created the trigger. However, you need to create at least one action in order to make this a valid logic app.    
-![Salesforce trigger image 4](./media/connectors-create-api-salesforce/trigger-4.png)   
+1. Logic Apps デザイナーの検索ボックスに「*salesforce*」と入力し、 **[Salesforce - When an object is created (Salesforce - オブジェクトが作成される場合)]** トリガーを選択します。  
+![Salesforce トリガー イメージ 1](./media/connectors-create-api-salesforce/trigger-1.png)  
+- **[When an object is created (オブジェクトが作成される場合)]** コントロールが表示されます。  
+![Salesforce トリガー イメージ 2](./media/connectors-create-api-salesforce/trigger-2.png)  
+- **[オブジェクトの種類]** を選択し、オブジェクトのリストから *[潜在顧客]* を選択します。この手順では、Salesforce で新しい潜在顧客が作成されるたびに、ロジック アプリを通知するトリガーを作成することが示されています。  
+![Salesforce トリガー イメージ 3](./media/connectors-create-api-salesforce/trigger-3.png)  
+- これで終了です。トリガーを作成しました。ただし、これに有効なロジック アプリを作成するために、少なくとも 1 つのアクションを作成する必要があります。  
+![Salesforce トリガー イメージ 4](./media/connectors-create-api-salesforce/trigger-4.png)  
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow when a new item is created in your Salesforce.  
+これで、Salesforce で新しい項目が作成されるときに、ワークフローでその他のトリガーとアクションの実行を開始するトリガーのあるロジック アプリが構成されました。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

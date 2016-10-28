@@ -1,45 +1,40 @@
 <properties 
-    pageTitle="Windows Phone Silverlight SDK content" 
-    description="Learn about the contents of the Windows Phone Silverlight SDK for Azure Mobile Engagement"                     
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo" 
-    manager="dwrede"
-    editor="" />
+	pageTitle="Windows Phone Silverlight SDK コンテンツ" 
+	description="Azure モバイル エンゲージメント向け Windows Phone Silverlight SDK の内容詳細" 					
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="dwrede"
+	editor="" />
 
 <tags 
-    ms.service="mobile-engagement" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="mobile-windows-phone"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/19/2016" 
-    ms.author="piyushjo" />
-    
+	ms.service="mobile-engagement" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/19/2016" 
+	ms.author="piyushjo" />
+	
+#Windows Phone Silverlight SDK コンテンツ
 
-#<a name="windows-phone-silverlight-sdk-content"></a>Windows Phone Silverlight SDK content
+このドキュメントでは、アプリケーションで SDK により展開されるコンテンツについて説明します。
 
-This document lists and describes the content deployed by the SDK in your application.
+##`/Resources` フォルダー 
 
-##<a name="the-`/resources`-folder"></a>The `/Resources` folder 
+このフォルダーには、Mobile Engagement が必要とするすべてのリソースが含まれています。アプリに適合するように、これらをカスタマイズすることもできます。
 
-This folder contains all the resources that Mobile Engagement needs. You can also customize them to fit your app.
+- `EngagementIconNotification.png`: 通知の左側に表示されるブランド アイコン。これは自分のブランド アイコンに換えます。
 
-- `EngagementIconNotification.png` : The brand icon displayed at the left of a notification, replace this one by your brand icon.
-
-- `EngagementIconOk.png` : The "Ok" icon of the reach pages ApplicationBar.
+- `EngagementIconOk.png`: リーチ ページ ApplicationBarの [OK] アイコンです。
  
-- `EngagementIconCancel.png` : The "Cancel" icon of the reach pages ApplicationBar.
+- `EngagementIconCancel.png`: リーチ ページ ApplicationBar の [キャンセル] アイコンです。
  
-- `EngagementIconCloseLight.png` : The "Close" icon of the Mobile Engagement's reach notification for the Windows Phone light theme.
+- `EngagementIconCloseLight.png`: モバイル エンゲージメントのリーチ通知のWindows Phone ライト テーマ用 [終了] アイコンです。
  
-- `EngagementIconCloseDark.png` : The "Close" icon of the Mobile Engagement's reach notification for the Windows Phone dark theme.
+- `EngagementIconCloseDark.png`: モバイル エンゲージメントのリーチ通知のWindows Phone ダーク テーマ用 [終了] アイコンです。
 
-- `EngagementConfiguration.xml` : The Mobile Engagement's configuration file, this is where you can customize Engagement settings (Engagement connection string, report crashes etc).
+- `EngagementConfiguration.xml`: モバイル エンゲージメントの構成ファイルであり、エンゲージメントの設定をカスタマイズできます (エンゲージメント接続文字列、クラッシュ レポートなど)。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

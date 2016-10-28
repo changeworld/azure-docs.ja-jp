@@ -1,36 +1,35 @@
 <properties 
-    pageTitle="New schema version 2016-06-01 | Microsoft Azure" 
-    description="Learn how to write the JSON definition for the latest version of Logic apps" 
-    authors="jeffhollan" 
-    manager="dwrede" 
-    editor="" 
-    services="logic-apps" 
-    documentationCenter=""/>
+	pageTitle="新しいスキーマ バージョン 2016-06-01 | Microsoft Azure" 
+	description="最新バージョンのロジック アプリの JSON 定義を記述する方法について説明します。" 
+	authors="jeffhollan" 
+	manager="dwrede" 
+	editor="" 
+	services="logic-apps" 
+	documentationCenter=""/>
 
 <tags
-    ms.service="logic-apps"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/25/2016"
-    ms.author="jehollan"/>
-    
+	ms.service="logic-apps"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/25/2016"
+	ms.author="jehollan"/>
+	
+# 新しいスキーマ バージョン 2016-06-01
 
-# <a name="new-schema-version-2016-06-01"></a>New schema version 2016-06-01
+ロジック アプリの新しいバージョンのスキーマと API には、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。主な相違点は次の 3 つです。
 
-The new schema and API version for Logic apps has a number of improvements which improve the reliability and ease-of-use of Logic apps. There are 3 key differences:
+1. スコープ (一連のアクションを含んだアクション) の追加。
+1. 条件とループがアクションに昇格。
+1. 実行の順序を `runAfter` プロパティ (`dependsOn` の後継) でより柔軟に定義可能。
 
-1. Addition of scopes, which are actions that contain a collection of actions.
-1. Conditions and loops are first-class actions
-1. Execution ordering more verbose via `runAfter` property (which replaces `dependsOn`)
-
-For information on upgrading your logic apps from the 2015-08-01-preview schema to the 2016-06-01 schema, [check out the upgrade section below.](#upgrading-to-2016-06-01-schema)
+2015-08-01-preview スキーマから 2016-06-01 スキーマへのロジック アプリのアップグレードについては、[以降のアップグレード セクションを参照](#upgrading-to-2016-06-01-schema)してください。
 
 
-## <a name="1.-scopes"></a>1. Scopes
+## 1\.スコープ
 
-One of the biggest changes in this schema is the addition of scopes and the ability to nest actions within each other.  This is helpful when grouping a set of actions together, or when needing to nest actions within each other (for example a condition can contain another condition).  More details on scope syntax can be found [here](app-service-logic-loops-and-scopes.md), but a simple scope example can be found below:
+このスキーマの最も大きな変更の 1 つは、スコープが追加されてアクションを入れ子にできるようになったことです。複数のアクションを 1 つにまとめるときや、アクションを入れ子にする必要があるときにスコープを利用できます (たとえば特定の条件に別の条件を含めることが可能)。スコープの構文について詳しくは、[こちら](app-service-logic-loops-and-scopes.md)を参照してください。以下に示したのは単純なスコープの例です。
 
 
 ```
@@ -53,9 +52,9 @@ One of the biggest changes in this schema is the addition of scopes and the abil
 }
 ```
 
-## <a name="2.-conditions-and-loops-changes"></a>2. Conditions and loops changes
+## 2\.条件とループに関する変更
 
-In the previous versions of the schema, conditions and loops were parameters associated to a single action.  This limitation has been lifted in this schema and now conditions and loops show up as a type of action.  More information can be found [in this article](app-service-logic-loops-and-scopes.md), and a simple example of a condition action is shown below:
+以前のバージョンのスキーマでは条件とループが、パラメーターとして単一のアクションに関連付けられていました。新しいスキーマではこの制限が廃止され、条件とループはアクションのタイプとして記述されます。詳細については、[こちらの記事](app-service-logic-loops-and-scopes.md)を参照してください。以下に示したのは、条件アクションの単純な例です。
 
 ```
 {
@@ -81,9 +80,9 @@ In the previous versions of the schema, conditions and loops were parameters ass
 }
 ```
 
-## <a name="3.-runafter-property"></a>3. RunAfter Property
+## 3\.RunAfter プロパティ
 
-The new `runAfter` property is replacing `dependsOn` to help allow more precision in run ordering.  `dependsOn` was synonymous with "the action ran and was successful," however many times you need to execute an action if the previous action is successful, failed, or skipped.  `runAfter` allows for that flexibility.  It is an object that specifies all of the action names it will run after, and defines an array of status' that are acceptable to trigger from.  For example if you wanted to run after step A was succeeded and step B was succeeded or failed, you would construct the following `runAfter` property:
+`runAfter` は、`dependsOn` に代わる新しいプロパティで、従来よりも細かく実行順序を制御できるようになりました。`dependsOn` は、"アクションの実行に成功した場合" という意味ですが、直前のアクションの結果 (成功、失敗、スキップ) に応じてアクションを実行しなければならないケースは少なくありません。そうした柔軟な制御を可能にするのが `runAfter` です。特定の条件が満たされた後に実行されるすべてのアクション名をこのオブジェクトで指定し、トリガーの条件となるステータスの配列を定義します。たとえばステップ A とステップ B が成功した後に実行したい場合は、`runAfter` プロパティを次のように記述します。
 
 ```
 {
@@ -95,55 +94,55 @@ The new `runAfter` property is replacing `dependsOn` to help allow more precisio
 }
 ```
 
-## <a name="upgrading-to-2016-06-01-schema"></a>Upgrading to 2016-06-01 schema
+## 2016-06-01 スキーマへのアップグレード
 
-Upgrading to the new 2016-06-01 schema only takes a few steps.  Details on the changes from the schema can be found [in this article](app-service-logic-schema-2016-04-01.md).  The upgrade process includes running the upgrade script, saving as a new logic app, and potentially overwriting old logic app if needed.
+新しい 2016-06-01 スキーマへのアップグレードは、ほんのわずかなステップで実行できます。スキーマの変更点について詳しくは、[こちらの記事](app-service-logic-schema-2016-04-01.md)をご覧ください。アップグレード プロセスでは、アップグレード スクリプトの実行と新しいロジック アプリの保存に加え、必要に応じて以前のロジック アプリの上書きを行います。
 
-1. Open your current logic app.
-1. Click the **Update Schema** button in the toolbar
+1. 現在のロジック アプリを開きます。
+1. ツール バーにある **[スキーマの更新]** ボタンをクリックします。
    
     ![][1]
    
-    The upgraded definition will be returned.  You could copy and paste this into a resource definition if you need, but we **strongly recommend** you use the **Save As** button to ensure all connection references are valid in the upgraded logic app.
-1. Click the **Save As** button in the toolbar of the upgrade blade.
-1. Fill out the name and logic app status and click **Create** to deploy your upgrade logic app.
-1. Verify your upgraded logic app is working as expected.
+    アップグレード後の定義が返されます。これを必要に応じてコピーしてリソース定義に貼り付けてもかまいませんが、アップグレード後のロジック アプリに含まれるすべての接続の参照の有効性を確保するために、**[名前を付けて保存]** ボタンを使用することを**強くお勧め**します。
+1. アップグレード ブレードのツール バーにある **[名前を付けて保存]** ボタンをクリックします。
+1. 名前とロジック アプリのステータスを入力して **[作成]** をクリックし、アップグレードしたロジック アプリをデプロイします。
+1. アップグレードしたロジック アプリが正常に動作していることを確認します。
 
-    >[AZURE.NOTE] If you are using a manual or request trigger, the callback URL will have changed in your new logic app.  Use the new URL to verify it works end-to-end, and you can clone over your existing logic app to preserve previous URLs.
+    >[AZURE.NOTE] 手動トリガーまたは要求トリガーを使用している場合、新しいロジック アプリのコールバック URL が変更されます。その新しい URL を使用して、エンド ツー エンドで正常に動作することを確認したら、既存のロジック アプリ上に複製して以前の URL を維持することができます。
 
-1. *Optional* Use the **Clone** button in the toolbar (adjacent to the **Update Schema** icon in the picture above) to overwrite your previous logic app with the new schema version.  This is necessary only if you wish to keep the same resource ID or request trigger URL of your logic app.
+1. (*省略可能*) ツール バーの **[複製]** ボタン (上図の **[スキーマの更新]** アイコンの横) を使用して、以前のロジック アプリを新しいスキーマ バージョンで上書きします。この手順は、ロジック アプリのリソース ID または要求トリガー URL をそのまま維持したい場合に必要となります。
 
-### <a name="upgrade-tool-notes"></a>Upgrade tool notes
+### アップグレード ツールの注意事項
 
-#### <a name="condition-mapping"></a>Condition mapping
+#### 条件のマッピング
 
-The tool will make a best effort to group the true and false branch actions together in a scope in the upgraded definition.  Specifically the designer pattern of `@equals(actions('a').status, 'Skipped')` should show up as an `else` action.  However if the tool detects patterns it does not recognize it will potentially create separate conditions for both the true and the false branch.  Actions can be re-mapped post upgrade if needed.
+このツールは、可能な限り条件分岐アクションを 1 つのスコープにまとめたうえで、定義をアップグレードするように試みます。具体的には、`@equals(actions('a').status, 'Skipped')` というデザイナー パターンは、`else` アクションとしてアップグレードされます。ただし認識できないパターンが検出された場合は、true の分岐と false の分岐について別個の条件が作成される可能性があります。アップグレード後、必要に応じてアクションのマッピングを変更してください。
 
-#### <a name="foreach-with-condition"></a>ForEach with Condition
+#### 条件判定を伴う ForEach
   
-The previous pattern of a foreach loop with a condition per item can be replicated in the new schema with the filter action.  This should occur automatically on upgrade.  The condition becomes a filter action before the foreach loop (to return only an array of items that match the condition), and that array is passed into the foreach action.  You can view an example of this [in this article](app-service-logic-loops-and-scopes.md)
+アイテム単位の条件判定を伴う foreach ループの従来のパターンは、新しいスキーマの中でフィルター アクションとして再現されます。この処置は通常、アップグレード時に自動的に行われます。このような条件は、foreach ループに先行するフィルター アクションに置き換えられます。つまり、このフィルター アクションによって条件に一致したアイテムのみの配列が取得され、foreach アクションに渡されます。具体的な例については、[こちらの記事](app-service-logic-loops-and-scopes.md)を参照してください。
 
-#### <a name="resource-tags"></a>Resource tags
+#### リソース タグ
 
-Resource tags will be removed on upgrade and you will need to set them again for the upgraded workflow.
+リソース タグはアップグレード時に削除されるので、アップグレード後のワークフローで設定し直す必要があります。
 
-## <a name="other-changes"></a>Other changes
+## その他の変更点
 
-### <a name="manual-trigger-renamed-to-request-trigger"></a>Manual trigger renamed to Request trigger
+### 手動トリガーの名前を要求トリガーに変更
 
-The type `manual` has been deprecated and renamed to `request` with the kind of `http`.  This is more consistent with the type of pattern the trigger is used to build.
+`manual` タイプは廃止予定となり、種類が `http` である `request` に名前が変更されました。これにより、トリガーを使用して構築されるパターンのタイプとの一貫性が向上しています。
 
-### <a name="new-'filter'-action"></a>New 'filter' action
+### 新しい 'フィルター' アクション
 
-If you are working with a large array and need to filter it down to a smaller set of items, you can use the new 'filter' type.  It accepts an array and a condition and will evaluate the condition for each item and return an array of items that meet the condition.
+大きな配列を扱っているとき、その要素をフィルタリングして配列のサイズを小さくする必要がある場合に、今後は 'filter' という新しいタイプを使用できます。配列と条件を渡すと、その条件と照らして個々の要素が評価され、条件を満たした要素の配列が返されます。
 
-### <a name="foreach-and-until-action-restrictions"></a>ForEach and until action restrictions
+### ForEach と until アクションの制限
 
-The foreach and until loop are restricted to a single action.
+foreach と until ループは、1 つのアクションに制限されます。
 
-### <a name="trackedproperties-on-actions"></a>TrackedProperties on Actions
+### アクションの TrackedProperties
 
-Actions can now have an additional property (sibling to `runAfter` and `type`) called `trackedProperties`.  It is an object that specifies certain action inputs or outputs to be included in the Azure Diagnostic telemetry that is emitted as part of a workflow.  For example:
+アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。ワークフローの一環として生成される Azure 診断のテレメトリに含める特定のアクションの入力または出力をこのオブジェクトで指定します。次に例を示します。
 
 ```
 {                
@@ -162,16 +161,12 @@ Actions can now have an additional property (sibling to `runAfter` and `type`) c
 }
 ```
 
-## <a name="next-steps"></a>Next Steps
-- [Use the logic app workflow definition](app-service-logic-author-definitions.md)
-- [Create a logic app deployment template](app-service-logic-create-deploy-template.md)
+## 次のステップ
+- [ロジック アプリのワークフロー定義の使用](app-service-logic-author-definitions.md)
+- [ロジック アプリのデプロイ テンプレートの作成](app-service-logic-create-deploy-template.md)
 
 
 <!-- Image references -->
 [1]: ./media/app-service-logic-schema-2016-04-01/upgradeButton.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

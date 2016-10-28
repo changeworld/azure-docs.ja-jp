@@ -1,6 +1,6 @@
 <properties
- pageTitle="IoT Hub diagnostic metrics"
- description="An overview of Azure IoT Hub metrics, enabling users to assess the overall health of their resource"
+ pageTitle="IoT Hub の診断メトリック"
+ description="Azure IoT Hub メトリックの概要 (ユーザーは自身のリソースの全体的な正常性を評価することができる)"
  services="iot-hub"
  documentationCenter=""
  authors="nberdy"
@@ -16,53 +16,55 @@
  ms.date="08/11/2016"
  ms.author="nberdy"/>
 
+# 診断メトリックの概要
 
-# <a name="introduction-to-diagnostic-metrics"></a>Introduction to diagnostic metrics
+診断メトリックは、サブスクリプション内の Azure リソースの状態に関する有用なデータを提供します。メトリックにより、ユーザーはサービスとそれに接続されたデバイスの全体的な正常性を評価することができます。ユーザー向けの統計情報は重要です。この情報は、IoT Hub で起こっていることを確認するのに役立ち、また、Azure サポートに連絡することなく問題の根本原因を特定するための有用な情報となります。
 
-Diagnostic metrics give you better data about the state of the Azure resources in your subscription. Metrics enable you to assess the overall health of the service and the devices connected to it. User-facing statistics are important because they help you see what is going on with your IoT hub and help root-cause issues without needing to contact Azure support.
+診断メトリックは Azure ポータルから有効にすることができます。
 
-You can enable diagnostic metrics from the Azure portal.
+## 診断メトリックを有効にする方法
 
-## <a name="how-to-enable-diagnostic-metrics"></a>How to enable diagnostic metrics
+1. IoT Hub を作成します。IoT Hub の作成方法の手順については、[使用開始][lnk-get-started]に関するガイドを参照してください。
 
-1. Create an IoT hub. You can find instructions on how to create an IoT hub in the [Get Started][lnk-get-started] guide.
-
-2. Open the blade of your IoT hub. From there, click **Diagnostics**.
+2. IoT Hub のブレードを開きます。その画面の **[診断]** をクリックします。
 
     ![][1]
 
-3. Configure your diagnostics by setting the status to **On** and selecting a storage account to store the diagnostics data. Check **Metrics**, and then press **Save**. Note that the storage account must be created ahead of time and that you are charged separately for storage. You can also choose to send your diagnostics data to an Event Hubs endpoint.
+3. 状態を **[オン]** に設定し、診断データを格納するためのストレージ アカウントを選択することで、診断を構成します。**[メトリック]** を確認してから、**[保存]** をクリックします。事前にストレージ アカウントを作成しておく必要があります。なお、ストレージについては別途課金されます。また、診断データが Event Hubs のエンドポイントに送信されるようにすることもできます。
 
     ![][2]
 
-4. After you have set up the diagnostics, return to the **Overview** IoT hub blade. Metrics information is populated in the **Monitoring** section of the blade. Clicking the chart opens the metrics pane where you can view a summary of the metrics information for your IoT hub and edit the selection of metrics shown in the chart. You can also configure alerts based on metric values.
+4. 診断をセットアップしたら、IoT Hub の **[概要]** ブレードに戻ります。メトリック情報は、ブレードの **[監視]** セクションに表示されます。グラフをクリックするとメトリック ウィンドウが開きます。ここでは、IoT Hub のメトリック情報の概要を確認し、グラフに表示するメトリックの内容を編集することができます。メトリック値に基づいてアラートを構成することもできます。
 
     ![][3]
 
-## <a name="metrics-and-how-to-use-them"></a>Metrics and how to use them
+## メトリックとその使用方法
 
-IoT Hub provides several metrics to give you an overview of the health of your hub and the total number of devices connected to it. You can combine information from multiple metrics to paint a bigger picture of the state of the IoT hub. The following table describes the metrics each IoT hub tracks, and how each metric relates to the overall status of the IoT hub.
+IoT Hub では、ハブの正常性の概要と、ハブに接続されているデバイスの総数を示すためにいくつかのメトリックを提供します。複数のメトリックから得た情報を組み合わせることで、IoT Hub の状態をより大局的に把握することができます。次の表では、各 IoT Hub で追跡されるメトリックを示すと共に、各メトリックが IoT Hub の全体的な状態にどのように関連するかを説明します。
 
-| Metric | Metric description | What the metric is used for |
+| メトリック | メトリックの説明 | メトリックによって提供される情報 |
 | ---- | ---- | ---- |
-| d2c.telemetry.ingress.allProtocol | The count of messages sent across all devices | Overview data on message sends |
-| d2c.telemetry.ingress.success | The count of all successful messages into the hub | Overview of successful message ingress into the hub |
-| c2d.commands.egress.complete.success | The count of all command messages completed by the receiving device across all devices | Together with the metrics on abandon and reject, gives an overview of overall C2D command success rate |
-| c2d.commands.egress.abandon.success | The count of all messages successfully abandoned by the receiving device across all devices | Highlights potential issues if messages are getting abandoned more often than expected |
-| c2d.commands.egress.reject.success | The count of all messages successfully rejected by the receiving device across all devices | Highlights potential issues if messages are getting rejected more often than expected |
-| devices.totalDevices | The average, min, and max of the number of devices registered to the IoT hub | The number of devices registered to the hub |
-| devices.connectedDevices.allProtocol | The average, min, and max of the number of simultaneous connected devices | Overview of the number of devices connected to the hub |
+| d2c.telemetry.ingress.allProtocol | すべてのデバイスで、送信されたメッセージの数 | メッセージ送信に関する概要データ |
+| d2c.telemetry.ingress.success | ハブへの取り込みに成功したメッセージの総数 | ハブへの正常なメッセージ取り込みの概要 |
+| c2d.commands.egress.complete.success | すべてのデバイスで、受信側のデバイスが完了したコマンド メッセージの総数 | 破棄および拒否に関するメトリックと共に、全体的なC2D コマンドの成功率の概要を示す |
+| c2d.commands.egress.abandon.success | すべてのデバイスで、受信側のデバイスが正常に破棄したメッセージの総数 | メッセージの破棄される頻度が想定よりも高い場合は、潜在的な問題を強調表示する |
+| c2d.commands.egress.reject.success | すべてのデバイスで、受信側のデバイスが正常に拒否したメッセージの総数 | メッセージの拒否される頻度が想定よりも高い場合は、潜在的な問題を強調表示する |
+| devices.totalDevices | IoT Hub に登録されたデバイス数の平均値、最小値、および最大値 | ハブに登録されたデバイスの数 |
+| devices.connectedDevices.allProtocol | 同時に接続されたデバイス数の平均値、最小値、および最大値 | ハブに接続されたデバイス数の概要 |
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now that you’ve seen an overview of diagnostic metrics, follow this link to learn more about managing Azure IoT Hub:
+診断メトリックの概要については以上です。Azure IoT Hub の管理に関する詳細については、以下のリンク先にアクセスしてください。
 
-- [Operations monitoring][lnk-monitor]
+- [操作の監視][lnk-monitor]
+- [IoT Hub へのアクセスの管理][lnk-itpro]
 
-To further explore the capabilities of IoT Hub, see:
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [Developer guide][lnk-devguide]
-- [Simulating a device with the Gateway SDK][lnk-gateway]
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 <!-- Links and images -->
 [1]: media/iot-hub-metrics/enable-metrics-1.png
@@ -75,12 +77,11 @@ To further explore the capabilities of IoT Hub, see:
 [lnk-dr]: iot-hub-ha-dr.md
 
 [lnk-monitor]: iot-hub-operations-monitoring.md
+[lnk-itpro]: iot-hub-itpro-info.md
 
+[lnk-design]: iot-hub-guidance.md
 [lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

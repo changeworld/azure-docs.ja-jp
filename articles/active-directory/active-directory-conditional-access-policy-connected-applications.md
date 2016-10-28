@@ -1,181 +1,176 @@
 <properties
-    pageTitle="How to set Azure Active Directory device-based conditional access policy for access control to Azure Active Directory connected applications"
-    description="Explains how IT admins can set device-based conditional access policies for Azure AD connected applications."
-    services="active-directory"
-    documentationCenter=""
-    authors="markusvi"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory に接続されたアプリケーションのアクセスを制御する Azure Active Directory デバイス ベースの条件付きアクセス ポリシーを設定する方法"
+	description="IT 管理者が Azure AD に接続されたアプリケーション用のデバイス ベースの条件付きアクセス ポリシーを設定する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/14/2016"
-    ms.author="markvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/14/2016"
+	ms.author="markvi"/>
 
 
-
-# <a name="how-to-set-azure-active-directory-device-based-conditional-access-policy-for-access-control-to-azure-active-directory-connected-applications"></a>How to set Azure Active Directory device-based conditional access policy for access control to Azure Active Directory connected applications 
-
-
-Azure Active Directory device-based conditional access is the ability you have to protect organizational resources from:
-
-- Access made from unknown / unmanaged devices 
-- From devices that don’t meet security policies as defined by your organization. 
-
-For an overview on conditional access, see [Azure Active Directory conditional access](active-directory-conditional-access.md). 
-
-You can set device-based conditional access policies to protect the following: 
-
-- Office 365 SharePoint Online to protect organizational sites and documents. 
-
-- Office 365 Exchange Online to protect organizational email. 
-
-- SaaS applications connected to Azure AD for authentication. 
-
-- On-premises applications published through the Azure AD Application Proxy. 
+# Azure Active Directory に接続されたアプリケーションのアクセスを制御する Azure Active Directory デバイス ベースの条件付きアクセス ポリシーを設定する方法 
 
 
-In the Azure management portal, you can set this policy by going to the specific application in the directory. 
+Azure Active Directory デバイス ベースの条件付きアクセスとは、組織のリソースを次から保護するための機能です。
 
- 
-  ![Applications](./media/active-directory-conditional-access-policy-connected-applications/01.png "Applications")
+- 不明または管理されていないデバイスからのアクセス
+- 組織で定義されているセキュリティ ポリシーを満たしていないデバイス
+
+条件付きアクセスの詳細については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)」を参照してください。
+
+デバイス ベースの条件付きアクセス ポリシーは、次を保護するように設定できます。
+
+- 組織のサイトとドキュメントを保護する Office 365 SharePoint Online。
+
+- 組織の電子メールを保護する Office 365 Exchange Online。
+
+- 認証用に Azure AD に接続されている SaaS アプリケーション。
+
+- Azure AD アプリケーション プロキシを通じて発行されたオンプレミスのアプリケーション。
 
 
-After selecting the application, click the **Configure** tab to set the Conditional Access policy.  
-
-
-  ![Device based access rules](./media/active-directory-conditional-access-policy-connected-applications/02.png "Device based access rules")
-
+Microsoft Azure 管理ポータルでは、ディレクトリ内の特定のアプリケーションに移動してこのポリシーを設定できます。
 
  
+  ![アプリケーション](./media/active-directory-conditional-access-policy-connected-applications/01.png "アプリケーション")
 
-To enable a device-based conditional access policy, in the **Device based access rules** section, for **Enable Access Rules**, select **On**. 
 
-This policy consist of three components:
+アプリケーションを選択し、**[構成]** タブをクリックして条件付きアクセス ポリシーを設定します。
 
-1. **Apply To** -  The scope of users this policy applies to when accessing the application. 
 
-2. **Device Rules** -  The required conditions devices must meet before accessing the application. 
+  ![デバイス ベースのアクセス規則](./media/active-directory-conditional-access-policy-connected-applications/02.png "デバイス ベースのアクセス規則")
 
-3. **Application Enforcement** -  The client applications (native vs. browser) the policy should be evaluated for. 
 
-  ![Device based access rules](./media/active-directory-conditional-access-policy-connected-applications/03.png "Device based access rules")
  
 
-## <a name="selecting-the-users-the-policy-applies-to"></a>Selecting the users the policy applies to 
+デバイス ベースの条件付きアクセス ポリシーを有効にするには、**[デバイス ベースのアクセス規則]** セクションの **[アクセス規則を有効にする]** を **[オン]** にします。
 
-In the **Apply To** section, you can select the scope of users this policy applies to. 
+このポリシーは、次の 3 つのコンポーネントで構成されます。
 
-You have two options for the scope:
+1. **[適用対象]** - アプリケーションにアクセスする際にこのポリシーが適用されるユーザーの範囲。
 
-- **All Users** - For everyone accessing the application 
+2. **[デバイス ルール]** - デバイスがアプリケーションにアクセスするために満たす必要がある条件。
 
-- **Groups** - To limit the scope to users that are a member of a group or groups. 
+3. **[アプリケーション強制]** - ポリシーが評価される対象のクライアント アプリケーション (ネイティブ対ブラウザー)。
 
-![Apply to](./media/active-directory-conditional-access-policy-connected-applications/11.png "Apply to")
-
-
-By selecting **Except**, you can exclude users from this policy while accessing the application. This is helpful when you need to enable specific users to access the application temporarily. Select this option, for example, if some of your users have devices that are not ready for conditional access (not yet registered, coming out of compliance, etc.).
+  ![デバイス ベースのアクセス規則](./media/active-directory-conditional-access-policy-connected-applications/03.png "デバイス ベースのアクセス規則")
  
 
-## <a name="selecting-the-conditions-that-devices-must-meet"></a>Selecting the conditions that devices must meet 
+## ポリシーが適用されるユーザーを選択する 
 
-With **Device Rules**, you set the conditions for devices to be able to access the application. 
+**[適用対象]** セクションで、このポリシーを適用するユーザーの範囲を選択できます。
 
-For Device-based Conditional Access, the following devices are supported: 
+範囲については、2 つのオプションがあります。
 
-- Windows 10 Anniversary Update, Windows 7 and Windows 8.1. 
+- **[すべてのユーザー]** - アプリケーションにアクセスしているすべてのユーザー
 
-- Windows Server 2016, Windows Server 2012 R2, Windows Server 2012 and Windows Server 2008 R2 
+- **[グループ]** - 範囲をグループのメンバーに限定する場合
 
-- iOS devices (iPad, iPhone) 
-
-- Android devices 
-
-Support for Mac is coming soon. 
-
-  ![Devices](./media/active-directory-conditional-access-policy-connected-applications/04.png "Applications")
+![適用対象](./media/active-directory-conditional-access-policy-connected-applications/11.png "適用対象")
 
 
-
- >[AZURE.NOTE] For information about differences between Domain Join and Azure AD Join please see [Using Windows 10 devices in your workplace](active-directory-azureadjoin-windows10-devices.md). 
-
-
-You have two options for device rules: 
-
-- **All devices must be compliant** - This requires all device platforms accessing the application to be compliant. For platforms that don't support Device-based Conditional Access, the devices are denied access. 
-
-- **Only selected devices must be compliant** - This requires only selected device platforms to be compliant. Non-selected platforms or other platforms accessing the application are allowed access.”
-
-  ![Applications](./media/active-directory-conditional-access-policy-connected-applications/05.png "Applications")
-
-
-
-Azure AD joined devices are compliant if they are marked as **compliant** in the directory by Microsoft Intune or a 3rd party Mobile Device Management (MDM) system that integrates with Azure AD. 
-
-Domain joined devices are compliant in one of two ways: 
-
-- If they are registered with Azure AD, the fact that they are domain joined many organizations treat them as trusted devices. 
-
-- If they are marked as ‘compliant’ in the Azure AD by System Center Configuration Manager 2016. 
-
- ![Device Rules](./media/active-directory-conditional-access-policy-connected-applications/06.png "Device Rules")
+**[除外]** を選択することで、アプリケーションにアクセスしている間ユーザーをこのポリシーの適用対象外にできます。これは、アプリケーションへのアクセスを特定のユーザーに対して一時的に有効にする必要がある場合に便利です。一部のユーザーが条件付きアクセスの準備ができていないデバイス (まだ登録されていない、コンプライアンス対象外など) を持っている場合などにこのオプションを選択します。
  
 
-Windows personal devices are compliant if they are marked as **compliant** in the directory by Microsoft Intune or a 3rd party Mobile Device Management (MDM) system that integrates with Azure AD. 
+## デバイスが満たす必要がある条件を選択する 
 
-Non-Windows devices are compliant if they are marked as **compliant** in the directory by Microsoft Intune. 
+**[デバイス ルール]** では、アプリケーションへのアクセスを有効にするためのデバイスの条件を設定します。
 
- >[AZURE.NOTE] For more information on how to setup Azure AD for device compliance by management system, see [Azure Active Directory Conditional Access](active-directory-conditional-access.md). 
+デバイス ベースの条件付きアクセスでは、次のデバイスがサポートされています。
+
+- Windows 10 Anniversary Update、Windows 7 および Windows 8.1
+
+- Windows Server 2016、Windows Server 2012 R2、Windows Server 2012 および Windows Server 2008 R2
+
+- iOS デバイス (iPad、iPhone)
+
+- Android デバイス
+
+Mac のサポートは近日対応予定です。
+
+  ![デバイス](./media/active-directory-conditional-access-policy-connected-applications/04.png "アプリケーション")
 
 
-When you select specific device platforms, you can select one or multiple options including Android, iOS, Windows Mobile (Windows 8.1 phones and tablets) and Windows (all other Windows devices including all Windows 10 devices). With this option, the policy evaluation only occurs on the selected platforms. If access is attempted from a device that is not part of the selection, no device policy is evaluated and the device is allowed if the user is. 
 
-![Device Rules](./media/active-directory-conditional-access-policy-connected-applications/07.png "Device Rules")
+ >[AZURE.NOTE] Domain Join と Azure AD Join の違いについては、「[職場での Windows 10 デバイスの使用](active-directory-azureadjoin-windows10-devices.md)」を参照してください。
+
+
+デバイス ルールには 2 つのオプションがあります。
+
+- **[すべてのデバイスが準拠している必要があります]** - アプリケーションにアクセスしているすべてのデバイス プラットフォームが準拠している必要があります。デバイス ベースの条件付きアクセスをサポートしていないプラットフォームの場合、デバイスのアクセスが拒否されます。
+
+- **[選択したデバイスだけが準拠している必要があります]** - 選択したデバイス プラットフォームのみが準拠している必要があります。アプリケーションにアクセスしている選択されていないプラットフォームやその他のプラットフォームはアクセスが許可されます。
+
+  ![アプリケーション](./media/active-directory-conditional-access-policy-connected-applications/05.png "アプリケーション")
+
+
+
+Azure AD 参加デバイスは、Azure AD に統合される Microsoft Intune またはサード パーティのモバイル デバイス管理 (MDM) システムで**準拠**としてマークされている場合に準拠します。
+
+ドメイン参加デバイスは、次の 2 つの方法のいずれかで準拠します。
+
+- Azure AD に登録されている場合。ドメイン参加であるという事実により数多くの組織がそれらを信頼されたデバイスとして扱います。
+
+- System Center Configuration Manager 2016 により Azure AD で '準拠' としてマークされている場合。
+
+ ![デバイス ルール](./media/active-directory-conditional-access-policy-connected-applications/06.png "デバイス ルール")
+ 
+
+Windows の個人のデバイスは、Azure AD に統合される Microsoft Intune またはサード パーティのモバイル デバイス管理 (MDM) システムで**準拠**としてマークされている場合に準拠します。
+
+Windows 以外のデバイスは、Microsoft Intune によりディレクトリで**準拠**とマークされている場合に準拠します。
+
+ >[AZURE.NOTE] 管理システムによるデバイスの準拠について Azure AD を設定する方法の詳細については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)」を参照してください。
+
+
+特定のデバイス プラットフォームを選択する際に、Android、iOS、Windows Mobile (Windows 8.1 の携帯電話とタブレット)、Windows (Windows 10 のすべてのデバイスを含むすべての Windows デバイス) から 1 つまたは複数のオプションを選択できます。このオプションにより、ポリシーの評価は選択したプラットフォームでのみ行われます。選択したデバイス以外からアクセスが試行されると、デバイス ポリシーの評価は行われず、ユーザーが許可されていればそのデバイスも許可されます。
+
+![デバイス ルール](./media/active-directory-conditional-access-policy-connected-applications/07.png "デバイス ルール")
   
 
-## <a name="selecting-the-type-of-client-applications-under-which-policy-will-be-evaluated"></a>Selecting the type of client applications under which policy will be evaluated 
+## ポリシーが評価されるクライアント アプリケーションの種類を選択する 
 
-In the **Application Enforcement** section, you set the type of applications the policy must be evaluated for.
-
-
-You have two options for applications: 
-
-- For browser and native applications 
-- For only native applications. 
+**[アプリケーション強制]** セクションで、ポリシーを評価する対象のアプリケーションの種類を設定します。
 
 
-![Applications](./media/active-directory-conditional-access-policy-connected-applications/08.png "Applications")
+アプリケーションについては、2 つのオプションがあります。
+
+- ブラウザーとネイティブ アプリケーション用
+- ネイティブ アプリケーション専用
 
 
-Selecting **For browser and native applications** enforces the policy on access to applications by: 
+![アプリケーション](./media/active-directory-conditional-access-policy-connected-applications/08.png "アプリケーション")
 
-- Browsers (e.g. Edge in Windows 10, Safari in iOS, etc.) 
-- Applications using the Active Directory Authentication Library (ADAL) in any platform or the Web Account Manager (WAM) API in Windows 10 
 
->[AZURE.NOTE] For more information about browser support and other considerations for the end-user accessing device-based CA protected applications see, [Azure Active Directory Conditional Access](active-directory-conditional-access.md). 
+**[ブラウザーとネイティブ アプリケーション用]** を選択すると、次からのアプリケーションにアクセスについてポリシーが適用されます。
 
- 
+- ブラウザー (Windows 10 の Edge、iOS の Safari など)
+- Active Directory 認証ライブラリ (ADAL) (任意のプラットフォーム) または Web Account Manager (WAM) API (Windows 10) を使用するアプリケーション
 
-## <a name="protecting-email-access-from-exchange-active-sync-based-applications"></a>Protecting email access from Exchange Active Sync based applications 
-
-In Office 365 Exchange Online applications, you have an additional section called **Exchange Activesync**. This section enables you to block email access to Exchange Active Sync based mail applications. 
-
-![Applications](./media/active-directory-conditional-access-policy-connected-applications/09.png "Applications")
- 
-![Applications](./media/active-directory-conditional-access-policy-connected-applications/10.png "Applications")
+>[AZURE.NOTE] ブラウザーのサポートおよびデバイス ベースの条件付きアクセスで保護されたアプリケーションにアクセスするエンド ユーザーのその他の考慮事項の詳細については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)」を参照してください。
 
  
-## <a name="additional-topics"></a>Additional topics
 
-- [Azure Active Directory Conditional Access](active-directory-conditional-access.md) 
+## Exchange ActiveSync ベースのアプリケーションからの電子メールのアクセスを保護する 
 
+Office 365 Exchange Online のアプリケーションには、**Exchange Activesync** と呼ばれる追加のセクションがあります。このセクションでは、Exchange ActiveSync ベースのメール アプリケーションへの電子メールのアクセスをブロックできます。
 
+![アプリケーション](./media/active-directory-conditional-access-policy-connected-applications/09.png "アプリケーション")
+ 
+![アプリケーション](./media/active-directory-conditional-access-policy-connected-applications/10.png "アプリケーション")
 
-<!--HONumber=Oct16_HO2-->
+ 
+## 関連トピック
 
+- [Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
 
+<!---HONumber=AcomDC_0914_2016-->

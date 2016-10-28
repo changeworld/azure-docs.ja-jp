@@ -3,7 +3,4 @@
 - [Java](../articles/storage/storage-client-side-encryption-java.md)
 - [Python](../articles/storage/storage-client-side-encryption-python.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Brightspace by Desire2Learn | Microsoft Azure" 
-    description="Learn how to use Brightspace by Desire2Learn with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Brightspace by Desire2Learn を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,119 +11,113 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
+#チュートリアル: Azure Active Directory と Brightspace by Desire2Learn の統合
 
-#<a name="tutorial:-azure-active-directory-integration-with-brightspace-by-desire2learn"></a>Tutorial: Azure Active Directory integration with Brightspace by Desire2Learn
+このチュートリアルでは、Azure と Brightspace by Desire2Learn の統合について説明します。
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-The objective of this tutorial is to show the integration of Azure and Brightspace by Desire2Learn.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+-   有効な Azure サブスクリプション
+-   Brightspace by Desire2Learn でのシングル サインオンが有効なサブスクリプション
 
--   A valid Azure subscription
--   A Brightspace by Desire2Learn single sign-on enabled subscription
+このチュートリアルを完了すると、Brightspace by Desire2Learn に割り当てた Azure AD ユーザーは、Brightspace by Desire2Learn 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
-After completing this tutorial, the Azure AD users you have assigned to Brightspace by Desire2Learn will be able to single sign into the application at your Brightspace by Desire2Learn company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+1.  Brightspace by Desire2Learn のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-1.  Enabling the application integration for Brightspace by Desire2Learn
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+![シナリオ](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798957.png "シナリオ")
+##Brightspace by Desire2Learn のアプリケーション統合の有効化
 
-![Scenario](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798957.png "Scenario")
-##<a name="enabling-the-application-integration-for-brightspace-by-desire2learn"></a>Enabling the application integration for Brightspace by Desire2Learn
+このセクションでは、Brightspace by Desire2Learn のアプリケーション統合を有効にする方法を説明します。
 
-The objective of this section is to outline how to enable the application integration for Brightspace by Desire2Learn.
+###Brightspace by Desire2Learn のアプリケーション統合を有効にするには、次の手順に従います。
 
-###<a name="to-enable-the-application-integration-for-brightspace-by-desire2learn,-perform-the-following-steps:"></a>To enable the application integration for Brightspace by Desire2Learn, perform the following steps:
-
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **Brightspace by Desire2Learn**.
+6.  **検索ボックス**に、「**Brightspace by Desire2Learn**」と入力します。
 
-    ![Apllication Gallery](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798958.png "Apllication Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798958.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **Brightspace by Desire2Learn**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[Brightspace by Desire2Learn]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Brightspace by Desire2Learn](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC799321.png "Brightspace by Desire2Learn")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
 
-The objective of this section is to outline how to enable users to authenticate to Brightspace by Desire2Learn with their account in Azure AD using federation based on the SAML protocol.
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Brightspace by Desire2Learn に対する認証を行えるようにする方法を説明します。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Brightspace by Desire2Learn** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Brightspace by Desire2Learn** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798959.png "Configure Single Sign-On")
 
-2.  On the **How would you like users to sign on to Brightspace by Desire2Learn** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Brightspace by Desire2Learn へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798960.png "Configure Single Sign-On")
 
-3.  On the **Configure App URL** page, perform the following steps:
+3.  **[アプリケーション URL の構成]** ページで、次の手順を実行します。
 
-    ![Configure App URL](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798961.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798961.png "アプリケーション URL の構成")
 
-    1.  In the **Sign On URL** textbox, type the URL used by your users to sign into your **Brightspace by Desire2Learn** (e.g.: *https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*).
-    2.  Click **Next**
+    1.  **[サインオン URL]** ボックスに、ユーザーが **Brightspace by Desire2Learn** へのサインオンに使用する URL を入力します (例: *https://partnershowcase.desire2learn.com/Shibboleth.sso/Login?entityID=https://sts.windows-ppe.net/5caf9349-fd93-4a74-b064-0070f65bfb49/&target=https%3A%2F%2Fpartnershowcase.desire2learn.com%2Fd2l%2FshibbolethSSO%2Faspinfo.asp*)。
+    2.  **[次へ]** をクリックします。
 
-4.  On the **Configure single sign-on at Brightspace by Desire2Learn** page, to download your metadata, click **Download metadata**, and then save the metadata on your computer.
+4.  **[Brightspace by Desire2Learn でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、メタデータをコンピューターに保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798962.png "Configure Single Sign-On")
 
-5.  Send the downloaded metadata file to your Brightspace by Desire2Learn support team.
+5.  ダウンロードしたメタデータ ファイルを Brightspace by Desire2Learn サポート チームに送信します。
 
-    >[AZURE.NOTE] Your Brightspace by Desire2Learn support team has to do the actual SSO configuration.
-You will get a notification when SSO has been enabled for your subscription.
+    >[AZURE.NOTE] Brightspace by Desire2Learn サポート チームが、実際に SSO を構成する必要があります。
+    ご使用のサブスクリプションで SSO が有効になると通知されます。
 
-6.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798963.png "Configure Single Sign-On")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
 
-In order to enable Azure AD users to log into Brightspace by Desire2Learn, they must be provisioned into Brightspace by Desire2Learn.  
-In the case of Brightspace by Desire2Learn, the user accounts need to be created by your Brightspace by Desire2Learn support team.
+Azure AD ユーザーが Brightspace by Desire2Learn にログインできるようにするには、ユーザーを Brightspace by Desire2Learn にプロビジョニングする必要があります。Brightspace by Desire2Learn の場合、Brightspace by Desire2Learn サポート チームがユーザー アカウントを作成する必要があります。
 
->[AZURE.NOTE] You can use any other Brightspace by Desire2Learn user account creation tools or APIs provided by Brightspace by Desire2Learn to provision Azure Active Directory user accounts.
+>[AZURE.NOTE] Brightspace by Desire2Learn から提供されている他の Brightspace by Desire2Learn ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-brightspace-by-desire2learn,-perform-the-following-steps:"></a>To assign users to Brightspace by Desire2Learn, perform the following steps:
+###ユーザーを Brightspace by Desire2Learn に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Brightspace by Desire2Learn **application integration page, click **Assign users**.
+2.  **Brightspace by Desire2Learn** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798964.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC798964.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-brightspace-desire2learn-tutorial/IC767830.png "Yes")
 
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

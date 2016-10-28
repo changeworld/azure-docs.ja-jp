@@ -1,126 +1,121 @@
 <properties
-    pageTitle="Web App Cloning using PowerShell"
-    description="Learn how to clone your Web Apps to new Web Apps using PowerShell."
-    services="app-service\web"
-    documentationCenter=""
-    authors="ahmedelnably"
-    manager="stefsch"
-    editor=""/>
+	pageTitle="PowerShell を使用した Web アプリの複製"
+	description="PowerShell を使用して既存の Web Apps を新しい Web Apps に複製する方法を説明します。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="ahmedelnably"
+	manager="stefsch"
+	editor=""/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="01/13/2016"
-    ms.author="ahmedelnably"/>
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/13/2016"
+	ms.author="ahmedelnably"/>
 
+# PowerShell を使用した Azure App Service アプリの複製#
 
-# <a name="azure-app-service-app-cloning-using-powershell#"></a>Azure App Service App Cloning Using PowerShell#
+Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新しいオプションが New-AzureRMWebApp に追加され、異なるリージョンまたは同じリージョンで新たに作成されたアプリに既存の Web アプリを複製できるようになりました。これにより、お客様は、リージョンをまたいでさまざまなアプリを迅速かつ簡単にデプロイできるようになります。
 
-With the release of Microsoft Azure PowerShell version 1.1.0 a new option has been added to New-AzureRMWebApp that would give the user the ability to clone an existing Web App to a newly created app in a different region or in the same region. This will enable customers to deploy a number of apps across different regions quickly and easily.
+アプリの複製は、現在、Premium レベルの App Service プランでのみサポートされています。この新機能には Web アプリのバックアップ機能と同じ制限が適用されます。「[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)」を参照してください。
 
-App cloning is currently only supported for premium tier app service plans. The new feature uses the same limitations as Web Apps Backup feature, see [Back up a web app in Azure App Service](web-sites-backup.md).
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
+Azure Resource Manager ベースの Azure PowerShell コマンドレットを使用して Web アプリを管理する方法については、[Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)に関するページを参照してください。
 
-To learn about using Azure Resource Manager based Azure PowerShell cmdlets to manage your Web Apps check [Azure Resource Manager based PowerShell commands for Azure Web App](app-service-web-app-azure-resource-manager-powershell.md)
+## 既存のアプリの複製 ##
 
-## <a name="cloning-an-existing-app"></a>Cloning an existing App ##
+シナリオ: 米国中南部リージョンに既存の Web アプリがあり、ユーザーはそのコンテンツを米国中北部の新しい Web アプリに複製したいと考えています。これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使用して新しい Web アプリを作成します (-SourceWebApp オプションを指定)。
 
-Scenario: An existing web app in South Central US region, the user would like to clone the contents to a new web app in North Central US region. This can be accomplished by using the Azure Resource Manager version of the PowerShell cmdlet to create a new web app with the -SourceWebApp option.
-
-Knowing the resource group name that contains the source web app, we can use the following PowerShell command to get the source web app's information (in this case named source-webapp):
+ソース Web アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース Web アプリの情報を取得できます (この場合の名前は source-webapp)。
 
     $srcapp = Get-AzureRmWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
 
-To create a new App Service Plan, we can use New-AzureRmAppServicePlan command as in the following example
+新しい App Service プランを作成するには、次の例のように New-AzureRmAppServicePlan コマンドを使用します。
 
-    New-AzureRmAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
+	New-AzureRmAppServicePlan -Location "South Central US" -ResourceGroupName DestinationAzureResourceGroup -Name NewAppServicePlan -Tier Premium
 
-Using the New-AzureRmWebApp command, we can create the new web app in the North Central US region, and tie it to an existing premium tier App Service Plan, moreover we can use the same resource group as the source web app, or define a new resource group, the following demonstrates that:
+New-AzureRmWebApp コマンドを使って米国中北部リージョンに新しい Web アプリを作成し、既存の Premium レベルの App Service プランに関連付けることができます。さらに、ソース Web アプリと同じリソース グループを使うか、新しいリソース グループを定義できます。そのコマンドを次に示します。
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp
 
-To clone an existing web app including all associated deployment slots, the user will need to use the IncludeSourceWebAppSlots parameter, the following PowerShell command demonstrates the use of that parameter with the New-AzureRmWebApp command:
+関連付けられているすべてのデプロイ スロットを含め、既存の Web アプリを複製するには、IncludeSourceWebAppSlots パラメーターを使用する必要があります。次の PowerShell コマンドでは、New-AzureRmWebApp コマンドでこのパラメーターを使用しています。
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -IncludeSourceWebAppSlots $true
 
-To clone an existing web app within the same region, the user will need to create a new resource group and a new app service plan in the same region, and then using the following PowerShell command to clone the web app
+同じリージョン内で既存の Web アプリを複製するには、同じリージョンに新しいリソース グループと新しい App Service プランを作成したうえで、次の PowerShell コマンドを使って Web アプリを複製する必要があります。
 
     $destapp = New-AzureRmWebApp -ResourceGroupName NewAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan NewAppServicePlan -SourceWebApp $srcap
 
-## <a name="cloning-an-existing-app-to-an-app-service-environment"></a>Cloning an existing App to an App Service Environment ##
+## App Service 環境への既存のアプリの複製 ##
 
-Scenario: An existing web app in South Central US region, the user would like to clone the contents to a new web app to an existing App Service Environment (ASE).
+シナリオ: 米国中南部リージョンに既存の Web アプリがあり、ユーザーはそのコンテンツを既存の App Service 環境 (ASE) の新しい Web アプリに複製したいと考えています。
 
-Knowing the resource group name that contains the source web app, we can use the following PowerShell command to get the source web app's information (in this case named source-webapp):
+ソース Web アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース Web アプリの情報を取得できます (この場合の名前は source-webapp)。
 
     $srcapp = Get-AzureRmWebApp -ResourceGroupName SourceAzureResourceGroup -Name source-webapp
 
-Knowing the ASE's name, and the resource group name that the ASE belongs to, the user can use the New-AzureRmWebApp command to create the new web app in the existing ASE, the following demonstrates that:
+ASE の名前と、ASE が属するリソース グループの名前がわかっていれば、New-AzureRmWebApp コマンドを使って、既存の ASE に新しい Web アプリを作成できます。そのコマンドを次に示します。
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -ASEName DestinationASE -ASEResourceGroupName DestinationASEResourceGroupName -SourceWebApp $srcapp
 
-The Location parameter is required due to legacy reason, but in the case of creating an app in an ASE it will be ignored. 
+旧バージョンとの関係で Location パラメーターが必要ですが、ASE にアプリを作成する場合は、このパラメーターは無視されます。
 
-## <a name="cloning-an-existing-app-slot"></a>Cloning an existing App Slot ##
+## 既存のアプリ スロットの複製 ##
 
-Scenario: The user would like to clone an existing Web App Slot to either a new Web App or a new Web App slot. The new Web App can be in the same region as the original Web App slot or in a different region.
+シナリオ: ユーザーは、既存の Web アプリ スロットを新しい Web アプリまたは新しい Web アプリ スロットに複製したいと考えています。新しい Web アプリは、元の Web アプリ スロットと同じリージョン内にあるものでも、別のリージョンにあるものでもかまいません。
 
-Knowing the resource group name that contains the source web app, we can use the following PowerShell command to get the source web app slot's information (in this case named source-webappslot) tied to Web App source-webapp:
+ソース Web アプリを含むリソース グループの名前がわかっていれば、次の PowerShell コマンドを使ってソース Web アプリ スロット (この場合は source-webappslot) の情報を Web アプリ source-webapp に関連付けることができます。
 
     $srcappslot = Get-AzureRmWebAppSlot -ResourceGroupName SourceAzureResourceGroup -Name source-webapp -Slot source-webappslot
 
-The following demonstrates creating a clone of the source web app to a new web app:
+ソース Web アプリの複製を新しい Web アプリに作成するコードを次に示します。
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "North Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcappslot
 
-## <a name="configuring-traffic-manager-while-cloning-a-app"></a>Configuring Traffic Manager while cloning a App ##
+## アプリの複製時における Traffic Manager の構成 ##
 
-Creating multi-region web apps and configuring Azure Traffic Manager to route traffic to all these web apps, is a n important scenario to insure that customers' apps are highly available, when cloning an existing web app you have the option to connect both web apps to either a new traffic manager profile or an existing one - note that only Azure Resource Manager version of Traffic Manager is supported.
+複数リージョンの Web アプリを作成し、トラフィックをそのすべての Web アプリにルーティングするように Azure Traffic Manager を構成することは、顧客のアプリの高可用性を確保するための重要なシナリオです。既存の Web アプリを複製する際に、両方の Web アプリを新しい Traffic Manager プロファイルと既存の Traffic Manager プロファイルのいずれかに関連付けることができます。サポートされているのは Azure Resource Manager バージョンの Traffic Manager のみであることに注意してください。
 
-### <a name="creating-a-new-traffic-manager-profile-while-cloning-a-app"></a>Creating a new Traffic Manager profile while cloning a App ###
+### アプリの複製時における新しい Traffic Manager プロファイルの作成 ###
 
-Scenario: The user would like to clone an web app to another region, while configuring an Azure Resource Manager traffic manager profile that include both web apps. The following demonstrates creating a clone of the source web app to a new web app while configuring a new Traffic Manager profile:
+シナリオ: ユーザーは、Web アプリを別のリージョンに複製しつつ、両方の Web アプリを含む Azure Resource Manager Traffic Manager プロファイルを構成したいと考えています。新しい Traffic Manager プロファイルを構成しつつ、ソース Web アプリの複製を新しい Web アプリに作成するコードを次に示します。
 
     $destapp = New-AzureRmWebApp -ResourceGroupName DestinationAzureResourceGroup -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileName newTrafficManagerProfile
 
-### <a name="adding-new-cloned-web-app-to-an-existing-traffic-manager-profile"></a>Adding new cloned Web App to an existing Traffic Manager profile ###
+### 既存の Traffic Manager プロファイルへの新しい複製 Web アプリの追加 ###
 
-Scenario: The user already have an Azure Resource Manager traffic manager profile that he would like to add both web apps as endpoints. To do so, we first need to assemble the existing traffic manager profile id, we will need the subscription id, resource group name and the existing traffic manager profile name.
+シナリオ: ユーザーは、既に Azure Resource Manager Traffic Manager プロファイルを作成しており、両方の Web アプリをエンドポイントとして追加したいと考えています。そのためには、まず既存の Traffic Manager プロファイル ID を構成する必要があります。その際、サブスクリプション ID、リソース グループ名、既存の Traffic Manager プロファイル名が必要になります。
 
     $TMProfileID = "/subscriptions/<Your subscription ID goes here>/resourceGroups/<Your resource group name goes here>/providers/Microsoft.TrafficManagerProfiles/ExistingTrafficManagerProfileName"
 
-After having the traffic manger id, the following demonstrates creating a clone of the source web app to a new web app while adding them to an existing Traffic Manager profile:
+Traffic Manager ID を構成した後で、ソース Web アプリの複製を新しい Web アプリに作成しつつ、それらを既存の Traffic Manager プロファイルに追加するコードを次に示します。
 
-    $destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
+	$destapp = New-AzureRmWebApp -ResourceGroupName <Resource group name> -Name dest-webapp -Location "South Central US" -AppServicePlan DestinationAppServicePlan -SourceWebApp $srcapp -TrafficManagerProfileId $TMProfileID
 
-## <a name="current-restrictions"></a>Current Restrictions ##
+## 現在の制限 ##
 
-This feature is currently in preview, we are working to add new capabilities over time, the following list are the known restrictions on the current version of app cloning:
+この機能は現在プレビュー段階にあり、新機能を追加する作業が続けられています。次の一覧に、現在のバージョンのアプリの複製における既知の制限を示します。
 
-- Auto scale settings are not cloned
-- Backup schedule settings are not cloned
-- VNET settings are not cloned
-- App Insights are not automatically set up on the destination web app
-- Easy Auth settings are not cloned
-- Kudu Extension are not cloned
-- TiP rules are not cloned
-- Database content are not cloned
-
-
-### <a name="references"></a>References ###
-- [Azure Resource Manager based PowerShell commands for Azure Web App](app-service-web-app-azure-resource-manager-powershell.md)
-- [Web App Cloning using Azure Portal](app-service-web-app-cloning-portal.md)
-- [Back up a web app in Azure App Service](web-sites-backup.md)
-- [Azure Resource Manager support for Azure Traffic Manager Preview](../../articles/traffic-manager/traffic-manager-powershell-arm.md)
-- [Introduction to App Service Environment](app-service-app-service-environment-intro.md)
-- [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md)
+- 自動スケールの設定は複製されない
+- バックアップ スケジュールの設定は複製されない
+- VNET の設定は複製されない
+- App Insights は複製先の Web アプリで自動的にセットアップされない
+- 簡単認証の設定は複製されない
+- Kudu 拡張機能は複製されない
+- TiP ルールは複製されない
+- データベースの内容は複製されない
 
 
+### 参照 ###
+- [Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)
+- [Azure ポータルを使用した Web アプリの複製](app-service-web-app-cloning-portal.md)
+- [Azure App Service での Web アプリのバックアップ](web-sites-backup.md)
+- [Azure リソース マネージャーによる Azure Traffic Manager プレビューのサポート](../../articles/traffic-manager/traffic-manager-powershell-arm.md)
+- [App Service 環境の概要](app-service-app-service-environment-intro.md)
+- [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

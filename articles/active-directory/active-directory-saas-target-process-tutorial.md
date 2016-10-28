@@ -1,291 +1,287 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with TargetProcess | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and TargetProcess."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と TargetProcess の統合 | Microsoft Azure"
+	description="Azure Active Directory と TargetProcess の間でシングル サインオンを構成する方法について確認します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/20/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/05/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と TargetProcess の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-targetprocess"></a>Tutorial: Azure Active Directory integration with TargetProcess
+このチュートリアルの目的は、TargetProcess と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
-The objective of this tutorial is to show you how to integrate TargetProcess with Azure Active Directory (Azure AD).
+TargetProcess と Azure AD の統合には、次の利点があります。
 
-Integrating TargetProcess with Azure AD provides you with the following benefits: 
+- TargetProcess にアクセスするユーザーを Azure AD で管理できます。
+- ユーザーが各自の Azure AD アカウントで TargetProcess に自動的にサインオン (シングル サインオン) するように、設定が可能です。
+- 1 つの中央サイト (Azure Active Directory クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to TargetProcess 
-- You can enable your users to automatically get signed-on to TargetProcess (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure Active Directory classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件 
 
-## <a name="prerequisites"></a>Prerequisites 
+Azure AD と TargetProcess の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with TargetProcess, you need the following items:
-
-- An Azure AD subscription
-- A TargetProcess single-sign on enabled subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Azure AD サブスクリプション
+- TargetProcess でのシングル サインオンが有効なサブスクリプション
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
+
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
+
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment. 
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-The scenario outlined in this tutorial consists of two main building blocks:
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. Adding TargetProcess from the gallery 
-2. Configuring and testing Azure AD single sign-on
+1. ギャラリーから TargetProcess を追加する
+2. Azure AD シングル サインオンの構成とテスト
 
 
-## <a name="adding-targetprocess-from-the-gallery"></a>Adding TargetProcess from the gallery
-To configure the integration of TargetProcess into Azure AD, you need to add TargetProcess from the gallery to your list of managed SaaS apps.
+## ギャラリーから TargetProcess を追加する
+Azure AD への TargetProcess の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に TargetProcess を追加する必要があります。
 
-**To add TargetProcess from the gallery, perform the following steps:**
+**ギャラリーから TargetProcess を追加するには、次の手順を実行します。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Active Directory][1]
+	![Active Directory][1]
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications][2]
+	![アプリケーション][2]
 
-4. Click **Add** at the bottom of the page.
+4. ページの下部にある **[追加]** をクリックします。
 
-    ![Applications][3]
+	![アプリケーション][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Applications][4]
+	![アプリケーション][4]
 
-6. In the search box, type **TargetProcess**.
+6. 検索ボックスに「**TargetProcess**」と入力します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_01.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_01.png)
 
-7. In the results pane, select **TargetProcess**, and then click **Complete** to add the application.
+7. 結果ウィンドウで **[TargetProcess]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_10.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_10.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with TargetProcess based on a test user called "Britta Simon".
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーをベースに、TargetProcess での Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in TargetProcess to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in TargetProcess needs to be established.
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する TargetProcess ユーザーが Azure AD で認識されている必要があります。つまり、Azure AD ユーザーと TargetProcess の関連ユーザーの間でリンク関係が確立されている必要があります。
 
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in TargetProcess.
+このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を、TargetProcess の **[Username]** の値として割り当てます。
  
-To configure and test Azure AD single sign-on with TargetProcess, you need to complete the following building blocks:
+TargetProcess で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a TargetProcess test user](#creating-a-targetprocess-test-user)** - to have a counterpart of Britta Simon in TargetProcess that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[TargetProcess のテスト ユーザーの作成](#creating-a-targetprocess-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを TargetProcess で作成します。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your TargetProcess application. As part of this procedure, you are required to create a base-64 encoded certificate file. If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、TargetProcess アプリケーションでシングル サインオンを構成することです。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-To configure single sign-on for TargetProcess, you need a registered domain. If you don't have a registered domain yet, contact your TargetProcess support team via [support@flatterfiles.com](mailto:support@flatterfiles.com).  
-
-
-
-**To configure Azure AD single sign-on with TargetProcess, perform the following steps:**
-
-1. In the Azure AD classic portal, on the **TargetProcess** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
-
-    ![Configure Single Sign-On][6]
-
-2. On the **How would you like users to sign on to TargetProcess** page, select **Azure AD Single Sign-On**, and then click **Next**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_02.png) 
-
-3. On the **Configure App Settings** dialog page, perform the following steps:
-
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_03.png) 
+TargetProcess のシングル サインオンを構成するには、登録済みのドメインが必要です。登録済みのドメインをお持ちでない場合は、TargetProcess のサポート チーム ([support@flatterfiles.com](mailto:support@flatterfiles.com)) にお問い合わせください。
 
 
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your TargetProcess application (e.g.: *https://fabrikam.TargetProcess.com/*).
 
-    b. Click **Next**.
+**TargetProcess で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
+
+1. Azure AD クラシック ポータルの **TargetProcess** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+
+	![Configure Single Sign-On][6]
+
+2. **[ユーザーの TargetProcess へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_02.png)
+
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_03.png)
+
+
+    a.**[サインオン URL]** ボックスに、ユーザーが TargetProcess アプリケーションへのサインオンに使用する URL を入力します (例: *https://fabrikam.TargetProcess.com/*)。
+
+    b.**[次へ]** をクリックします。
  
  
-4. On the **Configure single sign-on at TargetProcess** page, perform the following steps:
+4. **[TargetProcess でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_04.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_04.png)
 
-    a. Click **Download certificate**, and then save the file on your computer.
+    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
-    b. Click **Next**.
-
-
-1. Sign-on to your TargetProcess application as an administrator.
+    b.**[次へ]** をクリックします。
 
 
-1. In the menu on the top, click **Setup**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_05.png)
-
-1. Click **Settings**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_06.png) 
-
-1. Click **Single Sign-on**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_07.png) 
-
-1. On the Single Sign-on settings dialog, perform the following steps:
-
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_08.png) 
-
-    a. Click **Enable Single Sign-on**.
-
-    b. In the Azure classic portal, on the **Configure single sign-on at TargetProcess** page, copy the **Single Sign-On Service URL** value, and then paste it into the **Sign-on URL** textbox.
-
-    c. Open your downloaded certificate in Notepad, copy the content, and then paste it into the **Certificate** textbox.
-
-    d. click **Enable JIT Provisioning**.
+1. 管理者として TargetProcess アプリケーションにサインオンします。
 
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**. 
+1. 上部のメニューで **[セットアップ]** をクリックします。
 
-    ![Azure AD Single Sign-On][10]
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_05.png)
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+1. **[設定]** をクリックします。
 
-    ![Azure AD Single Sign-On][11]
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_06.png)
+
+1. **[Single Sign-on]** をクリックします。
+
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_07.png)
+
+1. [Single Sign-on] の設定ダイアログで、次の手順を実行します。
+
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_08.png)
+
+    a.**[Enable Single Sign-on]** をクリックします。
+
+    b.Azure クラシック ポータルの **[TargetProcess でのシングル サインオンの構成]** ページで **[シングル サインオン サービス URL]** の値をコピーし、**[Sign-on URL]** ボックスに貼り付けます。
+
+    c.ダウンロードした証明書をメモ帳で開き、その内容をコピーして、**[Certificate]** ボックスに貼り付けます。
+
+    d. **[Enable JIT Provisioning]** をクリックします。
+
+
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+
+	![Azure AD Single Sign-On][10]
+
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+
+	![Azure AD Single Sign-On][11]
 
 
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
-In the Users list, select **Britta Simon**.
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。ユーザーの一覧で **[Britta Simon]** を選択します。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_09.png)  
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_03.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_03.png)
  
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps: 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順を実行します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_05.png)  
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps: 
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_06.png)
  
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
-    e. Click **Next**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_07.png)
  
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-flatter-files-tutorial/create_aaduser_08.png)
   
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
+    b.**[完了]** をクリックします。
 
   
  
-### <a name="creating-a-targetprocess-test-user"></a>Creating a TargetProcess test user
+### TargetProcess のテスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in TargetProcess.
-TargetProcess supports just-in-time provisioning. You have already enabled it in [Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on).
+このセクションの目的は、TargetProcess で Britta Simon というユーザーを作成することです。TargetProcess では、Just-In-Time プロビジョニングがサポートされています。この機能は、「[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)」で既に有効にしています。
 
-There is no action item for you in this section.
-
+このセクションでは、ユーザー側で必要な操作はありません。
 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to TargetProcess.
+### Azure AD テスト ユーザーの割り当て
 
-![Assign User][200] 
+このセクションの目的は、TargetProcess へのアクセスを許可することで、Britta Simon が Azure のシングル サインオンを使用できるようにすることです。
 
-**To assign Britta Simon to TargetProcess, perform the following steps:**
+![ユーザーの割り当て][200]
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+**Britta Simon を TargetProcess に割り当てるには、次の手順を実行します。**
 
-    ![Assign User][201] 
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-2. In the applications list, select **TargetProcess**.
+	![ユーザーの割り当て][201]
 
-    ![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_09.png) 
+2. アプリケーションの一覧で **[TargetProcess]** を選択します。
 
-1. In the menu on the top, click **Users**.
+	![Configure Single Sign-On](./media/active-directory-saas-target-process-tutorial/tutorial_target_process_09.png)
 
-    ![Assign User][203] 
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-1. In the Users list, select **Britta Simon**.
+	![ユーザーの割り当て][203]
 
-2. In the toolbar on the bottom, click **Assign**.
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-    ![Assign User][205]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-
-
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
-
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
-
-When you click the TargetProcess tile in the Access Panel, you should get automatically signed-on to your TargetProcess application.
+	![ユーザーの割り当て][205]
 
 
-## <a name="additional-resources"></a>Additional Resources
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+
+アクセス パネルで [TargetProcess] タイルをクリックすると、TargetProcess アプリケーションに自動的にサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -306,14 +302,4 @@ When you click the TargetProcess tile in the Access Panel, you should get automa
 [204]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_205.png
 
-
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

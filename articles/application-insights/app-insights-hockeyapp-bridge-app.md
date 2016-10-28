@@ -1,84 +1,77 @@
 <properties 
-    pageTitle="Exploring HockeyApp data in Application Insights | Microsoft Azure" 
-    description="Analyze usage and performance of your Azure app with Application Insights." 
-    services="application-insights" 
+	pageTitle="Application Insights での HockeyApp データの探索 | Microsoft Azure" 
+	description="Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。" 
+	services="application-insights" 
     documentationCenter="windows"
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/25/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2016" 
+	ms.author="awills"/>
+
+#  Application Insights での HockeyApp データの探索
+
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリの監視に推奨されているプラットフォームです。HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。このテレメトリのストリームは、[Visual Studio Application Insights](app-insights-overview.md) の強力な [Analytics](app-insights-analytics.md) 機能を使用して照会できます。さらに、[カスタム テレメトリとトレース テレメトリをエクスポートする](app-insights-export-telemetry.md)こともできます。これらの機能を有効にするには、HockeyApp データを Application Insights を中継するブリッジを設定します。
 
 
-#  <a name="exploring-hockeyapp-data-in-application-insights"></a>Exploring HockeyApp data in Application Insights
+## HockeyApp ブリッジ アプリ
 
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) is the recommended platform for monitoring live desktop and mobile apps. From HockeyApp, you can send custom and trace telemetry to monitor usage and assist in diagnosis (in addition to getting crash data). This stream of telemetry can be queried using the powerful [Analytics](app-insights-analytics.md) feature of [Visual Studio Application Insights](app-insights-overview.md). In addition, you can [export the custom and trace telemetry](app-insights-export-telemetry.md). To enable these features, you set up a bridge that relays the HockeyApp data to Application Insights.
+HockeyApp ブリッジ アプリは、Application Insights 内の HockeyApp データに Analytics 機能や連続エクスポート機能を使用してアクセスできるようにする核となる機能です。HockeyApp ブリッジ アプリの作成後に HockeyApp で収集されたすべてのデータは、これらの機能からアクセスできるようになります。このようなブリッジ アプリの 1 つを設定する方法を確認しましょう。
 
-
-## <a name="the-hockeyapp-bridge-app"></a>The HockeyApp Bridge app
-
-The HockeyApp Bridge App is the core feature that enables you to access your HockeyApp data in Application Insights through the Analytics and Continuous Export features. Any data collected by HockeyApp after the creation of the HockeyApp Bridge App will be accessible from these features. Let’s see how to set up one of these Bridge Apps.
-
-In HockeyApp, open Account Settings, [API Tokens](https://rink.hockeyapp.net/manage/auth_tokens). Either create a new token or reuse an existing one. The minimum rights required are "read only". Take a copy of the API token.
+HockeyApp で [Account Settings (アカウント設定)]、[[API Tokens (API トークン)]](https://rink.hockeyapp.net/manage/auth_tokens) の順に開きます。新しいトークンを作成するか、既存のトークンを再利用します。少なくとも "読み取り専用" の権限が必要です。API トークンの控えを取ります。
 
 ![Get a HockeyApp API token](./media/app-insights-hockeyapp-bridge-app/01.png)
 
-Open the Microsoft Azure portal and [create an Application Insights resource](app-insights-create-new-resource.md). Set Application Type to “HockeyApp bridge application”:
+Microsoft Azure Portal を開いて、[Application Insights のリソースを作成](app-insights-create-new-resource.md)します。[アプリケーションの種類] を [HockeyApp bridge application (HockeyApp ブリッジ アプリケーション)] に設定します。
 
 ![New Application Insights resource](./media/app-insights-hockeyapp-bridge-app/02.png)
 
-You don't need to set a name - this will automatically be set from the HockeyApp name.
+名前を設定する必要はありません。HockeyApp 名から自動的に設定されません。
 
-The HockeyApp bridge fields appear. 
+HockeyApp ブリッジのフィールドが表示されます。
 
 ![Enter bridge fields](./media/app-insights-hockeyapp-bridge-app/03.png)
 
-Enter the HockeyApp token you noted earlier. This action populates the “HockeyApp Application” dropdown menu with all your HockeyApp applications. Select the one you want to use, and complete the remainder of the fields. 
+前の手順で控えを取った HockeyApp トークンを入力します。この操作により、[HockeyApp Application (HockeyApp アプリケーション)] ドロップダウン メニューにすべての HockeyApp アプリケーションが設定されます。使用するアプリケーションを 1 つ選択すると、残りのフィールドにも値が設定されます。
 
-Open the new resource. 
+新しいリソースを開きます。
 
-Note that the data takes a while to start flowing.
+データの送信が開始されるまで、しばらく時間がかかります。
 
 ![Application Insights resource waiting for data](./media/app-insights-hockeyapp-bridge-app/04.png)
 
-That’s it! Any data collected in your HockeyApp-instrumented app from this point forward is now also available to you in the Analytics and Continuous Export features of Application Insights.
+これで終了です。 これ以降、HockeyApp でインストルメント化されたアプリで収集されたデータはすべて、Application Insights の Analytics 機能と連続エクスポート機能でも利用できるようになります。
 
-Let’s briefly review each of these features now available to you.
+利用可能になったこれらの機能それぞれについて簡単に確認しましょう。
 
-## <a name="analytics"></a>Analytics
+## 分析
 
-Analytics is a powerful tool for ad-hoc querying of your data, allowing you to diagnose and analyze your telemetry and quickly discover root causes and patterns.
-
-
-![Analytics](./media/app-insights-hockeyapp-bridge-app/05.png)
+Analytics はデータのアドホック クエリのための強力なツールです。使用すると、テレメトリを診断、分析し、根本原因とパターンを迅速に突き止めることができます。
 
 
-* [Learn more about Analytics](app-insights-analytics-tour.md)
-* [Introduction video](https://channel9.msdn.com/events/Build/2016/T666)
-* [Advanced concepts video](https://channel9.msdn.com/Events/Build/2016/P591)
+![分析](./media/app-insights-hockeyapp-bridge-app/05.png)
 
 
-## <a name="continuous-export"></a>Continuous export
-
-Continuous Export allows you to export your data into an Azure Blob Storage container. This is very useful if you need to keep your data for longer than the retention period currently offered by Application Insights. You can keep the data in blob storage, process it into a SQL Database, or your preferred data warehousing solution.
-
-[Learn more about Continuous Export](app-insights-export-telemetry.md)
+* [Analytics の詳細](app-insights-analytics-tour.md)
+* [紹介ビデオ](https://channel9.msdn.com/events/Build/2016/T666)
+* [高度な概念に関するビデオ](https://channel9.msdn.com/Events/Build/2016/P591)
 
 
-## <a name="next-steps"></a>Next steps
+## 連続エクスポート
 
-* [Apply Analytics to your data](app-insights-analytics-tour.md)
+連続エクスポートを使用すると、Azure Blob Storage コンテナーにデータをエクスポートできます。これは、Application Insights で現在提供されている保有期間よりも長くデータを保持する必要がある場合に非常に便利です。データは、Blob Storage で保持し、SQL データベースやお好みのデータ ウェアハウス ソリューションに加工処理することができます。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
+[連続エクスポートの詳細](app-insights-export-telemetry.md)
 
 
+## 次のステップ
+
+* [Analytics をデータに適用する](app-insights-analytics-tour.md)
+
+<!---HONumber=AcomDC_0831_2016-->

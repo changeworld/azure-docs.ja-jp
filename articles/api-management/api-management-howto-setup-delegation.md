@@ -1,138 +1,137 @@
 <properties 
-    pageTitle="How to delegate user registration and product subscription" 
-    description="Learn how to delegate user registration and product subscription to a third party in Azure API Management." 
-    services="api-management" 
-    documentationCenter="" 
-    authors="antonba" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="ユーザーの登録と成果物のサブスクリプションを委任する方法" 
+	description="ユーザーの登録と製品のサブスクリプションを Azure API Management でサード パーティに委任する方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="antonba" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="api-management" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/25/2016" 
-    ms.author="antonba"/>
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/09/2016" 
+	ms.author="antonba"/>
+
+# ユーザーの登録と成果物のサブスクリプションを委任する方法
+
+委任を使用すると、開発者のサインイン/サインアップおよび成果物のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
+
+## <a name="delegate-signin-up"> </a>開発者のサインインおよびサインアップ処理の委任
+
+開発者のサインインおよびサインアップ処理をお客様の既存の Web サイトに委任するには、API Management 開発者ポータルから開始される該当する要求のエントリ ポイントとして動作する特殊な委任エンドポイントをサイト上に作成する必要があります。
+
+最終的なワークフローは次のようになります。
+
+1. 開発者が、API Management 開発者ポータルのサインインまたはサインアップ リンクをクリックします。
+2. ブラウザーが、委任エンドポイントにリダイレクトされます。
+3. 委任エンドポイントにより、ユーザーにサインインまたはサインアップを求める UI にリダイレクトされるか、ユーザーにサインインまたはサインアップを求める UI が表示されます。
+4. サインインまたはサインアップが成功すると、ユーザーが最初の API Management 開発者ポータル ページにリダイレクトされます。
 
 
-# <a name="how-to-delegate-user-registration-and-product-subscription"></a>How to delegate user registration and product subscription
+これを実現するには、最初に委任エンドポイント経由で要求をルーティングするように API Management を設定します。API Management パブリッシャー ポータルで、**[セキュリティ]** をクリックし、**[委任]** タブをクリックします。チェックボックスをクリックして、[サインインおよびサインアップの委任] を有効にします。
 
-Delegation allows you to use your existing website for handling developer sign-in/sign-up and subscription to products as opposed to using the built-in functionality in the developer portal. This enables your website to own the user data and perform the validation of these steps in a custom way.
+![[委任] ページ][api-management-delegation-signin-up]
 
-## <a name="<a-name="delegate-signin-up">-</a>delegating-developer-sign-in-and-sign-up"></a><a name="delegate-signin-up"> </a>Delegating developer sign-in and sign-up
+* 特殊な委任エンドポイントの URL を決めて **[委任エンドポイント URL]** フィールドに入力します。
 
-To delegate developer sign-in and sign-up to your existing website you will need to create a special delegation endpoint on your site that acts as the entry-point for any such request initiated from the API Management developer portal.
+* **[委任の認証キー]** フィールドに、要求が本当に Azure API Management から送信されたものかをどうかを確かめるための署名のコンピューティングに使用するシークレットを入力します。**[生成]** ボタンをクリックすると、API Management によってランダムにキーを生成できます。
 
-The final workflow will be as follows:
+次に、**委任エンドポイント**を作成する必要があります。委任エンドポイントでは、次に示す操作を実行します。
 
-1. Developer clicks on the sign-in or sign-up link at the API Management developer portal
-2. Browser is redirected to the delegation endpoint
-3. Delegation endpoint in return redirects to or presents UI asking user to sign-in or sign-up
-4. On success, the user is redirected back to the API Management developer portal page they started from
+1. 次の形式の要求を受け取ります。
 
+	> *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL 元のページ}&salt={文字列}&sig={文字列}*
 
-To begin, let's first set-up API Management to route requests via your delegation endpoint. In the API Management publisher portal, click on **Security** and then click the **Delegation** tab. Click the checkbox to enable 'Delegate sign-in & sign-up'.
+	サインイン/サインアップ処理のためのクエリ パラメーター:
+	- **operation**: 委任要求の種類を識別します。この場合は **[SignIn]** のみを指定できます。
+	- **returnUrl**: ユーザーがサインインまたはサインアップ リンクをクリックしたページの URL。
+	- **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+	- **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
-![Delegation page][api-management-delegation-signin-up]
+2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
 
-* Decide what the URL of your special delegation endpoint will be and enter it in the **Delegation endpoint URL** field. 
+	* **returnUrl** および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 ハッシュを計算します ([コードの例を次に示します])。
+        > HMAC(**salt** + '\\n' + **returnUrl**)
+		 
+	* 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
 
-* Within the **Delegation authentication key** field enter a secret that will be used to compute a signature provided to you for verification to ensure that the request is indeed coming from Azure API Management. You can click the **generate** button to have API Managemnet randomly generate a key for you.
+2. サインイン/サインアップの要求を受け取っていることを確認します。**operation** クエリ パラメーターが "**SignIn**" に設定されます。
 
-Now you need to create the **delegation endpoint**. It has to perform a number of actions:
+3. サインインまたはサインアップのための UI をユーザーに表示します。
 
-1. Receive a request in the following form:
+4. サインアップの場合は、API Management に対応するアカウントを作成する必要があります。API Management REST API を使用して[ユーザーを作成]します。このとき、ユーザー ID をユーザー ストア内のユーザー ID と同じに設定するか、または追跡が可能な ID に設定してください。
 
-    > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
+5. ユーザーが正常に認証されたら、次の操作を行います。
 
-    Query parameters for the sign-in / sign-up case:
-    - **operation**: identifies what type of delegation request it is - it can only be **SignIn** in this case
-    - **returnUrl**: the URL of the page where the user clicked on a sign-in or sign-up link
-    - **salt**: a special salt string used for computing a security hash
-    - **sig**: a computed security hash to be used for comparison to your own computed hash
+	* API Management REST API を介して[シングル サインオン (SSO) トークンを要求]します。
 
-2. Verify that the request is coming from Azure API Management (optional, but highly recommended for security)
+	* 上記の API 呼び出しによって受け取った SSO URL に returnUrl クエリ パラメーターを付加します。
+		> 例。https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url
 
-    * Compute an HMAC-SHA512 hash of a string based on the **returnUrl** and **salt** query parameters ([example code provided below]):
-        > HMAC(**salt** + '\n' + **returnUrl**)
-         
-    * Compare the above-computed hash to the value of the **sig** query parameter. If the two hashes match, move on to the next step, otherwise deny the request.
+	* 上記の手順で生成された URL にユーザーをリダイレクトします。
 
-2. Verify that you are receiving a request for sign-in/sign-up: the **operation** query parameter will be set to "**SignIn**".
+**SignIn** 操作に加えて、ここまでの手順に従い、さらに次の操作のいずれかを使用することにより、アカウント管理も実行できます。
 
-3. Present the user with UI to sign-in or sign-up
+-	**ChangePassword**
+-	**ChangeProfile**
+-	**CloseAccount**
 
-4. If the user is signing-up you have to create a corresponding account for them in API Management. [Create a user] with the API Management REST API. When doing so, ensure that you set the user ID to the same it is in your user store or to an ID that you can keep track of.
+アカウントの管理操作を実行するには、次のクエリ パラメーターを渡す必要があります。
 
-5. When the user is successfully authenticated:
+-	**operation**: 委任要求の種類を識別します (ChangePassword、ChangeProfile、または CloseAccount)
+-	**userId**: 管理するアカウントのユーザー ID
+-	**salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+-	**sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
-    * [request a single-sign-on (SSO) token] via the API Management REST API
+## <a name="delegate-product-subscription"> </a>成果物のサブスクリプション処理の委任
 
-    * append a returnUrl query parameter to the SSO URL you have received from the API call above:
-        > e.g. https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+成果物のサブスクリプション処理を委任するしくみは、ユーザーのサインイン/サインアップ処理の委任と似ています。最終的なワークフローは次のようになります。
 
-    * redirect the user to the above produced URL
-
-In addition to the **SignIn** operation, you can also perform account management by following the previous steps and using one of the following operations.
-
--   **ChangePassword**
--   **ChangeProfile**
--   **CloseAccount**
-
-You must pass the following query parameters for account management operations.
-
--   **operation**: identifies what type of delegation request it is (ChangePassword, ChangeProfile, or CloseAccount)
--   **userId**: the user id of the account to manage
--   **salt**: a special salt string used for computing a security hash
--   **sig**: a computed security hash to be used for comparison to your own computed hash
-
-## <a name="<a-name="delegate-product-subscription">-</a>delegating-product-subscription"></a><a name="delegate-product-subscription"> </a>Delegating product subscription
-
-Delegating product subscription works similarly to delegating user sign-in/-up. The final workflow would be as follows:
-
-1. Developer selects a product in the API Management developer portal and clicks on the Subscribe button
-2. Browser is redirected to the delegation endpoint
-3. Delegation endpoint performs required product subscription steps - this is up to you and may entail redirecting to another page to request billing information, asking additional questions, or simply storing the information and not requiring any user action
+1. 開発者が API Management 開発者ポータルで成果物を選択し、[サブスクライブ] ボタンをクリックします。
+2. ブラウザーが、委任エンドポイントにリダイレクトされます。
+3. 委任エンドポイントにより、必要な成果物のサブスクリプション操作が実行されます。ここでは任意の操作を実行でき、課金情報を要求する別のページへのリダイレクトしたり、追加の質問をたずねたりできます。また、ユーザーによる操作を求めることなく単に情報を保存することもあります。
 
 
-To enable the functionality, on the **Delegation** page click **Delegate product subscription**.
+この機能を有効にするには、**[委任]** ページで **[成果物のサブスクリプションの委任]** をクリックします。
 
-Then ensure the delegation endpoint performs the following actions:
-
-
-1. Receive a request in the following form:
-
-    > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
-
-    Query parameters for the product subscription case:
-    - **operation**: identifies what type of delegation request it is. For product subscription requests the valid options are:
-        - "Subscribe": a request to subscribe the user to a given product with provided ID (see below)
-        - "Unsubscribe": a request to unsubscribe a user from a product
-        - "Renew": a requst to renew a subscription (e.g. that may be expiring)
-    - **productId**: the ID of the product the user requested to subscribe to
-    - **userId**: the ID of the user for whom the request is made
-    - **salt**: a special salt string used for computing a security hash
-    - **sig**: a computed security hash to be used for comparison to your own computed hash
+次に、次の操作を実行するように委任エンドポイントを設定します。
 
 
-2. Verify that the request is coming from Azure API Management (optional, but highly recommended for security)
+1. 次の形式の要求を受け取ります。
 
-    * Compute an HMAC-SHA512 of a string based on the **productId**, **userId** and **salt** query parameters:
-        > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
-         
-    * Compare the above-computed hash to the value of the **sig** query parameter. If the two hashes match, move on to the next step, otherwise deny the request.
-    
-3. Perform any product subscription processing based on the type of operation requested in **operation** - e.g. billing, further questions, etc.
+	> *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product サブスクライブする成果物}&userId={要求元のユーザー}&salt={文字列}&sig={文字列}*
 
-4. On successfully subscribing the user to the product on your side, subscribe the user to the API Management product by [calling the REST API for product subscription].
+	成果物のサブスクリプション処理のためのクエリ パラメーター:
+	- **operation**: 委任要求の種類を識別します。成果物のサブスクリプション要求の有効なオプションを次に示します。
+		- "Subscribe": 提供された ID (以下を参照) を持つ特定の成果物をユーザーがサブスクライブするための要求。
+		- "Unsubscribe": ユーザーの成果物のサブスクリプションを解除するための要求。
+		- "Renew": (たとえば、有効期限が近づいている) サブスクリプションを更新するための要求。
+	- **productId**: ユーザーから要求されたサブスクライブ対象の成果物の ID。
+	- **userId**: 要求の対象のユーザーの ID。
+	- **salt**: セキュリティ ハッシュの計算に使用される特殊な salt 文字列。
+	- **sig**: 自分で計算したハッシュとの比較に使用される、計算によって求められたセキュリティ ハッシュ。
 
-## <a name="<a-name="delegate-example-code">-</a>-example-code"></a><a name="delegate-example-code"> </a> Example Code ##
 
-These code samples show how to take the *delegation validation key*, which is set in the Delegation screen of the publisher portal, to create a HMAC which is then used to validate the signature, proving the validity of the passed returnUrl. The same code works for the productId and userId with slight modification.
+2. 要求の送信元が Azure API Management であることを確認します (省略できますが、セキュリティ上強く推奨されます)。
 
-**C# code to generate hash of returnUrl**
+	* **productId**、**userId**、および **salt** のクエリ パラメーターに基づいて、文字列の HMAC-SHA512 を計算します。
+		> HMAC(**salt** + '\\n' + **productId** + '\\n' + **userId**)
+		 
+	* 上の計算によって求められたハッシュを **sig** クエリ パラメーターの値と比較します。2 つのハッシュ値が等しい場合は、次の手順に移動します。それ以外の場合は、要求を拒否します。
+	
+3. **operation** で要求された操作の種類 (課金、追加の質問など) に基づいて、成果物のサブスクリプション処理を実行します。
+
+4. ユーザーがお客様の側の成果物を正常にサブスクライブすることができたら、[成果物のサブスクリプションのための REST API を呼び出して]、ユーザーが API Management の成果物をサブスクライブできるようにします。
+
+## <a name="delegate-example-code"> </a> コード例 ##
+
+これらのコード サンプルでは、パブリッシャー ポータルの [委任] 画面に設定された*委任検証キー*を取得して、署名の検証に使用する HMAC を作成し、渡された returnUrl の有効性を証明する方法を示します。同じコードは、わずかに変更するだけで、productId と userId に対して機能します。
+
+**returnUrl のハッシュを生成する C# のコード**
 
     using System.Security.Cryptography;
 
@@ -148,38 +147,35 @@ These code samples show how to take the *delegation validation key*, which is se
     }
 
 
-**NodeJS code to generate hash of returnUrl**
+**returnUrl のハッシュを生成する NodeJS のコード**
 
-    var crypto = require('crypto');
-    
-    var key = 'delegation validation key'; 
-    var returnUrl = 'returnUrl query parameter';
-    var salt = 'salt query parameter';
-    
-    var hmac = crypto.createHmac('sha512', new Buffer(key, 'base64'));
-    var digest = hmac.update(salt + '\n' + returnUrl).digest();
+	var crypto = require('crypto');
+	
+	var key = 'delegation validation key'; 
+	var returnUrl = 'returnUrl query parameter';
+	var salt = 'salt query parameter';
+	
+	var hmac = crypto.createHmac('sha512', new Buffer(key, 'base64'));
+	var digest = hmac.update(salt + '\n' + returnUrl).digest();
     // change to (salt + "\n" + productId + "\n" + userId) when delegating product subscription
     // compare signature to sig query parameter
-    
-    var signature = digest.toString('base64');
+	
+	var signature = digest.toString('base64');
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For more information on delegation, see the following video.
+委任に関する詳細については、次のビデオをご覧ください。
 
 > [AZURE.VIDEO delegating-user-authentication-and-product-subscription-to-a-3rd-party-site]
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[request a single-sign-on (SSO) token]: http://go.microsoft.com/fwlink/?LinkId=507409
-[create a user]: http://go.microsoft.com/fwlink/?LinkId=507655#CreateUser
-[calling the REST API for product subscription]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
+[シングル サインオン (SSO) トークンを要求]: http://go.microsoft.com/fwlink/?LinkId=507409
+[ユーザーを作成]: http://go.microsoft.com/fwlink/?LinkId=507655#CreateUser
+[成果物のサブスクリプションのための REST API を呼び出して]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps
-[example code provided below]: #delegate-example-code
+[コードの例を次に示します]: #delegate-example-code
 
-[api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 
+[api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

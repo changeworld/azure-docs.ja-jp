@@ -1,253 +1,247 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with SciQuest Spend Director | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and SciQuest Spend Director."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と SciQuest Spend Director の統合 | Microsoft Azure"
+	description="Azure Active Directory と SciQuest Spend Director の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と SciQuest Spend Director の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-sciquest-spend-director"></a>Tutorial: Azure Active Directory integration with SciQuest Spend Director
+このチュートリアルの目的は、SciQuest Spend Director と Azure Active Directory (Azure AD) を統合する方法を説明することです。SciQuest Spend Director と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate SciQuest Spend Director with Azure Active Directory (Azure AD).  
-Integrating SciQuest Spend Director with Azure AD provides you with the following benefits: 
+- SciQuest Spend Director にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に SciQuest Spend Director にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to SciQuest Spend Director 
-- You can enable your users to automatically get signed-on to SciQuest Spend Director (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件 
 
-## <a name="prerequisites"></a>Prerequisites 
+SciQuest Spend Director と Azure AD の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with SciQuest Spend Director, you need the following items:
-
-- An Azure AD subscription
-- A SciQuest Spend Director single-sign on enabled subscription
+- Azure AD サブスクリプション
+- SciQuest Spend Director でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. Adding SciQuest Spend Director from the gallery 
-2. Configuring and testing Azure AD single sign-on
-
-
-## <a name="adding-sciquest-spend-director-from-the-gallery"></a>Adding SciQuest Spend Director from the gallery
-To configure the integration of SciQuest Spend Director into Azure AD, you need to add SciQuest Spend Director from the gallery to your list of managed SaaS apps.
-
-**To add SciQuest Spend Director from the gallery, perform the following steps:**
-
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
-
-    ![Active Directory][1]
-
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Applications][2]
-
-4. Click **Add** at the bottom of the page.
-
-    ![Applications][3]
-
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
-
-    ![Applications][4]
-
-6. In the search box, type **sciQuest spend director**.
-
-    ![Applications][5]
-
-7. In the results pane, select **SciQuest Spend Director**, and then click **Complete** to add the application.
-
-    ![Applications][6]
+1. ギャラリーからの SciQuest Spend Director の追加
+2. Azure AD シングル サインオンの構成とテスト
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with SciQuest Spend Director based on a test user called "Britta Simon".
+## ギャラリーからの SciQuest Spend Director の追加
+Azure AD への SciQuest Spend Director の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SciQuest Spend Director を追加する必要があります。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in SciQuest Spend Director to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in SciQuest Spend Director needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in SciQuest Spend Director.
+**ギャラリーから SciQuest Spend Director を追加するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Active Directory][1]
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![アプリケーション][2]
+
+4. ページの下部にある **[追加]** をクリックします。
+
+	![アプリケーション][3]
+
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+	![アプリケーション][4]
+
+6. 検索ボックスに「**sciQuest spend director**」と入力します。
+
+	![アプリケーション][5]
+
+7. 結果ウィンドウで **[SciQuest Spend Director]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+	![アプリケーション][6]
+
+
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、SciQuest Spend Director で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する SciQuest Spend Director ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと SciQuest Spend Director の関連ユーザーの間で、リンクの関係が確立されている必要があります。このリンクの関係を確立するには、Azure AD の **[ユーザー名]** の値を、SciQuest Spend Director の **[Username]** の値として割り当てます。
  
-To configure and test Azure AD single sign-on with SciQuest Spend Director, you need to complete the following building blocks:
+SciQuest Spend Director で Azure AD のシングル サインオンを構成し、テストするには、次の要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a SciQuest Spend Director test user](#creating-a-halogen-software-test-user)** - to have a counterpart of Britta Simon in SciQuest Spend Director that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[単一の Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[SciQuest Spend Director のテスト ユーザーの作成](#creating-a-halogen-software-test-user)** - SciQuest Spend Director で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-single-sign-on"></a>Configuring Azure AD Single Single Sign-On
+### 単一の Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your SciQuest Spend Director application.
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、SciQuest Spend Director アプリケーションでシングル サインオンを構成することです。
 
-**To configure Azure AD single sign-on with SciQuest Spend Director, perform the following steps:**
+**SciQuest Spend Director で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. In the Azure classic portal, on the **SciQuest Spend Director** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Azure クラシック ポータルの **SciQuest Spend Director** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On][8]
+	![Configure Single Sign-On][8]
 
-2. On the **How would you like users to sign on to SciQuest Spend Director** page, select **Azure AD Single Sign-On**, and then click **Next**.
+2. **[ユーザーの SciQuest Spend Director へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Azure AD Single Sign-On][9]
+	![Azure AD Single Sign-On][9]
 
-3. On the **Configure App Settings** dialog page, perform the following steps: 
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![Configure App Settings][10]
+	![Configure App Settings][10]
  
-     3.1. In the **Sign On URL** textbox, type your URL used by your users to sign on to your SciQuest Spend Director application using the following pattern: *https://.*sciquest.com/.**
+     3\.1.**[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが SciQuest Spend Director アプリケーションへのサインオンに使用する URL を入力します。*https://.*sciquest.com/.**。
 
-     3.2. In the **Reply URL** textbox, type the same value you have typed into the **Sign On URL** textbox. 
+     3\.2.**[応答 URL]** ボックスに、**[サインオン URL]** ボックスに入力したのと同じ値を入力します。
 
-     3.3. Click **Next**.
+     3\.3**[次へ]** をクリックします。
  
-4. On the **Configure single sign-on at SciQuest Spend Director** page, click **Download metadata**, and then save the metadata file locally on your computer.
+4. **[SciQuest Spend Director でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターにローカルでメタデータ ファイルを保存します。
 
-    ![What is Azure AD Connect][11]
+	![Azure AD Connect とは][11]
 
-5. Contact SciQuest support to enable this authentication method using the above downloaded metadata.
+5. 上記のダウンロードしたメタデータを使用してこの認証方法を有効にする方法については、SciQuest のサポートにお問い合わせください。
 
-6. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog. 
+6. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![What is Azure AD Connect][15]
+	![Azure AD Connect とは][15]
 
-10. On the **Single sign-on confirmation** page, click **Complete**.  
+10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-    
-
-
+	
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
 
-**To create a test user in Azure AD, perform the following steps:**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-    ![What is Azure AD Connect][100] 
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-3. To display the list of users, in the menu on the top, click **Users**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![What is Azure AD Connect][101] 
+	![Azure AD Connect とは][100]
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-    ![What is Azure AD Connect][102] 
+	![Azure AD Connect とは][101]
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![What is Azure AD Connect][103] 
+	![Azure AD Connect とは][102]
 
-    a. As **Type Of User**, select **New user in your organization**.
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+	![Azure AD Connect とは][103]
+
+	a.**[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
   
-    b. In the User Name **textbox**, type **BrittaSimon**.
+	b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
   
-    c. Click Next.
+	c.[次へ] をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps: 
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![What is Azure AD Connect][104] 
+	![Azure AD Connect とは][104]
 
-    a. In the **First Name** textbox, type **Britta**.  
+	a.**[名]** ボックスに「**Britta**」と入力します。
   
-    b. In the **Last Name** txtbox, type, **Simon**.
+	b.**[姓]** ボックスに「**Simon**」と入力します。
   
-    c. In the **Display Name** textbox, type **Britta Simon**.
+	c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
   
-    d. In the **Role** list, select **User**.
+	d.**[ロール]** 一覧で **[ユーザー]** を選択します。
   
-    e. Click **Next**.
+	e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![What is Azure AD Connect][105]  
+	![Azure AD Connect とは][105]
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![What is Azure AD Connect][106]   
+	![Azure AD Connect とは][106]
 
-    a. Write down the value of the **New Password**.
+	a.**[新しいパスワード]** の値を書き留めます。
   
-    b. Click **Complete**.   
+	b.**[完了]** をクリックします。
   
  
-### <a name="creating-a-sciquest-spend-director-test-user"></a>Creating a SciQuest Spend Director test user
+### SciQuest Spend Director のテスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in SciQuest Spend Director.
+このセクションの目的は、SciQuest Spend Director で Britta Simon というユーザーを作成することです。
 
-You need to contact your SciQuest Spend Director support team and provide them with the details about your test account to get it created.
+テスト アカウントを作成するには、SciQuest Spend Director のサポート チームに連絡し、テスト アカウントの詳細を伝える必要があります。
 
-Alternatively, you can also leverage just-in-time provisioning, a single sign-on feature that is supported by SciQuest Spend Director.  
-If just-in-time provisioning is enabled, users are automatically created by SciQuest Spend Director during a single sign-on attempt if they don't exist. This feature eliminates the need to manually create single sign-on counterpart users.
+または、SciQuest Spend Director でサポートされているシングル サインオン機能であるジャストインタイム プロビジョニングを使用することもできます。ジャストインタイム プロビジョニングが有効な場合、ユーザーが存在しなければ、シングル サインオンの試行中に SciQuest Spend Director によりユーザーが自動的に作成されます。この機能により、対応するシングル サインオン ユーザーを手動で作成する必要がなくなります。
 
-To get just-in-time provisioning enabled, you need to contact your your SciQuest Spend Director support team.
+ジャストインタイム プロビジョニングを有効にするには、SciQuest Spend Director のサポート チームに連絡する必要があります。
   
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### Azure AD テスト ユーザーの割り当て
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to SciQuest Spend Director.
+このセクションの目的は、Britta Simon に SciQuest Spend Director へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-![What is Azure AD Connect][200]
+![Azure AD Connect とは][200]
 
-**To assign Britta Simon to SciQuest Spend Director, perform the following steps:**
+**SciQuest Spend Director に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+1. Azure クラシック ポータルのディレクトリ ビューで、トップ メニューにある **[アプリケーション]** をクリックしてアプリケーション ビューを開きます。
 
-    ![What is Azure AD Connect][201]
+	![Azure AD Connect とは][201]
 
-2. In the applications list, select **SciQuest Spend Director**.
+2. アプリケーションの一覧で **[SciQuest Spend Director]** を選択します。
 
-    ![What is Azure AD Connect][202]
+	![Azure AD Connect とは][202]
 
-1. In the menu on the top, click **Users**.
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-    ![What is Azure AD Connect][203]
+	![Azure AD Connect とは][203]
 
-1. In the Users list, select **Britta Simon**.
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-    ![What is Azure AD Connect][204]
+	![Azure AD Connect とは][204]
 
-2. In the toolbar on the bottom, click **Assign**.
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-    ![What is Azure AD Connect][205]
-
-
-
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
-
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the SciQuest Spend Director tile in the Access Panel, you should get automatically signed-on to your SciQuest Spend Director application.
+	![Azure AD Connect とは][205]
 
 
-## <a name="additional-resources"></a>Additional Resources
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで SciQuest Spend Director のタイルをクリックすると、自動的に SciQuest Spend Director アプリケーションにサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_01.png
@@ -262,23 +256,18 @@ When you click the SciQuest Spend Director tile in the Access Panel, you should 
 [11]: ./media/active-directory-saas-sciquest-spend-director/tutorial_sciquest_spend_director_03.png
 [15]: ./media/active-directory-saas-sciquest-spend-director/tutorial_sciquest_spend_director_04.png
 
-[100]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_09.png 
-[101]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_10.png 
-[102]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_11.png 
-[103]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_12.png 
-[104]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_13.png 
-[105]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_14.png 
-[106]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_15.png 
-[200]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_16.png 
-[201]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_17.png 
+[100]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_09.png
+[101]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_10.png
+[102]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_11.png
+[103]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_12.png
+[104]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_13.png
+[105]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_14.png
+[106]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_15.png
+[200]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_16.png
+[201]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_17.png
 [202]: ./media/active-directory-saas-sciquest-spend-director/tutorial_sciquest_spend_director_06.png
 [203]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_18.png
 [204]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_19.png
 [205]: ./media/active-directory-saas-sciquest-spend-director/tutorial_general_20.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

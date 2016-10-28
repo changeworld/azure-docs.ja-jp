@@ -1,129 +1,124 @@
 <properties
-    pageTitle="Advanced configuration for Azure Mobile Engagement Android SDK"
-    description="Describes the advanced configuration options including the Android Manifest with Azure Mobile Engagement Android SDK"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+	pageTitle="Azure Mobile Engagement Android SDK の詳細な構成"
+	description="Azure Mobile Engagement Android SDK の詳細な構成オプション (Android マニフェストを含む) について説明します"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-android"
-    ms.devlang="Java"
-    ms.topic="article"
-    ms.date="10/04/2016"
-    ms.author="piyushjo;ricksal" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-android"
+	ms.devlang="Java"
+	ms.topic="article"
+	ms.date="08/02/2016"
+	ms.author="piyushjo;ricksal" />
 
-
-# <a name="advanced-configuration-for-azure-mobile-engagement-android-sdk"></a>Advanced configuration for Azure Mobile Engagement Android SDK
+# Azure Mobile Engagement Android SDK の詳細な構成
 
 > [AZURE.SELECTOR]
-- [Universal Windows](mobile-engagement-windows-store-advanced-configuration.md)
+- [ユニバーサル Windows](mobile-engagement-windows-store-advanced-configuration.md)
 - [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
 - [iOS](mobile-engagement-ios-integrate-engagement.md)
-- [Android](mobile-engagement-android-advanced-configuration.md)
+- [Android](mobile-engagement-android-logging.md)
 
-This procedure describes how to configure various configuration options for Azure Mobile Engagement Android apps.
+この手順では、Azure Mobile Engagement Android アプリ向けのさまざまな構成オプションを構成する方法について説明します。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-[AZURE.INCLUDE [Prereqs](../../includes/mobile-engagement-android-prereqs.md)]
+[AZURE.INCLUDE [前提条件](../../includes/mobile-engagement-android-prereqs.md)]
 
-## <a name="permission-requirements"></a>Permission Requirements
-Some options require specific permissions, all of which are listed here for reference, and in-line in the specific feature. Add these permissions to the AndroidManifest.xml of your project immediately before or after the `<application>` tag.
+## アクセス許可の要件
+オプションの一部で特定のアクセス許可 (以下の一覧を参照) が必要です。また、特定の機能ではインラインである必要があります。次のアクセス許可をプロジェクトの AndroidManifest.xml の `<application>` タグの直前または直後に追加します。
 
-The permission code needs to look like the following, where you fill in the appropriate permission from the table that follows.
+アクセス許可のコードを次に示します。このコードに、以下の表から適切なアクセス許可を選択して入力します。
 
-    <uses-permission android:name="android.permission.[specific permission]"/>
+	<uses-permission android:name="android.permission.[specific permission]"/>
 
 
-| Permission | When used |
+| アクセス許可 | 使用する場合 |
 | ---------- | --------- |
-| INTERNET | Required. For basic reporting |
-| ACCESS_NETWORK_STATE | Required. For basic reporting |
-| RECEIVE_BOOT_COMPLETED | Required. To show up the notifications center after device reboot |
-| WAKE_LOCK | Recommended. Enables collecting data when using WiFi or when screen is off |
-| VIBRATE | Optional. Enables vibration when notifications are received |
-| DOWNLOAD_WITHOUT_NOTIFICATION | Optional. Enables Android Big Picture Notification |
-| WRITE_EXTERNAL_STORAGE | Optional. Enables Android Big Picture Notification |
-| ACCESS_COARSE_LOCATION | Optional. Enables Real-time location reporting |
-| ACCESS_FINE_LOCATION | Optional. Enables GPS-based location reporting |
+| INTERNET | 必須。基本的なレポートを作成する場合 |
+| ACCESS\_NETWORK\_STATE | 必須。基本的なレポートを作成する場合 |
+| RECEIVE\_BOOT\_COMPLETED | 必須。デバイスの再起動後に通知センターを表示する場合 |
+| WAKE\_LOCK | 推奨。WiFi を使っているときまたは画面がオフのときにデータの収集を有効にする場合 |
+| VIBRATE | 省略可能。通知を受け取ったときに振動を有効にする場合 |
+| DOWNLOAD\_WITHOUT\_NOTIFICATION | 省略可能。Android Big Picture Notification を有効にする場合 |
+| WRITE\_EXTERNAL\_STORAGE | 省略可能。Android Big Picture Notification を有効にする場合 |
+| ACCESS\_COARSE\_LOCATION | 省略可能。リアルタイムの位置報告を有効にする場合 |
+| ACCESS\_FINE\_LOCATION | 省略可能。GPS ベースの位置報告を有効にする場合 |
 
-Starting with Android M, [some permissions are managed at run time](mobile-engagement-android-location-reporting.md#Android-M-Permissions).
+Android M 以降では、[一部のアクセス許可が実行時に管理されます](mobile-engagement-android-location-reporting.md#Android-M-Permissions)。
 
-If you are already using ``ACCESS_FINE_LOCATION``, then you don't need to also use ``ACCESS_COARSE_LOCATION``.
+``ACCESS_FINE_LOCATION`` を既に使用している場合は、``ACCESS_COARSE_LOCATION`` を一緒に使用する必要はありません。
 
-## <a name="android-manifest-configuration-options"></a>Android Manifest configuration options
+## Android のマニフェスト構成オプション
 
-### <a name="crash-report"></a>Crash report
+### クラッシュ レポート
 
-To disable crash reports, add this code between the `<application>` and `</application>` tags:
+クラッシュ レポートを無効にするには、このコードを `<application>` タグと `</application>` タグの間に追加します。
 
-    <meta-data android:name="engagement:reportCrash" android:value="false"/>
+	<meta-data android:name="engagement:reportCrash" android:value="false"/>
 
-### <a name="burst-threshold"></a>Burst threshold
+### バーストのしきい値
 
-By default, the Engagement service reports logs in real time. If your application report logs vary frequently, it is better to buffer the logs and to report them all at once on a regular time base (called "burst mode"). To do so, add this code between the `<application>` and `</application>` tags:
+既定では、エンゲージメント サービスはログをリアルタイムで報告します。アプリケーションがログを送信する回数が非常に多い場合は、ログをバッファーに格納して、一定時間ごとにまとめて報告すること ("バースト モード" と呼ばれます) をお勧めします。これを行うには、次のコードを `<application>` タグと `</application>` タグの間に追加します。
 
-    <meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
+	<meta-data android:name="engagement:burstThreshold" android:value="{interval between too bursts (in milliseconds)}"/>
 
-Burst mode slightly increases the battery life but has an impact on the Engagement Monitor: all sessions and jobs duration are rounded to the burst threshold (thus, sessions and jobs shorter than the burst threshold may not be visible). Your burst threshold should be no longer than 30000 (30s).
+バースト モードではわずかにバッテリーの寿命が延びますが、Engagement の監視に影響を与えます。すべてのセッションとジョブの実行時間は、バーストのしきい値に丸められます (つまり、バーストのしきい値よりも短いセッションとジョブは、認識されない場合があります)。バーストのしきい値は、30000 (30 秒) 以内にする必要があります。
 
-### <a name="session-timeout"></a>Session timeout
+### セッションのタイムアウト
 
- You can end an activity by pressing the **Home** or **Back** key, by setting the phone idle or by jumping into another application. By default, a session is ended ten seconds after the end of its last activity. This avoids a session split each time the user exits and returns to the application quickly, which can happen when the user picks up an image, checks a notification, etc. You may want to modify this parameter. To do so, add this code between the `<application>` and `</application>` tags:
+ **[ホーム]** または **[戻る]** キーを押したり、電話をアイドル状態に設定したり、別のアプリケーションに移動したりすると、アクティビティを終了できます。既定では、セッションは、その最後のアクティビティの終了後、10 秒で終了します。これにより、ユーザーがアプリケーションを終了した後、非常に短時間で戻ってくる (画像の選択や通知の確認などを行うときに、このような行動が発生する可能性があります) たびにセッションが分割されないようになります。このパラメーターを変更することができます。これを行うには、次のコードを `<application>` タグと `</application>` タグの間に追加します。
 
-    <meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
+	<meta-data android:name="engagement:sessionTimeout" android:value="{session timeout (in milliseconds)}"/>
 
-## <a name="disable-log-reporting"></a>Disable log reporting
+## ログ レポートの無効化
 
-### <a name="using-a-method-call"></a>Using a method call
+### メソッド呼び出しを使用した場合
 
-If you want Engagement to stop sending logs, you can call:
+Engagement でログの送信を停止したい場合は、以下を呼び出します。
 
-    EngagementAgent.getInstance(context).setEnabled(false);
+	EngagementAgent.getInstance(context).setEnabled(false);
 
-This call is persistent: it uses a shared preferences file.
+この呼び出しは永続的であり、共有設定ファイルを使います。
 
-If Engagement is active when you call this function, it may take one minute for the service to stop. However it won't launch the service at all the next time you launch the application.
+この関数を呼び出したときに Engagement がアクティブの場合、サービスが停止するまで 1 分ほどかかることがあります。ただし、次にアプリケーションが起動したときにサービスが起動することはありません。
 
-You can enable log reporting again by calling the same function with `true`.
+ログ レポートは、同じ関数を `true` でもう一度呼び出すことによって有効にすることができます。
 
-### <a name="integration-in-your-own-`preferenceactivity`"></a>Integration in your own `PreferenceActivity`
+### 独自の `PreferenceActivity` での統合
 
-Instead of calling this function, you can also integrate this setting directly in your existing `PreferenceActivity`.
+上記の関数を呼び出す代わりに、その設定を既存の `PreferenceActivity` の中に直接統合することもできます。
 
-You can configure Engagement to use your preferences file (with the desired mode) in the `AndroidManifest.xml` file with `application meta-data`:
+`AndroidManifest.xml` ファイル内の設定ファイルを (目的のモードで) `application meta-data` と共に使うように Engagement を構成できます。
 
--   The `engagement:agent:settings:name` key is used to define the name of the shared preferences file.
--   The `engagement:agent:settings:mode` key is used to define the mode of the shared preferences file. Use the same mode as in your `PreferenceActivity`. The mode must be passed as a number: if you are using a combination of constant flags in your code, check the total value.
+-   `engagement:agent:settings:name` キーを使って、共有設定ファイルの名前を定義します。
+-   `engagement:agent:settings:mode` キーを使って、共有設定ファイルのモードを定義します。`PreferenceActivity` と同じモードを使用してください。モードは数値として渡す必要があります。コード内で定数フラグの組み合わせを使っている場合は、合計値を確認します。
 
-Engagement always uses the `engagement:key` boolean key within the preferences file for managing this setting.
+Engagement では、この設定を管理するために設定ファイル内で常に `engagement:key` ブール キーを使います。
 
-The following example of `AndroidManifest.xml` shows the default values:
+次の `AndroidManifest.xml` の例は、既定値を示しています。
 
-    <application>
-        [...]
-        <meta-data
-          android:name="engagement:agent:settings:name"
-          android:value="engagement.agent" />
-        <meta-data
-          android:name="engagement:agent:settings:mode"
-          android:value="0" />
+	<application>
+	    [...]
+	    <meta-data
+	      android:name="engagement:agent:settings:name"
+	      android:value="engagement.agent" />
+	    <meta-data
+	      android:name="engagement:agent:settings:mode"
+	      android:value="0" />
 
-Then you can add a `CheckBoxPreference` in your preference layout like the following one:
+次のような `CheckBoxPreference` を設定レイアウトに追加できます。
 
-    <CheckBoxPreference
-      android:key="engagement:enabled"
-      android:defaultValue="true"
-      android:title="Use Engagement"
-      android:summaryOn="Engagement is enabled."
-      android:summaryOff="Engagement is disabled." />
+	<CheckBoxPreference
+	  android:key="engagement:enabled"
+	  android:defaultValue="true"
+	  android:title="Use Engagement"
+	  android:summaryOn="Engagement is enabled."
+	  android:summaryOff="Engagement is disabled." />
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

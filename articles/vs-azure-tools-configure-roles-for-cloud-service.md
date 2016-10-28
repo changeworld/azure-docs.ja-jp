@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Configure the Roles for an Azure Cloud Service with Visual Studio | Microsoft Azure"
-   description="Learn how to set up and configure roles for Azure cloud services by using Visual Studio."
+   pageTitle="Visual Studio で Azure クラウド サービスのロールを構成する | Microsoft Azure"
+   description="Visual Studio を使用し、Azure クラウド サービスのロールをセットアップして構成する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,100 +15,99 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Visual Studio で Azure クラウド サービスのロールを構成する
 
-# <a name="configure-the-roles-for-an-azure-cloud-service-with-visual-studio"></a>Configure the Roles for an Azure Cloud Service with Visual Studio
-
-An Azure cloud service can have one or more worker or web roles. For each role you need to define how that role is set up and also configure how that role runs. To learn more about roles in cloud services, see the video [Introduction to Azure Cloud Services](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services). The information for your cloud service is stored in the following files:
+Azure クラウド サービスには、worker ロールまたは Web ロールを割り当てることができます。それぞれのロールについて、そのセットアップ方法を定義すると共に、実行方法を構成する必要があります。クラウド サービスのロールの詳細については、[Azure Cloud Services の概要](https://channel9.msdn.com/Series/Windows-Azure-Cloud-Services-Tutorials/Introduction-to-Windows-Azure-Cloud-Services)を紹介した動画をご覧ください。クラウド サービスに関する情報は、次のファイルに格納されます。
 
 - **ServiceDefinition.csdef**
 
-    The service definition file defines the runtime settings for your cloud service including what roles are required, endpoints, and virtual machine size. None of the data stored in this file can be changed when your role is running.
+    サービス定義ファイルは、必要なロール、エンドポイント、仮想マシンのサイズを含む、クラウド サービスのランタイム設定を定義します。このファイルに格納されたデータはいずれも、ロールの実行中には変更できません。
 
 - **ServiceConfiguration.cscfg**
 
-    The service configuration file configures how many instances of a role are run and the values of the settings defined for a role. The data stored in this file can be changed while your role is running.
+    サービス構成ファイルでは、実行されるロールのインスタンス数とロールに定義されている設定の値を構成します。このファイルに格納されたデータは、ロールの実行中に変更できます。
 
-To be able to store different values for these settings for how your role runs, you can have multiple service configurations. You can use a different service configuration for each deployment environment. For example, you can set your storage account connection string to use the local Azure storage emulator in a local service configuration and create another service configuration to use the Azure storage in the cloud.
+これらの設定の値をロールの実行方法に応じて使い分けることができるように、サービス構成は複数使用することができます。デプロイメント環境ごとに異なるサービス構成を使用できます。たとえば、ローカル サービス構成で、ローカルの Azure ストレージ エミュレーターを使用するようにストレージ アカウントの接続文字列を設定する一方、クラウドで Azure ストレージを使用するためのサービス構成を別途作成することができます。
 
-When you create a new Azure cloud service in Visual Studio, two service configurations are created by default. These configurations are added to your Azure project. The configurations are named:
+Visual Studio で新しい Azure クラウド サービスを作成すると、既定で 2 つのサービス構成が作成されます。これらの構成は、Azure プロジェクトに追加されます。構成には次の名前が付けられます。
 
 - ServiceConfiguration.Cloud.cscfg
 
 - ServiceConfiguration.Local.cscfg
 
-## <a name="configure-an-azure-cloud-service"></a>Configure an Azure cloud service
+## Azure クラウド サービスを構成する
 
-You can configure an Azure cloud service from Solution Explorer in Visual Studio, as shown in the following illustration.
+次の図に示すように、Azure クラウド サービスの構成は、Visual Studio のソリューション エクスプローラーから行うことができます。
 
-![Configure Cloud Service](./media/vs-azure-tools-configure-roles-for-cloud-service/IC713462.png)
+![クラウド サービスの構成](./media/vs-azure-tools-configure-roles-for-cloud-service/IC713462.png)
 
-### <a name="to-configure-an-azure-cloud-service"></a>To configure an Azure cloud service
+### Azure クラウド サービスを構成するには
 
-1. To configure each role in your Azure project from **Solution Explorer**, open the shortcut menu for the role in the Azure project and then choose **Properties**.
+1. **ソリューション エクスプローラー**で Azure プロジェクトの各ロールを構成するには、Azure プロジェクトのロールのショートカット メニューを開き、**[プロパティ]** を選択します。
 
-    A page with the name of the role is displayed in the Visual Studio editor. The page displays the fields for the **Configuration** tab.
+    ロールの名前のページが、Visual Studio エディターに表示されます。ページには、**[構成]** タブのフィールドが表示されます。
 
-1. In the **Service Configuration** list, choose the name of the service configuration that you want to edit.
+1. **[サービス構成]** の一覧で、編集するサービス構成の名前を選択します。
 
-    If you want to make changes to all of the service configurations for this role, you can choose **All Configurations**.
+    このロールのすべてのサービス構成を変更する場合は、**[すべての構成]** を選択できます。
 
-    >[AZURE.IMPORTANT] If you choose a specific service configuration, some properties are disabled because they can only be set for all configurations. To edit these properties, you must choose All Configurations.
+    >[AZURE.IMPORTANT] 設定の対象が "すべての構成" に限定されるプロパティが一部存在します。特定のサービス構成を選択した場合、それらのプロパティは無効になります。これらのプロパティを編集するには、[すべての構成] を選択する必要があります。
 
-    You can now choose a tab to update any enabled properties on that view.
+    タブを選択し、そのビューで任意の有効なプロパティを更新できるようになります。
 
-## <a name="change-the-number-of-role-instances"></a>Change the number of role instances
+## ロール インスタンス数の変更
 
-To improve the performance of your cloud service, you can change the number of instances of a role that are running, based on the number of users or the load expected for a particular role. A separate virtual machine is created for each instance of a role when the cloud service runs in Azure. This will affect the billing for the deployment of this cloud service. For more information about billing, see [Understand your bill for Microsoft Azure](billing-understand-your-bill.md).
+クラウド サービスのパフォーマンスを高めるには、実行するロールのインスタンスの数を、ユーザー数や特定のロールに必要な負荷に応じて変更します。Azure でクラウド サービスを実行すると、ロールのインスタンスごとに仮想マシンが作成されます。このことが、そのクラウド サービスのデプロイメントの料金に影響します。課金の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」を参照してください。
 
-### <a name="to-change-the-number-of-instances-for-a-role"></a>To change the number of instances for a role
+### ロールのインスタンス数を変更するには
 
-1. Choose the **Configuration** tab.
+1. **[構成]** タブを選択します。
 
-1. In the **Service Configuration** list, choose the service configuration that you want to update.
+1. **[サービスの構成]** の一覧で、更新するサービス構成を選択します。
 
-    >[AZURE.NOTE] You can set the instance count for a specific service configuration or for all service configurations.
+    >[AZURE.NOTE] インスタンス数は、特定のサービス構成を対象に設定することも、すべてのサービス構成を対象に設定することもできます。
 
-1. In the **Instance count** text box, enter the number of instances that you want to start for this role.
+1. **[インスタンス数]** テキスト ボックスに、このロールで開始するインスタンスの数を入力します。
 
-    >[AZURE.NOTE] Each instance is run on a separate virtual machine when you publish your cloud service to Azure.
+    >[AZURE.NOTE] Azure にクラウド サービスを発行すると、それぞれのインスタンスが個別の仮想マシンで実行されます。
 
-1. Choose the **Save** button on the toolbar to save these changes to the service configuration file.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** ボタンをクリックします。
 
-## <a name="manage-connection-strings-for-storage-accounts"></a>Manage connection strings for storage accounts
+## ストレージ アカウント用の接続文字列の管理
 
-You can add, remove or modify connection strings for your service configurations. You might want different connection strings for different service configurations. For example, you might want a local connection string for a local service configuration that has a value of `UseDevelopmentStorage=true`. You might also want to configure a cloud service configuration that uses a storage account in Azure.
+接続文字列は、サービス構成で追加、削除、変更することができます。接続文字列は、サービス構成ごとに使い分けることができます。たとえば、`UseDevelopmentStorage=true` という値を持つローカル サービス構成には、ローカル接続文字列を使用します。それに加えて、Azure のストレージ アカウントを使用するクラウド サービス構成も必要になることが考えられます。
 
->[AZURE.WARNING] When you enter the Azure storage account key information for a storage account connection string, this information is stored locally in the service configuration file. However, this information is currently not stored as encrypted text.
+>[AZURE.WARNING] ストレージ アカウント接続文字列の Azure ストレージ アカウント キー情報を入力したとき、その情報はローカルのサービス構成ファイルに格納されます。ただしこの情報は現在、暗号化されたテキストとして保存されません。
 
-By using a different value for each service configuration, you do not have to use different connection strings in your cloud service or modify your code when you publish your cloud service to Azure. You can use the same name for the connection string in your code and the value will be different, based on the service configuration that you select when you build your cloud service or when you publish it.
+サービス構成ごとに値を使い分ければ、クラウド サービスを Azure に発行する段階でコードに変更を加えたり、複数の異なる接続文字列をクラウド サービスで使用したりせずに済みます。コード内の接続文字列には同じ名前を使用してください。クラウド サービスをビルドまたは発行するときに選択したサービス構成によって異なる値が適用されます。
 
-### <a name="to-manage-connection-strings-for-storage-accounts"></a>To manage connection strings for storage accounts
+### ストレージ アカウント用の接続文字列を管理するには
 
-1. Choose the **Settings** tab.
+1. **[設定]** タブを選択します。
 
-1. In the **Service Configuration** list, choose the service configuration that you want to update.
+1. **[サービスの構成]** の一覧で、更新するサービス構成を選択します。
 
-    >[AZURE.NOTE] You can update connection strings for a specific service configuration, but if you need to add or delete a connection string you must select All Configurations.
+    >[AZURE.NOTE] 特定のサービス構成を対象に接続文字列を更新することもできますが、接続文字列を追加または削除する必要がある場合は、[すべての構成] を選択してください。
 
-1. To add a connection string, choose the **Add Setting** button. A new entry is added to the list.
+1. 接続文字列を追加するには、**[設定の追加]** ボタンをクリックします。新しいエントリが一覧に追加されます。
 
-1. In the **Name** text box, type the name that you want to use for the connection string.
+1. **[名前]** テキスト ボックスに、接続文字列に使用する名前を入力します。
 
-1. In the **Type** drop-down list, choose **Connection String**.
+1. **[種類]** ドロップダウン リストで、**[接続文字列]** を選択します。
 
-1. To change the value for the connection string, choose the ellipsis (...) button. The **Create Storage Connection String** dialog box appears.
+1. 接続文字列の値を変更するには、省略記号 (...) ボタンをクリックします。**[ストレージ接続文字列の作成]** ダイアログ ボックスが表示されます。
 
-1. To use the local storage account emulator, choose the **Microsoft Azure storage emulator** option button and then choose the **OK** button.
+1. ローカルのストレージ アカウント エミュレーターを使用するには、**[Microsoft Azure ストレージ エミュレーター]** オプション ボタンをオンにし、**[OK]** ボタンをクリックします。
 
-1. To use a storage account in Azure, choose the **Your subscription** option button and select the desired storage account.
+1. Azure でストレージ アカウントを使用するには、**[自分のサブスクリプション]** オプション ボタンをオンにし、目的のストレージ アカウントを選択します。
 
-1. To use custom credentials, choose the **Manually entered credentials** options button. Enter the storage account name, and either the primary or second key. For information about how to create a storage account and how to enter the details for the storage account in the **Create Storage Connection String** dialog box, see [Prepare to publish or deploy an Azure application from Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md).
+1. カスタム資格情報を使用するには、**[手動で入力された資格情報]** オプション ボタンをオンにします。ストレージ アカウント名を入力し、プライマリ キーまたはセカンダリ キーを入力します。**[ストレージ接続文字列の作成]** ダイアログ ボックスでストレージ アカウントを作成する方法およびストレージ アカウントの情報を入力する方法については、「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。
 
-1. To delete a connection string, select the connection string and then choose the **Remove Setting** button.
+1. 接続文字列を削除するには、接続文字列を選択し、**[設定の削除]** ボタンをクリックします。
 
-1. Choose the **Save** icon on the toolbar to save these changes to the service configuration file.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** アイコンをクリックします。
 
-1. To access the connection string in the service configuration file, you must get the value of the configuration setting. The following code shows an example where blob storage is created and data uploaded using a connection string `MyConnectionString` from the service configuration file when a user chooses **Button1** on the Default.aspx page in the web role for an Azure cloud service. Add the following using statements to Default.aspx.cs:
+1. サービス構成ファイル内の接続文字列にアクセスするには、構成設定の値を取得する必要があります。次のコードは、BLOB ストレージが作成される場所と、ユーザーが Azure クラウド サービスの Web ロールで Default.aspx ページから **[Button1]** を選択したときにサービス構成ファイルから接続文字列 `MyConnectionString` を使用してアップロードされたデータの例を示しています。Default.aspx.cs に次の using ステートメントを追加します。
 
     ```
     using Microsoft.WindowsAzure;
@@ -116,7 +115,7 @@ By using a different value for each service configuration, you do not have to us
     using Microsoft.WindowsAzure.ServiceRuntime;
     ```
 
-1. Open Default.aspx.cs in design view, and add a button from the toolbox. Add the following code to the `Button1_Click` method. This code uses `GetConfigurationSettingValue` to get the value from the service configuration file for the connection string. Then a blob is created in the storage account that is referenced in the connection string `MyConnectionString` and finally the program adds text to the blob.
+1. デザイン ビューで Default.aspx.cs を開き、ツールボックスからボタンを追加します。`Button1_Click` メソッドに次のコードを追加します。このコードでは、`GetConfigurationSettingValue` を使用して、サービス構成ファイルから接続文字列の値を取得します。次に、接続文字列 `MyConnectionString` で参照されるストレージ アカウントに BLOB が作成され、最後にプログラムによってテキストが BLOB に追加されます。
 
     ```
     protected void Button1_Click(object sender, EventArgs e)
@@ -134,37 +133,37 @@ By using a different value for each service configuration, you do not have to us
     }
     ```
 
-## <a name="add-custom-settings-to-use-in-your-azure-cloud-service"></a>Add custom settings to use in your Azure cloud service
+## Azure クラウド サービスで使用するカスタム設定を追加する
 
-Custom settings in the service configuration file let you add a name and value for a string for a specific service configuration. You might choose to use this setting to configure a feature in your cloud service by reading the value of the setting and using this value to control the logic in your code. You can change these service configuration values without having to rebuild your service package or when your cloud service is running. Your code can check for notifications of when a setting changes. See [RoleEnvironment.Changing Event](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx).
+特定のサービス構成に使用する文字列の名前と値は、サービス構成ファイルのカスタム設定で追加できます。コードの中でカスタム設定の値を読み取ってその値を基にロジックを制御することで、クラウド サービスの機能を構成することができます。これらのサービス構成の値を変更するために、サービス パッケージをリビルドする必要はありません。クラウド サービスの実行中に値を変更することもできます。設定が変更されたことは、その通知をコードで受け取ることによって確認できます。「[RoleEnvironment.Changing イベント](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.changing.aspx)」を参照してください。
 
-You can add, remove or modify custom settings for your service configurations. You might want different values for these strings for different service configurations.
+カスタム設定は、目的のサービス構成を対象に追加、削除、変更することができます。文字列の値はサービス構成ごとに使い分けることができます。
 
-By using a different value for each service configuration, you do not have to use different strings in your cloud service or modify your code when you publish your cloud service to Azure. You can use the same name for the string in your code and the value will be different, based on the service configuration that you select when you build your cloud service or when you publish it.
+サービス構成ごとに値を使い分ければ、クラウド サービスを Azure に発行する段階でコードに変更を加えたり、複数の異なる文字列をクラウド サービスで使用したりせずに済みます。コード内の文字列には同じ名前を使用してください。クラウド サービスをビルドまたは発行するときに選択したサービス構成によって異なる値が適用されます。
 
-### <a name="to-add-custom-settings-to-use-in-your-azure-cloud-service"></a>To add custom settings to use in your Azure cloud service
+### Azure クラウド サービスで使用するカスタム設定を追加するには
 
-1. Choose the **Settings** tab.
+1. **[設定]** タブを選択します。
 
-1. In the **Service Configuration** list, choose the service configuration that you want to update.
+1. **[サービスの構成]** の一覧で、更新するサービス構成を選択します。
 
-    >[AZURE.NOTE] You can update strings for a specific service configuration, but if you need to add or delete a string, you must select **All Configurations**.
+    >[AZURE.NOTE] 特定のサービス構成を対象に文字列を更新することもできますが、文字列を追加または削除する必要がある場合は、**[すべての構成]** を選択してください。
 
-1. To add a string, choose the **Add Setting** button. A new entry is added to the list.
+1. 文字列を追加するには、**[設定の追加]** ボタンをクリックします。新しいエントリが一覧に追加されます。
 
-1. In the **Name** text box, type the name that you want to use for the string.
+1. 文字列に使用する名前を **[名前]** テキスト ボックスに入力します。
 
-1. In the **Type** drop-down list, choose **String**.
+1. **[種類]** ドロップダウン リストで、**[文字列]** を選択します。
 
-1. To add or change the value for the string, in the **Value** text box type the new value.
+1. 文字列の値を追加または変更するには、**[値]** テキスト ボックスに新しい値を入力します。
 
-1. To delete a string, select the string and then choose the **Remove Setting** button.
+1. 文字列を削除するには、文字列を選択し、**[設定の削除]** ボタンをクリックします。
 
-1. Choose the **Save** button on the toolbar to save these changes to the service configuration file.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** ボタンをクリックします。
 
-1. To access the string in the service configuration file, you must get the value of the configuration setting.
+1. サービス構成ファイル内の文字列にアクセスするには、構成設定の値を取得する必要があります。
 
-    You need to make sure that the following using statements are already added to Default.aspx.cs just as you did in the previous procedure.
+    前の手順と同様、次の using ステートメントが Default.aspx.cs に追加されていることを確認してください。
 
     ```
     using Microsoft.WindowsAzure;
@@ -172,7 +171,7 @@ By using a different value for each service configuration, you do not have to us
     using Microsoft.WindowsAzure.ServiceRuntime;
     ```
 
-1. Add the following code to the `Button1_Click` method to access this string in the same way that you access a connection string. Your code can then perform some specific code based on the value of the settings string for the service configuration file that is used.
+1. 接続文字列にアクセスするときと同様、`Button1_Click` メソッドに次のコードを追加して、この文字列にアクセスします。その後、使用するサービス構成ファイルの設定文字列の値に基づいて特定のコードを実行できます。
 
     ```
     var settingValue = RoleEnvironment.GetConfigurationSettingValue("MySetting");
@@ -182,42 +181,42 @@ By using a different value for each service configuration, you do not have to us
     }
     ```
 
-## <a name="manage-local-storage-for-each-role-instance"></a>Manage local storage for each role instance
+## 各ロール インスタンスのローカル ストレージの管理
 
-You can add local file system storage for each instance of a role. You can store local data here that does not need to be accessed by other roles. Any data that you do not need to save into table, blob, or SQL Database storage can be stored in here. For example, you could use this local storage to cache data that might need to be used again. This stored data can’t be accessed by other instances of a role. 
+ローカル ファイル システム ストレージは、ロールのインスタンスごとに追加できます。ここには、他のロールからはアクセスする必要のないローカル データを格納することができます。テーブル、BLOB、SQL Database ストレージに保存する必要がないデータもすべてそこに格納できます。たとえば、繰り返し使用する可能性のあるデータは、このローカル ストレージにキャッシュすることが考えられます。そこに保存されたデータは、ロールの他のインスタンスからはアクセスできません。
 
-Local storage settings apply to all service configurations. You can only add, remove, or modify local storage for all service configurations.
+ローカル ストレージの設定はすべてのサービス構成に適用されます。ローカル ストレージの追加、削除、変更は、すべてのサービス構成を対象にのみ実行できます。
 
-### <a name="to-manage-local-storage-for-each-role-instance"></a>To manage local storage for each role instance
+### 各ロール インスタンスのローカル ストレージを管理するには
 
-1. Choose the **Local Storage** tab.
+1. **[ローカル ストレージ]** タブを選択します。
 
-1. In the **Service Configuration** list, choose **All Configurations**.
+1. **[サービスの構成]** の一覧で、**[すべての構成]** を選択します。
 
-1. To add a local storage entry, choose the **Add Local Storage** button. A new entry is added to the list.
+1. ローカル ストレージのエントリを追加するには、**[ローカル ストレージの追加]** ボタンをクリックします。新しいエントリが一覧に追加されます。
 
-1. In the **Name** text box, type the name that you want to use for this local storage.
+1. このローカル ストレージに使用する名前を **[名前]** テキスト ボックスに入力します。
 
-1. In the **Size** text box, type the size in MB that you need for this local storage.
+1. **[サイズ]** テキスト ボックスに、このローカル ストレージに必要なサイズを MB 単位で入力します。
 
-1. To remove the data in this local storage when the virtual machine for this role is recycled, select the **Clean on role recycle** check box.
+1. このロール用の仮想マシンをリサイクルするときにこのローカル ストレージのデータを削除するには、**[ロールのリサイクル時に消去]** チェック ボックスをオンにします。
 
-1. To edit an existing local storage entry, choose the row that you need to update. Then you can edit the fields, as described in the previous steps.
+1. 既存のローカル ストレージのエントリを編集するには、更新する必要のある行を選択します。そのうえで前の手順の説明に従って、フィールドを編集してください。
 
-1. To delete a local storage entry, choose the storage entry in the list and then choose the **Remove Local Storage** button.
+1. ローカル ストレージのエントリを削除するには、一覧でストレージのエントリを選択し、**[ローカル ストレージの削除]** ボタンをクリックします。
 
-1. To save these changes to the service configuration files, choose the **Save** icon on the toolbar.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** アイコンをクリックします。
 
-1. To access the local storage that you have added in the service configuration file, you must get the value of the local resource configuration setting. Use the following lines of code to access this value and create a file called **MyStorageTest.txt** and write a line of test data into that file. You can add this code into the `Button_Click` method that you used in the previous procedures:
+1. サービス構成ファイルに追加したローカル ストレージにアクセスするには、ローカル リソースの構成設定の値を取得する必要があります。この値にアクセスし、**MyStorageTest.txt** というファイルを作成して、テスト データの行をそのファイルに書き込むには、以下のコード行を使用します。前の手順で使用した `Button_Click` メソッドにこのコードを追加することができます。
 
-1. You need to make sure that the following using statements are added to Default.aspx.cs:
+1. 次の using ステートメントが Default.aspx.cs に追加されていることを確認する必要があります。
 
     ```
     using System.IO;
     using System.Text;
     ```
 
-1. Add the following code to the `Button1_Click` method. This creates the file in the local storage and writes test data into that file.
+1. `Button1_Click` メソッドに次のコードを追加します。これによって、ファイルがローカル ストレージに作成され、テスト データがファイルに書き込まれます。
 
     ```
     // Retrieve an object that points to the local storage resource
@@ -234,151 +233,147 @@ Local storage settings apply to all service configurations. You can only add, re
     }
     ```
 
-1. (Optional) To view this file that you created when you run your cloud service locally, use the following steps:
+1. (省略可能) クラウド サービスをローカルで実行するときに作成したこのファイルを表示するには、次の手順に従います。
 
-  1. Run the web role and select **Button1** to make sure that the code inside `Button1_Click` gets called.
+  1. Web ロールを実行し、**[Button1]** を選択して、`Button1_Click` 内のコードが呼び出されることを確認します。
 
-  1. In the notification area, open the shortcut menu for the Azure icon and choose **Show Compute Emulator UI**. The **Azure Compute Emulator** dialog box appears.
+  1. 通知領域で、Azure アイコンのショートカット メニューを開き、**[コンピューティング エミュレーター UI の表示]** を選択します。**[Azure コンピューティング エミュレーター]** ダイアログ ボックスが表示されます。
 
-  1. Select the web role.
+  1. Web ロールを選択します。
 
-  1. On the menu bar, choose **Tools**, **Open local store**. A Windows Explorer window appears.
+  1. メニュー バーで **[ツール]**、**[ローカル ストアを開く]** の順に選択します。Windows エクスプローラー ウィンドウが表示されます。
 
-  1. On the menu bar, enter **MyStorageTest.txt** into the **Search** text box and then choose **Enter** to start the search.
+  1. メニュー バーの **[検索]** テキスト ボックスに「**MyStorageTest.txt**」と入力し、**Enter** キーを押して検索を開始します。
 
-    The file is displayed in the search results.
+    このファイルは検索結果に表示されます。
 
-  1. To view the contents of the file, open the shortcut menu for the file and choose **Open**.
+  1. ファイルの内容を表示するには、ファイルのショートカット メニューを開き、**[開く]** を選択します。
 
-## <a name="collect-cloud-service-diagnostics"></a>Collect cloud service diagnostics
+## クラウド サービスの診断データを収集する
 
-You can collect diagnostics data for your Azure cloud service. This data is added to a storage account. You might want different connection strings for different service configurations. For example, you might want a local storage account for a local service configuration that has a value of UseDevelopmentStorage=true. You might also want to configure a cloud service configuration that uses a storage account in Azure. For more information about Azure diagnostics, see Collect Logging Data by Using Azure Diagnostics.
+Azure クラウド サービスの診断データを収集することができます。このデータは、ストレージ アカウントに追加されます。接続文字列は、サービス構成ごとに使い分けることができます。たとえば、UseDevelopmentStorage=true という値を持つローカル サービス構成には、ローカル ストレージ アカウントを使用します。それに加えて、Azure のストレージ アカウントを使用するクラウド サービス構成も必要になることが考えられます。Azure 診断の詳細については、「Azure 診断を使用したログ データの収集」を参照してください。
 
->[AZURE.NOTE] The local service configuration is already configured to use local resources. If you use the cloud service configuration to publish your Azure cloud service, the connection string that you specify when you publish is also used for the diagnostics connection string unless you have specified a connection string. If you package your cloud service using Visual Studio, the connection string in the service configuration is not changed.
+>[AZURE.NOTE] ローカル サービス構成は、あらかじめローカル リソースを使用するように構成されています。クラウド サービス構成を使用して Azure クラウド サービスを発行する場合、接続文字列を指定しない限り、発行時に指定した接続文字列が診断の接続文字列にも使用されます。Visual Studio を使用してクラウド サービスをパッケージ化する場合、サービス構成内の接続文字列は変更されません。
 
-### <a name="to-collect-cloud-service-diagnostics"></a>To collect cloud service diagnostics
+### クラウド サービスの診断データを収集するには
 
-1. Choose the **Configuration** tab.
+1. **[構成]** タブを選択します。
 
-1. In the **Service Configuration** list, choose the service configuration that you want to update or choose **All Configurations**.
+1. **[サービスの構成]** の一覧で、更新するサービス構成を選択するか、**[すべての構成]** を選択します。
 
-    >[AZURE.NOTE] You can update the storage account for a specific service configuration, but if you want to enable or disable diagnostics you must choose All Configurations.
+    >[AZURE.NOTE] ストレージ アカウントは特定のサービス構成を対象に更新できますが、診断を有効または無効にする場合は、[すべての構成] を選択する必要があります。
 
-1. To enable diagnostics, select the **Enable Diagnostics** check box.
+1. 診断を有効にするには、**[診断を有効にする]** チェック ボックスをオンにします。
 
-1. To change the value for the storage account, choose the ellipsis (...) button.
+1. ストレージ アカウントの値を変更するには、省略記号 (...) ボタンをクリックします。
 
-    The **Create Storage Connection String** dialog box appears.
+    **[ストレージ接続文字列の作成]** ダイアログ ボックスが表示されます。
 
-1. To use a local connection string, choose Azure storage emulator option and then choose the **OK** button.
+1. ローカル接続文字列を使用するには、[Azure ストレージ エミュレーター] オプションをオンにし、**[OK]** をクリックします。
 
-1. To use a storage account associated with your Azure subscription, choose the **Your subscription** option.
+1. Azure サブスクリプションに関連付けられているストレージ アカウントを使用するには、**[自分のサブスクリプション]** オプションをオンにします。
 
-1. To use a storage account for the local connection string, choose the **Manually entered credentials** option.
+1. ローカル接続文字列のストレージ アカウントを使用するには、**[手動で入力された資格情報]** オプションをオンにします。
 
-    For more information about how to create a storage account and how to enter the details for the storage account in the **Create Storage Connection String** dialog box, see [Prepare to publish or deploy an Azure application from Visual Studio](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md).
+    **[ストレージ接続文字列の作成]** ダイアログ ボックスでストレージ アカウントを作成する方法およびストレージ アカウントの情報を入力する方法の詳細については、「[Visual Studio からの Azure アプリケーションの発行またはデプロイの準備](vs-azure-tools-cloud-service-publish-set-up-required-services-in-visual-studio.md)」を参照してください。
 
-1. Choose the storage account you want to use in **Account name**.
+1. 使用するストレージ アカウントを **[アカウント名]** で選択します。
 
-    If you are manually entering your storage account credentials, copy or type your primary key in **Account key**. This key can be copied from the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885). To copy this key, following these steps from the **Storage Accounts** view in the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885):
+    ストレージ アカウントの資格情報を手動で入力する場合は、**[アカウント キー]** にプライマリ キーをコピーするか入力します。このキーは、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)からコピーできます。このキーをコピーするには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)の **[ストレージ アカウント]** ビューで次の手順を実行します。
     
-  1. Select the storage account that you want to use for your cloud service.
+  1. クラウド サービスに使用するストレージ アカウントを選択します。
 
-  1. Choose the **Manage Access Keys** button located at the bottom of the screen. The **Manage Access Keys** dialog box appears.
+  1. 画面下部にある **[アクセス キーの管理]** ボタンをクリックします。**[アクセス キーの管理]** ダイアログ ボックスが表示されます。
 
-  1. To copy the access key, choose the **Copy to clipboard** button. You can now paste this key into the **Account key** field.
+  1. アクセス キーをコピーするには、**[クリップボードにコピー]** ボタンをクリックします。これで、このキーを **[アカウント キー]** フィールドに貼り付けることができます。
 
-1. To use the storage account that you provide, as the connection string for diagnostics (and caching) when you publish your cloud service to Azure, select the **Update development storage connection strings for Diagnostics and Caching with Azure storage account credentials when publishing to Azure** check box.
+1. Azure にクラウド サービスを発行するときに指定するストレージ アカウントを診断 (およびキャッシュ) 用の接続文字列として使用するには、**[Azure への発行時に診断とキャッシュのための開発ストレージの接続文字列を Azure ストレージ アカウントの資格情報で更新する]** チェック ボックスをオンにします。
 
-1. Choose the **Save** button on the toolbar to save these changes to the service configuration file.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** ボタンをクリックします。
 
-## <a name="change-the-size-of-the-virtual-machine-used-for-each-role"></a>Change the size of the virtual machine used for each role
+## 各ロールに対して使用する仮想マシンのサイズを変更する
 
-You can set the virtual machine size for each role. You can only set this size for all service configurations. If you select a smaller machine size, then less CPU cores, memory and local disk storage is allocated. The allocated bandwidth is also smaller. For more information about these sizes and the resources allocated, see [Sizes for Cloud Services](cloud-services/cloud-services-sizes-specs.md).
+仮想マシンのサイズはロールごとに設定できます。サイズは、すべてのサービス構成を対象にのみ設定できます。小さいマシン サイズを選択すると、割り当てられる CPU コア数、メモリ、ローカル ディスクのストレージが少なくなります。同様に、割り当てられる帯域幅も小さくなります。これらのサイズと割り当てられるリソースの詳細については、「[Cloud Services のサイズ](cloud-services/cloud-services-sizes-specs.md)」を参照してください。
 
-The resources required for each virtual machine in Azure affects the cost of running your cloud service in Azure. For more information about Azure Billing, see [Understand your bill for Microsoft Azure](billing-understand-your-bill.md).
+Azure の各仮想マシンに必要なリソースは、Azure でクラウド サービスを実行するコストに影響します。Azure 課金の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」を参照してください。
 
-### <a name="to-change-the-size-of-the-virtual-machine"></a>To change the size of the virtual machine
+### 仮想マシンのサイズを変更するには
 
-1. Choose the **Configuration** tab.
+1. **[構成]** タブを選択します。
 
-1. In the **Service Configuration** list, choose **All Configurations**.
+1. **[サービスの構成]** の一覧で、**[すべての構成]** を選択します。
 
-1. To select the size for the virtual machine for this role, choose the appropriate size from the **VM size** list.
+1. このロール用の仮想マシンのサイズを選択するには、**[VM サイズ]** の一覧から適切なサイズを選択します。
 
-1. Choose the **Save** button on the toolbar to save these changes to the service configuration file.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** ボタンをクリックします。
 
-## <a name="manage-endpoints-and-certificates-for-your-roles"></a>Manage endpoints and certificates for your roles
+## ロールのエンドポイントと証明書の管理
 
-You configure networking endpoints by specifying the protocol, the port number, and, for HTTPS, the SSL certificate information. Releases before June 2012 support HTTP, HTTPS, and TCP. The June 2012 release supports those protocols and UDP. You can’t use UDP for input endpoints in the compute emulator. You can use that protocol only for internal endpoints.
+ネットワークのエンドポイントの構成は、プロトコルとポート番号、さらに (HTTPS の場合) SSL 証明書の情報を指定して行います。2012 年 6 月よりも前のリリースでは、HTTP、HTTPS、TCP がサポートされます。2012 年 6 月のリリースでは、これらのプロトコルに加え、UDP がサポートされます。コンピューティング エミュレーターの入力エンドポイントに UDP を使用することはできません。このプロトコルは、内部のエンドポイントに対してのみ使用することができます。
 
-To improve the security of your Azure cloud service, you can create endpoints that use the HTTPS protocol. For example, if you have a cloud service that is used by customers to purchase orders, you want to make sure that their information is secure by using SSL.
+Azure クラウド サービスのセキュリティを高めるには、HTTPS プロトコルを使用するエンドポイントを作成してください。たとえば、商品購入用するクラウド サービスであれば、SSL を使用して、顧客の情報を確実に保護することができます。
 
-You can also add endpoints that can be used internally or externally. External endpoints are called input endpoints. An input endpoint allows another access point to users to your cloud service. If you have a WCF service, you might want to expose an internal endpoint for a web role to use to access this service.
+内部または外部で使用できるエンドポイントを追加することもできます。外部エンドポイントは入力エンドポイントと呼ばれます。入力エンドポイントには、ユーザーがクラウド サービスを利用するためのアクセス ポイントを追加する働きがあります。WCF サービスを提供する場合、そのサービスへのアクセスに使用する Web ロールの内部エンドポイントを公開することができます。
 
->[AZURE.IMPORTANT] You can only update endpoints for all service configurations.
+>[AZURE.IMPORTANT] エンドポイントは、すべてのサービス構成を対象としてのみ更新することができます。
 
-If you add HTTPS endpoints, you need to use an SSL certificate. To do this you can associate certificates with your role for all service configurations and use these for your endpoints.
+HTTPS エンドポイントを追加する場合、SSL 証明書を使用する必要があります。すべてのサービス構成を対象としてロールに証明書を関連付け、ご利用のエンドポイントにそれらの証明書を使用してください。
 
->[AZURE.IMPORTANT] These certificates are not packaged with your service. You must upload your certificates separately to Azure through the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
+>[AZURE.IMPORTANT] これらの証明書はサービスに同梱するものではありません。[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用して、証明書を Azure に個別にアップロードする必要があります。
 
-Any management certificates that you associate with your service configurations apply only when your cloud service runs in Azure. When your cloud service runs in the local development environment, a standard certificate that is managed by the Azure compute emulator is used.
+サービス構成に関連付けた管理証明書が適用されるのは、クラウド サービスを Azure で実行したときだけです。クラウド サービスがローカル開発環境で実行されているときは、Azure コンピューティング エミュレーターが管理する標準証明書が使用されます。
 
-### <a name="to-add-a-certificate-to-a-role"></a>To add a certificate to a role
+### 証明書をロールに追加するには
 
-1. Choose the **Certificates** tab.
+1. **[証明書]** タブを選択します。
 
-1. In the **Service Configuration** list, choose **All Configurations**.
+1. **[サービスの構成]** の一覧で、**[すべての構成]** を選択します。
 
-    >[AZURE.NOTE] To add or remove certificates, you must select All Configurations. You can update the name and the thumbprint for a specific service configuration if it is required.
+    >[AZURE.NOTE] 証明書を追加または削除するには、[すべての構成] を選択する必要があります。名前とサムプリントについては、必要に応じて、特定のサービス構成を対象に更新できます。
 
-1. To add a certificate for this role, choose the **Add Certificate** button. A new entry is added to the list.
+1. このロールの証明書を追加するには、**[証明書の追加]** ボタンをクリックします。新しいエントリが一覧に追加されます。
 
-1. In the **Name** text box, enter the name for the certificate.
+1. **[名前]** テキスト ボックスに証明書の名前を入力します。
 
-1. In the **Store Location** list, choose the location for the certificate that you want to add.
+1. **[ストアの場所]** の一覧で、追加する証明書の場所を選択します。
 
-1. In the **Store Name** list, choose the store that you want to use to select the certificate.
+1. **[ストアの名前]** の一覧で、証明書の選択に使用するストアを選択します。
 
-1. To add the certificate, choose the ellipsis (...) button. The **Windows Security** dialog box appears.
+1. 証明書を追加するには、省略記号 (...) ボタンをクリックします。**[Windows セキュリティ]** ダイアログ ボックスが表示されます。
 
-1. Choose the certificate that you want to use from the list and then choose the **OK** button.
+1. 使用する証明書を一覧から選択し、**[OK]** ボタンをクリックします。
 
-    >[AZURE.NOTE] When you add a certificate from the certificate store, any intermediate certificates are added automatically to the configuration settings for you. These intermediate certificates must also be uploaded to Azure in order to correctly configure your service for SSL.
+    >[AZURE.NOTE] 証明書ストアから証明書を追加すると、すべての中間証明書は自動的に構成設定に追加されます。SSL に対してサービスを適切に構成するために、これらの中間証明書も Azure にアップロードする必要があります。
 
-1. To delete a certificate, choose the certificate and then choose the **Remove Certificate** button.
+1. 証明書を削除するには、証明書を選択し、**[証明書の削除]** ボタンをクリックします。
 
-1. Choose the **Save** icon in the toolbar to save these changes to the service configuration files.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** アイコンをクリックします。
 
-### <a name="to-manage-endpoints-for-a-role"></a>To manage endpoints for a role
+### ロール用のエンドポイントを管理するには
 
-1. Choose the **Endpoints** tab.
+1. **[エンドポイント]** タブを選択します。
 
-1. In the **Service Configuration** list, choose **All Configurations**.
+1. **[サービスの構成]** の一覧で、**[すべての構成]** を選択します。
 
-1. To add an endpoint, choose the **Add Endpoint** button. A new entry is added to the list.
+1. エンドポイントを追加するには、**[エンドポイントの追加]** ボタンをクリックします。新しいエントリが一覧に追加されます。
 
-1. In the **Name** text box, type the name that you want to use for this endpoint.
+1. このエンドポイントに使用する名前を **[名前]** テキスト ボックスに入力します。
 
-1. Choose the type of endpoint that you need from the **Type** list.
+1. 必要なエンドポイントの種類を **[種類]** の一覧から選択します。
 
-1. Choose the protocol for the endpoint that you need from the **Protocol** list.
+1. 必要なエンドポイントのプロトコルを **[プロトコル]** の一覧から選択します。
 
-1. If it is an input endpoint, in the **Public Port** text box, enter the public port to use.
+1. 入力エンドポイントの場合、**[パブリック ポート]** テキスト ボックスに、使用するパブリック ポートを入力します。
 
-1. In the **Private Port** text box type the private port to use.
+1. 使用するプライベート ポートを **[プライベート ポート]** テキスト ボックスに入力します。
 
-1. If the endpoint requires the https protocol, in the **SSL Certificate Name** list choose a certificate to use.
+1. エンドポイントに https プロトコルが必要な場合は、**[SSL 証明書の名前]** の一覧から使用する証明書を選択します。
 
-    >[AZURE.NOTE] This list shows the certificates that you have added for this role in the **Certificates** tab.
+    >[AZURE.NOTE] この一覧には、**[証明書]** タブでこのロールに追加した証明書が表示されます。
 
-1. Choose the **Save** button on the toolbar to save these changes to the service configuration files.
+1. 以上の変更をサービス構成ファイルに保存するには、ツール バーの **[保存]** ボタンをクリックします。
 
-## <a name="next-steps"></a>Next steps
-Learn more about Azure projects in Visual Studio by reading [Configuring an Azure Project](vs-azure-tools-configuring-an-azure-project.md). Learn more about the cloud service schema by reading [Schema Reference](https://msdn.microsoft.com/library/azure/dd179398).
+## 次のステップ
+Visual Studio における Azure プロジェクトの詳細については、「[Azure プロジェクトの構成](vs-azure-tools-configuring-an-azure-project.md)」を参照してください。クラウド サービスのスキーマの詳細については、「[スキーマ リファレンス](https://msdn.microsoft.com/library/azure/dd179398)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

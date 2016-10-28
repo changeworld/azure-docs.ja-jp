@@ -1,102 +1,97 @@
 <properties
-    pageTitle="Azure AD Domain Services: Enable Azure AD Domain Services | Microsoft Azure"
-    description="Getting started with Azure Active Directory Domain Services"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+	pageTitle="Azure AD ドメイン サービス - Azure AD ドメイン サービスを有効にする | Microsoft Azure"
+	description="Azure Active Directory ドメイン サービスの概要"
+	services="active-directory-ds"
+	documentationCenter=""
+	authors="mahesh-unnikrishnan"
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/21/2016"
-    ms.author="maheshu"/>
+	ms.service="active-directory-ds"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/21/2016"
+	ms.author="maheshu"/>
 
+# Azure AD Domain Services を有効にする
 
-# <a name="enable-azure-ad-domain-services"></a>Enable Azure AD Domain Services
+## タスク 3: Azure AD ドメイン サービスを有効にする
+このタスクではディレクトリに対して Azure AD Domain Services を有効にします。ディレクトリに対して Azure AD Domain Services を有効にするには、次の構成手順を実行します。
 
-## <a name="task-3:-enable-azure-ad-domain-services"></a>Task 3: Enable Azure AD Domain Services
-In this task, you enable Azure AD Domain Services for your directory. Perform the following configuration steps to enable Azure AD Domain Services for your directory.
+1. **Azure クラシック ポータル** ([https://manage.windowsazure.com](https://manage.windowsazure.com)) に移動します。
 
-1. Navigate to the **Azure classic portal** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
+2. 左ウィンドウで、**[Active Directory]** を選択します。
 
-2. Select the **Active Directory** node on the left pane.
+3. Azure AD Domain Services を有効にする Azure AD テナント (ディレクトリ) を選択します。
 
-3. Select the Azure AD tenant (directory) for which you would like to enable Azure AD Domain Services.
+    ![Azure AD ディレクトリの選択](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
 
-    ![Select Azure AD Directory](./media/active-directory-domain-services-getting-started/select-aad-directory.png)
+4. [**構成**] タブをクリックします。
 
-4. Click the **Configure** tab.
+    ![ディレクトリの [構成] タブ](./media/active-directory-domain-services-getting-started/configure-tab.png)
 
-    ![Configure tab of directory](./media/active-directory-domain-services-getting-started/configure-tab.png)
+5. **[domain services]** というタイトルのセクションまで下にスクロールします。
 
-5. Scroll down to a section titled **domain services**.
+    ![Domain Services 構成セクション](./media/active-directory-domain-services-getting-started/domain-services-configuration.png)
 
-    ![Domain Services configuration section](./media/active-directory-domain-services-getting-started/domain-services-configuration.png)
+6. **[このディレクトリのドメイン サービスを有効にします]** というタイトルのオプションを **[はい]** に切り替えます。ページに Azure AD Domain Services 用の構成オプションがさらにいくつかページに表示されます。
 
-6. Toggle the option titled **Enable domain services for this directory** to **YES**. You notice a few more configuration options for Azure AD Domain services appear on the page.
+    ![Domain Services の有効化](./media/active-directory-domain-services-getting-started/enable-domain-services.png)
 
-    ![Enable Domain Services](./media/active-directory-domain-services-getting-started/enable-domain-services.png)
+    > [AZURE.NOTE] テナントに対して Azure AD Domain Services を有効にすると、ユーザーを認証するために必要な Kerberos と NTLM の資格情報のハッシュが Azure AD によって生成され、保存されます。
 
-    > [AZURE.NOTE] When you enable Azure AD Domain Services for your tenant, Azure AD generates and stores the Kerberos and NTLM credential hashes that are required for authenticating users.
+7. **[ドメイン サービスの DNS ドメイン名]** を指定します。
 
-7. Specify the **DNS domain name of domain services**.
+   - ディレクトリの既定のドメイン名 (**.onmicrosoft.com** ドメイン サフィックスで終わる名前) が既定で選択されます。
 
-   - The default domain name of the directory (that is, ending with the **.onmicrosoft.com** domain suffix) is selected by default.
+   - 一覧には、Azure AD ディレクトリに対して構成されたすべてのドメインが含まれます。検証対象のドメインおよび [ドメイン] タブで構成する検証対象外のドメインなどがあります。
 
-   - The list contains all domains that have been configured for your Azure AD directory – including verified as well as unverified domains that you configure in the ‘Domains’ tab.
+   - さらに、この一覧には、カスタム ドメイン名を入力して追加することもできます。この例では、'contoso100.com' というカスタム ドメイン名を入力しました
 
-   - Additionally, you can also add a custom domain name to this list by typing it in. In this example, we have typed in a custom domain name 'contoso100.com'
+     > [AZURE.WARNING] 指定したドメイン名のドメイン プレフィックス (たとえば、"contoso100.com" ドメイン名の "contoso100") が 15 文字未満であることを確認します。ドメイン プレフィックスが 15 文字より長いと、Azure AD Domain Services ドメインを作成することはできません。
 
-     > [AZURE.WARNING] Ensure that the domain prefix of the domain name you specify (for example, 'contoso100' in the 'contoso100.com' domain name) is fewer than 15 characters. You cannot create an Azure AD Domain Services domain with a domain prefix longer than 15 characters.
+8. 次の手順は、Azure AD Domain Services を利用できる仮想ネットワークを選択することです。作成した仮想ネットワークを、**[ドメイン サービスをこの仮想ネットワークに接続します]** というタイトルのボックスの一覧から選択します。
 
-8. The next step is to select a virtual network in which you'd like Azure AD Domain Services to be available. Select the virtual network you created in the drop-down titled **Connect domain services to this virtual network**.
+   - 指定した仮想ネットワークが Azure AD Domain Services でサポートされている Azure リージョンに属することを確認します。
 
-   - Ensure that the virtual network you have specified belongs to an Azure region supported by Azure AD Domain Services.
+   - Azure AD Domain Services を使用できる Azure リージョンを確認するには、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/)に関するページを参照してください。
 
-   - Refer to the [Azure services by region](https://azure.microsoft.com/regions/#services/) page to know the Azure regions in which Azure AD Domain Services is available.
+   - Azure AD Domain Services がサポートされていないリージョンに属している仮想ネットワークはドロップダウン リストに表示されません。
 
-   - Virtual networks belonging to a region where Azure AD Domain Services is not supported do not show up in the drop-down list.
+   - 同様に、Azure Resource Manager を使用して作成された仮想ネットワークは、ドロップダウン リストに表示されません。現在、Resource Manager ベースの仮想ネットワークは Azure AD Domain Services でサポートされていません。
 
-   - Similarly, virtual networks that were created using Azure Resource Manager do not appear in the drop-down list. Resource Manager-based virtual networks are not currently supported by Azure AD Domain Services.
+9. 管理対象ドメイン用に選択した DNS ドメイン名がまだ仮想ネットワークに存在しないことを確認します。具体的には、以下のことを確認します。
 
-9. Ensure that the DNS domain name you have chosen for the managed domain does not already exist in the virtual network. Specifically, check if:
+   - 同じ DNS ドメイン名のドメインが仮想ネットワーク上に既にあるかどうか。
 
-   - you already have a domain with the same DNS domain name on the virtual network.
+   - 選択した仮想ネットワークにオンプレミス ネットワークとの VPN 接続があり、オンプレミス ネットワーク上に同じ DNS ドメイン名のドメインがあるかどうか。
 
-   - the virtual network you've selected has a VPN connection with your on-premises network and you have a domain with the same DNS domain name on your on-premises network.
+   - 仮想ネットワーク上に、その名前の付いたクラウド サービスが既にあるかどうか。
 
-   - you have an existing cloud service with that name on the virtual network.
+10. Azure AD Domain Services を有効にするには、ページ下部のタスク ウィンドウで **[保存]** をクリックします。
 
-10. To enable Azure AD Domain Services, click **Save** from the task pane at the bottom of the page.
+11. ディレクトリに対して Azure AD Domain Services を有効にしている間、ページは保留状態になり、[保留中] と表示されます。
 
-11. The page displays a ‘Pending …’ state, while Azure AD Domain Services is being enabled for your directory.
+    ![Domain Services の有効化 - 保留中状態](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
 
-    ![Enable Domain Services - pending state](./media/active-directory-domain-services-getting-started/enable-domain-services-pendingstate.png)
+    > [AZURE.NOTE] Azure AD Domain Services は、管理対象ドメインに対して高可用性を提供します。Azure AD Domain Services を有効にすると、仮想ネットワーク上で Domain Services を利用できる IP アドレスが 1 つずつ表示されます。2 番目の IP アドレスは、このサービスでドメインに対する高可用性が有効になるとすぐに表示されます。ドメインに対する高可用性が構成され、アクティブになると、**[構成]** タブの **[domain services]** セクションに 2 つの IP アドレスが表示されます。
 
-    > [AZURE.NOTE] Azure AD Domain Services provides high availability for your managed domain. After you enable Azure AD Domain Services, notice the IP addresses at which Domain Services are available on the virtual network show up one by one. The second IP address is displayed shortly, as soon the service enables high availability for your domain. When high availability is configured and active for your domain, you should see two IP addresses in the **domain services** section of the **Configure** tab.
+12. 約 20 ～ 30 分後に、仮想ネットワーク上で Domain Services を利用できる最初の IP アドレスが、**[構成]** ページの **[IP アドレス]** フィールドに表示されます。
 
-12. After about 20-30 minutes, you see the first IP address at which Domain Services is available on your virtual network in the **IP address** field on the **Configure** page.
+    ![Domain Services が有効化された - 最初の IP がプロビジョニングされた](./media/active-directory-domain-services-getting-started/domain-services-enabled-firstdc-available.png)
 
-    ![Domain Services enabled - first IP provisioned](./media/active-directory-domain-services-getting-started/domain-services-enabled-firstdc-available.png)
+13. 高可用性がドメインで運用されると、2 つの IP アドレスがページに表示されます。これらは、選択した仮想ネットワーク上で Azure AD Domain Services を利用できる IP アドレスです。仮想ネットワークの DNS 設定を更新できるように、これらの IP アドレスをメモしておきます。この手順は、仮想ネットワーク上の仮想マシンが、ドメインへの参加などの操作のためにドメインに接続できるようにします。
 
-13. When high availability is operational for your domain, you see two IP addresses displayed on the page. These are the IP addresses at which Azure AD Domain Services is available on your selected virtual network. Note down the IP addresses so you can update the DNS settings for your virtual network. This step enables virtual machines on the virtual network to connect to the domain for operations such as domain join.
+    ![Domain Services が有効化された - 2 つの IP がプロビジョニングされた](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
 
-    ![Domain Services enabled - both IPs provisioned](./media/active-directory-domain-services-getting-started/domain-services-enabled-bothdcs-available.png)
-
-> [AZURE.NOTE] Depending on the size of your Azure AD tenant (number of users, groups etc.), it takes a while for the contents of the tenant to be available in Azure AD Domain Services. This synchronization process happens in the background. For large tenants with tens of thousands of objects, it may take a day or two for all users, group memberships, and credentials to be available in Azure AD Domain Services.
+> [AZURE.NOTE] Azure AD テナントのサイズ (ユーザーやグループの数など) によっては、Azure AD Domain Services でテナントの内容が利用できるようになるまで、多少時間がかかります。この同期処理は、バック グラウンドで発生します。数万のオブジェクトがある大きなテナントの場合、すべてのユーザー、グループ メンバーシップ、資格情報が Azure AD Domain Services で利用できるようになるまで、1 ～ 2 日かかることがあります。
 
 <br>
 
-## <a name="task-4---update-dns-settings-for-the-azure-virtual-network"></a>Task 4 - Update DNS settings for the Azure virtual network
-The next configuration task is to [update the DNS settings for the Azure virtual network](active-directory-ds-getting-started-dns.md).
+## タスク 4: Azure 仮想ネットワークの DNS 設定を更新する
+次に、[Azure 仮想ネットワークの DNS 設定を更新](active-directory-ds-getting-started-dns.md)します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

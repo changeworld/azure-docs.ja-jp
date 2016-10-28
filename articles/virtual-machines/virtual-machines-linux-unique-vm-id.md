@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Accessing VM ID"
-   description="Describes Accessing and Using Azure VM Unique ID"
+   pageTitle="VM ID へのアクセス"
+   description="Azure VM の一意の ID へのアクセスと使用について説明します"
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="kmouss"
@@ -16,50 +16,45 @@
    ms.date="02/08/2016"
    ms.author="kmouss"/>
    
+# Azure VM の一意の ID へのアクセスと使用
 
-# <a name="accessing-and-using-azure-vm-unique-id"></a>Accessing and Using Azure VM Unique ID
+Azure VM の一意の ID は 128 ビットの識別子であり、エンコードされてすべての Azure IaaS VM の SMBIOS に格納されており、現在はプラットフォームの BIOS コマンドを使用して読み取ることができます。
 
-Azure VM unique ID is a 128bits identifier encoded and stored in all Azure IaaS VM’s SMBIOS and can currently be read using platform BIOS commands.
+Azure VM の一意の ID は、読み取り専用のプロパティです。Azure の一意の VM IDは、再起動シャット ダウン (計画的または非計画的)、割り当て解除の開始/停止、サービス復旧また復元などで変化しません。ただし、VM がスナップショットであり、新しいインスタンスを作成するためにコピーされる場合は、新しい Azure VM ID が構成されます。
 
-Azure VM unique ID is a Read-only property. Azure Unique VM ID won’t change upon reboot shutdown (either planned for unplanned), Start/Stop de-allocate, service healing or restore in place. However, if the VM is a snapshot and copied to create a new instance, new Azure VM ID is configured.
-
-> [AZURE.NOTE] If you have older VMs created and running since this new feature got rolled out (September 18, 2014), please restart your VM to automatically get an Azure unique ID.
-
-
-To access Azure Unique VM ID from within the VM:
+> [AZURE.NOTE] この新しい機能が展開 (2014 年 9 月 18 日) されてから古い VM が動き続けている場合は、VM を再起動して Azure の一意 ID を自動的に取得してください。
 
 
-## <a name="create-a-vm"></a>Create a VM
+VM 内から Azure の一意の VM ID にアクセスするには:
+
+
+## VM を作成します
  
 
-For more information, see [Create a Virtual Machine](virtual-machines-linux-creation-choices.md)
+詳細については、「[仮想マシンを作成する](virtual-machines-linux-creation-choices.md)」を参照してください。
 
 
-## <a name="connect-to-the-vm"></a>Connect to the VM
+## VM に接続します
  
 
-For more information, see [SSH from Linux](virtual-machines-linux-mac-create-ssh-keys.md)
+詳細については、[Linux からの SSH 接続](virtual-machines-linux-mac-create-ssh-keys.md)に関するページを参照してください。
 
 
-## <a name="query-vm-unique-id"></a>Query VM Unique ID
+## VM の一意の ID をクエリします
 
-Command (example uses **Ubuntu**):
+コマンド (例では **Ubuntu** を使用):
 
     sudo dmidecode | grep UUID
     
-Example Expected Results:
+例の予想される結果:
 
     UUID: 090556DA-D4FA-764F-A9F1-63614EDA019A
     
-Due to Big Endian bit ordering, the actual Unique VM ID in this case will be:
+ビッグ エンディアン ビット順序のため、この場合の実際の一意の VM ID は次のようになります。
 
     DA 56 05 09 – FA D4 – 4f 76 - A9F1-63614EDA019A
     
     
-Azure VM unique ID can be used in different scenarios whether the VM is running on Azure or on-premises and can help your licensing, reporting or general tracking requirements you may have on your Azure IaaS deployments. Many independent software vendors building applications and certifying them on Azure may require to identify an Azure VM throughout its lifecycle and to tell if the VM is running on Azure, on-Premises or on other cloud providers. This platform identifier can for example help detect if the software is properly licensed or help to correlate any VM data to its source such as to assist on setting the right metrics for the right platform and to track and correlate these metrics amongst other uses.
+Azure VM 一意 ID は VM が Azure またはオンプレミスのどちらで実行していても使用でき、Azure IaaS デプロイでのライセンス、レポート、一般的な追跡などで必要なときに役に立ちます。Azure でアプリケーションを作成してそれを認定する多くの独立系ソフトウェア ベンダーでは、そのライフサイクルを通じて Azure VM を識別し、VM がAzure、オンプレミス、または他のクラウド プロバイダーで動作しているかどうかを特定することが必要になる場合があります。このプラットフォーム ID は、たとえば、ソフトウェアが適切にライセンスされているかどうかを検出したり、適切なプラットフォームに適切なメトリックを設定して他の用途の中からこれらのメトリックを追跡して関連付けるために VM のデータとそのソースを関連付けたりするために使用できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

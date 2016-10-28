@@ -1,145 +1,140 @@
 <properties 
-    pageTitle="Directory integration between Azure Multi-Factor Authentication and Active Directory"
-    description="This is the Azure Multi-factor authentication page that describes how to integrate the Azure Multi-Factor Authentication Server with Active Directory so you can synchronize the directories."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtand"/>
+	pageTitle="Azure Multi-Factor Authentication と Active Directory 間のディレクトリ統合"
+	description="ディレクトリを同期できるように Azure Multi-Factor Authentication Server と Active Directory を統合する方法を説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtand"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
+# Azure MFA Server と Active Directory 間のディレクトリ統合
 
-# <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Directory integration between Azure MFA Server and Active Directory
+[ディレクトリ統合] セクションを使用して、Active Directory または別の LDAP ディレクトリと統合するようにサーバーを構成できます。属性をディレクトリ スキーマと一致するように構成し、ユーザーの自動同期を設定できます。
 
-The Directory Integration section allows you to configure the server to integrate with Active Directory or another LDAP directory.  It allows you to configure attributes to match the directory schema and set up automatic synchronization of users.
+## Settings
+既定では、Azure Multi-Factor Authentication Server は、Active Directory からユーザーをインポートするか同期するように構成されます。このタブでは、この既定の動作をオーバーライドして、別の LDAP ディレクトリ、ADAM ディレクトリ、または特定の Active Directory ドメイン コントローラーにバインドできます。LDAP を委任するため、RADIUS ターゲットとしての LDAP バインドのため、IIS 認証のための事前認証、またはユーザー ポータルのためのプライマリ認証としての LDAP 認証の使用も提供します。次の表で、個々の設定について説明します。
 
-## <a name="settings"></a>Settings
-By default, the Azure Multi-Factor Authentication Server is configured to import or synchronize users from Active Directory.  The tab allows you to override the default behavior and to bind to a different LDAP directory, an ADAM directory, or specific Active Directory domain controller.  It also provides for the use of LDAP Authentication to proxy LDAP or for LDAP Bind as a RADIUS target, pre-authentication for IIS Authentication, or primary authentication for User Portal.  The following table describes the individual settings.
+![設定](./media/multi-factor-authentication-get-started-server-dirint/dirint.png)
 
-![Setttings](./media/multi-factor-authentication-get-started-server-dirint/dirint.png)
-
-| Feature | Description |
+| 機能 | Description |
 | ------- | ----------- |
-| Use Active Directory | Select the Use Active Directory option to use Active Directory for importing and synchronization.  This is the default setting. <br>Note:  The computer must be joined to a domain and you must be signed on with a domain account for Active Directory integration to work properly. |
-| Include trusted domains | Check the Include Trusted Domains checkbox to have the agent attempt to connect to domains trusted by the current domain, another domain in the forest, or domains involved in a forest trust.  When not importing or synchronizing users from any of the trusted domains, uncheck the checkbox to improve performance.  The default is checked. |
-| Use specific LDAP configuration | Select the Use LDAP option to use the LDAP settings specified for importing and synchronization. Note: When Use LDAP is selected, the user interface changes references from Active Directory to LDAP. |
-| Edit button | The Edit button allows the current LDAP configuration settings to modified. |
-| Use attribute scope queries | Indicates whether attribute scope queries should be used.  Attribute scope queries allow for efficient directory searches qualifying records based on the entries in another record's attribute.  The Azure Multi-Factor Authentication Server uses attribute scope queries to efficiently query the users that are a member of a security group.   <br>Note:  There are some cases where attribute scope queries are supported, but shouldn't be used.  For example, Active Directory can have issues with attribute scope queries when a security group contains members from more than one domain.  In this case the checkbox should be unchecked. |
+| Active Directory を使用する | インポートと同期のために Active Directory を使用するには、[Active Directory を使用する] オプションを選択します。これは、既定の設定です。<br>注: 正常に動作させるには、コンピューターがドメインに参加している必要があり、サインオンを Active Directory 統合用のドメイン アカウントで行っている必要があります。 |
+| 信頼できるドメインを含める | エージェントに、現在のドメイン、フォレスト内の別のドメイン、またはフォレストの信頼に関係するドメインによって信頼されているドメインへの接続を試行させるには、[信頼できるドメインを含める] チェックボックスをオンにします。信頼できるドメインからユーザーをインポートしないまたは同期しない場合は、パフォーマンスを向上させるためにチェックボックスをオフにします。既定値はオンです。 |
+| 指定の LDAP 構成を使用する | インポートと同期のために特定の LDAP 設定を使用する場合は、この LDAP を使用するオプションを選択します。注: LDAP を使用することを選択した場合、ユーザー インターフェイスの参照が Active Directory から LDAP に変更されます。 |
+| [編集] ボタン | [編集] ボタンを使用して、現在の LDAP 構成設定を変更できます。 |
+| 属性スコープ クエリを使用する | 属性スコープ クエリを使用するかどうかを示します。属性スコープ クエリを使用すると、別のレコードの属性内のエントリに基づいてレコードを制限する効率的なディレクトリ検索を実行できます。Azure Multi-Factor Authentication Server は、属性スコープ クエリを使用して、セキュリティ グループのメンバーであるユーザーを効率的にクエリします。<br>注: 属性スコープ クエリがサポートされていても、使用してはならない場合があります。たとえば、セキュリティ グループに 1 つ以上のドメインのメンバーが含まれている場合、Active Directory で属性スコープ クエリを実行すると問題が発生する可能性があります。この場合は、チェックボックスをオフにする必要があります。 |
 
-The following table describes the LDAP configuration settings.
+次の表で、LDAP 構成設定について説明します。
 
-| Feature | Description |
+| 機能 | Description |
 | ------- | ----------- |
-| Server | Enter the hostname or IP address of the server running the LDAP directory.  A backup server may also be specified separated by a semi-colon. <br>Note: When Bind Type is SSL, a fully-qualified hostname is generally required. |
-| Base DN | Enter the distinguished name of the base directory object from which all directory queries will start.  For example, dc=abc,dc=com. |
-| Bind type - Queries | Select the appropriate bind type for use when binding to search the LDAP directory.  This is used for imports, synchronization, and username resolution. <br><br>  Anonymous - An anonymous bind will be performed.  Bind DN and Bind Password will not be used.  This will only work if the LDAP directory allows anonymous binding and permissions allow the querying of the appropriate records and attributes.  <br><br> Simple - Bind DN and Bind Password will be passed as plain text to bind to the LDAP directory.  This should only be used for testing purposes to verify that the server can be reached and that the bind account has the appropriate access.  It is recommended that SSL be used instead after the appropriate cert has been installed.  <br><br> SSL - Bind DN and Bind Password will be encrypted using SSL to bind to the LDAP directory.  This requires that a cert be installed locally that the LDAP directory trusts.  <br><br> Windows - Bind Username and Bind Password will be used to securely connect to an Active Directory domain controller or ADAM directory.  If Bind Username is left blank, the logged-on user's account will be used to bind. |
-| Bind type - Authentications | Select the appropriate bind type for use when performing LDAP bind authentication.  See the bind type descriptions under Bind type - Queries.  For example, this allows for Anonymous bind to be used for queries while SSL bind is used to secure LDAP bind authentications. |
-| Bind DN or Bind username | Enter the distinguished name of the user record for the account to use when binding to the LDAP directory.<br><br>The bind distinguished name is only used when Bind Type is Simple or SSL.  <br><br>Enter the username of the Windows account to use when binding to the LDAP directory when Bind Type is Windows.  If left blank, the logged-on user's account will be used to bind. |
-| Bind Password | Enter the bind password for the Bind DN or username being used to bind to the LDAP directory.  To configure the password for the Multi-Factor Auth Server AdSync Service, synchronization must be enabled and the service must be running on the local machine.  The password will be saved in the Windows Stored Usernames and Passwords under the account the Multi-Factor Auth Server AdSync Service is running as.  The password will also be saved under the account the Multi-Factor Auth Server user interface is running as and under the account the Multi-Factor Auth Server Service is running as.  <br><br> Note:  Since the password is only stored in the local server's Windows Stored Usernames and Passwords, this step will need to be done on each Multi-Factor Auth Server that needs access to the password. |
-| Query size limit | Specify the size limit for the maximum number of users that a directory search will return.  This limit should match the configuration on the LDAP directory.  For large searches where paging is not supported, import and synchronization will attempt to retrieve users in batches.  If the size limit specified here is larger than the limit configured on the LDAP directory, some users may be missed. |
-| Test button | Click the Test button to test binding to the LDAP server.  <br><br> Note: The Use LDAP option does not need to be selected in order to test binding.  This allows the binding to be tested prior to using the LDAP configuration. |
+| サーバー | LDAP ディレクトリを実行するサーバーのホスト名または IP アドレスを入力します。セミコロンで区切ることで、バックアップ サーバーも指定できます。<br>注: バインドの種類が SSL の場合、通常は完全修飾ホスト名を指定する必要があります。 |
+| ベース DN | すべてのディレクトリ クエリの開始元となるベース ディレクトリ オブジェクトの識別名を入力します。例: dc=abc、dc=com |
+| バインドの種類 - クエリ | LDAP ディレクトリの検索にバインドする際に使用する適切なバインドの種類を選択します。これは、インポート、同期、およびユーザー名の解決のために使用されます。<br><br>匿名 - 匿名バインドが実行されます。バインド DN とバインド パスワードは使用されません。これは、LDAP ディレクトリで匿名バインドが許可され、適切なレコードと属性のクエリの実行できるアクセス許可がある場合にのみ機能します。<br><br>シンプル - LDAP ディレクトリにバインドするために、バインド DN とバインド パスワードがプレーン テキストとして渡されます。これは、サーバーに到達可能か、およびバインド アカウントに適切なアクセス権があるかを検証するテスト目的でのみ使用してください。適切な証明書のインストール後は、SSL を使用することをお勧めします。<br><br>SSL - LDAP ディレクトリにバインドするために、バインド DN とバインド パスワードが SSL を使用して暗号化されます。これを行うには、LDAP ディレクトリが信頼する証明書がローカルにインストールされている必要があります。<br><br>Windows - Active Directory ドメイン コントローラーまたは ADAM ディレクトリに安全に接続するために、バインド ユーザー名とバインド パスワードが使用されます。バインド ユーザー名が空白の場合、ログオンしたユーザーのアカウントがバインドするために使用されます。 |
+| バインドの種類 - 認証 | LDAP バインド認証を実行するときに使用する適切なバインドの種類を選択します。バインドの種類については、「バインドの種類 - クエリ」の説明を参照してください。たとえば、クエリで匿名バインドを、セキュリティで保護された LDAP バインド認証で SSL バインドを使用できます。 |
+| バインド DN またはバインド ユーザー名 | LDAP ディレクトリにバインドするときに使用するアカウントのユーザー レコードの識別名を入力します。<br><br>。バインド識別名は、バインドの種類がシンプルまたは SSL の場合にのみ使用されます。<br><br>バインドの種類が Windows のときに、LDAP ディレクトリにバインドするときに使用する Windows アカウントのユーザー名を入力します。空白にした場合、ログオンしたユーザーのアカウントがバインドするために使用されます。 |
+| バインド パスワード | LDAP ディレクトリへのバインドに使用されるバインド DN またはユーザー名のバインド パスワードを入力します。Multi-Factor Auth Server AdSync Service のパスワードを構成するには、同期を有効にし、ローカル コンピューターでサービスを実行しておく必要があります。パスワードは、Multi-Factor Auth Server AdSync Service を実行しているアカウントの [Windows に格納されているユーザーおよびパスワード] に保存されます。パスワードは、Multi-Factor Auth Server ユーザー インターフェイスを実行しているアカウントと、Multi-Factor Auth Server Service を実行しているアカウントにも保存されます。<br><br>注: パスワードはローカル サーバーの [Windows に格納されているユーザーおよびパスワード] だけに保存されるため、この手順は、パスワードへのアクセスが必要な各 Multi-Factor Auth Server で行う必要があります。 |
+| クエリ サイズの上限 | ディレクトリ検索で返されるユーザーの最大数のサイズ制限を指定します。この制限は、LDAP ディレクトリの構成と一致する必要があります。ページングがサポートされない大規模な検索では、インポートと同期は、バッチでユーザーの取得を試みます。ここで指定されるサイズ制限が、LDAP ディレクトリで構成された制限より大きい場合、一部のユーザーが欠落する可能性があります。 |
+| テスト ボタン | LDAP サーバーへのバインドをテストするには [テスト] ボタンをクリックします。<br><br>注: バインドをテストするために LDAP を使用するオプションを選択する必要はありません。これにより、LDAP 構成を使用する前にバインドをテストできます。 |
 
-## <a name="filters"></a>Filters
-Filters allow you to set criteria to qualify records when performing a directory search.  By setting the filter you can scope the objects you want to synchronize.  
+## フィルター
+フィルターを使用して、ディレクトリ検索の実行時にレコードを制限する条件を設定できます。フィルターを設定することで、同期するオブジェクトの範囲を指定できます。
 
-![Filters](./media/multi-factor-authentication-get-started-server-dirint/dirint2.png)
+![フィルター](./media/multi-factor-authentication-get-started-server-dirint/dirint2.png)
 
-Azure Multi-Factor Authentication has the following 3 options.
+Azure Multi-Factor Authentication には、次の 3 つのオプションがあります。
 
-- **Container filter** - Specify the filter criteria used to qualify container records when performing a directory search.  For Active Directory and ADAM, (|(objectClass=organizationalUnit)(objectClass=container)) is generally used.  For other LDAP directories, filter criteria that qualifies each type of container object should be used depending on the directory schema.  <br>Note:  If left blank, ((objectClass=organizationalUnit)(objectClass=container)) will be used by default.
+- **コンテナー フィルター** - ディレクトリ検索の実行時にコンテナー レコードを制限するために使用するフィルター条件を指定します。Active Directory と ADAM の場合、通常は (|(objectClass=organizationalUnit)(objectClass=container)) が使用されます。その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、各コンテナー オブジェクトの種類を制限するフィルター条件を使用する必要があります。<br>注: 空白の場合は ((objectClass=organizationalUnit)(objectClass=container)) が既定で使用されます。
 
-- **Security group filter** - Specify the filter criteria used to qualify security group records when performing a directory search.  For Active Directory and ADAM, (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) is generally used.  For other LDAP directories, filter criteria that qualifies each type of security group object should be used depending on the directory schema.  <br>Note:  If left blank, (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) will be used by default.
+- **セキュリティ グループ フィルター** - ディレクトリ検索の実行時にセキュリティ グループ レコードを制限するために使用するフィルター条件を指定します。Active Directory と ADAM の場合、通常は (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) が使用されます。その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、各セキュリティ グループ オブジェクトの種類を制限するフィルター条件を使用する必要があります。<br>注: 空白の場合は (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648)) が既定で使用されます。
 
-- **User filter** - Specify the filter criteria used to qualify user records when performing a directory search.  For Active Directory and ADAM, (&(objectClass=user)(objectCategory=person)) is generally used.  For other LDAP directories, (objectClass=inetOrgPerson) or something similar should be used depending on the directory schema. <br>Note:  If left blank, (&(objectCategory=person)(objectClass=user)) will be used by default.
+- **ユーザー フィルター** - ディレクトリ検索の実行時にユーザー レコードを制限するために使用するフィルター条件を指定します。Active Directory と ADAM の場合、通常は (&(objectClass=user)(objectCategory=person)) が使用されます。その他の LDAP ディレクトリでは、ディレクトリ スキーマに応じて、(objectClass=inetOrgPerson) またはそれに類似する条件を使用する必要があります。<br>注: 空白の場合は (&(objectCategory=person)(objectClass=user)) が既定で使用されます。
 
-## <a name="attributes"></a>Attributes
-Attributes may be customized as necessary for a specific directory.  This allows you to add custom attributes and fine tune the synchronization to only the attributes that you need.  The value for each attribute field should be the name of the attribute as defined in the directory schema.  Use the table below for additional information.
+## 属性
+特定のディレクトリの属性を必要に応じてカスタマイズできます。カスタム属性を追加し、必要な属性のみを対象とするように同期を微調整できます。各属性フィールドの値は、ディレクトリ スキーマに定義されている属性の名前にする必要があります。詳細については、次の表を参照してください。
 
-![Attributes](./media/multi-factor-authentication-get-started-server-dirint/dirint3.png)
+![属性](./media/multi-factor-authentication-get-started-server-dirint/dirint3.png)
 
-| Feature | Description |
+| 機能 | Description |
 | ------- | ----------- |
-| Unique identifier | Enter the attribute name of the attribute that serves as the unique identifier of container, security group, and user records.  In Active Directory, this is usually objectGUID.  In other LDAP implementations, it may be entryUUID or something similar.  The default is objectGUID. |
-| ... (Select Attribute) buttons | Each attribute field has a "..." button next to it that will display the Select Attribute dialog allowing an attribute to be selected from a list. <br><br>Select Attribute dialog.<br><br>Note:  Attributes may be entered manually and are not required to match an attribute in the attribute  list. |
-| Unique identifier type | Select the type of the unique identifier attribute.  In Active Directory, the objectGUID attribute is of type GUID.  In other LDAP implementations, it may be of type ASCII Byte Array or String.  The default is GUID. <br><br>Note:  It is important to set this correctly since Synchronization Items are referenced by their Unique Identifier and the Unique Identifier Type is used to directly find the object in the directory.  Setting this to String when the directory actually stores the value as a byte array of ASCII characters will prevent synchronization from functioning properly. |
-| Distinguished name | Enter the attribute name of the attribute that contains the distinguished name for each record.  In Active Directory, this is usually distinguishedName.  In other LDAP implementations, it may be entryDN or something similar.  The default is distinguishedName. <br><br>Note:  If an attribute containing just the distinguished name doesn't exist, the adspath attribute may be used.  The "LDAP://<server>/" portion of the path will be automatically stripped off leaving just the distinguished name of the object. |
-| Container name | Enter the attribute name of the attribute that contains the name in a container record.  The value of this attribute will be displayed in the Container Hierarchy when importing from Active Directory or adding synchronization items.  The default is name. <br><br>Note:  If different containers use different attributes for their names, multiple container name attributes may be specified in separated by semi-colons.  The first container name attribute found on a container object will be used to display its name. |
-| Security group name | Enter the attribute name of the attribute that contains the name in a security group record.  The value of this attribute will be displayed in the Security Group list when importing from Active Directory or adding synchronization items.  The default is name. |
-| Users | The following attributes are used for searching for, displaying, importing, and synchronizing user information from the directory. |
-| Username | Enter the attribute name of the attribute that contains the username in a user record.  The value of this attribute will be used as the Multi-Factor Auth Server username.  A second attribute may be specified as a backup to the first.  The second attribute will only be used if the first attribute does not contain a value for the user.  The defaults are userPrincipalName and sAMAccountName. |
-| First name | Enter the attribute name of the attribute that contains the first name in a user record.  The default is givenName. |
-| Last name | Enter the attribute name of the attribute that contains the last name in a user record.  The default is sn. |
-| Email address | Enter the attribute name of the attribute that contains the email address in a user record.  Email address will be used to send welcome and update emails to the user.  The default is mail. |
-| User group | Enter the attribute name of the attribute that contains the user group in a user record.  User group can be used to filter users in the agent and on reports in the Multi-Factor Auth Server Management Portal. |
-| Description | Enter the attribute name of the attribute that contains the description in a user record.  Description is only used for searching.  The default is description. |
-| Voice call language | Enter the attribute name of the attribute that contains the short name of the language to use for voice calls for the user. |
-| SMS text language | Enter the attribute name of the attribute that contains the short name of the language to use for SMS text messages for the user. |
-| Phone app language | Enter the attribute name of the attribute that contains the short name of the language to use for phone app text messages for the user. |
-| OATH token language | Enter the attribute name of the attribute that contains the short name of the language to use for OATH token text messages for the user. |
-| Phones | The following attributes are used to import or synchronize user phone numbers.  If an attribute name is not specified for phone type, the phone type will not be available when importing from Active Directory or adding synchronization items. |
-| Business | Enter the attribute name of the attribute that contains the business phone number in a user record.  The default is telephoneNumber. |
-| Home | Enter the attribute name of the attribute that contains the home phone number in a user record.  The default is homePhone. |
-| Pager | Enter the attribute name of the attribute that contains the pager number in a user record.  The default is pager. |
-| Mobile | Enter the attribute name of the attribute that contains the mobile phone number in a user record.  The default is mobile. |
-| Fax | Enter the attribute name of the attribute that contains the fax number in a user record.  The default is facsimileTelephoneNumber. |
-| IP phone | Enter the attribute name of the attribute that contains the IP phone number in a user record.  The default is ipPhone. |
-| Custom | Enter the attribute name of the attribute that contains a custom phone number in |
-|  | a user record.  The default is blank. |
-| Extension | Enter the attribute name of the attribute that contains the phone number extension in a user record.  The value of the extension field will be used as the extension to the primary phone number only.  The default is blank. <br><br>Note: If the Extension attribute is not specified, extensions can be included as part of the phone attribute.  The extension should be preceded with an 'x' so it can be parsed.  For example 555-123-4567 x890 would result in 555-123-4567 as the phone number and 890 as the extension. |
-| Restore Defaults button | Click the Restore Defaults button to return all attributes back to their default value.  The defaults should work properly with the normal Active Directory or ADAM schema. |
+| 一意識別子 | コンテナー、セキュリティ グループ、およびユーザー レコードの一意識別子として機能する属性の属性名を入力します。Active Directory では、これは通常は objectGUID です。その他の LDAP 実装では、entryUUID またはそれに類似する名前です。既定値は objectGUID です。 |
+| ...(属性の選択) ボタン | 各属性フィールドには、その横に [...] ボタンがあります。これをクリックすると、属性を一覧から選択できる [属性の選択] ダイアログが表示されます。<br><br>[属性の選択] ダイアログ。<br><br>注: 属性は手動で入力でき、属性の一覧内の属性と一致させる必要はありません。 |
+| 一意識別子の型 | 一意識別子属性の型を選択します。Active Directory では、objectGUID 属性の型は GUID です。他の LDAP 実装では、ASCII バイト配列型または文字列型の場合があります。既定値は [GUID] です。<br><br>注: 同期項目は一意識別子によって参照され、一意識別子の型はディレクトリ内でオブジェクトを直接検索するために使用されるため、この属性は正しく設定することが重要です。ディレクトリに実際に保存されている値が ASCII 文字のバイト配列のときに型を [文字列] に設定すると、同期が正常に機能しなくなります。 |
+| 識別名 | 各レコードの識別名を含む属性の属性名を入力します。Active Directory では、これは通常は distinguishedName です。その他の LDAP 実装では、entryDN または類似する名前です。既定値は distinguishedName です。<br><br>注: 識別名のみが含まれている属性が存在しない場合は、adspath 属性を使用できます。パスの "LDAP://<サーバー>/" 部分は自動的に削除され、オブジェクトの識別名だけが残ります。 |
+| コンテナー名 | コンテナー レコード内の名前を含む属性の属性名を入力します。この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、コンテナー階層に表示されます。既定値は name です。<br><br>注: 複数のコンテナーで異なる名前の属性を使用している場合は、複数のコンテナー名の属性をセミコロンで区切って指定できます。コンテナー オブジェクトで見つかった最初のコンテナー名の属性が、名前を表示するために使用されます。 |
+| セキュリティ グループ名 | セキュリティ グループ レコード内の名前を含む属性の属性名を入力します。この属性の値は、Active Directory からインポートするとき、または同期項目を追加するときに、セキュリティ グループ リストに表示されます。既定値は name です。 |
+| Users | 次の属性は、ディレクトリに対してユーザー情報の検索、表示、インポート、および同期を実行するために使用されます。 |
+| ユーザー名 | ユーザー レコード内のユーザー名を含む属性の属性名を入力します。この属性の値は、Multi-Factor Auth Server ユーザー名として使用されます。2 つ目の属性を 1 つ目の属性のバックアップとして指定できます。2 つ目の属性は、1 つ目の属性にユーザーの値が含まれていない場合にのみ使用されます。既定値は userPrincipalName と sAMAccountName です。 |
+| 名 | ユーザー レコード内の名を含む属性の属性名を入力します。既定値は givenName です。 |
+| 姓 | ユーザー レコード内の姓を含む属性の属性名を入力します。既定値は sn です。 |
+| 電子メール アドレス | ユーザー レコード内の電子メール アドレスを含む属性の属性名を入力します。電子メール アドレスは、ようこそメールと更新メールをユーザーに送信するために使用されます。既定値は mail です。 |
+| ユーザー グループ | ユーザー レコード内のユーザー グループを含む属性の属性名を入力します。ユーザー グループを使用して、Multi-Factor Auth Server 管理ポータルでエージェントとレポートのユーザーをフィルター処理できます。 |
+| Description | ユーザー レコード内の説明を含む属性の属性名を入力します。説明は、検索にのみ使用されます。既定値は description です。 |
+| 音声通話の言語 | ユーザーに対する音声通話で使用する言語の短縮名を含む属性の属性名を入力します。 |
+| SMS テキストの言語 | ユーザーに対する SMS テキスト メッセージで使用する言語の短縮名を含む属性の属性名を入力します。 |
+| 電話アプリの言語 | ユーザーに対する電話アプリのテキスト メッセージで使用する言語の短縮名を含む属性の属性名を入力します。 |
+| OATH トークンの言語 | ユーザーに対する OATH トークンのテキスト メッセージで使用する言語の短縮名を含む属性の属性名を入力します。 |
+| 電話 | 次の属性は、ユーザーの電話番号をインポートまたは同期するために使用されます。電話の種類の属性名が指定されない場合、Active Directory からインポートするとき、または同期項目を追加するときに、電話の種類は使用されません。 |
+| 勤務先 | ユーザー レコード内の勤務先の電話番号を含む属性の属性名を入力します。既定値は telephoneNumber です。 |
+| ホーム | ユーザー レコード内の自宅の電話番号を含む属性の属性名を入力します。既定値は homePhone です。 |
+| ポケットベル | ユーザー レコード内のポケットベルの番号を含む属性の属性名を入力します。既定値は pager です。 |
+| Mobile | ユーザー レコード内の携帯電話の番号を含む属性の属性名を入力します。既定値は mobile です。 |
+| Fax | ユーザー レコード内の Fax 番号を含む属性の属性名を入力します。既定値は facsimileTelephoneNumber です。 |
+| IP 電話 | ユーザー レコード内の IP 電話の番号を含む属性の属性名を入力します。既定値は ipPhone です。 |
+| カスタム | ユーザー レコード内のカスタム電話番号を含む属性の属性名を |
+| | 入力します。既定値は空白です。 |
+| 内線番号 | ユーザー レコード内の内線番号を含む属性の属性名を入力します。内線番号フィールドの値は、代表電話番号に対する内線番号としてのみ使用されます。既定値は空白です。<br><br>注: 内線番号属性が指定されていない場合は、電話属性の一部として内線番号を含めることができます。内線番号はその前に 'x' をつけて、解析できるようにする必要があります。たとえば 555-123-4567 x 890 は、555-123-4567 が電話番号として、890 が内線番号として解析されます。 |
+| [既定値に戻す] ボタン | すべての属性を既定値に戻すには、[既定値に戻す] ボタンをクリックします。既定値は、通常の Active Directory または ADAM スキーマで正常に動作します。 |
 
-To edit attributes, simply click the edit button on the Attributes tab.  This will bring up a windows that allows you to edit the attributes.
+属性を編集するには、[属性] タブの [編集] ボタンをクリックします。属性を編集できるウィンドウが表示されます。
 
-![Edit Attributes](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
+![属性の編集](./media/multi-factor-authentication-get-started-server-dirint/dirint4.png)
 
-## <a name="synchronization"></a>Synchronization
-Synchronization keeps the Azure Multi-Factor user database synchronized with the users in Active Directory or another Lightweight Directory Access Protocol (LDAP)  Lightweight Directory Access Protocol directory.  The process is similar to importing users manually from Active Directory, but periodically polls for Active Directory user and security group changes to process.  It also provides for disabling or removing users removed from a container or security group and removing users deleted from Active Directory.
+## 同期
+同期は、Azure Multi-Factor ユーザー データベースの Active Directory または別のライトウェイト ディレクトリ アクセス プロトコル (LDAP) ディレクトリ内のユーザーとの同期を維持します。このプロセスは Active Directory からユーザーを手動でインポートすることと似ていますが、Active Directory に対してユーザーとセキュリティ グループの変更を定期的にポーリングします。さらに、コンテナーまたはセキュリティ グループから削除されたユーザーを無効にするか削除し、Active Directory から削除されたユーザーを除去します。
 
-The Multi-Factor Auth ADSync service is a Windows service that performs the periodic polling of Active Directory.  This is not to be confused with Azure AD Sync or Azure AD Connect.  the Multi-Factor Auth ADSync, although built on a similar code base, is specific to the Azure Multi-Factor Authentication Server.  It is installed in a Stopped state and is started by the Multi-Factor Auth Server service when configured to run.  If you have a multi-server Multi-Factor Auth Server configuration, the Multi-Factor Auth ADSync may only be run on a single server.
+Multi-Factor Auth ADSync サービスは、Active Directory の定期的なポーリングを実行する Windows サービスです。このサービスを Azure AD Sync または Azure AD Connect と混同しないでください。Multi-Factor Auth ADSync は類似するコード ベースに基づいて構築されていますが、それは Azure Multi-Factor Authentication Server に固有のサービスです。このサービスは停止状態でインストールされ、実行するように構成されたときに Multi-Factor Auth Server サービスによって開始されます。複数のサーバーを対象とする Multi-Factor Auth Server 構成がある場合でも、Multi-Factor Auth ADSync は単一のサーバーでのみ実行できます。
 
-The Multi-Factor Auth ADSync service uses the DirSync LDAP server extension provided by Microsoft to efficiently poll for changes.  This DirSync control caller must have the "directory get changes" right and DS-Replication-Get-Changes extended control access right.  By default, these rights are assigned to the Administrator and LocalSystem accounts on domain controllers.  The Multi-Factor Auth AdSync service is configured to run as LocalSystem by default.  Therefore it is simplest to run the service on a domain controller.  The service can run as an account with lesser permissions if you configure it to always perform a full synchronization.  This is less efficient, but requires less account privileges.
+Multi-Factor Auth ADSync サービスは、変更を効率的にポーリングするために Microsoft によって提供された DirSync LDAP サーバー拡張機能を使用します。この DirSync コントロールの呼び出し元は、"ディレクトリの変更を取得する" 権限と、DS-Replication-Get-Changes 拡張コントロール アクセス権を持っている必要があります。既定では、これらの権限は、ドメイン コントローラーの管理者と LocalSystem アカウントに割り当てられます。Multi-Factor Auth AdSync サービスは、既定で LocalSystem として実行するように構成されます。したがって、最も簡単な方法は、サービスをドメイン コントローラーで実行することです。サービスを常に完全同期を実行するように構成した場合は、より低いアクセス許可を持つアカウントで実行できます。効率は落ちますが、要求されるアカウント権限が低くなります。
 
-If configured to use LDAP and the LDAP directory supports the DirSync control, then polling for user and security group changes will work the same as it does with Active Directory.  If the LDAP directory does not support the DirSync control, then a full synchronization will be performed during each cycle.
+LDAP を使用するように構成したときに、LDAP ディレクトリが DirSync コントロールをサポートする場合、ユーザーとセキュリティ グループの変更に対するポーリングは、Active Directory の場合と同じように動作します。LDAP ディレクトリが DirSync コントロールをサポートしていない場合、完全同期は各サイクル中に実行されます。
 
-![Synchronization](./media/multi-factor-authentication-get-started-server-dirint/dirint5.png)
+![同期](./media/multi-factor-authentication-get-started-server-dirint/dirint5.png)
 
-Use the table below for additional information on each of the individual settings on the Synchronization tab.
+[同期] タブの個々の設定の詳細は、次の表を参照してください。
 
-| Feature | Description |
+| 機能 | Description |
 | ------- | ----------- |
-| Enable synchronization with Active Directory | When checked, the Multi-Factor Auth Server service will be started to periodically poll Active Directory for changes. <br><br>Note: At least one Synchronization Item must be added and a Synchronize Now must be performed before the Multi-Factor Auth Server service will start processing changes. |
-| Synchronize every | Specify the time interval the Multi-Factor Auth Server service will wait between polling and processing changes. <br><br> Note: The interval specified is the time between the beginning of each cycle.  If the time processing changes exceeds the interval, the service will poll again immediately. |
-| Remove users no longer in Active Directory | When checked, the Multi-Factor Auth Server service will process Active Directory deleted user tombstones and remove the related Multi-Factor Auth Server user. |
-| Always perform a full synchronization | When checked, the Multi-Factor Auth Server service will always perform a full synchronization.  When unchecked, the Multi-Factor Auth Server service will perform an incremental synchronization by only querying users that have changed.  The default is unchecked. <br><br> Note:  When unchecked, an incremental synchronization can only be performed when the directory supports the DirSync control and the account being used to bind to the directory has the appropriate permissions to perform DirSync incremental queries.  If the account does not have the appropriate permissions or multiple domains are involved in the synchronization, perform a full synchronization is recommended. |
-| Require administrator approval when more than X users will be disabled or removed | Synchronization items can be configured to disable or remove users who are no longer a member of the item's container or security group.  As a safeguard, administrator approval can be required when the number of users to disable or remove exceeds a threshold.  When checked, approval will be required for specified threshold.  The default is 5 and the range is 1 to 999. <br><br> Approval is facilitated by first sending an email notification to administrators. The email notification gives instructions for reviewing and approving the disabling and removal of users.  When the Multi-Factor Auth Server user interface is launched, it will prompt for approval. |
+| Active Directory との同期を有効にする | オンにした場合、Multi-Factor Auth Server サービスは、Active Directory の変更の定期的なポーリングを開始します。<br><br>注: Multi-Factor Auth Server サービスで変更の処理を開始する前に、少なくとも 1 つの同期項目を追加し、[今すぐ同期] を実行する必要があります。 |
+| 同期間隔: | Multi-Factor Auth Server サービスが、ポーリングと変更の処理を実行するために待機する時間間隔を指定します。<br><br>注: 指定する間隔は、各サイクルの先頭と先頭の間の時間です。変更の処理時間が間隔時間を超過した場合、サービスは次のポーリングをすぐに実行します。 |
+| Active Directory にないユーザーを削除する | オンにした場合、Multi-Factor Auth Server サービスは、Active Directory で削除されたユーザーの廃棄状態を処理し、関連する Multi-Factor Auth Server ユーザーを削除します。 |
+| 常に完全同期を実行する | オンにした場合、Multi-Factor Auth Server サービスは常に完全同期を実行します。オフにした場合、Multi-Factor Auth Server サービスは、変更されているユーザーのみをクエリすることで増分同期を実行します。既定の設定はオフです。<br><br>注: オフの場合、増分同期は、ディレクトリが DirSync コントロールをサポートし、ディレクトリにバインドするために使用されるアカウントが DirSync の増分クエリを実行するための適切なアクセス許可を持っている場合にのみ実行できます。アカウントに適切なアクセス許可がない場合、または複数のドメインが同期に関係している場合は、完全同期を実行することをお勧めします。 |
+| 無効なユーザーまたは削除するユーザーがしきい値を超えたときに管理者の承認を必須にする | 同期項目は、項目のコンテナーまたはセキュリティ グループのメンバーでなくなったユーザーを無効にするか削除するように構成できます。安全のために、無効にするか削除するユーザーの数がしきい値を超えたときに、管理者の承認を要求することができます。オンにした場合、指定したしきい値に達したとき承認が要求されます。既定値は 5 で、指定範囲は 1 ～ 999 です。<br><br>承認は、まず管理者に電子メール通知を送信することで実施されます。電子メール通知により、ユーザーの無効化と削除を確認して承認するための指示が出されます。Multi-Factor Auth Server ユーザー インターフェイスが起動され、承認を求めるメッセージが表示されます。 |
 
-The **Synchronize Now** button allows you to run a full synchronization for the synchronization items specified.  A full synchronization is required whenever synchronization items are added, modified, removed, or reordered.  It is also required before the Multi-Factor Auth AdSync service will be operational since it sets the starting point from which the service will poll for incremental changes.  If changes have been made to synchronization items and a full synchronization has not been performed, you will be prompted to Synchronize Now when navigating to another section or when closing the user interface.
+**[今すぐ同期]** ボタンを使用して、指定した同期項目の完全同期を実行できます。完全同期は、同期項目の追加、変更、削除、または順序変更を行った場合に、常に実行する必要があります。また、Multi-Factor Auth AdSync サービスは、増分変更用のポーリングを開始する時点を設定するため、そのサービスを運用する前にも実行する必要があります。同期項目が変更されているときに、完全同期が実行されていない場合は、別のセクションに移動するとき、またはユーザー インターフェイスを閉じるときに、今すぐ同期することが求められます。
 
-The **Remove** button allows the administrator to delete one or more synchronization items from the Multi-Factor Auth Server synchronization item list.
+管理者は、**[削除]** ボタンを使用して、1 つ以上の同期項目を Multi-Factor Auth Server の同期項目の一覧から削除できます。
 
->[AZURE.WARNING]Once a synchronization item record has been removed, it cannot be recovered. You will need to re-add the synchronization item record if you deleted it by mistake.
+>[AZURE.WARNING]削除された同期項目レコードは復元できません。同期項目レコードを誤って削除した場合は、追加し直す必要があります。
 
-The synchronization item or synchronization items have been removed from Multi-Factor Auth Server.  The Multi-Factor Auth Server service will no longer process the synchronization items.
+同期項目は、Multi-Factor Auth Server から削除されています。Multi-Factor Auth Server サービスは、それらの同期項目を処理しません。
 
-The Move Up and Move Down buttons allow the administrator to change the order of the synchronization items.  The order is important since the same user may be a member of more than one synchronization item (e.g. a container and a security group).  The settings applied to the user during synchronization will come from the first synchronization item in the list to which the user is associated.  Therefore, the synchronization items should be put in priority order.
+管理者は、[上へ移動] ボタンと [下へ移動] ボタンを使用して、同期項目の順序を変更できます。同じユーザーが 1 つ以上の同期項目 (コンテナーとセキュリティ グループなど) のメンバーである場合があるため、順序は重要です。同期中にユーザーに適用される設定は、ユーザーが関連付けられている一覧の最初の同期項目から使用されます。このため、同期項目は優先順位に従って配置する必要があります。
 
->[AZURE.TIP]A full synchronization should be performed after removing synchronization items.  A full synchronization should be performed after ordering synchronization items.  Click the Synchronize Now button to perform a full synchronization.
+>[AZURE.TIP]同期項目を削除した後、完全同期を実行する必要があります。同期項目を並べ替えた後、完全同期を実行する必要があります。完全同期を実行するには、[今すぐ同期] ボタンをクリックします。
 
-## <a name="multi-factor-auth-servers"></a>Multi-Factor Auth Servers
-Additional Multi-Factor Auth Servers may be set up to serve as a backup RADIUS proxy, LDAP proxy, or for IIS Authentication. The Synchronization configuration will be shared among all of the agents. However, only one of these agents may have the Multi-Factor Auth Server service running. This tab allows you to select the Multi-Factor Auth Server that should be enabled for synchronization.
+## Multi-Factor Auth Server
+追加の Multi-factor Auth Server を、バックアップ RADIUS プロキシ、LDAP プロキシ、または IIS 認証として機能するように設定できます。同期構成は、すべてのエージェント間で共有されます。ただし、Multi-Factor Auth Server サービスは、これらのエージェントのいずれかのみで実行できます。このタブで、同期するために有効にする必要がある Multi-Factor Auth Server を選択できます。
 
-![Multi-Factor-Auth Servers](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
+![Multi-Factor-Auth Server](./media/multi-factor-authentication-get-started-server-dirint/dirint6.png)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

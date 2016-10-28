@@ -1,114 +1,100 @@
 <properties 
-    pageTitle="Learn to create an AS2 agreement for the Enterprise Integration Pack" 
-    description="Learn to create an AS2 agreement for the Enterprise Integration Pack| Microsoft Azure App Service" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="msftman" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="Enterprise Integration Pack の AS2 契約の作成についての詳細情報" 
+	description="Enterprise Integration Pack の AS2 契約の作成についての詳細情報| Microsoft Azure App Service" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="06/29/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/29/2016" 
+	ms.author="deonhe"/>
+
+# AS2 でのエンタープライズ統合
+
+## AS2 契約の作成
+エンタープライズ機能を Logic Apps で使用するには、最初に契約を作成する必要があります。
+
+### 開始する前に必要な項目
+- Azure サブスクリプションで定義されている[統合アカウント](./app-service-logic-enterprise-integration-accounts.md)
+- 統合アカウントで既に定義されている 2 つ以上の[パートナー](./app-service-logic-enterprise-integration-partners.md)
+
+>[AZURE.NOTE]契約を作成する場合は、契約のファイルの内容が契約の種類と一致している必要があります。
 
 
-# <a name="enterprise-integration-with-as2"></a>Enterprise integration with AS2
+[統合アカウントを作成](./app-service-logic-enterprise-integration-accounts.md)し、[パートナーを追加](./app-service-logic-enterprise-integration-partners.md)した後に、契約を作成するには、次の手順に従います。
 
-## <a name="create-an-as2-agreement"></a>Create an AS2 agreement
-In order to use the enterprise features in Logic apps, you must first create agreements. 
+### Azure ポータルのホーム ページから
 
-### <a name="here's-what-you-need-before-you-get-started"></a>Here's what you need before you get started
-- An [integration account](./app-service-logic-enterprise-integration-accounts.md) defined in your Azure subscription  
-- At least two [partners](./app-service-logic-enterprise-integration-partners.md) already defined in your integration account  
+[Azure ポータル](http://portal.azure.com "Azure ポータル")にログインしたら、次の手順に従います。
+1. 左側のメニューの **[参照]** を選択します。
 
->[AZURE.NOTE]When creating an agreement, the content in the agreement file must match the agreement type.    
+>[AZURE.TIP]**[参照]** リンクが表示されない場合は、最初にメニューを展開する必要があります。これを行うには、折りたたまれたメニューの左上にある **[メニューの表示]** リンクを選択します。
 
+![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
+2. フィルター検索ボックスに「*integration*」と入力し、結果のリストから **[Integration Accounts (統合アカウント)]** を選択します。![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)
+3. 開いた **[Integration Accounts (統合アカウント)]** ブレードで、契約を作成する統合アカウントを選択します。統合アカウントがリストに表示されない場合は、[最初に統合アカウントを 1 つ作成](./app-service-logic-enterprise-integration-accounts.md "統合アカウントについて")します。![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)
+4.  **[Agreements (契約)]** タイルを選択します。契約タイルが表示されない場合は、最初に契約タイルを追加します。![](./media/app-service-logic-enterprise-integration-agreements/agreement-1.png)
+5. 開かれた [Agreements (契約)] ブレードの **[追加]** ボタンを選択します。![](./media/app-service-logic-enterprise-integration-agreements/agreement-2.png)
+6. [Agreements (契約)] ブレードが開いたら、契約の**名前**を入力し、**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、**ゲスト ID**を選択します。![](./media/app-service-logic-enterprise-integration-agreements/agreement-3.png)
 
-After you've [created an integration account](./app-service-logic-enterprise-integration-accounts.md) and [added partners](./app-service-logic-enterprise-integration-partners.md), you can create an agreement by following these steps:  
-
-### <a name="from-the-azure-portal-home-page"></a>From the Azure portal home page
-
-After you log into the [Azure portal](http://portal.azure.com "Azure portal"):  
-1. Select **Browse** from the menu on the left.  
-
->[AZURE.TIP]If you don't see the **Browse** link, you may need to expand the menu first. Do this by selecting the **Show menu** link that's located at the top left of the collapsed menu.  
-
-![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)    
-2. Type *integration* into the filter search box then select **Integration Accounts** from the list of results.       
- ![](./media/app-service-logic-enterprise-integration-overview/overview-2.png)  
-3. In the **Integration Accounts** blade that opens up, select the integration account in which you will create the agreement. If you don't see any integration accounts lists, [create one first](./app-service-logic-enterprise-integration-accounts.md "All about integration accounts").  
-![](./media/app-service-logic-enterprise-integration-overview/overview-3.png)  
-4.  Select the **Agreements** tile. If you don't see the agreements tile, add it first.   
-![](./media/app-service-logic-enterprise-integration-agreements/agreement-1.png)   
-5. Select the **Add** button in the Agreements blade that opens.  
-![](./media/app-service-logic-enterprise-integration-agreements/agreement-2.png)  
-6. Enter a **Name** for your agreement then select the **Host Partner**, **Host Identity**,  **Guest Partner**, **Guest Identity**, in the Agreements blade that opens.  
-![](./media/app-service-logic-enterprise-integration-agreements/agreement-3.png)  
-
-Here are a few details you may find useful when configuring the settings for your agreement: 
+契約の設定を構成する場合に役立つ、いくつかの詳細を次に示します。
   
-|Property|Description|
+|プロパティ|説明|
 |----|----|
-|Host Partner|An agreement needs both a host and guest partner. The host partner represents the organization that is configuring the agreement.|
-|Host Identity|An identifier for the host partner. |
-|Guest Partner|An agreement needs both a host and guest partner. The guest partner represents the organization that's doing business with the host partner.|
-|Guest Identity|An identifier for the guest partner.|
-|Receive Settings|These properties apply to all messages received by an agreement|
-|Send Settings|These properties apply to all messages sent by an agreement|  
-Let's continue:  
-7. Select **Receive Settings** to configure how messages received via this agreement are to be handled.  
+|Host Partner (ホスト パートナー)|契約には、ホストとゲストの両方のパートナーが必要です。ホスト パートナーは、契約を構成している組織を表します。|
+|Host Identity (ホスト ID)|ホスト パートナーの ID。 |
+|Guest Partner (ゲスト パートナー)|契約には、ホストとゲストの両方のパートナーが必要です。ゲスト パートナーは、ホスト パートナーと取引している組織を表します。|
+|Guest Identity (ゲスト ID)|ゲスト パートナーの ID。|
+|Receive Settings (受信の設定)|これらのプロパティは、契約によって受信されたすべてのメッセージに適用されます。|
+|Send Settings (送信の設定)|これらのプロパティは、契約によって送信されたすべてのメッセージに適用されます。|  
+説明を続けます。
+7. **[Receive Settings (受信の設定)]** を選択し、この契約を使用して受信されたメッセージを処理する方法を構成します。
  
- - Optionally, you can override the properties in the incoming message. To do this, select the **Override message properties** checkbox.
-  - Select the **Message should be signed** checkbox if you'd like to require all incoming messages to be signed. If you select this option, you will also need to select the **Certificate** that will be used to validate the signature on the messages.
-  - Optionally, you can require messages to be encrypted as well. To do this, select the **Message should be encrypted** checkbox. You would then need to select the **Certificate** that will be used to decode the incoming messages.
-  - You can also require messages to be compressed. To do this, select the **Message should be compressed** checkbox.  
-![](./media/app-service-logic-enterprise-integration-agreements/agreement-4.png)  
+ - 必要に応じて、受信メッセージのプロパティをオーバーライドできます。これを行うには、**[Override message properties (メッセージのプロパティをオーバーライドする)]** チェックボックスをオンにします。
+  - すべての受信メッセージに署名が必要な場合は、**[Message should be signed (メッセージに署名を必ず付ける)]** チェックボックスをオンにします。このオプションを選択する場合は、メッセージ上の署名の検証に使用する**証明書**を選択する必要があります。
+  - 必要に応じて、メッセージの暗号化も必須にすることができます。これを行うには、**[Message should be encrypted (メッセージは必ず暗号化する)]** チェックボックスをオンします。次に、受信メッセージのデコードに使用する**証明書**を選択する必要があります。
+  - メッセージの圧縮を必須にすることもできます。これを行うには、**[Message should be compressed (メッセージは必ず圧縮する)]** チェックボックスをオンします。![](./media/app-service-logic-enterprise-integration-agreements/agreement-4.png)
 
-See the table below if you would like to learn more about what the receive settings enable.  
+各受信設定で何が有効になるかを調べる必要がある場合は、次の表を参照してください。
 
-|Property|Description|
+|プロパティ|説明|
 |----|----|
-|Override message properties|Select this to indicate that properties in received messages can be overridden |
-|Message should be signed|Enable this to require messages to be digitally signed|
-|Message should be encrypted|Enable this to require messages to be encrypted. Non-encrypted messages will be rejected.|
-|Message should be compressed|Enable this to require messages to be compressed. Non-compressed messages will be rejected.|
-|MDN Text|This is a default MDN to be sent to the message sender|
-|Send MDN|Enable this to allow MDNs to be sent.|
-|Send signed MDN|Enable this to require MDNs to be signed.|
-|MIC Algorithm||
-|Send asynchronous MDN|Enable this to require messages to be sent asynchronously.|
-|URL|This is the URL to which messages will be sent.|
-Now, let's continue:  
-8. Select **Send Settings** to configure how messages sent via this agreement are to be handled.  
-![](./media/app-service-logic-enterprise-integration-agreements/agreement-5.png)  
+|Override message properties (メッセージのプロパティをオーバーライドする)|これをオンにすると、受信メッセージのプロパティがオーバーライドできることが示されます。 |
+|Message should be signed (メッセージに署名を必ず付ける)|これをオンにすると、メッセージへのデジタル署名が必須になります。|
+|Message should be encrypted (メッセージは必ず暗号化する)|これをオンにすると、メッセージの暗号化が必須になります。暗号化されていないメッセージは拒否されます。|
+|Message should be compressed (メッセージは必ず圧縮する)|これをオンにすると、メッセージの圧縮が必須になります。圧縮されていないメッセージは拒否されます。|
+|MDN Text (MDN テキスト)|これはメッセージの送信者に送信される既定の MDN です。|
+|Send MDN (MDN を送信する)|これをオンにすると、MDN を送信できるようになります。|
+|Send signed MDN (署名付き MDN を送信する)|これをオンにすると、MDN への署名が必須になります。|
+|MIC Algorithm (MIC アルゴリズム)||
+|Send asynchronous MDN (非同期 MDN を送信する)|これをオンにすると、メッセージの非同期送信が必須になります。|
+|URL|メッセージの送信先の URL です。|
+説明を続けます。
+8. **[Send Settings (送信の設定)]** を選択し、この契約を使用して送信されたメッセージを処理する方法を構成します。![](./media/app-service-logic-enterprise-integration-agreements/agreement-5.png)
 
-See the table below if you would like to learn more about what the send settings enable.  
+各送信設定で何が有効になるかを調べる必要がある場合は、次の表を参照してください。
 
-|Property|Description|
+|プロパティ|説明|
 |----|----|
-|Enable message signing|Select this checkbox to enable all messages sent from the agreement to be signed.|
-|MIC Algorithm|Select the algorithm to use in message signing|
-|Certificate|Select the certificate to use in message signing|
-|Enable message encryption|Select this checkbox to encrypt all messages sent from this agreement.|
-|Encryption Algorithm|Select the encryption algorithm to use in message encryption|
-|Unfold HTTP headers|Select this checkbox to unfold the HTTP content-type header into a single line.|
-|Request MDN|Enable this checkbox to request an MDN for all messages sent from this agreement|
-|Request signed MDN|Enable to request that all MDNs sent to this agreement are signed|
-|Request asynchronous MDN|Enable to request asynchronous MDN to be sent to this agreement|
-|URL|The URL to which MDNs will be sent|
-|Enable NRR|Select this checkbox to enable Non-Repudiation of Receipt|
-We are almost done!  
-9. Select the **Agreements** tile on the Integration Account blade and you will see the newly added agreement listed.  
-![](./media/app-service-logic-enterprise-integration-agreements/agreement-6.png)
+|Enable message signing (メッセージの署名を有効にする)|このチェックボックスをオンにすると、契約から送信されたすべてのメッセージへの署名が有効になります。|
+|MIC Algorithm (MIC アルゴリズム)|メッセージの署名に使用するアルゴリズムを選択します。|
+|証明書|メッセージの署名に使用する証明書を選択します。|
+|Enable message encryption (メッセージの暗号化を有効にする)|このチェック ボックスをオンにすると、この契約から送信されたすべてのメッセージが暗号化されます。|
+|Encryption Algorithm (暗号化アルゴリズム)|メッセージの暗号化に使用する暗号化アルゴリズムを選択します。|
+|Unfold HTTP headers (HTTP ヘッダーを展開する)|このチェック ボックスをオンにすると、HTTP Content-type ヘッダーが 1 行に展開されます。|
+|Request MDN (MDN を要求する)|このチェックボックスをオンにすると、この契約から送信されたすべてのメッセージの MDN を要求します。|
+|Request signed MDN (署名付き MDN を要求する)|オンにすると、この契約に送信されるすべての MDN への署名が必須になります。|
+|Request asynchronous MDN (非同期 MDN を要求する)|オンにすると、この契約への非同期 MDN の送信が必須になります。|
+|URL|MDN の送信先の URLです。|
+|Enable NRR (NRR を有効にする)|このチェック ボックスをオンにすると、Non-Repudiation of Receipt が有効になります。|
+あともう少しで終了です。
+9. [Integration Accounts (統合アカウント)] ブレード上の**[Agreements (契約)]** タイルを選択すると、新しく追加された契約が表示されます。![](./media/app-service-logic-enterprise-integration-agreements/agreement-6.png)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

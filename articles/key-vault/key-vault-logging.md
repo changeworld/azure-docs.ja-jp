@@ -1,136 +1,135 @@
 <properties
-    pageTitle="Azure Key Vault Logging | Microsoft Azure"
-    description="Use this tutorial to help you get started with Azure Key Vault logging."
-    services="key-vault"
-    documentationCenter=""
-    authors="cabailey"
-    manager="mbaldwin"
-    tags="azure-resource-manager"/>
+	pageTitle="Azure Key Vault のログ記録 | Microsoft Azure"
+	description="このチュートリアルを使用すれば、Azure Key Vault のログ記録を容易に開始できます。"
+	services="key-vault"
+	documentationCenter=""
+	authors="cabailey"
+	manager="mbaldwin"
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="key-vault"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/31/2016"
-    ms.author="cabailey"/>
+	ms.service="key-vault"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="08/31/2016"
+	ms.author="cabailey"/>
+
+# Azure Key Vault のログ記録 #
+Azure Key Vault は、ほとんどのリージョンで使用できます。詳細については、[Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
+
+## はじめに  
+1 つまたは複数の Key Vault を作成したら、いつ、どのように、誰によって Key Vault がアクセスされるのかを監視するのが一般的です。監視を行うには、Key Vault のログ記録を有効にします。これにより、指定した Azure ストレージ アカウントに情報が保存されます。指定したストレージ アカウントに対して **insights-logs-auditevent** という名前の新しいコンテナーが自動的に作成されます。このストレージ アカウントを使用して複数の Key Vault のログを収集することができます。
+
+Key Vault の操作を行ってから、遅くとも 10 分後には、ログ情報にはアクセスできます。ほとんどの場合は、これよりも早く確認できます。ストレージ アカウントでのログの管理はお客様に委ねられます。
+
+- ログにアクセスできるユーザーを制限することでログのセキュリティを保護するには、標準的な Azure アクセス制御方法を使用します。
+- ストレージ アカウントに保持する必要がなくなったログは削除します。
+
+このチュートリアルでは、Azure Key Vault のログ記録を開始する際に役立つ情報を提供し、ストレージ アカウントを作成し、ログ記録を有効にし、収集されたログ情報を解釈します。
 
 
-# <a name="azure-key-vault-logging"></a>Azure Key Vault Logging #
-Azure Key Vault is available in most regions. For more information, see the [Key Vault pricing page](https://azure.microsoft.com/pricing/details/key-vault/).
-
-## <a name="introduction"></a>Introduction  
-After you have created one or more key vaults, you will likely want to monitor how and when your key vaults are accessed, and by whom. You can do this by enabling logging for Key Vault, which saves information in an Azure storage account that you provide. A new container named **insights-logs-auditevent** is automatically created for your specified storage account, and you can use this same storage account for collecting logs for multiple key vaults.
-
-You can access your logging information at most, 10 minutes after the key vault operation. In most cases, it will be quicker than this.  It's up to you to manage your logs in your storage account:
-
-- Use standard Azure access control methods to secure your logs by restricting who can access them.
-- Delete logs that you no longer want to keep in your storage account.
-
-Use this tutorial to help you get started with Azure Key Vault logging, to create your storage account, enable logging, and interpret the logging information collected.  
-
-
->[AZURE.NOTE]  This tutorial does not include instructions for how to create key vaults, keys, or secrets. For this information, see [Get started with Azure Key Vault](key-vault-get-started.md). Or, for Cross-Platform Command-Line Interface instructions, see [this equivalent tutorial](key-vault-manage-with-cli.md).
+>[AZURE.NOTE]  Key Vault、キー、またはシークレットの作成方法については、このチュートリアルに含まれていません。詳細については、「[Azure Key Vault の概要](key-vault-get-started.md)」を参照してください。また、クロスプラットフォーム コマンドライン インターフェイスの手順については、[対応するチュートリアル](key-vault-manage-with-cli.md)をご覧ください。
 >
->Currently, you cannot configure Azure Key Vault in the Azure portal. Instead, use these Azure PowerShell instructions.
+>現時点では、Azure ポータルで Azure Key Vault を構成できません。代わりに、Azure PowerShell 命令を使用します。
 
-The logs that you collect can be visualized by using Log analytics from the Operations Management Suite. For more information, see [Azure Key Vault (Preview) solution in Log Analytics](../log-analytics/log-analytics-azure-key-vault.md).
+収集したログは、Operations Management Suite から Log Analytics を使って視覚化することができます。詳細については、「[Azure Key Vault (Preview) solution in Log Analytics (Log Analytics の Azure Key Vault (プレビュー) ソリューション)](../log-analytics/log-analytics-azure-key-vault.md)」を参照してください。
 
-For overview information about Azure Key Vault, see [What is Azure Key Vault?](key-vault-whatis.md)
+Azure Key Vault の概要については、「[Azure Key Vault とは](key-vault-whatis.md)」をご覧ください。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-To complete this tutorial, you must have the following:
+このチュートリアルを完了するには、以下が必要です。
 
-- An existing key vault that you have been using.  
-- Azure PowerShell, **minimum version of 1.0.1**. To install Azure PowerShell and associate it with your Azure subscription, see [How to install and configure Azure PowerShell](../powershell-install-configure.md). If you have already installed Azure PowerShell and do not know the version, from the Azure PowerShell console, type `(Get-Module azure -ListAvailable).Version`.  
-- Sufficient storage on Azure for your Key Vault logs.
+- 使用している既存の Key Vault。
+- Azure PowerShell **1.0.1 以降のバージョン**。Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。Azure PowerShell をインストール済みで、バージョンがわからない場合は、Azure PowerShell コンソールで「`(Get-Module azure -ListAvailable).Version`」と入力します。
+- Azure 上に確保された Key Vault のログを格納するための十分なストレージ。
 
 
-## <a name="<a-id="connect"></a>connect-to-your-subscriptions"></a><a id="connect"></a>Connect to your subscriptions ##
+## <a id="connect"></a>サブスクリプションへの接続 ##
 
-Start an Azure PowerShell session and sign in to your Azure account with the following command:  
+Azure PowerShell セッションを開始し、次のコマンドで Azure アカウントにサインインします。
 
     Login-AzureRmAccount
 
-In the pop-up browser window, enter your Azure account user name and password. Azure PowerShell will get all the subscriptions that are associated with this account and by default, uses the first one.
+ポップアップ ブラウザー ウィンドウで、Azure アカウントのユーザー名とパスワードを入力します。Azure PowerShell は、このアカウントに関連付けられているすべてのサブスクリプションを取得し、既定で最初のサブスクリプションを使用します。
 
-If you have multiple subscriptions, you might have to specify a specific one that was used to create your Azure Key Vault. Type the following to see the subscriptions for your account:
+複数のサブスクリプションをお持ちの場合は、Azure Key Vault を作成するときに使用した特定の 1 つを指定することが必要なことがあります。アカウントのサブスクリプションを確認するには、次を入力します。
 
     Get-AzureRmSubscription
 
-Then, to specify the subscription that's associated with your key vault you will be logging, type:
+ログ記録する Key Vault に関連付けられているサブスクリプションを指定するには、次を入力します。
 
     Set-AzureRmContext -SubscriptionId <subscription ID>
 
-For more information about configuring Azure PowerShell, see  [How to install and configure Azure PowerShell](../powershell-install-configure.md).
+Azure PowerShell の詳細については、「[How to install and configure Azure PowerShell (Azure PowerShell のインストールと構成の方法)](../powershell-install-configure.md)」をご覧ください。
 
 
-## <a name="<a-id="storage"></a>create-a-new-storage-account-for-your-logs"></a><a id="storage"></a>Create a new storage account for your logs ##
+## <a id="storage"></a>ログ用に新しいストレージ アカウントを作成する ##
 
-Although you can use an existing storage account for your logs, we'll create a new storage account that will be dedicated to Key Vault logs. For convenience for when we have to specify this later, we'll store the details into a variable named **sa**.
+既存のストレージ アカウントをログのために使用できますが、Key Vault のログ専用に新しいストレージ アカウントを作成することにします。後でこれを指定することが必要になる場合に備えて、詳細情報を **sa** という名前の変数に格納します。
 
-For additional ease of management, we'll also use the same resource group as the one that contains our key vault. From the [getting started tutorial](key-vault-get-started.md), this resource group is named **ContosoResourceGroup** and we'll continue to use the East Asia location. Substitute these values for your own, as applicable:
+また、管理を容易にするために、当該 Key Vault が含まれているリソース グループと同じリソース グループを使用します。[入門チュートリアル](key-vault-get-started.md)に基づいて、このリソース グループには **ContosoResourceGroup** という名前を付け、東アジアの場所を引き続き使用します。これらの値は、必要に応じて実際の値に置き換えてください。
 
-    $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
-
-
->[AZURE.NOTE]  If you decide to use an existing storage account, it must use the same subscription as your key vault and it must use the Resource Manager deployment model, rather than the Classic deployment model.
-
-## <a name="<a-id="identify"></a>identify-the-key-vault-for-your-logs"></a><a id="identify"></a>Identify the key vault for your logs ##
-
-In our getting started tutorial, our key vault name was **ContosoKeyVault**, so we'll continue to use that name and store the details into a variable named **kv**:
-
-    $kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+	$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup -Name ContosoKeyVaultLogs -Type Standard_LRS -Location 'East Asia'
 
 
-## <a name="<a-id="enable"></a>enable-logging"></a><a id="enable"></a>Enable logging ##
+>[AZURE.NOTE]  既存のストレージ アカウントを使用する場合、そのストレージ アカウントでは、目的の Key Vault と同じサブスクリプションを使用する必要があります。また、クラシック デプロイメント モデルではなく、リソース マネージャー デプロイメント モデルを使用する必要があります。
 
-To enable logging for Key Vault, we'll use the Set-AzureRmDiagnosticSetting cmdlet, together with the variables we created for our new storage account and our key vault. We'll also set the **-Enabled** flag to **$true** and set the category to AuditEvent (the only category for Key Vault logging), :
+## <a id="identify"></a>ログに対する Key Vault を識別する ##
 
+入門チュートリアルで、Key Vault の名前は **ContosoKeyVault** としたので、この名前を引き続き使用し、詳細情報を **kv** という名前の変数に格納します。
 
-    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
-
-The output for this includes:
-
-    StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
-    ServiceBusRuleId   :
-    StorageAccountName :
-        Logs
-        Enabled           : True
-        Category          : AuditEvent
-        RetentionPolicy
-        Enabled : False
-        Days    : 0
+	$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
 
 
-This confirms that logging is now enabled for your key vault, saving information to your storage account.
+## <a id="enable"></a>ログの有効化 ##
 
-Optionally you can also set retention policy for your logs such that older logs will be automatically deleted. For example, set retention policy using **-RetentionEnabled** flag to **$true** and set **-RetentionInDays** parameter to **90** so that logs older than 90 days will be automatically deleted.
-
-    Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
-
-What's logged:
-
-- All authenticated REST API requests are logged, which includes failed requests as a result of access permissions, system errors or bad requests.
-- Operations on the key vault itself, which includes creation, deletion, setting key vault access policies, and updating key vault attributes such as tags.
-- Operations on keys and secrets in the key vault, which includes creating, modifying, or deleting these keys or secrets; operations such as sign, verify, encrypt, decrypt, wrap and unwrap keys, get secrets, list keys and secrets and their versions.
-- Unauthenticated requests that result in a 401 response. For example, requests that do not have a bearer token, or are malformed or expired, or have an invalid token.  
+Key Vault のログ記録を有効にするために、AzureRmDiagnosticSetting コマンドレットを、新しいストレージ アカウントおよび当該 Key Vault 用に作成した変数と組み合わせて使用します。また、**-Enabled** フラグを **$true** に設定し、カテゴリを AuditEvent (Key Vault ログ記録専用のカテゴリ) に設定します。
 
 
-## <a name="<a-id="access"></a>access-your-logs"></a><a id="access"></a>Access your logs ##
+	Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
 
-Key vault logs are stored in the **insights-logs-auditevent** container in the storage account you provided. To list all the blobs in this container, type:
+この出力は次のとおりです。
+
+	StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
+	ServiceBusRuleId   :
+	StorageAccountName :
+		Logs
+		Enabled           : True
+		Category          : AuditEvent
+		RetentionPolicy
+		Enabled : False
+		Days    : 0
+
+
+これを見れば、ログ記録が Key Vault に対して有効になっていること、ストレージ アカウントに情報が保存されることを確認できます。
+
+必要に応じて、ログのリテンション期間ポリシーを使用して、古いログが自動的に削除されるように設定することもできます。たとえば、**-RetentionEnabled** フラグを **$true** に設定し、**-RetentionInDays** パラメーターを **90** に設定したリテンション期間ポリシーを設定すると、90 日より前のログが自動的に削除されます。
+
+	Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent -RetentionEnabled $true -RetentionInDays 90
+
+ログ記録の内容:
+
+- 認証されたすべての REST API 要求がログ記録されます。これには、アクセス許可がないため、システム エラーのため、または不正な要求の結果として、失敗した要求が含まれます。
+- Key Vault 自体に関する操作。これには、作成、削除、Key Vault アクセス ポリシーの設定、Key Vault 属性 (タグなど) の更新が含まれます。
+- Key Vault 内のキーおよびシークレットに関する操作。これには、キーまたはシークレットの作成、変更、または削除といった操作に加えて、キーの署名、確認、暗号化、複合化、ラップ、およびラップ解除、シークレットの取得、キーとシークレットとこれらのバージョンの一覧表示などの操作も含まれます。
+- 結果として 401 応答が発生する、認証されていない要求。たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。
+
+
+## <a id="access"></a>ログへのアクセス ##
+
+Key Vault のログは、指定したストレージ アカウント内の **insights-logs-auditevent** コンテナーに格納されます。このコンテナー内のすべての BLOB を一覧表示するには、次のように入力します。
 
     Get-AzureStorageBlob -Container 'insights-logs-auditevent' -Context $sa.Context
 
-The output will look something similar to this:
+出力は次のようになります。
 
 **Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent**
 
 
-**Name**
+**名前**
 
 **----**
 
@@ -138,153 +137,149 @@ The output will look something similar to this:
 
 **resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=02/m=00/PT1H.json**
 
-**resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json****
+**resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json**
 
 
-As you can see from this output, the blobs follow a naming convention: **resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json**
+この出力内容からわかるように、BLOB には **resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json** という名前付け規則が適用されます。
 
-The date and time values use UTC.
+日付と時刻の値には UTC が使用されます。
 
-Because the same storage account can be used to collect logs for multiple resources, the full resource ID in the blob name is very useful to access or download just the blobs that you need. But before we do that, we'll first cover how to download all the blobs.
+同じストレージ アカウントを使用して複数のリソースのログを収集することができるので、必要な BLOB のみにアクセスしたり、ダウンロードしたりする場合には、BLOB 名の完全なリソース ID を使用すると便利です。その前に、すべての BLOB をダウンロードする方法を説明します。
 
-First, create a folder to download the blobs. For example:
+まず、フォルダーを作成して BLOB をダウンロードします。For example:
 
-    New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
+	New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
 
-Then get a list of all blobs:  
+すべての BLOB の一覧を取得します。
 
-    $blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+	$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
 
-Pipe this list through 'Get-AzureStorageBlobContent' to download the blobs into our destination folder:
+'Get-AzureStorageBlobContent' を介してこの一覧をパイプして、BLOB を宛先フォルダーにダウンロードします。
 
-    $blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
+	$blobs | Get-AzureStorageBlobContent -Destination 'C:\Users\username\ContosoKeyVaultLogs'
 
-When you run this second command, the **/** delimiter in the blob names create a full folder structure under the destination folder, and this structure will be used to download and store the blobs as files.
+この 2 番目のコマンドを実行すると、BLOB 名に含まれる **/** 区切り記号によって、宛先フォルダーの下にフォルダー構造全体が作成されます。このフォルダー構造は、BLOB をファイルとしてダウンロードし、保存するために使用されます。
 
-To selectively download blobs, use wildcards. For example:
+BLOB を選択的にダウンロードするには、ワイルドカードを使用します。For example:
 
-- If you have multiple key vaults and want to download logs for just one key vault, named CONTOSOKEYVAULT3:
+- 複数の Key Vault を持っている場合に、CONTOSOKEYVAULT3 という名前の Key Vault のみについてログをダウンロードするには、次のようにします。
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
 
-- If you have multiple resource groups and want to download logs for just one resource group, use `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`:
+- 複数のリソース グループを持っている場合、1 つのリソース グループのみについてログをダウンロードするには、次のように `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` を使用します。
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
 
-- If you want to download all the logs for the month of January 2016, use `-Blob '*/year=2016/m=01/*'`:
+- 2016 年 1 月のすべてのログをダウンロードする場合は、次のように `-Blob '*/year=2016/m=01/*'` を使用します。
 
-        Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+		Get-AzureStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
 
-You're now ready to start looking at what's in the logs. But before moving onto that, two more parameters for Get-AzureRmDiagnosticSetting that you might need to know:
+これで、ログの内容を検討する準備が整いました。ただし、ログの内容の検討に入る前に、Get-AzureRmDiagnosticSetting 用のさらに 2 つのパラメーターを把握しておく必要があります。
 
-- To query the  status of diagnostic settings for your key vault resource: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
+- Key Vault リソースの診断設定の状態のクエリを実行するためのパラメーター: `Get-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId`
 
-- To disable logging for your key vault resource: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
-
-
-## <a name="<a-id="interpret"></a>interpret-your-key-vault-logs"></a><a id="interpret"></a>Interpret your Key Vault logs ##
-
-Individual blobs are stored as text, formatted as a JSON blob. This is an example log entry from running `Get-AzureRmKeyVault -VaultName 'contosokeyvault'`:
-
-    {
-        "records":
-        [
-            {
-                "time": "2016-01-05T01:32:01.2691226Z",
-                "resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT",
-                "operationName": "VaultGet",
-                "operationVersion": "2015-06-01",
-                "category": "AuditEvent",
-                "resultType": "Success",
-                "resultSignature": "OK",
-                "resultDescription": "",
-                "durationMs": "78",
-                "callerIpAddress": "104.40.82.76",
-                "correlationId": "",
-                "identity": {"claim":{"http://schemas.microsoft.com/identity/claims/objectidentifier":"d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn":"live.com#username@outlook.com","appid":"1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},
-                "properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.azure.net/","httpStatusCode":200}
-            }
-        ]
-    }
+- Key Vault リソースのログ記録を無効にするためのパラメーター: `Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories AuditEvent`
 
 
-The following table lists the field names and descriptions.
+## <a id="interpret"></a>Key Vault のログを解釈する ##
+
+個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。`Get-AzureRmKeyVault -VaultName 'contosokeyvault'` を実行して得られたログ エントリの例を次に示します。
+
+	{
+    	"records":
+    	[
+        	{
+        	    "time": "2016-01-05T01:32:01.2691226Z",
+        	    "resourceId": "/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSOGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT",
+            	"operationName": "VaultGet",
+            	"operationVersion": "2015-06-01",
+            	"category": "AuditEvent",
+            	"resultType": "Success",
+            	"resultSignature": "OK",
+            	"resultDescription": "",
+            	"durationMs": "78",
+            	"callerIpAddress": "104.40.82.76",
+            	"correlationId": "",
+            	"identity": {"claim":{"http://schemas.microsoft.com/identity/claims/objectidentifier":"d9da5048-2737-4770-bd64-XXXXXXXXXXXX","http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn":"live.com#username@outlook.com","appid":"1950a258-227b-4e31-a9cf-XXXXXXXXXXXX"}},
+            	"properties": {"clientInfo":"azure-resource-manager/2.0","requestUri":"https://control-prod-wus.vaultcore.azure.net/subscriptions/361da5d4-a47a-4c79-afdd-XXXXXXXXXXXX/resourcegroups/contosoresourcegroup/providers/Microsoft.KeyVault/vaults/contosokeyvault?api-version=2015-06-01","id":"https://contosokeyvault.vault.azure.net/","httpStatusCode":200}
+        	}
+    	]
+	}
 
 
-| Field name        | Description |
+次の表にフィールド名と説明を示します。
+
+
+| フィールド名 | Description |
 | ------------- |-------------|
-| time      | Date and time (UTC).|
-| resourceId      | Azure Resource Manager Resource ID. For Key Vault logs, this is always the  Key Vault resource ID.|
-| operationName      | Name of the operation, as documented in the next table.|
-| operationVersion      | This is the REST API version requested by the client.|
-| category      | For Key Vault logs, AuditEvent is the single, available value.|
-| resultType      | Result of REST API request.|
-| resultSignature      | HTTP status.|
-| resultDescription     | Additional description about the result, when available.|
-| durationMs      | Time it took to service the REST API request, in milliseconds. This does not include the network latency, so the time you measure on the client side might not match this time.|
-| callerIpAddress      | IP address of the client who made the request.|
-| correlationId      | An optional GUID that the client can pass to correlate client-side logs with service-side (Key Vault) logs.|
-| identity      | Identity from the token that was presented when making the REST API request. This is usually a "user", a "service principal" or a combination "user+appId" as in case of a request resulting from a Azure PowerShell cmdlet.|
-| properties      | This field will contain different information based on the operation (operationName). In most cases, contains client information (the useragent string passed by the client), the exact REST API request URI, and HTTP status code. In addition, when an object is returned as a result of a request (for example, KeyCreate or VaultGet) it will also contain the Key URI (as "id"), Vault URI, or Secret URI.|
+| time | 日付と時刻 (UTC)。|
+| resourceId | Azure リソース マネージャー リソース ID。Key Vault のログの場合は、常に Key Vault リソース ID となります。|
+| operationName | 次の表に示すような操作の名前です。|
+| operationVersion | クライアントによって要求される REST API バージョンです。|
+| カテゴリ | Key Vault のログの場合、AuditEvent は使用可能な単一の値です。|
+| resultType | REST API 要求の結果です。|
+| resultSignature | HTTP の状態です。|
+| resultDescription | 結果に関する追加の説明です (使用可能な場合)。|
+| durationMs | REST API 要求を処理するのにかかった時間 (ミリ秒単位) です。これにネットワーク待機時間は含まれません。したがって、クライアント側で測定する時間はこの時間と一致しない場合があります。|
+| callerIpAddress | 要求を行ったクライアントの IP アドレスです。|
+| correlationId | オプションの GUID であり、クライアント側のログとサービス側の (Key Vault) ログを対応付ける場合に渡します。|
+| ID | REST API 要求を行う場合に提示されたトークンからの ID です。これは、通常、Azure PowerShell コマンドレットの実行結果として生じる要求の場合と同様に、"user"、"service principal"、または組み合わせ "user+appId" となります。|
+| プロパティ | このフィールドには、操作に基づくさまざまな情報が含まれます (operationName)。ほとんどの場合は、クライアント情報 (クライアントから渡された useragent 文字列)、正確な REST API 要求 URI、および HTTP 状態コードが含まれます。さらに、要求 (KeyCreate または VaultGet など) を行った結果としてオブジェクトが返される場合は、キーの URI ("id" として)、資格情報コンテナーの URI、またはシークレットの URI も含まれます。|
 
 
 
 
-The **operationName** field values are in ObjectVerb format. For example:
+**operationName** フィールドの値は、ObjectVerb 形式となります。For example:
 
-- All key vault operations have the 'Vault`<action>`' format, such as `VaultGet` and `VaultCreate`.
+- Key Vault に関するすべての操作は、"Vault`<action>`" 形式となります (`VaultGet` や `VaultCreate` など)。
 
-- All  key operations have the 'Key`<action>`' format, such as `KeySign` and `KeyList`.
+- キーに関するすべての操作は、"Key`<action>`" 形式となります (`KeySign` や `KeyList` など)。
 
-- All secret operations have the 'Secret`<action>`' format, such as `SecretGet` and `SecretListVersions`.
+- シークレットに関するすべての操作は、"Secret`<action>`" 形式となります (`SecretGet` や `SecretListVersions` など)。
 
-The following table lists the operationName and corresponding REST API command.
+次の表に、operationName と、対応する REST API コマンドを一覧します。
 
-| operationName        | REST API Command |
+| operationName | REST API コマンド |
 | ------------- |-------------|
-| Authentication      | Via Azure Active Directory endpoint|
-| VaultGet      | [Get information about a key vault](https://msdn.microsoft.com/en-us/library/azure/mt620026.aspx)|
-| VaultPut      | [Create or update a key vault](https://msdn.microsoft.com/en-us/library/azure/mt620025.aspx)|
-| VaultDelete      | [Delete a key vault](https://msdn.microsoft.com/en-us/library/azure/mt620022.aspx)|
-| VaultPatch      | [Update a key vault](https://msdn.microsoft.com/library/azure/mt620025.aspx)|
-| VaultList      | [List all key vaults in a resource group](https://msdn.microsoft.com/en-us/library/azure/mt620027.aspx)|
-| KeyCreate      | [Create a key](https://msdn.microsoft.com/en-us/library/azure/dn903634.aspx)|
-| KeyGet      | [Get information about a key](https://msdn.microsoft.com/en-us/library/azure/dn878080.aspx)|
-| KeyImport      | [Import a key into a vault](https://msdn.microsoft.com/en-us/library/azure/dn903626.aspx)|
-| KeyBackup      | [Backup a key](https://msdn.microsoft.com/en-us/library/azure/dn878058.aspx).|
-| KeyDelete      | [Delete a key](https://msdn.microsoft.com/en-us/library/azure/dn903611.aspx)|
-| KeyRestore      | [Restore a key](https://msdn.microsoft.com/en-us/library/azure/dn878106.aspx)|
-| KeySign      | [Sign with a key](https://msdn.microsoft.com/en-us/library/azure/dn878096.aspx)|
-| KeyVerify      | [Verify with a key](https://msdn.microsoft.com/en-us/library/azure/dn878082.aspx)|
-| KeyWrap      | [Wrap a key](https://msdn.microsoft.com/en-us/library/azure/dn878066.aspx)|
-| KeyUnwrap      | [Unwrap a key](https://msdn.microsoft.com/en-us/library/azure/dn878079.aspx)|
-| KeyEncrypt      | [Encrypt with a key](https://msdn.microsoft.com/en-us/library/azure/dn878060.aspx)|
-| KeyDecrypt      | [Decrypt with a key](https://msdn.microsoft.com/en-us/library/azure/dn878097.aspx)|
-| KeyUpdate      | [Update a key](https://msdn.microsoft.com/en-us/library/azure/dn903616.aspx)|
-| KeyList      | [List the keys in a vault](https://msdn.microsoft.com/en-us/library/azure/dn903629.aspx)|
-| KeyListVersions      | [List the versions of a key](https://msdn.microsoft.com/en-us/library/azure/dn986822.aspx)|
-| SecretSet      | [Create a secret](https://msdn.microsoft.com/en-us/library/azure/dn903618.aspx)|
-| SecretGet      | [Get secret](https://msdn.microsoft.com/en-us/library/azure/dn903633.aspx)|
-| SecretUpdate      | [Update a secret](https://msdn.microsoft.com/en-us/library/azure/dn986818.aspx)|
-| SecretDelete      | [Delete a secret](https://msdn.microsoft.com/en-us/library/azure/dn903613.aspx)|
-| SecretList      | [List secrets in a vault](https://msdn.microsoft.com/en-us/library/azure/dn903614.aspx)|
-| SecretListVersions      | [List versions of a secret](https://msdn.microsoft.com/en-us/library/azure/dn986824.aspx)|
+| 認証 | Azure Active Directory エンドポイント経由|
+| VaultGet | [Key Vault に関する情報を取得します](https://msdn.microsoft.com/ja-JP/library/azure/mt620026.aspx)|
+| VaultPut | [Key Vault を作成または更新します](https://msdn.microsoft.com/ja-JP/library/azure/mt620025.aspx)|
+| VaultDelete | [Key Vault を削除します](https://msdn.microsoft.com/ja-JP/library/azure/mt620022.aspx)|
+| VaultPatch | [Key Vault を更新します](https://msdn.microsoft.com/library/azure/mt620025.aspx)|
+| VaultList | [リソース グループ内のすべての Key Vault を一覧表示します。](https://msdn.microsoft.com/ja-JP/library/azure/mt620027.aspx)|
+| KeyCreate | [キーを作成します](https://msdn.microsoft.com/ja-JP/library/azure/dn903634.aspx)|
+| KeyGet | [キーに関する情報を取得します](https://msdn.microsoft.com/ja-JP/library/azure/dn878080.aspx)|
+| KeyImport | [資格情報コンテナーにキーをインポートします](https://msdn.microsoft.com/ja-JP/library/azure/dn903626.aspx)|
+| KeyBackup | [キーをバックアップします](https://msdn.microsoft.com/ja-JP/library/azure/dn878058.aspx)。|
+| KeyDelete | [キーを削除します](https://msdn.microsoft.com/ja-JP/library/azure/dn903611.aspx)|
+| KeyRestore | [キーを復元します](https://msdn.microsoft.com/ja-JP/library/azure/dn878106.aspx)|
+| KeySign | [キーで署名します](https://msdn.microsoft.com/ja-JP/library/azure/dn878096.aspx)|
+| KeyVerify | [キーで確認します](https://msdn.microsoft.com/ja-JP/library/azure/dn878082.aspx)|
+| KeyWrap | [キーをラップします](https://msdn.microsoft.com/ja-JP/library/azure/dn878066.aspx)|
+| KeyUnwrap | [キーのラップを解除します](https://msdn.microsoft.com/ja-JP/library/azure/dn878079.aspx)|
+| KeyEncrypt | [キーで暗号化します](https://msdn.microsoft.com/ja-JP/library/azure/dn878060.aspx)|
+| KeyDecrypt | [キーで復号化します](https://msdn.microsoft.com/ja-JP/library/azure/dn878097.aspx)|
+| KeyUpdate | [キーを更新します](https://msdn.microsoft.com/ja-JP/library/azure/dn903616.aspx)|
+| KeyList | [資格情報コンテナー内のキーを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn903629.aspx)|
+| KeyListVersions | [キーのバージョンを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn986822.aspx)|
+| SecretSet | [シークレットを作成します](https://msdn.microsoft.com/ja-JP/library/azure/dn903618.aspx)|
+| SecretGet | [シークレットを取得します](https://msdn.microsoft.com/ja-JP/library/azure/dn903633.aspx)|
+| SecretUpdate | [シークレットを更新します](https://msdn.microsoft.com/ja-JP/library/azure/dn986818.aspx)|
+| SecretDelete | [シークレットを削除します](https://msdn.microsoft.com/ja-JP/library/azure/dn903613.aspx)|
+| SecretList | [資格情報コンテナー内のシークレットを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn903614.aspx)|
+| SecretListVersions | [シークレットのバージョンを一覧表示します](https://msdn.microsoft.com/ja-JP/library/azure/dn986824.aspx)|
 
 
 
 
-## <a name="<a-id="next"></a>next-steps"></a><a id="next"></a>Next steps ##
+## <a id="next"></a>次のステップ ##
 
-For a tutorial that uses Azure Key Vault in a web application, see [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md).
+Web アプリケーションでの Azure Key Vault の使用方法に関するチュートリアルについては、「[Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md)」を参照してください。
 
-For programming references, see [the Azure Key Vault developer's guide](key-vault-developers-guide.md).
+プログラミング リファレンスについては、「[Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
-For a list of Azure PowerShell 1.0 cmdlets for Azure Key Vault, see [Azure Key Vault Cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx).
+Azure Key Vault の Azure PowerShell 1.0 のコマンドレットの一覧については、「[Azure Key Vault Cmdlets (Azure Key Vault コマンドレット)](https://msdn.microsoft.com/library/azure/dn868052.aspx)」を参照してください。
 
-For a tutorial on key rotation and log auditing with Azure Key Vault, see [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md).
+Azure Key Vault を使用したキーのローテーションとログの監査のチュートリアルについては、「[エンド ツー エンドのキーのローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

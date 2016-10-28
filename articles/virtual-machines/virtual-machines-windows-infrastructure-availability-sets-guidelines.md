@@ -1,58 +1,54 @@
 <properties
-    pageTitle="Availability Set Guidelines | Microsoft Azure"
-    description="Learn about the key design and implementation guidelines for deploying Availability Sets in Azure infrastructure services."
-    documentationCenter=""
-    services="virtual-machines-windows"
-    authors="iainfoulds"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="可用性セットのガイドライン |Microsoft Azure"
+	description="Azure インフラストラクチャ サービスでの可用性セットのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
+	documentationCenter=""
+	services="virtual-machines-windows"
+	authors="iainfoulds"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/08/2016"
-    ms.author="iainfou"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2016"
+	ms.author="iainfou"/>
+
+# 可用性セットのガイドライン
+
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
+
+この記事では、計画内または計画外のイベント中にユーザーがアプリケーションを利用できるようにするために必要な可用性セットの計画手順について中心に説明します。
+
+## 可用性セットに関する実装ガイドライン
+
+決めること:
+
+- アプリケーション インフラストラクチャ内のさまざまなロールおよび階層に必要な可用性セットの数
+
+タスク:
+
+- 各アプリケーション層で必要な VM の数を定義する。
+- アプリケーションに使用する障害ドメインまたは更新ドメインの数を調整する必要があるかどうかを決定する。
+- 名前付け規則を使用して必要な可用性セットを定義し、可用性セット内にどの VM を配置するかを定義する。VM は 1 つの可用性セットにのみ配置できます。
+
+## 可用性セット
+
+Azure では、可用性セットと呼ばれる論理的なグループに仮想マシン (VM) を配置できます。可用性セット内で VM を作成する場合、Azure Platform により、基になるインフラストラクチャ全体にこれらの VM の配置が分散されます。Azure Platform または基になるハードウェア/インフラストラクチャの障害に対する計画済みメンテナンス イベントが発生する場合、可用性セットを使用することで、少なくとも 1 つの VM の 実行を継続できます。
+
+ベスト プラクティスとして、複数のアプリケーションを 1 つの VM に配置しないでください。可用性セットに 1 つの VM しか含まれていない場合、Azure Platform 内の計画済みまたは計画外のイベントから保護されません。[Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) では、基になるインフラストラクチャ全体に VM を分散できるように、1 つの可用性セット内に 2 つ以上の VM が必要です。
+
+Azure における基になるインフラストラクチャは、更新ドメインと障害ドメインに分けられます。これらのドメインは、共通の一般的な更新サイクルを共有するホスト、または類似の物理インフラストラクチャ (電源やネットワークなど) を共有するホストで定義されます。Azure は、ドメイン間で可用性セット内に VM を自動的に分散し、可用性とフォールト トレランスを維持します。可用性セット内のアプリケーションのサイズと VM の数に応じて、使用するドメインの数を調整できます。詳細については、[更新ドメインと障害ドメインの可用性と使用の管理](virtual-machines-windows-manage-availability.md)に関するページをご覧ください。
+
+アプリケーション インフラストラクチャを設計する場合は、使用するアプリケーション層について計画する必要もあります。目的が同じ VM は、IIS が実行されているフロントエンド VM の可用性セットなど、各可用性セットにまとめます。SQL Server が実行されているバックエンド VM 用に、別の可用性セットを作成します。目標は、アプリケーションの各コンポーネントを可用性セットで保護することで、少なくとも 1 つのインスタンスが常に実行されているようにすることです。
+
+ロード バランサーを可用性セットと併せて各アプリケーション層の前で使用することで、実行中のインスタンスにトラフィックが常にルーティングされるようにすることができます。ロード バランサーを使用しなくても、計画内および計画外のメンテナンス イベント時に VM を実行し続けることはできますが、エンド ユーザーは、プライマリ VM が利用できない場合にそれらのイベントを解決できない可能性があります。
 
 
-# <a name="availability-sets-guidelines"></a>Availability sets guidelines
+## 次のステップ
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)] 
-
-This article focuses on understanding the required planning steps for availability sets to ensure your applications remains accessible during planned or unplanned events.
-
-## <a name="implementation-guidelines-for-availability-sets"></a>Implementation guidelines for availability sets
-
-Decisions:
-
-- How many availability sets do you need for the various roles and tiers in your application infrastructure?
-
-Tasks:
-
-- Define the number of VMs in each application tier you require.
-- Determine if you need to adjust the number of fault or update domains to be used for your application.
-- Define the required availability sets using your naming convention and what VMs reside in them. A VM can only reside in one availability set. 
-
-## <a name="availability-sets"></a>Availability sets
-
-In Azure, virtual machines (VMs) can be placed in to a logical grouping called an availability set. When you create VMs within an availability set, the Azure platform distributes the placement of those VMs across the underlying infrastructure. Should there be a planned maintenance event to the Azure platform or an underlying hardware / infrastructure fault, the use of availability sets ensures that at least one VM remains running.
-
-As a best practice, applications should not reside on a single VM. An availability set that contains a single VM doesn't gain any protection from planned or unplanned events within the Azure platform. The [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines) requires two or more VMs within an availability set to allow the distribution of VMs across the underlying infrastructure.
-
-The underlying infrastructure in Azure is divided in to update domains and fault domains. These domains are defined by what hosts share a common update cycle, or share similar physical infrastructure such as power and networking. Azure automatically distributes your VMs within an availability set across domains to maintain availability and fault tolerance. Depending on the size of your application and the number of VMs within an availability set, you can adjust the number of domains you wish to use. You can read more about [managing availability and use of update and fault domains](virtual-machines-windows-manage-availability.md).
-
-When designing your application infrastructure, you should also plan the application tiers that you use. Group VMs that serve the same purpose in to availability sets, such as an availability set for your front-end VMs running IIS. Create a separate availability set for your back-end VMs running SQL Server. The goal is to ensure that each component of your application is protected by an availability set and at least once instance always remains running.
-
-Load balancers can be utilized in front of each application tier to work alongside an availability set and ensure traffic can always be routed to a running instance. Without a load balancer, your VMs may continue running throughout planned and unplanned maintenance events, but your end users may not be able to resolve them if the primary VM is unavailable.
-
-
-## <a name="next-steps"></a>Next steps
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)] 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

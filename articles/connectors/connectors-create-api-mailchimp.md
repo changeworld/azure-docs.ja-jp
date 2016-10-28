@@ -1,10 +1,10 @@
 <properties
 pageTitle="MailChimp | Microsoft Azure"
-description="Create Logic apps with Azure App service. MailChimp is a SaaS service that allows businesses to manage and automate email marketing activities, including sending marketing emails, automated messages and targeted campaigns."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Azure App Service を使用してロジック アプリを作成します。MailChimp は、電子メール マーケティング活動を管理および自動化するための企業向け SaaS サービスです。このサービスにより、マーケティング電子メールの送信、自動メッセージ、対象を絞ったキャンペーンなどを行うことができます。"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,730 +17,726 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# MailChimp コネクタの使用
 
-# <a name="get-started-with-the-mailchimp-connector"></a>Get started with the MailChimp connector
-
-MailChimp is a SaaS service that allows businesses to manage and automate email marketing activities, including sending marketing emails, automated messages and targeted campaigns.
+MailChimp は、電子メール マーケティング活動を管理および自動化するための企業向け SaaS サービスです。このサービスにより、マーケティング電子メールの送信、自動メッセージ、対象を絞ったキャンペーンなどを行うことができます。
 
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+## トリガーとアクション
 
-The MailChimp connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+MailChimp コネクタは、アクションとして使用できます。MailChimp コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
- The MailChimp connector has the following action(s) and/or trigger(s) available:
+ MailChimp コネクタでは、次のアクションやトリガーを使用できます。
 
-### <a name="mailchimp-actions"></a>MailChimp actions
-You can take these action(s):
+### MailChimp のアクション
+実行できるアクションは以下のとおりです。
 
-|Action|Description|
+|アクション|Description|
 |--- | ---|
-|[newcampaign](connectors-create-api-mailchimp.md#newcampaign)|Create a new campaign based on a Campaign Type, Recipients list and Campaign Settings (subject line, title, from_name and reply_to)|
-|[newlist](connectors-create-api-mailchimp.md#newlist)|Create a new list in your MailChimp account|
-|[addmember](connectors-create-api-mailchimp.md#addmember)|Add or update a list member|
-|[removemember](connectors-create-api-mailchimp.md#removemember)|Delete a member from a list.|
-|[updatemember](connectors-create-api-mailchimp.md#updatemember)|Update information for a specific list member|
-### <a name="mailchimp-triggers"></a>MailChimp triggers
-You can listen for these event(s):
+|[newcampaign](connectors-create-api-mailchimp.md#newcampaign)|キャンペーンの種類、受信者の一覧、およびキャンペーンの設定 (subject line、title、from\_name、および reply\_to) に基づいて新しいキャンペーンを作成します|
+|[newlist](connectors-create-api-mailchimp.md#newlist)|MailChimp アカウントで新しい一覧を作成します|
+|[addmember](connectors-create-api-mailchimp.md#addmember)|一覧のメンバーを追加または更新します|
+|[removemember](connectors-create-api-mailchimp.md#removemember)|一覧からメンバーを削除します|
+|[updatemember](connectors-create-api-mailchimp.md#updatemember)|一覧の特定メンバーの情報を更新します|
+### MailChimp のトリガー
+次のイベントをリッスンできます。
 
-|Trigger | Description|
+|トリガー | Description|
 |--- | ---|
-|When a Member has been added to a list|Triggers a workflow when a new member has been added to a list|
-|When a new list is created|Triggers a workflow when a new list is created|
+|一覧へのメンバーの追加時|新しいメンバーが一覧に追加されたときにワークフローをトリガーします|
+|新しい一覧の作成時|新しい一覧が作成されたときにワークフローをトリガーします|
 
 
-## <a name="create-a-connection-to-mailchimp"></a>Create a connection to MailChimp
-To create Logic apps with MailChimp, you must first create a **connection** then provide the details for the following properties: 
+## MailChimp への接続の作成
+MailChimp を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|Property| Required|Description|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|Token|Yes|Provide MailChimp Credentials|
+|トークン|はい|MailChimp の資格情報を提供します|
 
->[AZURE.INCLUDE [Steps to create a connection to MailChimp](../../includes/connectors-create-api-mailchimp.md)]
+>[AZURE.INCLUDE [MailChimp への接続を作成する手順](../../includes/connectors-create-api-mailchimp.md)]
 
->[AZURE.TIP] You can use this connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
-## <a name="reference-for-mailchimp"></a>Reference for MailChimp
-Applies to version: 1.0
+## MailChimp のリファレンス
+適用されるバージョン: 1.0
 
-## <a name="newcampaign"></a>newcampaign
-New Campaign: Create a new campaign based on a Campaign Type, Recipients list and Campaign Settings (subject line, title, from_name and reply_to) 
+## newcampaign
+新しいキャンペーン: キャンペーンの種類、受信者の一覧、およびキャンペーンの設定 (subject line、title、from\_name、および reply\_to) に基づいて新しいキャンペーンを作成します
 
-```POST: /campaigns``` 
+```POST: /campaigns```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|newCampaignRequest| |yes|body|none|Json object to send in the body with the new campaign request parameters|
+|newCampaignRequest| |○|body|なし|新しいキャンペーンの要求パラメーターと共に本文で送信する Json オブジェクト|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="newlist"></a>newlist
-New List: Create a new list in your MailChimp account 
+## newlist
+新しい一覧: MailChimp アカウントで新しい一覧を作成します
 
-```POST: /lists``` 
+```POST: /lists```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|newListRequest| |yes|body|none|Json object to send in the body with the new campaign request parameters|
+|newListRequest| |○|body|なし|新しいキャンペーンの要求パラメーターと共に本文で送信する Json オブジェクト|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="addmember"></a>addmember
-Add member to list: Add or update a list member 
+## addmember
+一覧へのメンバーの追加: 一覧のメンバーを追加または更新します
 
-```POST: /lists/{list_id}/members``` 
+```POST: /lists/{list_id}/members```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|string|yes|path|none|The unique id for the list|
-|newMemberInList| |yes|body|none|Json object to send in the body with the new member information|
+|list\_id|string|○|path|なし|一覧の一意の ID|
+|newMemberInList| |○|body|なし|新しいメンバー情報と共に本文で送信する Json オブジェクト|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="removemember"></a>removemember
-Remove Member from list: Delete a member from a list. 
+## removemember
+一覧からのメンバーの削除: 一覧からメンバーを削除します。
 
-```DELETE: /lists/replacemailwithhash/{list_id}/members/{member_email}``` 
+```DELETE: /lists/replacemailwithhash/{list_id}/members/{member_email}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|string|yes|path|none|The unique id for the list|
-|member_email|string|yes|path|none|The email address of the member to delete|
+|list\_id|string|○|path|なし|一覧の一意の ID|
+|member\_email|string|○|path|なし|削除するメンバーの電子メール アドレス|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="updatemember"></a>updatemember
-Update member information: Update information for a specific list member 
+## updatemember
+メンバー情報の更新: 一覧の特定メンバーの情報を更新します
 
-```PATCH: /lists/replacemailwithhash/{list_id}/members/{member_email}``` 
+```PATCH: /lists/replacemailwithhash/{list_id}/members/{member_email}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|string|yes|path|none|The unique id for the list|
-|member_email|string|yes|path|none|The unique email address of the member to update|
-|updateMemberInListRequest| |yes|body|none|Json object to send in the body with the updated member information|
+|list\_id|string|○|path|なし|一覧の一意の ID|
+|member\_email|string|○|path|なし|更新するメンバーの一意の電子メール アドレス|
+|updateMemberInListRequest| |○|body|なし|更新されたメンバー情報と共に本文で送信する Json オブジェクト|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="onmembersubscribed"></a>OnMemberSubscribed
-When a Member has been added to a list: Triggers a workflow when a new member has been added to a list 
+## OnMemberSubscribed
+一覧へのメンバーの追加時: 新しいメンバーが一覧に追加されたときにワークフローをトリガーします
 
-```GET: /trigger/lists/{list_id}/members``` 
+```GET: /trigger/lists/{list_id}/members```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|string|yes|path|none|The unique id for the list|
+|list\_id|string|○|path|なし|一覧の一意の ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="oncreatelist"></a>OnCreateList
-When a new list is created: Triggers a workflow when a new list is created 
+## OnCreateList
+新しい一覧の作成時: 新しい一覧が作成されたときにワークフローをトリガーします
 
-```GET: /trigger/lists``` 
+```GET: /trigger/lists```
 
-There are no parameters for this call
-#### <a name="response"></a>Response
+この呼び出しには、パラメーターはありません
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## オブジェクト定義 
 
-### <a name="newcampaignrequest"></a>NewCampaignRequest
+### NewCampaignRequest
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|type|string|Yes |
-|recipients|not defined|Yes |
-|settings|not defined|Yes |
-|variate_settings|not defined|No |
-|tracking|not defined|No |
-|rss_opts|not defined|No |
-|social_card|not defined|No |
+|type|string|はい |
+|recipients|未定義|はい |
+|設定|未定義|はい |
+|variate\_settings|未定義|なし |
+|tracking|未定義|なし |
+|rss\_opts|未定義|なし |
+|social\_card|未定義|なし |
 
 
 
-### <a name="recipient"></a>Recipient
+### Recipient
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list_id|string|Yes |
-|segment_opts|not defined|No |
+|list\_id|string|はい |
+|segment\_opts|未定義|なし |
 
 
 
-### <a name="settings"></a>Settings
+### Settings
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|subject_line|string|Yes |
-|title|string|No |
-|from_name|string|Yes |
-|reply_to|string|Yes |
-|use_conversation|boolean|No |
-|to_name|string|No |
-|folder_id|integer|No |
-|authenticate|boolean|No |
-|auto_footer|boolean|No |
-|inline_css|boolean|No |
-|auto_tweet|boolean|No |
-|auto_fb_post|array|No |
-|fb_comments|boolean|No |
+|subject\_line|string|はい |
+|title|string|なし |
+|from\_name|string|はい |
+|reply\_to|string|はい |
+|use\_conversation|boolean|なし |
+|to\_name|string|なし |
+|folder\_id|integer|なし |
+|authenticate|boolean|なし |
+|auto\_footer|boolean|なし |
+|inline\_css|boolean|なし |
+|auto\_tweet|boolean|なし |
+|auto\_fb\_post|array|なし |
+|fb\_comments|boolean|なし |
 
 
 
-### <a name="variate_settings"></a>Variate_Settings
+### Variate\_Settings
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|winner_criteria|string|No |
-|wait_time|integer|No |
-|test_size|integer|No |
-|subject_lines|array|No |
-|send_times|array|No |
-|from_names|array|No |
-|reply_to_addresses|array|No |
+|winner\_criteria|string|なし |
+|wait\_time|integer|なし |
+|test\_size|integer|なし |
+|subject\_lines|array|なし |
+|send\_times|array|なし |
+|from\_names|array|なし |
+|reply\_to\_addresses|array|なし |
 
 
 
-### <a name="tracking"></a>Tracking
+### 追跡
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|opens|boolean|No |
-|html_clicks|boolean|No |
-|text_clicks|boolean|No |
-|goal_tracking|boolean|No |
-|ecomm360|boolean|No |
-|google_analytics|string|No |
-|clicktale|string|No |
-|salesforce|not defined|No |
-|highrise|not defined|No |
-|capsule|not defined|No |
+|opens|boolean|なし |
+|html\_clicks|boolean|なし |
+|text\_clicks|boolean|なし |
+|goal\_tracking|boolean|なし |
+|ecomm360|boolean|なし |
+|google\_analytics|string|なし |
+|clicktale|string|なし |
+|salesforce|未定義|なし |
+|highrise|未定義|なし |
+|capsule|未定義|なし |
 
 
 
-### <a name="rss_opts"></a>RSS_Opts
+### RSS\_Opts
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|feed_url|string|No |
-|frequency|string|No |
-|constrain_rss_img|string|No |
-|schedule|not defined|No |
+|feed\_url|string|なし |
+|frequency|string|なし |
+|constrain\_rss\_img|string|なし |
+|schedule|未定義|なし |
 
 
 
-### <a name="social_card"></a>Social_Card
+### Social\_Card
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|image_url|string|No |
-|description|string|No |
-|title|string|No |
+|image\_url|string|なし |
+|description|string|なし |
+|title|string|なし |
 
 
 
-### <a name="segment_opts"></a>Segment_Opts
+### Segment\_Opts
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|saved_segment_id|integer|No |
-|match|string|No |
+|saved\_segment\_id|integer|なし |
+|match|string|なし |
 
 
 
-### <a name="salesforce"></a>Salesforce
+### Salesforce
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|campaign|boolean|No |
-|notes|boolean|No |
+|campaign|boolean|なし |
+|notes|boolean|なし |
 
 
 
-### <a name="highrise"></a>Highrise
+### Highrise
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|campaign|boolean|No |
-|notes|boolean|No |
+|campaign|boolean|なし |
+|notes|boolean|なし |
 
 
 
-### <a name="capsule"></a>Capsule
+### Capsule
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|notes|boolean|No |
+|notes|boolean|なし |
 
 
 
-### <a name="schedule"></a>Schedule
+### スケジュール
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|hour|integer|No |
-|daily_send|not defined|No |
-|weekly_send_day|string|No |
-|monthly_send_date|number|No |
+|hour|integer|なし |
+|daily\_send|未定義|なし |
+|weekly\_send\_day|string|なし |
+|monthly\_send\_date|number|なし |
 
 
 
-### <a name="daily_send"></a>Daily_Send
+### Daily\_Send
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|sunday|boolean|No |
-|monday|boolean|No |
-|tuesday|boolean|No |
-|wednesday|boolean|No |
-|thursday|boolean|No |
-|friday|boolean|No |
-|saturday|boolean|No |
+|sunday|boolean|なし |
+|monday|boolean|なし |
+|tuesday|boolean|なし |
+|wednesday|boolean|なし |
+|thursday|boolean|なし |
+|friday|boolean|なし |
+|saturday|boolean|なし |
 
 
 
-### <a name="campaignresponsemodel"></a>CampaignResponseModel
+### CampaignResponseModel
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|No |
-|type|string|No |
-|create_time|string|No |
-|archive_url|string|No |
-|status|string|No |
-|emails_sent|integer|No |
-|send_time|string|No |
-|content_type|string|No |
-|recipient|array|No |
-|settings|not defined|No |
-|variate_settings|not defined|No |
-|tracking|not defined|No |
-|rss_opts|not defined|No |
-|ab_split_opts|not defined|No |
-|social_card|not defined|No |
-|report_summary|not defined|No |
-|delivery_status|not defined|No |
-|_links|array|No |
+|id|string|なし |
+|type|string|なし |
+|create\_time|string|なし |
+|archive\_url|string|なし |
+|status|string|なし |
+|emails\_sent|integer|なし |
+|send\_time|string|なし |
+|content\_type|string|なし |
+|recipient|array|なし |
+|設定|未定義|なし |
+|variate\_settings|未定義|なし |
+|tracking|未定義|なし |
+|rss\_opts|未定義|なし |
+|ab\_split\_opts|未定義|なし |
+|social\_card|未定義|なし |
+|report\_summary|未定義|なし |
+|delivery\_status|未定義|なし |
+|\_links|array|なし |
 
 
 
-### <a name="ab_split_opts"></a>AB_Split_Opts
+### AB\_Split\_Opts
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|split_test|string|No |
-|pick_winner|string|No |
-|wait_units|string|No |
-|wait_time|integer|No |
-|split_size|integer|No |
-|from_name_a|string|No |
-|from_name_b|string|No |
-|reply_email_a|string|No |
-|reply_email_b|string|No |
-|subject_a|string|No |
-|subject_b|string|No |
-|send_time_a|string|No |
-|send_time_b|string|No |
-|send_time_winner|string|No |
+|split\_test|string|なし |
+|pick\_winner|string|なし |
+|wait\_units|string|なし |
+|wait\_time|integer|なし |
+|split\_size|integer|なし |
+|from\_name\_a|string|なし |
+|from\_name\_b|string|なし |
+|reply\_email\_a|string|なし |
+|reply\_email\_b|string|なし |
+|subject\_a|string|なし |
+|subject\_b|string|なし |
+|send\_time\_a|string|なし |
+|send\_time\_b|string|なし |
+|send\_time\_winner|string|なし |
 
 
 
-### <a name="report_summary"></a>Report_Summary
+### Report\_Summary
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|opens|integer|No |
-|unique_opens|integer|No |
-|open_rate|number|No |
-|clicks|integer|No |
-|subscriber_clicks|number|No |
-|click_rate|number|No |
+|opens|integer|なし |
+|unique\_opens|integer|なし |
+|open\_rate|number|なし |
+|clicks|integer|なし |
+|subscriber\_clicks|number|なし |
+|click\_rate|number|なし |
 
 
 
-### <a name="delivery_status"></a>Delivery_Status
+### Delivery\_Status
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|enabled|boolean|No |
-|can_cancel|boolean|No |
-|status|string|No |
-|emails_sent|integer|No |
-|emails_canceled|integer|No |
+|enabled|boolean|なし |
+|can\_cancel|boolean|なし |
+|status|string|なし |
+|emails\_sent|integer|なし |
+|emails\_canceled|integer|なし |
 
 
 
-### <a name="link"></a>Link
+### リンク
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|rel|string|No |
-|href|string|No |
-|method|string|No |
-|targetSchema|string|No |
-|schema|string|No |
+|rel|string|なし |
+|href|string|なし |
+|静的メソッド|string|なし |
+|targetSchema|string|なし |
+|schema|string|なし |
 
 
 
-### <a name="newlistrequest"></a>NewListRequest
+### NewListRequest
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|name|string|Yes |
-|contact|not defined|Yes |
-|permission_reminder|string|Yes |
-|use_archive_bar|boolean|No |
-|campaign_defaults|not defined|Yes |
-|notify_on_subscribe|string|No |
-|notify_on_unsubscribe|string|No |
-|email_type_option|boolean|Yes |
-|visibility|string|No |
+|name|string|はい |
+|contact|未定義|はい |
+|permission\_reminder|string|はい |
+|use\_archive\_bar|boolean|なし |
+|campaign\_defaults|未定義|はい |
+|notify\_on\_subscribe|string|なし |
+|notify\_on\_unsubscribe|string|なし |
+|email\_type\_option|boolean|はい |
+|visibility|string|なし |
 
 
 
-### <a name="contact"></a>Contact
+### 連絡先
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|company|string|Yes |
-|address1|string|Yes |
-|address2|string|No |
-|city|string|Yes |
-|state|string|Yes |
-|zip|string|Yes |
-|country|string|Yes |
-|phone|string|Yes |
+|company|string|はい |
+|address1|string|はい |
+|address2|string|なし |
+|city|string|はい |
+|state|string|はい |
+|zip|string|はい |
+|country|string|はい |
+|phone|string|はい |
 
 
 
-### <a name="campaign_defaults"></a>Campaign_Defaults
+### Campaign\_Defaults
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|from_name|string|Yes |
-|from_email|string|Yes |
-|subject|string|No |
-|language|string|Yes |
+|from\_name|string|はい |
+|from\_email|string|はい |
+|subject|string|なし |
+|言語|string|はい |
 
 
 
-### <a name="createnewlistresponsemodel"></a>CreateNewListResponseModel
+### CreateNewListResponseModel
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|Yes |
-|name|string|Yes |
-|contact|not defined|Yes |
-|permission_reminder|string|Yes |
-|use_archive_bar|boolean|No |
-|campaign_defaults|not defined|Yes |
-|notify_on_subscribe|string|No |
-|notify_on_unsubscribe|string|No |
-|date_created|string|No |
-|list_rating|integer|No |
-|email_type_option|boolean|Yes |
-|subscribe_url_short|string|No |
-|subscribe_url_long|string|No |
-|beamer_address|string|No |
-|visibility|string|No |
-|modules|array|No |
-|stats|not defined|No |
-|_links|array|No |
+|id|string|はい |
+|name|string|はい |
+|contact|未定義|はい |
+|permission\_reminder|string|はい |
+|use\_archive\_bar|boolean|なし |
+|campaign\_defaults|未定義|はい |
+|notify\_on\_subscribe|string|なし |
+|notify\_on\_unsubscribe|string|なし |
+|date\_created|string|なし |
+|list\_rating|integer|なし |
+|email\_type\_option|boolean|はい |
+|subscribe\_url\_short|string|なし |
+|subscribe\_url\_long|string|なし |
+|beamer\_address|string|なし |
+|visibility|string|なし |
+|modules|array|なし |
+|stats|未定義|なし |
+|\_links|array|なし |
 
 
 
-### <a name="stats"></a>Stats
+### 統計
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|member_count|integer|No |
-|unsubscribe_count|integer|No |
-|cleaned_count|integer|No |
-|member_count_since_send|integer|No |
-|unsubscribe_count_since_send|integer|No |
-|cleaned_count_since_send|integer|No |
-|campaign_count|integer|No |
-|campaign_last_sent|integer|No |
-|merge_field_count|integer|No |
-|avg_sub_rate|number|No |
-|avg_unsub_rate|number|No |
-|target_sub_rate|number|No |
-|open_rate|number|No |
-|click_rate|number|No |
-|last_sub_date|string|No |
-|last_unsub_date|string|No |
+|member\_count|integer|なし |
+|unsubscribe\_count|integer|なし |
+|cleaned\_count|integer|なし |
+|member\_count\_since\_send|integer|なし |
+|unsubscribe\_count\_since\_send|integer|なし |
+|cleaned\_count\_since\_send|integer|なし |
+|campaign\_count|integer|なし |
+|campaign\_last\_sent|integer|なし |
+|merge\_field\_count|integer|なし |
+|avg\_sub\_rate|number|なし |
+|avg\_unsub\_rate|number|なし |
+|target\_sub\_rate|number|なし |
+|open\_rate|number|なし |
+|click\_rate|number|なし |
+|last\_sub\_date|string|なし |
+|last\_unsub\_date|string|なし |
 
 
 
-### <a name="getlistsresponsemodel"></a>GetListsResponseModel
+### GetListsResponseModel
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|lists|array|No |
-|total_items|integer|No |
+|lists|array|なし |
+|total\_items|integer|なし |
 
 
 
-### <a name="newmemberinlistrequest"></a>NewMemberInListRequest
+### NewMemberInListRequest
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|email_type|string|No |
-|status|string|Yes |
-|merge_fields|not defined|No |
-|interests|string|No |
-|language|string|No |
-|vip|boolean|No |
-|location|not defined|No |
-|email_address|string|Yes |
+|email\_type|string|なし |
+|status|string|はい |
+|merge\_fields|未定義|なし |
+|interests|string|なし |
+|言語|string|なし |
+|vip|boolean|なし |
+|location|未定義|なし |
+|email\_address|string|はい |
 
 
 
-### <a name="firstandlastname"></a>FirstAndLastName
+### FirstAndLastName
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|FNAME|string|No |
-|LNAME|string|No |
+|FNAME|string|なし |
+|LNAME|string|なし |
 
 
 
-### <a name="location"></a>Location
+### 場所
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|latitude|number|No |
-|longitude|number|No |
+|latitude|number|なし |
+|longitude|number|なし |
 
 
 
-### <a name="memberresponsemodel"></a>MemberResponseModel
+### MemberResponseModel
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|No |
-|email_address|string|No |
-|unique_email_id|string|No |
-|email_type|string|No |
-|status|string|No |
-|merge_fields|not defined|No |
-|interests|string|No |
-|stats|not defined|No |
-|ip_signup|string|No |
-|timestamp_signup|string|No |
-|ip_opt|string|No |
-|timestamp_opt|string|No |
-|member_rating|integer|No |
-|last_changed|string|No |
-|language|string|No |
-|vip|boolean|No |
-|email_client|string|No |
-|location|not defined|No |
-|last_note|not defined|No |
-|list_id|string|No |
-|_links|array|No |
+|id|string|なし |
+|email\_address|string|なし |
+|unique\_email\_id|string|なし |
+|email\_type|string|なし |
+|status|string|なし |
+|merge\_fields|未定義|なし |
+|interests|string|なし |
+|stats|未定義|なし |
+|ip\_signup|string|なし |
+|timestamp\_signup|string|なし |
+|ip\_opt|string|なし |
+|timestamp\_opt|string|なし |
+|member\_rating|integer|なし |
+|last\_changed|string|なし |
+|言語|string|なし |
+|vip|boolean|なし |
+|email\_client|string|なし |
+|location|未定義|なし |
+|last\_note|未定義|なし |
+|list\_id|string|なし |
+|\_links|array|なし |
 
 
 
-### <a name="last_note"></a>Last_Note
+### Last\_Note
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|note_id|integer|No |
-|created_at|string|No |
-|created_by|string|No |
-|note|string|No |
+|note\_id|integer|なし |
+|created\_at|string|なし |
+|created\_by|string|なし |
+|note|string|なし |
 
 
 
-### <a name="getallmembersresponsemodel"></a>GetAllMembersResponseModel
+### GetAllMembersResponseModel
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|members|array|No |
-|list_id|string|No |
-|total_items|integer|No |
+|members|array|なし |
+|list\_id|string|なし |
+|total\_items|integer|なし |
 
 
 
-### <a name="object"></a>Object
+### オブジェクト
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
 
 
 
-### <a name="updatememberinlistrequest"></a>UpdateMemberInListRequest
+### UpdateMemberInListRequest
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|email_address|string|No |
-|email_type|string|No |
-|status|string|Yes |
-|merge_fields|not defined|No |
-|interests|string|No |
-|language|string|No |
-|vip|boolean|No |
-|location|not defined|No |
+|email\_address|string|なし |
+|email\_type|string|なし |
+|status|string|はい |
+|merge\_fields|未定義|なし |
+|interests|string|なし |
+|言語|string|なし |
+|vip|boolean|なし |
+|location|未定義|なし |
 
 
 
-### <a name="getmembersresponsemodel"></a>GetMembersResponseModel
+### GetMembersResponseModel
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|members|array|No |
-|list_id|string|No |
-|total_items|integer|No |
+|members|array|なし |
+|list\_id|string|なし |
+|total\_items|integer|なし |
 
 
 
-### <a name="adduserresponsemodel"></a>AddUserResponseModel
+### AddUserResponseModel
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|Yes |
-|email_address|string|Yes |
-|unique_email_id|string|No |
-|email_type|string|No |
-|status|string|No |
-|merge_fields|not defined|Yes |
-|interests|string|No |
-|stats|not defined|No |
-|ip_signup|string|No |
-|timestamp_signup|string|No |
-|ip_opt|string|No |
-|timestamp_opt|string|No |
-|member_rating|integer|No |
-|last_changed|string|No |
-|language|string|No |
-|vip|boolean|No |
-|email_client|string|No |
-|location|not defined|No |
-|last_note|not defined|No |
-|list_id|string|No |
-|_links|array|No |
+|id|string|はい |
+|email\_address|string|はい |
+|unique\_email\_id|string|なし |
+|email\_type|string|なし |
+|status|string|なし |
+|merge\_fields|未定義|はい |
+|interests|string|なし |
+|stats|未定義|なし |
+|ip\_signup|string|なし |
+|timestamp\_signup|string|なし |
+|ip\_opt|string|なし |
+|timestamp\_opt|string|なし |
+|member\_rating|integer|なし |
+|last\_changed|string|なし |
+|言語|string|なし |
+|vip|boolean|なし |
+|email\_client|string|なし |
+|location|未定義|なし |
+|last\_note|未定義|なし |
+|list\_id|string|なし |
+|\_links|array|なし |
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

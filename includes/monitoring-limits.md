@@ -1,8 +1,6 @@
 
-| Resource | Limit |
+| リソース | 制限 |
 |----|----|
-| Autoscale Settings | 100 per region per subscription |
+| 自動スケール設定 | サブスクリプションあたりのリージョンごとに 100 |
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

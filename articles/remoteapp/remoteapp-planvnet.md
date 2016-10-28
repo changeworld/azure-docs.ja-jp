@@ -1,6 +1,6 @@
 <properties
-    pageTitle="How to plan your virtual network for an Azure RemoteApp collection | Microsoft Azure"
-    description="Learn how to plan your virtual network for an Azure RemoteApp collection."
+    pageTitle="Azure RemoteApp コレクション用に仮想ネットワークを計画する方法 | Microsoft Azure"
+    description="Azure RemoteApp コレクション用に仮想ネットワークを計画する方法について説明します。"
     services="remoteapp"
     documentationCenter="" 
     authors="mghosh1616"
@@ -15,53 +15,47 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
-
-# <a name="how-to-plan-your-virtual-network-for-azure-remoteapp"></a>How to plan your virtual network for Azure RemoteApp
+# Azure RemoteApp の仮想ネットワークを計画する方法
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-This document describes how to set up your Azure virtual network (VNET) and the subnet for Azure RemoteApp. If you are unfamiliar with Azure virtual networks, this is a capability that helps you to virtualize your network infrastructure to the cloud and to create hybrid solutions with Azure and your on-premises resources. You can read more about it [here](../virtual-network/virtual-networks-overview.md).
+このドキュメントでは、Azure RemoteApp 用に Azure の仮想ネットワーク (VNET) とサブネットを設定する方法について説明します。Azure の仮想ネットワークを熟知していない場合、この機能は、クラウドにネットワーク インフラストラクチャを仮想化し、Azure とオンプレミスのリソースを使用したハイブリッド ソリューションを作成するのに役立ちます。詳細については、[こちら](../virtual-network/virtual-networks-overview.md)を参照してください。
 
-If you want to define security policies for traffic (both incoming and outgoing) in your virtual network where you are deploying Azure RemoteApp, we strongly recommend creating a separate subnet for Azure RemoteApp from the rest of your deployments in the Azure virtual network. For more information on how to define security policies on your Azure virtual network subnet, please read [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md).
+Azure RemoteApp をデプロイする仮想ネットワーク内の送受信トラフィックについてセキュリティ ポリシーを定義する場合は、Azure RemoteApp 用には、Azure の仮想ネットワーク内の他のデプロイとは別にサブネットを作成することを強くお勧めします。Azure の仮想ネットワークのサブネットにセキュリティ ポリシーを定義する方法の詳細については、「[ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
-## <a name="types-of-azure-remoteapp-collections-with-azure-virtual-networks"></a>Types of Azure RemoteApp collections with Azure virtual networks
+## Azure の仮想ネットワークを使用した Azure RemoteApp コレクションの種類
 
-The following graphics show the two different collection options when you want to use a virtual network.
+次の図は、仮想ネットワークを使用する場合に選択できる 2 つの異なるコレクションを示しています。
 
-### <a name="azure-remoteapp-cloud-collection-with-vnet"></a>Azure RemoteApp cloud collection with VNET
+### VNET を使用した Azure RemoteApp クラウド コレクション
 
- ![Azure RemoteApp - Cloud collection with a VNET](./media/remoteapp-planvpn/ra-cloudvpn.png)
+ ![Azure RemoteApp - VNET を使用したクラウド コレクション](./media/remoteapp-planvpn/ra-cloudvpn.png)
 
-This represents an Azure RemoteApp collection where all the resources that the RemoteApp session hosts need to access are deployed in Azure. They can be in the same VNET as the RemoteApp VNET or a different VNET in Azure.
+この Azure RemoteApp コレクションでは、RemoteApp セッション ホストがアクセスする必要があるすべてのリソースが Azure にデプロイされています。これらは Azure 内の RemoteApp VNET と同じ VNET にも、別の VNET にもデプロイできます。
 
-### <a name="azure-remoteapp-hybrid-collection-with-vnet"></a>Azure RemoteApp hybrid collection with VNET
+### VNET を使用した Azure RemoteApp ハイブリッド コレクション
 
-![Azure RemoteApp - Hybrid collection with a VNET](./media/remoteapp-planvpn/ra-hybridvpn.png)
+![Azure RemoteApp - VNET を使用したハイブリッド コレクション](./media/remoteapp-planvpn/ra-hybridvpn.png)
 
-This represents an Azure RemoteApp collection where some of the resources that the RemoteApp session hosts need to access are deployed on-premises. The RemoteApp VNET is linked to the on-premises network using Azure hybrid technologies like site-to-site VPN or Express Route.
-
-
-## <a name="how-the-system-works"></a>How the system works
-
-Under the covers Azure RemoteApp deploys Azure virtual machines (with your uploaded image) to the virtual network subnet that you chose during provisioning. If you opted for a hybrid collection, we try to resolve the FQDN of the domain controller you entered in the provisioning workflow with the DNS server provided in the virtual network.  
-If you are connecting to an existing virtual network, make sure to expose the necessary ports in your network security groups in your Azure RemoteApp subnet. 
-
-We recommend you use a [large enough  subnet for Azure RemoteApp](remoteapp-vnetsizing.md). The largest supported by Azure Virtual network is /8 (using CIDR subnet definitions). Your subnet should be large enough to accommodate all the Azure RemoteApp VMs during scale-up when more users are accessing the apps. 
-
-Following are the things you will need to enable on your virtual network subnet: 
-
-2.  Outbound traffic from the subnet should be allowed on port range 10101-10175 to communicate with one of the internal Azure RemoteApp services.
-3.  Outbound traffic should be allowed from your subnet to connect to Azure Storage on port 443
-4.  If you have Active Directory hosted in Azure, make sure any VM within the virtual network subnet for Azure RemoteApp is able to connect to that domain controller. The DNS in the virtual network should be able to resolve the FQDN of this domain controller.
+この Azure RemoteApp コレクションでは、RemoteApp セッション ホストがアクセスする必要がある一部のリソースがオンプレミスでデプロイされています。RemoteApp VNET は、サイト間 VPN または Express Route のような Azure のハイブリッド テクノロジを使用して、オンプレミスのネットワークにリンクされます。
 
 
-## <a name="virtual-network-with-forced-tunneling"></a>Virtual network with forced tunneling
+## システムの動作
 
-[Forced tunneling](../vpn-gateway/vpn-gateway-about-forced-tunneling.md) is now supported for all new Azure RemoteApp collections. We currently do not support the migration of an existing collection to support forced tunneling.  You will have to delete all your existing collections using the VNET that you are linking to Azure RemoteApp and create a new one to get forced tunneling enabled on your collections. 
+内部では、Azure RemoteApp は、プロビジョニング中に選択した仮想ネットワークのサブネットに、(アップロードされたイメージを使用して) Azure 仮想マシンをデプロイします。ハイブリッド コレクションを選択した場合は、仮想ネットワークで提供される DNS サーバーのプロビジョニング ワークフローで入力したドメイン コントローラーの FQDN の解決が試行されます。既存の仮想ネットワークに接続する場合は、Azure RemoteApp のサブネットでネットワーク セキュリティ グループ内の必要なポートを公開してください。
+
+[Azure RemoteApp にとって十分な規模のサブネット](remoteapp-vnetsizing.md)を使用することをお勧めします。Azure Virtual Network でサポートされている最大数は /8 です (CIDR のサブネット定義を使用)。サブネットは、スケール アップ時に Azure RemoteApp のすべての VM を収容するのに十分な規模にし、より多くのユーザーがアプリにアクセスできるようにする必要があります。
+
+次は、仮想ネットワークのサブネット上で有効にする必要がある機能を示しています。
+
+2.	サブネットからの送信トラフィックは、内部の Azure RemoteApp サービスのいずれかと通信するために、ポート範囲 10101 ～ 10175 で許可されている必要があります。
+3.	ポート 443 で、Azure Storage に接続するサブネットからの送信トラフィックを許可する必要があります。
+4.	Active Directory を Azure でホストしている場合は、Azure RemoteApp 用の仮想ネットワークのサブネットで、どの VM もドメイン コントローラーに接続できることを確認します。仮想ネットワークの DNS によって、このドメイン コントローラーの FQDN を解決できる必要があります。
 
 
+## 強制トンネリングを使用した仮想ネットワーク
 
-<!--HONumber=Oct16_HO2-->
+[強制トンネリング](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)が、すべての新しい Azure RemoteApp コレクションでサポートされるようになりました。現在、既存のコレクションを移行して、強制トンネリングをサポートすることはできません。コレクションで強制トンネリングを有効にするには、Azure RemoteApp にリンクしている VNET を使用する既存のコレクションをすべて削除し、新しいコレクションを作成する必要があります。
 
-
+<!---HONumber=AcomDC_0817_2016-->

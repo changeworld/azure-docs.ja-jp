@@ -1,100 +1,89 @@
 <properties 
-    pageTitle="Configure Content Key Authorization Policy using the Azure portal | Microsoft Azure" 
-    description="Learn how to configure an authorization policy for a content key." 
-    services="media-services" 
-    documentationCenter="" 
-    authors="juliako" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Azure ポータルを使用したコンテンツ キー承認ポリシーの構成 | Microsoft Azure" 
+	description="コンテンツ キー承認ポリシーを構成する方法について説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="juliako" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/12/2016" 
-    ms.author="juliako"/>
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+ 	ms.date="09/19/2016" 
+	ms.author="juliako"/>
 
 
 
-
-#<a name="configure-content-key-authorization-policy"></a>Configure Content Key Authorization Policy
+#コンテンツ キー承認ポリシーを構成する
 [AZURE.INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
 
 
-##<a name="overview"></a>Overview
+##Overview
 
-Microsoft Azure Media Services enables you to deliver MPEG-DASH, Smooth Streaming, and HTTP-Live-Streaming (HLS) streams protected with Advanced Encryption Standard (AES) (using 128-bit encryption keys) or [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/). AMS also enables you to deliver DASH streams encrypted with Widevine DRM. Both PlayReady and Widevine are encrypted per the Common Encryption (ISO/IEC 23001-7 CENC) specification.
+Microsoft Azure Media Services を使用すると、Advanced Encryption Standard (AES) (128 ビット暗号化キーを使用) または [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/) で保護された MPEG DASH、Smooth Streaming、HTTP ライブ ストリーミング (HLS) のストリームを配信できます。AMS では、Widevine DRM で暗号化された DASH ストリームを配信することもできます。PlayReady と Widevine はいずれも共通暗号化 (ISO/IEC 23001-7 CENC) 仕様に従って暗号化されます。
 
-Media Services also provides a **Key/License Delivery Service** from which clients can obtain AES keys or PlayReady/Widevine licenses to play the encrypted content.
+Media Services では、クライアントが暗号化されたコンテンツを再生するために AES キーまたは PlayReady/Widevine ライセンスを取得できる**キー/ライセンス配信サービス**も提供します。
 
-This topic shows how to use the Azure portal to configure the content key authorization policy. The key can later be used to dynamically encrypt your content. Note that currently you can encrypt the following streaming formats: HLS, MPEG DASH, and Smooth Streaming. You cannot encrypt HDS streaming format, or progressive downloads.
+このトピックでは、**Azure クラシック ポータル**を使用して、コンテンツ キー承認ポリシーを構成する方法について説明します。キーは、動的にコンテンツを暗号化するために、後で使用できます。現時点で暗号化できるストリーミング形式は、HLS、MPEG DASH、およびスムーズ ストリーミングであることに注意してください。HDS 形式のストリーミングやプログレッシブ ダウンロードは暗号化できません。
 
-When a player requests a stream that is set to be dynamically encrypted, Media Services uses the configured key to dynamically encrypt your content using AES or DRM encryption. To decrypt the stream, the player will request the key from the key delivery service. To decide whether or not the user is authorized to get the key, the service evaluates the authorization policies that you specified for the key.
-
-
-If you plan to have multiple content keys or want to specify a **Key/License Delivery Service** URL other than the Media Services key delivery service, use Media Services .NET SDK or REST APIs.
-
-[Configure Content Key Authorization Policy using Media Services .NET SDK](media-services-dotnet-configure-content-key-auth-policy.md)
-
-[Configure Content Key Authorization Policy using Media Services REST API](media-services-rest-configure-content-key-auth-policy.md)
-
-###<a name="some-considerations-apply:"></a>Some considerations apply:
-
-- To be able to use dynamic packaging and dynamic encryption, you must make sure to have at least one streaming reserved unit. For more information, see [How to Scale a Media Service](media-services-portal-manage-streaming-endpoints.md).
-- Your asset must contain a set of adaptive bitrate MP4s or adaptive bitrate Smooth Streaming files. For more information, see [Encode an asset](media-services-encode-asset.md).
-- The Key Delivery service caches ContentKeyAuthorizationPolicy and its related objects (policy options and restrictions) for 15 minutes.  If you create a ContentKeyAuthorizationPolicy and specify to use a “Token” restriction, then test it, and then update the policy to “Open” restriction, it will take roughly 15 minutes before the policy switches to the “Open” version of the policy.
+プレーヤーが動的に暗号化するように設定されたストリームを要求すると、Media Services は構成済みのキーを使用して、AES または DRM 暗号化によってコンテンツを動的に暗号化します。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
 
-##<a name="how-to:-configure-the-key-authorization-policy"></a>How to: configure the key authorization policy
+複数のコンテンツ キーを使用する場合や、Media Services キー配信サービス以外の**キー/ライセンス配信サービス** の URL を指定する場合は、Media Services .NET SDK または REST API を使用します。
 
-To configure the key authorization policy, select the **CONTENT PROTECTION** page.
+[Media Services .NET SDK を使用したコンテンツ キー承認ポリシーの構成](media-services-dotnet-configure-content-key-auth-policy.md)
 
-Media Services supports multiple ways of authenticating users who make key requests. The content key authorization policy can have **open**, **token**, or **IP** authorization restrictions (**IP** can be configured with REST or .NET SDK).
+[Media Services REST API を使用したコンテンツ キー承認ポリシーの構成](media-services-rest-configure-content-key-auth-policy.md)
 
-###<a name="open-restriction"></a>Open restriction
+###いくつかの考慮事項が適用されます。
 
-The **open** restriction means the system will deliver the key to anyone who makes a key request. This restriction might be useful for testing purposes.
+- 動的パッケージングや動的暗号化を使用するには、少なくとも 1 つのストリーミング予約ユニットが必要です。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」をご覧ください。
+- 資産には、一連のアダプティブ ビットレート MP4 または アダプティブ ビットレート スムーズ ストリーミング ファイルが含まれている必要があります。詳細については、「[資産をエンコードする](media-services-encode-asset.md)」をご覧ください。
+- キー配信サービスでは、ContentKeyAuthorizationPolicy とそれに関連するオブジェクト (ポリシーのオプションと制限) を 15 分間キャッシュします。ContentKeyAuthorizationPolicy を作成して、"Token" 制限を使用するように指定した場合に、"Token" 制限をテストしてから、ポリシーを "Open" 制限に更新すると、ポリシーが "Open" バージョンのポリシーに切り替わるまで、約 15 分かかります。
+
+
+##方法: キーの承認ポリシーを構成する
+
+キーの承認ポリシーを構成するには、**[コンテンツ保護]** ページを選択します。
+
+Media Services では、キーを要求するユーザーを承認する複数の方法がサポートされています。コンテンツ キー承認ポリシーには、**オープン**、**トークン**、または**IP** 承認制限を設定することができます (**IP** は REST または .NET SDK を使用して構成できます)。
+
+###オープン制限
+
+**オープン**制限では、キーを要求するすべてのユーザーにシステムがキーを配信します。この制限は、テストに便利です。
 
 ![OpenPolicy][open_policy]
 
-###<a name="token-restriction"></a>Token restriction
+###トークン制限
 
-To choose the token restricted policy, press the **TOKEN** button.
+トークン制限ポリシーを選択するには、**[トークン]** ボタンをクリックします。
 
-The **token** restricted policy must be accompanied by a token issued by a **Secure Token Service** (STS). Media Services supports tokens in the **Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) format and **JSON Web Token** (JWT) format. For information, see [JWT token authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/).
+**トークン**制限ポリシーには、**Secure Token Service** (STS) によって発行されたトークンを含める必要があります。Media Services では、**Simple Web Tokens** ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) 形式と **JSON Web Token** (JWT) 形式のトークンがサポートされます。詳細については、「[JWT token authentication](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)」(JWT トークン認証) を参照してください。
 
-Media Services does not provide **Secure Token Services**. You can create a custom STS or leverage Microsoft Azure ACS to issue tokens. The STS must be configured to create a token signed with the specified key and issue claims that you specified in the token restriction configuration. The Media Services key delivery service will return the encryption key to the client if the token is valid and the claims in the token match those configured for the content key. For more information, see [Use Azure ACS to issue tokens](http://mingfeiy.com/acs-with-key-services).
+Media Services では、**Secure Token Service** は提供されません。トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。Media Services のキー配信サービスは、トークンが有効で、トークン内の要求がコンテンツ キー向けに構成された要求と一致する場合、暗号化キーをクライアントに返します。詳細については、「[Use Azure ACS to issue tokens](http://mingfeiy.com/acs-with-key-services)」(Azure ACS を使用してトークンを発行する) をご覧ください。
 
-When configuring the **TOKEN** restricted policy, you must set values for **verification key**, **issuer** and **audience**. The primary verification key contains the key that the token was signed with, issuer is the secure token service that issues the token. The audience (sometimes called scope) describes the intent of the token or the resource the token authorizes access to. The Media Services key delivery service validates that these values in the token match the values in the template.
+**トークン**制限ポリシーを構成する場合は、**検証キー**、**発行者**、**対象ユーザー**の値を設定する必要があります。プライマリ検証キーには、トークンの署名に使用されたキーが含まれ、発行者は、トークンを発行するセキュリティ トークン サービスです。対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
-###<a name="playready"></a>PlayReady
+###PlayReady
 
-When protecting your content with **PlayReady**, one of the things you need to specify in your authorization policy is an XML string that defines the PlayReady license template. By default, the following policy is set:
+**PlayReady** を使用してコンテンツを保護する場合、PlayReady ライセンス テンプレートを定義する XML 文字列を承認ポリシーで指定する必要があります。既定では、次のポリシーが設定されます。
 
-<PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
-      <LicenseTemplates>
-        <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices>
-          <ContentKey i:type="ContentEncryptionKeyFromHeader" />
-          <LicenseType>Nonpersistent</LicenseType>
-          <PlayRight>
-            <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput>
-          </PlayRight>
-        </PlayReadyLicenseTemplate>
-      </LicenseTemplates>
-    </PlayReadyLicenseResponseTemplate>
+<PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1"> <LicenseTemplates> <PlayReadyLicenseTemplate><AllowTestDevices>true</AllowTestDevices> <ContentKey i:type="ContentEncryptionKeyFromHeader" /> <LicenseType>Nonpersistent</LicenseType> <PlayRight> <AllowPassingVideoContentToUnknownOutput>Allowed</AllowPassingVideoContentToUnknownOutput> </PlayRight> </PlayReadyLicenseTemplate> </LicenseTemplates> </PlayReadyLicenseResponseTemplate>
 
-You can click the **import policy xml** button and provide a different XML which conforms to the  XML Schema defined [here](https://msdn.microsoft.com/library/azure/dn783459.aspx).
+**[ポリシー xml のインポート]** ボタンをクリックして、[ここ](https://msdn.microsoft.com/library/azure/dn783459.aspx)で定義された XML スキーマに準拠した別の XML を指定します。
 
 
-##<a name="next-step"></a>Next step
+##次のステップ
 
-Review Media Services learning paths.
+Media Services のラーニング パスを確認します。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
@@ -105,9 +94,4 @@ Review Media Services learning paths.
 [open_policy]: ./media/media-services-portal-configure-content-key-auth-policy/media-services-protect-content-with-open-restriction.png
 [token_policy]: ./media/media-services-key-authorization-policy/media-services-protect-content-with-token-restriction.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

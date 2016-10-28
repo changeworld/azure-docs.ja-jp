@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Accessing Azure Virtual Machines from Server Explorer | Microsoft Azure"
-   description="Get an overview of how to view create and manage Azure virtual machines (VMs) in Server Explorer in Visual Studio."
+   pageTitle="サーバー エクスプローラーから Azure Virtual Machines へのアクセス | Microsoft Azure"
+   description="Visual Studio のサーバー エクスプローラーで Azure Virtual Machines (VM) を作成したり管理したりする方法について簡単に説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,47 +15,42 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# サーバー エクスプローラーから Azure Virtual Machines へのアクセス
 
-# <a name="accessing-azure-virtual-machines-from-server-explorer"></a>Accessing Azure Virtual Machines from Server Explorer
+Azure でホストされている仮想マシンについての情報は、Visual Studio のサーバー エクスプローラーで表示できます。
 
-By using Server Explorer in Visual Studio, you can display information about your virtual machines hosted by Azure.
+## サーバー エクスプローラーの仮想マシンへのアクセス
 
-## <a name="accessing-virtual-machines-in-server-explorer"></a>Accessing virtual machines in Server Explorer
+Azure でホストされている仮想マシンには、サーバー エクスプローラーでアクセスできます。まず Azure サブスクリプションにサインインして、ご利用の Mobile Services を表示してください。サインインするには、サーバー エクスプローラーで Azure ノードのショートカット メニューを開き、**[Microsoft Azure への接続]** をクリックします。
 
-If you have virtual machines hosted by Azure, you can access them in Server Explorer. You must first sign in to your Azure subscription to view your mobile services. To sign in, open the shortcut menu for the Azure node in Server Explorer, and choose **Connect to Microsoft Azure**.
+### 仮想マシンの情報を取得するには
 
-### <a name="to-get-information-about-your-virtual-machines"></a>To get information about your virtual machines
+1. サーバー エクスプローラーで仮想マシンを選択し、F4 キーを押してプロパティ ウィンドウを表示します。
 
-1. In Server Explorer, choose a virtual machine, and then choose the F4 key to show its properties window.
+    次の表に示したのは、アクセスできるプロパティの一覧です。ただし、これらはすべて読み取り専用です。これらのプロパティを変更するには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。
 
-    The following table shows what properties are available, but they are all read-only. To change them, use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
-
-  	|Property|Description|
+  	|プロパティ|Description|
   	|---|---|
-  	|DNS Name|The URL with the Internet address of the virtual machine.|
-  	|Environment|For a virtual machine, the value of this property is always Production.|
-  	|Name|The name of the virtual machine.|
-  	|Size|The size of the virtual machine, which reflects the amount of memory and disk space that’s available. For more information, see How To: Configure Virtual Machine Sizes.|
-  	|Status|Values include Starting, Started, Stopping, Stopped, and Retrieving Status. If Retrieving Status appears, the current status is unknown. The values for this property differ from the values that are used on the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).|
-  	|SubscriptionID|The subscription ID for your Azure account. You can show this information on the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885) by viewing the properties for a subscription.|
+  	|DNS 名|仮想マシンのインターネット アドレスを含む URL。|
+  	|環境|仮想マシンの場合、このプロパティの値は常に [運用] です。|
+  	|名前|仮想マシンの名前。|
+  	|サイズ|仮想マシンのサイズ。使用できるメモリとディスク領域のサイズが反映されます。詳細については、仮想マシンのサイズの構成方法に関するページを参照してください。|
+  	|状態|"開始中"、"開始"、"停止中"、"停止"、"状態を取得中" などの値があります。"状態を取得中" と表示された場合、現在の状態は不明です。このプロパティの値は、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で使用される値とは異なります。|
+  	|サブスクリプション ID|ご利用の Azure アカウントのサブスクリプション ID。この情報を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)に表示するには、サブスクリプションのプロパティを表示します。|
 
-1. Choose an endpoint node, and then view the **Properties** window.
+1. エンドポイント ノードを選択し、**[プロパティ]** ウィンドウを表示します。
 
-1. The following table describes the available properties of endpoints, but they are read-only. To add or edit the endpoints for a virtual machine, use the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885). 
+1. 次の表は、エンドポイントに関してアクセスできるプロパティの説明です。これらは読み取り専用となります。仮想マシンのエンドポイントを追加したり編集したりするには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。
 
-  	|Property|Description|
+  	|プロパティ|説明|
   	|---|---|
-  	|Name|An identifier for the endpoint.|
-  	|Private Port|The port for network access internal to your application.|
-  	|Protocol|The protocol that the transport layer for this endpoint uses, either TCP or UDP.|
-  	|Public Port|The port that’s used for public access to your application.|
+  	|名前|エンドポイントの ID。|
+  	|プライベート ポート|アプリケーションの内部ネットワーク アクセス用ポート。|
+  	|プロトコル|このエンドポイントのトランスポート レイヤーで使用されるプロトコル (TCP または UDP)。|
+  	|パブリック ポート|アプリケーションに外部からアクセスする際に使用するポート。|
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn more about using Azure roles in Visual Studio, see [Using Remote Desktop with Azure Roles](vs-azure-tools-remote-desktop-roles.md).
+Visual Studio での Azure ロールの使用方法の詳細については、「[Azure ロールでのリモート デスクトップの使用](vs-azure-tools-remote-desktop-roles.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

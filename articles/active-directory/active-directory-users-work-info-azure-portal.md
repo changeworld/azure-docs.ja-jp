@@ -1,56 +1,51 @@
 <properties
-    pageTitle="Add or change work information for a user in Azure Active Directory preview | Microsoft Azure"
-    description="Explains how to add phone numbers, department names, and other work information for a user in Azure Active Directory"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory プレビューでユーザーの勤務先情報を追加または変更する | Microsoft Azure"
+	description="Azure Active Directory で、電話番号や部門名など、ユーザーの勤務先情報を追加する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
+# Azure Active Directory プレビューでユーザーの勤務先情報を追加または変更する
 
-# <a name="add-or-change-work-information-for-a-user-in-azure-active-directory-preview"></a>Add or change work information for a user in Azure Active Directory preview
+この記事では、Azure Active Directory (Azure AD) プレビューでユーザーの勤務先情報 (電話番号や部門名など) を追加または変更する方法について説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-external-azure-portal.md)に関する記事をご覧ください。
 
-This article explains how to add or change work information such as phone numbers or a department name for a user in Azure Active Directory (Azure AD) preview. [What's in the preview?](active-directory-preview-explainer.md) For information about adding new users in your organization, see [Add new users to Azure Active Directory](active-directory-users-create-external-azure-portal.md).
+## 勤務先情報を変更する方法
 
-## <a name="how-to-change-work-information"></a>How to change work information
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+    ![ユーザー管理を開く](./media/active-directory-users-work-info-azure-portal/create-users-user-management.png)
 
-    ![Opening user management](./media/active-directory-users-work-info-azure-portal/create-users-user-management.png)
+3.  **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
 
-3.  On the **Users and groups** blade, select **Users**.
+    ![[ユーザー] ブレードを開く](./media/active-directory-users-work-info-azure-portal/create-users-open-users-blade.png)
 
-    ![Opening the Users blade](./media/active-directory-users-work-info-azure-portal/create-users-open-users-blade.png)
+4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
 
-4. On the **Users and groups - Users** blade, select a user from the list.
+5. 選択したユーザーのブレードで、**[勤務先情報]** を選択します。
 
-5. On the blade for the selected user, select **Work Info**.
+    ![勤務先情報を開く](./media/active-directory-users-work-info-azure-portal/active-directory-create-users-work-info.png)
 
-    ![Opening Work information](./media/active-directory-users-work-info-azure-portal/active-directory-create-users-work-info.png)
+6. 勤務先情報を追加または変更し、コマンド バーの **[保存]** をクリックします。
 
-6. Add or change the work information, and then in the command bar select **Save**.
+## 参照トピック
 
-## <a name="what's-next"></a>What's next
+- [ユーザーの追加](active-directory-users-create-azure-portal.md)
+- [新しい Azure ポータルでのユーザーのパスワードのリセット](active-directory-users-reset-password-azure-portal.md)
+- [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
+- [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
+- [Azure AD でのユーザーの削除](active-directory-users-delete-user-azure-portal.md)
 
-- [Add a user](active-directory-users-create-azure-portal.md)
-- [Reset a user's password in the new Azure portal](active-directory-users-reset-password-azure-portal.md)
-- [Assign a user to a role in your Azure AD](active-directory-users-assign-role-azure-portal.md)
-- [Manage user profiles](active-directory-users-profile-azure-portal.md)
-- [Delete a user in your Azure AD](active-directory-users-delete-user-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

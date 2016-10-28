@@ -1,246 +1,240 @@
 <properties
-    pageTitle="Azure Mobile Engagement Web SDK APIs | Microsoft Azure"
-    description="The latest updates and procedures for the Web SDK for Azure Mobile Engagement"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+	pageTitle="Azure Mobile Engagement Web SDK API | Microsoft Azure"
+	description="Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="web"
-    ms.devlang="js"
-    ms.topic="article"
-    ms.date="06/07/2016"
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="web"
+	ms.devlang="js"
+	ms.topic="article"
+	ms.date="06/07/2016"
+	ms.author="piyushjo" />
 
+# Web アプリケーションでの Azure Mobile Engagement API の使用
 
-# <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Use the Azure Mobile Engagement API in a web application
+このドキュメントは、[Web アプリケーションに Mobile Engagement を統合する](mobile-engagement-web-integrate-engagement.md)方法を示すドキュメントを補足するものであり、Azure Mobile Engagement API を使用してアプリケーションの統計情報を報告する方法について詳しく説明します。
 
-This document is an addition to the document that tells you how to [integrate Mobile Engagement in a web application](mobile-engagement-web-integrate-engagement.md). It provides in-depth details about how to use the Azure Mobile Engagement API to report your application statistics.
+Mobile Engagement API は、`engagement.agent` オブジェクトによって提供されます。Azure Mobile Engagement Web SDK の既定のエイリアスは `engagement` です。このエイリアスは SDK 構成から再定義できます。
 
-The Mobile Engagement API is provided by the `engagement.agent` object. The default Azure Mobile Engagement Web SDK alias is `engagement`. You can redefine this alias from the SDK configuration.
+## Mobile Engagement の概念
 
-## <a name="mobile-engagement-concepts"></a>Mobile Engagement concepts
+次のパートは、Web プラットフォームの一般的な [Mobile Engagement の概念](mobile-engagement-concepts.md)を改善するものです。
 
-The following parts refine common [Mobile Engagement concepts](mobile-engagement-concepts.md) for the web platform.
+### `Session` と `Activity`
 
-### <a name="`session`-and-`activity`"></a>`Session` and `Activity`
+ユーザーが 2 つのアクティビティ間に何も実行しない状態が数秒以上続くと、ユーザーのアクティビティのシーケンスが 2 つの別個のセッションに分割されます。この数秒間を "セッション タイムアウト" と呼びます。
 
-If the user stays idle for more than a few seconds between two activities, the user's sequence of activities is split into two distinct sessions. These few seconds are called the session timeout.
-
-If your web application doesn't declare the end of user activities by itself (by calling the `engagement.agent.endActivity` function), the Mobile Engagement server automatically expires the user session within three minutes after the application page is closed. This is called the server session timeout.
+Web アプリケーション側で (`engagement.agent.endActivity` 関数の呼び出しによって) ユーザー アクティビティの終了が宣言されていない場合、Mobile Engagement サーバーは、アプリケーション ページを閉じてから 3 分以内にユーザー セッションの有効期限を自動的に終了させます。これをサーバーのセッション タイムアウトと呼びます。
 
 ### `Crash`
 
-Automated reports of uncaught JavaScript exceptions are not created by default. However, you can report crashes manually by using the `sendCrash` function (see the section on reporting crashes).
+キャッチされない JavaScript 例外の自動レポートは既定では作成されません。ただし、`sendCrash` 関数を使用することで、クラッシュのレポートを手動で作成できます (クラッシュの報告に関するセクションを参照)。
 
-## <a name="reporting-activities"></a>Reporting activities
+## アクティビティの報告
 
-Reporting on user activity includes when a user starts a new activity, and when the user ends the current activity.
+ユーザー アクティビティの報告には、ユーザーが新しいアクティビティを開始したときと、ユーザーが現在のアクティビティを終了したときが含まれます。
 
-### <a name="user-starts-a-new-activity"></a>User starts a new activity
+### ユーザーが新しいアクティビティを開始する
 
-    engagement.agent.startActivity("MyUserActivity");
+	engagement.agent.startActivity("MyUserActivity");
 
-You need to call `startActivity()` each time user activity changes. The first call to this function starts a new user session.
+ユーザー アクティビティが変更されるたびに `startActivity()` を呼び出す必要があります。この関数の最初の呼び出しで、新しいユーザー セッションが開始します。
 
-### <a name="user-ends-the-current-activity"></a>User ends the current activity
+### ユーザーが現在のアクティビティを終了する
 
-    engagement.agent.endActivity();
+	engagement.agent.endActivity();
 
-You need to call `endActivity()` at least once when the user finishes their last activity. This informs the Mobile Engagement Web SDK that the user is currently idle, and that the user session needs to be closed after the session timeout expires. If you call `startActivity()` before the session timeout expires, the session is simply resumed.
+ユーザーが最後のアクティビティを終了したきに、`endActivity()` を少なくとも 1 回は呼び出す必要があります。これにより、ユーザーが現在アイドル状態であり、ユーザー セッションがタイムアウトになったらセッションを終了する必要があることを Mobile Engagement Web SDK に通知します。セッションがタイムアウトになる前に `startActivity()` を呼び出すと、セッションが再開されます。
 
-Because there's no reliable call for when the navigator window is closed, it's often difficult or impossible to catch the end of user activities inside a web environment. That's why the Mobile Engagement server automatically expires the user session within three minutes after the application page is closed.
+ナビゲーター ウィンドウを閉じたときの確実な呼び出しがないため、多くの場合、Web 環境内でユーザー アクティビティの終了をキャッチするのは困難であるか不可能です。Mobile Engagement サーバーが、アプリケーション ページを閉じてから 3 分以内にユーザー セッションの有効期限を自動的に終了させるのはそのためです。
 
-## <a name="reporting-events"></a>Reporting events
+## イベントの報告
 
-Reporting on events covers session events and standalone events.
+イベントの報告には、セッション イベントとスタンドアロン イベントがあります。
 
-### <a name="session-events"></a>Session events
+### セッション イベント
 
-Session events usually are used to report the actions performed by a user during the user's session.
+通常、セッション イベントは、ユーザー セッション中にユーザーによって実行されたアクションを報告するために使用されます。
 
-**Example without extra data:**
+**余分なデータがない例:**
 
-    loginButton.onclick = function() {
-      engagement.agent.sendSessionEvent('login');
-      // [...]
-    }
+	loginButton.onclick = function() {
+	  engagement.agent.sendSessionEvent('login');
+	  // [...]
+	}
 
-**Example with extra data:**
+**余分なデータがある例:**
 
-    loginButton.onclick = function() {
-      engagement.agent.sendSessionEvent('login', {user: 'alice'});
-      // [...]
-    }
+	loginButton.onclick = function() {
+	  engagement.agent.sendSessionEvent('login', {user: 'alice'});
+	  // [...]
+	}
 
-### <a name="standalone-events"></a>Standalone events
+### スタンドアロン イベント
 
-Unlike session events, standalone events can occur outside the context of a session.
+セッション イベントとは異なり、スタンドアロン イベントはセッションのコンテキスト外で発生する場合があります。
 
-For that, use ``engagement.agent.sendEvent`` instead of ``engagement.agent.sendSessionEvent``.
+その場合、``engagement.agent.sendSessionEvent`` ではなく、``engagement.agent.sendEvent`` を使用します。
 
-## <a name="reporting-errors"></a>Reporting errors
+## エラーの報告
 
-Reporting on errors covers session errors and standalone errors.
+エラーの報告には、セッション エラーとスタンドアロン エラーがあります。
 
-### <a name="session-errors"></a>Session errors
+### セッション エラー
 
-Session errors usually are used to report the errors that have an impact on the user during the user's session.
+通常、セッション エラーは、ユーザー セッション中にユーザーに影響を及ぼすエラーを報告するために使用されます。
 
-**Example without extra data:**
+**余分なデータがない例:**
 
-    var validateForm = function() {
-      // [...]
-      if (password.length < 6) {
-        engagement.agent.sendSessionError('password_too_short');
-      }
-      // [...]
-    }
+	var validateForm = function() {
+	  // [...]
+	  if (password.length < 6) {
+	    engagement.agent.sendSessionError('password_too_short');
+	  }
+	  // [...]
+	}
 
-**Example with extra data:**
+**余分なデータがある例:**
 
-    var validateForm = function() {
-      // [...]
-      if (password.length < 6) {
-        engagement.agent.sendSessionError('password_too_short', {length: 4});
-      }
-      // [...]
-    }
+	var validateForm = function() {
+	  // [...]
+	  if (password.length < 6) {
+	    engagement.agent.sendSessionError('password_too_short', {length: 4});
+	  }
+	  // [...]
+	}
 
-### <a name="standalone-errors"></a>Standalone errors
+### スタンドアロン エラー
 
-Unlike session errors, standalone errors can occur outside the context of a session.
+セッション エラーとは異なり、スタンドアロン エラーはセッションのコンテキスト外で発生する場合があります。
 
-For that, use `engagement.agent.sendError` instead of `engagement.agent.sendSessionError`.
+その場合、`engagement.agent.sendSessionError` ではなく、`engagement.agent.sendError` を使用します。
 
-## <a name="reporting-jobs"></a>Reporting jobs
+## ジョブの報告
 
-Reporting on jobs covers reporting errors and events that occur during a job, and reporting crashes.
+ジョブの報告には、ジョブの実行中に発生するエラーやイベントの報告とクラッシュの報告があります。
 
-**Example:**
+**例:**
 
-If you want to monitor an AJAX request, you'd use the following:
+AJAX 要求を監視する場合は、次のコードを使用します。
 
-    // [...]
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState == 4) {
-      // [...]
-        engagement.agent.endJob('publish');
-      }
-    }
-    engagement.agent.startJob('publish');
-    xhr.send();
-    // [...]
+	// [...]
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+	  // [...]
+	    engagement.agent.endJob('publish');
+	  }
+	}
+	engagement.agent.startJob('publish');
+	xhr.send();
+	// [...]
 
-### <a name="reporting-errors-during-a-job"></a>Reporting errors during a job
+### ジョブの実行中に発生したエラーの報告
 
-Errors can be related to a running job instead of to the current user session.
+エラーは、現在のユーザー セッションではなく、実行中のジョブに関連付けることができます。
 
-**Example:**
+**例:**
 
-If you want to report an error if an AJAX request fails:
+AJAX 要求が失敗した場合のエラー報告の例を次に示します。
 
-    // [...]
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState == 4) {
-        // [...]
-        if (xhr.status == 0 || xhr.status >= 400) {
-          engagement.agent.sendJobError('publish_xhr', 'publish', {status: xhr.status, statusText: xhr.statusText});
-        }
-        engagement.agent.endJob('publish');
-      }
-    }
-    engagement.agent.startJob('publish');
-    xhr.send();
-    // [...]
+	// [...]
+	xhr.onreadystatechange = function() {
+	  if (xhr.readyState == 4) {
+	    // [...]
+	    if (xhr.status == 0 || xhr.status >= 400) {
+	      engagement.agent.sendJobError('publish_xhr', 'publish', {status: xhr.status, statusText: xhr.statusText});
+	    }
+	    engagement.agent.endJob('publish');
+	  }
+	}
+	engagement.agent.startJob('publish');
+	xhr.send();
+	// [...]
 
-### <a name="reporting-events-during-a-job"></a>Reporting events during a job
+### ジョブの実行中に発生したイベントの報告
 
-Events can be related to a running job instead of to the current user session, thanks to the `engagement.agent.sendJobEvent` function.
+`engagement.agent.sendJobEvent` 関数により、現在のユーザー セッションではなく、実行中のジョブにイベントを関連付けることができます。
 
-This function works exactly like `engagement.agent.sendJobError`.
+この関数は、`engagement.agent.sendJobError` とまったく同様に動作します。
 
-### <a name="reporting-crashes"></a>Reporting crashes
+### クラッシュの報告
 
-Use the `sendCrash` function to report crashes manually.
+クラッシュを手動で報告するには、`sendCrash` 関数を使用します。
 
-The `crashid` argument is a string that identifies the type of crash.
-The `crash` argument usually is the stack trace of the crash as a string.
+`crashid` 引数は、クラッシュの種類を識別する文字列です。通常、`crash` 引数は文字列としてのクラッシュのスタック トレースです。
 
-    engagement.agent.sendCrash(crashid, crash);
+	engagement.agent.sendCrash(crashid, crash);
 
-## <a name="extra-parameters"></a>Extra parameters
+## 追加のパラメーター
 
-You can attach arbitrary data to an event, error, activity, or job.
+イベント、エラー、アクティビティ、またはジョブに任意のデータを添付できます。
 
-The data can be any JSON object (but not an array or primitive type).
+このデータには、JSON オブジェクトを指定できます (ただし、配列やプリミティブ型は指定できません)。
 
-**Example:**
+**例:**
 
-    var extras = {"video_id": 123, "ref_click": "http://foobar.com/blog"};
-    engagement.agent.sendEvent("video_clicked", extras);
+	var extras = {"video_id": 123, "ref_click": "http://foobar.com/blog"};
+	engagement.agent.sendEvent("video_clicked", extras);
 
-### <a name="limits"></a>Limits
+### 制限
 
-Limits that apply to extra parameters are in the areas of regular expressions for keys, value types, and size.
+追加のパラメーターに適用される制限は、キーの正規表現、値の型、サイズに関するものです。
 
-#### <a name="keys"></a>Keys
+#### 構成する
 
-Each key in the object must match the following regular expression:
+オブジェクト内の各キーは、次の正規表現と一致する必要があります。
 
-    ^[a-zA-Z][a-zA-Z_0-9]*
+	^[a-zA-Z][a-zA-Z_0-9]*
 
-This means that keys must start with at least one letter, followed by letters, digits, or underscores (\_).
+つまり、キーは少なくとも 1 つの文字で始まり、その後に文字、数字、またはアンダースコア (\_) が続く必要があります。
 
-#### <a name="values"></a>Values
+#### 値
 
-Values are limited to string, number, and Boolean types.
+値は、文字列、数値、ブール型に制限されます。
 
-#### <a name="size"></a>Size
+#### サイズ
 
-Extras are limited to 1,024 characters per call (after the Mobile Engagement Web SDK encodes it in JSON).
+追加データは、1 つの呼び出しにつき 1,024 文字に制限されます (Mobile Engagement Web SDK によって JSON でエンコードされた後)。
 
-## <a name="reporting-application-information"></a>Reporting application information
+## アプリケーション情報の報告
 
-You can manually report tracking information (or any other application-specific information) by using the `sendAppInfo()` function.
+`sendAppInfo()` 関数を使用して、追跡情報 (または他のアプリケーション固有の情報) を手動で報告できます。
 
-Note that this information can be sent incrementally. Only the latest value for a specific key will be kept for a specific device.
+この情報は段階的に送信される可能性があります。特定のデバイス用に特定のキーの最新の値だけが保持されます。
 
-Like event extras, you can use any JSON object to abstract application information. Note that arrays or sub-objects are treated as flat strings (using JSON serialization).
+イベントの追加データと同様に、JSON オブジェクトを使用してアプリケーション情報を抽出できます。配列またはサブオブジェクトは、(JSON のシリアル化を使用して) 単純な文字列として処理されます。
 
-**Example:**
+**例:**
 
-Here is a code sample for sending the user's gender and birth date:
+ユーザーの性別と誕生日を送信するコード サンプルを次に示します。
 
-    var appInfos = {"birthdate":"1983-12-07","gender":"female"};
-    engagement.agent.sendAppInfo(appInfos);
+	var appInfos = {"birthdate":"1983-12-07","gender":"female"};
+	engagement.agent.sendAppInfo(appInfos);
 
-### <a name="limits"></a>Limits
+### 制限
 
-Limits that apply to application information are in the areas of regular expressions for keys, and size.
+アプリケーション情報に適用される制限は、キーの正規表現とサイズに関するものです。
 
-#### <a name="keys"></a>Keys
+#### 構成する
 
-Each key in the object must match the following regular expression:
+オブジェクト内の各キーは、次の正規表現と一致する必要があります。
 
-    ^[a-zA-Z][a-zA-Z_0-9]*
+	^[a-zA-Z][a-zA-Z_0-9]*
 
-This means that keys must start with at least one letter, followed by letters, digits, or underscores (\_).
+つまり、キーは少なくとも 1 つの文字で始まり、その後に文字、数字、またはアンダースコア (\_) が続く必要があります。
 
-#### <a name="size"></a>Size
+#### サイズ
 
-Application information is limited to 1,024 characters per call (after the Mobile Engagement Web SDK encodes it in JSON).
+アプリケーション情報は、1 つの呼び出しにつき 1,024 文字に制限されます (Mobile Engagement Web SDK によって JSON でエンコードされた後)。
 
-In the preceding example, the JSON sent to the server is 44 characters long:
+前の例では、サーバーに送信される JSON は 44 文字です。
 
-    {"birthdate":"1983-12-07","gender":"female"}
+	{"birthdate":"1983-12-07","gender":"female"}
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a custom probe for an application gateway by using the portal | Microsoft Azure"
-   description="Learn how to create a custom probe for Application Gateway by using the portal"
+   pageTitle="ポータルを使用してアプリケーション ゲートウェイ用カスタム プローブを作成する | Microsoft Azure"
+   description="ポータルを使用してアプリケーション ゲートウェイ用カスタム プローブを作成する方法について説明します。"
    services="application-gateway"
    documentationCenter="na"
    authors="georgewallace"
@@ -14,80 +14,77 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="10/24/2016"
+   ms.date="08/09/2016"
    ms.author="gwallace" />
 
-
-# <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Create a custom probe for Application Gateway by using the portal
+# ポータルを使用して Application Gateway 用カスタム プローブを作成する
 
 > [AZURE.SELECTOR]
-- [Azure portal](application-gateway-create-probe-portal.md)
-- [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
-- [Azure Classic PowerShell](application-gateway-create-probe-classic-ps.md)
+- [Azure ポータル](application-gateway-create-probe-portal.md)
+- [Azure Resource Manager の PowerShell](application-gateway-create-probe-ps.md)
+- [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-probe-classic-ps.md)
 
 <BR>
 
 [AZURE.INCLUDE [azure-probe-intro-include](../../includes/application-gateway-create-probe-intro-include.md)]
 
-## <a name="scenario"></a>Scenario
+## シナリオ
 
-The following scenario goes through creating a custom health probe in an existing application gateway.
-The scenario assumes that you have already followed the steps to [Create an Application Gateway](application-gateway-create-gateway-portal.md).
+次のシナリオでは、既存のアプリケーション ゲートウェイに、カスタムの正常性プローブを作成します。このシナリオでは、[アプリケーション ゲートウェイの作成](application-gateway-create-gateway-portal.md)に関する手順を既に実行したことを前提としています。
 
-## <a name="<a-name="createprobe"></a>create-the-probe"></a><a name="createprobe"></a>Create the probe
+## <a name="createprobe"></a>プローブの作成
 
-Probes are configured in a two-step process through the portal. The first step is to create the probe, next you add the probe to the backend http settings of the application gateway.
+プローブは、ポータルを通じて 2 段階の手順で構成されます。最初の手順ではプローブを作成し、次にプローブをアプリケーション ゲートウェイのバックエンド http 設定に追加します。
 
-### <a name="step-1"></a>Step 1
+### 手順 1
 
-Navigate to http://portal.azure.com and select an existing application gateway.
+http://portal.azure.com に移動し、既存のアプリケーション ゲートウェイを選択します。
 
-![Application Gateway overview][1]
+![Application Gateway の概要][1]
 
-### <a name="step-2"></a>Step 2
+### 手順 2.
 
-Click **Probes** and click the **Add** button to add a new probe.
+**[プローブ]** をクリックし、**[追加]** ボタンをクリックして、新しいプローブを追加します。
 
 ![Add Probe blade with information filled out][2]
 
-### <a name="step-3"></a>Step 3
+### 手順 3.
 
-Fill out the required information for the probe and when complete click **OK**.
+プローブに必要な情報を入力し、完了したら **[OK]** をクリックします。
 
-- **Name** - This is a friendly name to the probe that is accessible in the portal.
-- **Host** - This is the host name that is used for the probe.
-- **Path** - The remainder of the full url for the custom probe.
-- **Interval (secs)** - How often the probe is run to check for health.
-- **Timeout (secs)** - The amount of time the probe waits before timing out.
-- **Unhealthy threshold** - Number of failed attempts to be considered unhealthy.
+- **[名前]** - これは、ポータルでアクセス可能なプローブのフレンドリ名です。
+- **[ホスト]** - これは、プローブに使用されるホスト名です。
+- **[パス]** - カスタム プローブの完全な URL の残りの部分です。
+- **[間隔 (秒)]** - 正常性を確認するためにプローブを実行する頻度です。
+- **[タイムアウト (秒)]** - タイムアウトまでにプローブが待機する時間です。
+- **[異常しきい値]** - 異常であると見なされるまでの試行の失敗回数です。
 
-> [AZURE.IMPORTANT] the host name is not the server name. This is the name of the virtual host running on the application server. The probe is sent to http://(host name):(port from httpsetting)/urlPath
+> [AZURE.IMPORTANT] ホスト名はサーバー名ではありません。これは、アプリケーション サーバーで実行されている仮想ホストの名前です。プローブは、http://(host name):(httpsetting のポート)/urlPath に送信されます。
 
 ![probe configuration settings][3]
 
-## <a name="add-probe-to-the-gateway"></a>Add probe to the gateway
+## ゲートウェイへのプローブの追加
 
-Now that the probe has been created, it is time to add it to the gateway. Probe settings are set on the backend http settings of the application gateway.
+プローブが作成されたら、ゲートウェイに追加します。プローブの設定は、アプリケーション ゲートウェイのバックエンド http 設定で行います。
 
-### <a name="step-1"></a>Step 1
+### 手順 1
 
-Click the **HTTP settings** of the application gateway, and then click the current backend http settings in the window to bring up the configuration blade.
+アプリケーション ゲートウェイの **[HTTP 設定]** をクリックし、ウィンドウで現在のバックエンド http 設定をクリックして、構成ブレードを表示します。
 
 ![https settings window][4]
 
-### <a name="step-2"></a>Step 2
+### 手順 2.
 
-On the **appGatewayBackEndHttp** settings blade, click **Use custom probe** and choose the probe created in the [Create the probe](#createprobe) section.
-When complete, click **OK** and the settings are applied.
+**appGatewayBackEndHttp** 設定ブレードで **[カスタム プローブの使用]** をクリックし、「[プローブの作成](#createprobe)」セクションで作成したプローブを選択します。完了したら、**[OK]** をクリックし、設定を適用します。
 
 ![appgatewaybackend settings blade][5]
 
-The default probe checks the default access to the web application. Now that a custom probe has been created, the application gateway uses the custom path defined to monitor health for the backend selected. Based on the criteria that was defined, the application gateway checks the file specified in the probe. If the call to host:Port/path does not return an Http 200 OK status response, the server is taken out of rotation, after the unhealthy threshold is reached. Probing continues on the unhealthy instance to determine when it becomes healthy again. Once the instance is added back to healthy server pool traffic begins flowing to it again and probing to the instance continues at user specified interval as normal.
+既定のプローブでは、Web アプリケーションへの既定のアクセスがチェックされます。カスタム プローブが作成されたら、アプリケーション ゲートウェイは、定義されているカスタム パスを使用して、選択されているバックエンドの正常性を監視します。定義された条件に基づいて、アプリケーション ゲートウェイは、プローブで指定されているファイルをチェックします。host:Port/path への呼び出しによって HTTP 200 OK という状態の応答が返されない場合は、異常のしきい値に達した後、サーバーがローテーションから除外されます。プローブは、もう一度正常になるタイミングを判断するために、異常なインスタンス上で続行します。インスタンスが正常なサーバー プールに戻されると、トラフィックはもう一度そこに流れ始め、インスタンスへのプローブは、通常どおり、ユーザーが指定した間隔で続行します。
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn how to configure SSL Offloading with Azure Application Gateway see [Configure SSL Offload](application-gateway-ssl-portal.md)
+Azure Application Gateway で SSL オフロードを構成する方法を学習するには、[SSL オフロードの構成](application-gateway-ssl-portal.md)に関するページを参照してください。
 
 [1]: ./media/application-gateway-create-probe-portal/figure1.png
 [2]: ./media/application-gateway-create-probe-portal/figure2.png
@@ -95,7 +92,4 @@ To learn how to configure SSL Offloading with Azure Application Gateway see [Con
 [4]: ./media/application-gateway-create-probe-portal/figure4.png
 [5]: ./media/application-gateway-create-probe-portal/figure5.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

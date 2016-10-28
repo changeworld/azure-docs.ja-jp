@@ -1,118 +1,117 @@
 <properties
-    pageTitle="Get started with Azure Search in NodeJS | Microsoft Azure | Hosted cloud search service"
-    description="Walk through building a search application on a hosted cloud search service on Azure using NodeJS as your programming language."
-    services="search"
-    documentationCenter=""
-    authors="EvanBoyle"
-    manager="pablocas"
-    editor="v-lincan"/>
+	pageTitle="NodeJS での Azure Search の使用 | Microsoft Azure | ホスト型クラウド検索サービス"
+	description="プログラミング言語として NodeJS を使用して Azure でホスト型クラウド検索アプリケーションを作成する手順を示します。"
+	services="search"
+	documentationCenter=""
+	authors="EvanBoyle"
+	manager="pablocas"
+	editor="v-lincan"/>
 
 <tags
-    ms.service="search"
-    ms.devlang="na"
-    ms.workload="search"
-    ms.topic="hero-article"
-    ms.tgt_pltfrm="na"
-    ms.date="07/14/2016"
-    ms.author="evboyle"/>
+	ms.service="search"
+	ms.devlang="na"
+	ms.workload="search"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="na"
+	ms.date="07/14/2016"
+	ms.author="evboyle"/>
 
-
-# <a name="get-started-with-azure-search-in-nodejs"></a>Get started with Azure Search in NodeJS
+# NodeJS での Azure Search の使用
 > [AZURE.SELECTOR]
-- [Portal](search-get-started-portal.md)
+- [ポータル](search-get-started-portal.md)
 - [.NET](search-howto-dotnet-sdk.md)
 
-Learn how to build a custom NodeJS search application that uses Azure Search for its search experience. This tutorial uses the [Azure Search Service REST API](https://msdn.microsoft.com/library/dn798935.aspx) to construct the objects and operations used in this exercise.
+検索エクスペリエンスとして Azure Search を使用するカスタム NodeJS 検索アプリケーションを作成する方法を説明します。このチュートリアルでは、[Azure Search サービス REST API](https://msdn.microsoft.com/library/dn798935.aspx) を使用して、この演習で使用するオブジェクトおよび操作を作成します。
 
-We used [NodeJS](https://nodejs.org) and NPM, [Sublime Text 3](http://www.sublimetext.com/3), and Windows PowerShell on Windows 8.1 to develop and test this code.
+[NodeJS](https://nodejs.org) と NPM、[Sublime Text 3](http://www.sublimetext.com/3)、および Windows 8.1 の Windows PowerShell を使用して、このコードを開発しテストしました。
 
-To run this sample, you must have an Azure Search service, which you can sign up for in the [Azure Portal](https://portal.azure.com). See [Create an Azure Search service in the portal](search-create-service-portal.md) for step-by-step instructions.
+このサンプルを実行するには、Azure Search サービスが必要です。このサービスには、[Azure ポータル](https://portal.azure.com)でサインアップできます。詳しい手順については、「[Azure ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
 
-## <a name="about-the-data"></a>About the data
+## データについて
 
-This sample application uses data from the [United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm), filtered on the state of Rhode Island to reduce the dataset size. We'll use this data to build a search application that returns landmark buildings such as hospitals and schools, as well as geological features like streams, lakes, and summits.
+このサンプル アプリケーションでは、[United States Geological Services (USGS)](http://geonames.usgs.gov/domestic/download_data.htm) からのデータをロードアイランド州でフィルター処理してデータサイズを削減して使用します。このデータを使用して、病院や学校などの目立つ建物および河川、湖沼、山などの地理的特徴を返す検索アプリケーションを作成します。
 
-In this application, the **DataIndexer** program builds and loads the index using an [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) construct, retrieving the filtered USGS dataset from a public Azure SQL Database. Credentials and connection  information to the online data source is provided in the program code. No further configuration is necessary.
+このアプリケーションでは、**DataIndexer** プログラムは [Indexer](https://msdn.microsoft.com/library/azure/dn798918.aspx) コンストラクトを使用してインデックスを作成して読み込み、パブリック Azure SQL Database からフィルター処理された USGS データセットを取得します。オンライン データ ソースに対する資格情報と接続情報は、プログラム コードで提供されます。それ以上の構成は必要ありません。
 
-> [AZURE.NOTE] We applied a filter on this dataset to stay under the 10,000 document limit of the free pricing tier. If you use the standard tier, this limit does not apply. For details about capacity for each pricing tier, see [Search service limits](search-limits-quotas-capacity.md).
+> [AZURE.NOTE] このデータセットにフィルターを提供し、無料価格レベルのドキュメントを 10,000 件未満に制限しました。標準レベルを使用する場合は、この制限は適用されません。各価格レベルの容量の詳細については、「[Azure Search サービスの制限](search-limits-quotas-capacity.md)」を参照してください。
 
 
 <a id="sub-2"></a>
-## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Find the service name and api-key of your Azure Search service
+## Azure Search サービスのサービス名と API キーの取得
 
-After you create the service, return to the portal to get the URL or `api-key`. Connections to your Search service require that you have both the URL and an `api-key` to authenticate the call.
+サービスを作成したら、ポータルに戻って URL または `api-key` を取得します。Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
 
-1. Sign in to the [Azure Portal](https://portal.azure.com).
-2. In the jump bar, click **Search service** to list all of the Azure Search services provisioned for your subscription.
-3. Select the service you want to use.
-4. On the service dashboard, you'll see tiles for essential information, as well as the key icon for accessing the admin keys.
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. ジャンプ バーで、**[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
+3. 使用するサービスを選択します。
+4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
 
-    ![][3]
+  	![][3]
 
-5. Copy the service URL, an admin key, and a query key. You'll need all three later, when you add them to the config.js file.
+5. サービスの URL、管理キー、クエリ キーをコピーします。後で config.js ファイルに追加するときにこれら 3 つがすべて必要になります。
 
-## <a name="download-the-sample-files"></a>Download the sample files
+## サンプル ファイルのダウンロード
 
-Use either one of the following approaches to download the sample.
+次のいずれかの方法を使用してサンプルをダウンロードします。
 
-1. Go to [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo).
-2. Click **Download ZIP**, save the .zip file, and then extract all the files it contains.
+1. [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodeJSIndexerDemo) に移動します。
+2. **[Download ZIP]** をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
 
-All subsequent file modifications and run statements will be made against files in this folder.
+以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
 
 
-## <a name="update-the-config.js.-with-your-search-service-url-and-api-key"></a>Update the config.js. with your Search service URL and api-key
+## Search サービスの URL と API キーでの config.js の更新
 
-Using the URL and api-key that you copied earlier, specify the URL, admin-key, and query-key in configuration file.
+先にコピーした URL と API キーを使用し、構成ファイルで URL、管理キー、クエリ キーを指定します。
 
-Admin keys grant full control over service operations, including creating or deleting an index and loading documents. In contrast, query keys are for read-only operations, typically used by client applications that connect to Azure Search.
+管理キーは、インデックスの作成または削除やドキュメントの読み込みなど、サービス操作に対する完全な制御を付与します。これに対し、クエリ キーは読み取り専用の操作用であり、通常は、Azure Search に接続するクライアント アプリケーションによって使用されます。
 
-In this sample, we include the query key to help reinforce the best practice of using the query key in client applications.
+このサンプルでは、クライアント アプリケーションではクエリ キーを使用するというベスト プラクティスを補強するためにクエリ キーを含めます。
 
-The following screenshot shows **config.js** open in a text editor, with the relevant entries demarcated so that you can see where to update the file with the values that are valid for your search service.
+次のスクリーン ショットは、**config.js** をテキスト エディターで開いたところです。実際の Search サービスで有効な値でファイルを更新する箇所がわかるように、関連するエントリを囲んであります。
 
 ![][5]
 
 
-## <a name="host-a-runtime-environment-for-the-sample"></a>Host a runtime environment for the sample
+## サンプルのランタイム環境のホスト
 
-The sample requires an HTTP server, which you can install globally using npm.
+このサンプルには HTTP サーバーが必要です。これは、npm を使用してグローバルにインストールできます。
 
-Use a PowerShell window for the following commands.
+PowerShell ウィンドウを使用して次のコマンドを実行します。
 
-1. Navigate to the folder that contains the **package.json** file.
-2. Type `npm install`.
-2. Type `npm install -g http-server`.
+1. **package.json** ファイルを含むフォルダーに移動します。
+2. 「`npm install`」と入力します。
+2. 「`npm install -g http-server`」と入力します。
 
-## <a name="build-the-index-and-run-the-application"></a>Build the index and run the application
+## インデックスの作成とアプリケーションの実行
 
-1. Type `npm run indexDocuments`.
-2. Type `npm run build`.
-3. Type `npm run start_server`.
-4. Direct your browser at `http://localhost:8080/index.html`
+1. 「`npm run indexDocuments`」と入力します。
+2. 「`npm run build`」と入力します。
+3. 「`npm run start_server`」と入力します。
+4. ブラウザーで `http://localhost:8080/index.html` にアクセスします。
 
-## <a name="search-on-usgs-data"></a>Search on USGS data
+## USGS データの検索
 
-The USGS data set includes records that are relevant to the state of Rhode Island. If you click **Search** on an empty search box, you will get the top 50 entries, which is the default.
+USGS データ セットには、ロードアイランド州に関連するレコードが含まれています。検索ボックスが空の状態で **[Search]** をクリックすると、既定で、上位 50 のエントリが取得されます。
 
-Entering a search term will give the search engine something to go on. Try entering a regional name. "Roger Williams" was the first governor of Rhode Island. Numerous parks, buildings, and schools are named after him.
+検索語句を入力すると、検索エンジンに処理するものが提供されます。地域の名前を入力してみてください。"Roger Williams" はロードアイランド州の最初の州知事でした。多数の公園、建造物、および学校に彼の名前が付けられています。
 
 ![][9]
 
-You could also try any of these terms:
+次のような語句も試すことができます。
 
 - Pawtucket
 - Pembroke
 - goose +cape
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-This is the first Azure Search tutorial based on NodeJS and the USGS dataset. Over time, we'll extend this tutorial to demonstrate additional search features you might want to use in your custom solutions.
+これは、NodeJS と USGS データセットに基づく最初の Azure Search チュートリアルです。カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
-If you already have some background in Azure Search, you can use this sample as a springboard for trying suggesters (type-ahead or autocomplete queries), filters, and faceted navigation. You can also improve upon the search results page by adding counts and batching documents so that users can page through the results.
+Azure Search についての知識が既にある場合は、このサンプルを基にして、サジェスター (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションなどを試すことができます。また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。
 
-New to Azure Search? We recommend trying other tutorials to develop an understanding of what you can create. Visit our [documentation page](https://azure.microsoft.com/documentation/services/search/) to find more resources. You can also view the links in our [Video and Tutorial list](search-video-demo-tutorial-list.md) to access more information.
+Azure Search を初めて使用する場合は、 他のチュートリアルも試して、作成できるものについての理解を深めることをお勧めします。他のリソースについては、[ドキュメントのページ](https://azure.microsoft.com/documentation/services/search/)を参照してください。[ビデオとチュートリアルの一覧](search-video-demo-tutorial-list.md)のリンクから、さらに多くの情報にアクセスすることもできます。
 
 <!--Image references-->
 [1]: ./media/search-get-started-nodejs/create-search-portal-1.PNG
@@ -121,8 +120,4 @@ New to Azure Search? We recommend trying other tutorials to develop an understan
 [5]: ./media/search-get-started-nodejs/AzSearch-NodeJS-configjs.png
 [9]: ./media/search-get-started-nodejs/rogerwilliamsschool.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

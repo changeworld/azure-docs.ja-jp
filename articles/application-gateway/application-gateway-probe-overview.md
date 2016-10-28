@@ -1,8 +1,8 @@
 
 
 <properties
-   pageTitle="Health monitoring overview for Azure Application Gateway | Microsoft Azure"
-   description="Learn about the monitoring capabilities in Azure Application Gateway"
+   pageTitle="Azure Application Gateway の正常性監視の概要 | Microsoft Azure"
+   description="Azure Application Gateway の監視機能の概要"
    services="application-gateway"
    documentationCenter="na"
    authors="georgewallace"
@@ -19,62 +19,53 @@
    ms.date="08/29/2016"
    ms.author="gwallace" />
 
+# Application Gateway による正常性監視の概要
 
-# <a name="application-gateway-health-monitoring-overview"></a>Application Gateway health monitoring overview
-
-Azure Application Gateway by default monitors the health of all resources in its back-end pool and automatically removes any resource considered unhealthy from the pool. Application Gateway continues to monitor the unhealthy instances and adds them back to the healthy back-end pool once they become available and respond to health probes.
+既定では、Azure Application Gateway はバック エンド プールにあるすべてのリソースの状態を監視して、異常とみなしたリソースをプールから自動的に削除します。Application Gateway は異常なインスタンスを継続的に監視し、このインスタンスが利用可能になり正常性プローブに応答するようになると、正常バック エンド プールに戻します。
 
 ![application gateway probe example][1]
 
-In addition to using default health probe monitoring, you can also customize the health probe to suit your application's requirements. In this article, both default and custom health probes are covered.
+既定の正常性プローブによる監視を行うだけでなく、アプリケーションの要件に合わせて正常性プローブをカスタマイズすることもできます。この記事では、既定とカスタムの両方の正常性プローブについて説明します。
 
-## <a name="default-health-probe"></a>Default health probe
+## 既定の正常性プローブ
 
-An application gateway automatically configures a default health probe when you don't set up any custom probe configuration. The monitoring behavior works by making an HTTP request to the IP addresses configured for the back-end pool.
+カスタム プローブ構成を設定しない場合、アプリケーション ゲートウェイにより既定の正常性プローブが自動で構成されます。監視は、バックエンド プールに構成済みの IP アドレスに対して HTTP 要求を行うことで実行されます。
 
-For example: You configure your application gateway to use back-end servers A, B, and C to receive HTTP network traffic on port 80. The default health monitoring tests the three servers every 30 seconds for a healthy HTTP response. A healthy HTTP response has a [status code](https://msdn.microsoft.com/library/aa287675.aspx) between 200 and 399.
+たとえば、バックエンド サーバー A、B、C を使用して ポート 80 で HTTP ネットワーク トラフィックを受信するように、アプリケーション ゲートウェイを構成したとします。既定の正常性監視では、30 秒ごとにこれら 3 つのサーバーに対して HTTP 応答が正常であるかどうかがテストされます。正常な HTTP 応答の[状態コード](https://msdn.microsoft.com/library/aa287675.aspx) は、200 から 399 の間です。
 
-If the default probe check fails for server A, the application gateway removes it from its back-end pool, and network traffic stops flowing to this server. The default probe still continues to check for server A every 30 seconds. When server A responds successfully to one request from a default health probe, it is added back as healthy to the back-end pool, and traffic starts flowing to the server again.
+サーバー A に対する既定のプローブ チェックが失敗した場合、アプリケーション ゲートウェイはサーバー A をバックエンド プールから削除するため、ネットワーク トラフィックがこのサーバーに送られなくなります。既定のプローブは、削除後もサーバー A を 30 秒ごとにチェックし続けます。サーバー A は、既定の正常性プローブからの要求に正常に応答するようになるとバックエンド プールに「正常」として戻され、このサーバーへのトラフィックの送信が再開されます。
 
-### <a name="default-health-probe-settings"></a>Default health probe settings
+### 既定の正常性プローブの設定
 
-|Probe property | Value | Description|
+|プローブのプロパティ | 値 | Description|
 |---|---|---|
-| Probe URL| http://127.0.0.1:\<port\>/ | URL path |
-| Interval | 30 | Probe interval in seconds |
-| Time-out  | 30 | Probe time-out in seconds |
-| Unhealthy threshold | 3 | Probe retry count. The back-end server is marked down after the consecutive probe failure count reaches the unhealthy threshold. |
+| プローブの URL| http://127.0.0.1:\<port>/ | URL パス |
+| 間隔 | 30 | プローブの間隔 (秒) |
+| タイムアウト | 30 | プローブのタイムアウト (秒) |
+| 異常のしきい値 | 3 | プローブの再試行回数。プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
-The default probe looks only at http://127.0.0.1:\<port\> to determine health status. If you need to configure the health probe to go to a custom URL or modify any other settings, you must use custom probes as described in the following steps.
+既定のプローブは、正常性を判断する際に http://127.0.0.1:\<port> のみをチェックします。カスタム URL をチェックするように正常性プローブを構成するか、その他の設定を変更する必要がある場合は、以下の手順に従ってカスタム プローブを使用する必要があります。
 
-## <a name="custom-health-probe"></a>Custom health probe
+## カスタムの正常性プローブ
 
-Custom probes allow you to have a more granular control over the health monitoring. When using custom probes, you can configure the probe interval, the URL and path to test, and how many failed responses to accept before marking the back-end pool instance as unhealthy.
+カスタム プローブを使用すると、正常性監視をより細かく制御できます。カスタム プローブを使用する場合、プローブの間隔、テスト対象の URL とパス、バックエンド プール インスタンスを「異常」とマークするまでの応答の失敗回数を構成することができます。
 
-### <a name="custom-health-probe-settings"></a>Custom health probe settings
+### カスタムの正常性プローブの設定
 
-The following table provides definitions for the properties of a custom health probe.
-
-|Probe property| Description|
+|プローブのプロパティ| Description|
 |---|---|
-| Name | Name of the probe. This name is used to refer to the probe in back-end HTTP settings. |
-| Protocol | Protocol used to send the probe. The probe will use the protocol defined in the back-end HTTP settings |
-| Host |  Host name to send the probe. Applicable only when multi-site is configured on Application Gateway, otherwise use '127.0.0.1'. This is different from VM host name. |
-| Path | Relative path of the probe. The valid path starts from '/'. |
-| Interval | Probe interval in seconds. This is the time interval between two consecutive probes.|
-| Time-out | Probe time-out in seconds. The probe is marked as failed if a valid response is not received within this time-out period. |
-| Unhealthy threshold | Probe retry count. The back-end server is marked down after the consecutive probe failure count reaches the unhealthy threshold. |
+| Name | プローブの名前。この名前は、バックエンドの HTTP 設定でプローブを参照するために使用されます。 |
+| プロトコル | プローブを送信するために使用するプロトコル。有効なプロトコルは、HTTP または HTTPS です。 |
+| Host | プローブを送信するホスト名。 |
+| パス | プローブの相対パス。パスは、先頭が '/' である必要があります。プローブの送信先は <protocol>://<host>:<port><path> になります。 |
+| 間隔 | プローブの間隔 (秒)。2 つの連続するプローブの時間間隔。|
+| タイムアウト | プローブのタイムアウト (秒)。プローブは、このタイムアウト期間内に正常な応答を受信しない場合に「失敗」とマークされます。 |
+| 異常のしきい値 | プローブの再試行回数。プローブの連続失敗回数が異常のしきい値に達すると、バックエンド サーバーは「ダウン」とマークされます。 |
 
-> [AZURE.IMPORTANT] If Application Gateway is configured for a single site, by default the Host name should be specified as '127.0.0.1', unless otherwise configured in custom probe.
-For reference a custom probe is sent to \<protocol\>://\<host\>:\<port\>\<path\>.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
-
-After learning about Application Gateway health monitoring, you can configure a [custom health probe](application-gateway-create-probe-portal.md) in the Azure portal or a [custom health probe](application-gateway-create-probe-ps.md) using PowerShell and the Azure Resource Manager deployment model.
+Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成するか、または PowerShell と Azure Resource Manager デプロイメント モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成できます。
 
 [1]: ./media/application-gateway-probe-overview/appgatewayprobe.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

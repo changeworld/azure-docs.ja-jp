@@ -1,11 +1,11 @@
 <properties
-    pageTitle="Create an IoT Hub using an ARM template and C# | Microsoft Azure"
-    description="Follow this tutorial to get started using Resource Manager templates to create an IoT Hub with a C# program."
-    services="iot-hub"
-    documentationCenter=".net"
-    authors="dominicbetts"
-    manager="timlt"
-    editor=""/>
+	pageTitle="ARM テンプレートと C# を使用した IoT Hub の作成 | Microsoft Azure"
+	description="このチュートリアルでは、リソース マネージャー テンプレートを使用して、C# プログラムで IoT Hub の作成を開始する方法について説明します。"
+	services="iot-hub"
+	documentationCenter=".net"
+	authors="dominicbetts"
+	manager="timlt"
+	editor=""/>
 
 <tags
      ms.service="iot-hub"
@@ -16,37 +16,36 @@
      ms.date="08/16/2016"
      ms.author="dobett"/>
 
-
-# <a name="create-an-iot-hub-using-a-c#-program-with-a-resource-manager-template"></a>Create an IoT hub using a C# program with a Resource Manager template
+# Resource Manager テンプレートで C# プログラムを使用した IoT Hub の作成
 
 [AZURE.INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-## <a name="introduction"></a>Introduction
+## はじめに
 
-You can use Azure Resource Manager to create and manage Azure IoT hubs programmatically. This tutorial shows you how to use a Resource Manager template to create an IoT hub from a C# program.
+Azure リソース マネージャーを使って、Azure IoT ハブをプログラムを使用して作成、管理できます。このチュートリアルでは、Resource Manager テンプレートを使用して C# プログラムから IoT Hub を作成する方法を説明します。
 
-> [AZURE.NOTE] Azure has two different deployment models for creating and working with resources:  [Resource Manager and classic](../resource-manager-deployment-model.md).  This article covers using the Resource Manager deployment model.
+> [AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[リソース マネージャー デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。この記事では、リソース マネージャーのデプロイメント モデルの使用について説明します。
 
-To complete this tutorial, you need the following:
+このチュートリアルを完了するには、以下が必要です。
 
-- Microsoft Visual Studio 2015.
-- An active Azure account. <br/>If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial][lnk-free-trial].
-- An [Azure storage account][lnk-storage-account] where you can store your template files.
-- [Microsoft Azure PowerShell 1.0][lnk-powershell-install] or later.
+- Microsoft Visual Studio 2015
+- アクティブな Azure アカウント。<br/>アカウントがない場合は、無料の試用アカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト][lnk-free-trial]を参照してください。
+- テンプレート ファイルの保存先となる [Azure ストレージ アカウント][lnk-storage-account]。
+- [Microsoft Azure PowerShell 1.0][lnk-powershell-install] 以降
 
 [AZURE.INCLUDE [iot-hub-prepare-resource-manager](../../includes/iot-hub-prepare-resource-manager.md)]
 
-## <a name="prepare-your-visual-studio-project"></a>Prepare your Visual Studio project
+## Visual Studio プロジェクトの準備
 
-1. In Visual Studio, create a Visual C# Windows project using the **Console Application** project template. Name the project **CreateIoTHub**.
+1. Visual Studio で、**コンソール アプリケーション** プロジェクト テンプレートを使用して、Visual C# Windows のプロジェクトを作成します。プロジェクトに **CreateIoTHub** という名前を付けます。
 
-2. In Solution Explorer, right-click on your project and then click **Manage NuGet Packages**.
+2. ソリューション エクスプローラーで、プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-3. In Nuget Package Manager, check **Include prerelease**, and search for **Microsoft.Azure.Management.ResourceManager**. Click **Install**, in **Review Changes** click **OK**, then click **I Accept** to accept the licenses.
+3. NuGet パッケージ マネージャーで、**[プレリリースを含める]** をオンにし、**Microsoft.Azure.Management.ResourceManager** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
-4. In Nuget Package Manager, search for **Microsoft.IdentityModel.Clients.ActiveDirectory**.  Click **Install**, in **Review Changes** click **OK**, then click **I Accept** to accept the license.
+4. NuGet パッケージ マネージャーで、**Microsoft.IdentityModel.Clients.ActiveDirectory** を検索します。**[インストール]** をクリックし、**[変更の確認]** で、**[OK]**、**[同意する]** の順にクリックしてライセンス条項に同意します。
 
-5. In Program.cs, replace the existing **using** statements with the following:
+5. Program.cs で、既存の **using** ステートメントを以下に置き換えます。
 
     ```
     using System;
@@ -56,7 +55,7 @@ To complete this tutorial, you need the following:
     using Microsoft.Rest;
     ```
     
-6. In Program.cs, add the following static variables replacing the placeholder values. You made a note of **ApplicationId**, **SubscriptionId**, **TenantId**, and **Password** earlier in this tutorial. **Your storage account name** is the name of the Azure storage account where you store your template files. **Resource group name** is the name of the resource group you use when you create the IoT Hub, it can be a pre-existing resource group or a new one. **Deployment name** is a name for the deployment, such as **Deployment_01**.
+6. Program.cs で、次の静的変数を追加して、プレースホルダーの値を置き換えます。このチュートリアルの前の手順で **ApplicationId**、**SubscriptionId**、**TenantId**、および**パスワード**を書き留めています。**Your storage account name** には、実際のテンプレート ファイルの保存先となる Azure ストレージ アカウントの名前を指定します。**Resource group name** は、IoT Hub を作成するときに使用するリソース グループの名前で、既存のリソース グループまたは新しいリソース グループのいずれかになります。**デプロイ名**は、デプロイの名前です (**Deployment\_01** など)。
 
     ```
     static string applicationId = "{Your ApplicationId}";
@@ -70,13 +69,13 @@ To complete this tutorial, you need the following:
 
 [AZURE.INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 
-## <a name="submit-a-template-to-create-an-iot-hub"></a>Submit a template to create an IoT hub
+## テンプレートを送信して IoT Hub を作成する
 
-Use a JSON template and parameter file to create an IoT hub in your resource group. You can also use a template to make changes to an existing IoT hub.
+JSON テンプレートとパラメーター ファイルを使用して、リソース グループに IoT Hub を作成します。また、テンプレートを使用して、既存の IoT Hub に変更を加えることもできます。
 
-1. In Solution Explorer, right-click on your project, click **Add**, and then click **New Item**. Add a JSON file called **template.json** to your project.
+1. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**template.json** という JSON ファイルをプロジェクトに追加します。
 
-2. Replace the contents of **template.json** with the following resource definition to add a standard IoT hub to the **East US** region (for the current list of regions that support IoT Hub see [Azure Status][lnk-status]):
+2. **template.json** の内容を次のリソース定義に置き換えて、Standard IoT Hub を **[米国東部]** リージョンに追加します(現在の IoT Hub をサポートするリージョンの一覧については、[Azure の状態][lnk-status] を参照してください)。
 
     ```
     {
@@ -112,9 +111,9 @@ Use a JSON template and parameter file to create an IoT hub in your resource gro
     }
     ```
 
-3. In Solution Explorer, right-click on your project, click **Add**, and then click **New Item**. Add a JSON file called **parameters.json** to your project.
+3. ソリューション エクスプローラーで、目的のプロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**parameters.json** という JSON ファイルをプロジェクトに追加します。
 
-4. Replace the contents of **parameters.json** with the following parameter information that sets a name for the new IoT hub such as **{your initials}mynewiothub**. Note that the IoT hub name must be globally unique so it should include your name or initials):
+4. **parameters.json** の内容を次のパラメーター情報 (新しい IoT Hub の名前を **{自分のイニシャル}mynewiothub** に設定) などで置き換えます。IoT Hub 名はグローバルに一意でなければならないため、自分の名前やイニシャルを含めます。
 
     ```
     {
@@ -126,16 +125,16 @@ Use a JSON template and parameter file to create an IoT hub in your resource gro
     }
     ```
 
-5. In **Server Explorer**, connect to your Azure subscription, and in your storage account create a container called **templates**. In the **Properties** panel, set the **Public Read Access** permissions for the **templates** container to **Blob**.
+5. **サーバー エクスプローラー**から Azure サブスクリプションに接続し、自分のストレージ アカウントに、**templates** というコンテナーを作成します。**[プロパティ]** ウィンドウで、**[templates]** コンテナーの **[パブリック読み取りアクセス]** 権限を **[BLOB]** に設定します。
 
-6. In **Server Explorer**, right-click on the **templates** container and then click **View Blob Container**. Click the **Upload Blob** button, select the two files, **parameters.json** and **templates.json**, and then click **Open** to upload the JSON files to the **templates** container. The URLs of the blobs containing the JSON data are:
+6. **サーバー エクスプローラー**で **[templates]** コンテナーを右クリックし、**[BLOB コンテナーの表示]** をクリックします。**[BLOB のアップロード]** ボタンをクリックして **parameters.json** と **templates.json** の 2 つのファイルを選択し、**[開く]** をクリックして、**[templates]** コンテナーに JSON ファイルをアップロードします。JSON データを含んだ BLOB の URL は次のとおりです。
 
     ```
     https://{Your storage account name}.blob.core.windows.net/templates/parameters.json
     https://{Your storage account name}.blob.core.windows.net/templates/template.json
     ```
 
-7. Add the following method to Program.cs:
+7. 次のメソッドを Program.cs に追加します。
     
     ```
     static void CreateIoTHub(ResourceManagementClient client)
@@ -144,7 +143,7 @@ Use a JSON template and parameter file to create an IoT hub in your resource gro
     }
     ```
 
-5. Add the following code to the **CreateIoTHub** method to submit the template and parameter files to the Azure Resource Manager:
+5. テンプレート ファイルとパラメーター ファイルを Azure Resource Manager に送信するために、次のコードを **CreateIoTHub** メソッドに追加します。
 
     ```
     var createResponse = client.Deployments.CreateOrUpdate(
@@ -167,7 +166,7 @@ Use a JSON template and parameter file to create an IoT hub in your resource gro
         });
     ```
 
-6. Add the following code to the **CreateIoTHub** method that displays the status and the keys for the new IoT hub:
+6. 次のコードを **CreateIoTHub** メソッドに追加します。新しい IoT Hub のステータスとキーを表示するコードです。
 
     ```
     string state = createResponse.Properties.ProvisioningState;
@@ -180,40 +179,43 @@ Use a JSON template and parameter file to create an IoT hub in your resource gro
     Console.WriteLine(createResponse.Properties.Outputs);
     ```
 
-## <a name="complete-and-run-the-application"></a>Complete and run the application
+## アプリケーションの完了と実行
 
-You can now complete the application by calling the **CreateIoTHub** method before you build and run it.
+**CreateIoTHub** メソッドの呼び出しを追加したうえでアプリケーションをビルドし、実行すれば、アプリケーションは完成です。
 
-1. Add the following code to the end of the **Main** method:
+1. 次のコードを **Main** メソッドの末尾に追加します。
 
     ```
     CreateIoTHub(client);
     Console.ReadLine();
     ```
     
-2. Click **Build** and then **Build Solution**. Correct any errors.
+2. **[ビルド]**、**[ソリューションのビルド]** の順にクリックします。すべてのエラーを修正します。
 
-3. Click **Debug** and then **Start Debugging** to run the application. It may take several minutes for the deployment to run.
+3. **[デバッグ]**、**[デバッグの開始]** の順にクリックし、アプリケーションを実行します。デプロイメントが実行されるまでに数分かかる場合があります。
 
-4. You can verify that your application added the new IoT hub by visiting the [portal][lnk-azure-portal] and viewing your list of resources, or by using the **Get-AzureRmResource** PowerShell cmdlet.
+4. アプリケーションで新しい IoT Hub が追加されたことを確認するには、[ポータル][lnk-azure-portal]にアクセスし、リソースの一覧を表示するか、**Get-AzureRmResource** PowerShell コマンドレットを使用します。
 
-> [AZURE.NOTE] This example application adds an S1 Standard IoT Hub for which you are billed. You can delete the IoT hub through the [portal][lnk-azure-portal] or by using the **Remove-AzureRmResource** PowerShell cmdlet when you are finished.
+> [AZURE.NOTE] このサンプル アプリケーションでは、課金の対象とする S1 Standard IoT Hub を追加します。IoT Hub を削除するには、[ポータル][lnk-azure-portal]を使うか、終了時に **Remove-AzureRmResource** PowerShell コマンドレットを使用します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now you have deployed an IoT hub using an Azure Resource Manager template with a C# program, you may want to explore further:
+ここでは、C# プログラムと Azure Resource Manager テンプレートを使用して IoT Hub をデプロイしました。次の手順に進んでください。
 
-- Read about the capabilities of the [IoT Hub Resource Provider REST API][lnk-rest-api].
-- Read [Azure Resource Manager overview][lnk-azure-rm-overview] to learn more about the capabilities of Azure Resource Manager.
+- [IoT Hub Resource Provider REST API][lnk-rest-api] の機能の詳細をご確認ください。
+- Azure リソース マネージャーの機能の詳細については、「[Azure リソース マネージャーの概要][lnk-azure-rm-overview]」を参照してください。
 
-To learn more about developing for IoT Hub, see the following:
+IoT Hub の開発に関する詳細については、以下を参照してください
 
-- [Introduction to C SDK][lnk-c-sdk]
-- [IoT Hub SDKs][lnk-sdks]
+- [C SDK の概要][lnk-c-sdk]
+- [IoT Hub SDK][lnk-sdks]
 
-To further explore the capabilities of IoT Hub, see:
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [Simulating a device with the Gateway SDK][lnk-gateway]
+- [ソリューションの設計][lnk-design]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 <!-- Links -->
 [lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
@@ -225,12 +227,11 @@ To further explore the capabilities of IoT Hub, see:
 [lnk-storage-account]: ../storage/storage-create-storage-account.md
 
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
+[lnk-sdks]: iot-hub-sdks-summary.md
 
+[lnk-design]: iot-hub-guidance.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="SQL Database disaster recovery | Microsoft Azure" 
-   description="Learn how to recover a database from a regional datacenter outage or failure with the Azure SQL Database Active Geo-Replication, and Geo-Restore capabilities." 
+   pageTitle="SQL Database の障害復旧 | Microsoft Azure" 
+   description="Azure SQL Database のアクティブ geo レプリケーションと geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。" 
    services="sql-database" 
    documentationCenter="" 
    authors="CarlRabeler" 
@@ -13,108 +13,103 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA" 
-   ms.date="10/13/2016"
+   ms.date="07/20/2016"
    ms.author="carlrab"/>
 
+# Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 
-# <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Restore an Azure SQL Database or failover to a secondary
+Azure SQL Database は、障害から回復するために次の機能を備えています。
 
-Azure SQL Database offers the following capabilities for recovering from an outage:
+- [アクティブ geo レプリケーションを選択するとき](sql-database-geo-replication-overview.md)
+- [geo リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- [Active Geo-Replication](sql-database-geo-replication-overview.md)
-- [Geo-Restore](sql-database-recovery-using-backups.md#point-in-time-restore)
+ビジネス継続性のシナリオと、こうしたシナリオをサポートする機能の詳細については、[ビジネス継続性](sql-database-business-continuity.md)に関するページをご覧ください。
 
-To learn about business continuity scenarios and the features supporting these scenarios, see [Business continuity](sql-database-business-continuity.md). 
+### 障害に備える
 
-### <a name="prepare-for-the-event-of-an-outage"></a>Prepare for the event of an outage
+アクティブ geo レプリケーションまたは geo 冗長バックアップのいずれかを使用して、他のデータリージョンに適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。この準備手順を次に示します。
 
-For success with recovery to another data region using either Active Geo-Replication or geo-redundant backups, you need to prepare a server in another data center outage to become the new primary server should the need arise as well as have well defined steps documented and tested to ensure a smooth recovery. These preparation steps include:
+- 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。アクティブ geo レプリケーションを使用する場合、これは少なくとも 1 つで、ほとんどの場合、各セカンダリ サーバーになります。geo リストアの場合は、通常、データベースが配置されているリージョンの[ペア リージョン](../best-practices-availability-paired-regions.md)にあるサーバーです。
+- ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルのファイアウォール規則を特定し、必要に応じて定義します。
+- 新しいプライマリ サーバーにユーザーをリダイレクトする方法を決めます。たとえば、接続文字列を変更したり、DNS エントリを変更したりすることでリダイレクトできます。
+- 新しいプライマリ サーバーのマスター データベースに必要なログインを特定し、必要に応じて作成します。また、マスター データベースにあるこれらのログインに、適切なアクセス許可が付与されていることを確認します (ある場合)。詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページをご覧ください
+- 更新して新しいプライマリ データベースにマップする必要があるアラート ルールを特定します。
+- 現在のプライマリ データベースで監査の構成を文書化します
+- [障害復旧の訓練](sql-database-disaster-recovery-drills.md)を実行します。geo リストアの障害をシミュレートするには、ソース データベースを削除するか、名前を変更します。これにより、アプリケーションの接続エラーが発生します。アクティブ geo レプリケーションの障害をシミュレートするには、データベースに接続されている Web アプリケーションまたは仮想マシンを無効にするか、データベースをフェールオーバーして、アプリケーションの接続エラーを発生させます。
 
-- Identify the logical server in another region to become the new primary server. With Active Geo-Replication, this will be at least one and perhaps each of the secondary servers. For Geo-Restore, this will generally be a server in the [paired region](../best-practices-availability-paired-regions.md) for the region in which your database is located.
-- Identify, and optionally define, the server-level firewall rules needed on for users to access the new primary database.
-- Determine how you are going to redirect users to the new primary server, such as by changing connection strings or by changing DNS entries.
-- Identify, and optionally create, the logins that must be present in the master database on the new primary server, and ensure these logins have appropriate permissions in the master database, if any. For more information, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md)
-- Identify alert rules that will need to be updated to map to the new primary database.
-- Document the auditing configuration on the current primary database 
-- Perform a [disaster recovery drill](sql-database-disaster-recovery-drills.md). To simulate an outage for Geo-Restore, you can delete or rename the source database to cause application connectivity failure. To simulate an outage for Active Geo-Replication, you can disable the web application or virtual machine connected to the database or failover the database to cause application connectity failures. 
+## 復旧を開始するタイミング
 
-## <a name="when-to-initiate-recovery"></a>When to initiate recovery
+復旧操作はアプリケーションに影響します。SQL 接続文字列の変更または DNS によるリダイレクトが必要で、永続的にデータが失われる可能性があります。そのため、アプリケーションの目標復旧時間が経過しても、障害が解決されない可能性が高い場合にのみ行ってください。アプリケーションが実稼働環境にデプロイされている場合は、アプリケーションの健全性の定期的な監視を実行し、次のデータ ポイントを使用して、復旧が保証されていることをアサートします。
 
-The recovery operation impacts the application. It requires changing the SQL connection string or redirection using DNS and could result in permanent data loss. Therefore, it should be done only when the outage is likely to last longer than your application's recovery time objective. When the application is deployed to production you should perform regular monitoring of the application health and use the following data points to assert that the recovery is warranted:
+1.	接続の永続的な障害は、アプリケーション層からデータベースに渡ります。
+2.	Azure ポータルには、影響が広範囲に及ぶリージョンのインシデントに関するアラートが示されます。
+3.	Azure SQL Database サーバーは機能低下としてマークされます。
 
-1.  Permanent connectivity failure from the application tier to the database.
-2.  The Azure portal shows an alert about an incident in the region with broad impact.
-3.  The Azure SQL Database server is marked as degraded. 
+ダウンタイムに対するアプリケーションの許容度およびビジネス責任に応じて、次の回復オプションを検討することができます。
 
-Depending on your application tolerance to downtime and possible business liability you can consider the following recovery options.
+[Get Recoverable Database](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) を使用して、geo レプリケートされた最新の復元ポイントを取得します。
 
-Use the [Get Recoverable Database](https://msdn.microsoft.com/library/dn800985.aspx) (*LastAvailableBackupDate*) to get the latest Geo-replicated restore point.
+## サービスの回復を待機する
 
-## <a name="wait-for-service-recovery"></a>Wait for service recovery
+Azure チームはできるだけ早くサービスが利用できるようになるように作業しますが、根本原因によっては数時間から数日かかることがあります。アプリケーションが長いダウンタイムを許容できる場合は、回復の完了を待つだけで済みます。この場合、ユーザーによる操作は必要ありません。現在のサービスの状態は、[Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)で確認できます。リージョンの回復後に、アプリケーションの可用性が復元されます。
 
-The Azure teams work diligently to restore service availability as quickly as possible but depending on the root cause it can take hours or days.  If your application can tolerate significant downtime you can simply wait for the recovery to complete. In this case, no action on your part is required. You can see the current service status on our [Azure Service Health Dashboard](https://azure.microsoft.com/status/). After the recovery of the region your application’s availability will be restored.
+## Geo レプリケートのセカンダリ データベースへのフェールオーバー
 
-## <a name="failover-to-geo-replicated-secondary-database"></a>Failover to geo-replicated secondary database
+アプリケーションのダウンタイムによってビジネス責任が発生する場合は、アプリケーションで geo レプリケートされたデータベースを使用する必要があります。そうすれば、障害が発生した場合でも異なるリージョンでアプリケーションの可用性を迅速に復元できます。[geo レプリケーションを構成](sql-database-geo-replication-portal.md)する方法をご覧ください。
 
-If your application’s downtime can result in business liability you should be using geo-replicated database(s) in your application. It will enable the application to quickly restore availability in a different region in case of an outage. Learn how to [configure Geo-Replication](sql-database-geo-replication-portal.md).
+データベースの可用性を復元するには、サポートされているいずれかの方法を使用して、geo レプリケートされたセカンダリ データベースへのフェールオーバーを開始する必要があります。
 
-To restore availability of the database(s) you need to initiate the failover to the geo-replicated secondary using one of the supported methods. 
+geo レプリケートされたセカンダリ データベースへのフェールオーバーについては、次のいずれかを参照してください。
 
-Use one of the following guides to failover to a geo-replicated secondary database:
+- [Azure ポータルを使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)
+- [PowerShell を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-powershell.md)
+- [Transact-SQL を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-transact-sql.md)
 
-- [Failover to a geo-replicated secondary using Azure Portal](sql-database-geo-replication-portal.md)
-- [Failover to a geo-replicated secondary using PowerShell](sql-database-geo-replication-powershell.md)
-- [Failover to a geo-replicated secondary using T-SQL](sql-database-geo-replication-transact-sql.md) 
+## geo リストアを使用した復旧
 
-## <a name="recover-using-geo-restore"></a>Recover using Geo-Restore
+アプリケーションのダウンタイムがビジネス責任にならない場合は、アプリケーション データベースを回復する方法として geo リストアを使用できます。geo リストアは、最新の geo 冗長バックアップからデータベースのコピーを作成します。
 
-If your application’s downtime does not result in business liability you can use Geo-Restore as a method to recover your application database(s). It creates a copy of the database from its latest geo-redundant backup. 
+新しいリージョンへのデータベースの geo リストアについては、次のいずれかを参照してください。
 
-Use one of the following guides to geo-restore a database into a new region:
+- [Geo-Restore a database to a new region using Azure Portal (Azure ポータルを使用して新しいリージョンにデータベースを geo リストアする)](sql-database-geo-restore-portal.md)
+- [Geo-Restore a database to a new region using PowerShell (PowerShell を使用して新しいリージョンにデータベースを geo リストアする)](sql-database-geo-restore-powershell.md)
 
-- [Geo-Restore a database to a new region using Azure Portal](sql-database-geo-restore-portal.md)
-- [Geo-Restore a database to a new region using PowerShell](sql-database-geo-restore-powershell.md) 
+## 復旧後のデータベースの構成
 
-## <a name="configure-your-database-after-recovery"></a>Configure your database after recovery
+geo レプリケーション フェールオーバーまたは geo リストアを使用して障害から復旧する場合は、通常のアプリケーション機能を再開できるように新しいデータベースへの接続が正しく構成されていることを確認する必要があります。復旧後のデータベースをすぐ運用できるようにするためのタスクのチェックリストを次に示します。
 
-If you are using either geo-replication failover or geo-restore to recover from an outage, you must make sure that the connectivity to the new databases is properly configured so that the normal application function can be resumed. This is a checklist of tasks to get your recovered database production ready.
+### 接続文字列を更新する
 
-### <a name="update-connection-strings"></a>Update Connection Strings
+復旧後のデータベースは別のサーバーに存在するため、そのサーバーを示すようにアプリケーションの接続文字列を更新する必要があります。
 
-Because your recovered database will reside in a different server, you need to update your application’s connection string to point to that server.
+接続文字列の変更の詳細については、[接続ライブラリ](sql-database-libraries.md)の適切な開発言語を参照してください。
 
-For more information about changing connection strings, see the appropriate development language for your [connection library](sql-database-libraries.md).
+### ファイアウォール規則を構成する
 
-### <a name="configure-firewall-rules"></a>Configure Firewall Rules
-
-You need to make sure that the firewall rules configured on server and on the database match those that were configured on the primary server and primary database. For more information, see [How to: Configure Firewall Settings (Azure SQL Database)](sql-database-configure-firewall-settings.md).
-
-
-### <a name="configure-logins-and-database-users"></a>Configure Logins and Database Users
-
-You need to make sure that all the logins used by your application exist on the server which is hosting your recovered database. For more information, see [Security Configuration for Geo-Replication](sql-database-geo-replication-security-config.md).
-
->[AZURE.NOTE] You should configure and test your server firewall rules and logins (and their permissions) during a disaster recovery drill. These server-level objects and their configuration may not be available during the outage. 
-
-### <a name="setup-telemetry-alerts"></a>Setup Telemetry Alerts
-
-You need to make sure your existing alert rule settings are updated to map to the recovered database and the different server. 
-
-For more information about database alert rules, see [Receive Alert Notifications](../azure-portal/insights-receive-alert-notifications.md) and [Track Service Health](../azure-portal/insights-service-health.md).
-
-### <a name="enable-auditing"></a>Enable Auditing
-
-If auditing is required to access your database, you need to enable Auditing after the database recovery. A good indicator that auditing is required is that client applications use secure connection strings in a pattern of *.database.secure.windows.net. For more information, see [Get started with SQL database auditing](sql-database-auditing-get-started.md). 
+サーバーおよびデータベースで構成されているファイアウォール規則が、プライマリ サーバーとプライマリ データベースで構成されている規則と一致することを確認する必要があります。詳細については、「[方法: ファイアウォール設定を構成する (Azure SQL Database)](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
-## <a name="next-steps"></a>Next steps
+### ログインとデータベース ユーザーを構成する
 
-- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
-- To learn about business continuity design and recovery scenarios, see [Continuity scenarios](sql-database-business-continuity.md)
-- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
+アプリケーションで使用するすべてのログインが、復旧されたデータベースをホストしているサーバー上に存在することを確認する必要があります。詳細については、[geo レプリケーションのセキュリティ構成](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
+
+>[AZURE.NOTE] 障害復旧の訓練中に、サーバーのファイアウォール規則とログイン (およびそのアクセス許可) を構成してテストする必要があります。障害の間は、これらのサーバー レベル オブジェクトとその構成を使用できない場合があります。
+
+### 製品利用統計情報アラートをセットアップする
+
+既存のアラート ルールの設定を更新し、復旧されたデータベースおよび異なるサーバーにマップされるようにする必要があります。
+
+データベースのアラート ルールの詳細については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」および「[サービス正常性を追跡する](../azure-portal/insights-service-health.md)」を参照してください。
+
+### 監査を有効にする
+
+データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。クライアント アプリケーションで *.database.secure.windows.net パターンのセキュリティで保護された接続文字列を使用している場合は、監査が必要であることを表しています。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」をご覧ください。
 
 
+## 次のステップ
 
-<!--HONumber=Oct16_HO2-->
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください
+- ビジネス継続性の設計および復旧シナリオについては、[継続性のシナリオ](sql-database-business-continuity.md)に関するページをご覧ください
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関するページをご覧ください
 
-
+<!---HONumber=AcomDC_0803_2016-->

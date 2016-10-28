@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="Migrate user data from Azure RemoteApp | Microsoft Azure"
-    description="Learn how to migrate your user data in and out of Azure RemoteApp."
+    pageTitle="Azure RemoteApp からユーザー データを移行する | Microsoft Azure"
+    description="Azure RemoteApp を移行先または移行元とするデータの移行方法について説明します。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -18,48 +18,44 @@
 
 
 
-
-# <a name="how-to-migrate-data-into-and-out-of-azure-remoteapp"></a>How to migrate data into and out of Azure RemoteApp
+# Azure RemoteApp を移行先または移行元とするデータの移行方法
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-You can use many different tools and methods to transfer [user data](remoteapp-upd.md) into and out of Azure RemoteApp. Here are a few methods:
+多様なツールおよび方法を使用して、[ユーザー データ](remoteapp-upd.md)を Azure RemoteApp へ、または Azure RemoteApp から転送できます。次に方法をいくつか示します。
 
-- Copy and paste using clipboard sharing
-- Copy files and data to a file server
-- Copy files to OneDrive for Business through a browser
-- Copy files using redirection
-
->[AZURE.NOTE] 
-> You cannot enable the OneDrive for Business or Consumer sync agents - they [are not supported](remoteapp-onedrive.md) in Azure RemoteApp.
-
-## <a name="use-copy-and-paste-in-file-explorer"></a>Use copy and paste in File Explorer
-
-Copy and paste using the clipboard is enabled in RemoteApp deployments [by default](remoteapp-redirection.md). This lets users copy files between their local PC and RemoteApp apps. Often, through the normal course of using apps in RemoteApp, users have saved files to their UPDs - moving that data out of RemoteApp is easy:
-
-1. [Publish File Explorer as an app](remoteapp-publish.md) in a RemoteApp collection. (Note that this is an administrative task.)
-2. Direct your users to launch the File Explorer app you published and to use that to copy and paste files both into their UPD and out of it.
-
-## <a name="upload-files-and-data-to-a-file-server-by-using-standard-network-file-copy"></a>Upload files and data to a file server by using standard network file copy
-
-Often organizations use file servers to store general data. If you know the server name or location, your users can browse the local network for the server and then copy their files there, much like they did above. Again you'll want to publish File Explorer to RemoteApp and then share it with your users.
+- クリップボードの共有を使用して、コピーして貼り付ける
+- ファイルとデータをファイル サーバーにコピーする
+- ブラウザー経由でファイルを OneDrive for Business にコピーする
+- リダイレクトを使用してファイルをコピーする
 
 >[AZURE.NOTE] 
-> The file server must be on the routable network that RemoteApp was deployed into.
+OneDrive for Business やコンシューマー同期エージェントを有効にすることはできません。これらは Azure RemoteApp で[サポートされていません](remoteapp-onedrive.md)。
 
-## <a name="copy-files-to-onedrive-for-business"></a>Copy files to OneDrive for Business
-Although you cannot enable the OneDrive for Business sync agent in RemoteApp, you can still copy files from your UPD to OneDrive for Business through a browser. 
+## エクスプローラーでコピー/貼り付けを使用する
 
-1. Publish File Explorer to RemoteApp and then tell users to access the files through that app. 
-2. It's easiest to transfer files if they are compressed, so users should create a .zip file that contains all of the files to move to OneDrive for Business.
-3. Ask users to go to the Office 365 portal, and then go to OneDrive and upload the .zip file.
+クリップボードを使用したコピー/貼り付けは、RemoteApp のデプロイで[既定](remoteapp-redirection.md)で有効になります。そのため、ユーザーはローカル PC と RemoteApp のアプリとの間でファイルをコピーできます。多くの場合、RemoteApp でアプリを使用する標準的な過程では、ユーザーは UPD にファイルを保存します。RemoteApp からデータを移動するのは簡単です。
 
-## <a name="copy-files-by-using-drive-redirection"></a>Copy files by using drive redirection
+1. RemoteApp コレクションで[エクスプローラーをアプリとして公開発行します](remoteapp-publish.md)(これは管理タスクであることに注意してください)。
+2. 公開したエクスプローラーのアプリを起動し、これを使用してファイルを UPD との間でコピー/貼り付けを行うようにユーザーに指示します。
 
-If you have enabled [drive redirection](remoteapp-redirection.md), you have already created a mapped drive for your users. In this case, they can zip their files on the redirected drive and then save them to their local PC.
+## 標準のネットワーク ファイルのコピーを使用して、ファイルとデータをファイル サーバーにアップロードする
 
+組織がファイル サーバーを使用して一般的なデータを格納するのはよくあることです。サーバー名または場所がわかっている場合、ユーザーは、ローカル ネットワークでサーバーを参照して、先ほど実行したのと同様にそこにファイルをコピーすることができます。ここでもエクスプローラーを RemoteApp に公開し、ユーザーと共有します。
 
-<!--HONumber=Oct16_HO2-->
+>[AZURE.NOTE] 
+ファイル サーバーは、RemoteApp がデプロイされているルーティング可能なネットワークに配置する必要があります。
 
+## OneDrive for Business にファイルをコピーする
+RemoteApp で OneDrive for Business 同期エージェントを有効にすることはできませんが、ブラウザーを使用して UPD から OneDrive for Business にファイルをコピーすることはできます。
 
+1. エクスプローラーを RemoteApp に公開し、このアプリを使用してファイルにアクセスするようにユーザーに伝えます。
+2. ファイルの転送は、圧縮されている場合に最も簡単になります。そのため、ユーザーは、OneDrive for Business に移動するすべてのファイルを格納した .zip ファイルを作成する必要があります。
+3. ユーザーに、Office 365 ポータルに移動し、OneDrive に移動して .zip ファイルをアップロードするように依頼します。
+
+## ドライブ リダイレクトを使用してファイルをコピーする
+
+[ドライブ リダイレクト](remoteapp-redirection.md)を有効にしている場合、ユーザー用にマップされたドライブが既に作成されています。この場合、ユーザーはリダイレクトされたドライブ上でファイルを zip 圧縮してから、ローカル PC に保存できます。
+
+<!---HONumber=AcomDC_0817_2016-->

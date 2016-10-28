@@ -2,7 +2,4 @@
 - [Update 2](../articles/storsimple/storsimple-deployment-walkthrough-gov-u2.md)
 - [Update 1](../articles/storsimple/storsimple-deployment-walkthrough-gov.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1217_2015-->

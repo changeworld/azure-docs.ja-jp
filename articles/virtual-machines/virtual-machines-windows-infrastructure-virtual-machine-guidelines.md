@@ -1,64 +1,60 @@
 <properties
-    pageTitle="windows Virtual Machines Guidelines | Microsoft Azure"
-    description="Learn about the key design and implementation guidelines for deploying windows virtual machines into Azure"
-    documentationCenter=""
-    services="virtual-machines-windows"
-    authors="iainfoulds"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Windows 仮想マシンのガイドライン | Microsoft Azure"
+	description="Azure への Windows 仮想マシンのデプロイに関する主な設計と実装のガイドラインについて説明します"
+	documentationCenter=""
+	services="virtual-machines-windows"
+	authors="iainfoulds"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/08/2016"
-    ms.author="iainfou"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2016"
+	ms.author="iainfou"/>
+
+# 仮想マシンのガイドライン
+
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
+
+この記事は、ご使用の Azure 環境内で仮想マシン (VM) を作成および管理するために必要な計画について説明します。
+
+## VM に関する実装ガイドライン
+決めること:
+
+- インフラストラクチャのさまざまなアプリケーション層とコンポーネントに対して、いくつのVMが必要か
+- 各 VM が必要とする CPU とメモリ リソース、およびストレージの要件
+
+タスク:
+
+- アプリケーションのワークロードと、VM が必要とするリソースを定義する
+- 各 VM に対するリソースの需要を、適切な VM サイズとストレージの種類により調整する
+- インフラストラクチャのさまざまな階層とコンポーネントに対し、リソース グループを定義する
+- VM の名前付け規則を定義する
+- Azure PowerShell、Web ポータル、または Resource Manager テンプレートを使用して VM を作成する。
+
+## 仮想マシン
+
+Azure 環境内の主要なコンポーネントの 1 つは VM です。ここでアプリケーション、データベース、認証サービスなどを実行します。
+
+パフォーマンスとコストの観点から環境のサイズを設定するには、[さまざまなサイズの VM](virtual-machines-windows-sizes.md) について理解しておくことが重要です。VM に十分な量のメモリや CPU コアがない場合、どれほど適切に設計、開発してもアプリケーションのパフォーマンスは低下します。インフラストラクチャの各コンポーネントに対して使用する VM のサイズを決定する際の出発点として、各 VM シリーズの推奨ワークロードを確認します。デプロイ後、[VM のサイズを変更](https://azure.microsoft.com/blog/resize-virtual-machines/)できます。
+
+ストレージは、VM のパフォーマンスにおいて重要な役割を果たします。通常の回転ディスクを使った Standard Storage か、高い I/O ワークロードとピーク パフォーマンス用の SSD ディスクを使った Premium Storage を使用できます。VM サイズと同様に、ストレージ メディア選択についてはコストに関する考慮事項があります。VM の最適なパフォーマンス実現に適したストレージ設計の詳細については、「[Storage infrastructure guidelines (ストレージ インフラストラクチャのガイドライン)](virtual-machines-windows-infrastructure-storage-solutions-guidelines.md)」を参照してください。
 
 
-# <a name="virtual-machines-guidelines"></a>Virtual machines guidelines
-
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)] 
-
-This article focuses on understanding the required planning steps for creating and managing virtual machines (VMs) within your Azure environment.
-
-## <a name="implementation-guidelines-for-vms"></a>Implementation guidelines for VMs
-Decisions:
-
-- How many VMs do you require for your various application tiers and components of your infrastructure?
-- What CPU and memory resources does each VM need, and what are the storage requirements?
-
-Tasks:
-
-- Define the workloads for your application and the resources the VMs require.
-- Align the resource demands for each VM with the appropriate VM size and storage type.
-- Define your resource groups for the different tiers and components of your infrastructure.
-- Define your VM naming convention.
-- Create your VMs using the Azure PowerShell, web portal, or with Resource Manager templates.
-
-## <a name="virtual-machines"></a>Virtual machines
-
-One of the main components within your Azure environment is likely VMs. This is where you run your applications, databases, authentication services, etc.
-
-It is important to understand the [different VM sizes](virtual-machines-windows-sizes.md) to correctly size your environment from a performance and cost perspective. If your VMs do not have enough CPU cores or memory, performance of your application suffers regardless of how well it is designed and developed. Review the suggested workloads for each VM series as a starting point as you decide which size VM to use for each component in your infrastructure. You can [change the size of a VM](https://azure.microsoft.com/blog/resize-virtual-machines/) after deployment.
-
-Storage plays a key role in VM performance. You can use Standard storage, that uses regular spinning disks, or Premium storage for high I/O workloads and peak performance, that uses SSD disks. As with the VM size, there are cost considerations to selecting the storage medium. You can read the [storage infrastructure guidelines article](virtual-machines-windows-infrastructure-storage-solutions-guidelines.md) to understand how to design appropriate storage for optimum performance of your VMs.
+## リソース グループ
+[Azure リソース グループ](../resource-group-overview.md)を使った管理と保守を容易にするため、VM などのコンポーネントは論理的にグループ化されます。リソース グループを使用すると、特定のアプリケーションを構成するすべてのリソースを作成、管理、および監視することができます。また、チーム内の他者に必要なリソースのみへのアクセスを許可するため、[ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)を実装することもできます。リソース グループとロール割り当ての計画に時間をとってください。リソース グループの実際の設計と実装にはさまざまな方法があるため、[リソース グループのガイドラインに関する記事](virtual-machines-windows-infrastructure-resource-groups-guidelines.md)をお読みになり、最適な VM の設計を理解してください。
 
 
-## <a name="resource-groups"></a>Resource groups
-Components such as VMs are logically grouped together for ease of management and maintenance using [Azure Resource Groups](../resource-group-overview.md). By using resource groups, you can create, manage, and monitor all the resources that make up a given application. You can also implement [role-based access controls](../active-directory/role-based-access-control-what-is.md) to grant access to others within your team to only the resources they require. Take time to plan out your resource groups and role assignments. There are different approaches to actually design and implement resource groups, so be sure to read the [resource groups guidelines article](virtual-machines-windows-infrastructure-resource-groups-guidelines.md) to understand how best to build out your VMs.
+## テンプレート 
+宣言型の JSON ファイルで定義されたテンプレートを構築して、VM を作成できます。テンプレートは通常、VM 自体とともに、必要となるストレージ、ネットワーク、ネットワーク インターフェイス、IP アドレス指定なども作成します。テンプレートを使って、一貫性があり再現可能な、開発とテストを目的とする環境を作成し、容易に運用環境をレプリケートすることができ、またその逆のこともできます。テンプレートを使った VM の作成とデプロイについての詳細は、[テンプレートの構築と使用](../resource-group-overview.md#template-deployment)についての記事を参照してください。
 
 
-## <a name="templates"></a>Templates 
-You can build templates, defined by declarative JSON files, to create your VMs. Templates typically also build the required storage, networking, network interfaces, IP addressing, etc. along with the VMs themselves. You use templates to create consistent, reproducible environments for development and testing purposes to easily replicate production environments and vice versa. You can read more about [building and using templates](../resource-group-overview.md#template-deployment) to understand how you can use them for creating and deploying your VMs.
+## 次のステップ
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
-
-## <a name="next-steps"></a>Next steps
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)] 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

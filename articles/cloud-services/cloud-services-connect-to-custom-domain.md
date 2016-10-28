@@ -1,6 +1,6 @@
 <properties
-  pageTitle="Connect a Cloud Service to a custom Domain Controller | Microsoft Azure"
-  description="Learn how to connect your web/worker roles to a custom AD Domain using PowerShell and AD Domain Extension"
+  pageTitle="カスタムのドメイン コント ローラーにクラウド サービスを接続する | Microsoft Azure"
+  description="PowerShell と AD ドメイン拡張機能を使ってカスタム AD ドメインに Web ロールまたは worker ロールを接続する方法について説明します"
   services="cloud-services"
   documentationCenter=""
   authors="Thraka"
@@ -16,22 +16,21 @@
     ms.date="09/06/2016"
     ms.author="adegeo"/>
 
+# Azure でホストされているカスタム AD ドメイン コントローラーへの Azure Cloud Services ロールの接続
 
-# <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Connecting Azure Cloud Services Roles to a custom AD Domain Controller hosted in Azure
+最初に、Azure に Virtual Network (VNet) を設定します。次に、(Azure 仮想マシンでホストされている) Active Directory ドメイン コントローラーを VNet に追加します。次に、事前に作成した VNet に既存のクラウド サービス ロールを追加した後、それらをドメイン コントローラーに接続します。
 
-We will first set up a Virtual Network (VNet) in Azure. We will then add an Active Directory Domain Controller (hosted on an Azure Virtual Machine) to the VNet. Next, we will add existing cloud service roles to the pre-created VNet and subsequently connect them to the Domain Controller.
+作業を開始するにあたり、いくつか注意することがあります。
 
-Before we get started, couple of things to keep in mind:
+1.	このチュートリアルでは PowerShell を使用します。Azure PowerShell がインストールされ、使用する準備が整っていることを確認してください。Azure PowerShell の設定方法については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
-1.  This tutorial uses PowerShell, so please make sure you have Azure PowerShell installed and ready to go. To get help with setting up Azure PowerShell, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
+2.	AD ドメイン コントローラーと Web ロールまたは worker ロールのインスタンスは VNet 内にある必要があります。
 
-2.  Your AD Domain Controller and Web/Worker Role instances need to be in the VNet.
+このステップ バイ ステップ ガイドに従って作業しているときに問題が発生した場合はコメントを残してください。私たちはコメントを必ず読んでいるので、だれかが対応します。
 
-Follow this step-by-step guide and if you run into any issues, leave us a comment below. Someone will get back to you (yes, we do read comments).
+## Virtual Network の作成
 
-## <a name="create-a-virtual-network"></a>Create a Virtual Network
-
-You can create a Virtual Network in Azure using the Azure classic portal or PowerShell. For this tutorial, we will use PowerShell. To create a Virtual Network using the Azure classic portal, see [Create Virtual Network](../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
+Azure に仮想ネットワークを作成するには、Azure クラシック ポータルか PowerShell を使います。このチュートリアルでは、PowerShell を使用します。Azure クラシック ポータルを使用して Virtual Network を作成するには、「[仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」を参照してください。
 
 ```powershell
 #Create Virtual Network
@@ -60,11 +59,11 @@ $vnetConfigPath = "<path-to-vnet-config>"
 Set-AzureVNetConfig -ConfigurationPath $vnetConfigPath
 ```
 
-## <a name="create-a-virtual-machine"></a>Create a Virtual Machine
+## 仮想マシンを作成する
 
-Once you have completed setting up the Virtual Network, you will need to create an AD Domain Controller. For this tutorial, we will be setting up an AD Domain Controller on an Azure Virtual Machine.
+Virtual Network の設定が完了したら、AD ドメイン コントローラーを作成する必要があります。このチュートリアルでは、Azure 仮想マシンに AD ドメイン コントローラーを設定します。
 
-To do this, create a virtual machine through PowerShell using the commands below:
+そのためには、PowerShell で次のコマンドを使用して仮想マシンを作成します。
 
 ```powershell
 # Initialize variables
@@ -82,21 +81,21 @@ $affgrp = '<your- affgrp>'
 New-AzureQuickVM -Windows -ServiceName $vmsvc1 -Name $vm1 -ImageName $imgname -AdminUsername $username -Password $password -AffinityGroup $affgrp -SubnetNames $subnetname -VNetName $vnetname
 ```
 
-## <a name="promote-your-virtual-machine-to-a-domain-controller"></a>Promote your Virtual Machine to a Domain Controller
-To configure the Virtual Machine as an AD Domain Controller, you will need to log in to the VM and configure it.
+## 仮想マシンをドメイン コントローラーに昇格させる
+仮想マシンを AD ドメイン コントローラーとして構成するには、VM にログインして構成する必要があります。
 
-To log in to the VM, you can get the RDP file through PowerShell, use the commands below.
+VM にログインするには、PowerShell で次のコマンドを使用して RDP ファイルを取得します。
 
 ```powershell
 # Get RDP file
 Get-AzureRemoteDesktopFile -ServiceName $vmsvc1 -Name $vm1 -LocalPath <rdp-file-path>
 ```
 
-Once you are logged into the VM, setup your Virtual Machine as an AD Domain Controller by following the step-by-step guide on [How to setup your customer AD Domain Controller](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx).
+VM にログインした後、[カスタム AD ドメイン コントローラーの設定方法](http://social.technet.microsoft.com/wiki/contents/articles/12370.windows-server-2012-set-up-your-first-domain-controller-step-by-step.aspx)に関するステップ バイ ステップ ガイドに従って仮想マシンを AD ドメイン コントローラーとして設定します。
 
-## <a name="add-your-cloud-service-to-the-virtual-network"></a>Add your Cloud Service to the Virtual Network
+## クラウド サービスを Virtual Network に追加する
 
-Next, you need to add your cloud service deployment to the VNet you just created. To do this, modify your cloud service cscfg by adding the relevant sections to your cscfg using Visual Studio or the editor of your choice.
+次に、先ほど作成した VNet にクラウド サービス デプロイメントを追加する必要があります。そのためには、Visual Studio または任意のエディターを使用して cscfg に該当するセクションを追加して、クラウド サービスの cscfg を変更します。
 
 ```xml
 <ServiceConfiguration serviceName="[hosted-service-name]" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="[os-family]" osVersion="*">
@@ -126,17 +125,17 @@ Next, you need to add your cloud service deployment to the VNet you just created
 </ServiceConfiguration>
 ```
 
-Next build your cloud services project and deploy it to Azure. To get help with deploying your cloud services package to Azure, see [How to Create and Deploy a Cloud Service](cloud-services-how-to-create-deploy.md#deploy)
+次に、クラウド サービス プロジェクトをビルドして Azure にデプロイします。クラウド サービス パッケージを Azure にデプロイする方法については、「[クラウド サービスを作成して展開する方法](cloud-services-how-to-create-deploy.md#deploy)」を参照してください。
 
-## <a name="connect-your-web/worker-role(s)-to-the-domain"></a>Connect your web/worker role(s) to the domain
+## ドメインに Web/worker ロールを接続する
 
-Once your cloud service project is deployed on Azure, connect your role instances to the custom AD domain using the AD Domain Extension. To add the AD Domain Extension to your existing cloud services deployment and join the custom domain, execute the following commands in PowerShell:
+Azure にクラウド サービス プロジェクトをデプロイした後は、AD ドメイン拡張機能を使用して、ロール インスタンスをカスタム AD ドメインに接続します。AD ドメイン拡張機能を既存のクラウド サービス デプロイに追加し、カスタム ドメインに参加させるには、PowerShell で次のコマンドを実行します。
 
 ```powershell
 # Initialize domain variables
 
 $domain = '<your-domain-name>'
-$dmuser = '$domain\<your-username>'
+$dmuser = '$domain<your-username>'
 $dmpswd = '<your-domain-password>'
 $dmspwd = ConvertTo-SecureString $dmpswd -AsPlainText -Force
 $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd)
@@ -146,20 +145,15 @@ $dmcred = New-Object System.Management.Automation.PSCredential ($dmuser, $dmspwd
 Set-AzureServiceADDomainExtension -Service <your-cloud-service-hosted-service-name> -Role <your-role-name> -Slot <staging-or-production> -DomainName $domain -Credential $dmcred -JoinOption 35
 ```
 
-And that's it.
+以上です。
 
-You cloud services should now be joined to your custom domain controller. If you would like to learn more about the different options available for how to configure AD Domain Extension, use the PowerShell help as shown below.
+クラウド サービスがカスタム ドメイン コントローラーに参加します。AD ドメイン拡張機能を構成するための他のオプションを調べるには、次のように PowerShell のヘルプを使用します。
 
 ```powershell
 help Set-AzureServiceADDomainExtension
 help New-AzureServiceADDomainExtensionConfig
 ```
 
-We would also like your feedback on if it would be useful for you to have an extension that promotes a Virtual Machine to a Domain Controller. So if you think it would be, please let us know in the comments section.
+私たちは、仮想マシンをドメイン コントローラーに昇格させる拡張機能の有用性に関して皆さんからのご意見を募集しています。このような拡張機能が便利だと思われる方は、コメントを残してください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

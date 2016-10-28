@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager backup catalog | Microsoft Azure"
-   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to view and manage the backup catalog."
+   pageTitle="StorSimple Snapshot Manager のバックアップ カタログ | Microsoft Azure"
+   description="StorSimple Snapshot Manager MMC スナップインを使用して、バックアップ カタログを表示および管理する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,203 +15,198 @@
    ms.date="04/26/2016"
    ms.author="v-sharos" />
 
+# StorSimple Snapshot Manager を使用したバックアップ カタログの管理
 
-# <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Use StorSimple Snapshot Manager to manage the backup catalog
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Snapshot Manager の主な機能は、スナップショットの形式で StorSimple ボリュームのアプリケーション整合性バックアップ コピーを作成できるようにすることです。スナップショットは、*バックアップ カタログ*と呼ばれる XML ファイルに一覧表示されます。バックアップ カタログでは、ボリューム グループごとにスナップショットが編成され、その後、ローカル スナップショットまたはクラウド スナップショットごとに編成されます。
 
-The primary function of StorSimple Snapshot Manager is to allow you to create application-consistent backup copies of StorSimple volumes in the form of snapshots. Snapshots are then listed in an XML file called a *backup catalog*. The backup catalog organizes snapshots by volume group and then by local snapshot or cloud snapshot. 
+このチュートリアルでは、**バックアップ カタログ** ノードを使用して、次のタスクを実行する方法を説明します。
 
-This tutorial describes how you can use the **Backup Catalog** node to complete the following tasks:
+- ボリュームの復元 
+- ボリュームまたはボリューム グループの複製 
+- バックアップの削除 
+- ファイルの復元
+- Storsimple Snapshot Manager データベースの復元
 
-- Restore a volume 
-- Clone a volume or volume group 
-- Delete a backup 
-- Recover a file
-- Restore the Storsimple Snapshot Manager database
+**[スコープ]** ウィンドウで **[バックアップ カタログ]** ノードを展開し、次にボリューム グループを展開して、バックアップ カタログを表示できます。
 
-You can view the backup catalog by expanding the **Backup Catalog** node in the **Scope** pane, and then expanding the volume group.
+- ボリューム グループ名をクリックすると、**[結果]** ウィンドウにそのボリューム グループに使用可能なローカル スナップショットとクラウド スナップショットの数が表示されます。 
 
-- If you click the volume group name, the **Results** pane shows the number of local snapshots and cloud snapshots available for the volume group. 
+- **[ローカル スナップショット]** または **[クラウド スナップショット]** をクリックすると、**[結果]** ウィンドウに各バックアップ スナップショットに関する次の情報が表示されます (表示される情報は、**[表示]** の設定によって異なります)。
 
-- If you click **Local Snapshot** or **Cloud Snapshot**, the **Results** pane shows the following information about each backup snapshot (depending on your **View** settings): 
+    - **[名前]** – スナップショットが取られた時刻。 
 
-    - **Name** – the time the snapshot was taken. 
+    - **[種類]** – ローカル スナップショットまたはクラウド スナップショットのどちらであるか。
 
-    - **Type** – whether this is a local snapshot or a cloud snapshot. 
+    - **[所有者]** – コンテンツの所有者。
 
-    - **Owner** – the content owner. 
+    - **[使用可能]** – スナップショットを現在使用できるかどうか。**True** の場合、スナップショットは使用可能で復元可能です。**False** の場合、スナップショットは使用できません。
 
-    - **Available** – whether the snapshot is currently available. **True** indicates that the snapshot is available and can be restored; **False** indicates that the snapshot is no longer available. 
+    - **[インポート済み]** – バックアップがインポートされたかどうか。**True** の場合、デバイスが StorSimple Snapshot Manager で構成されたときに、StorSimple Manager サービスからバックアップがインポートされたことを示します。**False** の場合、バックアップはインポートされませんでしたが、StorSimple Snapshot Manager によって作成されたことを示します (ボリューム グループのインポート元となるデバイスを識別するサフィックスが追加されるため、インポートされたボリューム グループは簡単に特定できます)。
 
-    - **Imported** – whether the backup was imported. **True** indicates that the backup was imported from the StorSimple Manager service at the time the device was configured in StorSimple Snapshot Manager; **False** indicates that it was not imported, but was created by StorSimple Snapshot Manager. (You can easily identify an imported volume group because a suffix is added that identifies the device from which the volume group was imported.)
+    ![バックアップ カタログ](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
 
-    ![Backup catalog](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Backup_catalog.png)
+- **[ローカル スナップショット]** または **[クラウド スナップショット]** を展開し、個々のスナップショット名をクリックすると、選択したスナップショットに関する次の情報が **[結果]** ウィンドウに表示されます。
 
-- If you expand **Local Snapshot** or **Cloud Snapshot**, and then click an individual snapshot name, the **Results** pane shows the following information about the snapshot that you selected:
+    - **[名前]** – ドライブ文字で識別されるボリューム。 
 
-    - **Name** – the volume identified by drive letter. 
+    - **[ローカル名]** – ドライブのローカル名 (使用可能な場合)。
 
-    - **Local Name** – the local name of the drive (if available). 
+    - **[デバイス]** – ボリュームが存在するデバイスの名前。
 
-    - **Device** – the name of the device on which the volume resides. 
-
-    - **Available** – whether the snapshot is currently available. **True** indicates that the snapshot is available and can be restored; **False** indicates that the snapshot is no longer available. 
+    - **[使用可能]** – スナップショットを現在使用できるかどうか。**True** の場合、スナップショットは使用可能で復元可能です。**False** の場合、スナップショットは使用できません。
 
 
-## <a name="restore-a-volume"></a>Restore a volume
+## ボリュームの復元
 
-Use the following procedure to restore a volume from backup.
+バックアップからボリュームを復元するには、以下の手順を実行します。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### 前提条件
 
-If you have not already done so, create a volume and volume group, and then delete the volume. By default, StorSimple Snapshot Manager backs up a volume before permitting it to be deleted. This precaution can prevent data loss if the volume is deleted unintentionally or if the data needs to be recovered for any reason. 
+まだ実行していない場合は、ボリュームとボリューム グループを作成した後、そのボリュームを削除します。既定では、StorSimple Snapshot Manager でボリュームを削除するには、ボリュームをバックアップしておく必要があります。この予防措置により、ボリュームが誤って削除された場合、または何かの理由でデータを復旧する必要がある場合に、データが失われるのを防ぐことができます。
 
-StorSimple Snapshot Manager displays the following message while it creates the precautionary backup.
+StorSimple Snapshot Manager で予防措置のバックアップを作成しているときに、次のメッセージが表示されます。
 
-![Automatic snapshot message](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png) 
+![自動スナップショット メッセージ](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Automatic_snap.png)
 
->[AZURE.IMPORTANT] You cannot delete a volume that is part of a volume group. The delete option is unavailable. <br>
+>[AZURE.IMPORTANT] ボリューム グループに属するボリュームは削除できません。[削除] オプションは使用できません。<br>
 
-#### <a name="to-restore-a-volume"></a>To restore a volume
+#### ボリュームを復元するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager. 
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
 
-2. In the **Scope** pane, expand the **Backup Catalog** node, expand a volume group, and then click **Local Snapshots** or **Cloud Snapshots**. A list of backup snapshots appears in the **Results** pane. 
+2. **[スコープ]** ウィンドウで **[バックアップ カタログ]** ノードを展開し、ボリューム グループを展開して、**[ローカル スナップショット]** または **[クラウド スナップショット]** をクリックします。**[結果]** ウィンドウに、バックアップ スナップショットのリストが表示されます。
 
-3. Find the backup that you want to restore, right-click, and then click **Restore**. 
+3. 復元するバックアップを探して右クリックし、**[復元]** をクリックします。
 
-    ![Restore backup catalog](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png) 
+    ![バックアップ カタログの復元](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_BU_catalog.png)
 
-4. On the confirmation page, review the details, type **Confirm**, and then click **OK**. StorSimple Snapshot Manager uses the backup to restore the volume. 
+4. 確認のページで詳細を確認し、「**Confirm**」と入力して、**[OK]** をクリックします。StorSimple Snapshot Manager がバックアップを使用してボリュームを復元します。
 
-    ![Restore confirmation message](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png) 
+    ![復元の確認メッセージ](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Restore_volume_msg.png)
 
-5. You can monitor the restore action as it runs. In the **Scope** pane, expand the **Jobs** node, and then click **Running**. The job details appear in the **Results** pane. When the restore job is finished, the job details are transferred to the **Last 24 hours** list.
+5. 実行中に復元操作を監視できます。**[スコープ]** ウィンドウで、**[ジョブ]** ノードを展開し、**[実行中]** をクリックします。**[結果]** ウィンドウにジョブの詳細が表示されます。復元ジョブが終了すると、ジョブ詳細が **[過去 24 時間以内]** リストに転送されます。
 
-## <a name="clone-a-volume-or-volume-group"></a>Clone a volume or volume group
+## ボリュームまたはボリューム グループの複製
 
-Use the following procedure to create a duplicate (clone) of a volume or volume group.
+ボリュームまたはボリューム グループの複製を作成するには、以下の手順を実行します。
 
-#### <a name="to-clone-a-volume-or-volume-group"></a>To clone a volume or volume group
+#### ボリュームまたはボリューム グループを複製するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, expand the **Backup Catalog** node, expand a volume group, and then click **Cloud Snapshots**. A list of backups appears in the **Results** pane.
+2. **[スコープ]** ウィンドウで **[バックアップ カタログ]** ノードを展開し、ボリューム グループを展開して、**[クラウド スナップショット]** をクリックします。**[結果]** ウィンドウに、バックアップのリストが表示されます。
 
-3. Find the volume or volume group that you want to clone, right-click the volume or volume group name, and click **Clone**. The **Clone Cloud Snapshot** dialog box appears.
+3. 複製するボリュームまたはボリューム グループを探し、ボリュームまたはボリューム グループの名前を右クリックして、**[複製]** をクリックします。**[クラウド スナップショットの複製]** ダイアログ ボックスが表示されます。
 
-    ![Clone a cloud snapshot](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
+    ![クラウド スナップショットの複製](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png)
 
-4. Complete the **Clone Cloud Snapshot** dialog box as follows: 
+4. 次のようにして、**[クラウド スナップショットの複製]** ダイアログ ボックスを完了します。
 
-    1. In the **Name** text box, type a name for the cloned volume. This name will appear in the **Volumes** node. 
+    1. **[名前]** ボックスに、複製するボリュームの名前を入力します。この名前は **[ボリューム]** ノードに表示されます。 
 
-    2. (Optional) select **Drive**, and then select a drive letter from the drop-down list. 
+    2. (省略可能) **[ドライブ]** を選択し、ドロップダウン リストからドライブ文字を選択します。
 
-    3. (Optional) select **Folder (NTFS)**, and type a folder path or click Browse and select a location for the folder. 
+    3. (省略可能) **[フォルダー (NTFS)]** を選択し、フォルダー パスを入力するか [参照] をクリックし、フォルダーの場所を選択します。
 
-    4. Click **Create**.
+    4. **[作成]** をクリックします。
 
-5. When the cloning process is finished, you must initialize the cloned volume. Start Server Manager, and then start Disk Management. For detailed instructions, see [Mount volumes](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). After it is initialized, the volume will be listed under the **Volumes** node in the **Scope** pane. If you do not see the volume listed, refresh the list of volumes (right-click the **Volumes** node, and then click **Refresh**).
+5. 複製の処理が完了したら、複製されたボリュームを初期化する必要があります。Server Manager を起動し、ディスクの管理を開始します。詳細については、「[ボリュームのマウント](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)」をご覧ください。初期化が終わったら、**[スコープ]** ウィンドウの **[ボリューム]** ノードにボリュームが一覧表示されます。ボリュームが一覧表示されない場合は、ボリュームのリストを更新します (**[ボリューム]** ノードを右クリックし、**[更新]** をクリック)。
 
-## <a name="delete-a-backup"></a>Delete a backup
+## バックアップの削除
 
-Use the following procedure to delete a snapshot from the backup catalog. 
+バックアップ カタログからスナップショットを削除するには、以下の手順を実行します。
 
->[AZURE.NOTE] Deleting a snapshot deletes the backed up data associated with the snapshot. However, the process of cleaning up data from the cloud may take some time.<br>
+>[AZURE.NOTE] スナップショットを削除すると、そのスナップショットに関連付けられているバックアップ データも削除されます。ただし、クラウドからデータをクリーンアップする処理には、時間がかかる場合があります。<br>
  
-#### <a name="to-delete-a-backup"></a>To delete a backup
+#### バックアップを削除するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, expand the **Backup Catalog** node, expand a volume group, and then click **Local Snapshots** or **Cloud Snapshots**. A list of snapshots appears in the **Results** pane. 
+2. **[スコープ]** ウィンドウで **[バックアップ カタログ]** ノードを展開し、ボリューム グループを展開して、**[ローカル スナップショット]** または **[クラウド スナップショット]** をクリックします。**[結果]** ウィンドウに、スナップショットの一覧が表示されます。
 
-3. Right-click the snapshot you want to delete, and then click **Delete**.
+3. 削除するスナップショットを右クリックし、**[削除]** をクリックします。
 
-4. When the confirmation message appears, click **OK**. 
+4. 確認メッセージが表示されたら、**[OK]** をクリックします。
 
-## <a name="recover-a-file"></a>Recover a file
+## ファイルの復元
 
-If a file is accidentally deleted from a volume, you can recover the file by retrieving a snapshot that pre-dates the deletion, using the snapshot to create a clone of the volume, and then copying the file from the cloned volume to the original volume.
+ファイルが誤ってボリュームから削除された場合、削除した時点よりも前の日付のスナップショットを取得し、そのスナップショットを使用してボリュームの複製を作成して、複製されたボリュームから元のボリュームにファイルをコピーすることで、ファイルを復元できます。
 
-#### <a name="prerequisites"></a>Prerequisites
+#### 前提条件
 
-Before you begin, make sure that you have a current backup of the volume group. Then, delete a file stored on one of the volumes in that volume group. Finally, use the following steps to restore the deleted file from your backup. 
+開始する前に、ボリューム グループの現在のバックアップがあることを確認します。次に、そのボリューム グループ内のいずれかのボリュームに保存されているファイルを削除します。最後に、以下の手順に従って、バックアップから、削除されたファイルを復元します。
 
-#### <a name="to-recover-a-deleted-file"></a>To recover a deleted file
+#### 削除されたファイルを回復するには
 
-1. Click the StorSimple Snapshot Manager icon on your desktop. The StorSimple Snapshot Manager console window appears. 
+1. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックします。StorSimple Snapshot Manager のコンソール ウィンドウが表示されます。 
 
-2. In the **Scope** pane, expand the **Backup Catalog** node, and browse to a snapshot that contains the deleted file. Typically, you should select a snapshot that was created just before the deletion. 
+2. **[スコープ]** ウィンドウで **[バックアップ カタログ]** ノードを展開し、削除されたファイルを含むスナップショットを参照します。通常、削除の直前に作成されたスナップショットを選択する必要があります。
 
-3. Find the volume that you want to clone, right-click, and click **Clone**. The **Clone Cloud Snapshot** dialog box appears.
+3. 複製するボリュームを探して右クリックし、**[複製]** をクリックします。**[クラウド スナップショットの複製]** ダイアログ ボックスが表示されます。
 
-    ![Clone a cloud snapshot](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png) 
+    ![クラウド スナップショットの複製](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Clone.png)
 
-4. Complete the **Clone Cloud Snapshot** dialog box as follows: 
+4. 次のようにして、**[クラウド スナップショットの複製]** ダイアログ ボックスを完了します。
 
-   1. In the **Name** text box, type a name for the cloned volume. This name will appear in the **Volumes** node. 
+   1. **[名前]** ボックスに、複製するボリュームの名前を入力します。この名前は **[ボリューム]** ノードに表示されます。
 
-   2. (Optional) Select **Drive**, and then select a drive letter from the drop-down list. 
+   2. (省略可能) **[ドライブ]** を選択し、ドロップダウン リストからドライブ文字を選択します。
 
-   3. (Optional) Select **Folder (NTFS)**, and type a folder path or click **Browse** and select a location for the folder. 
+   3. (省略可能) **[フォルダー (NTFS)]** を選択し、フォルダー パスを入力するか **[参照]** をクリックし、フォルダーの場所を選択します。
 
-   4. Click **Create**. 
+   4. **[作成]** をクリックします。
 
-5. When the cloning process is finished, you must initialize the cloned volume. Start Server Manager, and then start Disk Management. For detailed instructions, see [Mount volumes](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). After it is initialized, the volume will be listed under the **Volumes** node in the **Scope** pane. 
+5. 複製の処理が完了したら、複製されたボリュームを初期化する必要があります。Server Manager を起動し、ディスクの管理を開始します。詳細については、「[ボリュームのマウント](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)」をご覧ください。初期化が終わったら、**[スコープ]** ウィンドウの **[ボリューム]** ノードにボリュームが一覧表示されます。
 
-    If you do not see the volume listed, refresh the list of volumes (right-click the **Volumes** node, and then click **Refresh**).
+    ボリュームが一覧表示されない場合は、ボリュームのリストを更新します (**[ボリューム]** ノードを右クリックし、**[更新]** をクリック)。
 
-6. Open the NTFS folder that contains the cloned volume, expand the **Volumes** node, and then open the cloned volume. Find the file that you want to recover, and copy it to the primary volume.
+6. 複製されたボリュームを含む NTFS フォルダーを開き、**[ボリューム]** ノードを展開して、複製されたボリュームを開きます。復元するファイルを探し、それをプライマリ ボリュームにコピーします。
 
-7. After you restore the file, you can delete the NTFS folder that contains the cloned volume.
+7. ファイルを復元した後は、複製されたボリュームを含む NTFS フォルダーを削除することができます。
 
-## <a name="restore-the-storsimple-snapshot-manager-database"></a>Restore the StorSimple Snapshot Manager database
+## StorSimple Snapshot Manager データベースの復元
 
-You should regularly back up the StorSimple Snapshot Manager database on the host computer. If a disaster occurs or the host computer fails for any reason, you can then restore it from the backup. Creating the database backup is a manual process.
+定期的に、ホスト コンピューターに StorSimple Snapshot Manager データベースをバックアップする必要があります。障害が発生した場合や、ホスト コンピューターが何かの理由で機能しなくなった場合は、バックアップから復元できます。データベースのバックアップは手動で行ってください。
 
-#### <a name="to-back-up-and-restore-the-database"></a>To back up and restore the database
+#### データベースをバックアップおよび復元するには
 
-1. Stop the Microsoft StorSimple Management Service:
+1. Microsoft StorSimple Management Service を停止します。
 
-    1. Start Server Manager.
+    1. Server Manager を起動します。
 
-    2. On the Server Manager dashboard, on the **Tools** menu, select **Services**.
+    2. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。
 
-    3. On the **Services** window, select the **Microsoft StorSimple Management Service**.
+    3. **[サービス]** ウィンドウで、**[Microsoft StorSimple Management Service]** を選択します。
 
-    4. In the right pane, under **Microsoft StorSimple Management Service**, click **Stop the service**.
+    4. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスの停止]** をクリックします。
 
-2. On the host computer, browse to C:\ProgramData\Microsoft\StorSimple\BACatalog. 
+2. ホスト コンピューターで、C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
-    >[AZURE.NOTE] ProgramData is a hidden folder.
+    >[AZURE.NOTE] ProgramData は隠しフォルダーです。
  
-3. Find the catalog XML file, copy the file, and store the copy in a safe location or in the cloud. If the host fails, you can use this backup file to help recover the backup policies that you created in StorSimple Snapshot Manager.
+3. カタログ XML ファイルを検索し、ファイルをコピーして、安全な場所、またはクラウドにコピーを保存します。ホストが失敗した場合は、このバックアップ ファイルを使用して、StorSimple Snapshot Manager で作成したバックアップ ポリシーを復元できます。
 
-    ![Azure StorSimple backup catalog file](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
+    ![Azure StorSimple バックアップ カタログ ファイル](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_bacatalog.png)
 
-4. Restart the Microsoft StorSimple Management Service: 
+4. Microsoft StorSimple Management Service を再起動します。
 
-    1. On the Server Manager dashboard, on the **Tools** menu, select **Services**.
+    1. Server Manager ダッシュボードの **[ツール]** メニューで、**[サービス]** を選択します。
     
-    2. On the **Services** window, select the **Microsoft StorSimple Management Service**.
+    2. **[サービス]** ウィンドウで、**[Microsoft StorSimple Management Service]** を選択します。
 
-    3. In the right pane, under **Microsoft StorSimple Management Service**, click **Restart the service**.
+    3. 右側のウィンドウで、**[Microsoft StorSimple Management Service]** の下にある **[サービスを再起動する]** をクリックします。
 
-5. On the host computer, browse to C:\ProgramData\Microsoft\StorSimple\BACatalog. 
+5. ホスト コンピューターで、C:\\ProgramData\\Microsoft\\StorSimple\\BACatalog を参照します。
 
-6. Delete the catalog XML file, and replace it with the backup version that you created. 
+6. カタログ XML ファイルを削除し、作成したバックアップ バージョンで置き換えます。
 
-7. Click the desktop StorSimple Snapshot Manager icon to start StorSimple Snapshot Manager. 
+7. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn more about [using StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
-- Learn more about [StorSimple Snapshot Manager tasks and workflows](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows).
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager のタスクとワークフローの詳細](storsimple-snapshot-manager-admin.md#storsimple-snapshot-manager-tasks-and-workflows)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0511_2016-->

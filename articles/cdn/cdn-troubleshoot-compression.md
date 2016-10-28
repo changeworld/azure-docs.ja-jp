@@ -1,112 +1,106 @@
 <properties
-    pageTitle="Troubleshooting file compression in Azure CDN | Microsoft Azure"
-    description="Troubleshoot issues with Azure CDN file compression."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="Azure CDN におけるファイル圧縮のトラブルシューティング | Microsoft Azure"
+	description="Azure CDN のファイル圧縮に関する問題のトラブルシューティングを行います。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2016"
+	ms.author="casoper"/>
     
+# CDN ファイルの圧縮のトラブルシューティング
 
-# <a name="troubleshooting-cdn-file-compression"></a>Troubleshooting CDN file compression
+この記事では、[CDN ファイルの圧縮](cdn-improve-performance.md)に関する問題のトラブルシューティングについて説明します。
 
-This article helps you troubleshoot issues with [CDN file compression](cdn-improve-performance.md).
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
-If you need more help at any point in this article, you can contact the Azure experts on [the MSDN Azure and the Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can also file an Azure support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/) and click **Get Support**.
+## 症状
 
-## <a name="symptom"></a>Symptom
+エンドポイントの圧縮が有効になっているにもかかわらず、ファイルが圧縮されていない状態で戻されています。
 
-Compression for your endpoint is enabled, but files are being returned uncompressed.
-
->[AZURE.TIP] To check whether your files are being returned compressed, you need to use a tool like [Fiddler](http://www.telerik.com/fiddler) or your browser's [developer tools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/).  Check the HTTP response headers returned with your cached CDN content.  If there is a header named `Content-Encoding` with a value of **gzip**, **bzip2**, or **deflate**, your content is compressed.
+>[AZURE.TIP] ファイルが圧縮されている状態で戻されているかどうかをチェックするには、[Fiddler](http://www.telerik.com/fiddler) などのツールや、ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使用する必要があります。キャッシュされた CDN コンテンツと共に返される HTTP 応答ヘッダーをチェックします。値が **gzip**、**bzip2**、**deflate** のいずれかである `Content-Encoding` という名前のヘッダーがある場合、コンテンツは圧縮されています。
 >
 >![Content-Encoding header](./media/cdn-troubleshoot-compression/cdn-content-header.png)
 
-## <a name="cause"></a>Cause
+## 原因
 
-There are several possible causes, including:
+以下のような原因が考えられます。
 
-- The requested content is not eligible for compression.
-- Compression is not enabled for the requested file type.
-- The HTTP request did not include a header requesting a valid compression type.
+- 要求されたコンテンツが圧縮の対象ではありません。
+- 要求されたファイルの種類の圧縮が有効になっていません。
+- HTTP 要求に、有効な圧縮の種類を要求するヘッダーが含まれていません。
 
-## <a name="troubleshooting-steps"></a>Troubleshooting steps
+## トラブルシューティングの手順
 
-> [AZURE.TIP] As with deploying new endpoints, CDN configuration changes take some time to propagate through the network.  Usually, changes are applied within 90 minutes.  If this is the first time you've set up compression for your CDN endpoint, you should consider waiting 1-2 hours to be sure the compression settings have propagated to the POPs. 
+> [AZURE.TIP] 新しいエンドポイントをデプロイする場合と同様に、CDN の構成の変更がネットワークを通じて反映されるまでには多少の時間がかかります。通常、変更は 90 分以内に適用されます。今回初めて CDN エンドポイントの圧縮を設定した場合は、圧縮設定が確実に POP に反映されるように 1 ～ 2 時間の待機時間を検討してください。
 
-### <a name="verify-the-request"></a>Verify the request
+### 要求を確認する
 
-First, we should do a quick sanity check on the request.  You can use your browser's [developer tools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) to view the requests being made.
+最初に、要求でクイック サニティ チェックを行う必要があります。ブラウザーの[開発者ツール](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)を使用して、実行中の要求を表示できます。
 
-- Verify the request is being sent to your endpoint URL, `<endpointname>.azureedge.net`, and not your origin.
-- Verify the request contains an **Accept-Encoding** header, and the value for that header contains **gzip**, **deflate**, or **bzip2**.
+- 送信元ではなく、エンドポイントの URL (`<endpointname>.azureedge.net`) に要求が送信されていることを確認します。
+- 要求に **Accept-Encoding** ヘッダーが含まれており、このヘッダーの値に **gzip**、**deflate**、または **bzip2** が含まれていることを確認します。
 
-> [AZURE.NOTE] **Azure CDN from Akamai** profiles only support **gzip** encoding.
+> [AZURE.NOTE] **Azure CDN from Akamai** プロファイルは、**gzip** エンコーディングのみをサポートしています。
 
-![CDN request headers](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
+![CDN 要求ヘッダー](./media/cdn-troubleshoot-compression/cdn-request-headers.png)
 
-### <a name="verify-compression-settings-(standard-cdn-profile)"></a>Verify compression settings (Standard CDN profile)
+### 圧縮の設定を確認する (Standard CDN プロファイル)
 
-> [AZURE.NOTE] This step only applies if your CDN profile is an **Azure CDN Standard from Verizon** or **Azure CDN Standard from Akamai** profile. 
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN Standard from Verizon** プロファイルまたは **Azure CDN Standard from Akamai** プロファイルの場合のみです。
 
-Navigate to your endpoint in the [Azure portal](https://portal.azure.com) and click the **Configure** button.
+[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、**[構成]** ボタンをクリックします。
 
-- Verify compression is enabled.
-- Verify the MIME type for the content to be compressed is included in the list of compressed formats.
+- 圧縮が有効になっていることを確認します。
+- 圧縮するコンテンツの MIME の種類が、圧縮形式の一覧に含まれていることを確認します。
 
-![CDN compression settings](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
+![CDN の圧縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings.png)
 
-### <a name="verify-compression-settings-(premium-cdn-profile)"></a>Verify compression settings (Premium CDN profile)
+### 圧縮の設定を確認する (Premium CDN プロファイル)
 
-> [AZURE.NOTE] This step only applies if your CDN profile is an **Azure CDN Premium from Verizon** profile.
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN Premium from Verizon** プロファイルの場合のみです。
 
-Navigate to your endpoint in the [Azure portal](https://portal.azure.com) and click the **Manage** button.  The supplemental portal will open.  Hover over the **HTTP Large** tab, then hover over the **Cache Settings** flyout.  Click **Compression**. 
+[Azure Portal](https://portal.azure.com) でエンドポイントに移動し、**[管理]** ボタンをクリックします。補助ポータルが開きます。**[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。**[圧縮]** をクリックします。
 
-- Verify compression is enabled.
-- Verify the **File Types** list contains a comma-separated list (no spaces) of MIME types.
-- Verify the MIME type for the content to be compressed is included in the list of compressed formats.
+- 圧縮が有効になっていることを確認します。
+- **[ファイルの種類]** 一覧に MIME の種類のコンマ区切り一覧 (スペースなし) が含まれていることを確認します。
+- 圧縮するコンテンツの MIME の種類が、圧縮形式の一覧に含まれていることを確認します。
 
-![CDN premium compression settings](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
+![CDN Premium の圧縮設定](./media/cdn-troubleshoot-compression/cdn-compression-settings-premium.png)
 
-### <a name="verify-the-content-is-cached"></a>Verify the content is cached
+### コンテンツがキャッシュされていることを確認する
 
-> [AZURE.NOTE] This step only applies if your CDN profile is an **Azure CDN from Verizon** profile (Standard or Premium).
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN from Verizon** プロファイル (Standard または Premium) の場合のみです。
 
-Using your browser's developer tools, check the response headers to ensure the file is cached in the region where it is being requested.
+ブラウザーの開発者ツールを使用して、応答ヘッダーを確認し、ファイルが要求されているリージョンでキャッシュされていることを確認します。
 
-- Check the **Server** response header.  The header should have the format **Platform (POP/Server ID)**, as seen in the following example.
-- Check the **X-Cache** response header.  The header should read **HIT**.  
+- **Server** 応答ヘッダーを確認します。この応答ヘッダーの形式は、次の例に示すとおり**プラットフォーム (POP/サーバー ID)** である必要があります。
+- **X-Cache** 応答ヘッダーを確認します。ヘッダーによって **HIT** が読み取られる必要があります。
 
-![CDN response headers](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
+![CDN 応答ヘッダー](./media/cdn-troubleshoot-compression/cdn-response-headers.png)
 
-### <a name="verify-the-file-meets-the-size-requirements"></a>Verify the file meets the size requirements
+### ファイルがサイズ要件を満たしていることを確認する
 
-> [AZURE.NOTE] This step only applies if your CDN profile is an **Azure CDN from Verizon** profile (Standard or Premium).
+> [AZURE.NOTE] この手順が適用されるのは、CDN プロファイルが **Azure CDN from Verizon** プロファイル (Standard または Premium) の場合のみです。
 
-To be eligible for compression, a file must meet the following size requirements:
+圧縮の対象であるには、ファイルは次のサイズ要件を満たす必要があります。
 
-- Larger than 128 bytes.
-- Smaller than 1 MB.
+- 128 バイトより大きい
+- 1 MB 未満
 
-### <a name="check-the-request-at-the-origin-server-for-a-**via**-header"></a>Check the request at the origin server for a **Via** header
+### 配信元サーバーで要求の **Via** ヘッダーをチェックする
 
-The **Via** HTTP header indicates to the web server that the request is being passed by a proxy server.  Microsoft IIS web servers by default do not compress responses when the request contains a **Via** header.  To override this behavior, perform the following:
+**Via** HTTP ヘッダーは、その要求がプロキシ サーバーを介して送信されていることを Web サーバーに伝えます。既定では、要求に **Via** ヘッダーが含まれている場合、Microsoft IIS Web サーバーは応答を圧縮しません。この動作を上書きするには、次の作業を実行します。
 
-- **IIS 6**: [Set HcNoCompressionForProxies="FALSE" in the IIS Metabase properties](https://msdn.microsoft.com/library/ms525390.aspx)
-- **IIS 7 and up**: [Set both **noCompressionForHttp10** and **noCompressionForProxies** to False in the server configuration](http://www.iis.net/configreference/system.webserver/httpcompression)
+- **IIS 6**: [IIS のメタベース プロパティで HcNoCompressionForProxies="FALSE" に設定する](https://msdn.microsoft.com/library/ms525390.aspx)
+- **IIS 7 以降**: [**サーバーの構成で noCompressionForHttp10** と **noCompressionForProxies** を False に設定する](http://www.iis.net/configreference/system.webserver/httpcompression)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

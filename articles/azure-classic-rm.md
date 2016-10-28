@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager and Service Management (classic) deployment modes | Microsoft Azure"
-   description="Learn the differences between Resource Manager and classic deployment models."
+   pageTitle="リソース マネージャーとサービス管理の (クラシック) デプロイ モード | Microsoft Azure"
+   description="リソース マネージャーと従来のデプロイ モデルの違いについて説明します。"
    services="virtual-network"
    documentationCenter=""
    authors="telmosampaio"
@@ -17,59 +17,54 @@
    ms.date="02/11/2016"
    ms.author="telmos"/>
 
+# Azure デプロイ モデル
 
-# <a name="azure-deployment-models"></a>Azure Deployment Models
+Azure Platform は移行中です。Azure を初めて使用する場合も、長い間使用してきた場合も、この移行期間中にプラットフォームに対して行われる重要な変更を理解しておくことは重要です。
 
-The Azure platform is in transition.  Whether you're new to Azure or have been using it for years, it's important to understand some of the key changes we're making to the platform during this transition.
+すべての Azure リソースでは、次のデプロイ モデルの 1 つまたは両方がサポートされています。
 
-All Azure resources support one or both of the following deployment models:
-
-- **Resource Manager:** This is the newest deployment model for Azure resources. Most newer resources already support this deployment model and eventually all resources will.   
+- **リソース マネージャー:** これは Azure リソースの最新のデプロイ モデルです。新しいリソースのほとんどで、既にこのデプロイ モデルがサポートされており、最終的にはすべてのリソースでサポートされる予定です。
  
-- **Classic:** This model is supported by most existing Azure resources today. New resources added to Azure will not support this model.
+- **従来:** このモデルは、現行の Azure リソースのほとんどでサポートされています。Azure に追加された新しいリソースでは、このモデルはサポートされません。
 
-The documentation for each Azure resource details which service models it can be created with.
+各 Azure リソースのドキュメントでは、リソースの作成に使用できるサービス モデルについて詳しく説明します。
 
-## <a name="why-does-this-matter?"></a>Why does this matter? 
+## このことが重要な理由 
 
-It matters for the following reasons:
+このことが重要な理由は次のとおりです。
 
-- The Azure platform features that you use are different across these two models.  For example, resources created using the Resource Manager deployment model (or just Resource Manager) can be created with [Azure Resource Manager templates](resource-group-overview.md#template-deployment), whereas resources created with the Classic deployment model cannot.
-- The individual Azure resource features or behaviors can be different across the two models, or only exist in one model or the other.  For example, load balancing traffic across virtual machines created with the Classic deployment model is *implicit* because virtual machines are members of an Azure Cloud Service, and load is automatically balanced across virtual machines within a cloud service. Virtual machines created using Resource Manager are not members of a cloud service, and a separate Azure Load Balancer resource must be *explicitly* created to load balance traffic across multiple virtual machines.  
-- How you create, configure, and manage your Azure resources is different between these two models.
-- Resources created using one deployment model can't necessarily interoperate with resources created using a different deployment model. For example, Azure Virtual Machines created using one deployment model can only be connected to Azure Virtual Networks created using the same deployment model.    
+- 使用する Azure Platform の機能は、これら 2 つのモデル間で異なります。たとえば、リソース マネージャーのデプロイ モデル (またはリソース マネージャーのみ) を使用して作成されたリソースは、[Azure リソース マネージャーのテンプレート](resource-group-overview.md#template-deployment)を使用して作成できますが、従来のデプロイ モデルで作成されたリソースは、Azure リソース マネージャーのテンプレートを使用して作成できません。
+- 個々の Azure リソースの機能や動作は、2 つのモデル間で異なる場合もあれば、どちらか 1 つのモデルにのみ存在する場合もあります。たとえば、従来のデプロイ モデルで作成された仮想マシン間でのトラフィックの負荷分散は*暗黙的*に行われます。これは、仮想マシンが Azure クラウド サービスのメンバーであり、負荷がクラウド サービス内の仮想マシン間で自動的に分散されるためです。リソース マネージャーを使用して作成された仮想マシンは、クラウド サービスのメンバーではないため、複数の仮想マシン間でトラフィックの負荷を分散するには、別の Azure Load Balancer リソースを*明示的に*作成する必要があります。
+- Azure リソースを作成、構成、管理する方法は、これら 2 つのモデル間で異なります。
+- 一方のデプロイ モデルを使用して作成されたリソースは、もう一方のデプロイ モデルを使用して作成したリソースと同時に使用できるとは限りません。たとえば、一方のデプロイ モデルを使用して作成された Azure 仮想マシンは、同じデプロイ モデルを使用して作成された Azure Virtual Network のみに接続できます。
 
-Underlying each of the deployment models is an application programming interface (API) for each resource.  There's a [Resource Manager API](https://msdn.microsoft.com/library/azure/dn948464.aspx) for the Resource Manager deployment model and a [Service Management API](https://msdn.microsoft.com/library/azure/ee460799.aspx) for the Classic deployment model. Developers can write code to interact with these APIs *directly*.  
+各デプロイ モデルの基になるのは、各リソースのアプリケーション プログラミング インターフェイス (API) です。リソース マネージャーのデプロイ モデルの場合は[リソース マネージャー API](https://msdn.microsoft.com/library/azure/dn948464.aspx)、従来のデプロイ モデルの場合は[サービス管理 API](https://msdn.microsoft.com/library/azure/ee460799.aspx) があります。開発者は、これらの API と*直接*対話するコードを記述できます。
 
-IT pros however, typically interact with these APIs *indirectly* by using a graphical portal in a web browser, by using Azure PowerShell cmdlets on a Windows computer, or by using the Azure Command Line Interface (CLI) on either a Windows, OS X, or Linux computer. All three of these indirect methods used by the IT pro interact directly with the APIs. This means that when new functionality is introduced to the Azure platform or resources, it's always directly available through the API first, with the indirect methods gaining support for the new resources and features after the API is made available.  
+それに対して、IT プロフェッショナルは、通常、Web ブラウザーのグラフィカル ポータル、Windows コンピューターの Azure PowerShell コマンドレット、または Windows、OS X、Linux コンピューターの Azure コマンド ライン インターフェイス (CLI) を使用して、これらの API と*間接的に*対話します。IT プロフェッショナルが使用するこれら 3 つの間接的な方法はすべて、API と直接対話します。つまり、Azure Platform やリソースに新機能が導入されると、必ず最初に API から直接使用できるようになり、間接的な方法では、API が使用可能になった後に、新しいリソースや機能のサポートを受けられるようになります。
 
-The sections below explain how Azure resources are configured using the different deployment models through the three indirect methods.
+以下のセクションでは、3 つの間接的な方法で異なるデプロイ モデルを使用して Azure リソースを構成する方法について説明します。
 
-## <a name="portals"></a>Portals
-Azure has two portals:
+## ポータル
+Azure には、次の 2 つのポータルがあります。
 
-- **[Azure portal](https://manage.windowsazure.com):** If you've been using Azure for a while, you've used this portal. It is used to create and configure older Azure resources that support the classic deployment model. You cannot use it to create or configure resources that only support Resource Manager. 
-- **[Azure preview portal](https://azure.microsoft.com/overview/preview-portal/):** If you're using a newer Azure resource, you've likely used this portal. It can be used to create and configure some Azure resources. You'll eventually be able to create and configure all Azure resources with it. For some resources that support both deployment models, this portal can be used to create and configure a resource using either deployment model. 
+- **[Azure ポータル](https://manage.windowsazure.com):** 一定期間 Azure を使用している場合は、このポータルを使用しています。従来のデプロイ モデルをサポートする古い Azure リソースを作成および構成する際に使用されます。このポータルを使用して、リソース マネージャーのみをサポートするリソースを作成および構成することはできません。
+- **[Azure プレビュー ポータル](https://azure.microsoft.com/overview/preview-portal/):** 新しい Azure リソースを使用している場合は、このポータルを使用している可能性があります。このポータルは、一部の Azure リソースの作成および構成に使用できます。最終的には、このポータルを使用してすべての Azure リソースを作成および構成できるようになります。両方のデプロイ モデルをサポートする一部のリソースの場合、このポータルを使用すると、いずれかのデプロイ モデルを使用してリソースを作成および構成できます。
 
-Some resources and features can only be created and configured in one portal or the other. Some resources or features can't (yet) be created or configured in either portal, and can only be configured with PowerShell, the CLI, or both. The documentation for each Azure resource details which method it can be created with. 
+リソースや機能によっては、一方のポータルでしか作成および構成できない場合があります。また、どちらのポータルでも作成および構成できないリソースや機能もあります。このようなリソースや機能の構成には、PowerShell、CLI、またはその両方を使用できます。各 Azure リソースのドキュメントでは、リソースの作成に使用できる方法について詳しく説明します。
 
-## <a name="powershell"></a>PowerShell
-With [PowerShell](powershell-install-configure.md) you can use a command line or author scripts to create and configure Azure resources from a Windows computer.  Individual Azure resources have [Resource Manager cmdlets](https://msdn.microsoft.com/library/azure/mt125356.aspx), [Service Management cmdlets](https://msdn.microsoft.com/library/azure/dn708504.aspx), or both.  Some resources and features can only be created and/or configured using PowerShell or the CLI. Depending on the resource, when using Resource Manager PowerShell cmdlets you may have two options for creating and configuring Azure resources:
+## PowerShell
+[PowerShell](powershell-install-configure.md) がある場合は、コマンド ラインを使用するかスクリプトを作成して、Windows コンピューターから Azure リソースを作成および構成できます。個々の Azure リソースには、[リソース マネージャー コマンドレット](https://msdn.microsoft.com/library/azure/mt125356.aspx)、[サービス管理コマンドレット](https://msdn.microsoft.com/library/azure/dn708504.aspx)、またはその両方があります。一部のリソースと機能は、作成や構成に PowerShell または CLI のみを使用できます。リソースによっては、リソース マネージャーの PowerShell コマンドレットを使用するときに、Azure リソースを作成および構成するためのオプションが 2 つあります。
 
-- **PowerShell cmdlets only:** You can create and configure each Azure resource individually using the cmdlets for each resource. You can do this from a command line, or by including multiple commands in a PowerShell script that you can store and version.
+- **PowerShell コマンドレットのみ:** 各リソースにコマンドレットを使用して、各 Azure リソースを個別に作成および構成できます。これはコマンドラインから実行するか、保存とバージョン管理が可能な PowerShell スクリプトに複数のコマンドを含めることによって実行できます。
 
-- **PowerShell cmdlets with an Azure Resource Manager template:** You can use PowerShell to create Azure resources using an Azure Resource Manager template. Templates can be saved and versioned. Learn more by reading the [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md) article. Several [Azure Quickstart Templates](https://azure.microsoft.com/documentation/templates/) exist for common solutions that can be downloaded and modified too.
+- **Azure リソース マネージャーのテンプレートを使用した PowerShell コマンドレット:** PowerShell を使用すると、Azure リソース マネージャーのテンプレートを使用して Azure リソースを作成できます。これらのテンプレートは、保存とバージョン管理が可能です。詳細については、[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関する記事を参照してください。一般的なソリューション向けの [Azure のクイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)が複数あります。これらは、ダウンロードして変更することも可能です。
 
-## <a name="cli"></a>CLI
-You can create and configure Azure resources from Windows, OS X, or Linux computers using the CLI.  Read the [Install the Azure CLI](xplat-cli-install.md) article to install the CLI on your operating system of choice. Like PowerShell, there are different commands that must be used depending on whether you're creating resources using [Resource Manager](xplat-cli-azure-resource-manager.md) or the [Classic (Service Management)](./virtual-machines/virtual-machines-linux-classic-manage-visual-studio.md) deployment models.
+## CLI
+CLI を使用して、Windows、OS X、または Linux コンピューターから Azure リソースを作成および構成できます。選択したオペレーティング システムに CLI をインストールするには、[Azure CLI のインストール](xplat-cli-install.md)に関する記事を参照してください。PowerShell と同様、リソースの作成に[リソース マネージャー](xplat-cli-azure-resource-manager.md)と[従来 (サービス管理)](./virtual-machines/virtual-machines-linux-classic-manage-visual-studio.md) のどちらのデプロイ モデルを使用するかに応じて、使用する必要があるコマンドが異なります。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn more about [Resource Manager](resource-group-overview.md).
-- Understand how to [design templates](best-practices-resource-manager-design-templates.md).
+- [リソース マネージャー](resource-group-overview.md)の詳細情報を確認する
+- [テンプレートの設計](best-practices-resource-manager-design-templates.md)方法を理解する
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

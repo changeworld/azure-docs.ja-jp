@@ -1,26 +1,23 @@
-1. Navigate back to Failover Cluster Manager.  Expand **Roles** and then highlight your Availability Group.  On the **Resources** tab, right-click the listener name and click Properties.
+1. フェールオーバー クラスター マネージャーに戻ります。**[ロール]** を展開し、[可用性グループ] を強調表示します。**[リソース]** タブで、リスナー名を右クリックし、[プロパティ] をクリックします。
 
-1. Click the **Dependencies** tab. If there are multiple resources listed, verify that the IP addresses have OR, not AND, dependencies.  Click **OK**.
+1. **[依存関係]** タブをクリックします。複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。**[OK]** をクリックします。
 
-1. Right-click the listener name and click **Bring Online**.
+1. リスナー名を右クリックし、**[オンラインにする]** をクリックします。
 
-1. Once the listener is online, from the **Resources** tab, right-click the availability group and click **Properties**.
+1. リスナーがオンラインになったら、**[リソース]** タブで可用性グループを右クリックし、**[プロパティ]** をクリックします。
 
-    ![Configure the Availability Group Resource](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
+	![可用性グループ リソースを構成する](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678772.gif)
 
-1. Create a dependency on the listener name resource (not the IP address resources name). Click **OK**.
+1. リスナー名のリソース (IP アドレス リソース名ではなく) への依存関係を作成します。**[OK]** をクリックします。
 
-    ![Add Dependency on the Listener Name](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
+	![リスナー名の依存関係を追加する](./media/virtual-machines-sql-server-configure-alwayson-availability-group-listener/IC678773.gif)
 
-1. Launch **SQL Server Management Studio** and connect to the primary replica.
+1. **SQL Server Management Studio** を起動し、プライマリ レプリカに接続します。
 
-1. Navigate to **AlwaysOn High Availability** | **Availability Groups** | **<AvailabilityGroupName>** | **Availability Group Listeners**. 
+1. **[AlwaysOn 高可用性]**、**[可用性グループ]**、**<AvailabilityGroupName>**、**[可用性グループ リスナー]** の順に移動します。
 
-3. You should now see the listener name that you created in Failover Cluster Manager. Right-click the listener name and click **Properties**.
+3. フェールオーバー クラスター マネージャーで作成したリスナー名が表示されます。リスナー名を右クリックし、**[プロパティ]** をクリックします。
 
-1. In the **Port** box, specify the port number for the availability group listener by using the $EndpointPort you used earlier (in this tutorial, 1433 was the default), then click **OK**.
+1. **[ポート]** ボックスで、以前に使用した $EndpointPort (このチュートリアルでは、既定値が 1433 でした) を使用し、可用性グループ リスナーのポート番号を指定して、**[OK]** をクリックします。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

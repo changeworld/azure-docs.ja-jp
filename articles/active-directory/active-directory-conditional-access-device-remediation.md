@@ -1,80 +1,77 @@
 <properties
-    pageTitle="Troubleshooting: You can't get there from here | Microsoft Azure"
-    description="This topic helps you identify remediation steps that you can follow to gain access to an application."
-    services="active-directory"
-    keywords="device-based conditional access, device registration, enable device registration, device registration and MDM"
-    documentationCenter=""
-    authors="markusvi"
-    manager="femila"
-    editor=""/>
+	pageTitle="トラブルシューティング: 目的の場所にアクセスできない | Microsoft Azure"
+	description="このトピックは、アプリケーションにアクセスできるようにするための修復手順を確認する際に役立ちます。"
+	services="active-directory"
+	keywords="デバイス ベースの条件付きアクセス, デバイス登録, デバイス登録の有効化, デバイス登録と MDM"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/23/2016"
-    ms.author="markvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/23/2016"
+	ms.author="markvi"/>
+
+
+# トラブルシューティング: 目的の場所にアクセスできない
+
+SharePoint Online などのアプリケーションにアクセスする際にアクセス拒否ページが表示された場合は、どうすればよいのでしょうか。
+
+このガイドは、アプリケーションにアクセスできるようにするための修復手順を確認する際に役立ちます。
 
 
 
-# <a name="troubleshooting:-you-can't-get-there-from-here"></a>Troubleshooting: You can't get there from here
-
-You got an access denied page when you accessed an application like SharePoint Online.  
-Now, what do you do?
-
-This guide helps you identify available remediation steps that you can follow to gain access to the application.
+デバイスで実行されているデバイス プラットフォームは何ですか。 この質問に対する回答によって、このトピック内の適切なセクションが決まります。
 
 
+-	Windows デバイス
+-	iOS デバイス (iPhone または iPad)
+-	Android デバイス
 
-What device platform is your device running on?
-The answer to this question determines the right section in this topic for you:
+## Windows デバイスからのアクセス
 
+デバイスで Windows 10、Windows 8.1、Windows 8.0、Windows 7、Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 のいずれかを実行している場合は、アプリケーションにアクセスしようとしたときに表示されたページを確認することで、適切な原因を特定します。
 
--   Windows device
--   iOS device (iPhone or iPad)
--   Android device
+### デバイスが登録されていない
 
-## <a name="access-from-a-windows-device"></a>Access from a Windows device
+デバイスが Azure Active Directory (Azure AD) に登録されていない場合、アプリケーションがデバイス ベースのポリシーで保護されていると、次の内容のページが表示される可能性があります。
 
-If your device runs Windows 10, Windows 8.1, Windows 8.0, Windows 7, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, or Windows Server 2008 R2, choose the appropriate cause by identifying the page that you got when you tried to access the application.
-
-### <a name="device-is-not-registered"></a>Device is not registered
-
-If your device is not registered with Azure Active Directory (Azure AD) and the application is protected with a device-based policy, you might see a page with the following content:
-
-!["You can't get there from here" messages for unregistered devices](./media/active-directory-conditional-access-device-remediation/01.png "Scenario")
+!["You can't get there from here" messages for unregistered devices](./media/active-directory-conditional-access-device-remediation/01.png "シナリオ")
 
 
 
-If your device is domain-joined to Active Directory in your organization, you can try the following:
+デバイスが組織の Active Directory ドメインに参加している場合は、次の手順を試すことができます。
 
-1.  Make sure that you have signed in to Windows by using your work account (Active Directory account).
-2.  Connect to your corporate network via VPN or DirectAccess.
-3.  After you are connected, lock your Windows session by using the Windows key + L key.
-4.  Unlock your Windows session by entering your work account credentials.
-5.  Wait for a minute, and then try to access the application again.
-6.  If you get the same page, contact your administrator, click the **More details** link, and then provide the details.
+1.	職場アカウント (Active Directory アカウント) を使用して Windows にサインインしていることを確認します。
+2.	VPN または DirectAccess を使用して企業ネットワークに接続します。
+3.	接続したら、Windows キーと L キーを同時に押して Windows セッションをロックします。
+4.	職場アカウントの資格情報を入力して、Windows セッションのロックを解除します。
+5.	しばらく待ってから、アプリケーションにもう一度アクセスしてみます。
+6.	同じページが表示された場合は、管理者に連絡し、**[詳細]** リンクをクリックすると表示される詳細情報をお伝えください。
 
-If your device is not domain-joined and runs Windows 10, you have two options:
+デバイスがドメインに参加しておらず、Windows 10 を実行している場合、次の 2 つの選択肢があります。
 
-- Run Azure AD Join.
-- Add your work or school account to Windows.
+- Azure AD Join を実行する。
+- 職場または学校アカウントを Windows に追加する。
 
-For information about the differences between the two, see [Using Windows 10 devices in your workplace](active-directory-azureadjoin-windows10-devices.md).
+この 2 つの違いについては、「[職場での Windows 10 デバイスの使用](active-directory-azureadjoin-windows10-devices.md)」を参照してください。
 
-To run Azure AD Join, do the following (not available for Windows Phone):
+Azure AD Join を実行するには、次の手順に従います (Windows Phone では実行できません)。
 
 **Windows 10 Anniversary Update**
 
-1.  Open the **Settings** app.
-2.  Click **Accounts** > **Access work or school**.
-3.  Click **Connect**.
-4.  Click **Join this device to Azure AD** at the bottom of the page.
-5.  Authenticate to your organization, provide multi-factor authentication proof, if needed, and then follow the steps until completion.
-6.  Sign out, and then sign in by using your work account.
-7.  Try to access the application again.
+1.	**[設定]** アプリを開きます。
+2.	**[アカウント]**、**[職場または学校にアクセスする]** の順にクリックします。
+3.	**[接続]** をクリックします。
+4.	ページの下部にある **[Join this device to Azure AD (このデバイスを Azure AD に参加させる)]** をクリックします。
+5.	組織に対して認証し、必要に応じて Multi-Factor Authentication を証明するものを提示して、完了するまで手順に従います。
+6.	サインアウトしてから、職場アカウントを使用してサインインします。
+7.	アプリケーションにもう一度アクセスしてみます。
 
 
 
@@ -82,67 +79,63 @@ To run Azure AD Join, do the following (not available for Windows Phone):
 **Windows 10 November 2015 Update**
 
 
-1.  Open the **Settings** app.
-2.  Click **System** > **About**.
-3.  Click **Join Azure AD**.
-4.  Authenticate to your organization, provide multi-factor authentication proof, if needed, and then follow the steps until completion.
-5.  Sign out, and then sign in by using your work account (Azure AD account).
-6.  Try to access the application again.
+1.	**[設定]** アプリを開きます。
+2.	**[システム]**、**[バージョン情報]** の順にクリックします。
+3.	**[Azure AD に参加]** をクリックします。
+4.	組織に対して認証し、必要に応じて Multi-Factor Authentication を証明するものを提示して、完了するまで手順に従います。
+5.	サインアウトしてから、職場アカウント (Azure AD アカウント) を使用してサインインします。
+6.	アプリケーションにもう一度アクセスしてみます。
 
-To add your work or school account, do the following:
+職場または学校アカウントを追加するには、次の手順を実行します。
 
 **Windows 10 Anniversary Update**
 
-1.  Open the **Settings** app.
-2.  Click **Accounts** > **Access work or school**.
-3.  Click **Connect**.
-4.  Authenticate to your organization, provide multi-factor authentication proof, if needed, and then follow the steps until completion.
-5.  Try to access the application again.
+1.	**[設定]** アプリを開きます。
+2.	**[アカウント]**、**[職場または学校にアクセスする]** の順にクリックします。
+3.	**[接続]** をクリックします。
+4.	組織に対して認証し、必要に応じて Multi-Factor Authentication を証明するものを提示して、完了するまで手順に従います。
+5.	アプリケーションにもう一度アクセスしてみます。
 
 
 **Windows 10 November 2015 Update**
 
-1.  Open the **Settings** app.
-2.  Click **Accounts** > **Your accounts**.
-3.  Click **Add work or school account**.
-4.  Authenticate to your organization, provide multi-factor authentication proof, if needed, and then follow the steps until completion.
-5.  Try to access the application again.
+1.	**[設定]** アプリを開きます。
+2.	**[アカウント]**、**[Your accounts (自分のアカウント)]** の順にクリックします。
+3.	**[Add work or school account (職場または学校アカウントを追加)]** をクリックします。
+4.	組織に対して認証し、必要に応じて Multi-Factor Authentication を証明するものを提示して、完了するまで手順に従います。
+5.	アプリケーションにもう一度アクセスしてみます。
 
-If your device is not domain-joined and runs Windows 8.1, you can do Workplace Join and enroll in Microsoft Intune by doing the following:
+デバイスがドメインに参加しておらず、Windows 8.1 を実行している場合は、Workplace Join を実行し、次の手順に従って、Microsoft Intune に登録できます。
 
-1.  Open **PC Settings**.
-2.  Click **Network** > **Workplace**.
-3.  Click **Join**.
-4.  Authenticate to your organization, provide multi-factor authentication proof, if needed, and then follow the steps until completion.
-5.  Click **Turn on**.
-6.  Wait until completion.
-7.  Try to access the application again.
-
-
-## <a name="unsupported-browser"></a>Unsupported browser
-
-If you are accessing the application from the following browsers, you will see a page that's similar to the page shown previously:
-
-- Chrome, Firefox, or any other browser that is not Microsoft Edge or Microsoft Internet Explorer in Windows 10 or Windows Server 2016.
-- Firefox in Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012, or Windows Server 2008 R2.
-
-!["You can't get there from here" message for unsupported browsers](./media/active-directory-conditional-access-device-remediation/02.png "Scenario")
+1.	**[PC 設定]** を開きます。
+2.	**[ネットワーク]**、**[社内]** の順にクリックします。
+3.	**[結合]** をクリックします。
+4.	組織に対して認証し、必要に応じて Multi-Factor Authentication を証明するものを提示して、完了するまで手順に従います。
+5.	**[オン]** をクリックします。
+6.	完了するまで待ちます。
+7.	アプリケーションにもう一度アクセスしてみます。
 
 
-The only remediation is to use a browser that the application supports for your device platform.
+## サポートされていないブラウザー
 
-## <a name="access-from-an-ios-device"></a>Access from an iOS device
-Check back soon for instructions for iPhones or iPads.
+次のブラウザーからアプリケーションにアクセスすると、前に表示されたものと似たページが表示されます。
 
-## <a name="access-from-an-android-device"></a>Access from an Android device
-Check back soon for instructions for Android phones or tablets.
+- Windows 10 または Windows Server 2016 の場合、Chrome や Firefox など、Microsoft Edge および Microsoft Internet Explorer 以外のブラウザー。
+- Windows 8.1、Windows 7、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の場合、Firefox。
 
-## <a name="next-steps"></a>Next steps
-
-[Azure Active Directory conditional access](active-directory-conditional-access.md)
+!["You can't get there from here" message for unsupported browsers](./media/active-directory-conditional-access-device-remediation/02.png "シナリオ")
 
 
+唯一の修復方法は、デバイスのプラットフォーム向けにアプリケーションでサポートされているブラウザーを使用することです。
 
-<!--HONumber=Oct16_HO2-->
+## iOS デバイスからのアクセス
+iPhone または iPad の手順については、後日このページでもう一度ご確認ください。
 
+## Android デバイスからのアクセス
+Android フォンまたはタブレットの手順については、後日このページでもう一度ご確認ください。
 
+## 次のステップ
+
+[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)
+
+<!-------HONumber=AcomDC_0831_2016-->

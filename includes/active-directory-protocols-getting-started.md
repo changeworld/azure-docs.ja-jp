@@ -1,46 +1,41 @@
 <properties
-    pageTitle="Azure AD .NET Protocol Overview | Microsoft Azure"
-    description="How to use HTTP messages to authorize access to web applications and web APIs in your tenant using Azure AD."
-    services="active-directory"
-    documentationCenter=".net"
-    authors="priyamohanram"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure AD .NET プロトコルの概要 |Microsoft Azure"
+	description="Azure AD を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法。"
+	services="active-directory"
+	documentationCenter=".net"
+	authors="priyamohanram"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="01/21/2016"
-    ms.author="priyamo"/>
-
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="01/21/2016"
+	ms.author="priyamo"/>
 
 <!--TODO: Introduction -->
 
-## <a name="register-your-application-with-your-ad-tenant"></a>Register your application with your AD tenant
+## AD テナントへのアプリケーションの登録
 
-First, you will need to register your application with your Active Directory tenant. This will give you a client ID for your application, as well as enable it to receive tokens.
+まず、Active Directory テナントにアプリケーションを登録する必要があります。これにより、アプリケーションのクライアント ID を取得でき、トークンを受信できるようになります。
 
-- Sign into the Azure Management Portal.
+- Microsoft Azure の管理ポータルにサインインします。
 
-- In the left hand navigation pane, click on **Active Directory**.
+- 左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-- Select a tenant in which to register the application.
+- アプリケーションの登録先となるテナントを選択します。
 
-- Click on the **Applications** tab, and click **Add** in the bottom drawer.
+- **[アプリケーション]** タブをクリックし、下部のドロアーで **[追加]** をクリックします。
 
-- Follow the prompts and create a new application. It doesn't matter if it is a web application or a native application for this tutorial, but if you'd like specific examples for web applications or native applications, check out our quickstarts [here](../articles/active-directory/active-directory-developers-guide.md).
+- 画面の指示に従い、新しいアプリケーションを作成します。このチュートリアルでは、Web アプリケーションであるかネイティブ アプリケーションであるかは重要ではありませんが、Web アプリケーションまたはネイティブ アプリケーションの具体的な例を確認する場合は、[このクイック スタート](../articles/active-directory/active-directory-developers-guide.md)をチェックしてください。
 
-- For Web Applications, provide the **Sign-On URL** which is the base URL of your app, where users can sign in e.g `http://localhost:12345`. The **App ID URI** is a unique identifier for your application. The convention is to use `https://<tenant-domain>/<app-name>`, e.g. `https://contoso.onmicrosoft.com/my-first-aad-app`
+- Web アプリケーションの場合は、**サインオン URL** (ユーザーが `http://localhost:12345` などにサインインできる、アプリのベース URL) を入力します。**[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。形式は、`https://<tenant-domain>/<app-name>` (たとえば、`https://contoso.onmicrosoft.com/my-first-aad-app`) です。
 
-- For Native Applications, provide a **Redirect URI**, which Azure AD will use to return token responses. Enter a value specific to your application, .e.g `http://MyFirstAADApp`
+- ネイティブ アプリケーションの場合は、**リダイレクト URI** (Azure AD がトークン応答を返すために使用する) を入力します。アプリケーション固有の値 (たとえば、`http://MyFirstAADApp`) を入力します。
 
-- Once you've completed registration, AAD will assign your application a unique client identifier. You will need this value in the next sections, so copy it in the **Configure** tab of your application.
+- 登録が完了すると、AAD により、アプリケーションに一意のクライアント ID が割り当てられます。この値は次のセクションで必要になるので、アプリケーションの **[構成]** タブでコピーします。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

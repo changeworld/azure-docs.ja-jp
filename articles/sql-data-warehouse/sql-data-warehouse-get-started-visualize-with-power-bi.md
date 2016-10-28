@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Visualize SQL Data Warehouse data with Power BI Microsoft Azure"
-   description="Visualize SQL Data Warehouse data with Power BI"
+   pageTitle="SQL Data Warehouse のデータを Power BI で視覚化する | Microsoft Azure"
+   description="SQL Data Warehouse のデータを Power BI で視覚化します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lodipalm"
@@ -16,8 +16,7 @@
    ms.date="06/16/2016"
    ms.author="lodipalm;barbkess;sonyama" />
 
-
-# <a name="visualize-data-with-power-bi"></a>Visualize data with Power BI
+# Power BI でデータを視覚化する
 
 > [AZURE.SELECTOR]
 - [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
@@ -25,76 +24,76 @@
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
 - [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
 
-This tutorial shows you how to use Power BI to connect to SQL Data Warehouse and create a few basic visualizations.
+このチュートリアルでは、Power BI を使用して、SQL Data Warehouse に接続し、いくつかの基本的な視覚化を作成する方法を示します。
 
 > [AZURE.VIDEO azure-sql-data-warehouse-sample-data-and-powerbi]
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-To step through this tutorial, you need:
+このチュートリアルを進めるには、次が必要です。
 
-- A SQL Data Warehouse pre-loaded with the AdventureWorksDW database. To provision this, see [Create a SQL Data Warehouse][] and choose to load the sample data. If you already have a data warehouse but do not have sample data, you can [load sample data manually][].
+- AdventureWorksDW データベースが事前に読み込まれている SQL Data Warehouse。これをプロビジョニングするには、[SQL Data Warehouse の作成][]に関するページを参照し、サンプル データの読み込みを選択してください。データ ウェアハウスは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
 
-## <a name="1.-connect-to-your-database"></a>1. Connect to your database
+## 1\.データベースに接続する
 
-To open Power BI and connect to your AdventureWorksDW database:
+Power BI を開き、AdventureWorksDW データベースに接続するには:
 
-1. Sign into the [Azure portal][].
-2. Click **SQL databases** and choose your AdventureWorks SQL Data Warehouse database.
+1. [Azure ポータル][]にサインインします。
+2. **[SQL Database]** をクリックし、AdventureWorks SQL Data Warehouse データベースを選択します。
 
-    ![Find your database][1]
+    ![データベースの検索][1]
 
-3. Click the 'Open in Power BI' button.
+3. [Power BI で開く] ボタンをクリックします。
 
-    ![Power BI button][2]
+    ![Power BI ボタン][2]
 
-4. You should now see the SQL Data Warehouse connection page displaying your database web address. Click next.
+4. SQL Data Warehouse の接続ページにデータベースの Web アドレスが表示されます。[次へ] をクリックします。
 
     ![Power BI connection][3]
 
-6. Enter your Azure SQL server username and password and you will be fully connected to your SQL Data Warehouse database.
+6. Azure SQL Server のユーザー名とパスワードを入力すると、SQL Data Warehouse データベースに完全に接続されます。
 
     ![Power BI sign in][4]
 
-7. Once you have signed into Power BI, click the AdventureWorksDW dataset on the left blade. This will open the database.
+7. Power BI にサインインしたら、左側のブレードの AdventureWorksDW データセットをクリックします。これでデータベースが開きます。
 
     ![Power BI open AdventureWorksDW][5]
 
 
 
-## <a name="2.-create-a-report"></a>2. Create a report
+## 2\.レポートの作成
 
-You are now ready to use Power BI to analyze your AdventureWorksDW sample data. To perform the analysis, AdventureWorksDW has a view called AggregateSales. This view contains a few of the key metrics for analyzing the sales of the company.
+Power BI を使用して AdventureWorksDW サンプル データを分析する準備が整いました。分析を実行するため、AdventureWorksDW には AggregateSales という名前のビューがあります。このビューには、会社の売上高を分析するための重要なメトリックがいくつか含まれています。
 
-1. To create a map of sales amount according to postal code, in the right-hand fields pane, click the AggregateSales view to expand it. Click the PostalCode and SalesAmount columns to select them.
+1. 郵便番号に基づく売上高の地図を作成するには、右側のフィールド ペインにある [AggregateSales] ビューをクリックして展開します。[PostalCode] 列と [SalesAmount] 列をクリックして選択します。
 
     ![Power BI select AggregateSales][6]
 
-    Power BI automatically recognizes this is geographic data and put it in a map for you.
+    Power BI はこのデータを地理データとして自動的に認識し、マップに配置します。
 
-    ![Power BI map][7]
+    ![Power BI マップ][7]
 
-2. This step creates a bar graph that shows amount of sales per customer income. To create this go to the expanded AggregateSales view. Click the SalesAmount field. Drag the Customer Income field to the left and drop it into Axis.
+2. この手順では、顧客の所得ごとの売上高を表示する棒グラフを作成します。これを作成するには、展開した AggregateSales ビューにアクセスします。[SalesAmount] フィールドをクリックします。[Customer Income] フィールドを左方向へドラッグし、[軸] にドロップします。
 
     ![Power BI select axis][8]
 
-    We moved the bar chart over the left.
+    棒グラフは左側に移動しました。
 
-    ![Power BI bar][9]
+    ![Power BI バー][9]
 
-3. This step creates a line chart that shows sales amount per order date. To create this go to the expanded AggregateSales view. Click SalesAmount and OrderDate. In the Visualizations column click the Line Chart icon; this is the first icon in the second line under visualizations.
+3. この手順では、発注日ごとの売上高を表示する折れ線グラフを作成します。これを作成するには、展開した AggregateSales ビューにアクセスします。[SalesAmount] と [OrderDate] をクリックします。[視覚化] 列で、折れ線グラフのアイコンをクリックします。"視覚化" の下の 2 行目先頭にあるアイコンです。
 
-    ![Power BI select line chart][10]
+	![Power BI select line chart][10]
 
-    You now have a report that shows three different visualizations of the data.
+    これで、同じデータを 3 とおりの方法で視覚化したレポートが完成しました。
 
-    ![Power BI line][11]
+    ![Power BI ライン][11]
 
-You can save your progress at any time by clicking **File** and selecting **Save**.
+**[ファイル]** をクリックして **[保存]** を選択すれば、作業はいつでも保存できます。
 
-## <a name="next-steps"></a>Next steps
-Now that we've given you some time to warm up with the sample data, see how to [develop][], [load][], or [migrate][]. Or take a look at the [Power BI website][].
+## 次のステップ
+いくつかサンプル データを挙げて、どのようにして[開発][]、[ロード][]、[移行][]するかを確認しながらウォーミングアップしていきます。または、[Power BI の Web サイト][]を参照してください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-find-database.png
@@ -111,19 +110,15 @@ Now that we've given you some time to warm up with the sample data, see how to [
 [12]: media/sql-data-warehouse-get-started-visualize-with-power-bi/pbi-save.png
 
 <!--Article references-->
-[migrate]: sql-data-warehouse-overview-migrate.md
-[develop]: sql-data-warehouse-overview-develop.md
-[load]: sql-data-warehouse-overview-load.md
-[load sample data manually]: sql-data-warehouse-load-sample-databases.md
+[移行]: sql-data-warehouse-overview-migrate.md
+[開発]: sql-data-warehouse-overview-develop.md
+[ロード]: sql-data-warehouse-overview-load.md
+[サンプル データを手動で読み込む]: sql-data-warehouse-load-sample-databases.md
 [connecting to SQL Data Warehouse]: sql-data-warehouse-integrate-power-bi.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
 <!--Other-->
-[Azure portal]: https://portal.azure.com/
-[Power BI website]: http://www.powerbi.com/
+[Azure ポータル]: https://portal.azure.com/
+[Power BI の Web サイト]: http://www.powerbi.com/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

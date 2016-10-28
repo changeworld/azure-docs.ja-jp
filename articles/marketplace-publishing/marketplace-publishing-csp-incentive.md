@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to view and change the Cloud Solution Provider's Reseller Incentive | Microsoft Azure"
-   description="How to view and change your selection for CSP Reseller Incentive"
+   pageTitle="Cloud Solution Provider のリセラー インセンティブを表示および変更する方法 |Microsoft Azure"
+   description="CSP リセラー インセンティブの選択を表示および変更する方法"
    services="marketplace-publishing"
    documentationCenter="na"
    authors="DavidBosland"
@@ -16,40 +16,35 @@
    ms.date="02/10/2016"
    ms.author="DavidBosland"/>
 
+# Azure Marketplace で Cloud Solution Provider の「リセラー インセンティブ」を表示および変更する
 
-# <a name="view-and-change-your-cloud-solution-provider-"reseller-incentive"-in-the-azure-marketplace"></a>View and change your Cloud Solution Provider "Reseller Incentive" in the Azure Marketplace
+2016 年 3 月 15 日から、Marketplace のパブリッシャーは Cloud Solution Providers (CSP) の「リセラー インセンティブ」を利用できるようになります。このインセンティブ値の既定の設定は「**はい**」です。パブリッシャーは、インセンティブ プログラムをオプトアウトできます。この記事では、パブリッシャー プロファイルの設定を変更してオプトアウトする方法を説明します。
 
-On March 15, 2016 we'll make the Cloud Solution Providers (CSPs) “Reseller Incentive” available to Marketplace publishers.  The default setting for this incentive value is **Yes**.  As a publisher you can decide to opt-out of the incentive program.  This article shows how to change the setting in your publisher profile so you can opt-out.
+「リセラー インセンティブ」の状態を表示または変更するには、次のようにします。
 
-To view or change your “Reseller Incentive” status, follow these steps:
+1.	[Microsoft Azure 発行アカウント](https://publish.windowsazure.com/workspace)にログインします
 
-1.  Log in to your [Microsoft Azure Publishing account](https://publish.windowsazure.com/workspace)
+    ![プロファイル先頭画面][1]
 
-    ![Profile landing screen][1]
+2.	**[パブリッシャー]** をクリックします
 
-2.  Click **Publishers**
+    ![プロファイル先頭画面 - パブリッシャー リンク][2]
 
-    ![Profile landing screen - publishers link][2]
+3.	プロファイルで CSP に関する情報に注目してください。「リセラー インセンティブ」の**「はい」または「いいえ」を指定するスイッチ**があります。既定の状態は [はい] です。
 
-3.  Notice the information in your profile about CSPs.  There is a **switch to say yes or no** to the "Reseller Incentive" - the default status is “Yes.”
+    ![プロファイル - パブリッシャー][3]
 
-    ![Profile - Publishers][3]
+4.	「リセラー インセンティブ」の状態を変更するには、パブリッシャー プロファイルにアクセスし、状態を選択して保存します。
 
-4.  To change your "Reseller Incentive" status access your Publisher Profile then select and save your choice:
+  - **[はい]** を選択すると、Azure Marketplace に出品しているアプリケーションやサービスを再販している CSP に 20% の割引が提供されます。**[いいえ]** を選択すると、このインセンティブ プログラムは適用されません。いずれの場合も、パブリッシャーは同じ支払いを受け取ります。
 
-  - Select **Yes** to choose to provide the 20 percent discount to the CSPs who are reselling the applications and services you have listed in the Azure Marketplace.  Or select **No** to opt out of this incentive program.  In either case the publisher receives the same payout.
+  - 選択した後は、忘れずに右上隅の **[保存]** をクリックしてください。
 
-  - After you make a selection make sure you click **Save** in the upper right hand corner.
-
-    ![Profile - Publishers - change boxes][4]
+    ![プロファイル - パブリッシャー - ボックスの変更][4]
 
 [1]: ./media/marketplace-publishing-csp-incentive/profile-stock.png
 [2]: ./media/marketplace-publishing-csp-incentive/profile-boxes.png
 [3]: ./media/marketplace-publishing-csp-incentive/profile-publishers-boxes.png
 [4]: ./media/marketplace-publishing-csp-incentive/profile-publishers-change-boxes.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0218_2016-->

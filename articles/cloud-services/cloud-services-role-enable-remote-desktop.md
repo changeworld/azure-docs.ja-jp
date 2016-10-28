@@ -1,6 +1,6 @@
 <properties 
-pageTitle="Enable Remote Desktop Connection for a Role in Azure Cloud Services" 
-description="How to configure your azure cloud service application to allow remote desktop connections" 
+pageTitle="Azure Cloud Services のロールでリモート デスクトップ接続を有効にする" 
+description="Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法" 
 services="cloud-services" 
 documentationCenter="" 
 authors="sbtron" 
@@ -15,8 +15,7 @@ ms.topic="article"
 ms.date="02/17/2016" 
 ms.author="saurabh"/>
 
-
-# <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Enable Remote Desktop Connection for a Role in Azure Cloud Services
+# Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
 
 >[AZURE.SELECTOR]
 - [Azure classic portal](cloud-services-role-enable-remote-desktop.md)
@@ -24,83 +23,82 @@ ms.author="saurabh"/>
 - [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
 
 
-Remote Desktop enables you to access the desktop of a role running in Azure. You can use a Remote Desktop connection to troubleshoot and diagnose problems with your application while it is running. 
+リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
-You can enable a Remote Desktop connection in your role during development by including the Remote Desktop modules in your service definition or you can choose to enable Remote Desktop through the Remote Desktop Extension. The preferred approach is to use the Remote Desktop extension as you can enable Remote Desktop even after the application is deployed without having to redeploy your application. 
-
-
-## <a name="configure-remote-desktop-from-the-azure-classic-portal"></a>Configure Remote Desktop from the Azure classic portal
-The Azure classic portal uses the Remote Desktop Extension approach so you can enable Remote Desktop even after the application is deployed. The **Configure** page for your cloud service allows you to enable Remote Desktop, change the local Administrator account used to connect to the virtual machines, the certificate used in authentication and set the expiration date. 
+サービス定義にリモート デスクトップ モジュールを含めることで開発時にロールのリモート デスクトップ接続を有効にするか、リモート デスクトップ拡張機能を使用してリモート デスクトップを有効にすることができます。アプリケーションのデプロイ後でもアプリケーションを再デプロイすることなくリモート デスクトップを有効にできるため、リモート デスクトップ拡張機能を使用する方法が推奨されます。
 
 
-1. Click **Cloud Services**, click the name of the cloud service, and then click **Configure**.
+## Azure クラシック ポータルからリモート デスクトップを構成する
+Azure クラシック ポータルでは、アプリケーションのデプロイ後でもリモート デスクトップを有効化できるように、リモート デスクトップ拡張機能アプローチを使用します。クラウド サービスの **[構成]** ページでは、リモート デスクトップの有効化、仮想マシンへの接続に使用するローカル管理者アカウントや認証に使用する証明書の変更、および有効期限の設定を行うことができます。
 
-2. Click **Remote**.
+
+1. **[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックして、**[構成]** をクリックします。
+
+2. **[リモート]** をクリックします。
     
-    ![Cloud services remote](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
+    ![クラウド サービス リモート](./media/cloud-services-role-enable-remote-desktop/CloudServices_Remote.png)
     
-    > [AZURE.WARNING] All role instances will be restarted when you first enable Remote Desktop and click OK (checkmark). To prevent a reboot, the certificate used to encrypt the password must be installed on the role. To prevent a restart, [upload a certificate for the cloud service](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service) and then return to this dialog.
+    > [AZURE.WARNING]初めてリモート デスクトップを有効にして [OK] \(チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-how-to-create-deploy/#how-to-upload-a-certificate-for-a-cloud-service)して、このダイアログに戻ります。
     
 
-3. In **Roles**, select the role you want to update or select **All** for all roles.
+3. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
 
-4. Make any of the following changes:
+4. 必要に応じて次の変更を行います。
     
-    - To enable Remote Desktop, select the **Enable Remote Desktop** check box. To disable Remote Desktop, clear the check box.
+    - リモート デスクトップを有効にするには、**[リモート デスクトップを有効にする]** チェック ボックスをオンにします。リモート デスクトップを無効にするには、チェック ボックスをオフにします。
     
-    - Create an account to use in Remote Desktop connections to the role instances.
+    - ロール インスタンスへのリモート デスクトップ接続で使用するアカウントを作成します。
     
-    - Update the password for the existing account.
+    - 既存のアカウントのパスワードを更新します。
     
-    - Select an uploaded certificate to use for authentication (upload the certificate using **Upload** on the **Certificates** page) or create a new certificate. 
+    - 認証に使用するために、アップロードした証明書を選択するか (**[証明書]** ページの **[アップロード]** を使用して証明書をアップロードします)、新しい証明書を作成します。
     
-    - Change the expiration date for the Remote Desktop configuration.
+    - リモート デスクトップ構成の有効期限を変更します。
 
-5. When you finish your configuration updates, click **OK** (checkmark).
+5. 構成の更新が完了したら、**[OK]** (チェックマーク) をクリックします。
 
 
-## <a name="remote-into-role-instances"></a>Remote into role instances
-Once Remote Desktop is enabled on the roles you can remote into a role instance through various tools.
+## ロール インスタンスへのリモート接続
+ロールでリモート デスクトップが有効化されると、各種ツールを使用してロール インスタンスにリモート接続できるようになります。
 
-To connect to a role instance from the Azure classic portal:
+Azure クラシック ポータルからロール インスタンスに接続するには:
     
-  1.   Click **Instances** to open the **Instances** page.
-  2.   Select a role instance that has Remote Desktop configured.
-  3.   Click **Connect**, and follow the instructions to open the desktop. 
-  4.   Click **Open** and then **Connect** to start the Remote Desktop connection. 
+  1.   **[インスタンス]** をクリックして、**[インスタンス]** ページを開きます。
+  2.   リモート デスクトップが構成されたロール インスタンスを選択します。
+  3.   **[接続]** をクリックし、指示に従ってデスクトップを開きます。 
+  4.   **[開く]**、**[接続]** の順にクリックして、リモート デスクトップ接続を開始します。 
 
 
-### <a name="use-visual-studio-to-remote-into-a-role-instance"></a>Use Visual Studio to remote into a role instance
+### Visual Studio を使用してロール インスタンスにリモート接続する
 
-In Visual Studio, Server Explorer:
+Visual Studio のサーバー エクスプローラーで次の操作を行います。
 
-1. Expand the **Azure\\Cloud Services\\[cloud service name]** node.
-2. Expand either **Staging** or **Production**.
-3. Expand the individual role.
-4. Right-click one of the role instances, click **Connect using Remote Desktop...**, and then enter the user name and password. 
+1. **Azure\\Cloud Services\\[クラウド サービス名]** ノードを展開します。
+2. **[ステージング]** か **[運用]** のいずれかを展開します。
+3. 個々のロールを展開します。
+4. ロール インスタンスの 1 つを右クリックして **[リモート デスクトップを使用して接続]** をクリックし、ユーザー名とパスワードを入力します。 
 
-![Server explorer remote desktop](./media/cloud-services-role-enable-remote-desktop/ServerExplorer_RemoteDesktop.png)
-
-
-### <a name="use-powershell-to-get-the-rdp-file"></a>Use PowerShell to get the RDP file
-You can use the [Get-AzureRemoteDesktopFile](https://msdn.microsoft.com/library/azure/dn495261.aspx) cmdlet to retrieve the RDP file. You can then use the RDP file with Remote Desktop Connection to access the cloud service.
-
-### <a name="programmatically-download-the-rdp-file-through-the-service-management-rest-api"></a>Programmatically download the RDP file through the Service Management REST API
-You can use the [Download RDP File](https://msdn.microsoft.com/library/jj157183.aspx) REST operation to download the RDP file. 
+![サーバー エクスプローラーとリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop/ServerExplorer_RemoteDesktop.png)
 
 
+### PowerShell を使用して、RDP ファイルを取得する
+[Get-azureremotedesktopfile](https://msdn.microsoft.com/library/azure/dn495261.aspx) コマンドレットを使用して RDP ファイルを取得できます。リモート デスクトップ接続で RDP ファイルを使用して、クラウド サービスにアクセスできます。
 
-## <a name="to-configure-remote-desktop-in-the-service-definition-file"></a>To configure Remote Desktop in the service definition file
+### プログラムを使用して、サービス管理 REST API から RDP ファイルをダウンロードする
+[Download RDP File](https://msdn.microsoft.com/library/jj157183.aspx) REST 操作を使用して、RDP ファイルをダウンロードできます。
 
-This method allows you to enable Remote Desktop for the application during development. This approach requires encrypted passwords be stored in your service configuration file and any updates to the remote desktop configuration would require a redeployment of the application. If you want to avoid these downsides you should use the remote desktop extension based approach described above.  
 
-You can use Visual Studio to [enable a remote desktop connection](../vs-azure-tools-remote-desktop-roles.md) using the service definition file approach.  
-The steps below describe the changes needed to the service model files to enable remote desktop. Visual Studio will automatically makes these changes when publishing.
 
-### <a name="set-up-the-connection-in-the-service-model"></a>Set up the connection in the service model 
-Use the **Imports** element to import the **RemoteAccess** module and the **RemoteForwarder** module to the [ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) file.
+## サービス定義ファイルでリモート デスクトップを構成するには
 
-The service definition file should be similar to the following example with the `<Imports>` element added.
+この方法を使用すると、開発時にアプリケーションのリモート デスクトップを有効にすることができます。この方法では、サービス構成ファイルに暗号化パスワードを保存する必要があり、リモート デスクトップ構成を更新した場合はアプリケーションを再デプロイする必要があります。こうした欠点を回避するには、前述のリモート デスクトップ拡張機能ベースの方法を使用してください。
+
+サービス定義ファイルの方法では、Visual Studio を使用して[リモート デスクトップ接続を有効にできます](../vs-azure-tools-remote-desktop-roles.md)。次の手順では、リモート デスクトップを有効にするためにサービス モデル ファイルに加える必要のある変更について説明します。こうした変更は、発行時に Visual Studio で自動的に行われます。
+
+### サービス モデルでの接続をセットアップする 
+**Imports** 要素を使用して、[ServiceDefinition.csdef](cloud-services-model-and-package.md#csdef) ファイルに **RemoteAccess** モジュール と **RemoteForwarder** モジュールをインポートします。
+
+サービス定義ファイルは、`<Imports>` 要素が追加された次の例のようになっている必要があります。
 
 ```xml
 <ServiceDefinition name="<name-of-cloud-service>" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2013-03.2.0">
@@ -123,7 +121,7 @@ The service definition file should be similar to the following example with the 
     </WebRole>
 </ServiceDefinition>
 ```
-The [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) file should be similar to the following example, note the `<ConfigurationSettings>` and `<Certificates>` elements. The Certificate specified must be [uploaded to the cloud service](../cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service).
+[ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) ファイルは次の例のようになっている必要があります (`<ConfigurationSettings>` 要素と `<Certificates>` 要素に注意してください)。指定した証明書は、[クラウド サービスにアップロードする](../cloud-services-how-to-create-deploy.md#how-to-upload-a-certificate-for-a-cloud-service)必要があります。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -145,11 +143,8 @@ The [ServiceConfiguration.cscfg](cloud-services-model-and-package.md#cscfg) file
 ```
 
 
-## <a name="additional-resources"></a>Additional Resources
+## その他のリソース
 
-[How to Configure Cloud Services](cloud-services-how-to-configure.md)
+[Cloud Services の構成方法](cloud-services-how-to-configure.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0218_2016-->

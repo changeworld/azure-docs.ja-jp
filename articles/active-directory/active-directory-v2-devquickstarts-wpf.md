@@ -1,6 +1,6 @@
 <properties
-pageTitle="Azure Active Directory v2.0 .NET Native App | Microsoft Azure"
-description="How to build a .NET native app that signs users in with both personal Microsoft Account and work or school accounts."
+pageTitle="Azure Active Directory v2.0 .NET ネイティブ アプリ | Microsoft Azure"
+description="サインインに個人の Microsoft アカウントと職場/学校アカウントの両方を使用する .NET ネイティブ アプリを構築する方法を説明します。"
 services="active-directory"
 documentationCenter=""
 authors="dstrockis"
@@ -16,65 +16,64 @@ ms.topic="article"
 ms.date="07/30/2016"
 ms.author="dastrock; vittorib"/>
 
+# サインインを Windows デスクトップ アプリに追加する
 
-# <a name="add-sign-in-to-a-windows-desktop-app"></a>Add sign-in to a Windows Desktop app
+v2.0 エンドポイントを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応したデスクトップ アプリに認証をすばやく追加できます。また、アプリとバックエンド Web API や [Microsoft Graph](https://graph.microsoft.io) と一部の [Office 365 Unified APIs](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) との安全な通信を可能にします。
 
-With the the v2.0 endpoint, you can quickly add authentication to your desktop apps with support for both personal Microsoft accounts and work or school accounts.  It also enables your app to securely communicate with a backend web api, as well as [the Microsoft Graph](https://graph.microsoft.io) and a few of the [Office 365 Unified APIs](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2).
+> [AZURE.NOTE] Azure Active Directory (AD) のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
-> [AZURE.NOTE] Not all Azure Active Directory (AD) scenarios & features are supported by the v2.0 endpoint.  To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).
+[デバイスで実行する .NET ネイティブ アプリ](active-directory-v2-flows.md#mobile-and-native-apps)に対しては、Azure AD により、Microsoft ID 認証ライブラリ (MSAL) が提供されます。MSAL の唯一の目的は、アプリが Web サービスを呼び出すためのトークンを容易に取得できるようにすることです。どれほど簡単かを示すために、ここで、次のような、.NET WPF To-Do List アプリを構築します。
 
-For [.NET native apps that run on a device](active-directory-v2-flows.md#mobile-and-native-apps), Azure AD provides the Microsoft Identity Authentication Library, or MSAL.  MSAL's sole purpose in life is to make it easy for your app to get tokens for calling web services.  To demonstrate just how easy it is, here we'll build a .NET WPF To-Do List app that:
+- ユーザーのサインイン処理を行い、[OAuth 2.0 認証プロトコル](active-directory-v2-protocols.md#oauth2-authorization-code-flow)を使用してアクセス トークンを取得します。
+- バックエンド To-Do List Web サービスを安全に呼び出します。これは、OAuth 2.0 でも保護されます。
+- ユーザーをサインアウトさせます。
 
-- Signs the user in & gets access tokens using the [OAuth 2.0 authentication protocol](active-directory-v2-protocols.md#oauth2-authorization-code-flow).
-- Securely calls a backend To-Do List web service, which is also secured by OAuth 2.0.
-- Signs the user out.
+## サンプル コードのダウンロード
 
-## <a name="download-sample-code"></a>Download sample code
-
-The code for this tutorial is maintained [on GitHub](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet).  To follow along, you can [download the app's skeleton as a .zip](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/skeleton.zip) or clone the skeleton:
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
     git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git
 
-The completed app is provided at the end of this tutorial as well.
+完成したアプリは、このチュートリアルの終わりにも示しています。
 
-## <a name="register-an-app"></a>Register an app
-Create a new app at [apps.dev.microsoft.com](https://apps.dev.microsoft.com), or follow these [detailed steps](active-directory-v2-app-registration.md).  Make sure to:
+## アプリを登録します
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
-- Copy down the **Application Id** assigned to your app, you'll need it soon.
-- Add the **Mobile** platform for your app.
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
+- アプリ用の **モバイル** プラットフォームを追加します。
 
-## <a name="install-&-configure-msal"></a>Install & Configure MSAL
-Now that you have an app registered with Microsoft, you can install MSAL and write your identity-related code.  In order for MSAL to be able to communicate the v2.0 endpoint, you need to provide it with some information about your app registration.
+## MSAL のインストールと構成
+Microsoft へのアプリの登録が完了したら、MSAL をインストールし、自分の ID 関連コードを記述できます。MSAL が v2.0 エンドポイントと通信できるようにするには、アプリの登録に関するいくつかの情報を MSAL に提供する必要があります。
 
--   Begin by adding MSAL to the TodoListClient project using the Package Manager Console.
+-	最初に、パッケージ マネージャー コンソールを使用して、MSAL を TodoListClient プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.Identity.Client -ProjectName TodoListClient -IncludePrerelease
 ```
 
--   In the TodoListClient project, open `app.config`.  Replace the values of the elements in the `<appSettings>` section to reflect the values you input into the app registration portal.  Your code will reference these values whenever it uses MSAL.
-    -   The `ida:ClientId` is the **Application Id** of your app you copied from the portal.
+-	TodoListClient プロジェクトで `app.config` を開きます。アプリ登録ポータルで入力した値が反映されるように、`<appSettings>` セクションの要素の値を置き換えます。これらの値は、コードで MSAL を使用する際に常に参照されます。
+    -	`ida:ClientId` は、ポータルからコピーしたアプリの**アプリケーション ID** です。
 
-- In the TodoList-Service project, open `web.config` in the root of the project.  
-    - Replace the `ida:Audience` value with the same **Application Id** from the portal.
+- TodoList-Service プロジェクトで、プロジェクトのルートにある `web.config` を開きます。
+    - `ida:Audience` 値をポータルから取得した**アプリケーション ID** に置き換えます。
 
-## <a name="use-msal-to-get-tokens"></a>Use MSAL to get tokens
-The basic principle behind MSAL is that whenever your app needs an access token, you simply call `app.AcquireToken(...)`, and MSAL does the rest.  
+## MSAL を使用してトークンを取得する
+MSAL を使用することの基本的なメリットは、アプリがアクセス トークンを必要とする場合、必要な操作は `app.AcquireToken(...)` を呼び出すことだけで、残りの処理は MSAL が実行することです。
 
--   In the `TodoListClient` project, open `MainWindow.xaml.cs` and locate the `OnInitialized(...)` method.  The first step is to initialize your app's `PublicClientApplication` - MSAL's primary class representing native applications.  This is where you pass MSAL the coordinates it needs to communicate with Azure AD and tell it how to cache tokens.
+-	`TodoListClient` プロジェクトで、`MainWindow.xaml.cs` を開き、`OnInitialized(...)` メソッドを見つけます。最初の手順は、アプリの `PublicClientApplication` (ネイティブ アプリケーションを表す MSAL の主要なクラス) を初期化することです。ここでは、MSAL が Azure AD と通信し、トークンをキャッシュする方法を通知するために必要な調整項目を MSAL に渡します。
 
 ```C#
 protected override async void OnInitialized(EventArgs e)
 {
-        base.OnInitialized(e);
+		base.OnInitialized(e);
 
-        app = new PublicClientApplication(new FileCache());
-        AuthenticationResult result = null;
-        ...
+		app = new PublicClientApplication(new FileCache());
+		AuthenticationResult result = null;
+		...
 }
 ```
 
-- When the app starts up, we want to check and see if the user is already signed into the app.  However, we don't want to invoke a sign-in UI just yet - we'll make the user click "Sign In" to do so.  Also in the `OnInitialized(...)` method:
+- アプリの起動時に、ユーザーが既にアプリにサインインしているかどうかを確認する必要があります。ただし、まだサインイン UI は呼び出しません。これを行うには、ユーザーに [サインイン] をクリックさせます。また、`OnInitialized(...)` メソッドで次のコードを実行します。
 
 ```C#
 // As the app starts, we want to check to see if the user is already signed in.
@@ -111,12 +110,12 @@ catch (MsalException ex)
 
 ```
 
-- If the user is not signed in and they click the "Sign In" button, we want to invoke a login UI and have the user enter their credentials.  Implement the Sign-In button handler:
+- ユーザーがサインインしておらず、[サインイン] ボタンをクリックした場合、ログイン UI を呼び出し、ユーザーに資格情報を入力させます。次のように、[サインイン] ボタン ハンドラーを実装します:
 
 ```C#
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
-        // TODO: Sign the user out if they clicked the "Clear Cache" button
+		// TODO: Sign the user out if they clicked the "Clear Cache" button
 
 // If the user clicked the 'Sign-In' button, force
 // MSAL to prompt the user for credentials by using
@@ -159,7 +158,7 @@ catch (MsalException ex)
 }
 ```
 
-- If the user successfully signs-in, MSAL will receive and cache a token for you, and you can proceed to call the `GetTodoList()` method with confidence.  All that's left to get a user's tasks is to implement the `GetTodoList()` method.
+- ユーザーが正常にサインインすると、MSAL によりトークンが自動的に受信してキャッシュされ、`GetTodoList()` メソッドの呼び出しを実行できます。ユーザーのタスクを取得するために必要な操作は、`GetTodoList()` メソッドの実装だけです。
 
 ```C#
 private async void GetTodoList()
@@ -207,7 +206,7 @@ catch (MsalException ex)
 httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
 
 
-        ...
+		...
 ...
 
 
@@ -216,50 +215,46 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 ```C#
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
-        // If the user clicked the 'clear cache' button,
-        // clear the MSAL token cache and show the user as signed out.
-        // It's also necessary to clear the cookies from the browser
-        // control so the next user has a chance to sign in.
+		// If the user clicked the 'clear cache' button,
+		// clear the MSAL token cache and show the user as signed out.
+		// It's also necessary to clear the cookies from the browser
+		// control so the next user has a chance to sign in.
 
-        if (SignInButton.Content.ToString() == "Clear Cache")
-        {
-                TodoList.ItemsSource = string.Empty;
-                app.UserTokenCache.Clear(app.ClientId);
-                ClearCookies();
-                SignInButton.Content = "Sign In";
-                return;
-        }
+		if (SignInButton.Content.ToString() == "Clear Cache")
+		{
+				TodoList.ItemsSource = string.Empty;
+				app.UserTokenCache.Clear(app.ClientId);
+				ClearCookies();
+				SignInButton.Content = "Sign In";
+				return;
+		}
 
-        ...
+		...
 ```
 
-## <a name="run"></a>Run
+## 実行
 
-Congratulations! You now have a working .NET WPF app that has the ability to authenticate users & securely call Web APIs using OAuth 2.0.  Run your both projects, and sign in with either a personal Microsoft account or a work or school account.  Add tasks to that user's To-Do list.  Sign out, and sign back in as another user to view their To-Do list.  Close the app, and re-run it.  Notice how the user's session remains intact - that is because the app caches tokens in a local file.
+ご利用ありがとうございます。 ユーザーを認証し、OAuth 2.0 を使用して安全に Web API を呼び出すことができる、.NET WPF アプリが動作するようになりました。両方のプロジェクトを実行し、個人用の Microsoft アカウントか職場または学校アカウントでサインインしてください。ユーザーの To Do リストにタスクを追加します。いったんサインアウトしてから、別のユーザーとして再度サインインし、ユーザーの To Do リストを表示します。アプリを閉じて、再び実行します。ユーザーのセッションに影響がないことを確認してください。これは、アプリがトークンをローカル ファイルにキャッシュしているためです。
 
-MSAL makes it easy to incorporate common identity features into your app, using both personal and work accounts.  It takes care of all the dirty work for you - cache management, OAuth protocol support, presenting the user with a login UI, refreshing expired tokens, and more.  All you really need to know is a single API call, `app.AcquireTokenAsync(...)`.
+MSAL では、個人用アカウントと職場アカウントの両方を使用して、一般的な ID 機能をアプリに簡単に組み込むことができます。キャッシュ管理、OAuth プロトコル サポート、ログイン UI を使用してのユーザーの提示、有効期限切れとなったトークンの更新など、面倒な操作を容易に実装できます。習得する必要があるのは、単一の API 呼び出し、`app.AcquireTokenAsync(...)` のみです。
 
-For reference, the completed sample (without your configuration values) [is provided as a .zip here](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip), or you can clone it from GitHub:
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-NativeClient-DotNet.git```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-You can now move onto more advanced topics.  You may want to try:
+これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
 
-- [Securing the TodoListService Web API with the v2.0 endpoint](active-directory-v2-devquickstarts-dotnet-api.md)
+- [ v2.0 エンドポイントでの TodoListService Web API の保護](active-directory-v2-devquickstarts-dotnet-api.md)
 
-For additional resources, check out:  
+その他のリソースについては、以下を参照してください。
 
-- [The v2.0 developer guide >>](active-directory-appmodel-v2-overview.md)
-- [StackOverflow "msal" tag >>](http://stackoverflow.com/questions/tagged/msal)
+- [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
+- [StackOverflow "msal" タグ >>](http://stackoverflow.com/questions/tagged/msal)
 
-## <a name="get-security-updates-for-our-products"></a>Get security updates for our products
+## Microsoft 製品のセキュリティ更新プログラムの取得
 
-We encourage you to get notifications of when security incidents occur by visiting [this page](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

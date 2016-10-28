@@ -1,81 +1,76 @@
 <properties
-    pageTitle="Add users from other directories or partner companies in Azure Active Directory preview | Microsoft Azure"
-    description="Explains how to add users or change user information in Azure Active Directory, including external and guest users."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory プレビューで他のディレクトリまたはパートナー会社からユーザーを追加する | Microsoft Azure"
+	description="Azure Active Directory で、外部ユーザーとゲスト ユーザーを含む、ユーザーの追加方法またはユーザー情報の変更方法を説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
-
-# <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory-preview"></a>Add users from other directories or partner companies in Azure Active Directory preview
+# Azure Active Directory プレビューで他のディレクトリまたはパートナー会社からユーザーを追加する
 
 > [AZURE.SELECTOR]
-- [Azure portal](active-directory-users-create-external-azure-portal.md)
-- [Azure classic portal](active-directory-create-users-external.md)
+- [Azure ポータル](active-directory-users-create-external-azure-portal.md)
+- [Azure クラシック ポータル](active-directory-create-users-external.md)
 
-This article explains how to add users either from other directories in Azure Active Directory (Azure AD) preview or from partner companies. [What's in the preview?](active-directory-preview-explainer.md) For information about adding new users in your organization, and adding users who have Microsoft accounts, see [Add new users to Azure Active Directory](active-directory-users-create-azure-portal.md). Added users don't have administrator permissions by default, but you can assign roles to them at any time.
+この記事では、Azure Active Directory (Azure AD) プレビューの他のディレクトリまたはパートナー会社からユーザーを追加する方法について説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
-## <a name="add-a-user"></a>Add a user
+## ユーザーの追加
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-    ![Opening user management](./media/active-directory-users-create-external-azure-portal/create-users-user-management.png)
+    ![ユーザー管理を開く](./media/active-directory-users-create-external-azure-portal/create-users-user-management.png)
 
-3.  On the **Users and groups** blade, select **Users**, and then select **Add**.
+3.  **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択し、**[追加]** をクリックします。
 
-    ![Selecting the Add command](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
+    ![[追加] をクリックする](./media/active-directory-users-create-external-azure-portal/create-users-add-command.png)
 
-4. On the **User** blade, provide a display name in **Name** and the user's sign-in name in **User name**.
+4. **[ユーザー]** ブレードで、**[名前]** に表示名を入力し、**[ユーザー名]** にユーザーのサインイン名を入力します。
 
-5. Copy or otherwise note the generated user password so that you can provide it to the user after this process is complete.
+5. このプロセスの完了後、ユーザーに提供できるように、生成されたユーザー パスワードをコピーするか、メモしておきます。
 
-6. Optionally, select **Profile** to add the users first and last name, a job title, and a department name.
+6. 必要に応じて、**[プロファイル]** を選択して、ユーザーの姓、名、役職、部門名を追加します。
 
-        ![Opening the user profile](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
+	![Opening the user profile](./media/active-directory-users-create-external-azure-portal/create-users-user-profile.png)
 
-    - Select **Groups** to add the user to one or more groups.
+	- **[グループ]** を選択して、1 つ以上のグループにユーザーを追加します。
 
-        ![Adding a user to groups](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
+		![ユーザーをグループに追加する]](./media/active-directory-users-create-external-azure-portal/create-users-user-groups.png)
 
-    - Select **Organizational role** to assign the user to a role from the **Roles** list. For more information about user and administrator roles, see [Assigning administrator roles in Azure AD](active-directory-assign-admin-roles.md).
+	- **[組織のロール]** を選択して、**[ロール]** 一覧のロールにユーザーを割り当てます。ユーザーおよび管理者のロールの詳細については、「[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
 
-        ![Assigning a user to a role](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
+		![ユーザーをロールに割り当てる](./media/active-directory-users-create-external-azure-portal/create-users-assign-role.png)
 
-7. Select **Create**.
+7. **[作成]** を選択します。
 
-8. Securely distribute the generated password to the new user so that the user can sign in.
+8. ユーザーがサインインできるように、新しいユーザーに生成されたパスワードを安全に配布します。
 
-> [AZURE.IMPORTANT] If your organization uses more than one domain, you should know about the following issues when you add a user account:
+> [AZURE.IMPORTANT] 組織が複数のドメインを使用している場合は、ユーザー アカウントを追加するときに起きる、次の問題について理解しておく必要があります。
 >
-> - TO add user accounts with the same user principal name (UPN) across domains, **first** add, for example, geoffgrisso@contoso.onmicrosoft.com, **followed by** geoffgrisso@contoso.com.
-> - **Don't** add geoffgrisso@contoso.com before you add geoffgrisso@contoso.onmicrosoft.com. This order is important, and can be cumbersome to undo.
+> - 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば**最初に** geoffgrisso@contoso.onmicrosoft.com を追加し、**それに続けて** geoffgrisso@contoso.com を追加します。
+> - geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。この順序は重要であり、なかなか元に戻すことができない場合があります。
 
-If you change information for a user whose identity is synchronized with your on-premises Active Directory service, you can't change the user information in the Azure classic portal. To change the user information, use your on-premises Active Directory management tools.
-
-
-## <a name="what's-next"></a>What's next
-
-- [Add a user](active-directory-users-create-azure-portal.md)
-- [Reset a user's password in the new Azure portal](active-directory-users-reset-password-azure-portal.md)
-- [Assign a user to a role in your Azure AD](active-directory-users-assign-role-azure-portal.md)
-- [Change a user's work information](active-directory-users-work-info-azure-portal.md)
-- [Manage user profiles](active-directory-users-profile-azure-portal.md)
-- [Delete a user in your Azure AD](active-directory-users-delete-user-azure-portal.md)
+オンプレミスの Active Directory サービスに ID が同期されているユーザーの情報を変更する場合、Azure クラシック ポータルでユーザー情報を変更することはできません。このユーザー情報を変更するには、オンプレミスの Active Directory 管理ツールを使用してください。
 
 
+## 参照トピック
 
-<!--HONumber=Oct16_HO2-->
+- [ユーザーの追加](active-directory-users-create-azure-portal.md)
+- [新しい Azure ポータルでのユーザーのパスワードのリセット](active-directory-users-reset-password-azure-portal.md)
+- [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
+- [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
+- [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
+- [Azure AD でのユーザーの削除](active-directory-users-delete-user-azure-portal.md)
 
-
+<!---HONumber=AcomDC_0914_2016--->

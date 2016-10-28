@@ -1,62 +1,57 @@
 <properties
-    pageTitle="Azure Active Directory B2C: Application registration | Microsoft Azure"
-    description="How to register your application with Azure Active Directory B2C"
-    services="active-directory-b2c"
-    documentationCenter=""
-    authors="swkrish"
-    manager="mbaldwin"
-    editor="bryanla"/>
+	pageTitle="Azure Active Directory B2C: アプリケーションの登録 | Microsoft Azure"
+	description="Azure Active Directory B2C にアプリケーションを登録する方法"
+	services="active-directory-b2c"
+	documentationCenter=""
+	authors="swkrish"
+	manager="mbaldwin"
+	editor="bryanla"/>
 
 <tags
-    ms.service="active-directory-b2c"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/30/2016"
-    ms.author="swkrish"/>
+	ms.service="active-directory-b2c"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/30/2016"
+	ms.author="swkrish"/>
 
 
+# Azure Active Directory B2C: アプリケーションを登録する
 
-# <a name="azure-active-directory-b2c:-register-your-application"></a>Azure Active Directory B2C: Register your application
+## 前提条件
 
-## <a name="prerequisite"></a>Prerequisite
-
-To build an application that accepts consumer sign-up and sign-in, you first need to register the application with an Azure Active Directory B2C tenant. Get your own tenant by using the steps outlined in [Create an Azure AD B2C tenant](active-directory-b2c-get-started.md). After you follow all the steps in that article, you will have the B2C features blade pinned to your Startboard.
+コンシューマーのサインアップおよびサインインを受け付けるアプリケーションを作成するには、最初にアプリケーションを Azure Active Directory B2C テナントに登録する必要があります。「[Azure AD B2C テナントを作成する](active-directory-b2c-get-started.md)」に書かれている手順に従って独自のテナントを取得してください。この記事のすべての手順を実行したら、B2C 機能ブレードがスタート画面にピン留めされているはずです。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## <a name="navigate-to-the-b2c-features-blade"></a>Navigate to the B2C features blade
+## B2C 機能ブレードに移動する
 
-If you have the B2C features blade pinned to your Startboard, you will see the blade as soon as you sign in to the [Azure portal](https://portal.azure.com/) as the Global Administrator of the B2C tenant.
+B2C 機能ブレードがスタート画面にピン留めされている場合、B2C テナントの全体管理者として [Azure ポータル](https://portal.azure.com/)にサインインするとすぐに、B2C 機能ブレードが表示されます。
 
-You can also access the blade by clicking **Browse** and then **Azure AD B2C** in the left navigation pane on the [Azure portal](https://portal.azure.com/).
+また、**[参照]** をクリックし、[Azure ポータル](https://portal.azure.com/)の左側のナビゲーション ウィンドウで **[Azure AD B2C]** をクリックして、ブレードにアクセスすることもできます。
 
-> [AZURE.IMPORTANT] You need to be a Global Administrator of the B2C tenant to be able to access the B2C features blade. A Global Administrator from any other tenant or a user from any tenant cannot access it.  You can switch to your B2C tenant by using the tenant switcher in the top right corner of the Azure Portal.
+> [AZURE.IMPORTANT] B2C 機能ブレードにアクセスするには、B2Cテナントのグローバル管理者である必要があります。他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。Azure ポータルの右上隅にあるテナント スイッチャーを使用して、B2C テナントに切り替えることができます。
 
-## <a name="register-an-application"></a>Register an application
+## アプリケーションを登録する
 
-1. On the B2C features blade on the Azure portal, click **Applications**.
-2. Click **+Add** at the top of the blade.
-3. Enter a **Name** for the application that will describe your application to consumers. For example, you could enter "Contoso B2C app".
-4. If you are writing a web-based application, toggle the **Include web app / web API** switch to **Yes**. The **Reply URLs** are endpoints where Azure AD B2C will return any tokens that your application requests. For example, enter `https://localhost:44321/`. If your web application will also be calling some web API secured by Azure AD B2C, you'll want to create an **Application Secret** as well by clicking the **Generate Key** button.
+1. Azure ポータルの B2C 機能ブレードで、**[アプリケーション]** をクリックします。
+2. ブレードの上部にある **[+追加]** をクリックします。
+3. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。たとえば、「Contoso B2C app」などと入力します。
+4. Web ベースのアプリケーションを作成している場合は、**[Web アプリ/Web API を含める]** スイッチを **[はい]** に切り替えます。**[応答 URL]** は、アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイントです。たとえば、「`https://localhost:44321/`」のように入力します。Web アプリケーションで、Azure AD B2C によってセキュリティ保護された Web API も呼び出す場合は、**[Generate Key (キーの生成)]** ボタンをクリックして**アプリケーション シークレット**を作成することも必要になります。
 
-    > [AZURE.NOTE] An **Application Secret** is an important security credential, and should be secured appropriately.
+    > [AZURE.NOTE] **アプリケーション シークレット**は重要なセキュリティ資格情報であり、適切にセキュリティで保護する必要があります。
 
-5. If you are writing a mobile application, toggle the **Include native client** switch to **Yes**. Copy down the default **Redirect URI** that is automatically created for you.
-6. Click **Create** to register your application.
-7. Click the application that you just created and copy down the globally unique **Application Client ID** that you'll use later in your code.
+5. モバイル アプリケーションを作成している場合は、**[ネイティブ クライアントを含める]** スイッチを **[はい]** に切り替えます。自動的に作成される既定の**リダイレクト URI** をメモしておきます。
+6. **[作成]** をクリックして、アプリケーションを登録します。
+7. 作成したアプリケーションをクリックし、後でコードの作成時に使用するために、グローバルに一意の**アプリケーション クライアント ID** をメモしておきます。
 
-> [AZURE.IMPORTANT] Applications created in the B2C features blade have to managed in the same location. If you edit B2C applications using PowerShell or another portal, they become unsupported and will likely not work with Azure AD B2C.
+> [AZURE.IMPORTANT] B2C 機能ブレードで作成したアプリケーションは、同じ場所で管理する必要があります。PowerShell または別のポータルを使用して B2C アプリケーションを編集すると、そのアプリケーションはサポート対象外となり、Azure AD B2C で動作しなくなる可能性があります。
 
-## <a name="build-a-quick-start-application"></a>Build a Quick Start Application
+## クイック スタート アプリケーションを構築する
 
-Now that you have an application registered with Azure AD B2C, you can complete one of our quick-start tutorials to get up and running. Here are a few recommendations:
+アプリケーションを Azure AD B2C に登録したので、いずれかのクイック スタート チュートリアルを実行して使い始めることができます。以下に、推奨事項をいくつか示します。
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-b2c-quickstart-table.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

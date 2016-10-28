@@ -2,7 +2,4 @@
 - [Linux cluster](../articles/hdinsight/hdinsight-hbase-tutorial-get-started-linux.md)
 - [Windows cluster](../articles/hdinsight/hdinsight-hbase-tutorial-get-started.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1203_2015-->

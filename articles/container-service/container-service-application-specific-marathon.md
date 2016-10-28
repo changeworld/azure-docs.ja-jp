@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Application or user-specific Marathon service | Microsoft Azure"
-   description="Create an application or user-specific Marathon service"
+   pageTitle="アプリケーションまたはユーザー固有の Marathon サービス | Microsoft Azure"
+   description="アプリケーションまたはユーザー固有の Marathon サービスの作成"
    services="container-service"
    documentationCenter=""
    authors="rgardler"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Containers, Marathon, Micro-services, DC/OS, Azure"/>
+   keywords="コンテナー, Marathon, マイクロサービス, DC/OS, Azure"/>
 
 <tags
    ms.service="container-service"
@@ -18,49 +18,44 @@
    ms.date="04/12/2016"
    ms.author="rogardle"/>
 
+# アプリケーションまたはユーザー固有の Marathon サービスの作成
 
-# <a name="create-an-application-or-user-specific-marathon-service"></a>Create an application or user-specific Marathon service
+Azure コンテナー サービスは、Apache Mesos と Marathon が事前構成されている、一連のマスター サーバーを提供します。これらはクラスター上のアプリケーションを調整するために使用できますが、この目的のためにはマスター サーバーを使用しないことをお勧めします。たとえば、Marathon の構成を調整するには、マスター サーバー自体にログインし、変更を行う必要があります。そのため、標準的なマスター サーバーとは少し異なる特殊なものになりやすく、個別に注意して管理する必要があります。さらに、あるチームで必要とされる構成が、別のチームにとっては最適な構成でない場合もあります。
 
-Azure Container Service provides a set of master servers on which we preconfigure Apache Mesos and Marathon. These can be used to orchestrate your applications on the cluster, but it's best not to use the master servers for this purpose. For example, tweaking the configuration of Marathon requires logging into the master servers themselves and making changes--this encourages unique master servers that are a little different from the standard and need to be cared for and managed independently. Additionally, the configuration required by one team might not be the optimal configuration for another team.
+この記事では、アプリケーションまたはユーザー固有の Marathon サービスを追加する方法について説明します。
 
-In this article, we'll explain how to add an application or user-specific Marathon service.
+このサービスは単一のユーザーまたはチームに属するため、好きな方法で自由に構成できます。また、Azure コンテナー サービスは、サービスの実行が続行されるようにします。サービスで障害が発生すると、Azure コンテナー サービスが自動的にサービスを再開します。ほとんどの場合、ダウンタイムがあったことにさえ気付きません。
 
-Because this service will belong to a single user or team, they are free to configure it in any way that they desire. Also, Azure Container Service will ensure that the service continues to run. If the service fails, Azure Container Service will restart it for you. Most of the time you won't even notice it had downtime.
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+orchestrator の種類が DC/OS の [Azure コンテナー サービスのインスタンスをデプロイ](container-service-deployment.md)し、[クライアントがクラスターに接続](container-service-connect.md)できるようにします。また、次の手順を実行します。
 
-[Deploy an instance of Azure Container Service](container-service-deployment.md) with orchestrator type DC/OS and  [ensure that your client can connect to your cluster](container-service-connect.md). Also, do the following steps.
+[AZURE.INCLUDE [DC/OS CLI をインストールします。](../../includes/container-service-install-dcos-cli-include.md)]
 
-[AZURE.INCLUDE [install the DC/OS CLI](../../includes/container-service-install-dcos-cli-include.md)]
+## アプリケーションまたはユーザー固有の Marathon サービスの作成
 
-## <a name="create-an-application-or-user-specific-marathon-service"></a>Create an application or user-specific Marathon service
-
-Begin by creating a JSON configuration file that defines the name of the application service that you want to create. Here we use `marathon-alice` as the framework name. Save the file as something like `marathon-alice.json`:
+最初に、作成するアプリケーション サービスの名前を定義する JSON 構成ファイルを作成します。ここでは、フレームワーク名として `marathon-alice` を使用します。`marathon-alice.json` のような名前でファイルを保存します。
 
 ```json
 {"marathon": {"framework-name": "marathon-alice" }}
 ```
 
-Next, use the DC/OS CLI to install the Marathon instance with the options that are set in your configuration file:
+次に、DC/OS CLI を使用して、構成ファイルで設定されているオプションで Marathon インスタンスをインストールします。
 
 ```bash
 dcos package install --options=marathon-alice.json marathon
 ```
 
-You should now see your `marathon-alice` service running in the Services tab of your DC/OS UI. The UI will be `http://<hostname>/service/marathon-alice/` if you want to access it directly.
+これで、実行されている `marathon-alice` サービスが、DC/OS UI のサービス タブに表示されます。直接アクセスする場合、UI は `http://<hostname>/service/marathon-alice/` です。
 
-## <a name="set-the-dc/os-cli-to-access-the-service"></a>Set the DC/OS CLI to access the service
+## サービスにアクセスするための DC/OS CLI の設定
 
-You can optionally configure your DC/OS CLI to access this new service by setting the `marathon.url` property to point to the `marathon-alice` instance as follows:
+必要に応じて、この新しいサービスにアクセスするように DC/OS CLI を構成することができます。そのためには、次のように、`marathon-alice` インスタンスを指すように `marathon.url` プロパティを設定します。
 
 ```bash
 dcos config set marathon.url http://<hostname>/service/marathon-alice/
 ```
 
-You can verify which instance of Marathon that your CLI is working against with the `dcos config show` command. You can revert to using your master Marathon service with the command `dcos config unset marathon.url`.
+CLI の操作対象となる Marathon インスタンスを確認するには、`dcos config show` コマンドを使用できます。また、マスター Marathon サービスを使用するように戻すには、`dcos config unset marathon.url` コマンドを使用できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

@@ -1,67 +1,66 @@
 <properties
-    pageTitle="The Azure AD v2.0 endpoint | Microsoft Azure"
-    description="An comparison between the original Azure AD and the v2.0 endpoints."
-    services="active-directory"
-    documentationCenter=""
-    authors="dstrockis"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure AD v2.0 エンドポイント | Microsoft Azure"
+	description="元の Azure AD と v2.0 エンドポイントの比較。"
+	services="active-directory"
+	documentationCenter=""
+	authors="dstrockis"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/16/2016"
-    ms.author="dastrock"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/16/2016"
+	ms.author="dastrock"/>
 
+# v2.0 エンドポイントの変更点
 
-# <a name="what's-different-about-the-v2.0-endpoint?"></a>What's different about the v2.0 endpoint?
-
-If you're familiar with Azure Active Directory or have integrated apps with Azure AD in the past, there may be some differences in the v2.0 endpoint that you would not expect.  This document calls out those differences for your understanding.
+Azure Active Directory を使い慣れている場合、または以前にアプリを Azure AD に統合した場合は、v2.0 エンドポイントで予想外の違いを体験する可能性があります。このドキュメントでは、それらの違いについて説明します。
 
 > [AZURE.NOTE]
-    Not all Azure Active Directory scenarios & features are supported by the v2.0 endpoint.  To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
 
-## <a name="microsoft-accounts-and-azure-ad-accounts"></a>Microsoft accounts and Azure AD accounts
-the v2.0 endpoint allow developers to write apps that accept sign-in from both Microsoft Accounts and Azure AD accounts, using a single auth endpoint.  This gives you the ability to write your app completely account-agnostic; it can be ignorant of the type of account that the user signs in with.  Of course, you *can* make your app aware of the type of account being used in a particular session, but you don't have to.
+## Microsoft アカウントと Azure AD アカウント
+v2.0 エンドポイントを使用すると、開発者は、1 つの認証エンドポイントを使用して Microsoft アカウントと Azure AD アカウントの両方からのサインインを受け付けるアプリを作成できます。これにより、まったくアカウントに依存しないアプリを作成できます。ユーザーがサインインにどのアカウントを使用するかを考慮する必要がありません。もちろん、特定のセッションで使用されるアカウントの種類を確認することは*できます*が、そうする必要はありません。
 
-For instance, if your app calls the [Microsoft Graph](https://graph.microsoft.io), some additional functionality and data will be available to enterprise users, such as their SharePoint sites or Directory data.  But for many actions, such as [Reading a user's mail](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message), the code can be written exactly the same for both Microsoft Accounts and Azure AD accounts.  
+たとえば、アプリで [Microsoft Graph](https://graph.microsoft.io) を呼び出す場合、エンタープライズ環境のユーザーは、SharePoint サイトや Directory データなどの追加の機能とデータを使用できます。ただし、[ユーザーのメールを読む](https://graph.microsoft.io/docs/api-reference/v1.0/resources/message)などの多くの操作について、Microsoft アカウントと Azure AD アカウントの両方に対して完全に同じコードを作成できます。
 
-Integrating your app with Microsoft Accounts and Azure AD accounts is now one simple process.  You can use a single set of endpoints, a single library, and a single app registration to gain access to both the consumer and enterprise worlds.  To learn more about the v2.0 endpoint, check out [the overview](active-directory-appmodel-v2-overview.md).
-
-
-## <a name="new-app-registration-portal"></a>New app registration portal
-the v2.0 endpoint can only be registered in a new location: [apps.dev.microsoft.com](https://apps.dev.microsoft.com).  This is the portal where you can obtain an Application Id, customize the appearance of your app's sign-in page, and more.  All you need to access the portal is a Microsoft powered account - either personal or work/school account.  
-
-We will continue to add more and more functionality to this App Registration Portal over time.  The intent is that this portal will be the new location where you can go to manage anything and everything having to do with your Microsoft apps.
+Microsoft アカウントと Azure AD アカウントのアプリを 1 つの単純なプロセスで統合できるようになりました。1 組のエンドポイント、1 つのライブラリ、1 回のアプリ登録によって、コンシューマー向けおよびエンタープライズ向けの両方の環境にアクセスできます。v2.0 エンドポイントの詳細については、[概要](active-directory-appmodel-v2-overview.md)のページを参照してください。
 
 
-## <a name="one-app-id-for-all-platforms"></a>One app Id for all platforms
-In the original Azure Active Directory service, you may have registered several different apps for a single project.  You were forced to use separate app registrations for your native clients and web apps:
+## 新しいアプリ登録ポータル
+v2.0 エンドポイントは、新しい場所 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com)) にのみ登録できます。このポータルでは、アプリケーション ID の取得、アプリのサインイン ページの外観のカスタマイズなどを行うことができます。ポータルにアクセスするために必要なのは、Microsoft の強化されたアカウント (個人アカウントまたは職場/学校アカウントのいずれか) だけです。
 
-![Old Application Registration UI](../media/active-directory-v2-flows/old_app_registration.PNG)
+このアプリ登録ポータルには、多くの機能を継続的に追加していく予定です。このポータルは、Microsoft アプリに関連したあらゆる情報を一元管理できる新たな場所になります。
 
-For example, if you built both a website and an iOS app, you had to register them separately, using two different Application Ids.  If you had a website and a backend web api, you might have registered each as a separate app in Azure AD.  If you had an iOS app and an Android app, you also might have registered two different apps.  
+
+## 1 つのアプリ ID ですべての製品に対応
+元の Azure Active Directory サービスでは、1 つのプロジェクトに対して異なる複数のアプリを登録している場合があります。その場合、ネイティブ クライアントと Web アプリで別々にアプリ登録する必要がありました。
+
+![古いアプリケーションの登録 UI](../media/active-directory-v2-flows/old_app_registration.PNG)
+
+たとえば、Web サイトと iOS アプリの両方を構築する場合は、2 つの異なるアプリケーション ID を使用して、それぞれを別々に登録する必要がありました。Web サイトとバックエンド Web API を使用していた場合、Azure AD に別々のアプリとして登録していました。また、iOS アプリと Android アプリを使用していた場合は、2 つの異なるアプリを登録していました。
 
 <!-- You may have even registered different apps for each of your build environments - one for dev, one for test, and one for production. -->
 
-Now, all you need is a single app registration and a single Application Id for each of your projects.  You can add several "platforms" to a each project, and provide the appropriate data for each platform you add.  Of course, you can create as many apps as you like depending on your requirements, but for the majority of cases only one Application Id should be necessary.
+v2.0 では、各プロジェクトに対して 1 つのアプリケーション ID を使用して 1 回のアプリ登録を行うだけでかまいません。それぞれのプロジェクトに複数の "プラットフォーム" を追加し、追加した各プラットフォームに対して適切なデータを提供できます。もちろんアプリは要件に応じて必要な数だけ作成できますが、大半の場合、必要なアプリケーション ID は 1 つだけです。
 
 <!-- You can also label a particular platform as "production-ready" when it is ready to be published to the outside world, and use that same Application Id safely in your development environments. -->
 
-Our aim is that this will lead to a more simplified app management and development experience, and create a more consolidated view of a single project that you might be working on.
+マイクロソフトが目指しているのは、アプリの管理と開発のエクスペリエンスをいっそう簡素化し、より高度に統合されたビューで作業中の各プロジェクトの状況を把握できるようにすることです。
 
 
-## <a name="scopes,-not-resources"></a>Scopes, not resources
-In the original Azure AD service, an app can behave as a **resource**, or a recipient of tokens.  A resource can define a number of **scopes** or **oAuth2Permissions** that it understands, allowing client apps to request tokens to that resource for a certain set of scopes.  Consider the Azure AD Graph API as an example of a resource:
+## リソースではなくスコープ
+元の Azure AD サービスの場合、アプリは**リソース**として、またはトークンの受信者として動作できます。リソースには、リソースで識別できる多数の**スコープ**または **oAuth2Permissions** を定義できます。それによりクライアント アプリは、そのリソースに特定範囲のトークンを要求できます。リソースの例として、Azure AD Graph API があります。
 
-- Resource Identifier, or `AppID URI`: `https://graph.windows.net/`
-- Scopes, or `OAuth2Permissions`: `Directory.Read`, `Directory.Write`, etc.  
+- リソース識別子、または `AppID URI`:`https://graph.windows.net/`
+- スコープ、または `OAuth2Permissions`:`Directory.Read`、`Directory.Write` などです。
 
-All of this holds true for the the v2.0 endpoint.  An app can still behave as resource, define scopes, and be identified by a URI.  Client apps can still request access to those scopes.  However, the way in which a client requests those permissions has changed.  In the past, an OAuth 2.0 authorize request to Azure AD might have looked like:
+このすべてが v2.0 エンドポイントに当てはまります。アプリはリソースとして動作し、スコープを定義することができ、URI によって識別できます。また、クライアント アプリは、スコープへのアクセスを要求できます。ただし、クライアントがアクセス許可を要求する方法が変更されました。以前は、Azure AD への OAuth 2.0 承認要求は、次のようになっていました。
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/authorize?
@@ -70,7 +69,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-where the **resource** parameter indicated which resource the client app is requesting authorization for.  Azure AD computed the permissions required by the app based on static configuration in the Azure Portal, and issued tokens accordingly.  Now, the same OAuth 2.0 authorize request looks like:
+ここで、**resource** パラメーターは、クライアント アプリが認証を求めている対象のリソースを示します。Azure AD は、Azure ポータルでの静的な構成に基づいて、アプリによって要求されたアクセス許可を計算し、適切なトークンを発行していました。現在は、同じ OAuth 2.0 承認要求が次のようになっています。
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -79,20 +78,20 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-where the **scope** parameter indicates which resource and permissions the app is requesting authorization for. The desired resource is still very present in the request - it is simply encompassed in each of the values of the scope parameter.  Using the scope parameter in this manner allows the v2.0 endpoint to be more compliant with the OAuth 2.0 specification, and aligns more closely with common industry practices.  It also enables apps to perform [incremental consent](#incremental-and-dynamic-consent), which is described in the next section.
+ここで、**scope** パラメーターは、アプリが承認を要求している対象のリソースとアクセス許可を示します。要求されているリソースはまだ要求内に多く存在し、scope パラメーターの各値に含まれています。このように scope パラメーターを使用すると、v2.0 エンドポイントの OAuth 2.0 仕様への準拠を高め、一般的な業界の慣行に近づけることができます。また、アプリで[増分同意](#incremental-and-dynamic-consent)を実行できます。次のセクションでこれについて説明します。
 
-## <a name="incremental-and-dynamic-consent"></a>Incremental and dynamic consent
-Apps registered in the generally available Azure AD service needed to specify their required OAuth 2.0 permissions in the Azure Portal, at app creation time:
+## 増分および動的な同意
+一般公開の Azure AD サービスに登録されたアプリは、作成時に Azure ポータルで、必要な OAuth 2.0 のアクセス許可を指定する必要がありました。
 
-![Permissions Registration UI](../media/active-directory-v2-flows/app_reg_permissions.PNG)
+![アクセス許可の登録 UI](../media/active-directory-v2-flows/app_reg_permissions.PNG)
 
-The permissions an app required were configured **statically**.  While this allowed configuration of the app to exist in the Azure Portal and kept the code nice and simple, it presents a few issues for developers:
+アプリが要求したアクセス許可は**静的に**構成されていました。これにより Azure ポータルにアプリの構成を存在させることができ、コードを適切に維持できる一方、開発者にとっては問題もいくつかあります。
 
-- An app had to know all of the permissions it would ever need at app creation time.  Adding permissions over time was a difficult process.
-- An app had to know all of the resources it would ever access ahead of time.  It was difficult to create apps that could access an arbitrary number of resources.
-- An app had to request all the permissions it would ever need upon the user's first sign-in.  In some cases this led to a very long list of permissions, which discouraged end-users from approving the app's access on initial sign-in.
+- アプリの作成時に、そのアプリで必要になる可能性のあるすべてのアクセス許可がわかっている必要があります。後からアクセス許可を追加することは困難なプロセスでした。
+- また、アプリでアクセスする可能性のあるすべてのリソースが事前にわかっている必要があります。任意の数のリソースにアクセスするアプリを作成することは、困難でした。
+- アプリは、ユーザーの初回サインインの時点で、そのアプリで必要になる可能性があるすべてのアクセス許可を要求する必要があります。アクセス許可のリストは非常に長くなる場合があり、エンドユーザーが初回サインイン時にアプリのアクセスを承認する阻害要因となっていました。
 
-With the v2.0 endpoint, you can specify the permissions your app needs **dynamically**, at runtime, during regular usage of your app.  To do so, you can specify the scopes your app needs at any given point in time by including them in the `scope` parameter of an authorization request:
+v2.0 エンドポイントでは、アプリの通常の使用状況で、アプリに必要なアクセス許可を実行時に**動的に**指定できます。これを行うには、任意の時点でアプリに必要なスコープを承認要求の `scope` パラメーターで指定できます。
 
 ```
 GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
@@ -101,40 +100,36 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e
 ...
 ```
 
-The above requests permission for the app to read an Azure AD user's directory data, as well as write data to their directory.  If the user has consented to those permissions in the past for this particular app, they will simply enter their credentials and be signed into the app.  If the user has not consented to any of these permissions, the v2.0 endpoint will ask the user for consent to those permissions.  To learn more, you can read up on [permissions, consent, and scopes](active-directory-v2-scopes.md).
+この要求は、アプリで Azure AD ユーザーのディレクトリ データの読み取りおよび書き込みのためのアクセス許可を求めています。ユーザーが過去にこの特定のアプリでこれらのアクセス許可に同意した場合、資格情報を入力してアプリにサインインできます。ユーザーがこれらのアクセス許可のいずれにも同意していない場合、v2.0 エンドポイントはこれらのアクセス許可に対する同意をユーザーに求めます。詳細については、[アクセス許可、同意、スコープ](active-directory-v2-scopes.md)の説明を参照してください。
 
-Allowing an app to request permissions dynamically via the `scope` parameter gives you full control over your user's experience.  If you wish, you can choose to frontload your consent experience and ask for all permissions in one initial authorization request.  Or if your app requires a large number of permissions, you can choose to gather those permissions from the user incrementally, as they attempt to use certain features of your app over time.
+アプリで `scope` パラメーターを使用してアクセス許可を動的に要求できるため、ユーザーの操作を完全に制御できます。必要に応じて、同意の操作を初期段階に組み込み、1 回の初期認証要求ですべてのアクセス許可を求めます。または、アプリで多数のアクセス許可が必要な場合は、時間の経過と共に、ユーザーがアプリの特定の機能を使用するときにアクセス許可を集めることができます。
 
-## <a name="well-known-scopes"></a>Well-known scopes
+## 既知のスコープ
 
-#### <a name="offline-access"></a>Offline access
-the v2.0 endpoint may require the use of a new well-known permission for apps - the `offline_access` scope.  All apps will need to request this permission if they need to access resources on the behalf of a user for a prolonged period of time, even when the user may not be actively using the app.  The `offline_access` scope will appear to the user in consent dialogs as "Access your data offline", which the user must agree to.  Requesting the `offline_access` permission will enable your web app to receive OAuth 2.0 refresh_tokens from the v2.0 endpoint.  Refresh_tokens are long-lived, and can be exchanged for new OAuth 2.0 access_tokens for extended periods of access.  
+#### オフライン アクセス
+v2.0 エンドポイントでは、アプリのよく知られた新しいアクセス許可を使用することが必要な場合があります (`offline_access` スコープ)。すべてのアプリは、ユーザーがアプリを積極的に利用しない可能性がある場合でも、長期間ユーザーに代わってリソースにアクセスするために必要な、このアクセス許可を要求する必要があります。`offline_access` スコープは、コンテンツ ダイアログで "データにオフラインでアクセスします" と表示されます。`offline_access` アクセス許可を要求すると、Web アプリで v2.0 エンドポイントから OAuth 2.0 の refresh\_tokens を受け取ることができます。refresh\_tokens は、長期間維持され、アクセスの期間を延長するために新しい OAuth 2.0 の access\_tokens と交換することができます。
 
-If your app does not request the `offline_access` scope, it will not receive refresh_tokens.  This means that when you redeem an authorization_code in the [OAuth 2.0 authorization code flow](active-directory-v2-protocols.md#oauth2-authorization-code-flow), you will only receive back an access_token from the `/token` endpoint.  That access_token will remain valid for a short period of time (typically one hour), but will eventually expire.  At that point in time, your app will need to redirect the user back to the `/authorize` endpoint to retrieve a new authorization_code.  During this redirect, the user may or may not need to enter their credentials again or re-consent to permissions, depending on the the type of app.
+`offline_access` スコープを要求しないアプリは refresh\_tokens を受け取りません。つまり、[OAuth 2.0 承認コード フロー](active-directory-v2-protocols.md#oauth2-authorization-code-flow)の authorization\_code を使用すると、`/token` エンドポイントから access\_token だけが取得されます。その access\_token は、短時間 (通常は 1 時間) 有効ですが、最終的には期限が切れます。その時点で、アプリはユーザーを `/authorize` エンドポイントにリダイレクトして、新しい authorization\_code を取得する必要があります。このリダイレクト中に、アプリの種類によっては、ユーザーが資格情報を再入力したり、アクセス許可に再同意したりする必要がある場合もあります。
 
-To learn more about OAuth 2.0, refresh_tokens, and access_tokens, check out the [v2.0 protocol reference](active-directory-v2-protocols.md).
+OAuth 2.0、refresh\_tokens、および access\_tokens の詳細については、「[v2.0 プロトコル リファレンス](active-directory-v2-protocols.md)」を参照してください。
 
-#### <a name="openid,-profile,-&-email"></a>OpenID, profile, & email
+#### OpenID、プロファイル、および電子メール
 
-In the original Azure Active Directory service, the most basic OpenID Connect sign-in flow would provide a wealth of information about the user in the resulting id_token.  The claims in an id_token can include the user's name, preferred username, email address, object ID, and more.
+元の Azure Active Directory サービスでは、結果の id\_token のユーザーに関する情報は、最も基本的な OpenID Connect サインイン フローで多数提供されていました。id\_token 内の要求には、ユーザー名、推奨ユーザー名、電子メール アドレス、オブジェクト ID などを含めることができます。
 
-We are now restricting the information that the `openid` scope affords your app access to.  The ‘openid’ scope will only allow your app to sign the user in, and receive an app-specific identifier for the user.  If you want to obtain personally identifiable information (PII) about the user in your app, your app will need to request additional permissions from the user.  We are introducing two new scopes – the `email` and `profile` scopes – which allow you to do so.
+今は、アプリで `openid` のスコープでアクセスできる情報が制限されるようになりました。‘openid’ スコープでは、ユーザーのサインインの許可と、ユーザーのアプリ固有の ID の受信のみをアプリに許可します。アプリ内のユーザーの個人を特定できる情報 (PII) を取得するには、アプリからユーザーに追加のアクセス許可を要求する必要があります。それを実行できる 2 つの新しいスコープ、`email` と `profile` スコープが導入されました。
 
-The `email` scope is very straightforward – it allows your app access to the user’s primary email address via the `email` claim in the id_token.  The `profile` scope affords your app access to all other basic information about the user – their name, preferred username, object ID, and so on.
+`email` スコープは非常に明解です。id\_token の `email` 要求を使用すると、アプリでユーザーのプライマリ電子メール アドレスにアクセスできます。`profile` スコープでは、アプリに名前、推奨ユーザー名、オブジェクト ID など、ユーザーに関するその他のすべての基本的な情報へのアクセスを許可します。
 
-This allows you to code your app in a minimal-disclosure  fashion – you can only ask the user for the set of information that your app requires to do its job.  For more information on these scopes, refer to [the v2.0 scope reference](active-directory-v2-scopes.md). 
+これにより、最小限の公開でアプリをコーディングできます。アプリがそのジョブを実行するために必要な情報セットのみをユーザーに要求できます。これらのスコープの詳細については、「[v2.0 のスコープのリファレンス](active-directory-v2-scopes.md)」を参照してください。
 
-## <a name="token-claims"></a>Token Claims
+## トークン要求
 
-The claims in tokens issued by the v2.0 endpoint will not be identical to tokens issued by the generally available Azure AD endpoints - apps migrating to the new service should not assume a particular claim will exist in id_tokens or access_tokens.   Tokens issued by the v2.0 endpoint are compliant with the OAuth 2.0 and OpenID Connect specifications, but may follow different semantics than the generally available Azure AD service.
+v2.0 エンドポイントによって発行されたトークンでの要求は、一般公開の Azure AD エンドポイントによって発行されるトークンと同一にはなりません。新しいサービスに移行するアプリでは、id\_tokens または access\_tokens 内に特定の要求の存在を想定しないでください。v2.0 エンドポイントによって発行されたトークンは OAuth 2.0 および OpenID Connect 仕様に準拠していますが、一般公開の Azure AD サービスとは異なるセマンティクスに従っている可能性があります。
 
-To learn about the specific claims emitted in v2.0 tokens, see the [v2.0 token reference](active-directory-v2-tokens.md).
+v2.0 トークンによって発行される特定の要求の詳細については、[v2.0 トークン リファレンス](active-directory-v2-tokens.md)を参照してください。
 
-## <a name="limitations"></a>Limitations
-There are a few restrictions to be aware of when using the v2.0 point.  Please refer to the [v2.0 limitations doc](active-directory-v2-limitations.md) to see if any of these restrictions apply to your particular scenario.
+## 制限事項
+v2.0 エンドポイントを使用する場合に注意する必要があるいくつかの制限があります。これらの制限事項が実際のシナリオに当てはまるかどうかについては、「[v2.0 の制限事項に関するドキュメント](active-directory-v2-limitations.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

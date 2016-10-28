@@ -1,6 +1,6 @@
 <properties 
    pageTitle="Azure SQL Database Query Performance Insight" 
-   description="Query performance monitoring identifies the most CPU-consuming queries for an Azure SQL Database." 
+   description="クエリのパフォーマンスを監視して、Azure SQL Database の CPU 消費量の多いクエリを明らかにします。" 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -16,218 +16,216 @@
    ms.date="08/09/2016"
    ms.author="sstein"/>
 
-
-# <a name="azure-sql-database-query-performance-insight"></a>Azure SQL Database Query Performance Insight
-
-
-Managing and tuning the performance of relational databases is a challenging task that requires significant expertise and time investment. Query Performance Insight allows you to spend less time troubleshooting database performance by providing the following:
-
-- Deeper insight into your databases resource (DTU) consumption. 
-- The top queries by CPU/Duration/Execution count, which can potentially be tuned for improved performance.
-- The ability to drill down into the details of a query, view its text and history of resource utilization. 
-- Performance tuning annotations that show actions performed by [SQL Azure Database Advisor](sql-database-advisor.md)  
+# Azure SQL Database Query Performance Insight
 
 
+リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
 
-## <a name="prerequisites"></a>Prerequisites
+- データベース リソース (DTU) の消費量の詳細な情報。
+- CPU/期間/実行回数の上位クエリ。パフォーマンス向上のためのチューニングの対象となる可能性があります。
+- クエリの詳細にドリルダウンして、テキストやリソース使用率履歴を表示する機能。
+- [SQL Azure Database Advisor](sql-database-advisor.md) で実行されるアクションを示す、パフォーマンス チューニングの注釈
 
-- Query Performance Insight is only available with Azure SQL Database V12.
-- Query Performance Insight requires that [Query Store](https://msdn.microsoft.com/library/dn817826.aspx) is active on your database. If Query Store is not running, the portal prompts you to turn it on.
+​
+
+## 前提条件
+
+- Query Performance Insight は、Azure SQL Database V12 でのみ使用できます。
+- Query Performance Insight では、[クエリ ストア](https://msdn.microsoft.com/library/dn817826.aspx)がデータベース上で実行されている必要があります。クエリ ストアが実行されていない場合、ポータルで、クエリ ストアを有効にするよう求められます。
 
  
-## <a name="permissions"></a>Permissions
+## アクセス許可
 
-The following [role-based access control](../active-directory/role-based-access-control-configure.md) permissions are required to use Query Performance Insight: 
+Query Performance Insight を使用するには、次の[ロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)権限が必要です。
 
-- **Reader**, **Owner**, **Contributor**, **SQL DB Contributor**, or **SQL Server Contributor** permissions are required to view the top resource consuming queries and charts. 
-- **Owner**, **Contributor**, **SQL DB Contributor**, or **SQL Server Contributor** permissions are required to view query text.
-
-
-
-## <a name="using-query-performance-insight"></a>Using Query Performance Insight
-
-Query Performance Insight is easy to use:
-
-- Open [Azure portal](https://portal.azure.com/) and find database that you want to examine. 
-  - From left-hand side menu, under support and troubleshooting, select “Query Performance Insight”.
-- On the first tab, review the list of top resource-consuming queries.
-- Select an individual query to view its details.
-- Open [SQL Azure Database Advisor](sql-database-advisor.md) and check if any recommendations are available.
-- Use sliders or zoom icons to change observed interval.
-
-    ![performance dashboard](./media/sql-database-query-performance/performance.png)
-
-> [AZURE.NOTE] A couple hours of data needs to be captured by Query Store for SQL Database to provide query performance insights. If the database has no activity or Query Store was not active during a certain time period, the charts will be empty when displaying that time period. You may enable Query Store at any time if it is not running.   
+- トップ リソース コンシューマー クエリとグラフを表示するには、**閲覧者**、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。
+- クエリ テキストを表示するには、**所有者**、**共同作成者**、**SQL DB 共同作業者**、または **SQL Server 共同作業者**の権限が必要です。
 
 
 
-## <a name="review-top-cpu-consuming-queries"></a>Review top CPU consuming queries
+## Query Performance Insight の使用
 
-In the [portal](http://portal.azure.com) do the following:
+Query Performance Insight は簡単に使用できます。
 
-1. Browse to a SQL database and click **All settings** > **Support + Troubleshooting** > **Query performance insight**. 
+- [Azure ポータル](https://portal.azure.com/)を開き、調査するデータベースを見つけます。
+  - 左側にあるメニューのサポートおよびトラブルシューティングの下で、[Query Performance Insight] を選択します。
+- 最初のタブで、リソース消費量が上位のクエリの一覧を確認します。
+- 個別のクエリを選択して詳細を表示します。
+- [SQL Azure Database Advisor](sql-database-advisor.md) を開き、利用できる推奨事項があるかどうかを確認します。
+- スライダーまたはズーム アイコンを使用して監視間隔を変更します。
+
+    ![パフォーマンス ダッシュボード](./media/sql-database-query-performance/performance.png)
+
+> [AZURE.NOTE] SQL Database がクエリ パフォーマンスの洞察を提供するには、2 時間分のデータをクエリ ストアでキャプチャする必要があります。一定の期間、データベースでアクティビティが発生しない場合、またはクエリ ストアがアクティブではない場合は、その時間帯を表示してもグラフは空になります。クエリ ストアが実行されていない場合はいつでも有効にできます。
+
+
+
+## CPU 消費量上位クエリを確認する
+
+[ポータル](http://portal.azure.com)で次のようにします。
+
+1. SQL データベースを参照し、**[すべての設定]** > **[サポート + トラブルシューティング]** > **[Query Performance Insight]** の順にクリックします。
 
     ![Query Performance Insight][1]
 
-    The top queries view opens and the top CPU consuming queries are listed.
+    上位クエリ ビューが開き、CPU 消費量上位クエリの一覧が表示されます。
 
-1. Click around the chart for details.<br>The top line shows overall DTU% for the database, while the bars show CPU% consumed by the selected queries during the selected interval (for example, if **Past week** is selected each bar represents one day).
+1. グラフのあたりをクリックして詳細を確認します。<br>上の折れ線はデータベース全体の DTU% を示します。棒グラフは、選択した期間に、選択したクエリによって消費された CPU% を示します (**[過去 1 週間]** を選択した場合は各棒グラフが 1 日を表します)。
 
-    ![top queries][2]
+    ![上位クエリ][2]
 
-    The bottom grid represents aggregated information for the visible queries.
+    下部のグリッドには、表示可能なクエリの集計情報が表されます。
 
-  - Query ID – unique identifier of query inside database.
-  - CPU per query during observable interval (depends on aggregation function).
-  - Duration per query (depends on aggregation function).
-  - Total number of executions for a particular query.
+  -	クエリ ID - データベース内に含まれるクエリの一意の識別子。
+  -	監視可能な期間のクエリあたりの CPU 使用率 (集計関数に依存)。
+  -	1 つのクエリの実行時間 (集計関数に依存)。
+  -	特定のクエリの実行回数の合計。
 
-    Select or clear individual queries to include or exclude them from the chart using checkboxes.
+    グラフに表示する個別のクエリを選別するには、チェックボックスをオンまたはオフにします。
 
-1. If your data becomes stale, click the **Refresh** button.
-1. You can use sliders and zoom buttons to change observation interval and investigate spikes:  ![settings](./media/sql-database-query-performance/zoom.png)
-1. Optionally, if you want a different view, you can select **Custom** tab and set:
+1. データが古くなった場合は、**[更新]** ボタンをクリックします。
+1. 監視間隔を変更してスパイクを調査するには、スライダーやズーム ボタンを使用します。![設定](./media/sql-database-query-performance/zoom.png)
+1. 必要に応じて、別のビューを表示する場合は、**[カスタム]** タブを選択して、以下の項目を設定できます。
   
-  - Metric (CPU, duration, execution count)
-  - Time interval (Last 24 hours, Past week, Past month). 
-  - Number of queries.
-  - Aggregation function.
+  - メトリック (CPU、実行時間、実行回数)
+  - 時間間隔 (過去 24 時間、過去 1 週間、過去 1 か月)
+  - クエリの数
+  - 集計関数
 
-    ![settings](./media/sql-database-query-performance/custom-tab.png)
+    ![設定](./media/sql-database-query-performance/custom-tab.png)
 
-## <a name="viewing-individual-query-details"></a>Viewing individual query details
+## 個々のクエリの詳細表示
 
-To view query details:
+クエリの詳細を表示するには:
 
-1. Click any query in the list of top queries.
+1. 上位のクエリの一覧でクエリをクリックします。
 
-    ![details](./media/sql-database-query-performance/details.png)
+    ![詳細](./media/sql-database-query-performance/details.png)
 
-1. The details view opens and the queries CPU consumption/Duration/Execution count is broken down over time.
-1. Click around the chart for details.
-  - Top chart shows line with overall database DTU%, and the bars are CPU% consumed by the selected query.
-  - Second chart shows total duration by the selected query.
-  - Bottom chart shows total number of executions by the selected query.
+1. 詳細ビューが開き、クエリの CPU 消費量、実行時間、実行回数が時間ごとに分割されます。
+1. グラフのあたりをクリックして詳細を確認します。
+  - 一番上のグラフの折れ線は、データベース全体の DTU% を示します。棒グラフは、選択したクエリによって消費された CPU% を示します。
+  - 2 つ目のグラフは、選択したクエリの総実行時間を示します。
+  - 一番下のグラフは、選択したクエリの総実行回数を示します。
     
-    ![query details][3]
+    ![クエリの詳細][3]
 
-1. Optionally, use sliders, zoom buttons or click **Settings** to customize how query data is displayed, or to pick a different time period.
+1. 必要に応じて、スライダーやズーム ボタンを使うか、**[設定]** をクリックして、クエリ データの表示方法をカスタマイズしたり、別の期間を選択したりできます。
 
-## <a name="review-top-queries-per-duration"></a>Review top queries per duration
+## 実行時間あたりの上位クエリを確認する
 
-In the recent update of Query Performance Insight, we introduced two new metrics that can help you identify potential bottlenecks: duration and execution count.<br>
+最近の Query Performance Insight の更新により、潜在的なボトルネックの特定に役立つ 2 つの新しいメトリックとして、実行時間と実行回数が導入されました。<br>
 
-Long-running queries have the greatest potential for locking resources longer, blocking other users, and limiting scalability. They are also the best candidates for optimization.<br>
+実行時間の長いクエリは、長期にわたるリソースのロック、他のユーザーのブロック、スケーラビリティの制限を引き起こす最大の原因と考えられます。こうしたクエリは、最適化に最も適した要素でもあります。<br>
 
-To identify long running queries:
+実行時間の長いクエリを特定するには:
 
-1. Open **Custom** tab in Query Performance Insight for selected database
-1. Change metrics to be **duration**
-1. Select number of queries and observation interval
-1. Select aggregation function
-  - **Sum** adds up all query execution time during whole observation interval.
-  - **Max** finds queries which execution time was maximum at whole observation interval.
-  - **Avg** finds average execution time of all query executions and show you the top out of these averages. 
+1. Query Performance Insight で、選択したデータベースの **[カスタム]** タブを開きます。
+1. メトリックを **[実行時間]** に変更します。
+1. クエリの数と監視間隔を選択します。
+1. 集計関数を選択します。
+  - **Sum** は、監視間隔全体のすべてのクエリ実行時間を合計します。
+  - **Max** は、監視間隔全体で実行時間が最長のクエリを検索します。
+  - **Avg** は、全クエリ実行の平均実行時間を算出し、これらの平均値で上位のクエリを表示します。
 
-    ![query duration][4]
+    ![クエリ実行時間][4]
 
-## <a name="review-top-queries-per-execution-count"></a>Review top queries per execution count
+## 実行回数あたりの上位クエリを確認する
 
-High number of executions might not be affecting database itself and resources usage can be low, but overall application might get slow.
+実行回数が多くても、データベース自体には必ずしも影響せず、リソース使用率が低い場合もありますが、アプリケーション全体の処理速度は低下します。
 
-In some cases, very high execution count may lead to increase of network round trips. Round trips significantly affect performance. They are subject to network latency and to downstream server latency. 
+場合によっては、実行回数が非常に多いと、ネットワークのラウンド トリップが増えることもあります。ラウンド トリップはパフォーマンスに大きく影響します。これは、ネットワーク待ち時間やダウンストリーム サーバーの待ち時間の影響を受けます。
 
-For example, many data-driven Web sites heavily access the database for every user request. While connection pooling helps, the increased network traffic and processing load on the database server can adversely affect performance.  General advice is to keep round trips to an absolute minimum.
+たとえば、多くのデータ主導 Web サイトは、ユーザー要求ごとに高い頻度でデータベースにアクセスします。接続プールが有効に動作しても、ネットワーク トラフィックやデータベース サーバーの処理負荷の増加により、パフォーマンスに悪影響を及ぼす可能性があります。一般的には、ラウンド トリップを全面的に最小限に抑えることが推奨されます。
 
-To identify frequently executed queries (“chatty”) queries:
+頻繁に実行される ("通信頻度の高い") クエリを特定するには:
 
-1. Open **Custom** tab in Query Performance Insight for selected database
-1. Change metrics to be **execution count**
-1. Select number of queries and observation interval
+1. Query Performance Insight で、選択したデータベースの **[カスタム]** タブを開きます。
+1. メトリックを **[実行回数]** に変更します。
+1. クエリの数と監視間隔を選択します。
 
-    ![query execution count][5]
+    ![クエリ実行回数][5]
 
-## <a name="understanding-performance-tuning-annotations"></a>Understanding performance tuning annotations 
+## パフォーマンス チューニングの注釈を理解する 
 
-While exploring your workload in Query Performance Insight, you might notice icons with vertical line on top of the chart.<br>
+Query Performance Insight でワークロードを探索する場合、垂直線付きのアイコンがグラフ上部に表示されることがあります。<br>
 
-These icons are annotations; they represent performance affecting actions performed by [SQL Azure Database Advisor](sql-database-advisor.md). By hovering annotation, you get basic information about the action:
+これらは注釈のアイコンであり、[SQL Azure Database Advisor](sql-database-advisor.md) によって実行される、パフォーマンスに影響するアクションを表します。注釈にカーソルを置くと、アクションの基本情報が表示されます。
 
-![query annotation][6]
+![クエリの注釈][6]
 
-If you want to know more or apply advisor recommendation, click the icon. It will open details of action. If it’s an active recommendation you can apply it straight away using command.
+詳細を確認したり、アドバイザーの推奨事項を適用するには、アイコンをクリックします。アクションの詳細が開きます。アクティブな推奨事項の場合は、直ちにコマンドを使用して適用できます。
 
-![query annotation details][7]
+![クエリの注釈の詳細][7]
 
-### <a name="multiple-annotations."></a>Multiple annotations. ###
+### 複数の注釈 ###
 
-It’s possible, that because of zoom level, annotations that are close to each other will get collapsed into one. This will be represented by special icon, clicking it will open new blade where list of grouped annotations will be shown.
-Correlating queries and performance tuning actions can help to better understand your workload. 
+ズーム レベルによっては、互いに近接する注釈が 1 つに折りたたまれている場合があります。この場合は、特殊なアイコンが表示されます。このアイコンをクリックすると新しいブレードが開き、グループ化された注釈の一覧が表示されます。相互に関連するクエリやパフォーマンス チューニング アクションは、ワークロードへの理解を深めるのに役立ちます。
 
 
-##  <a name="optimizing-the-query-store-configuration-for-query-performance-insight"></a>Optimizing the Query Store configuration for Query Performance Insight
+## 	Query Performance Insight 用のクエリ ストア構成の最適化
 
-During your use of Query Performance Insight, you might encounter the following Query Store messages:
+Query Performance Insight の使用中に、次のようなクエリ ストア メッセージが表示されることがあります。
 
-- "Query Store is not properly configured on this database. Click here to learn more."
-- "Query Store is not properly configured on this database. Click here to change settings." 
+- 「クエリ ストアはこのデータベースで適切に構成されていません。詳細を確認するには、ここをクリックしてください。」
+- 「クエリ ストアはこのデータベースで適切に構成されていません。設定を変更するには、ここをクリックしてください。」
 
-These messages usually appear when Query Store is not able to collect new data. 
+これらのメッセージは、通常、クエリ ストアが新しいデータを収集できないときに表示されます。
 
-First case happens when Query Store is in Read-Only state and parameters are set optimally. You can fix this by increasing size of Query Store or clearing Query Store.
+1 つ目は、クエリ ストアが読み取り専用状態にあり、パラメーターの設定が最適化されている場合に発生します。クエリ ストアのサイズを増やすか、クエリ ストアを消去して、問題を修正できます。
 
-![qds button][8]
+![qds ボタン][8]
 
-Second case happens when Query Store is Off or parameters aren’t set optimally. <br>You can change the Retention and Capture policy and enable Query Store by executing commands below or directly from portal:
+2 つ目は、クエリ ストアがオフの場合またはパラメーターの設定が最適化されていない場合に発生します。<br>下のコマンドを実行することによって、または直接ポータルから、保存とキャプチャのポリシーを変更してクエリ ストアを有効化できます。
 
-![qds button][9]
+![qds ボタン][9]
 
-### <a name="recommended-retention-and-capture-policy"></a>Recommended retention and capture policy
+### 推奨される保存とキャプチャのポリシー
 
-There are two types of retention policies:
+保持ポリシーには 2 つの種類があります。
 
-- Size based – if set to AUTO it will clean data automatically when near max size is reached.
-- Time based - by default we will set it to 30 days, which means, if Query Store will run out of space, it will delete query information older than 30 days
+- サイズ ベース – AUTO に設定した場合、最大サイズの近づくとデータが自動的にクリーンアップされます。
+- 時間ベース – 既定では 30 日に設定されます。つまり、クエリ ストアの領域が不足すると、30 日より古いクエリ情報が削除されます。
 
-Capture policy could be set to:
+キャプチャ ポリシーは次のように設定できます。
 
-- **All** – Captures all queries.
-- **Auto** – Infrequent queries and queries with insignificant compile and execution duration are ignored. Thresholds for execution count, compile and runtime duration are internally determined. This is the default option.
-- **None** – Query Store stops capturing new queries, however runtime stats for already captured queries are still collected.
-    
-We recommend setting all policies to AUTO and clean policy to 30 days:
+- **すべて** - すべてのクエリをキャプチャします。
+- **AUTO** - 低頻度のクエリおよびコンパイル期間と実行期間が重要ではないクエリは無視されます。実行カウント、コンパイル期間、実行期間のしきい値は内部的に決定されます。これが既定のオプションです。
+- **None** – クエリ ストアは新しいクエリのキャプチャを停止します。ただし、既にキャプチャされているクエリの実行時統計は引き続き収集されます。
+	
+すべてのポリシーを AUTO に設定し、クリーンアップ ポリシーを 30 日に設定することをお勧めします。
 
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (SIZE_BASED_CLEANUP_MODE = AUTO);
-        
+    	
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (CLEANUP_POLICY = (STALE_QUERY_THRESHOLD_DAYS = 30));
     
     ALTER DATABASE [YourDB] 
     SET QUERY_STORE (QUERY_CAPTURE_MODE = AUTO);
 
-Increase size of Query Store. This could be performed by connecting to a database and issuing following query:
+クエリ ストアのサイズを増やします。これは、データベースに接続して、次のクエリを発行することにより実行できます。
 
     ALTER DATABASE [YourDB]
     SET QUERY_STORE (MAX_STORAGE_SIZE_MB = 1024);
 
-Applying these settings will eventually make Query Store collecting new queries, however if you don’t want to wait you can clear Query Store. 
-> [AZURE.NOTE] Executing following query will delete all current information in the Query Store. 
+これらの設定を適用すると、クエリ ストアでは最終的に新しいクエリが収集されるようになりますが、待機したくない場合はクエリ ストアを消去できます。
+> [AZURE.NOTE] 次のクエリを実行すると、現在クエリ ストア内にあるすべての情報が削除されます。
 
 
     ALTER DATABASE [YourDB] SET QUERY_STORE CLEAR;
 
 
-## <a name="summary"></a>Summary
+## まとめ
 
-Query Performance Insight helps you understand the impact of your query workload and how it relates to database resource consumption. With this feature, you will learn about the top consuming queries, and easily identify the ones to fix before they become a problem.
-
-
+Query Performance Insight を使うと、クエリ ワークロードの影響や、データベース リソース消費量との関係を理解できます。この機能では、消費量上位クエリがわかり、問題になる前に簡単に識別して修正できます。
 
 
-## <a name="next-steps"></a>Next steps
 
-For additional recommendations about improving the performance of your SQL database, click [Recommendations](sql-database-advisor.md) on the **Query Performance Insight** blade.
+
+## 次のステップ
+
+**[Query Performance Insight]** ブレードで [[推奨事項]](sql-database-advisor.md) をクリックして、SQL Database のパフォーマンスの向上に関するその他の推奨事項を確認します。
 
 ![Performance Advisor](./media/sql-database-query-performance/ia.png)
 
@@ -243,9 +241,4 @@ For additional recommendations about improving the performance of your SQL datab
 [8]: ./media/sql-database-query-performance/qds-off.png
 [9]: ./media/sql-database-query-performance/qds-button.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

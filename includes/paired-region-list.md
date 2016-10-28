@@ -1,27 +1,24 @@
-|Primary            |Secondary          |
+|プライマリ |セカンダリ |
 |:-----------------:|:-----------------:|
-|North Central US   |South Central US   |
-|South Central US   |North Central US   |
-|East US            |West US            |
-|West US            |East US            |
-|US East 2          |Central US         |
-|Central US         |US East 2          |
-|North Europe       |West Europe        |
-|West Europe        |North Europe       |
-|South East Asia    |East Asia          |
-|East Asia          |South East Asia    |
-|East China         |North China        |
-|North China        |East China         |
-|Japan East         |Japan West         |
-|Japan West         |Japan East         |
-|Brazil South       |South Central US   |
-|Australia East     |Australia Southeast|
-|Australia Southeast|Australia East     |
-|Canada East        |Canada Central     |
-|Canada Central     |Canada East        |
-|West US 2          |West Central US    |
+|米国中北部 |米国中南部 |
+|米国中南部 |米国中北部 |
+|米国東部 |米国西部 |
+|米国西部 |米国東部 |
+|米国東部 2 |米国中部 |
+|米国中部 |米国東部 2 |
+|北ヨーロッパ |西ヨーロッパ |
+|西ヨーロッパ |北ヨーロッパ |
+|東南アジア |東アジア |
+|東アジア |東南アジア |
+|中国東部 |中国北部 |
+|中国北部 |中国東部 |
+|東日本 |西日本 |
+|西日本 |東日本 |
+|ブラジル南部 |米国中南部 |
+|オーストラリア東部 |オーストラリア南東部|
+|オーストラリア南東部|オーストラリア東部 |
+|カナダ東部 |カナダ中部 |
+|カナダ中部 |カナダ東部 |
+|米国西部 2 |米国中西部 |
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

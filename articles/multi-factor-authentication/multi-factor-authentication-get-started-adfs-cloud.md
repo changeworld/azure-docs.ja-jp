@@ -1,106 +1,96 @@
 <properties
-    pageTitle="Securing cloud resources with Azure Multi-Factor Authentication and AD FS"
-    description="This is the Azure Multi-Factor authentication page that describes how to get started with Azure MFA and AD FS in the cloud."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtland"/>
+	pageTitle="Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護"
+	description="クラウドで Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtland"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
+# Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護
 
-# <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Securing cloud resources with Azure Multi-Factor Authentication and AD FS
+組織が Azure Active Directory とフェデレーションしており、Azure AD によってアクセスされるリソースがある場合、Azure Multi-Factor Authentication または Active Directory フェデレーション サービス (AD FS) を使用してこれらのリソースをセキュリティ保護します。Azure Multi-factor Authentication または Active Directory フェデレーション サービスで Azure Active Directory リソースをセキュリティ保護するには、以下の手順を使用します。
 
-If your organization is federated with Azure Active Directory and you have resources that are accessed by Azure AD, you can use Azure Multi-Factor Authentication or Active Directory Federation Services to secure these resources. Use the procedures below to secure Azure Active Directory resources with either Azure Multi-Factor Authentication or Active Directory Federation Services.
-
-## <a name="to-secure-azure-ad-resources-using-ad-fs-do-the-following:"></a>To secure Azure AD resources using AD FS do the following:
-
-
-
-1. Use the steps outlined in [turn-on multi-factor authentication](active-directory/multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users) for users to enable an account.
-2. Use the following procedure to setup a claims rule:
-
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
-
--   Start the AD FS Management console.
--   Navigate to Relying Party Trusts and right-click on the Relying Party Trust. Select Edit Claim Rules…
--   Click Add Rule…
--   From the drop down, select Send Claims Using a Custom Rule and click Next.
--   Enter a name for the claim rule.
--   Under Custom rule: add the following:
-
-
-        => issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
-
-    Corresponding claim:
-
-        <saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
-        <saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
-        </saml:Attribute>
-- Click OK. Click Finish. Close the AD FS Management console.
-
-Users then can complete signing in using the on-premises method (such as smartcard).
-
-## <a name="trusted-ips-for-federated-users"></a>Trusted IPs for federated users
-Trusted IPs allow administrators to by-pass multi-factor authentication for specific IP address or for federated users that have requests originating from within their own intranet. The following sections will describe how to configure Azure Multi-Factor Authentication Trusted IPs with federated users and by-pass multi-factor authentication, when a request originates from within a federated users intranet.  This is achieved by configuring AD FS to use a pass through or filter an incoming claim template with the Inside Corporate Network claim type.  This example uses Office 365 for our Relying Party Trusts.
-
-### <a name="configure-the-ad-fs-claims-rules"></a>Configure the AD FS claims rules
-
-The first thing we need to do is to configure the AD FS claims. We will be creating two claims rules, one for the Inside the Corporate Network claim type and an additional one for keeping our users signed in.
-
-1. Open AD FS Management.
-2. On the left, select Relying Party Trusts.
-3. In the middle, right-click on Microsoft Office 365 Identity Platform and select **Edit Claim Rules…**
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
-4. On Issuance Transform Rules click **Add Rule.**
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
-5. On the Add Transform Claim Rule Wizard, select Pass Through or Filter an Incoming Claim from the drop down and click Next.
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
-6. In the box next to Claim rule name, give your rule a name. For example: InsideCorpNet.
-7. From the drop-down, next to Incoming claim type, select Inside Corporate Network.
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
-8. Click Finish.
-9. On Issuance Transform Rules click **Add Rule**.
-10. On the Add Transform Claim Rule Wizard, select Send Claims Using a Custom Rule from the drop down and click Next.
-11. In the box under Claim rule name: enter Keep Users Signed In.
-12. In the Custom rule box enter:
-
-        c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
-            => issue(claim = c);
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
-13. Click **Finish**.
-14. Click **Apply**.
-15. Click **Ok**.
-16. Close AD FS Management.
+## AD FS を使用して Azure AD リソースをセキュリティ保護するには、次の手順に従います。
 
 
 
-### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Configure Azure Multi-Factor Authentication Trusted IPs with Federated Users
-Now that the claims are in place, we cane configure trusted ips.
+1. ユーザーがアカウントを有効にするには、「[多要素認証をオンにする](active-directory/multi-factor-authentication-get-started-cloud.md#turn-on-multi-factor-authentication-for-users)」で説明されている手順を使用します。
+2. 要求規則をセットアップするには、次の手順を使用します。
 
-1. Sign-in to the Azure Management Portal.
-2. On the left, click Active Directory.
-3. Under, Directory click on the directory you wish to setup Trusted IPs on.
-4. On the Directory you have selected, click Configure.
-5. In the multi-factor authentication section, click Manage service settings.
-6. On the Service Settings page, under Trusted IPs, select **For requests from federated users originating from my intranet.**
-![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
-7. Click save.
-8. Once the updates have been applied, click close.
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/adfs1.png)
 
-
-That’s it! At this point, federated Office 365 users should only have to use MFA when a claim originates from outside the corporate intranet.
+- 	AD FS 管理コンソールを起動します。
+- 	[証明書利用者信頼] に移動し、[証明書利用者信頼] を右クリックします。[要求ルールの編集...] を選択します。
+- 	[ルールの追加...] をクリックします。
+- 	ドロップダウンから、[カスタム規則を使ってクレームを送信する] を選択し、[次へ] をクリックします。
+- 	要求ルールの名前を入力します。
+- 	[カスタム規則:] の下に、以下を追加します。
 
 
+		=> issue(Type = "http://schemas.microsoft.com/claims/authnmethodsreferences", Value = "http://schemas.microsoft.com/claims/multipleauthn");
 
-<!--HONumber=Oct16_HO2-->
+	対応する要求:
+
+		<saml:Attribute AttributeName="authnmethodsreferences" AttributeNamespace="http://schemas.microsoft.com/claims">
+		<saml:AttributeValue>http://schemas.microsoft.com/claims/multipleauthn</saml:AttributeValue>
+		</saml:Attribute>
+- [OK] をクリックします。[完了] をクリックします。AD FS 管理コンソールを閉じます。
+
+ユーザーはオンプレミスの方式 (スマート カードなど) を使用してサインインを完了することができます。
+
+## フェデレーション ユーザー用の信頼できる IP
+管理者は、信頼できる IP を使用して、特定の IP アドレスまたはイントラネット内から要求が送信されているフェデレーション ユーザーの多要素認証をバイパスできます。次のセクションで、要求がフェデレーション ユーザーのイントラネット内から送信されている場合に、信頼できる IP とフェデレーション ユーザーを Azure Multi-Factor Authentication にどのように構成し、多要素認証をどのようにバイパスするかについて説明します。これは、要求の種類 [企業ネットワーク内] で [入力方向の要求をパススルーするかフィルター処理する] テンプレートを使用するように AD FS を構成することによって実現されます。ここで示す例では、証明書利用者信頼で Office 365 を使用します。
+
+### AD FS 要求規則を構成する
+
+最初に実行する必要があるのは、AD FS の要求を構成することです。ここでは、2 つの要求規則を作成します。1 つは [企業ネットワーク内] という要求の種類用であり、もう 1 つはユーザーのサインイン状態を維持するためのものです。
+
+1. AD FS 管理を開きます。
+2. 左側で、[証明書利用者信頼] を選択します。
+3. 中央で、[Microsoft Office 365 ID プラットフォーム] を右クリックし、**[要求規則の編集…]** を選択します。![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip1.png)
+4. [発行変換規則] で、**[規則の追加]** をクリックします。![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip2.png)
+5. 変換要求規則追加ウィザードで、ドロップダウンから [入力方向の要求をパススルーするかフィルター処理する] を選択し、[次へ] をクリックします。![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip3.png)
+6. [要求規則名] の横にあるボックスに、規則の名前を入力します。例: InsideCorpNet。
+7. [入力方向の要求の種類] の横にあるドロップダウンから、[企業ネットワーク内] を選択します。![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip4.png)
+8. [完了] をクリックします。
+9. [発行変換規則] で、**[規則の追加]** をクリックします。
+10. 変換要求規則の追加ウィザードで、ドロップダウンから [カスタムの規則を使用して要求を送信する] を選択し、[次へ] をクリックします。
+11. [要求規則名] の下のボックスに 「Keep Users Signed In」 (ユーザーをサインインしたままにする) と入力します。
+12. [カスタムの規則] ボックスに次のように入力します。
+
+		c:[Type == "http://schemas.microsoft.com/2014/03/psso"]
+			=> issue(claim = c);
+![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip5.png)
+13. **[完了]** をクリックします。
+14. **[Apply]** をクリックします。
+15. **[OK]** をクリックします。
+16. AD FS 管理を閉じます。
 
 
+
+### Azure Multi-Factor Authentication の信頼できる IP とフェデレーション ユーザーを構成する
+これで要求が準備できたので、信頼できる IP を構成できます。
+
+1. Azure 管理ポータルにサインインします。
+2. 左側の [Active Directory] をクリックします。
+3. [ディレクトリ] で、信頼できる IP を設定するディレクトリをクリックします。
+4. 選択したディレクトリで、[構成] をクリックします。
+5. [多要素認証] セクションで、[サービス設定の管理を] クリックします。
+6. [サービス設定] ページの [信頼できる IP] で、**[イントラネットから送信されるフェデレーション ユーザーからの要求]** を選択します。![クラウド](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
+7. [保存] をクリックします。
+8. 更新が適用されたら、[閉じる] をクリックします。
+
+
+これで終了です。 この時点で、Office 365 のフェデレーション ユーザーは、企業のイントラネットの外部から要求を送信するときに、MFA のみを使用するだけですみます。
+
+<!---HONumber=AcomDC_0921_2016-->

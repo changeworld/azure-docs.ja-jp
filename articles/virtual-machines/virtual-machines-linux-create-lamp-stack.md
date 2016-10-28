@@ -1,38 +1,37 @@
 <properties
-    pageTitle="Deploy LAMP on a Linux virtual machine | Microsoft Azure"
-    description="Learn how to install the LAMP stack on a Linux VM"
-    services="virtual-machines-linux"
-    documentationCenter="virtual-machines"
-    authors="jluk"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Linux 仮想マシンへの LAMP のデプロイ | Microsoft Azure"
+	description="Linux VM に LAMP スタックをインストールする方法を説明します。"
+	services="virtual-machines-linux"
+	documentationCenter="virtual-machines"
+	authors="jluk"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.date="06/07/2016"
-    ms.author="jluk"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.date="06/07/2016"
+	ms.author="jluk"/>
 
+# Azure への LAMP スタックのデプロイ
+この記事では、Apache Web サーバー、MySQL、および PHP (LAMP スタック) を Azure にデプロイする方法について説明します。Azure アカウント ([無料試用版を入手してください](https://azure.microsoft.com/pricing/free-trial/)) と、[Azure アカウントに接続している](../xplat-cli-connect.md) [Azure CLI](../xplat-cli-install.md) が必要になります。
 
-# <a name="deploy-lamp-stack-on-azure"></a>Deploy LAMP Stack on Azure
-This article will walk you through how to deploy an Apache web server, MySQL, and PHP (the LAMP stack) on Azure. You will need an Azure Account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/)) and the [Azure CLI](../xplat-cli-install.md) that is [connected to your Azure account](../xplat-cli-connect.md).
+この記事で取り上げる LAMP のインストール方法は 2 つあります。
 
-There are two methods for installing LAMP covered in this article:
+## クイック コマンドの概要
 
-## <a name="quick-command-summary"></a>Quick Command Summary
-
-1) Deploy LAMP on new VM
+1) 新しい VM に LAMP をデプロイする
 
 ```
 # One command to create a resource group holding a VM with LAMP already on it
 $ azure group create -n uniqueResourceGroup -l westus --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.json
 ```
 
-2) Deploy LAMP on existing VM
+2) 既存の VM に LAMP をデプロイする
 
 ```
 # Two commands: one updates packages, the other installs Apache, MySQL, and PHP
@@ -40,9 +39,9 @@ user@ubuntu$ sudo apt-get update
 user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
 ```
 
-## <a name="deploy-lamp-on-new-vm-walkthrough"></a>Deploy LAMP on new VM Walkthrough
+## 新しい VM に LAMP をデプロイするチュートリアル
 
-You can start by creating a new [resource group](../resource-group-overview.md) that will contain the VM:
+まず、VM が含まれる新しい[リソース グループ](../resource-group-overview.md)を作成します。
 
     $ azure group create uniqueResourceGroup westus
     info:    Executing command group create
@@ -57,11 +56,11 @@ You can start by creating a new [resource group](../resource-group-overview.md) 
     data:
     info:    group create command OK
 
-To create the VM itself, you can use an already written Azure Resource Manager template found [here on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app).
+VM 自体を作成するには、[GitHub のこちら](https://github.com/Azure/azure-quickstart-templates/tree/master/lamp-app)にある既に作成済みの Azure Resource Manager テンプレートを使用できます。
 
     $ azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/lamp-app/azuredeploy.json uniqueResourceGroup uniqueLampName
 
-You should see a response prompting some more inputs:
+さらに入力を求める応答画面が表示されます。
 
     info:    Executing command group deployment create
     info:    Supply values for the following parameters
@@ -95,77 +94,75 @@ You should see a response prompting some more inputs:
     data:    ubuntuOSVersion           String        14.04.2-LTS
     info:    group deployment create command OK
 
-You have now created a Linux VM with LAMP already installed on it. If you wish, you can verify the install by jumping down to [Verify LAMP Successfully Installed].
+これで、LAMP が既にインストールされている Linux VM が作成されました。必要に応じて、「LAMP が正常にインストールされていることを確認する」に移動してインストールを確認できます。
 
-## <a name="deploy-lamp-on-existing-vm-walkthrough"></a>Deploy LAMP on existing VM Walkthrough
+## LAMP を既存の VM にデプロイするチュートリアル
 
-If you need help creating a Linux VM you can head [here to learn how to create a Linux VM] (./virtual-machines-linux-quick-create-cli.md). Next, you will need to SSH into the Linux VM. If you need help with creating an SSH key you can head [here to learn how to create an SSH key on Linux/Mac] (./virtual-machines-linux-mac-create-ssh-keys.md).
-If you have an SSH key already, go ahead and SSH into your Linux VM with `ssh username@uniqueDNS`.
+Linux VM の作成についてサポートが必要な場合は、Linux VM を作成する方法を[こちら](./virtual-machines-linux-quick-create-cli.md)に移動して確認します。次に、Linux VM に SSH で接続する必要があります。SSH キーの作成についてサポートが必要な場合は、Linux または Mac で SSH キーを作成する方法を[こちら](./virtual-machines-linux-mac-create-ssh-keys.md)に移動して確認します。SSH キーが既にある場合は、先に進み、`ssh username@uniqueDNS` を使用して Linux VM に SSH で接続します。
 
-Now that you are working within your Linux VM, we will walk through installing the LAMP stack on Debian-based distributions. The exact commands might differ for other Linux distros.
+Linux VM では作業しているため、Debian ベースのディストリビューションに LAMP スタックをインストールする方法について説明します。Linux ディストリビューションによって、コマンドが微妙に異なる場合があります。
 
-#### <a name="installing-on-debian/ubuntu"></a>Installing on Debian/Ubuntu
+#### Debian または Ubuntu へのインストール
 
-You will need the following packages installed: `apache2`, `mysql-server`, `php5`, and `php5-mysql`. You can install these by directly grabbing these packages or using Tasksel. Instructions for both options are listed below.
-Before installing you will need to download and update package lists.
+次のパッケージをインストールする必要があります: `apache2`、`mysql-server`、`php5`、および `php5-mysql`。これらのパッケージは、直接取得するか、Tasksel を使用することでインストールできます。両方のオプションの手順を以下に示します。インストールする前に、パッケージの一覧をダウンロードして更新する必要があります。
 
     user@ubuntu$ sudo apt-get update
     
-##### <a name="individual-packages"></a>Individual Packages
-Using apt-get:
+##### 個々のパッケージ
+apt-get の使用
 
-    user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
+	user@ubuntu$ sudo apt-get install apache2 mysql-server php5 php5-mysql
 
-##### <a name="using-tasksel"></a>Using Tasksel
-Alternatively you can download Tasksel, a Debian/Ubuntu tool that installs multiple related packages as a coordinated "task" onto your system.
+##### Tasksel の使用
+または、Tasksel をダウンロードすることができます。これは、複数の関連パッケージを一連のタスクとしてシステムにインストールするための、Debian/Ubuntu ツールです。
 
     user@ubuntu$ sudo apt-get install tasksel
     user@ubuntu$ sudo tasksel install lamp-server
 
-After running the either of the above options you will be prompted to install these packages and a number of other dependencies. Press 'y' and then 'Enter' to continue, and follow any other prompts to set an administrative password for MySQL. This will install the minimum required PHP extensions needed to use PHP with MySQL. 
+上記のいずれかのオプションを実行すると、これらのパッケージとその他のいくつかの依存関係をインストールするよう求められます。続行するには、y キーと Enter キーの順に押し、後続の指示に従って MySQL の管理パスワードを設定します。これにより、MySQL で PHP を使用する上で必要最小限の PHP 拡張機能がインストールされます。
 
 ![][1]
 
-Run the following command to see other PHP extensions that are available as packages:
+パッケージとして利用可能な他の PHP 拡張機能を表示するには、下記のコマンドを実行します。
 
-    user@ubuntu$ apt-cache search php5
+	user@ubuntu$ apt-cache search php5
 
 
-#### <a name="create-info.php-document"></a>Create info.php document
+#### info.php ドキュメントを作成する
 
-You should now be able to check what version of Apache, MySQL, and PHP you have through the command line by typing `apache2 -v`, `mysql -v`, or `php -v`.
+コマンドラインに `apache2 -v`、`mysql -v`、または `php -v` を入力して、使用している Apache、MySQL、PHP のバージョンを確認できるようになりました。
 
-If you would like to test further, you can create a quick PHP info page to view in a browser. Create a new file with Nano text editor with this command:
+さらにテストしたい場合は、簡単な PHP 情報ページを作成して、ブラウザーで表示できます。Nano テキスト エディターで次のコマンドを使用して新しいファイルを作成します。
 
     user@ubuntu$ sudo nano /var/www/html/info.php
 
-Within the GNU Nano text editor, add the following lines:
+GNU Nano テキスト エディターに次の行を追加します。
 
     <?php
     phpinfo();
     ?>
 
-Then save and exit the text editor.
+保存してテキスト エディターを終了します。
 
-Restart Apache with this command so all new installs will take effect.
+すべての新規インストールを有効にするために、次のコマンドで Apache を再起動します。
 
     user@ubuntu$ sudo service apache2 restart
 
-## <a name="verify-lamp-successfully-installed"></a>Verify LAMP Successfully Installed
+## LAMPが正常にインストールされていることを確認する
 
-Now you can check the PHP info page you just created in your browser by going to http://youruniqueDNS/info.php, it should look similar to this.
+http://youruniqueDNS/info.php に移動して、作成した PHP 情報ページをブラウザーでチェックできます。次のように表示されます。
 
 ![][2]
 
-You can check your Apache installation by viewing the Apache2 Ubuntu Default Page by going to you http://youruniqueDNS/. You should see something like this.
+http://youruniqueDNS/ に移動して Apache2 Ubuntu の既定のページを表示することで、Apache インストールを確認できます。次のような結果が表示されます。
 
 ![][3]
 
-Congratulations, you have just setup a LAMP stack on your Azure VM!
+これで、Azure VM 上に LAMP スタックを設定できました。
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-Check out the Ubuntu documentation on the LAMP stack:
+LAMP スタックで Ubuntu のドキュメントを確認します。
 
 - [https://help.ubuntu.com/community/ApacheMySQLPHP](https://help.ubuntu.com/community/ApacheMySQLPHP)
 
@@ -173,8 +170,4 @@ Check out the Ubuntu documentation on the LAMP stack:
 [2]: ./media/virtual-machines-linux-deploy-lamp-stack/phpsuccesspage.png
 [3]: ./media/virtual-machines-linux-deploy-lamp-stack/apachesuccesspage.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

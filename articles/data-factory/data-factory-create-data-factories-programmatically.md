@@ -1,76 +1,75 @@
 <properties 
-    pageTitle="Create, monitor, and manage Azure data factories by using Data Factory SDK | Microsoft Azure" 
-    description="Learn how to programmatically create, monitor, and manage Azure data factories by using Data Factory SDK." 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="spelluru" 
-    manager="jhubbard" 
-    editor="monicar"/>
+	pageTitle="Data Factory SDK を使用して Azure Data Factory を作成、監視、管理する | Microsoft Azure" 
+	description="Data Factory SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
 <tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/14/2016" 
-    ms.author="spelluru"/>
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/14/2016" 
+	ms.author="spelluru"/>
 
+# Data Factory .NET SDK を使用して Azure Data Factory を作成、監視、管理する
+## Overview
+Data Factory .NET SDK を使用して Azure Data Factory をプログラムによって作成、監視、管理できます。この記事には、Data Factory の作成と監視を行うサンプルの .NET コンソール アプリケーションを作成できるチュートリアルが含まれています。Data Factory .NET SDK の詳細については、[Data Factory クラス ライブラリ リファレンス](https://msdn.microsoft.com/library/mt415893.aspx)に関するページをご覧ください。
 
-# <a name="create,-monitor,-and-manage-azure-data-factories-using-data-factory-.net-sdk"></a>Create, monitor, and manage Azure data factories using Data Factory .NET SDK
-## <a name="overview"></a>Overview
-You can create, monitor, and manage Azure data factories programmatically using Data Factory .NET SDK. This article contains a walkthrough that you can follow to create a sample .NET console application that creates and monitors a data factory. See [Data Factory Class Library Reference](https://msdn.microsoft.com/library/mt415893.aspx) for details about Data Factory .NET SDK. 
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+- Visual Studio 2012 または 2013 または 2015
+- [Azure .NET SDK](http://azure.microsoft.com/downloads/) のダウンロードとインストール。
+- Azure Active Directory にネイティブ クライアント アプリケーションを追加します。アプリケーションを追加する手順については、「[Azure Active Directory とアプリケーションの統合](../active-directory/active-directory-integrating-applications.md)」を参照してください。**[構成]** ページの**クライアント ID** と**リダイレクト URI** をメモしておきます。
+- Azure の**サブスクリプション ID** と**テナント ID** を入手します。手順については、「[Azure サブスクリプションとテナント ID を入手する](#get-azure-subscription-and-tenant-ids)」を参照してください。
+- Azure Data Factory の NuGet パッケージをダウンロードしてインストールします。手順はこのチュートリアルにあります。
 
-- Visual Studio 2012 or 2013 or 2015
-- Download and install [Azure .NET SDK](http://azure.microsoft.com/downloads/).
-- Add a native client application to Azure Active Directory. See [Integrating applications with Azure Active Directory](../active-directory/active-directory-integrating-applications.md) for steps to add the application. Note down the **CLIENT ID** and **REDIRECT URI** on the **CONFIGURE** page.
-- Get your Azure **subscription ID** and **tenant ID**. See [Get Azure subscription and tenant IDs](#get-azure-subscription-and-tenant-ids) for instructions. 
-- Download and install NuGet packages for Azure Data Factory. Instructions are in the walkthrough.  
+## チュートリアル
+1. Visual Studio 2012 または 2013 を使用して、C# .NET コンソール アプリケーションを作成します。
+	1. **Visual Studio 2012/2013/2015** を起動します。
+	2. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
+	3. **[テンプレート]** を展開し、**[Visual C#]** を選択します。このチュートリアルでは C# を使用しますが、どの .NET 言語でも使用できます。
+	4. 右側にあるプロジェクトの種類の一覧から **[コンソール アプリケーション]** を選択します。
+	5. **[名前]** に「**DataFactoryAPITestApp**」と入力します。
+	6. **[場所]** で **[C:\\ADFGetStarted]** を選択します。
+	7. **[OK]** をクリックしてプロジェクトを作成します。
+2. **[ツール]** をクリックし、**[NuGet パッケージ マネージャー]** をポイントして、**[パッケージ マネージャー コンソール]** をクリックします。
+3.	**[パッケージ マネージャー コンソール]** で、次のコマンドを 1 つずつ実行します。
 
-## <a name="walkthrough"></a>Walkthrough
-1. Using Visual Studio 2012 or 2013, create a C# .NET console application.
-    1. Launch **Visual Studio 2012/2013/2015**.
-    2. Click **File**, point to **New**, and click **Project**.
-    3. Expand **Templates**, and select **Visual C#**. In this walkthrough, you use C#, but you can use any .NET language.
-    4. Select **Console Application** from the list of project types on the right.
-    5. Enter **DataFactoryAPITestApp** for the **Name**.
-    6. Select **C:\ADFGetStarted** for the **Location**.
-    7. Click **OK** to create the project.
-2. Click **Tools**, point to **NuGet Package Manager**, and click **Package Manager Console**.
-3.  In the **Package Manager Console**, execute the following commands one-by-one. 
+			Install-Package Microsoft.Azure.Management.DataFactories
+			Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
+4. 次の **appSetttings** セクションを **App.config** ファイルに追加します。これらの構成値は、**GetAuthorizationHeader** メソッドで使用されます。
 
-            Install-Package Microsoft.Azure.Management.DataFactories
-            Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.19.208020213
-4. Add the following **appSetttings** section to the **App.config** file. These configuration values are used by the **GetAuthorizationHeader** method. 
-
-    > [AZURE.IMPORTANT] Replace values for **AdfClientId**, **RedirectUri**, **SubscriptionId**, and **ActiveDirectoryTenantId** with your own values.  
+	> [AZURE.IMPORTANT] **AdfClientId**、**RedirectUri**、**SubscriptionId**、**ActiveDirectoryTenantId** の値は、実際の値で置き換えてください。
  
-        <appSettings>
-            <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
-            <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
-            <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
+		<appSettings>
+		    <add key="ActiveDirectoryEndpoint" value="https://login.windows.net/" />
+		    <add key="ResourceManagerEndpoint" value="https://management.azure.com/" />
+		    <add key="WindowsManagementUri" value="https://management.core.windows.net/" />
 
-            <!-- Replace the following values with your own -->
-            <add key="AdfClientId" value="Your AAD application ID" />
-            <add key="RedirectUri" value="Your AAD application's redirect URI" />
-            <add key="SubscriptionId" value="your subscription ID" />
-            <add key="ActiveDirectoryTenantId" value="your tenant ID" />
-        </appSettings>
-5. Add the following **using** statements to the source file (Program.cs) in the project.
+		    <!-- Replace the following values with your own -->
+		    <add key="AdfClientId" value="Your AAD application ID" />
+		    <add key="RedirectUri" value="Your AAD application's redirect URI" />
+		    <add key="SubscriptionId" value="your subscription ID" />
+    		<add key="ActiveDirectoryTenantId" value="your tenant ID" />
+		</appSettings>
+5. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
-        using System.Threading;
-        using System.Configuration;
-        using System.Collections.ObjectModel;
-        
-        using Microsoft.Azure.Management.DataFactories;
-        using Microsoft.Azure.Management.DataFactories.Models;
-        using Microsoft.Azure.Management.DataFactories.Common.Models;
-        
-        using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using Microsoft.Azure;
-6. Add the following code that creates an instance of **DataPipelineManagementClient** class to the **Main** method. You use this object to create a data factory, a linked service, input and output datasets, and a pipeline. You also use this object to monitor slices of a dataset at runtime.    
+		using System.Threading;
+		using System.Configuration;
+		using System.Collections.ObjectModel;
+		
+		using Microsoft.Azure.Management.DataFactories;
+		using Microsoft.Azure.Management.DataFactories.Models;
+		using Microsoft.Azure.Management.DataFactories.Common.Models;
+		
+		using Microsoft.IdentityModel.Clients.ActiveDirectory;
+		using Microsoft.Azure;
+6. **DataPipelineManagementClient** クラスのインスタンスを作成する次のコードを **Main** メソッドに追加します。このオブジェクトを使用して、データ ファクトリ、リンクされたサービス、入力データセットと出力データセット、およびパイプラインを作成します。また、実行時にデータセットのスライスを監視する際にもこのオブジェクトを使用します。
 
         // create data factory management client
         string resourceGroupName = "resourcegroupname";
@@ -85,9 +84,9 @@ You can create, monitor, and manage Azure data factories programmatically using 
 
         DataFactoryManagementClient client = new DataFactoryManagementClient(aadTokenCredentials, resourceManagerUri);
 
-    > [AZURE.NOTE] Replace the **resourcegroupname** with the name of your Azure resource group. You can create a resource group using the [New-AzureResourceGroup](https://msdn.microsoft.com/library/Dn654594.aspx) cmdlet.
+	> [AZURE.NOTE] **resourcegroupname** は Azure リソース グループの名前に置き換えます。リソース グループを作成するには、[New-AzureResourceGroup](https://msdn.microsoft.com/library/Dn654594.aspx) コマンドレットを使用します。
 
-7. Add the following code that creates a **data factory** to the **Main** method.
+7. **データ ファクトリ**を作成する次のコードを **Main** メソッドに追加します。
 
         // create a data factory
         Console.WriteLine("Creating a data factory");
@@ -103,9 +102,9 @@ You can create, monitor, and manage Azure data factories programmatically using 
             }
         );
 
-8. Add the following code that creates a **linked service** to the **Main** method. 
+8. **リンクされたサービス**を作成する次のコードを **Main** メソッドに追加します。
 
-    > [AZURE.NOTE] Use **account name** and **account key** of your Azure storage account for the **ConnectionString**. 
+	> [AZURE.NOTE] **ConnectionString** には、Azure ストレージ アカウントの**アカウント名**と**アカウント キー**を使用します。
 
         // create a linked service
         Console.WriteLine("Creating a linked service");
@@ -122,11 +121,11 @@ You can create, monitor, and manage Azure data factories programmatically using 
                 }
             }
         );
-9. Add the following code that creates **input and output datasets** to the **Main** method. 
+9. **入力と出力データセット**を作成する次のコードを **Main** メソッドに追加します。
 
-    The **FolderPath** for the input blob is set to **adftutorial/** where **adftutorial** is the name of the container in your blob storage. If this container does not exist in your Azure blob storage, create a container with this name: **adftutorial** and upload a text file to the container.
-    
-    The FolderPath for the output blob is set to: **adftutorial/apifactoryoutput/{Slice}** where **Slice** is dynamically calculated based on the value of **SliceStart** (start date-time of each slice.)  
+	入力 BLOB の **FolderPath** を **adftutorial/** に設定します。この **adftutorial** は BLOB ストレージ内のコンテナーの名前です。Azure BLOB ストレージにこのコンテナーが存在しない場合は、**adftutorial** という名前のコンテナーを作成し、このコンテナーにテキスト ファイルをアップロードします。
+	
+	出力 BLOB の FolderPath を **adftutorial/apifactoryoutput/{Slice}** に設定します。この **Slice** は **SliceStart** (各スライスの開始日時) の値に基づいて動的に計算されます。
  
         // create input and output datasets
         Console.WriteLine("Creating input and output datasets");
@@ -201,9 +200,9 @@ You can create, monitor, and manage Azure data factories programmatically using 
                 }
             });
 
-10. Add the following code that **creates and activates a pipeline** to the **Main** method. This pipeline has a **CopyActivity** that takes **BlobSource** as a source and **BlobSink** as a sink.
+10. **パイプラインを作成してアクティブにする**次のコードを **Main** メソッドに追加します。このパイプラインには、ソースとして **BlobSource**、シンクとして **BlobSink** を使用する **CopyActivity** があります。
 
-    The Copy Activity performs the data movement in Azure Data Factory. The activity is powered by a globally available service that can copy data between various data stores in a secure, reliable, and scalable way. See [Data Movement Activities](data-factory-data-movement-activities.md) article for details about the Copy Activity. 
+	コピー アクティビティにより、Azure Data Factory でデータ移動が実行されます。このアクティビティは、安全で信頼性の高いスケーラブルな方法によってさまざまなデータ ストア間でデータをコピーできる、グローバルに利用可能なサービスによって動作します。コピー アクティビティの詳細については、「[データ移動アクティビティ](data-factory-data-movement-activities.md)」をご覧ください。
 
             // create a pipeline
         Console.WriteLine("Creating a pipeline");
@@ -259,9 +258,9 @@ You can create, monitor, and manage Azure data factories programmatically using 
                 }
             });
 
-11. Add the following helper method used by the **Main** method to the **Program** class. This method pops a dialog box that that lets you provide **user name** and **password** that you use to log in to Azure portal. 
+11. **Main** メソッドで使用される次のヘルパー メソッドを **Program** クラスに追加します。このメソッドは、Azure Portal へのログインに使用する**ユーザー名**と**パスワード**の入力が可能なダイアログ ボックスを表示します。
  
-        public static string GetAuthorizationHeader()
+		public static string GetAuthorizationHeader()
         {
             AuthenticationResult result = null;
             var thread = new Thread(() =>
@@ -295,7 +294,7 @@ You can create, monitor, and manage Azure data factories programmatically using 
             throw new InvalidOperationException("Failed to acquire token");
         }  
  
-13. Add the following code to the **Main** method to get the status of a data slice of the output dataset. There is only slice expected in this sample.   
+13. 次のコードを **Main** メソッドに追加して、出力データセットのデータ スライスのステータスを取得します。この例で予想されるスライスのみが存在します。
  
         // Pulling status within a timeout threshold
         DateTime start = DateTime.Now;
@@ -329,11 +328,11 @@ You can create, monitor, and manage Azure data factories programmatically using 
             }
         }
 
-13. **(optional)** Add the following code to get run details for a data slice to the **Main** method.
+13. **(省略可能)** データ スライスの実行の詳細を取得するために次のコードを **Main** メソッドに追加します。
 
         Console.WriteLine("Getting run details of a data slice");
 
-        // give it a few minutes for the output slice to be ready
+		// give it a few minutes for the output slice to be ready
         Console.WriteLine("\nGive it a few minutes for the output slice to be ready and press any key.");
         Console.ReadKey();
 
@@ -361,27 +360,27 @@ You can create, monitor, and manage Azure data factories programmatically using 
         Console.WriteLine("\nPress any key to exit.");
         Console.ReadKey();
 
-14. In the Solution Explorer, expand the project (**DataFactoryAPITestApp**), right-click **References**, and click **Add Reference**. Select check box for `System.Configuration` assembly and click **OK**. 
-15. Build the console application. Click **Build** on the menu and click **Build Solution**. 
-16. Confirm that there is at least one file in the adftutorial container in your Azure blob storage. If not, create Emp.txt file in Notepad with the following content and upload it to the adftutorial container.
+14. ソリューション エクスプローラーで、プロジェクト (**DataFactoryAPITestApp**) を展開し、**[参照]** を右クリックして **[参照の追加]** をクリックします。`System.Configuration` アセンブリのチェック ボックスをオンにし、**[OK]** をクリックします。
+15. コンソール アプリケーションをビルドします。メニューから **[ビルド]** をクリックし、**[ソリューションのビルド]** をクリックします。
+16. Azure BLOB ストレージ内の adftutorial コンテナーに少なくとも 1 つのファイルが存在することを確認します。存在しない場合は、以下の内容を記述した Emp.txt ファイルをメモ帳で作成し、これを adftutorial コンテナーにアップロードします。
 
         John, Doe
-        Jane, Doe 
-17. Run the sample by clicking **Debug** -> **Start Debugging** on the menu. When you see the **Getting run details of a data slice**, wait for a few minutes, and press **ENTER**. 
-18. Use the Azure portal to verify that the data factory **APITutorialFactory** is created with the following artifacts: 
-    - Linked service: **LinkedService_AzureStorage** 
-    - Dataset: **DatasetBlobSource** and **DatasetBlobDestination**.
-    - Pipeline: **PipelineBlobSample** 
-18. Verify that an output file is created in the **apifactoryoutput** folder in the **adftutorial** container.
+		Jane, Doe 
+17. メニューの **[デバッグ]**、**[デバッグの開始]** の順にクリックして、サンプルを実行します。**[Getting run details of a data slice]** が表示されている場合は、数分待機して、**Enter** を押します。
+18. Azure ポータルを使用して、データ ファクトリの **APITutorialFactory** が次のアーティファクトで作成されることを確認します。
+	- リンクされたサービス: **LinkedService\_AzureStorage**
+	- データセット: **DatasetBlobSource** と **DatasetBlobDestination**
+	- パイプライン: **PipelineBlobSample**
+18. **adftutorial** コンテナーの **apifactoryoutput** フォルダーに出力ファイルが作成されることを確認します。
 
-## <a name="log-in-without-popup-dialog-box"></a>Log in without popup dialog box 
-The sample code in the walkthrough launches a dialog box for you to enter Azure credentials. If you need to sign in programmatically without using a dialog-box, see [Authenticating a service principal with Azure Resource Manager](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell). 
+## ポップアップ ダイアログ ボックスなしでのログイン 
+このチュートリアルのサンプル コードでは、Azure 資格情報を入力するためのダイアログ ボックスが起動されます。ダイアログ ボックスを使用せずにプログラムでサインインする必要がある場合は、[Azure Resource Manager でのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md#authenticate-service-principal-with-certificate---powershell)に関するページを参照してください。
 
-> [AZURE.IMPORTANT] Add a Web application to Azure Active Directory and note down the client ID and client secret of the application.  
+> [AZURE.IMPORTANT] Web アプリケーションを Azure Active Directory に追加し、アプリケーションのクライアント ID とクライアント シークレットを書き留めてください。
 
-### <a name="example"></a>Example
+### 例
 
-Create GetAuthorizationHeaderNoPopup method.  
+GetAuthorizationHeaderNoPopup メソッドを作成します。
 
     public static string GetAuthorizationHeaderNoPopup()
     {
@@ -395,55 +394,50 @@ Create GetAuthorizationHeaderNoPopup method.
         throw new InvalidOperationException("Failed to acquire token");
     }
 
-Replace **GetAuthorizationHeader** call with a call to **GetAuthorizationHeaderNoPopup** in the **Main** function:  
+**Main** 関数の **GetAuthorizationHeader** の呼び出しを **GetAuthorizationHeaderNoPopup** の呼び出しで置き換えます。
 
         TokenCloudCredentials aadTokenCredentials =
             new TokenCloudCredentials(
             ConfigurationManager.AppSettings["SubscriptionId"],
             GetAuthorizationHeaderNoPopup());
 
-Here is how you can create the Active Directory application, service principal, and then assign it to the Data Factory Contributor role: 
+次に、Active Directory アプリケーションとサービス プリンシパルを作成した後、それを Data Factory 共同作成者ロールに割り当てる方法を示します。
 
-1. Create the AD application. 
+1. AD アプリケーションを作成します。
 
-        $azureAdApplication = New-AzureRmADApplication -DisplayName "MyADAppForADF" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.myadappforadf.org/example" -Password "Pass@word1"
+		$azureAdApplication = New-AzureRmADApplication -DisplayName "MyADAppForADF" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.myadappforadf.org/example" -Password "Pass@word1"
 
-2. Create the AD service principal. 
+2. AD サービス プリンシパルを作成します。
 
-        New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+		New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
-3. Add service principal to the Data Factory Contributor role. 
+3. Data Factory 共同作成者ロールにサービス プリンシパルを追加します。
 
-        New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
+		New-AzureRmRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
-4. Get the application ID.
+4. アプリケーション ID を取得します。
 
-        $azureAdApplication
-
-
-Note down the application ID and the password (client secret) and use it in the walkthrough. 
-
-## <a name="get-azure-subscription-and-tenant-ids"></a>Get Azure subscription and tenant IDs
-If you do not have latest version of PowerShell installed on your machine, follow instructions in [How to install and configure Azure PowerShell](../powershell-install-configure.md) article to install it.
-
-1. Start Azure PowerShell and run the following command
-2. Run the following command and enter the user name and password that you use to sign in to the Azure portal.
-
-        Login-AzureRmAccount
-
-    If you have only one Azure subscription associated with this account, you do not need to perform the next two steps.  
-3. Run the following command to view all the subscriptions for this account.
-
-        Get-AzureRmSubscription
-4. Run the following command to select the subscription that you want to work with. Replace **NameOfAzureSubscription** with the name of your Azure subscription.
-
-        Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext 
-
-Note down the **SubscriptionId** and **TenantId** values.
+		$azureAdApplication
 
 
+アプリケーション ID とパスワード (クライアント シークレット) を書き留めて、チュートリアルで使用します。
 
+## Azure サブスクリプションとテナント ID を入手する
+コンピューターに PowerShell の最新バージョンをインストールしていない場合は、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載されている手順に従ってインストールします。
 
-<!--HONumber=Oct16_HO2-->
+1. Azure PowerShell を起動し、次のコマンドを実行します。
+2. 次のコマンドを実行して、Azure ポータルへのサインインに使用するユーザー名とパスワードを入力します。
 
+		Login-AzureRmAccount
 
+	このアカウントに関連付けられている Azure サブスクリプションを 1 つのみをお持ちの場合は、次の 2 つの手順を実行する必要はありません。
+3. 次のコマンドを実行して、このアカウントのすべてのサブスクリプションを表示します。
+
+		Get-AzureRmSubscription
+4. 次のコマンドを実行して、使用するサブスクリプションを選択します。**NameOfAzureSubscription** を自分の Azure サブスクリプションの名前で置き換えます。
+
+		Get-AzureRmSubscription -SubscriptionName NameOfAzureSubscription | Set-AzureRmContext 
+
+**SubscriptionId** と **TenantId** の値を書き留めておきます。
+
+<!---HONumber=AcomDC_0914_2016-->

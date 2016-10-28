@@ -1,163 +1,157 @@
 <properties
-    pageTitle="Use empty edge nodes in HDInsight | Microsoft Azure"
-    description="How to add an ampty edge node to HDInsight cluster that can be used as a client, and to test/host your HDInsight applications."
-    services="hdinsight"
-    editor="cgronlun"
-    manager="jhubbard"
-    authors="mumian"
-    tags="azure-portal"
-    documentationCenter=""/>
+	pageTitle="HDInsight での空のエッジ ノードの使用 | Microsoft Azure"
+	description="クライアントとして使用できる空のエッジ ノードを HDInsight クラスターに追加する方法と HDInsight アプリケーションをテストおよびホストする方法について説明します。"
+	services="hdinsight"
+	editor="cgronlun"
+	manager="jhubbard"
+	authors="mumian"
+	tags="azure-portal"
+	documentationCenter=""/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/14/2016"
-    ms.author="jgao"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/14/2016"
+	ms.author="jgao"/>
 
+# HDInsight での空のエッジ ノードの使用
 
-# <a name="use-empty-edge-nodes-in-hdinsight"></a>Use empty edge nodes in HDInsight
+Linux ベースの HDInsight クラスターに空のエッジ ノードを追加する方法について説明します。空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成された Linux 仮想マシンですが、Hadoop サービスは実行されていません。エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。
 
-Learn how to add an empty edge node to a Linux-based HDInsight cluster. An empty edge node is a Linux virtual machine with the same client tools installed and configured as in the headnodes, but with no hadoop services running. You can use the edge node for accessing the cluster, testing your client applications, and hosting your client applications. 
-
-You can add an empty edge node to an existing HDInsight cluster, to a new cluster when you create the cluster. Adding an empty edge node is done using Azure Resource Manager template.  The following sample demonstrates how it is done using a template:
+空のエッジ ノードは、既存の HDInsight クラスターに追加することも、クラスターの作成時にその新しいクラスターに追加することもできます。空のエッジ ノードを追加するには、Azure Resource Manager テンプレートを使用します。次のサンプルでは、テンプレートを使用して空のエッジ ノードを追加する方法を示しています。
 
     "resources": [
-        {
-            "name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
-            "type": "Microsoft.HDInsight/clusters/applications",
-            "apiVersion": "[variables('clusterApiVersion')]",
-            "properties": {
-                "marketPlaceIdentifier": "EmptyNode",
-                "computeProfile": {
-                    "roles": [{
-                        "name": "edgenode",
-                        "targetInstanceCount": 1,
-                        "hardwareProfile": {
-                            "vmSize": "[parameters('edgeNodeSize')]"
-                        }
-                    }]
-                },
-                "installScriptActions": [{
-                    "name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
-                    "uri": "https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh",
-                    "roles": ["edgenode"]
-                }],
-                "uninstallScriptActions": [],
-                "httpsEndpoints": [],
-                "applicationType": "CustomApplication"
-            }
-        }
-    ],
+		{
+			"name": "[concat(parameters('clusterName'),'/', variables('applicationName'))]",
+			"type": "Microsoft.HDInsight/clusters/applications",
+			"apiVersion": "[variables('clusterApiVersion')]",
+			"properties": {
+				"marketPlaceIdentifier": "EmptyNode",
+				"computeProfile": {
+					"roles": [{
+						"name": "edgenode",
+						"targetInstanceCount": 1,
+						"hardwareProfile": {
+							"vmSize": "[parameters('edgeNodeSize')]"
+						}
+					}]
+				},
+				"installScriptActions": [{
+					"name": "[concat('emptynode','-' ,uniquestring(variables('applicationName')))]",
+					"uri": "https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh",
+					"roles": ["edgenode"]
+				}],
+				"uninstallScriptActions": [],
+				"httpsEndpoints": [],
+				"applicationType": "CustomApplication"
+			}
+		}
+	],
 
-As shown in the sample, you can optionally call a [script action](hdinsight-hadoop-customize-cluster-linux.md) to perform additional configuration, such as installing [Apache Hue](hdinsight-hadoop-hue-linux.md) in the edge node.
+サンプルに示すように、必要に応じて、[スクリプト アクション](hdinsight-hadoop-customize-cluster-linux.md)を呼び出して、エッジ ノードへの [Apache Hue](hdinsight-hadoop-hue-linux.md) のインストールなど、追加の構成を行うことができます。
 
-After you have created an edge node, you can connect to the edge node using SSH, and run client tools to access the Hadoop cluster in HDInsight.
+エッジ ノードを作成した後、SSH を使用してエッジ ノードに接続し、クライアント ツールを実行して HDInsight の Hadoop クラスターにアクセスすることができます。
 
-## <a name="add-an-edge-node-to-an-existing-cluster"></a>Add an edge node to an existing cluster
+## 既存のクラスターにエッジ ノードを追加する
 
-In this section, you use a Resource Manager template to add an edge node to an existing HDInsight cluster.  The Resource Manager template can be found in [GitHub](https://github.com/hdinsight/Iaas-Applications/tree/master/EmptyNode). The Resource Manager template calls a script action script located at https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh. The script doesn't perform any actions.  This is to demonstrate calling script action from a Resource Manager template.
+このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。Resource Manager テンプレートは、[GitHub](https://github.com/hdinsight/Iaas-Applications/tree/master/EmptyNode) にあります。Resource Manager テンプレートは、https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh にあるスクリプト アクションのスクリプトを呼び出します。このスクリプトでは操作は実行されません。これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
 
-**To add an empty edge node to an existing cluster**
+**既存のクラスターに空のエッジ ノードを追加するには**
 
-1. Create an HDInsight cluster if you don't have one yet.  See [Hadoop tutorial: Get started using Linux-based Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
-2. Click the following image to sign in to Azure and open the Azure Resource Manager template in the Azure portal. 
+1. HDInsight クラスターがない場合は作成します。「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
+2. 次の画像をクリックして Azure にサインインし、Azure Portal で Azure Resource Manager テンプレートを開きます。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FEmptyNode%2Fazuredeploy.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-3. Configure the following properties:
+3. 次のプロパティを構成します。
 
-    - CLUSTERNAME: Enter the name of an existing HDInsight cluster.
-    - EDGENODESIZE: Select one of the VM sizes.
-    - EDGENODEPREFIX: The default value is **new**.  Using the default value, the edge node name is **new-edgenode**.  You can customize the prefix from the portal. You can also customize the full name from the template.
+	- CLUSTERNAME: 既存の HDInsight クラスター名を入力します。
+	- EDGENODESIZE: いずれかの VM サイズを選択します。
+	- EDGENODEPREFIX: 既定値は **new** です。既定値を使用する場合、エッジ ノードの名前は **new-edgenode** です。プレフィックスは、Portal でカスタマイズできます。テンプレートからフル ネームをカスタマイズすることもできます。
 
 
-4. Click **OK** to save the changes.
-5. In **Resource group**, select a Resource Group.
-6. Click **Review legal terms**, and then click **Purchase**.
-7. Select **Pin to dashboard**, and then click **Create**.
+4. **[OK]** をクリックして変更を保存します。
+5. **[リソース グループ]** で、リソース グループを選択します。
+6. **[法律条項を確認してください]**、**[購入]** の順にクリックします。
+7. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。
 
-## <a name="add-an-edge-node-when-creating-a-cluster"></a>Add an edge node when creating a cluster
+## クラスター作成時にエッジ ノードを追加する
 
-In this section, you use a Resource Manager template to create HDInsight cluster with an edge node.  The Resource Manager template can be found in a public [Azure Blob storage container](http://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight-with-edge-node.json). The Resource Manager template calls a script action script located at https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh. The script doesn't perform any actions.  This is to demonstrate calling script action from a Resource Manager template.
+このセクションでは、Resource Manager テンプレートを使用して、エッジ ノードを含む HDInsight クラスターを作成します。Resource Manager テンプレートは、パブリックの [Azure Blob Storage コンテナー](http://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-hadoop-cluster-in-hdinsight-with-edge-node.json)にあります。Resource Manager テンプレートは、https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh にあるスクリプト アクションのスクリプトを呼び出します。このスクリプトでは操作は実行されません。これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
 
-**To add an empty edge node to an existing cluster**
+**既存のクラスターに空のエッジ ノードを追加するには**
 
-1. Create an HDInsight cluster if you don't have one yet.  See [Hadoop tutorial: Get started using Linux-based Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
-2. Click the following image to sign in to Azure and open the Azure Resource Manager template in the Azure portal. 
+1. HDInsight クラスターがない場合は作成します。「[Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
+2. 次の画像をクリックして Azure にサインインし、Azure Portal で Azure Resource Manager テンプレートを開きます。
 
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-hadoop-cluster-in-hdinsight-with-edge-node.json" target="_blank"><img src="https://acom.azurecomcdn.net/80C57D/cdn/mediahandler/docarticles/dpsmedia-prod/azure.microsoft.com/en-us/documentation/articles/hdinsight-hbase-tutorial-get-started-linux/20160201111850/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-3. Configure the following properties:
-        
-    - CLUSTERNAME: Enter a name for the new cluster to create.
-    - CLUSTERLOGINUSERNAME: Enter the Hadoop HTTP user name.  The default name is **admin**.
-    - CLUSTERLOGINPASSWORD: Enter the Hadoop HTTP user password.
-    - SSHUSERNAME: Enter the SSH user name. The default name is **sshuser**.
-    - SSHPASSWORD: Enter the SSH user password.
-    - LOCATION: Enter the location of the Resource Group name, the cluster, and the default storage account.
-    - CLUSTERTYPE: The default value is **hadoop**.
-    - CLUSTERWORKERNODECOUNT: The default value is 2.
-    - EDGENODESIZE: Select one of the VM sizes.
-    - EDGENODEPREFIX: The default value is **new**.  Using the default value, the edge node name is **new-edgenode**.  You can customize the prefix from the portal. You can also customize the full name from the template.
+3. 次のプロパティを構成します。
+		
+	- CLUSTERNAME: 作成する新しいクラスターの名前を入力します。
+	- CLUSTERLOGINUSERNAME: Hadoop HTTP ユーザー名を入力します。既定の名前は **admin** です。
+	- CLUSTERLOGINPASSWORD: Hadoop HTTP ユーザー パスワードを入力します。
+	- SSHUSERNAME: SSH ユーザー名を入力します。既定の名前は **sshuser** です。
+	- SSHPASSWORD: SSH ユーザー パスワードを入力します。
+	- LOCATION: リソース グループ名、クラスター、および既定のストレージ アカウントの場所を入力します。
+	- CLUSTERTYPE: 既定値は **hadoop** です。
+	- CLUSTERWORKERNODECOUNT: 既定値は 2 です。
+	- EDGENODESIZE: いずれかの VM サイズを選択します。
+	- EDGENODEPREFIX: 既定値は **new** です。既定値を使用する場合、エッジ ノードの名前は **new-edgenode** です。プレフィックスは、Portal でカスタマイズできます。テンプレートからフル ネームをカスタマイズすることもできます。
 
-4. Click **OK** to save the changes.
-5. In **Resource group**, enter a new Resource Group name.
-6. Click **Review legal terms**, and then click **Purchase**.
-7. Select **Pin to dashboard**, and then click **Create**. 
-
-
-## <a name="access-an-edge-node"></a>Access an edge node
-
-The edge node ssh endpoint is <EdgeNodeName>.<ClusterName>-ssh.azurehdinsight.net:22.  For example, new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22.
-
-The edge node appears as an application on the Azure portal.  The portal gives you the information to access the edge node using SSH.
-
-**To verify the edge node SSH endpoint**
-
-1. Sign on to the [Azure portal](https://portal.azure.com).
-2. Open the HDInsight cluster with an edge node.
-3. Click **Applications** from the cluster blade. You shall see the edge node.  The default name is **new-edgenode**.
-4. Click the edge node. You shall see the SSH endpoint.
-
-**To use Hive on the edge node**
-
-5. Use SSH to connect to the edge node.  See [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md) or [Use SSH with Linux-based Hadoop on HDInsight from Windows](hdinsight-hadoop-linux-use-ssh-windows.md).
-6. After you have connected to the edge node using SSH, use the following command to open the Hive console:
-
-        hive
-7. Run the following command to show Hive tables in the cluster:
-
-        show tables;
-
-## <a name="delete-an-edge-node"></a>Delete an edge node
-
-You can delete an edge node from the Azure portal.
-
-**To access an edge node**
-
-1. Sign on to the [Azure portal](https://portal.azure.com).
-2. Open the HDInsight cluster with an edge node.
-3. Click **Applications** from the cluster blade. You shall see a list of edge nodes.  
-4. Right-click the edge node you want to delete, and then click **Delete**.
-5. Click **Yes** to confirm.
-
-## <a name="next-steps"></a>Next steps
-
-In this article, you have learned how to add an edge node and how to access the edge node. To learn more, see the following articles:
-
-- [Install HDInsight applications](hdinsight-apps-install-applications.md): Learn how to install an HDInsight application to your clusters.
-- [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md): learn how to deploy an unpublished HDInsight application to HDInsight.
-- [Publish HDInsight applications](hdinsight-apps-publish-applications.md): Learn how to publish your custom HDInsight applications to Azure Marketplace.
-- [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx): Learn how to define HDInsight applications.
-- [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md): learn how to use Script Action to install additional applications.
-- [Create Linux-based Hadoop clusters in HDInsight using Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md): learn how to call Resource Manager templates to create HDInsight clusters.
+4. **[OK]** をクリックして変更を保存します。
+5. **[リソース グループ]** で、新しいリソース グループ名を入力します。
+6. **[法律条項を確認してください]**、**[購入]** の順にクリックします。
+7. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。
 
 
+## エッジ ノードにアクセスする
 
+エッジ ノードの SSH エンドポイントは、<エッジ ノード名>.<クラスター名>-ssh.azurehdinsight.net:22 です。たとえば、new-edgenode.myedgenode0914-ssh.azurehdinsight.net:22 のようになります。
 
-<!--HONumber=Oct16_HO2-->
+エッジ ノードは、Azure Portal ではアプリケーションとして表示されます。Portal には、SSH を使用してエッジ ノードにアクセスするための情報が表示されます。
 
+**エッジ ノードの SSH エンドポイントを確認するには**
 
+1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+2. エッジ ノードを含む HDInsight クラスターを開きます。
+3. クラスター ブレードで、**[アプリケーション]** をクリックします。エッジ ノードが表示されます。既定の名前は **new-edgenode** です。
+4. エッジ ノードをクリックします。SSH エンドポイントが表示されます。
+
+**エッジ ノードで Hive を使用するには**
+
+5. SSH を使用してエッジ ノードに接続します。「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」または「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」を参照してください。
+6. SSH を使用してエッジ ノードに接続したら、次のコマンドを使用して Hive コンソールを開きます。
+
+		hive
+7. 次のコマンドを使用して、クラスター内の Hive テーブルを表示します。
+
+		show tables;
+
+## エッジ ノードを削除する
+
+Azure Portal からエッジ ノードを削除できます。
+
+**エッジ ノードにアクセスするには**
+
+1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+2. エッジ ノードを含む HDInsight クラスターを開きます。
+3. クラスター ブレードで、**[アプリケーション]** をクリックします。エッジ ノードの一覧が表示されます。
+4. 削除するエッジ ノードを右クリックし、**[削除]** をクリックします。
+5. **[はい]** をクリックして確定します。
+
+## 次のステップ
+
+この記事では、エッジ ノードを追加する方法とエッジ ノードにアクセスする方法について説明しました。詳細については、次の記事を参照してください。
+
+- [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について確認します。
+- [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
+- [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
+- [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について確認します。
+- [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
+- [Resource Manager テンプレートを使用して HDInsight で Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
+
+<!---HONumber=AcomDC_0914_2016-->

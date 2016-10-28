@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager user interface | Microsoft Azure"
-   description="Describes the StorSimple Snapshot Manager user interface and explains how to use it to manage backup jobs and the backup catalog."
+   pageTitle="StorSimple Snapshot Manager のユーザー インターフェイス | Microsoft Azure"
+   description="StorSimple Snapshot Manager のユーザー インターフェイスについて説明し、これを使用してバックアップ ジョブとバックアップ カタログを管理する方法を説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,510 +15,505 @@
    ms.date="04/25/2016"
    ms.author="v-sharos" />
 
+# StorSimple Snapshot Manager のユーザー インターフェイス
 
-# <a name="storsimple-snapshot-manager-user-interface"></a>StorSimple Snapshot Manager user interface
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Snapshot Manager の直感的なユーザー インターフェイスを使用して、バックアップを作成および管理できます。このチュートリアルでは、ユーザー インターフェイスの概要と各コンポーネントの使用方法について説明します。StorSimple Snapshot Manager の詳細については、「[StorSimple Snapshot Manager について](storsimple-what-is-snapshot-manager.md)」を参照してください。
 
-The StorSimple Snapshot Manager has an intuitive user interface that you can use to take and manage backups. This tutorial provides an introduction to the user interface, and then explains how to use each of the components. For a detailed description of the StorSimple Snapshot Manager, see [What is StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md)
+### コンソールの説明
 
-### <a name="console-description"></a>Console description
+ユーザー インターフェイスを表示するには、デスクトップの StorSimple Snapshot Manager アイコンをクリックします。次の図に示すコンソール ウィンドウが表示されます。
 
-To view the user interface, click the StorSimple Snapshot Manager icon on your desktop. The console window appears, as shown in the following illustration.
+![StorSimple Snapshot Manager のウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_gui_panes.png)
 
-![StorSimple Snapshot Manager panes](./media/storsimple-use-snapshot-manager/HCS_SSM_gui_panes.png)
+コンソール ウィンドウは、5 つの主要要素で構成されています。各要素の詳細については、該当するリンクをクリックしてください。
 
-The console window has five major elements. Click the appropriate link for a complete description of each element.
+- [メニュー バー](#menu-bar) 
+- [ツール バー](#tool-bar) 
+- [スコープ ウィンドウ](#scope-pane) 
+- [結果ウィンドウ](#results-pane) 
+- [[操作] ウィンドウ](#actions-pane) 
 
-- [Menu bar](#menu-bar) 
-- [Tool bar](#tool-bar) 
-- [Scope pane](#scope-pane) 
-- [Results pane](#results-pane) 
-- [Actions pane](#actions-pane) 
+StorSimple Snapshot Manager では、[キーボード ナビゲーションと多数のショートカット](#keyboard-navigation-and-shortcuts)もサポートしています。
 
-Additionally, the StorSimple Snapshot Manager supports [keyboard navigation and a number of shortcuts](#keyboard-navigation-and-shortcuts).
+### コンソールのユーザー補助機能
 
-### <a name="console-accessibility"></a>Console accessibility
+StorSimple Snapshot Manager のユーザー インターフェイスでは、Windows オペレーティング システムと Microsoft 管理コンソール (MMC) で提供されるユーザー補助機能と、StorSimple Snapshot Manager 固有のキーボード ショートカットをサポートしています。
 
-The StorSimple Snapshot Manager user interface supports the accessibility features provided by the Windows operating system and the Microsoft Management Console (MMC), as well as some StorSimple Snapshot Manager–specific keyboard shortcuts. 
+- Windows のユーザー補助機能については、「[Windows 用キーボード ショートカット](https://support.microsoft.com/kb/126449)」をご覧ください。 
 
-- For a description of the Windows accessibility features, go to [Keyboard shortcuts for Windows](https://support.microsoft.com/kb/126449). 
+- MMC のユーザー補助機能については、「[MMC 3.0 のユーザー補助機能](https://technet.microsoft.com/library/cc766075.aspx)」をご覧ください。
 
-- For a description of the MMC accessibility features, go to [Accessibility for MMC 3.0](https://technet.microsoft.com/library/cc766075.aspx)
+- StorSimple Snapshot Manager のユーザー補助機能については、「[キーボード ナビゲーションとショートカット](#keyboard-navigation-and-shortcuts)」をご覧ください。
 
-- For a description of the StorSimple Snapshot Manager accessibility features, go to [Keyboard navigation and shortcuts](#keyboard-navigation-and-shortcuts).
+## メニュー バー
 
-## <a name="menu-bar"></a>Menu bar
+コンソール ウィンドウの最上部にあるメニュー バーには、[[ファイル]](#file-menu)、[[操作]](#action-menu)、[[表示]](#view-menu)、[[お気に入り]](#favorites-menu)、[[ウィンドウ]](#window-menu)、[[ヘルプ]](#help-menu) の各メニューがあります。
 
-The menu bar at the top of the console window contains [File](#file-menu), [Action](#action-menu), [View](#view-menu), [Favorites](#favorites-menu), [Window](#window-menu), and [Help](#help-menu) menus.
+メニュー バーの項目をクリックすると、そのメニューで使用できるコマンドの一覧が表示されます。次の例では、メニュー バーの **[表示]** メニューを選択しています。
 
-Click any item on the menu bar to see a list of available commands on that menu. The following example shows the **View** menu selected on the menu bar.
+![[表示] メニューの選択](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
 
-![View menu selected](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
+### [ファイル] メニュー
 
-### <a name="file-menu"></a>File menu
+**[ファイル]** メニューには、Microsoft 管理コンソール (MMC) の標準コマンドが表示されます。
 
-The **File** menu contains standard Microsoft Management Console (MMC) commands.
+#### メニューへのアクセス
 
-#### <a name="menu-access"></a>Menu access
+**[ファイル]** メニューを表示するには、メニュー バーの **[ファイル]** をクリックします。次のメニューが表示されます。
 
-To view the **File** menu, click **File** on the menu bar. The following menu appears.
+![StorSimple Snapshot Manager の [ファイル] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_FileMenu.png)
 
-![StorSimple Snapshot Manager File menu](./media/storsimple-use-snapshot-manager/HCS_SSM_FileMenu.png) 
+#### メニューの説明
 
-#### <a name="menu-description"></a>Menu description
+**[ファイル]** メニューに表示される項目を次の表に示します。
 
-The following table describes items that appear on the **File** menu.
-
-| Menu item | Description |
+| メニュー項目 | 説明 |
 |:----------|:-------------|
-| New       | Click **New** to create a new console based on the StorSimple Snapshot Manager. |
-| Open      | Click **Open** to open an existing console. |
-| Save      | Click **Save** to save the current console. |
-| Save as   | Click **Save As** to create a new, renamed instance of the current console. Use the **Save As** option to customize a view and save it for later retrieval. For example, you could create StorSimple Snapshot Manager snap-ins that point to specific servers. |
-| Add/Remove Snap-in | Click **Add/Remove Snap-in** to add or remove snap-ins and to organize nodes in the **Scope** pane. For more information, go to [Add, Remove, and Organize Snap-ins and Extensions in MMC 3.0](https://technet.microsoft.com/library/cc722035.aspx). |
-| Options   | Click **Options** to change the console icon, specify user access modes and permissions, or delete console files to increase available disk space. |
-| List of file paths | Click a path in the numbered list to reopen a file that you recently opened. |
-| Exit      | Click **Exit** to close the **File** menu. |
+| 新規 | StorSimple Snapshot Manager に基づく新しいコンソールを作成するには、**[新規]** をクリックします。 |
+| 開く | 既存のコンソールを開くには、**[開く]** をクリックします。 |
+| 保存 | 現在のコンソールを保存するには、**[保存]** をクリックします。 |
+| 名前を付けて保存 | 現在のコンソールのインスタンスの名前を変更して新しいインスタンスを作成するには、**[名前を付けて保存]** をクリックします。**[名前を付けて保存]** は、ビューをカスタマイズし、後で使用できるように保存する場合に使用します。たとえば、特定のサーバーを参照する StorSimple Snapshot Manager スナップインを作成できます。 |
+| スナップインの追加と削除 | スナップインを追加または削除したり、**スコープ** ウィンドウのノードを整理したりするには、**[スナップインの追加と削除]** をクリックします。詳細については、「[MMC 3.0 でスナップインと拡張機能を追加、削除、および整理する](https://technet.microsoft.com/library/cc722035.aspx)」をご覧ください。 |
+| オプション | コンソール アイコンの変更、ユーザー アクセス モードとアクセス許可の指定、空きディスク領域を増やすためのコンソール ファイルの削除などを行うには、**[オプション]** をクリックします。 |
+| ファイル パスのリスト | 最近開いたファイルを再度開くには、番号付きリストの目的のパスをクリックします。 |
+| 終了 | **[ファイル]** メニューを閉じるには、**[終了]** をクリックします。 |
  
-### <a name="action-menu"></a>Action menu
+### [操作] メニュー
 
-Use the **Action** menu to select from available actions. The items available to you depend on the selection you make in the **Scope** pane or **Results** pane.
+使用可能な操作の中から選択するには、**[操作]** メニューを使用します。使用できる項目は、**スコープ** ウィンドウまたは**結果**ウィンドウでの選択内容によって異なります。
 
-#### <a name="menu-access"></a>Menu access
+#### メニューへのアクセス
 
-To view the **Action** menu, do one of the following:
+**[操作]** メニューを表示するには、次のいずれかを実行します。
 
-- Right-click an item in the **Scope** pane or **Results** pane.
+- **スコープ** ウィンドウまたは**結果**ウィンドウで項目を右クリックします。
 
-- Select an item in the **Scope** pane or **Results** pane, and then click **Action** on the menu bar. 
+- **スコープ** ウィンドウまたは**結果**ウィンドウで項目を選択し、メニュー バーの **[操作]** をクリックします。
 
-For example, if you select the top node in the **Scope** pane, and then right-click or click **Action** in the menu bar, the following menu appears.
+たとえば、**スコープ** ウィンドウで最上位ノードを選択し、右クリックするか、メニュー バーの **[操作]** をクリックすると、次のメニューが表示されます。
  
-![StorSimple Snapshot Manager Action menu](./media/storsimple-use-snapshot-manager/HCS_SSM_Action_menu.png)
+![StorSimple Snapshot Manager の [操作] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_Action_menu.png)
 
-The **Actions** pane (on the right of the console) contains the same list of actions as the **Action** menu. Additionally, the **Actions** pane contains the **View** menu options, which enable you to create a custom view of the **Results** pane.
+**[操作]** ウィンドウ (コンソールの右側) には、**[操作]** メニューと同じ操作一覧が表示されます。また、**[操作]** ウィンドウには、**[表示]** メニュー オプションも表示されます。このオプションを使用して、**結果**ウィンドウのカスタム ビューを作成できます。
 
-![Actions pane with View menu open](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
+![[表示] メニューを開いた状態の [操作] ウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
 
-#### <a name="menu-description"></a>Menu description
+#### メニューの説明
 
-The following table contains an alphabetical list of StorSimple Snapshot Manager actions. 
+StorSimple Snapshot Manager の操作を次の表に示します。
 
-- The **Action** column lists actions that you can perform on nodes and results. 
+- **「操作」**列には、ノードや結果に対して実行できる操作が示されています。 
 
-- The **Navigation** column explains how to display the appropriate **Action** menu so that you can select the action. Some actions appear in multiple **Action** menus. For these actions, select one **Navigation** option from the bulleted list. 
+- **「ナビゲーション」**列では、目的の操作を選択できるように、適切な **[操作]** メニューを表示する方法を説明しています。複数の **[操作]** メニューに表示される操作もあります。これらの操作については、**「ナビゲーション」**列に箇条書きで記載されているいずれかの方法を選択してください。
 
-- The **Description** column describes how to use each action on the **Action** menu or Actions pane, and explains what it does.
+- **「説明」**列では、**[操作]** メニューまたは [操作] ウィンドウに表示される各操作の使用方法と実行される内容について説明しています。
 
->[AZURE.NOTE] The **Actions** pane and **Action** menus contain additional options, such as **View**, **New Window from here**, **Refresh**, **Export List**, and **Help**. These options are available as a part of the MMC, and are not specific to StorSimple Snapshot Manager. The table includes descriptions of these options.
+>[AZURE.NOTE] **[操作]** ウィンドウと **[操作]** メニューには、追加オプション (**[表示]**、**[ここから新しいウィンドウ]**、**[更新]**、**[リストのエクスポート]**、**[ヘルプ]** など) も表示されます。これらのオプションは MMC の機能であり、StorSimple Snapshot Manager に固有のものではありません。表にはこれらのオプションの説明も含まれています。
  
-| Action  | Navigation  | Description  |
+| アクション | ナビゲーション | 説明 |
 |:--------|:------------|:-------------|
-| Authenticate | Click the **Devices** node, and right-click a device in the **Results** pane. | Click **Authenticate** to enter the password that you configured for the device. |
-| Clone  | Expand **Backup Catalog**, expand **Cloud Snapshots**, click a dated backup, and then select a volume in the **Results** pane. | Click **Clone** to create a copy of a cloud snapshot and store it in a location that you designate. |
-| Configure a Device | Right-click the **Devices** node. | Click **Configure a Device** to configure a single device or multiple devices to connect to the Windows host. |
-| Create Backup Policy | Do one of the following:<ul><li>Right-click **Backup Policies**.</li><li>Click or expand **Volume Groups**, and then right-click a volume group.</li><li>Click or expand **Backup Catalog**, and then right-click a volume group.</li></ul> | Click **Create Backup Policy** to configure a scheduled backup for a volume group. |
-| Create Volume Group | Do one of the following:<ul><li>Click the **Volumes** node, and then right-click a volume in the **Results** pane.</li><li>Right-click the **Volume Groups** node.</li></ul> | Click **Create Volume Group** to assign volumes to a volume group. |
-| Delete | Click a node or result (This item appears on many **Action** menus and  **Actions** panes.) | Click **Delete** to delete the node or result that you selected. When the confirmation dialog box appears, confirm or cancel the deletion. |
-| Details | Click the **Devices** node, and then right-click a device in the **Results** pane. | Click **Details** to see the configuration details for a device. |
-| Edit | Click **Backup Policies**, and then right-click a policy in the **Results** pane. | Click **Edit** to change the backup schedule for a volume group. |
-| Export List | Click any node or result (This item appears on all **Action** menus and **Actions** panes.) | Click **Export List** to save a list in a comma-separated value (CSV) file. You can then import this file into a spreadsheet application for analysis. |
-| Help | Click any node or result. (This item appears on all **Action** menus and **Actions** panes.) | Click **Help** to open online Help in a separate browser window. |
-| New Window from Here | Click any node or result (This item appears on all **Action** menus and **Actions** panes.) | Click **New Window from Here** to open a new StorSimple Snapshot Manager window.|
-| Refresh | Click any node or result (This item appears on all **Action** menus and **Actions** panes.) | Click **Refresh** to update the currently displayed StorSimple Snapshot Manager window. |
-| Refresh Device | Click the **Devices** node, and right-click a device in the **Results** pane. | Click **Refresh Device** to synchronize a specific connected device with StorSimple Snapshot Manager. |
-| Refresh Devices | Right-click the **Devices** node. | Click **Refresh Devices** to synchronize your list of connected devices with StorSimple Snapshot Manager. |
-| Rescan volumes | Right-click the **Volumes** node. | Click **Rescan volumes** to update the list of volumes that appears in the **Results** pane. |
-| Restore | Expand **Backup Catalog**, expand a volume group, expand **Local Snapshots** or **Cloud Snapshots**, and then right-click a backup. | Click **Restore** to replace the current volume group data with the data from the selected backup. |
-| Take Backup | Do one of the following:<ul><li>Expand **Volume Groups**, and then right-click a volume group.</li><li>Expand **Backup Catalog**, and then right-click a volume group.</li></ul> | Click **Take Backup** to start a backup job immediately. |
-| Toggle Imports Display | Right-click the top node in the **Scope** pane (the **StorSimple Snapshot Manager** node in the examples). | Click **Toggle Imports Display** to show or hide the volume groups and associated backups that were imported from the StorSimple Manager service dashboard. |
+| 認証 | **[デバイス]** ノードをクリックし、**結果**ウィンドウでデバイスを右クリックします。 | **[認証]** をクリックして、デバイスの構成済みのパスワードを入力します。 |
+| 複製 | **[バックアップ カタログ]**、**[クラウド スナップショット]** の順に展開し、日付のあるバックアップをクリックして、**結果**ウィンドウでボリュームを選択します。 | クラウド スナップショットのコピーを作成し、指定した場所に保存するには、**[複製]** をクリックします。 |
+| デバイスの構成 | **[デバイス]** ノードを右クリックします。 | 1 つのデバイスまたは複数のデバイスを、Windows ホストに接続するように構成するには、**[デバイスの構成]** をクリックします。 |
+| バックアップ ポリシーの作成 | 次のいずれかを実行します。<ul><li>**[バックアップ ポリシー]** を右クリックします。</li><li>**[ボリューム グループ]** をクリックまたは展開し、ボリューム グループを右クリックします。</li><li>**[バックアップ カタログ]** をクリックまたは展開し、ボリューム グループを右クリックします。</li></ul> | ボリューム グループのスケジュールされたバックアップを構成するには、**[バックアップ ポリシーの作成]** をクリックします。 |
+| ボリューム グループの作成 | 次のいずれかを実行します。<ul><li>**[ボリューム]** ノードをクリックし、**結果**ウィンドウでボリュームを右クリックします。</li><li>**[ボリューム グループ]** ノードを右クリックします。</li></ul> | ボリューム グループにボリュームを割り当てるには、**[ボリューム グループの作成]** をクリックします。 |
+| 削除 | ノードまたは結果をクリックします (この項目は、多くの **[操作]** メニューと **[操作]** ウィンドウに表示されます)。 | 選択したノードまたは結果を削除するには、**[削除]** をクリックします。確認のダイアログ ボックスが表示されたら、削除を実行するか取り消します。 |
+| 詳細 | **[デバイス]** ノードをクリックし、**結果**ウィンドウでデバイスを右クリックします。 | デバイスの構成の詳細を表示するには、**[詳細]** をクリックします。 |
+| 編集 | **[バックアップ ポリシー]** をクリックし、**結果**ウィンドウでポリシーを右クリックします。 | ボリューム グループのバックアップ スケジュールを変更するには、**[編集]** をクリックします。 |
+| リストのエクスポート | 任意のノードまたは結果をクリックします (この項目は、すべての **[操作]** メニューと **[操作]** ウィンドウに表示されます)。 | リストをコンマ区切り値 (CSV) ファイルに保存するには、**[リストのエクスポート]** をクリックします。このファイルをスプレッドシート アプリケーションにインポートして分析することができます。 |
+| ヘルプ | 任意のノードまたは結果をクリックします (この項目は、すべての **[操作]** メニューと **[操作]** ウィンドウに表示されます)。 | 別のブラウザー ウィンドウでオンライン ヘルプを開くには、**[ヘルプ]** をクリックします。 |
+| ここから新しいウィンドウ | 任意のノードまたは結果をクリックします (この項目は、すべての **[操作]** メニューと **[操作]** ウィンドウに表示されます)。 | 新しい StorSimple Snapshot Manager ウィンドウを開くには、**[ここから新しいウィンドウ]** をクリックします。|
+| 更新 | 任意のノードまたは結果をクリックします (この項目は、すべての **[操作]** メニューと **[操作]** ウィンドウに表示されます)。 | 現在表示されている StorSimple Snapshot Manager ウィンドウを最新の情報に更新するには、**[更新]** をクリックします。 |
+| デバイスの更新 | **[デバイス]** ノードをクリックし、**結果**ウィンドウでデバイスを右クリックします。 | 接続された特定のデバイスを StorSimple Snapshot Manager と同期するには、**[デバイスの更新]** をクリックします。 |
+| デバイスの更新 | **[デバイス]** ノードを右クリックします。 | 接続されたデバイスのリストを StorSimple Snapshot Manager と同期するには、**[デバイスの更新]** をクリックします。 |
+| ボリュームの再スキャン | **[ボリューム]** ノードを右クリックします。 | **結果**ウィンドウに表示されるボリュームのリストを更新するには、**[ボリュームの再スキャン]** をクリックします。 |
+| 復元 | **[バックアップ カタログ]** を展開し、ボリューム グループを展開します。次に、**[ローカル スナップショット]** または **[クラウド スナップショット]** を展開し、バックアップを右クリックします。 | 現在のボリューム グループのデータを、選択したバックアップのデータに置き換えるには、**[復元]** をクリックします。 |
+| バックアップの作成 | 次のいずれかを実行します。<ul><li>**[ボリューム グループ]** を展開し、ボリューム グループを右クリックします。</li><li>**[バックアップ カタログ]** を展開し、ボリューム グループを右クリックします。</li></ul> | バックアップ ジョブをすぐに開始するには、**[バックアップの作成]** をクリックします。 |
+| インポートの表示の切り替え | **スコープ** ウィンドウで最上位ノード (この例では **[StorSimple Snapshot Manager]** ノード) を右クリックします。 | StorSimple Manager サービス ダッシュボードからインポートされたボリューム グループおよび関連するバックアップの表示/非表示を切り替えるには、**[インポートの表示の切り替え]** をクリックします。 |
 
-### <a name="view-menu"></a>View menu
+### [表示] メニュー
 
-Use the **View** menu to create a custom view of the **Results** pane contents. The **View** menu contains **Add/Remove Columns** and **Customize** options.
+**結果**ウィンドウの内容のカスタム ビューを作成するには、**[表示]** メニューを使用します。**[表示]** メニューには、**[列の追加と削除]** オプションと **[カスタマイズ]** オプションがあります。
 
-#### <a name="menu-access"></a>Menu access
+#### メニューへのアクセス
 
-You can access the **View** menu on the menu bar or in the **Actions** pane.
+**[表示]** メニューには、メニュー バーまたは **[操作]** ウィンドウからアクセスできます
 
-![StorSimple Snapshot Manager View menu](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png) 
+![StorSimple Snapshot Manager の[表示] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_View_menu.png)
 
-#### <a name="menu-description"></a>Menu description
+#### メニューの説明
 
-The following table describes items that appear on the **View** menu.
+**[表示]** メニューに表示される項目を次の表に示します。
 
-| Menu item  | Description |
+| メニュー項目 | 説明 |
 |:-----------|:-------------|
-| Add/Remove Columns | Click **Add/Remove Columns** to add or remove columns in the **Results** pane. |
-| Customize | Click **Customize** to show or hide items in the StorSimple Snapshot Manager console window. |
+| 列の追加と削除 | **結果**ウィンドウの列を追加または削除するには、**[列の追加と削除]** をクリックします。 |
+| カスタマイズ | StorSimple Snapshot Manager コンソール ウィンドウの項目の表示/非表示を切り替えるには、**[カスタマイズ]** をクリックします。 |
 
-### <a name="favorites-menu"></a>Favorites menu
+### [お気に入り] メニュー
 
-Use the **Favorites** menu to add, remove, and organize page views and tasks that you use frequently. 
+使用頻度の高いページ ビューやタスクを追加、削除、整理するには、**[お気に入り]** メニューを使用します。
 
-#### <a name="menu-access"></a>Menu access
+#### メニューへのアクセス
 
-You can access the **Favorites** menu on the menu bar.
+**[お気に入り]** メニューには、メニュー バーからアクセスできます。
 
-![StorSimple Snapshot Manager Favorites menu](./media/storsimple-use-snapshot-manager/HCS_SSM_FavoritesMenu.png)
+![StorSimple Snapshot Manager の [お気に入り] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_FavoritesMenu.png)
 
-#### <a name="menu-description"></a>Menu description
+#### メニューの説明
 
-The following table describes items that appear on the **Favorites** menu.
+**[お気に入り]** メニューに表示される項目を次の表に示します。
 
-| Menu item |  Description |
+| メニュー項目 | 説明 |
 |:----------|:-------------|
-| Add to Favorites | Click **Add to Favorites** to add the current view to your list of favorites. |
-| Organize Favorites | Click **Organize Favorites** to organize the contents of your Favorites folder. |
+| お気に入りに追加 | 現在のビューをお気に入りのリストに追加するには、**[お気に入りに追加]** をクリックします。 |
+| お気に入りの整理 | [お気に入り] フォルダーの内容を整理するには、**[お気に入りの整理]** をクリックします。 |
 
-### <a name="window-menu"></a>Window menu
+### [ウィンドウ] メニュー
 
-Use the **Window** menu to add and rearrange StorSimple Snapshot Manager console windows.
+StorSimple Snapshot Manager コンソール ウィンドウを追加したり、配置を変更したりするには、**[ウィンドウ]** メニューを使用します。
 
-#### <a name="menu-access"></a>Menu access
+#### メニューへのアクセス
 
-You can access the **Window** menu on the menu bar.
+**[ウィンドウ]** メニューには、メニュー バーからアクセスできます。
 
-![StorSimple Snapshot Manager Window menu](./media/storsimple-use-snapshot-manager/HCS_SSM_WindowMenu.png)
+![StorSimple Snapshot Manager の [ウィンドウ] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_WindowMenu.png)
 
-The numbered list at the bottom of the menu shows the windows that are currently open. Click any window in that list to bring the window into the foreground. 
+メニューの下部に表示される番号付きリストは、現在開いているウィンドウを示しています。このリストのウィンドウをクリックすると、そのウィンドウが前面に表示されます。
 
-#### <a name="menu-description"></a>Menu description
+#### メニューの説明
 
-The following table describes the items that appear on the Window menu.
+[ウィンドウ] メニューに表示される項目を次の表に示します。
 
-| Menu item  | Description |
+| メニュー項目 | 説明 |
 |:-----------|:-------------|
-| New Window | Click **New Window** to open a new console window (in addition to the existing window). |
-| Cascade   | Click **Cascade** to display the open console windows in a cascading style. |
-| Tile Horizontally | Click **Tile Horizontally** to display the open console windows in a tile (or grid) format. |
-| Arrange Icons | If you have multiple console windows open and scattered over your desktop, minimize them and then click **Arrange Icons** to arrange them in a horizontal row on the bottom of your screen. |
+| 新しいウィンドウ | (既存のウィンドウのほかに) 新しいコンソール ウィンドウを開くには、**[新しいウィンドウ]** をクリックします。 |
+| 重ねて表示 | 開いているコンソール ウィンドウを重ねて表示するには、**[重ねて表示]** をクリックします。 |
+| 上下に並べて表示 | 開いているコンソール ウィンドウをタイル (またはグリッド) 形式で表示するには、**[上下に並べて表示]** をクリックします。 |
+| アイコンの整列 | 開いているコンソール ウィンドウが複数あり、デスクトップが乱雑になっている場合は、それらのウィンドウを最小化してから、**[アイコンの整列]** をクリックすると、画面の下部に横一列に並べて表示できます。 |
 
-### <a name="help-menu"></a>Help menu
+### [ヘルプ] メニュー
 
-Use the **Help** menu to view available online help for StorSimple Snapshot Manager and the MMC. You can also view information about the MMC and StorSimple Snapshot Manager software versions that are currently installed on your system. 
+StorSimple Snapshot Manager と MMC のオンライン ヘルプを表示するには、**[ヘルプ]** メニューを使用します。現在システムにインストールされている MMC と StorSimple Snapshot Manager ソフトウェアのバージョン情報を表示することもできます。
 
-You can access the **Help** menu on the menu bar. You can also access StorSimple Snapshot Manager help topics from the **Actions** pane.
+**[ヘルプ]** メニューには、メニュー バーからアクセスできます。StorSimple Snapshot Manager のヘルプ トピックには、**[操作]** ウィンドウからアクセスすることもできます。
 
-![StorSimple Snapshot Manager Help menu](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpMenu.png)
+![StorSimple Snapshot Manager の [ヘルプ] メニュー](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpMenu.png)
 
-#### <a name="menu-description"></a>Menu description
+#### メニューの説明
 
-The following table describes items that appear on the Help menu.
+[ヘルプ] メニューに表示される項目を次の表に示します。
 
-| Menu item  | Description  |
+| メニュー項目 | 説明 |
 |:-----------|:-------------|
-| Help on StorSimple Snapshot Manager | Click **Help on StorSimple Snapshot Manager** to open StorSimple Snapshot Manager help in a separate window. |
-| Help Topics |Click **Help Topics** to open MMC online help in a separate window. |
-| TechCenter Web Site | Click **TechCenter Web Site** to open the Microsoft TechNet Tech Center home page in a separate window. |
-| About Microsoft Management Console | Click **About Microsoft Management Console** to see which version of the Microsoft Management Console is installed on your system. |
-| About StorSimple Snapshot Manager | Click **About StorSimple Snapshot Manager** to see which version of the snap-in is installed on your system. |
+| StorSimple Snapshot Manager のヘルプ | **[StorSimple Snapshot Manager のヘルプ]** をクリックすると、別のウィンドウに StorSimple Snapshot Manager のヘルプが表示されます。 |
+| ヘルプ トピック |**[ヘルプ トピック]** をクリックすると、別のウィンドウに MMC のオンライン ヘルプが表示されます。 |
+| TechCenter Web サイト | **[TechCenter Web サイト]** をクリックすると、別のウィンドウに Microsoft TechNet Tech Center のホーム ページが表示されます。 |
+| Microsoft 管理コンソールのバージョン情報 | **[Microsoft 管理コンソールのバージョン情報]** をクリックすると、システムにインストールされている Microsoft 管理コンソールのバージョンが表示されます。 |
+| StorSimple Snapshot Manager のバージョン情報 | **[StorSimple Snapshot Manager のバージョン情報]** をクリックすると、システムにインストールされているスナップインのバージョンが表示されます。 |
 
-## <a name="tool-bar"></a>Tool bar
+## ツール バー
 
-The tool bar, located below the menu bar, contains navigation and task icons. Each icon is a shortcut to a specific task.
+メニュー バーの下にあるツール バーは、ナビゲーション アイコンとタスク アイコンで構成されています。各アイコンは、特定のタスクのショートカットです。
 
-### <a name="icon-descriptions"></a>Icon descriptions
+### アイコンの説明
 
-The following table describes the icons that appear on the tool bar. 
+ツール バーに表示されるアイコンを次の表に示します。
 
-| Icon  | Description  |
+| アイコン | 説明 |
 |:------|:-------------| 
-| ![Left arrow](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) | Click the left arrow icon to return to the previous page. |
-| ![Right arrow](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) | Click the right arrow to go to the next page (if the arrow is gray, the action is unavailable). |
-| ![Up icon](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) | Click the up icon to go up one level in the console tree (the **Scope** pane). |
-| ![Show/hide console tree](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowConsoleTree.png) | Click the show/hide console tree icon to show or hide the **Scope** pane. |
-| ![Export list](./media/storsimple-use-snapshot-manager/HCS_SSM_ExportListIcon.png) | Click the export list icon to export a list to a CSV file that you specify. |
-| ![Help icon](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpIcon.png)  |Click the help icon to open an online MMC help topic. |
-| ![Show/hide Actions pane](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowAction.png) | Click the show/hide **Actions** pane icon to show or hide the **Actions** pane. 
+| ![左矢印](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) | 前のページに戻るには、左矢印アイコンをクリックします。 |
+| ![右矢印](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) | 次のページに移動するには、右矢印アイコンをクリックします (矢印がグレーの場合、この操作は使用できません)。 |
+| ![1 つ上のレベル アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_Up.png) | コンソール ツリー (**スコープ** ウィンドウ) で 1 レベル上に移動するには、"1 つ上のレベル" アイコンをクリックします。 |
+| ![コンソール ツリーの表示/非表示](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowConsoleTree.png) | **スコープ** ウィンドウの表示/非表示を切り替えるには、"コンソール ツリーの表示/非表示" アイコンをクリックします。 |
+| ![リストのエクスポート](./media/storsimple-use-snapshot-manager/HCS_SSM_ExportListIcon.png) | 指定した CSV ファイルにリストをエクスポートするには、"リストのエクスポート" アイコンをクリックします。 |
+| ![ヘルプ アイコン](./media/storsimple-use-snapshot-manager/HCS_SSM_HelpIcon.png) |MMC のオンライン ヘルプ トピックを開くには、"ヘルプ" アイコンをクリックします。 |
+| ![[操作] ウィンドウの表示/非表示](./media/storsimple-use-snapshot-manager/HCS_SSM_ShowAction.png) | **[操作]** ウィンドウの表示/非表示を切り替えるには、"[操作] ウィンドウの表示/非表示" アイコンをクリックします。 
  
-## <a name="scope-pane"></a>Scope pane
+## スコープ ウィンドウ
 
-The **Scope** pane is the leftmost pane in the StorSimple Snapshot Manager UI. It contains the console (or node) tree and is the primary navigation mechanism for StorSimple Snapshot Manager. 
+**スコープ** ウィンドウは、StorSimple Snapshot Manager UI の一番左のウィンドウです。コンソール (ノード) ツリーが含まれたこのウィンドウを主に使用して、StorSimple Snapshot Manager 内を移動します。
  
-### <a name="scope-pane-structure"></a>Scope pane structure
+### スコープ ウィンドウの構造
 
-The **Scope** pane contains a series of clickable objects (nodes) organized in a tree structure. 
+**スコープ** ウィンドウには、一連のクリック可能なオブジェクト (ノード) がツリー構造で表示されます。
 
-![Scope pane](./media/storsimple-use-snapshot-manager/HCS_SSM_Scope_pane.png) 
+![スコープ ウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_Scope_pane.png)
 
-- To expand or collapse a node, click the arrow icon next to the node name.
+- ノードを展開したり折りたたんだりするには、ノード名の横の矢印アイコンをクリックします。
 
-- To view the status or contents of a node, click the node name. The information appears in the **Results** pane. 
+- ノードの状態や内容を表示するには、ノード名をクリックします。情報は**結果**ウィンドウに表示されます。
 
-The **Scope** pane contains the following nodes: 
+**スコープ** ウィンドウには、次のノードが含まれています。
 
-- [Devices node](#devices-node) 
-- [Volumes node](#volumes-node) 
-- [Volume Groups node](#volume-groups-node) 
-- [Backup Policies node](#backup-policies-node) 
-- [Backup Catalog node](#backup-catalog-node) 
-- [Jobs node](#jobs-node) 
+- [[デバイス] ノード](#devices-node) 
+- [[ボリューム] ノード](#volumes-node) 
+- [[ボリューム グループ] ノード](#volume-groups-node) 
+- [[バックアップ ポリシー] ノード](#backup-policies-node) 
+- [[バックアップ カタログ] ノード](#backup-catalog-node) 
+- [[ジョブ] ノード](#jobs-node) 
 
-### <a name="scope-pane-tasks"></a>Scope pane tasks
+### スコープ ウィンドウのタスク
 
-You can use the **Scope** pane to complete an action on a specific node. To select a task, do one of the following:
+**スコープ** ウィンドウを使用して、特定のノードに対して操作を実行できます。タスクを選択するには、次のいずれかを行います。
 
-- Right-click the node, and then select the task from the menu that appears.
+- ノードを右クリックし、表示されるメニューから目的のタスクを選択します。
 
-- Click the node, and then click **Action** on the menu bar. Select the task from the menu that appears.
+- ノードをクリックし、メニュー バーの **[操作]** をクリックします。表示されるメニューから目的のタスクを選択します。
 
-- Click the node, and then select the action in the **Actions** pane.
+- ノードをクリックし、**[操作]** ウィンドウで目的の操作を選択します。
 
-When you select a node and use any of these methods to see a task list, only those actions that can be performed on that node are shown.
+ノードを選択し、上記の方法のいずれかを使用してタスク リストを表示すると、そのノードに対して実行できる操作だけが表示されます。
 
-### <a name="devices-node"></a>Devices node
+### [デバイス] ノード
 
-The **Devices** node represents the StorSimple devices and StorSimple virtual devices that are connected to StorSimple Snapshot Manager. Select this node to connect and configure a device, and import its associated volumes, volumes groups, and existing backup copies. Multiple devices can be connected to a single host.
+**[デバイス]** ノードは、StorSimple Snapshot Manager に接続されている StorSimple デバイスと StorSimple 仮想デバイスを表します。デバイスの接続と構成や、デバイスに関連付けられたボリューム、ボリューム グループ、既存のバックアップ コピーのインポートを実行する場合に、このノードを選択します。1 つのホストに複数のデバイスを接続できます。
 
-- To expand the node, click the arrow icon next to **Devices**.
+- ノードを展開するには、**[デバイス]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Devices** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[デバイス]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of configured devices, click **Devices** in the **Scope** pane. The list of devices, together with information about each device, appears in the **Results** pane.
+- 構成済みのデバイスのリストを表示するには、**スコープ** ウィンドウで **[デバイス]** をクリックします。デバイスのリストと各デバイスに関する情報が**結果**ウィンドウに表示されます。
 
-### <a name="volumes-node"></a>Volumes node
+### [ボリューム] ノード
 
-The **Volumes** node represents the drives that correspond to the volumes mounted by the host, including those discovered through iSCSI and those discovered through a device. Use this node to view the list of available volumes and assign individual volumes to volume groups.
+**[ボリューム]** ノードは、ホストにマウントされているボリュームに対応するドライブを表します。iSCSI を使用して検出されたドライブとデバイスを使用して検出されたドライブが含まれます。このノードを使用して、使用可能なボリュームのリストを表示し、個々のボリュームをボリューム グループに割り当てます。
 
-- To expand the node, click the arrow icon next to **Volumes**.
+- ノードを展開するには、**[ボリューム]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Volumes** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[ボリューム]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of volumes, click **Volumes** in the **Scope** pane. The list of volumes, together with information about each volume, appears in the **Results** pane.
+- ボリュームのリストを表示するには、**スコープ** ウィンドウで **[ボリューム]** をクリックします。ボリュームのリストと各ボリュームに関する情報が**結果**ウィンドウに表示されます。
 
-### <a name="volume-groups-node"></a>Volume Groups node
+### [ボリューム グループ] ノード
 
-Volume groups are also known as consistency groups. Each volume group is a pool of application-related volumes that helps to ensure application consistency during backup operations. Use the **Volume Groups** node to configure these groups and to take interactive backups or create backup schedules. 
+ボリューム グループは、コンシステンシー グループとも呼ばれます。各ボリューム グループは、アプリケーション関連のボリュームのプールであり、バックアップ操作中にアプリケーションの一貫性を確保するのに役立ちます。**[ボリューム グループ]** ノードを使用して、これらのグループを構成し、対話形式でバックアップを作成したり、バックアップ スケジュールを作成したりします。
 
-- To expand the node, click the arrow icon next to **Volume Groups**.
+- ノードを展開するには、**[ボリューム グループ]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Volume Groups** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[ボリューム グループ]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of volume groups, click **Volume Groups** in the **Scope** pane. The list of volume groups, together with information about each volume group, appears in the **Results** pane.
+- ボリューム グループのリストを表示するには、**スコープ** ウィンドウで **[ボリューム グループ]** をクリックします。ボリューム グループのリストと各ボリューム グループに関する情報が**結果**ウィンドウに表示されます。
 
-### <a name="backup-policies-node"></a>Backup Policies node
+### [バックアップ ポリシー] ノード
 
-Backup policies are job schedules for local and cloud snapshots. Use the **Backup Policies** node to specify how often a backup is created and how long a backup should be retained. 
+バックアップ ポリシーは、ローカル スナップショットとクラウド スナップショットのジョブ スケジュールです。**[バックアップ ポリシー]** ノードを使用して、バックアップの作成頻度とバックアップの保持期間を指定します。
 
-- To expand the node, click the arrow icon next to **Backup Policies**.
+- ノードを展開するには、**[バックアップ ポリシー]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Backup Policies** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[バックアップ ポリシー]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of backup policies, click **Backup Policies** in the **Scope** pane. The list of backup policies, together with information about each policy, appears in the **Results** pane.
+- バックアップ ポリシーのリストを表示するには、**スコープ** ウィンドウで **[バックアップ ポリシー]** をクリックします。バックアップ ポリシーのリストと各ポリシーに関する情報が**結果**ウィンドウに表示されます。
 
->[AZURE.NOTE] You can retain a maximum of 64 backups.
+>[AZURE.NOTE] 最大 64 個のバックアップを保持できます。
 
 
-### <a name="backup-catalog-node"></a>Backup Catalog node
+### [バックアップ カタログ] ノード
 
-The **Backup Catalog** node contains lists of on-site and off-site backups of Azure StorSimple volumes. This node is organized by volume group, and each volume group container contains separate structures for local snapshots (the **Local Snapshot**s node) and cloud snapshots (the **Cloud Snapshots** node). When expanded, each volume group container lists all the successful backups that were taken interactively or by a configured policy.
+**[バックアップ カタログ]** ノードには、Azure StorSimple ボリュームのオンサイトおよびオフサイトのバックアップのリストが含まれます。このノードはボリューム グループ別に整理されており、各ボリューム グループ コンテナーには、ローカル スナップショット (**[ローカル スナップショット]** ノード) とクラウド スナップショット (**[クラウド スナップショット]** ノード) の個別の構造が含まれています。各ボリューム グループ コンテナーを展開すると、対話形式または構成済みポリシーで作成された正常なバックアップがすべて表示されます。
 
-- To expand the node, click the arrow icon next to **Backup Catalog**.
+- ノードを展開するには、**[バックアップ カタログ]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Backup Catalog** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[バックアップ カタログ]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of backup snapshots, click **Backup Catalog** in the **Scope** pane. The list of snapshots, together with information about each snapshot, appears in the **Results** pane.
+- バックアップ スナップショットのリストを表示するには、**スコープ** ウィンドウで **[バックアップ カタログ]** をクリックします。スナップショットのリストと各スナップショットに関する情報が**結果**ウィンドウに表示されます。
 
-### <a name="local-snapshots-node"></a>Local Snapshots node
+### [ローカル スナップショット] ノード
 
-The **Local Snapshots** node lists local snapshots for a specific volume group. The node is located under the **Backup Catalog** node in the **Scope** pane. Local snapshots are point-in-time copies of volume data that are stored on the Azure StorSimple device. Typically, this type of backup can be created and restored quickly. You can use a local snapshot as you would a local backup copy.
+**[ローカル スナップショット]** ノードには、特定のボリューム グループのローカル スナップショットが表示されます。このノードは、**スコープ** ウィンドウの **[バックアップ カタログ]** ノードの下にあります。ローカル スナップショットは、Azure StorSimple デバイスに保存されているボリューム データの特定の時点のコピーです。通常、この種のバックアップの作成と復元は短時間で実行できます。ローカル スナップショットは、ローカル バックアップ コピーと同様に使用できます。
 
-- To expand the node, click the arrow icon next to **Local Snapshots**.
+- ノードを展開するには、**[ローカル スナップショット]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Local Snapshots** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[ローカル スナップショット]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of local snapshots, click **Local Snapshots** in the **Scope** pane. The list of snapshots, together with information about each snapshot, appears in the **Results** pane.
+- ローカル スナップショットのリストを表示するには、**スコープ** ウィンドウで **[ローカル スナップショット]** をクリックします。スナップショットのリストと各スナップショットに関する情報が**結果**ウィンドウに表示されます。
 
-### <a name="cloud-snapshots-node"></a>Cloud Snapshots node
+### [クラウド スナップショット] ノード
 
-The **Cloud Snapshots** node lists cloud snapshots for a specific volume group. The node is located under the **Backup Catalog** node in the **Scope** pane. Cloud snapshots are point-in-time copies of volume data that are stored in the cloud. A cloud snapshot is equivalent to a snapshot replicated on a different, off-site storage system. Cloud snapshots are particularly useful in disaster recovery scenarios.
+**[クラウド スナップショット]** ノードには、特定のボリューム グループのクラウド スナップショットが表示されます。このノードは、**スコープ** ウィンドウの **[バックアップ カタログ]** ノードの下にあります。クラウド スナップショットは、クラウドに保存されているボリューム データの特定の時点のコピーです。クラウド スナップショットは、別のオフサイト ストレージ システムにレプリケートされたスナップショットに相当します。クラウド スナップショットは、障害復旧シナリオで特に役立ちます。
 
-- To expand the node, click the arrow icon next to **Cloud Snapshots**.
+- ノードを展開するには、**[クラウド スナップショット]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Cloud Snapshots** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[クラウド スナップショット]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of cloud snapshots, click **Cloud Snapshots** in the **Scope** pane. The list of snapshots, together with information about each snapshot, appears in the **Results** pane.
+- クラウド スナップショットのリストを表示するには、**スコープ** ウィンドウで **[クラウド スナップショット]** をクリックします。スナップショットのリストと各スナップショットに関する情報が**結果**ウィンドウに表示されます。
 
-### <a name="jobs-node"></a>Jobs node
+### [ジョブ] ノード
 
-The **Jobs** node contains information about scheduled, running, and recently completed backup jobs. 
+**[ジョブ]** ノードには、スケジュールされたバックアップ ジョブ、実行中のバックアップ ジョブ、最近完了したバックアップ ジョブに関する情報が含まれます。
 
-- To expand the node, click the arrow icon next to **Jobs**.
+- ノードを展開するには、**[ジョブ]** の横の矢印アイコンをクリックします。
 
-- To see a menu of available actions, right-click the **Jobs** node or right-click any of the nodes that appear in the expanded view.
+- 使用可能な操作のメニューを表示するには、**[ジョブ]** ノードを右クリックするか、展開ビューに表示される任意のノードを右クリックします。
 
-- To see a list of scheduled jobs, expand the **Jobs** node, and then click **Scheduled**. The list of previously configured jobs and information about each job appears in the **Results** pane. 
+- スケジュールされたジョブのリストを表示するには、**[ジョブ]** ノードを展開し、**[スケジュール済み]** をクリックします。以前に構成されたジョブのリストと各ジョブに関する情報が**結果**ウィンドウに表示されます。
 
-- To see a list of recently completed jobs, expand the **Jobs** node, and then click **Last 24 Hours**. A list of jobs that were completed in the last 24 hours appears in the **Results** pane. The **Results** pane also contains information about each completed job.
+- 最近完了したジョブのリストを表示するには、**[ジョブ]** ノードを展開し、**[過去 24 時間]** をクリックします。過去 24 時間以内に完了したジョブのリストが**結果**ウィンドウに表示されます。**結果**ウィンドウには、完了した各ジョブに関する情報も表示されます。
 
-- To see a list of jobs that are currently running, expand the **Jobs** node, and then click **Running**. The list of currently running jobs and information about each job appears in the **Results** pane.
+- 現在実行されているジョブのリストを表示するには、**[ジョブ]** ノードを展開し、**[実行中]** をクリックします。現在実行されているジョブのリストと各ジョブに関する情報が**結果**ウィンドウに表示されます。
 
-## <a name="results-pane"></a>Results pane
+## 結果ウィンドウ
 
-The **Results** pane is the center pane in the StorSimple Snapshot Manager UI. It contains lists and detailed status information for the node you selected in the **Scope** pane.
+**結果**ウィンドウは、StorSimple Snapshot Manager の UI の中央のウィンドウです。このウィンドウには、**スコープ** ウィンドウで選択したノードのリストと詳しい状態情報が表示されます。
 
-### <a name="example"></a>Example
+### 例
 
-To see the following example, click the **Volume Groups** node in the **Scope** pane. The **Results** pane displays a list of volume groups with details about each group.
+次の例を表示するには、**スコープ** ウィンドウで **[ボリューム グループ]** ノードをクリックします。**結果**ウィンドウには、ボリューム グループのリストと各グループの詳細が表示されます。
 
-![Results pane](./media/storsimple-use-snapshot-manager/HCS_SSM_Results_pane.png) 
+![結果ウィンドウ](./media/storsimple-use-snapshot-manager/HCS_SSM_Results_pane.png)
 
-You can configure the details shown in the **Results** pane: right-click a node in the **Scope** pane, click **View**, and then click **Add/Remove Columns**.
+**結果**ウィンドウに表示する詳細を構成するには、**スコープ** ウィンドウでノードを右クリックし、**[表示]** をクリックして、**[列の追加と削除]** をクリックします。
 
-## <a name="actions-pane"></a>Actions pane
+## [操作] ウィンドウ
 
-The **Actions** pane is the right pane in the StorSimple Snapshot Manager UI. It contains a menu of operations that you can perform on the node, view, or data that you select in the **Scope** pane or **Results** pane. The **Actions** pane contains the same commands as the **Action** menus that are available for items in the **Scope** pane and **Results** pane. For a description of each action, see the table in the **Action** menu section.
+**[操作]** ウィンドウは、StorSimple Snapshot Manager の UI の右側のウィンドウです。このウィンドウには、**スコープ** ウィンドウまたは**結果**ウィンドウで選択したノード、ビュー、またはデータに対して実行できる操作のメニューが含まれます。**[操作]** ウィンドウには、**スコープ** ウィンドウと**結果**ウィンドウの項目に使用できる **[操作]** メニューと同じコマンドが表示されます。各操作については、**[操作]**メニューに関するセクションの表をご覧ください。
 
-### <a name="examples"></a>Examples
+### 例
 
-To see the following example, in the **Scope** pane, expand the **Jobs** node and click **Scheduled**. The **Actions** pane displays the available actions for the **Scheduled** node.
+次の例を表示するには、**スコープ** ウィンドウで **[ジョブ]** ノードを展開し、**[スケジュール済み]** をクリックします。**[操作]** ウィンドウには、**[スケジュール済み]** ノードで使用できる操作が表示されます。
 
-![Actions pane scheduled jobs example](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane.png) 
+![[操作] ウィンドウのスケジュールされたジョブの例](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane.png)
 
-To see more options, in the **Scope** pane, expand the **Jobs** node, click **Scheduled**, and then click a scheduled job in the **Results** pane. The **Actions** pane displays the available actions for the scheduled job, as shown in the following example.
+さらに多くのオプションを表示するには、**スコープ** ウィンドウで **[ジョブ]** ノードを展開して **[スケジュール済み]** をクリックし、**結果**ウィンドウでスケジュールされたジョブをクリックします。次の例に示すように、**[操作]** ウィンドウには、スケジュールされたジョブに使用できる操作が表示されます。
 
-![Actions pane job actions example](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
+![[操作] ウィンドウのジョブの操作の例](./media/storsimple-use-snapshot-manager/HCS_SSM_ActionsPane_Results.png)
 
-## <a name="keyboard-navigation-and-shortcuts"></a>Keyboard navigation and shortcuts
+## キーボード ナビゲーションとショートカット
 
-StorSimple Snapshot Manager enables the accessibility features of the Windows operating system and the Microsoft Management Console (MMC). It also includes some keyboard navigation features and shortcuts that are specific to the StorSimple Snapshot Manager, as described in the following sections.
+StorSimple Snapshot Manager は、Windows オペレーティング システムと Microsoft 管理コンソール (MMC) のユーザー補助機能に対応しています。また、以下のセクションで説明するように、StorSimple Snapshot Manager に固有のキーボード ナビゲーション機能とショートカットも用意されています。
  
-- [Keyboard navigation keys](#keyboard-navigation-keys) 
-- [Menu bar shortcut keys](#menu-bar-shortcut-keys) 
-- [Scope pane shortcut keys](#scope-pane-shortcut-keys) 
+- [キーボード ナビゲーション キー](#keyboard-navigation-keys) 
+- [メニュー バーのショートカット キー](#menu-bar-shortcut-keys) 
+- [スコープ ウィンドウのショートカット キー](#scope-pane-shortcut-keys) 
 
-### <a name="keyboard-navigation-keys"></a>Keyboard navigation keys
+### キーボード ナビゲーション キー
 
-The following table describes the keys that you can use to navigate the StorSimple Snapshot Manager user interface. 
+StorSimple Snapshot Manager のユーザー インターフェイス内の移動に使用できるキーを次の表に示します。
 
-| Navigation key  | Action  |
+| ナビゲーション キー | アクション |
 |:----------------|:--------| 
-| Down arrow key | Use the down arrow key to move vertically to the next item in a menu or pane. |
-| Enter | Press the Enter key to complete an action and then proceed to the next step. For example, you can press Enter to select **Next**, **OK**, or **Create**, and then go to the next step in a wizard.|
-| Esc | Press the Esc key to close a menu or to cancel and close a page.|
-| F1 | Press the F1 key to view a help topic for the currently active window.|
-| F5 | Press the F5 key to refresh a node. |
-| F6 | Press the F6 key to move from the **Scope** pane to the **Results** pane.|
-| F10 | Press the F10 key to go to the menu bar. |
-| Left arrow key | Use the left arrow key to move horizontally from a menu bar option to the previous option. When you move to the previous item on the menu bar, the action (or context) menu for the previous item appears. |
-| Right arrow key | Use the right arrow key to move horizontally from one menu bar option to the next. When you move to the next item on the menu bar, the action (or context) menu for the new item appears.
-| Tab key | Use the Tab key to move to the next pane on the console or to the next selection or text box in a page. |
-| Up arrow key | Use the up arrow key to move vertically to the previous item on a menu or pane. |
+| 下方向キー | メニューまたはウィンドウ内の次の項目に垂直方向に移動するには、下方向キーを使用します。 |
+| 次に、 | 操作を完了し、次の手順に進むには、Enter キーを押します。たとえば、**[次へ]**、**[OK]**、または **[作成]** を選択して Enter キーを押すと、ウィザードの次の手順に進むことができます。|
+| Esc | メニューを閉じたり、ページをキャンセルして閉じたりするには、Esc キーを押します。|
+| F1 | 現在アクティブなウィンドウのヘルプ トピックを表示するには、F1 キーを押します。|
+| F5 | ノードを更新するには、F5 キーを押します。 |
+| F6 | **スコープ** ウィンドウから**結果**ウィンドウに移動するには、F6 キーを押します。|
+| F10 | メニュー バーに移動するには、F10 キーを押します。 |
+| 左方向キー | メニュー バー オプションの前のオプションに水平方向に移動するには、左方向キーを使用します。メニュー バーの前の項目に移動すると、前の項目の操作 (またはコンテキスト) メニューが表示されます。 |
+| 右方向キー | メニュー バー オプションの次のオプションに水平方向に移動するには、右方向キーを使用します。メニュー バーの次の項目に移動すると、新しい項目の操作 (またはコンテキスト) メニューが表示されます。
+| Tab キー | コンソールの次のウィンドウ、またはページ内の次の選択肢やテキスト ボックスに移動するには、Tab キーを使用します。 |
+| 上方向キー | メニューまたはウィンドウ内の前の項目に垂直方向に移動するには、上方向キーを使用します。 |
 
-### <a name="menu-bar-shortcut-keys"></a>Menu bar shortcut keys
+### メニュー バーのショートカット キー
 
-The following table describes the shortcut key combinations for the menu bar. After you press the shortcut keys and the menu opens, you can use menu shortcut keys (the underlined keys on the menu). For more information about the menu bar, go to [Menu bar](#menu-bar).
+メニュー バーのショートカット キーの組み合わせを次の表に示します。ショートカット キーを押し、メニューが開いたら、メニューのショートカット キー (メニューの下線付きのキー) を使用できます。メニュー バーの詳細については、「[メニュー バー](#menu-bar)」をご覧ください。
 
-| Shortcut | Result                    | Menu Shortcut Key | Result          |
+| ショートカット | 結果 | メニューのショートカット キー | 結果 |
 |:---------|:--------------------------|:------------------|:----------------|
-| ALT+F    | Opens the **File** menu.  | N | Opens a new console instance.   |
-|          |                           | O | Opens the **Administrative Tools** page. |
-|          |                           | S | Saves the StorSimple Snapshot Manager console.|
-|          |                           | A | Opens the **Save As** page. |
-|          |                           | M | Opens the **Add/Remove Snap-in** page.|
-|          |                           | P | Opens the **Options** page. |
-|          |                           | H | Opens online Help.|
-| ALT+A    | Opens the **Action** menu.| I | Turns the import display option on and off.|
-|          |                           | W | Opens a new StorSimple Snapshot Manager console.|
-|          |                           | F | Updates the StorSimple Snapshot Manager console.|
-|          |                           | L | Opens the **Export List** page. 
-|          |                           | H | Opens online Help.|
-| ALT+V    | Opens the **View** menu.  | A | Opens the **Add/Remove Columns** page. |
-|          |                           | U | Opens the **Customize View** page. |
-| ALT+O    | Opens the **Favorites** menu. | A | Opens the **Add to Favorites** page. |
-|          |                           | O | Opens the **Organize Favorites** page.|
-| ALT+W    | Opens the **Window** menu.| N | Opens another StorSimple Snapshot Manager window.|
-|          |                           | C | Displays all open console windows in a cascading style.|
-|          |                           | T | Displays all open console windows in a grid pattern. |
-|          |                           | I | Arranges icons in a horizontal row at the bottom of your screen.|
-| ALT+H    | Opens the **Help** menu.  | H | Opens online Help.|
-|          |                           | T | Opens the Microsoft TechNet Tech Center web page.|
-|          |                           | A | Opens the **About Microsoft Management Console** page. |
+| Alt + F | **[ファイル]** メニューを開きます。 | N | 新しいコンソール インスタンスを開きます。 |
+| | | O | **[管理ツール]** ページを開きます。 |
+| | | S | StorSimple Snapshot Manager コンソールを保存します。|
+| | | A | **[名前を付けて保存]** ページを開きます。 |
+| | | M | **[スナップインの追加と削除]** ページを開きます。|
+| | | P | **[オプション]** ページを開きます。 |
+| | | H | オンライン ヘルプを開きます。|
+| Alt + A | **[操作]** メニューを開きます。| I | インポートの表示オプションのオン/オフを切り替えます。|
+| | | W | 新しい StorSimple Snapshot Manager コンソールを開きます。|
+| | | F | StorSimple Snapshot Manager コンソールを更新します。|
+| | | L | **[リストのエクスポート]** ページを開きます。 
+| | | H | オンライン ヘルプを開きます。|
+| Alt + V | **[表示]** メニューを開きます。 | A | **[列の追加と削除]** ページを開きます。 |
+| | | U | **[表示のカスタマイズ]** ページを開きます。 |
+| Alt + O | **[お気に入り]** メニューを開きます。 | A | **[お気に入りに追加]** ページを開きます。 |
+| | | O | **[お気に入りの整理]** ページを開きます。|
+| Alt + W | **[ウィンドウ]** メニューを開きます。| N | 別の StorSimple Snapshot Manager ウィンドウを開きます。|
+| | | C | 開いているすべてのコンソール ウィンドウを重ねて表示します。|
+| | | T | 開いているすべてのコンソール ウィンドウをグリッド パターンで表示します。 |
+| | | I | アイコンを画面の下部に横一列に並べて表示します。|
+| Alt + H | **[ヘルプ]** メニューを開きます。 | H | オンライン ヘルプを開きます。|
+| | | T | Microsoft TechNet Tech Center の Web ページを開きます。|
+| | | A | **[Microsoft 管理コンソールのバージョン情報]** ページを開きます。 |
  
-### <a name="scope-pane-shortcut-keys"></a>Scope pane shortcut keys
+### スコープ ウィンドウのショートカット キー
 
-The following tables show the shortcut key combinations for each node in the **Scope** pane. 
+**スコープ** ウィンドウの各ノードのショートカット キーの組み合わせを以下の表に示します。
 
-- [Devices node shortcut keys](#devices-node-shortcut-keys)
-- [Volumes node shortcut keys](#volumes-node-shortcut-keys)
-- [Volume Groups node shortcut keys](#volume-groups-node-shortcut-keys)
-- [Backup Policies node shortcut keys](#backup-policies-node-shortcut-keys)
-- [Backup Catalog node shortcut keys](#backup-catalog-node-shortcut-keys)
-- [Jobs node shortcut keys](#jobs-node-shortcut-keys)
+- [[デバイス] ノードのショートカット キー](#devices-node-shortcut-keys)
+- [[ボリューム] ノードのショートカット キー](#volumes-node-shortcut-keys)
+- [[ボリューム グループ] ノードのショートカット キー](#volume-groups-node-shortcut-keys)
+- [[バックアップ ポリシー] ノードのショートカット キー](#backup-policies-node-shortcut-keys)
+- [[バックアップ カタログ] ノードのショートカット キー](#backup-catalog-node-shortcut-keys)
+- [[ジョブ] ノードのショートカット キー](#jobs-node-shortcut-keys)
 
-#### <a name="devices-node-shortcut-keys"></a>Devices node shortcut keys
+#### [デバイス] ノードのショートカット キー
 
-| Menu Shortcut | Result                               |
+| メニューのショートカット | 結果 |
 |:--------------|:-------------------------------------|
-| C             | Opens the **Configure a Device** page. |
-| D             | Refreshes the list of devices and device details.|
-| V             | Opens the **View** menu. |
-| W             | Opens a new StorSimple Snapshot Manager console focused on the **Details** node. |
-| F             | Updates the StorSimple Snapshot Manager console. |
-| L             | Opens the **Export List** page. 
-| H             | Opens online Help.|
+| C | **[デバイスの構成]** ページを開きます。 |
+| D | デバイスのリストとデバイスの詳細を更新します。|
+| V | **[表示]** メニューを開きます。 |
+| W | **[詳細]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。 |
+| F | StorSimple Snapshot Manager コンソールを更新します。 |
+| L | **[リストのエクスポート]** ページを開きます。 
+| H | オンライン ヘルプを開きます。|
  
 
-#### <a name="volumes-node-shortcut-keys"></a>Volumes node shortcut keys
+#### [ボリューム] ノードのショートカット キー
 
-| Menu Shortcut   | Result                              |
+| メニューのショートカット | 結果 |
 |:----------------|:------------------------------------|
-| V               | Updates the list of volumes.        |
-| V (press twice) | Opens the **View** menu.            |
-| W               | Opens a new StorSimple Snapshot Manager console focused on the **Volumes** node.|
-| F               | Updates the StorSimple Snapshot Manager console.|
-| L               | Opens the **Export List** page. 
-| H               | Opens online Help.|
+| V | ボリュームのリストを更新します。 |
+| V (2 回押す) | **[表示]** メニューを開きます。 |
+| W | **[ボリューム]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。|
+| F | StorSimple Snapshot Manager コンソールを更新します。|
+| L | **[リストのエクスポート]** ページを開きます。 
+| H | オンライン ヘルプを開きます。|
  
-#### <a name="volume-groups-node-shortcut-keys"></a>Volume Groups node shortcut keys
+#### [ボリューム グループ] ノードのショートカット キー
 
-| Menu Shortcut   | Result                              |
+| メニューのショートカット | 結果 |
 |:----------------|:------------------------------------|
-| G               | Opens the **Create a Volume Group** page. |
-| V               | Opens the **View** menu. |
-| W               | Opens a new StorSimple Snapshot Manager console focused on the **Volume Groups** node.|
-| F               | Updates the StorSimple Snapshot Manager console. |
-| L               | Opens the **Export List** page. |
-| H               | Opens online Help.|
+| G | **[ボリューム グループの作成]** ページを開きます。 |
+| V | **[表示]** メニューを開きます。 |
+| W | **[ボリューム グループ]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。|
+| F | StorSimple Snapshot Manager コンソールを更新します。 |
+| L | **[リストのエクスポート]** ページを開きます。 |
+| H | オンライン ヘルプを開きます。|
 
-#### <a name="backup-policies-node-shortcut-keys"></a>Backup Policies node shortcut keys
+#### [バックアップ ポリシー] ノードのショートカット キー
 
-| Menu Shortcut   | Result                              |
+| メニューのショートカット | 結果 |
 |:----------------|:------------------------------------|
-| B               | Opens the **Create a Policy** page. |
-| V               | Opens the **View** menu.            |
-| W               | Opens a new StorSimple Snapshot Manager console focused on the **Volume Groups** node.|
-| F               | Updates the StorSimple Snapshot Manager console.|
-| L               | Opens the **Export List **page. 
-| H               | Opens online Help.|
+| B | **[ポリシーの作成]** ページを開きます。 |
+| V | **[表示]** メニューを開きます。 |
+| W | **[ボリューム グループ]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。|
+| F | StorSimple Snapshot Manager コンソールを更新します。|
+| L | **[リストのエクスポート]** ページを開きます。
+| H | オンライン ヘルプを開きます。|
  
-#### <a name="backup-catalog-node-shortcut-keys"></a>Backup Catalog node shortcut keys
+#### [バックアップ カタログ] ノードのショートカット キー
 
-| Menu Shortcut   | Result                              |
+| メニューのショートカット | 結果 |
 |:----------------|:------------------------------------|
-| W               | Opens a new StorSimple Snapshot Manager console focused on the **Volume Groups** node. |
-| F               | Updates the StorSimple Snapshot Manager console. |
-| H               | Opens online Help.|
+| W | **[ボリューム グループ]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。 |
+| F | StorSimple Snapshot Manager コンソールを更新します。 |
+| H | オンライン ヘルプを開きます。|
  
-#### <a name="jobs-node-shortcut-keys"></a>Jobs node shortcut keys
+#### [ジョブ] ノードのショートカット キー
 
-| Menu Shortcut   | Result                              |
+| メニューのショートカット | 結果 |
 |:----------------|:------------------------------------|
-| V               | Opens the **View** menu.            |
-| W               | Opens a new StorSimple Snapshot Manager console focused on the **Jobs** node.|
-| F               | Updates the StorSimple Snapshot Manager console.|
-| L               | Opens the **Export List** page.     |
-| H               | Opens online Help                   |
+| V | **[表示]** メニューを開きます。 |
+| W | **[ジョブ]** ノードがフォーカスされた新しい StorSimple Snapshot Manager コンソールを開きます。|
+| F | StorSimple Snapshot Manager コンソールを更新します。|
+| L | **[リストのエクスポート]** ページを開きます。 |
+| H | オンライン ヘルプを開きます。 |
  
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
-- Learn how to [use StorSimple Snapshot Manager to connect and manage devices](storsimple-snapshot-manager-manage-devices.md).
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager を使用して、デバイスを接続および管理する方法](storsimple-snapshot-manager-manage-devices.md)について説明します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0511_2016-->

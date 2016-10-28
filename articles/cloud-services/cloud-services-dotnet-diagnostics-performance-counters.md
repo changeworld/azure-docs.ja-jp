@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Use Performance Counters in Azure Diagnostics | Microsoft Azure"
-   description="Use performance counters in Azure cloud services or virtual machine to find bottlenecks and tune performance."
+   pageTitle="Azure 診断でのパフォーマンス カウンターの使用 | Microsoft Azure"
+   description="Azure Cloud Services と仮想マシンで、パフォーマンス カウンターを使用して、ボトルネックの特定とパフォーマンスの調整を行います。"
    services="cloud-services"
    documentationCenter=".net"
    authors="rboucher"
@@ -15,94 +15,93 @@
    ms.date="02/29/2016"
    ms.author="robb" />
 
+# Azure アプリケーションでのパフォーマンス カウンターの作成と使用
 
-# <a name="create-and-use-performance-counters-in-an-azure-application"></a>Create and use performance counters in an Azure application
+この記事では、Azure アプリケーションにパフォーマンス カウンターを配置する利点と方法について説明します。パフォーマンス カウンターを使用すると、データの収集、ボトルネックの特定、およびシステムとアプリケーションのパフォーマンスの調整を行うことができます。
 
-This article describes the benefits of and how to put performance counters into your Azure application. You can use them to collect data, find bottlenecks, and tune system and application performance.
+また、Windows Server、IIS、ASP.NET で使用できるパフォーマンス カウンターでは、Azure の Web ロール、worker ロール、Virtual Machines のパフォーマンス データを収集して状態を把握することもできます。カスタム パフォーマンス カウンターを作成して使用することもできます。
 
-Performance counters available for Windows Server, IIS and ASP.NET can also be collected and used to determine the health of your Azure web roles, worker roles and Virtual Machines. You can also create and use custom performance counters.  
+パフォーマンス カウンターのデータを確認するには、
+1. リモート デスクトップを使用してアクセスするパフォーマンス モニター ツールでアプリケーション ホストを直接調べるか、
+2. System Center Operations Manager の Azure 管理パック、または
+3. Azure Storage に転送された診断データにアクセスするその他の監視ツールを使用します。詳細については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。  
 
-You can examine performance counter data
-1. Directly on the application host with the Performance Monitor tool accessed using Remote Desktop
-2. With System Center Operations Manager using the Azure Management Pack
-3. With other monitoring tools that access the diagnostic data transferred to Azure storage. See [Store and View Diagnostic Data in Azure Storage](https://msdn.microsoft.com/library/azure/hh411534.aspx) for more information.  
+[Azure クラシック ポータル](http://manage.azure.com/)でアプリケーションのパフォーマンスを監視する方法の詳細については、[Cloud Services の監視方法](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/)に関する記述を参照してください。
 
-For more information on monitoring the performance of your application in the [Azure classic portal](http://manage.azure.com/), see [How to Monitor Cloud Services](https://www.azure.com/manage/services/cloud-services/how-to-monitor-a-cloud-service/).
-
-For additional in-depth guidance on creating a logging and tracing strategy and using diagnostics and other techniques to troubleshoot problems and optimize Azure applications, see [Troubleshooting Best Practices for Developing Azure Applications](https://msdn.microsoft.com/library/azure/hh771389.aspx).
+ログとトレース戦略を作成し、診断機能やその他の手法で問題のトラブルシューティングを行って Azure アプリケーションを最適化する方法の詳細なガイダンスについては、[Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス](https://msdn.microsoft.com/library/azure/hh771389.aspx)を参照してください。
 
 
-## <a name="enable-performance-counter-monitoring"></a>Enable performance counter monitoring
+## パフォーマンス カウンターの監視を有効にする
 
-Performance counters are not enabled by default. Your application or a startup task must modify the default diagnostics agent configuration to include the specific performance counters that you wish to monitor for each role instance.
+パフォーマンス カウンターは既定では有効になっていません。アプリケーションまたはスタートアップ タスクで、各ロール インスタンスを監視する特定のパフォーマンス カウンターを含めるように、診断エージェントの既定の構成を変更する必要があります。
 
-### <a name="performance-counters-available-for-microsoft-azure"></a>Performance counters available for Microsoft Azure
+### Microsoft Azure で使用できるパフォーマンス カウンター
 
-Azure provides a subset of the performance counters available for Windows Server, IIS and the ASP.NET stack. The following table lists some of the performance counters of particular interest for Azure applications.
+Azure は、Windows Server、IIS、および ASP.NET スタックで使用できるパフォーマンス カウンターのサブセットを備えています。次の表に、Azure アプリケーションに特に関係のあるパフォーマンス カウンターの一部を示します。
 
-|Counter Category: Object (Instance)|Counter Name      |Reference|
+|カウンター カテゴリ: オブジェクト (インスタンス)|カウンター名 |リファレンス|
 |---|---|---|
-|.NET CLR Exceptions(_Global_)|# Exceps Thrown / sec   |Exception Performance Counters|
-|.NET CLR Memory(_Global_)    |% Time in GC            |Memory Performance Counters|
-|ASP.NET                      |Application Restarts    |Performance Counters for ASP.NET|
-|ASP.NET                      |Request Execution Time  |Performance Counters for ASP.NET|
-|ASP.NET                      |Requests Disconnected   |Performance Counters for ASP.NET|
-|ASP.NET                      |Worker Process Restarts |Performance Counters for ASP.NET|
-|ASP.NET Applications(__Total__)|Requests Total        |Performance Counters for ASP.NET|
-|ASP.NET Applications(__Total__)|Requests/Sec          |Performance Counters for ASP.NET|
-|ASP.NET v4.0.30319           |Request Execution Time  |Performance Counters for ASP.NET|
-|ASP.NET v4.0.30319           |Request Wait Time       |Performance Counters for ASP.NET|
-|ASP.NET v4.0.30319           |Requests Current        |Performance Counters for ASP.NET|
-|ASP.NET v4.0.30319           |Requests Queued         |Performance Counters for ASP.NET|
-|ASP.NET v4.0.30319           |Requests Rejected       |Performance Counters for ASP.NET|
-|Memory                       |Available MBytes        |Memory Performance Counters|
-|Memory                       |Committed Bytes         |Memory Performance Counters|
-|Processor(_Total)            |% Processor Time        |Performance Counters for ASP.NET|
-|TCPv4                        |Connection Failures     |TCP Object|
-|TCPv4                        |Connections Established |TCP Object|
-|TCPv4                        |Connections Reset       |TCP Object|
-|TCPv4                        |Segments Sent/sec       |TCP Object|
-|Network Interface(*)         |Bytes Received/sec      |Network Interface Object|
-|Network Interface(*)         |Bytes Sent/sec          |Network Interface Object|
-|Network Interface(Microsoft Virtual Machine Bus Network Adapter _2)|Bytes Received/sec|Network Interface Object|
-|Network Interface(Microsoft Virtual Machine Bus Network Adapter _2)|Bytes Sent/sec|Network Interface Object|
-|Network Interface(Microsoft Virtual Machine Bus Network Adapter _2)|Bytes Total/sec|Network Interface Object|
+|.NET CLR Exceptions(_Global_)|# Exceps Thrown / sec |例外パフォーマンス カウンター|
+|.NET CLR Memory(_Global_) |% Time in GC |メモリ パフォーマンス カウンター|
+|ASP.NET |Application Restarts |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET |Request Execution Time |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET |Requests Disconnected |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET |Worker Process Restarts |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET Applications(__Total__)|Requests Total |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET Applications(__Total__)|Requests/Sec |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET v4.0.30319 |Request Execution Time |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET v4.0.30319 |Request Wait Time |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET v4.0.30319 |Requests Current |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET v4.0.30319 |Requests Queued |ASP.NET 用のパフォーマンス カウンター|
+|ASP.NET v4.0.30319 |Requests Rejected |ASP.NET 用のパフォーマンス カウンター|
+|メモリ |Available MBytes |メモリ パフォーマンス カウンター|
+|メモリ |Committed Bytes |メモリ パフォーマンス カウンター|
+|Processor(\_Total) |% Processor Time |ASP.NET 用のパフォーマンス カウンター|
+|TCPv4 |Connection Failures |TCP オブジェクト|
+|TCPv4 |Connections Established |TCP オブジェクト|
+|TCPv4 |Connections Reset |TCP オブジェクト|
+|TCPv4 |Segments Sent/sec |TCP オブジェクト|
+|Network Interface(*) |Bytes Received/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(*) |Bytes Sent/sec |ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Received/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Sent/sec|ネットワーク インターフェイス オブジェクト|
+|Network Interface(Microsoft Virtual Machine Bus Network Adapter \_2)|Bytes Total/sec|ネットワーク インターフェイス オブジェクト|
 
-## <a name="create-and-add-custom-performance-counters-to-your-application"></a>Create and add custom performance counters to your application
+## カスタム パフォーマンス カウンターの作成とアプリケーションへの追加
 
-Azure has support to create and modify custom performance counters for web roles and worker roles. The counters may be used to track and monitor application-specific behavior. You can create and delete custom performance counter categories and specifiers from a startup task, web role, or worker role with elevated permissions.
+Azure は、Web ロールと worker ロールのカスタム パフォーマンス カウンターの作成と変更をサポートしています。カスタム パフォーマンス カウンターを使用すると、アプリケーション固有の動作を追跡および監視できます。管理者特権のアクセス許可を使用して、スタートアップ タスク、Web ロール、または worker ロール用のカスタム パフォーマンス カウンターのカテゴリと指定子を作成または削除できます。
 
->[AZURE.NOTE] Code that makes changes to custom performance counters must have elevated permissions to run. If the code is in a web role or worker role, the role must include the tag <Runtime executionContext="elevated" /> in the ServiceDefinition.csdef file for the role to initialize properly.
+>[AZURE.NOTE] カスタム パフォーマンス カウンターに変更を加えるコードを実行するには、管理者特権のアクセス許可が必要です。コードが Web ロールまたは worker ロールに含まれる場合、ロールを正しく初期化するために、ロールの ServiceDefinition.csdef ファイルにタグ <Runtime executionContext="elevated" /> を含める必要があります。
 
-You can send custom performance counter data to Azure storage using the diagnostics agent.
+カスタム パフォーマンス カウンターのデータを診断エージェントを使用して Azure Storage に送信できます。
 
-The standard performance counter data is generated by the Azure processes. Custom performance counter data must be created by your web role or worker role application. See [Performance Counter Types](https://msdn.microsoft.com/library/z573042h.aspx) for information on the types of data that can be stored in custom performance counters. See [PerformanceCounters Sample](http://code.msdn.microsoft.com/azure/) for an example that creates and sets custom performance counter data in a web role.
+標準のパフォーマンス カウンターのデータは、Azure プロセスによって生成されます。カスタム パフォーマンス カウンターのデータは、Web ロールまたは worker ロール アプリケーションで作成する必要があります。カスタム パフォーマンス カウンターに保存できるデータ型の詳細については、「[パフォーマンス カウンターの型](https://msdn.microsoft.com/library/z573042h.aspx)」を参照してください。Web ロールでカスタム パフォーマンス カウンターのデータを作成および設定する例については、[PerformanceCounters サンプル](http://code.msdn.microsoft.com/azure/)を参照してください。
 
-## <a name="store-and-view-performance-counter-data"></a>Store and view performance counter data
+## パフォーマンス カウンター データの保存および表示
 
-Azure caches performance counter data with other diagnostic information. This data is available for remote monitoring while the role instance is running using remote desktop access to view tools such as Performance Monitor. To persist the data outside of the role instance, the diagnostics agent must transfer the data to Azure storage. The size limit of the cached performance counter data can be configured in the diagnostics agent, or it may be configured to be part of a shared limit for all the diagnostic data. For more information about setting the buffer size, see [OverallQuotaInMB](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitorconfiguration.overallquotainmb.aspx) and [DirectoriesBufferConfiguration](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.directoriesbufferconfiguration.aspx). See [Store and View Diagnostic Data in Azure Storage](https://msdn.microsoft.com/library/azure/hh411534.aspx) for an overview of setting up the diagnostics agent to transfer data to a storage account.
+パフォーマンス カウンターのデータは、他の診断情報と共に Azure にキャッシュされます。このデータは、パフォーマンス モニターなどのツールを表示するためにリモート デスクトップ アクセスを使用してロール インスタンスが実行されているときに、リモート監視を行うために使用できます。このデータをロール インスタンスの外部に保存するには、診断エージェントによってデータが Azure Storage に転送される必要があります。キャッシュされるパフォーマンス カウンター データのサイズ制限は、診断エージェントで構成するか、すべての診断データに対する共有制限の一部として構成することができます。バッファー サイズの設定の詳細については、[OverallQuotaInMB](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.diagnosticmonitorconfiguration.overallquotainmb.aspx) および [DirectoriesBufferConfiguration](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.diagnostics.directoriesbufferconfiguration.aspx) に関する記述を参照してください。データをストレージ アカウントに転送するように診断エージェントを設定する方法の概要については、「[Azure Storage への診断データの保存と表示](https://msdn.microsoft.com/library/azure/hh411534.aspx)」を参照してください。
 
-Each configured performance counter instance is recorded at a specified sampling rate, and the sampled data is transferred to the storage account either by a scheduled transfer request or an on-demand transfer request. Automatic transfers may be scheduled as often as once per minute. Performance counter data transferred by the diagnostics agent is stored in a table, WADPerformanceCountersTable, in the storage account. This table may be accessed and queried with standard Azure storage API methods. See [Microsoft Azure PerformanceCounters Sample](http://code.msdn.microsoft.com/Windows-Azure-PerformanceCo-7d80ebf9) for an example of querying and displaying performance counter data from the WADPerformanceCountersTable table.
+構成された各パフォーマンス カウンター インスタンスは指定したサンプリング レートで記録され、サンプリングされたデータは、スケジュール設定された転送要求またはオンデマンドの転送要求によってストレージ アカウントに転送されます。自動転送を毎分 1 回の頻度でスケジュール設定することもできます。診断エージェントによって転送されたパフォーマンス カウンター データは、ストレージ アカウント内のテーブル WADPerformanceCountersTable に保存されます。このテーブルには、標準の Azure Storage API メソッドを使用してアクセスし、クエリを実行することができます。WADPerformanceCountersTable テーブルに対してクエリを実行し、テーブル内のパフォーマンス カウンター データを表示する例については、[Microsoft Azure PerformanceCounters のサンプル](http://code.msdn.microsoft.com/Windows-Azure-PerformanceCo-7d80ebf9)を参照してください。
 
->[AZURE.NOTE] Depending on the diagnostics agent transfer frequency and queue latency, the most recent performance counter data in the storage account may be several minutes out of date.
+>[AZURE.NOTE] 診断エージェントの転送頻度やキューの待機時間によっては、ストレージ アカウント内の最新のパフォーマンス カウンター データが数分前のデータになる場合があります。
 
-## <a name="enable-performance-counters-using-diagnostics-configuration-file"></a>Enable performance counters using diagnostics configuration file
+## 診断構成ファイルを使用してパフォーマンス カウンターを有効にする
 
-Use the following procedure to enable performance counters in your Azure application.
+Azure アプリケーションで、パフォーマンス カウンターを有効にするには、以下の手順を実行します。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-This section assumes that you have imported the Diagnostics monitor into your application and added the diagnostics configuration file to your Visual Studio solution (diagnostics.wadcfg in SDK 2.4 and below or diagnostics.wadcfgx in SDK 2.5 and above). See steps 1 and 2 in [Enabling Diagnostics in Azure Cloud Services and Virtual Machines](./cloud-services-dotnet-diagnostics.md)) for more information.
+このセクションは、アプリケーションに診断モニターがインポートされ、Visual Studio ソリューションに診断構成ファイル (SDK 2.4 以前の場合は diagnostics.wadcfg、SDK 2.5 以降の場合は diagnostics.wadcfgx) が追加されていることを前提としています。詳細については、「[Azure のクラウド サービスおよび仮想マシンの診断機能](./cloud-services-dotnet-diagnostics.md)」の手順 1. と手順 2. を参照してください。
 
-## <a name="step-1:-collect-and-store-data-from-performance-counters"></a>Step 1: Collect and store data from performance counters
+## 手順 1. パフォーマンス カウンターからデータを収集して保存する
 
-After you have added the diagnostics file to your Visual Studio solution you can configure the collection and storage of performance counter data in a Azure application. This is done by adding performance counters to the diagnostics file. Diagnostics data, including performance counters, is first collected on the instance. The data is then persisted to the WADPerformanceCountersTable table in the Azure Table service, so you will also need to specify the storage account in your application. If you're testing your application locally in the Compute Emulator, you can also store diagnostics data locally in the Storage Emulator. Before you store diagnostics data you must first go to the [Azure classic portal](http://manage.windowsazure.com/) and create a storage account. A best practice is to locate your storage account in the same geo-location as your Azure application in order to avoid paying external bandwidth costs and to reduce latency.
+Visual Studio ソリューションに診断ファイルを追加すると、Azure アプリケーションでパフォーマンス カウンター データの収集と保存を構成できます。そのためには、診断ファイルにパフォーマンス カウンターを追加します。パフォーマンス カウンターを含む診断データは、まずインスタンスで収集されます。その後、データが Azure Table サービスの WADPerformanceCountersTable テーブルに保存されるため、アプリケーションでストレージ アカウントを指定する必要もあります。コンピューティング エミュレーターでアプリケーションをローカルにテストする場合、ストレージ エミュレーターで診断データをローカルに保存することもできます。診断データを保存する前に、[Azure クラシック ポータル](http://manage.windowsazure.com/)でストレージ アカウントを作成する必要があります。ベスト プラクティスとして、Azure アプリケーションと同じ地理的な場所にあるストレージ アカウントを特定することにより、外部帯域幅のコストが生じないようにしたり、遅延時間を短縮することができます。
 
-### <a name="add-performance-counters-to-the-diagnostics-file"></a>Add performance counters to the diagnostics file
+### 診断ファイルにパフォーマンス カウンターを追加する
 
-There are many counters you can use. The following example shows several performance counters that are recommended for web and worker role monitoring.
+使用できるパフォーマンス カウンターは多数あります。次の例に、Web ロールおよび worker ロールの監視に推奨されるパフォーマンス カウンターをいくつか示します。
 
-Open the diagnostics file (diagnostics.wadcfg in SDK 2.4 and below or diagnostics.wadcfgx in SDK 2.5 and above) and add the following to the DiagnosticMonitorConfiguration element:
+診断ファイル (SDK 2.4 以前の場合は diagnostics.wadcfg、SDK 2.5 以降の場合は diagnostics.wadcfgx) を開き、次のコードを DiagnosticMonitorConfiguration 要素に追加します。
 
 ```
     <PerformanceCounters bufferQuotaInMB="0" scheduledTransferPeriod="PT30M">
@@ -121,77 +120,77 @@ Open the diagnostics file (diagnostics.wadcfg in SDK 2.4 and below or diagnostic
        <PerformanceCounterConfiguration counterSpecifier="\Process(WaWorkerHost)\Thread Count" sampleRate="PT30S" />
     -->
 
-       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Interop(_Global_)\# of marshalling" sampleRate="PT30S" />
+       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Interop(_Global_)# of marshalling" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Loading(_Global_)\% Time Loading" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR LocksAndThreads(_Global_)\Contention Rate / sec" sampleRate="PT30S" />
-       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(_Global_)\# Bytes in all Heaps" sampleRate="PT30S" />
+       <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Memory(_Global_)# Bytes in all Heaps" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Networking(_Global_)\Connections Established" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Remoting(_Global_)\Remote Calls/sec" sampleRate="PT30S" />
        <PerformanceCounterConfiguration counterSpecifier="\.NET CLR Jit(_Global_)\% Time in Jit" sampleRate="PT30S" />
     </PerformanceCounters>
 ```
 
-The bufferQuotaInMB attribute, which specifies the maximum amount of file system storage that is available for the data collection type (Azure logs, IIS logs, etc.). The default is 0. When the quota is reached, the oldest data is deleted as new data is added. The sum of all the bufferQuotaInMB properties must be greater than the value of the OverallQuotaInMB attribute. For a more detailed discussion of determining how much storage will be required for the collection of diagnostics data, see the Setup WAD section of [Troubleshooting Best Practices for Developing Azure Applications](https://msdn.microsoft.com/library/windowsazure/hh771389.aspx).
+bufferQuotaInMB 属性: データ コレクション タイプに使用可能なファイル システム ストレージの最大量を指定します (Azure ログ、IIS ログなど)。既定値は 0 です。クォータに達した場合、新しいデータが追加されるときに最も古いデータが削除されます。すべての bufferQuotaInMB プロパティの合計が、OverallQuotaInMB 属性の値より大きくなる必要があります。診断データを収集するために必要なストレージのサイズを求める方法の詳細については、[Azure アプリケーションの開発に関するトラブルシューティングのベスト プラクティス](https://msdn.microsoft.com/library/windowsazure/hh771389.aspx)の WAD のセットアップに関するセクションを参照してください。
 
-The scheduledTransferPeriod attribute, which specifies the interval between scheduled transfers of data, rounded up to the nearest minute. In the following examples it is set to PT30M (30 minutes). Setting the transfer period to a small value, such as 1 minute, will adversely impact your application's performance in production but can be useful for seeing diagnostics working quickly when you are testing. The scheduled transfer period should be small enough to ensure that diagnostic data is not overwritten on the instance, but large enough that it will not impact the performance of your application.
+scheduledTransferPeriod 属性: 分単位で四捨五入したデータ転送のスケジュール間隔を指定します。次の例では、PT30M (30 分) に設定されます。転送期間を小さい値 (1 分など) に設定すると、運用環境のアプリケーションのパフォーマンスにマイナスの影響が及びますが、テスト時に診断が機能するかをすぐに確認する場合に役立つことがあります。スケジュールされた転送期間は、インスタンスで診断データが上書きされないような小さい値にし、かつアプリケーションのパフォーマンスに影響を与えないような大きい値にしてください。
 
-The counterSpecifier attribute specifies the performance counter to collect.The sampleRate attribute specifies the rate at which the performance counter should be sampled, in this case 30 seconds.
+counterSpecifier 属性は、収集するパフォーマンス カウンターを指定します。sampleRate 属性は、パフォーマンス カウンターをサンプリングする間隔 (ここでは 30 秒) を指定します。
 
-Once you've added the performance counters that you want to collect, save your changes to the diagnostics file. Next, you need to specify the storage account that the diagnostics data will be persisted to.
+収集するパフォーマンス カウンターを追加したら、変更を診断ファイルに保存します。次に、診断データを保存するストレージ アカウントを指定する必要があります。
 
-### <a name="specify-the-storage-account"></a>Specify the storage account
+### ストレージ アカウントを指定する
 
-To persist your diagnostics information to your Azure Storage account, you must specify a connection string in your service configuration (ServiceConfiguration.cscfg) file.
+診断情報を Azure ストレージ アカウントに保存するには、サービス構成 (ServiceConfiguration.cscfg) ファイルで接続文字列を指定する必要があります。
 
-For Azure SDK 2.5 the Storage Account can be specified in the diagnostics.wadcfgx file.
+Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
 
->[AZURE.NOTE] These instructions only apply to Azure SDK 2.4 and below. For Azure SDK 2.5 the Storage Account can be specified in the diagnostics.wadcfgx file.
+>[AZURE.NOTE] 以下の手順は、Azure SDK 2.4 以前にのみ適用されます。Azure SDK 2.5 の場合、ストレージ アカウントは diagnostics.wadcfgx ファイルで指定できます。
 
-To set the connection strings:
+接続文字列を設定するには、次の手順に従います。
 
-1. Open the ServiceConfiguration.Cloud.cscfg file using your favorite text editor and set the connection string for your storage. The *AccountName* and *AccountKey* values are found in the Azure classic portal in the storage account dashboard, under Manage Keys.
+1. 任意のテキスト エディターを使用して ServiceConfiguration.Cloud.cscfg ファイルを開き、ストレージの接続文字列を設定します。ストレージ アカウント ダッシュボードの Azure クラシック ポータルの [キーの管理] の下に、*AccountName* 値と *AccountKey* 値があります。
 
     ```
     <ConfigurationSettings>
        <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<name>;AccountKey=<key>"/>
     </ConfigurationSettings>
     ```
-2. Save the ServiceConfiguration.Cloud.cscfg file.
+2. ServiceConfiguration.Cloud.cscfg ファイルを保存します。
 
-3. Open the ServiceConfiguration.Local.cscfg file and verify that UseDevelopmentStorage is set to true.
+3. ServiceConfiguration.Local.cscfg ファイルを開き、UseDevelopmentStorage が true に設定されていることを確認します。
 
     ```
     <ConfigurationSettings>
       <Settingname="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true"/>
     </ConfigurationSettings>
     ```
-Now that the connection strings are set, your application will persist diagnostics data to your storage account when your application is deployed.
-4. Save and build your project, then deploy your application.
+これで、接続文字列が設定され、アプリケーションのデプロイ時にアプリケーションで診断データがストレージ アカウントに保存されるようになります。
+4. プロジェクトを保存してビルドし、アプリケーションをデプロイします。
 
-## <a name="step-2:-(optional)-create-custom-performance-counters"></a>Step 2: (Optional) Create custom performance counters
+## 手順 2. (省略可能) カスタム パフォーマンス カウンターを作成する
 
-In addition to the pre-defined performance counters, you can add your own custom performance counters to monitor web or worker roles. Custom performance counters may be used to track and monitor application-specific behavior and can be created or deleted in a startup task, web role, or worker role with elevated permissions.
+事前定義されたパフォーマンス カウンターに加えて、独自のカスタム パフォーマンス カウンターを追加して Web ロールまたは worker ロールを監視できます。カスタム パフォーマンス カウンターを使用すると、アプリケーション固有の動作を追跡して監視することができます。また、カスタム パフォーマンス カウンターは、昇格されたアクセス許可を持つスタートアップ タスク、Web ロール、worker ロールで作成または削除できます。
 
-The Azure diagnostics agent refreshes the performance counter configuration from the .wadcfg file one minute after starting.  If you create custom performance counters in the OnStart method and your startup tasks take longer than one minute to execute, your custom performance counters will not have been created when the Azure Diagnostics agent tries to load them.  In this scenario you will see that Azure Diagnostics correctly captures all diagnostics data except your custom performance counters.  To resolve this issue, create the performance counters in a startup task or move some of your startup task work to the OnStart method after creating the performance counters.
+Azure 診断エージェントは起動の 1 分後に .wadcfg ファイルのパフォーマンス カウンター構成を更新します。OnStart メソッドでカスタム パフォーマンス カウンターを作成していて、スタートアップ タスクの実行に 1 分以上かかる場合は、Azure 診断エージェントがカスタム パフォーマンス カウンターの読み込みを試行する時点でカスタム パフォーマンス カウンターがまだ作成されていません。このようなシナリオでは、Azure 診断でカスタム パフォーマンス カウンターを除くすべての診断データが正しくキャプチャされていると表示されます。この問題を解決するには、スタートアップ タスクでパフォーマンス カウンターを作成するか、パフォーマンス カウンターの作成後にスタートアップ タスクの作業の一部を OnStart メソッドに移します。
 
-Perform the following steps to create a simple custom performance counter named "\MyCustomCounterCategory\MyButton1Counter":
+次の手順を実行して、"\\MyCustomCounterCategory\\MyButton1Counter" という簡単なカスタム パフォーマンス カウンターを作成します。
 
-1. Open the service definition file (CSDEF) for your application.
-2. Add the Runtime element to the WebRole or WorkerRole element to allow execution with elevated privileges:
+1. アプリケーションのサービス定義ファイル (CSDEF) を開きます。
+2. Runtime 要素を WebRole または WorkerRole 要素に追加して、 昇格された権限で実行できるようにします。
 
     ```
     <runtime executioncontext="elevated"/>
     ```
-3. Save the file.
-4. Open the diagnostics file (diagnostics.wadcfg in SDK 2.4 and below or diagnostics.wadcfgx in SDK 2.5 and above) and add the following to the DiagnosticMonitorConfiguration 
+3. ファイルを保存します。
+4. 診断ファイル (SDK 2.4 以前の場合は diagnostics.wadcfg、SDK 2.5 以降の場合は diagnostics.wadcfgx) を開き、次のコードを DiagnosticMonitorConfiguration に追加します。 
 
     ```
     <PerformanceCounters bufferQuotaInMB="0" scheduledTransferPeriod="PT30M">
      <PerformanceCounterConfiguration counterSpecifier="\MyCustomCounterCategory\MyButton1Counter" sampleRate="PT30S"/>
     </PerformanceCounters>
     ```
-5. Save the file.
-6. Create the custom performance counter category in the OnStart method of your role, before invoking base.OnStart. The following C# example creates a custom category, if it does not already exist:
+5. ファイルを保存します。
+6. base.OnStart を呼び出す前に、ロールの OnStart メソッドで、 カスタム パフォーマンス カウンター カテゴリを作成します。次の C# の例では、まだ存在しない場合にカスタム カテゴリを作成します。
 
     ```
     public override bool OnStart()
@@ -221,7 +220,7 @@ Perform the following steps to create a simple custom performance counter named 
     return base.OnStart();
     }
     ```
-7. Update the counters within your application. The following example updates a custom performance counter on Button1_Click events:
+7. アプリケーション内でカウンターを更新します。次の例では、Button1\_Click イベントでカスタム パフォーマンス カウンターを更新しています。
 
     ```
     protected void Button1_Click(object sender, EventArgs e)
@@ -236,15 +235,15 @@ Perform the following steps to create a simple custom performance counter named 
            button1Counter.RawValue.ToString();
         }
     ```
-8. Save the file.  
+8. ファイルを保存します。  
 
-Custom performance counter data will now be collected by the Azure diagnostics monitor.
+これらの手順を完了すると、カスタム パフォーマンス カウンター データが Azure 診断モニターによって収集されます。
 
-## <a name="step-3:-query-performance-counter-data"></a>Step 3: Query performance counter data
+## 手順 3. パフォーマンス カウンターのデータのクエリを実行する
 
-Once your application is deployed and running the Diagnostics monitor will begin collecting performance counters and persisting that data to Azure storage. You use tools such as Server Explorer in Visual Studio,  [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com/), or [Azure Diagnostics Manager](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) by Cerebrata to view the performance counters data in the WADPerformanceCountersTable table. You can also programatically query the Table service using [C#](../storage/storage-dotnet-how-to-use-tables.d),  [Java](../storage/storage-java-how-to-use-table-storage.md),  [Node.js](../storage/storage-nodejs-how-to-use-table-storage.md), [Python](../storage/storage-python-how-to-use-table-storage.md), [Ruby](../storage/storage-ruby-how-to-use-table-storage.md), or [PHP](../storage/storage-php-how-to-use-table-storage.md).
+アプリケーションがデプロイされたら、診断モニターを実行すると、パフォーマンス カウンターの収集が開始され、そのデータが Azure ストレージに保存されます。Visual Studio のサーバー エクスプローラー、[Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com/)、[Azure 診断マネージャー](http://www.cerebrata.com/Products/AzureDiagnosticsManager/Default.aspx) (Cerebrata) などのツールを使用して、WADPerformanceCountersTable テーブルにあるパフォーマンス カウンター データを確認します。[C#](../storage/storage-dotnet-how-to-use-tables.d)、[Java](../storage/storage-java-how-to-use-table-storage.md)、[Node.js](../storage/storage-nodejs-how-to-use-table-storage.md)、[Python](../storage/storage-python-how-to-use-table-storage.md)、[Ruby](../storage/storage-ruby-how-to-use-table-storage.md)、[PHP](../storage/storage-php-how-to-use-table-storage.md) を使用して、Table サービスをプログラムにより照会することもできます。
 
-The following C# example shows a simple query against the WADPerformanceCountersTable table and saves the diagnostics data to a CSV file. Once the performance counters are saved to a CSV file you can use the graphing capabilities in Microsoft Excel or some other tool to visualize the data. Be sure to add a reference to Microsoft.WindowsAzure.Storage.dll, which is included in the Azure SDK for .NET October 2012 and later. The assembly is installed to the %Program Files%\Microsoft SDKs\Microsoft Azure.NET SDK\version-num\ref\ directory.
+次の C# の例は、WADPerformanceCountersTable テーブルに対する簡単なクエリを示しており、CSV ファイルに診断データを保存します。パフォーマンス カウンターが CSV ファイルに保存されたら、Microsoft Excel や他のツールのグラフ作成機能を使用してデータを視覚化できます。必ず、Microsoft.WindowsAzure.Storage.dll への参照を追加してください。これは、Azure SDK for .NET (2012 年 10 月) 以降に含まれています。このアセンブリは、%Program Files%\\Microsoft SDKs\\Microsoft Azure.NET SDK\\version-num\\ref\\ ディレクトリにインストールされます。
 
 ```
     using Microsoft.WindowsAzure.Storage;
@@ -304,7 +303,7 @@ The following C# example shows a simple query against the WADPerformanceCounters
     sw.Close();
 ```
 
-Entities map to C# objects using a custom class derived from **TableEntity**. The following code defines an entity class that represents a performance counter in the **WADPerformanceCountersTable** table.
+エンティティは、**TableEntity** から派生するカスタム クラスを使用して C# オブジェクトにマップされます。次のコードは、**WADPerformanceCountersTable** テーブルのパフォーマンス カウンターを表すエンティティ クラスを定義します。
 
 
     public class PerformanceCountersEntity : TableEntity
@@ -318,11 +317,7 @@ Entities map to C# objects using a custom class derived from **TableEntity**. Th
     }
 
 
-## <a name="next-steps"></a>Next Steps
-[View additional articles on Azure Diagnostics] (../azure-diagnostics.md)
+## 次のステップ
+[Azure 診断に関するその他の記事を確認します](../azure-diagnostics.md)。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0302_2016-->

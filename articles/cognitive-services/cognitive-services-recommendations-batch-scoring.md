@@ -1,59 +1,56 @@
 
 <properties
-    pageTitle="Getting recommendations in batches: Machine learning recommendations API | Microsoft Azure"
-    description="Azure machine learning recommendations--getting recommendations in batches"
-    services="cognitive-services"
-    documentationCenter=""
-    authors="luiscabrer"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="複数のレコメンデーションの一括取得: Machine Learning Recommendations API | Microsoft Azure"
+	description="Azure Machine Learning Recommendations - 複数のレコメンデーションの一括取得"
+	services="cognitive-services"
+	documentationCenter=""
+	authors="luiscabrer"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="cognitive-services"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/17/2016"
-    ms.author="luisca"/>
+	ms.service="cognitive-services"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/17/2016"
+	ms.author="luisca"/>
 
+# 複数のレコメンデーションの一括取得
 
-# <a name="get-recommendations-in-batches"></a>Get recommendations in batches
+>[AZURE.NOTE] 複数のレコメンデーションを一括で取得することは、レコメンデーションを 1 件ずつ取得するよりも難易度の高い作業です。1 つの要求でレコメンデーションを取得する方法に関する推奨事項については、API を確認してください。
 
->[AZURE.NOTE] Getting recommendations in batches is more complicated than getting recommendations one at a time. Check the APIs for information about how to get recommendations for a single request:
-
-> [Item-to-Item recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d4)<br>
-> [User-to-Item recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd)
+> [Item-to-Item レコメンデーション](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d4)<br> [User-to-Item レコメンデーション](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd)
 >
-> Batch scoring only works for builds that were created after July 21, 2016.
+> バッチ スコアリングが正しく機能するのは、2016 年 7 月 21 日より後に作成されたビルドだけです。
 
 
-There are situations in which you need to get recommendations for more than one item at a time. For instance, you might be interested in creating a recommendations cache or even analyzing the types of recommendations that you are getting.
+複数のアイテムのレコメンデーションを一度に取得しなければならない場合があります。たとえば何かの都合で、レコメンデーションのキャッシュを作成したり、取得するレコメンデーションの種類に関する分析を行ったりするときです。
 
-Batch scoring operations, as we call them, are asynchronous operations. You need to submit the request, wait for the operation to finish, and then gather your results.  
+バッチ スコアリング操作は非同期の処理です。要求を送信し、操作の完了を待って、その結果を収集する必要があります。
 
-To be more precise, these are the steps to follow:
+その具体的な手順は次のとおりです。
 
-1.  Create an Azure Storage container if you don’t have one already.
-2.  Upload an input file that describes each of your recommendation requests to Azure Blob storage.
-3.  Kick-start the scoring batch job.
-4.  Wait for the asynchronous operation to finish.
-5.  When the operation has finished, gather the results from Blob storage.
+1.	Azure Storage コンテナーを作成します (まだ存在しない場合)。
+2.	個々のレコメンデーション要求を記述した入力ファイルを Azure BLOB ストレージにアップロードします。
+3.	スコアリング バッチ ジョブを開始します。
+4.	非同期操作の完了を待機します。
+5.	操作が完了したら、BLOB ストレージから結果を収集します。
 
-Let’s walk through each of these steps.
+以上の各手順を個別に見ていきましょう。
 
-## <a name="create-a-storage-container-if-you-don’t-have-one-already"></a>Create a Storage container if you don’t have one already
+## Storage コンテナーを作成する (まだ存在しない場合)
 
-Go to the [Azure portal](https://portal.azure.com) and create a new storage account if you don’t have one already. To do this, navigate to **New** > **Data** + **Storage** > **Storage Account**.
+[Azure ポータル](https://portal.azure.com)に移動し、ストレージ アカウントをお持ちでない場合は新しいストレージ アカウントを作成します。そのためには、**[新規]**、**[データ** + **ストレージ]**、**[ストレージ アカウント]** の順に移動します。
 
-After you have a storage account, you need to create the blob containers where you will store the input and output of the batch execution.
+ストレージ アカウントの準備が整ったら、バッチ実行の入力と出力の保存場所となる BLOB コンテナーを作成する必要があります。
 
-Upload an input file that describes each of your recommendation requests to Blob storage--let's call the file input.json here.
-After you have a container, you need to upload a file that describes each of the requests that you need to perform from the recommendations service.
+個々のレコメンデーション要求を記述した入力ファイル (ここでは input.json と呼びます) を BLOB ストレージにアップロードします。コンテナーを作成した後、Recommendations Service から実行する各要求を記述したファイルをアップロードする必要があります。
 
-A batch can perform only one type of request from a specific build. We will explain how to define this information in the next section. For now, let’s assume that we will be performing item recommendations out of a specific build. The input file then contains the input information (in this case, the seed items) for each of the requests.
+1 回のバッチで実行できるのは、特定のビルドからの 1 種類の要求だけです。次のセクションで、この情報を定義する方法について説明します。ここでは、特定のビルドからアイテムのレコメンデーションを実行すると仮定しましょう。そこで、入力ファイルには、個々の要求の入力情報 (このケースではシード アイテム) を記述します。
 
-This is an example of what the input.json file looks like:
+次に示したのは input.json ファイルの記述例です。
 
     {
       "requests": [
@@ -68,15 +65,15 @@ This is an example of what the input.json file looks like:
       ]
     }
 
-As you can see, the file is a JSON file, where each of the requests has the information that's necessary to send a recommendations request. Create a similar JSON file for the requests that you need to fulfill, and copy it to the container that you just created in Blob storage.
+ご覧のように、このファイルは JSON 形式になっています。個々の要求には、レコメンデーション要求を送信するうえで必要な情報が記述されています。満たすべき要求に関して同様の JSON ファイルを作成し、先ほど Blob Storage に作成したコンテナーにそれをコピーします。
 
-## <a name="kick-start-the-batch-job"></a>Kick-start the batch job
+## バッチ ジョブを開始する
 
-The next step is to submit a new batch job. For more information, check the [API reference](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/).
+次の手順は、新しいバッチ ジョブの送信です。詳細については、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/)を確認してください。
 
-The request body of the API needs to define the locations where the input, output, and error files need to be stored. It also needs to define the credentials that are necessary to access those locations. In addition, you need to specify some parameters that apply to the whole batch (the type of recommendations to request, the model/build to use, the number of results per call, and so on.)
+入力ファイルや出力ファイル、エラー ファイルの保存先は、API の要求本文で定義する必要があります。また、それらの場所にアクセスするために必要な資格情報も定義する必要があります。加えてバッチ全体に適用するいくつかのパラメーターを指定する必要があります (要求するレコメンデーションの種類、使用するモデル/ビルド、1 回の呼び出しで取得する結果の件数など)。
 
-This is an example of what the request body should look like:
+要求本文の具体的な記述例を次に示します。
 
     {
       "input": {
@@ -107,24 +104,23 @@ This is an example of what the request body should look like:
       }
     }
 
-Here a few important things to note:
+注意すべき重要な点がいくつかあります。
 
--   Currently, **authenticationType** should always be set to **PublicOrSas**.
+-	現在 **authenticationType** は必ず **PublicOrSas** に設定する必要があります。
 
--   You need to get a Shared Access Signature (SAS) token to allow the Recommendations API to read and write from/to your Blob storage account. More information about how to generate SAS tokens can be found on [the Recommendations API page](../storage/storage-dotnet-shared-access-signature-part-1.md).
+-	Blob Storage アカウントからの読み取りと Blob Storage アカウントへの書き込みを Recommendations API に許可するためには、Shared Access Signature (SAS) トークンを取得する必要があります。SAS トークンを生成する方法の詳細については、[Recommendations API](../storage/storage-dotnet-shared-access-signature-part-1.md) に関するページを参照してください。
 
--   The only **apiName** that's currently supported is **ItemRecommend**, which is used for Item-to-Item  recommendations. Batching doesn't currently support User-to-Item recommendations.
+-	現在サポートされている **apiName** は **ItemRecommend** のみです。アイテムとアイテムの結び付きに基づく Item-to-Item レコメンデーションに使用されます。バッチ処理では現在、User-to-Item レコメンデーションはサポートされていません。
 
-## <a name="wait-for-the-asynchronous-operation-to-finish"></a>Wait for the asynchronous operation to finish
+## 非同期操作が終了するまで待機します。
 
-When you start the batch operation, the response returns the Operation-Location header that gives you the information that's necessary to track the operation.
-You track the operation by using the [Retrieve Operation Status API]( https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3da), just like you do for tracking the operation of a build operation.
+バッチ操作を開始すると、その操作を追跡するうえで必要な情報を伝える Operation-Location ヘッダーが応答で返されます。バッチ操作の追跡には、ビルド操作を追跡するときと同様、[Retrieve Operation Status API](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3da) を使用します。
 
-## <a name="get-the-results"></a>Get the results
+## 結果を取得する
 
-After the operation has finished, assuming that there were no errors, you can gather the results from your output Blob storage.
+操作が完了したら (エラーが発生しなかった場合)、出力 Blob Storage から結果を収集することができます。
 
-The example below show what the output might look like. In this example, we show results for a batch with only two requests (for brevity).
+出力は、次の例のようになります。簡潔にするために、この例では 2 つの要求のみから成るバッチの結果を示しています。
 
     {
       "results":
@@ -197,13 +193,9 @@ The example below show what the output might look like. In this example, we show
     ]}
 
 
-## <a name="learn-about-the-limitations"></a>Learn about the limitations
+## 制限事項について
 
--   Only one batch job can be called per subscription at a time.
--   A batch job input file cannot be more than 2 MB.
+-	一度に呼び出すことのできるバッチ ジョブは各サブスクリプションにつき 1 つだけです。
+-	バッチ ジョブの入力ファイルは 2 MB 以下にする必要があります。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

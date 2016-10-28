@@ -1,22 +1,16 @@
-#### <a name="prerequisites"></a>Prerequisites
-- An Azure account; you can create a [free account](https://azure.microsoft.com/free)
-- A [Dynamics CRM Online](https://www.microsoft.com/en-us/dynamics/crm-free-trial-overview.aspx) account 
+#### 前提条件
+- Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
+- [Dynamics CRM Online](https://www.microsoft.com/ja-JP/dynamics/crm-free-trial-overview.aspx) アカウント
 
-Before using your Dynamics account in a logic app, authorize the logic app to connect to your CRM Online account. You can do this easily within your logic app on the Azure portal. 
+ロジック アプリで Dynamics アカウントを使用するには、CRM Online アカウントに接続するロジック アプリを承認してください。これは、Azure ポータルのロジック アプリ内で簡単に実行できます。
 
-Authorize your logic app to connect to your CRM Online account using the following steps:
+次の手順に従って、CRM Online アカウントに接続するロジック アプリを承認します。
 
-1. Create a logic app. In the Logic Apps designer, select **Show Microsoft managed APIs** in the drop down list, and then enter "dynamics" in the search box. Select one of the triggers or actions:  
-  ![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
-2. If you haven't previously created any connections to Dynamics, you are prompted to sign in using your Dynamics credentials:  
-  ![](./media/connectors-create-api-crmonline/dynamics-signin.png)
-3. Select **Sign in**, and enter your user name and password. Select **Sign in**. 
+1. ロジック アプリを作成します。Logic Apps デザイナーで、ドロップダウン リストから **[Show Microsoft managed APIs (Microsoft Managed API を表示)]** を選択し、検索ボックスに「dynamics」と入力します。トリガーまたはアクションのいずれかを選択します。![](./media/connectors-create-api-crmonline/dynamics-triggers.png)
+2. これまでに Dynamics への接続を作成したことがない場合は、Dynamics の資格情報を使用してサインインするよう求められます。![](./media/connectors-create-api-crmonline/dynamics-signin.png)
+3. **[サインイン]** を選択し、ユーザー名とパスワードを入力します。**[サインイン]** をクリックします。
 
-    These credentials are used to authorize your logic app to connect to, and access the data in your Dynamics account. 
-4. Notice the connection has been created. Now, proceed with the other steps in your logic app:  
-  ![](./media/connectors-create-api-crmonline/dynamics-properties.png)
+	この資格情報は、接続するロジック アプリの承認と、Dynamics アカウントのデータへのアクセスに使用されます。
+4. 接続が作成されたことを確認します。これで、ロジック アプリで他の手順に進むことができます。![](./media/connectors-create-api-crmonline/dynamics-properties.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

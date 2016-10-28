@@ -1,26 +1,23 @@
-### <a name="prerequisites"></a>Prerequisites
-- A Twilio account
-- A verified Twilio phone number that can receive SMS
-- A verified Twilio phone number that can send SMS
+### 前提条件
+- Twilio アカウント
+- SMS を受信できる確認済みの Twilio 電話番号
+- SMS を送信できる確認済みの Twilio 電話番号
 
->[AZURE.NOTE] If you are using a Twilio trial account, you can only send SMS to **verified** phone numbers.  
+>[AZURE.NOTE] Twilio の試用アカウントを使用している場合は、**確認済み**の電話番号にのみ SMS を送信できます。
 
-Before you can use your Twilio account in a Logic app, you must authorize the Logic app to connect to your Twilio account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+ロジック アプリで Twilio アカウントを使用するには、Twilio アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
-Here are the steps to authorize your Logic app to connect to your Twilio account:
+次に、Twilio アカウントに接続するロジック アプリを承認する手順を示します。
 
-1. To create a connection to Twilio, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Twilio* in the search box. Select the trigger or action you'll like to use:  
+1. Twilio への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs]** (Microsoft Managed API を表示) を選択し、検索ボックスに「*Twilio*」と入力します。使用するトリガーまたはアクションを選択します。  
   ![](./media/connectors-create-api-twilio/twilio-0.png)
-2. If you haven't created any connections to Twilio before, you'll get prompted to provide your Twilio credentials. These credentials will be used to authorize your Logic app to connect to, and access your Twilio account's data:  
+2. これまでに Twilio への接続を作成していない場合は、Twilio の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、Twilio アカウントのデータへのアクセスが行われます。  
   ![](./media/connectors-create-api-twilio/twilio-1.png)  
-3. You'll need the **Twilio account id** and **Twilio access token**  from the dashboard in Twilio, so log in to your Twilio account now to grab these two pieces of information:  
+3. Twilio のダッシュボードからの **Twilio アカウント ID** と **Twilio アクセス トークン**が必要になるため、ここで Twilio アカウントにログインし、これらの 2 つの情報を取得します。 
   ![](./media/connectors-create-api-twilio/twilio-2.png)  
-4. Twilio and Logic apps use different names to identify these two pieces of infomation. Here is how you must map them to the Logic apps dialog: ![](./media/connectors-create-api-twilio/twilio-3.png)  
-5. Select the **Create connection** button:  
+4. Twilio とロジック アプリでは別の名前を使用して、これらの 2 つの情報を識別します。次のようにして、これらの名前をロジック アプリのダイアログに対応付ける必要があります。  
+  ![](./media/connectors-create-api-twilio/twilio-3.png)  
+5. **[接続の作成]** ボタンを選択します。  
   ![](./media/connectors-create-api-twilio/twilio-4.png)
-6. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
+6. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。  
   ![](./media/connectors-create-api-twilio/twilio-5.png)
-
-<!--HONumber=Oct16_HO2-->
-
-

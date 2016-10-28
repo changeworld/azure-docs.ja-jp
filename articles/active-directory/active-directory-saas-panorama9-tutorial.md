@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Panorama9 | Microsoft Azure" 
-    description="Learn how to use Panorama9 with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Panorama9 の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Panorama9 を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,150 +11,142 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-panorama9"></a>Tutorial: Azure Active Directory integration with Panorama9
+#チュートリアル: Azure Active Directory と Panorama9 の統合
   
-The objective of this tutorial is to show the integration of Azure and Panorama9.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルでは、Azure と Panorama9 の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   A Panorama9 single sign-on enabled subscription
+-   有効な Azure サブスクリプション
+-   Panorama9 でのシングル サインオンが有効なサブスクリプション
   
-After completing this tutorial, the Azure AD users you have assigned to Panorama9 will be able to single sign into the application at your Panorama9 company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルを完了すると、Panorama9 に割り当てた Azure AD ユーザーは、Panorama9 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Enabling the application integration for Panorama9
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  Panorama9 のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-![Scenario](./media/active-directory-saas-panorama9-tutorial/IC790016.png "Scenario")
-##<a name="enabling-the-application-integration-for-panorama9"></a>Enabling the application integration for Panorama9
+![シナリオ](./media/active-directory-saas-panorama9-tutorial/IC790016.png "シナリオ")
+##Panorama9 のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for Panorama9.
+このセクションでは、Panorama9 のアプリケーション統合を有効にする方法を説明します。
 
-###<a name="to-enable-the-application-integration-for-panorama9,-perform-the-following-steps:"></a>To enable the application integration for Panorama9, perform the following steps:
+###Panorama9 のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-panorama9-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-panorama9-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-panorama9-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-panorama9-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-panorama9-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-panorama9-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-panorama9-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **Panorama9**.
+6.  **検索ボックス**に、「**Panorama9**」と入力します
 
-    ![Application Gallery](./media/active-directory-saas-panorama9-tutorial/IC790017.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-panorama9-tutorial/IC790017.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **Panorama9**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[Panorama9]** を選び、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Panorama9](./media/active-directory-saas-panorama9-tutorial/IC790018.png "Panorama9")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
   
-The objective of this section is to outline how to enable users to authenticate to Panorama9 with their account in Azure AD using federation based on the SAML protocol.  
-Configuring single sign-on for Panorama9 requires you to retrieve a thumbprint value from a certificate.  
-If you are not familiar with this procedure, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI).
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD のアカウントで Panorama9 に対する認証を行えるようにする方法を説明します。Panorama9 のシングル サインオンを構成するには、証明書から拇印の値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Panorama9** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Panorama9** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-panorama9-tutorial/IC790019.png "Configure Single Sign-On")
 
-2.  On the **How would you like users to sign on to Panorama9** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Panorama9 へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選び、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-panorama9-tutorial/IC790020.png "Configure Single Sign-On")
 
-3.  On the **Configure App URL** page, in the **Panorama9 Sign On URL** textbox, type your URL used by your users to sign in to Panorama9 (e.g.: “*https://dashboard.panorama9.com/saml/access/3262*"), and then click **Next**.
+3.  **[Configure App URL]** (アプリケーション URL の構成) ページの **[Panorama9 のサインオン URL]** ボックスに、ユーザーが Panorama9 にサインインする際に使用する URL (例: “*https://dashboard.panorama9.com/saml/access/3262*"*) を入力し、*[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-panorama9-tutorial/IC790021.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-panorama9-tutorial/IC790021.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at Panorama9** page, to download your certificate, click **Download certificate**, and then save it locally on your computer.
+4.  **[Panorama9 でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-panorama9-tutorial/IC790022.png "Configure Single Sign-On")
 
-5.  In a different web browser window, log into your Panorama9 company site as an administrator.
+5.  別の Web ブラウザーのウィンドウで、Panorama9 企業サイトに管理者としてログインします。
 
-6.  In the toolbar on the top, click **Manage**, and then click **Extensions**.
+6.  上部のツールバーで、**[管理]**、**[拡張機能]** の順にクリックします。
 
-    ![Extensions](./media/active-directory-saas-panorama9-tutorial/IC790023.png "Extensions")
+    ![拡張機能](./media/active-directory-saas-panorama9-tutorial/IC790023.png "拡張機能")
 
-7.  On the **Extensions** dialog, click **Single Sign-On**.
+7.  **[拡張機能]** ダイアログで、**[シングル サインオン]** をクリックします。
 
-    ![Single Sign-On](./media/active-directory-saas-panorama9-tutorial/IC790024.png "Single Sign-On")
+    ![シングル サインオン](./media/active-directory-saas-panorama9-tutorial/IC790024.png "シングル サインオン")
 
-8.  In the **Settings** section, perform the following steps:
+8.  **[設定]** セクションで、次の手順に従います。
 
-    ![Settings](./media/active-directory-saas-panorama9-tutorial/IC790025.png "Settings")
+    ![設定](./media/active-directory-saas-panorama9-tutorial/IC790025.png "設定")
 
-    1.  In the Azure classic portal, on the **Configure single sign-on at Panorama9** dialog page, copy the **Single Sign-On Service URL** value, and then paste it into the **Identity provider URL** textbox.
-    2.  Copy the **Thumbprint** value from the exported certificate, and then paste it into the **Certificate fingerprint** textbox.  
+    1.  Azure クラシック ポータルの **[Panorama9 でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[ID provider URL]** テキストボックスに貼り付けます。
+    2.  エクスポートした証明書から **[拇印]** の値をコピーし、**[証明書の指紋]** ボックスに貼り付けます。
 
-        >[AZURE.TIP]For more details, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
+        >[AZURE.TIP]詳細については、「[How to retrieve a certificate's thumbprint value （証明書の拇印の値を取得する方法）](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-    3.  Click **Save**.
+    3.  **[保存]** をクリックします。
 
-9.  On the Azure AD classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+9.  Azure AD クラシック ポータルで、[single sign-on configuration confirmation] \(シングル サインオンの構成の確認) を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-panorama9-tutorial/IC790026.png "Configure Single Sign-On")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-In order to enable Azure AD users to log into Panorama9, they must be provisioned into Panorama9.  
-In the case of Panorama9, provisioning is a manual task.
+Azure AD ユーザーが Panorama9 にログインできるようにするには、ユーザーを Panorama9 にプロビジョニングする必要があります。Panorama9 の場合、プロビジョニングは手動で行います。
 
-###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  Log in to your **Panorama9** company site as an administrator.
+1.  **Panorama9** 企業サイトに管理者としてログインします。
 
-2.  In the menu on the top, click **Manage**, and then click **Users**.
+2.  上部のメニューで、**[管理]**、**[ユーザー]** の順にクリックします。
 
     ![Users](./media/active-directory-saas-panorama9-tutorial/IC790027.png "Users")
 
-3.  Click **+**.
+3.  「**+**」をクリックします。
 
-4.  In the User data section, perform the following steps:
+4.  [ユーザー データ] セクションで、次の手順に従います。
 
-    ![Users](./media/active-directory-saas-panorama9-tutorial/IC790028.png "Users")
+    ![Users](./media/active-directory-saas-panorama9-tutorial/IC790028.png "ユーザー")
 
-    1.  In the **Email** textbox, type the email address of a valid Azure Active Directory user you want to provision.
-    2.  Click **Save**.
+    1.  **[電子メール]** テキストボックスに、プロビジョニングする有効な Azure Active Directory ユーザーの電子メール アドレスを入力します。
+    2.  **[保存]** をクリックします。
 
->[AZURE.NOTE]You can use any other Panorama9 user account creation tools or APIs provided by Panorama9 to provision AAD user accounts.
+>[AZURE.NOTE]Panorama9 から提供されている他の Panorama9 ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーを割り当てる
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-panorama9,-perform-the-following-steps:"></a>To assign users to Panorama9, perform the following steps:
+###ユーザーを Panorama9 に割り当てるには、次の手順に従います。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Panorama9** application integration page, click **Assign users**.
+2.  **[Panorama9]** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-panorama9-tutorial/IC790029.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-panorama9-tutorial/IC790029.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-panorama9-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=AcomDC_0713_2016-->

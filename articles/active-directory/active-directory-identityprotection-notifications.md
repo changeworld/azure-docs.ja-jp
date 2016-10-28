@@ -1,80 +1,62 @@
 <properties
-    pageTitle="Azure Active Directory Identity Protection notifications| Microsoft Azure"
-    description="Learn how notifications support your investigation activities."
-    services="active-directory"
-    keywords="azure active directory identity protection, cloud app discovery, managing applications, security, risk, risk level, vulnerability, security policy"
-    documentationCenter=""
-    authors="MarkusVi"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory Identity Protection の通知 | Microsoft Azure"
+	description="通知が調査作業にどのように役立つのかを説明します。"
+	services="active-directory"
+	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/20/2016"
-    ms.author="markvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/02/2016"
+	ms.author="markvi"/>
+
+#Azure Active Directory Identity Protection の通知 
 
 
-#<a name="azure-active-directory-identity-protection-notifications"></a>Azure Active Directory Identity Protection notifications 
+Azure AD Identity Protection では、ユーザーのリスクとリスク イベントの管理に役立つ 2 種類の自動通知電子メールが送信されます。
+
+- ユーザー侵害アラート電子メール
+
+- 週間ダイジェスト電子メール
+
+## ユーザー侵害アラート電子メール
+
+ユーザー侵害電子メール アラートは、Azure AD Identity Protection がアカウントの侵害を識別すると生成されます。この電子メールには、Identity Protection ダッシュボードのリスクのフラグ付きユーザー レポートへのリンクが含まれます。侵害に関する通知はすぐに調査することをお勧めします。
 
 
-Azure AD Identity Protection sends two types of automated notification emails to help you manage user risk and risk events:
+## 週間ダイジェスト電子メール
 
-- User compromised alert email
+週間ダイジェスト電子メールには、新しいリスク イベントの概要が含まれます。<br> 次の情報が含まれます。
 
-- Weekly digest email
-
-## <a name="user-compromised-alert-email"></a>User compromised alert email
-
-A user compromised email alert is generated when Azure AD Identity Protection identifies an account as compromised. The email includes a link to the Users flagged for risk report in the Identity Protection dashboard. We recommend that you immediately investigate notifications of compromised.
-
-
-## <a name="weekly-digest-email"></a>Weekly digest email
-
-The weekly digest email contains a summary of new risk events.<br>
-It includes:
-
-- Users at risk
-- Suspicious activities
-- Detected vulnerabilities
-- Links to the related reports in Identity Protection
+- リスクのあるユーザー
+- 不審なアクティビティ
+- 検出された脆弱性
+- Identity Protection の関連するレポートへのリンク
 
 
-<br>
-![Remediation](./media/active-directory-identityprotection-notifications/400.png "Remediation")
-<br> 
+<br> ![修復](./media/active-directory-identityprotection-notifications/400.png "修復") <br>
 
-You can switch sending a weekly digest email off.
-<br><br>
-![User risks](./media/active-directory-identityprotection-notifications/62.png "User risks")
-<br>
+週間ダイジェスト電子メールの送信は無効化できます。 <br><br> ![ユーザーのリスク](./media/active-directory-identityprotection-notifications/62.png "ユーザーのリスク") <br>
  
 
-**To open the related configuration dialog**:
+**関連する構成ダイアログ ボックスを開くには**:
 
-1. On the **Azure AD Identity Protection** blade, click **Settings**.
-<br><br>
-![User risk policy](./media/active-directory-identityprotection-notifications/401.png "User risk policy")
-<br>
+1. **[Azure AD Identity Protection]** ブレードで、**[設定]** をクリックします。 <br><br> ![ユーザー リスクのポリシー](./media/active-directory-identityprotection-notifications/401.png "ユーザー リスクのポリシー") <br>
 
-2. In the **General** section, click **Notifications**.
-<br><br>
-![User risk policy](./media/active-directory-identityprotection-notifications/405.png "User risk policy")
-<br>
+2. **[全般]** セクションで **[通知]** をクリックします。 <br><br> ![ユーザー リスクのポリシー](./media/active-directory-identityprotection-notifications/405.png "ユーザー リスクのポリシー") <br>
 
 
 
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-- [Azure Active Directory Identity Protection](active-directory-identityprotection.md) 
+- [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

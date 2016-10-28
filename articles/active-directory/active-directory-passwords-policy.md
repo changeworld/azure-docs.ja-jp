@@ -1,71 +1,66 @@
 <properties
-    pageTitle="Password policies and restrictions in Azure Active Directory | Microsoft Azure"
-    description="Describes the policies that apply to passwords in Azure Active Directory, including allowed characters, length, and expiration"
+	pageTitle="Azure Active Directory のパスワード ポリシーと制限 | Microsoft Azure"
+	description="Azure Active Directory のパスワードに適用されるポリシー (使用できる文字、長さ、有効期限など) について説明します"
   services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/04/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
+	ms.author="curtand"/>
 
 
+# Azure Active Directory のパスワード ポリシーと制限
 
-# <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Password policies and restrictions in Azure Active Directory
+この記事では、Azure AD ディレクトリに格納されているユーザー アカウントと関連付けられたパスワード ポリシーと複雑さの要件について説明します。
 
-This article describes the password policies and complexity requirements associated with user accounts stored in your Azure AD directory.
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
 
-> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+## すべてのユーザー アカウントに適用される UserPrincipalName ポリシー
 
-## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>UserPrincipalName policies that apply to all user accounts
+Azure AD 認証システムにサインインする必要があるすべてのユーザー アカウントは、一意のユーザー プリンシパル名 (UPN) 属性値がそのアカウントに関連付けられている必要があります。次の表は、オンプレミス Active Directory ソースのユーザー アカウント (クラウドと同期) とクラウドのみのユーザー アカウントの両方に適用されるポリシーの概要です。
 
-Every user account that needs to sign in to the Azure AD authentication system must have a unique user principal name (UPN) attribute value associated with that account. The following table outlines the polices  that apply to both on-premises Active Directory-sourced user accounts   (synced to the cloud) and to cloud-only user accounts.
-
-|   Property           |     UserPrincipalName requirements  |
+| プロパティ | UserPrincipalName の要件 |
 |   ----------------------- |   ----------------------- |
-|  Characters allowed    |  <ul> <li>A – Z</li> <li>a -z </li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
-|  Characters not allowed  | <ul> <li>Any '@' character that is not separating the user name from the domain.</li> <li>Cannot contain a period character '.' immediately preceding the '@' symbol</li></ul> |
-| Length constraints  |       <ul> <li>Total length must not exceed 113 characters</li><li>64 characters before the ‘@’ symbol</li><li>48 characters after the ‘@’ symbol</li></ul>
+| 使用できる文字 | <ul> <li>A – Z</li> <li>a -z </li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
+| 使用できない文字 | <ul> <li>ユーザー名とドメインの間以外にある "@" 文字</li> <li>"@" 記号の直前のピリオド文字 "."</li></ul> |
+| 長さの制限 | <ul> <li>合計の長さが 113 文字以下</li><li>‘@’ 記号の前が 64 文字以下</li><li>‘@’ 記号の後が 48 文字以下</li></ul>
 
-## <a name="password-policies-that-apply-only-to-cloud-user-accounts"></a>Password policies that apply only to cloud user accounts
+## クラウド ユーザー アカウントにのみ適用されるパスワード ポリシー
 
-The following table describes the available password policy settings that can be applied to user accounts that are created and managed in   Azure AD.
+次の表は、Azure AD で作成し、管理しているユーザー アカウントに適用できるパスワード ポリシー設定の説明です。
 
-|  Property       |    Requirements          |
+| プロパティ | 必要条件 |
 |   ----------------------- |   ----------------------- |
-|  Characters allowed   |   <ul><li>A – Z</li><li>a -z </li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
-|  Characters not allowed   |       <ul><li>Unicode characters</li><li>Spaces</li><li> **Strong passwords only**: Cannot contain a dot character '.' immediately preceding the '@' symbol</li></ul> |
-|   Password restrictions | <ul><li>8 characters minimum and 16 characters maximum</li><li>**Strong passwords only**: Requires 3 out of 4 of the following:<ul><li>Lowercase characters</li><li>Uppercase characters</li><li>Numbers (0-9)</li><li>Symbols (see password restrictions above)</li></ul></li></ul> |
-| Password expiry duration      | <ul><li>Default value: **90** days </li><li>Value is configurable using the Set-MsolPasswordPolicy cmdlet from the Azure Active Directory Module for Windows PowerShell.</li></ul> |
-| Password expiry notification |  <ul><li>Default value: **14** days (before password expires)</li><li>Value is configurable using the Set-MsolPasswordPolicy cmdlet.</li></ul> |
-| Password Expiry |  <ul><li>Default value: **false** days (indicates that password expiry is enabled) </li><li>Value can be configured for individual user accounts using the Set-MsolUser cmdlet. </li></ul> |
-|  Password history  | Last password cannot be used again. |
-|  Password history duration | Forever |
-|  Account Lockout | After 10 unsuccessful sign-in attempts (wrong password), the user will be locked out for one minute. Further incorrect sign-in attempts will lock out the user for increasing durations. |
+| 使用できる文字 | <ul><li>A – Z</li><li>a -z </li><li>0 – 9</li> <li>@ # $ % ^ & * - \_ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
+| 使用できない文字 | <ul><li>Unicode 文字</li><li>スペース</li><li> **強力なパスワードのみ**: ’@’ 記号の直前のピリオド文字 ('.') を含めることはできません</li></ul> |
+| パスワードの制限 | <ul><li>8 文字以上 16 文字以下</li><li>**強力なパスワードのみ**: 次の 4 種のうち 3 種類が必要です:<ul><li>小文字の英字</li><li>大文字の英字</li><li>数字 (0-9)</li><li>記号 (上記のパスワードの制限を参照してください)</li></ul></li></ul> |
+| パスワードの有効期間 | <ul><li>既定値: **90** 日 </li><li>値を構成するには、Windows PowerShell の Azure Active Directory モジュールから Set-MsolPasswordPolicy コマンドレットを使用します。</li></ul> |
+| パスワードの期限切れの通知 | <ul><li>既定値: **14** 日 (パスワードの有効期限が切れるまでの日数)</li><li>値を構成するには、Set-MsolPasswordPolicy コマンドレットを使用します。</li></ul> |
+| パスワードの期限切れ | <ul><li>既定値: **false** 日 (パスワードの有効期限が有効になっていることを示します) </li><li>各ユーザー アカウントの値を構成するには、Set-MsolUser コマンドレットを使用します。</li></ul> |
+| パスワードの履歴 | 前回のパスワードは再使用できません。 |
+| パスワード履歴の期間 | 無期限 |
+| アカウントのロックアウト | 正しくないパスワードを入力してサインイン試行に 10 回失敗したユーザーを、1 分間ロックアウトします。不適切なサインイン試行をさらに行った場合は、ロックアウトの期間が延長されます。 |
 
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
-* [Manage your passwords from anywhere](active-directory-passwords.md)
-* [How Password Management works](active-directory-passwords-how-it-works.md)
-* [Getting started with Password Mangement](active-directory-passwords-getting-started.md)
-* [Customize Password Management](active-directory-passwords-customize.md)
-* [Password Management Best Practices](active-directory-passwords-best-practices.md)
-* [How to get Operational Insights with Password Management Reports](active-directory-passwords-get-insights.md)
-* [Password Management FAQ](active-directory-passwords-faq.md)
-* [Troubleshoot Password Management](active-directory-passwords-troubleshoot.md)
-* [Learn More](active-directory-passwords-learn-more.md)
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+* [任意の場所からのパスワードの管理](active-directory-passwords.md)
+* [パスワード管理のしくみ](active-directory-passwords-how-it-works.md)
+* [パスワード管理の概要](active-directory-passwords-getting-started.md)
+* [パスワード管理のカスタマイズ](active-directory-passwords-customize.md)
+* [パスワード管理のベスト プラクティス](active-directory-passwords-best-practices.md)
+* [パスワード管理レポートで運用情報を把握する方法](active-directory-passwords-get-insights.md)
+* [パスワード管理に関する FAQ](active-directory-passwords-faq.md)
+* [パスワード管理のトラブルシューティング](active-directory-passwords-troubleshoot.md)
+* [詳細情報](active-directory-passwords-learn-more.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

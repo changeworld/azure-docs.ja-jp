@@ -1,241 +1,227 @@
 <properties
-    pageTitle="How to choose machine learning algorithms | Microsoft Azure"
-    description="How to choose Azure Machine Learning algorithms for supervised and unsupervised learning in clustering, classification, or regression experiments."
-    services="machine-learning"
-    documentationCenter=""
-    authors="brohrer"
-    manager="jhubbard"
-    editor="cgronlun"
+	pageTitle="Machine Learning アルゴリズムの選択方法 | Microsoft Azure"
+	description="クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法"
+	services="machine-learning"
+	documentationCenter=""
+	authors="brohrer"
+	manager="jhubbard"
+	editor="cgronlun"
     tags=""/>
     
 <tags
-    ms.service="machine-learning"
+	ms.service="machine-learning"
     ms.devlang="na"
     ms.topic="article"
     ms.tgt_pltfrm="na"
-    ms.workload="data-services"
-    ms.date="08/09/2016"
-    ms.author="brohrer;garye" />
+	ms.workload="data-services"
+	ms.date="08/09/2016"
+	ms.author="brohrer;garye" />
 
+# Microsoft Azure Machine Learning のアルゴリズムの選択方法
 
-# <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>How to choose algorithms for Microsoft Azure Machine Learning
+「どのような機械学習アルゴリズムを使用すべきか」という質問への答えは、常に「場合による」です。 データのサイズ、品質、および性質によって異なります。回答で何を行うかによって異なります。アルゴリズムの数値演算が使用しているコンピューターの命令にどのように変換されるかによって異なります。そして、どれだけ時間があるかによって異なります。最も経験豊富なデータ科学者であっても、試してみる前にどのアルゴリズムが最適か判断することはできません。
 
-The answer to the question "What machine learning algorithm should I use?" is always "It depends." It depends on the size, quality, and nature of the data. It depends what you want to do with the answer. It depends on how the math of the algorithm was translated into instructions for the computer you are using. And it depends on how much time you have. Even the most experienced data scientists can't tell which algorithm will perform best before trying them.
+## 機械学習アルゴリズム チート シート
 
-## <a name="the-machine-learning-algorithm-cheat-sheet"></a>The Machine Learning Algorithm Cheat Sheet
+**Microsoft Azure Machine Learning のアルゴリズム チート シート**を使用すると、Microsoft Azure Machine Learning のアルゴリズム ライブラリから、予測分析ソリューションに適した機械学習アルゴリズムを選択できます。この記事では、その使用方法について説明します。
 
-The **Microsoft Azure Machine Learning Algorithm Cheat Sheet** helps you choose the right machine learning algorithm for your predictive analytics solutions from the Microsoft Azure Machine Learning library of algorithms.
-This article walks you through how to use it.
+> [AZURE.NOTE] チート シートをダウンロードし、それを見ながらこの記事を読むには、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」にアクセスしてください。
 
-> [AZURE.NOTE] To download the cheat sheet and follow along with this article, go to [Machine learning algorithm cheat sheet for Microsoft Azure Machine Learning Studio](machine-learning-algorithm-cheat-sheet.md).
+このチート シートは非常に特定のユーザーを対象にしていることに注意してください。Azure Machine Learning Studio でアルゴリズムを選択しようとしている機械学習について学部レベルの知識を持つデータ科学初心者です。つまり、一部の一般化と過度の単純化を行いますが、安全な方向に案内します。また、多くのアルゴリズムが一覧にないことも意味します。Azure Machine Learning で使用可能な方法が増えたら、それらを追加します。
 
-This cheat sheet has a very specific audience in mind: a beginning data scientist with undergraduate-level machine learning, trying to choose an algorithm to start with in Azure Machine Learning Studio. That means that it makes some generalizations and oversimplifications, but it will point you in a safe direction. It also means that there are lots of algorithms not listed here. As Azure Machine Learning grows to encompass a more complete set of available methods, we'll add them.
+推奨事項は、多くのデータ科学者と機械学習専門家からのフィードバックとヒントをまとめたものです。すべてに同意したわけではありませんが、大まかな総意に意見を合わせるように調整しました。同意できない意見のほとんどは、「...によって異なる」と記述されています。
 
-These recommendations are compiled feedback and tips from a lot of data scientists and machine learning experts. We didn't agree on everything, but I've tried to harmonize our opinions into a rough consensus. Most of the statements of disagreement begin with "It depends…"
+### チート シートの使用方法
 
-### <a name="how-to-use-the-cheat-sheet"></a>How to use the cheat sheet
+チャートのパス ラベルとアルゴリズム ラベルは、"*&lt;パス ラベル&gt;* の場合は *&lt;アルゴリズム&gt;* を使用する" と読んでください。 たとえば、"*速度*の場合は *2 クラスのロジスティック回帰*を使用する" といった具合です。 場合によっては複数の分岐が適用されます。どれも完全に一致しない場合もあります。大まかな推奨事項なので、正確さは気にしないでください。複数のデータ科学者が、最善のアルゴリズムを探す唯一の方法はすべてを試してみることであると言っています。
 
-Read the path and algorithm labels on the chart as "For *&lt;path label&gt;* use *&lt;algorithm&gt;*." For example, "For *speed* use *two class logistic regression*." Sometimes more than one branch will apply.
-Sometimes none of them will be a perfect fit. They're intended to be rule-of-thumb recommendations, so don't worry about it being exact.
-Several data scientists I talked with said that the only sure way to find the very best algorithm is to try all of them.
+同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Cortana Intelligence ギャラリー](http://gallery.cortanaintelligence.com/)の「[Compare Multi-class Classifiers: Letter recognition (多クラス分類モデルの比較: 文字認識)](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)」を参照してください。
 
-Here's an example from the [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) of an experiment that tries several algorithms against the same data and compares the results: [Compare Multi-class Classifiers: Letter recognition](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+>[AZURE.TIP] Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」ご覧ください。
 
->[AZURE.TIP] To download and print a diagram that gives an overview of the capabilities of Machine Learning Studio, see [Overview diagram of Azure Machine Learning Studio capabilities](machine-learning-studio-overview-diagram.md).
+## 機械学習の種類
 
-## <a name="flavors-of-machine-learning"></a>Flavors of machine learning
+### 教師あり
 
-### <a name="supervised"></a>Supervised
+教師あり学習アルゴリズムは、一連の例に基づいて予測を行います。たとえば、過去の株価を使用して将来の価格を推測できます。トレーニングに使用される各例には、関心のある値でラベルが付けられます。この場合は株価です。教師あり学習アルゴリズムでは、これらの値ラベルのパターンを検索します。関連する可能性があるすべての情報を使用でき (曜日、季節、会社の財務データ、業界の種類、破壊的なジオポリティカル イベントの存在など)、各アルゴリズムは異なる種類のパターンの検索します。アルゴリズムは、最適なパターンを発見した後、そのパターンを使用してラベル付けされていないテスト データ (明日の価格など) を予測します。
 
-Supervised learning algorithms make predictions based on a set of examples. For instance, historical stock prices can be used to hazard guesses at future prices. Each example used for training is labeled with the value of interest—in this case the stock price. A supervised learning algorithm looks for patterns in those value labels. It can use any information that might be relevant—the day of the week, the season, the company's financial data, the type of industry, the presence of disruptive geopolicitical events—and each algorithm looks for different types of patterns. After the algorithm has found the best pattern it can, it uses that pattern to make predictions for unlabeled testing data—tomorrow's prices.
+これは、人気のある便利な機械学習の種類です。1 つの例外を除き、Azure Machine Learning のモジュールはすべて教師あり学習アルゴリズムです。教師あり学習には複数の種類があり、Azure Machine Learning では分類、回帰、異常検出と表されています。
 
-This is a popular and useful type of machine learning. With one exception, all of the modules in Azure Machine Learning are supervised learning algorithms. There are several specific types of supervised learning that are represented within Azure Machine Learning: classification, regression, and anomaly detection.
+* **分類**カテゴリを予測するためにデータが使用されている場合、教師あり学習は分類とも呼ばれます。これは、写真を「猫」または「犬」に割り当てるような場合です。選択肢が 2 つだけの場合、これは **2 クラス分類**または**二項分類**と呼ばれます。全国高校野球選手権大会の優勝校を予測する場合のように、多くのカテゴリがある場合は、**多クラス分類**と呼ばれます。
 
-* **Classification**. When the data are being used to predict a category, supervised learning is also called classification. This is the case when assigning an image as a picture of either a 'cat' or a 'dog'. When there are only two choices, this is called **two-class** or **binomial classification**. When there are more categories, as when predicting the winner of the NCAA March Madness tournament, this problem is known as **multi-class classification**.
+* **回帰**株価のような値を予測するときの教師あり学習は回帰と呼ばれます。
 
-* **Regression**. When a value is being predicted, as with stock prices, supervised learning is called regression.
+* **異常検出**目的が単に異常なデータ ポイントを識別することである場合があります。たとえば、不正行為の検出では、極めて異常なクレジット カード使用パターンは疑いがあります。可能性のあるバリエーションは非常に多く、トレーニングの例は少ないので、不正行為がどのようなものになるかを学習するのは不可能です。異常検出が使用するアプローチは、単に正常な行為がどのようなものかを (非不正取引履歴を使用して) 学習し、それと大きく異なるものを識別するというものです。
 
-* **Anomaly detection**. Sometimes the goal is to identify data points that are simply unusual. In fraud detection, for example, any highly unusual credit card spending patterns are suspect. The possible variations are so numerous and the training examples so few, that it's not feasible to learn what fraudulent activity looks like. The approach that anomaly detection takes is to simply learn what normal activity looks like (using a history non-fraudulent transactions) and identify anything that is significantly different.
+### 教師なし
 
-### <a name="unsupervised"></a>Unsupervised
+教師なし学習では、データ ポイントにラベルが関連付けられていません。代わりに、教師なし学習アルゴリズムの目的は、いくつかの方法でデータを整理したり、その構造を記述することです。これは、クラスターにグループ化したり、複雑なデータを簡単に、または整然と表示したりできるようにさまざまな表示方法を検索することを意味します。
 
-In unsupervised learning, data points have no labels associated with them. Instead, the goal of an unsupervised learning algorithm is to organize the data in some way or to describe its structure. This can mean grouping it into clusters or finding different ways of looking at complex data so that it appears simpler or more organized.
+### 強化学習
 
-### <a name="reinforcement-learning"></a>Reinforcement learning
+強化学習では、アルゴリズムが各データ ポイントに応答してアクションを選択します。学習アルゴリズムでは、短時間で報酬信号を受信し、その決定がいかに優れていたかを示します。アルゴリズムはこれに基に、最大の報酬を実現するために、戦略を変更します。現時点で、Azure Machine Learning には強化学習アルゴリズム モジュールはありません。強化学習はロボット工学の一般的な手法であり、ある時点での一連のセンサーの読み取りがデータ ポイントになり、アルゴリズムがロボットの次の動作を選択します。モノのインターネット アプリケーションにも自然に適合します。
 
-In reinforcement learning, the algorithm gets to choose an action in response to each data point. The learning algorithm also receives a reward signal a short time later, indicating how good the decision was.
-Based on this, the algorithm modifies its strategy in order to achieve the highest reward. Currently there are no reinforcement learning algorithm modules in Azure Machine Learning. Reinforcement learning is common in robotics, where the set of sensor readings at one point in time is a data point, and the algorithm must choose the robot's next action. It is also a natural fit for Internet of Things applications.
+## アルゴリズム選択時の考慮事項
 
-## <a name="considerations-when-choosing-an-algorithm"></a>Considerations when choosing an algorithm
+### 精度
 
-### <a name="accuracy"></a>Accuracy
+可能な限り最も正確な回答を得ることが常に必要であるとは限りません。使用目的によっては、近似の方が適切な場合があります。その場合は、より大まかな方法を使用することで、処理時間を大幅に削減できることがあります。近似手法のもう 1 つの利点は、一般に[過剰適合](https://youtu.be/DQWI1kvmwRg)が回避される傾向があることです。
 
-Getting the most accurate answer possible isn't always necessary.
-Sometimes an approximation is adequate, depending on what you want to use it for. If that's the case, you may be able to cut your processing time dramatically by sticking with more approximate methods. Another advantage of more approximate methods is that they naturally tend to avoid [overfitting](https://youtu.be/DQWI1kvmwRg).
+### トレーニング時間
 
-### <a name="training-time"></a>Training time
+モデルのトレーニングに必要な分数または時間数は、アルゴリズムによって大きく異なります。通常、トレーニング時間は精度と密接に関係しています。さらに、一部のアルゴリズムは他よりデータ ポイントの数に大きく影響を受けます。時間が限られている場合、アルゴリズムの選択を左右することがあります。データ セットが大きい場合は特にそうです。
 
-The number of minutes or hours necessary to train a model varies a great deal between algorithms. Training time is often closely tied to accuracy—one typically accompanies the other. In addition, some algorithms are more sensitive to the number of data points than others.
-When time is limited it can drive the choice of algorithm, especially when the data set is large.
+### 線形性
 
-### <a name="linearity"></a>Linearity
+機械学習アルゴリズムの多くは線形性を使用します。線形分類アルゴリズムは、クラスを直線 (またはその高次元版) で分離できるものと想定します。これには、ロジスティック回帰および (Azure Machine Learning で実装されている) サポート ベクター マシンが含まれます。線形回帰アルゴリズムは、データの傾向が直線に従うことを想定しています。問題によって、このような想定が適切な場合もありますが、精度が低下することもあります。
 
-Lots of machine learning algorithms make use of linearity. Linear classification algorithms assume that classes can be separated by a straight line (or its higher-dimensional analog). These include logistic regression and support vector machines (as implemented in Azure Machine Learning).
-Linear regression algorithms assume that data trends follow a straight line. These assumptions aren't bad for some problems, but on others they bring accuracy down.
+![非線形クラスの境界][1]
 
-![Non-linear class bounday][1]
+***非線形クラス境界**** - 線形分類アルゴリズムに従うと精度が低下します*
 
-***Non-linear class boundary*** *- relying on a linear classification algorithm would result in low accuracy*
+![非線形傾向のデータ][2]
 
-![Data with a nonlinear trend][2]
+***非線形傾向のデータ**** - 線形回帰法を使用すると、必要以上に多くのエラーが生成されます*
 
-***Data with a nonlinear trend*** *- using a linear regression method would generate much larger errors than necessary*
+危険性はありますが、線形アルゴリズムは最初に使用する方法として非常に一般的です。アルゴリズムが簡単で、速くトレーニングできる傾向があります。
 
-Despite their dangers, linear algorithms are very popular as a first line of attack. They tend to be algorithmically simple and fast to train.
+### パラメーターの数
 
-### <a name="number-of-parameters"></a>Number of parameters
+パラメーターは、アルゴリズムを設定するときに使用します。エラーの許容範囲や反復回数などのアルゴリズムの動作に影響を与える値、またはアルゴリズムの動作のバリエーションのオプションです。アルゴリズムのトレーニング時間と精度は、適切な設定に大きな影響を受けることがあります。通常、パラメーター数の多いアルゴリズムは、適切な組み合わせを見つけるのに多くの試行錯誤が必要です。
 
-Parameters are the knobs a data scientist gets to turn when setting up an algorithm. They are numbers that affect the algorithm's behavior, such as error tolerance or number of iterations, or options between variants of how the algorithm behaves. The training time and accuracy of the algorithm can sometimes be quite sensitive to getting just the right settings. Typically, algorithms with large numbers parameters require the most trial and error to find a good combination.
+別の方法として、Azure Machine Learning には[パラメーター スイープ](machine-learning-algorithm-parameters-optimize.md) モジュール ブロックがあり、ユーザーが選択した粒度でパラメーターのすべての組み合わせを自動的に試行します。これは、パラメーター空間を確実に網羅する優れた方法ですが、パラメーターの数が増えるとモデルのトレーニングに必要な時間が指数関数的に増加します。
 
-Alternatively, there is a [parameter sweeping](machine-learning-algorithm-parameters-optimize.md) module block in Azure Machine Learning that automatically tries all parameter combinations at whatever granularity you choose. While this is a great way to make sure you've spanned the parameter space, the time required to train a model increases exponentially with the number of parameters.
+利点は、通常、パラメーターの数が多いことは、アルゴリズムがより柔軟であることを示します。多くの場合、非常に高い精度を得られます。ただしそれは適切なパラメーター設定の組み合わせを見つけられる場合です。
 
-The upside is that having many parameters typically indicates that an algorithm has greater flexibility. It can often achieve very good accuracy. Provided you can find the right combination of parameter settings.
+### 特徴の数
 
-### <a name="number-of-features"></a>Number of features
+特定の種類のデータでは、特徴の数がデータ ポイントの数と比較して非常に大きくなる可能性があります。遺伝学やテキスト データの場合によくあります。特徴の数が多いと一部の学習アルゴリズムは処理が遅くなり、実行不可能なほどトレーニング時間が長くなります。サポート ベクター マシンは特に当てはまります (下記参照)。
 
-For certain types of data, the number of features can be very large compared to the number of data points. This is often the case with genetics or textual data. The large number of features can bog down some learning algorithms, making training time unfeasibly long. Support Vector Machines are particularly well suited to this case (see below).
+### 特殊なケース
 
-### <a name="special-cases"></a>Special cases
+一部の学習アルゴリズムは、データの構造や目的の結果について特定の想定をします。ニーズに合うものが見つかれば、より役に立つ結果、正確な予測、または短時間のトレーニングが得られます。
 
-Some learning algorithms make particular assumptions about the structure of the data or the desired results. If you can find one that fits your needs, it can give you more useful results, more accurate predictions, or faster training times.
-
-|**Algorithm**|**Accuracy**|**Training time**|**Linearity**|**Parameters**|**Notes**|
+|**アルゴリズム**|**精度**|**トレーニング時間**|**線形性**|**パラメーター**|**メモ**|
 |---|:---:|:---:|:---:|:---:|---|
-|**Two-class classification**| | | | | |
-|[logistic regression](https://msdn.microsoft.com/library/azure/dn905994.aspx)                    | |●|●|5| |
-|[decision forest](https://msdn.microsoft.com/library/azure/dn906008.aspx)|●|○| |6| |
-|[decision jungle](https://msdn.microsoft.com/library/azure/dn905976.aspx)|●|○| |6|Low memory footprint|
-|[boosted decision tree](https://msdn.microsoft.com/library/azure/dn906025.aspx)|●|○| |6|Large memory footprint|
-|[neural network](https://msdn.microsoft.com/library/azure/dn905947.aspx)|●| | |9|[Additional customization is possible](http://go.microsoft.com/fwlink/?LinkId=402867)|
-|[averaged perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx)|○|○|●|4| |
-|[support vector machine](https://msdn.microsoft.com/library/azure/dn905835.aspx)| |○|●|5|Good for large feature sets|
-|[locally deep support vector machine](https://msdn.microsoft.com/library/azure/dn913070.aspx)|○| | |8|Good for large feature sets|
-|[Bayes’ point machine](https://msdn.microsoft.com/library/azure/dn905930.aspx)| |○|●|3| |
-|**Multi-class classification**| | | | | |
-|[logistic regression](https://msdn.microsoft.com/library/azure/dn905853.aspx)| |●|●|5| |
-|[decision forest](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
-|[decision jungle ](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|Low memory footprint|
-|[neural network](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[Additional customization is possible](http://go.microsoft.com/fwlink/?LinkId=402867)|
-|[one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx)|-|-|-|-|See properties of the two-class method selected|
-|**Regression**| | | | | |
-|[linear ](https://msdn.microsoft.com/library/azure/dn905978.aspx)| |●|●|4| |
-|[Bayesian linear](https://msdn.microsoft.com/library/azure/dn906022.aspx)| |○|●|2| |
-|[decision forest](https://msdn.microsoft.com/library/azure/dn905862.aspx)|●|○| |6| |
-|[boosted decision tree](https://msdn.microsoft.com/library/azure/dn905801.aspx)|●|○| |5|Large memory footprint|
-|[fast forest quantile](https://msdn.microsoft.com/library/azure/dn913093.aspx)|●|○| |9|Distributions rather than point predictions|
-|[neural network](https://msdn.microsoft.com/library/azure/dn905924.aspx)|●| | |9|[Additional customization is possible](http://go.microsoft.com/fwlink/?LinkId=402867)|
-|[Poisson ](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | |●|5|Technically log-linear. For predicting counts|
-|[ordinal](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | |0|For predicting rank-ordering|
-|**Anomaly detection**| | | | | |
-|[support vector machine](https://msdn.microsoft.com/library/azure/dn913103.aspx)|○|○| |2|Especially good for large feature sets|
-|[PCA-based anomaly detection ](https://msdn.microsoft.com/library/azure/dn913102.aspx)| |○|●|3| |
-|[K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| |○|●|4|A clustering algorithm|
+|**2 クラス分類**| | | | | |
+|[ロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |●|●|5| |
+|[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906008.aspx)|●|○| |6| |
+|[デシジョン ジャングル](https://msdn.microsoft.com/library/azure/dn905976.aspx)|●|○| |6|低メモリ フットプリント|
+|[ブースト デシジョン ツリー](https://msdn.microsoft.com/library/azure/dn906025.aspx)|●|○| |6|大メモリ フットプリント|
+|[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905947.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
+|[平均化パーセプトロン](https://msdn.microsoft.com/library/azure/dn906036.aspx)|○|○|●|4| |
+|[サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn905835.aspx)| |○|●|5|大きい特徴セットに好適|
+|[ローカル詳細サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913070.aspx)|○| | |8|大きい特徴セットに好適|
+|[ベイズ ポイント マシン](https://msdn.microsoft.com/library/azure/dn905930.aspx)| |○|●|3| |
+|**多クラス分類**| | | | | |
+|[ロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905853.aspx)| |●|●|5| |
+|[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn906015.aspx)|●|○| |6| |
+|[デシジョン ジャングル](https://msdn.microsoft.com/library/azure/dn905963.aspx)|●|○| |6|低メモリ フットプリント|
+|[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn906030.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
+|[一対全多クラス](https://msdn.microsoft.com/library/azure/dn905887.aspx)|-|-|-|-|選択された 2 クラス法のプロパティを参照|
+|**回帰**| | | | | |
+|[線形](https://msdn.microsoft.com/library/azure/dn905978.aspx)| |●|●|4| |
+|[ベイズ線形](https://msdn.microsoft.com/library/azure/dn906022.aspx)| |○|●|2| |
+|[デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905862.aspx)|●|○| |6| |
+|[ブースト デシジョン フォレスト](https://msdn.microsoft.com/library/azure/dn905801.aspx)|●|○| |5|大メモリ フットプリント|
+|[高速フォレスト分位点回帰](https://msdn.microsoft.com/library/azure/dn913093.aspx)|●|○| |9|ポイント予測より速い分布|
+|[ニューラル ネットワーク](https://msdn.microsoft.com/library/azure/dn905924.aspx)|●| | |9|[追加カスタマイズ可能](http://go.microsoft.com/fwlink/?LinkId=402867)|
+|[ポワソン回帰](https://msdn.microsoft.com/library/azure/dn905988.aspx)| | |●|5|技術的にログ線形。カウント予測の場合|
+|[順序回帰](https://msdn.microsoft.com/library/azure/dn906029.aspx)| | | |0|ランク順序予測の場合|
+|**異常検出**| | | | | |
+|[サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913103.aspx)|○|○| |2|大きい特徴セットに特に好適|
+|[PCA ベースの異常検出](https://msdn.microsoft.com/library/azure/dn913102.aspx)| |○|●|3| |
+|[K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)| |○|●|4|クラスタリング アルゴリズム|
 
 
-**Algorithm properties:**
+**アルゴリズムのプロパティ:**
 
-**●** - shows excellent accuracy, fast training times, and the use of linearity
+**●** - 極めて高い精度、高速のトレーニング時間、線形性の使用。
 
-**○** - shows good accuracy and moderate training times
+**○** - 高い精度と中程度のトレーニング時間。
 
-## <a name="algorithm-notes"></a>Algorithm notes
+## アルゴリズムの注意事項
 
-### <a name="linear-regression"></a>Linear regression
+### 線形回帰
 
-As mentioned previously, [linear regression](https://msdn.microsoft.com/library/azure/dn905978.aspx) fits a line (or plane, or hyperplane) to the data set. It's a workhorse, simple and fast, but it may be overly simplistic for some problems.
-Check here for a [linear regression tutorial](machine-learning-linear-regression-in-azure.md).
+前に説明したように、[線形回帰](https://msdn.microsoft.com/library/azure/dn905978.aspx)はデータ セットに直線 (または平面、または超平面) を適合させます。役に立ち簡単で高速ですが、一部の問題については過剰に単純になる可能性があります。[線形回帰のチュートリアル](machine-learning-linear-regression-in-azure.md)についてはこちらをチェックしてください。
 
-![Data with a linear trend][3]
+![線形傾向のデータ][3]
 
-***Data with a linear trend***
+***線形傾向のデータ***
 
-### <a name="logistic-regression"></a>Logistic regression
+### ロジスティック回帰
 
-Although it confusingly includes 'regression' in the name, logistic regression is actually a powerful tool for [two-class](https://msdn.microsoft.com/library/azure/dn905994.aspx) and [multiclass](https://msdn.microsoft.com/library/azure/dn905853.aspx) classification. It's fast and simple. The fact that it uses an 'S'-shaped curve instead of a straight line makes it a natural fit for dividing data into groups. Logistic regression gives linear class boundaries, so when you use it, make sure a linear approximation is something you can live with.
+名前に "回帰" が含まれていて紛らわしいのですが、ロジスティック回帰は実際には [2 クラス](https://msdn.microsoft.com/library/azure/dn905994.aspx)分類と[多クラス](https://msdn.microsoft.com/library/azure/dn905853.aspx)分類のための強力なツールです。高速で単純です。直線ではなく「S」型の曲線を使用して、グループへのデータの分割に自然に適合します。ロジスティック回帰は線形クラスの境界を提供するので、使用するときは、線形近似を受け入れ可能なことを確認します。
 
-![Logistic regression to two-class data with just one feature][4]
+![特徴が 1 つだけの 2 クラス データに対するロジスティック回帰][4]
 
-***A logistic regression to two-class data with just one feature*** *- the class boundary is the point at which the logistic curve is just as close to both classes*
+***特徴が 1 つだけの 2 クラス データへのロジスティック回帰*** *- クラス境界はロジスティック曲線が両方のクラスに近いポイントです*
 
-### <a name="trees,-forests,-and-jungles"></a>Trees, forests, and jungles
+### ツリー、フォレスト、ジャングル
 
-Decision forests ([regression](https://msdn.microsoft.com/library/azure/dn905862.aspx), [two-class](https://msdn.microsoft.com/library/azure/dn906008.aspx), and [multiclass](https://msdn.microsoft.com/library/azure/dn906015.aspx)), decision jungles ([two-class](https://msdn.microsoft.com/library/azure/dn905976.aspx) and [multiclass](https://msdn.microsoft.com/library/azure/dn905963.aspx)), and boosted decision trees ([regression](https://msdn.microsoft.com/library/azure/dn905801.aspx) and [two-class](https://msdn.microsoft.com/library/azure/dn906025.aspx)) are all based on decision trees, a foundational machine learning concept. There are many variants of decision trees, but they all do the same thing—subdivide the feature space into regions with mostly the same label. These can be regions of consistent category or of constant value, depending on whether you are doing classification or regression.
+デシジョン フォレスト ([回帰](https://msdn.microsoft.com/library/azure/dn905862.aspx)、[2 クラス](https://msdn.microsoft.com/library/azure/dn906008.aspx)、[多クラス](https://msdn.microsoft.com/library/azure/dn906015.aspx))、デシジョン ジャングル ([2 クラス](https://msdn.microsoft.com/library/azure/dn905976.aspx)、[多クラス](https://msdn.microsoft.com/library/azure/dn905963.aspx))、およびブースト デシジョン ツリー ([回帰](https://msdn.microsoft.com/library/azure/dn905801.aspx)、[2 クラス](https://msdn.microsoft.com/library/azure/dn906025.aspx)) はすべて、Machine Learning の基本概念であるデシジョン ツリーに基づきます。デシジョン ツリーには多くのバリエーションがありますが、行うことはすべて同じで、特徴空間をほとんど同じラベルを持つ領域に分割します。これらは、分類または回帰のどちらを実行しているかにより、一貫性のあるカテゴリを持つ領域、または定数値です。
 
-![Decision tree subdivides a feature space][5]
+![デシジョン ツリーで特徴空間を細分化する][5]
 
-***A decision tree subdivides a feature space into regions of roughly uniform values***
+***デシジョン ツリーは特徴空間をほぼ同じ値の領域に細分化します***
 
-Because a feature space can be subdivided into arbitrarily small regions, it's easy to imagine dividing it finely enough to have one data point per region—an extreme example of overfitting. In order to avoid this, a large set of trees are constructed with special mathematical care taken that the trees are not correlated. The average of this "decision forest" is a tree that avoids overfitting. Decision forests can use a lot of memory. Decision jungles are a variant that consumes less memory at the expense of a slightly longer training time.
+特徴空間は任意の小さい領域に分割できるので、1 つの領域が 1 つのデータ ポイントになるまで細かく分割することを簡単に想像できます。これは過剰適合の例です。これを回避するには、ツリーが関連しないように数学的に特別に考慮したツリーの大きなセットを作成します。この「デシジョン フォレスト」の平均は、過剰適合を回避するツリーです。デシジョン フォレストは多くのメモリを使用する場合があります。デシジョン ジャングルは、トレーニング時間が若干長くなるのと引き替えにメモリ消費が少ないバリエーションです。
 
-Boosted decision trees avoid overfitting by limiting how many times they can subdivide and how few data points are allowed in each region. The algorithm constructs a sequence of trees, each of which learns to compensate for the error left by the tree before. The result is a very accurate learner that tends to use a lot of memory. For the full technical description, check out [Friedman's original paper](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
+ブースト デシジョン ツリーは、分割できる回数、および各領域に許可されるデータ ポイントの最小数を制限することによって、過剰適合を回避します。このアルゴリズムはツリーのシーケンスを構築し、各ツリーは前のツリーによって残されたエラーを補正するために学習します。結果は非常に正確ですが、メモリを多く使用する傾向があります。技術的な詳細については、[Friedman の原著論文](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf)をご覧ください。
 
-[Fast forest quantile regression](https://msdn.microsoft.com/library/azure/dn913093.aspx) is a variation of decision trees for the special case where you want to know not only the typical (median) value of the data within a region, but also its distribution in the form of quantiles.
+[高速フォレスト分位回帰](https://msdn.microsoft.com/library/azure/dn913093.aspx)は、領域内のデータの標準 (中央) 値だけでなく、分位の形式でその分布も知りたい特殊なケースに対応するデシジョン ツリーの一種です。
 
-### <a name="neural-networks-and-perceptrons"></a>Neural networks and perceptrons
+### ニューラル ネットワークとパーセプトロン
 
-Neural networks are brain-inspired learning algorithms covering [multiclass](https://msdn.microsoft.com/library/azure/dn906030.aspx), [two-class](https://msdn.microsoft.com/library/azure/dn905947.aspx), and [regression](https://msdn.microsoft.com/library/azure/dn905924.aspx) problems. They come in an infinite variety, but the neural networks within Azure Machine Learning are all of the form of directed acyclic graphs. That means that input features are passed forward (never backward) through a sequence of layers before being turned into outputs. In each layer, inputs are weighted in various combinations, summed, and passed on to the next layer. This combination of simple calculations results in the ability to learn sophisticated class boundaries and data trends, seemingly by magic. Many-layered networks of this sort perform the "deep learning" that fuels so much tech reporting and science fiction.
+ニューラル ネットワークは脳にインスパイアされた学習アルゴリズムで、[多クラス](https://msdn.microsoft.com/library/azure/dn906030.aspx)、[2 クラス](https://msdn.microsoft.com/library/azure/dn905947.aspx)、および[回帰](https://msdn.microsoft.com/library/azure/dn905924.aspx)の問題を対象とします。無限の多様性がありますが、Azure Machine Learning のニューラル ネットワークはすべてが無閉路有効グラフの形式です。つまり、入力特徴はレイヤーのシーケンスを前方に通過して (戻ることはありません) 出力に変換されます。各レイヤーでは、入力はさまざまな組み合わせで加重され、合計されて、次の層に渡されます。この単純な計算の組み合わせにより、一見マジックのように、高度なクラス境界とデータ傾向を学習できます。この種の多レイヤー ネットワークでは、多くの技術ポートと SF の基になっている「深い学習」が実行されます。
 
-This high performance doesn't come for free, though. Neural networks can take a long time to train, particularly for large data sets with lots of features. They also have more parameters than most algorithms, which means that parameter sweeping expands the training time a great deal.
-And for those overachievers who wish to [specify their own network structure](http://go.microsoft.com/fwlink/?LinkId=402867), the possibilities are inexhaustible.
+ただし、この高パフォーマンスは無料でありません。ニューラル ネットワークはトレーニングに時間がかかり、多数の特徴を持つ大規模なデータ セットの場合は特にそうです。また、ほとんどのアルゴリズムよりパラメーターが多く、パラメーター スイープによってトレーニング時間が大幅に延びます。また、[独自のネットワーク構造を指定](http://go.microsoft.com/fwlink/?LinkId=402867)しようとがんばると、無限の可能性があります。
 
-<a name="![boundaries-learned-by-neural-networks][6]"></a>![Boundaries learned by neural networks][6]
+![ニューラル ネットワークによって学習された境界][6]
 ---------------------------
 
-***The boundaries learned by neural networks can be complex and irregular***
+***ニューラル ネットワークによって学習される境界は複雑で不規則になる場合があります***
 
-The [two-class averaged perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) is neural networks' answer to skyrocketing training times. It uses a network structure that gives linear class boundaries. It is almost primitive by today's standards, but it has a long history of working robustly and is small enough to learn quickly.
+[2 クラス平均化パーセプトロン](https://msdn.microsoft.com/library/azure/dn906036.aspx)は、急激に増加するトレーニング時間に対するニューラル ネットワークの回答です。これは、線形クラスの境界を提供するネットワーク構造を使用します。今日の標準ではほとんど旧式ですが、確実に動作する長い歴史があり、十分に小さいので短時間で学習できます。
 
-### <a name="svms"></a>SVMs
+### SVM
 
-Support vector machines (SVMs) find the boundary that separates classes by as wide a margin as possible. When the two classes can't be clearly separated, the algorithms find the best boundary they can. As written in Azure Machine Learning, the [two-class SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) does this with a straight line only. (In SVM-speak, it uses a linear kernel.) Because it makes this linear approximation, it is able to run fairly quickly. Where it really shines is with feature-intense data, like text or genomic. In these cases SVMs are able to separate classes more quickly and with less overfitting than most other algorithms, in addition to requiring only a modest amount of memory.
+サポート ベクター マシン (SVM) は、可能な限り広いマージンでクラスを分離する境界を探します。2 つのクラスを明確に分離できない場合、アルゴリズムは最善の境界を検出します。Azure Machine Learning の [2 クラス SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) は、直線のみでこれを行います。(SVM-speak では、線形カーネルを使用します。) この線形近似を行うため、非常に高速に実行できます。特に有効なのは、テキストやゲノムのような特徴の多いデータの場合です。このような場合、SVM は、他のほとんどのアルゴリズムより速く、少ない過剰適合でクラスを分離でき、さらに必要なメモリ量も中程度です。
 
-![Support vector machine class boundary][7]
+![サポート ベクター マシンのクラス境界][7]
 
-***A typical support vector machine class boundary maximizes the margin separating two classes***
+***標準的なサポート ベクター マシンのクラス境界は、2 つのクラスを分離するマージンを最大化します***
 
-Another product of Microsoft Research, the [two-class locally deep SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) is a non-linear variant of SVM that retains most of the speed and memory efficiency of the linear version. It is ideal for cases where the linear approach doesn't give accurate enough answers. The developers kept it fast by breaking the problem down into a bunch of small linear SVM problems. Read the [full description](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) for the details on how they pulled off this trick.
+Microsoft Research のもう 1 つの製品である [2 クラスのローカル詳細 SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) は、SVM の非線形バリエーションであり、線形バージョンの速度とメモリ効率性をほぼ維持しています。線形アプローチでは十分に正確な回答を得られない場合に最適です。速さを維持するために、問題が多数の小さな線形 SVM 問題に分解されています。仕組みについては、[詳細な説明](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf)をご覧ください。
 
-Using a clever extension of nonlinear SVMs, the [one-class SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) draws a boundary that tightly outlines the entire data set. It is useful for anomaly detection. Any new data points that fall far outside that boundary are unusual enough to be noteworthy.
+非線形 SVM の巧妙な拡張機能を使用して、[1 クラス SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) はデータ セット全体の特徴を正確に示す境界を描画します。異常検出に有効です。その境界のはるか外側に位置する新しいデータ ポイントは、注目するのに十分な異常値です。
 
-### <a name="bayesian-methods"></a>Bayesian methods
+### ベイズ法
 
-Bayesian methods have a highly desirable quality: they avoid overfitting. They do this by making some assumptions beforehand about the likely distribution of the answer. Another byproduct of this approach is that they have very few parameters. Azure Machine Learning has both Bayesian algorithms for both classification ([Two-class Bayes' point machine](https://msdn.microsoft.com/library/azure/dn905930.aspx)) and regression ([Bayesian linear regression](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
-Note that these assume that the data can be split or fit with a straight line.
+ベイズ法は高品質であり、過剰適合を回避します。回答の予想される分布について事前にいくつかの想定を行うことによってこれを実現します。この方法のもう 1 つの副産物は、パラメーターが非常に少ないことです。Azure Machine Learning には、分類 ([2 クラスのベイズ ポイント マシン](https://msdn.microsoft.com/library/azure/dn905930.aspx)) と再帰 ([ベイジアン線形回帰](https://msdn.microsoft.com/library/azure/dn906022.aspx)) の両方に対するベイズ アルゴリズムがあります。これらのアルゴリズムではデータを直線で分割または適合できるものと想定していることに注意してください。
 
-On an historical note, Bayes' point machines were developed at Microsoft Research. They have some exceptionally beautiful theoretical work behind them. The interested student is directed to the [original article in JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) and an [insightful blog by Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
+歴史的には、ベイズ ポイント マシンは Microsoft research で開発されました。いくつかの非常に美しい理論的な処理が背後で行われています。興味がある場合は、[JMLR のオリジナル記事](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf)および [Chris Bishop による洞察に富むブログ](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx)をご覧ください。
 
-### <a name="specialized-algorithms"></a>Specialized algorithms
+### 特殊なアルゴリズム
 
-If you have a very specific goal you may be in luck. Within the Azure Machine Learning collection there are algorithms that specialize in rank prediction ([ordinal regression](https://msdn.microsoft.com/library/azure/dn906029.aspx)), count prediction ([Poisson regression](https://msdn.microsoft.com/library/azure/dn905988.aspx)), and anomaly detection (one based on [principal components analysis](https://msdn.microsoft.com/library/azure/dn913102.aspx) and one based on [support vector machine](https://msdn.microsoft.com/library/azure/dn913103.aspx)s).
-And there is a lone clustering algorithm as well ([K-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)).
+非常に特定の目標がある場合でも大丈夫です。Azure Machine Learning のコレクションには、ランク予測 ([順序回帰](https://msdn.microsoft.com/library/azure/dn906029.aspx))、カウント予測 ([ポワソン回帰](https://msdn.microsoft.com/library/azure/dn905988.aspx))、異常検出 ([PCA ベースの異常検出](https://msdn.microsoft.com/library/azure/dn913102.aspx)に基づくものと、[サポート ベクター マシン](https://msdn.microsoft.com/library/azure/dn913103.aspx)に基づくもの) に特化したアルゴリズムがあります。また、唯一のクラスタリング アルゴリズム ([k-means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/)) もあります。
 
-![PCA-based anomaly detection][8]
+![PCA ベースの異常検出][8]
 
-***PCA-based anomaly detection*** *- the vast majority of the data falls into a stereotypical distribution; points deviating dramatically from that distribution are suspect*
+***PCA ベースの異常検出*** *- 大部分のデータは標準的な分布に分類されます。その分布から大きく逸脱したポイントは異常です*
 
-![Data set grouped using K-means][9]
+![K-means を使用してグループ化されたデータ セット][9]
 
-***A data set is grouped into 5 clusters using K-means***
+***データ セットは、k-means を使用して 5 つのクラスターにグループ化されます***
 
-There is also an ensemble [one-v-all multiclass classifier](https://msdn.microsoft.com/library/azure/dn905887.aspx), which breaks the N-class classification problem into N-1 two-class classification problems. The accuracy, training time, and linearity properties are determined by the two-class classifiers used.
+集合体の[一対全多クラス分類子](https://msdn.microsoft.com/library/azure/dn905887.aspx)もあります。これは、N クラス分類問題を N-1 2 クラス分類問題に分割します。精度、トレーニング時間、線形性プロパティは、使用される 2 クラス分類子によって決まります。
 
-![Two-class classifiers combined to form a three-class classifier][10]
+![3 クラス分類子を形成するために組み合わされた 2 クラス分類子][10]
 
-***A pair of two-class classifiers combine to form a three-class classifier***
+***2 クラス分類子のペアの組み合わせで、3 クラス分類子が形成されます***
 
-Azure Machine Learning also includes access to a powerful machine learning framework under the title of [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
-VW defies categorization here, since it can learn both classification and regression problems and can even learn from partially unlabeled data. You can configure it to use any one of a number of learning algorithms, loss functions, and optimization algorithms. It was designed from the ground up to be efficient, parallel, and extremely fast. It handles ridiculously large feature sets with little apparent effort.
-Started and led by Microsoft Research's own John Langford, VW is a Formula One entry in a field of stock car algorithms. Not every problem fits VW, but if yours does, it may be worth your while to climb the learning curve on its interface. It's also available as [stand-alone open source code](https://github.com/JohnLangford/vowpal_wabbit) in several languages.
+Azure Machine Learning には、[Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf) のタイトルの下に強力な機械学習フレームワークへのアクセスも含まれます。VW はここでの分類には当てはまらず、分類と回帰の両方の問題を学習でき、部分的にラベル付けされていないデータからさえも学習できます。さまざまな学習アルゴリズム、損失関数、および最適化アルゴリズムのいずれかを使用するように構成できます。効率的で、並列的で、非常に高速なように一から設計されました。非常に大きい特徴セットを簡単に処理します。Microsoft Research の John Langford による VW は、市販車のようなアルゴリズムの中の F1 です。VW に適さない問題もありますが、学習する価値は十分にあります。また、複数の言語で[スタンドアロンのオープン ソース コード](https://github.com/JohnLangford/vowpal_wabbit)として使用することもできます。
 
 
 <!-- Media -->
@@ -251,8 +237,4 @@ Started and led by Microsoft Research's own John Langford, VW is a Formula One e
 [9]: ./media/machine-learning-algorithm-choice/image9.png
 [10]: ./media/machine-learning-algorithm-choice/image10.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

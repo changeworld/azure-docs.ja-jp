@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Restore from a backup of your StorSimple Virtual Array"
-   description="Learn more about how to restore a backup of your StorSimple Virtual Array."
+   pageTitle="StorSimple Virtual Array のバックアップから復元する"
+   description="StorSimple Virtual Array のバックアップを復元する方法について詳しく説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,129 +16,124 @@
    ms.date="06/07/2016"
    ms.author="alkohli"/>
 
+# StorSimple Virtual Array のバックアップから復元する
 
-# <a name="restore-from-a-backup-of-your-storsimple-virtual-array"></a>Restore from a backup of your StorSimple Virtual Array
+## 概要 
 
-## <a name="overview"></a>Overview 
-
-This article applies to Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device or StorSimple virtual device) running March 2016 general availability (GA) release or later. This article describes step-by-step how to restore from a backup set of your shares or volumes on your StorSimple Virtual Array. The article also details how the item-level recovery works on your StorSimple Virtual Array that is configured as a file server.
-
-
-## <a name="restore-shares-from-a-backup-set"></a>Restore shares from a backup set
+この記事は、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。この記事では、StorSimple Virtual Array の共有またはボリュームのバックアップ セットから復元する方法について手順を追って説明します。また、ファイル サーバーとして構成された StorSimple Virtual Array での項目レベルの回復のしくみについても詳しく説明します。
 
 
-**Before you try to restore shares, ensure that you have sufficient space on the device to complete this operation.** To restore from a backup, in the [Azure classic portal](https://manage.windowsazure.com/), perform the following steps.
-
-#### <a name="to-restore-a-share"></a>To restore a share
-
-1.  Browse to the **Backup Catalog**. Filter by appropriate device and time range to search for your backups. Click the check icon ![](./media/storsimple-ova-restore/image1.png) to execute the query.
+## バックアップ セットからの共有の復元
 
 
-1.  In the list of backup sets displayed, click and select a specific backup. Expand the backup to see the various shares under it. Click and select a share that you want to restore.
+**共有を復元する前に、デバイスにこの操作を実行できるだけの十分な領域があることを確認してください。** バックアップから復元するには、[Azure クラシック ポータル](https://manage.windowsazure.com/) で次の手順を実行します。
 
-2.  At the bottom of the page, click **Restore as new**.
+#### 共有を復元するには
 
-3.  This will initiate the **Restore as new share** wizard. On the **Specify name and location** page:
-
-
-    1.  Verify the source device name. This should be the device that contains the share you want to restore. The device selection is grayed out. To select a different source device, you will need to exit the wizard and reselect the backup set again.
-
-    2.  Provide a share name. The share name must contain 3 to 127 characters.
-
-    3.  Review the size, type, and permissions associated with the share that you are trying to restore. You will be able to modify the share properties via Windows Explorer after the restore is complete.
-
-    4.  Click the check icon ![](./media/storsimple-ova-restore/image1.png).
-
-        ![](./media/storsimple-ova-restore/image9.png)
-
-1.  After the restore job is complete, the restore will start and you will see another notification. To monitor the progress of restore, click **View job**. This will take you to the **Jobs** page.
-
-2.  You can track the progress of the restore job. When the restore is 100% complete, navigate back to the **Shares** page on your device.
-
-3.  You can now view the new restored share in the list of shares on your device. Note that restore is done to the same type of the share. A tiered share is restored as tiered and a locally pinned share as a locally pinned share.
-
-You have now completed the device configuration and learned how to backup or restore a share. 
+1.  **バックアップ カタログ**を参照します。該当するデバイスと時間範囲でフィルターして、バックアップを検索します。チェック マーク アイコン ![](./media/storsimple-ova-restore/image1.png) をクリックしてクエリを実行します。
 
 
-## <a name="restore-volumes-from-a-backup-set"></a>Restore volumes from a backup set
+1.  表示されたバックアップ セットの一覧で、特定のバックアップをクリックして選択します。バックアップを展開すると、その下にさまざまな共有が表示されます。復元する共有をクリックして選択します。
+
+2.  ページの下部にある **[新規としてリストア]** をクリックします。
+
+3.  これにより、**新しい共有としてリストア** ウィザードが開始されます。**[名前と場所の指定]** ページで、次の手順を実行します。
 
 
-To restore from a backup, in the Azure classic portal, perform the following steps. The restore operation restores the backup to a new volume on the same virtual device; you cannot restore to a different device.
+	1.  ソース デバイス名を確認します。これは、復元する共有が含まれたデバイスである必要があります。デバイスの選択項目は淡色表示されています。別のソース デバイスを選択するには、ウィザードを終了し、バックアップ セットを選択し直す必要があります。
 
-#### <a name="to-restore-a-volume"></a>To restore a volume
+	2.  共有名を指定します。共有名は、3 ～ 127 文字で指定する必要があります。
 
-1.  Browse to the **Backup Catalog**. Filter by appropriate device and time range to search for your backups. Click the check icon ![](./media/storsimple-ova-restore/image1.png) to execute the query.
+	3.  サイズ、種類、復元しようとしている共有に関連付けられたアクセス許可を確認します。復元が完了したら、エクスプローラーを使用して共有のプロパティを変更できます。
 
-2.  In the list of backup sets displayed, click and select a specific backup. Expand the backup to see the various volumes under it. Select the volume you want to restore. 
+	4.  チェック マーク アイコン ![](./media/storsimple-ova-restore/image1.png) をクリックします。
 
-5.  At the bottom of the page, click **Restore as new**. The **Restore as new volume** wizard will start.
+		![](./media/storsimple-ova-restore/image9.png)
 
-1.  On the **Specify name and location** page:
+1.  復元ジョブが完了すると、復元が開始され、別の通知が表示されます。復元の進行状況を監視するには、**[ジョブの表示]** をクリックします。これにより、**[ジョブ]** ページが表示されます。
+
+2.  復元ジョブの進行状況を追跡できます。復元が 100% 完了したら、デバイスの **[共有]** ページに戻ります。
+
+3.  デバイスの共有の一覧に、復元された新しい共有が表示されます。復元操作では、同じ種類の共有に復元されます。階層化共有は階層化共有として復元され、ローカル固定共有はローカル固定共有として復元されます。
+
+これでデバイスの構成が完了しました。また、共有をバックアップまたは復元する方法を習得できました。
 
 
-    1.  Verify the source device name. This should be the device that contains the volume that you want to restore. The device selection is unavailable. To select a different source device, you will need to exit the wizard and reselect the backup set again.
+## バックアップ セットからのボリュームの復元
 
-    2.  Provide a volume name for the volume being restored as new. The volume name must contain 3 to 127 characters.
 
-    3.  Click the arrow icon.
+バックアップから復元するには、Azure クラシック ポータルで次の手順を実行します。復元操作では、同じ仮想デバイス上の新しいボリュームにバックアップを復元します。別のデバイスに復元することはできません。
 
-        ![](./media/storsimple-ova-restore/image12.png)
+#### ボリュームを復元するには
 
-1.  On the **Specify hosts that can use this volume** page, select the appropriate ACRs from the dropdown list.
+1.  **バックアップ カタログ**を参照します。該当するデバイスと時間範囲でフィルターして、バックアップを検索します。チェック マーク アイコン ![](./media/storsimple-ova-restore/image1.png) をクリックしてクエリを実行します。
 
-    ![](./media/storsimple-ova-restore/image13.png)
+2.  表示されたバックアップ セットの一覧で、特定のバックアップをクリックして選択します。バックアップを展開すると、その下にさまざまなボリュームが表示されます。復元するボリュームを選択します。
 
-1.  Click the check icon ![](./media/storsimple-ova-restore/image1.png). This will initiate a restore job and you will see the following notification that the job is in progress.
+5.  ページの下部にある **[新規としてリストア]** をクリックします。**[新しいボリュームとしてリストア]** ウィザードが表示されます。
 
-2.  After the restore job is complete, the restore will start and you will see another notification. To monitor the progress of restore, click **View job**. This will take you to the **Jobs** page.
+1.  **[名前と場所の指定]** ページで、次の手順を実行します。
 
-3.  You can track the progress of the restore job. Navigate back to the **Volumes** page on your device.
 
-4.  You can now view the new restored volume in the list of volumes on your device. Note that restore is done to the same type of volume. A tiered volume is restored as tiered and a locally pinned volume is restored as a locally pinned volume.
+	1.  ソース デバイス名を確認します。これは、復元するボリュームが含まれたデバイスである必要があります。デバイスの選択項目は使用できなくなっています。別のソース デバイスを選択するには、ウィザードを終了し、バックアップ セットを選択し直す必要があります。
 
-5.  Once the volume appears online on the list of volumes, the volume is available for use.  On the iSCSI initiator host, refresh the list of targets in iSCSI initiator properties window.  A new target which contains the restored volume name should appear as 'inactive' under the status column.
+	2.  新規として復元するボリュームのボリューム名を指定します。ボリューム名は、3 ～ 127 文字で指定する必要があります。
 
-6.  Select the target and click **Connect**.   After the initiator is connected to the target, the status should change to **Connected**. 
+	3.  矢印アイコンをクリックします。
 
-7.  In the **Disk Management** window, the mounted volumes will appear as shown in the following illustration. Right-click the discovered volume (click the disk name), and then click **Online**.
+		![](./media/storsimple-ova-restore/image12.png)
 
-> [AZURE.IMPORTANT] When trying to restore a volume or a share from a backup set, if the restore job fails, a target volume or share may still be created in the portal. It is important that you delete this target volume or share in the portal to minimize any  future issues arising from this element.
+1.  **[このボリュームを使用できるホストの指定]** ページで、ドロップダウン リストから適切な ACR を選択します。
 
-## <a name="item-level-recovery-(ilr)"></a>Item-level recovery (ILR)
+	![](./media/storsimple-ova-restore/image13.png)
 
-This release introduces the item-level recovery (ILR) on a StorSimple virtual device configured as a file server. The feature allows you to do granular recovery of files and folders from a cloud backup of all the shares on the StorSimple device. Users can retrieve deleted files from recent backups using a self-service model.
+1.  チェック マーク アイコン ![](./media/storsimple-ova-restore/image1.png) をクリックします。これにより、復元ジョブが開始され、ジョブが実行中であることを示す通知が表示されます。
 
-Every share has a *.backups* folder that contains the most recent backups. The user can navigate to the desired backup, copy relevant files and folders from the backup and restore them. This eliminates calls to administrators for restoring files from backups.
+2.  復元ジョブが完了すると、復元が開始され、別の通知が表示されます。復元の進行状況を監視するには、**[ジョブの表示]** をクリックします。これにより、**[ジョブ]** ページが表示されます。
 
-1.  When performing the ILR, you can view the backups through Windows Explorer. Click the specific share that you want to look at the backup for. You will see a *.backups* folder created under the share that stores all the backups. Expand the *.backups* folder to view the backups. The folder will then show the exploded view of the entire backup hierarchy. This view is created on-demand and usually takes only a couple of seconds to create.
+3.  復元ジョブの進行状況を追跡できます。デバイスの **[ボリューム]** ページに戻ります。
 
-    The last 5 backups are displayed in this way and can be used to perform an item-level recovery. The 5 recent backups include both the default scheduled and the manual backups.
+4.  デバイスのボリュームの一覧に、復元された新しいボリュームが表示されます。復元操作では、同じ種類のボリュームに復元されます。階層化ボリュームは階層化ボリュームとして復元され、ローカル固定ボリュームはローカル固定ボリュームとして復元されます。
 
-    
-    -   **Scheduled backups** named as &lt;Device name&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC.
+5.  ボリュームの一覧にボリュームが [オンライン] と表示されたら、ボリュームは使用可能です。iSCSI イニシエーターのホストで、iSCSI イニシエーターのプロパティ ウィンドウにあるターゲットの一覧を更新します。復元されたボリューム名を含む新しいターゲットが、status 列に [非アクテイブ] として表示されます。
 
-    -   **Manual backups** named as Ad-hoc-YYYYMMDD-HHMMSS-UTC.
-    
-        ![](./media/storsimple-ova-restore/image14.png)
+6.  ターゲットを選択し、**[接続]** をクリック します。イニシエーターがターゲットに接続されると、状態が **[接続]** に変わります。
 
-1.  Identify the backup containing the most recent version of the deleted file. Though the folder name contains a UTC timestamp in each of the above cases, the time at which the folder was created is the actual device time when the backup started. Use the folder timestamp to locate and identify the backups.
+7.  次の図に示すように、マウントされているボリュームが **[ディスクの管理]** ウィンドウに表示されます。検出されたボリュームを右クリックし (ディスク名をクリック)、**[オンライン]** をクリックします。
 
-2.  Locate the folder or the file that you want to restore in the backup that you identified in the previous step. Note you can only view the files or folders that you have permissions for. If you are not able to access certain files or folders, you will need to contact a share administrator who can use Windows Explorer to edit the share permissions and give you access to the specific file or folder. It is a recommended best practice that the share administrator be a user group instead of a single user.
+> [AZURE.IMPORTANT] バックアップ セットからボリュームまたは共有を復元するとき、復元ジョブが失敗したのに、ポータルでターゲットのボリュームまたは共有が作成されることがあります。将来、これに起因して発生する問題を最小限に抑えるために、このターゲット ボリュームまたは共有を削除することが重要です。
 
-3.  Copy the file or the folder to the appropriate share on your StorSimple file server.
+## 項目レベルの回復 (ILR)
 
-![video_icon](./media/storsimple-ova-restore/video_icon.png) **Video available**
+このリリースでは、ファイル サーバーとして構成されている StorSimple 仮想デバイスでの項目レベルの回復 (ILR) が導入されています。この機能を使用すると、StorSimple デバイス上のすべての共有のクラウド バックアップから、ファイルとフォルダーの細かいレベルでの回復を実行できます。ユーザーは、セルフサービス モデルを使用して、削除されたファイルを最近のバックアップから取得できます。
 
-Watch the video to see how you can create shares, back up shares, and restore data on a StorSimple Virtual Array.
+各共有には、最新のバックアップが格納された *.backups* フォルダーがあります。ユーザーは目的のバックアップに移動し、該当するファイルとフォルダーをバックアップからコピーして復元できます。そのため、バックアップからファイルを復元するときに管理者に依頼する必要はなくなります。
+
+1.  ILR を実行するときは、エクスプローラーを使用してバックアップを表示できます。バックアップを調べる共有をクリックします。共有の下で *.backups* フォルダーが作成されていることを確認できます。このフォルダーにすべてのバックアップが保存されています。*.backups* フォルダーを展開してバックアップを表示します。このフォルダーでは、バックアップ階層全体の展開ビューが表示されます。このビューはオンデマンドで作成されます。通常、作成には数秒しかかかりません。
+
+	最後の 5 つ のバックアップは、この方法で表示され、アイテムレベルの回復を実行するために使用できます。これには、既定のスケジュールされたバックアップと手動バックアップの両方が含まれます。
+
+	
+	-   **スケジュールされたバックアップ**には、&lt;デバイス名&gt;DailySchedule-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
+
+	-   **手動バックアップ**には、Ad-hoc-YYYYMMDD-HHMMSS-UTC の形式で名前が付けられています。
+	
+		![](./media/storsimple-ova-restore/image14.png)
+
+1.  削除されたファイルの最新バージョンが含まれたバックアップを特定します。上記の例では、フォルダー名にそれぞれ UTC タイムスタンプが含まれていますが、フォルダーの作成時刻はバックアップが開始されたときの実際のデバイスの時刻です。フォルダーのタイムスタンプを使用してバックアップを検索し、特定します。
+
+2.  前の手順で特定したバックアップで、復元するフォルダーまたはファイルを見つけます。表示できるのは、アクセス許可が付与されているファイルまたはフォルダーだけです。特定のファイルまたはフォルダーにアクセスできない場合は、エクスプローラーを使用して共有のアクセス許可を編集したり、そのファイルまたはフォルダーへのアクセス権を付与したりできる共有管理者に連絡する必要があります。ベスト プラクティスとして、1 人のユーザーではなく、ユーザー グループが共有管理者になることをお勧めします。
+
+3.  ファイルまたはフォルダーを、StorSimple ファイル サーバー上の適切な共有にコピーします。
+
+![video\_icon](./media/storsimple-ova-restore/video_icon.png) **ビデオ**
+
+StorSimple Virtual Array 上で共有を作成し、共有をバックアップして、データを復元する方法については、このビデオをご覧ください。
 
 > [AZURE.VIDEO use-the-storsimple-virtual-array]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn more about how to [administer your StorSimple Virtual Array using the local web UI](storsimple-ova-web-ui-admin.md).
+[ローカル Web UI を使用して StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法の詳細を確認します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

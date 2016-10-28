@@ -1,229 +1,229 @@
 <properties 
-    pageTitle="Machine Learning Recommendations: JavaScript Integration | Microsoft Azure" 
-    description="Azure Machine Learning Recommendations - JavaScript Integration - documentation" 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="LuisCabrer" 
-    manager="jhubbard" 
-    editor="cgronlun"/>
+	pageTitle="Machine Learning Recommendations - JavaScript 統合 | Microsoft Azure" 
+	description="Azure Machine Learning Recommendations - JavaScript 統合 - ドキュメント" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="LuisCabrer" 
+	manager="jhubbard" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="javascript" 
-    ms.topic="article" 
-    ms.date="09/08/2016" 
-    ms.author="luisca"/>
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="javascript" 
+	ms.topic="article" 
+	ms.date="09/08/2016" 
+	ms.author="luisca"/>
+
+# Azure Machine Learning Recommendations - JavaScript 統合
+
+>[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
 
 
-# <a name="azure-machine-learning-recommendations---javascript-integration"></a>Azure Machine Learning Recommendations - JavaScript Integration
-
->[AZURE.NOTE] You should start using the Recommendations API Cognitive Service instead of this version. The Recommendations Cognitive Service will be replacing this service, and all the new features will be developed there. It has new capabilities like batching support, a better API Explorer, a cleaner API surface, more consistent signup/billing experience, etc.
-> Learn more about [Migrating to the new Cognitive Service](http://aka.ms/recomigrate)
-
-
-This document depict how to integrate your site using JavaScript. The JavaScript enables you to send Data Acquisition events and to consume recommendations once you build a recommendation model. All operations done via JS can be also done from server side.
+このドキュメントは、JavaScript を使用して、サイトを統合する方法を表します。JavaScript を使用すると、データ取得のイベントを送信し、推奨設定のモデル作成後に推奨事項を使用できるようになります。JS を使用して行うすべての操作はサーバー側からも実行できます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-##<a name="1.-general-overview"></a>1. General Overview
-Integrating your site with Azure ML Recommendations consist on 2 Phases:
+##1\.概要
+Azure ML Recommendation を使用したサイトの統合は、次の 2 つのフェーズで構成されます。
 
-1.  Send Events into Azure ML Recommendations. This will enable to build a recommendation model.
-2.  Consume the recommendations. After the model is built you can consume the recommendations. (This document does not explain how to build a model, read the quick start guide to get more information on how).
-
-
-<ins>Phase I</ins>
-
-In the first phase you insert into your html pages a small JavaScript library that enables the page to send events as they occur on the html page into Azure ML Recommendations servers (via Data Market):
-
-![Drawing1][1]
-
-<ins>Phase II</ins>
-
-In the second phase when you want to show the recommendations on the page you select one of the following options:
-
-1.Your server (on the phase of page rendering) calls Azure ML Recommendations Server (via Data Market) to get recommendations. The results include a list of items id. Your server needs to enrich the results with the items Meta data (e.g. images, description) and send the created page to the browser.
-
-![Drawing2][2]
-
-2.The other option is to use the small JavaScript file from phase one to get a simple list of recommended items. The data received here is leaner than the one in the first option.
-
-![Drawing3][3]
-
-##<a name="2.-prerequisites"></a>2. Prerequisites
-
-1. Create a new model using the APIs. See the Quick start guide on how to do it.
-2. Encode your &lt;dataMarketUser&gt;:&lt;dataMarketKey&gt; with base64. (This will be used for the basic authentication to enable the JS code to call the APIs).
+1.	イベントを Azure ML Recommendation へ送信するこれによって推奨モデルを作成できます。
+2.	推奨事項を使用するモデルをビルドした後は、推奨設定を使用できます (このドキュメントでは、モデルを構築する方法については説明しません。詳細についてはクイック スタート ガイドをご覧ください)。
 
 
-##<a name="3.-send-data-acquisition-events-using-javascript"></a>3. Send Data Acquisition events using JavaScript
-The following steps facilitate sending events:
+<ins>フェーズ I</ins>
 
-1.  Include JQuery library in your code. You can download it from nuget in the following URL.
+最初のフェーズでは、ご利用の html ページを小規模な JavaScript ライブラリに挿入します。これによって、html ページでイベントが発生すればそれをデータ マーケット経由で Azure ML Recommendations サーバーに送信できるようになります。
 
-        http://www.nuget.org/packages/jQuery/1.8.2
-2.  Include the Recommendations Java Script library from the following URL: http://aka.ms/RecoJSLib1
+![図面 1][1]
 
-3.  Initialize Azure ML Recommendations library with the appropriate parameters.
+<ins>フェーズ II</ins>
 
-        <script>
-            AzureMLRecommendationsStart("<base64encoding of username:key>",
-            "<model_id>");
-        </script>
+2 番目のフェーズで、ページで推奨事項を表示する際は、次のオプションの 1 つを選択します。
 
-4.  Send the appropriate event. See detailed section below on all type of events (example of click event)
+1\. ページ レンダリング フェーズでご利用のサーバーでデータ マーケット経由で Azure ML Recommendations Server を呼び出し、推奨を取得する。結果には項目 ID の一覧が含まれます。ご利用のサーバーでは、画像や説明などのメタ データ項目で結果に情報を追加し、作成されたページをブラウザーに送信する必要があります。
 
-        <script>
-            if (typeof AzureMLRecommendationsEvent=="undefined") {      
-                        AzureMLRecommendationsEvent = [];
-                    }
-            AzureMLRecommendationsEvent.push({ event: "click", item: "18321116" });
-        </script>
+![図面 2][2]
 
+2\. もう 1 つのオプションでは、1 番目のフェーズから小さい JavaScript ファイルを使用して、推奨項目の簡単なリストを取得します。ここで受信するデータは最初のオプションよりも少なくなります。
 
-###<a name="3.1.-limitations-and-browser-support"></a>3.1. Limitations and Browser Support
-This is a reference implementation and it is given as is. It should support all major browsers.
+![図面 3][3]
 
-###<a name="3.2.-type-of-events"></a>3.2. Type of Events
-There are 5 types of event that the library supports: Click, Recommendation Click, Add to Shop Cart, Remove from Shop Cart and Purchase. There is an additional event that is used to set the user context called Login.
+##手順 2.前提条件
 
-####<a name="3.2.1.-click-event"></a>3.2.1. Click Event
-This event should be used any time a user clicked on an item. Usually when user clicks on an item a new page is opened with the item details; in this page this event should be triggered.
-
-Parameters:
-- event (string, mandatory) - “click”
-- item (string, mandatory) - Unique identifier of the item
-- itemName (string, optional) - the name of the item
-- itemDescription (string, optional) - the description of the item
-- itemCategory (string, optional) - the category of the item
-        
-        <script>
-            if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
-            AzureMLRecommendationsEvent.push({ event: "click", item: "3111718" });
-        </script>
-
-Or with optional data:
-
-        <script>
-            if (typeof AzureMLRecommendationsEvent === "undefined") { AzureMLRecommendationsEvent = []; }
-            AzureMLRecommendationsEvent.push({event: "click", item: "3111718", itemName: "Plane", itemDescription: "It is a big plane", itemCategory: "Aviation"});
-        </script>
+1. API を使用して新しいモデルを作成する実行方法についてはクイック スタート ガイドをご覧ください。
+2. &lt;dataMarketUser&gt;:&lt;dataMarketKey&gt; を base64 でエンコードします (これは基本認証で使用され、JS コードで API を呼び出すために使用できます)。
 
 
-####<a name="3.2.2.-recommendation-click-event"></a>3.2.2. Recommendation Click Event
-This event should be used any time a user clicked on an item that was received from Azure ML Recommendations as a recommended item. Usually when user clicks on an item a new page is opened with the item details; in this page this event should be triggered.
+##3\.JavaScript を使用してデータ取得イベントを送信する
+次の手順で送信イベントを簡単に実施できます。
 
-Parameters:
-- event (string, mandatory) - “recommendationclick”
-- item (string, mandatory) - Unique identifier of the item
-- itemName (string, optional) - the name of the item
-- itemDescription (string, optional) - the description of the item
-- itemCategory (string, optional) - the category of the item
-- seeds (string array, optional) - the seeds that generated the recommendation query.
-- recoList (string array, optional) - the result of the recommendation request that generated the item that was clicked.
-        
-        <script>
-            if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
-            AzureMLRecommendationsEvent.push({event: "recommendationclick", item: "18899918" });
-        </script>
+1.	コードに JQuery ライブラリを含めます。次の URL の nuget からダウンロードできます。
 
-Or with optional data:
+		http://www.nuget.org/packages/jQuery/1.8.2
+2.	次の URL http://aka.ms/RecoJSLib1 から Recommendation JavaScript ライブラリを含めます。
 
-        <script>
-            if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
-            AzureMLRecommendationsEvent.push({ event: eventName, item: "198", itemName: "Plane2", itemDescription: "It is a big plane2", itemCategory: "Default2", seeds: ["Seed1", "Seed2"], recoList: ["199", "198", "197"]               });
-        </script>
+3.	Azure ML Recommendations ライブラリを適切なパラメーターで初期化します。
+
+		<script>
+			AzureMLRecommendationsStart("<base64encoding of username:key>",
+			"<model_id>");
+		</script>
+
+4.	適切なイベントを送信します。以下のすべてのイベント タイプで詳細セクションをご覧ください (クリック イベントの例)
+
+		<script>
+			if (typeof AzureMLRecommendationsEvent=="undefined") { 		
+        	        	AzureMLRecommendationsEvent = [];
+	                }
+			AzureMLRecommendationsEvent.push({ event: "click", item: "18321116" });
+		</script>
 
 
-####<a name="3.2.3.-add-shopping-cart-event"></a>3.2.3. Add Shopping Cart Event
-This event should be used when the user add an item to the shopping cart.
-Parameters:
-* event (string, mandatory) - “addshopcart”
-* item (string, mandatory) - Unique identifier of the item
-* itemName (string, optional) - the name of the item
-* itemDescription (string, optional) - the description of the item
-* itemCategory (string, optional) - the category of the item
-        
-        <script>
-            if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
-            AzureMLRecommendationsEvent.push({event: "addshopcart", item: "13221118" });
-        </script>
+###3\.1.制限事項とブラウザー サポート
+これはリファレンスの実装であり、そのままで提供されます。主なブラウザーすべてをサポートしています。
 
-####<a name="3.2.4.-remove-shopping-cart-event"></a>3.2.4. Remove Shopping Cart Event
-This event should be used when the user removes an item to the shopping cart.
+###3\.2.イベントの種類
+ライブラリでサポートされるイベントには、クリック、推奨クリック、ショッピング カートに追加、シッピング カートから削除、購入の 5 種類があります。ログインというユーザー コンテキストの設定に使用されるイベントもあります。
 
-Parameters:
-* event (string, mandatory) - “removeshopcart”
-* item (string, mandatory) - Unique identifier of the item
-* itemName (string, optional) - the name of the item
-* itemDescription (string, optional) - the description of the item
-* itemCategory (string, optional) - the category of the item
-        
-        <script>
-            if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
-            AzureMLRecommendationsEvent.push({ event: "removeshopcart", item: "111118" });
-        </script>
+####3\.2.1.クリック イベント
+このイベントは、ユーザーが項目をクリックするたびに使用されます。通常、ユーザーが項目をクリックすると項目の詳細を示す新しいページが開きます。このページではこのイベントがトリガーされます。
 
-####<a name="3.2.5.-purchase-event"></a>3.2.5. Purchase Event
-This event should be used when the user purchased his shopping cart.
+パラメーター:
+- event (文字列、必須) – "click"
+- item (文字列、必須) – 項目の一意識別子
+- itemName (文字列、省略可能) – 項目の名前
+- itemDescription (文字列、省略可能) – 項目の説明
+- itemCategory (文字列、省略可能) – 項目のカテゴリ
+		
+		<script>
+			if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
+			AzureMLRecommendationsEvent.push({ event: "click", item: "3111718" });
+		</script>
 
-Parameters:
-* event (string) - “purchase”
-* items ( Purchased[] ) - Array holding an entry for each item purchased.<br><br>
-Purchased format:
-    * item (string) - Unique identifier of the item.
-    * count (int or string) - number of items that were purchased.
-    * price (float or string) - optional field - the price of the item.
+または省略可能なデータ。
 
-The example below shows purchase of 3 items (33, 34, 35), two with all fields populated (item, count, price) and one (item 34) without a price.
+		<script>
+			if (typeof AzureMLRecommendationsEvent === "undefined") { AzureMLRecommendationsEvent = []; }
+			AzureMLRecommendationsEvent.push({event: "click", item: "3111718", itemName: "Plane", itemDescription: "It is a big plane", itemCategory: "Aviation"});
+		</script>
 
-        <script>
-            if ( typeof AzureMLRecommendationsEvent == "undefined"){ AzureMLRecommendationsEvent = []; }
-            AzureMLRecommendationsEvent.push({ event: "purchase", items: [{ item: "33", count: "1", price: "10" }, { item: "34", count: "2" }, { item: "35", count: "1", price: "210" }] });
-        </script>
 
-####<a name="3.2.6.-user-login-event"></a>3.2.6. User Login Event
-Azure ML Recommendations Event library creates and use a cookie in order to identify events that came from the same browser. In order to improve the model results Azure ML Recommendations enables to set a user unique identification that will override the cookie usage.
+####3\.2.2.推奨クリック イベント
+このイベントは、ユーザーが Azure ML Recommendations から推奨項目として取得された項目をクリックするたびに使用されます。通常、ユーザーが項目をクリックすると項目の詳細を示す新しいページが開きます。このページではこのイベントがトリガーされます。
 
-This event should be used after the user login to your site.
+パラメーター:
+- event (文字列、必須) – "recommendationclick"
+- item (文字列、必須) – 項目の一意識別子
+- itemName (文字列、省略可能) – 項目の名前
+- itemDescription (文字列、省略可能) – 項目の説明
+- itemCategory (文字列、省略可能) – 項目のカテゴリ
+- seeds (文字列配列、省略可能) – 推奨クエリを生成するシード 。
+- recoList (文字列配列、省略可能) – 項目がクリックされると生成される、推奨リクエストの結果。
+		
+		<script>
+			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
+			AzureMLRecommendationsEvent.push({event: "recommendationclick", item: "18899918" });
+		</script>
 
-Parameters:
-* event (string) - “userlogin”
-* user (string) - unique identification of the user.
-        <script>
-            if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; } AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });       </script>
+または省略可能なデータ。
 
-##<a name="4.-consume-recommendations-via-javascript"></a>4. Consume Recommendations via JavaScript
-The code that consumes the recommendation is triggered by some JavaScript event by the client’s webpage. The recommendation response includes the recommended items Ids, their names and their ratings. It’s best to use this option only for a list display of the recommended items - more complex handling (such as adding the item’s metadata) should be done on the server side integration.
+		<script>
+			if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
+			AzureMLRecommendationsEvent.push({ event: eventName, item: "198", itemName: "Plane2", itemDescription: "It is a big plane2", itemCategory: "Default2", seeds: ["Seed1", "Seed2"], recoList: ["199", "198", "197"] 				});
+		</script>
 
-###<a name="4.1-consume-recommendations"></a>4.1 Consume Recommendations
-To consume recommendations you need to include the required JavaScript libraries in your page and to call AzureMLRecommendationsStart. See section 2.
 
-To consume recommendations for one or more items you need to call a method called: AzureMLRecommendationsGetI2IRecommendation.
+####3\.2.3.ショッピング カートのイベントを追加
+このイベントはユーザーがショッピング カートに項目を追加する際に使用されます。
+パラメーター:
+* event (文字列、必須) – "addshopcart"
+* item (文字列、必須) – 項目の一意識別子
+* itemName (文字列、省略可能) – 項目の名前
+* itemDescription (文字列、省略可能) – 項目の説明
+* itemCategory (文字列、省略可能) – 項目のカテゴリ
+		
+		<script>
+			if (typeof AzureMLRecommendationsEvent == "undefined") { AzureMLRecommendationsEvent = []; }
+			AzureMLRecommendationsEvent.push({event: "addshopcart", item: "13221118" });
+		</script>
 
-Parameters:
-* items (array of strings) - One or more items to get recommendations for. If you consume an Fbt build then you can set here only one item.
-* numberOfResults (int) - number of required results.
-* includeMetadata (boolean, optional) - if set to ‘true’ indicates that the metadata field must be populated in the result.
-* Processing function - a function that will handle the recommendations returned. The data is returned as an array of:
-    * Item - item unique id
-    * name - item name (if exist in catalog)
-    * rating - recommendation rating
-    * metadata - a string that represents the metadata of the item
+####3\.2.4.ショッピング カートのイベントを削除
+このイベントはユーザーがショッピング カートから項目を削除した使用されます。
 
-Example: The following code requests 8 recommendations for item "64f6eb0d-947a-4c18-a16c-888da9e228ba" (and by not specifying includeMetadata - it implicitly says that no metadata is required), it then concatenate the results into a buffer.
+パラメーター:
+* event (文字列、必須) – "removeshopcart"
+* item (文字列、必須) – 項目の一意識別子
+* itemName (文字列、省略可能) – 項目の名前
+* itemDescription (文字列、省略可能) – 項目の説明
+* itemCategory (文字列、省略可能) – 項目のカテゴリ
+		
+		<script>
+			if (typeof AzureMLRecommendationsEvent=="undefined") { AzureMLRecommendationsEvent = []; }
+			AzureMLRecommendationsEvent.push({ event: "removeshopcart", item: "111118" });
+		</script>
 
-        <script>
-            var reco = AzureMLRecommendationsGetI2IRecommendation(["64f6eb0d-947a-4c18-a16c-888da9e228ba"], 8, false, function (reco) {
-                var buff = "";
-                for (var ii = 0; ii < reco.length; ii++) {
-                    buff += reco[ii].item + "," + reco[ii].name + "," + reco[ii].rating + "\n";
-                }
-                alert(buff);
-            });
-        </script>
+####3\.2.5.購入イベント
+このイベントはユーザーがショッピング カートの項目を購入した際に使用されます。
+
+パラメーター:
+* event (文字列) – "purchase"
+* items (購入済) – 購入した各項目のエントリを保持する配列。<br><br> 購入の形式:
+	* item (文字列) – 項目の一意識別子。
+	* count (int か文字列) – 購入された項目の数。
+	* price (float 型か文字列) – 省略可能フィールド – 項目の価格。
+
+次の例では、3 つの項目の購入を示します (33、34、35)。2 つはすべてのフィールドが入力されており (項目、数、価格)、1 つ (項目 34) は価格が入力されていません。
+
+		<script>
+			if ( typeof AzureMLRecommendationsEvent == "undefined"){ AzureMLRecommendationsEvent = []; }
+			AzureMLRecommendationsEvent.push({ event: "purchase", items: [{ item: "33", count: "1", price: "10" }, { item: "34", count: "2" }, { item: "35", count: "1", price: "210" }] });
+		</script>
+
+####3\.2.6.ユーザー ログイン イベント
+Azure ML Recommendations のイベント ライブラリでは、同じブラウザーでのイベントの特定に使用される cookie が作成され使用されます。モデル結果を向上するため、Azure ML Recommendations ではユーザーに一意識別子を設定し、cookie の使用状況をオーバーライドします。
+
+このイベントは、ユーザーがサイトにログインした後に使用される必要があります。
+
+パラメーター:
+* event (文字列) – "userlogin"
+* user (文字列) – ユーザーの一意の識別子。
+
+	<script>
+		if (typeof 	AzureMLRecommendationsEvent=="undefined	") { AzureMLRecommendationsEvent = ; }
+			AzureMLRecommendationsEvent.push({event: "userlogin", user: “ABCD10AA” });
+		</script>
+
+##4\.JavaScript で推奨設定を使用します。
+推奨設定を使用するコードは、クライアント Web ページで、一部の JavaScript イベントによってトリガーされます。推奨設定の応答には、推奨項目の ID、名前、評価が含まれます。このオプションは、推奨項目の一覧表示に対してのみ使うことをお勧めします – 項目のメタデータの追加などのより複雑な処理は、サーバー側の統合で行われます。
+
+###4\.1 推奨を使用する
+推奨を使用するには、ページに JavaScript ライブラリを含め、AzureMLRecommendationsStart を呼び出す必要があります。セクション 2 をご覧ください。
+
+1 つまたは複数の項目の推奨を使用するには、AzureMLRecommendationsGetI2IRecommendation というメソッドを呼び出す必要があります。
+
+パラメーター:
+* items (文字列の配列) – 推奨を取得するための 1 つまたは複数の項目。Fbt ビルドを使用している場合、ここでは 1 つの項目のみ設定できます。
+* numberOfResults (int) – 必要な結果の数。
+* includeMetadata (ブール値、省略可能) - 'true' に設定されると、メタデータ フィールドが結果に入力されます。
+* Processing function - 返された推奨を処理する関数。次の配列として、データが返されます。
+	* Item – 項目の一意の ID
+	* name – 項目名 (カタログに存在する場合)
+	* rating – 推奨の評価
+	* metadata - 項目のメタデータを表す文字列
+
+例: 次のコードでは、項目 "64f6eb0d-947a-4c18-a16c-888da9e228ba" の 8 つの推奨をリクエストしています (includeMetadata は指定していません - メタデータが必要ないことが暗示的に示されているため)。その後、結果をバッファにつなげます。
+
+		<script>
+ 			var reco = AzureMLRecommendationsGetI2IRecommendation(["64f6eb0d-947a-4c18-a16c-888da9e228ba"], 8, false, function (reco) {
+ 				var buff = "";
+ 				for (var ii = 0; ii < reco.length; ii++) {
+   					buff += reco[ii].item + "," + reco[ii].name + "," + reco[ii].rating + "\n";
+ 				}
+ 				alert(buff);
+			});
+		</script>
 
 
 [1]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing1.png
@@ -231,8 +231,4 @@ Example: The following code requests 8 recommendations for item "64f6eb0d-947a-4
 [3]: ./media/machine-learning-recommendation-api-javascript-integration/Drawing3.png
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016--->

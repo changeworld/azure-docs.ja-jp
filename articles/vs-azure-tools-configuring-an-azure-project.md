@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Configure an Azure Cloud Service Project with Visual Studio | Microsoft Azure"
-   description="Learn how to configure an Azure cloud service project in Visual Studio, depending on your requirements for that project."
+   pageTitle="Visual Studio で Azure クラウド サービス プロジェクトを構成する | Microsoft Azure"
+   description="Visual Studio で、そのプロジェクトの要件に応じて、Azure クラウド サービス プロジェクトを構成する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,55 +15,50 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Visual Studio で Azure クラウド サービス プロジェクトを構成するには
 
-# <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>Configure an Azure Cloud Service Project with Visual Studio
+Azure クラウド サービス プロジェクトは、そのプロジェクトの要件に応じて構成できます。次のカテゴリに関して、プロジェクトのプロパティを設定できます。
 
-You can configure an Azure cloud service project, depending on your requirements for that project. You can set properties for the project for the following categories:
+- **Azure にクラウド サービスを発行**
 
-- **Publish a cloud service to Azure**
+  Azure にデプロイされた既存のクラウド サービスが誤って削除されることがないようプロパティ設定できます。
 
-  You can set a property to make sure that an existing cloud service deployed to Azure is not accidentally deleted.
+- **ローカル コンピューター上のクラウド サービスの実行またはデバッグ**
 
-- **Run or debug a cloud service on the local computer**
+  サービス構成を使用して、Azure ストレージ エミュレーターを開始するかどうか指定することができます。
 
-  You can select a service configuration to use and indicate whether you want to start the Azure storage emulator.
+- **クラウド サービス パッケージの作成時に検証**
 
-- **Validate a cloud service package when it is created**
+  すべての警告をエラーとして処理する設定にできるため、クラウド サービス パッケージを確実に問題のない状態でデプロイできます。これにより、デプロイをしてから障害が発生した場合にも待機時間が削減されます。
 
-  You can decide to treat any warnings as errors so that you can make sure that the cloud service package will deploy without any issues. This reduces your wait time if you deploy and then discover that a failure occurred.
+次の図では、クラウド サービスをローカルで実行またはデバッグする際に使用する構成を選択する方法を示します。図に示すように、必要なプロジェクト プロパティはすべてこのウィンドウで設定できます。
 
-The following illustration shows how to select a configuration to use when you run or debug your cloud service locally. You can set any of the project properties that you require from this window, as shown in the illustration.
+![Microsoft Azure プロジェクトを構成します。](./media/vs-azure-tools-configuring-an-azure-project/IC713462.png)
 
-![Configure a Microsoft Azure Project](./media/vs-azure-tools-configuring-an-azure-project/IC713462.png)
+## Azure クラウド サービス プロジェクトを構成するには
 
-## <a name="to-configure-an-azure-cloud-service-project"></a>To configure an Azure cloud service project
+1. **ソリューション エクスプローラー**でクラウド サービス プロジェクトを構成するには、クラウド サービス プロジェクトのショートカット メニューを開き、**[プロパティ]** をクリックします。
 
-1. To configure a cloud service project from **Solution Explorer**, open the shortcut menu for the cloud service project and then choose **Properties**.
+  クラウド サービス プロジェクトの名前のページが、Visual Studio エディターに表示されます。
 
-  A page with the name of the cloud service project appears in the Visual Studio editor.
+1. [**開発**] タブを選択します。
 
-1. Choose the **Development** tab.
+1. Azure で既にデプロイされているものを誤って削除することがないよう、既存の展開リストの削除の前に表示されるプロンプトでは **True** を選択します。
 
-1. To make sure that you don't accidentally delete an existing deployment in Azure, in the prompt before deleting an existing deployment list, choose **True**.
+1. クラウド サービスをローカルで実行またはデバッグする際に、使用するサービス構成を選択するには、**サービス構成**のリストでサービス構成を選択します。
 
-1. To select the service configuration that you want to use when you run or debug your cloud service locally, in the **Service configuration** list choose the service configuration.
+  >[AZURE.NOTE] 使用するサービス構成を作成する場合は、「サービス構成とプロファイルを管理する方法」を参照してください。ロールのサービス構成を変更する場合は、「[Visual Studio で Azure クラウド サービスのロールを構成する](vs-azure-tools-configure-roles-for-cloud-service.md)」を参照してください。
 
-  >[AZURE.NOTE] If you want to create a service configuration to use, see How to: Manage Service Configurations and Profiles. If you want to modify a service configuration for a role, see [How to configure the roles for an Azure cloud service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
+1. クラウド サービスをローカルで実行またはデバッグするときに、Azure ストレージ エミュレーターを開始するには、[**Start Azure storage emulator (Azure ストレージ エミュレーターの起動)**] で **True** を選択してください。
 
-1. To start the Azure storage emulator when you run or debug your cloud service locally, in the **Start Azure storage emulator**, choose **True**.
+1. パッケージの検証エラーがある場合には発行できないようにするには、[**Treat warnings as errors (警告をエラーとして扱う)**] で **True** を選択してください。
 
-1. To make sure that you cannot publish if there are package validation errors, in **Treat warnings as errors**, choose **True**.
+1. Web ロールが IIS Express でローカルに開始される際に毎回同じポートを使用するようにするには、[**Use web project ports (Web プロジェクト ポートの使用)**] で **True** を選択してください。特定のウェブ プロジェクトで特定のポートを使用するには、Web プロジェクトのショートカット メニューを開き、[**プロパティ**]、[**Web**] タブの順に選択して、[**IIS Express**] セクションの中の [**プロジェクト Url**] のポート番号を変更してください。例えば、プロジェクト URL として `http://localhost:14020` を入力します。
 
-1. To make sure that your web role uses the same port each time it starts locally in IIS Express, in **Use web project ports**, choose **True**. To use a specific port for a particular web project, open the shortcut menu for the web project, choose the **Properties** tab, choose the **Web** tab, and change the port number in the **Project Url** setting in the **IIS Express** section. For example, enter `http://localhost:14020` as the project URL.
+1. クラウド サービス プロジェクトのプロパティに対して行ったすべての変更を保存するには、ツールバーの [**保存**] ボタンをクリックします。
 
-1. To save any changes that you have made to the properties of the cloud service project, choose the **Save** button on the toolbar.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+Visual Studio で Azure のクラウド サービス プロジェクトを構成する方法の詳細については、「[複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)」を参照してください。
 
-To learn more about how to configure Azure cloud service projects in Visual Studio, see [Configuring Your Azure project using multiple service configurations](vs-azure-tools-multiple-services-project-configurations.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

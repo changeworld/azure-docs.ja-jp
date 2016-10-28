@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Mobile Engagement Troubleshooting Guide - SDK" 
-   description="Troubleshooting SDK integration issues in Azure Mobile Engagement" 
+   pageTitle="Azure モバイル エンゲージメント関連のトラブルシューティング ガイド - SDK" 
+   description="Azure のモバイル サービスで SDK の統合に関する問題のトラブルシューティング" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -16,105 +16,104 @@
    ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
+# SDK の統合の問題のトラブルシューティング ガイド
 
-# <a name="troubleshooting-guide-for-sdk-integration-issues"></a>Troubleshooting guide for SDK integration issues
+次に説明するのは、Azure モバイル エンゲージメントをアプリケーションに統合する方法に関して発生する可能性のある問題です。
 
-The following are possible issues you may encounter with how Azure Mobile Engagement integrates into your application.
+## アプリケーションの別領域の障害で検出された SDK に関する問題
 
-## <a name="sdk-issues-discovered-by-a-failure-in-another-area-of-your-application"></a>SDK issues discovered by a failure in another area of your application
+### 問題
+- UI データ収集エラー (分析、監視、セグメント化、ダッシュ ボード)。
+- プッシュ エラー (プッシュはアプリ内、アプリ外、または両方で機能しません)。
+- 高度な機能のエラー (追跡、位置情報、プラットフォーム固有のプッシュが機能しません)。
+- API エラー (多くの場合、API はエラー メッセージを表示せずに失敗します)。
+- サービス エラー (Azure モバイル エンゲージメントでアプリケーションを使用できません)。
 
-### <a name="issue"></a>Issue
-- UI data collection failure (in Analytics, Monitoring, Segmentation, or Dashboards).
-- Push Failures (Pushes don't work in app, out of app, or both).
-- Advanced Feature Failures (Tracking, Geolocation, or platform specific Pushes don’t work).
-- API Failures (APIs fail often silently without error messages).
-- Service Failures (none of Azure Mobile Engagement works for your application).
+### 原因
 
-### <a name="causes"></a>Causes
+- Azure モバイル エンゲージメント SDK で解決する必要がある多くの問題が、アプリケーションの障害で検出されます (UI データ収集エラー、プッシュ エラー、高度な機能のエラー、API エラー、アプリケーション クラッシュ、見かけ上のサービス停止など)。
+- Azure モバイル エンゲージメントの特定の機能を、以前にアプリで使用したことがない場合は、統合を完了する必要があります。
+- 動作していた Azure モバイル エンゲージメントの特定の機能が停止した場合は、最新バージョンの Azure モバイル エンゲージメント SDK にアップグレードする必要があります。Azure Mobile Engagement でサポートされているプラットフォーム (Android、iOS、Windows、Windows Phone) によって、Azure モバイル エンゲージメント SDK のバージョンが異なりますので注意してください。
 
-- Most issues that need to be resolved with the Azure Mobile Engagement SDK will be discovered by a failure in your application (such as a UI data collection failure, push failure, advanced feature failure, API failure, Application crashes, or apparent service outage).  
-- If a particular feature of Azure Mobile Engagement has never worked in your app before, you will need to complete the integration. 
-- If a particular feature of Azure Mobile Engagement was working and stopped, you may need to upgrade to the last version with the Azure Mobile Engagement SDK. Remember that there is a different version of the Azure Mobile Engagement SDK for each platform supported by Azure Mobile Engagement (Android, iOS, Windows, and Windows Phone).
+#### SDK の統合
 
-#### <a name="sdk-integration"></a>SDK Integration
-
-- Azure Mobile Engagement not correctly integrated in SDK (Analytics).
-- Reach not correctly integrated in SDK (In App and Out of App Pushes).
-- Certificate expired or incorrect PROD vs. DEV (iOS only).
-- GCM or ADM not correctly integrated in SDK (Android only - Service Specific Pushes).
-- Tracking not correctly integrated in SDK (Install store tracking).
-- Lazy Location or GPS Location not correctly integrated in SDK (Targeting by geo-location).
+- Azure モバイル エンゲージメントが SDK に正しく統合されていません (分析)。
+- リーチが SDK に正しく統合されていません (In App プッシュと Out of App プッシュ)。
+- 証明書の期限が切れているか、または本番用と開発用の証明書が正しくありません(iOS のみ)。
+- GCM または ADM が SDK に正しく統合されていません (Android のみ - サービス固有のプッシュ)。
+- 追跡が SDK に正しく統合されていません (ストア追跡のインストール)。
+- 遅延位置または GPS 位置が SDK に正しく統合されていません (位置情報による対象化)。
 
 
-**See also:**
+**関連項目:**
 
-- [SDK Documentation - Integration Guides][Link 5] 
-- [Troubleshooting Guide - Push][Link 23]
+- [SDK ドキュメント - 統合ガイド][Link 5]
+- [トラブルシューティング ガイド - プッシュ][Link 23]
 
-#### <a name="sdk-upgrade"></a>SDK Upgrade
+#### SDK のアップグレード
 
-- Need to upgrade SDK to resolve issues with older versions of the SDK (often related to newer versions of the device OS).
-- Uninstall all previous versions of your app from your device and reinstall the newest version of your app, the re-register your Device ID from the Azure Mobile Engagement UI to confirm that your device is using the newest version of your app.
+- 古いバージョンの SDK に関する問題を解決するには、SDK をアップグレードする必要があります (多くの場合、新しいバージョンのデバイス OS に関連します)。
+- デバイスが最新バージョンのアプリを使用していることを確認するには、以前のバージョンのアプリをデバイスからすべてアンインストールし、最新バージョンのアプリを再インストールし、Azure モバイル エンゲージメント UI からデバイス ID を再登録します。
 
-**See also:**
+**関連項目:**
 
-- [SDK Documentation - Release Notes](http://go.microsoft.com/fwlink/?LinkId= 525554) 
-- [SDK Documentation - Upgrade Guides](http://go.microsoft.com/fwlink/?LinkId= 525554)
+- [SDK ドキュメント - リリース ノート](http://go.microsoft.com/fwlink/?LinkId= 525554)
+- [SDK ドキュメント - アップグレード ガイド](http://go.microsoft.com/fwlink/?LinkId= 525554)
 
-#### <a name="sdk-other"></a>SDK Other
+#### SDK その他
 
-- Errors in Application Manifest "AndroidManifest.xml" can cause Azure Mobile Engagement not to work (Android only).
-- A common issue with SDK integration and API usage is to confuse the SDK Key and the API Key.
+- アプリケーション マニフェスト "AndroidManifest.xml" のエラーが原因で、Azure モバイル エンゲージメントが機能しなくなる可能性があります (Android のみ)。
+- SDK の統合と API の使用方法に共通する問題は、SDK キーと API キーを混同することです。
 
-**See also:**
+**関連項目:**
 
-- [Concepts - Glossary][Link 6]
+- [概念 - 用語集][Link 6]
 
-## <a name="advanced-coding-issues"></a>Advanced coding issues
+## 高度なコーディングの問題
 
-### <a name="issue"></a>Issue
--  Platform specific code not directly related to Azure Mobile Engagement can cause issues on iOS, Android, and Windows Phone.
+### 問題
+-  Azure モバイル エンゲージメントに直接関連しないプラットフォーム固有のコードが原因で、iOS、Android、Windows Phone で問題が発生する可能性があります。
 
-### <a name="causes"></a>Causes
+### 原因
 
-- Many advanced coding issues with Azure Mobile Engagement are caused by improperly written platform specific code not directly related to Azure Mobile Engagement. You will need to consult documentation specific to the platform you are developing for in addition to Azure Mobile Engagement documentation (Android, iOS, Web, Windows, and Windows Phone).
-- Not correctly configuring "categories", prevents linking from a notification to another location either inside or outside of the app (Android only). 
-- Not setting "UIKit.framework" to "optional" in your iOS code, shows a "Symbol not found error" and/or crashes on older iOS devices (iOS only).
-- Expired certificates or not correctly using the DEV or Prod version of the cert, causes push issues (iOS only).
-- There are some limitations inherent to a platform that Azure Mobile Engagement can't control (like how the system center works for out of app pushes in Android and iOS).
-- Azure Mobile Engagement publishes a full list of the internal packages used by Azure Mobile Engagement for iOS and Android for reference. Keep in mind that some features of Azure Mobile Engagement are specific to the platform (Android, iOS, Web, Windows, and Windows Phone).
+- Azure モバイル エンゲージメントに関する多くの高度なコーディングの問題は、Azure モバイル エンゲージメントに直接関連しない不適切に記述されたプラットフォーム固有のコードが原因です。Azure モバイル エンゲージメントのドキュメント (Android、iOS、Web、Windows、Windows Phone) だけでなく、開発しているプラットフォーム固有のドキュメントを参照する必要があります。
+- 「カテゴリ」を正しく構成しないと、通知からアプリ内外の別の場所にリンクできません (Android のみ)。
+- iOS コードで、[UIKit.framework] を [optional (任意)] に設定しないと、[Symbol not found error (シンボルが見つかりませんでした)] というエラーが表示され、古い iOS デバイスがクラッシュします (iOS のみ)。
+- 証明書の期限が切れているか、開発用または本番用の証明書を正しく使用していないと、プッシュ問題を引き起こします (iOS のみ)。
+- Azure モバイル エンゲージメントが制御できない、プラットフォーム固有のいくつかの制限があります (システム センターが Android や iOS の Out of App プッシュを操作する方法など)。
+- Azure モバイル エンゲージメントは、参照用に iOS と Android の Azure モバイル エンゲージメントで使用される内部パッケージの完全な一覧を発行します。Azure モバイル エンゲージメントの一部の機能はプラットフォームに固有であることに注意してください (Android、iOS、Web、Windows、Windows Phone)。
 
-### <a name="see-also"></a>See also
+### 関連項目
 
- - [Troubleshooting Guide - Push][Link 23] 
- - [SDK Documentation - Release Notes][Link 5]
- - [SDK Documentation - Upgrade Guides][Link 5]
+ - [トラブルシューティング ガイド - プッシュ][Link 23]
+ - [SDK ドキュメント - リリース ノート][Link 5]
+ - [SDK ドキュメント - アップグレード ガイド][Link 5]
 
-## <a name="application-crashes"></a>Application crashes
+## アプリケーションのクラッシュ
 
-### <a name="issue"></a>Issue
-- Your application crashes on the end users' device.
+### 問題
+- エンド ユーザーのデバイスで、アプリケーションがクラッシュします。
 
-### <a name="causes"></a>Causes
+### 原因
 
-- Crash information can be viewed in the *Analytics UI* or the *Analytics API*
-- You can find the Device ID of your test device and take the same action that caused your application to crash for an end user to help identify the cause of your crash.
-- Known issues with the Azure Mobile Engagement SDK that cause applications to crash are sometimes resolved by upgrading to the latest version of the SDK. Make sure to check the release notes about your platform when investigating crashes.
+- クラッシュ情報は、*分析 UI* または*分析 API* で確認できますす。
+- エンドユーザーがクラッシュの原因を特定できるように、テスト デバイスのデバイス ID を検索し、アプリケーションがクラッシュする原因となった操作を同様に実行できます。
+- アプリケーションをクラッシュさせた Azure モバイル エンゲージメント SDK の既知の問題は、最新バージョンの SDK にアップグレードすることで解決する場合があります。クラッシュを調査するときは、プラットフォームのリリース ノートを必ず確認してください。
 
-### <a name="see-also"></a>See also
+### 関連項目
 
-- [SDK Documentation - Release Notes][Link 5]
-- [SDK Documentation - Upgrade Guides][Link 5]
+- [SDK ドキュメント - リリース ノート][Link 5]
+- [SDK ドキュメント - アップグレード ガイド][Link 5]
 
-## <a name="app-store-upload-failures"></a>App store upload failures
+## アプリ ストアのアップロード エラー
 
-### <a name="issue"></a>Issue
-- Errors related to uploading the latest version of your app to Apple, Google, or the Windows App store.
+### 問題
+- 最新バージョンのアプリを Apple、Google、または Windows のアプリ ストアにアップロードする際にエラーが発生します。
 
-### <a name="causes"></a>Causes
+### 原因
 
-- App stores sometimes block apps with certain features enabled (e.g. the Apple Store prevents the use of IDFV in apps in the store and the GooglePlay store prevents the sharing of application information between apps). 
-- Make sure that you check the release notes about your platform and current version of the SDK if you have difficulty uploading an app to the store.
+- アプリ ストアは特定の機能が有効になっているアプリをブロックする場合があります (たとえば、Apple ストアではストア内のアプリでの IDFV の使用を禁止しており、GooglePlay ストアではアプリ間でのアプリケーション情報の共有を禁止しています)。
+- アプリをストアにアップロードできなかった場合は、プラットフォームと現在のバージョンの SDK のリリース ノートをご確認ください。
 
 <!--Link references-->
 [Link 1]: mobile-engagement-user-interface.md
@@ -124,10 +123,10 @@ The following are possible issues you may encounter with how Azure Mobile Engage
 [Link 5]: http://go.microsoft.com/fwlink/?LinkID=525554
 [Link 6]: http://go.microsoft.com/fwlink/?LinkId=525555
 [Link 7]: https://account.windowsazure.com/PreviewFeatures
-[Link 8]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azuremobileengagement
-[Link 9]: http://azure.microsoft.com/en-us/services/mobile-engagement/
-[Link 10]: http://azure.microsoft.com/en-us/documentation/services/mobile-engagement/
-[Link 11]: http://azure.microsoft.com/en-us/pricing/details/mobile-engagement/
+[Link 8]: https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=azuremobileengagement
+[Link 9]: http://azure.microsoft.com/services/mobile-engagement/
+[Link 10]: http://azure.microsoft.com/documentation/services/mobile-engagement/
+[Link 11]: http://azure.microsoft.com/pricing/details/mobile-engagement/
 [Link 12]: mobile-engagement-user-interface-navigation.md
 [Link 13]: mobile-engagement-user-interface-home.md
 [Link 14]: mobile-engagement-user-interface-my-account.md
@@ -148,8 +147,4 @@ The following are possible issues you may encounter with how Azure Mobile Engage
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

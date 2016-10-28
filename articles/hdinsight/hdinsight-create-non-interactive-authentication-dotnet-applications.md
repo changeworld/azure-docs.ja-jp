@@ -1,97 +1,95 @@
 <properties
-    pageTitle="Create non-interactive authentication .NET HDInsight applciations | Microsoft Azure"
-    description="Learn how to create non-interactive authentication .NET HDInsight applications."
-    editor="cgronlun"
-    manager="jhubbard"
-    services="hdinsight"
-    documentationCenter=""
-    tags="azure-portal"
-    authors="mumian"/>
+	pageTitle="非対話型認証 .NET HDInsight アプリケーションを作成する | Microsoft Azure"
+	description="非対話型認証 .NET HDInsight アプリケーションを作成する方法について説明します。"
+	editor="cgronlun"
+	manager="jhubbard"
+	services="hdinsight"
+	documentationCenter=""
+	tags="azure-portal"
+	authors="mumian"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/02/2016"
-    ms.author="jgao"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/02/2016"
+	ms.author="jgao"/>
+
+# 非対話型認証 .NET HDInsight アプリケーションを作成する
+
+アプリケーション独自の ID (非対話型) またはアプリケーションのサインイン ユーザーの ID (対話型) のいずれかで、.NET Azure HDInsight アプリケーションを実行できます。対話型アプリケーションの例については、「[HDInsight .NET SDK を使用して Hive/Pig/Sqoop ジョブを送信する](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk)」を参照してください。この記事では、Azure HDInsight に接続し、Hive ジョブを送信する非対話型認証 .NET アプリケーションを作成する方法について説明します。
+
+.NET アプリケーションには、以下が必要です。
+
+- Azure サブスクリプションのテナント ID
+- Azure Directory アプリケーションのクライアント ID
+- Azure Directory アプリケーションのシークレット キー
+
+メイン プロセスには、次の手順が含まれます。
+
+2. Azure Directory アプリケーションを作成します。
+2. AD アプリケーションにロールを割り当てます。
+3. クライアント アプリケーションを実行します。
 
 
-# <a name="create-non-interactive-authentication-.net-hdinsight-applications"></a>Create non-interactive authentication .NET HDInsight applications
+##前提条件
 
-You can execute your .NET Azure HDInsight application either under application's own identity (non-interactive) or under the identity of the signed-in user of the application (interactive). For a sample of the interactive application, see [Submit Hive/Pig/Sqoop jobs using HDInsight .NET SDK](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk). This article shows you how to create non-interactive authentication .NET application to connect to Azure HDInsight and submit a Hive job.
-
-From your .NET application, you will need:
-
-- your Azure subscription tenant ID
-- the Azure Directory application client ID
-- the Azure Directory application secret key.  
-
-The main process includes the following steps:
-
-2. Create an Azure Directory application.
-2. Assign roles to the AD application.
-3. Develop your client application.
-
-
-##<a name="prerequisites"></a>Prerequisites
-
-- HDInsight cluster. You can create one using the instructions found in the [getting started tutorial](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster). 
+- HDInsight クラスター。[入門のチュートリアル](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)に記載されている手順を参照して作成できます。
 
 
 
 
-## <a name="create-azure-directory-application"></a>Create Azure Directory application 
-When you create an Active Directory application, it actually creates both the application and a service principal. You can execute the application under the application’s identity.
+## Azure Directory アプリケーションを作成する 
+Active Directory アプリケーションを作成すると、アプリケーションとサービス プリンシパルの両方が作成されます。このアプリケーションは、アプリケーションの ID を使用して実行できます。
 
-Currently, you must use the Azure classic portal to create a new Active Directory application. This ability will be added to the Azure portal in a later release. You can also perform these steps through Azure PowerShell or Azure CLI. For more information about using PowerShell or CLI with the service principal, see [Authenticate service principal with Azure Resource Manager](../resource-group-authenticate-service-principal.md).
+現時点では、新しい Active Directory アプリケーションを作成するには、Azure クラシック ポータルを使用する必要があります。この機能は、今後のリリースで、Azure ポータルに追加されます。これらの手順は、Azure Powershell または Azure CLI を介して実行することもできます。サービス プリンシパルで PowerShell または CLI を使用する方法については、「[Azure Resource Manager でのサービス プリンシパルの認証](../resource-group-authenticate-service-principal.md)」を参照してください。
 
-**To create an Azure Directory application**
+**Azure Directory アプリケーションを作成するには**
 
-1.  Sign in to the [Azure classic portal]( https://manage.windowsazure.com/).
-2.  Select **Active Directory** from the left pane.
+1.	[Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
+2.	左側のペインで **[Active Directory]** を選択します。
 
-    ![Azure classic portal active directory](.\media\hdinsight-create-non-interactive-authentication-dotnet-application\active-directory.png)
+    ![Azure クラシック ポータルの Active Directory](.\media\hdinsight-create-non-interactive-authentication-dotnet-application\active-directory.png)
     
-3.  Select the directory that you want to use for creating the new application. It shall be the existing one.
-4.  Click **Applications** from the top to list the existing applications.
-5.  Click **Add** from the bottom to add a new application.
-6.  Enter **Name**, select **Web application and/or Web API**, and then click **Next**.
+3.	新しいアプリケーションを作成するために使用するディレクトリを選択します。既存のディレクトリを選択する必要があります。
+4.	上部の **[アプリケーション]** をクリックすると、既存のアプリケーション一覧が表示されます。
+5.	下部の **[追加]** をクリックし、新しいアプリケーションを追加します。
+6.	**[名前]** を入力し、**[Web アプリケーションや Web API]** を選択して、**[次へ]** をクリックします。
 
-    ![new azure active directory application](.\media\hdinsight-create-non-interactive-authentication-dotnet-application\hdinsight-add-ad-application.png)
+    ![新しい Azure Active Directory アプリケーション](.\media\hdinsight-create-non-interactive-authentication-dotnet-application\hdinsight-add-ad-application.png)
 
-7.  Enter **Sign-on URL** and **App ID URI**. For **SIGN-ON URL**, provide the URI to a web-site that describes your application. The existence of the web-site is not validated. For APP ID URI, provide the URI that identifies your application. And then click **Complete**.
-It takes a few moments to create the application.  Once the application is created, the portal shows you the Quick Glace page of the new application. Don’t close the portal. 
+7.	**[サインオン URL]** と **[アプリケーション ID/URI]** を入力します。**[サインオン URL]** には、アプリケーションについて説明する web サイトの URI を指定します。Web サイトの存在は検証されません。[アプリケーション ID/URI] には、アプリケーションを識別する URI を指定します。次に、**[完了]** をクリックします。アプリケーションが作成されるまでしばらく待ちます。アプリケーションが作成されると、ポータルに新しいアプリケーションの [概要] ページが表示されます。ポータルを閉じないでください。
 
-    ![new azure active directory application properties](.\media\hdinsight-create-non-interactive-authentication-dotnet-application\hdinsight-add-ad-application-properties.png)
+    ![新しい Azure Active Directory アプリケーションのプロパティ](.\media\hdinsight-create-non-interactive-authentication-dotnet-application\hdinsight-add-ad-application-properties.png)
 
-**To get the application client ID and the secret key**
+**アプリケーション クライアント ID とシークレット キーを取得するには**
 
-1.  From the newly created AD application page, click **Configure** from the top menu.
-2.  Make a copy of **Client ID**. You will need it in your .NET application.
-3.  Under **Keys**, click **Select duration** dropdown, and select either **1 year** or **2 years**. The key value will not be displayed until you save the configuration.
-4.  Click **Save** on the bottom of the page. When the secret key appears, make a copy of the key. You will need it in your .NET application.
+1.	新しく作成した AD アプリケーション ページから、上部メニューの **[構成]** をクリックします。
+2.	**[クライアント ID]** をコピーします。この ID は .NET アプリケーションで必要になります。
+3.	**[キー]** の **[時間の選択]** ドロップダウンをクリックし、**[1 年]** または **[2 年]** を選択します。構成を保存するまで、キー値は表示されません。
+4.	ページの下部にある **[保存]** をクリックします。シークレット キーが表示されたら、キーをコピーします。この ID は .NET アプリケーションで必要になります。
 
-##<a name="assign-ad-application-to-role"></a>Assign AD application to role
+##AD アプリケーションをロールに割り当てる
 
-You must assign the application to a [role](../active-directory/role-based-access-built-in-roles.md) to grant it permissions for performing actions. You can set the scope at the level of the subscription, resource group, or resource. The permissions are inherited to lower levels of scope (for example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains). In this tutorial, you will set the scope at the resource group level.  Because the Azure classic portal doesn’t support resource groups, this part has to be performed from the Azure portal. 
+アクションを実行するアクセス許可を付与するには、[ロール](../active-directory/role-based-access-built-in-roles.md)にアプリケーションを割り当てる必要があります。スコープは、サブスクリプション、リソース グループ、またはリソースのレベルで設定できます。アクセス許可は、スコープの下位レベルに継承されます (たとえば、アプリケーションをリソース グループの閲覧者ロールに追加すると、アプリケーションではリソース グループとそれに含まれているすべてのリソースを読み取ることができます)。このチュートリアルでは、リソース グループ レベルでスコープを設定します。Azure クラシック ポータルはリソース グループをサポートしていないので、この部分は Azure ポータルで実行する必要があります。
 
-**To add the Owner role to the AD application**
+**AD アプリケーションに所有者ロールを追加するには**
 
-1.  Sign in to the [Azure portal](https://portal.azure.com).
-2.  Click **Resource Group** from the left pane.
-3.  Click the resource group that contains the HDInsight cluster where you will run your Hive query later in this tutorial. If there are too many resource groups, you can use the filter.
-4.  Click **Access** from the cluster blade.
+1.	[Azure ポータル](https://portal.azure.com)にサインインします。
+2.	左側のウィンドウの **[リソース グループ]** をクリックします。
+3.	HDInsight クラスター (このチュートリアルの後半で Hive クエリを実行するクラスター) を含むリソース グループをクリックします。リソース グループ数が多すぎる場合は、フィルターを使用することができます。
+4.	クラスター ブレードから **[アクセス]** をクリックします。
 
-    ![cloud and thunderbolt icon = quickstart](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png)
-5.  Click **Add** from the **Users** blade.
-6.  Follow the instruction to add the **Owner** role to the AD application you created in the last procedure. When you complete it successfully, you shall see the application listed in the Users blade with the Owner role.
+    ![雲と雷のアイコン = クイック スタート](./media/hdinsight-hadoop-create-linux-cluster-portal/quickstart.png)
+5.	**[ユーザー]** ブレードから **[追加]** をクリックします。
+6.	指示に従って、前の手順で作成した AD アプリケーションに**所有者**ロールを追加します。正常に完了し、所有者ロールで [ユーザー] ブレードを見ると、そのアプリケーションが表示されます。
 
 
-##<a name="develop-hdinsight-client-application"></a>Develop HDInsight client application
+##HDInsight クライアント アプリケーションを開発する
 
-Create a C# .net console application following the instructions found in [Submit Hadoop jobs in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk). Then replace the GetTokenCloudCredentials method with the following:
+[HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md#submit-hivepigsqoop-jobs-using-hdinsight-net-sdk)に関するページの指示に従って、C# .NET コンソール アプリケーションを作成します。次に、GetTokenCloudCredentials メソッドを次のように置き換えます。
 
     public static TokenCloudCredentials GetTokenCloudCredentials(string tenantId, string clientId, SecureString secretKey)
     {
@@ -108,24 +106,20 @@ Create a C# .net console application following the instructions found in [Submit
         return new TokenCloudCredentials(accessToken);
     }
 
-To retrieve the Tenant ID through PowerShell:
+PowerShell 経由でテナント ID を取得するには:
 
     Get-AzureRmSubscription
 
-Or, Azure CLI:
+または、次の Azure CLI を使います。
 
     azure account show --json
 
       
-## <a name="see-also"></a>See also
+## 関連項目
 
-- [Submit Hadoop jobs in HDInsight](hdinsight-submit-hadoop-jobs-programmatically.md)
-- [Create Active Directory application and service principal using portal](../resource-group-create-service-principal-portal.md)
-- [Authenticate service principal with Azure Resource Manager](../resource-group-authenticate-service-principal.md)
-- [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md)
+- [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
+- [ポータルを利用し、Active Directory のアプリケーションとサービス プリンシパルを作成する](../resource-group-create-service-principal-portal.md)
+- [Azure Resource Manager でサービス プリンシパルを認証する](../resource-group-authenticate-service-principal.md)
+- [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

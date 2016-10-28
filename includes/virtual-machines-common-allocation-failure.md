@@ -1,212 +1,202 @@
 
-If your Azure issue is not addressed in this article, visit the [Azure forums on MSDN and Stack Overflow](https://azure.microsoft.com/support/forums/). You can post your issue on these forums or to @AzureSupport on Twitter. Also, you can file an Azure support request by selecting **Get support** on the [Azure support](https://azure.microsoft.com/support/options/) site.
+この記事で Azure の問題に対処できない場合は、[MSDN と Stack Overflow の Azure フォーラム](https://azure.microsoft.com/support/forums/)を参照してください。問題をこれらのフォーラムまたは Twitter の @AzureSupport に投稿できます。また、[Azure サポート](https://azure.microsoft.com/support/options/) サイトの **[サポートの要求]** を選択して、Azure サポート要求を提出することもできます。
 
-## <a name="general-troubleshooting-steps"></a>General troubleshooting steps
-### <a name="troubleshoot-common-allocation-failures-in-the-classic-deployment-model"></a>Troubleshoot common allocation failures in the classic deployment model
+## 一般的なトラブルシューティングの手順
+### クラシック デプロイメント モデルでの一般的な割り当てエラーのトラブルシューティング
 
-These steps can help resolve many allocation failures in virtual machines:
+仮想マシンでの割り当てエラーの多くを解決するには、以下の手順が役立ちます。
 
-- Resize the VM to a different VM size.<br>
-    Click **Browse all** > **Virtual machines (classic)** > your virtual machine > **Settings** > **Size**. For detailed steps, see [Resize the virtual machine](https://msdn.microsoft.com/library/dn168976.aspx).
+- VM を別の VM サイズに変更します。<br> **[すべて参照]**、**[仮想マシン (クラシック)]**、対象の仮想マシン、**[**設定]、**[サイズ]** の順にクリックします。詳細な手順については、「[Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
 
-- Delete all VMs from the cloud service and re-create VMs.<br>
-    Click **Browse all** > **Virtual machines (classic)** > your virtual machine > **Delete**. Then, click **New** > **Compute** > [virtual machine image].
+- クラウド サービスからすべての VM を削除して、VM を再作成します。<br> **[すべて参照]**、**[仮想マシン (クラシック)]**、ご使用の仮想マシン、**[削除]** の順にクリックします。次に、**[新規]**、**[Compute]**、[仮想マシン イメージ] の順にクリックします。
 
-### <a name="troubleshoot-common-allocation-failures-in-the-azure-resource-manager-deployment-model"></a>Troubleshoot common allocation failures in the Azure Resource Manager deployment model
+### Azure リソース マネージャー デプロイメント モデルでの一般的な割り当てエラーのトラブルシューティング
 
-These steps can help resolve many allocation failures in virtual machines:
+仮想マシンでの割り当てエラーの多くを解決するには、以下の手順が役立ちます。
 
-- Stop (deallocate) all VMs in the same availability set, then restart each one.<br>
-    To stop: Click **Resource groups** > your resource group > **Resources** > your availability set > **Virtual Machines** > your virtual machine > **Stop**.
+- 同じ可用性セット内のすべての VM を停止 (割り当て解除) し、それぞれを再起動します。<br> 停止するには、**[リソース グループ]**、対象とするリソース グループ、**[リソース]**、対象とする可用性セット、**[Virtual Machines]**、対象とする仮想マシン、**[停止]** の順にクリックします。
 
-    After all VMs stop, select the first VM and click **Start**.
+	すべての VM が停止した後で、最初の VM を選択し、**[起動]** をクリックします。
 
-## <a name="background-information"></a>Background information
-### <a name="how-allocation-works"></a>How allocation works
-The servers in Azure datacenters are partitioned into clusters. Normally, an allocation request is attempted in multiple clusters, but it's possible that certain constraints from the allocation request force the Azure platform to attempt the request in only one cluster. In this article, we'll refer to this as "pinned to a cluster." Diagram 1 below illustrates the case of a normal allocation that is attempted in multiple clusters. Diagram 2 illustrates the case of an allocation that's pinned to Cluster 2 because that's where the existing Cloud Service CS_1 or availability set is hosted.
-![Allocation Diagram](./media/virtual-machines-common-allocation-failure/Allocation1.png)
+## 背景情報
+### 割り当てのしくみ
+Azure データセンターのサーバーは、クラスターにパーティション分割されています。通常、割り当て要求は複数のクラスターで試行されますが、割り当て要求の特定の制約によって、Azure プラットフォームが要求を 1 つのクラスターだけで試行するように強制されることがあります。この記事では、このことを "クラスターに固定されている" と言います。 次の図 1 は、複数のクラスターで試行される通常の割り当てを示しています。図 2 は、クラスター 2 に固定されている割り当てを示しています。これは、既存のクラウド サービス CS\_1 または可用性セットがクラスター 2 でホストされているためです。![Allocation Diagram](./media/virtual-machines-common-allocation-failure/Allocation1.png)
 
-### <a name="why-allocation-failures-happen"></a>Why allocation failures happen
-When an allocation request is pinned to a cluster, there's a higher chance of failing to find free resources since the available resource pool is smaller. Furthermore, if your allocation request is pinned to a cluster but the type of resource you requested is not supported by that cluster, your request will fail even if the cluster has free resources. Diagram 3 below illustrates the case where a pinned allocation fails because the only candidate cluster does not have free resources. Diagram 4 illustrates the case where a pinned allocation fails because the only candidate cluster does not support the requested VM size, even though the cluster has free resources.
+### 割り当てエラーが発生する理由
+割り当て要求がクラスターに固定されている場合、利用可能なリソース プールが小さくなるため、空きリソースを見つけられない可能性が高くなります。さらに、割り当て要求がクラスターに固定されていて、そのクラスターでは要求されたリソースの種類がサポートされていない場合、クラスターに空きリソースがあっても、要求は失敗します。次の図 3 は、唯一の候補であるクラスターに空きリソースがないため、固定された割り当てがエラーになる場合を示しています。図 4 は、唯一の候補であるクラスターに空きリソースがあるものの、要求された VM サイズをサポートしていないため、固定された割り当てがエラーになる場合を示しています。
 
 ![Pinned Allocation Failure](./media/virtual-machines-common-allocation-failure/Allocation2.png)
 
-## <a name="detailed-troubleshoot-steps-specific-allocation-failure-scenarios-in-the-classic-deployment-model"></a>Detailed troubleshoot steps specific allocation failure scenarios in the classic deployment model
-Here are common allocation scenarios that cause an allocation request to be pinned. We'll dive into each scenario later in this article.
+## クラシック デプロイメント モデルでの特定の割り当てエラー シナリオの詳細なトラブルシューティング手順
+以下に、割り当て要求が固定されることになる一般的な割り当てシナリオを示します。この記事の後の方で、各シナリオについて説明します。
 
-- Resize a VM or add VMs or role instances to an existing cloud service
-- Restart partially stopped (deallocated) VMs
-- Restart fully stopped (deallocated) VMs
-- Staging/production deployments (platform as a service only)
-- Affinity group (VM/service proximity)
-- Affinity-group-based virtual network
+- VM のサイズの変更、あるいは既存のクラウド サービスへの VM またはロール インスタンスの追加
+- 部分的に停止 (割り当て解除) されていた VM の再起動
+- 完全に停止 (割り当て解除) されていた VM の再起動
+- ステージング環境/運用環境のデプロイメント (サービスとしてのプラットフォームのみ)
+- アフィニティ グループ (VM/サービス近接性)
+- アフィニティ グループ ベースの仮想ネットワーク
 
-When you receive an allocation error, see if any of the scenarios described apply to your error. Use the allocation error returned by the Azure platform to identify the corresponding scenario. If your request is pinned, remove some of the pinning constraints to open your request to more clusters, thereby increasing the chance of allocation success.
+割り当てエラーが発生した場合は、説明されているシナリオのいずれかがエラーに該当するかどうかを確認してください。Azure プラットフォームから返される割り当てエラーを使用すると、対応するシナリオを特定できます。要求が固定されている場合は、固定している制約の一部を削除して、要求の対象となるクラスターを増やしてください。その結果、割り当てが成功する確率が高くなります。
 
-In general, as long as the error does not indicate "the requested VM size is not supported," you can always retry at a later time, as enough resources may have been freed in the cluster to accommodate your request. If the problem is that the requested VM size is not supported, try a different VM size. Otherwise, the only option is to remove the pinning constraint.
+一般に、エラーが "要求された VM のサイズがサポートされていない" ことを示していなければ、後で再試行することができます。そのクラスターで要求に応えるための十分なリソースが解放されている可能性があるためです。要求された VM サイズがサポートされていないことが問題である場合は、別の VM サイズを試してください。そうでない場合、唯一のオプションは、固定している制約を削除することです。
 
-Two common failure scenarios are related to affinity groups. In the past, an affinity group was used to provide close proximity to VMs/service instances, or it was used to enable the creation of a virtual network. With the introduction of regional virtual networks, affinity groups are no longer required to create a virtual network. With the reduction of network latency in Azure infrastructure, the recommendation to use affinity groups for VM/service proximity has changed.
+2 つの一般的なエラー シナリオはアフィニティ グループと関連しています。以前は、アフィニティ グループは、VM/サービス インスタンスの近接性を提供したり、仮想ネットワークを作成できるようにするために使用されていました。リージョン仮想ネットワークの導入により、アフィニティ グループは仮想ネットワークの作成に必要ではなくなりました。Azure インフラストラクチャでのネットワーク待機時間の短縮により、VM/サービス近接性のためにアフィニティ グループを使用する必要性も変わりました。
 
-Diagram 5 below presents the taxonomy of the (pinned) allocation scenarios.
-![Pinned Allocation Taxonomy](./media/virtual-machines-common-allocation-failure/Allocation3.png)
+次の図 5 は、(固定された) 割り当てシナリオの分類を示しています。![Pinned Allocation Taxonomy](./media/virtual-machines-common-allocation-failure/Allocation3.png)
 
-> [AZURE.NOTE] The error listed in each allocation scenario is a short form. Refer to the [Error string lookup](#Error string lookup) for detailed error strings.
+> [AZURE.NOTE] 割り当てシナリオごとに示されているエラーは、省略形です。詳細なエラー文字列については、[エラーの文字列の参照](#Error 文字列の参照) を参照してください。
 
-## <a name="allocation-scenario:-resize-a-vm-or-add-vms-or-role-instances-to-an-existing-cloud-service"></a>Allocation scenario: Resize a VM or add VMs or role instances to an existing cloud service
-**Error**
+## 割り当てシナリオ: VM のサイズの変更、あるいは既存のクラウド サービスへの VM またはロール インスタンスの追加
+**エラー**
 
-Upgrade_VMSizeNotSupported or GeneralError
+Upgrade\_VMSizeNotSupported または GeneralError
 
-**Cause of cluster pinning**
+**クラスターの固定の原因**
 
-A request to resize a VM or add a VM or a role instance to an existing cloud service has to be attempted at the original cluster that hosts the existing cloud service. Creating a new cloud service allows the Azure platform to find another cluster that has free resources or supports the VM size that you requested.
+VM のサイズの変更、あるいは既存のクラウド サービスへの VM またはロール インスタンスの追加の要求は、既存のクラウド サービスをホストしている元のクラスターで試行する必要があります。新しいクラウド サービスを作成すると、Azure プラットフォームは、空きリソースを持つクラスターや要求された VM サイズをサポートしているクラスターを別途検索できます。
 
-**Workaround**
+**対処法**
 
-If the error is Upgrade_VMSizeNotSupported*, try a different VM size. If using a different VM size is not an option, but if it's acceptable to use a different virtual IP address (VIP), create a new cloud service to host the new VM and add the new cloud service to the regional virtual network where the existing VMs are running. If your existing cloud service does not use a regional virtual network, you can still create a new virtual network for the new cloud service, and then connect your [existing virtual network to the new virtual network](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). See more about [regional virtual networks](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
+エラーが Upgrade\_VMSizeNotSupported* である場合は、別の VM サイズを試してみてください。別の VM サイズを使用できないものの、別の仮想 IP アドレス (VIP) を使用できる場合は、新しい VM をホストする新しいクラウド サービスを作成し、既存の VM が実行されているリージョン仮想ネットワークにその新しいクラウド サービスを追加します。既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合も、新しいクラウド サービス用の新しい仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワーク](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)に接続できます。詳細については、「[リージョン仮想ネットワーク](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
 
-If the error is GeneralError*, it's likely that the type of resource (such as a particular VM size) is supported by the cluster, but the cluster does not have free resources at the moment. Similar to the above scenario, add the desired compute resource through creating a new cloud service (note that the new cloud service has to use a different VIP) and use a regional virtual network to connect your cloud services.
+エラーが GeneralError* である場合は、リソースの種類 (特定の VM サイズなど) がクラスターでサポートされているものの、現時点ではクラスターに空きリソースがないと考えられます。上のシナリオと同じように、新しいクラウド サービスを作成することによって、必要なコンピューティング リソースを追加します (新しいクラウド サービスは別の VIP を使用する必要がある点に注意してください)。その後、リージョン仮想ネットワークを使用して、クラウド サービスに接続します。
 
-## <a name="allocation-scenario:-restart-partially-stopped-(deallocated)-vms"></a>Allocation scenario: Restart partially stopped (deallocated) VMs
+## 割り当てシナリオ: 部分的に停止 (割り当て解除) されていた VM の再起動
 
-**Error**
-
-GeneralError*
-
-**Cause of cluster pinning**
-
-Partial deallocation means that you stopped (deallocated) one or more, but not all, VMs in a cloud service. When you stop (deallocate) a VM, the associated resources are released. Restarting that stopped (deallocated) VM is therefore a new allocation request. Restarting VMs in a partially deallocated cloud service is equivalent to adding VMs to an existing cloud service. The allocation request has to be attempted at the original cluster that hosts the existing cloud service. Creating a different cloud service allows the Azure platform to find another cluster that has free resource or supports the VM size that you requested.
-
-**Workaround**
-
-If it's acceptable to use a different VIP, delete the stopped (deallocated) VMs (but keep the associated disks) and add the VMs back through a different cloud service. Use a regional virtual network to connect your cloud services:
-- If your existing cloud service uses a regional virtual network, simply add the new cloud service to the same virtual network.
-- If your existing cloud service does not use a regional virtual network, create a new virtual network for the new cloud service, and then [connect your existing virtual network to the new virtual network](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). See more about [regional virtual networks](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
-
-## <a name="allocation-scenario:-restart-fully-stopped-(deallocated)-vms"></a>Allocation scenario: Restart fully stopped (deallocated) VMs
-**Error**
+**エラー**
 
 GeneralError*
 
-**Cause of cluster pinning**
+**クラスターの固定の原因**
 
-Full deallocation means that you stopped (deallocated) all VMs from a cloud service. The allocation requests to restart these VMs have to be attempted at the original cluster that hosts the cloud service. Creating a new cloud service allows the Azure platform to find another cluster that has free resources or supports the VM size that you requested.
+部分的割り当て解除とは、クラウド サービス内のすべての VM ではなく、1 つ以上の VM を停止 (割り当て解除) したことを意味します。VM を停止 (割り当て解除) すると、関連付けられているリソースが解放されます。そのため、停止された (割り当て解除された) VM を再起動すると、新しい割り当てが要求されます。部分的に割り当て解除されたクラウド サービスで VM を再起動することは、既存のクラウド サービスに VM を追加することと同じです。割り当て要求は、既存のクラウド サービスをホストしている元のクラスターで試行する必要があります。別のクラウド サービスを作成すると、Azure プラットフォームは、空きリソースを持つクラスターや要求された VM サイズをサポートしているクラスターを別途検索できます。
 
-**Workaround**
+**対処法**
 
-If it's acceptable to use a different VIP, delete the original stopped (deallocated) VMs (but keep the associated disks) and delete the corresponding cloud service (the associated compute resources were already released when you stopped (deallocated) the VMs). Create a new cloud service to add the VMs back.
+別の VIP を使用できる場合は、停止 (割り当て解除) された VM を削除し (ただし、関連付けられているディスクは保持し)、別のクラウド サービスを通じて VM を追加し直します。クラウド サービスに接続するには、リージョン仮想ネットワークを使用します。
+- 既存のクラウド サービスがリージョン仮想ネットワークを使用している場合は、単に新しいクラウド サービスを同じ仮想ネットワークに追加します。
+- 既存のクラウド サービスがリージョン仮想ネットワークを使用しない場合、新しいクラウド サービス用の新しい仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワーク](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)に接続します。詳細については、「[リージョン仮想ネットワーク](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
 
-## <a name="allocation-scenario:-staging/production-deployments-(platform-as-a-service-only)"></a>Allocation scenario: Staging/production deployments (platform as a service only)
-**Error**
-
-New_General* or New_VMSizeNotSupported*
-
-**Cause of cluster pinning**
-
-The staging deployment and the production deployment of a cloud service are hosted in the same cluster. When you add the second deployment, the corresponding allocation request will be attempted in the same cluster that hosts the first deployment.
-
-**Workaround**
-
-Delete the first deployment and the original cloud service and redeploy the cloud service. This action may land the first deployment in a cluster that has enough free resources to fit both deployments or in a cluster that supports the VM sizes that you requested.
-
-## <a name="allocation-scenario:-affinity-group-(vm/service-proximity)"></a>Allocation scenario: Affinity group (VM/service proximity)
-**Error**
-
-New_General* or New_VMSizeNotSupported*
-
-**Cause of cluster pinning**
-
-Any compute resource assigned to an affinity group is tied to one cluster. New compute resource requests in that affinity group are attempted in the same cluster where the existing resources are hosted. This is true whether the new resources are created through a new cloud service or through an existing cloud service.
-
-**Workaround**
-
-If an affinity group is not necessary, do not use an affinity group, or group your compute resources into multiple affinity groups.
-
-## <a name="allocation-scenario:-affinity-group-based-virtual-network"></a>Allocation scenario: Affinity-group-based virtual network
-**Error**
-
-New_General* or New_VMSizeNotSupported*
-
-**Cause of cluster pinning**
-
-Before regional virtual networks were introduced, you were required to associate a virtual network with an affinity group. As a result, compute resources placed into an affinity group are bound by the same constraints as described in the "Allocation scenario: Affinity group (VM/service proximity)" section above. The compute resources are tied to one cluster.
-
-**Workaround**
-
-If you do not need an affinity group, create a new regional virtual network for the new resources you're adding, and then [connect your existing virtual network to the new virtual network](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/). See more about [regional virtual networks](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/).
-
-Alternatively, you can [migrate your affinity-group-based virtual network to a regional virtual network](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/), and then add the desired resources again.
-
-## <a name="detailed-troubleshooting-steps-specific-allocation-failure-scenarios-in-the-azure-resource-manager-deployment-model"></a>Detailed troubleshooting steps specific allocation failure scenarios in the Azure Resource Manager deployment model
-Here are common allocation scenarios that cause an allocation request to be pinned. We'll dive into each scenario later in this article.
-
-- Resize a VM or add VMs or role instances to an existing cloud service
-- Restart partially stopped (deallocated) VMs
-- Restart fully stopped (deallocated) VMs
-
-When you receive an allocation error, see if any of the scenarios described apply to your error. Use the allocation error returned by the Azure platform to identify the corresponding scenario. If your request is pinned to an existing cluster, remove some of the pinning constraints to open your request to more clusters, thereby increasing the chance of allocation success.
-
-In general, as long as the error does not indicate "the requested VM size is not supported," you can always retry at a later time, as enough resources may have been freed in the cluster to accommodate your request. If the problem is that the requested VM size is not supported, see below for workarounds.
-
-## <a name="allocation-scenario:-resize-a-vm-or-add-vms-to-an-existing-availability-set"></a>Allocation scenario: Resize a VM or add VMs to an existing availability set
-**Error**
-
-Upgrade_VMSizeNotSupported* or GeneralError*
-
-**Cause of cluster pinning**
-
-A request to resize a VM or add a VM to an existing availability set has to be attempted at the original cluster that hosts the existing availability set. Creating a new availability set allows the Azure platform to find another cluster that has free resources or supports the VM size that you requested.
-
-**Workaround**
-
-If the error is Upgrade_VMSizeNotSupported*, try a different VM size. If using a different VM size is not an option, stop all VMs in the availability set. You can then change the size of the virtual machine that will allocate the VM to a cluster that supports the desired VM size.
-
-If the error is GeneralError*, it's likely that the type of resource (such as a particular VM size) is supported by the cluster, but the cluster does not have free resources at the moment. If the VM can be part of a different availability set, create a new VM in a different availability set (in the same region). This new VM can then be added to the same virtual network.  
-
-## <a name="allocation-scenario:-restart-partially-stopped-(deallocated)-vms"></a>Allocation scenario: Restart partially stopped (deallocated) VMs
-**Error**
+## 割り当てシナリオ: 完全に停止 (割り当て解除) されていた VM の再起動
+**エラー**
 
 GeneralError*
 
-**Cause of cluster pinning**
+**クラスターの固定の原因**
 
-Partial deallocation means that you stopped (deallocated) one or more, but not all, VMs in an availability set. When you stop (deallocate) a VM, the associated resources are released. Restarting that stopped (deallocated) VM is therefore a new allocation request. Restarting VMs in a partially deallocated availability set is equivalent to adding VMs to an existing availability set. The allocation request has to be attempted at the original cluster that hosts the existing availability set.
+完全割り当て解除とは、クラウド サービス内のすべての VM を停止 (割り当て解除) したことを意味します。これらの VM を再起動するための割り当て要求は、クラウド サービスをホストしている元のクラスターで試行する必要があります。新しいクラウド サービスを作成すると、Azure プラットフォームは、空きリソースを持つクラスターや要求された VM サイズをサポートしているクラスターを別途検索できます。
 
-**Workaround**
+**対処法**
 
-Stop all VMs in the availability set before restarting the first one. This will ensure that a new allocation attempt is run and that a new cluster can be selected that has available capacity.
+別の VIP を使用できる場合は、停止 (割り当て解除) された元の VM を削除し (ただし、関連付けられているディスクは保持し)、対応するクラウド サービスを削除します (関連付けられているコンピューティング リソースは、VM を停止 (割り当て解除) したときに既に解放されています)。新しいクラウド サービスを作成し、VM を追加し直します。
 
-## <a name="allocation-scenario:-restart-fully-stopped-(deallocated)"></a>Allocation scenario: Restart fully stopped (deallocated)
-**Error**
+## 割り当てシナリオ: ステージング環境/運用環境のデプロイメント (サービスとしてのプラットフォームのみ)
+**エラー**
+
+New\_General* または New\_VMSizeNotSupported*
+
+**クラスターの固定の原因**
+
+クラウド サービスのステージング環境のデプロイと運用環境のデプロイは、同じクラスターでホストされます。2 つ目のデプロイを追加する場合、対応する割り当て要求は、最初のデプロイをホストする同じクラスター内で試行されます。
+
+**対処法**
+
+最初のデプロイと元のクラウド サービスを削除し、クラウド サービスを再デプロイします。この操作によって、最初のデプロイが、両方のデプロイのための十分な空きリソースを持つクラスターや、要求された VM サイズをサポートしているクラスターに配置される場合があります。
+
+## 割り当てシナリオ: アフィニティ グループ (VM/サービス近接性)
+**エラー**
+
+New\_General* または New\_VMSizeNotSupported*
+
+**クラスターの固定の原因**
+
+アフィニティ グループに割り当てられているすべてのコンピューティング リソースは、1 つのクラスターに結び付けられています。そのアフィニティ グループでの新しいコンピューティング リソース要求は、既存のリソースがホストされているのと同じクラスターで試行されます。新しいリソースが新しいクラウド サービスを通じて作成された場合でも、既存のクラウド サービスを通じて作成された場合でも、そのようになります。
+
+**対処法**
+
+アフィニティ グループが必要なければ、アフィニティ グループを使用しないでください。そうでなければ、コンピューティング リソースを複数のアフィニティ グループにグループ化してください。
+
+## 割り当てシナリオ: アフィニティ グループ ベースの仮想ネットワーク
+**エラー**
+
+New\_General* または New\_VMSizeNotSupported*
+
+**クラスターの固定の原因**
+
+リージョン仮想ネットワークが導入される前は、仮想ネットワークをアフィニティ グループに関連付ける必要がありました。その結果、アフィニティ グループに配置されたコンピューティング リソースは、上の「割り当てシナリオ: アフィニティ グループ (VM/サービス近接性)」セクションで説明したのと同じ制約を受けます。つまり、コンピューティング リソースは 1 つのクラスターに結び付けられます。
+
+**対処法**
+
+アフィニティ グループが不要の場合は、追加する新しいリソース用に新しいリージョン仮想ネットワークを作成し、[既存の仮想ネットワークを新しい仮想ネットワークに接続](https://azure.microsoft.com/blog/vnet-to-vnet-connecting-virtual-networks-in-azure-across-different-regions/)します。詳細については、「[リージョン仮想ネットワーク](https://azure.microsoft.com/blog/2014/05/14/regional-virtual-networks/)」を参照してください。
+
+または、[アフィニティ グループ ベースの仮想ネットワークをリージョン仮想ネットワークに移行](https://azure.microsoft.com/blog/2014/11/26/migrating-existing-services-to-regional-scope/)し、必要なリソースをもう一度追加することもできます。
+
+## Azure Resource Manager デプロイメント モデルでの特定の割り当てエラー シナリオの詳細なトラブルシューティング手順
+以下に、割り当て要求が固定されることになる一般的な割り当てシナリオを示します。この記事の後の方で、各シナリオについて説明します。
+
+- VM のサイズの変更、あるいは既存のクラウド サービスへの VM またはロール インスタンスの追加
+- 部分的に停止 (割り当て解除) されていた VM の再起動
+- 完全に停止 (割り当て解除) されていた VM の再起動
+
+割り当てエラーが発生した場合は、説明されているシナリオのいずれかがエラーに該当するかどうかを確認してください。Azure プラットフォームから返される割り当てエラーを使用すると、対応するシナリオを特定できます。要求が既存のクラスターに固定されている場合は、固定している制約の一部を削除して、要求の対象となるクラスターを増やしてください。その結果、割り当てが成功する確率が高くなります。
+
+一般に、エラーが "要求された VM のサイズがサポートされていない" ことを示していなければ、後で再試行することができます。そのクラスターで要求に応えるための十分なリソースが解放されている可能性があるためです。要求された VM サイズがサポートされていないことが問題である場合は、以下の回避方法を参照してください。
+
+## 割り当てシナリオ: VM のサイズの変更、または既存の可用性セットへの VM の追加
+**エラー**
+
+Upgrade\_VMSizeNotSupported* または GeneralError*
+
+**クラスターの固定の原因**
+
+VM のサイズの変更、または既存の可用性セットへの VM の追加の要求は、既存の可用性セットをホストしている元のクラスターで試行する必要があります。新しい可用性セットを作成すると、Azure プラットフォームは、空きリソースを持つクラスターや要求された VM サイズをサポートしているクラスターを別途検索できます。
+
+**対処法**
+
+エラーが Upgrade\_VMSizeNotSupported* である場合は、別の VM サイズを試してみてください。別の VM サイズを使用できない場合は、可用性セット内のすべての VM を停止します。そうすると、仮想マシンのサイズを変更し、必要な VM サイズをサポートしているクラスターに VM を割り当てることができます。
+
+エラーが GeneralError* である場合は、リソースの種類 (特定の VM サイズなど) がクラスターでサポートされているものの、現時点ではクラスターに空きリソースがないと考えられます。VM を別の可用性セットに含めることができる場合は、新しい VM を (同じリージョン内の) 別の可用性セットに作成します。この新しい VM は、同じ仮想ネットワークに追加できます。
+
+## 割り当てシナリオ: 部分的に停止 (割り当て解除) されていた VM の再起動
+**エラー**
 
 GeneralError*
 
-**Cause of cluster pinning**
+**クラスターの固定の原因**
 
-Full deallocation means that you stopped (deallocated) all VMs in an availability set. The allocation request to restart these VMs will target all clusters that support the desired size.
+部分的割り当て解除とは、可用性セット内のすべての VM ではなく、1 つ以上の VM を停止 (割り当て解除) したことを意味します。VM を停止 (割り当て解除) すると、関連付けられているリソースが解放されます。そのため、停止された (割り当て解除された) VM を再起動すると、新しい割り当てが要求されます。部分的に割り当て解除された可用性セットで VM を再起動することは、既存の可用性セットに VM を追加することと同じです。割り当て要求は、既存の可用性セットをホストしている元のクラスターで試行する必要があります。
 
-**Workaround**
+**対処法**
 
-Select a new VM size to allocate. If this does not work, please try again later.
+最初の VM を再起動する前に、可用性セット内のすべての VM を停止します。こうすることで、新しい割り当ての試行が実行され、利用可能な容量を持つ新しいクラスターを選択できるようになります。
 
-## <a name="error-string-lookup"></a>Error string lookup
-**New_VMSizeNotSupported***
+## 割り当てシナリオ: 完全に停止 (割り当て解除) されていた VM の再起動
+**エラー**
 
-"The VM size (or combination of VM sizes) required by this deployment cannot be provisioned due to deployment request constraints. If possible, try relaxing constraints such as virtual network bindings, deploying to a hosted service with no other deployment in it and to a different affinity group or with no affinity group, or try deploying to a different region."
+GeneralError*
 
-**New_General***
+**クラスターの固定の原因**
 
-"Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an affinity group, or it targets a virtual network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+完全割り当て解除とは、可用性セット内のすべての VM を停止 (割り当て解除) したことを意味します。これらの VM を再起動するための割り当て要求は、目的のサイズをサポートしているすべてのクラスターを対象とします。
 
-**Upgrade_VMSizeNotSupported***
+**対処法**
 
-"Unable to upgrade the deployment. The requested VM size XXX may not be available in the resources supporting the existing deployment. Please try again later, try with a different VM size or smaller number of role instances, or create a deployment under an empty hosted service with a new affinity group or no affinity group binding."
+割り当てる新しい VM サイズを選択します。これでうまくいかない場合は、後でもう一度やり直してください。
+
+## エラーの文字列の参照
+**New\_VMSizeNotSupported***
+
+"デプロイ要求の制約条件のため、このデプロイに必要な VM サイズ (または VM サイズの組み合わせ) をプロビジョニングできません。可能であれば、仮想ネットワークのバインドなどの制約条件の緩和、他のデプロイがなくアフィニティ グループが別のホストされるサービスへのデプロイ、アフィニティ グループのないホストされるサービスへのデプロイ、別のリージョンへのデプロイのいずれかを試してください。"
+
+**New\_General***
+
+"割り当てに失敗しました。要求の制約条件を満たしていません。要求されている新しいサービスのデプロイがアフィニティ グループにバインドされているか、仮想ネットワークを対象としています。または、このホストされるサービスに既存のデプロイがあります。ここに挙げた条件に該当する場合には、新しいデプロイが特定の Azure リソースに制限されます。後でもう一度やり直すか、VM サイズを小さくするか、ロール インスタンスの数を減らしてください。可能な場合には、上に挙げた制約条件を削除することや、別のリージョンにデプロイすることもできます。"
+
+**Upgrade\_VMSizeNotSupported***
+
+"デプロイをアップグレードできません。要求された VM サイズ XXX は、既存のデプロイをサポートするリソースの中では用意できない可能性があります。後でもう一度やり直すか、VM サイズを変更するか、ロール インスタンスの数を減らしてみてください。または、空のホストされるサービスの下で、新しいアフィニティ グループを指定するかアフィニティ グループのバインドなしを指定して、デプロイを作成してください。"
 
 **GeneralError***
 
-"The server encountered an internal error. Please retry the request." Or "Failed to produce an allocation for the service."
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+"サーバーで内部エラーが発生しました。要求を再試行してください。" または "サービスの割り当てを生成できませんでした。"

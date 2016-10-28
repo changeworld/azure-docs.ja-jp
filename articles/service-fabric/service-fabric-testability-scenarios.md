@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Chaos and failover tests | Microsoft Azure"
-   description="Using the Service Fabric chaos test and failover test scenarios to induce faults and verify the reliability of your services."
+   pageTitle="混乱とフェールオーバーのテスト | Microsoft Azure"
+   description="Service Fabric の混乱テストとフェールオーバー テストのシナリオを利用し、障害を誘導し、サービスの信頼性を検証します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="motanv"
@@ -16,40 +16,39 @@
    ms.date="07/08/2016"
    ms.author="motanv"/>
 
+# Testability のシナリオ
+クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。Azure Service Fabric を使用すると、開発者は信頼性の低いインフラストラクチャ上で実行できるサービスのコードを記述できます。高品質なサービスのコードを記述するには、開発者はこのような信頼性の低いインフラストラクチャを誘発してサービスの安定性をテストできる必要があります。
 
-# <a name="testability-scenarios"></a>Testability scenarios
-Large distributed systems like cloud infrastructures are inherently unreliable. Azure Service Fabric gives developers the ability to write services to run on top of unreliable infrastructures. In order to write high-quality services, developers need to be able to induce such unreliable infrastructure to test the stability of their services.
+Fault Analysis Service を使用すると、開発者は障害アクションを誘発して、障害のある状態でサービスをテストできます。ただし、ターゲットを特定した障害のシミュレーションには限界があります。さらにテストを実行するには、混乱のテストとフェールオーバー テストという Service Fabric のテスト シナリオを使用できます。これらのシナリオでは、長時間にわたり、クラスター全体で、グレースフルとアングレースフルの両方が交互配置された連続した障害がシミュレートされます。テストで障害の発生率と種類を構成したら、C# API または PowerShell を使用してテストを開始し、クラスターとサービスに障害を生成します。
 
-The Fault Analysis Service gives developers the ability to induce fault actions to test services in the presence of failures. However, targeted simulated faults will get you only so far. To take the testing further, you can use the test scenarios in Service Fabric: a chaos test and a failover test. These scenarios simulate continuous interleaved faults, both graceful and ungraceful, throughout the cluster over extended periods of time. Once a test is configured with the rate and kind of faults, it can be started through either C# APIs or PowerShell, to generate faults in the cluster and your service.
+>[AZURE.WARNING] ChaosTestScenario は、弾力性に優れたサービス ベースの混乱で置き換えられています。詳細については、[制御された混乱](service-fabric-controlled-chaos.md)に関する新しい記事をご覧ください。
 
->[AZURE.WARNING] ChaosTestScenario is being replaced by a more resilient, service-based Chaos. Please refer to the new article [Controlled Chaos](service-fabric-controlled-chaos.md) for more details.
+## 混乱のテスト
+混乱のシナリオでは、Service Fabric クラスター全体にわたる障害を生成します。このシナリオには、一般的に数か月間または数年間から数時間で発生するエラーが圧縮されています。障害率の高い交互に配置された障害の組み合わせにより、通常は見過ごされるめったに発生しないケースが検出されます。これにより、サービスのコードの品質が大幅に向上します。
 
-## <a name="chaos-test"></a>Chaos test
-The chaos scenario generates faults across the entire Service Fabric cluster. The scenario compresses faults generally seen in months or years to a few hours. The combination of interleaved faults with the high fault rate finds corner cases that are otherwise missed. This leads to a significant improvement in the code quality of the service.
+### 混乱のテストでシミュレートされる障害
+ - ノードの再起動
+ - デプロイされたコード パッケージの再起動
+ - レプリカの削除
+ - レプリカの再起動
+ - プライマリ レプリカの移動 (オプション)
+ - セカンダリ レプリカの移動 (オプション)
 
-### <a name="faults-simulated-in-the-chaos-test"></a>Faults simulated in the chaos test
- - Restart a node
- - Restart a deployed code package
- - Remove a replica
- - Restart a replica
- - Move a primary replica (optional)
- - Move a secondary replica (optional)
+混乱のテストでは、一定の期間、障害とクラスターの検証が複数回実行されます。クラスターが安定し、検証が成功するまでの時間も設定できます。クラスターの検証で 1 つの障害が検出されると、シナリオは失敗します。
 
-The chaos test runs multiple iterations of faults and cluster validations for the specified period of time. The time spent for the cluster to stabilize and for validation to succeed is also configurable. The scenario fails when you hit a single failure in cluster validation.
+たとえば、1 時間実行して、最大 3 つの障害が同時に発生するように設定したテストを考えてみます。このテストは 3 つの障害を誘発してから、クラスターの正常性を検証します。テストでは、クラスターが異常な状態になるまで、または 1 時間経過するまで、前述の手順が繰り返されます。繰り返しているうちに、クラスターの状態が異常 (つまり、設定時間内に安定した状態にならない) になると、テストは失敗して、例外が発生します。この例外は問題が発生したことを示し、さらに調査が必要になります。
 
-For example, consider a test set to run for one hour with a maximum of three concurrent faults. The test will induce three faults, and then validate the cluster health. The test will iterate through the previous step till the cluster becomes unhealthy or one hour passes. If the cluster becomes unhealthy in any iteration, i.e. it does not stabilize within a configured time, the test will fail with an exception. This exception indicates that something has gone wrong and needs further investigation.
+現在の形式では、混乱のテストの障害生成エンジンからは、安全な障害しか誘発されません。これは、外部障害がなければ、クォーラムまたはデータの損失が起こらないことを意味します。
 
-In its current form, the fault generation engine in the chaos test induces only safe faults. This means that in the absence of external faults, a quorum or data loss will never occur.
+### 重要な構成オプション
+ - **TimeToRun**: テストが正常に完了するまでの実行時間の合計。検証エラーにならないようにテストを早めに完了できます。
+ - **MaxClusterStabilizationTimeout**: テストが失敗する前に、クラスターが正常になるまで待機する最大時間。実行されるチェックは、クラスターの正常性が問題ないかどうか、サービスの正常性が問題ないかどうか、サービス パーティションの対象となるレプリカ セットのサイズに達しているかどうか、InBuild レプリカが存在しないかどうかです。
+ - **MaxConcurrentFaults**: 各イテレーションで誘発される同時実行のエラーの最大数。数値が大きいほど、より積極的なテストとなり、結果的に、より複雑なフェールオーバーと遷移の組み合わせになります。このテストは、外部エラーが存在しない場合、この構成がどれだけ高い値であったとしても、クォーラムまたはデータの損失が発生しないことを保証します。
+ - **EnableMoveReplicaFaults**: プライマリまたはセカンダリ レプリカの移動を誘発する障害を有効または無効にします。このようなエラーは、既定で無効になっています。
+ - **WaitTimeBetweenIterations**: イテレーション間 (つまり、障害とそれに対応する検証が一巡した後) の待機時間。
 
-### <a name="important-configuration-options"></a>Important configuration options
- - **TimeToRun**: Total time that the test will run before finishing with success. The test can finish earlier in lieu of a validation failure.
- - **MaxClusterStabilizationTimeout**: Maximum amount of time to wait for the cluster to become healthy before failing the test. The checks performed are whether cluster health is OK, service health is OK, the target replica set size is achieved for the service partition, and no InBuild replicas exist.
- - **MaxConcurrentFaults**: Maximum number of concurrent faults induced in each iteration. The higher the number, the more aggressive the test, hence resulting in more complex failovers and transition combinations. The test guarantees that in absence of external faults there will not be a quorum or data loss, irrespective of how high this configuration is.
- - **EnableMoveReplicaFaults**: Enables or disables the faults that are causing the move of the primary or secondary replicas. These faults are disabled by default.
- - **WaitTimeBetweenIterations**: Amount of time to wait between iterations, i.e. after a round of faults and corresponding validation.
-
-### <a name="how-to-run-the-chaos-test"></a>How to run the chaos test
-C# sample
+### 混乱のテストを実行する方法
+C# のサンプル
 
 ```csharp
 using System;
@@ -139,27 +138,27 @@ Invoke-ServiceFabricChaosTestScenario -TimeToRunMinute $timeToRun -MaxClusterSta
 ```
 
 
-## <a name="failover-test"></a>Failover test
+## フェールオーバー テスト
 
-The failover test scenario is a version of the chaos test scenario that targets a specific service partition. It tests the effect of failover on a specific service partition while leaving the other services unaffected. Once it's configured with the target partition information and other parameters, it runs as a client-side tool that uses either C# APIs or PowerShell to generate faults for a service partition. The scenario iterates through a sequence of simulated faults and service validation while your business logic runs on the side to provide a workload. A failure in service validation indicates an issue that needs further investigation.
+フェールオーバー テスト シナリオは、特定のサービス パーティションを対象にした、混乱のテスト シナリオの 1 つのバージョンです。他のサービスには影響が及ばない状態で、特定のサービス パーティションに対するフェールオーバーの影響をテストします。ターゲット パーティションの情報とその他のパラメーターを使用して構成されると、クライアント側ツールとして実行します。このツールでは C# API または PowerShell を使用してサービス パーティションの障害を生成します。このシナリオでは、ワークロードが発生するビジネス ロジックを実行すると同時に、一連のシミュレートされた障害とサービス検証を反復処理します。サービス検証の失敗は、さらに調査の必要な問題があることを示します。
 
-### <a name="faults-simulated-in-the-failover-test"></a>Faults simulated in the failover test
-- Restart a deployed code package where the partition is hosted
-- Remove a primary/secondary replica or stateless instance
-- Restart a primary secondary replica (if a persisted service)
-- Move a primary replica
-- Move a secondary replica
-- Restart the partition
+### フェールオーバー テストでシミュレートされる障害
+- パーティションがホストされているデプロイ済みコード パッケージを再起動します。
+- プライマリ/セカンダリ レプリカまたはステートレス インスタンスを削除します。
+- プライマリ/セカンダリ レプリカを再起動します (永続化されたサービスの場合)。
+- プライマリ レプリカを移動します。
+- セカンダリ レプリカを移動します。
+- パーティションを再起動します。
 
-The failover test induces a chosen fault and then runs validation on the service to ensure its stability. The failover test induces only one fault at a time, as opposed to possible multiple faults in the chaos test. If the service partition does not stabilize within the configured timeout after each fault, the test fails. The test induces only safe faults. This means that in absence of external failures, a quorum or data loss will not occur.
+フェールオーバー テストでは、選択した障害を誘発し、サービスの検証を実行してサービスの安定性を確認します。混乱のテストでは複数の障害が誘発される可能性があるのに対し、フェールオーバー テストで誘発される障害は一度に 1 つだけです。各障害が発生した後、構成したタイムアウト時間内にサービス パーティションが安定しない場合、テストは失敗します。テストで誘発されるのは安全な障害のみです。つまり、外部障害がなければ、クォーラムまたはデータの損失が起こらないことを意味します。
 
-### <a name="important-configuration-options"></a>Important configuration options
- - **PartitionSelector**: Selector object that specifies the partition that needs to be targeted.
- - **TimeToRun**: Total time that the test will run before finishing.
- - **MaxServiceStabilizationTimeout**: Maximum amount of time to wait for the cluster to become healthy before failing the test. The checks performed are whether service health is OK, the target replica set size is achieved for all partitions, and no InBuild replicas exist.
- - **WaitTimeBetweenFaults**: Amount of time to wait between every fault and validation cycle.
+### 重要な構成オプション
+ - **PartitionSelector**: ターゲットにする必要があるパーティションを指定するセレクター オブジェクト。
+ - **TimeToRun**: テストが完了するまでの実行時間の合計。
+ - **MaxServiceStabilizationTimeout**: テストが失敗する前に、クラスターが正常になるまで待機する最大時間。実行されるチェックは、サービスの正常性が問題ないかどうか、すべてのパーティションの対象となるレプリカ セットのサイズに達しているかどうか、InBuild レプリカが存在しないかどうかです。
+ - **WaitTimeBetweenFaults**: 障害と検証のサイクル間の待機時間。
 
-### <a name="how-to-run-the-failover-test"></a>How to run the failover test
+### フェールオーバーのテストを実行する方法
 
 **C#**
 
@@ -250,8 +249,4 @@ Connect-ServiceFabricCluster $connection
 Invoke-ServiceFabricFailoverTestScenario -TimeToRunMinute $timeToRun -MaxServiceStabilizationTimeoutSec $maxStabilizationTimeSecs -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ServiceName $serviceName -PartitionKindSingleton
 ```
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

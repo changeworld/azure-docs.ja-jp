@@ -1,73 +1,68 @@
 <properties
-    pageTitle="Connect to SQL Database - SQL Server Management Studio | Microsoft Azure"
-    description="Learn how to connect to SQL Database on Azure by using SQL Server Management Studio (SSMS). Then, run a sample query using Transact-SQL (T-SQL)."
-    metaCanonical=""
-    keywords="connect to sql database,sql server management studio"
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor="" />
+	pageTitle="SQL Database への接続 - SQL Server Management Studio | Microsoft Azure"
+	description="SQL Server Management Studio (SSMS) を使用して Azure で SQL Database に接続する方法について説明します。次に、TRANSACT-SQL (T-SQL) を使用して、サンプル クエリを実行します。"
+	metaCanonical=""
+	keywords="SQL データベースへの接続、SQL Server Management Studio"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
+	editor="" />
 
 <tags
-    ms.service="sql-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/17/2016"
-    ms.author="sstein;carlrab" />
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/17/2016"
+	ms.author="sstein;carlrab" />
 
-
-# <a name="connect-to-sql-database-with-sql-server-management-studio-and-execute-a-sample-t-sql-query"></a>Connect to SQL Database with SQL Server Management Studio and execute a sample T-SQL query
+# SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する
 
 > [AZURE.SELECTOR]
 - [Visual Studio](sql-database-connect-query.md)
 - [SSMS](sql-database-connect-query-ssms.md)
 - [Excel](sql-database-connect-excel.md)
 
-This article shows how to connect to an Azure SQL database using SQL Server Management Studio (SSMS). After successfully connecting, we run a simple Transact-SQL (T-SQL) query to verify communication with the database.
+この記事では、SQL Server Management Studio (SSMS) を使用して Azure SQL データベースに接続する方法について説明します。正常に接続した後、単純な Transact-SQL (T-SQL) クエリを実行して、データベースとの通信を確認します。
 
-[AZURE.INCLUDE [SSMS Install](../../includes/sql-server-management-studio-install.md)]
+[AZURE.INCLUDE [SSMS のインストール](../../includes/sql-server-management-studio-install.md)]
 
-[AZURE.INCLUDE [SSMS Connect](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
-
-
-## <a name="run-sample-queries"></a>Run sample queries
-
-After you connect to your server, you can connect to a database and run a sample query. If you are new to writing queries, see [Writing Transact-SQL Statements](https://msdn.microsoft.com/library/ms365303.aspx).
-
-1. In **Object Explorer**, navigate to a database on the server, such as the **AdventureWorks** sample database.
-2. Right-click the database and then select **New Query**:
-
-    ![New query. Connect to SQL Database server: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
-
-3. In the query window, copy and paste the following:
-
-        SELECT
-        CustomerId
-        ,Title
-        ,FirstName
-        ,LastName
-        ,CompanyName
-        FROM SalesLT.Customer;
-
-4. Click the **Execute** button:
-
-    ![Success. Connect to SQL Database server: SQL Server Management Studio](./media/sql-database-connect-query-ssms/5-success.png)
-
-## <a name="next-steps"></a>Next steps
-
-You can use T-SQL statements to create and manage databases in Azure in much the same way you can with SQL Server. If you're familiar with using T-SQL with SQL Server, see [Azure SQL Database Transact-SQL information)](sql-database-transact-sql-information.md) for a summary of differences.
-
-If you're new to T-SQL, see [Tutorial: Writing Transact-SQL Statements](https://msdn.microsoft.com/library/ms365303.aspx) and the [Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx).
-
-To get started with creating database users and database user administrators, see [Get Started with Azure SQL Database security](sql-database-get-started-security.md)
-
-For more information about SSMS, see [Use SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+[AZURE.INCLUDE [SSMS 接続](../../includes/sql-database-sql-server-management-studio-connect-server-principal.md)]
 
 
+## サンプル クエリの実行
 
-<!--HONumber=Oct16_HO2-->
+サーバーへの接続後、データベースに接続し、サンプル クエリを実行できます。クエリの作成に慣れていない場合は、[Transact-SQL ステートメントの記述](https://msdn.microsoft.com/library/ms365303.aspx)に関するページを参照してください。
 
+1. **オブジェクト エクスプローラー**で、サーバー上のデータベース (**AdventureWorks** サンプル データベースなど) に移動します。
+2. データベースを右クリックし、**[新しいクエリ]** を選択します。
 
+	![新しいクエリ。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query-ssms/4-run-query.png)
+
+3. クエリ ウィンドウに、次のコードをコピーして貼り付けます。
+
+		SELECT
+		CustomerId
+		,Title
+		,FirstName
+		,LastName
+		,CompanyName
+		FROM SalesLT.Customer;
+
+4. **[実行]** ボタンをクリックします。
+
+	![成功。SQL Database サーバーへの接続: SQL Server Management Studio](./media/sql-database-connect-query-ssms/5-success.png)
+
+## 次のステップ
+
+SQL Server で可能な方法とほぼ同じように、T-SQL ステートメントを使用して Azure にデータベースを作成して管理することもできます。SQL Server で T-SQL を使用するのに慣れている場合は、「[Azure SQL Database TRANSACT-SQL 情報](sql-database-transact-sql-information.md)」で相違点の概要を参照してください。
+
+T-SQL を初めて使用する場合は、「[チュートリアル: TRANSACT-SQL ステートメントの作成](https://msdn.microsoft.com/library/ms365303.aspx)」と「[TRANSACT-SQL リファレンス (データベース エンジン)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
+
+データベース ユーザーおよびデータベース ユーザー管理者の作成の概要については、[Azure SQL Database セキュリティの概要](sql-database-get-started-security.md)に関するページを参照してください。
+
+SSMS の詳細については、「[SQL Server Management Studio の使用](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。
+
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,79 +1,70 @@
 <properties
-    pageTitle="Cloud Services FAQ | Microsoft Azure"
-    description="Frequently asked questions about Cloud Services."
-    services="cloud-services"
-    documentationCenter=""
-    authors="Thraka"
-    manager="timlt"
-    editor=""/>
+	pageTitle="Cloud Services に関する FAQ |Microsoft Azure"
+	description="Cloud Services に関してよく寄せられる質問。"
+	services="cloud-services"
+	documentationCenter=""
+	authors="Thraka"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="cloud-services"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/19/2016"
-    ms.author="adegeo"/>
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/19/2016"
+	ms.author="adegeo"/>
 
+# Cloud Services に関する FAQ
+この記事では、Microsoft Azure Cloud Services についてよく寄せられる質問 (FAQ) とその回答を紹介します。Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](http://go.microsoft.com/fwlink/?LinkID=185083)」も参照してください。サイズについては、[Cloud Services VM サイズのページ](cloud-services-sizes-specs.md)を参照してください。
 
-# <a name="cloud-services-faq"></a>Cloud Services FAQ
-This article answers some frequently asked questions about Microsoft Azure Cloud Services. You can also visit the [Azure Support FAQ](http://go.microsoft.com/fwlink/?LinkID=185083) for general Azure pricing and support information. You can also consult the [Cloud Services VM Size page](cloud-services-sizes-specs.md) for size information.
+## 証明書
 
-## <a name="certificates"></a>Certificates
+### 証明書はどこにインストールすればいいですか?
 
-### <a name="where-should-i-install-my-certificate?"></a>Where should I install my certificate?
+- **My** 秘密キーを持つアプリケーション証明書 (*.pfx、*.p12)。
 
-- **My**  
-Application Certificate with private key (\*.pfx, \*.p12).
+- **CA** すべての中間証明書をこのストア内に保存します (ポリシー CA および下位 CA)。
 
-- **CA**  
-All your intermediate certificates go in this store (Policy and Sub CAs).
+- **ROOT** ルート CA ストア。メインのルート CA 証明書をここに保存します。
 
-- **ROOT**  
-The root CA store, so your main root CA cert should go here.
+### 有効期限が切れた証明書を削除できません
 
-### <a name="i-can't-remove-expired-certificate"></a>I can't remove expired certificate
+Azure では、証明書の使用中にその証明書を削除することはできません。証明書を使用するデプロイメントを削除するか、別の証明書または更新した証明書でデプロイメントを更新する必要があります。
 
-Azure prevents you from removing a certificate while it is in use. You need to either delete the deployment that uses the certificate, or update the deployment with a different or renewed certificate.
+### 有効期限切れの証明書を削除してください
 
-### <a name="delete-an-expired-certificate"></a>Delete an expired certificate
+証明書が使用されていない限りは、[Remove-AzureCertificate](https://msdn.microsoft.com/library/azure/mt589145.aspx) PowerShell コマンドレットを使って証明書を削除できます。
 
-As long as the certificate is not in use, you can use the [Remove-AzureCertificate](https://msdn.microsoft.com/library/azure/mt589145.aspx) PowerShell cmdlet to remove a certificate.
+### Mirosoft Azure Service Management for Extensions という名前の証明書の期限が切れています
 
-### <a name="i-have-expired-certificates-named-windows-azure-service-management-for-extensions"></a>I have expired certificates named Windows Azure Service Management for Extensions
+リモート デスクトップ拡張機能などの拡張機能がクラウド サービスに追加されるとかならず、これらの証明書が作成されます。これらの証明書は、拡張機能のプライベート構成を暗号化および復号化するためだけに使用されます。これらの証明書の有効期限が切れていても問題はありません。有効期限の日付はチェックされません。
 
-These certificates are created whenever an extension is added to the cloud service such as the Remote Desktop extension. These certificates are only used for encrypting and decrypting the private configuration of the extension. It does not matter if these certificates expire. The expiration date is not checked.
+### 削除した証明書が再表示され続けます
 
-### <a name="certificates-i-have-deleted-keep-reappearing"></a>Certificates I have deleted keep reappearing
+そのような証明書が再表示され続ける原因は、ほとんどの場合、ご使用になっているツール (Visual Studio など) です。証明書を使用しているツールに再接続するたびに、ツールが Azure に証明書を再アップロードします。
 
-These keep reappearing most likely because of a tool you're using, such as Visual Studio. Whenever you reconnect with a tool that is using a certificate, it will again be uploaded to Azure.
+### 証明書が表示されません
 
-### <a name="my-certificates-keep-disappearing"></a>My certificates keep disappearing
+仮想マシン インスタンスをリサイクルすると、ローカルのすべての変更は失われます。ロールが起動するたびに、[スタートアップ タスク](cloud-services-startup-tasks.md) を使用して、仮想マシンに証明書をインストールしてください。
 
-When the virtual machine instance recycles, all local changes are lost. Use a [startup task](cloud-services-startup-tasks.md) to install certificates to the virtual machine each time the role starts.
+### ポータルで管理証明書が見つかりません
 
-### <a name="i-cannot-find-my-management-certificates-in-the-portal"></a>I cannot find my management certificates in the portal
+[管理証明書](..\azure-api-management-certs.md)は Azure クラシック ポータルでのみ使用できます。現在の Azure ポータルでは、管理証明書は使用しません。
 
-[Management certificates](..\azure-api-management-certs.md) are only avialable in the Azure Classic Portal. The current Azure portal does not use management certificates. 
+### 管理証明書を無効にするにはどうすればよいですか
 
-### <a name="how-can-i-disable-a-management-certificate?"></a>How can I disable a management certificate?
+[管理証明書](..\azure-api-management-certs.md)を無効にすることはできません。使用しなくなった場合は、Azure クラシック ポータルで削除できます。
 
-[Management certificates](..\azure-api-management-certs.md) cannot be disabled. You delete them through the Azure Classic Portal when you do not want them to be used anymore.
+### 特定の IP アドレスの SSL 証明書を作成するにはどうすればよいですか
 
-### <a name="how-do-i-create-an-ssl-certificate-for-a-specific-ip-address?"></a>How do I create an SSL certificate for a specific IP address?
+[証明書を作成するためのチュートリアル](cloud-services-certs-create.md)の手順に従います。DNS 名として IP アドレスを使用します。
 
-Follow the directions in the [create a certificate tutorial](cloud-services-certs-create.md). Use the IP address as the DNS Name.
+## トラブルシューティング
 
-## <a name="troubleshooting"></a>Troubleshooting
+### マルチ VIP クラウド サービスの IP アドレスを予約できません
 
-### <a name="i-can't-reserve-an-ip-in-a-multi-vip-cloud-service"></a>I can't reserve an IP in a multi-VIP cloud service
+まず、IP アドレスを予約しようとしている仮想マシン インスタンスが有効であることを確認してください。次に、ステージング デプロイメントと運用環境デプロイメントの両方で予約済みの IP を使っていることを確認します。デプロイメントをアップグレードする間、この設定を**変更しない**でください。
 
-First, make sure that the virtual machine instance that you're trying to reserve the IP for is turned on. Second, make sure that you're using Reserved IPs for bother the staging and production deployments. **Do not** change the settings while the deployment is upgrading.
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

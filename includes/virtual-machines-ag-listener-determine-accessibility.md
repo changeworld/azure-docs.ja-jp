@@ -1,15 +1,11 @@
-It is important to realize that there are two ways to configure an Availability Group listener in Azure. These methods differ in the type of Azure load balancer you use when you create the listener. The following table describes the differences:
+Azure では、可用性グループ リスナーを構成する 2 つの方法があることを理解することが重要です。これらの方法は、リスナーを作成するときに使用する Azure ロード バランサーの種類によって異なります。次の表で、その違いを説明します。
 
-| Load Balancer | Implementation | Use When: |
+| Load Balancer | 実装 | 使用時: |
 | ------------- | -------------- | ----------- |
-| **External** | Uses the **public Virtual IP address** of the cloud service that hosts the Virtual Machines. | You need to access the listener from outside the virtual network, including from the internet. |
-| **Internal** | Uses **Internal Load Balancing (ILB)** with a private address for the listener. | You only access the listener from within the same virtual network. This includes site-to-site VPN in hybrid scenarios. |
+| **外部** | 仮想マシンをホストするクラウド サービスの**パブリック仮想 IP アドレス**を使用します。 | インターネットなど、仮想ネットワークの外部からリスナーにアクセスする必要があります。 |
+| **内部** | **内部負荷分散 (ILB)** とリスナーのプライベート アドレスを使用します。 | 同じ仮想ネットワーク内からはリスナーにのみアクセスします。これには、ハイブリッド シナリオでのサイト間 VPN が含まれます。 |
 
->[AZURE.IMPORTANT] For a listener using the cloud service's public VIP (external load balancer), as long as the client, listener, and databases are in the same Azure region you will not incur egress charges. Otherwise, any data returned through the listener is considered egress and charged at normal data transfer rates. 
+>[AZURE.IMPORTANT] クラウド サービスのパブリック VIP (外部ロード バランサー) を使用しているリスナーの場合、クライアント、リスナー、およびデータベースが同じ Azure リージョン内にある限り、送信料金は発生しません。そうでない場合は、リスナーによって返されるすべてのデータが送信と見なされ、通常のデータ転送料金が発生します。
 
-ILB can only be configured on virtual networks with a regional scope. Existing virtual networks that have been configured for an affinity group cannot use ILB. For more information, see [Internal Load Balancer](../articles/load-balancer/load-balancer-internal-overview.md).
-
-
-<!--HONumber=Oct16_HO2-->
-
+ILB は、リージョン スコープを持つ仮想ネットワークでのみ構成できます。アフィニティ グループに構成されている既存の仮想ネットワークは ILB を使用できません。詳細については、「[内部ロード バランサー](../articles/load-balancer/load-balancer-internal-overview.md)」を参照してください。
 

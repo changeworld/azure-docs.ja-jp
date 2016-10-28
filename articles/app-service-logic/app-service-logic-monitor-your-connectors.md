@@ -1,131 +1,130 @@
 <properties
-    pageTitle="Manage and Monitor your Connectors and API Apps in App Service | Microsoft Azure"
-    description="View performance of your Connectors and API Apps in Logic Apps; microservices architecture"
-    services="app-service\logic"
-    documentationCenter=".net,nodejs,java"
-    authors="MandiOhlinger"
-    manager="anneta"
-    editor="cgronlun"/>
+	pageTitle="Azure App Service でコネクタと API Apps の管理と監視を行う | Microsoft Azure"
+	description="Logic Apps のコネクタと API Apps のパフォーマンスを表示する: マイクロサービス アーキテクチャ"
+	services="app-service\logic"
+	documentationCenter=".net,nodejs,java"
+	authors="MandiOhlinger"
+	manager="dwrede"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="logic-apps"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/18/2016"
-    ms.author="mandia"/>
+	ms.service="logic-apps"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2016"
+	ms.author="mandia"/>
 
+# 組み込み API Apps とコネクタの管理と監視を実行する
 
-# <a name="manage-and-monitor-your-built-in-api-apps-and-connectors"></a>Manage and Monitor your built-in API Apps and Connectors
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2014-12-01-preview schema version.
+組み込み API アプリを作成しました。次は何でしょうか。
 
-You created a built-in API App. Now what?
+Azure では、すべての API アプリは、Azure でホストされる独立した Web サイトです。その結果、行われた要求の数と、コネクタで使用されたデータの量を簡単に確認できます。さらに、API アプリのバックアップ、アラートの作成、Tinfoil Security の有効化、およびユーザーとロールの追加を実行できます。
 
-In Azure, every API App is a separate web site hosted on Azure. As a result, you can easily see how many requests are made, and see how much data is being used by the connector. You can also backup your API App, create alerts, enable Tinfoil Security, and add users and roles.
+このトピックでは、API アプリを管理するためのさまざまなオプションについて、その一部を説明します。
 
-This topic describes some of the different options to manage your API App.
-
-To see these built-in features, open your API App in the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). If the API App is on your startboard, select it to open the properties. You can also select **Browse**, select **API Apps**, and then select your API App:
+これらの組み込み機能を表示するには、API アプリを [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で開きます。API アプリがスタート画面に表示されている場合は、それを選択するとプロパティが表示されます。**[参照]**、**[API Apps]** の順に選択した後、API アプリを選択することもできます。
 
 ![][browse]
 
-## <a name="see-the-properties-you-entered"></a>See the properties you entered
+## 入力済みのプロパティを表示する
 
-When you open the API App, there are several features and tasks available:
+API アプリを開くと、使用できるさまざまな機能とタスクが表示されます。
 
 ![][settings]
 
-You can:
+そのための方法は次のとおりです。
 
-- **Settings** shows specific information on the API App, including your subscription details, and lists the users who have access to your API app. You can also increase or decrease the number of instances of your API App using the Scale feature; among other features.
-- Use the **Start** and **Stop** buttons to control the API App.
-- When product updates are made to the underlying files used by your API App, you can click **Update** to get the latest versions. For example, if there is a fix or a security update released by Microsoft, clicking **Update** automatically updates your API App to include this fix.
-- Select **Change Plan** to upgrade or downgrade based on the data usage of the API App. You can also use this feature to see your data usage.
-- When you create a connector that has tables, like the SQL connector, you can optionally enter a table name to connect to. A schema based on the table is automatically created and available when you click **Download Schemas**. You can then use this downloaded schema to create a transform or a map.
+- **[設定]** は、API アプリに関する情報 (サブスクリプションの詳細を含みます) と、API アプリにアクセスできるユーザーを表示します。特にスケール機能を使用して、API アプリのインスタンス数を増減させることもできます。
+- API アプリを制御するには、**[開始]** ボタンと **[停止]** ボタンを使用します。
+- API アプリで使用されるファイルに対して製品の更新が行われた場合は、**[更新]** をクリックして最新のバージョンを取得できます。たとえば、マイクロソフトからリリースされた修正プログラムやセキュリティ更新プログラムがある場合に **[更新]** をクリックすると、その修正プログラムを含めるように API アプリが自動的に更新されます。
+- API アプリのデータの使用状況に基づいてアップグレードまたはダウングレードを行うには、**[プランの変更]** を選択します。この機能を使用して、データの使用状況を表示することもできます。
+- SQL コネクタなどのテーブルを持つコネクタを作成する場合は、接続するテーブルの名前を入力できます (省略可能)。テーブルに基づくスキーマが自動的に作成され、**[スキーマのダウンロード]** をクリックしたときに使用できます。このダウンロードしたスキーマを使用して、変換またはマップを作成できます。
 
-## <a name="change-your-connector-or-api-configuration-values-you-entered"></a>Change your connector or API configuration values you entered
+## 入力済みのコネクタまたは API 構成の値を変更する
 
-After you configured or created your built-connector, you can change the values you entered. For example, if you configured the SQL Connector and you want to change the SQL Server name or table name, you can do this in the API App blade for your connector.
+組み込みコネクタを構成または作成した後で、入力済みの値を変更できます。たとえば、SQL コネクタを構成しているときに、SQL Server またはテーブルの名前を変更する場合は、コネクタ用の [API アプリ] ブレードでこの操作を行うことができます。
 
-Steps include:
+手順は次のとおりです。
 
-1. Open your connector or API App. When you do, the API App blade opens.
-2. In **Essentials**, click the hyperlink under the Host property. The hyperlink is named something like *slackconnector* or *microsoftsqlconnector123*:
+1. コネクタまたは API アプリを開きます。この操作を実行すると、API アプリ ブレードが開きます。
+2. **[基本要素]** で、[ホスト] プロパティの下のハイパーリンクをクリックします。このハイパーリンクの名前は、*slackconnector* や *microsoftsqlconnector123* のようになります。
 
-    ![][apiapphost]
+	![][apiapphost]
 
-3. In the API App Host blade, select **Settings**. In the Settings blade, select **Application Settings**. Your configuration values are listed under **App Settings**:
+3. [API アプリのホスト] ブレードで、**[設定]** を選択します。[設定] ブレードで、**[アプリケーション設定]** をクリックします。**[アプリ設定]** の下に構成値が表示されます。
 
-    ![][hostsettings]
+	![][hostsettings]
 
-4. Click the setting you want to change, enter the new value, and **Save** your changes.
+4. 変更する設定をクリックし、新しい値を入力し、変更を**保存**します。
 
 
-## <a name="install-the-hybrid-connection-manager---optional"></a>Install the Hybrid Connection Manager - Optional
+## Hybrid Connection Manager をインストールする (省略可能)
 
 ![][hcsetup]
 
-The Hybrid Connection Manager gives you the ability to connect to an on-premises system, like SQL Server or SAP. This hybrid connectivity uses Azure Service Bus to connect and to control the security between your Azure resources and your on-premises resources.
+ハイブリッド接続マネージャーを使用すると、SQL Server、SAP などのオンプレミスのシステムに接続できます。このハイブリッド接続は、Azure Service Bus を使用して接続し、Azure リソースとオンプレミスのリソースの間のセキュリティを制御します。
 
-See [Using the Hybrid Connection Manager in Azure App Service](app-service-logic-hybrid-connection-manager.md).
+「[Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)」を参照してください。
 
-> [AZURE.NOTE] Hybrid Connection Manager is required only if you are connecting to an on-premises resource behind your firewall. If you are not connecting to an on-premises system,  the Hybrid Connection Manager may not be listed in your connector blade.
+> [AZURE.NOTE] Hybrid Connection Manager は、ファイアウォールの背後にあるオンプレミス リソースに接続する場合にのみ必要です。オンプレミスのシステムに接続していない場合、Hybrid Connection Manager は [コネクタ] ブレードに表示されない可能性があります。
 
-## <a name="monitor-the-performance"></a>Monitor the performance
-Performance metrics are built-in features and included with every API App you create. These metrics are specific to your API App hosted in Azure. Sample metrics:
+## パフォーマンスを監視する
+パフォーマンス メトリックは組み込み機能であり、作成するすべての API アプリに含まれます。これらのメトリックは、Azure でホストされる API アプリに固有です。メトリックの例:
 
 ![][monitoring]
 
-You can:
+そのための方法は次のとおりです。
 
-- Select **Requests and errors** to add different performance metrics including commonly-known HTTP error codes, like 200, 400, or 500 HTTP status codes. You can also see response times,  see how many requests are made to the API App, and see how much data comes in and how much data goes out. Based on the performance metrics, you can create email Alerts if a metric exceeds a threshold of your choosing.
-- In **Usage**, you can see how much **CPU** is used by the API App, review the current **Usage Quota** in MB, and see your maximum data usage based on your cost tier. **Estimated spend**  can help you determine the potential costs of running your API App.
-- Select **Processes** to open Process Explorer. This shows your web instances and their properties, including thread count and memory usage.
+- **[要求およびエラー]** を選択して、よく知られている HTTP エラー コード (200、400、500 HTTP ステータス コードなど) を含むさまざまなパフォーマンス メトリックを追加。応答時間、API アプリに対して実行された要求の数、受信したデータの量、および送信したデータの量を確認できます。パフォーマンス メトリックに基づいて、メトリックが選択したしきい値を超えた場合に送信される電子メールアラートを作成できます。
+- **[使用]** で、API アプリによって使用されている **CPU** の量、現在の**使用量クォータ** (MB 単位)、およびコスト レベルに基づく最大データ使用量を確認できます。**概算料金**は、API アプリの実行にかかる予想コストを判断するのに役立ちます。
+- **[プロセス]** を選択してプロセス エクスプローラーを表示。プロセス エクスプローラーには、Web インスタンスとそのプロパティ (スレッド数、メモリ使用量など) が表示されます。
 
-Using these tools, you can determine if the App Service Plan should be scaled up or scaled down, based on your business needs. These features are built-in to the portal with no additional tools required.
+これらのツールを使用して、App Service プランをビジネス ニーズに基づいてスケール アップまたはスケール ダウンする必要があるかどうかを判断できます。これらの機能は、追加ツールなしでポータルに組み込まれます。
 
-## <a name="control-the-security"></a>Control the security
+## セキュリティを制御する
 
-API Apps use role-based security. These roles apply to the entire Azure experience, including API Apps and other Azure resources. The roles include:
+API Apps では、ロールベースのセキュリティを使用します。これらのロールは、API Apps とその他の Azure リソースを含む Azure のエクスペリエンス全体に適用されます。次のロールがあります。
 
-Role | Description
+役割 | 説明
 --- | ---
-Owner | Have full access to the management experience and can give access to other users or groups.
-Contributor | Have full access to the management experience. Cannot give access to other users or groups.
-Reader | Can view all resources except secrets.
-User Access Administrator | Can view all resources, create/manage roles, and create/manage support tickets.
+所有者 | 管理エクスペリエンスへのフル アクセスを持ち、その他のユーザーまたはグループにアクセス権を付与できます。
+共同作成者 | 管理エクスペリエンスへのフル アクセスを持ちます。その他のユーザーまたはグループにアクセス権を付与することはできません。
+閲覧者 | 機密データを除くすべてのリソースを表示できます。
+ユーザーアクセスの管理者 | すべてのリソースの表示、ロールの作成/管理、およびサポート チケットの作成/管理を実行できます。
 
-See [Role-based access control in the Microsoft Azure portal](../active-directory/role-based-access-control-configure.md).
+「[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 
-You can easily add users and assign them specific roles to your API App. The portal shows you the users that have access and their assigned role:
+API アプリへのユーザーの追加と特定のロールの割り当ては簡単に実行できます。アクセス権があるユーザーと、各自に割り当てられたロールがポータルに表示されます。
 
-![][access]  
+![][access]
 
-- Select **Users** to add a user, assign a role, and remove a user.
-- Select **Roles** to see all the users in a specific role, add a user to a role, and remove a user from a role.
+- ユーザーの追加、ロールの割り当て、およびユーザーの削除を実行するには、**[ユーザー]** を選択します。
+- 特定のロールを持つすべてのユーザーの表示、ユーザーへのロールの追加、およびロールからのユーザーの削除を実行するには、**[ロール]** を選択します。
 
 
-## <a name="more-good-stuff"></a>More Good Stuff
-- Select **API definition** to open the automatically-created Swagger file for your specific API app.
-- Select **Dependencies** to view the files required by your API App. For example, if you're using the SAP connector, you install some additional files on the on-premises Hybrid Connection Manager. These dependencies are shown in your API app blade.
+## その他の便利な機能
+- 特定の API アプリのために自動的に作成された Swagger ファイルを開くには、選択**[API 定義]** を選択します。
+- API アプリによって要求されているファイルを表示するには、**[依存関係]** を選択します。たとえば、SAP コネクタを使用している場合は、オンプレミスの Hybrid Connection Manager に追加ファイルがいくつかインストールされます。これらの依存関係は、[API アプリ] ブレードに表示されます。
 
->[AZURE.IMPORTANT] When you open your API app properties and look under **Essentials**, there are **Host** and **Gateway** links that open new blades:
+>[AZURE.IMPORTANT] API アプリのプロパティを開き、**[基本要素]** を見ると、新しいブレードを開く **[ホスト]** リンクと **[ゲートウェイ]** リンクがあります。
 >
 > ![][host]
 >
->These properties are specific to the website that hosts your API App. When using a built-in API App or connector, most of these properties don't really apply and we recommend that you  don't update these properties. If you created your own API App in Visual Studio and deployed it to your Azure subscription, then you can use the Host and Gateway blades. <br/><br/>
+>これらのプロパティは、API アプリをホストする Web サイトに固有です。組み込み API アプリまたはコネクタを使用するとき、これらのプロパティの大半は実際には適用されないため、これらのプロパティを更新しないことをお勧めします。Visual Studio で独自の API アプリを作成し、Azure サブスクリプションにデプロイした場合は、[ホスト] ブレードと [ゲートウェイ] ブレードを使用できます。<br/><br/>
 
 
->[AZURE.NOTE] To get started with Logic Apps before signing up for an Azure account, go to [Try Logic App](https://tryappservice.azure.com/?appservice=logic). You can create a short-lived starter logic app. No credit cards required and no commitments.
+>[AZURE.NOTE] Azure アカウントにサインアップせずに Logic Apps を体験するには、[Logic Apps の試用](https://tryappservice.azure.com/?appservice=logic)に関するページにアクセスしてください。短時間有効な簡易版のロジック アプリを作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="read-more"></a>Read More
+## 詳細
 
-[Monitor your Logic Apps](app-service-logic-monitor-your-logic-apps.md)<br/>
-[Connectors and API Apps List in App Service](app-service-logic-connectors-list.md)<br/>
-[Role-based access control in the Microsoft Azure portal](../active-directory/role-based-access-control-configure.md)<br/>
-[Using the Hybrid Connection Manager in Azure App Service](app-service-logic-hybrid-connection-manager.md)
+[Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)<br/>
+[App Service のコネクタと API Apps](app-service-logic-connectors-list.md)<br/>
+[Microsoft Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)<br/>
+[Azure App Service での Hybrid Connection Manager の使用](app-service-logic-hybrid-connection-manager.md)
 
 
 <!--Image references-->
@@ -138,8 +137,4 @@ You can easily add users and assign them specific roles to your API App. The por
 [hostsettings]: ./media/app-service-logic-monitor-your-connectors/hostsettings.png
 [apiapphost]: ./media/app-service-logic-monitor-your-connectors/apiapphost.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

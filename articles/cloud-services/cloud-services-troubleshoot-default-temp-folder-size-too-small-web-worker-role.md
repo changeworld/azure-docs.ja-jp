@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Default TEMP folder size is too small for a role | Microsoft Azure"
-   description="A cloud service role has a limited amount of space for the TEMP folder. This article provides some suggestions on how to avoid running out of space."
+   pageTitle="ロールに対する既定の TEMP フォルダーのサイズが小さすぎる | Microsoft Azure"
+   description="クラウド サービス ロールでは、TEMP フォルダー用の領域量が限られています。この記事では、領域不足の回避方法に関する推奨事項をいくつか示します。"
    services="cloud-services"
    documentationCenter=""
    authors="simonxjx"
@@ -13,29 +13,28 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd"
-   ms.date="10/12/2016"
+   ms.date="07/19/2016"
    ms.author="v-six" />
 
+# クラウド サービスの Web/worker ロールに対する既定の一時フォルダーのサイズが小さすぎる
 
-# <a name="default-temp-folder-size-is-too-small-on-a-cloud-service-web/worker-role"></a>Default TEMP folder size is too small on a cloud service web/worker role
-
-The default temporary directory of a cloud service worker or web role has a maximum size of 100 MB, which may become full at some point. This article describes how to avoid running out of space for the temporary directory.
+クラウド サービスの worker または Web ロールの既定の一時ディレクトリの最大サイズは 100 MB ですが、ある時点でいっぱいになる可能性があります。この記事では、一時ディレクトリの領域不足を回避する方法について説明します。
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="why-do-i-run-out-of-space?"></a>Why do I run out of space?
+## 領域が不足する理由
 
-The standard Windows environment variables TEMP and TMP are available to code that is running in your application. Both TEMP and TMP point to a single directory that has a maximum size of 100 MB. Any data that is stored in this directory is not persisted across the lifecycle of the cloud service; if the role instances in a cloud service are recycled, the directory is cleaned.
+標準的な Windows 環境変数 TEMP と TMP は、アプリケーションで実行されているコードで使用可能です。TEMP と TMP は両方とも、最大サイズが 100 MB の 1 つのディレクトリを指します。このディレクトリに格納されているデータは、クラウド サービスのライフサイクル全体で保持されません。クラウド サービスのロール インスタンスがリサイクルされると、ディレクトリはクリーニングされます。
 
-## <a name="suggestion-to-fix-the-problem"></a>Suggestion to fix the problem
+## 問題の修正に関する推奨事項
 
-Implement one of the following alternatives:
+次のいずれかの代替手段を実装します。
 
-- Configure a local storage resource, and access it directly instead of using TEMP or TMP. To access a local storage resource from code that is running within your application, call the [RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) method. 
+- ローカル ストレージ リソースを構成し、TEMP や TMP を使用せずに直接アクセスします。アプリケーション内で実行されているコードからローカル ストレージ リソースにアクセスするには、[RoleEnvironment.GetLocalResource](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) メソッドを呼び出します。
 
-- Configure a local storage resource, and point the TEMP and TMP directories to point to the path of the local storage resource. This modification should be performed within the [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) method.
+- ローカル ストレージ リソースを構成し、TEMP と TMP ディレクトリがローカル ストレージ リソースのパスを指すように指定します。この変更は [RoleEntryPoint.OnStart](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx) メソッド内で実行する必要があります。
 
-The following code example shows how to modify the target directories for TEMP and TMP from within the OnStart method:
+次のコード例では、OnStart メソッド内から TEMP および TMP のターゲット ディレクトリを変更する方法を示します。
 
 
 ```csharp
@@ -70,16 +69,12 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Read a blog that describes [How to increase the size of the Azure Web Role ASP.NET Temporary Folder](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx).
+ブログ「[How to increase the size of the Azure Web Role ASP.NET Temporary Folder (Azure Web ロール ASP.NET の一時フォルダーのサイズを増やす方法)](http://blogs.msdn.com/b/kwill/archive/2011/07/18/how-to-increase-the-size-of-the-windows-azure-web-role-asp-net-temporary-folder.aspx)」の説明をご覧ください。
 
-View more [troubleshooting articles](/?tag=top-support-issue&product=cloud-services) for cloud services.
+クラウド サービスの他の[トラブルシューティングに関する記事](/?tag=top-support-issue&product=cloud-services)を参照します。
 
-To learn how to troubleshoot cloud service role issues by using Azure PaaS computer diagnostics data, view [Kevin Williamson's blog series](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

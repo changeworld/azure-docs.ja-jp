@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Resource health overview | Microsoft Azure"
-   description="Overview of Azure Resource health"
+   pageTitle="Azure Resource Health の概要 | Microsoft Azure"
+   description="Azure Resource Health の概要"
    services="Resource health"
    documentationCenter="dev-center-name"
    authors="BernardoAMunoz"
@@ -16,100 +16,95 @@
    ms.date="06/01/2016"
    ms.author="BernardoAMunoz"/>
 
+# Azure Resource Health の概要
 
-# <a name="azure-resource-health-overview"></a>Azure Resource health overview
+Azure Resource Health は個々の Azure リソースの正常性を明らかにし、問題のトラブルシューティングのために実行できるガイダンスを提供するサービスです。Resource Health の目標は、サーバーやインフラストラクチャの要素に直接アクセスすることができないクラウド環境において、お客様がトラブルシューティングに費やす時間を短縮し、特に、問題の根本原因がアプリケーション内にあるか、Azure プラットフォーム内のイベントによるものかを判別する時間を短縮することです。
 
-Azure Resource health is a service that exposes the health of individual Azure resources and provides actionable guidance to troubleshoot problems. In a cloud environment where it isn’t possible to directly access servers or infrastructure elements, the goal for Resource health is to reduce the time customers spend on troubleshooting, in particular reducing the time spent determining if the root of the problem lays inside the application or if it is caused by an event inside the Azure platform.
+## どのようなものがリソースと認識されるのか、またリソースが正常であるかどうかはどのようにして判断されるか 
+リソースとは、特定のサービスで提供されているリソース タイプ (仮想マシン、Web アプリ、SQL データベースなど) からユーザーが作成したインスタンスです。
 
-## <a name="what-is-considered-a-resource-and-how-does-resource-health-decides-if-the-resource-is-healthy-or-not?"></a>What is considered a Resource and how does resource health decides if the resource is healthy or not? 
-A resource is a user created instance of a resource type provided by a service, for example: a virtual machine, a Web app or a SQL database. 
+Resource Health は、リソースやサービスから生成される信号を基にリソースが正常であるかどうかを判断します。現在 Resource Health で考慮されるのは、決まった 1 つのリソース タイプの正常性だけであることに注意してください。その他の要素については、全体的な正常性を左右する可能性があっても考慮されません。たとえば仮想マシンの状態を報告するときは、インフラストラクチャのコンピューティング要素のみが考慮されます。このときネットワークの問題は Resource Health に表示されません。ただしサービスの機能が停止していることが明らかである場合は、ブレード上部のバナーで表示されます。サービスの機能停止については、後でこの記事の中で詳しく説明します。
 
-Resource health relies on signals emitted by the resource and/or the service to determine if a resource is healthy or not. It is important to notice that currently Resource health only accounts for the health of one specific resource type and does not consider other elements that may contribute to the overall health. For example, when reporting the status of a virtual machine, only the compute portion of the infrastructure is considered, i.e. issues in the network will not be shown in Resource health, unless there is a declared service outage, in which case, it will be surfaced through the banner at the top of the blade. More information about service outage is offered later in this article. 
+## Resource Health はサービス正常性ダッシュボードと何が違うのでしょうか
 
-## <a name="how-is-resource-health-different-from-service-health-dashboard?"></a>How is Resource health different from Service Health Dashboard?
+Resource Health の方が、サービス正常性ダッシュボードと比べて粒度の細かい情報が得られます。サービス正常性ダッシュボードで報告されるのが、リージョン内のサービスの利用の可否に影響を及ぼすイベントであるのに対し、Resource Health によって報告されるのは、特定のリソースに関連した情報です。たとえば、仮想マシン、Web アプリ、SQL データベースの利用の可否に影響するイベントが報告されます。たとえばノードが予期せず再起動した場合、そのノードで仮想マシンを実行しているユーザーは、自分の VM がしばらく利用できなかった理由を知ることができます。
 
-The information provided by Resource health is more granular than what is provided by the Service Health Dashboard. While SHD communicates events that impact the availability of a service in a region, Resource health exposes information relevant to a specific resource, e.g. it will expose events that impact the availability of a virtual machine, a web app, or a SQL database. For example, if a node unexpectedly reboots, customers whose virtual machines were running on that node will be able to obtain the reason why their VM was unavailable for a period of time.   
+## Resource Health へのアクセス方法
+Resource Health で監視できるサービスのリソース正常性には、2 とおりの方法でアクセスできます。
 
-## <a name="how-to-access-resource-health"></a>How to access Resource health
-For the services available through Resource health, there are 2 ways to access Resource health.
+### Azure ポータル
+リソースの正常性のほか、その現在の状態に応じて推奨される対策が、Azure ポータルの [リソース正常性] ブレードに詳しく表示されます。リソースの状態を照会するときは、このブレードが最適です。ポータル内の他のリソースに簡単にアクセスすることができます。既に述べたように、[リソース正常性] ブレードに表示される推奨される対策は、現在の状態によって異なります。
 
-### <a name="azure-portal"></a>Azure Portal
-The Resource health blade in the Azure Portal, provides detailed information about the health of the resource as well as recommended actions that vary depending on the current health of the resource. This blade provides the best experience when querying Resource health, as it facilitates access to other resources inside the portal. As mentioned before, the set of recommended actions in the Resource health blade will vary based on the current health:
+* リソースが正常であるとき: リソースの正常性に影響する問題が検出されていないため、提示される対策はトラブルシューティング プロセスの支援が中心となります。たとえば [トラブルシューティング] ブレードに直接アクセスし、ごく一般的にユーザーが遭遇する問題の解決方法についての指針を得ることができます。
+* リソースが異常であるとき: 問題の原因が Azure 側にある場合、リソースを復旧するためにマイクロソフトが講じている (または講じた) 対策がブレードに表示されます。ユーザーによって開始された操作に問題の原因がある場合は、その問題を解決してリソースを復旧するうえでユーザーが講じることのできる一連の対策がブレードに表示されます。
 
-* Healthy resources: Since no issue that could impact the health of the resource has been detected, the actions are focused on helping the troubleshooting process. For example, it provides direct access to the Troubleshooting blade, which offers guidance on how to solve the most common problems customers face.
-* Unhealthy resource: For problems caused by Azure, the blade will display actions Microsoft is taking (or has taken) to recover the resource. For problems caused by user initiated actions, the blade will a list of actions customers can take so address the problem and recover the resource.  
+Azure ポータルへのログイン後、[リソース正常性] ブレードには次の 2 とおりの方法でアクセスできます。
 
-Once you have logged into the Azure Portal, there are two ways to access the Resource health blade: 
-
-###<a name="open-the-resource-blade"></a>Open the Resource blade
-Open the Resource blade for a given resource. On the Settings blade that opens next to the Resource blade, click on Resource Health to open the Resource health blade. 
+###[リソース] ブレードを開く
+特定のリソースの [リソース] ブレードを開きます。[リソース] ブレードの横に表示される [設定] ブレードで [リソース正常性] をクリックすると、[リソース正常性] ブレードが表示されます。
 
 ![Resource health blade](./media/resource-health-overview/resourceBladeAndResourceHealth.png)
 
-### <a name="help-and-support-blade"></a>Help and Support blade
-Open the Help and Support blade by clicking on the question mark in the upper right corner then selecting Help + Support. 
+### [ヘルプとサポート] ブレード
+[ヘルプとサポート] ブレードは、右上隅の疑問符をクリックし、[ヘルプとサポート] を選択して表示します。
 
-**From the top navigation bar**
+**上部のナビゲーション バーから**
 
-![Help + support](./media/resource-health-overview/HelpAndSupport.png)
+![ヘルプとサポート](./media/resource-health-overview/HelpAndSupport.png)
 
-Clicking the tile opens the Resource health subscription blade which will list all of the resources in your subscription. Beside each resource, there is an icon indicating its health. Clicking on each resource will open the Resource health blade.
+[リソース正常性] タイルをクリックすると、該当するサブスクリプションの [リソース正常性] ブレードが開き、そのサブスクリプションに含まれるすべてのリソースが一覧表示されます。各リソースの横に、その正常性を示すアイコンが表示されます。各リソースをクリックすると、[リソース正常性] ブレードが開きます。
 
-**Resource health tile**
+**[リソース正常性] タイル**
 
 ![Resource health tile](./media/resource-health-overview/resourceHealthTile.png)
 
-## <a name="what-does-my-resource-health-status-mean?"></a>What does my Resource health status mean?
-There are 4 different health statuses that you might see for your resource.
+## [リソース正常性] に表示されるステータスの意味
+リソースの正常性に関して表示されるステータスは 4 種類あります。
 
-### <a name="available"></a>Available
-The service has not detected any problems in the platform that could be impacting the availability of the resource. This is indicated by a green check mark icon. 
+### 使用可能
+リソースの利用の可否に影響する可能性のある問題はプラットフォームに検出されませんでした。これは緑色のチェック マーク アイコンで表されます。
 
 ![Resource is available](./media/resource-health-overview/Available.png)
 
-### <a name="unavailable"></a>Unavailable
+### 使用不可
 
-In this case the service has detected an ongoing problem in the platform that is impacting the availability of this resource, for example, the node where the VM was running unexpectedly rebooted. This is indicated by a red warning icon. Additional information about the problem is provided in the middle section of the blade, including: 
+この場合、リソースの利用の可否に影響する可能性のある現在進行中の問題がプラットフォームに検出されました (VM を実行しているノードが予期せず再起動されたなど)。これは赤色の警告アイコンで表されます。問題に関する詳しい情報 (下記) は、ブレードの中央のセクションに表示されます。
 
-1.  What actions Microsoft is taking to recover the resource 
-2.  A detailed timeline of the problem, including the expected resolution time
-3.  A list recommended actions for users 
+1.	リソースを復旧するためにマイクロソフトが講じている対策
+2.	詳細な問題のタイムライン (解決までの予想時間)
+3.	ユーザーに推奨される対策
 
 ![Resource is unavailable](./media/resource-health-overview/Unavailable.png)
 
-### <a name="unavailable-–-customer-initiated"></a>Unavailable – customer initiated
-The resource is unavailable due to a customer request such as stopping a resource or requesting a restart. This is indicated by a blue informational icon. 
+### 使用不可 (ユーザーによって開始された操作に原因がある場合)
+ユーザーからの要求 (リソースの停止、再起動要求など) が原因で、リソースが使用できない状態になっています。これは青色の情報アイコンで表されます。
 
 ![Resource is unavailable due to user an initiated action](./media/resource-health-overview/userInitiated.png)
 
-### <a name="unknown"></a>Unknown
-The service has not received information about this resource for more than 5 minutes. This is indicated by a grey question mark icon. 
+### Unknown
+リソースに関する情報が途絶えてから 5 分が経過しました。これは灰色の疑問符アイコンで表されます。
 
-It is important to note that this is not a definitive indication that there is something wrong with a resource, so customers should follow these recommendations:
+リソースに何か問題があるという確実な証拠を示すものではないので注意してください。ユーザーは次の推奨事項に従う必要があります。
 
-* If the resource is running as expected but its health is set to Unknown in Resource health, there are no problems and you can expect the status of the resource to update to healthy after a few minutes.
-* If there are problems accessing the resource and its health is set to Unknown in Resource health, this could be an early indication there could be an issue and additional investigations should be done until the health is updated to either healthy or unhealthy
+* リソースが正常に実行されているにもかかわらず、リソース正常性が不明として表示されている場合、特に気にする必要はありません。数分後にはリソースが正常ステータスに更新されます。
+* リソースへのアクセスに問題があり、リソース正常性が不明として表示されている場合は、問題の徴候と考えられます。状態が正常または異常に変わるまでは、詳しい調査を実行する必要があります。
 
 ![Resource health is unknown](./media/resource-health-overview/unknown.png)
 
-## <a name="service-impacting-events"></a>Service Impacting Events
-If the resource may be impacted by an ongoing Service Impacting Event, a banner will be displayed at the top of the Resource health blade. Clicking on the banner will open the Audit Events blade, which will display additional information about the outage.
+## リソースに影響するサービス イベント
+リソースに影響するサービス イベントが発生中である場合、[リソース正常性] ブレードの上部にバナーが表示されます。このバナーをクリックすると、[監査イベント] ブレードが開き、その障害に関する詳しい情報が表示されます。
 
 ![Resource health may be impacted by a SIE](./media/resource-health-overview/serviceImpactingEvent.png)
 
-## <a name="what-else-do-i-need-to-know-about-resource-health?"></a>What else do I need to know about Resource health?
+## その他リソースの正常性について知っておくべきこと
 
-### <a name="signal-latency"></a>Signal latency
-The signals that feed Resource health, may be up to 15 min delayed, which can cause discrepancies between the current health status of the resource and its actual availability. It is important to keep this in mind as it will help eliminate unnecessary time spent investigating possible issues. 
+### 信号の時間差
+Resource Health に情報を提供する信号には、最大 15 分の遅れが生じる可能性があり、それが原因で、リソースの最新の正常性ステータスが、実際の利用の可否と食い違う可能性があります。不確かな問題の調査に無駄な時間を費やさないためにも、この点に注意してください。
 
-### <a name="special-case-for-sql"></a>Special case for SQL 
-Resource health reports the status of the SQL database, not the SQL server. While going this route provides a more realistic health picture, it requires that multiple components and services be taken into consideration to determine the health of the database. The current signal relies on logins to the database, which means that for databases that receive regular logins (which includes among other things, receiving query execution requests) the health status will be regularly displayed. If the database has not been accessed for a period of 10 minutes or more, it will be moved to the unknown state. This does not mean that the database is unavailable, just that no signal has been emitted because no logins have been performed. Connecting to the database and running a query will emit the signals needed to determine and update the health status of the database.
+### SQL に関する特記事項 
+Resource Health から報告されるのは、SQL Server のステータスではなく、SQL データベースのステータスです。その方が、より実態に近い正常性情報が得られる反面、データベースの正常性を判断するためには、複数のコンポーネントとサービスを考慮に入れる必要があります。現在の信号の基になっているのはデータベースへのログインです。つまり、定期的にログイン (クエリの実行要求が届いていることも含む) されているデータベースの場合、正常性ステータスが定期的に表示されます。アクセスが途絶えて 10 分以上経過すると、データベースが不明状態に移行します。かといってデータベースが使用不可というわけではありません。ログインが実行されていないために信号が生成されていないというだけです。データベースに接続してクエリを実行すると、その正常性ステータスの判断と更新に必要な信号が生成されます。
 
-## <a name="feedback"></a>Feedback
-We are always open to feedback and suggestions! Please send us your [suggestions](https://feedback.azure.com/forums/266794-support-feedback). Additionally, you can engage with us via [Twitter](https://twitter.com/azuresupport) or the [MSDN forums](https://social.msdn.microsoft.com/Forums/azure).
+## フィードバック
+ご意見とご提案をお待ちしております。 あなたの[提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。また、[Twitter](https://twitter.com/azuresupport) や [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure)でマイクロソフトの最新情報をご覧いただけます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

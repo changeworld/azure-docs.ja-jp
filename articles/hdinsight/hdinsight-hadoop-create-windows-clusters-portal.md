@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create Hadoop clusters in HDInsight | Microsoft Azure"
-    description="Learn how to create clusters for Azure HDInsight by using the Azure Portal."
+   pageTitle="HDInsight で Hadoop クラスターを作成する | Microsoft Azure"
+   	description="Azure ポータルを使用して Azure HDInsight のクラスターを作成する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    tags="azure-portal"
@@ -17,144 +17,133 @@
    ms.date="09/02/2016"
    ms.author="jgao"/>
 
+# Azure ポータルを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
 
-# <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-the-azure-portal"></a>Create Windows-based Hadoop clusters in HDInsight using the Azure Portal
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
-[AZURE.INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+Azure ポータルを使用した HDInsight で Hadoop クラスターを作成する方法について説明します。Azure リソースのプロビジョニングと管理は、Microsoft [Azure ポータル](../azure-portal-overview.md)を使って 1 か所で行うことができます。Azure ポータルは、HDInsight での Linux ベースまたは Windows ベースの Hadoop クラスターの作成に使用できるツールの 1 つです。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
-Learn how to create an Hadoop cluster in HDInsight using Azure Portal. The Microsoft [Azure portal](../azure-portal-overview.md) is a central place where you can provision and manage your Azure resources. Azure Portal is one of the tools you can use to create either Linux-based or Windows-based Hadoop cluster in HDInsight. For other cluster creation tools and features click the tab select on the top of this page or see [Cluster creation methods](hdinsight-provision-clusters.md#cluster-creation-methods).
-
-##<a name="prerequisites:"></a>Prerequisites:
+##前提条件:
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Before you begin the instructions in this article, you must have the following:
+この記事の手順を開始する前に、次の項目を用意する必要があります。
 
-- An Azure subscription. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-### <a name="access-control-requirements"></a>Access control requirements
-
-[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
-
-## <a name="create-clusters"></a>Create clusters
+## クラスターの作成
 
 
-**To create an HDInsight cluster**
+**HDInsight クラスターを作成するには**
 
-1. Sign in to the [Azure Portal](https://portal.azure.com).
-2. Click **NEW**, Click **Data Analytics**, and then click **HDInsight**.
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. **[新規]**、**[データ分析]**、**[HDInsight]** の順にクリックします。
 
-    ![Creating a new cluster in the Azure Portal](./media/hdinsight-provision-clusters/HDI.CreateCluster.1.png "Creating a new cluster in the Azure Portal")
+    ![Azure ポータルでの新しいクラスターの作成](./media/hdinsight-provision-clusters/HDI.CreateCluster.1.png "Azure ポータルでの新しいクラスターの作成")
 
-3. Type or select the following values:
+3. 次の値を入力または選択します。
 
-  * **Cluster Name**: Enter a name for the cluster. A green check will appear beside the cluster name if the name is available.
-  * **Cluster Type**: Select **Hadoop**. Other options inclue **HBase**, **Storm**, and **Spark**.
-  * **Cluster Operating System**: Select **Windows**. To create a Linux-base cluster, select **Linux**.
-  * **Version**: See [HDInsight versions](hdinsight-component-versioning.md).
-  * **Subscription**: Select the Azure subscription that will be used for creating this cluster.
-  * **Resource Group**: Select an existing or create a new resource group. This entry will default to one of your existing resource groups, if any are available.
-  * **Credentials**: Configure the username and the password for the Hadoop user (HTTP user). If you enable remote desktop for the cluster, you will need to configure the remote desktop user username and password, and an account expiration date. Click **Select** at the bottom to save the changes.
+  * **[クラスター名]**: クラスターの名前を入力します。その名前を使用できる場合は、クラスター名の横に緑色のチェック マークが表示されます。
+  * **[クラスターの種類]**: **[Hadoop]** を選択します。その他のオプションには、**[HBase]**、 **[Storm]**、および **[Spark]** が含まれます。
+  * **[クラスターのオペレーティング システム]**: **[Windows]** を選択します。Linux ベースのクラスターを作成するには、**[Linux]** を選択します。
+  * **[バージョン]**: [HDInsight のバージョン](hdinsight-component-versioning.md)に関するページを参照してください。
+  * **[サブスクリプション]**: このクラスターを作成するために使用する Azure サブスクリプションを選択します。
+  * **[リソース グループ]**: 既存のリソース グループを選択するか、新しいリソース グループを作成します。このエントリには、既存のリソース グループを使用できる場合は、そのうちの 1 つが既定値として設定されます。
+  * **[資格情報]**: Hadoop ユーザー (HTTP ユーザー) のユーザー名とパスワードを構成します。クラスターのリモート デスクトップを有効にする場合は、リモート デスクトップ ユーザーのユーザー名とパスワード、アカウントの有効期限を構成する必要があります。下部にある **[選択]** をクリックして、変更を保存します。
 
-        ![Provide cluster credentials](./media/hdinsight-provision-clusters/HDI.CreateCluster.3.png "Provide cluster credentials")
+	   	![クラスターの資格情報の指定](./media/hdinsight-provision-clusters/HDI.CreateCluster.3.png "クラスターの資格情報の指定")
 
-  * **Data Source**: Create a new or select an existing Azure Storage account to be used as the default file system for the cluster.
+  * **[データ ソース]**: クラスターの既定のファイル システムとして使用する Azure ストレージ アカウントを新しく作成するか、既存の Azure ストレージ アカウントを選択します。
 
-        ![Data source blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.4.png "Provide data source configuration")
+   		![[データ ソース] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.4.png "データ ソース構成の指定")
 
-        * **Selection Method**: Set this to **From all subscriptions** to enable browsing of storage accounts from all your subscriptions. Set this to **Access Key** if you want to enter the **Storage Name** and **Access Key** of an existing storage account.
-        * **Select storage account / Create New**: Click **Select storage account** to browse and select an existing storage account you want to associate with the cluster. Or, click **Create New** to create a new storage account. Use the field that appears to enter the name of the storage account. A green check will appear if the name is available.
-        * **Choose Default Container**: Use this to enter the name of the default container to use for the cluster. While you can enter any name here, we recommend using the same name as the cluster so that you can easily recognize that the container is used for this specific cluster.
-        * **Location**: The geographic region that the storage account is in, or will be created in. This location will determine the cluster location.  The cluster and its default storage account must co-locate in the same Azure data center.
-    
-  * **Node Pricing Tiers**: Set the number of worker nodes that you need for the cluster. The estimated cost of the cluster will be shown within the blade.
+  		* **[選択方法]**: すべてのサブスクリプションのストレージ アカウントを参照できるようにする場合は、**[すべてのサブスクリプションから]** を設定します。既存のストレージ アカウントの **[ストレージ名]** と **[アクセス キー]** を入力する場合は、**[アクセス キー]** を設定します。
+  		* **ストレージ アカウントの選択/新規作成**: クラスターに関連付ける既存のストレージ アカウントを参照して選択する場合は **[ストレージ アカウントの選択]** をクリックします。新しいストレージ アカウントを作成する場合は **[新規作成]** をクリックします。表示されたフィールドに、ストレージ アカウントの名前を入力します。名前を使用できる場合は、緑色のチェック マークが表示されます。
+  		* **[既定のコンテナーの選択]**: これを使用して、クラスターで使用する既定のコンテナーの名前を入力します。任意の名前を入力できますが、コンテナーが特定のクラスターで使用されていることを簡単に認識できるように、クラスターと同じ名前を使用することをお勧めします。
+  		* **場所**: ストレージ アカウントが存在するリージョン、またはその中にストレージ アカウントが作成されるリージョン。この場所は、クラスターの場所を決定します。クラスターとその既定のストレージ アカウントは、同じデータセンター内に配置されている必要があります。
+  	
+  * **ノード価格レベル**: クラスターで必要なワーカー ノードの数を設定します。クラスターの推定コストがブレード内に表示されます。
   
 
-        ![Node pricing tiers blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.5.png "Specify number of cluster nodes")
+		![[ノード価格レベル] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.5.png "クラスター ノード数の指定")
 
 
-  * **Optional Configuration** to select the cluster version, as well as configure other optional settings such as joining a **Virtual Network**, setting up an **External Metastore** to hold data for Hive and Oozie, use Script Actions to customize a cluster to install custom components, or use additional storage accounts with the cluster.
+  * **[オプションの構成]** をクリックし、クラスターのバージョンを選択して、その他のオプションの設定を構成します。その他のオプションには、**仮想ネットワーク**への参加、Hive と Oozie 用のデータを保持する**外部メタストア**の設定、スクリプト アクションを使用してカスタム コンポーネントをインストールするようにクラスターをカスタマイズすること、クラスターでの追加のストレージ アカウントの使用などがあります。
 
-  * **HDInsight Version**: Select the version you want to use for the cluster. For more information, see [HDInsight cluster versions](hdinsight-component-versioning.md).
-  * **Virtual Network**: Select an Azure virtual network and the subnet if you want to place the cluster into a virtual network.  
+  		* **[HDInsight のバージョン]**: クラスターで使用するバージョンを選択します。詳細については、「[HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」を参照してください。
+  		* **[Virtual Network]**: クラスターを仮想ネットワークに配置する場合は、Azure Virtual Network とサブネットを選択します。
 
-    ![Virtual network blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.6.png "Specify virtual network details")
+			![[仮想ネットワーク] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.6.png "仮想ネットワークの詳細の指定")
 
-    For information on using HDInsight with a Virtual Network, including specific configuration requirements for the Virtual Network, see [Extend HDInsight capbilities by using an Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md).
+			Virtual Network の具体的な構成要件など、Virtual Network で HDInsight を使用する方法については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
   
 
-        
-    * **External Metastores**: Specify an Azure SQL database to store Hive and Oozie metadata associated with the cluster.
+  		
+		* **[外部メタストア]**: クラスターに関連付けられた Hive と Oozie のメタデータを保存するための SQL Database を指定します。
  
-        > [AZURE.NOTE] Metastore configuration is not available for HBase cluster types.
+            > [AZURE.NOTE] HBase のクラスターの種類では、メタストア構成は使用できません。
 
-    ![Custom metastores blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.7.png "Specify external metastores")
-
-
-    For **Use an existing SQL DB for Hive** metadata, click **Yes**, select a SQL database, and then provide the username/password for the database. Repeat these steps if you want to **Use an existing SQL DB for Oozie metadata**. Click **Select** till you are back on the **Optional Configuration** blade.
+			![[カスタム メタストア] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.7.png "外部メタストアの指定")
 
 
-    >[AZURE.NOTE] The Azure SQL database used for the metastore must allow connectivity to other Azure services, including Azure HDInsight. On the Azure SQL database dashboard, on the right side, click the server name. This is the server on which the SQL database instance is running. Once you are on the server view, click **Configure**, and then for **Azure Services**, click **Yes**, and then click **Save**.
+			**[Hive メタデータで既存の SQL DB を使用する]** で、**[はい]** をクリックし、SQL データベースを選択し、データベースのユーザー名/パスワードを指定します。**[Oozie メタデータで既存の SQL DB を使用する]** 場合は、これらの手順を繰り返します。**[オプションの構成]** ブレードに戻るまで **[選択]** をクリックします。
+
+
+			>[AZURE.NOTE] メタストアに使用される Azure SQL Database は、Azure HDInsight などの他の Azure サービスに接続できる必要があります。Azure SQL データベース ダッシュボードの右側に表示されているサーバー名をクリックします。これは、SQL Database インスタンスが実行されているサーバーです。サーバー ビューが表示されたら、**[構成]** をクリックします。**[Azure サービス]** に対して **[はい]** をクリックし、**[保存]** をクリックします。
 
             &nbsp;
 
-            > [AZURE.IMPORTANT] When creating a metastore, do not use a database name that contains dashes or hyphens, as this can cause the cluster creation process to fail.
-        
-        * **Script Actions** if you want to use a custom script to customize a cluster, as the cluster is being created. For more information about script actions, see [Customize HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster.md). On the Script Actions blade provide the details as shown in the screen capture.
+            > [AZURE.IMPORTANT] メタストアを作成するときは、データベース名にダッシュやハイフンを使用しないでください。使用すると、クラスター作成プロセスが失敗することがあります。
+		
+  		* クラスターを作成するときに、カスタム スクリプトを使用してクラスターをカスタマイズする場合は、**[スクリプト アクション]** をクリックします。スクリプト アクションの詳細については、「[Script Action を使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」をご覧ください。[Script Action] ブレードで、次の画面キャプチャに示すように、詳細を指定します。
+  	
+
+			![[スクリプト アクション] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.8.png "スクリプト アクションの指定")
+
+
+    	* **[Azure ストレージ キー]**: クラスターに関連付ける追加のストレージ アカウントを指定します。**[Azure ストレージ キー]** ブレードで、**[ストレージ キーの追加]** をクリックし、既存のストレージ アカウントを選択するか、新しいアカウントを作成します。
     
 
-            ![Script action blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.8.png "Specify script action")
+			![[追加ストレージ] ブレード](./media/hdinsight-provision-clusters/HDI.CreateCluster.9.png "追加ストレージ アカウントの指定")
 
 
-        * **Azure Storage Keys**: Specify additional storage accounts to associate with the cluster. In the **Azure Storage Keys** blade, click **Add a storage key**, and then select an existing storage account or create a new account.
-    
+4. **[作成]** をクリックします。**[スタート画面にピン留めする]** を選択すると、ポータルのスタート画面にクラスターのタイルが追加されます。アイコンはクラスターが作成中であることを示し、作成が完了すると、[HDInsight] アイコンを表示するように変化します。
+	
+    クラスターが作成されるまで、通常は約 15 分かかります。プロビジョニング プロセスをチェックするには、スタート画面のタイルまたはページの左側の **[通知]** エントリを使用します。
+	
 
-            ![Additional storage blade](./media/hdinsight-provision-clusters/HDI.CreateCluster.9.png "Specify additional storage accounts")
-
-
-4. Click **Create**. Selecting **Pin to Startboard** will add a tile for cluster to the Startboard of your Portal. The icon will indicate that the cluster is being created, and will change to display the HDInsight icon once creation has completed.
-    
-    It will take some time for the cluster to be created, usually around 15 minutes. Use the tile on the Startboard, or the **Notifications** entry on the left of the page to check on the provisioning process.
-    
-
-5. Once the creation completes, click the tile for the cluster from the Startboard to launch the cluster blade. The cluster blade provides essential information about the cluster such as the name, the resource group it belongs to, the location, the operating system, URL for the cluster dashboard, etc.
+5. 作成が完了したら、スタート画面でクラスター用のタイルをクリックして、クラスター ブレードを起動します。クラスター ブレードには、名前、属しているリソース グループ、場所、オペレーティング システム、クラスター ダッシュボードの URL などのクラスターに関する基本情報が表示されます。
 
 
-    ![Cluster blade](./media/hdinsight-provision-clusters/HDI.Cluster.Blade.png "Cluster properties")
+	![クラスター ブレード](./media/hdinsight-provision-clusters/HDI.Cluster.Blade.png "クラスターのプロパティ")
 
 
-    Use the following to understand the icons at the top of this blade, and in the **Essentials** section:
+	次の説明を参照して、このブレードの上部と **[要点]** セクションにあるアイコンについて理解してください。
 
 
-    * **Settings** and **All Settings**: Displays the **Settings** blade for the cluster, which allows you to access detailed configuration information for the cluster.
-    * **Dashboard**, **Cluster Dashboard**, and **URL**: These are all ways to access the cluster dashboard, which is a Web portal to run jobs on the cluster.
-    * **Remote Desktop**: Enables you to enable/disable remote desktop on the cluster nodes.
-    * **Scale Cluster**: Allows you to change the number of worker nodes for this cluster.
-    * **Delete**: Deletes the HDInsight cluster.
-    * **Quickstart** (![cloud and thunderbolt icon = quickstart](./media/hdinsight-provision-clusters/quickstart.png)): Displays information that will help you get started using HDInsight.
-    * **Users** (![users icon](./media/hdinsight-provision-clusters/users.png)): Allows you to set permissions for _portal management_ of this cluster for other users on your Azure subscription.
-    
+	* **[設定]** と **[すべての設定]**: クラスター用の **[設定]** ブレードを表示します。このブレードを使用して、クラスターの詳細な構成情報にアクセスできます。
+	* **[ダッシュボード]**、**[クラスター ダッシュボード]**、**[URL]**: これらはいつでもクラスター ダッシュボードにアクセスする方法です。クラスター ダッシュボードは、クラスターに関するジョブを実行するための Web ポータルです。
+	* **[リモート デスクトップ]**: クラスター ノードのリモート デスクトップを有効/無効にすることができます。
+	* **[クラスターのスケーリング]**: このクラスターの worker ノードの数を変更できます。
+	* **[削除]**: HDInsight クラスターを削除します。
+	* **[クイック スタート]** (![雲と雷のアイコン = クイック スタート](./media/hdinsight-provision-clusters/quickstart.png)): HDInsight の操作を開始するために役立つ情報を表示します。
+	* **ユーザー** (![ユーザー アイコン](./media/hdinsight-provision-clusters/users.png)): このクラスターの_ポータル管理_に対する権限を、Azure サブスクリプションの他のユーザーに設定できます。
+	
 
-        > [AZURE.IMPORTANT] This _only_ affects access and permissions to this cluster in the Portal, and has no effect on who can connect to or submit jobs to the HDInsight cluster.
-        
-    * **Tags** (![tag icon](./media/hdinsight-provision-clusters/tags.png)): Tags allows you to set key/value pairs to define a custom taxonomy of your cloud services. For example, you may create a key named __project__, and then use a common value for all services associated with a specific project.
+		> [AZURE.IMPORTANT] これは、ポータルでのこのクラスターへのアクセスと権限だけに影響し、どのユーザーが HDInsight クラスターに接続でき、ジョブを送信できるかには影響しません。
+		
+	* **[タグ]** (![タグ アイコン](./media/hdinsight-provision-clusters/tags.png)): タグを使用してキーと値のペアを作成し、クラウド サービスのカスタム分類を定義できます。たとえば、__プロジェクト__という名前のキーを作成し、特定のプロジェクトに関連付けられているすべてのサービスに共通の値を使用できます。
 
-##<a name="customize-clusters"></a>Customize clusters
+##クラスターのカスタマイズ
 
-- See [Customize HDInsight clusters using Bootstrap](hdinsight-hadoop-customize-cluster-bootstrap.md).
-- See [Customize Windows-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster.md).
+- 「[ブートストラップを使って HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)」を参照してください。
+- 「[スクリプト アクションを使用して Windows ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster.md)」を参照してください。
 
-##<a name="next-steps"></a>Next steps
-In this article, you have learned several ways to create an HDInsight cluster. To learn more, see the following articles:
+##次のステップ
+この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
-* [Get started with Azure HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md) - Learn how to start working with your HDInsight cluster
-* [Submit Hadoop jobs programmatically](hdinsight-submit-hadoop-jobs-programmatically.md) - Learn how to programmatically submit jobs to HDInsight
-* [Manage Hadoop clusters in HDInsight by using the Azure Portal](hdinsight-administer-use-management-portal.md)
+* [Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md) - HDInsight クラスターの使用方法について説明しています。
+* [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md) - プログラムを使用して HDInsight にジョブを送信する方法について説明しています。
+* [Azure ポータルを使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-management-portal.md)
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

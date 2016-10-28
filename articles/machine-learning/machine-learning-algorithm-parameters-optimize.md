@@ -1,84 +1,73 @@
-<properties
-    pageTitle="Choose parameters to optimize your algorithms in Azure Machine Learning | Microsoft Azure"
-    description="Explains how to choose the optimal parameter set for an algorithm in Azure Machine Learning."
-    services="machine-learning"
-    documentationCenter=""
-    authors="bradsev"
-    manager="jhubbard"
-    editor="cgronlun"/>
+<properties 
+	pageTitle="Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選択する方法 | Microsoft Azure" 
+	description="Azure Machine Learning でアルゴリズムに最適なパラメーター セットを選択する方法について説明します。" 
+	services="machine-learning"
+	documentationCenter="" 
+	authors="bradsev" 
+	manager="jhubbard" 
+	editor="cgronlun"/>
 
-<tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="bradsev" />
+<tags 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/12/2016" 
+	ms.author="bradsev" />
 
 
+# Azure Machine Learning でアルゴリズムを最適化するためにパラメーターを選択する方法
 
-# <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning"></a>Choose parameters to optimize your algorithms in Azure Machine Learning
-
-This topic describes how to choose the right hyperparameter set for an algorithm in Azure Machine Learning. Most machine learning algorithms have parameters to set. When you train a model, you need to provide values for those parameters. The efficacy of the trained model depends on the model parameters that you choose. The process of finding the optimal set of parameters is known as *model selection*.
+このトピックでは、Azure Machine Learning でアルゴリズムの正しいハイパーパラメーター セットを選択する方法について説明します。ほとんどの機械学習アルゴリズムに、設定が必要なパラメーターがあります。モデルをトレーニングするときは、これらのパラメーターに値を提供する必要があります。トレーニングしたモデルの有効性は、選択したモデル パラメーターによって決まります。パラメーターの最適なセットを見つけるプロセスのことを、モデルの選択といいます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-There are various ways to do model selection. In machine learning, cross-validation is one of the most widely used methods for model selection, and it is the default model selection mechanism in Azure Machine Learning. Because Azure Machine Learning supports both R and Python, you can always implement their own model selection mechanisms by using either R or Python.
+モデルの選択を行うにはさまざまな方法があります。Machine Learning で最も広く使用されているモデルの選択方法の 1 つはクロス検証です。これは、Azure Machine Learning の既定のモデル選択メカニズムになっています。Azure Machine Learning では R と Python の両方がサポートされているため、R または Python を使用して独自のモデル選択メカニズムをいつでも実装できます。
 
-There are four steps in the process of finding the best parameter set:
+最適なパラメーター セットを見つけるプロセスには、次の 4 つの手順があります。
 
-1.  **Define the parameter space**: For the algorithm, first decide the exact parameter values you want to consider.
-2.  **Define the cross-validation settings**: Decide how to choose cross-validation folds for the dataset.
-3.  **Define the metric**: Decide what metric to use for determining the best set of parameters, such as accuracy, root mean squared error, precision, recall, or f-score.
-4.  **Train, evaluate, and compare**: For each unique combination of the parameter values, cross-validation is carried out by and based on the error metric you define. After evaluation and comparison, you can choose the best-performing model.
+1.	**パラメーター空間を定義する**: アルゴリズムについて、検討の対象にする正確なパラメーター値をまず決定します。
+2.	**クロス検証の設定を定義する**: データセットについて、クロス検証のフォールドを選択する方法を決定する必要があります。
+3.	**メトリックを定義する**: その後、パラメーターの最適なセットを判別するために使用するメトリックを決定します。たとえば、確度、二乗平均平方根の誤差、精度、再現率、f スコアなどがあります。
+4.	**トレーニング、評価、および比較を行う**: パラメーター値の一意の組み合わせごとにクロス検証を実行し、ユーザーが定義した誤差メトリックに基づいて最適な実行モデルを選択します。
 
-The following image illustrates shows how this can be achieved in Azure Machine Learning.
+このあと紹介する実験は、Azure Machine Learning でこのプロセスを実施する方法を示しています。
 
-![Find the best parameter set](./media/machine-learning-algorithm-parameters-optimize/fig1.png)
+![Image1](./media/machine-learning-algorithm-parameters-optimize/fig1.png)
+ 
+## パラメーター空間を定義する
+パラメーターのセットは、モデルの初期化ステップで定義できます。すべての Machine Learning アルゴリズムのパラメーター ウィンドウには 2 つのトレーナー モードがあります。**[1 つのパラメーター]** と **[パラメーター範囲]** です。ここでは、**[パラメーター範囲]** モードを選択する必要があります (図 1)。すると、各パラメーターに複数の値を入力できるようになり、テキスト ボックスにコンマ区切り値を入力できます。別の方法として、**[範囲ビルダーを使用]** を使用すると、グリッドの最大ポイントと最小ポイント、および生成するポイントの合計数を定義できます。既定では、パラメーターの値は線形スケールで生成されます。しかし、**[対数スケール]** チェック ボックスをオンにすると、値が対数スケールで生成されます (つまり、隣接するポイントの差ではなく比率が一定になります)。整数パラメーターの場合は、ハイフン "-" で範囲を定義できます。たとえば、"1-10" は 1 ～ 10 (1 と 10 を含む) のすべての整数を意味するパラメーターのセットになります。混合モードもサポートされています。たとえば、"1-10, 20, 50" という指定です。この場合は、1-10 の整数に加えて、20 と 50 もパラメーター セットに追加されます。
+  
+![Image2](./media/machine-learning-algorithm-parameters-optimize/fig2.png) ![Image3](./media/machine-learning-algorithm-parameters-optimize/fig3.png)
 
-## <a name="define-the-parameter-space"></a>Define the parameter space
-You can define the parameter set at the model initialization step. The parameter pane of all machine learning algorithms has two trainer modes: *Single Parameter* and *Parameter Range*. Choose Parameter Range mode. In Parameter Range mode, you can enter multiple values for each parameter. You can enter comma-separated values in the text box.
+## クロス検証のフォールドを定義する
+[パーティションとサンプル][partition-and-sample] モジュールを使用すると、データにフォールドをランダムに割り当てることができます。次の図は、5 つのフォールドを定義し、サンプル インスタンスにフォールド番号をランダムに割り当てたモジュール構成の例を示しています。
 
-![Two-class boosted decision tree, single parameter](./media/machine-learning-algorithm-parameters-optimize/fig2.png)
-
- Alternately, you can define the maximum and minimum points of the grid and the total number of points to be generated with **Use Range Builder**. By default, the parameter values are generated on a linear scale. But if **Log Scale** is checked, the values are generated in the log scale (that is, the ratio of the adjacent points is constant instead of their difference). For integer parameters, you can define a range by using a hyphen. For example, “1-10” means that all integers between 1 and 10 (both inclusive) form the parameter set. A mixed mode is also supported. For example, the parameter set “1-10, 20, 50” would include integers 1-10, 20, and 50.
-
-![Two-class boosted decision tree, parameter range](./media/machine-learning-algorithm-parameters-optimize/fig3.png)
-
-## <a name="define-cross-validation-folds"></a>Define cross-validation folds
-The [Partition and Sample][partition-and-sample] module can be used to randomly assign folds to the data. In the following sample configuration for the module, we define five folds and randomly assign a fold number to the sample instances.
-
-![Partition and sample](./media/machine-learning-algorithm-parameters-optimize/fig4.png)
+![image4](./media/machine-learning-algorithm-parameters-optimize/fig4.png)
 
 
-## <a name="define-the-metric"></a>Define the metric
-The [Tune Model Hyperparameters][tune-model-hyperparameters] module provides support for empirically choosing the best set of parameters for a given algorithm and dataset. In addition to other information regarding training the model, the **Properties** pane of this module includes the metric for determining the best parameter set. It has two different drop-down list boxes for classification and regression algorithms, respectively. If the algorithm under consideration is a classification algorithm, the regression metric is ignored and vice versa. In this specific example, the metric is **Accuracy**.   
+## メトリックを定義する:
+[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールは、特定のアルゴリズムおよびデータセットに対してパラメーターの最適なセットを経験的に選択するためのサポートを提供します。このモジュールのプロパティ ウィンドウには、モデルのトレーニングに関連した情報のほかに、最適なパラメーター セットを決定するために使用するメトリックが含まれています。また、分類アルゴリズムと回帰アルゴリズムに関する 2 つの異なるドロップダウン リストがあります。検討しているアルゴリズムが分類アルゴリズムの場合は回帰のメトリックが無視され、その逆も同じです。この例では、**[確度]** をメトリックとして選択しています。
+ 
+![image5](./media/machine-learning-algorithm-parameters-optimize/fig5.png)
 
-![Sweep parameters](./media/machine-learning-algorithm-parameters-optimize/fig5.png)
+## トレーニング、評価、および比較を行う  
+同じ[調整モデル ハイパーパラメーター][tune-model-hyperparameters] モジュールで、パラメーターのセットに対応するすべてのモデルをトレーニングし、さまざまなメトリックを評価した後、選択されたメトリックに基づいて最適なトレーニング済みのモデルを出力します。このモジュールには、次の 2 つの必須の入力があります。
 
-## <a name="train,-evaluate,-and-compare"></a>Train, evaluate, and compare  
-The same [Tune Model Hyperparameters][tune-model-hyperparameters] module trains all the models that correspond to the parameter set, evaluates various metrics, and then creates the best-trained model based on the metric you choose. This module has two mandatory inputs:
+* トレーニングを受けていない学習モデル
+* データセット
 
-* The untrained learner
-* The dataset
+このモジュールには、省略可能なデータセット入力もあります。ここでは、必須のデータセット入力に対してデータセットをフォールド情報と一緒に接続します。データセットにフォールド情報を割り当てない場合は、既定で 10 フォールドのクロス検証が自動的に実行されます。フォールドを割り当てずに、オプションのデータセット ポートに検証データセットを提供した場合は、トレーニング テスト モードが選択されます。このモードでは、最初のデータセットがパラメーターの組み合わせごとにモデルのトレーニングに使用されます。次に検証データセットでモデルの評価が実行されます。モジュールの左側の出力ポートは、パラメーター値の関数としての異なるメトリックを示しています。右側の出力ポートからは、選択されたメトリック (ここでは確度) に従って選択された最適なモデルに対応するトレーニング済みのモデルを使用できます。
 
-The module also has an optional dataset input. Connect the dataset with fold information to the mandatory dataset input. If the dataset is not assigned any fold information, then a 10-fold cross-validation is automatically executed by default. If the fold assignment is not done and a validation dataset is provided at the optional dataset port, then a train-test mode is chosen and the first dataset is used to train the model for each parameter combination.
+![image6](./media/machine-learning-algorithm-parameters-optimize/fig6a.png) ![image7](./media/machine-learning-algorithm-parameters-optimize/fig6b.png)
+ 
+右側の出力ポートを視覚化すると、選択された正確なパラメーターを確認できます。このモデルは、トレーニング済みのモデルとして保存した後、テスト セットのスコア付けや、運用可能な Web サービスとして使用できます。
 
-![Boosted decision tree classifier](./media/machine-learning-algorithm-parameters-optimize/fig6a.png)
-
-The model is then evaluated on the validation dataset. The left output port of the module shows different metrics as functions of parameter values. The right output port gives the trained model that corresponds to the best-performing model according to the chosen metric (**Accuracy** in this case).  
-
-![Validation dataset](./media/machine-learning-algorithm-parameters-optimize/fig6b.png)
-
-You can see the exact parameters chosen by visualizing the right output port. This model can be used in scoring a test set or in an operationalized web service after saving as a trained model.
 
 <!-- Module References -->
 [partition-and-sample]: https://msdn.microsoft.com/library/azure/a8726e34-1b3e-4515-b59a-3e4a475654b8/
 [tune-model-hyperparameters]: https://msdn.microsoft.com/library/azure/038d91b6-c2f2-42a1-9215-1f2c20ed1b40/
+ 
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

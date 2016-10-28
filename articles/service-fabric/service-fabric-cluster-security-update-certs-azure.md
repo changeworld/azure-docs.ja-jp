@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Add , rollover and remove certificates used in a Service Fabric cluster in Azure | Microsoft Azure"
-   description="Describes how to upload a secondary cluster certificate and then rollover the old primary certificate."
+   pageTitle="Service Fabric クラスターで使用される証明書を Azure で追加、ロールオーバー、および削除する | Microsoft Azure"
+   description="クラスターのセカンダリ証明書をアップロードした後、古いプライマリ証明書をロールオーバーする方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -16,61 +16,60 @@
    ms.date="08/15/2016"
    ms.author="chackdan"/>
 
+# Azure Service Fabric クラスターの証明書の追加と削除
 
-# <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Add or remove certificates for a Service Fabric cluster in Azure
+Service Fabric で X.509 証明書がどのように使用されるかを理解するために「[Service Fabric クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)」を読むことをお勧めします。先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
 
-It is recommended that you familiarize yourself with how Service Fabric uses X.509 certificates, read [Cluster security scenarios](service-fabric-cluster-security.md). You must understand what a cluster certificate is and what is used for, before you proceed further.
+Service Fabric では、クラスターの作成中に証明書セキュリティを構成するときに、2 つのクラスター証明書 (プライマリとセカンダリ) を指定できます。詳細については、「[Azure ポータルから Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-portal.md)」または [Azure Resource Manager を使用した Azure クラスターの作成に関する記事](service-fabric-cluster-creation-via-Resource Manager.md) を参照してください。Resource Manager によるデプロイ中にクラスター証明書を 1 つだけ指定した場合は、それがプライマリ証明書として使用されます。クラスターの作成後に、新しい証明書をセカンダリ証明書として追加できます。
 
-Service fabric lets you specify two cluster certificates, a primary and a secondary, when you configure certificate security during cluster creation. Refer to [creating an azure cluster via portal](service-fabric-cluster-creation-via-portal.md) or [creating an azure cluster via Azure Resource Manager](service-fabric-cluster-creation-via-arm.md) for details. If deploying via Resource Manager, and you specify only one cluster certificate, then that is used as the primary certificate. After cluster creation, you can add a new certificate as a secondary.
-
->[AZURE.NOTE] For a secure cluster, you will always need at least one valid (not revoked and not expired) certificate (primary or secondary) deployed if not, the cluster stops functioning. 90 days before all valid certificates reach expiration, the system generates a warning trace and also a warning health event on the node. There is currently no email or any other notification that service fabric sends out on this topic. 
-
-
-## <a name="add-a-secondary-certificate-using-the-portal"></a>Add a secondary certificate using the portal
-To add another certificate as a secondary, you must upload the certificate to an Azure key vault and then deploy it to the VMs in the cluster. For additional information, see [Deploy certificates to VMs from a customer-managed key vault](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx).
-
-1. Refer to [Add certificates to Key Vault](service-fabric-cluster-creation-via-arm.md#add-certificate-to-key-vault) on how to.
-
-2. Sign in to the [Azure portal](https://portal.azure.com/) and browse to the cluster resource that you want add this certificate to.
-3. Under **SETTINGS**, click on **Security** to bring up the Cluster Security Blade.
-4. Click on the **"+Certificate"** Button on top of the blade to get to the **"Add Certificate"** blade.
-5. Select "Secondary certificate thumbprint" from the dropdown and fill out the certificate thumbprint of the secondary certificate you uploaded to the keyvault.
-
->[AZURE.NOTE]
-Unlike during the cluster creation workflow, We do not take in the details on the keyvault information here, because, it is assumed that by the time you are on this blade, you have already deployed the certificate to the VMs and the certificate is already available in the local cert store in the VMSS instance.
-
-Click **Certificate**. A deployment gets started, and a blue Status bar will show up on the Cluster Security Blade.
-
-![Screen shot of certificate thumbprints in the portal][SecurityConfigurations_02]
-
-And on successful completion of that deployment, you will be able to use either the primary or the secondary certificate to perform management operations on the cluster.
-
-![Screen shot of certificate deployment in progress][SecurityConfigurations_03]
-
-Here is a screen shot on how the security blade looks once the deployment is complete.
-
-![Screen shot of certificate thumbprints after deployment][SecurityConfigurations_08]
+>[AZURE.NOTE] セキュリティ保護されたクラスターでは、常に (失効も期限切れもしていない) 有効な証明書 (プライマリまたはセカンダリ) を 1 つ以上デプロイする必要があります。デプロイしなかった場合、クラスターの機能が停止します。有効なすべての証明書が期限切れになる 90 日前に、システムは、警告トレースとノードの正常性に関する警告イベントを生成します。現時点では、この件に関して Service Fabric が電子メールやその他の通知を送信することはありません。
 
 
-You can now use the new certificate you just added to connect and perform operations on the cluster.
+## ポータルを使用してセカンダリ証明書を追加する
+セカンダリ証明書として別の証明書を追加するには、Azure Key Vault にその証明書をアップロードしてから、クラスター内の VM にデプロイします。詳細については、「[Deploy certificates to VMs from a customer-managed key vault](http://blogs.technet.com/b/kv/archive/2015/07/14/vm_2d00_certificates.aspx)」 (ユーザーが管理する Key Vault から VM に証明書をデプロイする) を参照してください。
+
+1. 方法については、「[Key Vault に X.509 証明書をアップロードする](service-fabric-secure-azure-cluster-with-certs.md#step-2-upload-the-x509-certificate-to-the-key-vault)」を参照してください。
+
+2. [Azure ポータル](https://portal.azure.com/)にサインインし、この証明書を追加するクラスター リソースを参照します。
+3. **[設定]** の **[セキュリティ]** をクリックして、[クラスター セキュリティ] ブレードを開きます。
+4. ブレードの上部にある **[+証明書]** ボタンをクリックして、**[証明書の追加]** ブレードを開きます。
+5. ドロップダウン リストから [セカンダリ証明書の拇印] を選択し、Key Vault にアップロードしたセカンダリ証明書の拇印を入力します。
 
 >[AZURE.NOTE]
-Currently there is no way to swap the primary and secondary certificates on the portal, that feature is in the works. As long as there is a valid cluster certificate, the cluster will operate fine.
+クラスター作成ワークフローとは異なり、ここでは Key Vault 情報の詳細は説明しません。その理由は、このブレードを開く時点までに、証明書の VM へのデプロイは実行済みであり、証明書は VMSS インスタンスのローカル証明書ストア内で既に利用可能になっているためです。
 
-## <a name="add-a-secondary-certificate-and-swap-it-to-be-the-primary-using-resource-manager-powershell"></a>Add a secondary certificate and swap it to be the primary using Resource Manager Powershell
+**[証明書]** をクリックします。デプロイが開始され、[クラスター セキュリティ] ブレードに青のステータス バーが表示されます。
 
-These steps assume that you are familiar with how Resource Manager works and have deployed atleast one Service Fabric cluster using an Resource Manager template, and have the template that you used to set up the cluster handy. it is also assumed that you are comfortable using JSON.
+![Azure ポータルの証明書拇印のスクリーン ショット][SecurityConfigurations_02]
+
+デプロイが正常に完了したら、プライマリまたはセカンダリ証明書を使用して、クラスターの管理操作を実行できます。
+
+![証明書デプロイ進行中のスクリーン ショット][SecurityConfigurations_03]
+
+デプロイ完了後の [セキュリティ] ブレードのスクリーン ショットを次に示します。
+
+![デプロイ後の証明書拇印のスクリーン ショット][SecurityConfigurations_08]
+
+
+これで、追加したばかりの新しい証明書を使用して、クラスターの操作を実行できます。
 
 >[AZURE.NOTE]
-If you are looking for a sample template and parameters that you can use to follow along or as a starting point, then download it from this [git-repo]. (https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample). 
+現時点では、ポータルでプライマリ証明書とセカンダリ証明書をスワップする方法はありません。その機能は準備中です。有効なクラスター証明書がある限り、クラスターは問題なく動作します。
 
-#### <a name="edit-your-resource-manager-template"></a>Edit your Resource Manager template 
+## Resource Manager PowerShell を使用してセカンダリ証明書を追加し、プライマリ証明書になるようにスワップする
 
-If you were using the sample from the [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) to follow along, you will find these changes in The sample 5-VM-1-NodeTypes-Secure_Step2.JSON . Use 5-VM-1-NodeTypes-Secure_Step1.JSON to deploy a secure cluster
+以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも 1 つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあること、さらに JSON を使いこなせることを前提としています。
 
-1. Open up the Resource Manager template you used to deploy you Cluster.
-2. Add a new parameter "secCertificateThumbprint" of type "string". If you are using the Resource Manager template that you downloaded from the portal during the creation time or from the quickstart templates, then just search for that parameter, you should find it already defined.  
-3. Locate the "Microsoft.ServiceFabric/clusters" Resource definition. Under properties, you will find "Certificate" JSON tag, which should look something like the following JSON snippet.
+>[AZURE.NOTE]
+操作を理解するため、または出発点として使用できるサンプル テンプレートとパラメーターを探している場合は、この [git-repo] からダウンロードできます (https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)。
+
+#### Resource Manager テンプレートを編集する 
+
+[git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) のサンプルを使用して操作する場合は、5-VM-1-NodeTypes-Secure\_Step2.JSON で以下の変更を確認できます。セキュリティ保護されたクラスターをデプロイするには 5-VM-1-NodeTypes-Secure\_Step1.JSON を使用します。
+
+1. クラスターをデプロイするために使用した Resource Manager テンプレートを開きます。
+2. "string" 型の新しいパラメーター "secCertificateThumbprint" を追加します。作成時にポータルから、またはクイック スタート テンプレートからダウンロードした Resource Manager テンプレートを使用している場合は、そのパラメーターを検索してください。定義済みであることを確認できます。
+3. "Microsoft.ServiceFabric/clusters" リソース定義を探します。プロパティで "Certificate" JSON タグが見つかります。これは次の JSON スニペットのようになります。
 ```JSON
       "properties": {
         "certificate": {
@@ -79,9 +78,9 @@ If you were using the sample from the [git-repo](https://github.com/ChackDan/Ser
         }
 ``` 
 
-4. Add a new tag "thumbprintSecondary" and give it a value "[parameters('secCertificateThumbprint')]".  
+4. 新しいタグ "thumbprintSecondary" を追加し、値 "[parameters('secCertificateThumbprint')]" を指定します。
 
-So now the resource definition should look like this (depending on your source of the template, it may not be exactly like the snippet below). As you can see below what you are doing here is specifying a new cert as primary and moving the current primary as secondary.  This results in the rollover of your current certificate to the new certificate in one deployment step.
+これで、リソース定義は次のようになります (テンプレートのソースによっては、下のスニペットと完全に同じではない場合があります)。ご覧のように、ここで実行しているのは、新しい証明書をプライマリとして指定し、現在のプライマリをセカンダリに移動していることです。この結果、現在の証明書が新しい証明書に 1 つのデプロイ手順でロールオーバーされます。
 
 ```JSON
 
@@ -94,12 +93,12 @@ So now the resource definition should look like this (depending on your source o
 
 ```
 
-#### <a name="edit-your-template-file-to-reflect-the-new-parameters-you-added-above"></a>Edit your template file to reflect the new parameters you added above
+#### 追加した新しいパラメーターを反映するようにテンプレート ファイルを編集する
 
-If you were using the sample from the [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) to follow along, you can start to make changes in The sample 5-VM-1-NodeTypes-Secure.paramters_Step2.JSON 
+[git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample) のサンプルを使用して操作する場合は、5-VM-1-NodeTypes-Secure.paramters\_Step2.JSON の変更から始めることができます。
 
 
-Edit the Resource Manager Template parameter File, add the new parameters for the secCertificate and swap the existing primary cert details with the secondary and replace the primary cert details with the new cert details. 
+Resource Manager テンプレート パラメーター ファイルを編集し、secCertificate の新しいパラメーターを追加し、既存のプライマリ証明書の詳細をセカンダリ証明書とスワップして、その詳細を新しい証明書の詳細に置き換えます。
 
 ```JSON
     "secCertificateThumbprint": {
@@ -123,10 +122,10 @@ Edit the Resource Manager Template parameter File, add the new parameters for th
 
 ```
 
-### <a name="deploy-the-template-to-azure"></a>Deploy the template to Azure
+### テンプレートを Azure にデプロイする
 
-1. You are now ready to deploy your template to Azure. Open an Azure PS version 1+ command prompt.
-2. Login to your Azure Account and select the specific azure subscription. This is an important step for folks who have access to more than one azure subscription.
+1. これでテンプレートを Azure にデプロイする準備が整いました。Azure PS のバージョン 1 以降のコマンド プロンプトを開きます。
+2. Azure アカウントにログインし、特定の Azure サブスクリプションを選択します。1 つ以上の Azure サブスクリプションにアクセスできるユーザーにとって、これは重要な手順です。
 
 
 ```powershell
@@ -135,24 +134,24 @@ Select-AzureRmSubscription -SubscriptionId <Subcription ID>
 
 ```
 
-Test the template prior to deploying it. Use the same Resource Group that your cluster is currently deployed to.
+テンプレートをデプロイする前にテストを実行します。クラスターの現在のデプロイ先であるリソース グループを使用します。
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-Deploy the template to your resource group. Use the same Resource Group that your cluster is currently deployed to. Run the New-AzureRmResourceGroupDeployment command. You do not need to specify the mode, since the default value is **incremental**.
+そのリソース グループに、テンプレートをデプロイします。クラスターの現在のデプロイ先であるリソース グループを使用します。New-AzureRmResourceGroupDeployment コマンドを実行します。既定値の **incremental** を使用するため、モードを指定する必要はありません。
 
 >[AZURE.NOTE]
-If you set Mode to Complete, you can inadvertently delete resources that are not in your template. So do not use it in this scenario.
+モードを [Complete (完了)] に設定すると、テンプレートにないリソースが誤って削除される可能性があります。このため、このシナリオでは使用しないでください。
    
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
-Here is a filled out example of the same powershell.
+同じ PowerShell コマンドの入力例は次のとおりです。
 
 ```powershell
 $ResouceGroup2 = "chackosecure5"
@@ -163,9 +162,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName $ResouceGroup2 -TemplatePa
 
 ```
 
-Once the deployment is complete, connect to your cluster using the new Certificate and perform some queries. If you are able to do. Then you can delete the old primary certificate. 
+デプロイが完了したら、新しい証明書を使用してクラスターに接続し、クエリをいくつか実行します。該当する場合は、古いプライマリ証明書を削除できます。
 
-If you are using a self-signed certificate, do not forget to import them into your local TrustedPeople cert store.
+自己署名証明書を使用している場合は、ローカルの TrustedPeople 証明書ストアにインポートすることを忘れないでください。
 
 ```powershell
 ######## Set up the certs on your local box
@@ -173,7 +172,7 @@ Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\TrustedPe
 Import-PfxCertificate -Exportable -CertStoreLocation Cert:\CurrentUser\My -FilePath c:\Mycertificates\chackdanTestCertificate9.pfx -Password (ConvertTo-SecureString -String abcd123 -AsPlainText -Force)
 
 ```
-For quick reference here is the command to connect to a secure cluster 
+ここでのクイック リファレンスは、セキュリティ保護されたクラスターに接続するための次のコマンドです:
 ```powershell
 $ClusterName= "chackosecure5.westus.cloudapp.azure.com:19000"
 $CertThumbprint= "70EF5E22ADB649799DA3C8B6A6BF7SD1D630F8F3" 
@@ -186,26 +185,26 @@ Connect-serviceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveInterval
     -StoreLocation CurrentUser `
     -StoreName My
 ```
-For quick reference here is the command to get cluster health
+ここでのクイック リファレンスは、クラスターの正常性を取得するための次のコマンドです:
 ```powershell
 Get-ServiceFabricClusterHealth 
 ```
  
-## <a name="remove-the-old-certificate-using-the-portal"></a>Remove the old certificate using the portal
-Here is the process to remove an old certificate so that the cluster does not use it:
+## ポータルを使用して古い証明書を削除する
+古い証明書を削除してクラスターで使用されないようにするには、次の手順を実行します。
 
-1. Sign in to the [Azure portal](https://portal.azure.com/) and navigate to your cluster's security settings.
-2. Right Click on the certificate you want to remove
-3. Select Delete and follow the prompts. 
+1. [Azure ポータル](https://portal.azure.com/)にサインインし、クラスターのセキュリティ設定に移動します。
+2. 削除する証明書を右クリックします。
+3. [削除] を選択し、プロンプトに従います。
 
 [SecurityConfigurations_05]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_05.png
 
 
-## <a name="next-steps"></a>Next steps
-Read these articles for more information on cluster management:
+## 次のステップ
+クラスター管理の詳細については、次の記事を参照してください。
 
-- [Service Fabric Cluster upgrade process and expectations from you](service-fabric-cluster-upgrade.md)
-- [Setup role-based access for clients](service-fabric-cluster-security-roles.md)
+- [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)
+- [クライアント用のロールベースのアクセスの設定](service-fabric-cluster-security-roles.md)
 
 
 <!--Image references-->
@@ -214,8 +213,5 @@ Read these articles for more information on cluster management:
 [SecurityConfigurations_05]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_05.png
 [SecurityConfigurations_08]: ./media/service-fabric-cluster-security-update-certs-azure/SecurityConfigurations_08.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
+<!---HONumber=AcomDC_0817_2016-->
 

@@ -1,6 +1,6 @@
 <properties 
-pageTitle="Communication for Roles in Cloud Services | Microsoft Azure" 
-description="Role instances in Cloud Services can have endpoints (http, https, tcp, udp) defined for them that communicate with the outside or between other role instances." 
+pageTitle="Cloud Services でのロールの通信 | Microsoft Azure" 
+description="Cloud Services のロール インスタンスには、外部または他のロール インスタンスとの通信用のエンドポイント (http、https、tcp、udp) を定義できます。" 
 services="cloud-services" 
 documentationCenter="" 
 authors="Thraka" 
@@ -15,18 +15,17 @@ ms.topic="article"
 ms.date="09/06/2016" 
 ms.author="adegeo"/>
 
+# Azure におけるロール インスタンスの通信の有効化
 
-# <a name="enable-communication-for-role-instances-in-azure"></a>Enable communication for role instances in azure
-
-Cloud service roles communicate through internal and external connections. External connections are called **input endpoints** while internal connections are called **internal endpoints**. This topic describes how to modify the [service definition](cloud-services-model-and-package.md#csdef) to create endpoints.
+クラウド サービスのロールは、内部接続および外部接続で通信します。外部接続は**入力エンドポイント**と呼ばれ、内部接続は**内部エンドポイント**と呼ばれます。このトピックでは、[サービス定義](cloud-services-model-and-package.md#csdef)を変更してエンドポイントを作成する方法を説明します。
 
 
-## <a name="input-endpoint"></a>Input endpoint
-The input endpoint is used when you want to expose a port to the outside. You specify the protocol type and the port of the endpoint which then applies for both the external and internal ports for the endpoint. If you want, you can specify a different internal port for the endpoint with the [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) attribute.
+## 入力エンドポイント
+入力エンドポイントは、ポートを外部に公開するときに使用します。プロトコルの種類とエンドポイントのポートを指定してから、そのエンドポイントの内部ポートと外部ポートの両方に適用します。必要に応じて、[localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性を使用して、エンドポイントに異なる内部ポートを指定することができます。
 
-The input endpoint can use the following protocols: **http, https, tcp, udp**.
+入力エンドポイントには、プロトコル **http、https、tcp、udp** を使用できます。
 
-To create an input endpoint, add the **InputEndpoint** child element to the **Endpoints** element of either a web or worker role.
+入力エンドポイントを作成するには、子要素 **InputEndpoint** を、Web サイトまたは worker ロールのいずれかの**エンドポイント**に追加します。
 
 ```xml
 <Endpoints>
@@ -34,12 +33,12 @@ To create an input endpoint, add the **InputEndpoint** child element to the **En
 </Endpoints> 
 ```
 
-## <a name="instance-input-endpoint"></a>Instance input endpoint
-Instance input endpoints are similar to input endpoints but allows you map specific public-facing ports for each individual role instance by using port forwarding on the load balancer. You can specify a single public-facing port, or a range of ports.
+## インスタンス入力エンドポイント
+インスタンス入力エンドポイントは入力エンドポイントに似ていますが、ロード バランサーにポート フォワーディングを使用することで、個々のロール インスタンスごとに、特定の公開ポートをマップできます。1 つの公開ポートまたはポートの範囲を指定できます。
 
-The instance input endpoint can only use **tcp** or **udp** as the protocol.
+インスタンス入力エンドポイントでは、**tcp** または **udp** のみをプロトコルとして使用できます。
 
-To create an instance input endpoint, add the **InstanceInputEndpoint** child element to the **Endpoints** element of either a web or worker role.
+インスタンス入力エンドポイントを作成するには、子要素 **InstanceInputEndpoint** を、Web サイトまたは worker ロールのいずれかの**エンドポイント**要素に追加します。
 
 ```xml
 <Endpoints>
@@ -51,12 +50,12 @@ To create an instance input endpoint, add the **InstanceInputEndpoint** child el
 </Endpoints>
 ```
 
-## <a name="internal-endpoint"></a>Internal endpoint
-Internal endpoints are available for instance-to-instance communication. The port is optional and if omitted, a dynamic port is assigned to the endpoint. A port range can be used. There is a limit of five internal endpoints per role.
+## 内部エンドポイント
+内部エンドポイントは、インスタンス間の通信で使用できます。ポートは省略可能なので、省略した場合、動的なポートがエンドポイントに割り当てられます。ポートの範囲も使用できます。使用できる内部エンドポイントは、1 ロールあたり 5 つに制限されています。
 
-The internal endpoint can use the following protocols: **http, tcp, udp, any**.
+内部エンドポイントには、プロトコル **http、tcp、udp、any** を使用できます。
 
-To create an internal input endpoint, add the **InternalEndpoint** child element to the **Endpoints** element of either a web or worker role.
+内部入力エンドポイントを作成するには、子要素 **InternalEndpoint** を、Web サイトまたは worker ロールのいずれかの**エンドポイント**要素に追加します。
 
 ```xml
 <Endpoints>
@@ -64,7 +63,7 @@ To create an internal input endpoint, add the **InternalEndpoint** child element
 </Endpoints> 
 ```
 
-You can also use a port range.
+ポートの範囲を使用することもできます。
 
 ```xml
 <Endpoints>
@@ -75,9 +74,9 @@ You can also use a port range.
 ```
 
 
-## <a name="worker-roles-vs.-web-roles"></a>Worker roles vs. Web roles
+## worker ロールとWeb ロールの比較
 
-There is one minor difference with endpoints when working with both worker and web roles. The web role must have at minimum a single input endpoint using the **HTTP** protocol.
+Worker ロールと Web ロールの両方を使用する場合は、エンドポイントにはわずかな相違点が 1 つあります。Web ロールには、**HTTP** プロトコルを使用している入力エンドポイントが少なくとも 1 つ必要です。
 
 
 ```xml
@@ -87,26 +86,26 @@ There is one minor difference with endpoints when working with both worker and w
 </Endpoints>
 ```
 
-## <a name="using-the-.net-sdk-to-access-an-endpoint"></a>Using the .NET SDK to access an endpoint
-The Azure Managed Library provides methods for role instances to communicate at runtime. From code running within a role instance, you can retrieve information about the existence of other role instances and their endpoints, as well as information about the current role instance.
+## .NET SDK を使用してエンドポイントにアクセスする方法
+Azure マネージ ライブラリは、実行時に通信できるようロール インスタンスにメソッドを提供します。ロール インスタンス内で実行するコードから、現在のロール インスタンスに関する情報だけでなく、他のロール インスタンスの存在およびそのエンドポイントに関する情報を取得できます。
 
-> [AZURE.NOTE] You can only retrieve information about role instances that are running in your cloud service and that define at least one internal endpoint. You cannot obtain data about role instances running in a different service.
+> [AZURE.NOTE] 取得できるのは、自身のクラウド サービスで実行されているロール インスタンスに関する情報と、少なくとも 1 つの内部エンドポイントを定義するロール インスタンスの情報のみです。別のサービスで実行されているロール インスタンスに関するデータは取得することはできません。
 
-You can use the [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) property to retrieve instances of a role. First use the [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) to return a reference to the current role instance, and then use the [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) property to return a reference to the role itself.
+ロール インスタンスを取得するには、[Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) プロパティを使用します。まず [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) 使用して現在のロール インスタンスに参照を返してから、[Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) プロパティを使用してそのロール自体に参照を返します。
 
-When you connect to a role instance programmatically through the .NET SDK, it's relatively easy to access the endpoint information. For example, after you've already connected to a specific role environment, you can get the port of a specific endpoint with this code:
+.NET SDK を介してプログラムによってロール インスタンスに接続する場合、比較的簡単にエンドポイントの情報にアクセスできます。たとえば、特定のロール環境にすでに接続している場合、次のコードで特定のエンドポイントのポートを取得できます。
 
 ```csharp
 int port = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["StandardWeb"].IPEndpoint.Port;
 ```
 
-The **Instances** property returns a collection of **RoleInstance** objects. This collection always contains the current instance. If the role does not define an internal endpoint, the collection includes the current instance but no other instances. The number of role instances in the collection will always be 1 in the case where no internal endpoint is defined for the role. If the role defines an internal endpoint, its instances are discoverable at runtime, and the number of instances in the collection will correspond to the number of instances specified for the role in the service configuration file.
+**Instances** プロパティによって、**RoleInstance** オブジェクトのコレクションが返されます。このコレクションには常に、現在のインスタンスが含まれています。ロールによって内部エンドポイントが定義されていない場合、コレクションに現在のインスタンスは含まれますが、その他のインスタンスは含まれません。コレクション内のロール インスタンスの数は、そのロールの内部エンドポイントが定義されていない場合は常に 1 になります。ロールによって内部エンドポイントが定義されている場合は、そのインスタンスは実行時に検索可能で、コレクション内のインスタンスの数は、そのロールに対してサービス構成ファイルで指定されたインスタンスの数に一致します。
 
-> [AZURE.NOTE] The Azure Managed Library does not provide a means of determining the health of other role instances, but you can implement such health assessments yourself if your service needs this functionality. You can use [Azure Diagnostics](cloud-services-dotnet-diagnostics.md) to obtain information about running role instances.
+> [AZURE.NOTE] Azure マネージ ライブラリでは、その他のロール インスタンスの正常性を判断する方法は提供されていませんが、ご利用のサービスでこのような正常性評価の機能が必要であれば、ご自身で実装することができます。[Azure 診断](cloud-services-dotnet-diagnostics.md)を使用すると、実行中のロール インスタンスの情報を取得できます。
 
-To determine the port number for an internal endpoint on a role instance, you can use the [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) property to return a Dictionary object that contains endpoint names and their corresponding IP addresses and ports. The [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) property returns the IP address and port for a specified endpoint. The **PublicIPEndpoint** property returns the port for a load balanced endpoint. The IP address portion of the **PublicIPEndpoint** property is not used.
+ロール インスタンスの内部エンドポイントのポート番号を判断するには、[InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) プロパティを使用すると、エンドポイント名と、それに対応する IP アドレスおよびポートを含む Dictionary オブジェクトが返されます。[IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) プロパティは、指定したエンドポイントのポートと IP アドレスを返します。**PublicIPEndpoint** プロパティは、負荷分散エンドポイントのポートを返します。**PublicIPEndpoint** プロパティの IP アドレス部分は使用されません。
 
-Here is an example that iterates role instances.
+ロール インスタンスを反復処理する例を次に示します。
 
 ```csharp
 foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Instances)
@@ -119,9 +118,9 @@ foreach (RoleInstance roleInst in RoleEnvironment.CurrentRoleInstance.Role.Insta
 }
 ```
 
-Here is an example of a worker role that gets the endpoint exposed through the service definition and starts listening for connections.
+これは、サービス定義で公開されるエンドポイントを取得し、接続のリッスンを開始する worker ロールの例です。
 
-> [AZURE.WARNING] This code will only work for a deployed service. When running in the Azure Compute Emulator, service configuration elements that create direct port endpoints (**InstanceInputEndpoint** elements) are ignored.
+> [AZURE.WARNING] このコードは、デプロイ済みのサービスのみに使用できます。Azure 計算エミュレーターでの実行時に、直接ポート エンドポイントを作成するサービス構成要素 (**InstanceInputEndpoint** 要素) は無視されます。
 
 ```csharp
 using System;
@@ -207,12 +206,12 @@ namespace WorkerRole1
 }
 ```
 
-## <a name="network-traffic-rules-to-control-role-communication"></a>Network traffic rules to control role communication
-After you define internal endpoints, you can add network traffic rules (based on the endpoints that you created) to control how role instances can communicate with each other. The following diagram shows some common scenarios for controlling role communication:
+## ロール通信を制御するためのネットワーク トラフィック規則
+内部エンドポイントを定義した後、作成したエンドポイントに基づいてネットワーク トラフィック規則を追加して、ロール インスタンス間の通信方法を制御できます。次の図は、ロール通信を制御するためのいくつかの一般的なシナリオを示しています。
 
-![Network Traffic Rules Scenarios](./media/cloud-services-enable-communication-role-instances/scenarios.png "Network Traffic Rules Scenarios")
+![ネットワーク トラフィック規則のシナリオ](./media/cloud-services-enable-communication-role-instances/scenarios.png "ネットワーク トラフィック規則のシナリオ")
 
-The following code example shows role definitions for the roles shown in the previous diagram. Each role definition includes at least one internal endpoint defined:
+次のコード例は、前の図で示されたロールのロール定義を示しています。各ロール定義では、少なくとも 1 つの内部エンドポイントが定義されています。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -243,12 +242,12 @@ The following code example shows role definitions for the roles shown in the pre
 </ServiceDefinition>
 ```
 
-> [AZURE.NOTE] Restriction of communication between roles can occur with internal endpoints of both fixed and automatically assigned ports.
+> [AZURE.NOTE] ロール間の通信の制限は、固定ポートと自動割り当てポートの両方の内部エンドポイントで行うことができます。
 
-By default, after an internal endpoint is defined, communication can flow from any role to the internal endpoint of a role without any restrictions. To restrict communication, you must add a **NetworkTrafficRules** element to the **ServiceDefinition** element in the service definition file.
+既定では、内部エンドポイントを定義すると、任意のロールから別のロールの内部エンドポイントに、無制限で通信を行うことができます。通信を制限するには、サービス定義ファイル内で、**NetworkTrafficRules** 要素を **ServiceDefinition** 要素に追加する必要があります。
 
-### <a name="scenario-1"></a>Scenario 1
-Only allow network traffic from **WebRole1** to **WorkerRole1**.
+### シナリオ 1
+**WebRole1** から **WorkerRole1** へのネットワーク トラフィックのみを許可する。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -266,8 +265,8 @@ Only allow network traffic from **WebRole1** to **WorkerRole1**.
 </ServiceDefinition>
 ```
 
-### <a name="scenario-2"></a>Scenario 2
-Only allows network traffic from **WebRole1** to **WorkerRole1** and **WorkerRole2**.
+### シナリオ 2
+**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、および **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -285,8 +284,8 @@ Only allows network traffic from **WebRole1** to **WorkerRole1** and **WorkerRol
 </ServiceDefinition>
 ```
 
-### <a name="scenario-3"></a>Scenario 3
-Only allows network traffic from **WebRole1** to **WorkerRole1**, and **WorkerRole1** to **WorkerRole2**.
+### シナリオ 3
+**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、**WorkerRole1** から **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -314,8 +313,8 @@ Only allows network traffic from **WebRole1** to **WorkerRole1**, and **WorkerRo
 </ServiceDefinition>
 ```
 
-### <a name="scenario-4"></a>Scenario 4
-Only allows network traffic from **WebRole1** to **WorkerRole1**, **WebRole1** to **WorkerRole2**, and **WorkerRole1** to **WorkerRole2**.
+### シナリオ 4
+**WebRole1** から **WorkerRole1** へのネットワーク トラフィック、**WebRole1** から **WorkerRole2** へのネットワーク トラフィック、および **WorkerRole1** から **WorkerRole2** へのネットワーク トラフィックのみを許可する。
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -355,12 +354,9 @@ Only allows network traffic from **WebRole1** to **WorkerRole1**, **WebRole1** t
 </ServiceDefinition>
 ```
 
-An XML schema reference for the elements used above can be found [here](https://msdn.microsoft.com/library/azure/gg557551.aspx).
+上記で使用される要素の XML スキーマ参照は[こちら](https://msdn.microsoft.com/library/azure/gg557551.aspx)でご覧ください。
 
-## <a name="next-steps"></a>Next steps
-Read more about the Cloud Service [model](cloud-services-model-and-package.md).
+## 次のステップ
+Cloud Service [モデル](cloud-services-model-and-package.md)の詳細について参照できます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

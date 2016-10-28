@@ -1,139 +1,138 @@
 <properties
-    pageTitle="Azure Mobile Engagement - Key features"
-    description="Describes the key features of Azure Mobile Engagement"
-    services="mobile-engagement"
-    documentationCenter="mobile" 
-    authors="piyushjo" 
-    manager="erikre" 
-    editor="" />
+	pageTitle="Azure Mobile Engagement - 主要な機能"
+	description="Azure Mobile Engagement の主な機能について説明する"
+	services="mobile-engagement"
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="erikre" 
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/19/2016"
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/19/2016"
+	ms.author="piyushjo" />
 
+# Azure Mobile Engagement - 主要な機能
 
-# <a name="azure-mobile-engagement---key-features"></a>Azure Mobile Engagement - Key features
+この記事では、Mobile Engagement プラットフォームの主要な機能について概要を説明します。
 
-This article gives a high level overview about the key features of the Mobile Engagement platform. 
+## **全般**
 
-## <a name="**general**"></a>**General**
+- **主要なプラットフォームの用 SDK**。主要なプラットフォーム (iOS、Android、ユニバーサル Windows、Windows Phone Silverlight、Kindle、Cordova) で使用可能な SDK をご用意しています。SDK は容易に統合することができます。任意のプラットフォームで使用を開始できるようにドキュメントを提供しています。
 
-- **Find SDKs for all major platforms** SDKs available for all major platforms - iOS, Android, Universal Windows, Windows Phone Silverlight, Kindle, Cordova. We provide easy to integrate SDKs and helpful documentation to get you started on any platform of your choice. 
+- **独立した SaaS ポータル**。Microsoft Azure 管理ポータルを使用することなく、マーケティング チームに簡単にアクセスできます。
 
-- **Separate SaaS portal** Allows easy access to the marketing team without the need to go through the Azure management portal. 
+- **オープン REST API の可用性**。オープン プラットフォーム API を使用して CRM/CMS/IT システムと統合し自動化するために、オープン REST API と、これらの API を使用する .NET SDK を提供しています。これにより、Mobile Engagement との統合および自動化が容易になります。詳細については、[こちら](mobile-engagement-api-authentication.md)をご覧ください。
 
-- **Availability of open REST APIs** To integrate and automate with CRM/CMS/IT systems using open-platform APIs, we provide open REST APIs and .NET SDK to consume these APIs that can allow you to easily integrate and automate with Mobile Engagement. See [this](mobile-engagement-api-authentication.md) for details. 
+- **Power BI コネクタが使用可能**。主な分析グラフを取り出して Power BI ダッシュ ボードに取り込むこともできます。この[ガイド](https://powerbi.microsoft.com/ja-JP/documentation/powerbi-content-pack-azure-mobile/)を参照してください。
 
-- **Power BI connector available** You can also pull out the key analytics charts into a Power BI dashboard. See this [guide](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-mobile/)
+- **セキュリティおよびプライバシーの保証**。Azure ファミリに属する Azure Mobile Engagement は、クラウド サービスで想定されるセキュリティおよびプライバシーにまつわるすべての標準的なベスト プラクティスに従います。
 
-- **Assurance of Security & Privacy** Azure Mobile Engagement being part of the Azure family follows all the standard best practices around security & privacy expected for a cloud service.
+## **意思決定の基になる分析データ**
 
-## <a name="**actionable-analytics**"></a>**Actionable Analytics**
+- **リアルタイムでデータを監視する**。セッション、イベント、エラー、クラッシュなどの詳細をすべてリアルタイムで表示する監視モジュールを使用して、リアルタイム分析結果を追跡することができます。基本的な概念については、この[記事](mobile-engagement-concepts.md)を参照してください。
 
-- **Monitor data in real time** You can track real time analytics using our Monitor module which shows details like sessions, events, errors & crashes all in real-time. Take a look at this [article](mobile-engagement-concepts.md) to get an understanding of the basic concepts. 
+	![][1]
 
-    ![][1]
+	![][2]
 
-    ![][2]      
+- **集計データを表示する**。アプリのバージョンと期間を基にデータを容易にフィルター処理できる分析モジュールを使用して、集計された分析データの豊富なビューを取得することもできます。
 
-- **View aggregated data** You also get a richer view of your aggregated analytics data using our Analytics module which allows you to easily filter your data based on your app version and time periods.
+	![][3]
 
-    ![][3]      
+- **ユーザーとリテンション期間のパターンとを把握する**
 
-- **Get insights into your users and retention pattern**
+	![][4]
 
-    ![][4]      
+- **ユーザーはどこからきているのか、そして画面内にどれくらいの時間とどまっているのかを把握する**
 
-- **Get insights into where your users are coming from and how much time are they spending in the screen**
+	![][5]
+	
+	![][6]
 
-    ![][5]      
-    
-    ![][6]      
+- **アプリ ユーザーが訪れている画面と、ユーザー パスを最適化できる方法を確認する**。これにより、使ってほしい画面や機能にアプリ ユーザーが気付くようにすることができます。
 
-- **Find out which screens are your app users visiting and how can you optimize the user path** This helps them to discover screens and features that you want them to.
+	![][7]
+	
+	![][8]
 
-    ![][7]      
-    
-    ![][8]      
+- **アプリ内で最も頻度の高いイベントを把握し、それらのイベントに基づいてビジネス プロセスを理解する**
 
-- **Get insights into which are the most frequent events in your app and get an understanding of your business process based on these events** 
+	![][9]
 
-    ![][9]  
+- **一般的なエラーやクラッシュを追跡し、開発者チームに対する洞察を得る**
 
-- **Track common errors and crashes and get insights for your developer team**
+	![][10]
+	
+	![][11]
 
-    ![][10]     
-    
-    ![][11] 
+- **アプリ ユーザーがアプリからアクセスしているデバイスとネットワークを把握して、アプリを最適化する**
 
-- **Understand which devices and networks are your app users accessing your app from, to optimize the app** 
+	![][12]
+	
+## **対象設定済みの、およびパーソナライズされたプッシュ通知**
 
-    ![][12] 
-    
-## <a name="**targeted-&-personalized-push-notifications**"></a>**Targeted & Personalized Push Notifications**
+- **収集したデータに基づいてセグメントを作成する**。この場合、イベント/セッション/アクティビティ/ジョブ/クラッシュ/エラー/タグ データのいずれも使用できます。
 
-- **Create a segment based on any of the collected data** You can use any of the Event/Session/Activity/Job/Crash/Error/Tags data for this.
+	![][13]
 
-    ![][13]
+	![][14]
 
-    ![][14]     
+- **日々作成されたセグメントの履歴を追跡する**
 
-- **Track the history of your created segments day over day**
+	![][15]
 
-    ![][15] 
+- 従来/新規のユーザーなど標準ユーザーを対象にして、または独自に作成したカスタム セグメントを対象にして、**対象設定済みの通知を送信する**。
 
-- **Send targeted notifications** targeting commonly used like old/new users etc. or to your custom created segment
+	![][16]
 
-    ![][16] 
+- **アプリ外/システム プッシュ通知と、豊富な HTML ベースのアプリ内プッシュ通知の両方をシナリオに合わせて送信する**
 
-- **Send both out-of-app/system & rich HTML based in-app push notifications as appropriate for your scenario**
+	![][17]
 
-    ![][17] 
+	![][18]
 
-    ![][18] 
+- **アプリ内の特定の画面/アクティビティに対して表示されるように、アプリ内通知にターゲットを絞る**
 
-- **Target in-app notifications to show up on a specific screen/activity in the app**
+	![][19]
 
-    ![][19] 
+- **ユーザーが通知をクリックしたときに "アクション" を指定する**。この場合、Web ページを開いたり、通知がクリックされたときにアプリ内で特定の画面に移動したりするのと同様に簡単です。
 
-- **Specify an "action" when the user clicks on a notification** It could be as simple as opening up a webpage or navigating within the app to a specific screen at the click of the notification. 
+	![][20]
+	
+- アプリ ユーザーが最も使い慣れている言語で、**ローカライズした通知を送信する**。
 
-    ![][20]
-    
-- **Send localized notifications** so that it appeals to the app users in the language they are most comfortable in. 
+	![][21]
 
-    ![][21] 
+- **キャンペーンの開始時刻と終了時刻を指定する**
 
-- **Specify a start and end time for your campaigns** 
+	![][22]
 
-    ![][22] 
+- テスト デバイスを登録し、このデバイスのみにテスト通知を送信することで、**通知を簡単にテスト**できる。
 
-- **Easily test your notifications** by registering a test device and sending the test notification to only this device.
+	![][23]
 
-    ![][23] 
+- **クイック ポーリング/アンケートとして表示されるように簡単にアプリ内通知を設定できる**
 
-- **Easily set up an in-app notification to show up as a quick poll/survey**  
+	![][24]
+	
+- 通知に関する**プッシュ キャンペーン統計情報を取得**して、通知がどの程度効果を上げているかを確認できる。
 
-    ![][24]
-    
-- **Get push campaign statistics** for your notifications to give you an idea about how successful were your notifications.
+	![][25]
 
-    ![][25] 
+- **アプリ情報/タグと絵文字を使用して、容易に文字をパーソナライズし、通知に追加することができる**
 
-- **Easily personalize and give character to your notifications using app-info/tags and emojis** 
+	![][26]
 
-    ![][26] 
+	![][27]
 
-    ![][27] 
+- **大量のメッセージがユーザーに送信されないようにプッシュ制限を設定する**。アプリ ユーザーに多数のプッシュを送信し、スパムを送信していると理解されたくありません。このような場合は、プッシュ制限機能が便利です。セグメントの粒度でプッシュ制限を構成できます。
 
-- **Set Push Limits to prevent spamming users** You don’t want to send a lot of pushes to your app users and come across as spamming them. This is where our Push limits feature is useful which allows you to configure push limits at the granularity of a segment. 
-
-    ![][28]         
+	![][28]
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-key-features/monitor1.png
@@ -165,17 +164,4 @@ This article gives a high level overview about the key features of the Mobile En
 [27]: ./media/mobile-engagement-key-features/push_emoji.png
 [28]: ./media/mobile-engagement-key-features/push_limits.png
 
-
-
-
-
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

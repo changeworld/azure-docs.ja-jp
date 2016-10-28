@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Troubleshoot common Azure deployment errors | Microsoft Azure"
-   description="Describes how to resolve common errors when you deploy resources to Azure using Azure Resource Manager."
+   pageTitle="Azure へのデプロイで発生する一般的なエラーのトラブルシューティング | Microsoft Azure"
+   description="Azure Resource Manager を使用した Azure へのリソースのデプロイ時に発生する一般的なエラーの解決方法について説明します。"
    services="azure-resource-manager"
    documentationCenter=""
    tags="top-support-issue"
    authors="tfitzmac"
    manager="timlt"
    editor="tysonn"
-   keywords="deployment error, azure deployment, deploy to azure"/>
+   keywords="デプロイのエラー、Azure へのデプロイ、Azure へのデプロイ"/>
 
 <tags
    ms.service="azure-resource-manager"
@@ -18,47 +18,46 @@
    ms.date="07/14/2016"
    ms.author="tomfitz"/>
 
+# Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
-# <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Troubleshoot common Azure deployment errors with Azure Resource Manager
+このトピックでは、Azure へのデプロイで発生する可能がある一般的なエラーの解決方法について説明します。デプロイのエラーについて詳しい情報が必要な場合は、まず[デプロイ操作の表示](resource-manager-troubleshoot-deployments-portal.md)に関する記事をお読みください。その後、再度こちらの記事を参照し、エラーの解決に役立ててください。
 
-This topic describes how you can resolve some common Azure deployment errors you may encounter. If you need more information about what went wrong with your deployment, first see [View deployment operations](resource-manager-troubleshoot-deployments-portal.md) and then come back to this article for help with resolving the error.
+## 無効なテンプレートまたはリソース
 
-## <a name="invalid-template-or-resource"></a>Invalid template or resource
-
-When deploying a template, you may receive:
+テンプレートをデプロイするときに、次のメッセージが表示される場合があります。
 
     Code=InvalidTemplate 
     Message=Deployment template validation failed
 
-If you receive an error stating that either the template or a property on a resource is invalid, you may have a syntax error in your template. This error is easy to make because template expressions can be intricate. For example, the following name assignment for a storage account contains one set of brackets, three functions, three sets of parentheses, one set of single quotes, and one property:
+テンプレートとリソースのプロパティのいずれかが無効であることを示すエラーが発生した場合は、テンプレートに構文エラーが存在する可能性があります。テンプレートの式は複雑になることもあり、このエラーが発生することは珍しくありません。たとえば、ストレージ アカウントの次の名前の割り当てには、1 組の角かっこ、3 つの関数、3 組のかっこ、1 組の一重引用符、および 1 つのプロパティが含まれています。
 
     "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 
-If you do not provide all of the matching syntax, the template will produce a value that is very different than your intention.
+一致する構文全体を指定しないと、テンプレートによって、意図したものとは全然違う値が生成されます。
 
-When you receive this type of error, carefully review the expression syntax. Consider using a JSON editor like [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) or [Visual Studio Code](resource-manager-vs-code.md) which can warn you about syntax errors. 
+この種類のエラーが発生したら、式の構文を慎重に確認してください。[Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) や [Visual Studio Code](resource-manager-vs-code.md) など、構文エラーについて指摘を受けることのできる JSON エディターの使用を検討してください。
 
-## <a name="incorrect-segment-lengths"></a>Incorrect segment lengths
+## セグメントの長さが不適切
 
-Another invalid template error occurs when the resource name is not in the correct format.
+テンプレートが無効であるために発生するエラーは他にもあります。たとえばリソース名が正しい形式になっていないとエラーが発生します。
 
     Code=InvalidTemplate
     Message=Deployment template validation failed: 'The template resource {resource-name}' 
     for type {resource-type} has incorrect segment lengths.
 
-A root level resource must one less segment in the name than in the resource type. Each segment is differentiated by a slash. In the following example, the type has 2 segments and the name has 1 segment, so it is a **valid name**.
+ルート レベルのリソースは、名前に含まれるセグメントの数がリソース タイプのセグメントの数よりも 1 つ少なくなっている必要があります。各セグメントは、スラッシュで区別されます。次の例は、type のセグメント数が 2 つで、name のセグメント数が 1 つなので、**有効な名前**です。
 
     {
       "type": "Microsoft.Web/serverfarms",
       "name": "myHostingPlanName",
 
-But the next example is **not a valid name** because it has the same number of segments as the type.
+しかし次の例は、name と type のセグメント数が同じであるため、**有効な名前ではありません**。
 
     {
       "type": "Microsoft.Web/serverfarms",
       "name": "appPlan/myHostingPlanName",
 
-For child resources, the type and name must have the same number of segments. This makes sense because the full name and type for the child includes the parent name and type, so the full name still has one less segment than the full type. 
+子のリソースに関しては、type と name のセグメント数が一致している必要があります。一見矛盾しているように見えますが、そんなことはありません。子の完全な name と type には親の name と type が含まれるので、完全な name のセグメント数としては、やはり完全な type よりも 1 つ少なくなります。
 
     "resources": [
         {
@@ -70,27 +69,27 @@ For child resources, the type and name must have the same number of segments. Th
                     "type": "secrets",
                     "name": "appPassword",
 
-Getting the segments right can be particularly tricky with Resource Manager types that are applied across resource providers. For example, applying a resource lock to a web site requires a type with 4 segments. Therefore, the name is 3 segments:
+複数のリソース プロバイダーに対して適用される Resource Manager タイプでは特に、セグメントを正しく指定するために注意が必要となります。たとえば、リソース ロックを Web サイトに適用するためには、type が 4 つのセグメントで構成されている必要があります。したがって name のセグメント数は 3 つです。
 
     {
         "type": "Microsoft.Web/sites/providers/locks",
         "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
 
-## <a name="resource-name-already-taken-or-is-already-used-by-another-resource"></a>Resource name already taken or is already used by another resource
+## リソース名が既に存在する、または既に別のリソースによって使用されている
 
-For some resources, most notably storage accounts, database servers, and web sites, you must provide a name for the resource that is unique across all of Azure. If you do not provide a unique name, you may receive an error like:
+一部のリソース (特にストレージ アカウント、データベース サーバー、Web サイト) には、Azure 全体で一意となるリソース名を指定する必要があります。一意の名前を指定しないと、次のようなエラーが発生します。
 
     Code=StorageAccountAlreadyTaken 
     Message=The storage account named mystorage is already taken.
 
-You can create a unique name by concatenating your naming convention with the result of the [uniqueString](resource-group-template-functions.md#uniquestring) function.
+一意の名前を作成するには、使用している命名規則に、[uniqueString](resource-group-template-functions.md#uniquestring) 関数の結果を連結します。
 
     "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]",
     "type": "Microsoft.Storage/storageAccounts",
 
-## <a name="cannot-find-resource-during-deployment"></a>Cannot find resource during deployment
+## デプロイ時にリソースが見つからない
 
-Resource Manager optimizes deployment by creating resources in parallel, when possible. If one resource must be deployed after another resource, you need to use the **dependsOn** element in your template to create a dependency on the other resource. For example, when deploying a web app, the App Service plan must exist. If you have not specified that the web app is dependent on the App Service plan, Resource Manager will create both resources at the same time. You will receive an error stating that the App Service plan resource cannot be found, because it does not exist yet when attempting to set a property on the web app. You can prevent this error by setting the dependency in the web app.
+Resource Manager は、可能であれば複数のリソースを並列して作成することで、デプロイを最適化しています。リソースを順番にデプロイする必要がある場合は、テンプレートで **dependsOn** 要素を使用して、他のリソースへの依存関係を作成してください。たとえば、Web アプリをデプロイする場合は、App Service プランが存在する必要があります。Web アプリが App Service プランに依存していることを指定しなかった場合、Resource Manager では同時に両方のリソースが作成されます。また、App Service プランのリソースが見つからないというエラーが発生します。これは、Web アプリにプロパティを設定しようとしたときに、そのリソースがまだ存在しないためです。このエラーは、Web アプリに依存関係を設定することで回避できます。
 
     {
       "apiVersion": "2015-08-01",
@@ -102,83 +101,82 @@ Resource Manager optimizes deployment by creating resources in parallel, when po
       ...
     }
 
-## <a name="could-not-find-member-'copy'-on-object"></a>Could not find member 'copy' on object
+## Could not find member 'copy' on object (オブジェクトにメンバー 'copy' が見つかりません)
 
-You encounter this error when you have applied the **copy** element to a part of the template that does not support this element. You can only apply the copy element to a resource type. You cannot apply copy to a property within a resource type. For example, you apply copy to a virtual machine, but you cannot apply it to the OS disks for a virtual machine. In some cases, you can convert a child resource to a parent resource to create a copy loop. For more information about using copy, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
+このエラーは、**copy** 要素がサポートされていないテンプレート部分にこの要素を適用すると発生します。copy 要素を適用できるのは、リソース タイプだけです。リソース タイプ内のプロパティに copy を適用することはできません。たとえば、copy を仮想マシンに適用することはできますが、仮想マシンの OS ディスクに適用することはできません。場合によっては、子リソースを親リソースに変換して、copy のループを作成することができます。copy の使用について詳しくは、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 
-## <a name="sku-not-available"></a>SKU not available
+## SKU not available (SKU が利用できません)
 
-When deploying a resource (typically a virtual machine), you may receive the following error code and error message:
+リソース (通常は仮想マシン) をデプロイするときに、次のエラー コードとエラー メッセージが表示される場合があります。
 
     Code: SkuNotAvailable
     Message: The requested tier for resource '<resource>' is currently not available in location '<location>' for subscription '<subscriptionID>'. Please try another tier or deploy to a different location.
 
-You receive this error when the resource SKU you have selected (such as VM size) is not available for the location you have selected. You have two options to resolve this issue:
+このエラーは、選択したリソースの SKU (VM サイズなど) が、選択した地域で利用できない場合に発生します。この問題を解決するには、次の 2 とおりの方法があります。
 
-1.  Log into portal and begin adding a new resource through the UI. As you set the values, you will see the available SKUs for that resource.
+1.	ポータルにログインし、UI から新しいリソースを追加します。値を設定するときに、そのリソースで利用可能な SKU が表示されます。
 
     ![available skus](./media/resource-manager-common-deployment-errors/view-sku.png)
 
-2.  If you are unable to find a suitable SKU in that region or an alternative region that meets your business needs, please reach out to [Azure Support](https://portal.azure.com/#create/Microsoft.Support).
+2.	UI に表示されたリージョン (またはビジネス ニーズを満たすその他のリージョン) に適切な SKU が見つからない場合は、[Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
 
 
-## <a name="no-registered-provider-found"></a>No registered provider found
+## No registered provider found (登録済みのプロバイダーが見つかりません)
 
-When deploying resource, you may receive the following error code and message:
+リソースをデプロイするときに、次のエラー コードとメッセージが表示される場合があります。
 
     Code: NoRegisteredProviderFound
     Message: No registered resource provider found for location '<location>' and API version '<api-version>' for type '<resource-type>'.
 
-You receive this error for one of three reasons:
+このエラーの原因として、次の 3 つの理由のいずれかが考えられます。
 
-1. Location not supported for the resource type
-2. API version not supported for the resource type
-3. The resource provider has not been registered for your subscription
+1. リソース タイプでサポートされた場所に該当しない
+2. リソース タイプでサポートされた API バージョンに該当しない
+3. サブスクリプションに対してリソース プロバイダーが登録されていない
 
-The error message should give you suggestions for the supported locations and API versions. You can change your template to one of the suggested values. Most providers are registered automatically by the Azure portal or the command-line interface you are using, but not all. If you have not used a particular resource provider before, you may need to register that provider. You can discover more about resource providers with the following commands.
+サポートされる場所や API バージョンがエラー メッセージに提示されます。提示されたいずれかの値を使用するようにテンプレートを変更してください。ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。リソース プロバイダーについてのさらに詳しい情報は、以下に示したコマンドで検出できます。
 
-### <a name="powershell"></a>PowerShell
+### PowerShell
 
-To see your registration status, use **Get-AzureRmResourceProvider**.
+登録の状態を確認するには、**Get-AzureRmResourceProvider** を使用します。
 
     Get-AzureRmResourceProvider -ListAvailable
 
-To register a provider, use **Register-AzureRmResourceProvider** and provide the name of the resource provider you wish to register.
+プロバイダーを登録するには、**Register-AzureRmResourceProvider** を使用し、登録するリソース プロバイダーの名前を指定します。
 
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 
-To get the supported locations for a particular type of resource, use:
+特定のタイプのリソースでサポートされている場所を取得するには、次のコマンドを使用します。
 
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).Locations
 
-To get the supported API versions for a particular type of resource, use:
+特定のタイプのリソースでサポートされている API バージョンを取得するには、次のコマンドを使用します。
 
     ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 
-### <a name="azure-cli"></a>Azure CLI
+### Azure CLI
 
-To see whether the provider is registered, use the `azure provider list` command.
+プロバイダーが登録されているかどうかを確認するには、`azure provider list` コマンドを使用します。
 
     azure provider list
 
-To register a resource provider, use the `azure provider register` command, and specify the *namespace* to register.
+リソース プロバイダーを登録するには、`azure provider register` コマンドを使用し、登録する*名前空間*を指定します。
 
     azure provider register Microsoft.Cdn
 
-To see the supported locations and API versions for a resource provider, use:
+特定のリソース プロバイダーでサポートされている場所と API バージョンを確認するには、次のコマンドを使用します。
 
     azure provider show -n Microsoft.Compute --json > compute.json
 
-## <a name="quota-exceeded"></a>Quota exceeded
+## クォータを超過した
 
-You might have issues when deployment exceeds a quota, which could be per resource group, subscriptions, accounts, and other scopes. For example, your subscription may be configured to limit the number of cores for a region. If you attempt to deploy a virtual machine with more cores than the permitted amount, you will receive an error stating the quota has been exceeded.
-For complete quota information, see [Azure subscription and service limits, quotas, and constraints](azure-subscription-service-limits.md).
+デプロイがクォータを超過すると、問題が発生する場合があります。クォータは、リソース グループごと、サブスクリプションごと、アカウントごと、その他のスコープごとに指定されている可能性があります。たとえば、リージョンのコア数を制限するようにサブスクリプションが構成されていることがあります。上限を超えたコア数の仮想マシンをデプロイしようとすると、クォータを超過したというエラーが発生します。クォータに関する完全な情報については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」をご覧ください。
 
-To examine your subscription's quotas for cores, you can use the `azure vm list-usage` command in the Azure CLI. The following example illustrates that the core quota for a free trial account is 4:
+コアのサブスクリプションのクォータを確認するには、Azure CLI で `azure vm list-usage` コマンドを使用します。次に、無料試用版アカウントのコア クォータが 4 である例を示します。
 
     azure vm list-usage
 
-Which returns:
+次のような結果が返されます。
 
     info:    Executing command vm list-usage
     Location: westus
@@ -187,17 +185,17 @@ Which returns:
     data:    Cores  Count  0             4
     info:    vm list-usage command OK
 
-If you were to try to deploy a template that creates more than 4 cores into the West US region on the above subscription, you would get a deployment error that might look something like this (either in the portal or by investigating the deployment logs):
+上記のサブスクリプションで、(ポータルでまたはデプロイメント ログを調査して) 米国西部リージョンに 4 つ以上のコアを作成するテンプレートをデプロイしようとした場合、次のようなデプロイメント エラーになります。
 
     statusCode:Conflict
     serviceRequestId:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     statusMessage:{"error":{"code":"OperationNotAllowed","message":"Operation results in exceeding quota limits of Core. Maximum allowed: 4, Current in use: 4, Additional requested: 2."}}
 
-Or in PowerShell, you can use the **Get-AzureRmVMUsage** cmdlet.
+また、PowerShell では、**Get-AzureRmVMUsage** コマンドレットを使用できます。
 
     Get-AzureRmVMUsage
 
-Which returns:
+次のような結果が返されます。
 
     ...
     CurrentValue : 0
@@ -209,62 +207,58 @@ Which returns:
     Unit         : null
     ...
 
-In these cases, you should go to the portal and file a support issue to raise your quota for the region into which you want to deploy.
+このような場合はポータルに移動し、ファイルをデプロイするリージョンのクォータを増加させるように、サポートに問題を報告してください。
 
-> [AZURE.NOTE] Remember that for resource groups, the quota is for each individual region, not for the entire subscription. If you need to deploy 30 cores in West US, you have to ask for 30 Resource Manager cores in West US. If you need to deploy 30 cores in any of the regions to which you have access, you should ask for 30 resource Manager cores in all regions.
+> [AZURE.NOTE] リソース グループの場合、クォータはサブスクリプション全体ではなく個々 のリージョンに対するものであることに注意してください。米国西部に 30 のコアをデプロイする必要がある場合は、米国西部に 30 のリソース マネージャーのコアを要求する必要があります。アクセスできるリージョンのいずれかで 30 のコアをデプロイする必要がある場合は、すべてのリージョンで 30 のリソース　マネージャー コアを要求する必要があります。
 
 
-## <a name="authorization-failed"></a>Authorization failed
+## 承認に失敗する
 
-You may receive an error during deployment because the account or service principal attempting to deploy the resources does not have access to perform those actions. Azure Active Directory enables you or your administrator to control which identities can access what resources with a great degree of precision. For example, if your account is assigned to the Reader role, it will not be able to create new resources. In that case, you should see an error message indicating that authorization failed.
+リソースをデプロイしようとしたアカウントまたはサービス プリンシパルに、そのアクションを実行するアクセス権がなかった場合、デプロイ時にエラーが発生することがあります。Azure Active Directory では、どの ID がどのリソースにアクセスできるかをユーザーまたは管理者が高い精度で制御することができます。たとえば、アカウントにリーダー ロールが割り当てられている場合、そのアカウントで新しいリソースを作成することはできません。作成しようとすると、承認が失敗したというエラー メッセージが表示されます。
 
-For more information about role-based access control, see [Azure Role-Based Access Control](./active-directory/role-based-access-control-configure.md).
+ロールベースのアクセス制御の詳細については、「[Azure のロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md)」を参照してください。
 
-In addition to role-based access control, your deployment actions may be limited by policies on the subscription. Through policies, the administrator can enforce conventions on all resources deployed in the subscription. For example, an administrator can require that a particular tag value be provided for a resource type. If you have not fulfilled the policy requirements, you will receive an error during deployment. For more information about policies, see [Use Policy to manage resources and control access](resource-manager-policy.md).
+デプロイ アクションは、ロールベースのアクセス制御だけでなく、サブスクリプションのポリシーによって制限されることがあります。管理者は、ポリシーを使用して、サブスクリプションにデプロイされるすべてのリソースに規約を課すことができます。たとえば、管理者は、あるリソースの種類について、特定のタグ値を必須にすることができます。そのポリシーの要件を満たしていないと、デプロイ時にエラーが発生します。ポリシーについては、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」をご覧ください。
 
-## <a name="troubleshooting-virtual-machines"></a>Troubleshooting virtual machines
+## 仮想マシンのトラブルシューティング
 
-| Error | Articles |
+| エラー | 記事 |
 | -------- | ----------- |
-| Custom script extension errors | [Windows VM extension failures](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />or<br />[Linux VM extension failures](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
-| OS image provisioning errors | [New Windows VM errors](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />or<br />[New Linux VM errors](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md ) |
-| Allocation failures | [Windows VM allocation failures](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />or<br />[Linux VM allocation failures](./virtual-machines/virtual-machines-linux-allocation-failure.md) |
-| Secure Shell (SSH) errors when attempting to connect | [Secure Shell connections to Linux VM](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
-| Errors connecting to application running on VM | [Application running on Windows VM](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />or<br />[Application running on a Linux VM](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
-| Remote Desktop connection errors | [Remote Desktop connections to Windows VM](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) |
-| Connection errors resolved by re-deploying | [Redeploy Virtual Machine to new Azure node](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) |
-| Cloud service errors | [Cloud service deployment problems](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
+| カスタム スクリプト拡張機能のエラー | [Windows VM 拡張機能のエラー](./virtual-machines/virtual-machines-windows-extensions-troubleshoot.md)<br />または<br />[Linux VM 拡張機能のエラー](./virtual-machines/virtual-machines-linux-extensions-troubleshoot.md) |
+| OS イメージのプロビジョニング エラー | [新しい Windows VM の作成時のエラー](./virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)<br />または<br />[新しい Linux VM の作成時のエラー](./virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md) |
+| 割り当ての失敗 | [Windows VM の割り当てエラー](./virtual-machines/virtual-machines-windows-allocation-failure.md)<br />または<br />[Linux VM の割り当てエラー](./virtual-machines/virtual-machines-linux-allocation-failure.md) |
+| 接続を試行するときの Secure Shell (SSH) エラー | [Linux VM への Secure Shell 接続](./virtual-machines/virtual-machines-linux-troubleshoot-ssh-connection.md) |
+| VM で実行されているアプリケーションへの接続時に発生するエラー | [Windows VM で実行中のアプリケーション](./virtual-machines/virtual-machines-windows-troubleshoot-app-connection.md)<br />または<br />[Linux VM で実行中のアプリケーション](./virtual-machines/virtual-machines-linux-troubleshoot-app-connection.md) |
+| リモート デスクトップ接続のエラー | [Windows VM へのリモート デスクトップ接続](./virtual-machines/virtual-machines-windows-troubleshoot-rdp-connection.md) |
+| 再デプロイによって解決する接続エラー | [新しい Azure ノードへの仮想マシンの再デプロイ](./virtual-machines/virtual-machines-windows-redeploy-to-new-node.md) |
+| クラウド サービスのエラー | [クラウド サービスのデプロイの問題](./cloud-services/cloud-services-troubleshoot-deployment-problems.md) |
 
-## <a name="troubleshooting-other-services"></a>Troubleshooting other services
+## その他のサービスのトラブルシューティング
 
-The following table is not a complete list of troubleshooting topics for Azure. Instead, it focuses on issues related to deploying or configuring resources. If you need help troubleshooting run-time issues with a resource, see the documentation for that Azure service.
+以下の表は、Azure のトラブルシューティング トピックを網羅したものではありません。リソースのデプロイまたは構成に関連した問題を中心に掲載しています。リソースに関して実行時に発生する問題のトラブルシューティングについてご不明な点がある場合は、対応する Azure サービスのドキュメントを参照してください。
 
-| Service | Article |
+| サービス | 記事 |
 | -------- | -------- |
-| Automation | [Troubleshooting tips for common errors in Azure Automation](./automation/automation-troubleshooting-automation-errors.md) |
-| Azure Stack | [Microsoft Azure Stack troubleshooting](./azure-stack/azure-stack-troubleshooting.md) |
-| Azure Stack | [Web Apps and Azure Stack](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md ) |
-| Data Factory | [Troubleshoot Data Factory issues](./data-factory/data-factory-troubleshoot.md) |
-| Service Fabric | [Troubleshoot common issues when you deploy services on Azure Service Fabric](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
-| Site Recovery | [Monitor and troubleshoot protection for virtual machines and physical servers](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
-| Storage | [Monitor, diagnose, and troubleshoot Microsoft Azure Storage](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
-| StorSimple | [Troubleshoot StorSimple device deployment issues](./storsimple/storsimple-troubleshoot-deployment.md) |
-| SQL Database | [Troubleshoot connection issues to Azure SQL Database](./sql-database/sql-database-troubleshoot-common-connection-issues.md) |
-| SQL Data Warehouse | [Troubleshooting Azure SQL Data Warehouse](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) |
+| Automation | [Azure Automation の共通エラーのトラブルシューティングのヒント](./automation/automation-troubleshooting-automation-errors.md) |
+| Azure Stack | [Microsoft Azure Stack のトラブルシューティング](./azure-stack/azure-stack-troubleshooting.md) |
+| Azure Stack | [Web Apps と Azure Stack](./azure-stack/azure-stack-webapps-troubleshoot-known-issues.md) |
+| Data Factory | [Data Factory のトラブルシューティング](./data-factory/data-factory-troubleshoot.md) |
+| Service Fabric | [Azure Service Fabric でサービスをデプロイするときの一般的な問題のトラブルシューティング](./service-fabric/service-fabric-diagnostics-troubleshoot-common-scenarios.md) |
+| Site Recovery | [仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング](./site-recovery/site-recovery-monitoring-and-troubleshooting.md) |
+| Storage | [Microsoft Azure Storage の監視、診断、およびトラブルシューティング](./storage/storage-monitoring-diagnosing-troubleshooting.md) |
+| StorSimple | [StorSimple デバイスのデプロイメントのトラブルシューティング](./storsimple/storsimple-troubleshoot-deployment.md) |
+| SQL Database | [Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](./sql-database/sql-database-troubleshoot-common-connection-issues.md) |
+| SQL Data Warehouse | [Azure SQL Data Warehouse のトラブルシューティング](./sql-data-warehouse/sql-data-warehouse-troubleshoot.md) |
 
-## <a name="understand-when-a-deployment-is-ready"></a>Understand when a deployment is ready
+## デプロイの準備が完了したタイミングを把握する
 
-Azure Resource Manager reports success on a deployment when all providers return from deployment successfully. However, that this does not necessarily mean that your resource group is "active and ready for your users". For example, a deployment may need to download upgrades, wait on non-template resources, or install complex scripts or some other executable activity that Azure does not know about because it is not an activity that a provider is tracking. In these cases, it can be some time before your resources are ready for real-world use. As a result, you should expect that the deployment status succeeds some time before your deployment can be used.
+すべてのプロバイダーがデプロイから正常に戻ると、Azure Resource Manager からデプロイの成功がレポートされます。ただし、レポートだけでは、リソース グループが "アクティブで、ユーザーが使用できる状態" であるとは判断できません。たとえば、アップグレードのダウンロード、非テンプレート リソースの待機、複雑なスクリプトのインストール、プロバイダーが追跡しているアクティビティではないため Azure が認識していない他の実行可能なアクティビティのインストールなどがデプロイに必要なことがあります。このような場合、リソースが実際に使用できる状態になるまで時間がかかります。その結果、デプロイメントが使用できるまでのある時にデプロイメントが成功の状態になることを予期する必要があります。
 
-You can prevent Azure from reporting deployment success, however, by creating a custom script for your custom template -- using the [CustomScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) for example -- that knows how to monitor the entire deployment for system-wide readiness and returns successfully only when users can interact with the entire deployment. If you want to ensure that your extension is the last to run, use the **dependsOn** property in your template.
+ただし、(たとえば [CustomScriptExtension](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用して) カスタム テンプレートにカスタム スクリプトを作成することで、Azure がデプロイの成功を報告できないようにすることができます。CustomScriptExtension は、デプロイメント全体がシステム規模で準備ができていることを監視し、ユーザーがデプロイ全体と対話できる場合のみ「成功」を返す方法を認識しています。拡張機能が最後に実行されるようにしたい場合は、テンプレートで **dependsOn** プロパティを使用します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- To learn about auditing actions, see [Audit operations with Resource Manager](resource-group-audit.md).
-- To learn about actions to determine the errors during deployment, see [View deployment operations](resource-manager-troubleshoot-deployments-portal.md).
+- 監査アクションについては、「[リソース マネージャーの監査操作](resource-group-audit.md)」をご覧ください。
+- デプロイ時にエラーが発生した場合の対応については、[デプロイ操作の確認](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

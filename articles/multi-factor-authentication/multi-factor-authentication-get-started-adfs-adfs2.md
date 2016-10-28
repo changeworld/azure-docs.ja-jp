@@ -1,101 +1,96 @@
 <properties
-    pageTitle="Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server with AD FS 2.0"
-    description="This is the Azure Multi-Factor authentication page that describes how to get started with Azure MFA and AD FS 2.0."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtland"/>
+	pageTitle="Azure Multi-Factor Authentication Server と AD FS 2.0 を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護"
+	description="Azure MFA および AD FS 2.0 を開始する方法について説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtland"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
+# Azure Multi-Factor Authentication Server と AD FS 2.0 を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護
 
-# <a name="secure-cloud-and-on-premises-resources-using-azure-multi-factor-authentication-server-with-ad-fs-2.0"></a>Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server with AD FS 2.0
+お客様の組織が Azure Active Directory とフェデレーションされており、オンプレミスまたはクラウドにセキュリティ保護したいリソースがある場合、Azure Multi-Factor Authentication Sever を使用して、AD FS と連動するよう構成し、価値の高いエンド ポイントで多要素認証がトリガーされるようにすることによってセキュリティ保護を行えます。
 
-If your organization is federated with Azure Active Directory and you have resources that are on-premises or in the cloud that you wish to secure you can do this by using the Azure Multi-Factor Authentication Sever and configuring it to work with AD FS so that multi-factor authentication is triggered for high value end points.
-
-This documentation covers using the Azure Multi-Factor Authentication Server with AD FS 2.0.  For infomation on using Azure Multi-Factor Authentication with Windows Serve 2012 R2 AD FS see [Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server with Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md).
+このドキュメントでは、Azure Multi-Factor Authentication Server と AD FS 2.0 の使用について説明します。Azure Multi-Factor Authentication と Windows Serve 2012 R2 AD FS の使用の詳細については、「[Azure Multi-Factor Authentication Server と Windows Server 2012 R2 AD FS を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-w2k12.md)」を参照してください。
 
 
-## <a name="ad-fs-2.0-proxy"></a>AD FS 2.0 proxy
-To secure AD FS 2.0 with a proxy, install the Azure Multi-Factor Authentication Server on the ADFS proxy server and configure the Server per the following steps.
+## AD FS 2.0 プロキシ
+プロキシで AD FS 2.0 を保護するには、次の手順に従って ADFS プロキシ サーバーに Azure Multi-factor Authentication Server をインストールし、サーバーを構成します。
 
-### <a name="to-secure-ad-fs-2.0-with-a-proxy"></a>To secure AD FS 2.0 with a proxy
+### プロキシで AD FS 2.0 を保護するには
 
-1. Within the Azure Multi-Factor Authentication Server click the IIS Authentication icon in the left menu.
-2. Click the Form-Based tab.
-3. Click the Add… button.
+1. Azure Multi-factor Authentication Server 内で、左側のメニューの [IIS 認証] アイコンをクリックします。
+2. [フォーム ベース] タブをクリックします。
+3. [追加…] ボタンをクリックします。
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/setup1.png)</center>
-4. To detect username, password and domain variables automatically, enter the Login URL (e.g. https://sso.contoso.com/adfs/ls) within the Auto-Configure Form-Based Website dialog box and click OK.
-5. Check the Require Azure Multi-Factor Authentication user match box if all users have been or will be imported into the Server and subject to multi-factor authentication. If a significant number of users have not yet been imported into the Server and/or will be exempt from multi-factor authentication, leave the box unchecked. See the help file for additional information on this feature.
-6. If the page variables cannot be detected automatically, click the Specify Manually… button in the Auto-Configure Form-Based Website dialog box.
-7. In the Add Form-Based Website dialog box, enter the URL to the ADFS login page in the Submit URL field (e.g. https://sso.contoso.com/adfs/ls) and enter an Application name (optional). The Application name appears in Azure Multi-Factor Authentication reports and may be displayed within SMS or Mobile App authentication messages. See the help file for more information on the Submit URL.
-8. Set the Request format to “POST or GET”.
-9. Enter the Username variable (ctl00$ContentPlaceHolder1$UsernameTextBox) and Password variable (ctl00$ContentPlaceHolder1$PasswordTextBox). If your form-based login page displays a domain textbox, enter the Domain variable as well. You may need to navigate to the login page in a web browser, right-click on the page and select “View Source” to find the names of the input boxes within the login page.
-10. Check the Require Azure Multi-Factor Authentication user match box if all users have been or will be imported into the Server and subject to multi-factor authentication. If a significant number of users have not yet been imported into the Server and/or will be exempt from multi-factor authentication, leave the box unchecked.
+4. ユーザー名変数、パスワード変数、およびドメイン変数を自動的に検出するには、ログイン URL (例: https://sso.contoso.com/adfs/ls) を [フォームベースの Web サイトの自動構成] ダイアログ ボックスに入力し、[OK] をクリックします。
+5. すべてのユーザーがサーバーにインポートされている、またはインポートされ、多要素認証を受ける場合、[Multi-Factor Authentication のユーザー照合が必要] ボックスにチェック マークを付けます。多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。この機能の追加情報については、ヘルプ ファイルを参照してください。
+6. ページ変数を自動的に検出できない場合、[フォーム ベースの Web サイトの自動構成] ダイアログ ボックスの[手動で指定...] をクリックします。
+7. [フォームベースの Web サイトの追加] ダイアログ ボックスで、ADFS ログイン ページの URL を [送信 URL] フィールドに入力し (例: https://sso.contoso.com/adfs/ls)、(省略可能) アプリケーション名を入力します。アプリケーション名は Azure Multi-factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。[送信 URL] の詳細については、ヘルプ ファイルを参照してください。
+8. [要求の形式] を “POST または GET” に設定します。
+9. ユーザー名変数 (ctl00 $contentplaceholder1 $usernametextbox) とパスワード変数 (ctl00 $contentplaceholder1 $passwordtextbox) を入力します。フォーム ベースのログイン ページにドメイン テキスト ボックスが表示される場合、[ドメイン変数] も入力します。Web ブラウザーでログイン ページに移動し、ページを右クリックし、[ソースの表示] を選択し、ログイン ページ内の入力ボックスの名前を検索します。
+10. すべてのユーザーがサーバーにインポートされている、またはインポートされ、多要素認証を受ける場合、[Multi-Factor Authentication のユーザー照合が必要] ボックスにチェック マークを付けます。多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/manual.png)</center>
-11. Click the Advanced… button to review advanced settings, including the ability to select a custom denial page file, to cache successful authentications to the website for a period of time using cookies and to select how to authenticate the primary credentials.
-12. Since the ADFS proxy server is not likely to be joined to the domain, you will likely use LDAP to connect to your domain controller for user import and pre-authentication. In the Advanced Form-Based Website dialog box, click the Primary Authentication tab and select “LDAP Bind” for the Pre-authentication Authentication type.
-13. When complete, click the OK button to return to the Add Form-Based Website dialog box. See the help file for more information on the advanced settings.
-14. Click the OK button to close the dialog box.
-15. Once the URL and page variables have been detected or entered, the website data will display in the Form-Based panel.
-16. Click the Native Module tab and select the server, the website that the ADFS proxy is running under (e.g. “Default Web Site”) or the ADFS proxy application (e.g. “ls” under “adfs”) to enable the IIS plug-in at the desired level.
-17. Click the Enable IIS authentication box at the top of the screen.
-18. The IIS authentication is now enabled. However, in order to perform the pre-authentication to your Active Directory (AD) via LDAP you must configure the LDAP connection to the domain controller. To do this, click the Directory Integration icon.
-19. On the Settings tab, select the Use specific LDAP configuration radio button.
+11. [詳細…] ボタンをクリックして、詳細設定 (カスタム拒否ページ ファイルを選択する機能を含む) を確認し、cookie を使用して Web サイトに対する成功認証を一定期間キャッシュに入れたり、1 次資格情報を認証する方法を選択したりします。
+12. ADFS プロキシ サーバーはドメインに参加しない可能性があるため、ユーザー インポートや事前認証のためのドメイン コント ローラーへの接続に LDAP を使用する可能性があります。[拡張フォーム ベースの Web サイト] ダイアログ ボックスで、[1 次認証] タブをクリックし、事前認証の種類に “LDAP バインド” を選択します。
+13. 完了したら、[OK] ボタンをクリックして、[フォーム ベースの Web サイトの追加] ダイアログ ボックスに戻ります。詳細設定の詳細については、ヘルプ ファイルを参照してください。
+14. [OK] ボタンをクリックし、ダイアログ ボックスを閉じます。
+15. URL とページの変数が検出または入力されれば、Web サイトのデータがフォーム ベースのパネルに表示されます。
+16. [ネイティブ モジュール] タブをクリックし、サーバー、ADFS プロキシが実行されている Web サイト (例: "既定の Web サイト")、または ADFS プロキシ アプリケーション (例: "adfs" の下の "ls") を選択して、必要なレベルで IIS プラグインを有効にします。
+17. 画面上部にある [IIS 認証を有効にする] ボックスをクリックします。
+18. IIS 認証が有効になりました。ただし、LDAP を経由して Active Directory (AD) に事前認証を実行するには、ドメイン コントローラーへの LDAP 接続を構成する必要があります。これを行うには、[ディレクトリ統合] アイコンをクリックします。
+19. [設定] タブで、[特定の LDAP 構成の使用] ラジオ ボタンを選択します。
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/ldap1.png)</center>
-20. Click the Edit… button.
-21. In the Edit LDAP Configuration dialog box, populate the fields with the information required to connect to the AD domain controller. Descriptions of the fields are included in the table below. Note: This information is also included in the Azure Multi-Factor Authentication Server help file.
-22. Test the LDAP connection by clicking the Test button.
+20. [編集…] ボタンをクリックします。
+21. [LDAP 構成の編集] ダイアログ ボックスで、AD ドメイン コントローラーへの接続に必要な情報をフィールドに入力します。フィールドの説明を、次の表に示します。注: この情報は、Azure Multi-factor Authentication Server のヘルプ ファイルにも含まれています。
+22. [テスト] ボタンをクリックして、LDAP 接続をテストします。
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/ldap2.png)</center>
-23. If the LDAP connection test was successful, click the OK button.
-24. Next, click the Company Settings icon and select the Username Resolution tab.
-25. Select the Use LDAP unique identifier attribute for matching usernames radio button.
-26. If users will enter their username into the ADFS proxy login form in “domain\username” format, the Server needs to be able to strip the domain off of the username when it creates the LDAP query. That can be done through a registry setting.
-27. Open the registry editor and go to HKEY_LOCAL_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor on a 64-bit server. If on a 32-bit server, take the “Wow6432Node” out of the path. Create a new DWORD registry key called “UsernameCxz_stripPrefixDomain” and set the value to 1. Azure Multi-Factor Authentication is now securing the ADFS proxy. Ensure that users have been imported from Active Directory into the Server. See the Trusted IPs section below if you would like to whitelist internal IP addresses so that two-factor authentication is not required when logging into the website from those locations.
+23. LDAP 接続テストが成功した場合、[OK] ボタンをクリックします。
+24. 次に、[会社の設定] アイコンをクリックし、[ユーザー名の解決] タブを選択します。
+25. [ユーザー名と一致させるために LDAP の一意の ID 属性を使用する] ラジオ ボタンを選択します。
+26. ユーザーがユーザー名を ADFS プロキシログイン フォームに “domain\\username” 形式で入力する場合、サーバーは、LDAP クエリの作成時にユーザー名からドメイン部分を除去できる必要があります。これはレジストリの設定から行えます。
+27. レジストリ エディタを開き、64 ビット サーバーの HKEY\_LOCAL\_MACHINE/SOFTWARE/Wow6432Node/Positive Networks/PhoneFactor に移動します。32 ビット サーバーの場合、パスから “Wow6432Node” を取ってください。「Usernamecxz\_stripprefixdomain」という名前の新しい DWORD レジストリ キーを作成し、値 1 に設定します。Azure Multi-factor Authentication は、ad FS プロキシをセキュリティ保護するようになりました。ユーザーが Active Directory からサーバーにインポートされたことを確認します。内部 IP アドレスをホワイトリストに登録し、それらの場所から Web サイトにログインする際に2 要素認証を不要にするには、以下の「信頼される IP」のセクションを参照してください。
 
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/reg.png)</center>
 
-## <a name="ad-fs-2.0-direct-without-a-proxy"></a>AD FS 2.0 Direct without a proxy
+## プロキシを持たない AD FS 2.0 Direct
 
-To secure AD FS when the AD FS proxy is not used, install the Azure Multi-Factor Authentication Server on the AD FS server and configure the Server per the following steps.
+AD FS プロキシが使用されないときに AD FS 2.0 を保護するには、次の手順に従って ADFS サーバーに Azure Multi-factor Authentication Server をインストールし、サーバーを構成します。
 
-### <a name="to-secure-ad-fs-2.0-without-a-proxy"></a>To secure AD FS 2.0 without a proxy
-1. Within the Azure Multi-Factor Authentication Server click the IIS Authentication icon in the left menu.
-2. Click the HTTP tab.
-3. Click the Add… button.
-4. In the Add Base URL dialogue box, enter the URL for the ADFS website where HTTP authentication is performed (e.g. https://sso.domain.com/adfs/ls/auth/integrated) into the Base URL field and enter an Application name (optional). The Application name appears in Azure Multi-Factor Authentication reports and may be displayed within SMS or Mobile App authentication messages.
-5. If desired, adjust the Idle timeout and Maximum session times.
-6. Check the Require Azure Multi-Factor Authentication user match box if all users have been or will be imported into the Server and subject to multi-factor authentication. If a significant number of users have not yet been imported into the Server and/or will be exempt from multi-factor authentication, leave the box unchecked. See the help file for additional information on this feature.
-7. Check the cookie cache box if desired.
+### プロキシなしで AD FS 2.0 を保護するには
+1. Azure Multi-factor Authentication Server 内で、左側のメニューの [IIS 認証] アイコンをクリックします。
+2. [HTTP] タブをクリックします。
+3. [追加…] ボタンをクリックします。
+4. [基本 URL の追加] ダイアログ ボックスで、HTTP 認証が実行される ADFS Web サイトの URL (例: https://sso.domain.com/adfs/ls/auth/integrated) を [基本 URL] フィールドに入力し、(省略可能) アプリケーション名を入力します。アプリケーション名は Azure Multi-factor Authentication レポートに表示され、SMS またはモバイル アプリの認証メッセージにも表示される場合があります。
+5. 必要な場合、アイドル状態のタイムアウトと最大セッション時間を調整します。
+6. すべてのユーザーがサーバーにインポートされている、またはインポートされ、多要素認証を受ける場合、[Multi-Factor Authentication のユーザー照合が必要] ボックスにチェック マークを付けます。多数のユーザーがまだサーバーにインポートされていない、および/または多要素認証から除外される場合、ボックスのチェック マークを外したままにします。この機能の追加情報については、ヘルプ ファイルを参照してください。
+7. 必要な場合は、[クッキーのキャッシュ] ボックスをオンにします。
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/noproxy.png)</center>
-8. Click the OK button.
-9. Click the Native Module tab and select the server, the website that ADFS is running under (e.g. “Default Web Site”) or the ADFS application (e.g. “ls” under “adfs”) to enable the IIS plug-in at the desired level.
-10. Click the Enable IIS authentication box at the top of the screen. Azure Multi-Factor Authentication is now securing ADFS. Ensure that users have been imported from Active Directory into the Server. See the Trusted IPs section below if you would like to whitelist internal IP addresses so that two- factor authentication is not required when logging into the website from those locations.
+8. [OK] ボタンをクリックします。
+9. [ネイティブ モジュール] タブをクリックし、サーバー、ADFS が実行されている Web サイト (例: "既定の Web サイト")、または ADFS アプリケーション (例: "adfs" の下の "ls") を選択して、必要なレベルで IIS プラグインを有効にします。
+10. 画面上部にある [IIS 認証を有効にする] ボックスをクリックします。Azure Multi-factor Authentication は、ADFS をセキュリティ保護するようになりました。ユーザーが Active Directory からサーバーにインポートされたことを確認します。内部 IP アドレスをホワイトリストに登録し、それらの場所から Web サイトにログインする際に2 要素認証を不要にするには、以下の「信頼される IP」のセクションを参照してください。
 
 
-## <a name="trusted-ips"></a>Trusted IPs
-The Trusted IPs allows users to bypass Azure Multi-Factor Authentication for website requests originating from specific IP addresses or subnets. For example, you may want to exempt users from Azure Multi-Factor Authentication while logging in from the office. For this, you would specify the office subnet as an Trusted IPs entry.
+## 信頼できる IP
+信頼される IP は、特定の IP アドレスまたはサブネットから発生する Web サイト要求に関して、ユーザーが Azure Multi-Factor Authentication をバイパスできるようにします。たとえば、社内からのログイン中は、Azure Multi-Factor Authentication からユーザーを除外することもできます。その場合、社内のサブネットを信頼される IP エントリとして指定します。
 
-### <a name="to-configure-trusted-ips"></a>To configure trusted IPs
+### 信頼される IP を構成するには
 
 
-1. In the IIS Authentication section, click the Trusted IPs tab.
-1. Click the Add… button.
-1. When the Add Trusted IPs dialog box appears, select the Single IP, IP range or Subnet radio button.
-1. Enter the IP address, range of IP addresses or subnet that should be whitelisted. If entering a subnet, select the appropriate Netmask and click the OK button. The trusted IP has now been added.
+1. [IIS 認証] セクションで、[信頼される IP] タブをクリックします。
+1. [追加…] ボタンをクリックします。
+1. [信頼される IP の追加] ダイアログ ボックスが表示された場合、[単一 IP]、[IP の範囲] または [サブネット] ラジオ ボタンのいずれかを選択します。
+1. ホワイト リストに登録する IP アドレス、IP アドレスの範囲、またはサブネットを入力します。サブネットを入力する場合は、適切なネットマスクを選択し、[OK] ボタンをクリックします。信頼される IP が追加されました。
 
 
 <center>![Setup](./media/multi-factor-authentication-get-started-adfs-adfs2/trusted.png)</center>
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

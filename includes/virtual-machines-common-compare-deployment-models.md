@@ -1,95 +1,92 @@
 
 
 
-## <a name="advantages-of-integrating-compute,-network,-and-storage-under-the-azure-resource-manager-deployment-model"></a>Advantages of integrating Compute, Network, and Storage under the Azure Resource Manager deployment model
+## Azure Resource Manager デプロイ モデルに Compute、Network、および Storage を統合する利点
 
-The Azure Resource Manager deployment model offers the ability to easily leverage pre-built application templates or construct an application template to deploy and manage compute, network, and storage resources on Azure. In this section, we’ll walk through the advantages of deploying resources through the Azure Resource Manager deployment model.
+Azure Resource Manager デプロイ モデルでは、既製のアプリケーション テンプレートを容易に活用できます。また、Azure にコンピューティング、ネットワーク、ストレージの各リソースをデプロイして管理するためのアプリケーション テンプレートを新たに作成することもできます。このセクションでは、Azure Resource Manager デプロイ モデルを使用してリソースをデプロイする利点について説明します。
 
--   Complexity made simple -- Build, integrate, and collaborate on complicated applications that can include the entire gamut of Azure resources (such as Websites, SQL Databases, Virtual Machines, or Virtual Networks) from a shareable template file
--   Flexibility to have repeatable deployments for development, devOps, and system administrators when you use the same template file
--   Deep integration of VM Extensions (Custom Scripts, DSC, Chef, Puppet, etc.) with the Azure Resource Manager in a template file allows easy orchestration of in-VM setup configuration
--   Defining tags and the billing propagation of those tags for Compute, Network & Storage resources
--   Simple and precise organizational resource access management using Azure Role-Based Access Control (RBAC)
--   Simplified Upgrade/Update story by modifying the original template and then redeploying it
+-	複雑な作業を単純化 -- 共有可能なテンプレート ファイルからあらゆる Azure リソース (Websites、SQL Database、Virtual Machines、Virtual Network など) を含んだ複合的なアプリケーションを構築、統合し、共同作業を行うことができます。
+-	同じテンプレート ファイルを使用することで、開発、DevOps、システム管理者向けに、柔軟性に優れたデプロイを反復的に行うことができます。
+-	VM 拡張機能 (カスタム スクリプト、DSC、Chef、Puppet など) と Azure リソース マネージャーがテンプレート ファイル内で密に統合され、VM 内のセットアップ構成の編成が容易になります。
+-	Compute、Network、Strage リソース用に、タグとその課金の伝達を定義できます。
+-	Azure のロールベースの Access Control (RBAC) を使用して、組織的なリソース アクセス管理を単純かつ厳密に行うことができます。
+-	元のテンプレートに変更を加えて再度デプロイすることでアップグレード/更新を単純化することができます。
 
 
-## <a name="advancements-of-the-compute,-network,-and-storage-apis-under-azure-resource-manager"></a>Advancements of the Compute, Network, and Storage APIs under Azure Resource Manager
+## Azure リソース マネージャーにおける Compute、Network、Strage API の進化
 
-In addition to the advantages mentioned above, there are some significant performance advancements in the APIs released:
+リリースされている API には、上記の利点に加え、パフォーマンス面で強化された点がいくつかあります。
 
--   Enabling massive and parallel deployment of Virtual Machines
--   Support for 3 Fault Domains in Availability Sets
--   Improved Custom Script extension that allows specification of scripts from any publicly accessible custom URL
-- Integration of Virtual Machines with the Azure Key Vault for highly secure storage and private deployment of secrets from [FIPS-validated](http://wikipedia.org/wiki/FIPS_140-2) [Hardware Security Modules](http://wikipedia.org/wiki/Hardware_security_module)
--   Provides the basic building blocks of networking through APIs to enable customers to construct complicated applications that include Network Interfaces, Load Balancers, and Virtual Networks
--   Network Interfaces as a new object allows complicated network configuration to be sustained and reused for Virtual Machines
--   Load Balancers as a first-class resource enables IP Address assignments
--   Granular Virtual Network APIs allow you to simplify the management of individual Virtual Networks
+-	大量の Virtual Machines の並列デプロイが可能になりました。
+-	可用性セットで 3 つの障害ドメインがサポートされます。
+-	カスタム スクリプト拡張機能が強化され、パブリックにアクセスできるカスタム URL からのスクリプトの指定が可能になりました。
+- Virtual Machines と Azure Key Vault が統合され、[FIPS 検証済みの](http://wikipedia.org/wiki/FIPS_140-2)[ハードウェア セキュリティ モジュール](http://wikipedia.org/wiki/Hardware_security_module)によってシークレットを安全に保管し、プライベートなデプロイメントを実現します。
+-	API を使用したネットワークの基本的なビルディングブロックを提供します。お客様は、ネットワーク インターフェイス、Load Balancer、Virtual Network を含んだ複合的なアプリケーションを構築できます。
+-	新しいオブジェクトとしてのネットワーク インターフェイスによって、Virtual Machines に複雑なネットワーク構成を維持し、再利用することができます。
+-	最上位のリソースとしての Load Balancer によって IP アドレスの割り当てが可能となります。
+-	粒度の細かい Virtual Network API によって、個々の Virtual Network の管理が容易になります。
 
-## <a name="conceptual-differences-with-the-introduction-of-new-apis"></a>Conceptual differences with the introduction of new APIs
+## 新たに導入された API との概念上の相違点
 
-In this section, we will walk through some of the most important conceptual differences between the XML based APIs available today and JSON based APIs available through the Azure Resource Manager for Compute, Network & Storage.
+このセクションでは、現在利用できる XML ベースの API とCompute、Network、Storage に関して Azure リソース マネージャーを通じて使用できる JSON ベース API との特に重要な概念上の相違点をいくつか説明します。
 
- Item | Azure Service Management (XML-based)    | Compute, Network & Storage Providers (JSON-based)
+ 項目 | Azure サービス管理 (XML ベース) | Compute、Network、Strage プロバイダー (JSON ベース)
  ---|---|---
-| Cloud Service for Virtual Machines |  Cloud Service was a container for holding the virtual machines that required Availability from the platform and Load Balancing. | Cloud Service is no longer an object required for creating a Virtual Machine using the new model. |
-| Availability Sets | Availability to the platform was indicated by configuring the same “AvailabilitySetName” on the Virtual Machines. The maximum count of fault domains was 2. | Availability Set is a resource exposed by Microsoft.Compute Provider. Virtual Machines that require high availability must be included in the Availability Set. The maximum count of fault domains is now 3. |
-| Affinity Groups | Affinity Groups were required for creating Virtual Networks. However, with the introduction of Regional Virtual Networks, that was not required anymore. |To simplify, the Affinity Groups concept doesn’t exist in the APIs exposed through Azure Resource Manager. |
-| Load Balancing    | Creation of a Cloud Service provides an implicit load balancer for the Virtual Machines deployed. | The Load Balancer is a resource exposed by the Microsoft.Network provider. The primary network interface of the Virtual Machines that needs to be load balanced should be referencing the load balancer. Load Balancers can be internal or external. [Read more.](../articles/resource-groups-networking.md) |
-|Virtual IP Address | Cloud Services will get a default VIP (Virtual IP Address) when a VM is added to a cloud service. The Virtual IP Address is the address associated with the implicit load balancer.   | Public IP address is a resource exposed by the Microsoft.Network provider. Public IP Address can be Static (Reserved) or Dynamic. Dynamic Public IPs can be assigned to a Load Balancer. Public IPs can be secured using Security Groups. |
-|Reserved IP Address|   You can reserve an IP Address in Azure and associate it with a Cloud Service to ensure that the IP Address is sticky.   | Public IP Address can be created in “Static” mode and it offers the same capability as a “Reserved IP Address”. Static Public IPs can only be assigned to a Load balancer right now. |
-|Public IP Address (PIP) per VM | Public IP Addresses can also associated to a VM directly. | Public IP address is a resource exposed by the Microsoft.Network provider. Public IP Address can be Static (Reserved) or Dynamic. However, only dynamic Public IPs can be assigned to a Network Interface to get a Public IP per VM right now. |
-|Endpoints| Input Endpoints needed to be configured on a Virtual Machine to be open up connectivity for certain ports. One of the common modes of connecting to virtual machines done by setting up input endpoints. | Inbound NAT Rules can be configured on Load Balancers to achieve the same capability of enabling endpoints on specific ports for connecting to the VMs. |
-|DNS Name| A cloud service would get an implicit globally unique DNS Name. For example: `mycoffeeshop.cloudapp.net`. | DNS Names are optional parameters that can be specified on a Public IP Address resource. The FQDN will be in the following format - `<domainlabel>.<region>.cloudapp.azure.com`. |
-|Network Interfaces | Primary and Secondary Network Interface and its properties were defined as network configuration of a Virtual machine. | Network Interface is a resource exposed by Microsoft.Network Provider. The lifecycle of the Network Interface is not tied to a Virtual Machine. |
+| Virtual Machines 用クラウド サービス |	クラウド サービスは、プラットフォームに基づく可用性と負荷分散を必要とする仮想マシンを保持するためのコンテナーです。 | 新しいモデルを使用して仮想マシンを作成するためのオブジェクトとしてのクラウド サービスは不要となりました。 |
+| 可用性セット | プラットフォームに対する可用性は、Virtual Machines に同じ "AvailabilitySetName" を構成することによって示されます。障害ドメインの最大数は 2 です。 | 可用性セットは、Microsoft.Compute プロバイダーによって公開されるリソースです。可用性セットには、高可用性を必要とする Virtual Machines を含める必要があります。障害ドメインの最大数は 3 です。 |
+| [アフィニティ グループ] をクリックし、 |	Virtual Network を作成するにはアフィニティ グループが必要です。ただし、Regional Virtual Network の導入により、それは不要となりました。 |単純化するために、Azure リソース マネージャーによって公開される API には、アフィニティ グループの概念が存在しません。 |
+| 負荷分散 | デプロイされている Virtual Machines には、クラウド サービスの作成によって暗黙的な Load Balancer が提供されます。 | Load Balancer は、Microsoft.Network プロバイダーによって公開されるリソースです。負荷分散を必要とする Virtual Machines のプライマリ ネットワーク インターフェイスは、Load Balancer を参照している必要があります。Load Balancer には、内部 Load Balancer と外部 Load Balancer とがあります。[詳細については、こちらを参照してください。](../articles/resource-groups-networking.md) |
+|仮想 IP アドレス | Cloud Services に VM を追加すると、既定の VIP (仮想 IP アドレス) がクラウド サービスに与えられます。仮想 IP アドレスは、暗黙的なロード バランサーに関連付けられるアドレスです。 | パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。Load Balancer には、動的パブリック IP を割り当てることができます。パブリック IP のセキュリティは、セキュリティ グループを使用して保護できます。 |
+|予約済み IP アドレス|	IP アドレスを Azure で予約し、クラウド サービスに関連付けることで、その IP アドレスを固定アドレスとすることができます。 | パブリック IP アドレスは "静的" モードで作成でき、"予約済み IP アドレス" と同じ機能を持ちます。現在、Load Balancer に割り当てることができるのは静的パブリック IP だけです。 |
+|VM ごとのパブリック IP アドレス (PIP) | Public IP Addresses は、直接 VM に関連付けることもできます。 | パブリック IP アドレスは、Microsoft.Network プロバイダーによって公開されるリソースです。パブリック IP アドレスには、静的 (予約済み) アドレスと動的アドレスとがあります。ただし、VM ごとのパブリック IP を取得するためにネットワーク インターフェイスに割り当てることができるのは現在、動的パブリック IP だけです。 |
+|エンドポイント| 特定のポートの接続を確立するためには、仮想マシンに入力エンドポイントを構成する必要があります。入力エンドポイントを設定することによって仮想マシンに接続する一般的なモードの 1 つ。 | VM への接続用に特定のポートのエンドポイントを有効にする機能は、Load Balancer に受信 NAT ルールを構成することで実現できます。 |
+|DNS 名| クラウド サービスには、グローバルに一意となる暗黙的な DNS 名が与えられます (例: `mycoffeeshop.cloudapp.net`)。 | DNS 名は、パブリック IP アドレス リソースに指定できる省略可能なパラメーターです。FQDN は、`<domainlabel>.<region>.cloudapp.azure.com` という形式になります。 |
+|ネットワーク インターフェイス | プライマリとセカンダリのネットワーク インターフェイスおよびそのプロパティは、仮想マシンのネットワーク構成として定義されます。 | ネットワーク インターフェイスは、Microsoft.Network プロバイダーによって公開されるリソースです。ネットワーク インターフェイスのライフサイクルは、仮想マシンに関連付けられません。 |
 
-## <a name="getting-started-with-azure-templates-for-virtual-machines"></a>Getting Started with Azure Templates for Virtual Machines
+## Virtual Machines 用 Azure テンプレートの概要
 
-You can get started with the Azure Templates by leveraging the various tools that we have for developing and deploying to the platform.
+Azure テンプレートを初めて使用する際は、開発とプラットフォームへのデプロイを目的とした各種のツールが用意されているのでご利用ください。
 
-### <a name="azure-portal"></a>Azure portal
+### Azure ポータル
 
-The Azure portal will continue to have the option to deploy Virtual Machines with the classic deployment model and Virtual Machines with the Resource Manager deployment model simultaneously. The Azure portal will also allow custom template deployments.
+Azure ポータルには、Virtual Machines のクラシック デプロイ モデルと、Virtual Machines のリソース マネージャー デプロイ モデルのデプロイ オプションが引き続き同時にあります。Azure ポータルでカスタム テンプレートのデプロイを行うこともできます。
 
-### <a name="azure-powershell"></a>Azure PowerShell
+### Azure PowerShell
 
-Azure PowerShell will have two modes of deployment – **AzureServiceManagement** mode and **AzureResourceManager** mode.  AzureResourceManager mode will now also contain the cmdlets to manage Virtual Machines, Virtual Networks, and Storage Accounts. You can read more about it [here](../articles/powershell-azure-resource-manager.md).
+Azure PowerShell には、**AzureServiceManagement** モードと **AzureResourceManager** モードの 2 つのデプロイメント モードがあります。AzureResourceManager モードにはさらに、Virtual Machines、Virtual Network、ストレージ アカウントを管理するためのコマンドレットが含まれます。詳細については、[こちら](../articles/powershell-azure-resource-manager.md)を参照してください。
 
-### <a name="azure-cli"></a>Azure CLI
+### Azure CLI
 
-The Azure Command-line Interface (Azure CLI) will have two modes of deployment – **AzureServiceManagement** mode and **AzureResourceManager** mode. The AzureResourceManager mode will now also contain commands to manage Virtual Machines, Virtual Networks, and Storage Accounts. You can read more about it [here](../articles/xplat-cli-azure-resource-manager.md).
+Azure コマンドライン インターフェイス (Azure CLI) には、**AzureServiceManagement** モードと **AzureResourceManager** モードの 2 つのデプロイメント モードがあります。AzureResourceManager モードにはさらに、Virtual Machines、Virtual Network、ストレージ アカウントを管理するためのコマンドが含まれます。詳細については、[こちら](../articles/xplat-cli-azure-resource-manager.md)を参照してください。
 
-### <a name="visual-studio"></a>Visual Studio
+### Visual Studio
 
-With the latest Azure SDK release for Visual Studio, you can author and deploy Virtual Machines and complex applications right from Visual Studio. Visual Studio offers the ability to deploy from a pre-built list of templates or start from an empty template.
+最新の Visual Studio 用 Azure SDK リリースでは、Virtual Machines と複雑なアプリケーションを Visual Studio からすばやく作成してデプロイすることができます。Visual Studio には、一連の既製のテンプレートからデプロイする機能が用意されているほか、空のテンプレートを出発点とすることもできます。
 
-### <a name="rest-apis"></a>REST APIs
+### REST API
 
-You can find the detailed REST API documentation for the Compute, Network & Storage Resource Providers [here](https://msdn.microsoft.com/library/azure/dn790568.aspx).
+コンピューティング、ネットワーク、ストレージ リソース プロバイダーの REST API に関する詳細なドキュメントは、[こちら](https://msdn.microsoft.com/library/azure/dn790568.aspx)でご覧いただけます。
 
-## <a name="frequently-asked-questions"></a>Frequently Asked Questions
+## よく寄せられる質問
 
-**Can I create a Virtual Machine using the new Azure Resource Manager to deploy in a Virtual Network or Storage Account created using the Azure Service Management APIs?**
+**Azure サービス管理 API を使用して作成した仮想マシンまたはストレージ アカウントにデプロイする仮想マシンを、新しい Azure リソース マネージャーで作成することはできますか。**
 
-This is not supported at the moment. You cannot deploy using the new Azure Resource Manager APIs to deploy a Virtual Machine into a Virtual Network that was created using the Service Management APIs.
+現時点ではサポートされません。新しい Azure リソース マネージャー API では、サービス管理 API を使用して作成された仮想ネットワークに仮想マシンをデプロイすることはできません。
 
-**Can I create a Virtual Machine using the new Azure Resource Manager APIs from a user image that was created using the Azure Service Management APIs?**
+**新しい Azure リソース マネージャー API で、Azure サービス管理 API を使用して作成されたユーザー イメージから Virtual Machine を作成することはできますか。**
 
-This is not supported at the moment. However, you can copy the VHD files from a Storage Account that was created using the Service Management APIs and copy it to a new account created using the using the new Azure Resource Manager APIs.
+現時点ではサポートされません。ただし、サービス管理 API で作成したストレージ アカウントから VHD ファイルをコピーし、新しい Azure リソース マネージャー API で作成した新しいアカウントにコピーすることはできます。
 
-**What is the impact on the quota for my subscription?**
+**サブスクリプションのクォータにはどのような影響が生じますか。**
 
-The quotas for the Virtual Machines, Virtual Networks, and Storage Accounts created through the new Azure Resource Manager APIs  are separate from the quotas that you currently have. Each subscription gets new quotas to create the resources using the new APIs. You can read more about the additional quotas [here](../articles/azure-subscription-service-limits.md).
+新しい Azure リソース マネージャー API を介して作成された Virtual Machines、Virtual Network、ストレージ アカウントのクォータは、お客様が現在保有しているクォータとは区別されます。新しい API を使用してリソースを作成するためのクォータが別途、各サブスクリプションに与えられます。追加クォータの詳細については、[こちら](../articles/azure-subscription-service-limits.md)を参照してください。
 
-**Can I continue to use my automated scripts for provisioning Virtual Machines, Virtual Networks, Storage Accounts etc. through the new Azure Resource Manager APIs?**
+**Virtual Machines、Virtual Network、ストレージ アカウントなどをプロビジョニングするための独自の自動スクリプトは、新しい Azure リソース マネージャー API で引き続き使用できますか。**
 
-All the automation and scripts that you’ve built will continue to work for the existing Virtual Machines, Virtual Networks created under the Azure Service Management mode. However, the scripts have to be updated to use the new schema for creating the same resources through the new Azure Resource Manager mode.
+これまでに作成したオートメーションやスクリプトはすべて、Azure サービス管理モードで作成された既存の Virtual Machines、Virtual Network にも使用できます。ただし、新しい Azure リソース マネージャー モードで同じリソースを作成するためには、新しいスキーマを使用するようにスクリプトを更新する必要があります。
 
-**Where can I find examples of Azure Resource Manager templates?**
+**Azure リソース マネージャーのテンプレートの例はどこで入手できますか。**
 
-A comprehensive set of starter templates can be found on [Azure Resource Manager QuickStart Templates](https://azure.microsoft.com/documentation/templates/).
+広範囲にわたるスターター テンプレートを「[Azure リソース マネージャー クイックスタート テンプレート](https://azure.microsoft.com/documentation/templates/)」で見つけることができます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

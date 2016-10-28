@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Classic Endpoints in Resource Manager Overview | Microsoft Azure"
-   description="Understand how endpoints from the Classic deployment model are now implemented in Resource Manager using Network Security Groups and ACL rules"
+   pageTitle="Resource Manager での従来のエンドポイント | Microsoft Azure"
+   description="ネットワーク セキュリティ グループおよび ACL ルールを使用して、クラシック デプロイ モデルのエンドポイントが Resource Manager でどのように実装されるかを理解する"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="iainfoulds"
@@ -16,20 +16,16 @@
    ms.date="08/09/2016"
    ms.author="iainfou"/>
 
-
-# <a name="classic-endpoints-in-resource-manager"></a>Classic Endpoints in Resource Manager
+# Resource Manager での従来のエンドポイント
 [AZURE.INCLUDE [virtual-machines-common-endpoints-in-resource-manager](../../includes/virtual-machines-common-endpoints-in-resource-manager.md)]
 
-## <a name="next-steps"></a>Next steps
-You can read more detailed information on the technologies discussed here, along with quick-start guides for using Network Security Groups, in the following articles:
+## 次のステップ
+次の記事で、ネットワーク セキュリティ グループを使用するためのクイック スタート ガイドと共に、この記事で取り上げるテクノロジに関する詳細情報を参照することができます。
 
-- [Quick-start - Create a Network Security Group and ACL rules using the Azure portal](virtual-machines-windows-nsg-quickstart-portal.md)  
-- [Quick-start - Create a Network Security Group and ACL rules using the Azure PowerShell](virtual-machines-windows-nsg-quickstart-powershell.md)  
-- [Azure Resource Manager overview](../resource-group-overview.md)  
-- [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)  
-- [Azure Resource Manager Overview for Load Balancers](../load-balancer/load-balancer-arm.md) 
+- [クイック スタート - Azure ポータルを使用してネットワーク セキュリティ グループと ACL 規則を作成する](virtual-machines-windows-nsg-quickstart-portal.md)
+- [クイック スタート - Azure PowerShell を使用してネットワーク セキュリティ グループと ACL ルールを作成する](virtual-machines-windows-nsg-quickstart-powershell.md)
+- [Azure リソース マネージャーの概要](../resource-group-overview.md)
+- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
+- [ロード バランサー用の Azure Resource Manager の概要](../load-balancer/load-balancer-arm.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

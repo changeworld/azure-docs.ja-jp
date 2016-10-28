@@ -1,140 +1,134 @@
 <properties 
-    pageTitle="Create custom artifacts for your DevTest Labs VM | Microsoft Azure"
-    description="Learn how to author your own artifacts for use with DevTest Labs"
-    services="devtest-lab,virtual-machines"
-    documentationCenter="na"
-    authors="tomarcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="DevTest ラボ VM のカスタム アーティファクトの作成 | Microsoft Azure"
+	description="DevTest ラボで使用するために独自のアーティファクトを作成する方法を説明します。"
+	services="devtest-lab,virtual-machines"
+	documentationCenter="na"
+	authors="tomarcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="devtest-lab"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/25/2016"
-    ms.author="tarcher"/>
+	ms.service="devtest-lab"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2016"
+	ms.author="tarcher"/>
 
-
-#<a name="create-custom-artifacts-for-your-devtest-labs-vm"></a>Create custom artifacts for your DevTest Labs VM
+#DevTest ラボ VM のカスタム アーティファクトの作成
 
 > [AZURE.VIDEO how-to-author-custom-artifacts] 
 
-## <a name="overview"></a>Overview
-**Artifacts** are used to deploy and configure your application after a VM is provisioned. An artifact consists of an artifact definition file and other script files that are stored in a folder in a git repository. Artifact definition files consist of JSON and expressions that you can use to specify what you want to install on a VM. For example, you can define the name of artifact, command to run, and parameters that are made available when the command is run. You can refer to other script files within the artifact definition file by name.
+## 概要
+**アーティファクト**は、VM のプロビジョニング後にアプリケーションをデプロイして構成するために使用します。アーティファクトは、Git リポジトリ内のフォルダーに格納されているアーティファクト定義ファイルとその他のスクリプト ファイルで構成されます。アーティファクト定義ファイルは、VM にインストールするものを指定するのに使用できる JSON と式で構成されます。たとえば、アーティファクトの名前、実行するコマンド、コマンド実行時に使用可能なパラメーターを定義できます。アーティファクト定義ファイル内では、他のスクリプト ファイルを名前で参照できます。
 
-##<a name="artifact-definition-file-format"></a>Artifact definition file format
-The following example shows the sections that make up the basic structure of a definition file.
+##アーティファクト定義ファイルの形式
+次の例では、定義ファイルの基本構造を構成するセクションを示します。
 
-    {
-      "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2015-01-01/dtlArtifacts.json",
-      "title": "",
-      "description": "",
-      "iconUri": "",
-      "targetOsType": "",
-      "parameters": {
-        "<parameterName>": {
-          "type": "",
-          "displayName": "",
-          "description": ""
-        }
-      },
-      "runCommand": {
-        "commandToExecute": ""
-      }
-    }
+	{
+	  "$schema": "https://raw.githubusercontent.com/Azure/azure-devtestlab/master/schemas/2015-01-01/dtlArtifacts.json",
+	  "title": "",
+	  "description": "",
+	  "iconUri": "",
+	  "targetOsType": "",
+	  "parameters": {
+	    "<parameterName>": {
+	      "type": "",
+	      "displayName": "",
+	      "description": ""
+	    }
+	  },
+	  "runCommand": {
+	    "commandToExecute": ""
+	  }
+	}
 
-| Element name | Required? | Description
+| 要素名 | 必須 | Description
 | ------------ | --------- | -----------
-| $schema      | No        | Location of the JSON schema file that helps in testing the validity of the definition file.
-| title        | Yes       | Name of the artifact displayed in the lab.
-| description  | Yes       | Description of the artifact displayed in the lab.
-| iconUri      | No        | Uri of the icon displayed in the lab.
-| targetOsType | Yes       | Operating system of the VM where artifact will be installed. Supported options are: Windows and Linux.
-| parameters   | No        | Values that are provided when artifact install command is run on a machine. This helps in customizing your artifact.
-| runCommand   | Yes       | Artifact install command that is executed on a VM.
+| $schema | いいえ | 定義ファイルの有効性のテストに役立つ JSON スキーマ ファイルの場所
+| title | はい | ラボで表示されるアーティファクトの名前
+| description | はい | ラボで表示されるアーティファクトの説明
+| iconUri | いいえ | ラボで表示されるアイコンの URI
+| targetOsType | はい | アーティファクトをインストールする VM のオペレーティング システム。サポートされているオプションは、Windows と Linux です。
+| parameters | いいえ | アーティファクトのインストール コマンドがマシンで実行されるときに指定する値。これは、アーティファクトのカスタマイズに役立ちます。
+| runCommand | はい | VM 上で実行されるアーティファクトのインストール コマンド。
 
-###<a name="artifact-parameters"></a>Artifact parameters
+###アーティファクトのパラメーター
 
-In the parameters section of the definition file, you specify which values a user can input when installing an artifact. You can refer to these values in the artifact install command.
+定義ファイルの parameters セクションでは、アーティファクトのインストール時にユーザーが入力できる値を指定します。アーティファクトのインストール コマンドでこれらの値を参照できます。
 
-You define parameters will the following structure.
+次の構造でパラメーターを定義します。
 
-    "parameters": {
-        "<parameterName>": {
-          "type": "<type-of-parameter-value>",
-          "displayName": "<display-name-of-parameter>",
-          "description": "<description-of-parameter>"
-        }
-      }
+	"parameters": {
+	    "<parameterName>": {
+	      "type": "<type-of-parameter-value>",
+	      "displayName": "<display-name-of-parameter>",
+	      "description": "<description-of-parameter>"
+	    }
+	  }
 
-| Element name | Required? | Description
+| 要素名 | 必須 | Description
 | ------------ | --------- | -----------
-| type         | Yes       | Type of parameter value. See the list below for the allowed types:
-| displayName    Yes       | Name of the parameter that is displayed to a user in the lab.
-| description  | Yes       | Description of the parameter that is displayed in the lab.
+| type | はい | パラメーター値の型。使用できる型については、下にある一覧を参照してください。
+| displayName Yes | ラボのユーザーに対して表示されるパラメーターの名前。
+| description | はい | ラボで表示されるパラメーターの説明。
 
-The allowed types are:
+使用できる型は次のとおりです。
 
-- string – any valid JSON string
-- int – any valid JSON integer
-- bool – any valid JSON Boolean
-- array – any valid JSON array
+- string - 有効な JSON 文字列
+- int - 有効な JSON 整数
+- bool - 有効な JSON ブール値
+- array - 有効な JSON 配列
 
-##<a name="artifact-expressions-and-functions"></a>Artifact expressions and functions
+##アーティファクトの式と関数
 
-You can use expression and functions to construct the artifact install command.
-Expressions are enclosed with brackets ([ and ]), and are evaluated when the artifact is installed. Expressions can appear anywhere in a JSON string value and always return another JSON value. If you need to use a literal string that starts with a bracket [, you must use two brackets [[.
-Typically, you use expressions with functions to construct a value. Just like in JavaScript, function calls are formatted as functionName(arg1,arg2,arg3)
+式と関数を使用して、アーティファクトのインストール コマンドを作成できます。式は角かっこ ([ と ]) で囲み、アーティファクトのインストール時に評価されます。式は、JSON 文字列値内の任意の場所に配置でき、常に別の JSON 値を返します。  
+角かっこ [ で始まるリテラル文字列を使用する必要がある場合は、2 つの角かっこ [[ を使用する必要があります。通常は、関数と共に式を使用して値を構成します。JavaScript の場合と同様に、関数呼び出しは functionName(arg1,arg2,arg3) という形式になります。
 
-The following list shows common functions.
+次に、一般的な関数を示します。
 
-- parameters(parameterName) - Returns a parameter value that is provided when the artifact command is run.
-- concat(arg1,arg2,arg3, …..) -     Combines multiple string values. This function can take any number of arguments.
+- parameters(parameterName) - アーティファクト コマンドの実行時に指定するパラメーター値を返します。
+- concat(arg1,arg2,arg3, …..) - 複数の文字列値を結合します。この関数は、任意の数の引数を取ることができます。
 
-The following example shows how to use expression and functions to construct a value.
+次の例では、式と関数を使用して値を構成する方法を示します。
 
-    runCommand": {
-         "commandToExecute": "[concat('powershell.exe -File startChocolatey.ps1'
-    , ' -RawPackagesList ', parameters('packages')
-    , ' -Username ', parameters('installUsername')
-    , ' -Password ', parameters('installPassword'))]"
-    }
+	runCommand": {
+	     "commandToExecute": "[concat('powershell.exe -File startChocolatey.ps1'
+	, ' -RawPackagesList ', parameters('packages')
+	, ' -Username ', parameters('installUsername')
+	, ' -Password ', parameters('installPassword'))]"
+	}
 
-##<a name="create-a-custom-artifact"></a>Create a custom artifact
+##カスタム アーティファクトの作成
 
-Create your custom artifact by following steps below:
+カスタム アーティファクトを作成するには、次の手順を実行します。
 
-1. Install a JSON editor - You will need a JSON editor to work with artifact definition files. We recommend using [Visual Studio Code](https://code.visualstudio.com/), which is available for Windows, Linux and OS X.
+1. JSON エディターのインストール - アーティファクト定義ファイルを操作するには、JSON エディターが必要です。Windows、Linux、および OS X で使用可能な [Visual Studio Code](https://code.visualstudio.com/) を使用することをお勧めします。
 
-1. Get a sample artifactfile.json - Check out the artifacts created by Azure DevTest Labs team at our [GitHub repository](https://github.com/Azure/azure-devtestlab) where we have created a rich library of artifacts that will help you create your own artifacts. Download an artifact definition file and make changes to it to create your own artifacts.
+1. サンプルの artifactfile.json の取得 - [GitHub リポジトリ](https://github.com/Azure/azure-devtestlab)で、Azure DevTest ラボ チームが作成したアーティファクトを確認します。このリポジトリには、独自のアーティファクトの作成に役立つ豊富なアーティファクト ライブラリが用意されています。アーティファクト定義ファイルをダウンロードし、変更を加えて独自のアーティファクトを作成します。
 
-1. Make use of IntelliSense - Leverage IntelliSense to see valid elements that can be used to construct an artifact definition file. You can also see the different options for values of an element. For example, IntelliSense show you the two choices of Windows or Linux when editing the **targetOsType** element.
+1. IntelliSense の利用 - IntelliSense を利用して、アーティファクト定義ファイルの作成に使用できる有効な要素を確認します。要素の値のさまざまなオプションを確認することもできます。たとえば、**targetOsType** 要素を編集する際に、IntelliSense では Windows と Linux という 2 つの選択肢が表示されます。
 
-1. Store the artifact in a git repository
-    1. Create a separate directory for each artifact where the directory name is the same as the artifact name.
-    1. Store the artifact definition file (artifactfile.json) in the directory you created.
-    1. Store the scripts that are referenced from the artifact install command.
+1. Git リポジトリへのアーティファクトの格納
+	1. アーティファクトごとに個別のディレクトリを作成します。ディレクトリ名は、アーティファクト名と同じにします。
+	1. 作成したディレクトリに、アーティファクト定義ファイル (artifactfile.json) を格納します。
+	1. アーティファクト インストール コマンドから参照されるスクリプトを格納します。
 
-    Here is an example of how an artifact folder might look:
+	アーティファクト フォルダーの例を次に示します。
 
-    ![Artifact git repo example](./media/devtest-lab-artifact-author/git-repo.png)
+	![Artifact git repo example](./media/devtest-lab-artifact-author/git-repo.png)
 
-1. Add the artifacts repository to the lab - Refer to the article, [Add a Git artifact repository to a lab](devtest-lab-add-artifact-repo.md).
+1. ラボへのアーティファクト リポジトリの追加 - 「[ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)」を参照してください。
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>Related blog posts
-- [How to troubleshoot failing Artifacts in AzureDevTestLabs](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
-- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+## 関連するブログ記事
+- [How to troubleshoot failing Artifacts in AzureDevTestLabs (AzureDevTestLabs でアーティファクトの失敗をトラブルシューティングする方法)](http://www.visualstudiogeeks.com/blog/DevOps/How-to-troubleshoot-failing-artifacts-in-AzureDevTestLabs)
+- [Join a VM to existing AD Domain using ARM template in Azure Dev Test Lab (Azure Dev Test Lab で ARM テンプレートを使用して既存の AD ドメインに VM を参加させる)](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [add a Git artifact repository to a lab](devtest-lab-add-artifact-repo.md).
+- [ラボへの Git アーティファクト リポジトリの追加](devtest-lab-add-artifact-repo.md)方法を学習します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

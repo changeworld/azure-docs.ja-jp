@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Balancing Your Cluster With the Azure Service Fabric Cluster Resource Manager | Microsoft Azure"
-   description="An introduction to balancing your cluster with the Service Fabric Cluster Resource Manager."
+   pageTitle="Azure Service Fabric クラスター リソース マネージャーでクラスターの均衡をとる | Microsoft Azure"
+   description="Service Fabric クラスター リソース マネージャーを使用してクラスターの均衡をとる方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,18 +16,17 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
+# Service Fabric クラスターの均衡をとる
+Service Fabric クラスター Resource Manager は、動的な負荷をレポートしたり、クラスター内の変更に応答したり、制約違反を修正したり、必要に応じてクラスターの再調整を行ったりしますが、これらはどのくらいの頻度で実行され、何によってトリガーされるのでしょうか。 これには、いくつかのコントロールが関係します。
 
-# <a name="balancing-your-service-fabric-cluster"></a>Balancing your service fabric cluster
-The Service Fabric Cluster Resource Manager allows reporting dynamic load, reacting to changes in the cluster, correcting constraint violations, and rebalancing the cluster if necessary. But how often does it do these things, and what triggers it? There are several controls related to this.
+均衡化に関する最初のコントロールは、一連のタイマーです。これらのタイマーによって、クラスター Resource Manager がクラスターの状態について対応する必要のある事柄を確認する頻度が制御されます。3 つの異なる作業のカテゴリがあり、それぞれに対応する独自のタイマーがあります。次に例を示します。
 
-The first set of controls around balancing are a set of timers. These timers govern how often the Cluster Resource Manager examines the state of the cluster for things that need to be addressed. There are three different categories of work, each with their own corresponding timer. They are:
+1.	配置: この段階では、不足している任意のステートフル レプリカまたはステートレスなインスタンスの配置が処理されます。これは、新しいサービスと、失敗し再作成する必要のあるステートフルなレプリカやステートレスなインスタンスの処理の両方に対応します。レプリカまたはインスタンスの削除も、ここで処理もされます。
+2.	制約チェック: この段階では、システム内のさまざまな配置の制約 (ルール) 違反の確認および修正が行われます。ルールとは、たとえば、ノードに過剰な負荷がかかっていないこと、およびサービスを配置する上での制約が満たされている (これについては後述します) ことを確認することです。
+3.	分散: この段階では、さまざまなメトリックの構成済みの望ましい均衡レベルを基準に、先を見越しての再調整が必要であるかが確認され、必要な場合、クラスターをより均衡にする編成が検出されます。
 
-1.  Placement – this stage deals with placing any stateful replicas or stateless instances which are missing. This covers both new services and handling stateful replicas or stateless instances which have failed and need to be recreated. Deleting and dropping replicas or instances is also handled here.
-2.  Constraint Checks – this stage checks for and corrects violations of the different placement constraints (rules) within the system. Examples of rules are things like ensuring that nodes are not over capacity and that a service’s placement constraints (more on these later) are met.
-3.  Balancing – this stage checks to see if proactive rebalancing is necessary based on the configured desired level of balance for different metrics, and if so attempts to find an arrangement in the cluster that is more balanced.
-
-## <a name="configuring-cluster-resource-manager-steps-and-timers"></a>Configuring Cluster Resource Manager Steps and Timers
-Each of these different types of corrections the Cluster Resource Manager can make is controlled by a different timer which governs its frequency. So for example, if you only want to deal with placing new service workloads in the cluster every hour (to batch them up), but want regular balancing checks every few seconds, you can configure that behavior. When each timer fires, the task is scheduled. By default the Resource Manager scans its state and applies updates (batching all the changes that have occurred since the last scan, like noticing that a node is down) every 1/10th of a second, sets the placement and constraint check flags every second, and the balancing flag every 5 seconds.
+## クラスター リソース マネージャーの手順とタイマーを構成する
+クラスター Resource Manager が行うことのできる、これらの異なる修正はいずれも、その頻度を制御する別々のタイマーによって管理されています。たとえば、1 時間ごとにクラスターに新しいサービスのワークロードを配置し、数秒ごとに定期的に均衡の状態を確認することのみしたい場合、その動作を構成できます。それぞれのタイマーが作動したとき、タスクがスケジュールされます。既定では、Resource Manager は 1/10 秒ごとにその状態をスキャンして更新を適用し (ノードがダウンしていることを検知するなど、前回のスキャン以降に発生したすべての変更をバッチ処理します)、1 秒ごとに配置および制約チェック フラグを設定し、5 秒ごとに均衡化フラグを設定します。
 
 ClusterManifest.xml:
 
@@ -40,14 +39,14 @@ ClusterManifest.xml:
         </Section>
 ```
 
-Today we only perform one of these actions at a time, sequentially (that’s why we refer to these configurations as “minimum intervals”)). This is so that, for example, we’ve already responded to any pending requests to create new replicas before we move on to balancing the cluster. As you can see by the default time intervals specified, we can scan and check for anything we need to do very frequently, meaning that the set of changes we make at the end of each step is usually smaller: we’re not scanning through hours of changes in the cluster and trying to correct them all at once, we are trying to handle things more or less as they happen but with some batching when many things happen at the same time. This makes the Service Fabric resource manager very responsive to things that happen in the cluster.
+現在は、これらの操作を一度に 1 つずつのみ、順番に実行しています (これらの構成を ”最小間隔” と呼ぶのはこのためです)。たとえば、クラスターの均衡をとる前に、新しいレプリカを作成する保留中の要求に対応します。指定されている既定の時間間隔からわかるように、スキャンの実行および確認事項のチェックは非常に頻繁に行われます。これは、これらの処理の後に作成される変更セットが通常は小さいことを意味します。クラスターの何時間もの変更をスキャンして、それらを一度に修正するのでなく、同時にさまざまな現象が発生する一部のバッチを除き、発生するたびに処理しようとしています。これにより、Service Fabric リソース マネージャーは、クラスター内で発生することに非常に早く対応できます。
 
-While most of these tasks are straightforward (if there are constraint violations, fix them, if there are services to be created, create them), the Cluster Resource Manager also needs some additional information to determine if the cluster imbalanced. For that we have two other pieces of configuration: *Balancing Thresholds* and *Activity Thresholds*.
+これらのタスクのほとんどは単純なものですが (制約の違反があれば修正し、作成すべきサービスがあれば作成する)、クラスター Resource Manager は、クラスターが不均衡であるかどうかを判断するために追加の情報も必要とします。そのために、他に、*分散しきい値*と*アクティビティしきい値*という 2 つの構成要素があります。
 
-## <a name="balancing-thresholds"></a>Balancing thresholds
-A Balancing Threshold is the main control for triggering proactive rebalancing (remember that the timer is just for how often the Cluster Resource Manager should check - it doesn't mean that anything will happen). The Balancing Threshold defines how imbalanced the cluster needs to be for a specific metric in order for the Cluster Resource Manager to consider it imbalanced and trigger balancing.
+## 分散しきい値
+分散しきい値は、事前対応型の再調整をトリガーする主要コントロールです (タイマーはクラスター Resource Manager がどのくらいの頻度で確認するかを決めるだけで、何かが実行されるということではありません)。分散しきい値は、特定のメトリックがどのようなときに、クラスター Resource Manager によってクラスターの均衡が崩れていると判断され、均衡化がトリガーされるのかを定義します。
 
-Balancing Thresholds are defined on a per-metric basis as a part of the cluster definition. For more information on metrics check out [this article](service-fabric-cluster-resource-manager-metrics.md).
+分散しきい値は、クラスター定義の一部としてメトリックごとに定義されます。メトリックについて詳しくは、「[Service Fabric のリソース使用量と負荷をメトリックで管理する](service-fabric-cluster-resource-manager-metrics.md)」をご覧ください。
 
 ClusterManifest.xml
 
@@ -58,26 +57,26 @@ ClusterManifest.xml
     </Section>
 ```
 
-The Balancing Threshold for a metric is a ratio. If the amount of load on the most loaded node divided by the amount of load on the least loaded node exceeds this number, then the cluster is considered imbalanced and balancing will be triggered the next time the Cluster Resource Manager checks (by default, ever 5 seconds, as governed by the MinLoadBalancingInterval, shown above).
+メトリックの分散しきい値は割合で規定されます。最も負荷がかかっているノードの負荷量を、最も負荷がかかっていないノードの負荷量で割ったものがこの割合を超過する場合、クラスターは不均衡であると見なされ、クラスター Resource Manager の次回の確認時に、均衡化がトリガーされます (既定では、上述の MinLoadBalancingInterval によって制御されているとおり 5 秒ごと)。
 
-![Balancing Threshold Example][Image1]
+![分散しきい値の例][Image1]
 
-In this simple example each service is consuming one unit of some metric. In the top example, the maximum load on a node is 5 and the minimum is 2. Let’s say that the balancing threshold for this metric is 3. Therefore, in the top example, the cluster is considered balanced and no balancing will be triggered when the Cluster Resource Manager checks (since the ratio in the cluster is 5/2 = 2.5 and that is less than the specified balancing threshold of 3).
+この単純な例では、各サービスはいくつかのメトリックの 1 つの単位を消費しています。一番上の例では、ノードに対する最大の負荷は 5 で最小は 2 です。このメトリックの分散しきい値は 3 だとします。そのため、上の例では、クラスターは均衡がとれていると見なされ、クラスター Resource Manager による確認時に均衡化はトリガーされません (クラスター内の割合は 5/2 = 2.5 であり、指定された分散しきい値 3 より小さいため)。
 
-In the bottom example, the max load on a node is 10, while the minimum is 2, resulting in a ratio of 5. This puts the cluster over the designed balancing threshold of 3 for that metric. As a result, a global rebalancing run will be scheduled next time the balancing timer fires. Note that just because a balancing search is kicked off doesn't mean anything will move - sometimes the cluster is imbalanced but the situation can't be improved - but in a situation like this one (at least by default) some the load will almost certainly be distributed to Node3. Note that since we are not using a greedy approach some load could also be distributed to Node2 since that would result in minimization of the overall differences between nodes, but we would expect that the majority of the load would flow to Node3.
+下の例では、ノードに対する最大の負荷は 10 で最小は 2 であり、割合は 5 になります。クラスターはそのメトリックに対して指定されている分散しきい値 3 を超えています。その結果、グローバルな再調整の実行が、次回の均衡化タイマーの作動時にスケジュールされます。均衡化の検索が開始されても、何かが移動するわけではありません。クラスターが不均衡である場合がありますが、状況は改善されません。ただし、このような状況では (少なくとも既定では) 負荷の一部はほぼ確実に Node3 に分散されます。最大限まで許可するアプローチはとっていないので、負荷の一部は Node2 にも分散される可能性があります。ノード間の全体的な相違が最小化されますが、負荷の大部分は Node3 に流れることが推測されます。
 
-![Balancing Threshold Example Actions][Image2]
+![分散しきい値のアクション例][Image2]
 
-Note that getting below the balancing threshold is not an explicit goal – Balancing Thresholds are just a *trigger* that tells the Cluster Resource Manager that it should look into the cluster to determine what improvements it can make, if any.
+分散しきい値を下回ることは明確な目標ではありません。しきい値はクラスター Resource Manager にクラスターを確認して、改善ができることがある場合はそれを判断するように通知する*トリガー*にすぎません。
 
-## <a name="activity-thresholds"></a>Activity thresholds
-Sometimes, although nodes are relatively imbalanced, the *total* amount of load in the cluster is low. This could be just because of the time of day, or because the cluster is new and just getting bootstrapped. In either case, you may not want to spend time balancing the cluster because there’s actually very little to be gained – you’ll just be spending network and compute resources to move things around, without making any absolute difference. Because we want to avoid doing this, there’s another control inside of the Resource Manager, known as Activity Thresholds, which allows you to specify some absolute lower bound for activity – if no node has at least this much load then balancing will not be triggered even if the Balancing Threshold is met.
+## アクティビティしきい値
+ノードが相対的に不均衡であるにもかかわらず、クラスターの負荷*全体*が低い場合があります。これは単に、その日のその時間帯のため、またはクラスターが新しくて現在起動中であるためである場合があります。このいずれかの場合は、移動のためにネットワークおよびコンピューティング リソースを消費するだけになってしまい、得るものが少ないので、クラスターの均衡をとるためにあまり時間をかけたくないでしょう。これを避けるため、Resource Manager には、アクティビティしきい値と呼ばれるもう 1 つのコントロールがあります。これは、アクティビティのいくつかの絶対的な下限を指定します。アクティビティしきい値以上の負荷がどのノードにもない場合、分散しきい値が満たされても、均衡化はトリガーされません。
 
-As an example let’s say that we have reports with the following totals for consumption on these nodes. Let’s also say that we retain our Balancing Threshold of 3 for this metric, but now we also have an Activity Threshold of 1536. In the first case, while the cluster is imbalanced per the Balancing Threshold no node meets that minimum Activity Threshold, so we leave things alone. In the bottom example, Node1 is way over the Activity Threshold, so balancing will be performed (since both the Balancing Threshold and the Activity Threshold for the metric are exceeded)
+以下のノードで、以下が合計で消費されているとレポートされているとします。また、このメトリックに対して分散しきい値 3 を維持しているが、同時にアクティビティしきい値が 1536 であるとしましょう。最初の例において、分散しきい値ではクラスターは不均衡ですが、アクティビティしきい値を満たすノードはないので、そのまま変更はありません。下の例では、Node1 がアクティビティしきい値を大幅に上回っているので、均衡化が実行されます (メトリックに対する分散しきい値とアクティビティしきい値の両方が超過しているため)。
 
-![Activity Threshold Example][Image3]
+![アクティビティしきい値の例][Image3]
 
-Just like Balancing Thresholds, Activity Thresholds are defined per-metric via the cluster definition:
+分散しきい値同様、アクティビティしきい値もクラスター定義でメトリックごとに定義します。
 
 ClusterManifest.xml
 
@@ -87,37 +86,33 @@ ClusterManifest.xml
     </Section>
 ```
 
-Note that balancing and activity thresholds are both tied to the metric - balancing will only be triggered if both balancing and activity thresholds are exceeded for the same metric. Thus, if we exceed the Balancing Threshold for Memory and the Activity Threshold for CPU, balancing will not trigger as long as the remaining thresholds (Balancing Threshold for CPU and Activity Threshold for Memory) are not exceeded.
+分散しきい値とアクティビティしきい値はメトリックに関連付けられています。分散処理は、分散とアクティビティしきい値の両方が同じメトリックを超えた場合にのみトリガーされることに注意してください。分散しきい値がメモリーしきい値を超え、アクティビティしきい値が CPU しきい値を超えても、残りのしきい値 (CPU しきい値に対する分散しきい値およびメモリーしきい値に対するアクティビティしきい値) が超過しない限り、分散処理はトリガーされません。
 
-## <a name="balancing-services-together"></a>Balancing services together
-Something that’s interesting to note is that whether the cluster is imbalanced or not is a cluster-wide decision, but the way we go about fixing it is moving individual service replicas and instances around. This makes sense, right? If memory is stacked up on one node, multiple replicas or instances could be contributing to it, so it could require moving any of the stateful replicas or stateless instances that use the affected, imbalanced metric.
+## 同時にサービスの均衡をとる
+クラスターが不均衡かどうかということは、クラスター全体で判断しますが、それを修正するには、個々のサービス レプリカとインスタンスを移動させる必要があるというを念頭に置く必要があります。ご理解いただけましたでしょうか。 メモリが 1 つのノードに集中している場合、複数のレプリカやインスタンスが原因である可能性があるため、影響している不均衡なメトリックを使用するすべてのステートフルなレプリカまたはステートレスなインスタンスを移動する必要がある場合があります。
 
-Occasionally though a customer will call us up or file a ticket saying that a service that wasn’t imbalanced got moved. How could it happen that a service gets moved around even if all of that service’s metrics were balanced, even perfectly so, at the time of the other imbalance? Let’s see!
+しかし、電話やチケットでのお問い合わせで、均衡が崩れていないサービスが移動されたと訴えられるお客様が時折いらっしゃいます。そのサービスのすべてのメトリックの均衡がたとえ完全に取れていても、他のサービスに不均衡がある場合、なぜサービスが移動してしまうのでしょうか。 確認してみましょう。
 
-Take for example four services, Service1, Service2, Service3, and Service4. Service1 reports against metrics Metric1 and Metric2, Service2 against Metric2 and Mmetric3, Service3 against Metric3 and Metric4, and Service4 against some metric Metric99. Surely you can see where we’re going here. We have a chain! From the perspective of the Cluster Resource Manager, we don’t really have four independent services, we have a bunch of services that are related (Service1, Service2, and Service3) and one that is off on its own.
+4 つのサービス、Service1、Service2、Service3、Service4 を例にとります。Service1 は Metric1 と Metric2、Service2 は Metric2 と Metric3、Service3 は Metric3 と Metric4、Service4 は Metric99 に対してレポートを行います。これで、お分かりいただけたでしょうか。チェーンがあります。 クラスター Resource Manager の観点からすると、実際には 4 つの独立したサービスがあるわけではなく、関連する複数のサービス (Service1、Service2、および Service3) と、独立したサービスが 1 つあります。
 
-![Balancing Services Together][Image4]
+![同時にサービスの均衡をとる][Image4]
 
-So it is possible that an imbalance in Metric1 can cause replicas or instances belonging to Service3 to move around. Usually these movements are pretty limited, but can be larger depending on exactly how imbalanced Metric1 got and what changes were necessary in the cluster in order to correct it. We can also say with certainty that an imbalance in Metrics 1, 2, or 3 will never cause movements in Service4 – there’d be no point since moving the replicas or instances belonging to Service4 around can do absolutely nothing to impact the balance of Metrics 1, 2, or 3.
+したがって、Metric1 の不均衡は Service3 に属するレプリカやインスタンスが移動する原因になる可能性があります。Metric1 の不均衡の度合いによっては、またそれを修正するためにクラスターでどのような変更を行う必要があったのかによっては、通常は非常に少ないこのような移動が、多くなる場合があります。また、メトリック 1、2、または 3 の不均衡によって Service4 で移動が発生することは確実にありません。Service4 に属するレプリカまたはインスタンスを移動しても、メトリック 1、2、または 3 の均衡には絶対に影響しません。
 
-The Cluster Resource Manager automatically figures out what services are related, since services may have been added, removed, or had their metric configuration change – for example, between two runs of balancing Service2 may have been reconfigured to remove Metric2. This breaks the chain between Service1 and Service2. Now instead of two groups of services, you have three:
+クラスター Resource Manager は、サービスの追加または削除や、メトリック構成の変更の可能性があるため、関連するサービスを自動的に検出します (たとえば、均衡化を 2 回実行する間に Service2 が再構成されて Metric2 が削除される可能性があります)。これによって、Service1 と Service2 間のチェーンが崩れます。2 グループのサービスでなく、3 グループになります。
 
-![Balancing Services Together][Image5]
+![同時にサービスの均衡をとる][Image5]
 
-## <a name="next-steps"></a>Next steps
-- Metrics are how the Service Fabric Cluster Resource Manger manages consumption and capacity in the cluster. To learn more about them and how to configure them check out [this article](service-fabric-cluster-resource-manager-metrics.md)
-- Movement Cost is one way of signaling to the Cluster Resource Manager that certain services are more expensive to move than others. To learn more about movement cost, refer to [this article](service-fabric-cluster-resource-manager-movement-cost.md)
-- The Cluster Resource Manager has several throttles that you can configure to slow down churn in the cluster. They're not normally necessary, but if you need them you can learn about them [here](service-fabric-cluster-resource-manager-advanced-throttling.md)
-
-
-[Image1]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
-[Image2]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png
-[Image3]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-activity-thresholds.png
-[Image4]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
-[Image5]:./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
+## 次のステップ
+- メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
+- 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。移動コストの詳細については、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)を参照してください。
+- クラスター リソース マネージャーにはスロットルがいくつかあります。クラスターのチャーン (激しい動き) を落ち着かせるようにスロットルを構成できます。通常は必要ありませんが、必要であれば、[ここ](service-fabric-cluster-resource-manager-advanced-throttling.md)で詳細を確認できます。
 
 
+[Image1]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resrouce-manager-balancing-thresholds.png
+[Image2]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-threshold-triggered-results.png
+[Image3]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-activity-thresholds.png
+[Image4]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together1.png
+[Image5]: ./media/service-fabric-cluster-resource-manager-balancing/cluster-resource-manager-balancing-services-together2.png
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

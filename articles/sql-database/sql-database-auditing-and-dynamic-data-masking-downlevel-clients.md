@@ -1,80 +1,75 @@
 <properties
-    pageTitle="SQL Database downlevel clients support and IP endpoint changes for Auditing| Microsoft Azure"
-    description="Learn about SQL Database downlevel clients support and IP endpoint changes for Auditing."
-    services="sql-database"
-    documentationCenter=""
-    authors="ronitr"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="SQL Database - 監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更 | Microsoft Azure"
+	description="SQL Database での監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更について説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="ronitr"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/10/2016"
-    ms.author="ronitr"/>
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/10/2016"
+	ms.author="ronitr"/>
+
+# SQL Database - 監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 
 
-# <a name="sql-database---downlevel-clients-support-and-ip-endpoint-changes-for-auditing"></a>SQL Database -  Downlevel clients support and IP endpoint changes for Auditing
+[監査](sql-database-auditing-get-started.md)は TDS リダイレクションに対応する SQL クライアントと自動的に連動します。
 
 
-[Auditing](sql-database-auditing-get-started.md) works automatically with SQL clients that support TDS redirection.
+##<a id="subheading-1"></a>ダウンレベル クライアントのサポート
 
+TDS 7.4 を実装するクライアントもリダイレクトをサポートします。この例外には一部のリダイレクション機能に対応していない JDBC 4.0 とリダイレクションが実装されていない Tedious for Node.JS があります。
 
-##<a name="<a-id="subheading-1"></a>downlevel-clients-support"></a><a id="subheading-1"></a>Downlevel clients support
+「ダウンレベル クライアント」、つまり、TDS バージョンが 7.3 以前のクライアントの場合、接続文字列のサーバー FQDN を変更する必要があります。
 
-Any client which implements TDS 7.4 should also support redirection. Exceptions to this include JDBC 4.0 in which the redirection feature is not fully supported and Tedious for Node.JS in which redirection was not implemented.
+接続文字列の元のサーバー FQDN: <*server name*>.database.windows.net
 
-For "Downlevel clients", i.e. which support TDS version 7.3 and below - the server FQDN in the connection string should be modified:
+接続文字列の変更後のサーバー FQDN: <*server name*>.database.**secure**.windows.net
 
-Original server FQDN in the connection string: <*server name*>.database.windows.net
+「ダウンレベル クライアント」には次が含まれます。
 
-Modified server FQDN in the connection string: <*server name*>.database.**secure**.windows.net
+- .NET 4.0 以前
+- ODBC 10.0 以前
+- JDBC (JDBC は TDS 7.4 対応ですが、一部の TDS リダイレクション機能に対応していません。)
+- Tedious (Node.JS 用)
 
-A partial list of "Downlevel clients" includes:
+**注記:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。
 
-- .NET 4.0 and below,
-- ODBC 10.0 and below.
-- JDBC (while JDBC does support TDS 7.4, the TDS redirection feature is not fully supported)
-- Tedious (for Node.JS)
+##<a id="subheading-2"></a>監査を有効にしたときの IP エンドポイントの変更
 
-**Remark:** The above server FDQN modification may be useful also for applying a SQL Server Level Auditing policy without a need for a configuration step in each database (Temporary mitigation).
+監査を有効にすると、データベースの IP エンドポイントが変更されます。ファイアウォールを厳密に設定している場合は、この変更に従ってファイアウォールの設定を更新してください。
 
-##<a name="<a-id="subheading-2"></a>ip-endpoint-changes-when-enabling-auditing"></a><a id="subheading-2"></a>IP endpoint changes when enabling Auditing
+データベースの新しい IP エンドポイントは、データベース リージョンによって異なります。
 
-Please note that when you enable Auditing, the IP endpoint of your database will change. If you have strict firewall settings, please update those firewall settings accordingly.
-
-The new database IP endpoint will depend on the database region:
-
-| Database Region | Possible IP endpoints |
+| データベース リージョン | 使用可能な IP エンドポイント |
 |----------|---------------|
-| China North  | 139.217.29.176, 139.217.28.254 |
-| China East  | 42.159.245.65, 42.159.246.245 |
-| Australia East  | 104.210.91.32, 40.126.244.159, 191.239.64.60, 40.126.255.94 |
-| Australia Southeast | 191.239.184.223, 40.127.85.81, 191.239.161.83, 40.127.81.130 |
-| Brazil South  | 104.41.44.161, 104.41.62.230, 23.97.99.54, 104.41.59.191 |
-| Central US  | 104.43.255.70, 40.83.14.7, 23.99.128.244, 40.83.15.176 |
-| East Asia   | 23.99.125.133, 13.75.40.42, 23.97.71.138, 13.94.43.245 |
-| East US 2 | 104.209.141.31, 104.208.238.177, 191.237.131.51, 104.208.235.50 |
-| East US   | 23.96.107.223, 104.41.150.122, 23.96.38.170, 104.41.146.44 |
-| Central India  | 104.211.98.219, 104.211.103.71 |
-| South India   | 104.211.227.102, 104.211.225.157 |
-| West India  | 104.211.161.152, 104.211.162.21 |
-| Japan East   | 104.41.179.1, 40.115.253.81, 23.102.64.207, 40.115.250.196 |
-| Japan West    | 104.214.140.140, 104.214.146.31, 191.233.32.34, 104.214.146.198 |
-| North Central US  | 191.236.155.178, 23.96.192.130, 23.96.177.169, 23.96.193.231 |
-| North Europe  | 104.41.209.221, 40.85.139.245, 137.116.251.66, 40.85.142.176 |
-| South Central US  | 191.238.184.128, 40.84.190.84, 23.102.160.153, 40.84.186.66 |
-| Southeast Asia  | 104.215.198.156, 13.76.252.200, 23.97.51.109, 13.76.252.113 |
-| West Europe  | 104.40.230.120, 13.80.23.64, 137.117.171.161, 13.80.8.37, 104.47.167.215, 40.118.56.193, 104.40.176.73, 40.118.56.20 |
-| West US  | 191.236.123.146, 138.91.163.240, 168.62.194.148, 23.99.6.91 |
-| Canada Central  | 13.88.248.106 |
-| Canada East  |  40.86.227.82 |
+| 中国 (北部) | 139\.217.29.176、139.217.28.254 |
+| 中国 (東部) | 42\.159.245.65、42.159.246.245 |
+| オーストラリア東部 | 104\.210.91.32、40.126.244.159、191.239.64.60、40.126.255.94 |
+| オーストラリア南東部 | 191\.239.184.223、40.127.85.81、191.239.161.83、40.127.81.130 |
+| ブラジル南部 | 104\.41.44.161、104.41.62.230、23.97.99.54、104.41.59.191 |
+| 米国中央部 | 104\.43.255.70、40.83.14.7、23.99.128.244、40.83.15.176 |
+| 東アジア | 23\.99.125.133、13.75.40.42、23.97.71.138、13.94.43.245 |
+| 米国東部 2 | 104\.209.141.31、104.208.238.177、191.237.131.51、104.208.235.50 |
+| 米国東部 | 23\.96.107.223、104.41.150.122、23.96.38.170、104.41.146.44 |
+| インド中部 | 104\.211.98.219、104.211.103.71 |
+| インド南部 | 104\.211.227.102、104.211.225.157 |
+| インド西部 | 104\.211.161.152、104.211.162.21 |
+| 東日本 | 104\.41.179.1、40.115.253.81、23.102.64.207、40.115.250.196 |
+| 西日本 | 104\.214.140.140、104.214.146.31、191.233.32.34、104.214.146.198 |
+| 米国中北部 | 191\.236.155.178、23.96.192.130、23.96.177.169、23.96.193.231 |
+| 北ヨーロッパ | 104\.41.209.221、40.85.139.245、137.116.251.66、40.85.142.176 |
+| 米国中南部 | 191\.238.184.128、40.84.190.84、23.102.160.153、40.84.186.66 |
+| 東南アジア | 104\.215.198.156、13.76.252.200、23.97.51.109、13.76.252.113 |
+| 西ヨーロッパ | 104\.40.230.120、13.80.23.64、137.117.171.161、13.80.8.37、104.47.167.215、40.118.56.193、104.40.176.73、40.118.56.20 |
+| 米国西部 | 191\.236.123.146、138.91.163.240、168.62.194.148、23.99.6.91 |
+| カナダ中部 | 13\.88.248.106 |
+| カナダ東部 | 40\.86.227.82 |
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

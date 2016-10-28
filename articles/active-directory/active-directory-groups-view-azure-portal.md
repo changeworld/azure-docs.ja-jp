@@ -1,54 +1,49 @@
 <properties
-    pageTitle="View all existing groups in Azure Active Directory preview | Microsoft Azure"
-    description="How to view the groups that have already been created in Azure Active Directory preview."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory プレビューですべての既存のグループを表示する | Microsoft Azure"
+	description="Azure Active Directory プレビューで既に作成されているグループを表示する方法。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
 
+# Azure Active Directory プレビューですべての既存のグループを表示する
 
-# <a name="view-all-existing-groups-in-azure-active-directory-preview"></a>View all existing groups in Azure Active Directory preview
+この記事では、Azure Active Directory (Azure AD) プレビューですべてのグループを表示する方法について説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 Azure Active Directory (Azure AD) ユーザー管理の機能の 1 つに、ユーザーを追加できるグループを作成する機能があります。グループは、複数のユーザーにライセンスまたはアクセス許可を一度に割り当てるような管理タスクを実行するために使用します。
 
-This article explains how to view all groups in Azure Active Directory (Azure AD) preview. [What's in the preview?](active-directory-preview-explainer.md) One of the features of Azure Active Directory (Azure AD) user management is the ability to create groups that you can populate with your users. You use a group to perform management tasks such as assigning licenses or permissions to a number of users at once.
+## すべてのグループを表示する方法
 
-## <a name="how-do-i-see-all-the-groups?"></a>How do I see all the groups?
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+    ![ユーザー管理を開く](./media/active-directory-groups-view-azure-portal/search-user-management.png)
 
-    ![Opening user management](./media/active-directory-groups-view-azure-portal/search-user-management.png)
+3.  **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
 
-3.  On the **Users and groups** blade, select **All groups**.
+    ![グループ ブレードを開く](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
 
-    ![Opening the groups blade](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
+4. **[ユーザーとグループ - すべてのグループ]** ブレードでは、表示列の追加または削除、グループを検索するための一覧のフィルター処理、グループの変更 (変更するための十分なアクセス許可が必要) を行うことができます。
 
-4. On the **Users and groups - All groups** blade, you can add or remove display columns, filter the list to search for a group, or make changes to groups that you have sufficient permissions to change.
+## 追加情報
 
-## <a name="additional-information"></a>Additional information
+次の記事は、Azure Active Directory に関する追加情報を示します。
 
-These articles provide additional information on Azure Active Directory.
+* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
+* [新しいグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)
+* [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
+* [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
+* [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
+* [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
 
-* [See existing groups](active-directory-groups-view-azure-portal.md)
-* [Create a new group and adding members](active-directory-groups-create-azure-portal.md)
-* [Manage settings of a group](active-directory-groups-settings-azure-portal.md)
-* [Manage members of a group](active-directory-groups-members-azure-portal.md)
-* [Manage memberships of a group](active-directory-groups-membership-azure-portal.md)
-* [Manage dynamic rules for users in a group](active-directory-groups-dynamic-membership-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

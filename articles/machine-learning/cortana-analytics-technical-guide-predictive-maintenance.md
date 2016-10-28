@@ -1,293 +1,275 @@
 <properties
-    pageTitle="Technical guide to the Cortana Intelligence Solution Template for predictive maintenance in aerospace and other businesses | Microsoft Azure"
-    description="A technical guide to the Solution Template with Microsoft Cortana Intelligence for predictive maintenance in aerospace, utilities, and transportation."
-    services="cortana-analytics"
-    documentationCenter=""
-    authors="fboylu"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド | Microsoft Azure"
+	description="航空宇宙、公益事業、および輸送業界における予測メンテナンスのための Microsoft Cortana Intelligence によるソリューション テンプレートに関する技術ガイドです。"
+	services="cortana-analytics"
+	documentationCenter=""
+	authors="fboylu"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="cortana-analytics"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/13/2016"
-    ms.author="fboylu" />
+	ms.service="cortana-analytics"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/13/2016"
+	ms.author="fboylu" />
 
+# 航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
-# <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technical guide to the Cortana Intelligence Solution Template for predictive maintenance in aerospace and other businesses
+## **謝辞**
+この記事はマイクロソフトのデータ サイエンティストである Yan Zhang、Gauher Shaheen、Fidan Boylu Uz とソフトウェア エンジニアの Dan Grecoe によって記述されました。
 
-## <a name="**acknowledgements**"></a>**Acknowledgements**
-This article is authored by data scientists Yan Zhang, Gauher Shaheen, Fidan Boylu Uz and software engineer Dan Grecoe at Microsoft.
+## **概要**
 
-## <a name="**overview**"></a>**Overview**
+ソリューション テンプレートは、Cortana Intelligence Suite に基づいて、エンド ツー エンドのデモを構築するプロセスを促進するために設計されています。デプロイされたテンプレートは、必要な Cortana Intelligence コンポーネントのサブスクリプションをプロビジョニングし、それらの関係を構築します。また、ソリューション テンプレートのデプロイ後にローカル コンピューターにダウンロードし、インストールするデータ ジェネレーター アプリケーションから生成されたサンプル データをデータ パイプラインに入力します。ジェネレーターから生成されたデータがデータ パイプラインに入力され、Machine Learning 予測の生成が開始されます。生成された Machine Learning 予測は Power BI ダッシュボードで視覚化されます。デプロイメント プロセスでは、ソリューション資格情報を設定するためのいくつかの手順を進みます。デプロイメント時に指定したソリューション名、ユーザー名、パスワードなどの資格情報を記録しておくようにしてください。
 
-Solution Templates are designed to accelerate the process of building an E2E demo on top of Cortana Intelligence Suite. A deployed template will provision your subscription with necessary Cortana Intelligence components and build the relationships between them. It also seeds the data pipeline with sample data generated from a data generator application which you will download and install on your local machine after you deploy the solution template. The data generated from the generator will hydrate the data pipeline and start generating machine learning predictions which can then be visualized on the Power BI dashboard. The deployment process will guide you through several steps to set up your solution credentials. Make sure you record these credentials such as solution name, username, and password you provide during the deployment.  
+このドキュメントの目的は、このソリューション テンプレートの一部として、サブスクリプションでプロビジョニングされる参照アーキテクチャとさまざまなコンポーネントについて説明することです。さらに、独自のデータから洞察と予測を表示できるように、サンプル データを実際のデータと置き換える方法についても説明します。また、独自のデータによってソリューションをカスタマイズする必要がある場合に、変更する必要があると考えられるソリューション テンプレートの部分についても説明します。このソリューション テンプレートの Power BI ダッシュボードを構築する方法については、最後に説明します。
 
-The goal of this document is to explain the reference architecture and different components provisioned in your subscription as part of this solution template. The document also talks about how to replace the sample data with real data of your own to be able to see insights and predictions from your own data. Additionally, the document discusses the parts of the Solution Template that would need to be modified if you wanted to customize the solution with your own data. Instructions on how to build the Power BI dashboard for this Solution Template are provided at the end.
+>[AZURE.TIP] [このドキュメントの PDF バージョン](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)をダウンロードして、印刷できます。
 
->[AZURE.TIP] You can download and print a [PDF version of this document](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf).
-
-## <a name="**big-picture**"></a>**Big picture**
+## **全体像**
 
 ![](media/cortana-analytics-technical-guide-predictive-maintenance\predictive-maintenance-architecture.png)
 
-When the solution is deployed, various Azure services within Cortana Analytics Suite are activated (*i.e.* Event Hub, Stream Analytics, HDInsight, Data Factory, Machine Learning, *etc.*). The architecture diagram above shows, at a high level, how the Predictive Maintenance for Aerospace Solution Template is constructed from end-to-end. You will be able to investigate these services in the azure portal by clicking on them on the solution template diagram created with the deployment of the solution with the exception of HDInsight as this service is provisioned on demand when the related pipeline activities are required to run and deleted afterwards.
-You can download a [full-size version of the diagram](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png).
+ソリューションをデプロイすると、Cortana Analytics Suite 内のさまざまな Azure サービス (*つまり*、 Event Hub、Stream Analytics、HDInsight、Data Factory、Machine Learning *など*) がアクティブ化されます。上のアーキテクチャ図は、エンド ツー エンドの航空宇宙ソリューション テンプレートの予測メンテナンスの構築方法を大まかに示しています。これらのサービスは Azure ポータルで調査できます。その場合、ソリューションのデプロイメントで作成されたソリューション テンプレート図でサービスをクリックします。HDInsight は例外となります。このサービスは、関連パイプライン アクティビティを実行し、後で削除するときにオンデマンドでプロビジョニングされます。[図のフルサイズ バージョン](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png)をダウンロードできます。
 
-The following sections describe each piece.
+次のセクションでは、各部分について説明します。
 
-## <a name="**data-source-and-ingestion**"></a>**Data source and ingestion**
+## **データ ソースと取り込み**
 
-### <a name="synthetic-data-source"></a>Synthetic data source
+### 合成データソース
 
-For this template the data source used is generated from a desktop application that you will download and run locally after successful deployment. You will find the instructions to download and install this application in the properties bar when you select the first node called Predictive Maintenance Data Generator on the solution template diagram. This application feeds the [Azure Event Hub](#azure-event-hub) service with data points, or events, that will be used in the rest of the solution flow. This data source is comprised of or derived from publicly available data from the [NASA data repository](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) using the [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+このテンプレートでは、デプロイメントの成功後にローカルにダウンロードして、実行するデスクトップ アプリケーションから、使用するデータ ソースが生成されます。このアプリケーションをダウンロードして、インストールする手順については、ソリューション テンプレート図の予測メンテナンス データ ジェネレーターと呼ばれる最初のノードを選択すると、プロパティ バーに表示されます。このアプリケーションは、[Azure Event Hub](#azure-event-hub) サービスに、ソリューション フローの残りで使用されるデータ ポイント、またはイベントを提供します。このデータ ソースは、[Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) を使用して、[NASA データ リポジトリ](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/)で公開されているデータから構成または派生したものです。
 
-The event generation application will populate the Azure Event Hub only while it's executing on your computer.
+イベント生成アプリケーションは、コンピューターで実行中の場合にのみ、Azure Event Hub にデータを入力します。
 
-### <a name="azure-event-hub"></a>Azure event hub
+### Azure Event Hub
 
-The [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) service is the recipient of the input provided by the Synthetic Data Source described above.
+[Azure Event Hub](https://azure.microsoft.com/services/event-hubs/) サービスは、上記の合成データ ソースによって提供される入力の受け取り側です。
 
-## <a name="**data-preparation-and-analysis**"></a>**Data preparation and analysis**
-
-
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-
-The [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) service is used to provide near real-time analytics on the input stream from the [Azure Event Hub](#azure-event-hub) service and publish results onto a [Power BI](https://powerbi.microsoft.com) dashboard as well as archiving all raw incoming events to the [Azure Storage](https://azure.microsoft.com/services/storage/) service for later processing by the [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service.
-
-### <a name="hd-insights-custom-aggregation"></a>HD Insights custom aggregation
-
-The Azure HD Insight service is used to run [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) scripts (orchestrated by Azure Data Factory) to provide aggregations on the raw events that were archived using the Azure Stream Analytics service.
-
-### <a name="azure-machine-learning"></a>Azure Machine Learning
-
-The [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) service is used (orchestrated by Azure Data Factory) to make predictions on the remaining useful life (RUL) of a particular aircraft engine given the inputs received.
-
-## <a name="**data-publishing**"></a>**Data publishing**
+## **データの準備と分析**
 
 
-### <a name="azure-sql-database-service"></a>Azure SQL Database Service
+### Azure Stream Analytics
 
-The [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) service is used to store (managed by Azure Data Factory) the predictions received by the Azure Machine Learning service that will be consumed in the [Power BI](https://powerbi.microsoft.com) dashboard.
+[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) サービスを使用して、[Azure Event Hub](#azure-event-hub) サービスからの入力ストリームをほぼリアルタイムで分析し、結果を [Power BI](https://powerbi.microsoft.com) ダッシュボードに公開するほか、後で [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスで処理するために、未加工のすべての受信イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) サービスにアーカイブできます。
 
-## <a name="**data-consumption**"></a>**Data consumption**
+### HD Insights カスタム集計
 
-### <a name="power-bi"></a>Power BI
+Azure HD Insight サービスを使用して、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプト (Azure Data Factory によって調整される) を実行し、Azure Stream Analytics サービスによってアーカイブされた未加工のイベントの集計を行います。
 
-The [Power BI](https://powerbi.microsoft.com) service is used to show a dashboard that contains aggregations and alerts provided by the [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) service as well as RUL predictions stored in [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) that were produced using the [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) service. For Instructions on how to build the Power BI dashboard for this Solution Template, refer to the section below.
+### Azure Machine Learning
 
-## <a name="**how-to-bring-in-your-own-data**"></a>**How to bring in your own data**
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) サービスを使用して (Azure Data Factory によって調整される)、受け取った入力から、特定の航空機エンジンの残存耐用年数 (RUL) を予測します 。
 
-This section describes how to bring your own data to Azure, and what areas would require changes for the data you bring into this architecture.
+## **データの公開**
 
-It's unlikely that any dataset you bring would match the dataset used by the [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) used for this solution template. Understanding your data and the requirements will be crucial in how you modify this template to work with your own data. If this is your first exposure to the Azure Machine Learning service, you can get an introduction to it by using the example in [How to create your first experiment](machine-learning-create-experiment.md).
 
-The following sections will discuss the sections of the template that will require modifications when a new dataset is introduced.
+### Azure SQL Database サービス
 
-### <a name="azure-event-hub"></a>Azure Event Hub
+[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) サービスを使用して、[Power BI](https://powerbi.microsoft.com) ダッシュボードで使用される Azure Machine Learning サービスが受け取った予測を保存します (Azure Data Factory によって管理される)。
 
-The Azure Event Hub service is very generic, such that data can be posted to the hub in either CSV or JSON format. No special processing occurs in the Azure Event Hub, but it's important that you understand the data that's fed into it.
+## **データの使用**
 
-This document does not describe how to ingest your data, but you can easily send events or data to an Azure Event Hub using the Event Hub API's.
+### Power BI
 
-### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+[Power BI](https://powerbi.microsoft.com) サービスを使用して、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) サービスによって提供される集計とアラートのほか、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) サービスを使用して生成され、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に保存された RUL 予測を記載するダッシュボードを表示します。このソリューション テンプレートの Power BI ダッシュボードを構築する方法については、次のセクションを参照してください。
 
-The Azure Stream Analytics service is used to provide near real-time analytics by reading from data streams and outputting data to any number of sources.
+## **独自のデータを取り込む方法**
 
-For the Predictive Maintenance for Aerospace Solution Template, the Azure Stream Analytics query consists of four sub-queries, each consuming events from the Azure Event Hub service, and having outputs to four distinct locations. These outputs consist of three Power BI datasets and one Azure Storage location.
+このセクションでは、Azure に独自のデータを取り込む方法およびこのアーキテクチャに取り込むデータに応じて変更が必要になりそうな領域について説明します。
 
-The Azure Stream Analytics query can be found by:
+取り込むデータセットが、このソリューション テンプレートで使用されている [Turbofan Engine Degradation Simulation Data Set (ターボファン エンジンの劣化シミュレーション データ セット)](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) に含まれるデータセットに一致している可能性はほとんどないでしょう。自分のデータと要件を理解することは、独自のデータで動作するように、このテンプレートを変更する方法においてきわめて重要です。Azure Machine Learning サービスを初めて使用する場合は、[初めての実験を作成する方法](machine-learning-create-experiment.md)の例を使用して、概要を把握することができます。
 
--   Logging into the Azure portal
+以降のセクションでは、新しいデータセットを導入したときに変更が必要となるテンプレートのセクションについて説明します。
 
--   Locating the stream analytics jobs ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-stream-analytics.png) that were generated when the solution was deployed (*e.g.*, **maintenancesa02asapbi** and **maintenancesa02asablob** for the predictive maintenance solution)
+### Azure Event Hub
 
--   Selecting
+Azure Event Hub サービスはきわめて汎用的で、データを CSV または JSON 形式でハブに投稿できます。Azure Event Hub では特別な処理は行われませんが、それに入力されるデータを理解することが重要です。
 
-    -   ***INPUTS*** to view the query input
+このドキュメントでは、データを取り込む方法について説明しませんが、Event Hub API を使用して、イベントやデータを Azure Event Hub に簡単に送信できます。
 
-    -   ***QUERY*** to view the query itself
+### Azure Stream Analytics
 
-    -   ***OUTPUTS*** to view the different outputs
+Azure Stream Analytics サービスを使用して、データ ストリームから読み取り、任意の数のソースにデータを出力することによって、ほぼリアルタイムで分析を行います。
 
-Information about Azure Stream Analytics query construction can be found in the [Stream Analytics Query Reference](https://msdn.microsoft.com/library/azure/dn834998.aspx) on MSDN.
+航空宇宙ソリューション テンプレートの予測メンテナンスの場合、Azure Stream Analytics クエリは、それぞれ Azure Event Hub サービスからのイベントを使用し、4 つの異なる場所に出力する 4 つのサブ クエリから構成されます。これらの出力は、3 つの Power BI データセットと 1 つの Azure Storage の場所から構成されます。
 
-In this solution, the queries output three datasets with near real-time analytics information about the incoming data stream to a Power BI dashboard that's provided as part of this solution template. Because there's implicit knowledge about the incoming data format, these queries would need to be altered based on your data format.
+Azure Stream Analytics クエリは次によって見つけることができます。
 
-The query in the second stream analytics job **maintenancesa02asablob** simply outputs all [Event Hub](https://azure.microsoft.com/services/event-hubs/) events to [Azure Storage](https://azure.microsoft.com/services/storage/) and hence requires no alteration regardless of your data format as the full event information is streamed to storage.
+-   Azure ポータルにログインする
 
-### <a name="azure-data-factory"></a>Azure Data Factory
+-   ソリューションがデプロイされたときに生成された Stream Analytics ジョブ ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-stream-analytics.png) (*例:* 予測メンテナンス ソリューションの **maintenancesa02asapbi** および **maintenancesa02asablob** ) を見つける
 
-The [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) service orchestrates the movement and processing of data. In the Predictive Maintenance for Aerospace Solution Template the data factory is made up of three [pipelines](../data-factory/data-factory-create-pipelines.md) that move and process the data using various technologies.  You can access your data factory by opening the the Data Factory node at the bottom of the solution template diagram created with the deployment of the solution. This will take you to the data factory on your Azure portal. If you see errors under your datasets, you can ignore those as they are due to data factory being deployed before the data generator was started. Those errors do not prevent your data factory from functioning.
+-   次を選択する
+
+    -   入力クエリを表示する場合は ***[入力]***
+
+    -   クエリ自体を表示する場合は ***[クエリ]***
+
+    -   別の出力を表示する場合は ***[出力]***
+
+Azure Stream Analytics クエリの構築については、MSDN の [Stream Analytics クエリ リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)を参照してください。
+
+このソリューションでは、クエリは、このソリューション テンプレートの一部として提供されている Power BI ダッシュボードへの受信データ ストリームに関するリアルタイムの分析情報を含む 3 つのデータセットを出力します。受信データ形式に関する暗黙的知識があるため、これらのクエリはデータ形式に基づいて、変更が必要になる場合があります。
+
+2 番目の Stream Analytics ジョブ **maintenancesa02asablob** のクエリは、すべての [Event Hub](https://azure.microsoft.com/services/event-hubs/) イベントを [Azure Storage](https://azure.microsoft.com/services/storage/) に出力するだけです。完全なイベント情報が記憶域にストリームされるため、データ形式に関係なく変更を必要としません。
+
+### Azure Data Factory
+
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) サービスは、データの移動や処理を調整します。航空宇宙ソリューション テンプレートの予測メンテナンスでは、さまざまなテクノロジを使用してデータを移動し、処理する 3 つの [パイプライン](../data-factory/data-factory-create-pipelines.md)からデータ ファクトリが構成されます。データ ファクトリにアクセスするには、ソリューションのデプロイメントよって作成されたソリューション テンプレート図の下部にある Data Factory ノードを開きます。これにより、Azure ポータルのデータ ファクトリに移動します。データセットの下にエラーが表示された場合、それらはデータ ファクトリのデータ ジェネレーターが起動する前に、データ ファクトリがデプロイされていることが原因であるため、無視できます。これらのエラーによって、データ ファクトリの機能が妨げられることはありません。
 
 ![](media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
-This section discusses the necessary [pipelines](../data-factory/data-factory-create-pipelines.md) and [activities](../data-factory/data-factory-create-pipelines.md) contained in the [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Below is the diagram view of the solution.
+このセクションでは、[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) に含まれる必要な[パイプライン](../data-factory/data-factory-create-pipelines.md)と[アクティビティ](../data-factory/data-factory-create-pipelines.md)について説明します。ソリューションの図のビューを以下に示します。
 
 ![](media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
-Two of the pipelines of this factory contain [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) scripts that are used to partition and aggregate the data. When noted, the scripts will be located in the [Azure Storage](https://azure.microsoft.com/services/storage/) account created during setup. Their location will be: maintenancesascript\\\\script\\\\hive\\\\ (or https://[Your solution name].blob.core.windows.net/maintenancesascript).
+このファクトリの 2 つのパイプラインには、データのパーティション分割と集計に使用される [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトが含まれます。このスクリプトは、セットアップ時に作成される [Azure Storage](https://azure.microsoft.com/services/storage/) アカウントに置かれます。それらの場所は maintenancesascript\\\script\\\hive\\\ (または https://[Your solution name].blob.core.windows.net/maintenancesascript) になります。
 
-Similar to the [Azure Stream Analytics](#azure-stream-analytics-1) queries, the [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) scripts have implicit knowledge about the incoming data format, these queries would need to be altered based on your data format and [feature engineering](machine-learning-feature-selection-and-engineering.md) requirements.
+[Azure Stream Analytics](#azure-stream-analytics-1) クエリと同様に、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは、受信データ形式に関して暗黙的に認識するため、これらのクエリをデータ形式と[特徴エンジニアリング](machine-learning-feature-selection-and-engineering.md)要件に基づいて変更する必要がある場合があります。
 
-#### <a name="*aggregateflightinfopipeline*"></a>*AggregateFlightInfoPipeline*
+#### *AggregateFlightInfoPipeline*
 
-This [pipeline](../data-factory/data-factory-create-pipelines.md) contains a single activity - an [HDInsightHive](../data-factory/data-factory-hive-activity.md) activity using a [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) that runs a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) script to partition the data put in [Azure Storage](https://azure.microsoft.com/services/storage/) during the [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) job.
+この[パイプライン](../data-factory/data-factory-create-pipelines.md)には、1 つのアクティビティが含まれます。それは、[Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ジョブの実行時に、[Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行して、[Azure Storage](https://azure.microsoft.com/services/storage/) に入れられるデータをパーティション分割する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用する [HDInsightHive](../data-factory/data-factory-hive-activity.md) アクティビティです。
 
-The [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) script for this partitioning task is ***AggregateFlightInfo.hql***
+このパーティション分割タスク用の [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***AggregateFlightInfo.hql*** です。
 
-#### <a name="*mlscoringpipeline*"></a>*MLScoringPipeline*
+#### *MLScoringPipeline*
 
-This [pipeline](../data-factory/data-factory-create-pipelines.md) contains several activities and whose end result is the scored predictions from the [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment associated with this solution template.
+この[パイプライン](../data-factory/data-factory-create-pipelines.md)には、複数のアクティビティが含まれ、それらの最終結果は、このソリューション テンプレートに関連付けられている [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験からのスコア付けされた予測です。
 
-The activities contained in this are:
+これに含まれるアクティビティは次のとおりです。
 
--   [HDInsightHive](../data-factory/data-factory-hive-activity.md) activity using an [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) that runs a [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) script to perform aggregations and feature engineering necessary for the [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment.
-    The [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) script for this partitioning task is ***PrepareMLInput.hql***.
+-   [HDInsightHive](../data-factory/data-factory-hive-activity.md) アクティビティ: [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトを実行して、[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験に必要な集計と特徴エンジニアリングを実行する [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) を使用します。このパーティション分割タスク用の [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) スクリプトは ***PrepareMLInput.hql*** です。
 
--   [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) activity that moves the results from the [HDInsightHive](../data-factory/data-factory-hive-activity.md) activity to a single [Azure Storage](https://azure.microsoft.com/services/storage/) blob that can be access by the [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) activity.
+-   [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティ: [HDInsightHive](../data-factory/data-factory-hive-activity.md) アクティビティからの結果を、[AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) アクティビティによってアクセス可能な 1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に移動します。
 
--   [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) activity that calls the [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment which results in the results being put in a single [Azure Storage](https://azure.microsoft.com/services/storage/) blob.
+-   [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) アクティビティ: 1 つの [Azure Storage](https://azure.microsoft.com/services/storage/) BLOB に結果が配置されることになる [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験を呼び出します。
 
-#### <a name="*copyscoredresultpipeline*"></a>*CopyScoredResultPipeline*
+#### *CopyScoredResultPipeline*
 
-This [pipeline](../data-factory/data-factory-create-pipelines.md) contains a single activity - a [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) activity that moves the results of the [Azure Machine Learning](#azure-machine-learning) experiment from the ***MLScoringPipeline*** to the [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) that was provisioned as part of the solution template installation.
+この[パイプライン](../data-factory/data-factory-create-pipelines.md)には 1 つのアクティビティが含まれます。***MLScoringPipeline*** からソリューション テンプレート インストールの一部としてプロビジョニングされた [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) に [Azure Machine Learning](#azure-machine-learning) 実験の結果を移動させる[コピー](https://msdn.microsoft.com/library/azure/dn835035.aspx) アクティビティです。
 
-### <a name="azure-machine-learning"></a>Azure Machine Learning
+### Azure Machine Learning
 
-The [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experiment used for this solution template provides the Remaining Useful Life (RUL) of an aircraft engine. The experiment is specific to the data set consumed and therefore will require modification or replacement specific to the data that's brought in.
+このソリューション テンプレートで使用されている [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) の実験は、航空機のエンジンの残存耐用年数 (RUL) を提供します。実験は使用されるデータ セットに固有であるため、取り込まれるデータに固有の変更や置換が必要になります。
 
-For information about how the Azure Machine Learning experiment was created, see [Predictive Maintenance: Step 1 of 3, data preparation and feature engineering](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
+Azure Machine Learning の実験の作成方法については、「[Predictive Maintenance: Step 1 of 3, data preparation and feature engineering (予測メンテナンス: ステップ 1/3、データの準備と特徴エンジニアリング)](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2)」を参照してください。
 
-## <a name="**monitor-progress**"></a>**Monitor Progress**
- Once the Data Generator is launched, the pipeline begins to get hydrated and the different components of your solution start kicking into action following the commands issued by the Data Factory. There are two ways you can monitor the pipeline.
+## **進行状況の監視**
+ データ ジェネレーターを起動すると、データを取り込むパイプラインが開始され、Data Factory によって発行されたコマンドに従ってソリューションのさまざまなコンポーネントがアクションを開始します。パイプラインを監視する 2 つの方法があります。
 
-1. One of the Stream Analytics job writes the raw incoming data to blob storage. If you click on Blob Storage component of your solution from the screen you successfully deployed the solution and then click Open in the right panel, it will take you to the [management portal](https://portal.azure.com/). Once there, click on Blobs. In the next panel, you will see a list of Containers. Click on **maintenancesadata**. In the next panel, you will see the **rawdata** folder. Inside the rawdata folder, you will see folders with names such as hour=17, hour=18 etc. If you see these folders, it indicates that the raw data is successfully being generated on your computer and stored in blob storage. You should see csv files that should have finite sizes in MB in those folders.
+1. いずれかの Stream Analytics ジョブが、未加工の受信データを BLOB ストレージに書き込みます。ソリューションが正常にデプロイされた画面からソリューションの Blob Storage コンポーネントをクリックし、右側のパネルの [開く] をクリックすると、[管理ポータル](https://portal.azure.com/)に移動します。管理ポータルで、BLOB をクリックします。次のパネルに、コンテナーの一覧が表示されます。**maintenancesadata** をクリックします。次のパネルに、**rawdata** フォルダーが表示されます。rawdata フォルダーの中に、hour=17 や hour=18 などのフォルダーが表示されます。これらのフォルダーの表示は、生データがコンピューター上に正常に生成され、BLOB ストレージに格納されたことを示します。これらのフォルダーの中に、有限サイズ (MB 単位) の csv ファイルがあります。
 
-2. The last step of the pipeline is to write data (e.g. predictions from machine learning) into SQL Database. You might have to wait a maximum of three hours for the data to appear in SQL Database. One way to monitor how much data is available in your SQL Database is through [azure portal](https://manage.windowsazure.com/).On the left panel locate SQL DATABASES ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-SQL-databases.png) and click it. Then locate your database **pmaintenancedb** and click on it. On the next page at the bottom, click on MANAGE
+2. パイプラインの最後の手順は、データ (MachineLearning からの予測など) を SQL Database に書き込むことです。データが SQL Database に表示されるまで、最大 3 時間の待機が必要な場合があります。SQL Database で使用できるデータの量を監視する 1 つの方法は、[Azure ポータル](https://manage.windowsazure.com/)を使用することです。左側のパネルで、SQL DATABASES ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-SQL-databases.png) を見つけてそれをクリックします。次に、データベース **pmaintenancedb** を見つけてそれをクリックします。次のページの下部にある [管理] をクリックします。
 
-    ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-manage.png).
+	![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-manage.png)
 
-    Here, you can click on New Query and query for the number of rows (e.g. select count(*) from PMResult ). As your database grows, the number of rows in the table should  increase.
+	ここで、[新しいクエリ] をクリックし、行数をクエリできます (例: select count(*) from PMResult)。データベースが大きくなれば、テーブル内の行数も増加します。
 
 
-## <a name="**power-bi-dashboard**"></a>**Power BI Dashboard**
+## **Power BI ダッシュボード**
 
-### <a name="overview"></a>Overview
+### Overview
 
-This section describes how to set up Power BI dashboard to visualize your real time data from Azure stream analytics (hot path), as well as batch prediction results from Azure machine learning (cold path).
+このセクションでは、 Azure Stream Analytics (ホット パス) からのリアルタイムのデータのほか、Azure Machine Learning (コールド パス) からのバッチ予測結果を表示する Power BI ダッシュボードの設定方法について説明します。
 
-### <a name="setup-cold-path-dashboard"></a>Setup cold path dashboard
+### コールド パス ダッシュボードの設定
 
-In the cold path data pipeline, the essential goal is to get the predictive RUL (remaining useful life) of each aircraft engine once it finishes a flight (cycle). The prediction result is updated every 3 hours for predicting the aircraft engines that have finished a flight during the past 3 hours.
+コールド パス データ パイプラインでの重要な目標は、フライト (サイクル) の終了時に、各航空機エンジンの予測 RUL (残存耐用年数) を取得することです。過去 3 時間以内にフライトを終了した航空機のエンジンを予測するために、予測結果は 3 時間ごとに更新されます。
 
-Power BI connects to an Azure SQL database as its data source, where the prediction results are stored. Note: 1) Upon deploying your solution, a real prediction will show up in the database within 3 hours.
-The pbix file that came with the Generator download contains some seed data so that you may create the Power BI dashboard right away. 2) In this step, the prerequisite is to download and install the free software [Power BI desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/).
+Power BI は、そのデータ ソースとして、予測結果が格納されている Azure SQL データベースに接続します。注: 1) ソリューションのデプロイ時、実際の予測は 3 時間以内にデータベース内に現れます。ジェネレーターのダウンロードに付属する pbix ファイルには、Power BI ダッシュボードをすぐに作成できるようにシード データが含まれています。2) この手順の前提条件は、無料のソフトウェア [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/) をダウンロードしてインストールしていることです。
 
-The following steps will guide you on how to connect the pbix file to the SQL Database that was spun up at the time of solution deployment containing data (*e.g.*. prediction results) for visualization.
+次の手順では、ソリューションのデプロイメント時に起動され、表示用のデータ (*例:* 予測結果) を格納する SQL Database に pbix ファイルを接続する方法について説明します。
 
-1.  Get the database credentials.
+1.  データベースの資格情報を取得します。
 
-    You'll need **database server name, database name, user name and password** before moving to next steps. Here are the steps to guide you how to find them.
+    次の手順に進む前に、**データベース サーバー名、データベース名、ユーザー名、およびパスワード**が必要です。以下の手順で、それらを見つける方法を説明します。
 
-    -   Once **'Azure SQL Database'** on your solution template diagram turns green, click it and then click **'Open'**.
+    -   ソリューション テンプレート図の **[Azure SQL Database]** が緑色に変わったら、それをクリックし、**[開く]** をクリックします。
 
-    -   You'll see a new browser tab/window which displays the Azure portal page. Click **'Resource groups'** on the left panel.
+    -   新しいブラウザー タブ/ウィンドウが表示され、Azure ポータル ページが表示されます。左側のパネルの **[リソース グループ]** をクリックします。
 
-    -   Select the subscription you're using for deploying the solution, and then select **'YourSolutionName\_ResourceGroup'**.
+    -   ソリューションのデプロイに使用しているサブスクリプションを選択し、**[YourSolutionName\_ResourceGroup]** を選択します。
 
-    -   In the new pop out panel, click the  ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-sql.png) icon to access your database. Your database name is next to the this icon (*e.g.*, **'pmaintenancedb'**), and  the **database server name** is listed under the Server name property and should look similar to **YourSoutionName.database.windows.net**.
+    -   新しいポップアップ パネルで、![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-sql.png) アイコンをクリックして、データベースにアクセスします。データベース名はこのアイコンの横にあり (*例:* **'pmaintenancedb'**)、**データベース サーバー名**は、サーバー名のプロパティの下に **YourSoutionName.database.windows.net** のように表示されます。
 
-    -   Your database **username** and **password** are the same as the username and password previously recorded during deployment of the solution.
+	-   データベースの**ユーザー名**と**パスワード**は、ソリューションのデプロイメント時に記録しておいたユーザー名とパスワードと同じです。
 
-2.  Update the data source of the cold path report file with Power BI Desktop.
+2.  Power BI Desktop でコールド パス レポート ファイルのデータ ソースを更新します。
 
-    -   In the folder on your PC where you downloaded and unzipped the Generator file, double-click the **PowerBI\\PredictiveMaintenanceAerospace.pbix** file. If you see any warning messages when you open the file, ignore them. On the top of the file, click **'Edit Queries'**.
+    -   ジェネレーター ファイルをダウンロードして解凍した PC のフォルダー内の **PowerBI\\PredictiveMaintenanceAerospace.pbix** ファイルをダブルクリックします。ファイルを開くときに警告メッセージが表示された場合、それらを無視します。ファイルの先頭の **[クエリを編集]** をクリックします。
 
-        ![](media\cortana-analytics-technical-guide-predictive-maintenance\edit-queries.png)
+	    ![](media\cortana-analytics-technical-guide-predictive-maintenance\edit-queries.png)
 
-    -   You'll see two tables, **RemainingUsefulLife** and **PMResult**. Select the first table and click ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-query-settings.png) next to **'Source'** under **'APPLIED STEPS'** on the right **'Query Settings'** panel. Ignore any warning messages that appear.
+	-	**RemainingUsefulLife** と **PMResult** という 2 つのテーブルが表示されます。最初のテーブルを選択し、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横の ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-query-settings.png) をクリックします。表示される警告メッセージは無視します。
 
-    -   In the pop out window, replace **'Server'** and **'Database'** with your own server and database names, and then click **'OK'**. For server name, make sure you specify the port 1433 (**YourSoutionName.database.windows.net, 1433**). Leave the Database field as **pmaintenancedb**. Ignore the warning messages that appear on the screen.
+    -   ポップアップ ウィンドウの **[サーバー]** と **[データベース]** を独自のサーバーとデータベースの名前に置き換えて、**[OK]** をクリックします。サーバー名の場合、ポート 1433 (**YourSoutionName.database.windows.net 1433**) を指定していることを確認してください。[データベース] フィールドは **pmaintenancedb** のままにします。画面に表示される警告メッセージは無視します。
 
-    -   In the next pop out window, you'll see two options on the left pane (**Windows** and **Database**). Click **'Database'**, fill in your **'Username'** and **'Password'** (this is the username and password you entered when you first deployed the solution and created an Azure SQL database). In ***Select which level to apply these settings to***, check database level option. Then click **'Connect'**.
+    -   次のポップアップ ウィンドウで、左側のウィンドウに 2 つのオプション (**[Windows]** と **[データベース]**) が表示されます。**[データベース]** をクリックし、**[ユーザー名]** と **[パスワード]** (これは、初めてソリューションをデプロイし、Azure SQL Database を作成したときに入力したユーザー名とパスワードです) を入力します。***[これらの設定の適用対象レベルの選択]*** で、データベース レベル オプションをオンにします。次に **[接続]** をクリックします。
 
-    -   Click on the second table **PMResult** then click ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-navigation.png) next to **'Source'** under **'APPLIED STEPS'** on the right **'Query Settings'** panel, and update the server and database names as in the above steps and click OK.
+    -   2 番目のテーブル **[PMResult]** をクリックし、右側の **[クエリの設定]** パネルの **[適用したステップ]** の **[ソース]** の横の ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-navigation.png) をクリックし、上記の手順と同様に、サーバーとデータベース名を更新して、[OK] をクリックします。
 
-    -   Once you're guided back to the previous page, close the window. A message will pop out - click **Apply**. Lastly, click the **Save** button to save the changes. Your Power BI file has now established connection to the server. If your visualizations are empty, make sure you clear the selections on the visualizations to visualize all the data by clicking the eraser icon on the upper right corner of the legends. Use the refresh button to reflect new data on the visualizations. Initially, you will only see the seed data on your visualizations as the data factory is scheduled to refresh every 3 hours. After 3 hours, you will see new predictions reflected in your visualizations when you refresh the data.
+    -   前のページに戻ったら、ウィンドウを閉じます。メッセージが表示されます。**[適用]** をクリックします。最後に、**[保存]** ボタンをクリックして、変更を保存します。これで、Power BI ファイルは、サーバーへの接続を確立しました。視覚エフェクトが空の場合、凡例の右上隅にある消しゴム アイコンをクリックして、視覚エフェクトの選択をクリアし、すべてのデータを表示します。更新ボタンを使用して、視覚エフェクトに新しいデータを反映させます。最初、視覚エフェクトにはシード データのみ表示されます。データ ファクトリは 3 時間ごとに更新されるようにスケジュールされています。3 時間後、データを更新すると、視覚エフェクトに反映された新しい予測が表示されます。
 
-3.  (Optional) Publish the cold path dashboard to [Power BI online](http://www.powerbi.com/). Note that this step needs a Power BI account (or Office 365 account).
+3.  (省略可能) コールド パス ダッシュボードを [Power BI オンライン](http://www.powerbi.com/)に公開します。この手順では、Power BI アカウント (または Office 365 アカウント) が必要であることに注意してください。
 
-    -   Click **'Publish'** and few seconds later a window appears displaying "Publishing to Power BI Success!" with a green check mark. Click the link below "Open PredictiveMaintenanceAerospace.pbix in Power BI". To find detailed instructions, see [Publish from Power BI Desktop](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop).
+    -   **[公開]** をクリックします。数秒後、緑色のチェック マークの付いた 「Power BI への公開が成功しました」と表示するウィンドウが表示されます。"Power BI で PredictiveMaintenanceAerospace.pbix を開く" の下のリンクをクリックします。詳細な手順については、「[Power BI Desktop からの発行](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)」を参照してください。
 
-    -   To create a new dashboard: click the **+** sign next to the **Dashboards** section on the left pane. Enter the name "Predictive Maintenance Demo" for this new dashboard.
+    -   新しいダッシュボードを作成するには、左側のウィンドウで **[ダッシュ ボード]** の横の**[+]** 記号をクリックします。この新しいダッシュボードの名前として、「Predictive Maintenance Demo」と入力します。
 
-    -   Once you open the report, click ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-pin.png) to pin all the visualizations to your dashboard. To find detailed instructions, see [Pin a tile to a Power BI dashboard from a report](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
-    Go to the dashboard page and adjust the size and location of your visualizations and edit their titles. To find detailed instructions on how to edit your tiles, see [Edit a tile -- resize, move, rename, pin, delete, add hyperlink](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Here is an example dashboard with some cold path visualizations pinned to it.  Depending on how long you run your data generator, your numbers on the visualizations may be different.
-    <br/>
-    ![](media\cortana-analytics-technical-guide-predictive-maintenance\final-view.png)
-<br/>
-    -   To schedule refresh of the data, hover your mouse over the **PredictiveMaintenanceAerospace** dataset, click ![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-elipsis.png) and then choose **Schedule Refresh**.
-<br/>
-        **Note:** If you see a warning massage, click **Edit Credentials** and make sure your database credentials are the same as those described in step 1.
-<br/>
-    ![](media\cortana-analytics-technical-guide-predictive-maintenance\schedule-refresh.png)
-<br/>
-    -   Expand the **Schedule Refresh** section. Turn on "keep your data up-to-date".
-    <br/>
-    -   Schedule the refresh based on your needs. To find more information, see [Data refresh in Power BI](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi).
+    -   レポートが開いたら、![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-pin.png) をクリックして、すべての視覚エフェクトをダッシュボードにピン留めします。詳細な手順については、「[レポートから Power BI ダッシュボードにタイルをピン留め](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report)」を参照してください。ダッシュボード ページに移動し、視覚エフェクトのサイズと場所を調整し、タイルを編集します。タイルを編集する方法の詳細については、「[タイルの編集 -- サイズ変更、移動、名前の変更、ピン留め、削除、ハイパーリンクの追加](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename)」を参照してください。いくつかのコールド パス視覚エフェクトがピン留めされたサンプル ダッシュボードを次に示します。データ ジェネレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。 <br/> ![](media\cortana-analytics-technical-guide-predictive-maintenance\final-view.png) <br/>
+    -   データの更新をスケジュールするには、**[PredictiveMaintenanceAerospace]** データセットの上にマウス ポインターを移動し、![](media\cortana-analytics-technical-guide-predictive-maintenance\icon-elipsis.png) をクリックし、**[更新のスケジュール設定]** を選択します。<br/> **注:** 警告メッセージが表示された場合は、**[資格情報の編集]** をクリックし、データベース資格情報が、手順 1 で説明したものと同じかどうかを確認します。<br/> ![](media\cortana-analytics-technical-guide-predictive-maintenance\schedule-refresh.png) <br/>
+    -   **[更新のスケジュール設定]** セクションを展開します。[データを最新の状態に保つ] をオンにします。 <br/>
+    -   必要に応じて更新をスケジュールします。詳細については、「[Power BI でのデータの更新](https://support.powerbi.com/knowledgebase/articles/474669-data-refresh-in-power-bi)」を参照してください。
 
-### <a name="setup-hot-path-dashboard"></a>Setup hot path dashboard
+### ホット パス ダッシュボードの設定
 
-The following steps will guide you how to visualize real time data output from Stream Analytics jobs that were generated at the time of solution deployment. A [Power BI online](http://www.powerbi.com/) account is required to perform the following steps. If you don't have an account, you can [create one](https://powerbi.microsoft.com/pricing).
+次の手順では、ソリューションのデプロイメント時に生成された Stream Analytics ジョブからのリアルタイム データの出力を表示する方法について説明します。次の手順を実行するには、[Power BI オンライン](http://www.powerbi.com/) アカウントが必要です。アカウントがない場合は、[作成](https://powerbi.microsoft.com/pricing)できます。
 
-1.  Add Power BI output in Azure Stream Analytics (ASA).
+1.  Azure Stream Analytics (ASA) に Power BI 出力を追加します。
 
-    -  You will need to follow the instructions in [Azure Stream Analytics & Power BI: A real-time analytics dashboard for real-time visibility of streaming data](stream-analytics-power-bi-dashboard.md) to set up the output of your Azure Stream Analytics job as your Power BI dashboard.
-    - The ASA query has three outputs which are **aircraftmonitor**, **aircraftalert**, and **flightsbyhour**. You can view the query by clicking on query tab. Corresponding to each of these tables, you will need to add an output to ASA. When you add the first output (*e.g.* **aircraftmonitor**) make sure the **Output Alias**, **Dataset Name** and **Table Name** are the same (**aircraftmonitor**). Repeat the steps to add outputs for **aircraftalert**, and **flightsbyhour**. Once you have added all three output tables and started the ASA job, you should get a confirmation message (*e.g.*, "Starting stream analytics job maintenancesa02asapbi succeeded").
+    -  Azure Stream Analytics ジョブの出力を Power BI ダッシュボードとして設定するには、「[Azure Stream Analytics & Power BI: ストリーミング データをリアルタイムで表示するリアルタイム分析ダッシュボード](stream-analytics-power-bi-dashboard.md)」の手順に従う必要があります。
+	- ASA クエリには 3 つの出力があります。**aircraftmonitor**、**aircraftalert**、**flightsbyhour** です。[クエリ] タブをクリックすると、クエリを表示できます。これらの各テーブルに合わせ、ASA に出力を追加する必要があります。最初の出力を追加するとき (*例*: **aircraftmonitor**)、**出力の別名**、**データセット名**、**テーブル名**が同じ (**aircraftmonitor**) であることを確認します。この手順を繰り返し、**aircraftalert** と **flightsbyhour** の出力を追加します。3 つすべての出力テーブルを追加し、ASA ジョブを開始すると、確認メッセージ (*例:* "ジョブ maintenancesa02asapbi を開始しています") が表示されます。
 
-2. Log in to [Power BI online](http://www.powerbi.com)
+2. [Power BI オンライン](http://www.powerbi.com)にログインします。
 
-    -   On the left panel Datasets section in My Workspace, the ***DATASET*** names **aircraftmonitor**, **aircraftalert**, and **flightsbyhour** should appear.This is the streaming data you pushed from Azure Stream Analytics in the previous step.The dataset **flightsbyhour** may not show up at the same time as the other two datasets due to the nature of the SQL query behind it. However, it should show up after an hour.
-    -   Make sure the ***Visualizations*** pane is open and is shown on the right side of the screen.
+    -   左側のパネルの [個人用ワークスペース] の [データセット] セクションに、***データセット***名 (**aircraftmonitor**、**aircraftalert**、**flightsbyhour**) が表示されます。これは前の手順で Azure Stream Analytics からプッシュしたストリーミング データです。データセット **flightsbyhour** は他の 2 つのデータセットと同じタイミングで表示されるとは限りません。これは背後にある SQL クエリの性質に起因します。ただし、1 時間後には表示されるはずです。
+    -   ***[視覚エフェクト]*** ウィンドウが開き、画面の右側に表示されることを確認します。
 
-3. Once you have the data flowing into Power BI, you can start visualizing the streaming data. Below is an example dashboard with some hot path visualizations pinned to it. You can create other dashboard tiles based on appropriate datasets. Depending on how long you run your data generator, your numbers on the visualizations may be different.
+3. Power BI にデータが送信されていれば、ストリーミング データの視覚化を開始できます。いくつかのホット パス視覚エフェクトがピン留めされているサンプル ダッシュボードを次に示します。適切なデータセットに基づいて他のダッシュボード タイルを作成できます。データ ジェネレーターの実行時間に応じて、視覚エフェクトの番号が異なる場合があります。
 
 
     ![](media\cortana-analytics-technical-guide-predictive-maintenance\dashboard-view.png)
 
-4. Here are some steps to create one of the tiles above –  the "Fleet View of Sensor 11 vs. Threshold 48.26" tile:
+4. 上記のタイルを作成する手順を以下に示します。"Fleet View of Sensor 11 vs.Threshold 48.26" タイルを作成します。
 
-    -   Click dataset **aircraftmonitor** on the left panel Datasets section.
+    -   左側のパネルの [データセット] セクションで、データセット **aircraftmonitor** をクリックします。
 
-    -   Click the **Line Chart** icon.
+    -   **[折れ線グラフ]** アイコンをクリックします。
 
-    -   Click **Processed** in the **Fields** pane so that it shows under "Axis" in the **Visualizations** pane.
+    -   **[視覚エフェクト]** ウィンドウの [軸] の下に表示されるように、**[フィールド]** ウィンドウの **[処理済み]** をクリックします。
 
-    -   Click "s11" and "s11\_alert" so that they both appear under "Values". Click the small arrow next to **s11** and **s11\_alert**, change "Sum" to "Average".
+    -   どちらも [値] の下に表示されるように、[s11] と [s11\_alert] をクリックします。**[s11]** と **[s11\_alert]** の横にある小さな矢印をクリックして、[合計] を [平均] に変更します。
 
-    -   Click **SAVE** on the top and name the report "aircraftmonitor". The report named "aircraftmonitor" will be shown in the **Reports** section in the **Navigator** pane on the left.
+    -   上部の **[保存]** をクリックし、レポートに "aircraftmonitor" という名前を付けます。左側の **[ナビゲーター]** ウィンドウの **[レポート]** セクションに、"aircraftmonitor" という名前のレポートが表示されます。
 
-    -   Click the **Pin Visual** icon on the top right corner of this line chart. A "Pin to Dashboard" window may show up for you to choose a dashboard. Select "Predictive Maintenance Demo", then click "Pin".
+    -   折れ線グラフの右上隅の **[ビジュアルをピン留めする]** アイコンをクリックします。ダッシュボードを選択する [ダッシュボードにピン留めする] ウィンドウが表示されることがあります。[Predictive Maintenance Demo] を選択し、[ピン留め] をクリックします。
 
-    -   Hover the mouse over this tile on the dashboard, click the "edit" icon on the top right corner to change its title to "Fleet View of Sensor 11 vs. Threshold 48.26" and subtitle to "Average across fleet over time".
+    -   ダッシュボードのこのタイルにマウス ポインターを置き、右上隅の [編集] アイコンをクリックし、そのタイトルを「Fleet View of Sensor 11 vs.Threshold 48.26」に変更し、サブタイトルを「Average across fleet over time」に変更します。
 
-## <a name="**how-to-delete-your-solution**"></a>**How to delete your solution**
-Please ensure that you stop the data generator when not actively using the solution as running the data generator will incur higher costs. Please delete the solution if you are not using it. Deleting your solution will delete all the components provisioned in your subscription when you deployed the solution. To delete the solution click on your solution name in the left panel of the solution template and click on delete.
+## **ソリューションを削除する方法**
+データ ジェネレーターはコストを上げるので、ソリューションを活発に使用していないときはデータ ジェネレーターを停止してください。使用していない場合、ソリューションを削除してください。ソリューションを削除すると、ソリューションのデプロイ時にサブスクリプションにプロビジョニングされたすべてのコンポーネントが削除されます。ソリューションを削除するには、ソリューション テンプレートの左パネルでソリューション名をクリックし、[削除] をクリックします。
 
-## <a name="**cost-estimation-tools**"></a>**Cost estimation tools**
+## **コスト見積もりツール**
 
-The following two tools are available to help you better understand the total costs involved in running the Predictive Maintenance for Aerospace Solution Template in your subscription:
+各自のサブスクリプションで航空宇宙ソリューション テンプレートの予測メンテナンスを実行する場合に関連する合計コストを詳しく知るために役立つ次の 2 つのツールがあります。
 
--   [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
+-   [Microsoft Azure 料金計算ツール (オンライン)](https://azure.microsoft.com/pricing/calculator/)
 
--   [Microsoft Azure Cost Estimator Tool (desktop)](http://www.microsoft.com/download/details.aspx?id=43376)
+-   [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

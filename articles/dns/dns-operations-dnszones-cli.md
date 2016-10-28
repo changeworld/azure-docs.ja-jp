@@ -1,10 +1,10 @@
-<properties
-   pageTitle="Manage DNS zones using CLI | Microsoft Azure"
-   description="You can manage DNS zones using Azure CLI. How to update, delete and create DNS zones on Azure DNS"
-   services="dns"
-   documentationCenter="na"
-   authors="sdwheeler"
-   manager="carmonm"
+<properties 
+   pageTitle="CLI を使用した DNS ゾーンの管理 | Microsoft Azure" 
+   description="Azure CLI を使用して DNS ゾーンを管理できます。Azure DNS の DNS ゾーンを更新、削除、および作成する方法" 
+   services="dns" 
+   documentationCenter="na" 
+   authors="cherylmc" 
+   manager="carmonm" 
    editor=""/>
 
 <tags
@@ -12,65 +12,59 @@
    ms.devlang="na"
    ms.topic="article"
    ms.tgt_pltfrm="na"
-   ms.workload="infrastructure-services"
+   ms.workload="infrastructure-services" 
    ms.date="08/16/2016"
-   ms.author="sewhee"/>
+   ms.author="cherylmc"/>
 
-
-# <a name="how-to-manage-dns-zones-using-cli"></a>How to manage DNS Zones using CLI
+# CLI を使用して DNS ゾーンを管理する方法
 
 > [AZURE.SELECTOR]
 - [Azure CLI](dns-operations-dnszones-cli.md)
 - [PowerShell](dns-operations-dnszones.md)
 
 
-This guide will show how to manage your DNS zone resources using the cross-platform Azure CLI.
+このガイドでは、クロス プラットフォームの Azure CLI を使用して、DNS ゾーンのリソースを管理する方法を説明します。
 
-These instructions use Microsoft Azure CLI. Be sure to update to the latest Azure CLI (0.9.8 or later) to use the Azure DNS commands. Type `azure -v` to check which Azure CLI version is currently installed in your computer. You can install Azure CLI for Windows, Linux, or MAC. More information is available at [Install the Azure CLI](../xplat-cli-install.md).
+以下の手順では、Microsoft Azure CLI を使用します。Azure DNS コマンドを使用するために、必ず最新の Azure CLI (0.9.8 以降) に更新してください。コンピューターに現在インストールされている Azure CLI のバージョンを確認するには、「`azure -v`」と入力します。Windows 用、Linux 用、MAC 用の Azure CLI をインストールできます。詳しくは、「[Azure CLI のインストール](../xplat-cli-install.md)」をご覧ください。
 
-Azure DNS is an Azure Resource Manager-only service. It does not have an ASM API. You will need to make sure the Azure CLI is configured to use Resource Manager mode. You can do this by using the `azure config mode arm` command.<BR>
-If you see the message "*error: 'dns' is not an azure command*", it's most likely because you are using Azure CLI in ASM mode, not Resource Manager mode.
+Azure DNS は、Azure リソース マネージャー専用のサービスです。ASM API はありません。リソース マネージャー モードを使用するように Azure CLI が構成されていることを確認する必要があります。このような場合には、`azure config mode arm` コマンドを使用します。<BR> "*エラー: 'dns' は、Azure のコマンドではありません*" というメッセージが表示される場合は、多くの場合、リソース マネージャー モードではなく、ASM モードで Azure CLI を使用していることが原因です。
 
-## <a name="create-a-new-dns-zone"></a>Create a new DNS zone
+## 新しい DNS ゾーンの作成
 
-To create a new DNS zone to host your domain, see [Create an Azure DNS zone using CLI](dns-getstarted-create-dnszone-cli.md).
+ドメインをホストする新しい DNS ゾーンを作成する方法については、「[CLI を使用した Azure DNS ゾーンの作成](dns-getstarted-create-dnszone-cli.md)」を参照してください。
 
-## <a name="get-a-dns-zone"></a>Get a DNS zone
+## DNS ゾーンの取得
 
-To retrieve a DNS zone, use `azure network dns zone show`:
+DNS ゾーンを取得するには、`azure network dns zone show` を使用します。
 
-    azure network dns zone show myresourcegroup contoso.com
+	azure network dns zone show myresourcegroup contoso.com
 
-The operation returns a DNS zone with its id, number of record sets and tags.
-
-
-## <a name="list-dns-zones"></a>List DNS zones
-
-To retrieve DNS zones within a resource group, use `azure network dns zone list`.
-
-    azure network dns zone list myresourcegroup
-
-## <a name="update-a-dns-zone"></a>Update a DNS zone
-
-Changes to a DNS zone resource can be made using `azure network dns zone set`. This does not update any of the DNS record sets within the zone (see [How to Manage DNS records](dns-operations-recordsets.md)). It's only used to update properties of the zone resource itself. This is currently limited to the Azure Resource Manager ‘tags’ for the zone resource. See [Etags and Tags](dns-getstarted-create-dnszone.md#tagetag) for more information.
-
-    azure network dns zone set myresourcegroup contoso.com -t prod=value2
-
-## <a name="delete-a-dns-zone"></a>Delete a DNS Zone
-
-DNS zones can be deleted using `azure network dns zone delete`. This operation has an optional *-q* switch which suppresses the prompt to confirm you want to remove the DNS zone.
-
-Before deleting a DNS zone in Azure DNS, you will need to delete all records sets, except for the NS and SOA records at the root of the zone that were created automatically when the zone was created.
-
-    azure network dns zone delete myresourcegroup contoso.com
+この操作は、DNS ゾーンとその ID、レコード セットの数、タグを返します。
 
 
+## DNS ゾーンの一覧表示
 
-## <a name="next-steps"></a>Next steps
-After creating a DNS zone, create [record sets and records](dns-getstarted-create-recordset-cli.md) to start resolving names for your Internet domain.
+リソース グループ内の DNS ゾーンを取得するには、`azure network dns zone list` を使用します。
+
+	azure network dns zone list myresourcegroup
+
+## DNS ゾーンの更新
+
+DNS ゾーンのリソースへの変更は、`azure network dns zone set` を使用して行うことができます。これによって、ゾーン内の DNS レコード セットが更新されることはありません (「[DNS レコードの管理方法](dns-operations-recordsets.md)」を参照)。この操作は、ゾーンのリソース自体のプロパティを更新するためだけに使用します。現時点では、この操作は、ゾーンのリソースの Azure リソース マネージャーの "タグ" に限定されています。詳細については、「[Etag とタグ](dns-getstarted-create-dnszone.md#tagetag)」を参照してください。
+
+	azure network dns zone set myresourcegroup contoso.com -t prod=value2
+
+## DNS ゾーンの削除
+
+DNS ゾーンは、`azure network dns zone delete` を使用して削除できます。この操作では、オプションの *-q* スイッチが使用されます。これにより、DNS ゾーンを削除するかどうかの確認メッセージは表示されなくなります。
+ 
+Azure DNS の DNS ゾーンを削除する前に、ゾーンの作成時に自動的にゾーンのルートに作成された NS レコードと SOA レコードを除くすべてのレコード セットを削除する必要があります。
+
+	azure network dns zone delete myresourcegroup contoso.com 
 
 
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
+DNS ゾーンを作成したら、[レコード セットとレコード](dns-getstarted-create-recordset-cli.md)を作成し、インターネット ドメインの名前解決を開始します。
 
-
+<!---HONumber=AcomDC_0817_2016-->

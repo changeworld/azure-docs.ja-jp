@@ -1,9 +1,7 @@
-### <a name="need-some-help?"></a>Need some help?
+### サポートが必要な場合
 
-Post questions in the Azure forums. - [Visit MSDN](http://go.microsoft.com/fwlink/?LinkId=780719)
+Azure フォーラムに質問を投稿してください。[MSDN にアクセス](http://go.microsoft.com/fwlink/?LinkId=780719)
 
-Tag questions with the keyword `azure-functions`. - [Visit Stack Overflow](http://stackoverflow.com/questions/tagged/azure-functions)
+質問に `azure-functions` というキーワードのタグを付けてください。[Stack Overflow にアクセス](http://stackoverflow.com/questions/tagged/azure-functions)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0912_2016-->

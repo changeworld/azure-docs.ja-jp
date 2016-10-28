@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Builds Multi-Tenant Apps With Isolation and Efficiency"
-   description="Learn how SQL Database builds multi-tenant apps"
+   pageTitle="Azure SQL Database による分離性と効率性を備えたマルチテナント アプリの構築"
+   description="SQL Database でマルチテナント アプリを構築する方法を説明します"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -14,64 +14,55 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="10/13/2016"
+   ms.date="07/19/2016"
    ms.author="carlrab"/>
 
+# Azure SQL Database による分離性と効率性を備えたマルチテナント アプリの構築
 
-# <a name="builds-multi-tenant-apps-with-azure-sql-database-with-isolation-and-efficiency"></a>Builds Multi-tenant Apps with Azure SQL Database With Isolation and Efficiency
+## エラスティック プールを利用して効率的なマルチテナント アプリを構築する
 
-## <a name="leverage-elastic-pools-and-build-more-efficient-multi-tenant-apps"></a>Leverage elastic pools and build more efficient multi-tenant apps
-
-If you're a SaaS dev writing a multi-tenant app and handling many customers, you often make tradeoffs in customer performance, management, and security. With Azure SQL Database Elastic Database Pools, you no longer have to make that compromise. These pools help you manage and monitor multi-tenant apps and gain isolation benefits of one-customer-per-database. See [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+多くの顧客を処理するマルチテナント アプリを作成する場合、カスタマー パフォーマンス、管理、セキュリティにおいてトレードオフを強いられることがよくあります。Azure SQL Database のエラスティック データベース プールがあれば、もう妥協をする必要はありません。エラスティック データベース プールを使用すると、マルチテナント アプリを管理および監視し、データベースあたり 1 ユーザーという分離の利点が得られます。「[Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
 ![build-multi-tenant-apps](./media/sql-database-build-multi-tenant-apps/sql-database-build-multi-tenant-apps.png)
 
-## <a name="auto-scaling-you-control"></a>Auto-scaling you control
+## 制御を自動スケールする
 
-Pools automatically scale performance and storage capacity for elastic databases on the fly. You can control the performance assigned to a pool, add or remove elastic databases on demand, and define performance of elastic databases without affecting the overall cost of the pool. This means you don't have to worry about managing the usage of individual databases.
+プールは、必要に応じてエラスティック データベースのパフォーマンスとストレージ容量を自動的にスケーリングします。プールに割り当てられているパフォーマンスを制御し、必要に応じてエラスティック データベースを追加または削除し、プールの全体的なコストに影響を与えずにエラスティック データベースのパフォーマンスを定義できます。つまり、個々のデータベースの使用状況の管理について心配する必要はありません。
 
-[Read the documentation](sql-database-elastic-pool.md)
+[ドキュメントを参照する](sql-database-elastic-pool.md)
 
-## <a name="intelligent-management-of-your-environment"></a>Intelligent management of your environment
+## 環境のインテリジェントな管理
 
-Built-in sizing recommendations proactively identify databases that would benefit from pools. These recommendations allow "what-if" analysis for quick optimization to meet your performance goals. Rich performance monitoring and troubleshooting dashboards help you visualize historical pool utilization.
+組み込みのサイズ設定の推奨は、事前にプールからメリットを得られるデータベースを識別します。これらの推奨は、"what-if" 分析を行ってパフォーマンス目標を満たすようにすばやく最適化します。充実したパフォーマンス監視およびトラブルシューティング ダッシュ ボードは、プール使用率履歴の視覚化に役立ちます。
 
-[Read the documentation](sql-database-elastic-pool-guidance.md)
+[ドキュメントを参照する](sql-database-elastic-pool-guidance.md)
 
-## <a name="performance-and-price-to-meet-your-needs"></a>Performance and price to meet your needs
+## ニーズを満たすパフォーマンスと価格
 
-Basic, Standard, and Premium pools provide you a broad spectrum of performance, storage and pricing options. Pools can contain up to 400 elastic databases. Elastic databases can auto-scale up to 1000 elastic database transaction units (eDTU).
+Basic、Standard、Premium プールは、さまざまなパフォーマンス、ストレージ、価格のオプションを提供します。プールは、最大 400 個のエラスティック データベースを含むことができます。エラスティック データベースは、最大 1000 エラスティック データベース トランザクション ユニット (eDTU) まで自動的にスケール アップできます。
 
-[Read the documentation](https://azure.microsoft.com/pricing/details/sql-database/?b=16.50)
+[ドキュメントを参照する](https://azure.microsoft.com/pricing/details/sql-database/?b=16.50)
 
-## <a name="elastic-tools"></a>Elastic tools
+## エラスティック ツール
 
-In addition to elastic pools, there are SQL Database features to help manage operational activities across multiple databases:
+エラスティック プールだけでなく、複数のデータベースにまたがる運用アクティビティの管理に役立つ SQL Database の機能があります。
 
-** Perform cross-database queries and reporting. **  
-[Elastic database query](sql-database-elastic-query-overview.md) enables you to run queries or reports across databases in your elastic pool and access remote data stored in many databases of your pool at once.
+** 複数のデータベースにまたがるクエリとレポートを実行する。** [エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用すると、エラスティック プール内の複数のデータベースに対するクエリとレポートを実行し、プールの多くのデータベースに格納されているデータに同時にリモート アクセスできます。
 
-** Run cross database transactions. **  
-[Elastic database transactions](sql-database-elastic-transactions-overview.md) allow you to run transactions that span several databases in SQL Databases and perform operations (i.e. when processing financial transactions across databases, or when updating inventory in one database and orders).
+** 複数のデータベースにまたがるトランザクションを実行する。** [エラスティック データベース トランザクション](sql-database-elastic-transactions-overview.md)を使用すると、SQL Database の複数のデータベースにまたがるトランザクションと操作を実行できます (つまり、複数のデータベースで金融トランザクションを処理するとき、または 1 つのデータベースと注文で在庫を更新するとき)。
 
-** Execute the same operations on several databases. **  
-[Elastic database jobs](sql-database-elastic-jobs-overview.md) execute administrative operations such as rebuilding indexes or updating schemas across each database in your elastic pool.
+** 複数のデータベースで同じ操作を実行する。** [エラスティック データベース ジョブ](sql-database-elastic-jobs-overview.md)は、エラスティック プール内の各データベースに対してインデックスの再構築やスキーマの更新などの管理操作を実行します。
 
-Go to the homepage to see what else SQL Database has to offer.
-[Check it out](https://azure.microsoft.com/services/sql-database/) 
+SQL Database の他の機能についてはホーム ページを[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Get a [free Azure subscription](https://azure.microsoft.com/get-started/) and [create your first Azure SQL Database](sql-database-get-started.md).
+[無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)をすべて確認します。
  
-Review the [technical overview of SQL Database](sql-database-technical-overview.md).  
+[SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

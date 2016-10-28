@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array web UI administration | Microsoft Azure"
-   description="Describes how to perform basic device administration tasks through the StorSimple Virtual Array web UI."
+   pageTitle="StorSimple Virtual Array の Web UI による管理 | Microsoft Azure"
+   description="StorSimple Virtual Array の Web UI を使用して、基本的なデバイス管理タスクを実行する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,125 +15,120 @@
    ms.date="04/07/2016"
    ms.author="alkohli" />
 
+# Web UI を使用した StorSimple Virtual Array の管理
 
-# <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Use the Web UI to administer your StorSimple Virtual Array
+![セットアップ プロセス フロー](./media/storsimple-ova-web-ui-admin/manage4.png)
 
-![setup process flow](./media/storsimple-ova-web-ui-admin/manage4.png)
+## 概要
 
-## <a name="overview"></a>Overview
+この記事のチュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスとも呼ばれます) に適用されます。この記事では、StorSimple Virtual Array で実行できる一部の複雑なワークフローと管理タスクについて説明します。StorSimple Virtual Array は、StorSimple Manager サービス UI (ポータル UI とも呼ばれます) とデバイスのローカル Web UI を使用して管理できます。この記事では、Web UI を使用して実行できるタスクについて説明します。
 
-The tutorials in this article apply to the Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device) running March 2016 general availability (GA) release. This article describes some of the complex workflows and management tasks that can be performed on the StorSimple Virtual Array. You can manage the StorSimple Virtual Array using the StorSimple Manager service UI (referred to as the portal UI) and the local web UI for the device. This article focuses on the tasks that you can perform using the web UI.
+この記事には次のチュートリアルが含まれています。
 
-This article includes the following tutorials:
+- サービス データ暗号化キーの取得
+- Web UI のセットアップ エラーのトラブルシューティング
+- ログ パッケージの生成
+- デバイスのシャットダウンと再起動
 
-- Get the service data encryption key
-- Troubleshoot web UI setup errors
-- Generate a log package
-- Shut down or restart your device
+## サービス データ暗号化キーの取得
 
-## <a name="get-the-service-data-encryption-key"></a>Get the service data encryption key
+StorSimple Manager サービスに最初のデバイスを登録すると、サービス データ暗号化キーが生成されます。このキーは、StorSimple Manager サービスに追加のデバイスを登録する際にサービス登録キーと共に必要になります。
 
-A service data encryption key is generated when you register your first device with the StorSimple Manager service. This key is then required with the service registration key to register additional devices with the StorSimple Manager service.
+サービス データ暗号化キーを紛失し、取得する必要がある場合は、サービスに登録されているデバイスのローカル Web UI で次の手順を実行します。
 
-If you have misplaced your service data encryption key and need to retrieve it, perform the following steps in the local web UI of the device registered with your service.
+#### サービス データ暗号化キーを取得するには
 
-#### <a name="to-get-the-service-data-encryption-key"></a>To get the service data encryption key
-
-1. Connect to the local web UI. Go to **Configuration** > **Cloud Settings**.
+1. ローカル Web UI に接続します。**[Configuration]** > **[Cloud Settings]** に移動します。
   
 
-2. At the bottom of the page, click **Get service data encryption key**. A key will appear. Copy and save this key.
-    
-    ![get service data encryption key 1](./media/storsimple-ova-web-ui-admin/image27.png)
+2. ページの下部にある **[サービス データ暗号化キーの取得]** をクリックします。キーが表示されます。このキーをコピーして保存します。
+  	
+	![サービス データ暗号化キーの取得 1](./media/storsimple-ova-web-ui-admin/image27.png)
    
 
 
-## <a name="troubleshoot-web-ui-setup-errors"></a>Troubleshoot web UI setup errors
+## Web UI のセットアップ エラーのトラブルシューティング
 
-In some instances when you configure the device through the local web UI, you might run into errors. To diagnose and troubleshoot such errors, you can run the diagnostics tests.
+ローカル Web UI を使用してデバイスを構成する際に、エラーが発生する場合があります。このようなエラーの診断とトラブルシューティングを行うには、診断テストを実行します。
 
-#### <a name="to-run-the-diagnostic-tests"></a>To run the diagnostic tests
+#### 診断テストを実行するには
 
-1. In the local web UI, go to **Troubleshooting** > **Diagnostic tests**.
+1. ローカル Web UI で、**[トラブルシューティング]** > **[診断テスト]** に移動します。
 
-    ![run diagnostics 1](./media/storsimple-ova-web-ui-admin/image29.png)
+    ![診断の実行 1](./media/storsimple-ova-web-ui-admin/image29.png)
 
-2. At the bottom of the page, click **Run Diagnostic Tests**. This will initiate tests to diagnose any possible issues with your network, device, web proxy, time, or cloud settings. You will be notified that the device is running tests.
+2. ページの下部にある **[診断テストの実行]** をクリックします。これにより、ネットワーク、デバイス、Web プロキシ、時刻、またはクラウドの設定で発生する可能性のある問題を診断するためのテストが開始されます。デバイスでテストを実行中であることが通知されます。
 
-3. After the tests have completed, the results will be displayed. The following example shows the results of diagnostic tests. Note that the web proxy settings were not configured on this device, and therefore, the web proxy test was not run. All the other tests for network settings, DNS server, and time settings were successful.
+3. テストが完了すると、結果が表示されます。次の例は、診断テストの結果を示しています。このデバイスでは Web プロキシ設定が構成されていないため、Web プロキシのテストは実行されていません。ネットワーク設定、DNS サーバー、および時刻設定を調べる他のテストはすべて正常に完了しています。
 
-    ![run diagnostics 2](./media/storsimple-ova-web-ui-admin/image30.png)
+    ![診断の実行 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
-## <a name="generate-a-log-package"></a>Generate a log package
+## ログ パッケージの生成
 
-A log package is comprised of all the relevant logs that can assist Microsoft Support with troubleshooting any device issues. In this release, a log package can be generated via the local web UI.
+ログ パッケージは、Microsoft サポートがデバイスの問題のトラブルシューティングを行う際に役立つすべての関連ログで構成されます。このリリースでは、ログ パッケージはローカル Web UI を使用して生成できます。
 
-#### <a name="to-generate-the-log-package"></a>To generate the log package
+#### ログ パッケージを生成するには
 
-1. In the local web UI, go to **Troubleshooting** > **System logs**.
+1. ローカル Web UI で、**[トラブルシューティング]** > **[システム ログ]** に移動します。
 
-    ![generate log package 1](./media/storsimple-ova-web-ui-admin/image31.png)
+    ![ログ パッケージの生成 1](./media/storsimple-ova-web-ui-admin/image31.png)
 
-2. At the bottom of the page, click **Create log package**. A package of the system logs will be created. This will take a couple of minutes.
+2. ページの下部にある **[ログ パッケージの作成]** をクリックします。システム ログのパッケージが作成されます。作成には数分かかります。
 
-    ![generate log package 2](./media/storsimple-ova-web-ui-admin/image32.png)
+    ![ログ パッケージの生成 2](./media/storsimple-ova-web-ui-admin/image32.png)
 
-    You will be notified after the package is successfully created, and the page will be updated to indicate the time and date when the package was created.
+    パッケージが正常に作成されると通知されます。ページが更新され、パッケージの作成日時が示されます。
 
-    ![generate log package 3](./media/storsimple-ova-web-ui-admin/image33.png)
+    ![ログ パッケージの生成 3](./media/storsimple-ova-web-ui-admin/image33.png)
 
-3. Click **Download log package**. A zipped package will be downloaded on your system.
+3. **[ログ パッケージのダウンロード]** をクリックします。圧縮されたパッケージがシステムにダウンロードされます。
 
-    ![generate log package 4](./media/storsimple-ova-web-ui-admin/image34.png)
+    ![ログ パッケージの生成 4](./media/storsimple-ova-web-ui-admin/image34.png)
 
-4. You can unzip the downloaded log package and view the system log files.
+4. ダウンロードしたログ パッケージを解凍すると、システム ログ ファイルを表示できます。
 
-## <a name="shut-down-and-restart-your-device"></a>Shut down and restart your device
+## デバイスのシャットダウンと再起動
 
-You can shut down or restart your virtual device using the local web UI. We recommend that before you restart, take the volumes or shares offline on the host and then the device. This will minimize any possibility of data corruption. 
+ローカル Web UI を使用して、仮想デバイスをシャットダウンおよび再起動できます。再起動する前に、ホストのボリュームや共有をオフラインにしてから、デバイスをオフラインにすることをお勧めします。これにより、データの破損の可能性を最小限にします。
 
-#### <a name="to-shut-down-your-virtual-device"></a>To shut down your virtual device
+#### 仮想デバイスをシャットダウンするには
 
-1. In the local web UI, go to **Maintenance** > **Power settings**.
+1. ローカル Web UI で、**[メンテナンス]** > **[電源設定]** に移動します。
 
-2. At the bottom of the page, click **Shutdown**.
+2. ページの下部にある **[シャット ダウン]** をクリックします。
 
-    ![device shutdown 1](./media/storsimple-ova-web-ui-admin/image36.png)
+    ![デバイスのシャットダウン 1](./media/storsimple-ova-web-ui-admin/image36.png)
 
-3. A warning will appear stating that a shutdown of the device will interrupt any IO that were in progress, resulting in a downtime. Click the check icon ![check icon](./media/storsimple-ova-web-ui-admin/image3.png).
+3. デバイスをシャットダウンすると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png) をクリックします。
 
-    ![device shutdown warning](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![デバイスのシャットダウンの警告](./media/storsimple-ova-web-ui-admin/image37.png)
 
-    You will be notified that the shutdown has been initiated.
+    シャットダウンが開始されたことが通知されます。
 
-    ![device shutdown started](./media/storsimple-ova-web-ui-admin/image38.png)
+    ![デバイスのシャットダウンの開始](./media/storsimple-ova-web-ui-admin/image38.png)
 
-    The device will now shut down. If you want to start your device, you will need to do that through the Hyper-V Manager.
+    デバイスがシャットダウンされます。デバイスを起動する場合は、Hyper-V マネージャーを使用してこれを実行する必要があります。
 
-#### <a name="to-restart-your-virtual-device"></a>To restart your virtual device
+#### 仮想デバイスを再起動するには
 
-1. In the local web UI, go to **Maintenance** > **Power settings**.
+1. ローカル Web UI で、**[メンテナンス]** > **[電源設定]** に移動します。
 
-2. At the bottom of the page, click **Restart**.
+2. ページの下部にある **[再起動]** をクリックします。
 
-    ![device restart](./media/storsimple-ova-web-ui-admin/image36.png)
+    ![デバイスの再起動](./media/storsimple-ova-web-ui-admin/image36.png)
 
-3. A warning will appear stating that restarting the device will interrupt any IOs that were in progress, resulting in a downtime. Click the check icon ![check icon](./media/storsimple-ova-web-ui-admin/image3.png).
+3. デバイスを再起動すると、実行中のすべての IO が中断され、ダウンタイムが発生することを示す警告が表示されます。チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-web-ui-admin/image3.png) をクリックします。
 
-    ![restart warning](./media/storsimple-ova-web-ui-admin/image37.png)
+    ![再起動の警告](./media/storsimple-ova-web-ui-admin/image37.png)
 
-    You will be notified that the restart has been initiated.
+    再起動が開始されたことが通知されます。
 
-    ![restart initiated](./media/storsimple-ova-web-ui-admin/image39.png)
+    ![再起動の開始](./media/storsimple-ova-web-ui-admin/image39.png)
 
-    While the restart is in progress, you will lose the connection to the UI. You can monitor the restart by refreshing the UI periodically. Alternatively, you can monitor the device restart status through the Hyper-V Manager.
+    再起動の実行中は UI に接続できなくなります。UI を定期的に更新することで、再起動を監視できます。また、Hyper-V マネージャーを使用して、デバイスの再起動の状態を監視することもできます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn how to [use the StorSimple Manager service to manage your device](storsimple-manager-service-administration.md).
+[StorSimple Manager サービスを使用してデバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

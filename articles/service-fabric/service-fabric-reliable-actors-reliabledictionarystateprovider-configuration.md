@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Overview of the Azure Service Fabric Reliable Actors ReliableDictionaryActorStateProvider configuration | Microsoft Azure"
-   description="Learn about configuring Azure Service Fabric stateful actors of type ReliableDictionaryActorStateProvider."
+   pageTitle="Azure Service Fabric の Reliable Actors ReliableDictionaryActorStateProvider の構成の概要 | Microsoft Azure"
+   description="Azure Service Fabric の ReliableDictionaryActorStateProvider という型のステートフル アクターの構成について説明します。"
    services="Service-Fabric"
    documentationCenter=".net"
    authors="sumukhs"
@@ -16,33 +16,32 @@
    ms.date="07/18/2016"
    ms.author="sumukhs"/>
 
+# Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
+ReliableDictionaryActorStateProvider の既定の構成を変更するには、対象のアクターの Config フォルダーの下にある Visual Studio パッケージ ルートに生成された settings.xml ファイルを変更します。
 
-# <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Configuring Reliable Actors--ReliableDictionaryActorStateProvider
-You can modify the default configuration of ReliableDictionaryActorStateProvider by changing the settings.xml file generated in the Visual Studio package root under the Config folder for the specified actor.
+Azure Service Fabric ランタイムは settings.xml ファイルで定義済みのセクション名を検索し、基になるランタイム コンポーネントの作成中に構成値を使用します。
 
-The Azure Service Fabric runtime looks for predefined section names in the settings.xml file and consumes the configuration values while creating the underlying runtime components.
+>[AZURE.NOTE] Visual Studio ソリューションで生成された settings.xml ファイルでは、次の構成のセクション名を削除/変更**しない**でください。
 
->[AZURE.NOTE] Do **not** delete or modify the section names of the following configurations in the settings.xml file that is generated in the Visual Studio solution.
+ReliableDictionaryActorStateProvider の構成に影響を与えるグローバル設定もあります。
 
-There are also global settings that affect the configuration of ReliableDictionaryActorStateProvider.
+## グローバル構成
 
-## <a name="global-configuration"></a>Global Configuration
+グローバル構成は、クラスターのクラスター マニフェストの KtlLogger セクションで指定されています。この構成を使用すると、共有ログの場所とサイズに加えて、ロガーによって使用されるグローバル メモリ制限を構成できます。クラスター マニフェストを変更すると、ReliableDictionaryActorStateProvider を使用するすべてのサービスおよび信頼性できるステートフル サービスに影響があることに注意してください。
 
-The global configuration is specified in the cluster manifest for the cluster under the KtlLogger section. It allows configuration of the shared log location and size plus the global memory limits used by the logger. Note that changes in the cluster manifest affect all services that use ReliableDictionaryActorStateProvider and reliable stateful services.
+クラスター マニフェストは、クラスター内のすべてのノードとサービスに適用される設定と構成を保持する単一の XML ファイルです。通常、このファイルは ClusterManifest.xml という名前です。Get-ServiceFabricClusterManifest PowerShell コマンドを使用して、クラスターのクラスター マニフェストを確認できます。
 
-The cluster manifest is a single XML file that holds settings and configurations that apply to all nodes and services in the cluster. The file is typically called ClusterManifest.xml. You can see the cluster manifest for your cluster using the Get-ServiceFabricClusterManifest powershell command.
+### 構成名
 
-### <a name="configuration-names"></a>Configuration names
-
-|Name|Unit|Default value|Remarks|
+|名前|単位|既定値|解説|
 |----|----|-------------|-------|
-|WriteBufferMemoryPoolMinimumInKB|Kilobytes|8388608|Minimum number of KB to allocate in kernel mode for the logger write buffer memory pool. This memory pool is used for caching state information before writing to disk.|
-|WriteBufferMemoryPoolMaximumInKB|Kilobytes|No Limit|Maximum size to which the logger write buffer memory pool can grow.|
-|SharedLogId|GUID|""|Specifies a unique GUID to use for identifying the default shared log file used by all reliable services on all nodes in the cluster that do not specify the SharedLogId in their service specific configuration. If SharedLogId is specified, then SharedLogPath must also be specified.|
-|SharedLogPath|Fully qualified path name|""|Specifies the fully qualified path where the shared log file used by all reliable services on all nodes in the cluster that do not specify the SharedLogPath in their service specific configuration. However, if SharedLogPath is specified, then SharedLogId must also be specified.|
-|SharedLogSizeInMB|Megabytes|8192|Specifies the number of MB of disk space to statically allocate for the shared log. The value must be 2048 or larger.|
+|WriteBufferMemoryPoolMinimumInKB|キロバイト|8388608|ロガー書き込みバッファー メモリ プールに対してカーネル モードで割り当てる最小 KB 数。このメモリ プールは、ディスクに書き込む前の状態情報のキャッシュに使用されます。|
+|WriteBufferMemoryPoolMaximumInKB|キロバイト|制限なし|ロガー書き込みバッファー メモリ プールを拡張できる最大サイズ。|
+|SharedLogId|GUID|""|クラスター内のすべてのノードの Reliable Services のうち、サービス固有の構成で SharedLogId が指定されていないすべてのサービスによって使用される既定の共有ログ ファイルの指定に使用される、一意の GUID を指定します。SharedLogId を指定する場合は、SharedLogPath も指定する必要があります。|
+|SharedLogPath|完全修飾パス名|""|クラスター内のすべてのノードの Reliable Services のうち、サービス固有の構成で SharedLogPath が指定されていないすべてのサービスによって使用される共有ログ ファイルの完全修飾パスを指定します。SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。|
+|SharedLogSizeInMB|メガバイト|8192|共有ログ用に静的に割り当てるディスク領域の MB 数を指定します。2048 以上の値を指定する必要があります。|
 
-### <a name="sample-cluster-manifest-section"></a>Sample cluster manifest section
+### クラスター マニフェストのセクションの例
 ```xml
    <Section Name="KtlLogger">
      <Parameter Name="WriteBufferMemoryPoolMinimumInKB" Value="8192" />
@@ -53,44 +52,42 @@ The cluster manifest is a single XML file that holds settings and configurations
    </Section>
 ```
 
-### <a name="remarks"></a>Remarks
-The logger has a global pool of memory allocated from non paged kernel memory that is available to all reliable services on a node for caching state data before being written to the dedicated log associated with the reliable service replica. The pool size is controlled by the WriteBufferMemoryPoolMinimumInKB and WriteBufferMemoryPoolMaximumInKB settings. WriteBufferMemoryPoolMinimumInKB specifies both the initial size of this memory pool and the lowest size to which the memory pool may shrink. WriteBufferMemoryPoolMaximumInKB is the highest size to which the memory pool may grow. Each reliable service replica that is opened may increase the size of the memory pool by a system determined amount up to WriteBufferMemoryPoolMaximumInKB. If there is more demand for memory from the memory pool than is available, requests for memory will be delayed until memory is available. Therefore if the write buffer memory pool is too small for a particular configuration then performance may suffer.
+### 解説
+ロガーには、非ページ カーネル メモリから割り当てられるメモリのグローバル プールがあります。ノード上のすべての Reliable Services は、Reliable Services レプリカに関連付けられている専用ログに書き込まれる前の状態データのキャッシュに、このプールを使用できます。プールのサイズは、WriteBufferMemoryPoolMinimumInKB および WriteBufferMemoryPoolMaximumInKB の設定によって制御されます。WriteBufferMemoryPoolMinimumInKB は、このメモリ プールの初期サイズと、メモリ プールを縮小できる最小サイズの両方を指定します。WriteBufferMemoryPoolMaximumInKB は、メモリ プールが拡大できる最大サイズです。開かれている各 Reliable Services レプリカは、WriteBufferMemoryPoolMaximumInKB 以下のシステムによって決定される大きさまで、メモリ プールのサイズを増やすことができます。メモリ プールのメモリをさらに使用する必要がある場合、メモリの要求はメモリが使用可能になるまで遅延されます。そのため、書き込みバッファー メモリ プールが特定の構成に対して小さすぎる場合、パフォーマンスが低下します。
 
-The SharedLogId and SharedLogPath settings are always used together to define the GUID and location for the default shared log for all nodes in the cluster. The default shared log is used for all reliable services that do not specify the settings in the settings.xml for the specific service. For best performance, shared log files should be placed on disks that are used solely for the shared log file to reduce contention.
+SharedLogId と SharedLogPath の設定は常に一緒に使用されて、クラスター内のすべてのノードに対する既定の共有ログの GUID と場所を定義します。既定の共有ログは、settings.xml でサービス固有の設定が指定されていないすべての Reliable Services に使用されます。最善のパフォーマンスを得るには、競合が減るように、共有ログ ファイルを専用のディスクに配置する必要があります。
 
-SharedLogSizeInMB specifies the amount of disk space to preallocate for the default shared log on all nodes.  SharedLogId and SharedLogPath do not need to be specified in order for SharedLogSizeInMB to be specified.
+SharedLogSizeInMB では、すべてのノードで既定の共有ログに前もって割り当てるディスク領域の量を指定します。SharedLogSizeInMB を指定するために SharedLogId と SharedLogPath を指定する必要はありません。
 
-## <a name="replicator-security-configuration"></a>Replicator security configuration
-Replicator security configurations are used to secure the communication channel that is used during replication. This means that services cannot see each other's replication traffic, ensuring the data that is made highly available is also secure.
-By default, an empty security configuration section prevents replication security.
+## レプリケーターのセキュリティ構成
+レプリケーション時に使用される通信チャネルをセキュリティ保護する場合は、レプリケーターのセキュリティ構成を使用します。これは、サービスは互いのレプリケーション トラフィックを表示できないため、高可用性データもセキュリティ保護されることを意味します。既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
 
-### <a name="section-name"></a>Section name
+### セクション名
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
 
-## <a name="replicator-configuration"></a>Replicator configuration
-Replicator configurations are used to configure the replicator that is responsible for making the Actor State Provider state highly reliable by replicating and persisting the state locally.
-The default configuration is generated by the Visual Studio template and should suffice. This section talks about additional configurations that are available to tune the replicator.
+## レプリケーター構成
+状態をローカルにレプリケートして永続化することでアクターの状態プロバイダーの状態の信頼性を高める必要があるレプリケーターを構成する場合は、レプリケーター構成を使用します。既定の構成は Visual Studio テンプレートによって生成され、これで十分なはずです。このセクションでは、レプリケーターのチューニングに使用できる追加の構成について説明します。
 
-### <a name="section-name"></a>Section name
+### セクション名
 &lt;ActorName&gt;ServiceReplicatorConfig
 
-### <a name="configuration-names"></a>Configuration names
+### 構成名
 
-|Name|Unit|Default value|Remarks|
+|名前|単位|既定値|解説|
 |----|----|-------------|-------|
-|BatchAcknowledgementInterval|Seconds|0.015|Time period for which the replicator at the secondary waits after receiving an operation before sending back an acknowledgement to the primary. Any other acknowledgements to be sent for operations processed within this interval are sent as one response.||
-|ReplicatorEndpoint|N/A|No default--required parameter|IP address and port that the primary/secondary replicator will use to communicate with other replicators in the replica set. This should reference a TCP resource endpoint in the service manifest. Refer to [Service manifest resources](service-fabric-service-manifest-resources.md) to read more about defining endpoint resources in service manifest. |
-|MaxReplicationMessageSize|Bytes|50 MB|Maximum size of replication data that can be transmitted in a single message.|
-|MaxPrimaryReplicationQueueSize|Number of operations|8192|Maximum number of operations in the primary queue. An operation is freed up after the primary replicator receives an acknowledgement from all the secondary replicators. This value must be greater than 64 and a power of 2.|
-|MaxSecondaryReplicationQueueSize|Number of operations|16384|Maximum number of operations in the secondary queue. An operation is freed up after making its state highly available through persistence. This value must be greater than 64 and a power of 2.|
-|CheckpointThresholdInMB|MB|200|Amount of log file space after which the state is checkpointed.|
-|MaxRecordSizeInKB|KB|1024|Largest record size that the replicator may write in the log. This value must be a multiple of 4 and greater than 16.|
-|OptimizeLogForLowerDiskUsage|Boolean|true|When true, the log is configured so that the replica's dedicated log file is created by using an NTFS sparse file. This lowers the actual disk space usage for the file. When false, the file is created with fixed allocations, which provide the best write performance.|
-|SharedLogId|guid|""|Specifies a unique guid to use for identifying the shared log file used with this replica. Typically, services should not use this setting. However, if SharedLogId is specified, then SharedLogPath must also be specified.|
-|SharedLogPath|Fully qualified path name|""|Specifies the fully qualified path where the shared log file for this replica will be created. Typically, services should not use this setting. However, if SharedLogPath is specified, then SharedLogId must also be specified.|
+|BatchAcknowledgementInterval|秒|0\.015|操作を受信してからプライマリに受信確認を返すまで、セカンダリでレプリケーターが待機する期間です。この期間内で処理された操作に対して送信される他の受信確認は、1 つの応答として送信されます。||
+|ReplicatorEndpoint|該当なし|既定値なし - 必須パラメーター|プライマリとセカンダリのレプリケーターがレプリカ セットの他のレプリケーターと通信するために使用する IP アドレスとポートです。これは、サービス マニフェストの TCP リソース エンドポイントを参照する必要があります。サービス マニフェストでのエンドポイント リソース定義の詳細については、「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」を参照してください。 |
+|MaxReplicationMessageSize|バイト|50 MB|1 つのメッセージで送信できるレプリケーション データの最大サイズです。|
+|MaxPrimaryReplicationQueueSize|操作数|8192|プライマリ キューの操作の最大数です。操作は、プライマリ レプリケーターがすべてのセカンダリ レプリケーターから受信確認を受信した後に解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
+|MaxSecondaryReplicationQueueSize|操作数|16384|セカンダリ キューの操作の最大数です。操作は、永続性によってその状態の高可用性が実現されてから解放されます。この値は 64 より大きく、2 のべき乗である必要があります。|
+|CheckpointThresholdInMB|MB|200|その後で状態がチェックポイントされるログ ファイル領域の量。|
+|MaxRecordSizeInKB|KB|1024|レプリケーターがログに書き込むことができるレコードの最大サイズです。この値は 4 の倍数で 16 より大きい必要があります。|
+|OptimizeLogForLowerDiskUsage|Boolean|true|true の場合、NTFS スパース ファイルを使用してレプリカの専用ログ ファイルが作成されるように、ログが構成されます。これにより、ファイルで使用される実際のディスク領域が削減されます。false の場合、最適な書き込みパフォーマンスを提供する固定の割り当てがファイルに作成されます。|
+|SharedLogId|guid|""|このレプリカで使用される共有ログ ファイルの識別に使用する一意の guid を指定します。通常、サービスではこの設定を使用しないはずですが、SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。|
+|SharedLogPath|完全修飾パス名|""|このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。通常、サービスではこの設定を使用しないはずですが、SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。|
 
 
-## <a name="sample-configuration-file"></a>Sample configuration file
+## サンプル構成ファイル
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -112,20 +109,15 @@ The default configuration is generated by the Visual Studio template and should 
 </Settings>
 ```
 
-## <a name="remarks"></a>Remarks
-The BatchAcknowledgementInterval parameter controls replication latency. A value of '0' results in the lowest possible latency, at the cost of throughput (as more acknowledgement messages must be sent and processed, each containing fewer acknowledgements).
-The larger the value for BatchAcknowledgementInterval, the higher the overall replication throughput, at the cost of higher operation latency. This directly translates to the latency of transaction commits.
+## 解説
+BatchAcknowledgementInterval パラメーターは、レプリケーションの待機時間を制御します。値が '0' の場合、待機時間は最短になりますが、スループットに影響します (送信および処理が必要な受信確認メッセージが増え、それぞれに含まれる受信確認が少なくなります)。BatchAcknowledgementInterval の値が大きいほど、全体的なレプリケーションのスループットが高くなり、操作の待機時間が長くなります。これは、トランザクションのコミットの待機時間に直結します。
 
-The CheckpointThresholdInMB parameter controls the amount of disk space that the replicator can use to store state information in the replica's dedicated log file. Increasing this to a higher value than the default could result in faster reconfiguration times when a new replica is added to the set. This is due to the partial state transfer that takes place due to the availability of more history of operations in the log. This can potentially increase the recovery time of a replica after a crash.
+CheckpointThresholdInMB パラメーターは、レプリケーターがレプリカの専用ログ ファイルへの状態情報の保存に使用できるディスク領域の量を制御します。この値を既定値よりも大きくすると、セットに新しいレプリカを追加したときの再構成時間が短くなります。これは、ログで使用できる操作履歴が増えることで部分的な状態転送が発生するためです。ただし、クラッシュ後のレプリカの復旧時間は長くなる可能性があります。
 
-If you set OptimizeForLowerDiskUsage to true, log file space will be over-provisioned so that active replicas can store more state information in their log files, while inactive replicas will use less disk space. This makes it possible to host more replicas on a node. If you set OptimizeForLowerDiskUsage to false, the state information is written to the log files more quickly.
+OptimizeForLowerDiskUsage を true に設定すると、ログ ファイルの領域が過剰プロビジョニングされるため、アクティブなレプリカはログ ファイルにより多くの状態情報を保存できますが、非アクティブなレプリカで使用されるディスク領域は少なくなります。これにより、ノードでより多くのレプリカをホストできます。OptimizeForLowerDiskUsage を false に設定すると、状態情報はより迅速にログ ファイルに書き込まれます。
 
-The MaxRecordSizeInKB setting defines the maximum size of a record that can be written by the replicator into the log file. In most cases, the default 1024-KB record size is optimal. However, if the service is causing larger data items to be part of the state information, then this value might need to be increased. There is little benefit in making MaxRecordSizeInKB smaller than 1024, as smaller records use only the space needed for the smaller record. We expect that this value would need to be changed only in rare cases.
+MaxRecordSizeInKB 設定は、レプリケーターがログ ファイルに書き込むことのできるレコードの最大サイズを定義します。ほとんどすべてのケースで、最適なレコードのサイズは既定の 1,024 KB ですが、サービスで大きなデータ項目を状態情報に含めようとしている場合、この値を増やさなければならない場合があります。小さいレコードは小さいレコードに必要な領域しか使用しないため、MaxRecordSizeInKB を 1024 より小さくしてもほとんど効果はありません。これを変更する必要があるのは、まれなケースだけであると予想されます。
 
-The SharedLogId and SharedLogPath settings are always used together to make a service use a separate shared log from the default shared log for the node. For best efficiency, as many services as possible should specify the same shared log. Shared log files should be placed on disks that are used solely for the shared log file, to reduce head movement contention. We expect that these values would need to be changed only in rare cases.
+SharedLogId と SharedLogPath の設定は常に一緒に使用して、サービスがノードの既定の共有ログとは別の共有ログを使用できるようにします。最適な効率を得るため、できるだけ多くのサービスで同じ共有ログを指定してください。共有ログ ファイルは、ヘッドの移動の競合が減るように、共有ログ ファイル専用に使用されるディスクに配置する必要があります。これを変更する必要があるのは、まれなケースだけであると予想されます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

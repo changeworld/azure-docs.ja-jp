@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Learn how to use the Twitter connector in logic apps | Microsoft Azure"
-    description="Overview of Twitter connector with REST API parameters"
-    services=""
-    documentationCenter="" 
-    authors="msftman"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="ロジック アプリで Twitter コネクタを使用する方法 | Microsoft Azure"
+	description="Twitter コネクタと REST API パラメーターの概要"
+	services=""
+	documentationCenter="" 
+	authors="msftman"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="multiple"
@@ -18,449 +18,446 @@
    ms.author="deonhe"/>
 
 
+# Twitter コネクタの使用
 
-# <a name="get-started-with-the-twitter-connector"></a>Get started with the Twitter connector
+Twitter コネクタでは、次のことが可能です。
 
-With the Twitter connector you can:
+- ツイートの投稿とツイートの取得
+- タイムライン、友達、フォロワーへのアクセス
+- 以下で説明するその他のアクションやトリガーの実行
 
-- Post tweets and get tweets
-- Access timelines, friends and followers
-- Perform any of the other actions and triggers described below  
+[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
 
-To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).  
+## Twitter への接続
 
-## <a name="connect-to-twitter"></a>Connect to Twitter
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "接続" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
 
-Before your logic app can access any service, you first need to create a *connection* to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service.  
+### Twitter への接続を作成する
 
-### <a name="create-a-connection-to-twitter"></a>Create a connection to Twitter
+>[AZURE.INCLUDE [Twitter への接続を作成する手順](../../includes/connectors-create-api-twitter.md)]
 
->[AZURE.INCLUDE [Steps to create a connection to Twitter](../../includes/connectors-create-api-twitter.md)]
+## Twitter トリガーの使用
 
-## <a name="use-a-twitter-trigger"></a>Use a Twitter trigger
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
 
-A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+この例では、**When a new tweet is posted (新しいツイートの投稿時)** トリガーを使用して #Seattle を検索し、#Seattle が見つかった場合に、Dropbox のファイルをツイートのテキストで更新する方法について説明します。企業での使用例として、自社の名前を検索し、SQL データベースをツイートのテキストで更新できます。
 
-In this example, I will show you how to use the **When a new tweet is posted**  trigger to search for #Seattle and, if #Seattle is found, update a file in Dropbox with the text from the tweet. In an enterprise example, you could search for the name of your company and update a SQL database with the text from the tweet.
+1. Logic Apps デザイナーの検索ボックスに「twitter」と入力し、**[Twitter - When a new tweet is posted (Twitter - 新しいツイートの投稿時)]** トリガーを選択します。  
+![Twitter トリガーの画像 1](./media/connectors-create-api-twitter/trigger-1.png)  
+- **[Search Text (検索テキスト)]** コントロールに「#Seattle」と入力します。  
+![Twitter トリガーの画像 2](./media/connectors-create-api-twitter/trigger-2.png)  
 
-1. Enter *twitter* in the search box on the logic apps designer then select the **Twitter - When a new tweet is posted**  trigger   
-![Twitter trigger image 1](./media/connectors-create-api-twitter/trigger-1.png)  
-- Enter *#Seattle* in the **Search Text** control  
-![Twitter trigger image 2](./media/connectors-create-api-twitter/trigger-2.png) 
+これで、ワークフローで他のトリガーとアクションの実行を開始するトリガーでロジック アプリが構成されました。
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow. 
+>[AZURE.NOTE]ロジック アプリを機能させるには、少なくとも 1 つのトリガーとアクションが含まれている必要があります。アクションを追加するには、次のセクションの手順に従います。
 
->[AZURE.NOTE]For a logic app to be functional, it must contain at least one trigger and one action. Follow the steps in the next section to add an action.  
+## Add a condition
+ここでは、50 人以上のユーザーを持つユーザーのツイートだけを対象とするので、まずフォロワー数を確認する条件をロジック アプリに追加する必要があります。
 
-## <a name="add-a-condition"></a>Add a condition
-Since we are only interested in tweets from users with more than 50 users, a condition that confirms the number of followers must first be added to the logic app.  
+1. **[+ 新しいステップ]** をクリックして、新しいツイートで #Seattle が見つかったときに実行するアクションを追加します。  
+![Twitter アクションの画像 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
+- **[条件の追加]** リンクをクリックします。  
+![Twitter 条件の画像 1](../../includes/media/connectors-create-api-twitter/condition-1.png)  
+**[条件]** コントロールが開きます。ここで、[is equal to (次の値に等しい)]、[is less than (次の値より小さい)]、[is greater than (次の値より大きい)]、[contains (次の値を含む)] などの条件を確認できます。  
+![Twitter 条件の画像 2](../../includes/media/connectors-create-api-twitter/condition-2.png)  
+- **[値の選択]** コントロールを選択します。このコントロールでは、条件が true または false に評価される値として、以前のアクションまたはトリガーの 1 つ以上のプロパティを選択できます。  
+![Twitter 条件の画像 3](../../includes/media/connectors-create-api-twitter/condition-3.png)  
+- 使用可能なすべてのプロパティを確認できるように、**[...]** をクリックしてプロパティの一覧を展開します。  
+![Twitter 条件の画像 4](../../includes/media/connectors-create-api-twitter/condition-4.png)  
+- **[Followers count (フォロワー数)]** プロパティを選択します。  
+![Twitter 条件の画像 5](../../includes/media/connectors-create-api-twitter/condition-5.png)  
+- 値コントロールに [Followers count (フォロワー数)] プロパティが表示されていることを確認します。  
+![Twitter 条件の画像 6](../../includes/media/connectors-create-api-twitter/condition-6.png)  
+- 演算子の一覧から **[is greater than (次の値より大きい)]** を選択します。  
+![Twitter 条件の画像 7](../../includes/media/connectors-create-api-twitter/condition-7.png)  
+- "is greater than (次の値より大きい)" 演算子のオペランドとして「50」と入力します。これで条件が追加されました。上部のメニューの **[保存]** リンクをクリックして作業内容を保存します。  
+![Twitter 条件の画像 8](../../includes/media/connectors-create-api-twitter/condition-8.png)  
 
-1. Select **+ New step** to add the action you would like to take when #Seattle is found in a new tweet  
-![Twitter action image 1](../../includes/media/connectors-create-api-twitter/action-1.png)  
-- Select the **Add a condition** link.  
-![Twitter condition image 1](../../includes/media/connectors-create-api-twitter/condition-1.png)   
-This opens the **Condition** control where you can check conditions such as *is equal to*, *is less than*, *is greater than*, *contains*, etc.  
-![Twitter condition image 2](../../includes/media/connectors-create-api-twitter/condition-2.png)   
-- Select the **Choose a value** control.  
-In this control, you can select one or more of the properties from any previous actions or triggers as the value whose condition will be evaluated to true or false.
-![Twitter condition image 3](../../includes/media/connectors-create-api-twitter/condition-3.png)   
-- Select the **...** to expand the list of properties so you can see all the properties that are available.        
-![Twitter condition image 4](../../includes/media/connectors-create-api-twitter/condition-4.png)   
-- Select the **Followers count** property.    
-![Twitter condition image 5](../../includes/media/connectors-create-api-twitter/condition-5.png)   
-- Notice the Followers count property is now in the value control.    
-![Twitter condition image 6](../../includes/media/connectors-create-api-twitter/condition-6.png)   
-- Select **is greater than** from the operators list.    
-![Twitter condition image 7](../../includes/media/connectors-create-api-twitter/condition-7.png)   
-- Enter 50 as the operand for the *is greater than* operator.  
-The condition is now added. Save your work using the **Save** link on the menu above.    
-![Twitter condition image 8](../../includes/media/connectors-create-api-twitter/condition-8.png)   
+## Twitter アクションの使用
 
-## <a name="use-a-twitter-action"></a>Use a Twitter action
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。アクションの詳細については、[こちら](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)をご覧ください。
 
-An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
+トリガーを追加したら、次の手順に従って、トリガーによって検出されたツイートの内容を含む新しいツイートを投稿するアクションを追加します。このチュートリアルでは、50 人以上のフォロワーを持つユーザーのツイートだけを投稿します。
 
-Now that you have added a trigger, follow these steps to add an action that will post a new tweet with the contents of the tweets found by the trigger. For the purposes of this walk-through only tweets from users with more than 50 followers will be posted.  
+次の手順では、50 人以上のフォロワーを持つユーザーが投稿した各ツイートの一部のプロパティを使用してツイートを投稿する Twitter アクションを追加します。
 
-In the next step, you will add a Twitter action that will post a tweet using some of the properties of each tweet that has been posted by a user who has more than 50 followers.  
+1. **[アクションの追加]** を選択します。他のアクションやトリガーを検索できる検索コントロールが開きます。  
+![Twitter 条件の画像 9](../../includes/media/connectors-create-api-twitter/condition-9.png)  
+- 検索ボックスに「twitter」と入力し、**[Twitter - Post a tweet (Twitter - ツイートの投稿)]** アクションを選択します。**[Post a tweet (ツイートの投稿)]** コントロールが開きます。ここで、投稿するツイートの詳細をすべて入力します。  
+![Twitter アクションの画像 1 ～ 5](../../includes/media/connectors-create-api-twitter/action-1-5.png)  
+- **[Tweet text (ツイート テキスト)]** を選択します。ロジック アプリでの以前のアクションとトリガーのすべての出力が表示されます。これらのいずれかを選択し、新しいツイートのツイート テキストの一部として使用できます。  
+![Twitter アクションの画像 2](../../includes/media/connectors-create-api-twitter/action-2.png)  
+- **[ユーザー名]** を選択します。
+- [Tweet text (ツイート テキスト)] コントロールで、「のコメント:」と入力します。これはユーザー名の直後に入力します。
+- *[Tweet text (ツイート テキスト)]* を選択します。  
+![Twitter アクションの画像 3](../../includes/media/connectors-create-api-twitter/action-3.png)  
+- 作業内容を保存し、#Seattle というハッシュタグを含めたツイートを送信してワークフローをアクティブにします。
 
-1. Select **Add an action**. This opens the search control where you can search for other actions and triggers.  
-![Twitter condition image 9](../../includes/media/connectors-create-api-twitter/condition-9.png)   
-- Enter *twitter* into the search box then select the **Twitter - Post a tweet** action. This opens the **Post a tweet** control where you will enter all details for the tweet being posted.      
-![Twitter action image 1-5](../../includes/media/connectors-create-api-twitter/action-1-5.png)   
-- Select the **Tweet text** control. All outputs from previous actions and triggers in the logic app are now visible. You can select any of these and use them as part of the tweet text of the new tweet.     
-![Twitter action image 2](../../includes/media/connectors-create-api-twitter/action-2.png)   
-- Select **User name**   
-- Enter *says:* in the tweet text control. Do this just after User name.  
-- Select *Tweet text*.       
-![Twitter action image 3](../../includes/media/connectors-create-api-twitter/action-3.png)   
-- Save your work and send a tweet with the #Seattle hashtag to activate your workflow.  
+## 技術的な詳細
 
-## <a name="technical-details"></a>Technical Details
+ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
 
-Here are the details about the triggers, actions and responses that this connection supports:
+## Twitter トリガー
 
-## <a name="twitter-triggers"></a>Twitter triggers
+Twitter コネクタには、次のトリガーがあります。
 
-The Twitter connector has the following trigger(s):  
-
-|Trigger | Description|
+|トリガー | 説明|
 |--- | ---|
-|[When a new tweet is posted](connectors-create-api-twitter.md#when-a-new-tweet-is-posted)|This operation triggers a flow when a new tweet that matches a given search query is posted.|
+|[When a new tweet is posted (新しいツイートの投稿時)](connectors-create-api-twitter.md#when-a-new-tweet-is-posted)|この操作では、特定の検索クエリに一致する新しいツイートが投稿されたときにフローをトリガーします。|
 
 
-## <a name="twitter-actions"></a>Twitter actions
+## Twitter アクション
 
-The Twitter connector has the following actions:
+Twitter コネクタには、次のアクションがあります。
 
 
-|Action|Description|
+|アクション|説明|
 |--- | ---|
-|[Get user timeline](connectors-create-api-twitter.md#get-user-timeline)|This operation gets a list of the most recent tweets posted by a given user.|
-|[Get home timeline](connectors-create-api-twitter.md#get-home-timeline)|This operation gets the most recent tweets and re-tweets posted by me and my followers.|
-|[Search tweets](connectors-create-api-twitter.md#search-tweets)|This operation gets a list of relevant tweets matching the search query.|
-|[Get followers](connectors-create-api-twitter.md#get-followers)|This operation gets the list of users that follow a given user.|
-|[Get my followers](connectors-create-api-twitter.md#get-my-followers)|This operation gets the list of users who are following me.|
-|[Get following](connectors-create-api-twitter.md#get-following)|The operation gets the list of people the given user follows.|
-|[Get my following](connectors-create-api-twitter.md#get-my-following)|This operation gets the list of users that I am following.|
-|[Get user](connectors-create-api-twitter.md#get-user)|This operation gets the profile details for a given user, such as user name, description, followers count, and more.|
-|[Post a tweet](connectors-create-api-twitter.md#post-a-tweet)|This operation posts a new tweet.|
-## <a name="action-details"></a>Action details
+|[ユーザーのタイムラインを取得する](connectors-create-api-twitter.md#get-user-timeline)|この操作では、特定のユーザーが投稿した最近のツイートのリストを取得します。|
+|[ホーム タイムラインを取得する](connectors-create-api-twitter.md#get-home-timeline)|この操作では、自分と自分のフォロワーが投稿した最近のツイートとリツイートを取得します。|
+|[ツイートの検索](connectors-create-api-twitter.md#search-tweets)|この操作では、検索クエリに一致する関連ツイートのリストを取得します。|
+|[フォロワーを取得する](connectors-create-api-twitter.md#get-followers)|この操作では、特定のユーザーをフォローするユーザーのリストを取得します。|
+|[自分のフォロワーを取得する](connectors-create-api-twitter.md#get-my-followers)|この操作では、自分をフォローしているユーザーのリストを取得します。|
+|[フォローを取得する](connectors-create-api-twitter.md#get-following)|この操作では、特定のユーザーがフォローするユーザーのリストを取得します。|
+|[自分のフォローを取得する](connectors-create-api-twitter.md#get-my-following)|この操作では、自分がフォローしているユーザーのリストを取得します。|
+|[ユーザーを取得する](connectors-create-api-twitter.md#get-user)|この操作では、特定のユーザーのプロファイルの詳細 (ユーザー名、説明、フォロワー数など) を取得します。|
+|[ツイートを投稿する](connectors-create-api-twitter.md#post-a-tweet)|この操作では、新しいツイートを投稿します。|
+## アクションの詳細
 
-Here are the details for the actions and triggers for this connector, along with their responses:
-
-
-
-### <a name="get-user-timeline"></a>Get user timeline
-This operation gets a list of the most recent tweets posted by a given user. 
+ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
 
 
-|Property Name| Display Name|Description|
+
+### ユーザーのタイムラインを取得する
+この操作では、特定のユーザーが投稿した最近のツイートのリストを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
-|maxResults|Maximum results|Maximum number of tweets to return|
+|userName*|ユーザー名|ユーザーの Twitter ハンドル|
+|maxResults|Maximum results (結果の最大数)|返されるツイートの最大数|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-TweetModel: Representation of Tweet Object
+* は、必須のプロパティを示します。
 
 
-| Property Name | Data Type | Description |
+
+#### 出力の詳細
+
+TweetModel: ツイート オブジェクトを表すモデル
+
+
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|TweetText|string|Text content of the tweet|
-|TweetId|string|Id of the tweet|
-|CreatedAt|string|Time at which the tweet was posted|
-|RetweetCount|integer|Total number of re-tweets for the tweet|
-|TweetedBy|string|Name of the user who has posted the tweet|
-|MediaUrls|array|Url of the media posted along with the tweet|
-|TweetLanguageCode|string|Language code of the tweet|
-|TweetInReplyToUserId|string|User Id of the author of the tweet that the current tweet is a reply to|
-|Favorited|boolean|Indicates whether the tweet is marked as favorited or not|
-|UserMentions|array|List of users mentioned in the tweet|
-|OriginalTweet|not defined|Original tweet from which the current tweet is re-tweeted|
-|UserDetails|not defined|Details of the user who tweeted|
+|TweetText|string|ツイートのテキストの内容|
+|TweetId|string|ツイートの ID|
+|CreatedAt|string|ツイートが投稿された時刻|
+|RetweetCount|integer|ツイートのリツイートの総数|
+|TweetedBy|string|ツイートを投稿したユーザーの名前|
+|MediaUrls|array|ツイートと共に投稿されたメディアの URI|
+|TweetLanguageCode|string|ツイートの言語コード|
+|TweetInReplyToUserId|string|現在のツイートの返信先であるツイートの作成者のユーザー ID|
+|Favorited|ブール値|ツイートがお気に入りとしてマークされているかどうかを示します。|
+|UserMentions|array|ツイートに記載されているユーザーのリスト|
+|OriginalTweet|未定義|現在のツイートがリツイートされた元のツイート|
+|UserDetails|未定義|ツイートしたユーザーの詳細|
 
 
 
 
-### <a name="get-home-timeline"></a>Get home timeline
-This operation gets the most recent tweets and re-tweets posted by me and my followers. 
+### ホーム タイムラインを取得する
+この操作では、自分と自分のフォロワーが投稿した最近のツイートとリツイートを取得します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|maxResults|Maximum results|Maximum number of tweets to return|
+|maxResults|Maximum results (結果の最大数)|返されるツイートの最大数|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-TweetModel: Representation of Tweet Object
+* は、必須のプロパティを示します。
 
 
-| Property Name | Data Type | Description |
+
+#### 出力の詳細
+
+TweetModel: ツイート オブジェクトを表すモデル
+
+
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|TweetText|string|Text content of the tweet|
-|TweetId|string|Id of the tweet|
-|CreatedAt|string|Time at which the tweet was posted|
-|RetweetCount|integer|Total number of re-tweets for the tweet|
-|TweetedBy|string|Name of the user who has posted the tweet|
-|MediaUrls|array|Url of the media posted along with the tweet|
-|TweetLanguageCode|string|Language code of the tweet|
-|TweetInReplyToUserId|string|User Id of the author of the tweet that the current tweet is a reply to|
-|Favorited|boolean|Indicates whether the tweet is marked as favorited or not|
-|UserMentions|array|List of users mentioned in the tweet|
-|OriginalTweet|not defined|Original tweet from which the current tweet is re-tweeted|
-|UserDetails|not defined|Details of the user who tweeted|
+|TweetText|string|ツイートのテキストの内容|
+|TweetId|string|ツイートの ID|
+|CreatedAt|string|ツイートが投稿された時刻|
+|RetweetCount|integer|ツイートのリツイートの総数|
+|TweetedBy|string|ツイートを投稿したユーザーの名前|
+|MediaUrls|array|ツイートと共に投稿されたメディアの URI|
+|TweetLanguageCode|string|ツイートの言語コード|
+|TweetInReplyToUserId|string|現在のツイートの返信先であるツイートの作成者のユーザー ID|
+|Favorited|ブール値|ツイートがお気に入りとしてマークされているかどうかを示します。|
+|UserMentions|array|ツイートに記載されているユーザーのリスト|
+|OriginalTweet|未定義|現在のツイートがリツイートされた元のツイート|
+|UserDetails|未定義|ツイートしたユーザーの詳細|
 
 
 
 
-### <a name="search-tweets"></a>Search tweets
-This operation gets a list of relevant tweets matching the search query. 
+### ツイートの検索
+この操作では、検索クエリに一致する関連ツイートのリストを取得します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|searchQuery*|Search text|Search term like "happy hour", #haiku, love OR hate|
-|maxResults|Maximum results|Maximum number of tweets to return|
+|searchQuery*|検索テキスト|"happy hour"、#haiku、好き嫌いなどの検索語句|
+|maxResults|Maximum results (結果の最大数)|返されるツイートの最大数|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-TweetModel: Representation of Tweet Object
+* は、必須のプロパティを示します。
 
 
-| Property Name | Data Type | Description |
+
+#### 出力の詳細
+
+TweetModel: ツイート オブジェクトを表すモデル
+
+
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|TweetText|string|Text content of the tweet|
-|TweetId|string|Id of the tweet|
-|CreatedAt|string|Time at which the tweet was posted|
-|RetweetCount|integer|Total number of re-tweets for the tweet|
-|TweetedBy|string|Name of the user who has posted the tweet|
-|MediaUrls|array|Url of the media posted along with the tweet|
-|TweetLanguageCode|string|Language code of the tweet|
-|TweetInReplyToUserId|string|User Id of the author of the tweet that the current tweet is a reply to|
-|Favorited|boolean|Indicates whether the tweet is marked as favorited or not|
-|UserMentions|array|List of users mentioned in the tweet|
-|OriginalTweet|not defined|Original tweet from which the current tweet is re-tweeted|
-|UserDetails|not defined|Details of the user who tweeted|
+|TweetText|string|ツイートのテキストの内容|
+|TweetId|string|ツイートの ID|
+|CreatedAt|string|ツイートが投稿された時刻|
+|RetweetCount|integer|ツイートのリツイートの総数|
+|TweetedBy|string|ツイートを投稿したユーザーの名前|
+|MediaUrls|array|ツイートと共に投稿されたメディアの URI|
+|TweetLanguageCode|string|ツイートの言語コード|
+|TweetInReplyToUserId|string|現在のツイートの返信先であるツイートの作成者のユーザー ID|
+|Favorited|ブール値|ツイートがお気に入りとしてマークされているかどうかを示します。|
+|UserMentions|array|ツイートに記載されているユーザーのリスト|
+|OriginalTweet|未定義|現在のツイートがリツイートされた元のツイート|
+|UserDetails|未定義|ツイートしたユーザーの詳細|
 
 
 
 
-### <a name="get-followers"></a>Get followers
-This operation gets the list of users that follow a given user. 
+### フォロワーを取得する
+この操作では、特定のユーザーをフォローするユーザーのリストを取得します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
-|maxResults|Maximum results|Maximum number of users to return|
+|userName*|ユーザー名|ユーザーの Twitter ハンドル|
+|maxResults|Maximum results (結果の最大数)|返されるユーザーの最大数|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+* は、必須のプロパティを示します。
 
 
-| Property Name | Data Type | Description |
+
+#### 出力の詳細
+
+UserDetailsModel: Twitter ユーザーの詳細
+
+
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|ユーザーの名前|
+|Location (場所)|string|ユーザーの場所|
+|ID|integer|ユーザーの Twitter ID|
+|UserName|string|ユーザーのスクリーン名|
+|FollowersCount|integer|フォロワー数|
+|説明|string|ユーザーの説明|
+|StatusesCount|integer|ユーザーの状態数|
+|FriendsCount|integer|友達の数|
+|FavouritesCount|integer|ユーザーがお気に入りに登録したツイートの数|
+|ProfileImageUrl|string|プロファイル画像の URL|
 
 
 
 
-### <a name="get-my-followers"></a>Get my followers
-This operation gets the list of users who are following me. 
+### 自分のフォロワーを取得する
+この操作では、自分をフォローしているユーザーのリストを取得します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|maxResults|Maximum results|Maximum number of users to get|
+|maxResults|Maximum results (結果の最大数)|取得するユーザーの最大数|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+* は、必須のプロパティを示します。
 
 
-| Property Name | Data Type | Description |
+
+#### 出力の詳細
+
+UserDetailsModel: Twitter ユーザーの詳細
+
+
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|ユーザーの名前|
+|Location (場所)|string|ユーザーの場所|
+|ID|integer|ユーザーの Twitter ID|
+|UserName|string|ユーザーのスクリーン名|
+|FollowersCount|integer|フォロワー数|
+|説明|string|ユーザーの説明|
+|StatusesCount|integer|ユーザーの状態数|
+|FriendsCount|integer|友達の数|
+|FavouritesCount|integer|ユーザーがお気に入りに登録したツイートの数|
+|ProfileImageUrl|string|プロファイル画像の URL|
 
 
 
 
-### <a name="get-following"></a>Get following
-The operation gets the list of people the given user follows. 
+### フォローを取得する
+この操作では、特定のユーザーがフォローするユーザーのリストを取得します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
-|maxResults|Maximum results|Maximum number of users to return|
+|userName*|ユーザー名|ユーザーの Twitter ハンドル|
+|maxResults|Maximum results (結果の最大数)|返されるユーザーの最大数|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+* は、必須のプロパティを示します。
 
 
-| Property Name | Data Type | Description |
+
+#### 出力の詳細
+
+UserDetailsModel: Twitter ユーザーの詳細
+
+
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|ユーザーの名前|
+|Location (場所)|string|ユーザーの場所|
+|ID|integer|ユーザーの Twitter ID|
+|UserName|string|ユーザーのスクリーン名|
+|FollowersCount|integer|フォロワー数|
+|説明|string|ユーザーの説明|
+|StatusesCount|integer|ユーザーの状態数|
+|FriendsCount|integer|友達の数|
+|FavouritesCount|integer|ユーザーがお気に入りに登録したツイートの数|
+|ProfileImageUrl|string|プロファイル画像の URL|
 
 
 
 
-### <a name="get-my-following"></a>Get my following
-This operation gets the list of users that I am following. 
+### 自分のフォローを取得する
+この操作では、自分がフォローしているユーザーのリストを取得します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|maxResults|Maximum results|Maximum number of users to return|
+|maxResults|Maximum results (結果の最大数)|返されるユーザーの最大数|
 
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-UserDetailsModel: Twitter user details
+* は、必須のプロパティを示します。
 
 
-| Property Name | Data Type | Description |
+
+#### 出力の詳細
+
+UserDetailsModel: Twitter ユーザーの詳細
+
+
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|ユーザーの名前|
+|Location (場所)|string|ユーザーの場所|
+|ID|integer|ユーザーの Twitter ID|
+|UserName|string|ユーザーのスクリーン名|
+|FollowersCount|integer|フォロワー数|
+|説明|string|ユーザーの説明|
+|StatusesCount|integer|ユーザーの状態数|
+|FriendsCount|integer|友達の数|
+|FavouritesCount|integer|ユーザーがお気に入りに登録したツイートの数|
+|ProfileImageUrl|string|プロファイル画像の URL|
 
 
 
 
-### <a name="get-user"></a>Get user
-This operation gets the profile details for a given user, such as user name, description, followers count, and more. 
+### ユーザーを取得する
+この操作では、特定のユーザーのプロファイルの詳細 (ユーザー名、説明、フォロワー数など) を取得します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|userName*|User name|Twitter handle for the user|
+|userName*|ユーザー名|ユーザーの Twitter ハンドル|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
-UserDetailsModel: Twitter user details
+UserDetailsModel: Twitter ユーザーの詳細
 
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|FullName|string|Name of the user|
-|Location|string|Location of the user|
-|Id|integer|Twitter Id of the user|
-|UserName|string|Screen name of the user|
-|FollowersCount|integer|Number of followers|
-|Description|string|User description|
-|StatusesCount|integer|User status count|
-|FriendsCount|integer|Number of friends|
-|FavouritesCount|integer|Number of tweets that the user has favorited|
-|ProfileImageUrl|string|Url of the profile image|
+|FullName|string|ユーザーの名前|
+|Location (場所)|string|ユーザーの場所|
+|ID|integer|ユーザーの Twitter ID|
+|UserName|string|ユーザーのスクリーン名|
+|FollowersCount|integer|フォロワー数|
+|説明|string|ユーザーの説明|
+|StatusesCount|integer|ユーザーの状態数|
+|FriendsCount|integer|友達の数|
+|FavouritesCount|integer|ユーザーがお気に入りに登録したツイートの数|
+|ProfileImageUrl|string|プロファイル画像の URL|
 
 
 
 
-### <a name="post-a-tweet"></a>Post a tweet
-This operation posts a new tweet. 
+### ツイートを投稿する
+この操作では、新しいツイートを投稿します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|tweetText|Tweet text|Text to be posted|
-|body|Media|Media to be posted|
+|tweetText|ツイート テキスト|投稿するテキスト|
+|body|メディア|投稿するメディア|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
-TweetResponseModel: Model representing Posted Tweet
+TweetResponseModel: 投稿されたツイートを表すモデル
 
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|TweetId|string|ID of the retrieved tweet|
+|TweetId|string|取得したツイートの ID|
 
 
 
 
-### <a name="when-a-new-tweet-is-posted"></a>When a new tweet is posted
-This operation triggers a flow when a new tweet that matches a given search query is posted. 
+### When a new tweet is posted (新しいツイートの投稿時)
+この操作では、特定の検索クエリに一致する新しいツイートが投稿されたときにフローをトリガーします。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|searchQuery*|Search text|Search term like "happy hour", #haiku, love OR hate|
+|searchQuery*|検索テキスト|"happy hour"、#haiku、好き嫌いなどの検索語句|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 TriggerBatchResponse[TweetModel]
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|value|array|
+|値|array|
 
 
 
-## <a name="http-responses"></a>HTTP responses
+## HTTP 応答
 
-The actions and triggers above can return one or more of the following HTTP status codes: 
+上記のアクションとトリガーは、次の HTTP ステータス コードを 1 つ以上返す場合があります。
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occurred.|
-|default|Operation Failed.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
+|default|操作に失敗しました。|
 
 
 
@@ -470,10 +467,7 @@ The actions and triggers above can return one or more of the following HTTP stat
 
 
 
-## <a name="next-steps"></a>Next steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

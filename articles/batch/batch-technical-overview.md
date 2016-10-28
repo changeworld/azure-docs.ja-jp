@@ -1,139 +1,138 @@
 <properties
-    pageTitle="Azure Batch service basics | Microsoft Azure"
-    description="Learn about using the Azure Batch service for large-scale parallel and HPC workloads"
-    services="batch"
-    documentationCenter=""
-    authors="mmacy"
-    manager="timlt"
-    editor=""/>
+	pageTitle="Azure Batch サービスの基本 |Microsoft Azure"
+	description="大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。"
+	services="batch"
+	documentationCenter=""
+	authors="mmacy"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="batch"
-    ms.workload="big-compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/22/2016"
-    ms.author="marsma"/>
+	ms.service="batch"
+	ms.workload="big-compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/22/2016"
+	ms.author="marsma"/>
 
+# Azure Batch の基礎
 
-# <a name="basics-of-azure-batch"></a>Basics of Azure Batch
+Azure Batch を使用すると、大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行できます。Azure Batch は、多くのコンピューティング処理を要する作業を管理された仮想マシンの集合で実行するようにスケジュール設定するためのプラットフォーム サービスです。ジョブのニーズに合わせてコンピューティング リソースを自動的に拡大/縮小できます。
 
-Azure Batch enables you to run large-scale parallel and high-performance computing (HPC) applications efficiently in the cloud. It's a platform service that schedules compute-intensive work to run on a managed collection of virtual machines, and can automatically scale compute resources to meet the needs of your jobs.
+Batch サービスでは、複数のアプリケーションを並列で大規模に実行するための Azure コンピューティング リソースを定義します。オンデマンドのジョブやスケジュールされたジョブを実行することができ、HPC クラスター、個々の仮想マシン、仮想ネットワークや、複雑なジョブとタスクのスケジュール インフラストラクチャを手動で作成、構成、管理する必要がありません。
 
-With the Batch service, you define Azure compute resources to execute your applications in parallel, and at scale. You can run on-demand or scheduled jobs, and you don't need to manually create, configure, and manage an HPC cluster, individual virtual machines, virtual networks, or a complex job and task scheduling infrastructure.
+## Batch の使用例
 
-## <a name="use-cases-for-batch"></a>Use cases for Batch
+Batch は、*バッチ処理*または*バッチ コンピューティング*のために使用される管理された Azure サービスであり、期待した結果が得られるように類似のタスクを大量に実行します。バッチ コンピューティングは主に、大量のデータを定期的に処理し、変換し、分析する組織で使用されます。
 
-Batch is a managed Azure service that is used for *batch processing* or *batch computing*--running a large volume of similar tasks to get some desired result. Batch computing is most commonly used by organizations that regularly process, transform, and analyze large volumes of data.
+Batch は本質的に並列 (「驚異的並列」とも呼ばれています) のアプリケーションとワークロードと効果的に連動します。本質的に並列のワークロードは複数のタスクに簡単に分割されます。複数に分割されたタスクは複数のコンピューターで同時に実行されます。
 
-Batch works well with intrinsically parallel (also known as "embarrassingly parallel") applications and workloads. Intrinsically parallel workloads are easily split into multiple tasks that perform work simultaneously on many computers.
+![並列タスク][1]<br/>
 
-![Parallel tasks][1]<br/>
+この手法で一般的に処理されるワークロードの例には次のものがあります。
 
-Some examples of workloads that are commonly processed using this technique are:
+* 財務リスクのモデリング
+* 気候や水文学データの分析
+* イメージの表示、分析、処理
+* メディアのエンコードとコード変換
+* 遺伝子配列の分析
+* 工学応力の分析
+* ソフトウェアのテスト
 
-* Financial risk modeling
-* Climate and hydrology data analysis
-* Image rendering, analysis, and processing
-* Media encoding and transcoding
-* Genetic sequence analysis
-* Engineering stress analysis
-* Software testing
+また、Batch を使用すると、最終的により少ないステップで並列計算を実行できるほか、[Message Passing Interface (MPI)](batch-mpi.md) アプリケーションなどのより複雑な HPC ワークロードを実行できます。
 
-Batch can also perform parallel calculations with a reduce step at the end, and execute more complex HPC workloads such as [Message Passing Interface (MPI)](batch-mpi.md) applications.
+Batch と Azure 内の他の HPC ソリューション オプションとの比較については、「[Batch と HPC ソリューション](batch-hpc-solutions.md)」を参照してください。
 
-For a comparison between Batch and other HPC solution options in Azure, see [Batch and HPC solutions](batch-hpc-solutions.md).
+## Batch を使用した開発
 
-## <a name="developing-with-batch"></a>Developing with Batch
+Batch による並列ワークロードの処理は、通常、いずれかの [Batch API](#batch-development-apis) を使用して、プログラムで実行されます。Batch API を使用すると、コンピューティング ノード (仮想マシン) のプールを作成して管理し、そのノードで実行するジョブとタスクのスケジュールを設定できます。作成したクライアント アプリケーションまたはサービスで Batch API を使用し、Batch サービスと通信します。
 
-Processing parallel workloads with Batch is typically done programmatically by using one of the [Batch APIs](#batch-development-apis). With the Batch APIs, you create and manage pools of compute nodes (virtual machines) and schedule jobs and tasks to run on those nodes. A client application or service that you author uses the Batch APIs to communicate with the Batch service.
+組織の大規模なワークロードを効率的に処理したり、ノードの数を問わず (1 つ、数百、数千など)、必要なときに、またはスケジュールに基づいてジョブやタスクを実行できるように、顧客にサービス フロントエンドを提供したりできます。また、Batch を大規模なワークフローの一部として使用し、[Azure Data Factory](../data-factory/data-factory-data-processing-using-batch.md) などのツールで管理できます。
 
-You can efficiently process large-scale workloads for your organization, or provide a service front end to your customers so that they can run jobs and tasks--on demand, or on a schedule--on one, hundreds, or even thousands of nodes. You can also use Batch as part of a larger workflow, managed by tools such as [Azure Data Factory](../data-factory/data-factory-data-processing-using-batch.md).
+> [AZURE.TIP] Batch API の機能をもっと詳しく理解するには、「[開発者向け Batch 機能の概要](batch-api-basics.md)」をご覧ください。
 
-> [AZURE.TIP] When you're ready to dig in to the Batch API for a more in-depth understanding of the features it provides, check out the [Batch feature overview for developers](batch-api-basics.md).
+### 必要となる Azure アカウント
 
-### <a name="azure-accounts-you'll-need"></a>Azure accounts you'll need
+Batch ソリューションを開発するとき、Microsoft Azure で次のアカウントが必要になります。
 
-When you develop Batch solutions, you'll use the following accounts in Microsoft Azure.
+- **Azure アカウントとサブスクリプション** - Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典][msdn_benefits]を有効にするか、[無料 Azure アカウント][free_account]にサインアップしてください。アカウントを作成すると、既定のサブスクリプションが自動的に作成されます。
 
-- **Azure account and subscription** - If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefit][msdn_benefits], or sign up for a [free Azure account][free_account]. When you create an account, a default subscription is created for you.
+- **Batch アカウント** - アプリケーションが Batch サービスと連動するとき、アカウント名、アカウントの URL、アクセス キーが資格情報として使用されます。プール、コンピューティング ノード、ジョブ、タスクなどの Batch リソースはすべて Batch アカウントに関連付けられています。Azure Portal で [Batch アカウントを作成](batch-account-create-portal.md)できます。
 
-- **Batch account** - When your applications interact with the Batch service, the account name, the URL of the account, and an access key are used as credentials. All your Batch resources such as pools, compute nodes, jobs, and tasks are associated with a Batch account. You can [create Batch account](batch-account-create-portal.md) in the Azure portal.
+- **ストレージ アカウント** - Batch には、[Azure Storage][azure_storage] のファイルを操作するためのサポートが組み込まれています。ほぼすべての Batch シナリオで、Azure Storage が使用されます。タスクで実行されるプログラムや、プログラムで処理されるデータのステージングに使用されたり、プログラムで生成される出力データの格納に使用されたりします。ストレージ アカウントの作成方法については、「[Azure ストレージ アカウントについて](./../storage/storage-create-storage-account.md)」を参照してください。
 
-- **Storage account** - Batch includes built-in support for working with files in [Azure Storage][azure_storage]. Nearly every Batch scenario uses Azure Storage--for staging the programs that your tasks run and the data that they process, and for the storage of output data that they generate. To create a Storage account, see [About Azure storage accounts](./../storage/storage-create-storage-account.md).
+### Batch 開発 API
 
-### <a name="batch-development-apis"></a>Batch development APIs
+アプリケーションとサービスは、直接 REST API 呼び出しを発行し、以下のクライアント ライブラリのいずれかを使用するか、両方を組み合わせて、コンピューティング リソースを管理したり、Batch サービスを使用して大規模な並列ワークロードを実行したりすることができます。
 
-Your applications and services can issue direct REST API calls, use one or more of the following client libraries, or a combination of both to manage compute resources and run parallel workloads at scale using the Batch service.
-
-| API    | API reference | Download | Code samples |
+| API | API リファレンス | ダウンロード | コード サンプル |
 | ----------------- | ------------- | -------- | ------------ |
-| **Batch REST** | [MSDN][batch_rest] | N/A | [MSDN][batch_rest] |
-| **Batch .NET**    | [MSDN][api_net] | [NuGet ][api_net_nuget] | [GitHub][api_sample_net] |
-| **Batch Python**  | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
+| **Batch REST** | [MSDN][batch_rest] | 該当なし | [MSDN][batch_rest] |
+| **Batch .NET** | [MSDN][api_net] | [NuGet][api_net_nuget] | [GitHub][api_sample_net] |
+| **Batch Python** | [readthedocs.io][api_python] | [PyPI][api_python_pypi] |[GitHub][api_sample_python] |
 | **Batch Node.js** | [github.io][api_nodejs] | [npm][api_nodejs_npm] | - |
-| **Batch Java** (preview) | [github.io][api_java] | [Maven][api_java_jar] | [GitHub][api_sample_java] |
+| **Batch Java** (プレビュー) | [github.io][api_java] | [Maven][api_java_jar] | [GitHub][api_sample_java] |
 
-### <a name="batch-resource-management"></a>Batch resource management
+### Batch リソース管理
 
-In addition to the client APIs, you can also use the following to manage resources within your Batch account.
+クライアント API の他に、以下のものを使用して、Batch アカウント内のリソースを管理することもできます。
 
-- [Batch PowerShell cmdlets][batch_ps]: The Azure Batch cmdlets in the [Azure PowerShell](../powershell-install-configure.md) module enable you to manage Batch resources with PowerShell.
+- [Batch PowerShell コマンドレット][batch_ps]\: [Azure PowerShell](../powershell-install-configure.md) モジュールの Azure Batch コマンドレットを利用すると、PowerShell で Batch リソースを管理できます。
 
-- [Azure CLI](../xplat-cli-install.md): The Azure Command-Line Interface (Azure CLI) is a cross-platform toolset that provides shell commands for interacting with many Azure services, including Batch.
+- [Azure CLI](../xplat-cli-install.md): Azure コマンド ライン インターフェイス (Azure CLI) は、Batch などの多くの Azure サービスを操作するためのシェル コマンドを提供するクロスプラットフォーム ツールセットです。
 
-- [Batch Management .NET](batch-management-dotnet.md) client library: Also available via [NuGet][api_net_mgmt_nuget], you can use the Batch Management .NET client library to programmatically manage Batch accounts, quotas, and application packages. Reference for the management library is on [MSDN][api_net_mgmt].
+- [Batch Management .NET](batch-management-dotnet.md) クライアント ライブラリ: これも [NuGet][api_net_mgmt_nuget] から入手できます。Batch Management .NET クライアント ライブラリを利用して、Batch アカウント、クォータ、およびアプリケーション パッケージをプログラミングで管理できます。管理ライブラリのリファレンスは、[MSDN][api_net_mgmt] にあります。
 
-### <a name="batch-tools"></a>Batch tools
+### Batch ツール
 
-While not required to build solutions using Batch, here are some valuable tools to use while building and debugging your Batch applications and services.
+Batch を使用してソリューションを構築する必要はありませんが、Batch アプリケーションおよびサービスのビルドとデバッグの際に役立つツールがいくつかあります。
 
- - [Azure portal][portal]: You can create, monitor, and delete Batch pools, jobs, and tasks in the Azure portal's Batch blades. You can view the status information for these and other resources while you run your jobs, and even download files from the compute nodes in your pools (download a failed task's `stderr.txt` while troubleshooting, for example). You can also download Remote Desktop (RDP) files that you can use to log in to compute nodes.
+ - [Azure ポータル][portal]\: Azure ポータルの Batch ブレードでは、Batch プール、ジョブ、タスクを作成、監視、削除できます。ジョブの実行時にこれらをはじめとする各種リソースの状態情報を確認できるほか、プールのコンピューティング ノードからファイルをダウンロードすることもできます (トラブルシューティングの際に、失敗したタスクの `stderr.txt` をダウンロードするなど)。コンピューティング ノードへのログインに使用できるリモート デスクトップ (RDP) ファイルをダウンロードすることもできます。
 
- - [Azure Batch Explorer][batch_explorer]: Batch Explorer provides similar Batch resource management functionality as the Azure portal, but in a standalone Windows Presentation Foundation (WPF) client application. One of the Batch .NET sample applications available on [GitHub][github_samples], you can build it with Visual Studio 2015 or above and use it to browse and manage the resources in your Batch account while you develop and debug your Batch solutions. View job, pool, and task details, download files from compute nodes, and connect to nodes remotely by using Remote Desktop (RDP) files you can download with Batch Explorer.
+ - [Azure Batch Explorer][batch_explorer]\: Batch Explorer には Azure ポータルと同様の Batch リソース管理機能がありますが、これはスタンドアロンの Presentation Foundation (WPF) クライアント アプリケーションの形で提供されます。[GitHub][github_samples] で提供されている Batch .NET サンプル アプリケーションの 1 つであり、Visual Studio 2015 以上でビルドできます。これを使うと、Batch ソリューションの開発とデバッグの際に、Batch アカウントのリソースを参照、管理できます。ジョブ、プール、タスクの詳細を表示したり、コンピューティング ノードからファイルをダウンロードしたりできます。また、Batch Explorer を使ってダウンロードできるリモート デスクトップ (RDP) ファイルを利用してノードにリモート接続することもできます。
 
- - [Microsoft Azure Storage Explorer][storage_explorer]: While not strictly an Azure Batch tool, the Storage Explorer is another valuable tool to have while you are developing and debugging your Batch solutions.
+ - [Microsoft Azure ストレージ エクスプローラー][storage_explorer]\: 厳密には Azure Batch ツールではありませんが、ストレージ エクスプローラーは Batch ソリューションの開発とデバッグで役に立つツールです。
 
-## <a name="scenario:-scale-out-a-parallel-workload"></a>Scenario: Scale out a parallel workload
+## シナリオ: 並列ワークロードをスケールアウトする
 
-A common solution that uses the Batch APIs to interact with the Batch service involves scaling out intrinsically parallel work--such as the rendering of images for 3D scenes--on a pool of compute nodes. This pool of compute nodes can be your "render farm" that provides tens, hundreds, or even thousands of cores to your rendering job, for example.
+Batch API を利用し、Batch サービスとやりとりする一般的なソリューションには、コンピューティング ノードのプールでの本質的に並列な作業の拡張があります。3D シーンのイメージのレンダリングなどです。このようなコンピューティング ノードのプールは「レンダー ファーム」となり、たとえば、数十、数百、さらには数千のコアをレンダリング ジョブに提供します。
 
-The following diagram shows a common Batch workflow, with a client application or hosted service using Batch to run a parallel workload.
+次の図は一般的な Batch ワークフローを示しています。クライアント アプリケーションまたはホステッド サービスが Batch を利用し、並列ワークロードを実行します。
 
-![Batch solution workflow][2]
+![Batch ソリューション ワークフロー][2]
 
-In this common scenario, your application or service processes a computational workload in Azure Batch by performing the following steps:
+この一般的なシナリオで、アプリケーションまたはサービスは、次の手順を実行することで Azure Batch のコンピューティング ワークロードを処理します。
 
-1. Upload the **input files** and the **application** that will process those files to your Azure Storage account. The input files can be any data that your application will process, such as financial modeling data, or video files to be transcoded. The application files can be any application that is used for processing the data, such as a 3D rendering application or media transcoder.
+1. **入力ファイル**とそのファイルを処理する**アプリケーション**を Azure ストレージ アカウントにアップロードします。アプリケーションが処理するあらゆるデータが入力ファイルになります。財務モデリング データや変換する動画ファイルなどです。データを処理するためのあらゆるアプリケーションがアプリケーション ファイルになります。3D レンダリング アプリケーションやメディア トランスコーダーなどです。
 
-2. Create a Batch **pool** of compute nodes in your Batch account--these nodes are the virtual machines that will execute your tasks. You specify properties such as the [node size](./../cloud-services/cloud-services-sizes-specs.md), their operating system, and the location in Azure Storage of the application to install when the nodes join the pool (the application that you uploaded in step #1). You can also configure the pool to [automatically scale](batch-automatic-scaling.md)--dynamically adjust the number of compute nodes in the pool--in response to the workload that your tasks generate.
+2. Batch アカウントでコンピューティング ノードの Batch **プール**を作成します。これらのノードは、タスクを実行する仮想マシンです。[ノード サイズ](./../cloud-services/cloud-services-sizes-specs.md)、オペレーティング システム、ノードがプールに参加するときにインストールするアプリケーション (手順 1. でアップロードしたアプリケーション) の Azure Storage における場所などのプロパティを指定します。[自動的にスケール](batch-automatic-scaling.md)するようにプールを構成することもできます。タスクによって生成されるワークロードに応じて、プール内のコンピューティング ノードの数が動的に調整されます。
 
-3. Create a Batch **job** to run the workload on the pool of compute nodes. When you create a job, you associate it with a Batch pool.
+3. コンピューティング ノードのプールでワークロードを実行する Batch **ジョブ**を作成します。ジョブを作成するとき、ジョブを Batch プールに関連付けます。
 
-4. Add **tasks** to the job. When you add tasks to a job, the Batch service automatically schedules the tasks for execution on the compute nodes in the pool. Each task uses the application that you uploaded to process the input files.
+4. ジョブに**タスク**を追加します。ジョブにタスクを追加すると、Batch サービスは、プールのコンピューティング ノードでタスクを実行するように自動的にスケジュールします。各タスクでアップロードしたアプリケーションが使用され、入力ファイルが処理されます。
 
-    - 4a. Before a task executes, it can download the data (the input files) that it is to process to the compute node it is assigned to. If the application has not already been installed on the node (see step #2), it can be downloaded here instead. When the downloads are complete, the tasks execute on their assigned nodes.
+    - 4a.タスクが実行される前に、割り当てられているコンピューティング ノードに処理するデータ (入力ファイル) をダウンロードできます。アプリケーションがノードにインストールされていない場合 (手順 2 参照)、代わりにここでダウンロードできます。ダウンロードが完了すると、割り当てられているノードでタスクが実行されます。
 
-5. As the tasks run, you can query Batch to monitor the progress of the job and its tasks. Your client application or service communicates with the Batch service over HTTPS, and because you might be monitoring thousands of tasks running on thousands of compute nodes, be sure to [query the Batch service efficiently](batch-efficient-list-queries.md).
+5. タスクが実行されたら、Batch にクエリを実行し、ジョブとそのタスクの進捗状況を監視できます。クライアント アプリケーションまたはサービスは HTTPS 経由で Batch サービスと通信します。数千のコンピューティング ノードで実行されている数千のタスクを監視することがあるので、[Batch サービスには効率的にクエリを実行](batch-efficient-list-queries.md)してください。
 
-6. As the tasks complete, they can upload their result data to Azure Storage. You can also retrieve files directly from compute nodes.
+6. タスクが完了すると、結果データを Azure Storage にアップロードできます。コンピューティング ノードからファイルを直接取得することもできます。
 
-7. When your monitoring detects that the tasks in your job have completed, your client application or service can download the output data for further processing or evaluation.
+7. ジョブのタスクが完了したことが監視により検出された場合、クライアント アプリケーションまたはサービスで出力データをダウンロードし、さらに処理したり、評価したりできます。
 
-Keep in mind this is just one way to use Batch, and this scenario describes only a few of its available features. For example, you can execute [multiple tasks in parallel](batch-parallel-node-tasks.md) on each compute node, and you can use [job preparation and completion tasks](batch-job-prep-release.md) to prepare the nodes for your jobs, then clean up afterward.
+これは Batch の利用方法の 1 つにすぎません。このシナリオでは、利用できる機能のほんの一部のみを紹介しています。たとえば、各コンピューティング ノードで[複数のタスクを並列に](batch-parallel-node-tasks.md)実行できます。また、[ジョブの準備と完了のタスク](batch-job-prep-release.md)を利用してジョブのノードを準備し、後で消去できます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now that you have a high-level overview of the Batch service, it's time to dig deeper to learn how you can use it to process your compute-intensive parallel workloads.
+これで Batch サービスの概要を確認できました。次は、深く掘り下げ、コンピューティング リソースが大量に使われる並列ワークロードをサービスで処理する方法を学習してください。
 
-- Read the [Batch feature overview for developers](batch-api-basics.md), essential information for anyone preparing to use Batch. The article contains more detailed information about Batch service resources like pools, nodes, jobs, and tasks, and the many API features that you can use while building your Batch application.
+- Batch を使用するための準備を担当する方は、「[開発者向け Batch 機能の概要](batch-api-basics.md)」で重要な情報をご確認ください。この記事には、Batch アプリケーションを構築するときに使用できる多数の API 機能、プール、ノード、ジョブ、タスクなど、Batch サービスのリソースに関する詳しい情報が記載されています。
 
-- [Get started with the Azure Batch library for .NET](batch-dotnet-get-started.md) to learn how to use C# and the Batch .NET library to execute a simple workload using a common Batch workflow. This article should be one of your first stops while learning how to use the Batch service. There is also a [Python version](batch-python-tutorial.md) of the tutorial.
+- 「[.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」では、C# と Batch .NET ライブラリを利用し、一般的な Batch ワークフローを使用して簡単なワークロードを実行する方法を学習できます。この記事は、Batch サービスの使用方法を学習するときに最初に参考していただきたい記事の 1 つです。また、[Python 向け](batch-python-tutorial.md)のチュートリアルも用意されています。
 
-- Download the [code samples on GitHub][github_samples] to see how both C# and Python can interface with Batch to schedule and process sample workloads.
+- [GitHub のサンプル コード][github_samples]をダウンロードし、C# と Python の両方について、Batch とやり取りしてサンプル ワークロードのスケジュール設定と処理を実行する方法を確認してください。
 
-- Check out the [Batch Learning Path][learning_path] to get an idea of the resources available to you as you learn to work with Batch.
+- [Batch ラーニング パス][learning_path]で、Batch の使用方法を学習する際に利用できるリソースを確認してください。
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: http://azure.github.io/azure-sdk-for-java/
@@ -162,8 +161,4 @@ Now that you have a high-level overview of the Batch service, it's time to dig d
 [1]: ./media/batch-technical-overview/tech_overview_01.png
 [2]: ./media/batch-technical-overview/tech_overview_02.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

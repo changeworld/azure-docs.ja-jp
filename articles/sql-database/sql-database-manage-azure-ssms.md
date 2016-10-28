@@ -1,126 +1,125 @@
 <properties 
-    pageTitle="Manage a SQL Database with SSMS | Microsoft Azure" 
-    description="Learn how to use SQL Server Management Studio to manage SQL Database servers and databases." 
-    services="sql-database" 
-    documentationCenter=".net" 
-    authors="stevestein" 
-    manager="jhubbard" 
-    editor="tysonn"/>
+	pageTitle="SSMS を使用した SQL データベースの管理 | Microsoft Azure" 
+	description="SQL Server Management Studio を使用して SQL データベース サーバーとデータベースを管理する方法について説明します。" 
+	services="sql-database" 
+	documentationCenter=".net" 
+	authors="stevestein" 
+	manager="jhubbard" 
+	editor="tysonn"/>
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="data-management" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/29/2016" 
-    ms.author="sstein"/>
+	ms.service="sql-database" 
+	ms.workload="data-management" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/09/2016" 
+	ms.author="sstein"/>
 
 
-
-# <a name="managing-azure-sql-database-using-sql-server-management-studio"></a>Managing Azure SQL Database using SQL Server Management Studio 
+# SQL Server Management Studio を使用した Azure SQL データベースの管理 
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-manage-portal.md)
+- [Azure ポータル](sql-database-manage-portal.md)
 - [SSMS](sql-database-manage-azure-ssms.md)
-- [PowerShell](sql-database-manage-powershell.md)
+- [PowerShell](sql-database-command-line-tools.md)
 
-You can use SQL Server Management Studio (SSMS) to administer Azure SQL Database servers and databases. This topic walks you through common tasks with SSMS. You should already have a server and database created in Azure SQL Database before you begin. See [Create your first Azure SQL Database](sql-database-get-started.md) and [Connect and Query using SSMS](sql-database-connect-query-ssms.md) for more information.
+SQL Server Management Studio (SSMS) を使用して Azure SQL Database のサーバーとデータベースを管理できます。このトピックでは、SSMS を使用した一般的なタスクの手順について説明します。始める前に、Azure SQL Database にサーバーとデータベースを作成しておく必要があります。詳細については、「[SQL Database チュートリアル: Azure ポータルを使用して数分で SQL データベースを作成する](sql-database-get-started.md)」と「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
 
-It's recommended that you use the latest version of SSMS whenever you work with Azure SQL Database. 
+Azure SQL Database を操作する際は、常に最新バージョンの SSMS を使用することをお勧めします。
 
-> [AZURE.IMPORTANT] Always use the latest version of SSMS because it is continually improved to work with the latest updates to Azure and SQL Database. To get the latest version, see [Download SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+> [AZURE.IMPORTANT] SSMS は Azure と SQL Database への最新の更新プログラムと共に動作するように継続して改善されているため、常に SSMS の最新バージョンを使用してください。最新バージョンの取得については、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」を参照してください。
 
 
 
-## <a name="create-and-manage-azure-sql-databases"></a>Create and manage Azure SQL databases
+## Azure SQL データベースの作成と管理
 
-While connected to the **master** database, you can create databases on the server and modify or drop existing databases. The following steps describe how to accomplish several common database management tasks through Management Studio. To perform these tasks, make sure you are connected to the **master** database with the server-level principal login that you created when you set up your server.
+**master** データベースに接続している間に、サーバーにデータベースを作成したり、既存のデータベースを変更または削除したりできます。以下の手順では、Management Studio を使用して一般的なデータベース管理タスクを実行する方法について説明します。これらのタスクを実行するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続している必要があります。
 
-To open a query window in Management Studio, open the Databases folder, expand the **System Databases** folder, right-click on **master**, and then click **New Query**.
+Management Studio でクエリ ウィンドウを開くには、[データベース] フォルダーを開き、**[システム データベース]** フォルダーを展開します。**[master]** を右クリックし、**[新しいクエリ]** をクリックします。
 
--   Use the **CREATE DATABASE** statement to create a database. For more information, see [CREATE DATABASE (SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx). The following statement creates a database named **myTestDB** and specifies that it is a Standard S0 Edition database with a default maximum size of 250 GB.
+-   データベースを作成するには、**CREATE DATABASE** ステートメントを使用します。詳細については、「[CREATE DATABASE (Azure SQL データベース)](https://msdn.microsoft.com/library/dn268335.aspx)」を参照してください。次のステートメントは、**myTestDB** という名前のデータベースを作成し、既定の最大サイズが 250 GB の Standard S0 エディションのデータベースとして指定します。
 
         CREATE DATABASE myTestDB
         (EDITION='Standard',
          SERVICE_OBJECTIVE='S0');
 
-Click **Execute** to run the query.
+**[実行]** をクリックしてクエリを実行します。
 
--   Use the **ALTER DATABASE** statement to modify an existing database, for example if you want to change the name and edition of the database. For more information, see [ALTER DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms174269.aspx). The following statement modifies the database you created in the previous step to change edition to Standard S1.
+-   データベースの名前とエディションを変更する場合など、既存のデータベースを変更するには、**ALTER DATABASE** ステートメントを使用します。詳細については、「[ALTER DATABASE (Microsoft Azure SQL データベース)](https://msdn.microsoft.com/library/ms174269.aspx)」を参照してください。次のステートメントは、前の手順で作成したデータベースのエディションを Standard S1 に変更します。
 
         ALTER DATABASE myTestDB
         MODIFY
         (SERVICE_OBJECTIVE='S1');
 
--   Use **the DROP DATABASE** Statement to delete an existing database. For more information, see [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx). The following statement deletes the **myTestDB** database, but don't drop it now because you will use it to create logins in the next step.
+-   既存のデータベースを削除するには、**DROP DATABASE** ステートメントを使用します。詳細については、「[DROP DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/ms178613.aspx)」をご覧ください。次のステートメントは、**myTestDB** データベースを削除します。ただし、次の手順でログインを作成するために使用するので、ここでは削除しないでください。
 
         DROP DATABASE myTestBase;
 
--   The master database has the **sys.databases** view that you can use to view details about all databases. To view all existing databases, execute the following statement:
+-   master データベースには、すべてのデータベースに関する詳細を表示する際に使用できる **sys.databases** ビューがあります。既存のデータベースをすべて表示するには、次のステートメントを実行します。
 
         SELECT * FROM sys.databases;
 
--   In SQL Database, the **USE** statement is not supported for switching between databases. Instead, you need to establish a connection directly to the target database.
+-   SQL Database では、**USE** ステートメントを使用してデータベースを切り替えることはできません。代わりに、ターゲット データベースに直接接続する必要があります。
 
->[AZURE.NOTE] Many of the Transact-SQL statements that create or modify a database must be run within their own batch and cannot be grouped with other Transact-SQL statements. For more information, see the statement-specific information.
+>[AZURE.NOTE] データベースを作成または変更する Transact-SQL ステートメントの多くは、それ自体のバッチ内で実行する必要があり、他の Transact-SQL ステートメントと共にグループ化することはできません。詳細については、ステートメント固有の情報を参照してください。
 
-## <a name="create-and-manage-logins"></a>Create and manage logins
+## ログインを作成と管理する
 
-The **master** database contains logins and which logins have permission to create databases or other logins. Manage logins by connecting to the **master** database with the server-level principal login that you created when you set up your server. You can use the **CREATE LOGIN**, **ALTER LOGIN**, or **DROP LOGIN** statements to execute queries against the master database that manages logins across the entire server. For more information, see [Managing Databases and Logins in SQL Database](http://msdn.microsoft.com/library/azure/ee336235.aspx). 
+**master** データベースには、ログインと、どのログインにデータベースや他のログインを作成するためのアクセス許可があるかが含まれます。ログインを管理するには、サーバーのセットアップ時に作成したサーバー レベルのプリンシパル ログインを使用して **master** データベースに接続します。**CREATE LOGIN**、**ALTER LOGIN**、または **DROP LOGIN** ステートメントを使用すると、サーバー全体でログインを管理する master データベースに対してクエリを実行できます。詳細については、「[Microsoft Azure SQL データベースにおけるデータベースとログインの管理](http://msdn.microsoft.com/library/azure/ee336235.aspx)」を参照してください。
 
 
--   Use the **CREATE LOGIN** statement to create a server-level login. For more information, see [CREATE LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189751.aspx). The following statement creates a login called **login1**. Replace **password1** with the password of your choice.
+-   サーバー レベル ログインを作成するには、**CREATE LOGIN** ステートメントを使用します。詳細については、「[CREATE LOGIN (Microsoft Azure SQL データベース)](https://msdn.microsoft.com/library/ms189751.aspx)」を参照してください。次のステートメントは、**login1** と呼ばれるログインを作成します。**password1** を適切なパスワードに置き換えてください。
 
         CREATE LOGIN login1 WITH password='password1';
 
--   Use the **CREATE USER** statement to grant database-level permissions. All logins must be created in the **master** database. For a login to connect to a different database, you must grant it database-level permissions using the **CREATE USER** statement on that database. For more information, see [CREATE USER (SQL Database)](https://msdn.microsoft.com/library/ms173463.aspx). 
+-   データベース レベルのアクセス許可を付与するには、**CREATE USER** ステートメントを使用します。すべてのログインは **master** データベースに作成する必要があります。別のデータベースに接続するためのログインに対しては、そのデータベースで **CREATE USER** ステートメントを使用してデータベース レベルのアクセス許可を付与する必要があります。詳細については、「[CREATE USER (Azure SQL Database)](https://msdn.microsoft.com/library/ms173463.aspx)」を参照してください。
 
--   To give login1 permissions to a database called **myTestDB**, complete the following steps:
+-   login1 に **myTestDB** というデータベースに対するアクセス許可を付与するには、次の手順に従います。
 
- 1.  To refresh Object Explorer to view the **myTestDB** database that you created, right-click the server name in Object Explorer and then click **Refresh**.  
+ 1.  オブジェクト エクスプローラーを更新して、作成した **myTestDB** データベースを表示させるには、オブジェクト エクスプローラーのサーバー名を右クリックして、**[最新の情報に更新]** をクリックします。
 
-     If you closed the connection, you can reconnect by selecting **Connect Object Explorer** on the File menu.
+     接続を閉じてある場合は、[ファイル] メニューの **[オブジェクト エクスプローラーを接続]** を選択して再接続できます。
 
- 2. Right-click **myTestDB** database and select **New Query**.
+ 2. **myTestDB** データベースを右クリックし、**[新しいクエリ]** を選択します。
 
-    3.  Execute the following statement against the myTestDB database to create a database user named **login1User** that corresponds to the server-level login **login1**.
+    3.  myTestDB データベースに対して次のステートメントを実行して、サーバー レベルのログイン **login1** に対応する **login1User** という名前のデータベース ユーザーを作成します。
 
             CREATE USER login1User FROM LOGIN login1;
 
--   Use the **sp\_addrolemember** stored procedure to give the user account the appropriate level of permissions on the database. For more information, see [sp_addrolemember (Transact-SQL)](http://msdn.microsoft.com/library/ms187750.aspx). The following statement gives **login1User** read-only permissions to the database by adding **login1User** to the **db\_datareader** role.
+-   このデータベースに対する適切なレベルのアクセス許可をユーザー アカウントに付与するには、**sp\_addrolemember** ストアド プロシージャを使用します。詳細については、「[sp\_addrolemember (Transact-SQL)](http://msdn.microsoft.com/library/ms187750.aspx)」をご覧ください。次のステートメントは、**login1User** を **db\_datareader** ロールに追加することで、データベースに対する読み取り専用アクセス許可を **login1User** に付与します。
 
         exec sp_addrolemember 'db_datareader', 'login1User';    
 
--   Use the **ALTER LOGIN** statement to modify an existing login, for example if you want to change the password for the login. For more information, see [ALTER LOGIN (SQL Database)](https://msdn.microsoft.com/library/ms189828.aspx). The **ALTER LOGIN** statement should be run against the **master** database. Switch back to the query window that is connected to that database. The following statement modifies the **login1** login to reset the password. Replace **newPassword** with the password of your choice, and **oldPassword** with the current password for the login.
+-   ログインのパスワードなど、既存のログインを必要に応じて変更するには、**ALTER LOGIN** ステートメントを使用します。詳細については、「[ALTER LOGIN (Transact-SQL)](https://msdn.microsoft.com/library/ms189828.aspx)」をご覧ください。**ALTER LOGIN** ステートメントは、**master** データベースに対して実行する必要があります。そのデータベースに接続されているクエリ ウィンドウに切り替えてください。次のステートメントは、ログイン **login1** を変更してパスワードをリセットします。**newPassword** を適切なパスワードに、**oldPassword** をログインの現在のパスワードに置き換えます。
 
         ALTER LOGIN login1
         WITH PASSWORD = 'newPassword'
         OLD_PASSWORD = 'oldPassword';
 
--   Use **the DROP LOGIN** statement to delete an existing login. Deleting a login at the server level also deletes any associated database user accounts. For more information, see [DROP DATABASE (SQL Database)](https://msdn.microsoft.com/library/ms178613.aspx). The **DROP LOGIN** statement should be run against the **master** database. The statement deletes the **login1** login.
+-   既存のログインを削除するには、**DROP LOGIN** ステートメントを使用します。サーバー レベルでログインを削除すると、それに関連付けられているデータベース ユーザー アカウントも削除されます。詳細については、「[DROP DATABASE (Transact-SQL)](https://msdn.microsoft.com/library/ms178613.aspx)」をご覧ください。**DROP LOGIN** ステートメントは、**master** データベースに対して実行する必要があります。次のステートメントは、ログイン **login1** を削除します。
 
         DROP LOGIN login1;
 
--   The master database has the **sys.sql\_logins** view that you can use to view logins. To view all existing logins, execute the following statement:
+-   master データベースには、ログインを表示する際に使用できる **sys.sql\_logins** ビューがあります。既存のログインをすべて表示するには、次のステートメントを実行します。
 
         SELECT * FROM sys.sql_logins;
 
-## <a name="monitor-sql-database-using-dynamic-management-views"></a>Monitor SQL Database using Dynamic Management Views
+## 動的管理ビューを使用して SQL データベースを監視する
 
-SQL Database supports several dynamic management views that you can use to monitor an individual database. A few examples of the type of monitor data you can retrieve through these views are following. For complete details and more usage examples, see [Monitoring SQL Database using Dynamic Management Views](https://msdn.microsoft.com/library/azure/ff394114.aspx).
+SQL データベースでは、個々のデータベースを監視するのに使用できる動的管理ビューがいくつかサポートされています。これらのビューで取得できるモニター データの種類の例を次に示します。すべての種類と詳しい使用例については、「[動的管理ビューを使用した Azure SQL Database の監視](https://msdn.microsoft.com/library/azure/ff394114.aspx)」を参照してください。
 
--   Querying a dynamic management view requires **VIEW DATABASE STATE** permissions. To grant the **VIEW DATABASE STATE** permission to a specific database user, connect to the database and execute the following statement against the database:
+-   動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、データベースに接続し、データベースに対して次のステートメントを実行します。
 
         GRANT VIEW DATABASE STATE TO login1User;
 
--   Calculate database size using the **sys.dm\_db\_partition\_stats** view. The **sys.dm\_db\_partition\_stats** view returns page and row-count information for every partition in the database, which you can use to calculate the database size. The following query returns the size of your database in megabytes:
+-   **sys.dm\_db\_partition\_stats** ビューを使用して、データベース サイズを計算します。**sys.dm\_db\_partition\_stats** ビューは、データベース内のすべてのパーティションのページと行数情報を返します。これらを使ってデータベース サイズを計算できます。次のクエリはデータベース サイズを MB 単位で返します。
 
         SELECT SUM(reserved_page_count)*8.0/1024
         FROM sys.dm_db_partition_stats;   
 
--   Use the **sys.dm\_exec\_connections** and **sys.dm\_exec\_sessions** views to retrieve information about current user connections and internal tasks associated with the database. The following query returns information about the current connection:
+-   データベースに関連付けられている内部タスクと現在のユーザー接続に関する情報を取得するには、**sys.dm\_exec\_connections** ビューと **sys.dm\_exec\_sessions** ビューを使用します。次のクエリは現在の接続に関する情報を返します。
 
         SELECT
             e.connection_id,
@@ -133,7 +132,7 @@ SQL Database supports several dynamic management views that you can use to monit
             INNER JOIN sys.dm_exec_connections e
               ON s.session_id = e.session_id;
 
--   Use the **sys.dm\_exec\_query\_stats** view to retrieve aggregate performance statistics for cached query plans. The following query returns information about the top five queries ranked by average CPU time.
+-   キャッシュされたクエリ プランの集計パフォーマンス統計を取得するには、**sys.dm\_exec\_query\_stats** ビューを使用します。次のクエリは、平均 CPU 時間の上位 5 クエリに関する情報を返します。
 
         SELECT TOP 5 query_stats.query_hash AS "Query Hash",
             SUM(query_stats.total_worker_time), SUM(query_stats.execution_count) AS "Avg CPU Time",
@@ -152,8 +151,4 @@ SQL Database supports several dynamic management views that you can use to monit
  
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

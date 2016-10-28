@@ -1,289 +1,288 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Front | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and Front."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と Front の統合 | Microsoft Azure"
+	description="Azure Active Directory と Front の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/24/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/09/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と Front の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-front"></a>Tutorial: Azure Active Directory integration with Front
+このチュートリアルの目的は、Front と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
-The objective of this tutorial is to show you how to integrate Front with Azure Active Directory (Azure AD).
+Front と Azure AD の統合には、次の利点があります。
 
-Integrating Front with Azure AD provides you with the following benefits:
+- Front にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Front にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to Front
-- You can enable your users to automatically get signed-on to Front (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Front と Azure AD の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with Front, you need the following items:
-
-- An Azure AD subscription
-- A Front single-sign on enabled subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Azure AD サブスクリプション
+- Front でのシングル サインオンが有効なサブスクリプション
 
 
-To test the steps in this tutorial, you should follow these recommendations:
-
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-## <a name="scenario-description"></a>Scenario description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-The scenario outlined in this tutorial consists of two main building blocks:
-
-1. Adding Front from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-front-from-the-gallery"></a>Adding Front from the gallery
-To configure the integration of Front into Azure AD, you need to add Front from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-**To add Front from the gallery, perform the following steps:**
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**. 
+1. ギャラリーからの Front の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-    ![Active Directory][1]
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+## ギャラリーからの Front の追加
+Azure AD への Front の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Front を追加する必要があります。
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+**ギャラリーから Front を追加するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Active Directory][1]
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+	
+	![アプリケーション][2]
+
+4. ページの下部にある **[追加]** をクリックします。
+	
+	![アプリケーション][3]
+
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+	![アプリケーション][4]
+
+6. 検索ボックスに、「**Front**」と入力します。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/tutorial_front_01.png)
+
+7. 結果ウィンドウで **[Front]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+	![ギャラリーでアプリを選択する](./media/active-directory-saas-front-tutorial/tutorial_front_0001.png)
+
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Front で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Front ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Front の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Front の **[Username]** の値として割り当てます。
+
+Front で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Front のテスト ユーザーの作成](#creating-a-front-test-user)** - Front で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### Azure AD シングル サインオンの構成
+
+このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、Front アプリケーションでシングル サインオンを構成します。
+
+**Front で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. クラシック ポータルの **Front** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+	 
+	![Configure Single Sign-On][6]
+
+2. **[ユーザーの Front へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
     
-    ![Applications][2]
+	![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_03.png)
 
-4. Click **Add** at the bottom of the page.
-    
-    ![Applications][3]
-
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
-
-    ![Applications][4]
-
-6. In the search box, type **Front**.
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/tutorial_front_01.png)
-
-7. In the results panel, select **Front**, and then click **Complete** to add the application.
-
-    ![Selecting the app in the gallery](./media/active-directory-saas-front-tutorial/tutorial_front_0001.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Front based on a test user called "Britta Simon".
-
-For single sign-on to work, Azure AD needs to know what the counterpart user in Front to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Front needs to be established.
-
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Front.
-
-To configure and test Azure AD single sign-on with Front, you need to complete the following building blocks:
-
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a Front test user](#creating-a-front-test-user)** - to have a counterpart of Britta Simon in Front that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
-
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
-
-In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your Front application.
-
-**To configure Azure AD single sign-on with Front, perform the following steps:**
-
-1. In the classic portal, on the **Front** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
-     
-    ![Configure Single Sign-On][6] 
-
-2. On the **How would you like users to sign on to Front** page, select **Azure AD Single Sign-On**, and then click **Next**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_03.png)
-
-3. On the **Configure App Settings** dialog page, If you wish to configure the application in **IDP initiated mode**, perform the following steps and click **Next**:
+3. **[アプリケーション設定の構成]** ダイアログ ページで、**IDP 開始モード**でアプリケーションを構成する場合は、次の手順を実行して **[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_04.png)
 
-    a. In the **Identifier** textbox, type a URL using the following pattern: `https://<company name>.frontapp.com`
+	a.**[識別子]** ボックスに、次のパターンを使用して URL を入力します。`https://<company name>.frontapp.com`
 
-    b. In the **Reply URL** textbox, type a URL using the following pattern: `https://<company name>.frontapp.com/sso/saml/callback`
+    b.**[応答 URL]** ボックスに、次の形式で URL を入力します。`https://<company name>.frontapp.com/sso/saml/callback`
 
-    c. Click **Next**
+	c.**[次へ]** をクリックします。
 
-4. If you wish to configure the application in **SP initiated mode** on the **Configure App Settings** dialog page, then click on the **“Show advanced settings (optional)”** and then enter the **Sign On URL** and click **Next**.
+4. **[アプリケーション設定の構成]** ダイアログ ページで、**SP 開始モード**でアプリケーションを構成する場合は、**[詳細設定を表示します (オプション)]** をクリックし、**[サインオン URL]** を入力して **[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_05.png)
+	![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_05.png)
 
-    a. In the **Sign On URL** textbox, type a URL using the following pattern: `https://<company name>.frontapp.com`
+	a.**[サインオン URL]** ボックスに、次の形式で URL を入力します。`https://<company name>.frontapp.com`
 
-    b. Click **Next**
+	b.**[次へ]** をクリックします。
 
-    > [AZURE.NOTE] Please note that these are not the real values. You have to update these values with the actual Sign On URL, Identifier and Reply URL. To get these values, you can refer **step 12** for details or contact Front via [support@frontapp.com](emailTo:support@frontapp.com).
+	> [AZURE.NOTE] これは実際の値ではないので注意してください。実際のサインオン URL、識別子、および応答 URL で値を更新する必要があります。これらの値を取得するには、**手順 12** で詳細を参照するか、[support@frontapp.com](emailTo:support@frontapp.com) から Front に問い合わせてください。
 
-5. On the **Configure single sign-on at Front** page, perform the following steps and click **Next**:
+5. **[Front でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_06.png)
+	![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_06.png)
 
-    a. Click **Download certificate**, and then save the file on your computer.
+    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
-    b. Click **Next**.
+    b.**[次へ]** をクリックします。
 
-6. Sign-on to your Front tenant as an administrator.
+6. Front テナントに管理者としてサインオンします。
 
-7. Go to **Settings (cog icon at the bottom of the left sidebar) > Preferences**.
+7. **[設定] \(左のサイド バーの下にある歯車アイコン)、[Preferences (ユーザー設定)]** と移動します。
 
-    ![Configure Single Sign-On On App side](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
+	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
 
-8. Click **Single Sign On** link.
+8. **[シングル サインオン]** のリンクをクリックします。
 
-    ![Configure Single Sign-On On App side](./media/active-directory-saas-front-tutorial/tutorial_front_001.png)
+	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_001.png)
 
-9. Select **SAML** in the drop down list of **Single Sign On**.
+9. **[シングル サインオン]** のドロップダウン リストで、**[SAML]** を選択します。
 
-    ![Configure Single Sign-On On App side](./media/active-directory-saas-front-tutorial/tutorial_front_002.png)
+	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_002.png)
 
-10. In the **Entry Point** textbox put the value of **Single Sign-on Service URL** from Azure AD application configuration wizard.
+10. **[エントリ ポイント]** テキストボックスに、Azure AD アプリケーションの構成ウィザードの **[シングル サインオン サービス URL]** の値を入力します。
 
-    ![Configure Single Sign-On On App side](./media/active-directory-saas-front-tutorial/tutorial_front_003.png)
+	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_003.png)
 
-11. Copy the content of the downloaded certificate file, and then paste it into the **Signing certificate** textbox.
+11. ダウンロードした証明書ファイルのコンテンツをコピーし、**[署名証明書]** テキストボックスに貼り付けます。
 
-    ![Configure Single Sign-On On App side](./media/active-directory-saas-front-tutorial/tutorial_front_004.png)
+	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_004.png)
 
-12. Confirm these URls match your configuration in step 3.
+12. これらの URI が手順 3 の構成と一致することを確認します。
 
-    ![Configure Single Sign-On On App side](./media/active-directory-saas-front-tutorial/tutorial_front_005.png)
+	![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-front-tutorial/tutorial_front_005.png)
 
-13. Click **Save** button.
+13. **[保存]** ボタンをクリックします。
 
-14. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+14. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
     
-    ![Azure AD Single Sign-On][10]
+	![Azure AD Single Sign-On][10]
 
-15. On the **Single sign-on confirmation** page, click **Complete**.  
+15. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
     
-    ![Azure AD Single Sign-On][11]
+	![Azure AD Single Sign-On][11]
 
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the classic portal called Britta Simon.
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/create_aaduser_09.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
     
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/create_aaduser_03.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/create_aaduser_03.png)
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/create_aaduser_04.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/create_aaduser_05.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps:
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
     
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/create_aaduser_06.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
 
-    e. Click **Next**.
+    e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
     
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/create_aaduser_07.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/create_aaduser_07.png)
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
     
-    ![Creating an Azure AD test user](./media/active-directory-saas-front-tutorial/create_aaduser_08.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-front-tutorial/create_aaduser_08.png)
 
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
+    b.**[完了]** をクリックします。
 
 
 
-### <a name="creating-a-front-test-user"></a>Creating a Front test user
+### Front テスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in Front.Please work with your Front support team to add the users in the Front account.
+このセクションの目的は、Britta Simon というユーザーを Front で作成することです。Front サポート チームと連携し、Front アカウントにユーザーを追加してください。
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### Azure AD テスト ユーザーの割り当て
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Front.
+このセクションの目的は、Britta Simon に Front へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+	
+![ユーザーの割り当て][200]
+
+**Front に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
     
-![Assign User][200]
+	![ユーザーの割り当て][201]
 
-**To assign Britta Simon to Front, perform the following steps:**
-
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+2. アプリケーションの一覧で **[Front]** を選択します。
     
-    ![Assign User][201]
+	![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_50.png)
 
-2. In the applications list, select **Front**.
+1. 上部のメニューで **[ユーザー]** をクリックします。
     
-    ![Configure Single Sign-On](./media/active-directory-saas-front-tutorial/tutorial_front_50.png)
+	![ユーザーの割り当て][203]
 
-1. In the menu on the top, click **Users**.
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
+
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
     
-    ![Assign User][203]
-
-1. In the Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-    
-    ![Assign User][205]
+	![ユーザーの割り当て][205]
 
 
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### シングル サインオンのテスト
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
  
-When you click the Front tile in the Access Panel, you should get automatically signed-on to your Front application.
+アクセス パネルで Front のタイルをクリックすると、自動的に Front アプリケーションにサインオンします。
 
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -305,8 +304,4 @@ When you click the Front tile in the Access Panel, you should get automatically 
 [204]: ./media/active-directory-saas-front-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-front-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

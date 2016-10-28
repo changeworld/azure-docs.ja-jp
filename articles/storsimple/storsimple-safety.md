@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Safety for your StorSimple device | Microsoft Azure"
-   description="Describes safety conventions, guidelines, and considerations, and explains how to safely install and operate your StorSimple device."
+   pageTitle="StorSimple デバイスの安全性 | Microsoft Azure"
+   description="安全性についての規定事項、ガイドライン、考慮事項を解説し、StorSimple デバイスを安全にインストールして操作する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,175 +15,168 @@
    ms.date="08/18/2016"
    ms.author="alkohli" />
 
+# StorSimple デバイスを安全にインストールして操作する
 
-# <a name="safely-install-and-operate-your-storsimple-device"></a>Safely install and operate your StorSimple device
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png) **安全衛生に関する情報を確認してください**
 
-![Warning Icon](./media/storsimple-safety/IC740879.png)
-![Read Safety Notice Icon](./media/storsimple-safety/IC740885.png) **READ SAFETY AND HEALTH INFORMATION**
+Microsoft Azure StorSimple デバイスに適用されるこの記事に記載されたすべての安全衛生に関する情報を確認してください。後で参照できるように、StorSimple デバイスに同梱されているすべての印刷されたガイドを保管してください。これらの指示に従わず、本製品の設定、使用、管理を適切に行わなければ、重大な傷害または死亡事故や、デバイスが破損するリスクが高まる恐れがあります。[このガイドのダウンロード可能なバージョン](http://www.microsoft.com/download/details.aspx?id=44233)も利用できます。
 
-Read all the safety and health information in this article that applies to your Microsoft Azure StorSimple device. Keep all the printed guides shipped with your StorSimple device for future reference. Failure to follow instructions and properly set up, use, and care for this product can increase the risk of serious injury or death, or damage to the device or devices. A [downloadable version of this guide](http://www.microsoft.com/download/details.aspx?id=44233) is also available.
+## 安全性アイコンの表記規則
 
-## <a name="safety-icon-conventions"></a>Safety icon conventions
+Microsoft Azure StorSimple デバイスを設定および実行しているときに従うべき安全に関する注意事項に使用されるアイコンを説明します。
 
-Here are the icons that you will find when you review the safety precautions to be observed when setting up and running your Microsoft Azure StorSimple device.
-
-| Icon  | Description  |
+| アイコン | Description |
 |:------|:-------------| 
-|![Danger Icon](./media/storsimple-safety/IC740879.png) **DANGER!**|Indicates a hazardous situation that, if not avoided, will result in death or serious injury. This signal word is to be limited to the most extreme situations.| 
-|![Warning Icon](./media/storsimple-safety/IC740879.png) **WARNING!**|Indicates a hazardous situation that, if not avoided, could result in death or serious injury.|
-|![Warning Icon](./media/storsimple-safety/IC740879.png) **CAUTION!**|Indicates a hazardous situation that, if not avoided, could result in minor or moderate injury.|
-|![Notice Icon](./media/storsimple-safety/IC740881.png) **NOTICE:**|Indicates information considered important, but not hazard-related.|
-|![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **Electrical Shock Hazard** |High voltage|
-|![Heavy Weight Icon](./media/storsimple-safety/IC740883.png) **Heavy Weight**| |
-|![No User Serviceable Parts Icon](./media/storsimple-safety/IC740879.png) **No User Serviceable Parts**|Do not access unless properly trained.|
-|![Read Safety Notice Icon](./media/storsimple-safety/IC740885.png)**Read All Instructions First**| |
-|![Tip Hazard Icon](./media/storsimple-safety/IC740886.png) **Tip Hazard**| |
+|![危険のアイコン](./media/storsimple-safety/IC740879.png) **危険!**|回避しなければ、死亡事故または重大な負傷を招く危険な状況を示します。この記号の文字は、最も重大な状況の場合にのみ使用されます。| 
+|![警告のアイコン](./media/storsimple-safety/IC740879.png) **警告!**|回避しなければ、死亡事故または重大な負傷を招く可能性のある危険な状況を示します。|
+|![警告のアイコン](./media/storsimple-safety/IC740879.png) **注意!**|回避しなければ、軽度または中程度の負傷を招く可能性のある危険な状況を示します。|
+|![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**|重要だが、危険に関連するものではない情報を示します。|
+|![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **感電の危険** |高電圧|
+|![ヘビー ウェイト アイコン](./media/storsimple-safety/IC740883.png)**ヘビー ウェイト**| |
+|![ユーザーによる保守不可能な部品のアイコン](./media/storsimple-safety/IC740879.png)**ユーザーによる保守不可能な部品**|適切な訓練を受けている場合を除き、触らないでください。|
+|![安全上の注意の確認を促すアイコン](./media/storsimple-safety/IC740885.png)**最初にすべての指示を確認してください**| |
+|![危険情報のアイコン](./media/storsimple-safety/IC740886.png) **危険情報**| |
 
 
-## <a name="handling-precautions"></a>Handling precautions
+## 使用上の注意事項
 
-![Warning Icon](./media/storsimple-safety/IC740879.png) ![Heavy Weight Icon](./media/storsimple-safety/IC740883.png) **WARNING!** 
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![ヘビー ウェイト アイコン](./media/storsimple-safety/IC740883.png) **警告!**
 
 
-To reduce the risk of injury:
+けがの危険性を低減する方法
 
-- A fully configured enclosure can weigh up to 32 kg (70 lbs); do not try to lift it by yourself.
-- Before moving the enclosure, always ensure that two people are available to handle the weight. Be aware that one person attempting to lift this weight can sustain injuries.
-- Do not lift the enclosure by the handles on the Power and Cooling Modules (PCMs) located at the rear of the unit. These are not designed to take the weight.
+- 完全に構成されたエンクロージャの重量は 32 kg (70 lbs) になります。1 人で持ち上げようとしないでください。
+- エンクロージャを移動する場合は、必ず 2 人で持ち上げるようにしてください。1 人でこの重量を持ち上げようとすると、けがをする可能性があります。
+- ユニットの背面にある電源冷却モジュール (PCM) のハンドルでエンクロージャを持ち上げないでください。これらは、エンクロージャの重量に堪えられるようには設計されていません。
 
-## <a name="connection-precautions"></a>Connection precautions
+## 接続の注意事項
 
-![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **WARNING!**
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **警告!**
 
-To reduce the likelihood of injury, electrical shock, or death:
+けが、感電、または死亡事故を招く可能性を低減する方法
 
-- When powered by multiple AC sources, disconnect all supply power for complete isolation.
+- 複数の AC 電源から電源を供給している場合は、すべての電源を切断して、完全に分離してください。
 
-- Permanently unplug the unit before you move it or if you think it has become damaged in any way.
+- ユニットを移動する前、または何らかの理由で破損すると思われる場合は、ユニットからプラグを完全に抜いてください。
 
-- Provide a safe electrical earth connection to the power supply cords. Verify that the grounding of the enclosure meets the national and local requirements before applying power.
+- 電源コードには安全な接地を行ってください。エンクロージャの接地が国および地域の要件を満たすことを確認してから、電源を供給してください。
 
-- Ensure that the power connection is always disconnected prior to the removal of a PCM from the enclosure.
+- エンクロージャから PCM を取り外す前に、電源の接続が切断されていることを必ず確認してください。
 
-- Given that the plug on the power supply cord is the main disconnect device, ensure that the socket outlets are located near the equipment and are easily accessible.
+- 電源コードのプラグが主な切断装置である場合、壁コンセントが装置の近くにあり、簡単に使用できることを確認してください。
 
-![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **WARNING!**
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![感電を示すアイコン](./media/storsimple-safety/IC740882.png) **警告!**
 
-To reduce the likelihood of overheating or fire from the electrical connections:
+電気接続部からの加熱または出火の可能性を低減する方法
 
-- Provide a suitable power source with electrical overload protection to meet the requirements detailed in the technical specification.
+- 技術仕様に詳述されている要件を満たす、過負荷保護が装備された適切な電源を用意してください。
 
-- Do not use bifurcated power cords (“Y” leads).
+- 分岐電源コード (「Y」型リード) は使用しないでください。
 
-- To comply with applicable safety, emission, and thermal requirements, no covers should be removed and all bays must be populated with plug-in modules or drive blanks.
+- 該当する安全、排出、および温度要件に準拠するために、カバーは取り外さず、プラグイン モジュールまたはドライブ ブランクにすべてのベイを装着してください。
 
-- Ensure that the equipment is used in a manner specified by the manufacturer. If this equipment is used in a manner not specified by the manufacturer, the protection provided by the equipment may be impaired.
+- 製造元によって指定された方法で機器を使用してください。製造元によって指定されていない方法でこの機器を使用すると、機器によって提供される保護が損なわれる可能性があります。
 
-![Notice Icon](./media/storsimple-safety/IC740881.png) **NOTICE:**
+![注意のアイコン](./media/storsimple-safety/IC740881.png) **注意事項:**
 
-For the proper operation of your equipment and to prevent product damage:
+機器を適切に操作し、製品の破損を回避する方法
 
-- The RJ45 ports at the back of the device are for an Ethernet connection only. These must not be connected to a telecommunications network.
+- デバイスの背面にある RJ45 ポートは、イーサネット接続専用です。これらを遠隔通信ネットワークに接続しないでください。
 
-- Be sure to install the device in a rack that can accommodate a front-to-back cooling design.
+- 必ず、前方から後方への冷却設計に対応可能なラックに装置を組み込んでください
 
-- All plug-in modules and blank plates are part of the system enclosure. These must only be removed when a replacement can be immediately added. The system must not be run without all modules or blanks in place.
+- すべてのプラグイン モジュールとブランク プレートはシステム エンクロージャに含まれています。これらは、交換品をすぐに追加できる場合にのみ取り外してください。すべてのモジュールまたはブランクが適切に配置されていなければ、システムを実行してはなりません。
 
-## <a name="rack-system-precautions"></a>Rack system precautions
+## ラック システムの注意事項
 
-The following safety requirements must be considered when you mount the device in a rack cabinet.
+ラック キャビネットに装置を組み込むときは、次の安全上の要件を考慮する必要があります。
 
-![Warning Icon](./media/storsimple-safety/IC740879.png) ![Tip Hazard Icon](./media/storsimple-safety/IC740886.png) **WARNING!**
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![危険情報のアイコン](./media/storsimple-safety/IC740886.png) **警告!**
  
-To reduce the likelihood of injury from a tip over:
+転倒によるけがの可能性を低減する方法
 
-- The rack design should support the total weight of the installed enclosures and should incorporate stabilizing features suitable to prevent the rack from tipping or being pushed over during installation or normal use.
+- ラックは、取り付けられたエンクロージャの総重量を支えられるように設計されている必要があり、取り付け中や通常の使用中にラックが転倒したり、押し倒されたりしないようにするための、適切な安定化機能が装備されている必要があります。
 
-- When loading a rack, fill the rack from the bottom up and empty from the top down.
+- ラックに機材を積み込むときは下から上に入れ、取り除くときは上から下に外します。
 
-- Do not slide more than one enclosure out of the rack at a time to avoid the danger of the rack toppling over.
+- ラックが転倒する危険性を回避するために、複数のエンクロージャをラックから一度に取り外さないでください。
 
-![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **WARNING!**
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![感電を示すアイコン](./media/storsimple-safety/IC740882.png) **警告!**
 
-To reduce the likelihood of injury, electrical shock, or death:
+けが、感電、または死亡事故を招く可能性を低減する方法
 
-- The rack should have a safe electrical distribution system. It must provide over-current protection for the enclosure and must not be overloaded by the total number of enclosures installed. The electrical power consumption rating shown on the nameplate should be observed.
+- ラックには、安全な配電システムが用意されている必要があります。エンクロージャに過電流保護機能が搭載されている必要があります。また、取り付けられているエンクロージャの総数によって過剰搭載の状態になってはなりません。ネームプレートに記載されている電力消費定格を順守する必要があります。
 
-- The electrical distribution system must provide a reliable ground for each enclosure in the rack.
+- 配電システムによって、ラック内のエンクロージャごとに信頼性のある接地を行う必要があります。
 
-- The design of the electrical distribution system must take into consideration the total ground leakage current from all power supplies in all enclosures. Note that each power supply in each enclosure has a ground leakage current of 1.0 mA maximum at 60 Hz, 264 volts. The rack may require labeling with “HIGH LEAKAGE CURRENT. Ground (earth) connection is essential before connecting a supply.”
+- 配電システムの設計では、すべてのエンクロージャ内のすべての電源からの合計漏電電流を考慮する必要があります。各エンクロージャ内の各電源装置には、60 Hz、264 ボルトで最大 1.0 mA の漏電電流があることに気を付けてください。ラックに「高漏電。電源に接続する前に、必ず接地してください」というラベルを貼る必要がある場合があります。
 
-- The rack, when configured with the enclosures, must meet the safety requirements of UL 60950-1 and IEC 60950-1/EN 60950-1.
+- エンクロージャで構成する場合、ラックは UL 60950-1 および IEC 60950-1/EN 60950-1 の安全要件を満たす必要があります。
 
-![Notice Icon](./media/storsimple-safety/IC740881.png) **NOTICE:**
+![注意のアイコン](./media/storsimple-safety/IC740881.png) **注意事項:**
 
-For the proper cooling of your rack system:
+ラック システムを適切に冷却する方法
 
-- Ensure that the rack design takes into consideration the maximum enclosure operating ambient temperature of 35 degrees Celsius (95 degrees Fahrenheit).
+- ラック設計では、摂氏 35 度 (華氏 95 度) の最大エンクロージャ動作周囲温度が考慮されていることを確認します。
 
-- The system is operated with low-pressure, rear-exhaust installation (back pressure created by rack doors and obstacles not to exceed 5 Pascal [0.5 mm water gauge]).
+- システムは圧力をあまり受けず、背面から排気可能な取り付け状態で動作します (ラック ドアや障害物によって生じる背面圧力が 5 パスカル (0.5 mm 水位計) を超えない)。
 
-## <a name="power-cooling-module-(pcm)-precautions"></a>Power Cooling Module (PCM) precautions
+## 電源冷却モジュール (PCM) の注意事項
 
-The device is designed to operate with two PCMs. Each of the PCMs has a power supply and a dual-axis fan. During a critical condition, the system allows for a failure of one power supply while continuing normal operations. Two PCMs (and hence power supplies) must always be installed. A single PCM does not provide redundant power. Therefore, the failure of even one PCM can result in downtime or possible data loss.
+この装置は 2 つの PCM で動作するように設計されています。各 PCM には電源とデュアル軸ファンが備わっています。危機的な状況になると、システムは 1 つの電源で障害が発生しても、通常の動作を続行できます。必ず、2 つの PCM (電源) を取り付ける必要があります。単一の PCM では、冗長電源は提供されません。その場合、1 つの PCM で障害が発生すると、ダウンタイムが発生したり、データが失われたりする可能性があります。
 
-![Warning Icon](./media/storsimple-safety/IC740879.png) ![Electrical Shock Icon](./media/storsimple-safety/IC740882.png) **WARNING!**
+![警告のアイコン](./media/storsimple-safety/IC740879.png) ![感電を示すアイコン](./media/storsimple-safety/IC740882.png) **警告!**
 
-To reduce the likelihood of injury, electrical shock, or death:
+けが、感電、または死亡事故を招く可能性を低減する方法
 
-- Do not remove the covers from the PCM. There is a danger of electric shock inside. To return the PCM and obtain a replacement, [contact Microsoft Support](https://msdn.microsoft.com/library/azure/dn757750.aspx).
+- PCM からカバーを取り外さないでください。内部で感電する危険性があります。PCM を返却して交換品を受け取るには、[Microsoft サポートに連絡](https://msdn.microsoft.com/library/azure/dn757750.aspx)してください。
 
-![Notice Icon](./media/storsimple-safety/IC740881.png) **NOTICE:**
+![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
-For the proper operation of your equipment and to prevent product damage:
+機器を適切に操作し、製品の破損を回避する方法
 
-- You must replace the failed PCM within 24 hours. After a PCM is removed for replacement, the replacement must be completed within 10 minutes after removal.
+- PCM が破損した場合、24 時間以内に交換する必要があります。PCM を交換するために取り外した後、10 分以内に交換を完了する必要があります。
 
-- Do not remove a PCM unless a replacement can be installed immediately. The enclosure must not be operated without all modules in place.
+- 交換品をすぐに取り付けることができない場合、PCM を取り外さないでください。すべてのモジュールが適切に配置されていなければ、エンクロージャを動作させてはなりません。
 
-## <a name="electrostatic-discharge-(esd)-precautions"></a>Electrostatic discharge (ESD) precautions
+## 静電気 (ESD) に関する注意事項
 
-![Notice Icon](./media/storsimple-safety/IC740881.png) **NOTICE:**
+![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
-Observe the following ESD-related precautions.
+次の ESD に関する注意事項を守ってください。
 
-- Ensure that you have installed and checked a suitable antistatic wrist or ankle strap.
+- 適切な静電気防止リスト ストラップまたはアンクル ストラップを身につけ、確認してください。
 
-- Observe all conventional ESD precautions when handling modules and components.
+- モジュールとコンポーネントを扱うときは、従来のすべての ESD 注意事項を守ってください。
 
-- Avoid contact with backplane components and module connectors.
+- バックプレーン コンポーネントとモジュール コネクタに触れないでください。
 
-- ESD damage is not covered by warranty.
+- ESD の破損は保証に含まれていません。
 
-## <a name="battery-disposal-precautions"></a>Battery disposal precautions
+## バッテリ廃棄の注意事項
 
-The power supply uses a special battery to protect the contents of memory during temporary, short-term power outages. The battery is seated in the PCM. Keep the following information in mind about the battery.
+電源装置には、一時的、短期的な停電時にメモリの内容を保護するための特別なバッテリが使用されています。このバッテリは PCM に取り付けられています。バッテリに関する次の情報に注意してください。
 
-![Warning Icon](./media/storsimple-safety/IC740879.png) **WARNING!**
+![警告のアイコン](./media/storsimple-safety/IC740879.png) **警告!**
 
-To reduce the risk of shorts, fire, explosion, injury, or death:
+ショート、火災、爆発、けが、または死亡事故のリスクを低減する方法
 
-- Dispose of used batteries in accordance with national/regional regulations.
+- 国や地域の規則に従って使用済みのバッテリを破棄してください。
 
-- Do not disassemble, crush, or heat above 60 degrees Celsius (140 degrees Fahrenheit) or incinerate. Replace the PCM battery with a supplied battery only. Use of another battery may present a risk of fire or explosion.
+- 分解、破砕、または摂氏 60 度 (華氏 140 度) 以上に熱したり、焼却したりしないでください。PCM のバッテリを交換するときは、指定されたバッテリのみを使用してください。別のバッテリを使用すると、火災または爆発の危険があります。
 
-- Use protective end caps on the batteries if these are removed from the power supply.
+- 電源からバッテリを取り外す場合は、バッテリの保護エンド キャップを使用してください。
 
-![Notice Icon](./media/storsimple-safety/IC740881.png) **NOTICE:**
+![Notice Icon](./media/storsimple-safety/IC740881.png) **注意事項:**
 
-When shipping or otherwise transporting the batteries by air, follow the IATA Lithium Battery Guidance document available at [http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx)
+バッテリを船舶または飛行機で輸送する場合は、[http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx](http://www.iata.org/whatwedo/cargo/dgr/Pages/lithium-batteries.aspx) の IATA リチウム バッテリ ガイダンス資料に従ってください。
 
-After you have reviewed these safety notices, the next steps are to unpack, rack and cable your device.
+これらの安全上の注意を確認した後、装置を開梱し、ラックに積み込み、ケーブルを接続するステップに進みます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- For an 8100 device, go to [Install your StorSimple 8100 device](storsimple-8100-hardware-installation.md).
+- 8100 デバイスの場合は、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」をご覧ください。
 
-- For an 8600 device, go to [Install your StorSimple 8600 device](storsimple-8600-hardware-installation.md).
+- 8600 デバイスの場合は、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」をご覧ください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

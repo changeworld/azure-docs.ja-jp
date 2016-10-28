@@ -1,69 +1,64 @@
 <properties
-    pageTitle="Request increased DocumentDB account quotas | Microsoft Azure"
-    description="Learn how to request an adjustment to DocumentDB database quotas such as document storage and throughput per collection."
-    services="documentdb"
-    authors="AndrewHoh"
-    manager="jhubbard"
-    editor="monicar"
-    documentationCenter=""/>
+	pageTitle="DocumentDB アカウント クォータの引き上げ要求 | Microsoft Azure"
+	description="コレクションあたりのドキュメント ストレージやスループットなどの、DocumentDB データベース のクォータの調整を要求する方法について説明します。"
+	services="documentdb"
+	authors="AndrewHoh"
+	manager="jhubbard"
+	editor="monicar"
+	documentationCenter=""/>
 
 <tags
-    ms.service="documentdb"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/25/2016"
-    ms.author="anhoh"/>
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2016"
+	ms.author="anhoh"/>
 
+# DocumentDB アカウント制限の引き上げを要求する
 
-# <a name="request-increased-documentdb-account-limits"></a>Request increased DocumentDB account limits
+[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) には、Azure サポートに問い合わせて調整できる既定のクォータのセットがあります。この記事では、クォータの引き上げを要求する方法について説明します。
 
-[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) has a set of default quotas that can be adjusted by contacting Azure support.  This article shows how to request a quota increase.
+この記事を読むと、次の質問に回答できるようになります。
 
-After reading this article, you'll be able to answer the following questions:  
+-	Azure サポートに問い合わせて調整できるのは、どの DocumentDB データベース クォータか。
+-	DocumentDB アカウント クォータの調整を要求するにはどうすればよいか。
 
--   Which DocumentDB database quotas can be adjusted by contacting Azure support?
--   How can I request a DocumentDB account quota adjustment?
+##<a id="Quotas"></a> DocumentDB アカウント クォータ
 
-##<a name="<a-id="quotas"></a>-documentdb-account-quotas"></a><a id="Quotas"></a> DocumentDB account quotas
-
-The following table describes the DocumentDB quotas. The quotas that have an asterisk (*) can be adjusted by contacting Azure support:
+次の表で、DocumentDB クォータについて説明します。アスタリスク (*) が付いているクォータを調整する場合は、Azure サポートまでお問い合わせください。
 
 [AZURE.INCLUDE [azure-documentdb-limits](../../includes/azure-documentdb-limits.md)]
 
 
-##<a name="<a-id="requestquotaincrease"></a>-request-a-quota-adjustment"></a><a id="RequestQuotaIncrease"></a> Request a quota adjustment
-The following steps show how to request a quota adjustment.
+##<a id="RequestQuotaIncrease"></a> クォータ調整の要求
+クォータ調整を要求するには、次の手順を実行します。
 
-1. In the [Azure portal](https://portal.azure.com), click **More Services**, and then click **Help + support**.
+1. [Azure ポータル](https://portal.azure.com)の **[More Services (その他のサービス)]**、**[ヘルプとサポート]** を順にクリックします。
 
-    ![Screenshot of launching help and support](media/documentdb-increase-limits/helpsupport.png)
+	![ヘルプとサポート起動時のスクリーンショット](media/documentdb-increase-limits/helpsupport.png)
 
-2. In the **Help + support** blade, click **New support request**.
+2. **[ヘルプとサポート]** ブレードで **[新しいサポート要求]** をクリックします。
 
-    ![Screenshot of creating a support ticket](media/documentdb-increase-limits/getsupport.png)
+	![サポート チケット作成のスクリーンショット](media/documentdb-increase-limits/getsupport.png)
 
-3. In the **New support request** blade, click **Basics**. Next, set **Issue type** to **Quota**, **Subscription** to your subscription that hosts your DocumentDB account, **Quota type** to **DocumentDB**, and **Support plan** to **Quota SUPPORT - Included**. Then, click **Next**.
+3. **[新しいサポート要求]** ブレードで、**[基本]** をクリックします。次に、**[問題の種類]** を **[クォータ]** に、**[サブスクリプション]** を自分の DocumentDB アカウントをホストするサブスクリプションに、**[クォータの種類]** を **[DocumentDB]** に、**[サポート プラン]** を **[Quota SUPPORT - Included (クォータ サポート - 含む)]** に設定します。その後、**[次へ]** をクリックします。
 
-    ![Screenshot of support ticket request type](media/documentdb-increase-limits/supportrequest1.png)
+	![サポート チケットのリクエストの種類のスクリーンショット](media/documentdb-increase-limits/supportrequest1.png)
 
-4. In the **Problem** blade, choose a severity and include information about your quota increase in **Details**. Click **Next**.
+4. **[問題]** ブレードで重大度を選択し、クォータの増大に関する情報を **[詳細]** に入力します。**[次へ]** をクリックします。
 
-    ![Screenshot of support ticket subscription picker](media/documentdb-increase-limits/supportrequest2.png)
+	![サポート チケットのサブスクリプション選択のスクリーンショット](media/documentdb-increase-limits/supportrequest2.png)
 
-5. Finally, fill in your contact information in the **Contact information** blade and click **Create**.
+5. 最後に、連絡先情報を **[連絡先情報]** ブレードに入力し、**[作成]** をクリックします。
 
-Once the support ticket has been created, you should receive the support request number via email.  You can also view the support request by clicking **Manage support requests** in the **Help + support** blade.
+サポート チケットが作成されると、サポート要求番号が電子メールで届きます。サポート要求は、**[ヘルプとサポート]** ブレードの **[サポート要求]** をクリックして表示することもできます。
 
-![Screenshot of support requests blade](media/documentdb-increase-limits/supportrequest4.png)
-
-
-##<a name="<a-name="nextsteps"></a>-next-steps"></a><a name="NextSteps"></a> Next steps
-- To learn more about DocumentDB, click [here](http://azure.com/docdb).
+![サポート リクエスト ブレードのスクリーンショット](media/documentdb-increase-limits/supportrequest4.png)
 
 
+##<a name="NextSteps"></a> 次のステップ
+- DocumentDB の詳細については、[ここ](http://azure.com/docdb)をクリックしてください。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

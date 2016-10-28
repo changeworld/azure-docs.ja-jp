@@ -1,87 +1,82 @@
 <properties
-    pageTitle="Azure SQL Database Resource Limits"
-    description="This page describes some common resource limits for Azure SQL Database."
-    services="sql-database"
-    documentationCenter="na"
-    authors="CarlRabeler"
-    manager="jhubbard"
-    editor="monicar" />
+	pageTitle="Azure SQL Database のリソース制限"
+	description="このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。"
+	services="sql-database"
+	documentationCenter="na"
+	authors="CarlRabeler"
+	manager="jhubbard"
+	editor="monicar" />
 
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="data-management"
-    ms.date="10/13/2016"
-    ms.author="carlrab" />
+	ms.service="sql-database"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-management"
+	ms.date="07/19/2016"
+	ms.author="carlrab" />
 
 
+# Azure SQL Database のリソース制限
 
-# <a name="azure-sql-database-resource-limits"></a>Azure SQL Database resource limits
+## Overview
 
-## <a name="overview"></a>Overview
+Azure SQL Database では、**リソース ガバナンス**と**制限の適用**という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。このトピックでは、リソース管理のこれら 2 つの主な領域について説明します。
 
-Azure SQL Database manages the resources available to a database using two different mechanisms: **Resources Governance** and **Enforcement of Limits**. This topic explains these two main areas of resource management.
+## リソース ガバナンス
+Basic、Standard、および Premium サービス プランの設計目標の 1 つは、Azure SQL Database の動作を、データベースが他のデータベースから完全に分離された専用のコンピューターで稼働しているかのようにすることです。リソース ガバナンスは、この動作をエミュレートします。集計されたリソース使用率が、データベースに割り当てられた利用可能な CPU、メモリ、ログ I/O、データ I/O のリソースの最大値に達すると、リソース ガバナンスは、実行中のクエリをキューに配置し、リソースが解放されると、キューに配置されたクエリにそのリソースを割り当てます。
 
-## <a name="resource-governance"></a>Resource governance
-One of the design goals of the Basic, Standard, and Premium service tiers is for Azure SQL Database to behave as if the database is running on its own machine, completely isolated from other databases. Resource governance emulates this behavior. If the aggregated resource utilization reaches the maximum available CPU, Memory, Log I/O, and Data I/O resources assigned to the database, resource governance will queue queries in execution and assign resources to the queued queries as they free up.
+専用のコンピューターの場合と同様、利用可能なリソースをすべて利用すると、現在実行中のクエリの実行時間が長くなり、コマンドがクライアントでタイムアウトする可能性があります。積極的な再試行ロジックを使用するアプリケーションやデータベースに対して高い頻度でクエリを実行するアプリケーションでは、同時要求の制限に達したときに新しいクエリを実行しようとするとエラー メッセージが表示される場合があります。
 
-As on a dedicated machine, utilizing all available resources will result in a longer execution of currently executing queries, which can result in command timeouts on the client. Applications with aggressive retry logic and applications that execute queries against the database with a high frequency can encounter errors messages when trying to execute new queries when the limit of concurrent requests has been reached.
+### 推奨事項:
+データベースの最大使用率に近づいてきたら、リソース使用率に加えて、クエリの平均応答時間も監視します。クエリの待機時間が長くなる場合、一般的には 3 つのオプションがあります。
 
-### <a name="recommendations:"></a>Recommendations:
-Monitor the resource utilization as well as the average response times of queries when nearing the maximum utilization of a database. When encountering higher query latencies you generally have three options:
+1.	データベースへの着信要求を少なくして、タイムアウトと大量の要求を防ぎます。
 
-1.  Reduce the amount of incoming requests to the database to prevent timeout and the pile up of requests.
+2.	データベースにより高いパフォーマンス レベルを割り当てます。
 
-2.  Assign a higher performance level to the database.
+3.	クエリを最適化して、各クエリのリソース使用率を引き下げます。詳細については、Azure SQL Database パフォーマンス ガイダンスのクエリのチューニングとヒント設定に関するセクションを参照してください。
 
-3.  Optimize queries to reduce the resource utilization of each query. For more information, see the Query Tuning/Hinting section in the Azure SQL Database Performance Guidance article.
+## 制限の適用
+制限に達すると、新しい要求を拒否することによって CPU、メモリ、ログ I/O、およびデータ I/O 以外のリソースが適用されます。達した制限に応じて、クライアントは[エラー メッセージ](sql-database-develop-error-messages.md)を受け取ります。
 
-## <a name="enforcement-of-limits"></a>Enforcement of limits
-Resources other than CPU, Memory, Log I/O, and Data I/O are enforced by denying new requests when limits are reached. Clients will receive an [error message](sql-database-develop-error-messages.md) depending on the limit that has been reached.
+たとえば、SQL Database への接続数と処理可能な同時要求の数が制限されます。SQL Database では、接続プールをサポートするために、データベースへの接続数が同時要求の数を上回ることを許可します。利用可能な接続数はアプリケーションで簡単に制御できるのに対し、並列要求の数の見積もりや制御は困難であることがよくあります。特に、負荷のピーク時に、アプリケーションから送信される要求が多すぎる場合や、データベースがそのリソースの制限に達し、クエリの実行時間が長くなることが原因でワーカー スレッドが蓄積され始める場合に、エラーが発生することがあります。
 
-For example, the number of connections to a SQL database as well as the number of concurrent requests that can be processed are restricted. SQL Database allows the number of connections to the database to be greater than the number of concurrent requests to support connection pooling. While the amount of connections that are available can easily be controlled by the application, the amount of parallel requests is often times harder to estimate and to control. Especially during peak loads when the application either sends too many requests or the database reaches its resource limits and starts piling up worker threads due to longer running queries, errors can be encountered.
+## サービス プランとパフォーマンス レベル
 
-## <a name="service-tiers-and-performance-levels"></a>Service tiers and performance levels
+スタンドアロン データベースとエラスティック プールの両方に、サービス階層とパフォーマンス レベルがあります。
 
-There are service tiers and performance levels for both standalone database and elastic pools.
+### スタンドアロン データベース
 
-### <a name="standalone-databases"></a>Standalone databases
+スタンドアロン データベースの場合、データベースの制限はデータベース サービス階層とパフォーマンス レベルによって決まります。次の表では、パフォーマンス レベルごとの Basic、Standard、Premium の各データベースの特性について説明します。
 
-For a standalone database, the limits of a database are defined by the database service tier and performance level. The following table describes the characteristics of Basic, Standard, and Premium databases at varying performance levels.
+[AZURE.INCLUDE [SQL DB のサービス階層表](../../includes/sql-database-service-tiers-table.md)]
 
-[AZURE.INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
+### エラスティック プール
 
-### <a name="elastic-pools"></a>Elastic pools
+[エラスティック プール](sql-database-elastic-pool.md)は、プール内のデータベース全体のリソースを共有します。次の表では、Basic、Standard、および Premium のエラスティック データベース プールの特性について説明します。
 
-[Elastic pools](sql-database-elastic-pool.md) share resources across databases in the pool. The following table describes the characteristics of Basic, Standard, and Premium elastic database pools.
+[AZURE.INCLUDE [エラスティック データベースの SQL DB サービス階層を示す表](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
 
-[AZURE.INCLUDE [SQL DB service tiers table for elastic databases](../../includes/sql-database-service-tiers-table-elastic-db-pools.md)]
+前の表に示されている各リソースの詳細な定義いついては、「[サービス レベルの機能と制限](sql-database-performance-guidance.md#service-tier-capabilities-and-limits)」の説明を参照してください。サービス階層の概要については、[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)に関するページを参照してください。
 
-For an expanded definition of each resource listed in the previous tables, see the descriptions in [Service tier capabilities and limits](sql-database-performance-guidance.md#service-tier-capabilities-and-limits). For an overview of service tiers, see [Azure SQL Database Service Tiers and Performance Levels](sql-database-service-tiers.md).
+## その他の SQL Database の制限
 
-## <a name="other-sql-database-limits"></a>Other SQL Database limits
-
-| Area | Limit | Description |
+| 領域 | 制限 | Description |
 |---|---|---|
-| Databases using Automated export per subscription | 10 | Automated export allows you to create a custom schedule for backing up your SQL databases. For more information, see [SQL Databases: Support for Automated SQL Database Exports](http://weblogs.asp.net/scottgu/windows-azure-july-updates-sql-database-traffic-manager-autoscale-virtual-machines).|
-| Database per server | Up to 5000 | Up to 5000 databases are allowed per server on V12 servers. |  
-| DTUs per server | 45000 | 45000 DTUs are available per server on V12 servers for provisioning databases, elastic pools and data warehouses. |
+| サブスクリプションあたりの自動エクスポートを使用するデータベース | 10 | 自動エクスポートを使用すると、カスタム スケジュールを作成して、SQL Database をバックアップできます。詳細については、「[SQL Database: 自動 SQL Databaseエクスポートのサポート](http://weblogs.asp.net/scottgu/windows-azure-july-updates-sql-database-traffic-manager-autoscale-virtual-machines)」を参照してください。|
+| サーバーあたりのデータベース | 最大 5000 | V12 サーバーでは、サーバーあたり最大 5000 個のデータベースが許可されています。 |  
+| サーバーあたりの DTU | 45000 | データベース、エラスティック プール、データ ウェアハウスをプロビジョニングする場合、V12 サーバーではサーバーあたり 45000 DTU を使用できます。 |
 
 
 
-## <a name="resources"></a>Resources
+## Resources
 
-[Azure Subscription and Service Limits, Quotas, and Constraints](../azure-subscription-service-limits.md)
+[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
 
-[Azure SQL Database Service Tiers and Performance Levels](sql-database-service-tiers.md)
+[Azure SQL Database のサービス階層とパフォーマンス レベル](sql-database-service-tiers.md)
 
-[Error messages for SQL Database client programs](sql-database-develop-error-messages.md)
+[SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Add the Office 365 Outlook connector in your Logic Apps | Microsoft Azure"
-    description="Create logic apps with Office 365 connector to enable interaction with Office 365. For example: creating, editing, and updating contacts and calendar items."
+    pageTitle="ロジック アプリに Office 365 Outlook コネクタを追加する | Microsoft Azure"
+    description="Office 365 コネクタを含むロジック アプリを作成して Office 365 を操作できるようにします。たとえば、連絡先や予定表項目の作成、編集、更新を行うことができます。"
     services=""    
     documentationCenter=""     
     authors="MandiOhlinger"    
-    manager="anneta"    
+    manager="erikre"    
     editor="" 
     tags="connectors" />
 
@@ -14,762 +14,758 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="integration"
-ms.date="10/18/2016"
+ms.date="07/26/2016"
 ms.author="mandia"/>
 
+# Office 365 Outlook コネクタの使用 
 
-# <a name="get-started-with-the-office-365-outlook-connector"></a>Get started with the Office 365 Outlook connector 
+Office 365 Outlook コネクタを使用すると、Office 365 Outlook の操作が可能になります。このコネクタを使用すると、連絡先と予定表アイテムの作成、編集、更新に加え、電子メールの取得、送信、返信を行うことができます。
 
-The Office 365 Outlook connector enables interaction with Outlook in Office 365. Use this connector to create, edit, and update contacts and calendar items, and also get, send, and reply to email.
+Office 365 Outlook では、次のことができます。
 
-With Office 365 Outlook, you:
+- Office 365 の電子メールや予定表の機能を使用して、ワークフローを構築します。
+- 新しい電子メールを受信したときや予定表アイテムが更新されたときなどに、トリガーを使用してワークフローを開始します。
+- アクションを使用して、電子メールの送信、新しい予定表イベントの作成などの操作を実行します。たとえば、Salesforce 内に新しいオブジェクトがあるとき (トリガー) に Office 365 Outlook に電子メールを送信します (アクション)。
 
-- Build your workflow using the email and calendar features within Office 365. 
-- Use triggers to start your workflow when there is a new email, when a calendar item is updated, and more.
-- Use actions to send an email, create a new calendar event, and more. For example, when there is a new object in Salesforce (a trigger), send an email to your Office 365 Outlook (an action). 
+このトピックでは、ロジック アプリ内で Office 365 Outlook コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
 
-This topic shows you how to use the Office 365 Outlook connector in a logic app, and also lists the triggers and actions.
+>[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
 
->[AZURE.NOTE] This version of the article applies to Logic Apps general availability (GA).
+Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
-To learn more about Logic Apps, see [What are logic apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## Office 365 への接続
 
-## <a name="connect-to-office-365"></a>Connect to Office 365
-
-Before your logic app can access any service, you first create a *connection* to the service. A connection provides connectivity between a logic app and another service. For example, to connect to Office 365 Outlook, you first need an Office 365 *connection*. To create a connection, enter the credentials you normally use to access the service you wish to connect to. So with Office 365 Outlook, enter the credentials to your Office 365 account to create the connection.
-
-
-## <a name="create-the-connection"></a>Create the connection
-
->[AZURE.INCLUDE [Steps to create a connection to Office 365](../../includes/connectors-create-api-office365-outlook.md)]
-
-## <a name="use-a-trigger"></a>Use a trigger
-
-A trigger is an event that can be used to start the workflow defined in a logic app. Triggers "poll" the service at an interval and frequency that you want. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
-
-1. In the logic app, type "office 365" to get a list of the triggers:  
-
-    ![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
-
-2. Select **Office 365 Outlook - When an upcoming event is starting soon**. If a connection already exists, then select a calendar from the drop-down list.
-
-    ![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
-
-    If you are prompted to sign in, then enter the sign in details to create the connection. [Create the connection](connectors-create-api-office365-outlook.md#create-the-connection) in this topic lists the steps. 
-
-    > [AZURE.NOTE] In this example, the logic app runs when a calendar event is updated. To see the results of this trigger, add another action that sends you a text message. For example, add the Twilio *Send message* action that texts you when the calendar event is starting in 15 minutes. 
-
-3. Select the **Edit** button and set the **Frequency** and **Interval** values. For example, if you want the trigger to poll every 15 minutes, then set the **Frequency** to **Minute**, and set the **Interval** to **15**. 
-
-    ![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
-
-4. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、Office 365 Outlook に接続するには、最初に Office 365 "*接続*" が必要になります。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、Office 365 Outlook の場合は、Office 365 アカウントの資格情報を入力して接続を作成します。
 
 
-## <a name="use-an-action"></a>Use an action
+## 接続の作成
 
-An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+>[AZURE.INCLUDE [Office 365 への接続を作成する手順](../../includes/connectors-create-api-office365-outlook.md)]
 
-1. Select the plus sign. You see several choices: **Add an action**, **Add a condition**, or one of the **More** options.
+## トリガーを使用する
 
-    ![](./media/connectors-create-api-office365-outlook/add-action.png)
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。トリガーは、指定された間隔と頻度でサービスを "ポーリング" します。[トリガーの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-2. Choose **Add an action**.
+1. ロジック アプリで「office 365」と入力して、トリガーの一覧を取得します。
 
-3. In the text box, type “office 365” to get a list of all the available actions.
+	![](./media/connectors-create-api-office365-outlook/office365-trigger.png)
 
-    ![](./media/connectors-create-api-office365-outlook/office365-actions.png) 
+2. **[Office 365 Outlook - When an upcoming event is starting soon (Office 365 Outlook - 予定しているイベントが間もなく開始されるとき)]** を選択します。接続が既に存在する場合は、ドロップダウン リストから予定表を選択します。
 
-4. In our example, choose **Office 365 Outlook - Create contact**. If a connection already exists, then choose the **Folder ID**, **Given Name**, and other properties:  
+	![](./media/connectors-create-api-office365-outlook/sample-calendar.png)
 
-    ![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
+	サインインを求められたら、サインインの詳細を入力して接続を作成します。この手順については、このトピックの「[接続の作成](connectors-create-api-office365-outlook.md#create-the-connection)」をご覧ください。
 
-    If you are prompted for the connection information, then enter the details to create the connection. [Create the connection](connectors-create-api-office365-outlook.md#create-the-connection) in this topic describes these properties. 
+	> [AZURE.NOTE] この例では、予定表のイベントが更新されたときにロジック アプリが実行されます。このトリガーの結果を確認するには、自分にテキスト メッセージを送信する別のアクションを追加してください。15 分以内に予定表イベントが開始するときにテキスト メッセージを送信する Twilio "*メッセージの送信*" アクションを追加します。
 
-    > [AZURE.NOTE] In this example, we create a new contact in Office 365 Outlook. You can use output from another trigger to create the contact. For example, add the SalesForce *When an object is created* trigger. Then add the Office 365 Outlook *Create contact* action that uses the SalesForce fields to create the new new contact in Office 365. 
+3. **[編集]** を選択し、**[頻度]** と **[間隔]** の値を設定します。たとえば、トリガーを使用して 15 分ごとにポーリングを実行するには、**[頻度]** を **[分]** に設定し、**[間隔]** を **15** に設定します。
 
-5. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
+	![](./media/connectors-create-api-office365-outlook/calendar-settings.png)
+
+4. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
 
 
-## <a name="technical-details"></a>Technical Details
+## アクションを使用する
 
-Here are the details about the triggers, actions and responses that this connection supports:
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-## <a name="office-365-triggers"></a>Office 365 triggers
+1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
 
-|Trigger | Description|
+	![](./media/connectors-create-api-office365-outlook/add-action.png)
+
+2. **[アクションの追加]** を選択します。
+
+3. テキスト ボックスに「office 365」と入力して、使用可能なすべてのアクションの一覧を取得します。
+
+	![](./media/connectors-create-api-office365-outlook/office365-actions.png)
+
+4. この例では、**[Office 365 Outlook - Create contact (Office 365 Outlook - 連絡先を作成する)]** を選択します。接続が既に存在する場合は、**[Folder ID (フォルダー ID)]**、**[名]**、およびその他のプロパティを指定します。
+
+	![](./media/connectors-create-api-office365-outlook/office365-sampleaction.png)
+
+	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-office365-outlook.md#create-the-connection)」をご覧ください。
+
+	> [AZURE.NOTE] この例では、Office 365 Outlook で新しい連絡先を作成します。別のトリガーからの出力を使用して、連絡先を作成できます。たとえば、SalesForce の "*When an object is created (オブジェクトが作成されたとき)*" トリガーを追加します。次に、SalesForce のフィールドを使用して Office 365 で新しい連絡先を作成する Office 365 Outlook の "*Create contact (連絡先を作成する)*" アクションを追加します。
+
+5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
+
+
+## 技術的な詳細
+
+ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
+
+## Office 365 トリガー
+
+|トリガー | 説明|
 |--- | ---|
-|[When an upcoming event is starting soon](connectors-create-api-office365-outlook.md#when-an-upcoming-event-is-starting-soon)|This operation triggers a flow when an upcoming calendar event is starting.|
-|[When a new email arrives](connectors-create-api-office365-outlook.md#when-a-new-email-arrives)|This operation triggers a flow when a new email arrives|
-|[When a new event is created](connectors-create-api-office365-outlook.md#when-a-new-event-is-created)|This operation triggers a flow when a new event is created in a calendar.|
-|[When an event is modified](connectors-create-api-office365-outlook.md#when-an-event-is-modified)|This operation triggers a flow when an event is modified in a calendar.|
+|[[Office 365 Outlook - When an upcoming event is starting soon (Office 365 Outlook - 予定しているイベントが間もなく開始されるとき)]](connectors-create-api-office365-outlook.md#when-an-upcoming-event-is-starting-soon)|この操作では、予定表イベントが間もなく開始されるときにフローをトリガーします。|
+|[[When a new email arrives (新しい電子メールが届いたとき)]](connectors-create-api-office365-outlook.md#when-a-new-email-arrives)|この操作では、新しい電子メールが届いたときにフローをトリガーします。|
+|[[When a new event is created (新しいイベントが作成されたとき)]](connectors-create-api-office365-outlook.md#when-a-new-event-is-created)|この操作では、予定表に新しいイベントが作成されたときにフローをトリガーします。|
+|[[When an event is modified (イベントが変更されたとき)]](connectors-create-api-office365-outlook.md#when-an-event-is-modified)|この操作では、予定表のイベントが変更されたときにフローをトリガーします。|
 
 
-## <a name="office-365-actions"></a>Office 365 actions
+## Office 365 アクション
 
-|Action|Description|
+|アクション|説明|
 |--- | ---|
-|[Get emails](connectors-create-api-office365-outlook.md#get-emails)|This operation gets emails from a folder.|
-|[Send an email](connectors-create-api-office365-outlook.md#send-an-email)|This operation sends an email message.|
-|[Delete email](connectors-create-api-office365-outlook.md#delete-email)|This operation deletes an email by id.|
-|[Mark as read](connectors-create-api-office365-outlook.md#mark-as-read)|This operation marks an email as having been read.|
-|[Reply to email](connectors-create-api-office365-outlook.md#reply-to-email)|This operation replies to an email.|
-|[Get attachment](connectors-create-api-office365-outlook.md#get-attachment)|This operation gets an email attachment by id.|
-|[Send email with options](connectors-create-api-office365-outlook.md#send-email-with-options)|This operation sends an email with multiple options and waits for the recipient to respond back with one of the options.|
-|[Send approval email](connectors-create-api-office365-outlook.md#send-approval-email)|This operation sends an approval email and waits for a response from the recipient.|
-|[Get calendars](connectors-create-api-office365-outlook.md#get-calendars)|This operation lists available calendars.|
-|[Get events](connectors-create-api-office365-outlook.md#get-events)|This operation gets events from a calendar.|
-|[Create event](connectors-create-api-office365-outlook.md#create-event)|This operation creates a new event in a calendar.|
-|[Get event](connectors-create-api-office365-outlook.md#get-event)|This operation gets a specific event from a calendar.|
-|[Delete event](connectors-create-api-office365-outlook.md#delete-event)|This operation deletes an event in a calendar.|
-|[Update event](connectors-create-api-office365-outlook.md#update-event)|This operation updates an event in a calendar.|
-|[Get contact folders](connectors-create-api-office365-outlook.md#get-contact-folders)|This operation lists available contacts folders.|
-|[Get contacts](connectors-create-api-office365-outlook.md#get-contacts)|This operation gets contacts from a contacts folder.|
-|[Create contact](connectors-create-api-office365-outlook.md#create-contact)|This operation creates a new contact in a contacts folder.|
-|[Get contact](connectors-create-api-office365-outlook.md#get-contact)|This operation gets a specific contact from a contacts folder.|
-|[Delete contact](connectors-create-api-office365-outlook.md#delete-contact)|This operation deletes a contact from a contacts folder.|
-|[Update contact](connectors-create-api-office365-outlook.md#update-contact)|This operation updates a contact in a contacts folder.|
+|[電子メールを取得する](connectors-create-api-office365-outlook.md#get-emails)|この操作では、フォルダーから電子メールを取得します。|
+|[電子メールを送信する](connectors-create-api-office365-outlook.md#send-an-email)|この操作では、電子メール メッセージを送信します。|
+|[電子メールを削除する](connectors-create-api-office365-outlook.md#delete-email)|この操作では、ID に基づいて電子メールを削除します。|
+|[既読としてマークする](connectors-create-api-office365-outlook.md#mark-as-read)|この操作では、電子メールを既読としてマークします。|
+|[[Reply to email (電子メールに返信する)]](connectors-create-api-office365-outlook.md#reply-to-email)|この操作では、電子メールに返信します。|
+|[添付ファイルを取得する](connectors-create-api-office365-outlook.md#get-attachment)|この操作では、ID に基づいて電子メールの添付ファイルを取得します。|
+|[オプションを指定して電子メールを送信する](connectors-create-api-office365-outlook.md#send-email-with-options)|この操作では、複数のオプションを指定して電子メールを送信し、受信者からオプションのいずれかを含む返信が送られるまで待ちます。|
+|[承認の電子メールを送信します](connectors-create-api-office365-outlook.md#send-approval-email)|この操作では、承認の電子メールを送信し、受信者からの返信を待ちます。|
+|[予定表を取得する](connectors-create-api-office365-outlook.md#get-calendars)|この操作では、使用できる予定表を一覧表示します。|
+|[Get events](connectors-create-api-office365-outlook.md#get-events)|この操作では、予定表からイベントを取得します。|
+|[イベントを作成する](connectors-create-api-office365-outlook.md#create-event)|この操作では、予定表に新しいイベントを作成します。|
+|[イベントを取得する](connectors-create-api-office365-outlook.md#get-event)|この操作では、予定表から特定のイベントを取得します。|
+|[インベントリを削除する](connectors-create-api-office365-outlook.md#delete-event)|この操作では、予定表のイベントを削除します。|
+|[イベントを更新する](connectors-create-api-office365-outlook.md#update-event)|この操作では、予定表のイベントを更新します。|
+|[連絡先フォルダーを取得する](connectors-create-api-office365-outlook.md#get-contact-folders)|この操作では、使用できる連絡先フォルダーを一覧表示します。|
+|[連絡先を取得する](connectors-create-api-office365-outlook.md#get-contacts)|この操作では、連絡先フォルダーから連絡先を取得します。|
+|[連絡先を作成する](connectors-create-api-office365-outlook.md#create-contact)|この操作では、連絡先フォルダーに連絡先を作成します。|
+|[連絡先を取得する](connectors-create-api-office365-outlook.md#get-contact)|この操作では、連絡先フォルダーから特定の連絡先を取得します。|
+|[連絡先を削除する](connectors-create-api-office365-outlook.md#delete-contact)|この操作では、連絡先フォルダーから連絡先を削除します。|
+|[連絡先を更新する](connectors-create-api-office365-outlook.md#update-contact)|この操作では、連絡先フォルダーの連絡先を更新します。|
 
-### <a name="trigger-and-action-details"></a>Trigger and Action details
+### トリガーとアクションの詳細
 
-In this section, see the specific details about each trigger and action, including any required or optional input properties, and any corresponding output associated with the connector.
+このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各トリガーとアクションに関する具体的な詳細について説明します。
 
-#### <a name="when-an-upcoming-event-is-starting-soon"></a>When an upcoming event is starting soon
-This operation triggers a flow when an upcoming calendar event is starting. 
+#### [Office 365 Outlook - When an upcoming event is starting soon (Office 365 Outlook - 予定しているイベントが間もなく開始されるとき)]
+この操作では、予定表イベントが間もなく開始されるときにフローをトリガーします。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Unique identifier of the calendar|
-|lookAheadTimeInMinutes|Look ahead time|Time (in minutes) to look ahead for upcoming events|
+|table*|Calendar id (予定表 ID)|予定表の一意識別子|
+|lookAheadTimeInMinutes|Look ahead time (開始までの時間)|間もなく開始されるイベントまでの時間 (分)|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-CalendarItemsList: The list of calendar items
+##### 出力の詳細
+CalendarItemsList: 予定表項目の一覧
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|value|array|List of calendar items|
+|値|array|予定表アイテムの一覧|
 
 
-#### <a name="get-emails"></a>Get emails
-This operation gets emails from a folder. 
+#### 電子メールを取得する
+この操作では、フォルダーから電子メールを取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|folderPath|Folder Path|Path of the folder to retrieve emails (default: 'Inbox')|
-|top|Top|Number of emails to retrieve (default: 10)|
-|fetchOnlyUnread|Fetch Only Unread Messages|Retrieve only unread emails?|
-|includeAttachments|Include Attachments|If set to true, attachments will also be retrieved along with the email|
-|searchQuery|Search Query|Search query to filter emails|
-|skip|Skip|Number of emails to skip (default: 0)|
-|skipToken|Skip Token|Skip token to fetch new page|
+|folderPath|フォルダー パス|電子メールを取得するフォルダーのパス (既定値: 'Inbox')|
+|top|Top (上位)|取得する電子メールの件数 (既定値: 10)|
+|fetchOnlyUnread|Fetch Only Unread Messages (未読メッセージのみを取得する)|未読の電子メールのみを取得しますか？|
+|includeAttachments|Include Attachments (添付ファイルを含める)|True に設定すると、電子メールと共に添付ファイルも取得されます|
+|searchQuery|検索クエリ|電子メールをフィルターする検索クエリ|
+|skip|Skip|スキップする電子メールの件数 (既定値: 0)|
+|skipToken|Skip Token (skip トークン)|新しいページを取得するスキップ トークン|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-ReceiveMessage: Receive Email Message
+##### 出力の詳細
+ReceiveMessage: 電子メール メッセージを受信します
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|From|string|From|
+|ファイル|string|ファイル|
 |To|string|To|
-|Subject|string|Subject|
-|Body|string|Body|
-|Importance|string|Importance|
-|HasAttachment|boolean|Has Attachment|
-|Id|string|Message Id|
-|IsRead|boolean|Is Read|
-|DateTimeReceived|string|Date time received|
-|Attachments|array|Attachments|
-|Cc|string|Specify email addresses separated by semicolons like someone@contoso.com|
-|Bcc|string|Specify email addresses separated by semicolons like someone@contoso.com|
-|IsHtml|boolean|Is Html|
+|[件名]|string|[件名]|
+|本文|string|本文|
+|[重要度]|string|[重要度]|
+|HasAttachment|ブール値|添付ファイルを含む|
+|ID|string|メッセージ ID|
+|IsRead|ブール値|開封済み|
+|DateTimeReceived|string|受信した日時|
+|[添付ファイル]|array|[添付ファイル]|
+|Cc|string|someone@contoso.com のようにセミコロンで区切って電子メール アドレスを指定|
+|[Bcc]|string|someone@contoso.com のようにセミコロンで区切って電子メール アドレスを指定|
+|IsHtml|ブール値|HTML メッセージ|
 
 
-#### <a name="send-an-email"></a>Send an email
-This operation sends an email message. 
+#### 電子メールを送信する
+この操作では、電子メール メッセージを送信します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|emailMessage*|Email|Email|
+|emailMessage*|電子メール|電子メール|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
-#### <a name="delete-email"></a>Delete email
-This operation deletes an email by id. 
+#### 電子メールを削除する
+この操作では、ID に基づいて電子メールを削除します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|messageId*|Message Id|Id of the email to delete|
+|messageId*|メッセージ ID|削除する電子メールの ID|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
-#### <a name="mark-as-read"></a>Mark as read
-This operation marks an email as having been read. 
+#### 既読としてマークする
+この操作では、電子メールを既読としてマークします。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|messageId*|Message Id|Id of the email to be marked as read|
+|messageId*|メッセージ ID|既読とマークする電子メールの ID|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
 
-#### <a name="reply-to-email"></a>Reply to email
-This operation replies to an email. 
+#### [Reply to email (電子メールに返信する)]
+この操作では、電子メールに返信します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|messageId*|Message Id|Id of the email to reply to|
-|comment*|Comment|Reply comment|
-|replyAll|Reply All|Reply to all recipients|
+|messageId*|メッセージ ID|返信する電子メールの ID|
+|comment*|Comment (コメント)|応答のコメント|
+|replyAll|全員へ返信|すべての受信者に返信する|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
 
-#### <a name="get-attachment"></a>Get attachment
-This operation gets an email attachment by id. 
+#### 添付ファイルを取得する
+この操作では、ID に基づいて電子メールの添付ファイルを取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|messageId*|Message Id|Id of the email|
-|attachmentId*|Attachment Id|Id of the attachment to download|
+|messageId*|メッセージ ID|電子メールの ID|
+|attachmentId*|Attachment Id (添付ファイルの ID)|ダウンロードする添付ファイルの ID|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
 
-#### <a name="when-a-new-email-arrives"></a>When a new email arrives
-This operation triggers a flow when a new email arrives.
+#### [When a new email arrives (新しい電子メールが届いたとき)]
+この操作では、新しい電子メールが届いたときにフローをトリガーします。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|folderPath|Folder Path|Email folder to retrieve (default: Inbox)|
-|to|To|Recipient email addresses|
-|from|From|From address|
-|importance|Importance|Importance of the email (High, Normal, Low) (default: Normal)|
-|fetchOnlyWithAttachment|Has Attachments|Retrieve only emails with an attachment|
-|includeAttachments|Include Attachments|Include attachments|
-|subjectFilter|Subject Filter|String to look for in the subject|
+|folderPath|フォルダー パス|取得する電子メール フォルダー (既定値: 受信トレイ)。|
+|] を [|To|受信者の電子メール アドレス|
+|from|ファイル|差出人アドレス|
+|importance|[重要度]|電子メールの重要度 (High、Normal、Low) (既定値: Normal)|
+|fetchOnlyWithAttachment|Has Attachments (添付ファイルあり)|ファイルが添付された電子メールのみを取得します|
+|includeAttachments|Include Attachments (添付ファイルを含める)|添付ファイルを含めます|
+|subjectFilter|Subject Filter (件名フィルター)|サブジェクト内で検索する文字列|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 TriggerBatchResponse[ReceiveMessage]
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|value|array|
+|値|array|
 
 
-#### <a name="send-email-with-options"></a>Send email with options
-This operation sends an email with multiple options and waits for the recipient to respond back with one of the options. 
+#### オプションを指定して電子メールを送信する
+この操作では、複数のオプションを指定して電子メールを送信し、受信者からオプションのいずれかを含む返信が送られるまで待ちます。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|optionsEmailSubscription*|Subscription request for options email|Subscription request for options email|
+|optionsEmailSubscription*|オプションの電子メールのサブスクリプション要求|オプションの電子メールのサブスクリプション要求|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-SubscriptionResponse: Model for Approval Email Subscription
+##### 出力の詳細
+SubscriptionResponse: 承認の電子メール サブスクリプションのモデル
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|id|string|Id of the subscription|
-|resource|string|Resource of the subscription request|
-|notificationType|string|Notification Type|
-|notificationUrl|string|Notification Url|
+|id|string|サブスクリプションの ID|
+|resource|string|サブスクリプション要求のリソース|
+|notificationType|string|通知の種類|
+|notificationUrl|string|通知 URL|
 
 
-#### <a name="send-approval-email"></a>Send approval email
-This operation sends an approval email and waits for a response from the recipient. 
+#### 承認の電子メールを送信します
+この操作では、承認の電子メールを送信し、受信者からの返信を待ちます。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|approvalEmailSubscription*|Subscription request for approval email|Subscription request for approval email|
+|approvalEmailSubscription*|承認の電子メールのサブスクリプション要求|承認の電子メールのサブスクリプション要求|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-SubscriptionResponse: Model for Approval Email Subscription
+##### 出力の詳細
+SubscriptionResponse: 承認の電子メール サブスクリプションのモデル
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|id|string|Id of the subscription|
-|resource|string|Resource of the subscription request|
-|notificationType|string|Notification Type|
-|notificationUrl|string|Notification Url|
+|id|string|サブスクリプションの ID|
+|resource|string|サブスクリプション要求のリソース|
+|notificationType|string|通知の種類|
+|notificationUrl|string|通知 URL|
 
 
-#### <a name="get-calendars"></a>Get calendars
-This operation lists available calendars. 
+#### 予定表を取得する
+この操作では、使用できる予定表を一覧表示します。
 
-There are no parameters for this call.
+この呼び出しには、パラメーターはありません。
 
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 TablesList
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|value|array|
+|値|array|
 
 
-#### <a name="get-events"></a>Get events
-This operation gets events from a calendar. 
+#### Get events
+この操作では、予定表からイベントを取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Select a calendar|
-|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
-|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
-|$skip|Skip Count|Number of entries to skip (default = 0)|
-|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
+|table*|Calendar id (予定表 ID)|予定表を選択します|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-CalendarEventList: The list of calendar items
+##### 出力の詳細
+CalendarEventList: 予定表アイテムの一覧
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|value|array|List of calendar items|
+|値|array|予定表アイテムの一覧|
 
 
-#### <a name="create-event"></a>Create event
-This operation creates a new event in a calendar. 
+#### イベントを作成する
+この操作では、予定表に新しいイベントを作成します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Select a calendar|
-|item*|Item|Event to create|
+|table*|Calendar id (予定表 ID)|予定表を選択します|
+|item*|項目|作成するイベント|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-CalendarEvent: Connector specific calendar event model class.
+##### 出力の詳細
+CalendarEvent: コネクタに固有の予定表イベント モデル クラス。
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|Id|string|The Event's unique identifier.|
-|Attendees|array|List of attendees for the event.|
-|Body|not defined|The body of the message associated with the event.|
-|BodyPreview|string|The preview of the message associated with the event.|
-|Categories|array|The categories associated with the event.|
-|ChangeKey|string|Identifies the version of the event object. Every time the event is changed, ChangeKey changes as well.|
-|DateTimeCreated|string|The date and time that the event was created.|
-|DateTimeLastModified|string|The date and time that the event was last modified.|
-|End|string|The end time of the event.|
-|EndTimeZone|string|Specifies the time zone of the meeting end time. This value must be as defined in Windows (example: 'Pacific Standard Time').|
-|HasAttachments|boolean|Set to true if the event has attachments.|
-|Importance|string|The importance of the event: Low, Normal or High.|
-|IsAllDay|boolean|Set to true if the event lasts all day.|
-|IsCancelled|boolean|Set to true if the event has been canceled.|
-|IsOrganizer|boolean|Set to true if the message sender is also the organizer.|
-|Location|not defined|The location of the event.|
-|Organizer|not defined|The organizer of the event.|
-|Recurrence|not defined|The recurrence pattern for the event.|
-|Reminder|integer|Time in minutes before event start to remind.|
-|ResponseRequested|boolean|Set to true if the sender would like a response when the event is accepted or declined.|
-|ResponseStatus|not defined|Indicates the type of response sent in response to an event message.|
-|SeriesMasterId|string|Unique identifier for Series Master event type.|
-|ShowAs|string|Shows as free or busy.|
-|Start|string|The start time of the event.|
-|StartTimeZone|string|Specifies the time zone of the meeting start time. This value must be as defined in Windows (example: "Pacific Standard Time").|
-|Subject|string|Event subject.|
-|Type|string|The event type: Single Instance, Occurrence, Exception, or Series Master.|
-|WebLink|string|The preview of the message associated with the event.|
+|ID|string|イベントの一意の識別子。|
+|出席者|array|イベントの出席者の一覧。|
+|本文|未定義|イベントに関連付けられているメッセージの本文。|
+|BodyPreview|string|イベントに関連付けられているメッセージのプレビュー。|
+|カテゴリ|array|イベントに関連付けられているカテゴリ。|
+|ChangeKey|string|イベント オブジェクトのバージョンを識別します。イベントが変更されるたびに、ChangeKey も変更されます。|
+|DateTimeCreated|string|イベントが作成された日時。|
+|DateTimeLastModified|string|イベントが最後に変更された日時。|
+|End|string|イベントの終了時刻。|
+|EndTimeZone|string|会議の終了時刻のタイム ゾーンを指定します。この値は、Windows で定義されている値である必要があります (例: "太平洋標準時")。|
+|HasAttachments|ブール値|イベントに添付ファイルがある場合は true に設定されます。|
+|[重要度]|string|イベントの重要度: Low、Normal、または High。|
+|IsAllDay|ブール値|イベントが全日のイベントの場合は true に設定されます。|
+|IsCancelled|ブール値|イベントが取り消された場合は true に設定されます。|
+|IsOrganizer|ブール値|メッセージの送信者が開催者でもある場合は true に設定されます。|
+|Location (場所)|未定義|イベントの場所。|
+|Organizer|未定義|イベントの開催者。|
+|繰り返し|未定義|イベントの繰り返しパターン。|
+|アラーム|integer|イベントの開始を何分前から通知するか。|
+|ResponseRequested|ブール値|イベントが受理または拒否されたときに送信者が応答を希望している場合は、true に設定されます。|
+|ResponseStatus|未定義|イベント メッセージへの応答で送信された応答の種類を示します。|
+|SeriesMasterId|string|"Series Master (系列マスター)" イベントの種類の一意の識別子。|
+|ShowAs|string|空きまたはビジー状態として表示されます。|
+|開始|string|イベントの開始時刻。|
+|StartTimeZone|string|会議の開始時刻のタイム ゾーンを指定します。この値は、Windows で定義されている値である必要があります (例: "太平洋標準時")。|
+|[件名]|string|イベントの件名。|
+|型|string|イベントの種類: "単一インスタンス"、"この予定だけ"、"例外"、または "Series Master (系列マスター)"。|
+|WebLink|string|イベントに関連付けられているメッセージのプレビュー。|
 
 
-#### <a name="get-event"></a>Get event
-This operation gets a specific event from a calendar. 
+#### イベントを取得する
+この操作では、予定表から特定のイベントを取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Select a calendar|
-|id*|Item id|Select an event|
+|table*|Calendar id (予定表 ID)|予定表を選択します|
+|id*|Item id (項目 ID)|イベントを選択します|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-CalendarEvent: Connector specific calendar event model class.
+##### 出力の詳細
+CalendarEvent: コネクタに固有の予定表イベント モデル クラス。
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|Id|string|The Event's unique identifier.|
-|Attendees|array|List of attendees for the event.|
-|Body|not defined|The body of the message associated with the event.|
-|BodyPreview|string|The preview of the message associated with the event.|
-|Categories|array|The categories associated with the event.|
-|ChangeKey|string|Identifies the version of the event object. Every time the event is changed, ChangeKey changes as well.|
-|DateTimeCreated|string|The date and time that the event was created.|
-|DateTimeLastModified|string|The date and time that the event was last modified.|
-|End|string|The end time of the event.|
-|EndTimeZone|string|Specifies the time zone of the meeting end time. This value must be as defined in Windows (example: 'Pacific Standard Time').|
-|HasAttachments|boolean|Set to true if the event has attachments.|
-|Importance|string|The importance of the event: Low, Normal or High.|
-|IsAllDay|boolean|Set to true if the event lasts all day.|
-|IsCancelled|boolean|Set to true if the event has been canceled.|
-|IsOrganizer|boolean|Set to true if the message sender is also the organizer.|
-|Location|not defined|The location of the event.|
-|Organizer|not defined|The organizer of the event.|
-|Recurrence|not defined|The recurrence pattern for the event.|
-|Reminder|integer|Time in minutes before event start to remind.|
-|ResponseRequested|boolean|Set to true if the sender would like a response when the event is accepted or declined.|
-|ResponseStatus|not defined|Indicates the type of response sent in response to an event message.|
-|SeriesMasterId|string|Unique identifier for Series Master event type.|
-|ShowAs|string|Shows as free or busy.|
-|Start|string|The start time of the event.|
-|StartTimeZone|string|Specifies the time zone of the meeting start time. This value must be as defined in Windows (example: "Pacific Standard Time").|
-|Subject|string|Event subject.|
-|Type|string|The event type: Single Instance, Occurrence, Exception, or Series Master.|
-|WebLink|string|The preview of the message associated with the event.|
+|ID|string|イベントの一意の識別子。|
+|出席者|array|イベントの出席者の一覧。|
+|本文|未定義|イベントに関連付けられているメッセージの本文。|
+|BodyPreview|string|イベントに関連付けられているメッセージのプレビュー。|
+|カテゴリ|array|イベントに関連付けられているカテゴリ。|
+|ChangeKey|string|イベント オブジェクトのバージョンを識別します。イベントが変更されるたびに、ChangeKey も変更されます。|
+|DateTimeCreated|string|イベントが作成された日時。|
+|DateTimeLastModified|string|イベントが最後に変更された日時。|
+|End|string|イベントの終了時刻。|
+|EndTimeZone|string|会議の終了時刻のタイム ゾーンを指定します。この値は、Windows で定義されている値である必要があります (例: "太平洋標準時")。|
+|HasAttachments|ブール値|イベントに添付ファイルがある場合は true に設定されます。|
+|[重要度]|string|イベントの重要度: Low、Normal、または High。|
+|IsAllDay|ブール値|イベントが全日のイベントの場合は true に設定されます。|
+|IsCancelled|ブール値|イベントが取り消された場合は true に設定されます。|
+|IsOrganizer|ブール値|メッセージの送信者が開催者でもある場合は true に設定されます。|
+|Location (場所)|未定義|イベントの場所。|
+|Organizer|未定義|イベントの開催者。|
+|繰り返し|未定義|イベントの繰り返しパターン。|
+|アラーム|integer|イベントの開始を何分前から通知するか。|
+|ResponseRequested|ブール値|イベントが受理または拒否されたときに送信者が応答を希望している場合は、true に設定されます。|
+|ResponseStatus|未定義|イベント メッセージへの応答で送信された応答の種類を示します。|
+|SeriesMasterId|string|"Series Master (系列マスター)" イベントの種類の一意の識別子。|
+|ShowAs|string|空きまたはビジー状態として表示されます。|
+|開始|string|イベントの開始時刻。|
+|StartTimeZone|string|会議の開始時刻のタイム ゾーンを指定します。この値は、Windows で定義されている値である必要があります (例: "太平洋標準時")。|
+|[件名]|string|イベントの件名。|
+|型|string|イベントの種類: "単一インスタンス"、"この予定だけ"、"例外"、または "Series Master (系列マスター)"。|
+|WebLink|string|イベントに関連付けられているメッセージのプレビュー。|
 
 
-#### <a name="delete-event"></a>Delete event
-This operation deletes an event in a calendar. 
+#### インベントリを削除する
+この操作では、予定表のイベントを削除します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Select a calendar|
-|id*|Id|Select an event|
+|table*|Calendar id (予定表 ID)|予定表を選択します|
+|id*|ID|イベントを選択します|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
 
-#### <a name="update-event"></a>Update event
-This operation updates an event in a calendar. 
+#### イベントを更新する
+この操作では、予定表のイベントを更新します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Select a calendar|
-|id*|Id|Select an event|
-|item*|Item|Event to update|
+|table*|Calendar id (予定表 ID)|予定表を選択します|
+|id*|ID|イベントを選択します|
+|item*|項目|更新するイベント|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-CalendarEvent: Connector specific calendar event model class.
+##### 出力の詳細
+CalendarEvent: コネクタに固有の予定表イベント モデル クラス。
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|Id|string|The Event's unique identifier.|
-|Attendees|array|List of attendees for the event.|
-|Body|not defined|The body of the message associated with the event.|
-|BodyPreview|string|The preview of the message associated with the event.|
-|Categories|array|The categories associated with the event.|
-|ChangeKey|string|Identifies the version of the event object. Every time the event is changed, ChangeKey changes as well.|
-|DateTimeCreated|string|The date and time that the event was created.|
-|DateTimeLastModified|string|The date and time that the event was last modified.|
-|End|string|The end time of the event.|
-|EndTimeZone|string|Specifies the time zone of the meeting end time. This value must be as defined in Windows (example: 'Pacific Standard Time').|
-|HasAttachments|boolean|Set to true if the event has attachments.|
-|Importance|string|The importance of the event: Low, Normal or High.|
-|IsAllDay|boolean|Set to true if the event lasts all day.|
-|IsCancelled|boolean|Set to true if the event has been canceled.|
-|IsOrganizer|boolean|Set to true if the message sender is also the organizer.|
-|Location|not defined|The location of the event.|
-|Organizer|not defined|The organizer of the event.|
-|Recurrence|not defined|The recurrence pattern for the event.|
-|Reminder|integer|Time in minutes before event start to remind.|
-|ResponseRequested|boolean|Set to true if the sender would like a response when the event is accepted or declined.|
-|ResponseStatus|not defined|Indicates the type of response sent in response to an event message.|
-|SeriesMasterId|string|Unique identifier for Series Master event type.|
-|ShowAs|string|Shows as free or busy.|
-|Start|string|The start time of the event.|
-|StartTimeZone|string|Specifies the time zone of the meeting start time. This value must be as defined in Windows (example: "Pacific Standard Time").|
-|Subject|string|Event subject.|
-|Type|string|The event type: Single Instance, Occurrence, Exception, or Series Master.|
-|WebLink|string|The preview of the message associated with the event.|
+|ID|string|イベントの一意の識別子。|
+|出席者|array|イベントの出席者の一覧。|
+|本文|未定義|イベントに関連付けられているメッセージの本文。|
+|BodyPreview|string|イベントに関連付けられているメッセージのプレビュー。|
+|カテゴリ|array|イベントに関連付けられているカテゴリ。|
+|ChangeKey|string|イベント オブジェクトのバージョンを識別します。イベントが変更されるたびに、ChangeKey も変更されます。|
+|DateTimeCreated|string|イベントが作成された日時。|
+|DateTimeLastModified|string|イベントが最後に変更された日時。|
+|End|string|イベントの終了時刻。|
+|EndTimeZone|string|会議の終了時刻のタイム ゾーンを指定します。この値は、Windows で定義されている値である必要があります (例: "太平洋標準時")。|
+|HasAttachments|ブール値|イベントに添付ファイルがある場合は true に設定されます。|
+|[重要度]|string|イベントの重要度: Low、Normal、または High。|
+|IsAllDay|ブール値|イベントが全日のイベントの場合は true に設定されます。|
+|IsCancelled|ブール値|イベントが取り消された場合は true に設定されます。|
+|IsOrganizer|ブール値|メッセージの送信者が開催者でもある場合は true に設定されます。|
+|Location (場所)|未定義|イベントの場所。|
+|Organizer|未定義|イベントの開催者。|
+|繰り返し|未定義|イベントの繰り返しパターン。|
+|アラーム|integer|イベントの開始を何分前から通知するか。|
+|ResponseRequested|ブール値|イベントが受理または拒否されたときに送信者が応答を希望している場合は、true に設定されます。|
+|ResponseStatus|未定義|イベント メッセージへの応答で送信された応答の種類を示します。|
+|SeriesMasterId|string|"Series Master (系列マスター)" イベントの種類の一意の識別子。|
+|ShowAs|string|空きまたはビジー状態として表示されます。|
+|開始|string|イベントの開始時刻。|
+|StartTimeZone|string|会議の開始時刻のタイム ゾーンを指定します。この値は、Windows で定義されている値である必要があります (例: "太平洋標準時")。|
+|[件名]|string|イベントの件名。|
+|型|string|イベントの種類: "単一インスタンス"、"この予定だけ"、"例外"、または "Series Master (系列マスター)"。|
+|WebLink|string|イベントに関連付けられているメッセージのプレビュー。|
 
 
-#### <a name="when-a-new-event-is-created"></a>When a new event is created
-This operation triggers a flow when a new event is created in a calendar. 
+#### [When a new event is created (新しいイベントが作成されたとき)]
+この操作では、予定表に新しいイベントが作成されたときにフローをトリガーします。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Select a calendar|
-|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
-|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
-|$skip|Skip Count|Number of entries to skip (default = 0)|
-|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
+|table*|Calendar id (予定表 ID)|予定表を選択します|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-CalendarItemsList: The list of calendar items
+##### 出力の詳細
+CalendarItemsList: 予定表項目の一覧
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|value|array|List of calendar items|
+|値|array|予定表アイテムの一覧|
 
 
-#### <a name="when-an-event-is-modified"></a>When an event is modified
-This operation triggers a flow when an event is modified in a calendar. 
+#### [When an event is modified (イベントが変更されたとき)]
+この操作では、予定表のイベントが変更されたときにフローをトリガーします。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Calendar id|Select a calendar|
-|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
-|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
-|$skip|Skip Count|Number of entries to skip (default = 0)|
-|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
+|table*|Calendar id (予定表 ID)|予定表を選択します|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-CalendarItemsList: The list of calendar items
+##### 出力の詳細
+CalendarItemsList: 予定表項目の一覧
 
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|value|array|List of calendar items|
+|値|array|予定表アイテムの一覧|
 
 
-#### <a name="get-contact-folders"></a>Get contact folders
-This operation lists available contacts folders. 
+#### 連絡先フォルダーを取得する
+この操作では、使用できる連絡先フォルダーを一覧表示します。
 
-There are no parameters for this call.
+この呼び出しには、パラメーターはありません。
 
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 TablesList
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|value|array|
+|値|array|
 
 
-#### <a name="get-contacts"></a>Get contacts
-This operation gets contacts from a contacts folder. 
+#### 連絡先を取得する
+この操作では、連絡先フォルダーから連絡先を取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Folder id|Unique identifier of the contacts folder to retrieve|
-|$filter|Filter Query|An ODATA filter query to restrict the entries returned|
-|$orderby|Order By|An ODATA orderBy query for specifying the order of entries|
-|$skip|Skip Count|Number of entries to skip (default = 0)|
-|$top|Maximum Get Count|Maximum number of entries to retrieve (default = 256)|
+|table*|Folder id (フォルダー ID)|取得する連絡先フォルダーの一意識別子|
+|$filter|Filter Query (フィルター クエリ)|返されるエントリを制限する ODATA filter クエリ|
+|$orderby|Order By (並べ替え)|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|Skip Count (スキップ数)|スキップするエントリの数 (既定値 = 0)|
+|$top|Maximum Get Count (最大取得数)|取得するエントリの最大数 (既定値 = 256)|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-ContactList: The list of contacts
+##### 出力の詳細
+ContactList: 連絡先の一覧
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|value|array|List of contacts|
+|値|array|連絡先の一覧|
 
 
-#### <a name="create-contact"></a>Create contact
-This operation creates a new contact in a contacts folder. 
+#### 連絡先を作成する
+この操作では、連絡先フォルダーに連絡先を作成します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Folder id|Select a contacts folder|
-|item*|Item|Contact to create|
+|table*|Folder id (フォルダー ID)|連絡先フォルダーを選択します|
+|item*|項目|作成する連絡先|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-Contact: Contact
+##### 出力の詳細
+連絡先: 連絡先
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|Id|string|The contact's unique identifier.|
-|ParentFolderId|string|The ID of the contact's parent folder|
-|Birthday|string|The contact's birthday.|
-|FileAs|string|The name the contact is filed under.|
-|DisplayName|string|The contact's display name.|
-|GivenName|string|The contact's given name.|
-|Initials|string|The contact's initials.|
-|MiddleName|string|The contact's middle name.|
-|NickName|string|The contact's nickname.|
-|Surname|string|The contact's surname.|
-|Title|string|The contact's title.|
-|Generation|string|The contact's generation.|
-|EmailAddresses|array|The contact's email addresses.|
-|ImAddresses|array|The contact's instant messaging (IM) addresses.|
-|JobTitle|string|The contact's job title.|
-|CompanyName|string|The name of the contact's company.|
-|Department|string|The contact's department.|
-|OfficeLocation|string|The location of the contact's office.|
-|Profession|string|The contact's profession.|
-|BusinessHomePage|string|The business home page of the contact.|
-|AssistantName|string|The name of the contact's assistant.|
-|Manager|string|The name of the contact's manager.|
-|HomePhones|array|The contact's home phone numbers.|
-|BusinessPhones|array|The contact's business phone numbers|
-|MobilePhone1|string|The contact's mobile phone number.|
-|HomeAddress|not defined|The contact's home address.|
-|BusinessAddress|not defined|The contact's business address.|
-|OtherAddress|not defined|Other addresses for the contact.|
-|YomiCompanyName|string|The phonetic Japanese company name of the contact.|
-|YomiGivenName|string|The phonetic Japanese given name (first name) of the contact.|
-|YomiSurname|string|The phonetic Japanese surname (last name) of the contact|
-|Categories|array|The categories associated with the contact.|
-|ChangeKey|string|Identifies the version of the event object|
-|DateTimeCreated|string|The time the contact was created.|
-|DateTimeLastModified|string|The time the contact was modified.|
+|ID|string|連絡先の一意の識別子。|
+|ParentFolderId|string|連絡先の親フォルダーの ID。|
+|Birthday|string|連絡先の誕生日。|
+|FileAs|string|連絡先をファイリングするときに使用する名前。|
+|DisplayName|string|連絡先の表示名。|
+|GivenName|string|連絡先の名。|
+|Initials|string|連絡先の頭文字。|
+|MiddleName|string|連絡先のミドル ネーム。|
+|NickName|string|連絡先のニックネーム。|
+|Surname|string|連絡先の姓。|
+|タイトル|string|連絡先の肩書き。|
+|Generation|string|連絡先の世代。|
+|EmailAddresses|array|連絡先の電子メール アドレス。|
+|ImAddresses|array|連絡先のインスタント メッセージング (IM) アドレス。|
+|JobTitle|string|連絡先の役職。|
+|CompanyName|string|連絡先の会社の名前。|
+|学科|string|連絡先の所属部門。|
+|OfficeLocation|string|連絡先のオフィスの場所。|
+|Profession|string|連絡先の職業。|
+|BusinessHomePage|string|連絡先の会社のホーム ページ。|
+|AssistantName|string|連絡先のアシスタントの名前。|
+|Manager|string|連絡先の上司の名前。|
+|HomePhones|array|連絡先の自宅電話番号。|
+|BusinessPhones|array|連絡先の勤務先電話番号。|
+|MobilePhone1|string|連絡先の携帯電話番号。|
+|HomeAddress|未定義|連絡先の自宅の住所。|
+|BusinessAddress|未定義|連絡先の勤務先の住所。|
+|OtherAddress|未定義|連絡先の他の住所。|
+|YomiCompanyName|string|連絡先の会社名の日本語読み。|
+|YomiGivenName|string|連絡先の名の日本語読み。|
+|YomiSurname|string|連絡先の姓の日本語読み。|
+|カテゴリ|array|連絡先に関連付けられているカテゴリ。|
+|ChangeKey|string|イベント オブジェクトのバージョンを識別します。|
+|DateTimeCreated|string|連絡先が作成された日時。|
+|DateTimeLastModified|string|連絡先が変更された日時。|
 
 
-#### <a name="get-contact"></a>Get contact
-This operation gets a specific contact from a contacts folder. 
+#### 連絡先を取得する
+この操作では、連絡先フォルダーから特定の連絡先を取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Folder id|Select a contacts folder|
-|id*|Item id|Unique identifier of a contact to retrieve|
+|table*|Folder id (フォルダー ID)|連絡先フォルダーを選択します|
+|id*|Item id (項目 ID)|取得する連絡先の一意識別子|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-Contact: Contact
+##### 出力の詳細
+連絡先: 連絡先
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|Id|string|The contact's unique identifier.|
-|ParentFolderId|string|The ID of the contact's parent folder|
-|Birthday|string|The contact's birthday.|
-|FileAs|string|The name the contact is filed under.|
-|DisplayName|string|The contact's display name.|
-|GivenName|string|The contact's given name.|
-|Initials|string|The contact's initials.|
-|MiddleName|string|The contact's middle name.|
-|NickName|string|The contact's nickname.|
-|Surname|string|The contact's surname.|
-|Title|string|The contact's title.|
-|Generation|string|The contact's generation.|
-|EmailAddresses|array|The contact's email addresses.|
-|ImAddresses|array|The contact's instant messaging (IM) addresses.|
-|JobTitle|string|The contact's job title.|
-|CompanyName|string|The name of the contact's company.|
-|Department|string|The contact's department.|
-|OfficeLocation|string|The location of the contact's office.|
-|Profession|string|The contact's profession.|
-|BusinessHomePage|string|The business home page of the contact.|
-|AssistantName|string|The name of the contact's assistant.|
-|Manager|string|The name of the contact's manager.|
-|HomePhones|array|The contact's home phone numbers.|
-|BusinessPhones|array|The contact's business phone numbers|
-|MobilePhone1|string|The contact's mobile phone number.|
-|HomeAddress|not defined|The contact's home address.|
-|BusinessAddress|not defined|The contact's business address.|
-|OtherAddress|not defined|Other addresses for the contact.|
-|YomiCompanyName|string|The phonetic Japanese company name of the contact.|
-|YomiGivenName|string|The phonetic Japanese given name (first name) of the contact.|
-|YomiSurname|string|The phonetic Japanese surname (last name) of the contact|
-|Categories|array|The categories associated with the contact.|
-|ChangeKey|string|Identifies the version of the event object|
-|DateTimeCreated|string|The time the contact was created.|
-|DateTimeLastModified|string|The time the contact was modified.|
+|ID|string|連絡先の一意の識別子。|
+|ParentFolderId|string|連絡先の親フォルダーの ID。|
+|Birthday|string|連絡先の誕生日。|
+|FileAs|string|連絡先をファイリングするときに使用する名前。|
+|DisplayName|string|連絡先の表示名。|
+|GivenName|string|連絡先の名。|
+|Initials|string|連絡先の頭文字。|
+|MiddleName|string|連絡先のミドル ネーム。|
+|NickName|string|連絡先のニックネーム。|
+|Surname|string|連絡先の姓。|
+|タイトル|string|連絡先の肩書き。|
+|Generation|string|連絡先の世代。|
+|EmailAddresses|array|連絡先の電子メール アドレス。|
+|ImAddresses|array|連絡先のインスタント メッセージング (IM) アドレス。|
+|JobTitle|string|連絡先の役職。|
+|CompanyName|string|連絡先の会社の名前。|
+|学科|string|連絡先の所属部門。|
+|OfficeLocation|string|連絡先のオフィスの場所。|
+|Profession|string|連絡先の職業。|
+|BusinessHomePage|string|連絡先の会社のホーム ページ。|
+|AssistantName|string|連絡先のアシスタントの名前。|
+|Manager|string|連絡先の上司の名前。|
+|HomePhones|array|連絡先の自宅電話番号。|
+|BusinessPhones|array|連絡先の勤務先電話番号。|
+|MobilePhone1|string|連絡先の携帯電話番号。|
+|HomeAddress|未定義|連絡先の自宅の住所。|
+|BusinessAddress|未定義|連絡先の勤務先の住所。|
+|OtherAddress|未定義|連絡先の他の住所。|
+|YomiCompanyName|string|連絡先の会社名の日本語読み。|
+|YomiGivenName|string|連絡先の名の日本語読み。|
+|YomiSurname|string|連絡先の姓の日本語読み。|
+|カテゴリ|array|連絡先に関連付けられているカテゴリ。|
+|ChangeKey|string|イベント オブジェクトのバージョンを識別します。|
+|DateTimeCreated|string|連絡先が作成された日時。|
+|DateTimeLastModified|string|連絡先が変更された日時。|
 
 
-#### <a name="delete-contact"></a>Delete contact
-This operation deletes a contact from a contacts folder. 
+#### 連絡先を削除する
+この操作では、連絡先フォルダーから連絡先を削除します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Folder id|Select a contacts folder|
-|id*|Id|Unique identifier of contact to delete|
+|table*|Folder id (フォルダー ID)|連絡先フォルダーを選択します|
+|id*|ID|削除する連絡先の一意識別子|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
 
-#### <a name="update-contact"></a>Update contact
-This operation updates a contact in a contacts folder. 
+#### 連絡先を更新する
+この操作では、連絡先フォルダーの連絡先を更新します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|table*|Folder id|Select a contacts folder|
-|id*|Id|Unique identifier of contact to update|
-|item*|Item|Contact item to update|
+|table*|Folder id (フォルダー ID)|連絡先フォルダーを選択します|
+|id*|ID|更新する連絡先の一意識別子|
+|item*|項目|更新する連絡先項目|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-Contact: Contact
+##### 出力の詳細
+連絡先: 連絡先
 
-| Property Name | Data Type | Description |
+| プロパティ名 | データ型 | 説明 |
 |---|---|---|
-|Id|string|The contact's unique identifier.|
-|ParentFolderId|string|The ID of the contact's parent folder|
-|Birthday|string|The contact's birthday.|
-|FileAs|string|The name the contact is filed under.|
-|DisplayName|string|The contact's display name.|
-|GivenName|string|The contact's given name.|
-|Initials|string|The contact's initials.|
-|MiddleName|string|The contact's middle name.|
-|NickName|string|The contact's nickname.|
-|Surname|string|The contact's surname.|
-|Title|string|The contact's title.|
-|Generation|string|The contact's generation.|
-|EmailAddresses|array|The contact's email addresses.|
-|ImAddresses|array|The contact's instant messaging (IM) addresses.|
-|JobTitle|string|The contact's job title.|
-|CompanyName|string|The name of the contact's company.|
-|Department|string|The contact's department.|
-|OfficeLocation|string|The location of the contact's office.|
-|Profession|string|The contact's profession.|
-|BusinessHomePage|string|The business home page of the contact.|
-|AssistantName|string|The name of the contact's assistant.|
-|Manager|string|The name of the contact's manager.|
-|HomePhones|array|The contact's home phone numbers.|
-|BusinessPhones|array|The contact's business phone numbers|
-|MobilePhone1|string|The contact's mobile phone number.|
-|HomeAddress|not defined|The contact's home address.|
-|BusinessAddress|not defined|The contact's business address.|
-|OtherAddress|not defined|Other addresses for the contact.|
-|YomiCompanyName|string|The phonetic Japanese company name of the contact.|
-|YomiGivenName|string|The phonetic Japanese given name (first name) of the contact.|
-|YomiSurname|string|The phonetic Japanese surname (last name) of the contact|
-|Categories|array|The categories associated with the contact.|
-|ChangeKey|string|Identifies the version of the event object|
-|DateTimeCreated|string|The time the contact was created.|
-|DateTimeLastModified|string|The time the contact was modified.|
+|ID|string|連絡先の一意の識別子。|
+|ParentFolderId|string|連絡先の親フォルダーの ID。|
+|Birthday|string|連絡先の誕生日。|
+|FileAs|string|連絡先をファイリングするときに使用する名前。|
+|DisplayName|string|連絡先の表示名。|
+|GivenName|string|連絡先の名。|
+|Initials|string|連絡先の頭文字。|
+|MiddleName|string|連絡先のミドル ネーム。|
+|NickName|string|連絡先のニックネーム。|
+|Surname|string|連絡先の姓。|
+|タイトル|string|連絡先の肩書き。|
+|Generation|string|連絡先の世代。|
+|EmailAddresses|array|連絡先の電子メール アドレス。|
+|ImAddresses|array|連絡先のインスタント メッセージング (IM) アドレス。|
+|JobTitle|string|連絡先の役職。|
+|CompanyName|string|連絡先の会社の名前。|
+|学科|string|連絡先の所属部門。|
+|OfficeLocation|string|連絡先のオフィスの場所。|
+|Profession|string|連絡先の職業。|
+|BusinessHomePage|string|連絡先の会社のホーム ページ。|
+|AssistantName|string|連絡先のアシスタントの名前。|
+|Manager|string|連絡先の上司の名前。|
+|HomePhones|array|連絡先の自宅電話番号。|
+|BusinessPhones|array|連絡先の勤務先電話番号。|
+|MobilePhone1|string|連絡先の携帯電話番号。|
+|HomeAddress|未定義|連絡先の自宅の住所。|
+|BusinessAddress|未定義|連絡先の勤務先の住所。|
+|OtherAddress|未定義|連絡先の他の住所。|
+|YomiCompanyName|string|連絡先の会社名の日本語読み。|
+|YomiGivenName|string|連絡先の名の日本語読み。|
+|YomiSurname|string|連絡先の姓の日本語読み。|
+|カテゴリ|array|連絡先に関連付けられているカテゴリ。|
+|ChangeKey|string|イベント オブジェクトのバージョンを識別します。|
+|DateTimeCreated|string|連絡先が作成された日時。|
+|DateTimeLastModified|string|連絡先が変更された日時。|
 
 
 
-## <a name="http-responses"></a>HTTP responses
+## HTTP 応答
 
-The actions and triggers above can return one or more of the following HTTP status codes: 
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occurred|
-|default|Operation Failed.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). Explore the other available connectors in Logic Apps at our [APIs list](apis-list.md).
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

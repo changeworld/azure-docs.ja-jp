@@ -1,290 +1,285 @@
 <properties
-    pageTitle="Agile software development with Azure App Service"
-    description="Learn how to create high-scale complex applications with Azure App Service in a way that supports agile software development."
-    services="app-service"
-    documentationCenter=""
-    authors="cephalin"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Azure App Service を使用したアジャイル ソフトウェア開発"
+	description="アジャイル ソフトウェア開発をサポートする方法で Azure App Service を使用して拡張性の高い複雑なアプリケーションを開発する方法について説明します。"
+	services="app-service"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/01/2016"
-    ms.author="cephalin"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/01/2016"
+	ms.author="cephalin"/>
 
 
+# Azure App Service を使用したアジャイル ソフトウェア開発 #
 
-# <a name="agile-software-development-with-azure-app-service"></a>Agile software development with Azure App Service #
+このチュートリアルでは、[アジャイル ソフトウェア開発](https://en.wikipedia.org/wiki/Agile_software_development)をサポートする方法で [Azure App Service](/services/app-service/) を使用して拡張性の高い複雑なアプリケーションを開発する方法について説明します。ここでは、[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)方法を理解していることを前提とします。
 
-In this tutorial, you will learn how to create high-scale complex applications with [Azure App Service](/services/app-service/) in a way that supports [agile software development](https://en.wikipedia.org/wiki/Agile_software_development). It assumes that you already know how to [deploy complex applications predictably in Azure](app-service-deploy-complex-application-predictably.md).
+技術的な処理の限界によって、アジャイル手法を用いた実装の成功が妨げられることはよくあることです。Azure App Service は[継続的パブリッシング](app-service-continuous-deployment.md)、[ステージング環境](web-sites-staged-publishing.md) (スロット)、[監視](web-sites-monitor.md)などの機能を持っており、これらの機能を [Azure リソース マネージャー](../resource-group-overview.md)のデプロイと連携させて賢く統合管理すると、アジャイル ソフトウェア開発に携わる開発者にとって非常に優れたソリューションの一部になることができます。
 
-Limitations in technical processes can often stand in the way of successful implementation of agile methodologies. Azure App Service with features such as [continuous publishing](app-service-continuous-deployment.md), [staging environments](web-sites-staged-publishing.md) (slots), and [monitoring](web-sites-monitor.md), when coupled wisely with the orchestration and management of deployment in [Azure Resource Manager](../resource-group-overview.md), can be part of a great solution for developers who embrace agile software development.
+次の表に、アジャイル開発に関連するいくつかの要件と、Azure サービスが各要件にどのように対応できるかを示します。
 
-The following table is a short list of requirements associated with agile development, and how Azure services enables each of them.
-
-| Requirement | How Azure enables |
+| 要件 | Azure でできること |
 |---------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| - Build with every commit<br>- Build automatically and fast | When configured with continuous deployment, Azure App Service can function as live-running builds based on a dev branch. Every time code is pushed to the branch, it is automatically built and running live in Azure.|
-| - Make builds self-testing | Load tests, web tests, etc., can be deployed with the Azure Resource Manager template.|
-| - Perform tests in a clone of production environment | Azure Resource Manager templates can be used to create clones of the Azure production environment (including app settings, connection string templates, scaling, etc.) for testing quickly and predictably.|
-| - View result of latest build easily | Continuous deployment to Azure from a repository means that you can test new code in a live application immediately after you commit your changes. |
-| - Commit to the main branch every day<br>- Automate deployment | Continuous integration of a production application with a repository’s main branch automatically deploys every commit/merge to the main branch to production. |
+| - コミットするたびにビルドする<br>- 自動的かつ高速にビルドする | 継続的デプロイを行うように構成すると、Azure App Service は、開発ブランチに基づくライブ実行ビルドとして機能できます。コードはブランチにプッシュされるたびに自動的にビルドされ、Azure でライブで実行されます。|
+| - ビルドにセルフ テストを実行させる | Azure リソース マネージャー テンプレートを使用して、負荷テスト、Web テストなどをデプロイできます。|
+| - 運用環境のクローン内でテストを実行する | Azure リソース マネージャー テンプレートを使用して、テストを迅速かつ予想どおりに実行するための (アプリの設定、接続文字列テンプレート、スケーリングなどを含む) Azure 運用環境のクローンを作成できます。|
+| - 最新のビルドの結果を容易に表示する | リポジトリから Azure への継続的デプロイは、新しいコードを、変更をコミットしたすぐ後でライブ アプリケーションでテストできることを意味します。 |
+| - メイン ブランチに毎日コミットする<br>- デプロイを自動化する | 実稼働アプリケーションとリポジトリのメイン ブランチとの継続的インテグレーションによって、すべてのコミット/マージを運用環境のメイン ブランチに自動的にデプロイします。 |
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="what-you-will-do"></a>What you will do ##
+## 学習内容 ##
 
-You will walk through a typical dev-test-stage-production workflow in order to publish new changes to the [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) sample application, which consists of two [web apps](/services/app-service/web/), one being a frontend (FE) and the other being a Web API backend (BE), and a [SQL database](/services/sql-database/). You will work with the deployment architecture shown below:
+新しい変更をアプリケーションに発行するための手順について、開発-テスト-ステージング-実稼働という一般的なワークフローに沿って説明を進めていきます。ここで使用するサンプル アプリケーションは [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) という名前であり、2 つの [Web アプリ](/services/app-service/web/) (フロントエンド (FE) と Web API バックエンド (BE)) と [SQL Database](/services/sql-database/) で構成されます。次に示すデプロイ アーキテクチャで作業します。
 
 ![](./media/app-service-agile-software-development/what-1-architecture.png)
 
-To put the picture into words :
+図の説明は次のとおりです。
 
--   The deployment architecture is separated into three distinct environments (or [resource groups](../resource-group-overview.md) in Azure), each with its own [App Service plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), [scaling](web-sites-scale.md) settings, and SQL database. 
--   Each environment can be managed separately. They can even exist in different subscriptions.
--   Staging and production are implemented as two slots of the same App Service app. The master branch is setup for continuous integration with the staging slot.
--   When a commit to master branch is verified on the staging slot (with production data), the verified staging app is swapped into the production slot [with no downtime](web-sites-staged-publishing.md).
+-	デプロイ アーキテクチャは 3 つの個別の環境 (Azure では[リソース グループ](../resource-group-overview.md)と言います) に分割され、それぞれに独自の[App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)、[スケーリング](web-sites-scale.md)設定、および SQL Database があります。
+-	各環境は別々に管理できます。異なるサブスクリプションで存在することもできます。
+-	ステージングと実稼働は、同じ App Service アプリの 2 つのスロットとして実装されます。マスター ブランチは、ステージング スロットとの継続的インテグレーションを行うようにセットアップされます。
+-	マスター ブランチへのコミットが (実稼働データを使用して) ステージング スロットで検証されると、検証されたステージング アプリは、[ダウンタイムなしで](web-sites-staged-publishing.md)実稼働スロットにスワップされます。
 
-The production and staging environment is defined by the template at [*&lt;repository_root>*/ARMTemplates/ProdandStage.json](https://github.com/azure-appservice-samples/ToDoApp/blob/master/ARMTemplates/ProdAndStage.json).
+ステージング/運用環境は、[*&lt;repository\_root>*/ARMTemplates/ProdandStage.json](https://github.com/azure-appservice-samples/ToDoApp/blob/master/ARMTemplates/ProdAndStage.json) テンプレートによって定義されます。
 
-The dev and test environments are defined by the template at [*&lt;repository_root>*/ARMTemplates/Dev.json](https://github.com/azure-appservice-samples/ToDoApp/blob/master/ARMTemplates/Dev.json).
+開発環境とテスト環境は、[*&lt;repository\_root>*/ARMTemplates/Dev.json](https://github.com/azure-appservice-samples/ToDoApp/blob/master/ARMTemplates/Dev.json) テンプレートによって定義されます。
 
-You will also use the typical branching strategy, with code moving from the dev branch up to the test branch, then to the master branch (moving up in quality, so to speak).
+一般的なブランチ戦略を使用して、コードを開発ブランチからテスト ブランチに移動した後、マスター ブランチに移動させることもできます (いわば品質の上方移動)。
 
-![](./media/app-service-agile-software-development/what-2-branches.png) 
+![](./media/app-service-agile-software-development/what-2-branches.png)
 
-## <a name="what-you-will-need"></a>What you will need ##
+## 前提条件 ##
 
--   An Azure account
--   A [GitHub](https://github.com/) account
--   Git Shell (installed with [GitHub for Windows](https://windows.github.com/)) - this enables you to run both the Git and PowerShell commands in the same session 
--   Latest [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/0.9.4-June2015/azure-powershell.0.9.4.msi) bits
--   Basic understanding of the following:
-    -   [Azure Resource Manager](../resource-group-overview.md) template deployment (also see [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md))
-    -   [Git](http://git-scm.com/documentation)
-    -   [PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
+-	Azure アカウント
+-	[GitHub](https://github.com/) アカウント
+-	Git Shell ([GitHub for Windows](https://windows.github.com/) とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。
+-	最新の [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/0.9.4-June2015/azure-powershell.0.9.4.msi) ビット
+-	以下の事柄の基礎知識:
+	-	[Azure リソース マネージャー ](../resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」も参照してください)
+	-	[Git](http://git-scm.com/documentation)
+	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
-> [AZURE.NOTE] You need an Azure account to complete this tutorial:
-> + You can [open an Azure account for free](/pricing/free-trial/) - You get credits you can use to try out paid Azure services, and even after they're used up you can keep the account and use free Azure services, such as Web Apps.
-> + You can [activate Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/) - Your Visual Studio subscription gives you credits every month that you can use for paid Azure services.
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
+> + [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web Apps など無料の Azure サービスをご利用になれます。
+> + [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 >
-> If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="set-up-your-production-environment"></a>Set up your production environment ##
+## 運用環境をセットアップする ##
 
->[AZURE.NOTE] The script used in this tutorial will automatically configure continuous publishing from your GitHub repository. This requires that your GitHub credentials are already stored in Azure, otherwise the scripted deployment will fail when attempting to configure source control settings for the web apps. 
+>[AZURE.NOTE] このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
->To store your GitHub credentials in Azure, create a web app in the [Azure Portal](https://portal.azure.com/) and [configure GitHub deployment](app-service-continuous-deployment.md). You only need to do this once. 
+>GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com/)で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md)します。この操作を行うのは 1 回だけです。
 
-In a typical DevOps scenario, you have an application that’s running live in Azure, and you want to make changes to it through continuous publishing. In this scenario, you have a template that you developed, tested, and used to deploy the production environment. You will set it up in this section.
+一般的な DevOps シナリオでは、Azure でライブ実行されているアプリケーションがあり、継続的パブリッシングを通してそれを変更します。このシナリオには、開発、テスト、および運用環境にデプロイするために使用するテンプレートがあります。このセクションで、それを設定します。
 
-1.  Create your own fork of the [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) repository. For information on creating your fork, see [Fork a Repo](https://help.github.com/articles/fork-a-repo/). Once your fork is created, you can see it in your browser.
+1.	[ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) リポジトリの自分専用のフォークを作成します。フォークの作成の詳細については、「[リポジトリをフォークする](https://help.github.com/articles/fork-a-repo/)」を参照してください。フォークが作成されたら、ブラウザーでそれを確認できます。
  
-    ![](./media/app-service-agile-software-development/production-1-private-repo.png)
+	![](./media/app-service-agile-software-development/production-1-private-repo.png)
 
-2.  Open a Git Shell session. If you don't have Git Shell yet, install [GitHub for Windows](https://windows.github.com/) now.
+2.	Git Shell セッションを開きます。Git Shell をまだ持っていない場合は、この時点で [GitHub for Windows](https://windows.github.com/) をインストールします。
 
-3.  Create a local clone of your fork by executing the following command:
+3.	次のコマンドを実行して、フォークのローカル クローンを作成します。
 
-        git clone https://github.com/<your_fork>/ToDoApp.git 
+		git clone https://github.com/<your_fork>/ToDoApp.git 
 
-4.  Once you have your local clone, navigate to *&lt;repository_root>*\ARMTemplates, and run the deploy.ps1 script as follows:
+4.	ローカル クローンを作成したら、*&lt;repository\_root>*\\ARMTemplates に移動し、次のように deploy.ps1 スクリプトを実行します。
 
-        .\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git
+		.\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git
 
-4.  When prompted, type in the desired username and password for database access.
+4.	メッセージが表示されたら、データベースにアクセスするためのユーザー名とパスワードを入力します。
 
-    You should see the provisioning progress of various Azure resources. When deployment completes, the script will launch the application in the browser and give you a friendly beep.
+	Azure のさまざまなリソースのプロビジョニングの進行状況が表示されます。デプロイが完了すると、スクリプトによってアプリケーションがブラウザー内に起動し、わかりやすいビープ音が鳴ります。
 
-    ![](./media/app-service-agile-software-development/production-2-app-in-browser.png)
+	![](./media/app-service-agile-software-development/production-2-app-in-browser.png)
  
-    >[AZURE.TIP] Take a look at *&lt;repository_root>*\ARMTemplates\Deploy.ps1, to see how it generates resources with unique IDs. You can use the same approach to create clones of the same deployment without worrying about conflicting resource names.
+	>[AZURE.TIP] *&lt;repository\_root>*\\ARMTemplates\\Deploy.ps1 を見て、どのような方法でリソースが一意の ID で生成されるかを確認してください。同じ方法で、同じデプロイのクローンを、リソース名の競合を心配せずに作成できます。
  
-6.  Back in your Git Shell session, run:
+6.	Git Shell セッションに戻り、次を実行します。
 
-        .\swap –Name ToDoApp<unique_string>master
+		.\swap –Name ToDoApp<unique_string>master
 
-    ![](./media/app-service-agile-software-development/production-4-swap.png)
+	![](./media/app-service-agile-software-development/production-4-swap.png)
 
-7.  When the script finishes, go back to browse to the frontend’s address (http://ToDoApp*&lt;unique_string>*master.azurewebsites.net/) to see the application running in production.
+7.	スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;unique_string>*master.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
  
-5.  Log into the [Azure Portal](https://portal.azure.com/) and take a look at what’s created.
+5.	[Azure ポータル](https://portal.azure.com/)にログインして、何が作成されたかを調べます。
 
-    You should be able to see two web apps in the same resource group, one with the `Api` suffix in the name. If you look at the resource group view, you will also see the SQL Database and server, the App Service plan, and the staging slots for the web apps. Browse through the different resources and compare them with *&lt;repository_root>*\ARMTemplates\ProdAndStage.json to see how they are configured in the template.
+	同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api`サフィックスが付いていることを確認できます。リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。さまざまなリソースを参照し、それらを *&lt;repository\_root>*\\ARMTemplates\\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
-    ![](./media/app-service-agile-software-development/production-3-resource-group-view.png)
+	![](./media/app-service-agile-software-development/production-3-resource-group-view.png)
 
-You have now set up the production environment. Next, you will kick off a new update to the application.
+これで、運用環境がセットアップされました。次に、アプリケーションの新しい更新を開始します。
 
-## <a name="create-dev-and-test-branches"></a>Create dev and test branches ##
+## 開発ブランチとテスト ブランチを作成する ##
 
-Now that you have a complex application running in production in Azure, you will make an update to your application in accordance with agile methodology. In this section, you will create the dev and test branches that you will need to make the required updates.
+Azure の運用環境で実行されている複雑なアプリケーションがあり、アジャイル手法に従ってアプリケーションを更新します。このセクションでは、更新を行うために必要な開発ブランチとテスト ブランチを作成します。
 
-1.  Create the test environment first. In your Git Shell session, run the following commands to create the environment for a new branch called **NewUpdate**. 
+1.	最初に、テスト環境を作成します。Git Shell セッションで次のコマンドを実行して、**NewUpdate** という名前の新しいブランチ用の環境を作成します。
 
-        git checkout -b NewUpdate
-        git push origin NewUpdate 
-        .\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<your_fork>/ToDoApp.git -Branch NewUpdate
+		git checkout -b NewUpdate
+		git push origin NewUpdate 
+		.\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<your_fork>/ToDoApp.git -Branch NewUpdate
 
-1.  When prompted, type in the desired username and password for database access. 
+1.	メッセージが表示されたら、データベースにアクセスするためのユーザー名とパスワードを入力します。
 
-    When deployment completes, the script will launch the application in the browser and give you a friendly beep. And just like that, you now have a new branch with its own test environment. Take a moment to review a few things about this test environment:
+	デプロイが完了すると、スクリプトによってアプリケーションがブラウザー内に起動し、わかりやすいビープ音が鳴ります。これで、新しいブランチと、専用のテスト環境が用意されました。このテスト環境について、いくつかの事柄を再確認しておきます。
 
-    -   You can create it in any Azure subscription. That means the production environment can be managed separately from your test environment.
-    -   Your test environment is running live in Azure.
-    -   Your test environment is identical to the production environment, except for the staging slots and the scaling settings. You can know this because these are the only differences between ProdandStage.json and Dev.json.
-    -   You can manage your test environment in its own App Service plan, with a different price tier (such as **Free**).
-    -   Deleting this test environment will be as simple as deleting the resource group. You will find out how to do this [later](#delete).
+	-	任意の Azure サブスクリプションで作成できます。これは、運用環境をテスト環境から切り離して管理できることを意味します。
+	-	テスト環境は Azure でライブ実行されます。
+	-	テスト環境は運用環境と同じですが、ステージング スロットとスケーリング設定は異なります。ProdandStage.json と Dev.json の違いはこれだけであるため、どちらの環境であるかをこれによって判断できます。
+	-	テスト環境は、価格レベルが異なる独自の App Service プラン (**無料**など) で管理できます。
+	-	このテスト環境の削除は、リソース グループの削除と同じように容易に実行できます。これを行う方法については、[後で](#delete)説明します。
 
-2.  Go on to create a dev branch by running the following commands:
+2.	次のコマンドを実行して、開発ブランチの作成に進みます。
 
-        git checkout -b Dev
-        git push origin Dev
-        .\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<your_fork>/ToDoApp.git -Branch Dev
+		git checkout -b Dev
+		git push origin Dev
+		.\deploy.ps1 -TemplateFile .\Dev.json -RepoUrl https://github.com/<your_fork>/ToDoApp.git -Branch Dev
 
-3.  When prompted, type in the desired username and password for database access. 
+3.	メッセージが表示されたら、データベースにアクセスするためのユーザー名とパスワードを入力します。
 
-    Take a moment to review a few things about this dev environment: 
+	この開発環境について、いくつかの事柄を再確認しておきます。
 
-    -   Your dev environment has a configuration identical to the test environment because it’s deployed using the same template.
-    -   Each dev environment can be created in the developer’s own Azure subscription, leaving the test environment to be separately managed.
-    -   Your dev environment is running live in Azure.
-    -   Deleting the dev environment is as simple as deleting the resource group. You will find out how to do this [later](#delete).
+	-	開発環境はテスト環境と同じテンプレートを使用してデプロイされるため、その構成はテスト環境と同じです。
+	-	開発環境は開発者自身の Azure サブスクリプションで作成でき、テスト環境とは別に管理されます。
+	-	開発環境は、Azure でライブ実行されます。
+	-	開発環境の削除は、リソース グループの削除と同じように容易に実行できます。これを行う方法については、[後で](#delete)説明します。
 
->[AZURE.NOTE] When you have multiple developers working on the new update, each of them can easily create a branch and dedicated dev environment by doing the following:
+>[AZURE.NOTE] 複数の開発者が新しい更新のために作業する場合、各開発者は、次の手順を実行することで、ブランチと専用の開発環境を簡単に作成できます。
 >
->1. Create their own fork of the repository in GitHub (see [Fork a Repo](https://help.github.com/articles/fork-a-repo/)).
->2. Clone the fork on their local machine
->3. Run the same commands to create their own dev branch and environment.
+>1.	GitHub でリポジトリの自分専用のフォークを作成します (「[リポジトリをフォークする](https://help.github.com/articles/fork-a-repo/)」を参照してください)。
+>2.	ローカル コンピューターにフォークのクローンを作成します。
+>3.	自分専用の開発ブランチと環境を作成するためのコマンドを実行します。
 
-When you’re done, your GitHub fork should have three branches:
+操作が完了すると、GitHub フォークには 3 つのブランチが存在します。
 
 ![](./media/app-service-agile-software-development/test-1-github-view.png)
 
-And you should have six web apps (three sets of two) in three separate resource groups:
+さらに、3 つの別々のリソース グループに 6 つの Web アプリケーション (2 つで 1 セットが 3 セット) が存在します。
 
 ![](./media/app-service-agile-software-development/test-2-all-webapps.png)
  
->[AZURE.NOTE] Note that ProdandStage.json specifies the production environment to use the **Standard** pricing tier, which is appropriate for scalability of the production application.
+>[AZURE.NOTE] ProdandStage.json では、運用環境を**標準**価格レベルで使用することを指定しています。これは実稼働アプリケーションのスケーラビリティに適しています。
 
-## <a name="build-and-test-every-commit"></a>Build and test every commit ##
+## すべてのコミットをビルドしてテストする ##
 
-The template files ProdAndStage.json and Dev.json already specify the source control parameters, which by default sets up continuous publishing for the web app. Therefore, every commit to the GitHub branch triggers an automatic deployment to Azure from that branch. Let’s see how your setup works now.
+ProdAndStage.json テンプレート ファイルと Dev.json テンプレート ファイルには既にソース管理パラメーターが指定されており、既定で Web アプリの継続的パブリッシングが設定されています。したがって、GitHub ブランチに対するすべてのコミットは、そのブランチから Azure への自動デプロイをトリガーします。ここで、このセットアップがどのようには機能するかを見ていきましょう。
 
-1.  Make sure that you’re in the Dev branch of the local repository. To do this, run the following command in Git Shell:
+1.	ローカル リポジトリの開発ブランチにいることを確認します。これを行うには、Git Shell で次のコマンドを実行します。
 
-        git checkout Dev
+		git checkout Dev
 
-2.  Make a simple change to the app’s UI layer by changing the code to use [Bootstrap](http://getbootstrap.com/components/) lists. Open *&lt;repository_root>*\src\MultiChannelToDo.Web\index.cshtml and make the highlighted change below:
+2.	[ブートストラップ](http://getbootstrap.com/components/) リストを使用するようにコードを変更することで、アプリの UI レイヤーに簡単な変更を加えます。*&lt;repository\_root>*\\src\\MultiChannelToDo.Web\\index.cshtml を開き、次の図で強調表示されているように変更します。
 
-    ![](./media/app-service-agile-software-development/commit-1-changes.png)
+	![](./media/app-service-agile-software-development/commit-1-changes.png)
 
-    >[AZURE.NOTE] If you can't read the image above: 
-    >
-    >- In line 18, change `check-list` to `list-group`.
-    >- In line 19, change `class="check-list-item"` to `class="list-group-item"`.
+	>[AZURE.NOTE] 上の図が読み取れない場合:
+	>
+	>- 行 18 で、`check-list` を `list-group` に変更します。
+	>- 行 19 で、`class="check-list-item"` を `class="list-group-item"` に変更します。
 
-3.  Save the change. Back in Git Shell, run the following commands:
+3.	変更を保存します。Git Shell に戻り、次のコマンドを実行します。
 
-        cd <repository_root>
-        git add .
-        git commit -m "changed to bootstrap style"
-        git push origin Dev
+		cd <repository_root>
+		git add .
+		git commit -m "changed to bootstrap style"
+		git push origin Dev
  
-    These git commands are similar to "checking in your code" in another source control system like TFS. When you run `git push`, the new commit triggers an automatic code push to Azure, which then rebuilds the application to reflect the change in the dev environment.
+	これらの Git コマンドは、TFS などの別のソース管理システムでの "コードのチェックイン" に似ています。`git push` を実行すると、新しいコミットによって Azure への自動コード プッシュがトリガーされ、開発環境で変更を反映するようにアプリケーションがリビルドされます。
 
-4.  To verify that this code push to your dev environment has occurred, go to your dev environment’s web app blade and look at the **Deployment** part. You should be able to see your latest commit message there.
+4.	開発環境に対するこのコード プッシュが発生したことを確認するには、開発環境の Wb アプリ ブレードに移動し、**[デプロイ]** 部分を調べます。最新のコミット メッセージを確認できます。
 
-    ![](./media/app-service-agile-software-development/commit-2-deployed.png)
+	![](./media/app-service-agile-software-development/commit-2-deployed.png)
 
-5.  From there, click **Browse** to see the new change in the live application in Azure.
+5.	そこから、**[参照]** をクリックして、Azure で実行されているライブ アプリケーションの新しい変更を確認します。
 
-    ![](./media/app-service-agile-software-development/commit-3-webapp-in-browser.png)
+	![](./media/app-service-agile-software-development/commit-3-webapp-in-browser.png)
 
-    This is a pretty minor change to the application. However, many times new changes to a complex web application has unintended and undesirable side effects. Being able to easily test every commit in live builds enables you to catch these issues before your customers see them.
+	これは、アプリケーションに対する非常に小さな変更です。ただし、複雑な Web アプリケーションに対する新しい変更によって、意図的でない、望ましくない副作用が発生することがあります。ライブ ビルドでのすべてのコミットを簡単にテストできることで、問題を顧客が目にする前に捕まえることができます。
 
-By now, you should be comfortable with the realization that, as a developer on the **NewUpdate** project, you will be able to easily create a dev environment for yourself, then build every commit and test every build.
+ここまでの説明で、**NewUpdate** プロジェクトの開発者として、自分用の開発環境の作成、すべてのコミットのビルド、およびすべてのコミットのテストを容易に実行できることを十分に理解できたはずです。
 
-## <a name="merge-code-into-test-environment"></a>Merge code into test environment ##
+## テスト環境にコードをマージする ##
 
-When you’re ready to push your code from Dev branch up to NewUpdate branch, it’s the standard git process:
+コードを開発ブランチから NewUpdate ブランチにプッシュする準備ができたら、次の標準的な Git プロセスを実行します。
 
-1.  Merge any new commits to NewUpdate into the Dev branch in GitHub, such as commits created by other developers. Any new commit on GitHub will trigger a code push and build in the dev environment. You can then make sure your code in Dev branch still works with the latest bits from NewUpdate branch.
+1.	NewUpdate に対するすべての新しいコミット (他の開発者によって作成されたコミットなど) を、GitHub の開発ブランチにマージします。GitHub での新しいコミットによってコード プッシュがトリガーされ、開発環境でビルドされます。その後、開発ブランチのコードが NewUpdate ブランチからの最新のビットで引き続き動作することを確認できます。
 
-2.  Merge all your new commits from Dev branch into NewUpdate branch on GitHub. This action triggers a code push and build in the test environment. 
+2.	開発ブランチからのすべての新しいコミットを GitHub の NewUpdate ブランチにマージします。この操作によって、コード プッシュとテスト環境でのビルドがトリガーされます。
 
-Note again that because continuous deployment is already setup with these git branches, you don’t need to take any other action like running integration builds. You simply need to perform standard source control practices using git, and Azure will perform all the build processes for you.
+ここでも、これらの Git ブランチには継続的デプロイが既に設定されているため、インテグレーション ビルドの実行と同じように、それ以外の操作を行う必要はないことに注意してください。実行する必要があるのは、Git を使用した標準的なソース管理プラクティスだけであり、すべてのビルド プロセスは Azure が代わりに実行します。
 
-Now, let’s push your code to **NewUpdate** branch. In Git Shell, run the following commands:
+次に、コードを **NewUpdate** ブランチにプッシュします。Git Shell で、次のコマンドを実行します。
 
-    git checkout NewUpdate
-    git pull origin NewUpdate
-    git merge Dev
-    git push origin NewUpdate
+	git checkout NewUpdate
+	git pull origin NewUpdate
+	git merge Dev
+	git push origin NewUpdate
 
-That’s it! 
+これで終了です。
 
-Go to the web app blade for your test environment to see your new commit (merged into NewUpdate branch) now pushed to the test environment. Then, click **Browse** to see that the style change is now running live in Azure.
+テスト環境の Web アプリ ブレードに移動し、(NewUpdate ブランチにマージされた) 新しいコミットがテスト環境にプッシュされたことを確認します。次に、**[参照]** をクリックし、スタイルの変更が Azure でライブ実行されていることを確認します。
 
-## <a name="deploy-update-to-production"></a>Deploy update to production ##
+## 運用環境に更新をデプロイする ##
 
-Pushing code to the staging and production environment should feel no different than what you’ve already done when you pushed code to the test environment. It's really that simple. 
+ステージング/運用環境にコードをプッシュする操作は、テスト環境にコードをプッシュするときに実行した操作と違いはありません。それは非常に単純です。
 
-In Git Shell, run the following commands:
+Git Shell で、次のコマンドを実行します。
 
-    git checkout master
-    git pull origin master
-    git merge NewUpdate
-    git push origin master
+	git checkout master
+	git pull origin master
+	git merge NewUpdate
+	git push origin master
 
-Remember that based on the way the staging and production environment is setup in ProdandStage.json, your new code is pushed to the **Staging** slot and is running there. So if you navigate to the staging slot’s URL, you’ll see the new code running there. To do this, run the `Show-AzureWebsite` cmdlet in Git Shell.
+新しいコードは、ProdandStage.json 内のステージング/運用環境のセットアップ方法に基づいて、**ステージング** スロットにプッシュされ、そこで実行されます。したがって、ステージング スロットの URL に移動すると、新しいコードがそこで実行されていることがわかります。これを行うには、Git Shell で `Show-AzureWebsite` コマンドレットを実行します。
 
-    Show-AzureWebsite -Name ToDoApp<unique_string>master -Slot Staging
+	Show-AzureWebsite -Name ToDoApp<unique_string>master -Slot Staging
  
-And now, after you’ve verified the update in the staging slot, the only thing left to do is to swap it into production. In Git Shell, just run the following commands:
+ステージング スロットで更新を確認した後、残っている唯一の操作は、それを運用環境にスワップすることです。Git Shellで、次のコマンドを実行します。
 
-    cd <repository_root>\ARMTemplates
-    .\swap.ps1 -Name ToDoApp<unique_string>master
+	cd <repository_root>\ARMTemplates
+	.\swap.ps1 -Name ToDoApp<unique_string>master
 
-Congratulations! You’ve successfully published a new update to your production web application. What’s more is that you’ve just done it by easily creating dev and test environments, and building and testing every commit. These are crucial building blocks for agile software development.
+ご利用ありがとうございます。 新しい更新が実稼働している Web アプリケーションに正常にパブリッシュされました。これは、開発環境とテスト環境の作成、およびすべてのコミットのビルドとテストを容易に実行した結果です。これらは、アジャイル ソフトウェア開発の重要な構成要素です。
 
 <a name="delete"></a>
-## <a name="delete-dev-and-test-enviroments"></a>Delete dev and test enviroments ##
+## 開発環境とテスト環境を削除する ##
 
-Because you have purposely architected your dev and test environments to be self-contained resource groups, it is very easy to delete them. To delete the ones you created in this tutorial, both the GitHub branches and Azure artifacts, just run the following commands in Git Shell:
+開発環境とテスト環境は意図的に自己完結型リソース グループとして構築したため、それらは非常に簡単に削除できます。このチュートリアルで作成した、GitHub のブランチと Azure アーチファクトの両方を削除するには、Git Shell で次のコマンドを実行するだけですみます。
 
-    git branch -d Dev
-    git push origin :Dev
-    git branch -d NewUpdate
-    git push origin :NewUpdate
-    Remove-AzureRmResourceGroup -Name ToDoApp<unique_string>dev-group -Force -Verbose
-    Remove-AzureRmResourceGroup -Name ToDoApp<unique_string>newupdate-group -Force -Verbose
+	git branch -d Dev
+	git push origin :Dev
+	git branch -d NewUpdate
+	git push origin :NewUpdate
+	Remove-AzureRmResourceGroup -Name ToDoApp<unique_string>dev-group -Force -Verbose
+	Remove-AzureRmResourceGroup -Name ToDoApp<unique_string>newupdate-group -Force -Verbose
 
-## <a name="summary"></a>Summary ##
+## 概要 ##
 
-Agile software development is a must-have for many companies who want to adopt Azure as their application platform. In this tutorial, you have learned how to create and tear down exact replicas or near replicas of the production environment with ease, even for complex applications. You have also learned how to leverage this ability to create a development process that can build and test every single commit in Azure. This tutorial has hopefully shown you how you can best use Azure App Service and Azure Resource Manager together to create a DevOps solution that caters to agile methodologies. Next, you can build on this scenario by performing advanced DevOps techniques such as [testing in production](app-service-web-test-in-production-get-start.md). For a common testing-in-production scenario, see [Flighting deployment (beta testing) in Azure App Service](app-service-web-test-in-production-controlled-test-flight.md).
+アジャイル ソフトウェア開発は、アプリケーション プラットフォームとして Azure を採用することを希望する多くの企業になくてはならないものです。このチュートリアルでは、運用環境の完全なまたは完全に近いレプリカの作成と削除を容易に実行する方法について説明しました。これは複雑なアプリケーションでも同じです。すべてのコミットを Azure でビルドして構築できる開発プロセス作成機能を活用する方法についても説明しました。このチュートリアルが、Azure App Service と Azure リソース マネージャーを最大限に利用して、アジャイル手法に対応する DevOps ソリューションを作成する方法の十分な説明になっていれば幸いです。次に、このシナリオを基にしてビルドするには、[運用環境でのテスト](app-service-web-test-in-production-get-start.md)などの高度な DevOps テクニックを実行します。一般的な運用環境でのテスト シナリオについては、「[Azure App Service でのフライト デプロイメント (ベータ テスト)](app-service-web-test-in-production-controlled-test-flight.md)」を参照してください。
 
-## <a name="more-resources"></a>More resources ##
+## その他のリソース ##
 
--   [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md)
--   [Agile Development in Practice: Tips and Tricks for Modernized Development Cycle](http://channel9.msdn.com/Events/Ignite/2015/BRK3707)
--   [Advanced deployment strategies for Azure Web Apps using Resource Manager templates](http://channel9.msdn.com/Events/Build/2015/2-620)
--   [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md)
--   [JSONLint - The JSON Validator](http://jsonlint.com/)
--   [ARMClient – Set up GitHub publishing to site](https://github.com/projectKudu/ARMClient/wiki/Setup-GitHub-publishing-to-Site)
--   [Git Branching – Basic Branching and Merging](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
--   [David Ebbo’s Blog](http://blog.davidebbo.com/)
--   [Azure PowerShell](../powershell-install-configure.md)
--   [Azure Cross-Platform Command-Line Tools](../xplat-cli-install.md)
--   [Create or edit users in Azure AD](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
--   [Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
+-	[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
+-	[Agile Development in Practice: Tips and Tricks for Modernized Development Cycle (アジャイル開発の実践: 最新の開発サイクルのためのヒント)](http://channel9.msdn.com/Events/Ignite/2015/BRK3707)
+-	[Advanced deployment strategies for Azure Web Apps using Resource Manager templates (Resource Manager テンプレートを使用した Azure Web Apps 向けの高度なデプロイ戦略)](http://channel9.msdn.com/Events/Build/2015/2-620)
+-	[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
+-	[JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
+-	[ARMClient – サイトへの GitHub のパブリッシュの設定に関するページ](https://github.com/projectKudu/ARMClient/wiki/Setup-GitHub-publishing-to-Site)
+-	[Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+-	[David Ebbo のブログ](http://blog.davidebbo.com/)
+-	[Azure PowerShell](../powershell-install-configure.md)
+-	[Azure クロスプラットフォーム コマンド ライン ツール](../xplat-cli-install.md)
+-	[Azure AD でのユーザーの作成または編集](https://msdn.microsoft.com/library/azure/hh967632.aspx#BKMK_1)
+-	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

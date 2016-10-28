@@ -1,206 +1,205 @@
 <properties 
-    pageTitle="Create a Hello World Web App for Azure in Eclipse" 
-    description="This tutorial shows you how to use the Azure Toolkit for Eclipse to create a Hello World Web App for Azure." 
-    services="app-service\web" 
-    documentationCenter="java" 
-    authors="rmcmurray" 
-    manager="wpickett" 
-    editor=""/>
+	pageTitle="Eclipse で Azure 用の Hello World Web アプリを作成する" 
+	description="このチュートリアルでは、Azure Toolkit for Eclipse を使用して、Azure 用の Hello World Web アプリを作成する方法について説明します。" 
+	services="app-service\web" 
+	documentationCenter="java" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor=""/>
 
 <tags 
-    ms.service="app-service-web" 
-    ms.workload="web" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="Java" 
-    ms.topic="article" 
-    ms.date="08/11/2016" 
-    ms.author="robmcm"/>
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="08/11/2016" 
+	ms.author="robmcm"/>
 
+# Eclipse で Azure 用の Hello World Web アプリを作成する
 
-# <a name="create-a-hello-world-web-app-for-azure-in-eclipse"></a>Create a Hello World Web App for Azure in Eclipse
+このチュートリアルでは、[Azure Toolkit for Eclipse] を使用して、Web アプリとして基本的な Hello World アプリケーションを作成し、Azure にデプロイする方法について説明します。簡潔にするために JSP の例を紹介していますが、Azure のデプロイに関する限り、基本的な Java サーブレットの場合も手順はほぼ同じです。
 
-This tutorial shows how to create and deploy a basic Hello World application to Azure as a Web App by using the [Azure Toolkit for Eclipse]. A basic JSP example is shown for simplicity, but highly similar steps would be appropriate for a Java servlet, as far as Azure deployment is concerned.
-
-When you have completed this tutorial, your application will look similar to the following illustration when you view it in a web browser:
+このチュートリアルを完了し、作成したアプリケーションを Web ブラウザーで開くと、次の図のようになります。
 
 ![][01]
  
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-* A Java Developer Kit (JDK), v 1.7 or later.
-* Eclipse IDE for Java EE Developers, Indigo or later. This can be downloaded from <http://www.eclipse.org/downloads/>.
-* A distribution of a Java-based web server or application server, such as Apache Tomcat or Jetty.
-* An Azure subscription, which can be acquired from <https://azure.microsoft.com/en-us/free/> or <http://azure.microsoft.com/pricing/purchase-options/>.
-* The Azure Toolkit for Eclipse. For more information, see [Installing the Azure Toolkit for Eclipse].
+* A Java Developer Kit (JDK) v 1.7 以降。
+* Eclipse IDE for Java EE Developers Indigo 以降。<http://www.eclipse.org/downloads/> からダウンロードできます。
+* Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、Jetty など)。
+* Azure サブスクリプション。<https://azure.microsoft.com/free/> または <http://azure.microsoft.com/pricing/purchase-options/> から入手できます。
+* Azure Toolkit for Eclipse。詳細については、「[Azure Toolkit for Eclipse のインストール]」を参照してください。
 
-## <a name="to-create-a-hello-world-application"></a>To Create a Hello World Application
+## Hello World アプリケーションを作成するには
 
-First, we'll start off with creating a Java project.
+最初に、Java プロジェクトを作成します。
 
-1. Start Eclipse, and at the menu click **File**, click **New**, and then click **Dynamic Web Project**. (If you don't see **Dynamic Web Project** listed as an available project after clicking **File** and **New**, then do the following: click **File**, click **New**, click **Project...**, expand **Web**, click **Dynamic Web Project**, and click **Next**.)
+1. Eclipse を起動し、メニューから **[File]** (ファイル) 、**[New]** (新規)、**[Dynamic Web Project]** (Dynamic Web Project) の順にクリックします(**[File]** (ファイル) と **[New]** (新規) のクリック後、使用可能なプロジェクトとして **[Dynamic Web Project]** (Dynamic Web Project) が表示されない場合は、**[File]** (ファイル)、**[New]** (新規)、**[Project]** (プロジェクト) の順にクリックし、**[Web]** を展開して、**[Dynamic Web Project]** (Dynamic Web Project) 、**[Next]** (次へ) の順にクリックします)。
 
-1. For purposes of this tutorial, name the project **MyHelloWorld**. Your screen will appear similar to the following:
+1. このチュートリアルでは、プロジェクトに **MyHelloWorld** という名前を付けます画面は次のようになります。
 
     ![][02]
 
-1. Click **Finish**.
+1. **[完了]** をクリックします。
 
-1. Within Eclipse's Project Explorer view, expand **MyHelloWorld**. Right-click **WebContent**, click **New**, and then click **JSP File**.
+1. Eclipse の Project Explorer ビューで、**MyHelloWorld** を展開します。**WebContent** を右クリックし、**[New]**、**[JSP File]** の順にクリックします。
 
-1. In the **New JSP File** dialog box, name the file **index.jsp**. Keep the parent folder as **MyHelloWorld/WebContent**.
+1. **[New JSP File]** ダイアログ ボックスで、ファイルに **index.jsp** という名前を付けます。親フォルダーは **MyHelloWorld/WebContent** のまま維持します。
 
-1. In the **Select JSP Template** dialog box, for purposes of this tutorial select **New JSP File (html)**, and then click **Finish**.
+1. **[Select JSP Template (JSP テンプレートの選択)]** ダイアログ ボックスで、このチュートリアルのために **[New JSP File (html) (新しい JSP ファイル (html))]** を選択し、**[Finish (完了)]** をクリックします。
 
-1. When your index.jsp file opens in Eclipse, add in text to dynamically display **Hello World!** within the existing `<body>` element. Your updated `<body>` content should resemble the following example:
+1. index.jsp ファイルが Eclipse で開いたら、"**Hello World!**" を動的に表示するためのテキストを既存の `<body>` 要素に追加します。更新された `<body>` コンテンツは、次のようになります。
 
-    `<body><b><% out.println("Hello World!"); %></b></body>` 
+    `<body><b><% out.println("Hello World!"); %></b></body>`
 
-1. Save index.jsp.
+1. index.jsp を保存します。
 
-## <a name="to-deploy-your-application-to-an-azure-web-app-container"></a>To Deploy your Application to an Azure Web App Container
+## アプリケーションを Azure Web アプリ コンテナーにデプロイするには
 
-There are several ways by which you can deploy a Java web application to Azure. This tutorial describes one of the simplest: your application will be deployed to an Azure Web App Container - no special project type nor additional tools are needed. The JDK and the web container software will be provided for you by Azure, so there is no need to upload your own; all you need is your Java Web App. As a result, the publishing process for your application will take seconds, not minutes.
+Java Web アプリケーションを Azure にデプロイする方法はいくつかあります。このチュートリアルでは、アプリケーションを Azure Web アプリ コンテナーにデプロイするという最も簡単な方法について説明します。特殊なプロジェクトの種類や追加のツールは必要ありません。JDK と Web コンテナー ソフトウェアは Azure から提供されるので、自分でアップロードする必要はありません。必要なものは Java Web アプリのみです。結果として、アプリケーションの発行プロセスにかかる時間は分単位ではなく、秒単位になります。
 
-1. In Eclipse's Project Explorer, right-click **MyHelloWorld**.
+1. Eclipse の Project Explorer で **[MyHelloWorld]** を右クリックします。
 
-1. In the context menu, select **Azure**, then click **Publish as Azure Web App...**
+1. コンテキスト メニューの **[Azure]**、**[Publish as Azure Web App (Azure Web アプリとして発行)]** の順に選択します。
 
     ![][03]
    
-    Alternatively, while your web application project is selected in the Project Explorer, you can click the **Publish** dropdown button on the toolbar and select **Publish as Azure Web App** from there:
+    または、Project Explorer で Web アプリケーション プロジェクトが選択されている状態で、ツール バーの **[Publish (発行)]** ドロップダウン ボタンをクリックし、そこから **[Publish as Azure Web App (Azure Web アプリとして発行)]** を選択します。
    
     ![][14]
    
-1. If you have not already signed into Azure from Eclipse, you will be prompted to sign into your Azure account:
+1. まだ Eclipse から Azure にサインインしていない場合、Azure アカウントにサインインするように求められます。
 
     ![][04]
    
-    Note: If you have multiple Azure accounts, some of the prompts during the sign in process may be shown more than once, even if they appear to be the same. When this happens, continue following the sign in instructions.
-1. After you have successfully signed into your Azure account, the **Manage Subscriptions** dialog box will display a list of subscriptions that are associated with your credentials. If there are multiple subscriptions listed and you want to work with only a specific subset of them, you may optionally uncheck the ones you do want to use. When you have selected your subscriptions, click **Close**.
+    注: 複数の Azure アカウントがある場合、サインイン プロセス中に同じようなプロンプトが複数回表示されることがあります。このような状況の場合、次のサインイン手順を続行します。
+1. Azure アカウントに正常にサインインすると、**[サブスクリプションの管理]** ダイアログ ボックスに、資格情報に関連付けられたサブスクリプションの一覧が表示されます。複数のサブスクリプションが表示された場合、その一部のみを使用するには、使用しないサブスクリプションのチェックボックスを必要に応じてオフにします。サブスクリプションを選択したら、**[閉じる]** をクリックします。
 
     ![][05]
    
-1. When the **Deploy to Azure Web App Container** dialog box appears, it will display any Web App containers that you have previously created; if you have not created any containers, the list will be empty.
+1. **[Deploy to Azure Web App Container]** (Azure Web アプリ コンテナーにデプロイ) ダイアログ ボックスを開くと、以前に作成した Web アプリ コンテナーがすべて表示されます。コンテナーを作成していない場合、一覧は空欄です。
 
     ![][06]
    
-1. If you have not created an Azure Web App Container before, or if you would like to publish your application to a new container, use the following steps. Otherwise, select an existing Web App Container and skip to step 7 below.
+1. 以前に Azure Web アプリ コンテナーを作成していない場合、またはアプリケーションを新しいコンテナーに発行する場合は、次の手順を実行します。作成済みの場合は、既存の Web アプリ コンテナーを選択し、以下の手順 7 に進みます。
 
-    1. Click **New...**
+    1. **[New (新規)]** をクリックします。
 
-    1. The **New Web App Container** dialog box will be displayed:
+    1. **[New Web App Container (新しい Web アプリ コンテナー)]** ダイアログ ボックスが表示されます。
 
         ![][07]
 
-    1. Enter a **DNS Label** for your Web App Container; this will form the leaf DNS label of the host URL for your web application in Azure. Note: The name must be available and conform to Azure Web App naming requirements.
+    1. Web アプリ コンテナーの **[DNS Label]** を入力します。これで、Azure の Web アプリケーションについて、ホスト URL のリーフ DNS ラベルが構成されます。注: この名は、Azure Web アプリの命名要件に準拠し、使用できる必要があります。
 
-    1. In the **Web Container** drop-down menu, select the appropriate software for your application.
+    1. **[Web Container (Web コンテナー)]** ドロップダウン メニューで、アプリケーションに適したソフトウェアを選択します。
 
-        Currently, you can choose from Tomcat 8, Tomcat 7 or Jetty 9. A recent distribution of the selected software will be provided by Azure, and it will run on a recent distribution of JDK 8 created by Oracle and provided by Azure.
+        現在、Tomcat 8、Tomcat 7 または Jetty 9 から選択することができます。選択したソフトウェアの最新の配信が Azure で提供されます。また、これは Oracle によって作成され、Azure で提供された JDK 8 の最新の配信で実行されます。
 
-    1. In the **Subscription** drop-down menu, select the subscription you want to use for this deployment.
+    1. **[サブスクリプション]** ドロップダウン メニューで、このデプロイに使用するサブスクリプションを選択します。
 
-    1. In the **Resource Group** drop-down menu, select the Resource Group with which you want to associate your Web App.
+    1. **[Resource Group (リソース グループ)]** ドロップダウン メニューで、Web アプリに関連付けるリソース グループを選択します。
 
-        Note: Azure Resource Groups allow you to group related resources together so that, for example, they can be deleted together.
+        注: Azure のリソース グループを使用すると、関連リソースをグループ化できるため、まとめて削除することもできます。
 
-        You can select an existing Resource Group (if you have any) and skip to step g below, or use the following these steps to create a new Resource Group:
+        (所有している場合は) 既存のリソース グループを選択して、下記のステップ g にスキップするか、以下のステップに従って、新しいリソース グループを作成します。
 
-        * Click **New...**
+        * **[New (新規)]** をクリックします。
 
-        * The **New Resource Group** dialog box will be displayed:
+        * **[New Resource Group (新しいリソース グループ)]** ダイアログ ボックスが表示されます。
 
             ![][08]
 
-        * In the the **Name** textbox, specify a name for your new Resource Group.
+        * **[Name (名前)]** テキスト ボックスに、新しいリソース グループの名前を入力します。
 
-        * In the the **Region** drop-down menu, select the appropriate Azure data center location for your Resource Group.
+        * **[Region (リージョン)]** ドロップダウン メニューで、リソース グループに適した Azure データ センターの場所を選択します。
 
-        * Click **OK**.
+        * **[OK]** をクリックします。
 
-    1. The **App Service Plan** drop-down menu lists the app service plans that are associated with the Resource Group that you selected.
+    1. **[App Service Plan (App Service プラン)]** ドロップダウン メニューには、選択したリソース グループに関連付けられた App Service プランが表示されます。
 
-        Note: An App Service Plan specifies information such as the location of your Web App, the pricing tier and the compute instance size. A single App Service Plan can be used for multiple Web Apps, which is why it is maintained separately from a specific Web App deployment.
+        注: App Service プランでは、Web アプリの場所、価格レベル、およびコンピューティング インスタンス サイズなどの情報を指定します。単一の App Service プランを、複数の Web Apps に使用できます。そのため、App Service プランは、特定の Web アプリのデプロイとは別に保持されます。
 
-        You can select an existing App Service Plan (if you have any) and skip to step h below, or use the following these steps to create a new App Service Plan:
+        (所有している場合は) 既存の App Service プランを選択して、下記のステップ h にスキップするか、以下のステップに従って、新しい App Service プランを作成します。
 
-        * Click **New...**
+        * **[New (新規)]** をクリックします。
 
-        * The **New App Service Plan** dialog box will be displayed:
+        * **[New App Service Plan (新しい App Service プラン)]** ダイアログ ボックスが表示されます。
 
             ![][09]
 
-        * In the the **Name** textbox, specify a name for your new App Service Plan.
+        * **[Name (名前)]** ボックスに、新しい App Service プランの名前を入力します。
 
-        * In the the **Location** drop-down menu, select the appropriate Azure data center location for the plan.
+        * **[Location (場所)]** ドロップダウン メニューで、プランに適した Azure データ センターの場所を選択します。
 
-        * In the the **Pricing Tier** drop-down menu, select the appropriate pricing for the plan. For testing purposes you can choose **Free**.
+        * **[Pricing Tier (価格レベル)]** ドロップダウン メニューで、プランに適した価格を選択します。テスト目的の場合は、**[Free]** を選択できます。
 
-        * In the the **Instance Size** drop-down menu, select the appropriate instance size for the plan. For testing purposes you can choose **Small**.
+        * **[Instance Size (インスタンス サイズ)]** ドロップダウン メニューで、プランに適したインスタンス サイズを選択します。テスト目的の場合は、**[Small]** を選択できます。
 
-    1. Once you have completed all of the above steps, the New Web App Container dialog box should resemble the following illustration:
+    1. これらの手順をすべて完了すると、[New Web App Container] \(新しい Web アプリ コンテナー) ダイアログ ボックスは次の図のようになります。
 
         ![][10]
 
-    1. Click **OK** to complete the creation of your new Web App container.
+    1. **[OK]** をクリックすると、新しい Web アプリ コンテナーの作成が完了します。
 
-        Wait a few seconds for the list of the Web App containers to be refreshed, and your newly-created web app container should now be selected in the list.
+        数秒待つと Web アプリ コンテナーの一覧が更新されます。一覧で新しく作成した Web アプリ コンテナーが選択されています。
 
-1. You are now ready to complete the initial deployment of your Web App to Azure:
+1. 以上で、初めて Web アプリを Azure にデプロイする処理を完了できます。
 
     ![][11]
 
-    Click **OK** to deploy your Java application to the selected Web App container.
+    **[OK]** をクリックして、Java アプリケーションを選択した Web アプリ コンテナーにデプロイします。
 
-    Note: By default, your application will be deployed as a subdirectory of the application server. If you want it to be deployed as the root application, check the **Deploy to root** checkbox before clicking **OK**.
+    注: 既定では、アプリケーションはアプリケーション サーバーのサブディレクトリとしてデプロイされます。ルート アプリケーションとしてデプロイする場合、**[Deploy to root (ルートにデプロイ)]** チェック ボックスをオンにして **[OK]** をクリックします。
 
-1. Next, you should see the **Azure Activity Log** view, which will indicate the deployment status of your Web App.
+1. **[Azure Activity Log (Azure アクティビティ ログ)]** ビューが開き、Web アプリのデプロイの状態が表示されます。
 
     ![][12]
 
-    The process of deploying your Web App to Azure should take only a few seconds to complete. When your application ready, you will see a link named **Published** in the **Status** column. When you click the link, it will take you to your deployed Web App's home page.
+    Web アプリを Azure にデプロイするプロセスは、わずか数秒で完了します。アプリケーションの準備ができると、**[Status]** 列に **[Published (発行済み)]** というリンクが表示されます。リンクをクリックすると、デプロイした Web アプリのホーム ページが表示されます。
 
-## <a name="updating-your-web-app"></a>Updating your Web App
+## Web アプリの更新
 
-Updating an existing running Azure Web App is a quick and easy process, and you have two options for updating:
+既存の実行中の Azure Web アプリを更新するプロセスは短時間で簡単です。更新には 2 つのオプションがあります。
 
-* You can update the deployment of an existing Java Web App.
-* You can publish an additional Java application to the same Web App Container.
+* 既存の Java Web アプリのデプロイを更新できます。
+* 同じ Web アプリ コンテナーに追加の Java アプリケーションを発行できます。
 
-In either case, the process is identical and takes only a few seconds:
+いずれの場合でもプロセスは同じで、かかる時間は数秒です。
 
-1. In the Eclipse project explorer, right-click the Java application you want to update or add to an existing Web App Container.
+1. Eclipse の Project Explorer で、更新する Java アプリケーションを右クリックするか、既存の Web アプリ コンテナーに追加します。
 
-2. When the context menu appears, select **Azure** and then **Publish as Azure Web App...**
+2. コンテキスト メニューが表示されたら、**[Azure]**、**[Publish as Azure Web App (Azure Web アプリとして発行)]** の順に選択します。
 
-3. Since you have already logged in previously, you will see a list of your existing Web App containers. Select the one you want to publish or re-publish your Java application to and click **OK**.
+3. 既にログインしているので、既存の Web アプリ コンテナーの一覧が表示されます。Java アプリケーションを発行または再発行するコンテナーを選択し、**[OK]** をクリックします。
 
-A few seconds later, the **Azure Activity Log** view will show your updated deployment as **Published** and you will be able to verify your updated application in a web browser.
+数秒後、**[Azure Activity Log (Azure アクティビティ ログ)]** ビューに更新されたデプロイが **[Published (発行済み)]** と表示され、Web ブラウザーで更新されたアプリケーションを確認できます。
 
-## <a name="stopping-an-existing-web-app"></a>Stopping an Existing Web App
+## 既存の Web アプリを停止する
 
-To stop an existing Azure Web App container, (including all the deployed Java applications in it), you can use the **Azure Explorer** view.
+既存の Azure Web アプリ コンテナー (コンテナー内にデプロイされているすべての Java アプリケーションを含む) を停止するには、**[Azure Explorer]** ビューを使用できます。
 
-If the **Azure Explorer** view is not already open, you can open it by clicking then **Window** menu in Eclipse, then click **Show View**, then **Other...**, then **Azure**, and then click **Azure Explorer**. If you have not previously logged in, it will prompt you to do so.
+**[Azure Explorer]** ビューがまだ開いていない場合、Eclipse の **[Window (ウィンドウ)]** メニュー、**[Show View (ビューの表示)]**、**[Other (その他)]**、**[Azure]**、**[Azure Explorer]** の順にクリックして開きます。まだログインしていない場合は、ログインするように求められます。
 
-When the **Azure Explorer** view is displayed, use follow these steps to stop your Web App: 
+**[Azure Explorer]** ビューが表示されたら、次の手順に従って Web アプリを停止します。
 
-1. Expand the **Azure** node.
+1. **[Azure]** ノードを展開します。
 
-1. Expand the **Web Apps** node. 
+1. **[Web Apps (Web アプリ)]** ノードを展開します。
 
-1. Right-click the desired Web App.
+1. 目的の Web App を右クリックします。
 
-1. When the context menu appears, click **Stop**.
+1. コンテキスト メニューが表示されたら、**[Stop (停止)]** をクリックします。
 
     ![][13]
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-For more information, see the following links:
+詳細については、次のリンクを参照してください。
 
-* [Java Developer Center](/develop/java/).
-* [Web Apps Overview](app-service-web-overview.md)
+* [Java デベロッパー センター](/develop/java/)
+* [Web Apps の概要](app-service-web-overview.md)
 
 [AZURE.INCLUDE [app-service-web-try-app-service](../../includes/app-service-web-try-app-service.md)]
 
@@ -208,7 +207,7 @@ For more information, see the following links:
 
 [Azure App Service]: http://go.microsoft.com/fwlink/?LinkId=529714
 [Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkID=699529
-[Installing the Azure Toolkit for Eclipse]: http://go.microsoft.com/fwlink/?LinkId=699546
+[Azure Toolkit for Eclipse のインストール]: http://go.microsoft.com/fwlink/?LinkId=699546
 
 <!-- IMG List -->
 
@@ -227,7 +226,4 @@ For more information, see the following links:
 [13]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/13-Azure-Explorer-Web-App.png
 [14]: ./media/create-a-hello-world-web-app-for-azure-in-eclipse/publishDropdownButton.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

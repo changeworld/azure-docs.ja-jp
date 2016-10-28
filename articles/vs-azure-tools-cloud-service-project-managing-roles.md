@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Managing roles in the Azure cloud services projects with Visual Studio | Microsoft Azure"
-   description="Learn how to add new roles to your Azure cloud service project or remove existing roles from it by using Visual Studio."
+   pageTitle="Visual Studio を使用した Azure クラウド サービス プロジェクト内のロールの管理 | Microsoft Azure"
+   description="Visual Studio を使用して、Azure クラウド サービス プロジェクトに新しいロールを追加したり、既存のロールを削除する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,52 +15,47 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Visual Studio を使用した Azure クラウド サービス プロジェクト内のロールの管理
 
-# <a name="managing-roles-in-the-azure-cloud-services-projects-with-visual-studio"></a>Managing roles in the Azure cloud services projects with Visual Studio
+Azure クラウド サービス プロジェクトを作成した後、そのプロジェクトに新しいロールを追加したり、プロジェクトから既存のロールを削除できます。既存のプロジェクトをインポートし、ロールに変換することもできます。たとえば、ASP.NET Web アプリケーションをインポートし、そのアプリケーションを Web ロールとして指定できます。
 
-After you have created your Azure cloud service project, you can add new roles to it or remove existing roles from it. You can also import an existing project and convert it to a role. For example, you can import an ASP.NET web application and designate it as a web role.
+## ロールの追加または削除
 
-## <a name="adding-or-removing-roles"></a>Adding or removing roles
+**ロールを追加するには**
 
-**To add a role**
+**ソリューション エクスプローラー**で、クラウド サービス プロジェクトの **[ロール]** ノードのショートカット メニューを開き、**[追加]** を選択します。現在のソリューションから既存の Web ロールや worker ロールを選択したり、新しい Web ロール プロジェクトや worker ロール プロジェクトを作成できます。または、ASP.NET Web アプリケーション プロジェクトなどの適切なプロジェクトを選択して、ロール プロジェクトに関連付けることができます。
 
-In **Solution Explorer**, open the shortcut menu for the **Roles** node in your cloud service project and choose **Add**. You can select an existing web role or worker role from the current solution or create a new web or worker role project. Or you can select an appropriate project, such as an ASP.NET web application project, and associate it with a role project.
+**ロールの関連付けを削除するには**
 
-**To remove a role association**
+ソリューション エクスプローラーのクラウド サービス プロジェクトの **[ロール]** ノードで、削除するロールのショートカット メニューを開き、**[削除]** を選択します。
 
-In the **Roles** node of the cloud service project in Solution Explorer, open the shortcut menu for the role to remove and choose **Remove**.
+## クラウド サービスでのロールの削除と追加
 
-## <a name="removing-and-adding-roles-in-your-cloud-service"></a>Removing and adding roles in your cloud service
+クラウド サービス プロジェクトからロールを削除し、後からそのロールをプロジェクトに戻す場合は、エンドポイントや診断情報など、ロールの宣言と基本属性のみが追加されます。ServiceDefinition.csdef ファイルや ServiceConfiguration.cscfg ファイルには、追加のリソースや参照は追加されません。この情報を追加するには、手動でこれらのファイルに情報を追加し直す必要があります。
 
-If you remove a role from your cloud service project but later decide to add the role back to the project, only the role declaration and basic attributes, such as endpoints and diagnostics information, are added. No additional resources or references are added to the ServiceDefinition.csdef file or to the ServiceConfiguration.cscfg file. If you want to add this information, you’ll have to manually add it back into these files.
+たとえば、Web サービス ロールを削除した後、このロールを再度ソリューションに追加することになったとします。これを実行すると、エラーが発生します。このエラーを回避するには、次の XML に示す `<LocalResources>` 要素を ServiceDefinition.csdef ファイルに追加し直す必要があります。プロジェクトに追加し直した Web サービス ロールの名前を **<LocalStorage>** 要素の名前属性の一部として使用します。この例では、Web サービス ロールの名前は **WCFServiceWebRole1** です。
 
-For example, you might remove a web service role and later you decide to add this role back into your solution. If you do this, an error will occur. To prevent this error, you have to add the `<LocalResources>` element shown in the following XML back into the ServiceDefinition.csdef file. Use the name of the web service role that you added back into the project as part of the name attribute for the **<LocalStorage>** element. In this example the name of the web service role is **WCFServiceWebRole1**.
+	<WebRole name="WCFServiceWebRole1">
+	    <Sites>
+	      <Site name="Web">
+	        <Bindings>
+	          <Binding name="Endpoint1" endpointName="Endpoint1" />
+	        </Bindings>
+	      </Site>
+	    </Sites>
+	    <Endpoints>
+	      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+	    </Endpoints>
+	    <Imports>
+	      <Import moduleName="Diagnostics" />
+	    </Imports>
+	   <LocalResources>
+	      <LocalStorage name="WCFServiceWebRole1.svclog" sizeInMB="1000" cleanOnRoleRecycle="false" />
+	   </LocalResources>
+	</WebRole>
 
-    <WebRole name="WCFServiceWebRole1">
-        <Sites>
-          <Site name="Web">
-            <Bindings>
-              <Binding name="Endpoint1" endpointName="Endpoint1" />
-            </Bindings>
-          </Site>
-        </Sites>
-        <Endpoints>
-          <InputEndpoint name="Endpoint1" protocol="http" port="80" />
-        </Endpoints>
-        <Imports>
-          <Import moduleName="Diagnostics" />
-        </Imports>
-       <LocalResources>
-          <LocalStorage name="WCFServiceWebRole1.svclog" sizeInMB="1000" cleanOnRoleRecycle="false" />
-       </LocalResources>
-    </WebRole>
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+「[Visual Studio を使用した Azure クラウド サービスのロールの構成](vs-azure-tools-configure-roles-for-cloud-service.md)」を読み、Visual Studio でのロールの構成方法を理解する。
 
-Learn about how to configure roles in Visual Studio by reading [Configure the Roles for an Azure Cloud Service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

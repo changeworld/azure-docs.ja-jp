@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Viewing diagnostic logs for Azure Data Lake Analytics | Microsoft Azure" 
-   description="Understand how to setup and access diagnostic logs for Azure Data Lake analytics " 
+   pageTitle="Azure Data Lake Analytics の診断ログの表示 | Microsoft Azure" 
+   description="Azure Data Lake Analytics の診断ログの設定方法およびアクセス方法を学びます " 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="Blackmist" 
@@ -16,72 +16,71 @@
    ms.date="08/11/2016"
    ms.author="larryfr"/>
 
+# Azure Data Lake Analytics の診断ログへのアクセス
 
-# <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics
+ここでは、Data Lake Analytics アカウントの診断ログを有効にする方法と、アカウント用に収集されたログを表示する方法について説明します。
 
-Learn about how to enable diagnostic logging for your Data Lake Analytics account and how to view the logs collected for your account.
+組織が Azure Data Lake Analytics アカウントの診断ログを有効にすると、データ アクセスの監査証跡を収集できます。診断ログからは、以下のような情報が得られます。
 
-Organizations can enable diagnostic logging for their Azure Data Lake Analytics account to collect data access audit trails. These logs provide information such as:
+* データにアクセスしたユーザーの一覧。
+* データがアクセスされる頻度。
+* アカウントで保存されているデータの量。
 
-* A list of users that accessed the data.
-* How frequently the data is accessed.
-* How much data is stored in the account.
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+- Data Lake Analytics のパブリック プレビューに対して、**Azure サブスクリプションを有効にします**。[手順](data-lake-analytics-get-started-portal.md#signup)を参照してください。
+- **Azure Data Lake Analytics アカウント**。「[Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)」の手順に従ってください。
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
-- **Enable your Azure subscription** for Data Lake Analytics Public Preview. See [instructions](data-lake-analytics-get-started-portal.md#signup).
-- **Azure Data Lake Analytics account**. Follow the instructions at [Get started with Azure Data Lake Analytics using the Azure portal](data-lake-analytics-get-started-portal.md).
+## ログの有効化
 
-## <a name="enable-logging"></a>Enable logging
+1. 新しい [Azure ポータル](https://portal.azure.com)にサインオンします。
 
-1. Sign on to the new [Azure portal](https://portal.azure.com).
+2. Data Lake Analytics アカウントを開き、Data Lake Analytics アカウントのブレードで **[設定]**、**[診断設定]** の順にクリックします。
 
-2. Open your Data Lake Analytics account, and from your Data Lake Analytics account blade, click **Settings**, and then click **Diagnostic Settings**.
+3. **[診断]** ブレードで、診断ログの構成を次のように変更します。
 
-3. In the **Diagnostic** blade, make the following changes to configure diagnostic logging.
+	![診断ログの有効化](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Azure App Service の Web アプリの診断ログの有効化")
 
-    ![Enable diagnostic logging](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Enable diagnostic logs")
+	* **[状態]** を **[オン]** に設定して診断ログを有効にします。
+	* 2 種類の方法でデータを格納および処理することができます。
+		* **[Export to Event Hub (イベント ハブへのエクスポート)]** を選択して、Azure イベント ハブにログ データをストリーミングします。リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
+		* **[ストレージ アカウントへのエクスポート]** を選択して、Azure Storage アカウントにログを保存します。データをアーカイブする場合には、このオプションを使用します。このオプションを選択した場合は、ログの保存先の Azure Storage アカウントを指定する必要があります。
+	* 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。
+	* データを保持する日数を指定します。
+	* [**Save**] をクリックします。
 
-    * Set **Status** to **On** to enable diagnostic logging.
-    * You can choose to store/process the data in two different ways.
-        * Select **Export to Event Hub** to stream log data to an Azure Event Hub. Use this option if you have a downstream processing pipeline to analyze incoming logs in real time. If you select this option, you must provide the details for the Azure Event Hub you want to use.
-        * Select **Export to Storage Account** to store logs to an Azure Storage account. Use this option if you want to archive the data. If you select this option, you must provide an Azure Storage account to save the logs to.
-    * Specify whether you want to get audit logs or request logs or both.
-    * Specify the number of days for which the data must be retained.
-    * Click **Save**.
+診断設定を有効にしたら、**[診断ログ]** タブでログを確認できます。
 
-Once you have enabled diagnostic settings, you can watch the logs in the **Diagnostic Logs** tab.
+## ログを表示する。
 
-## <a name="view-logs"></a>View logs
+Data Lake Analytics アカウントのログ データを確認する方法は 2 つあります。
 
-There are two ways to view the log data for your Data Lake Analytics account.
+* Data Lake Analytics アカウントの設定から
+* データが格納されている Azure Storage アカウントから
 
-* From the Data Lake Analytics account settings
-* From the Azure Storage account where the data is stored
+### Data Lake Analytics の [設定] ビューの使用
 
-### <a name="using-the-data-lake-analytics-settings-view"></a>Using the Data Lake Analytics Settings view
+1. Data Lake Analytics アカウントの **[設定]** ブレードで、**[診断ログ]** をクリックします。
 
-1. From your Data Lake Analytics account **Settings** blade, click **Diagnostic Logs**.
+	![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "診断ログの表示")
 
-    ![View diagnostic logging](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "View diagnostic logs") 
+2. **[診断ログ]** ブレードに、**監査ログ**と**要求ログ**に分類されたログが表示されます。
+	* 要求ログは、Data Lake Analytics アカウントで行われるすべての API 要求をキャプチャします。
+	* 監査ログは要求ログとよく似ていますが、Data Lake Analytics アカウントで実行される操作についてより詳しい内訳を提供します。たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
 
-2. In the **Diagnostic Logs** blade, you should see the logs categorized by **Audit Logs** and **Request Logs**.
-    * Request logs capture every API request made on the Data Lake Analytics account.
-    * Audit Logs are similar to request Logs but provide a much more detailed breakdown of the operations being performed on the Data Lake Analytics account. For example, a single upload API call in request logs might result in multiple "Append" operations in the audit logs.
+3. 各ログ エントリの **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
 
-3. Click the **Download** link for a log entry to download the logs.
+### ログ データを含む Azure Storage アカウントから
 
-### <a name="from-the-azure-storage-account-that-contains-log-data"></a>From the Azure Storage account that contains log data
+1. ログ記録用の Data Lake Analytics が関連付けられている [Azure Storage アカウント] ブレードを開き、[BLOB] をクリックします。**[BLOB サービス]** ブレードに 2 つのコンテナーが表示されます。
 
-1. Open the Azure Storage account blade associated with Data Lake Analytics for logging, and then click Blobs. The **Blob service** blade lists two containers.
+	![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
 
-    ![View diagnostic logging](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "View diagnostic logs")
+	* コンテナー **insights-logs-audit** には、監査ログが含まれます。
+	* コンテナー **insights-logs-requests** には、要求ログが含まれます。
 
-    * The container **insights-logs-audit** contains the audit logs.
-    * The container **insights-logs-requests** contains the request logs.
-
-2. Within these containers, the logs are stored under the following structure.
+2. これらのコンテナー内で、ログは次の構造の下に格納されます。
 
         resourceId=/
           SUBSCRIPTIONS/
@@ -99,39 +98,39 @@ There are two ways to view the log data for your Data Lake Analytics account.
                                   m=00/
                                     PT1H.json
     
-    > [AZURE.NOTE] The `##` entries in the path contain the year, month, day, and hour in which the log was created. Data Lake Analytics creates one file every hour, so `m=` always contains a value of `00`.
+    > [AZURE.NOTE] パスのエントリの `##` の部分には、ログを作成した年、月、日、時間の情報が入ります。Data Lake Analytics では、ログのファイルを 1 時間に 1 つ作成します。このため、`m=` の値は常に `00` となります。
 
-    As an example, the complete path to an audit log could be:
+	たとえば、監査ログへの完全パスは以下のようになります。
     
         https://adllogs.blob.core.windows.net/insights-logs-audit/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=04/m=00/PT1H.json
 
-    Similarly, the complete path to a request log could be:
+	同様に、要求ログへの完全パスは以下のようになります。
     
         https://adllogs.blob.core.windows.net/insights-logs-requests/resourceId=/SUBSCRIPTIONS/<sub-id>/RESOURCEGROUPS/myresourcegroup/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/mydatalakeanalytics/y=2016/m=07/d=18/h=14/m=00/PT1H.json
 
-## <a name="log-structure"></a>Log structure
+## ログの構造
 
-The audit and request logs are in a JSON format. In this section, we look at the structure of JSON for request and audit logs.
+監査ログと要求ログは JSON 形式で作成されます。このセクションでは、要求ログと監査ログの JSON 構造を確認します。
 
-### <a name="request-logs"></a>Request logs
+### 要求ログ
 
-Here's a sample entry in the JSON-formatted request log. Each blob has one root object called **records** that contains an array of log objects.
+JSON 形式の要求ログのエントリの例を次に示します。各 BLOB には、ログ オブジェクトの配列を含む、**レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
-    {
-    "records": 
-      [     
-        . . . .
-        ,
-        {
-             "time": "2016-07-07T21:02:53.456Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
-             "category": "Requests",
-             "operationName": "GetAggregatedJobHistory",
-             "resultType": "200",
-             "callerIpAddress": "::ffff:1.1.1.1",
-             "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
-             "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
-             "properties": {
+	{
+	"records": 
+	  [		
+		. . . .
+		,
+		{
+			 "time": "2016-07-07T21:02:53.456Z",
+			 "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_analytics_account_name>",
+			 "category": "Requests",
+			 "operationName": "GetAggregatedJobHistory",
+			 "resultType": "200",
+			 "callerIpAddress": "::ffff:1.1.1.1",
+			 "correlationId": "4a11c709-05f5-417c-a98d-6e81b3e29c58",
+			 "identity": "1808bd5f-62af-45f4-89d8-03c5e81bac30",
+			 "properties": {
                  "HttpMethod":"POST",
                  "Path":"/JobAggregatedHistory",
                  "RequestContentLength":122,
@@ -139,106 +138,100 @@ Here's a sample entry in the JSON-formatted request log. Each blob has one root 
                  "StartTime":"2016-07-07T21:02:52.472Z",
                  "EndTime":"2016-07-07T21:02:53.456Z"
                  }
-        }
-        ,
-        . . . .
-      ]
-    }
+		}
+		,
+		. . . .
+	  ]
+	}
 
-#### <a name="request-log-schema"></a>Request log schema
+#### 要求ログのスキーマ
 
-| Name            | Type   | Description                                                                    |
+| Name | 型 | Description |
 |-----------------|--------|--------------------------------------------------------------------------------|
-| time            | String | The timestamp (in UTC) of the log                                              |
-| resourceId      | String | The ID of the resource that operation took place on                            |
-| category        | String | The log category. For example, **Requests**.                                   |
-| operationName   | String | Name of the operation that is logged. For example, GetAggregatedJobHistory.              |
-| resultType      | String | The status of the operation, For example, 200.                                 |
-| callerIpAddress | String | The IP address of the client making the request                                |
-| correlationId   | String | The id of the log. This value can be used to group a set of related log entries |
-| identity        | Object | The identity that generated the log                                            |
-| properties      | JSON   | See the next section (Request log properties schema) for details |
+| time | 文字列 | ログのタイムスタンプ (UTC) |
+| resourceId | 文字列 | 操作が行われたリソースの ID |
+| カテゴリ | 文字列 | ログのカテゴリ。**Requests** など。 |
+| operationName | 文字列 | ログに記録される操作の名前。GetAggregatedJobHistory など。 |
+| resultType | 文字列 | 操作の状態。200 など。 |
+| callerIpAddress | 文字列 | 要求を行うクライアントの IP アドレス |
+| correlationId | 文字列 | ログの ID。この値は、関係のあるログ エントリをグループ化する際に使用します |
+| ID | オブジェクト | ログを生成した ID |
+| プロパティ | JSON | 詳しくは、次のセクション (「要求ログのプロパティのスキーマ」) をご覧ください |
 
-#### <a name="request-log-properties-schema"></a>Request log properties schema
+#### 要求ログのプロパティのスキーマ
 
-| Name                 | Type   | Description                                               |
+| Name | 型 | Description |
 |----------------------|--------|-----------------------------------------------------------|
-| HttpMethod           | String | The HTTP Method used for the operation. For example, GET. |
-| Path                 | String | The path the operation was performed on                   |
-| RequestContentLength | int    | The content length of the HTTP request                    |
-| ClientRequestId      | String | The Id that uniquely identifies this request              |
-| StartTime            | String | The time at which the server received the request         |
-| EndTime              | String | The time at which the server sent a response              |
+| HttpMethod | 文字列 | 操作に使用される HTTP メソッド。GET など。 |
+| パス | 文字列 | 操作が実行されたパス |
+| RequestContentLength | int | HTTP 要求のコンテンツの長さ |
+| ClientRequestId | 文字列 | この要求を一意に識別する ID |
+| StartTime | 文字列 | サーバーが要求を受信した時刻 |
+| EndTime | 文字列 | サーバーが応答を送信した時間 |
 
-### <a name="audit-logs"></a>Audit logs
+### 監査ログ
 
-Here's a sample entry in the JSON-formatted audit log. Each blob has one root object called **records** that contains an array of log objects
+JSON 形式の監査ログのエントリの例を次に示します。各 BLOB には、ログ オブジェクトの配列を含む、**レコード** と呼ばれるルート オブジェクトが 1 つあります。
 
-    {
-    "records": 
-      [     
-        . . . .
-        ,
-        {
-             "time": "2016-07-28T19:15:16.245Z",
-             "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
-             "category": "Audit",
-             "operationName": "JobSubmitted",
-             "identity": "user@somewhere.com",
-             "properties": {
+	{
+	"records": 
+	  [		
+		. . . .
+		,
+		{
+			 "time": "2016-07-28T19:15:16.245Z",
+			 "resourceId": "/SUBSCRIPTIONS/<subscription_id>/RESOURCEGROUPS/<resource_group_name>/PROVIDERS/MICROSOFT.DATALAKEANALYTICS/ACCOUNTS/<data_lake_ANALYTICS_account_name>",
+			 "category": "Audit",
+			 "operationName": "JobSubmitted",
+			 "identity": "user@somewhere.com",
+			 "properties": {
                  "JobId":"D74B928F-5194-4E6C-971F-C27026C290E6",
                  "JobName": "New Job", 
                  "JobRuntimeName": "default",
                  "SubmitTime": "7/28/2016 7:14:57 PM"
                  }
-        }
-        ,
-        . . . .
-      ]
-    }
+		}
+		,
+		. . . .
+	  ]
+	}
 
-#### <a name="audit-log-schema"></a>Audit log schema
+#### 監査ログのスキーマ
 
-| Name            | Type   | Description                                                                    |
+| Name | 型 | Description |
 |-----------------|--------|--------------------------------------------------------------------------------|
-| time            | String | The timestamp (in UTC) of the log                                              |
-| resourceId      | String | The ID of the resource that operation took place on                            |
-| category        | String | The log category. For example, **Audit**.                                      |
-| operationName   | String | Name of the operation that is logged. For example, JobSubmitted.              |
-| resultType | String | A substatus for the job status (operationName). |
-| resultSignature | String | Additional details on the job status (operationName). |
-| identity      | String | The user that requested the operation. For example, susan@contoso.com.                                 |
-| properties      | JSON   | See the next section (Audit log properties schema) for details |
+| time | 文字列 | ログのタイムスタンプ (UTC) |
+| resourceId | 文字列 | 操作が行われたリソースの ID |
+| カテゴリ | 文字列 | ログのカテゴリ。**Audit** など。 |
+| operationName | 文字列 | ログに記録される操作の名前。JobSubmitted など。 |
+| resultType | 文字列 | ジョブの状態 (operationName) の副状態。 |
+| resultSignature | 文字列 | ジョブの状態 (operationName) に関する追加の詳細。 |
+| ID | 文字列 | 操作を要求したユーザー。たとえば、「susan@contoso.com」のように入力します。 |
+| プロパティ | JSON | 詳しくは、次のセクション (「監査ログのプロパティのスキーマ」) をご覧ください |
 
-> [AZURE.NOTE] __resultType__ and __resultSignature__ provide information on the result of an operation, and only contain a value if an operation has completed. For example, they contain a value when __operationName__ contains a value of __JobStarted__ or __JobEnded__.
+> [AZURE.NOTE] __resultType__ と __resultSignature__ は、操作の結果に関する情報を示すものであり、操作が完了した場合にのみ値が入ります。この 2 つには、たとえば __operationName__ の値が __JobStarted__ または __JobEnded__ の場合に値が入ります。
 
-#### <a name="audit-log-properties-schema"></a>Audit log properties schema
+#### 監査ログのプロパティのスキーマ
 
-| Name       | Type   | Description                              |
+| Name | 型 | Description |
 |------------|--------|------------------------------------------|
-| JobId | String | The ID assigned to the job  |
-| JobName | String | The name that was provided for the job |
-| JobRunTime | String | The runtime used to process the job |
-| SubmitTime | String | The time (in UTC) that the job was submitted |
-| StartTime | String | The time the job started running after submission (in UTC). |
-| EndTime | String | The time the job ended. |
-| Parallelism | String | The number of Data Lake Analytics units requested for this job during submission. |
+| JobId | 文字列 | ジョブに割り当てられた ID |
+| JobName | 文字列 | ジョブに与えられている名前 |
+| JobRunTime | 文字列 | ジョブの処理に使用するランタイム |
+| SubmitTime | 文字列 | ジョブが送信された時間 (UTC) |
+| StartTime | 文字列 | ジョブが送信された後に実行を開始した時刻 (UTC)。 |
+| EndTime | 文字列 | ジョブが終了した時刻。 |
+| 並列処理 | 文字列 | このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数。 |
 
-> [AZURE.NOTE] __SubmitTime__, __StartTime__, __EndTime__ and __Parallelism__ provide information on an operation, and only contain a value if an operation has started or completed. For example, __SubmitTime__ contains a value after __operationName__ indicates __JobSubmitted__.
+> [AZURE.NOTE] __SubmitTime__、__StartTime__、__EndTime__、__Parallelism__ の 4 つは、操作に関する情報を提供するものであり、操作が開始または完了した場合にのみ値が入ります。たとえば、__SubmitTime__ であれば、__operationName__ が __JobSubmitted__ になった後に値が入ります。
 
-## <a name="process-the-log-data"></a>Process the log data
+## ログ データの処理
 
-Azure Data Lake Analytics provides a sample on how to process and analyze the log data. You can find the sample at [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
-
-
-## <a name="next-steps"></a>Next steps
-
-- [Overview of Azure Data Lake Analytics](data-lake-analytics-overview.md)
+Azure Data Lake Analytics では、ログ データの処理と分析方法に関するサンプルを提供しています。サンプルについては [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample) をご覧ください。
 
 
+## 次のステップ
 
+- [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

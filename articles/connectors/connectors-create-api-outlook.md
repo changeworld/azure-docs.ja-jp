@@ -1,10 +1,10 @@
 <properties
-pageTitle="Outlook.com | Microsoft Azure"
-description="Create Logic apps with Azure App service. Outlook.com connector allows you to manage your mail, calendars, and contacts. You can perform various actions such as send mail, schedule meetings, add contacts, etc."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+pageTitle="Outlook.com |Microsoft Azure"
+description="Azure App Service を使用してロジック アプリを作成します。Outlook.com コネクタでは、メール、予定表、連絡先を管理できます。メールを送信する、会議のスケジュールを設定する、連絡先を追加するなど、さまざまなアクションを実行できます。"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,899 +17,895 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# Outlook.com コネクタの使用
 
-# <a name="get-started-with-the-outlook.com-connector"></a>Get started with the Outlook.com connector
+Outlook.com コネクタでは、メール、予定表、連絡先を管理できます。メールを送信する、会議のスケジュールを設定する、連絡先を追加するなど、さまざまなアクションを実行できます。
 
-Outlook.com connector allows you to manage your mail, calendars, and contacts. You can perform various actions such as send mail, schedule meetings, add contacts, etc.
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+Outlook.com コネクタは、アクションとして使用できます。Outlook.com コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-The Outlook.com connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+ Outlook.com コネクタでは、次のアクションやトリガーを使用できます。
 
- The Outlook.com connector has the following action(s) and/or trigger(s) available:
+### Outlook.com のアクション
+実行できるアクションは以下のとおりです。
 
-### <a name="outlook.com-actions"></a>Outlook.com actions
-You can take these action(s):
-
-|Action|Description|
+|アクション|Description|
 |--- | ---|
-|[GetEmails](connectors-create-api-outlook.md#GetEmails)|Retrieves emails from a folder|
-|[SendEmail](connectors-create-api-outlook.md#SendEmail)|Sends an email|
-|[DeleteEmail](connectors-create-api-outlook.md#DeleteEmail)|Deletes an email by id|
-|[MarkAsRead](connectors-create-api-outlook.md#MarkAsRead)|Marks an email as having been read|
-|[ReplyTo](connectors-create-api-outlook.md#ReplyTo)|Replies to an email|
-|[GetAttachment](connectors-create-api-outlook.md#GetAttachment)|Retrieves email attachment by id|
-|[SendMailWithOptions](connectors-create-api-outlook.md#SendMailWithOptions)|Send an email with multiple options and wait for the recipient to respond back with one of the options|
-|[SendApprovalMail](connectors-create-api-outlook.md#SendApprovalMail)|Send an approval email and wait for a response from the recipient|
-|[CalendarGetTables](connectors-create-api-outlook.md#CalendarGetTables)|Retrieves calendars|
-|[CalendarGetItems](connectors-create-api-outlook.md#CalendarGetItems)|Retrieves items from a calendar|
-|[CalendarPostItem](connectors-create-api-outlook.md#CalendarPostItem)|Creates a new event|
-|[CalendarGetItem](connectors-create-api-outlook.md#CalendarGetItem)|Retrieves a specific item from a calendar|
-|[CalendarDeleteItem](connectors-create-api-outlook.md#CalendarDeleteItem)|Deletes a calendar item|
-|[CalendarPatchItem](connectors-create-api-outlook.md#CalendarPatchItem)|Partially updates a calendar item|
-|[ContactGetTables](connectors-create-api-outlook.md#ContactGetTables)|Retrieves contacts folders|
-|[ContactGetItems](connectors-create-api-outlook.md#ContactGetItems)|Retrieves contacts from a contacts folder|
-|[ContactPostItem](connectors-create-api-outlook.md#ContactPostItem)|Creates a new contact|
-|[ContactGetItem](connectors-create-api-outlook.md#ContactGetItem)|Retrieves a specific contact from a contacts folder|
-|[ContactDeleteItem](connectors-create-api-outlook.md#ContactDeleteItem)|Deletes a contact|
-|[ContactPatchItem](connectors-create-api-outlook.md#ContactPatchItem)|Partially updates a contact|
-### <a name="outlook.com-triggers"></a>Outlook.com triggers
-You can listen for these event(s):
+|[GetEmails](connectors-create-api-outlook.md#GetEmails)|フォルダーから電子メールを取得します|
+|[SendEmail](connectors-create-api-outlook.md#SendEmail)|電子メールを送信します|
+|[DeleteEmail](connectors-create-api-outlook.md#DeleteEmail)|ID を指定して電子メールを削除します|
+|[MarkAsRead](connectors-create-api-outlook.md#MarkAsRead)|電子メールを既読としてマークします|
+|[ReplyTo](connectors-create-api-outlook.md#ReplyTo)|電子メールに返信します|
+|[GetAttachment](connectors-create-api-outlook.md#GetAttachment)|ID を指定して電子メールの添付ファイルを取得します|
+|[SendMailWithOptions](connectors-create-api-outlook.md#SendMailWithOptions)|複数のオプションを指定して電子メールを送信し、受信者からオプションのいずれかを含む返信が送られるまで待ちます|
+|[SendApprovalMail](connectors-create-api-outlook.md#SendApprovalMail)|承認の電子メールを送信し、受信者からの返信を待ちます|
+|[CalendarGetTables](connectors-create-api-outlook.md#CalendarGetTables)|予定表を取得します|
+|[CalendarGetItems](connectors-create-api-outlook.md#CalendarGetItems)|予定表から項目を取得します|
+|[CalendarPostItem](connectors-create-api-outlook.md#CalendarPostItem)|新しいイベントを作成します|
+|[CalendarGetItem](connectors-create-api-outlook.md#CalendarGetItem)|予定表から特定の項目を取得します|
+|[CalendarDeleteItem](connectors-create-api-outlook.md#CalendarDeleteItem)|予定表項目を削除します|
+|[CalendarPatchItem](connectors-create-api-outlook.md#CalendarPatchItem)|予定表項目の一部を更新します|
+|[ContactGetTables](connectors-create-api-outlook.md#ContactGetTables)|連絡先フォルダーを取得します|
+|[ContactGetItems](connectors-create-api-outlook.md#ContactGetItems)|連絡先フォルダーから連絡先を取得します|
+|[ContactPostItem](connectors-create-api-outlook.md#ContactPostItem)|新しい連絡先を作成します|
+|[ContactGetItem](connectors-create-api-outlook.md#ContactGetItem)|連絡先フォルダーから特定の連絡先を取得します|
+|[ContactDeleteItem](connectors-create-api-outlook.md#ContactDeleteItem)|連絡先を削除します|
+|[ContactPatchItem](connectors-create-api-outlook.md#ContactPatchItem)|連絡先の一部を更新します|
+### Outlook.com のトリガー
+次のイベントをリッスンできます。
 
-|Trigger | Description|
+|トリガー | Description|
 |--- | ---|
-|On event starting soon|Triggers a flow when an upcoming calendar event is starting|
-|On new email|Triggers a flow when a new email arrives|
-|On new items|Triggered when a new calendar item is created|
-|On updated items|Triggered when a calendar item is modified|
+|イベントが間もなく開始されるとき|予定表イベントが間もなく開始されるときにフローをトリガーします|
+|新しい電子メールの着信時|新しい電子メールが着信したときにフローをトリガーします|
+|新しい項目の作成時|新しい予定表項目が作成されたときにトリガーされます|
+|項目の更新時|予定表項目が変更されたときにトリガーされます|
 
 
-## <a name="create-a-connection-to-outlook.com"></a>Create a connection to Outlook.com
-To create Logic apps with Outlook.com, you must first create a **connection** then provide the details for the following properties: 
+## Outlook.com への接続を作成する
+Outlook.com を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|Property| Required|Description|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|Token|Yes|Provide Outlook.com Credentials|
-After you create the connection, you can use it to execute the actions and listen for the triggers described in this article.
+|トークン|はい|Outlook.com の資格情報を提供します|
+接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
 
->[AZURE.INCLUDE [Steps to create a connection to Outlook.com](../../includes/connectors-create-api-outlook.md)] 
+>[AZURE.INCLUDE [Outlook.com への接続を作成する手順](../../includes/connectors-create-api-outlook.md)]
 
->[AZURE.TIP] You can use this connection in other logic apps.  
+>[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
-## <a name="reference-for-outlook.com"></a>Reference for Outlook.com
-Applies to version: 1.0
+## Outlook.com のリファレンス
+適用されるバージョン: 1.0
 
-## <a name="onupcomingevents"></a>OnUpcomingEvents
-On event starting soon: Triggers a flow when an upcoming calendar event is starting 
+## OnUpcomingEvents
+イベントが間もなく開始されるとき: 予定表イベントが間もなく開始されるときにフローをトリガーします
 
-```GET: /Events/OnUpcomingEvents``` 
+```GET: /Events/OnUpcomingEvents```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|query|none|Unique identifier of the calendar|
-|lookAheadTimeInMinutes|integer|no|query|15|Time (in minutes) to look ahead for upcoming events|
+|テーブル|string|○|query|なし|予定表の一意識別子|
+|lookAheadTimeInMinutes|integer|×|query|15|間もなく開始されるイベントまでの時間 (分)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation was successful|
-|202|Operation was successful|
+|200|操作に成功しました|
+|202|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="getemails"></a>GetEmails
-Get emails: Retrieves emails from a folder 
+## GetEmails
+電子メールを取得する: フォルダーから電子メールを取得します
 
-```GET: /Mail``` 
+```GET: /Mail```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderPath|string|no|query|Inbox|Path of the folder to retrieve emails (default: 'Inbox')|
-|top|integer|no|query|10|Number of emails to retrieve (default: 10)|
-|fetchOnlyUnread|boolean|no|query|true|Retrieve only unread emails?|
-|includeAttachments|boolean|no|query|false|If set to true, attachments will also be retrieved along with the email|
-|searchQuery|string|no|query|none|Search query to filter emails|
-|skip|integer|no|query|0|Number of emails to skip (default: 0)|
-|skipToken|string|no|query|none|Skip token to fetch new page|
+|folderPath|string|×|query|Inbox|電子メールを取得するフォルダーのパス (既定値: 'Inbox')|
+|top|integer|×|query|10|取得する電子メールの件数 (既定値: 10)|
+|fetchOnlyUnread|boolean|×|query|true|未読の電子メールのみを取得しますか？|
+|includeAttachments|boolean|×|query|false|True に設定すると、電子メールと共に添付ファイルも取得されます|
+|searchQuery|string|×|query|なし|電子メールをフィルターする検索クエリ|
+|skip|integer|×|query|0|スキップする電子メールの件数 (既定値: 0)|
+|skipToken|string|×|query|なし|新しいページを取得するスキップ トークン|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="sendemail"></a>SendEmail
-Send email: Sends an email 
+## SendEmail
+電子メールを送信する: 電子メールを送信します
 
-```POST: /Mail``` 
+```POST: /Mail```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|emailMessage| |yes|body|none|Email|
+|emailMessage| |○|body|なし|電子メール|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="deleteemail"></a>DeleteEmail
-Delete email: Deletes an email by id 
+## DeleteEmail
+電子メールを削除する: ID を指定して電子メールを削除します
 
-```DELETE: /Mail/{messageId}``` 
+```DELETE: /Mail/{messageId}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|messageId|string|yes|path|none|Id of the email to delete|
+|messageId|string|○|path|なし|削除する電子メールの ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="markasread"></a>MarkAsRead
-Mark as read: Marks an email as having been read 
+## MarkAsRead
+既読としてマークする: 電子メールを既読としてマークします
 
-```POST: /Mail/MarkAsRead/{messageId}``` 
+```POST: /Mail/MarkAsRead/{messageId}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|messageId|string|yes|path|none|Id of the email to be marked as read|
+|messageId|string|○|path|なし|既読とマークする電子メールの ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="replyto"></a>ReplyTo
-Reply to email: Replies to an email 
+## ReplyTo
+電子メールに返信する: 電子メールに返信します
 
-```POST: /Mail/ReplyTo/{messageId}``` 
+```POST: /Mail/ReplyTo/{messageId}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|messageId|string|yes|path|none|Id of the email to reply to|
-|comment|string|yes|query|none|Reply comment|
-|replyAll|boolean|no|query|false|Reply to all recipients|
+|messageId|string|○|path|なし|返信する電子メールの ID|
+|comment|string|○|query|なし|応答のコメント|
+|replyAll|boolean|×|query|false|すべての受信者に返信する|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="getattachment"></a>GetAttachment
-Get attachment: Retrieves email attachment by id 
+## GetAttachment
+添付ファイルを取得する: ID を指定して電子メールの添付ファイルを取得します
 
-```GET: /Mail/{messageId}/Attachments/{attachmentId}``` 
+```GET: /Mail/{messageId}/Attachments/{attachmentId}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|messageId|string|yes|path|none|Id of the email|
-|attachmentId|string|yes|path|none|Id of the attachment to download|
+|messageId|string|○|path|なし|電子メールの ID|
+|attachmentId|string|○|path|なし|ダウンロードする添付ファイルの ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="onnewemail"></a>OnNewEmail
-On new email: Triggers a flow when a new email arrives 
+## OnNewEmail
+新しい電子メールの着信時: 新しい電子メールが着信したときにフローをトリガーします
 
-```GET: /Mail/OnNewEmail``` 
+```GET: /Mail/OnNewEmail```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderPath|string|no|query|Inbox|Email folder to retrieve (default: Inbox)|
-|to|string|no|query|none|Recipient email addresses|
-|from|string|no|query|none|From address|
-|importance|string|no|query|Normal|Importance of the email (High, Normal, Low) (default: Normal)|
-|fetchOnlyWithAttachment|boolean|no|query|false|Retrieve only emails with an attachment|
-|includeAttachments|boolean|no|query|false|Include attachments|
-|subjectFilter|string|no|query|none|String to look for in the subject|
+|folderPath|string|×|query|Inbox|取得する電子メール フォルダー (既定値: 受信トレイ)。|
+|to|string|×|query|なし|受信者の電子メール アドレス|
+|from|string|×|query|なし|差出人アドレス|
+|importance|string|×|query|Normal|電子メールの重要度 (High、Normal、Low) (既定値: Normal)|
+|fetchOnlyWithAttachment|boolean|×|query|false|ファイルが添付された電子メールのみを取得します|
+|includeAttachments|boolean|×|query|false|添付ファイルを含めます|
+|subjectFilter|string|×|query|なし|サブジェクト内で検索する文字列|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
-|202|Accepted|
+|200|操作に成功しました|
+|202|承認済み|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="sendmailwithoptions"></a>SendMailWithOptions
-Send email with options: Send an email with multiple options and wait for the recipient to respond back with one of the options 
+## SendMailWithOptions
+オプションを指定して電子メールを送信する: 複数のオプションを指定して電子メールを送信し、受信者からオプションのいずれかを含む返信が送られるまで待ちます
 
-```POST: /mailwithoptions/$subscriptions``` 
+```POST: /mailwithoptions/$subscriptions```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|optionsEmailSubscription| |yes|body|none|Subscription request for options email|
+|optionsEmailSubscription| |○|body|なし|オプションの電子メールのサブスクリプション要求|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|201|Subscription Created|
+|201|サブスクリプションが作成されました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="sendapprovalmail"></a>SendApprovalMail
-Send approval email: Send an approval email and wait for a response from the recipient 
+## SendApprovalMail
+承認の電子メールを送信する: 承認の電子メールを送信し、受信者からの返信を待ちます
 
-```POST: /approvalmail/$subscriptions``` 
+```POST: /approvalmail/$subscriptions```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|approvalEmailSubscription| |yes|body|none|Subscription request for approval email|
+|approvalEmailSubscription| |○|body|なし|承認の電子メールのサブスクリプション要求|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|201|Subscription Created|
+|201|サブスクリプションが作成されました|
 |400|BadRequest|
-|401|Unauthorized|
-|403|Forbidden|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|403|許可されていません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="calendargettables"></a>CalendarGetTables
-Get calendars: Retrieves calendars 
+## CalendarGetTables
+予定表を取得する: 予定表を取得します
 
-```GET: /datasets/calendars/tables``` 
+```GET: /datasets/calendars/tables```
 
-There are no parameters for this call
-#### <a name="response"></a>Response
+この呼び出しには、パラメーターはありません
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="calendargetitems"></a>CalendarGetItems
-Get events: Retrieves items from a calendar 
+## CalendarGetItems
+イベントを取得する: 予定表から項目を取得します
 
-```GET: /datasets/calendars/tables/{table}/items``` 
+```GET: /datasets/calendars/tables/{table}/items```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of the calendar to retrieve|
-|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
-|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
-|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
-|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
+|テーブル|string|○|path|なし|取得する予定表の一意識別子|
+|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
+|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
+|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="calendarpostitem"></a>CalendarPostItem
-Create event: Creates a new event 
+## CalendarPostItem
+イベントを作成する: 新しいイベントを作成します
 
-```POST: /datasets/calendars/tables/{table}/items``` 
+```POST: /datasets/calendars/tables/{table}/items```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a calendar|
-|item| |yes|body|none|Calendar item to create|
+|テーブル|string|○|path|なし|予定表の一意識別子|
+|item| |○|body|なし|作成する予定表項目|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="calendargetitem"></a>CalendarGetItem
-Get event: Retrieves a specific item from a calendar 
+## CalendarGetItem
+イベントを取得する: 予定表から特定の項目を取得します
 
-```GET: /datasets/calendars/tables/{table}/items/{id}``` 
+```GET: /datasets/calendars/tables/{table}/items/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a calendar|
-|id|string|yes|path|none|Unique identifier of a calendar item to retrieve|
+|テーブル|string|○|path|なし|予定表の一意識別子|
+|id|string|○|path|なし|取得する予定表項目の一意識別子|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="calendardeleteitem"></a>CalendarDeleteItem
-Delete event: Deletes a calendar item 
+## CalendarDeleteItem
+イベントを削除する: 予定表から項目を削除します
 
-```DELETE: /datasets/calendars/tables/{table}/items/{id}``` 
+```DELETE: /datasets/calendars/tables/{table}/items/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a calendar|
-|id|string|yes|path|none|Unique identifier of calendar item to delete|
+|テーブル|string|○|path|なし|予定表の一意識別子|
+|id|string|○|path|なし|削除する予定表項目の一意識別子|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="calendarpatchitem"></a>CalendarPatchItem
-Update event: Partially updates a calendar item 
+## CalendarPatchItem
+イベントを更新する: 予定表項目の一部を更新します
 
-```PATCH: /datasets/calendars/tables/{table}/items/{id}``` 
+```PATCH: /datasets/calendars/tables/{table}/items/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a calendar|
-|id|string|yes|path|none|Unique identifier of calendar item to update|
-|item| |yes|body|none|Calendar item to update|
+|テーブル|string|○|path|なし|予定表の一意識別子|
+|id|string|○|path|なし|更新する予定表項目の一意識別子|
+|item| |○|body|なし|更新する予定表項目|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="calendargetonnewitems"></a>CalendarGetOnNewItems
-On new items: Triggered when a new calendar item is created 
+## CalendarGetOnNewItems
+新しい項目に対して: 新しい予定表項目が作成されたときにトリガーされます
 
-```GET: /datasets/calendars/tables/{table}/onnewitems``` 
+```GET: /datasets/calendars/tables/{table}/onnewitems```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a calendar|
-|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
-|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
-|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
-|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
+|テーブル|string|○|path|なし|予定表の一意識別子|
+|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
+|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
+|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="calendargetonupdateditems"></a>CalendarGetOnUpdatedItems
-On updated items: Triggered when a calendar item is modified 
+## CalendarGetOnUpdatedItems
+更新された項目に対して: 予定表項目が変更されたときにトリガーされます
 
-```GET: /datasets/calendars/tables/{table}/onupdateditems``` 
+```GET: /datasets/calendars/tables/{table}/onupdateditems```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a calendar|
-|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
-|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
-|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
-|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
+|テーブル|string|○|path|なし|予定表の一意識別子|
+|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
+|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
+|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="contactgettables"></a>ContactGetTables
-Get contact folders: Retrieves contacts folders 
+## ContactGetTables
+連絡先フォルダーを取得する: 連絡先フォルダーを取得します
 
-```GET: /datasets/contacts/tables``` 
+```GET: /datasets/contacts/tables```
 
-There are no parameters for this call
-#### <a name="response"></a>Response
+この呼び出しには、パラメーターはありません
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="contactgetitems"></a>ContactGetItems
-Get contacts: Retrieves contacts from a contacts folder 
+## ContactGetItems
+連絡先を取得する: 連絡先フォルダーから連絡先を取得します
 
-```GET: /datasets/contacts/tables/{table}/items``` 
+```GET: /datasets/contacts/tables/{table}/items```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of the contacts folder to retrieve|
-|$filter|string|no|query|none|An ODATA filter query to restrict the number of entries|
-|$orderby|string|no|query|none|An ODATA orderBy query for specifying the order of entries|
-|$skip|integer|no|query|none|Number of entries to skip (default = 0)|
-|$top|integer|no|query|none|Maximum number of entries to retrieve (default = 256)|
+|テーブル|string|○|path|なし|取得する連絡先フォルダーの一意識別子|
+|$filter|string|×|query|なし|エントリ数を制限する ODATA filter クエリ|
+|$orderby|string|×|query|なし|エントリの順序を指定する ODATA orderBy クエリ|
+|$skip|integer|×|query|なし|スキップするエントリの数 (既定値 = 0)|
+|$top|integer|×|query|なし|取得するエントリの最大数 (既定値 = 256)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="contactpostitem"></a>ContactPostItem
-Create contact: Creates a new contact 
+## ContactPostItem
+連絡先を作成する: 新しい連絡先を作成します
 
-```POST: /datasets/contacts/tables/{table}/items``` 
+```POST: /datasets/contacts/tables/{table}/items```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a contacts folder|
-|item| |yes|body|none|Contact to create|
+|テーブル|string|○|path|なし|連絡先フォルダーの一意識別子|
+|item| |○|body|なし|作成する連絡先|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="contactgetitem"></a>ContactGetItem
-Get contact: Retrieves a specific contact from a contacts folder 
+## ContactGetItem
+連絡先を取得する: 連絡先フォルダーから特定の連絡先を取得します
 
-```GET: /datasets/contacts/tables/{table}/items/{id}``` 
+```GET: /datasets/contacts/tables/{table}/items/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a contacts folder|
-|id|string|yes|path|none|Unique identifier of a contact to retrieve|
+|テーブル|string|○|path|なし|連絡先フォルダーの一意識別子|
+|id|string|○|path|なし|取得する連絡先の一意識別子|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="contactdeleteitem"></a>ContactDeleteItem
-Delete contact: Deletes a contact 
+## ContactDeleteItem
+連絡先を削除する: 連絡先を削除します
 
-```DELETE: /datasets/contacts/tables/{table}/items/{id}``` 
+```DELETE: /datasets/contacts/tables/{table}/items/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a contacts folder|
-|id|string|yes|path|none|Unique identifier of contact to delete|
+|テーブル|string|○|path|なし|連絡先フォルダーの一意識別子|
+|id|string|○|path|なし|削除する連絡先の一意識別子|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="contactpatchitem"></a>ContactPatchItem
-Update contact: Partially updates a contact 
+## ContactPatchItem
+連絡先を更新する: 連絡先の一部を更新します
 
-```PATCH: /datasets/contacts/tables/{table}/items/{id}``` 
+```PATCH: /datasets/contacts/tables/{table}/items/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|table|string|yes|path|none|Unique identifier of a contacts folder|
-|id|string|yes|path|none|Unique identifier of contact to update|
-|item| |yes|body|none|Contact item to update|
+|テーブル|string|○|path|なし|連絡先フォルダーの一意識別子|
+|id|string|○|path|なし|更新する連絡先の一意識別子|
+|item| |○|body|なし|更新する連絡先項目|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## オブジェクト定義 
 
-### <a name="triggerbatchresponse[idictionary[string,object]]"></a>TriggerBatchResponse[IDictionary[String,Object]]
+### TriggerBatchResponse[IDictionary[String,Object]]
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="object"></a>Object
+### オブジェクト
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
 
 
 
-### <a name="sendmessage"></a>SendMessage
+### SendMessage
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Attachments|array|No |
-|From|string|No |
-|Cc|string|No |
-|Bcc|string|No |
-|Subject|string|Yes |
-|Body|string|Yes |
-|Importance|string|No |
-|IsHtml|boolean|No |
-|To|string|Yes |
+|[添付ファイル]|array|なし |
+|From|string|なし |
+|Cc|string|なし |
+|[Bcc]|string|なし |
+|[件名]|string|はい |
+|本文|string|はい |
+|[重要度]|string|なし |
+|IsHtml|boolean|なし |
+|To|string|はい |
 
 
 
-### <a name="sendattachment"></a>SendAttachment
+### SendAttachment
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|@odata.type|string|No |
-|Name|string|Yes |
-|ContentBytes|string|Yes |
+|@odata.type|string|なし |
+|名前|string|はい |
+|ContentBytes|string|はい |
 
 
 
-### <a name="receivemessage"></a>ReceiveMessage
+### ReceiveMessage
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Id|string|No |
-|IsRead|boolean|No |
-|HasAttachment|boolean|No |
-|DateTimeReceived|string|No |
-|Attachments|array|No |
-|From|string|No |
-|Cc|string|No |
-|Bcc|string|No |
-|Subject|string|Yes |
-|Body|string|Yes |
-|Importance|string|No |
-|IsHtml|boolean|No |
-|To|string|Yes |
+|ID|string|なし |
+|IsRead|boolean|なし |
+|HasAttachment|boolean|なし |
+|DateTimeReceived|string|なし |
+|[添付ファイル]|array|なし |
+|From|string|なし |
+|Cc|string|なし |
+|[Bcc]|string|なし |
+|[件名]|string|はい |
+|本文|string|はい |
+|[重要度]|string|なし |
+|IsHtml|boolean|なし |
+|To|string|はい |
 
 
 
-### <a name="receiveattachment"></a>ReceiveAttachment
+### ReceiveAttachment
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Id|string|Yes |
-|ContentType|string|Yes |
-|@odata.type|string|No |
-|Name|string|Yes |
-|ContentBytes|string|Yes |
+|ID|string|はい |
+|ContentType|string|はい |
+|@odata.type|string|なし |
+|名前|string|はい |
+|ContentBytes|string|はい |
 
 
 
-### <a name="digestmessage"></a>DigestMessage
+### DigestMessage
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Subject|string|Yes |
-|Body|string|No |
-|Importance|string|No |
-|Digest|array|Yes |
-|Attachments|array|No |
-|To|string|Yes |
+|[件名]|string|はい |
+|本文|string|なし |
+|[重要度]|string|なし |
+|Digest|array|はい |
+|[添付ファイル]|array|なし |
+|To|string|はい |
 
 
 
-### <a name="triggerbatchresponse[receivemessage]"></a>TriggerBatchResponse[ReceiveMessage]
+### TriggerBatchResponse[ReceiveMessage]
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="datasetsmetadata"></a>DataSetsMetadata
+### DataSetsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|tabular|not defined|No |
-|blob|not defined|No |
+|tabular|未定義|なし |
+|BLOB|未定義|なし |
 
 
 
-### <a name="tabulardatasetsmetadata"></a>TabularDataSetsMetadata
+### TabularDataSetsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|source|string|No |
-|displayName|string|No |
-|urlEncoding|string|No |
-|tableDisplayName|string|No |
-|tablePluralName|string|No |
+|source|string|なし |
+|displayName|string|なし |
+|urlEncoding|string|なし |
+|tableDisplayName|string|なし |
+|tablePluralName|string|なし |
 
 
 
-### <a name="blobdatasetsmetadata"></a>BlobDataSetsMetadata
+### BlobDataSetsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|source|string|No |
-|displayName|string|No |
-|urlEncoding|string|No |
+|source|string|なし |
+|displayName|string|なし |
+|urlEncoding|string|なし |
 
 
 
-### <a name="tablemetadata"></a>TableMetadata
+### TableMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|name|string|No |
-|title|string|No |
-|x-ms-permission|string|No |
-|x-ms-capabilities|not defined|No |
-|schema|not defined|No |
+|name|string|なし |
+|title|string|なし |
+|x-ms-permission|string|なし |
+|x-ms-capabilities|未定義|なし |
+|schema|未定義|なし |
 
 
 
-### <a name="tablecapabilitiesmetadata"></a>TableCapabilitiesMetadata
+### TableCapabilitiesMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|sortRestrictions|not defined|No |
-|filterRestrictions|not defined|No |
-|filterFunctions|array|No |
+|sortRestrictions|未定義|なし |
+|filterRestrictions|未定義|なし |
+|filterFunctions|array|なし |
 
 
 
-### <a name="tablesortrestrictionsmetadata"></a>TableSortRestrictionsMetadata
+### TableSortRestrictionsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|sortable|boolean|No |
-|unsortableProperties|array|No |
-|ascendingOnlyProperties|array|No |
+|sortable|boolean|なし |
+|unsortableProperties|array|なし |
+|ascendingOnlyProperties|array|なし |
 
 
 
-### <a name="tablefilterrestrictionsmetadata"></a>TableFilterRestrictionsMetadata
+### TableFilterRestrictionsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|filterable|boolean|No |
-|nonFilterableProperties|array|No |
-|requiredProperties|array|No |
+|filterable|boolean|なし |
+|nonFilterableProperties|array|なし |
+|requiredProperties|array|なし |
 
 
 
-### <a name="optionsemailsubscription"></a>OptionsEmailSubscription
+### OptionsEmailSubscription
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|NotificationUrl|string|No |
-|Message|not defined|No |
+|NotificationUrl|string|なし |
+|メッセージ|未定義|なし |
 
 
 
-### <a name="messagewithoptions"></a>MessageWithOptions
+### MessageWithOptions
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Subject|string|Yes |
-|Options|string|Yes |
-|Body|string|No |
-|Importance|string|No |
-|Attachments|array|No |
-|To|string|Yes |
+|[件名]|string|はい |
+|オプション|string|はい |
+|本文|string|なし |
+|[重要度]|string|なし |
+|[添付ファイル]|array|なし |
+|To|string|はい |
 
 
 
-### <a name="subscriptionresponse"></a>SubscriptionResponse
+### SubscriptionResponse
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|No |
-|resource|string|No |
-|notificationType|string|No |
-|notificationUrl|string|No |
+|id|string|なし |
+|resource|string|なし |
+|notificationType|string|なし |
+|notificationUrl|string|なし |
 
 
 
-### <a name="approvalemailsubscription"></a>ApprovalEmailSubscription
+### ApprovalEmailSubscription
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|NotificationUrl|string|No |
-|Message|not defined|No |
+|NotificationUrl|string|なし |
+|メッセージ|未定義|なし |
 
 
 
-### <a name="approvalmessage"></a>ApprovalMessage
+### ApprovalMessage
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Subject|string|Yes |
-|Options|string|Yes |
-|Body|string|No |
-|Importance|string|No |
-|Attachments|array|No |
-|To|string|Yes |
+|[件名]|string|はい |
+|オプション|string|はい |
+|本文|string|なし |
+|[重要度]|string|なし |
+|[添付ファイル]|array|なし |
+|To|string|はい |
 
 
 
-### <a name="approvalemailresponse"></a>ApprovalEmailResponse
+### ApprovalEmailResponse
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|SelectedOption|string|No |
+|SelectedOption|string|なし |
 
 
 
-### <a name="tableslist"></a>TablesList
+### TablesList
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="table"></a>Table
+### テーブル
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Name|string|No |
-|DisplayName|string|No |
+|名前|string|なし |
+|DisplayName|string|なし |
 
 
 
-### <a name="item"></a>Item
+### 項目
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ItemInternalId|string|No |
+|ItemInternalId|string|なし |
 
 
 
-### <a name="calendaritemslist"></a>CalendarItemsList
+### CalendarItemsList
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="calendaritem"></a>CalendarItem
+### CalendarItem
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ItemInternalId|string|No |
+|ItemInternalId|string|なし |
 
 
 
-### <a name="contactitemslist"></a>ContactItemsList
+### ContactItemsList
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="contactitem"></a>ContactItem
+### ContactItem
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ItemInternalId|string|No |
+|ItemInternalId|string|なし |
 
 
 
-### <a name="datasetslist"></a>DataSetsList
+### DataSetsList
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="dataset"></a>DataSet
+### DataSet
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Name|string|No |
-|DisplayName|string|No |
+|名前|string|なし |
+|DisplayName|string|なし |
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

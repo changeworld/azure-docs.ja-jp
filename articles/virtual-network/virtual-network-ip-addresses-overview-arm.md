@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Public and private IP addressing in Azure Resource Manager | Microsoft Azure"
-   description="Learn about public and private IP addressing in Azure Resource Manager"
+   pageTitle="Azure リソース マネージャーでパブリックおよびプライベートの IP アドレスを指定する | Microsoft Azure"
+   description="Azure リソース マネージャーでパブリックおよびプライベートの IP アドレスを指定する方法について説明します"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -16,129 +16,124 @@
    ms.date="04/27/2016"
    ms.author="jdial" />
 
+# Azure 内の IP アドレス
+Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。Azure で使用できる IP アドレスには、次の 2 種類があります。
 
-# <a name="ip-addresses-in-azure"></a>IP addresses in Azure
-You can assign IP addresses to Azure resources to communicate with other Azure resources, your on-premises network, and the Internet. There are two types of IP addresses you can use in Azure:
+- **パブリック IP アドレス**: Azure の公開されたサービスを含め、インターネットとの通信に使用します。
+- **プライベート IP アドレス**: VPN ゲートウェイまたは ExpressRoute 回線を使用してネットワークを Azure に拡張するときに、Azure 仮想ネットワーク (VNet)、およびオンプレミスのネットワーク内での通信に使用します。
 
-- **Public IP addresses**: Used for communication with the Internet, including Azure public-facing services
-- **Private IP addresses**: Used for communication within an Azure virtual network (VNet), and your on-premises network when you use a VPN gateway or ExpressRoute circuit to extend your network to Azure.
+[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [クラシック デプロイメント モデル](virtual-network-ip-addresses-overview-classic.md)。
 
-[AZURE.INCLUDE [azure-arm-classic-important-include](../../includes/learn-about-deployment-models-rm-include.md)] [classic deployment model](virtual-network-ip-addresses-overview-classic.md).
+クラシック デプロイ モデルの知識がある場合は、[クラシック デプロイとリソース マネージャーでの IP アドレス指定の相違点](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments)に関するページを確認してください。
 
-If you are familiar with the classic deployment model, check the [differences in IP addressing between classic and Resource Manager](virtual-network-ip-addresses-overview-classic.md#Differences-between-Resource-Manager-and-classic-deployments).
+## パブリック IP アドレス
+パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL データベース](../sql-database/sql-database-technical-overview.md)、[Azure ストレージ](../storage/storage-introduction.md)など、Azure の公開されたサービスと通信できます。
 
-## <a name="public-ip-addresses"></a>Public IP addresses
-Public IP addresses allow Azure resources to communicate with Internet and Azure public-facing services such as [Azure Redis Cache](https://azure.microsoft.com/services/cache/), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [SQL databases](../sql-database/sql-database-technical-overview.md), and [Azure storage](../storage/storage-introduction.md).
+Azure リソース マネージャーで、[パブリック IP](resource-groups-networking.md#public-ip-address) アドレスは、独自のプロパティを持つリソースです。パブリック IP アドレスのリソースは、次のリソースのいずれかと関連付けることができます。
 
-In Azure Resource Manager, a [public IP](resource-groups-networking.md#public-ip-address) address is a resource that has its own properties. You can associate a public IP address resource with any of the following resources:
+- 仮想マシン (VM)
+- インターネットに接続するロード バランサー
+- VPN ゲートウェイ
+- アプリケーション ゲートウェイ
 
-- Virtual machines (VM)
-- Internet-facing load balancers
-- VPN gateways
-- Application gateways
+### 割り当て方法
+IP アドレスを*パブリック* IP リソースに割り当てる方法には、*動的*と*静的*の 2 種類があります。既定の割り当て方法は*動的*で、IP アドレスの作成時に割り当ては**行われません**。代わりに、関連付けられたリソース (VM やロード バランサーなど) を開始 (または作成) するときに、パブリック IP アドレスが割り当てられます。IP アドレスは、リソースを停止 (または削除) すると解放されます。これにより、リソースの停止および開始の際に IP アドレスが変更されます。
 
-### <a name="allocation-method"></a>Allocation method
-There are two methods in which an IP address is allocated to a *public* IP resource - *dynamic* or *static*. The default allocation method is *dynamic*, where an IP address is **not** allocated at the time of its creation. Instead, the public IP address is allocated when you start (or create) the associated resource (like a VM or load balancer). The IP address is released when you stop (or delete) the resource. This causes the IP address to change when you stop and start a resource.
+関連付けられたリソースの IP アドレスが変わらないようにするため、割り当て方法を明示的に*静的*に設定できます。この場合、IP アドレスが即座に割り当てられます。IP アドレスはリソースを削除するか、その割り当て方法を*動的*に変更した場合にのみ解放されます。
 
-To ensure the IP address for the associated resource remains the same, you can set the allocation method explicitly to *static*. In this case an IP address is assigned immediately. It is released only when you delete the resource or change its allocation method to *dynamic*.
+>[AZURE.NOTE] 割り当て方法を*静的*に設定しても、*パブリック IP リソース*に割り当てられた実際の IP アドレスは指定できません。代わりに、リソースが作成される Azure の location に使用可能な IP アドレスのプールから割り当てられます。
 
->[AZURE.NOTE] Even when you set the allocation method to *static*, you cannot specify the actual IP address assigned to the *public IP resource*. Instead, it gets allocated from a pool of available IP addresses in the Azure location the resource is created in.
+次のようなシナリオでは、静的なパブリック IP アドレスが一般的に使用されます。
 
-Static public IP addresses are commonly used in the following scenarios:
+- エンドユーザーが Azure リソースと通信するためのファイアウォール規則を更新する必要がある。
+- DNS 名の解決で、IP アドレスの変更によりレコードを更新する必要がある。
+- Azure のリソースが、IP アドレス ベースのセキュリティ モデルを使用する他のアプリまたはサービスと通信する。
+- IP アドレスにリンクされている SSL 証明書を使用する。
 
-- End-users need to update firewall rules to communicate with your Azure resources.
-- DNS name resolution, where a change in IP address would require updating A records.
-- Your Azure resources communicate with other apps or services that use an IP address-based security model.
-- You use SSL certificates linked to an IP address.
+>[AZURE.NOTE] Azure リソースへのパブリック IP アドレス (動的/静的) の割り当てに使用する IP アドレス範囲のリストは、「[Azure データセンターの IP アドレス範囲](https://www.microsoft.com/download/details.aspx?id=41653)」で公開されています。
 
->[AZURE.NOTE] The list of IP ranges from which public IP addresses (dynamic/static) are allocated to Azure resources is published at [Azure Datacenter IP ranges](https://www.microsoft.com/download/details.aspx?id=41653).
+### DNS ホスト名の解決
+パブリック IP リソースに DNS ドメイン名ラベルを指定して、Azure で管理される DNS サーバーのパブリック IP アドレスに対する *domainnamelabel*.*location*.cloudapp.azure.com のマッピングを作成できます。たとえば、Azure の *location* が **West US** で、*domainnamelabel* が **contoso** のパブリック IP リソースを作成した場合、 完全修飾ドメイン名 (FQDN) **contoso.westus.cloudapp.azure.com** がリソースのパブリック IP アドレスに解決されます。この FQDN を使用して、Azure 内のパブリック IP アドレスをポイントするカスタム ドメイン CNAME レコードを作成できます。
 
-### <a name="dns-hostname-resolution"></a>DNS hostname resolution
-You can specify a DNS domain name label for a public IP resource, which creates a mapping for *domainnamelabel*.*location*.cloudapp.azure.com to the public IP address in the Azure-managed DNS servers. For instance, if you create a public IP resource with **contoso** as a *domainnamelabel* in the **West US** Azure *location*, the fully-qualified domain name (FQDN) **contoso.westus.cloudapp.azure.com** will resolve to the public IP address of the resource. You can use this FQDN to create a custom domain CNAME record pointing to the public IP address in Azure.
+>[AZURE.IMPORTANT] 作成された各ドメイン名ラベルは、Azure の location 内で一意である必要があります。
 
->[AZURE.IMPORTANT] Each domain name label created must be unique within its Azure location.  
+### 仮想マシン
+パブリック IP アドレスは、その**ネットワーク インターフェイス**に割り当てることで、[Windows](../virtual-machines/virtual-machines-windows-about.md) または[Linux](../virtual-machines/virtual-machines-linux-about.md) の VM に関連付けることができます。複数のネットワーク インターフェイスを備える VM の場合、*プライマリ* ネットワーク インターフェイスのみに割り当てることができます。VM には、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。
 
-### <a name="virtual-machines"></a>Virtual machines
-You can associate a public IP address with a [Windows](../virtual-machines/virtual-machines-windows-about.md) or [Linux](../virtual-machines/virtual-machines-linux-about.md) VM by assigning it to its **network interface**. In the case of a multi-network interface VM, you can assign it to the *primary* network interface only. You can assign either a dynamic or a static public IP address to a VM.
+### インターネットに接続するロード バランサー
+パブリック IP アドレスをロード バランサーの**フロント エンド**構成に割り当てることで、[Azure Load Balancer](../load-balancer/load-balancer-overview.md) に関連付けることができます。このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような[マルチ VIP](../load-balancer/load-balancer-multivip.md) シナリオを有効にすることもできます。
 
-### <a name="internet-facing-load-balancers"></a>Internet-facing load balancers
-You can associate a public IP address with an [Azure Load Balancer](../load-balancer/load-balancer-overview.md), by assigning it to the load balancer **frontend** configuration. This public IP address serves as a load-balanced virtual IP address (VIP). You can assign either a dynamic or a static public IP address to a load balancer front-end. You can also assign multiple public IP addresses to a load balancer front-end, which enables [multi-VIP](../load-balancer/load-balancer-multivip.md) scenarios like a multi-tenant environment with SSL-based websites.
+### VPN ゲートウェイ
+[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) は、Azure 仮想ネットワーク (VNet) を他の Azure VNet またはオンプレミスのネットワークに接続するために使用されます。リモート ネットワークとの通信を有効にするには、パブリック IP アドレスをその **IP 構成**に割り当てる必要があります。現時点で VPN ゲートウェイに割り当てることができるのは、*動的*パブリック IP アドレスのみです。
 
-### <a name="vpn-gateways"></a>VPN gateways
-[Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) is used to connect an Azure virtual network (VNet) to other Azure VNets or to an on-premises network. You need to assign a public IP address to its **IP configuration** to enable it to communicate with the remote network. Currently, you can only assign a *dynamic* public IP address to a VPN gateway.
+### アプリケーション ゲートウェイ
+パブリック IP アドレスをゲートウェイの**フロント エンド**構成に割り当てることで、Azure [Application Gateway](../application-gateway/application-gateway-introduction.md) に関連付けることができます。このパブリック IP アドレスは、負荷分散された VIP として機能します。現時点で Application Gateway のフロント エンド構成に割り当てることができるのは、*動的*パブリック IP アドレスのみです。
 
-### <a name="application-gateways"></a>Application gateways
-You can associate a public IP address with an Azure [Application Gateway](../application-gateway/application-gateway-introduction.md), by assigning it to the gateway's **frontend** configuration. This public IP address serves as a load-balanced VIP. Currently, you can only assign a *dynamic* public IP address to an application gateway frontend configuration.
+### 早見表
+下の表は、パブリック IP アドレスを最上位リソースに関連付けることができる特定のプロパティと、使用できる割り当て方法 (動的または静的) を示しています。
 
-### <a name="at-a-glance"></a>At-a-glance
-The table below shows the specific property through which a public IP address can be associated to a top-level resource, and the possible allocation methods (dynamic or static) that can be used.
-
-|Top-level resource|IP Address association|Dynamic|Static|
+|最上位リソース|IP アドレスの関連付け|動的|静的|
 |---|---|---|---|
-|Virtual machine|Network interface|Yes|Yes|
-|Load balancer|Front end configuration|Yes|Yes|
-|VPN gateway|Gateway IP configuration|Yes|No|
-|Application gateway|Front end configuration|Yes|No|
+|仮想マシン|ネットワーク インターフェイス|はい|はい|
+|Load Balancer|フロントエンドの構成|はい|はい|
+|VPN Gateway|ゲートウェイ IP の構成|はい|いいえ|
+|Application Gateway|フロントエンドの構成|はい|いいえ|
 
-## <a name="private-ip-addresses"></a>Private IP addresses
-Private IP addresses allow Azure resources to communicate with other resources in a [virtual network](virtual-networks-overview.md) or an on-premises network through a VPN gateway or ExpressRoute circuit, without using an Internet-reachable IP address.
+## プライベート IP アドレス
+プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、[仮想ネットワーク](virtual-networks-overview.md)の他のリソース、あるいはオンプレミスのネットワーク (VPN ゲートウェイまたは ExpressRoute 回線経由) と通信することができます。
 
-In the Azure Resource Manager deployment model, a private IP address is associated to the following types of Azure resources:
+Azure Resource Manager デプロイメント モデルでは、プライベート IP アドレスは次の種類の Azure リソースに関連付けられます。
 
-- VMs
-- Internal load balancers (ILBs)
-- Application gateways
+- VM
+- 内部ロード バランサー (ILB)
+- アプリケーション ゲートウェイ
 
-### <a name="allocation-method"></a>Allocation method
-A private IP address is allocated from the address range of the subnet to which the resource is attached. The address range of the subnet itself is a part of the VNet's address range.
+### 割り当て方法
+プライベート IP アドレスは、リソースが関連付けられているサブネットのアドレス範囲から割り当てられます。サブネット自体のアドレス範囲は、VNet のアドレス範囲に含まれます。
 
-There are two methods in which a private IP address is allocated: *dynamic* or *static*. The default allocation method is *dynamic*, where the IP address is automatically allocated from the resource's subnet (using DHCP). This IP address can change when you stop and start the resource.
+プライベート IP アドレスを割り当てる方法には、*動的*と*静的*の 2 種類があります。既定の割り当て方法は*動的*です。IP アドレスは (DHCP を使用して) リソースのサブネットから自動的に割り当てられます。リソースを停止して起動すると、この IP アドレスが変更される場合があります。
 
-You can set the allocation method to *static* to ensure the IP address remains the same. In this case, you also need to provide a valid IP address that is part of the resource's subnet.
+IP アドレスが変わらないようにするため、割り当て方法を*静的*に設定することができます。この場合、リソースのサブネットの一部として有効な IP アドレスも指定する必要があります。
 
-Static private IP addresses are commonly used for:
+静的プライベート IP アドレスは、通常は次のものに使用されます。
 
-- VMs that act as domain controllers or DNS servers.
-- Resources that require firewall rules using IP addresses.
-- Resources accessed by other apps/resources through an IP address.
+- ドメイン コントローラーまたは DNS サーバーとして機能する VM。
+- IP アドレスを使用するファイアウォール規則を必要とするリソース。
+- IP アドレスを使用して他のアプリ/リソースからアクセスされるリソース。
 
-### <a name="virtual-machines"></a>Virtual machines
-A private IP address is assigned to the **network interface** of a [Windows](../virtual-machines/virtual-machines-windows-about.md) or [Linux](../virtual-machines/virtual-machines-linux-about.md) VM. In case of a multi-network interface VM, each interface gets a private IP address assigned. You can specify the allocation method as either dynamic or static for a network interface.
+### 仮想マシン
+プライベート IP アドレスは、[Windows](../virtual-machines/virtual-machines-windows-about.md) または [Linux](../virtual-machines/virtual-machines-linux-about.md) の VM の**ネットワーク インターフェイス**に割り当てます。複数のネットワーク インターフェイスを備える VM の場合、各インターフェイスにプライベート IP アドレスが割り当てられます。ネットワーク インターフェイスに対して動的または静的のどちらかの割り当て方法を指定できます。
 
-#### <a name="internal-dns-hostname-resolution-(for-vms)"></a>Internal DNS hostname resolution (for VMs)
-All Azure VMs are configured with [Azure-managed DNS servers](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) by default, unless you explicitly configure custom DNS servers. These DNS servers provide internal name resolution for VMs that reside within the same VNet.
+#### 内部 DNS ホスト名の解決 (VM の場合)
+カスタムの DNS サーバーを明示的に構成しない限り、既定ではすべての Azure VM が [Azure で管理される DNS サーバー](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution)で構成されます。これらの DNS サーバーは、同じ VNet 内に存在する VM の内部名前解決を可能にします。
 
-When you create a VM, a mapping for the hostname to its private IP address is added to the Azure-managed DNS servers. In case of a multi-network interface VM, the hostname is mapped to the private IP address of the primary network interface.
+VM を作成すると、そのプライベート IP アドレスへのホスト名のマッピングが、Azure で管理される DNS サーバーに追加されます。複数のネットワーク インターフェイスを備える VM の場合、ホスト名はプライマリ ネットワーク インターフェイスのプライベート IP アドレスにマップされます。
 
-VMs configured with Azure-managed DNS servers will be able to resolve the hostnames of all VMs within their VNet to their private IP addresses.
+Azure で管理される DNS サーバーで構成されている VM は、その VNet 内のすべての VM のホスト名をプライベート IP アドレスに解決することができます。
 
-### <a name="internal-load-balancers-(ilb)-&-application-gateways"></a>Internal load balancers (ILB) & Application gateways
-You can assign a private IP address to the **front end** configuration of an [Azure Internal Load Balancer](../load-balancer/load-balancer-internal-overview.md) (ILB) or an [Azure Application Gateway](../application-gateway/application-gateway-introduction.md). This private IP address serves as an internal endpoint, accessible only to the resources within its virtual network (VNet) and the remote networks connected to the VNet. You can assign either a dynamic or static private IP address to the front end configuration.
+### 内部ロード バランサー (ILB) と Application Gateway
+[Azure 内部ロード バランサー](../load-balancer/load-balancer-internal-overview.md) (ILB) または [Azure Application Gateway](../application-gateway/application-gateway-introduction.md) の**フロント エンド**構成にプライベート IP アドレスを割り当てることができます。このプライベート IP アドレスは内部エンドポイントとして機能し、その仮想ネットワーク (VNet) 内のリソースおよび VNet に接続されたリモート ネットワークからのみアクセスできます。フロント エンド構成には、動的または静的のどちらかのプライベート IP アドレスを割り当てることができます。
 
-### <a name="at-a-glance"></a>At-a-glance
-The table below shows the specific property through which a private IP address can be associated to a top-level resource, and the possible allocation methods (dynamic or static) that can be used.
+### 早見表
+下の表は、プライベート IP アドレスを最上位リソースに関連付けることができる特定のプロパティと、使用できる割り当て方法 (動的または静的) を示しています。
 
-|Top-level resource|IP address association|Dynamic|Static|
+|最上位リソース|IP アドレスの関連付け|動的|静的|
 |---|---|---|---|
-|Virtual machine|Network interface|Yes|Yes|
-|Load balancer|Front end configuration|Yes|Yes|
-|Application gateway|Front end configuration|Yes|Yes|
+|仮想マシン|ネットワーク インターフェイス|はい|はい|
+|Load Balancer|フロントエンドの構成|はい|はい|
+|Application Gateway|フロントエンドの構成|はい|はい|
 
-## <a name="limits"></a>Limits
+## 制限
 
-The limits imposed on IP addressing are indicated in the full set of [limits for networking](azure-subscription-service-limits.md#networking-limits) in Azure. These limits are per region and per subscription. You can [contact support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to increase the default limits up to the maximum limits based on your business needs.
+IP アドレス指定に対する制限は、Azure の[ネットワークの制限](azure-subscription-service-limits.md#networking-limits)の完全なセットに示されています。これらの制限は、リージョンとサブスクリプションごとに存在します。ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、[サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
 
-## <a name="pricing"></a>Pricing
+## 価格
 
-Public IP addresses may have a nominal charge. To learn more about IP address pricing in Azure, review the [IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses) page.
+ほとんどの場合、パブリック IP アドレスは無料です。追加のパブリック IP アドレスまたは静的な IP アドレスを使用する場合は標準の料金が発生します。[パブリック IP の料金体系](https://azure.microsoft.com/pricing/details/ip-addresses/)を必ず把握してください。
 
-## <a name="next-steps"></a>Next steps
-- [Deploy a VM with a static public IP using the Azure portal](virtual-network-deploy-static-pip-arm-portal.md)
-- [Deploy a VM with a static public IP using a template](virtual-network-deploy-static-pip-arm-template.md)
-- [Deploy a VM with a static private IP address using the Azure portal](virtual-networks-static-private-ip-arm-pportal.md)
+## 次のステップ
+- [Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする](virtual-network-deploy-static-pip-arm-portal.md)
+- [テンプレートを使用した静的パブリック IP を持つ VM のデプロイ](virtual-network-deploy-static-pip-arm-template.md)
+- Azure ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-arm-pportal.md)します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,198 +1,193 @@
 <properties 
-    pageTitle="Kernels available with Jupyter notebooks on HDInsight Spark clusters on Linux| Microsoft Azure" 
-    description="Learn about the additional Jupyter notebook kernels available with Spark cluster on HDInsight Linux." 
-    services="hdinsight" 
-    documentationCenter="" 
-    authors="nitinme" 
-    manager="jhubbard" 
-    editor="cgronlun"
-    tags="azure-portal"/>
+	pageTitle="Linux 上の HDInsight Spark クラスターの Jupyter Notebook で使用可能なカーネル | Microsoft Azure" 
+	description="HDInsight Linux 上の Spark クラスターで使用できる追加の Jupyter Notebook カーネルについて説明します。" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="nitinme" 
+	manager="jhubbard" 
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
-    ms.service="hdinsight" 
-    ms.workload="big-data" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/05/2016" 
-    ms.author="nitinme"/>
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2016" 
+	ms.author="nitinme"/>
 
 
+# HDInsight Linux の Apache Spark クラスターと Jupyter Notebook で使用可能なカーネル
 
-# <a name="kernels-available-for-jupyter-notebooks-with-apache-spark-clusters-on-hdinsight-linux"></a>Kernels available for Jupyter notebooks with Apache Spark clusters on HDInsight Linux
+HDInsight (Linux) の Apache Spark クラスターには、アプリケーションのテストに使用できる Jupyter Notebook が含まれています。カーネルは、コードを実行し、解釈するプログラムです。HDInsight の Spark クラスターには、Jupyter Notebook で使用できる 2 つのカーネルが用意されています。次のとおりです。
 
-Apache Spark cluster on HDInsight (Linux) includes Jupyter notebooks that you can use to test your applications. A kernel is a program that runs and interprets your code. HDInsight Spark clusters provide two kernels that you can use with the Jupyter notebook. These are:
+1. **PySpark** (Python で記述されたアプリケーション用)
+2. **Spark** (Scala で記述されたアプリケーション用)
 
-1. **PySpark** (for applications written in Python)
-2. **Spark** (for applications written in Scala)
+この記事では、これらのカーネルの使い方と、これらを使用する利点について説明します。
 
-In this article, you will learn about how to use these kernels and what are the benefits you get from using them.
+**前提条件:**
 
-**Prerequisites:**
+次のものが必要です。
 
-You must have the following:
+- Azure サブスクリプション。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- HDInsight Linux での Apache Spark クラスター。手順については、[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
 
-- An Azure subscription. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- An Apache Spark cluster on HDInsight Linux. For instructions, see [Create Apache Spark clusters in Azure HDInsight](hdinsight-apache-spark-jupyter-spark-sql.md).
+## カーネルの使い方 
 
-## <a name="how-do-i-use-the-kernels?"></a>How do I use the kernels? 
+1. [Azure ポータル](https://portal.azure.com/)のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。**[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。
 
-1. From the [Azure Portal](https://portal.azure.com/), from the startboard, click the tile for your Spark cluster (if you pinned it to the startboard). You can also navigate to your cluster under **Browse All** > **HDInsight Clusters**.   
+2. Spark クラスター ブレードで、**[クイック リンク]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[Jupyter Notebook]** をクリックします。入力を求められたら、クラスターの管理者資格情報を入力します。
 
-2. From the Spark cluster blade, click **Cluster Dashboard**, and then click **Jupyter Notebook**. If prompted, enter the admin credentials for the cluster.
+	> [AZURE.NOTE] ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。__CLUSTERNAME__ をクラスターの名前に置き換えます。
+	>
+	> `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-    > [AZURE.NOTE] You may also reach the Jupyter Notebook for your cluster by opening the following URL in your browser. Replace __CLUSTERNAME__ with the name of your cluster:
-    >
-    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
+2. 新しいカーネルで、新しい Notebook を作成します。**[新規]** をクリックし、**[Pyspark]** または **[Spark]** をクリックします。Scala アプリケーションには Spark カーネルを使用し、Python アプリケーションには PySpark カーネルを使用する必要があります。
 
-2. Create a new notebook with the new kernels. Click **New**, and then click **Pyspark** or **Spark**. You should use the Spark kernel for Scala applications and PySpark kernel for Python applications.
+	![新しい Jupyter Notebook を作成します](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "新しい Jupyter Notebook を作成します")
 
-    ![Create a new Jupyter notebook](./media/hdinsight-apache-spark-jupyter-notebook-kernels/jupyter-kernels.png "Create a new Jupyter notebook") 
+3. 選択したカーネルで、新しい Notebook が開かれます。
 
-3. This should open a new notebook with the kernel you selected.
+## PySpark または Spark カーネルを使用する理由
 
-## <a name="why-should-i-use-the-pyspark-or-spark-kernels?"></a>Why should I use the PySpark or Spark kernels?
+新しいカーネルを使用すると、いくつかの利点があります。
 
-Here are a few benefits of using the new kernels.
+1. **コンテキストのプリセット**。Jupyter Notebook で提供される **PySpark** または **Spark** カーネルでは、開発しているアプリケーションの操作を開始する前に、Spark または Hive コンテキストを明示的に設定する必要がありません。これらのカーネルは、既定で利用できます。各コンテキストは次のとおりです。
 
-1. **Preset contexts**. With the **PySpark** or **Spark** kernels that are provided with Jupyter notebooks, you do not need to set the Spark or Hive contexts explicitly before you can start working with the application you are developing; these are available for you by default. These contexts are:
-
-    * **sc** - for Spark context
-    * **sqlContext** - for Hive context
+	* **sc**: Spark コンテキスト用
+	* **sqlContext**: Hive コンテキスト用
 
 
-    So, you don't have to run statements like the following to set the contexts:
+	そのため、コンテキストを設定するための次のようなステートメントを実行する必要はありません。
 
-        ###################################################
-        # YOU DO NOT NEED TO RUN THIS WITH THE NEW KERNELS
-        ###################################################
-        sc = SparkContext('yarn-client')
-        sqlContext = HiveContext(sc)
+		###################################################
+		# YOU DO NOT NEED TO RUN THIS WITH THE NEW KERNELS
+		###################################################
+		sc = SparkContext('yarn-client')
+		sqlContext = HiveContext(sc)
 
-    Instead, you can directly use the preset contexts in your application.
-    
-2. **Cell magics**. The PySpark kernel provides some predefined “magics”, which are special commands that you can call with `%%` (e.g. `%%MAGIC` <args>). The magic command must be the first word in a code cell and allow for multiple lines of content. The magic word should be the first word in the cell. Adding anything before the magic, even comments, will cause an error.   For more information on magics, see [here](http://ipython.readthedocs.org/en/stable/interactive/magics.html).
+	代わりに、事前に設定されたコンテキストをアプリケーションで直接使用できます。
+	
+2. **セル マジック**。PySpark カーネルには、"マジック"、つまり、`%%` (`%%MAGIC` <args> など) で呼び出すことができる特別なコマンドがいくつか事前定義されています。このマジック コマンドはコード セルの最初の単語にする必要があります。また、コンテンツの複数行に対応できる必要があります。魔法の単語はセルの最初の単語にする必要があります。その前に他の単語を追加すると、それがコメントであっても、エラーを引き起こします。マジックの詳細については、[こちら](http://ipython.readthedocs.org/en/stable/interactive/magics.html)をご覧ください。
 
-    The table below lists the different magics available through the kernels.
+	次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
-  	| Magic     | Example                         | Description  |
-  	|-----------|---------------------------------|--------------|
-  	| help      | `%%help`                            | Generates a table of all the available magics with example and description |
-  	| info      | `%%info`                          | Outputs session information for the current Livy endpoint |
-  	| configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | Configures the parameters for creating a session. The force flag (-f) is mandatory if a session has already been created and the session will be dropped and recreated. Look at [Livy's POST /sessions Request Body](https://github.com/cloudera/livy#request-body) for a list of valid parameters. Parameters must be passed in as a JSON string and must be on the next line after the magic, as shown in the example column. |
-  	| sql       |  `%%sql -o <variable name>`<br> `SHOW TABLES`    | Executes a Hive query against the sqlContext. If the `-o` parameter is passed, the result of the query is persisted in the %%local Python context as a [Pandas](http://pandas.pydata.org/) dataframe.   |
-  	| local     |     `%%local`<br>`a=1`              | All the code in subsequent lines will be executed locally. Code must be valid Python code. |
-  	| logs      | `%%logs`                        | Outputs the logs for the current Livy session.  |
-  	| delete    | `%%delete -f -s <session number>` | Deletes a specific session of the current Livy endpoint. Note that you cannot delete the session that is initiated for the kernel itself. |
-  	| cleanup   | `%%cleanup -f`                    | Deletes all the sessions for the current Livy endpoint, including this notebook's session. The force flag -f is mandatory.  |
+	| マジック | 例 | Description |
+	|-----------|---------------------------------|--------------|
+	| help | `%%help` | 利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
+	| info | `%%info` | 現在の Livy エンドポイントのセッション情報を出力します。 |
+	| configure | `%%configure -f`<br>`{"executorMemory": "1000M"`,<br>`"executorCores": 4`} | セッションを作成するためのパラメーターを構成します。セッションが既に作成されているとき、セッションが削除され、再作成される場合、強制フラグ (-f) は必須です。有効なパラメーターの一覧については、[Livy の「POST /sessions」の「Request Body (要求本文)」](https://github.com/cloudera/livy#request-body)をご覧ください。例の列で示されているように、パラメーターは JSON 文字列として渡し、マジックの後の次の行に置く必要があります。 |
+	| sql | `%%sql -o <variable name>`<br> `SHOW TABLES` | sqlContext に対して Hive クエリを実行します。`-o` パラメーターが渡される場合、クエリの結果は、[Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
+	| local | `%%local`<br>`a=1` | 後続行のすべてのコードがローカルで実行されます。コードは有効な Python コードにする必要があります。 |
+	| ログ | `%%logs` | 現在の Livy セッションのログを出力します。 |
+	| 削除 | `%%delete -f -s <session number>` | 現在 Livy エンドポイントの特定のセッションを削除します。カーネル自体が開始したセッションを削除することはできないことに注意してください。 |
+	| cleanup | `%%cleanup -f` | このノートブックのセッションを含む、現在 Livy エンドポイントのすべてのセッションを削除します。強制フラグ -f は必須です。 |
 
-    >[AZURE.NOTE] In addition to the magics added by the PySpark kernel, you can also use the [built-in IPython magics](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics), including `%%sh`. You can use the `%%sh` magic to run scripts and block of code on the cluster headnode. 
+	>[AZURE.NOTE] PySpark カーネルによって追加されるマジックに加えて、`%%sh` などの[組み込み IPython マジック](https://ipython.org/ipython-doc/3/interactive/magics.html#cell-magics)も使用することができます。`%%sh` マジックは、クラスター ヘッド ノードでスクリプトやコード ブロックを実行する際に使用することができます。
 
-3. **Auto visualization**. The **Pyspark** kernel automatically visualizes the output of Hive and SQL queries. You have the option to choose between several different types of visualizations including Table, Pie, Line, Area, Bar.
+3. **自動視覚化**。**Pyspark** カーネルは、Hive と SQL のクエリの出力を自動的に視覚化します。表、円グラフ、面積グラフ、棒グラフなど、さまざまな種類の視覚化から選択できます。
 
-## <a name="parameters-supported-with-the-%%sql-magic"></a>Parameters supported with the %%sql magic
+## %%sql マジックでサポートされるパラメーター
 
-The %%sql magic supports different parameters that you can use to control the kind of output that you receive when you run queries. The following table lists the output.
+%%sql マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。次の表に、出力を示します。
 
-| Parameter     | Example                         | Description  |
+| パラメーター | 例 | Description |
 |-----------|---------------------------------|--------------|
-| -o      | `-o <VARIABLE NAME>`                          | Use this parameter to persist the result of the query, in the %%local Python context, as a [Pandas](http://pandas.pydata.org/) dataframe. The name of the dataframe variable is the variable name you specify. |
-| -q      | `-q`                          | Use this to turn off visualizations for the cell. If you don't want to auto-visualize the content of a cell and just want to capture it as a dataframe, then use `-q -o <VARIABLE>`. If you want to turn off visualizations without capturing the results (e.g. for running a SQL query with side effects, like a `CREATE TABLE` statement), just use `-q` without specifying a `-o` argument. |
-| -m       |  `-m <METHOD>`    | Where **METHOD** is either **take** or **sample** (default is **take**). If the method is **take**, the kernel picks elements from the top of the result data set specified by MAXROWS (described later in this table). If the method is **sample**, the kernel will randomly sample elements of the data set according to `-r` parameter, described next in this table.   |
-| -r     |     `-r <FRACTION>`            | Here **FRACTION** is a floating-point number between 0.0 and 1.0. If the sample method for the SQL query is `sample`, then the kernel randomly samples the specified fraction of the elements of the result set for you; e.g. if you run a SQL query with the arguments `-m sample -r 0.01`, then 1% of the result rows will be randomly sampled. |
-| -n      | `-n <MAXROWS>`                        | **MAXROWS** is an integer value. The kernel will limit the number of output rows to **MAXROWS**. If **MAXROWS** is a negative number such as **-1**, then the number of rows in the result set will not be limited. |
+| -o | `-o <VARIABLE NAME>` | クエリの結果を [Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。データ フレーム変数の名前は、指定した変数の名前です。 |
+| パラメーター | `-q` | セルの視覚化をオフにするには、これを使用します。セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、`-q -o <VARIABLE>` を使用します。(たとえば、`CREATE TABLE` ステートメントのような、副次的作用のある SQL クエリを実行するために) 結果をキャプチャせずに、視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
+| -m | `-m <METHOD>` | ここで **METHOD** は **take** または **sample** です (既定値は **take**)。メソッドが **take** の場合、カーネルによって、MAXROWS (この表で後述) で指定された結果のデータ セットの先頭から要素が取得されます。メソッドが **sample** の場合、カーネルによって、この表の次に説明する `-r` パラメーターに従って、データ セットの要素がランダムにサンプリングされます。 |
+| -r | `-r <FRACTION>` | ここで **FRACTION** は、0.0 ～ 1.0 の浮動小数点数です。SQL クエリのサンプル メソッドが `sample` の場合、カーネルによって、結果セットの要素の指定された比率がランダムにサンプリングされます。たとえば、引数 `-m sample -r 0.01` を使用して SQL クエリを実行した場合、結果の行の 1% がランダムにサンプリングされます。 |
+| -n | `-n <MAXROWS>` | **MAXROWS** は整数値です。カーネルによって、出力行の数が **MAXROWS** に制限されます。**MAXROWS** が **-1** など、負の数の場合は、結果セット内の行数は制限されません。 |
 
-**Example:**
+**例:**
 
-    %%sql -q -m sample -r 0.1 -n 500 -o query2 
-    SELECT * FROM hivesampletable
+	%%sql -q -m sample -r 0.1 -n 500 -o query2 
+	SELECT * FROM hivesampletable
 
-The statement above does the following:
+上記のステートメントによって、次のことが行われます。
 
-* Selects all records from **hivesampletable**.
-* Because we use -q, it turns off auto-visualization.
-* Because we use `-m sample -r 0.1 -n 500` it randomly samples 10% of the rows in the hivesampletable and limits the size of the result set to 500 rows.
-* Finally, because we used `-o query2` it also saves the output into a dataframe called **query2**.
-    
+* **hivesampletable** からすべてのレコードを選択します。
+* -q を使用しているため、自動視覚化をオフにします。
+* `-m sample -r 0.1 -n 500` を使用しているため、hivesampletable 内の行の 10% がランダムにサンプリングされ、結果セットのサイズが 500 行に制限されます。
+* 最後に、`-o query2` を使用しているため、**query2** という名前のデータフレームにも、その出力が保存されます。
+	
 
-## <a name="considerations-while-using-the-new-kernels"></a>Considerations while using the new kernels
+## 新しいカーネルを使用する場合の考慮事項
 
-Whichever kernel you use (PySpark or Spark), leaving the notebooks running will consume your cluster resources.  With these kernels, because the contexts are preset, simply exiting the notebooks does not kill the context and hence the the cluster resources will continue to be in use. A good practice with the PySpark and Spark kernels would be to use the **Close and Halt** option from the notebook's **File** menu. This kills the context and then exits the notebook.    
-
-
-## <a name="show-me-some-examples"></a>Show me some examples
-
-When you open a Jupyter notebook, you will see two folders available at the root level.
-
-* The **PySpark** folder has sample notebooks that use the new **Python** kernel.
-* The **Scala** folder has sample notebooks that use the new **Spark** kernel.
-
-You can open the **00 - [READ ME FIRST] Spark Magic Kernel Features** notebook from the **PySpark** or **Spark** folder to learn about the different magics available. You can also use the other sample notebooks available under the two folders to learn how to achieve different scenarios using Jupyter notebooks with HDInsight Spark clusters.
-
-## <a name="where-are-the-notebooks-stored?"></a>Where are the notebooks stored?
-
-Jupyter notebooks are saved to the storage account associated with the cluster under the **/HdiNotebooks** folder.  Notebooks, text files, and folders that you create from within Jupyter will be accessible from WASB.  For example, if you use Jupyter to create a folder **myfolder** and a notebook **myfolder/mynotebook.ipynb**, you can access that notebook at `wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb`.  The reverse is also true, that is, if you upload a notebook directly to your storage account at `/HdiNotebooks/mynotebook1.ipynb`, the notebook will be visible from Jupyter as well.  Notebooks will remain in the storage account even after the cluster is deleted.
-
-The way notebooks are saved to the storage account is compatible with HDFS. So, if you SSH into the cluster you can use file management commands like the following:
-
-    hdfs dfs -ls /HdiNotebooks                            # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
-    hdfs dfs –copyToLocal /HdiNotebooks                 # Download the contents of the HdiNotebooks folder
-    hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
+使用するカーネルが PySpark と Spark のどちらであっても、Notebook を実行したままにしておくと、クラスターのリソースが消費されます。これらのカーネルでは、コンテキストがプリセットされているため、Notebook を終了するだけではコンテキストは強制終了されません。そのため、クラスターのリソースは消費され続けます。PySpark および Spark カーネルでは、Notebook の **[ファイル]** メニューで **[閉じて停止]** オプションを使用することをお勧めします。これにより、コンテキストが強制終了され、Notebook が終了されます。
 
 
-In case there are issues accessing the storage account for the cluster, the notebooks are also saved on the headnode `/var/lib/jupyter`.
+## いくつかの例
 
-## <a name="supported-browser"></a>Supported browser
-Jupyter notebooks running against HDInsight Spark clusters are supported only on Google Chrome.
+Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つのフォルダーが表示されます。
 
-## <a name="feedback"></a>Feedback
+* **PySpark** フォルダーには、新しい **Python** カーネルを使用するサンプル Notebook があります。
+* **Scala** フォルダーには、新しい **Spark** カーネルを使用するサンプル Notebook があります。
 
-The new kernels are in evolving stage and will mature over time. This could also mean that APIs could change as these kernels mature. We would appreciate any feedback that you have while using these new kernels. This will be very useful in shaping the final release of these kernels. You can leave your comments/feedback under the **Comments** section at the bottom of this article.
+**PySpark** または **Spark** フォルダーから **00 - [READ ME FIRST] Spark Magic Kernel Features** Notebook を開くと、利用できるさまざまなマジックを確認できます。この 2 つのフォルダーにはサンプル ノードブックが他にもあります。Jupyter ノードブックと HDInsight Spark クラスターを利用したさまざまなシナリオの実現方法について学習できます。
 
+## Notebook の格納場所
 
-## <a name="<a-name="seealso"></a>see-also"></a><a name="seealso"></a>See also
+Jupyter Notebook は、**/HdiNotebooks** フォルダー下にあるクラスターに関連付けられたストレージ アカウントに保存されます。Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、WASB からアクセスできます。たとえば、Jupyter を使用してフォルダー **myfolder** と Notebook **myfolder/mynotebook.ipynb** を作成した場合、`wasbs:///HdiNotebooks/myfolder/mynotebook.ipynb` でその Notebook にアクセスできます。逆の場合も同様です。つまり、Notebook を `/HdiNotebooks/mynotebook1.ipynb` にある自分のストレージ アカウントに直接アップロードする場合、Jupyter からも Notebook を表示することができます。Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
 
+Notebook がストレージ アカウントに保存される方法は、HDFS と互換性があります。そのため、クラスターに SSH で接続すると、次のようなファイル管理コマンドを使用できます。
 
-* [Overview: Apache Spark on Azure HDInsight](hdinsight-apache-spark-overview.md)
-
-### <a name="scenarios"></a>Scenarios
-
-* [Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](hdinsight-apache-spark-use-bi-tools.md)
-
-* [Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
-
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
-
-* [Spark Streaming: Use Spark in HDInsight for building real-time streaming applications](hdinsight-apache-spark-eventhub-streaming.md)
-
-* [Website log analysis using Spark in HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>Create and run applications
-
-* [Create a standalone application using Scala](hdinsight-apache-spark-create-standalone-application.md)
-
-* [Run jobs remotely on a Spark cluster using Livy](hdinsight-apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Tools and extensions
-
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons](hdinsight-apache-spark-intellij-tool-plugin.md)
-
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-
-* [Use Zeppelin notebooks with a Spark cluster on HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
-
-* [Use external packages with Jupyter notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
-
-* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Manage resources
-
-* [Manage resources for the Apache Spark cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
-
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md)
+	hdfs dfs -ls /HdiNotebooks             				  # List everything at the root directory – everything in this directory is visible to Jupyter from the home page
+	hdfs dfs –copyToLocal /HdiNotebooks    				# Download the contents of the HdiNotebooks folder
+	hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
 
+クラスターのストレージ アカウントへのアクセスに問題がある場合のために、Notebook はヘッド ノード `/var/lib/jupyter` にも保存されます。
 
-<!--HONumber=Oct16_HO2-->
+## サポートされているブラウザー
+HDInsight の Spark クラスターに対して実行される Jupyter Notebook は、Google Chrome でのみサポートされます。
+
+## フィードバック
+
+新しいカーネルは進化の過程にあり、時間の経過と共に成熟するでしょう。カーネルが改良されるにつれて、API も変更される可能性があります。これらの新しいカーネルに関するフィードバックを、ぜひお寄せください。これらのカーネルの最終リリースの設計に、大いに役立ちます。ご意見やフィードバックは、この記事の下部にある**コメント**のセクションからお寄せください。
 
 
+## <a name="seealso"></a>関連項目
+
+
+* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
+
+### シナリオ
+
+* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
+
+* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+
+* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+
+* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
+
+* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+
+### アプリケーションの作成と実行
+
+* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
+
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
+
+### ツールと拡張機能
+
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
+
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
+
+* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+
+* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+
+### リソースの管理
+
+* [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
+
+* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
+
+<!---HONumber=AcomDC_0914_2016-->

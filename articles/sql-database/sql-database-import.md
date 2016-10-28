@@ -1,100 +1,98 @@
 <properties
-    pageTitle="Import a BACPAC file to create an Azure SQL database | Microsoft Azure"
-    description="Create an Azure SQL database by importing an existing BACPAC file."
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="BACPAC ファイルをインポートして Azure SQL データベースを作成する | Microsoft Azure"
+	description="既存の BACPAC ファイルをインポートして、Azure SQL データベースを作成します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.date="08/31/2016"
-    ms.author="sstein"
-    ms.workload="data-management"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"/>
+	ms.service="sql-database"
+	ms.devlang="NA"
+	ms.date="08/31/2016"
+	ms.author="sstein"
+	ms.workload="data-management"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"/>
 
 
+# BACPAC ファイルをインポートして Azure SQL データベースを作成する
 
-# <a name="import-a-bacpac-file-to-create-an-azure-sql-database"></a>Import a BACPAC file to create an Azure SQL database
 
-
-**Single database**
+**1 つのデータベース**
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-import.md)
+- [Azure ポータル](sql-database-import.md)
 - [PowerShell](sql-database-import-powershell.md)
 - [SSMS](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
 - [SqlPackage](sql-database-cloud-migrate-compatible-import-bacpac-sqlpackage.md)
 
-This article provides directions for creating an Azure SQL database from a BACPAC file using the [Azure portal](https://portal.azure.com).
+この記事は、[Azure Portal](https://portal.azure.com) を使用して BACPAC ファイルから Azure SQL データベースを作成する手順について説明します。
 
-A BACPAC is a .bacpac file that contains a database schema and data. The database is created from a BACPAC imported from an Azure storage blob container. If you don't have a .bacpac file in Azure storage you can create one by following the steps in [Create and export a BACPAC of an Azure SQL Database](sql-database-export.md).
-
-
-> [AZURE.NOTE] Azure SQL Database automatically creates and maintains backups for every user database that you can restore. For details, see [Business Continuity Overview](sql-database-business-continuity.md).
+BACPAC は、データベース スキーマとデータを含む .bacpac ファイルです。Azure Storage BLOB コンテナーからインポートされた BACPAC からデータベースが作成されます。Azure Storage に .bacpac ファイルがない場合は、「[SQL Database の BACPAC の作成およびエクスポート](sql-database-export.md)」の手順に従って作成できます。
 
 
-To import a SQL database from a .bacpac you need the following:
-
-- An Azure subscription. 
-- An Azure SQL Database V12 server. If you do not have a V12 server, create one following the steps in this article: [Create your first Azure SQL Database](sql-database-get-started.md).
-- A .bacpac file of the database you want to import in an [Azure Storage account (standard)](../storage/storage-create-storage-account.md) blob container.
-
-> [AZURE.IMPORTANT] When importing a BACPAC from Azure blob storage, use standard storage. Importing a BACPAC from premium storage is not supported.
+> [AZURE.NOTE] Azure SQL Database では、復元できるすべてのユーザー データベースのバックアップが自動的に作成され、保守されます。詳細については、「[ビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください。
 
 
-## <a name="select-the-server-to-host-the-database"></a>Select the server to host the database
+.bacpac から SQL Database をインポートするには、以下が必要です。
 
-Open the SQL Server blade:
+- Azure サブスクリプション。
+- Azure SQL Database V12 サーバー。V12 サーバーがない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
+- [Azure Storage アカウント (標準)](../storage/storage-create-storage-account.md) の BLOB コンテナーにインポートするデータベースの .bacpac ファイル。
 
-1.  Go to the [Azure portal](https://portal.azure.com).
-2.  Click **SQL servers**.
-3.  Click the server to restore the database into.
-4.  In the SQL Server blade click **Import database** to open the **Import database** blade:
+> [AZURE.IMPORTANT] BACPAC を Azure Blob Storage からインポートする場合は、Standard Storage を使用します。Premium Storage からの BACPAC のインポートはサポートされていません。
 
-    ![import database][1]
 
-1.  Click **Storage** and select your storage account, blob container, and .bacpac file and click **OK**.
+## データベースをホストするサーバーの選択
 
-    ![configure storage options][2]
+次のように、[SQL Server] ブレードを開きます。
 
-1.  Select the pricing tier for the new database and click **Select**. Importing a database directly into an elastic pool is not supported, but you can first import into a single database and then move the database into a pool.
+1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
+2.	**[SQL Server]** をクリックします。
+3.	データベースを復元するサーバーをクリックします。
+4.	[SQL Server] ブレードで、**[データベースのインポート]** をクリックして、**[データベースのインポート]** ブレードを開きます。
 
-    ![select pricing tier][3]
+    ![データベースのインポート][1]
 
-1.  Enter a **DATABASE NAME** for the database you are creating from the BACPAC file.
-2.  Choose the authentication type and then provide the authentication information for the server. 
-3.  Click **Create** to create the database from the BACPAC.
+1.  **[Storage]** をクリックし、ストレージ アカウント、BLOB コンテナー、および .bacpac ファイルを選択して、**[OK]** をクリックします。
 
-    ![create database][4]
+    ![ストレージ オプションの構成][2]
 
-Clicking **Create** submits an import database request to the service. Depending on the size of your database, the import operation may take some time to complete.
+1.  新しいデータベースの価格レベルを選択し、**[選択]**をクリックします。エラスティック プールへのデータベースの直接インポートはサポートされていませんが、最初に 1 つのデータベースにインポートしてからプールにデータベースを移動できます。
 
-## <a name="monitor-the-progress-of-the-import-operation"></a>Monitor the progress of the import operation
+    ![価格レベルの選択][3]
 
-1.  Click **SQL servers**.
-2.  Click the server you are restoring to.
-3.  In the SQL server blade, in the Operations area, click **Import/Export history**:
+1.  **[データベース名]** に BACPAC ファイルから作成するデータベースの名前を入力します。
+2.  認証の種類を選択し、サーバーの認証情報を指定します。
+3.  **[作成]** をクリックして、BACPAC からデータベースを作成します。
 
-    ![import export history][5]
-    ![import export history][6]
+    ![データベースの作成][4]
 
+**[作成]** をクリックすると、サービスにデータベースのインポート要求が送信されます。データベースのサイズに応じて、インポート操作の完了に時間がかかる場合があります。
+
+## インポート操作の進行状況の監視
+
+1.	**[SQL Server]** をクリックします。
+2.	復元先のサーバーをクリックします。
+3.	[SQL Server] ブレードの [操作] 領域で、**[インポート/エクスポート履歴]** をクリックします。
+
+    ![インポート/エクスポート履歴][5] ![インポート/エクスポート履歴][6]
 
 
 
 
-## <a name="verify-the-database-is-live-on-the-server"></a>Verify the database is live on the server
 
-1.  Click **SQL databases** and verify the new database is **Online**.
+## サーバーにデータベースが存在することの確認
+
+1.	**[SQL データベース]** をクリックしし、新しいデータベースが**オンライン**であることを確認します。
 
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- To learn how to connect to and query an imported SQL Database, see [Connect to SQL Database with SQL Server Management Studio and perform a sample T-SQL query](sql-database-connect-query-ssms.md)
+- インポートされた SQL データベースへの接続とクエリの実行については、「[SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)」を参照してください。
 
 
 <!--Image references-->
@@ -105,8 +103,4 @@ Clicking **Create** submits an import database request to the service. Depending
 [5]: ./media/sql-database-import/import-history.png
 [6]: ./media/sql-database-import/import-status.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

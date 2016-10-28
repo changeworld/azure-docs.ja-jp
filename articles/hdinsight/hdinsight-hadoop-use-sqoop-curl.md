@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Use Hadoop Sqoop with Curl in HDInsight | Microsoft Azure"
-   description="Learn how to remotely submit Sqoop jobs to HDInsight using Curl."
+   pageTitle="HDInsight での Hadoop Sqoop と Curl の使用 | Microsoft Azure"
+   description="Curl を使用して Sqoop ジョブを HDInsight にリモートで送信する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="mumian"
    manager="jhubbard"
    editor="cgronlun"
-    tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -17,114 +17,113 @@
    ms.date="07/25/2016"
    ms.author="jgao"/>
 
-
-#<a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Run Sqoop jobs with Hadoop in HDInsight with Curl
+#HDInsight の Hadoop で Curl を使用して Sqoop ジョブを実行する
 
 [AZURE.INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-In this document, you will learn how to use Curl to run Sqoop jobs on a Hadoop on Azure HDInsight cluster.
+このドキュメントでは、Curl を使用して Azure HDInsight クラスターの Hadoop で Sqoop ジョブを実行する方法について説明します。
 
-Curl is used to demonstrate how you can interact with HDInsight by using raw HTTP requests to run, monitor, and retrieve the results of Sqoop jobs. This works by using the WebHCat REST API (formerly known as Templeton) provided by your HDInsight cluster.
+Curl は、未加工の HTTP 要求を使用して HDInsight とやり取りし、Sqoop ジョブを実行、監視して、その結果を取得する方法を示すために使用します。これは、HDInsight クラスターで提供される WebHCat REST API (旧称: Templeton) を使用することで機能します。
 
-> [AZURE.NOTE] If you are already familiar with using Linux-based Hadoop servers, but are new to HDInsight, see [What you need to know about Hadoop on Linux-based HDInsight](hdinsight-hadoop-linux-information.md).
+> [AZURE.NOTE] Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」を参照してください。
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
-To complete the steps in this article, you will need the following:
+この記事の手順を完了するには、次のものが必要です。
 
-* A Hadoop on HDInsight cluster (Linux or Windows-based)
+* HDInsight クラスター (Linux または Windows ベース) の Hadoop
 
 * [Curl](http://curl.haxx.se/)
 
 * [jq](http://stedolan.github.io/jq/)
 
-##<a name="submit-sqoop-jobs-by-using-curl"></a>Submit Sqoop jobs by using Curl
+##Curl を使用して Sqoop ジョブを送信する
 
-> [AZURE.NOTE] When using Curl or any other REST communication with WebHCat, you must authenticate the requests by providing the user name and password for the HDInsight cluster administrator. You must also use the cluster name as part of the Uniform Resource Identifier (URI) used to send the requests to the server.
+> [AZURE.NOTE] Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
 >
-> For the commands in this section, replace **USERNAME** with the user to authenticate to the cluster, and replace **PASSWORD** with the password for the user account. Replace **CLUSTERNAME** with the name of your cluster.
+> このセクションのコマンドでは、**USERNAME** をクラスターを認証するユーザーの名前に、**PASSWORD** をユーザー アカウントのパスワードに置き換えてください。**CLUSTERNAME** はクラスターの名前に置き換えます。
 >
-> The REST API is secured via [basic authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). You should always make requests by using Secure HTTP (HTTPS) to help ensure that your credentials are securely sent to the server.
+> REST API のセキュリティは、[基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
-1. From a command line, use the following command to verify that you can connect to your HDInsight cluster:
+1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
 
-    You should receive a response similar to the following:
+    次のような応答を受け取ります。
 
         {"status":"ok","version":"v1"}
 
-    The parameters used in this command are as follows:
+    このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-u** - The user name and password used to authenticate the request.
-    * **-G** - Indicates that this is a GET request.
+    * **-u**: 要求の認証に使用するユーザー名とパスワード
+    * **-G**: GET 要求であることを示します。
 
-    The beginning of the URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, will be the same for all requests. The path, **/status**, indicates that the request is to return a status of WebHCat (also known as Templeton) for the server. 
+    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。
 
-2. Use the following to submit a sqoop job:
+2. 次のコマンドを使用して sqoop ジョブを送信します。
 
 
         curl -u USERNAME:PASSWORD -d user.name=USERNAME -d command="export --connect jdbc:sqlserver://SQLDATABASESERVERNAME.database.windows.net;user=USERNAME@SQLDATABASESERVERNAME;password=PASSWORD;database=SQLDATABASENAME --table log4jlogs --export-dir /tutorials/usesqoop/data --input-fields-terminated-by \0x20 -m 1" -d statusdir="wasbs:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/sqoop
 
-    The parameters used in this command are as follows:
+    このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-d** - Since `-G` is not used, the request defaults to the POST method. `-d` specifies the data values that are sent with the request.
+    * **-d**: `-G` が使用されていないため、要求は既定で POST メソッドになります。`-d` は要求で送信されるデータ値を指定します。
 
-        * **user.name** - The user that is running the command.
+        * **user.name**: コマンドを実行するユーザー
 
-        * **command** - The Sqoop command to execute.
+        * **command**: 実行する Sqoop コマンド。
 
-        * **statusdir** - The directory that the status for this job will be written to.
+        * **statusdir**: ジョブのステータスが書き込まれるディレクトリ
 
-    This command should return a job ID that can be used to check the status of the job.
+    このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
 
         {"id":"job_1415651640909_0026"}
 
-3. To check the status of the job, use the following command. Replace **JOBID** with the value returned in the previous step. For example, if the return value was `{"id":"job_1415651640909_0026"}`, then **JOBID** would be `job_1415651640909_0026`.
+3. ジョブのステータスを確認するには、次のコマンドを使用します。**JOBID** を前の手順で返された値に置き換えます。たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、**JOBID** は `job_1415651640909_0026` になります。
 
         curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
 
-    If the job has finished, the state will be **SUCCEEDED**.
+	ジョブが完了している場合、ステータスは **SUCCEEDED** になります。
 
-    > [AZURE.NOTE] This Curl request returns a JavaScript Object Notation (JSON) document with information about the job; jq is used to retrieve only the state value.
+    > [AZURE.NOTE] この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
 
-4. Once the state of the job has changed to **SUCCEEDED**, you can retrieve the results of the job from Azure Blob storage. The `statusdir` parameter passed with the query contains the location of the output file; in this case, **wasbs:///example/curl**. This address stores the output of the job in the **example/curl** directory on the default storage container used by your HDInsight cluster.
+4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasbs:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
 
-    You can list and download these files by using the [Azure CLI](../xplat-cli-install.md). For example, to list files in **example/curl**, use the following command:
+    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](../xplat-cli-install.md) を使用します。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
-        azure storage blob list <container-name> example/curl
+		azure storage blob list <container-name> example/curl
 
-    To download a file, use the following:
+	ファイルをダウンロードするには、次のコマンドを使用します。
 
-        azure storage blob download <container-name> <blob-name> <destination-file>
+		azure storage blob download <container-name> <blob-name> <destination-file>
 
-    > [AZURE.NOTE] You must either specify the storage account name that contains the blob by using the `-a` and `-k` parameters, or set the **AZURE\_STORAGE\_ACCOUNT** and **AZURE\_STORAGE\_ACCESS\_KEY** environment variables. See <a href="hdinsight-upload-data.md" target="_blank" for more information.
+	> [AZURE.NOTE] `-a` および `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS\_KEY** を設定する必要があります。詳細情報については、「<a href="hdinsight-upload-data.md" target="\_blank"」 をご覧ください。
 
-##<a name="limitations"></a>Limitations
+##制限事項
 
-* Bulk export - With Linux-based HDInsight, the Sqoop connector used to export data to Microsoft SQL Server or Azure SQL Database does not currently support bulk inserts.
+* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 
-* Batching - With Linux-based HDInsight, When using the `-batch` switch when performing inserts, Sqoop will perform multiple inserts instead of batching the insert operations.
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
 
-##<a name="summary"></a>Summary
+##概要
 
-As demonstrated in this document, you can use a raw HTTP request to run, monitor, and view the results of Sqoop jobs on your HDInsight cluster.
+このドキュメントで示したように、未加工の HTTP 要求を使用して、HDInsight クラスターで Sqoop ジョブを実行、監視し、その結果を表示できます。
 
-For more information on the REST interface used in this article, see the <a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API guide</a>.
+この記事で使用されている REST インターフェイスの詳細については、「<a href="https://sqoop.apache.org/docs/1.99.3/RESTAPI.html" target="_blank">Sqoop REST API guide (Sqoop REST API ガイド)</a>」をご覧ください。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-For general information on Hive with HDInsight:
+HDInsight での Hive に関する全般的な情報
 
-* [Use Sqoop with Hadoop on HDInsight](hdinsight-use-sqoop.md)
+* [HDInsight の Hadoop での Sqoop の使用](hdinsight-use-sqoop.md)
 
-For information on other ways you can work with Hadoop on HDInsight:
+HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [Use Hive with Hadoop on HDInsight](hdinsight-use-hive.md)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-* [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-* [Use MapReduce with Hadoop on HDInsight](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
@@ -151,10 +150,4 @@ For information on other ways you can work with Hadoop on HDInsight:
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

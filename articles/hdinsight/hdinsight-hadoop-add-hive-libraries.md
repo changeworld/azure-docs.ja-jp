@@ -1,6 +1,6 @@
 <properties
-pageTitle="Add Hive libraries during HDInsight cluster creation | Azure"
-description="Learn how to add Hive libraries (jar files,) to an HDInsight cluster during cluster creation."
+pageTitle="HDInsight クラスター作成時の Hive ライブラリの追加 | Azure"
+description="クラスターの作成時に Hive ライブラリ (jar ファイル) を HDInsight クラスターに追加する方法について説明します。"
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
@@ -16,81 +16,76 @@ ms.workload="big-data"
 ms.date="09/20/2016"
 ms.author="larryfr"/>
 
+#HDInsight クラスター作成時の Hive ライブラリの追加
 
-#<a name="add-hive-libraries-during-hdinsight-cluster-creation"></a>Add Hive libraries during HDInsight cluster creation
+HDInsight の Hive で頻繁に使用するライブラリがある場合、このドキュメントに含まれている情報を参考にし、スクリプト アクションを使用して、クラスターの作成時にライブラリを事前に読み込むことができます。そうすると、Hive でライブラリをグローバルに利用できるようになります ([ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要がありません)。
 
-If you have libraries that you use frequently with Hive on HDInsight, this document contains information on using a Script Action to pre-load the libraries during cluster creation. This makes the libraries globally available in Hive (no need to use [ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) to load them.)
+##動作のしくみ
 
-##<a name="how-it-works"></a>How it works
+クラスターの作成時に、必要に応じて、作成中のクラスター ノードに対してスクリプトを実行するスクリプト アクションを指定できます。このドキュメントのスクリプトが受け取るパラメーターは 1 つで、事前に読み込むライブラリ (jar ファイルとして格納されている) が含まれている WASB の場所を指定します。
 
-When creating a cluster, you can optionally specify a Script Action that runs a script on the cluster nodes while they are being created. The script in this document accepts a single parameter, which is a WASB location that contains the libraries (stored as jar files,) that will be pre-loaded.
+クラスターの作成時に、そのスクリプトによってファイルが列挙され、ヘッド ノードとワーカー ノードの `/usr/lib/customhivelibs/` ディレクトリにコピーされて、`core-site.xml` ファイルの `hive.aux.jars.path` プロパティに追加されます。Linux ベースのクラスターでは、それらのファイルの場所に合わせて `hive-env.sh` ファイルも更新されます。
 
-During cluster creation, the script enumerates the files, copies them to the `/usr/lib/customhivelibs/` directory on head and worker nodes, then adds them to the `hive.aux.jars.path` property in the `core-site.xml` file. On Linux-based clusters, it also updates the `hive-env.sh` file with the location of the files.
-
-> [AZURE.NOTE] Using the script actions in this article makes the libraries available in the following scenarios:
+> [AZURE.NOTE] この記事のスクリプト アクションを使用すると、次のシナリオでライブラリを使用できます。
 >
-> * __Linux-based HDInsight__ - when using the __Hive command-line__, __WebHCat__ (Templeton,) and __HiveServer2__.
-> * __Windows-based HDInsight__ - when using the __Hive command-line__ and __WebHCat__ (Templeton).
+> * __Linux ベースの HDInsight__ - __Hive コマンド ライン__、__WebHCat__ (Templeton)、および __HiveServer2__ を使用する場合。
+> * __Windows ベースの HDInsight__ - __Hive コマンド ライン__および __WebHCat__ (Templeton) を使用する場合。
 
-##<a name="the-script"></a>The script
+##スクリプト
 
-__Script location__
+__スクリプトの場所__
 
-For __Linux-based clusters__: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
+__Linux ベースのクラスター__: [https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh)
 
-For __Windows-based clusters__: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
+__Windows ベースのクラスター__: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
-__Requirements__
+__要件__
 
-* The scripts must be applied to both the __Head nodes__ and __Worker nodes__.
+* このスクリプトは、__ヘッド ノード__と__ワーカー ノード__の両方に適用する必要があります。
 
-* The jars you wish to install must be stored in Azure Blob Storage in a __single container__. 
+* インストールする jar は、Azure Blob Storage の__単一のコンテナー__に格納する必要があります。
 
-* The storage account containing the library of jar files __must__ be linked to the HDInsight cluster during creation. This can be accomplished in one of two ways:
+* jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする__必要があります__。これは、次の 2 つの方法のどちらかで行うことができます。
 
-    * By being in a container on the default storage account for the cluster.
+    * コンテナーをクラスターの既定のストレージ アカウントに配置する。
     
-    * By being in a container on an linked storage container. For example, in the portal you can use __Optional Configuration__, __Linked storage accounts__ to add additional storage.
+    * コンテナーをリンクされたストレージ コンテナーに配置する。たとえば、ポータルでは、__[オプションの構成]__、__[リンクされたストレージ アカウント]__ を使用して、ストレージを追加できます。
 
-* The WASB path to the container must be specified as a parameter to the Script Action. For example, if the jars are stored in a container named __libs__ on a storage account named __mystorage__, the parameter would be __wasbs://libs@mystorage.blob.core.windows.net/__.
+* コンテナーへの WASB パスは、スクリプト アクションのパラメーターとして指定する必要があります。たとえば、jar が __mystorage__ という名前のストレージ アカウントの __libs__ というコンテナーに格納されている場合、パラメーターは wasbs://libs@mystorage.blob.core.windows.net/__ となります。
 
-    > [AZURE.NOTE] This document assumes that you have already create a storage account, blob container, and uploaded the files to it. 
+    > [AZURE.NOTE] このドキュメントでは、既にストレージ アカウントと BLOB コンテナーを作成し、そこにファイルをアップロードしていることを前提としています。
     >
-    > If you have not created a storage account, you can do this through the [Azure portal](https://portal.azure.com). You can then use a utility such as [Azure Storage Explorer](http://storageexplorer.com/) to create a new container in the account and upload files to it.
+    > ストレージ アカウントを作成していない場合は、[Azure ポータル](https://portal.azure.com)で作成できます。その後、[Azure Storage エクスプローラー](http://storageexplorer.com/)などのユーティリティを使用して、アカウントに新しいコンテナーを作成し、そこにファイルをアップロードできます。
 
-##<a name="create-a-cluster-using-the-script"></a>Create a cluster using the script
+##スクリプトを使用してクラスターを作成する
 
-> [AZURE.NOTE] The following steps create a new Linux-based HDInsight cluster. To create a new Windows-based cluster, select __Windows__ as the cluster OS when creating the cluster, and use the Windows (PowerShell) script instead of the bash script.
+> [AZURE.NOTE] 次の手順では、Linux ベースの新しい HDInsight クラスターを作成します。Windows ベースの新しいクラスターを作成するには、クラスターの作成時にクラスターの OS として __Windows__ を選択し、Bash スクリプトの代わりに Windows (PowerShell) スクリプトを使用します。
 > 
-> You can also use Azure PowerShell or the HDInsight .NET SDK to create a cluster using this script. For more information on using these methods, see [Customize HDInsight clusters with Script Actions](hdinsight-hadoop-customize-cluster-linux.md).
+> Azure PowerShell または HDInsight .NET SDK を使用し、このスクリプトを使用してクラスターを作成することもできます。これらの方法の詳細については、「[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
 
-1. Start provisioning a cluster by using the steps in [Provision HDInsight clusters on Linux](hdinsight-hadoop-provision-linux-clusters.md#portal), but do not complete provisioning.
+1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)」に記載されている手順を使用してクラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
-2. On the **Optional Configuration** blade, select **Script Actions**, and provide the information as shown below:
+2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下のように情報を指定します。
 
-    * __NAME__: Enter a friendly name for the script action.
-    * __SCRIPT URI__: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
-    * __HEAD__: Check this option
-    * __WORKER__: Check this option.
-    * __ZOOKEEPER__: Leave this blank.
-    * __PARAMETERS__: Enter the WASB address to the container and storage account that contains the jars. For example, __wasbs://libs@mystorage.blob.core.windows.net/__.
+    * __[名前]__: スクリプト アクションの表示名を入力します。
+    * __[スクリプト URI]__: https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh
+    * __[ヘッド]__: このオプションをオンにします。
+    * __[ワーカー]__: このオプションをオンにします。
+    * __[ZOOKEEPER]__: 空白のままにします。
+    * __[パラメーター]__: jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。たとえば、「wasbs://libs@mystorage.blob.core.windows.net/__」のように入力します。
 
-3. At the bottom of the **Script Actions**, use the **Select** button to save the configuration.
+3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。
 
-4. On the **Optional Configuration** blade, select __Linked Storage Accounts__ and select the __Add a storage key__ link. Select the storage account that contains the jars, and then use the __select__ buttons to save settings and return the __Optional Configuration__ blade.
+4. **[オプションの構成]** ブレードで、__[リンクされたストレージ アカウント]__ を選択し、__[ストレージ キーの追加]__ リンクをクリックします。jar を含むストレージ アカウントを選択し、__[選択]__ ボタンを使用して、設定を保存し、__[オプションの構成]__ ブレードに戻ります。
 
-5. Use the **Select** button at the bottom of the **Optional Configuration** blade to save the optional configuration information.
+5. **[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
-6. Continue provisioning the cluster as described in [Provision HDInsight clusters on Linux](hdinsight-hadoop-provision-linux-clusters.md#portal).
+6. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md#portal)」の説明に従って、クラスターのプロビジョニングを続行します。
 
-Once cluster creation finishes, you will be able to use the jars added through this script from Hive without having to use the `ADD JAR` statement.
+クラスターの作成が完了したら、このスクリプトで追加した jar を、`ADD JAR` ステートメントを使用することなく、Hive から使用できます。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-In this document you have learned how to add Hive libraries contained in jar files to a HDInsight cluster during cluster creation. For more information on working with Hive, see [Use Hive with HDInsight](hdinsight-use-hive.md)
+このドキュメントでは、クラスターの作成時に、jar ファイルに格納されている Hive ライブラリを HDInsight クラスターに追加する方法について説明しました。Hive の使用法の詳細については、「[HDInsight での Hive の使用](hdinsight-use-hive.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

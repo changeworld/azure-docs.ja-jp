@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Panopto | Microsoft Azure" 
-    description="Learn how to use Panopto with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Panopto の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Panopto を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,140 +11,130 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/08/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-panopto"></a>Tutorial: Azure Active Directory integration with Panopto
+#チュートリアル: Azure Active Directory と Panopto の統合
   
-The objective of this tutorial is to show the integration of Azure and Panopto.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルでは、Azure と Panopto の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   A Panopto tenant
+-   有効な Azure サブスクリプション
+-   Panopto テナント
   
-After completing this tutorial, the Azure AD users you have assigned to Panopto will be able to single sign into the application at your Panopto company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルを完了すると、Panopto に割り当てた Azure AD ユーザーは、Panopto 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Enabling the application integration for Panopto
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  Panopto のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-![Scenario](./media/active-directory-saas-panopto-tutorial/IC777665.png "Scenario")
-##<a name="enabling-the-application-integration-for-panopto"></a>Enabling the application integration for Panopto
+![シナリオ](./media/active-directory-saas-panopto-tutorial/IC777665.png "シナリオ")
+##Panopto のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for Panopto.
+このセクションでは、Panopto のアプリケーション統合を有効にする方法について説明します。
 
-###<a name="to-enable-the-application-integration-for-panopto,-perform-the-following-steps:"></a>To enable the application integration for Panopto, perform the following steps:
+###Panopto のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-panopto-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-panopto-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-panopto-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-panopto-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-panopto-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-panopto-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-panopto-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **Panopto**.
+6.  **検索ボックス**に、「**Panopto**」と入力します
 
-    ![Appkication Gallery](./media/active-directory-saas-panopto-tutorial/IC777666.png "Appkication Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-panopto-tutorial/IC777666.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **Panopto**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[Panopto]** を選び、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Panopto](./media/active-directory-saas-panopto-tutorial/IC782936.png "Panopto")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
   
-The objective of this section is to outline how to enable users to authenticate to Panopto with their account in Azure AD using federation based on the SAML protocol.  
-As part of this procedure, you are required to create a base-64 encoded certificate file.  
-If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD のアカウントで Panopto に対する認証を行えるようにする方法を説明します。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Panopto** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Panopto** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-panopto-tutorial/IC777667.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to Panopto** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Panopto へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選び、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-panopto-tutorial/IC777668.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, in the **Panopto Sign In URL** textbox, type your URL using the following pattern "*https://\<tenant-name\>. Panopto.com*", and then click **Next**.
+3.  **[アプリ URL の構成]** ページで、**[Panopto サインイン URL]** ボックスに、"*https://\<tenant-name>。Panopto.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure app URL](./media/active-directory-saas-panopto-tutorial/IC777528.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-panopto-tutorial/IC777528.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at Panopto** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
+4.  **[Panopto でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-panopto-tutorial/IC777669.png "Configure single sign-on")
 
-5.  In a different web browser window, log into your Panopto company site as an administrator.
+5.  別の Web ブラウザーのウィンドウで、Panopto 企業サイトに管理者としてログインします。
 
-6.  In the toolbar on the left, click **System**, and then click **Identity Providers**.
+6.  左側のツールバーで、**[システム]**、**[ID プロバイダー]** の順にクリックします。
 
     ![System](./media/active-directory-saas-panopto-tutorial/IC777670.png "System")
 
-7.  Click **Add Provider**.
+7.  **[プロバイダーを追加する]** を追加します。
 
-    ![Identity Providers](./media/active-directory-saas-panopto-tutorial/IC777671.png "Identity Providers")
+    ![ID プロバイダー](./media/active-directory-saas-panopto-tutorial/IC777671.png "ID プロバイダー")
 
-8.  In the SAML provider section, perform the following steps:
+8.  [SAML プロバイダー] セクションで、次の手順に従います。
 
-    ![SaaS configuration](./media/active-directory-saas-panopto-tutorial/IC777672.png "SaaS configuration")
+    ![SaaS の構成](./media/active-directory-saas-panopto-tutorial/IC777672.png "SaaS の構成")
 
-    1.  From the **Provider Type** list, select **SAML20**
-    2.  In the **Instance Name** textbox, type a name for the instance.
-    3.  In the **Friendly Description** textbox, type a friendly description.
-    4.  In the Azure classic portal, on the **Configure single sign-on at Panopto** dialog page, copy the **Issuer URL** value, and then paste it into the **Issuer** textbox.
-    5.  In the Azure classic portal, on the **Configure single sign-on at Panopto** dialog page, copy the **SAML SSO URL** value, and then paste it into the **Bounce Page Url** textbox.
-    6.  Create a **base-64 encoded** file from your downloaded certificate.  
+    1.  **[プロバイダーの種類]** 一覧で、**[SAML20]** を選びます。
+    2.  **[インスタンス名]** テキストボックスに、インスタンスの名前を入力します。
+    3.  **[わかりやすい説明]** テキストボックスに、わかりやすい説明を入力します。
+    4.  Azure クラシック ポータルの **[Panopto でのシングル サインオンの構成]** ダイアログ ページで、**[発行者の URL]** の値をコピーし、**[Issuer]** ボックスに貼り付けます。
+    5.  Azure クラシック ポータルの **[Panopto でのシングル サインオンの構成]** ダイアログ ページで、**[SAML SSO URL]** の値をコピーし、**[Bounce Page URL]** テキストボックスに貼り付けます。
+    6.  ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
-        >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
+        >[AZURE.TIP] 詳細については、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-    7.  Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **Public Key** textbox
-    8.  Click **Save**.
-        ![Save](./media/active-directory-saas-panopto-tutorial/IC777673.png "Save")
+    7.  base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[公開キー]** テキストボックスに貼り付けます。
+    8.  **[Save]** をクリックします。![Save](./media/active-directory-saas-panopto-tutorial/IC777673.png "Save")
 
-9.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-panopto-tutorial/IC777674.png "Configure single sign-on")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-There is no action item for you to configure user provisioning to Panopto.  
-When an assigned user tries to log into Panopto using the access panel, Panopto checks whether the user exists.  
-If there is no user account available yet, it is automatically created by Panopto.
+Panopto へのユーザー プロビジョニングの構成にあたって必要な操作はありません。割り当てられたユーザーがアクセス パネルを使用して Panopto にログインしようとすると、そのユーザーが存在するかどうかが Panopto によって確認されます。使用可能なユーザー アカウントがない場合、ユーザー アカウントは Panopto により自動的に作成されます。
 
->[AZURE.NOTE]You can use any other Panopto user account creation tools or APIs provided by Panopto to provision Azure AD user accounts.
+>[AZURE.NOTE]Panopto から提供されている他の Panopto ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-panopto,-perform-the-following-steps:"></a>To assign users to Panopto, perform the following steps:
+###ユーザーを Panopto に割り当てるには、次の手順に従います。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Panopto **application integration page, click **Assign users**.
+2.  **Panopto** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign users](./media/active-directory-saas-panopto-tutorial/IC777675.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-panopto-tutorial/IC777675.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-panopto-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

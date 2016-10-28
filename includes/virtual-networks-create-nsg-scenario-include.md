@@ -1,22 +1,19 @@
-## <a name="scenario"></a>Scenario
+## シナリオ
 
-To better illustrate how to create NSGs, this document will use the scenario below.
+NSG の作成方法をわかりやすく説明するために、このドキュメントでは次のシナリオを使用します。
 
-![VNet scenario](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
+![VNet のシナリオ](./media/virtual-networks-create-nsg-scenario-include/figure1.png)
 
-In this scenario you will create an NSG for each subnet in the **TestVNet** virtual network, as described below: 
+このシナリオでは、以下の説明のように、**TestVNet** 仮想ネットワークの各サブネットに対して NSG を作成します。
 
-- **NSG-FrontEnd**. The front end NSG will be applied to the *FrontEnd* subnet, and contain two rules:  
-    - **rdp-rule**. This rule will allow RDP traffic to the *FrontEnd* subnet.
-    - **web-rule**. This rule will allow HTTP traffic to the *FrontEnd* subnet.
-- **NSG-BackEnd**. The back end NSG will be applied to the *BackEnd* subnet, and contain two rules: 
-    - **sql-rule**. This rule allows SQL traffic only from the *FrontEnd* subnet.
-    - **web-rule**. This rule denies all internet bound traffic from the *BackEnd* subnet.
+- **NSG-FrontEnd**。以下の 2 つの規則を含むフロントエンド NSG が *FrontEnd* サブネットに適用されます。	
+	- **rdp-rule**。この規則は *FrontEnd* サブネットに対する RDP トラフィックを許可します。
+	- **web-rule**。この規則は *FrontEnd* サブネットに対する HTTP トラフィックを許可します。
+- **NSG-BackEnd**。以下の 2 つの規則を含むバックエンド NSG が *BackEnd* サブネットに適用されます。	
+	- **sql-rule**。この規則は、*FrontEnd* サブネットからの SQL トラフィックのみを許可します。
+	- **web-rule**。この規則は、*BackEnd* サブネットからのすべてのインターネット経由トラフィックを拒否します。
 
-The combination of these rules create a DMZ-like scenario, where the back end subnet can only receive incoming traffic for SQL from the front end subnet, and has no access to the Internet, while the front end subnet can communicate with the Internet, and receive incoming HTTP requests only.
+これらの規則の組み合わせによって、DMZ のようなシナリオが作成されます。このシナリオではバックエンドのサブネットはフロントエンドのサブネットから SQL の受信トラフィックのみを受信でき、インターネットへはアクセスできません。一方、フロントエンドのサブネットはインターネットと通信でき、受信 HTTP 要求のみを受信します。
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0525_2016-->

@@ -1,8 +1,3 @@
-Before starting this tutorial, you must first complete the [Getting Started](../articles/mobile-engagement/mobile-engagement-android-get-started.md) tutorial.
+このチュートリアルを開始する前に、[作業開始](../articles/mobile-engagement/mobile-engagement-android-get-started.md)チュートリアルを完了する必要があります。
 
-> [AZURE.IMPORTANT] Your minimum Android SDK API level must be 10 or higher (Android 2.3.3 or higher).
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+> [AZURE.IMPORTANT] Android SDK の最小の API レベルは 10 以降 (Android 2.3.3 以降) である必要があります。

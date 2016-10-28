@@ -1,15 +1,9 @@
-##<a name="install-the-newest-version-of-sql-server-management-studio"></a>Install the newest version of SQL Server Management Studio
+##最新バージョンの SQL Server Management Studio をインストールする
 
-  When working with SQL Database, you should always use the most recent version of SQL Server Management Studio (SSMS). The latest version of SSMS is continually updated and optimized to work with Azure and SQL Database. The latest version of SSMS works for all supported versions of SQL Server. To download and install the latest version, see [Download SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx). To stay up-to-date, the latest version of SSMS prompts you when there is a new version available to download. 
+  SQL Database を使用する場合は、常に最新バージョンの SQL Server Management Studio (SSMS) を使用する必要があります。SSMS の最新バージョンは継続的に更新され、Azure および SQL Database との連携が最適化されています。最新バージョンの SSMS は、サポートされているすべてのバージョンの SQL Server で動作します。最新バージョンのダウンロードとインストールについては、[SQL Server Management Studio のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)に関するページを参照してください。SSMS は、最新の状態を保つために、新しいバージョンのダウンロードが可能になると、更新を求めるメッセージを表示します。
 
-  After installing, type **Microsoft SQL Server Management Studio** in the Windows search box and run the app:
+  インストール後、Windows 検索ボックスで「**Microsoft SQL Server Management Studio**」と入力し、アプリを起動します。
 
   ![SQL Server Management Studio](./media/sql-server-management-studio-install/ssms.png)
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

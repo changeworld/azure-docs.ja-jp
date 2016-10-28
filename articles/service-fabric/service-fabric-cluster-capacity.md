@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Planning the Service Fabric cluster capacity | Microsoft Azure"
-   description="Service Fabric cluster capacity planning considerations. Nodetypes, Durability and Reliability tiers"
+   pageTitle="Service Fabric クラスターの容量計画 | Microsoft Azure"
+   description="Service Fabric クラスターの容量計画に関する考慮事項。Nodetypes、持続性と信頼性レベル"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -17,99 +17,94 @@
    ms.author="chackdan"/>
 
 
+# Service Fabric クラスターの容量計画に関する考慮事項
 
-# <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric cluster capacity planning considerations
+容量計画は、運用環境へのデプロイにおいて重要なステップとなります。ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
 
-For any production deployment, capacity planning is an important step. Here are some of the items that you have to consider as a part of that process.
+- クラスターで最初に必要となるノード タイプの数
+- ノード タイプごとの特性 (サイズ、プライマリ/非プライマリ、インターネット接続、VM 数など)
+- クラスターの信頼性と耐久性の特徴
 
-- The number of node types your cluster needs to start out with
-- The properties of each of node type (size, primary, internet facing, number of VMs, etc.)
-- The reliability and durability characteristics of the cluster
+それぞれの項目について簡単に見ていきましょう。
 
-Let us briefly review each of these items.
+## クラスターで最初に必要となるノード タイプの数
 
-## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>The number of node types your cluster needs to start out with
+まず、これから作成するクラスターを何の目的に使用するのか、また、そのクラスターにどのようなアプリケーションをデプロイするのかを把握する必要があります。クラスターの目的が明確でないとすれば、容量計画プロセスに着手するのはおそらく時期尚早です。
 
-First, you need to figure out what the cluster you are creating is going to be used for and what kinds of applications you are planning to deploy into this cluster. If you are not clear on the purpose of the cluster, you are most likely not yet ready to enter the capacity planning process.
+クラスターで最初に必要となるノード タイプの数をはっきりさせましょう。ノード タイプはそれぞれ 1 つの仮想マシン スケール セットに対応付けられます。各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。そのためノード タイプの数は、基本的に次の要因を考慮して決めることになります。
 
-Establish the number of node types your cluster needs to start out with.  Each node type is mapped to a Virtual Machine Scale Set. Each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics. So the decision of the number of node types essentially comes down to the following considerations:
+- アプリケーションに複数のサービスが存在するか、またその中に、外部に公開 (インターネットに接続) しなければならないサービスはあるか。 標準的なアプリケーションには、クライアントからの入力を受け取るフロントエンド ゲートウェイ サービスと、そのフロントエンド サービスと通信するバックエンド サービスが存在します。したがってこのケースでは、最終的に少なくとも 2 つのノード タイプが必要となります。
 
-- Does your application have multiple services, and do any of them need to be public or internet facing? Typical applications contain a front-end gateway service that receives input from a client, and one or more back-end services that communicate with the front-end services. So in this case, you end up having at least two node types.
+- アプリケーションの構成要素として、インフラストラクチャ ニーズの異なる複数のサービスが存在するか (大容量の RAM が必要、高い CPU 処理能力が必要など)。 たとえばデプロイするアプリケーションに、フロントエンド サービスとバックエンド サービスが含まれていると仮定します。フロントエンド サービスはバックエンド サービスよりも小さい VM (D2 など) で実行できますが、インターネットに対してポートを開放する必要があります。一方バックエンド サービスは計算負荷が高く、より大きな VM (D4、D6、D15 など) で実行する必要はありますが、インターネット接続は不要です。
 
-- Do your services (that make up your application) have different infrastructure needs such as greater RAM or higher CPU cycles? For example, let us assume that the application that you want to deploy contains a front-end service and a back-end service. The front-end service can run on smaller VMs (VM sizes like D2) that have ports open to the internet.  The back-end service, however, is computation intensive and needs to run on larger VMs (with VM sizes like D4, D6, D15) that are not internet facing.
+ この場合、1 つのノード タイプにすべてのサービスをデプロイすることもできますが、Microsoft としては、2 つのノード タイプから成るクラスターにデプロイすることをお勧めします。そうすることでノード タイプごとに、インターネットの接続性や VM サイズなど異なる特性を持たせることができます。VM 数を個別に増減させることもできます。
 
- In this example, although you can decide to put all the services on one node type, we recommended that you place them in a cluster with two node types.  This allows for each node type to have distinct properties such as internet connectivity or VM size. The number of VMs can be scaled independently, as well.  
+- 将来を予測することはできないので、まずは把握している事実を踏まえ、アプリケーションの立ち上げ時に必要となるノード タイプの数を決めましょう。ノード タイプは後からいつでも追加または削除できます。Service Fabric クラスターには少なくとも 1 つのノード タイプが必要です。
 
-- Since you cannot predict the future, go with facts you know of and decide on the number of node types that your applications need to start with. You can always add or remove node types later. A Service Fabric cluster must have at least one node type.
+## 各ノード タイプの特性
 
-## <a name="the-properties-of-each-node-type"></a>The properties of each node type
+**ノード タイプ**は、Cloud Services のロールと同等のものと見なすことができます。ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。Service Fabric クラスターで定義されているすべてのノード タイプは、個別の仮想マシン スケール セットとしてセットアップされます。VM スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。ノード タイプはそれぞれ別々の VM スケール セットとして定義されているため、個別にスケールアップまたはスケールダウンすることができ、また異なるポートの組み合わせを開放し、異なる容量メトリックを割り当てることができます。
 
-The **node type** can be seen as equivalent to roles in Cloud Services. Node types define the VM sizes, the number of VMs, and their properties. Every node type that is defined in a Service Fabric cluster is set up as a separate Virtual Machine Scale Set. VM Scale Sets are an Azure compute resource you can use to deploy and manage a collection of virtual machines as a set. Being defined as distinct VM Scale Sets, each node type can then be scaled up or down independently, have different sets of ports open, and can have different capacity metrics.
+クラスターには複数のノード タイプを指定できますが、運用環境のワークロードに使用するクラスターの場合、プライマリ ノード タイプ、つまりポータルで最初に定義したノードには、少なくとも 5 つの VM が必要です (テスト環境のクラスターの場合は 3 つ以上)。Resource Manager テンプレートを使用してクラスターを作成する場合は、ノード タイプの定義に **is Primary** 属性が存在します。Service Fabric のシステム サービスは、プライマリ ノード タイプに配置されます。
 
-Your cluster can have more than one node type, but the primary node type (the first one that you define on the portal) must have at least five VMs for clusters used for production workloads (or at least three VMs for test clusters). If you are creating the cluster using an Resource Manager template, then you will find a **is Primary** attribute under the node type definition. The primary node type is the node type where Service Fabric system services are placed.  
+### プライマリ ノード タイプ
+1 つのクラスターに複数のノード タイプが存在する場合、そのいずれかをプライマリにする必要があります。プライマリ ノード タイプには、次の特徴があります。
 
-### <a name="primary-node-type"></a>Primary node type
-For a cluster with multiple node types, you will need to choose one of them to be primary. Here are the characteristics of a primary node type:
+- プライマリ ノード タイプの最小 VM サイズは、選択した耐久性レベルによって決まります。既定の耐久性レベルは Bronze です。耐久性レベルとは何か、どのようなプランがあるかについては、このページの下の方で説明しています。
 
-- The minimum size of VMs for the primary node type is determined by the durability tier you choose. The default for the durability tier is Bronze. Scroll down for details on what the durability tier is and the values it can take.  
+- プライマリ ノード タイプの最低 VM 数は、選択した信頼性レベルによって決まります。既定の信頼性レベルは Silver です。信頼性レベルとは何か、どのようなプランがあるかについては、このページの下の方で説明しています。
 
-- The minimum number of VMs for the primary node type is determined by the reliability tier you choose. The default for the reliability tier is Silver. Scroll down for details on what the reliability tier is and the values it can take.
+- Service Fabric システム サービス (クラスター マネージャー サービス、イメージ ストア サービスなど) はプライマリ ノード タイプに置かれるので、クラスターの信頼性と耐久性は、プライマリ ノード タイプに選択した信頼性レベルのプランと耐久性レベルのプランによって決まります。
 
-- The Service Fabric system services (for example, the Cluster Manager service or Image Store service) are placed on the primary node type and so the reliability and durability of the cluster is determined by the reliability tier value and durability tier value you select for the primary node type.
-
-![Screen shot of a cluster that has two Node Types ][SystemServices]
-
-
-### <a name="non-primary-node-type"></a>Non-primary node type
-For a cluster with multiple node types, there is one primary node type and the rest of them are non-primary. Here are the characteristics of a non-primary node type:
-
-- The minimum size of VMs for this node type is determined by the durability tier you choose. The default for the durability tier is Bronze. Scroll down for details on what the durability tier is and the values it can take.  
-
-- The minimum number of VMs for this node type can be one. However you should choose this number based on the number of replicas of the application/services that you would like to run in this node type. The number of VMs in a node type can be increased after you have deployed the cluster.
+![ノードが 2 種類あるクラスターのスクリーン ショット][SystemServices]
 
 
-## <a name="the-durability-characteristics-of-the-cluster"></a>The durability characteristics of the cluster
+### 非プライマリ ノード タイプ
+クラスターに複数のノード タイプが存在するとき、プライマリ ノード タイプは 1 つだけで、それ以外はすべて非プライマリ ノード タイプです。非プライマリ ノード タイプには、次の特徴があります。
 
-The durability tier is used to indicate to the system the privileges that your VMs have with the underlying Azure infrastructure. In the primary node type, this privilege allows Service Fabric to pause any VM level infrastructure request (such as a VM reboot, VM reimage, or VM migration) that impact the quorum requirements for the system services and your stateful services. In the non-primary node types, this privilege allows Service Fabric to pause any VM level infrastructure request like VM reboot, VM reimage, VM migration etc., that impact the quorum requirements for your stateful services running in it.
+- このノード タイプの最小 VM サイズは、選択した耐久性レベルによって決まります。既定の耐久性レベルは Bronze です。耐久性レベルとは何か、どのようなプランがあるかについては、このページの下の方で説明しています。
 
-This privilege is expressed in the following values:
+- このノード タイプの最低 VM 数は 1 です。ただしこの数は、このノード タイプで実行するアプリケーション/サービスのレプリカ数に基づいて選ぶ必要があります。ノード タイプの VM 数は、クラスターのデプロイ後に増やすことができます。
 
-- Gold - The infrastructure Jobs can be paused for a duration of 2 hours per UD
 
-- Silver - The infrastructure Jobs can be paused for a duration of 30 minutes per UD (This is currently not enabled for use. Once enabled this will be available on all standard VMs of single core and above).
+## クラスターの耐久性の特徴
 
-- Bronze - No privileges. This is the default.
+耐久性レベルは、ご利用の VM が、基になる Azure インフラストラクチャに対して持つ特権をシステムに表明する目的で使用します。プライマリ ノード タイプでは、Service Fabric がこの特権を使って、システム サービスやステートフル サービスのクォーラム要件に影響を及ぼす、VM レベルのインフラストラクチャ要求 (VM の再起動、VM の再イメージ化、VM の移行など) を一時停止させることができます。非プライマリ ノード タイプの場合も、Service Fabric がこの特権の下で、ノード内で実行されるステートフル サービスのクォーラム要件に影響を及ぼす、VM レベルのインフラストラクチャ要求 (VM の再起動、VM の再イメージ化、VM の移行など) を一時停止させることができます。
 
-## <a name="the-reliability-characteristics-of-the-cluster"></a>The reliability characteristics of the cluster
+この特権は次のプランで表されます。
 
-The reliability tier is used to set the number of replicas of the system services that you want to run in this cluster on the primary node type. The more the number of replicas, the more reliable the system services are in your cluster.  
+- Gold - 1 つの更新ドメインにつき 2 時間、インフラストラクチャ ジョブを一時停止させることができます。
 
-The reliability tier can take the following values.
+- Silver - 1 つの更新ドメインにつき 30 分、インフラストラクチャ ジョブを一時停止させることができます (現在有効になっていません。有効にすると、単一コア以上のすべての Standard VM で使用できます)。
 
-- Platinum - Run the System services with a target replica set count of 9
+- Bronze - 特権はありません。既定のプランです。
 
-- Gold - Run the System services with a target replica set count of 7
+## クラスターの信頼性の特徴
 
-- Silver - Run the System services with a target replica set count of 5
+信頼性レベルは、クラスターのプライマリ ノード タイプで実行するシステム サービスのレプリカ数を設定する目的で使用します。レプリカ数が増えるほど、クラスター内のシステム サービスの信頼性が上がります。
 
-- Bronze - Run the System services with a target replica set count of 3
+信頼性レベルは、以下のプランから選ぶことができます。
 
->[AZURE.NOTE] The reliability tier you choose determines the minimum number of nodes your primary node type must have. The reliability tier has no bearing on the max size of the cluster. So you can have a 20 node cluster, that is running at Bronze reliability.
+- Platinum - ターゲット レプリカ セット数を 9 としてシステム サービスを実行します。
 
- You can choose to update the reliability of your cluster from one tier to another. Doing this will trigger the cluster upgrades needed to change the system services replica set count. Wait for the upgrade in progress to complete before making any other changes to the cluster, like adding nodes etc.  You can monitor the progress of the upgrade on Service Fabric Explorer or by running [Get-ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt126012.aspx)
+- Gold - ターゲット レプリカ セット数を 7 としてシステム サービスを実行します。
+
+- Silver - ターゲット レプリカ セット数を 5 としてシステム サービスを実行します。
+
+- Bronze - ターゲット レプリカ セット数を 3 としてシステム サービスを実行します。
+
+>[AZURE.NOTE] 選択した信頼性レベルによって、プライマリ ノード タイプに必要な最小ノード数が決まります。信頼性レベルは、クラスターの最大サイズには何の影響も及ぼしません。たとえば、20 ノードのクラスターを Bronze の信頼性で実行することもできます。
+
+ クラスターの信頼性レベルはいつでも変更できます。クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get ServiceFabricClusterUpgrade](https://msdn.microsoft.com/library/mt126012.aspx) を実行します
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Once you finish your capacity planning and set up a cluster, please read the following:
-- [Service Fabric cluster security](service-fabric-cluster-security.md)
-- [Service Fabric health model introduction](service-fabric-health-introduction.md)
+容量計画が完了し、クラスターをセットアップしたら、以下のドキュメントをお読みください。
+- [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
+- [Service Fabric の正常性モデルの概要](service-fabric-health-introduction.md)
 
 <!--Image references-->
 [SystemServices]: ./media/service-fabric-cluster-capacity/SystemServices.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

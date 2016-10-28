@@ -1,6 +1,3 @@
-> [AZURE.NOTE] Although this article refers to web apps, it also applies to API apps and mobile apps.
+> [AZURE.NOTE]この記事は、Web アプリについて言及していますが、API アプリとモバイル アプリにも適用されます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

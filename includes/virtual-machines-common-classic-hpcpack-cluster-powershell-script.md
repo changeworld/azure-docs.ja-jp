@@ -2,82 +2,74 @@
 
 
 
-Depending on your environment and choices, the script can create all the cluster infrastructure, including the Azure virtual network, storage accounts, cloud services, domain controller, remote or local SQL databases, head node, and additional cluster nodes. Alternatively, the script can use pre-existing Azure infrastructure and create only the HPC cluster nodes.
+環境や選択肢によっては、このスクリプトにより、Azure 仮想ネットワーク、ストレージ アカウント、クラウド サービス、ドメイン コントローラー、リモートまたはローカルの SQL データベース、ヘッド ノード、その他のクラスター ノードを含む、すべてのクラスター インフラストラクチャを作成できます。また、既存の Azure インフラストラクチャを使用し、HPC クラスター ノードだけを作成することもできます。
 
 
-For background information about planning an HPC Pack cluster, see the [Product Evaluation and Planning](https://technet.microsoft.com/library/jj899596.aspx) and [Getting Started](https://technet.microsoft.com/library/jj899590.aspx) content in the HPC Pack TechNet Library.
+HPC Pack クラスターの計画に関する背景情報については、HPC Pack TechNet ライブラリの「[製品の評価と計画](https://technet.microsoft.com/library/jj899596.aspx)」と「[はじめに](https://technet.microsoft.com/library/jj899590.aspx)」コンテンツを参照してください。
 
 
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-* **Azure subscription** - You can use a subscription in either the Azure Global or Azure China service. Your subscription limits will affect the number and type of cluster nodes you can deploy. For information, see [Azure subscription and service limits, quotas, and constraints](../articles/azure-subscription-service-limits.md).
-
-
-* **Windows client computer with Azure PowerShell 0.8.7 or later installed and configured** - See [Install and configure Azure PowerShell](../articles/powershell-install-configure.md) for installation instructions and steps to connect to your Azure subscription.
+* **Azure サブスクリプション** - Azure Global または Azure China サービスのサブスクリプションを利用できます。ご利用のサブスクリプションの制限によりデプロイ可能なクラスター ノードの数と種類が変わります。詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md)」をご覧ください。
 
 
-* **HPC Pack IaaS deployment script** - Download and unpack the latest version of the script from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Check the version of the script by running `New-HPCIaaSCluster.ps1 –Version`. This article is based on version 4.4.1 of the script.
-
-* **Script configuration file** - You'll need to create an XML file that the script uses to configure the HPC cluster. For information and examples, see sections later in this article and the file Manual.rtf that accompanies the deployment script.
+* **Azure PowerShell 0.8.7 以降がインストールされ、構成されている Windows クライアント コンピューター** - インストール方法と Azure サブスクリプションに接続するための手順については、「[Azure PowerShell のインストールおよび構成方法](../articles/powershell-install-configure.md)」を参照してください。
 
 
-## <a name="syntax"></a>Syntax
+* **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) から最新版のスクリプトをダウンロードし、解凍します。`New-HPCIaaSCluster.ps1 –Version` を実行して、スクリプトのバージョンを確認します。この記事はバージョン 4.4.1 のスクリプトに基づきます。
+
+* **スクリプトの設定ファイル** - HPC クラスターを設定するためにスクリプトにより使用される XML ファイルを作成する必要があります。詳細および例については、この記事の後続のセクションとデプロイ スクリプトに付属の Manual.rtf ファイルを参照してください。
+
+
+## 構文
 
 ```
 New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminPassword] <String>] [[-HPCImageName] <String>] [[-LogFile] <String>] [-Force] [-NoCleanOnFailure] [-PSSessionSkipCACheck] [<CommonParameters>]
 ```
->[AZURE.NOTE]You must run the script as an administrator.
+>[AZURE.NOTE]このスクリプトは管理者として実行する必要があります。
 
-### <a name="parameters"></a>Parameters
+### パラメーター
 
-* **ConfigFile** - Specifies the file path of the configuration file to describe the HPC cluster. See more about the configuration file in this topic, or in the file Manual.rtf in the folder containing the script.
+* **ConfigFile** - HPC クラスターについて説明する構成ファイルのファイル パスを指定します。構成ファイルの詳細については、このトピックか、またはスクリプトが格納されているフォルダーの Manual.rtf ファイルを参照してください。
 
-* **AdminUserName** - Specifies the user name. If the domain forest is created by the script, this becomes the local administrator user name for all VMs as well as the domain administrator name. If the domain forest already exists, this specifies the domain user as the local administrator user name to install HPC Pack.
+* **AdminUserName** - ユーザー名を指定します。ドメイン フォレストがこのスクリプトにより作成される場合、これがすべての VM のローカル管理者ユーザー名となり、また、ドメイン管理者名となります。ドメイン フォレストが既に存在する場合、HPC Pack をインストールするために、ドメイン ユーザーがローカル管理者ユーザー名として指定されます。
 
-* **AdminPassword** - Specifies the administrator’s password. If not specified in the command line, the script will prompt you to input the password.
+* **AdminPassword** - 管理者のパスワードを指定します。コマンド ラインで指定されない場合、パスワードを入力するように求められます。
 
-* **HPCImageName** (optional) - Specifies the HPC Pack VM image name used to deploy the HPC cluster. It must be a Microsoft-provided HPC Pack image from the Azure Marketplace. If not specified (recommended in most cases), the script chooses the latest published [HPC Pack image](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/). The latest image is based on Windows Server 2012 R2 Datacenter with HPC Pack 2012 R2 Update 3 installed.
+* **HPCImageName** (省略可能) - HPC クラスターのデプロイに使用される HPC Pack VM イメージ名が指定されます。これは Azure Marketplace から Microsoft が提供する HPC Pack イメージにする必要があります。指定されていない場合 (ほとんどの場合に推奨)、最近公開された [HPC Pack イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)が選択されます。最新のイメージは、HPC Pack 2012 R2 Update 3 がインストールされた Windows Server 2012 R2 Datacenter に基づいています。
 
-    >[AZURE.NOTE] Deployment will fail if you don't specify a valid HPC Pack image.
+    >[AZURE.NOTE] 有効な HPC Pack イメージを指定しない場合、デプロイは失敗します。
 
-* **LogFile** (optional) - Specifies the deployment log file path. If not specified, the script will create a log file in the temp directory of the computer running the script.
+* **LogFile** (省略可能) - デプロイ ログ ファイルのパスを指定します。指定しない場合、スクリプトを実行しているコンピューターの一時ディレクトリにログ ファイルが作成されます。
 
-* **Force** (optional) - Suppresses all the confirmation prompts.
+* **Force** (省略可能) - すべての確認プロンプトを非表示にします。
 
-* **NoCleanOnFailure** (optional) - Specifies that the Azure VMs that are not successfully deployed will not be removed. You must remove these VMs manually before rerunning the script to continue the deployment, or the deployment may fail.
+* **NoCleanOnFailure** (省略可能) - デプロイできなかった Azure VM を削除しません。デプロイできなかった VM を最初に手動で削除してから、スクリプトを再実行し、デプロイを続行します。そうしないと、デプロイは失敗します。
 
-* **PSSessionSkipCACheck** (optional) - For every cloud service with VMs deployed by this script, a self-signed certificate is automatically generated by Azure, and all the VMs in the cloud service use this certificate as the default Windows Remote Management (WinRM) certificate. To deploy HPC features in these Azure VMs, the script by default temporarily installs these certificates in the Local Computer\\Trusted Root Certification Authorities store of the client computer to suppress the “not trusted CA” security error during script execution; the certificates are removed when the script finishes. If this parameter is specified, the certificates are not installed in the client computer, and the security warning is suppressed.
+* **PSSessionSkipCACheck** (省略可能) - このスクリプトで VM がデプロイされたすべてのクラウド サービスに対して、Azure によって自己署名証明書が自動的に生成されます。クラウド サービスのすべての VM がこの証明書を既定の Windows リモート管理 (WinRM) 証明書として使用します。これらの Azure VM で HPC 機能をデプロイするために、スクリプトによって、これらの証明書がローカル コンピューター/クライアント コンピューターの信頼されたルート証明機関ストアに既定で一時的にインストールされ、スクリプトの実行中、"信頼できない CA" セキュリティ エラーが抑制されます。スクリプトが完了すると、証明書は削除されます。このパラメーターが指定されている場合、証明書はクライアント コンピューターにインストールされず、セキュリティ警告が非表示になります。
 
-    >[AZURE.IMPORTANT] This parameter is not recommended for production deployments.
+    >[AZURE.IMPORTANT] 本稼働デプロイの場合、このパラメーターは推奨されません。
 
-### <a name="example"></a>Example
+### 例
 
-The following example creates a new HPC Pack cluster using the configuration file *MyConfigFile.xml*, and specifies administrative credentials for installing the cluster.
+次の例では、*MyConfigFile.xml* という構成ファイルを使用して新しい HPC Pack クラスターを作成し、クラスターをインストールするための管理者資格情報を指定します。
 
 ```
 .\New-HPCIaaSCluster.ps1 –ConfigFile MyConfigFile.xml -AdminUserName <username> –AdminPassword <password>
 ```
 
-### <a name="additional-considerations"></a>Additional considerations
+### 追加の考慮事項
 
 
 
-* The script can optionally enable job submission through the HPC Pack web portal or the HPC Pack REST API.
+* このスクリプトでは、任意で、HPC Pack Web ポータルまたは HPC Pack REST API を通してジョブ送信を有効にできます。
 
-* The script can optionally run custom pre- and post-configuration scripts on the head node if you want to install additional software or configure other settings.
-
-
-## <a name="configuration-file"></a>Configuration file
-
-The configuration file for the deployment script is an XML file. The schema file HPCIaaSClusterConfig.xsd is in the HPC Pack IaaS deployment script folder. **IaaSClusterConfig** is the root element of the configuration file, which contains the child elements described in detail in the file Manual.rtf in the deployment script folder.
+* このスクリプトでは、追加ソフトウェアをインストールするか、その他の設定を構成する場合、カスタムの構成前スクリプトと構成後スクリプトを任意で実行できます。
 
 
+## 構成ファイル
 
+デプロイ スクリプトの構成ファイルは XML ファイルです。「HPCIaaSClusterConfig.xsd」という名前のスキーマ ファイルは HPC Pack IaaS デプロイ スクリプト フォルダーにあります。**IaaSClusterConfig** は構成ファイルのルート要素であり、デプロイ スクリプト フォルダーの Manual.rtf ファイルに詳細がある子要素が含まれています。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,151 +1,150 @@
 <properties 
-    pageTitle="Using Linear Regression in Machine Learning | Microsoft Azure" 
-    description="A comparison of linear regression models in Excel and in Azure Machine Learning Studio" 
-    metaKeywords="" 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="garyericson" 
-    manager="jhubbard" 
-    editor="cgronlun"  />
+	pageTitle="Machine Learning での線形回帰の使用 | Microsoft Azure" 
+	description="Excel と Azure Machine Learning Studio での線形回帰モデルの比較" 
+	metaKeywords="" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="jhubbard" 
+	editor="cgronlun"  />
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/09/2016" 
-    ms.author="kbaroni;garye" />
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/09/2016" 
+	ms.author="kbaroni;garye" />
 
+# Azure Machine Learning での線形回帰の使用
 
-# <a name="using-linear-regression-in-azure-machine-learning"></a>Using linear regression in Azure Machine Learning
-
-> *Kate Baroni* and *Ben Boatman* are enterprise solution architects in Microsoft’s Data Insights Center of Excellence. In this article, they describe their experience migrating an existing regression analysis suite to a cloud-based solution using Azure Machine Learning.  
+> *Kate Baroni* 氏と *Ben Boatman* 氏は、マイクロソフトの Data Insights Center of Excellence のエンタープライズ ソリューション設計者です。この記事では、Azure Machine Learning を使用して、クラウド ベースのソリューションに既存の回帰分析スイートを移行する彼らの実験について説明します。
  
-&nbsp; 
+&nbsp;
   
-[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]  
+[AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
  
-## <a name="goal"></a>Goal
+## 目標
 
-Our project started with two goals in mind:  
+次の 2 つの目標を念頭においてプロジェクトを開始しました。
 
-1. Use predictive analytics to improve the accuracy of our organization’s monthly revenue projections  
-2. Use Azure ML to confirm, optimize, increase velocity, and scale of our results.  
+1. 予測分析を使用して、組織の毎月の収益予測の精度を向上させる
+2. Azure ML を使用して、結果の確認、最適化、高速化、拡張を行う
 
-Like many businesses, our organization goes through a monthly revenue forecasting process. Our small team of business analysts was tasked with using Machine Learning to support the process and improve forecast accuracy.  The team spent several months collecting data from multiple sources and running the data attributes through statistical analysis identifying key attributes relevant to services sales forecasting.  Next steps was to begin prototyping statistical regression models on the data in Excel.  Within a few weeks we had an Excel regression model that was outperforming the current field and finance forecasting processes. This became the baseline prediction result.  
-
-
-We then took the next step to moving our predictive analytics over to Azure ML to find out how Azure ML could improve on predictive performance.
+多くの企業と同様に、組織は毎月の収益予測プロセスを通過しています。小さなビジネス アナリスト チームが、Machine Learning を使用してプロセスをサポートし、予測の精度を向上させる任務に取り組みました。チームは、数か月かけて複数のソースからデータを収集し、サービスの売上予測に関連するキーとなる属性を識別する統計分析を使用してデータ属性を実行しました。次のステップは、Excel のデータで統計的回帰モデルのプロトタイプ作成を開始することでした。数週間で、現在のフィールドや財務の予測プロセスを上回る Excel の回帰モデルを作成しました。これが予測結果のベースラインになりました。
 
 
-## <a name="achieving-predictive-performance-parity"></a>Achieving predictive performance parity
+この予測分析を Azure ML に推し進めて、Azure ML の予測パフォーマンスを向上させる方法を見つけるため、次の一歩を踏み出しました。
 
-Our first priority was to achieve parity between Azure ML and Excel regression models.  Given the exact same data, and the same split for training and testing data we wanted to achieve predictive performance parity between Excel and Azure ML.   Initially we failed. The Excel model outperformed the Azure ML model.   The failure was due to a lack of understanding of the base tool setting in Azure ML. After a sync with the Azure ML product team, we gained a better understanding of the base setting required for our data sets, and achieved parity between the two models.  
 
-### <a name="create-regression-model-in-excel"></a>Create regression model in Excel
-Our Excel Regression used the standard linear regression model found in the Excel Analysis ToolPak. 
+## 予測パフォーマンスのパリティの成功
 
-We calculated *Mean Absolute % Error* and used it as the performance measure for the model.  It took 3 months to arrive at a working model using Excel.  We brought much of the learning into the Azure ML experiment which ultimately was beneficial in understanding requirements.
+最初の優先順位は、Azure ML と Excel の回帰モデル間でパリティを成功させることでした。同じデータを使用して、トレーニング データとテスト データに均等に分割し、Excel と Azure ML 間で予測パフォーマンスのパリティを成功させようとしました。最初は失敗しました。Excel モデルは、Azure ML モデルよりもパフォーマンスが優れていました。失敗の原因は、Azure ML のベース ツール設定の知識不足でした。Azure ML 製品チームと協力することで、データ セットに必要な基本設定をよく理解し、2 つのモデル間のパリティに成功しました。
 
-### <a name="create-comparable-experiment-in-azure-machine-learning"></a>Create comparable experiment in Azure Machine Learning  
-We followed these steps to create our experiment in Azure ML:  
+### Excel で回帰モデルを作成する
+Excel 回帰は、Excel Analysis ToolPak で見つかった標準的な線形回帰モデルを使用しました。
 
-1.  Uploaded the dataset as a csv file to Azure ML (very small file)
-2.  Created a new experiment and used the [Select Columns in Dataset][select-columns] module to select the same data features used in Excel   
-3.  Used the [Split Data][split] module (with *Relative Expression* mode) to divide the data into exact same train sets as had been done in Excel  
-4.  Experimented with the [Linear Regression][linear-regression] module (default options only), documented, and compared the results to our Excel regression model
+*平均絶対 % 誤差*を計算し、これをモデルのパフォーマンス測定に使用しました。Excel を使用して作業モデルに到着するのに 3 か月かかりました。多くの学習を Azure ML の実験に取り込み、これが最終的に要件の理解に役立ちました。
 
-### <a name="review-initial-results"></a>Review initial results
-At first, the Excel model clearly outperformed the Azure ML model:  
+### Azure Machine Learning で同等の実験を作成する  
+次の手順に従って、Azure ML で実験を作成しました。
 
-|   |Excel|Azure ML|
+1.	データセットを csv ファイルとして Azure ML にアップロードしました (非常に小さいファイル)
+2.	Excel で使用したのと同じデータ特徴を選ぶために、新しい実験を作成し、[データセット内の列の選択][select-columns]モジュールを使用しました
+3.	[データ分割][split]モジュール (*相対式*モードで) を使用して、Excel で実行されたのと同じトレーニング セットにデータを分割しました
+4.	[線形回帰][linear-regression]モジュール (既定のオプションのみ) で実験、文書化し、Excel の回帰モデルと結果を比較しました
+
+### 最初の結果を確認する
+最初は、Excel モデルが Azure ML モデルよりも明らかにパフォーマンスが優れていました。
+
+| |Excel|Azure ML|
 |---|:---:|:---:|
-|Performance|   |  |
-|<ul style="list-style-type: none;"><li>Adjusted R Square</li></ul>| 0.96 |N/A|
-|<ul style="list-style-type: none;"><li>Coefficient of <br />Determination</li></ul>|N/A|   0.78<br />(low accuracy)|
-|Mean Absolute Error |  $9.5M|  $ 19.4M|
-|Mean Absolute Error (%)|   6.03%|  12.2%
+|パフォーマンス| | |
+|<ul style="list-style-type: none;"><li>自由度調整済み決定係数</li></ul>| 0\.96 |該当なし|
+|<ul style="list-style-type: none;"><li>決定係数<br /></li></ul>|該当なし|	0\.78<br />(低精度)|
+|平均絶対誤差 |	$9.5M|	$ 19.4M|
+|平均絶対誤差 (%)|	6\.03%|	12\.2%
 
-When we ran our process and results by the developers and data scientists on the Azure ML team, they quickly provided some useful tips.  
+Azure ML チームの開発者とデータ サイエンティストによってプロセスと結果が実行されると、有益な情報がすぐに提供されました。
 
-* When you use the [Linear Regression][linear-regression] module in Azure ML, two methods are provided:
-    *  Online Gradient Descent: May be more suitable for larger-scale problems
-    *  Ordinary Least Squares: This is the method most people think of when they hear linear regression. For small datasets, Ordinary Least Squares can be a more optimal choice.
-*  Consider tweaking the L2 Regularization Weight parameter to improve performance. It is set to 0.001 by default and for our small data set, we set it to 0.005 to improve performance.    
+* Azure ML で[線形回帰][linear-regression]モジュールを使用する場合は、次の 2 つ方法が用意されています。
+	*  オンライン勾配降下: 大規模な問題に適しています。
+	*  通常の最小二乗法: これは、線形回帰と聞くと多くの人が考える方法です。小さなデータセットの場合は、通常の最小二乗法が最適な選択肢です。
+*  パフォーマンスを向上させるために、L2 正則化重みパラメーターを調整することを検討します。既定では 0.001 に設定されていますが、小さなデータ セットでは、パフォーマンスを向上させるために 0.005 に設定しました。
 
-### <a name="mystery-solved!"></a>Mystery solved!
-When we applied the recommendations, we achieved the same baseline performance in Azure ML as with Excel:   
+### 問題の解決
+Recommendations を適用した結果、Azure ML で Excel と同等のベースライン パフォーマンスを達成しました。
 
-|| Excel|Azure ML (Initial)|Azure ML w/ Least Squares|
+|| Excel|Azure ML (初期値)|最小二乗法を使用した Azure ML|
 |---|:---:|:---:|:---:|
-|Labeled value  |Actuals (numeric)|same|same|
-|Learner  |Excel -> Data Analysis -> Regression|Linear Regression.|Linear Regression|
-|Learner options|N/A|Defaults|ordinary  least squares<br />L2 = 0.005|
-|Data Set|26 rows, 3 features, 1 label.   All numeric.|same|same|
-|Split: Train|Excel trained on the first 18 rows, tested on the last 8 rows.|same|same|
-|Split: Test|Excel regression formula applied to the last 8 rows|same|same|
-|**Performance**||||
-|Adjusted R Square|0.96|N/A||
-|Coefficient of Determination|N/A|0.78|0.952049|
-|Mean Absolute Error |$9.5M|$ 19.4M|$9.5M|
-|Mean Absolute Error (%)|<span style="background-color: 00FF00;"> 6.03%</span>|12.2%|<span style="background-color: 00FF00;"> 6.03%</span>|
+|ラベル付きの値 |実際の数値|同じ|同じ|
+|学習者 |Excel -> データ分析 -> 回帰|線形回帰。|線形回帰|
+|学習者のオプション|該当なし|既定値|最小二乗法<br />L2 = 0.005|
+|データ セット|26 行、3 特徴、1 ラベル。すべて数値。|同じ|同じ|
+|分割: トレーニング|Excel は最初の 18 行でトレーニングを行い、最後の 8 行でテストしました。|同じ|同じ|
+|Split: テスト|最後の 8 行に Excel の回帰式を適用しました|同じ|同じ|
+|**パフォーマンス**||||
+|自由度調整済み決定係数|0\.96|該当なし||
+|決定係数|該当なし|0\.78|0\.952049|
+|平均絶対誤差 |$9.5M|$ 19.4M|$9.5M|
+|平均絶対誤差 (%)|<span style="background-color: 00FF00;"> 6.03%</span>|12\.2%|<span style="background-color: 00FF00;"> 6.03%</span>|
 
-In addition, the Excel coefficients compared well to the feature weights in the Azure trained model:
+さらに、Excel の係数を Azure のトレーニング済みモデルの特徴の重みと十分に比較しました。
 
-||Excel Coefficients|Azure Feature Weights|
+||Excel の係数|Azure の特徴の重み|
 |---|:---:|:---:|
-|Intercept/Bias|19470209.88|19328500|
-|Feature A|0.832653063|0.834156|
-|Feature B|11071967.08|11007300|
-|Feature C|25383318.09|25140800|
+|切片/偏り|19470209\.88|19328500|
+|特徴 A|0\.832653063|0\.834156|
+|特徴 B|11071967\.08|11007300|
+|特徴 C|25383318\.09|25140800|
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-We wanted to consume Azure ML web service within Excel.  Our business analysts rely on Excel and we needed a way to call the Azure ML web service with a row of Excel data and have it return the predicted value to Excel.   
+Excel 内で Azure ML Web サービスを使用したいと考えました。ビジネス アナリストは Excel に依存しているため、Excel データの行で Azure ML Web サービスを呼び出し、予測値を Excel に返す方法が必要でした。
 
-We also wanted to optimize our model, using the options and algorithms available in Azure ML.
+また、Azure ML で使用可能なオプションとアルゴリズムを使用して、モデルを最適化したいと考えました。
 
-### <a name="integration-with-excel"></a>Integration with Excel
-Our solution was to operationalize our Azure ML regression model by creating a web service from the trained model.  Within a few minutes, the web service was created and we could call it directly from Excel to return a predicted revenue value.    
+### Excel との統合
+ソリューションは、トレーニング済みのモデルから Web サービスを作成することで、Azure ML の回帰モデルを運用することでした。数分以内に、Web サービスを作成し、これを Excel から直接呼び出して予測収益値を返すことができます。
 
-The *Web Services Dashboard* section includes a downloadable Excel workbook.  The workbook comes pre-formatted with the web service API and schema information embedded.   When you click on *Download Excel Workbook*, it opens and you can save it to your local computer.    
+*Web サービスのダッシュボード*のセクションには、ダウンロード可能な Excel ブックが含まれています。ブックには、Web サービス API とスキーマ情報が埋め込まれて事前に書式設定されています。*[Download Excel Workbook]* をクリックすると、Excel が開き、ローカル コンピューターに保存できます。
 
 ![][1]
  
-With the workbook open, copy your predefined parameters into the blue Parameter section as shown below.  Once the parameters are entered, Excel calls out to the AzureML web service and the predicted scored labels will display in the green Predicted Values section.  The workbook will continue to create predictions for parameters based on your trained model for all row items entered under Parameters.   For more information on how to use this feature, see [Consuming an Azure Machine Learning Web Service from Excel](machine-learning-consuming-from-excel.md). 
+以下に示すように、ブックを開いた状態で、定義済みのパラメーターを青色の [パラメーター] セクションにコピーします。パラメーターが入力されると、Excel は AzureML Web サービスを呼び出し、予測されたスコア付けラベルが緑色の [予測値] セクションに表示されます。ブックは、[パラメーター] に入力されたすべての行項目に対して、トレーニング済みのモデルに基づいてパラメーターの予測を作成していきます。この機能を使用する方法の詳細については、「[Excel からの Azure Machine Learning Web サービスの使用](machine-learning-consuming-from-excel.md)」をご覧ください。
 
 ![][2]
  
-### <a name="optimization-and-further-experiments"></a>Optimization and further experiments
-Now that we had a baseline with our Excel model, we moved ahead to optimize our Azure ML Linear Regression Model.  We used the module [Filter-Based Feature Selection][filter-based-feature-selection] to improve on our selection of initial data elements and it helped us achieve a performance improvement of 4.6% Mean Absolute Error.   For future projects we will use this feature which could save us weeks in iterating through data attributes to find the right set of features to use for modelling.  
+### 最適化と今後の実験
+これまで、Excel モデルを使用してベースラインを構築し、Azure ML 線形回帰モデルの最適化を進めてきました。[フィルターに基づく機能の選択][filter-based-feature-selection]モジュールを使用して初期データ要素の選択を改善することで、平均絶対誤差 4.6% のパフォーマンス向上の達成を実現しました。今後のプロジェクトのために、データ属性に反復処理を行う数週間を節約できる可能性があるこの特徴を使用して、モデリングに使用する正しい特徴セットを検索します。
 
-Next we plan to include additional algorithms like [Bayesian][bayesian-linear-regression] or [Boosted Decision Trees][boosted-decision-tree-regression] in our experiment to compare performance.    
+次は、パフォーマンスを比較するために、[ベイジアン][bayesian-linear-regression]や[ブースト デシジョン ツリー][boosted-decision-tree-regression]などのアルゴリズムを実験に含める予定です。
 
-If you want to experiment with regression, a good dataset to try is the Energy Efficiency Regression sample dataset, which has lots of numerical attributes. The dataset is provided as part of the sample datasets in ML Studio.  You can use a variety of learning modules to predict either Heating Load or Cooling Load.  The chart below is a performance comparison of different regression learns against the Energy Efficiency dataset predicting for the target variable Cooling Load: 
+回帰を試してみる場合に適切なデータセットは、多くの数値属性を持つエネルギー効率回帰のサンプル データセットです。このデータセットは、ML Studio でサンプル データセットの一部として提供されています。さまざまな学習モジュールを使用して、暖房負荷または冷房負荷のいずれかを予測できます。次の表は、さまざまな回帰のパフォーマンスを比較したもので、エネルギー効率データセットに対する、ターゲット変数の冷房負荷の予測を示しています。
 
-|Model|Mean Absolute Error|Root Mean Squared Error|Relative Absolute Error|Relative Squared Error|Coefficient of Determination
+|モデル|平均絶対誤差|二乗平均平方根誤差|相対絶対誤差|相対二乗誤差|決定係数
 |---|---|---|---|---|---
-|Boosted Decision Tree|0.930113|1.4239|0.106647|0.021662|0.978338
-|Linear Regression (Gradient Descent)|2.035693|2.98006|0.233414|0.094881|0.905119
-|Neural Network Regression|1.548195|2.114617|0.177517|0.047774|0.952226
-|Linear Regression (Ordinary Least Squares)|1.428273|1.984461|0.163767|0.042074|0.957926  
+|ブースト デシジョン ツリー|0\.930113|1\.4239|0\.106647|0\.021662|0\.978338
+|線形回帰 (勾配降下)|2\.035693|2\.98006|0\.233414|0\.094881|0\.905119
+|ニューラル ネットワーク回帰|1\.548195|2\.114617|0\.177517|0\.047774|0\.952226
+|線形回帰 (通常の最小二乗法)|1\.428273|1\.984461|0\.163767|0\.042074|0\.957926  
 
-## <a name="key-takeaways"></a>Key Takeaways 
+## 重要なポイント 
 
-We learned a lot by from running Excel regression and Azure Machine Learning experiments in parallel. Creating the baseline model in Excel and comparing it to models using  Azure ML [Linear Regression][linear-regression] helped us learn Azure ML, and we discovered opportunities to improve data selection and model performance.         
+Excel の回帰と Azure Machine Learning の実験を並行して実行することで、多くのことを学びました。Excel でベースライン モデルを作成し、これを Azure ML の[線形回帰][linear-regression]を使用してモデルと比較することは、Azure ML の学習に役立ち、データの選択とモデルのパフォーマンスを向上させることがわかりました。
 
-We also found that it is advisable to use [Filter-Based Feature Selection][filter-based-feature-selection] to accelerate future prediction projects.  By applying feature selection to your data, you can create an improved model in Azure ML with better overall performance. 
+また、今後の予測プロジェクトを促進するために、[フィルターに基づく特徴選択][filter-based-feature-selection]の使用が望ましいことがわかりました。データに特徴選択を適用することで、Azure ML で全体のパフォーマンスがさらに向上したモデルを作成できます。
 
-The ability to transfer the predictive analytic forecasting from Azure ML to Excel systemically allows a significant increase in the ability to successfully provide results to a broad business user audience.     
+予測分析の予測を Azure ML から Excel に体系的に転送する機能を使用することで、さまざまなビジネス ユーザーに正常に結果を提供できる機能が大幅に向上します。
 
 
-## <a name="resources"></a>Resources
-Some resources are listed for helping you work with regression:  
+## リソース
+次のリソースは、回帰を使用する際に役立ちます。
 
-* Regression in Excel.  If you’ve never tried regression in Excel, this tutorial makes it easy: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
-* Regression vs forecasting.  Tyler Chessman wrote a blog article explaining how to do time series forecasting in Excel, which contains a good beginner’s description of linear regression. [http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts)  
-*   Ordinary Least Squares Linear Regression: Flaws, Problems and Pitfalls.  For an introduction and discussion of Regression:   [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ )
+* Excel での回帰。Excel で回帰を初めて試してみる場合は、このチュートリアルが簡単です: [http://www.excel-easy.com/examples/regression.html](http://www.excel-easy.com/examples/regression.html)
+* 回帰と予測。Tyler Chessman 氏による、初心者向けの優れた線形回帰の説明が書かれた、Excel で時系列予測を実行する方法を説明するブログ記事。[http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts](http://sqlmag.com/sql-server-analysis-services/understanding-time-series-forecasting-concepts)
+* 	通常の最小二乗法の線形回帰: 欠点、問題、注意点回帰の概要と説明: [http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/ ](http://www.clockbackward.com/2009/06/18/ordinary-least-squares-linear-regression-flaws-problems-and-pitfalls/)
 
 [1]: ./media/machine-learning-linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png
 [2]: ./media/machine-learning-linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png
@@ -160,8 +159,4 @@ Some resources are listed for helping you work with regression:
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

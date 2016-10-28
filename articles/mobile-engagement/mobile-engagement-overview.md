@@ -1,59 +1,54 @@
 <properties
-    pageTitle="Mobile Engagement Overview | Microsoft Azure"
-    description="Overview of Azure Mobile Engagement"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+	pageTitle="Mobile Engagement の概要 | Microsoft Azure"
+	description="Azure Mobile Engagement の概要"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.devlang="na"
-    ms.topic="hero-article" 
-    ms.date="01/04/2016"
-    ms.author="piyushjo;matt-gibbs" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.devlang="na"
+	ms.topic="hero-article" 
+	ms.date="01/04/2016"
+	ms.author="piyushjo;matt-gibbs" />
 
+#Azure Mobile Engagement の概要
 
-#<a name="azure-mobile-engagement-overview"></a>Azure Mobile Engagement overview
+Azure Mobile Engagement は、サービスとしてのソフトウェア (SaaS) 型のユーザー エンゲージメント プラットフォームで、これによりデータ主導のアプリ使用状況分析、リアルタイムでのユーザーのセグメント化、コンテキスト感知のプッシュ通知とアプリ内メッセージングが可能になります。
 
-Azure Mobile Engagement is a software-as-a-service (SaaS) user-engagement platform that provides data-driven insights into app usage, real-time user segmentation, and enables contextually-aware push notifications and in-app messaging.
-
-###<a name="overview-video"></a>Overview video
+###概要ビデオ
 > [AZURE.VIDEO azure-mobile-engagement-overview]
 
-With Azure Mobile Engagement, application publishers and marketing professionals can better understand and interact with the app users.
+Azure Mobile Engagement を使用すれば、アプリケーションの発行者とマーケティングの専門家はアプリのユーザーについてより理解を深め、効果的に働きかけることができます。
 
-##<a name="real-time-actionable-analytics-to-maximize-return-on-investment"></a>Real-time actionable analytics to maximize return on investment
+##意思決定の基になるリアルタイムの分析データで投資収益率を最大化
 
-Trigger engagement scenarios according to user behavior and demographics by combining `big data` collection with real-time message processing. Mobile Engagement can answer nearly any question relevant to your particular business needs. For example, you can create custom dashboards to measure key performance indicators (KPIs), rapidly find and fix usage bottlenecks in a user funnel path, track retention and user stickiness, and by that determine what campaigns are driving the highest return on investment. Mobile Engagement’s 360° user path view allows you to easily and continually enhance and optimize the user experience – driving higher retention rates and improve app usage.
+`big data` のコレクションとリアルタイムのメッセージ処理を組み合わせて、アプリのユーザー動作および人口統計データに沿ったエンゲージメントのシナリオを生み出します。Mobile Engagement は、特別なビジネス ニーズに関連するほぼすべての質問に答えることができます。たとえば、カスタム ダッシュボードを作成して主要業績評価指標 (KPI) を測定し、ユーザーの行動経路のどこに使用のボトルネックがあるかをすばやく検出して修正し、継続率と定着率を追跡できます。それにより、どのキャンペーンが最も投資収益率 (ROI) を高めているかを判断することができます。Mobile Engagement の 360°ユーザー パス ビューを使用すると、ユーザー エクスペリエンスを簡単かつ継続的に向上し、最適化することができます。これにより、保有率とアプリの使用量がアップします。
 
-##<a name="value-added-push-and-communications-platform"></a>Value-added push and communications platform
+##付加価値の付いたプッシュと通信プラットフォーム
 
-Mobile Engagement provides in-app messaging capabilities and works seamlessly with native push notifications gateways such as Google’s GCM, Apple’s APNS and Microsoft MPNS. And it goes beyond to give you the power to create targeted campaigns by analyzing user behaviors to identify unique customer segments.
+Mobile Engagement はアプリ内メッセージング機能を提供し、Google の GCM、Apple の APNS、Microsoft の MPNS などのネイティブのプッシュ通知ゲートウェイとシームレスに連携します。さらに、ユーザーの行動を分析して一意の顧客セグメントを識別することにより、ターゲットを絞り込んだキャンペーンを作成することができます。
 
-This benefits app developers by reaching their customers in a highly effective and non-intrusive manner.
+アプリの開発者には、効果が高く侵入的でない方法で顧客に接触できるという利点があります。
 
-##<a name="open-apis-and-ease-of-integration"></a>Open APIs and ease of integration
+##オープン API と統合しやすさ
 
-By providing open APIs and SDKs that ease integration, you can leverage data from your existing CRM, CMS or other backend systems. This allows you to further improve your audience targeting and protect your investments.
+オープン API と SDK が提供され、統合しやすいため、既存の CRM、CMS、その他のバックエンド システムのデータを活用できます。これにより、オーディエンス ターゲティングを改善し、投資を保護できます。
 
-##<a name="data-protection-&-privacy-across-the-globe"></a>Data protection & privacy across the globe
+##データ保護とプライバシーを世界中で
 
-Microsoft has a longstanding commitment to privacy, which is an integral part of our product and services lifecycle. We work to be transparent in our privacy practices, offering customers meaningful privacy choices, and responsibly manage the data we store. As with all Azure services, Mobile Engagement does not share or sell information derived from customers’ property. Mobile Engagement is available globally, allowing for regional or country specific data privacy laws to be upheld.
+マイクロソフトは、製品とサービス ライフサイクルに不可欠な要素であるプライバシーについて長年にわたって取り組んでいます。マイクロソフトは、プライバシー プラクティスを透明化すること、プライバシーに関する有意な選択肢をお客様に提供すること、マイクロソフトが保存するデータを責任を持って管理することを目標に努力しています。すべての Azure サービスと同様、Mobile Engagement では、お客様の資産から派生する情報の共有や販売はしません。Mobile Engagement は、データのプライバシーに関する国や地域の法律を遵守するグローバルなソリューションです。
 
-###<a name="next-steps:"></a>Next Steps:
+###次のステップ:
 
-[Best practices and process to create your Mobile Engagement](mobile-engagement-getting-started-best-practices.md)
+[Mobile Engagement を作成するためのベスト プラクティスとプロセス](mobile-engagement-getting-started-best-practices.md)
 
-[Getting Started](/documentation/services/mobile-engagement/)
+[作業の開始](/documentation/services/mobile-engagement/)
 
-[Download demo apps with source code](https://aka.ms/azmedemoapps)
+[ソース コード付きのデモ アプリのダウンロード](https://aka.ms/azmedemoapps)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0608_2016-->

@@ -1,82 +1,77 @@
 <properties
-    pageTitle="Scaling Media Processing overview | Microsoft Azure"
-    description="This topic is an overview of scaling Media Processing with Azure Media Services."
-    services="media-services"
-    documentationCenter=""
-    authors="juliako"
-    manager="erikre"
-    editor=""/>
+	pageTitle="メディア処理のスケール設定の概要 | Microsoft Azure"
+	description="このトピックでは、Azure Media Services を使用したメディア処理のスケール設定の概要を示します。"
+	services="media-services"
+	documentationCenter=""
+	authors="juliako"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="media-services"
-    ms.workload="media"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/29/2016"
-    ms.author="juliako"/>
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/29/2016"
+	ms.author="juliako"/>
 
 
+# メディア処理のスケール設定の概要
 
-# <a name="scaling-media-processing-overview"></a>Scaling Media Processing overview
+このページでは、メディア処理のスケールを設定する方法と、スケール設定を行う理由の概要について説明します。
 
-This page gives an overview of how and why to scale media processing. 
+## Overview
 
-## <a name="overview"></a>Overview
+Media Services アカウントは、メディア処理タスクを処理する速度を決定する予約ユニットの種類に関連付けられます。予約ユニットの種類は、**S1**、**S2**、**S3** から選択できます。たとえば、同じエンコード ジョブの場合に、予約ユニットの種類として **S1** よりも **S2** を使用する方が、ジョブの実行が高速になります。詳細については、[予約ユニットの種類](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/)に関するページを参照してください。
 
-A Media Services account is associated with a Reserved Unit Type, which determines the speed with which your media processing tasks are processed. You can pick between the following reserved unit types: **S1**, **S2**, or **S3**. For example, the same encoding job runs faster when you use the **S2** reserved unit type compare to the **S1** type. For more information, see the [Reserved Unit Types](https://azure.microsoft.com/blog/high-speed-encoding-with-azure-media-services/).
+予約ユニットの種類を指定するだけでなく、予約ユニットを使用したアカウントのプロビジョニングを指定することもできます。プロビジョニングされた予約ユニットの数によって、所定のアカウントで並列処理できるメディア タスクの数が決まります。たとえば、アカウントの予約ユニットの数が 5 である場合、処理するタスクがある限り、5 個のメディア タスクが並列実行されます。残りのタスクはキューで待機して、実行中のタスクが完了するとキューから取り出されて順番に処理されます。アカウントに予約ユニットが用意されていない場合、タスクは逐次処理されます。この場合、あるタスクが終了した後、次のタスクが開始するまでの待機時間は、システムのリソースが利用できるかどうかに左右されます。
 
-In addition to specifying the reserved unit type, you can specify to provision your account with reserved units. The number of provisioned reserved units determines the number of media tasks that can be processed concurrently in a given account. For example, if your account has five reserved units, then five media tasks will be running concurrently as long as there are tasks to be processed. The remaining tasks will wait in the queue and will get picked up for processing sequentially when a running task finishes. If an account does not have any reserved units provisioned, then tasks will be picked up sequentially. In this case, the wait time between one task finishing and the next one starting will depend on the availability of resources in the system.
+## さまざまな予約ユニットの種類の選択
 
-## <a name="choosing-between-different-reserved-unit-types"></a>Choosing between different reserved unit types
+次の表は、さまざまなエンコーディングの速度を選択して決定するときに役立ちます。ベンチマーク ケースや SAS URL も記載されています。これらの SAS URL を使用してビデオをダウンロードして、独自のテストを実行できます。
 
-The following table helps you make decision when choosing between different encoding speeds. It also provides a few benchmark cases and provides SAS URLs that you can use to download videos on which you can perform your own tests:
-
-Scenarios|**S1**|**S2**|**S3**|
+シナリオ|**S1**|**S2**|**S3**|
 ----------|------------|----------|------------
-Intended use case| Single bitrate encoding. <br/>Files at SD or below resolutions, not time sensitive, low cost.|Single bitrate and multiple bitrate encoding.<br/>Normal usage for both SD and HD encoding. |Single bitrate and multiple bitrate encoding.<br/>Full HD and 4K resolution videos. Time sensitive, faster turnaround encoding. 
-Benchmark|[Input file: 5 minutes long 640x360p at 29.97 frames/second](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D).<br/><br/>Encoding to a single bitrate MP4 file, at the same resolution, takes approximately 11 minutes.|[Input file: 5 minutes long 1280x720p at 29.97 frames/second](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)<br/><br/>Encoding with "H264 Single Bitrate 720p" preset takes approximately 5 minutes.<br/><br/>Encoding with "H264 Multiple Bitrate 720p" preset takes approximately 11.5 minutes.|[Input file: 5 minutes long 1920x1080p at 29.97 frames/second](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D). <br/><br/>Encoding with "H264 Single Bitrate 1080p" preset takes approximately 2.7 minutes.<br/><br/>Encoding with "H264 Multiple Bitrate 1080p" preset takes approximately 5.7 minutes.
+目的のユース ケース| シングル ビットレート エンコード。<br/>解像度が SD 以下であり、時間的制約がなく、低コストなファイル。|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>通常は SD と HD 両方のエンコードに使用されます。 |シングル ビットレート エンコードと複数ビットレート エンコード。<br/>解像度がフル HD および 4 K であるビデオ。時間に依存しない高速ターンアラウンド エンコード。 
+ベンチマーク|[入力ファイル: 640x360p を 29.97 フレーム/秒で 5 分間](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_360p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)。<br/><br/>同じ解像度でシングル ビットレート MP4 ファイルにエンコードするには約 11 分かかります。|[入力ファイル: 1280x720p を 29.97 フレーム/秒で 5 分間](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_720p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)。<br/><br/>[H264 Single Bitrate 720p] プリセットでのエンコードは約 5 分かかります。<br/><br/>[H264 Multiple Bitrate 720p] プリセットでのエンコードは約 11 分半かかります。|[入力ファイル: 1920x1080p を 29.97 フレーム/秒で 5 分間](https://wamspartners.blob.core.windows.net/for-long-term-share/Whistler_5min_1080p30.mp4?sr=c&si=AzureDotComReadOnly&sig=OY0TZ%2BP2jLK7vmcQsCTAWl33GIVCu67I02pgarkCTNw%3D)。<br/><br/>[H264 Single Bitrate 1080p] プリセットでのエンコードは約 2.7 分かかります。<br/><br/>[H264 Multiple Bitrate 1080p] プリセットでのエンコードは約 5.7 分かかります。
 
-##<a name="considerations"></a>Considerations
+##考慮事項
 
->[AZURE.IMPORTANT] Review considerations described in this section.  
+>[AZURE.IMPORTANT] このセクションで説明する考慮事項を確認してください。
 
-- Reserved Units work for parallelizing all media processing, including indexing jobs using Azure Media Indexer.  However, unlike encoding, indexing jobs do not get processed faster with faster reserved units.
+- 予約ユニットは、Azure Media Indexer を使用するインデックス作成ジョブを含む、すべてのメディア処理を並列化するために動作します。ただし、エンコードとは異なり、インデックス作成ジョブでは高速予約ユニットを使用した高速処理は行われません。
 
-- If using the shared pool, that is, without any reserved units, then your encode tasks have the same performance as with S1 RUs. However, there is no upper bound to the time your Tasks can spend in queued state, and at any given time, at most one Task is be running.
+- 共有プールを使用する (すなわち、予約ユニットを使用しない) 場合のエンコード タスクのパフォーマンスは S1 予約ユニットを使用したときと同等になります。ただし、タスクがキューに登録された状態である時間の上限はなく、同時に実行されるタスクの数は最大で 1 つです。
 
-- The following data centers do not offer the **S2** reserved unit type: Brazil South, India West, India Central, and India South.
+- ブラジル南部、インド西部、インド中部、およびインド南部のデータ センターでは、占有ユニットの種類 **S2** は提供されません。
 
-- The following data centers do not offer the **S3** reserved unit type: Brazil South, India West, India Central.
+- ブラジル南部、インド西部、およびインド中部のデータ センターでは、占有ユニットの種類 **S3** は提供されません。
 
-- The highest number of units specified for the 24-hour period is used in calculating the cost.
+- コストの計算時には、24 時間の期間内に指定されたユニットの最大数が使用されます。
 
 
-##<a name="quotas-and-limitations"></a>Quotas and limitations
+##クォータと制限
 
-For information about quotas and limitations and how to open a support ticket, see [Quotas and limitations](media-services-quotas-and-limitations.md).
+クォータと制限の詳細、サポート チケットを開く方法については、「[Quotas and limitations (クォータと制限)](media-services-quotas-and-limitations.md)」をご覧ください
 
-##<a name="next-step"></a>Next step
+##次のステップ
 
-Achieve the scaling media processing task with one of these technologies: 
+以下のいずれかのテクノロジを利用して、メディア処理のスケール設定タスクを実現します。
 
 > [AZURE.SELECTOR]
 - [.NET](media-services-dotnet-encoding-units.md)
-- [Portal](media-services-portal-scale-media-processing.md)
-- [REST](https://msdn.microsoft.com/library/azure/dn859236.aspx)
+- [ポータル](media-services-portal-scale-media-processing.md)
+- [REST ()](https://msdn.microsoft.com/library/azure/dn859236.aspx)
 - [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 - [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 
-##<a name="media-services-learning-paths"></a>Media Services learning paths
+##Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

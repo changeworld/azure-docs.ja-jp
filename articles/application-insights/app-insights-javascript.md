@@ -1,87 +1,86 @@
 <properties
-    pageTitle="Application Insights for JavaScript web apps | Microsoft Azure"
-    description="Get page view and session counts, web client data, and track usage patterns. Detect exceptions and performance issues in JavaScript web pages."
-    services="application-insights"
+	pageTitle="JavaScript Web アプリのための Application Insights | Microsoft Azure"
+	description="ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。JavaScript Web ページの例外とパフォーマンスの問題を検出します。"
+	services="application-insights"
     documentationCenter=""
-    authors="alancameronwills"
-    manager="douge"/>
+	authors="alancameronwills"
+	manager="douge"/>
 
 <tags
-    ms.service="application-insights"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="ibiza"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/15/2016"
-    ms.author="awills"/>
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/15/2016"
+	ms.author="awills"/>
 
-
-# <a name="application-insights-for-web-pages"></a>Application Insights for web pages
+# Web ページ向けの Application Insights
 
 
 [AZURE.INCLUDE [app-insights-selector-get-started-dotnet](../../includes/app-insights-selector-get-started-dotnet.md)]
 
-Find out about the performance and usage of your web page or app. If you add Visual Studio Application Insights to your page script, you get timings of page loads and AJAX calls, counts and details of browser exceptions and AJAX failures, as well as users and session counts. All these can be segmented by page, client OS and browser version, geo location, and other dimensions. You can also set alerts on failure counts or slow page loading.
+Web ページまたはアプリのパフォーマンスと使用状況について調べます。Visual Studio Application Insights をページ スクリプトに追加すると、ページの読み込みや AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細のほか、ユーザー数やセッション数を取得することができます。いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。
 
-You can use Application Insights with any web pages - you just add a short piece of JavaScript. If your web service is [Java](app-insights-java-get-started.md) or [ASP.NET](app-insights-asp-net.md), you can integrate telemetry from your server and clients.
+短い JavaScript コードを追加するだけで、Application Insights はあらゆる Web ページで使用できます。Web サービスが [Java](app-insights-java-get-started.md) または [ASP.NET](app-insights-asp-net.md) である場合、サーバーとクライアントのテレメトリを統合することができます。
 
-You need a subscription to [Microsoft Azure](https://azure.com). If your team has an organizational subscription, ask the owner to add your Microsoft Account to it. There's a free pricing tier, so development and small-scale use won't cost anything.
-
-
-## <a name="set-up-application-insights-for-your-web-page"></a>Set up Application Insights for your web page
-
-First, do you need to add Application Insights to your web pages? You might already have done so. If you chose to add Application Insights to your web app in the New Project dialog in Visual Studio, the script was added then. In that case, you don't need to do any more.
-
-Otherwise, you need to add a snippet of code your web pages, as follows.
-
-### <a name="open-an-application-insights-resource"></a>Open an Application Insights resource
-
-The Application Insights resource is where data about your page's performance and usage is displayed. 
-
-Sign into [Azure portal](https://portal.azure.com).
-
-If you already set up monitoring for the server side of your app, you already have a resource:
-
-![Choose Browse, Developer Services, Application Insights.](./media/app-insights-javascript/01-find.png)
-
-If you don't have one, create it:
-
-![Choose New, Developer Services, Application Insights.](./media/app-insights-javascript/01-create.png)
+使用を開始するには、[Microsoft Azure](https://azure.com) のサブスクリプションが必要です。所属する部署がサブスクリプションを所有している場合、あなたの Microsoft アカウントをサブスクリプションに追加するようその所有者に依頼してください。無料の価格レベルが用意されているため、開発と小規模な用途であれば費用は一切かかりません。
 
 
-*Questions already?* [More about creating a resource](app-insights-create-new-resource.md).
+## Web ページに Application Insights を設定する
+
+まず、Web ページに Application Insights を追加する必要がありますか。 既に済んでいる場合もあります。Visual Studio の [新しいプロジェクト] ダイアログで Web アプリに Application Insights を追加した場合は、そのときにスクリプトが追加されています。その場合は、これ以上操作する必要はありません。
+
+それ以外の場合は、次の手順に従ってコード スニペットを Web ページに追加する必要があります。
+
+### Application Insights リソースを開く
+
+Application Insights リソースは、ページのパフォーマンスと使用状況に関するデータが表示される場所です。
+
+[Azure ポータル](https://portal.azure.com)にサインインします。
+
+アプリのサーバー側の監視を既に設定している場合は、既にリソースがあります。
+
+![[参照]、[開発者向けサービス]、[Application Insights] の順に選択する](./media/app-insights-javascript/01-find.png)
+
+リソースがない場合は、次の手順で作成します。
+
+![[新規]、[開発者向けサービス]、[Application Insights] の順に選択する。](./media/app-insights-javascript/01-create.png)
 
 
-### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Add the SDK script to your app or web pages
-
-In Quick Start, get the script for web pages:
-
-![On your app overview blade, choose Quick Start, Get code to monitor my web pages. Copy the script.](./media/app-insights-javascript/02-monitor-web-page.png)
-
-Insert the script just before the `</head>` tag of every page you want to track. If your website has a master page, you can put the script there. For example:
-
-* In an ASP.NET MVC project, you'd put it in `View\Shared\_Layout.cshtml`
-* In a SharePoint site, on the control panel, open [Site Settings / Master Page](app-insights-sharepoint.md).
-
-The script contains the instrumentation key that directs the data to your Application Insights resource. 
-
-([Deeper explanation of the script.](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
-
-*(If you're using a well-known web page framework, look around for Application Insights adaptors. For example, there's [an AngularJS module](http://ngmodules.org/modules/angular-appinsights).)*
+*質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resource.md)。
 
 
-## <a name="detailed-configuration"></a>Detailed configuration
+### アプリや Web ページに SDK スクリプトを追加する
 
-There are several [parameters](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) you can set, though in most cases, you shouldn't need to. For example, you can disable or limit the number of Ajax calls reported per page view (to reduce traffic). Or you can set debug mode to have telemetry move rapidly through the pipeline without being batched.
+クイック スタートで、Web ページのスクリプトを取得します。
 
-To set these parameters, look for this line in the code snippet, and add more comma-separated items after it:
+![アプリの概要ブレードで、クイック スタートを選択し、マイ Web ページを監視するためのコードを取得します。スクリプトをコピーします。](./media/app-insights-javascript/02-monitor-web-page.png)
+
+追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。次に例を示します。
+
+* ASP.NET MVC プロジェクトで、`View\Shared\_Layout.cshtml` にスクリプトを配置します。
+* SharePoint サイトのコントロール パネルで、[[サイト設定 / マスター ページ](app-insights-sharepoint.md)] を開きます。
+
+このスクリプトには、Application Insights リソースにデータを転送するインストルメンテーション キーが含まれています。
+
+([スクリプトの詳細については、こちらを参照してください。](http://apmtips.com/blog/2015/03/18/javascript-snippet-explained/))
+
+*(よく知られている Web ページ フレームワークを使用している場合、Application Insights アダプターを探してください。たとえば、[AngularJS モジュール](http://ngmodules.org/modules/angular-appinsights)があります。)*
+
+
+## 詳細な構成
+
+独自に設定できる[パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)はいくつか存在しますが、ほとんどの場合、その必要はありません。たとえば、(トラフィック削減目的で) ページ ビューごとに行われる Ajax 呼び出しの数の報告を無効にすることや、制限することができます。また、バッチ処理を行わずにテレメトリをパイプラインに迅速に移動するようにデバッグ モードを設定することもできます。
+
+これらのパラメーターを設定するには、コード スニペットから次の行を探し、その後ろにコンマ区切りで項目を追加します。
 
     })({
       instrumentationKey: "..."
       // Insert here
     });
 
-The [available parameters](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config) include:
+[利用できるパラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)の例を次に示します。
 
     // Send telemetry immediately without batching.
     // Remember to remove this when no longer required, as it
@@ -106,154 +105,148 @@ The [available parameters](https://github.com/Microsoft/ApplicationInsights-JS/b
 
 
 
-## <a name="<a-name="run"></a>run-your-app"></a><a name="run"></a>Run your app
+## <a name="run"></a>アプリを実行する
 
-Run your web app, use it a while to generate telemetry, and wait a few seconds. You can either run it using the **F5** key on your development machine, or publish it and let users play with it.
+Web アプリを実行し、しばらくの間、利用統計情報を生成し、少し待ちます。**F5** キーを使って開発用コンピューターで実行するか、公開し、ユーザーに利用させることができます。
 
-If you want to check the telemetry that a web app is sending to Application Insights, use your browser's debugging tools (**F12** on many browsers). Data is sent to dc.services.visualstudio.com.
+Web アプリが Application Insights に送信している利用統計情報を確認する場合、ブラウザーのデバッグ ツールを使用します (多くのブラウザーで **F12** です)。データは dc.services.visualstudio.com に送信されます。
 
-## <a name="explore-your-browser-performance-data"></a>Explore your browser performance data
+## ブラウザーのパフォーマンス データを調査する
 
-Open the Browsers blade to show aggregated performance data from your users' browsers.
+ユーザーのブラウザーから集計したパフォーマンス データを表示するには、[ブラウザー] ブレードを開きます。
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/app-insights-javascript/03.png)
 
 
-*No data yet? Click **Refresh** at the top of the page. Still nothing? See [Troubleshooting](app-insights-troubleshoot-faq.md).*
+*まだデータが表示されませんか? ページの上部にある **[更新]** をクリックします。まだは何も表示されませんか? 「[トラブルシューティング](app-insights-troubleshoot-faq.md)」を参照してください。*
 
-The Browsers blade is a [Metrics Explorer blade](app-insights-metrics-explorer.md) with preset filters and chart selections. You can edit the time range, filters, and chart configuration if you want, and save the result as a favorite. Click **Restore defaults** to get back to the original blade configuration.
+[ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された[メトリックス エクスプローラーのブレード](app-insights-metrics-explorer.md)です。時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。**[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 
-## <a name="page-load-performance"></a>Page load performance
+## ページ読み込みのパフォーマンス
 
-At the top is a segmented chart of page load times. The total height of the chart represents the average time to load and display pages from your app in your users' browsers. The time is measured from when the browser sends the initial HTTP request until all synchronous load events have been processed, including layout and running scripts. It doesn't include asynchronous tasks such as loading web parts from AJAX calls.
+最上部には、ページの読み込み時間をセグメント化したグラフが表示されます。グラフ全体の高さは、ユーザーのブラウザーでアプリからページを読み込んで表示するのにかかった平均時間を表します。時間の測定範囲は、ブラウザーが初期 HTTP 要求を送信してから、すべての同時読み込みイベントが処理されるまでとなります (レイアウトと実行中のスクリプトを含む)。AJAX 呼び出しからの Web パーツ読み込みといった非同期タスクは含まれません。
 
-The chart segments the total page load time into the [standard timings defined by W3C](http://www.w3.org/TR/navigation-timing/#processing-model). 
+このグラフでは、ページ読み込み時間の合計が、[W3C で定義されている標準的なタイミング](http://www.w3.org/TR/navigation-timing/#processing-model)に合わせてセグメント化されています。
 
 ![](./media/app-insights-javascript/08-client-split.png)
 
-Note that the *network connect* time is often lower than you might expect, because it's an average over all requests from the browser to the server. Many individual requests have a connect time of 0 because there is already an active connection to the server.
+通常、 *ネットワーク接続* 時間は予想より短くなることに注意してください。これは、ブラウザーからサーバーに送信されるすべての要求の平均であるためです。個別の要求の多くは接続時間が 0 です。サーバーへの接続が既にアクティブになっているためです。
 
-### <a name="slow-loading?"></a>Slow loading?
+### 読み込みに時間がかかる
 
-Slow page loads are a major source of dissatisfaction for your users. If the chart indicates slow page loads, it's easy to do some diagnostic research.
+ページの読み込みに時間がかかる問題は、エンド ユーザーの満足度を下げる大きな要因の 1 つです。グラフからページの読み込みに時間がかかっていることがわかれば、診断調査を簡単に行うことができます。
 
-The chart shows the average of all page loads in your app. To see if the problem is confined to particular pages, look further down the blade, where there's a grid segmented by page URL:
+このグラフは、対象アプリにおける全ページ読み込みの平均時間を示しています。問題が特定のページに限定されているかどうかは、ブレードの下の方にある、ページの URL ごとにセグメント化されたグリッドで確認できます。
 
 ![](./media/app-insights-javascript/09-page-perf.png)
 
-Notice the page view count and standard deviation. If the page count is very low, then the issue isn't affecting users much. A high standard deviation (comparable to the average itself) indicates a lot of variation between individual measurements.
+ページ ビュー カウントと標準偏差に注目してください。このページ カウントがごく小さければ、この問題はさほど多くのユーザーに影響していません。標準偏差が大きい (平均値そのものに匹敵するなど) ことは、個々の測定値にばらつきが多いことを示しています。
 
-**Zoom in on one URL and one page view.** Click any page name to see a blade of browser charts filtered just to that URL; and then on an instance of a page view.
+**特定の URL やページ ビューのクローズアップ。** いずれかのページ名をクリックすると、その URL だけを表示するようにブラウザー グラフがフィルタリングされてブレードが表示されます。そこからさらに、特定のページ ビューの情報だけを表示することもできます。
 
 ![](./media/app-insights-javascript/35.png)
 
-Click `...` for a full list of properties for that event, or inspect the Ajax calls and related events. Slow Ajax calls affect the overall page load time if they are synchronous. Related events include server requests for the same URL (if you've set up Application Insights on your web server).
+[`...`] をクリックすると、該当するイベントの一連のプロパティがすべて表示されます。また、AJAX 呼び出しや関連するイベントを詳しく調査することもできます。AJAX 呼び出しが同期処理で実行されている場合、呼び出しに時間がかかると、ページ読み込み時間全体に影響します。関連するイベントとしては、同じ URL に対するサーバー要求があります (Web サーバーに対して Application Insights を設定した場合)。
 
 
-**Page performance over time.** Back at the Browsers blade, change the Page View Load Time grid into a line chart to see if there were peaks at particular times:
+**時間経過に伴うページ パフォーマンス。** 特定の時間帯にピークを迎えているかどうかを確認するには、[ブラウザー] ブレードに戻って、[ページ ビューの読み込み時間] グリッドを折れ線グラフに変更します。
 
 ![Click the head of the grid and select a new chart type](./media/app-insights-javascript/10-page-perf-area.png)
 
-**Segment by other dimensions.** Maybe your pages are slower to load on a particular browser, client OS, or user locality? Add a new chart and experiment with the **Group-by** dimension.
+**セグメント化の基準となるディメンションの変更。** ページ読み込み速度の低下が、特定のブラウザーやクライアント OS、特定地域のユーザーに集中している可能性があります。 新しいグラフを追加し、**[グループ化]** で適宜ディメンションを変えながら試してください。
 
 ![](./media/app-insights-javascript/21.png)
 
 
-## <a name="ajax-performance"></a>AJAX Performance
+## AJAX パフォーマンス
 
-Make sure any AJAX calls in your web pages are performing well. They are often used to fill parts of your page asynchronously. Although the overall page might load promptly, your users could be frustrated by staring at blank web parts, waiting for data to appear in them.
+Web ページの AJAX 呼び出しが適切に実行されていることを確認します。Ajax 呼び出しは、非同期的にページの一部を読み込む目的でよく使用されます。ページ全体としては即座に読み込まれていても、最初に空の Web パーツが表示され、データが表示されるまでに時間がかかっているようだと、ユーザーはストレスを感じる可能性があります。
 
-AJAX calls made from your web page are shown on the Browsers blade as dependencies.
+Web ページからの AJAX 呼び出しは、[ブラウザー] ブレードに依存関係として表示されます。
 
-There are summary charts in the upper part of the blade:
+ブレードの上部には、集計グラフが表示されます。
 
 ![](./media/app-insights-javascript/31.png)
 
-and detailed grids lower down:
+詳細なグリッドは下の方に表示されます。
 
 ![](./media/app-insights-javascript/33.png)
 
-Click any row for specific details.
+いずれかの行をクリックすると、詳しい情報が表示されます。
 
 
-> [AZURE.NOTE] If you delete the Browsers filter on the blade, both server and AJAX dependencies are included in these charts. Click Restore Defaults to reconfigure the filter.
+> [AZURE.NOTE] ブレードで [ブラウザー] フィルターを削除した場合、サーバーと AJAX の両方の依存関係がこれらのグラフの対象となります。フィルターを再構成するには [既定値に戻す] をクリックしてください。
 
-**To drill into failed Ajax calls** scroll down to the Dependency failures grid, and then click a row to see specific instances.
+**AJAX 呼び出しエラーを詳しく調査するには**、下にスクロールして [Dependency failures (依存関係の障害)] グリッドを表示し、特定の行をクリックしてその内容を表示します。
 
 ![](./media/app-insights-javascript/37.png)
 
-Click `...` for the full telemetry for an Ajax call.
+[`...`] をクリックすると、AJAX 呼び出しの全テレメトリが表示されます。
 
-### <a name="no-ajax-calls-reported?"></a>No Ajax calls reported?
+### AJAX 呼び出しが報告されない場合
 
-Ajax calls include any HTTP calls made from the script of your web page. If you don't see them reported, check that the code snippet doesn't set the `disableAjaxTracking` or `maxAjaxCallsPerView` [parameters](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config).
+AJAX 呼び出しには、Web ページのスクリプトから実行されるすべての HTTP 呼び出しが含まれます。それらがまったく表示されない場合は、コード スニペットで `disableAjaxTracking` や `maxAjaxCallsPerView` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないかどうかを確認してください。
 
-## <a name="browser-exceptions"></a>Browser exceptions
+## ブラウザーの例外
 
-On the Browsers blade, there's an exceptions summary chart, and a grid of exception types further down the blade.
+[ブラウザー] ブレードには、例外の集計グラフが表示されるほか、例外の種類を示すグリッドがブレードの下の方に表示されます。
 
 ![](./media/app-insights-javascript/39.png)
 
-If you don't see browser exceptions reported, check that the code snippet doesn't set the `disableExceptionTracking` [parameter](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config).
+ブラウザーの例外がまったく表示されない場合は、コード スニペットで `disableExceptionTracking` [パラメーター](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#config)が設定されていないかどうかを確認してください。
 
-## <a name="inspect-individual-page-view-events"></a>Inspect individual page view events
+## 個別のページ ビュー イベントを調査する
 
-Usually page view telemetry is analyzed by Application Insights and you see only cumulative reports, averaged over all your users. But for debugging purposes, you can also look at individual page view events.
+通常、Application Insights がページ ビューの利用統計情報を分析し、お客様に対して表示されるのは、すべてのユーザーに関して平均した累積レポートのみです。ただし、デバッグのために個別のページ ビュー イベントを調べることもできます。
 
-In the Diagnostic Search blade, set Filters to Page View.
+[診断検索] ブレードで、[フィルター] を [ページ ビュー] に設定します。
 
 ![](./media/app-insights-javascript/12-search-pages.png)
 
-Select any event to see more detail. In the details page, click "..." to see even more detail.
+いずれかのイベントをクリックして、詳細を表示します。詳細ページで、[...] をクリックしてさらに詳しい情報を表示します。
 
-> [AZURE.NOTE] If you use [Search](app-insights-diagnostic-search.md), notice that you have to match whole words: "Abou" and "bout" do not match "About".
+> [AZURE.NOTE] [検索](app-insights-diagnostic-search.md)を利用する場合、単語全体が一致しなければならないことに注意してください。「Abou」と「bout」は「About」に一致しません。
 
-You can also use the powerful [Analytics query language](app-insights-analytics-tour.md) to search page views.
+強力な [Analytics クエリ言語](app-insights-analytics-tour.md)を使って、ページ ビューを検索することもできます。
 
-### <a name="page-view-properties"></a>Page view properties
+### ページ ビュー プロパティ
 
-* **Page view duration** 
+* **ページ ビュー時間**
 
- * By default, the time it takes to load the page, from client request to full load (including auxiliary files but excluding asynchronous tasks such as Ajax calls). 
- * If you set `overridePageViewDuration` in the [page configuration](#detailed-configuration), the interval between client request to execution of the first `trackPageView`. If you moved trackPageView from its usual position after the initialization of the script, it will reflect a different value.
- * If `overridePageViewDuration` is set and a duration argument is provided in the `trackPageView()` call, then the argument value is used instead. 
+ * 既定では、クライアント要求から完全な読み込みまでの、ページの読み込みにかかる時間です (補助ファイルを含みますが、Ajax 呼び出しなどの非同期タスクは含まれません)。
+ * [ページ構成](#detailed-configuration)で `overridePageViewDuration` を設定した場合は、クライアント要求から最初に `trackPageView` が実行されるまでの間隔です。スクリプトの初期化後、trackPageView をその定位置から移動した場合、別の値が反映されます。
+ * `overridePageViewDuration` が設定され、期間引数が `trackPageView()` 呼び出しで指定される場合は、その引数の値が代わりに使用されます。
 
 
-## <a name="custom-page-counts"></a>Custom page counts
+## ページ カウントのカスタマイズ
 
-By default, a page count occurs each time a new page loads into the client browser.  But you might want to count additional page views. For example, a page might display its content in tabs and you want to count a page when the user switches tabs. Or JavaScript code in the page might load new content without changing the browser's URL.
+既定では、ページ カウントは新しいページがクライアント ブラウザーに読み込まれるたびに行われます。ただし、ページ ビューを別の場合にもカウントできます。たとえば、ページの内容がタブに表示され、ユーザーがタブを切り替えるときに対象ページをカウントしたい場合があります。またはページ内の JavaScript コードが、ブラウザーの URL を変更することなく新しいコンテンツを読み込む場合もあります。
 
-Insert a JavaScript call like this at the appropriate point in your client code:
+次のような JavaScript 呼び出しをクライアント コードの適切な箇所に挿入します。
 
     appInsights.trackPageView(myPageName);
 
-The page name can contain the same characters as a URL, but anything after "#" or "?" is ignored.
+ページ名には、同じ文字を URL として含めることができますが、"#" または "?" の後の文字はすべて無視されます。
 
 
 
-## <a name="usage-tracking"></a>Usage tracking
+## 使用状況の追跡
 
 
-Want to find out what your users do with your app?
+アプリケーションで、ユーザーが何をするのかを知る必要がありますか。
 
-* [Learn about usage tracking](app-insights-web-track-usage.md)
-* [Learn about custom events and metrics API](app-insights-api-custom-events-metrics.md).
+* [使用状況の追跡について](app-insights-web-track-usage.md)
+* [カスタム イベントとメトリックの API の詳細情報](app-insights-api-custom-events-metrics.md)。
 
 
-#### <a name="<a-name="video"></a>-video:-tracking-usage"></a><a name="video"></a> Video: Tracking Usage
+#### <a name="video"></a> 動画: 使用状況の追跡
 
 > [AZURE.VIDEO tracking-usage-with-application-insights]
 
-## <a name="<a-name="next"></a>-next-steps"></a><a name="next"></a> Next steps
+## <a name="next"></a> 次のステップ
 
-* [Track usage](app-insights-web-track-usage.md)
-* [Custom events and metrics](app-insights-api-custom-events-metrics.md)
-* [Build-measure-learn](app-insights-overview-usage.md)
+* [利用状況を追跡する](app-insights-web-track-usage.md)
+* [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
+* [ビルド - 測定 - 学習](app-insights-overview-usage.md)
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

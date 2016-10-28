@@ -1,147 +1,142 @@
 <properties
-    pageTitle="Fix 502 bad gateway, 503 service unavailable errors | Microsoft Azure"
-    description="Troubleshoot 502 bad gateway and 503 service unavailable errors in your web app hosted in Azure App Service."
-    services="app-service\web"
-    documentationCenter=""
-    authors="cephalin"
-    manager="wpickett"
-    editor=""
-    tags="top-support-issue"
-    keywords="502 bad gateway, 503 service unavailable, error 503, error 502"/>
+	pageTitle=";502 無効なゲートウェイ"; エラーと ";503 サービス利用不可"; エラーの解決 | Microsoft Azure"
+	description="Azure App Service でホストされている Web アプリで発生するエラー ";502 無効なゲートウェイ"; と ";503 サービス利用不可"; のトラブルシューティングを行います。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""
+	tags="top-support-issue"
+	keywords="502 無効なゲートウェイ, 503 サービス利用不可, 503 エラー, 502 エラー"/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/06/2016"
-    ms.author="cephalin"/>
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/06/2016"
+	ms.author="cephalin"/>
 
+# Azure Web アプリでの HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 
-# <a name="troubleshoot-http-errors-of-"502-bad-gateway"-and-"503-service-unavailable"-in-your-azure-web-apps"></a>Troubleshoot HTTP errors of "502 bad gateway" and "503 service unavailable" in your Azure web apps
+"502 無効なゲートウェイ" と "503 サービス利用不可" は、[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) でホストされている Web アプリで発生する一般的なエラーです。この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
 
-"502 bad gateway" and "503 service unavailable" are common errors in your web app hosted in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). This article helps you troubleshoot these errors.
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
-If you need more help at any point in this article, you can contact the Azure experts on [the MSDN Azure and the Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can also file an Azure support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/) and click on **Get Support**.
+## 症状
 
-## <a name="symptom"></a>Symptom
+ブラウザーで Web アプリにアクセスすると、"502 無効なゲートウェイ" または "503 サービス利用不可" という HTTP エラーが返される。
 
-When you browse to the web app, it returns a HTTP "502 Bad Gateway" error or a HTTP "503 Service Unavailable" error.
+## 原因
 
-## <a name="cause"></a>Cause
+この症状は多くの場合、アプリケーション レベルの問題が原因で発生します。その例を次に示します。
 
-This problem is often caused by application level issues, such as:
+-	要求に時間がかかっている
+-	アプリケーションのメモリ/CPU 使用率が高い
+-	例外が発生してアプリケーションがクラッシュする
 
--   requests taking a long time
--   application using high memory/CPU
--   application crashing due to an exception.
+## "502 無効なゲートウェイ" エラーと "503 サービス利用不可" エラーを解決するトラブルシューティング手順
 
-## <a name="troubleshooting-steps-to-solve-"502-bad-gateway"-and-"503-service-unavailable"-errors"></a>Troubleshooting steps to solve "502 bad gateway" and "503 service unavailable" errors
+トラブルシューティングは、大きく次の 3 つのタスクに分けられます。この 3 つのタスクを上から順に行います。
 
-Troubleshooting can be divided into three distinct tasks, in sequential order:
+1.	[アプリケーションの動作を観察、監視する](#observe)
+2.	[データを収集する](#collect)
+3.	[問題を緩和する](#mitigate)
 
-1.  [Observe and monitor application behavior](#observe)
-2.  [Collect data](#collect)
-3.  [Mitigate the issue](#mitigate)
-
-[App Service Web Apps](/services/app-service/web/) gives you various options at each step.
+これらの手順には、[App Service Web Apps](/services/app-service/web/) を活用できます。
 
 <a name="observe" />
-### <a name="1.-observe-and-monitor-application-behavior"></a>1. Observe and monitor application behavior
+### 1\.アプリケーションの動作を観察、監視する
 
-####    <a name="track-service-health"></a>Track Service health
+####	サービス正常性を追跡する
 
-Microsoft Azure publicizes each time there is a service interruption or performance degradation. You can track the health of the service on the [Azure Portal](https://portal.azure.com/). For more information, see [Track service health](../azure-portal/insights-service-health.md).
+Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。サービスの正常性は、[Azure ポータル](https://portal.azure.com/)で追跡できます。詳細については、[サービスの正常性の追跡](../azure-portal/insights-service-health.md)に関するページを参照してください。
 
-####    <a name="monitor-your-web-app"></a>Monitor your web app
+####	Web アプリを監視する
 
-This option enables you to find out if your application is having any issues. In your web app’s blade, click the **Requests and errors** tile. The **Metric** blade will show you all the metrics you can add.
+Web アプリに問題が発生しているかどうかは、アプリを監視することによって確認することができます。Web アプリのブレードで **[要求とエラー]** タイルをクリックします。**[メトリック]** ブレードには、追加できるすべてのメトリックが表示されます。
 
-Some of the metrics that you might want to monitor for your web app are
+Web アプリに関しては、次のメトリックを監視するようお勧めします。
 
--   Average memory working set
--   Average response time
--   CPU time
--   Memory working set
--   Requests
+-	平均メモリ ワーキング セット
+-	平均応答時間
+-	CPU 時間
+-	メモリ ワーキング セット
+-	要求数
 
-![monitor web app towards solving HTTP errors of 502 bad gateway and 503 service unavailable](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
+![HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" の解決に向けて Web アプリを監視する](./media/app-service-web-troubleshoot-HTTP-502-503/1-monitor-metrics.png)
 
-For more information, see:
+詳細については、次を参照してください。
 
--   [Monitor Web Apps in Azure App Service](web-sites-monitor.md)
--   [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md)
+-	[Azure App Service の Web Apps の監視](web-sites-monitor.md)
+-	[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)
 
 <a name="collect" />
-### <a name="2.-collect-data"></a>2. Collect data
+### 2\.データを収集する
 
-####    <a name="use-the-azure-app-service-support-portal"></a>Use the Azure App Service Support Portal
+####	Azure App Service サポート ポータルを使用する
 
-Web Apps provides you with the ability to troubleshoot issues related to your web app by looking at HTTP logs, event logs, process dumps, and more. You can access all this information using our Support portal at **http://&lt;your app name>.scm.azurewebsites.net/Support**
+Web Apps には、HTTP ログ、イベント ログ、処理ダンプなどを参照することによって、Web アプリに関連した問題をトラブルシューティングする機能があります。その情報はすべて、**http://&lt;your app name>.scm.azurewebsites.net/Support** のサポート ポータルで提供されます。
 
-The Azure App Service Support portal provides you with three separate tabs to support the three steps of a common troubleshooting scenario:
+一般的なトラブルシューティングの状況に合わせて、Azure App Service サポート ポータルには、3 つのタブが用意されています。次の 3 つの手順が想定されています。
 
-1.  Observe current behavior
-2.  Analyze by collecting diagnostics information and running the built-in analyzers
-3.  Mitigate
+1.	現在の動作を観察する
+2.	診断情報を集め、組み込みのアナライザーを実行して分析する
+3.	緩和する
 
-If the issue is happening right now, click **Analyze** > **Diagnostics** > **Diagnose Now** to create a diagnostic session for you, which will collect HTTP logs, event viewer logs, memory dumps, PHP error logs and PHP process report.
+現時点で問題が発生している場合は、**[分析]**、**[診断]**、**[今すぐ診断]** の順にクリックして診断セッションを作成します。これで、HTTP ログ、イベント ビューアー ログ、メモリ ダンプ、PHP エラー ログ、および PHP プロセス レポートが収集されます。
 
-Once the data is collected, it will also run an analysis on the data and provide you with an HTML report.
+データの収集後にも、データに対する分析が実行され、HTML レポートが出力されます。
 
-In case you want to download the data, by default, it would be stored in the D:\home\data\DaaS folder.
+そのデータをダウンロードすることもできます。D:\\home\\data\\DaaS フォルダーが既定の保存先となります。
 
-For more information on the Azure App Service Support portal, see [New Updates to Support Site Extension for Azure Websites](/blog/new-updates-to-support-site-extension-for-azure-websites).
+Azure App Service サポート ポータルの詳細については、[Azure Websites のサポート サイト拡張機能で新たに行われた更新](/blog/new-updates-to-support-site-extension-for-azure-websites)に関するページを参照してください。
 
-####    <a name="use-the-kudu-debug-console"></a>Use the Kudu Debug Console
+####	Kudu デバッグ コンソールを使用する
 
-Web Apps comes with a debug console that you can use for debugging, exploring, uploading files, as well as JSON endpoints for getting information about your environment. This is called the _Kudu Console_ or the _SCM Dashboard_ for your web app.
+Web Apps には、ファイルのデバッグ、調査、アップロード用のデバッグ コンソールのほか、ご利用の環境についての情報を入手するための JSON エンドポイントが用意されています。このコンソールは、Web アプリの _Kudu コンソール_または _SCM ダッシュボード_と呼ばれます。
 
-You can access this dashboard by going to the link **https://&lt;Your app name>.scm.azurewebsites.net/**.
+ダッシュボードには、**https://&lt;Your app name>.scm.azurewebsites.net/** リンクからアクセスできます。
 
-Some of the things that Kudu provides are:
+Kudu には次のような機能があります。
 
--   environment settings for your application
--   log stream
--   diagnostic dump
--   debug console in which you can run Powershell cmdlets and basic DOS commands.
+-	アプリケーションの環境設定
+-	ログ ストリーム
+-	診断ダンプ
+-	デバッグ コンソール (Powershell のコマンドレットや基本的な DOS コマンドを実行可能)
 
 
-Another useful feature of Kudu is that, in case your application is throwing first-chance exceptions, you can use Kudu and the SysInternals tool Procdump to create memory dumps. These memory dumps are snapshots of the process and can often help you troubleshoot more complicated issues with your web app.
+Kudu にはもう 1 つ便利な機能があり、アプリケーションからファーストチャンス例外がスローされた場合に、Kudu と SysInternals ツール Procdump を使用してメモリ ダンプを作成することができます。このメモリ ダンプはプロセスのスナップショットです。Web アプリに関して、通常より複雑な問題をトラブルシューティングできる場合も少なくありません。
 
-For more information on features available in Kudu, see [Azure Websites online tools you should know about](/blog/windows-azure-websites-online-tools-you-should-know-about/).
+Kudu で利用できる機能の詳細については、[知っておくべき Azure Websites のオンライン ツール](/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
 
 <a name="mitigate" />
-### <a name="3.-mitigate-the-issue"></a>3. Mitigate the issue
+### 3\.問題を緩和する
 
-####    <a name="scale-the-web-app"></a>Scale the web app
+####	Web アプリをスケーリングする
 
-In Azure App Service, for increased performance and throughput,  you can adjust the scale at which you are running your application. Scaling up a web app involves two related actions: changing your App Service plan to a higher pricing tier, and configuring certain settings after you have switched to the higher pricing tier.
+Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。Web アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 
-For more information on scaling, see [Scale a web app in Azure App Service](web-sites-scale.md).
+スケーリングの詳細については、「[Azure App Service の Web アプリをスケーリングする](web-sites-scale.md)」を参照してください。
 
-Additionally, you can choose to run your application on more than one instance . This not only provides you with more processing capability, but also gives you some amount of fault tolerance. If the process goes down on one instance, the other instance will still continue serving requests.
+加えて、アプリケーションを複数のインスタンスで実行することもできます。処理能力がアップするだけでなく、ある程度の耐障害性を確保することができます。この場合、1 つのインスタンスでプロセスがダウンしても、他のインスタンスが要求の処理を続行します。
 
-You can set the scaling to be Manual or Automatic.
+スケーリングは、[手動] または [自動] に設定することができます。
 
-####    <a name="use-autoheal"></a>Use AutoHeal
+####	AutoHeal を使用する
 
-AutoHeal recycles the worker process for your app based on settings you choose (like configuration changes, requests, memory-based limits, or the time needed to execute a request). Most of the time, recycle the process is the fastest way to recover from a problem. Though you can always restart the web app from directly within the Azure Portal, AutoHeal will do it automatically for you. All you need to do is add some triggers in the root web.config for your web app. Note that these settings would work in the same way even if your application is not a .Net one.
+AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。Web アプリはいつでも、Azure ポータル内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。必要な作業は、Web アプリのルート web.config にいくつかのトリガーを追加することだけです。.Net アプリケーション以外でも、これらの設定は同じように作用します。
 
-For more information, see [Auto-Healing Azure Web Sites](/blog/auto-healing-windows-azure-web-sites/).
-
-
-####    <a name="restart-the-web-app"></a>Restart the web app
-
-This is often the simplest way to recover from one-time issues. On the [Azure Portal](https://portal.azure.com/), on your web app’s blade, you have the options to stop or restart your app.
-
- ![restart app to solve HTTP errors of 502 bad gateway and 503 service unavailable](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
-
-You can also manage your web app using Azure Powershell. For more information, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md).
+詳細については、[Azure Web Sites の自動復旧](/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
 
 
+####	Web アプリを再起動する
 
-<!--HONumber=Oct16_HO2-->
+1 回限りの問題であれば、通常これが最も簡単な復旧方法です。アプリを停止または再起動するためのオプションは、[Azure ポータル](https://portal.azure.com/)の Web アプリ ブレードにあります。
 
+ ![HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" を解決するためにアプリを再起動する](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
+Web アプリの管理には、Azure PowerShell を使用することもできます。詳細については、[リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
+
+<!----HONumber=AcomDC_0713_2016-->

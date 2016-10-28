@@ -1,62 +1,61 @@
 <properties
-    pageTitle="Managing Role-Based Access Control with the REST API"
-    description="Managing role-based access control with the REST API"
-    services="active-directory"
-    documentationCenter="na"
-    authors="kgremban"
-    manager="femila"
-    editor=""/>
+	pageTitle="REST API を使用したロールベースのアクセス制御の管理"
+	description="REST API を使用したロールベースのアクセス制御の管理"
+	services="active-directory"
+	documentationCenter="na"
+	authors="kgremban"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="rest-api"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="active-directory"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="rest-api"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
-
-# <a name="managing-role-based-access-control-with-the-rest-api"></a>Managing Role-Based Access Control with the REST API
+# REST API を使用したロールベースの Access Control の管理
 
 > [AZURE.SELECTOR]
 - [PowerShell](role-based-access-control-manage-access-powershell.md)
 - [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
 - [REST API](role-based-access-control-manage-access-rest.md)
 
-Role-Based Access Control (RBAC) in the Azure Portal and Azure Resource Manager API helps you manage access to your subscription and resources at a fine-grained level. With this feature, you can grant access for Active Directory users, groups, or service principals by assigning some roles to them at a particular scope.
+Azure ポータルと Azure Resource Manager API のロールベースの Access Control (RBAC) を使用すると、サブスクリプションとリソースへのアクセスを詳細に管理できます。この機能を使用すると、Active Directory ユーザー、グループ、サービス プリンシパルに特定のスコープで役割を割り当てて、アクセス権を付与できます。
 
-## <a name="list-all-role-assignments"></a>List all role assignments
+## ロールの割り当てをすべて一覧表示する
 
-Lists all the role assignments at the specified scope and subscopes.
+指定されたスコープとサブスコープにあるロールの割り当てをすべて一覧表示します。
 
-To list role assignments, you must have access to `Microsoft.Authorization/roleAssignments/read` operation at the scope. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+ロールの割り当てを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースのアクセス制御](role-based-access-control-configure.md)」を参照してください。
 
-### <a name="request"></a>Request
+### 要求
 
-Use the **GET** method with the following URI:
+次の URI で **GET** メソッドを使用します。
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
 
-Within the URI, make the following substitutions to customize your request:
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. Replace *{scope}* with the scope for which you wish to list the role assignments. The following examples show how to specify the scope for different levels:
+1. *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{api-version}* with 2015-07-01.
+2. *{api-version}* は 2015-07-01 に置き換えます。
 
-3. Replace *{filter}* with the condition that you wish to apply to filter the role assignment list:
+3. *{filter}* には、ロールの割り当て一覧をフィルター処理するために適用する条件を指定します。
 
-  - List role assignments for only the specified scope, not including the role assignments at subscopes: `atScope()`    
-  - List role assignments for a specific user, group, or application: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
-  - List role assignments for a specific user, including ones inherited from groups | `assignedTo('{objectId of user}')`
+  - (サブスコープのロールの割り当ては含めずに) 指定したスコープのみを対象にロールの割り当てを一覧表示する: `atScope()`
+  - 特定のユーザー、グループ、またはアプリケーションを対象にロールの割り当てを一覧表示する: `principalId%20eq%20'{objectId of user, group, or service principal}'`
+  - (グループから継承されたものも含む) 特定のユーザーを対象にロールの割り当てを一覧表示する: `assignedTo('{objectId of user}')`
 
-### <a name="response"></a>Response
+### 応答
 
-Status code: 200
+状態コード: 200
 
 ```
 {
@@ -81,33 +80,33 @@ Status code: 200
 
 ```
 
-## <a name="get-information-about-a-role-assignment"></a>Get information about a role assignment
+## ロールの割り当てに関する情報を取得する
 
-Gets information about a single role assignment specified by the role assignment identifier.
+ロール割り当て ID によって指定された単一のロールの割り当てに関する情報を取得します。
 
-To get information about a role assignment, you must have access to `Microsoft.Authorization/roleAssignments/read` operation. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+ロールの割り当てに関する情報を取得するには、`Microsoft.Authorization/roleAssignments/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
 
-### <a name="request"></a>Request
+### 要求
 
-Use the **GET** method with the following URI:
+次の URI で **GET** メソッドを使用します。
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. Replace *{scope}* with the scope for which you wish to list the role assignments. The following examples show how to specify the scope for different levels:
+1. *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-assignment-id}* with the GUID identifier of the role assignment.
+2. *{role-assignment-id}* は、ロールの割り当ての GUID 識別子に置き換えます。
 
-3. Replace *{api-version}* with 2015-07-01.
+3. *{api-version}* は 2015-07-01 に置き換えます。
 
-### <a name="response"></a>Response
+### 応答
 
-Status code: 200
+状態コード: 200
 
 ```
 {
@@ -127,31 +126,31 @@ Status code: 200
 
 ```
 
-## <a name="create-a-role-assignment"></a>Create a Role Assignment
+## ロールの割り当てを作成する
 
-Create a role assignment at the specified scope for the specified principal granting the specified role.
+対象となるプリンシパルとスコープを指定してロールの割り当てを作成し、指定したロールを付与します。
 
-To create a role assignment, you must have access to `Microsoft.Authorization/roleAssignments/write` operation. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+ロールの割り当てを作成するには、`Microsoft.Authorization/roleAssignments/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
 
-### <a name="request"></a>Request
+### 要求
 
-Use the **PUT** method with the following URI:
+次の URI で **PUT** メソッドを使用します。
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. Replace *{scope}* with the scope at which you wish to create the role assignments. When you create a role assignment at a parent scope, all child scopes inherit the same role assignment. The following examples show how to specify the scope for different levels:
+1. *{scope}* は、ロールの割り当てを作成する対象のスコープに置き換えます。親スコープでロールの割り当てを作成すると、同じロールの割り当てが、すべての子スコープに継承されます。各種レベルのスコープを指定する例を次に示します。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1   
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-assignment-id}* with a new GUID, which becomes the GUID identifier of the new role assignment.
+2. *{role-assignment-id}* は新しい GUID に置き換えます。これは新しいロールの割り当ての GUID 識別子になります。
 
-3. Replace *{api-version}* with 2015-07-01.
+3. *{api-version}* は 2015-07-01 に置き換えます。
 
-For the request body, provide the values in the following format:
+要求本文には、次の形式で値を指定します。
 
 ```
 {
@@ -163,14 +162,14 @@ For the request body, provide the values in the following format:
 
 ```
 
-| Element Name     | Required | Type   | Description |
+| 要素名 | 必須 | 型 | Description |
 |------------------|----------|--------|-------------|
-| roleDefinitionId | Yes      | String | The identifier of the role. The format of the identifier is: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId      | Yes      | String | objectId of the Azure AD principal (user, group, or service principal) to which the role is assigned. |
+| roleDefinitionId | はい | 文字列 | ロールの識別子識別子の形式: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId | はい | 文字列 | ロールの割り当て先となる Azure AD プリンシパル (ユーザー、グループ、またはサービス プリンシパル) の objectId。 |
 
-### <a name="response"></a>Response
+### 応答
 
-Status code: 201
+状態コード: 201
 
 ```
 {
@@ -190,33 +189,33 @@ Status code: 201
 
 ```
 
-## <a name="delete-a-role-assignment"></a>Delete a Role Assignment
+## ロールの割り当てを削除する
 
-Delete a role assignment at the specified scope.
+指定したスコープにおけるロールの割り当てを削除します。
 
-To delete a role assignment, you must have access to the `Microsoft.Authorization/roleAssignments/delete` operation. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+ロールの割り当てを削除するには、`Microsoft.Authorization/roleAssignments/delete` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
 
-### <a name="request"></a>Request
+### 要求
 
-Use the **DELETE** method with the following URI:
+次の URI で **DELETE** メソッドを使用します。
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. Replace *{scope}* with the scope at which you wish to create the role assignments. The following examples show how to specify the scope for different levels:
+1. *{scope}* は、ロールの割り当てを作成する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-assignment-id}* with the role assignment id GUID.
+2. *{role-assignment-id}* は、ロール割り当て ID (GUID) に置き換えます。
 
-3. Replace *{api-version}* with 2015-07-01.
+3. *{api-version}* は 2015-07-01 に置き換えます。
 
-### <a name="response"></a>Response
+### 応答
 
-Status code: 200
+状態コード: 200
 
 ```
 {
@@ -236,121 +235,36 @@ Status code: 200
 
 ```
 
-## <a name="list-all-roles"></a>List all Roles
+## すべてのロールを一覧表示する
 
-Lists all the roles that are available for assignment at the specified scope.
+指定したスコープでの割り当てに使用できるすべてのロールを一覧表示します。
 
-To list roles, you must have access to `Microsoft.Authorization/roleDefinitions/read` operation at the scope. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+ロールを一覧表示するには、指定されたスコープにおける `Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
 
-### <a name="request"></a>Request
+### 要求
 
-Use the **GET** method with the following URI:
+次の URI で **GET** メソッドを使用します。
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
 
-Within the URI, make the following substitutions to customize your request:
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. Replace *{scope}* with the scope for which you wish to list the roles. The following examples show how to specify the scope for different levels:
+1. *{scope}* は、ロールを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{api-version}* with 2015-07-01.
+2. *{api-version}* は 2015-07-01 に置き換えます。
 
-3. Replace *{filter}* with the condition that you wish to apply to filter the list of roles:
+3. *{filter}* には、ロールの一覧をフィルター処理するために適用する条件を指定します。
 
-  - List roles available for assignment at the specified scope and any of its child scopes: `atScopeAndBelow()`
-  - Search for a role using exact display name: `roleName%20eq%20'{role-display-name}'`. Use the URL encoded form of the exact display name of the role. For instance, `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
+  - 指定したスコープとそのすべての子スコープでの割り当てに使用できるロールを一覧表示する: `atScopeAndBelow()`
+  - 完全な表示名を使用してロールを検索する: `roleName%20eq%20'{role-display-name}'`ロールの完全な表示名の URL エンコード形式を使用します。例: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-### <a name="response"></a>Response
+### 応答
 
-Status code: 200
-
-```
-{
-  "value": [
-    {
-      "properties": {
-        "roleName": "Virtual Machine Contributor",
-        "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
-        "assignableScopes": [
-          "/"
-        ],
-        "permissions": [
-          {
-            "actions": [
-              "Microsoft.Authorization/*/read",
-              "Microsoft.Compute/availabilitySets/*",
-              "Microsoft.Compute/locations/*",
-              "Microsoft.Compute/virtualMachines/*",
-              "Microsoft.Compute/virtualMachineScaleSets/*",
-              "Microsoft.Insights/alertRules/*",
-              "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
-              "Microsoft.Network/loadBalancers/read",
-              "Microsoft.Network/locations/*",
-              "Microsoft.Network/networkInterfaces/*",
-              "Microsoft.Network/networkSecurityGroups/join/action",
-              "Microsoft.Network/networkSecurityGroups/read",
-              "Microsoft.Network/publicIPAddresses/join/action",
-              "Microsoft.Network/publicIPAddresses/read",
-              "Microsoft.Network/virtualNetworks/read",
-              "Microsoft.Network/virtualNetworks/subnets/join/action",
-              "Microsoft.Resources/deployments/*",
-              "Microsoft.Resources/subscriptions/resourceGroups/read",
-              "Microsoft.Storage/storageAccounts/listKeys/action",
-              "Microsoft.Storage/storageAccounts/read",
-              "Microsoft.Support/*"
-            ],
-            "notActions": []
-          }
-        ],
-        "createdOn": "2015-06-02T00:18:27.3542698Z",
-        "updatedOn": "2015-12-08T03:16:55.6170255Z",
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
-      "type": "Microsoft.Authorization/roleDefinitions",
-      "name": "9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
-    }
-  ],
-  "nextLink": null
-}
-
-```
-
-## <a name="get-information-about-a-role"></a>Get information about a Role
-
-Gets information about a single role specified by the role definition identifier. To get information about a single role using its display name, see [List all roles](role-based-access-control-manage-access-rest.md#list-all-roles).
-
-To get information about a role, you must have access to `Microsoft.Authorization/roleDefinitions/read` operation. All the built-in roles are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
-
-### <a name="request"></a>Request
-
-Use the **GET** method with the following URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
-
-Within the URI, make the following substitutions to customize your request:
-
-1. Replace *{scope}* with the scope for which you wish to list the role assignments. The following examples show how to specify the scope for different levels:
-
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-
-2. Replace *{role-definition-id}* with the GUID identifier of the role definition.
-
-3. Replace *{api-version}* with 2015-07-01.
-
-### <a name="response"></a>Response
-
-Status code: 200
+状態コード: 200
 
 ```
 {
@@ -409,30 +323,115 @@ Status code: 200
 
 ```
 
-## <a name="create-a-custom-role"></a>Create a Custom Role
-Create a custom role.
+## ロールに関する情報を取得する
 
-To create a custom role, you must have access to `Microsoft.Authorization/roleDefinitions/write` operation on all the `AssignableScopes`. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+ロール定義識別子によって指定された単一のロールに関する情報を取得します。単一のロールに関する情報をその表示名を使って取得する方法については、「[すべてのロールを一覧表示する](role-based-access-control-manage-access-rest.md#list-all-roles)」を参照してください。
 
-### <a name="request"></a>Request
+ロールに関する情報を取得するには、`Microsoft.Authorization/roleDefinitions/read` 操作のアクセス権が必要です。この操作のアクセス権はすべての組み込みロールに付与されています。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
 
-Use the **PUT** method with the following URI:
+### 要求
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+次の URI で **GET** メソッドを使用します。
 
-Within the URI, make the following substitutions to customize your request:
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-1. Replace *{scope}* with the first *AssignableScope* of the custom role. The following examples show how to specify the scope for different levels.
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+1. *{scope}* は、ロールの割り当てを一覧表示する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-2. Replace *{role-definition-id}* with a new GUID, which becomes the GUID identifier of the new custom role.
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-3. Replace *{api-version}* with 2015-07-01.
+2. *{role-definition-id}* は、ロールの定義の GUID 識別子に置き換えます。
 
-For the request body, provide the values in the following format:
+3. *{api-version}* は 2015-07-01 に置き換えます。
+
+### 応答
+
+状態コード: 200
+
+```
+{
+  "value": [
+    {
+      "properties": {
+        "roleName": "Virtual Machine Contributor",
+        "type": "BuiltInRole",
+        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
+        "assignableScopes": [
+          "/"
+        ],
+        "permissions": [
+          {
+            "actions": [
+              "Microsoft.Authorization/*/read",
+              "Microsoft.Compute/availabilitySets/*",
+              "Microsoft.Compute/locations/*",
+              "Microsoft.Compute/virtualMachines/*",
+              "Microsoft.Compute/virtualMachineScaleSets/*",
+              "Microsoft.Insights/alertRules/*",
+              "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
+              "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
+              "Microsoft.Network/loadBalancers/inboundNatPools/join/action",
+              "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
+              "Microsoft.Network/loadBalancers/read",
+              "Microsoft.Network/locations/*",
+              "Microsoft.Network/networkInterfaces/*",
+              "Microsoft.Network/networkSecurityGroups/join/action",
+              "Microsoft.Network/networkSecurityGroups/read",
+              "Microsoft.Network/publicIPAddresses/join/action",
+              "Microsoft.Network/publicIPAddresses/read",
+              "Microsoft.Network/virtualNetworks/read",
+              "Microsoft.Network/virtualNetworks/subnets/join/action",
+              "Microsoft.Resources/deployments/*",
+              "Microsoft.Resources/subscriptions/resourceGroups/read",
+              "Microsoft.Storage/storageAccounts/listKeys/action",
+              "Microsoft.Storage/storageAccounts/read",
+              "Microsoft.Support/*"
+            ],
+            "notActions": []
+          }
+        ],
+        "createdOn": "2015-06-02T00:18:27.3542698Z",
+        "updatedOn": "2015-12-08T03:16:55.6170255Z",
+        "createdBy": null,
+        "updatedBy": null
+      },
+      "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
+      "type": "Microsoft.Authorization/roleDefinitions",
+      "name": "9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+    }
+  ],
+  "nextLink": null
+}
+
+```
+
+## カスタム ロールの作成
+カスタム ロールを作成します。
+
+カスタム ロールを作成するには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
+
+### 要求
+
+次の URI で **PUT** メソッドを使用します。
+
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+
+URI 内の次の項目を置換して要求をカスタマイズします。
+
+1. *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。各種レベルのスコープを指定する例を次に示します。
+
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
+
+2. *{role-definition-id}* は新しい GUID に置き換えます。これは新しいカスタム ロールの GUID 識別子になります。
+
+3. *{api-version}* は 2015-07-01 に置き換えます。
+
+要求本文には、次の形式で値を指定します。
 
 ```
 {
@@ -465,19 +464,19 @@ For the request body, provide the values in the following format:
 
 ```
 
-| Element Name | Required | Type | Description |
+| 要素名 | 必須 | 型 | Description |
 |--------------|----------|------|-------------|
-| name         | Yes | String   | GUID identifier of the custom role.    |
-| properties.roleName               | Yes | String   | Display name of the custom role. Maximum size 128 characters.                        |
-| properties.description            | No  | String   | Description of the custom role. Maximum size 1024 characters.                                               |
-| properties.type                   | Yes | String   | Set to "CustomRole."                                         |
-| properties.permissions.actions    | Yes | String[] | An array of action strings specifying the operations granted by the custom role.             |
-| properties.permissions.notActions | No  | String[] | An array of action strings specifying the operations to exclude from the operations granted by the custom role. |
-| properties.assignableScopes       | Yes | String[] | An array of scopes in which the custom role can be used.   |
+| name | はい | 文字列 | カスタム ロールの GUID 識別子。 |
+| properties.roleName | はい | 文字列 | カスタム ロールの表示名。最大 128 文字です。 |
+| properties.description | いいえ | 文字列 | カスタム ロールの説明。最大 1,024 文字です。 |
+| properties.type | はい | 文字列 | "CustomRole" に設定します。 |
+| properties.permissions.actions | はい | 文字列 | アクション文字列の配列。カスタム ロールでアクセス権を付与する操作を指定します。 |
+| properties.permissions.notActions | いいえ | 文字列 | アクション文字列の配列。カスタム ロールでアクセス権を付与する操作から除外する操作を指定します。 |
+| properties.assignableScopes | はい | 文字列 | カスタム ロールを使うことができるスコープの配列。 |
 
-### <a name="response"></a>Response
+### 応答
 
-Status code: 201
+状態コード: 201
 
 ```
 {
@@ -516,31 +515,31 @@ Status code: 201
 
 ```
 
-## <a name="update-a-custom-role"></a>Update a Custom Role
+## カスタム ロールの更新
 
-Modify a custom role.
+カスタム ロールに変更を加えます。
 
-To modify a custom role, you must have access to `Microsoft.Authorization/roleDefinitions/write` operation on all the `AssignableScopes`. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+カスタム ロールに変更を加えるには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/write` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
 
-### <a name="request"></a>Request
+### 要求
 
-Use the **PUT** method with the following URI:
+次の URI で **PUT** メソッドを使用します。
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. Replace *{scope}* with the first *AssignableScope* of the custom role. The following examples show how to specify the scope for different levels:
+1. *{scope}* は、カスタム ロールの 1 つ目の *AssignableScope* に置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-definition-id}* with the GUID identifier of the custom role.
+2. *{role-definition-id}* は、カスタム ロールの GUID 識別子に置き換えます。
 
-3. Replace *{api-version}* with 2015-07-01.
+3. *{api-version}* は 2015-07-01 に置き換えます。
 
-For the request body, provide the values in the following format:
+要求本文には、次の形式で値を指定します。
 
 ```
 {
@@ -573,19 +572,19 @@ For the request body, provide the values in the following format:
 
 ```
 
-| Element Name | Required | Type | Description |
+| 要素名 | 必須 | 型 | Description |
 |--------------|----------|------|-------------|
-| name         | Yes      | String | GUID identifier of the custom role. |
-| properties.roleName | Yes | String | Display name of the updated custom role. |
-| properties.description | No | String | Description of the updated custom role. |
-| properties.type | Yes | String | Set to "CustomRole." |
-| properties.permissions.actions | Yes | String[] | An array of action strings specifying the operations to which the updated custom role grants access. |
-| properties.permissions.notActions | No | String[] | An array of action strings specifying the operations to exclude from the operations which the updated custom role grants. |
-| properties.assignableScopes | Yes | String[] | An array of scopes in which the updated custom role can be used. |
+| name | はい | 文字列 | カスタム ロールの GUID 識別子。 |
+| properties.roleName | はい | 文字列 | 更新するカスタム ロールの表示名。 |
+| properties.description | いいえ | 文字列 | 更新するカスタム ロールの説明。 |
+| properties.type | はい | 文字列 | "CustomRole" に設定します。 |
+| properties.permissions.actions | はい | 文字列 | アクション文字列の配列。更新したカスタム ロールでアクセス権を付与する操作を指定します。 |
+| properties.permissions.notActions | いいえ | 文字列 | アクション文字列の配列。更新したカスタム ロールで付与するアクセス権の対象外とする操作を指定します。 |
+| properties.assignableScopes | はい | 文字列 | 更新したカスタム ロールを使うことができるスコープの配列。 |
 
-### <a name="response"></a>Response
+### 応答
 
-Status code: 201
+状態コード: 201
 
 ```
 {
@@ -624,33 +623,33 @@ Status code: 201
 
 ```
 
-## <a name="delete-a-custom-role"></a>Delete a Custom Role
+## カスタム ロールの削除
 
-Delete a custom role.
+カスタム ロールを削除します。
 
-To delete a custom role, you must have access to `Microsoft.Authorization/roleDefinitions/delete` operation on all the `AssignableScopes`. Of the built-in roles, only *Owner* and *User Access Administrator* are granted access to this operation. For more information about role assignments and managing access for Azure resources, see [Azure Role-Based Access Control](role-based-access-control-configure.md).
+カスタム ロールを削除するには、すべての `AssignableScopes` に対する `Microsoft.Authorization/roleDefinitions/delete` 操作のアクセス権が必要です。組み込みロールのうち、この操作のアクセス権が付与されているのは *Owner* と *User Access Administrator* だけです。Azure のリソースに対するアクセス管理とロール割り当ての詳細については、「[Azure のロールベースの Access Control](role-based-access-control-configure.md)」を参照してください。
 
-### <a name="request"></a>Request
+### 要求
 
-Use the **DELETE** method with the following URI:
+次の URI で **DELETE** メソッドを使用します。
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
+	https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
 
-Within the URI, make the following substitutions to customize your request:
+URI 内の次の項目を置換して要求をカスタマイズします。
 
-1. Replace *{scope}* with the scope at which you wish to delete the role definition. The following examples show how to specify the scope for different levels:
+1. *{scope}* は、ロールの定義を削除する対象のスコープに置き換えます。各種レベルのスコープを指定する例を次に示します。
 
-  - Subscription: /subscriptions/{subscription-id}  
-  - Resource Group: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1  
-  - Resource: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
+  - サブスクリプション: /subscriptions/{subscription-id}
+  - リソース グループ: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1
+  - リソース: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1
 
-2. Replace *{role-definition-id}* with the GUID role definition id of the custom role.
+2. *{role-definition-id}* は、カスタム ロールの GUID (ロール定義 ID) に置き換えます。
 
-3. Replace *{api-version}* with 2015-07-01.
+3. *{api-version}* は 2015-07-01 に置き換えます。
 
-### <a name="response"></a>Response
+### Response
 
-Status code: 200
+状態コード: 200
 
 ```
 {
@@ -692,8 +691,4 @@ Status code: 200
 
 [AZURE.INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

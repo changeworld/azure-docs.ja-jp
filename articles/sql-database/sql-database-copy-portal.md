@@ -1,93 +1,92 @@
 <properties
-    pageTitle="Copy an Azure SQL database using the Azure portal | Microsoft Azure"
-    description="Create a copy of an Azure SQL database"
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="Azure ポータルを使用した Azure SQL Database のコピー | Microsoft Azure"
+	description="Azure SQL Database のコピーの作成"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.date="09/19/2016"
-    ms.author="sstein"
-    ms.workload="data-management"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"/>
+	ms.service="sql-database"
+	ms.devlang="NA"
+	ms.date="09/19/2016"
+	ms.author="sstein"
+	ms.workload="data-management"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"/>
 
 
 
-
-# <a name="copy-an-azure-sql-database-using-the-azure-portal"></a>Copy an Azure SQL Database using the Azure portal
+# Azure ポータルを使用した Azure SQL Database のコピー
 
 > [AZURE.SELECTOR]
-- [Overview](sql-database-copy.md)
-- [Azure portal](sql-database-copy-portal.md)
+- [概要](sql-database-copy.md)
+- [Azure ポータル](sql-database-copy-portal.md)
 - [PowerShell](sql-database-copy-powershell.md)
 - [T-SQL](sql-database-copy-transact-sql.md)
 
-The following steps show you how to copy a SQL database with the [Azure portal](https://portal.azure.com) to the same server or a different server.
+次の手順では、[Azure ポータル](https://portal.azure.com)を使用して、同じサーバーまたは別のサーバーに SQL データベースをコピーする方法を説明します。
 
-To copy a SQL database, you need the following items:
+SQL データベースをコピーするには、以下の項目が必要です。
 
-- An Azure subscription. If you need an Azure subscription simply click **FREE TRIAL** at the top of this page, and then come back to finish this article.
-- A SQL database to copy. If you do not have a SQL database, create one following the steps in this article: [Create your first Azure SQL Database](sql-database-get-started.md).
+- Azure サブスクリプション。Azure サブスクリプションをお持ちでない場合、このページの上部の**無料評価版**をクリックしてからこの記事に戻り、最後まで完了してください。
+- コピーする SQL データベース。SQL Database がない場合は、「[最初の Azure SQL Database を作成する](sql-database-get-started.md)」という記事の手順に従って 1 つ作成してください。
 
 
-## <a name="copy-your-sql-database"></a>Copy your SQL database
+## SQL データベースのコピー
 
-Open the SQL database page for the database you want to copy:
+コピーするデータベースの SQL データベース ページを開きます。
 
-1.  Go to the [Azure portal](https://portal.azure.com).
-2.  Click **More services** > **SQL databases**, and then click the desired database.
-3.  On the SQL database page, click **Copy**:
+1.	[Azure ポータル](https://portal.azure.com)にアクセスします。
+2.	**[More services (その他のサービス)]**、**[SQL データベース]**、目的のデータベースの順にクリックします。
+3.	SQL データベース ページで、**[コピー]** をクリックします。
 
     ![SQL Database](./media/sql-database-copy-portal/sql-database-copy.png)
 
-1.  On the **Copy** page, a default database name is provided. Type a different name if you want (all databases on a server must have unique names).
-2.  Select a **Target server**. The target server is where the database copy is created. You can copy the database to the same server, or a different server. You can create a server or select an existing server from the list. 
-3.  After selecting the **Target server**, the **Elastic database pool**, and **Pricing tier** options will be enabled. If the server has a pool, you can copy the database into it.
-3.  Click **OK** to start the copy process.
+1.  **[コピー]** ページには、既定のデータベース名が入力されています。必要に応じて (サーバー上のすべてのデータベースに一意の名前を付ける必要がある場合など) 別の名前を入力します。
+2.  **[対象サーバー]** を選択します。ターゲット サーバーとは、データベース コピーが作成される場所です。同じサーバーまたは別のサーバーにデータベースをコピーできます。サーバーを作成したり、一覧から既存のサーバーを選択したりできます。
+3.  **[ターゲット サーバー]** を選択すると、**[エラスティック データベース プール]** オプションと **[価格レベル]** オプションが有効になります。サーバーにプールがある場合は、そこにデータベースをコピーできます。
+3.  **[OK]** をクリックし、コピー プロセスを開始します。
 
     ![SQL Database](./media/sql-database-copy-portal/copy-page.png)
 
 
-## <a name="monitor-the-progress-of-the-copy-operation"></a>Monitor the progress of the copy operation
+## コピー操作の進行状況の監視
 
-- After starting the copy, click the portal notification for details.
+- コピーの開始後、ポータル通知をクリックすると、詳細が表示されます。
 
-    ![notification][3]
+    ![通知][3]
  
-    ![monitor][4]
+    ![監視][4]
 
 
-## <a name="verify-the-database-is-live-on-the-server"></a>Verify the database is live on the server
+## サーバーにデータベースが存在することの確認
 
-- Click **More services** > **SQL databases** and verify the new database is **Online**.
-
-
-## <a name="resolve-logins"></a>Resolve logins
-
-To resolve logins after the copy operation completes, see [Resolve logins](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)
+- **[More services (その他のサービス)]**、**[SQL データベース]** の順にクリックし、新しいデータベースが**オンライン**であることを確認します。
 
 
-## <a name="next-steps"></a>Next steps
+## ログインの解決
 
-- See [Copy an Azure SQL database](sql-database-copy.md) for an overview of copying an Azure SQL Database.
-- See [Copy an Azure SQL database using PowerShell](sql-database-copy-powershell.md) to copy a database using PowerShell.
-- See [Copy an Azure SQL database using T-SQL](sql-database-copy-transact-sql.md) to copy a database using Transact-SQL.
-- See [How to manage Azure SQL database security after disaster recovery](sql-database-geo-replication-security-config.md) to learn about managing users and logins when copying a database to a different logical server.
+コピー操作が完了した後にログインを解決するには、[ログインの解決](sql-database-copy-transact-sql.md#resolve-logins-after-the-copy-operation-completes)に関するページをご覧ください
 
 
+## 次のステップ
 
-## <a name="additional-resources"></a>Additional resources
+- Azure SQL Database のコピーの概要については、「[Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。
+- PowerShell を使用してデータベースをコピーするには、「[PowerShell を使用した Azure SQL Database のコピー](sql-database-copy-powershell.md)」をご覧ください。
+- Transact-SQL を使用してデータベースをコピーするには、「[T-SQL を使用した Azure SQL Database のコピー](sql-database-copy-transact-sql.md)」をご覧ください。
+- 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
 
-- [Manage logins](sql-database-manage-logins.md)
-- [Connect to SQL Database with SQL Server Management Studio and perform a sample T-SQL query](sql-database-connect-query-ssms.md)
-- [Export the database to a BACPAC](sql-database-export.md)
-- [Business Continuity Overview](sql-database-business-continuity.md)
-- [SQL Database documentation](https://azure.microsoft.com/documentation/services/sql-database/)
+
+
+## その他のリソース
+
+- [ログインの管理](sql-database-manage-logins.md)
+- [SQL Server Management Studio を使用して SQL Database に接続し、T-SQL サンプル クエリを実行する](sql-database-connect-query-ssms.md)
+- [データベースを BACPAC にエクスポートする](sql-database-export.md)
+- [ビジネス継続性の概要](sql-database-business-continuity.md)
+- [SQL Database のドキュメント](https://azure.microsoft.com/documentation/services/sql-database/)
 
 
 
@@ -98,9 +97,4 @@ To resolve logins after the copy operation completes, see [Resolve logins](sql-d
 [3]: ./media/sql-database-copy-portal/copy-notification.png
 [4]: ./media/sql-database-copy-portal/monitor-copy.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

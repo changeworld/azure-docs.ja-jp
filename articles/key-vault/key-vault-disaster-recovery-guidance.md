@@ -1,54 +1,49 @@
 <properties
-    pageTitle="What to do in the event of an Azure service disruption that impacts Azure Key Vault | Microsoft Azure"
-    description="Learn what to do in the event of an Azure service disruption that impacts Azure Key Vault."
-    services="key-vault"
-    documentationCenter=""
-    authors="adamglick"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法 |Microsoft Azure"
+	description="Azure Key Vault に影響を与える Azure サービスの中断が発生した場合の対処方法について説明します。"
+	services="key-vault"
+	documentationCenter=""
+	authors="adamglick"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="key-vault"
-    ms.workload="key-vault"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/26/2016"
-    ms.author="sumedhb;aglick"/>
+	ms.service="key-vault"
+	ms.workload="key-vault"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2016"
+	ms.author="sumedhb;aglick"/>
 
 
+# Azure Key Vault の可用性と冗長性
 
-# <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault availability and redundancy
+Azure Key Vault には複数層の冗長性が備わっています。そのため、サービスの個々のコンポーネントで障害が発生した場合でも、アプリケーションでは引き続きキーとシークレットを使用することができます。
 
-Azure Key Vault features multiple layers of redundancy to make sure that your keys and secrets remain available to your application even if individual components of the service fail.
+Key Vault のコンテンツは、リージョン内と、同じ地域内の 150 マイル (約 241 km) 以上離れたセカンダリ リージョンにレプリケートされます。これにより、キーとシークレットの高い持続性が保たれます。
 
-The contents of your key vault are replicated within the region as well as to a secondary region at least 150 miles away but within the same geography. This maintains high durability of your keys and secrets.
+Key Vault サービス内の個々のコンポーネントで障害が発生した場合、リージョン内の代替コンポーネントが要求を処理し、機能が低下しないようにします。この処理をトリガーするために、何かの措置を講じる必要はありません。ユーザーからは見えないところで自動的に実行されます。
 
-If individual components within the Key Vault service fail, alternate components within the region step in to serve your request to make sure that there is no degradation of functionality. You do not need to take any action to trigger this. It will happen automatically and will be transparent to you.
+Azure リージョン全体が使用できない場合がまれにありますが、そのような場合でもそのリージョン内の Azure Key Vault に対する要求は自動的にセカンダリ リージョンにルーティング ("フェールオーバー") されます。プライマリ リージョンが再び使用できるようになったときに、要求は再びプライマリ リージョンにルーティング ("フェールバック") されます。この動作も自動的に行われるため、ユーザーによる操作は必要ありません。
 
-In the rare event that an entire Azure region is unavailable, the requests that you make of Azure Key Vault in that region are automatically routed (“failed over”) to a secondary region. When the primary region is available again, requests are routed back (“failed back”) to the primary region. Again, you do not need to take any action because this will happen automatically.
+その場合、以下のいくつかの注意事項があります。
 
-There are a few caveats that you should be aware of:
-
-* In the event of a region fail-over, it may take a few minutes for the service to fail over. Requests that are made during this time may fail until the fail-over completes.
-* After a fail-over is complete, your key vault is in ___read-only___ mode. Requests that are supported in this mode are:
- * list key vaults
- * get properties of key vaults
- * list secrets
- * get secrets
- * list keys
- * get (properties of) keys
+* リージョン フェールオーバーの場合、サービスのフェールオーバーには数分かかることがあります。その間に行われた要求は、フェールオーバーが完了するまで失敗する可能性があります。
+* フェールオーバーが完了すると、Key Vault は___読み取り専用___モードになります。このモードでサポートされる要求は次のとおりです。
+ * Key Vault のリスト
+ * Key Vault のプロパティの取得
+ * シークレットのリスト
+ * シークレットの取得
+ * キーのリスト
+ * キー (のプロパティ) の取得
  * encrypt
- * decrypt
- * wrap
- * unwrap
- * verify
- * sign
+ * 復号化
+ * ラップ
+ * ラップ解除
+ * 確認
+ * 署名
  * backup
-* After a failover is failed back, all request types (i.e. read ___and___ write requests) are available.
+* フェールオーバーがフェールバックされると、すべての種類の要求 (つまり、読み取り___および___書き込み要求) が可能になります。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

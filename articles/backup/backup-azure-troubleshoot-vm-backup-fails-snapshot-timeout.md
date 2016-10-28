@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure VM Backup fails: Could not communicate with the VM agent for snapshot status - Snapshot VM sub task timed out | Microsoft Azure"
-   description="Symptoms causes and resolutions for Azure VM backup failures related to could not communicate with the VM agent for snapshot status. Snapshot VM sub task timed out error"
+   pageTitle="Azure VM のバックアップの失敗: スナップショットの状態について VM エージェントと通信できませんでした - スナップショット VM サブタスクがタイムアウトしました | Microsoft Azure"
+   description="スナップショットの状態について VM エージェントと通信できませんでしたというエラーに関連する Azure VM のバックアップの失敗の症状の原因と解決策。スナップショット VM サブタスクのタイムアウト エラー"
    services="backup"
    documentationCenter=""
    authors="genlin"
@@ -16,129 +16,124 @@
     ms.date="07/14/2016"
     ms.author="jimpark; markgal;genli"/>
 
+# Azure VM のバックアップの失敗: スナップショットの状態について VM エージェントと通信できませんでした - スナップショット VM サブタスクがタイムアウトしました
 
-# <a name="azure-vm-backup-fails:-could-not-communicate-with-the-vm-agent-for-snapshot-status---snapshot-vm-sub-task-timed-out"></a>Azure VM Backup fails: Could not communicate with the VM agent for snapshot status - Snapshot VM sub task timed out
+## 概要
 
-## <a name="summary"></a>Summary
-
-After registering and scheduling a Virtual Machine (VM) for Azure Backup, the Azure Backup service initiates the backup job at the scheduled time by communicating with the backup extension in the VM to take a point-in-time snapshot. There are conditions that may prevent the snapshot from being triggered which leads to a backup failure. This article provides troubleshooting steps for issues related to Azure VM backup failures related to snapshot time out error.
+Azure Backup に仮想マシン (VM) を登録して、スケジュール設定すると、Azure Backup サービスは、スケジュールされた時刻に VM のバックアップ拡張機能と通信して、バックアップ ジョブを開始し、特定の時点のスナップショットを作成します。スナップショットをトリガーできず、バックアップの失敗につながる条件があります。この記事では、スナップショットのタイムアウト エラーに関連した Azure VM のバックアップの失敗に関連する問題のトラブルシューティング手順について説明します。
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="symptom"></a>Symptom
+## 症状
 
-Microsoft Azure Backup for infrastructure as a service (IaaS) VM fails and returns the following error message in the job error details in Azure Portal.
+サービスとしてのインフラストラクチャ (IaaS) VM に対する Microsoft Azure Backup が失敗し、Azure ポータルのジョブ エラーの詳細で次のエラー メッセージが返されます。
 
-**Could not communicate with the VM agent for snapshot status - Snapshot VM sub task timed out.**
+**スナップショットの状態について VM エージェントと通信できませんでした - スナップショット VM サブタスクがタイムアウトしました。**
 
-## <a name="cause"></a>Cause
-There are four common causes for this error:
+## 原因
+このエラーの一般的な原因には、次の 4 つがあります。
 
-- The VM does not have Internet access.
-- The Microsoft Azure VM agent installed in the VM is out of date (for Linux VMs).
-- The backup extension fails to update or load.
-- The snapshots status cannot be retrieved or the snapshots cannot be taken.
+- VM がインターネットにアクセスできない。
+- VM にインストールされている Microsoft Azure VM エージェントが古くなっている (Linux VM の場合)。
+- バックアップ拡張機能の更新または読み込みに失敗した。
+- スナップショットの状態を取得できなかったか、スナップショットを作成できなかった。
 
-## <a name="cause-1:-the-vm-does-not-have-internet-access"></a>Cause 1: The VM does not have Internet access
-Per the deployment requirement, the VM has no Internet access, or has restrictions in place that prevent access to the Azure infrastructure.
+## 原因 1: VM がインターネットにアクセスできない
+デプロイ要件によっては、VM がインターネットにアクセスできない場合や、設定されている制限により、Azure インフラストラクチャにアクセスできない場合があります。
 
-The backup extension requires connectivity to the Azure public IP addresses to function correctly. This is because it sends commands to an Azure Storage endpoint (HTTP URL) to manage the snapshots of the VM. If the extension does not have access to the public Internet, the backup eventually fails.
+バックアップ拡張機能が正常に機能するためには、Azure のパブリック IP アドレスへの接続が必要です。これは、バックアップ拡張機能が Azure Storage エンドポイント (HTTP URL) に VM のスナップショットを管理するコマンドを送信するためです。拡張機能がパブリック インターネットにアクセスできない場合は、最終的にバックアップが失敗します。
 
-### <a name="solution"></a>Solution
-In this scenario, use one of the following methods to resolve the issue:
+### 解決策
+このシナリオでは、次のいずれかの方法を使用して問題を解決します。
 
-- Whitelist the Azure datacenter IP ranges
-- Create a path for HTTP traffic to flow
+- Azure データセンターの IP 範囲をホワイトリストに登録する
+- フローに対する HTTP トラフィック用のパスを作成する
 
-### <a name="to-whitelist-the-azure-datacenter-ip-ranges"></a>To whitelist the Azure datacenter IP ranges
+### Azure データセンターの IP 範囲をホワイトリストに登録するには
 
-1. Obtain the [list of Azure datacenter IPs](https://www.microsoft.com/download/details.aspx?id=41653) to be whitelisted.
-2. Unblock the IPs by using the New-NetRoute cmdlet. Run this cmdlet in the Azure VM in an elevated PowerShell window (run as Administrator).
-3. Add rules to the Network Security Group (NSG) if you have one to allow access to the IPs.
+1. ホワイトリストに登録する [Azure データセンターの IP の一覧](https://www.microsoft.com/download/details.aspx?id=41653)を取得します。
+2. New-NetRoute コマンドレットを使用して、IP アドレスのブロックを解除します。管理者特権での PowerShell ウィンドウ (管理者として実行) で、Azure VM 内でこのコマンドレットを実行します。
+3. 規則をネットワーク セキュリティ グループ (NSG) に追加して IP へのアクセスを許可します (NSG を使用している場合)。
 
-### <a name="to-create-a-path-for-http-traffic-to-flow"></a>To create a path for HTTP traffic to flow
+### HTTP トラフィックがフローするためのパスを作成するには
 
-1. If you have network restrictions in place (for example, an NSG), deploy an HTTP proxy server to route the traffic.
-2. If you have a network security group (NSG), add rules to allow access to the Internet from the HTTP proxy.
+1. ネットワーク制限 (NSG など) を設定している場合は、トラフィックをルーティングするための HTTP プロキシ サーバーをデプロイします。
+2. ネットワーク セキュリティ グループ (NSG) を使用している場合は、規則を追加して HTTP プロキシからインターネットへのアクセスを許可します。
 
-Learn how to [set up an HTTP proxy for VM backups](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
+[VM をバックアップできるように HTTP プロキシを設定する](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups)方法を確認してください。
 
-## <a name="cause-2:-the-microsoft-azure-vm-agent-installed-in-the-vm-is-out-of-date-(for-linux-vms)"></a>Cause 2: The Microsoft Azure VM agent installed in the VM is out of date (for Linux VMs)
+## 原因 2: VM にインストールされている Microsoft Azure VM エージェントが古くなっている (Linux VM の場合)
 
-### <a name="solution"></a>Solution
-Most agent-related or extension-related failures for Linux VMs are caused by issues that affect an old VM agent. As a general guideline, the first steps to troubleshoot this issue are the following:
+### 解決策
+Linux VM の場合、エージェントに関連するエラーまたは拡張機能に関連するエラーのほとんどは、古い VM エージェントに影響する問題が原因で発生します。一般的なガイドラインとして、この問題のトラブルシューティングを行うには、まず次の手順を実行します。
 
-1. [Install the latest Azure VM agent](https://github.com/Azure/WALinuxAgent).
-2. Make sure that the Azure agent is running on the VM. To do this, run the following command:     ```ps -e```
+1. [最新の Azure VM エージェントをインストールします](https://github.com/Azure/WALinuxAgent)。
+2. Azure エージェントが VM で実行されていることを確認します。これを行うには、```ps -e``` コマンドを実行します。
 
-    If this process is not running, use the following commands to restart it.
+    このプロセスが実行されていない場合は、次のコマンドを使用してプロセスを再起動します。
 
-    For Ubuntu:     ```service walinuxagent start```
+    Ubuntu の場合: ```service walinuxagent start```
 
-    For other distributions:     ```service waagent start
+    その他のディストリビューションの場合: ```service waagent start
 ```
 
-3. [Configure the auto restart agent](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
+3. [エージェントの自動再起動を構成します](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)。
 
-4. Run a new test backup. If the failures persist, please collect logs from the following folders for further debugging.
+4. 新しいテスト バックアップを実行します。エラーが解決しない場合は、さらにデバッグするために、次のフォルダーからログを収集してください。
 
-    We require the following logs from the customer’s VM:
+    お客様の VM にある次のログが必要です。
 
     - /var/lib/waagent/*.xml
     - /var/log/waagent.log
     - /var/log/azure/*
 
-If we require verbose logging for waagent, follow these steps to enable this:
+waagent の詳細ログが必要な場合は、次の手順に従って、詳細なログ記録を有効にしてください。
 
-1. In the /etc/waagent.conf file, locate the following line:
+1. /etc/waagent.conf ファイルで、次の行を見つけます。
 
     Enable verbose logging (y|n)
 
-2. Change the **Logs.Verbose** value from n to y.
-3. Save the change, and then restart waagent by following the previous steps in this section.
+2. **Logs.Verbose** の値を n から y に変更します。
+3. 変更を保存した後、このセクションの前の手順に従って waagent を再起動します。
 
-## Cause 3: The backup extension fails to update or load
-If extensions cannot be loaded, then Backup fails because a snapshot cannot be taken.
+## 原因 3: バックアップ拡張機能の更新または読み込みに失敗した
+拡張機能を読み込むことができないと、スナップショットを作成できないため、Backup が失敗します。
 
-### Solution
-For Windows guests:
+### 解決策
+Windows ゲストの場合:
 
-1. Verify that the iaasvmprovider service is enabled and has a startup type of automatic.
-2. If this is not the configuration, enable the service to determine whether the next backup succeeds.
+1. iaasvmprovider サービスが有効になっていて、スタートアップの種類が自動になっていることを確認します。
+2. そのように構成されていない場合は、サービスを有効にして、次のバックアップが成功するかどうかを確認します。
 
-For Linux guests:
+Linux ゲストの場合:
 
-The latest version of VMSnapshot Linux (extension used by backup) is 1.0.91.0
+最新バージョンの VMSnapshot Linux (バックアップで使用される拡張機能) は 1.0.91.0 です。
 
-If the backup extension still fails to update or load, you can force the VMSnapshot extension to be reloaded by uninstalling the extension. The next backup attempt will reload the extension.
+バックアップ拡張機能の更新または読み込みがまだ失敗する場合は、VMSnapshot 拡張機能をインストールして強制的に再度読み込まれるようにします。次回のバックアップ時に、拡張機能が再度読み込まれます。
 
-### To uninstall the extension
+### 拡張機能をアンインストールするには
 
-1. Go to the [Azure portal](https://portal.azure.com/).
-2. Locate the particular VM that has backup problems.
-3. Click **Settings**.
-4. Click **Extensions**.
-5. Click **Vmsnapshot Extension**.
-6. Click **uninstall**.
+1. [Azure ポータル](https://portal.azure.com/)にアクセスします。
+2. バックアップの問題が発生している特定の VM を見つけます。
+3. **[設定]** をクリックします。
+4. **[拡張機能]** をクリックします。
+5. **[Vmsnapshot 拡張機能]** をクリックします。
+6. **[アンインストール]** をクリックします。
 
-This will cause the extension to be reinstalled during the next backup.
+これにより、次回のバックアップ時に拡張機能が再インストールされます。
 
-## Cause 4: The snapshots status cannot be retrieved or the snapshots cannot be taken
-VM backup relies on issuing snapshot command to underlying storage. The backup can fail because it has no access to storage or because of a delay in snapshot task execution.
+## 原因 4: スナップショットの状態を取得できなかったか、スナップショットを作成できなかった
+VM のバックアップは、基礎をなすストレージへのスナップショット コマンドの発行に依存します。ストレージにアクセスできないことや、スナップショット タスクの実行の遅延が原因で、バックアップが失敗することがあります。
 
-### Solution
-The following conditions can cause snapshot task failure:
+### 解決策
+次の場合にスナップショットのタスクが失敗することがあります。
 
-| Cause | Solution |
+| 原因 | 解決策 |
 | ----- | ----- |
-| VMs that have Microsoft SQL Server Backup configured. By default, VM Backup runs a VSS Full backup on Windows VMs. On VMs that are running SQL Server-based servers and on which SQL Server Backup is configured, snapshot execution delays may occur. | Set following registry key if you are experiencing backup failures because of snapshot issues.<br><br>[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE" |
-| VM status is reported incorrectly because the VM is shut down in RDP. If you shut down the virtual machine in RDP, check the portal to determine whether that VM status is reflected correctly. | If it’s not, shut down the VM in the portal by using the ”Shutdown” option in the VM dashboard. |
-| Many VMs from the same cloud service are configured to back up at the same time. | It’s a best practice to spread out the VMs from the same cloud service to have different backup schedules. |
-| The VM is running at high CPU or memory usage. | If the VM is running at high CPU usage (more than 90 percent) or high memory usage, the snapshot task is queued and delayed and eventually times out. In this situation, try on-demand backup. |
-|The VM cannot get host/fabric address from DHCP.|DHCP must be enabled inside the guest for IaaS VM Backup to work.  If the VM cannot get host/fabric address from DHCP response 245, then it cannot download ir run any extensions. If you need a static private IP, you should configure it through the platform. The DHCP option inside the VM should be left enabled. View more information about [Setting a Static Internal Private IP](../virtual-network/virtual-networks-reserved-private-ip.md).|
+| VM で Microsoft SQL Server のバックアップが構成されている。既定では、VM のバックアップは Windows VM で VSS 完全バックアップとして実行されます。SQL Server ベースのサーバーを実行し、SQL Server のバックアップが構成されている VM では、スナップショットの実行の遅延が発生する場合があります。 | スナップショットの問題が原因でバックアップ エラーが発生している場合は、次のレジストリ キーを設定します。<br><br>[HKEY\_LOCAL\_MACHINE\\SOFTWARE\\MICROSOFT\\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE" |
+| VM が RDP でシャットダウンされているため、VM の状態が正しく報告されない。RDP で仮想マシンをシャットダウンした場合は、ポータルでその VM の状態が正しく反映されているかどうかを確認します。 | 正しく反映されていない場合は、ポータルで VM のダッシュボードの [シャットダウン] オプションを使用して VM をシャットダウンします。 |
+| 同じクラウド サービスから多数の VM が同時にバックアップするように構成されている。 | 同じクラウド サービスの VM は異なるバックアップ スケジュールに分散することをお勧めします。 |
+| VM の CPU またはメモリの使用率が高くなっている。 | VM の CPU 使用率が高い (90% を超える) 場合、またはメモリ使用率が高い場合、スナップショット タスクがキューに配置され、遅延し、最終的にタイムアウトになります。このような状況では、オンデマンド バックアップを試してください。 |
+|VM が DHCP からホスト/ファブリック アドレスを取得できない。|IaaS VM Backup が正しく機能するためには、ゲスト内で DHCP が有効になっている必要があります。VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。VM 内の DHCP オプションは有効のままにしておいてください。詳細については、[静的内部プライベート IP の設定](../virtual-network/virtual-networks-reserved-private-ip.md)に関する記事をご覧ください。|
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

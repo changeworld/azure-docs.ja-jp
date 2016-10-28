@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Deploy StorSimple Virtual Array - Provision in Hyper-V"
-   description="This second tutorial in StorSimple Virtual Array deployment involves provisioning a virtual device in Hyper-V."
+   pageTitle="StorSimple Virtual Array をデプロイする - Hyper-V でプロビジョニングする"
+   description="StorSimple Virtual Array のデプロイの 2 番目のチュートリアルには、Hyper-V での仮想デバイスのプロビジョニングが含まれます。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,260 +16,255 @@
    ms.date="07/14/2016"
    ms.author="alkohli"/>
 
-
-# <a name="deploy-storsimple-virtual-array---provision-a-virtual-array-in-hyper-v"></a>Deploy StorSimple Virtual Array - Provision a Virtual Array in Hyper-V
+# StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする
 
 ![](./media/storsimple-ova-deploy2-provision-hyperv/hyperv4.png)
 
-## <a name="overview"></a>Overview
+## 概要
 
-This provisioning tutorial applies to Microsoft Azure StorSimple Virtual Arrays (also known as StorSimple on-premises virtual devices or StorSimple virtual devices) running March 2016 general availability (GA) release. This tutorial describes how to provision a StorSimple Virtual Array on a host system running Hyper-V on Windows Server 2012 R2, Windows Server 2012 or Windows Server 2008 R2. This article applies to the deployment of StorSimple Virtual Arrays in Azure classic portal as well as Microsoft Azure Government Cloud.
+このプロビジョニング チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたはStorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行するホスト システムに StorSimple Virtual Array をプロビジョニングする方法について説明します。この記事は、Azure クラシック ポータルだけでなく、Microsoft Azure Government Cloud での StorSimple Virtual Arrays のデプロイに適用されます。
 
-You will need administrator privileges to provision and configure a virtual device. The provisioning and initial setup can take around 10 minutes to complete.
+仮想デバイスをプロビジョニングして構成するには、管理者特権が必要です。プロビジョニングと初期セットアップは、完了するまでに約 10 分かかることがあります。
 
 
-## <a name="provisioning-prerequisites"></a>Provisioning prerequisites
+## プロビジョニングの前提条件
 
-Here you will find the prerequisites to provision a virtual device on a host system running Hyper-V on Windows Server 2012 R2, Windows Server 2012, or Windows Server 2008 R2.
+ここでは、Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 の Hyper-V を実行するホスト システムに仮想デバイスをプロビジョニングする際の前提条件について説明します。
 
-### <a name="for-the-storsimple-manager-service"></a>For the StorSimple Manager service
+### StorSimple Manager サービスの場合
 
-Before you begin, make sure that:
+開始する前に次の点を確認します。
 
--   You have completed all the steps in [Prepare the portal for StorSimple Virtual Array](storsimple-ova-deploy1-portal-prep.md).
+-   [StorSimple Virtual Array のポータルの準備](storsimple-ova-deploy1-portal-prep.md)に関するページの手順がすべて完了していること。
 
--   You have downloaded the virtual device image for Hyper-V from the Azure portal. For more information, see [Step 3: Download the virtual device image](storsimple-ova-deploy1-portal-prep.md#step-3-download-the-virtual-device-image).
+-   Azure ポータルから Hyper-V の仮想デバイスのイメージをダウンロードしていること。詳細については、「[手順 3: 仮想デバイスのイメージをダウンロードする](storsimple-ova-deploy1-portal-prep.md#step-3-download-the-virtual-device-image)」を参照してください。
 
-    > [AZURE.IMPORTANT] The software running on the StorSimple Virtual Array may only be used in conjunction with the Storsimple Manager service.
+	> [AZURE.IMPORTANT] StorSimple Virtual Array で実行されているソフトウェアは、Storsimple Manager サービスとの組み合わせでのみ使用できます。
 
-### <a name="for-the-storsimple-virtual-device"></a>For the StorSimple virtual device
+### StorSimple 仮想デバイスの場合
 
-Before you deploy a virtual device, make sure that:
+仮想デバイスをデプロイする前に次の点を確認します。
 
--   You have access to a host system running Hyper-V on Windows Server 2008 R2 or later that can be used to a provision a device.
+-   Windows Server 2008 R2 以降の Hyper-V を実行し、デバイスのプロビジョニングに使用できるホスト システムへのアクセス権があること。
 
--   The host system is able to dedicate the following resources to provision your virtual device:
+-   ホスト システムで、次のリソースを仮想デバイスのプロビジョニング専用に使用できること。
 
-    -   A minimum of 4 cores.
+	-   最小で 4 コア。
 
-    -   At least 8 GB of RAM.
+	-   少なくとも 8 GB の RAM。
 
-    -   One network interface.
+	-   ネットワーク インターフェイス 1 つ。
 
-    -   A 500 GB virtual disk for system data.
+	-   システム データ用の 500 GB の仮想ディスク。
 
-### <a name="for-the-network-in-the-datacenter"></a>For the network in the datacenter
+### データセンターのネットワークの場合
 
-Before you begin, review the networking requirements to deploy a StorSimple virtual device and configure the datacenter network appropriately. For more information, see [StorSimple Virtual Array networking requirements](storsimple-ova-system-requirements.md#networking-requirements).
+作業を始める前に、StorSimple 仮想デバイスをデプロイしてデータセンター ネットワークを適切に構成するためのネットワーク要件を確認します。詳細については、[StorSimple Virtual Array のネットワーク要件](storsimple-ova-system-requirements.md#networking-requirements)に関するセクションをご覧ください。
 
-## <a name="step-by-step-provisioning"></a>Step-by-step provisioning
+## プロビジョニングの手順
 
-To provision and connect to a virtual device, you will need to perform the following steps:
+仮想デバイスをプロビジョニングして接続するには、次の手順を実行する必要があります。
 
-1.  Ensure that the host system has sufficient resources to meet the minimum virtual device requirements.
+1.  ホスト システムに仮想デバイスの最小要件を満たすための十分なリソースがあることを確認します。
 
-2.  Provision a virtual device in your hypervisor.
+2.  ハイパーバイザーで仮想デバイスをプロビジョニングします。
 
-3.  Start the virtual device and get the IP address.
+3.  仮想デバイスを起動し、IP アドレスを取得します。
 
-Each of these steps is explained in the following sections.
+これらの各手順を以下のセクションで説明します。
 
-## <a name="step-1:-ensure-that-the-host-system-meets-minimum-virtual-device-requirements"></a>Step 1: Ensure that the host system meets minimum virtual device requirements
+## 手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する
 
-To create a virtual device, you will need:
+仮想デバイスを作成するには、次の要件が必要です。
 
--   The Hyper-V role installed on Windows Server 2012 R2, Windows Server 2012, or Windows Server 2008 R2 SP1.
+-   Windows Server 2012 R2、Windows Server 2012、または Windows Server 2008 R2 SP1 にインストールされた Hyper-V ロール。
 
--   Microsoft Hyper-V Manager on a Microsoft Windows client connected to the host.
+-   ホストに接続されている Microsoft Windows クライアント上の Microsoft Hyper-V マネージャー。
 
-You must make sure that the underlying hardware (host system) on which you are creating the virtual device is able to dedicate the following resources to your virtual device:
+仮想デバイスを作成している基盤となるハードウェア (ホスト システム) で、次のリソースを仮想デバイス専用に使用できることを確認する必要があります。
 
-- A minimum of 4 cores.
-- At least 8 GB of RAM.
-- One network interface.
-- A 500 GB virtual disk for system data.
+- 最小で 4 コア。
+- 少なくとも 8 GB の RAM。
+- ネットワーク インターフェイス 1 つ。
+- システム データ用の 500 GB の仮想ディスク。
 
-## <a name="step-2:-provision-a-virtual-device-in-hypervisor"></a>Step 2: Provision a virtual device in hypervisor
+## 手順 2: ハイパーバイザーで仮想デバイスをプロビジョニングする
 
-Perform the following steps to provision a device in your hypervisor.
+ハイパーバイザーでデバイスをプロビジョニングするには、次の手順を実行します。
 
-#### <a name="to-provision-a-virtual-device"></a>To provision a virtual device
+#### 仮想デバイスをプロビジョニングするには
 
-1.  On your Windows Server host, copy the virtual device image to a local drive. This is the image (VHD or VHDX) that you downloaded through the Azure portal. Make a note of the location where you copied the image as you will be using this later in the procedure.
+1.  Windows Server ホストで、仮想デバイスのイメージをローカル ドライブにコピーします。これは、Azure ポータルからダウンロードしたイメージ (VHD または VHDX) です。このイメージは手順の後半で使用するため、コピーした場所をメモしておきます。
 
-2.  Open **Server Manager**. In the top right corner, click **Tools** and select **Hyper-V Manager**.
+2.  **サーバー マネージャー**を開きます。右上隅の **[ツール]** をクリックし、**[Hyper-V マネージャー]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image1.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image1.png)
 
-    If you are running Windows Server 2008 R2, open the Hyper-V Manager. In Server Manager, click **Roles > Hyper-V > Hyper-V Manager**.
+	Windows Server 2008 R2 を実行している場合は、Hyper-V マネージャーを開きます。サーバー マネージャーで、**[ロール] > [Hyper-V] > [Hyper-V マネージャー]** をクリックします。
 
-1.  In **Hyper-V Manager**, in the scope pane, right-click your system node to open the context menu, and then click **New** > **Virtual Machine**.
+1.  **Hyper-V マネージャー**のスコープ ウィンドウで、システム ノードを右クリックしてコンテキスト メニューを開き、**[新規]**、**[仮想マシン]** の順にクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image2.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image2.png)
 
-1.  On the **Before you begin** page of the New Virtual Machine Wizard, click **Next**.
+1.  仮想マシンの新規作成ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
 
-1.  On the **Specify name and location** page, provide a **Name** for your virtual device. Click **Next**.
+1.  **[名前と場所を指定]** ページで、仮想デバイスの**名前**を入力します。**[次へ]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image4.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image4.png)
 
-1.  On the **Specify generation** page, choose the device image type and then click **Next**. This page doesn't appear if you're using Windows Server 2008 R2.
+1.  **[世代の指定]** ページで、デバイスのイメージの種類を選択し、**[次へ]** をクリックします。Windows Server 2008 R2 を使用している場合、このページは表示されません。
 
-    * Choose **Generation 2** if you downloaded a .vhdx image for Windows Server 2012 or later.
-    * Choose **Generation 1** if you downloaded a .vhd image for Windows Server 2008 R2 or later.
+    * Windows Server 2012 以降の .vhdx イメージをダウンロードした場合は、**[第 2 世代]** を選択します。
+    * Windows Server 2008 R2 以降の .vhd イメージをダウンロードした場合は、**[第 1 世代]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image5.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image5.png)
 
-1.  On the **Assign memory** page, specify a **Startup memory** of at least **8192 MB**, don't enable dynamic memory, and then click **Next**.
+1.  **[メモリの割り当て]** ページで、**8192 MB** 以上の**起動メモリ**を指定します。動的メモリは有効にしないでください。**[次へ]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image6.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image6.png)
 
-1.  On the **Configure networking** page, specify the virtual switch that is connected to the Internet and then click **Next**.
+1.  **[ネットワークの構成]** ページで、インターネットに接続されている仮想スイッチを指定し、**[次へ]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image7.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image7.png)
 
-1.  On the **Connect virtual hard disk** page, choose **Use an existing virtual hard disk**, specify the location of the virtual device image (.vhdx or .vhd), and then click **Next**.
+1.  **[仮想ハード ディスクの接続]** ページで、**[既存の仮想ハード ディスクを使用する]** を選択し、仮想デバイスのイメージ (.vhdx または .vhd) の場所を指定して、**[次へ]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image8m.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image8m.png)
 
-1.  Review the **Summary** and then click **Finish** to create the virtual machine. But don't jump ahead yet - you still need to add some CPU cores and a second drive. 
+1.  **[概要]** を確認し、**[完了]** をクリックして仮想マシンを作成します。ただし、まだ先に進まないでください。CPU コアをいくつかと 2 番目のドライブを追加する必要があります。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image9.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image9.png)
 
-1.  To meet the minimum requirements, you will need 4 cores. To add virtual processors, with your host system selected in the **Hyper-V Manager** window, in the right-pane under the list of **Virtual Machines**, locate the virtual machine you just created. Select and right-click the machine name and select **Settings**.
+1.  最小要件を満たすには、4 コアが必要です。仮想プロセッサを追加するには、**[Hyper-V マネージャー]** ウィンドウでホスト システムを選択し、右側のウィンドウの **[仮想マシン]** の一覧で作成した仮想マシンを見つけます。マシン名を選択して右クリックし、**[設定]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image10.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image10.png)
 
-1.  On the **Settings** page, in the left-pane, click **Processor**. In the right-pane, set **number of virtual processors** to 4 (or more). Click **Apply**.
+1.  **[設定]** ページの左側のウィンドウで **[プロセッサ]** をクリックします。右側のウィンドウで、**[仮想プロセッサの数]** を 4 (またはそれ以上) に設定します。**[適用]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image11.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image11.png)
 
-1.  To meet the minimum requirements, you also need to add a 500 GB virtual data disk. In the **Settings** page:
+1.  最小要件を満たすには、500 GB の仮想データ ディスクを追加する必要もあります。**[設定]** ページで次の操作を行います。
 
-    1.  In the left pane, select **SCSI Controller**.
-    2.  In the right pane, select **Hard Drive,** and click **Add**.
+    1.  左側のウィンドウで **[SCSI コントローラー]** を選択します。
+    2.  右側のウィンドウで **[ハード ドライブ]** を選択し、**[追加]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image12.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image12.png)
 
-1.  On the **Hard drive** page, select the **Virtual hard disk** option and click **New**. This will start the **New Virtual Hard Disk Wizard**.
+1.  **[ハード ドライブ]** ページで **[仮想ハード ディスク]** を選択し、**[新規]** をクリックします。**仮想ハード ディスクの新規作成ウィザード**が開始されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image13.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image13.png)
 
-1.  On the **Before you begin** page of the New Virtual Hard Disk Wizard, click **Next**.
+1.  仮想ハード ディスクの新規作成ウィザードの **[開始する前に]** ページで、**[次へ]** をクリックします。
 
-1.  On the **Choose Disk Format page**, accept the default option of **VHDX** format. Click **Next**. You won't see this screen if you're running Windows Server 2012 R2 or Windows Server 2008 R2.
+1.  **[ディスク フォーマットの選択]** ページで、既定のオプションの **[VHDX]** 形式をそのまま使用します。**[次へ]** をクリックします。Windows Server 2012 R2 または Windows Server 2008 R2 を実行している場合、この画面は表示されません。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image15.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image15.png)
 
-1.  On the **Choose Disk Type page**, set virtual hard disk type as **Dynamically expanding** (recommended). If you choose **Fixed size** disk, it will also work but you may need to wait a long time. We recommend that you do not use the **Differencing** option. Click **Next**. Note that **Dynamically expanding** is the default in Windows Server 2012 R2 and Windows Server 2012. In Windows Server 2008 R2, the default is **Fixed size**.
+1.  **[ディスクの種類の選択]** ページで、仮想ハード ディスクの種類を **[容量可変]** に設定します (推奨)。**[固定サイズ]** を選択しても動作しますが、待機時間が長くなる可能性があります。**[差分]** は使用しないことをお勧めします。**[次へ]** をクリックします。Windows Server 2012 R2 および Windows Server 2012 では、**[容量可変]** が既定値です。Windows Server 2008 R2 では、**[固定サイズ]** が既定値です。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image16.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image16.png)
 
-1.  On the **Specify Name and Location** page, provide a **name** as well as **location** (you can browse to one) for the data disk. Click **Next**.
+1.  **[名前と場所の指定]** ページで、データ ディスクの**名前**と**場所**を入力します (場所は参照することもできます)。**[次へ]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image17.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image17.png)
 
-1.  On the **Configure Disk** page, select the option **Create a new blank virtual hard disk** and specify the size as **500 GB** (or more). Click **Next**.
+1.  **[ディスクの構成]** ページで、**[新しい空の仮想ハード ディスクを作成する]** を選択し、サイズを **500 GB** (またはそれ以上) に指定します。**[次へ]** をクリックします。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image18.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image18.png)
 
-1.  On the **Summary** page, review the details of your virtual data disk and if satisfied, click **Finish** to create the disk. The wizard will close and a virtual hard disk will be added to your machine.
+1.  **[概要]** ページで仮想データ ディスクの詳細を確認し、問題がなければ **[完了]** をクリックしてディスクを作成します。ウィザードが終了し、仮想ハード ディスクがコンピューターに追加されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image19.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image19.png)
 
-2.  You will return to the **Settings** page. Click **OK** to close the **Settings** page and return to Hyper-V Manager window.
+2.  **[設定]** ページが再び表示されます。**[OK]** をクリックして **[設定]** ページを閉じ、[Hyper-V マネージャー] ウィンドウに戻ります。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image20.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image20.png)
 
-## <a name="step-3:-start-the-virtual-device-and-get-the-ip"></a>Step 3: Start the virtual device and get the IP
+## 手順 3: 仮想デバイスを起動し、IP アドレスを取得する
 
-Perform the following steps to start your virtual device and connect to it.
+仮想デバイスを起動して接続するには、次の手順を実行します。
 
-#### <a name="to-start-the-virtual-device"></a>To start the virtual device
+#### 仮想デバイスを起動するには
 
-1.  Start the virtual device.
+1.  仮想デバイスを起動します。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image21.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image21.png)
 
-1.  After the device is running, select the device, right click, and select **Connect**.
+1.  デバイスが起動したら、デバイスを選択して右クリックし、**[接続]** を選択します。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image22.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image22.png)
 
-1.  You may have to wait 5-10 minutes for the device to be ready. A status message is displayed on the console to indicate the progress. After the device is ready, go to **Action**. Press `Ctrl + Alt + Delete` to log into the virtual device. The default user is *StorSimpleAdmin* and the default password is *Password1*.
+1.  デバイスの準備ができるまでに 5 ～ 10 分かかる場合があります。進行状況を示すステータス メッセージがコンソールに表示されます。デバイスの準備ができたら **[アクション]** に移動します。`Ctrl + Alt + Delete` キーを押して仮想デバイスにログインします。既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image23.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image23.png)
 
-1.  For security reasons, the device administrator password expires at the first log on. You will be prompted to change the password.
+1.  セキュリティ上の理由から、デバイス管理者のパスワードは初回ログオン後に有効期限が切れます。パスワードを変更するように促されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image24.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image24.png)
 
-    Enter a password that contains at least 8 characters. The password must satisfy at least 3 out of the following 4 requirements: uppercase, lowercase, numeric, and special characters. Reenter the password to confirm it. You will be notified that the password has changed.
+	8 文字以上を含むパスワードを入力します。パスワードは、4 つの要件 (大文字、小文字、数字、および特殊文字) のうち少なくとも 3 つを満たす必要があります。確認のためにパスワードを再入力します。パスワードが変更されたことが通知されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image25.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image25.png)
 
-1.  After the password is successfully changed, the virtual device may restart. Wait for the device to start.
+1.  パスワードが正常に変更されると、仮想デバイスが再起動することがあります。デバイスが起動するのを待ちます。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image26.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image26.png)
 
-    The Windows PowerShell console of the device will be displayed along with a progress bar.
+ 	デバイスの Windows PowerShell コンソールが、進行状況バーと共に表示されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image27.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image27.png)
 
-1.  Steps 6-8 only apply when booting up in a non DHCP environment. If you are in a DHCP environment, then skip these steps and go to step 9. If you booted up your device in non DHCP environment, you will see the following screen.
+1.  手順 6 ～ 8 は、非 DHCP 環境での起動時にのみ適用されます。DHCP 環境の場合は、手順 6 ～ 8 をスキップし、手順 9 に進みます。非 DHCP 環境でデバイスを起動した場合は、次の画面が表示されます。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image28m.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image28m.png)
 
-    You will now need to configure the network.
+ 	次にネットワークを構成する必要があります。
 
-1.  Use the `Get-HcsIpAddress` command to list the network interfaces enabled on your virtual device. If your device has a single network interface enabled, the default name assigned to this interface is `Ethernet`.
+1.  `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効になっているネットワーク インターフェイスの一覧を表示します。デバイスで有効になっているネットワーク インターフェイスが 1 つの場合、このインターフェイスに割り当てられる既定の名前は `Ethernet` です。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image29m.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image29m.png)
 
-1.  Use the `Set-HcsIpAddress` cmdlet to configure the network. An example is shown below:
+1.  `Set-HcsIpAddress` コマンドレットを使用してネットワークを構成します。例を次に示します。
 
-    `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
+ 	`Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image30.png)
+ 	![](./media/storsimple-ova-deploy2-provision-hyperv/image30.png)
 
-1.  After the initial setup is complete and the device has booted up, you will see the device banner text. Make a note of the IP address and the URL displayed in the banner text to manage the device. You will use this IP address to connect to the web UI of your virtual device and complete the local setup and registration.
+1.  初期セットアップが完了し、デバイスが再起動すると、デバイスのバナー テキストが表示されます。デバイスを管理するため、バナー テキストに表示される IP アドレスと URL をメモしておきます。この IP アドレスを使用して、仮想デバイスの Web UI に接続し、ローカル セットアップと登録を行います。
 
-    ![](./media/storsimple-ova-deploy2-provision-hyperv/image31m.png)
+	![](./media/storsimple-ova-deploy2-provision-hyperv/image31m.png)
 
 
 
-1. (Optional) Perform this step only if you are deploying your device in the Government Cloud. You will now enable the United States Federal Information Processing Standard (FIPS) mode on your device. The FIPS 140 standard defines cryptographic algorithms approved for use by US Federal government computer systems for the protection of sensitive data.
-    1. To enable the FIPS mode, run the following cmdlet:
+1. (省略可能) デバイスを Government Cloud にデプロイする場合にのみ、この手順を実行します。デバイスで米国連邦情報処理標準 (FIPS) モードを有効にできるようになります。FIPS 140 標準には、機密データ保護のために米国連邦政府のコンピューター システムに使用することが承認されている暗号化アルゴリズムが定義されています。
+	1. FIPS モードを有効にするには、次のコマンドレットを実行します。
 
-        `Enter-HcsFIPSMode`
+		`Enter-HcsFIPSMode`
 
-    2. Reboot your device after you have enabled the FIPS mode so that the cryptographic validations take effect.
+	2. FIPS モードを有効にした後はデバイスを再起動して、暗号化の検証が有効になるようにします。
 
-        > [AZURE.NOTE] You can either enable or disable FIPS mode on your device. Alternating the device between FIPS and non-FIPS mode is not supported.
+		> [AZURE.NOTE] デバイスで FIPS モードを有効または無効にすることができます。デバイスの FIPS モードと非 FIPS モードを切り替えることはサポートされていません。
 
-If your device does not meet the minimum configuration requirements, you will see an error in the banner text (shown below). You will need to modify the device configuration so that it has adequate resources to meet the minimum requirements. You can then restart and connect to the device. Refer to the minimum configuration requirements in [Step 1: Ensure that the host system meets minimum virtual device requirements](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。その後、再起動し、デバイスに接続します。「[手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)」にある最小構成要件を参照してください。
 
 ![](./media/storsimple-ova-deploy2-provision-hyperv/image32.png)
 
-If you face any other error during the initial configuration using the local web UI, refer to the following workflows in [Manage your StorSimple Virtual Array using the local web UI](storsimple-ova-web-ui-admin.md).
+ローカル Web UI を使用した初期構成時に他のエラーが発生した場合は、[ローカル Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)に関する記事の次のワークフローを参照してください。
 
--   Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
+-   診断テストを実行して [Web UI のセットアップのトラブルシューティング](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)を行う。
 
--   [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).
+-   [ログ パッケージを生成してログ ファイルを表示する](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
-![video icon](./media/storsimple-ova-deploy2-provision-hyperv/video_icon.png)  **Video available**
+![動画アイコン](./media/storsimple-ova-deploy2-provision-hyperv/video_icon.png) **ビデオ**
 
-Watch the video to see how you can provision a StorSimple Virtual Array in Hyper-V.
+Hyper-V で StorSimple Virtual Array をプロビジョニングする方法を説明したビデオをご覧ください。
 
 > [AZURE.VIDEO create-a-storsimple-virtual-array]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
--   [Set up your StorSimple Virtual Array as a file server](storsimple-ova-deploy3-fs-setup.md)
+-   [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-ova-deploy3-fs-setup.md)
 
--   [Set up your StorSimple Virtual Array as an iSCSI server](storsimple-ova-deploy3-iscsi-setup.md)
+-   [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-ova-deploy3-iscsi-setup.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

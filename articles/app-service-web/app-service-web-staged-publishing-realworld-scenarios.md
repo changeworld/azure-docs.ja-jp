@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Use DevOps environments effectively for your web app"
-   description="Learn how to use deployment slots to setup and manage multiple development environments for your application"
+   pageTitle="Web アプリに対して DevOps 環境を効果的に使用する"
+   description="デプロイメント スロットを使用してアプリケーションの複数の開発環境をセットアップおよび管理する方法を説明する"
    services="app-service\web"
    documentationCenter=""
    authors="sunbuild"
@@ -16,351 +16,346 @@
    ms.date="05/31/2016"
    ms.author="sumuth"/>
 
+# Web アプリに対して DevOps 環境を効果的に使用する
 
-# <a name="use-devops-environments-effectively-for-your-web-apps"></a>Use DevOps environments effectively for your web apps
+この記事では、開発、ステージング、品質保証、運用など、複数のバージョンのアプリケーションに合わせて Web アプリケーションのデプロイメントをセットアップおよび管理する方法について説明します。アプリケーションの各バージョンは、デプロイメント プロセスでの特定のニーズに対応する開発環境と考えることができます。たとえば、開発チームは品質保証環境を使用することで、変更を運用環境にプッシュする前にアプリケーションの品質をテストすることができます。複数の開発環境のセットアップは、困難な作業になる可能性があります。これらの環境全体にわたってリソース (コンピューティング、Web アプリ、データベース、キャッシュなど) を追跡および管理し、環境間でコンテンツをデプロイする必要があるからです。
 
-This article shows you how to setup and manage web application deployments  for multiple versions of your application such as development, staging, QA and production. Each version of your application can be considered a development environment for a specific need within your deployment process, for example QA environment can be used by your team of developers to test the quality of the application before you push the changes to production.
-Setting up multiple development environments can be a challenging task as you need to track and manage the resources (compute, web app, database, cache etc.) across these environments and deploy content from one environment to another.
+## 非運用環境 (ステージング、開発、品質保証) のセットアップ
+運用 Web アプリがアップされ実行されたら、次のステップとして非運用環境を作成します。デプロイメント スロットを使用するには、**Standard** または **Premium** の App Service プラン モードで実行していることを確認します。デプロイメント スロットは、実際には固有のホスト名を持つライブ Web アプリです。Web アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。デプロイ スロットにアプリケーションをデプロイすることには、次のメリットがあります。
 
-## <a name="setting-up-a-non-production-environment-(stage,dev,qa)"></a>Setting up a non-production environment (stage,dev,QA)
-Once you have a production web app up and running, the next step is to create a non-production environment. In order to use deployment slots make sure you are running in the **Standard** or **Premium** App Service plan mode. Deployment slots are actually live web apps with their own hostnames. Web app content and configuration elements can be swapped between two deployment slots, including the production slot. Deploying your application to a deployment slot has the following benefits:
+1. ステージング デプロイ スロットで Web アプリの変更を検証した後に、運用スロットにスワップできます。
+2. スロットに Web アプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。これにより、Web アプリをデプロイする際のダウンタイムがなくなります。トラフィックのリダイレクトはシームレスであるため、スワップ操作によって破棄される要求はありません。このワークフロー全体は、スワップ前の検証が必要ない場合、[自動スワップ](web-sites-staged-publishing.md#configure-auto-swap-for-your-web-app)を構成することで自動化できます。
+3. スワップ後も、以前のステージング Web アプリ スロットに元の運用 Web アプリが残っているため、運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元の Web アプリにすぐに戻すことができます。
 
-1. You can validate web app changes in a staging deployment slot before swapping it with the production slot.
-2. Deploying a web app to a slot first and swapping it into production ensures that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your web app. The traffic redirection is seamless, and no requests are dropped due to swap operations. This entire workflow can be automated by configuring [Auto Swap](web-sites-staged-publishing.md#configure-auto-swap-for-your-web-app) when pre-swap validation is not needed.
-3. After a swap, the slot with previously staged web app now has the previous production web app. If the changes swapped into the production slot are not as you expected, you can perform the same swap immediately to get your "last known good web app" back.
+ステージング デプロイメント スロットをセットアップするには、「[Azure App Service で Web アプリ用にステージング環境をセットアップする](web-sites-staged-publishing.md)」を参照してください。どの環境も独自のリソース セットを備える必要があります。たとえば、Web アプリでデータベースを使用する場合は、運用 Web アプリとステージング Web アプリの両方がそれぞれ別々のデータベースを使用する必要があります。ステージング開発環境をセットアップする場合は、データベース、ストレージ、キャッシュなどのステージング開発環境リソースを追加します。
 
-To setup a staging deployment slot, see [Set up staging environments for web apps in Azure App Service](web-sites-staged-publishing.md) . Every environment should include its own set of resources, for example if your web app uses a database then both production web app and staging web app should be using different databases.  Add staging development environment resources such as database, storage or cache for setting up your staging development environment.
+## 複数の開発環境を使用する例
 
-## <a name="examples-of-using-multiple-development-environments"></a>Examples of using multiple development environments
+プロジェクトは少なくとも 2 つの環境 (開発環境および運用環境) でソース コード管理に従う必要があります。ただし、コンテンツ管理システムやアプリケーション フレームワークなどを使用する場合には、アプリケーションがそのままでは、このシナリオをサポートしないといった問題に直面する可能性があります。このことは、以下に説明するいくつかの一般的なフレームワークの場合に当てはまります。CMS/フレームワークを使用する場合は、以下に示すような多くの質問が頭に浮かびます。
 
-Any project should follow a source code management with at least two environments, a development and production environment, but when using Content management systems, Application frameworks etc we might run into issues where the application does not support this scenario out of the box. This is true for some of the popular frameworks discussed below. Lots of questions come to mind when working with a CMS/frameworks such as
+1. それをさまざまな環境に分割するにはどうすればよいか
+2. 変更できるファイルはどれか、フレームワークのバージョン更新プログラムに影響を与えないファイルはどれか
+3. 環境ごとに構成を管理するにはどうすればよいか
+4. モジュール/プラグインのバージョン更新プログラム、コア フレームワークのバージョン更新プログラムを管理するにはどうすればよいか
 
-1. How to break it out into different environments
-2. What files can I change and wont impact framework version updates
-3. How to manage configuration per environment
-4. How to manage modules/plugins version updates,core framework version updates
+プロジェクトのために複数の環境をセットアップする方法は多数あります。以下の例では、それぞれのアプリケーションについて該当する方法を 1 つだけ紹介します。
 
-There are many ways to setup a multiple environment for your project and the examples below are just one such method for the respective applications.
+### WordPress
+このセクションでは、WordPress のスロットを使用してデプロイメント ワークフローをセットアップする方法を説明します。ほとんどの CMS ソリューションの場合と同様に WordPress でも、そのまま、複数の開発環境を使用することはできません。App Service Web Apps には、コードの外部に構成設定を容易に格納できる機能がいくつかあります。
 
-### <a name="wordpress"></a>WordPress
-In this section you will learn how to setup a deployment workflow using slots for WordPress. WordPress like most CMS solutions does not support working with multiple development environments out of the box. App Service Web Apps have a few features that make it easier to store configuration settings outside of your code.
-
-Before creating a staging slot, setup your application code to support multiple environments. To support multiple environments in WordPress you need to edit `wp-config.php` on your local development web app add the following code at the beginning of the file. This will allow your application to pick the correct configuration based on the selected environment.
+ステージング スロットを作成する前に、複数の環境をサポートするようにアプリケーション コードをセットアップします。WordPress で複数の環境をサポートするには、ローカル開発 Web アプリの `wp-config.php` を編集し、ファイルの先頭に次のコードを追加する必要があります。これにより、アプリケーションは選択された環境に基づく適切な構成を利用できるようになります。
 
 
-    // Support multiple environments
-    // set the config file based on current environment
-    /**/
-    if (strpos(filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING),'localhost') !== false) {
-        // local development
-        $config_file = 'config/wp-config.local.php';
-    }
-    elseif  ((strpos(getenv('WP_ENV'),'stage') !== false) ||  (strpos(getenv('WP_ENV'),'prod' )!== false )){
-          //single file for all azure development environments
-          $config_file = 'config/wp-config.azure.php';
-    }
-    $path = dirname(__FILE__) . '/';
-    if (file_exists($path . $config_file)) {
-        // include the config file if it exists, otherwise WP is going to fail
-        require_once $path . $config_file;
-    }
+	// Support multiple environments
+	// set the config file based on current environment
+	/**/
+	if (strpos(filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING),'localhost') !== false) {
+	    // local development
+	    $config_file = 'config/wp-config.local.php';
+	}
+	elseif  ((strpos(getenv('WP_ENV'),'stage') !== false) ||  (strpos(getenv('WP_ENV'),'prod' )!== false )){
+	      //single file for all azure development environments
+	      $config_file = 'config/wp-config.azure.php';
+	}
+	$path = dirname(__FILE__) . '/';
+	if (file_exists($path . $config_file)) {
+	    // include the config file if it exists, otherwise WP is going to fail
+	    require_once $path . $config_file;
+	}
 
 
 
-Create a folder under web app root called `config` and add two files: `wp-config.azure.php`  and `wp-config.local.php`  representing your azure and local environment respectively.
+Web アプリのルートの下に `config` というフォルダーを作成し、`wp-config.azure.php` (Azure 環境) と `wp-config.local.php` (ローカル環境) の 2 つのファイルを追加します。
 
-Copy the following in `wp-config.local.php` :
+`wp-config.local.php` に次のコードをコピーします。
 
 ```
-    
-    <?php
-    
-    // MySQL settings
-    /** The name of the database for WordPress */
-    
-    define('DB_NAME', 'yourdatabasename');
-    
-    /** MySQL database username */
-    define('DB_USER', 'yourdbuser');
-    
-    /** MySQL database password */
-    define('DB_PASSWORD', 'yourpassword');
-    
-    /** MySQL hostname */
-    define('DB_HOST', 'localhost');
-    /**
-     * For developers: WordPress debugging mode.
-     * * Change this to true to enable the display of notices during development.
-     * It is strongly recommended that plugin and theme developers use WP_DEBUG
-     * in their development environments.
-     */
-    define('WP_DEBUG', true);
-    
-    //Security key settings
-    define('AUTH_KEY',         'put your unique phrase here');
-    define('SECURE_AUTH_KEY',  'put your unique phrase here');
-    define('LOGGED_IN_KEY',    'put your unique phrase here');
-    define('NONCE_KEY',        'put your unique phrase here');
-    define('AUTH_SALT',        'put your unique phrase here');
-    define('SECURE_AUTH_SALT', 'put your unique phrase here');
-    define('LOGGED_IN_SALT',   'put your unique phrase here');
-    define('NONCE_SALT',       'put your unique phrase here');
-    
-    /**
-     * WordPress Database Table prefix.
-     *
-     * You can have multiple installations in one database if you give each a unique
-     * prefix. Only numbers, letters, and underscores please!
-     */
-    $table_prefix  = 'wp_';
+	
+	<?php
+	
+	// MySQL settings
+	/** The name of the database for WordPress */
+	
+	define('DB_NAME', 'yourdatabasename');
+	
+	/** MySQL database username */
+	define('DB_USER', 'yourdbuser');
+	
+	/** MySQL database password */
+	define('DB_PASSWORD', 'yourpassword');
+	
+	/** MySQL hostname */
+	define('DB_HOST', 'localhost');
+	/**
+	 * For developers: WordPress debugging mode.
+	 * * Change this to true to enable the display of notices during development.
+	 * It is strongly recommended that plugin and theme developers use WP_DEBUG
+	 * in their development environments.
+	 */
+	define('WP_DEBUG', true);
+	
+	//Security key settings
+	define('AUTH_KEY',         'put your unique phrase here');
+	define('SECURE_AUTH_KEY',  'put your unique phrase here');
+	define('LOGGED_IN_KEY',    'put your unique phrase here');
+	define('NONCE_KEY',        'put your unique phrase here');
+	define('AUTH_SALT',        'put your unique phrase here');
+	define('SECURE_AUTH_SALT', 'put your unique phrase here');
+	define('LOGGED_IN_SALT',   'put your unique phrase here');
+	define('NONCE_SALT',       'put your unique phrase here');
+	
+	/**
+	 * WordPress Database Table prefix.
+	 *
+	 * You can have multiple installations in one database if you give each a unique
+	 * prefix. Only numbers, letters, and underscores please!
+	 */
+	$table_prefix  = 'wp_';
 ```
 
-Setting the security keys above can help preventing your web app from being hacked, so use unique values. If you need to generate the string for security keys mentioned above, you can go to the automatic generator to create new keys/values using this [link] (https://api.wordpress.org/secret-key/1.1/salt)
+上記のセキュリティ キーを設定することは、Web アプリをハッキングから守ることに役立つので、一意の値を使用します。前述のセキュリティ キーの文字列を生成する必要がある場合は、自動ジェネレーターに移動し、この[リンク](https://api.wordpress.org/secret-key/1.1/salt)を使用して新しいキー/値を作成します。
 
-Copy the following code in `wp-config.azure.php`:
+`wp-config.azure.php` に次のコードをコピーします。
 
 
 ```
 
-    <?php
-    // MySQL settings
-    /** The name of the database for WordPress */
-    
-    define('DB_NAME', getenv('DB_NAME'));
-    
-    /** MySQL database username */
-    define('DB_USER', getenv('DB_USER'));
-    
-    /** MySQL database password */
-    define('DB_PASSWORD', getenv('DB_PASSWORD'));
-    
-    /** MySQL hostname */
-    define('DB_HOST', getenv('DB_HOST'));
-    
-    /**
-    * For developers: WordPress debugging mode.
-    *
-    * Change this to true to enable the display of notices during development.
-    * It is strongly recommended that plugin and theme developers use WP_DEBUG
-    * in their development environments.
-    * Turn on debug logging to investigate issues without displaying to end user. For WP_DEBUG_LOG to
-    * do anything, WP_DEBUG must be enabled (true). WP_DEBUG_DISPLAY should be used in conjunction
-    * with WP_DEBUG_LOG so that errors are not displayed on the page */
-    
-    */
-    define('WP_DEBUG', getenv('WP_DEBUG'));
-    define('WP_DEBUG_LOG', getenv('TURN_ON_DEBUG_LOG'));
-    define('WP_DEBUG_DISPLAY',false);
-    
-    //Security key settings
-    /** If you need to generate the string for security keys mentioned above, you can go the automatic generator to create new keys/values: https://api.wordpress.org/secret-key/1.1/salt **/
-    define('AUTH_KEY' ,getenv('DB_AUTH_KEY'));
-    define('SECURE_AUTH_KEY',  getenv('DB_SECURE_AUTH_KEY'));
-    define('LOGGED_IN_KEY', getenv('DB_LOGGED_IN_KEY'));
-    define('NONCE_KEY', getenv('DB_NONCE_KEY'));
-    define('AUTH_SALT',  getenv('DB_AUTH_SALT'));
-    define('SECURE_AUTH_SALT', getenv('DB_SECURE_AUTH_SALT'));
-    define('LOGGED_IN_SALT',   getenv('DB_LOGGED_IN_SALT'));
-    define('NONCE_SALT',   getenv('DB_NONCE_SALT'));
-    
-    /**
-    * WordPress Database Table prefix.
-    *
-    * You can have multiple installations in one database if you give each a unique
-    * prefix. Only numbers, letters, and underscores please!
-    */
-    $table_prefix  = getenv('DB_PREFIX');
+	<?php
+	// MySQL settings
+	/** The name of the database for WordPress */
+	
+	define('DB_NAME', getenv('DB_NAME'));
+	
+	/** MySQL database username */
+	define('DB_USER', getenv('DB_USER'));
+	
+	/** MySQL database password */
+	define('DB_PASSWORD', getenv('DB_PASSWORD'));
+	
+	/** MySQL hostname */
+	define('DB_HOST', getenv('DB_HOST'));
+	
+	/**
+	* For developers: WordPress debugging mode.
+	*
+	* Change this to true to enable the display of notices during development.
+	* It is strongly recommended that plugin and theme developers use WP_DEBUG
+	* in their development environments.
+	* Turn on debug logging to investigate issues without displaying to end user. For WP_DEBUG_LOG to
+	* do anything, WP_DEBUG must be enabled (true). WP_DEBUG_DISPLAY should be used in conjunction
+	* with WP_DEBUG_LOG so that errors are not displayed on the page */
+	
+	*/
+	define('WP_DEBUG', getenv('WP_DEBUG'));
+	define('WP_DEBUG_LOG', getenv('TURN_ON_DEBUG_LOG'));
+	define('WP_DEBUG_DISPLAY',false);
+	
+	//Security key settings
+	/** If you need to generate the string for security keys mentioned above, you can go the automatic generator to create new keys/values: https://api.wordpress.org/secret-key/1.1/salt **/
+	define('AUTH_KEY' ,getenv('DB_AUTH_KEY'));
+	define('SECURE_AUTH_KEY',  getenv('DB_SECURE_AUTH_KEY'));
+	define('LOGGED_IN_KEY', getenv('DB_LOGGED_IN_KEY'));
+	define('NONCE_KEY', getenv('DB_NONCE_KEY'));
+	define('AUTH_SALT',  getenv('DB_AUTH_SALT'));
+	define('SECURE_AUTH_SALT', getenv('DB_SECURE_AUTH_SALT'));
+	define('LOGGED_IN_SALT',   getenv('DB_LOGGED_IN_SALT'));
+	define('NONCE_SALT',   getenv('DB_NONCE_SALT'));
+	
+	/**
+	* WordPress Database Table prefix.
+	*
+	* You can have multiple installations in one database if you give each a unique
+	* prefix. Only numbers, letters, and underscores please!
+	*/
+	$table_prefix  = getenv('DB_PREFIX');
 ```
 
-#### <a name="use-relative-paths"></a>Use Relative Paths
-One last thing is to allow the WordPress app to use relative paths. WordPress stores URL information in the database. This makes moving content from one environment to another more difficult as you need to update the database every time you move from local to stage or stage to production environments. To reduce the risk of issues that can be caused with deploying a database every time you deploy from one environment to another use the [Relative Root links  plugin](https://wordpress.org/plugins/root-relative-urls/) which can be installed using WordPress administrator dashboard or download it manually from [here](https://downloads.wordpress.org/plugin/root-relative-urls.zip).
+#### 相対パスの使用
+最後に、WordPress アプリが相対パスを使用できるようにします。WordPress では、データベースに URL 情報を格納します。そのため、環境間でのコンテンツの移動が難しくなります。ローカルからステージまたはステージから運用環境に移動するたびに、データベースを更新する必要があるためです。環境間でデプロイするたびにデータベースのデプロイで問題が発生するリスクを軽減するには、[Relative Root リンク プラグイン](https://wordpress.org/plugins/root-relative-urls/)を使用します。このプラグインは、WordPress 管理者のダッシュボードを使用してインストールするか、[ここ](https://downloads.wordpress.org/plugin/root-relative-urls.zip)から手動でダウンロードします。
 
-Add the following entries to your `wp-config.php` file before the `That's all, stop editing!` comment:
+`wp-config.php` ファイルに、`That's all, stop editing!` コメントの前に次のエントリを追加します。
 
 ```
 
     define('WP_HOME', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
-    define('WP_SITEURL', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
-    define('WP_CONTENT_URL', '/wp-content');
-    define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
+	define('WP_SITEURL', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
+	define('WP_CONTENT_URL', '/wp-content');
+	define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
 ```
 
-Activate the plugin through the `Plugins` menu in WordPress Administrator dashboard.  Save your permalink settings for WordPress app.
+WordPress の管理者用ダッシュボードの [`Plugins`] メニューでプラグインをアクティブにします。WordPress アプリの固定リンク設定を保存します。
 
-#### <a name="the-final-`wp-config.php`-file"></a>The final `wp-config.php` file
-Any WordPress Core updates will not affect your `wp-config.php` , `wp-config.azure.php` and `wp-config.local.php` files  . In the end the `wp-config.php` file will look like this
+#### 最終の `wp-config.php` ファイル
+WordPress のコア更新プログラムはいずれも、`wp-config.php`、`wp-config.azure.php`、および `wp-config.local.php` ファイルに影響を与えません。最終的に、この `wp-config.php` ファイルは次のようになります。
 
 ```
 
-    <?php
-    /**
-     * The base configurations of the WordPress.
-     *
-     * This file has the following configurations: MySQL settings, Table Prefix,
-     * Secret Keys, and ABSPATH. You can find more information by visiting
-     *
-     * Codex page. You can get the MySQL settings from your web host.
-     *
-     * This file is used by the wp-config.php creation script during the
-     * installation. You don't have to use the web web app, you can just copy this file
-     * to "wp-config.php" and fill in the values.
-     *
-     * @package WordPress
-     */
-    
-    // Support multiple environments
-    // set the config file based on current environment
-    if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) { // local development
-        $config_file = 'config/wp-config.local.php';
-    }
-    elseif  ((strpos(getenv('WP_ENV'),'stage') !== false) ||  (strpos(getenv('WP_ENV'),'prod' )!== false )){
-        $config_file = 'config/wp-config.azure.php';
-    }
-    
-    
-    $path = dirname(__FILE__) . '/';
-    if (file_exists($path . $config_file)) {
-        // include the config file if it exists, otherwise WP is going to fail
-        require_once $path . $config_file;
-    }
-    
-    /** Database Charset to use in creating database tables. */
-    define('DB_CHARSET', 'utf8');
-    
-    /** The Database Collate type. Don't change this if in doubt. */
-    define('DB_COLLATE', '');
-    
-    
-    /* That's all, stop editing! Happy blogging. */
-    
-    define('WP_HOME', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
-    define('WP_SITEURL', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
-    define('WP_CONTENT_URL', '/wp-content');
-    define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
-    
-    /** Absolute path to the WordPress directory. */
-    if ( !defined('ABSPATH') )
-        define('ABSPATH', dirname(__FILE__) . '/');
-    
-    /** Sets up WordPress vars and included files. */
-    require_once(ABSPATH . 'wp-settings.php');
+	<?php
+	/**
+	 * The base configurations of the WordPress.
+	 *
+	 * This file has the following configurations: MySQL settings, Table Prefix,
+	 * Secret Keys, and ABSPATH. You can find more information by visiting
+	 *
+	 * Codex page. You can get the MySQL settings from your web host.
+	 *
+	 * This file is used by the wp-config.php creation script during the
+	 * installation. You don't have to use the web web app, you can just copy this file
+	 * to "wp-config.php" and fill in the values.
+	 *
+	 * @package WordPress
+	 */
+	
+	// Support multiple environments
+	// set the config file based on current environment
+	if (strpos($_SERVER['HTTP_HOST'],'localhost') !== false) { // local development
+	    $config_file = 'config/wp-config.local.php';
+	}
+	elseif  ((strpos(getenv('WP_ENV'),'stage') !== false) ||  (strpos(getenv('WP_ENV'),'prod' )!== false )){
+	    $config_file = 'config/wp-config.azure.php';
+	}
+	
+	
+	$path = dirname(__FILE__) . '/';
+	if (file_exists($path . $config_file)) {
+	    // include the config file if it exists, otherwise WP is going to fail
+	    require_once $path . $config_file;
+	}
+	
+	/** Database Charset to use in creating database tables. */
+	define('DB_CHARSET', 'utf8');
+	
+	/** The Database Collate type. Don't change this if in doubt. */
+	define('DB_COLLATE', '');
+	
+	
+	/* That's all, stop editing! Happy blogging. */
+	
+	define('WP_HOME', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
+	define('WP_SITEURL', 'http://' . filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
+	define('WP_CONTENT_URL', '/wp-content');
+	define('DOMAIN_CURRENT_SITE', filter_input(INPUT_SERVER, 'HTTP_HOST', FILTER_SANITIZE_STRING));
+	
+	/** Absolute path to the WordPress directory. */
+	if ( !defined('ABSPATH') )
+		define('ABSPATH', dirname(__FILE__) . '/');
+	
+	/** Sets up WordPress vars and included files. */
+	require_once(ABSPATH . 'wp-settings.php');
 ```
 
-#### <a name="setup-a-staging-environment"></a>Setup a Staging Environment
-Assuming you already have a WordPress web app running on Azure Web, login to [Azure Portal](https://portal.azure.com/) and go to your WordPress web app. If not you can create one from the marketplace. To learn more, click [here](web-sites-php-web-site-gallery.md).
-Click on **Settings** -> **Deployment slots** -> **Add** to create a deployment slot with the name stage. A deployment slot is another web application sharing the same resources as the primary web app created above.
+#### ステージング環境のセットアップ
+Azure Web 上で WordPress Web アプリが既に実行されている場合は、[Azure ポータル](https://portal.azure.com/)にログインして WordPress Web アプリに移動します。そうでない場合は、Marketplace から Web アプリを作成することができます。詳細については、[ここ](web-sites-php-web-site-gallery.md)をクリックしてください。**[設定]**、**[デプロイメント スロット]**、**[追加]** の順にクリックして、名前ステージでデプロイメント スロットを作成します。デプロイメント スロットは、上記で作成したプライマリ Web アプリと同じリソースを共有する別の Web アプリケーションです。
 
-![Create stage deployment slot](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
+![ステージ デプロイメント スロットを作成する](./media/app-service-web-staged-publishing-realworld-scenarios/1setupstage.png)
 
-Add another MySQL database, say `wordpress-stage-db` to your resource group `wordpressapp-group`.
+別の MySQL データベース (たとえば、`wordpress-stage-db`) をリソース グループ `wordpressapp-group` に追加します。
 
- ![Add MySQL database to resourec group](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
+ ![リソース グループに MySQL データベースを追加する](./media/app-service-web-staged-publishing-realworld-scenarios/2addmysql.png)
 
-Update the Connection strings for your stage deployment slot to point to newly created database, `wordpress-stage-db`. Note that your production web app , `wordpressprodapp` and staging web app `wordpressprodapp-stage` must point to different databases.
+ステージ デプロイメント スロットの接続文字列を、新規に作成したデータベース `wordpress-stage-db` を指すように更新します。運用 Web アプリ `wordpressprodapp` とステージング Web アプリ `wordpressprodapp-stage` はそれぞれ別のデータベースを指す必要があるので注意してください。
 
-#### <a name="configure-environment-specific-app-settings"></a>Configure environment-specific app settings
-Developers can store key-value string pairs in Azure as part of the configuration information associated with a web app called App Settings. At runtime, App Service Web Apps automatically retrieve these values for you and make them available to code running in your web app.  From a security perspective that is a benefit since sensitive information such as database connection strings with passwords should never show up as clear text in a file such as `wp-config.php`.
+#### 環境固有のアプリ設定の構成
+開発者は、キー値の文字列ペアを、App Settings と呼ばれる Web アプリに関連付けられた構成情報の一部として Azure に格納することができます。実行時に、App Service Web Apps はこれらの値を自動的に取得し、Web アプリで実行されているコードから利用できるようにします。この機能は、パスワードを使用したデータベース接続文字列などの機密情報が `wp-config.php` などのファイルにクリア テキストとして出現しないので、セキュリティ上のメリットがあります。
 
-This process  defined below is useful when you perform updates as it includes both file changes and database changes for WordPress app:
+以下に定義したこのプロセスは、WordPress アプリに関するファイルの変更とデータベースの変更の両方が含まれるので、更新を実行するときに役立ちます。
 
-- WordPress version upgrade
-- Add new or edit or upgrade Plugins
-- Add new or edit or upgrade themes
+- WordPress バージョンのアップグレード
+- 新しいプラグインの追加、プラグインの編集またはアップグレード
+- 新しいテーマの追加、テーマの編集またはアップグレード
 
-Configure app settings for:
+アプリ設定の構成:
 
-- database information
-- turning on/off  WordPress logging
-- WordPress security settings
+- データベース情報
+- WordPress のログ記録のオン/オフ
+- WordPress のセキュリティ設定
 
-![App Setings for Wordpress web app](./media/app-service-web-staged-publishing-realworld-scenarios/3configure.png)
+![Wordpress Web アプリ用のアプリ設定](./media/app-service-web-staged-publishing-realworld-scenarios/3configure.png)
 
-Make sure you have added the following app settings for your production web app and stage slot. Note that the production web app and Staging web app use different databases.
-Uncheck **Slot Setting** checkbox for all the settings parameters except WP_ENV. This will swap the configuration for your web app, along with file content and database. If **Slot Setting** is **Checked**, the web app’s app settings and connection string configuration will NOT move across environments when doing a SWAP operation and hence if any database changes are present this will not break your production web app.
+運用 Web アプリとステージ スロット用に次のアプリ設定が追加されていることを確認します。運用 Web アプリとステージング Web アプリはそれぞれ別のデータベースを使用するので注意してください。WP\_ENV を除くのすべての設定パラメーターの **[スロット設定]** チェック ボックスをオフにします。これにより、Web アプリの構成と、ファイルの内容およびデータベースがスワップされます。**[スロット設定]** が**オン**の場合、スワップ操作の実行時に Web アプリのアプリ設定と接続文字列の構成は環境間で移動されません。そのため、データベースの変更が存在していても、運用 Web アプリは中断されません。
 
-Deploy the local development environment web app to stage web app and database using WebMatrix or tool(s) of your choice such as FTP , Git or PhpMyAdmin.
+WebMatrix または任意のツール (FTP、Git、PhpMyAdmin など) を使用して、ローカル開発環境 Web アプリをステージ Web アプリとデータベースにデプロイします。
 
-![Web Matrix Publish dialog for WordPress web app](./media/app-service-web-staged-publishing-realworld-scenarios/4wmpublish.png)
+![WordPress Web アプリの [Web Matrix 公開] ダイアログ ボックス](./media/app-service-web-staged-publishing-realworld-scenarios/4wmpublish.png)
 
-Browse and test your staging web app. Considering a scenario where the theme of the web app is to be updated, here is the staging web app.
+ステージング Web アプリを参照し、テストします。Web アプリのテーマが更新されるシナリオについて検討します。ここでは、ステージング Web アプリを扱います。
 
-![Browse staging web app before swapping slots](./media/app-service-web-staged-publishing-realworld-scenarios/5wpstage.png)
+![スロットをスワップする前にステージング Web アプリを参照する](./media/app-service-web-staged-publishing-realworld-scenarios/5wpstage.png)
 
 
- If all looks good, click on the **Swap** button on your staging web app to move your content to the production environment. In this case you swap the web app and the database across environments during every **Swap** operation.
+ すべて問題なければ、ステージング Web アプリの **[スワップ]** ボタンをクリックして、コンテンツを運用環境に移動します。この場合、**スワップ**操作のたびに、環境間で Web アプリとデータベースをスワップします。
 
-![Swap preview changes for wordpress](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
+![Wordpress のプレビュー変更をスワップする](./media/app-service-web-staged-publishing-realworld-scenarios/6swaps1.png)
 
  > [AZURE.NOTE]
- >If you have a scenario where you need to only push files (no database updates), then **Check** the **Slot Setting** for all the database  related *app settings* and *connection strings settings* in web app setting blade within the Azure Portal before doing the SWAP. In this case DB_NAME, DB_HOST, DB_PASSWORD, DB_USER, default connection string setting should not show up in preview changes when doing a **Swap**. At this time, when you complete the **Swap** operation the WordPress web app will have the updated files **ONLY**.
+ ファイルのみをプッシュすればよいシナリオでは (データベースは更新されない)、スワップを実行する前に、Azure ポータルの Web アプリ設定ブレードで、データベースに関連するすべての*アプリ設定*と*接続文字列の設定*について、**[スロット設定]** を**オン**にします。この場合、DB\_NAME、DB\_HOST、DB\_PASSWORD、DB\_USER、既定の接続文字列設定は、**スワップ**の実行時に、プレビュー変更に表示されません。この時点で、**スワップ**操作を完了すると、WordPress Web アプリには更新されたファイル**だけ**が含まれます。
 
-Before doing a SWAP, here is the production WordPress web app ![Production web app before swapping slots](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
+スワップを実行する前の運用 WordPress Web アプリを次に示します ![スロットをスワップする前の運用 Web アプリ](./media/app-service-web-staged-publishing-realworld-scenarios/7bfswap.png)
 
-After the SWAP operation, the theme has been updated on your production web app.
+スワップ操作を実施したところ、運用 Web アプリでテーマが更新されました。
 
-![Production web app after swapping slots](./media/app-service-web-staged-publishing-realworld-scenarios/8afswap.png)
+![スロットをスワップした後の運用 Web アプリ](./media/app-service-web-staged-publishing-realworld-scenarios/8afswap.png)
 
-In a situation when you need to **rollback**, you can go to the production web app settings and click on the **Swap** button to swap the web app and database from production to staging slot. An important thing to remember is that if database changes are included with a **Swap** operation at any given time, then the next time you re-deploy to your staging web app you need to deploy the database changes to the current database for your staging web app which could be the previous production database or the stage database.
+**ロールバック**が必要な場合は、運用 Web アプリ設定に移動し、**[スワップ]** ボタンをクリックして、Web アプリとデータベースを運用環境からステージング スロットにスワップします。特定の時点で**スワップ**操作にデータベースの変更が追加された場合は、ステージング Web アプリに次回再デプロイするときに、ステージング Web アプリの現在のデータベース (前の運用データベースまたはステージ データベースと考えられます) にデータベースの変更をデプロイする必要があることに注意してください。
 
-#### <a name="summary"></a>Summary
-To generalize the process for any application with a database
+#### 概要
+データベースを使用する任意のアプリケーションのプロセスを汎用化するには
 
-1. Install application on your local environment
-2. Include environment specific configuration (local and Azure Web App )
-3. Setup  your environments in App Service Web Apps– Staging , Production
-4. If you have a production application already running on Azure, sync your production content (files/code + database) to local and staging environment.
-5. Develop your application on your local environment
-6. Place your production web app under maintenance or locked mode and sync database content from production to staging and dev environments
-7. Deploy to Staging environment and Test
-8. Deploy to Production environment
-9. Repeat steps 4 through 6
+1. ローカル環境にアプリケーションをインストールします。
+2. 環境固有の構成を含めます (ローカルおよび Azure Web アプリケーション)。
+3. App Service Web Apps で環境をセットアップします (ステージング、運用環境)。
+4. 運用アプリケーションが Azure で既に実行されている場合は、運用コンテンツ (ファイル/コード、およびデータベース) をローカルおよびステージング環境と同期します。
+5. ローカル環境でアプリケーションを開発します。
+6. 運用 Web アプリをメンテナンス モードまたはロック モードに設定し、データベースのコンテンツを運用環境からステージングおよび開発環境へ同期します。
+7. ステージング環境とテスト環境にデプロイします。
+8. 運用環境にデプロイします。
+9. 手順 4 ～ 6 を繰り返します。
 
-### <a name="umbraco"></a>Umbraco
-In this section you will learn how the Umbraco CMS uses a custom module to deploy from across multiple DevOps environment. This example provides you with a different approach to managing multiple development environments.
+### Umbraco
+このセクションでは、Umbraco CMS でカスタム モジュールを使用して、複数の DevOps 環境間でデプロイする方法について説明します。この例では、複数の開発環境を管理するための別のアプローチを紹介します。
 
-[Umbraco CMS](http://umbraco.com/) is one of the popular .NET CMS solutions used by many developers which provides [Courier2](http://umbraco.com/products/more-add-ons/courier-2) module to deploy from development to staging to production environments. You can easily create a local development environment for an Umbraco CMS web app using Visual Studio or WebMatrix.
+[Umbraco CMS](http://umbraco.com/) は、多くの開発者によって使用されている一般的な .NET CMS ソリューションの 1 つです。Umbraco CMS では、開発環境からステージング環境へ、そして運用環境へとデプロイするための [Courier2](http://umbraco.com/products/more-add-ons/courier-2) モジュールを提供します。Umbraco CMS Web アプリのローカル開発環境は、Visual Studio または WebMatrix を使用して簡単に作成することができます。
 
-1. Create an Umbraco web app with Visual Studio, click [here](https://our.umbraco.org/documentation/Installation/install-umbraco-with-nuget) .
-2. To create an Umbraco web app with WebMatrix, click [here](http://umbraco.com/help-and-support/video-tutorials/getting-started/working-with-webmatrix).
+1. Visual Studio で Umbraco Web アプリを作成するには、[ここ](https://our.umbraco.org/documentation/Installation/install-umbraco-with-nuget)をクリックします。
+2. WebMatrix で Umbraco Web アプリを作成するには、[ここ](http://umbraco.com/help-and-support/video-tutorials/getting-started/working-with-webmatrix)をクリックします。
 
-Always remember to remove the `install` folder under your application and never upload it to stage or production web apps. For this tutorial, I will be using WebMatrix
+アプリケーションにおいて `install` フォルダーを削除することを忘れないでください。また、このフォルダーを、ステージ Web アプリまたは運用 Web アプリに決してアップロードしないでください。このチュートリアルでは、WebMatrix を使用します。
 
-#### <a name="setup-a-staging-environment"></a>Setup a staging environment
-Create a deployment slot as mentioned above for Umbraco CMS web app, assuming you already have an Umbraco CMS web app up and running. If not you can create one from the marketplace.
+#### ステージング環境のセットアップ
+Umbraco CMS の Web アプリが既にアップされ実行されている場合は、Umbraco CMS Web アプリ用に前述のデプロイメント スロットを作成します。そうでない場合は、Marketplace から Web アプリを作成することができます。
 
-Update the Connection string for your stage deployment slot to point to newly created database, **umbraco-stage-db**. Your production web app (umbraositecms-1) and staging web app (umbracositecms-1-stage) **MUST** point to different databases.
+ステージ デプロイメント スロットの接続文字列を、新規に作成したデータベース **umbraco-stage-db** を指すように更新します。運用 Web アプリ (umbraositecms 1) と ステージング Web アプリ (umbracositecms-1-stage) は、それぞれ別のデータベースを指す**必要があります**。
 
-![Update Connection string for staging web app with new staging database](./media/app-service-web-staged-publishing-realworld-scenarios/9umbconnstr.png)
+![新しいステージング データベースでステージング Web アプリの接続文字列を更新する](./media/app-service-web-staged-publishing-realworld-scenarios/9umbconnstr.png)
 
-Click on **Get Publish settings** for the deployment slot **stage**. This will download a publish settings file that store all the information required by Visual Studio or Web Matrix to publish your application from local development web app to Azure web app.
+デプロイメント スロット **ステージ**で **[発行設定の取得]** をクリックします。これにより、発行設定ファイルがダウンロードされます。このファイルには、Visual Studio または Webmatrix がアプリケーションをローカル開発 Web アプリから Azure Web アプリへ発行するのに必要とする情報がすべて格納されています。
 
- ![Get publish setting of the staging web app](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
+ ![ステージング Web アプリの発行設定を取得する](./media/app-service-web-staged-publishing-realworld-scenarios/10getpsetting.png)
 
-- Open your local development web app in **WebMatrix** or **Visual Studio**. In this tutorial I am using Web Matrix and first you need to import the publish settings file for your staging web app
+- **WebMatrix** または **Visual Studio** でローカル開発 Web アプリを開きます。このチュートリアルでは Web Matrix を使用します。そこで、まず、ステージング Web アプリの発行設定ファイルをインポートする必要があります。
 
-![Import Publish settings for Umbraco using Web Matrix](./media/app-service-web-staged-publishing-realworld-scenarios/11import.png)
+![Web Matrix を使用して Umbraco の発行設定をインポートする](./media/app-service-web-staged-publishing-realworld-scenarios/11import.png)
 
-- Review changes in the dialog box and deploy your local web app to your Azure web app, *umbracositecms-1-stage*. When you deploy files directly to your staging web app you will omit any files in the `~/app_data/TEMP/` folder as these will be regenerated when the stage web app is first started. You should also omit the `~/app_data/umbraco.config` file as this, too, will be regenerated.
+- ダイアログ ボックスで変更を確認し、ローカル Web アプリを Azure Web アプリ *umbracositecms-1-stage* にデプロイします。ファイルをステージング Web アプリに直接デプロイする場合は、`~/app_data/TEMP/` フォルダー内のファイルを除外します。これらのファイルは、ステージ Web アプリが最初に起動されたときに再生成されます。`~/app_data/umbraco.config` ファイルも再生成されるので除外します。
 
-![Review Publish changes in web matrix](./media/app-service-web-staged-publishing-realworld-scenarios/12umbpublish.png)
+![Web Matrix での発行に関する変更を確認する](./media/app-service-web-staged-publishing-realworld-scenarios/12umbpublish.png)
 
-- After successfully publishing the Umbraco local web app to staging web app, browse to your staging web app and run a few tests to rule out any issues.
+- Umbraco ローカル Web アプリがステージング Web アプリに正常に発行されたら、ステージング Web アプリを参照し、いくつかのテストを実行して問題を排除します。
 
-#### <a name="setup-courier2-deployment-module"></a>Setup Courier2 deployment module
-With [Courier2](http://umbraco.com/products/more-add-ons/courier-2) module you can push content, stylesheets, development modules and more with a simple right-click from a staging web app to production web app for a more hassle free deployments and reducing risk of breaking your production web app when deploying an update.
-Purchase a license for Courier2 for the domain `*.azurewebsites.net` and your custom domain (say http://abc.com) Once you have purchased the license, place the downloaded license (.LIC file) in the `bin` folder.
+#### Courier2 デプロイメント モジュールのセットアップ
+[Courier2](http://umbraco.com/products/more-add-ons/courier-2) モジュールを使用すると、ステージング Web アプリから運用 Web アプリへ、右クリックのみで、コンテンツ、スタイル シート、開発モジュールなどをプッシュすることができます。これにより、更新プログラムをデプロイする場合に、手間をかけずに済むので、運用 Web アプリが中断されるリスクを減らすことができます。ドメイン `*.azurewebsites.net` とカスタム ドメイン (たとえば、http://abc.com) 用に Courier2 のライセンスを購入します。ライセンスを購入したら、ダウンロードしたライセンス (.LIC ファイル) を `bin` フォルダーに置きます。
 
-![Drop license file under bin folder](./media/app-service-web-staged-publishing-realworld-scenarios/13droplic.png)
+![Bin フォルダーの下にライセンス ファイルをドロップする](./media/app-service-web-staged-publishing-realworld-scenarios/13droplic.png)
 
-Download the Courier2 package from [here](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/) . Log on to your stage web app, say  http://umbracocms-site-stage.azurewebsites.net/umbraco and click on **Developer** Menu and Select **Packages** . Click on **Install** local package
+[ここ](https://our.umbraco.org/projects/umbraco-pro/umbraco-courier-2/)から Courier2 パッケージをダウンロードします。ステージ Web アプリ (たとえば、http://umbracocms-site-stage.azurewebsites.net/umbraco) にログオンし、**[開発者]** メニューをクリックし、**[パッケージ]** を選択します。**[ローカル パッケージのインストール]** をクリックします。
 
-![Umbraco Package installer](./media/app-service-web-staged-publishing-realworld-scenarios/14umbpkg.png)
+![Umbraco パッケージ インストーラー](./media/app-service-web-staged-publishing-realworld-scenarios/14umbpkg.png)
 
-Upload the courier2 package using the installer.
+インストーラーを使用して courier2 パッケージをアップロードします。
 
-![Upload package for courier module](./media/app-service-web-staged-publishing-realworld-scenarios/15umbloadpkg.png)
+![Courier モジュールのパッケージをアップロードする](./media/app-service-web-staged-publishing-realworld-scenarios/15umbloadpkg.png)
 
-To configure you need to update courier.config file under **Config** folder of your web app.
+構成を行うには、Web アプリの **Config** フォルダーにある courier.config ファイルを更新する必要があります。
 
 ```xml
 <!-- Repository connection settings -->
@@ -377,9 +372,9 @@ To configure you need to update courier.config file under **Config** folder of y
   </repositories>
  ```
 
-Under `<repositories>`, enter the production site URL and user information. If you are using default Umbraco Membership provider, then add the ID for the Administration user in <user> section . If you are using a custom Umbraco membership provider, use `<login>`,`<password>` to Courier2 module know how to connect to the production site. For more details, review the [documentation](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation) for Courier module.
+`<repositories>` で、運用サイトの URL とユーザー情報を入力します。既定の Umbraco メンバーシップ プロバイダーを使用している場合は、<user> セクションで管理ユーザーの ID を追加します。カスタム Umbraco メンバーシップ プロバイダーを使用している場合は、Courier2 モジュールへの `<login>`、`<password>` を使用し、運用サイトに接続する方法を理解します。詳細については、Courier モジュールの[ドキュメント](http://umbraco.com/help-and-support/customer-area/courier-2-support-and-download/developer-documentation)を確認してください。
 
-Similarly, install Courier module on your production site and configure it point to stage web app in its respective courier.config file as shown here
+同様に、運用サイトで Courier モジュールをインストールし、ここで示すように、それぞれの courier.config ファイルでステージ Web アプリをポイントするように構成します。
 
 ```xml
   <!-- Repository connection settings -->
@@ -393,62 +388,58 @@ Similarly, install Courier module on your production site and configure it point
   </repositories>
 ```
 
-Click on Courier2 tab in Umbraco CMS web app  dashboard and select locations. You should see the repository name as mentioned in `courier.config`. Do this on both your production and staging web apps.
+Umbraco CMS Web アプリのダッシュボードで [Courier2] タブをクリックし、場所を選択します。`courier.config` で説明したように、リポジトリ名を確認する必要があります。運用 Web アプリとステージング Web アプリの両方で同じ操作を行います。
 
-![View destination web app repository](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
+![宛先 Web アプリ リポジトリを表示する](./media/app-service-web-staged-publishing-realworld-scenarios/16courierloc.png)
 
-Now lets deploy some content from staging site to production site. Go to Content and select an existing page or create a new page. I will select an existing page from my web app where the title of the page is changed to **Getting Started – new** and now click on **Save and Publish**.
+次に、ステージング サイトから運用サイトに何らかのコンテンツをデプロイします。[コンテンツ] に移動し、既存のページを選択するか、または新しいページを作成します。Web アプリから既存のページを選択します。ページのタイトルが**[作業の開始 – 新規]** に変更されたら、**[保存して発行]** をクリックします。
 
-![Change Title of page and publish](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
+![ページのタイトルを変更して公開する](./media/app-service-web-staged-publishing-realworld-scenarios/17changepg.png)
 
-Now select the modified page and *right click* to view all the options. Click on **Courier** to view Deployment dialog . Click on **Deploy** to initiate deployment
+今度は、変更されたページを選択し、*右クリック*して、すべてのオプションを表示します。**[Courier]** をクリックして、[デプロイメント] ダイアログを表示します。**[デプロイ]** をクリックして、デプロイを開始します。
 
-![Courier module deployment dialog](./media/app-service-web-staged-publishing-realworld-scenarios/18dialog1.png)
+![Courier モジュールのデプロイメント ダイアログ ボックス](./media/app-service-web-staged-publishing-realworld-scenarios/18dialog1.png)
 
-Review the changes and click on Continue.
+変更を確認し、[続行] をクリックします。
 
-![Courier module deployment dialog review changes](./media/app-service-web-staged-publishing-realworld-scenarios/19dialog2.png)
+![Courier モジュールのデプロイメント ダイアログ ボックスの確認対象の変更](./media/app-service-web-staged-publishing-realworld-scenarios/19dialog2.png)
 
-Deployment log shows if the deployment was successful.
+デプロイメント ログに、デプロイが正常に完了したかどうかが示されます。
 
- ![View Deployment logs from Courier module](./media/app-service-web-staged-publishing-realworld-scenarios/20successdlg.png)
+ ![Courier モジュールからのデプロイメント ログを表示する](./media/app-service-web-staged-publishing-realworld-scenarios/20successdlg.png)
 
-Browse your production web app to see if the changes are reflected .
+運用 Web アプリを参照し、変更が反映されているかどうかを確認します。
 
- ![Browse production web app](./media/app-service-web-staged-publishing-realworld-scenarios/21umbpg.png)
+ ![運用 Web アプリを参照する](./media/app-service-web-staged-publishing-realworld-scenarios/21umbpg.png)
 
-To learn more about how to use Courier, review the documentation .
+Courier の詳細な使用方法については、ドキュメントを参照してください。
 
-#### <a name="how-to-upgrade-umbraco-cms-version"></a>How to upgrade Umbraco CMS version
+#### Umbraco CMS バージョンのアップグレード方法
 
-Courier will not help deploy with upgrading from one version of Umbraco CMS to another. When upgrading Umbraco CMS version, you must check for incompatibilities with your custom modules or third party modules and the Umbraco Core libraries. As a best practice
+Courier では、Umbraco CMS のバージョン間のアップグレードでのデプロイを支援しません。Umbraco CMS のバージョンをアップグレードする場合は、カスタム モジュールまたはサード パーティ モジュールとの互換性、および Umbraco のコア ライブラリとの互換性が大丈夫かどうかを確認する必要があります。ベスト プラクティスを以下に示します。
 
-1. ALWAYS backup your web app and database before doing an upgrade. On Azure Web App, you can set up automatic backups for your websites using the backup feature and restore your site if needed using restore feature. For more details, see [How to back up your web app](web-sites-backup.md) and [How to restore your web app](web-sites-restore.md).
+1. アップグレードを実行する前に、Web アプリとデータベースを必ずバックアップしてください。Azure Web App では、バックアップ機能を使用して Web サイトの自動バックアップをセットアップできます。また、必要に応じて、復元機能を使用してサイトを復元することができます。詳細については、「[Web アプリのバックアップ方法](web-sites-backup.md)」および「[Web アプリの復元方法](web-sites-restore.md)」を参照してください。
 
-2. Check if the third party packages you're using are compatible with the version you're upgrading to. On the package's download page, review the Project compatibility with Umbraco CMS version.
+2. 現在使用しているサードパーティ製のパッケージが、アップグレード先のバージョンと互換性があるかどうかを確認します。パッケージのダウンロード ページで、プロジェクトが Umbraco CMS のバージョンと互換性があることを確認します。
 
-For more details on how to upgrade your web app locally, follow the guidelines as mentioned [here](https://our.umbraco.org/documentation/getting-started/setup/upgrading/general).
+Web アプリをローカルでアップグレードする方法の詳細については、[ここ](https://our.umbraco.org/documentation/getting-started/setup/upgrading/general)に示すガイドラインに従ってください。
 
-Once your local development site is upgraded, publish the changes to staging web app. Test your application and if all looks good, use **Swap** button to **Swap** your staging site to production web app. When performing the **Swap** operation , you can view the changes that will be impacted in your web app's configuration. With this **Swap** operation, we are swapping the web apps and databases. This means, after the SWAP the production web app will now point to umbraco-stage-db database and staging web app will point to umbraco-prod-db database.
+ローカル開発サイトがアップグレードされたら、変更内容をステージング Web アプリに発行します。アプリケーションをテストし、結果がすべてが良好であれば、**[スワップ]** ボタンをクリックして、ステージング サイトを運用 Web アプリに**スワップ**します。**スワップ**操作の実行時には、Web アプリの構成で影響を受ける変更を確認できます。この **スワップ**操作を使用して、Web アプリとデータベースをスワップします。すなわち、スワップ後、運用 Web アプリは umbraco-stage-db データベースを指すようになり、ステージング Web アプリは umbraco-prod-db データベースを指すようになります。
 
-![Swap preview for deploying Umbraco CMS](./media/app-service-web-staged-publishing-realworld-scenarios/22umbswap.png)
+![Umbraco CMS をデプロイするためのスワップ プレビュー](./media/app-service-web-staged-publishing-realworld-scenarios/22umbswap.png)
 
-The advantage of swapping both the web app and database:
-1. Gives you the ability to roll back to the previous version of your web app with another **Swap** if there are any application issues.
-2. For an upgrade you need to deploy files and database from staging web app to production web app and database. There are many things that can go wrong when deploying files and database. By using the **Swap** feature of slots, we can reduces downtime during an upgrade and reduce the risk of failures that can occur when deploying changes.
-3. Gives you the ability to do **A/B testing** using [Testing in production](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/) feature
+Web アプリとデータベースの両方をスワップすることのメリット:
+1. アプリケーションに問題がある場合、別の**スワップ**操作で Web アプリの前のバージョンにロールバックすることができます。
+2. アップグレードでは、ステージング Web アプリから運用 Web アプリおよびデータベースに、ファイルおよびデータベースをデプロイする必要があります。ファイルとデータベースをデプロイする場合は、問題となる可能性のある事柄が多数あります。スロットの**スワップ**機能を使用することにより、アップグレード中のダウンタイムを短縮し、変更のデプロイ時に障害が発生するリスクを軽減することができます。
+3. [運用環境でのテスト](https://azure.microsoft.com/documentation/videos/introduction-to-azure-websites-testing-in-production-with-galin-iliev/)機能を使用して**A/B テスト**を実行することができます。
 
-This example shows you the flexibility of the platform where you can build custom modules similar to Umbraco Courier module to manage deployment across environments.
+この例では、Umbraco Courier モジュールに類似したカスタム モジュールを作成して複数の環境でデプロイメントを管理する場合のプラットフォームの柔軟性について示しています。
 
-## <a name="references"></a>References
-[Agile software development with Azure App Service](app-service-agile-software-development.md)
+## 参照
+[Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
 
-[Set up staging environments for web apps in Azure App Service](web-sites-staged-publishing.md)
+[Azure App Service の Web アプリのステージング環境を設定する](web-sites-staged-publishing.md)
 
-[How to block web access to non-production deployment slots](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
+[運用環境以外のデプロイメント スロットへの Web アクセスを禁止する方法](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

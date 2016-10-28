@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Create an Azure Function which binds to an Azure service | Microsoft Azure"
-   description="Build an Azure Function, a serverless application, which interacts with other Azure Services."
+   pageTitle="Azure サービスにバインドする Azure 関数を作成する | Microsoft Azure"
+   description="他の Azure サービスと対話するサーバーレス アプリケーションである Azure Function を作成します。"
    services="functions"
    documentationCenter="dev-center-name"
    authors="yochay"
    manager="manager-alias"
    editor=""
    tags=""
-   keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
+   keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
 
 <tags
    ms.service="functions"
@@ -18,19 +18,15 @@
    ms.date="03/09/2016"
    ms.author="yochayk@microsoft.com"/>
    
-
-# <a name="create-an-azure-function-which-binds-to-an-azure-service"></a>Create an Azure Function which binds to an Azure service
+# Azure サービスにバインドする Azure Function を作成する
    
-[AZURE.INCLUDE [Getting Started Note](../../includes/functions-getting-started.md)]
+[AZURE.INCLUDE [概要のメモ](../../includes/functions-getting-started.md)]
 
-In this short video, you will learn how to create an Azure Function that listens to messages on an Azure Queue and copies the messages to an Azure Blob. 
+この短いビデオでは、Azure Queue でメッセージをリッスンしてメッセージを Azure Blob にコピーする Azure Function を作成する方法を説明します。
 
 [AZURE.VIDEO create-an-azure-function-which-binds-to-an-azure-service]
 &nbsp;
 
-[AZURE.INCLUDE [Getting Started Note](../../includes/functions-get-help.md)]
+[AZURE.INCLUDE [概要のメモ](../../includes/functions-get-help.md)]
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

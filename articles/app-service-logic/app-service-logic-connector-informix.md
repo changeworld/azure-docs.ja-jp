@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Using the Informix connector in Microsoft Azure App Service | Microsoft Azure"
-   description="How to use the Informix connector with Logic app triggers and actions"
+   pageTitle="Microsoft Azure App Service での Informix コネクタの使用 | Microsoft Azure"
+   description="Informix コネクタでロジック アプリのトリガーとアクションを使用する方法"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="gplarsen"
@@ -16,70 +16,68 @@
    ms.date="05/31/2016"
    ms.author="plarsen"/>
 
+# Informix コネクタ
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2014-12-01-preview スキーマ バージョンを対象としています。
 
-# <a name="informix-connector"></a>Informix connector
->[AZURE.NOTE] This version of the article applies to Logic apps 2014-12-01-preview schema version.
+Microsoft Connector for Informix は、Azure App Service を介してアプリケーションを IBM Informix データベースに格納されているリソースに接続するための API アプリです。コネクタには、Azure Service Bus Relay を使用したオンプレミスの Informix サーバーへの Azure ハイブリッド接続を含む、TCP/IP ネットワーク接続経由でリモート Informix サーバー コンピューターに接続するための Microsoft クライアントが含まれています。コネクタでは、次のデータベース操作がサポートされています。
 
-Microsoft connector for Informix is an API app for connecting applications through Azure App Service to resources stored in an IBM Informix database. Connector includes a Microsoft Client to connect to remote Informix server computers across a TCP/IP network connection, including Azure hybrid connections to on-premises Informix servers using the Azure Service Bus Relay. Connector supports the following database operations:
+- SELECT を使用して行を読み取る
+- SELECT COUNT の後に SELECT を使用して、行をポーリングして読み取る
+- INSERT を使用して 1 行または複数 (バルク) 行を追加する
+- UPDATE を使用して 1 行または複数 (バルク) 行を変更する
+- DELETE を使用して 1 行または複数 (バルク) 行を削除する
+- SELECT CURSOR の後に UPDATE WHERE CURRENT OF CURSOR を使用して、行を読み取って変更する
+- SELECT CURSOR の後に UPDATE WHERE CURRENT OF CURSOR を使用して、行を読み取って削除する
+- CALL を使用して、入力パラメーター、出力パラメーター、戻り値、結果セットを指定したプロシージャを実行する
+- SELECT、INSERT、UPDATE、DELETE を使用したカスタム コマンドおよび複合操作
 
-- Read rows using SELECT
-- Poll to read rows using SELECT COUNT followed by SELECT
-- Add one row or multiple (bulk) rows using INSERT
-- Alter one row or multiple (bulk) rows using UPDATE
-- Remove one row or multiple (bulk) rows using DELETE
-- Read to alter rows using SELECT CURSOR followed by UPDATE WHERE CURRENT OF CURSOR
-- Read to remove rows using SELECT CURSOR followed by UPDATE WHERE CURRENT OF CURSOR
-- Run procedure with input and output parameters, return value, resultset, using CALL
-- Custom commands and composite operations using SELECT, INSERT, UPDATE, DELETE
+## トリガーとアクション
+コネクタでは、次に示す、ロジック アプリのトリガーとアクションをサポートしています。
 
-## <a name="triggers-and-actions"></a>Triggers and actions
-Connector supports the following Logic app triggers and actions:
-
-Triggers | Actions
+トリガー | アクション
 --- | ---
-<ul><li>Poll Data</li></ul> | <ul><li>Bulk Insert</li><li>Insert</li><li>Bulk Update</li><li>Update</li><li>Call</li><li>Bulk Delete</li><li>Delete</li><li>Select</li><li>Conditional update</li><li>Post to EntitySet</li><li>Conditional delete</li><li>Select single entity</li><li>Delete</li><li>Upsert to EntitySet</li><li>Custom commands</li><li>Composite operations</li></ul>
+<ul><li>データのポーリング</li></ul> | <ul><li>一括挿入</li><li>挿入</li><li>一括更新</li><li>更新</li><li>呼び出し</li><li>一括削除</li><li>削除</li><li>選択</li><li>条件付き更新</li><li>EntitySet への投稿</li><li>条件付き削除</li><li>単一エンティティの選択</li><li>削除</li><li>EntitySet に対する Upsert</li><li>カスタム コマンド</li><li>複合操作</li></ul>
 
 
-## <a name="create-the-informix-connector"></a>Create the Informix connector
-You can define a connector within a Logic app or from the Azure Marketplace, like in the following example:  
+## Informix コネクタの作成
+コネクタは、次の例に示すように、ロジック アプリ内で定義することも、Azure Marketplace から定義することもできます。
 
-1. In the Azure startboard, select **Marketplace**.
-2. In the **Everything** blade, type **informix** in the **Search Everything** box, and then click the enter key.
-3. In the search everything results pane, select **Informix connector**.
-4. In the Informix connector description blade, select **Create**.
-5. In the Informix connector package blade, enter the Name (e.g. "InformixConnectorNewOrders"), App Service Plan, and other properties.
-6. Select **Package settings**, and enter the following package settings.
+1. Azure のスタート画面で、**[Marketplace]** を選択します。
+2. **[すべて]** ブレードで、**[すべて検索]** ボックスに「**informix**」と入力し、Enter キーを押します。
+3. すべて検索の結果ウィンドウで、**[Informix コネクタ]** を選択します。
+4. Informix コネクタの説明ブレードで、**[作成]** を選択します。
+5. Informix コネクタのパッケージ ブレードで、名前 (例:"InformixConnectorNewOrders")、App Service プラン、その他のプロパティを入力します。
+6. **[パッケージの設定]** を選択し、次のパッケージ設定を入力します。
 
-    Name | Required |  Description
+	名前 | 必須 | 説明
 --- | --- | ---
-ConnectionString | Yes | Informix Client connection string (e.g., "Network Address=servername;Network Port=9089;User ID=username;Password=password;Initial Catalog=nwind;Default Schema=informix").
-Tables | Yes | Comma separated list of table, view and alias names required for OData operations and to generate swagger documentation with examples (e.g. "NEWORDERS").
-Procedures | Yes | Comma separated list of procedure and function names (e.g. "SPORDERID").
-OnPremise | No | Deploy on-premises using Azure Service Bus Relay.
-ServiceBusConnectionString | No | Azure Service Bus Relay connection string.
-PollToCheckData | No | SELECT COUNT statement to use with a Logic app trigger (e.g. "SELECT COUNT(\*) FROM NEWORDERS WHERE SHIPDATE IS NULL").
-PollToReadData | No | SELECT statement to use with a Logic app trigger (e.g. "SELECT \* FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE").
-PollToAlterData | No | UPDATE or DELETE statement to use with a Logic app trigger (e.g. "UPDATE NEWORDERS SET SHIPDATE = CURRENT DATE WHERE CURRENT OF &lt;CURSOR&gt;").
+ConnectionString | あり | Informix クライアントの接続文字列 (e.g., "Network Address=servername;Network Port=9089;User ID=username;Password=password;Initial Catalog=nwind;Default Schema=informix")。
+テーブル | あり | OData 操作や、例を含む swagger ドキュメントの生成に必要なテーブル、ビュー、エイリアスの名前のコンマ区切りのリスト (例:"NEWORDERS")。
+プロシージャ | あり | プロシージャと関数の名前のコンマ区切りのリスト (例:"SPORDERID")。
+OnPremise | いいえ | Azure Service Bus Relay を使用してオンプレミスにデプロイします。
+ServiceBusConnectionString | いいえ | Azure Service Bus Relay の接続文字列。
+PollToCheckData | いいえ | ロジック アプリのトリガーで使用する SELECT COUNT ステートメント (例:"SELECT COUNT(*) FROM NEWORDERS WHERE SHIPDATE IS NULL")。
+PollToReadData | いいえ | ロジック アプリのトリガーで使用する SELECT ステートメント (例:"SELECT * FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE")。
+PollToAlterData | いいえ | ロジック アプリのトリガーで使用する UPDATE または DELETE ステートメント (例:"UPDATE NEWORDERS SET SHIPDATE = CURRENT DATE WHERE CURRENT OF &lt;CURSOR&gt;")。
 
-7. Select **OK**, and then Select **Create**.
-8. When complete, the Package Settings look similar to the following:  
-![][1]
+7. **[OK]** を選択し、**[作成]** を選択します。
+8. 完了すると、パッケージの設定は次のようになります。![][1]
 
 
-## <a name="logic-app-with-informix-connector-action-to-add-data"></a>Logic app with Informix connector action to add data ##
-You can define a Logic app action to add data to an Informix table using an API Insert or Post to Entity OData operation. For example, you can insert a new customer order record, by processing a SQL INSERT statement against a table defined with an identity column, returning the identity value or the rows affected to the Logic app (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?))).
+## データを追加する Informix コネクタ アクションを使用したロジック アプリ ##
+"API の挿入" または "エンティティへの投稿" OData 操作を使用して Informix テーブルにデータを追加するようにロジック アプリ アクションを定義できます。たとえば、新しい顧客注文レコードを挿入するには、ID 列で定義されたテーブルに対する SQL INSERT ステートメントを処理して、ID 値または処理された行をロジック アプリに返します (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?)))。
 
-> [AZURE.TIP] Informix Connection "*Post to EntitySet*" returns the identity column value and "*API Insert*" returns rows affected
+> [AZURE.TIP] Informix 接続 "*EntitySet への投稿*" では ID 列の値が返され、"*API の挿入*" では処理された行が返されます。
 
-1. In the Azure startboard, select **+** (plus sign), **Web + Mobile**, and then **Logic app**.
-2. Enter the Name (e.g. "NewOrdersInformix"), App Service Plan, other properties, and then select **Create**.
-3. In the Azure startboard, select the Logic app you just created, **Settings**, and then **Triggers and actions**.
-4. In the Triggers and actions blade, select **Create from Scratch** within the Logic app Templates.
-5. In the API Apps panel, select **Recurrence**, set a frequency and interval, and then **checkmark**.
-6. In the API Apps panel, select **Informix connector**, expand the operations list to select **Insert into NEWORDER**.
-7. Expand the parameters list to enter the following values:  
+1. Azure のスタート画面で、**[+]** (プラス記号)、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
+2. 名前 (例:"NewOrdersInformix")、App Service プラン、その他のプロパティを入力し、**[作成]** を選択します。
+3. Azure のスタート画面で、先ほど作成したロジック アプリ、**[設定]**、**[トリガーとアクション]** の順に選択します。
+4. [トリガーとアクション] ブレードで、[ロジック アプリのテンプレート] 内の **[最初から作成する]** を選択します。
+5. [API Apps] パネルで、**[繰り返し]** を選択し、頻度と間隔を設定して、**チェックマーク**を選択します。
+6. [API Apps] パネルで、**[Informix コネクタ]** を選択し、操作の一覧を展開して **[NEWORDER に挿入する]** を選択します。
+7. パラメーターの一覧を展開して、次の値を入力します。
 
-    Name | Value
+	名前 | 値
 --- | --- 
 CUSTID | 10042
 SHIPID | 10000
@@ -89,185 +87,175 @@ SHIPCITY | Walla Walla
 SHIPREG | WA
 SHIPZIP | 99362 
 
-8. Select the **checkmark** to save the action settings, and then **Save**.
-9. The settings should look as follows:  
-![][3]  
-10. In the **All runs** list under **Operations**, select the first-listed item (most recent run). 
-11. In the **Logic app run** blade, select the **ACTION** item **informixconnectorneworders**.
-12. In the **Logic app action** blade, select the **INPUTS LINK**. Informix connector uses the inputs to process a parameterized INSERT statement.
-13. In the **Logic app action** blade, select the **OUTPUTS LINK**. The inputs should look as follows:  
-![][4]
+8. **チェックマーク**を選択してアクションの設定を保存し、**[保存]** を選択します。
+9. 設定は次のようになります。![][3]
+10. **[操作]** の下の **[すべての実行]** の一覧で、先頭の項目 (最新の実行) を選択します。
+11. **[ロジック アプリの実行]** ブレードで、**[アクション]** の項目 **[informixconnectorneworders]** を選択します。
+12. **[ロジック アプリのアクション]** ブレードで、**[入力リンク]** を選択します。Informix コネクタは、入力値を使用して、パラメーター化された INSERT ステートメントを処理します。
+13. **[ロジック アプリのアクション]** ブレードで、**[出力リンク]** を選択します。入力は次のようになります。![][4]
 
-#### <a name="what-you-need-to-know"></a>What you need to know
+#### 知っておくべきこと
 
-- Connector truncates Informix table names when forming Logic app action names. For example, the operation **Insert into NEWORDERS** is truncated to **Insert into NEWORDER**.
-- After saving the Logic app **Triggers and actions**, Logic app processes the operation. There may be a delay of a number of seconds (e.g. 3-5 seconds) before Logic app processes the operation. Optionally, you can click **Run Now** to process the operation.
-- Informix connector defines EntitySet members with attributes, including whether the member corresponds to an Informix column with a default or generated columns (e.g. identity). Logic app displays a red asterisk next to the EntitySet member ID name, to denote Informix columns that require values. You should not enter a value for the ORDID member, which corresponds to Informix identity column. You may enter values for other optional members (ITEMS, ORDDATE, REQDATE, SHIPID, FREIGHT, SHIPCTRY), which correspond to Informix columns with default values. 
-- Informix connector returns to Logic app the response on the Post to EntitySet that includes the values for identity columns, which is derived from the DRDA SQLDARD (SQL Data Area Reply Data) on the prepared SQL INSERT statement. Informix server does not return the inserted values for columns with default values.  
+- ロジック アプリのアクション名が形成される際、Informix テーブル名は切り詰められます。たとえば、操作 "**NEWORDERS に挿入する**" は、"**NEWORDER に挿入する**" に切り詰められます。
+- ロジック アプリの **[トリガーとアクション]** を保存すると、ロジック アプリによって操作が処理されます。ロジック アプリが操作を処理するまでに数秒 (たとえば、3 ～ 5 秒) の遅延が発生する場合があります。必要に応じて、**[今すぐ実行]** をクリックして操作を処理することができます。
+- Informix コネクタは、属性を使用して EntitySet メンバーを定義します。これには、メンバーが、既定の列と生成される列 (ID など) のどちらで Informix 列に対応しているかなどが含まれます。ロジック アプリでは、値が必要な Informix 列を示すために、EntitySet メンバー ID 名の横に赤いアスタリスクが表示されます。ORDID メンバーの値は入力しないでください。これは、Informix ID 列に対応しています。入力できるのは、その他のオプションのメンバー (ITEMS、ORDDATE、REQDATE、SHIPID、FREIGHT、SHIPCTRY) の値です。これらは、既定値が設定された Informix 列に対応しています。
+- Informix コネクタは、EntitySet への投稿に対する応答をロジック アプリに返します。これには、準備された SQL INSERT ステートメントの DRDA SQLDARD (SQL Data Area Reply Data) から派生した ID 列の値が含まれます。Informix サーバーは、既定値が設定された列に対して、挿入された値を返しません。
 
 
-## <a name="logic-app-with-informix-connector-action-to-add-bulk-data"></a>Logic app with Informix connector action to add bulk data ##
-You can define a Logic app action to add data to an Informix table using an API Bulk Insert operation. For example, you can insert two new customer order records, by processing a SQL INSERT statement using an array of row values against a table defined with an identity column, returning the rows affected to the Logic app (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?))).
+## バルク データを追加する Informix コネクタ アクションを使用したロジック アプリ ##
+API の一括挿入操作を使用して Informix テーブルにデータを追加するようにロジック アプリ アクションを定義できます。たとえば、2 つの新しい顧客注文レコードを挿入するには、ID 列で定義されたテーブルに対して行の値の配列を使用して SQL INSERT ステートメントを処理し、処理された行をロジック アプリに返します (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?)))。
 
-1. In the Azure startboard, select **+** (plus sign), **Web + Mobile**, and then **Logic app**.
-2. Enter the Name (e.g. "NewOrdersBulkInformix"), App Service Plan, other properties, and then select **Create**.
-3. In the Azure startboard, select the Logic app you just created, **Settings**, and then **Triggers and actions**.
-4. In the Triggers and actions blade, select **Create from Scratch** within the Logic app Templates.
-5. In the API Apps panel, select **Recurrence**, set a frequency and interval, and then **checkmark**.
-6. In the API Apps panel, select **Informix connector**, expand the operations list to select **Bulk Insert into NEW**.
-7. Enter the **rows** value as an array. For example, copy and paste the following:  
+1. Azure のスタート画面で、**[+]** (プラス記号)、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
+2. 名前 (例:"NewOrdersBulkInformix")、App Service プラン、その他のプロパティを入力し、**[作成]** を選択します。
+3. Azure のスタート画面で、先ほど作成したロジック アプリ、**[設定]**、**[トリガーとアクション]** の順に選択します。
+4. [トリガーとアクション] ブレードで、[ロジック アプリのテンプレート] 内の **[最初から作成する]** を選択します。
+5. [API Apps] パネルで、**[繰り返し]** を選択し、頻度と間隔を設定して、**チェックマーク**を選択します。
+6. [API Apps] パネルで、**[Informix コネクタ]** を選択し、操作の一覧を展開して **[NEW に一括挿入する]** を選択します。
+7. **[行]** の値を配列として入力します。たとえば、次の内容をコピーして貼り付けます。
 
-    ```
+	```
     [{"custid":10081,"shipid":10000,"shipname":"Trail's Head Gourmet Provisioners","shipaddr":"722 DaVinci Blvd.","shipcity":"Kirkland","shipreg":"WA","shipzip":"98034"},{"custid":10088,"shipid":10000,"shipname":"White Clover Markets","shipaddr":"305 14th Ave. S. Suite 3B","shipcity":"Seattle","shipreg":"WA","shipzip":"98128","shipctry":"USA"}]
-    ```
+	```
         
-8. Select the **checkmark** to save the action settings, and then **Save**. The settings should look as follows:  
-![][6]
+8. **チェックマーク**を選択してアクションの設定を保存し、**[保存]** を選択します。設定は次のようになります。![][6]
 
-9. In the **All runs** list under **Operations**, click the first-listed item (most recent run).
-10. In the **Logic app run** blade, click the **ACTION** item.
-11. In the **Logic app action** blade, click the **INPUTS LINK**. The outputs should look as follows:  
-[][7]
-12. In the **Logic app action** blade, click the **OUTPUTS LINK**. The outputs should look as follows:  
-![][8]
+9. **[操作]** の下の **[すべての実行]** の一覧で、先頭の項目 (最新の実行) をクリックします。
+10. **[ロジック アプリの実行]** ブレードで、**[アクション]** 項目をクリックします。
+11. **[ロジック アプリのアクション]** ブレードで、**[入力リンク]** をクリックします。出力は次のようになります。[][7]
+12. **[ロジック アプリのアクション]** ブレードで、**[出力リンク]** をクリックします。出力は次のようになります。![][8]
 
-#### <a name="what-you-need-to-know"></a>What you need to know
+#### 知っておくべきこと
 
-- Connector truncates Informix table names when forming Logic app action names. For example, the operation **Bulk Insert into NEWORDERS** is truncated to **Bulk Insert into NEW**.
-- Informix database may be case sensitive to table and column names. For example, the Bulk Insert operation array column names may need to be specified in lower case ("custid") instead of upper case ("CUSTID").
-- By omitting identity columns (e.g. ORDID), nullable columns (e.g. SHIPDATE), and columns with default values (e.g. ORDDATE, REQDATE, SHIPID, FREIGHT, SHIPCTRY), Informix database generates values.
-- By specifying "today" and "tomorrow", Informix connector generates "CURRENT DATE" and "CURRENT DATE + 1 DAY" functions (e.g. REQDATE). 
+- ロジック アプリのアクション名が形成される際、Informix テーブル名は切り詰められます。たとえば、操作 "**NEWORDERS に一括挿入する**" は、"**NEW に一括挿入する**" に切り詰められます。
+- Informix データベースでは、テーブル名と列名の大文字と小文字が区別される場合があります。たとえば、一括挿入操作の配列の列名は、大文字 ("CUSTID") ではなく小文字 ("custid") で指定することが必要な場合があります。
+- ID 列 (例: ORDID)、null 許容列 (例: SHIPDATE)、および既定値が設定された列 (例: ORDDATE、REQDATE、SHIPID、FREIGHT、SHIPCTRY) を省略すると、Informix データベースで値が生成されます。
+- "today" と "tomorrow" を指定すると、Informix コネクタにより、"CURRENT DATE" 関数と "CURRENT DATE + 1 DAY" 関数 (REQDATE など) が生成されます。
 
 
-## <a name="logic-app-with-informix-connector-trigger-to-read,-alter-or-delete-data"></a>Logic app with Informix connector trigger to read, alter or delete data ##
-You can define a Logic app trigger to poll and read data from an Informix table using an API Poll Data composite operation. For example, you can read one or more new customer order records, returning the records to the Logic app. The Informix Connection package/app settings should look as follows:
+## データの読み取り、変更、削除を行う Informix コネクタ トリガーを使用したロジック アプリ ##
+API のデータのポーリング複合操作を使用して Informix テーブルのデータをポーリングして読み取るようにロジック アプリのトリガーを定義できます。たとえば、1 つ以上の新しい顧客注文レコードを読み取り、そのレコードをロジック アプリに返すことができます。Informix 接続のパッケージ/アプリの設定は次のようになります。
 
-    App Setting | Value
+	App Setting | Value
 --- | --- | ---
-PollToCheckData | SELECT COUNT(\*) FROM NEWORDERS WHERE SHIPDATE IS NULL
-PollToReadData | SELECT \* FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE
-PollToAlterData | <no value specified>
+PollToCheckData | SELECT COUNT(*) FROM NEWORDERS WHERE SHIPDATE IS NULL
+PollToReadData | SELECT * FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE
+PollToAlterData | <値の指定なし>
 
 
-Also, you can define a Logic app trigger to poll, read and alter data in an Informix table using an API Poll Data composite operation. For example, you can read one or more new customer order records, update the row values, returning the selected (before update) records to the Logic app. The Informix Connection package/app settings should look as follows:
+また、API のデータのポーリング複合操作を使用して Informix テーブルのデータのポーリング、読み取り、変更を行うようにロジック アプリのトリガーを定義することもできます。たとえば、1 つ以上の新しい顧客注文レコードを読み取り、行の値を更新して、(更新前に) 選択されたレコードをロジック アプリに返すことができます。Informix 接続のパッケージ/アプリの設定は次のようになります。
 
-    App Setting | Value
+	App Setting | Value
 --- | --- | ---
-PollToCheckData | SELECT COUNT(\*) FROM NEWORDERS WHERE SHIPDATE IS NULL
-PollToReadData | SELECT \* FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE
+PollToCheckData | SELECT COUNT(*) FROM NEWORDERS WHERE SHIPDATE IS NULL
+PollToReadData | SELECT * FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE
 PollToAlterData | UPDATE NEWORDERS SET SHIPDATE = CURRENT DATE WHERE CURRENT OF &lt;CURSOR&gt;
 
 
-Further, you can define a Logic app trigger to poll, read and remove data from an Informix table using an API Poll Data composite operation. For example, you can read one or more new customer order records, delete the rows, returning the selected (before delete) records to the Logic app. The Informix Connection package/app settings should look as follows:
+さらに、API のデータのポーリング複合操作を使用して Informix テーブルのデータのポーリング、読み取り、削除を行うようにロジック アプリのトリガーを定義できます。たとえば、1 つ以上の新しい顧客注文レコードを読み取り、行を削除して、(削除前に) 選択されたレコードをロジック アプリに返すことができます。Informix 接続のパッケージ/アプリの設定は次のようになります。
 
-    App Setting | Value
+	App Setting | Value
 --- | --- | ---
-PollToCheckData | SELECT COUNT(\*) FROM NEWORDERS WHERE SHIPDATE IS NULL
-PollToReadData | SELECT \* FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE
+PollToCheckData | SELECT COUNT(*) FROM NEWORDERS WHERE SHIPDATE IS NULL
+PollToReadData | SELECT * FROM NEWORDERS WHERE SHIPDATE IS NULL FOR UPDATE
 PollToAlterData | DELETE NEWORDERS WHERE CURRENT OF &lt;CURSOR&gt;
 
-In this example, Logic app will poll, read, update, and then re-read data in the Informix table.
+この例では、ロジック アプリは、Informix テーブル内のデータをポーリングして読み取り、更新した後で、もう一度データを読み込みます。
 
-1. In the Azure startboard, select **+** (plus sign), **Web + Mobile**, and then **Logic app**.
-2. Enter the Name (e.g. "ShipOrdersInformix"), App Service Plan, other properties, and then select **Create**.
-3. In the Azure startboard, select the Logic app you just created, **Settings**, and then **Triggers and actions**.
-4. In the Triggers and actions blade, select **Create from Scratch** within the Logic app Templates.
-5. In the API Apps panel, select **Informix connector**, set a frequency and interval, and then **checkmark**.
-6. In the API Apps panel, select **Informix connector**, expand the operations list to select **Select from NEWORDERS**.
-7. Select the **checkmark** to save the action settings, and then **Save**. The settings should look as follows:  
-![][10]
-8. Click to close the **Triggers and actions** blade, and then click to close the **Settings** blade.
-9. In the **All runs** list under **Operations**, click the first-listed item (most recent run).
-10. In the **Logic app run** blade, click the **ACTION** item.
-11. In the **Logic app action** blade, click the **OUTPUTS LINK**. The outputs should look as follows:  
-![][11]
+1. Azure のスタート画面で、**[+]** (プラス記号)、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
+2. 名前 (例:"ShipOrdersInformix")、App Service プラン、その他のプロパティを入力し、**[作成]** を選択します。
+3. Azure のスタート画面で、先ほど作成したロジック アプリ、**[設定]**、**[トリガーとアクション]** の順に選択します。
+4. [トリガーとアクション] ブレードで、[ロジック アプリのテンプレート] 内の **[最初から作成する]** を選択します。
+5. [API Apps] パネルで、**[Informix コネクタ]** を選択し、頻度と間隔を設定して、**チェックマーク**を選択します。
+6. [API Apps] パネルで、**[Informix コネクタ]** を選択し、操作の一覧を展開して **[NEWORDERS から選択する]** を選択します。
+7. **チェックマーク**を選択してアクションの設定を保存し、**[保存]** を選択します。設定は次のようになります。![][10]
+8. クリックして **[トリガーとアクション]** ブレードを閉じてから、クリックして **[設定]** ブレードを閉じます。
+9. **[操作]** の下の **[すべての実行]** の一覧で、先頭の項目 (最新の実行) をクリックします。
+10. **[ロジック アプリの実行]** ブレードで、**[アクション]** 項目をクリックします。
+11. **[ロジック アプリのアクション]** ブレードで、**[出力リンク]** をクリックします。出力は次のようになります。![][11]
 
 
-## <a name="logic-app-with-informix-connector-action-to-remove-data"></a>Logic app with Informix connector action to remove data ##
-You can define a Logic app action to remove data from an Informix table using an API Delete or Post to Entity OData operation. For example, you can insert a new customer order record, by processing a SQL INSERT statement against a table defined with an identity column, returning the identity value or the rows affected to the Logic app (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?))).
+## データを削除する Informix コネクタ アクションを使用したロジック アプリ ##
+"API の削除" または "エンティティへの投稿" OData 操作を使用して Informix テーブルからデータを削除するようにロジック アプリ アクションを定義できます。たとえば、新しい顧客注文レコードを挿入するには、ID 列で定義されたテーブルに対する SQL INSERT ステートメントを処理して、ID 値または処理された行をロジック アプリに返します (SELECT ORDID FROM FINAL TABLE (INSERT INTO NEWORDERS (CUSTID,SHIPNAME,SHIPADDR,SHIPCITY,SHIPREG,SHIPZIP) VALUES (?,?,?,?,?,?)))。
 
-## <a name="create-logic-app-using-informix-connector-to-remove-data"></a>Create Logic app using Informix connector to remove data ##
-You can create a new Logic app from within the Azure Marketplace, and then use the Informix connector as an action to remove customer orders. For example, you can use the Informix connector conditional Delete operation to process a SQL DELETE statement (DELETE FROM NEWORDERS WHERE ORDID >= 10000).
+## Informix コネクタを使用してデータを削除するロジック アプリの作成 ##
+Azure Marketplace 内から新しいロジック アプリを作成した後、顧客注文を削除するアクションとして Informix コネクタを使用できます。たとえば、Informix コネクタの条件付き削除操作を使用して SQL の DELETE ステートメントを処理することができます (DELETE FROM NEWORDERS WHERE ORDID >= 10000)。
 
-1. In the hub menu of the Azure **Start** board, click **+** (plus sign), click **Web + Mobile**, and then click **Logic app**. 
-2. In the **Create Logic app** blade, type a **Name**, for example **RemoveOrdersInformix**.
-3. Select or define values for the other settings (e.g. service plan, resource group).
-4. The settings should look as follows. Click **Create**:  
-![][12]
-5. In the **Settings** blade, click **Triggers and actions**.
-6. In the **Triggers and actions** blade, in the **Logic app Templates** list, click **Create from Scratch**.
-7. In the **Triggers and actions** blade, in the **API Apps** panel, within the resource group, click **Recurrence**.
-8. On the Logic app design surface, click the **Recurrence** item, set a **Frequency** and **Interval**, for example **Days** and **1**, and then click the **checkmark** to save the recurrence item settings.
-9. In the **Triggers and actions** blade, in the **API Apps** panel, within the resource group, click **Informix connector**.
-10. On the Logic app design surface, click the **Informix connector** action item, click the ellipses (**...**) to expand the operations list, and then click **Conditional delete from N**.
-11. On the Informix connector action item, type **ordid ge 10000** for an **expression that identifies a subset of entries**.
-12. Click the **checkmark** to save the action settings, and then click **Save**. The settings should look as follows:  
-![][13]
-13. Click to close the **Triggers and actions** blade, and then click to close the **Settings** blade.
-14. In the **All runs** list under **Operations**, click the first-listed item (most recent run).
-15. In the **Logic app run** blade, click the **ACTION** item.
-16. In the **Logic app action** blade, click the **OUTPUTS LINK**. The outputs should look as follows:  
-![][14]
+1. Azure の**スタート**画面のハブ メニューで、**[+]** (プラス記号)、**[Web + モバイル]**、**[ロジック アプリ]** の順にクリックします。
+2. **[ロジック アプリの作成]** ブレードで、**名前**を入力します (たとえば、「**RemoveOrdersInformix**」)。
+3. 他の設定 (サービス プラン、リソース グループなど) の値を選択または定義します。
+4. 設定は次のようになります。**[作成]** をクリックします。![][12]
+5. **[設定]** ブレードで、**[トリガーとアクション]** をクリックします。
+6. **[トリガーとアクション]** ブレードの **[ロジック アプリのテンプレート]** の一覧で、**[最初から作成する]** をクリックします。
+7. **[トリガーとアクション]** ブレードの **[API Apps]** パネルで、リソース グループ内の **[繰り返し]** をクリックします。
+8. ロジック アプリのデザイン画面で、**[繰り返し]** をクリックし、**[頻度]** と **[間隔]** を設定します (たとえば、**[日]** と **1**)。次に、**チェック マーク**をクリックして、繰り返し項目の設定を保存します。
+9. **[トリガーとアクション]** ブレードの **[API Apps]** パネルで、リソース グループ内の **[Informix コネクタ]** をクリックします。
+10. ロジック アプリのデザイン画面で、**[Informix コネクタ]** アクション項目をクリックし、省略記号 (**...**) をクリックして操作の一覧を展開し、**[N から条件付きで削除する]** をクリックします。
+11. [Informix コネクタ] アクション項目で、**[エントリのサブセットを識別する式]** に「**ordid ge 10000**」と入力します。
+12. **チェックマーク**をクリックしてアクションの設定を保存し、**[保存]** をクリックします。設定は次のようになります。![][13]
+13. クリックして **[トリガーとアクション]** ブレードを閉じてから、クリックして **[設定]** ブレードを閉じます。
+14. **[操作]** の下の **[すべての実行]** の一覧で、先頭の項目 (最新の実行) をクリックします。
+15. **[ロジック アプリの実行]** ブレードで、**[アクション]** 項目をクリックします。
+16. **[ロジック アプリのアクション]** ブレードで、**[出力リンク]** をクリックします。出力は次のようになります。![][14]
 
-**Note:** Logic app designer truncates table names. For example the operation **Conditional delete from NEWORDERS** is truncated to **Conditional delete from N**.
+**注:** ロジック アプリ デザイナーによってテーブル名は切り詰められます。たとえば、操作 "**NEWORDERS から条件付きで削除する**" は、"**N から条件付きで削除する**" に切り詰められます。
 
 
-> [AZURE.TIP] Use the following SQL statements to create the sample table and stored procedures. 
+> [AZURE.TIP] 次の SQL ステートメントを使用して、サンプルのテーブルおよびストアド プロシージャを作成します。
 
-You can create the sample NEWORDERS table using the following Informix SQL DDL statements:
+次の Informix SQL DDL ステートメントを使用して、サンプルの NEWORDERS テーブルを作成できます。
  
     create table neworders (  
-        ordid serial(10000) unique ,  
-        custid int not null ,  
-        empid int not null default 10000 ,  
-        orddate date not null default today ,  
-        reqdate date default today ,  
-        shipdate date ,  
-        shipid int not null default 10000 ,  
-        freight decimal (9,2) not null default 0.00 ,  
-        shipname char (40) not null ,  
-        shipaddr char (60) not null ,  
-        shipcity char (20) not null ,  
-        shipreg char (15) not null ,  
-        shipzip char (10) not null ,  
-        shipctry char (15) not null default ''USA'' 
-        )
+ 		ordid serial(10000) unique ,  
+ 		custid int not null ,  
+ 		empid int not null default 10000 ,  
+ 		orddate date not null default today ,  
+ 		reqdate date default today ,  
+ 		shipdate date ,  
+ 		shipid int not null default 10000 ,  
+ 		freight decimal (9,2) not null default 0.00 ,  
+ 		shipname char (40) not null ,  
+ 		shipaddr char (60) not null ,  
+ 		shipcity char (20) not null ,  
+ 		shipreg char (15) not null ,  
+ 		shipzip char (10) not null ,  
+ 		shipctry char (15) not null default ''USA'' 
+ 		)
 
 
-You can create the sample SPORDERID stored procedure using the following Informix DDL statement:
+次の Informix DDL ステートメントを使用して、サンプルの SPOERID ストアド プロシージャを作成できます。
  
     create procedure sporderid ( ord_id int)  
-        returning int, int, int, date, date, date, int, decimal (9,2), char (40), char (60), char (20), char (15), char (10), char (15)  
-        define xordid, xcustid, xempid, xshipid int;  
-        define xorddate, xreqdate, xshipdate date;  
-        define xfreight decimal (9,2);  
-        define xshipname char (40);  
-        define xshipaddr char (60);  
-        define xshipcity char (20);  
-        define xshipreg, xshipctry char (15);  
-        define xshipzip char (10);  
-        select ordid, custid, empid, orddate, reqdate, shipdate, shipid, freight, shipname, shipaddr, shipcity, shipreg, shipzip, shipctry  
-            into xordid, xcustid, xempid, xorddate, xreqdate, xshipdate, xshipid, xfreight, xshipname, xshipaddr, xshipcity, xshipreg, xshipzip, xshipctry  
-            from neworders where ordid = ord_id;  
-        return xordid, xcustid, xempid, xorddate, xreqdate, xshipdate, xshipid, xfreight, xshipname, xshipaddr, xshipcity, xshipreg, xshipzip, xshipctry;  
+ 		returning int, int, int, date, date, date, int, decimal (9,2), char (40), char (60), char (20), char (15), char (10), char (15)  
+ 		define xordid, xcustid, xempid, xshipid int;  
+ 		define xorddate, xreqdate, xshipdate date;  
+ 		define xfreight decimal (9,2);  
+ 		define xshipname char (40);  
+ 		define xshipaddr char (60);  
+ 		define xshipcity char (20);  
+ 		define xshipreg, xshipctry char (15);  
+ 		define xshipzip char (10);  
+ 		select ordid, custid, empid, orddate, reqdate, shipdate, shipid, freight, shipname, shipaddr, shipcity, shipreg, shipzip, shipctry  
+ 			into xordid, xcustid, xempid, xorddate, xreqdate, xshipdate, xshipid, xfreight, xshipname, xshipaddr, xshipcity, xshipreg, xshipzip, xshipctry  
+ 			from neworders where ordid = ord_id;  
+ 		return xordid, xcustid, xempid, xorddate, xreqdate, xshipdate, xshipid, xfreight, xshipname, xshipaddr, xshipcity, xshipreg, xshipzip, xshipctry;  
     end procedure; 
 
 
-## <a name="hybrid-configuration-(optional)"></a>Hybrid configuration (Optional)
+## ハイブリッド構成 (省略可能)
 
-> [AZURE.NOTE] This step is required only if you are using DB2 connector on-premises behind your firewall.
+> [AZURE.NOTE] この手順は、ファイアウォールの内側にあるオンプレミスの DB2 コネクタを使用する場合にのみ、実行する必要があります。
 
-App Service uses the Hybrid Configuration Manager to connect securely to your on-premises system. If connector uses an on-premises IBM DB2 Server for Windows, the Hybrid Connection Manager is required.
+App Service では、 ハイブリッド構成マネージャーを使用して、オンプレミス システムに安全に接続します。コネクタでオンプレミスの IBM DB2 Server for Windows を使用する場合は、ハイブリッド接続マネージャーが必要です。
 
-See [Using the Hybrid Connection Manager](app-service-logic-hybrid-connection-manager.md).
+「[ハイブリッド接続マネージャーの使用](app-service-logic-hybrid-connection-manager.md)」を参照してください。
 
 
-## <a name="do-more-with-your-connector"></a>Do more with your connector
-Now that the connector is created, you can add it to a business workflow using a Logic app. See [What are Logic apps?](app-service-logic-what-are-logic-apps.md).
+## コネクタでできること
+コネクタが作成されたため、ロジック アプリを使用してコネクタをビジネス ワークフローに追加できます。「[Logic Apps とは](app-service-logic-what-are-logic-apps.md)」を参照してください。
 
-Create the API Apps using REST APIs. See [Connectors and API Apps Reference](http://go.microsoft.com/fwlink/p/?LinkId=529766).
+REST API を使用した API Apps を作成します。[コネクタと API Apps のリファレンス](http://go.microsoft.com/fwlink/p/?LinkId=529766)に関するページを参照してください。
 
-You can also review performance statistics and control security to the connector. See [Manage and Monitor your built-in API Apps and connectors](app-service-logic-monitor-your-connectors.md).
+パフォーマンス統計をレビューし、コネクタに対するセキュリティを制御することもできます。[組み込みの API Apps とコネクタの管理と監視](app-service-logic-monitor-your-connectors.md)に関するページを参照してください。
 
 
 <!--Image references-->
@@ -286,10 +274,4 @@ You can also review performance statistics and control security to the connector
 [13]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_TriggersActions.png
 [14]: ./media/app-service-logic-connector-informix/LogicApp_RemoveOrdersInformix_Outputs.png
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

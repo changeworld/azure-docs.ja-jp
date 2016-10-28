@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array backup tutorial | Microsoft Azure"
-   description="Describes how to back up StorSimple Virtual Array shares and volumes."
+   pageTitle="StorSimple Virtual Array のバックアップ チュートリアル | Microsoft Azure"
+   description="StorSimple Virtual Array の共有/ボリュームをバックアップする方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,98 +15,93 @@
    ms.date="06/07/2016"
    ms.author="alkohli" />
 
+# StorSimple Virtual Array をバックアップする
 
-# <a name="back-up-your-storsimple-virtual-array"></a>Back up your StorSimple Virtual Array
+## 概要 
 
-## <a name="overview"></a>Overview 
+このチュートリアルは、2016 年 3 月の一般公開 (GA) リリースまたはそれ以降のバージョンを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。
 
-This tutorial applies to the Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device or StorSimple virtual device) running March 2016 general availability (GA) release or later versions.
-
-The StorSimple Virtual Array is a hybrid cloud storage on-premises virtual device that can be configured as a file server or an iSCSI server. It can create backups, restore from backups, and perform device failover if disaster recovery is needed. When configured as a file server, it also allows item-level recovery. This tutorial describes how to use the Azure classic portal or the StorSimple web UI to create scheduled and manual backups of your StorSimple Virtual Array.
+StorSimple Virtual Array は、ファイル サーバーまたは iSCSI サーバーとして構成できる、ハイブリッド クラウド ストレージのオンプレミス仮想デバイスです。バックアップの作成、バックアップからの復元、障害復旧が必要な場合にデバイスのフェールオーバーを実行できます。ファイル サーバーとして構成した場合は、項目レベルの回復もできます。このチュートリアルでは、Azure クラシック ポータルまたは StorSimple Web UI を使用して、StorSimple Virtual Array のスケジュールされたバックアップと手動バックアップを作成する方法について説明します。
 
 
-## <a name="back-up-shares-and-volumes"></a>Back up shares and volumes
+## 共有やボリュームをバックアップする
 
-Backups provide point-in-time protection, improve recoverability, and minimize restore times for shares and volumes. You can back up a share or volume on your StorSimple device in two ways: **Scheduled** or **Manual**. Each of the methods is discussed in the following sections.
+バックアップにより、特定の時点の共有やボリュームを保護し、回復性を向上させながら、復元時間を最小限に抑えることができます。StorSimple デバイスの共有やボリュームをバックアップするには、**スケジュールされたバックアップ**または**手動バックアップ**を使用します。これらの各方法について、以下のセクションで説明します。
 
-> [AZURE.NOTE] In this release, scheduled backups are created by a default policy that runs daily at a specified time and backs up all the shares or volumes on the device. It is not possible to create custom policies for scheduled backups at this time.
+> [AZURE.NOTE] このリリースでは、スケジュールされたバックアップは既定のポリシーによって作成されます。既定のポリシーは毎日決まった時刻に実行し、デバイスのすべての共有/ボリュームをバックアップします。現時点では、スケジュールされたバックアップ用にカスタム ポリシーを作成することはできません。
 
-## <a name="change-the-backup-schedule"></a>Change the backup schedule
+## バックアップのスケジュールを変更する
 
-Your StorSimple virtual device has a default backup policy that starts at a specified time of day (22:30) and backs up all the shares or volumes on the device once a day. You can change the time at which the backup starts, but the frequency and the retention (which specifies the number of backups to retain) cannot be changed. During these backups, the entire virtual device is backed up; therefore, we recommend that you schedule these backups for off-peak hours.
+StorSimple 仮想デバイスの既定のバックアップ ポリシーは、1 日に 1 回、指定の時刻 (22:30) に開始し、デバイスのすべての共有/ボリュームをバックアップします。バックアップの開始時刻は変更できますが、バックアップの頻度と保有数 (保持するバックアップの数) を変更することはできません。既定のポリシーによるバックアップでは仮想デバイス全体がバックアップされるので、ピーク時を避けてスケジュールすることをお勧めします。
 
-Perform the following steps in the [Azure classic portal](https://manage.windowsazure.com/) to change the default backup start time.
+既定のバックアップの開始時刻を変更するには、[Azure クラシック ポータル](https://manage.windowsazure.com/)で次の手順を実行します。
 
-#### <a name="to-change-the-start-time-for-the-default-backup-policy"></a>To change the start time for the default backup policy
+#### 既定のバックアップ ポリシーの開始時刻を変更するには
 
-1. Navigate to the device **Configuration** tab.
+1. デバイスの **[構成]** タブに移動します。
 
-2. Under the **Backup** section, specify the start time for the daily backup.
+2. **[バックアップ]** セクションで、毎日のバックアップの開始時刻を指定します。
 
-3. Click **Save**.
+3. **[保存]** をクリックします。
 
-### <a name="take-a-manual-backup"></a>Take a manual backup
+### 手動バックアップの取得
 
-In addition to scheduled backups, you can take a manual (on-demand) backup at any time.
+スケジュールされたバックアップだけでなく、いつでも手動で (オンデマンドで) バックアップを実行できます。
 
-#### <a name="to-create-a-manual-(on-demand)-backup"></a>To create a manual (on-demand) backup
+#### 手動 (オンデマンド) バックアップを作成するには
 
-1. Navigate to the **Shares** tab or the **Volumes** tab.
+1. **[共有]** タブまたは **[ボリューム]** タブに移動します。
 
-2. At the bottom of the page, click **Backup all**. You will be prompted to verify that you would like to take the backup now. Click the check icon ![check icon](./media/storsimple-ova-backup/image3.png) to proceed with the backup.
+2. ページの下部にある **[すべてバックアップ]** をクリックします。すぐにバックアップを開始してもよいかを確認するメッセージが表示されます。チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-backup/image3.png) をクリックしてバックアップを開始します。
 
-    ![backup confirmation](./media/storsimple-ova-backup/image4.png)
+    ![バックアップの確認](./media/storsimple-ova-backup/image4.png)
 
-    You will be notified that a backup job is starting.
+    バックアップ ジョブが開始していることが通知されます。
 
-    ![backup starting](./media/storsimple-ova-backup/image5.png)
+    ![バックアップの開始](./media/storsimple-ova-backup/image5.png)
 
-    You will be notified that the job was created successfully.
+    バックアップ ジョブが正常に作成されたことが通知されます。
 
-    ![backup job created](./media/storsimple-ova-backup/image7.png)
+    ![バックアップ ジョブの作成](./media/storsimple-ova-backup/image7.png)
 
-3. To track the progress of the job, click **View Job**.
+3. ジョブの進行状況を確認するには、**[ジョブの表示]** をクリックします。
 
-4. After the backup job is finished, go to the **Backup catalog** tab. You should see your completed backup.
+4. バックアップ ジョブが完了したら、**[バックアップ カタログ]** タブに移動します。ここには、完了したバックアップが表示されます。
 
-    ![Completed backup](./media/storsimple-ova-backup/image8.png)
+    ![完了したバックアップ](./media/storsimple-ova-backup/image8.png)
 
-5. Set the filter selections to the appropriate device, backup policy, and time range, and then click the check icon ![check icon](./media/storsimple-ova-backup/image3.png).
+5. フィルターで適切なデバイス、バックアップ ポリシー、および時間範囲を選択し、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-backup/image3.png) をクリックします。
 
-    The backup should appear in the list of backup sets that is displayed in the catalog.
+    カタログに表示されているバックアップ セットの一覧に、そのバックアップが表示されます。
 
-## <a name="view-existing-backups"></a>View existing backups
+## 既存のバックアップを表示する
 
-Perform the following steps in the Azure classic portal to view the existing backups.
+既存のバックアップを表示するには、Azure クラシック ポータルで次の手順を実行します。
 
-#### <a name="to-view-existing-backups"></a>To view existing backups
+#### 既存のバックアップを表示するには
 
-1. On the StorSimple Manager service page, click the **Backup catalog** tab.
+1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックします。
 
-2. Select a backup set as follows:
+2. 次の手順に従って、バックアップ セットを選択します。
 
-    1. Select the device.
+    1. デバイスを選択します。
 
-    2. In the drop-down list, choose the share or volume for the backup that you wish to select.
+    2. ボックスの一覧で、バックアップを表示する共有またはボリュームを選択します。
 
-    3. Specify the time range.
+    3. 時間範囲を指定します。
 
-    4. Click the check icon ![](./media/storsimple-ova-backup/image3.png) to execute this query.
+    4. チェック マーク アイコン ![](./media/storsimple-ova-backup/image3.png) をクリックしてこのクエリを実行します。
 
-    The backups associated with the selected share or volume should appear in the list of backup sets.
+    選択した共有またはボリュームに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
-![video_icon](./media/storsimple-ova-backup/video_icon.png) **Video available**
+![video\_icon](./media/storsimple-ova-backup/video_icon.png) **ビデオ**
 
-Watch the video to see how you can create shares, back up shares, and restore data on a StorSimple Virtual Array.
+StorSimple Virtual Array 上で共有を作成し、共有をバックアップして、データを復元する方法については、このビデオをご覧ください。
 
 > [AZURE.VIDEO use-the-storsimple-virtual-array]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn more about [administering your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+[StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md)の詳細を確認します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

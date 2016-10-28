@@ -1,33 +1,30 @@
-There are some limits on the number of metrics and events per application (that is, per instrumentation key). 
+アプリケーションごと (インストルメンテーション キーごと) のメトリックとイベントの数には制限があります。
 
-Limits depend on the [pricing tier](https://azure.microsoft.com/pricing/details/application-insights/) that you choose.
+制限は、選択する[価格レベル](https://azure.microsoft.com/pricing/details/application-insights/)によって異なります。
 
-**Resource** | **Default Limit** | **Maximum Limit**
+**リソース** | **既定の制限** | **上限**
 -------- | ------------- | -------------
-Session data points<sup>1, 2</sup> per month | unlimited | 
-Total data points per month for request, event, dependency, trace, exception, and page view | 5 million | 50 million<sup>3</sup>
-[Trace and Log](../articles/application-insights/app-insights-search-diagnostic-logs.md) data rate | 200 dp/s | 500 dp/s
-[Exception](../articles/application-insights/app-insights-asp-net-exceptions.md) data rate | 50 dp/s | 50 dp/s
-Total data rate for request, event, dependency, and page view telemetry | 200 dp/s | 500 dp/s
-Raw data retention for [Search](../articles/application-insights/app-insights-diagnostic-search.md) and [Analytics](../articles/application-insights/app-insights-analytics.md) | 7 days
-Aggregated data retention for [Metrics explorer](../articles/application-insights/app-insights-metrics-explorer.md) | 90 days
-[Property](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties) name count | 100 |
-Property name length | 150 | 
-Property value length | 8192 | 
-Trace and Exception message length | 10000 |
-[Metric](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties) name count | 100 |
-Metric name length |  150 | 
-[Availability tests](../articles/application-insights/app-insights-monitor-web-app-availability.md) | 10 | 
+セッションのデータ ポイント数<sup>1、2</sup>/月 | 無制限 | 
+要求、イベント、依存関係、トレース、例外、およびページ ビューの合計データ ポイント/月 | 500 万 | 5,000万<sup>3</sup>
+[トレースおよびログ](../articles/application-insights/app-insights-search-diagnostic-logs.md)のデータ速度 | 200 dp/s | 500 dp/s
+[例外](../articles/application-insights/app-insights-asp-net-exceptions.md)データ速度 | 50 dp/s | 50 dp/s
+要求、イベント、依存関係、およびページ ビュー テレメトリの合計データ速度 | 200 dp/s | 500 dp/s
+[検索](../articles/application-insights/app-insights-diagnostic-search.md)および [Analytics](../articles/application-insights/app-insights-analytics.md) 用の生データの保持期間 | 7 日
+[メトリック エクスプローラー](../articles/application-insights/app-insights-metrics-explorer.md)用の集計データの保持期間 | 90 日間
+[プロパティ](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties)名の数 | 100 |
+プロパティ名の長さ | 150 | 
+プロパティ値の長さ | 8192 | 
+トレースおよび例外のメッセージ長 | 10000 |
+[メトリック](../articles/application-insights/app-insights-api-custom-events-metrics.md#properties)名の数 | 100 |
+メトリック名の長さ | 150 | 
+[可用性テスト](../articles/application-insights/app-insights-monitor-web-app-availability.md) | 10 | 
 
-<sup>1</sup> A data point is an individual metric value or event, with attached properties and measurements.
+<sup>1</sup> データ ポイントとは、個々のメトリック値またはイベントに、プロパティと測定値を付加したものです。
 
-<sup>2</sup> A session data point logs the start or end of a session, and logs user identity.
+<sup>2</sup> セッションのデータ ポイントでは、セッションの開始または終了とユーザー ID が記録されます。
 
-<sup>3</sup> You can purchase additional capacity beyond 50 million.
+<sup>3</sup> 5,000 万を超える追加容量を購入することができます。
  
-[About pricing and quotas in Application Insights](../articles/application-insights/app-insights-pricing.md)
+[Application Insights の価格とクォータについて](../articles/application-insights/app-insights-pricing.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

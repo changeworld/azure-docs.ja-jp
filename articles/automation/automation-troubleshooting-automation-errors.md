@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Azure automation error handling | Microsoft Azure"
-   description="This article provides basic error handling steps to troubleshoot and fix common Azure Automation errors."
+   pageTitle="Azure Automation のエラー処理 | Microsoft Azure"
+   description="この記事では、Azure Automation の一般的なエラーをトラブルシューティングして修正するための基本的なエラー処理手順について説明します。"
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
    manager="stevenka"
    editor="tysonn"
    tags="top-support-issue"
-   keywords="automation error, error handling"/>
+   keywords="Automation エラー, エラー処理"/>
 <tags
    ms.service="automation"
    ms.devlang="na"
@@ -17,24 +17,26 @@
    ms.date="07/06/2016"
    ms.author="sngun; v-reagie"/>
 
+# Azure Automation の一般的なエラーを処理するためのヒント
 
-# <a name="error-handling-tips-for-common-azure-automation-errors"></a>Error handling tips for common Azure Automation errors
+この記事では、Azure Automation を使用する際に発生する一般的なエラーについて説明し、実行できるエラー処理手順を提案します。
 
-This article explains some of the common Azure Automation errors you might experience and suggests possible error handling steps.
+## Azure Automation Runbook の使用時に発生する認証エラーをトラブルシューティングする  
 
-## <a name="troubleshoot-authentication-errors-when-working-with-azure-automation-runbooks"></a>Troubleshoot authentication errors when working with Azure Automation runbooks  
+### シナリオ: Azure アカウントにサインインできない
 
-### <a name="scenario:-sign-in-to-azure-account-failed"></a>Scenario: Sign in to Azure Account failed
+**エラー:**
+Add-AzureAccount コマンドレットまたは Login-AzureRmAccount コマンドレットの使用時に「Unknown\_user\_type: Unknown User Type (未知のユーザー タイプ)」というエラーが発生します。
 
-**Error:** You receive the error "Unknown_user_type: Unknown User Type" when working with the Add-AzureAccount or Login-AzureRmAccount cmdlets.
+**エラーの理由:**
+このエラーは、資格情報アセット名が無効な場合、または Automation 資格情報アセットのセットアップに使用したユーザー名とパスワードが無効な場合に発生します。
 
-**Reason for the error:** This error occurs if the credential asset name is not valid or if the username and password that you used to setup the Automation credential asset are not valid.
+**トラブルシューティングのヒント:**
+次の手順で原因を突き止めます。
 
-**Troubleshooting tips:** In order to determine what's wrong, take the following steps:  
+1. Azure に接続するために使用する Automation 資格情報資産名で、**@** 文字などの特殊文字が使用されていないことを確認します。
 
-1. Make sure that you don’t have any special characters, including the **@** character in the Automation credential asset name that you are using to connect to Azure.  
-
-2. Check that you can use the username and password that are stored in the Azure Automation credential in your local PowerShell ISE editor. You can do this by running the following cmdlets in the PowerShell ISE:  
+2. ローカル PowerShell ISE エディターで、Azure Automation に保存されているユーザー名とパスワードを使用できることを確認します。その際、PowerShell ISE で次のコマンドレットを実行します。
 
         $Cred = Get-Credential  
         #Using Azure Service Management   
@@ -42,178 +44,200 @@ This article explains some of the common Azure Automation errors you might exper
         #Using Azure Resource Manager  
         Login-AzureRmAccount –Credential $Cred
 
-3. If your authentication fails locally, this means that you haven’t set up your Azure Active Directory credentials properly. Refer to [Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) blog post to get the Azure Active Directory account set up correctly.  
+3. ローカルで認証に失敗した場合、Azure Active Directory 資格情報が正しく設定されていないことになります。Azure Active Directory アカウントを正しく設定する方法については、「[Authenticating to Azure using Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)」 (Azure Active Directory を使用して Azure を認証する) というブログ投稿を参照してください。
 
 
-### <a name="scenario:-unable-to-find-the-azure-subscription"></a>Scenario: Unable to find the Azure subscription
+### シナリオ: Azure サブスクリプションが見つかりません
 
-**Error:** You receive the error "The subscription named ``<subscription name>`` cannot be found" when working with the Select-AzureSubscription or Select-AzureRmSubscription cmdlets.
+**エラー:**
+Select-AzureSubscription コマンドレットまたは Select-AzureRmSubscription コマンドレットの使用時に「The subscription named ``<subscription name>`` cannot be found (<サブスクリプション名> という名前のサブスクリプションが見つかりません)」というエラーが発生します。
 
-**Reason for the error:** This error occurs if the subscription name is not valid or if the Azure Active Directory user who is trying to get the subscription details is not configured as an admin of the subscription.
+**エラーの理由:**
+このエラーは、サブスクリプション名が無効な場合、またはサブスクリプションの詳細を取得しようとしている Azure Active Directory ユーザーがサブスクリプションの管理者として構成されていない場合に発生します。
 
-**Troubleshooting tips:** In order to determine if you have properly authenticated to Azure and have access to the subscription you are trying to select, take the following steps:  
+**トラブルシューティングのヒント:**
+Azure で正しく認証され、選択しようとしているサブスクリプションにアクセスできることを次の手順で確認します。  
 
-1. Make sure that you run the **Add-AzureAccount** before running the **Select-AzureSubscription** cmdlet.  
+1. **Select-AzureSubscription**コマンドレットを実行する前に **Add-AzureAccount** を実行していることを確認します。
 
-2. If you still see this error message, modify your code by adding the **Get-AzureSubscription** cmdlet following the **Add-AzureAccount** cmdlet and then execute the code.  Now verify if the output of Get-AzureSubscription contains your subscription details.  
-    * If you don't see any subscription details in the output, this means that the subscription isn’t initialized yet.  
-    * If you do see the subscription details in the output, confirm that you are using the correct subscription name or ID with the **Select-AzureSubscription** cmdlet.   
+2. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後ろに **Get-AzureSubscription** コマンドレットを追加するというコードの変更を行った後、そのコードを実行します。Get-AzureSubscription の出力にサブスクリプション詳細が含まれることを確認します。
+    * 出力にサブスクリプション詳細が含まれない場合、サブスクリプションが初期化されていません。
+    * 出力にサブスクリプション詳細が含まれる場合は、**Select-AzureSubscription** コマンドレットで正しいサブスクリプション名または ID を使用していることを確認します。
 
 
-### <a name="scenario:-authentication-to-azure-failed-because-multi-factor-authentication-is-enabled"></a>Scenario: Authentication to Azure failed because multi-factor authentication is enabled
+### シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
 
-**Error:** You receive the error “Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required” when authenticating to Azure with your Azure username and password.
+**エラー:**
+Azure のユーザー名とパスワードで Azure に対して認証するとき、「Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is required (強力な認証記録 (確認) が必要です)」というエラーが発生します。
 
-**Reason for the error:** If you have multi-factor authentication on your Azure account, you can't use an Azure Active Directory user to authenticate to Azure.  Instead, you need to use a certificate or a service principal to authenticate to Azure.
+**エラーの理由:**
+Azure アカウントに多要素認証を設定している場合、Azure に対する認証に Azure Active Directory ユーザーを使うことはできません。代わりに、証明書またはサービス プリンシパルを利用して Azure に対して認証する必要があります。
 
-**Troubleshooting tips:** To use a certificate with the Azure Service Management cmdlets, refer to [creating and adding a certificate to manage Azure services.](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx) To use a service principal with Azure Resource Manager cmdlets, refer to [creating service principal using Azure portal](./resource-group-create-service-principal-portal.md) and [authenticating a service principal with Azure Resource Manager.](./resource-group-authenticate-service-principal.md)
+**トラブルシューティングのヒント:**
+Azure Service Management コマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](./resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](./resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
 
 
-## <a name="troubleshoot-common-errors-when-working-with-runbooks"></a>Troubleshoot common errors when working with runbooks
+## Runbook の使用時に発生する一般的なエラーをトラブルシューティングする
 
-### <a name="scenario:-runbook-fails-because-of-deserialized-object"></a>Scenario: Runbook fails because of deserialized object
+### シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 
-**Error:** Your runbook fails with the error "Cannot bind parameter ``<ParameterName>``. Cannot convert the ``<ParameterType>`` value of type Deserialized ``<ParameterType>`` to type ``<ParameterType>``".
+**エラー:**
+Runbook が失敗し、「Cannot bind parameter ``<ParameterName>``.Cannot convert the ``<ParameterType>`` value of type Deserialized ``<ParameterType>`` to type ``<ParameterType>`` (パラメーター <パラメーター名> をバインドできません。逆シリアル化型 <パラメーター型> の値 <パラメーター値> を型 <パラメーター型> に変換できません)」というエラーが発生します。
 
-**Reason for the error:** If your runbook is a PowerShell Workflow, it stores complex objects in a deserialized format in order to persist your runbook state if the workflow is suspended.  
+**エラーの理由:**
+Runbook が PowerShell ワークフローの場合、ワークフローが中断された場合に Runbook の状態を維持できるように、複雑なオブジェクトが逆シリアル化形式で保存されます。
 
-**Troubleshooting tips:**  
-Any of the following three solutions will fix this problem:
+**トラブルシューティングのヒント:**  
+次の 3 つの解決策のいずれでもこの問題は解決されます。
 
-1. If you are piping complex objects from one cmdlet to another, wrap these cmdlets in an InlineScript.  
-2. Pass the name or value that you need from the complex object instead of passing the entire object.  
+1. コマンドレット間で複雑なオブジェクトをパイプ処理する場合、これらのコマンドレットを InlineScript でラップします。
+2. オブジェクト全体を渡すのではなく、複雑なオブジェクトから、必要な名前または値を渡します。
 
-3. Use a PowerShell runbook instead of a PowerShell Workflow runbook.  
+3. PowerShell ワークフロー Runbook ではなく PowerShell Runbook を使用します。
 
 
-### <a name="scenario:-runbook-job-failed-because-the-allocated-quota-exceeded"></a>Scenario: Runbook job failed because the allocated quota exceeded
+### シナリオ: 割り当てられたクォータを超えているために Runbook ジョブが失敗した
 
-**Error:** Your runbook job fails with the error "The quota for the monthly total job run time has been reached for this subscription".
+**エラー:**
+Runbook ジョブが失敗し、「The quota for the monthly total job run time has been reached for this subscription (このサブスクリプションの毎月の合計ジョブ実行時間のクォータに到達しました)」というエラーが発生します。
 
-**Reason for the error:** This error occurs when the job execution exceeds the 500-minute free quota for your account. This quota applies to all types of job execution tasks such as testing a job, starting a job from the portal, executing a job by using webhooks and scheduling a job to execute by using either the Azure portal or in your datacenter. To learn more about pricing for Automation see [Automation pricing](https://azure.microsoft.com/pricing/details/automation/).
+**エラーの理由:**
+ジョブの実行がアカウントの 500 分の無料クォータを超えるとこのエラーが発生します。このクォータは、ジョブをテストする、ポータルからジョブを開始する、Webhook でジョブを実行する、Azure ポータルまたはデータセンターを利用して実行するジョブをスケジュールするなど、あらゆる種類のジョブ実行タスクに適用されます。Automation の料金については、「[Automation の料金](https://azure.microsoft.com/pricing/details/automation/)」を参照してください。
 
-**Troubleshooting tips:** If you want to use more than 500 minutes of processing per month you will need to change your subscription from the Free tier to the Basic tier. You can upgrade to the Basic tier by taking the following steps:  
+**トラブルシューティングのヒント:**
+毎月 500 分以上処理する場合、サブスクリプション レベルを Free から Basic に変更する必要があります。次の手順で Basic レベルにアップグレードできます。
 
-1. Sign in to your Azure subscription  
-2. Select the Automation account you wish to upgrade  
-3. Click on **Settings** > **Pricing tier and Usage** > **Pricing tier**  
-4. On the **Choose your pricing tier** blade, select **Basic**    
+1. Azure サブスクリプションにサインインします。
+2. アップグレードする Automation アカウントを選択します。
+3. **[設定]**、**[価格レベルと使用状況]**、**[価格レベル]** の順に選択します。
+4. **[価格レベルの選択]** ブレードで、**[Basic]** を選択します。
 
 
-### <a name="scenario:-cmdlet-not-recognized-when-executing-a-runbook"></a>Scenario: Cmdlet not recognized when executing a runbook
+### シナリオ: Runbook の実行時にコマンドレットが認識されない
 
-**Error:** Your runbook job fails with the error "``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program."
+**エラー:**
+Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)」というエラーが発生します。
 
-**Reason for the error:** This error is caused when the PowerShell engine cannot find the cmdlet you are using in your runbook.  This could be because the module containing the cmdlet is missing from the account, there is a name conflict with a runbook name, or the cmdlet also exists in another module and Automation cannot resolve the name.
+**エラーの理由:**
+このエラーは、Runbook で使用しているコマンドレットを PowerShell エンジンが見つけられないときに発生します。この原因としては、コマンドレットが含まれるモジュールがアカウントにない、Runbook 名に名前の競合がある、コマンドレットが別のモジュールにも存在し、Automation が名前を解決できないなどが考えられます。
 
-**Troubleshooting tips:** Any of the following solutions will fix the problem:  
+**トラブルシューティングのヒント:**
+次の解決策のいずれでもこの問題は解決されます。
 
-- Check that you have entered the cmdlet name correctly.  
+- コマンドレット名を正しく入力していることを確認します。
 
-- Make sure the cmdlet exists in your Automation account and that there are no conflicts. To verify if the cmdlet is present, open a runbook in edit mode and search for the cmdlet you want to find in the library or run **Get-Command ``<CommandName>``**.  Once you have validated that the cmdlet is available to the account, and that there are no name conflicts with other cmdlets or runbooks, add it to the canvas and ensure that you are using a valid parameter set in your runbook.  
+- Automation アカウントにコマンドレットが存在し、競合がないことを確認します。コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、**Get-Command ``<CommandName>``** を実行します。コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。
 
-- If you do have a name conflict and the cmdlet is available in two different modules, you can resolve this by using the fully qualified name for the cmdlet. For example, you can use **ModuleName\CmdletName**.  
+- 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。たとえば、**ModuleName\\CmdletName** を使用できます。
 
-- If you are executing the runbook on-premises in a hybrid worker group, then make sure that the module/cmdlet is installed on the machine that hosts the hybrid worker.
+- ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
 
 
-### <a name="scenario:-a-long-running-runbook-consistently-fails-with-the-exception:-"the-job-cannot-continue-running-because-it-was-repeatedly-evicted-from-the-same-checkpoint"."></a>Scenario: A long running runbook consistently fails with the exception: "The job cannot continue running because it was repeatedly evicted from the same checkpoint".
+### シナリオ: Runbook を長時間実行するといつも次の例外で失敗する: ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。
 
-**Reason for the error:** This is by design behavior due to the "Fair Share" monitoring of processes within Azure Automation, which automatically suspends a runbook if it executes longer than 3 hours. However, the error message returned does not provide "what next" options. A runbook can be suspended for a number of reasons. Suspends happen mostly due to errors. For example, an uncaught exception in a runbook, a network failure, or a crash on the Runbook Worker running the runbook, will all cause the runbook to be suspended and start from its last checkpoint when resumed.
+**エラーの理由:**
+これは Azure Automation 内のプロセスの "フェア シェア" 監視のための設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。ただし、返されるエラー メッセージでは "次" のオプションは提供されません。さまざまな理由から Runbook は中断されることがあります。ほとんどの場合、中断はエラーのために発生します。たとえば、Runbook のキャッチされない例外、ネットワーク障害、Runbook を実行している Runbook Worker でのクラッシュなどはすべて、Runbook が中断する原因になり、再開時には最後のチェックポイントから開始します。
 
-**Troubleshooting tips:** The documented solution to avoid this issue is to use Checkpoints in a workflow.  To learn more refer to [Learning PowerShell Workflows](automation-powershell-workflow.md#Checkpoints).  A more thorough explanation of "Fair Share" and Checkpoint can be found in this blog article [Using Checkpoints in Runbooks](https://azure.microsoft.com/en-us/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/).
+**トラブルシューティングのヒント:**
+この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。詳細については、「[PowerShell ワークフローについての説明](automation-powershell-workflow.md#Checkpoints)」を参照してください。"フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/ja-JP/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」 (Runbook でのチェックポイントの使用) を参照してください。
 
 
-## <a name="troubleshoot-common-errors-when-importing-modules"></a>Troubleshoot common errors when importing modules
+## モジュールのインポート時の共通エラーをトラブルシューティングする
 
-### <a name="scenario:-module-fails-to-import-or-cmdlets-can't-be-executed-after-importing"></a>Scenario: Module fails to import or cmdlets can't be executed after importing
+### シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
 
-**Error:** A module fails to import or imports successfully, but no cmdlets are extracted.
+**エラー:**
+モジュールがインポートに失敗するか、成功してもコマンドレットが抽出されません。
 
-**Reason for the error:** Some common reasons that a module might not successfully import to Azure Automation are:  
+**エラーの理由:**
+モジュールが正常に Azure Automation にインポートできない一般的な理由には次が考えられます。
 
-- The structure does not match the structure that Automation needs it to be in.  
+- 構造が Automation で必要とされる構造と一致しません。
 
-- The module is dependent on another module that has not been deployed to your Automation account.  
+- Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
 
-- The module is missing its dependencies in the folder.  
+- モジュールのフォルダーにその依存関係がありません。
 
-- The **New-AzureRmAutomationModule** cmdlet is being used to upload the module, and you have not given the full storage path or have not loaded the module by using a publicly accessible URL.  
+- モジュールのアップロードに **New-AzureRmAutomationModule** コマンドレットを使用していますが、完全なストレージ パスを与えていないか、公共でアクセスできる URL でモジュールを読み込んでいません。
 
-**Troubleshooting tips:**  
-Any of the following solutions will fix the problem:  
+**トラブルシューティングのヒント:**  
+次の解決策のいずれでもこの問題は解決されます。  
 
-- Make sure that the module follows the following format:  
-ModuleName.Zip **->** ModuleName or Version Number **->** (ModuleName.psm1, ModuleName.psd1)
+- モジュールの形式が次のようになっていることを確認します。ModuleName.Zip **->** モジュール名またはバージョン番号 **->** (ModuleName.psm1、ModuleName.psd1)
 
-- Open the .psd1 file and see if the module has any dependencies.  If it does, upload these modules to the Automation account.  
+- .psd1 ファイルを開き、モジュールに依存関係があるかどうかを確認します。依存関係がある場合、それらのモジュールを Automation アカウントにアップロードします。
 
-- Make sure that any referenced .dlls are present in the module folder.  
+- 参照される .dll がモジュール フォルダーにあることを確認します。
 
 
-## <a name="troubleshoot-common-errors-when-working-with-desired-state-configuration-(dsc)"></a>Troubleshoot common errors when working with Desired State Configuration (DSC)  
+## Desired State Configuration (DSC) の使用時に発生する一般的なエラーをトラブルシューティングする  
 
-### <a name="scenario:-node-is-in-failed-status-with-a-“not-found”-error"></a>Scenario: Node is in failed status with a “Not found” error
+### シナリオ: ノードが "失敗" 状態になり、"見つかりませんでした" というエラーが表示される
 
-**Error:** The node has a report with **Failed** status and containing the error "The attempt to get the action from server https://``<url>``//accounts/``<account-id>``/Nodes(AgentId=``<agent-id>``)/GetDscAction failed because a valid configuration ``<guid>`` cannot be found.”
+**エラー:**
+ノードが **Failed** 状態になり、「The attempt to get the action from server https://``<url>``//accounts/``<account-id>``/Nodes(AgentId=``<agent-id>``)/GetDscAction failed because a valid configuration ``<guid> cannot be found (サーバー <url> <アカウント ID> <エージェント ID> <guid> が見つからないため、サーバーからアクションを取得する試みが失敗しました)」というエラーが発生します。
 
-**Reason for the error:** This error typically occurs when the node is assigned to a configuration name (e.g. ABC) instead of a node configuration name (e.g. ABC.WebServer).  
+**エラーの理由:**
+通常、このエラーは、ノードがノード構成の名前 (ABC.WebServer など) ではなく構成名 (ABC など) に割り当てられている場合に発生します。
 
-**Troubleshooting tips:**  
+**トラブルシューティングのヒント:**  
 
-- Make sure that you are assigning the node with "node configuration name" and not the "configuration name".  
+- ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。
 
-- You can assign a node configuration to a node using Azure portal or with a PowerShell cmdlet.
-    - In order to assign a node configuration to a node using Azure portal, open the **DSC Nodes** blade, then select a node and click on **Assign node configuration** button.  
-    - In order to assign a node configuration to a node using PowerShell cmdlet, use **Set-AzureRmAutomationDscNode** cmdlet
+- ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
+    - Azure ポータルを使用してノードにノード構成を割り当てるには、**[DSC ノード]** ブレードを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。
+    - PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、**Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
 
-### <a name="scenario:-no-node-configurations-(mof-files)-were-produced-when-a-configuration-is-compiled"></a>Scenario:  No node configurations (MOF files) were produced when a configuration is compiled
+### シナリオ: 構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
 
-**Error:** Your DSC compilation job suspends with the error: “Compilation completed successfully, but no node configuration .mofs were generated”.
+**エラー:**
+DSC のコンパイル ジョブが中断され、「Compilation completed successfully, but no node configuration .mofs were generated (コンパイルは正常に完了しましたが、ノード構成 .mof は生成されませんでした)」というエラーが表示されます。
 
-**Reason for the error:** When the expression following the **Node** keyword in the DSC configuration evaluates to $null then no node configurations will be produced.    
+**エラーの理由:**
+DSC 構成の **Node** キーワードに続く式の評価結果が $null の場合、ノード構成は生成されません。
 
-**Troubleshooting tips:**  
-Any of the following solutions will fix the problem:  
+**トラブルシューティングのヒント:**  
+次の解決策のいずれでもこの問題は解決されます。  
 
-- Make sure that the expression next to the **Node** keyword in the configuration definition is not evaluating to $null.  
-- If you are passing ConfigurationData when compiling the configuration, make sure that you are passing the expected values that the configuration requires from [ConfigurationData](automation-dsc-compile.md#configurationdata).
+- 構成定義内の **Node** キーワードに続く式の評価結果が $null になっていないことを確認します。
+- 構成のコンパイル時に ConfigurationData を渡す場合は、[ConfigurationData](automation-dsc-compile.md#configurationdata) から、構成に必要な期待値を渡すようにしてください。
 
 
-### <a name="scenario:-the-dsc-node-report-becomes-stuck-“in-progress”-state"></a>Scenario:  The DSC node report becomes stuck “in progress” state
+### シナリオ: DSC ノードのレポートが "処理中" の状態で停止する
 
-**Error:** DSC Agent outputs “No instance found with given property values.”
+**エラー:**
+DSC エージェントによって、「No instance found with given property values. (指定されたプロパティ値のインスタンスが見つかりません)」と出力されます。
 
-**Reason for the error:** You have upgraded your WMF version and have corrupted WMI.  
+**エラーの理由:**
+WMF のバージョンをアップグレードした結果、WMI が破損しています。
 
-**Troubleshooting tips:** Follow the instructions in the [DSC known issues and limitations](https://msdn.microsoft.com/powershell/wmf/limitation_dsc) blog post to fix the issue.
+**トラブルシューティングのヒント:**
+この問題を解決するには、[DSC の既知の問題と制限](https://msdn.microsoft.com/powershell/wmf/limitation_dsc)に関するブログ投稿にある手順に従ってください。
 
 
-### <a name="scenario:-unable-to-use-a-credential-in-a-dsc-configuration"></a>Scenario:  Unable to use a credential in a DSC configuration
+### シナリオ: DSC 構成で資格情報が使用できない
 
-**Error:** Your DSC compilation job was suspended with the error: “System.InvalidOperationException error processing property 'Credential' of type ``<some resource name>``: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true”.
+**エラー:**
+DSC コンパイル ジョブが中断され、「System.InvalidOperationException error processing property 'Credential' of type ``<some resource name>``: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true (<リソース名> の 'Credential' プロパティの処理中に System.InvalidOperationException エラーが発生しました。暗号化されたパスワードを変換してプレーン テキストとして格納することが許可されるのは、PSDscAllowPlainTextPassword が true に設定されている場合だけです)」というエラーが表示されます。
 
-**Reason for the error:** You have used a credential in a configuration but didn’t provide proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration.  
+**エラーの理由:**
+構成に資格情報を使用したが、ノード構成ごとに **PSDscAllowPlainTextPassword** を true に設定するための適切な **ConfigurationData** を指定していませんでした。
 
-**Troubleshooting tips:**  
-- Make sure to pass in the proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration mentioned in the configuration. For more information, refer to [assets in Azure Automation DSC](automation-dsc-compile.md#assets).
+**トラブルシューティングのヒント:**  
+- 上記の構成の各ノード構成について **PSDscAllowPlainTextPassword** を true に設定するために、適切な **ConfigurationData** を渡してください。詳細については、[Azure Automation DSC の資産](automation-dsc-compile.md#assets)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-If you have followed the troubleshooting steps above and need additional help at any point in this article, you can:
+上記のトラブルシューティング手順に従ったが、この記事の何らかの点でさらにサポートが必要な場合、次の手段をご利用ください。
 
-- Get help from Azure experts. Submit your issue to the [MSDN Azure or Stack Overflow forums.](https://azure.microsoft.com/support/forums/)
+- Azure エキスパートに支援を要請する。[MSDN の Azure フォーラムまたは Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)に問題を投稿してください。
 
-- File an Azure support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/) and click **Get support** under **Technical and billing support**.
+- Azure サポート インシデントを送信する。[Azure サポート サイト](https://azure.microsoft.com/support/options/) にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
 
-- Post a Script Request on [Script Center](https://azure.microsoft.com/documentation/scripts/) if you are looking for an Azure Automation runbook solution or an integration module.
+- Azure Automation Runbook ソリューションや統合モジュールを探している場合は、[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)にスクリプトの要求を投稿することができます。
 
-- Post feedback or feature requests for Azure Automation on [User Voice](https://feedback.azure.com/forums/34192--general-feedback).
+- Azure Automation に関するフィードバックや機能に関するご要望は、[User Voice](https://feedback.azure.com/forums/34192--general-feedback) にお寄せください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

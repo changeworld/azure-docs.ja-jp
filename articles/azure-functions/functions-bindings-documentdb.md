@@ -1,249 +1,244 @@
 <properties
-    pageTitle="Azure Functions DocumentDB bindings | Microsoft Azure"
-    description="Understand how to use Azure DocumentDB bindings in Azure Functions."
-    services="functions"
-    documentationCenter="na"
-    authors="christopheranderson"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="azure functions, functions, event processing, dynamic compute, serverless architecture"/>
+	pageTitle="Azure Functions における DocumentDB のバインド | Microsoft Azure"
+	description="Azure Functions で Azure DocumentDB のバインドを使用する方法について説明します。"
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
 
 <tags
-    ms.service="functions"
-    ms.devlang="multiple"
-    ms.topic="reference"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="08/22/2016"
-    ms.author="chrande; glenga"/>
+	ms.service="functions"
+	ms.devlang="multiple"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="08/22/2016"
+	ms.author="chrande; glenga"/>
 
-
-# <a name="azure-functions-documentdb-bindings"></a>Azure Functions DocumentDB bindings
+# Azure Functions における DocumentDB のバインド
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-This article explains how to configure and code Azure DocumentDB bindings in Azure Functions. 
+この記事では、Azure Functions で Azure DocumentDB のバインドを構成したりコーディングしたりする方法について説明します。
 
-[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)] 
+[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="<a-id="docdbinput"></a>-azure-documentdb-input-binding"></a><a id="docdbinput"></a> Azure DocumentDB input binding
+## <a id="docdbinput"></a>Azure DocumentDB 入力バインド
 
-Input bindings can load a document from a DocumentDB collection and pass it directly to your binding. The document id can be determined based on the trigger that invoked the function. In a C# function, any changes made to the record will be automatically sent back to the collection when the function exits successfully.
+入力バインドでは、DocumentDB コレクションからドキュメントを読み込んでそれをバインドに直接渡すことができます。ドキュメント ID は、関数を呼び出したトリガーに基づいて決定することができます。C# 関数で、レコードに加えられた変更は、関数が正常に終了したときに、コレクションに自動的に再送信されます。
 
-#### <a name="function.json-for-documentdb-input-binding"></a>function.json for DocumentDB input binding
+#### DocumentDB 入力バインドの function.json
 
-The *function.json* file provides the following properties:
+*function.json* ファイルは、次のプロパティを提供します。
 
-- `name` : Variable name used in function code for the document.
-- `type` : must be set to "documentdb".
-- `databaseName` : The database containing the document.
-- `collectionName` : The collection containing the document.
-- `id` : The Id of the document to retrieve. This property supports bindings similar to "{queueTrigger}", which will use the string value of the queue message as the document Id.
-- `connection` : This string must be an Application Setting set to the endpoint for your DocumentDB account. If you choose your account from the Integrate tab, a new App setting will be created for you with a name that takes the following form, yourAccount_DOCUMENTDB. If you need to manually create the App setting, the actual connection string must take the following form, AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;.
-- `direction  : must be set to *"in"*.
+- `name`: ドキュメントの関数コードで使用される変数名。
+- `type`: "documentdb" に設定する必要があります。
+- `databaseName`: ドキュメントを含むデータベース。
+- `collectionName`: ドキュメントを含むコレクション。
+- `id`: 取得するドキュメントの ID。このプロパティは、"{queueTrigger}" と同類のバインドをサポートします。ここでは、ドキュメント ID としてキュー メッセージの文字列値を使用します。
+- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定されたアプリケーション設定である必要があります。[Integrate] \(統合) タブからアカウントを選択した場合、新しいアプリ設定が yourAccount\_DOCUMENTDB という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: AccountEndpoint=<アカウントのエンドポイント>;AccountKey=<プライマリ アクセス キー>;。
+- `direction : *"in"* に設定する必要があります。
 
-Example *function.json*:
+*function.json* の例:
  
-    {
-      "bindings": [
-        {
-          "name": "document",
-          "type": "documentdb",
-          "databaseName": "MyDatabase",
-          "collectionName": "MyCollection",
-          "id" : "{queueTrigger}",
-          "connection": "MyAccount_DOCUMENTDB",     
-          "direction": "in"
-        }
-      ],
-      "disabled": false
-    }
+	{
+	  "bindings": [
+	    {
+	      "name": "document",
+	      "type": "documentdb",
+	      "databaseName": "MyDatabase",
+	      "collectionName": "MyCollection",
+	      "id" : "{queueTrigger}",
+	      "connection": "MyAccount_DOCUMENTDB",     
+	      "direction": "in"
+	    }
+	  ],
+	  "disabled": false
+	}
 
-#### <a name="azure-documentdb-input-code-example-for-a-c#-queue-trigger"></a>Azure DocumentDB input code example for a C# queue trigger
+#### Azure DocumentDB 入力コード例 (C# キュー トリガー)
  
-Using the example function.json above, the DocumentDB input binding will retrieve the document with the id that matches the queue message string and pass it to the 'document' parameter. If that document is not found, the 'document' parameter will be null. The document is then updated with the new text value when the function exits.
+上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージと一致する ID を持つドキュメントを取得し、それを document パラメーターに渡します。そのドキュメントが見つからない場合、document パラメーターは null になります。関数の終了時に、ドキュメントは新しいテキスト値で更新されます。
  
-    public static void Run(string myQueueItem, dynamic document)
-    {   
-        document.text = "This has changed.";
-    }
+	public static void Run(string myQueueItem, dynamic document)
+	{   
+	    document.text = "This has changed.";
+	}
 
-#### <a name="azure-documentdb-input-code-example-for-an-f#-queue-trigger"></a>Azure DocumentDB input code example for an F# queue trigger
+#### Azure DocumentDB 入力コード例 (F# キュー トリガー)
 
-Using the example function.json above, the DocumentDB input binding will retrieve the document with the id that matches the queue message string and pass it to the 'document' parameter. If that document is not found, the 'document' parameter will be null. The document is then updated with the new text value when the function exits.
+上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージと一致する ID を持つドキュメントを取得し、それを document パラメーターに渡します。そのドキュメントが見つからない場合、document パラメーターは null になります。関数の終了時に、ドキュメントは新しいテキスト値で更新されます。
 
-    open FSharp.Interop.Dynamic
-    let Run(myQueueItem: string, document: obj) =
-        document?text <- "This has changed."
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- "This has changed."
 
-You will need a `project.json` file that uses NuGet to specify the `FSharp.Interop.Dynamic` and `Dynamitey` packages as package dependencies, like this:
+次のように、NuGet を使用して `FSharp.Interop.Dynamic` および `Dynamitey` パッケージをパッケージ依存関係として指定する `project.json` ファイルが必要です。
 
-    {
-      "frameworks": {
-        "net46": {
-          "dependencies": {
-            "Dynamitey": "1.0.2",
-            "FSharp.Interop.Dynamic": "3.0.0"
-          }
-        }
-      }
-    }
+	{
+	  "frameworks": {
+	    "net46": {
+	      "dependencies": {
+	        "Dynamitey": "1.0.2",
+	        "FSharp.Interop.Dynamic": "3.0.0"
+	      }
+	    }
+	  }
+	}
 
-This will use NuGet to fetch your dependencies and will reference them in your script.
+このファイルは NuGet を使用して依存関係を取得し、それをスクリプト内で参照します。
 
-#### <a name="azure-documentdb-input-code-example-for-a-node.js-queue-trigger"></a>Azure DocumentDB input code example for a Node.js queue trigger
+#### Azure DocumentDB 入力コード例 (Node.js キュー トリガー)
  
-Using the example function.json above, the DocumentDB input binding will retrieve the document with the id that matches the queue message string and pass it to the `documentIn` binding property. In Node.js functions, updated documents are not sent back to the collection. However, you can pass the input binding directly to a DocumentDB output binding named `documentOut` to support updates. This code example updates the text property of the input document and sets it as the output document.
+上記の function.json の例を使用して、DocumentDB 入力バインドはキュー メッセージ文字列と一致する ID を持つドキュメントを取得し、それを `documentIn` バインド プロパティに渡します。Node.js 関数では、更新されたドキュメントは再びコレクションに送信されません。ただし、入力バインドを、更新をサポートする `documentOut` という名前の DocumentDB 出力バインドに直接渡すことができます。このコード例では、入力ドキュメントの text プロパティを更新し、出力ドキュメントとして設定します。
  
-    module.exports = function (context, input) {   
-        context.bindings.documentOut = context.bindings.documentIn;
-        context.bindings.documentOut.text = "This was updated!";
-        context.done();
-    };
+	module.exports = function (context, input) {   
+	    context.bindings.documentOut = context.bindings.documentIn;
+	    context.bindings.documentOut.text = "This was updated!";
+	    context.done();
+	};
 
-## <a name="<a-id="docdboutput"></a>-azure-documentdb-output-bindings"></a><a id="docdboutput"></a> Azure DocumentDB output bindings
+## <a id="docdboutput"></a>Azure DocumentDB 出力バインド
 
-Your functions can write JSON documents to an Azure DocumentDB database using the **Azure DocumentDB Document** output binding. For more information on Azure DocumentDB review the [Introduction to DocumentDB](../documentdb/documentdb-introduction.md) and the [Getting Started tutorial](../documentdb/documentdb-get-started.md).
+関数を使用して、**Azure DocumentDB Document** 出力バインドを使って、JSON ドキュメントを Azure DocumentDB データベースに書き込むことができます。Azure DocumentDB の詳細については、「[DocumentDB の概要](../documentdb/documentdb-introduction.md)」および「[概要チュートリアル](../documentdb/documentdb-get-started.md)」を参照してください。
 
-#### <a name="function.json-for-documentdb-output-binding"></a>function.json for DocumentDB output binding
+#### DocumentDB 出力バインドの function.json
 
-The function.json file provides the following properties:
+function.json ファイルは、次のプロパティを提供します。
 
-- `name` : Variable name used in function code for the new document.
-- `type` : must be set to *"documentdb"*.
-- `databaseName` : The database containing the collection where the new document will be created.
-- `collectionName` : The collection where the new document will be created.
-- `createIfNotExists` : This is a boolean value to indicate whether the collection will be created if it does not exist. The default is *false*. The reason for this is new collections are created with reserved throughput, which has pricing implications. For more details, please visit the [pricing page](https://azure.microsoft.com/pricing/details/documentdb/).
-- `connection` : This string must be an **Application Setting** set to the endpoint for your DocumentDB account. If you choose your account from the **Integrate** tab, a new App setting will be created for you with a name that takes the following form, `yourAccount_DOCUMENTDB`. If you need to manually create the App setting, the actual connection string must take the following form, `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`. 
-- `direction` : must be set to *"out"*. 
+- `name`: 新しいドキュメントの関数コードで使用される変数名。
+- `type`: *"documentdb"* に設定する必要があります。
+- `databaseName`: 新しいドキュメントが作成されるコレクションを含むデータベース。
+- `collectionName`: 新しいドキュメントが作成されるコレクション。
+- `createIfNotExists`: これは、存在しない場合にコレクションを作成するかどうかを示すブール値です。既定値は *false* です。これは、新しいコレクションが予約済みのスループットで作成されるためです。これにより、価格に影響が及びます。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。
+- `connection`: この文字列は、DocumentDB アカウントのエンドポイントに設定された**アプリケーション設定**である必要があります。**[統合]** タブからアカウントを選択した場合、新しいアプリ設定が `yourAccount_DOCUMENTDB` という名前形式で自動的に作成されます。アプリ設定を手動で作成する必要がある場合は、実際の接続文字列を次の形式にする必要があります: `AccountEndpoint=<Endpoint for your account>;AccountKey=<Your primary access key>;`。
+- `direction` : *"out"* に設定する必要があります。
  
-Example function.json:
+function.json の例:
 
-    {
-      "bindings": [
-        {
-          "name": "document",
-          "type": "documentdb",
-          "databaseName": "MyDatabase",
-          "collectionName": "MyCollection",
-          "createIfNotExists": false,
-          "connection": "MyAccount_DOCUMENTDB",
-          "direction": "out"
-        }
-      ],
-      "disabled": false
-    }
+	{
+	  "bindings": [
+	    {
+	      "name": "document",
+	      "type": "documentdb",
+	      "databaseName": "MyDatabase",
+	      "collectionName": "MyCollection",
+	      "createIfNotExists": false,
+	      "connection": "MyAccount_DOCUMENTDB",
+	      "direction": "out"
+	    }
+	  ],
+	  "disabled": false
+	}
 
 
-#### <a name="azure-documentdb-output-code-example-for-a-node.js-queue-trigger"></a>Azure DocumentDB output code example for a Node.js queue trigger
+#### Azure DocumentDB 出力コード例 (Node.js キュー トリガー)
 
-    module.exports = function (context, input) {
-       
-        context.bindings.document = {
-            text : "I'm running in a Node function! Data: '" + input + "'"
-        }   
-     
-        context.done();
-    };
+	module.exports = function (context, input) {
+	   
+	    context.bindings.document = {
+	        text : "I'm running in a Node function! Data: '" + input + "'"
+	    }   
+	 
+	    context.done();
+	};
 
-The output document:
+出力ドキュメント:
 
-    {
-      "text": "I'm running in a Node function! Data: 'example queue data'",
-      "id": "01a817fe-f582-4839-b30c-fb32574ff13f"
-    }
+	{
+	  "text": "I'm running in a Node function! Data: 'example queue data'",
+	  "id": "01a817fe-f582-4839-b30c-fb32574ff13f"
+	}
  
 
-#### <a name="azure-documentdb-output-code-example-for-an-f#-queue-trigger"></a>Azure DocumentDB output code example for an F# queue trigger
+#### Azure DocumentDB 出力コード例 (F# キュー トリガー)
 
-    open FSharp.Interop.Dynamic
-    let Run(myQueueItem: string, document: obj) =
-        document?text <- (sprintf "I'm running in an F# function! %s" myQueueItem)
+	open FSharp.Interop.Dynamic
+	let Run(myQueueItem: string, document: obj) =
+	    document?text <- (sprintf "I'm running in an F# function! %s" myQueueItem)
 
-#### <a name="azure-documentdb-output-code-example-for-a-c#-queue-trigger"></a>Azure DocumentDB output code example for a C# queue trigger
-
-
-    using System;
-
-    public static void Run(string myQueueItem, out object document, TraceWriter log)
-    {
-        log.Info($"C# Queue trigger function processed: {myQueueItem}");
-       
-        document = new {
-            text = $"I'm running in a C# function! {myQueueItem}"
-        };
-    }
+#### Azure DocumentDB 出力コード例 (C# キュー トリガー)
 
 
-#### <a name="azure-documentdb-output-code-example-setting-file-name"></a>Azure DocumentDB output code example setting file name
+	using System;
 
-If you want to set the name of the document in the function, just set the `id` value.  For example, if JSON content for an employee was being dropped into the queue similar to the following:
+	public static void Run(string myQueueItem, out object document, TraceWriter log)
+	{
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+	   
+	    document = new {
+	        text = $"I'm running in a C# function! {myQueueItem}"
+	    };
+	}
 
-    {
-      "name" : "John Henry",
+
+#### ファイル名を設定する Azure DocumentDB 出力コード例
+
+関数でドキュメントの名前を設定するには、単に `id` 値を設定します。たとえば、従業員の JSON コンテンツが次のようなキューにドロップされた場合は、以下のようになります。
+
+	{
+	  "name" : "John Henry",
       "employeeId" : "123456",
-      "address" : "A town nearby"
-    }
+	  "address" : "A town nearby"
+	}
 
-You could use the following C# code in a queue trigger function: 
-    
-    #r "Newtonsoft.Json"
-    
-    using System;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    
-    public static void Run(string myQueueItem, out object employeeDocument, TraceWriter log)
-    {
-        log.Info($"C# Queue trigger function processed: {myQueueItem}");
-        
-        dynamic employee = JObject.Parse(myQueueItem);
-        
-        employeeDocument = new {
-            id = employee.name + "-" + employee.employeeId,
-            name = employee.name,
-            employeeId = employee.employeeId,
-            address = employee.address
-        };
-    }
+キュー トリガー関数で、次の C# コードを使用できます。
+	
+	#r "Newtonsoft.Json"
+	
+	using System;
+	using Newtonsoft.Json;
+	using Newtonsoft.Json.Linq;
+	
+	public static void Run(string myQueueItem, out object employeeDocument, TraceWriter log)
+	{
+	    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+	    
+	    dynamic employee = JObject.Parse(myQueueItem);
+	    
+	    employeeDocument = new {
+	        id = employee.name + "-" + employee.employeeId,
+	        name = employee.name,
+	        employeeId = employee.employeeId,
+	        address = employee.address
+	    };
+	}
 
-Or the equivalent F# code:
+または、次のような同等の F# コードを使用できます。
 
-    open FSharp.Interop.Dynamic
-    open Newtonsoft.Json
+	open FSharp.Interop.Dynamic
+	open Newtonsoft.Json
 
-    type Employee = {
-        id: string
-        name: string
-        employeeId: string
-        address: string
-    }
+	type Employee = {
+	    id: string
+	    name: string
+	    employeeId: string
+	    address: string
+	}
 
-    let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
-        log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
-        let employee = JObject.Parse(myQueueItem)
-        employeeDocument <-
-            { id = sprintf "%s-%s" employee?name employee?employeeId
-              name = employee?name
-              employeeId = employee?id
-              address = employee?address }
+	let Run(myQueueItem: string, employeeDocument: byref<obj>, log: TraceWriter) =
+	    log.Info(sprintf "F# Queue trigger function processed: %s" myQueueItem)
+	    let employee = JObject.Parse(myQueueItem)
+	    employeeDocument <-
+	        { id = sprintf "%s-%s" employee?name employee?employeeId
+	          name = employee?name
+	          employeeId = employee?id
+	          address = employee?address }
 
-Example output:
+出力例:
 
-    {
-      "id": "John Henry-123456",
-      "name": "John Henry",
-      "employeeId": "123456",
-      "address": "A town nearby"
-    }
+	{
+	  "id": "John Henry-123456",
+	  "name": "John Henry",
+	  "employeeId": "123456",
+	  "address": "A town nearby"
+	}
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[AZURE.INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
+[AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

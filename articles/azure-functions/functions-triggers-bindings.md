@@ -1,43 +1,38 @@
 <properties
-    pageTitle="Azure Functions triggers and bindings | Microsoft Azure"
-    description="Understand how to use triggers and bindings in Azure Functions."
-    services="functions"
-    documentationCenter="na"
-    authors="christopheranderson"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
+	pageTitle="Azure Functions triggers and bindings (Azure Functions のトリガーとバインド) | Microsoft Azure"
+	description="Azure Functions でトリガーとバインドを使用する方法を説明します。"
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
 
 <tags
-    ms.service="functions"
-    ms.devlang="multiple"
-    ms.topic="reference"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="08/27/2016"
-    ms.author="chrande"/>
+	ms.service="functions"
+	ms.devlang="multiple"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="08/27/2016"
+	ms.author="chrande"/>
 
+# Azure Functions のトリガーとバインドの開発者用リファレンス
 
-# <a name="azure-functions-triggers-and-bindings-developer-reference"></a>Azure Functions triggers and bindings developer reference
+以下の記事では、Azure Functions のトリガーとバインドを構成およびコード化する方法について説明します。この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」と [C#](functions-reference-csharp.md)、[F#](functions-reference-fsharp.md)、または [Node.js](functions-reference-node.md) の開発者向けリファレンスを既に読んでいることを前提としています。
 
-The following articles explain how to configure and code triggers and bindings in Azure Functions. The articles assume that you've read the [Azure Functions developer reference](functions-reference.md), and the [C#](functions-reference-csharp.md), [F#](functions-reference-fsharp.md), or [Node.js](functions-reference-node.md) developer reference articles.
+## トリガーとバインドの記事
 
-## <a name="triggers-and-bindings-articles"></a>Triggers and bindings articles
-
-Click on a trigger or binding listed below to learn more:
+詳細については、以下に列挙されているトリガーとバインドをクリックしてください。
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For more information, see the following resources:
+詳細については、次のリソースを参照してください。
 
-* [Testing a function](functions-test-a-function.md)
-* [Scale a function](functions-scale.md)
+* [関数のテスト](functions-test-a-function.md)
+* [関数のスケール](functions-scale.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

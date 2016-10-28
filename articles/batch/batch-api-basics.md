@@ -1,461 +1,459 @@
 <properties
-    pageTitle="Azure Batch feature overview for developers | Microsoft Azure"
-    description="Learn the features of the Batch service and its APIs from a development standpoint."
-    services="batch"
-    documentationCenter=".net"
-    authors="mmacy"
-    manager="timlt"
-    editor=""/>
+	pageTitle="開発者向け Azure Batch 機能の概要 | Microsoft Azure"
+	description="開発の観点から、Batch サービスとその API の機能について説明します。"
+	services="batch"
+	documentationCenter=".net"
+	authors="mmacy"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="batch"
-    ms.devlang="multiple"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.workload="big-compute"
-    ms.date="09/29/2016"
-    ms.author="marsma"/>
+	ms.service="batch"
+	ms.devlang="multiple"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="big-compute"
+	ms.date="09/29/2016"
+	ms.author="marsma"/>
 
+# 開発者向け Batch 機能の概要
 
-# <a name="batch-feature-overview-for-developers"></a>Batch feature overview for developers
+ここでは、Azure Batch サービスの主要コンポーネントについて簡単に紹介し、Batch を使って大規模な並列コンピューティング ソリューションを開発する際に利用できる主な機能とリソースについて取り上げます。
 
-In this overview of the core components of the Azure Batch service, we discuss the primary service features and resources that Batch developers can use to build large-scale parallel compute solutions.
+[REST][batch_rest_api] API を直接呼び出す分散コンピューティング アプリケーションまたはサービスを開発する場合も、いずれかの [Batch SDK](batch-technical-overview.md#batch-development-apis) を使う場合も、この記事で紹介するさまざまなリソースや機能を活用することができます。
 
-Whether you're developing a distributed computational application or service that issues direct [REST API][batch_rest_api] calls or you're using one of the [Batch SDKs](batch-technical-overview.md#batch-development-apis), you'll use many of the resources and features discussed in this article.
+> [AZURE.TIP] Batch サービスの基本については、「[Azure Batch の基礎](batch-technical-overview.md)」を参照してください。
 
-> [AZURE.TIP] For a higher-level introduction to the Batch service, see [Basics of Azure Batch](batch-technical-overview.md).
+## Batch サービスのワークフロー
 
-## <a name="batch-service-workflow"></a>Batch service workflow
+以下に示したのは、Batch サービスを使って並列ワークロードを処理するアプリケーションやサービスでほぼ例外なく使用する基本的なワークフローです。
 
-The following high-level workflow is typical of nearly all applications and services that use the Batch service for processing parallel workloads:
+1. 処理対象の**データ ファイル**を [Azure Storage][azure_storage] アカウントにアップロードします。Batch には、Azure Blob Storage へのアクセスのサポートが組み込まれており、これらのファイルは、タスクの実行時に[コンピューティング ノード](#compute-node)にダウンロードすることができます。
 
-1. Upload the **data files** that you want to process to an [Azure Storage][azure_storage] account. Batch includes built-in support for accessing Azure Blob storage, and your tasks can download these files to [compute nodes](#compute-node) when the tasks are run.
+2. タスクで実行する**アプリケーション ファイル**をアップロードします。たとえばジョブのタスクによって実行されるバイナリやスクリプト、さらには、その依存関係をアップロードできます。これらのファイルは、タスクによって Storage アカウントからダウンロードできます。また、Batch の[アプリケーション パッケージ](#application-packages)機能をアプリケーションの管理とデプロイに利用することもできます。
 
-2. Upload the **application files** that your tasks will run. These files can be binaries or scripts and their dependencies, and are executed by the tasks in your jobs. Your tasks can download these files from your Storage account, or you can use the [application packages](#application-packages) feature of Batch for application management and deployment.
+3. コンピューティング ノードの[プール](#pool)を作成します。プールを作成するときに、プールのコンピューティング ノードの数とサイズ、オペレーティング システムを指定します。ジョブに含まれる各タスクは、その実行時に、プール内のいずれかのノードで実行されるように割り当てられます。
 
-3. Create a [pool](#pool) of compute nodes. When you create a pool, you specify the number of compute nodes for the pool, their size, and the operating system. When each task in your job runs, it's assigned to execute on one of the nodes in your pool.
+4. [ジョブ](#job)を作成します。ジョブはタスクのコレクションを管理するものです。各ジョブは、ジョブのタスクの実行場所とする特定のプールに関連付けて使用します。
 
-4. Create a [job](#job). A job manages a collection of tasks. You associate each job to a specific pool where that job's tasks will run.
+5. ジョブに[タスク](#task)を追加します。各タスクは、アップロードされたアプリケーション (またはスクリプト) を実行し、ストレージ アカウントからダウンロードしたデータ ファイルを処理します。完了した各タスクは、その出力を Azure Storage にアップロードすることができます。
 
-5. Add [tasks](#task) to the job. Each task runs the application or script that you uploaded to process the data files it downloads from your Storage account. As each task completes, it can upload its output to Azure Storage.
+6. ジョブの進行状況を監視し、タスクの出力を Azure Storage から取得します。
 
-6. Monitor job progress and retrieve the task output from Azure Storage.
+次のセクションでは、これ以外にも、分散コンピューティングのシナリオを実現する Batch の各種リソースについて説明します。
 
-The following sections discuss these and the other resources of Batch that enable your distributed computational scenario.
+> [AZURE.NOTE] Batch サービスを利用するには、[Batch アカウント](batch-account-create-portal.md)が必要です。また、ほぼすべてのソリューションでファイルの保存と取得に [Azure Storage][azure_storage] アカウントが使用されています。「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類のみがサポートされています。
 
-> [AZURE.NOTE] You need a [Batch account](batch-account-create-portal.md) to use the Batch service. Also, nearly all solutions use an [Azure Storage][azure_storage] account for file storage and retrieval. Batch currently supports only the **General purpose** storage account type, as described in step 5 of [Create a storage account](../storage/storage-create-storage-account.md#create-a-storage-account) in [About Azure storage accounts](../storage/storage-create-storage-account.md).
+## Batch サービスのリソース
 
-## <a name="batch-service-resources"></a>Batch service resources
+以下に示すリソースのいくつか (アカウント、コンピューティング ノード、プール、ジョブ、タスク) は、Batch サービスを使用するすべてのソリューションで必須となります。ジョブ スケジュールやアプリケーション パッケージなど、有用ながらオプションの機能もあります。
 
-Some of the following resources--accounts, compute nodes, pools, jobs, and tasks--are required by all solutions that use the Batch service. Others, like job schedules and application packages, are helpful, but optional, features.
+- [アカウント](#account)
+- [コンピューティング ノード](#compute-node)
+- [プール](#pool)
+- [ジョブ](#job)
 
-- [Account](#account)
-- [Compute node](#compute-node)
-- [Pool](#pool)
-- [Job](#job)
+  - [ジョブ スケジュール](#scheduled-jobs)
 
-  - [Job schedules](#scheduled-jobs)
+- [タスク](#task)
 
-- [Task](#task)
-
-  - [Start task](#start-task)
-  - [Job manager task](#job-manager-task)
-  - [Job preparation and release tasks](#job-preparation-and-release-tasks)
-  - [Multi-instance task (MPI)](#multi-instance-tasks)
+  - [開始タスク](#start-task)
+  - [ジョブ マネージャー タスク](#job-manager-task)
+  - [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
+  - [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
   - [Task dependencies](#task-dependencies)
 
-- [Application packages](#application-packages)
+- [アプリケーション パッケージ](#application-packages)
 
-## <a name="account"></a>Account
+## Account
 
-A Batch account is a uniquely identified entity within the Batch service. All processing is associated with a Batch account. When you perform operations with the Batch service, you need both the account name and one of its account keys. You can [create an Azure Batch account using the Azure portal](batch-account-create-portal.md).
+Batch アカウントは、Batch サービス内で一意に識別されるエンティティです。すべての処理は、Batch アカウントに関連付けられています。Batch サービスで処理を実行するには、アカウント名とそのいずれかのアカウント キーの両方が必要です。[Azure Portal を使用して Azure Batch アカウントを作成](batch-account-create-portal.md)できます。
 
-## <a name="compute-node"></a>Compute node
+## コンピューティング ノード
 
-A compute node is an Azure virtual machine (VM) that is dedicated to processing a portion of your application's workload. The size of a node determines the number of CPU cores, memory capacity, and local file system size that is allocated to the node. You can create pools of Windows or Linux nodes by using either Azure Cloud Services or Virtual Machines Marketplace images. See the following [Pool](#pool) section for more information on these options.
+コンピューティング ノードは、アプリケーションのワークロードの処理に特化した Azure 仮想マシン (VM) です。ノードのサイズによって、CPU コアの数、メモリ容量、およびノードに割り当てられるローカル ファイル システムのサイズが決まります。Azure Cloud Services または Virtual Machines Marketplace イメージを使用して Windows ノードまたは Linux ノードのプールを作成することができます。これらの各オプションの詳細については、以下の「[プール](#pool)」セクションを参照してください。
 
-Nodes can run any executable or script that is supported by the operating system environment of the node. This includes \*.exe, \*.cmd, \*.bat and PowerShell scripts for Windows--and binaries, shell, and Python scripts for Linux.
+ノードは、そのオペレーティング システム環境が対応していれば、どのような実行可能ファイル (またはスクリプト) でも実行できます。たとえば、Windows なら *.exe、*.cmd、*.bat、PowerShell スクリプトを、Linux ならバイナリ、シェル、Python スクリプトを実行できます。
 
-All compute nodes in Batch also include:
+Batch のすべてのコンピューティング ノードには、次の要素が存在します。
 
-- A standard [folder structure](#files-and-directories) and associated [environment variables](#environment-settings-for-tasks) that are available for reference by tasks.
-- **Firewall** settings that are configured to control access.
-- [Remote access](#connecting-to-compute-nodes) to both Windows (Remote Desktop Protocol (RDP)) and Linux (Secure Shell (SSH)) nodes.
+- 標準的な[フォルダー構造](#files-and-directories)と、それに関連付けられた (タスクから参照できる) [環境変数](#environment-settings-for-tasks)。
+- アクセスを制御するために構成される**ファイアウォール**設定。
+- Windows (リモート デスクトップ プロトコル (RDP)) ノードと Linux (Secure Shell (SSH)) ノードの両方に対する[リモート アクセス](#connecting-to-compute-nodes)。
 
-## <a name="pool"></a>Pool
+## プール
 
-A pool is a collection of nodes that your application runs on. The pool can be created manually by you, or automatically by the Batch service when you specify the work to be done. You can create and manage a pool that meets the resource requirements of your application. A pool can be used only by the Batch account in which it was created. A Batch account can have more than one pool.
+プールは、アプリケーションが実行されるノードのコレクションです。プールは手動で作成できるほか、実行する操作を指定した場合は Batch サービスによって自動的に作成されます。アプリケーションのリソース要件を満たすプールを作成して管理することができます。プールは、そのプールを作成した Batch アカウントのみが使用できます。1 つの Batch アカウントで複数のプールを持つことができます。
 
-Azure Batch pools build on top of the core Azure compute platform. They provide large-scale allocation, application installation, data distribution, health monitoring, and flexible adjustment of the number of compute nodes within a pool ([scaling](#scaling-compute-resources)).
+Azure Batch プールは、コア Azure コンピューティング プラットフォームの上に構築されます。Batch プールによって、大規模な割り当て、アプリケーションのインストール、データの分散、状態の監視、プール内のコンピューティング ノード数の柔軟な調整 ([スケーリング](#scaling-compute-resources)) が可能になります。
 
-Every node that is added to a pool is assigned a unique name and IP address. When a node is removed from a pool, any changes that are made to the operating system or files are lost, and its name and IP address are released for future use. When a node leaves a pool, its lifetime is over.
+プールに追加されたすべてのノードに対し、一意の名前と IP アドレスが割り当てられます。ノードがプールから削除されると、オペレーティング システムまたはファイルに加えられた変更は失われ、将来使用できるように名前と IP アドレスが解放されます。ノードをプールから削除すると、その有効期間が終了します。
 
-When you create a pool, you can specify the following attributes:
+プールを作成するときに次の属性を指定できます。
 
-- Compute node **operating system** and **version**
+- コンピューティング ノードの**オペレーティング システム**と**バージョン**
 
-    You have two options when you select an operating system for the nodes in your pool: **Virtual Machine Configuration** and **Cloud Services Configuration**.
+	プール内のノードに使用するオペレーティング システムには、**仮想マシンの構成**と **Cloud Services の構成**という 2 つの選択肢があります。
 
-    **Virtual Machine Configuration** provides both Linux and Windows images for compute nodes from the [Azure Virtual Machines Marketplace][vm_marketplace].
-    When you create a pool that contains Virtual Machine Configuration nodes, you must specify not only the size of the nodes, but also the **virtual machine image reference** and the Batch **node agent SKU** to be installed on the nodes. For more information about specifying these pool properties, see [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md).
+	**仮想マシンの構成**では、[Azure Virtual Machines Marketplace][vm_marketplace] から Linux と Windows の両方のコンピューティング ノード イメージが提供されます。仮想マシンの構成ノードを含むプールを作成する場合は、ノードのサイズだけでなく、ノードにインストールする**仮想マシン イメージの参照**と Batch **ノード エージェント SKU** も指定する必要があります。プールに関するこれらのプロパティの指定の詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
 
-    **Cloud Services Configuration** provides Windows compute nodes *only*. Available operating systems for Cloud Services Configuration pools are listed in the [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md). When you create a pool that contains Cloud Services nodes, you need to specify only the node size and its *OS Family*. When you create pools of Windows compute nodes, you most commonly use Cloud Services.
+	**Cloud Services の構成**では、Windows コンピューティング ノード*のみ*が提供されます。Cloud Services 構成プールで使用可能なオペレーティング システムは、「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」に一覧が掲載されています。Cloud Services ノードを含むプールを作成する場合は、ノード サイズとその *OS ファミリ*のみを指定する必要があります。Windows コンピューティング ノードのプールを作成する場合は、Cloud Services が最もよく使用されます。
 
-    - The *OS Family* also determines which versions of .NET are installed with the OS.
-    - As with worker roles within Cloud Services, you can specify an *OS Version* (for more information on worker roles, see the [Tell me about cloud services](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services) section in the [Cloud Services overview](../cloud-services/cloud-services-choose-me.md)).
-    - As with worker roles, we recommend that you specify `*` for the *OS Version* so that the nodes are automatically upgraded, and there is no work required to cater to newly released versions. The primary use case for selecting a specific OS version is to ensure application compatibility, which allows backward compatibility testing to be performed before allowing the version to be updated. After validation, the *OS Version* for the pool can be updated and the new OS image can be installed--any running tasks are interrupted and requeued.
+    - *OS ファミリ*によって、OS と同時にインストールされる .NET のバージョンも決まります。
+	- Cloud Services 内の worker ロールと同様、*OS バージョン*を指定できます (worker ロールの詳細については、[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページの「[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services)」セクションを参照してください)。
+    - worker ロールの場合と同様に、*OS バージョン*には "`*`" を指定することをお勧めします。これにより、ノードは自動的にアップグレードされ、新たにリリースされたバージョンに対応するための作業が不要になります。特定の OS バージョンを選択するのは、主にアプリケーションの互換性を確保する必要がある場合です。こうすることで、バージョンの更新を許可する前に旧バージョンとの互換性をテストできます。検証が終わると、プールの *OS バージョン*を更新して、新しい OS イメージをインストールできます。その際、実行中のタスクはすべて中断され、再びキューに置かれます。
 
-- **Size of the nodes**
+- **ノードのサイズ**
 
-    **Cloud Services Configuration** compute node sizes are listed in [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md). Batch supports all Cloud Services sizes except `ExtraSmall`.
+	**Cloud Services の構成**のコンピューティング ノードのサイズについては、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。Batch は、`ExtraSmall` を除くすべての Cloud Services サイズに対応しています。
 
-    **Virtual Machine Configuration** compute node sizes are listed in [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-linux-sizes.md) (Linux) and [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-windows-sizes.md) (Windows). Batch supports all Azure VM sizes except `STANDARD_A0` and those with premium storage (`STANDARD_GS`, `STANDARD_DS`, and `STANDARD_DSV2` series).
+	**仮想マシンの構成**のコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」(Windows) を参照してください。Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。
 
-    When selecting a compute node size, consider the characteristics and requirements of the applications you'll run on the nodes. Aspects like whether the application is multithreaded and how much memory it consumes can help determine the most suitable and cost-effective node size. It's typical to select a node size assuming one task will run on a node at a time. However, it is possible to have multiple tasks (and therefore multiple application instances) [run in parallel](batch-parallel-node-tasks.md) on compute nodes during job execution. In this case, it is common to choose a larger node size to accommodate the increased demand of parallel task execution. See [Task scheduling policy](#task-scheduling-policy) for more information.
+	コンピューティング ノードのサイズを選択するときは、ノード上で実行するアプリケーションの特性と要件を考慮してください。アプリケーションがマルチスレッドであるかどうかや、どのくらいのメモリが消費されるかという点が、最も適切でコスト効率の高いノード サイズを選ぶうえでのヒントになります。ノードのサイズは、そこで一度に実行されるタスクが 1 つであるという想定で選択するのが一般的です。しかしジョブの実行中には、コンピューティング ノードで複数のタスク (ひいては複数のアプリケーション インスタンス) が[並列実行](batch-parallel-node-tasks.md)される可能性もあります。そのような場合は、タスクを並列に実行するという需要の増大に対応するために、より大きなノード サイズを選ぶことが基本です。詳細については、「[タスクのスケジューリング ポリシー](#task-scheduling-policy)」を参照してください。
 
-    All of the nodes in a pool are the same size. If intend to run applications with differing system requirements and/or load levels, we recommend that you use separate pools.
+	同じプール内のノードはすべて同じサイズとなります。システム要件や負荷水準の異なる複数のアプリケーションを実行する場合は、プールを分けることをお勧めします。
 
-- **Target number of nodes**
+- **ターゲット ノード数**
 
-    This is the number of compute nodes that you want to deploy in the pool. This is referred to as a *target* because, in some situations, your pool might not reach the desired number of nodes. A pool might not reach the desired number of nodes if it reaches the [core quota](batch-quota-limit.md#batch-account-quotas) for your Batch account--or if there is an auto-scaling formula that you have applied to the pool that limits the maximum number of nodes (see the following "Scaling policy" section).
+	これは、プールにデプロイしたいと考えるコンピューティング ノードの数です。"*ターゲット*" (目標) と呼ばれているのは、状況によってはプールのノード数がその目標に達しない可能性もあるためです。目標とするノード数をプールが下回る原因としては、Batch アカウントの[コア クォータ](batch-quota-limit.md#batch-account-quotas)に達していたり、そのプールに適用した自動スケール式によって最大ノード数が制限されていたりすることが考えられます (以下の「スケーリング ポリシー」セクションを参照)。
 
-- **Scaling policy**
+- **スケーリング ポリシー**
 
-    In addition to specifying a static number of nodes, you can instead write and apply an [auto-scaling formula](#scaling-compute-resources) to a pool. The Batch service periodically evaluates your formula and adjusts the number of nodes within the pool based on various pool, job, and task parameters that you can specify.
+	ノード数は、固定的に指定するだけでなく、[自動スケール式](#scaling-compute-resources)を作成してプールに適用することで指定することもできます。Batch サービスが、その式を定期的に評価し、プール、ジョブ、タスクに関して指定されている各種パラメーターに基づいてプール内のノード数を調整します。
 
-- **Task scheduling policy**
+- **タスクのスケジューリング ポリシー**
 
-    The [max tasks per node](batch-parallel-node-tasks.md) configuration option determines the maximum number of tasks that can be run in parallel on each compute node within the pool.
+	プール内の各コンピューティング ノードで並列実行できるタスク数は、[ノードあたりの最大タスク数](batch-parallel-node-tasks.md)の構成オプションによって上限が決まります。
 
-    The default configuration is that one task at a time runs on a node, but there are scenarios where it is beneficial to have more than one task executed on a node simultaneously. See the [example scenario](batch-parallel-node-tasks.md#example-scenario) in the [concurrent node tasks](batch-parallel-node-tasks.md) article to see how you can benefit from multiple tasks per node.
+	既定の構成では、1 つのノードで一度に実行されるタスクは 1 つですが、1 つのノードで複数のタスクを同時に実行した方が都合のよい場合もあります。1 つのノードで複数のタスクを実行することで得られる具体的なメリットについては、[ノードのタスクの同時実行](batch-parallel-node-tasks.md)に関する記事の「[サンプル シナリオ](batch-parallel-node-tasks.md#example-scenario)」を参照してください。
 
-    You can also specify a *fill type* which determines whether Batch spreads the tasks evenly across all nodes in a pool, or packs each node with the maximum number of tasks before assigning tasks to another node.
+	Batch でプール内のすべてのノードにタスクを均等に配分するか、1 つのノードに最大数のタスクを割り当ててから次のノードにタスクを割り当てていくかを明示的に指定することもできます。これは "*フィルの種類*" を指定することによって行います。
 
-- **Communication status** of compute nodes
+- コンピューティング ノードの**通信ステータス**
 
-    In most scenarios, tasks operate independently and do not need to communicate with one another. However, there are some applications in which tasks must communicate, like [MPI scenarios](batch-mpi.md).
+	ほとんどのシナリオでは、タスクは独立して動作し、相互に通信する必要はありません。ただし、タスク間の通信が必要なアプリケーションも一部存在します ([MPI のシナリオ](batch-mpi.md)でのアプリケーションなど).
 
-    You can configure a pool to allow communication between the nodes within it--**internode communication**. When internode communication is enabled, nodes in Cloud Services Configuration pools can communicate with each other on ports greater than 1100, and Virtual Machine Configuration pools do not restrict traffic on any port.
+	プール内の**ノード間通信**を許可するようにプールを構成することができます。ノード間通信が有効であるとき、Cloud Services の構成のプール内のノードは、1100 を超える番号のポートで互いに通信を行うことができます。仮想マシンの構成のプールでは、いずれかのポートにトラフィックが制限されることはありません。
 
-    Note that enabling internode communication also impacts the placement of the nodes within clusters and might limit the maximum number of nodes in a pool because of deployment restrictions. If your application does not require communication between nodes, the Batch service can allocate a potentially large number of nodes to the pool from many different clusters and datacenters to enable increased parallel processing power.
+	ノード間通信を有効にすると、クラスター内のノードの配置にも影響が生じるので注意してください。デプロイの制限上、プール内の最大ノード数が制限される場合もあります。アプリケーションがノード間の通信を必要としない場合、Batch サービスは多くの別のクラスターおよびデータ センターのプールに大量のノードを割り当てることにより、並列処理能力を向上させることができます。
 
-- **Start task** for compute nodes
+- コンピューティング ノードの**開始タスク**
 
-    The optional *start task* executes on each node as that node joins the pool, and each time a node is restarted or reimaged. The start task is especially useful for preparing compute nodes for the execution of tasks, like installing the applications that your tasks run on the compute nodes.
+	"*開始タスク*" (省略可) は、各ノードがプールに追加されたときにそれぞれのノードで実行されます。また、ノードが再起動されたり再イメージ化されたりするたびに、各ノードで開始タスクが実行されます。開始タスクは、タスクの実行に使用するコンピューティング ノードを準備する (タスクによってコンピューティング ノードで実行されるアプリケーションをインストールするなど) 場合に特に有効です。
 
-- **Application packages**
+- **アプリケーション パッケージ**
 
-    You can specify [application packages](#application-packages) to deploy to the compute nodes in the pool. Application packages provide simplified deployment and versioning of the applications that your tasks run. Application packages that you specify for a pool are installed on every node that joins that pool, and every time a node is rebooted or reimaged. Application packages are currently unsupported on Linux compute nodes.
+	プール内のコンピューティング ノードにデプロイする[アプリケーション パッケージ](#application-packages)を指定できます。アプリケーション パッケージにより、タスクによって実行されるアプリケーションのデプロイとバージョン管理がシンプルになります。プールに指定したアプリケーション パッケージは、そのプールに参加しているすべてのノードにインストールされます。また、ノードが再起動または再イメージ化されるたびにインストールされます。アプリケーション パッケージは、Linux コンピューティング ノードでは現在サポートされていません。
 
-- **Network configuration**
+- **ネットワーク構成**
 
-    You can specify the ID of an Azure [virtual network (VNet)](../virtual-network/virtual-networks-overview.md) in which the pool's compute nodes should be created. Requirements for specifying a VNet for your pool can be found in [Add a pool to an account][vnet] in the Batch REST API reference.
+	プールのコンピューティング ノードを作成する必要のある Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) の ID を指定できます。プール内の VNet を指定するうえでの要件は、Batch REST API リファレンスの「[Add a pool to an account (アカウントへのプールの追加)][vnet]」で確認できます。
 
-> [AZURE.IMPORTANT] All Batch accounts have a default **quota** that limits the number of **cores** (and thus, compute nodes) in a Batch account. You can find the default quotas and instructions on how to [increase a quota](batch-quota-limit.md#increase-a-quota) (such as the maximum number of cores in your Batch account) in [Quotas and limits for the Azure Batch service](batch-quota-limit.md). If you find yourself asking "Why won't my pool reach more than X nodes?" this core quota might be the cause.
+> [AZURE.IMPORTANT] すべての Batch アカウントには、1 つの Batch アカウントで使用できる**コア**数 (つまりコンピューティング ノード数) に上限を設ける既定の**クォータ**が割り当てられています。既定のクォータと、[クォータを増やす](batch-quota-limit.md#increase-a-quota)手順 (Batch アカウントの最大コア数を増やす方法など) については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。なぜかプール内のノードが一定数を超えない、と疑問を感じている場合、このコア クォータが原因である可能性があります。
 
-## <a name="job"></a>Job
+## ジョブ
 
-A job is a collection of tasks. It manages how computation is performed by its tasks on the compute nodes in a pool.
+ジョブはタスクのコレクションです。プール内のコンピューティング ノード上で行う計算をそれらのタスクでどのように実行するかを管理します。
 
-- The job specifies the **pool** in which the work is to be run. You can create a new pool for each job, or use one pool for many jobs. You can create a pool for each job that is associated with a job schedule, or for all jobs that are associated with a job schedule.
+- ジョブによって、作業が実行される**プール**を指定します。ジョブごとに新しくプールを作成できるほか、多数のジョブに対して 1 つのプールを使用することもできます。ジョブ スケジュールに関連付けられているジョブごとにプールを作成するか、ジョブ スケジュールに関連付けられているすべてのジョブに対してプールを作成してください。
 
-- You can specify an optional **job priority**. When a job is submitted with a higher priority than jobs that are currently in progress, the tasks for the higher-priority job are inserted into the queue ahead of tasks for the lower-priority jobs. Tasks in lower-priority jobs that are already running are not preempted.
+- 必要に応じて**ジョブの優先順位**を指定できます。現在処理中のジョブよりも優先順位の高いジョブが送信されると、優先順位の高いジョブのタスクが、優先順位の低いジョブのタスクよりも先のキューに挿入されます。既に実行されている優先順位の低いジョブのタスクが、優先順位の高いタスクに入れ替わることはありません。
 
-- You can use job **constraints** to specify certain limits for your jobs:
+- ジョブに対する特定の制限は、ジョブの**制約**を使用して指定できます。
 
-    You can set a **maximum wallclock time**, so that if a job runs for longer than the maximum wallclock time that is specified, the job and all of its tasks are terminated.
+	**最大実時間**を設定できます。この場合、ジョブの実行時間が、指定された最大実時間を超えると、ジョブとそのすべてのタスクが強制的に終了されます。
 
-    Batch can detect and then retry failed tasks. You can specify the **maximum number of task retries** as a constraint, including whether a task is *always* or *never* retried. Retrying a task means that the task is requeued to be run again.
+	失敗したタスクは Batch によって検出され、再試行されます。**タスク再試行の最大回数**を制約として指定できます。タスクを "*常に*" 再試行するように指定したり、再試行を "*禁止*" したりすることもできます。タスクの再試行とは、タスクをもう一度実行するためにキューに置くことです。
 
-- Your client application can add tasks to a job, or you can specify a [job manager task](#job-manager-task). A job manager task contains the information that is necessary to create the required tasks for a job, with the job manager task being run on one of the compute nodes in the pool. The job manager task is handled specifically by Batch--it is queued as soon as the job is created, and is restarted if it fails. A job manager task is *required* for jobs that are created by a [job schedule](#scheduled-jobs) because it is the only way to define the tasks before the job is instantiated.
+- クライアント アプリケーションでジョブにタスクを追加するか、[ジョブ マネージャー タスク](#job-manager-task)を指定することができます。ジョブ マネージャー タスクには、ジョブに必要なタスクを作成するための情報と、プール内のいずれかのコンピューティング ノードで実行されているジョブ マネージャー タスクが含まれます。ジョブ マネージャー タスクは Batch によってのみ処理されます。ジョブが作成されるとすぐにキューに配置され、失敗すると再開されます。[ジョブ スケジュール](#scheduled-jobs)によって作成されたジョブには、ジョブ マネージャー タスクが "*必要*" です。ジョブ マネージャー タスク以外では、ジョブがインスタンス化される前にタスクを定義できないためです。
 
-- By default, jobs remain in the active state when all tasks within the job are complete. You can change this behavior so that the job is automatically terminated when all tasks in the job are complete. Set the job's **onAllTasksComplete** property ([OnAllTasksComplete][net_onalltaskscomplete] in Batch .NET) to *terminatejob* to automatically terminate the job when all of its tasks are in the completed state.
+- 既定では、ジョブ内のすべてのタスクが完了しても、ジョブはアクティブな状態のままとなります。この動作は変更可能です。ジョブ内のすべてのタスクが完了したときにジョブが自動的に終了するように設定できます。ジョブの **onAllTasksComplete** プロパティ (Batch .NET の [OnAllTasksComplete][net_onalltaskscomplete]) を *terminatejob* に変更することで、ジョブのすべてのタスクが完了状態になったときに、ジョブを自動的に終了することができます。
 
-    Note that the Batch service considers a job with *no* tasks to have all of its tasks completed. Therefore, this option is most commonly used with a [job manager task](#job-manager-task). If you want to use automatic job termination without a job manager, you should initially set a new job's **onAllTasksComplete** property to *noaction*, then set it to *terminatejob* only after you've finished adding tasks to the job.
+	Batch サービスは、タスクの "*ない*" ジョブを考慮して、そのすべてのタスクを完了させます。したがって、このオプションは、[ジョブ マネージャー タスク](#job-manager-task)で最も一般的に使用されます。ジョブ マネージャーを使用せずにジョブの自動終了を使用するには、最初に新しいジョブの **onAllTasksComplete** プロパティを *noaction* に設定し、ジョブにタスクを追加し終えた後でのみ *terminatejob* に設定する必要があります。
 
-### <a name="job-priority"></a>Job priority
+### ジョブの優先順位
 
-You can assign a priority to jobs that you create in Batch. The Batch service uses the priority value of the job to determine the order of job scheduling within an account (this is not to be confused with a [scheduled job](#scheduled-jobs)). The priority values range from -1000 to 1000, with -1000 being the lowest priority and 1000 being the highest. You can update the priority of a job by using the [Update the properties of a job][rest_update_job] operation (Batch REST) or by modifying the [CloudJob.Priority][net_cloudjob_priority] property (Batch .NET).
+Batch で作成するジョブには、優先順位を割り当てることができます。Batch サービスは、ジョブの優先順位値を使用して、アカウント内のジョブ スケジューリングの順序を決定します ([スケジュールされたジョブ](#scheduled-jobs)と混同しないでください)。優先順位として、-1000 ～ 1000 の値を使用します。-1000 は最も低い優先順位を示し、1000 は最も高い優先順位を示します。ジョブの優先順位を更新するには、[ジョブのプロパティの更新][rest_update_job]操作 (Batch REST) を使用するか、[CloudJob.Priority][net_cloudjob_priority] プロパティ (Batch .NET) を変更します。
 
-Within the same account, higher-priority jobs have scheduling precedence over lower-priority jobs. A job with a higher-priority value in one account does not have scheduling precedence over another job with a lower-priority value in a different account.
+同じアカウント内で、優先順位の高いジョブは優先順位の低いジョブよりも優先的にスケジュールされます。あるアカウントの優先順位値が高いジョブが、異なるアカウントの優先順位値が低い別のジョブよりも優先的にスケジュールされることはありません。
 
-Job scheduling across pools is independent. Between different pools, it is not guaranteed that a higher-priority job is scheduled first if its associated pool is short of idle nodes. In the same pool, jobs with the same priority level have an equal chance of being scheduled.
+複数のプールにわたるジョブ スケジューリングは、独立しています。異なるプール間では、関連するそのプールでアイドル状態のノードが不足している場合、優先順位の高い方のジョブが最初にスケジュールされるとは限りません。同じプール内のジョブの場合、優先順位が同じであれば、スケジュールされる可能性は等しくなります。
 
-### <a name="scheduled-jobs"></a>Scheduled jobs
+### スケジュールされたジョブ
 
-[Job schedules][rest_job_schedules] enable you to create recurring jobs within the Batch service. A job schedule specifies when to run jobs and includes the specifications for the jobs to be run. You can specify the duration of the schedule--how long and when the schedule is in effect--and how often during that time period that jobs should be created.
+[ジョブ スケジュール][rest_job_schedules]を使用すると、Batch サービス内に、繰り返し発生するジョブを作成することができます。ジョブ スケジュールは、ジョブをいつ実行するかを指定し、実行されるジョブの仕様を持っています。スケジュールがいつ有効になって、どのくらいの期間有効であるかというスケジュール期間と、その期間中にどのくらいの頻度でジョブを作成するかを指定することができます。
 
-## <a name="task"></a>Task
+## タスク
 
-A task is a unit of computation that is associated with a job. It runs on a node. Tasks are assigned to a node for execution, or are queued until a node becomes free. Put simply, a task runs one or more programs or scripts on a compute node to perform the work you need done.
+タスクは、ジョブに関連付けられた計算の単位です。タスクはノードで実行されます。タスクはノードに割り当てられて実行されるか、ノードが解放されるまでキューに格納されます。つまりコンピューティング ノード上にある 1 つ以上のプログラム (またはスクリプト) をタスクが実行することによって、必要な作業が遂行されます。
 
-When you create a task, you can specify:
+タスクを作成するときに、次の情報を指定できます。
 
-- The **command line** of the task. This is the command line that runs your application or script on the compute node.
+- タスクの**コマンド ライン**。コンピューティング ノード上のアプリケーションまたはスクリプトを実行するコマンド ラインとして使用されます。
 
-    It is important to note that the command line does not actually run under a shell. Therefore, it cannot natively take advantage of shell features like [environment variable](#environment-settings-for-tasks) expansion (this includes the `PATH`). To take advantage of such features, you must invoke the shell in the command line--for example, by launching `cmd.exe` on Windows nodes or `/bin/sh` on Linux:
+	実際にシェルでコマンド ラインが実行されるわけではないので注意してください。そのため、`PATH` を含む[環境変数](#environment-settings-for-tasks)の展開など、シェルの機能をネイティブに利用することはできません。こうした機能を利用するには、コマンド ラインでシェルを呼び出す必要があります。たとえば、次のように Windows ノードでは `cmd.exe` を、Linux では `/bin/sh` を起動します。
 
-    `cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
+	`cmd /c MyTaskApplication.exe %MY_ENV_VAR%`
 
-    `/bin/sh -c MyTaskApplication $MY_ENV_VAR`
+	`/bin/sh -c MyTaskApplication $MY_ENV_VAR`
 
-    If your tasks need to run an application or script that is not in the node's `PATH` or reference environment variables, invoke the shell explicitly in the task command line.
+	ノードの `PATH` や参照用の環境変数に存在しないアプリケーションまたはスクリプトをタスクで実行する必要がある場合は、タスクのコマンド ラインからシェルを明示的に呼び出してください。
 
-- **Resource files** that contain the data to be processed. These files are automatically copied to the node from Blob storage in a **General purpose** Azure Storage account before the task's command line is executed. For more information, see the sections [Start task](#start-task) and [Files and directories](#files-and-directories).
+- 処理するデータを含む**リソース ファイル**。これらのファイルは、タスクのコマンド ラインが実行される前に、**汎用**の Azure Storage アカウントの Blob Storage からノードに自動的にコピーされます。詳細については、「[開始タスク](#start-task)」と「[ファイルとディレクトリ](#files-and-directories)」の各セクションを参照してください。
 
-- The **environment variables** that are required by your application. For more information, see the [Environment settings for tasks](#environment-settings-for-tasks) section.
+- アプリケーションで必要な**環境変数**。詳細については、「[タスクの環境設定](#environment-settings-for-tasks)」セクションを参照してください。
 
-- The **constraints** under which the task should execute. For example, the maximum time that the task is allowed to run, the maximum number of times a failed task should be retried, and the maximum time that files in the task's working directory are retained.
+- タスクを実行する際の**制約**。たとえば、タスクの実行が許可される最大時間、タスクが失敗した場合に再試行する最大回数、タスクの作業ディレクトリにファイルを保持する最大時間などです。
 
-- **Application packages** to deploy to the compute node on which the task is scheduled to run. [Application packages](#application-packages) provide simplified deployment and versioning of the applications that your tasks run. Task-level application packages are especially useful in shared-pool environments, where different jobs are run on one pool, and the pool is not deleted when a job is completed. If your job has fewer tasks than nodes in the pool, task application packages can minimize data transfer since your application is deployed only to the nodes that run tasks.
+- タスクの実行がスケジュールされているコンピューティング ノードにデプロイする**アプリケーション パッケージ**。[アプリケーション パッケージ](#application-packages)により、タスクによって実行されるアプリケーションのデプロイとバージョン管理がシンプルになります。タスクレベルのアプリケーション パッケージは共有プール環境では特に便利です。この環境では、さまざまなジョブが 1 つのプールで実行され、ジョブが完了してもプールは削除されません。ジョブ内のタスクがプール内のノードよりも少ない場合は、タスクのアプリケーション パッケージによりデータ転送を最小限に抑えることができます。アプリケーションはタスクが実行されるノードにのみデプロイされるためです。
 
-In addition to tasks you define to perform computation on a node, the following special tasks are also provided by the Batch service:
+Batch サービスには、ノードで計算を実行するために定義するタスクに加えて、次のような特殊なタスクも用意されています。
 
-- [Start task](#start-task)
-- [Job manager task](#job-manager-task)
-- [Job preparation and release tasks](#job-preparation-and-release-tasks)
-- [Multi-instance tasks (MPI)](#multi-instance-tasks)
-- [Task dependencies](#task-dependencies)
+- [開始タスク](#start-task)
+- [ジョブ マネージャー タスク](#job-manager-task)
+- [ジョブ準備タスクおよびジョブ解放タスク](#job-preparation-and-release-tasks)
+- [マルチインスタンス タスク (MPI)](#multi-instance-tasks)
+- [タスクの依存関係](#task-dependencies)
 
-### <a name="start-task"></a>Start task
+### 開始タスク
 
-By associating a **start task** with a pool, you can prepare the operating environment of its nodes. For example, you can perform actions like installing the applications that your tasks run, and starting background processes. The start task runs every time a node starts, for as long as it remains in the pool--including when the node is first added to the pool and when it is restarted or reimaged.
+**開始タスク**をプールに関連付けることによって、ノードの動作環境を準備できます。たとえば、タスクで実行するアプリケーションのインストールやバックグラウンド プロセスの開始などのアクションを実行できます。開始タスクは、プール内に保持されている限り、ノードが起動されるたびに実行されます。ノードが最初にプールに追加されたときや、ノードが再起動されたとき、ノードが再イメージ化されたときにも実行されます。
 
-A primary benefit of the start task is that it can contain all of the information that is necessary to configure a compute node and install the applications that are required for task execution. Therefore, increasing the number of nodes in a pool is as simple as specifying the new target node count--Batch already has the information that is needed to configure the new nodes and get them ready for accepting tasks.
+開始タスクの主な利点は、タスクの実行に不可欠なコンピューティング ノードの構成とアプリケーションのインストールを行うために、必要なすべての情報をそこに集約できることです。そのため、プール内のノード数を増やすには、新しいターゲット ノードの数を指定するだけで済みます。新しいノードの構成と、タスクを受け付けるための準備に必要な情報は、Batch が既に持っています。
 
-As with any Azure Batch task, you can specify a list of **resource files** in [Azure Storage][azure_storage], in addition to a **command line** to be executed. Batch first copies the resource files to the node from Azure Storage, and then runs the command line. For a pool start task, the file list typically contains the task application and its dependencies.
+すべての Azure Batch タスクと同様、実行する**コマンド ライン**のほかに、[Azure Storage][azure_storage] 内の**リソース ファイル**の一覧を指定できます。Batch は、リソース ファイルを Azure Storage からノードにコピーした後でコマンド ラインを実行します。プールの開始タスクの場合、このファイル一覧にはタスクのアプリケーションとその依存関係を含めるのが一般的です。
 
-However, it could also include reference data to be used by all tasks that are running on the compute node. For example, a start task's command line could perform a `robocopy` operation to copy application files (which were specified as resource files and downloaded to the node) from the start task's [working directory](#files-and-directories) to the [shared folder](#files-and-directories), and then run an MSI or `setup.exe`.
+ただし、コンピューティング ノードで実行されるすべてのタスク用の参照データを含めることもできます。たとえば、開始タスクのコマンド ラインで `robocopy` 操作を実行し、(リソース ファイルとして指定され、ノードにダウンロードされた) アプリケーション ファイルを開始タスクの[作業ディレクトリ](#files-and-directories)から[共有フォルダー](#files-and-directories)にコピーしたうえで、MSI または `setup.exe` を実行することができます。
 
-> [AZURE.IMPORTANT] Batch currently supports *only* the **General purpose** storage account type, as described in step 5 of [Create a storage account](../storage/storage-create-storage-account.md#create-a-storage-account) in [About Azure storage accounts](../storage/storage-create-storage-account.md). Your Batch tasks (including standard tasks, start tasks, job preparation tasks, and job release tasks) must specify resource files that reside *only* in **General purpose** storage accounts.
+> [AZURE.IMPORTANT] 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類 "*のみ*" がサポートされています。Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では、**汎用**のストレージ アカウント "*のみ*" に存在するリソース ファイルを指定する必要があります。
 
-It is typically desirable for the Batch service to wait for the start task to complete before considering the node ready to be assigned tasks, but you can configure this.
+一般的には、Batch サービスが開始タスクの完了まで待ってから、タスクを割り当てられる状態になっているノードを判断することが望ましいものの、これは構成可能です。
 
-If a start task fails on a compute node, then the state of the node is updated to reflect the failure, and the node is not assigned any tasks. A start task can fail if there is an issue copying its resource files from storage, or if the process executed by its command line returns a nonzero exit code.
+コンピューティング ノードで開始タスクが失敗した場合、そのノードはエラーを表す状態に更新され、そのノードには一切タスクが割り当てられなくなります。ストレージからのリソース ファイルのコピーに問題があったり、コマンド ラインで実行されたプロセスからゼロ以外の終了コードが返されたりした場合に、開始タスクは失敗することがあります。
 
-If you add or update the start task for an *existing* pool, you must reboot its compute nodes for the start task to be applied to the nodes.
+"*既存*" のプールの開始タスクを追加または更新するには、そのコンピューティング ノードを再起動して、開始タスクがノードに適用されるようにする必要があります。
 
-### <a name="job-manager-task"></a>Job manager task
+### ジョブ マネージャー タスク
 
-You typically use a **job manager task** to control and/or monitor job execution--for example, to create and submit the tasks for a job, determine additional tasks to run, and determine when work is complete. However, a job manager task is not restricted to these activities. It is a fully fledged task that can perform any actions that are required for the job. For example, a job manager task might download a file that is specified as a parameter, analyze the contents of that file, and submit additional tasks based on those contents.
+**ジョブ マネージャー タスク**の通常の用途は、ジョブの実行の制御や監視です。たとえば、ジョブに対してタスクを作成および送信する場合や、追加で実行するタスクを決める場合、どの時点で作業が完了するかを決める場合などに使用します。ただし、ジョブ マネージャー タスクはこのようなアクティビティだけに限定されるものではなく、ジョブに必要なすべてのアクションを実行できる、高機能タスクです。たとえば、ジョブ マネージャー タスクでは、パラメーターとして指定されたファイルをダウンロードし、ファイルの内容を分析して、その内容に基づいた追加のタスクを送信することができます。
 
-A job manager task is started before all other tasks. It provides the following features:
+ジョブ マネージャー タスクは、他のすべてのタスクの前に開始されます。また、以下のような特徴があります。
 
-- It is automatically submitted as a task by the Batch service when the job is created.
+- ジョブの作成時に Batch サービスによって自動的にタスクとして送信されます。
 
-- It is scheduled to execute before the other tasks in a job.
+- ジョブ内の他のタスクより先に実行されるようにスケジュールされます。
 
-- Its associated node is the last to be removed from a pool when the pool is being downsized.
+- ジョブ マネージャー タスクに関連付けられたノードは、プールが縮小される際、プールから最後に削除されます。
 
-- Its termination can be tied to the termination of all tasks in the job.
+- ジョブ マネージャー タスクの終了を、ジョブ内のすべてのタスクの終了に関連付けることができます。
 
-- A job manager task is given the highest priority when it needs to be restarted. If an idle node is not available, the Batch service might terminate one of the other running tasks in the pool to make room for the job manager task to run.
+- ジョブ マネージャー タスクを再起動する必要がある場合は、最も高い優先順位が割り当てられます。アイドル状態のノードを使用できない場合、Batch サービスはジョブ マネージャー タスクを実行する余地を確保するために、プール内のいずれかの実行中のタスクを終了する場合があります。
 
-- A job manager task in one job does not have priority over the tasks of other jobs. Across jobs, only job-level priorities are observed.
+- あるジョブ内のジョブ マネージャー タスクに、他のジョブのタスクに対して高い優先順位が割り当てられることはありません。ジョブ間では、ジョブ レベルの優先順位のみが適用されます。
 
-### <a name="job-preparation-and-release-tasks"></a>Job preparation and release tasks
+### ジョブ準備タスクおよびジョブ解放タスク
 
-Batch provides job preparation tasks for pre-job execution setup. Job release tasks are for post-job maintenance or cleanup.
+Batch には、ジョブ実行前の設定用にジョブ準備タスク、ジョブ実行後のメンテナンスやクリーンアップ用にジョブ解放タスクが用意されています。
 
-- **Job preparation task**: A job preparation task runs on all compute nodes that are scheduled to run tasks, before any of the other job tasks are executed. You can use a job preparation task to copy data that is shared by all tasks, but is unique to the job, for example.
-- **Job release task**: When a job has completed, a job release task runs on each node in the pool that executed at least one task. You can use a job release task to delete data that is copied by the job preparation task, or to compress and upload diagnostic log data, for example.
+- **ジョブ準備タスク**: ジョブ準備タスクは、タスクの実行がスケジュールされているすべてのコンピューティング ノードで、他のジョブ タスクの実行前に実行されます。たとえば、ジョブごとに異なるものの、すべてのタスクによって共有されるデータをコピーするために、ジョブ準備タスクを使用することができます。
+- **ジョブ解放タスク**: ジョブが完了すると、少なくとも 1 つのタスクを実行したプールの各ノードでジョブ解放タスクが実行されます。たとえば、ジョブ準備タスクによってコピーされたデータを削除したり、診断ログ データを圧縮してアップロードしたりするために、ジョブ解放タスクを使用することができます。
 
-Both job preparation and release tasks allow you to specify a command line to run when the task is invoked. They offer features like file download, elevated execution, custom environment variables, maximum execution duration, retry count, and file retention time.
+ジョブ準備タスクとジョブ解放タスクのどちらでも、タスクの呼び出し時に実行するコマンド ラインを指定できます。これらのタスクは、ファイルのダウンロード、管理者特権での実行、カスタム環境変数、最大実行期間、再試行回数、ファイルのリテンション期間などの機能を備えています。
 
-For more information on job preparation and release tasks, see [Run job preparation and completion tasks on Azure Batch compute nodes](batch-job-prep-release.md).
+ジョブ準備タスクとジョブ解放タスクの詳細については、「[Azure Batch コンピューティング ノードでのジョブ準備タスクとジョブ完了タスクの実行](batch-job-prep-release.md)」を参照してください。
 
-### <a name="multi-instance-task"></a>Multi-instance task
+### マルチインスタンス タスク
 
-A [multi-instance task](batch-mpi.md) is a task that is configured to run on more than one compute node simultaneously. With multi-instance tasks, you can enable high-performance computing scenarios that require a group of compute nodes that are allocated together to process a single workload (like Message Passing Interface (MPI)).
+[マルチインスタンス タスク](batch-mpi.md)は、複数のコンピューティング ノードで同時に実行するように構成されたタスクです。複数のコンピューティング ノードをまとめて 1 つのワークロードの処理に割り当てる Message Passing Interface (MPI) など、ハイ パフォーマンス コンピューティングが要求されるシナリオには、マルチインスタンス タスクを使って対応することができます。
 
-For a detailed discussion on running MPI jobs in Batch by using the Batch .NET library, check out [Use multi-instance tasks to run Message Passing Interface (MPI) applications in Azure Batch](batch-mpi.md).
+Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する方法の詳細な説明については、「[Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](batch-mpi.md)」を参照してください。
 
-### <a name="task-dependencies"></a>Task dependencies
+### Task dependencies
 
-[Task dependencies](batch-task-dependencies.md), as the name implies, allow you to specify that a task depends on the completion of other tasks before its execution. This feature provides support for situations in which a "downstream" task consumes the output of an "upstream" task--or when an upstream task performs some initialization that is required by a downstream task. To use this feature, you must first enable task dependencies on your Batch job. Then, for each task that depends on another (or many others), you specify the tasks which that task depends on.
+[タスクの依存関係](batch-task-dependencies.md)は、名前が示すとおり、あるタスクを実行するには、事前にその他のタスクが完了している必要があることを指定できる機能です。この機能は、"下流" のタスクが "上流" のタスクの出力を使用するような状況や、下流のタスクで必要になる初期化を上流のタスクで実行するような状況に対応できます。この機能を使用するには、まず Batch ジョブでタスクの依存関係を有効にする必要があります。その後、別のタスク (または他の複数のタスク) に依存するタスクごとに、どのタスクに依存するかを指定します。
 
-With task dependencies, you can configure scenarios like the following:
+タスクの依存関係がある場合、シナリオを次のように構成できます。
 
-* *taskB* depends on *taskA* (*taskB* will not begin execution until *taskA* has completed).
-* *taskC* depends on both *taskA* and *taskB*.
-* *taskD* depends on a range of tasks, such as tasks *1* through *10*, before it executes.
+* *taskB* が *taskA* に依存する (*taskB* の実行は *taskA* が完了するまで開始されない)。
+* *taskC* が *taskA* と *taskB* の両方に依存する。
+* *taskD* が、実行されるまで特定の範囲のタスク (タスク *1* ～ *10* など) に依存する。
 
-Check out [Task dependencies in Azure Batch](batch-task-dependencies.md) and the [TaskDependencies][github_sample_taskdeps] code sample in the [azure-batch-samples][github_samples] GitHub repository for more in-depth details on this feature.
+この機能の詳細については、「[Task dependencies in Azure Batch (Azure Batch でのタスク依存関係)](batch-task-dependencies.md)」と、[azure-batch-samples][github_samples] GitHub リポジトリの [TaskDependencies][github_sample_taskdeps] コード サンプルを参照してください。
 
-## <a name="environment-settings-for-tasks"></a>Environment settings for tasks
+## タスクの環境設定
 
-Each task executed by the Batch service has access to environment variables that it sets on compute nodes. This includes environment variables defined by the Batch service ([service-defined][msdn_env_vars]) and custom environment variables that you can define for your tasks. The applications and scripts your tasks execute have access to these environment variables during execution.
+Batch サービスによって実行されるすべてのタスクは、コンピューティング ノード上に設定されている環境変数を利用することができます。これには、Batch サービスによって定義された ([サービス定義][msdn_env_vars]の) 環境変数のほか、ユーザーがタスクに対して定義するカスタム環境変数が含まれます。これらの環境変数は、タスクによって実行されるアプリケーションやスクリプトから実行中に利用することができます。
 
-You can set custom environment variables at the task or job level by populating the *environment settings* property for these entities. For example, see the [Add a task to a job][rest_add_task] operation (Batch REST API), or the [CloudTask.EnvironmentSettings][net_cloudtask_env] and [CloudJob.CommonEnvironmentSettings][net_job_env] properties in Batch .NET.
+カスタム環境変数は、タスクまたはジョブの*環境設定*プロパティを設定することで、タスク レベルまたはジョブ レベルで設定できます。その例については、[ジョブへのタスクの追加][rest_add_task]操作 (Batch REST API) に関するページ、または [CloudTask.EnvironmentSettings][net_cloudtask_env] プロパティと [CloudJob.CommonEnvironmentSettings][net_job_env] プロパティ (Batch .NET) に関するページを参照してください。
 
-Your client application or service can obtain a task's environment variables, both service-defined and custom, by using the [Get information about a task][rest_get_task_info] operation (Batch REST) or by accessing the [CloudTask.EnvironmentSettings][net_cloudtask_env] property (Batch .NET). Processes executing on a compute node can access these and other environment variables on the node, for example, by using the familiar `%VARIABLE_NAME%` (Windows) or `$VARIABLE_NAME` (Linux) syntax.
+クライアント アプリケーションまたはサービスからタスクのサービス定義またはカスタムの環境変数を取得するには、[タスクに関する情報の取得][rest_get_task_info]操作 (Batch REST) を使用するか、[CloudTask.EnvironmentSettings][net_cloudtask_env] プロパティ (Batch .NET) にアクセスします。コンピューティング ノードで実行されるプロセスは、たとえば `%VARIABLE_NAME%` (Windows) や `$VARIABLE_NAME` (Linux) という一般的な構文を使用して、ノード上のこうしたさまざまな環境変数を利用することができます。
 
-You can find a full list of all service-defined environment variables in [Compute node environment variables][msdn_env_vars].
+サービス定義の環境変数をすべて網羅した一覧を、[コンピューティング ノードの環境変数][msdn_env_vars]に関するページで確認できます。
 
-## <a name="files-and-directories"></a>Files and directories
+## ファイルとディレクトリ
 
-Each task has a *working directory* under which it creates zero or more files and directories. This working directory can be used for storing the program that is run by the task, the data that it processes, and the output of the processing it performs. All files and directories of a task are owned by the task user.
+各タスクには*作業ディレクトリ*があります。そこに、タスクがファルやディレクトリを作成します。この作業ディレクトリは、タスクによって実行されるプログラム、処理されるデータ、実行される処理の出力を格納するために使用できます。タスクのすべてのファイルとディレクトリは、タスクのユーザーが所有者になります。
 
-The Batch service exposes a portion of the file system on a node as the *root directory*. Tasks can access the root directory by referencing the `AZ_BATCH_NODE_ROOT_DIR` environment variable. For more information about using environment variables, see [Environment settings for tasks](#environment-settings-for-tasks).
+Batch サービスは、ノード上のファイル システムの一部を "*ルート ディレクトリ*" として公開します。このルート ディレクトリには、タスクから `AZ_BATCH_NODE_ROOT_DIR` 環境変数を参照することでアクセスできます。環境変数の使用に関する詳細については、「[タスクの環境設定](#environment-settings-for-tasks)」を参照してください。
 
-The root directory contains the following directory structure:
+ルート ディレクトリには、次のディレクトリ構造が含まれています。
 
-![Compute node directory structure][1]
+![コンピューティング ノードのディレクトリ構造][1]
 
-- **shared**: This directory provides read/write access to *all* tasks that run on a node. Any task that runs on the node can create, read, update, and delete files in this directory. Tasks can access this directory by referencing the `AZ_BATCH_NODE_SHARED_DIR` environment variable.
+- **shared**: ノードで実行される "*すべて*" のタスクに、このディレクトリへの読み取り/書き込みアクセス権が与えられます。ノード上で実行されるすべてのタスクは、このディレクトリのファイルを作成、読み取り、更新、削除することができます。このディレクトリには、タスクから `AZ_BATCH_NODE_SHARED_DIR` 環境変数を参照することでアクセスできます。
 
-- **startup**: This directory is used by a start task as its working directory. All of the files that are downloaded to the node by the start task are stored here. The start task can create, read, update, and delete files under this directory. Tasks can access this directory by referencing the `AZ_BATCH_NODE_STARTUP_DIR` environment variable.
+- **startup**: この場所は、開始タスクの作業ディレクトリとして使用されます。開始タスクによってノードにダウンロードされるすべてのファイルは、ここに格納されます。開始タスクは、このディレクトリの下で、ファイルを作成、読み取り、更新、削除できます。このディレクトリには、タスクから `AZ_BATCH_NODE_STARTUP_DIR` 環境変数を参照することでアクセスできます。
 
-- **Tasks**: A directory is created for each task that runs on the node. It is accessed by referencing the `AZ_BATCH_TASK_DIR` environment variable.
+- **タスク**: ノード上で実行されるタスクごとに、ディレクトリが作成されます。このディレクトリには、`AZ_BATCH_TASK_DIR` 環境変数を参照することでアクセスできます。
 
-    Within each task directory, the Batch service creates a working directory (`wd`) whose unique path is specified by the `AZ_BATCH_TASK_WORKING_DIR` environment variable. This directory provides read/write access to the task. The task can create, read, update, and delete files under this directory. This directory is retained based on the *RetentionTime* constraint that is specified for the task.
+	各タスク ディレクトリ内に、Batch サービスによって作業ディレクトリ (`wd`) が作成されます。その一意のパスは、`AZ_BATCH_TASK_WORKING_DIR` 環境変数によって指定されます。このディレクトリは、タスクに読み取り/書き込みアクセスを提供します。タスクは、このディレクトリの下で、ファイルを作成、読み取り、更新、および削除できます。このディレクトリは、タスクに対して指定された *RetentionTime* 制約に基づいて保持されます。
 
-    `stdout.txt` and `stderr.txt`: These files are written to the task folder during the execution of the task.
+	`stdout.txt` および `stderr.txt`: これらのファイルは、タスクの実行中にタスク フォルダーに書き込まれます。
 
->[AZURE.IMPORTANT] When a node is removed from the pool, *all* of the files that are stored on the node are removed.
+>[AZURE.IMPORTANT] ノードをプールから削除すると、ノードに格納されている "*すべて*" のファイルが削除されます。
 
-## <a name="application-packages"></a>Application packages
+## アプリケーション パッケージ
 
-The [application packages](batch-application-packages.md) feature provides easy management and deployment of applications to the compute nodes in your pools. You can upload and manage multiple versions of the applications run by your tasks, including their binaries and support files. Then you can automatically deploy one or more of these applications to the compute nodes in your pool.
+[アプリケーション パッケージ](batch-application-packages.md)機能は、プール内のコンピューティング ノードにアプリケーションを簡単にデプロイして管理できる機能です。バイナリやサポート ファイルも含め、タスクによって実行される複数のバージョンのアプリケーションをアップロードして管理できます。また、アップロードしたアプリケーションのうち 1 つ以上をプール内のコンピューティング ノードに自動的にデプロイできます。
 
-You can specify application packages at the pool and task level. When you specify pool application packages, the application is deployed to every node in the pool. When you specify task application packages, the application is deployed only to nodes that are scheduled to run at least one of the job's tasks, just before the task's command line is run.
+アプリケーション パッケージはプール レベルおよびタスク レベルで指定できます。プールのアプリケーション パッケージを指定した場合、アプリケーションはプール内のすべてのノードにデプロイされます。タスクのアプリケーション パッケージを指定した場合、タスクのコマンド ラインが実行される直前に、ジョブのタスクのうち、少なくとも 1 つの実行がスケジュールされているノードにのみ、アプリケーションがデプロイされます。
 
-Batch handles the details of working with Azure Storage to store your application packages and deploy them to compute nodes, so both your code and management overhead can be simplified.
+Batch は Azure Storage との細かいやり取りを処理し、アプリケーション パッケージを格納してコンピューティング ノードにデプロイするため、コードと管理オーバーヘッドの両方を簡略化できます。
 
-To find out more about the application package feature, check out [Application deployment with Azure Batch application packages](batch-application-packages.md).
+アプリケーション パッケージ機能の詳細については、「[Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
 
->[AZURE.NOTE] If you add pool application packages to an *existing* pool, you must reboot its compute nodes for the application packages to be deployed to the nodes.
+>[AZURE.NOTE] プールのアプリケーション パッケージを "*既存*" のプールに追加した場合は、そのコンピューティング ノードを再起動して、アプリケーション パッケージをノードにデプロイする必要があります。
 
-## <a name="pool-and-compute-node-lifetime"></a>Pool and compute node lifetime
+## プールとコンピューティング ノードの有効期間
 
-When you design your Azure Batch solution, you have to make a design decision about how and when pools are created, and how long compute nodes within those pools are kept available.
+Azure Batch ソリューションを設計するときは、いつ、どのようにプールを作成するかと、それらのプール内のコンピューティング ノードをどのくらいの期間利用できるようにしておくかを考慮する必要があります。
 
-On one end of the spectrum, you can create a pool for each job that you submit, and delete the pool as soon as its tasks finish execution. This maximizes utilization because the nodes are only allocated when needed, and shut down as soon as they're idle. While this means that the job must wait for the nodes to be allocated, it's important to note that tasks are scheduled for execution as soon as nodes are individually available, allocated, and the start task has completed. Batch does *not* wait until all nodes within a pool are available before assigning tasks to the nodes. This ensures maximum utilization of all available nodes.
+1 つの方法として、送信する各ジョブについてプールを作成し、対応するタスクが実行を終えた直後にそのプールを削除することができます。必要なときにのみノードが割り当てられ、ノードがアイドル状態になるとすぐにシャットダウンされるので、使用効率はきわめて高くなります。ジョブはノードが割り当てられるまで待機する必要がありますが、ノードが個別に使用可能になって割り当てられ、開始タスクが完了するとすぐに、タスクの実行がスケジュール設定されることに注意してください。つまり、プール内のすべてのノードが使用可能になるまで Batch がタスクをノードに割り当てずに待機するようなことは "*ありません*"。そのため、使用可能なすべてのノードで使用率が最大になります。
 
-At the other end of the spectrum, if having jobs start immediately is the highest priority, you can create a pool ahead of time and make its nodes available before jobs are submitted. In this scenario, tasks can start immediately, but nodes might sit idle while waiting for them to be assigned.
+もう一方の極端な例としては、ジョブをすぐに開始することが最優先事項であるような場合、プールを事前に作成し、ジョブが送信される前にノードを使用可能にしておくという方法があります。この場合はタスクをすぐに開始できますが、ノードはタスクが割り当てられるまでアイドル状態で待機する可能性があります。
 
-A combined approach is typically used for handling a variable, but ongoing, load. You can have a pool that multiple jobs are submitted to, but can scale the number of nodes up or down according to the job load (see [Scaling compute resources](#scaling-compute-resources) in the following section). You can do this reactively, based on current load, or proactively, if load can be predicted.
+変動の大きい継続的な負荷に対応するために、通常はこれらを組み合わせた方法が採用されます。この場合は複数のジョブの送信先とするプールを用意することができますが、ジョブの負荷に応じてノードの数を増減することもできます (以下のセクションの「[コンピューティング リソースのスケーリング](#scaling-compute-resources)」を参照)。この方法では、現在の負荷に応じて事後的に対応できます。また、負荷を予測できる場合は事前に対応することもできます。
 
-## <a name="scaling-compute-resources"></a>Scaling compute resources
+## コンピューティング リソースのスケーリング
 
-With [automatic scaling](batch-automatic-scaling.md), you can have the Batch service dynamically adjust the number of compute nodes in a pool according to the current workload and resource usage of your compute scenario. This allows you to lower the overall cost of running your application by using only the resources you need, and releasing those you don't need.
+[自動スケール](batch-automatic-scaling.md)を使用すると、現在のコンピューティング環境のワークロードとリソース使用量に応じて、Batch サービスでプール内のコンピューティング ノードの数を動的に調整できます。これにより、必要なリソースのみを使用し、不要なリソースを解放することで、アプリケーションの全体的な実行コストを削減することができます。
 
-You enable automatic scaling by writing an [automatic scaling formula](batch-automatic-scaling.md#automatic-scaling-formulas) and associating that formula with a pool. The Batch service uses the formula to determine the target number of nodes in the pool for the next scaling interval (an interval that you can configure). You can specify the automatic scaling settings for a pool when you create it, or enable scaling on a pool later. You can also update the scaling settings on a scaling-enabled pool.
+自動スケールを有効にするには、[自動スケール式](batch-automatic-scaling.md#automatic-scaling-formulas)を作成してプールに関連付けます。Batch サービスは、この式を使用して、次のスケール間隔 (構成可能な間隔) におけるプール内のノードの目標数を決定します。プールの自動スケール設定は、プールの作成時に指定できるほか、後からプールに対してスケーリングを有効にすることもできます。スケーリングが有効にされたプールのスケーリング設定を更新することもできます。
 
-As an example, perhaps a job requires that you submit a very large number of tasks to be executed. You can assign a scaling formula to the pool that adjusts the number of nodes in the pool based on the current number of queued tasks and the completion rate of the tasks in the job. The Batch service periodically evaluates the formula and resizes the pool, based on workload (add nodes for many queued tasks, and remove nodes for no queued or running tasks) and your other formula settings.
+たとえばジョブによっては、膨大な数のタスクを実行対象として送信することが要求されることも考えられます。この場合、現在キューに格納されているタスクの数とジョブ内のタスクの完了率に基づいてプール内のノード数を調整するスケール式をプールに割り当てることができます。Batch サービスはその式を定期的に評価し、ワークロードなど式の各種設定に基づいてプールのサイズを変更します (キューに格納されているタスクが大量にあればノードを追加し、キューに格納されているタスクが存在しない場合や実行中のタスクがない場合はノードを削除する)。
 
-A scaling formula can be based on the following metrics:
+スケーリング式には、次のメトリックを使用できます。
 
-- **Time metrics** are based on statistics collected every five minutes in the specified number of hours.
+- **時間メトリック**: 指定した時間数内で 5 分おきに収集された統計情報に基づきます。
 
-- **Resource metrics** are based on CPU usage, bandwidth usage, memory usage, and number of nodes.
+- **リソース メトリック**: CPU 使用量、帯域幅使用量、メモリ使用量、およびノードの数に基づきます。
 
-- **Task metrics** are based on task state, such as *Active* (queued), *Running*, or *Completed*.
+- **タスク メトリック**: "*アクティブ*" (キューに登録済み)、"*実行中*"、"*完了*" などのタスクの状態に基づきます。
 
-When automatic scaling decreases the number of compute nodes in a pool, you must consider how to handle tasks that are running at the time of the decrease operation. To accommodate this, Batch provides a *node deallocation option* that you can include in your formulas. For example, you can specify that running tasks are stopped immediately, stopped immediately and then requeued for execution on another node, or allowed to finish before the node is removed from the pool.
+プール内のコンピューティング ノードの数が自動スケールによって縮小される場合、その縮小操作のタイミングで実行されているタスクの扱いを考慮に入れる必要があります。その点に対応するために、Batch には "*ノードの割り当て解除オプション*" が用意されていて、それを式に含めることができます。たとえば、実行中のタスクを即座に停止するか、即座に停止したうえで再度キューに登録して別のノードで実行するか、または、完了するまで待ってノードをプールから削除するかを指定できます。
 
-For more information about automatically scaling an application, see [Automatically scale compute nodes in an Azure Batch pool](batch-automatic-scaling.md).
+アプリケーションの自動的なスケーリングの詳細については、「[Azure Batch プール内のコンピューティング ノードの自動スケール](batch-automatic-scaling.md)」を参照してください。
 
-> [AZURE.TIP] To maximize compute resource utilization, set the target number of nodes to zero at the end of a job, but allow running tasks to finish.
+> [AZURE.TIP] コンピューティング リソースの使用率を最大にするには、ジョブ完了時のノードの目標個数を 0 に設定し、実行中のタスクは完了するまで実行するようにします。
 
-## <a name="security-with-certificates"></a>Security with certificates
+## 証明書によるセキュリティ
 
-You typically need to use certificates when you encrypt or decrypt sensitive information for tasks, like the key for an [Azure Storage account][azure_storage]. To support this, you can install certificates on nodes. Encrypted secrets are passed to tasks via command-line parameters or embedded in one of the task resources, and the installed certificates can be used to decrypt them.
+証明書を使用する必要があるのは、通常、[Azure Storage アカウント][azure_storage]のキーなど、タスクの機密情報を暗号化または復号化するときです。このようなときは、ノードに証明書をインストールすることで対応できます。暗号化された機密情報は、コマンド ライン パラメーターを通じてタスクに渡されるか、タスク リソースの 1 つに埋め込まれます。インストールされた証明書を使用して、機密情報を復号化できます。
 
-You use the [Add certificate][rest_add_cert] operation (Batch REST) or [CertificateOperations.CreateCertificate][net_create_cert] method (Batch .NET) to add a certificate to a Batch account. You can then associate the certificate to a new or existing pool. When a certificate is associated with a pool, the Batch service installs the certificate on each node in the pool. The Batch service installs the appropriate certificates when the node starts up, before launching any tasks (including the start task and job manager task).
+[証明書の追加][rest_add_cert]操作 (Batch REST) または [CertificateOperations.CreateCertificate][net_create_cert] メソッド (Batch .NET) を使用して、Batch アカウントに証明書を追加できます。次に、新規または既存のプールに証明書を関連付けることができます。証明書がプールに関連付けられると、Batch サービスは、プール内の各ノードに証明書をインストールします。Batch サービスは、ノードの起動時に、いずれかのタスク (開始タスク、ジョブ マネージャー タスクも含まれます) を起動する前に、適切な証明書をインストールします。
 
-If you add certificates to an *existing* pool, you must reboot its compute nodes for the certificates to be applied to the nodes.
+証明書を "*既存*" のプールに追加した場合は、そのコンピューティング ノードを再起動して、証明書をノードに適用する必要があります。
 
-## <a name="error-handling"></a>Error handling
+## エラー処理
 
-You might find it necessary to handle both task and application failures within your Batch solution.
+Batch ソリューション内でタスク エラーとアプリケーション エラーを処理することが必要になる場合があります。
 
-### <a name="task-failure-handling"></a>Task failure handling
-Task failures fall into these categories:
+### タスクのエラー処理
+タスク エラーは、以下のカテゴリに分類されます。
 
-- **Scheduling failures**
+- **スケジュール エラー**
 
-    If the transfer of files that are specified for a task fails for any reason, a "scheduling error" is set for the task.
+	タスク用に指定されたファイルの転送がなんらかの理由で失敗すると、タスクに "スケジュール エラー" が設定されます。
 
-    Scheduling errors can occur if the task's resource files have moved, the Storage account is no longer available, or another issue was encountered that prevented the successful copying of files to the node.
+	スケジュール エラーの原因には、タスクのリソース ファイルが移動された、Storage アカウントが利用できなくなった、ノードへのコピーを失敗させるようなその他の問題が発生した、などがあります。
 
-- **Application failures**
+- **アプリケーション エラー**
 
-    The process that is specified by the task's command line can also fail. The process is deemed to have failed when a nonzero exit code is returned by the process that is executed by the task (see *Task exit codes* in the next section).
+	タスクのコマンド ラインで指定されたプロセスも失敗することがあります。タスクで実行されたプロセスによってゼロ以外の終了コードが返された場合、プロセスが失敗したと見なされます (次のセクションの「*タスクの終了コード*」を参照)。
 
-    For application failures, you can configure Batch to automatically retry the task up to a specified number of times.
+	アプリケーション エラーについては、指定された回数まで自動的にタスクを再試行するように Batch を構成することができます。
 
-- **Constraint failures**
+- **制約エラー**
 
-    You can set a constraint that specifies the maximum execution duration for a job or task, the *maxWallClockTime*. This can be useful for terminating "hung" tasks.
+	ジョブまたはタスクの最大実行期間を指定する制約である *maxWallClockTime* を設定することができます。これは、"ハング" タスクを終了させる場合に便利です。
 
-    When the maximum amount of time has been exceeded, the task is marked as *completed*, but the exit code is set to `0xC000013A` and the *schedulingError* field is marked as `{ category:"ServerError", code="TaskEnded"}`.
+	最大実行時間を超過したタスクは "*完了*" としてマークされますが、終了コードは `0xC000013A` に設定され、*schedulingError* フィールドは `{ category:"ServerError", code="TaskEnded"}` としてマークされます。
 
-### <a name="debugging-application-failures"></a>Debugging application failures
+### アプリケーション エラーのデバッグ
 
-- `stderr` and `stdout`
+- `stderr` と `stdout`
 
-    During execution, an application might produce diagnostic output that you can use to troubleshoot issues. As mentioned in the earlier section [Files and directories](#files-and-directories), the Batch service writes standard output and standard error output to `stdout.txt` and `stderr.txt` files in the task directory on the compute node. You can use the Azure portal or one of the Batch SDKs to download these files. For example, you can retrieve these and other files for troubleshooting purposes by using [ComputeNode.GetNodeFile][net_getfile_node] and [CloudTask.GetNodeFile][net_getfile_task] in the Batch .NET library.
+	アプリケーションの実行中に、問題のトラブルシューティングに利用できる診断情報が生成される場合があります。前述の「[ファイルとディレクトリ](#files-and-directories)」セクションで説明したように、Batch サービスは、コンピューティング ノードのタスク ディレクトリにある `stdout.txt` ファイルと `stderr.txt` ファイルに標準出力と標準エラー出力を書き込みます。これらのファイルは Azure ポータルまたはいずれかの Batch SDK を使用してダウンロードすることができます。たとえば、Batch .NET ライブラリの [ComputeNode.GetNodeFile][net_getfile_node] や [CloudTask.GetNodeFile][net_getfile_task] でこれらのファイルを取得して、トラブルシューティングに利用できます。
 
-- **Task exit codes**
+- **タスクの終了コード**
 
-    As mentioned earlier, a task is marked as failed by the Batch service if the process that is executed by the task returns a nonzero exit code. When a task executes a process, Batch populates the task's exit code property with the *return code of the process*. It is important to note that a task's exit code is **not** determined by the Batch service--it is determined by the process itself or the operating system on which the process executed.
+	前述したように、タスクによって実行されたプロセスからゼロ以外の終了コードが返された場合、そのタスクには、失敗したことを示すマークが Batch サービスによって設定されます。タスクでプロセスが実行されると、Batch によって、そのタスクの終了コード プロパティに "*プロセスのリターン コード*" が設定されます。タスクの終了コードを決めるのは Batch サービスでは**ない**ことに注意してください。タスクの終了コードは、プロセス自体またはそのプロセスを実行したオペレーティング システムによって決定されます。
 
-### <a name="accounting-for-task-failures-or-interruptions"></a>Accounting for task failures or interruptions
+### タスクのエラーや中断の理由
 
-Tasks might occasionally fail or be interrupted. The task application itself might fail, the node on which the task is running might be rebooted, or the node might be removed from the pool during a resize operation if the pool's deallocation policy is set to remove nodes immediately without waiting for tasks to finish. In all cases, the task can be automatically requeued by Batch for execution on another node.
+タスクは、エラーが発生したり中断されたりする場合があります。タスク アプリケーション自体でエラーが発生したり、タスクが実行されているノードが再起動したりすることがあります。また、プールの割り当て解除ポリシーがタスクの完了を待たずに直ちにノードを削除するように設定されている場合は、サイズ変更操作中にノードがプールから削除されることもあります。どのようなケースでも、Batch によってタスクを自動的にキューに戻し、別のノードで実行することができます。
 
-It is also possible for an intermittent issue to cause a task to hang or take too long to execute. You can set the maximum execution time for a task. If it's exceeded, Batch interrupts the task application.
+断続的に発生する問題によって、タスクが応答を停止したり、実行に長い時間がかかるようになる場合もあります。このような場合は、タスクに最大実行時間を設定することができます。この最大実行時間を超過すると、Batch によってタスク アプリケーションが中断されます。
 
-### <a name="connecting-to-compute-nodes"></a>Connecting to compute nodes
+### コンピューティング ノードへの接続
 
-You can perform additional debugging and troubleshooting by signing in to a compute node remotely. You can use the Azure portal to download a Remote Desktop Protocol (RDP) file for Windows nodes and obtain Secure Shell (SSH) connection information for Linux nodes. You can also do this by using the Batch APIs--for example, with [Batch .NET][net_rdpfile] or [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes).
+リモートからコンピューティング ノードにサインインすることによって、さらに踏み込んだデバッグやトラブルシューティングを実行できます。Azure ポータルを使用して、Windows ノードのリモート デスクトップ プロトコル (RDP) ファイルをダウンロードしたり、Linux ノードの Secure Shell (SSH) 接続情報を取得したりすることができます。このような操作は、Batch API ([Batch .NET][net_rdpfile]、[Batch Python](batch-linux-nodes.md#connect-to-linux-nodes) など) で実行することもできます。
 
->[AZURE.IMPORTANT] To connect to a node via RDP or SSH, you must first create a user on the node. To do this, you can use the Azure portal, [add a user account to a node][rest_create_user] by using the Batch REST API, call the [ComputeNode.CreateComputeNodeUser][net_create_user] method in Batch .NET, or call the [add_user][py_add_user] method in the Batch Python module.
+>[AZURE.IMPORTANT] RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。Azure ポータルから Batch REST API を使用して[ユーザー アカウントをノードに追加][rest_create_user]し、Batch .NET の [ComputeNode.CreateComputeNodeUser][net_create_user] メソッドを呼び出すか、Batch Python モジュールの [add\_user][py_add_user] メソッドを呼び出してください。
 
-### <a name="troubleshooting-"bad"-compute-nodes"></a>Troubleshooting "bad" compute nodes
+### "問題のある" コンピューティング ノードのトラブルシューティング
 
-In situations where some of your tasks are failing, your Batch client application or service can examine the metadata of the failed tasks to identify a misbehaving node. Each node in a pool is given a unique ID, and the node on which a task runs is included in the task metadata. After you've identified a problem node, you can take several actions with it:
+一部のタスクが失敗する場合は、Batch クライアント アプリケーションまたはサービスで、失敗したタスクのメタデータを調べて、正常に動作していないノードを特定できます。プール内のノードにはそれぞれ一意の ID があり、タスクが実行されるノードはタスクのメタデータに含まれています。問題のあるノードが特定できたら、そのノードで以下に示すいくつかの対策を実行します。
 
-- **Reboot the node** ([REST][rest_reboot] | [.NET][net_reboot])
+- **ノードを再起動する** ([REST][rest_reboot] | [.NET][net_reboot])
 
-    Restarting the node can sometimes clear up latent issues like stuck or crashed processes. Note that if your pool uses a start task or your job uses a job preparation task, they are executed when the node restarts.
+	ノードを再起動すると、途中で停止したプロセスやクラッシュしたプロセスなどの潜在的な問題が解決することがあります。プールで開始タスクを使用している場合や、ジョブでジョブ準備タスクを使用している場合、それらのタスクはノードの再起動時に実行されます。
 
-- **Reimage the node** ([REST][rest_reimage] | [.NET][net_reimage])
+- **ノードを再イメージ化する** ([REST][rest_reimage] | [.NET][net_reimage])
 
-    This reinstalls the operating system on the node. As with rebooting a node, start tasks and job preparation tasks are rerun after the node has been reimaged.
+	この操作では、ノード上のオペレーティング システムが再インストールされます。ノードの再起動と同様、開始タスクとジョブ準備タスクはノードの再イメージ化後に再実行されます。
 
-- **Remove the node from the pool** ([REST][rest_remove] | [.NET][net_remove])
+- **プールからノードを削除する** ([REST][rest_remove] | [.NET][net_remove])
 
-    Sometimes it is necessary to completely remove the node from the pool.
+	場合によっては、プールからノードを完全に削除する必要があります。
 
-- **Disable task scheduling on the node** ([REST][rest_offline] | [.NET][net_offline])
+- **ノードでタスク スケジュールを無効にする** ([REST][rest_offline] | [.NET][net_offline])
 
-    This effectively takes the node "offline" so that no further tasks are assigned to it, but allows the node to remain running and in the pool. This enables you to perform further investigation into the cause of the failures without losing the failed task's data--and without the node causing additional task failures. For example, you can disable task scheduling on the node, then [sign in remotely](#connecting-to-compute-nodes) to examine the node's event logs or perform other troubleshooting. After you've finished your investigation, you can then bring the node back online by enabling task scheduling ([REST][rest_online] | [.NET][net_online]), or perform one of the other actions discussed earlier.
+	この操作では、ノードが実質的に "オフライン" になります。そのため、これ以上タスクが割り当てられなくなりますが、ノードをプール内で稼働したままにできます。これにより、失敗したタスクのデータが失われず、これ以上ノードでタスクが失敗することもなくなり、エラーの原因を詳しく調査できます。たとえば、ノードでタスク スケジュールを無効にした後、[リモートでサインイン](#connecting-to-compute-nodes)して、ノードのイベント ログを確認したり、他のトラブルシューティングを実行したりできます。調査が完了したら、タスク スケジュールを有効にする ([REST][rest_online] | [.NET][net_online]) ことで、ノードをオンラインに戻すことができます。また、前述した他のいずれかのアクションを実行することもできます。
 
-> [AZURE.IMPORTANT] With each action that is described in this section--reboot, reimage, remove, and disable task scheduling--you are able to specify how tasks currently running on the node are handled when you perform the action. For example, when you disable task scheduling on a node by using the Batch .NET client library, you can specify a [DisableComputeNodeSchedulingOption][net_offline_option] enum value to specify whether to **Terminate** running tasks, **Requeue** them for scheduling on other nodes, or allow running tasks to complete before performing the action (**TaskCompletion**).
+> [AZURE.IMPORTANT] このセクションで説明した各アクション (再起動、再イメージ化、削除、タスク スケジュールの無効化) では、アクションを実行するときに、ノードで現在実行中のタスクの処理方法を指定できます。たとえば、Batch .NET クライアント ライブラリを使用してノードでタスク スケジュールを無効にする際に、[DisableComputeNodeSchedulingOption][net_offline_option] 列挙値を指定して、実行中のタスクを終了するか (**Terminate**)、他のノードでスケジュールするためにキューに再登録するか (**Requeue**)、実行中のタスクが完了してからアクションを実行するか (**TaskCompletion**) を指定できます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Walk through a sample Batch application step-by-step in [Get started with the Azure Batch Library for .NET](batch-dotnet-get-started.md). There is also a [Python version](batch-python-tutorial.md) of the tutorial that runs a workload on Linux compute nodes.
+- 「[.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」で紹介されているサンプル Batch アプリケーションの作成手順を参照します。Linux コンピューティング ノードでワークロードを実行する [Python バージョン](batch-python-tutorial.md)のチュートリアルも用意されています。
 
-- Download and build the [Batch Explorer][github_batchexplorer] sample project for use while you develop your Batch solutions. Using the Batch Explorer, you can perform the following and more:
-  - Monitor and manipulate pools, jobs, and tasks within your Batch account
-  - Download `stdout.txt`, `stderr.txt`, and other files from nodes
-  - Create users on nodes and download RDP files for remote login
+- Batch ソリューションを開発するときに使用する [Batch Explorer][github_batchexplorer] サンプル プロジェクトをダウンロードしてビルドするBatch Explorer を使用すると、次のようなことを実行できます。
+  - Batch アカウント内のプール、ジョブ、およびタスクの監視と操作
+  - ノードからの `stdout.txt`、`stderr.txt` などのファイルのダウンロード
+  - ノードでのユーザーの作成と、リモート ログインのための RDP ファイルのダウンロード
 
-- Learn how to [create pools of Linux compute nodes](batch-linux-nodes.md).
+- [Linux コンピューティング ノードのプールを作成する方法](batch-linux-nodes.md)を確認します。
 
-- Visit the [Azure Batch forum][batch_forum] on MSDN. The forum is a good place to ask questions, whether you are just learning or are an expert in using Batch.
+- MSDN の [Azure Batch フォーラム][batch_forum]にアクセスします。初心者の方でも上級者の方でも、Batch についてわからないことがあれば、ぜひフォーラムをご利用ください。
 
 [1]: ./media/batch-api-basics/node-folder-structure.png
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
-[batch_forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurebatch
+[batch_forum]: https://social.msdn.microsoft.com/Forums/ja-JP/home?forum=azurebatch
 [cloud_service_sizes]: ../cloud-services/cloud-services-sizes-specs.md
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
-[github_sample_taskdeps]:  https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
+[github_sample_taskdeps]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
 [github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [msdn_env_vars]: https://msdn.microsoft.com/library/azure/mt743623.aspx
@@ -502,8 +500,4 @@ In situations where some of your tasks are failing, your Batch client applicatio
 
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

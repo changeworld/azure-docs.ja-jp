@@ -1,42 +1,37 @@
 <properties
-    pageTitle="Data Catalog developer samples | Microsoft Azure"
-    description="This article provides an overview of the available developer samples for the Data Catalog REST API."
-    services="data-catalog"
-    documentationCenter=""
-    authors="spelluru"
-    manager=""
-    editor=""
-    tags=""/>
+	pageTitle="Data Catalog 開発者向けサンプル | Microsoft Azure"
+	description="この記事では、Data Catarog REST API で使用可能な開発者向けサンプルの概要を説明します。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="spelluru"
+	manager=""
+	editor=""
+	tags=""/>
 <tags
-    ms.service="data-catalog"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="data-catalog"
-    ms.date="09/06/2016"
-    ms.author="spelluru"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="09/06/2016"
+	ms.author="spelluru"/>
 
 
+# Data Catalog 開発者向けサンプル
+Data Catalog REST API を使用して Data Catalog アプリの開発を開始します。Data Catalog REST API は、データ資産をプログラムで登録、注釈付けおよび検索するために Data Catalog のリソースにプログラムでアクセスできるようにする、REST ベースの API です。
 
-# <a name="data-catalog-developer-samples"></a>Data Catalog developer samples
-Get started developing Data Catalog apps using the Data Catalog REST API. The Data Catalog REST API is a REST-based API that provides programmatic access to Data Catalog resources to register, annotate, and search data assets programmatically.
+GitHub に以下のサンプルがあります。
 
-Here are the samples we have on GitHub:
+- [Azure Data Catalog の概要](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-get-started/)
 
-- [Get started with Azure Data Catalog](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-get-started/)
+  Data Catalog REST API を使用してデータ資産を登録、検索、および削除するために Azure AD で認証を行う方法を示すサンプルです。
 
-  A sample that shows you how to authenticate with Azure AD to Register, Search, and Delete a data asset using the Data Catalog REST API.
+- [一括登録および注釈付け](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)
 
-- [Bulk register and annotate](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-excel-register-data-assets/)
+  Data Catalog REST API と Open XML を使用して、Excel ブックからデータ資産を一括で登録する方法を示すサンプルです。
 
-  A sample that shows you how to bulk register data assets from an Excel workbook using Data Catalog REST API and Open XML.
+- [Import/Export ツール](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-import-export/)
 
-- [Import/Export tool](https://azure.microsoft.com/documentation/samples/data-catalog-dotnet-import-export/)
+  Data Catalog REST API を使用して Azure Data Catalog からアセットを取得し、ファイルにシリアル化する方法を示すサンプルです。また、JSON としてシリアル化されたアセットのセットを取得して、それらをカタログにプッシュする方法も示します。検索クエリを使用したカタログのサブセットのエクスポートをサポートします。
 
-  A sample that shows how to use the Data Catalog REST API to fetch assets from the Azure Data Catalog and serialize them into a file. It also demonstrates how to take a set of assets serialized as JSON and push them into the catalog. It supports exporting a subset of the catalog using a search query.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

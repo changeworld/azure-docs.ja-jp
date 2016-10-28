@@ -1,257 +1,251 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Trakopolis | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and Trakopolis."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と Trakopolis の統合 | Microsoft Azure"
+	description="Azure Active Directory と Trakopolis の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と Trakopolis の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-trakopolis"></a>Tutorial: Azure Active Directory integration with Trakopolis
+このチュートリアルの目的は、Trakopolis と Azure Active Directory (Azure AD) を統合する方法を説明することです。Trakopolis と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate Trakopolis with Azure Active Directory (Azure AD).  
-Integrating Trakopolis with Azure AD provides you with the following benefits:
+- Trakopolis にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Trakopolis にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to Trakopolis
-- You can enable your users to automatically get signed-on to Trakopolis (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure Active Directory 
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Trakopolis と Azure AD の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with Trakopolis, you need the following items:
-
-- An Azure AD subscription
-- A Trakopolis single-sign on enabled subscription
+- Azure AD サブスクリプション
+- Trakopolis でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
-
-
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
-
-1. Adding Trakopolis from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-trakopolis-from-the-gallery"></a>Adding Trakopolis from the gallery
-To configure the integration of Trakopolis into Azure AD, you need to add Trakopolis from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-**To add Trakopolis from the gallery, perform the following steps:**
+1. ギャラリーからの Trakopolis の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-    ![Active Directory][1]
+## ギャラリーからの Trakopolis の追加
+Azure AD への Trakopolis の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Trakopolis を追加する必要があります。
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+**ギャラリーから Trakopolis を追加するには、次の手順に従います。**
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Active Directory][1]
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
  
-    ![Applications][2]
+	![アプリケーション][2]
 
-4. Click **Add** at the bottom of the page.
+4. ページの下部にある **[追加]** をクリックします。
 
-    ![Applications][3]
+	![アプリケーション][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Applications][4]
+	![アプリケーション][4]
 
-6. In the search box, type **Trakopolis**.
+6. 検索ボックスに、「**Trakopolis**」と入力します。
 
-    ![Applications](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_01.png)
+	![アプリケーション](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_01.png)
 
-7. In the results pane, select **Trakopolis**, and then click **Complete** to add the application.
+7. 結果ウィンドウで **[Trakopolis]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-    ![Applications](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_02.png)
+	![アプリケーション](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Trakopolis based on a test user called "Britta Simon".
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Trakopolis で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Trakopolis to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Trakopolis needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Trakopolis.
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Trakopolis ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Trakopolis の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、Trakopolis の **[Username]** の値として割り当てることで確立されます。
 
-To configure and test Azure AD single sign-on with Trakopolis, you need to complete the following building blocks:
+Trakopolis で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a Trakopolis test user](#creating-a-trakopolis-test-user)** - to have a counterpart of Britta Simon in Trakopolis that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Trakopolis のテスト ユーザーの作成](#creating-a-trakopolis-test-user)** - Trakopolis で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Trakopolis application.
-
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Trakopolis アプリケーションでシングル サインオンを構成することです。
 
 
-**To configure Azure AD single sign-on with Trakopolis, perform the following steps:**
 
-1. In the Azure classic portal, on the **Trakopolis** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+**Trakopolis で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-    ![Configure Single Sign-On][6] 
+1. Azure クラシック ポータルの **Trakopolis** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-2. On the **How would you like users to sign on to Trakopolis** page, select **Azure AD Single Sign-On**, and then click **Next**.
+	![Configure Single Sign-On][6]
 
-    ![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_03.png) 
+2. **[ユーザーの Trakopolis へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-3. On the **Configure App Settings** dialog page, perform the following steps:
+	![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_03.png)
+
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_04.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_04.png)
 
 
-    a. In the Sign On URL textbox, type the URL used by your users to sign-on to your Trakopolis application using the following pattern: **“https://\<company name\>.trakopolis.com”**.
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Trakopolis アプリケーションへのサインオンに使用する URL を入力します。**"https://<企業名>.trakopolis.com"**
 
-     b. Click **Next**.
+     b.**[次へ]** をクリックします。
 
-4. On the **Configure single sign-on at Trakopolis** page, perform the following steps:
+4. **[Trakopolis でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_05.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_05.png)
 
-    a. Click **Download certificate**, and then save the file on your computer.
+    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
-    b. Click **Next**.
+    b.**[次へ]** をクリックします。
 
 
-5. To get SSO configured for your application, contact your Trakopolis support team at [support@cantelematics.com](mailto:support@cantelematics.com), attach the downloaded certificate and provide them with the **Issuer URL**, the **SAML SSO URL** and the **Sign Out URL**.
+5. アプリケーションに合わせて SSO を構成する方法については、Trakopolis サポート チーム [support@cantelematics.com](mailto:support@cantelematics.com) にお問い合わせください。その際、ダウンロードした証明書を添付し、**発行元 URL**、**SAML SSO URL**、**サインアウト URL** を提示してください。
 
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-    ![Azure AD Single Sign-On][10]
+	![Azure AD Single Sign-On][10]
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-    ![Azure AD Single Sign-On][11]
+	![Azure AD Single Sign-On][11]
 
 
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_09.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_03.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_03.png)
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_05.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps:
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
 
-    e. Click **Next**.
+    e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_07.png)
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-trakopolis-tutorial/create_aaduser_08.png)
 
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
+    b.**[完了]** をクリックします。
 
 
 
-### <a name="creating-a-trakopolis-test-user"></a>Creating a Trakopolis test User
+### Trakopolis テスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in Trakopolis.  
-Please work with the Trakopolis support team to add the users in Trakopolis. 
+このセクションの目的は、Trakopolis で Britta Simon というユーザーを作成することです。Trakopolis サポート チームと連携し、Trakopolis にユーザーを追加してください。
 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### Azure AD テスト ユーザーの割り当て
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Trakopolis.
+このセクションの目的は、Britta Simon に Trakopolis へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-![Assign User][200] 
+![ユーザーの割り当て][200]
 
-**To assign Britta Simon to Trakopolis, perform the following steps:**
+**Trakopolis に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Assign User][201] 
+	![ユーザーの割り当て][201]
 
-2. In the applications list, select **Trakopolis**.
+2. アプリケーションの一覧で **[Trakopolis]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_50.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-trakopolis-tutorial/tutorial_trakopolis_50.png)
 
-1. In the menu on the top, click **Users**.
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-    ![Assign User][203] 
+	![ユーザーの割り当て][203]
 
-1. In the Users list, select **Britta Simon**.
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. In the toolbar on the bottom, click **Assign**.
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-    ![Assign User][205]
+	![ユーザーの割り当て][205]
 
 
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+### シングル サインオンのテスト
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the Trakopolis tile in the Access Panel, you should get automatically signed-on to your Trakopolis application.
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [Trakopolis] タイルをクリックすると、自動的に Trakopolis アプリケーションにサインオンします。
 
 
-## <a name="additional-resources"></a>Additional Resources
+## その他のリソース
 
-- [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
+- [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 
-- [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -272,8 +266,4 @@ When you click the Trakopolis tile in the Access Panel, you should get automatic
 [204]: ./media/active-directory-saas-trakopolis-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-trakopolis-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

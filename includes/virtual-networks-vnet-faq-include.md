@@ -1,276 +1,273 @@
-## <a name="virtual-network-basics"></a>Virtual Network Basics
+## Virtual Network の基礎
 
-### <a name="what-is-an-azure-virtual-network-(vnet)?"></a>What is an Azure Virtual network (VNet)?
+### Azure Virtual ネットワーク (VNet) とは何ですか。
 
-You can use VNets to provision and manage virtual private networks (VPNs) in Azure and, optionally, link the VNets with other VNets in Azure, or with your on-premises IT infrastructure to create hybrid or cross-premises solutions. Each VNet you create has its own CIDR block, and can be linked to other VNets and on-premises networks as long as the CIDR blocks do not collide. You also have controls of DNS server settings for VNets, and segmentation of the VNet into subnets.
+VNet を使用してプロビジョニングして Azure で仮想プライベート ネットワーク (VPN) を管理および、必要に応じて、VNet を Azure で他の VNet とリンクさせたり、オンプレミス IT インフラストラクチャで、ハイブリッドまたはクロスプレミス ソリューションを作成します。作成したそれぞれの VNet には独自の CIDR ブロックを持っており、他の VNet や、CIDR ブロックが競合しない限りオンプレミス ネットワークにリンクすることができます。VNet の DNS サーバー設定と、サブネットへの VNet の分割も制御できます。
 
-Use VNets to:
+VNet を使用して次のことが行えます。
 
-- Create a dedicated private cloud-only virtual network
+- 専用プライベート クラウドのみの仮想ネットワークを作成します。
+									
+	場合によって、ソリューションの、クロスプレミス構成は必要ありません。VNet を作成するとき、ご使用のサービスと VNet 内の VMが、クラウド内で互いに直接かつ安全に通信することができます。これによって、VNet 内にトラフィックが安全に保持されますが、 VM と、ソリューションの一部としてインターネット通信を必要とするサービスとのエンドポイント接続を構成することができます。
 
-    Sometimes you don't require a cross-premises configuration for your solution. When you create a VNet, your services and VMs within your VNet can communicate directly and securely with each other in the cloud. This keeps traffic securely within the VNet, but still allows you to configure endpoint connections for the VMs and services that require Internet communication as part of your solution.
+- データ センターを安全に拡張します。
+									
+	VNet については、データ センターの容量を安全にスケールできるよう従来のサイト間 (S2S) VPN を構築できます。S2S VPN は、IPSEC を使用して、社内の VPN ゲートウェイと Azure 間の安全な接続を提供します。
 
-- Securely extend your data center
+- ハイブリッド クラウドのシナリオを有効にします。
+									
+	VNet は、さまざまなハイブリッド クラウド シナリオをサポートする柔軟性を提供します。メインフレームなどのオンプレミス システムと Unix システムの任意の型へのクラウド ベースのアプリケーションを安全に接続することができます。
 
-    With VNets, you can build traditional site-to-site (S2S) VPNs to securely scale your datacenter capacity. S2S VPNs use IPSEC to provide a secure connection between your corporate VPN gateway and Azure.
+### 仮想ネットワークが必要かどうかを知る方法
 
-- Enable hybrid cloud scenarios
+[Virtual Network の概要](../articles/virtual-network/virtual-networks-overview.md)にアクセスし、最適なネットワーク設計オプションの決定に役立つディシジョン テーブルを参照してください。
 
-    VNets give you the flexibility to support a range of hybrid cloud scenarios. You can securely connect cloud-based applications to any type of on-premises system such as mainframes and Unix systems.
+### 開始するには?
 
-### <a name="how-do-i-know-if-i-need-a-virtual-network?"></a>How do I know if I need a virtual network?
+[Virtual Network ドキュメント](https://azure.microsoft.com/documentation/services/virtual-network/)にアクセスし開始します。このページには、一般的な構成手順だけでなく、仮想ネットワークを設計する際に考慮する必要がある内容を理解するのに役立つ情報へのリンクがあります。
 
-Visit the [Virtual Network Overview](../articles/virtual-network/virtual-networks-overview.md) to see a decision table that will help you decide the best network design option for you.
+### VNet でどのようなサービスを使用できますか。
 
-### <a name="how-do-i-get-started?"></a>How do I get started?
+VNet は、Cloud Services (PaaS)、Virtual Machines、Web Apps など、さまざまな異なる Azure サービスで使用できます。ただし、VNet でサポートされていない、いくつかのサービスがあります。使用したい特定のサービスをチェックし、互換性があることを確認してください。
 
-Visit [the Virtual Network documentation](https://azure.microsoft.com/documentation/services/virtual-network/) to get started. This page has links to common configuration steps as well as information that will help you understand the things that you'll need to take into consideration when designing your virtual network.
+### クロスプレミス接続を使用しないで VNet を使用できますか。
 
-### <a name="what-services-can-i-use-with-vnets?"></a>What services can I use with VNets?
+はい。サイト間接続を使用せずに VNet を使用することができます。これは、Azure でドメイン コントローラーと SharePoint ファームを実行する場合に特に便利です。
 
-VNets can be used with a variety of different Azure services, such as Cloud Services (PaaS), Virtual Machines, and Web Apps. However, there are a few services that are not supported on a VNet. Please check the specific service you want to use and verify that it is compatible.
+## Virtual Network の構成
 
-### <a name="can-i-use-vnets-without-cross-premises-connectivity?"></a>Can I use VNets without cross-premises connectivity?
+### VNet を作成するのには、どのようなツールを使用でしょうか。
 
-Yes. You can use a VNet without using site-to-site connectivity. This is particularly useful if you want to run domain controllers and SharePoint farms in Azure.
+作成または仮想ネットワークを構成するのには、次のツールを使用できます。
 
-## <a name="virtual-network-configuration"></a>Virtual Network Configuration
+- Azure ポータル (クラシックおよび Resource Manager VNet)。
 
-### <a name="what-tools-do-i-use-to-create-a-vnet?"></a>What tools do I use to create a VNet?
+- ネットワーク構成ファイル (netcfg - クラシック VNet のみ)。[ネットワーク構成ファイルを使用した仮想ネットワークの構成](../articles/virtual-network/virtual-networks-using-network-configuration-file.md)を参照してください。
 
-You can use the following tools to create or configure a virtual network:
+- PowerShell (クラシックおよび Resource Manager VNet)。
 
-- Azure Portal (for classic and Resource Manager VNets).
+- Azure CLI (クラシックおよび Resource Manager VNet)。
 
-- A network configuration file (netcfg - for classic VNets only). See [Configure a virtual network using a network configuration file](../articles/virtual-network/virtual-networks-using-network-configuration-file.md).
+### VNet でどのアドレス範囲が使用できるでしょうか。
 
-- PowerShell (for classic and Resource Manager VNets).
+パブリック IP アドレスの範囲を使用して、任意の IP アドレス範囲で定義されている[RFC 1918](http://tools.ietf.org/html/rfc1918)です。
 
-- Azure CLI (for classic and Resource Manager VNets).
+### VNet 内でパブリック IP アドレスを持つことができますか。
 
-### <a name="what-address-ranges-can-i-use-in-my-vnets?"></a>What address ranges can I use in my VNets?
+はい。パブリック IP アドレス範囲の詳細については、[Virtual Network (VNet) でのパブリック IP アドレス空間](../articles/virtual-network/virtual-networks-public-ip-within-vnet.md)を参照してください。パブリック IP が、インターネットから直接アクセスできないことに留意してください。
 
-You can use public IP address ranges and any IP address range defined in [RFC 1918](http://tools.ietf.org/html/rfc1918).
+### 仮想ネットワーク内のサブネットの数に制限はありますか。
 
-### <a name="can-i-have-public-ip-addresses-in-my-vnets?"></a>Can I have public IP addresses in my VNets?
+VNet 内で使用できるサブネットの数に制限はありません。すべてのサブネットは仮想ネットワーク アドレス空間に完全に含める必要があり、また、互いに重複しないようにしてください。
 
-Yes. For more information about public IP address ranges, see [Public IP address space in a Virtual Network (VNet)](../articles/virtual-network/virtual-networks-public-ip-within-vnet.md). Keep in mind that your public IPs will not be directly accessible from the Internet.
+### これらのサブネット内の IP アドレスの使用に関する制限はありますか。
 
-### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-virtual-network?"></a>Is there a limit to the number of subnets in my virtual network?
+Azure は、各サブネット内で一部の IP アドレスを予約します。サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。
 
-There is no limit on the number of subnets you use within a VNet. All the subnets must be fully contained in the virtual network address space and should not overlap with one another.
+### VNet およびサブネットは、どれくらい小規模に、また、大規模になるのでしょうか。
 
-### <a name="are-there-any-restrictions-on-using-ip-addresses-within-these-subnets?"></a>Are there any restrictions on using IP addresses within these subnets?
+サポートする最小のサブネットは /29 、最大は /8 です (CIDR サブネット定義を使用)。
 
-Azure reserves some IP addresses within each subnet. The first and last IP addresses of the subnets are reserved for protocol conformance, along with 3 more addresses used for Azure services.
+### VNet を使用して、VLAN を Azure に接続できるでしょうか。
 
-### <a name="how-small-and-how-large-can-vnets-and-subnets-be?"></a>How small and how large can VNets and subnets be?
+いいえ。VNet はレイヤー 3 のオーバーレイです。Azure では、任意のレイヤー 2 のセマンティクスはサポートされません。
 
-The smallest subnet we support is a /29 and the largest is a /8 (using CIDR subnet definitions).
+### 私の Vnet とサブネットをカスタム ルーティング ポリシーを指定できますか。
 
-### <a name="can-i-bring-my-vlans-to-azure-using-vnets?"></a>Can I bring my VLANs to Azure using VNets?
+はい。ユーザー定義のルーティング (UDR) を使用することができます。UDR の詳細については、[ユーザー定義のルートと IP 転送](../articles/virtual-network/virtual-networks-udr-overview.md)を参照してください。
 
-No. VNets are Layer-3 overlays. Azure does not support any Layer-2 semantics.
+### VNet はマルチキャストやブロードキャストをサポートしますか。
 
-### <a name="can-i-specify-custom-routing-policies-on-my-vnets-and-subnets?"></a>Can I specify custom routing policies on my VNets and subnets?
+いいえ。マルチキャストやブロードキャストはサポートされていません。
 
-Yes. You can use User Defined Routing (UDR). For more information about UDR, visit [User Defined Routes and IP Forwarding](../articles/virtual-network/virtual-networks-udr-overview.md).
+### VNet 内はどのようなプロトコルを使用できますか。
 
-### <a name="do-vnets-support-multicast-or-broadcast?"></a>Do VNets support multicast or broadcast?
-
-No. We do not support multicast or broadcast.
-
-### <a name="what-protocols-can-i-use-within-vnets?"></a>What protocols can I use within VNets?
-
-You can use standard IP-based protocols within VNets. However, multicast, broadcast, IP-in-IP encapsulated packets and Generic Routing Encapsulation (GRE) packets are blocked within VNets. Standard protocols that work include:
+VNet 内の標準 IP ベースのプロトコルを使用することができます。ただし、マルチキャスト、ブロードキャスト、IP-in-IP のカプセル化されたパケット、Generic Routing Encapsulation (GRE) のパケットは、VNet 内でブロックされます。作動する標準プロトコルは、次のとおりです。
 
 - TCP
 - UDP
 - ICMP
 
-### <a name="can-i-ping-my-default-routers-within-a-vnet?"></a>Can I ping my default routers within a VNet?
+### VNet 内には、既定ルーターを ping できるでしょうか。
 
-No.
+いいえ。
 
-### <a name="can-i-use-tracert-to-diagnose-connectivity?"></a>Can I use tracert to diagnose connectivity?
+### Tracert を使用して、接続を診断することができますか。
 
-No.
+いいえ。
 
-### <a name="can-i-add-subnets-after-the-vnet-is-created?"></a>Can I add subnets after the VNet is created?
+### VNet を作成した後のサブネットを追加できますか。
 
-Yes. Subnets can be added to VNets at any time as long as the subnet address is not part of another subnet in the VNet.
+はい。サブネット アドレスが VNet 内の別のサブネットの一部でない限り、サブネットはいつでも VNet に追加できます。
 
-### <a name="can-i-modify-the-size-of-my-subnet-after-i-create-it?"></a>Can I modify the size of my subnet after I create it?
+### 作成した後、サブネットのサイズを変更できますか。
 
-You can add, remove, expand or shrink a subnet if there are no VMs or services deployed within it by using PowerShell cmdlets or the NETCFG file. You can also add, remove, expand or shrink any prefixes as long as the subnets that contain VMs or services are not affected by the change.
+PowerShell コマンドレットまたは NETCFG ファイルを使用してその中にデプロイされた VM やサービスがない場合は、サブネットを追加、削除、展開または圧縮できます。VM やサービスを含むサブネットが変更の影響を受けない限り、プレフィックスを追加、削除、展開、圧縮ができます。
 
-### <a name="can-i-modify-subnets-after-i-created-them?"></a>Can I modify subnets after I created them?
+### サブネットを作成後に変更できますか。
 
-Yes. You can add, remove, and modify the CIDR blocks used by a VNet.
+はい。VNet で使用された CIDR ブロックを追加、削除、変更することができます。
 
-### <a name="can-i-connect-to-the-internet-if-i-am-running-my-services-in-a-vnet?"></a>Can I connect to the internet if I am running my services in a VNet?
+### VNet でサービスを実行している場合、インターネットに接続できますか。
 
-Yes. All services deployed within a VNet can connect to the internet. Every cloud service deployed in Azure has a publicly addressable VIP assigned to it. You will have to define input endpoints for PaaS roles and endpoints for virtual machines to enable these services to accept connections from the internet.
+はい。VNet 内にデプロイされているすべてのサービスは、インターネットに接続できます。Azure にデプロイされたすべてのクラウド サービスには、アドレス指定可能な VIP がパブリックに割り当てられています。PaaS ロールの入力エンドポイントと仮想マシンのエンドポイントを定義して、これらのサービスがインターネットからの接続を承諾できるようにする必要があります。
 
-### <a name="do-vnets-support-ipv6?"></a>Do VNets support IPv6?
+### VNet は IPv6 をサポートするでしょうか。
 
-No. You cannot use IPv6 with VNets at this time.
+いいえ。この時点で、VNet で IPv6 を使用できません。
 
-### <a name="can-a-vnet-span-regions?"></a>Can a VNet span regions?
+### VNet は複数のリージョンで広がるでしょうか。
 
-No. A VNet is limited to a single region.
+いいえ。 VNet は、1 つのリージョンに制限されます。
 
-### <a name="can-i-connect-a-vnet-to-another-vnet-in-azure?"></a>Can I connect a VNet to another VNet in Azure?
+### VNet を Azure での別の VNet に接続できますか。
 
-Yes. You can create VNet to VNet communication by using REST APIs or Windows PowerShell. You can also connect VNets via VNet Peering. See more details about peering [here.](../articles/virtual-network/virtual-network-peering-overview.md)
+はい。REST API または Windows PowerShell を使用して VNet 間の通信を作成できます。
 
-## <a name="name-resolution-(dns)"></a>Name Resolution (DNS)
+## 名前解決 (DNS)
 
-### <a name="what-are-my-dns-options-for-vnets?"></a>What are my DNS options for VNets?
+### VNet の DNS オプションとは何でしょうか。
 
-Use the decision table on the [Name Resolution for VMs and Role Instances](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) page to guide you through all the DNS options available.
+[VM とロール インスタンスの名前解決](../articles/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)ページでディシジョン テーブルを使用して、使用できるすべての DNS オプションを行うことができます。
 
-### <a name="can-i-specify-dns-servers-for-a-vnet?"></a>Can I specify DNS servers for a VNet?
+### VNet の DNS サーバーを指定できますか。
 
-Yes. You can specify DNS server IP addresses in the VNet settings. This will be applied as the default DNS server(s) for all VMs in the VNet.
+はい。VNet 設定では、DNS サーバーの IP アドレスを指定できます。これにより、VNet 内のすべての VM の既定の DNS サーバーとして適用されます。
 
-### <a name="how-many-dns-servers-can-i-specify?"></a>How many DNS servers can I specify?
+### DNS サーバーの数を指定できますか。
 
-You can specify up to 12 DNS servers.
+最大 12 個の DNS サーバーを指定することができます。
 
-### <a name="can-i-modify-my-dns-servers-after-i-have-created-the-network?"></a>Can I modify my DNS servers after I have created the network?
+### ネットワークを作成した後、DNS サーバーを変更できますか。
 
-Yes. You can change the DNS server list for your VNet at any time. If you change your DNS server list, you will need to restart each of the VMs in your VNet in order for them to pick up the new DNS server.
+はい。いつでも、VNet の DNS サーバーの一覧を変更できます。DNS サーバーの一覧を変更する場合は、新しい DNS サーバーを取得するために VNet で VM をそれぞれ再起動する必要があります。
 
 
-### <a name="what-is-azure-provided-dns-and-does-it-work-with-vnets?"></a>What is Azure-provided DNS and does it work with VNets?
+### Azure で提供される DNS と Vnet と組み合わせて使用について
 
-Azure-provided DNS is a multi-tenant DNS service offered by Microsoft. Azure registers all of your VMs and role instances in this service. This service provides name resolution by hostname for VMs and role instances contained within the same cloud service, and by FQDN for VMs and role instances in the same VNet.
+Azure で提供される DNS は、Microsoft によって提供されるマルチ テナント DNS サービスです。Azure はこのサービス内のすべての VM とロール インスタンスを登録します。このサービスは、同じクラウド サービス内に含まれる VM とロール インスタンスのホスト名によって、また、同じ VNet 内の VM とロール インスタンスの FQDN によって名前解決を提供します。
 
-> [AZURE.NOTE] There is a limitation at this time to the first 100 cloud services in the virtual network for cross-tenant name resolution using Azure-provided DNS. If you are using your own DNS server, this limitation does not apply.
+> [AZURE.NOTE] Azure で提供される DNS を使用して、テナント間の名前解決のため、仮想ネットワーク内の最初の 100 個のクラウド サービスには、この時点で制限があります。独自の DNS サーバーを使用している場合は、この制限は適用されません。
 
-### <a name="can-i-override-my-dns-settings-on-a-per-vm-/-service-basis?"></a>Can I override my DNS settings on a per-VM / service basis?
+### VM ごとに、サービスごとに DNS 設定を上書きできますか。
 
-Yes. You can set DNS servers on a per-cloud service basis to override the default network settings. However, we recommend that you use network-wide DNS as much as possible.
+はい。クラウド サービスごとに DNS サーバーを設定し、既定のネットワーク設定を上書きすることができます。ただし、できるだけネットワーク全体の DNS を使用することをお勧めします。
 
-### <a name="can-i-bring-my-own-dns-suffix?"></a>Can I bring my own DNS suffix?
+### 独自の DNS サフィックスを取り込むことができますか。
 
-No. You cannot specify a custom DNS suffix for your VNets.
+いいえ。ご使用の VNet のカスタム DNS サフィックスを指定することはできません。
 
-## <a name="vnets-and-vms"></a>VNets and VMs
+## VNet および VM
 
-### <a name="can-i-deploy-vms-to-a-vnet?"></a>Can I deploy VMs to a VNet?
+### VNet に VM をデプロイできますか。
 
-Yes.
+はい。
 
-### <a name="can-i-deploy-linux-vms-to-a-vnet?"></a>Can I deploy Linux VMs to a VNet?
+### VNet に Linux VM をデプロイできますか。
 
-Yes. You can deploy any distro of Linux supported by Azure.
+はい。Azure でサポートされている Linux のすべてのディストリビューションをデプロイすることができます。
 
-### <a name="what-is-the-difference-between-a-public-vip-and-an-internal-ip-address?"></a>What is the difference between a public VIP and an internal IP address?
+### パブリック VIP と内部 IP アドレスの違いとは?
 
-- An internal IP address is an IP address that is assigned to each VM within a VNet by DHCP. It's not public facing. If you have created a VNet, the internal IP address is assigned from the range that you specified in the subnet settings of your VNet. If you do not have a VNet, an internal IP address will still be assigned. The internal IP address will remain with the VM for its lifetime, unless that VM is deallocated.
+- 内部 IP アドレスは DHCP によって各 VNet 内の VM に割り当てられている IP アドレスです。パブリック対象ではありません。VNet を作成した場合は、ご使用の VNet のサブネット設定で指定した範囲から内部 IP アドレスが割り当てられます。VNet がない場合は、内部 IP アドレスが割り当てられます。内部 IP アドレスは、VMが割り当て解除されていなければ、VM がある間は共にとどまります。
 
-- A public VIP is the public IP address that is assigned to your cloud service or load balancer. It is not assigned directly to your VM NIC. The VIP stays with the cloud service it is assigned to until all the VMs in that cloud service are deallocated or deleted. At that point, it is released.
+- パブリック VIP とは、クラウド サービスまたはロード バランサーに割り当てられているパブリック IP アドレスです。ご使用のVM の NIC に直接割り当てられていません。VIP は、クラウド サービスが割り当て解除または削除されるまで、割り当てられているクラウド サービスと共にとどまります。その時点でリリースされます。
 
-### <a name="what-ip-address-will-my-vm-receive?"></a>What IP address will my VM receive?
+### VM が受信するのはどの IP アドレスでしょうか。
 
-- **Internal IP address -** If you deploy a VM to a VNet, the VM receives an internal IP address from a pool of internal IP addresses that you specify. VMs communicate within the VNets by using internal IP addresses. Although Azure assigns a dynamic internal IP address, you can request a static address for your VM. To learn more about static internal IP addresses, visit [How to Set a Static Internal IP](../articles/virtual-network/virtual-networks-reserved-private-ip.md).
+- **内部 IP アドレス -** VM を VNet にデプロイする場合は、VM は、指定した内部 IP アドレスのプールから内部 IP アドレスを受信します。VM は、内部 IP アドレスを使用して VNet 内で通信します。Azure では動的内部 IP アドレスが割り当てられますが、ご使用の VM の静的アドレスを要求できます。静的内部 IP アドレスに関する詳細については、[静的内部 IP アドレスを設定する方法](../articles/virtual-network/virtual-networks-reserved-private-ip.md)参照してください。
 
-- **VIP -** Your VM is also associated with a VIP, although a VIP is never assigned to the VM directly. A VIP is a public IP address that can be assigned to your cloud service. You can, optionally, reserve a VIP for your cloud service.
+- **VIP -** VIP は VM に直接割り当てることはありませんが、ご使用の VM も VIP と関連付けられます。VIP は、クラウド サービスに割り当てられるパブリック IP アドレスです。必要に応じて、クラウド サービスの VIP を予約することができます。
 
-- **ILPIP -** You can also configure an instance-level public IP address (ILPIP). ILPIPs are directly associated with the VM, rather than the cloud service. To learn more about ILPIPs, visit [Instance-Level Public IP Overview](../articles/virtual-network/virtual-networks-instance-level-public-ip.md).
+- **ILPIP -**インスタンスレベル パブリック IP アドレス (ILPIP) を構成することもできます。ILPIP はクラウド サービスではなく、VM に直接関連付けられます。ILPIPs に関する詳細についてを参照してください。[インスタンス レベル パブリック IP の概要](../articles/virtual-network/virtual-networks-instance-level-public-ip.md)です。
 
-### <a name="can-i-reserve-an-internal-ip-address-for-a-vm-that-i-will-create-at-a-later-time?"></a>Can I reserve an internal IP address for a VM that I will create at a later time?
+### 後で作成する VM の内部 IP アドレスを予約できますか。
 
-No. You cannot reserve an internal IP address. If an internal IP address is available it will be assigned to a VM or role instance by the DHCP server. That VM may or may not be the one that you want the internal IP address to be assigned to. You can, however, change the internal IP address of an already created VM to any available internal IP address.
+いいえ。内部 IP アドレスを予約することはできません。内部 IP アドレスが使用可能な場合は、DHCP サーバーによって、VM またはロール インスタンスに割り当てられます。その VM は、内部 IP アドレスを割り当てさせたいマシンの場合もあるし、そうでない場合もあります。ただし、すでに作成済みの VM の内部 IP アドレスを、使用可能な内部 IP アドレスに変更することができます。
 
-### <a name="do-internal-ip-addresses-change-for-vms-in-a-vnet?"></a>Do internal IP addresses change for VMs in a VNet?
+### 内部 IP アドレスを、VNet 内の VM 用に変更しますか。
 
-Yes. Internal IP addresses remain with the VM for its lifetime unless the VM is deallocated. When a VM is deallocated, the internal IP address is released unless you defined a static internal IP address for your VM. If the VM is simply stopped (and not put in the status **Stopped (Deallocated)**) the IP address will remain assigned to the VM.
+はい。内部 IP アドレスしない限り、VM と有効期間にわたって、VM の割り当てが解除します。VM が割り当て解除されると、VM の静的内部 IP アドレスを定義しない限り、内部 IP アドレスが解放されます。VM が単純に停止している場合 (**停止 (割り当て解除)**状態になっていない)、IP アドレスは、VM に割り当てられたままです。
 
-### <a name="can-i-manually-assign-ip-addresses-to-nics-in-vms?"></a>Can I manually assign IP addresses to NICs in VMs?
+### 手動で IP アドレスを VM の NIC に割り当てられますか。
 
-No. You must not change any interface properties of VMs. Any changes may lead to potentially losing connectivity to the VM.
+いいえ。VM のインターフェイス プロパティを変更する必要はありません。どの変更も、VM への接続が失われる可能性があります。
 
-### <a name="what-happens-to-my-ip-addresses-if-i-shut-down-a-vm?"></a>What happens to my IP addresses if I shut down a VM?
+### VM をシャットダウンする場合、IP アドレスはどうなりますか。
 
-Nothing. The IP addresses (both public VIP and internal IP address) will stay with your cloud service or VM.
+何もありません。IP アドレス (パブリック VIP と内部 IP アドレスの両方) は、クラウド サービスまたは VM と共にとどまります。
 
-> [AZURE.NOTE] If you want to simply shut down the VM, don't use the Management Portal to do so. Currently, the shutdown button will deallocate the virtual machine.
+> [AZURE.NOTE] 単に VM をシャットダウンしたい場合、管理ポータルを使用しないでください。現時点では、シャットダウン ボタンをクリックすると、仮想マシンの割り当てが解除されます。
 
-### <a name="can-i-move-vms-from-one-subnet-to-another-subnet-in-a-vnet-without-re-deploying?"></a>Can I move VMs from one subnet to another subnet in a VNet without re-deploying?
+### VNet 内で 1 つのサブネットからもう 1 つのサブネットへと、再デプロイせずに移動できますか。
 
-Yes. You can find more information [here](../articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md).
+はい。詳細については、[こちらで](../articles/virtual-network/virtual-networks-move-vm-role-to-subnet.md)確認できます。
 
-### <a name="can-i-configure-a-static-mac-address-for-my-vm?"></a>Can I configure a static MAC address for my VM?
+### VM に静的な MAC アドレスを構成できますか。
 
-No. A MAC address cannot be statically configured.
+いいえ。 MAC アドレスを静的に構成することはできません。
 
-### <a name="will-the-mac-address-remain-the-same-for-my-vm-once-it-has-been-created?"></a>Will the MAC address remain the same for my VM once it has been created?
+### MAC アドレスは、一度作成されると、VM で同じものとして残りますか。
 
-Yes, the MAC address will remain the same for a VM even though the VM has been stopped (deallocated) and relaunched.
+いいえ、ただし変化するのは停止済み (割り当て解除済み) 状態になった場合だけです。ユーザーが VM のサイズを変更したり再起動した場合、またはサービス復旧やホスト サーバーの計画的なメンテナンスの場合は、MAC アドレスは維持されます。
 
-### <a name="can-i-connect-to-the-internet-from-a-vm-in-a-vnet?"></a>Can I connect to the internet from a VM in a VNet?
+### VNet 内の VM からインターネットに接続できますか。
 
-Yes. All services deployed within a VNet can connect to the Internet. Additionally, every cloud service deployed in Azure has a publicly addressable VIP assigned to it. You have to define input endpoints for PaaS roles and endpoints for VMs to enable these services to accept connections from the Internet.
+はい。VNet 内にデプロイされているすべてのサービスは、インターネットに接続できます。また、Azure にデプロイされたすべてのクラウド サービスには、パブリックにアドレス指定可能な VIP が割り当てられています。PaaS ロールの入力エンドポイントと vm をインターネットからの接続を受け入れるようにこれらのサービスを有効にするためにエンドポイントを定義する必要があります。
 
-## <a name="vnets-and-services"></a>VNets and Services
+## VNet とサービス
 
-### <a name="what-services-can-i-use-with-vnets?"></a>What services can I use with VNets?
+### VNet でどのようなサービスを使用できますか。
 
-You can only use compute services within VNets. Compute services are limited to Cloud Services (web and worker roles) and VMs.
+VNet 内のコンピューティング サービスのみ使用できます。Compute Services は、Cloud Services (web ロールと worker ロール) および VM に制限されます。
 
-### <a name="can-i-use-web-apps-with-virtual-network?"></a>Can I use Web Apps with Virtual Network?
+### Web Apps を Virtual Network と連動できますか。
 
-Yes. You can deploy Web Apps inside a VNet using ASE (App Service Environment). Adding to that, Web Apps can securely connect and access resources in your Azure VNet if you have point-to-site configured for your VNet. For more information, see the following:
+はい。ASE (App Service Environment) を使用して VNet 内に Web Apps をデプロイできます。さらに、VNet にポイント対サイトの 構成をした場合、Web Apps を安全に接続して、Azure VNet 内のリソースにアクセスできます。詳細については、次のトピックを参照してください。
 
 
-- [Creating Web Apps in an App Service Environment](../articles/app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
+- [App Service 環境で Web Apps を作成する](../articles/app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
 
-- [Web Apps Virtual Network Integration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
+- [Web Apps Virtual Network 統合](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)
 
-- [Using VNet Integration and Hybrid Connections with Web Apps](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
+- [Web Apps と VNet Integration and Hybrid Connections の併用](https://azure.microsoft.com/blog/2014/10/30/using-vnet-or-hybrid-conn-with-websites/)
 
-- [Integrate a web app with an Azure Virtual Network](../articles/app-service-web/web-sites-integrate-with-vnet.md)
+- [Web アプリを Azure Virtual Network に統合する](../articles/app-service-web/web-sites-integrate-with-vnet.md)
 
-### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-(paas)-in-a-vnet?"></a>Can I deploy cloud services with web and worker roles (PaaS) in a VNet?
+### クラウド サービスを VNet 内の Web ロールと worker ロール (PaaS) でデプロイできますか。
 
-Yes. You can deploy PaaS services within VNets.
+はい。VNet 内で PaaS サービスをデプロイすることができます。
 
-### <a name="how-do-i-deploy-paas-roles-to-a-vnet?"></a>How do I deploy PaaS roles to a VNet?
+### VNet に PaaS ロールをデプロイする方法
 
-You can accomplish this by specifying the VNet name and the role /subnet mappings in the network configuration section of your service configuration. You do not need to update any of your binaries.
+これは、サービス構成のネットワーク構成セクションで、VNet の名前と、ロールとサブネットのマッピングを指定することで実現できます。どのバイナリも更新する必要はありません。
 
-### <a name="can-i-move-my-services-in-and-out-of-vnets?"></a>Can I move my services in and out of VNets?
+### サービスを VNet 内外で移動できますか。
 
-No. You cannot move services in and out of VNets. You will have to delete and re-deploy the service to move it to another VNet.
+いいえ。サービスを VNet 内外で移動することはできません。別の VNet に移動するには、サービスを削除し再デプロイする必要があります。
 
-## <a name="vnets-and-security"></a>VNets and Security
+## VNet とセキュリティ
 
-### <a name="what-is-the-security-model-for-vnets?"></a>What is the security model for VNets?
+### VNet のセキュリティ モデルとは何ですか。
 
-VNets are completely isolated from one another, and other services hosted in the Azure infrastructure. A VNet is a trust boundary.
+Vnet は、1 つの別の機能と、Azure インフラストラクチャでホストされている他のサービスから完全に分離します。VNet は、トラスト バウンダリです。
 
-### <a name="can-i-define-acls-or-nsgs-on-my-vnets?"></a>Can I define ACLs or NSGs on my VNets?
+### VNet で、ACL または NSG を定義できますか。
 
-No. You cannot associate ACLs or NSGs to VNets. However, ACLs can be defined on input endpoints for VMs that have been deployed to a VNets, and NSGs can be associated to subnets or NICs.
+いいえ。ACL または NSG を VNet に関連付けることはできません。ただし、ACL が、VNet にデプロイされている VM の入力エンドポイントで定義されている場合、NSG は、サブネットまたは NIC に関連付けられます。
 
-### <a name="is-there-a-vnet-security-whitepaper?"></a>Is there a VNet security whitepaper?
+### VNet セキュリティに関するホワイト ペーパーはありますか。
 
-Yes. You can download it [here](http://go.microsoft.com/fwlink/?LinkId=386611).
+はい。[こちら](http://go.microsoft.com/fwlink/?LinkId=386611)からダウンロードできます。
 
-## <a name="apis,-schemas,-and-tools"></a>APIs, Schemas, and Tools
+## API、スキーマ、およびツール
 
-### <a name="can-i-manage-vnets-from-code?"></a>Can I manage VNets from code?
+### VNet をコードから管理できますか。
 
-Yes. You can use REST APIs to manage VNets and cross-premises connectivity. More information can be found [here](http://go.microsoft.com/fwlink/?LinkId=296833).
+はい。REST API を使用すると、VNet およびクロスプレミス接続を管理することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=296833)で確認できます。
 
-### <a name="is-there-tooling-support-for-vnets?"></a>Is there tooling support for VNets?
+### VNet に対するツール サポートはありますか。
 
-Yes. You can use PowerShell and command line tools for a variety of platforms. More information can be found [here](http://go.microsoft.com/fwlink/?LinkId=317721).
+はい。各種プラットフォームで PowerShell とコマンド ライン ツールを使用することができます。詳細については、[こちら](http://go.microsoft.com/fwlink/?LinkId=317721)で確認できます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

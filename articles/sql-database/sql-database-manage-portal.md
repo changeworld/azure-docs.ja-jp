@@ -1,180 +1,175 @@
 <properties
-    pageTitle="Manage Azure SQL Database using the Azure Portal | Microsoft Azure"
-    description="Learn how to use the Azure Portal to manage a relational database in the cloud using the Azure Portal."
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="Azure Portal を使用した Azure SQL Database の管理 | Microsoft Azure"
+	description="Azure ポータルを使用して、クラウド内のリレーショナル データベースを管理する方法について説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.workload="data-management"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.date="09/19/2016"
-    ms.author="sstein"/>
+	ms.service="sql-database"
+	ms.devlang="NA"
+	ms.workload="data-management"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.date="09/19/2016"
+	ms.author="sstein"/>
 
 
-
-# <a name="managing-azure-sql-databases-using-the-azure-portal"></a>Managing Azure SQL Databases using the Azure portal
+# Azure ポータルを使用した Azure SQL データベースの管理
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-manage-portal.md)
+- [Azure ポータル](sql-database-manage-portal.md)
 - [SSMS](sql-database-manage-azure-ssms.md)
-- [PowerShell](sql-database-manage-powershell.md)
+- [PowerShell](sql-database-command-line-tools.md)
 
-The [Azure portal](https://portal.azure.com/) allows you to create, monitor, and manage Azure SQL databases and servers. This article provides a quick description and links to the details of the more common tasks.
+[Azure Portal](https://portal.azure.com/) では、Azure SQL データベースと Azure SQL サーバーを作成、監視、管理できます。この記事では、一般的なタスクを紹介し、より詳しい情報へのリンクを示します。
 
-## <a name="view-your-azure-sql-databases,-servers,-and-pools"></a>View your Azure SQL databases, servers, and pools
+## Azure SQL データベース、サーバー、プールの表示
 
-To view the available SQL Database services, click **More services**, and type **SQL** in the search box:
+使用可能な SQL Database サービスを表示するには、**[More services (その他のサービス)]** をクリックし、検索ボックスに「**SQL**」と入力します。
 
 ![SQL Database](./media/sql-database-manage-portal/sql-services.png)
 
 
-## <a name="how-do-i-create-or-view-azure-sql-databases?"></a>How do I create or view Azure SQL databases?
+## Azure SQL データベースを作成または表示する方法
 
-To open the **SQL databases** blade, click **SQL databases**, and then click the database you want to work with, or click **+Add** to create a SQL database. For details, see [Create a SQL database in minutes by using the Azure portal](sql-database-get-started.md).
-
-
-![SQL databases](./media/sql-database-manage-portal/sql-databases.png)
+**[SQL データベース]** ブレードを開くには、**[SQL データベース]** をクリックし、対象のデータベースをクリックします。または、**[+追加]** をクリックして SQL データベースを作成します。詳細については、「[Azure Portal を使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。
 
 
-## <a name="how-do-i-create-or-view-azure-sql-servers?"></a>How do I create or view Azure SQL servers?
-
-To open the **SQL servers** blade, click **SQL servers**, and then click the server you want to work with, or click **+Add** to create a SQL server. For details, see [Create a SQL database in minutes by using the Azure portal](sql-database-get-started.md).
-
-![SQL servers](./media/sql-database-manage-portal/sql-servers.png)
+![SQL データベース](./media/sql-database-manage-portal/sql-databases.png)
 
 
-## <a name="how-do-i-create-or-view-sql-elastic-pools?"></a>How do I create or view SQL elastic pools?
+## Azure SQL サーバーを作成または表示する方法
 
-To open the **SQL elastic pools** blade, click **SQL elastic pools**, and then click the pool you want to work with, or click **+Add** to create a pool. For details, see [Create an elastic database pool with the Azure portal](sql-database-elastic-pool-create-portal.md).
+**[SQL Server]** ブレードを開くには、**[SQL Server]** をクリックし、対象のサーバーをクリックします。または、**[+追加]** をクリックして SQL サーバーを作成します。詳細については、「[Azure Portal を使用して数分で SQL データベースを作成する](sql-database-get-started.md)」を参照してください。
+
+![SQL Server](./media/sql-database-manage-portal/sql-servers.png)
+
+
+## SQL エラスティック プールを作成または表示する方法
+
+**[SQL 可変プール]** ブレードを開くには、**[SQL 可変プール]** をクリックし、対象のプールをクリックします。または、**[+追加]** をクリックしてプールを作成します。詳細については、[Azure Portal を使用したエラスティック データベース プールの作成](sql-database-elastic-pool-create-portal.md)に関するページを参照してください。
 
 ![SQL elastic pools](./media/sql-database-manage-portal/elastic-pools.png)
 
 
 
-## <a name="how-do-i-update-or-view-sql-database-settings?"></a>How do I update or view SQL database settings?
+## SQL データベースの設定を更新または表示する方法
 
-To view or update your database settings, click the desired setting on the SQL database blade:
-
-
-![SQL database settings](./media/sql-database-manage-portal/settings.png)
+データベースの設定を更新または表示するには、[SQL データベース] ブレードで目的の設定をクリックします。
 
 
-## <a name="how-do-i-find-a-sql-databases-fully-qualified-server-name?"></a>How do I find a SQL databases fully qualified server name?
-
-To view your databases server name, click **Overview** on the **SQL database** blade and note the server name:
+![SQL データベースの設定](./media/sql-database-manage-portal/settings.png)
 
 
-![SQL database settings](./media/sql-database-manage-portal/server-name.png)
+## SQL データベースの完全修飾サーバー名を確認する方法
+
+データベース サーバー名を表示するには、**[SQL データベース]** ブレードで **[概要]** をクリックして、サーバー名を書き留めます。
 
 
-## <a name="how-do-i-manage-firewall-rules-to-control-access-to-my-sql-server-and-database?"></a>How do I manage firewall rules to control access to my SQL server and database?
+![SQL データベースの設定](./media/sql-database-manage-portal/server-name.png)
 
-To view, create, or update firewall rules, click **Set server firewall** on the **SQL database** blade. For details, see [Configure an Azure SQL Database server-level firewall rule using the Azure portal](sql-database-configure-firewall-settings.md).
+
+## ファイアウォール規則を管理して SQL サーバーと SQL データベースへのアクセスを制御する方法
+
+ファイアウォール規則を表示、作成、または更新するには、**[SQL データベース]** ブレードで **[Set server firewall (サーバー ファイアウォールの設定)]** をクリックします。詳細については、「[Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)」を参照してください。
 
 
 ![firewall rules](./media/sql-database-manage-portal/sql-database-firewall.png)
 
 
-## <a name="how-do-i-change-my-sql-database-service-tier-or-performance-level?"></a>How do I change my SQL database service tier or performance level?
+## SQL データベースのサービス レベルまたはパフォーマンス レベルを変更する方法
 
 
-To update the service tier or performance level of a SQL database, click **Pricing tier (scale DTUs)** on the **SQL database** blade. For details, see [Change the service tier and performance level (pricing tier) of a SQL database](sql-database-scale-up.md).
+SQL データベースのサービス レベルまたはパフォーマンス レベルを更新するには、**[SQL データベース]** ブレードで **[価格レベル (DTU のスケール)]** をクリックします。詳細については、「[SQL Database のサービス レベルとパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)」を参照してください。
 
 
 ![pricing tiers](./media/sql-database-manage-portal/pricing-tier.png)
 
 
-## <a name="how-do-i-configure-auditing-and-threat-detection-for-a-sql-database?"></a>How do I configure auditing and threat detection for a SQL database?
+## SQL データベースの監査と脅威の検出を構成する方法
 
-To configure auditing and threat detection for a SQL database, click **Auditing and Threat detection** on the **SQL database** blade. For details, see [Get started with SQL database auditing](sql-database-auditing-get-started.md), and [Get started with SQL Database Threat Detection](sql-database-threat-detection-get-started.md).
-
-
-## <a name="how-do-i-configure-dynamic-data-masking-for-a-sql-database?"></a>How do I configure dynamic data masking for a SQL database?
-
-To configure dynamic data masking for a SQL database, click **Dynamic data masking** on the **SQL database** blade. For details, see [Get started with SQL Database Dynamic Data Masking](sql-database-dynamic-data-masking-get-started.md).
+SQL データベースの監査と脅威の検出を構成するには、**[SQL データベース]** ブレードで **[Auditing and Threat detection (監査と脅威の検出)]** をクリックします。詳細については、「[SQL Database 監査の使用](sql-database-auditing-get-started.md)」と「[SQL Database 脅威の検出の概要](sql-database-threat-detection-get-started.md)」を参照してください。
 
 
-## <a name="how-do-i-configure-transparent-data-encryption-(tde)-for-a-sql-database?"></a>How do I configure transparent data encryption (TDE) for a SQL database?
+## SQL データベースの動的データ マスクを構成する方法
 
-To configure transparent data encryption for a SQL database, click **Transparent data encryption** on the **SQL database** blade. For details, see [Enable TDE on a database using the portal](https://msdn.microsoft.com/library/dn948096#Anchor_1).
-
-## <a name="how-do-i-view-or-change-the-max-size-of-a-sql-database?"></a>How do I view or change the max size of a SQL database?
-
-To view or change the size a SQL database, click **Database size** on the **SQL database** blade. Update the max size of a database by changing the service tier or performance level. For details, see [Change the service tier and performance level (pricing tier) of a SQL database](sql-database-scale-up.md).
-
-## <a name="how-do-i-monitor-and-improve-the-performance-of-a-sql-database?"></a>How do I monitor and improve the performance of a SQL database?
-
-To monitor and improve performance characteristics of a SQL database, click **Performance overview** on the **SQL database** blade. For details, see [SQL Database Performance Insight](sql-database-performance.md).
+SQL データベースの動的データ マスクを構成するには、**[SQL データベース]** ブレードで **[動的データ マスク]** をクリックします。詳細については、[SQL Database 動的データ マスクの使用](sql-database-dynamic-data-masking-get-started.md)に関するページを参照してください。
 
 
-## <a name="how-do-i-configure-geo-replication?"></a>How do I configure Geo-Replication?
+## SQL データベースの Transparent Data Encryption (TDE) を構成する方法
 
-To set up Geo-Replication for a SQL database, click **Geo-Replication** on the **SQL database** blade. For details, see [Configure Geo-Replication for Azure SQL Database with the Azure portal](sql-database-geo-replication-portal.md).
+SQL データベースの Transparent Data Encryption を構成するには、**[SQL データベース]** ブレードで **[透過的なデータ暗号化]** をクリックします。詳細については、「[ポータルを使用してデータベースで TDE を有効にする](https://msdn.microsoft.com/library/dn948096#Anchor_1)」を参照してください。
 
+## SQL データベースの最大サイズを表示または変更する方法
 
-## <a name="how-do-i-failover-to-a-geo-replicated-sql-database?"></a>How do I failover to a geo-replicated SQL database?
+SQL データベースのサイズを表示または変更するには、**[SQL データベース]** ブレードで **[データベース サイズ]** をクリックします。サービス レベルまたはパフォーマンス レベルを変更して、データベースの最大サイズを更新します。詳細については、「[SQL Database のサービス レベルとパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)」を参照してください。
 
-To failover to a geo-replicated secondary, click **Geo-Replication** on the **SQL database** blade, then click **Failover**. For details, see [Initiate a planned or unplanned failover for Azure SQL Database with the Azure portal](sql-database-geo-replication-failover-portal.md).
+## SQL データベースのパフォーマンスを監視および改善する方法
 
-
-## <a name="how-do-i-copy-a-sql-database?"></a>How do I copy a SQL database?
-
-To copy a SQL database, click **Copy** on the **SQL database** blade. For details, see [Copy an Azure SQL database using the Azure portal](sql-database-copy-portal.md).
+SQL データベースのパフォーマンス特性を監視および改善するには、**[SQL データベース]** ブレードの **[Performance overview (パフォーマンス概要)]** をクリックします。詳細については、「[SQL Database Performance Insight](sql-database-performance.md)」を参照してください。
 
 
-![SQL database settings](./media/sql-database-manage-portal/sql-database-copy.png)
+## geo レプリケーションを構成する方法
 
-## <a name="how-do-i-archive-an-azure-sql-database-to-a-bacpac-file?"></a>How do I archive an Azure SQL database to a BACPAC file?
+SQL データベースの geo レプリケーションを設定するには、**[SQL データベース]** ブレードで **[geo レプリケーション]** をクリックします。詳細については、「[Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成する](sql-database-geo-replication-portal.md)」を参照してください。
 
-To create a BACPAC of a SQL database, click **Export** on the **SQL database** blade. For details, see [Archive an Azure SQL database to a BACPAC file using the Azure portal](sql-database-export.md).
+
+## geo レプリケートされた SQL データベースにフェールオーバーする方法
+
+geo レプリケートされたセカンダリにフェールオーバーするには、**[SQL データベース]** ブレードで **[geo レプリケーション]** をクリックし、**[フェールオーバー]** をクリックします。詳細については、「[Azure Portal を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始](sql-database-geo-replication-failover-portal.md)」を参照してください。
+
+
+## SQL データベースをコピーする方法
+
+SQL データベースをコピーするには、**[SQL データベース]** ブレードで **[コピー]** をクリックします。詳細については、「[Azure Portal を使用した Azure SQL Database のコピー](sql-database-copy-portal.md)」を参照してください。
+
+
+![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-copy.png)
+
+## Azure SQL データベースを BACPAC ファイルにアーカイブする方法
+
+SQL データベースの BACPAC を作成するには、**[SQL データベース]** ブレードで **[エクスポート]** をクリックします。詳細については、「[Azure Portal を使用して BACPAC ファイルに Azure SQL Database をアーカイブする](sql-database-export.md)」を参照してください。
 
 
 ![SQL database export](./media/sql-database-manage-portal/sql-database-export.png)
 
 
 
-## <a name="how-do-i-restore-a-sql-database-to-a-previous-point-in-time?"></a>How do I restore a SQL database to a previous point in time?
+## SQL データベースを過去のある時点に復元する方法
 
-To restore a SQL database, click **Restore** on the **SQL database** blade. For details, see [Restore an Azure SQL Database to a previous point in time with the Azure portal](sql-database-point-in-time-restore-portal.md).
-
-
-![SQL database settings](./media/sql-database-manage-portal/sql-database-restore.png)
+SQL データベースを復元するには、**[SQL データベース]** ブレードで **[復元]** をクリックします。詳細については、「[Azure Portal で以前の時点に Azure SQL Database を復元する](sql-database-point-in-time-restore-portal.md)」を参照してください。
 
 
-## <a name="how-do-i-create-an-azure-sql-database-from-a-bacpac-file?"></a>How do I create an Azure SQL database from a BACPAC file?
-
-To create a SQL database from a BACPAC file, click **Import database** on the **SQL server** blade. For details, see [Import a BACPAC file to create an Azure SQL database](sql-database-import.md).
+![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-restore.png)
 
 
-![SQL server](./media/sql-database-manage-portal/server-commands.png)
+## BACPAC ファイルから Azure SQL データベースを作成する方法
+
+BACPAC ファイルから SQL データベースを作成するには、**[SQL Server]** ブレードで **[データベースのインポート]** をクリックします。詳細については、「[BACPAC ファイルをインポートして新しい Azure SQL Database を作成する](sql-database-import.md)」を参照してください。
 
 
-## <a name="how-do-i-restore-a-deleted-sql-database?"></a>How do I restore a deleted SQL database?
-
-To restore a deleted SQL database, click **Deleted databases** on the **SQL server** blade (the SQL server that contained the database that was deleted). For details, see [Restore a deleted Azure SQL database using the Azure portal](sql-database-restore-deleted-database-portal.md).
-
-## <a name="how-do-i-delete-a-sql-database?"></a>How do I delete a SQL database?
-
-To delete a SQL database, click **Delete** on the **SQL database** blade. 
-
-![SQL database settings](./media/sql-database-manage-portal/sql-database-delete.png)
+![SQL Server](./media/sql-database-manage-portal/server-commands.png)
 
 
+## 削除した SQL データベースを復元する方法
 
-## <a name="additional-resources"></a>Additional resources
+削除した SQL データベースを復元するには、**[SQL Server]** (削除したデータベースが含まれていた SQL サーバー) ブレードで **[削除済みデータベース]** をクリックします。詳細については、「[Azure Portal を使用した、削除済み Azure SQL データベースの復元](sql-database-restore-deleted-database-portal.md)」を参照してください。
+
+## SQL データベースを削除する方法
+
+SQL データベースを削除するには、**[SQL データベース]** ブレードで **[削除]** をクリックします。
+
+![SQL データベースの設定](./media/sql-database-manage-portal/sql-database-delete.png)
+
+
+
+## その他のリソース
 
 - [SQL Database](sql-database-technical-overview.md)
-- [Monitor and manage an elastic database pool with the Azure portal](sql-database-elastic-pool-manage-portal.md)
+- [Azure ポータルを使用したエラスティック データベース プールの監視と管理](sql-database-elastic-pool-manage-portal.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

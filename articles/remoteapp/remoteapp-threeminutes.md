@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="Try Azure RemoteApp on your device in 3 minutes or less | Microsoft Azure"
-    description="Test drive Azure RemoteApp functionality without installing the service."
+    pageTitle="手持ちのデバイスで Azure RemoteApp を 3 分以内に試してみる | Microsoft Azure"
+    description="サービスをインストールせずに、Azure RemoteApp の機能を試してみましょう。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -18,29 +18,24 @@
 
 
 
-
-# <a name="try-azure-remoteapp-on-your-device-in-3-minutes-or-less"></a>Try Azure RemoteApp on your device in 3 minutes or less
+# 手持ちのデバイスで Azure RemoteApp を 3 分以内に試してみる
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Want to see Azure RemoteApp on your device? You can access our demo deployment for 10 minutes, as long as you have a Microsoft account. We have Office and a few other applications available. This is a great way to test drive the user experience for Azure RemoteApp in less than 3 minutes.
+デバイス上に Azure RemoteApp を表示するには Microsoft アカウントをお持ちの場合は、デモ デプロイに 10 分間アクセスできます。Office をはじめ、いくつかのアプリケーションが利用可能です。これは、3 分もかからずに Azure RemoteApp のユーザー エクスペリエンスを試せるすばらしい機会です。
 
-Interested?
+ご興味がおありでしたら、
 
-1. Go to to [http://remoteapp.azure.com](http://remoteapp.azure.com).
-2. Click **Install Client** in the upper right corner.  
-3. The system automatically detects your device and will take you to the client for your device. Install the client.
-4. Go back [http://remoteapp.azure.com](http://remoteapp.azure.com) and  sign in with your Microsoft account.
+1. [http://remoteapp.azure.com](http://remoteapp.azure.com) にアクセスしてください。
+2. 右上隅の **[クライアントのインストール]** をクリックします。
+3. デバイスが自動的に検出され、そのデバイス用のクライアントが表示されます。クライアントをインストールします。
+4. [http://remoteapp.azure.com](http://remoteapp.azure.com) に戻って、Microsoft アカウントでサインインします。
 
-You can now access applications running in real time on Azure RemoteApp.
+これで、Azure RemoteApp でリアルタイムで実行されているアプリケーションにアクセスできます。
 
-Your opinion matters. At the end of each session, you will see a dialog box for your feedback. If you have a minute, tell us your thoughts and let us know whether you would like Microsoft to contact you for additional information.
+お客様のご意見は重要です。各セッションの終了時に、フィードバック用のダイアログ ボックスが表示されます。お時間がありましたら、お客様のご意見と、追加情報の収集のために Microsoft からご連絡を差し上げても差し支えないかどうかをお知らせください。
 
->[AZURE.NOTE] Because this is a controlled environment for demo use, we have not enabled external internet access from the published demo applications. Because of this, services like OneDrive are not accessible. Also, clipboard sharing (Copy & Paste) and USB and printer redirection are disabled.  
+>[AZURE.NOTE] これはデモ用に制御された環境であるため、発行されたデモ アプリケーションから外部へのインターネット アクセスは有効になっていません。そのため、OneDrive などのサービスにはアクセスできません。また、クリップボードの共有 (コピーと貼り付け)、USB やプリンターへのリダイレクトも無効になっています。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

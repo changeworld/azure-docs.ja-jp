@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple virtual device Update 2| Microsoft Azure"
-   description="Learn how to create, deploy, and manage a StorSimple virtual device in a Microsoft Azure virtual network. (Applies to StorSimple Update 2)."
+   pageTitle="StorSimple 仮想デバイス Update 2 | Microsoft Azure"
+   description="Microsoft Azure 仮想ネットワークで StorSimple 仮想デバイスを作成、デプロイ、管理する方法を説明します。StorSimple Update 2 に適用されます。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,290 +15,284 @@
    ms.date="09/23/2016"
    ms.author="alkohli" />
 
-
-# <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Deploy and manage a StorSimple virtual device in Azure
-
-
-##<a name="overview"></a>Overview
-The StorSimple 8000 series virtual device is an additional capability that comes with your Microsoft Azure StorSimple solution. The StorSimple virtual device runs on a virtual machine in a Microsoft Azure virtual network, and you can use it to back up and clone data from your hosts. This tutorial describes how to deploy and manage a virtual device in Azure and is applicable to all the virtual devices running software version Update 2 and lower.
+# Azure での StorSimple 仮想デバイスのデプロイと管理
 
 
-#### <a name="virtual-device-model-comparison"></a>Virtual device model comparison
+##Overview
+StorSimple 8000 シリーズ仮想デバイスは、Microsoft Azure StorSimple ソリューションに付属する追加的な機能です。StorSimple 仮想デバイスは Microsoft Azure の仮想ネットワーク内の仮想マシン上で動作します。この仮想マシンを使用して、ホストからデータをバックアップしたり、複製したりできます。このチュートリアルは、Azure に仮想デバイスをデプロイして管理する方法について説明したものです。ソフトウェア バージョン Update 2 以前を実行するすべての仮想デバイスが対象となります。
 
-The StorSimple virtual device is available in two models, a standard 8010 (formerly known as the 1100) and a premium 8020 (introduced in Update 2). A comparison of the two models is tabulated below.
+
+#### 仮想デバイス モデルの比較
+
+StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 8020 (Update 2 で導入) の 2 つのモデルで利用できます。2 つのモデルの比較を、次の表に示します。
 
 
-| Device model          | 8010<sup>1</sup>                                                                     | 8020                                                                                                                               |
+| デバイスのモデル | 8010<sup>1</sup> | 8020 |
 |-----------------------|---------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| **Maximum capacity**      | 30 TB                                                                     | 64 TB                                                                                                                                |
-| **Azure VM**              | Standard_A3 (4 cores, 7 GB memory)                                                                      | Standard_DS3 (4 cores, 14 GB memory)                                                                                                                          |
-| **Version compatibility** | Versions running pre-Update 2 or later                                             | Versions running Update 2 or later                                                                                                  |
-| **Region availability**   | All Azure regions                                                         | Azure regions that support Premium Storage<br></br>For a list of regions, see [supported regions for 8020](#supported-regions-for-8020) |
-| **Storage type**          | Uses Azure Standard Storage for local disks<br></br> Learn how to [create a Standard Storage account]() | Uses Azure Premium Storage for local disks<sup>2</sup> <br></br>Learn how to [create a Premium Storage account](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)                                                               |
-| **Workload guidance**     | Item level retrieval of files from backups                                              | Cloud dev and test scenarios, low latency, higher performance workloads <br></br>Secondary device for disaster recovery                                                                                            |
+| **最大容量** | 30 TB | 64 TB |
+| **Azure VM** | Standard\_A3 (4 コア、7 GB メモリ) | Standard\_DS3 (4 コア、14 GB メモリ) |
+| **バージョン互換性** | Update 2 より前または Update 2 以降を実行しているバージョン | Update 2 以降を実行しているバージョン |
+| **利用可能なリージョン** | すべての Azure リージョン | Premium Storage をサポートする Azure リージョン<br></br>リージョンの一覧については、「[8020 のサポートされるリージョン](#supported-regions-for-8020)」をご覧ください。 |
+| **ストレージの種類** | Azure Standard Storage をローカル ディスクに使用します。<br></br>[Standard Storage アカウントを作成する]()方法を確認してください。 | Azure Premium Storage をローカル ディスクに使用します。<sup>2</sup><br></br>[Premium Storage アカウントを作成する](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)方法を確認してください。 |
+| **ワークロードのガイダンス** | バックアップからファイルを項目レベルで取得 | クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード <br></br>障害復旧のためのセカンダリ デバイス |
  
-<sup>1</sup> *Formerly known as the 1100*.
+<sup>1</sup> *以前は 1100 と呼ばれていました*。
 
-<sup>2</sup> *Both the 8010 and 8020 use Azure Standard Storage for the cloud tier. The difference only exists in the local tier within the device*.
+<sup>2</sup> *8010 も 8020 も共に、クラウド層には Azure Standard Storage が使用されます。デバイス内のローカル層にのみ違いがあります*。
 
-#### <a name="supported-regions-for-8020"></a>Supported regions for 8020
+#### 8020 のサポートされるリージョン
 
-The Premium Storage regions that are currently supported for 8020 are tabulated below. This list will be continuously updated as Premium Storage becomes available in more regions. 
+8020 で現在サポートされている Premium Storage リージョンを下の表にまとめています。このリストは、Premium Storage が使用できるリージョンの追加に伴って、継続的に更新されます。
 
-| S. no.                                                  | Currently supported in regions |
+| 番号 | 現在サポートされているリージョン |
 |---------------------------------------------------------|--------------------------------|
-| 1                                                       | Central US                     |
-| 2                                                       |  East US                       |
-| 3                                                       |  East US 2                     |
-| 4                                                       | West US                        |
-| 5                                                       | North Europe                   |
-| 6                                                       | West Europe                    |
-| 7                                                       | Southeast Asia                 |
-| 8                                                       | Japan East                     |
-| 9                                                       | Japan West                     |
-| 10                                                      | Australia East                 |
-| 11                                                      | Australia Southeast*           |
-| 12                                                      | East Asia*                     |
-| 13                                                      | South Central US*              |
+| 1 | 米国中央部 |
+| 2 | 米国東部 |
+| 3 | 米国東部 2 |
+| 4 | 米国西部 |
+| 5 | 北ヨーロッパ |
+| 6 | 西ヨーロッパ |
+| 7 | 東南アジア |
+| 8 | 東日本 |
+| 9 | 西日本 |
+| 10 | オーストラリア東部 |
+| 11 | オーストラリア南東部* |
+| 12 | 東アジア* |
+| 13 | 米国中南部* |
 
-*Premium Storage was launched recently in these geos.
+*Premium Storage はこれらの地域で最近提供が開始されました。
 
-This article describes the step-by-step process of deploying a StorSimple virtual device in Azure. After reading this article, you will:
+この記事では、Azure で StorSimple 仮想デバイスをデプロイするための段階的なプロセスについて説明します。この記事を読むと、次のことができます。
 
-- Understand how the virtual device differs from the physical device.
+- 仮想デバイスと物理デバイスの違いを理解する。
 
-- Be able to create and configure the virtual device.
+- 仮想デバイスを作成および構成する。
 
-- Connect to the virtual device.
+- 仮想デバイスに接続する。
 
-- Learn how to work with the virtual device.
+- 仮想デバイスでの作業方法を学習する。
 
-This tutorial applies to all the StorSimple virtual devices running Update 2 and higher. 
+このチュートリアルは、Update 2 以降を実行するすべての StorSimple 仮想デバイスに適用されます。
 
-## <a name="how-the-virtual-device-differs-from-the-physical-device"></a>How the virtual device differs from the physical device
+## 仮想デバイスと物理デバイスの違い
 
-The StorSimple virtual device is a software-only version of StorSimple that runs on a single node in a Microsoft Azure Virtual Machine. The virtual device supports disaster recovery scenarios in which your physical device is not available, and is appropriate for use in item-level retrieval from backups, on-premises disaster recovery, and cloud dev and test scenarios.
+StorSimple 仮想デバイスは、Microsoft Azure 仮想マシン内の単一のノード上で動作する、StorSimple のソフトウェア専用バージョンです。仮想デバイスは、物理デバイスが使用できない障害復旧のシナリオに対応します。また、バックアップからの項目レベルの取得、オンプレミスの障害復旧、クラウドの開発とテストのシナリオに適しています。
 
-#### <a name="differences-from-the-physical-device"></a>Differences from the physical device
+#### 物理デバイスとの違い
 
-The following table shows some key differences between the StorSimple virtual device and the StorSimple physical device.
+StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点を以下の表に示します。
 
-|                             | Physical device                                          | Virtual device                                                                            |
+| | 物理デバイス | 仮想デバイス |
 |-----------------------------|----------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| **Location**                    | Resides in the datacenter.                               | Runs in Azure.                                                                            |
-| **Network interfaces**          | Has six network interfaces: DATA 0 through DATA 5.                  | Has only one network interface: DATA 0.                                        |
-| **Registration**                | Registered during the configuration step.                | Registration is a separate task.                                                          |
-| **Service data encryption key** | Regenerate on the physical device and then update the virtual device with the new key.           | Cannot regenerate from the virtual device. |
+| **場所** | データ センター内に存在します。 | Azure で実行されます。 |
+| **ネットワーク インターフェイス** | 6 つのネットワーク インターフェイス (DATA 0 から DATA 5) があります。 | ネットワーク インターフェイスは DATA 0 ただ 1 つです。 |
+| **登録** | 構成手順中に登録します。 | 登録は別の作業です。 |
+| **サービス データ暗号化キー** | 物理デバイスで再生成し、新しいキーで仮想デバイスを更新します。 | 仮想デバイスから再生成することはできません。 |
 
 
-## <a name="prerequisites-for-the-virtual-device"></a>Prerequisites for the virtual device
+## 仮想デバイスの前提条件
 
-The following sections explain the configuration prerequisites for your StorSimple virtual device. Prior to deploying a virtual device, review the [security considerations for using a virtual device](storsimple-security.md#storsimple-virtual-device-security).
+以下の各セクションでは、StorSimple 仮想デバイスの構成の前提条件について説明します。仮想デバイスをデプロイする前に、[仮想デバイスを使用する際のセキュリティの考慮事項](storsimple-security.md#storsimple-virtual-device-security)を確認してください。
 
-#### <a name="azure-requirements"></a>Azure requirements
+#### Azure の要件
 
-Before you provision the virtual device, you need to make the following preparations in your Azure environment:
+仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
-- For the virtual device, [configure a virtual network on Azure](../virtual-network/virtual-networks-create-vnet-classic-portal.md). If using Premium Storage, you must create a virtual network in an Azure region that supports Premium Storage. More information on [regions that are currently supported for 8020](#supported-regions-for-8020).
-- It is advisable to use the default DNS server provided by Azure instead of specifying your own DNS server name. If your DNS server name is not valid or if the DNS server is not able to resolve IP addresses correctly, the creation of the virtual device will fail.
-- Point-to-site and site-to-site are optional, but not required. If you wish, you can configure these options for more advanced scenarios. 
-- You can create [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md) (host servers) in the virtual network that can use the volumes exposed by the virtual device. These servers must meet the following requirements:                            
-    - Be Windows or Linux VMs with iSCSI Initiator software installed.
-    - Be running in the same virtual network as the virtual device.
-    - Be able to connect to the iSCSI target of the virtual device through the internal IP address of the virtual device.
+- 仮想デバイスに対し、[Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。現在 8020 でサポートされているリージョンの詳細については、[こちら](#supported-regions-for-8020)をご覧ください。
+- 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
+- ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
+- 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md) (ホスト サーバー) を仮想ネットワークに作成できます。これらのサーバーは次の要件を満たしている必要があります。
+	- Windows または Linux の VM が実行され、iSCSI イニシエーター ソフトウェアがインストールされていること。
+	- 仮想デバイスと同じ仮想ネットワークで実行されていること。
+	- 仮想デバイスの内部 IP アドレスで仮想デバイスの iSCSI ターゲットに接続できること。
 
-- Make sure you have configured support for iSCSI and cloud traffic on the same virtual network.
+- iSCSI とクラウド トラフィックに対するサポートを同じ仮想ネットワークに対して構成済みであることを確認してください。
 
 
-#### <a name="storsimple-requirements"></a>StorSimple requirements
+#### StorSimple の要件
 
-Make the following updates to your Azure StorSimple service before you create a virtual device:
+仮想デバイスを作成する前に、Azure StorSimple サービスに対して次の更新作業を行います。
 
 
-- Add [access control records](storsimple-manage-acrs.md) for the VMs that are going to be host servers for your virtual device.
+- 仮想デバイスのホスト サーバーとなる VM の[アクセス制御レコード](storsimple-manage-acrs.md)を追加します。
 
-- Use a [storage account](storsimple-manage-storage-accounts.md#add-a-storage-account) in the same region as the virtual device. Storage accounts in different regions may result in poor performance. You can use a Standard or Premium Storage account with the virtual device. More information on how to create a [Standard Storage account]() or a [Premium Storage account](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)
+- 仮想デバイスと同じリージョンにある[ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account)を使用します。ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら]()、Premium Storage アカウントの場合は[こちら](storage-premium-storage.md#create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk)を参照してください。
 
-- Use a different storage account for virtual device creation from the one used for your data. Using the same storage account may result in poor performance.
+- 仮想デバイスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
-Make sure that you have the following information before you begin:
+作業を開始する前に、次の情報を確認してください。
 
-- Your Azure classic portal account with access credentials.
+- アクセス資格情報のある Azure クラシック ポータル アカウント。
 
-- A copy of the service data encryption key from your physical device.
+- 物理デバイスから取得したサービス データ暗号化キーのコピー。
 
 
-## <a name="create-and-configure-the-virtual-device"></a>Create and configure the virtual device
+## 仮想デバイスの作成と構成
 
-Before performing these procedures, make sure that you have met the [Prerequisites for the virtual device](#prerequisites-for-the-virtual-device). 
+以下の作業を始める前に、「[仮想デバイスの前提条件](#prerequisites-for-the-virtual-device)」が満たされていることを確認してください。
 
-After you have created a virtual network, configured a StorSimple Manager service, and registered your physical StorSimple device with the service, you can use the following steps to create and configure a StorSimple virtual device. 
+仮想ネットワークを作成して StorSimple Manager サービスを構成し、そのサービスに物理 StorSimple デバイスを登録した後、次の手順に従って StorSimple 仮想デバイスを作成および構成することができます。
 
-### <a name="step-1:-create-a-virtual-device"></a>Step 1: Create a virtual device
+### 手順 1. 仮想デバイスの作成
 
-Perform the following steps to create the StorSimple virtual device.
+StorSimple 仮想デバイスを作成するには、次の手順を実行します。
 
-[AZURE.INCLUDE [Create a virtual device](../../includes/storsimple-create-virtual-device-u2.md)]
+[AZURE.INCLUDE [仮想デバイスの作成](../../includes/storsimple-create-virtual-device-u2.md)]
 
-If the creation of the virtual device fails in this step, you may not have connectivity to the Internet. For more information, go to [troubleshoot Internet connectivity failures](#troubleshoot-internet-connectivity-errors) when creatig a virtual device.
+この手順で仮想デバイスを作成できない場合は、インターネットに接続されていない可能性があります。詳細については、「[インターネット接続エラーのトラブルシューティング](#troubleshoot-internet-connectivity-errors)」を参照してください。
 
 
-### <a name="step-2:-configure-and-register-the-virtual-device"></a>Step 2: Configure and register the virtual device
+### 手順 2. 仮想デバイスの構成と登録
 
-Before starting this procedure, make sure that you have a copy of the service data encryption key. The service data encryption key was created when you configured your first StorSimple device and you were instructed to save it in a secure location. If you do not have a copy of the service data encryption key, you must contact Microsoft Support for assistance.
+この手順を開始する前に、サービス データ暗号化キーのコピーがあることを確認してください。サービス データ暗号化キーは、最初の StorSimple デバイスの構成時に作成され、安全な場所に保存するように指示されます。サービス データ暗号化キーのコピーがない場合は、Microsoft サポートに支援を依頼する必要があります。
 
-Perform the following steps to configure and register your StorSimple virtual device.
-[AZURE.INCLUDE [Configure and register a virtual device](../../includes/storsimple-configure-register-virtual-device.md)]
+StorSimple 仮想デバイスを構成して登録するには、次の手順を実行します。
+[AZURE.INCLUDE [仮想デバイスの構成と登録](../../includes/storsimple-configure-register-virtual-device.md)]
 
-### <a name="step-3:-(optional)-modify-the-device-configuration-settings"></a>Step 3: (Optional) Modify the device configuration settings
+### 手順 3. (オプション) デバイスの構成設定の変更
 
-The following section describes the device configuration settings needed for the StorSimple virtual device if you want to use CHAP, StorSimple Snapshot Manager or change the Device Administrator password.
+次のセクションでは、CHAP を使用する場合や、StorSimple Snapshot Manager のパスワードまたはデバイス管理者パスワードを変更する場合に StorSimple 仮想デバイスに必要なデバイス構成設定について説明します。
 
-#### <a name="configure-the-chap-initiator"></a>Configure the CHAP initiator
+#### CHAP イニシエーターの構成
 
-This parameter contains the credentials that your virtual device (target) expects from the initiators (servers) that are attempting to access the volumes. The initiators will provide a CHAP user name and a CHAP password to identify themselves to your device during this authentication. For detailed steps, go to [Configure CHAP for your device](storsimple-configure-chap.md#unidirectional-or-one-way-authentication).
+このパラメーターには、ボリュームへのアクセスを試みるイニシエーター (サーバー) に対して仮想デバイス (ターゲット) が要求する資格情報が含まれます。この認証中、イニシエーターは自己の身元をデバイスに証明するために CHAP ユーザー名と CHAP パスワードを提供します。詳細な手順については、[デバイスの CHAP の構成](storsimple-configure-chap.md#unidirectional-or-one-way-authentication)に関するページを参照してください。
 
-#### <a name="configure-the-chap-target"></a>Configure the CHAP target
+#### CHAP ターゲットの構成
 
-This parameter contains the credentials that your virtual device uses when a CHAP-enabled initiator requests mutual or bi-directional authentication. Your virtual device will use a Reverse CHAP user name and Reverse CHAP password to identify itself to the initiator during this authentication process. Note that CHAP target settings are global settings. When these are applied, all the volumes connected to the storage virtual device will use CHAP authentication. For detailed steps, go to [Configure CHAP for your device](storsimple-configure-chap.md#bidirectional-or-mutual-authentication).
+このパラメーターには、CHAP 対応のイニシエーターが相互認証 (双方向認証) を要求するときに仮想デバイスによって使用される資格情報が含まれます。この認証プロセス中、仮想デバイスは、リバース CHAP ユーザー名とリバース CHAP パスワードを使用してその身元をイニシエーターに対して証明します。CHAP ターゲットの設定はグローバル設定であることに注意してください。これらの設定が適用されると、ストレージの仮想デバイスに接続されているすべてのボリュームに CHAP 認証が使用されます。詳細な手順については、[デバイスの CHAP の構成](storsimple-configure-chap.md#bidirectional-or-mutual-authentication)に関するページを参照してください。
 
-#### <a name="configure-the-storsimple-snapshot-manager-password"></a>Configure the StorSimple Snapshot Manager password
+#### StorSimple Snapshot Manager のパスワードの構成
 
-StorSimple Snapshot Manager software resides on your Windows host and allows administrators to manage backups of your StorSimple device in the form of local and cloud snapshots.
+StorSimple Snapshot Manager ソフトウェアは Windows ホスト上に常駐し、管理者が、ローカル スナップショットとクラウド スナップショットの形式で StorSimple デバイスのバックアップを管理することを可能にします。
 
->[AZURE.NOTE] For the virtual device, your Windows host is an Azure virtual machine.
+>[AZURE.NOTE] 仮想デバイスの場合、Windows ホストは Azure 仮想マシンです。
 
-When configuring a device in the StorSimple Snapshot Manager, you will be prompted to provide the StorSimple device IP address and password to authenticate your storage device. For detailed steps, go to [Configure StorSimple Snapshot Manager password](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password).
+StorSimple Snapshot Manager でデバイスを構成するとき、ストレージ デバイスを認証するためのパスワードと StorSimple デバイスの IP アドレスを入力するように求められます。詳細な手順については、[StorSimple Snapshot Manager のパスワードの構成](storsimple-change-passwords.md#change-the-storsimple-snapshot-manager-password)に関するページを参照してください。
 
-#### <a name="change-the-device-administrator-password"></a>Change the device administrator password 
+#### デバイス管理者のパスワードの変更 
 
-When you use the Windows PowerShell interface to access the virtual device, you will be required to enter a device administrator password. For the security of your data, you are required to change this password before the virtual device can be used. For detailed steps, go to [Configure device administrator password](storsimple-change-passwords.md#change-the-device-administrator-password).
+Windows PowerShell インターフェイスを使用して仮想デバイスにアクセスする際、デバイス管理者のパスワードの入力が求められます。データのセキュリティ上、仮想デバイスの使用前にこのパスワードを変更することが必須となっています。詳細な手順については、[デバイス管理者のパスワードの構成](storsimple-change-passwords.md#change-the-device-administrator-password)に関するページを参照してください。
 
-## <a name="connect-remotely-to-the-virtual-device"></a>Connect remotely to the virtual device
-Remote access to your virtual device via the Windows PowerShell interface is not enabled by default. You need to enable remote management on the virtual device first, and then enable it on the client that will be used to access your virtual device.
+## 仮想デバイスへのリモート接続
+Windows PowerShell インターフェイス経由での仮想デバイスへのリモート アクセスは既定では有効になっていません。リモート管理は、まず仮想デバイスで有効にして、次に、仮想デバイスへのアクセスに使用するクライアントで有効にする必要があります。
 
-The two-step process to connect remotely is detailed below.
+リモートで接続するための 2 段階のプロセスについては、以下で詳しく説明します。
 
-### <a name="step-1:-configure-remote-management"></a>Step 1: Configure remote management
+### 手順 1. リモート管理の構成
 
-Perform the following steps to configure remote management for your StorSimple virtual device.
+StorSimple 仮想デバイスのリモート管理を構成するには、次の手順を実行します。
 
-[AZURE.INCLUDE [Configure remote management via HTTP for virtual device](../../includes/storsimple-configure-remote-management-http-device.md)]
+[AZURE.INCLUDE [仮想デバイスのための HTTP 経由でのリモート管理の構成](../../includes/storsimple-configure-remote-management-http-device.md)]
 
-### <a name="step-2:-remotely-access-the-virtual-device"></a>Step 2: Remotely access the virtual device
+### 手順 2. 仮想デバイスへのリモート アクセス
 
-After you have enabled remote management on the StorSimple device configuration page, you can use Windows PowerShell remoting to connect to the virtual device from another virtual machine inside the same virtual network; for example, you can connect from the host VM that you configured and used to connect iSCSI. In most deployments, you will have already opened a public endpoint to access your host VM that you can use for accessing the virtual device.
+StorSimple デバイスの構成ページでリモート管理を有効にしたら、Windows PowerShell リモート処理を使って、同じ仮想ネットワーク内の別の仮想マシンから仮想デバイスに接続することができます。たとえば、iSCSI に接続するために構成して使用しているホスト VM から接続することができます。ほとんどのデプロイでは、仮想デバイスへのアクセスに使用できるホスト VM にアクセスするパブリック エンドポイントは既に開かれています。
 
->[AZURE.WARNING] **For enhanced security, we strongly recommend that you use HTTPS when connecting to the endpoints and then delete the endpoints after you have completed your PowerShell remote session.**
+>[AZURE.WARNING] **セキュリティ強化のため、エンドポイントに接続する場合は HTTPS を使用して、PowerShell リモート セッション完了後にエンドポイントを削除することを強くお勧めします。**
 
-You should follow the procedures in [Connecting remotely to your StorSimple device](storsimple-remote-connect.md) to set up remoting for your virtual device.
+「[StorSimple デバイスにリモート接続する](storsimple-remote-connect.md)」の手順に従って、仮想デバイスのリモート処理をセットアップしてください。
 
-## <a name="connect-directly-to-the-virtual-device"></a>Connect directly to the virtual device
+## 仮想デバイスへの直接接続
 
-You can also connect directly to the virtual device. If you want to connect directly to the virtual device from another computer outside the virtual network or outside the Microsoft Azure environment, you need to create additional endpoints as described in the following procedure. 
+仮想デバイスに直接接続することもできます。仮想ネットワーク外または Microsoft Azure 環境外の別のコンピューターから直接仮想デバイスに接続する場合は、次の手順に従って追加のエンドポイントを作成する必要があります。
 
-Perform the following steps to create a public endpoint on the virtual device.
+仮想デバイス上にパブリック エンドポイントを作成するには、次の手順を実行します。
 
-[AZURE.INCLUDE [Create public endpoints on a virtual device](../../includes/storsimple-create-public-endpoints-virtual-device.md)]
+[AZURE.INCLUDE [仮想デバイス上のパブリック エンドポイントの作成](../../includes/storsimple-create-public-endpoints-virtual-device.md)]
 
-We recommend that you connect from another virtual machine inside the same virtual network because this practice minimizes the number of public endpoints on your virtual network. When you use this method, you simply connect to the virtual machine through a Remote Desktop session and then configure that virtual machine for use as you would any other Windows client on a local network. You do not need to append the public port number because the port will already be known.
+この方法では仮想ネットワーク上のパブリック エンドポイントの数が最小限になるため、同じ仮想ネットワーク内にある別の仮想マシンから接続することをお勧めします。この方法を使用する際は、リモート デスクトップ セッションを介して仮想マシンに接続してから、ローカル ネットワーク上の他の Windows クライアントのように仮装マシンを構成します。ポートは既にわかっているため、パブリック ポート番号を付加する必要はありません。
 
-## <a name="work-with-the-storsimple-virtual-device"></a>Work with the StorSimple virtual device
+## StorSimple 仮想デバイスの作業
 
-Now that you have created and configured the StorSimple virtual device, you are ready to start working with it. You can work with volume containers, volumes, and backup policies on a virtual device just as you would on a physical StorSimple device; the only difference is that you need to make sure that you select the virtual device from your device list. Refer to [use the StorSimple Manager service to manage a virtual device](storsimple-manager-service-administration.md) for step-by-step procedures of the various management tasks for the virtual device.
+StorSimple 仮想デバイスの作成と構成が終了したので、操作を開始する準備ができました。物理 StorSimple デバイスの場合と同じように、ボリューム コンテナー、ボリューム、およびバックアップ ポリシーを仮想デバイスで使用できます。唯一の違いは、デバイス リストから仮想デバイスを選択する必要があることです。仮想デバイスに対するさまざまな管理タスクの詳細な手順については、[StorSimple Manager サービスを使用した仮想デバイスの管理](storsimple-manager-service-administration.md)に関するページを参照してください。
 
-The following sections discuss some of the differences you will encounter when working with the virtual device.
+以降のセクションでは、仮想デバイスでの作業時に遭遇するいくつかの違いについて説明します。
 
-### <a name="maintain-a-storsimple-virtual-device"></a>Maintain a StorSimple virtual device
+### StorSimple 仮想デバイスのメンテナンス
 
-Because it is a software-only device, maintenance for the virtual device is minimal when compared to maintenance for the physical device. You have the following options:
+仮想デバイスはソフトウェア専用デバイスであるため、物理的なデバイスと比べて、メンテナンスは最小限で済みます。次のオプションがあります。
 
-- **Software updates** – You can view the date that the software was last updated, together with any update status messages. You can use the **Scan updates** button at the bottom of the page to perform a manual scan if you want to check for new updates. If updates are available, click **Install Updates** to install. Because there is only a single interface on the virtual device, this means that there will be a slight service interruption when updates are applied. The virtual device will shut down and restart (if necessary) to apply any updates that have been released. For a step-by-step procedure, go to [update your device](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal).
-- **Support package** – You can create and upload a support package to help Microsoft Support troubleshoot issues with your virtual device. For a step-by-step procedure, go to [create and manage a support package](storsimple-create-manage-support-package.md).
+- **[ソフトウェアの更新]** – ソフトウェアが最後に更新された日時と更新状態メッセージが表示されます。新しい更新プログラムがないかどうかを確認する場合は、ページの下部にある **[更新プログラムのスキャン]** ボタンを使って、手動スキャンを実行できます。更新プログラムが利用できる場合は、**[更新プログラムのインストール]** をクリックしてインストールします。仮想デバイスには単一のインターフェイスしかないため、更新プログラムの適用時、サービスの中断はわずかで済みます。仮想デバイスがシャットダウンして (必要に応じて) 再起動し、リリースされた更新プログラムが適用されます。詳細な手順については、[デバイスの更新](storsimple-update-device.md#install-regular-updates-via-the-azure-classic-portal)に関するページを参照してください。
+- **[サポート パッケージ]** – ご利用の仮想デバイスに関する問題を Microsoft サポートがトラブルシューティングできるようにするため、サポート パッケージを作成してアップロードできます。詳細な手順については、[サポート パッケージの作成および管理](storsimple-create-manage-support-package.md)に関するページを参照してください。
 
-### <a name="storage-accounts-for-a-virtual-device"></a>Storage accounts for a virtual device
+### 仮想デバイスのストレージ アカウント
 
-Storage accounts are created for use by the StorSimple Manager service, by the virtual device, and by the physical device. When you create your storage accounts, we recommend that you use a region identifier in the friendly name to help ensure that the region is consistent throughout all of the system components. For a virtual device, it is important that all of the components be in the same region to prevent performance issues.
+ストレージ アカウントは、StorSimple Manager サービス、仮想デバイス、および物理的なデバイスで使用するために作成されます。ストレージ アカウントを作成する場合、すべてのシステム コンポーネントでリージョンが一致するように、表示名に地域識別子を使用することをお勧めします。仮想デバイスの場合、パフォーマンスの問題を防ぐには、すべてのコンポーネントが同じリージョンに属していることが重要です。
 
-For a step-by-step procedure, go to [add a storage account](storsimple-manage-storage-accounts.md#add-a-storage-account).
+詳細な手順については、[ストレージ アカウントの追加](storsimple-manage-storage-accounts.md#add-a-storage-account)に関するページを参照してください。
 
-### <a name="deactivate-a-storsimple-virtual-device"></a>Deactivate a StorSimple virtual device
+### StorSimple 仮想デバイスの非アクティブ化
 
-Deactivating a virtual device deletes the VM and the resources created when it was provisioned. After the virtual device is deactivated, it cannot be restored to its previous state. Before you deactivate the virtual device, make sure to stop or delete clients and hosts that depend on it.
+仮想デバイスを非アクティブ化すると、プロビジョニング時に作成された VM とリソースが削除されます。仮想デバイスを非アクティブにすると、以前の状態に復元することはできません。仮想デバイスを非アクティブ化する前に、それに依存しているクライアントとホストを必ず停止または削除してください。
 
-Deactivating a virtual device results in the following actions:
+仮想デバイスを非アクティブにすると、次のアクションが発生します。
 
-- The virtual device is removed.
+- 仮想デバイスが削除されます。
 
-- The OS disk and data disks created for the virtual device are removed.
+- 仮想デバイス用に作成された OS ディスクとデータ ディスクが削除されます。
 
-- The hosted service and virtual network created during provisioning are retained. If you are not using them, you should delete them manually.
+- プロビジョニング中に作成されたホストされるサービスと仮想ネットワークは保持されます。それらを使用していない場合は、手動で削除する必要があります。
 
-- Cloud snapshots created for the virtual device are retained.
+- 仮想デバイス用に作成されたクラウド スナップショットは保持されます。
 
-For a step-by-step procedure, go to [Deactivate and delete your StorSimple device](storsimple-deactivate-and-delete-device.md).
+詳しい手順については、「[StorSimple デバイスの非アクティブ化と削除](storsimple-deactivate-and-delete-device.md)」をご覧ください。
 
-As soon as the virtual device is shown as deactivated on the StorSimple Manager service page, you can delete the virtual device from device list on the **Devices** page.
+仮想デバイスは、StorSimple Manager サービス ページで非アクティブとして表示されたらすぐに、**[デバイス]** ページのデバイス一覧から削除できます。
 
 
-### <a name="start,-stop-and-restart-a-virtual-device"></a>Start, stop and restart a virtual device
-Unlike the StorSimple physical device, there is no power on or power off button to push on a StorSimple virtual device. However, there may be occasions where you need to stop and restart the virtual device. For example, some updates might require that the VM be restarted to finish the update process. The easiest way for you to start, stop, and restart a virtual device is to use the Virtual Machines Management Console.
+### 仮想デバイスの開始、停止、および再起動
+StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスには電源をオンまたはオフにするボタンはありません。ただし、仮想デバイスを停止して再起動する必要がある場合があります。たとえば、一部の更新プログラムでは、更新プロセスを完了するために VM の再起動が必要な場合があります。仮想デバイスを開始、停止、再起動する最も簡単な方法は、Virtual Machines 管理コンソールを使用することです。
 
-When you look at the Management Console, the virtual device status is **Running** because it is started by default after it is created. You can start, stop, and restart a virtual machine at any time.
+管理コンソールを表示すると、仮想デバイスは作成後、既定で開始されるため、状態は **[実行中]** になります。仮想マシンはいつでも開始、停止、および再起動できます。
 
-[AZURE.INCLUDE [Stop and restart virtual device](../../includes/storsimple-stop-restart-virtual-device.md)]
+[AZURE.INCLUDE [仮想デバイスの停止と再起動](../../includes/storsimple-stop-restart-virtual-device.md)]
 
-### <a name="reset-to-factory-defaults"></a>Reset to factory defaults
+### 工場出荷時の既定値へのリセット
 
-If you decide that you just want to start over with your virtual device, simply deactivate and delete it and then create a new one. Just like when your physical device is reset, your new virtual device will not have any updates installed; therefore, make sure to check for updates before using it.
+仮想デバイスを始めからやり直したい場合は、非アクティブにしてから削除し、新しく作成し直します。物理デバイスをリセットするときと同様に、新しい仮想デバイスには更新プログラムがインストールされていないため、使用する前に更新プログラムを必ず確認してください。
 
 
-## <a name="fail-over-to-the-virtual-device"></a>Fail over to the virtual device
+## 仮想デバイスへのフェールオーバー
 
-Disaster recovery (DR) is one of the key scenarios that the StorSimple virtual device was designed for. In this scenario, the physical StorSimple device or entire datacenter might not be available. Fortunately, you can use a virtual device to restore operations in an alternate location. During DR, the volume containers from the source device change ownership and are transferred to the virtual device. The prerequisites for DR are that the virtual device has been created and configured, all the volumes within the volume container have been taken offline, and the volume container has an associated cloud snapshot.
+障害復旧 (DR) は、StorSimple 仮想デバイスの設計目的であった主要シナリオの 1 つです。このシナリオでは、物理 StorSimple デバイスまたはデータセンター全体が使用できなくなる可能性があります。さいわいなことに、仮想デバイスを使って、別の場所に運用を復元することができます。DR 中に、ソース デバイスのボリューム コンテナーの所有権が変更され、それらのコンテナーは仮想デバイスに転送されます。DR の前提条件として、仮想デバイスが作成され、構成されていることと、ボリューム コンテナー内のすべてのボリュームがオフラインになっていること、さらに、ボリューム コンテナーにクラウド スナップショットが関連付けられていることが挙げられます。
 
 >[AZURE.NOTE] 
 >
-> - When using a virtual device as the secondary device for DR, keep in mind that the 8010 has 30 TB of Standard Storage and 8020 has 64 TB of Premium Storage. The higher capacity 8020 virtual device may be more suited for a DR scenario.
-> - You cannot failover or clone from a device running Update 2 to a device running pre-Update 1 software. You can however fail over a device running Update 2 to a device running Update 1 (1.1 or 1.2)
+> - 仮想デバイスを DR のセカンダリ デバイスとして使用する場合は、8010 には 30 TB の Standard Storage があり、8020 には 64 TB の Premium Storage があることに注意してください。より容量が多い 8020 仮想デバイスは、DR シナリオにより適しています。
+> - Update 2 を実行するデバイスから、Update 1 より前のソフトウェアを実行するデバイスへはフェールオーバーも複製もできません。ただし、Update 2 を実行しているデバイスを Update 1 (1.1 または 1.2) を実行するデバイスにフェールオーバーすることはできます。
 
-For a step-by-step procedure, go to [failover to a virtual device](storsimple-device-failover-disaster-recovery.md#fail-over-to-a-storsimple-virtual-device).
+詳細な手順については、[仮想デバイスへのフェールオーバー](storsimple-device-failover-disaster-recovery.md#fail-over-to-a-storsimple-virtual-device)に関するページを参照してください。
  
 
-## <a name="shut-down-or-delete-the-virtual-device"></a>Shut down or delete the virtual device
+## 仮想デバイスのシャットダウンまたは削除
 
-If you previously configured and used a StorSimple virtual device but now want to stop accruing compute charges for its use, you can shut down the virtual device. Shutting down the virtual device doesn’t delete its operating system or data disks in storage. It does stop charges accruing on your subscription, but storage charges for the OS and data disks will continue.
+以前構成して使っていた StorSimple 仮想デバイスのコンピューティング料金の発生を止めるには、仮想デバイスをシャットダウンします。仮想デバイスをシャットダウンしても、ストレージ内のオペレーティング システムやデータ ディスクは削除されません。この操作によって、サブスクリプションの料金は発生しなくなりますが、OS とデータ ディスクのストレージの料金は継続して発生します。
 
-If you delete or shut down the virtual device, it will appear as **Offline** on the Devices page of the StorSimple Manager service. You can choose to deactivate or delete the device if you also wish to delete the backups created by the virtual device. For more information, see [Deactivate and delete a StorSimple device](storsimple-deactivate-and-delete-device.md).
+仮想デバイスを削除またはシャットダウンすると、StorSimple Manager サービスの [デバイス] ページには **[オフライン]** として表示されます。仮想デバイスによって作成されたバックアップも一緒に削除する場合は、デバイスを非アクティブにするか、削除するかを選択できます。詳細については、「[StorSimple デバイスの非アクティブ化と削除](storsimple-deactivate-and-delete-device.md)」をご覧ください。
 
-[AZURE.INCLUDE [Shut down a virtual device](../../includes/storsimple-shutdown-virtual-device.md)]
+[AZURE.INCLUDE [仮想デバイスのシャットダウン](../../includes/storsimple-shutdown-virtual-device.md)]
 
-[AZURE.INCLUDE [Delete a virtual device](../../includes/storsimple-delete-virtual-device.md)]
+[AZURE.INCLUDE [仮想デバイスの削除](../../includes/storsimple-delete-virtual-device.md)]
 
    
-## <a name="troubleshoot-internet-connectivity-errors"></a>Troubleshoot Internet connectivity errors 
+## インターネット接続エラーのトラブルシューティング 
 
-During the creation of a virtual device, if there is no connectivity to the Internet, the creation step will fail. To troubleshoot if the failure is because of Internet connectivity, perform the following steps in the Azure classic portal:
+仮想デバイスを作成する際、インターネットに接続されていないと作成手順は失敗します。インターネット接続が原因で発生したエラーのトラブルシューティングを行うには、Azure クラシック ポータルで次の手順を実行します。
 
-1. Create a Windows server 2012 virtual machine in Azure. This virtual machine should use the same storage account, VNet and subnet as used by your virtual device. If you already have an existing Windows Server host in Azure using the same storage account, Vnet and subnet, you can also use it to troubleshoot the Internet connectivity.
-2. Remote log into the virtual machine created in the preceding step. 
-3. Open a command window inside the virtual machine (Win + R and then type `cmd`).
-4. Run the following cmd at the prompt.
+1. Azure で Windows Server 2012 仮想マシンを作成します。この仮想マシンでは、仮想デバイスで使用されているのと同じストレージ アカウント、VNet、およびサブネットを使用してください。同じストレージ アカウント、VNet、およびサブネットを使用している既存の Windows Server ホストが既に Azure にある場合は、インターネット接続のトラブルシューティングにも使用できます。
+2. 前の手順で作成した仮想マシンにリモート ログインします。
+3. 仮想マシン内でコマンド ウィンドウを開きます (Win + R キーを押し、「`cmd`」と入力します)。
+4. プロンプトで次のコマンドを実行します。
 
-    `nslookup windows.net`
+	`nslookup windows.net`
 
-5. If `nslookup` fails, then Internet connectivity failure is preventing the virtual device from registering to the StorSimple Manager service. 
-6. Make the required changes to your virtual network to ensure that the virtual device is able to access Azure sites such as “windows.net”.
+5. `nslookup` が失敗する場合は、インターネット接続エラーが原因で仮想デバイスが StorSimple Manager サービスに登録できていません。
+6. 仮想デバイスが "windows.net" などの Azure サイトにアクセスできるように、必要な変更を仮想ネットワークに加えます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [use the StorSimple Manager service to manage a virtual device](storsimple-manager-service-administration.md).
+- [StorSimple Manager サービスを使用して仮想デバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
  
-- Understand how to [restore a StorSimple volume from a backup set](storsimple-restore-from-backup-set.md). 
+- [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

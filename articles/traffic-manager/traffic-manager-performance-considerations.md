@@ -1,91 +1,87 @@
 <properties
-    pageTitle="Performance considerations for Azure Traffic Manager | Microsoft Azure"
-    description="Understand performance on Traffic Manager and how to test performance of your website when using Traffic Manager"
-    services="traffic-manager"
-    documentationCenter=""
-    authors="sdwheeler"
-    manager="carmonm"
-    editor=""
-/>
-<tags
-    ms.service="traffic-manager"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="10/11/2016"
-    ms.author="sewhee"
-/>
+   pageTitle="Azure Traffic Manager のパフォーマンスに関する考慮事項 | Microsoft Azure"
+   description="Traffic Manager でのパフォーマンス、および Traffic Manager を使用したときの Web サイトのパフォーマンスをテストする方法について説明します。"
+   services="traffic-manager"
+   documentationCenter=""
+   authors="sdwheeler"
+   manager="carmonm"
+   editor="joaoma" />
+
+<tags 
+   ms.service="traffic-manager"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="06/10/2016"
+   ms.author="sewhee" />
 
 
-# <a name="performance-considerations-for-traffic-manager"></a>Performance considerations for Traffic Manager
+# Traffic Manager のパフォーマンスに関する考慮事項
 
-This page explains performance considerations using Traffic Manager. Consider the following scenario:
+このページでは、Traffic Manager を使用する場合のパフォーマンスに関する考慮事項について説明します。考えられるシナリオ: 米国リージョンとアジアに Web サイトが 1 つずつあり、それらのいずれかが Traffic Manager プローブの正常性チェックに失敗し、すべてのユーザーが正常なリージョンにリダイレクトされます。この動作はパフォーマンスの問題があるように見えますが、ユーザー要求の距離に基づいて予想される動作になります。
 
-You have instances of your website in the WestUS and EastAsia regions. One of the instances is failing the health check for the traffic manager probe. Application traffic is directed to the healthy region. This failover is expected but performance can be a problem based on the latency of the traffic now traveling to a distant region.
+  
 
-## <a name="how-traffic-manager-works"></a>How Traffic Manager works
+## Traffic Manager の動作に関する重要な注意事項
 
-The only performance impact that Traffic Manager can have on your website is the initial DNS lookup. A DNS request for the name of your Traffic Manager profile is handled by the Microsoft DNS root server that hosts the trafficmanager.net zone. Traffic Manager populates, and regularly updates, the Microsoft's DNS root servers based on the Traffic Manager policy and the probe results. So even during the initial DNS lookup, no DNS queries are sent to Traffic Manager.
+- Traffic Manager は基本的に DNS の解決だけを行います。つまり、Traffic Manager が Web サイトに対して与える可能性があるパフォーマンスに関する唯一の影響は、初期 DNS 参照です。
+- Traffic Manager の DNS 参照に関する説明のポイント。Traffic Manager は、ポリシーとプローブの結果に基づいて、通常の Microsoft DNS ルート サーバーを設定し、定期的に更新します。したがって、初期 DNS 参照の間であっても、DNS 要求は通常の Microsoft DNS ルート サーバーによって処理されるため、Traffic Manager による影響はありません。Traffic Manager が「停止」しても (つまり、ポリシーのプローブと DNS の更新を行っている VM での障害)、Microsoft DNS サーバーのエントリは維持されるため、Traffic Manager の DNS 名への影響はありません。唯一の影響は、ポリシーに基づくプローブと更新が行われないことです (つまり、プライマリ サイトがダウンした場合、Traffic Manager は DNS を更新してフェールオーバー サイトを参照できません)。
+- トラフィックは Traffic Manager を通過しません。クライアントと Azure ホステッド サービスの間の仲介者として機能する Traffic Manager サーバーはありません。DNS 参照が終了すると、Traffic Manager はクライアントとサーバーの間の通信から完全に削除されます。
+- DNS 参照は非常に高速で、キャッシュされます。初期 DNS 参照はクライアントとそれに構成されている DNS サーバーに依存し、通常、クライアントは DNS 参照を 50 ミリ秒以下で実行できます (http://www.solvedns.com/dns-comparison/ を参照)。最初の参照が終了すると、結果は DNS TTL の間キャッシュされます。Traffic Manager の場合、既定値は 300 秒です。
+- ユーザーが選択した Traffic Manager のポリシー (パフォーマンス、フェールオーバー、ラウンド ロビン) は、DNS のパフォーマンスに影響を与えません。パフォーマンス ポリシーは、ユーザーのエクスペリエンスに悪影響を与える可能性があります。たとえば、米国のユーザーをアジアでホストされているサービスに送るような場合です。ただし、このようなパフォーマンスの問題は、Traffic Manager が原因ではありません。
 
-Traffic Manager is made up of several components: DNS name servers, an API service, the storage layer, and an endpoint monitoring service. If a Traffic Manager service component fails, there is no effect on the DNS name associated with your Traffic Manager profile. The records in the Microsoft DNS servers remain unchanged. However, endpoint monitoring and DNS updating do not happen. Therefore, Traffic Manager is not able to update DNS to point to your failover site when your primary site goes down.
+  
 
-DNS name resolution is fast and results are cached. The speed of the initial DNS lookup depends on the DNS servers the client uses for name resolution. Typically, a client can complete a DNS lookup within ~50 ms. The results of the lookup are cached for the duration of the DNS Time-to-live (TTL). The default TTL for Traffic Manager is 300 seconds.
+## Traffic Manager のパフォーマンスのテスト
 
-Traffic does NOT flow through Traffic Manager. Once the DNS lookup completes, the client has an IP address for an instance of your web site. The client connects directly to that address and does not pass through Traffic Manager. The Traffic Manager policy you choose has no influence on the DNS performance. However, a Performance routing-method can negatively impact the application experience. For example, if your policy redirects traffic from North America to an instance hosted in Asia, the network latency for those sessions may be a performance issue.
+Traffic Manager のパフォーマンスと動作を調べるのに使用できる公開されている Web サイトがいくつかあります。これらのサイトは、DNS の待機時間を判定し、世界各地のユーザーが送られるホステッド サービスを特定するのに役立ちます。これらのツールのほとんどは DNS の結果をキャッシュしないので、テストを繰り返し実行してもそのたびに完全な DNS 参照が行われるのに対し、Traffic Manager エンドポイントに接続しているクライアントが完全な DNS 参照によるパフォーマンスの影響を受けるのは、TTL 期間中に 1 回だけであることに注意してください。
 
-## <a name="measuring-traffic-manager-performance"></a>Measuring Traffic Manager Performance
 
-There are several websites you can use to understand the performance and behavior of a Traffic Manager profile. Many of these sites are free but may have limitations. Some sites offer enhanced monitoring and reporting for a fee.
+## パフォーマンスを測定するサンプル ツール
 
-The tools on these sites measure DNS latencies and display the resolved IP addresses for client locations around the world. Most of these tools do not cache the DNS results. Therefore, the tools show the full DNS lookup each time a test is run. When you test from your own client, you only experience the full DNS lookup performance once during the TTL duration.
 
-## <a name="sample-tools-to-measure-dns-performance"></a>Sample tools to measure DNS performance
+最も簡単なツールの 1 つは WebSitePulse です。URL を入力すると、DNS 解決時間、最初のバイト、最後のバイト、他のパフォーマンス統計などの統計情報が表示されます。サイトをテストするには、3 つの異なる場所から選択できます。この例の最初の実行では、最初の DNS 参照には 0.204 秒かかったことがわかります。同じ Traffic Manager エンドポイントで実行した 2 回目のテストでは、DNS 参照時間は 0.002 秒です。これは、結果が既にキャッシュされているためです。
 
-- [SolveDNS](http://www.solvedns.com/dns-comparison/)
+http://www.websitepulse.com/help/tools.php
 
-    SolveDNS offers many performance tools. The DNS Comparison tool can show you how long it takes to resolve your DNS name and how that compares to other DNS service providers.
 
-- [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    One of the simplest tools is WebSitePulse. Enter the URL to see DNS resolution time, First Byte, Last Byte, and other performance statistics. You can choose from three different test locations. In this example, you see that the first execution shows that DNS lookup takes 0.204 sec.
+キャッシュされているときの DNS 時間:
 
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse.png)
 
-    Because the results are cached, the second test for the same Traffic Manager endpoint the DNS lookup takes 0.002 sec.
-
-    ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
-
-- [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
-
-    Formerly known as the Watchmouse Check Website tool, this site show you the DNS resolution time from multiple geographic regions simultaneously. Enter the URL to see DNS resolution time, connection time, and speed from several geographic locations. Use this test to see which hosted service is returned for different locations around the world.
-
-    ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
-
-- [Pingdom](http://tools.pingdom.com/)
-
-    This tool provides performance statistics for each element of a web page. The Page Analysis tab shows the percentage of time spent on DNS lookup.
-
-- [What's My DNS?](http://www.whatsmydns.net/)
-
-    This site does a DNS lookup from 20 different locations and displays the results on a map.
-
-- [Dig Web Interface](http://www.digwebinterface.com)
-
-    This site shows more detailed DNS information including CNAMEs and A records. Make sure you check the 'Colorize output' and 'Stats' under options, and select 'All' under Nameservers.
-
-## <a name="next-steps"></a>Next Steps
-
-[About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md)
-
-[Test your Traffic Manager settings](traffic-manager-testing-settings.md)
-
-[Operations on Traffic Manager (REST API Reference)](http://go.microsoft.com/fwlink/?LinkId=313584)
-
-[Azure Traffic Manager Cmdlets](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
 
 
-<!--HONumber=Oct16_HO2-->
+複数の地理的な場所から同時に DNS 解決時間を取得するもう 1 つの本当に便利なツールは、Watchmouse の Check Website ツールです。URL を入力すると、DNS 解決時間、接続時間、および複数の地理的場所からの速度が表示されます。これはまた、Traffic Manager のパフォーマンス ポリシーをテストして、世界各地のユーザーが送られるホステッド サービスを確認するのにも便利です。
+
+http://www.watchmouse.com/en/checkit.php
 
 
+![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
+
+http://tools.pingdom.com/ – このツールは、Web サイトをテストして、ページ上の各要素のパフォーマンス統計情報をビジュアルなグラフで提供します。[Page Analysis] タブに切り替えると、DNS 参照を行うために使われた時間の割合を確認できます。
+
+ 
+
+http://www.whatsmydns.net/ – このサイトは、20 の異なる地理的な場所から DNS 参照を実行して、結果を地図上に表示します。それを見ると、クライアントが接続されているホステッド サービスがわかります。
+
+ 
+
+http://www.digwebinterface.com – watchmouse サイトと似ていますが、このサイトでは CNAME と A レコードを含む DNS のさらに詳細な情報が表示されます。オプションで [Colorize output] と [Stats] を選択し、[Nameservers] で [All] を選択してください。
+
+## 次のステップ
+
+
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
+
+[Traffic Manager の設定のテスト](traffic-manager-testing-settings.md)
+
+[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
+
+[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+ 
+
+<!---HONumber=AcomDC_0824_2016-->

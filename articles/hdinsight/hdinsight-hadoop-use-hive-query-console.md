@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Use Hadoop Hive on the Query Console in HDInsight | Microsoft Azure"
-   description="Learn how to use the web-based Query Console to run Hive queries on an HDInsight Hadoop cluster from your browser."
+   pageTitle="HDInsight のクエリ コンソールでの Hadoop Hive の使用 | Microsoft Azure"
+   description="Web ベースのクエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
    manager="jhubbard"
    editor="cgronlun"
-    tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -17,34 +17,33 @@
    ms.date="09/20/2016"
    ms.author="larryfr"/>
 
+# クエリ コンソールを使用して Hive クエリを実行
 
-# <a name="run-hive-queries-using-the-query-console"></a>Run Hive queries using the Query Console
+[AZURE.INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
-[AZURE.INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
+この記事では、HDInsight クエリ コンソールを使用して、お使いのブラウザーから HDInsight Hadoop クラスターで Hive クエリを実行する方法について説明します。
 
-In this article, you will learn how to use the HDInsight Query Console to run Hive queries on an HDInsight Hadoop cluster from your browser.
-
-> [AZURE.IMPORTANT] The HDInsight Query Console is only available on Windows-based HDInsight clusters. If you are using a Linux-based HDInsight cluster, see [Run Hive queries using the Hive View](hdinsight-hadoop-use-hive-ambari-view.md).
-
-
-##<a name="<a-id="prereq"></a>prerequisites"></a><a id="prereq"></a>Prerequisites
-
-To complete the steps in this article, you will need the following.
-
-* A Windows-based HDInsight Hadoop cluster
-
-* A modern web browser
-
-##<a name="<a-id="run"></a>-run-hive-queries-using-the-query-console"></a><a id="run"></a> Run Hive queries using the Query Console
-
-1. Open a web browser and navigate to __https://CLUSTERNAME.azurehdinsight.net__, where __CLUSTERNAME__ is the name of your HDInsight cluster. If prompted, enter the user name and password that you used when you created the cluster.
+> [AZURE.IMPORTANT] HDInsight クエリ コンソールは、Windows ベースの HDInsight クラスターでのみ使用できます。Linux ベースの HDInsight クラスターを使用している場合は、[Hive ビューを使用した Hive クエリの実行](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
 
-2. From the links at the top of the page, select **Hive Editor**. This displays a form that can be used to enter the HiveQL statements that you want to run in the HDInsight cluster.
+##<a id="prereq"></a>前提条件
 
-    ![the hive editor](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
+この記事の手順を完了するには、次のものが必要です。
 
-    Replace the text `Select * from hivesampletable` with the following HiveQL statements:
+* Windows ベースの HDInsight Hadoop クラスター
+
+* 最新の Web ブラウザー
+
+##<a id="run"></a>クエリ コンソールを使用して Hive クエリを実行
+
+1. Web ブラウザーを開き、__https://CLUSTERNAME.azurehdinsight.net____ に移動します。CLUSTERNAME\_\_ は、HDInsight クラスターの名前です。プロンプトが表示されたら、クラスターの作成時に使用したユーザー名とパスワードを入力します。
+
+
+2. ページ上部のリンクから、**[Hive エディター]** を選択します。HDInsight クラスターで実行する HiveQL ステートメントの入力に使用できるフォームが表示されます。
+
+	![Hive エディター](./media/hdinsight-hadoop-use-hive-query-console/queryconsole.png)
+
+	テキスト `Select * from hivesampletable` を次の HiveQL ステートメントに置き換えます。
 
         set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
@@ -53,48 +52,48 @@ To complete the steps in this article, you will need the following.
         STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    These statements perform the following actions:
+    これらのステートメントは次のアクションを実行します。
 
-    * **DROP TABLE**: Deletes the table and the data file if the table already exists.
-    * **CREATE EXTERNAL TABLE**: Creates a new 'external' table in Hive. External tables store only the table definition in Hive; the data is left in the original location.
+    * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+    * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは、Hive にテーブル定義のみを格納し、データは、元の場所に残します。
 
-    > [AZURE.NOTE] External tables should be used when you expect the underlying data to be updated by an external source (such as an automated data upload process) or by another MapReduce operation, but you always want Hive queries to use the latest data.
+    > [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     >
-    > Dropping an external table does **not** delete the data, only the table definition.
+    > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
-    * **ROW FORMAT**: Tells Hive how the data is formatted. In this case, the fields in each log are separated by a space.
-    * **STORED AS TEXTFILE LOCATION**: Tells Hive where the data is stored (the example/data directory) and that it is stored as text
-    * **SELECT**: Select a count of all rows where column **t4** contain the value **[ERROR]**. This should return a value of **3** because there are three rows that contain this value.
-    * **INPUT__FILE__NAME LIKE '%.log'** - Tells Hive that we should only return data from files ending in .log. This restricts the search to the sample.log file that contains the data, and keeps it from returning data from other example data files that do not match the schema we defined.
+    * **ROW FORMAT**: Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
+    * **STORED AS TEXTFILE LOCATION**: Hive に、データの格納先 (example/data directory) と、データはテキストとして格納されていることを示します。
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
+    * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 
-2. Click **Submit**. The **Job Session** at the bottom of the page should display details for the job.
+2. **[Submit]** をクリックします。ページ下部の **[ジョブ セッション]** にジョブの詳細が表示されます。
 
-3. When the **Status** field changes to **Completed**, select **View Details** for the job. On the details page, the **Job Output** contains `[ERROR]   3`. You can use the **Download** button under this field to download a file that contains the output of the job.
+3. **[ステータス]** フィールドが **Completed** に変わったら、ジョブの **[詳細の表示]** を選択します。詳細ページの **[ジョブ出力]** に `[ERROR]	3` が含まれます。このフィールドの下にある **[ダウンロード]** ボタンを使用して、ジョブの出力を含むファイルをダウンロードします。
 
 
-##<a name="<a-id="summary"></a>summary"></a><a id="summary"></a>Summary
+##<a id="summary"></a>概要
 
-As you can see, the Query Console provides an easy way to run Hive queries in an HDInsight cluster, monitor the job status, and retrieve the output.
+このように、クエリ コンソールを使用すると、HDInsight クラスターで簡単に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-To learn more about using Hive Query Console to run Hive jobs, select **Getting Started** at the top of the Query Console, then use the samples that are provided. Each sample walks through the process of using Hive to analyze data, including explanations about the HiveQL statements used in the sample.
+Hive クエリ コンソールを使用した Hive ジョブの実行の詳細については、クエリ コンソールの上部にある **[概要]** を選択し、サンプルを使用します。各サンプルでは順を追って Hive を使用してデータを分析します。また、サンプルで使用されている HiveQL ステートメントについての説明も含まれています。
 
-##<a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>Next steps
+##<a id="nextsteps"></a>次のステップ
 
-For general information about Hive in HDInsight:
+HDInsight での Hive に関する全般的な情報
 
-* [Use Hive with Hadoop on HDInsight](hdinsight-use-hive.md)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-For information about other ways you can work with Hadoop on HDInsight:
+HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-* [Use MapReduce with Hadoop on HDInsight](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-If you are using Tez with Hive, see the following documents for debugging information:
+Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
 
-* [Use the Tez UI on Windows-based HDInsight](hdinsight-debug-tez-ui.md)
+* [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
 
-* [Use the Ambari Tez view on Linux-based HDInsight](hdinsight-debug-ambari-tez-view.md)
+* [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
 
 [1]: ../HDInsight/hdinsight-hadoop-visual-studio-tools-get-started.md
 
@@ -129,8 +128,4 @@ If you are using Tez with Hive, see the following documents for debugging inform
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

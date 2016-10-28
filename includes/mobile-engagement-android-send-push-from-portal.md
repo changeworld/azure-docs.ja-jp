@@ -1,57 +1,55 @@
-###<a name="grant-mobile-engagement-access-to-your-gcm-api-key"></a>Grant Mobile Engagement access to your GCM API Key
+###Mobile Engagement に GCM API キーへのアクセス権限を付与する
 
-To allow Mobile Engagement to send push notifications on your behalf, you need to grant it access to your API Key. This is done by configuring and entering your key into the Mobile Engagement portal.
+Mobile Engagement にプッシュ通知の送信を許可するには、API キーへのアクセス権限を付与する必要があります。これは、キーを構成して Mobile Engagement ポータルに入力することで実行します。
 
-1. From your Azure Classic Portal, ensure you're in the app we're using for this project, and then click the **Engage** button at the bottom:
+1. Azure クラシック ポータルで、このプロジェクトに使用しているアプリを対象としていることを確認し、下部にある **[エンゲージ]** ボタンをクリックします。
 
-    ![](./media/mobile-engagement-android-send-push/engage-button.png)
+	![](./media/mobile-engagement-android-send-push/engage-button.png)
 
-2. Then click the **Settings** -> **Native Push** section to enter your GCM Key:
+2. ここで **[設定]**、**[ネイティブ プッシュ通知]** セクションをクリックし、GCM キーを入力します。
 
-    ![](./media/mobile-engagement-android-send-push/engagement-portal.png)
+	![](./media/mobile-engagement-android-send-push/engagement-portal.png)
 
-3. Click the **Edit** icon in front of **API Key** in the **GCM Settings** section as shown below:
+3. 次に示す **[GCM 設定]** セクションの **[API キー]** の**編集**アイコンをクリックします。
 
-    ![](./media/mobile-engagement-android-send-push/native-push-settings.png)
+	![](./media/mobile-engagement-android-send-push/native-push-settings.png)
 
-4. In the pop-up, paste the GCM Server Key you obtained before and then click **Ok**.
+4. ポップアップ画面で、前に取得した GCM サーバー キーを貼り付け、**[OK]** をクリックします。
 
-    ![](./media/mobile-engagement-android-send-push/api-key.png)
+	![](./media/mobile-engagement-android-send-push/api-key.png)
 
-##<a name="<a-id="send"></a>send-a-notification-to-your-app"></a><a id="send"></a>Send a notification to your app
+##<a id="send"></a>アプリへ通知を送信する
 
-We will now create a simple push notification campaign that sends a push notification to our app.
+アプリにプッシュ通知を送信する単純なプッシュ通知キャンペーンを作成します。
 
-1. Navigate to the **REACH** tab in your Mobile Engagement portal.
+1. Mobile Engagement ポータルで [**リーチ**] タブに移動します。
 
-2. Click **New announcement** to create your push notification campaign.
+2. **[新しいアナウンス]** をクリックし、プッシュ通知キャンペーンを作成します。
 
-    ![](./media/mobile-engagement-android-send-push/new-announcement.png)
+	![](./media/mobile-engagement-android-send-push/new-announcement.png)
 
-3. Set up the first field of your campaign through the following steps:
+3. 次の手順に従って、キャンペーンの最初のフィールドを設定します。
 
-    ![](./media/mobile-engagement-android-send-push/campaign-first-params.png)
+	![](./media/mobile-engagement-android-send-push/campaign-first-params.png)
 
-    a. Name your campaign.
+	a.キャンペーンの名前を付けます。
 
-    b. Select the **Delivery type** as *System notification -> Simple*: This is the simple Android push notification type that features a title and a small line of text.
+	b.**[配信タイプ]** として *[システム通知]、[簡易]* を選択します。これは、タイトルと数行のテキストを表示する単純な Android のプッシュ通知です。
 
-    c. Select **Delivery time** as *Any time* to allow the app to receive a notification whether the app is started or not.
+	c.**[配信時刻]** で *[指定なし]* を選択し、アプリが起動されているかどうかに関係なく、アプリが通知を受信できるようにします。
 
-    d. In the notification text type the **Title** which will be in bold in the push.
+	d.通知テキストに、プッシュ通知内で太字で表示される**タイトル**を入力します。
 
-    e. Then type your **Message**
+	e.次に、**メッセージ**を入力します。
 
-4. Scroll down, and in the **Content** section, select **Notification only**.
+4. 下にスクロールし、**[コンテンツ]** セクションで **[通知のみ]** を選択します。
 
-    ![](./media/mobile-engagement-android-send-push/campaign-content.png)
+	![](./media/mobile-engagement-android-send-push/campaign-content.png)
 
-5. You're done setting the most basic campaign possible. Now scroll down again and click the **Create** button to save your campaign.
+5. 最も基本的なキャンペーンの設定が完了しました。もう一度下にスクロールし、**[作成]** ボタンをクリックしてキャンペーンを保存します。
 
-6. Last step: click **Activate** to activate your campaign to send push notifications.
+6. 最後の手順として、**[アクティブ化]** をクリックしてキャンペーンをアクティブにし、プッシュ通知を送信します。
 
-    ![](./media/mobile-engagement-android-send-push/campaign-activate.png)
+	![](./media/mobile-engagement-android-send-push/campaign-activate.png)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0330_2016-->

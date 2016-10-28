@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a virtual network with a site-to-site VPN Gateway connection using the Azure classic portal | Microsoft Azure"
-   description="Create a VNet with a S2S VPN Gateway connection for cross-premises and hybrid configurations using the classic deployment model."
+   pageTitle="Azure クラシック ポータルでサイト間 VPN Gateway 接続を使用して仮想ネットワークを作成する | Microsoft Azure"
+   description="クラシック デプロイ モデルを使用して、S2S VPN Gateway 接続を使用したクロスプレミス構成およびハイブリッド構成の VNet を作成します。"
    services="vpn-gateway"
    documentationCenter=""
    authors="cherylmc"
@@ -17,98 +17,93 @@
    ms.date="08/31/2016"
    ms.author="cherylmc"/>
 
-
-# <a name="create-a-vnet-with-a-site-to-site-connection-using-the-azure-classic-portal"></a>Create a VNet with a Site-to-Site connection using the Azure classic portal
+# Azure クラシック ポータルを使用してサイト間接続を持つ VNet を作成する
 
 > [AZURE.SELECTOR]
 - [Resource Manager - Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [Resource Manager - PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
-- [Classic - Classic Portal](vpn-gateway-site-to-site-create.md)
+- [クラシック - クラシック ポータル](vpn-gateway-site-to-site-create.md)
 
-This article walks you through creating a virtual network and a site-to-site VPN connection to your on-premises network using the **classic deployment model** and the classic portal. Site-to-Site connections can be used for cross-premises and hybrid configurations. Currently, you cannot create an end-to-end Site-to-Site configuration for the classic deployment model using the Azure portal.
+この記事では、**クラシック デプロイメント モデル**とクラシック ポータルを使用して、仮想ネットワークと、オンプレミス ネットワークに対するサイト間 VPN 接続を作成する手順について説明します。サイト間接続は、クロスプレミスおよびハイブリッド構成に使用できます。現在、クラシック デプロイメント モデルのエンド ツー エンドのサイト間構成を Azure ポータルで作成することはできません。
 
 ![Site-to-Site diagram](./media/vpn-gateway-site-to-site-create/site2site.png "site-to-site")
 
 
-### <a name="deployment-models-and-tools-for-site-to-site-connections"></a>Deployment models and tools for Site-to-Site connections
+### サイト間接続のデプロイ モデルとデプロイ ツール
 
-[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)] 
+[AZURE.INCLUDE [vpn-gateway-clasic-rm](../../includes/vpn-gateway-classic-rm-include.md)]
 
 [AZURE.INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
-If you want to connect VNets together, see [Configure a VNet-to-VNet connection for the classic deployment model](virtual-networks-configure-vnet-to-vnet-connection.md). 
+VNet どうしを接続する場合は、「[クラシック デプロイメント モデルで VNet 対 VNet 接続を構成する](virtual-networks-configure-vnet-to-vnet-connection.md)」を参照してください。
  
-## <a name="before-you-begin"></a>Before you begin
+## 開始する前に
 
-Verify that you have the following items before beginning configuration.
+構成を開始する前に、以下がそろっていることを確認します。
 
-- A compatible VPN device and someone who is able to configure it. See [About VPN Devices](vpn-gateway-about-vpn-devices.md). If you aren't familiar with configuring your VPN device, or are unfamiliar with the IP address ranges located in your on-premises network configuration, you need to coordinate with someone who can provide those details for you.
+- 互換性のある VPN デバイスおよびデバイスを構成できる人員。「[VPN デバイスについて](vpn-gateway-about-vpn-devices.md)」を参照してください。VPN デバイスの構成に詳しくない場合や、オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
 
-- An externally facing public IP address for your VPN device. This IP address cannot be located behind a NAT.
+- VPN デバイスの外部接続用パブリック IP アドレス。この IP アドレスを NAT の内側に割り当てることはできません。
 
-- An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
-
-
-## <a name="create-your-virtual-network"></a>Create your virtual network
-
-1. Log in to the [Azure classic portal](https://manage.windowsazure.com/).
-
-2. In the lower left corner of the screen, click **New**. In the navigation pane, click **Network Services**, and then click **Virtual Network**. Click **Custom Create** to begin the configuration wizard.
-
-3. To create your VNet, enter your configuration settings on the following pages:
-
-## <a name="virtual-network-details-page"></a>Virtual network details page
-
-Enter the following information:
-
-- **Name**: Name your virtual network. For example, *EastUSVNet*. You'll use this virtual network name when you deploy your VMs and PaaS instances, so you may not want to make the name too complicated.
-- **Location**: The location is directly related to the physical location (region) where you want your resources (VMs) to reside. For example, if you want the VMs that you deploy to this virtual network to be physically located in *East US*, select that location. You can't change the region associated with your virtual network after you create it.
-
-## <a name="dns-servers-and-vpn-connectivity-page"></a>DNS servers and VPN connectivity page
-
-Enter the following information, and then click the next arrow on the lower right.
-
-- **DNS Servers**: Enter the DNS server name and IP address, or select a previously registered DNS server from the shortcut menu. This setting does not create a DNS server. It allows you to specify the DNS servers that you want to use for name resolution for this virtual network.
-- **Configure Site-To-Site VPN**: Select the checkbox for **Configure a site-to-site VPN**.
-- **Local Network**: A local network represents your physical on-premises location. You can select a local network that you've previously created, or you can create a new local network. However, if you select to use a local network that you previously created, go to the **Local Networks** configuration page and verify that the VPN Device IP address (public facing IPv4 address) for the VPN device is accurate.
-
-## <a name="site-to-site-connectivity-page"></a>Site-to-site connectivity page
-
-If you're creating a new local network, you'll see the **Site-To-Site Connectivity** page. If you want to use a local network that you previously created, this page will not appear in the wizard and you can move on to the next section.
-
-Enter the following information, and then click the next arrow.
-
--   **Name**: The name you want to call your local (on-premises) network site.
--   **VPN Device IP Address**: The public facing IPv4 address of your on-premises VPN device that you use to connect to Azure. The VPN device cannot be located behind a NAT.
--   **Address Space**: Include Starting IP and CIDR (Address Count). You specify the address range(s) that you want to be sent through the virtual network gateway to your local on-premises location. If a destination IP address falls within the ranges that you specify here, it is routed through the virtual network gateway.
--   **Add address space**: If you have multiple address ranges that you want to be sent through the virtual network gateway, specify each additional address range. You can add or remove ranges later on the **Local Network** page.
-
-## <a name="virtual-network-address-spaces-page"></a>Virtual network address spaces page
-
-Specify the address range that you want to use for your virtual network. These are the dynamic IP addresses (DIPS) that will be assigned to the VMs and other role instances that you deploy to this virtual network.
-
-It's especially important to select a range that does not overlap with any of the ranges that are used for your on-premises network. You need to coordinate with your network administrator. Your network administrator may need to carve out a range of IP addresses from your on-premises network address space for you to use for your virtual network.
-
-Enter the following information, and then click the checkmark on the lower right to configure your network.
-
-- **Address Space**: Include Starting IP and Address Count. Verify that the address spaces you specify don't overlap any of the address spaces that you have on your on-premises network.
-- **Add subnet**: Include Starting IP and Address Count. Additional subnets are not required, but you may want to create a separate subnet for VMs that will have static DIPS. Or you might want to have your VMs in a subnet that is separate from your other role instances.
-- **Add gateway subnet**: Click to add the gateway subnet. The gateway subnet is used only for the virtual network gateway and is required for this configuration.
-
-Click the checkmark on the bottom of the page and your virtual network will begin to create. When it completes, you will see **Created** listed under **Status** on the **Networks** page in the Azure Classic Portal. After the VNet has been created, you can then configure your virtual network gateway.
-
-[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)] 
-
-## <a name="configure-your-virtual-network-gateway"></a>Configure your virtual network gateway
-
-Configure the virtual network gateway to create a secure site-to-site connection. See [Configure a virtual network gateway in the Azure classic portal](vpn-gateway-configure-vpn-gateway-mp.md).
-
-## <a name="next-steps"></a>Next steps
-
-Once your connection is complete, you can add virtual machines to your virtual networks. See the [Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) documentation for more information.
+- Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 
 
+## Virtual Network の作成
 
-<!--HONumber=Oct16_HO2-->
+1. [Azure クラシック ポータル](https://manage.windowsazure.com/)にログインします。
 
+2. 画面の左下隅で **[新規]** をクリックします。ナビゲーション ウィンドウで **[Network Services]** をクリックし、**[Virtual Network]** をクリックします。**[カスタム作成]** をクリックして、構成ウィザードを開始します。
 
+3. VNet を作成するには、次のページで構成設定を入力します。
+
+## [Virtual Network の詳細] ページ
+
+次の情報を入力します。
+
+- **[名前]**: 仮想ネットワークの名前を指定します。ここでは、*EastUSVNet* のように名前を入力します。VM と PaaS インスタンスをデプロイするときにこの仮想ネットワーク名を使用するため、あまり複雑な名前を付けないようにすることを推奨します。
+- **[場所]**: 場所は、リソース (VM) を配置する物理的な場所 (リージョン) に直接関連します。たとえば、物理的に*米国東部*に存在する VM をこの仮想ネットワークにデプロイする場合は、その場所を選択します。仮想ネットワークを作成した後で、その仮想ネットワークに関連付けられたリージョンを変更することはできません。
+
+## [DNS サーバーおよび VPN 接続] ページ
+
+次の情報を入力し、矢印をクリックして次へ進みます。
+
+- **[DNS サーバー]**: DNS サーバー名と IP アドレスを入力するか、以前に登録した DNS サーバーをショートカット メニューから選択します。この設定で、DNS サーバーは作成されません。この設定では、この仮想ネットワークの名前解決に使用する DNS サーバーを指定することができます。
+- **[サイト間 VPN の構成]**: **[サイト間 VPN の構成]** のチェックボックスをオンにします。
+- **[ローカル ネットワーク]**: ローカル ネットワークとは、物理的なオンプレミスの場所を表します。ここでは、以前作成したローカル ネットワークを選択するか、または新しいローカル ネットワークを作成することができます。ただし、以前作成したローカル ネットワークを使用する場合は、VPN デバイスの IP アドレス (外部に公開されている IPv4 アドレス) が正確であるかどうかを **[ローカル ネットワーク]** 構成ページで確認します。
+
+## [サイト間接続] ページ
+
+ローカル ネットワークを新しく作成する場合は、**[サイト間接続]** ページが表示されます。以前作成したローカル ネットワークを使用する場合は、このページはウィザードで表示されず次のセクションに進みます。
+
+次の情報を入力して、次へ進む矢印をクリックします。
+
+- 	**[名前]**: ローカル (オンプレミス) ネットワーク サイトの名前です。
+- 	**[VPN デバイスの IP アドレス]**: Azure への接続に使用するオンプレミスの VPN デバイスで使用される、外部に公開されている IPv4 アドレスです。VPN デバイスは NAT の内側に配置することはできません。
+- 	**[アドレス空間]**: IP アドレスの開始点と CIDR (アドレス数) を指定します。仮想ネットワーク ゲートウェイからローカルのオンプレミスの場所への接続に使用するアドレス範囲を指定します。宛先 IP アドレスがここで指定した範囲内に存在する場合は、仮想ネットワーク ゲートウェイを経由してルーティングされます。
+- 	**[アドレス空間の追加]**: 仮想ネットワーク ゲートウェイでの接続に複数のアドレス範囲を使用する場合は、それぞれのアドレス範囲を追加します。アドレス範囲は、後から **[ローカル ネットワーク]** ページで追加または削除することができます。
+
+## [仮想ネットワーク アドレス空間] ページ
+
+仮想ネットワークで使用するアドレス範囲を指定します。これらが動的 IP アドレス (DIPS) として、この仮想ネットワークにデプロイする VM や各種ロール インスタンスに割り当てられます。
+
+オンプレミス ネットワークに使用されている範囲と重複しない範囲を選択することが特に重要です。ネットワーク管理者と相談して調整する必要があります。ネットワーク管理者は、場合によっては仮想ネットワークで使用する IP アドレス範囲をオンプレミス ネットワークのアドレス空間の中から確保する必要があるため、ネットワーク管理者との調整が必要です。
+
+以下の情報を入力し、右下のチェックマークをクリックしてネットワークを構成します。
+
+- **[アドレス空間]**: IP アドレスの開始点とアドレス数を指定します。指定したアドレス空間がオンプレミス ネットワーク内に存在するあらゆるアドレス空間と重複していないことを確認します。
+- **[サブネットの追加]**: IP アドレスの開始点とアドレス数を指定します。追加サブネットは必須ではありませんが、VM 用に静的 DIP を持つ別のサブネットを作成することをお勧めします。または、他のロール インスタンスとは分離したサブネットに VM を配置することができます。
+- **[ゲートウェイ サブネットの追加]**: ここをクリックしてゲートウェイ サブネットを追加します。ゲートウェイ サブネットは仮想ネットワーク ゲートウェイにのみ適用されます。この構成では、ゲートウェイ サブネットは必須です
+
+ページ下部のチェックマークをクリックすると、仮想ネットワークの作成が開始されます。完了すると、Azure クラシック ポータルの **[ネットワーク]** ページにある **[状態]** に **[作成済み]** と表示されます。VNet の作成が完了したら、仮想ネットワーク ゲートウェイを構成できます。
+
+[AZURE.INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
+
+## 仮想ネットワーク ゲートウェイの構成
+
+仮想ネットワーク ゲートウェイを構成して、セキュリティで保護されたサイト間接続を作成します。[Azure クラシック ポータルでの仮想ネットワーク ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md)に関するページを参照してください。
+
+## 次のステップ
+
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。詳細については、[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
+
+<!---HONumber=AcomDC_0921_2016-->

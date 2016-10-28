@@ -1,61 +1,56 @@
 <properties
-    pageTitle="Controlling Azure CDN Premium from Verizon caching behavior of requests with query strings | Microsoft Azure"
-    description="Azure CDN query string caching controls how files are to be cached when they contain query strings."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="クエリ文字列による要求の Azure CDN Premium from Verizon キャッシュ動作の制御 | Microsoft Azure"
+	description="Azure CDN クエリ文字列のキャッシュにより、ファイルにクエリ文字列が含まれている場合のファイルのキャッシュ方法を制御します。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/28/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2016"
+	ms.author="casoper"/>
 
-
-#<a name="controlling-caching-behavior-of-cdn-requests-with-query-strings---premium"></a>Controlling caching behavior of CDN requests with query strings - Premium
+#クエリ文字列による CDN 要求のキャッシュ動作の制御 - Premium
 
 > [AZURE.SELECTOR]
 - [Standard](cdn-query-string.md)
 - [Azure CDN Premium from Verizon](cdn-query-string-premium.md)
 
-##<a name="overview"></a>Overview
+##概要
 
-Query string caching controls how files are to be cached when they contain query strings.
+クエリ文字列のキャッシュにより、ファイルにクエリ文字列が含まれている場合のファイルのキャッシュ方法を制御します。
 
-> [AZURE.IMPORTANT] The Standard and Premium CDN products provide the same query string caching functionality, but the user interface differs.  This document describes the interface for **Azure CDN Premium from Verizon**.  For query string caching with **Azure CDN Standard from Akamai** and **Azure CDN Standard from Verizon**, see [Controlling caching behavior of CDN requests with query strings](cdn-query-string.md).
+> [AZURE.IMPORTANT] Standard および Premium CDN 製品では同じクエリ文字列キャッシュ機能が提供されますが、ユーザー インターフェイスは異なります。ここでは、**Azure CDN Premium from Verizon** のインターフェイスについて説明します。**Azure CDN Standard from Akamai** と **Azure CDN Standard from Verizon** のクエリ文字列のキャッシュについては、「[クエリ文字列による CDN 要求のキャッシュ動作の制御](cdn-query-string.md)」を参照してください。
 
-Three modes are available:
+次の 3 つのモードを使用できます。
 
-- **standard-cache**:  This is the default mode.  The CDN edge node will pass the query string from the requestor to the origin on the first request and cache the asset.  All subsequent requests for that asset that are served from the edge node will ignore the query string until the cached asset expires.
-- **no-cache**:  In this mode, requests with query strings are not cached at the CDN edge node.  The edge node retrieves the asset directly from the origin and passes it to the requestor with each request.
-- **unique-cache**:  This mode treats each request with a query string as a unique asset with its own cache.  For example, the response from the origin for a request for *foo.ashx?q=bar* would be cached at the edge node and returned for subsequent caches with that same query string.  A request for *foo.ashx?q=somethingelse* would be cached as a separate asset with its own time to live.
+- **standard-cache**: これは、既定のモードです。CDN エッジ ノードは、クエリ文字列を要求元から最初の要求の配信元に渡して、資産をキャッシュします。エッジ ノードから提供される資産の後続の要求はすべて、キャッシュされた資産の有効期限が切れるまで、クエリ文字列を無視します。
+- **no-cache**: このモードでは、クエリ文字列のある要求は CDN エッジ ノードでキャッシュされません。エッジ ノードは元のドメインから直接資産を取得し、それを各要求により要求元に渡します。
+- **unique-cache**: このモードでは、クエリ文字列のある各要求は、独自のキャッシュを持つ一意の資産として処理されます。たとえば、*foo.ashx?q=bar* の要求の配信元からの応答はエッジ ノードでキャッシュされ、後続のキャッシュではその同じクエリ文字列により返されます。*foo.ashx?q=somethingelse* の要求は、独自の有効期限を持つ個別の資産としてキャッシュされます。
 
-##<a name="changing-query-string-caching-settings-for-premium-cdn-profiles"></a>Changing query string caching settings for premium CDN profiles
+##Premium CDN プロファイル用にクエリ文字列のキャッシュ設定を変更する
 
-1. From the CDN profile blade, click the **Manage** button.
+1. [CDN プロファイル] ブレードで、**[管理]** をクリックします。
 
-    ![CDN profile blade manage button](./media/cdn-query-string-premium/cdn-manage-btn.png)
+	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-query-string-premium/cdn-manage-btn.png)
 
-    The CDN management portal opens.
+	CDN 管理ポータルが開きます。
 
-2. Hover over the **HTTP Large** tab, then hover over the **Cache Settings** flyout.  Click on **Query-String Caching**.
+2. **[HTTP ラージ]** タブ、**[キャッシュの設定]** フライアウトの順にマウスのカーソルを合わせます。**[クエリ文字列のキャッシュ]** をクリックします。
 
-    Query string caching options are displayed.
+	クエリ文字列のキャッシュ オプションが表示されます。
 
-    ![CDN query string caching options](./media/cdn-query-string-premium/cdn-query-string.png)
+	![CDN クエリ文字列のキャッシュ オプション](./media/cdn-query-string-premium/cdn-query-string.png)
 
-3. After making your selection, click the **Update** button.
-
-
-> [AZURE.IMPORTANT] The settings changes may not be immediately visible, as it takes time for the registration to propagate through the CDN.  For <b>Azure CDN from Verizon</b> profiles, propagation will usually complete within 90 minutes, but in some cases can take longer.
+3. 選択したら、**[更新]** をクリックします。
 
 
+> [AZURE.IMPORTANT] 設定の変更が CDN に反映されるまでに時間がかかるので、変更がすぐに表示されないことがあります。<b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

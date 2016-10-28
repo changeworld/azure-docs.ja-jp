@@ -1,13 +1,13 @@
 <properties
-    pageTitle="Create a Cordova app on Azure App Service Mobile Apps | Microsoft Azure"
-    description="Follow this tutorial to get started with using Azure mobile app backends for Apache Cordova development"
+    pageTitle="Azure App Service Mobile Apps で Cordova アプリを作成する | Microsoft Azure"
+    description="Apache Cordova 開発向けの Azure モバイル アプリ バックエンドの使用を開始するには、このチュートリアルに従ってください。"
     services="app-service\mobile"
     documentationCenter="javascript"
     authors="adrianhall"
     manager="erikre"
     editor=""
     tags=""
-    keywords="cordova,javascript,mobile,client" />
+    keywords="cordova,javascript,モバイル,クライアント" />
 
 <tags
     ms.service="app-service-mobile"
@@ -18,75 +18,70 @@
     ms.date="10/01/2016"
     ms.author="adrianha"/>
 
-
-#<a name="create-an-apache-cordova-app"></a>Create an Apache Cordova app
+#Apache Cordova アプリの作成
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-## <a name="overview"></a>Overview
+## Overview
 
-This tutorial shows you how to add a cloud-based backend service to an Apache Cordova mobile app by using an Azure mobile app backend.  You will create both a new mobile app backend and a simple _Todo list_ Apache Cordova app that stores app data in Azure.
+このチュートリアルでは、Azure モバイル アプリ バックエンドを使用してクラウドベースのバックエンド サービスを Apache Cordova モバイル アプリに追加する方法を説明します。新しいモバイル アプリ バックエンドと、アプリのデータを Azure に格納する簡単な _Todo list_ Apache Cordova アプリの両方を作成します。
 
-Completing this tutorial is a prerequisite for all other Apache Cordova tutorials about using the Mobile Apps feature in Azure App Service.
+このチュートリアルは、Azure App Service での Mobile Apps 機能の使用に関する他のすべての Apache Cordova チュートリアルを実行する前に完了しておく必要があります。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-To complete this tutorial, you need the following:
+このチュートリアルを完了するには、以下が必要です。
 
-* A PC with [Visual Studio Community 2015] or newer.
-* [Visual Studio Tools for Apache Cordova].
-* An [active Azure account](https://azure.microsoft.com/pricing/free-trial/).
+* [Visual Studio Community 2015] 以降のバージョンがインストールされた PC
+* [Apache Cordova の Visual Studio ツール]
+* [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 
-You may also bypass Visual Studio and use the Apache Cordova command line directly.  This is useful when completing the tutorial on a Mac computer.  Compiling Apache Cordova client applications using the command line is not covered by this tutorial.
+Visual Studio をバイパスし、Apache Cordova のコマンド ラインを直接使用することもできます。これは、Mac コンピューターでチュートリアルを完成させるときに便利です。コマンドラインを使用する Apache Cordova クライアント アプリケーションのコンパイルは、このチュートリアルでは説明しません。
 
-## <a name="create-a-new-azure-mobile-app-backend"></a>Create a new Azure mobile app backend
+## 新しい Azure モバイル アプリ バックエンドを作成する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-[Watch a video showing similar steps](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-1-Create-an-Azure-Mobile-App)
 
-## <a name="configure-the-server-project"></a>Configure the server project
+## サーバー プロジェクトの構成
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="download-and-run-the-apache-cordova-app"></a>Download and run the Apache Cordova app
+## Apache Cordova アプリのダウンロードと実行
 
 [AZURE.INCLUDE [app-service-mobile-cordova-run-app](../../includes/app-service-mobile-cordova-run-app.md)]
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-Now that you completed this quick start tutorial, move on to one of the following tutorials:
+これでこのクイック スタート チュートリアルは終了です。次のいずれかのチュートリアルに進んでください。
 
-* [Add Authentication] to your Apache Cordova app.
-* [Add Push Notifications] to your Apache Cordova app.
+* Apache Cordova アプリに[認証を追加する]
+* Apache Cordova アプリに[プッシュ通知を追加する]
 
-Learn more about key concepts with Azure App Service.
+Azure App Service の主要な概念を確認してください。
 
-* [Authentication]
-* [Push Notifications]
+* [認証]
+* [プッシュ通知]
 
-Learn how to use the SDKs.
+SDK の使用方法を確認してください。
 
 * [Apache Cordova SDK]
-* [ASP.NET Server SDK]
-* [Node.js Server SDK]
+* [ASP.NET サーバー SDK]
+* [Node.js サーバー SDK]
 
 <!-- Images. -->
 
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: http://www.visualstudio.com/
-[Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
-[Add Authentication]: app-service-mobile-cordova-get-started-users.md
-[Add Push Notifications]: app-service-mobile-cordova-get-started-push.md
-[Authentication]: app-service-mobile-auth.md
-[Push Notifications]: ../notification-hubs/notification-hubs-push-notification-overview.md
+[Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/ja-JP/features/cordova-vs.aspx
+[認証を追加する]: app-service-mobile-cordova-get-started-users.md
+[プッシュ通知を追加する]: app-service-mobile-cordova-get-started-push.md
+[認証]: app-service-mobile-auth.md
+[プッシュ通知]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
-[ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
+[ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

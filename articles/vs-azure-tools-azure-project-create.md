@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Creating an Azure project with Visual Studio | Microsoft Azure"
-   description="Creating an Azure project with Visual Studio"
+   pageTitle="Visual Studio を使用した Azure プロジェクトの作成 | Microsoft Azure"
+   description="Visual Studio を使用した Azure プロジェクトの作成"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,56 +15,51 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Visual Studio を使用した Azure プロジェクトの作成
 
-# <a name="creating-an-azure-project-with-visual-studio"></a>Creating an Azure Project with Visual Studio
+Azure Tools for Visual Studio には、Azure でクラウド サービスを作成するためのテンプレートが用意されています。このツールは、クラウド サービスを構成、デバッグし、Azure にデプロイするときにも役立ちます。
 
-The Azure Tools for Visual Studio provide a template that lets you create a cloud service for Azure. The tools also help you configure, debug, and deploy the cloud service to Azure.
+Azure クラウド サービスのソリューションには、以下の種類のプロジェクトが含まれています。
 
-An Azure cloud service solution contains the following types of projects:
+- **Azure プロジェクト**
 
-- **Azure project**
+    Azure プロジェクトは、ソリューション内のロール プロジェクトに関連付けられています。また、サービス定義ファイルとサービス構成ファイルが含まれます。サービス定義ファイルは、必要なロール、エンドポイント、仮想マシンのサイズを含む、アプリケーションのランタイム設定を定義します。サービス構成ファイルでは、実行されるロールのインスタンス数とロールに定義されている設定の値を構成します。これらの設定の詳細については、「[方法: Visual Studio を使用した Azure クラウド サービスのロールの構成](vs-azure-tools-configure-roles-for-cloud-service.md)」を参照してください。
 
-    The Azure project has associations to the role projects in the solution. It also includes the service definition and service configuration files. The service definition file defines the runtime settings for your application including what roles are required, endpoints, and virtual machine size. The service configuration file configures how many instances of a role are run and the values of the settings defined for a role. For more information about these settings, see [How to: Configure the Roles for an Azure Cloud Service with Visual Studio](vs-azure-tools-configure-roles-for-cloud-service.md).
+- **Web ロール プロジェクト**
 
-- **Web role project**
+    worker ロールは、バック グラウンド処理を実行します。worker ロールは、ストレージ サービスや他のインターネット ベースのサービスと通信できます。worker ロールは、任意の数の HTTP、HTTPS、TCP エンドポイントを含むことができます。
 
-    A worker role performs background processing. A worker role can communicate with storage services and with other Internet-based services. A worker role can have any number of HTTP, HTTPS, or TCP endpoints.
+    - **ASP.NET Web ロール** (Web フロントエンドを持つ ASP.NET アプリケーションの構築用)
+    - **ASP.NET MVC5 Web ロール**
+    - **ASP.NET MVC4 Web ロール**
+    - **ASP.NET MVC3 Web ロール**
+    - **WCF サービス Web ロール** (WCF サービスの構築用)
+    - **Silverlight ビジネス アプリケーション Web ロール** (Visual Studio 2012 が必要)
 
-    - **ASP.NET Web Role**, for building an ASP.NET application with a web front end
-    - **ASP.NET MVC5 Web Role**
-    - **ASP.NET MVC4 Web Role**
-    - **ASP.NET MVC3 Web Role**
-    - **WCF Service Web Role**, for building a WCF service
-    - **Silverlight Business Application Web Role** (requires Visual Studio 2012)
+- **キャッシュ Worker ロール**
 
-- **Cache Worker Role**
+    アプリケーションに専用のキャッシュを提供するロール。
 
-    A role that provides a dedicated cache to your application.
+- **Service Bus キューを使用する Worker ロール**
 
-- **Worker Role with Service Bus Queue**
+    Service Bus キューは、worker プロセスと通信するためのメッセージのキュー機能を提供します。詳細については、「[Service Bus キューの使用方法](http://go.microsoft.com/fwlink/?LinkId=260560)」を参照してください。
 
-    A service bus queue that provides message queuing functionality to communicate with the worker process. For more information, see [How to Use Service Bus Queues](http://go.microsoft.com/fwlink/?LinkId=260560).
+## Visual Studio で Azure クラウド サービス プロジェクトを作成するには
 
-## <a name="to-create-an-azure-cloud-service-project-in-visual-studio"></a>To create an Azure cloud service project in Visual Studio
+1. Microsoft Visual Studio を管理者として起動します。
 
-1. Start Microsoft Visual Studio as an administrator.
+1. メニュー バーで、**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順に選択します。
 
-1. On the menu bar, choose **File**, **New**, **Project**.
+1. **[プロジェクトの種類]** ウィンドウで、[Visual C#] または [Visual Basic] プロジェクト テンプレート ノードの **[クラウド]** を選択します。
 
-1. In the **Project Types** pane, choose **Cloud** from the Visual C# or Visual Basic project template nodes.
+1. **[テンプレート]** ウィンドウで、**[Azure クラウド サービス]** をクリックします。
 
-1. In the **Templates** pane, choose  **Azure Cloud Service**.
+1. プロジェクトの開発に使用する .NET Framework のバージョンを指定します。
 
-1. Specify which version of the .NET Framework you want to use to develop your project.
+1. プロジェクトの名前と場所、およびソリューションの名前を入力します。**[OK]** をクリックします。
 
-1. Enter a name and location for your project and a name for the solution. Choose the **OK** button.
+1. **[新しい Azure プロジェクト]** ダイアログ ボックスで、追加するロールを選択し、右矢印ボタンをクリックしてそのロールをソリューションに追加します。ロールは、必要なだけ追加することができます。
 
-1. In the **New Azure Project** dialog box, choose the roles that you want to add, and choose the right arrow button to add them to your solution. You can add as many roles as you need.
+1. プロジェクトに追加したロールの名前を変更するには、**[新しい Azure プロジェクト]** ダイアログ ボックスでそのロールの上にマウス ポインターを置き、ロールの右側にある **[名前の変更]** アイコンをクリックします。追加後も、ソリューション内でロールの名前を変更できます。
 
-1. To rename a role that you've added to your project, hover on the role in the **New Azure Project** dialog box, and choose the **Rename** icon to the right of the role. You can also rename a role within your solution after it has been added.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

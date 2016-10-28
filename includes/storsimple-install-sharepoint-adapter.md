@@ -1,32 +1,29 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>To install the StorSimple Adapter for SharePoint
+#### SharePoint 用 StorSimple アダプターをインストールするには
 
-1. Copy the installer to the web front end (WFE) server that is also configured to run the SharePoint Central Administration web application. 
+1. Web フロントエンド (WFE) サーバーにインストーラーをコピーします。このサーバーは、SharePoint サーバーの全体管理 Web アプリケーションを実行するように構成されています。 
 
-2. Use an account with administrator privileges to log on to the WFE server.
+2. 管理者特権を持つアカウントを使用して WFE サーバーにログオンします。
 
-3. Double-click the installer. The StorSimple Adapter for SharePoint Setup Wizard starts. Click **Next** to begin the installation.
+3. インストーラーをダブルクリックします。SharePoint 用 StorSimple アダプターのセットアップ ウィザードが起動します。**[次へ]** をクリックしてインストールを開始します。
 
     ![StorSimple adapter setup start page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)
 
-4. In the StorSimple Adapter for SharePoint setup configuration page, select an installation location, type the IP address for the DATA 0 network interface on your StorSimple device, and then click **Next**. 
+4. SharePoint 用 StorSimple アダプターのセットアップ構成ページで、インストールする場所を選択し、StorSimple デバイス上の DATA 0 ネットワーク インターフェイスの IP アドレスを入力し、**[次へ]** をクリックします。
 
-    ![StorSimple adapter setup configuration page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png) 
+    ![StorSimple adapter setup configuration page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup2-include.png)
 
-5. In the setup confirmation page, click **Install**.
+5. セットアップの確認ページで、**[インストール]** をクリックします。
 
-    ![StorSimple adapter setup confirmation page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png) 
+    ![StorSimple adapter setup confirmation page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Confirm_Setup-include.png)
 
-6. Click **Finish** to close the Setup Wizard.
+6. **[完了]** をクリックしてセットアップ ウィザードを閉じます。
 
-    ![StorSimple adapter setup finished page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png) 
+    ![StorSimple adapter setup finished page](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup_finish-include.png)
 
-7. Open the SharePoint Central Administration page. You should see a StorSimple Configuration group that contains the StorSimple Adapter for SharePoint links.
+7. SharePoint サーバーの全体管理ページを開きます。SharePoint 用 StorSimple アダプターへのリンクを含む StorSimple 構成グループが表示されます。
 
-8. Go to the next step: [Configure RBS](#configure-rbs).
+8. 次の [RBS の構成](#configure-rbs)手順に進みます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

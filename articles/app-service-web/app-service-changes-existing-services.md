@@ -1,99 +1,94 @@
 <properties
-    pageTitle="Azure App Service and its impact on existing Azure services"
-    description="Explains how the new Azure App Service and its features impact existing services in Azure."
-    services="app-service"
+	pageTitle="Azure App Service と、それが既存の Azure サービスに与える影響"
+	description="新しい Azure App Service とその機能が Azure の既存のサービスにどのように影響するかを説明します。"
+	services="app-service"
     documentationCenter=""
-    authors="yochay"
-    manager="nirma"
-    editor=""/>
+	authors="yochay"
+	manager="nirma"
+	editor=""/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="02/12/2016"
-    ms.author="yochayk"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/12/2016"
+	ms.author="yochayk"/>
 
 
+# Azure App Service と既存の Azure サービス
 
-# <a name="azure-app-service-and-existing-azure-services"></a>Azure App Service and existing Azure services
-
-This article outlines the changes to existing Azure services as part of the change to bring together several Azure services into [Azure App Service](https://azure.microsoft.com/services/app-service/), a new integrated offering.
+この記事では、複数の Azure サービスを新しい統合型サービスの [Azure App Service](https://azure.microsoft.com/services/app-service/) に統合するための変更の一環である、既存の Azure サービスへの変更について概要を説明します。
 
 [AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="overview"></a>Overview
+## 概要
 
-[Azure App Service](https://azure.microsoft.com/services/app-service/) is a new and unique cloud service that enables developers to create web and mobile apps for any platform and any device. App Service is an integrated solution designed to streamline repeated coding functions, integrate with enterprise and SaaS systems, and automate business processes while meeting your needs for security, reliability, and scalability.
+[Azure App Service](https://azure.microsoft.com/services/app-service/) は新しくユニークなクラウド サービスであり、開発者がこのサービスを利用することで、すべてのプラットフォームおよびデバイス向けに、Web アプリやモバイル アプリを作成できるようになります。App Service は、繰り返しのコーディング機能の効率化、エンタープライズ システムと SaaS システムの統合、ビジネス プロセスの自動化などを実現しながら、安全性、信頼性、拡張性のニーズに応えられるよう設計された、統合型ソリューションです。
 
-App Service brings together the following existing Azure services - [Websites](https://azure.microsoft.com/services/websites/), [Mobile Services](https://azure.microsoft.com/services/mobile-services/), and [Biztalk Services](https://azure.microsoft.com/services/biztalk-services/) into a single combined service, while adding powerful new capabilities.  App Service allows you to host the following app types:
+App Service では、[Websites](https://azure.microsoft.com/services/websites/)、[Mobile Services](https://azure.microsoft.com/services/mobile-services/)、[Biztalk Services](https://azure.microsoft.com/services/biztalk-services/) などの既存の Azure サービスを 1 つの複合サービスに統合すると同時に、パワフルな新機能も追加しています。App Service では、次の種類のアプリをホストすることができます。
 
 -   Web Apps
 -   Mobile Apps
 -   API Apps
 -   Logic Apps
 
-The following table explains how existing Azure services map to App Service and the app types available within it.
+次の表では、既存の Azure サービスが、App Service とその中で利用できるアプリの種類に対して、どのような位置付けになっているかを説明します。
 
 <table>
 <thead>
 <tr class="header">
-<th align="left", style="width:10%">Existing Azure Service</th>
+<th align="left", style="width:10%">既存の Azure サービス</th>
 <th align="left", style="width:10%">Azure App Service</th>
-<th align="left", style="width:80%">What changed</th>
+<th align="left", style="width:80%">変更箇所</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="left">Azure Websites</td>
 <td align="left">Web Apps</td>
-<td align="left"><li>For Azure Websites, App Service is strictly limited to changing the name  Websites to Web Apps.
-<p><li>All your existing instances of Websites are now Web Apps in App Service.</p>
-<p><li>You can access your existing websites via the <a href="http://go.microsoft.com/fwlink/?LinkId=529715">Azure Portal</a>, where you will find all your existing sites under <em>Web Apps</em>.</p>
-<p><li><em>Web Hosting Plan</em> is now <em>App Service Plan</em>. An <em>App Service Plan</em> can host any app type of App Service, such as Web, Mobile, Logic, or API apps.</p>
-<p><li>Azure App Service Web Apps is in General Availability.</p>
-<p><li><a href="http://azure.microsoft.com/services/app-service/web/">Learn more about Web Apps</a>.</p></td>
+<td align="left"><li>Azure Websites の場合は、App Service による変更は Websites から Web Apps への名前の変更のみに厳密に制限されています。
+<p><li>Websites のすべての既存インスタンスが、現在は App Service 内の Web Apps になっています。</p>
+<p><li><a href="http://go.microsoft.com/fwlink/?LinkId=529715">Azure ポータル</a>から既存の Web サイトにアクセスすることができます。すべての既存サイトがこのポータルの <em>Web Apps</em> の下に表示されます。</p>
+<p><li><em>Web ホスティング プラン</em>は現在の <em>App Service プラン</em>にあたります。<em>App Service Plan</em> では、Web、Mobile、Logic、API など、App Service のすべての種類のアプリをホストできます。</p>
+<p><li>Azure App Service Web Apps は、一般向けに提供されています。</p>
+<p><li><a href="http://azure.microsoft.com/services/app-service/web/">Web Apps の詳細についてはこちら</a>をご覧ください。</p></td>
 </tr>
 <tr class="even">
 <td align="left">Azure Mobile Services</td>
 <td align="left">Mobile Apps</td>
-<td align="left"><p><li>Mobile Services continue to be available as a standalone service and remain fully supported.</p>
-<p><li>Mobile Apps is an app type in App Service, which integrates all of the functionality of Mobile Services and more.</p>
-<p><li>It is easy to <a href="http://go.microsoft.com/fwlink/?LinkID=724279&clcid=0x409">migrate from Mobile Services to Mobile Apps</a>.</p>
-<p><li>As part of App Service, Mobile Apps get new capabilities beyond Mobile Services, such as  integration with on-premises and SaaS systems, staging slots, WebJobs, better scaling options, and more.</p>
-<p><li><a href="http://azure.microsoft.com/services/app-service/mobile/">Learn more about Mobile Apps</a>.</p>
+<td align="left"><p><li>Mobile Services はスタンドアロン サービスとして引き続き利用でき、現在も完全なサポートが受けられます。</p>
+<p><li>Mobile Apps は App Service のアプリの種類の 1 つで、Mobile Services のすべての機能を含む、多数の機能を統合しています。</p>
+<p><li><a href="http://go.microsoft.com/fwlink/?LinkID=724279&clcid=0x409">Mobile Services から Mobile Apps</a> への移行は簡単です。</p>
+<p><li>App Service の一部として、Mobile Apps には、オンプレミス システムと SaaS システムとの統合、ステージング スロット、Web ジョブ、充実したスケール オプションなど、Mobile Services を超える新しい機能が追加されました。</p>
+<p><li><a href="http://azure.microsoft.com/services/app-service/mobile/">Mobile Apps の詳細についてはこちら</a>をご覧ください。</p>
 </tr>
 <tr class="odd">
 <td align="left"></td>
 <td align="left">API Apps</td>
 <td align="left">
-<p><li>API Apps is a new app type in App Service that lets you easily build and consume APIs in the cloud.</p>
-<p><li><a href="http://azure.microsoft.com/services/app-service/api/">Learn more about API Apps</a>.</p></td>
+<p><li>API Apps は App Service での新しいアプリの種類で、これを利用すると、クラウドで簡単に API の構築や使用ができます。</p>
+<p><li><a href="http://azure.microsoft.com/services/app-service/api/">API Apps の詳細についてはこちら</a>をご覧ください。</p></td>
 </tr>
 <tr class="even">
 <td align="left"></td>
 <td align="left">Logic Apps</td>
 <td align="left">
-<p><li>Logic Apps is a new app type in App Service that lets you easily automate business process.</p>
-<p><li><a href="http://azure.microsoft.com/services/app-service/logic/">Learn more about Logic Apps</a>.</p></td>
+<p><li>Logic Apps は App Service での新しいアプリの種類で、これを利用すると、ビジネス プロセスが簡単に自動化できます。</p>
+<p><li><a href="http://azure.microsoft.com/services/app-service/logic/">Logic Apps の詳細についてはこちら</a>をご覧ください。</p></td>
 </tr>
 <tr class="odd">
 <td align="left">Azure BizTalk Services</td>
 <td align="left">BizTalk API Apps</td>
 <td align="left">
-<li><p>BizTalk Services continue to be available as a standalone service and remain fully supported.</p>
-<li><p>All the capabilities of BizTalk Services are integrated into App Service as API Apps enabling users to perform enterprise application integration and B2B integration scenarios with any of the app types in App Service</p>
-<li><p>With Logic Apps you can now automate business processes using a visual design experience to create workflows</p></td>
+<li><p>BizTalk Services はスタンドアロン サービスとして引き続き利用でき、現在も完全なサポートが受けられます。</p>
+<li><p>BizTalk Services のすべての機能は、API Apps として App Service に統合されています。これを利用することで、ユーザーは App Service 内のすべての種類のアプリによる企業アプリケーション統合および B2B 統合のシナリオが実現できるようになります。</p>
+<li><p>Logic Apps では、視覚的デザイン機能を使用してワークフローを作成し、ビジネス プロセスを自動化できるようになりました。</p></td>
 </tr>
 </tbody>
 </table>
 
-To learn more, please visit [App Service documentation](https://azure.microsoft.com/documentation/services/app-service/).
+詳細については、「[App Service のドキュメント](https://azure.microsoft.com/documentation/services/app-service/)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

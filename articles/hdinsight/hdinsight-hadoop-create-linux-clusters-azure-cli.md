@@ -1,134 +1,124 @@
 <properties
-    pageTitle="Create Hadoop, HBase, or Storm clusters on Linux in HDInsight using the cross-platform Azure CLI | Microsoft Azure"
-    description="Learn how to create Linux-based HDInsight clusters using the cross-platform Azure CLI, Azure Resource Manager templates, and the Azure REST API. You can specify the cluster type (Hadoop, HBase, or Storm,) or use scripts to install custom components.."
-    services="hdinsight"
-    documentationCenter=""
-    authors="Blackmist"
-    manager="jhubbard"
-    editor="cgronlun"
-    tags="azure-portal"/>
+   	pageTitle="クロスプラットフォーム Azure CLI を使用した HDInsight での Linux ベースの Hadoop、HBase、または Storm クラスターの作成 | Microsoft Azure"
+   	description="クロスプラットフォーム Azure CLI、Azure リソース マネージャー テンプレート、および Azure REST API を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。クラスターの種類 (Hadoop、HBase、または Storm) を指定するか、スクリプトを使用してカスタム コンポーネントをインストールすることができます。"
+   	services="hdinsight"
+   	documentationCenter=""
+   	authors="Blackmist"
+   	manager="jhubbard"
+   	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="big-data"
-    ms.date="09/20/2016"
-    ms.author="larryfr"/>
+   	ms.service="hdinsight"
+   	ms.devlang="na"
+   	ms.topic="article"
+   	ms.tgt_pltfrm="na"
+   	ms.workload="big-data"
+   	ms.date="09/20/2016"
+   	ms.author="larryfr"/>
 
+#Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成
 
-#<a name="create-linux-based-clusters-in-hdinsight-using-the-azure-cli"></a>Create Linux-based clusters in HDInsight using the Azure CLI
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
-[AZURE.INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+Azure CLI は、Azure サービスを管理できる、プラットフォームに依存しないコマンドライン ユーティリティです。Azure リソース管理テンプレートと共に使用して、HDInsight クラスター、関連するストレージ アカウント、その他のサービスを作成できます。
 
-The Azure CLI is a cross-platform command-line utility that allows you to manage Azure Services. It can be used, along with Azure Resource management templates, to create an HDInsight cluster, along with associated storage accounts and other services.
+Azure リソース管理テンプレートは、__リソース グループ__とその中のすべてのリソース (HDInsight など) について記述する JSON ドキュメントです。 このテンプレート ベースのアプローチでは、HDInsight で必要なすべてのリソースを 1 つのテンプレートで定義することができます。__デプロイ__の際にグループの全体としての変更を管理して、グループ全体に変更を適用することもできます。
 
-Azure Resource Management templates are JSON documents that describe a __resource group__ and all resources in it (such as HDInsight.) This template-based approach allows you to define all the resources that you need for HDInsight in one template. It also lets you manage changes to the group as a whole through __deployments__, which apply changes to the entire group.
+このドキュメントの手順では、Azure CLI とテンプレートを使用して新しい HDInsight クラスターを作成するプロセスを示します。
 
-The steps in this document walk through the process of creating a new HDInsight cluster using the Azure CLI and a template.
-
-> [AZURE.IMPORTANT] The steps in this document use the default number of worker nodes (4) for an HDInsight cluster. If you plan on more than 32 worker nodes (during cluster creation or by scaling the cluster,) then you must select a head node size with at least 8 cores and 14 GB ram.
+> [AZURE.IMPORTANT] この文書の手順では、HDInsight クラスターにワーカー ノードの既定数 (4) を使用します。クラスターの作成または拡張にあたって 32 個を超えるワーカー ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
-> For more information on node sizes and associated costs, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).
+> ノードのサイズと関連コストに関する詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- __Azure CLI__. The steps in this document were last tested with Azure CLI version 0.10.1.
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- __Azure CLI__。このドキュメントの手順は、Azure CLI Version 0.10.1 でテストされています。
 
-    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
+##Azure サブスクリプションにログイン
 
-### <a name="access-control-requirements"></a>Access control requirements
+「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](../xplat-cli-connect.md)」に記載されている手順に従い、__login__ メソッドを使用してサブスクリプションに接続します。
 
-[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+##クラスターの作成
 
-##<a name="log-in-to-your-azure-subscription"></a>Log in to your Azure subscription
+Azure CLI をインストールして構成したら、コマンド プロンプト、シェル、またはターミナル セッションから次の手順を実行します。
 
-Follow the steps documented in [Connect to an Azure subscription from the Azure Command-Line Interface (Azure CLI)](../xplat-cli-connect.md) and connect to your subscription using the __login__ method.
-
-##<a name="create-a-cluster"></a>Create a cluster
-
-The following steps should be performed from a command-prompt, shell, or terminal session after installing and configuring the Azure CLI.
-
-1. Use the following command to authenticate to your Azure subscription:
+1. 次のコマンドを使用して、Azure サブスクリプションに対して認証します。
 
         azure login
 
-    You are prompted to provide your name and password. If you have multiple Azure subscriptions, use `azure account set <subscriptionname>` to set the subscription that the Azure CLI commands use.
+    名前とパスワードを入力するように求められます。複数の Azure サブスクリプションがある場合は、`azure account set <subscriptionname>` を使用して、Azure CLI コマンドが使用するサブスクリプションを設定します。
 
-3. Switch to Azure Resource Manager mode using the following command:
+3. 次のコマンドで Azure リソース マネージャー モードに切り替えます。
 
         azure config mode arm
 
-4. Create a resource group. This resource group will contain the HDInsight cluster and associated storage account.
+4. リソース グループを作成します。このリソース グループに、HDInsight クラスターおよび関連するストレージ アカウントを追加することになります。
 
         azure group create groupname location
         
-    * Replace __groupname__ with a unique name for the group. 
-    * Replace __location__ with the geographic region that you want to create the group in. 
+    * __groupname__ は、グループの一意の名前に置き換えます。
+    * __location__ には、グループの作成先となる地理的領域を指定します。
     
-        For a list of valid locations, use the `azure location list` command, and then use one of the locations from the __Name__ column.
+        グループの作成先として有効な場所は、`azure location list` コマンドで一覧表示できます。__Name__ 列に表示されるいずれかの場所を使用してください。
 
-5. Create a storage account. This storage account will be used as the default storage for the HDInsight cluster.
+5. ストレージ アカウントを作成します。このストレージ アカウントが、HDInsight クラスターの既定のストレージとして使用されます。
 
         azure storage account create -g groupname --sku-name RAGRS -l location --kind Storage storagename
         
-     * Replace __groupname__ with the name of the group created in the previous step.
-     * Replace __location__ with the same location used in the previous step. 
-     * Replace __storagename__ with a unique name for the storage account.
+     * __groupname__ には、前の手順で作成したグループの名前を指定します。
+     * __location__ には、前の手順で使用した場所を指定します。
+     * __storagename__ には、ストレージ アカウントの一意の名前を指定します。
      
-     > [AZURE.NOTE] For more information on the parameters used in this command, use `azure storage account create -h` to view help for this command.
+     > [AZURE.NOTE] このコマンドのパラメーターの詳細については、「`azure storage account create -h`」と入力してコマンドのヘルプを表示してください。
 
-5. Retrieve the key used to access the storage account.
+5. ストレージ アカウントにアクセスするためのキーを取得します。
 
         azure storage account keys list -g groupname storagename
         
-    * Replace __groupname__ with the resource group name.
-    * Replace __storagename__ with the name of the storage account.
+    * __groupname__ には、リソース グループ名を指定します。
+    * __storagename__ には、ストレージ アカウントの名前を指定します。
     
-    In the data that is returned, save the __key__ value for __key1__.
+    返されたデータから、__key1__ の __key__ 値を保存します。
 
-6. Create an HDInsight cluster.
+6. HDInsight クラスターを作成する。
 
         azure hdinsight cluster create -g groupname -l location -y Linux --clusterType Hadoop --defaultStorageAccountName storagename.blob.core.windows.net --defaultStorageAccountKey storagekey --defaultStorageContainer clustername --workerNodeCount 2 --userName admin --password httppassword --sshUserName sshuser --sshPassword sshuserpassword clustername
 
-    * Replace __groupname__ with the resource group name.
-    * Replace __location__ with the same location used in previous steps.
-    * Replace __storagename__ with the storage account name.
-    * Replace __storagekey__ with the key obtained in the previous step. 
-    * For the `--defaultStorageContainer` parameter, use the same name as you are using for the cluster.
-    * Replace __admin__ and __httppassword__ with the name and password you wish to use when accessing the cluster through HTTPS.
-    * Replace __sshuser__ and __sshuserpassword__ with the username and password you wish to use when accessing the cluster using SSH
+    * __groupname__ には、リソース グループ名を指定します。
+    * __location__ には、前の手順で使用した場所を指定します。
+    * __storagename__ には、ストレージ アカウントの名前を指定します。
+    * __storagekey__ には、前の手順で取得したキーを指定します。
+    * `--defaultStorageContainer` パラメーターには、クラスターに使用している名前と同じ名前を指定します。
+    * __admin__ と __httppassword__ には、HTTPS でクラスターにアクセスするときに使用する名前とパスワードを指定します。
+    * __sshuser__ と __sshuserpassword__ には、SSH でクラスターにアクセスするときに使用するユーザー名とパスワードを指定します。
 
-    It may take several minutes for the cluster creation process to finish. Usually around 15.
+    クラスターの作成処理は、完了までに数分かかる場合があります。通常は約 15 です。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-Now that you have successfully created an HDInsight cluster using the Azure CLI, use the following to learn how to work with your cluster:
+Azure CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 
-###<a name="hadoop-clusters"></a>Hadoop clusters
+###Hadoop クラスター
 
-* [Use Hive with HDInsight](hdinsight-use-hive.md)
-* [Use Pig with HDInsight](hdinsight-use-pig.md)
-* [Use MapReduce with HDInsight](hdinsight-use-mapreduce.md)
+* [HDInsight での Hive の使用](hdinsight-use-hive.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
+* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
-###<a name="hbase-clusters"></a>HBase clusters
+###HBase クラスター
 
-* [Get started with HBase on HDInsight](hdinsight-hbase-tutorial-get-started-linux.md)
-* [Develop Java applications for HBase on HDInsight](hdinsight-hbase-build-java-maven-linux.md)
+* [HDInsight での HBase の使用](hdinsight-hbase-tutorial-get-started-linux.md)
+* [HDInsight での HBase の Java アプリケーションの開発](hdinsight-hbase-build-java-maven-linux.md)
 
-###<a name="storm-clusters"></a>Storm clusters
+###Storm クラスター
 
-* [Develop Java topologies for Storm on HDInsight](hdinsight-storm-develop-java-topology.md)
-* [Use Python components in Storm on HDInsight](hdinsight-storm-develop-python-topology.md)
-* [Deploy and monitor topologies with Storm on HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
+* [HDInsight での Storm の Java トポロジの開発](hdinsight-storm-develop-java-topology.md)
+* [HDInsight の Storm での Python コンポーネントの使用](hdinsight-storm-develop-python-topology.md)
+* [HDInsight の Storm を使用したトポロジのデプロイと監視](hdinsight-storm-deploy-monitor-topology-linux.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,27 +1,24 @@
-The deployment script will skip creation of the virtual environment on Azure if it detects that a compatible virtual environment already exists.  This can speed up deployment considerably.  Packages that are already installed will be skipped by pip.
+デプロイメント スクリプトで、互換性のある仮想環境が既に存在することが検出された場合、Azure での仮想環境の作成はスキップされます。これにより、デプロイメントが大幅に高速化されます。既にインストールされているパッケージは pip でスキップされます。
 
-In certain situations, you may want to force delete that virtual environment.  You'll want to do this if you decide to include a virtual environment as part of your repository.  You may also want to do this if you need to get rid of certain packages, or test changes to requirements.txt.
+特定の状況では、既存の仮想環境を強制的に削除することが必要になる場合があります。これが必要になる場合として、仮想環境をリポジトリの一部に組み込むことを決定した場合があります。また、特定のパッケージを削除する場合や、requirements.txt に対する変更をテストする場合があります。
 
-There are a few options to manage the existing virtual environment on Azure:
+Azure には既存の仮想環境を管理するためのオプションがいくつかあります。
 
-### <a name="option-1:-use-ftp"></a>Option 1: Use FTP
+### オプション 1: FTP を使用する
 
-With an FTP client, connect to the server and you'll be able to delete the env folder.  Note that some FTP clients (such as web browsers) may be read-only and won't allow you to delete folders, so you'll want to make sure to use an FTP client with that capability.  The FTP host name and user are displayed in your web app's blade on the [Azure Portal](https://portal.azure.com).
+FTP クライアントを使用してサーバーに接続し、env フォルダーを削除することができます。一部の FTP クライアント (Web ブラウザーなど) は読み取り専用の場合があり、その場合はフォルダーを削除できません。そのため、削除を実行できる FTP クライアントを使用していることを確認してください。[Azure ポータル](https://portal.azure.com)で、Web アプリのブレードに FTP ホストの名前とユーザー名が表示されます。
 
-### <a name="option-2:-toggle-runtime"></a>Option 2: Toggle runtime
+### オプション 2: ランタイムの切り替え
 
-Here's an alternative that takes advantage of the fact that the deployment script will delete the env folder when it doesn't match the desired version of Python.  This will effectively delete the existing environment, and create a new one.
+必要なバージョンの Python と一致しない場合、デプロイメント スクリプトは env フォルダーは削除するという事実を利用した別の方法を次に示します。この方法では、実質的に既存の環境を削除し、新しい環境を作成します。
 
-1. Switch to a different version of Python (via runtime.txt or the **Application Settings** blade in the Azure Portal)
-1. git push some changes (ignore any pip install errors if any)
-1. Switch back to initial version of Python
-1. git push some changes again
+1. 別のバージョンの Python に切り替える (runtime.txt、または Azure ポータルの**アプリケーション設定**ブレードを使用する)
+1. git で変更をプッシュする (pip インストール エラーがあっても無視)
+1. 最初のバージョンの Python に戻す
+1. git でもう一度変更をプッシュする
 
-### <a name="option-3:-customize-deployment-script"></a>Option 3: Customize deployment script
+### オプション 3: デプロイメント スクリプトをカスタマイズする
 
-If you've customized the deployment script, you can change the code in deploy.cmd to force it to delete the env folder.
+デプロイメント スクリプトをカスタマイズした場合、env フォルダーの削除を強制するように deploy.cmd 内のコードを変更できます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1125_2015-->

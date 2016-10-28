@@ -1,74 +1,72 @@
-Some packages may not install using pip when run on Azure.  It may simply be that the package is not available on the Python Package Index.  It could be that a compiler is required (a compiler is not available on the machine running the web app in Azure App Service).
+一部のパッケージは、Azure での実行時に pip を使用してインストールできません。単に、パッケージが Python Package Index で使用できないだけの場合もあります。コンパイラーが必要な場合もあります (コンパイラーは、Azure App Service で Web アプリを実行しているコンピューターでは利用できません)。
 
-In this section, we'll look at ways to deal with this issue.
+このセクションでは、この問題に対処する方法を紹介します。
 
-### <a name="request-wheels"></a>Request wheels
+### wheel をリクエストする
 
-If the package installation requires a compiler, you should try contacting the package owner to request that wheels be made available for the package.
+パッケージのインストールにコンパイラが必要な場合は、パッケージの所有者に連絡して、パッケージ用の wheel を使用可能にするようリクエストします。
 
-With the recent availability of [Microsoft Visual C++ Compiler for Python 2.7][], it is now easier to build packages that have native code for Python 2.7.
+[Microsoft Visual C++ Compiler for Python 2.7][] が最近使用可能になり、Python 2.7 のネイティブなコードを使用しているパッケージのビルドが容易になりました。
 
-### <a name="build-wheels-(requires-windows)"></a>Build wheels (requires Windows)
+### wheel をビルドする (Windows が必要)
 
-Note: When using this option, make sure to compile the package using a Python environment that matches the platform/architecture/version that is used on the web app in Azure App Service (Windows/32-bit/2.7 or 3.4).
+このオプションを使用する際は、Azure App Service の Web アプリで使用しているプラットフォーム/アーキテクチャ/バージョン (Windows/32 ビット/2.7 または 3.4) に一致する Python 環境を使用して、パッケージをコンパイルしてください。
 
-If the package doesn't install because it requires a compiler, you can install the compiler on your local machine and build a wheel for the package, which you will then include in your repository.
+コンパイラが必要なためにパッケージがインストールできない場合は、ローカル コンピューターにコンパイラをインストールして、パッケージの wheel をビルドすることができます。このパッケージはリポジトリに組み込まれます。
 
-Mac/Linux Users: If you don't have access to a Windows machine, see [Create a Virtual Machine Running Windows][] for how to create a VM on Azure.  You can use it to build the wheels, add them to the repository, and discard the VM if you like. 
+Mac/Linux ユーザー: Windows コンピューターを使用できない場合は、Azure 上で VM を作成する方法について「[Windows を実行する仮想マシンの作成][]」を参照してください。その方法に従って、wheel をビルドしてリポジトリに追加し、必要に応じて VM を破棄します。
 
-For Python 2.7, you can install [Microsoft Visual C++ Compiler for Python 2.7][].
+Python 2.7 の場合、[Python 2.7 用の Microsoft Visual C++ コンパイラ][]をインストールできます。
 
-For Python 3.4, you can install [Microsoft Visual C++ 2010 Express][].
+Python 3.4 の場合、[Microsoft Visual C++ 2010 Express ][]をインストールできます。
 
-To build wheels, you'll need the wheel package:
+wheel をビルドするには、wheel パッケージが必要です。
 
     env\scripts\pip install wheel
 
-You'll use `pip wheel` to compile a dependency:
+`pip wheel` を使用して依存関係をコンパイルします。
 
     env\scripts\pip wheel azure==0.8.4
 
-This creates a .whl file in the \wheelhouse folder.  Add the \wheelhouse folder and wheel files to your repository.
+これによって、\\wheelhouse フォルダーに .whl ファイルが作成されます。\\wheelhouse フォルダーと wheel ファイルをリポジトリに追加します。
 
-Edit your requirements.txt to add the `--find-links` option at the top. This tells pip to look for an exact match in the local folder before going to the python package index.
+requirements.txt を編集して先頭に `--find-links` オプションを追加します。このオプションは、python パッケージのインデックスにアクセスする前に、ローカル フォルダーで完全一致を検索するように pip に指示します。
 
     --find-links wheelhouse
     azure==0.8.4
 
-If you want to include all your dependencies in the \wheelhouse folder and not use the python package index at all, you can force pip to ignore the package index by adding `--no-index` to the top of your requirements.txt.
+\\wheelhouse フォルダー内のすべての依存関係を組み込む必要があり、python パッケージのインデックスを一切使用しない場合は、requirements.txt の先頭に `--no-index` を追加すると、pip で強制的にパッケージ インデックスを無視することができます。
 
     --no-index
 
-### <a name="customize-installation"></a>Customize installation
+### インストールをカスタマイズする
 
-You can customize the deployment script to install a package in the virtual environment using an alternate installer, such as easy\_install.  See deploy.cmd for an example that is commented out.  Make sure that such packages aren't listed in requirements.txt, to prevent pip from installing them.
+デプロイメント スクリプトをカスタマイズし、easy\_install などの代替インストーラーを使用して、仮想環境にパッケージをインストールできます。deploy.cmd のコメントアウトされた例を参照してください。pip でインストールされることを避けるため、このようなパッケージを requirements.txt に指定していないことを確認してください。
 
-Add this to the deployment script:
+これをデプロイメント スクリプトに追加します。
 
     env\scripts\easy_install somepackage
 
-You may also be able to use easy\_install to install from an exe installer (some are zip compatible, so easy\_install supports them).  Add the installer to your repository, and invoke easy\_install by passing the path to the executable.
+また、easy\_install を使用して、exe インストーラーからインストールすることもできます (一部のインストーラーは zip と互換性があるため、easy\_install でサポートされます)。インストーラーをリポジトリに追加し、パスを実行可能ファイルに渡して easy\_install を呼び出します。
 
-Add this to the deployment script:
+これをデプロイメント スクリプトに追加します。
 
     env\scripts\easy_install "%DEPLOYMENT_SOURCE%\installers\somepackage.exe"
 
-### <a name="include-the-virtual-environment-in-the-repository-(requires-windows)"></a>Include the virtual environment in the repository (requires Windows)
+### 仮想環境をリポジトリに組み込む (Windows が必要)
 
-Note: When using this option, make sure to use a virtual environment that matches the platform/architecture/version that is used on the web app in Azure App Service (Windows/32-bit/2.7 or 3.4).
+このオプションを使用する際は、Azure App Service の Web アプリで使用しているプラットフォーム/アーキテクチャ/バージョン (Windows/32 ビット/2.7 または 3.4) に一致する仮想環境を使用してください。
 
-If you include the virtual environment in the repository, you can prevent the deployment script from doing virtual environment management on Azure by creating an empty file:
+仮想環境をリポジトリに組み込む場合は、空のファイルを作成することによって、デプロイメント スクリプトで仮想環境の管理が実行されることを回避できます。
 
     .skipPythonDeployment
 
-We recommend that you delete the existing virtual environment on the app, to prevent leftover files from when the virtual environment was managed automatically.
+仮想環境が自動的に管理された場合にファイルが残らないように、アプリ上の既存の仮想環境を削除することをお勧めします。
 
 
-[Create a Virtual Machine Running Windows]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
+[Windows を実行する仮想マシンの作成]: http://azure.microsoft.com/documentation/articles/virtual-machines-windows-hero-tutorial/
 [Microsoft Visual C++ Compiler for Python 2.7]: http://aka.ms/vcpython27
-[Microsoft Visual C++ 2010 Express]: http://go.microsoft.com/?linkid=9709949
+[Python 2.7 用の Microsoft Visual C++ コンパイラ]: http://aka.ms/vcpython27
+[Microsoft Visual C++ 2010 Express ]: http://go.microsoft.com/?linkid=9709949
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0323_2016-->

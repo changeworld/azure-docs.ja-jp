@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Configure MPIO for your StorSimple device | Microsoft Azure"
-   description="Describes how to configure Multipath I/O (MPIO) for your StorSimple device connected to a host running Windows Server 2012 R2."
+   pageTitle="StorSimple デバイスの MPIO の構成 | Microsoft Azure"
+   description="Windows Server 2012 R2 を実行するホストに接続されている、StorSimple デバイスのマルチパス I/O (MPIO) を構成する方法を説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,175 +15,162 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
+# StorSimple デバイスのマルチパス IO の構成
 
-# <a name="configure-multipath-i/o-for-your-storsimple-device"></a>Configure Multipath I/O for your StorSimple device
+Microsoft では、フォールト トレランスと可用性に優れた SAN を構成するために、Windows Server でマルチパス I/O (MPIO) 機能をサポートしています。MPIO では、アダプター、ケーブル、スイッチなどの冗長な物理パス コンポーネントを使用して、サーバーとストレージ デバイスの間に論理パスを作成します。コンポーネントのエラーによって論理パスに障害が発生した場合は、マルチパス ロジックで I/O の代替パスが使用され、アプリケーションから引き続きデータにアクセスできるようにします。さらに構成によっては、これらのパスの間で負荷を分散することで、パフォーマンスの向上にも貢献します。詳細については、「[MPIO の概要](https://technet.microsoft.com/library/cc725907.aspx "MPIO の概要と機能")」を参照してください。
 
-Microsoft built support for the Multipath I/O (MPIO) feature in Windows Server to help build highly available, fault-tolerant SAN configurations. MPIO uses redundant physical path components — adapters, cables, and switches — to create logical paths between the server and the storage device. If there is a component failure, causing a logical path to fail, multipathing logic uses an alternate path for I/O so that applications can still access their data. Additionally depending on your configuration, MPIO can also improve performance by re-balancing the load across all these paths. For more information, see [MPIO overview](https://technet.microsoft.com/library/cc725907.aspx "MPIO overview and features").  
+StorSimple ソリューションの可用性を高めるためには、StorSimple デバイスで MPIO を構成する必要があります。Windows Server 2012 R2 を実行するホスト サーバーに MPIO をインストールすると、サーバーでリンク、ネットワーク、またはインターフェイスのフォールト トレランスが有効になります。
 
-For the high-availability of your StorSimple solution, MPIO should be configured on your StorSimple device. When MPIO is installed on your host servers running Windows Server 2012 R2, the servers can then tolerate a link, network, or interface failure. 
+MPIO はオプションの機能であり、Windows サーバーに既定ではインストールされていません。サーバー マネージャーを使用して、機能としてインストールする必要があります。このトピックでは、Windows Server 2012 R2 が実行され、StorSimple 物理デバイスに接続されているホストに MPIO 機能をインストールし、その機能を使用するための手順を説明します。
 
-MPIO is an optional feature on Windows Server and is not installed by default. It should be installed as a feature through Server Manager. This topic describes the steps you should follow to install and use the MPIO feature on a host running Windows Server 2012 R2 and connected to a StorSimple physical device.
+>[AZURE.NOTE] **この手順は、StorSimple 8000 シリーズにのみ適用されます。StorSimple 仮想デバイスでは、MPIO は現在サポートされていません。**
 
->[AZURE.NOTE] **This procedure is applicable for StorSimple 8000 series only. MPIO is currently not supported on a StorSimple virtual device.**
+次の手順に従って、StorSimple デバイスに MPIO を構成します。
 
-You will need to follow these steps to configure MPIO on your StorSimple device:
+- 手順 1. Windows Server ホストに MPIO をインストールする
 
-- Step 1: Install MPIO on the Windows Server host
+- 手順 2. StorSimple ボリュームの MPIO を構成する
 
-- Step 2: Configure MPIO for StorSimple volumes
+- 手順 3. ホストに StorSimple ボリュームをマウントする
 
-- Step 3: Mount StorSimple volumes on the host
+- 手順 4. 高可用性と負荷分散のために MPIO を構成する
 
-- Step 4: Configure MPIO for high availability and load balancing
+これらの各手順を以下のセクションで説明します。
 
-Each of the above steps is discussed in the following sections.
+## 手順 1. Windows Server ホストに MPIO をインストールする
 
-## <a name="step-1:-install-mpio-on-the-windows-server-host"></a>Step 1: Install MPIO on the Windows Server host
+Windows Server ホストにこの機能をインストールするには、次の手順を実行します。
 
-To install this feature on your Windows Server host, complete the following procedure.
+#### ホストに MPIO をインストールするには
 
-#### <a name="to-install-mpio-on-the-host"></a>To install MPIO on the host
+1. Windows Server ホストでサーバー マネージャーを開きます。既定では、Windows Server 2012 R2 または Windows Server 2012 を実行しているコンピューターに Administrators グループのメンバーがログオンすると、サーバー マネージャーが起動します。サーバー マネージャーがまだ開いていない場合は、**[スタート]** をクリックし、[サーバー マネージャー] をクリックします。![サーバー マネージャー](./media/storsimple-configure-mpio-windows-server/IC740997.png)
+2. **[サーバー マネージャー]、[ダッシュボード]、[役割と機能の追加]** の順にクリックします。**役割と機能の追加**ウィザードが起動します。![役割と機能の追加ウィザード 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
+3. **役割と機能の追加**ウィザードで、次の手順を実行します。
 
-1. Open Server Manager on your Windows Server host. By default, Server Manager starts when a member of the Administrators group logs on to a computer that is running Windows Server 2012 R2 or Windows Server 2012. If the Server Manager is not already open, click **Start > Server Manager**.
-![Server Manager](./media/storsimple-configure-mpio-windows-server/IC740997.png)
-2. Click **Server Manager > Dashboard > Add roles and features**. This starts the **Add Roles and Features** wizard.
-![Add Roles And Features Wizard 1](./media/storsimple-configure-mpio-windows-server/IC740998.png)
-3. In the **Add Roles and Features** wizard, do the following:
+	- **[開始する前に]** ページで **[次へ]** をクリックします。
+	- **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** の既定の設定をそのまま使用します。**[次へ]** をクリックします。![役割と機能の追加ウィザード 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
+	- **[対象サーバーの選択]** ページで、**[サーバー プールからサーバーを選択]** を選択します。使用中のホスト サーバーが自動的に検出されます。**[次へ]** をクリックします。
+	- **[サーバーの役割の選択]** ページで、**[次へ]** をクリックします。
+	- **[機能の選択]** ページで、**[マルチパス I/O]** を選択し、**[次へ]** をクリックします。![役割と機能の追加ウィザード 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
+	- **[インストール オプションの確認]** ページで、オプションの設定内容を確認し、次のように **[必要に応じて対象サーバーを自動的に再起動する]** を選択します。**[インストール]** をクリックします。![役割と機能の追加ウィザード 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
+	- インストールが完了すると、通知が表示されます。**[閉じる]** をクリックしてウィザードを閉じます。![役割と機能の追加ウィザード 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
 
-    - On the **Before you begin** page, click **Next**.
-    - On the **Select installation type** page, accept the default setting of **Role-based or feature-based** installation. Click **Next**.![Add Roles And Features Wizard 2](./media/storsimple-configure-mpio-windows-server/IC740999.png)
-    - On the **Select destination server** page, choose **Select a server from the server pool**. Your host server should be discovered automatically. Click **Next**.
-    - On the **Select server roles** page, click **Next**.
-    - On the **Select features** page, select **Multipath I/O**, and click **Next**.![Add Roles And Features Wizard 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-    - On the **Confirm installation selections** page, confirm the selection and then select **Restart the destination server automatically if required**, as shown below. Click **Install**.![Add Roles And Features Wizard 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
-    - You will be notified when the installation is complete. Click **Close** to close the wizard.![Add Roles And Features Wizard 9](./media/storsimple-configure-mpio-windows-server/IC741002.png)
+## 手順 2. StorSimple ボリュームの MPIO を構成する
 
-## <a name="step-2:-configure-mpio-for-storsimple-volumes"></a>Step 2: Configure MPIO for StorSimple volumes
+StorSimple ボリュームを識別するには、MPIO を構成する必要があります。StorSimple ボリュームを認識するように MPIO を構成するには、次の手順を実行します。
 
-MPIO needs to be configured to identify StorSimple volumes. To configure MPIO to recognize StorSimple volumes, perform the following steps.
+#### StorSimple ボリュームの MPIO を構成する
 
-#### <a name="to-configure-mpio-for-storsimple-volumes"></a>To configure MPIO for StorSimple volumes
+1. **[MPIO の構成]** を開きます。**[サーバー マネージャー]、[ダッシュボード]、[ツール]、[MPIO]** の順にクリックします。
 
-1. Open the **MPIO configuration**. Click **Server Manager > Dashboard > Tools > MPIO**.
+2. **[MPIO のプロパティ]** ダイアログ ボックスで、**[マルチパスの検出]** タブを選択します。
 
-2. In the **MPIO Properties** dialog box, select the **Discover Multi-Paths** tab.
+3. **[iSCSI デバイスのサポートを追加する]** を選択し、**[追加]** をクリックします。![MPIO プロパティ、マルチパスの検出](./media/storsimple-configure-mpio-windows-server/IC741003.png)
 
-3. Select **Add support for iSCSI devices**, and then click **Add**.  
-![MPIO Properties Discover Multi Paths](./media/storsimple-configure-mpio-windows-server/IC741003.png)
+4. メッセージが表示されたら、サーバーを再起動します。
+5. **[MPIO のプロパティ]** ダイアログ ボックスで、**[MPIO デバイス]** タブをクリックします。**[追加]** をクリックします。</br>![MPIO プロパティ、MPIO デバイス](./media/storsimple-configure-mpio-windows-server/IC741004.png)
+6. **[MPIO サポートの追加]** ダイアログ ボックスで、**[デバイスのハードウェア ID]** にデバイスのシリアル番号を入力します。StorSimple Manager サービスにアクセスし、**[デバイス]、[ダッシュボード]** の順に移動することによって、デバイスのシリアル番号を取得できます。デバイスのシリアル番号は、デバイス ダッシュボードの右側の **[概要]** ウィンドウに表示されます。</br>![MPIO サポートの追加](./media/storsimple-configure-mpio-windows-server/IC741005.png)
+7. メッセージが表示されたら、サーバーを再起動します。
 
-4. Reboot the server when prompted.
-5. In the **MPIO Properties** dialog box, click the **MPIO Devices** tab. Click **Add**.
-    </br>![MPIO Properties MPIO Devices](./media/storsimple-configure-mpio-windows-server/IC741004.png)
-6. In the **Add MPIO Support** dialog box, under **Device Hardware ID**, enter your device serial number.You can get the device serial number by accessing your StorSimple Manager service and navigating to **Devices > Dashboard**. The device serial number is displayed in the right **Quick Glance** pane of the device dashboard.
-    </br>![Add MPIO Support](./media/storsimple-configure-mpio-windows-server/IC741005.png)
-7. Reboot the server when prompted.
+## 手順 3. ホストに StorSimple ボリュームをマウントする
 
-## <a name="step-3:-mount-storsimple-volumes-on-the-host"></a>Step 3: Mount StorSimple volumes on the host
+Windows Server で MPIO が構成されると、StorSimple デバイスに作成されたボリュームをマウントし、MPIO を活用して冗長性を確保できます。ボリュームをマウントするには、次の手順を実行します。
 
-After MPIO is configured on Windows Server, volume(s) created on the StorSimple device can be mounted and can then take advantage of MPIO for redundancy. To mount a volume, perform the following steps.
+#### ホストにボリュームをマウントするには
 
-#### <a name="to-mount-volumes-on-the-host"></a>To mount volumes on the host
+1. Windows Server ホストで、**[iSCSI イニシエーターのプロパティ]** ウィンドウを開きます。**[サーバー マネージャー]、[ダッシュボード]、[ツール]、[iSCSI イニシエーター]** の順にクリックします。
+2. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、[探索] タブをクリックし、**[ターゲット ポータルの探索]** をクリックします。
+3. **[ターゲット ポータルの探索]** ダイアログ ボックスで、次の手順を実行します。
+	
+	- StorSimple デバイスの DATA ポートの IP アドレスを入力します (たとえば、「DATA 0」と入力します)。
+	- **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
 
-1. Open the **iSCSI Initiator Properties** window on the Windows Server host. Click **Server Manager > Dashboard > Tools > iSCSI Initiator**.
-2. In the **iSCSI Initiator Properties** dialog box, click the Discovery tab, and then click **Discover Target Portal**.
-3. In the **Discover Target Portal** dialog box, do the following:
-    
-    - Enter the IP address of the DATA port of your StorSimple device (for example, enter DATA 0).
-    - Click **OK** to return to the **iSCSI Initiator Properties** dialog box.
+	>[AZURE.IMPORTANT] **iSCSI 接続のプライベート ネットワークを使用している場合は、プライベート ネットワークに接続されている DATA ポートの IP アドレスを入力します。**
 
-    >[AZURE.IMPORTANT] **If you are using a private network for iSCSI connections, enter the IP address of the DATA port that is connected to the private network.**
+4. デバイスの 2 番目のネットワーク インターフェイス (DATA 1 など) に対して手順 2. ～ 3. を繰り返します。これらのインターフェイスは iSCSI に対応している必要があることに注意してください。詳細については、[ネットワーク インターフェイスの変更](storsimple-modify-device-config.md#modify-network-interfaces)に関するセクションを参照してください。
+5. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、**[ターゲット]** タブを選択します。**[検出されたターゲット]** に StorSimple デバイスのターゲット IQN が表示されます。![iSCSI イニシエーターのプロパティ、[ターゲット] タブ](./media/storsimple-configure-mpio-windows-server/IC741007.png)
+6. **[接続]** をクリックして、StorSimple デバイスとの iSCSI セッションを確立します。**[ターゲットへの接続]** ダイアログ ボックスが表示されます。
 
-4. Repeat steps 2-3 for a second network interface (for example, DATA 1) on your device. Keep in mind that these interfaces should be enabled for iSCSI. To learn more about this, see [Modify network interfaces](storsimple-modify-device-config.md#modify-network-interfaces).
-5. Select the **Targets** tab in the **iSCSI Initiator Properties** dialog box. You should see the StorSimple device target IQN under **Discovered Targets**.
- ![iSCSI Initiator Properties Targets Tab](./media/storsimple-configure-mpio-windows-server/IC741007.png)
-6. Click **Connect** to establish an iSCSI session with your StorSimple device. A **Connect to Target** dialog box will appear.
+7. **[ターゲットへの接続]** ダイアログ ボックスで、**[複数パスを有効にする]** チェック ボックスをオンにします。**[詳細設定]** をクリックします。
 
-7. In the **Connect to Target** dialog box, select the **Enable multi-path** check box. Click **Advanced**.
+8. **[詳細設定]** ダイアログ ボックスで、次の手順を実行します。
+	- 	 **[ローカル アダプター]** ボックスの一覧で、**[Microsoft iSCSI イニシエーター]** を選択します。
+	- 	 **[イニシエーター IP]** ボックスの一覧で、ホストの IP アドレスを選択します。
+	- 	 **[ターゲット ポータル IP]** ボックスの一覧で、デバイス インターフェイスの IP を選択します。
+	- 	 **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
 
-8. In the **Advanced Settings** dialog box, do the following:                                       
-    -    On the **Local Adapter** drop-down list, select **Microsoft iSCSI Initiator**.
-    -    On the **Initiator IP** drop-down list, select the IP address of the host.
-    -    On the **Target Portal** IP drop-down list, select the IP of device interface.
-    -    Click **OK** to return to the **iSCSI Initiator Properties** dialog box.
+9. **[プロパティ]** をクリックします。**[プロパティ]** ダイアログ ボックスで、**[セッションの追加]** をクリックします。
+10. **[ターゲットへの接続]** ダイアログ ボックスで、**[複数パスを有効にする]** チェック ボックスをオンにします。**[詳細設定]** をクリックします。
+11. **[詳細設定]** ダイアログ ボックスで、次の手順を実行します。
+	-  **[ローカル アダプター]** ボックスの一覧で、[Microsoft iSCSI イニシエーター] を選択します。
+	-  **[イニシエーター IP]** ボックスの一覧で、ホストに対応する IP アドレスを選択します。この場合、デバイスの 2 つのネットワーク インターフェイスを、ホスト上の 1 つのネットワーク インターフェイスに接続しています。そのため、このインターフェイスは最初のセッションで指定されたものと同じです。
+	-  **[ターゲット ポータル IP]** ボックスの一覧で、デバイスで有効になっている 2 番目のデータ インターフェイスの IP アドレスを選択します。
+	-  **[OK]** をクリックして、[iSCSI イニシエーターのプロパティ] ダイアログ ボックスに戻ります。2 番目のセッションをターゲットに追加しました。
 
-9. Click **Properties**. In the **Properties** dialog box, click **Add Session**.
-10. In the **Connect to Target** dialog box, select the **Enable multi-path** check box. Click **Advanced**.
-11. In the **Advanced Settings** dialog box:                                        
-    -  On the **Local adapter** drop-down list, select Microsoft iSCSI Initiator.
-    -  On the **Initiator IP** drop-down list, select the IP address corresponding to the host. In this case, you are connecting two network interfaces on the device to a single network interface on the host. Therefore, this interface is the same as that provided for the first session.
-    -  On the **Target Portal IP** drop-down list, select the IP address for the second data interface enabled on the device.
-    -  Click **OK** to return to the iSCSI Initiator Properties dialog box. You have added a second session to the target.
+12. **[サーバー マネージャー]、[ダッシュボード]、[コンピューターの管理]** の順に移動して、**[コンピューターの管理]** を開きます。左側のウィンドウで、**[ストレージ] の [ディスクの管理]** をクリックします。このホストに表示される StorSimple デバイス上で作成したボリュームは、新しいディスクとして **[ディスクの管理]** に表示されます。
 
-12. Open **Computer Management** by navigating to **Server Manager > Dashboard > Computer Management**. In the left pane, click **Storage > Disk Management**. The volume(s) created on the StorSimple device that are visible to this host will appear under **Disk Management** as new disk(s).
+13. ディスクを初期化して、新しいボリュームを作成します。フォーマット処理中に 64 KB のブロック サイズを選択します。![クリックし](./media/storsimple-configure-mpio-windows-server/IC741008.png)
+14. **[ディスクの管理]** で、**[ディスク]** を右クリックし、**[プロパティ]** を選択します。
+15. StorSimple モデル #### の **[マルチパス ディスクのデバイス プロパティ]** ダイアログ ボックスで、**[MPIO]** タブをクリックします。![StorSimple 8100 マルチパス ディスクのデバイス プロパティ](./media/storsimple-configure-mpio-windows-server/IC741009.png)
 
-13. Initialize the disk and create a new volume. During the format process, select a block size of 64 KB.
-![Disk Management](./media/storsimple-configure-mpio-windows-server/IC741008.png)
-14. Under **Disk Management**, right-click the **Disk** and select **Properties**.
-15. In the StorSimple Model #### **Multi-Path Disk Device Properties** dialog box, click the **MPIO** tab.
-![StorSimple 8100 Multi-Path Disk DeviceProp.](./media/storsimple-configure-mpio-windows-server/IC741009.png)
+16. **[DSM 名]** セクションで、**[詳細]** をクリックし、パラメーターが既定のパラメーターに設定されていることを確認します。既定のパラメーターは次のとおりです。
 
-16. In the **DSM Name** section, click **Details** and verify that the parameters are set to the default parameters. The default parameters are:
-
-    - Path Verify Period = 30
-    - Retry Count = 3
-    - PDO Remove Period = 20
-    - Retry Interval = 1
-    - Path Verify Enabled = Unchecked.
+	- パス確認期間 = 30
+	- 再試行回数 = 3
+	- PDO 削除期間 = 20
+	- 再試行間隔 = 1
+	- パス確認を有効化する = オフ
 
 
->[AZURE.NOTE] **Do not modify the default parameters.**
+>[AZURE.NOTE] **既定のパラメーターは変更しないでください。**
 
-## <a name="step-4:-configure-mpio-for-high-availability-and-load-balancing"></a>Step 4: Configure MPIO for high availability and load balancing
+## 手順 4. 高可用性と負荷分散のために MPIO を構成する
 
-For multi-path based high availability and load balancing, multiple sessions must be manually added to declare the different paths available. For example, if the host has two interfaces connected to SAN and the device has two interfaces connected to SAN, then you need four sessions configured with proper path permutations (only two sessions will be required if each DATA interface and host interface is on a different IP subnet and is not routable).
+高可用性と負荷分散を基にしたマルチパスでは、複数のセッションを手動で追加し、利用可能なさまざまなパスを宣言する必要があります。たとえば、ホストの 2 つのインターフェイスが SAN に接続されていて、デバイスの 2 つのインターフェイスが SAN に接続されている場合は、4 つのセッションに適切なパスの順列を構成する必要があります (各 DATA インターフェイスおよびホスト インターフェイスが異なる IP サブネット上にあってルーティング可能ではない場合は、必要なセッションは 2 つだけです)。
 
->[AZURE.IMPORTANT] **We recommend that you do not mix 1 GbE and 10 GbE network interfaces. If you use two network interfaces, both interfaces should be the identical type.**
+>[AZURE.IMPORTANT] **1 GbE と 10 GbE のネットワーク インターフェイスを混在させることはできません。2 種類のネットワーク インターフェイスを使用する場合は、どちらも同じ種類である必要があります。**
 
-The following procedure describes how to add sessions when a StorSimple device with two network interfaces is connected to a host with two network interfaces.
+次の手順では、2 つのネットワーク インターフェイスを持つ StorSimple デバイスが 2 つのネットワーク インターフェイスを持つホストに接続されている場合に、セッションを追加する方法について説明します。
 
-### <a name="to-configure-mpio-for-high-availability-and-load-balancing"></a>To configure MPIO for high availability and load balancing
+### 高可用性と負荷分散のために MPIO を構成するには
 
-1. Perform a discovery of the target: in the **iSCSI Initiator Properties** dialog box, on the **Discovery** tab, click **Discover Portal**.
-2. In the **Connect to Target** dialog box, enter the IP address of one of the device network interfaces.
-3. Click **OK** to return to the **iSCSI Initiator Properties** dialog box.
+1. ターゲットの検出を実行します。**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスの **[探索]** タブで、**[ポータルの探索]** をクリックします。
+2. **[ターゲットへの接続]** ダイアログ ボックスで、いずれかのデバイス ネットワーク インターフェイスの IP アドレスを入力します。
+3. **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
 
-4. In the **iSCSI Initiator Properties** dialog box, select the **Targets** tab, highlight the discovered target, and then click **Connect**. The **Connect to Target** dialog box appears.
+4. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスの **[ターゲット]** タブで、検出したターゲットを強調表示し、**[接続]** をクリックします。**[ターゲットへの接続]** ダイアログ ボックスが表示されます。
 
-5. In the **Connect to Target** dialog box:
-    
-    - Leave the default selected target setting for **Add this connection** to the list of favorite targets. This will make the device automatically attempt to restart the connection every time this computer restarts.
-    - Select the **Enable multi-path** check box.
-    - Click **Advanced**.
+5. **[ターゲットへの接続]** ダイアログ ボックスで、次の手順を実行します。
+	
+	- **[この接続をお気に入りのターゲットの一覧に追加する]** を既定の選択したターゲット設定のままにします。この設定により、デバイスはこのコンピューターが起動するたびに、接続を自動的に再起動します。
+	- **[複数パスを有効にする]** チェック ボックスをオンにします。
+	- **[詳細設定]** をクリックします。
 
-6. In the **Advanced Settings** dialog box:
-    - On the **Local Adapter** drop-down list, select **Microsoft iSCSI Initiator**.
-    - On the **Initiator IP** drop-down list, select the IP address of the host.
-    - On the **Target Portal IP** drop-down list, select the IP address of the data interface enabled on the device.
-    - Click **OK** to return to the iSCSI Initiator Properties dialog box.
+6. **[詳細設定]** ダイアログ ボックスで、次の手順を実行します。
+	- **[ローカル アダプター]** ボックスの一覧で、**[Microsoft iSCSI イニシエーター]** を選択します。
+	- **[イニシエーター IP]** ボックスの一覧で、ホストの IP アドレスを選択します。
+	- **[ターゲット ポータル IP]** ボックスの一覧で、デバイスで有効になっているデータ インターフェイスの IP アドレスを選択します。
+	- **[OK]** をクリックして、[iSCSI イニシエーターのプロパティ] ダイアログ ボックスに戻ります。
 
-7. Click **Properties**, and in the **Properties** dialog box, click **Add Session**.
+7. **[プロパティ]** をクリックし、**[プロパティ]** ダイアログ ボックスで、**[セッションの追加]** をクリックします。
 
-8. In the **Connect to Target** dialog box, select the **Enable multi-path** check box, and then click **Advanced**.
+8. **[ターゲットへの接続]** ダイアログ ボックスで、**[複数パスを有効にする]** チェック ボックスをオンにし、**[詳細設定]** をクリックします。
 
-9. In the **Advanced Settings** dialog box:
-    1. On the **Local adapter** drop-down list, select **Microsoft iSCSI Initiator**.
-    2. On the **Initiator IP** drop-down list, select the IP address corresponding to the second interface on the host.
-    3. On the **Target Portal IP** drop-down list, select the IP address for the second data interface enabled on the device.
-    4. Click **OK** to return to the **iSCSI Initiator Properties** dialog box. You have now added a second session to the target.
+9. **[詳細設定]** ダイアログ ボックスで、次の手順を実行します。
+	1. **[ローカル アダプター]** ボックスの一覧で、**[Microsoft iSCSI イニシエーター]** を選択します。
+	2. **[イニシエーター IP]** ボックスの一覧で、ホストの 2 番目のインターフェイスに対応する IP アドレスを選択します。
+	3. **[ターゲット ポータル IP]** ボックスの一覧で、デバイスで有効になっている 2 番目のデータ インターフェイスの IP アドレスを選択します。
+	4. **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。これで 2 番目のセッションがターゲットに追加されました。
 
-10. Repeat Steps 8-10 to add additional sessions (paths) to the target. With two interfaces on the host and two on the device, you can add a total of four sessions.
+10. 追加のセッション (パス) をターゲットに追加するには、手順 8. ～ 10. を繰り返します。ホスト上の 2 つのインターフェイスとデバイス上の 2 つのインターフェイスを使用して、合計 4 つのセッションを追加できます。
 
-11. After adding the desired sessions (paths), in the **iSCSI Initiator Properties** dialog box, select the target and click **Properties**. On the Sessions tab of the **Properties** dialog box, note the four session identifiers that correspond to the possible path permutations. To cancel a session, select the check box next to a session identifier, and then click **Disconnect**.
+11. 目的のセッション (パス) を追加した後、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、ターゲットを選択し、**[プロパティ]** をクリックします。**[プロパティ]** ダイアログ ボックスの [セッション] タブで、可能なパスの順列に対応する 4 つのセッション ID を確認します。セッションを取り消すには、セッション ID の横にあるチェック ボックスをオンにして、**[切断]** をクリックします。
 
-12. To view devices presented within sessions, select the **Devices** tab. To configure the MPIO policy for a selected device, click **MPIO**. The **Device Details** dialog box will appear. On the **MPIO** tab, you can select the appropriate **Load Balance Policy** settings. You can also view the **Active** or **Standby** path type.
+12. セッション内に示されるデバイスを表示するには、**[デバイス]** タブを選択します。選択したデバイスの MPIO ポリシーを構成するには、**[MPIO]** をクリックします。**[デバイスの詳細]** ダイアログ ボックスが表示されます。**[MPIO]** タブで、適切な **[負荷分散ポリシー]** の設定を選択できます。**[アクティブ]** または **[スタンバイ]** のパスの種類も表示することができます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn more about [using the StorSimple Manager service to modify your StorSimple device configuration](storsimple-modify-device-config.md).
+[StorSimple Manager サービスを使用した StorSimple デバイス構成の変更](storsimple-modify-device-config.md)の詳細を確認する。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

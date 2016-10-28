@@ -1,44 +1,39 @@
-## <a name="what-is-azure-file-storage?"></a>What is Azure File storage?
+## Azure File ストレージとは
 
-File storage offers shared storage for applications using the standard SMB 2.1 or SMB 3.0 protocol. Microsoft Azure virtual machines and cloud services can share file data across application components via mounted shares, and on-premises applications can access file data in a share via the File storage API.
+File ストレージは、標準の SMB 2.1 または SMB 3.0 プロトコルを使用して、アプリケーション用の共有ストレージを提供します。Microsoft Azure Virtual Machines または Cloud Services では、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。オンプレミスのアプリケーションでは、File ストレージ API を介して、共有内のファイル データにアクセスできます。
 
-Applications running in Azure virtual machines or cloud services can mount a File storage share to access file data, just as a desktop application would mount a typical SMB share. Any number of Azure virtual machines or roles can mount and access the File storage share simultaneously.
+Azure Virtual Machines または Cloud Services で実行しているアプリケーションでは、デスクトップ アプリケーションで通常の SMB 共有をマウントする場合と同じように、ファイル ストレージ共有をマウントすることで、ファイル データにアクセスできます。File ストレージ共有は、任意の数の Azure 仮想マシンまたはロールが同時にマウントしてアクセスすることができます。
 
-Since a File storage share is a standard file share in Azure using the SMB protocol, applications running in Azure can access data in the share via file I/O APIs. Developers can therefore leverage their existing code and skills to migrate existing applications. IT Pros can use PowerShell cmdlets to create, mount, and manage File storage shares as part of the administration of Azure applications. This guide will show examples of both.
+File ストレージ共有は SMB プロトコルを使用した Azure での標準ファイル共有であるため、Azure で実行されているアプリケーションは、ファイル I/O API を介して共有内のデータにアクセスできます。そのため、開発者は、既存のコードとスキルを活用して、既存のアプリケーションを移行することができます。IT プロフェッショナルは、Azure アプリケーションの管理の一環として、PowerShell コマンドレットを使用して、ファイル ストレージ共有を作成、マウント、管理できます。このガイドでは、両方の例を紹介します。
 
-Common uses of File storage include:
+File ストレージの一般的な用途には、次のようなものがあります。
 
-- Migrating on-premises applications that rely on file shares to run on Azure virtual machines or cloud services, without expensive rewrites
-- Storing shared application settings, for example in configuration files
-- Storing diagnostic data such as logs, metrics, and crash dumps in a shared location 
-- Storing tools and utilities needed for developing or administering Azure virtual machines or cloud services
+- ファイル共有を利用しているオンプレミスのアプリケーションを、コストの高い書き換えを行わずに、Azure Virtual Machines または Cloud Services 上で実行できるように移行する
+- 共有のアプリケーション設定を構成ファイルなどに格納する
+- ログ、メトリック、クラッシュ ダンプなどの診断データを共有の場所に格納する 
+- Azure Virtual Machines または Cloud Services の開発や管理に必要なツールおよびユーティリティを格納する
 
-## <a name="file-storage-concepts"></a>File storage concepts
+## File ストレージの概念
 
-File storage contains the following components:
+File ストレージには次の構成要素があります。
 
 ![files-concepts][files-concepts]
 
--   **Storage Account:** All access to Azure Storage is done through a storage account. See [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) for details about storage account capacity.
+-   **ストレージ アカウント**: Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。ストレージ アカウントの容量の詳細については、[Azure Storage の拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/storage-scalability-targets.md)を参照してください。
 
--   **Share:** A File storage share is an SMB file share in Azure. 
-    All directories and files must be created in a parent share. An account can contain an unlimited number of shares, and a share can store an unlimited number of files, up to the 5 TB total capacity of the file share.
+-   **共有**: File ストレージ共有は、Azure 内の SMB ファイル共有です。ディレクトリとファイルはすべて親の共有に作成する必要があります。アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ファイル共有の合計容量 5 TB まで増やすことができます。
 
--   **Directory:** An optional hierarchy of directories. 
+-   **ディレクトリ**: ディレクトリの階層 (オプション)。
 
--   **File:** A file in the share. A file may be up to 1 TB in size.
+-	**ファイル:** 共有内のファイル。ファイルのサイズの上限は 1 TB です。
 
--   **URL format:** Files are addressable using the following URL format:   
-    https://`<storage
-    account>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`  
+-   **URL 形式:** ファイルは、次の URL 形式を使用してアドレス指定できます。https://`<storage
+    account>`.file.core.windows.net/`<share>`/`<directory/directories>`/`<file>`
     
-    The following example URL could be used to address one of the files in the diagram above:  
-    `http://samples.file.core.windows.net/logs/CustomLogs/Log1.txt`
+    次の例の URL を使用すると、上の図のいずれかのファイルをアドレス指定できます。`http://samples.file.core.windows.net/logs/CustomLogs/Log1.txt`
 
-For details about how to name shares, directories, and files, see [Naming and Referencing Shares, Directories, Files, and Metadata](http://msdn.microsoft.com/library/azure/dn167011.aspx).
+共有、ディレクトリ、およびファイルの詳しい命名方法については、「[Naming and Referencing Shares, Directories, Files, and Metadata (共有、ディレクトリ、ファイル、およびメタデータの命名と参照)](http://msdn.microsoft.com/library/azure/dn167011.aspx)」を参照してください。
 
 [files-concepts]: ./media/storage-file-concepts-include/files-concepts.png
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=AcomDC_0204_2016-->

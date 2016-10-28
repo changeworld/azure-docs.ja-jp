@@ -1,65 +1,61 @@
 <properties
-    pageTitle="SQL Database: What is a DTU? | Microsoft Azure"
-    description="Understanding what an Azure SQL Database transaction unit is."
-    keywords="database options,database performance"
-    services="sql-database"
-    documentationCenter=""
-    authors="CarlRabeler"
-    manager="jhubbard"
-    editor="CarlRabeler"/>
+	pageTitle="SQL Database: DTU とは | Microsoft Azure"
+	description="Azure SQL Database トランザクション ユニットについて説明します。"
+	keywords="データベース オプション, データベース パフォーマンス"
+	services="sql-database"
+	documentationCenter=""
+	authors="CarlRabeler"
+	manager="jhubbard"
+	editor="CarlRabeler"/>
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="na"
-    ms.workload="NA"
-    ms.date="09/06/2016"
-    ms.author="carlrab"/>
+	ms.service="sql-database"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="na"
+	ms.workload="NA"
+	ms.date="09/06/2016"
+	ms.author="carlrab"/>
 
+# データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明
 
-# <a name="explaining-database-transaction-units-(dtus)-and-elastic-database-transaction-units-(edtus)"></a>Explaining Database Transaction Units (DTUs) and elastic Database Transaction Units (eDTUs)
+この記事では、データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) について説明します。また、DTU または eDTU が最大数に達した場合に何が起こるかについても解説します。
 
-This article explains Database Transaction Units (DTUs) and elastic Database Transaction Units (eDTUs) and what happens when you hit the maximum DTUs or eDTUs.  
+## データベース トランザクション ユニット (DTU) とは
 
-## <a name="what-are-database-transaction-units-(dtus)"></a>What are Database Transaction Units (DTUs)
-
-A DTU is a unit of measure of the resources that are guaranteed to be available to a standalone Azure SQL database at a specific performance level within a [standalone database service tier](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels). A DTU is a blended measure of CPU, memory, and data I/O and transaction log I/O in a ratio determined by an OLTP benchmark workload designed to be typical of real-world OLTP workloads. Doubling the DTUs by increasing the performance level of a database equates to doubling the set of resource available to that database. For example, a Premium P11 database with 1750 DTUs provides 350x more DTU compute power than a Basic database with 5 DTUs. To understand the methodology behind the OLTP benchmark workload used to determine the DTU blend, see [SQL Database benchmark overview](sql-database-benchmark-overview.md).
+DTU とは、スタンドアロンの Azure SQL データベースが[スタンドアロン データベースのサービス レベル](sql-database-service-tiers.md#standalone-database-service-tiers-and-performance-levels)の範囲内において一定のパフォーマンス レベルで利用できることが保証されているリソースの最小単位です。DTU は、CPU、メモリ、データの I/O、トランザクション ログの I/O の 4 つの要素を、ベンチマークとなる OLTP ワークロードを使って導き出した一定の割合で組み合わせた指標です (このとき使用する OLTP ワークロードは、現実世界で発生する典型的な負荷になるように設計されています)。データベースのパフォーマンス レベルを上げて DTU を 2 倍にすると、そのデータベースが利用できるリソースを 2 倍にしたのと同じ効果が得られます。たとえば、DTU が 1750 である Premium P11 データベースは、DTU が 5 である Basic データベースと比べ、DTU 換算で 350 倍の計算能力を持ちます。DTU の各構成要素の割合を決める際に使用する OLTP ワークロードの裏で具体的にどのような方法論が採用されているかについては、「[Azure SQL Database ベンチマークの概要](sql-database-benchmark-overview.md)」を参照してください。
 
 ![Intro to SQL Database: Single database DTUs by tier and level](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
-You can [change service tiers](sql-database-scale-up.md) at any time with minimal downtime to your application (generally averaging under four seconds). For many businesses and apps, being able to create databases and dial single database performance up or down on demand is enough, especially if usage patterns are relatively predictable. But if you have unpredictable usage patterns, it can make it hard to manage costs and your business model. For this scenario, you use an elastic pool with a certain number of eDTUs.
+[サービス レベル](sql-database-scale-up.md)はいつでも変更することが可能で、アプリケーションのダウンタイムも最小限に留められます (通常、平均で 4 秒未満)。特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じて単一のデータベースのパフォーマンスを調整する能力は十分です。しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。そのような場合には、一定数の eDTU を備えたエラスティック プールを使用します。
 
-## <a name="what-are-elastic-database-transaction-units-(edtus)"></a>What are elastic Database Transaction Units (eDTUs)
+## エラスティック データベース トランザクション ユニット (eDTU) とは
 
-An eDTU is a unit of measure of the set of resources (DTUs) that can be shared between a set of databases on an Azure SQL server - called an [elastic pool](sql-database-elastic-pool.png). Elastic pools provide a simple cost effective solution to manage the performance goals for multiple databases that have widely varying and unpredictable usage patterns. See [elastic pools and service tiers](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) for more information.
+eDTU とは、1 つの Azure SQL サーバー ([エラスティック プール](sql-database-elastic-pool.png)) に存在するいくつかのデータベースが共有できるリソース (DTU) を 1 つにまとめた単位です。エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。詳細については、[エラスティック プールとサービス レベル](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus)に関する記事を参照してください。
 
 ![Intro to SQL Database: eDTUs by tier and level](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-A pool is given a set number of eDTUs, for a set price. Within the pool, individual databases are given the flexibility to auto-scale within set parameters. Under heavy load, a database can consume more eDTUs to meet demand. Databases under light loads consume less, and databases under no load consume no eDTUs. Provisioning resources for the entire pool rather than for single databases simplifies your management tasks. Plus you have a predictable budget for the pool.
+プールには、設定価格に合わせて、設定された eDTU 数が与えられます。プール内で、個々のデータベースには、設定されたパラメーターの範囲内で自動的にスケーリングを行う柔軟性が与えられます。データベースは負荷が大きい場合、eDTU の使用量を増やして需要に対応します。負荷が小さい場合、データベースは eDTU の使用量を減らし、負荷がなくなると eDTU を使用しません。Single Database ではなく、プール全体に対してリソースをプロビジョニングすることで、管理タスクの簡略化を実現します。さらに、プールにかかる予算を予測することができます。
 
-Additional eDTUs can be added to an existing pool with no database downtime or no impact on the databases in the elastic pool. Similarly, if extra eDTUs are no longer needed they can be removed from an existing pool at any point in time. You can add or subtract databases to the pool. If a database is predictably under-utilizing resources, move it out.
+データベースを停止することなく、またはエラスティック プール内のデータベースに影響を及ぼすことなく、既存のプールに eDTU をさらに追加できます。同様に、余分な eDTU が不要になった場合は、いつでも既存のプールから削除できます。プールへのデータベースの追加、またはプールからの削除ができます。データベースのリソース使用率が低いと予測できる場合は、プールから削除します。
 
-## <a name="how-can-i-determine-the-number-of-dtus-needed-by-my-workload?"></a>How can I determine the number of DTUs needed by my workload?
+## ワークロードで必要とされる DTU の数を判断する方法
 
-If you are looking to migrate an existing on-premises or SQL Server virtual machine workload to Azure SQL Database, you can use the [DTU Calculator](http://dtucalculator.azurewebsites.net/) to approximate the number of DTUs needed. For an existing Azure SQL Database workload, you can use [SQL Database Query Performance Insight](sql-database-query-performance.md) to understand your database resource consumption (DTUs) to get deeper insight into how to optimize your workload. You can also use the [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV to get the resource consumption information for the last one hour. Alternatively, the catalog view [sys.resource_stats](http://msdn.microsoft.com/library/dn269979.aspx) can also be queried to get the same data for the last 14 days, although at a lower fidelity of five-minute averages.
+既に存在するオンプレミスのワークロードや、SQL Server 仮想マシンのワークロードを Azure SQL Database に移行することを検討している場合には、[DTU 計算ツール](http://dtucalculator.azurewebsites.net/)を使用すると、必要な DTU のおおよその数がわかります。既存の Azure SQL Database ワークロードについては、[SQL Database Query Performance Insight](sql-database-query-performance.md) を使えばデータベース リソースの消費量 (DTU) を把握でき、ワークロードの最適化に関する深い洞察が得られます。このほか、過去 1 時間のリソース消費量を確認する場合には、[sys.dm\_db\_ resource\_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV も使用できます。また、カタログ ビュー [sys.resource\_stats](http://msdn.microsoft.com/library/dn269979.aspx) を対象にクエリを実行する方法でも、過去 14 日間のリソース消費量を確認できます。ただし、こちらはデータの精度がやや低く、5 分間の平均となります。
 
-## <a name="how-do-i-know-if-i-could-benefit-from-an-elastic-pool-of-resources?"></a>How do I know if I could benefit from an elastic pool of resources?
+## リソースのエラスティック プールを使うメリット
 
-Pools are suited for a large number of databases with specific utilization patterns. For a given database, this pattern is characterized by low average utilization with relatively infrequent utilization spikes. SQL Database automatically evaluates the historical resource usage of databases in an existing SQL Database server and recommends the appropriate pool configuration in the Azure portal. For more information, see [when should an elastic database pool be used?](sql-database-elastic-pool-guidance.md)
+プールは、多数のデータベースが一定のパターンで使用されている場合に適しています。あるデータベースは、使用が急増することはあまりなく、平均使用量が低いパターンの特徴を持っています。SQL Database は、既存の SQL Database サーバー内にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure ポータルでのプールの適切な構成を推奨します。詳細については、「[エラスティック データベース プールの使用に適した状況](sql-database-elastic-pool-guidance.md)」を参照してください。
 
-## <a name="what-happens-when-i-hit-my-maximum-dtus"></a>What happens when I hit my maximum DTUs
+## DTU が最大数に達した場合に起こること
 
-Performance levels are calibrated and governed to provide the needed resources to run your database workload up to the max limits allowed for your selected service tier/performance level. If your workload is hitting the limits in one of CPU/Data IO/Log IO limits, you continue to receive the resources at the maximum allowed level, but you are likely to see increased latencies for your queries. These limits do not result in any errors, but rather a slowdown in the workload, unless the slowdown becomes so severe that queries start timing out. If you are hitting limits of maximum allowed concurrent user sessions/requests (worker threads), you see explicit errors. See [Azure SQL Database resource limits](sql-database-resource-limits.md) for information on limit on resources other than CPU, memory, data I/O, and transaction log I/O.
+選択したサービス レベル/パフォーマンス レベルで許可されている最大限度までデータベース ワークロードを実行するため、必要なリソースを提供できるようにパフォーマンス レベルが調整、制御されます。ワークロードが CPU/データ IO/ログ IO のいずれかの上限に達した場合、許可される最大レベルでリソースを引き続き受け取りますが、クエリの待ち時間が長くなる場合があります。上限に達してもエラーにはなりませんが、ワークロードが遅くなり、遅延が深刻になった場合はクエリのタイムアウトが発生するようになります。許可される同時ユーザー セッション/要求 (ワーカー スレッド) の上限に達した場合は、明示的なエラーが発生します。CPU、メモリ、データの I/O、トランザクション ログの I/O 以外のリソースに対する制限については、「[Azure SQL Database のリソース制限](sql-database-resource-limits.md)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- See [Service tier](sql-database-service-tiers.md) for information on the DTUs and eDTUs available for standalone databases and for elastic pools.
-- See [Azure SQL Database resource limits](sql-database-resource-limits.md) for information on limit on resources other than CPU, memory, data I/O, and transaction log I/O.
-- See [SQL Database Query Performance Insight](sql-database-query-performance.md) to understand your (DTUs) consumption.
-- See [SQL Database benchmark overview](sql-database-benchmark-overview.md) to understand the methodology behind the OLTP benchmark workload used to determine the DTU blend.
+- スタンドアロン データベースとエラスティック プールで利用できる DTU と eDTU については、[サービス レベル](sql-database-service-tiers.md)に関するページを参照してください。
+- CPU、メモリ、データの I/O、トランザクション ログの I/O 以外のリソースに対する制限については、「[Azure SQL Database のリソース制限](sql-database-resource-limits.md)」を参照してください。
+- (DTU の) 消費量を確認する場合には、「[SQL Database Query Performance Insight](sql-database-query-performance.md)」を参照してください。
+- DTU の各構成要素の割合を決める際に使用する OLTP ワークロードの裏で具体的にどのような方法論が採用されているかについては、「[Azure SQL Database ベンチマークの概要](sql-database-benchmark-overview.md)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

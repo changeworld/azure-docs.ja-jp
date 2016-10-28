@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Managing Metrics with the Azure Service Fabric Cluster Resource Manager | Microsoft Azure"
-   description="Learn about how to configure and use metrics in Service Fabric."
+   pageTitle="Azure Service Fabric クラスター リソース マネージャーでメトリックを管理する | Microsoft Azure"
+   description="Service Fabric 内でメトリックを構成し使用する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,47 +16,46 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
+# Service Fabric のリソース使用量と負荷をメトリックで管理する
+メトリックとは、サービスが動作するために必要であり、クラスター内のノードによって提供されるリソースを表す、Service Fabric の一般的な用語です。一般的に、メトリックは、サービスのパフォーマンスを調整するために管理する必要があるすべての要素を指します。
 
-# <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Managing resource consumption and load in Service Fabric with metrics
-Metrics are the generic term within Service Fabric for the resources that your services care about and which are provided by the nodes in the cluster. Generally, a metric is anything that you want to manage in order to deal with the performance of your services.
+メモリ、ディスク、CPU 使用率など、 これらはすべてのメトリックの例です。これは物理的なメトリック、つまり管理する必要があるノード上の物理リソースに対応するリソースです。メトリックには論理的なメトリックも (一般的に) あります。たとえば、アプリケーションで定義され、特定のレベルのリソース消費に対応する (ただし、アプリケーションからはそれを実際には認識できない、またはそれを測定するがない)、"MyWorkQueueDepth" のような要素が考えられます。ユーザーが使うほとんどのメトリックは論理メトリックです。これにはさまざまな理由が考えられますが、最も一般的な理由としては、今日、多くのお客様がマネージド コードでサービスを書き込んでおり、特定のステートレス サービス インスタンスやステートフル サービス レプリカ オブジェクトからは実際の物理リソースの消費の測定が困難なことが挙げられます。独自のメトリックをレポートすることの複雑さも、構成済みの既定のメトリックを提供している理由の 1 つです。
 
-Things like Memory, Disk, CPU usage – all of these are examples of metrics. These are physical metrics, resources that correspond to physical resources on the node that need to be managed. Metrics can also be (and commonly are) logical metrics, things like “MyWorkQueueDepth” that are application-defined and which correspond to some level of resource consumption (but where the application don’t really know it or know how to measure it). Most metrics that we see people use are logical metrics. There's a variety of reasons for this, but the most common is that today many of our customers write their services in managed code, and from within a given stateless service instance or stateful service replica object it is actually quite hard to measure and report your consumption of actual physical resources. The complexity of reporting your own metrics is also why we provide some default metrics out of the box.
+## Default metrics
+たとえば、今後利用するリソース、または重要になりそうなリソースがわからないまま、作業を開始する必要があるとします。そこで、メトリックを指定せずに、とりあえず実装してからサービスを作成することにします。それでも、何も問題ありません。 メトリックは自動的に選択されます。現在、ユーザーが独自のメトリックを指定しなかった場合に自動的に適用される既定のメトリックは、PrimaryCount、ReplicaCount、および Count です (Count という名前がまぎらわしいという問題は、こちらでも認識しています)。 次の表に、各メトリックの負荷がどの程度各サービス オブジェクトに関連付けられているかについて示します。
 
-## <a name="default-metrics"></a>Default metrics
-Let’s say that you just want to get started and don’t know what resources you are going to consume or even which ones would be important to you. So you go implement and then create your services without specifying any metrics. That’s fine! We’ll pick some metrics for you. The default metrics that we use for you today if you don’t specify any of your own are called PrimaryCount, ReplicaCount, and (somewhat vaguely, we realize) Count. The table below shows how much load for each of these metrics is associated with each service object:
-
-| Metric | Stateless Instance Load |    Stateful Secondary Load |   Stateful Primary Load |
+| メトリック | ステートレス インスタンス負荷 |	ステートフル セカンダリ負荷 |	ステートフル プライマリ負荷 |
 |--------|--------------------------|-------------------------|-----------------------|
-| PrimaryCount | 0 |    0 | 1 |
-| ReplicaCount | 0  | 1 | 1 |
-| Count |   1 | 1 | 1 |
+| PrimaryCount | 0 |	0 |	1 |
+| ReplicaCount | 0 | 1 | 1 |
+| Count |	1 |	1 |	1 |
 
-Ok, so with these default metrics, what do you get? Well it turns out that for basic workloads you get a pretty good distribution of work. In this example below let’s see what happens when we create one stateful service with three partitions and a target replica set size of three, and also a single stateless service with an instance count of three - you’ll get something like this!
+では、この既定のメトリックを利用すると、どのようなメリットがあるでしょうか。 基本的なワークロードについては、適切に処理を分散できるようになります。次の例では、3 つのパーティションを含む 1 つのステートフル サービス、大きさ 3 の対象レプリカ セット、3 つのインスタンスを含む 1 つのステートレス サービスを作成します。すると、次のような環境が得られます。
 
 ![Cluster Layout with Default Metrics][Image1]
 
-In this example we see
--   Primary replicas for the stateful service are not stacked up on a single node
--   Replicas for the same partition are not on the same node
--   The total number of primaries and secondaries is well distributed in the cluster
--   The total number of service objects (stateless and stateful) are evenly allocated on each node
+この例を見ると、
+-	ステートフル サービスに対応するプライマリ レプリカが 1 つのノードにスタックされない
+-	同じパーティションのレプリカが同じノードに置かれていない
+-	プライマリおよびセカンダリの数がクラスター内で均等に分散されている
+-	サービス オブジェクト (ステートレスおよびステートフル) がすべて各ノードに均等に割り当てられている
 
-Pretty good!  
+優秀な結果です。
 
-This works great until you start to think about it: What's the likelihood that the partitioning scheme you picked will result in perfectly even utilization by all partitions over time? Coupled with that, what’s the chance that the load for a given service is constant over time, or even just the same right now? Turns, out for any serious workload the odds of all replicas being equivalent is actually rather low, so if you're interested in getting the most out of your cluster you'll probably want to start looking into custom metrics.
+すばらしい環境ですが、選択したパーティション分割構成によって、完全に均等にすべてのパーティションで使用されるようになるのでしょうか。 さらに、特定のサービスに対する負荷が長期間一定であるか、少なくとも今と同じである可能性はどれくらいあるのでしょうか。 現実的なワークロードの場合、同等であるすべてのレプリカのオッズは実際には低いと言えます。そのため、クラスターを最大限に活用するには、カスタム メトリックを検討することをお勧めします。
 
-Realistically, you could absolutely run with just the default metrics but doing so usually means that your cluster utilization is lower than you’d like (since reporting isn’t adaptive and presumes everything is equivalent); in the worst case it can also result in overscheduled nodes resulting in performance issues. We can do better with custom metrics and dynamic load reports, which we'll cover next.
+現実的には、確かに既定のメトリックのみを使用して実行することはできますが、そうした場合、通常はクラスターの使用率が想定よりも低くなります (レポートに適応性がなく、すべてが同等であると想定されるためです)。最悪の場合、一部のノードに負荷の割り当てが集中し、パフォーマンスが低下することもあります。この問題は、次に説明する、カスタム メトリックと動的な負荷レポートを使用することで改善できます。
 
-## <a name="custom-metrics"></a>Custom metrics
-We’ve already discussed that there can be both physical and logical metrics, and that people can define their own metrics. Great! But how? Well, it's actually pretty easy! Just configure the metric and the default initial load when creating the service and you’re done! Any set of metrics and default values representing how much the service is expected to consume can be configured on a per-named-service-instance basis when you’re creating the service.
+## カスタム メトリック
+これまで、物理的なメトリックと論理的なメトリックの両方を使用できること、およびユーザーが独自のメトリックを定義できることについて説明してきました。そこで、 では、独自のメトリックはどのように定義できるでしょうか。 難しいことではありません。 サービスを作成するときに、メトリックと既定の初期負荷を構成するだけです。 消費すると想定されるサービス量を表すメトリックと既定値のセットは、サービスを作成するときに、名前付きサービス インスタンスごとに構成できます。
 
-Note that when you start defining custom metrics you need to explicitly add back in the default metrics if you want us to use them to balance your service as well. This is because we want you to be clear about the relationship between the default metrics and your custom metrics – maybe you care about Memory consumption or WorkQueueDepth way more than you care about Primary distribution.
+サービスの負荷分散も行う必要がある場合には、カスタム メトリックの定義を開始するときに、既定のメトリックを明示的に再適用する必要があることに注意してください。これは、既定のメトリックとカスタム メトリックの関係についてユーザーの意図を明確に示す必要があるからです。ユーザーによっては、プライマリの分散よりもメモリの消費や WorkQueueDepth を重視することがあります。
 
-Let’s say you wanted to configure a service which would report a metric called “Memory” (in addition to the default metrics). For memory, let’s say that you’ve done some basic measurements and know that normally a primary replica of that service takes up 20Mb of Memory, while secondaries of that same service will take up 5Mb. You know that Memory is the most important metric in terms of managing the performance of this particular service, but you still want primary replicas to be balanced so that the loss of some node or fault domain doesn’t take an inordinate number of primary replicas along with it. Other than that you’ll take the defaults.
+たとえば、既定のメトリックに加えて、"Memory" という名前のメトリックをレポートするようにサービスを構成するとします。Memory については、基本的な測定を何度か行ったことがあり、通常はそのサービスのプライマリ レプリカが 20 MB、同じサービスのセカンダリ レプリカが 5 MB のメモリを使用することを把握しているとします。Memory はこの特定のサービスのパフォーマンスを管理するうえで最も重要なメトリックであることはわかっていますが、一部のノードまたは障害ドメインが失われたときに膨大な数のプライマリ レプリカが停止する事態を避けるために、プライマリ レプリカの負荷も調整する必要があるとします。それ以外については、既定のメトリックを採用するとします。
 
-Here’s what you’d do:
+このような場合、次のようにします。
 
-Code:
+コード:
 
 ```csharp
 StatefulServiceDescription serviceDescription = new StatefulServiceDescription();
@@ -98,45 +97,45 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("Memory,High,20,5”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-(Reminder: if you just want to use the default metrics, you don’t need to touch the metrics collection at all or do anything special when creating your service.)
+(既定のメトリックのみを使用する場合、メトリックを収集したり、サービスを作成する場合に特別なことをしたりすることを考慮する必要性はまったくありません。)
 
-Now that we’ve shown you how to define your own metrics, let’s talk about the different properties that metrics can have. We’ve already shown them to you, but it’s time to talk about what they actually mean! There are four different properties a metric can have today:
+ここまで、独自のメトリックを定義する方法を紹介しました。次に、メトリックのさまざまなプロパティについて説明します。このようなプロパティは既に紹介しましたが、ここでは改めてその実際の意味について説明します。 現在、メトリックには 4 種類のプロパティを設定できます。
 
--   Metric Name: This is the name of the metric. This is a unique identifier for the metric within the cluster from the Resource Manager’s perspective.
-- Default Load: The default load is represented differently depending on whether the service is stateless or stateful.
-  - For stateless services each metric just has a single property named Default Load
-  - For stateful services you define
-    -   PrimaryDefaultLoad: The default amount of load that this service will exert for this metric as a Primary
-    -   SecondaryDefaultLoad: The default amount of load that this service will exert for this metric as a Secondary replica  
--   Weight: This is how important the metric is relative to the other configured metrics for this service.
+-	Metric Name: メトリックの名前。これは、リソース マネージャーから見たクラスター内のメトリックの一意の識別子です。
+- Default Load: 既定の負荷は、サービスがステートレスまたはステートフルであるかによって異なる方法で表されます。
+  - ステートレス サービスの場合、各メトリックには Default Load という名前のプロパティが 1 つだけあります。
+  - ステートフルの場合、次のように定義します。
+    -	PrimaryDefaultLoad: このサービスがプライマリとして処理する、このメトリックの既定の負荷量。
+    -	SecondaryDefaultLoad: このサービスがセカンダリ レプリカとして処理する、このメトリックの既定の負荷量。
+-	Weight: このサービスに対して構成されている他のメトリックに対する、このメトリックの相対的な重要度。
 
-## <a name="load"></a>Load
-Load is the general notion of how much of a given metric is consumed by some service instance or replica on a given node.
+## Load
+負荷とは、一部のサービス インスタンスまたは特定のノード上のレプリカによって使用される特定のメトリックの量を表す一般的な概念です。
 
-## <a name="default-load"></a>Default load
-Default load is how much load the Cluster Resource Manager should assume each service instance or replica of this service will consume until it receives any updates from the actual service instances or replicas. For simpler services, this ends up being a static definition that is never updated dynamically and hence will be used for the lifetime of the service. This works great for simple capacity planning because it’s exactly what we are used to doing – dedicating certain resources to certain workloads, but the benefit is that at least now we’re operating in the microservices mindset where resources aren’t actually statically assigned to particular workloads and where people aren’t in the decision-making loop.
+## 既定の負荷
+既定の負荷とは、クラスター リソース マネージャーが想定する、このサービスの各サービス インスタンスまたはレプリカが実際のサービス インスタンスまたはレプリカから更新を受け取るまでに消費する負荷の量です。単純なサービスの場合、最終的にこの数値は動的に更新されることがない静的な定義になるため、サービスの有効期間に使用されます。既定の負荷は、特定のリソースを特定のワークロード専用に割り当てるという従来の手法とまったく同じ考え方であるため、単純な容量計画であれば非常に有効ですが、そのメリットは、少なくとも現時点では、マイクロサービスの考え方で運用する点にあります。マイクロサービスでは、リソースが実際には特定のワークロードに静的に割り当てられず、ユーザーが意思決定ループに参加しません。
 
-We allow stateful services to specify default load for both their Primaries and Secondaries – realistically for a lot of services these numbers are different due to the different workloads executed by primary replicas and secondary replicas, and since primaries usually serve both reads and writes (as well as most of the computational burden) the default load for a primary replica is higher than for secondary replicas.
+ステートフル サービスでは、プライマリとセカンダリの両方に既定の負荷を指定できます。現実的には、多くのサービスではプライマリ レプリカとセカンダリ レプリカで実行されるワークロードが異なるため、この数値は異なることになります。また、通常はプライマリ レプリカが読み取りと書き込み (さらに計算負荷の大部分) を受け持つため、プライマリ レプリカの既定の負荷はセカンダリ レプリカよりも大きくなります。
 
-But now let’s say that you’ve been running your service for a while and you’ve noticed that some instances or replicas of your service consume way more resources than others or that their consumption varies over time – maybe they’re associated with a particular customer, maybe they just correspond to workloads that vary over the course of the day like messaging traffic, phone calls, or stock trades. At any rate, you notice that there’s no “single number” that you can use for the load without being off by a significant amount for at least some portion of the time. You also notice that “being off” in your initial estimate results in the Cluster Resource Manager either over or under allocating resources to your service, and consequently you have nodes which are over or under utilized.
+ただし、ここではユーザーがサービスを一定期間実行しており、サービスの一部のインスタンスまたはレプリカが他のものよりもリソースの消費量が多い、または消費量が時間によって変動することに気付いたとします。そのインスタンスまたはレプリカは、特定の顧客に関連付けられていたり、単純にメッセージング トラフィックや音声通話、株取引のような時間帯で変動するワークロードに対応したりしていることが考えられます。いずれにしても、少なくともその時間の一部に対して大幅な負荷の低下がなければその負荷に使用できる "シングル ナンバー" が存在しないことがわかりました。さらに、最初の推定値を軽減した場合、クラスター リソース マネージャーでサービスに割り当てられるリソース量が過剰または過小になり、その結果、ノードの使用率が過大または過小になることもわかりました。
 
-What to do? Well, your service could be reporting load on the fly!
+どうすればよいでしょうか。 運用中にサービスの負荷のレポートを作成すればよいのです。
 
-## <a name="dynamic-load"></a>Dynamic load
-Dynamic load reports allow replicas or instances to adjust their allocation/reported use of metrics in the cluster over their lifetime. A service replica or instance that was cold and not doing any work would usually report that it was using low amounts of a given metric, while busy replicas or instances report that they are using more. This general level of churn in the cluster allows us to reorganize the service replicas and instances in the cluster on the fly in order to ensure that the get the resources they require – in effect that busy services are able to reclaim resources from other replicas or instances which are currently cold or doing less work. Reporting load on the fly can be done via the ReportLoad method, available on the ServicePartition, available as a property on the base StatefulService or StatelessService class via the Reliable Services programming model. Within your service the code would look like this:
+## 動的な負荷
+動的な負荷レポートを利用して、レプリカまたはインスタンスで有効期間内におけるクラスターのメトリックの割り当てとレポートされる使用量を調整できます。通常、コールド状態で何の動作もしていないサービス レプリカまたはインスタンスは少量の特定のメトリックを使用しているとレポートし、負荷が高いレプリカやインスタンスは多くの特定のメトリックを使用しているとレポートします。このようなクラスター内の一般的な負荷のレベルを使って、必要な量のリソースを確実に得られるように、運用中にクラスター内のサービス レプリカおよびインスタンスを再構成できます。その結果、負荷の高いサービスが、現在コールド状態または低負荷のレプリカやインスタンスからリソースを回収できるようになります。運用中の負荷は、Reliable Services プログラミング モデルを介して、基本の StatefulService またはStatelessService クラスのプロパティである ServicePartition の ReportLoad メソッドを利用してレポートできます。サービス内のコードは次のようになります。
 
-Code:
+コード:
 
 ```csharp
 this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("Memory", 1234), new LoadMetric("metric1", 42) });
 ```
 
-Services replicas or instances may only report load for the metrics that they have been configured to use. The metric list is set when each service is created and may be updated later. If a service replica or instance tries to report load for a metric that it is not currently configured to use, Service Fabric logs the report but ignores it, meaning that we won’t use it when calculating or reporting on the state of the cluster. This is neat because it allows for greater experimentation – the code can measure and report on everything it knows how to, and the operator can configure, tweak, and update the resource balancing rules for that service on the fly without ever having to change the code. This can include for example, disabling a metric with a buggy report, reconfiguring the weights of metrics based on behavior, or enabling a new metric only after the code has already been deployed and validated via other mechanisms.
+サービスのレプリカまたはインスタンスは、使用するように構成されているメトリックの負荷のみをレポートします。メトリックの一覧は、各サービスの作成時に設定されますが、後で更新することもできます。サービスのレプリカまたはインスタンスで現在使用するように構成されていないメトリックの負荷に関するレポートは、Service Fabric で記録されますが無視されます。つまり、クラスターの状態を分析したレポートを作成する際に、そのレポートが使用されません。これにより大規模な分析が可能になるため、都合がよいのです。コードでは測定可能なすべてのメトリックを測定してレポートでき、ユーザーはコードを変更しなくても運用中にそのサービスのリソース割り当て規則を更新し、調整し、更新することができます。たとえば、レポートのバグが多いときにメトリックを無効にしたり、動作に応じてメトリックの重み付けを再構成したり、他のメカニズムを使用してコードがデプロイされ検証された後でのみ新しいメトリックを有効にしたりできます。
 
-## <a name="mixing-default-load-values-and-dynamic-load-reports"></a>Mixing default load values and dynamic load reports
-Does it make sense to have a default load specified for a service which is going to be reporting load dynamically? Absolutely! In this case the default load serves as an estimate until the real reports start to show up from the actual service replica or instance. This is great because it gives the Cluster Resource Manager something to work with - the default load estimate allows it to place the service instances or replicas in good places right from the start. When no default load information is provided the placement of services is effectively random at creation time, and if loads change later the Cluster Resource Manager would almost certainly have to move things around.
+## 既定の負荷値と動的負荷レポートの混在
+負荷を動的にレポートするサービスに対して、既定の負荷を指定する必要性はあるでしょうか。 もちろんあります。 その場合、実際のサービスのレプリカまたはインスタンスから実際のレポートがレポートされるまで、既定の負荷は推定値として扱われます。クラスター リソース マネージャーが処理するデータを渡すことができるため、これは非常に効果があります。既定の負荷の推定値により、最初から適切な位置にサービスのインスタンスやレプリカを配置することができるのです。既定の負荷の情報がない場合は、作成時に事実上ランダムにサービスが配置されることになり、負荷が後で変更になれば、クラスター リソース マネージャーは、ほどんどの場合、配置をやり直すことになります。
 
-So let’s take our previous example and see what happens when we add some custom load and then when after the service is created it gets updated dynamically. In this example, we’ll use “Memory” as an example, and let’s presume that we initially created the stateful service with the following command:
+では、前の例でカスタム負荷を追加したときと、サービスを作成後に動的に更新したときに何が起きるのか見てみましょう。この例では、例として "Memory" を使用します。最初に次のコマンドを使ってステートフル サービスを作成していたとします。
 
 Powershell:
 
@@ -144,66 +143,62 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton –Metric @("Memory,High,21,11”,"PrimaryCount,Medium,1,0”,"ReplicaCount,Low,1,1”,"Count,Low,1,1”)
 ```
 
-We talked about this syntax earlier (MetricName, MetricWeight, PrimaryDefaultLoad, SecondaryDefaultLoad), but we’ll talk more about what the specific value for Weight means later.
+この構文 (MetricName、MetricWeight、PrimaryDefaultLoad、SecondaryDefaultLoad) については前に説明しましたが、Weight の特定の値が意味する内容については、後ほど詳しく説明します。
 
-Let's see what one possible cluster layout could look like:
+考えられるクラスター レイアウトの 1 つは、次のようなものになります。
 
 ![Cluster Balanced with both Default and Custom metrics][Image2]
 
-Some things that are worth noting:
+注目すべき点がいくつかあります。
 
--   Since replicas or instances use the service’s default load until they report their own load, we know that the replicas inside of partition 1 of the stateful service haven’t reported load on their own
--   Secondary replicas within a partition can have their own load
--   Overall the metrics look pretty good, with the difference between the maximum and minimum load on a node (for memory – the custom metric we said we cared the most about) of only a factor of 1.75 (the node with the most load for the memory is N3, the least is N2, and 28/16 = 1.75) – pretty balanced!
+-	レプリカまたはインスタンスがそれぞれの独自の負荷をレポートするまで、レプリカまたはインスタンスではサービスの既定の負荷が使用されるため、ステートフル サービスのパーティション 1 の内部のレプリカがその独自の負荷をレポートしていないことがわかります。
+-	パーティション内のセカンダリ レプリカは独自の負荷を持つことができます。
+-	全体的にメトリックは良好で、ノードの最大負荷と最小負荷 (ここで重視するカスタム メトリックである Memory) の差がわずか係数 1.75 です (Memory の負荷が最大のノードが N3、最小のノードが N2、その比が 28/16 = 1.75)。これは非常にバランスが取れている状態です。
 
-There are some things that we still need to explain
+さらに説明が必要な点がいくつかあります。
 
--   What determined whether a ratio of 1.75 was reasonable or not? How do we know that’s good enough or if there is more work to do?
--   When does balancing happen?
--   What does it mean that Memory was weighted “High”?
+-	1\.75 という比率が妥当であるかどうかを、何を根拠に決定するのか。 その比率が適切であるのか、さらに対処が必要なのかを、どのようにして判断するのか。
+-	負荷分散はいつ実行されるのか。
+-	Memory の重みが "High" であるとは、どのような意味があるのか。
 
-## <a name="metric-weights"></a>Metric weights
-Metric Weights are what allows two different services to report the same metrics but to view the importance of balancing that metric differently. For example, consider an in-memory analytics engine and a persistent database; both probably care about the “Memory” metric, but the in-memory service probably doesn’t care much about the “Disk” metric – it might consume a little of it, but it is not critical to the service’s performance, so it probably doesn't even report it. Being able to track the same metrics across different services is great since that’s what allows the Cluster Resource Manager to track real consumption in the cluster, ensure that nodes don’t go over capacity, etc.
+## Metric weights
+メトリックの重みを利用して、2 つの異なるサービスから同じメトリックをレポートさせながら、そのメトリックを別々に負荷分散する重要性を見ることができます。たとえば、メモリ内分析エンジンと永続的なデータベースの場合を考えてみましょう。おそらく、どちらも "Memory" メトリックが重視されるでしょうが、メモリ内サービスであれば "Disk" メトリックはそれほど重視されないはずです。少量の "Disk" メトリックを消費するとしても、サービスのパフォーマンスに重要な影響を与えるわけではないため、それをレポートすることさえもしない場合があります。複数のサービスを対象に同じメトリックを追跡できる機能は非常に有効です。クラスター リソース マネージャーでクラスター内の実際の消費量を追跡できるからです。これにより、ノードの容量オーバーなどの問題を確実に防止できます。
 
-Metric weights also allow the Cluster Resource Manager to make decisions about how to balance the cluster when there’s no perfect answer (which is a lot of the time). Metrics can have four different weight levels: Zero, Low, Medium, and High. A metric with a weight of Zero contributes nothing when considering whether things are balanced or not, but its load does still contribute to things like capacity measurement.
+また、メトリックの重みは、クラスター リソース マネージャーでクラスターの負荷を分散する方法を決定するときに、完璧な答えが存在しない場合 (ほとんどの場合はそうですが) の判断材料となります。メトリックには、Zero、Low、Medium、High という 4 種類の重みレベルを設定できます。 重み Zero のメトリックは負荷分散を判断するときにはまったく考慮されませんが、容量測定などのときにはその負荷が考慮されます。
 
-The real impact of different metric weights in the cluster is that we arrive at different arrangements of the services since the Cluster Resource Manager has been told, in aggregate, that certain metrics are more important than others. Because it knows this, when metrics which have different weights conflict with other the Cluster Resource Manager can prefer solutions which balance the higher weighted metrics better.
+クラスター内のさまざまなメトリックの重みの実際の影響は、特定のメトリックが他のメトリックよりも重要であることが集計時にクラスター リソース マネージャーに示されることで、サービスの配置が変わってくるという点に表れます。これを認識するため、さまざまな重みを持つメトリックが他と競合する場合、クラスター リソース マネージャーはより高く重み付けされたメトリックをさらに負荷分散するソリューションを優先することができます。
 
-Let’s take a look at a simple example of some load reports and how different metric weights can result in different allocations in the cluster. In this example we see that switching the relative weight of the metrics results in the Resource Manager preferring certain solutions by creating different arrangements of services.
+それでは、いくつかの負荷レポートの簡単な例を使って、メトリックの重みが変わるとクラスター内の割り当てがどのように変化するか見てみましょう。この例では、メトリックの相対的な重みを切り替えることで、リソース マネージャーでサービスの配置が変わり、特定のソリューションが優先されることがわかります。
 
 ![Metric Weight Example and Its Impact on Balancing Solutions][Image3]
 
-In this example there are four different services, all reporting different values for two different metrics A and B. In one case all the services define Metric A is the most important one (Weight = High) and MetricB as relatively unimportant (Weight = Low), and indeed we see that the Cluster Resource Manager places the services so that MetricA is better balanced (has a lower standard deviation) than MetricB. In the second case, we reverse the metric weights, and we see that the Cluster Resource Manager would probably swap services A and B in order to come up with an allocation where MetricB is better balanced than MetricA.
+この例には 4 つの異なるサービスがあります。すべてのサービスが、A と B という異なる 2 つのメトリックに対して別々の値をレポートします。1 番目のケースでは、すべてのサービスで MetricA が最も重要 (重み = High)、MetricB が比較的重要でない (重み = Low) と定義されており、実際にクラスター リソース マネージャーでは MetricA の方が MetricB よりもバランスが取れる (標準的な偏りが少ない) ようにサービスが配置されています。2 番目のケースでは、メトリックの重みが逆になっています。クラスター リソース マネージャーは MetricA よりも MetricB のバランスを重視した配置にするために、サービス A とサービス B を入れ替える可能性が高いことがわかります。
 
-### <a name="global-metric-weights"></a>Global metric weights
-So if ServiceA defines MetricA as most important, and ServiceB doesn’t care about it at all, what’s the actual weight that ends up getting used?
+### メトリックの重み
+では、ServiceA で MetricA を最も重要なメトリックとして定義する一方、ServiceB ではまったく考慮しなかった場合、実際に使用される重みはどうなるでしょうか。
 
-Well there are actually two weights we keep track of for every metric – the weight the service itself defined and the global average weight across all of the services that care about that metric. We use both these weights when calculating the scores of the solutions we generate, since it is important to ensure that both a service is balanced with regard to its own priorities, but also that the cluster as a whole is allocated correctly.
+すべてのメトリックについて追跡される重みは、実際には 2 種類あります。そのサービスで独自に定義される重みと、そのメトリックが考慮されるすべてのサービス全体のグローバルな平均重みです。生成するソリューションのスコアを計算する際には、サービス独自の優先度に関してサービスのバランスを取ることと、クラスター全体で適切に割り当てることを両立することが重要であるため、この 2 種類の重みが両方とも使われます。
 
-What would happen if we didn’t care about both global and local balance? Well, it’s trivial to construct solutions that are globally balanced but which result in very poor balance and resource allocation for individual services. In the example below let’s consider the default metrics that a stateful service is configured with, PrimaryCount, ReplicaCount, and Count, and see what happens when we only consider global balance:
+グローバルとローカルのどちらかのバランスを考慮しなかった場合、どうなるでしょうか。 グローバルでバランスの取れたソリューションを構築することは簡単ですが、その場合は個々のサービスのバランスが非常に悪くなり、偏ったリソース割り当てが生じることになります。次の例では、ステートフル サービスに構成する既定のメトリックである PrimaryCount、ReplicaCount、Count について検討します。グローバルのバランスのみを考慮した場合、どうなるのか見てみましょう。
 
 ![The Impact of a Global Only Solution][Image4]
 
-In the top example where we only looked at global balance, the cluster as a whole is indeed balanced – all nodes have the same count of primaries, and total replicas. However if you look at the actual impact of this allocation it’s not so good: the loss of any node impacts a particular workload disproportionally, as it takes out all of its primaries. Take for example if we were to lose the first node. If this happened the three primaries for the three different partitions of the Circle service would all be lost simultaneously. Conversely, the other two services (Triangle and Hexagon) have their partitions lose a replica, which causes no disruption (other than having to recover the down replica).
+上の方の例では、グローバルのバランスのみを重視しています。実際にクラスター全体のバランスが取れており、すべてのノードに同じ数のプライマリが含まれ、レプリカの合計数も同じです。ただし、この割り当ての実際の影響を見てみると、それほど良いとは言えません。ノードが 1 つでも失われると、その中のプライマリもすべて失われるため、特定のワークロードに偏りが生じます。たとえば、1 番目のノードが失われるとします。その場合、円のサービスの 3 つの異なるパーティションに対応する 3 つのプライマリが同時に失われます。逆に、その他の 2 つのサービス (三角形と六角形) はそれぞれパーティションを持っており、レプリカが失われてもサービスの中断は生じません (ダウンしたレプリカを回復する必要がある場合を除く)。
 
-In the bottom example we have distributed the replicas based on both the global and per-service balance. When calculating the score of the solution we give a majority of the weight to the global solution, but a (configurable) portion does go to ensuring that the services are balanced within themselves as much as possible as well. As a result, if we were to lose the same first node, we see that the loss of primaries (and secondaries) is distributed across all partitions of all services and the impact to each is the same.
+下の方の例では、グローバルのバランスとサービス単位のバランスの両方を考慮してレプリカを分散しています。ソリューションのスコアを計算するときに、重みの大部分をグローバル ソリューションに割り当てますが、可能な限り個々のサービス内部でバランスを取ることができるように (構成可能な) 部分を割り当てます。その結果、同じ 1 番目のノードが失われても、失われるプライマリ (およびセカンダリ) の数はすべてのサービスのすべてのパーティションに分散され、各サービスへの影響が同じになります。
 
-Taking metric weights into account, the global balance is calculated based on the average of the metric weights configured for each of the services. We balance a service with regard to its own defined metric weights.
+メトリックの重みを考慮することで、各サービス用に構成されたメトリックの平均重みに基づいてグローバルなバランスが算出されます。サービス単位で定義されたメトリックの重みに応じて、サービスのバランスを取るのです。
 
-## <a name="next-steps"></a>Next steps
-- For more information about the other options available for configuring services check out the topic on the other Cluster Resource Manager configurations available [Learn about configuring Services](service-fabric-cluster-resource-manager-configure-services.md)
-- Defining Defragmentation Metrics is one way to consolidate load on nodes instead of spreading it out. To learn how to configure defragmentation, refer to [this article](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-- To find out about how the Cluster Resource Manager manages and balances load in the cluster, check out the article on [balancing load](service-fabric-cluster-resource-manager-balancing.md)
-- Start from the beginning and [get an Introduction to the Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- Movement Cost is one way of signaling to the Cluster Resource Manager that certain services are more expensive to move than others. To learn more about movement cost, refer to [this article](service-fabric-cluster-resource-manager-movement-cost.md)
+## 次のステップ
+- サービスの構成に利用できるその他のオプションの詳細については、[サービスの構成の詳細に関する記事](service-fabric-cluster-resource-manager-configure-services.md)にある、その他のクラスター リソース マネージャーのトピックを参照してください。
+- 最適化メトリックの定義は、負荷を分散するのではなく、ノードで統合する方法の 1 つです。最適化を構成する方法については、[この記事](service-fabric-cluster-resource-manager-defragmentation-metrics.md)を参照してください。
+- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
+- 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。
+- 移動コストは、特定のサービスが他のサービスよりも高額になっていることをクラスター リソース マネージャーに警告する信号の 1 つです。移動コストの詳細については、[この記事](service-fabric-cluster-resource-manager-movement-cost.md)を参照してください。
 
-[Image1]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
-[Image2]:./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png
-[Image3]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
-[Image4]:./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
+[Image1]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-cluster-layout-with-default-metrics.png
+[Image2]: ./media/service-fabric-cluster-resource-manager-metrics/Service-Fabric-Resource-Manager-Dynamic-Load-Reports.png
+[Image3]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-metric-weights-impact.png
+[Image4]: ./media/service-fabric-cluster-resource-manager-metrics/cluster-resource-manager-global-vs-local-balancing.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

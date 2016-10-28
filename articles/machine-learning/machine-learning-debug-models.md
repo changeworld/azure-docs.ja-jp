@@ -1,67 +1,66 @@
 <properties 
-    pageTitle="Debug your Model in Azure Machine Learning | Microsoft Azure" 
-    description="Explains how to How to debug your Model in Azure Machine Learning." 
-    services="machine-learning"
-    documentationCenter="" 
-    authors="garyericson" 
-    manager="jhubbard" 
-    editor="cgronlun"/>
+	pageTitle="Azure Machine Learning でモデルをデバッグする | Microsoft Azure" 
+	description="Azure Machine Learning でモデルをデバッグする方法について説明します。" 
+	services="machine-learning"
+	documentationCenter="" 
+	authors="garyericson" 
+	manager="jhubbard" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/09/2016" 
-    ms.author="bradsev;garye" />
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/09/2016" 
+	ms.author="bradsev;garye" />
 
+# Azure Machine Learning でモデルをデバッグする
 
-# <a name="debug-your-model-in-azure-machine-learning"></a>Debug your Model in Azure Machine Learning
+この記事では、Microsoft Azure Machine Learning でモデルをデバッグする方法について説明します。具体的には、モデルを実行したときに次の 2 つの障害シナリオが発生する場合の潜在的な理由について取り上げます。
 
-This article explains of how to debug your models in Microsoft Azure Machine Learning. Specifically, it covers the potential reasons why either of the following two failure scenarios might be encountered when running a model:
-
-* the [Train Model][train-model] module throws an error 
-* the [Score Model][score-model] module produces incorrect results 
+* [[モデルのトレーニング]][train-model] モジュールからエラーがスローされる
+* [[モデルのスコア付け]][score-model] モジュールから生成される結果が間違っている
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-## <a name="train-model-module-throws-an-error"></a>Train Model Module throws an error
+## [モデルのトレーニング] モジュールからエラーがスローされる
 
-![image1](./media/machine-learning-debug-models/train_model-1.png)
+![Image1](./media/machine-learning-debug-models/train_model-1.png)
 
-The [Train Model][train-model] Module expects the following 2 inputs:
+[[モデルのトレーニング]][train-model] モジュールでは、次の 2 つを入力する必要があります。
 
-1. The type of Classification/Regression Model from the collection of models provided by Azure Machine Learning
-2. The training data with a specified Label column. The Label column specifies the variable to predict. The rest of the columns included are assumed to be Features.
+1. Azure Machine Learning によって提供されるモデルのコレクションからの [分類/回帰モデル] の種類。
+2. 指定したラベル列のあるトレーニング データ。[ラベル] 列は、予測変数を示します。データに含まれる残りの列は、[特徴] と見なされます。
 
-This module throws an error in the following cases:
+このモジュールは、次のような場合にエラーをスローします。
 
-1. The Label column is specified incorrectly because either more than one column is selected as the Label or an incorrect column index is selected. For example, the second case would apply if a column index of 30 was used with an input dataset which had only 25 columns.
+1. [ラベル] 列が正しく指定されていない。これは、ラベルとして複数の列が選択されている場合か、正しくない列のインデックスが選択されている場合のいずれかです。たとえば、25 列だけ格納されている入力データセットに対して列インデックス 30 を使用した場合は、2 番目のケースが当てはまります。
 
-2. The dataset does not contain any Feature columns. For example, if the input dataset has only 1 column, which is marked as the Label column, there would be no features with which to build the model. In this case, the [Train Model][train-model] module will throw an error.
+2. データセットに [特徴] 列が含まれていない。たとえば、入力データセットに列が 1 つだけ含まれていて、その列が [ラベル] 列とマークされていれば、モデルの作成に使用する特徴がないことになります。この場合は、[[モデルのトレーニング]][train-model] モジュールからエラーがスローされます。
 
-3. The input dataset (Features or Label) contain Infinity as a value.
+3. 入力データセット ([特徴] または [ラベル]) の値として無限の値が含まれている。
 
 
-## <a name="score-model-module-does-not-produce-correct-results"></a>Score Model Module does not produce correct results
+## [モデルのスコア付け] モジュールから正しい結果が生成されない
 
-![image2](./media/machine-learning-debug-models/train_test-2.png)
+![Image2](./media/machine-learning-debug-models/train_test-2.png)
 
-In a typical training/testing graph for supervised learning, the [Split Data][split] module divides the original dataset into two parts: the part that is used to train the model and the part that is reserved to score how well the trained model performs on data it did not train on. The trained model is then used to score the test data after which the results are evaluated to determine the accuracy of the model.
+教師あり学習の場合の一般的なトレーニング/テスト グラフでは、[[データの分割]][split] モジュールを使用して元のデータセットを 2 つの部分に分割します。つまり、モデルのトレーニングのために使用する部分と、トレーニング済みのモデルをトレーニングに使用しなかったデータに対して実行した場合の適合度のスコア付けのために予約されている部分に分割します。その後、トレーニング済みのモデルを使用してテスト データにスコアを付け、その結果を評価してモデルの確度を判定します。
 
-The [Score Model][score-model] module requires two inputs:
+[[モデルのスコア付け]][score-model] モジュールでは、次の 2 つを入力する必要があります。
 
-1. A trained model output from [Train Model][train-model] module
-2. A scoring dataset not that the model was not trained on
+1. [[モデルのトレーニング]][train-model] モジュールからのトレーニング済みのモデル出力
+2. モデルのトレーニングに使用しなかった、スコア付け用のデータセット
 
-It may happen that even though the experiment succeeds, the [Score Model][score-model] module produces incorrect results. Several scenarios may cause this to happen:
+実験が成功した場合でも、[[モデルのスコア付け]][score-model] モジュールから正しくない結果が生成されることがあります。これは、次のようないくつかのシナリオで発生することがあります。
 
-1. If the specified Label is categorical and a regression model is trained on the data, an incorrect output would be produced by the [Score Model][score-model] module. This is because regression requires a continuous response variable. In this case it should be more suitable to use a classification model. 
-2. Similarly, if a classification model is trained on a dataset having floating point numbers in the Label column, it may produce undesirable results. This is because classification requires a discrete response variable that only allows values that range over a finite and usually somewhat small set of classes.
-3. If the scoring dataset does not contain all the features used to train the model, the [Score Model][score-model] will produce an error.
-4. The [Score Model][score-model] would not produce any output corresponding to a row in the scoring dataset that contains a missing value or an infinite value for any of its features.
-5. The [Score Model][score-model] may produce identical outputs for all rows in the scoring dataset. This could occur, for example, in the when attempting classification using Decision Forests if the minimum number of samples per leaf node is chosen to be more than the number of training examples available.
+1. 指定されたラベルがカテゴリ別であり、そのデータに対して回帰モデルのトレーニングが行われた場合は、[[モデルのスコア付け]][score-model] モジュールから正しくない出力が生成されます。これは、回帰には連続応答変数が必要だからです。この場合は、分類モデルを使用したほうが適切でした。
+2. 同様に、浮動小数点数のラベル列を持つデータセットに対して分類モデルのトレーニングを実行した場合も、期待した結果が生成されないことがあります。これは、分類モデルには離散的な応答変数が必要であり、有限の範囲で、通常は少なめの数のクラスが含まれる変数でなければならないからです。
+3. スコア付け用のデータセットに、モデルのトレーニングに使用した特徴の一部しか含まれていない場合は、[[モデルのスコア付け]][score-model] モジュールがエラーを生成します。
+4. [[モデルのスコア付け]][score-model] モジュールは、スコア付け用のデータセット内で欠落値を持つ行や、いずれかの特徴について無限の値を含む行に対しては出力を生成しません。
+5. [[モデルのスコア付け]][score-model] モジュールは、スコア付け用のデータセットのすべての行に対して同一の出力を生成することがあります。これが発生するのは、たとえば、デシジョン フォレストを使用して分類を行おうとする場合に、リーフ ノードあたりのサンプルの最低数が、利用可能なトレーニング例の数より多い場合です。
 
 
 <!-- Module References -->
@@ -70,8 +69,4 @@ It may happen that even though the experiment succeeds, the [Score Model][score-
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

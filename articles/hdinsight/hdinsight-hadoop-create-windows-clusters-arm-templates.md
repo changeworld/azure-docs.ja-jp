@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create Windows-based Hadoop clusters in HDInsight using Azure Resource Manager templates | Microsoft Azure"
-    description="Learn how to create clusters for Azure HDInsight using Azure Resource Manager templates."
+   pageTitle="Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成 | Microsoft Azure"
+   	description="Azure Resource Manager テンプレートを使用して Azure HDInsight のクラスターを作成する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    tags="azure-portal"
@@ -17,50 +17,45 @@
    ms.date="07/25/2016"
    ms.author="jgao"/>
 
+# Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成
 
-# <a name="create-windows-based-hadoop-clusters-in-hdinsight-using-azure-resource-manager-templates"></a>Create Windows-based Hadoop clusters in HDInsight using Azure Resource Manager templates
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-selector-create-clusters.md)]
 
-[AZURE.INCLUDE [selector](../../includes/hdinsight-selector-create-clusters.md)]
+Azure Resource Manager テンプレートを使用して HDInsight クラスターを作成する方法について説明します。詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)」を参照してください。その他のクラスター作成のツールと機能については、このページの上部にあるタブ セレクターをクリックするか、「[クラスターの作成方法](hdinsight-provision-clusters.md#cluster-creation-methods)」を参照してください。
 
-Learn how to create HDInsight clusters using Azure Resource Manager templates. For more information, see [Deploy an application with Azure Resource Manager template](../resource-group-template-deploy.md). For other cluster creation tools and features click the tab select on the top of this page or see [Cluster creation methods](hdinsight-provision-clusters.md#cluster-creation-methods).
-
-##<a name="prerequisites:"></a>Prerequisites:
+##前提条件:
 
 [AZURE.INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 
-Before you begin the instructions in this article, you must have the following:
+この記事の手順を開始する前に、次の項目を用意する必要があります。
 
-- [Azure subscription](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- Azure PowerShell or Azure CLI
+- [Azure サブスクリプション](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
+- Azure PowerShell または Azure CLI
 
-    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)] 
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-powershell-and-cli.md)]
 
-### <a name="access-control-requirements"></a>Access control requirements
+## リソース マネージャーのテンプレート
 
-[AZURE.INCLUDE [access-control](../../includes/hdinsight-access-control-requirements.md)]
+Resource Manager テンプレートでは、アプリケーションの HDInsight クラスター、その依存リソース (既定のストレージ アカウントなど)、および他のリソース (Apache Sqoop を使用する Azure SQL Database など) の作成が 1 回の連携した操作で容易になります。テンプレートでは、アプリケーションのために必要なリソースを定義してさまざまな環境の値を入力するデプロイのパラメーターを指定します。テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。
 
-## <a name="resource-manager-templates"></a>Resource Manager templates
+HDInsight クラスターと依存 Azure Storage アカウントを作成するための Resource Manager テンプレートについては、「[付録 A](#appx-a-arm-template)」を参照してください。テキスト エディターを使用し、ワークステーション上のファイルにテンプレートを保存します。さまざまなツールを使用してテンプレートを呼び出す方法について説明します。
 
-Resource Manager template makes it easy to create HDInsight clusters, their dependent resources (such as the default storage account), and other resources (such as Azure SQL Database to use Apache Sqoop) for your application in a single, coordinated operation. In the template, you define the resources that are needed for the application and specify deployment parameters to input values for different environments. The template consists of JSON and expressions which you can use to construct values for your deployment.
+Resource Manager テンプレートの詳細については、以下を参照してください。
 
-A Resource Manager template for creating an HDInsight cluster and the dependent Azure Storage account can be found in [Appendix-A](#appx-a-arm-template). Use a text editor to save the template into a file on your workstation. You will learn how to call the template using various tools.
-
-For more information about Resource Manager template, see
-
-- [Author Azure Resource Manager templates](../resource-group-authoring-templates.md)
-- [Deploy an application with Azure Resource Manager template](../resource-group-template-deploy.md)
+- [Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
+- [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](../resource-group-template-deploy.md)
 
 
-## <a name="deploy-with-powershell"></a>Deploy with PowerShell
+## PowerShell でデプロイする
 
-The following procedure creates an HDInsight cluster.
+次の手順では、HDInsight クラスターを作成します。
 
-**To deploy a cluster using Resource Manager template**
+**Resource Manager テンプレートを使用してクラスターをデプロイするには**
 
-1. Save the json file in [Appendix A](#appx-a-arm-template) to your workstation.
-2. Set the parameters if needed.
-3. Run the template using the following PowerShell script:
+1. [付録 A](#appx-a-arm-template) の JSON ファイルをワークステーションに保存します。
+2. 必要な場合は、パラメーターを設定します。
+3. 次の PowerShell スクリプトを使用して、テンプレートを実行します。
 
         ####################################
         # Set these variables
@@ -110,48 +105,48 @@ The following procedure creates an HDInsight cluster.
         # List cluster
         Get-AzureRmHDInsightCluster -ResourceGroupName $resourceGroupName -ClusterName $hdinsightClusterName 
 
-    The PowerShell script only configures the cluster name and the storage account name.  You can set other values in the ARM template. 
-    
-For more information, see  [Deploy with PowerShell](../resource-group-template-deploy.md#deploy-with-powershell).
+	PowerShell スクリプトは、クラスター名とストレージ アカウント名のみを構成します。ARM テンプレートのその他の値は設定可能です。
+	
+詳細については、「[PowerShell でデプロイする](../resource-group-template-deploy.md#deploy-with-powershell)」を参照してください。
 
-## <a name="deploy-with-azure-cli"></a>Deploy with Azure CLI
+## Azure CLI でのデプロイ
 
-The following sample creates a cluster and its dependent storage account and container by calling an ARM template:
+次のサンプルでは、ARM テンプレートを呼び出すことによって、クラスターとその依存ストレージ アカウントとコンテナーが作成されます。
 
-    azure login
-    azure config mode arm
+	azure login
+	azure config mode arm
     azure group create -n hdi1229rg -l "East US 2"
-    azure group deployment create "hdi1229rg" "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json" -p "{\"clusterName\":{\"value\":\"hdi1229win\"},\"clusterStorageAccountName\":{\"value\":\"hdi1229store\"},\"location\":{\"value\":\"East US 2\"},\"clusterLoginPassword\":{\"value\":\"Pass@word1\"}}"
+    azure group deployment create "hdi1229rg" "hdi1229" --template-file "C:\HDITutorials-ARM\hdinsight-arm-template.json" -p "{"clusterName":{"value":"hdi1229win"},"clusterStorageAccountName":{"value":"hdi1229store"},"location":{"value":"East US 2"},"clusterLoginPassword":{"value":"Pass@word1"}}"
 
 
 
 
 
-## <a name="deploy-with-rest-api"></a>Deploy with REST API
+## REST API でのデプロイ
 
-See [Deploy with the REST API](../resource-group-template-deploy.md#deploy-with-the-rest-api).
+「[REST API でデプロイする](../resource-group-template-deploy.md#deploy-with-the-rest-api)」を参照してください。
 
-## <a name="deploy-with-visual-studio"></a>Deploy with Visual Studio
+## Visual Studio でのデプロイ
 
-With Visual Studio, you can create a resource group project and deploy it to Azure through the user interface. You select the type of resources to include in your project and those resources are automatically added to Resource Manager template. The project also provides a PowerShell script to deploy the template.
+Visual Studio では、リソース グループ プロジェクトを作成して、それをユーザー インターフェイスから Azure にデプロイできます。プロジェクトに含めるリソースの種類を選択すると、それらのリソースがリソース マネージャー テンプレートに自動的に追加されます。プロジェクトでは、テンプレートをデプロイするための PowerShell スクリプトも提供されます。
 
-For an introduction to using Visual Studio with resource groups, see [Creating and deploying Azure resource groups through Visual Studio](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+Visual Studio とリソース グループの使用の概要については、「[Visual Studio での Azure リソース グループの作成とデプロイ](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)」を参照してください。
 
-##<a name="next-steps"></a>Next steps
-In this article, you have learned several ways to create an HDInsight cluster. To learn more, see the following articles:
-
-
-- For an example of deploying resources through the .NET client library, see [Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md).
-- For an in-depth example of deploying an application, see [Provision and deploy microservices predictably in Azure](../app-service-web/app-service-deploy-complex-application-predictably.md).
-- For guidance on deploying your solution to different environments, see [Development and test environments in Microsoft Azure](../solution-dev-test-environments.md).
-- To learn about the sections of the Azure Resource Manager template, see [Authoring templates](../resource-group-authoring-templates.md).
-- For a list of the functions you can use in an Azure Resource Manager template, see [Template functions](../resource-group-template-functions.md).
+##次のステップ
+この記事では、HDInsight クラスターを作成する方法をいくつか説明しました。詳細については、次の記事を参照してください。
 
 
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、「[Deploy resources using .NET libraries and a template](../virtual-machines/virtual-machines-windows-csharp-template.md)」 (.NET ライブラリとテンプレートを使用した Azure リソースのデプロイ) を参照してください。
+- アプリケーションのデプロイの詳細な例については、「[Azure でマイクロサービスを予測どおりにデプロイする](../app-service-web/app-service-deploy-complex-application-predictably.md)」を参照してください。
+- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](../solution-dev-test-environments.md)」を参照してください。
+- Azure Resource Manager のテンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](../resource-group-authoring-templates.md)」を参照してください。
+- Azure Resource Manager のテンプレートで使用できる関数の一覧については、「[Azure Resource Manager のテンプレートの関数](../resource-group-template-functions.md)」を参照してください。
 
-##<a name="appx-a:-resource-manager-template"></a>Appx-A: Resource Manager template
 
-The following Azure Resource Manger template creates a Windows-based Hadoop cluster with the dependent Azure storage account.
+
+##付録 A: Resource Manager テンプレート
+
+次に示す Azure リソース マネージャーのテンプレートは、Azure ストレージ アカウントに依存する Windows ベースの Hadoop クラスターを作成します。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -299,9 +294,4 @@ The following Azure Resource Manger template creates a Windows-based Hadoop clus
         }
     }
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

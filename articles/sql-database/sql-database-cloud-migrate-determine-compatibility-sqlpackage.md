@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Determine SQL Database compatibility using SqlPackage.exe | Microsoft Azure"
-   description="Microsoft Azure SQL Database, database migration, SQL Database compatibility, SqlPackage"
+   pageTitle="SqlPackage.exe を使用して SQL Database の互換性を判定する | Microsoft Azure"
+   description="Microsoft Azure SQL Database、データベースの移行、SQL Database の互換性、SqlPackage"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,8 +16,7 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
-
-# <a name="determine-sql-database-compatibility-using-sqlpackage.exe"></a>Determine SQL Database compatibility using SqlPackage.exe
+# SqlPackage.exe を使用して SQL Database の互換性を判定する
 
 > [AZURE.SELECTOR]
 - [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
@@ -26,46 +25,41 @@
 - [Upgrade Advisor](http://www.microsoft.com/download/details.aspx?id=48119)
 - [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
 
-In this article, you learn to determine if a SQL Server database is compatible to migrate to SQL Database using the [SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) command-prompt utility.
+この記事では、[SqlPackage](https://msdn.microsoft.com/library/hh550080.aspx) コマンド プロンプト ユーティリティを使用して、SQL Server データベースを SQL Database に移行するための互換性のあるかどうかを判定します。
 
-## <a name="using-sqlpackage.exe"></a>Using SqlPackage.exe
+## SqlPackage.exe を使用する
 
-1. Open a command prompt and change a directory containing the newest version of sqlpackage.exe. This utility ships with the latest versions of [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) and [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx), or you can download the latest version of [SqlPackage](https://www.microsoft.com/en-us/download/details.aspx?id=53876) directly from the Microsoft download center.
-2. Execute the following SqlPackage command with the following arguments for your environment:
+1. コマンド プロンプトを開き、sqlpackage.exe の最新バージョンを含むディレクトリに変更します。このユーティリティは、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) と [SQL Server Data Tools for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) に付属しています。また、Microsoft ダウンロード センターから最新バージョンの [SqlPackage](https://www.microsoft.com/ja-JP/download/details.aspx?id=53876) を直接ダウンロードすることもできます。
+2. 次の SqlPackage コマンドをご利用の環境に合わせた引数で実行します。
 
-    'sqlpackage.exe /Action:Export /ssn:< server_name > /sdn:< database_name > /tf:< target_file > /p:TableData=< schema_name.table_name > > < output_file > 2>&1'
+	'sqlpackage.exe /Action:Export /ssn:< server\_name > /sdn:< database\_name > /tf:< target\_file > /p:TableData=< schema\_name.table\_name > > < output\_file > 2>&1'
 
-  	| Argument  | Description  |
-  	|---|---|
-  	| < server_name >  | source server name  |
-  	| < database_name >  | source database name  |
-  	| < target_file >  | file name and location for BACPAC file  |
-  	| < schema_name.table_name >  | the tables for which data are output to the target file  |
-  	| < output_file >  | the file name and location for the output file with errors, if any  |
+	| 引数 | 説明 |
+	|---|---|
+	| < server\_name > | ソース サーバー名 |
+	| < database\_name > | 移行元データベースの名前 |
+	| < target\_file > | BACPAC ファイルのファイル名と場所 |
+	| <schema\_name.table\_name> | データをターゲット ファイルに出力するテーブル |
+	| < output\_file > | エラーがある場合、エラーのある出力ファイルのファイル名と場所 |
 
-    The reason for the /p:TableName argument is that we only want to test for database compatibility for export to Azure SQL DB V12 rather than export the data from all tables. Unfortunately, the export argument for sqlpackage.exe does not support extracting zero tables. You need to specify at least one table, such as a single small table. The < output_file > contains the report of any errors. The "> 2>&1" string pipes both the standard output and the standard error resulting from the command execution to specified output file.
+	/p:TableName 引数を指定するのは、すべてのテーブルからデータをエクスポートするのではなく、Azure SQL DB V12 にエクスポートするためのデータベースの互換性をテストするだけであるためです。残念ながら、sqlpackage.exe の export 引数はゼロ テーブルの抽出をサポートしていません。1 つの小さなテーブルなど少なくとも 1 つのテーブルを指定する必要があります。< output\_file > には、すべてのエラーのレポートが含まれます。「> 2>&1」文字列は、標準出力とコマンド実行の結果として生成された標準エラーの両方を指定の出力ファイルにパイプ処理します。
 
-    ![Export a data-tier application from the Tasks menu](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01.png)
+	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage01.png)
 
-3. Open the output file and review the compatibility errors, if any. 
+3. 出力ファイルを開き、互換性エラーがある場合は確認します。
 
-    ![Export a data-tier application from the Tasks menu](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage02.png)
+	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSQLPackage02.png)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-[Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
-- [Fix database migration compatibility issues](sql-database-cloud-migrate.md#fix-database-migration-compatibility-issues)
-- [Migrate a compatible SQL Server database to SQL Database](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx) [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [データベース移行に関する互換性の問題の修正](sql-database-cloud-migrate.md#fix-database-migration-compatibility-issues)
+- [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
-- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

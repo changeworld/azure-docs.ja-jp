@@ -1,89 +1,81 @@
 <properties
-    pageTitle="Types of risk events detected by Azure Active Directory Identity Protection | Microsoft Azure"
-    description="This topic gives you a detailed overview of the available types of risk events in Azure Active Directory Identity Protection"
-    services="active-directory"
-    keywords="azure active directory identity protection, cloud app discovery, managing applications, security, risk, risk level, vulnerability, security policy"
-    documentationCenter=""
-    authors="MarkusVi"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory Identity Protection で検出されるリスク イベントの種類 | Microsoft Azure"
+	description="このトピックでは、Azure Active Directory Identity Protection で利用可能な各種リスク イベントの詳細な概要を示します。"
+	services="active-directory"
+	keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/20/2016"
-    ms.author="markvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/02/2016"
+	ms.author="markvi"/>
+
+#Azure Active Directory Identity Protection で検出されるリスク イベントの種類 
+
+Azure Active Directory Identity Protection のリスク イベントとは、次のようなイベントのことです。
+
+- 疑いありのフラグが設定されたイベント
+
+- ID が侵害された可能性を示すイベント
+
+このトピックでは、利用可能な各種リスク イベントの詳細な概要を示します。
 
 
-#<a name="types-of-risk-events-detected-by-azure-active-directory-identity-protection"></a>Types of risk events detected by Azure Active Directory Identity Protection 
+## 漏洩した資格情報
 
-In Azure Active Directory Identity Protection, risk events are events that:
+漏洩した資格情報が悪質な Web で公開されていることを、Microsoft のセキュリティ調査員が発見します。通常、このような資格情報はプレーン テキストで発見されます。発見された資格情報は、Azure AD の資格情報と照合されて、一致した場合は、Identity Protection で "漏洩した資格情報" として報告されます。
 
-- were flagged as suspicious
+漏洩した資格情報のリスク イベントは、攻撃者がユーザー名とパスワードを利用できる明らかな兆候となるので、"高" 重大度のリスク イベントに分類されます。
 
-- indicate that an identity may have been compromised. 
+## 特殊な場所へのあり得ない移動
 
-This topic gives you a detailed overview of the available types of risk events.
+このリスク イベントの種類では、地理的に離れた 2 つの場所で行われたサインインを識別します。少なくとも 1 つの場所は、ユーザーの過去の行動から考えて、ユーザーが普通いそうにない場所でもあります。さらに、2 つのサインインの間の時間が、最初の場所から 2 回目の場所にユーザーが移動するのに要する時間より短く、別のユーザーが同じ資格情報を使用していることを示唆します。
 
+この機械学習アルゴリズムは、組織内の他のユーザーによって普通に使用される VPN や場所など、不可能な移動状況の原因になる明らかな "*誤検知*" を無視します。システムには 14 日間の初期学習期間があり、その間に新しいユーザーのサインイン行動が学習されます。
 
-## <a name="leaked-credentials"></a>Leaked credentials
+あり得ない移動は通常、ハッカーがサインインに成功したことのよいインジケーターとなります。ただし、ユーザーが新しい手段を使用して移動している場合、または組織内の他のユーザーが通常使用しない VPN を使用している場合、誤検知が発生する可能性があります。誤検知のもう 1 つの原因は、クライアント IP として誤ってサーバー IP を渡すアプリケーションです。その場合、そのアプリケーションのバックエンドがホストされているデータセンターからサインインが行われたように見えます (多くの場合、それは Microsoft のデータセンターであり、Microsoft 所有の IP アドレスからサインインが行われたように見えます)。このような誤検知のため、このリスク イベントのリスク レベルは "**中**" です。
 
-Leaked credentials are found posted publicly in the dark web by Microsoft security researchers. These credentials are usually found in plain text. They are checked against Azure AD credentials, and if there is a match, they are reported as “Leaked credentials” in Identity Protection.
+##感染しているデバイスからのサインイン
 
-Leaked credentials risk events are classified as a “High” severity risk event, because they provide a clear indication that the user name and password are available to an attacker.
+このリスク イベントの種類は、ボット サーバーと頻繁に通信していることがわかっている、マルウェアに感染したデバイスからのサインインを示します。これは、ボット サーバーと接触していた IP アドレスに対してユーザーのデバイスの IP アドレスを関連付けることによって決定されます。
 
-## <a name="impossible-travel-to-atypical-locations"></a>Impossible travel to atypical locations
+このリスク イベントは、ユーザーのデバイスではなく IP アドレスを識別します。1 つの IP アドレスを複数のデバイスが使用していて、その一部だけがボット ネットワークによって制御されている場合、他のデバイスからサインインすると不要なイベントがトリガーされるため、このリスク イベントは "**低**" に分類されています。
 
-This risk event type identifies two sign-ins originating from geographically distant locations, where at least one of the locations may also be atypical for the user, given past behavior. In addition, the time between the two sign-ins is shorter than the time it would have taken the user to travel from the first location to the second, indicating that a different user is using the same credentials. 
+ユーザーに連絡して、ユーザーのすべてのデバイスをスキャンして安全を確認することをお勧めします。また、ユーザーの個人デバイスが感染している可能性、または前に説明したようにユーザーと同じ IP アドレスから他のユーザーがウイルスに感染したデバイスを使用していた可能性もあります。感染したデバイスは、ウイルス対策ソフトウェアによってまだ識別されていないマルウェアに感染していることが多く、デバイスが感染する原因になるユーザーの悪い習慣を示していることもあります。
 
-This machine learning algorithm that ignores obvious "*false positives*" contributing to the impossible travel condition, such as VPNs and locations regularly used by other users in the organization.  The system has an initial learning period of 14 days during which it learns a new user’s sign-in behavior.
-
-Impossible travel is usually a good indicator that a hacker was able to successfully sign-in. However, false-positives may occur when a user is traveling using a new device or using a VPN that is typically not used by other users in the organization. Another source of false-positives is applications that incorrectly pass server IPs as client IPs, which may give the appearance of sign-ins taking place from the data center where that application’s back-end is hosted (often these are Microsoft datacenters, which may give the appearance of sign-ins taking place from Microsoft owned IP addresses). As a result of these false-positives, the risk level for this risk event is “**Medium**”.
-
-##<a name="sign-ins-from-infected-devices"></a>Sign-ins from infected devices
-
-This risk event type identifies sign-ins from devices infected with malware, that are known to actively communicate with a bot server. This is determined by correlating IP addresses of the user’s device against IP addresses that were in contact with a bot server. 
-
-This risk event identifies IP addresses, not user devices. If several devices are behind a single IP address, and only some are controlled by a bot network, sign-ins from other devices my trigger this event unnecessarily, which is the reason for classifying this risk event as “**Low**”.  
-
-We recommend that you contact the user and scan all the user's devices. It is also possible that a user's personal device is infected, or as mentioned earlier, that someone else was using an infected device from the same IP address as the user. Infected devices are often infected by malware that have not yet been identified by anti-virus software, and may also indicate as bad user habits that may have caused the device to become infected.
-
-For more information about how to address malware infections, see the [Malware Protection Center](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
+マルウェア感染に対処する方法の詳細については、[マルウェア対策センター](http://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409)を参照してください。
 
 
-## <a name="sign-ins-from-anonymous-ip-addresses"></a>Sign-ins from anonymous IP addresses
+## 匿名の IP アドレスからのサインイン
 
-This risk event type identifies users who have successfully signed in from an IP address that has been identified as an anonymous proxy IP address. These proxies are used by people who want to hide their device’s IP address, and may be used for malicious intent.
+このリスク イベントの種類は、匿名プロキシ IP アドレスとして識別されている IP アドレスからのサインインにユーザーが成功したことを示します。このようなプロキシは、自分のデバイスの IP アドレスを隠したいユーザーによって使用され、悪意のある目的で使用される場合があります。
 
-We recommend that you immediately contact the user to verify if they were using anonymous IP addresses. The risk level for this risk event type is “**Medium**” because in itself an anonymous IP is not a strong indication of an account compromise.
+直ちにユーザーに連絡し、匿名 IP アドレスを使用していたかどうかを確認することをお勧めします。匿名 IP 自体はアカウント侵害を強く示しているわけではないので、このリスク イベントの種類のリスク レベルは "**中**" です。
 
-## <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Sign-ins from IP addresses with suspicious activity
+## 不審なアクティビティのある IP アドレスからのサインイン
 
-This risk event type identifies IP addresses from which a high number of failed sign-in attempts were seen, across multiple user accounts, over a short period of time. This matches traffic patterns of IP addresses used by attackers, and is a strong indicator that accounts are either already or are about to be compromised. This is a machine learning algorithm that ignores obvious "*false-positives*", such as IP addresses that are regularly used by other users in the organization.  The system has an initial learning period of 14 days where it learns the sign-in behavior of a new user and new tenant.
+このリスク イベントの種類は、短期間に複数のユーザー アカウントで多数のサインイン試行失敗が検出された IP アドレスを示します。これは攻撃者によって使用された IP アドレスのトラフィック パターンと一致し、アカウントが既に侵害されたこと、または侵害されようとしていることを示す強いインジケーターです。これは、組織内の他のユーザーがよく使用する IP アドレスなど、明確な "*誤検知*" を無視する機械学習アルゴリズムです。システムには 14 日間の初期学習期間があり、その間に新しいユーザーおよび新しいテナントのサインイン行動が学習されます。
 
-We recommend that you contact the user to verify if they actually signed in from an IP address that was marked as suspicious. The risk level for this event type is “**Medium**” because several devices may be behind the same IP address, while only some may be responsible for the suspicious activity. 
+ユーザーに問い合わせて、疑わしい IP アドレスから実際にサインインしたかどうかを確認することをお勧めします。同じ IP アドレスを使用する複数のデバイスの一部だけが疑わしいアクティビティの原因になっている可能性があるため、このイベント種類のリスク レベルは "**中**" です。
 
 
-## <a name="sign-in-from-unfamiliar-locations"></a>Sign-in from unfamiliar locations
+## 未知の場所からのサインイン
 
-This risk event type is a real-time sign-in evaluation mechanism that considers past sign-in locations (IP, Latitude / Longitude and ASN) to determine new / unfamiliar locations. The system stores information about previous locations used by a user, and considers these “familiar” locations. The risk even is triggered when the sign-in occurs from a location that's not already in the list of familiar locations. The system has an initial learning period of 14 days, during which it does not flag any new locations as unfamiliar locations. The system also ignores sign-ins from familiar devices, and locations that are geographically close to a familiar location. <br>
-Unfamiliar locations can provide a strong indication that an attacker is able attempting to use a stolen identity. False-positives may occur when a user is traveling, trying out a new device or uses a new VPN. As a result of these false positives, the risk level for this event type is “**Medium**”.
+このリスク イベントの種類はリアルタイム サインイン評価メカニズムであり、過去のサインインの場所 (IP、緯度/経度、ASN) を考慮して、新規/未知の場所を決定します。システムは、ユーザーが過去に使用した場所に関する情報を保持し、これらを "既知の" 場所と考えます。既知の場所のリストにまだ含まれない場所からサインインが行われると、リスク イベントがトリガーされます。システムには 14 日間の初期学習期間があり、この間はどの新しい場所にも未知の場所としてのフラグは設定されません。また、システムは、既知のデバイスからのサインイン、および既知の場所と地理的に近い場所からのサインインも無視します。<br>未知の場所は、攻撃者が盗まれた ID を使用しようとしていることを強く示している場合があります。ユーザーが移動しているとき、新しいデバイスを試した場合、新しい VPN を使用したときなど、誤検知が発生することがあります。このような誤検知のため、このリスク イベントの種類のリスク レベルは "**中**" です。
 
 
 
 
 
-## <a name="see-also"></a>See also
+## 関連項目
 
 - [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

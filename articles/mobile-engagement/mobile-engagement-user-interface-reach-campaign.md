@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Mobile Engagement User Interface - Reach Campaign" 
-   description="Laern how to create and manage push notification campaigns using Azure Mobile Engagement" 
+   pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - リーチ キャンペーン" 
+   description="Azure モバイル エンゲージメントを使用して、プッシュ通知キャンペーンを作成し、管理する方法" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -17,158 +17,156 @@
    ms.author="piyushjo"/>
 
 
+# プッシュ通知キャンペーンを作成し、管理する方法
+UI の [Reach (リーチ)] セクションを使用して、プッシュ通知の送信に必要なすべての情報を指定することで、複雑な式を用いた新しいプッシュ キャンペーンを作成できます。プッシュ キャンペーンのオプションは、次の4 つの種類のキャンペーンによって少し異なります。アナウンス、アンケート、データ プッシュ、タイル (Windows Phone の場合のみ)。
 
-# <a name="how-to-create-and-manage-push-notification-campaigns"></a>How to create and manage push notification campaigns
-You can use the Reach section of the UI to create a new Push campaign with a complex formula by providing all the information you need to send a push notification. The options of a Push campaign vary slightly depending on the four campaign types: Announcements, Polls, Data Pushes, and Tiles (Windows Phone only).
-
-### <a name="option-applies-to:"></a>Option Applies to:
-- Languages:    All (Announcements, Polls, Data Pushes, Tiles)
-- Campaign:    All (Announcements, Polls, Data Pushes, Tiles)
-- Notification:     Announcements, Polls
-- Content:    Unique for each campaign type
-- Audience:     All (Announcements, Polls, Data Pushes, Tiles)
-- Time frame:     Announcements, Polls, Tiles
-- Test:    All (Announcements, Polls, Data Pushes, Tiles)
+### オプションの適用対象:
+- 言語： すべて (アナウンス、アンケート、データ プッシュ、タイル)
+- キャンペーン： すべて (アナウンス、アンケート、データ プッシュ、タイル)
+- 通知： アナウンス、アンケート
+- コンテンツ： キャンペーンの種類ごとに異なります
+- 対象ユーザー： すべて (アナウンス、アンケート、データ プッシュ、タイル)
+- 期間： アナウンス、アンケート、タイル
+- テスト： すべて(アナウンス、アンケート、データ プッシュ、タイル)
  
-![Reach-Campaign1][20]
+![リーチ - キャンペーン 1][20]
 
-## <a name="languages"></a>Languages
-You can use the Languages drop-down menu to send a different version of your Push to devices that are set to use different languages. By default, all devices will receive the same Push regardless of what language they are set to use. Users with their device set to a different language will receive the Default Language version of the Push. Many of the push campaign options allow you to specify alternate content for each of the additional languages you select. 
+## 言語
+[Language (言語)] ドロップダウン メニューを使用して、異なる言語に設定されたデバイスに、異なるバージョンのプッシュを送信できます。既定では、デバイスに設定された言語に関係なくすべてのデバイスに同じプッシュが送信されます。異なる言語のデバイスを使用しているユーザーは、既定の言語バージョンのプッシュを受信します。プッシュ キャンペーンには、選択した追加言語ごとに別のコンテンツを指定できるオプションがたくさんあります。
  
-![Reach-Campaign2][21]
+![リーチ - キャンペーン 2][21]
 
-### <a name="language-differences-apply-to:"></a>Language differences apply to:
-- Languages:    Unique languages may be selected in addition to the default language
-- Campaign:    Same for all languages
-- Notification:    Unique for each language in addition to the default language
-- Content:    Unique for each language in addition to the default language
-- Audience:     May be filtered by a separate language criterion
-- Time frame:     Same for all languages
-- Test:    May be sent to each language at a time
+### 言語ごとの違い:
+- 言語： 既定の言語に加えて固有の言語を選択できます
+- キャンペーン： すべての言語で同一
+- 通知： 既定の言語に加えて言語ごとに固有
+- コンテンツ： 既定の言語に加えて言語ごとに固有
+- 対象ユーザー： 言語ごとの条件でフィルター処理できます
+- 期間： すべての言語で同一
+- テスト： 言語ごとに一度に送信できます
  
-### <a name="supported-languages:"></a>Supported Languages:
-- Arabic (ar) 
-- Bulgarian (bg) 
-- Catalan (ca) 
-- Chinese (zh) 
-- Croatian (hr) 
-- Czech (cs) 
-- Danish (da) 
-- Dutch (nl) 
-- English (en) 
-- Finnish (fi) 
-- French (fr) 
-- German (de) 
-- Greek (el) 
-- Hebrew (he) 
-- Hindi (hi) 
-- Hungarian (hu) 
-- Indonesian (id) 
-- Italian (it) 
-- Japanese (ja) 
-- Korean (ko) 
-- Latvian (lv) 
-- Lithuanian (lt) 
-- Malay (macrolanguage) (ms) 
-- Norwegian Bokmål (nb) 
-- Polish (pl) 
-- Portuguese (pt) 
-- Romanian (ro) 
-- Russian (ru) 
-- Serbian (sr) 
-- Slovak (sk) 
-- Slovenian (sl) 
-- Spanish (es) 
-- Swedish (sv) 
-- Tagalog (tl) 
-- Thai (th) 
-- Turkish (tr) 
-- Ukrainian (uk) 
-- Vietnamese (vi) 
+### サポートされている言語:
+- アラビア語 (ar)
+- ブルガリア語 (bg)
+- カタルニア語 (ca)
+- 中国語 (zh)
+- クロアチア語 (hr)
+- チェコ語 (cs)
+- デンマーク語 (da)
+- オランダ語 (nl)
+- 英語 (en)
+- フィンランド語 (fi)
+- フランス語 (fr)
+- ドイツ語 (de)
+- ギリシャ語 (el)
+- ヘブライ語 (he)
+- ヒンディー語 (hi)
+- ハンガリー語 (hu)
+- インドネシア語 (id)
+- イタリア語 (it)
+- 日本語 (ja)
+- 韓国語 (ko)
+- ラトビア語 (lv)
+- リトアニア語 (lt)
+- マレー語 (マクロ言語) (ms)
+- ノルウェー ブークモール (nb)
+- ポーランド語 (pl)
+- ポルトガル語 (pt)
+- ルーマニア語 (ro)
+- ロシア語 (ru)
+- セルビア語 (sr)
+- スロバキア語 (sk)
+- スロベニア語 (sl)
+- スペイン語 (es)
+- スウェーデン語 (sv)
+- タガログ語 (tl)
+- タイ語 (th)
+- トルコ語 (tr)
+- ウクライナ語 (uk)
+- ベトナム語 (vi)
  
-## <a name="campaign"></a>Campaign
-You can use the Campaign section to set the name and category of your campaign as well as if you plan to ignore the audience section of a Push campaign and send this campaign via the Reach API (and some elements with the low level Push API) instead. Categories can be used with a custom notification template to control in-app notifications based on predefined settings. You can get a list of your existing “Categories” via the Reach API.
+## キャンペーン
+[Campaign (キャンペーン)] セクションを使用して、キャンペーンの名前とカテゴリを設定したり、プッシュ キャンペーンの対象ユーザーを無視してこのキャンペーンを Reach API (と低レベル Push API の一部の要素) 経由で送信するよう選択したりできます。カテゴリをカスタムの通知テンプレートと共に使用すると、定義済みの設定に基づいてアプリ内の通知を管理できます。既存の "カテゴリ" の一覧は、Reach API 経由で取得できます。
 
-> Warning: If you use the "Ignore Audience, push will be sent to users via the API" option in the "Campaign" section of a Reach campaign, the campaign will NOT automatically send, you will need to send it manually via the Reach API.
+> 警告： リーチ キャンペーンの [Campaign (キャンペーン)] セクションで [Ignore Audience, push will be sent to users via the API (対象ユーザーを無視して API 経由でユーザーにプッシュを送信する)] オプションを使用すると、キャンペーンは自動的に送信されず、Reach API 経由で手動で送信する必要があります。
  
-![Reach-Campaign3][22]
+![リーチ - キャンペーン 3][22]
  
-### <a name="option-applies-to:"></a>Option Applies to:
-- Name:    All
-- Category:    Announcements, Polls
-- Ignore Audience, push will be sent to users via the API:    All
+### オプションの適用対象:
+- 名前: すべて
+- カテゴリ： アナウンス、アンケート
+- 対象ユーザーを無視すると、プッシュは API 経由でユーザーに送信されます: すべて
  
-## <a name="notification"></a>Notification
-You can use the Notification section to set basic settings for your push including: The title of the Push, the message, an in-app image, or if it is dismissible. Many notification settings are specific to the platform of your device. You can select whether your push will be sent "in app" or "out of app" or both. (Remember that users can "opt-in" or "opt-out" of "out of app" Pushes at the Operating System level on their devices, and Azure Mobile Engagement will not be able to override this setting. Also remember that the Reach API handles "in app" and "out of app" Pushes. The Push API can be used to handle "out of app" pushes too.) Pushes can be customized with pictures or HTML content, including deep links for linking outside of your App or to another location in your App (Android SDK 2.1.0 or later intent categories required). You can change the icon or iOS badge, and send either text or web content (a popup with html content, URL link to another location either inside or outside of the app). You can also make Android devices ring or vibrate with the Push. (Remember that you will need the correct SDK permissions in your Android manifest file to ring or vibrate a device.) There is currently no industry standard for Android "Big Picture" sizes, since screen sizes are different on every device, but 400x100 pictures work on almost any screen size.
+## 通知
+通知のセクションを使用して、プッシュ、メッセージ、アプリ内の画像、消去可能かどうかについてプッシュの基本的な設定を設定できます。ほとんどの通知設定は、デバイスのプラットフォーム固有です。プッシュを "アプリ内" に送るか、"アプリ外" に送るか、その両方に送るかを選択できます(ユーザーはデバイスのオペレーティング システム レベルで "アプリ外" プッシュを "オプトイン" するか "オプトアウト" にするかを選択でき、Azure モバイル エンゲージメントではこの設定をオーバーライドできません。また、Reach API では "アプリ内" プッシュと "アプリ外" プッシュを処理します。Push API を使用して "アプリ外" プッシュを処理することも可能です)。 プッシュは画像や、アプリ外へのリンクやアプリ内の他の場所を示すディープ リンクなどの HTML コンテンツを使用してカスタマイズできます (Android SDK 2.1.0 以降のインテント カテゴリが必要)。アイコンや iOS バッジを変更したり、テキストまたは Web コンテンツ (html コンテンツ付きのポップアップ、アプリ内外の他の場所への URL リンク) を送信したりできます。また、Android デバイスでプッシュの受信時に着信音を鳴らしたりバイブレートさせることもできます(デバイスの着信音を鳴らしたりバイブレートさせたりするには、Android マニフェスト ファイルに対する正しい SDK の権限が必要です)。 端末ごとに画面サイズが異なるため、現在 Android の「全体像」サイズの業界標準はありませんが、400ｘ100 の画像がほぼすべての画面サイズに適していると言われています。
 
-### <a name="delivery-types:"></a>Delivery Types:
--    Out of app only: the notification will be delivered when the user does not use the application.
-- The out of app only notification requires a certificate from Apple or Google (APNS or GCM certificate).
-- In-app only: The notification appears only when the application is running.
-- The notification uses the Capptain delivery system to reach the user. You can fully customize the visual layout/display of your push.
-- Anytime: This option ensures that you send a notification either the application is running or not.
+### 配信の種類:
+-    Out of app only (アプリ外のみ): ユーザーがアプリケーションを使用していないときに通知が配信されます。
+- Out of app only の通知の場合、Apple や Google からの証明書 (APNS や GCM 証明書) が必要です。
+- アプリ内のみ： アプリケーションを実行中にのみ通知が表示されます。
+- 通知は Capptain の配信システムを使用します。プッシュの視覚的なレイアウトや表示は自由にカスタマイズできます。
+- いつでも： このオプションでは、アプリケーションが実行されているかどうかにかかわらず通知が送信されます。
 
  
-![Reach-Campaign4][23]
+![リーチ - キャンペーン 4][23]
 
-### <a name="option-applies-to:"></a>Option Applies to:
-- Notification:     Announcements, Polls
+### オプションの適用対象:
+- 通知： アナウンス、アンケート
  
-## <a name="content"></a>Content
-You can use the Content section to modify the content of your Announcements, Polls, Data Pushes, and Tiles (Windows Phone only). The Content setting of Push campaigns is specific to the type of campaign. 
+## コンテンツ
+[Content (コンテンツ)] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル (Windows Phone のみ) のコンテンツを変更できます。プッシュ キャンペーンの [Contents (コンテンツ)] 設定は、キャンペーンの種類に固有です。
 
-### <a name="see-also"></a>See also
-- [UI Documentation - Reach - Push Content][Link 29]
+### 関連項目
+- [UI ドキュメント - Reach - プッシュのコンテンツ][Link 29]
  
-![Reach-Campaign5][24]
+![リーチ - キャンペーン 5][24]
 
-## <a name="audience"></a>Audience
-You can use the Audience section to define a standard list of items to limit your campaign or limits your campaign based on customized criteria. The standard set of options to Limit your Audience allows you to push to either new or old users or native push users only. You can also set a quota to limit the number of users who receive the push. You can manually Edit the expression for how your campaign is filtered to include one or more criterion to target users. You can manually type an audience expression. Such an expression must explicitly define the relation between criteria. A criterion is described by an identifier that must start with a capital letter and cannot contain spaces. The relation between the criteria can be described using 'and', 'or', 'not' operators as well as '(', ')'. Example: "Criterion1 or (Criterion1 and not Criterion2)".
+## 対象となる読者
+[Audience (対象ユーザー)] セクションを使用して、カスタマイズした条件に基づいてキャンペーンを制限する項目の標準リストを定義できます。対象ユーザーを制限するオプションでは、プッシュの送信先を、新規ユーザー、既存ユーザー、ネイティブ プッシュのユーザーのみ、のいずれかに設定できます。また、プッシュを受信するユーザー数を制限するクォータを設定することも可能です。キャンペーンの式を手動で編集して、対象ユーザーを指定する 1 つ以上の条件を追加してキャンペーンのフィルター方法を決めることができます。対象ユーザーの式は手動で入力できます。この式では、条件間のリレーションシップを明示的に定義する必要があります。条件は、大文字で始まる識別子を使用する必要があり、スペースを含めることはできません。条件間のリレーションシップは、and、or、not 演算子と '(', ')' を使用して記述します。例： "Criterion1 or (Criterion1 and not Criterion2)"
 
-> Note: With a large audience included in campaigns, the server side targeting scan can be slow, especially if you attempt to start multiple campaigns at the same time.
+> 注： キャンペーンに多数の対象ユーザーが含まれる場合、特に同時に複数のキャンペーンを開始しようとした場合には、サーバー側のターゲティング スキャンの動作が遅くなることがあります。
 
-- If possible, only start one campaign at a time.
-- At the most, only start four campaigns at a time.
-- Push only to your active users (checkbox "Engage only users who can be reached using Native Push" and "Engage only active users") so that only your users who still have the app installed and use it will need to be scanned.
-Once your audience is defined, you can use the simulate button to find out how many users will receive this Push. This will compute the number of known users potentially targeted by this audience (this is an estimate based on a random sample of users). Be aware that users who have uninstalled the application are also part of this audience, but cannot be reached.
+- 可能な限り、一度に 1 つのキャンペーンのみを開始するようにしてください。
+- 最大でも、一度に開始するキャンペーンは 4 つまでにしてください。
+- アクティブなユーザーにのみプッシュを送信するようにすると ([Engage only users who can be reached using Native Push (ネイティブ プッシュでリーチできるユーザーのみを対象にする)] チェック ボックスと [Engage only active users (アクティブなユーザーのみを対象にする)] チェック ボックス)、現時点でアプリをインストール、使用しているユーザーのみをスキャンできます。対象ユーザーを定義したら、シミュレート ボタンを使用してこの通知の受信者数を確認できます。この操作では、設定した対象ユーザーに当てはまる可能性のある既知のユーザー数が算出されます (ユーザーのランダム サンプルに基づいた概算です)。アプリケーションをアンインストールしたユーザーもこの対象ユーザーに含まれますが、リーチはできませんのでご注意ください。
 
-### <a name="see-also"></a>See also
-- [UI Documentation - Reach - New Push Criterion][Link 28]
+### 関連項目
+- [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
 
-![Reach-Campaign6][25]
+![リーチ - キャンペーン 6][25]
 
-### <a name="edit-expression"></a>Edit expression
-![Reach-Campaign7][26]
+### 式を編集する
+![リーチ - キャンペーン 7][26]
  
-### <a name="limit-your-audience-option-applies-to:"></a>Limit your audience option applies to:
-- Engage only a subset of users:    All (Announcements, Polls, Data Pushes, Tiles)
-- Engage only old users:    All (Announcements, Polls, Data Pushes, Tiles)
-- Engage only new users:    All (Announcements, Polls, Data Pushes, Tiles)
-- Engage only idle users:    Announcements, Polls, Tiles
-- Engage only active users:    All (Announcements, Polls, Data Pushes, Tiles)
-- Engage only users who can be reached using Native Push:     Announcements, Polls
+### 対象ユーザーの制限オプションの適用対象:
+- ユーザーのサブセットのみを対象にする： すべて (お知らせ、アンケート、データ プッシュ、タイル)
+- 既存のユーザーのみを対象にする： すべて (お知らせ、アンケート、データ プッシュ、タイル)
+- 新規のユーザーのみを対象にする： すべて (お知らせ、アンケート、データ プッシュ、タイル)
+- アイドル状態のユーザーのみを対象にする: お知らせ、アンケート、タイル
+- アクティブなユーザーのみを対象にする： すべて (お知らせ、アンケート、データ プッシュ、タイル)
+- ネイティブ プッシュでリーチできるユーザーのみを対象にする: お知らせ、アンケート
  
-## <a name="time-frame"></a>Time Frame
-You can use the Time Frame section to set when the push will be sent or you can leave the time frame blank to start the campaign immediately. Remember that using the end-users' time zone may start the campaign a day earlier than you expect for your end-users in Asia and send small batches of pushes at a time until all time zones in the world match the time frame set for your campaign. Using the end users' time zone can also cause delays in campaigns since it has to request the time from the phone before starting the push.
+## 期間
+[Time Frame (期間)] セクションでは、プッシュの送信時期を設定したり、期間を空白にしてすぐにキャンペーンを開始したりできます。エンド ユーザーのタイムゾーンを使用した場合、アジアのエンド ユーザーには予想よりも 1 日早く送信される場合があり、世界中の全タイムゾーンがキャンペーンで設定した期間に入るまで、プッシュは少しずつ送信されます。また、エンド ユーザーのタイムゾーンに設定すると、プッシュの開始前に携帯端末に時刻を要求する必要があるため、キャンペーンに遅れが生じる可能性があります。
 
-> Note: Campaigns without an end date can cache pushes locally and still display them after you manually complete campaigns. To avoid this behavior, specific an end time for campaigns.
+> 注： キャンペーンに終了日を設定しない場合、プッシュがローカルに保存され、キャンペーンを手動で終了したあとも表示される可能性があります。このような動作を避けるには、キャンペーンの終了日を指定してください。
 
-### <a name="see-also"></a>See also
-- [Reach - How Tos – Scheduling][Link 3] 
+### 関連項目
+- [方法 – スケジュール設定][Link 3]
  
-![Reach-Campaign8][27]
+![リーチ - キャンペーン 8][27]
 
-### <a name="settings-apply-to:"></a>Settings Apply to:
-- Time frame:     Announcements, Polls, Tiles
+### 設定の適用対象:
+- 期間： アナウンス、アンケート、タイル
  
-## <a name="test"></a>Test
-You can use the Test section to send this push to your own test device before saving the campaign. If you have configured any custom languages for this campaign, you can test the push in each language. You can setup a test device from “My Account”.
-> Note: No server side data is logged when you use the button to "test" pushes, data is only logged for real push campaigns.
+## テスト
+[Test (テスト)] セクションを使用して、キャンペーンを保存する前にこのプッシュを独自のテスト デバイスに送信できます。キャンペーンにカスタムの言語を構成している場合は、各言語でプッシュをテストできます。テスト デバイスは、[My Account (マイ アカウント)] でセットアップできます。
+> 注： プッシュを "テスト" するボタンを使用するときは、サーバー側のデータは記録されません。データの記録は、実際のプッシュ キャンペーンでのみ行われます。
 
-### <a name="see-also"></a>See also
-- [UI Documentation - My Account][Link 14]
+### 関連項目
+- [UI ドキュメント - My Account (マイ アカウント)][Link 14]
  
-![Reach-Campaign9][28]
+![リーチ - キャンペーン 9][28]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -262,8 +260,4 @@ You can use the Test section to send this push to your own test device before sa
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

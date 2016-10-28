@@ -1,5 +1,5 @@
 
-The code for all of the functions in a given function app lives in a root folder that contains a host configuration file and one or more subfolders, each of which contain the code for a separate function, as in the following example
+特定関数アプリのすべての関数のコードは、ホスト構成ファイルおよび 1 つまたは複数のサブフォルダーを含むルート フォルダーに格納され、次の例に示すように、各フォルダーには関数ごとのコードが含まれます。
 
 ```
 wwwroot
@@ -15,10 +15,8 @@ wwwroot
  | | - run.csx
 ```
 
-The *host.json* file contains some runtime-specific configuration and sits in the root folder of the function app. For information on settings that are available, see [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) in the WebJobs.Script repository wiki.
+*host.json* ファイルにはランタイム固有の構成が含まれ、関数アプリのルート フォルダーに格納されています。利用可能な設定に関する詳細については、WebJobs.Script リポジトリ wiki の [host.json](https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json) を参照してください。
 
-Each function has a folder that contains one or more code files, the function.json configuration and other dependencies.
+各関数には、1 つまたは複数のコード ファイル、function.json 構成、およびその他の依存関係を含むフォルダーが割り当てられています。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

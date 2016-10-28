@@ -1,49 +1,48 @@
 <properties
-    pageTitle="Use Hadoop Sqoop in HDInsight | Microsoft Azure"
-    description="Learn how to use HDInsight .NET SDK to run Sqoop import and export between an Hadoop cluster and an Azure SQL database."
-    editor="cgronlun"
-    manager="jhubbard"
-    services="hdinsight"
-    documentationCenter=""
-    tags="azure-portal"
-    authors="mumian"/>
+	pageTitle="HDInsight での Hadoop Sqoop の使用 | Microsoft Azure"
+	description="HDInsight .NET SDK を使用して、Hadoop クラスターと Azure SQL Database 間で Sqoop のインポートおよびエクスポートを実行する方法について説明します。"
+	editor="cgronlun"
+	manager="jhubbard"
+	services="hdinsight"
+	documentationCenter=""
+	tags="azure-portal"
+	authors="mumian"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
    ms.date="09/14/2016"
-    ms.author="jgao"/>
+	ms.author="jgao"/>
 
-
-#<a name="run-sqoop-jobs-using-.net-sdk-for-hadoop-in-hdinsight"></a>Run Sqoop jobs using .NET SDK for Hadoop in HDInsight
+#HDInsight で .NET SDK for Hadoop を使用した Sqoop ジョブの実行
 
 [AZURE.INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Learn how to use HDInsight .NET SDK to run Sqoop jobs in HDInsight to import and export between HDInsight cluster and Azure SQL database or SQL Server database.
+HDInsight .NET SDK を使用して、HDInsight クラスターと Azure SQL Database または SQL Server データベース間でインポートとエクスポートを実行する Sqoop ジョブを HDInsight で実行する方法について説明します。
 
-> [AZURE.NOTE] The steps in this article can be used with either a Windows-based or Linux-based HDInsight cluster; however, these steps will only work from a Windows client. Use the tab selector on the top of this article to choose other methods.
+> [AZURE.NOTE] この記事の手順は、Windows ベースまたは Linux ベースの HDInsight クラスターで使用できます。ただし、これらの手順は Windows クライアントでのみ機能します。他の方法を選択するには、この記事の上部にあるタブ セレクターをクリックしてください。
 
-###<a name="prerequisites"></a>Prerequisites
+###前提条件
 
-Before you begin this tutorial, you must have the following:
+このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **A Hadoop cluster in HDInsight**. See [Create cluster and SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database).
+- **HDInsight の Hadoop クラスター**。「[クラスターと SQL Database を作成します](hdinsight-use-sqoop.md#create-cluster-and-sql-database)」をご覧ください。
 
-## <a name="run-sqoop-using-.net-sdk"></a>Run Sqoop using .NET SDK
+## .NET SDK を使用した Sqoop の実行
 
-The HDInsight .NET SDK provides .NET client libraries, which makes it easier to work with HDInsight clusters from .NET. In this section, you will create a C# console application to export the hivesampletable to the SQL Database table you created earlier in this tutorials.
+HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作できる .NET クライアント ライブラリを提供します。このセクションでは、C# コンソール アプリケーションを作成し、このチュートリアルで作成した SQL Database テーブルに hivesampletable をエクスポートします。
 
-**To submit a Sqoop job**
+**Sqoop ジョブを送信するには**
 
-1. Create a C# console application in Visual Studio.
-2. From the Visual Studio Package Manager Console, run the following Nuget command to import the package.
+1. Visual Studio で、C# コンソール アプリケーションを作成します。
+2. Visual Studio パッケージ マネージャー、コンソールから、次の Nuget コマンドを実行し、パッケージをインポートします。
 
         Install-Package Microsoft.Azure.Management.HDInsight.Job
         
-3. Use the following code in the Program.cs file:
+3. Program.cs ファイルで次のコードを使用します。
 
         using System.Collections.Generic;
         using Microsoft.Azure.Management.HDInsight.Job;
@@ -107,26 +106,20 @@ The HDInsight .NET SDK provides .NET client libraries, which makes it easier to 
             }
         }
         
-4. Press **F5** to run the program. 
+4. **F5** キーを押して、プログラムを実行します。
 
-##<a name="limitations"></a>Limitations
+##制限事項
 
-* Bulk export - With Linux-based HDInsight, the Sqoop connector used to export data to Microsoft SQL Server or Azure SQL Database does not currently support bulk inserts.
+* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 
-* Batching - With Linux-based HDInsight, When using the `-batch` switch when performing inserts, Sqoop will perform multiple inserts instead of batching the insert operations.
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-Now you have learned how to use Sqoop. To learn more, see:
+ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
 
-- [Use Oozie with HDInsight](hdinsight-use-oozie.md): Use Sqoop action in an Oozie workflow.
-- [Analyze flight delay data using HDInsight](hdinsight-analyze-flight-delay-data.md): Use Hive to analyze flight delay data, and then use Sqoop to export data to an Azure SQL database.
-- [Upload data to HDInsight](hdinsight-upload-data.md): Find other methods for uploading data to HDInsight/Azure Blob storage.
+- [HDInsight での Oozie の使用](hdinsight-use-oozie.md): Oozie ワークフローで Sqoop アクションを使用します。
+- [HDInsight を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md): Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
+- [HDInsight へのデータのアップロード](hdinsight-upload-data.md): HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

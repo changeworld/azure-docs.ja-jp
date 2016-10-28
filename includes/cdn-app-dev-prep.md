@@ -1,64 +1,60 @@
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-Before we can write CDN management code, we need to do some preparation to enable our code to interact with the Azure Resource Manager.  To do this, you'll need to:
+CDN 管理コードを記述する前に、使用しているコードが Azure Resource Manager と対話できるように準備する必要があります。そのために必要な作業を次に示します。
 
-* Create a resource group to contain the CDN profile we create in this tutorial
-* Configure Azure Active Directory to provide authentication for our application
-* Apply permissions to the resource group so that only authorized users from our Azure AD tenant can interact with our CDN profile
+* このチュートリアルで作成する CDN プロファイルを格納するリソース グループを作成する
+* Azure Active Directory を構成して、アプリケーションの認証を提供する
+* リソース グループにアクセス許可を適用して、Azure AD テナントの承認されたユーザーのみが CDN プロファイルを操作できるようにする
 
-### <a name="creating-the-resource-group"></a>Creating the resource group
+### リソース グループの作成
 
-1. Log into the [Azure Portal](https://portal.azure.com).
+1. [Azure ポータル](https://portal.azure.com)にログインします。
 
-2. Click the **New** button in the upper left, and then **Management**, and **Resource Group**.
-    
-    ![Creating a new resource group](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
+2. 左上の **[新規]** ボタンをクリックし、**[管理]**、**[リソース グループ]** の順にクリックします。
+	
+	![Creating a new resource group](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)
 
-3. Call your resource group *CdnConsoleTutorial*.  Select your subscription and choose a location near you.  If you wish, you may click the **Pin to dashboard** checkbox to pin the resource group to the dashboard in the portal.  This will make it easier to find later.  After you've made your selections, click **Create**.
+3. リソース グループに *CdnConsoleTutorial* という名前を付けます。サブスクリプションを選択し、近くの場所を選択します。必要に応じて **[ダッシュボードにピン留めする]** チェック ボックスをオンにして、リソース グループをポータルのダッシュボードにピン留めします。これにより、後で見つけるのが容易になります。必要な項目を選択したら、**[作成]** をクリックします。
 
-    ![Naming the resource group](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
+	![Naming the resource group](./media/cdn-app-dev-prep/cdn-new-rg-2-include.png)
 
-4. After the resource group is created, if you didn't pin it to your dashboard, you can find it by clicking **Browse**, then **Resource Groups**.  Click the resource group to open it.  Make a note of your **Subscription ID**.  We'll need it later.
+4. ダッシュボードにリソース グループをピン留めしていない場合は、**[参照]**、**[リソース グループ]** の順にクリックして、作成したリソース グループを見つけることができます。このリソース グループをクリックして開きます。**サブスクリプション ID** をメモしておきます。この情報は後で必要になります。
 
-    ![Naming the resource group](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
+	![Naming the resource group](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
-### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>Creating the Azure AD application and applying permissions
+### Azure AD アプリケーションの作成とアクセス許可の適用
 
-There are two approaches to app authentication with Azure Active Directory: Individual users or a service principal. A service principal is similar to a service account in Windows.  Instead of granting a particular user permissions to interact with the CDN profiles, we instead grant the permissions to the service principal.  Service principals are generally used for automated, non-interactive processes.  Even though this tutorial is writing an interactive console app, we'll focus on the service principal approach.
+Azure Active Directory でのアプリの認証には、個別ユーザーか、サービス プリンシパルかという 2 つのアプローチがあります。サービス プリンシパルは、Windows のサービス アカウントと似ています。CDN プロファイルとやり取りするアクセス許可を特定のユーザーに付与する代わりに、サービス プリンシパルにアクセス許可を付与します。通常、サービス プリンシパルは、自動化された非対話型プロセスに使用されます。このチュートリアルでは対話型コンソール アプリを作成していますが、サービス プリンシパルのアプローチに注目します。
 
-Creating a service principal consists of several steps, including creating an Azure Active Directory application.  To do this, we're going to [follow this tutorial](../articles/resource-group-create-service-principal-portal.md).
+サービス プリンシパルの作成は、Azure Active Directory アプリケーションの作成を含むいくつかの手順で構成されます。これを行うために、[このチュートリアルに従います](../articles/resource-group-create-service-principal-portal.md)。
 
-> [AZURE.IMPORTANT] Be sure to follow all the steps in the [linked tutorial](../articles/resource-group-create-service-principal-portal.md).  It is *extremely important* that you complete it exactly as described.  Make sure to note your **tenant ID**, **tenant domain name** (commonly a *.onmicrosoft.com* domain unless you've specified a custom domain), **client ID**, and **client authentication key**, as we will need these later.  Be very careful to guard your **client ID** and **client authentication key**, as these credentials can be used by anyone to execute operations as the service principal. 
->   
-> When you get to the step named [Configure multi-tenant application](../articles/resource-group-create-service-principal-portal.md#configure-multi-tenant-application), select **No**.
+> [AZURE.IMPORTANT] [リンク先のチュートリアル](../articles/resource-group-create-service-principal-portal.md)のすべての手順を実行してください。説明に従って正確に手順を完了することが "非常に重要" です。**テナント ID**、**テナントのドメイン名** (ドメイン カスタム ドメインが指定されている場合を除き、通常は *.onmicrosoft.com* ドメイン)、**クライアント ID**、**クライアントの認証キー**をメモしておきます。これらの情報は後で必要になります。**クライアント ID** と**クライアントの認証キー**の取り扱いには特に注意してください。これらの資格情報を使用すると、だれでもサービス プリンシパルとして操作を実行できます。
+> 	
+> 「[マルチテナント アプリケーションを構成する](../articles/resource-group-create-service-principal-portal.md#configure-multi-tenant-application)」の手順で、**[いいえ]** を選択します。
 > 
-> When you get to the step [Assign application to role](../articles/resource-group-create-service-principal-portal.md#assign-application-to-role), use the resource group we created earlier,  *CdnConsoleTutorial*, but instead of the **Reader** role, assign the **CDN Profile Contributor** role.  After you assign the application the **CDN Profile Contributor** role on your resource group, return to this tutorial. 
+> 「[アプリケーションをロールに割り当てる](../articles/resource-group-create-service-principal-portal.md#assign-application-to-role)」の手順で、前に作成したリソース グループ *CdnConsoleTutorial* を使用します。ただし、**閲覧者**ロールではなく、**CDN プロファイルの投稿者**ロールを割り当てます。アプリケーションにリソース グループの **CDN プロファイルの投稿者**ロールを割り当てたら、このチュートリアルに戻ります。
 
-Once you've created your service principal and assigned the **CDN Profile Contributor** role, the **Users** blade for your resource group should look similar to this.
+サービス プリンシパルを作成し、**CDN プロファイルの投稿者**ロールを割り当てた後、リソース グループの **[ユーザー]** ブレードの表示は次のようになります。
 
 ![Users blade](./media/cdn-app-dev-prep/cdn-service-principal-include.png)
 
 
-### <a name="interactive-user-authentication"></a>Interactive user authentication
+### 対話型ユーザー認証
 
-If, instead of a service principal, you'd rather have interactive individual user authentication, the process is very similar to that for a service principal.  In fact, you will need to follow the same procedure, but make a few minor changes.
+サービス プリンシパルの代わりに対話型の個別ユーザー認証を行う場合でも、そのプロセスはサービス プリンシパルを使用する場合とよく似ています。実際に行う手順は同じですが、いくつか細かい点が異なります。
 
-> [AZURE.IMPORTANT] Only follow these next steps if you are choosing to use individual user authentication instead of a service principal.
+> [AZURE.IMPORTANT] 次の手順は、サービス プリンシパルの代わりに個別ユーザー認証を行う場合にのみ使用してください。
 
-1. When creating your application, instead of **Web Application**, choose **Native application**. 
-    
-    ![Native application](./media/cdn-app-dev-prep/cdn-native-application-include.png)
-    
-2. On the next page, you will be prompted for a **redirect URI**.  The URI won't be validated, but remember what you entered.  You'll need it later. 
+1. アプリケーションを作成するときに、**Web アプリケーション**ではなく**ネイティブ アプリケーション**の項目を選択します。
+	
+	![Native application](./media/cdn-app-dev-prep/cdn-native-application-include.png)
+	
+2. 次のページで、**リダイレクト URI** の入力を求められます。URI は検証されません。入力した内容を覚えておいてください。この情報は後で必要になります。
 
-3. There is no need to create a **client authentication key**.
+3. **クライアント認証キー**を作成する必要はありません。
 
-4. Instead of assigning a service principal to the **CDN Profile Contributor** role, we're going to assign individual users or groups.  In this example, you can see that I've assigned  *CDN Demo User* to the **CDN Profile Contributor** role.  
-    
-    ![Individual user access](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
+4. サービス プリンシパルを **CDN プロファイルの投稿者**ロールに割り当てる代わりに、個別ユーザーまたはグループに割り当てます。この例では、*CDN Demo User* を **CDN プロファイルの投稿者**ロールに割り当てています。
+	
+	![Individual user access](./media/cdn-app-dev-prep/cdn-aad-user-include.png)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

@@ -6,7 +6,4 @@
 - [Python](../articles/service-bus/service-bus-python-how-to-use-topics-subscriptions.md)
 - [Ruby](../articles/service-bus/service-bus-ruby-how-to-use-topics-subscriptions.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO4-->

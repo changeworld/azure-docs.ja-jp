@@ -1,100 +1,94 @@
 <properties
-    pageTitle="Troubleshoot Application Proxy | Microsoft Azure"
-    description="Covers how to troubleshoot errors in Azure AD Application Proxy."
-    services="active-directory"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor=""/>
+	pageTitle="アプリケーション プロキシのトラブルシューティング | Microsoft Azure"
+	description="Azure AD アプリケーション プロキシのエラーのトラブルシューティングを行う方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/19/2016"
-    ms.author="kgremban"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/19/2016"
+	ms.author="kgremban"/>
 
 
 
+# アプリケーション プロキシのトラブルシューティング
 
-# <a name="troubleshoot-application-proxy"></a>Troubleshoot Application Proxy
+発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
 
-If errors occur in accessing a published application or in publishing applications, check the following options to see if Microsoft Azure AD Application Proxy is working correctly:
+- Windows サービス コンソールを開き、**Microsoft AAD アプリケーション プロキシ コネクタ** サービスが有効で実行されていることを確認します。次の図のように、アプリケーション プロキシ サービスのプロパティ ページで確認することもできます。![Microsoft AAD アプリケーション プロキシ コネクタのプロパティのスクリーンショット](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
 
-- Open the Windows Services console and verify that the **Microsoft AAD Application Proxy Connector** service is enabled and running. You may also want to look at the Application Proxy service properties page, as shown in the following image:  
-  ![Microsoft AAD Application Proxy Connector Properties window screenshot](./media/active-directory-application-proxy-troubleshoot/connectorproperties.png)
+- イベント ビューアーを開き、**[アプリケーションとサービス ログ]**、**[Microsoft]**、**[AadApplicationProxy]**、**[コネクタ]** の順にクリックして、**[Admin]** の下にあるアプリケーション プロキシ コネクタ イベントを探します。
+- 必要に応じて、分析およびデバッグ ログを有効にし、サービス アプリケーション プロキシ コネクタのセッション ログを有効にすることで、より詳細なログを使用できます。
 
-- Open Event Viewer and look for Application Proxy connector events in **Applications and Services Logs** > **Microsoft** > **AadApplicationProxy** > **Connector** > **Admin**.
-- If needed, more detailed logs are available by turning on analytics and debugging logs, and turning on the Application Proxy connector session log.
+## ページが正しく表示されない
 
-## <a name="the-page-is-not-rendered-correctly"></a>The page is not rendered correctly
+特定のエラー メッセージが表示されない場合は、アプリケーションが正しくレンダリングまたは機能しない問題がある可能性があります。これは、記事のパスを発行した場合に発生することがありますが、アプリケーションは、そのパスの外部に存在するコンテンツを必要とします。
 
-If you're not getting a specific error message, you may still have issues with your application rendering or functioning incorrectly. This can occur if you published the article path, but the application requires content that exists outside that path.
+たとえば、https://yourapp/app というパスを発行しても、アプリケーションが https://yourapp/media 内のイメージを呼び出した場合、イメージは表示されません。アプリケーションの発行には、関連するコンテンツをすべて含めるために必要な最上位のパスを使用するようにしてください。この例では、http://yourapp/ となります。
 
-For example, if you publish the path https://yourapp/app but the application calls images in https://yourapp/media, they won't be rendered. Make sure that you publish the application using the highest level path you need to include all relevant content. In this example, it would be http://yourapp/.
+参照するコンテンツを含めるようにパスを変更しても、ユーザーにそのパスのさらに深いリンクにアクセスしてもらう必要がある場合は、ブログ記事「[Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher (Azure AD アクセス パネルと Office 365 アプリ起動ツールでのアプリケーション プロキシ アプリケーションの適切なリンクの設定)](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/)」を参照してください。
 
-If you change your path to include referenced content, but still need users to land on a deeper link in the path, see the blog post [Setting the right link for Application Proxy applications in the Azure AD access panel and Office 365 app launcher](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
+## 一般エラー
 
-## <a name="general-errors"></a>General errors
-
-Error | Description | Resolution
+エラー | Description | 解決策
 --- | --- | ---
-This corporate app can’t be accessed. You are not authorized to access this application. Authorization failed. Make sure to assign the user with access to this application. | You may not have assigned the user for this application. | Go to the **Application** tab, and under **Users and Groups**, assign this user or user group to this application.
-This corporate app can’t be accessed. You are not authorized to access this application. Authorization failed. Make sure that the user has a license for Azure Active Directory Premium or Basic. | Your users may get this error when trying to access the app you published if they weren't explicitly assigned with a Premium/Basic license by the subscriber’s administrator. | Go to the subscriber’s Active Directory **Licenses** tab and make sure that this user or user group is assigned a Premium or Basic license.
+この企業のアプリにはアクセスできません。このアプリケーションにアクセスする権限がありません。承認に失敗しました。このアプリケーションへのアクセス権をユーザーに割り当ててください。 | このアプリケーションにユーザーを割り当てていない可能性があります。 | **[アプリケーション]** タブに移動し、**[ユーザーとグループ]** でこのユーザーまたはユーザー グループをこのアプリケーションに割り当てます。
+この企業のアプリにはアクセスできません。このアプリケーションにアクセスする権限がありません。承認に失敗しました。ユーザーが Azure Active Directory Premium または Basic のライセンスを持っていることを確認します。 | サブスクライバーの管理者によってユーザーに対して Premium/Basic ライセンスが明示的に割り当てられていない場合、発行されたアプリにそのユーザーがアクセスしようとすると、このエラーが発生することがあります。 | サブスクライバーの Active Directory **[ライセンス]** タブに移動し、このユーザーまたはユーザー グループに Premium または Basic ライセンスが割り当てられていることを確認します。
 
 
-## <a name="connector-troubleshooting"></a>Connector troubleshooting
-If registration fails during the Connector wizard installation, there are two ways to view the reason for the failure. Either look in the event log under **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin**, or run the following Windows PowerShell command.
+## コネクタのトラブルシューティング
+コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。**Applications and Services Logs\\Microsoft\\AadApplicationProxy\\Connector\\Admin** にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
 
     Get-EventLog application –source “Microsoft AAD Application Proxy Connector” –EntryType “Error” –Newest 1
 
-| Error | Description | Resolution |
+| エラー | Description | 解決策 |
 | --- | --- | --- |
-| Connector registration failed: Make sure you enabled Application Proxy in the Azure Management Portal and that you entered your Active Directory user name and password correctly. Error: 'One or more errors occurred.' | You closed the registration window without performing login to Azure AD. | Run the Connector wizard again and register the Connector. |
-| Connector registration failed: Make sure you enabled Application Proxy in the Azure Management Portal and that you entered your Active Directory user name and password correctly. Error: 'AADSTS50001: Resource `https://proxy.cloudwebappproxy.net /registerapp` is disabled.' | Application Proxy is disabled.  | Make sure you enable Application Proxy in the Azure classic portal before trying to register the Connector. For more information on enabling Application Proxy, see [Enable Application Proxy services](active-directory-application-proxy-enable.md). |
-| Connector registration failed: Make sure you enabled Application Proxy in the Azure Management Portal and that you entered your Active Directory user name and password correctly. Error: 'One or more errors occurred.' | If the registration window opens and then immediately closes without allowing you to log in, you will probably get this error. This error occurs when there is a networking error on your system. | Make sure that it is possible to connect from a browser to a public website and that the ports are open as specified in [Application Proxy prerequisites](active-directory-application-proxy-enable.md). |
-| Connector registration failed: Make sure your computer is connected to the Internet. Error: 'There was no endpoint listening at `https://connector.msappproxy.net :9090/register/RegisterConnector` that could accept the message. This is often caused by an incorrect address or SOAP action. See InnerException, if present, for more details.' | If you sign in using your Azure AD username and password but then receive this error, it may be that all ports above 8081 are blocked. | Make sure that the necessary ports are open. For more information, see [Application Proxy prerequisites](active-directory-application-proxy-enable.md). |
-| Clear error is presented in the registration window. Cannot proceed – only to close the window. | You entered the wrong username or password. | Try again. |
-| Connector registration failed: Make sure you enabled Application Proxy in the Azure Management Portal and that you entered your Active Directory user name and password correctly. Error: 'AADSTS50059: No tenant-identifying information found in either the request or implied by any provided credentials and search by service principle URI has failed. | You are trying to log in using a Microsoft Account and not a domain that is part of the organization ID of the directory you are trying to access. | Make sure that the admin is part of the same domain name as the tenant domain, for example, if the Azure AD domain is contoso.com, the admin should be admin@contoso.com. |
-| Failed to retrieve the current execution policy for running PowerShell scripts. | If the Connector installation fails, check to make sure that PowerShell execution policy is not disabled. | Open the Group Policy Editor. Go to **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Windows PowerShell** and double-click **Turn on Script Execution**. This can be set to either **Not Configured** or **Enabled**. If set to **Enabled**, make sure that under Options, the Execution Policy is set to either **Allow local scripts and remote signed scripts** or to **Allow all scripts**. |
-| Connector failed to download the configuration. | The Connector’s client certificate, which is used for authentication, expired. This may also occur if you have the Connector installed behind a proxy. In this case, the Connector cannot access the Internet and will not be able to provide applications to remote users. | Renew trust manually using the `Register-AppProxyConnector` cmdlet in Windows PowerShell. If your Connector is behind a proxy, it is necessary to grant Internet access to the Connector accounts “network services” and “local system.” This can be accomplished either by granting them access to the Proxy or by setting them to bypass the proxy. |
-| Connector registration failed: Make sure you are a Global Administrator of your Active Directory to register the Connector. Error: 'The registration request was denied.' | The alias you're trying to log in with isn't an admin on this domain. Your Connector is always installed for the directory that owns the user’s domain. | Make sure that the admin you are trying to log in as has global permissions to the Azure AD tenant.|
+| コネクタ登録に失敗しました: Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。エラー: '1 つ以上のエラーが発生しました。' | Azure AD へのログインをせずに登録ウィンドウを閉じました。 | コネクタ ウィザードを再実行して、コネクタを登録します。 |
+| コネクタ登録に失敗しました: Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。エラー: 'AADSTS50001: リソース `https://proxy.cloudwebappproxy.net /registerapp` が無効です。' | アプリケーション プロキシが無効です。 | コネクタの登録を試行する前に、Azure クラシック ポータルでアプリケーション プロキシを有効にしてください。アプリケーション プロキシを有効にする方法の詳細については、「[アプリケーション プロキシ サービスを有効にする](active-directory-application-proxy-enable.md)」を参照してください。 |
+| コネクタ登録に失敗しました: Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。エラー: '1 つ以上のエラーが発生しました。' | 登録ウィンドウが開き、ログインを許さずにすぐに閉じてしまった場合は、通常、このエラーが発生します。このエラーは、ネットワーク エラーがシステムで起きた場合に発生します。 | ブラウザーから一般 Web サイトに接続できることと、「[アプリケーション プロキシの前提条件](active-directory-application-proxy-enable.md)」で指定されているようにポートが開かれていることを確認してください。 |
+| コネクタの登録に失敗しました: コンピューターがインターネットに接続されていることを確認してください。エラー: 'メッセージを受信できる `https://connector.msappproxy.net :9090/register/RegisterConnector` でリッスンしているエンドポイントがありませんでした。これは一般に、アドレスまたは SOAP アクションが正しくない場合に発生します。詳細については、InnerException を参照してください (ある場合)。' | Azure AD のユーザー名とパスワードを使用してサインインしてもこのエラーが発生する場合は、8081 より上のすべてのポートがブロックされている可能性があります。 | 必要なポートが開かれていることを確認します。詳細については、「[アプリケーション プロキシの前提条件](active-directory-application-proxy-enable.md)」を参照してください。 |
+| 登録ウィンドウに明確なエラーが表示されています。続行できません。ウィンドウを閉じるしかありません。 | 間違ったユーザー名またはパスワードを入力しました。 | やり直してください。 |
+| コネクタ登録に失敗しました: Microsoft Azure 管理ポータルでアプリケーション プロキシを有効化したことと、Active Directory ユーザー名とパスワードを正しく入力したことを確認してください。エラー: 'AADSTS50059: テナントを識別する情報が要求内に見つからず、指定されたどの資格情報でも暗黙的に示されなかったため、サービス プリンシパル URI による検索が失敗しました。 | Microsoft アカウントと、アクセスしようとしているディレクトリの組織 ID の一部であるドメイン以外を使用して、ログインしようとしています。 | admin がテナント ドメインと同じドメイン名の一部であることを確認します。たとえば、Azure AD ドメインが contoso.com である場合、admin は admin@contoso.com である必要があります。 |
+| PowerShell スクリプトを実行するための現在の実行ポリシーを取得できませんでした。 | コネクタのインストールに失敗した場合は、PowerShell 実行ポリシーが無効になっていないことを確認します。 | グループ ポリシー エディターを開きます。**[コンピューターの構成]**、**[管理用テンプレート]**、**[Windows コンポーネント]**、**[Windows PowerShell]** の順に移動して、**[スクリプトの実行を有効にする]** をダブルクリックします。これは、**[未構成]** または **[有効]** に設定できます。**[有効]** に設定した場合は、[オプション] で実行ポリシーが **[ローカル スクリプトおよびリモートの署名済みスクリプトを許可する]** または **[すべてのスクリプトを許可する]** に設定されていることを確認します。 |
+| コネクタが構成のダウンロードに失敗しました。 | 認証に使用される、コネクタのクライアント証明書が期限切れです。このエラーは、コネクタをプロキシの背後にインストールした場合にも発生することがあります。その場合、コネクタはインターネットにアクセスできず、リモート ユーザーにアプリケーションを提供できません。 | Windows PowerShell で `Register-AppProxyConnector` コマンドレットを使用して、手動で信頼を更新します。コネクタがプロキシの背後にある場合は、コネクタ アカウントの "ネットワーク サービス" および "ローカル システム" にインターネットへのアクセスを許可する必要があります。 そうするには、プロキシへのアクセスを許可するか、プロキシをバイパスするように設定します。 |
+| コネクタの登録に失敗しました: コネクタを登録する Active Directory のグローバル管理者であることを確認してください。エラー: '登録要求が拒否されました。' | ログインに使用しようとしているエイリアスは、このドメインの管理者ではありません。コネクタは必ず、ユーザーのドメインを所有しているディレクトリ用にインストールされます。 | ログインしようとしている管理者が Azure AD テナントに対するグローバル アクセス許可を持っていることを確認してください。|
 
 
-## <a name="kerberos-errors"></a>Kerberos errors
+## Kerberos のエラー
 
-| Error | Description | Resolution |
+| エラー | Description | 解決策 |
 | --- | --- | --- |
-| Failed to retrieve the current execution policy for running PowerShell scripts. | If the Connector installation fails, check to make sure that PowerShell execution policy is not disabled. | Open the Group Policy Editor. Go to **Computer Configuration** > **Administrative Templates** > **Windows Components** > **Windows PowerShell** and double-click **Turn on Script Execution**. This can be set to either **Not Configured** or **Enabled**. If set to **Enabled**, make sure that under Options, the Execution Policy is set to either **Allow local scripts and remote signed scripts** or to **Allow all scripts**. |
-| 12008 - Azure AD exceeded the maximum number of permitted Kerberos authentication attempts to the backend server. | This event may indicate incorrect configuration between Azure AD and the backend application server, or a problem in time and date configuration on both machines. | The backend server declined the Kerberos ticket created by Azure AD. Verify that Azure AD and the backend application server are configured correctly. Make sure that the time and date configuration on the Azure AD and the backend application server are synchronized. |
-| 13016 - Azure AD cannot retrieve a Kerberos ticket on behalf of the user because there is no UPN in the edge token or in the access cookie. | There is a problem with the STS configuration. | Fix the UPN claim configuration in the STS. |
-| 13019 - Azure AD cannot retrieve a Kerberos ticket on behalf of the user because of the following general API error. | This event may indicate incorrect configuration between Azure AD and the domain controller server, or a problem in time and date configuration on both machines. | The domain controller declined the Kerberos ticket created by Azure AD. Verify that Azure AD and the backend application server are configured correctly, especially the SPN configuration. Make sure the Azure AD is domain joined to the same domain as the domain controller to ensure that the domain controller establishes trust with Azure AD. Make sure that the time and date configuration on the Azure AD and the domain controller are synchronized. |
-| 13020 - Azure AD cannot retrieve a Kerberos ticket on behalf of the user because the backend server SPN is not defined. | This event may indicate incorrect configuration between Azure AD and the domain controller server, or a problem in time and date configuration on both machines. | The domain controller declined the Kerberos ticket created by Azure AD. Verify that Azure AD and the backend application server are configured correctly, especially the SPN configuration. Make sure the Azure AD is domain joined to the same domain as the domain controller to ensure that the domain controller establishes trust with Azure AD. Make sure that the time and date configuration on the Azure AD and the domain controller are synchronized. |
-| 13022 - Azure AD cannot authenticate the user because the backend server responds to Kerberos authentication attempts with an HTTP 401 error. | This event may indicate incorrect configuration between Azure AD and the backend application server, or a problem in time and date configuration on both machines. | The backend server declined the Kerberos ticket created by Azure AD. Verify that Azure AD and the backend application server are configured correctly. Make sure that the time and date configuration on the Azure AD and the backend application server are synchronized. |
-| The website cannot display the page. | Your user may get this error when trying to access the app you published if the application is an IWA application. The defined SPN for this application may be incorrect. | For IWA apps: Make sure that the SPN configured for this application is correct. |
-| The website cannot display the page. | Your user may get this error when trying to access the app you published if the application is an OWA application. This could be caused by one of the following: <br> - The defined SPN for this application is incorrect. <br> - The user who tried to access the application is using a Microsoft account rather than the proper corporate account to sign in, or the user is a guest user. <br> - The user who tried to access the application is not properly defined for this application on the on-prem side. | The steps to mitigate accordingly: <br> - Make sure that the SPN configured for this application is correct. <br> - Make sure the user signs in using their corporate account that matches the domain of the published application. Microsoft Account users and guest cannot access IWA applications. <br> - Make sure that this user has the proper permissions as defined for this backend application on the on-prem machine. |
-| This corporate app can’t be accessed. You are not authorized to access this application. Authorization failed. Make sure to assign the user with access to this application. | Your users may get this error when trying to access the app you published if they use Microsoft accounts instead of their corporate account to sign in. Guest users may also get this error. | Microsoft Account users and guests cannot access IWA applications. Make sure the user signs in using their corporate account that matches the domain of the published application. |
-| This corporate app can’t be accessed right now. Please try again later…The connector timed out. | Your users may get this error when trying to access the app you published if they are not properly defined for this application on the on-prem side. | Make sure that your users have the proper permissions as defined for this backend application on the on-prem machine. |
+| PowerShell スクリプトを実行するための現在の実行ポリシーを取得できませんでした。 | コネクタのインストールに失敗した場合は、PowerShell 実行ポリシーが無効になっていないことを確認します。 | グループ ポリシー エディターを開きます。**[コンピューターの構成]**、**[管理用テンプレート]**、**[Windows コンポーネント]**、**[Windows PowerShell]** の順に移動して、**[スクリプトの実行を有効にする]** をダブルクリックします。これは、**[未構成]** または **[有効]** に設定できます。**[有効]** に設定した場合は、[オプション] で実行ポリシーが **[ローカル スクリプトおよびリモートの署名済みスクリプトを許可する]** または **[すべてのスクリプトを許可する]** に設定されていることを確認します。 |
+| 12008 - Azure AD が、バックエンド サーバーに対する Kerberos 認証の試行で、許可されている最大数を超えました。 | このイベントは、Azure AD とバックエンド アプリケーション サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 | バックエンド サーバーが、Azure AD によって作成された Kerberos チケットを拒否しました。Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください。Azure AD とバックエンド アプリケーション サーバーの日付と時刻の構成が同期されていることを確認してください。 |
+| 13016 - Azure AD が、エッジ トークンまたはアクセス Cookie に UPN がないため、ユーザーに代わって Kerberos チケットを取得できません。 | STS 構成の問題があります。 | STS の UPN 要求の構成を修正してください。 |
+| 13019 - Azure AD が、次の一般 API エラーのため、ユーザーに代わって Kerberos チケットを取得できません。 | このイベントは、Azure AD とドメイン コントローラー サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 | ドメイン コントローラーが、Azure AD によって作成された Kerberos チケットを拒否しました。Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください (特に SPN 構成)。ドメイン コントローラーが Azure AD との信頼関係を確立できるように、Azure AD がドメイン コントローラーと同じドメインに参加しているドメインであることを確認してください。Azure AD とドメイン コントローラーの日付と時刻の構成が同期されていることを確認してください。 |
+| 13020 - バックエンド サーバー SPN が定義されていないため、Azure AD がユーザーに代わって Kerberos チケットを取得できません。 | このイベントは、Azure AD とドメイン コントローラー サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 | ドメイン コントローラーが、Azure AD によって作成された Kerberos チケットを拒否しました。Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください (特に SPN 構成)。ドメイン コントローラーが Azure AD との信頼関係を確立できるように、Azure AD がドメイン コントローラーと同じドメインに参加しているドメインであることを確認してください。Azure AD とドメイン コントローラーの日付と時刻の構成が同期されていることを確認してください。 |
+| 13022 - バックエンド サーバーが Kerberos 認証の試行に対して HTTP 401 エラーを返すため、Azure AD がユーザーを認証できません。 | このイベントは、Azure AD とバックエンド アプリケーション サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 | バックエンド サーバーが、Azure AD によって作成された Kerberos チケットを拒否しました。Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください。Azure AD とバックエンド アプリケーション サーバーの日付と時刻の構成が同期されていることを確認してください。 |
+| Web サイトがページを表示できません。 | アプリケーションが IWA アプリケーションである場合、発行したアプリにユーザーがアクセスしようとしたときに、このエラーが表示されることがあります。このアプリケーションのために定義された SPN が正しくない可能性があります。 | IWA アプリの場合: このアプリケーションのために構成された SPN が正しいことを確認してください。 |
+| Web サイトがページを表示できません。 | アプリケーションが OWA アプリケーションである場合、発行したアプリにユーザーがアクセスしようとしたときに、このエラーが表示されることがあります。これは、次のいずれかが原因で発生することがあります。<br> - このアプリケーションのために定義された SPN が正しくない。<br> - アプリケーションにアクセスしようとしたユーザーが、サインインするための適切な企業アカウントではなく、Microsoft アカウントを使用しているか、ユーザーがゲスト ユーザーである。<br> - アプリケーションにアクセスしようとしたユーザーが、オンプレミス側でこのアプリケーション用に適切に定義されていない。 | それぞれの対処手順: <br> - このアプリケーションのために構成された SPN が正しいことを確認します。<br> - ユーザーが発行済みのアプリケーションのドメインと一致する企業アカウントを使用して、サインインしていることを確認します。Microsoft アカウントのユーザーとゲスト ユーザーは IWA アプリケーションにはアクセスできません。<br> - このユーザーが、オンプレミス コンピューターでこのバックエンド アプリケーションに対して定義されている適切なアクセス許可を持っていることを確認します。 |
+| この企業のアプリにはアクセスできません。このアプリケーションにアクセスする権限がありません。承認に失敗しました。このアプリケーションへのアクセス権をユーザーに割り当ててください。 | サインインに企業アカウントではなく Microsoft アカウントを使用しているユーザーが、発行済みのアプリにアクセスしようとしたときに、このエラーが表示されることがあります。このエラーはゲスト ユーザーにも表示されることがあります。 | Microsoft アカウントのユーザーとゲスト ユーザーは IWA アプリケーションにはアクセスできません。ユーザーが、発行されたアプリケーションのドメインに一致する企業アカウントを使用してサインインするようにします。 |
+| この企業アプリには、現在、アクセスできません。後でもう一度やり直してください。コネクタがタイムアウトになりました。 | オンプレミス側でこのアプリケーション向けに適切に定義されていないユーザーが、発行済みのアプリにアクセスしようとしたときに、このエラーが表示されることがあります。 | ユーザーが、オンプレミス コンピューターでこのバックエンド アプリケーションに対して定義されている適切なアクセス許可を持っていることを確認してください。 |
 
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-- [Enable Application Proxy for Azure Active Directory](active-directory-application-proxy-enable.md)
-- [Publish applications with Application Proxy](active-directory-application-proxy-publish.md)
-- [Enable single sign-on](active-directory-application-proxy-sso-using-kcd.md)
-- [Enable conditional access](active-directory-application-proxy-conditional-access.md)
+- [Azure Active Directory のアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
+- [アプリケーション プロキシを使用してアプリケーションを発行する](active-directory-application-proxy-publish.md)
+- [シングル サインオンの有効化](active-directory-application-proxy-sso-using-kcd.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
-For the latest news and updates, check out the [Application Proxy blog](http://blogs.technet.com/b/applicationproxyblog/)
+最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
 
 <!--Image references-->
 [1]: ./media/active-directory-application-proxy-troubleshoot/connectorproperties.png
 [2]: ./media/active-directory-application-proxy-troubleshoot/sessionlog.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

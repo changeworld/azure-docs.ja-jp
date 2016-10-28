@@ -1,227 +1,218 @@
 <properties
-    pageTitle="Azure Resource Manager-based PowerShell commands for Azure Web App | Microsoft Azure"
-    description="Learn how to use the new Azure Resource Manager-based PowerShell commands to manage your Azure Web Apps."
-    services="app-service\web"
-    documentationCenter=""
-    authors="ahmedelnably"
-    manager="stefsch"
-    editor=""/>
+	pageTitle="Azure Resource Manager ベースの PowerShell コマンドを使用して Azure Web アプリを管理する | Microsoft Azure"
+	description="Azure Resource Manager ベースの新しい PowerShell コマンドを使用して Azure Web アプリを管理する方法について説明します。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="ahmedelnably"
+	manager="stefsch"
+	editor=""/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/29/2016"
-    ms.author="aelnably"/>
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/14/2016"
+	ms.author="aelnably"/>
 
+# Azure Resource Manager ベースの PowerShell を使用して Azure Web アプリを管理する#
 
-# <a name="using-azure-resource-manager-based-powershell-to-manage-azure-web-apps#"></a>Using Azure Resource Manager-Based PowerShell to Manage Azure Web Apps#
+Microsoft Azure PowerShell Version 1.0.0 のリリースに伴い、新しいコマンドが追加されました。今後は Azure Resource Manager ベースの PowerShell コマンドを使って Web Apps を管理することができます。
 
-> [AZURE.SELECTOR]
-- [Azure CLI](app-service-web-app-azure-resource-manager-xplat-cli.md)
-- [Azure PowerShell](app-service-web-app-azure-resource-manager-powershell.md)
+リソース グループの管理については、「[Azure Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
-With Microsoft Azure PowerShell version 1.0.0 new commands have been added, that give the user the ability to use Azure Resource Manager-based PowerShell commands to manage Web Apps.
+Web アプリの管理に使用される Azure Resource Manager PowerShell コマンドレットのパラメーターの全一覧とオプションについては、[Azure Resource Manager ベースの PowerShell コマンドレットを使って Web アプリを管理するための詳しいコマンドレット リファレンス](https://msdn.microsoft.com/library/mt619237.aspx)を参照してください。
 
-To learn about managing Resource Groups, see [Using Azure PowerShell with Azure Resource Manager](../powershell-azure-resource-manager.md). 
+## App Service プランの管理 ##
 
-To learn about the full list of parameters and options for the PowerShell cmdlets, see the [full Cmdlet Reference of Web App Azure Resource Manager-based PowerShell Cmdlets](https://msdn.microsoft.com/library/mt619237.aspx)
+### App Service プランを作成する ###
+新しい App Service プランを作成するには、**New-AzureRmAppServicePlan** コマンドレットを使用します。
 
-## <a name="managing-app-service-plans"></a>Managing App Service Plans ##
+以下、各パラメーターについて説明します。
 
-### <a name="create-an-app-service-plan"></a>Create an App Service Plan ###
-To create an app service plan, use the **New-AzureRmAppServicePlan** cmdlet.
+- 	**Name**: App Service プランの名前。
+- 	**Location**: サービス プランの場所。
+- 	**ResourceGroupName**: 新たに作成された App Service プランが属するリソース グループ。
+- 	**Tier**: 必要な価格レベル。既定値は Free です。それ以外に Shared、Basic、Standard、Premium を選択できます。
+- 	**WorkerSize**: worker のサイズ。Tier パラメーターに Basic、Standard、Premium が指定された場合の既定値は S です。それ以外に M と L を選択できます。
+- 	**NumberofWorkers**: App Service プランの worker の数。既定値は 1 です。 
 
-Following are descriptions of the different parameters:
-
--   **Name**: name of the app service plan.
--   **Location**: service plan location.
--   **ResourceGroupName**: resource group that includes the newly created app service plan.
--   **Tier**:  the desired pricing tier (Default is Free, other options are Shared, Basic, Standard, and Premium.)
--   **WorkerSize**: the size of workers (Default is small if the Tier parameter was specified as Basic, Standard, or Premium. Other options are Medium, and Large.)
--   **NumberofWorkers**: the number of workers in the app service plan (Default value is 1). 
-
-Example to use this cmdlet:
+コマンドレットの使用例:
 
     New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -Tier Premium -WorkerSize Large -NumberofWorkers 10
 
-### <a name="create-an-app-service-plan-in-an-app-service-environment"></a>Create an App Service Plan in an App Service Environment ###
-To create an app service plan in an app service environment, use the same command **New-AzureRmAppServicePlan** command with extra parameters to specify the ASE's name and ASE's resource group name.
+### App Service Environment で App Service プラン を作成する ###
+App Service Environment (ASE) で新しい App Service プランを作成するには、同じ **New-AzureRmAppServicePlan** コマンドに別途パラメーターを追加し、ASE の名前とその ASE が属するリソース グループの名前を指定します。
 
-Example to use this cmdlet:
+コマンドレットの使用例:
 
     New-AzureRmAppServicePlan -Name ContosoAppServicePlan -Location "South Central US" -ResourceGroupName ContosoAzureResourceGroup -AseName constosoASE -AseResourceGroupName contosoASERG -Tier Premium -WorkerSize Large -NumberofWorkers 10
 
-To learn more about app service environment, check [Introduction to App Service Environment](app-service-app-service-environment-intro.md)
+App Service Environment の詳細については、「[App Service Environment の概要](app-service-app-service-environment-intro.md)」を参照してください。
 
-### <a name="list-existing-app-service-plans"></a>List Existing App Service Plans ###
+### 既存の App Service プランの一覧表示 ###
 
-To list the existing app service plans, use **Get-AzureRmAppServicePlan** cmdlet.
+既存の App Service プランを一覧表示するには、**Get-AzureRmAppServicePlan** コマンドレットを使用します。
 
-To list all app service plans under your subscription, use: 
+自分のサブスクリプションのすべての App Service プランを一覧表示するには、次のように入力します。
 
     Get-AzureRmAppServicePlan
 
-To list all app service plans under a specific resource group, use:
+特定のリソース グループのすべての App Service プランを一覧表示するには、次のように入力します。
 
     Get-AzureRmAppServicePlan -ResourceGroupname ContosoAzureResourceGroup
 
-To get a specific app service plan, use:
+特定の App Service プランを取得するには、次のように入力します。
 
     Get-AzureRmAppServicePlan -Name ContosoAppServicePlan
 
 
-### <a name="configure-an-existing-app-service-plan"></a>Configure an existing App Service Plan ###
+### 既存の App Service プランの構成 ###
 
-To change the settings for an existing app service plan, use the **Set-AzureRmAppServicePlan** cmdlet. You can change the tier, worker size, and the number of workers 
+既存の App Service プランの設定を変更するには、**Set-AzureRmAppServicePlan** コマンドレットを使用します。価格レベル、worker サイズ、worker 数を変更することができます。
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Tier Standard -WorkerSize Medium -NumberofWorkers 9
 
-#### <a name="scaling-an-app-service-plan"></a>Scaling an App Service Plan ####
+#### App Service プランのスケーリング ####
 
-To scale an existing App Service Plan, use:
+既存の App Service プランをスケーリングするには、次のように入力します。
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -NumberofWorkers 9
 
-#### <a name="changing-the-worker-size-of-an-app-service-plan"></a>Changing the worker size of an App Service Plan ####
+#### App Service プランの worker サイズの変更 ####
 
-To change the size of workers in an existing App Service Plan, use:
+既存の App Service プランの worker のサイズを変更するには、次のように入力します。
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -WorkerSize Medium
 
-#### <a name="changing-the-tier-of-an-app-service-plan"></a>Changing the Tier of an App Service Plan ####
+#### App Service プランの価格レベルの変更 ####
 
-To change the tier of an existing App Service Plan, use:
+既存の App Service プランの価格レベルを変更するには、次のように入力します。
 
     Set-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Tier Standard
 
-### <a name="delete-an-existing-app-service-plan"></a>Delete an existing App Service Plan ###
+### 既存の App Service プランの削除 ###
 
-To delete an existing app service plan, all assigned web apps need to be moved or deleted first. Then using the **Remove-AzureRmAppServicePlan** cmdlet you can delete the app service plan.
+既存の App Service プランを削除するにはまず、割り当てられているすべての Web アプリを移動するか削除しておく必要があります。その後、**Remove-AzureRmAppServicePlan** コマンドレットを使用して App Service プランを削除できます。
 
     Remove-AzureRmAppServicePlan -Name ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup
 
-## <a name="managing-app-service-web-apps"></a>Managing App Service Web Apps ##
+## App Service Web Apps の管理 ##
 
-### <a name="create-a-web-app"></a>Create a Web App ###
+### 新しい Web アプリの作成 ###
 
-To create a web app, use the **New-AzureRmWebApp** cmdlet.
+新しい Web アプリを作成するには、**New-AzureRmWebApp** コマンドレットを使用します。
 
-Following are descriptions of the different parameters:
+以下、各パラメーターについて説明します。
 
-- **Name**: name for the web app.
-- **AppServicePlan**: name for the service plan used to host the web app.
-- **ResourceGroupName**: resource group that hosts the App service plan.
-- **Location**: the web app location.
+- **Name**: Web アプリの名前。
+- **AppServicePlan**: Web アプリのホストとなるサービス プランの名前。
+- **ResourceGroupName**: App Service プランのホストとなるリソース グループ。
+- **Location**: Web アプリの場所。
 
-Example to use this cmdlet:
+コマンドレットの使用例:
 
     New-AzureRmWebApp -Name ContosoWebApp -AppServicePlan ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Location "South Central US"
 
-### <a name="create-a-web-app-in-an-app-service-environment"></a>Create a Web App in an App Service Environment ###
+### App Service Environment で新しい Web アプリを作成する ###
 
-To create a web app in an App Service Environment (ASE). Use the same **New-AzureRmWebApp** command with extra parameters to specify the ASE name and the resource group name that the ASE belongs to.
+App Service Environment (ASE) に新しい Web アプリを作成するには、同じ **New-AzureRmWebApp** コマンドに別途パラメーターを追加し、ASE の名前とその ASE が属するリソース グループの名前を指定します。
 
     New-AzureRmWebApp -Name ContosoWebApp -AppServicePlan ContosoAppServicePlan -ResourceGroupName ContosoAzureResourceGroup -Location "South Central US"  -ASEName ContosoASEName -ASEResourceGroupName ContosoASEResourceGroupName
 
-To learn more about app service environment, check [Introduction to App Service Environment](app-service-app-service-environment-intro.md)
+App Service Environment の詳細については、「[App Service Environment の概要](app-service-app-service-environment-intro.md)」を参照してください。
 
-### <a name="delete-an-existing-web-app"></a>Delete an existing Web App ###
+### 既存の Web アプリの削除 ###
 
-To delete an existing web app you can use the **Remove-AzureRmWebApp** cmdlet, you need to specify the name of the web app and the resource group name.
+既存の Web アプリを削除するには、**Remove-AzureRmWebApp** コマンドレットを使用します。Web アプリの名前とリソース グループの名前を指定する必要があります。
 
     Remove-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
 
-### <a name="list-existing-web-apps"></a>List existing Web Apps ###
+### 既存の Web アプリの一覧表示 ###
 
-To list the existing web apps, use the **Get-AzureRmWebApp** cmdlet.
+既存の Web アプリを一覧表示するには、**Get-AzureRmWebApp** コマンドレットを使用します。
 
-To list all web apps under your subscription, use:
+自分のサブスクリプションのすべての Web アプリを一覧表示するには、次のように入力します。
 
     Get-AzureRmWebApp
 
-To list all web apps under a specific resource group, use:
+特定のリソース グループのすべての Web アプリを一覧表示するには、次のように入力します。
 
     Get-AzureRmWebApp -ResourceGroupname ContosoAzureResourceGroup
 
-To get a specific web app, use:
+特定の Web アプリを取得するには、次のように入力します。
 
     Get-AzureRmWebApp -Name ContosoWebApp
 
-### <a name="configure-an-existing-web-app"></a>Configure an existing Web App ###
+### 既存の Web アプリの構成 ###
 
-To change the settings and configurations for an existing web app, use the **Set-AzureRmWebApp** cmdlet. For a full list of parameters, check the [Cmdlet reference link](https://msdn.microsoft.com/library/mt652487.aspx)
+既存の Web アプリの設定と構成を変更するには、**Set-AzureRmWebApp** コマンドレットを使用します。全パラメーターの一覧については、[コマンドレットのリファレンス リンク](https://msdn.microsoft.com/library/mt652487.aspx)を参照してください。
 
-Example (1): use this cmdlet to change connection strings
+例 (1): 接続文字列を変更する
 
-    $connectionstrings = @{ ContosoConn1 = @{ Type = “MySql”; Value = “MySqlConn”}; ContosoConn2 = @{ Type = “SQLAzure”; Value = “SQLAzureConn”} }
-    Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -ConnectionStrings $connectionstrings
+	$connectionstrings = @{ ContosoConn1 = @{ Type = “MySql”; Value = “MySqlConn”}; ContosoConn2 = @{ Type = “SQLAzure”; Value = “SQLAzureConn”} }
+	Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -ConnectionStrings $connectionstrings
 
-Example (2): add or change app settings
+例 (2): アプリ設定の例を追加する
 
-    $appsettings = @{appsetting1 = "appsetting1value"; appsetting2 = "appsetting2value"}
-    Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -AppSettings $appsettings
+	$appsettings = @{appsetting1 = "appsetting1value"; appsetting2 = "appsetting2value"}
+	Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -AppSettings $appsettings
 
 
-Example (3):  set the web app to run in 64-bit mode
+例 (3): 64 ビット モードで動作するように Web アプリを設定する
 
-    Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -Use32BitWorkerProcess $False
+	Set-AzureRmWebApp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -Use32BitWorkerProcess $False
 
-### <a name="change-the-state-of-an-existing-web-app"></a>Change the state of an existing Web App ###
+### 既存の Web アプリの状態を変更する ###
 
-#### <a name="restart-a-web-app"></a>Restart a web app ####
+#### Web アプリの再起動 ####
 
-To restart a web app, you must specify the name and resource group of the web app.
+Web アプリを再起動するには、Web アプリの名前とリソース グループを指定する必要があります。
 
     Restart-AzureRmWebapp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
-#### <a name="stop-a-web-app"></a>Stop a web app ####
+#### Web アプリの停止 ####
 
-To stop a web app, you must specify the name and resource group of the web app.
+Web アプリを停止するには、Web アプリの名前とリソース グループを指定する必要があります。
 
     Stop-AzureRmWebapp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
-#### <a name="start-a-web-app"></a>Start a web app ####
+#### Web アプリの起動 ####
 
-To start a web app, you must specify the name and resource group of the web app.
+Web アプリを起動するには、Web アプリの名前とリソース グループを指定する必要があります。
 
     Start-AzureRmWebapp -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
-### <a name="manage-web-app-publishing-profiles"></a>Manage Web App Publishing profiles ###
+### Web アプリの発行プロファイルの管理 ###
 
-Each web app has a publishing profile that can be used to publish your apps, several operations can be executed on publishing profiles.
+Web アプリにはそれぞれ、アプリを発行するときに使用する発行プロファイルがあります。発行プロファイルには、さまざまな操作を実行することができます。
 
-#### <a name="get-publishing-profile"></a>Get Publishing Profile ####
+#### 発行プロファイルの取得 ####
 
-To get the publishing profile for a web app, use:
+Web アプリの発行プロファイルを取得するには、次のように入力します。
 
     Get-AzureRmWebAppPublishingProfile -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup -OutputFile .\publishingprofile.txt
 
-This command echoes the publishing profile to the command line as well output the publishing profile to a text file.
+この例では、発行プロファイルをコマンド ラインにエコーすると共に、発行プロファイルをテキスト ファイルに出力していることに注目してください。
 
-#### <a name="reset-publishing-profile"></a>Reset Publishing Profile ####
+#### 発行プロファイルのリセット ####
 
-To reset both the publishing password for FTP and web deploy for a web app, use:
+Web アプリの Web デプロイと FTP の発行パスワードを両方ともリセットするには、次のように入力します。
 
     Reset-AzureRmWebAppPublishingProfile -Name ContosoWebApp -ResourceGroupName ContosoAzureResourceGroup
 
-### <a name="manage-web-app-certificates"></a>Manage Web App Certificates ###
+### Web アプリの証明書の管理 ###
 
-To learn about how to manage web app certificates, see [SSL Certificates binding using PowerShell](app-service-web-app-powershell-ssl-binding.md)
-
-
-### <a name="next-steps"></a>Next Steps ###
-- To learn about Azure Resource Manager PowerShell support, see [Using Azure PowerShell with Azure Resource Manager.](../powershell-azure-resource-manager.md)
-- To learn about App Service Environments, see [Introduction to App Service Environment.](app-service-app-service-environment-intro.md)
-- To learn about managing App Service SSL certificates using PowerShell, see [SSL Certificates binding using PowerShell.](app-service-web-app-powershell-ssl-binding.md)
-- To learn about the full list of Azure Resource Manager-based PowerShell cmdlets for Azure Web Apps, see [Azure Cmdlet Reference of Web Apps Azure Resource Manager PowerShell Cmdlets.](https://msdn.microsoft.com/library/mt619237.aspx)
-- - To learn about managing App Service using CLI, see [Using Azure Resource Manager-Based XPlat CLI for Azure Web App.](app-service-web-app-azure-resource-manager-xplat-cli.md)
+Web アプリの証明書を管理する方法については、[PowerShell を使用した SSL 証明書のバインド](app-service-web-app-powershell-ssl-binding.md)に関するページを参照してください。
 
 
 
-<!--HONumber=Oct16_HO2-->
+### 次のステップ ###
+- Azure Resource Manager の PowerShell 対応については、「[Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+- App Service Environment については、「[App Service 環境の概要](app-service-app-service-environment-intro.md)」を参照してください。
+- PowerShell を使用した App Service SSL 証明書の管理については、[PowerShell を使用した SSL 証明書のバインド](app-service-web-app-powershell-ssl-binding.md)に関するページを参照してください。
+- Azure Web Apps に使用する Azure Resource Manager ベースの PowerShell コマンドレットの全一覧については、[Azure Resource Manager の PowerShell コマンドレットを使って Web アプリを管理するための Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/mt619237.aspx)を参照してください。
 
-
+<!---HONumber=AcomDC_0615_2016-->

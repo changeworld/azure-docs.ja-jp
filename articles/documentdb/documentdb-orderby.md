@@ -1,55 +1,54 @@
 <properties 
-    pageTitle="Sorting DocumentDB data using Order By | Microsoft Azure" 
-    description="Learn how to use ORDER BY in DocumentDB queries in LINQ and SQL, and how to specify an indexing policy for ORDER BY queries." 
-    services="documentdb" 
-    authors="arramac" 
-    manager="jhubbard" 
-    editor="cgronlun" 
-    documentationCenter=""/>
+	pageTitle="Order By を使用した DocumentDB データの並べ替え | Microsoft Azure" 
+	description="LINQ および SQL の DocumentDB クエリで ORDER BY を使用する方法、ORDER BY クエリにインデックス作成ポリシーを指定する方法について説明します。" 
+	services="documentdb" 
+	authors="arramac" 
+	manager="jhubbard" 
+	editor="cgronlun" 
+	documentationCenter=""/>
 
 <tags 
-    ms.service="documentdb" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/03/2016" 
-    ms.author="arramac"/>
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/07/2016" 
+	ms.author="arramac"/>
 
+# Order By を使用した DocumentDB の並べ替え
+Microsoft Azure DocumentDB は、JSON ドキュメントに対する、SQL を使ったドキュメント クエリをサポートしています。SQL クエリ ステートメントで ORDER BY を使って、クエリの結果を並べ替えることができます。
 
-# <a name="sorting-documentdb-data-using-order-by"></a>Sorting DocumentDB data using Order By
-Microsoft Azure DocumentDB supports querying documents using SQL over JSON documents. Query results can be ordered using the ORDER BY clause in SQL query statements.
+この記事を読むと、次の質問に回答できるようになります。
 
-After reading this article, you'll be able to answer the following questions: 
+- Order By でクエリを実行する方法を教えてください。
+- Order By のインデックス作成ポリシーの構成方法を教えてください。
+- 今後予定された機能
 
-- How do I query with Order By?
-- How do I configure an indexing policy for Order By?
-- What's coming next?
+[サンプル](#samples)と [FAQ](#faq) も掲載されています。
 
-[Samples](#samples) and an [FAQ](#faq) are also provided.
+SQL クエリの完全なリファレンスについては、[DocumentDB クエリのチュートリアル](documentdb-sql-query.md)を参照してください。
 
-For a complete reference on SQL querying, see the [DocumentDB Query tutorial](documentdb-sql-query.md).
+## Order By を使用したクエリの実行方法
+ANSI SQL 同様、DocumentDB のクエリで、SQL ステートメントにオプションで Order By 句を含められるようになりました。句に ASC/DESC 引数 (オプション) を含めて、結果を取得する順番を指定できます。
 
-## <a name="how-to-query-with-order-by"></a>How to Query with Order By
-Like in ANSI-SQL, you can now include an optional Order By clause in SQL statements when querying DocumentDB. The clause can include an optional ASC/DESC argument to specify the order in which results must be retrieved. 
-
-### <a name="ordering-using-sql"></a>Ordering using SQL
-For example here's a query to retrieve the top 10 books in descending order of their titles. 
+### SQL を使用した順序付け
+タイトルの降順で上位 10 ブックを取得するクエリの例を次に示します。
 
     SELECT TOP 10 * 
     FROM Books 
     ORDER BY Books.Title DESC
 
-### <a name="ordering-using-sql-with-filtering"></a>Ordering using SQL with Filtering
-You can order using any nested property within documents like Books.ShippingDetails.Weight, and you can specify additional filters in the WHERE clause in combination with Order By like in this example:
+### SQL とフィルターを使用した順序付け
+Books.ShippingDetails.Weight などのドキュメント内の入れ子になったプロパティを使って並べ替えたり、次の例のように、WHERE 句と Order By を組み合わせて追加のフィルターを指定したりできます。
 
     SELECT * 
     FROM Books 
     WHERE Books.SalePrice > 4000
     ORDER BY Books.ShippingDetails.Weight
 
-### <a name="ordering-using-the-linq-provider-for-.net"></a>Ordering using the LINQ Provider for .NET
-Using the .NET SDK version 1.2.0 and higher, you can also use the OrderBy() or OrderByDescending() clause within LINQ queries like in this example:
+### .NET の LINQ プロバイダーを使用した順序付け
+.NET SDK バージョン 1.2.0 以降を使用して、次の例のように、LINQ クエリ内で OrderBy() または OrderByDescending() 句を使用することもできます。
 
     foreach (Book book in client.CreateDocumentQuery<Book>(UriFactory.CreateDocumentCollectionUri("db", "books"))
         .OrderBy(b => b.PublishTimestamp)
@@ -58,20 +57,20 @@ Using the .NET SDK version 1.2.0 and higher, you can also use the OrderBy() or O
         // Iterate through books
     }
 
-DocumentDB supports ordering with a single numeric, string or Boolean property per query, with additional query types coming soon. Please see [What's coming next](#Whats_coming_next) for more details.
+DocumentDB では、クエリあたり、1 つの数値プロパティ、文字列プロパティ、またはブール プロパティでの順序付けがサポートされています。これに近日公開予定のクエリの種類が加わります。詳細については、[今後予定された機能](#Whats_coming_next)を参照してください。
 
-## <a name="configure-an-indexing-policy-for-order-by"></a>Configure an indexing policy for Order By
+## Order By のインデックス作成ポリシーの構成
 
-Recall that DocumentDB supports two kinds of indexes (Hash and Range), which can be set for specific paths/properties, data types (strings/numbers) and at different precision values (either maximum precision or a fixed precision value). Since DocumentDB uses Hash indexing as default, you must create a new collection with a custom indexing policy with Range on numbers, strings or both, in order to use Order By. 
+DocumentDB では 2 種類のインデックス (ハッシュと範囲) がサポートされていることを思い出してください。この 2 つのインデックスは、特定のパス/プロパティおよびデータ型 (文字列/数値) に対して、また異なる種類の有効桁数値 (最大有効桁数値または固定有効桁数値のいずれか) で設定できるということでした。DocumentDB は既定ではハッシュ インデックス作成を使用するようになっているため、範囲の場合、数値または文字列、あるいその両方に対して Order By を使用するためには、カスタム インデックス作成ポリシーを使用して新しいコレクションを作成する必要があります。
 
->[AZURE.NOTE] String range indexes were introduced on July 7, 2015 with REST API version 2015-06-03. In order to create policies for Order By against strings, you must use SDK version 1.2.0 of the .NET SDK, or version 1.1.0 of the Python, Node.js or Java SDK.
+>[AZURE.NOTE] 文字列の範囲インデックスは、REST API のバージョン2015-06-03 により、2015 年 7 月 7 日に導入されました。文字列に対して Order By のポリシーを作成するには、.NET SDK の SDK バージョン 1.2.0、あるいは Python、Node.js、または Java SDK のバージョン 1.1.0 を使用する必要があります。
 >
->Prior to REST API version 2015-06-03, the default collection indexing policy was Hash for both strings and numbers. This has been changed to Hash for strings, and Range for numbers. 
+>REST API の 2015-06-03 より前のバージョンでは、文字列と数値の両方において既定のコレクションのインデックス作成ポリシーはハッシュとなっていました。これが、文字列についてはハッシュ、数値については範囲というように変更されました。
 
-For more details see [DocumentDB indexing policies](documentdb-indexing-policies.md).
+詳細については、「[DocumentDB インデックス作成ポリシー](documentdb-indexing-policies.md)」を参照してください。
 
-### <a name="indexing-for-order-by-against-all-properties"></a>Indexing for Order By against all properties
-Here's how you can create a collection with "All Range" indexing for Order By against any/all numeric or string properties that appear within JSON documents within it. Here we override the default index type for string values to Range, and at the maximum precision (-1).
+### すべてのプロパティに対する Order By のインデックスを作成する
+コレクション内の JSON ドキュメント内に表示される任意のまたはすべての数値プロパティまたは文字列プロパティに対する Order By に必要な「すべての範囲」インデックス作成を使用してコレクションを作成する方法を示します。ここでは、文字列値の既定のインデックスの種類を範囲に、最大有効桁数 (-1) でオーバーライドします。
                    
     DocumentCollection books = new DocumentCollection();
     books.Id = "books";
@@ -79,10 +78,12 @@ Here's how you can create a collection with "All Range" indexing for Order By ag
     
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), books);  
 
->[AZURE.NOTE] Note that Order By only will return results of the data types (String and Number) that are indexed with a RangeIndex. For example, if you have the default indexing policy which only has RangeIndex on numbers, an Order By against a path with string values will return no documents.
+>[AZURE.NOTE] Order By では、RangeIndex でインデックスが作成されるデータ型 (文字列と数値) の結果しか返さないので注意してください。たとえば、既定のインデックスポリシーに、数値に対する RangeIndex しか含まれていない場合、文字列値を使用したパスに対する Order By はドキュメントを返しません。
+>
+> コレクションに対してパーティション キーを定義してある場合、Order By は 1 つのパーティション キーに対してフィルター処理を行うクエリ内でのみサポートされることに注意してください。
 
-### <a name="indexing-for-order-by-for-a-single-property"></a>Indexing for Order By for a single property
-Here's how you can create a collection with indexing for Order By against just the Title property, which is a string. There are two paths, one for the Title property ("/Title/?") with Range indexing, and the other for every other property with the default indexing scheme, which is Hash for strings and Range for numbers.                    
+### 1 つのプロパティに対する Order By のインデックス作成
+Title プロパティ (文字列) のみに対する Order By のインデックス作成でコレクションを作成する方法を次に示します。2 つのパスがあります。1 つは範囲インデックス作成を使用した Title プロパティ ("/Title/?") のパスです。もう 1 つは既定インデックス作成スキーム (文字列の場合はハッシュ、数字の場合は範囲) を使用したその他のすべてのプロパティのパスです。
     
     booksCollection.IndexingPolicy.IncludedPaths.Add(
         new IncludedPath { 
@@ -94,56 +95,45 @@ Here's how you can create a collection with indexing for Order By against just t
     await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), booksCollection);  
 
 
-## <a name="samples"></a>Samples
-Take a look at this [Github samples project](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) that demonstrates how to use Order By, including creating indexing policies and paging using Order By. The samples are open source and we encourage you to submit pull requests with contributions that could benefit other DocumentDB developers. Please refer to the [Contribution guidelines](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md) for guidance on how to contribute.  
+## サンプル
+この [Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)は、Order By を使用したインデックス作成ポリシーの作成やページングを含む、Order By の使用方法を示しています。サンプルはオープン ソースです。他の DocumentDB 開発者にも役立つような投稿でプル リクエストを送信することをお勧めします。投稿方法のガイダンスについては、[投稿に関するガイドライン](https://github.com/Azure/azure-documentdb-net/blob/master/Contributing.md)のページを参照してください。
 
-## <a name="faq"></a>FAQ
+## FAQ
 
-**What is the expected Request Unit (RU) consumption of Order By queries?**
+**Order By クエリの予測される要求単位 (RU) の消費はどのくらいですか?**
 
-Since Order By utilizes the DocumentDB index for lookups, the number of request units consumed by Order By queries will be similar to the equivalent queries without Order By. Like any other operation on DocumentDB, the number of request units depends on the sizes/shapes of documents as well as the complexity of the query. 
+Order By では参照に DocumentDB インデックスを利用するため、Order By クエリが消費する要求単位の数は Order By を使用しない場合と同程度のクエリ数になります。DocumentDB での他の操作と同様、要求単位の数は、ドキュメントのサイズまたは形態およびクエリの複雑さによって異なります。
 
 
-**What is the expected indexing overhead for Order By?**
+**Order By で予測されるインデックス作成のオーバーヘッドはどのくらいですか?**
 
-The indexing storage overhead will be proportionate to the number of properties. In the worst case scenario, the index overhead will be 100% of the data. There is no difference in throughput (Request Units) overhead between Range/Order By indexing and the default Hash indexing.
+インデックス作成ストレージのオーバーヘッドは、プロパティの数に比例します。最悪のシナリオでは、インデックスのオーバーヘッドはデータの 100% です。Range/Order By インデックスと既定のハッシュ インデックス間のスループット (要求単位) オーバーヘッドに違いはありません。
 
-**How do I query my existing data in DocumentDB using Order By?**
+**Order By を使用して DocumentDB の既存のデータにクエリを実行する方法を教えてください。**
 
-In order to sort query results using Order By, you must modify the indexing policy of the collection to use a Range index type against the property used to sort. See [Modifying Indexing Policy](documentdb-indexing-policies.md#modifying-the-indexing-policy-of-a-collection). 
+Order By を使用してクエリ結果を並べ替えるには、並べ替えに使用されるプロパティに対してインデックスの種類として範囲を使用するように、コレクションのインデックス作成ポリシーを変更する必要があります。[インデックス作成ポリシーの変更](documentdb-indexing-policies.md#modifying-the-indexing-policy-of-a-collection)に関する記述を参照してください。
 
-**What are the current limitations of Order By?**
+**Order By の現在の制限を教えてください。**
 
-Order By can be specified only against a property, either numeric or String when it is range indexed with the Maximum Precision (-1).
+プロパティが最大有効桁数 (-1) でインデックス付けされる範囲である場合、Order By は数値プロパティまたは文字列プロパティに対してのみ指定できます。
 
-You cannot perform the following:
+次の操作は実行できません。
  
-- Order By with internal string properties like id, _rid, and _self (coming soon).
-- Order By with properties derived from the result of an intra-document join (coming soon).
-- Order By multiple properties (coming soon).
-- Order By with queries on databases, collections, users, permissions or attachments (coming soon).
-- Order By with computed properties e.g. the result of an expression or a UDF/built-in function.
+- 内部文字列プロパティ id、\_rid、\_self (近日提供予定) に対する Order By の使用。
+- 内部ドキュメントの結合の結果から取得されたプロパティに対する Order By の使用 (近日提供予定)。
+- 複数のプロパティに対する Order By の使用 (近日提供予定)。
+- データベース、コレクション、ユーザー、アクセス許可、または添付ファイルに対するクエリでの　Order By　の使用 (近日対応予定)。
+- 計算されたプロパティ (式または UDF/組み込み関数の結果など) に対する Order By の使用。
 
-Order By is not currently supported for cross-partition queries when using Query Explorer in the Azure portal.
+## 次のステップ
 
-## <a name="troubleshooting"></a>Troubleshooting
+[Github サンプル プロジェクト](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)をフォークして、データの並べ替えを始めましょう。
 
-If you receive an error that Order By is not supported, check to ensure that you're using a version of the [SDK](documentdb-sdk-dotnet.md) that supports Order By. 
-
-## <a name="next-steps"></a>Next steps
-
-Fork the [Github samples project](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries) and start ordering your data! 
-
-## <a name="references"></a>References
-* [DocumentDB Query Reference](documentdb-sql-query.md)
-* [DocumentDB Indexing Policy Reference](documentdb-indexing-policies.md)
-* [DocumentDB SQL Reference](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-* [DocumentDB Order By Samples](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
+## 参照
+* [DocumentDB クエリのリファレンス](documentdb-sql-query.md)
+* [DocumentDB インデックス作成ポリシー リファレンス](documentdb-indexing-policies.md)
+* [DocumentDB SQL リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)
+* [DocumentDB Order By のサンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/Queries)
  
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

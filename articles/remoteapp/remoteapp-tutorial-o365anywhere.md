@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get the same Office 365 experience on any device with Azure RemoteApp | Microsoft Azure"
-   description="Learn how to share any Office 365 app with your users by using Azure RemoteApp."
+   pageTitle="Azure RemoteApp を使用して、どのデバイスでも同じ Office 365 のエクスペリエンスを得るには | Microsoft Azure"
+   description="Azure RemoteApp を使用して、ユーザーと任意の Office 365 アプリを共有する方法について説明します。"
    services="remoteapp"
    documentationCenter=""
    authors="guscatalano"
@@ -17,62 +17,53 @@
    ms.author="guscatal;elizapo"/>
 
 
-
-# <a name="get-the-same-office-365-experience-on-any-device-with-azure-remoteapp"></a>Get the same Office 365 experience on any device with Azure RemoteApp
+# Azure RemoteApp を使用して、どのデバイスでも同じ Office 365 のエクスペリエンスを得るには
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-This article will cover how to deploy Office 365 on any device in your company. Your users can get the same capabilities and UI experience on Android, Apple and Windows.
+この記事では、会社内の任意のデバイスで Office 365 をデプロイする方法を説明します。ユーザーには、Android、Apple、Windows のいずれからでも、同じ機能と UI 操作が提供されます。
 
-We will accomplish this using Azure RemoteApp by hosting Office 365 on scale-able virtual machines in Azure that users can connect to. This set of virtual machines we call a "cloud collection".
+これは、Azure RemoteApp を使用し、ユーザーが接続できる Azure のスケーラブルな仮想マシンで Office 365 をホストすることにより実現されます。この仮想マシンのセットを "クラウド コレクション" と呼びます。
 
-## <a name="create-a-cloud-collection"></a>Create a cloud collection
+## Create a cloud collection (クラウド コレクションを作成する)
 
-First after you have created an Azure account, navigate to **RemoteApp** by clicking on the link on the left side.
-![Showing Azure RemoteApp on the Azure Portal](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
+まず、Azure アカウントを作成してから、左側にあるリンクをクリックして **RemoteApp** に移動します。![Azure ポータルでの Azure RemoteApp の表示](./media/remoteapp-tutorial-o365anywhere/1-menu.png)
 
-Then continue by clicking **new** on the bottom and "quick creating" a collection. Provide a name, the region, the subscription, the plan and the image "Office Proffesional 2013" that we provide.
-![Create Dialog](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
+次に、下部にある **[新規]** をクリックし、コレクションを "簡易作成" します。名前、リージョン、サブスクリプション、プラン、提供されている "Office Proffesional 2013" イメージを指定します。 ![[作成] ダイアログ](./media/remoteapp-tutorial-o365anywhere/2-quickcreate.png)
 
-Once you finish the form the collection creation process should start. This may take up to an hour or so.
+フォームを完了すると、コレクションの作成プロセスが開始されます。これには 1 時間ほどかかる場合があります。
 
-![Waiting](./media/remoteapp-tutorial-o365anywhere/3-waiting.png)
+![待機中](./media/remoteapp-tutorial-o365anywhere/3-waiting.png)
 
-Once the process is done, it will look something like this. If we click **Publishing** we can see that most Office applications have been published for us already.
-![Collection created](./media/remoteapp-tutorial-o365anywhere/4-done.png)
+プロセスが完了すると、以下のようになります。**[発行]** をクリックすると、ほとんどの Office アプリケーションが既に発行されていることを確認できます。![作成されたコレクション](./media/remoteapp-tutorial-o365anywhere/4-done.png)
 
-![Published apps](./media/remoteapp-tutorial-o365anywhere/5-publish.png)
+![発行されたアプリ](./media/remoteapp-tutorial-o365anywhere/5-publish.png)
 
-At this point you can also add more users that have access to this collection by clicking **User Access**.
-![Configure user access](./media/remoteapp-tutorial-o365anywhere/6-user.png)
+この時点で、**[ユーザー アクセス]** をクリックし、このコレクションへのアクセスが可能なユーザーを追加できます。![ユーザー アクセスの構成](./media/remoteapp-tutorial-o365anywhere/6-user.png)
 
-Now let's try out connecting to Office 365!
+それでは、Office 365 への接続を試してみましょう。
 
-## <a name="connect-to-office-365"></a>Connect to Office 365
+## Office 365 への接続
 
-We'll head over to [https://www.remoteapp.windowsazure.com/](https://www.remoteapp.windowsazure.com/), scroll down  and click **Download clients** to install the Azure RemoteApp client on the device you're on. The screenshots below are for Windows.
+[https://www.remoteapp.windowsazure.com/](https://www.remoteapp.windowsazure.com/) に移動します。下へスクロールして **[クライアントのダウンロード]** をクリックし、使用中のデバイスに Azure RemoteApp クライアントをインストールします。次のスクリーンショットは、Windows の場合です。
 
-Once the application starts you'll be asked to sign in with your Microsoft account (formerly called a "Live ID"), use the same one as your Azure account for now. When you're signed in you should see a notification about new invitations, click there and you should see a list like one below. Accept the invitation that matches your Azure account owner email.
+アプリケーションが開始されると、Microsoft アカウント (以前の "Live ID") でサインインするように求められます。ここでは、Azure アカウントと同じアカウントを使用してください。サインインすると、新しい招待に関する通知が表示されます。これをクリックすると、次のようなリストが表示されます。Azure アカウント所有者の電子メールと一致する招待を承諾してください。
 
-![New invitation](./media/remoteapp-tutorial-o365anywhere/7-araclient.png)
+![新しい招待](./media/remoteapp-tutorial-o365anywhere/7-araclient.png)
 
-What it looks like when there are new invitations.
+新しい招待がある場合、このように表示されます。
 
-![Accept an application](./media/remoteapp-tutorial-o365anywhere/8-invitation.png)
+![アプリケーションの承諾](./media/remoteapp-tutorial-o365anywhere/8-invitation.png)
 
-Once you accept the invitation you should see all the Office apps in the Azure RemoteApp client.
+招待を承諾すると、Azure RemoteApp クライアントにあるすべての Office アプリが表示されます。
 
-![List of apps](./media/remoteapp-tutorial-o365anywhere/9-work.png)
+![アプリのリスト](./media/remoteapp-tutorial-o365anywhere/9-work.png)
 
-When you click on any of these the application should start on the Azure virtual machine and you should be all set! Enjoy!
+そのいずれかをクリックすると、アプリケーションが Azure 仮想マシンで開始されます。これですべて完了です。 機能を有効にご活用ください。
 
-![starting](./media/remoteapp-tutorial-o365anywhere/10-arastart.png)
+![開始中](./media/remoteapp-tutorial-o365anywhere/10-arastart.png)
 
-![powerpoint](./media/remoteapp-tutorial-o365anywhere/11-pp.png)
+![PowerPoint](./media/remoteapp-tutorial-o365anywhere/11-pp.png)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

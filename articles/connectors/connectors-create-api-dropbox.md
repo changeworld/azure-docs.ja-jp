@@ -1,10 +1,10 @@
 <properties
 pageTitle="Dropbox | Microsoft Azure"
-description="Create Logic apps with Azure App service. Connect to Dropbox to manage your files. You can perform various actions such as upload, update, get, and delete files in Dropbox."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Azure App Service を使用してロジック アプリを作成します。Dropbox に接続してファイルを管理します。Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,430 +17,428 @@ ms.workload="integration"
 ms.date="07/15/2016"
 ms.author="deonhe"/>
 
+# Dropbox コネクタの使用
 
-# <a name="get-started-with-the-dropbox-connector"></a>Get started with the Dropbox connector
+Dropbox に接続してファイルを管理します。Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
 
-Connect to Dropbox to manage your files. You can perform various actions such as upload, update, get, and delete files in Dropbox.
+[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
 
-To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a Logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## Dropbox に接続する
 
-## <a name="connect-to-dropbox"></a>Connect to Dropbox
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成する必要があります。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、Dropbox に接続するには、最初に Dropbox "*接続*" を作成する必要があります。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力する必要があります。たとえば、Dropbox の場合は、Dropbox への接続を作成するために Dropbox アカウントの資格情報が必要になります。[接続の詳細についてはこちらをご覧ください]()。
 
-Before your logic app can access any service, you first need to create a *connection* to the service. A connection provides connectivity between a logic app and another service. For example, in order to connect to Dropbox, you first need a Dropbox *connection*. To create a connection, you would need to provide the credentials you normally use to access the service you wish to connect to. So, in the Dropbox example, you would need the credentials to your Dropbox account in order to create the connection to Dropbox. [Learn more about connections]()
+### Dropbox への接続を作成する
 
-### <a name="create-a-connection-to-dropbox"></a>Create a connection to Dropbox
+>[AZURE.INCLUDE [Dropbox への接続を作成する手順](../../includes/connectors-create-api-dropbox.md)]
 
->[AZURE.INCLUDE [Steps to create a connection to Dropbox](../../includes/connectors-create-api-dropbox.md)]
+## Dropbox トリガーを使用する
 
-## <a name="use-a-dropbox-trigger"></a>Use a Dropbox trigger
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+この例では、**[When a file is created (ファイルの作成時)]** トリガーを使用します。このトリガーが発生したら、**[Get file content using path (パスを使用してファイルの内容を取得する)]** Dropbox アクションを呼び出します。
 
-In this example, we will use the **When a file is created** trigger. When this trigger occurs, we will call the **Get file content using path** Dropbox action. 
-
-1. Enter *dropbox* in the search box on the Logic Apps designer, then select the **Dropbox - When a file is created** trigger.      
- ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)  
+1. Logic Apps デザイナーの検索ボックスに「*dropbox*」と入力し、**[Dropbox - When a file is created (Dropbox - ファイルの作成時)]** トリガーを選択します。  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger.PNG)
   
-2. Select the folder in which you want to track file creation. Select ... (identified in the red box) and browse to the folder you wish to select for the trigger's input.  
- ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)  
+2. ファイルの作成をトラッキングするフォルダーを選択します。[...] \(赤で囲まれている部分) を選択し、トリガーの入力用に選択するフォルダーを参照します。  
+ ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-trigger-2.PNG)
 
-## <a name="use-a-dropbox-action"></a>Use a Dropbox action
+## Dropbox アクションを使用する
 
-An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-Now that the trigger has been added, follow these steps to add an action that will get the new file's content.
+トリガーを追加した後は、次の手順に従って、新しいファイルの内容を取得するアクションを追加します。
 
-1. Select **+ New Step** to add the action you would like to take when a new file is created.  
+1. **[+ 新しいステップ]** を選択し、新しいファイルの作成時に実行するアクションを追加します。  
+ 
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action.PNG)
 
-2. Select **Add an action**. This opens the search box where you can search for any action you would like to take.  
+2. **[アクションの追加]** を選択します。これにより検索ボックスが開き、実行するアクションを検索できます。  
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-2.PNG)
 
-3. Enter *dropbox* to search for actions related to Dropbox.  
+3. 「*dropbox*」と入力して、Dropbox に関連するアクションを検索します。
 
-4. Select **Dropbox - Get file content using path** as the action to take when a new file is created in the selected Dropbox folder. The action control block opens. You will be prompted to authorize your logic app to access your Dropbox account if you have not done so previously.  
+4. 選択した Dropbox フォルダーに新しいファイルが作成されたときに実行するアクションとして、**[Dropbox - Get file content using path (Dropbox - パスを使用してファイルの内容を取得する)]** を選択します。アクションの制御ブロックが表示されます。ロジック アプリによる Dropbox アカウントへのアクセスをまだ承認していない場合は、承認を求められます。  
+
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-3.PNG)  
 
-5. Select ... (located at the right side of the **File Path** control) and browse to the file path you would like to use. Or, use the **file path** token to speed up your logic app creation.  
+5. (**[ファイル パス]** コントロールの右側にある) [...] を選択し、使用するファイル パスを参照します。または、**ファイル パス** トークンを使用してロジック アプリをすばやく作成することもできます。  
  ![](../../includes/media/connectors-create-api-dropbox/using-dropbox-action-4.PNG)  
 
-6. Save your work and create a new file in Dropbox to activate your workflow.  
+6. 作業内容を保存し、Dropbox に新しいファイルを作成してワークフローをアクティブ化します。
 
-## <a name="technical-details"></a>Technical details
+## 技術的な詳細
 
-Here are the details about the triggers, actions and responses that this connection supports:
+ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
 
-## <a name="dropbox-triggers"></a>Dropbox triggers
+## Dropbox トリガー
 
-The Dropbox connector has the following trigger(s):  
+Dropbox コネクタには、次のトリガーがあります。
 
-|Trigger | Description|
+|トリガー | 説明|
 |--- | ---|
-|[When a file is created](connectors-create-api-dropbox.md#when-a-file-is-created)|This operation triggers a flow when a new file is created in a folder.|
-|[When a file is modified](connectors-create-api-dropbox.md#when-a-file-is-modified)|This operation triggers a flow when a file is modified in a folder.|
+|[ファイルの作成時](connectors-create-api-dropbox.md#when-a-file-is-created)|この操作では、フォルダーに新しいファイルが作成されたときにフローをトリガーします。|
+|[ファイルの変更時](connectors-create-api-dropbox.md#when-a-file-is-modified)|この操作では、フォルダー内のファイルが変更されたときにフローをトリガーします。|
 
-## <a name="dropbox-actions"></a>Dropbox actions
+## Dropbox アクション
 
-The Dropbox connector has the following actions:
+Dropbox コネクタには、次のアクションがあります。
 
-|Action|Description|
+|アクション|説明|
 |--- | ---|
-|[Get file metadata](connectors-create-api-dropbox.md#get-file-metadata)|This operation gets the metadata for a file.|
-|[Update file](connectors-create-api-dropbox.md#update-file)|This operation updates a file.|
-|[Delete file](connectors-create-api-dropbox.md#delete-file)|This operation deletes a file.|
-|[Get file metadata using path](connectors-create-api-dropbox.md#get-file-metadata-using-path)|This operation gets the metadata of a file using the path.|
-|[Get file content using path](connectors-create-api-dropbox.md#get-file-content-using-path)|This operation gets the content of a file using the path.|
-|[Get file content](connectors-create-api-dropbox.md#get-file-content)|This operation gets the content of a file.|
-|[Create file](connectors-create-api-dropbox.md#create-file)|This operation creates a file.|
-|[Copy file](connectors-create-api-dropbox.md#copy-file)|This operation copies a file to Dropbox.|
-|[List files in folder](connectors-create-api-dropbox.md#list-files-in-folder)|This operation gets the list of files and subfolders in a folder.|
-|[List files in root folder](connectors-create-api-dropbox.md#list-files-in-root-folder)|This operation gets the list of files and subfolders in the root folder.|
-|[Extract archive to folder](connectors-create-api-dropbox.md#extract-archive-to-folder)|This operation extracts an archive file into a folder (example: .zip).|
+|[ファイルのメタデータを取得する](connectors-create-api-dropbox.md#get-file-metadata)|この操作では、ファイルのメタデータを取得します。|
+|[ファイルを更新する](connectors-create-api-dropbox.md#update-file)|この操作では、ファイルを更新します。|
+|[ファイルを削除する](connectors-create-api-dropbox.md#delete-file)|この操作では、ファイルを削除します。|
+|[パスを使用してファイルのメタデータを取得する](connectors-create-api-dropbox.md#get-file-metadata-using-path)|この操作では、パスを使用してファイルのメタデータを取得します。|
+|[パスを使用してファイルの内容を取得する](connectors-create-api-dropbox.md#get-file-content-using-path)|この操作では、パスを使用してファイルの内容を取得します。|
+|[ファイルの内容を取得する](connectors-create-api-dropbox.md#get-file-content)|この操作では、ファイルの内容を取得します。|
+|[ファイルを作成する](connectors-create-api-dropbox.md#create-file)|この操作では、ファイルを作成します。|
+|[ファイルをコピーする](connectors-create-api-dropbox.md#copy-file)|この操作では、ファイルを Dropbox にコピーします。|
+|[フォルダー内のファイルを一覧表示する](connectors-create-api-dropbox.md#list-files-in-folder)|この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。|
+|[ルート フォルダー内のファイルを一覧表示する](connectors-create-api-dropbox.md#list-files-in-root-folder)|この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。|
+|[アーカイブをフォルダーに抽出する](connectors-create-api-dropbox.md#extract-archive-to-folder)|この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
 
-### <a name="action-details"></a>Action details
+### アクションの詳細
 
-Here are the details for the actions and triggers for this connector, along with their responses:
+ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
 
 
-### <a name="get-file-metadata"></a>Get file metadata
-This operation gets the metadata for a file. 
+### ファイルのメタデータを取得する
+この操作では、ファイルのメタデータを取得します。
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|ファイル|ファイルを選択する|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="update-file"></a>Update file
-This operation updates a file. 
+### ファイルを更新する
+この操作では、ファイルを更新します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
-|body*|File content|Content of the file|
+|id*|ファイル|ファイルを選択する|
+|body*|ファイルのコンテンツ|ファイルの内容|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="delete-file"></a>Delete file
-This operation deletes a file. 
+### ファイルを削除する
+この操作では、ファイルを削除します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|ファイル|ファイルを選択する|
 
-An * indicates that a property is required
-
-
+* は、必須のプロパティを示します。
 
 
-### <a name="get-file-metadata-using-path"></a>Get file metadata using path
-This operation gets the metadata of a file using the path. 
 
 
-|Property Name| Display Name|Description|
+### パスを使用してファイルのメタデータを取得する
+この操作では、パスを使用してファイルのメタデータを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|path*|File path|Select a file|
+|path*|ファイル パス|ファイルを選択する|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+
+
+### パスを使用してファイルの内容を取得する
+この操作では、パスを使用してファイルの内容を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|path*|ファイル パス|ファイルを選択する|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### ファイルの内容を取得する
+この操作では、ファイルの内容を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを選択する|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### ファイルを作成する
+この操作では、ファイルを作成します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|folderPath*|フォルダー パス|フォルダーを選択する|
+|name*|ファイル名|ファイルの名前|
+|body*|ファイルのコンテンツ|ファイルの内容|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="get-file-content-using-path"></a>Get file content using path
-This operation gets the content of a file using the path. 
+### ファイルをコピーする
+この操作では、ファイルを Dropbox にコピーします。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|path*|File path|Select a file|
+|source*|Source url (コピー元 URL)|ソース ファイルの URL|
+|destination*|Destination file path (コピー先ファイル パス)|対象ファイル名を含む、コピー先ファイル パス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-
-
-
-### <a name="get-file-content"></a>Get file content
-This operation gets the content of a file. 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|id*|File|Select a file|
-
-An * indicates that a property is required
-
-
-
-
-### <a name="create-file"></a>Create file
-This operation creates a file. 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|folderPath*|Folder path|Select a folder|
-|name*|File name|Name of the file|
-|body*|File content|Content of the file|
-
-An * indicates that a property is required
-
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="copy-file"></a>Copy file
-This operation copies a file to Dropbox. 
+### ファイルの作成時
+この操作では、フォルダーに新しいファイルが作成されたときにフローをトリガーします。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|source*|Source url|Url to source file|
-|destination*|Destination file path|Destination file path, including target filename|
-|overwrite|Overwrite?|Overwrites the destination file if set to 'true'|
+|folderId*|フォルダー|フォルダーを選択する|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+
+
+
+### ファイルの変更時
+この操作では、フォルダー内のファイルが変更されたときにフローをトリガーします。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|folderId*|フォルダー|フォルダーを選択する|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### フォルダー内のファイルを一覧表示する
+この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|フォルダー|フォルダーを選択する|
+
+* は、必須のプロパティを示します。
+
+
+
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+
+
+### ルート フォルダー内のファイルを一覧表示する
+この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。
+
+
+この呼び出しには、パラメーターはありません
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="when-a-file-is-created"></a>When a file is created
-This operation triggers a flow when a new file is created in a folder. 
+### アーカイブをフォルダーに抽出する
+この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|folderId*|Folder|Select a folder|
+|source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルのパス|
+|destination*|Destination folder path (抽出先フォルダー パス)|アーカイブの内容を抽出するパス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
 
-An * indicates that a property is required
-
-
-
-
-### <a name="when-a-file-is-modified"></a>When a file is modified
-This operation triggers a flow when a file is modified in a folder. 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|folderId*|Folder|Select a folder|
-
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
 
 
-
-### <a name="list-files-in-folder"></a>List files in folder
-This operation gets the list of files and subfolders in a folder. 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|id*|Folder|Select a folder|
-
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
-|FileLocator|string|
+|FileLocator|文字列|
 
 
 
+## HTTP 応答
 
-### <a name="list-files-in-root-folder"></a>List files in root folder
-This operation gets the list of files and subfolders in the root folder. 
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
 
-
-There are no parameters for this call
-
-#### <a name="output-details"></a>Output Details
-
-BlobMetadata
-
-
-| Property Name | Data Type |
-|---|---|
-|Id|string|
-|Name|string|
-|DisplayName|string|
-|Path|string|
-|LastModified|string|
-|Size|integer|
-|MediaType|string|
-|IsFolder|boolean|
-|ETag|string|
-|FileLocator|string|
-
-
-
-
-### <a name="extract-archive-to-folder"></a>Extract archive to folder
-This operation extracts an archive file into a folder (example: .zip). 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|source*|Source archive file path|Path to the archive file|
-|destination*|Destination folder path|Path to extract the archive contents|
-|overwrite|Overwrite?|Overwrites the destination files if set to 'true'|
-
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-BlobMetadata
-
-
-| Property Name | Data Type |
-|---|---|
-|Id|string|
-|Name|string|
-|DisplayName|string|
-|Path|string|
-|LastModified|string|
-|Size|integer|
-|MediaType|string|
-|IsFolder|boolean|
-|ETag|string|
-|FileLocator|string|
-
-
-
-## <a name="http-responses"></a>HTTP responses
-
-The actions and triggers above can return one or more of the following HTTP status codes: 
-
-| Name | Description |
+| 名前 | 説明 |
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occurred.|
-|default|Operation Failed.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
+|default|操作に失敗しました。|
 
 
-## <a name="next-steps"></a>Next steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

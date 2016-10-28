@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with BlueJeans | Microsoft Azure" 
-    description="Learn how to use BlueJeans with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と BlueJeans の統合 | Microsoft Azure" 
+    description="Azure Active Directory で BlueJeans を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,158 +11,151 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
+#チュートリアル: Azure AD と BlueJeans の統合
 
-#<a name="tutorial:-azure-ad-integration-with-bluejeans"></a>Tutorial: Azure AD Integration with BlueJeans
+このチュートリアルでは、Azure と BlueJeans の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-The objective of this tutorial is to show the integration of Azure and BlueJeans.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+-   有効な Azure サブスクリプション
+-   BlueJeans でのシングル サインオンが有効なサブスクリプション
 
--   A valid Azure subscription
--   A BlueJeans single sign-on enabled subscription
+このチュートリアルを完了すると、BlueJeans に割り当てた Azure AD ユーザーは、BlueJeans 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
-After completing this tutorial, the Azure AD users you have assigned to BlueJeans will be able to single sign into the application at your BlueJeans company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+1.  BlueJeans のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-1.  Enabling the application integration for BlueJeans
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+![シナリオ](./media/active-directory-saas-bluejeans-tutorial/IC785860.png "シナリオ")
+##BlueJeans のアプリケーション統合の有効化
 
-![Scenario](./media/active-directory-saas-bluejeans-tutorial/IC785860.png "Scenario")
-##<a name="enabling-the-application-integration-for-bluejeans"></a>Enabling the application integration for BlueJeans
+このセクションでは、BlueJeans のアプリケーション統合を有効にする方法について説明します。
 
-The objective of this section is to outline how to enable the application integration for BlueJeans.
+###BlueJeans のアプリケーション統合を有効にするには、次の手順を実行します。
 
-###<a name="to-enable-the-application-integration-for-bluejeans,-perform-the-following-steps:"></a>To enable the application integration for BlueJeans, perform the following steps:
-
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-bluejeans-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-bluejeans-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-bluejeans-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-bluejeans-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-bluejeans-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-bluejeans-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-bluejeans-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **BlueJeans**.
+6.  **検索ボックス**に、「**BlueJeans**」と入力します。
 
-    ![Application Gallery](./media/active-directory-saas-bluejeans-tutorial/IC785861.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-bluejeans-tutorial/IC785861.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **BlueJeans**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[BlueJeans]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![BlueJeans](./media/active-directory-saas-bluejeans-tutorial/IC785862.png "BlueJeans")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
 
-The objective of this section is to outline how to enable users to authenticate to BlueJeans with their account in Azure AD using federation based on the SAML protocol.
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで BlueJeans に対する認証を行えるようにする方法を説明します。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **BlueJeans** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **BlueJeans** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure single sign-on](./media/active-directory-saas-bluejeans-tutorial/IC785863.png "Configure single sign-on")
+    ![Configure single sign-on](./media/active-directory-saas-bluejeans-tutorial/IC785863.png "シングル サインオンの構成")
 
-2.  On the **How would you like users to sign on to BlueJeans** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの BlueJeans へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-bluejeans-tutorial/IC785864.png "Configure Single Sign-On")
 
-3.  On the **Configure App URL** page, in the **BlueJeans Sign On URL** textbox, type your URL using the following pattern "*https://company.BlueJeans.com*", and then click **Next**.
+3.  **[アプリの URL の構成]** ページで、**[BlueJeans サインオン URL]** ボックスに、"*https://company.BlueJeans.com*" のパターンで URL を入力し、**[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-bluejeans-tutorial/IC785865.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-bluejeans-tutorial/IC785865.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at BlueJeans** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
+4.  **[BlueJeans でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-bluejeans-tutorial/IC785866.png "Configure Single Sign-On")
 
-5.  In a different web browser window, log into your **BlueJeans** company site as an administrator.
+5.  別の Web ブラウザー ウィンドウで、**BlueJeans** 企業サイトに管理者としてログインします。
 
-6.  Go to **ADMIN \> Group Settings \> Security**.
+6.  **[管理]、[グループ設定]、[セキュリティ]** の順にクリックします。
 
-    ![Admin](./media/active-directory-saas-bluejeans-tutorial/IC785868.png "Admin")
+    ![管理者](./media/active-directory-saas-bluejeans-tutorial/IC785868.png "管理者")
 
-7.  In the **Security** section, perform the following steps:
+7.  **[セキュリティ]** セクションで、次の手順を実行します。
 
-    ![SAML Single Sign On](./media/active-directory-saas-bluejeans-tutorial/IC785869.png "SAML Single Sign On")
+    ![SAML シングル サインオン](./media/active-directory-saas-bluejeans-tutorial/IC785869.png "SAML シングル サインオン")
 
-    1.  Select **SAML Single Sign On**.
-    2.  Select **Enable automatic provisioning**.
+    1.  **[SAML シングル サインオン]** を選択します。
+    2.  **[自動プロビジョニングの有効化]** を選択します。
 
-8.  Move on with the following steps:
+8.  次の手順を実行します。
 
-    ![Certificate Path](./media/active-directory-saas-bluejeans-tutorial/IC785870.png "Certificate Path")
+    ![証明書パス](./media/active-directory-saas-bluejeans-tutorial/IC785870.png "証明書パス")
 
-    1.  Click **Choose File**, and then upload the downloaded certificate.
-    2.  In the Azure classic portal, on the **Configure single sign-on at BlueJeans** dialog page, copy the **Remote Login URL** value, and then paste it into the **Login URL** textbox.
-    3.  In the Azure classic portal, on the **Configure single sign-on at BlueJeans** dialog page, copy the **Change Password URL** value, and then paste it into the **Password Change URL** textbox.
-    4.  In the Azure classic portal, on the **Configure single sign-on at BlueJeans** dialog page, copy the **Remote Logout URL** value, and then paste it into the **Logout URL** textbox.
+    1.  **[ファイルの選択]** をクリックし、ダウンロードした証明書をアップロードします。
+    2.  Azure クラシック ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[パスワード変更 URL]** の値をコピーし、**[パスワード変更の URL]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルで、**[BlueJeans でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
 
-9.  Move on with the following steps:
+9.  次の手順を実行します。
 
-    ![Save Changes](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "Save Changes")
+    ![変更を保存](./media/active-directory-saas-bluejeans-tutorial/IC785874.png "変更を保存")
 
-    1.  In the **User id** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**.
-    2.  In the **Email** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**.
-    3.  Click **Save Changes**.
+    1.  **[ユーザー ID]** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
+    2.  **[電子メール]** ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name**」と入力します。
+    3.  **[変更を保存]** をクリックします。
 
-10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-bluejeans-tutorial/IC785876.png "Configure Single Sign-On")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
 
-In order to enable Azure AD users to log into BlueJeans, they must be provisioned into BlueJeans.  
-In the case of BlueJeans, provisioning is a manual task.
+Azure AD ユーザーが BlueJeans にログインできるようにするには、ユーザーを BlueJeans にプロビジョニングする必要があります。BlueJeans の場合、プロビジョニングは手動で行います。
 
-###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
+###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 
-1.  Log in to your **BlueJeans** company site as an administrator.
+1.  **BlueJeans** 企業サイトに管理者としてログインします。
 
-2.  Go to **ADMIN \> Manage Users \> Add User**.
+2.  **[管理]、[ユーザーの管理]、[ユーザーの追加]** の順にクリックします。
 
-    ![Admin](./media/active-directory-saas-bluejeans-tutorial/IC785877.png "Admin")
+    ![管理者](./media/active-directory-saas-bluejeans-tutorial/IC785877.png "管理者")
 
-    >[AZURE.IMPORTANT] The **Add User** tab is only available if, in the **Security tab**, **Enable automatic provisioning** is unchecked.
+    >[AZURE.IMPORTANT] **[ユーザーの追加]** タブは、**[セキュリティ]** タブの **[自動プロビジョニングの有効化]** がオフになっている場合にのみ使用できます。
 
-3.  In the **Add User** section, perform the following steps:
+3.  **[ユーザーの追加]** セクションで、次の手順を実行します。
 
-    ![Add User](./media/active-directory-saas-bluejeans-tutorial/IC785886.png "Add User")
+    ![ユーザーの追加](./media/active-directory-saas-bluejeans-tutorial/IC785886.png "ユーザーの追加")
 
-    1.  Type a **BlueJeans Username**, an **Email address**, a **BlueJeans Meeting ID**, a **Moderator Passcode**, a **Full Name**, the **Company** of a valid AAD account you want to provision into the related textboxes.
-    2.  Click **Add User**.
+    1.  対応するボックスに、プロビジョニングする有効な AAD アカウントの **BlueJeans ユーザー名**、**電子メール アドレス**、**BlueJeans ミーティング ID**、**モデレーター パスコード**、**フル ネーム**、**会社**を入力します。
+    2.  **[ユーザーの追加]** をクリックします。
 
->[AZURE.NOTE] You can use any other BlueJeans user account creation tools or APIs provided by BlueJeans to provision AAD user accounts.
+>[AZURE.NOTE] BlueJeans から提供されている他の BlueJeans ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-bluejeans,-perform-the-following-steps:"></a>To assign users to BlueJeans, perform the following steps:
+###ユーザーを BlueJeans に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **BlueJeans **application integration page, click **Assign users**.
+2.  **BlueJeans** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-bluejeans-tutorial/IC785887.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-bluejeans-tutorial/IC785887.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-bluejeans-tutorial/IC767830.png "Yes")
 
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

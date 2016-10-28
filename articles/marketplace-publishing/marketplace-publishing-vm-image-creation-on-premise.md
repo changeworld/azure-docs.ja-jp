@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Creating an on-premises virtual machine image for the Azure Marketplace | Microsoft Azure"
-   description="Understand and execute the steps to create an on-premises VM image and deploy to the Azure Marketplace for others to purchase."
+   pageTitle="Azure Marketplace 向けの仮想マシン イメージのオンプレミスでの作成 | Microsoft Azure"
+   description="VM イメージをオンプレミスで作成し、他のユーザーが購入できるように Azure Marketplace にデプロイするための手順を理解して実行します。"
    services="marketplace-publishing"
    documentationCenter=""
    authors="HannibalSII"
@@ -16,132 +16,126 @@
   ms.date="04/29/2016"
   ms.author="hascipio; v-divte"/>
 
+# Azure Marketplace 向けの仮想マシン イメージのオンプレミスでの作成
+Azure 仮想ハード ディスク (VHD) は、リモート デスクトップ プロトコルを使用してクラウドで直接作成することを強くお勧めします。ただし、必要な場合は、VHD をダウンロードして、オンプレミスのインフラストラクチャを使用して開発できます。
 
-# <a name="develop-an-on-premises-virtual-machine-image-for-the-azure-marketplace"></a>Develop an on-premises virtual machine image for the Azure Marketplace
-We strongly recommend that you develop Azure virtual hard disks (VHDs) directly in the cloud by using Remote Desktop Protocol. However, if you must, it is possible to download a VHD and develop it by using on-premises infrastructure.  
+オンプレミスでの開発では、作成済みの VM のオペレーション システム VHD をダウンロードする必要があります。これらの手順は、手順 3.3 の一部として実行します。
 
-For on-premises development, you must download the operating system VHD of the created VM. These steps would take place as part of step 3.3, above.  
+## VHD イメージをダウンロードする
+### BLOB URL の検出
+VHD をダウンロードするには、まず、オペレーティング システム ディスクの BLOB URL を探します。
 
-## <a name="download-a-vhd-image"></a>Download a VHD image
-### <a name="locate-a-blob-url"></a>Locate a blob URL
-In order to download the VHD, first locate the blob URL for the operating system disk.
+新しい [Microsoft Azure ポータル](https://portal.azure.com)から BLOB URL を見つけます。
 
-Locate the blob URL from the new [Microsoft Azure portal](https://portal.azure.com):
+1.	**[参照]**、**[仮想マシン]** の順に移動し、デプロイされた VM を選択します。
+2.	**[構成]** で **[ディスク]** タイルを選択し、[ディスク] ブレードを開きます。
 
-1.  Go to **Browse** > **VMs**, and then select the deployed VM.
-2.  Under **Configure**, select the **Disks** tile, which opens the Disks blade.
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img01.png)
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img01.png)
+3.	**[OS ディスク]** を選択します。これにより、VHD の場所を含むディスク プロパティが表示された別のブレードが開きます。
+4.	この BLOB URL をコピーします。
 
-3.  Select the **OS Disk**, which opens another blade that displays disk properties, including the VHD location.
-4.  Copy this blob URL.
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img02.png)
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img02.png)
+5.	デプロイされた VM を削除します。バック ディスクは削除しません。削除するのではなく、VM を停止することもできます。VM の実行中は、オペレーティング システム VHD をダウンロードしないでください。
 
-5.  Now, delete the deployed VM without deleting the backing disks. You can also stop the VM instead of deleting it. Do not download the operating system VHD when the VM is running.
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img03.png)
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img03.png)
+### VHD のダウンロード
+BLOB URL が分かったら、[Azure ポータル](http://manage.windowsazure.com/)または PowerShell を使用して VHD をダウンロードできます。
+> [AZURE.NOTE] このガイドの作成時点では、VHD をダウンロードするための機能は、新しい Microsoft Azure ポータルにはまだ存在していません。
 
-### <a name="download-a-vhd"></a>Download a VHD
-After you know the blob URL, you can download the VHD by using the [Azure portal](http://manage.windowsazure.com/) or PowerShell.  
-> [AZURE.NOTE] At the time of this guide’s creation, the functionality to download a VHD is not yet present in the new Microsoft Azure portal.  
+**現在の [Azure ポータル](http://manage.windowsazure.com/)経由でのオペレーティング システム VHD のダウンロード**
 
-**Download the operating system VHD via the current [Azure portal](http://manage.windowsazure.com/)**
+1.	まだサインインしていない場合は、Azure ポータルにサインインします。
+2.	**[ストレージ]** タブをクリックします。
+3.	VHD が格納されているストレージ アカウントを選択します。
 
-1.  Sign in to the Azure portal if you have not done so already.
-2.  Click the **Storage** tab.
-3.  Select the storage account within which the VHD is stored.
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img04.png)
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img04.png)
+4.	これにより、ストレージ アカウントのプロパティが表示されます。**[コンテナー]** タブを選択します。
 
-4.  This displays storage account properties. Select the **Containers** tab.
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img05.png)
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img05.png)
+5.	VHD が格納されているコンテナーを選択します。既定では、ポータルから作成されるときに、VHD は vhds コンテナーに格納されます。
 
-5.  Select the container in which the VHD is stored. By default, when created from the portal, the VHD is stored in a vhds container.
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img06.png)
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img06.png)
+6.	URL を保存済みの URL と比較して、適切なオペレーティング システム VHD を選択します。
+7.	**[Download]** をクリックします。
 
-6.  Select the correct operating system VHD by comparing the URL to the one you saved.
-7.  Click **Download**.
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img07.png)
-
-### <a name="download-a-vhd-by-using-powershell"></a>Download a VHD by using PowerShell
-In addition to using the Azure portal, you can use the [Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) cmdlet to download the operating system VHD.
+### PowerShell を使用した VHD のダウンロード
+Azure ポータルを使用する以外に、[Save-AzureVhd](http://msdn.microsoft.com/library/dn495297.aspx) コマンドレットを使用して、オペレーティング システム VHD をダウンロードすることもできます。
 
         Save-AzureVhd –Source <storageURIOfVhd> `
         -LocalFilePath <diskLocationOnWorkstation> `
         -StorageKey <keyForStorageAccount>
-For example, Save-AzureVhd -Source “https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\baseimagevm.vhd” -StorageKey <String>
+例: Save-AzureVhd -Source “https://baseimagevm.blob.core.windows.net/vhds/BaseImageVM-6820cq00-BaseImageVM-os-1411003770191.vhd” -LocalFilePath “C:\\Users\\Administrator\\Desktop\\baseimagevm.vhd” -StorageKey <String>
 
-> [AZURE.NOTE] **Save-AzureVhd** also has a **NumberOfThreads** option that can be used to increase parallelism to make the best use of available bandwidth for the download.
+> [AZURE.NOTE] **Save-azurevhd** には、並列処理を強化してダウンロードで利用できる帯域幅を最大限に活用するために使用できる **NumberOfThreads** オプションもあります。
 
-## <a name="upload-vhds-to-an-azure-storage-account"></a>Upload VHDs to an Azure storage account
-If you prepared your VHDs on-premises, you need to upload them into a storage account in Azure. This step takes place after creating your VHD on-premises but before obtaining certification for your VM image.
+## VHD を Azure ストレージ アカウントにアップロードする
+VHD をオンプレミスで準備した場合は、それらを Azure のストレージ アカウントにアップロードする必要があります。この手順は、VHD をオンプレミスで作成した後、VM イメージの認定を取得する前に実行します。
 
-### <a name="create-a-storage-account-and-container"></a>Create a storage account and container
-We recommend that VHDs be uploaded into a storage account in a region in the United States. All VHDs for a single SKU should be placed in a single container within a single storage account.
+### ストレージ アカウントとコンテナーの作成
+VHD は、米国内のリージョンのストレージ アカウントにアップロードすることをお勧めします。1 つの SKU のすべての VHD は、1 つのストレージ アカウント内の 1 つのコンテナーに配置する必要があります。
 
-To create a storage account, you can use the [Microsoft Azure portal](https://portal.azure.com/), PowerShell, or the Linux command-line tool.  
+ストレージ アカウントを作成するには、[Microsoft Azure ポータル](https://portal.azure.com/)、PowerShell、または Linux コマンドライン ツールを使用できます。
 
-**Create a storage account from the Microsoft Azure portal**
+**Microsoft Azure ポータルからのストレージ アカウントの作成**
 
-1.  Click **New**.
-2.  Select **Storage**.
-3.  Fill in the storage account name, and then select a location.
+1.	**[新規]** をクリックします。
+2.	**[ストレージ]** を選択します。
+3.	ストレージ アカウント名を入力し、場所を選択します。
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img08.png)
 
-4.  Click **Create**.
-5.  The blade for the created storage account should be open. If not, select **Browse** > **Storage Accounts**. On the Storage account blade, select the storage account created.
-6.  Select **Containers**.
+4.	**[作成]** をクリックします。
+5.	作成したストレージ アカウント用のブレードが開きます。開かない場合は、**[参照]**、**[ストレージ アカウント]** の順に選択します。[ストレージ アカウント] ブレードで、先ほど作成したストレージ アカウントを選択します。
+6.	**[コンテナー]** を選択します。
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img09.png) 
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img09.png)
 
-7.  On the Containers blade, select **Add**, and then enter a container name and the container permissions. Select **Private** for container permissions.
+7.	[コンテナー] ブレードで、**[追加]** を選択し、コンテナー名とコンテナーのアクセス許可を入力します。コンテナーのアクセス許可には **[プライベート]** を選択します。
 
-> [AZURE.TIP] We recommend that you create one container per SKU that you are planning to publish.
+> [AZURE.TIP] 発行する予定の SKU ごとに 1 つのコンテナーを作成することをお勧めします。
 
-  ![drawing](media/marketplace-publishing-vm-image-creation-on-premise/img10.png)
+  ![図](media/marketplace-publishing-vm-image-creation-on-premise/img10.png)
 
-### <a name="create-a-storage-account-by-using-powershell"></a>Create a storage account by using PowerShell
-Using PowerShell, create a storage account by using the [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495115.aspx) cmdlet.
+### PowerShell を使用したストレージ アカウントの作成
+PowerShell の [New-AzureStorageAccount](http://msdn.microsoft.com/library/dn495115.aspx) コマンドレットを使用して、ストレージ アカウントを作成します。
 
         New-AzureStorageAccount -StorageAccountName “mystorageaccount” -Location “West US”
 
-Then you can create a container within that storage account by using the [NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) cmdlet.
+その後、そのストレージ アカウント内に、[NewAzureStorageContainer](http://msdn.microsoft.com/library/dn495291.aspx) コマンドレットを使用してコンテナーを作成できます。
 
         New-AzureStorageContainer -Name “containername” -Permission “Off”
 
-> [AZURE.NOTE] Those commands assume that the current storage account context has already been set in PowerShell.   Refer to [Setting up Azure PowerShell](marketplace-publishing-powershell-setup.md) for more details on PowerShell setup.
- 
-### <a name="create-a-storage-account-by-using-the-command-line-tool-for-mac-and-linux"></a>Create a storage account by using the command-line tool for Mac and Linux
-From [Linux command-line tool](../virtual-machines/virtual-machines-linux-cli-manage.md), create a storage account as follows.
+> [AZURE.NOTE] これらのコマンドでは、現在のストレージ アカウントのコンテキストが PowerShell に設定されていることを前提としています。PowerShell のセットアップの詳細については、「[Azure PowerShell のセットアップ](marketplace-publishing-powershell-setup.md)」を参照してください。
+### Mac と Linux 用のコマンドライン ツールを使用したストレージ アカウントの作成
+[Linux コマンドライン ツール](../virtual-machines/virtual-machines-linux-cli-manage.md)から、次のようにストレージ アカウントを作成します。
 
         azure storage account create mystorageaccount --location "West US"
 
-Create a container as follows.
+コンテナーを次のように作成します。
 
         azure storage container create containername --account-name mystorageaccount --accountkey <accountKey>
 
-## <a name="upload-a-vhd"></a>Upload a VHD
-After the storage account and container are created, you can upload your prepared VHDs. You can use PowerShell, the Linux command-line tool, or other Azure Storage management tools.
+## VHD のアップロード
+ストレージ アカウントとコンテナーを作成したら、準備した VHD をアップロードできます。PowerShell、Linux コマンドライン ツール、またはその他の Azure Storage 管理ツールを使用できます。
 
-### <a name="upload-a-vhd-via-powershell"></a>Upload a VHD via PowerShell
-Use the [Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) cmdlet.
+### PowerShell を使用して VHD をアップロードする
+[Add-AzureVhd](http://msdn.microsoft.com/library/dn495173.aspx) コマンドレットを使用します。
 
         Add-AzureVhd –Destination “http://mystorageaccount.blob.core.windows.net/containername/vmsku.vhd” -LocalFilePath “C:\Users\Administrator\Desktop\vmsku.vhd”
 
-### <a name="upload-a-vhd-by-using-the-command-line-tool-for-mac-and-linux"></a>Upload a VHD by using the command-line tool for Mac and Linux
-With the [Linux command-line tool](../virtual-machines/command-line-tools/), use the following: azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
+### Mac と Linux 用のコマンドライン ツールを使用した VHD のアップロード
+[Linux コマンドライン ツール](../virtual-machines/command-line-tools/)では、次のコマンドを使用します。azure vm image create <image name> --location <Location of the data center> --OS Linux <LocationOfLocalVHD>
 
-## <a name="see-also"></a>See also
-- [Creating a virtual machine image for the Marketplace](marketplace-publishing-vm-image-creation.md)
-- [Setting up Azure PowerShell](marketplace-publishing-powershell-setup.md)
+## 関連項目
+- [Marketplace 向けの仮想マシン イメージの作成](marketplace-publishing-vm-image-creation.md)
+- [Azure PowerShell の設定](marketplace-publishing-powershell-setup.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

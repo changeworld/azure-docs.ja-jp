@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Secure a cluster running on Windows using Windows Security | Microsoft Azure"
-   description="Learn how to configure node-to-node and client-to-node security on a standalone cluster running on Windows using Windows Security."
+   pageTitle="Windows 上で実行されるクラスターをセキュリティで保護する | Microsoft Azure"
+   description="Windows セキュリティを使用して、Windows 上で実行されるスタンドアロン クラスター上でノード間またはクライアントとノードの間のセキュリティを構成する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="rwike77"
@@ -17,23 +17,22 @@
    ms.author="ryanwi"/>
 
 
+# Windows 上のスタンドアロン クラスターを Windows セキュリティで保護する
 
-# <a name="secure-a-standalone-cluster-on-windows-using-windows-security"></a>Secure a standalone cluster on Windows using Windows security
-
-To prevent unauthorized access to a Service Fabric cluster you must secure it, especially when it has production workloads running on it. This article describes how to configure node-to-node and client-to-node security using Windows security in the *ClusterConfig.JSON* file and corresponds to the configure security step of [Create a standalone cluster running on Windows](service-fabric-cluster-creation-for-windows-server.md). For more information on how Service Fabric uses Windows Security, see [Cluster security scenarios](service-fabric-cluster-security.md).
+Service Fabric クラスターは、特に運用ワークロードが実行されている場合などに、許可なくアクセスされるのを防ぐためにセキュリティで保護する必要があります。この記事では、*ClusterConfig.JSON* ファイルの Windows セキュリティを使用して、ノード間またはクライアントとノードの間のセキュリティを構成する方法について説明しています。また、この記事は [Windows 上で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事の、セキュリティ構成の手順に対応しています。Service Fabric における Windows セキュリティの使用の詳細については、[クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
 >[AZURE.NOTE]
-You should consider your security selection for node-to-node security carefully, since there is no cluster upgrade from one security choice to another. Changing the security selection would require a full cluster rebuild.
+ノード間のセキュリティは慎重に選ぶ必要があります。1 つのセキュリティを選んだ後で、別のセキュリティを使えるようにクラスターをアップグレードすることはできないからです。セキュリティの選択を変更するには、クラスターの完全な再構築が必要です。
 
-## <a name="configure-windows-security"></a>Configure Windows security
-The sample *ClusterConfig.Windows.JSON* configuration file downloaded with the [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) standalone cluster package contains a template for configuring Windows security.  Windows security is configured in the **Properties** section:
+## Windows セキュリティの構成
+[Microsoft.Azure.ServiceFabric.WindowsServer.<バージョン>.zip](http://go.microsoft.com/fwlink/?LinkId=730690) スタンドアロン クラスター パッケージに含まれるサンプル構成ファイルである *ClusterConfig.Windows.JSON* には、Windows セキュリティを構成するためのテンプレートが含まれています。Windows セキュリティは **Properties** セクション内で構成します。
 
 ```
 "security": {
             "ClusterCredentialType": "Windows",
             "ServerCredentialType": "Windows",
             "WindowsIdentities": {
-        "ClusterIdentity" : "[domain\machinegroup]",
+		"ClusterIdentity" : "[domain\machinegroup]",
                 "ClientIdentities": [{
                     "Identity": "[domain\username]",
                     "IsAdmin": true
@@ -42,29 +41,28 @@ The sample *ClusterConfig.Windows.JSON* configuration file downloaded with the [
         }
 ```
 
-|**Configuration Setting**|**Description**|
+|**構成設定**|**説明**|
 |-----------------------|--------------------------|
-|ClusterCredentialType|Windows Security is enabled by setting the **ClusterCredentialType** parameter to *Windows*.|
-|ServerCredentialType|Windows Security for clients is enabled by setting the **ServerCredentialType** parameter to *Windows*. This indicates that the clients of the cluster, and the cluster itself, are running within an Active Directory Domain.|
-|WindowsIdentities|Contains the cluster and client identities.|
-|ClusterIdentity|Configures node-to-node security. A comma-separated list of group managed service accounts or machine names.|
-|ClientIdentities|Configures client-to-node security. An array of client user accounts.|
-|Identity|The client identity, a domain user.|
-|IsAdmin|True specifies that the domain user has administrator client access, false for user client access.|
+|ClusterCredentialType|**ClusterCredentialType** パラメーターを *Windows* に設定すると、Windows セキュリティが有効になります。|
+|ServerCredentialType|**ServerCredentialType** パラメーターを *Windows* に設定すると、クライアントの Windows セキュリティが有効になります。これは、クラスターのクライアントおよびクラスター自体が Active Directory ドメイン内で実行されていることを示します。|
+|WindowsIdentities|クラスターとクライアントの ID が含まれます。|
+|ClusterIdentity|ノード間のセキュリティを構成します。グループ管理サービス アカウントまたはコンピューター名のコンマ区切りのリストです。|
+|ClientIdentities|クライアントとノードの間のセキュリティを構成します。クライアントのユーザー アカウントの配列です。|
+|ID|ドメイン ユーザーであるクライアントの ID。|
+|IsAdmin|true の場合は、ドメイン ユーザーが管理者クライアント アクセスを持つことを示し、false の場合は、ユーザー クライアント アクセスを持つことを示します。|
 
-[Node to node security](service-fabric-cluster-security.md#node-to-node-security) is configured by setting using **ClusterIdentity**. In order to build trust relationships between nodes, they must be made aware of each other. This can be accomplished in two different ways: Specify the Group Managed Service Account that includes all nodes in the cluster or Specify the domain node identities of all nodes in the cluster. We strongly recommend using the [Group Managed Service Account (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) approach, particularly for larger clusters (more than 10 nodes) or for clusters that are likely to grow or shrink.
-This approach allows nodes to be added or removed from the gMSA, without requiring changes to the cluster manifest. This approach does not require the creation of a domain group for which cluster administrators have been granted access rights to add and remove members. For more information, see [Getting Started with Group Managed Service Accounts](http://technet.microsoft.com/library/jj128431.aspx).
+[ノード間のセキュリティ](service-fabric-cluster-security.md#node-to-node-security)は **ClusterIdentity** を使って構成します。ノード間の信頼関係を構築するには、各ノードが互いを認識する必要があります。これを行うには 2 つの方法があります。クラスター内のすべてのノードを含むグループ管理サービス アカウントを指定する方法と、クラスター内のすべてのノードのドメイン ノード ID を指定する方法です。強くお勧めするのは、[グループ管理サービス アカウント (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) を使用する方法です。特に、クラスターが大きい場合 (ノードが 10 個以上) またはクラスターの拡大と縮小が予想される場合には、この方法が推奨されます。この方法では、クラスター マニフェストを変更せずに、gMSA へのノードの追加と削除を行うことが可能です。この方法なら、メンバーの追加と削除に必要なアクセス権がクラスター管理者から付与されたドメイン グループを作成する必要がありません。詳細については、「[グループの管理されたサービス アカウントの概要](http://technet.microsoft.com/library/jj128431.aspx)」を参照してください。
 
-[Client to node security](service-fabric-cluster-security.md#client-to-node-security) is configured using **ClientIdentities**. In order to establish trust between a client and the cluster, you must configure the cluster to know which client identities that it can trust. This can be done in two different ways: Specify the domain group users that can connect or specify the domain node users that can connect. Service Fabric supports two different access control types for clients that are connected to a Service Fabric cluster: administrator and user. Access control provides the ability for the cluster administrator to limit access to certain types of cluster operations for different groups of users, making the cluster more secure.  Administrators have full access to management capabilities (including read/write capabilities). Users, by default, have only read access to management capabilities (for example, query capabilities), and the ability to resolve applications and services.
+[クライアントとノードの間のセキュリティ](service-fabric-cluster-security.md#client-to-node-security)は **ClientIdentities** を使用して構成します。クライアントとクラスターの間の信頼を確立するためには、どのクライアントの ID なら信頼できるのかを認識できるようにクラスターを構成する必要があります。これを行うには 2 つの方法があります。接続可能なドメイン グループ ユーザーを指定する方法と、接続可能なドメイン ノード ユーザーを指定する方法です。Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定の種類のクラスター操作へのアクセスを制限し、クラスターのセキュリティを強化できます。管理者には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) があります。ユーザーには、既定で管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみがあります。
 
-The following example **security** section configures Windows security and specifies that the machines in *ServiceFabric/clusterA.contoso.com* are part of the cluster and that *CONTOSO\usera* has admin client access:
+次の **security** セクションの例では、Windows セキュリティを構成し、*ServiceFabric/clusterA.contoso.com* 内のコンピューターがクラスターに属することと、*CONTOSO\\usera* が管理者クライアント アクセスを持つことを指定しています。
 
 ```
 "security": {
     "ClusterCredentialType": "Windows",
     "ServerCredentialType": "Windows",
     "WindowsIdentities": {
-        "ClusterIdentity" : "ServiceFabric/clusterA.contoso.com",
+		"ClusterIdentity" : "ServiceFabric/clusterA.contoso.com",
         "ClientIdentities": [{
             "Identity": "CONTOSO\\usera",
         "IsAdmin": true
@@ -73,16 +71,12 @@ The following example **security** section configures Windows security and speci
 },
 ```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-After configuring Windows security in the *ClusterConfig.JSON* file, resume the cluster creation process in [Create a standalone cluster running on Windows](service-fabric-cluster-creation-for-windows-server.md).
+*ClusterConfig.JSON* ファイルで Windows セキュリティを構成したら、[Windows 上で実行されるスタンドアロン クラスターの作成](service-fabric-cluster-creation-for-windows-server.md)に関する記事で説明されているクラスター作成処理を再開します。
 
-For more information on how node-to-node security, client-to-node security, and role-based access control, see [Cluster security scenarios](service-fabric-cluster-security.md).
+ノード間のセキュリティ、クライアントとノードの間のセキュリティ、ロールベースのアクセス制御の詳細については、[クラスターのセキュリティ シナリオ](service-fabric-cluster-security.md)に関する記事を参照してください。
 
-See [Connect to a secure cluster](service-fabric-connect-to-secure-cluster.md) for examples of connecting using PowerShell or FabricClient.
+PowerShell または FabricClient を使用した接続の例については、「[セキュリティ保護されたクラスターに接続する](service-fabric-connect-to-secure-cluster.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

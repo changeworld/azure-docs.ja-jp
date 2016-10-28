@@ -1,20 +1,17 @@
 <!--author=SharS last changed: 12/01/15-->
 
-#### <a name="to-enter-maintenance-mode"></a>To enter Maintenance mode
+#### メンテナンス モードを開始するには
 
-1. In the serial console menu, choose option 1, **Log in with full access**.
+1. シリアル コンソール メニューで、オプション 1 を選択し、**フル アクセスでログイン**します。
 
-2. Type the password. The default password is **Password1**.
+2. パスワードを入力します。既定のパスワードは **Password1** です。
 
-3. At the command prompt, type
+3. コマンド プロンプトに、次のコマンドを入力します。
 
      `Enter-HcsMaintenanceMode`
 
-4. You will see a warning message telling you that Maintenance mode will disrupt all I/O requests and sever the connection to the Azure classic portal, and you will be prompted for confirmation. Type **Y** to enter Maintenance mode.
+4. メンテナンス モードにすると、すべての I/O 要求が中断されAzure クラシック ポータルへの接続が切断されるという警告メッセージが表示され、確認が求められます。メンテナンス モードを開始するには、「**Y**」と入力します。
 
-    Both controllers will restart. When the restart is complete, another message will appear indicating that the device is in Maintenance mode.
+    両方のコントローラーが再起動します。再起動が完了すると、デバイスがメンテナンス モードであることを示すメッセージが表示されます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1203_2015-->

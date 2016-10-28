@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure VM agent and extensions | Microsoft Azure"
- description="Gives an overview of the agent and extensions, and how to install the agent, using the classic deployment model."
+ pageTitle="Azure VM エージェントおよび拡張機能 | Microsoft Azure"
+ description="エージェントおよび拡張機能の概要と、クラシック デプロイ モデルを使用してエージェントをインストールする方法について説明します。"
  services="virtual-machines-linux"
  documentationCenter=""
  authors="squillace"
@@ -17,15 +17,10 @@
  ms.date="08/23/2016"
  ms.author="rasquill"/>
 
-
-#<a name="about-the-virtual-machine-agent-and-extensions"></a>About the virtual machine agent and extensions
+#仮想マシンのエージェントおよび拡張機能について
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-agents-and-extensions](../../includes/virtual-machines-common-classic-agents-and-extensions.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

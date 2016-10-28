@@ -1,17 +1,15 @@
-Caches can be accessed in the [Azure portal](https://portal.azure.com) using the **Browse** blade.
+キャッシュには、[Azure ポータル](https://portal.azure.com)で **[参照]** ブレードを使用してアクセスできます。
 
-![Azure Redis Cache Browse Blade](media/redis-cache-browse/redis-cache-browse.png)
+![Azure Redis Cache の参照ブレード](media/redis-cache-browse/redis-cache-browse.png)
 
-To view your caches, click **More services > Redis Caches**. If you have recently browsed to a Redis Cache, you can click **Redis Caches** directly from the list without clicking **More services**.
+キャッシュを表示するには、**[その他のサービス] > [Redis Caches]** をクリックします。最近 Redis Cache を参照した場合は、**[その他のサービス]** をクリックしなくても一覧から **[Redis Cache]** を直接クリックできます。
 
-Select the desired cache to view the properties for that cache.
+キャッシュのプロパティを表示するには、目的のキャッシュを選択します。
 
-![Azure Redis Cache Browse Cache List](media/redis-cache-browse/redis-caches.png)
+![Azure Redis Cache の参照キャッシュ リスト](media/redis-cache-browse/redis-caches.png)
 
-Click **Settings** or **All settings** to view and configure your cache.
+**[設定]** または **[すべての設定]** をクリックしてキャッシュを表示し、構成します。
 
-![Redis Cache All Settings](media/redis-cache-browse/redis-cache-blade.png)
+![Redis Cache のすべての設定](media/redis-cache-browse/redis-cache-blade.png)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

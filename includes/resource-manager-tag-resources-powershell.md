@@ -1,28 +1,28 @@
-### <a name="tag-cmdlet-changes-in-latest-powershell-version"></a>Tag cmdlet changes in latest PowerShell version
+### PowerShell の最新バージョンでの Tag コマンドレットの変更
 
-The August 2016 release of [Azure PowerShell 2.0][powershell] includes significant changes in how you work with tags. Before proceeding, check the version of your AzureRm.Resources module.
+[Azure PowerShell 2.0][powershell] の 2016 年 8 月付けのリリースには、タグの操作方法に関する大幅な変更が含まれています。次に進む前に、AzureRm.Resources モジュールのバージョンを確認してください。
 
     Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 
-If you last updated your Azure PowerShell before August 2016, your results should show a version less than 3.0.
+Azure PowerShell の最後の更新を 2016 年 8 月より前に行った場合は、3.0 より前のバージョンが表示されます。
 
     Version
     -------
     2.0.2
 
-If you have updated Azure PowerShell since August 2016, your results should show a version of 3.0.
+Azure PowerShell を 2016 年 8 月以降に更新している場合は、バージョン 3.0 が表示されます。
 
     Version
     -------
     3.0.1
     
-If your version of the module is 3.0.1 or later, you have the most recent cmdlets for working with tags. This version of the Azure Resources module installs automatically when you install or upgrade Azure PowerShell by using PowerShell Gallery, PowerShellGet, or Web Platform Installer.  If your version is earlier than 3.0.1, you can continue using that version, but you might consider updating to the latest version. The latest version includes changes that make it easier to work with tags. Both approaches are shown in this topic.
+モジュールのバージョンが 3.0.1 以降であれば、最新のコマンドレットを使用してタグを操作できます。このバージョンの Azure リソース モジュールは、PowerShell ギャラリー、PowerShellGet、または Web Platform Installer を使用して Azure PowerShell をインストールまたはアップグレードするときに、自動的にインストールされます。バージョンが 3.0.1 より前であっても、そのバージョンを引き続き使用できますが、最新バージョンに更新することを検討してください。最新バージョンには、タグを簡単に操作できるようにする変更が含まれています。このトピックでは、両方の方法を紹介します。
 
-### <a name="updating-your-script-for-changes-in-latest-version"></a>Updating your script for changes in latest version 
+### 最新バージョンの変更に合わせるためのスクリプトの更新 
 
-In the latest release, the **Tags** parameter name changed to **Tag**, and the type changed from  **Hashtable[]**  to **Hashtable**. You no longer need to provide **Name** and **Value** for each entry. Instead you provide key-value pairings in the format **Key = "Value"**.
+最新のリリースでは、**Tags** パラメーターの名前が **Tag** に変更され、型が **Hashtable** から **Hashtable** に変更されています。エントリごとに **Name** と **Value** を指定する必要はなくなりました。代わりに、キーと値の組み合わせを **Key = "Value"** の形式で指定します。
 
-To update existing script, change the **Tags** parameter to **Tag**, and change the tag format as shown in the following example.
+既存のスクリプトを更新するには、**Tags** パラメーターを **Tag** に変更し、タグの書式を次の例のように変更します。
 
     # Old
     New-AzureRmResourceGroup -Tags @{ Name = "testtag"; Value = "testval" } -Name $resourceGroupName -Location $location
@@ -30,17 +30,17 @@ To update existing script, change the **Tags** parameter to **Tag**, and change 
     # New
     New-AzureRmResourceGroup -Tag @{ testtag = "testval" } -Name $resourceGroupName -Location $location 
 
-However, you should note that resource groups and resources still return a **Tags** property in their metadata. This property is not changed.
+ただし、リソース グループとリソースは、依然としてそのメタデータの中に **Tags** プロパティを返すことに注意してください。このプロパティは変更されていません。
 
-### <a name="version-3.0.1-or-later"></a>Version 3.0.1 or later
+### バージョン 3.0.1 以降
 
-Tags exist directly on resources and resource groups. To see the existing tags, view a resource with **Get-AzureRmResource** or a resource group with **Get-AzureRmResourceGroup**. 
+タグはリソースやリソース グループ上に直接存在します。既存のタグを確認するには、**Get AzureRmResource** でリソースを、**Get AzureRmResourceGroup** でリソース グループを表示します。
 
-Let's start with a resource group.
+それでは、リソース グループから始めましょう。
 
     Get-AzureRmResourceGroup -Name testrg1
 
-This cmdlet returns several bits of metadata on the resource group including what tags have been applied, if any.
+このコマンドレットは、リソース グループに関して、適用されているタグを含むいくつかのメタデータを返します。
 
     ResourceGroupName : testrg1
     Location          : westus
@@ -51,11 +51,11 @@ This cmdlet returns several bits of metadata on the resource group including wha
                     Dept         Finance
                     Environment  Production
 
-To retrieve the resource metadata including tags, use the following example.
+タグを含むリソースのメタデータを取得するには、次の例を使用します。
 
     Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName testrg1
 
-You see the tag names in the results.
+結果にタグの名前が表示されます。
 
     Name              : tfsqlserver
     ResourceId        : /subscriptions/{guid}/resourceGroups/tag-demo-group/providers/Microsoft.Sql/servers/tfsqlserver
@@ -67,32 +67,32 @@ You see the tag names in the results.
     SubscriptionId    : {guid}
     Tags              : {Dept, Environment}
 
-Use the **Tags** property to get tag names and values.
+タグの名前と値を取得するには、**Tags** プロパティを使用します。
 
     (Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName testrg1).Tags
 
-Which returns the following results:
+次の結果が返されます。
 
     Name                   Value
     ----                   -----
     Dept                   Finance
     Environment            Production
 
-Instead of viewing the tags for a particular resource group or resource, you often want to retrieve all the resources or resource groups with a particular tag and value. To get resource groups with a specific tag, use **Find-AzureRmResourceGroup** cmdlet with the **-Tag** parameter.
+通常は、特定のリソース グループまたはリソースのタグを表示する代わりに、特定のタグと値を持つリソースまたはリソース グループをすべて取得します。特定のタグが付けられたリソース グループを取得するには、**Find-AzureRmResourceGroup** コマンドレットに **-Tag** パラメーターを指定して使用します。
 
-To retrieve resource groups with a tag value, use the following format.
+タグの値を持つリソース グループを取得するには、次の書式を使用します。
 
     (Find-AzureRmResourceGroup -Tag @{ Dept="Finance" }).Name 
 
-To get all the resources with a particular tag and value, use the **Find-AzureRmResource** cmdlet.
+特定のタグと値を持つすべてのリソースを取得するには、**Find-AzureRmResource** コマンドレットを使用します。
 
     (Find-AzureRmResource -TagName Dept -TagValue Finance).Name
     
-To add a tag to a resource group that has no existing tags, use the **Set-AzureRmResourceGroup** command and specify a tag object.
+既存のタグがないリソース グループにタグを追加するには、**Set-AzureRmResourceGroup** コマンドを使用してタグ オブジェクトを指定します。
 
     Set-AzureRmResourceGroup -Name test-group -Tag @{ Dept="IT"; Environment="Test" }
 
-Which returns the resource group with its new tag values.
+これにより、新しいタグの値が指定されたリソース グループが返されます。
 
     ResourceGroupName : test-group
     Location          : southcentralus
@@ -103,44 +103,44 @@ Which returns the resource group with its new tag values.
                     Dept          IT
                     Environment   Test
                     
-You can add tags to a resource that has no existing tags by using the **Set-AzureRmResource** command 
+既存のタグがないリソースにタグを追加するには、**Set-AzureRmResource** コマンドを使用します。
 
     Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceId /subscriptions/{guid}/resourceGroups/test-group/providers/Microsoft.Web/sites/examplemobileapp
 
-Tags are updated as a whole. To add one tag to a resource that has other tags, use an array with all the tags you want to keep. First, select the existing tags, add one to that set, and reapply all the tags.
+タグは全体として更新されます。別のタグを持つリソースにタグを 1 つ追加するには、残しておきたいすべてのタグが含まれる配列を使用します。まず、既存のタグを選択してそのセットに 1 つ追加し、すべてのタグを再度適用します。
 
     $tags = (Get-AzureRmResourceGroup -Name tag-demo).Tags
     $tags += @{Status="approved"}
     Set-AzureRmResourceGroup -Name test-group -Tag $tags
 
-To remove one or more tags, simply save the array without the ones you want to remove.
+特定のタグを 1 つ以上削除するには、削除するタグが含まれない配列を保存します。
 
-The process is the same for resources except you use the **Get-AzureRmResource** and **Set-AzureRmResource** cmdlets. 
+プロセスはリソースの場合も同じですが、**Get-AzureRmResource** および **Set-AzureRmResource** コマンドレットを使用する点のみ異なります。
 
-To get a list of all tags within a subscription using PowerShell, use the **Get-AzureRmTag** cmdlet.
+PowerShell を使用してサブスクリプション内のすべてのタグの一覧を取得するには、**Get-AzureRmTag** コマンドレットを使用します。
 
     Get-AzureRmTag
     
-Which returns tag names and a count of the number of resources and resource groups with the tag
+タグの名前と、そのタグを持つリソースとリソース グループの数が返されます。
 
     Name                      Count
     ----                      ------
     Dept                       8
     Environment                8
 
-You may see tags that start with "hidden-" and "link:". These tags are internal tags, which you should ignore and avoid changing.
+"hidden-" や "link:" で始まるタグが表示される場合があります。これらは内部タグであるため、変更せずに無視してください。
 
-Use the **New-AzureRmTag** cmdlet to add new tags to the taxonomy. These tags are included in the autocomplete even though they haven't been applied to any resources or resource groups, yet. To remove a tag name/value, first remove the tag from any resources it may be used with and then use the **Remove-AzureRmTag** cmdlet to remove it from the taxonomy.
+分類に新しいタグを追加するには、**New-AzureRmTag** コマンドレットを使用します。これらのタグは、リソースまたはリソース グループにまだ適用されていない場合でもオートコンプリートに含められます。タグ名/値を削除するには、タグが使用されている任意のリソースからタグを削除した後、**Remove-AzureRmTag** コマンドレットを使用して分類から削除します。
 
-### <a name="versions-earlier-than-3.0.1"></a>Versions earlier than 3.0.1
+### 3\.0.1 より前のバージョン
 
-Tags exist directly on resources and resource groups. To see the existing tags, view a resource with **Get-AzureRmResource** or a resource group with **Get-AzureRmResourceGroup**. 
+タグはリソースやリソース グループ上に直接存在します。既存のタグを確認するには、**Get AzureRmResource** でリソースを、**Get AzureRmResourceGroup** でリソース グループを表示します。
 
-Let's start with a resource group.
+それでは、リソース グループから始めましょう。
 
     Get-AzureRmResourceGroup -Name testrg1
 
-This cmdlet returns several bits of metadata on the resource group including what tags have been applied, if any.
+このコマンドレットは、リソース グループに関して、適用されているタグを含むいくつかのメタデータを返します。
 
     ResourceGroupName : testrg1
     Location          : westus
@@ -151,11 +151,11 @@ This cmdlet returns several bits of metadata on the resource group including wha
                     Dept         Finance
                     Environment  Production
                     
-To retrieve the resource metadata, use the following example. The resource metadata does not directly display tags. 
+リソースのメタデータを取得するには、次の例を使用します。リソースのメタデータは、タグを直接表示しません。
 
     Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName testrg1
 
-You see in the results that the tags are only displayed as Hashtable object.
+結果にタグは Hashtable オブジェクトとしてのみ表示されます。
 
     Name              : tfsqlserver
     ResourceId        : /subscriptions/{guid}/resourceGroups/tag-demo-group/providers/Microsoft.Sql/servers/tfsqlserver
@@ -167,30 +167,30 @@ You see in the results that the tags are only displayed as Hashtable object.
     SubscriptionId    : {guid}
     Tags              : {System.Collections.Hashtable}
 
-You can view the actual tags by retrieving the **Tags** property.
+実際のタグを表示するには、**Tags** プロパティを取得します。
 
     (Get-AzureRmResource -ResourceName tfsqlserver -ResourceGroupName tag-demo-group).Tags | %{ $_.Name + ": " + $_.Value }
    
-Which returns formatted results:
+これにより、書式設定された結果が返されます。
     
     Dept: Finance
     Environment: Production
     
-Instead of viewing the tags for a particular resource group or resource, you often want to retrieve all the resources or resource groups with a particular tag and value. To get resource groups with a specific tag, use **Find-AzureRmResourceGroup** cmdlet with the **-Tag** parameter.
+通常は、特定のリソース グループまたはリソースのタグを表示する代わりに、特定のタグと値を持つリソースまたはリソース グループをすべて取得します。特定のタグが付けられたリソース グループを取得するには、**Find-AzureRmResourceGroup** コマンドレットに **-Tag** パラメーターを指定して使用します。
 
-To retrieve resource groups with a tag value, use the following format.
+タグの値を持つリソース グループを取得するには、次の書式を使用します。
 
     Find-AzureRmResourceGroup -Tag @{ Name="Dept"; Value="Finance" } | %{ $_.Name }
     
-To get all the resources with a particular tag and value, use the Find-AzureRmResource cmdlet.
+特定のタグと値を持つすべてのリソースを取得するには、Find-AzureRmResource コマンドレットを使用します。
 
     Find-AzureRmResource -TagName Dept -TagValue Finance | %{ $_.ResourceName }
 
-To add a tag to a resource group that has no existing tags, simply use the Set-AzureRmResourceGroup command and specify a tag object.
+既存のタグがないリソース グループにタグを追加するには、Set-AzureRmResourceGroup コマンドを使用してタグ オブジェクトを指定します。
 
     Set-AzureRmResourceGroup -Name test-group -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} )
     
-Which returns the resource group with its new tag values.
+これにより、新しいタグの値が指定されたリソース グループが返されます。
 
     ResourceGroupName : test-group
     Location          : southcentralus
@@ -201,39 +201,36 @@ Which returns the resource group with its new tag values.
                 Dept          IT
                 Environment   Test
 
-You can add tags to a resource that has no existing tags by using the Set-AzureRmResource command.
+既存のタグがないリソースにタグを追加するには、Set-AzureRmResource コマンドを使用します。
 
     Set-AzureRmResource -Tag @( @{ Name="Dept"; Value="IT" }, @{ Name="Environment"; Value="Test"} ) -ResourceId /subscriptions/{guid}/resourceGroups/test-group/providers/Microsoft.Web/sites/examplemobileapp
 
-Tags are updated as a whole. To add one tag to a resource that has other tags, use an array with all the tags you want to keep. First, select the existing tags, add one to that set, and reapply all the tags.
+タグは全体として更新されます。別のタグを持つリソースにタグを 1 つ追加するには、残しておきたいすべてのタグが含まれる配列を使用します。まず、既存のタグを選択してそのセットに 1 つ追加し、すべてのタグを再度適用します。
 
     $tags = (Get-AzureRmResourceGroup -Name tag-demo).Tags
     $tags += @{Name="status";Value="approved"}
     Set-AzureRmResourceGroup -Name test-group -Tag $tags
 
-To remove one or more tags, simply save the array without the ones you want to remove.
+特定のタグを 1 つ以上削除するには、削除するタグが含まれない配列を保存します。
 
-The process is the same for resources except you use the Get-AzureRmResource and Set-AzureRmResource cmdlets. 
+リソースの場合もプロセスは同じですが、Get-AzureRmResource コマンドレットと Set-AzureRmResource コマンドレットを使用する点が異なります。
 
-To get a list of all tags within a subscription using PowerShell, use the **Get-AzureRmTag** cmdlet.
+PowerShell を使用してサブスクリプション内のすべてのタグの一覧を取得するには、**Get-AzureRmTag** コマンドレットを使用します。
 
     Get-AzureRmTag
     
-Which returns tag names and a count of the number of resources and resource groups with the tag
+タグの名前と、そのタグを持つリソースとリソース グループの数が返されます。
 
     Name                      Count
     ----                      ------
     Dept                       8
     Environment                8
 
-You may see tags that start with "hidden-" and "link:". These tags are internal tags, which you should ignore and avoid changing.
+"hidden-" や "link:" で始まるタグが表示される場合があります。これらは内部タグであるため、変更せずに無視してください。
 
-Use the **New-AzureRmTag** cmdlet to add new tags to the taxonomy. These tags are included in the autocomplete even though they haven't been applied to any resources or resource groups, yet. To remove a tag name/value, first remove the tag from any resources it may be used with and then use the **Remove-AzureRmTag** cmdlet to remove it from the taxonomy.
+分類に新しいタグを追加するには、**New-AzureRmTag** コマンドレットを使用します。これらのタグは、リソースまたはリソース グループにまだ適用されていない場合でもオートコンプリートに含められます。タグ名/値を削除するには、タグが使用されている任意のリソースからタグを削除した後、**Remove-AzureRmTag** コマンドレットを使用して分類から削除します。
 
 
 [powershell]: https://msdn.microsoft.com/library/mt619274(v=azure.200).aspx
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

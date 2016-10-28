@@ -1,86 +1,80 @@
 <properties
-    pageTitle="Back up Azure VMs to a Recovery Services vault | Microsoft Azure"
-    description="Discover, register, and back up Azure virtual machines to a recovery services vault with these procedures for Azure virtual machine backup."
-    services="backup"
-    documentationCenter=""
-    authors="markgalioto"
-    manager="cfreeman"
-    editor=""
-    keywords="virtual machine backup; back up virtual machine; backup and disaster recovery; arm vm backup"/>
+	pageTitle="Recovery Services コンテナーへの Azure VM のバックアップ | Microsoft Azure"
+	description="Azure 仮想マシン バックアップの手順で Azure 仮想マシンを検出および登録して Recovery Services コンテナーにバックアップします。"
+	services="backup"
+	documentationCenter=""
+	authors="markgalioto"
+	manager="cfreeman"
+	editor=""
+	keywords="仮想マシンのバックアップ; バックアップ、仮想マシン; バックアップと障害復旧; ARM VM のバックアップ"/>
 
 <tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/29/2016"
-    ms.author="trinadhk; jimpark; markgal;"/>
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/29/2016"
+	ms.author="trinadhk; jimpark; markgal;"/>
 
 
-
-# <a name="back-up-azure-vms-to-a-recovery-services-vault"></a>Back up Azure VMs to a Recovery Services vault
+# Recovery Services コンテナーへの Azure VM のバックアップ
 
 > [AZURE.SELECTOR]
-- [Back up VMs to Recovery Services vault](backup-azure-arm-vms.md)
-- [Back up VMs to Backup vault](backup-azure-vms.md)
+- [Recovery Services コンテナーへの VM のバックアップ](backup-azure-arm-vms.md)
+- [バックアップ コンテナーへの VM のバックアップ](backup-azure-vms.md)
 
-This article provides the procedure for backing up Azure VMs (both Resource Manager-deployed and Classic-deployed) to a Recovery Services vault. The majority of work for backing up VMs goes into the preparation. Before you can back up or protect a VM, you must complete the [prerequisites](backup-azure-arm-vms-prepare.md) to prepare your environment for protecting your VMs. Once you have completed the prerequisites, then you can initiate the back up operation to take snapshots of your VM.
+この記事では、Azure VM (Resource Manager デプロイとクラシック デプロイの両方) を Recovery Services コンテナーにバックアップする手順について説明します。VM をバックアップする作業の大半は準備です。VM をバックアップまたは保護する前に、[前提条件](backup-azure-arm-vms-prepare.md)の作業を行って、VM を保護するために環境を準備する必要があります。前提条件の作業が完了したら、バックアップ操作を開始して VM のスナップショットを作成できます。
 
->[AZURE.NOTE] Azure has two deployment models for creating and working with resources: [Resource Manager and Classic](../resource-manager-deployment-model.md). You can protect Resource Manager-deployed VMs and Classic VMs with Recovery Services vaults. See [Back up Azure virtual machines](backup-azure-vms.md) for details on working with Classic deployment model VMs.
+>[AZURE.NOTE] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../resource-manager-deployment-model.md)です。Resource Manager モデルでデプロイされた VM もクラシック モデルでデプロイされた VM も、Recovery Services コンテナーで保護することができます。クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンのバックアップ](backup-azure-vms.md)」を参照してください。
 
-For additional information, see the articles on [planning your VM backup infrastructure in Azure](backup-azure-vms-introduction.md) and [Azure virtual machines](https://azure.microsoft.com/documentation/services/virtual-machines/).
+詳細については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](backup-azure-vms-introduction.md)」と[Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/) に関するページを参照してください。
 
-## <a name="triggering-the-back-up-job"></a>Triggering the back up job
+## バックアップ ジョブのトリガー
 
-The back up policy associated with the Recovery Services vault, defines how often and when the backup operation runs. By default, the first scheduled backup is the initial backup. Until the initial backup occurs, the Last Backup Status on the **Backup Jobs** blade shows as **Warning(initial backup pending)**.
+Recovery Services コンテナーに関連付けられているバックアップ ポリシーでは、バックアップ操作を実行する頻度とタイミングを定義します。既定では、スケジュールされた最初のバックアップが初回バックアップとなります。初回バックアップが実行されるまで、**[バックアップ ジョブ]** ブレードの [前回のバックアップの状態] には、**[警告 (初回のバックアップが保留中)]** と表示されます。
 
 ![Backup pending](./media/backup-azure-vms-first-look-arm/initial-backup-not-run.png)
 
-Unless your initial backup is due to begin very soon, it is recommended that you run **Back up Now**. The following procedure starts from the vault dashboard. This procedure serves for running the initial backup job after you have completed all prerequisites. If the initial backup job has already been run, this procedure is not available. The associated backup policy determines the next backup job.  
+初回バックアップがすぐに開始される予定でない場合は、**[今すぐバックアップ]** を実行することをお勧めします。以下の手順は、コンテナー ダッシュボードから開始します。この手順では、すべての前提条件を完了した後で最初のバックアップ ジョブを実行します。最初のバックアップ ジョブが既に実行されている場合、この手順は使用できません。関連付けられているバックアップ ポリシーで、次のバックアップ ジョブが決定されます。
 
-To run the initial backup job:
+最初のバックアップ ジョブを実行するには:
 
-1. On the vault dashboard, on the **Backup** tile, click **Azure Virtual Machines**. <br/>
-    ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
+1. コンテナー ダッシュボードの **[バックアップ]** タイルで、**[Azure Virtual Machines]** をクリックします。<br/> ![Settings icon](./media/backup-azure-vms-first-look-arm/rs-vault-in-dashboard-backup-vms.png)
 
-    The **Backup Items** blade opens.
+    **[バックアップ項目]** ブレードが開きます。
 
-2. On the **Backup Items** blade, right-click the vault you want to back up, and click **Backup now**.
+2. **[バックアップ項目]** ブレードで、バックアップするコンテナーを右クリックし、**[今すぐバックアップ]** をクリックします。
 
     ![Settings icon](./media/backup-azure-vms-first-look-arm/back-up-now.png)
 
-    The Backup job is triggered. <br/>
+    バックアップ ジョブがトリガーされます。<br/>
 
     ![Backup job triggered](./media/backup-azure-vms-first-look-arm/backup-triggered.png)
 
-3. To view that your initial backup has completed, on the vault dashboard, on the **Backup Jobs** tile, click **Azure virtual machines**.
+3. 初回バックアップが完了したことを確認するには、コンテナー ダッシュボードの **[バックアップ ジョブ]** タイルで **[Azure Virtual Machines]** をクリックします。
 
     ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/open-backup-jobs.png)
 
-    The Backup Jobs blade opens.
+    [バックアップ ジョブ] ブレードが開きます。
 
-4. In the **Backup jobs** blade, you can see the status of all jobs.
+4. **[バックアップ ジョブ]** ブレードでは、すべてのジョブの状態を確認できます。
 
     ![Backup Jobs tile](./media/backup-azure-vms-first-look-arm/backup-jobs-in-jobs-view.png)
 
-    >[AZURE.NOTE] As a part of the backup operation, the Azure Backup service issues a command to the backup extension in each virtual machine to flush all writes and take a consistent snapshot.
+    >[AZURE.NOTE] Azure Backup サービスは、バックアップ操作の一部として、各仮想マシンのバックアップ拡張機能に対して、すべての書き込みをフラッシュし、整合性のあるスナップショットを作成するためのコマンドを発行します。
 
-    When the backup job is finished, the status is *Completed*.
-
-
-## <a name="troubleshooting-errors"></a>Troubleshooting errors
-If you run into issues while backing up your virtual machine, please see the [VM troubleshooting article](backup-azure-vms-troubleshoot.md) for help.
-
-## <a name="next-steps"></a>Next steps
-
-Now that you have protected your VM, check out the following articles for additional management tasks  you can do with your VMs, and how to restore VMs.
-
-- [Manage and monitor your virtual machines](backup-azure-manage-vms.md)
-- [Restore virtual machines](backup-azure-arm-restore-vms.md)
+    バックアップ ジョブが完了すると、状態は *[完了]* になります。
 
 
+## エラーのトラブルシューティング
+仮想マシンのバックアップ中に問題が発生した場合は、[仮想マシンのトラブルシューティングに関する記事](backup-azure-vms-troubleshoot.md)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
 
+Vm の保護が済んだので、VM で実行できる追加管理タスクおよび VM の復元方法を以下の記事で確認してください。
 
+- [仮想マシンの管理と監視](backup-azure-manage-vms.md)
+- [仮想マシンの復元](backup-azure-arm-restore-vms.md)
+
+<!---HONumber=AcomDC_0803_2016-->

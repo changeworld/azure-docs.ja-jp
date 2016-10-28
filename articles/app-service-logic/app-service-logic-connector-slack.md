@@ -1,33 +1,29 @@
 <properties 
-    pageTitle="Using the Slack Connector in Logic Apps | Microsoft Azure App Service"
-    description="How to create and configure the Slack Connector or API app and use it in a logic app in Azure App Service"
-    authors="msftman" 
-    manager="erikre" 
-    editor="" 
-    services="logic-apps" 
-    documentationCenter=""/>
+	pageTitle="Logic Apps での Slack コネクタの使用 | Microsoft Azure App Service"
+	description="Slack コネクタまたは API アプリを作成、構成して、Azure App Service のロジック アプリで使用する方法"
+	authors="msftman" 
+	manager="erikre" 
+	editor="" 
+	services="logic-apps" 
+	documentationCenter=""/>
 
 <tags
-    ms.service="logic-apps"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="04/19/2016"
+	ms.service="logic-apps"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="04/19/2016"
     ms.author="deonhe"/>
 
+# Slack コネクタが強化されました 
 
-# <a name="we've-improved-the-slack-connector"></a>We've improved the Slack connector 
-
-We've removed the content (which targeted Logic apps version 2014-12-01-preview) from this page because this connector has been upgraded and is now only supported on the new [Logic Apps schema version 2015-08-01-preview](./app-service-logic-schema-2015-08-01.md) and later. 
-
-
-## <a name="next-steps"></a>Next steps    
-
-- [Learn more about the this new connector](../connectors/connectors-create-api-slack.md)
-- See [the full list](../connectors/apis-list.md) of all connectors that run on the new Logic Apps schema version 2015-08-01-preview  
+Logic Apps バージョン 2014-12-01-preview を対象とするコンテンツはこのページから削除されました。このコネクタはアップグレードされ、現在は新しい [Logic Apps スキーマ バージョン 2015-08-01-preview](./app-service-logic-schema-2015-08-01.md) 以降でのみサポートされているためです。
 
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ    
 
+- [この新しいコネクタに関する詳細情報](../connectors/connectors-create-api-slack.md)
+- 新しい Logic Apps スキーマ バージョン 2015-08-01-preview で動作するすべてのコネクタが列挙された[リスト](../connectors/apis-list.md)をご確認ください。
 
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,63 +1,62 @@
 <properties
-    pageTitle="Best practices Resource Manager template | Microsoft Azure"
-    description="Guidelines for simplifying your Azure Resource Manager templates."
-    services="azure-resource-manager"
-    documentationCenter=""
-    authors="tfitzmac"
-    manager="timlt"
-    editor="tysonn"/>
+	pageTitle="Resource Manager テンプレートのベスト プラクティス | Microsoft Azure"
+	description="Azure Resource Manager テンプレートを単純化するためのガイドラインです。"
+	services="azure-resource-manager"
+	documentationCenter=""
+	authors="tfitzmac"
+	manager="timlt"
+	editor="tysonn"/>
 
 <tags
-    ms.service="azure-resource-manager"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/15/2016"
-    ms.author="tomfitz"/>
+	ms.service="azure-resource-manager"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/15/2016"
+	ms.author="tomfitz"/>
 
+# Azure Resource Manager テンプレートを作成するためのベスト プラクティス
 
-# <a name="best-practices-for-creating-azure-resource-manager-templates"></a>Best practices for creating Azure Resource Manager templates
+以下のガイドラインは、信頼性が高く使いやすい Resource Manager テンプレートを作成するのに役立ちます。これらのガイドラインはあくまで推奨事項であり、絶対的な要件ではありません。シナリオに応じて、ガイドラインを変更する必要のある場合があります。
 
-The following guidelines will help you create Resource Manager templates that are reliable and easy-to-use. These guidelines are intended only as suggestions, not absolute requirements. Your scenario may require variations from these guidelines.
+## リソース名
 
-## <a name="resource-names"></a>Resource names
+一般に、使用するリソース名には次の 3 種類があります。
 
-There are generally three types of resource names you will work with:
+1. 一意である必要があるリソース名
+2. 一意でなくてもよいが、コンテキストを特定しやすい名前にする必要があるリソース名
+3. 一般的なものでよいリソース名
 
-1. Resource names that must be unique.
-2. Resource names that do not need to be unique but you want to provide a name that helps identify the context.
-3. Resource names that can be generic.
+命名規則の策定については、「[インフラストラクチャの名前付けガイドライン](./virtual-machines/virtual-machines-windows-infrastructure-naming-guidelines.md)」を参照してください。リソース名の制限事項については、「[Azure リソースの推奨される名前付け規則](./guidance/guidance-naming-conventions.md)」を参照してください。
 
-For help with establishing a naming convention, see [Infrastructure naming guidelines](./virtual-machines/virtual-machines-windows-infrastructure-naming-guidelines.md). For information about resource name restrictions, see [Recommended naming conventions for Azure resources](./guidance/guidance-naming-conventions.md).
+### 一意のリソース名
 
-### <a name="unique-resource-names"></a>Unique resource names
+データ アクセス エンドポイントを持つリソースの種類に対しては、一意のリソース名を付ける必要があります。一意の名前にする必要があるリソースの種類には次のようなものがあります。
 
-You must provide a unique resource name for any resource type that has a data access endpoint. Some common types that require a unique name include:
+- ストレージ アカウント
+- Web サイト
+- SQL Server
+- Key Vault
+- Redis Cache
+- Batch アカウント
+- Traffic Manager
+- 検索サービス
+- HDInsight クラスター
 
-- Storage account
-- Web site
-- SQL server
-- Key vault
-- Redis cache
-- Batch account
-- Traffic manager
-- Search service
-- HDInsight cluster
+また、ストレージ アカウント名は、小文字で 24 文字以下にする必要があり、ハイフンを含めることはできません。
 
-Furthermore, storage account names must be lower-case, 24 characters or less, and not include any hyphens.
-
-Rather than providing a parameter for these resource names and trying to guess a unique name during deployment, you can create a variable that uses the [uniqueString()](resource-group-template-functions.md#uniquestring) function to generate a name. Frequently, you will also want to add a prefix or postfix to the **uniqueString** result so you can more easily determine the resource type by looking at the name. For example, you can generate a unique name for a storage account with the following variable.
+デプロイ時にこうしたリソース名のパラメーターを指定して一意の名前を考える代わりに、[uniqueString()](resource-group-template-functions.md#uniquestring) 関数を使用して名前を生成する変数を作成できます。また、多くの場合、リソースの種類を名前から判別しやくするために、**uniqueString** の結果にプレフィックスまたはポストフィックスを追加することもお勧めします。たとえば、次の変数ではストレージ アカウントの一意の名前を生成できます。
 
     "variables": {
         "storageAccountName": "[concat(uniqueString(resourceGroup().id),'storage')]"
     }
 
-Storage accounts with a uniqueString prefix will not get clustered on the same racks.
+uniqueString のプレフィックスが付いたストレージ アカウントは、同じラックにクラスター化されません。
 
-### <a name="resource-names-for-identification"></a>Resource names for identification
+### 特定しやすいリソース名
 
-For resource types that you want to name but you do not have to guarantee uniqueness, simply provide a name that identifies both its context and resource type. You'll want to provide a descriptive name that helps you recognize it from a list of resource names. If you need to vary the resource name during deployments, use a parameter for the name:
+名前を付ける必要があるものの一意性は必要ないリソースの種類については、コンテキストとリソースの種類がわかる名前を付けるだけで十分です。リソース名のリストで見つけやすい説明的な名前を付けることをお勧めします。デプロイごとにリソース名を変える必要がある場合は、次のように名前のパラメーターを使用します。
 
     "parameters": {
         "vmName": { 
@@ -69,13 +68,13 @@ For resource types that you want to name but you do not have to guarantee unique
         }
     }
 
-If you do not need to pass in a name during deployment, use a variable: 
+デプロイ時に名前を渡す必要がない場合は、次のように変数を使用します。
 
     "variables": {
         "vmName": "demoLinuxVM"
     }
 
-Or, a hard-coded value:
+または、次のようにハードコーディングした値を使用します。
 
     {
       "type": "Microsoft.Compute/virtualMachines",
@@ -83,9 +82,9 @@ Or, a hard-coded value:
       ...
     }
 
-### <a name="generic-resource-names"></a>Generic resource names
+### 一般的なリソース名
 
-For resource types that are largely accessed through another resource, you can use a generic name that is hard-coded in the template. For example, you probably do not want to provide a customizable name for firewall rules on a SQL Server.
+別のリソースから頻繁にアクセスされるリソースの種類に対しては、テンプレートでハードコーディングされた一般名を使用できます。たとえば、SQL Server のファイアウォール ルールの名前はカスタマイズできないようにした方が良い場合があります。
 
     {
         "type": "firewallrules",
@@ -93,18 +92,18 @@ For resource types that are largely accessed through another resource, you can u
         ...
     }
 
-## <a name="parameters"></a>Parameters
+## パラメーター
 
-1. Minimize parameters whenever possible. If you can use a variable or a literal, do so. Only provide parameters for:
- - Settings you wish to vary by environment (such as sku, size, or capacity).
- - Resource names you wish to specify for easy identification.
- - Values you use often to complete other tasks (such as admin user name).
- - Secrets (such as passwords)
- - The number or array of values to use when creating multiple instances of a resource type.
+1. パラメーターはできる限り少なくしてください。可能であれば変数またはリテラルを使用してください。パラメータを指定するのは次のものに対してのみにしてください。
+ - 環境ごとに変える必要がある設定 (SKU、サイズ、容量など)
+ - 特定しやすくするために付けるリソース名
+ - 他のタスクを実行するために頻繁に使用する値 (管理者ユーザー名など)
+ - シークレット情報 (パスワードなど)
+ - リソースの種類のインスタンスを複数作成するときに使用する多数の値または値の配列
 
-1. Parameter names should follow **camelCasing**.
+1. パラメーター名には、**キャメルケース**を使用してください。
 
-1. Provide a description in the metadata for every parameter.
+1. すべてのパラメーターに対してメタデータで説明を提供してください。
 
         "parameters": {
             "storageAccountType": {
@@ -115,7 +114,7 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
 
-1. Define default values for parameters (except for passwords and SSH keys).
+1. パラメーターの既定値を定義してください (パスワードおよび SSH キーは除く)。
 
         "parameters": {
             "storageAccountType": {
@@ -127,7 +126,7 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
 
-1. Use **securestring** for all passwords and secrets. 
+1. すべてのパスワードおよびシークレット情報には **securestring** を使用してください。
 
         "parameters": {
             "secretValue": {
@@ -138,7 +137,7 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
  
-1. When possible, avoid using a parameter to specify the **location**. Instead, use the location property of the resource group. By using the **resourceGroup().location** expression for all your resources, the resources in the template will be deployed in the same location as the resource group.
+1. 可能であれば、**場所**の指定にパラメーターは使用しないでください。代わりに、リソース グループの location プロパティを使用します。すべてのリソースで **resourceGroup().location** 式を使用すると、テンプレート内のリソースがリソース グループと同じ場所にデプロイされます。
 
         "resources": [
           {
@@ -150,19 +149,19 @@ For resource types that are largely accessed through another resource, you can u
           }
         ]
   
-     If a resource type is supported in only a limited number of locations, consider specifying a valid location directly in the template. If you must use a location parameter, share that parameter value as much as possible with resources that are likely to be in the same location. This approach minimizes users having to provide locations for every resource type.
+     リソースの種類がサポートされる場所に限りがある場合は、テンプレートで有効な場所を直接していすることを検討してください。location パラメーターを使用する必要がある場合は、同じ場所に配置される可能性があるリソースでできる限りそのパラメーターを共有してください。このようにすることで、ユーザーがリソースの種類ごとに場所を指定する必要性が最小限に抑えられます。
 
-1. Avoid using a parameter or variable for the API version for a resource type. Resource properties and values can vary by version number. Intellisense in code editors will not be able to determine the correct schema when the API version is set to a parameter or variable. Instead, hard-code the API version in the template.
+1. リソースの種類の API バージョンにはパラメーターや変数を使用しないでください。リソースのプロパティおよび値は、バージョン番号ごとに異なる可能性があります。パラメーターまたは変数に API バージョンがセットすると、コード エディターの Intellisense が適切なスキーマを決定できなくなります。代わりに、テンプレートの API バージョンをハードコーディングしてください。
 
-## <a name="variables"></a>Variables 
+## 変数 
 
-1. Use variables for values that you need to use more than once in a template. If a value is used only once, a hard-coded value will make your template easier to read.
+1. テンプレート内で複数回使用する必要のある値には、変数を使用してください。1 回しか使用しない値は、ハードコーディングすることでテンプレートが読みやすくなります。
 
-1. You cannot use the [reference](resource-group-template-functions.md#reference) function in the variables section. The reference function derives its value from the resource's runtime state, but variables are resolved during the initial parsing of the template. Instead, construct values that need the **reference** function directly in the **resources** or **outputs** section of the template.
+1. variables セクションでは [reference](resource-group-template-functions.md#reference) 関数は使用できません。reference 関数ではリソースのランタイム状態から値を取得しますが、テンプレートの初回分析時には変数が解決されます。**reference** 関数が必要な値は、テンプレートの **resources** セクションまたは **outputs** セクションに直接作成してください。
 
-1. Include variables for resource names that need to be unique, as shown in [Resource names](#resource-names).
+1. 「[リソース名](#resource-names)」で説明しているように、一意である必要のあるリソース名には変数を含めてください。
 
-1. You can group variables into complex objects. You can reference a value from a complex object in the format **variable.subentry**. Grouping variables helps you keep track of related variables and improves readability of the template.
+1. 変数は複合オブジェクトにまとめてください。複合オブジェクトの値は、**variable.subentry** 形式で参照できます。変数をグループ化すると、関連する変数を整理し、テンプレートを読みやすくできます。
 
         "variables": {
             "storage": {
@@ -183,13 +182,13 @@ For resource types that are largely accessed through another resource, you can u
           }
         ]
  
-     > [AZURE.NOTE] A complex object cannot contain an expression that references a value from a complex object. Define a separate variable for this purpose.
+     > [AZURE.NOTE] 複合オブジェクトに、複合オブジェクトの値を参照する式を含めることはできません。この場合は、別の変数を定義してください。
 
-     For more advanced examples of using complex objects as variables, see [Sharing state in Azure Resource Manager templates](best-practices-resource-manager-state.md).
+     変数としての複合オブジェクトの使用に関するより高度な例については、「[Azure リソース マネージャーのテンプレートでの状態の共有](best-practices-resource-manager-state.md)」を参照してください。
 
-## <a name="resources"></a>Resources
+## リソース
 
-1. Specify **comments** for each resource in the template to help other contributors understand the purpose of the resource.
+1. 各リソースには、他の共同作業者にリソースの用途がわかるように **comments** を指定してください。
 
         "resources": [
           {
@@ -202,9 +201,9 @@ For resource types that are largely accessed through another resource, you can u
           }
         ]
 
-1. Use tags to add metadata to resources that enable you to add additional information about your resources. For example, you can add metadata to a resource for billing detail purposes. For more information, see [Using tags to organize your Azure resources](resource-group-using-tags.md).
+1. リソースの詳細情報を追加できるタグを使用して、メタデータをリソースに追加してください。たとえば、リソースに請求の詳細に関するメタデータを追加できます。詳細については、[タグを使用した Azure リソースの整理](resource-group-using-tags.md)に関するページを参照してください。
 
-1. If you use a **public endpoint** in your template (such as a blob storage public endpoint), **do not hardcode** the namespace. Use the **reference** function to retrieve the namespace dynamically. This allows you to deploy the template to different public namespace environments, without manually changing the endpoint in the template. Set the apiVersion to the same version you are using for the storageAccount in your template.
+1. テンプレートで**パブリック エンドポイント** (BLOB Storage のパブリック エンドポイントなど) を使用する場合、名前空間は**ハードコーディングしないでください**。名前空間を動的に取得するには、**reference** 関数を使用します。このようにすることで、テンプレートのエンドポイントを手作業で変更することなく、別のパブリック名前空間環境にテンプレートをデプロイできます。apiVersion のバージョンは、テンプレートの storageAccount で使用するものと同じにいてください。
 
         "osDisk": {
             "name": "osdisk",
@@ -213,7 +212,7 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
 
-     If the storage account is deployed in the same template, you do not need to specify the provider namespace when referencing the resource. The simplified syntax is:
+     ストレージ アカウントを同じテンプレートにデプロイする場合、リソースの参照でプロバイダーの名前空間を指定する必要はありません。簡略化された構文は次のようになります。
      
         "osDisk": {
             "name": "osdisk",
@@ -222,7 +221,7 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
 
-     If you have other values in your template configured with a public namespace, change these to reflect the same reference function. For example, the storageUri property of the virtual machine diagnosticsProfile.
+     テンプレート内の他の値をパブリック名前空間を使用して構成している場合、同じ reference 関数を反映するようにこれらの値を変更してください。たとえば、仮想マシン diagnosticsProfile の storageUri プロパティは次のようにします。
 
         "diagnosticsProfile": {
             "bootDiagnostics": {
@@ -231,7 +230,7 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
  
-     You can also **reference** an existing storage account in a different resource group.
+     また、別のリソース グループにある既存のストレージ アカウントを**参照**することもできます。
 
 
         "osDisk": {
@@ -241,16 +240,16 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
 
-1. Assign publicIPAddresses to a virtual machine only when required for an application. To connect for debug, management or administrative purposes, use either inboundNatRules, virtualNetworkGateways or a jumpbox.
+1. 仮想マシンに publicIPAddresses を割り当てるのは、アプリケーションで必要な場合のみにしてください。デバッグや管理のために接続する場合は、inboundNatRules、virtualNetworkGateways、ジャンプボックスのいずれかを使用してください。
 
-     For more information about connecting to virtual machines, see:
-     - [Running VMs for an N-tier architecture on Azure](./guidance/guidance-compute-3-tier-vm.md)
-     - [Setting up WinRM access for Virtual Machines in Azure Resource Manager](./virtual-machines/virtual-machines-windows-winrm.md)
-     - [Allow external access to your VM using the Azure Portal](./virtual-machines/virtual-machines-windows-nsg-quickstart-portal.md)
-     - [Allow external access to your VM using PowerShell](./virtual-machines/virtual-machines-windows-nsg-quickstart-powershell.md)
-     - [Opening ports and endpoints](./virtual-machines/virtual-machines-linux-nsg-quickstart.md)
+     仮想マシンへの接続の詳細については、以下の記事を参照してください。
+     - [Running VMs for an N-tier architecture on Azure](./guidance/guidance-compute-3-tier-vm.md) (Azure の N 層アーキテクチャで仮想マシンを実行する)
+     - [Azure Resource Manager の仮想マシンの WinRM アクセスを設定する](./virtual-machines/virtual-machines-windows-winrm.md)
+     - [Azure ポータルを使用して VM への外部アクセスを許可する](./virtual-machines/virtual-machines-windows-nsg-quickstart-portal.md)
+     - [PowerShell を使用して VM への外部アクセスを許可する](./virtual-machines/virtual-machines-windows-nsg-quickstart-powershell.md)
+     - [ポートおよびエンドポイントの開放](./virtual-machines/virtual-machines-linux-nsg-quickstart.md)
 
-1. The **domainNameLabel** property for publicIPAddresses must be unique. domainNameLabel is required to be between 3 and 63 characters long and to follow the rules specified by this regular expression `^[a-z][a-z0-9-]{1,61}[a-z0-9]$`. As the uniqueString function will generate a string that is 13 characters long in the example below it is presumed that the dnsPrefixString prefix string has been checked to be no more than 50 characters long and to conform to those rules.
+1. publicIPAddresses の **domainNameLabel** プロパティは一意である必要があります。3 文字以上 63 文字以下で、正規表現 `^[a-z][a-z0-9-]{1,61}[a-z0-9]$` で指定された規則に従う必要があります。uniqueString 関数では 13 文字の文字列が生成されるため、次の例では、dnsPrefixString プレフィックス文字列が 50 文字以下であり、前述の規則に準拠していることを確認済みであると想定しています。
 
         "parameters": {
             "dnsPrefixString": {
@@ -265,7 +264,7 @@ For resource types that are largely accessed through another resource, you can u
             "dnsPrefix": "[concat(parameters('dnsPrefixString'),uniquestring(resourceGroup().id))]"
         }
 
-1. When adding a password to a **customScriptExtension**, use the **commandToExecute** property in protectedSettings.
+1. **customScriptExtension** にパスワードを追加する場合は、protectedSettings で **commandToExecute** プロパティを使用してください。
 
         "properties": {
             "publisher": "Microsoft.OSTCExtensions",
@@ -280,11 +279,12 @@ For resource types that are largely accessed through another resource, you can u
             }
         }
 
-     > [AZURE.NOTE] In order to ensure that secrets which are passed as parameters to virtualMachines/extensions are encrypted, the protectedSettings property of the relevant extensions must be used.
+     > [AZURE.NOTE] 仮想マシン/拡張機能にパラメーターとして渡されるシークレット情報を暗号化するために、関連する拡張機能の protectedSettings プロパティを使用する必要があります。
 
-## <a name="outputs"></a>Outputs
+## 出力  
 
-If a template creates any new **publicIPAddresses** then it should have an **output** section that provides details of the IP address and fully qualified domain created to easily retrieve these details after deployment. When referencing the resource, use the API version that was used to create it. 
+
+テンプレートで新しい **publicIPAddresses** を作成する場合は、デプロイ後に IP アドレスおよび完全修飾ドメインの詳細を取得しやすくするために、これらの詳細を提供する **output** セクションをテンプレートに記載してください。リソースを参照する場合は、リソースの作成で使用した API バージョンを使用してください。
 
 ```
 "outputs": {
@@ -299,28 +299,28 @@ If a template creates any new **publicIPAddresses** then it should have an **out
 }
 ```
 
-## <a name="single-template-or-nested-templates"></a>Single template or nested templates
+## 単一テンプレートまたは入れ子になったテンプレート
 
-To deploy your solution, you can use either a single template or a main template with multiple nested templates. Nested templates are common for more advanced scenarios. Nested templates contain the following advantages:
+ソリューションをデプロイする場合、単一テンプレートと、複数のテンプレートが入れ子になったメイン テンプレートのいずれかを使用できます。高度なシナリオでは、入れ子になったテンプレートが一般的です。入れ子にテンプレートには次のようなメリットがあります。
 
-1. Can decompose solution into targeted components
-2. Can re-use nested templates with different main templates
+1. ソリューションを対象コンポーネントに分解できる
+2. 別のメイン テンプレートで入れ子になったテンプレートを再利用できる
 
-When you decide to decompose your template design into multiple nested templates, the following guidelines will help standardize the design. These guidelines are based on the [patterns for designing Azure Resource Manager templates](best-practices-resource-manager-design-templates.md) documentation. The recommended design consists of the following templates.
+テンプレートのデザインを複数の入れ子になったテンプレートに分解する場合は、以下のガイドラインによりデザインを標準化できます。これらのガイドラインは、[Azure Resource Manager テンプレートのデザイン パターン](best-practices-resource-manager-design-templates.md)に関する記事に基づいています。デザインは、以下のテンプレートで構成することをお勧めします。
 
-+ **Main template** (azuredeploy.json). Used for the input parameters.
-+ **Shared resources template**. Deploys the shared resources that all other resources use (e.g. virtual network, availability sets). The expression dependsOn enforces that this template is deployed before the other templates.
-+ **Optional resources template**. Conditionally deploys resources based on a parameter (e.g. a jumpbox)
-+ **Member resources templates**. Each instance type within an application tier has its own configuration. Within a tier, different instance types can be defined (such as, first instance creates a new cluster, additional instances are added to the existing cluster). Each instance type will have its own deployment template.
-+ **Scripts**. Widely reusable scripts are applicable for each instance type (e.g. initialize and format additional disks). Custom scripts are created for specific customization purpose are different per instance type.
++ **メイン テンプレート** (azuredeploy.json): 入力パラメーター用に使用します。
++ **共有リソース テンプレート**: その他すべてのリソースで使用する共有リソース (例: 仮想ネットワーク、可用性セット) をデプロイします。dependsOn 式を使用して、このテンプレートが他のテンプレートよりも先にデプロイされるようにします。
++ **オプション リソース テンプレート**: パラメーターに基づいてリソースを条件付きでデプロイします (例: ジャンプボックス)。
++ **メンバー リソース テンプレート**: アプリケーション層内の各インスタンス タイプには、独自の構成があります。層内ではさまざまなインスタンス タイプを定義できます (例: 最初のインスタンスで新しいクラスターを作成し、別のインスタンスは既存のクラスターに追加する)。各インスタンス タイプには、独自のデプロイ テンプレートがあります。
++ **スクリプト**: 各インスタンス タイプでは、広範囲に再利用できるスクリプトを適用できます (例: 追加ディスクの初期化やフォーマット)。特定のカスタマイズ用に作成されたカスタム スクリプトは、インスタンス タイプごとに異なります。
 
-![nested template](./media/resource-manager-template-best-practices/nestedTemplateDesign.png)
+![入れ子になったテンプレート](./media/resource-manager-template-best-practices/nestedTemplateDesign.png)
 
-For more information, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).
+詳細については、「[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)」を参照してください。
 
-## <a name="conditionally-link-to-nested-template"></a>Conditionally link to nested template
+## 入れ子になったテンプレートへの条件付きリンク
 
-You can conditionally link to nested templates by using a parameter that becomes part of the URI for the template.
+テンプレートの URI の一部になるパラメーターを使用すると、入れ子になったテンプレートを条件付きでリンクできます。
 
     "parameters": {
         "newOrExisting": {
@@ -351,19 +351,15 @@ You can conditionally link to nested templates by using a parameter that becomes
         }
     ]
 
-## <a name="template-format"></a>Template format
+## テンプレートの形式
 
-1. It is a good practice to pass your template through a JSON validator to remove extraneous commas, parenthesis, brackets that may cause an error during deployment. Try [JSONlint](http://jsonlint.com/) or a linter package for your favorite editing environment (Visual Studio Code, Atom, Sublime Text, Visual Studio, etc.)
-1. It's also a good idea to format your JSON for better readability. You can use a JSON formatter package for your local editor. In Visual Studio, format the document with **Ctrl+K, Ctrl+D**. In VS Code, use **Alt+Shift+F**. If your local editor doesn't format the document, you can use an [online formatter](https://www.bing.com/search?q=json+formatter).
+1. JSON 検証ツールを使用してテンプレートを渡して、デプロイ時のエラーの原因となる余分なコンマ、かっこ、角かっこを削除することをお勧めします。[JSONlint](http://jsonlint.com/)、または使い慣れた編集環境のリンター パッケージを使用してください (Visual Studio Code、Atom、Sublime Text、Visual Studio など)。
+1. また、読みやすくするために JSON のフォーマットを整えることもお勧めします。ローカル エディターの JSON フォーマッター パッケージを使用できます。Visual Studio では、**Ctrl+K、Ctrl+D** でドキュメントのフォーマットを整えることができます。VS Code では、**Alt+Shift+F** です。ローカル エディターでドキュメントを整形できない場合は、[オンライン フォーマッター](https://www.bing.com/search?q=json+formatter)を使用してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-1. For guidance on architecting your solution for virtual machines, see [Running a Windows VM on Azure](./guidance/guidance-compute-single-vm.md) and [Running a Linux VM on Azure](./guidance/guidance-compute-single-vm-linux.md).
-2. For guidance on setting up a storage account, see [Microsoft Azure Storage Performance and Scalability Checklist](./storage/storage-performance-checklist.md).
-3. For help with virtual networks, see [Networking infrastructure guidelines](./virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md).
+1. 仮想マシン用のソリューションの構築に関するガイダンスについては、「[Running a Windows VM on Azure](./guidance/guidance-compute-single-vm.md)」 (Azure での Windows VM の実行) および「[Azure での Linux VM の実行](./guidance/guidance-compute-single-vm-linux.md)」を参照してください。
+2. ストレージ アカウントのセットアップのガイダンスについては、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](./storage/storage-performance-checklist.md)」を参照してください。
+3. 仮想ネットワークについては、「[ネットワーク インフラストラクチャのガイドライン](./virtual-machines/virtual-machines-windows-infrastructure-networking-guidelines.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

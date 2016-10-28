@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Configure MPIO on your StorSimple virtual array host| Microsoft Azure"
-   description="Describes how to configure Multipath I/O (MPIO) for your StorSimple virtual array connected to a host running Windows Server 2012 R2."
+   pageTitle="StorSimple Virtual Array ホストで MPIO を構成する | Microsoft Azure"
+   description="Windows Server 2012 R2 を実行するホストに接続されている StorSimple Virtual Array のマルチパス I/O (MPIO) を構成する方法を説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -12,175 +12,170 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/04/2016"
+   ms.date="06/20/2016"
    ms.author="alkohli" />
 
+# Windows Server ホストで StorSimple Virtual Array 向けにマルチパス I/O を構成する
 
-# <a name="configure-multipath-i/o-on-windows-server-host-for-the-storsimple-virtual-array"></a>Configure Multipath I/O on Windows Server host for the StorSimple Virtual Array
+## 概要
 
-## <a name="overview"></a>Overview
+この記事では、Windows Server ホストにマルチパス I/O (MPIO) 機能をインストールし、StorSimple 専用ボリュームの構成設定を適用して、StorSimple ボリュームに対する MPIO を検証する方法について説明します。次の手順は、2 つのネットワーク インターフェイスを持つ StorSimple 1200 Virtual Array が 2 つのネットワーク インターフェイスを持つ Windows Server ホストに接続されていることを前提としています。この記事に記載されている内容は、StorSimple Virtual Array にのみ適用されます。StorSimple 8000 シリーズ デバイスについては、「[StorSimple デバイスのマルチパス IO の構成](storsimple-configure-mpio-windows-server.md)」を参照してください。
 
-This article describes how to install Multipath I/O feature (MPIO) on your Windows Server host, apply specific configuration settings for StorSimple-only volumes, and then verify MPIO for StorSimple volumes. The procedure assumes that your StorSimple 1200 Virtual Array with two network interfaces is connected to a Windows Server host with two network interfaces. The information contained in this article applies only to the virtual array. For information on StorSimple 8000 series devices, go to [Configure MPIO for StorSimple host](storsimple-configure-mpio-windows-server.md). 
+Windows Server で MPIO 機能を使用することで、フォールト トレランスと可用性に優れたストレージ構成を構築できます。MPIO では、アダプター、ケーブル、スイッチなどの冗長な物理パス コンポーネントを使用して、サーバーとストレージ デバイスの間に論理パスを作成します。コンポーネントのエラーによって論理パスに障害が発生した場合は、マルチパス ロジックで I/O の代替パスが使用され、アプリケーションから引き続きデータにアクセスできるようにします。さらに構成によっては、これらのパスの間で負荷を分散することで、パフォーマンスの向上にも貢献します。詳細については、「[MPIO の概要](https://technet.microsoft.com/library/cc725907.aspx "MPIO の概要と機能")」を参照してください。
 
-The MPIO feature in Windows Server helps build highly available, fault-tolerant storage configurations. MPIO uses redundant physical path components — adapters, cables, and switches — to create logical paths between the server and the storage device. If there is a component failure, causing a logical path to fail, multipathing logic uses an alternate path for I/O so that applications can still access their data. Additionally depending on your configuration, MPIO can also improve performance by re-balancing the load across all these paths. For more information, see [MPIO overview](https://technet.microsoft.com/library/cc725907.aspx "MPIO overview and features").  
+StorSimple ソリューションの可用性を高めるには、StorSimple 1200 Virtual Array (オンプレミスの仮想デバイスとも呼ばれます) に接続している Windows Server ホストで MPIO を構成します。構成後、ホスト サーバーはリンク、ネットワーク、またはインターフェイスの障害を許容できるようになります。
 
-For the high-availability of your StorSimple solution, configure MPIO on the Windows Server hosts connected to your StorSimple 1200 Virtual Array (also known as the on-premises virtual device). The host servers can then tolerate a link, network, or interface failure. 
+MPIO を構成する手順は次のとおりです。
 
-You will need to follow these steps to configure MPIO: 
+- 構成の前提条件
 
-- Configuration prerequisites
+- 手順 1. Windows Server ホストに MPIO をインストールする
 
-- Step 1: Install MPIO on the Windows Server host
+- 手順 2. StorSimple ボリュームの MPIO を構成する
 
-- Step 2: Configure MPIO for StorSimple volumes
+- 手順 3. ホストに StorSimple ボリュームをマウントする
 
-- Step 3: Mount StorSimple volumes on the host
-
-Each of the above steps is discussed in the following sections.
-
-
-## <a name="prerequisites"></a>Prerequisites
-
-This section details the configuration prerequisites for the Windows Server host and your virtual array.
-
-### <a name="on-windows-server-host"></a>On Windows Server host
-
--  Make sure that your Windows Server host has 2 network interfaces enabled.
+これらの各手順を以下のセクションで説明します。
 
 
-### <a name="on-storsimple-virtual-array"></a>On StorSimple virtual array
+## 前提条件
 
-- The virtual array should be configured as an iSCSI server. To learn more, see [set up virtual array as an iSCSI server](storsimple-ova-deploy3-iscsi-setup.md). One or more network interfaces should be enabled on the array.   
+このセクションでは、Windows Server ホストと仮想アレイの構成に関する前提条件について説明します。
 
-- The network interfaces on your virtual array should be reachable from the Windows Server host.
+### Windows Server ホスト
 
-- One or more volumes should be created on your StorSimple Virtual Array. To learn more, see [Add a volume](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume) on your StorSimple 1200 virtual array. In this procedure, we created 3 volumes (2 locally pinned and 1 tiered volume as shown below) on the virtual array.
-    
-    ![mpio0](./media/storsimple-ova-configure-mpio-windows-server/mpio0.png)
+-  Windows Server ホストで 2 つのネットワーク インターフェイスが有効になっていることを確認します。
 
-### <a name="hardware-configuration-for-storsimple-virtual-array"></a>Hardware configuration for StorSimple virtual array
 
-The figure below shows the hardware configuration for high availability and load-balancing multipathing for your Windows Server host and StorSimple  virtual array used in this procedure.  
+### StorSimple Virtual Array
+
+- 仮想アレイを iSCSI サーバーとして構成する必要があります。詳細については、「[StorSimple Virtual Array をデプロイする – 仮想デバイスを iSCSI サーバーとしてセットアップする](storsimple-ova-deploy3-iscsi-setup.md)」を参照してください。アレイで 1 つ以上のネットワーク インターフェイスを有効にする必要があります。   
+
+- 仮想アレイのネットワーク インターフェイスに Windows Server ホストから到達できる必要があります。
+
+- StorSimple Virtual Array に 1 つ以上のボリュームを作成する必要があります。詳細については、StorSimple 1200 Virtual Array に[ボリュームを追加する](storsimple-ova-deploy3-iscsi-setup.md#step-3-add-a-volume)方法を参照してください。この手順では、仮想アレイに 3 つのボリューム (下図のとおり、ローカル固定ボリューム 2 つと階層化ボリューム 1 つ) を作成しました。
+	
+	![mpio0](./media/storsimple-ova-configure-mpio-windows-server/mpio0.png)
+
+### StorSimple Virtual Array のハードウェア構成
+
+次の図は、この手順で使用する Windows Server ホストと StorSimple Virtual Array で高可用性と負荷分散のマルチパスを実装するためのハードウェア構成を示しています。
 
 ![mpio hardware configuration](./media/storsimple-ova-configure-mpio-windows-server/1200hardwareconfig.png)
 
-As shown in the preceding figure:
+前の図から次のことがわかります。
 
-- Your StorSimple virtual array provisioned on Hyper-V is a single node active device configured as an iSCSI server.
+- Hyper-V にプロビジョニングされている StorSimple Virtual Array は、iSCSI サーバーとして構成されている単一ノード構成のアクティブなデバイスです。
 
-- Two virtual network interfaces are enabled on your array. In the local web UI of your 1200 virtual array, verify that two network interfaces are enabled by navigating to **Network Settings** as shown below:
+- アレイでは、2 つの仮想ネットワーク インターフェイスが有効になっています。下図のように、1200 Virtual Array のローカル Web UI で **[ネットワーク設定]** に移動し、2 つのネットワーク インターフェイスが有効になっていることを確認します。
 
-    ![Network interfaces enabled on 1200](./media/storsimple-ova-configure-mpio-windows-server/mpio9.png)
-    
-    Note the IPv4 addresses of the enabled network interfaces (Ethernet, Ethernet 2 by default) and save for later use on the host.
+	![Network interfaces enabled on 1200](./media/storsimple-ova-configure-mpio-windows-server/mpio9.png)
+	
+	有効になっているネットワーク インターフェイス (既定ではイーサネットとイーサネット 2) の IPv4 アドレスをメモし、後で使用できるようにホスト上に保存します。
 
-- Two network interfaces are enabled on your Windows Server host. If the connected interfaces for host and array are on the same subnet, then there will be 4 paths available. This was the case in this procedure. However, if each network interface on the array and host interface are on a different IP subnet (and not routable), then only 2 paths will be available.
+- Windows Server ホストで 2 つのネットワーク インターフェイスが有効になっています。ホストとアレイの接続されたインターフェイスが同じサブネット上にある場合、利用できるパスは 4 つあります。この手順がこれに当てはまります。ただし、アレイの各ネットワーク インターフェイスとホスト インターフェイスが別の IP サブネット上にある (およびルーティングできない) 場合、利用できるのは 2 つのパスのみです。
 
-## <a name="step-1:-install-mpio-on-the-windows-server-host"></a>Step 1: Install MPIO on the Windows Server host
+## 手順 1. Windows Server ホストに MPIO をインストールする
 
-MPIO is an optional feature on Windows Server and is not installed by default. It should be installed as a feature through Server Manager. To install this feature on your Windows Server host, complete the following procedure.
+MPIO はオプションの機能であり、Windows サーバーに既定ではインストールされていません。サーバー マネージャーを使用して、機能としてインストールする必要があります。Windows Server ホストにこの機能をインストールするには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-install-mpio-windows-server-host](../../includes/storsimple-install-mpio-windows-server-host.md)]
 
 
-## <a name="step-2:-configure-mpio-for-storsimple-volumes"></a>Step 2: Configure MPIO for StorSimple volumes
+## 手順 2. StorSimple ボリュームの MPIO を構成する
 
-MPIO needs to be configured to identify StorSimple volumes. To configure MPIO to recognize StorSimple volumes, perform the following steps.
+StorSimple ボリュームを識別するには、MPIO を構成する必要があります。StorSimple ボリュームを認識するように MPIO を構成するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-configure-mpio-volumes](../../includes/storsimple-configure-mpio-volumes.md)]
 
-## <a name="step-3:-mount-storsimple-volumes-on-the-host"></a>Step 3: Mount StorSimple volumes on the host
+## 手順 3. ホストに StorSimple ボリュームをマウントする
 
-After MPIO is configured on Windows Server, volume(s) created on the StorSimple array can be mounted and can then take advantage of MPIO for redundancy. To mount a volume, perform the following steps.
+Windows Server で MPIO が構成されると、StorSimple アレイに作成されたボリュームをマウントし、MPIO を活用して冗長性を確保できます。ボリュームをマウントするには、次の手順を実行します。
 
-#### <a name="to-mount-volumes-on-the-host"></a>To mount volumes on the host
+#### ホストにボリュームをマウントするには
 
-1. Open the **iSCSI Initiator Properties** window on the Windows Server host. Click **Server Manager > Dashboard > Tools > iSCSI Initiator**.
-2. In the **iSCSI Initiator Properties** dialog box, click the Discovery tab, and then click **Discover Target Portal**.
-3. In the **Discover Target Portal** dialog box, do the following:
-    
-    - Enter the IP address of the first enabled network interface on your StorSimple virtual array. By default, this would be **Ethernet**. 
-    - Click **OK** to return to the **iSCSI Initiator Properties** dialog box.
+1. Windows Server ホストで、**[iSCSI イニシエーターのプロパティ]** ウィンドウを開きます。**[サーバー マネージャー]、[ダッシュボード]、[ツール]、[iSCSI イニシエーター]** の順にクリックします。
+2. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、[探索] タブをクリックし、**[ターゲット ポータルの探索]** をクリックします。
+3. **[ターゲット ポータルの探索]** ダイアログ ボックスで、次の手順を実行します。
+	
+	- StorSimple Virtual Array で有効になっている 1 つ目のネットワーク インターフェイスの IP アドレスを入力します。既定では、このネットワーク インターフェイスは **Ethernet** です。 
+	- **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
 
-    >[AZURE.IMPORTANT] **If you are using a private network for iSCSI connections, enter the IP address of the DATA port that is connected to the private network.**
+	>[AZURE.IMPORTANT] **iSCSI 接続のプライベート ネットワークを使用している場合は、プライベート ネットワークに接続されている DATA ポートの IP アドレスを入力します。**
 
-4. Repeat steps 2-3 for a second network interface (for example, Ethernet 2) on your array. 
+4. アレイの 2 つ目のネットワーク インターフェイス (Ethernet 2 など) に対して手順 2. ～ 3. を繰り返します。
 
-5. Select the **Targets** tab in the **iSCSI Initiator Properties** dialog box. For your virtual array, you should see each volume surface as a target under **Discovered Targets**. In this case, three targets (corresponding to three volumes) would be discovered.
+5. **[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、**[ターゲット]** タブを選択します。仮想アレイの場合、**[検出されたターゲット]** に各ボリュームがターゲットとして表示されます。この例では、(3 つのボリュームに対応する) 3 つのターゲットが表示されます。
 
-    ![mpio1](./media/storsimple-ova-configure-mpio-windows-server/mpio1.png)
+	![mpio1](./media/storsimple-ova-configure-mpio-windows-server/mpio1.png)
 
-6. Click **Connect** to establish an iSCSI session with your StorSimple array. A **Connect to Target** dialog box will appear. Select the **Enable multi-path** check box. Click **Advanced**.
+6. **[接続]** をクリックして、StorSimple アレイとの iSCSI セッションを確立します。**[ターゲットへの接続]** ダイアログ ボックスが表示されます。**[複数パスを有効にする]** チェック ボックスをオンにします。**[詳細設定]** をクリックします。
 
-    ![mpio2](./media/storsimple-ova-configure-mpio-windows-server/mpio2.png)
+	![mpio2](./media/storsimple-ova-configure-mpio-windows-server/mpio2.png)
 
-8. In the **Advanced Settings** dialog box, do the following:                                       
-    -    On the **Local Adapter** drop-down list, select **Microsoft iSCSI Initiator**.
-    -    On the **Initiator IP** drop-down list, select the IP address of the host.
-    -    On the **Target Portal** IP drop-down list, select the IP of array interface.
-    -    Click **OK** to return to the **iSCSI Initiator Properties** dialog box.
+8. **[詳細設定]** ダイアログ ボックスで、次の手順を実行します。
+	- 	 **[ローカル アダプター]** ボックスの一覧で、**[Microsoft iSCSI イニシエーター]** を選択します。
+	- 	 **[イニシエーター IP]** ボックスの一覧で、ホストの IP アドレスを選択します。
+	- 	 **[ターゲット ポータル IP]** ボックスの一覧で、アレイ インターフェイスの IP を選択します。
+	- 	 **[OK]** をクリックして、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスに戻ります。
 
-    ![mpio3](./media/storsimple-ova-configure-mpio-windows-server/mpio3.png)
+	![mpio3](./media/storsimple-ova-configure-mpio-windows-server/mpio3.png)
 
-9. Click **Properties**. 
+9. **[プロパティ]** をクリックします。
 
-    ![mpio4](./media/storsimple-ova-configure-mpio-windows-server/mpio4.png)
-10. In the **Properties** dialog box, click **Add Session**.
+	![mpio4](./media/storsimple-ova-configure-mpio-windows-server/mpio4.png)
+10. **[プロパティ]** ダイアログ ボックスで、**[セッションの追加]** をクリックします。
 
-    ![mpio5](./media/storsimple-ova-configure-mpio-windows-server/mpio5.png)
+	![mpio5](./media/storsimple-ova-configure-mpio-windows-server/mpio5.png)
 
-10. In the **Connect to Target** dialog box, select the **Enable multi-path** check box. Click **Advanced**.
-11. In the **Advanced Settings** dialog box:                                        
-    -  On the **Local adapter** drop-down list, select Microsoft iSCSI Initiator.
-    -  On the **Initiator IP** drop-down list, select the IP address corresponding to the host. In this case, you are connecting two network interfaces on the array to a single network interface on the host. Therefore, this interface is the same as that provided for the first session.
-    -  On the **Target Portal IP** drop-down list, select the IP address for the second data interface enabled on the array.
-    -  Click **OK** to return to the iSCSI Initiator Properties dialog box. You have added a second session to the target.
+10. **[ターゲットへの接続]** ダイアログ ボックスで、**[複数パスを有効にする]** チェック ボックスをオンにします。**[詳細設定]** をクリックします。
+11. **[詳細設定]** ダイアログ ボックスで、次の手順を実行します。										
+	-  **[ローカル アダプター]** ボックスの一覧で、[Microsoft iSCSI イニシエーター] を選択します。
+	-  **[イニシエーター IP]** ボックスの一覧で、ホストに対応する IP アドレスを選択します。この例では、アレイ上の 2 つのネットワーク インターフェイスを、ホスト上の 1 つのネットワーク インターフェイスに接続しています。そのため、このインターフェイスは最初のセッションで指定されたものと同じです。
+	-  **[ターゲット ポータル IP]** ボックスの一覧で、アレイで有効になっている 2 つ目のデータ インターフェイスの IP アドレスを選択します。
+	-  **[OK]** をクリックして、[iSCSI イニシエーターのプロパティ] ダイアログ ボックスに戻ります。2 番目のセッションをターゲットに追加しました。
 
-        ![mpio11](./media/storsimple-ova-configure-mpio-windows-server/mpio11.png)
+		![mpio11](./media/storsimple-ova-configure-mpio-windows-server/mpio11.png)
 
-    - After adding the desired sessions (paths), in the **iSCSI Initiator Properties** dialog box, select the target and click **Properties**. On the Sessions tab of the **Properties** dialog box, note the four session identifiers that correspond to the possible path permutations. To cancel a session, select the check box next to a session identifier, and then click **Disconnect**.
+	- 目的のセッション (パス) を追加した後、**[iSCSI イニシエーターのプロパティ]** ダイアログ ボックスで、ターゲットを選択し、**[プロパティ]** をクリックします。**[プロパティ]** ダイアログ ボックスの [セッション] タブで、可能なパスの順列に対応する 4 つのセッション ID を確認します。セッションを取り消すには、セッション ID の横にあるチェック ボックスをオンにして、**[切断]** をクリックします。
  
-    - To view devices presented within sessions, select the **Devices** tab. To configure the MPIO policy for a selected device, click **MPIO**. The **
-    -  Details** dialog box will appear. On the **MPIO** tab, you can select the appropriate **Load Balance Policy** settings. You can also view the **Active** or **Standby** path type.
+	- セッション内に示されるデバイスを表示するには、**[デバイス]** タブを選択します。選択したデバイスの MPIO ポリシーを構成するには、**[MPIO]** をクリックします。**
+	-  [詳細]** ダイアログ ボックスが表示されます。**[MPIO]** タブで、適切な **[負荷分散ポリシー]** の設定を選択できます。**[アクティブ]** または **[スタンバイ]** のパスの種類も表示することができます。
 
-10. Repeat steps 8-11 to add additional sessions (paths) to the target. With two interfaces on the host and two on the virtual array, you can add a total of four sessions for each target. 
+10. 追加のセッション (パス) をターゲットに追加するには、手順 8. ～ 11. を繰り返します。ホスト上の 2 つのインターフェイスと仮想アレイ上の 2 つのインターフェイスを使用して、各ターゲットに合計 4 つのセッションを追加できます。
 
-    ![mpio14](./media/storsimple-ova-configure-mpio-windows-server/mpio14.png)
+	![mpio14](./media/storsimple-ova-configure-mpio-windows-server/mpio14.png)
 
-11. You will need to repeat these steps for each volume (surfaces as a target).
+11. (ターゲットとして表示されている) ボリュームごとにこれらの手順を繰り返す必要があります。
 
-    ![mpio15](./media/storsimple-ova-configure-mpio-windows-server/mpio15.png)
+	![mpio15](./media/storsimple-ova-configure-mpio-windows-server/mpio15.png)
 
-12. Open **Computer Management** by navigating to **Server Manager > Dashboard > Computer Management**. In the left pane, click **Storage > Disk Management**. The volume(s) created on the StorSimple virtual array that are visible to this host will appear under **Disk Management** as new disk(s).
+12. **[サーバー マネージャー]、[ダッシュボード]、[コンピューターの管理]** の順に移動して、**[コンピューターの管理]** を開きます。左側のウィンドウで、**[ストレージ] の [ディスクの管理]** をクリックします。このホストに表示される、StorSimple Virtual Array 上に作成したボリュームは、新しいディスクとして **[ディスクの管理]** に表示されます。
 
-13. Initialize the disk and create a new volume. During the format process, select an allocation unit size (AUS) of 64 KB. Repeat the process for all the available volumes.
+13. ディスクを初期化して、新しいボリュームを作成します。フォーマット処理中に 64 KB のアロケーション ユニット サイズ (AUS) を選択します。利用可能なすべてのボリュームに対して、このプロセスを繰り返します。
 
-    ![Disk Management](./media/storsimple-ova-configure-mpio-windows-server/mpio20.png)
+	![クリックし](./media/storsimple-ova-configure-mpio-windows-server/mpio20.png)
 
-14. Under **Disk Management**, right-click the **Disk** and select **Properties**.
+14. **[ディスクの管理]** で、**[ディスク]** を右クリックし、**[プロパティ]** を選択します。
 
-15. In the **Multi-Path Disk Device Properties** dialog box, click the **MPIO** tab.
+15. **[マルチパス ディスクのデバイス プロパティ]** ダイアログ ボックスで、**[MPIO]** タブをクリックします。
 
-    ![Disk Properties](./media/storsimple-ova-configure-mpio-windows-server/mpio21.png)
+	![Disk Properties](./media/storsimple-ova-configure-mpio-windows-server/mpio21.png)
 
-16. In the **DSM Name** section, click **Details** and verify that the parameters are set to the default parameters. The default parameters are:
+16. **[DSM 名]** セクションで、**[詳細]** をクリックし、パラメーターが既定のパラメーターに設定されていることを確認します。既定のパラメーターは次のとおりです。
 
-    - Path Verify Period = 30
-    - Retry Count = 3
-    - PDO Remove Period = 20
-    - Retry Interval = 1
-    - Path Verify Enabled = Unchecked.
+	- パス確認期間 = 30
+	- 再試行回数 = 3
+	- PDO 削除期間 = 20
+	- 再試行間隔 = 1
+	- パス確認を有効化する = オフ
 
-    >[AZURE.NOTE] **Do not modify the default parameters.**
+	>[AZURE.NOTE] **既定のパラメーターは変更しないでください。**
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn more about [using the StorSimple Manager service to administer your StorSimple Virtual Array](storsimple-ova-manager-service-administration.md).
+[StorSimple Manager サービスを使用した StorSimple Virtual Array の管理](storsimple-ova-manager-service-administration.md)の詳細を確認してください。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

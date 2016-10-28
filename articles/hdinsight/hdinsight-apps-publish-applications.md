@@ -1,110 +1,104 @@
 <properties
-    pageTitle="Publish HDInsight applications | Microsoft Azure"
-    description="Learn how to create and publish HDInsight applications."
-    services="hdinsight"
-    documentationCenter=""
-    authors="mumian"
-    manager="jhubbard"
-    editor="cgronlun"
-    tags="azure-portal"/>
+   	pageTitle="HDInsight アプリケーションの発行 | Microsoft Azure"
+   	description="HDInsight アプリケーションを作成して発行する方法について説明します。"
+   	services="hdinsight"
+   	documentationCenter=""
+   	authors="mumian"
+   	manager="jhubbard"
+   	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.tgt_pltfrm="na"
-    ms.workload="big-data"
-    ms.date="06/29/2016"
-    ms.author="jgao"/>
+   	ms.service="hdinsight"
+   	ms.devlang="na"
+   	ms.topic="hero-article"
+   	ms.tgt_pltfrm="na"
+   	ms.workload="big-data"
+   	ms.date="06/29/2016"
+   	ms.author="jgao"/>
 
+# Azure Marketplace への HDInsight アプリケーションの発行
 
-# <a name="publish-hdinsight-applications-into-the-azure-marketplace"></a>Publish HDInsight applications into the Azure Marketplace
+HDInsight アプリケーションは、ユーザーが Linux ベースの HDInsight クラスターにインストールすることのできるアプリケーションです。マイクロソフトや独立系ソフトウェア ベンダー (ISV) によって作成されるほか、ユーザーが独自に作成することもできます。この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。Azure Marketplace への発行全般に関する情報については、「[Azure Marketplace へのプランの発行方法](../marketplace-publishing/marketplace-publishing-getting-started.md)」を参照してください。
 
-An HDInsight application is an application that users can install on a Linux-based HDInsight cluster. These applications can be developed by Microsoft, independent software vendors (ISV) or by yourself. In this article, you will learn how to publish an HDInsight application into the Azure Marketplace.  For general information about publishing into the Azure Marketplace, see [publish an offer to the Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md).
+HDInsight アプリケーションには*ライセンス持ち込み (BYOL)* モデルが適用され、エンド ユーザーに対するアプリケーションの使用許諾は、そのアプリケーションの提供者が担います。また Azure からエンド ユーザーへの課金は、そのエンド ユーザーによって作成されたリソース (HDInsight クラスターとその VM/ノードなど) についてのみ行われます。このとき、アプリケーションそのものに対する課金は Azure を介さず行われます。
 
-HDInsight applications use the *Bring Your Own License (BYOL)* model, where application provider is responsible for licensing the application to end-users, and end-users are only charged by Azure for the resources they create, such as the HDInsight cluster and its VMs/nodes. At this time, billing for the application itself is not done through Azure.
+HDInsight アプリケーションに関連したその他の記事もご覧ください。
 
-Other HDInsight application related article:
-
-- [Install HDInsight applications](hdinsight-apps-install-applications.md): Learn how to install an HDInsight application to your clusters.
-- [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md): Learn how to install and test custom HDInsight applications.
+- [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について説明します。
+- [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): カスタム HDInsight アプリケーションをインストールしてテストする方法について説明します。
 
  
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-In order to submit your custom application to the marketplace, you must have created and tested your custom application. See the following articles:
+カスタム アプリケーションを Azure Marketplace に送信するには、あらかじめカスタム アプリケーションの作成とテストを済ませておく必要があります。次の記事を参照してください。
 
-- [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md): Learn how to install and test custom HDInsight applications.
+- [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): カスタム HDInsight アプリケーションをインストールしてテストする方法について説明します。
 
-You must also have register your developer account. See [publish an offer to the Azure Marketplace](../marketplace-publishing/marketplace-publishing-getting-started.md) and [Create a Microsoft Developer account](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
+さらに、開発者アカウントの登録が必要となります。[Azure Marketplace へのプランの発行](../marketplace-publishing/marketplace-publishing-getting-started.md)に関するページと「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」を参照してください。
 
-## <a name="define-application"></a>Define application
+## アプリケーションの定義
 
-There are two steps involved for publishing applications to the Azure Marketplace.  First you define a **createUiDef.json** file to indicate which clusters your application is compatible with; and then you publish the template from the Azure portal. The following is a sample createUiDef.json file.
+Azure Marketplace へのアプリケーションの発行は 2 つの段階を経て行います。まず、**createUiDef.json** ファイルを定義して、アプリケーションに適合するクラスターを指定し、次に Azure ポータルからテンプレートを発行します。次に示したのは、createUiDef.json ファイルの例です。
 
-    {
-        "handler": "Microsoft.HDInsight",
-        "version": "0.0.1-preview",
-        "clusterFilters": {
-            "types": ["Hadoop", "HBase", "Storm", "Spark"],
-            "tiers": ["Standard", "Premium"],
-            "versions": ["3.4"]
-        }
-    }
+	{
+		"handler": "Microsoft.HDInsight",
+		"version": "0.0.1-preview",
+		"clusterFilters": {
+			"types": ["Hadoop", "HBase", "Storm", "Spark"],
+			"tiers": ["Standard", "Premium"],
+			"versions": ["3.4"]
+		}
+	}
 
 
-|Field  | Description   | Possible values|
+|フィールド | 説明 | 指定できる値|
 |-------|---------------|----------------|
-|types  |The cluster types that the application is compatible with. |Hadoop, HBase, Storm, Spark, (or any combination of these)|
-|tiers  |The cluster tiers that the application is compatible with. |Standard, Premium, (or both)|
-|versions|  The HDInsight cluster types that the application is compatible with.    |3.4|
+|types |アプリケーションと適合するクラスターの種類。 |Hadoop、HBase、Storm、Spark のいずれか (またはその任意の組み合わせ)|
+|tiers |アプリケーションと適合するクラスターのプラン。 |Standard または Premium (またはその両方)|
+|versions|	アプリケーションと適合する HDInsight クラスターの種類。 |3\.4|
 
-## <a name="package-application"></a>Package application
+## アプリケーションのパッケージ化
 
-Create a zip file that contains all required files for installing your HDInsight applications. You will need the zip file in [Publish application](#publish-application).
+HDInsight アプリケーションのインストールに必要なファイルをすべて含んだ zip ファイルを作成します。この zip ファイルは、「[アプリケーションの発行](#publish-application)」で使用します。
 
-- [createUiDefinition.json](#define-application).
-- mainTemplate.json. See a sample at [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md).
+- [createUiDefinition.json](#define-application)。
+- mainTemplate.json。「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」でサンプルを参照してください。
 
-    >[AZURE.IMPORTANT] The name of the application install script names must be unique for a particular cluster with the format below. Additionally any install and uninstall script actions should be idempotent, meaning the scripts can be called repeatly while producing the same result.
-    
-    >   name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
-        
-    >Note there are three parts to the script name:
-        
-    >   1. A script name prefix, which shall include either the application name or a name relevant to the application.
-    >   2. A "-" for readability.
-    >   3. A unique string function with the application name as the parameter.
+	>[AZURE.IMPORTANT] アプリケーションのインストール スクリプトの名前は以下の形式とし、特定のクラスターにおいて一意であることが必要です。さらに、インストールとアンインストールのいずれのスクリプト アクションもべき等である必要があります。つまり、スクリプトは、繰り返し呼び出すことができ、同じ結果を生成します。
+	
+	>	name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
+		
+	>スクリプト名は、次の 3 つの部分で構成されていることに注意してください。
+		
+	>	1. スクリプト名のプレフィックス。アプリケーション名またはアプリケーションに関連する名前のどちらかが含まれている必要があります。
+	>	2. "-" (読みやすくするため)。
+	>	3. 一意の文字列の関数 (パラメーターとしてアプリケーション名を指定)。
 
-    >   An example is the above ends up becoming: hue-install-v0-4wkahss55hlas in the persisted script action list. For a sample JSON payload, see [https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json).
+	>	上記の例の場合、保存されたスクリプト アクションの一覧では hue-install-v0-4wkahss55hlas となります。JSON ペイロードのサンプルについては、[https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json](https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/Hue/azuredeploy.json) 参照してください。
 
-- All required scripts.
+- 必要なすべてのスクリプト。
 
-> [AZURE.NOTE] The application files (including web application files if there is any) can be located on any publicly accessible endpoint.
+> [AZURE.NOTE] アプリケーション ファイル (もしあれば Web アプリケーション ファイルも含む) は、パブリックにアクセスできる任意のエンドポイントに配置できます。
 
-## <a name="publish-application"></a>Publish application
+## アプリケーションの発行
 
-Follow the following steps to publish an HDInsight application:
+次の手順に従って HDInsight アプリケーションを発行します。
 
-1. Sign on to the [Azure Publishing portal](https://publish.windowsazure.com/).
-2. Click **Solution templates** to create a new solution template.
-3. Click **Create Dev Center account and join the Azure program** to register your company if you haven't done so.  See [Create a Microsoft Developer account](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md).
-4. Click **Define some Topologies to get Started**. A solution template is a "parent" to all of its topologies. You can define multiple topologies in one offer/solution template. When an offer is pushed to staging, it is pushed with all of its topologies. 
-5. Add a new version.
-6. Upload the zip file prepared in [Package application](#package-application).  
-7. Click **Request Certification**. The Microsoft certification team will review the files and certify the topology.
+1. [Azure 発行ポータル](https://publish.windowsazure.com/)にサインオンします。
+2. **[ソリューション テンプレート]** をクリックして新しいソリューション テンプレートを作成します。
+3. **[Create Dev Center account and join the Azure program (デベロッパー センター アカウントを作成して Azure プログラムに参加する)]** をクリックして勤務先の会社を登録します (未登録の場合)。「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」を参照してください。
+4. **[Define some Topologies to get Started (いくつかのトポロジを定義して開始する)]** をクリックします。ソリューション テンプレートは、作成したすべてのトポロジの 「親」 となります。1 つのプランまたはソリューション テンプレートでは、複数のトポロジを定義できます。プランをステージングにプッシュすると、すべてのトポロジも一緒にプッシュされます。
+5. 新しいバージョンを追加します。
+6. 「[アプリケーションのパッケージ化](#package-application)」で作成した zip ファイルをアップロードします。
+7. **[Request Certification (証明書の要求)]** をクリックします。Microsoft の認定チームがファイルを確認し、トポロジを認定します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Install HDInsight applications](hdinsight-apps-install-applications.md): Learn how to install an HDInsight application to your clusters.
-- [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md): learn how to deploy an un-published HDInsight application to HDInsight.
-- [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md): learn how to use Script Action to install additional applications.
-- [Create Linux-based Hadoop clusters in HDInsight using Azure Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md): learn how to call Resource Manager templates to create HDInsight clusters.
-- [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md): learn how to use an empty edge node for accessing HDInsight cluster, testing HDInsight applications, and hosting HDInsight applications.
+- [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について確認します。
+- [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
+- [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
+- [Azure Resource Manager テンプレートを使用して HDInsight で Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
+- [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために空のエッジ ノードを使用する方法を確認します。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

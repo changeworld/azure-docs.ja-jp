@@ -2,7 +2,4 @@
 - [Linux](../articles/hdinsight/hdinsight-hadoop-collect-debug-heap-dump-linux.md)
 - [Windows](../articles/hdinsight/hdinsight-hadoop-collect-debug-heap-dumps.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

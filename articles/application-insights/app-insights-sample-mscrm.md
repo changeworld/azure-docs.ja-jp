@@ -1,50 +1,49 @@
 <properties 
-    pageTitle="Walkthrough: Monitor Microsoft Dynamics CRM with Application Insights" 
-    description="Get telemetry from Microsoft Dynamics CRM Online using Application Insights. Walkthrough of setup, getting data, visualization and export." 
-    services="application-insights" 
+	pageTitle="チュートリアル: Application Insights を使用して Microsoft Dynamics CRM を監視する" 
+	description="Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。設定、データの取得、視覚化、およびエクスポートをしてみましょう。" 
+	services="application-insights" 
     documentationCenter=""
-    authors="mazharmicrosoft" 
-    manager="douge"/>
+	authors="mazharmicrosoft" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="11/17/2015" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="11/17/2015" 
+	ms.author="awills"/>
  
+# チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
 
-# <a name="walkthrough:-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>Walkthrough: Enabling Telemetry for Microsoft Dynamics CRM Online using Application Insights
+この記事では、[Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft Dynamics CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
 
-This article shows you how to get telemetry data from [Microsoft Dynamics CRM Online](https://www.dynamics.com/) using [Visual Studio Application Insights](https://azure.microsoft.com/services/application-insights/). We’ll walk through the complete process of adding Application Insights script to your application, capturing data, and data visualization.
+>[AZURE.NOTE] [Browse the sample solution](https://dynamicsandappinsights.codeplex.com/)。
 
->[AZURE.NOTE] [Browse the sample solution](https://dynamicsandappinsights.codeplex.com/).
+## 新規または既存の CRM Online インスタンスに Application Insights を追加する 
 
-## <a name="add-application-insights-to-new-or-existing-crm-online-instance"></a>Add Application Insights to new or existing CRM Online instance 
+アプリケーションを監視するには、アプリケーションに Application Insights SDK を追加します。この SDK はテレメトリを [Application Insights ポータル](https://portal.azure.com)に送信します。そのポータルでは、強力な分析ツールおよび診断ツールを使用したり、データをストレージにエクスポートしたりできます。
 
-To monitor your application, you add an Application Insights SDK to your application. The SDK sends telemetry to the [Application Insights portal](https://portal.azure.com), where you can use our powerful analysis and diagnostic tools, or export the data to storage.
+### Azure で Application Insights のリソースを作成する
 
-### <a name="create-an-application-insights-resource-in-azure"></a>Create an Application Insights resource in Azure
+1. [Microsoft Azure のアカウント](http://azure.com/pricing)を取得します。 
+2. [Azure ポータル](https://portal.azure.com)にサインインし、Application Insights の新しいリソースを追加します。これは、データを処理し表示する場所になります。
 
-1. Get [an account in Microsoft Azure](http://azure.com/pricing). 
-2. Sign into the [Azure portal](https://portal.azure.com) and add a new Application Insights resource. This is where your data will be processed and displayed.
+    ![[+]、[開発者向けサービス]、[Application Insights] をクリックします。](./media/app-insights-sample-mscrm/01.png)
 
-    ![Click +, Developer Services, Application Insights.](./media/app-insights-sample-mscrm/01.png)
+    アプリケーションの種類として ASP.NET を選択します。
 
-    Choose ASP.NET as the application type.
-
-3. Open the Quick Start tab and open the code script.
+3. [クイック スタート] タブを開き、コードのスクリプトを開きます。
 
     ![](./media/app-insights-sample-mscrm/03.png)
 
-**Keep the code page open** while you do the next step in another browser window. You'll need the code soon. 
+**このコードのページは開いたまま**、別のブラウザー ウィンドウで次の手順を行います。このコードはすぐに必要になります。
 
-### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Create a JavaScript web resource in Microsoft Dynamics CRM
+### Microsoft Dynamics CRM で JavaScript の Web リソースを作成する
 
-1. Open your CRM Online instance and login with administrator privileges.
-2. Open Microsoft Dynamics CRM Settings, Customizations, Customize the System
+1. CRM Online インスタンスを開き、管理者権限でログインします。
+2. Microsoft Dynamics CRM で、[設定]、[カスタマイズ]、[システムのカスタマイズ] の順に開きます。
 
     ![](./media/app-insights-sample-mscrm/04.png)
     
@@ -53,64 +52,64 @@ To monitor your application, you add an Application Insights SDK to your applica
 
     ![](./media/app-insights-sample-mscrm/06.png)
 
-3. Create a JavaScript resource.
+3. JavaScript リソースを作成します。
 
     ![](./media/app-insights-sample-mscrm/07.png)
 
-    Give it a name, select **Script (JScript)** and open the text editor.
+    名前を付け、[**スクリプト (JScript)**] を選択してテキスト エディターを開きます。
 
     ![](./media/app-insights-sample-mscrm/08.png)
     
-4. Copy the code from Application Insights. While copying make sure to ignore script tags. Refer below screenshot:
+4. Application Insights からコードをコピーします。コピーの際はスクリプト タグを無視します。次のスクリーン ショットを参照してください。
 
     ![](./media/app-insights-sample-mscrm/09.png)
 
-    The code includes the instrumentation key that identifies your Application insights resource.
+    コードには Application Insights リソースを識別するインストルメンテーション キーが含まれています。
 
-5. Save and publish.
+5. 保存して発行します。
 
     ![](./media/app-insights-sample-mscrm/10.png)
 
-### <a name="instrument-forms"></a>Instrument Forms
+### フォームをインストルメント化する
 
-1. In Microsoft CRM Online, open the Account form
+1. Microsoft CRM Online で Account フォームを開きます。
 
     ![](./media/app-insights-sample-mscrm/11.png)
 
-2. Open the form Properties
+2. フォームのプロパティを開きます。
 
     ![](./media/app-insights-sample-mscrm/12.png)
 
-3. Add the JavaScript web resource that you created
+3. 作成した JavaScript の Web リソースを追加します。
 
     ![](./media/app-insights-sample-mscrm/13.png)
 
     ![](./media/app-insights-sample-mscrm/14.png)
 
-4. Save and publish your form customizations.
+4. 保存し、フォームのカスタマイズ内容を発行します。
 
 
-## <a name="metrics-captured"></a>Metrics captured
+## キャプチャされるメトリック
 
-You have now set up telemetry capture for the form. Whenever it is used, data will be sent to your Application Insights resource.
+フォームのテレメトリ キャプチャを設定しました。使用するたびに、データが Application Insights のリソースに送信されます。
 
-Here are samples of the data that you'll see.
+表示されるデータのサンプルを次に示します。
 
-#### <a name="application-health"></a>Application health
+#### アプリケーションの健全性
 
 ![](./media/app-insights-sample-mscrm/15.png)
 
 ![](./media/app-insights-sample-mscrm/16.png)
 
-Browser exceptions:
+ブラウザーの例外:
 
 ![](./media/app-insights-sample-mscrm/17.png)
 
-Click the chart to get more detail:
+詳細情報を表示するグラフをクリックします。
 
 ![](./media/app-insights-sample-mscrm/18.png)
 
-#### <a name="usage"></a>Usage
+#### 使用法
 
 ![](./media/app-insights-sample-mscrm/19.png)
 
@@ -118,19 +117,19 @@ Click the chart to get more detail:
 
 ![](./media/app-insights-sample-mscrm/21.png)
 
-#### <a name="browsers"></a>Browsers
+#### ブラウザー
 
 ![](./media/app-insights-sample-mscrm/22.png)
 
 ![](./media/app-insights-sample-mscrm/23.png)
 
-#### <a name="geolocation"></a>Geolocation
+#### 地理的位置情報
 
 ![](./media/app-insights-sample-mscrm/24.png)
 
 ![](./media/app-insights-sample-mscrm/25.png)
 
-#### <a name="inside-page-view-request"></a>Inside page view request
+#### 内部ページ表示要求
 
 ![](./media/app-insights-sample-mscrm/26.png)
 
@@ -142,28 +141,24 @@ Click the chart to get more detail:
 
 ![](./media/app-insights-sample-mscrm/30.png)
 
-## <a name="sample-code"></a>Sample code
+## コード サンプル
 
-[Browse the sample code](https://dynamicsandappinsights.codeplex.com/).
+[サンプル コードを参照します](https://dynamicsandappinsights.codeplex.com/)。
 
-## <a name="power-bi"></a>Power BI
+## Power BI
 
-You can do even deeper analysis if you [export the data to Microsoft Power BI](app-insights-export-power-bi.md).
+[データを Microsoft Power BI にエクスポート](app-insights-export-power-bi.md)すると、より深い分析を行うことができます。
 
-## <a name="sample-microsoft-dynamics-crm-solution"></a>Sample Microsoft Dynamics CRM Solution
+## Microsoft Dynamics CRM ソリューションのサンプル
 
-[Here is the sample solution implemented in Microsoft Dynamics CRM] (https://dynamicsandappinsights.codeplex.com/).
+[Microsoft Dynamics CRM で実装されたサンプル ソリューションを示します](https://dynamicsandappinsights.codeplex.com/)。
 
-## <a name="learn-more"></a>Learn more
+## 詳細情報
 
-* [What is Application Insights?](app-insights-overview.md)
-* [Application Insights for web pages](app-insights-javascript.md)
-* [More samples and walkthroughs](app-insights-code-samples.md)
+* [Application Insights とは何か?](app-insights-overview.md)
+* [Web ページ向けの Application Insights](app-insights-javascript.md)
+* [その他のサンプルとチュートリアル](app-insights-code-samples.md)
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1125_2015-->

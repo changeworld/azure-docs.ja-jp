@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Security Management and Monitoring Overview | Microsoft Azure"
-   description=" Azure provides security mechanisms to aid in the management and monitoring of Azure cloud services and virtual machines.  This article provides an overview of these core security features and services. "
+   pageTitle="Azure セキュリティの管理と監視の概要 | Microsoft Azure"
+   description=" Azure には、そのクラウド サービスと仮想マシンの管理と監視を支援するセキュリティ メカニズムが備わっています。この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。"
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,128 +16,122 @@
    ms.date="08/16/2016"
    ms.author="terrylan"/>
 
+# Azure セキュリティの管理と監視の概要
 
-# <a name="azure-security-management-and-monitoring-overview"></a>Azure Security Management and Monitoring Overview
+Azure には、そのクラウド サービスと仮想マシンの管理と監視を支援するセキュリティ メカニズムが備わっています。この記事では、これらの主要なセキュリティ機能とサービスの概要を示します。それぞれの詳細について説明する記事へのリンクが用意されているため、さらに詳しく学習できます。
 
-Azure provides security mechanisms to aid in the management and monitoring of Azure cloud services and virtual machines. This article provides an overview of these core security features and services. Links are provided to articles that will give details of each so you can learn more.
+Microsoft クラウド サービスのセキュリティは、パートナーシップに基づくものであり、お客様と Microsoft が共有する責任です。共有責任において、Microsoft は、Microsoft Azure およびそのデータ センターの (入室に ID カードが必要なドア、フェンス、守衛などのセキュリティ保護の使用による) 物理的なセキュリティの責任を負います。さらに、Azure のソフトウェア レイヤーには強力なレベルのクラウド セキュリティが備わっており、顧客が求めるセキュリティ、プライバシー、およびコンプライアンスの厳しいニーズを満たすことができます。
 
-The security of your Microsoft cloud services is a partnership and shared responsibility between you and Microsoft. Shared responsibility means Microsoft is responsible for the Microsoft Azure and physical security of its data centers (through the use of security protections such as locked badge entry doors, fences, and guards). In addition, Azure provides strong levels of cloud security at the software layer that meets the security, privacy, and compliance needs of its demanding customers.
+お客様は、自分のデータと ID を所有し、それらとオンプレミス リソースのセキュリティ、および自分が制御しているクラウド コンポーネントのセキュリティを保護する責任を持ちます。Microsoft は、セキュリティ制御や、データとアプリケーションを保護するための機能をお客様に提供します。お客様のセキュリティの責任は、クラウド サービスの種類に応じて決まります。
 
-You own your data and identities, the responsibility for protecting them, the security of your on-premises resources, and the security of cloud components over which you have control. Microsoft provides you with security controls and capabilities to help you protect your data and applications. Your responsibility for security is based on the type of cloud service.
-
-The following chart summarizes the balance of responsibility for both Microsoft and the customer.
+次の表は、Microsoft とお客様の責任の分担をまとめたものです。
 
 ![Shared responsibility][1]
 
-For a deeper dive into security management, see [Security management in Azure](azure-security-management.md).
+セキュリティ管理の詳細については、「[Azure のセキュリティ管理](azure-security-management.md)」を参照してください。
 
-Here are the core features to be covered in this article:
+この記事では、以下の主要機能について扱います。
 
-- Role-Based Access Control
-- Antimalware
+- ロールベースのアクセス制御
+- マルウェア対策
 - Multi-Factor Authentication
 - ExpressRoute
-- Virtual network gateways
-- Privileged identity management
-- Identity protection
-- Security Center
+- 仮想ネットワーク ゲートウェイ
+- Privileged Identity Management
+- Identity Protection
+- セキュリティ センター
 
-## <a name="role-based-access-control"></a>Role-Based Access Control
+## ロールベースのアクセス制御
 
-Role-Based Access Control (RBAC) provides fine-grained access management for Azure resources. Using RBAC, you can grant people only the amount of access that they need to perform their jobs.  RBAC can also help you ensure that when people leave the organization they lose access to resources in the cloud.
+ロールベースのアクセス制御 (RBAC) は、Azure リソースのアクセス権を詳細に管理できるようにします。RBAC を使用すると、職務に必要な範囲のアクセス権だけをユーザーに付与することができます。RBAC は、ユーザーが組織を離れるときに、クラウド内のリソースへのアクセス権を失うようにするためにも役立ちます。
 
-Learn more:
+詳細情報:
 
-- [Active Directory team blog on RBAC](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
-- [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md)
+- [RBAC に関する Active Directory チームのブログ](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
+- [Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 
-## <a name="antimalware"></a>Antimalware
+## マルウェア対策
 
-With Azure you can use antimalware software from major security vendors such as Microsoft, Symantec, Trend Micro, McAfee, and Kaspersky to help protect your virtual machines from malicious files, adware, and other threats.
+Azure では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などの主要なセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。
 
-Microsoft Antimalware offers you the ability to install an antimalware agent for both PaaS roles and virtual machines. Based on System Center Endpoint Protection, this feature brings proven on-premises security technology to the cloud.
+Microsoft マルウェア対策は、PaaS ロールと仮想マシンの両方のためのマルウェア対策エージェントをインストールする機能を提供します。この機能は、System Center Endpoint Protection に基づいており、実績のあるオンプレミス セキュリティ テクノロジをクラウドに持ち込みます。
 
-We also offer deep integration for Trend’s [Deep Security](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/)™ and [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/)™ products in the Azure platform. DeepSecurity is an Antivirus solution and SecureCloud is an encryption solution. DeepSecurity will be deployed inside of VMs using an extension model. Using the portal UI and PowerShell, you can choose to use DeepSecurity inside of new VMs that are being spun up, or existing VMs that are already deployed.
+また、Trend の [Deep Security](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/)™ と [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/)™ 製品も Azure プラットフォームに緊密に統合されます。DeepSecurity はウイルス対策ソリューションであり、SecureCloud は暗号化ソリューションです。DeepSecurity は、拡張機能モデルを使用して、VM の内部にデプロイされます。ポータル UI と PowerShell を使用すると、スピンアップされている新しい VM 内で DeepSecurity を使用するか、既にデプロイされている既存の VM 内で使用するかを選択することができます。
 
-Symantec End Point Protection (SEP) is also supported on Azure. Through portal integration, customers have the ability to specify that they intend to use SEP within a VM. SEP can be installed on a brand new VM via the Azure Portal or can be installed on an existing VM using PowerShell.
+Symantec End Point Protection (SEP) も、Azure でサポートされています。ポータルの統合により、お客様は SEP を VM 内で使用するように指定できます。SEP は、Azure ポータルを通じて新規の VM にインストールすることができます。また、PowerShell を使用して既存の VM にインストールすることもできます。
 
-Learn more:
+詳細情報:
 
-- [Deploying Antimalware Solutions on Azure Virtual Machines](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-- [Microsoft Antimalware for Azure Cloud Services and Virtual Machines](../security/azure-security-antimalware.md)
-- [How to install and configure Trend Micro Deep Security as a Service on a Windows VM](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
-- [How to install and configure Symantec Endpoint Protection on a Windows VM](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
-- [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
+- [Azure Virtual Machines へのマルウェア対策ソリューションのデプロイ](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
+- [Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](../security/azure-security-antimalware.md)
+- [Windows VM に Trend Micro Deep Security をサービスとしてインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-trend.md)
+- [Windows VM に Symantec Endpoint Protection をインストールし、構成する方法](../virtual-machines/virtual-machines-windows-classic-install-symantec.md)
+- [New Antimalware Options for Protecting Azure Virtual Machines – McAfee Endpoint Protection (Azure Virtual Machines を保護するための新しいマルウェア対策オプション – McAfee Endpoint Protection)](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/)
 
-## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+## Multi-Factor Authentication
 
-Azure Multi-factor authentication (MFA) is a method of authentication that requires the use of more than one verification method and adds a critical second layer of security to user sign-ins and transactions. MFA helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It delivers strong authentication via a range of verification options—phone call, text message, or mobile app notification or verification code and 3rd party OATH tokens.
+Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OATH トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
-Learn more:
+詳細情報:
 
-- [Multi-factor authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-- [What is Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
-- [How Azure Multi-Factor Authentication works](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+- [多要素認証](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+- [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
+- [Azure Multi-Factor Authentication のしくみ](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
 
-## <a name="expressroute"></a>ExpressRoute
+## ExpressRoute
 
-Microsoft Azure ExpressRoute lets you extend your on-premises networks into the Microsoft cloud over a dedicated private connection facilitated by a connectivity provider. With ExpressRoute, you can establish connections to Microsoft cloud services, such as Microsoft Azure, Office 365, and CRM Online. Connectivity can be from an any-to-any (IP VPN) network, a point-to-point Ethernet network, or a virtual cross-connection through a connectivity provider at a co-location facility. ExpressRoute connections do not go over the public Internet. This allows ExpressRoute connections to offer more reliability, faster speeds, lower latencies, and higher security than typical connections over the Internet.
+Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供する専用プライベート接続で、オンプレミスのネットワークを Microsoft クラウドに拡張できます。ExpressRoute では、Microsoft Azure、Office 365、CRM Online などの Microsoft クラウド サービスへの接続を確立できます。接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。ExpressRoute 接続では、公共のインターネットを利用できません。それにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。
 
-Learn more:
+詳細情報:
 
-- [ExpressRoute technical overview](../expressroute/expressroute-introduction.md)
+- [ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)
 
-## <a name="virtual-network-gateways"></a>Virtual network gateways
+## 仮想ネットワーク ゲートウェイ
 
-VPN Gateways, also called Azure Virtual Network Gateways, are used to send network traffic between virtual networks and on-premises locations. They are also used to send traffic between multiple virtual networks within Azure (VNet-to-VNet).  VPN gateways provide secure cross-premises connectivity between Azure and your infrastructure.
+VPN Gateway (Azure Virtual Netwok ゲートウェイとも呼ばれます) は、仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックを送信するために使用されます。また、Azure 内で複数の仮想ネットワーク間のトラフィック送信にも使用されます (VNet 間)。VPN ゲートウェイは、Azure とお使いのインフラストラクチャの間の安全なクロスプレミス接続を提供します。
 
-Learn more:
+詳細情報:
 
-- [About VPN gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md)
-- [Azure Network Security Overview](security-network-overview.md)
+- [VPN ゲートウェイについて](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- [Azure のネットワーク セキュリティの概要](security-network-overview.md)
 
-## <a name="privileged-identity-management"></a>Privileged Identity Management
+## Privileged Identity Management
 
-Sometimes users need to carry out privileged operations in Azure resources or other SaaS applications. This often means organizations have to give them permanent privileged access in Azure Active Directory (Azure AD). This is a growing security risk for cloud-hosted resources because organizations can't sufficiently monitor what those users are doing with their privileged access.
-Additionally, if a user account with privileged access is compromised, that one breach could impact your overall cloud security. Azure AD Privileged Identity Management helps to resolve this risk by lowering the exposure time of privileges and increasing visibility into usage.  
+ユーザーは、Azure のリソース、または他の SaaS アプリケーションで、特権操作を実行することが必要になる場合があります。通常は、組織がユーザーに Azure Active Directory (Azure AD) で永続的な特権アクセスを付与する必要があります。しかし、この措置では、ユーザーが特権アクセスを使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害がクラウド セキュリティ全体に影響を与える可能性もあります。Azure AD Privileged Identity Management では、特権の公開期間を短縮し、使用状況の可視性を向上させることによって、このリスクの解決を支援します。
 
-Privileged Identity Management introduces the concept of a temporary admin for a role or “just in time” administrator access, which is a user who needs to complete an activation process for that assigned role. The activation process changes the assignment of the user to a role in Azure AD from inactive to active, for a specified time period such as 8 hours.
+Privileged Identity Management には、ロールの一時的な管理者または "ジャスト イン タイム" 管理者アクセスという概念が導入されています。一時的な管理者となるユーザーは、割り当てられたロールのアクティブ化プロセスを完了する必要があります。このアクティブ化プロセスによって、Azure AD におけるユーザーへのロールの割り当てが、8 時間などの指定された期間だけ、非アクティブからアクティブに変更されます。
 
-Learn more:
+詳細情報:
 
 - [Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md)
-- [Get started with Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-getting-started.md)
+- [Azure AD Privileged Identity Management の使用](../active-directory/active-directory-privileged-identity-management-getting-started.md)
 
-## <a name="identity-protection"></a>Identity Protection
+## Identity Protection
 
-Azure Active Directory (AD) Identity Protection provides a consolidated view of suspicious sign-in activities and potential vulnerabilities to help protect your business. Identity Protection detects suspicious activities for users and privileged (admin) identities, based on signals like brute-force attacks, leaked credentials, and sign-ins from unfamiliar locations and infected devices.
+Azure Active Directory (AD) Identity Protection は、ビジネスを保護するために、不審なサインイン アクティビティと潜在的な脆弱性の統合ビューを提供します。Identity Protection は、ブルート フォース攻撃、資格情報の漏えい、不明な場所および感染したデバイスからのサインインなどの前兆に基づいて、ユーザーや特権 (管理) ID の不審なアクティビティを検出します。
 
-By providing notifications and recommended remediation, Identity Protection helps to mitigate risks in real time. It calculates user risk severity, and you can configure risk-based policies to automatically help safeguard application access from future threats.
+Identity Protection は、通知と推奨される修復を提供することで、リスクをリアルタイムで軽減できるようにします。ユーザーのリスクの重大度が計算されるので、ユーザーはリスク ベースのポリシーを構成して、アプリケーションのアクセスが将来の脅威から自動的に保護されるようにすることができます。
 
-Learn more:
+詳細情報:
 
 - [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
-- [Channel 9: Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="security-center"></a>Security Center
+## セキュリティ センター
 
-Azure Security Center helps you prevent, detect, and respond to threats, and provides you increased visibility into, and control over, the security of your Azure resources. It provides integrated security monitoring and policy management across your Azure subscriptions, helps detect threats that might otherwise go unnoticed, and works with a broad ecosystem of security solutions.
+Azure Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-Security Center helps you optimize and monitor the security of your Azure resources by:
+Security Center は、Azure リソースのセキュリティの最適化と監視に役立つ次の機能を備えています。
 
-- Enabling you to define policies for your Azure subscription resources according to your company’s security needs and the type of applications or sensitivity of the data in each subscription.
-- Monitoring the state of your Azure virtual machines, networking, and applications.
-- Providing a list of prioritized security alerts, including alerts from integrated partner solutions, along with the information you need to quickly investigate and recommendations on how to remediate an attack.
+- セキュリティに関する会社のニーズ、および各サブスクリプションでのアプリケーションのタイプやデータの機密度に合わせて、Azure サブスクリプション リソースのポリシーを定義できます。
+- Azure 仮想マシン、ネットワーク、およびアプリケーションの状態を監視します。
+- 統合されたパートナー ソリューションからの警告など、優先順位の付いたセキュリティの警告の一覧を提供します。また、すぐに調査するために必要な情報や、攻撃を受けたものを修復する方法についての推奨事項も表示します。
 
-Learn more:
+詳細情報:
 
-- [Introduction to Azure Security Center](../security-center/security-center-intro.md)
+- [Azure Security Center 入門](../security-center/security-center-intro.md)
 
 <!--Image references-->
 [1]: ./media/security-management-and-monitoring-overview/shared-responsibility.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

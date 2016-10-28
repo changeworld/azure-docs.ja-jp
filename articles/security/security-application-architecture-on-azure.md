@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Application Architecture on Azure | Microsoft Azure"
-   description=" This article will help you understand the application and services architecture on Azure to make it easier to integrate security into design and implementation. "
+   pageTitle="Azure のアプリケーション アーキテクチャ | Microsoft Azure"
+   description=" この記事は、Azure のアプリケーションとサービスのアーキテクチャを理解するのに役立ち、設計および実装にセキュリティを統合しやすくします。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,50 +16,44 @@
    ms.date="08/09/2016"
    ms.author="terrylan"/>
 
+# Azure のアプリケーション アーキテクチャ
 
-# <a name="application-architecture-on-azure"></a>Application architecture on Azure
+Microsoft Azure 上のクラウド ベースのソリューションをセキュリティ保護するには、アーキテクチャの強力な基盤が不可欠です。アーキテクト、デザイナー、および実装者は、アプリケーションとサービスのアーキテクチャに関する強力な知識を利用します。この基礎知識は、クラウド ベースのソリューションのすべてのコンポーネントを理解するのに役立ち、設計および実装のすべての側面にセキュリティを統合しやすくします。
 
-To help secure your cloud-based solutions on Microsoft Azure, a strong architectural foundation is critical. Architects, designers, and implementers all benefit from a strong knowledge of application and services architecture. This foundational knowledge helps you understand all the components of your cloud-based solutions and make it easier to integrate security into all aspects of your design and implementation.
+アーキテクチャの調査および設計に役立つ以下の機能を以下に示します。
 
-We have the following to help you with your architectural investigations and designs:
+- アーキテクチャのインフォグラフィック
+- アーキテクチャのブループリント
+- クラウドおよびエンタープライズ用シンボル セット
+- 3D ブループリント Visio テンプレート
 
-- Architectural infographics
-- Architectural blueprints
-- Cloud and enterprise symbol set
-- 3D blueprint Visio template
+## アーキテクチャのインフォグラフィック
 
-## <a name="architectural-infographics"></a>Architectural infographics
+Microsoft は、ポスター/インフォグラフィックに関連するいくつかのアーキテクチャを公開しています。以下が含まれます。
 
-Microsoft publishes several architectural related posters/infographics. They include:
+- [実際のクラウド アプリケーションの作成](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
+- [クラウド サービスによるスケーリング](https://azure.microsoft.com/documentation/infographics/cloud-services/)
 
-- [Building Real-World Cloud Applications](https://azure.microsoft.com/documentation/infographics/building-real-world-cloud-apps/)
-- [Scaling with Cloud Services](https://azure.microsoft.com/documentation/infographics/cloud-services/)
+## アーキテクチャのブループリント
 
-## <a name="architectural-blueprints"></a>Architectural blueprints
+Microsoft は、Microsoft 製品を使用する特定の種類のシステム構築方法を示す、大まかな[アーキテクチャのブループリント](http://aka.ms/azblueprints)を公開しています。各ブループリントには、以下が含まれています。
 
-Microsoft publishes a set of high-level [architectural blueprints](http://aka.ms/azblueprints) showing how to build specific types of systems using Microsoft products.
-Each blueprint includes a:
+- ダウンロードして変更できるフラットな 2D の Visio 2003 ベースのファイル
+- あまり技術に詳しくないユーザーに対してブループリントを紹介する、色鮮やかな奥行のある 3D PDF ファイル
+- 3D バージョンを紹介するビデオ
 
-- Flat 2D Visio 2003-based file that you can download and modify
-- Colorful 3D perspective PDF file to introduce the blueprint to less technical audiences
-- Video that walks through the 3D version
+## クラウドおよびエンタープライズ用シンボル セット
 
-## <a name="cloud-and-enterprise-symbol-set"></a>Cloud and enterprise symbol set
+[Visio とシンボルに関するトレーニング ビデオを視聴](http://aka.ms/CnESymbolsVideo)してから、[クラウドおよびエンタープライズ用シンボル セットをダウンロード](http://aka.ms/CnESymbols)すると、Azure、Windows Server、SQL Server、その他について説明する技術資料を作成する際に役に立ちます。これらのシンボルやアイコンは、アーキテクチャ ダイアグラム、トレーニング資料、プレゼンテーション、データシート、インフォグラフィックス、ホワイトペーパーに加え、サード パーティの書籍でも使用できます (Microsoft 製品の使用が想定された書籍の場合)。ただし、ユーザー インターフェイスで使用することは、想定されていません。
 
-[View the Visio and symbols training video](http://aka.ms/CnESymbolsVideo) and then [download the Cloud and Enterprise Symbol set](http://aka.ms/CnESymbols) to help create technical materials that describe Azure, Windows Server, SQL Server and more. You can use the symbols in architecture diagrams, training materials, presentations, datasheets, infographics, whitepapers, and even third party books if the book trains people to use Microsoft products. However, they are not meant for use in user interfaces.
+## 3D ブループリント Visio テンプレート
 
-## <a name="3d-blueprint-visio-template"></a>3D blueprint Visio template
+3D バージョンの [Microsoft アーキテクチャ ブループリント](http://aka.ms/azblueprints)は、当初は非 Microsoft ツールで作成されました。Visio 2013 (以降) の新しいテンプレートが、2015 年 8 月 5 日に、[EDX.ORG で配信される Microsoft のアーキテクチャの認定コース](../architecture-overview.md#microsoft-architecture-certification-course)の一部として出荷されました。
 
-The 3D versions of the [Microsoft Architecture Blueprints](http://aka.ms/azblueprints) were initially created in a non-Microsoft tool. A new Visio 2013 (and later) template shipped on August 5, 2015 as part of a [Microsoft Architecture certification course distributed on EDX.ORG](../architecture-overview.md#microsoft-architecture-certification-course).
+テンプレートは、このコース以外でも利用もできます。
 
-The template is also available outside the course.
+- 最初に機能を確認するために、[トレーニング ビデオを視聴](http://aka.ms/3dBlueprintTemplateVideo)する
+- [Microsoft 3D ブループリント Visio テンプレート](http://aka.ms/3DBlueprintTemplate)をダウンロードする
+- 3D テンプレートと一緒に使用する[クラウドとエンタープライズのシンボル](../architecture-overview.md#drawing-symbol-and-icon-sets)をダウンロードする
 
-- [View the training video](http://aka.ms/3dBlueprintTemplateVideo) first so you know what it can do
-- Download the [Microsoft 3d Blueprint Visio Template](http://aka.ms/3DBlueprintTemplate)
-- Download the [Cloud and Enterprise Symbols](../architecture-overview.md#drawing-symbol-and-icon-sets) to use with the 3D template
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

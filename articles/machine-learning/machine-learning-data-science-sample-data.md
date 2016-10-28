@@ -1,45 +1,37 @@
 <properties 
-    pageTitle="Sample data in Azure blob containers, SQL Server, and Hive tables | Microsoft Azure" 
-    description="How to explore data stored in various Azure enviromnents." 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="bradsev" 
-    manager="jhubbard" 
-    editor="cgronlun" />
+	pageTitle="Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング | Microsoft Azure" 
+	description="さまざまな Azure 環境に格納されているデータを探索する方法について説明します。" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="bradsev" 
+	manager="jhubbard" 
+	editor="cgronlun" />
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/19/2016" 
-    ms.author="fashah;garye;bradsev" /> 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/19/2016" 
+	ms.author="fashah;garye;bradsev" />
 
+#<a name="heading"></a>Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング
 
-#<a name="<a-name="heading"></a>sample-data-in-azure-blob-containers,-sql-server,-and-hive-tables"></a><a name="heading"></a>Sample data in Azure blob containers, SQL Server, and Hive tables
+このドキュメントは、Azure に保存されているデータを収集する方法について取り上げたトピックに関連しています。次の 3 つの保存先が対象となります。
 
-This document links to topics that covers how to sample data that is stored in one of three different Azure locations:
+- **データ** をサンプリングするには、プログラムでダウンロードし、サンプル Python コードを使用します。
+- **SQL Server データ**をサンプリングするには、SQL と Python プログラミング言語の両方を使用します。
+- **Hive テーブル データ**をサンプリングするには、Hive クエリを使用します。
 
-- **Azure blob container data** is sampled by downloading it programmatically and then sampling it with sample Python code.
-- **SQL Server data** is sampled using both SQL and the Python Programming Language. 
-- **Hive table data** is sampled using Hive queries.
-
-The **menu** below links to the topics that describe how to sample data from each of these Azure storage environments. 
+次の**メニュー**は、これらの各 Azure ストレージ環境のデータをサンプリングする方法を説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-sample-data-selector](../../includes/cap-sample-data-selector.md)]
 
-This sampling task is a step in the [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+このサンプリング タスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
-## <a name="why-sample-data?"></a>Why sample data?
+## データをサンプリングする理由
 
-If the dataset you plan to analyze is large, it is usually a good idea to down-sample the data to reduce it to a smaller but representative and more manageable size. This facilitates data understanding, exploration, and feature engineering. Its role in the Cortana Analytics Process is to enable fast prototyping of the data processing functions and machine learning models.
+分析しようとしているデータセットが大規模な場合、データをダウンサンプリングして、小規模であっても典型的であり、管理しやすいサイズに減らすことが通常は推奨されます。これにより、データの理解、探索、および特徴エンジニアリングが容易になります。Cortana Analytics Process におけるダウンサンプリングの役割は、データ処理機能と機械学習モデルのプロトタイプをより迅速に作成できるようにすることです。
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,11 +1,11 @@
 
 <properties 
-    pageTitle="Estimate Azure RemoteApp network bandwidth usage | Microsoft Azure"
-    description="Learn about the network bandwidth requirements for your Azure RemoteApp collections and apps."
-    services="remoteapp"
-    documentationCenter="" 
-    authors="lizap" 
-    manager="mbaldwin" />
+    pageTitle="Azure RemoteApp で使用されるネットワーク帯域幅を推定する | Microsoft Azure"
+	description="Azure RemoteApp コレクションとアプリのネットワーク帯域幅要件について説明します。"
+	services="remoteapp"
+	documentationCenter="" 
+	authors="lizap" 
+	manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -16,34 +16,30 @@
     ms.date="08/15/2016" 
     ms.author="elizapo" />
 
-
-# <a name="estimate-azure-remoteapp-network-bandwidth-usage"></a>Estimate Azure RemoteApp network bandwidth usage 
+# Azure RemoteApp で使用されるネットワーク帯域幅を推定する 
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Azure RemoteApp uses the Remote Desktop Protocol (RDP) to communicate between applications running in the Azure cloud and your users. This article provides some basic guidelines you can use to estimate that network usage and potentially evaluate network bandwidth usage per Azure RemoteApp user.
+Azure RemoteApp では、リモート デスクトップ プロトコル (RDP) を使用して、Azure クラウドで実行するアプリケーションとユーザーの間で通信を行います。この記事では、このネットワーク使用量を推定する場合の基本的なガイドラインについて説明します。このガイドラインは Azure RemoteApp ユーザーごとのネットワーク使用帯域幅の評価にも役立つ場合があります。
 
-Estimating bandwidth usage per user is very complex and requires running multiple applications simultaneously in multitasking scenarios where applications might impact each other's performance based on their demand for network bandwidth. Even the type of Remote Desktop client (such as Mac client versus HTML5 client) can lead to different bandwidth results. To help you work through these complications, we'll break the usage scenarios into several of the common categories to replicate real-world scenarios. (Where the real-world scenario is, of course, a mix of categories and differs by user.)
+ユーザーごとの使用帯域幅の推定は非常に複雑であり、マルチタスクのシナリオで複数のアプリケーションを同時に実行する必要があります。このシナリオでは、必要なネットワーク帯域幅に基づき、アプリケーション同士が互いのパフォーマンスに影響を与え合う可能性があります。リモート デスクトップ クライアントのタイプであっても (Mac クライアントと HTML5 クライアントなど)、帯域幅の結果が異なる場合があります。こうした複雑さに対処するため、使用シナリオを実世界のシナリオに則したいくつかの一般的なカテゴリに分類します (当然ながら、実世界のシナリオはカテゴリの組み合わせであり、ユーザーに応じて変わります)。
 
-Before we go further - note that we assume RDP provides a good to excellent experience for most usage scenarios on networks with latency below 120 ms and bandwidth over 5 MBs - this is based on RDP's ability to dynamically adjust by using the available network bandwidth and the estimated application bandwidth needs. This article goes beyond those "most usage scenarios" to look at the edge, where scenarios begin to unwind and user experience begins to degrade.
+先に進む前に、遅延が 120 ms 以下、帯域幅が 5 MB を超えるネットワークの場合、RDP はほとんどの使用シナリオで良好ないし極めて優れた操作性を提供すると想定されている点をご理解ください。これは、利用可能なネットワーク帯域幅とアプリケーションで必要な推定帯域幅を使用して動的な調整を行う RDP の機能に基づきます。この記事では、こうした "ほとんどの使用シナリオ" を超えて限界に目を向け、ユーザー エクスペリエンスの質が下がり始める状況について見ていきます。
 
-Now check out the following articles for the details, including factors to consider, baseline recommendations, and what we did not include in our estimates.
+考慮すべき要素、基本的な推奨事項、推定の際に考慮に入れなかった項目の詳細について、以下の記事をご覧ください。
 
-- [How do network bandwidth and quality of experience work together?](remoteapp-bandwidthexperience.md)
-- [Testing your network bandwidth usage with some common scenarios](remoteapp-bandwidthtests.md)
-- [Quick guidelines if you don't have the time or ability to test](remoteapp-bandwidthguidelines.md)
-
-
-## <a name="what-are-we-not-including?"></a>What are we not including?
-
-When you review the proposed tests and our overall (and admittedly generic) recommendations, be aware that there are several factors that we did not consider. For example, the user experience complications provided by the asymmetric nature of upload vs. download bandwidth. The asymmetric nature of most Wi-Fi networks will additionally impact the performance and the user experience perception. For interactive scenarios the downstream traffic may be prioritized lower than the upstream, which may increase the number of lost video or audio frames and therefore impact the user perception of the streaming experience. You can run your own experiments to see what is good for your specific use case and network.
-
-Although we discuss device redirection, we did not take into consideration the bandwidth impact of the network traffic caused by attached devices, like storage, printers, scanners, web cameras, and other USB devices. The effect of those devices usually spikes the bandwidth needs temporarily and goes away when the task is complete. But if done frequently, that bandwidth demand could be quite noticeable.
-
-We also do not discuss how one user can impact other users within the same network. For example, one user consuming 4K video on a 100 MB/s network might significantly impact other users on that same network trying to do the same task. Unfortunately it gets progressively harder to determine the impact of concurrent usage to give a common or all-encompassing recommendation about how the system performs at aggregate. All we can say is that the underlying protocol technology will make the best use of the available network bandwidth, but it does have its limitations.
+- [ネットワーク帯域幅とエクスペリエンスの質はどのような関係にあるのか](remoteapp-bandwidthexperience.md)
+- [Testing your network bandwidth usage with some common scenarios (一般的なシナリオでのネットワークの使用帯域幅をテストする)](remoteapp-bandwidthtests.md)
+- [テストする時間やスキルがない場合のクイック ガイドライン](remoteapp-bandwidthguidelines.md)
 
 
-<!--HONumber=Oct16_HO2-->
+## 考慮に入れていない項目
 
+紹介しているテストと全般的な推奨事項を確認する際は、考慮されなかった項目がいくつかあることをご了承ください。たとえば、アップロードとダウンロードの帯域幅の非対称性によってもたらされるユーザー エクスペリエンスの複雑さがあります。大部分の Wi-Fi ネットワークの非対称性は、パフォーマンスとユーザー エクスペリエンスに対する認識にさらに影響を与えます。対話型のシナリオでは、ダウンストリームのトラフィックはアップストリームよりも優先度が低い場合があり、損失するビデオ フレーム数やオーディオ フレーム数が増えるので、ストリーミングに対するユーザーの認識に影響を与えます。独自の試験を実施して、固有のユース ケースやネットワークには何が適しているかを把握できます。
 
+デバイス リダイレクトに言及していますが、ストレージ、プリンター、スキャナー、Web カメラ、その他の USB デバイスなど、接続されているデバイスで発生するネットワーク トラフィックの帯域幅への影響については考慮しませんでした。通常、これらのデバイスにより、帯域幅のニーズが一時的に急上昇しますが、タスクが完了すれば影響はなくなります。たび重なる場合は、帯域幅のニーズが非常に顕著になることがあります。
+
+また、あるユーザーが同じネットワーク内にいる別のユーザーに影響を与える可能性についても考慮しませんでした。たとえば、あるユーザーが 100 MB/秒のネットワーク上で 4K ビデオを使用していると、同じネットワーク上で同じタスクを実行しようとしている他のユーザーに大きく影響する場合があります。残念ながら、同時使用の影響を特定してシステム全体としてのパフォーマンスに関する一般的または包括的な推奨事項を提供することが段々と困難になってきています。私たちに言えるのは、基になるプロトコル技術によって利用可能なネットワーク帯域幅が有効に活用されますが、それにも限界があるということです。
+
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,22 +1,22 @@
-Please ensure that you have already created a Service Bus namespace, as shown [here][namespace-how-to].
+[こちら][namespace-how-to]の説明に従って、Service Bus 名前空間を既に作成していることを確認してください。
 
-1. Log on to the [Azure portal][azure-portal].
+1. [Azure ポータル][azure-portal]にログオンします。
 
-2. In the left navigation pane of the portal, click **Service Bus**.
+2. ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3. Select the namespace that you would like to create the queue in. In this case, it is **nstest1**.
+3. キューを作成する名前空間を選択します。この例では、**nstest1** です。
 
-    ![Create a queue][createqueue1]
+    ![キューを作成する][createqueue1]
 
-4. In the **Service Bus namespace** blade, select **Queues**, then click **Add queue**.
+4. **[Service Bus 名前空間]** ブレードで、**[キュー]**、**[キューの追加]** の順にクリックします。
 
     ![Select Queues][createqueue2]
 
-5. Enter the **Queue Name** and leave the other values with their defaults.
+5. **[キュー名]** に入力し、他の値は既定値のままにします。
 
     ![Select New][createqueue3]
 
-7. At the bottom of the blade, click **Create**.
+7. ブレードの下部にある **[作成]** をクリックします。
 
 [createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
 [createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
@@ -25,6 +25,4 @@ Please ensure that you have already created a Service Bus namespace, as shown [h
 [namespace-how-to]: ../articles/service-bus/service-bus-create-namespace-portal.md
 [azure-portal]: https://portal.azure.com
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

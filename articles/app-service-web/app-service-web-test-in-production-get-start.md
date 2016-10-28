@@ -1,94 +1,89 @@
 <properties
-    pageTitle="Get started with test in production for Web Apps"
-    description="Learn about the Test in Production (TiP) feature in Azure App Service Web Apps."
-    services="app-service\web"
-    documentationCenter=""
-    authors="cephalin"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Web アプリの運用環境におけるテストの基本"
+	description="Azure App Service Web Apps を運用環境でテストする Test in Production (TiP) 機能について説明します。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="01/13/2016"
-    ms.author="cephalin"/>
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/13/2016"
+	ms.author="cephalin"/>
 
+# Web アプリの運用環境におけるテストの基本
 
-# <a name="get-started-with-test-in-production-for-web-apps"></a>Get started with test in production for Web Apps
+運用環境におけるテスト、つまり実際の利用者のトラフィックを使った Web アプリのライブ テストは、アプリ開発者の間でその[アジャイル開発](https://en.wikipedia.org/wiki/Agile_software_development)手法に急速に浸透しつつあるテスト ストラテジです。テスト環境で合成されたデータではなく、運用環境における実際のユーザー トラフィックを使ってアプリの品質をテストすることができます。実際のユーザーに最新のアプリを公開することにより、デプロイ後に現実に起こりうる問題についての知見を得ることができます。テスト環境では決して見積もることのできない実際のユーザー トラフィックの量、ベロシティ、多様性に対して、更新後のアプリの機能、パフォーマンス、有用性を検証することができます。
 
-Testing in production, or live-testing your web app using live customer traffic, is a test strategy that app developers increasingly integrate into their [agile development](https://en.wikipedia.org/wiki/Agile_software_development) methodology. It enables you to test the quality of your apps with live user traffic in your production environment, as opposed to synthesized data in a test environment. By exposing your new app to real users, you can be informed on the real problems your app may face once it is deployed. You can verify the functionality, performance, and value of your app updates against the volume, velocity, and variety of real user traffic, which you can never approximate in a test environment.
+## App Service Web アプリにおけるトラフィックのルーティング
 
-## <a name="traffic-routing-in-app-service-web-apps"></a>Traffic Routing in App Service Web Apps
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) のトラフィック ルーティング機能を使用して一部のライブ ユーザー トラフィックを[デプロイ スロット](web-sites-staged-publishing.md)にリダイレクトしたうえで、[Azure Application Insights](/services/application-insights/) や [Azure HDInsight](/services/hdinsight/)、またはサードパーティのツール ([New Relic](/marketplace/partners/newrelic/newrelic/) など) を使い、アプリを分析することによって変更内容を検証することができます。たとえば、App Service を使って次のシナリオを実現することができます。
 
-With the Traffic Routing feature in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714), you can direct a portion of live user traffic to one or more [deployment slots](web-sites-staged-publishing.md), and then analyze your app with [Azure Application Insights](/services/application-insights/) or [Azure HDInsight](/services/hdinsight/), or a third-party tool like [New Relic](/marketplace/partners/newrelic/newrelic/) to validate your change. For example, you can implement the following scenarios with App Service:
+- サイト全域にデプロイする前に、更新後の機能的なバグを発見したり、パフォーマンスのボトルネックを特定したりする。
+- ベータ版アプリに関するユーザビリティのメトリックを評価することによって、変更に対する "Controlled Test Flight (制御された環境で行われるテスト フライト)" を実行する。
+- 徐々に最新版に引き上げ、エラーが発生した場合は、支障をきたさないように現行バージョンに引き下げる。
+- 複数のデプロイ スロットで [A/B テスト](https://en.wikipedia.org/wiki/A/B_testing)または[多変量テスト](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing)を実行することにより、ビジネス上のアプリの成果を最適化する。
 
-- Discover functional bugs or pinpoint performance bottlenecks in your updates prior to site-wide deployment
-- Perform "controlled test flights" of your changes by measuring usibility metrics on the beta app
-- Gradually ramp up to a new update, and gracefully back down to the current version if an error occurs 
-- Optimize your app's business results by running [A/B tests](https://en.wikipedia.org/wiki/A/B_testing) or [multivariate tests](https://en.wikipedia.org/wiki/Multivariate_testing_in_marketing) in multiple deployment slots
+### Web アプリでトラフィック ルーティングを使用するための要件
 
-### <a name="requirements-for-using-traffic-routing-in-web-apps"></a>Requirements for using Traffic Routing in Web Apps
+- Web アプリが **Standard** レベルまたは **Premium** レベルで実行されている必要があります (複数のデプロイ スロットを使用するために必要)。
+- トラフィック ルーティングが適切に機能するためには、ユーザーのブラウザーで Cookie が有効になっている必要があります。クライアント セッションの有効期間中は、Cookie を使用してクライアントのブラウザーがデプロイ スロットに固定されます。
+- トラフィック ルーティングは、Azure PowerShell のコマンドレットによって高度な TiP (Test in Production) のシナリオに対応しています。
 
-- Your web app must run in **Standard** or **Premium** tier, as it is required for multiple deployment slots.
-- In order to work properly, Traffic Routing requires cookies to be enabled in the users' browser. Traffic Routing uses cookies to pin a client browser to a deployment slot for the life the client session.
-- Traffic Routing supports advanced TiP scenarios through Azure PowerShell cmdlets.
+## 一定量のトラフィックをデプロイ スロットにルーティングする
 
-## <a name="route-traffic-segment-to-a-deployment-slot"></a>Route traffic segment to a deployment slot
+基本的に運用環境でのテストはどれも、あらかじめ決めた割合のライブ トラフィックを非運用環境のデプロイ スロットにルーティングすることになります。これを行うには、次の手順に従います。
 
-At the basic level in every TiP scenario, you route a predefined percentage of your live traffic to a non-production deployment slot. To do this, follow the steps below:
+>[AZURE.NOTE] ここに記載した手順は、[非運用環境のデプロイ スロット](web-sites-staged-publishing.md)が既に存在し、適切な Web アプリのコンテンツが既に[デプロイ](web-sites-deploy.md)されていることを前提としています。
 
->[AZURE.NOTE] The steps here assumes that you already have a [non-production deployment slot](web-sites-staged-publishing.md) and that the desired web app content is already [deployed](web-sites-deploy.md) to it.
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
+2. Web アプリのブレードで、**[設定]**、**[トラフィック ルーティング]** の順にクリックします。![](./media/app-service-web-test-in-production/01-traffic-routing.png)
+3. トラフィックのルーティング先となるスロットと、必要なトラフィックの全体に対するパーセンテージとを選択し、**[保存]** をクリックします。
 
-1. Log into the [Azure Portal](https://portal.azure.com/).
-2. In your web app's blade, click **Settings** > **Traffic Routing**.
-  ![](./media/app-service-web-test-in-production/01-traffic-routing.png)
-3. Select the slot that you want to route traffic to and the percentage of the total traffic you desire, then click **Save**.
+	![](./media/app-service-web-test-in-production/02-select-slot.png)
 
-    ![](./media/app-service-web-test-in-production/02-select-slot.png)
+4. デプロイ スロットのブレードに移動します。ライブ トラフィックがルーティングされていることを確認できます。
 
-4. Go to the deployment slot's blade. You should now see live traffic being routed to it.
+	![](./media/app-service-web-test-in-production/03-traffic-routed.png)
 
-    ![](./media/app-service-web-test-in-production/03-traffic-routed.png)
-
-Once Traffic Routing is configured, the specified percentage of clients will be randomly routed to your non-production slot. However, it is important to note that once a client is automatically routed to a specific slot, it will be "pinned" to that slot for the life of that client session. This done using a cookie to pin the user session. If you inspect the HTTP requests, you will find a `TipMix` cookie in every subsequent request.
+トラフィック ルーティングの構成後、指定した割合のクライアントが、非運用スロットに対してランダムにルーティングされます。ただし、一度特定のスロットに対して自動的にルーティングされたクライアントは、そのクライアント セッションの有効期間中、同じスロットに "固定" されます。ユーザー セッションの固定には Cookie が使用されます。HTTP 要求を検査すると、後続のすべての要求に `TipMix` という Cookie の存在が確認できます。
 
 ![](./media/app-service-web-test-in-production/04-tip-cookie.png)
 
-## <a name="force-client-requests-to-a-specific-slot"></a>Force client requests to a specific slot
+## クライアントの要求を特定のスロットに強制的に割り当てる
 
-In addition to automatic traffic routing, App Service is able to route requests to a specific slot. This is useful when you want your users to be able to opt-into or opt-out of your beta app. To do this, you use the `x-ms-routing-name` query parameter.
+App Service は自動トラフィック ルーティングだけでなく、特定のスロットに要求をルーティングすることもできます。この方法は、ベータ版アプリへの参加をユーザーが自由に選択または拒否できるようにしたい場合に有効です。これは、`x-ms-routing-name` クエリ パラメーターを使用して行います。
 
-To reroute users to a specific slot using `x-ms-routing-name`, you must make sure that the slot is already added to the Traffic Routing list. Since you want to route to a slot explicitly, the actual routing percentage you set doesn't matter. If you want, you can craft a "beta link" that users can click to access the beta app.
+`x-ms-routing-name` を使って特定のスロットにユーザーをリダイレクトするには、そのスロットが、トラフィック ルーティング リストに追加済みであることを確認する必要があります。特定のスロットに対して明示的にルーティングすることが目的であるため、ルーティングの実質的なパーセンテージ設定は重要ではありません。必要であれば、"ベータ版へのリンク" を作成し、それをユーザーがクリックしてベータ版アプリにアクセスできるようにしてください。
 
 ![](./media/app-service-web-test-in-production/06-enable-x-ms-routing-name.png)
 
-### <a name="opt-users-out-of-beta-app"></a>Opt users out of beta app
+### ベータ版アプリへの参加をユーザーが拒否できるようにする
 
-To let users opt out of your beta app, for example, you can put this link in your web page:
+ベータ版アプリへの参加をユーザーが拒否できるようにする方法としては、たとえば以下のようなリンクを Web ページに設置することが考えられます。
 
     <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 
-The string `x-ms-routing-name=self` specifies the production slot. Once the client browser access the link, not only is it redirected to the production slot, but every subsequent request will contain the `x-ms-routing-name=self` cookie that pins the session to the production slot.
+文字列 `x-ms-routing-name=self` に指定されているのは運用スロットです。このリンクにアクセスしたクライアント ブラウザーは運用スロットにリダイレクトされます。加えて、それ以降の要求には、セッションを運用スロットに固定する `x-ms-routing-name=self` Cookie が格納されます。
 
 ![](./media/app-service-web-test-in-production/05-access-production-slot.png)
 
-### <a name="opt-users-in-to-beta-app"></a>Opt users in to beta app
+### ベータ版アプリへの参加をユーザーが許可できるようにする
 
-To let users opt in to your beta app, set the same query parameter to the name of the non-production slot, for example:
+ベータ版アプリへの参加をユーザーが許可できるようにするには、同じクエリ パラメーターに、非運用スロットの名前を設定します。以下に示したのはその例です。
 
-        <webappname>.azurewebsites.net/?x-ms-routing-name=staging
+		<webappname>.azurewebsites.net/?x-ms-routing-name=staging
 
-## <a name="more-resources"></a>More resources ##
+## その他のリソース ##
 
--   [Set up staging environments for web apps in Azure App Service](web-sites-staged-publishing.md)
--   [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md)
--   [Agile software development with Azure App Service](app-service-agile-software-development.md)
--   [Use DevOps environments effectively for your web apps](app-service-web-staged-publishing-realworld-scenarios.md)
+-   [Azure App Service の Web アプリのステージング環境を設定する](web-sites-staged-publishing.md)
+-	[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
+-   [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
+-	[Web アプリに対して DevOps 環境を効果的に使用する](app-service-web-staged-publishing-realworld-scenarios.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,43 +1,38 @@
 <properties
-    pageTitle="Azure AD SAML Protocol Reference | Microsoft Azure"
-    description="This article provides an overview of the Single Sign-On and Single Sign-Out SAML profiles in Azure Active Directory."
-    services="active-directory"
-    documentationCenter=".net"
-    authors="priyamohanram"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure AD SAML のプロトコル リファレンス | Microsoft Azure"
+	description="この記事では、Azure Active Directory のシングル サインオンおよびシングル サインアウト SAML プロファイルの概要を示します。"
+	services="active-directory"
+	documentationCenter=".net"
+	authors="priyamohanram"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/23/2016"
-    ms.author="priyamo"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/23/2016"
+	ms.author="priyamo"/>
 
 
+# Azure Active Directory での SAML プロトコルの使用方法
 
-# <a name="how-azure-active-directory-uses-the-saml-protocol"></a>How Azure Active Directory uses the SAML protocol
+Azure Active Directory (Azure AD) は SAML 2.0 プロトコルを使用して、アプリケーションでユーザーにシングル サインオン エクスペリエンスを提供できるようにします。Azure AD の[シングル サインオン](active-directory-single-sign-on-protocol-reference.md)と[シングル サインアウト](active-directory-single-sign-out-protocol-reference.md) SAML プロファイルには、ID プロバイダー サービスでの SAML アサーション、プロトコルおよびバインドの使用方法について説明されています。
 
-Azure Active Directory (Azure AD) uses the SAML 2.0 protocol to enable applications to provide a single sign-on experience to their users. The [Single Sign-On](active-directory-single-sign-on-protocol-reference.md) and [Single Sign-Out](active-directory-single-sign-out-protocol-reference.md) SAML profiles of Azure AD explain how SAML assertions, protocols and bindings are used in the identity provider service.
+SAML プロトコルで、ID プロバイダー (Azure AD) とサービス プロバイダー (アプリケーション) に関する情報を交換する必要があります。
 
-SAML Protocol requires the identity provider (Azure AD) and the service provider (the application) to exchange information about themselves.
+アプリケーションが Azure AD に登録されると、アプリ開発者は Azure AD にフェデレーションに関する情報を登録します。これには、アプリケーションの**リダイレクト URI** と**メタデータ URI** が含まれます。
 
-When an application is registered with Azure AD, the app developer registers federation-related information with Azure AD. This includes the **Redirect URI** and **Metadata URI** of the application.
+Azure AD ではクラウド サービスの**メタデータ URI** を使用して、クラウド サービスの署名キーとログアウト URI を取得します。アプリケーションでメタデータ URI がサポートされていない場合、開発者は Microsoft サポートに連絡してログアウト URI と署名キーを提供する必要があります。
 
-Azure AD uses the **Metadata URI** of the cloud service to retrieve the signing key and the logout URI of the cloud service. If the application does not support a metadata URI, the developer must contact Microsoft support to provide the logout URI and signing key.
+Azure Active Directory は、テナント固有および共通 (テナント独立) のシングル サインオンとシングル サインアウト エンドポイントを公開します。これらの URL は、単なる ID ではなくアドレス指定可能な場所を表します。したがって、ユーザーはエンドポイントに移動してメタデータを読み取ることができます。
 
-Azure Active Directory exposes tenant-specific and common (tenant-independent) single sign-on and single sign-out endpoints. These URLs represent addressable locations -- they are not just an identifiers -- so you can go to the endpoint to read the metadata.
+ - テナント固有のエンドポイントは、`https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` にあります。<TenantDomainName> プレースホルダーは、Azure AD テナントの登録済みドメイン名または TenantID GUID を表します。たとえば、contoso.com テナントのフェデレーション メタデータは、https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml にあります。
 
- - The Tenant-specific endpoint is located at `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml`.  The <TenantDomainName> placeholder represents a registered domain name or TenantID GUID of an Azure AD tenant. For example, the federation metadata of the contoso.com tenant is at: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+- テナント独立のエンドポイントは `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` にあります。このエンドポイント アドレスの **common** は、テナントのドメイン名または ID の代わりに表示されます。
 
-- The Tenant-independent endpoint is located at `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml`.In this endpoint address, **common** appears, instead of a tenant domain name or ID.
+Azure AD で発行されるフェデレーション メタデータ ドキュメントについては、「[フェデレーション メタデータ](active-directory-federation-metadata.md)」を参照してください。
 
-For information about the Federation Metadata documents that Azure AD publishes, see [Federation Metadata](active-directory-federation-metadata.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

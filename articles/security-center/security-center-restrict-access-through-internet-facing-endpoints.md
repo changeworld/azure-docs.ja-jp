@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Restrict access through Internet-facing endpoints in Azure Security Center  | Microsoft Azure"
-   description="This document shows you how to implement the Azure Security Center recommendation **Restrict access through Internet facing endpoint**."
+   pageTitle="Azure Security Center でのインターネットに接続するエンドポイント経由のアクセスの制限 | Microsoft Azure"
+   description="このドキュメントでは、";インターネットに接続するエンドポイント経由のアクセスの制限"; という Azure Security Center の推奨事項を実装する方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,52 +16,47 @@
    ms.date="07/26/2016"
    ms.author="terrylan"/>
 
+# Azure Security Center でのインターネットに接続するエンドポイント経由のアクセスの制限
 
-# <a name="restrict-access-through-internet-facing-endpoints-in-azure-security-center"></a>Restrict access through Internet-facing endpoints in Azure Security Center
+Azure Security Center では、ネットワーク セキュリティ グループ (NSG) のいずれかに、"あらゆる" 発信元 IP アドレスからのアクセスを許可する 1 つ以上の受信規則が含まれている場合に、インターネットに接続するエンドポイント経由のアクセスを制限するよう推奨します。"あらゆる" 発信元に対してアクセスを解放すると、攻撃者がリソースにアクセスできるようになる可能性があります。Security Center では、これらの受信規則を編集して、実際にアクセスを必要とする発信元 IP アドレスにアクセスを制限するよう推奨します。
 
-Azure Security Center will recommend that you restrict access through Internet-facing endpoints if any of your Network Security Groups (NSGs) has one or more inbound rules that allow access from “any” source IP address. Opening access to “any” may enable attackers to access your resources. Security Center will recommend that you edit these inbound rules to restrict access to source IP addresses that actually need access.
+この推奨事項は、ソースとして "任意" が指定された Web 以外のすべてのポートに対して生成されます。
 
-This recommendation is generated for any non-web port that has "any" as source.
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
-> [AZURE.NOTE] This document introduces the service by using an example deployment. This is not a step-by-step guide.
+## 推奨事項の実装
 
-## <a name="implement-the-recommendation"></a>Implement the recommendation
+1. **[推奨事項]** ブレードで、**[Restrict access through Internet facing endpoint (インターネットに接続するエンドポイント経由のアクセスの制限)]** を選択します。![インターネットに接続するエンドポイント経由のアクセスの制限][1]
 
-1. In the **Recommendations blade**, select **Restrict access through Internet facing endpoint**.
-![Restrict access through Internet facing endpoint][1]
+2. **[Restrict access through Internet facing endpoint (インターネットに接続するエンドポイント経由のアクセスの制限)]** ブレードが開きます。このブレードには、セキュリティの問題が発生する可能性のある受信規則が適用された仮想マシン (VM) の一覧が表示されます。VM を選択します。![Select a VM][2]
 
-2. This opens the blade **Restrict access through Internet facing endpoint**. This blade lists the virtual machines (VMs) with inbound rules that create a potential security issue. Select a VM.
-![Select a VM][2]
+3. **[NSG]** ブレードに、ネットワーク セキュリティ グループの情報、関連する受信規則、関連する VM が表示されます。**[受信の規則を編集する]** を選択して、受信規則の編集に進みます。![ネットワーク セキュリティ グループ ブレード][3]
 
-3. The **NSG** blade displays Network Security Group information, related inbound rules, and the associated VM. Select **Edit inbound rules** to proceed with editing an inbound rule.
-![Network Security Group blade][3]
+4. **[受信セキュリティ規則]** ブレードで編集する受信規則を選択します。この例では、**[AllowWeb]** を選択します。![受信セキュリティ規則][4]
 
-4. On the **Inbound security rules** blade select the inbound rule to edit. In this example, let’s select **AllowWeb**.
-![Inbound security rules][4]
+  **[既定の規則]** を選択して、すべての NSG に含まれる既定の規則のセットを確認することもできます。既定の規則は削除できませんが、割り当てられている優先順位が低いため、作成した規則を優先させることができます。既定の規則の詳細については、[こちら](../virtual-network/ virtual-networks-nsg.md#default-rules)をご覧ください。
+![既定のルール][5]
 
-  Note, you can also select **Default rules** to see the set of default rules contained by all NSGs. The default rules cannot be deleted but, because they are assigned a lower priority, they can be overridden by the rules that you create. Learn more about [default rules](../virtual-network/ virtual-networks-nsg.md#default-rules).
-![Default rules][5]
+5. **[AllowWeb]** ブレードで、受信規則のプロパティを編集して、**[ソース]** を IP アドレスまたは IP アドレスのブロックにします。受信規則のプロパティの詳細については、「[NSG ルール](../virtual-network/virtual-networks-nsg.md#nsg-rules)」をご覧ください。
 
-5. On the **AllowWeb** blade, edit the properties of the inbound rule so that the **Source** is an IP address or block of IP addresses. To learn more about the properties of the inbound rule, see [NSG rules](../virtual-network/virtual-networks-nsg.md#nsg-rules).
+  ![受信規則の編集][6]
 
-  ![Edit inbound rule][6]
+## 関連項目
 
-## <a name="see-also"></a>See also
+この記事では、"インターネットに接続するエンドポイント経由のアクセスの制限" という Security Center の推奨事項を実装する方法について説明しました。 NSG と規則の有効化の詳細については、次の記事をご覧ください。
 
-This article showed you how to implement the Security Center recommendation "Restrict access through Internet facing endpoint.” To learn more about enabling NSGs and rules, see the following:
+- [ネットワーク セキュリティ グループ (NSG) について](../virtual-network/virtual-networks-nsg.md)
+- [Azure ポータルを使用して NSG を管理する方法](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 
-- [What is a Network Security Group (NSG)?](../virtual-network/virtual-networks-nsg.md)
-- [How to manage NSGs using the Azure portal](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+セキュリティ センターの詳細については、次を参照してください。
 
-To learn more about Security Center, see the following:
-
-- [Setting security policies in Azure Security Center](security-center-policies.md)--Learn how to configure security policies for your Azure subscriptions and resource groups.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md)--Learn how recommendations help you protect your Azure resources.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md)--Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)--Learn how to manage and respond to security alerts.
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
-- [Azure Security Center FAQ](security-center-faq.md)--Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/)--Get the latest Azure security news and information.
+- [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明しています。
+- [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) -- セキュリティ警告の管理と対応の方法について説明しています。
+- [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- [Azure Security Center に関する FAQ](security-center-faq.md) -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/restrict-access-thru-internet-facing-endpoint.png
@@ -71,8 +66,4 @@ To learn more about Security Center, see the following:
 [5]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/default-rules.png
 [6]: ./media/security-center-restrict-access-thru-internet-facing-endpoint/edit-inbound-rule.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

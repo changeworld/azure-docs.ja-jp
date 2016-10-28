@@ -1,78 +1,75 @@
 <properties 
-    pageTitle="Use SSH on Windows to connect to Linux virtual machines | Microsoft Azure" 
-description="Learn how to generate and use SSH keys on a Windows computer to connect to a Linux virtual machine on Azure." 
-    services="virtual-machines-linux" 
-    documentationCenter="" 
-    authors="squillace" 
-    manager="timlt" 
-    editor=""
-    tags="azure-service-management,azure-resource-manager" />
+	pageTitle="Windows 上での SSH を使用した Linux 仮想マシンへの接続 | Microsoft Azure" 
+description="Windows コンピューターで SSH キーを生成して使用し、Azure 上の Linux 仮想マシンに接続する方法について説明します。" 
+	services="virtual-machines-linux" 
+	documentationCenter="" 
+	authors="squillace" 
+	manager="timlt" 
+	editor=""
+	tags="azure-service-management,azure-resource-manager" />
 
 <tags 
-    ms.service="virtual-machines-linux" 
-    ms.workload="infrastructure-services" 
-    ms.tgt_pltfrm="vm-linux" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/29/2016" 
-    ms.author="rasquill"/>
+	ms.service="virtual-machines-linux" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/29/2016" 
+	ms.author="rasquill"/>
 
-
-#<a name="how-to-use-ssh-with-windows-on-azure"></a>How to Use SSH with Windows on Azure
+#Azure 上の Windows における SSH の使用方法
 
 > [AZURE.SELECTOR]
 - [Windows](virtual-machines-linux-ssh-from-windows.md)
-- [Linux/Mac](virtual-machines-linux-mac-create-ssh-keys.md)
+- [Linux と Mac](virtual-machines-linux-mac-create-ssh-keys.md)
 
 
-This topic describes how to create and use **ssh-rsa** and **.pem** format public and private key files on Windows that you can use to connect to your Linux VMs on Azure with the **ssh** command. If you already have **.pem** files created, you can use those to create Linux VMs to which you can connect using **ssh**. Several other commands use the **SSH** protocol and key files to perform work securely, notably **scp** or [Secure Copy](https://en.wikipedia.org/wiki/Secure_copy), which can securely copy files to and from computers that support **SSH** connections. 
+このトピックでは、**ssh** コマンドを使用して Azure 上の Linux VM に接続するために使用できる、**ssh-rsa** 形式と **.pem** 形式の公開キー ファイルおよび秘密キー ファイルを Windows 上で作成して使用する方法について説明します。**.pem** フィルが既に作成されている場合は、これらのファイルを使用して、**ssh** を使って接続できる Linux VM を作成することができます。他のいくつかのコマンドでは、**SSH** プロトコルおよびキー ファイルを使用して、作業を安全に実行することができます。特に **scp** ([Secure Copy](https://en.wikipedia.org/wiki/Secure_copy)) では、**SSH** 接続をサポートするコンピューターとの間でファイルを安全にコピーできます。
 
-> [AZURE.NOTE] If you have a few moments, please help us to improve the Azure Linux VM documentation by taking this [quick survey](https://aka.ms/linuxdocsurvey) of your experiences. Every answer helps us help you get your work done.
+> [AZURE.NOTE] お時間がございましたら、Azure Linux VM ドキュメントの向上のため、こちらの[アンケート](https://aka.ms/linuxdocsurvey)にご回答ください。いただいた回答は、今後のドキュメントの改善に活用させていただきます。
 
-## <a name="what-ssh-and-key-creation-programs-do-you-need?"></a>What SSH and key-creation programs do you need?
+## 必要な SSH およびキー作成プログラム
 
-**SSH** &#8212; or [secure shell](https://en.wikipedia.org/wiki/Secure_Shell) &#8212; is an encrypted connection protocol that allows secure logins over unsecured connections. It is the default connection protocol for Linux VMs hosted in Azure unless you configure your Linux VMs to enable some other connection mechanism. Windows users can also connect to and manage Linux VMs in Azure using an **ssh** client implementation, but Windows computers do not typically come with an **ssh** client, so you will need to choose one. 
+**SSH** &#8212; ([secure shell](https://en.wikipedia.org/wiki/Secure_Shell) &#8212;) は、セキュリティで保護されていない接続においてセキュリティで保護されたログインを有効にする、暗号化された接続プロトコルです。これは、他の何らかの接続メカニズムを有効にするように Linux VM を構成しない限り、Azure でホストされる Linux VM の既定の接続プロトコルとなります。Windows ユーザーも、**ssh** クライアント実装を使用して Azure で Linux VM に接続して管理することができます。ただし、通常、Windows コンピューターには **ssh** クライアントが含まれないため、クライアントを選択する必要があります。
 
-Common clients you can install include:
+インストールできる一般的なクライアントは次のとおりです。
 
-- [puTTY and puTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+- [puTTY と puTTYgen](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
 - [MobaXterm](http://mobaxterm.mobatek.net/)
 - [Cygwin](https://cygwin.com/)
-- [Git For Windows](https://git-for-windows.github.io/), which comes with the environment and tools
+- [Git For Windows](https://git-for-windows.github.io/) (環境とツールに含まれる)
 
-If you're feeling especially geeky, you can also try out the [new port of the **OpenSSH** toolset to Windows](http://blogs.msdn.com/b/powershell/archive/2015/10/19/openssh-for-windows-update.aspx). Be aware, however, that this is code that is currently in development, and you should review the codebase before you use it for production systems.
+高度な設定を行う場合は、[Windows への **OpenSSH** ツールセットの新しいポート](http://blogs.msdn.com/b/powershell/archive/2015/10/19/openssh-for-windows-update.aspx)を試してみることもできます。ただし、このコードは現在開発途中であり、運用システムで使用する前にコードベースを確認する必要があります。
 
 > [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="which-key-files-do-you-need-to-create?"></a>Which key files do you need to create?
+## 作成する必要があるキー ファイル
 
-A basic SSH setup for Azure includes an **ssh-rsa** public and private key pair of 2048 bits (by default, **ssh-keygen** stores these files as **~/.ssh/id_rsa** and **~/.ssh/id-rsa.pub** unless you change the defaults) as well as a `.pem` file generated from the **id_rsa** private key file for use with the classic deployment model of the classic portal. 
+Azure の基本的な SSH 設定には、**ssh-rsa** の 2048 ビットの公開キー/秘密キーのペア (既定値を変更しない限り、**ssh-keygen** にはこれらのファイルが **~/.ssh/id\_rsa** および **~/.ssh/id-rsa.pub** として保存されます) と、クラシック ポータルのクラシック デプロイメント モデルで使用するために **id\_rsa** 秘密キー ファイルから生成された `.pem` ファイルが含まれます。
 
-Here are the deployment scenarios, and the types of files you use in each:
+次にデプロイメント シナリオとそれぞれのシナリオで使用されるファイルの種類を紹介します。
 
-1. **ssh-rsa** keys are required for any deployment using the [Azure portal](https://portal.azure.com), regardless of the deployment model.
-2. .pem file are required to create VMs using the [classic portal](https://manage.windowsazure.com). .pem files are also supported in classic deployments that use the [Azure CLI](../xplat-cli-install.md).
+1. **ssh-rsa** キーは、デプロイメント モデルに関係なく、[Azure ポータル](https://portal.azure.com)を使用したどのデプロイでも必須です。
+2. .pem ファイルは[従来のポータル](https://manage.windowsazure.com)で VM を作成する際に必須です。.pem ファイルは、[Azure CLI](../xplat-cli-install.md) を使用する従来のデプロイメントでもサポートされます。
 
-> [AZURE.NOTE] If you plan to manage service deployed with the classic deployment model, you may also want to create a **.cer** format file to upload to the portal -- although this doesn't involve **ssh** or connecting to Linux VMS, which is the subject of this article. To create those files on Windows, type:
-<br />
-openssl.exe x509 -outform der -in myCert.pem -out myCert.cer
+> [AZURE.NOTE] クラシック デプロイメント モデルでデプロイされたサービスを管理する場合、**.cer** 形式のファイルを作成してポータルにアップロードすることもできます。ただし、その場合、この記事のテーマである **ssh** も Linux VM への接続も使用しません。Windows でこれらのファイルを作成するには、「<br /> openssl.exe x509 -outform der -in myCert.pem -out myCert.cer」と入力します。
 
-## <a name="get-ssh-keygen-and-openssl-on-windows"></a>Get ssh-keygen and openssl on Windows ##
+## Windows 上で ssh-keygen および openssl を入手する ##
 
-[This section](#What-SSH-and-key-creation-programs-do-you-need) above listed several utilities that include an `ssh-keygen` and `openssl` for Windows. A couple of examples are listed below:
+上記の[セクション](#What-SSH-and-key-creation-programs-do-you-need)では、Windows 用の `ssh-keygen` や `openssl` を含むいくつかのユーティリティを紹介しました。いくつかの例を以下に示します。
 
-###<a name="use-git-for-windows###"></a>Use Git for Windows###
+###Git for Windows を使用する###
 
-1.  Download and install Git for Windows from the following location: [https://git-for-windows.github.io/](https://git-for-windows.github.io/)
-2.  Run Git Bash from the Start Menu > All Apps > Git Shell
+1.	[https://git-for-windows.github.io/](https://git-for-windows.github.io/) から Git for Windows をダウンロードしてインストールします。
+2.	[スタート] メニューをクリックし、[すべてのプログラム]、[Git Shell] の順にクリックして、Git Bash を実行します。
 
-> [AZURE.NOTE] You may encounter the following error when running the `openssl` commands above:
+> [AZURE.NOTE] 上記の `openssl` コマンドを実行すると、次のエラーが発生することがあります。
 
         Unable to load config info from /usr/local/ssl/openssl.cnf
 
-The easiest way to resolve this is to set the `OPENSSL_CONF` environment variable. The process for setting this variable will vary depending on the shell that you have configured in Github:
+この問題を最も簡単に解決する方法として、`OPENSSL_CONF` 環境変数を設定します。この変数を設定するプロセスは、Github で構成されているシェルによって異なります。
 
-**Powershell:**
+**PowerShell**
 
         $Env:OPENSSL_CONF="$Env:GITHUB_GIT\ssl\openssl.cnf"
 
@@ -83,23 +80,23 @@ The easiest way to resolve this is to set the `OPENSSL_CONF` environment variabl
 **Git Bash:**
 
         export OPENSSL_CONF=$GITHUB_GIT/ssl/openssl.cnf
-    
+	
 
-###<a name="use-cygwin###"></a>Use Cygwin###
+###Cygwin を使用する###
 
-1.  Download and install Cygwin from the following location: [http://cygwin.com/](http://cygwin.com/)
-2.  Ensure that the OpenSSL package and all of its dependencies are installed.
-3.  Run `cygwin`
+1.	次の場所から Cygwin をダウンロードしてインストールします: [http://cygwin.com/](http://cygwin.com/)
+2.	OpenSSL パッケージとその依存パッケージがすべてインストールされていることを確認します。
+3.	`cygwin` を実行します。
 
-## <a name="create-a-private-key##"></a>Create a Private Key##
+## 秘密キーを作成する##
 
-1.  Follow one of the set of instructions above to be able to run `openssl.exe`
-2.  Type in the following command:
+1.	前の手順のどれかを実行して、`openssl.exe` を実行できるようにします。
+2.	次のコマンドを入力します。
 
   ```
   openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
   ```
-3.  Your screen should look like the following:
+3.	画面は次のようになります。
 
   ```
   $ openssl.exe req -x509 -nodes -days 365 -newkey rsa:2048 -keyout myPrivateKey.key -out myCert.pem
@@ -118,61 +115,57 @@ The easiest way to resolve this is to set the `OPENSSL_CONF` environment variabl
   Country Name (2 letter code) [AU]:
   ```
 
-4.  Answer the questions that are asked.
-5.  It would have created two files: `myPrivateKey.key` and `myCert.pem`.
-6.  If you are going to use the API directly, and not use the Management Portal, convert the `myCert.pem` to `myCert.cer` (DER encoded X509 certificate) using the following command:
+4.	画面に表示されるメッセージに従って、設定します。
+5.	`myPrivateKey.key` および `myCert.pem` の 2 ファイルが作成されます。
+6.	API を直接使用し、管理ポータルを使用しない場合は、次のコマンドを使用して `myCert.pem` を `myCert.cer` (DER エンコードされた X509 証明書) に変換します。
 
   ```
   openssl.exe  x509 -outform der -in myCert.pem -out myCert.cer
   ```
 
-## <a name="create-a-ppk-for-putty"></a>Create a PPK for Putty ##
+## Putty 用の PPK を作成する ##
 
-1. Download and install Puttygen from the following location: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. 次の場所から puttygen をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
-2. Puttygen may not be able to read the private key that was created earlier (`myPrivateKey.key`). Run the following command to translate it into an RSA private key that Puttygen can understand:
+2. Puttygen は、以前作成された秘密キー (`myPrivateKey.key`) を読み取ることができない可能性があります。それを Puttygen で認識できる RSA 秘密キーに変換するには、次のコマンドを使用してください。
 
-        # openssl rsa -in ./myPrivateKey.key -out myPrivateKey_rsa
-        # chmod 600 ./myPrivateKey_rsa
+		# openssl rsa -in ./myPrivateKey.key -out myPrivateKey_rsa
+		# chmod 600 ./myPrivateKey_rsa
 
-    The command above should produce a new private key called myPrivateKey_rsa.
+	このコマンドにより、myPrivateKey\_rsa という秘密キーが新たに生成されます。
 
-3. Run `puttygen.exe`
+3. `puttygen.exe` を実行します。
 
-4. Click the menu: File > Load a Private Key
+4. [File] の [Load a Private Key] をクリックします。
 
-5. Find your private key, which we named `myPrivateKey_rsa` above. You will need to change the file filter to show **All Files (\*.\*)**
+5. 先ほど生成した `myPrivateKey_rsa` という名前の秘密キー ファイルを見つけます。ファイル フィルターを **[All Files (*.*)]** に変更する必要があります。
 
-6. Click **Open**. You will receive a prompt which should look like this:
+6. **[開く]** をクリックします。次のような画面が表示されます。
 
-    ![linuxgoodforeignkey](./media/virtual-machines-linux-ssh-from-windows/linuxgoodforeignkey.png)
+	![linuxgoodforeignkey](./media/virtual-machines-linux-ssh-from-windows/linuxgoodforeignkey.png)
 
-7. Click **OK**
+7. **[OK]** をクリックします。
 
-8. Click **Save Private Key**, which is highlighted in the screenshot below:
+8. 次の図でハイライト表示されている **[Save Private Key]** をクリックします。
 
-    ![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtygenprivatekey.png)
+	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtygenprivatekey.png)
 
-9. Save the file as a PPK
+9. ファイルを PPK として保存します。
 
 
-## <a name="use-putty-to-connect-to-a-linux-machine"></a>Use Putty to Connect to a Linux Machine ##
+## Putty を使用して Linux 仮想マシンに接続する ##
 
-1.  Download and install putty from the following location: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-2.  Run putty.exe
-3.  Fill in the host name using the IP from the Management Portal:
+1.	次の場所から putty をダウンロードしてインストールします: [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+2.	putty.exe を実行します。
+3.	ホスト名として、管理ポータルの IP を入力します。
 
-    ![linuxputtyconfig](./media/virtual-machines-linux-ssh-from-windows/linuxputtyconfig.png)
+	![linuxputtyconfig](./media/virtual-machines-linux-ssh-from-windows/linuxputtyconfig.png)
 
-4.  Before selecting **Open**, click the Connection > SSH > Auth tab to choose your private key. See the screenshot below for the field to fill in:
+4.	**[Open]** をクリックする前に、[Connection]、[SSH]、[Auth] タブの順にクリックして、使用するプライベート キーを選択します。入力するフィールドについては、下図を参照してください。
 
-    ![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtyprivatekey.png)
+	![linuxputtyprivatekey](./media/virtual-machines-linux-ssh-from-windows/linuxputtyprivatekey.png)
 
-5.  Click **Open** to connect to your virtual machine
+5.	**[Open]** をクリックして、仮想マシンに接続します。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

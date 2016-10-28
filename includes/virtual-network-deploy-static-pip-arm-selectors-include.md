@@ -4,7 +4,4 @@
 [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
 [Template](virtual-network-deploy-static-pip-arm-template.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0114_2016-->

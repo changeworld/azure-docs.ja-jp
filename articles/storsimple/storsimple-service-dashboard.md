@@ -1,6 +1,6 @@
 <properties
-   pageTitle="StorSimple Manager service dashboard | Microsoft Azure"
-   description="Describes the StorSimple Manager service dashboard and explains how to use it to monitor the health of your StorSimple solution."
+   pageTitle="StorSimple Manager サービスのダッシュボード | Microsoft Azure"
+   description="StorSimple Manager サービス ダッシュボードについて説明すると共に、サービス ダッシュボードを使用して StorSimple ソリューションの状態を監視する方法を説明します。"
    services="storsimple"
    documentationCenter=""
    authors="SharS"
@@ -15,70 +15,65 @@
    ms.date="05/24/2016"
    ms.author="v-sharos" />
 
+# StorSimple Manager サービスのダッシュボードを使用する
 
-# <a name="use-the-storsimple-manager-service-dashboard"></a>Use the StorSimple Manager service dashboard
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Manager サービスのダッシュボード ページには、StorSimple Manager サービスに接続されているすべてのデバイスの概要が表示されます。システム管理者が注意を必要とする内容は、強調表示されます。このチュートリアルでは、ダッシュボード ページを紹介してから、ダッシュボードの内容と機能について、さらに、このページで実行できるタスクについて説明します。
 
-The StorSimple Manager service dashboard page provides a summary view of all the devices that are connected to the StorSimple Manager service, highlighting those that need a system administrator's attention. This tutorial introduces the dashboard page, explains the dashboard content and function, and describes the tasks that you can perform from this page.
+![サービスのダッシュボード](./media/storsimple-service-dashboard/HCS_ServiceDashboard.png)
 
-![Service dashboard](./media/storsimple-service-dashboard/HCS_ServiceDashboard.png)
+StorSimple Manager サービスのダッシュボードには、次の情報が表示されます。
 
-The StorSimple Manager service dashboard displays the following information:
+- **グラフ**の領域には、デバイスに関連するメトリック グラフが表示されます。ここでは、すべてのデバイスで使用されるプライマリ ストレージ (ローカル固定ストレージと階層化ストレージ) と、一定期間デバイスで使用されるクラウド ストレージを確認できます。グラフの右上隅にあるコントロールを使用して、1 週間、1 か月、3 か月、または 1 年間のタイム スケールを指定できます。
 
-- In the **chart** area, you can see the relevant metrics chart for your devices. You can view the primary storage (locally pinned and tiered) used across all the devices, as well as the cloud storage consumed by devices over a period of time. Use the controls in the top-right corner of the chart to specify a 1-week, 1-month, 3-month, or 1-year time scale.
+- **[使用状況の概要]** では、すべてのデバイスで使用可能な合計ストレージに対して、プロビジョニングされているプライマリ ストレージ、およびすべてのデバイスで使用されているプライマリ ストレージの割合を示します。**[プロビジョニング済み]** は、使用のための準備および割り当てが完了しているストレージ容量を示し、**[使用済み]** は、デバイスに接続されているイニシエーターで確認された、ボリュームの使用状況を示します。
 
-- The **usage overview** shows the primary storage that is provisioned and consumed by all devices relative to the total storage available across all devices. **Provisioned** refers to the amount of storage that is prepared and allocated for use, while **Used** refers to usage of volumes as viewed by the initiators that are connected to the devices.
+- **[アラート]** 領域には、すべてのデバイスでアクティブになっているアラートを重大度別に分類したスナップショットが表示されます。重大度レベルをクリックすると、**[アラート]** ページが開き、該当する重大度レベルのアラートが表示対象となります。**[アラート]** ページでは、個々のアラートをクリックすることで、それぞれのアラートに関する詳細情報 (推奨される対応など) を確認できます。問題が解決した場合は、アラートをクリアすることもできます。
 
-- The **alerts** area provides a snapshot of all the active alerts across all the devices, grouped by alert severity. Clicking the severity level opens the **Alerts** page, scoped to show those alerts. On the **Alerts** page, you can click an individual alert to view additional details about that alert, including any recommended actions. You can also clear the alert if the issue has been resolved.
+- **[ジョブ]** 領域には、サービスに接続されているすべてのデバイスにおいて最近行われたジョブのスナップショットが表示されます。ジョブ確認用のリンクとして、現在進行中のジョブ、過去 24 時間に失敗したジョブ、または次の 24 時間で実行するようにスケジュールされているジョブを確認できるリンクがあります。
 
-- The **jobs** area provides a snapshot of recent jobs across all devices that are connected to your service. There are links that you can use to look at jobs that are currently in progress, those that failed in the last 24 hours, or those that are scheduled to run in the next 24 hours.
+- **[概要]** 領域には、サービスの状態、サービスに接続されているデバイスの数、サービスの場所、サービスに関連付けられているサブスクリプションの詳細など、役に立つ情報が表示されます。操作ログへのリンクもあります。このリンクをクリックすると、完了したすべての StorSimple Manager サービス操作が一覧表示されます。
 
-- The **quick glance** area provides useful information such as service status, number of devices connected to the service, location of the service, and details of the subscription that is associated with the service. There is also a link to the operations log. Click the link to see a list of all completed StorSimple Manager service operations.
+StorSimple Manager サービスのダッシュボード ページを使用して、次のタスクを実行できます。
 
-You can use the StorSimple Manager service dashboard page to initiate the following tasks:
+- サービス登録キーの表示または再生成
+- サービス データ暗号化キーの変更
+- 操作ログの表示
 
-- View or regenerate the service registration key.
-- Change the service data encryption key.
-- View the operation logs.
+## サービス登録キーの表示または再生成
 
-## <a name="view-or-regenerate-the-service-registration-key"></a>View or regenerate the service registration key
+サービス登録キーを使用して、Microsoft Azure StorSimple デバイスを StorSimple Manager サービスに登録します。これにより、Azure クラシック ポータルにデバイスが表示され、管理操作の対象となります。キーは最初のデバイスで作成され、残りのすべてのデバイスと共有されます。
 
-The service registration key is used to register a Microsoft Azure StorSimple device with the StorSimple Manager service, so that the device appears in the Azure classic portal for further management actions. The key is created on the first device and shared with the rest of your devices.
+**[登録キー]** (ページの下部にある) をクリックすると、**[サービス登録キー]** ダイアログ ボックスが表示されます。ここでは、現在のサービス登録キーをクリップボードにコピーすることも、サービス登録キーを再生成することもできます。
 
-Clicking **Registration Key** (at the bottom of the page) opens the **Service Registration Key** dialog box, where you can either copy the current service registration key to the clipboard or regenerate the service registration key.
+キーを再生成しても、以前に登録したデバイスには影響ありません。キーを再生成した後でサービスに登録されたデバイスのみが影響を受けます。
 
-Regenerating the key does not affect previously registered devices: it affects only the devices that are registered with the service after the key is regenerated.
+サービス登録キーの表示と再生成に関する詳細は、「[サービス登録キーを取得する](storsimple-manage-service.md#get-the-service-registration-key)」をご覧ください。
 
-For more information about viewing and generating the service registration key, go to [Get the service registration key](storsimple-manage-service.md#get-the-service-registration-key).
+## サービス データ暗号化キーの変更
 
-## <a name="change-the-service-data-encryption-key"></a>Change the service data encryption key
+サービス データ暗号化キーを使用して、StorSimple Manager サービスから StorSimple デバイスに送信される、顧客の機密データ (ストレージ アカウントの資格情報など) を暗号化します。IT 組織にストレージ デバイスに関するキー ローテーション ポリシーがある場合は、これらのキーを定期的に変更する必要があります。キーの変更プロセスは、StorSimple Manager サービスが 1 つのデバイスを管理しているか、または複数のデバイスを管理しているかによって多少異なります。
 
-Service data encryption keys are used to encrypt confidential customer data, such as storage account credentials, that are sent from your StorSimple Manager service to the StorSimple device. You will need to change these keys periodically if your IT organization has a key rotation policy on the storage devices. The key change process can be slightly different depending on whether there is a single device or multiple devices managed by the StorSimple Manager service.
+サービス データ暗号化キーの変更は、次の 3 つの手順からなるプロセスです。
 
-Changing the service data encryption key is a 3-step process:
+1. Azure クラシック ポータルを使用して、サービス データ暗号化キーを変更できるようにデバイスを承認します。
+2. StorSimple 用 Windows PowerShell を使用して、サービス データ暗号化キーの変更を開始します。
+3. StorSimple デバイスを複数使用している場合は、他のすべてのデバイスでサービス データ暗号化キーを更新します。
 
-1. Using the Azure classic portal, authorize a device to change the service data encryption key.
-2. Using Windows PowerShell for StorSimple, initiate the service data encryption key change.
-3. If you have more than one StorSimple device, update the service data encryption key on the other devices.
-
-The following steps describe the rollover process for the service data encryption key.
+次の手順では、サービス データ暗号化キーのロール オーバー プロセスについて説明します。
 
 [AZURE.INCLUDE [storsimple-change-data-encryption-key](../../includes/storsimple-change-data-encryption-key.md)]
 
 
-## <a name="view-the-operations-logs"></a>View the operations logs
+## 操作ログの表示
 
-You can view the operation logs by clicking the operation logs link available in the **quick glance** pane of the dashboard. This will take you to the management services page, where you can filter and see the logs specific to your StorSimple Manager service.
+操作ログを表示するには、ダッシュ ボードの **[概要]** ウィンドウにある操作ログ リンクをクリックします。これにより、管理サービス ページが表示されます。このページでは、フィルター機能を使用して、特定の StorSimple Manager サービスに限定したログを表示することができます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [troubleshoot a StorSimple device](storsimple-troubleshoot-operational-device.md).
+- [StorSimple デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)を行う方法
 
-- Learn more about how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0525_2016-->

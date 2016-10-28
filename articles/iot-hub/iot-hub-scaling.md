@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure IoT Hub scaling | Microsoft Azure"
- description="Describes how to scale Azure IoT Hub."
+ pageTitle="Azure IoT Hub のスケーリング | Microsoft Azure"
+ description="Azure IoT Hub のスケーリングについて説明します。"
  services="iot-hub"
  documentationCenter=""
  authors="fsautomata"
@@ -16,56 +16,61 @@
  ms.date="09/19/2016"
  ms.author="elioda"/>
 
+# IoT Hub のスケーリング
 
-# <a name="scaling-iot-hub"></a>Scaling IoT Hub
+Azure IoT Hub は、100 万台のデバイスの同時接続をサポートできます。詳細については、[IoT Hub の価格][lnk-pricing]に関するページを参照してください。各 IoT Hub ユニットでは、毎日一定数のメッセージが許可されます。
 
-Azure IoT Hub can support up to a million simultaneously connected devices. For more information, see [IoT Hub pricing][lnk-pricing]. Each IoT Hub unit allows a certain number of daily messages.
+ソリューションを適切に調整するには、IoT Hub の個別の用途を考慮します。具体的には、次の操作カテゴリに対して必要なピーク スループットを検討してください。
 
-To properly scale your solution, consider your particular use of IoT Hub. In particular, consider the required peak throughput for the following categories of operations:
+* デバイスからクラウドへのメッセージ
+* クラウドからデバイスへのメッセージ
+* ID レジストリの操作
 
-* Device-to-cloud messages
-* Cloud-to-device messages
-* Identity registry operations
+このスループット情報に加え、「[IoT Hub のクォータとスロットル][]に関するページを参照して、適切にソリューションを設計してください。
 
-In addition to this throughput information, see [IoT Hub quotas and throttles][] and design your solution accordingly.
+## デバイスからクラウドおよびクラウドからデバイスへのメッセージのスループット
 
-## <a name="device-to-cloud-and-cloud-to-device-message-throughput"></a>Device-to-cloud and cloud-to-device message throughput
+IoT Hub ソリューションのサイズを設定する方法として最適なのは、ユニットごとにトラフィックを評価することです。
 
-The best way to size an IoT Hub solution is to evaluate the traffic on a per-unit basis.
+デバイスからクラウドへのメッセージは、次の持続スループット ガイドラインに従います。
 
-Device-to-cloud messages follow these sustained throughput guidelines.
-
-| Tier | Sustained throughput | Sustained send rate |
+| レベル | 持続スループット | 持続送信レート |
 | ---- | -------------------- | ------------------- |
-| S1 | Up to 1111 KB/minute per unit<br/>(1.5 GB/day/unit) | Average of 278 messages/minute per unit<br/>(400,000 messages/day per unit) |
-| S2 | Up to 16 MB/minute per unit<br/>(22.8 GB/day/unit) | Average of 4167 messages/minute per unit<br/>(6 million messages/day per unit) |
-| S3 | Up to 814 MB/minute per unit<br/>(1144.4 GB/day/unit) | Average of 208,333 messages/minute per unit<br/>(300 million messages/day per unit) |
+| S1 | ユニットあたり最大 1111 KB/分<br/>(1.5 GB/日/ユニット) | ユニットあたり平均 278 メッセージ/分<br/>(ユニットあたり 400,000 メッセージ/日) |
+| S2 | ユニットあたり最大 16 MB/分<br/>(22.8 GB/日/ユニット) | ユニットあたり平均 4,167 メッセージ/分<br/>(ユニットあたり 600 万メッセージ/日) |
+| S3 | ユニットあたり最大 814 MB/分<br/>(1144.4 GB/日/ユニット) | ユニットあたり平均 208,333 メッセージ/分<br/>(ユニットあたり 3 億件のメッセージ/日) |
 
-## <a name="identity-registry-operation-throughput"></a>Identity registry operation throughput
+## ID レジストリ操作のスループット
 
-IoT Hub identity registry operations are not supposed to be runtime operations, as they are mostly related to device provisioning.
+IoT Hub の ID レジストリの操作は、ほとんどがデバイス プロビジョニングに関連しているため、ランタイム操作にはなりません。
 
-For specific burst performance numbers, see [IoT Hub quotas and throttles][].
+特定のバースト パフォーマンスの数値については、[IoT Hub のクォータとスロットル][]に関するページを参照してください。
 
-## <a name="sharding"></a>Sharding
+## シャーディング
 
-While a single IoT hub can scale to millions of devices, sometimes your solution requires specific performance characteristics that a single IoT hub cannot guarantee. In that case, it is recommended that you partition your devices into multiple IoT hubs. Multiple IoT hubs smooth traffic bursts and obtain the required throughput or operation rates that are required.
+1 つの IoT Hub を数百万のデバイスに拡張できますが、使用しているソリューションに、1 つの IoT Hub では保証できない特定のパフォーマンス特性が必要になる場合があります。その場合は、デバイスを複数の IoT hub にパーティション分割することをお勧めします。複数の IoT hub は、トラフィックの急増を抑え、必要なスループットまたは必要とされる操作の速度を取得します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To further explore the capabilities of IoT Hub, see:
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [Developer guide][lnk-devguide]
-- [Simulating a device with the Gateway SDK][lnk-gateway]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[IoT Hub quotas and throttles]: iot-hub-devguide-quotas-throttling.md
+[IoT Hub のクォータとスロットル]: iot-hub-devguide.md#throttling
 
+[lnk-design]: iot-hub-guidance.md
+[lnk-mqtt]: iot-hub-mqtt-support.md
+[lnk-devices]: iot-hub-tested-configurations.md
+[lnk-protocols]: iot-hub-protocol-gateway.md
+[lnk-compare]: iot-hub-compare-event-hubs.md
+[lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

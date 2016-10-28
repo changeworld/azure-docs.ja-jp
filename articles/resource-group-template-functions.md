@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager Template Functions | Microsoft Azure"
-   description="Describes the functions to use in an Azure Resource Manager template to retrieve values, work with strings and numerics, and retrieve deployment information."
+   pageTitle="リソース マネージャーのテンプレートの関数 | Microsoft Azure"
+   description="値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,18 +16,17 @@
    ms.date="09/12/2016"
    ms.author="tomfitz"/>
 
+# Azure リソース マネージャーのテンプレートの関数
 
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager template functions
+このトピックでは、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。
 
-This topic describes all the functions you can use in an Azure Resource Manager template.
+テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。評価の際、関数は、大文字/小文字を明確に変更する (toUpper、toLower など) 場合を除き、大文字/小文字を保持します。特定のリソースの種類では、関数の評価方法とは無関係に、大文字/小文字の要件が存在する場合があります。
 
-Template functions and their parameters are case-insensitive. For example, Resource Manager resolves **variables('var1')** and **VARIABLES('VAR1')** as the same. When evaluated, unless the function expressly modifies case (such as toUpper or toLower), the function preserves the case. Certain resource types may have case requirements irrespective of how functions are evaluated.
+## 数値関数
 
-## <a name="numeric-functions"></a>Numeric functions
+リソース マネージャーには、整数を操作する次の関数が用意されています。
 
-Resource Manager provides the following functions for working with integers:
-
-- [add](#add)
+- [追加](#add)
 - [copyIndex](#copyindex)
 - [div](#div)
 - [int](#int)
@@ -37,18 +36,18 @@ Resource Manager provides the following functions for working with integers:
 
 
 <a id="add" />
-### <a name="add"></a>add
+### add
 
 **add(operand1, operand2)**
 
-Returns the sum of the two provided integers.
+指定された 2 つ整数の合計を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | First integer to add.
-| operand2                           |   Yes    | Second integer to add.
+| operand1 | はい | 加算する最初の整数。
+| operand2 | はい | 加算する 2 つ目の整数。
 
-The following example adds two parameters.
+次の例では、2 つのパラメーターを加算します。
 
     "parameters": {
       "first": {
@@ -73,19 +72,19 @@ The following example adds two parameters.
     }
 
 <a id="copyindex" />
-### <a name="copyindex"></a>copyIndex
+### copyIndex
 
 **copyIndex(offset)**
 
-Returns the current index of an iteration loop. 
+反復処理のループの現在のインデックスを返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| offset                           |   No    | The amount to add to current iteration value.
+| offset | なし | 現在の反復値に追加する量。
 
-This function is always used with a **copy** object. For a complete description of how you use **copyIndex**, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
+この関数は常に **copy** オブジェクトと共に使用されます。**copyIndex** の使用方法の詳細については、「[Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 
-The following example shows a copy loop and the index value included in the name. 
+次の例では、コピー ループと、名前に含まれるインデックス値を示します。
 
     "resources": [ 
       { 
@@ -101,18 +100,18 @@ The following example shows a copy loop and the index value included in the name
 
 
 <a id="div" />
-### <a name="div"></a>div
+### div
 
 **div(operand1, operand2)**
 
-Returns the integer division of the two provided integers.
+指定された 2 つの整数の整数除算を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | Integer being divided.
-| operand2                           |   Yes    | Integer that is used to divide. Cannot be 0.
+| operand1 | はい | 除算される整数。
+| operand2 | はい | 除算に使用される整数。0 にすることはできません。
 
-The following example divides one parameter by another parameter.
+次の例では、一方のパラメーターをもう一方のパラメーターで除算します。
 
     "parameters": {
       "first": {
@@ -137,17 +136,17 @@ The following example divides one parameter by another parameter.
     }
 
 <a id="int" />
-### <a name="int"></a>int
+### int
 
 **int(valueToConvert)**
 
-Converts the specified value to Integer.
+指定された値を整数に変換します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| valueToConvert                     |   Yes    | The value to convert to Integer. The type of value can only be String or Integer.
+| valueToConvert | はい | 整数に変換する値。値の種類は文字列か整数になります。
 
-The following example converts the user-provided parameter value to Integer.
+次の例では、ユーザー指定のパラメーター値を整数に変換します。
 
     "parameters": {
         "appId": { "type": "string" }
@@ -158,18 +157,18 @@ The following example converts the user-provided parameter value to Integer.
 
 
 <a id="mod" />
-### <a name="mod"></a>mod
+### mod
 
 **mod(operand1, operand2)**
 
-Returns the remainder of the integer division using the two provided integers.
+指定された 2 つの整数を使用した整数除算の剰余を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | Integer being divided.
-| operand2                           |   Yes    | Integer that is used to divide, has to be different from 0.
+| operand1 | はい | 除算される整数。
+| operand2 | はい | 除算に使用される整数。0 以外にする必要があります。
 
-The following example returns the remainder of dividing one parameter by another parameter.
+次の例では、一方のパラメーターをもう一方のパラメーターで除算した剰余を返します。
 
     "parameters": {
       "first": {
@@ -194,18 +193,18 @@ The following example returns the remainder of dividing one parameter by another
     }
 
 <a id="mul" />
-### <a name="mul"></a>mul
+### mul
 
 **mul(operand1, operand2)**
 
-Returns the multiplication of the two provided integers.
+指定された 2 つの整数の乗算を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | First integer to multiply.
-| operand2                           |   Yes    | Second integer to multiply.
+| operand1 | はい | 乗算する最初の整数。
+| operand2 | はい | 乗算する 2 つ目の整数。
 
-The following example multiplies one parameter by another parameter.
+次の例では、一方のパラメーターをもう一方のパラメーターで乗算します。
 
     "parameters": {
       "first": {
@@ -230,18 +229,18 @@ The following example multiplies one parameter by another parameter.
     }
 
 <a id="sub" />
-### <a name="sub"></a>sub
+### sub
 
 **sub(operand1, operand2)**
 
-Returns the subtraction of the two provided integers.
+指定された 2 つの整数の減算を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| operand1                           |   Yes    | Integer that is subtracted from.
-| operand2                           |   Yes    | Integer that is subtracted.
+| operand1 | はい | 減算される整数。
+| operand2 | はい | 減算する整数。
 
-The following example subtracts one parameter from another parameter.
+次の例では、一方のパラメーターからもう一方のパラメーターを減算します。
 
     "parameters": {
       "first": {
@@ -265,9 +264,9 @@ The following example subtracts one parameter from another parameter.
       }
     }
 
-## <a name="string-functions"></a>String functions
+## 文字列関数
 
-Resource Manager provides the following functions for working with strings:
+リソース マネージャーには、文字列を操作する次の関数が用意されています。
 
 - [base64](#base64)
 - [concat](#concat)
@@ -287,17 +286,17 @@ Resource Manager provides the following functions for working with strings:
 
 
 <a id="base64" />
-### <a name="base64"></a>base64
+### base64
 
 **base64 (inputString)**
 
-Returns the base64 representation of the input string.
+入力文字列の base64 表現を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| inputString                        |   Yes    | The string value to return as a base64 representation.
+| inputString | はい | Base 64 形式として返す文字列の値。
 
-The following example shows how to use the base64 function.
+次の例では、base64 関数を使用する方法を示します。
 
     "variables": {
       "usernameAndPassword": "[concat('parameters('username'), ':', parameters('password'))]",
@@ -305,20 +304,20 @@ The following example shows how to use the base64 function.
     }
 
 <a id="concat" />
-### <a name="concat---string"></a>concat - string
+### concat - 文字列
 
 **concat (string1, string2, string3, ...)**
 
-Combines multiple string values and returns the concatenated string. 
+複数の文字列値を結合し、連結された文字列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| string1                        |   Yes    | A string value to concatenate.
-| additional strings             |   No     | String values to concatenate.
+| string1 | はい | 連結する文字列値。
+| 追加の文字列 | なし | 連結する文字列値。
 
-This function can take any number of arguments, and can accept either strings or arrays for the parameters. For an example of concatenating arrays, see [concat - array](#concatarray).
+この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。配列を連結する例については、「[concat - 配列](#concatarray)」を参照してください。
 
-The following example shows how to combine multiple string values to return a concatenated string.
+次の例は、複数の文字列値を結合して 1 つの連結文字列を返す方法を示しています。
 
     "outputs": {
         "siteUri": {
@@ -329,19 +328,19 @@ The following example shows how to combine multiple string values to return a co
 
 
 <a id="lengthstring" />
-### <a name="length---string"></a>length - string
+### length - 文字列
 
 **length(string)**
 
-Returns the number of characters in a string.
+文字列の文字数を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| string                        |   Yes    | The string value to use for getting the number of characters.
+| string | はい | 文字数を取得する対象の文字列値。
 
-For an example of using length with an array, see [length - array](#length).
+配列に対して length を使用する例については、「[length - 配列](#length)」を参照してください。
 
-The following example returns the number of characters in a string. 
+次の例では、文字列の文字数を返します。
 
     "parameters": {
         "appName": { "type": "string" }
@@ -352,19 +351,19 @@ The following example returns the number of characters in a string.
         
 
 <a id="padleft" />
-### <a name="padleft"></a>padLeft
+### padLeft
 
 **padLeft(valueToPad, totalLength, paddingCharacter)**
 
-Returns a right-aligned string by adding characters to the left until reaching the total specified length.
+指定された長さに到達するまで左側に文字を追加していくことで、右揃えの文字列を返します。
   
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| valueToPad                         |   Yes    | The string or int to right-align.
-| totalLength                        |   Yes    | The total number of characters in the returned string.
-| paddingCharacter                   |   No     | The character to use for left-padding until the total length is reached. The default value is a space.
+| valueToPad | はい | 右揃えにする文字列または整数。
+| totalLength | はい | 返される文字列の文字合計数。
+| paddingCharacter | なし | 左余白の長さに到達するまで使用する文字。既定値は空白です。
 
-The following example shows how to pad the user-provided parameter value by adding the zero character until the string reaches 10 characters. If the original parameter value is longer than 10 characters, no characters are added.
+次の例では、文字列が 10 文字に達するまでゼロ文字を追加することで、ユーザー指定のパラメーター値に埋め込む方法を示します。元のパラメーター値が 10 文字より長い場合、文字は追加されません。
 
     "parameters": {
         "appName": { "type": "string" }
@@ -374,19 +373,19 @@ The following example shows how to pad the user-provided parameter value by addi
     }
 
 <a id="replace" />
-### <a name="replace"></a>replace
+### replace
 
 **replace(originalString, oldCharacter, newCharacter)**
 
-Returns a new string with all instances of one character in the specified string replaced by another character.
+指定された文字列内で、1 文字を別の文字で置き換えたすべてのインスタンスを含む新しい文字列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| originalString                     |   Yes    | The string that has all instances of one character replaced by another character.
-| oldCharacter                       |   Yes    | The character to be removed from the original string.
-| newCharacter                       |   Yes    | The character to add in place of the removed character.
+| originalString | はい | ある文字のすべてのインスタンスが別の文字に置き換えられた文字列。
+| oldCharacter | はい | 元の文字列から削除する文字。
+| newCharacter | はい | 削除された文字の代わりに追加する文字。
 
-The following example shows how to remove all dashes from the user-provided string.
+次の例では、ユーザーが指定した文字列からすべてのダッシュ (-) を削除する方法を示します。
 
     "parameters": {
         "identifier": { "type": "string" }
@@ -396,19 +395,19 @@ The following example shows how to remove all dashes from the user-provided stri
     }
 
 <a id="skipstring" />
-### <a name="skip---string"></a>skip - string
+### skip - 文字列
 **skip(originalValue, numberToSkip)**
 
-Returns a string with all the characters after the specified number in the string.
+文字列内の指定した位置より後ろにある文字をすべて含む文字列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The string to use for skipping.
-| numberToSkip                       |   Yes    | The number of characters to skip. If this value is 0 or less, all the characters in the string are returned. If it is larger than the length of the string, an empty string is returned. 
+| originalValue | はい | スキップの対象の文字列。
+| numberToSkip | はい | スキップする文字数。この値が 0 以下である場合は、文字列内のすべての文字が返されます。文字列の長さを超える場合は、空の文字列が返されます。 
 
-For an example of using skip with an array, see [skip - array](#skip).
+配列に対して skip を使用する例については、「[skip - 配列](#skip)」を参照してください。
 
-The following example skips the specified number of characters in the string.
+次の例では、文字列内で指定した数の文字をスキップします。
 
     "parameters": {
       "first": {
@@ -435,20 +434,20 @@ The following example skips the specified number of characters in the string.
 
 
 <a id="split" />
-### <a name="split"></a>split
+### split
 
 **split(inputString, delimiterString)**
 
 **split(inputString, delimiterArray)**
 
-Returns an array of strings that contains the substrings of the input string that are delimited by the specified delimiters.
+指定された区切り記号で区切られた、入力文字列の部分文字列が格納されている、文字列の配列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| inputString                        |   Yes    | The string to split.
-| delimiter                          |   Yes    | The delimiter to use, can be a single string or an array of strings.
+| inputString | はい | 分割する文字列。
+| delimiter | はい | 使用する区切り記号。1 つの文字列または文字列の配列を指定できます。
 
-The following example splits the input string with a comma.
+次の例では、入力文字列をコンマで分割します。
 
     "parameters": {
         "inputString": { "type": "string" }
@@ -457,7 +456,7 @@ The following example splits the input string with a comma.
         "stringPieces": "[split(parameters('inputString'), ',')]"
     }
 
-The next example splits the input string with either a comma or a semi-colon.
+次の例では、入力文字列をコンマまたはセミコロンで分割します。
 
     "variables": {
       "stringToSplit": "test1,test2;test3",
@@ -472,17 +471,17 @@ The next example splits the input string with either a comma or a semi-colon.
     }
 
 <a id="string" />
-### <a name="string"></a>string
+### string
 
 **string(valueToConvert)**
 
-Converts the specified value to a string.
+指定された値を文字列に変換します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| valueToConvert                     |   Yes    | The value to convert to string. Any type of value can be converted, including objects and arrays.
+| valueToConvert | はい | 文字列に変換する値。オブジェクトと配列を含む、あらゆる種類の値を変換できます。
 
-The following example converts the user-provided parameter values to strings.
+次の例では、ユーザー指定のパラメーター値を文字列に変換します。
 
     "parameters": {
       "jsonObject": {
@@ -508,19 +507,19 @@ The following example converts the user-provided parameter values to strings.
     }
 
 <a id="substring" />
-### <a name="substring"></a>substring
+### substring
 
 **substring(stringToParse, startIndex, length)**
 
-Returns a substring that starts at the specified character position and contains the specified number of characters.
+指定した文字位置から始まる指定された文字数分の部分文字列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| stringToParse                     |   Yes    | The original string from which the substring is extracted.
-| startIndex                         | No      | The zero-based starting character position for the substring.
-| length                             | No      | The number of characters for the substring.
+| stringToParse | はい | 部分文字列の抽出元となる文字列。
+| startIndex | なし | 部分文字列の 0 から始まる開始文字位置。
+| length | なし | 部分文字列の文字数。
 
-The following example extracts the first three characters from a parameter.
+次の例では、パラメーターから先頭の 3 文字を抽出します。
 
     "parameters": {
         "inputString": { "type": "string" }
@@ -530,19 +529,19 @@ The following example extracts the first three characters from a parameter.
     }
 
 <a id="takestring" />
-### <a name="take---string"></a>take - string
+### take - 文字列
 **take(originalValue, numberToTake)**
 
-Returns a string with the specified number of characters from the start of the string.
+文字列の先頭から指定された数の文字を含む文字列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The string to take the characters from.
-| numberToTake                       |   Yes    | The number of characters to take. If this value is 0 or less, an empty string is returned. If it is larger than the length of the given string, all the characters in the string are returned.
+| originalValue | はい | 文字の取得元となる文字列。
+| numberToTake | はい | 取得する文字数。この値が 0 以下である場合、空の文字列が返されます。指定された文字列の長さを超える場合、その文字列のすべての文字が返されます。
 
-For an example of using take with an array, see [take - array](#take).
+配列に対して take を使用する例については、「[take - 配列](#take)」を参照してください。
 
-The following example takes the specified number of characters from the string.
+次の例では、文字列から指定された数の文字を取得します。
 
     "parameters": {
       "first": {
@@ -568,17 +567,17 @@ The following example takes the specified number of characters from the string.
     }
 
 <a id="tolower" />
-### <a name="tolower"></a>toLower
+### toLower
 
 **toLower(stringToChange)**
 
-Converts the specified string to lower case.
+指定された文字列を小文字に変換します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| stringToChange                     |   Yes    | The string to convert to lower case.
+| stringToChange | はい | 小文字に変換する文字列。
 
-The following example converts the user-provided parameter value to lower case.
+次の例では、ユーザー指定のパラメーター値を小文字に変換します。
 
     "parameters": {
         "appName": { "type": "string" }
@@ -588,17 +587,17 @@ The following example converts the user-provided parameter value to lower case.
     }
 
 <a id="toupper" />
-### <a name="toupper"></a>toUpper
+### toUpper
 
 **toUpper(stringToChange)**
 
-Converts the specified string to upper case.
+指定した文字列を大文字に変換します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| stringToChange                     |   Yes    | The string to convert to upper case.
+| stringToChange | はい | 大文字に変換する文字列。
 
-The following example converts the user-provided parameter value to upper case.
+次の例では、ユーザー指定のパラメーター値を大文字に変換します。
 
     "parameters": {
         "appName": { "type": "string" }
@@ -608,17 +607,17 @@ The following example converts the user-provided parameter value to upper case.
     }
 
 <a id="trim" />
-### <a name="trim"></a>trim
+### trim
 
 **trim (stringToTrim)**
 
-Removes all leading and trailing white-space characters from the specified string.
+指定された文字列から先頭と末尾の空白文字をすべて削除します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| stringToTrim                       |   Yes    | The string to trim.
+| stringToTrim | はい | トリムする文字列。
 
-The following example trims the white-space characters from the user-provided parameter value.
+次の例では、ユーザー指定のパラメーター値から空白文字を削除します。
 
     "parameters": {
         "appName": { "type": "string" }
@@ -628,38 +627,38 @@ The following example trims the white-space characters from the user-provided pa
     }
 
 <a id="uniquestring" />
-### <a name="uniquestring"></a>uniqueString
+### uniqueString
 
 **uniqueString (baseString, ...)**
 
-Creates a deterministic hash string based on the values provided as parameters. 
+パラメーターとして渡された値に基づいて、決定論的ハッシュ文字列を作成します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| baseString      |   Yes    | The string used in the hash function to create a unique string.
-| additional parameters as needed    | No       | You can add as many strings as needed to create the value that specifies the level of uniqueness.
+| baseString | はい | 一意の文字列を作成するためにハッシュ関数で使用される文字列。
+| 必要に応じて追加のパラメーター | なし | 文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。
 
-This function is helpful when you need to create a unique name for a resource. You provide parameter values that limit the scope of uniqueness for the result. You can specify whether the name is unique down to subscription, resource group, or deployment. 
+この関数は、リソースの一意の名前を作成する必要がある場合に便利です。結果の一意性のスコープを制限するパラメーターの値を指定します。サブスクリプション、リソース グループ、またはデプロイのレベルで名前が一意であるかどうかを指定できます。
 
-The returned value is not a random string, but rather the result of a hash function. The returned value is 13 characters long. It is not globally unique. You may want to combine the value with a prefix from your naming convention to create a name that is meaningful. The following example shows the format of the returned value. Of course, the actual value will vary by the provided parameters.
+返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。返される値は、13 文字です。グローバルに一意ではありません。命名規則にあるプレフィックスをこの値と組み合わせて、わかりやすい名前を作成することもできます。次の例では、戻り値の形式を示します。当然ながら、実際の値は、指定されたパラメーターによって異なります。
 
     tcvhiyu5h2o5o
 
-The following examples show how to use uniqueString to create a unique value for commonly used levels.
+次の例は、uniqueString を使用して、よく使用されるレベルで一意の値を作成する方法を示しています。
 
-Unique scoped to subscription
+サブスクリプションのスコープで一意
 
     "[uniqueString(subscription().subscriptionId)]"
 
-Unique scoped to resource group
+リソース グループのスコープで一意
 
     "[uniqueString(resourceGroup().id)]"
 
-Unique scoped to deployment for a resource group
+リソース グループのデプロイのスコープで一意
 
     "[uniqueString(resourceGroup().id, deployment().name)]"
     
-The following example shows how to create a unique name for a storage account based on your resource group (inside this resource group the name is not unique if constructed the same way).
+次の例は、リソース グループに基づいてストレージ アカウントの一意の名前を作成する方法を示しています (このリソース グループ内で、同じ方法で名前が作成されると、名前は一意ではなくなる)。
 
     "resources": [{ 
         "name": "[concat('contosostorage', uniqueString(resourceGroup().id))]", 
@@ -669,49 +668,49 @@ The following example shows how to create a unique name for a storage account ba
 
 
 <a id="uri" />
-### <a name="uri"></a>uri
+### uri
 
 **uri (baseUri, relativeUri)**
 
-Creates an absolute URI by combining the baseUri and the relativeUri string.
+baseUri と relativeUri の文字列を組み合わせることにより、絶対 URI を作成します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| baseUri                            |   Yes    | The base uri string.
-| relativeUri                        |   Yes    | The relative uri string to add to the base uri string.
+| baseUri | はい | ベース URI 文字列。
+| relativeUri | はい | ベース URI 文字列に追加する相対 URI 文字列。
 
-The value for the **baseUri** parameter can include a specific file, but only the base path is used when constructing the URI. For example, passing **http://contoso.com/resources/azuredeploy.json** as the baseUri parameter results in a base URI of **http://contoso.com/resources/**.
+**baseUri** パラメーターの値には、特定のファイルを含めることができますが、URI の作成時には基本パスだけが使用されます。たとえば、baseUri パラメーターとして **http://contoso.com/resources/azuredeploy.json** を渡すと、**http://contoso.com/resources/** というベース URI が作成されます。
 
-The following example shows how to construct a link to a nested template based on the value of the parent template.
+次の例は、親テンプレートの値に基づいて、入れ子になったテンプレートへのリンクを作成する方法を示しています。
 
     "templateLink": "[uri(deployment().properties.templateLink.uri, 'nested/azuredeploy.json')]"
 
-## <a name="array-functions"></a>Array functions
+## 配列関数
 
-Resource Manager provides several functions for working with array values.
+リソース マネージャーには、配列値を操作する関数がいくつか用意されています。
 
 - [concat](#concatarray)
 - [length](#length)
 - [skip](#skip)
 - [take](#take)
 
-To get an array of string values delimited by a value, see [split](#split).
+文字列値の配列をある値で区切られた状態にするには、「[split](#split)」を参照してください。
 
 <a id="concatarray" />
-### <a name="concat---array"></a>concat - array
+### concat - 配列
 
 **concat (array1, array2, array3, ...)**
 
-Combines multiple arrays and returns the concatenated array. 
+複数の配列を結合し、連結された配列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| array1                        |   Yes    | An array to concatenate.
-| additional arrays             |   No     | Arrays to concatenate.
+| array1 | はい | 連結する配列。
+| 追加の配列 | なし | 連結する配列。
 
-This function can take any number of arguments, and can accept either strings or arrays for the parameters. For an example of concatenating string values, see [concat - string](#concat).
+この関数は、任意の数の引数を取ることができ、パラメーターに文字列または配列を使用できます。文字列値を連結する例については、「[concat - 文字列](#concat)」を参照してください。
 
-The following example shows how to combine two arrays.
+次の例では、2 つの配列を結合する方法を示します。
 
     "parameters": {
         "firstarray": {
@@ -727,41 +726,41 @@ The following example shows how to combine two arrays.
         
 
 <a id="length" />
-### <a name="length---array"></a>length - array
+### length - 配列
 
 **length(array)**
 
-Returns the number of elements in an array.
+配列内の要素数を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| array                        |   Yes    | The array to use for getting the number of elements.
+| array | はい | 要素の数を取得する対象の配列。
 
-You can use this function with an array to specify the number of iterations when creating resources. In the following example, the parameter **siteNames** would refer to an array of names to use when creating the web sites.
+この関数を配列と共に使用して、リソースを作成するときのイテレーション数を指定できます。次の例では、**siteNames** パラメーターは、Web サイトの作成時に使用する名前の配列を参照します。
 
     "copy": {
         "name": "websitescopy",
         "count": "[length(parameters('siteNames'))]"
     }
 
-For more information about using this function with an array, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md). 
+この関数を配列と共に使用する方法の詳細については、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
 
-For an example of using length with a string value, see [length - string](#lengthstring).
+文字列値に対して length を使用する例については、「[length - 文字列](#lengthstring)」を参照してください。
 
 <a id="skip" />
-### <a name="skip---array"></a>skip - array
+### skip - 配列
 **skip(originalValue, numberToSkip)**
 
-Returns an array with all the elements after the specified number in the array.
+配列内の指定した位置より後ろにある要素をすべて含む配列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The array to use for skipping.
-| numberToSkip                       |   Yes    | The number of elements to skip. If this value is 0 or less, all the elements in the array are returned. If it is larger than the length of the array, an empty array is returned. 
+| originalValue | はい | スキップの対象の配列。
+| numberToSkip | はい | スキップする要素数。この値が 0 以下である場合は、配列内のすべての要素が返されます。配列の長さを超える場合は、空の配列が返されます。 
 
-For an example of using skip with a string, see [skip - string](#skipstring).
+文字列に対して skip を使用する例については、「[skip - 文字列](#skipstring)」を参照してください。
 
-The following example skips the specified number of elements in the array.
+指定した数の配列要素をスキップする例を次に示します。
 
     "parameters": {
       "first": {
@@ -788,19 +787,19 @@ The following example skips the specified number of elements in the array.
     }
 
 <a id="take" />
-### <a name="take---array"></a>take - array
+### take - 配列
 **take(originalValue, numberToTake)**
 
-Returns an array with the specified number of elements from the start of the array.
+配列の先頭から指定された数の要素を含む配列を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| originalValue                      |   Yes    | The array to take the elements from.
-| numberToTake                       |   Yes    | The number of elements to take. If this value is 0 or less, an empty array is returned. If it is larger than the length of the given array, all the elements in the array are returned.
+| originalValue | はい | 要素の取得元となる配列。
+| numberToTake | はい | 取得する要素数。この値が 0 以下である場合は、空の配列が返されます。指定された配列の長さを超える場合は、その配列のすべての要素が返されます。
 
-For an example of using take with a string, see [take - string](#takestring).
+文字列に対して take を使用する例については、「[take - 文字列](#takestring)」を参照してください。
 
-The following example takes the specified number of elements from the array.
+指定した数の要素を配列から取得する例を次に示します。
 
     "parameters": {
       "first": {
@@ -826,26 +825,26 @@ The following example takes the specified number of elements from the array.
       }
     }
 
-## <a name="deployment-value-functions"></a>Deployment value functions
+## デプロイの値関数
 
-Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
+リソース マネージャーには、テンプレートのセクションから値を取得し、デプロイに関連する値を取得する次の関数が用意されています。
 
-- [deployment](#deployment)
+- [デプロイ](#deployment)
 - [parameters](#parameters)
 - [variables](#variables)
 
-To get values from resources, resource groups, or subscriptions, see [Resource functions](#resource-functions).
+リソース、リソース グループ、サブスクリプションから値を取得する方法については、「[リソース関数](#resource-functions)」を参照してください。
 
 <a id="deployment" />
-### <a name="deployment"></a>deployment
+### デプロイ
 
-**deployment()**
+**デプロイ()**
 
-Returns information about the current deployment operation.
+現在のデプロイ操作に関する情報を返します。
 
-This function returns the object that is passed during deployment. The properties in the returned object differ based on whether the deployment object is passed as a link or as an in-line object. 
+この関数は、デプロイ中に渡されたオブジェクトを返します。返されるオブジェクトのプロパティは、デプロイ オブジェクトがリンクとして渡されたか、インライン オブジェクトとして渡されたかによって異なります。
 
-When the deployment object is passed in-line, such as when using the **-TemplateFile** parameter in Azure PowerShell to point to a local file, the returned object has the following format:
+デプロイ オブジェクトがインラインで渡された場合 (Azure PowerShell の **TemplateFile** パラメーターを使用してローカル ファイルを参照する場合など)、返されるオブジェクトは次の形式になります。
 
     {
         "name": "",
@@ -865,7 +864,7 @@ When the deployment object is passed in-line, such as when using the **-Template
         }
     }
 
-When the object is passed as a link, such as when using the **-TemplateUri** parameter to point to a remote object, the object is returned in the following format. 
+オブジェクトがリンクとして渡された場合 (**TemplateUri** パラメーターを使用してリモート オブジェクトを参照する場合など)、オブジェクトは次の形式で返されます。
 
     {
         "name": "",
@@ -887,24 +886,24 @@ When the object is passed as a link, such as when using the **-TemplateUri** par
         }
     }
 
-The following example shows how to use deployment() to link to another template based on the URI of the parent template.
+次の例は、deployment() を使用し、親テンプレートの URI に基づいて別のテンプレートにリンクする方法を示しています。
 
     "variables": {  
         "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
     }  
 
 <a id="parameters" />
-### <a name="parameters"></a>parameters
+### parameters
 
 **parameters (parameterName)**
 
-Returns a parameter value. The specified parameter name must be defined in the parameters section of the template.
+パラメーター値を返します。指定したパラメーター名は、テンプレートのパラメーター セクションで定義されている必要があります。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | 説明
 | :--------------------------------: | :------: | :----------
-| parameterName                      |   Yes    | The name of the parameter to return.
+| parameterName | はい | 返されるパラメーターの名前。
 
-The following example shows a simplified use of the parameters function.
+次の例では、parameters 関数の簡単な使用方法を示しています。
 
     "parameters": { 
       "siteName": {
@@ -921,17 +920,17 @@ The following example shows a simplified use of the parameters function.
     ]
 
 <a id="variables" />
-### <a name="variables"></a>variables
+### variables
 
 **variables (variableName)**
 
-Returns the value of variable. The specified variable name must be defined in the variables section of the template.
+変数の値を返します。指定した変数名は、テンプレートの変数セクションで定義されている必要があります。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| variable Name                      |   Yes    | The name of the variable to return.
+| variable Name | はい | 返す変数の名前。
 
-The following example uses a variable value.
+次の例では、変数の値を使用します。
 
     "variables": {
       "storageName": "[concat('storage', uniqueString(resourceGroup().id))]"
@@ -944,45 +943,44 @@ The following example uses a variable value.
       }
     ],
 
-## <a name="resource-functions"></a>Resource functions
+## リソース関数
 
-Resource Manager provides the following functions for getting resource values:
+リソース マネージャーには、リソース値を取得する次の関数が用意されています。
 
-- [listKeys and list{Value}](#listkeys)
+- [listKeys と list{Value}](#listkeys)
 - [providers](#providers)
 - [reference](#reference)
 - [resourceGroup](#resourcegroup)
 - [resourceId](#resourceid)
-- [subscription](#subscription)
+- [サブスクリプション](#subscription)
 
-To get values from parameters, variables, or the current deployment, see [Deployment value functions](#deployment-value-functions).
+パラメーター、変数、現在のデプロイから値を取得する方法については、「[デプロイの値関数](#deployment-value-functions)」を参照してください。
 
-<a id="listkeys" />
-<a id="list" />
-### <a name="listkeys-and-list{value}"></a>listKeys and list{Value}
+<a id="listkeys" /> <a id="list" />
+### listKeys と list{Value}
 
-**listKeys (resourceName or resourceIdentifier, apiVersion)**
+**listKeys (resourceName or resourceIdentifier, [apiVersion])**
 
-**list{Value} (resourceName or resourceIdentifier, apiVersion)**
+**list{Value} (resourceName または resourceIdentifier, apiVersion)**
 
-Returns the values for any resource type that supports the list operation. The most common usage is **listKeys**. 
+list 操作をサポートする任意の種類のリソースの値を返します。最も一般的に使用されるのは、**listKeys** です。
   
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| resourceName or resourceIdentifier |   Yes    | Unique identifier for the resource.
-| apiVersion                         |   Yes    | API version of resource runtime state.
+| resourceName または resourceIdentifier | はい | リソースの一意識別子です。
+| apiVersion | はい | リソースのランタイム状態の API バージョン。
 
-Any operation that starts with **list** can be used a function in your template. The available operations include not only **listKeys**, but also operations like **list**, **listAdminKeys**, and **listStatus**. To determine which resource types have a list operation, use the following PowerShell command.
+**list** で始まるすべての操作は、テンプレート内で関数として使用できます。使用可能な操作には、**listKeys** だけでなく、**list**、**listAdminKeys**、**listStatus** などの操作も含まれます。どのリソースの種類にリスト処理を含めるかを指定するには、次の PowerShell コマンドを使用します。
 
     Get-AzureRmProviderOperation -OperationSearchString *  | where {$_.Operation -like "*list*"} | FT Operation
 
-Or, retrieve the list with Azure CLI. The following example retrieves all the operations for **apiapps**, and uses the JSON utility [jq](http://stedolan.github.io/jq/download/) to filter only the list operations.
+または、Azure CLI でリストを取得します。次の例では、**apiapps** のすべての操作を取得し、JSON ユーティリティ [jq](http://stedolan.github.io/jq/download/) を使用して list 操作のみをフィルター処理します。
 
-    azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains(\"list\"))"
+    azure provider operations show --operationSearchString */apiapps/* --json | jq ".[] | select (.operation | contains("list"))"
 
-The resourceId can be specified by using the [resourceId function](#resourceid) or by using the format **{providerNamespace}/{resourceType}/{resourceName}**.
+resourceId の指定には、[resourceId 関数](./#resourceid)または **{providerNamespace}/{resourceType}/{resourceName}** 形式を使用できます。
 
-The following example shows how to return the primary and secondary keys from a storage account in the outputs section.
+次の例は、outputs セクションでストレージ アカウントのプライマリ キーとセカンダリ キーを返す方法を示しています。
 
     "outputs": { 
       "listKeysOutput": { 
@@ -991,7 +989,7 @@ The following example shows how to return the primary and secondary keys from a 
       } 
     } 
 
-The returned object from listKeys has the following format:
+listKeys から返されるオブジェクトの形式は次のとおりです。
 
     {
       "keys": [
@@ -1009,18 +1007,18 @@ The returned object from listKeys has the following format:
     }
 
 <a id="providers" />
-### <a name="providers"></a>providers
+### プロバイダー
 
 **providers (providerNamespace, [resourceType])**
 
-Returns information about a resource provider and its supported resource types. If you do not provide a resource type, the function returns all the supported types for the resource provider.
+リソース プロバイダーとサポートされているそのリソースの種類に関する情報を返します。リソースの種類を指定しない場合、関数はリソース プロバイダーでサポートされているすべての種類を返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| providerNamespace                  |   Yes    | Namespace of the provider
-| resourceType                       |   No     | The type of resource within the specified namespace.
+| providerNamespace | はい | プロバイダーの名前空間
+| resourceType | なし | 指定した名前空間内にあるリソースの種類。
 
-Each supported type is returned in the following format. Array ordering is not guaranteed.
+サポートされている各種類は、次の形式で返されます。配列の順序は保証されません。
 
     {
         "resourceType": "",
@@ -1028,77 +1026,77 @@ Each supported type is returned in the following format. Array ordering is not g
         "apiVersions": [ ]
     }
 
-The following example shows how to use the provider function:
+次の例は、provider 関数の使用方法を示しています。
 
     "outputs": {
-        "exampleOutput": {
-            "value": "[providers('Microsoft.Storage', 'storageAccounts')]",
-            "type" : "object"
-        }
+	    "exampleOutput": {
+		    "value": "[providers('Microsoft.Storage', 'storageAccounts')]",
+		    "type" : "object"
+	    }
     }
 
 <a id="reference" />
-### <a name="reference"></a>reference
+### reference
 
 **reference (resourceName or resourceIdentifier, [apiVersion])**
 
-Returns an object representing another resource's runtime state.
+別のリソースのランタイム状態を表すオブジェクトを返します。
 
-| Parameter                          | Required | Description
+| パラメーター | 必須 | Description
 | :--------------------------------: | :------: | :----------
-| resourceName or resourceIdentifier |   Yes    | Name or unique identifier of a resource.
-| apiVersion                         |   No     | API version of the specified resource. Include this parameter when the resource is not provisioned within same template.
+| resourceName または resourceIdentifier | はい | 名前またはリソースの一意の識別子。
+| apiVersion | なし | 指定したリソースの API バージョンです。同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。
 
-The **reference** function derives its value from a runtime state, and therefore cannot be used in the variables section. It can be used in outputs section of a template.
+**reference** 関数はその値をランタイム状態から取得するので、変数セクションでは使用できません。これは、テンプレートの出力セクションで使用できます。
 
-By using the reference function, you implicitly declare that one resource depends on another resource if the referenced resource is provisioned within same template. You do not need to also use the **dependsOn** property. The function is not evaluated until the referenced resource has completed deployment.
+reference 関数を使用して、参照先のリソースが同じテンプレート内でプロビジョニングされる場合に、あるリソースが他のリソースに依存することを暗黙的に宣言します。**dependsOn** プロパティを一緒に使用する必要はありません。参照先のリソースがデプロイを完了するまで、関数は評価されません。
 
-The following example references a storage account that is deployed in the same template.
-
-    "outputs": {
-        "NewStorage": {
-            "value": "[reference(parameters('storageAccountName'))]",
-            "type" : "object"
-        }
-    }
-
-The following example references a storage account that is not deployed in this template, but exists within the same resource group as the resources being deployed.
+次の例では、同じテンプレートでデプロイされるストレージ アカウントが参照されます。
 
     "outputs": {
-        "ExistingStorage": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
-            "type" : "object"
-        }
-    }
+		"NewStorage": {
+			"value": "[reference(parameters('storageAccountName'))]",
+			"type" : "object"
+		}
+	}
 
-You can retrieve a particular value from the returned object, such as the blob endpoint URI, as shown in the following example.
-
-    "outputs": {
-        "BlobUri": {
-            "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
-            "type" : "string"
-        }
-    }
-
-The following example references a storage account in a different resource group.
+次の例では、このテンプレートでデプロイされないが、デプロイされるリソースと同じリソース グループ内に存在するストレージ アカウントが参照されます。
 
     "outputs": {
-        "BlobUri": {
-            "value": "[reference(resourceId(parameters('relatedGroup'), 'Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
-            "type" : "string"
-        }
-    }
+		"ExistingStorage": {
+			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01')]",
+			"type" : "object"
+		}
+	}
 
-The properties on the object returned from the **reference** function vary by resource type. To see the property names and values for a resource type, create a simple template that returns the object in the **outputs** section. If you have an existing resource of that type, your template just returns the object without deploying any new resources. If you do not have an existing resource of that type, your template deploys only that type and returns the object. Then, add those properties to other templates that need to dynamically retrieve the values during deployment. 
+次の例に示すように、BLOB エンドポイント URI など、返されたオブジェクトから特定の値を取得できます。
+
+    "outputs": {
+		"BlobUri": {
+			"value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+			"type" : "string"
+		}
+	}
+
+次の例では、別のリソース グループにあるストレージ アカウントが参照されます。
+
+    "outputs": {
+		"BlobUri": {
+			"value": "[reference(resourceId(parameters('relatedGroup'), 'Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+			"type" : "string"
+		}
+	}
+
+**reference** 関数から返されるオブジェクトのプロパティは、リソースの種類によって異なります。ある種類のリソースによって返されるプロパティの名前と値を確認するには、**outputs** セクションでオブジェクトを返す、単純なテンプレートを作成します。その種類のリソースが既にある場合、このテンプレートは新しいリソースはデプロイせずにオブジェクトを返します。その種類のリソースがまだない場合、このテンプレートはその種類のリソースだけをデプロイしてオブジェクトを返します。その後、これらのプロパティを、デプロイ時に値を動的に取得する必要がある他のテンプレートに追加します。
 
 <a id="resourcegroup" />
-### <a name="resourcegroup"></a>resourceGroup
+### resourceGroup
 
 **resourceGroup()**
 
-Returns an object that represents the current resource group. 
+現在のリソース グループを表すオブジェクトを返します。
 
-The returned object is in the following format:
+返されるオブジェクトの形式は次のとおりです。
 
     {
       "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}",
@@ -1111,7 +1109,7 @@ The returned object is in the following format:
       }
     }
 
-The following example uses the resource group location to assign the location for a web site.
+次の例では、リソース グループの場所を使用して、Web サイトの場所を割り当てます。
 
     "resources": [
        {
@@ -1124,30 +1122,30 @@ The following example uses the resource group location to assign the location fo
     ]
 
 <a id="resourceid" />
-### <a name="resourceid"></a>resourceId
+### resourceId
 
 **resourceId ([subscriptionId], [resourceGroupName], resourceType, resourceName1, [resourceName2]...)**
 
-Returns the unique identifier of a resource. 
+リソースの一意の識別子を返します。
       
-| Parameter         | Required | Description
+| パラメーター | 必須 | Description
 | :---------------: | :------: | :----------
-| subscriptionId    |   No     | Default value is the current subscription. Specify this value when you need to retrieve a resource in another subscription.
-| resourceGroupName |   No     | Default value is current resource group. Specify this value when you need to retrieve a resource in another resource group.
-| resourceType      |   Yes    | Type of resource including resource provider namespace.
-| resourceName1     |   Yes    | Name of resource.
-| resourceName2     |   No     | Next resource name segment if resource is nested.
+| subscriptionId | なし | 既定値は、現在のサブスクリプションです。別のサブスクリプション内のリソースを取得する必要がある場合は、この値を指定します。
+| resourceGroupName | なし | 既定値は、現在のリソース グループです。別のリソース グループ内のリソースを取得する必要がある場合は、この値を指定します。
+| resourceType | はい | リソース プロバイダーの名前空間を含むリソースの種類。
+| resourceName1 | はい | リソースの名前。
+| resourceName2 | なし | リソースが入れ子になっている場合、次のリソース名セグメント。
 
-You use this function when the resource name is ambiguous or not provisioned within the same template. The identifier is returned in the following format:
+リソース名があいまいであるか、同じテンプレート内でプロビジョニングされていないときに、この関数を使用します。識別子は、次の形式で返されます。
 
     /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/{resourceProviderNamespace}/{resourceType}/{resourceName}
 
-The following example shows how to retrieve the resource ids for a web site and a database. The web site exists in a resource group named **myWebsitesGroup** and the database exists in the current resource group for this template.
+次の例では、Web サイトとデータベースのリソース ID を取得する方法を示します。Web サイトは **myWebsitesGroup** という名前のリソース グループ内にあり、データベースはこのテンプレートの現在のリソース グループ内にあります。
 
     [resourceId('myWebsitesGroup', 'Microsoft.Web/sites', parameters('siteName'))]
     [resourceId('Microsoft.SQL/servers/databases', parameters('serverName'), parameters('databaseName'))]
     
-Often, you need to use this function when using a storage account or virtual network in an alternate resource group. The storage account or virtual network may be used across multiple resource groups; therefore, you do not want to delete them when deleting a single resource group. The following example shows how a resource from an external resource group can easily be used:
+代替のリソース グループで、ストレージ アカウントや仮想ネットワークを使用するときには、多くの場合にこの関数を使用する必要があります。ストレージ アカウントや仮想ネットワークは、複数のリソース グループ間で使用される場合があるので、単一のリソース グループを削除するときにそれらを削除しないでください。次の例は、外部のリソース グループのリソースを簡単に使用する方法を示しています。
 
     {
       "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -1191,11 +1189,11 @@ Often, you need to use this function when using a storage account or virtual net
     }
 
 <a id="subscription" />
-### <a name="subscription"></a>subscription
+### サブスクリプション
 
 **subscription()**
 
-Returns details about the subscription in the following format.
+サブスクリプションの詳細を次の形式で返します。
 
     {
         "id": "/subscriptions/#####",
@@ -1203,7 +1201,7 @@ Returns details about the subscription in the following format.
         "tenantId": "#####"
     }
 
-The following example shows the subscription function called in the outputs section. 
+次の例は、outputs セクションで呼び出される subscription 関数を示しています。
 
     "outputs": { 
       "exampleOutput": { 
@@ -1213,15 +1211,10 @@ The following example shows the subscription function called in the outputs sect
     } 
 
 
-## <a name="next-steps"></a>Next Steps
-- For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
-- To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)
-- To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
-- To see how to deploy the template you have created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)
+## 次のステップ
+- Azure リソース マネージャー テンプレートのセクションの説明については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」をご覧ください。
+- 複数のテンプレートをマージするには、[Azure リソース マネージャーでのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページをご覧ください。
+- 1 種類のリソースを指定した回数分繰り返し作成するには、「[Azure リソース マネージャーでリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」をご覧ください。
+- 作成したテンプレートをデプロイする方法を確認するには、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」をご覧ください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

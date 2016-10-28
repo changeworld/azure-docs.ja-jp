@@ -11,8 +11,3 @@ The Mobile App backend is now configured to use Firebase Cloud Messaging to send
 
 
 <!-- images -->
-
-
-<!--HONumber=Oct16_HO2-->
-
-

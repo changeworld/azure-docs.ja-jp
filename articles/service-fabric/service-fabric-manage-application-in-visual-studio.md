@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Manage your applications in Visual Studio | Microsoft Azure"
-   description="Use Visual Studio to create, develop, package, deploy, and debug your Service Fabric applications and services."
+   pageTitle="Visual Studio でアプリケーションを管理する | Microsoft Azure"
+   description="Visual Studio を利用し、Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,94 +16,89 @@
    ms.date="09/09/2016"
    ms.author="seanmck;mikhegn"/>
 
+# Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
 
-# <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Use Visual Studio to simplify writing and managing your Service Fabric applications
+Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。[開発環境のセットアップ](service-fabric-get-started.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
 
-You can manage your Azure Service Fabric applications and services through Visual Studio. Once you've [set up your development environment](service-fabric-get-started.md), you can use Visual Studio to create Service Fabric applications, add services, or package, register, and deploy applications in your local development cluster.
+## Service Fabric アプリケーションのデプロイ
 
-## <a name="deploy-your-service-fabric-application"></a>Deploy your Service Fabric application
+アプリケーションのデプロイでは、既定で、次の手順が 1 つの単純な操作にまとめられています。
 
-By default, deploying an application combines the following steps into one simple operation:
+1. アプリケーション パッケージの作成
+2. アプリケーション パッケージのイメージ ストアへのアップロード
+3. アプリケーションの種類の登録
+4. 実行している任意のアプリケーション インスタンスの削除
+5. 新しいアプリケーション インスタンスの作成
 
-1. Creating the application package
-2. Uploading the application package to the image store
-3. Registering the application type
-4. Removing any running application instances
-5. Creating a new application instance
+Visual Studio では、**[F5]** キーを押してもアプリケーションはデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。**[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。詳細については、「[Visual Studio を使用してリモート クラスターにアプリケーションを発行する](service-fabric-publish-app-remote-cluster.md)」を参照してください。
 
-In Visual Studio, pressing **F5** will also deploy your application and attach the debugger to all application instances. You can use **Ctrl+F5** to deploy an application without debugging, or you can publish to a local or remote cluster by using the publish profile. For more information, see [Publish an application to a remote cluster by using Visual Studio](service-fabric-publish-app-remote-cluster.md).
+### アプリケーション デバッグ モード
 
-### <a name="application-debug-mode"></a>Application Debug Mode
+既定では、デバッグを停止したとき、または (デバッガーをアタッチせずにアプリケーションをデプロイした場合に) アプリケーションを再デプロイしたときに、Visual Studio ではアプリケーションの種類の既存のインスタンスが削除されます。その場合、アプリケーションのデータはすべて削除されます。ローカルでデバッグしている間、アプリケーションの新しいバージョンをテストする際に、場合によっては既に作成したデータを保持する必要があります。または、アプリケーションを実行し続けるか、以降のデバッグセッションでアプリケーションをアップグレードする必要があります。Visual Studio Service Fabric Tools には、**Application Debug Mode (アプリケーション デバッグ モード)** というプロパティが用意されていて、**F5** キーを押したときにアプリケーションをアンインストールするか、デバッグ セッションの終了後もアプリケーションを維持するか、以降のデバッグ セッションで、アプリケーションを削除して再デプロイするのではなく、アップグレードできるようにするかを制御できます。
 
-By default, Visual Studio removes existing instances of your application type when you stop debugging or (if you deployed the app without attaching the debugger), when you redeploy the application. In that case, all the application's data is removed. While debugging locally, you may want to keep data that you've already created when testing a new version of the application, you want to keep the application running or you want subsequent debug sessions to upgrade the application. Visual Studio Service Fabric Tools provide a property called **Application Debug Mode**, which controls whether the **F5** should uninstall the application, keep the application running after a debug session ends or enable the application to be upgraded on subsequent debugging sessions, rather than removed and redeployed.
+#### Application Debug Mode (アプリケーション デバッグ モード) プロパティを設定するには
 
-#### <a name="to-set-the-application-debug-mode-property"></a>To set the Application Debug Mode property
-
-1. On the application project's shortcut menu, choose **Properties** (or press the **F4** key).
-2. In the **Properties** window, set the **Application Debug Mode** property.
+1. アプリケーション プロジェクトのショートカット メニューで、**[プロパティ]** を選択します (または **[F4]** キーを押します)。
+2. **[プロパティ]** ウィンドウで **[アプリケーション デバッグ モード]** プロパティを設定します。
 
     ![Set Application Debug Mode Property][debugmodeproperty]
 
-These are the **Application Debug Mode** options available.
+**[アプリケーション デバッグ モード]** では、次のオプションを使用できます。
 
-1. **Auto Upgrade**: The application continues to run when the debug session ends. The next **F5** will treat the deployment as an upgrade by using unmonitored auto mode to quickly upgrade the application to a newer version with a date string appended. The upgrade process preserves any data that you entered in a previous debug session.
+1. **自動アップグレード**: デバッグ セッションが終了しても、アプリケーションは実行されたままになります。次に **F5** キーを押したときに、そのデプロイは、監視なしの自動モードを使用したアップグレードとして扱われ、アプリケーションは、日付文字列が追加された新しいバージョンにアップグレードされます。アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
 
-2. **Keep Application**: The application keeps running in the cluster when the debug session ends. On the next **F5** the application will be removed and the newly built application will be deployed to the cluster.
+2. **アプリケーションの保持**: デバッグ セッションが終了しても、アプリケーションはクラスターで実行されたままになります。次に **F5** キーを押すと、アプリケーションは削除され、新しく作成されたアプリケーションがクラスターにデプロイされます。
 
-3. **Remove Application** causes the application to be removed when the debug session ends.
+3. **アプリケーションの削除**: アプリケーションは、デバッグ セッションが終了したときに削除されます。
 
-For **Auto Upgrade** data is preserved by applying the application upgrade capabilities of Service Fabric, but it is tuned to optimize for performance rather than safety. For more information about upgrading applications and how you might perform an upgrade in a real environment, see [Service Fabric application upgrade](service-fabric-application-upgrade.md).
+**[自動アップグレード]** の場合、データは Service Fabric のアプリケーション アップグレード機能を適用して保持されますが、安全性よりもパフォーマンスを最適化するために調整されます。アプリケーションのアップグレードと実際の環境でアップグレードを実行する方法の詳細については、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
 
-![Example of new application version with date appended][preservedata]
+![日付が追加された新しいアプリケーション バージョンの例][preservedata]
 
->[AZURE.NOTE] This property doesn't exist prior to version 1.1 of the Service Fabric Tools for Visual Studio. Prior to 1.1, please use the **Preserve Data On Start** property to achieve the same behavior. The "Keep Application" option was introduced in version 1.2 of the Service Fabric Tools for Visual Studio.
+>[AZURE.NOTE] このプロパティは、Service Fabric Tools for Visual Studio バージョン 1.1 より前のバージョンには存在しません。1.1 より前のバージョンでは、**[開始時にデータを保存]** プロパティを使用してください。同じ動作が実現します。"アプリケーションの保持" オプションは、Visual Studio の Service Fabric ツールのバージョン 1.2 で導入されました。
 
-## <a name="add-a-service-to-your-service-fabric-application"></a>Add a service to your Service Fabric application
+## Service Fabric アプリケーションにサービスを追加します。
 
-You can add new services to your application to extend its functionality.  To ensure that the service is included in your application package, add the service through the **New Fabric Service...** menu item.
+新しいサービスをアプリケーションに追加して、その機能を拡張することができます。サービスがアプリケーション パッケージに含まれているかどうかを確認するには、**[新規 Fabric サービス]** メニュー項目からサービスを追加します。
 
-![Add a new fabric service to your application][newservice]
+![新しい Fabric サービスをアプリケーションに追加する][newservice]
 
-Select a Service Fabric project type to add to your application, and specify a name for the service.  See [Choosing a framework for your service](service-fabric-choose-framework.md) to help you decide which service type to use.
+アプリケーションに追加する Service Fabric プロジェクトの種類を選択し、サービスの名前を指定します。使用するサービスの種類を決定するのに役立つ、「[サービスのフレームワークの選択](service-fabric-choose-framework.md)」を参照してください。
 
-![Select a Fabric Service project type to add to your application][addserviceproject]
+![アプリケーションに追加する Fabric サービス プロジェクトの種類を選択する][addserviceproject]
 
-The new service will be added to your solution and existing application package. The service references and a default service instance will be added to the application manifest. The service will be created and started the next time you deploy the application.
+新しいサービスは、ソリューションおよび既存のアプリケーション パッケージに追加されます。サービス参照と既定のサービス インスタンスは、アプリケーション マニフェストに追加されます。サービスが作成され、次回、アプリケーションをデプロイする際に起動します。
 
-![The new service will be added to your application manifest][newserviceapplicationmanifest]
+![新しいサービスは、アプリケーション マニフェストに追加されます][newserviceapplicationmanifest]
 
-## <a name="package-your-service-fabric-application"></a>Package your Service Fabric application
+## Service Fabric アプリケーションのパッケージ化
 
-To deploy the application and its services to a cluster, you need to create an application package.  The package organizes the application manifest, service manifest(s), and other necessary files in a specific layout.  Visual Studio sets up and manages the package in the application project's folder, in the 'pkg' directory.  Clicking **Package** from the **Application** context menu creates or updates the application package.  You may want to do this if you deploy the application by using custom PowerShell scripts.
+アプリケーションとそのサービスをクラスターにデプロイするには、アプリケーション パッケージを作成する必要があります。パッケージは、アプリケーション マニフェスト、サービス マニフェスト、および特定のレイアウトで必要なその他のファイルを整理します。Visual Studio は、パッケージを 'pkg' ディレクトリのアプリケーション プロジェクト フォルダーに設定し、管理します。**[アプリケーション]** コンテキスト メニューから **[パッケージ]** をクリックすると、アプリケーション パッケージが作成または更新されます。カスタム Powershell スクリプトを使用してアプリケーションをデプロイする場合に、これを実行できます。
 
-## <a name="remove-applications-and-application-types-using-cloud-explorer"></a>Remove applications and application types using Cloud Explorer
+## Cloud Explorer を使用したアプリケーションとアプリケーションの種類の削除
 
-You can perform basic cluster management operations from within Visual Studio using Cloud Explorer, which you can launch from the **View** menu. For instance, you can delete applications and unprovision application types on local or remote clusters.
+Visual Studio 内から Cloud Explorer を使用して、基本的なクラスター管理操作を実行できます。Cloud Explorer は、**[表示]** メニューから起動できます。たとえば、ローカルやリモートのクラスターで、アプリケーションを削除したり、アプリケーションの種類のプロビジョニングを解除できます。
 
-![Remove an application](./media/service-fabric-manage-application-in-visual-studio/removeapplication.png)
+![アプリケーションの削除](./media/service-fabric-manage-application-in-visual-studio/removeapplication.png)
 
->[AZURE.TIP] For richer cluster management functionality, see [Visualizing your cluster with Service Fabric Explorer](service-fabric-visualizing-your-cluster.md).
+>[AZURE.TIP] 高度なクラスター管理機能については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Service Fabric application model](service-fabric-application-model.md)
-- [Service Fabric application deployment](service-fabric-deploy-remove-applications.md)
-- [Managing application parameters for multiple environments](service-fabric-manage-multiple-environment-app-configuration.md)
-- [Debugging your Service Fabric application](service-fabric-debugging-your-application.md)
-- [Visualizing your cluster by using Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
+- [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
+- [Service Fabric アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)
+- [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)
+- [Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
+- [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 
 <!--Image references-->
-[addserviceproject]:./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png
+[addserviceproject]: ./media/service-fabric-manage-application-in-visual-studio/addserviceproject.png
 [manageservicefabric]: ./media/service-fabric-manage-application-in-visual-studio/manageservicefabric.png
-[newservice]:./media/service-fabric-manage-application-in-visual-studio/newservice.png
-[newserviceapplicationmanifest]:./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
-[preservedata]:./media/service-fabric-manage-application-in-visual-studio/preservedata.png
-[debugmodeproperty]:./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
+[newservice]: ./media/service-fabric-manage-application-in-visual-studio/newservice.png
+[newserviceapplicationmanifest]: ./media/service-fabric-manage-application-in-visual-studio/newserviceapplicationmanifest.png
+[preservedata]: ./media/service-fabric-manage-application-in-visual-studio/preservedata.png
+[debugmodeproperty]: ./media/service-fabric-manage-application-in-visual-studio/debugmodeproperty.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

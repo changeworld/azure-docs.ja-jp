@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure App Service Local Cache overview | Microsoft Azure"
-   description="This article describes how to enable, resize, and query the status of the Azure App Service Local Cache feature"
+   pageTitle="Azure App Service のローカル キャッシュの概要 | Microsoft Azure"
+   description="この記事では、Azure App Service のローカル キャッシュ機能を有効にする方法、サイズを変更する方法、状態をクエリする方法について説明します。"
    services="app-service"
    documentationCenter="app-service"
    authors="SyntaxC4"
@@ -18,49 +18,48 @@
    ms.date="03/04/2016"
    ms.author="cfowler"/>
 
+# Azure App Service のローカル キャッシュの概要
 
-# <a name="azure-app-service-local-cache-overview"></a>Azure App Service Local Cache overview
+Azure Web アプリのコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。これは多様なアプリが機能するための設計であり、次の特徴があります。
 
-Azure web app content is stored on Azure Storage and is surfaced up in a durable manner as a content share. This design is intended to work with a variety of apps and has the following attributes:  
+* コンテンツは、Web アプリの複数の仮想マシン (VM) インスタンス全体で共有されます。
+* コンテンツは永続的であり、Web アプリを実行して変更できます。
+* ログ ファイルと診断データ ファイルは、同じ共有コンテンツ フォルダーで使用できます。
+* 新しいコンテンツを直接発行すると、コンテンツ フォルダーが更新されます。SCM Web サイトと実行中の Web アプリでもすぐに同じコンテンツを表示できます (通常、何らかのファイルの変更があった場合、ASP.NET などの一部のテクノロジは Web アプリの再起動を開始し、最新のコンテンツを取得します)。
 
-* The content is shared across multiple virtual machine (VM) instances of the web app.
-* The content is durable and can be modified by running web apps.
-* Log files and diagnostic data files are available under the same shared content folder.
-* Publishing new content directly updates the content folder. You can immediately view the same content through the SCM website and the running web app (typically some technologies such as ASP.NET do initiate a web app restart on some file changes to get the latest content).
+多くの Web アプリはこれらの機能の 1 つまたはすべてを使用しますが、高可用で実行できる高パフォーマンスの読み取り専用コンテンツ ストアのみを必要とする Web アプリもあります。このようなアプリは、特定のローカル キャッシュの VM インスタンスを利用できます。
 
-While many web apps use one or all of these features, some web apps just need a high-performance, read-only content store that they can run from with high availability. These apps can benefit from a VM instance of a specific local cache.
+Azure App Service のローカル キャッシュ機能では、コンテンツの Web ロール ビューが提供されます。このコンテンツは、サイトの起動時に非同期に作成されるストレージ コンテンツの書き込み/破棄キャッシュです。キャッシュの準備ができると、キャッシュされたコンテンツに対して実行するようにサイトが切り替わります。ローカル キャッシュで実行する Web アプリには、次の利点があります。
 
-The Azure App Service Local Cache feature provides a web role view of your content. This content is a write-but-discard cache of your storage content that is created asynchronously on site startup. When the cache is ready, the site is switched to run against the cached content. Web apps that run on Local Cache have the following benefits:
+* Azure Storage のコンテンツにアクセスするときに発生する遅延の影響を受けません。
+* コンテンツ共有を提供するサーバーで発生する、Azure Storage の計画的なアップグレードまたは計画されていないダウンタイムおよびその他の中断の影響は受けます。
+* ストレージ共有の変更によるアプリの再起動回数が少なくなります。
 
-* They are immune to latencies that occur when they access content on Azure Storage.
-* They are immune to the planned upgrades or unplanned downtimes and any other disruptions with Azure Storage that occur on servers that serve the content share.
-* They have fewer app restarts due to storage share changes.
+## ローカル キャッシュによる App Service の動作の変化
 
-## <a name="how-local-cache-changes-the-behavior-of-app-service"></a>How Local Cache changes the behavior of App Service
+* ローカル キャッシュは、Web アプリの /site フォルダーと /siteextensions フォルダーのコピーです。Web アプリの起動時にローカル VM インスタンス上に作成されます。Web アプリごとのローカル キャッシュのサイズは既定で上限が 300 MB ですが、最大 1 GB まで増やすことができます。
+* ローカル キャッシュは読み取り/書き込み対応です。ただし、Web アプリが仮想マシンを移動した場合や再起動された場合、変更は破棄されます。コンテンツ ストアにミッション クリティカルなデータを保存するアプリには、ローカル キャッシュを使用しないでください。
+* Web アプリは、ローカル キャッシュを使用しない場合と同様に、ログ ファイルと診断データの書き込みを継続できます。ただし、ログ ファイルとデータはローカルの VM に保存されます。その後、共有コンテンツ ストアに定期的にコピーされます。共有コンテンツ ストアへのコピーはベスト ケース エフォートで行われ、VM インスタンスが突然クラッシュした場合は書き戻しできない可能性があります。
+* ローカル キャッシュを使用する Web アプリの LogFiles フォルダーと Data フォルダーの構造は変わります。ストレージの LogFiles フォルダーと Data フォルダー以下に、"一意の識別子" + タイムスタンプという命名パターンに従ってサブフォルダーが作成されます。各サブフォルダーは、実行中か、実行されていた Web アプリの VM インスタンスに対応します。  
+* 何らかの発行メカニズムで変更を Web アプリに発行すると、共有コンテンツ ストアに発行されます。これは、発行されたコンテンツに持続性を持たせるための仕様によるものです。Web アプリのローカル キャッシュを更新するには、Web アプリを再起動する必要があります。余計な手順のように見えるかもしれませんが、 この記事の後半の情報を参照して、ライフサイクルをシームレスにしてください。
+* D:\\Home はローカル キャッシュを指します。D:\\local は、一時的な VM 固有の記憶域を引き続き指します。
+* SCM サイトの既定のコンテンツ ビューは、引き続き共有コンテンツ ストアのビューです。
 
-* The local cache is a copy of the /site and /siteextensions folders of the web app. It is created on the local VM instance on web app startup. The size of the local cache per web app is limited to 300 MB by default, but you can increase it up to 1 GB.
-* The local cache is read-write. However, any modifications will be discarded when the web app moves virtual machines or gets restarted. You should not use Local Cache for apps that store mission-critical data in the content store.
-* Web apps can continue to write log files and diagnostic data as they do currently. Log files and data, however, are stored locally on the VM. Then they are copied over periodically to the shared content store. The copy to the shared content store is a best-case effort--write backs could be lost due to a sudden crash of a VM instance.
-* There is a change in the folder structure of the LogFiles and Data folders for web apps that use Local Cache. There are now subfolders in the storage LogFiles and Data folders that follow the naming pattern of "unique identifier" + time stamp. Each of the subfolders corresponds to a VM instance where the web app is running or has run.  
-* Publishing changes to the web app through any of the publishing mechanisms will publish to the shared content store. This is by design because we want the published content to be durable. To refresh the local cache of the web app, it needs to be restarted. Does this seem like an excessive step? To make the lifecycle seamless, see the information later in this article.
-* D:\Home will point to the local cache. D:\local will continue pointing to the temporary VM specific storage.
-* The default content view of the SCM site will continue to be that of the shared content store.
+## App Service でローカル キャッシュを有効にする
 
-## <a name="enable-local-cache-in-app-service"></a>Enable Local Cache in App Service
+ローカル キャッシュは、予約されたアプリケーション設定を組み合わせて使用して構成します。このアプリケーション設定は、次の方法を使用して構成できます。
 
-You configure Local Cache by using a combination of reserved app settings. You can configure these app settings by using the following methods:
+* [Azure ポータル](#Configure-Local-Cache-Portal)
+* [Azure リソース マネージャー](#Configure-Local-Cache-ARM)
 
-* [Azure portal](#Configure-Local-Cache-Portal)
-* [Azure Resource Manager](#Configure-Local-Cache-ARM)
-
-### <a name="configure-local-cache-by-using-the-azure-portal"></a>Configure Local Cache by using the Azure portal
+### Azure ポータルを使用してローカル キャッシュを構成する
 <a name="Configure-Local-Cache-Portal"></a>
 
-You enable Local Cache on a per-web-app basis by using this app setting: `WEBSITE_LOCAL_CACHE_OPTION` = `Always`  
+ローカル キャッシュは、`WEBSITE_LOCAL_CACHE_OPTION` = `Always` というアプリケーション設定を使用して Web アプリごとに有効にします。
 
-![Azure portal app settings: Local Cache](media/app-service-local-cache/app-service-local-cache-configure-portal.png)
+![Azure ポータルのアプリケーション設定: ローカル キャッシュ](media/app-service-local-cache/app-service-local-cache-configure-portal.png)
 
-### <a name="configure-local-cache-by-using-azure-resource-manager"></a>Configure Local Cache by using Azure Resource Manager
+### Azure Resource Manager を使用してローカル キャッシュを構成する
 <a name="Configure-Local-Cache-ARM"></a>
 
 ```
@@ -82,44 +81,40 @@ You enable Local Cache on a per-web-app basis by using this app setting: `WEBSIT
 ...
 ```
 
-## <a name="change-the-size-setting-in-local-cache"></a>Change the size setting in Local Cache
+## ローカル キャッシュのサイズ設定を変更する
 
-By default, the local cache size is **300 MB**. This includes the /site and /siteextensions folders that are copied from the content store, as well as any locally created logs and data folders. To increase this limit, use the app setting `WEBSITE_LOCAL_CACHE_SIZEINMB`. You can increase the size up to **1 GB** (1000 MB) per web app.
+ローカル キャッシュの既定のサイズは **300 MB** です。これには、コンテンツ ストアからコピーされる /site フォルダーと /siteextensions フォルダーだけでなく、ローカルで作成されたログとデータのフォルダーが含まれます。この上限を上げるには、アプリケーション設定 `WEBSITE_LOCAL_CACHE_SIZEINMB` を使用します。サイズは、Web アプリごとに最大 **1 GB** (1000 MB) まで増やすことができます。
 
-## <a name="best-practices-for-using-app-service-local-cache"></a>Best practices for using App Service Local Cache
+## App Service のローカル キャッシュを使用する場合のベスト プラクティス
 
-We recommend that you use Local Cache in conjunction with the [Staging Environments](../app-service-web/web-sites-staged-publishing.md) feature.
+ローカル キャッシュは、[ステージング環境](../app-service-web/web-sites-staged-publishing.md)機能と併用することをお勧めします。
 
-* Add the _sticky_ app setting `WEBSITE_LOCAL_CACHE_OPTION` with the value `Always` to your **Production** slot. If you're using `WEBSITE_LOCAL_CACHE_SIZEINMB`, also add it as a sticky setting to your Production slot.
-* Create a **Staging** slot and publish to your Staging slot. You typically don't set the staging slot to use Local Cache to enable a seamless build-deploy-test lifecycle for staging if you get the benefits of Local Cache for the production slot.
-*   Test your site against your Staging slot.  
-*   When you are ready, issue a [swap operation](../app-service-web/web-sites-staged-publishing.md#to-swap-deployment-slots) between your Staging and Production slots.  
-*   Sticky settings include name and sticky to a slot. So when the Staging slot gets swapped into Production, it will inherit the Local Cache app settings. The newly swapped Production slot will run against the local cache after a few minutes and will be warmed up as part of slot warmup after swap. So when the slot swap is complete, your Production slot will be running against the local cache.
+* 値が `Always` の_固定の_アプリケーション設定 `WEBSITE_LOCAL_CACHE_OPTION` を**運用**スロットに追加します。`WEBSITE_LOCAL_CACHE_SIZEINMB` を使用する場合は、運用スロットにそれも固定の設定として追加します。
+* **ステージング** スロットを作成し、ステージング スロットに発行します。通常は、ステージングのシームレスなビルド、デプロイ、テストのライフサイクルを有効にするためにローカル キャッシュを使用するようにステージング スロットを設定しませんが、運用スロットの場合はローカル キャッシュの利点があります。
+*	ステージング スロットに対してサイトをテストします。  
+*	準備ができたら、ステージング スロットと運用スロット間の[スワップ操作](../app-service-web/web-sites-staged-publishing.md#to-swap-deployment-slots)を実行します。  
+*	固定の設定には名前が含まれ、スロットに固定されます。そのため、ステージング スロットが運用スロットにスワップされると、ローカル キャッシュのアプリケーション設定が継承されます。新しくスワップされた運用スロットは、数分後にローカル キャッシュに対して実行され、スワップ後のスロット ウォームアップ時にウォームアップされます。したがって、スロットのスワップが完了すると、運用スロットはローカル キャッシュに対して実行されるようになります。
 
-## <a name="frequently-asked-questions-(faq)"></a>Frequently asked questions (FAQ)
+## よく寄せられる質問 (FAQ)
 
-### <a name="how-can-i-tell-if-local-cache-applies-to-my-web-app?"></a>How can I tell if Local Cache applies to my web app?
+### Web アプリにローカル キャッシュを適用できるかどうかは、どうやって判断できますか?
 
-If your web app needs a high-performance, reliable content store, does not use the content store to write critical data at runtime, and is less than 1 GB in total size, then the answer is "yes"! To get the total size of your /site and /siteextensions folders, you can use the site extension "Azure Web Apps Disk Usage".  
+Web アプリが高パフォーマンスで信頼性の高いコンテンツ ストアが必要で、実行時に重要なデータ書き込むためにコンテンツ ストアを使用せず、合計サイズが 1 GB 未満であれば、ローカル キャッシュを適用できます。 /site フォルダーと /siteextensions フォルダーの合計サイズを確認するには、サイト拡張機能の "Azure Web Apps Disk Usage" を使用します。
 
-### <a name="how-can-i-tell-if-my-site-has-switched-to-using-local-cache?"></a>How can I tell if my site has switched to using Local Cache?
+### サイトがローカル キャッシュの使用に切り替わったかどうかを確認するにはどうすればよいですか?
 
-If you're using the Local Cache feature with Staging Environments, the swap operation will not complete until Local Cache is warmed up. To check if your site is running against Local Cache, you can check the worker process environment variable `WEBSITE_LOCALCACHE_READY`. Use the instructions on the [worker process environment variable](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable) page to access the worker process environment variable on multiple instances.  
+ステージング環境でローカル キャッシュ機能を使用している場合、ローカル キャッシュのウォームアップが完了するまでスワップ操作は完了しません。サイトがローカル キャッシュに対して実行されているかどうかは、worker プロセス環境変数の `WEBSITE_LOCALCACHE_READY` で確認できます。「[worker プロセス環境変数](https://github.com/projectkudu/kudu/wiki/Process-Threads-list-and-minidump-gcdump-diagsession#process-environment-variable)」ページの手順を使用して、複数インスタンスで worker プロセス環境変数にアクセスしてください。
 
-### <a name="i-just-published-new-changes,-but-my-web-app-does-not-seem-to-have-them.-why?"></a>I just published new changes, but my web app does not seem to have them. Why?
+### 新しい変更を発行しても Web アプリに反映されないのはなぜですか?
 
-If your web app uses Local Cache, then you need to restart your site to get the latest changes. Don’t want to publish changes to a production site? See the slot options in the previous best practices section.
+Web アプリがローカル キャッシュを使用している場合、最新の変更を反映するには、サイトを再起動する必要があります。運用サイトに変更を発行したくない場合は、 前述のベスト プラクティス セクションのスロットのオプションを参照してください。
 
-### <a name="where-are-my-logs?"></a>Where are my logs?
+### ログはどこにありますか?
 
-With Local Cache, your logs and data folders do look a little different. However, the structure of your subfolders remains the same, except that the subfolders are nestled under a subfolder with the format "unique VM identifier" + time stamp.
+ローカル キャッシュのログ フォルダーとデータ フォルダーの見た目は少し違いますが、サブフォルダーの構造は、"一意の VM 識別子" + タイムスタンプという形式のサブフォルダー以下に入れ子になっている点を除くと同じです。
 
-### <a name="i-have-local-cache-enabled,-but-my-web-app-still-gets-restarted.-why-is-that?-i-thought-local-cache-helped-with-frequent-app-restarts."></a>I have Local Cache enabled, but my web app still gets restarted. Why is that? I thought Local Cache helped with frequent app restarts.
+### ローカル キャッシュを有効にした後も、Web アプリが再起動されるのはなぜですか? ローカル キャッシュを使用すると、アプリが頻繁に再起動しないと思っていました。
 
-Local Cache does help prevent storage-related web app restarts. However, your web app could still undergo restarts during planned infrastructure upgrades of the VM. The overall app restarts that you experience with Local Cache enabled should be fewer.
+ローカル キャッシュを使用した場合、ストレージ関連の Web アプリの再起動回数が減りますが、VM の計画的なインフラストラクチャのアップグレード時には、Web アプリが引き続き再起動する可能性があります。ローカル キャッシュを有効にした場合、アプリ全体の再起動回数は減ります。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0330_2016------>

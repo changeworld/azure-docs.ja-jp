@@ -1,49 +1,44 @@
 <properties 
-    pageTitle="Azure Mobile Engagement Android SDK Integration" 
-    description="Latest updates and procedures for Android SDK for Azure Mobile Engagement"
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo" 
-    manager="dwrede" 
-    editor="" />
+	pageTitle="Azure Mobile Engagement Android SDK の統合" 
+	description="Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="dwrede" 
+	editor="" />
 
 <tags 
-    ms.service="mobile-engagement" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="mobile-android" 
-    ms.devlang="Java" 
-    ms.topic="article" 
-    ms.date="08/19/2016" 
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-android" 
+	ms.devlang="Java" 
+	ms.topic="article" 
+	ms.date="08/19/2016" 
+	ms.author="piyushjo" />
 
+#SDK の内容
 
-#<a name="sdk-content"></a>SDK Content
-
-This document lists and describes the content of the SDK archive.
+このドキュメントでは、SDK アーカイブの内容を一覧にして説明しています。
 
 `mobile-engagement-VERSION.jar`
 
-> Engagement SDK class files.
+> Engagement SDK のクラス ファイル。
 
-`res` folder
+`res` フォルダー
 
-> Engagement Reach SDK resources (drawable and layout files to include in your applications).
+> Engagement Reach SDK のリソース (描画可能でアプリケーションに含めるファイルをレイアウト)。
 
-`src` folder
+`src` フォルダー
 
-> Engagement SDK source code.
+> Engagement SDK のソース コード。
 >
-> Note that the sources of the service are not included (`com.microsoft.azure.engagement.service.EngagementService` and its related source files).
+> サービスのソース (`com.microsoft.azure.engagement.service.EngagementService` および関連するソース ファイル) は含まれていません。
 
 `documentation.html`
 
-> A shortcut to the documentation site corresponding to the downloaded version of the SDK.
+> ダウンロードした SDK のバージョンに対応するドキュメント サイトへのショートカット。
 
-Other files are a copy of the software licenses.
+その他のファイルはソフトウェア ライセンスのコピーです。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

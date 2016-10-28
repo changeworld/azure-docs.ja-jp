@@ -1,101 +1,96 @@
 <properties 
-    pageTitle="Overview of schemas and the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-    description="Learn how to use schemas with the Enterprise Integration Pack and Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="msftman" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="スキーマと Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
+	description="Enterprise Integration Pack と Logic Apps でスキーマを使用する方法について説明します" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/29/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/29/2016" 
+	ms.author="deonhe"/>
 
+# スキーマと Enterprise Integration Pack についての詳細情報  
 
-# <a name="learn-about-schemas-and-the-enterprise-integration-pack"></a>Learn about schemas and the Enterprise Integration Pack  
+## スキーマを使用する理由
+スキーマを使用すると、受信した XML ドキュメントが有効であることを確認できます。つまり、予期したデータが定義済みの形式でドキュメントに含まれていることを確認できます。
 
-## <a name="why-use-a-schema"></a>Why use a schema
-You use schemas to confirm that XML documents you receive are valid, meaning that the documents contain the expected data in a predefined format.
+## スキーマを追加する方法
+Azure ポータルで次の手順を実行します。
 
-## <a name="how-to-add-a-schema"></a>How to add a schema
-From the Azure portal:  
-
-1. Select **More Services**  
+1. **[そのほかのサービス]** を選択します。  
 ![](./media/app-service-logic-enterprise-integration-overview/overview-11.png)    
-2. Enter **integration** in the filter search box and select **Integration Accounts** from the results list     
+2. フィルター検索ボックスに「**integration**」と入力し、結果リストから **[Integration Accounts (統合アカウント)]** を選択します。     
 ![](./media/app-service-logic-enterprise-integration-overview/overview-21.png)  
-3. Select the **integration account** to which you add the schema    
+3. スキーマの追加先となる**統合アカウント**を選択します。    
 ![](./media/app-service-logic-enterprise-integration-overview/overview-31.png)  
-4. Select the **Schemas** tile  
+4. **[スキーマ]** タイルを選択します。  
 ![](./media/app-service-logic-enterprise-integration-schemas/schema-11.png)  
 
-#### <a name="to-add-schema-file-less-than-2-mb"></a>To add schema file less than 2 MB  
+#### 2 MB 未満のスキーマ ファイルを追加するには  
 
-5. Select the **Add** button in the Schemas blade that opens  
+5. 開いた [スキーマ] ブレードの **[追加]** ボタンを選択します。  
 ![](./media/app-service-logic-enterprise-integration-schemas/schema-21.png)  
-6. Enter a **Name** for your schema, then to upload the schema file, select the folder icon on the right side of the **Schema** text box. After the upload process is completed, select the **OK** button.    
+6. スキーマの**名前**を入力し、**[スキーマ]** ボックスの右側にあるフォルダー アイコンを選択して、スキーマ ファイルをアップロードします。アップロード プロセスが完了したら、**[OK]** ボタンを選択します。    
 ![](./media/app-service-logic-enterprise-integration-schemas/schema-31.png)  
 
-#### <a name="to-add-schema-file-larger-than-2-mb-(max-8-mb)"></a>To add schema file larger than 2 MB (Max 8 MB)  
+#### 2 MB を超える (最大 8 MB) スキーマ ファイルを追加するには  
 
-7. If blob security access level is **Public**  
+7. BLOB のセキュリティ アクセス レベルが "**パブリック**" の場合  
   ![](./media/app-service-logic-enterprise-integration-schemas/blob-public.png)  
 
-  * Upload the schema to storage and copy the URI  
+  * スキーマをストレージにアップロードし、URI をコピーします。  
   ![](./media/app-service-logic-enterprise-integration-schemas/schema-blob.png)  
 
-  * Select Large file in Add Schema and provide the URI in the Content URI  
+  * [スキーマの追加] で [Large file (大きなファイル)] を選択し、[コンテンツ URI] に URI を指定します。  
   ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)  
 
-8. If blob security access level is **No anonymous access**  
+8. BLOB のセキュリティ アクセス レベルが "**匿名アクセスはありません**" の場合  
   ![](./media/app-service-logic-enterprise-integration-schemas/blob-1.png)  
 
-  * Upload the schema to storage  
+  * スキーマをストレージにアップロードします。  
   ![](./media/app-service-logic-enterprise-integration-schemas/blob-3.png)
 
-  * Generate a Shared Access Signature for the schema  
+  * スキーマの Shared Access Signature を生成します。  
   ![](./media/app-service-logic-enterprise-integration-schemas/blob-2.png)
 
-  * Select Large file in Add Schema and provide the Shared Access Signature URI in the Content URI  
-  ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)  
+  * [スキーマの追加] で [Large file (大きなファイル)] を選択し、[コンテンツ URI] に Shared Access Signature URI を指定します。  
+  ![](./media/app-service-logic-enterprise-integration-schemas/schema-largefile.png)
 
-9. You should see the newly added schema  
+9. 新しく追加されたスキーマが表示されます。  
 ![](./media/app-service-logic-enterprise-integration-schemas/schema-41.png) 
 
-## <a name="how-to-use-schemas"></a>How to use schemas
-- Schemas are used to validate messages that are exchanged in a B2B scenario.  
+## スキーマを使用する方法
+- スキーマは、B2B シナリオで交換されるメッセージを検証するために使用します。
 
-## <a name="how-to-edit-schemas"></a>How to edit schemas
-1. Select the **Schemas** tile  
-2. Select the schema you wish to edit from the Schemas blade that opens up
-3. Select the **Upload** link on the Schemas blade  
+## スキーマを編集する方法
+1. **[Schemas (スキーマ)]** タイルを選択します。
+2. 開いた [Schemas (スキーマ)] ブレードで、編集するスキーマを選択します。
+3. [スキーマ] ブレードの **[アップロード]** リンクを選択します。  
 ![](./media/app-service-logic-enterprise-integration-schemas/edit-12.png)    
-4. Select the schema file you wish to upload by using the file picker dialog that opens up.
-5. Select **Open** in the file picker  
+4. 開いたファイル ピッカー ダイアログを使用して、アップロードするスキーマ ファイルを選択します。
+5. ファイル ピッカーの **[開く]** を選択します。  
 ![](./media/app-service-logic-enterprise-integration-schemas/edit-31.png)  
-6. You receive a notification that indicates the upload was successful  
+6. アップロードが成功したことを示す通知が表示されます。  
 
-## <a name="how-to-delete-schemas"></a>How to delete schemas
-1. Select the **Schemas** tile  
-2. Select the schema you wish to delete from the Schemas blade that opens up  
-3. Select the **Delete** link from the menu bar on the Schemas blade ![](./media/app-service-logic-enterprise-integration-schemas/delete-12.png)  
-4. If you really wish to delete the schema you selected, choose **Yes** on the Delete schema dialog to confirm your choice  
+## スキーマを削除する方法
+1. **[Schemas (スキーマ)]** タイルを選択します。  
+2. 開いた [Schemas (スキーマ)] ブレードで、削除するスキーマを選択します。  
+3. [スキーマ] ブレードのメニュー バーから **[削除]** リンクを選択します。
+![](./media/app-service-logic-enterprise-integration-schemas/delete-12.png)  
+4. 選択したスキーマを本当に削除する場合は、[スキーマの削除] ダイアログで **[はい]** を選択し、選択内容を確定します。  
 ![](./media/app-service-logic-enterprise-integration-schemas/delete-21.png)  
-5. Finally, notice that the list of schemas in the Schemas blade refreshes and the schema you deleted is no longer listed  
+5. これで、[スキーマ] ブレードにあるスキーマの一覧が更新され、削除したスキーマが一覧に表示されなくなります。  
 ![](./media/app-service-logic-enterprise-integration-schemas/delete-31.png)    
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about the enterprise integration pack")  
+- [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

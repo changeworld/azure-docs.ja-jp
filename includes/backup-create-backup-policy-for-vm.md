@@ -1,34 +1,31 @@
-## <a name="defining-a-backup-policy"></a>Defining a backup policy
+## バックアップ ポリシーの定義
 
-A backup policy defines a matrix of when the data snapshots are taken, and how long those snapshots are retained. When defining a policy for backing up a VM, you can trigger a backup job *once a day*. When you create a new policy, it is applied to the vault. The backup policy interface looks like this:
+バックアップ ポリシーは、データのスナップショットをいつ取得し、それらのスナップショットをいつまで保持するかのマトリックスを定義します。VM をバックアップするためのポリシーを定義するときに、バックアップ ジョブを *1 日に 1 回*トリガーできます。新しいポリシーを作成すると、コンテナーに適用されます。バックアップ ポリシーのインターフェイスは、次のようになります。
 
 ![Backup policy](./media/backup-create-policy-for-vms/backup-policy.png)
 
-To create a policy:
+ポリシーを作成するには、次の手順に従います。
 
-1. Enter a name for the **Policy name**.
+1. **[ポリシー名]** に名前を入力します。
 
-2. Snapshots of your data can be taken at Daily or Weekly intervals. Use the **Backup Frequency** drop-down menu to choose whether data snapshots are taken Daily or Weekly.
+2. データのスナップショットは、毎日または毎週の間隔で取得できます。**[バックアップの頻度]** ボックスを使用して、データのスナップショットを毎日取得するか毎週取得するかを選択します。
 
-    - If you choose a Daily interval, use the highlighted control to select the time of the day for the snapshot. To change the hour, de-select the hour, and select the new hour.
+    - 間隔として毎日を選択する場合は、強調表示されているコントロールを使用して、スナップショットの時刻を選択します。時刻を変更するには、時刻の選択を解除し、新しい時刻を選択します。
 
     ![Daily backup policy](./media/backup-create-policy-for-vms/backup-policy-daily.png) <br/>
 
-    - If you choose a Weekly interval, use the highlighted controls to select the day(s) of the week, and the time of day to take the snapshot. In the day menu, select one or multiple days. In the hour menu, select one hour. To change the hour, de-select the selected hour, and select the new hour.
+    - 間隔として毎週を選択する場合は、強調表示されているコントロールを使用して、スナップショットを取得する曜日と時刻を選択します。曜日のメニューでは、1 つ以上の曜日を選択します。時刻のメニューでは、1 つの時刻を選択します。時刻を変更するには、時刻の選択を解除し、新しい時刻を選択します。
 
     ![Weekly backup policy](./media/backup-create-policy-for-vms/backup-policy-weekly.png)
 
-3. By default, all **Retention Range** options are selected. Uncheck any retention range limit you do not want to use. Then, specify the interval(s) to use.
+3. 既定では、すべての **[リテンション期間]** オプションが選択されています。使用しない保持期間のチェック ボックスをオフにします。次に、使用する間隔を指定します。
 
-    Monthly and Yearly retention ranges allow you to specify the snapshots based on a weekly or daily increment.
+    月および年単位の保持期間では、週単位または日単位の増分に基づいてスナップショットを指定できます。
 
-    >[AZURE.NOTE] When protecting a VM, a backup job runs once a day. The time when the backup runs is the same for each retention range.
+    >[AZURE.NOTE] VM を保護する場合、バックアップ ジョブは 1 日に 1 回実行されます。バックアップが実行される時刻は、どの保持期間でも同じです。
 
-4. After setting all options for the policy, at the top of the blade click **Save**.
+4. ポリシーのすべてのオプションを設定したら、ブレードの上部にある **[保存]** をクリックします。
 
-    The new policy is immediately applied to the vault.
+    すぐに、新しいポリシーがコンテナーに適用されます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0608_2016-->

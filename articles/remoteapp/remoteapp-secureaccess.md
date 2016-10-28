@@ -1,11 +1,11 @@
 
 <properties 
-    pageTitle="Securing access to Azure RemoteApp, and beyond | Microsoft Azure"
-    description="Learn how secure access to Azure RemoteApp by using conditional access in Azure Active Directory"
-    services="remoteapp"
-    documentationCenter="" 
-    authors="piotrci" 
-    manager="mbaldwin" />
+    pageTitle="Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護 | Microsoft Azure"
+	description="Azure Active Directory で条件付きアクセスを使用して、Azure RemoteApp へのアクセスをセキュリティで保護する方法について説明します。"
+	services="remoteapp"
+	documentationCenter="" 
+	authors="piotrci" 
+	manager="mbaldwin" />
 
 <tags 
     ms.service="remoteapp" 
@@ -16,115 +16,101 @@
     ms.date="08/15/2016" 
     ms.author="elizapo" />
 
-
-# <a name="securing-access-to-azure-remoteapp,-and-beyond"></a>Securing access to Azure RemoteApp, and beyond
+# Azure RemoteApp とその先にあるリソースへのアクセスのセキュリティ保護
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-In this article we will give an overview of how an administrator can set up a secure access channel starting from the end user, through Azure RemoteApp and ending with a secure resource such as a SQL database or another application back-end. The goal is to make sure that only authorized users meeting the desired conditions can access remote applications, and that the secure back-end can only be accessed from the controlled Azure RemoteApp environment and not from other locations.
+この記事では、管理者が、エンド ユーザーから始まりセキュリティで保護されたリソース (SQL Database や他のアプリケーション バックエンドなど) で終わる、Azure RemoteApp 経由のセキュリティで保護されたアクセス チャネルをセットアップする方法の概要を示します。その目的は、必要な条件を満たす許可ユーザーのみがリモート アプリケーションにアクセスできるようにすることと、セキュリティで保護されたバックエンドに制御された Azure RemoteApp 環境からのみアクセスできるようにし、他の場所からはアクセスできないようにすることです。
 
-There are 3 major areas the admin needs to look at:
+管理者が確認する必要がある 3 つの主な領域を以下に示します。
 
-![Azure RemoteApp conditional access considerations](./media/remoteapp-secureaccess/ra-conditionalenvironment.png)
+![Azure RemoteApp の条件付きアクセスに関する考慮事項](./media/remoteapp-secureaccess/ra-conditionalenvironment.png)
 
-Read on for information and answers to these questions.
+詳細およびこれらの質問に対する回答については、以下で説明します。
 
-## <a name="who-can-access-the-collection?"></a>Who can access the collection?
-The administrator chooses the users that can access remote applications in the collection. You can use Azure Active Directory (Azure AD) work or school accounts (previously called, "organizational accounts") or Microsoft accounts (e.g. @outlook.com). Most enterprise scenarios use Azure AD accounts; they let you use conditional access features discussed later and are also the only choice for domain-joined collections. The rest of the article assumes you are using Azure AD accounts with Azure RemoteApp.
+## コレクションにアクセスできるのは誰ですか?
+管理者は、コレクション内のリモート アプリケーションにアクセスできるユーザーを選択します。Azure Active Directory (Azure AD) の職場または学校のアカウント (旧称、"組織アカウント") または Microsoft アカウント (@outlook.com など) を使用することができます。ほとんどのエンタープライズ シナリオでは Azure AD アカウントが使用されます。このアカウントでは、後で説明する条件付きアクセス機能を使用できます。また、ドメイン参加コレクションに対して選択できるのはこのアカウントのみです。記事の後半では、Azure RemoteApp で Azure AD アカウントを使用することを前提としています。
 
-**What we have accomplished:**
+**実現内容:**
 
-Using Azure AD accounts to control access to Azure RemoteApp gives us two things:
+Azure RemoteApp へのアクセスを制御するために Azure AD アカウントを使用すると、次の 2 つのことが実現できます。
 
-1.  We always know who can access the applications we have published and access any back-ends those applications connect to.
-2.  We control the underlying Azure AD so we can create and delete user accounts, set password policies, use multi-factor authentication, etc. 
+1.	発行されたアプリケーションと、それらのアプリケーションの接続先となるバックエンドにアクセスできるユーザーを常に把握する。
+2.	ユーザー アカウントの作成と削除、パスワード ポリシーの設定、多要素認証の使用などができるように、基になる Azure AD を制御する。
 
-## <a name="how-is-the-collection-accessed?-from-where?"></a>How is the collection accessed? From where?
-Commonly administrators want to define policies for accessing a public Internet-facing environment, such as Azure RemoteApp. For example, they want to ensure that users accessing the environment from outside of the corporate network have to use multi-factor authentication (MFA) to gain access; or perhaps they should be blocked altogether.
+## コレクションにはどのようにアクセスしますか? また、どこからアクセスしますか?
+一般的に、管理者は Azure RemoteApp など、インターネットに接続されたパブリック環境へのアクセスに関するポリシーを定義します。たとえば、管理者は、企業ネットワーク外部からその環境にアクセスするユーザーは多要素認証 (MFA) を使用してアクセスしなければならない (または完全にブロックする) ようにします。
 
-Azure RemoteApp administrators can use the functionality available through Azure AD Premium to set conditional access policies for their Azure RemoteApp environment. They can also use rich reporting and alerting features to monitor how the environment is being accessed.
+Azure RemoteApp 管理者は、Azure AD Premium で使用可能な機能を用いて、Azure RemoteApp 環境に対して条件付きアクセス ポリシーを設定できます。また、豊富なレポートおよびアラート機能を使用して、環境へのアクセス方法を監視することもできます。
 
-### <a name="how-to-set-up-conditional-access-for-azure-remoteapp"></a>How to set up conditional access for Azure RemoteApp
-We are going to walk through an example scenario – the Azure RemoteApp administrator wants to block access to the environment when users are outside of the corporate network.
+### Azure RemoteApp に対する条件付きアクセスの設定方法
+ここでは、ユーザーが企業ネットワークの外部にいる場合、Azure RemoteApp 管理者は環境へのアクセスをブロックするシナリオ例について説明します。
 
->[AZURE.NOTE] We assume you have upgraded Azure AD to the Premium tier and that you have created at least one Azure RemoteApp collection.
+>[AZURE.NOTE] Azure AD が Premium レベルにアップグレード済みで、1 つ以上の Azure RemoteApp コレクションを作成済みであることを前提とします。
 
-1.  In Azure portal click the **Active Directory** tab. Then click the directory you want to configure.
+1.	Azure ポータルで、**[Active Directory]** タブをクリックします。次に、構成するディレクトリをクリックします。
 
-    Remember: Conditional access is a property of your directory and not of Azure RemoteApp, so all configuration is done at the directory level. This also means you need to be the directory administrator to make these changes.
+	注: 条件付きアクセスは、Azure RemoteApp ではなく、ご使用のディレクトリのプロパティであるため、すべての構成はディレクトリ レベルで行われます。これは、変更を加えるにはディレクトリ管理者でなければならないことも意味します。
 
-2.  Click **Applications**, and then click **Microsoft Azure RemoteApp** to set up conditional access. Note that you can set up conditional access for each “software as a service” application in your directory separately.
-![Setting up conditional access for Azure RemoteApp](./media/remoteapp-secureaccess/ra-conditionalaccessscreen.png)
+2.	**[アプリケーション]** をクリックしてから、**[Microsoft Azure RemoteApp]** をクリックして条件付きアクセスを設定します。ディレクトリ内の "サービスとしてのソフトウェア" アプリケーションごとに個別に条件付きアクセスを設定できることに注意してください。 ![Azure RemoteApp に対する条件付きアクセスの設定](./media/remoteapp-secureaccess/ra-conditionalaccessscreen.png)
  
 
-3.  On the **Configure** tab, set **Enable Access Rules** to ON.
-![Enable access rules for Azure RemoteApp](./media/remoteapp-secureaccess/ra-enableaccessrules.png)
+3.	**[構成]** タブで、**[アクセス規則を有効にする]** を [オン] に設定します。 ![Azure RemoteApp のアクセス規則を有効にする](./media/remoteapp-secureaccess/ra-enableaccessrules.png)
  
 
-4.  You can now configure various rules and choose who to apply them to:
+4.	ここで、さまざまな規則を構成し、適用するユーザーを選択できます。
 
-    1. Choose **Block access when not at work** to completely prevent users from accessing Azure RemoteApp outside of the network environment you specify.
-    2. Click the option below to define the IP address ranges that constitute your “trusted network”. Everything outside of those will be rejected.
+	1. **[作業中でない場合、アクセスをブロック]** を選択し、指定したネットワーク環境外からのユーザーによる Azure RemoteApp へのアクセスを完全に防ぎます。
+	2. 下にあるオプションをクリックし、"信頼されたネットワーク" を構成する IP アドレス範囲を定義します。それ以外のものはすべて拒否されます。
 
-5.  Test your configuration by launching the Azure RemoteApp client from an IP address outside of the range you specified. After you sign in with your Azure AD credentials you should see a message like this:
+5.	指定した範囲外の IP アドレスから Azure RemoteApp クライアントを起動して、構成をテストします。Azure AD の資格情報でサインインした後、次のようなメッセージが表示されます。
 
-![Denied access to Azure RemoteApp](./media/remoteapp-secureaccess/ra-accessdenied.png)
+![Azure RemoteApp へのアクセス拒否](./media/remoteapp-secureaccess/ra-accessdenied.png)
  
 
-### <a name="future-conditional-access-features"></a>Future conditional access features 
-The Azure Active Directory team is working on new capabilities in Conditional Access. Administrators will be able to create new types of rules beyond network location based rules. A public preview of the new functionality should be available soon.
+### 将来の条件付きアクセスの機能 
+Azure Active Directory チームは、条件付きアクセスの新機能に取り組んでいます。管理者は、ネットワークの場所ベースの規則のほかに、新しい種類の規則を作成できるようになります。パブリック プレビューの新機能は間もなく利用可能になります。
 
-### <a name="how-to-monitor-access-to-azure-remoteapp"></a>How to monitor access to Azure RemoteApp
-A great feature to use alongside conditional access is the Azure Active Directory Premium reporting functionality. You can use reports to monitor who is accessing your environment and detect any suspicious activity.
+### Azure RemoteApp へのアクセスの監視方法
+条件付きアクセスと共に使用する優れた機能として、Azure Active Directory Premium のレポート作成機能があります。レポートを使用することで、自分の環境にアクセスしているユーザーを監視し、疑わしいアクティビティを検出できます。
 
-For example, you can see the names of the users who accessed Azure RemoteApp, how many times they did it and when.
+たとえば、Azure RemoteApp にアクセスしたユーザーの名前、アクセスの回数および時刻を確認できます。
 
-1.  In Azure portal, click **Active Directory**, and then click your directory.
+1.	Azure ポータルで、**[Active Directory]** をクリックしてから使用するディレクトリをクリックします。
 
-2.  Go to the **Reports** tab.
+2.	**[レポート]** タブに移動します。
 
-3.  From the list of reports, select **Application usage** under **Integrated applications**.
+3.	レポートの一覧から、**[統合アプリケーション]** の **[アプリケーションの使用状況]** を選択します。
 
-    You'll see some aggregated statistics for Azure RemoteApp. 
-![Aggregated Azure RemoteApp access stats](./media/remoteapp-secureaccess/ra-accessstats.png)
+	Azure RemoteApp の集計された統計がいくつか表示されます。 ![集計された Azure RemoteApp アクセスの統計](./media/remoteapp-secureaccess/ra-accessstats.png)
  
-5.  Click the application to reveal information about users accessing Azure RemoteApp.
-![User access stats for Azure RemoteApp](./media/remoteapp-secureaccess/ra-userstats.png)
+5.	アプリケーションをクリックして、Azure RemoteApp にアクセスしているユーザーに関する情報を表示します。 ![Azure RemoteApp のユーザー アクセスの統計](./media/remoteapp-secureaccess/ra-userstats.png)
  
-### <a name="summary"></a>Summary
-With Azure Active Directory Premium you can set up access rules to Azure RemoteApp (and other software as a service applications available through Azure AD). Rules are currently limited to network location based policies but will in the future be extended to other aspects of enterprise management.
+### まとめ
+Azure Active Directory Premium では、Azure RemoteApp (および Azure AD を介して使用可能な他のサービスとしてのソフトウェア アプリケーション) に対するアクセス規則を設定できます。現時点では、規則はネットワークの場所ベースのポリシーに制限されていますが、将来的には、エンタープライズ管理の他の部分に拡張されます。
 
-Azure AD Premium also offers reporting and monitoring capabilities that further extend the control the admin has over their Azure RemoteApp environment.
+また、Azure AD Premium では、管理者による Azure RemoteApp 環境に対する制御範囲をさらに拡大するレポートと監視機能も提供されます。
 
-## <a name="how-do-i-make-sure-my-secure-resource-is-accessible-only-from-my-azure-remoteapp-environment?"></a>How do I make sure my secure resource is accessible only from my Azure RemoteApp environment?
-In previous sections of this article we focused on securing access to the Azure RemoteApp environment. We have accomplished that by choosing the users who are allowed access and setting up access rules to further control how they can use the service.
+## セキュリティで保護されたリソースに Azure RemoteApp 環境からのみアクセスできるようにするにはどうすればよいですか?
+この記事の前のセクションでは、Azure RemoteApp 環境へのアクセスをセキュリティで保護することに重点を置きました。これは、アクセスを許可するユーザーを選択し、サービスの使用方法をさらに細かく制御するためのアクセス規則を設定して行いました。
 
-A common scenario for Azure RemoteApp deployments is that the remote applications need to communicate with a back-end resource, for example a SQL database. This resource is hosted either on-premises (e.g. in a corporate network) or in the cloud (e.g. in Azure IaaS). Administrators often want to make sure that the back-end resource can only be accessed by applications deployed via Azure RemoteApp and not for example by an application running directly on a user’s PC and accessing over public Internet. Azure RemoteApp is often seen as the centrally-managed and secured environment and thus the only path through which users should interact with the back-end resource.
+Azure RemoteApp デプロイメントの一般的なシナリオは、リモート アプリケーションが SQL Database などのバックエンド リソースと通信を行う必要があるのいうものです。このリソースは、オンプレミス (企業ネットワークなど) またはクラウド (Azure IaaS など) でホストされます。管理者は、ユーザーの PC 上で直接実行されており、パブリック インターネット経由でアクセスするアプリケーションなどではなく、Azure RemoteApp を使用してデプロイされたアプリケーションからのみ、バックエンド リソースにアクセスできるようにする場合がよくあります。多くの場合、Azure RemoteApp が一元的に管理され、セキュリティで保護された環境と見なされるため、ユーザーは Azure RemoteApp を経由しないとバックエンド リソースと対話することはできません。
 
-The solution is to place both the Azure RemoteApp environment and the secure resource in the same Azure Virtual Network (VNET). If the resource is in a different site, you can establish a site-to-site VPN connection, for example to create a VNet spanning the Azure data center and the customer on-premises environment.
+このソリューションでは、同じ Azure Virtual Network (VNET) に Azure RemoteApp 環境とセキュリティで保護されたリソースの両方を配置します。リソースが別のサイトにある場合は、Azure データ センターとお客様のオンプレミス環境にまたがる VNet を作成する場合などに、サイト間 VPN 接続を確立できます。
 
-Azure RemoteApp supports two types of collection deployments where you can provide your own VNET:
+Azure RemoteApp では、ユーザーが独自の VNET を指定できる以下の 2 種類のコレクション デプロイメントがサポートされています。
 
--   Non-domain-joined: the applications will have “line of sight” of the other resources in the VNET. For example, this can be used to connect applications to a SQL database that uses SQL authentication (applications authenticate the user directly against the database)
+-	ドメイン不参加: アプリケーションから、VNET 内の他のリソースを見通すことができます。たとえば、これを使用して、SQL 認証を使用する SQL Database にアプリケーションを接続することができます (アプリケーションがデータベースに対して直接ユーザーを認証)。
 
--   Domain-joined: the virtual machines used by Azure RemoteApp are joined to a domain controller in the VNET. This is useful when the applications need to authenticate against a Windows Domain Controller in order to get access to a back-end resource.
-![A domain-joined collection in Azure RemoteApp](./media/remoteapp-secureaccess/ra-domainjoined.png)
+-	ドメイン参加: Azure RemoteApp で使用される仮想マシンは、VNET 内のドメイン コント ローラーに参加しています。これは、アプリケーションがバックエンド リソースにアクセスするために、Windows ドメイン コントローラーに対して認証する必要がある場合に便利です。 ![Azure RemoteApp のドメイン参加コレクション](./media/remoteapp-secureaccess/ra-domainjoined.png)
  
-### <a name="how-to-create-a-secure-connection-between-azure-and-my-on-premises-environment"></a>How to create a secure connection between Azure and my on-premises environment
-There are several configuration options for connecting your Azure and on-premises environments. A good overview of the options is available here.
+### Azure とオンプレミス環境間のセキュリティで保護された接続を作成する方法
+Azure とオンプレミス環境を接続するためのいくつかの構成オプションがあります。ここでは、オプションの概要を示します。
 
-With Azure RemoteApp you need to configure your VNet first, and then use it during the creation process of your collection. 
+Azure RemoteApp では、最初に VNet を構成してから、コレクションの作成プロセスでそれを使用する必要があります。
 
-## <a name="the-complete-solution"></a>The complete solution
-The diagram below shows the complete solution where we have built a secure access channel from the end user, through Azure RemoteApp (ARA), into the backend resource.
-![Secure Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) In Stage 1 we selected the users and created access rules that govern how ARA can be accessed. In the example below we only allow access for users working from the corporate network. Non-compliant users will not be able to access the ARA environment at all.
-In “Stage 2” we have exposed the backend resource only through the VNet/VPN configuration which we control. Azure RemoteApp has been placed in the same VNet. The end result is that the resource can only be accessed through the ARA environment.
+## 完全なソリューション
+以下の図は、エンド ユーザーからバックエンド リソースへの Azure RemoteApp (ARA) 経由のセキュリティで保護されたアクセス チャネルが構築された完全なソリューションを示しています。![セキュリティで保護された Azure RemoteApp](./media/remoteapp-secureaccess/ra-secureoverview.png) ステージ 1 では、ユーザーを選択し、ARA へのアクセス方法を制御するアクセス規則を作成しました。この例では、企業ネットワークから作業を行っているユーザーに対してのみアクセスを許可しています。非準拠ユーザーは、ARA 環境にはまったくアクセスすることはできません。"ステージ 2" では、制御下の VNet/VPN 構成でのみバックエンド リソースを公開しました。Azure RemoteApp は同じ VNet 内に配置されています。最終的に、リソースは ARA 環境を介してのみアクセスできます。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

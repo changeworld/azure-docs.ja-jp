@@ -1,179 +1,173 @@
 <properties
-    pageTitle="MyDriving Azure IoT example: Quick start | Microsoft Azure"
-    description="Get started with an app that's a comprehensive demonstration of how to architect an IoT system by using Microsoft Azure, including Stream Analytics, Machine Learning, and Event Hubs."
-    services=""
+	pageTitle="MyDriving Azure IoT の例 - クイック スタート | Microsoft Azure"
+	description="Microsoft Azure を使用して、Stream Analytics、Machine Learning、Event Hubs などの IoT システムを設計する方法を総合的に示すアプリを初めて使用します。"
+	services=""
     documentationCenter=".net"
     suite=""
-    authors="harikmenon"
-    manager="douge"/>
+	authors="harikmenon"
+	manager="douge"/>
 
 <tags
-    ms.service="multiple"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="ibiza"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="03/25/2016"
-    ms.author="harikm"/>
+	ms.service="multiple"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="03/25/2016"
+	ms.author="harikm"/>
 
+# MyDriving IoT システム: クイック スタート
 
-# <a name="mydriving-iot-system:-quick-start"></a>MyDriving IoT system: Quick start
+MyDriving は、デバイスからテレメトリを収集し、そのデータをクラウドで処理して、機械学習を適用することで状況に適した応答を返すという、典型的な[モノのインターネット](iot-suite-overview.md) (IoT) ソリューションの設計と実装を示すシステムです。このシステムは、ユーザーの携帯電話と、自動車の制御システムから情報を取得するアダプターの両方からのデータを使用して、車の走行に関するデータを記録します。また、このデータを基に、ユーザーの運転スタイルを他のユーザーと比較してフィードバックします。
 
-MyDriving is a system that demonstrates the design and implementation of a typical [Internet of Things](iot-suite-overview.md) (IoT) solution that gathers telemetry from devices, processes that data in the cloud, and applies machine learning to provide an adaptive response. The demonstration logs data about your car trips, by using data from both your mobile phone and an adapter that collects information from your car’s control system. It uses this data to provide feedback on your driving style in comparison to other users.
+MyDriving の真の目的は、皆さんが独自の IoT ソリューションを作成する出発点になることです。しかしその前に、私たちのテスト ユーザー チームの一員として、MyDriving アプリそのものをご覧いただくことしましょう。そうすることで、アーキテクチャを詳しく検討する前に、コンシューマーとして、このアプリケーションとシステムに触れることができます。さらに、テスト ユーザーに対するアルファ版やベータ版のアプリ配布を管理する優れたツール、HockeyApp をご紹介します。
 
-The real purpose of MyDriving is to get you started in creating your own IoT solution. But before that, let’s get you going with the MyDriving app itself--as a member of our test user team. This gives you an experience of the app and the system behind it as a consumer, before you delve into the architecture. It also introduces you to HockeyApp, a cool way of managing the alpha and beta distributions of your apps to test users.
+## モバイル機器での利用
 
-## <a name="use-the-mobile-experience"></a>Use the mobile experience
+Android、iOS、または Windows 10 デバイスをお持ちの場合、MyDriving アプリをお使いいただけます。
 
-You can use the MyDriving app if you have an Android, iOS, or Windows 10 device.
+### Android および Windows 10 Mobile でのインストール
 
-### <a name="android-and-windows-10-mobile-installation"></a>Android and Windows 10 Mobile installation
+ご利用のデバイスで以下を実行してください。
 
-On your device:
+1.  開発アプリを許可します。
 
-1.  Allow development apps:
+    -   Android: **[設定]** 内の **[セキュリティ]** に移動し、**[提供元不明のアプリ]** でアプリを許可します。
 
-    -   Android: In **Settings** > **Security**, allow apps from **Unknown sources**.
+    -   Windows 10: **[設定]**、**[更新]**、**[開発者向け]** の順に移動し、**[開発者モード]** を設定します。
 
-    -   Windows 10: In **Settings** > **Updates** > **For Developers**, set **Developer mode**.
+2.  [HockeyApp](https://rink.hockeyapp.net) でサインアップするか、HockeyApp にサインインして、ベータ テスト チームに参加します。HockeyApp を使用すると、簡単にアプリの最新リリースがテスト ユーザーに配布されます。
 
-2.  Join our beta test team by signing up with, or signing in to, [HockeyApp](https://rink.hockeyapp.net). HockeyApp makes it easy to distribute early releases of your app to test users.
+    Windows 10をお使いの場合は、Microsoft Edgeブラウザーをご使用ください。
 
-    If you’re using Windows 10, use the Edge browser.
+    Build 2016 参加者の場合は、いずれかの Microsoft ボタンを押して、カンファレンスに登録したものと同じ Microsoft アカウント電子メールでサインインします。HockeyApp でサインアップ済みです。
 
-    If you were a Build 2016 attendee, sign in with the same Microsoft account email that you registered for the conference, by using one of the Microsoft buttons. You’re already signed up with HockeyApp.
+    ![HockeyApp サインイン画面](./media/iot-solution-get-started/image1.png)
 
-    ![HockeyApp sign-in screen](./media/iot-solution-get-started/image1.png)
-
-3.  Download and install the app from here:
+3.  次の場所からアプリをダウンロードしてインストールします。
 
     -   [Android](http://rink.io/spMyDrivingAndroid)
 
     -   [Windows 10](http://rink.io/spMyDrivingUWP)
 
-    There are two items. Install the certificate in **Trusted People**. Then install the app.
+    2 つのアイテムがあります。**[信頼されたユーザー] **で証明書をインストールします。次にアプリをインストールします。
 
-*Any issues starting the app on Windows 10 Mobile?* Your phone might be an update or two behind. Make sure you've got the latest updates, or install:
+*Windows 10 Mobile でのアプリの起動で問題が発生しますか?* ご使用の携帯電話で、ここ 1 ～ 2 回の更新が行われていない可能性があります。最新の更新プログラムが適用されていることを確認し、そうでない場合は以下をインストールしてください。
 
- - [Microsoft.NET.Native.Framework.1.2.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Framework.1.2.appx) 
+ - [Microsoft.NET.Native.Framework.1.2.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Framework.1.2.appx)
 
- - [Microsoft.NET.Native.Runtime.1.1.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Runtime.1.1.appx) 
+ - [Microsoft.NET.Native.Runtime.1.1.appx](https://download.hockeyapp.net/packages/win10/Microsoft.NET.Native.Runtime.1.1.appx)
 
  - [Microsoft.VCLibs.ARM.14.00.appx](https://download.hockeyapp.net/packages/win10/Microsoft.VCLibs.ARM.14.00.appx)
 
 
-### <a name="ios-installation"></a>iOS installation
+### iOS でのインストール
 
-If you attended Build 2016, download the app as a member of our test team on HockeyApp:
+Build 2016 の参加者は、私たちのテスト チームのメンバーとして、HockeyApp でアプリをダウンロードしてください。
 
-1.  On your iOS device, sign in to [HockeyApp](https://rink.hockeyapp.net).
-    Use one of the Microsoft sign-in buttons, and sign in with the same Microsoft account email that you registered with the conference. (Don’t use the email and password fields.)
+1.  ご使用の iOS デバイスで、[HockeyApp](https://rink.hockeyapp.net) にサインインします。いずれかの Microsoft サインイン ボタンを押して、カンファレンスに登録したものと同じ Microsoft アカウント電子メールでサインインします(メールとパスワードのフィールドは使用しないでください)。
 
-    ![HockeyApp sign-in screen](./media/iot-solution-get-started/image1.png)
+    ![HockeyApp サインイン画面](./media/iot-solution-get-started/image1.png)
 
-2.  In the HockeyApp dashboard, select MyDriving and download it.
+2.  HockeyApp ダッシュボードで MyDriving を選択し、ダウンロードします。
 
-3.  Authorize the beta release from HockeyApp:
+3.  次の手順で、HockeyApp から入手したベータ版を承認します。
 
-    a. Go to **Settings** > **General** > **Profiles and Device Management.**
+    a.**[設定]** > **[全般]** > **]プロファイルとデバイスの管理]** の順に選択します。
 
-    b. Trust the **Bit Stadium GmbH** certificate.
+    b.**Bit Stadium GmbH** の証明書を信頼します。
 
-If you didn’t attend Build 2016, you can build and deploy the app yourself:
+Build 2016年に参加していない場合は、アプリを自身で構築してデプロイします。
 
-1.   Download the code [from GitHub].
+1.   [GitHub から]コードをダウンロードします。
 
-2.   Build and deploy by [using Xamarin].
+2.   [Xamarin を使用]して、ビルドとデプロイを実行します。
 
-Find more details in the [MyDriving Reference Guide](http://aka.ms/mydrivingdocs).
+『[MyDriving Reference Guide (MyDriving リファレンス ガイド)](http://aka.ms/mydrivingdocs)』で詳細をご確認ください。
 
-## <a name="get-an-obd-adapter-(optional)"></a>Get an OBD adapter (optional)
+## OBD アダプターの入手 (オプション)
 
-This is the part that makes this a real Internet of Things system! You can use the app without one, but it’s more fun with the real thing, and they aren’t expensive.
+これは真のモノのインターネット システムを実現するパーツです。 これなしでもアプリは使用できますが、実際のモノと組み合わせた方がおもしろく、それでいて費用はかさみません。
 
-On-board diagnostics (OBD) is the feature of your car that the garage uses to tune up your car and diagnose odd noises and warning lamps. Unless your car is of great antiquity, you’ll find a socket somewhere in the cabin, typically behind a flap under the dashboard. With the right connector, you can get metrics of the engine’s performance and make certain adjustments. An OBD connector can be purchased cheaply from the usual places. It connects by using Bluetooth or Wi-Fi to an app on your phone.
+オンボード診断 (OBD) は自動車に備わった機能であり、整備工場で調整を行ったり、異音や警告ランプの原因を診断したりするために使用されます。年代物の車でなければ、ソケットが車室内のどこかに配置されており、通常はダッシュボード下方のパネルの後ろにあります。適切なコネクタを使用して、エンジン性能の指標を収集し、特定の調整を行うことができます。OBD コネクタは取扱い店が多く、安価で購入できます。Bluetooth または Wi-Fi を使用して、携帯電話のアプリに接続します。
 
-In this case, we’re going to connect your car to the cloud. The direct connection from the OBD is to your phone, but our app works as a relay. Your car's telemetry is sent straight to the MyDriving IoT hub, where it's processed to log your road trips and assess your driving style.
+ここで私たちがやろうとしているのは、自動車をクラウドに接続しようという試みです。OBD と直接接続するのは携帯電話ですが、アプリがリレーとして機能します。自動車のテレメトリは MyDriving IoT Hub に直接送られ、そこで走行経路の記録と運転スタイルの評価が行われます。
 
-To connect an OBD device:
+OBD デバイスを接続するには、以下を実行します。
 
-1.  Check that your car has an OBD socket.
+1.  車に OBD ソケットがあることを確認します。
 
-2.  Obtain an OBD adapter:
+2.  OBD アダプターを入手します。
 
-    -   If you're using an Android or Windows phone, you need a Bluetooth-enabled OBD II adapter. We used [BAFX Products 34t5 Bluetooth OBDII Scan Tool].
+    -   Android または Windows Phone を使用している場合は、Bluetooth 対応の OBD II アダプターが必要です。私たちは、[BAFX Products 34t5 Bluetooth OBDII Scan Tool] を使用しました。
 
-    -   If you're using an iOS phone, you need a Wi-Fi-enabled OBD adapter. We used [ScanTool OBDLink MX Wi-Fi: OBD Adapter/Diagnostic Scanner].
+    -   iOS 搭載の携帯電話を使用している場合は、Wi-Fi 対応の OBD アダプターが必要です。私たちは、[ScanTool OBDLink MX Wi-Fi: OBD Adapter/Diagnostic Scanner] を使用しました。
 
-3.  Follow the instructions that come with your OBD adapter to connect it to your phone. Keep the following in mind:
+3.  OBD アダプターに付属の指示に従い、携帯電話に接続します。次の点に注意してください。
 
-    -   A Bluetooth adapter must be paired with the phone, on the **Settings** page.
+    -   Bluetooth アダプターは **[設定]** ページで携帯電話とペアリングする必要があります。
 
-    -   A Wi-Fi adapter must have an address in the range 192.168.xxx.xxx.
+    -   Wi-Fi アダプターには、192.168.xxx.xxx の範囲のアドレスを設定する必要があります。
 
-4.  If you have several cars, you can get a separate adapter for each (maximum of three).
+4.  複数台の車両で利用する場合は、それぞれに別個のアダプターを用意してください (3 個まで)。
 
-If you don’t have an OBD adapter, the app will still send location and speed data from the phone's GPS receiver to the back end and will ask if you want to simulate an OBD.
+OBD アダプターがない場合でも、アプリは携帯電話の GPS レシーバーで取得した位置情報と速度データをバックエンドに送信します。さらに、OBD をシミュレートするかどうかの確認が行われます。
 
-You can find out more about how the app uses data from the OBD adapter and about options for creating your own OBD device in section 2.1, "IoT Devices," in the [MyDriving Reference Guide](http://aka.ms/mydrivingdocs).
+アプリによる OBD アダプターのデータの使用方法と、独自の OBD デバイスを作成するオプションについては、『[MyDriving Reference Guide (MyDriving リファレンス ガイド)](http://aka.ms/mydrivingdocs)』のセクション 2.1「IoT Devices (IoT デバイス)」を参照してください。
 
-## <a name="use-the-app"></a>Use the app
+## アプリの使用
 
-Start the app. There’s an initial Quickstart to walk you through how it works.
+アプリを起動します。初回のクイックスタートで、機能をひととおり確認できます。
 
-### <a name="track-your-trips"></a>Track your trips
+### 走行をトラッキングします。
 
-Tap the record button (big red circle at the bottom of the screen) to start a trip, and tap again to end.
+走行を開始するときは記録ボタン (画面下部の大きな赤い丸) をタップし、終了するときは再びタップします。
 
-![Illustration of the record button for trip tracking](./media/iot-solution-get-started/image2.png)
+![走行のトラッキングの記録ボタンの図](./media/iot-solution-get-started/image2.png)
 
-Each time you start a trip, if there’s no OBD device, you’ll be asked if you want to use the simulator.
+OBD デバイスを使用していない場合は、走行を開始するたびに、シミュレーターを使用するかどうかの確認が行われます。
 
-At the end of a trip, tap the stop button, and you get a summary.
+走行終了時に停止ボタンをタップすると、下の図のような概要が示されます。
 
-![Example of a trip summary](./media/iot-solution-get-started/image3.png)
+![走行の概要の例](./media/iot-solution-get-started/image3.png)
 
-### <a name="review-your-trips"></a>Review your trips
+### 走行内容を確認します。
 
-![Example of a past trip](./media/iot-solution-get-started/image4.png)
+![過去の走行の例](./media/iot-solution-get-started/image4.png)
 
-### <a name="review-your-profile"></a>Review your profile
+### 自分のプロファイルを確認します。
 
-![Example of a driving-style profile](./media/iot-solution-get-started/image5.png)
+![運転スタイル プロファイルの例](./media/iot-solution-get-started/image5.png)
 
-## <a name="send-us-your-test-feedback"></a>Send us your test feedback
+## テスト フィードバックを送信します。
 
-Because we created MyDriving to help jumpstart your own IoT systems, we certainly want to hear from you about how well it works. Let us know if:
+MyDriving は、独自の IoT システムの開発を支援するために作成されました。そのため、このアプリの動作に関するコメントは大歓迎です。次のような場合は、ぜひお知らせください。
 
-- You run into difficulties or challenges.
+- 問題または課題が生じた場合。
 
-- There is an extension point that would make it more suitable to your scenario.
+- シナリオに合わせて拡張できる点がある場合。
 
-- You find a more efficient way to accomplish certain needs.
+- より効率的に特定のニーズを達成する方法を見つけた場合。
 
-- You have any other suggestions for improving MyDriving or this documentation.
+- MyDriving やこのドキュメントの改善につながるご提案がある場合。
 
-Within the MyDriving app itself, you can use the built-in HockeyApp feedback mechanism: on iOS and Android, just give your phone a shake, or use the **Feedback** menu command. This will automatically attach a screenshot, so that we’ll know what you’re talking about. And if there are any unfortunate crashes, HockeyApp collects the crash logs to tell us about them. You can also give feedback through the [HockeyApp portal].
+MyDriving アプリ内では、組み込みの HockeyApp フィードバック メカニズムを利用できます。iOS と Android では端末を単にシェイクするか、**[フィードバック]** メニュー コマンドを使用してください。このとき自動でスクリーンショットが添付され、こちらで皆さんの伝達内容を把握することができます。運悪くクラッシュした場合は、HockeyApp によってクラッシュ ログが収集され、通知されます。[HockeyApp ポータル]からフィードバックを送ることもできます。
 
-You can also file an [issue on GitHub], or leave a comment below (en-us edition).
+[GitHub の Issue (イシュー)] としてアップするか、下部にコメントを残すこともできます (ja-JP 版)。
 
-We look forward to hearing from you!
+皆様のご意見をお待ちしております。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
--   Explore the [MyDriving Reference Guide](http://aka.ms/mydrivingdocs) to understand how we’ve designed and built the entire MyDriving system.
+-   『[MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)』を読み、MyDriving システム全体の設計と構築方法について把握します。
 
--   [Create and deploy a system of your own](iot-solution-build-system.md) by using our Azure Resource Manager scripts. The [MyDriving Reference Guide](http://aka.ms/mydrivingdocs) also guides you through areas where you’ll make the most customizations.
+-   Azure Resource Manager スクリプトを使用して[独自のシステムを作成し、デプロイします](iot-solution-build-system.md)。『[MyDriving リファレンス ガイド](http://aka.ms/mydrivingdocs)』は、ほとんどのカスタマイズで対象となる領域についても説明しています。
 
-  [from GitHub]: https://github.com/Azure-Samples/MyDriving
-  [using Xamarin]: https://developer.xamarin.com/guides/ios/getting_started/installation/
+  [GitHub から]: https://github.com/Azure-Samples/MyDriving
+  [Xamarin を使用]: https://developer.xamarin.com/guides/ios/getting_started/installation/
   [BAFX Products 34t5 Bluetooth OBDII Scan Tool]: http://www.amazon.com/gp/product/B005NLQAHS
   [ScanTool OBDLink MX Wi-Fi: OBD Adapter/Diagnostic Scanner]: http://www.amazon.com/gp/product/B00OCYXTYY/ref=s9_simh_gw_g263_i1_r?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=desktop-2&pf_rd_r=1MWRMKXK4KK9VYMJ44MP
-  [HockeyApp portal]: https://rink.hockeyapp.org
-  [issue on GitHub]: https://github.com/Azure-Samples/MyDriving/issues
+  [HockeyApp ポータル]: https://rink.hockeyapp.org
+  [GitHub の Issue (イシュー)]: https://github.com/Azure-Samples/MyDriving/issues
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Add the Azure blob storage Connector in your Logic Apps | Microsoft Azure"
-    description="Overview of Azure blob storage Connector with REST API parameters"
+    pageTitle="ロジック アプリに Azure Blob Storage コネクタを追加する | Microsoft Azure"
+    description="Azure Blob Storage コネクタと REST API パラメーターの概要"
     services=""
     documentationCenter="" 
     authors="MandiOhlinger"
-    manager="anneta"
+    manager="erikre"
     editor=""
     tags="connectors"/>
 
@@ -14,307 +14,299 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="integration" 
-   ms.date="10/18/2016"
+   ms.date="07/25/2016"
    ms.author="mandia"/>
 
+# Azure Blob Storage コネクタの概要
+Azure Blob Storage は、大量の非構造化データを格納するためのサービスです。Azure Blob Storage での BLOB のアップロード、更新、取得、削除など、多様なアクションを 実行できます。
 
-# <a name="get-started-with-the-azure-blob-storage-connector"></a>Get started with the Azure blob storage connector
-Azure Blob storage is a service for storing large amounts of unstructured data. Perform various actions such as upload, update, get, and delete blobs in Azure blob storage. 
+Azure Blob Storage では、次の操作を実行できます。
 
-With Azure blob storage, you:
+- 新しいプロジェクトをアップロードするか、最近更新されたファイルを取得して、ワークフローを構築します。
+- ファイルのメタデータの取得、ファイルの削除、ファイルのコピーなどのアクションを使用します。たとえば、Azure Web サイトでツールが更新されると (トリガー)、Blob Storage でファイルを更新します (アクション)。
 
-- Build your workflow by uploading new projects, or getting files that have been  recently updated.
-- Use actions to get file metadata, delete a file, copy files, and more. For example,  when a tool is updated in an Azure web site (a trigger), then update a file in blob storage (an action). 
+このトピックでは、ロジック アプリ内で Blob Storage コネクタを使用する方法を説明し、アクションの一覧を示します。
 
-This topic shows you how to use the blob storage connector in a logic app, and also lists the actions.
+>[AZURE.NOTE] 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。
 
->[AZURE.NOTE] This version of the article applies to Logic Apps general availability (GA). 
+Logic Apps の詳細については、「[Logic Apps とは](../app-service-logic/app-service-logic-what-are-logic-apps.md)」および[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関するページをご覧ください。
 
-To learn more about Logic Apps, see [What are logic apps](../app-service-logic/app-service-logic-what-are-logic-apps.md) and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## Azure Blob Storage に接続する
 
-## <a name="connect-to-azure-blob-storage"></a>Connect to Azure blob storage
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成します。接続により、ロジック アプリと別のサービスとの接続が実現します。たとえば、ストレージ アカウントに接続するには、最初に Blob Storage の "*接続*" を作成します。接続を作成するには、接続対象のサービスへのアクセスに通常使用する資格情報を入力します。そのため、Azure Storage の場合は、ストレージ アカウントの資格情報を入力して接続を作成します。
 
-Before your logic app can access any service, you first create a *connection* to the service. A connection provides connectivity between a logic app and another service. For example, to connect to a storage account, you first create a blob storage *connection*. To create a connection, enter the credentials you normally use to access the service you are connecting to. So with Azure storage, enter the credentials to your storage account to create the connection. 
+#### 接続の作成
 
-#### <a name="create-the-connection"></a>Create the connection
-
->[AZURE.INCLUDE [Create a connection to Azure blob storage](../../includes/connectors-create-api-azureblobstorage.md)]
+>[AZURE.INCLUDE [Azure Blob Storage への接続を作成する](../../includes/connectors-create-api-azureblobstorage.md)]
  
-## <a name="use-a-trigger"></a>Use a trigger
+## トリガーを使用する
 
-This connector does not have any triggers. Use other triggers to start the logic app, such as a Recurrence trigger, an HTTP Webhook trigger, triggers available with other connectors, and more. [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md) provides an example.
+このコネクタにはトリガーがありません。定期実行のトリガー、HTTP Webhook トリガー、他のコネクタで使用可能なトリガーなど、他のトリガーを使用してロジック アプリを起動します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事に例が記載されています。
 
-## <a name="use-an-action"></a>Use an action
-    
-An action is an operation carried out by the workflow defined in a logic app.
+## アクションを使用する
+	
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。
 
-1. Select the plus sign. You see several choices: **Add an action**, **Add a condition**, or one of the **More** options.
+1. プラス記号を選択します。**[アクションの追加]**、**[条件の追加]**、**[More (その他)]** のいずれかのオプションという複数の選択肢があります。
 
-    ![](./media/connectors-create-api-azureblobstorage/add-action.png)
+	![](./media/connectors-create-api-azureblobstorage/add-action.png)
 
-2. Choose **Add an action**.
+2. **[アクションの追加]** を選択します。
 
-3. In the text box, type “blob” to get a list of all the available actions.
+3. テキスト ボックスに「blob」と入力して、使用可能なすべてのアクションの一覧を取得します。
 
-    ![](./media/connectors-create-api-azureblobstorage/actions.png) 
+	![](./media/connectors-create-api-azureblobstorage/actions.png)
 
-4. In our example, choose **AzureBlob - Get file metadata using path**. If a connection already exists, then select the **...** (Show Picker) button to select a file.
+4. この例では、**[AzureBlob - Get file metadata using path (AzureBlob - パスを使用してファイルのメタデータを取得する)]** を選択します。接続が既に存在する場合は、**[...]** (表示ピッカー) ボタンを使用してファイルを選択します。
 
-    ![](./media/connectors-create-api-azureblobstorage/sample-file.png)
+	![](./media/connectors-create-api-azureblobstorage/sample-file.png)
 
-    If you are prompted for the connection information, then enter the details to create the connection. [Create the connection](connectors-create-api-azureblobstorage.md#create-the-connection) in this topic describes these properties. 
+	接続情報の入力を求められたら、詳細を入力して接続を作成します。これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-azureblobstorage.md#create-the-connection)」をご覧ください。
 
-    > [AZURE.NOTE] In this example, we get the metadata of a file. To see the metadata, add another action that creates a new file using another connector. For example, add a OneDrive action that creates a new "test" file based on the metadata. 
+	> [AZURE.NOTE] この例では、ファイルのメタデータを取得します。メタデータを表示するには、別のコネクタを使用して新しいファイルを作成する別のアクションを追加します。たとえば、メタデータに基づいて新しい "test" ファイルを作成する OneDrive アクションを追加します。
 
-5. **Save** your changes (top left corner of the toolbar). Your logic app is saved and may be automatically enabled.
+5. ツール バーの左上隅にある **[保存]** を選択して変更を保存します。ロジック アプリが保存され、場合によっては、自動的に有効になります。
 
-> [AZURE.TIP] [Storage Explorer](http://storageexplorer.com/) is a great tool to  manage multiple storage accounts.
+> [AZURE.TIP] [Storage Explorer](http://storageexplorer.com/) は、複数のストレージ アカウントを管理するための優れたツールです。
 
-## <a name="technical-details"></a>Technical Details
+## 技術的な詳細
 
-## <a name="storage-blob-actions"></a>Storage Blob actions
+## ストレージ BLOB アクション
 
-|Action|Description|
+|アクション|説明|
 |--- | ---|
-|[Get file metadata](connectors-create-api-azureblobstorage.md#get-file-metadata)|This operation gets file metadata using file id.|
-|[Update file](connectors-create-api-azureblobstorage.md#update-file)|This operation updates a file.|
-|[Delete file](connectors-create-api-azureblobstorage.md#delete-file)|This operation deletes a file.|
-|[Get file metadata using path](connectors-create-api-azureblobstorage.md#get-file-metadata-using-path)|This operation gets file metadata using the path.|
-|[Get file content using path](connectors-create-api-azureblobstorage.md#get-file-content-using-path)|This operation gets file contents using the path.|
-|[Get file content](connectors-create-api-azureblobstorage.md#get-file-content)|This operation gets file contents using id.|
-|[Create file](connectors-create-api-azureblobstorage.md#create-file)|This operation uploads a file.|
-|[Copy file](connectors-create-api-azureblobstorage.md#copy-file)|This operation copies a file to Azure Blob Storage.|
-|[Extract archive to folder](connectors-create-api-azureblobstorage.md#extract-archive-to-folder)|This operation extracts an archive file into a folder (example: .zip).|
+|[ファイルのメタデータを取得する](connectors-create-api-azureblobstorage.md#get-file-metadata)|この操作では、ファイル ID を使用してファイルのメタデータを取得します。|
+|[ファイルを更新する](connectors-create-api-azureblobstorage.md#update-file)|この操作では、ファイルを更新します。|
+|[ファイルを削除する](connectors-create-api-azureblobstorage.md#delete-file)|この操作では、ファイルを削除します。|
+|[パスを使用してファイルのメタデータを取得する](connectors-create-api-azureblobstorage.md#get-file-metadata-using-path)|この操作では、パスを使用してファイルのメタデータを取得します。|
+|[パスを使用してファイルの内容を取得する](connectors-create-api-azureblobstorage.md#get-file-content-using-path)|この操作では、パスを使用してファイルの内容を取得します。|
+|[ファイルの内容を取得する](connectors-create-api-azureblobstorage.md#get-file-content)|この操作では、ID を使用してファイルの内容を取得します。|
+|[ファイルを作成する](connectors-create-api-azureblobstorage.md#create-file)|この操作では、ファイルをアップロードします。|
+|[ファイルをコピーする](connectors-create-api-azureblobstorage.md#copy-file)|この操作では、ファイルを Azure Blob Storage にコピーします。|
+|[アーカイブをフォルダーに抽出する](connectors-create-api-azureblobstorage.md#extract-archive-to-folder)|この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
 
-### <a name="action-details"></a>Action details
+### アクションの詳細
 
-In this section, see the specific details about each action, including any required or optional input properties, and any corresponding output associated with the connector.
+このセクションでは、必須または任意の入力プロパティ、コネクタに関連付けられた対応する出力など、各アクションに関する具体的な詳細について説明します。
 
-#### <a name="get-file-metadata"></a>Get file metadata
-This operation gets file metadata using file id.  
+#### ファイルのメタデータを取得する
+この操作では、ファイル ID を使用してファイルのメタデータを取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|ファイル|ファイルを選択する|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 BlobMetadata
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
-#### <a name="update-file"></a>Update file
-This operation updates a file.  
+#### ファイルを更新する
+この操作では、ファイルを更新します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
-|body*|File content|Content of the file to update|
+|id*|ファイル|ファイルを選択する|
+|body*|ファイルのコンテンツ|更新するファイルの内容|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 BlobMetadata
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
-#### <a name="delete-file"></a>Delete file
-This operation deletes a file.  
+#### ファイルを削除する
+この操作では、ファイルを削除します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|ファイル|ファイルを選択する|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
+##### 出力の詳細
+ありません。
 
 
-#### <a name="get-file-metadata-using-path"></a>Get file metadata using path
-This operation gets file metadata using the path.  
+#### パスを使用してファイルのメタデータを取得する
+この操作では、パスを使用してファイルのメタデータを取得します。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|path*|File path|Select a file|
+|path*|ファイル パス|ファイルを選択する|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 BlobMetadata
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+#### パスを使用してファイルの内容を取得する
+この操作では、パスを使用してファイルの内容を取得します。
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|path*|ファイル パス|ファイルを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ありません。
+
+
+#### ファイルの内容を取得する
+この操作では、ID を使用してファイルの内容を取得します。
+
+|プロパティ名| データ型|説明|
+| ---|---|---|
+|id*|string|ファイルを選択する|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+ありません。
+
+
+#### ファイルを作成する
+この操作では、ファイルをアップロードします。
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|folderPath*|フォルダー パス|フォルダーを選択する|
+|name*|ファイル名|アップロードするファイルの名前|
+|body*|ファイルのコンテンツ|アップロードするファイルの内容|
+
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
+
+##### 出力の詳細
+BlobMetadata
+
+| プロパティ名 | データ型 | 
+|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
-#### <a name="get-file-content-using-path"></a>Get file content using path
-This operation gets file contents using the path.  
+#### ファイルをコピーする
+この操作では、ファイルを Azure Blob Storage にコピーします。
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|path*|File path|Select a file|
+|source*|Source url (コピー元 URL)|コピー元ファイルの URL を指定する|
+|destination*|Destination file path (コピー先ファイル パス)|対象ファイル名を含む、コピー先ファイル パスを指定する|
+|overwrite|Overwrite? (上書きを許可)|既存の抽出先ファイルを上書きするかどうかを指定する (true/false) |
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
-None.
-
-
-#### <a name="get-file-content"></a>Get file content
-This operation gets file contents using id.  
-
-|Property Name| Data Type|Description|
-| ---|---|---|
-|id*|string|Select a file|
-
-An asterisk (*) means the property is required.
-
-##### <a name="output-details"></a>Output Details
-None.
-
-
-#### <a name="create-file"></a>Create file
-This operation uploads a file.  
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|folderPath*|Folder path|Select a folder|
-|name*|File name|Name of file to upload|
-|body*|File content|Content of the file to upload|
-
-An asterisk (*) means the property is required.
-
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 BlobMetadata
 
-| Property Name | Data Type | 
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
+#### アーカイブをフォルダーに抽出する
+この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
 
-#### <a name="copy-file"></a>Copy file
-This operation copies a file to Azure Blob Storage.  
-
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|source*|Source url|Specify Url to source file|
-|destination*|Destination file path|Specify the destination file path, including target filename|
-|overwrite|Overwrite?|Should an existing destination file be overwritten (true/false)?  |
+|source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルを選択する|
+|destination*|Destination folder path (抽出先フォルダー パス)|抽出する内容を選択する|
+|overwrite|Overwrite? (上書きを許可)|既存の抽出先ファイルを上書きするかどうかを指定する (true/false)|
 
-An asterisk (*) means the property is required.
+アスタリスク (*) は、そのプロパティが必須であることを意味します。
 
-##### <a name="output-details"></a>Output Details
+##### 出力の詳細
 BlobMetadata
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
-|FileLocator|string|
-
-#### <a name="extract-archive-to-folder"></a>Extract archive to folder
-This operation extracts an archive file into a folder (example: .zip).  
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|source*|Source archive file path|Select an archive file|
-|destination*|Destination folder path|Select the contents to extract|
-|overwrite|Overwrite?|Should an existing destination file be overwritten (true/false)?|
-
-An asterisk (*) means the property is required.
-
-##### <a name="output-details"></a>Output Details
-BlobMetadata
-
-| Property Name | Data Type |
-|---|---|
-|Id|string|
-|Name|string|
-|DisplayName|string|
-|Path|string|
-|LastModified|string|
-|Size|integer|
-|MediaType|string|
-|IsFolder|boolean|
-|ETag|string|
-|FileLocator|string|
+|FileLocator|文字列|
 
 
-## <a name="http-responses"></a>HTTP responses
+## HTTP 応答
 
-When making calls to the different actions, you may get certain responses. The following table outlines the responses and their descriptions:  
+他のアクションを呼び出すとき、特定の応答を受け取る場合があります。次の表に、これらの応答とその説明を示します。
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occurred|
-|default|Operation Failed.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). Explore the other available connectors in Logic Apps at our [APIs list](apis-list.md).
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。[API の一覧](apis-list.md)で、Logic Apps で使用できる他のコネクタを確認してください。
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,355 +1,346 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Litmos | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and Litmos."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と Litmos の統合 | Microsoft Azure"
+	description="Azure Active Directory と Litmos の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/29/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/08/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と Litmos の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-litmos"></a>Tutorial: Azure Active Directory integration with Litmos
+このチュートリアルの目的は、Litmos と Azure Active Directory (Azure AD) を統合する方法を説明することです。Litmos と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate Litmos with Azure Active Directory (Azure AD).  
-Integrating Litmos with Azure AD provides you with the following benefits: 
+- Litmos にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Litmos にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure Active Directory ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to Litmos 
-- You can enable your users to automatically get signed-on to Litmos (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure Active Directory 
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件 
 
-## <a name="prerequisites"></a>Prerequisites 
+Litmos と Azure AD の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with Litmos, you need the following items:
-
-- An Azure AD subscription
-- A Litmos single-sign on enabled subscription
+- Azure AD サブスクリプション
+- Litmos でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of three main building blocks:
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. Adding Litmos from the gallery 
-2. Configuring and testing Azure AD single sign-on
-
-
-## <a name="adding-litmos-from-the-gallery"></a>Adding Litmos from the gallery
-To configure the integration of Litmos into Azure AD, you need to add Litmos from the gallery to your list of managed SaaS apps.
-
-**To add Litmos from the gallery, perform the following steps:**
-
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
-
-    ![Active Directory][1]
-
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Applications][2]
-
-4. Click **Add** at the bottom of the page.
-
-    ![Applications][3]
-
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
-
-    ![Applications][4]
-
-6. In the search box, type **Litmos**.
-
-    ![Applications][5]
-
-7. In the results pane, select **Litmos**, and then click **Complete** to add the application.
-
-    ![Applications][500]
+1. ギャラリーからの Litmos の追加
+2. Azure AD シングル サインオンの構成とテスト
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Litmos based on a test user called "Britta Simon".
+## ギャラリーからの Litmos の追加
+Azure AD への Litmos の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Litmos を追加する必要があります。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Litmos to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Litmos needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Litmos.
+**ギャラリーから Litmos を追加するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Active Directory][1]
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![アプリケーション][2]
+
+4. ページの下部にある **[追加]** をクリックします。
+
+	![アプリケーション][3]
+
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+	![アプリケーション][4]
+
+6. 検索ボックスに、「**Litmos**」と入力します。
+
+	![アプリケーション][5]
+
+7. 結果ウィンドウで **[Litmos]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+	![アプリケーション][500]
+
+
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Litmos で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Litmos ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Litmos の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、Litmos の **[Username]** の値として割り当てることで確立されます。
  
-To configure and test Azure AD single sign-on with Litmos, you need to complete the following building blocks:
+Litmos で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a Litmos test user](#creating-a-halogen-software-test-user)** - to have a counterpart of Britta Simon in Litmos that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Litmos のテスト ユーザーの作成](#creating-a-halogen-software-test-user)** - Litmos で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure AD classic portal and to configure single sign-on in your Litmos application.  
-As part of this procedure, you are required to create a base-64 encoded certificate file.  
-If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+このセクションの目的は、Azure AD クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Litmos アプリケーションでシングル サインオンを構成することです。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-As part of the configuration, you need to customize the **SAML Token Attributes** for your Litmos application.  
+構成の一環として、Litmos アプリケーションの **SAML トークン属性**をカスタマイズする必要があります。
 
-![Azure AD Single Sign-On][17] 
+![Azure AD のシングル サインオン][17]
 
-**To configure Azure AD single sign-on with Litmos, perform the following steps:**
+**Litmos で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. In the Azure AD classic portal, on the **Litmos** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Azure AD クラシック ポータルの **Litmos** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On][6] 
+	![シングル サインオンの構成][6]
 
-2. On the **How would you like users to sign on to Litmos** page, select **Azure AD Single Sign-On**, and then click **Next**.
+2. **[ユーザーの Litmos へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
  
-    ![Azure AD Single Sign-On][7] 
+	![Azure AD Single Sign-On][7]
 
 
-1. Sign-on to your Litmos company site (e.g.: *https://azureapptest.litmos.com/account/Login*) as an administrator.
+1. Litmos 企業サイト (例: *https://azureapptest.litmos.com/account/Login*) に管理者としてサインオンします。
 
-    ![Azure AD Single Sign-On][21] 
-
-
-1. In the navigation bar on the left side, click **Accounts**.
-
-    ![Azure AD Single Sign-On][22] 
+	![Azure AD のシングル サインオン][21]
 
 
-1. Click the **Integrations** tab.
+1. 左側にあるナビゲーション バーで、**[Accounts]** をクリックします。
 
-    ![Azure AD Single Sign-On][23] 
-
-
-1. On the **Integrations** tab, scroll down to **3rd Party Integrations**, and then click **SAML 2.0** tab.
-
-    ![Azure AD Single Sign-On][24] 
-
-1. Copy the value under **The SAML endoiint for litmos is:**.
-
-    ![Azure AD Single Sign-On][26] 
+	![Azure AD のシングル サインオン][22]
 
 
-3. In the Azure classic portal, on the **Configure App Settings** dialog page, perform the following steps:
+1. **[Integrations]** タブをクリックします。
 
-    ![Azure AD Single Sign-On][8] 
+	![Azure AD のシングル サインオン][23]
+
+
+1. **[Integrations]** タブで、下へスクロールして **[3rd Party Integrations]** を表示し、**[SAML 2.0]** タブをクリックします。
+
+	![Azure AD のシングル サインオン][24]
+
+1. **[The SAML endoiint for litmos is:]** の下の値をコピーします。
+
+	![Azure AD のシングル サインオン][26]
+
+
+3. Azure クラシック ポータルの **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行します。
+
+	![Azure AD のシングル サインオン][8]
  
-    a. In the **Identifier** textbox, type the URL used by your users to sign-on to your Litmos application (e.g.: *https://azureapptest.litmos.com/account/Login*).
+    a.**[識別子]** ボックスに、ユーザーが Litmos アプリケーションへのサインオンに使用する URL (例: *https://azureapptest.litmos.com/account/Login*) を入力します。
      
-    b. In the **Reply URL** textbox, paste the value you have copied from the Litmos application in the previous step.
+    b.**[応答 URL]** ボックスに、前の手順で Litmos アプリケーションからコピーした値を貼り付けます。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
  
-4. On the **Configure single sign-on at Litmos** page, perform the following steps:
+4. **[Litmos でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![Azure AD Single Sign-On][2] 
+	![Azure AD のシングル サインオン][2]
 
-    a. Click Download certificate, and then save the file on your computer.
-
-
-1. In your **Litmos** application, perform the following steps:
-
-    ![Azure AD Single Sign-On][25] 
-
-    a. Click **Enable SAML**.
-
-    b. Create a **base-64 encoded** file from your downloaded certificate.  
-
-    >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
-
-    c. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste it to the **SAML X.509 Certificate** textbox.
-
-    d. Click **Save Changes**.
+    a.[証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
 
 
-6. On the Azure AD classic portal, select the single sign-on configuration confirmation, and then click **Next**. 
+1. **Litmos** アプリケーションで、次の手順を実行します。
 
-    ![Azure AD Single Sign-On][10]
+	![Azure AD のシングル サインオン][25]
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+    a.**[Enable SAML]** をクリックします。
+
+    b.ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
+
+    >[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
+
+    c.Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして、**[SAML X.509 Certificate]** ボックスに貼り付けます。
+
+    d.**[変更を保存]** をクリックします。
+
+
+6. Azure AD クラシック ポータルで、[single sign-on configuration confirmation]\(シングル サインオンの構成の確認) を選択し、**[次へ]** をクリックします。
+
+	![Azure AD のシングル サインオン][10]
+
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
   
-    ![Azure AD Single Sign-On][11]
+	![Azure AD のシングル サインオン][11]
 
 
-20. In the menu on the top, click **Attributes** to open the **SAML Token Attributes** dialog. 
+20. 上部のメニューで、**[属性]** をクリックして、**[SAML トークン属性]** ダイアログを開きます。
 
-    ![Configure Single Sign-On][12]
+	![シングル サインオンの構成][12]
 
 
-24. On the **Add User Attribute** dialog, perform the following steps: 
+24. **[ユーザー属性の追加]** ダイアログで、次の手順を実行します。
 
-    ![Configure Single Sign-On][14]
+	![Configure Single Sign-On][14]
 
-  	| Attribute Name | Attribute Value |
-  	| ---            | ---             |
-  	| Email          | user.mail       |
-  	| FirstName      | user.givenname  |
-  	| Lastname       | user.surname    |
+    | 属性名 | 属性値 |
+    | ---            | ---             |
+    | 電子メール | User.mail |
+    | FirstName | User.givenname |
+    | Lastname | User.surname |
 
-    For each data row in the table above, perform the following steps:
+    上の表のデータ行ごとに、次の手順を実行します。
    
-    a. Click **add user attribute**. 
+    a.**[ユーザー属性の追加]** をクリックします。
 
-    ![Configure Single Sign-On][15]
-
-
-    a. In the **Attribute Name** textbox, type the **Attribute Name** shown for that row.
-
-    b. Select the **Attribute Value** shown for that row.
-
-    c. Click **Complete** to close the **Add User Attribute** dialog.
+	![Configure Single Sign-On][15]
 
 
-25. Click **Apply Changes**. 
+    a.**[属性名]** ボックスに、その行に対して表示される**属性名**を入力します。
 
-    ![Configure Single Sign-On][16]
+    b.その行に対して表示される**属性値**を選択します。
+
+    c.**[完了]** をクリックして **[ユーザー属性の追加]** ダイアログボックスを閉じます。
+
+
+25. **[変更の適用]** をクリックします。
+
+	![シングル サインオンの構成][16]
 
 
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure clasic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-litmos-tutorial/create_aaduser_09.png)  
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-litmos-tutorial/create_aaduser_03.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_03.png)
  
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-litmos-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps: 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-litmos-tutorial/create_aaduser_05.png)  
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_05.png)
 
-    a. As **Type Of User**, select **New user in your organization**.
+    a.**[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps: 
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-litmos-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_06.png)
  
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
-    e. Click **Next**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-litmos-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_07.png)
  
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-litmos-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-litmos-tutorial/create_aaduser_08.png)
   
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
+    b.**[完了]** をクリックします。
 
   
  
-### <a name="creating-a-litmos-test-user"></a>Creating a Litmos test user
+### Litmos のテスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in Litmos.  
-The Litmos application supports Just-in-Time provisioning. This means, a user account is automatically created if necessary during an attempt to access the application using the Access Panel.
+このセクションの目的は、Litmos で Britta Simon というユーザーを作成することです。Litmos アプリケーションでは、ジャストインタイム プロビジョニングがサポートされています。そのため、アクセス パネルを使用してアプリケーションにアクセスを試みると、必要に応じてユーザー アカウントが自動的に作成されます。
 
-**To create a user called Britta Simon in Litmos, perform the following steps:**
-
-
-1. Sign-on to your Litmos company site (e.g.: *https://azureapptest.litmos.com/account/Login*) as an administrator.
-
-    ![Azure AD Single Sign-On][21] 
+**Litmos で Britta Simon というユーザーを作成するには、次の手順に従います。**
 
 
-1. In the navigation bar on the left side, click **Accounts**.
+1. Litmos 企業サイト (例: *https://azureapptest.litmos.com/account/Login*) に管理者としてサインオンします。
 
-    ![Azure AD Single Sign-On][22] 
-
-
-1. Click the **Integrations** tab.
-
-    ![Azure AD Single Sign-On][23] 
+	![Azure AD のシングル サインオン][21]
 
 
-1. On the **Integrations** tab, scroll down to **3rd Party Integrations**, and then click **SAML 2.0** tab.
+1. 左側にあるナビゲーション バーで、**[Accounts]** をクリックします。
 
-    ![Azure AD Single Sign-On][24] 
-
-1. Select **Autogenerate Users:**.
-
-    ![Azure AD Single Sign-On][27] 
+	![Azure AD のシングル サインオン][22]
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+1. **[Integrations]** タブをクリックします。
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Litmos.
-
-![Assign User][200] 
-
-**To assign Britta Simon to Litmos, perform the following steps:**
-
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Assign User][201] 
-
-2. In the applications list, select **Litmos**.
-
-    ![Assign User][202] 
-
-1. In the menu on the top, click **Users**.
-
-    ![Assign User][203] 
-
-1. In the Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-
-    ![Assign User][205]
+	![Azure AD のシングル サインオン][23]
 
 
+1. **[Integrations]** タブで、下へスクロールして **[3rd Party Integrations]** を表示し、**[SAML 2.0]** タブをクリックします。
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+	![Azure AD のシングル サインオン][24]
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the Litmos tile in the Access Panel, you should get automatically signed-on to your Litmos application.
+1. **[Autogenerate Users:]** を選択します。
+
+	![Azure AD のシングル サインオン][27]
 
 
-## <a name="additional-resources"></a>Additional Resources
+### Azure AD テスト ユーザーの割り当て
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+このセクションの目的は、Britta Simon に Litmos へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+
+![ユーザーの割り当て][200]
+
+**Litmos に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![ユーザーの割り当て][201]
+
+2. アプリケーションの一覧で **[Litmos]** を選択します。
+
+	![ユーザーの割り当て][202]
+
+1. 上部のメニューで **[ユーザー]** をクリックします。
+
+	![ユーザーの割り当て][203]
+
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
+
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+	![ユーザーの割り当て][205]
+
+
+
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで Litmos のタイルをクリックすると、自動的に Litmos アプリケーションにサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -395,13 +386,4 @@ When you click the Litmos tile in the Access Panel, you should get automatically
 [401]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_401.png
 [402]: ./media/active-directory-saas-litmos-tutorial/tutorial_litmos_402.png
 
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!-----HONumber=AcomDC_0713_2016-->

@@ -1,19 +1,13 @@
-### <a name="prerequisites"></a>Prerequisites
+### 前提条件
 
-- An [RSS](https://wikipedia.org/wiki/RSS) account  
-
-
-Before you can use your RSS account in a Logic app, you must authorize the Logic app to connect to your RSS account.Fortunately, you can do this easily from within your Logic app on the Azure Portal.  
-
-Here are the steps to authorize your Logic app to connect to your RSS account:  
-1. To create a connection to RSS, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *RSS* in the search box. Select the trigger or action you'll like to use:  
-![RSS connection creation step](./media/connectors-create-api-rss/rss-1.png)  
-2. Select **Create connection** :  
-![RSS connection creation step](./media/connectors-create-api-rss/rss-2.png)  
-3. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
- ![RSS connection creation step](./media/connectors-create-api-rss/rss-3.png)  
+- [RSS](https://wikipedia.org/wiki/RSS) アカウント  
 
 
-<!--HONumber=Oct16_HO2-->
+ロジック アプリで RSS アカウントを使用するには、RSS アカウントに接続するロジック アプリを承認しておく必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
+RSS アカウントに接続するロジック アプリを承認する手順を次に示します。
+1. RSS への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs (Microsoft Managed API を表示)]** を選択し、検索ボックスに「*RSS*」と入力します。使用するトリガーまたはアクションを選択します。![RSS の接続の作成手順](./media/connectors-create-api-rss/rss-1.png)  
+2. **[接続の作成]** を選択します。![RSS の接続の作成手順](./media/connectors-create-api-rss/rss-2.png)  
+3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。![RSS の接続の作成手順](./media/connectors-create-api-rss/rss-3.png)  
 
+<!---HONumber=AcomDC_0525_2016-->

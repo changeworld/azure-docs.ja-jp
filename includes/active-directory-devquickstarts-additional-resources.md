@@ -1,14 +1,11 @@
-## <a name="additional-resources"></a>Additional Resources
+## その他のリソース
 
-- [The Azure AD Developer's Guide](../articles/active-directory/active-directory-developers-guide.md)
-- [Azure AD Samples on GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
+- [Azure AD 開発者ガイド](../articles/active-directory/active-directory-developers-guide.md)
+- [GitHub の Azure AD のサンプル](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=active-directory)
 - [CloudIdentity.com](http://cloudidentity.com)
 
-## <a name="get-security-updates-for-our-products"></a>Get security updates for our products
+## マイクロソフト製品のセキュリティ更新プログラムの取得
 
-We encourage you to get notifications of when security incidents occur by visiting [this page](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知の受信登録をしてください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0608_2016-->

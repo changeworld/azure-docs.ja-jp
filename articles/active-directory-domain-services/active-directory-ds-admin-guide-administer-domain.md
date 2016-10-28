@@ -1,154 +1,149 @@
 <properties
-    pageTitle="Azure Active Directory Domain Services: Administer a managed domain | Microsoft Azure"
-    description="Administer Azure Active Directory Domain Services managed domains"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理対象ドメインを管理する | Microsoft Azure"
+	description="Azure Active Directory ドメイン サービスで管理されているドメインを管理する"
+	services="active-directory-ds"
+	documentationCenter=""
+	authors="mahesh-unnikrishnan"
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/02/2016"
-    ms.author="maheshu"/>
+	ms.service="active-directory-ds"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/31/2016"
+	ms.author="maheshu"/>
+
+# Azure Active Directory ドメイン サービスで管理されているドメインを管理する
+この記事では、Azure Active Directory (AD) ドメイン サービスで管理されているドメインを管理する方法について説明します。
 
 
-# <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Administer an Azure Active Directory Domain Services managed domain
-This article shows you how to administer an Azure Active Directory (AD) Domain Services managed domain.
+## 開始する前に
+この記事に記載されているタスクを実行するには、次が必要です。
 
+1. 有効な **Azure サブスクリプション**。
 
-## <a name="before-you-begin"></a>Before you begin
-To perform the tasks listed in this article, you need:
+2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ**。
 
-1. A valid **Azure subscription**.
+3. **Azure AD ドメイン サービス**が Azure AD ディレクトリに対して有効である必要があります。有効になっていない場合は、[作業の開始に関するガイド](./active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
 
-2. An **Azure AD directory** - either synchronized with an on-premises directory or a cloud-only directory.
+4. Azure AD Domain Services の管理対象ドメインの管理に使用する、**ドメインに参加している仮想マシン**。そのような仮想マシンがない場合は、「[Windows Server 仮想マシンの管理対象ドメインへの参加](./active-directory-ds-admin-guide-join-windows-vm.md)」で概要が示されているすべてのタスクに従います。
 
-3. **Azure AD Domain Services** must be enabled for the Azure AD directory. If you haven't done so, follow all the tasks outlined in the [Getting Started guide](./active-directory-ds-getting-started.md).
-
-4. A **domain-joined virtual machine** from which you administer the Azure AD Domain Services managed domain. If you don't have such a virtual machine, follow all the tasks outlined in the article titled [Join a Windows virtual machine to a managed domain](./active-directory-ds-admin-guide-join-windows-vm.md).
-
-5. You need the credentials of a **user account belonging to the 'AAD DC Administrators' group** in your directory, to administer your managed domain.
-
-<br>
-
-
-## <a name="administrative-tasks-you-can-perform-on-a-managed-domain"></a>Administrative tasks you can perform on a managed domain
-Members of the 'AAD DC Administrators' group are granted privileges on the managed domain that enable them to perform tasks such as:
-
-- Join machines to the managed domain.
-
-- Configure the built-in GPO for the 'AADDC Computers' and 'AADDC Users' containers in the managed domain.
-
-- Administer DNS on the managed domain.
-
-- Create and administer custom Organizational Units (OUs) on the managed domain.
-
-- Gain administrative access to computers joined to the managed domain.
-
-
-## <a name="administrative-privileges-you-do-not-have-on-a-managed-domain"></a>Administrative privileges you do not have on a managed domain
-The domain is managed by Microsoft, including activities such as patching, monitoring and, performing backups. Therefore, the domain is locked down and you do not have privileges to perform certain administrative tasks on the domain. Some examples of tasks you cannot perform are below.
-
-- You are not granted Domain Administrator or Enterprise Administrator privileges for the managed domain.
-
-- You cannot extend the schema of the managed domain.
-
-- You cannot connect to domain controllers for the managed domain using Remote Desktop.
-
-- You cannot add domain controllers to the managed domain.
-
-
-## <a name="task-1---provision-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>Task 1 - Provision a domain-joined Windows Server virtual machine to remotely administer the managed domain
-Azure AD Domain Services managed domains can be managed using familiar Active Directory administrative tools such as the Active Directory Administrative Center (ADAC) or AD PowerShell. Tenant administrators do not have privileges to connect to domain controllers on the managed domain via Remote Desktop. Therefore, members of the 'AAD DC Administrators' group can administer managed domains remotely using AD administrative tools from a Windows Server/client computer that is joined to the managed domain. AD administrative tools can be installed as part of the Remote Server Administration Tools (RSAT) optional feature on Windows Server and client machines joined to the managed domain.
-
-The first step is to set up a Windows Server virtual machine that is joined to the managed domain. For instructions, refer to the article titled [join a Windows Server virtual machine to an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-join-windows-vm.md).
-
-### <a name="remotely-administer-the-managed-domain-from-a-client-computer-(for-example,-windows-10)"></a>Remotely administer the managed domain from a client computer (for example, Windows 10)
-The instructions in this article use a Windows Server virtual machine to administer the AAD-DS managed domain. However, you can also choose to use a Windows client (for example, Windows 10) virtual machine to do so.
-
-You can [install Remote Server Administration Tools (RSAT)](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx) on a Windows client virtual machine by following the instructions on TechNet.
-
-
-## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>Task 2 - Install Active Directory administration tools on the virtual machine
-Perform the following steps to install the Active Directory Administration tools on the domain joined virtual machine. See Technet for more [information on installing and using Remote Server Administration Tools](https://technet.microsoft.com/library/hh831501.aspx).
-
-1. Navigate to **Virtual Machines** node in the Azure classic portal. Select the virtual machine you created in Task 1 and click **Connect** on the command bar at the bottom of the window.
-
-    ![Connect to Windows virtual machine](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-
-2. The classic portal prompts you to open or save a file with a '.rdp' extension, which is used to connect to the virtual machine. Click to open the file when it has finished downloading.
-
-3. At the login prompt, use the credentials of a user belonging to the 'AAD DC Administrators' group. For example, we use 'bob@domainservicespreview.onmicrosoft.com' in our case.
-
-4. From the Start screen, open **Server Manager**. Click **Add Roles and Features** in the central pane of the Server Manager window.
-
-    ![Launch Server Manager on virtual machine](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-
-5. On the **Before You Begin** page of the **Add Roles and Features Wizard**, click **Next**.
-
-    ![Before You Begin page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-
-6. On the **Installation Type** page, leave the **Role-based or feature-based installation** option checked and click **Next**.
-
-    ![Installation Type page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-
-7. On the **Server Selection** page, select the current virtual machine from the server pool, and click **Next**.
-
-    ![Server Selection page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-
-8. On the **Server Roles** page, click **Next**. We skip this page since we are not installing any roles on the server.
-
-9. On the **Features** page, click to expand the **Remote Server Administration Tools** node and then click to expand the **Role Administration Tools** node. Select **AD DS and AD LDS Tools** feature from the list of role administration tools.
-
-    ![Features page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
-
-10. On the **Confirmation** page, click **Install** to install the AD and AD LDS tools feature on the virtual machine. When feature installation completes successfully, click **Close** to exit the **Add Roles and Features** wizard.
-
-    ![Confirmation page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
-
-
-## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>Task 3 - Connect to and explore the managed domain
-Now that the AD Administrative Tools are installed on the domain joined virtual machine, we can use these tools to explore and administer the managed domain.
-
-> [AZURE.NOTE] You need to be a member of the 'AAD DC Administrators' group, to administer the managed domain.
-
-1. From the Start screen, click **Administrative Tools**. You should see the AD administrative tools installed on the virtual machine.
-
-    ![Administrative Tools installed on server](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
-
-2. Click **Active Directory Administrative Center**.
-
-    ![Active Directory Administrative Center](./media/active-directory-domain-services-admin-guide/adac-overview.png)
-
-3. To explore the domain, click the domain name in the left pane (for example, 'contoso100.com'). Notice two containers called 'AADDC Computers' and 'AADDC Users' respectively.
-
-    ![ADAC - view domain](./media/active-directory-domain-services-admin-guide/adac-domain-view.png)
-
-4. Click the container called **AADDC Users** to see all users and groups belonging to the managed domain. You should see user accounts and groups from your Azure AD tenant show up in this container. Notice in this example, a user account for the user called 'bob' and a group called 'AAD DC Administrators' are available in this container.
-
-    ![ADAC - domain users](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
-
-5. Click the container called **AADDC Computers** to see the computers joined to this managed domain. You should see an entry for the current virtual machine, which is joined to the domain. Computer accounts for all computers that are joined to the Azure AD Domain Services managed domain are stored in this 'AADDC Computers' container.
-
-    ![ADAC - domain joined computers](./media/active-directory-domain-services-admin-guide/adac-aaddc-computers.png)
+5. 管理対象ドメインを管理するには、ディレクトリの **"AAD DC Administrators" グループに属するユーザー アカウント**の資格情報が必要です。
 
 <br>
 
-## <a name="related-content"></a>Related Content
 
-- [Azure AD Domain Services - Getting Started guide](./active-directory-ds-getting-started.md)
+## 管理対象ドメインで実行できる管理タスク
+"AAD DC Administrators" グループのメンバーには、管理対象ドメインで以下のようなタスクを実行できる権限が付与されます。
 
-- [Join a Windows Server virtual machine to an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-join-windows-vm.md)
+- コンピューターを管理対象ドメインに参加させる。
 
-- [Deploy Remote Server Administration Tools](https://technet.microsoft.com/library/hh831501.aspx)
+- 管理対象ドメイン内の 'AADDC Computers' と 'AADDC Users' のコンテナーに対して組み込みの GPO を構成する。
+
+- 管理対象ドメイン上で DNS を管理する。
+
+- 管理対象ドメイン上でカスタム組織単位 (OU) を作成し、管理する。
+
+- 管理対象ドメインに参加しているコンピューターへの管理アクセスを取得する。
 
 
+## 管理対象ドメインに対して付与されていない管理者特権
+ドメインは、修正プログラムの適用、監視、バックアップの実行などのアクティビティを含め、Microsoft によって管理されます。そのため、ドメインはロックされており、ユーザーには特定の管理タスクをドメインで実行する権限がありません。例として、以下のようなタスクを実行できません。
 
-<!--HONumber=Oct16_HO2-->
+- 管理対象ドメインのドメイン管理者特権またはエンタープライズ管理者権限は付与されません。
+
+- 管理対象ドメインのスキーマを拡張することはできません。
+
+- リモート デスクトップを使用して管理対象ドメインのドメイン コントローラーに接続することはできません。
+
+- 管理対象ドメインにドメイン コントローラーを追加することはできません。
 
 
+## タスク 1 - ドメインに参加している Windows Server 仮想マシンをプロビジョニングして、管理対象ドメインをリモートで管理する
+Azure AD ドメイン サービスの管理対象ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールで管理することができます。テナント管理者には、管理対象ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。そのため、"AAD DC Administrators" グループのメンバーは、管理対象ドメインに参加している Windows Server とクライアント コンピューターから、AD 管理ツールを使用して、リモートで管理対象ドメインを管理できます。AD 管理ツールは、管理対象ドメインに参加している Windows Server とクライアント コンピューターで、リモート サーバー管理ツール (RSAT) のオプション機能の一部としてインストールできます。
+
+最初の手順では、管理対象ドメインに参加している Windows Server 仮想マシンを設定します。手順については、「[Windows Server 仮想マシンの管理対象ドメインへの参加](active-directory-ds-admin-guide-join-windows-vm.md)」を参照してください。
+
+### クライアント コンピューター (Windows 10 など) から管理対象ドメインをリモートで管理する
+この記事の手順では、AAD DS の管理対象ドメインを管理するために、Windows Server 仮想マシンを使用します。ただし、Windows クライアント (Windows 10 など) の仮想マシンを使用することもできます。
+
+TechNet の 手順に従って、Windows クライアントの仮想マシンで[リモート サーバー管理ツール (RSAT) をインストール](http://social.technet.microsoft.com/wiki/contents/articles/2202.remote-server-administration-tools-rsat-for-windows-client-and-windows-server-dsforum2wiki.aspx)できます。
+
+
+## タスク 2 - 仮想マシンに Active Directory 管理ツールをインストールする
+ドメインに参加している仮想マシンに Active Directory 管理ツールをインストールするには、次の手順を実行します。[リモート サーバー管理ツールのインストールおよび使用](https://technet.microsoft.com/library/hh831501.aspx)の詳細については、TechNet を参照してください。
+
+1. Azure クラシック ポータルの **[Virtual Machines]** ノードに移動します。タスク 1 で作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで **[接続]** をクリックします。
+
+    ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
+
+2. クラシック ポータルでは、仮想マシンへの接続に使用される ".rdp" という拡張子のファイルを開くか保存するように求められます。ダウンロードが完了したら、ファイルをクリックして開きます。
+
+3. ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。この例では "bob@domainservicespreview.onmicrosoft.com" を使用します。
+
+4. スタート画面で、**[サーバー マネージャー]** を開きます。[サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
+
+    ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
+
+5. **[役割と機能の追加]** ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
+
+    ![ページを開始する前に](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
+
+6. **[インストールの種類]** ページで、**[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** をクリックします。
+
+	![インストールの種類のページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
+
+7. **[サーバーの選択]** ページで、サーバー プールから現在の仮想マシンを選択して **[次へ]** をクリックします。
+
+	![サーバー選択ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
+
+8. **[サーバーの役割]** ページで、**[次へ]** をクリックします。サーバーに役割をインストールしないため、このページはスキップします。
+
+9. **[機能]** ページで、**[リモート サーバー管理ツール]** ノードをクリックして展開し、次に **[役割管理ツール]** ノードをクリックして展開します。役割管理ツールの一覧から、**[AD DS および AD LDS ツール]** 機能を選択します。
+
+	![機能ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
+
+10. **[確認]** ページで、**[インストール]** をクリックして仮想マシンに AD および AD LDS ツールの機能をインストールします。機能のインストールが正常に完了したら、**[閉じる]** をクリックして **[役割と機能の追加]** ウィザードを終了します。
+
+	![確認ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
+
+
+## タスク 3 - 管理対象ドメインへの接続と確認
+ドメインに参加している仮想マシンに AD 管理ツールがインストールされたら、その管理ツールを使って管理対象ドメインを確認し、管理することができます。
+
+> [AZURE.NOTE] 管理対象ドメインを管理するには、"AAD DC Administrators" グループのメンバーである必要があります。
+
+1. スタート画面で **[管理ツール]** をクリックします。仮想マシンにインストールされた AD 管理ツールを確認できます。
+
+	![サーバーにインストールされている管理ツール](./media/active-directory-domain-services-admin-guide/install-rsat-admin-tools-installed.png)
+
+2. **[Active Directory 管理センター]** をクリックします。
+
+	![Active Directory 管理センター](./media/active-directory-domain-services-admin-guide/adac-overview.png)
+
+3. ドメインを確認するには、左ウィンドウのドメイン名 ("contoso100.com" など) をクリックします。'AADDC Computers' と 'AADDC Users' という名前の 2 つのコンテナーがあります。
+
+    ![ADAC: ドメインの表示](./media/active-directory-domain-services-admin-guide/adac-domain-view.png)
+
+4. **AADDC Users** というコンテナーをクリックすると、管理対象ドメインに属しているすべてのユーザーとグループが表示されます。ユーザー アカウントと Azure AD テナントからのグループがこのコンテナー内にあります。この例では、"bob" という名前のユーザーのユーザー アカウントおよび "AAD DC Administrators" という名前のグループがこのコンテナーで利用できます。
+
+    ![ADAC: ドメイン ユーザー](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
+
+5. **AADDC Computers** という名前のコンテナーをクリックすると、この管理対象ドメインに参加しているコンピューターが表示されます。ドメインに参加している現在の仮想マシンのエントリが表示されます。Azure AD Domain Services の管理対象ドメインに参加しているすべてのコンピューターのコンピューター アカウントが、この "AADDC Computers" コンテナーに格納されます。
+
+    ![ADAC: ドメインに参加しているコンピューター](./media/active-directory-domain-services-admin-guide/adac-aaddc-computers.png)
+
+<br>
+
+## 関連コンテンツ
+
+- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+
+- [リモート サーバー管理ツールのデプロイ](https://technet.microsoft.com/library/hh831501.aspx)
+
+<!---HONumber=AcomDC_0907_2016-->

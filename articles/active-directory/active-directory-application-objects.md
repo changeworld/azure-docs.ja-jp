@@ -1,6 +1,6 @@
 <properties
-pageTitle="Azure Active Directory Application and Service Principal Objects | Microsoft Azure"
-description="A discussion of the relationship between application and service principal objects in Azure Active Directory"
+pageTitle="Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト | Microsoft Azure"
+description="Azure Active Directory におけるアプリケーション オブジェクトとサービス プリンシパル オブジェクトのリレーションシップについての説明"
 documentationCenter="dev-center-name"
 authors="bryanla"
 manager="mbaldwin"
@@ -16,47 +16,46 @@ ms.workload="identity"
 ms.date="08/10/2016"
 ms.author="bryanla;mbaldwin"/>
 
+# Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト
+Azure Active Directory (AD) "アプリケーション" についての記事を読むと、著者がアプリケーションと呼んでいるものが正確には何を指しているのか、わかりにくい場合があります。この記事の目的は、Azure AD アプリケーションの統合について概念的な側面と具体的な側面を定義し、[マルチテナント アプリケーション](active-directory-dev-glossary.md#multi-tenant-application)に対する登録および同意の例を示すことにより、不明確な部分をよりわかりやすくすることです。
 
-# <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Application and service principal objects in Azure Active Directory
-When you read about an Azure Active Directory (AD) "application", it's not always clear exactly what is being referred to by the author. The goal of this article is to make it clearer, by defining the conceptual and concrete aspects of Azure AD application integration, with an example of registration and consent for a [multi-tenant application](active-directory-dev-glossary.md#multi-tenant-application).
+## Overview
+Azure AD アプリケーションとは、単なるソフトウェアのことではありません。これは、アプリケーション ソフトウェアだけでなく、その Azure AD への登録 (ID 構成とも呼ばれる) も意味する概念的な用語です。Azure AD に登録することで、そのアプリケーション ソフトウェアは、実行時に認証および承認の "対話" に参加できるようになります。定義上、アプリケーションは[クライアント](active-directory-dev-glossary.md#client-application) ロール (リソースの使用)、[リソース サーバー](active-directory-dev-glossary.md#resource-server) ロール (クライアントへの API の公開)、またはその両方のロールで動作できます。対話プロトコルは、[OAuth 2.0 承認付与フロー](active-directory-dev-glossary.md#authorization-grant)によって定義されており、その目的は、クライアントとリソースが、それぞれリソースのデータに対してアクセス/保護を実行できるようにすることです。次はもう 1 段階掘り下げ、Azure AD アプリケーション モデルにおいて、アプリケーションが内部的にはどのように表されるのかを見てみましょう。
 
-## <a name="overview"></a>Overview
-An Azure AD application is broader than just a piece of software. It's a conceptual term, referring not only to application software, but also its registration (aka: identity configuration) with Azure AD, which allows it to participate in authentication and authorization "conversations" at runtime. By definition, an application can function in a [client](active-directory-dev-glossary.md#client-application) role (consuming a resource), a [resource server](active-directory-dev-glossary.md#resource-server) role (exposing APIs to clients), or even both. The conversation protocol is defined by an [OAuth 2.0 Authorization Grant flow](active-directory-dev-glossary.md#authorization-grant), with a goal of allowing the client/resource to access/protect a resource's data respectively. Now let's go a level deeper, and see how the Azure AD application model represents an application internally. 
+## アプリケーションの登録
+[Azure クラシック ポータル][AZURE-Classic-Portal]でアプリケーションを登録すると、Azure AD テナントに、アプリケーション オブジェクトとサービス プリンシパル オブジェクトという 2 つのオブジェクトが作成されます。
 
-## <a name="application-registration"></a>Application registration
-When you register an application in the [Azure classic portal][AZURE-Classic-Portal], two objects are created in your Azure AD tenant: an application object, and a service principal object.
+#### アプリケーション オブジェクト
+Azure AD アプリケーションは、その唯一のアプリケーション オブジェクトによって "*定義*" されています。アプリケーション オブジェクトは、アプリケーションの登録先であり、そのアプリケーションの "ホーム" テナントと呼ばれる Azure AD テナント内にあります。アプリケーション オブジェクトは、ID に関連するアプリケーションの情報を提供するオブジェクトであり、対応するサービス プリンシパル オブジェクトを "*派生*" させて実行時に使用するためのテンプレートでもあります。
 
-#### <a name="application-object"></a>Application object
-An Azure AD application is *defined* by its one and only application object, which resides in the Azure AD tenant where the application was registered, referred to as the application's "home" tenant. The application object provides identity-related information for an application, and is the template from which its corresponding service principal object(s) are *derived* for use at run-time. 
+アプリケーション オブジェクトはアプリケーションの "*グローバル*" な表現 (すべてのテナントで使用する)、サービス プリンシパル オブジェクトはアプリケーションの "*ローカル*" な表現 (特定のテナントで使用する) と考えることができます。アプリケーション オブジェクトのスキーマは、Azure AD Graph [Application エンティティ][AAD-Graph-App-Entity]によって定義されています。そのため、アプリケーション オブジェクトには、ソフトウェア アプリケーションとの間に 1:1 のリレーションシップがあり、対応する *n* 個のサービス プリンシパル オブジェクトとの間に 1:*n* のリレーションシップがあります。
 
-You can think of the application as the *global* representation of your application (for use across all tenants), and the service principal as the *local* representation (for use in a specific tenant). The Azure AD Graph [Application entity][AAD-Graph-App-Entity] defines the schema for an application object. An application object therefore has a 1:1 relationship with the software application, and a 1:*n* relationship with its corresponding *n* service principal object(s).
+#### サービス プリンシパル オブジェクト
+サービス プリンシパル オブジェクトは、アプリケーション用のポリシーとアクセス許可を定義しており、実行時のリソースへのアクセスの際にアプリケーションを表す、セキュリティ プリンシパルの基となる情報を提供します。サービス プリンシパル オブジェクトのスキーマは、Azure AD Graph [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって定義されています。
 
-#### <a name="service-principal-object"></a>Service principal object
-The service principal object defines the policy and permissions for an application, providing the basis for a security principal to represent the application when accessing resources at run-time. The Azure AD Graph [ServicePrincipal entity][AAD-Graph-Sp-Entity] defines the schema for a service principal object. 
+サービス プリンシパル オブジェクトは、アプリケーションのインスタンスの使用方法を表す必要のある各テナントに必須であり、これによって、それらのテナントからユーザー アカウントが所有するリソースに安全にアクセスできます。シングルテナント アプリケーションは、サービス プリンシパルが 1 つのみ (ホーム テナント内に) 存在します。また、マルチテナント [Web アプリケーション](active-directory-dev-glossary.md#web-client)は各テナントにサービス プリンシパルがあります。そのテナントからの管理者やユーザーにはリソースにアクセスできるように同意が与えられています。同意を得た後、サービス プリンシパル オブジェクトは将来の承認要求のために参照されることになります。
 
-A service principal object is required in each tenant for which an instance of the application's usage must be represented, enabling secure access to resources owned by user accounts from that tenant. A single-tenant application will have only one service principal (in its home tenant). A multi-tenant [Web application](active-directory-dev-glossary.md#web-client) will also have a service principal in each tenant where an administrator or user(s) from that tenant have given consent, allowing it to access their resources. Following consent, the service principal object will be consulted for future authorization requests. 
+> [AZURE.NOTE] アプリケーション オブジェクトに加えたすべての変更は、アプリケーションのホーム テナント (アプリケーションが登録されたテナント) にだけ存在するサービス プリンシパル オブジェクトにも反映されます。マルチテナント アプリケーションの場合は、コンシューマー テナントでアクセス権を削除し、もう一度アクセス権を付与するまで、そのコンシューマー テナントのサービス プリンシパル オブジェクトにアプリケーション オブジェクトへの変更が反映されることはありません。
 
-> [AZURE.NOTE] Any changes you make to your application object, are also reflected in its service principal object in the application's home tenant only (the tenant where it was registered). For multi-tenant applications, changes to the application object are not reflected in any consumer tenants' service principal objects, until the consumer tenant removes access and grants access again.
+## 例
+次の図は、**HR アプリ**という名前のサンプル マルチテナント アプリケーションを基に、アプリケーションのアプリケーション オブジェクトと、対応するサービス プリンシパル オブジェクトの間のリレーションシップを表しています。このシナリオには、次の 3 つの Azure AD テナントがあります。
 
-## <a name="example"></a>Example
-The following diagram illustrates the relationship between an application's application object and corresponding service principal objects, in the context of a sample multi-tenant application called **HR app**. There are three Azure AD tenants in this scenario: 
-
-- **Adatum** - the tenant used by the company that developed the **HR app**
-- **Contoso** - the tenant used by the Contoso organization, which is a consumer of the **HR app**
-- **Fabrikam** - the tenant used by the Fabrikam organization, which also consumes the **HR app**
+- **Adatum** - **HR アプリ**を開発した会社が使用するテナント
+- **Contoso** - **HR アプリ**のコンシューマーである、Contoso という組織が使用するテナント
+- **Fabrikam** - Contoso と同じく **HR アプリ**のコンシューマーである、Fabrikam という組織が使用するテナント
 
 ![Relationship between an application object and a service principal object](./media/active-directory-application-objects/application-objects-relationship.png)
 
-In the previous diagram, Step 1 is the process of creating the application and service principal objects in the application's home tenant.
+前の図でのステップ 1. は、アプリケーションとサービス プリンシパル オブジェクトを、アプリケーションのホーム テナント内に作成するプロセスです。
 
-In Step 2, when Contoso and Fabrikam administrators complete consent, a service principal object is created in their company's Azure AD tenant and assigned the permissions that the administrator granted. Also note that the HR app could be configured/designed to allow consent by users for individual use.
+ステップ 2. では、Contoso と Fabrikam の管理者が同意を終えると、それぞれの会社の Azure AD テナント内にサービス プリンシパル オブジェクトが作成され、それに管理者が付与したアクセス許可が割り当てられます。HR アプリは、個々のユーザー用として、ユーザーによる同意を許可するように構成/設計することができる点にも注目してください。
 
-In Step 3, the consumer tenants of the HR application (Contoso and Fabrikam) each have their own service principal object. Each represents their use of an instance of the application at runtime, governed by the permissions consented by the respective administrator.
+ステップ 3 では、HR アプリケーション (Contoso と Fabrikam) のコンシューマー テナントにそれぞれ独自のサービス プリンシパル オブジェクトが作成されます。それぞれ実行時におけるアプリケーションのインスタンスの使用を表し、それぞれの管理者によって同意されたアクセス許可によって管理されます。
 
-## <a name="next-steps"></a>Next steps
-An application's application object can be accessed via the Azure AD Graph API, as represented by its OData [Application entity][AAD-Graph-App-Entity]
+## 次のステップ
+Azure AD Graph API を通じて、その OData [Application エンティティ][AAD-Graph-App-Entity]によって表される、アプリケーションのアプリケーション オブジェクトにアクセスできます。
 
-An application's service principal object can be accessed via the Azure AD Graph API, as represented by its OData [ServicePrincipal entity][AAD-Graph-Sp-Entity]
+Azure AD Graph API を通じて、その OData [ServicePrincipal エンティティ][AAD-Graph-Sp-Entity]によって表される、アプリケーションのサービス プリンシパル オブジェクトにアクセスできます。
 
 
 
@@ -67,7 +66,4 @@ An application's service principal object can be accessed via the Azure AD Graph
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AZURE-Classic-Portal]: https://manage.windowsazure.com
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

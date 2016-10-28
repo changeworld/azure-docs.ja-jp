@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Install Update 1.2 on your StorSimple device | Microsoft Azure"
-   description="Explains how to install StorSimple 8000 Series Update 1.2 on your StorSimple 8000 series device."
+   pageTitle="StorSimple デバイスへの Update 1.2 のインストール | Microsoft Azure"
+   description="StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 1.2 をインストールする方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,119 +15,114 @@
    ms.date="08/22/2016"
    ms.author="alkohli" />
 
+# StorSimple デバイスへの Update 1.2 のインストール
 
-# <a name="install-update-1.2-on-your-storsimple-device"></a>Install Update 1.2 on your StorSimple device
+## Overview
 
-## <a name="overview"></a>Overview
+このチュートリアルでは、Update 1 より前のソフトウェア バージョンを実行している StorSimple デバイスに Update 1.2 をインストールする方法について説明します。このチュートリアルではまた、ゲートウェイが StorSimple デバイスの DATA 0 以外のネットワーク インターフェイスで構成されている場合にこの更新プログラムに必要な追加の手順についても説明します。
 
-This tutorial explains how to install Update 1.2 on a StorSimple device that is running a software version prior to Update 1. The tutorial also covers the additional steps required for the update when a gateway is configured on a network interface other than DATA 0 of the StorSimple device.
+Update 1.2 には、デバイス ソフトウェアの更新プログラム、LSI ドライバーの更新プログラム、ディスク ファームウェアの更新プログラムが含まれます。デバイス ソフトウェアと LSI ドライバーの更新プログラムは中断を伴わない更新プログラムであるため、Azure クラシック ポータルを使用して適用できます。ディスク ファームウェアの更新プログラムは中断を伴う更新プログラムであるため、デバイスの Windows PowerShell インターフェイスでのみ適用できます。
 
-Update 1.2 includes device software updates, LSI driver updates and disk firmware updates. The software and LSI driver updates are non-disruptive updates and can be applied via the Azure classic portal. The disk firmware updates are disruptive updates and can only be applied via the Windows PowerShell interface of the device.
-
-Depending upon which version your device is running, you can determine if Update 1.2 will be applied. You can check the software version of your device by navigating to the **quick glance** section of your device **Dashboard**.
+デバイスが実行しているバージョンに応じて、Update 1.2 を適用するかどうかを判断します。デバイスのソフトウェア バージョンは、デバイスの**ダッシュボード**の **[概要]** セクションに移動することで確認できます。
 
 </br>
 
-| If running software version …   | What happens in the portal?                              |
+| 実行しているソフトウェア バージョン | ポータルの動作 |
 |---------------------------------|--------------------------------------------------------------|
-| Release - GA                    | If you are running Release version (GA), do not apply this update. Please [contact Microsoft Support](storsimple-contact-microsoft-support.md) to update your device.|
-| Update 0.1                      | Portal applies Update 1.2.                                |
-| Update 0.2                      | Portal applies Update 1.2.                                |
-| Update 0.3                      | Portal applies Update 1.2.                                |
-| Update 1                        | This update will not be available.                           |
-| Update 1.1                      | This update will not be available.                           |
+| リリース - GA | リリース バージョン (GA) を実行している場合は、この更新プログラムを適用しないでください。デバイスを更新するには、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。|
+| Update 0.1 | ポータルによって Update 1.2 が適用されます。 |
+| Update 0.2 | ポータルによって Update 1.2 が適用されます。 |
+| Update 0.3 | ポータルによって Update 1.2 が適用されます。 |
+| Update 1 | この更新プログラムは使用できません。 |
+| Update 1.1 | この更新プログラムは使用できません。 |
 
 </br>
 
 > [AZURE.IMPORTANT]
 
-> -  You may not see Update 1.2 immediately because we do a phased rollout of the updates. Scan for updates in a few days again as this Update will become available soon.
-> - This update includes a set of manual and automatic pre-checks to determine the device health in terms of hardware state and network connectivity. These pre-checks are performed only if you apply the updates from the Azure classic portal.
-> - We recommend that you install the software and driver updates via the Azure classic portal. You should only go to the Windows PowerShell interface of the device (to install updates) if the pre-update gateway check fails in the portal. The updates may take 5-10 hours to install (including the Windows Updates). The maintenance mode updates must be installed via the Windows PowerShell interface of the device. As maintenance mode updates are disruptive updates, these will result in a down time for your device.
+> -  更新プログラムは段階的に公開されるため、Update 1.2 が即座に表示されない場合があります。これらの更新プログラムは間もなく利用可能になるため、数日後にもう一度更新プログラムの有無を確認してください。
+> - この更新プログラムには、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を判断するための、手動と自動の一連の事前チェックが含まれます。これらの事前チェックは、Azure クラシック ポータルから更新プログラムを適用する場合にのみ実行されます。
+> - ソフトウェアとドライバーの更新プログラムのインストールには Azure クラシック ポータルを使用することをお勧めします。ポータルで更新前のゲートウェイのチェックに失敗した場合のみ、(更新プログラムをインストールする) デバイスの Windows PowerShell インターフェイスに移動してください。更新プログラムのインストールには、(Windows の更新プログラムを含めて) 5 ～ 10 時間がかかる場合があります。メンテナンス モードの更新プログラムは、デバイスの Windows PowerShell インターフェイスからインストールする必要があります。メンテナンス モードの更新プログラムは中断を伴う更新プログラムであるため、デバイスにダウンタイムが発生します。
 
 [AZURE.INCLUDE [storsimple-preparing-for-update](../../includes/storsimple-preparing-for-updates.md)]
 
-## <a name="install-update-1.2-via-the-azure-classic-portal"></a>Install Update 1.2 via the Azure classic portal
+## Azure クラシック ポータルを使用して Update 1.2 をインストールする
 
-Perform the following steps to update your device to [Update 1.2](storsimple-update1-release-notes.md). Use this procedure only if you have a gateway configured on DATA 0 network interface on your device.
+デバイスを [Update 1.2](storsimple-update1-release-notes.md) に更新するには、次の手順を実行します。この手順は、ゲートウェイがデバイスの DATA 0 のネットワーク インターフェイスで構成されている場合にのみ使用します。
 
 [AZURE.INCLUDE [storsimple-install-update2-via-portal](../../includes/storsimple-install-update2-via-portal.md)]
 
-12. Verify that your device is running **StorSimple 8000 Series Update 1.2 (6.3.9600.17584)**. The **Last updated date** should also be modified. You'll also see that Maintenance mode updates are available (this message might continue to be displayed for up to 24 hours after you install the updates).
+12. デバイスで **StorSimple 8000 Series Update 1.2 (6.3.9600.17584)** が実行されていることを確認します。**[最終更新日]** も変更されています。メンテナンス モードの更新プログラムも利用できることが示されます (このメッセージは、更新プログラムをインストールした後、最大 24 時間表示され続ける可能性があります)。
 
-    Maintenance mode updates are disruptive updates that result in device downtime and can only be applied via the Windows PowerShell interface of your device.
+    メンテナンス モードの更新プログラムは、デバイスのダウンタイムを発生させる更新プログラムであり、デバイスの Windows PowerShell インターフェイス経由でのみ適用できます。
 
     ![Maintenance page](./media/storsimple-install-update-1/InstallUpdate12_10M.png "Maintenance page")
 
-13. Download the maintenance mode updates by using the steps listed in [To download hotfixes]( #to-download-hotfixes) to search for and download KB3063416, which installs disk firmware updates (the other updates should already be installed by now).
+13. 「[修正プログラムをダウンロードするには](#to-download-hotfixes)」で示された手順を使用して KB3063416 を検索してメンテナンス モードの更新プログラムをダウンロードします。ディスク ファームウェアの更新プログラムがインストールされます (他の更新プログラムが既にインストールされている必要があります)。
 
-13. Follow the steps listed in [Install and verify maintenance mode hotfixes](#to-install-and-verify-maintenance-mode-hotfixes) to install the maintenance mode updates.
+13. メンテナンス モードの更新プログラムをインストールするには、「[メンテナンス モードの修正プログラムをインストールして確認するには](#to-install-and-verify-maintenance-mode-hotfixes)」に記載されている手順に従います。
 
-14. In the Azure classic portal, navigate to the **Maintenance** page and at the bottom of the page, click **Scan Updates** to check for any Windows Updates and then click **Install Updates**. You're finished after all of the updates are successfully installed.
+14. Azure クラシック ポータルで [**メンテナンス**] ページに移動し、ページの下部にある [**更新プログラムのスキャン**] をクリックして Windows 更新プログラムを確認し、[**更新プログラムのインストール**] をクリックします。すべての更新プログラムが正常にインストールされたら、作業は終了です。
 
 
 
-## <a name="install-update-1.2-on-a-device-that-has-a-gateway-configured-for-a-non-data-0-network-interface"></a>Install Update 1.2 on a device that has a gateway configured for a non-DATA 0 network interface
+## ゲートウェイが DATA 0 以外のネットワーク インターフェイスで構成されているデバイスに Update 1.2 をインストールする
 
-You should use this procedure only if you fail the gateway check when trying to install the updates through the Azure classic portal. The check fails as you have a gateway assigned to a non-DATA 0 network interface and your device is running a software version prior to Update 1. If your device does not have a gateway on a non-DATA 0 network interface, you can update your device directly from the Azure classic portal. See [Install update 1.2 via the Azure classic portal](#install-update-1.2-via-the-azure-classic-portal).
+Azure クラシック ポータルから更新プログラムをインストールしようとしたときにゲートウェイのチェックに失敗した場合にのみ、この手順を使用してください。このチェックは、DATA 0 以外のネットワーク インターフェイスに割り当てられているゲートウェイがある場合に、デバイスが Update 1 より前のソフトウェア バージョンを実行していると、失敗します。デバイスのゲートウェイが DATA 0 以外のネットワーク インターフェイスで設定されていない場合、Azure クラシック ポータルから直接デバイスを更新できます。「[を Azure クラシック ポータル使用して Update 1.2 をインストールする](#install-update-1.2-via-the-azure-classic-portal)」を参照してください。
 
-The software versions that can be upgraded using this method are Update 0.1, Update 0.2, and Update 0.3.
+この方法でアップグレードできるソフトウェアのバージョンは、Update 0.1、Update 0.2、Update 0.3 です。
 
 
 > [AZURE.IMPORTANT]
 >
-> - If your device is running Release (GA) version, please contact [Microsoft Support](storsimple-contact-microsoft-support.md) to assist you with the update.
-> - This procedure needs to be performed only once to apply Update 1.2. You can use the Azure classic portal to apply subsequent updates.
+> - デバイスがリリース (GA) バージョンを実行している場合、この更新プログラムの使用については、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
+> - この手順は、Update 1.2 を適用するために 1 回だけ実行する必要があります。以降の更新プログラムは、Azure クラシック ポータルを使用して適用できます。
 
-If your device is running pre-Update 1 software and it has a gateway set for a network interface other than DATA 0, you can apply Update 1.2 in the following two ways:
+デバイスが Update 1 よりも前のソフトウェアを実行していて、ゲートウェイが DATA 0 以外のネットワーク インターフェイスで設定されている場合、次の 2 つの方法で Update 1.2 を適用できます。
 
-- **Option 1**: Download the update and apply it by using the `Start-HcsHotfix` cmdlet from the Windows PowerShell interface of the device. This is the recommended method. **Do not use this method to apply Update 1.2 if your device is running Update 1.0 or Update 1.1.**
+- **方法 1**: デバイスの Windows PowerShell インターフェイスから、`Start-HcsHotfix` コマンドレットを使用して更新プログラムをダウンロードして適用します。これが推奨される方法です。**デバイスが Update 1.0 または Update 1.1 を実行している場合は、この方法で Update 1.2 を適用しないでください。**
 
-- **Option 2**: Remove the gateway configuration and install the update directly from the Azure classic portal.
+- **方法 2**: ゲートウェイ構成を削除し、Azure クラシック ポータルから直接更新プログラムをインストールします。
 
 
-Detailed instructions for each of these are provided in the following sections.
+個々の詳細な手順は、次のセクションに記載されています。
 
-## <a name="option-1:-use-windows-powershell-for-storsimple-to-apply-update-1.2-as-a-hotfix"></a>Option 1: Use Windows PowerShell for StorSimple to apply Update 1.2 as a hotfix
+## 方法 1: StorSimple 用 Windows PowerShell を使用して Update 1.2 を修正プログラムとして適用する
 
-You should use this procedure only if you are running Update 0.1, 0.2, 0.3 and if your gateway check has failed when trying to install updates from the Azure classic portal. If you are running Release (GA) software, please [Microsoft Support](storsimple-contact-microsoft-support.md) to update your device.
+Update 0.1、0.2、0.3 を実行している場合、および Azure クラシック ポータルから更新プログラムをインストールしようとしたときにゲートウェイのチェックが失敗した場合のみ、この手順を使用してください。リリース (GA) ソフトウェアを実行している場合、デバイスの更新については、[Microsoft サポート](storsimple-contact-microsoft-support.md)にお問い合わせください。
 
-To install Update 1.2 as a hotfix, you must download and install the following hotfixes:
+修正プログラムとして Update 1.2 をインストールするには、次の修正プログラムをダウンロードしてインストールする必要があります。
 
-| Order  | KB        | Description             | Update type  |
+| 順序 | KB | 説明 | 更新の種類 |
 |--------|-----------|-------------------------|------------- |
-| 1      | KB3063418 | Software update         |  Regular     |
-| 2      | KB3043005 | LSI SAS controller update |  Regular     |
-| 3      | KB3063416 | Disk firmware           | Maintenance  |
+| 1 | KB3063418 | ソフトウェア更新 | 通常 |
+| 2 | KB3043005 | LSI SAS コントローラーの更新 | 通常 |
+| 3 | KB3063416 | ディスク ファームウェア | メンテナンス |
 
-Before using this procedure to apply the update, make sure that:
+この手順を使用して更新プログラムを適用する前に、次のことを確認します。
 
-- Both device controllers are online.
+- 両方のデバイス コントローラーがオンラインである。
 
-Perform the following steps to apply Update 1.2. **The updates could take around 2 hours to complete (approximately 30 minutes for software, 30 minutes for driver, 45 minutes for disk firmware).**
+Update 1.2 を適用するには、次の手順を実行します。**この更新プログラムは、完了するまでに約 2 時間かかる場合があります (ソフトウェアに約 30 分、ドライバーに約 30 分、ディスク ファームウェアに約 45 分)。**
 
 [AZURE.INCLUDE [storsimple-install-update-option1](../../includes/storsimple-install-update-option1.md)]
 
 
-## <a name="option-2:-use-the-azure-classic-portal-to-apply-update-1.2-after-removing-the-gateway-configuration"></a>Option 2: Use the Azure classic portal to apply Update 1.2 after removing the gateway configuration
+## 方法 2: ゲートウェイの構成を削除した後で、Azure クラシック ポータルを使用して Update 1.2 を適用する
 
-This procedure applies only to StorSimple devices that are running a software version prior to Update 1 and have a gateway set on a network interface other than DATA 0. You will need to clear the gateway setting prior to applying the update.
+この手順は、Update 1 よりも前のソフトウェア バージョンを実行していて、ゲートウェイが DATA 0 以外のネットワーク インターフェイスで設定されている StorSimple デバイスのみに当てはまります。更新プログラムを適用する前に、ゲートウェイの設定をクリアする必要があります。
 
-The update may take a few hours to complete. If your hosts are in different subnets, removing the gateway configuration on the iSCSI interfaces could result in downtime. We recommend that you configure DATA 0 for iSCSI traffic to reduce the downtime.
+更新の完了に数時間かかる場合があります。ホストが別のサブネットにある場合、iSCSI インターフェイスでゲートウェイの構成を削除すると、ダウンタイムが発生する場合があります。ダウンタイムを抑えるために、DATA 0 を iSCSI トラフィック用に構成することをお勧めします。
 
-Perform the following steps to disable the network interface with the gateway and then apply the update.
+ゲートウェイとのネットワーク インターフェイスを無効にして更新プログラムを適用するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-install-update-option2](../../includes/storsimple-install-update-option2.md)]
 
 [AZURE.INCLUDE [storsimple-install-troubleshooting](../../includes/storsimple-install-troubleshooting.md)]
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn more about the [Update 1.2 release](storsimple-update1-release-notes.md).
+詳細については、[Update 1.2 リリース](storsimple-update1-release-notes.md)に関するページを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

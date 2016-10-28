@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Use Apache Phoenix and SQuirreL in HDInsight | Microsoft Azure" 
-   description="Learn how to use Apache Phoenix in HDInsight, and how to install and configure SQuirreL on your workstation to connect to an HBase cluster in HDInsight." 
+   pageTitle="HDInsight での Apache Phoenix および SQuirreL の使用 | Microsoft Azure" 
+   description="Apache Phoenix を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。" 
    services="hdinsight" 
    documentationCenter="" 
    authors="mumian" 
@@ -16,54 +16,53 @@
    ms.date="09/02/2016"
    ms.author="jgao"/>
 
+# HDinsight での Windows ベースの HBase クラスターによる Apache Phoenix と SQuirreL の使用  
 
-# <a name="use-apache-phoenix-and-squirrel-with-windows-based-hbase-clusters-in-hdinsight"></a>Use Apache Phoenix and SQuirreL with Windows-based HBase clusters in HDinsight  
+[Apache Phoenix](http://phoenix.apache.org/) を HDInsight で使用する方法、およびワークステーションに SQuirreL をインストールして HDInsight の HBase クラスターに接続するように構成する方法について説明します。Phoenix の詳細については、[Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。Phoenix の文法については、[Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
-Learn how to use [Apache Phoenix](http://phoenix.apache.org/) in HDInsight, and how to install and configure SQuirreL on your workstation to connect to an HBase cluster in HDInsight. For more information about Phoenix, see [Phoenix in 15 minutes or less](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html). For the Phoenix grammar, see [Phoenix Grammar](http://phoenix.apache.org/language/index.html).
-
->[AZURE.NOTE] For the Phoenix version information in HDInsight, see [What's new in the Hadoop cluster versions provided by HDInsight?][hdinsight-versions].
+>[AZURE.NOTE] HDInsight での Phoenix のバージョンの情報については、「[What's new in the Hadoop cluster versions provided by HDInsight? (HDInsight で提供される Hadoop クラスター バージョンの新機能)][hdinsight-versions]」を参照してください。
 >
-> The information in this document is specific to Windows-based HDInsight clusters. For information on using Phoenix on Linux-based HDInsight, see [Use Apache Phoenix with Linux-based HBase clusters in HDinsight](hdinsight-hbase-phoenix-squirrel-linux.md).
+> このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースの HDInsight での Phoenix の使用については、「[HDinsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用](hdinsight-hbase-phoenix-squirrel-linux.md)」を参照してください。
 
-##<a name="use-sqlline"></a>Use SQLLine
-[SQLLine](http://sqlline.sourceforge.net/) is a command line utility to execute SQL. 
+##SQLLine の使用
+[SQLLine](http://sqlline.sourceforge.net/) は、SQL を実行するためのコマンド ライン ユーティリティです。
 
-###<a name="prerequisites"></a>Prerequisites
-Before you can use SQLLine, you must have the following:
+###前提条件
+SQLLine を使用するには、以下のものが必要です。
 
-- **A HBase cluster in HDInsight**. For information on provision HBase cluster, see [Get started with Apache HBase in HDInsight][hdinsight-hbase-get-started].
-- **Connect to the HBase cluster via the remote desktop protocol**. For instructions, see [Manage Hadoop clusters in HDInsight by using the Azure Classic Portal][hdinsight-manage-portal].
+- **HDInsight 環境の HBase クラスター**。HBase クラスターのプロビジョニングについては、「[Get started with Apache HBase in HDInsight (HDInsight での Apache HBase の使用)][hdinsight-hbase-get-started]」を参照してください。
+- **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。方法については、「[Azure クラシック ポータルを使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]」を参照してください。
 
-**To find out the host name**
+**ホスト名を確認するには**
 
-1. Open **Hadoop Command Line** from the desktop.
-2. Run the following command to get the DNS suffix:
+1. デスクトップから **Hadoop コマンド ライン**を開きます。
+2. 次のコマンドを実行して、DNS サフィックスを取得します。
 
-        ipconfig
+		ipconfig
 
-    Write down **Connection-specific DNS Suffix**. For example, *myhbasecluster.f5.internal.cloudapp.net*. When you connect to an HBase cluster, you will need to connect to one of the Zookeepers using FQDN. Each HDInsight cluster has 3 Zookeepers. They are *zookeeper0*, *zookeeper1*, and *zookeeper2*. The FQDN will be something like *zookeeper2.myhbasecluster.f5.internal.cloudapp.net*.
+	**接続固有の DNS サフィックス**を記録します。例: *myhbasecluster.f5.internal.cloudapp.net*HBase クラスターに接続するときは、FQDN を使用して Zookeeper のいずれかに接続する必要があります。各 HDInsight クラスターには 3 つの Zookeeper があります。*zookeeper0*、*zookeeper1*、および *zookeeper2* です。FQDN は *zookeeper2.myhbasecluster.f5.internal.cloudapp.net* のようになります。
 
-**To use SQLLine**
+**SQLLine を使用するには**
 
-1. Open **Hadoop Command Line** from the desktop.
-2. Run the following commands to open SQLLine:
+1. デスクトップから **Hadoop コマンド ライン**を開きます。
+2. 次のコマンドを実行して、SQLLine を開きます。
 
-        cd %phoenix_home%\bin
-        sqlline.py [The FQDN of one of the Zookeepers]
+		cd %phoenix_home%\bin
+		sqlline.py [The FQDN of one of the Zookeepers]
 
-    ![hdinsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
+	![hdinsight hbase phoenix sqlline][hdinsight-hbase-phoenix-sqlline]
 
-    The commands used in the sample:
+	サンプルで使用されているコマンド:
 
-        CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
-        
-        !tables
-        
-        UPSERT INTO Company VALUES(1, 'Microsoft');
-        
-        SELECT * FROM Company;
+		CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
+		
+		!tables
+		
+		UPSERT INTO Company VALUES(1, 'Microsoft');
+		
+		SELECT * FROM Company;
 
-For more information, see [SQLLine manual](http://sqlline.sourceforge.net/#manual) and [Phoenix Grammar](http://phoenix.apache.org/language/index.html).
+詳細については、[SQLLine のマニュアル](http://sqlline.sourceforge.net/#manual)および [Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
 
 
 
@@ -82,211 +81,211 @@ For more information, see [SQLLine manual](http://sqlline.sourceforge.net/#manua
 
 
 
-##<a name="use-squirrel"></a>Use SQuirreL
+##SQuirreL の使用
 
-[SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/) is a graphical Java program that will allow you to view the structure of a JDBC compliant database, browse the data in tables, issue SQL commands etc. It can be used to connect to Apache Phoenix on HDInsight.
+[SQuirreL SQL Client](http://squirrel-sql.sourceforge.net/) はグラフィカルな Java プログラムであり、JDBC 準拠データベースの構造の表示、テーブル内のデータの参照、SQL コマンドの発行などに使用できます。これを使用して、HDInsight の Apache Phoenix に接続できます。
 
-This section shows you how to install and configure SQuirreL on your workstation to connect to an HBase cluster in HDInsight via VPN. 
+このセクションでは、ワークステーションに SQuirreL をインストールし、VPN 経由で HDInsight の HBase クラスターに接続するように構成する方法について説明します。
 
-###<a name="prerequisites"></a>Prerequisites
+###前提条件
 
-Before following the procedures, you must have the following:
+手順を実行する前に、以下のものが必要です。
 
-- An HBase cluster deployed to an Azure virtual network with a DNS virtual machine.  For instructions, see [Provision HBase clusters on Azure Virtual Network][hdinsight-hbase-provision-vnet]. 
+- DNS 仮想マシンで Azure 仮想ネットワークにデプロイされた HBase クラスター。方法については、「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照してください。
 
-    >[AZURE.IMPORTANT] You must install a DNS server to the virtual network. For instructions, see [Configure DNS between two Azure virtual networks](hdinsight-hbase-geo-replication-configure-dns.md)
+	>[AZURE.IMPORTANT] 仮想ネットワークに DNS サーバーをインストールする必要があります。方法については、「[2 つの Azure 仮想ネットワーク間の DNS の構成](hdinsight-hbase-geo-replication-configure-DNS.md)」を参照してください。
 
-- Get the HBase cluster cluster Connection-specific DNS suffix. To get it, RDP into the cluster, and then run IPConfig.  The DNS suffix is similar to:
+- HBase クラスターの接続固有の DNS サフィックスを取得します。そのためには、RDP でクラスターに接続して、IPConfig を実行します。DNS サフィックスの例を次に示します。
 
-        myhbase.b7.internal.cloudapp.net
-- Download and install [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) on your workstation. You will need makecert from the package to create your certificate.  
-- Download and install [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html) on your workstation.  SQuirreL SQL client version 3.0 and higher requires JRE version 1.6 or higher.  
+		myhbase.b7.internal.cloudapp.net
+- [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) をダウンロードしてワークステーションにインストールします。パッケージから makecert を実行して証明書を作成する必要があります。
+- [Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)をダウンロードしてワークステーションにインストールします。SQuirreL SQL クライアント バージョン 3.0 以降には、JRE バージョン 1.6 以降が必要です。
 
 
-###<a name="configure-a-point-to-site-vpn-connection-to-the-azure-virtual-network"></a>Configure a Point-to-Site VPN connection to the Azure virtual network
+###Azure 仮想ネットワークへのポイント対サイト VPN 接続を構成します。
 
-There are 3 steps involved configuring a point-to-site VPN connection:
+ポイント対サイト VPN 接続の構成には 3 つの手順があります。
 
-1. [Configure a virtual network and a dynamic routing gateway](#Configure-a-virtual-network-and-a-dynamic-routing-gateway)
-2. [Create your certificates](#Create-your-certificates)
-3. [Configure your VPN client](#Configure-your-VPN-client)
+1. [仮想ネットワークと動的ルーティング ゲートウェイを構成します](#Configure-a-virtual-network-and-a-dynamic-routing-gateway)
+2. [証明書の作成](#Create-your-certificates)
+3. [VPN クライアントを構成します](#Configure-your-VPN-client)
 
-See [Configure a Point-to-Site VPN connection to an Azure Virtual Network](../vpn-gateway/vpn-gateway-point-to-site-create.md) for more information.
+詳細については、「[Azure 仮想ネットワークへのポイント対サイト VPN 接続の構成](../vpn-gateway/vpn-gateway-point-to-site-create.md)」を参照してください。
 
-#### <a name="configure-a-virtual-network-and-a-dynamic-routing-gateway"></a>Configure a virtual network and a dynamic routing gateway
+#### 仮想ネットワークと動的ルーティング ゲートウェイの構成
 
-Assure you have provisioned an HBase cluster in an Azure virtual network (see the prerequisites for this section). The next step is to configure a point-to-site connection.
+Azure 仮想ネットワークに HBase クラスターをプロビジョニングしてあることを確認します (このセクションの前提条件を参照)。次の手順では、ポイント対サイト接続を構成します。
 
-**To configure the point-to-site connectivity**
+**ポイント対サイト接続を構成するには**
 
-1. Sign in to the [Azure Classic Portal][azure-portal].
-2. On the left, click **NETWORKS**.
-3. Click the virtual network you have created (see [Provision HBase clusters on Azure Virtual Network][hdinsight-hbase-provision-vnet]).
-4. Click **CONFIGURE** from the top.
-5. In the **point-to-site connectivity** section, select **Configure point-to-site connectivity**. 
-6. Configure **STARTING IP** and **CIDR** to specify the IP address range from which your VPN clients will receive an IP address when connected. The range cannot overlap with any of the ranges located on your on-premises network and the Azure virtual network you will be connecting to. For example. if you selected 10.0.0.0/20 for the virtual network, you can select 10.1.0.0/24 for the client address space. See the [Point-To-Site Connectivity][vnet-point-to-site-connectivity] page for more information.
-7. In the virtual network address spaces section, click **add gateway subnet**.
-7. Click **SAVE** on the bottom of the page.
-8. Click **YES** to confirm the change. Wait until the system has finished making the change before you proceed to the next procedure.
+1. [Azure クラシック ポータル][azure-portal]にサインインします。
+2. 左側の **[ネットワーク]** をクリックします。
+3. 作成してある仮想ネットワークをクリックします (「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」を参照)。
+4. 上部にある **[構成]** をクリックします。
+5. **[ポイント対サイト接続]** セクションで、**[ポイント対サイト接続の構成]** を選択します。
+6. **[開始 IP]** と **[CIDR]** を構成し、接続時に VPN クライアントが IP アドレスを受け取る IP アドレスの範囲を指定します。この範囲は、オンプレミスのネットワークに存在する範囲および接続先の Azure 仮想ネットワークと重複することはできません。たとえば、仮想ネットワークに対して 10.0.0.0/20 を選択した場合、クライアント アドレス空間には 10.1.0.0/24 を選択できます。詳細については、「[[ポイント対サイト接続] ページ][vnet-point-to-site-connectivity]」を参照してください。
+7. 仮想ネットワーク アドレス空間セクションで **[ゲートウェイ サブネットの追加]** をクリックします。
+7. ページの下部にある **[保存]** をクリックします。
+8. **[はい]** をクリックして変更を確定します。システムが変更を完了するまで待ってから、次の手順に進みます。
 
 
-**To create a dynamic routing gateway**
+**動的ルーティング ゲートウェイを作成するには**
 
-1. From the Azure Classic Portal, click **DASHBOARD** from the top of the page.
-2. Click **CREATE GATEWAY** from the bottom of the page.
-3. Click **YES** to confirm. Wait until the gateway is created.
-4. Click **DASHBOARD** from the top.  You will see a visual diagram of the virtual network:
+1. Azure クラシック ポータルで、ページの上部にある **[ダッシュボード]** をクリックします。
+2. ページの下部にある **[ゲートウェイの作成]** をクリックします。
+3. **[はい]** をクリックして確定します。ゲートウェイが作成されるまで待ちます。
+4. 上部にある **[ダッシュボード]** をクリックします。仮想ネットワークの図が表示されます。
 
-    ![Azure virtual network point-to-site virtual diagram][img-vnet-diagram] 
+	![Azure 仮想ネットワークのポイント対サイト仮想ダイアグラム][img-vnet-diagram]
 
-    The diagram shows 0 client connections. After you make a connection to the virtual network, the number will be updated to one. 
+	図ではクライアント接続が 0 であることが示されています。仮想ネットワークに接続すると、この値が 1 に更新されます。
 
-#### <a name="create-your-certificates"></a>Create your certificates
+#### 証明書の作成
 
-One way to create an X.509 certificate is by using the Certificate Creation Tool (makecert.exe) that comes with [Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx). 
+X.509 証明書を作成する方法の 1 つは、[Microsoft Visual Studio Express 2013 for Windows Desktop](https://www.visualstudio.com/products/visual-studio-express-vs.aspx) に付属する証明書作成ツール (makecert.exe) を使用することです。
 
 
-**To create a self-signed root certificate**
+**自己署名ルート証明書を作成するには**
 
-1. From your workstation, open a command prompt window.
-2. Navigate to the Visual Studio tools folder. 
-3. The following command in the example below will create and install a root certificate in the Personal certificate store on your workstation and also create a corresponding .cer file that you’ll later upload to the Azure Classic Portal. 
+1. ワークステーションからコマンド プロンプト ウィンドウを開きます。
+2. Visual Studio ツールのフォルダーに移動します。
+3. 次の例のコマンドを使用すると、ルート証明書が作成されてワークステーションの個人用証明書ストアにインストールされ、後で Azure クラシック ポータルにアップロードする対応する .cer ファイルが作成されます。
 
-        makecert -sky exchange -r -n "CN=HBaseVnetVPNRootCertificate" -pe -a sha1 -len 2048 -ss My "C:\Users\JohnDole\Desktop\HBaseVNetVPNRootCertificate.cer"
+		makecert -sky exchange -r -n "CN=HBaseVnetVPNRootCertificate" -pe -a sha1 -len 2048 -ss My "C:\Users\JohnDole\Desktop\HBaseVNetVPNRootCertificate.cer"
 
-    Change to the directory that you want the .cer file to be located in, where HBaseVnetVPNRootCertificate is the name that you want to use for the certificate. 
+	.cer ファイルを格納するディレクトリに移動します。HBaseVnetVPNRootCertificate は、証明書に使用する名前です。
 
-    Don't close the command prompt.  You will need it in the next procedure.
+	コマンド プロンプトを閉じないでください。これは、次の手順で必要になります。
 
-    >[AZURE.NOTE] Because you have created a root certificate from which client certificates will be generated, you may want to export this certificate along with its private key and save it to a safe location where it may be recovered. 
+	>[AZURE.NOTE] クライアント証明書の生成元となるルート証明書を作成したので、この証明書を秘密キーと共にエクスポートし、回復できる安全な場所に保存します。
 
-**To create a client certificate**
+**クライアント証明書を作成するには**
 
-- From the same command prompt (It has to be on the same computer where you created the root certificate. The client certificate must be generated from the root certificate), run the following command:
+- 同じコマンド プロンプトから (ルート証明書を作成したのと同じコンピューターを使用する必要があります。クライアント証明書はルート証明書から生成する必要があります)、次のコマンドを実行します。
 
-        makecert.exe -n "CN=HBaseVnetVPNClientCertificate" -pe -sky exchange -m 96 -ss My -in "HBaseVnetVPNRootCertificate" -is my -a sha1
+  		makecert.exe -n "CN=HBaseVnetVPNClientCertificate" -pe -sky exchange -m 96 -ss My -in "HBaseVnetVPNRootCertificate" -is my -a sha1
 
-    HBaseVnetVPNRootCertificate is the root certificate name.  It has to match the root certificate name.  
+	HBaseVnetVPNRootCertificate は、ルート証明書の名前を示します。この名前は、ルート証明書の名前と一致する必要があります。
 
-    Both the root certificate and the client certificate are stored in your Personal certificate store on your computer. Use certmgr.msc to verify.
+	ルート証明書とクライアント証明書は、どちらもコンピューター上の個人証明書ストアに格納されます。確認するには、certmgr.msc を使用します。
 
-    ![Azure virtual network point-to-site vpn certificate][img-certificate]
+	![Azure 仮想ネットワークのポイント対サイト VPN 証明書][img-certificate]
 
-    A client certificate must be installed on each computer that you want to connect to the virtual network. We recommend that you create unique client certificates for each computer that you want to connect to the virtual network. To export the client certificates, use certmgr.msc. 
+	クライアント証明書は、仮想ネットワークに接続する各コンピューターにインストールする必要があります。仮想ネットワークに接続する各コンピューターに、一意のクライアント証明書を作成することをお勧めします。クライアント証明書をエクスポートするには、certmgr.msc を使用します。
 
-**To upload the root certificate to the Azure Classic Portal**
+**Azure クラシック ポータルにルート証明書をアップロードするには**
 
-1. From the Azure Classic Portal, click **NETWORK** on the left.
-2. Click the virtual network where your HBase cluster is deployed to.
-3. Click **CERTIFICATES** from the top.
-4. Click **UPLOAD** from the bottom, and specify the root certificate file you have created in the procedure before last. Wait until the certificate got imported.
-5. Click **DASHBOARD** on the top.  The virtual diagram shows the status.
+1. Azure クラシック ポータルの左側の **[ネットワーク]** をクリックします。
+2. HBase クラスターのデプロイ先の仮想ネットワークをクリックします。
+3. 上部の **[証明書]** をクリックします。
+4. 下部の **[アップロード]** をクリックして、最後の前の手順で作成したルート証明書ファイルを指定します。証明書がインポートされるまで待ちます。
+5. ページの上部にある **[ダッシュボード]** をクリックします。仮想図に状態が表示されます。
 
 
-#### <a name="configure-your-vpn-client"></a>Configure your VPN client
+#### VPN クライアントの構成
 
 
 
-**To download and install the client VPN package**
+**クライアント VPN パッケージをダウンロードしてインストールするには**
 
-1. From the DASHBOARD page of the virtual network, in the quick glance section, click either **Download the 64-bit Client VPN Package** or **Download the 32-bit Client VPN Package** based on your workstation OS version.
-2. Click **Run** to install the package.
-3. At the security prompt, click **More info**, and then click **Run anyway**.
-4. Click **Yes** twice.
+1. 仮想ネットワークの [ダッシュボード] ページの [概要] セクションで、ワークステーションの OS のバージョンに基づいて **[64 ビットのクライアント VPN パッケージのダウンロード]** または **[32 ビットのクライアント VPN パッケージのダウンロード]** をクリックします。
+2. **[実行]** をクリックしてパッケージをインストールします。
+3. セキュリティのプロンプトでは、**[詳細]** をクリックし、次に **[実行]** をクリックします。
+4. **[はい]** を 2 回クリックします。
 
-**To connect to VPN**
+**VPN に接続するには**
 
-1. On the desktop of your workstation, click the Networks icon on the Task bar. You shall see a VPN connection with your virtual network name.
-2. Click the VPN connection name.
-3. Click **Connect**.
+1. ワークステーションのデスクトップで、タスク バーの [ネットワーク] アイコンをクリックします。仮想ネットワーク名と共に VPN 接続が表示されます。
+2. VPN 接続の名前をクリックします。
+3. **[接続]** をクリックします。
 
-**To test the VPN connection and domain name resolution**
+**VPN 接続とドメイン名の解決をテストするには**
 
-- From the workstation, open a command prompt and ping one of the following names given the HBase cluster's DNS suffix is myhbase.b7.internal.cloudapp.net:
+- ワークステーションでコマンド プロンプトを開き、HBase クラスターの DNS サフィックスが myhbase.b7.internal.cloudapp.net である次のいずれかの名前に ping を実行します。
 
-        zookeeper0.myhbase.b7.internal.cloudapp.net
-        zookeeper0.myhbase.b7.internal.cloudapp.net
-        zookeeper0.myhbase.b7.internal.cloudapp.net
-        headnode0.myhbase.b7.internal.cloudapp.net
-        headnode1.myhbase.b7.internal.cloudapp.net
-        workernode0.myhbase.b7.internal.cloudapp.net
+		zookeeper0.myhbase.b7.internal.cloudapp.net
+		zookeeper0.myhbase.b7.internal.cloudapp.net
+		zookeeper0.myhbase.b7.internal.cloudapp.net
+		headnode0.myhbase.b7.internal.cloudapp.net
+		headnode1.myhbase.b7.internal.cloudapp.net
+		workernode0.myhbase.b7.internal.cloudapp.net
 
-###<a name="install-and-configure-squirrel-on-your-workstation"></a>Install and configure SQuirreL on your workstation
+###ワークステーションへの SQuirreL のインストールと構成
 
-**To install SQuirreL**
+**SQuirreL をインストールするには**
 
-1. Download the SQuirreL SQL client jar file from [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation).
-2. Open/run the jar file. It requires the [Java Runtime Environment](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html).
-3. Click **Next** twice.
-4. Specify a path where you have the write permission, and then click **Next**.
-    >[AZURE.NOTE] The default installation folder is in the C:\Program Files\squirrel-sql-3.6 folder.  In order to write to this path, the installer must be granted the administrator privilege. You can open a command prompt as administrator, navigate to Java's bin folder, and then run 
-    >
-    >     java.exe -jar [the path of the SQuirreL jar file] 
-5. Click **OK** to confirm creating the target directory.
-6. The default setting is to install the Base and Standard packages.  Click **Next**.
-7. Click **Next** twice, and then click **Done**.
+1. [http://squirrel-sql.sourceforge.net/#installation](http://squirrel-sql.sourceforge.net/#installation) から SQuirreL SQL クライアントの jar ファイルをダウンロードします。
+2. jar ファイルを開くか実行します。[Java ランタイム環境](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html)が必要です。
+3. **[次へ]** を 2 回クリックします。
+4. 書き込みアクセス許可のあるパスを指定し、**[次へ]** をクリックします。
+	>[AZURE.NOTE] 既定のインストール フォルダーは、C:\\Program Files\\squirrel-sql-3.6 です。このパスに書き込むには、インストーラーに管理者特権を付与する必要があります。管理者としてコマンド プロンプトを開き、Java の bin フォルダーに移動して実行します。
+	>
+	>     java.exe -jar [the path of the SQuirreL jar file] 
+5. **[OK]** をクリックして、ターゲット ディレクトリの作成を確認します。
+6. 既定の設定では、Base および Standard パッケージがインストールされます。**[次へ]** をクリックします。
+7. **[次へ]** を 2 回クリックし、**[完了]** をクリックします。
 
 
-**To install the Phoenix driver**
+**Phoenix ドライバーをインストールするには**
 
-The phoenix driver jar file is located on the HBase cluster. The path is similar to the following based on the versions:
+Phoenix ドライバーの jar ファイルは、HBase クラスターにあります。パスは、バージョンに基づく次のようなものです。
 
-    C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
-You need to copy it to your workstation under the [SQuirreL installation folder]/lib path.  The easiest way is to RDP into the cluster, and then use file copy/paste (CTRL+C and CTRL+V) to copy it to your workstation.
+	C:\apps\dist\phoenix-4.0.0.2.1.11.0-2316\phoenix-4.0.0.2.1.11.0-2316-client.jar
+これを、ワークステーションの [SQuirreL インストール フォルダー]/lib パスにコピーする必要があります。最も簡単な方法は、RDP でクラスターに接続し、ファイルのコピー/貼り付け (Ctrl + C および Ctrl + V) を使用してワークステーションにコピーします。
 
-**To add a Phoenix driver to SQuirreL**
+**Phoenix ドライバーを SQuirreL に追加するには**
 
-1. Open SQuirreL SQL Client from your workstation.
-2. Click the **Driver** tab on the left.
-2. From the **Drivers** menu, click **New Driver**.
-3. Enter the following information:
+1. ワークステーションから SQuirreL SQL クライアントを開きます。
+2. 左側の **[Driver]** タブをクリックします。
+2. **[Drivers]** メニューから **[New Driver]** をクリックします。
+3. 次の情報を入力します。
 
-    - **Name**: Phoenix
-    - **Example URL**: jdbc:phoenix:zookeeper2.contoso-hbase-eu.f5.internal.cloudapp.net
-    - **Class Name**: org.apache.phoenix.jdbc.PhoenixDriver
+	- **Name**: Phoenix
+	- **Example URL**: jdbc:phoenix:zookeeper2.contoso-hbase-eu.f5.internal.cloudapp.net
+	- **Class Name**: org.apache.phoenix.jdbc.PhoenixDriver
 
-    >[AZURE.WARNING] User all lower case in the Example URL. You can use they full zookeeper quorum in case one of them is down.  The hostnames are zookeeper0, zookeeper1, and zookeeper2.
+	>[AZURE.WARNING] [Example URL] はすべて小文字で指定します。いずれかがダウンした場合に備えて、完全な zookeeper クォーラムを使用できます。ホスト名は、zookeeper0、zookeeper1、zookeeper2 です。
 
-    ![HDInsight HBase Phoenix SQuirreL driver][img-squirrel-driver]
-4. Click **OK**.
+	![HDInsight HBase Phoenix SQuirreL ドライバー][img-squirrel-driver]
+4. **[OK]** をクリックします。
 
-**To create an alias to the HBase cluster**
+**HBase クラスターの別名を作成するには**
 
-1. From SQuirreL, Click the **Aliases** tab on the left.
-2. From the **Aliases** menu, click **New Alias**.
-3. Enter the following information:
+1. SQuirreL で左側の **[Aliases]** タブをクリックします。
+2. **[Aliases]** メニューの **[New Alias]** をクリックします。
+3. 次の情報を入力します。
 
-    - **Name**: The name of the HBase cluster or any name you prefer.
-    - **Driver**: Phoenix.  This must match the driver name you created in the last procedure.
-    - **URL**: The URL is copied from your driver configuration. Make sure to user all lower case.
-    - **User name**: It can be any text.  Because you use VPN connectivity here, the user name is not used at all.
-    - **Password**: It can be any text.
+	- **Name**: HBase クラスターの名前または他の任意の名前。
+	- **Driver**: Phoenix。これは、前の手順で作成したドライバー名と一致する必要があります。
+	- **URL**: URL はドライバーの構成からコピーされます。すべて小文字を使用してください。
+	- **User name**: 任意のテキストを指定できます。ここでは VPN 接続を使用するため、ユーザー名はまったく使用されません。
+	- **Password**: 任意のテキストを指定できます。
 
-    ![HDInsight HBase Phoenix SQuirreL driver][img-squirrel-alias]
-4. Click **Test**. 
-5. Click **Connect**. When it makes the connection, SQuirreL looks like:
+	![HDInsight HBase Phoenix SQuirreL ドライバー][img-squirrel-alias]
+4. **[Test]** をクリックします。
+5. **[接続]** をクリックします。接続が確立されると、SQuirreL の表示は次のようになります。
 
-    ![HBase Phoenix SQuirreL][img-squirrel]
+	![HBase Phoenix SQuirreL][img-squirrel]
 
-**To run a test**
+**テストを実行するには**
 
-1. Click the **SQL** tab right next to the **Objects** tab.
-2. Copy and paste the following code:
+1. **[Objects]** タブの右側の **[SQL]** タブをクリックします。
+2. 次のコードをコピーして貼り付けます。
 
-        CREATE TABLE IF NOT EXISTS us_population (state CHAR(2) NOT NULL, city VARCHAR NOT NULL, population BIGINT  CONSTRAINT my_pk PRIMARY KEY (state, city))
-3. Click the run button.
+		CREATE TABLE IF NOT EXISTS us_population (state CHAR(2) NOT NULL, city VARCHAR NOT NULL, population BIGINT  CONSTRAINT my_pk PRIMARY KEY (state, city))
+3. 実行ボタンをクリックします。
 
-    ![HBase Phoenix SQuirreL][img-squirrel-sql]
-4. Switch back to the **Objects** tab.
-5. Expand the alias name, and then expand **TABLE**.  You shall see the new table listed under.
+	![HBase Phoenix SQuirreL][img-squirrel-sql]
+4. **[Objects]** タブに戻ります。
+5. 別名を展開し、**[TABLE]** を展開します。新しいテーブルが下に一覧表示されます。
  
-##<a name="next-steps"></a>Next steps
-In this article, you have learned how to use Apache Phoenix in HDInsight.  To learn more, see
+##次のステップ
+この記事では、HDInsight で Apache Phoenix を使用する方法を説明しました。詳細については、次を参照してください。
 
-- [HDInsight HBase overview][hdinsight-hbase-overview]: HBase is an Apache, open-source, NoSQL database built on Hadoop that provides random access and strong consistency for large amounts of unstructured and semistructured data.
-- [Provision HBase clusters on Azure Virtual Network][hdinsight-hbase-provision-vnet]: With virtual network integration, HBase clusters can be deployed to the same virtual network as your applications so that applications can communicate with HBase directly.
-- [Configure HBase replication in HDInsight](hdinsight-hbase-geo-replication.md): Learn how to configure HBase replication across two Azure datacenters. 
-- [Analyze Twitter sentiment with HBase in HDInsight][hbase-twitter-sentiment]: Learn how to do real-time [sentiment analysis](http://en.wikipedia.org/wiki/Sentiment_analysis) of big data by using HBase in a Hadoop cluster in HDInsight.
+- 「[HDInsight HBase の概要][hdinsight-hbase-overview]」: HBase は、Hadoop 上に構築された Apache オープン ソースの NoSQL データベースです。大量の非構造化データおよび半構造化データに対するランダム アクセスと強力な一貫性を実現します。
+- 「[Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]」: アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
+- 「[Configure HBase replication in HDInsight (HDInsight での HBase レプリケーションの構成)](hdinsight-hbase-geo-replication.md)」: 2 つの Azure データ センター間の HBase レプリケーションを構成する方法を説明します。
+- 「[HDInsight 環境の HBase で Twitter のセンチメントを分析する][hbase-twitter-sentiment]」: HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの[センチメントを分析する](http://en.wikipedia.org/wiki/Sentiment_analysis)方法について説明します。
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
@@ -309,8 +308,4 @@ In this article, you have learned how to use Apache Phoenix in HDInsight.  To le
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

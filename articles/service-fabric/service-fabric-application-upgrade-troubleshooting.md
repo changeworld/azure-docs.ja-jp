@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Troubleshooting application upgrades | Microsoft Azure"
-   description="This article covers some common issues around upgrading a Service Fabric application and how to resolve them."
+   pageTitle="アプリケーションのアップグレードのトラブルシューティング | Microsoft Azure"
+   description="この記事では、Service Fabric アプリケーションのアップグレードに関する一般的な問題とその解決方法のいくつかについて説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -16,34 +16,33 @@
    ms.date="09/14/2016"
    ms.author="subramar"/>
 
+# アプリケーションのアップグレードのトラブルシューティング
 
-# <a name="troubleshoot-application-upgrades"></a>Troubleshoot application upgrades
+この記事では、Azure Service Fabric アプリケーションのアップグレードに関する一般的な問題とその解決方法のいくつかについて説明します。
 
-This article covers some of the common issues around upgrading an Azure Service Fabric application and how to resolve them.
+## アプリケーションのアップグレードで障害が発生した場合のトラブルシューティング
 
-## <a name="troubleshoot-a-failed-application-upgrade"></a>Troubleshoot a failed application upgrade
+アップグレードに失敗した場合、**Get-ServiceFabricApplicationUpgrade** コマンドの出力には、エラーのデバッグに関する追加情報が含まれています。次の一覧では、この追加情報を使用する方法を指定します。
 
-When an upgrade fails, the output of the **Get-ServiceFabricApplicationUpgrade** command contains additional information for debugging the failure.  The following list specifies how the additional information can be used:
+1. 失敗の種類を識別する。
+2. 失敗の理由を識別する。
+3. 詳細な調査のために、障害が発生した 1 つ以上のエラー コンポーネントを分離する。
 
-1. Identify the failure type.
-2. Identify the failure reason.
-3. Isolate one or more failing components for further investigation.
+この情報は、Service Fabric がエラーを検出すると、**FailureAction** をロールバックするか、アップグレードを中断するかに関係なく利用できます。
 
-This information is available when Service Fabric detects the failure regardless of whether the **FailureAction** is to roll back or suspend the upgrade.
+### 失敗の種類を識別する
 
-### <a name="identify-the-failure-type"></a>Identify the failure type
+**Get-ServiceFabricApplicationUpgrade** の出力で、**FailureTimestampUtc** は Service Fabric によってアップグレードの失敗が検出されたタイムスタンプ (UTC) を識別し、**FailureAction** がトリガーされました。**FailureReason** は、エラーの 3 つの潜在的で大まかな原因の 1 つを識別します。
 
-In the output of **Get-ServiceFabricApplicationUpgrade**, **FailureTimestampUtc** identifies the timestamp (in UTC) at which an upgrade failure was detected by Service Fabric and **FailureAction** was triggered. **FailureReason** identifies one of three potential high-level causes of the failure:
+1. UpgradeDomainTimeout - 特定のアップグレード ドメインの完了に時間がかかりすぎ、**UpgradeDomainTimeout** の有効期限が切れていることを識別します。
+2. OverallUpgradeTimeout - アップグレード全体の完了に時間がかかりすぎ、**UpgradeTimeout** の有効期限が切れていることを識別します。
+3. HealthCheck - 更新ドメインをアップグレードした後に、アプリケーションが指定された正常性ポリシーに従って正常でないこと、および **HealthCheckRetryTimeout** の有効期限が切れていることを識別します。
 
-1. UpgradeDomainTimeout - Indicates that a particular upgrade domain took too long to complete and **UpgradeDomainTimeout** expired.
-2. OverallUpgradeTimeout - Indicates that the overall upgrade took too long to complete and **UpgradeTimeout** expired.
-3. HealthCheck - Indicates that after upgrading an update domain, the application remained unhealthy according to the specified health policies and **HealthCheckRetryTimeout** expired.
+これらのエントリは、アップグレードが失敗し、ロールバックを開始する場合にのみ出力に表示されます。エラーの種類に応じて、詳細な情報が表示されます。
 
-These entries only show up in the output when the upgrade fails and starts rolling back. Further information is displayed depending on the type of the failure.
+### アップグレードのタイムアウトを調査する
 
-### <a name="investigate-upgrade-timeouts"></a>Investigate upgrade timeouts
-
-Upgrade timeout failures are most commonly caused by service availability issues. The output following this paragraph is typical of upgrades where service replicas or instances fail to start in the new code version. The **UpgradeDomainProgressAtFailure** field captures a snapshot of any pending upgrade work at the time of failure.
+アップグレードのタイムアウト エラーは、サービスの可用性の問題に起因することが最も一般的です。以下に示す出力は、サービスのレプリカまたはインスタンスが新しいコード バージョンを開始できないアップグレードの一般的な例です。**UpgradeDomainProgressAtFailure** フィールドは、エラーの発生時に保留中のアップグレード作業のスナップショットをキャプチャします。
 
 ~~~
 PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -79,17 +78,17 @@ ForceRestart                   : False
 UpgradeReplicaSetCheckTimeout  : 00:00:00
 ~~~
 
-In this example, the upgrade failed at upgrade domain *MYUD1* and two partitions (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* and *4b43f4d8-b26b-424e-9307-7a7a62e79750*) were stuck. The partitions were stuck because the runtime was unable to place primary replicas (*WaitForPrimaryPlacement*) on target nodes *Node1* and *Node4*.
+この例では、アップグレード ドメイン *MYUD1* でアップグレードが失敗し、2 つのパーティション (*744c8d9f-1d26-417e-a60e-cd48f5c098f0* と *4b43f4d8-b26b-424e-9307-7a7a62e79750*) がスタックしていました。パーティションがスタックしている原因は、ランタイムが、ターゲット ノード *Node1* と *Node4* にプライマリ レプリカ (*WaitForPrimaryPlacement*) を配置できなかったことです。
 
-The **Get-ServiceFabricNode** command can be used to verify that these two nodes are in upgrade domain *MYUD1*. The *UpgradePhase* says *PostUpgradeSafetyCheck*, which means that these safety checks are occurring after all nodes in the upgrade domain have finished upgrading. All this information points to a potential issue with the new version of the application code. The most common issues are service errors in the open or promotion to primary code paths.
+**Get-ServiceFabricNode** コマンドを使用して、これら 2 つのノードがアップグレード ドメイン *MYUD1* にあることを確認できます。*UpgradePhase* は *PostUpgradeSafetyCheck* を出力していますが、アップグレード ドメイン内のすべてのノードがアップグレードを完了した後にこれらの安全性チェックがなされていることを意味します。これらすべての情報は、潜在的な問題と新しいバージョンのアプリケーション コードを示します。最も一般的な問題は、プライマリ コード パスのオープンまたは昇格でのサービスのエラーです。
 
-An *UpgradePhase* of *PreUpgradeSafetyCheck* means there were issues preparing the upgrade domain before it was performed. The most common issues in this case are service errors in the close or demotion from primary code paths.
+*PreUpgradeSafetyCheck* の *UpgradePhase* は、アップグレードを実行する前のアップグレード ドメインの準備で問題があることを意味します。この場合の最も一般的な問題は、プライマリ コード パスのクローズまたは降格でのサービス エラーです。
 
-The current **UpgradeState** is *RollingBackCompleted*, so the original upgrade must have been performed with a rollback **FailureAction**, which automatically rolled back the upgrade upon failure. If the original upgrade was performed with a manual **FailureAction**, then the upgrade would instead be in a suspended state to allow live debugging of the application.
+現在の **UpgradeState** は *RollingBackCompleted* であるため、元のアップグレードは、ロールバック **FailureAction** (障害発生時にアップグレードを自動的にロールバックする) を使用して実行済みのはずです。元のアップグレードが手動の **FailureAction** を使用して実行された場合は、アプリケーションのライブ デバッグを実行できるように、アップグレードが代わりに中断状態になります。
 
-### <a name="investigate-health-check-failures"></a>Investigate health check failures
+### 正常性チェックの障害を調査する
 
-Health check failures can be triggered by various issues that can happen after all nodes in an upgrade domain finish upgrading and passing all safety checks. The output following this paragraph is typical of an upgrade failure due to failed health checks. The **UnhealthyEvaluations** field captures a snapshot of health checks that failed at the time of the upgrade according to the specified [health policy](service-fabric-health-introduction.md).
+正常性チェックの障害は、アップグレード ドメインのすべてのノードがアップグレードを終了し、すべての安全性チェックを渡した後で、さまざまな問題によりトリガーされる可能性があります。以下に示す出力は、正常性チェックの失敗によるアップグレード エラーの一般的な例です。**UnhealthyEvaluations** フィールドは、アップグレード中に失敗した正常性チェックのスナップショットを、指定した[正常性ポリシー](service-fabric-health-introduction.md)に従って取得します。
 
 ~~~
 PS D:\temp> Get-ServiceFabricApplicationUpgrade fabric:/DemoApp
@@ -143,23 +142,23 @@ MaxPercentUnhealthyDeployedApplications :
 ServiceTypeHealthPolicyMap              :
 ~~~
 
-Investigating health check failures first requires an understanding of the Service Fabric health model. But even without such an in-depth understanding, we can see that two services are unhealthy: *fabric:/DemoApp/Svc3* and *fabric:/DemoApp/Svc2*, along with the error health reports ("InjectedFault" in this case). In this example, two out of four services are unhealthy, which is below the default target of 0% unhealthy (*MaxPercentUnhealthyServices*).
+正常性チェックの障害を調査するには、まず Service Fabric の正常性モデルを理解する必要があります。ただし、詳しく理解していなくても、*fabric:/DemoApp/Svc3* と *fabric:/DemoApp/Svc2* という 2 つのサービスに問題が発生し、エラーの正常性レポート (この例では "InjectedFault") が生成されていることがわかります。この例では、4 つのサービスのうち 2 つは異常な状態で、既定のターゲットの 0% の異常な状態を下回っています (*MaxPercentUnhealthyServices*)。
 
-The upgrade was suspended upon failing by specifying a **FailureAction** of manual when starting the upgrade. This mode allows us to investigate the live system in the failed state before taking any further action.
+アップグレードを開始するときに **FailureAction** を手動で指定することで、アップグレードは、障害が発生したときに中断されました。このモードでは、追加のアクションを実行する前に、障害が発生しているライブ システムを調査できます。
 
-### <a name="recover-from-a-suspended-upgrade"></a>Recover from a suspended upgrade
+### 中断されたアップグレードから回復する
 
-With a rollback **FailureAction**, there is no recovery needed since the upgrade automatically rolls back upon failing. With a manual **FailureAction**, there are several recovery options:
+ロールバック **FailureAction** を使用すると、障害が発生したときにアップグレードが自動的にロールバックされるため、復旧は必要ありません。手動の **FailureAction** を使用する場合、いくつかの回復オプションがあります。
 
-1. Manually trigger a rollback
-2. Proceed through the remainder of the upgrade manually
-3. Resume the monitored upgrade
+1. ロールバックを手動でトリガーする
+2. アップグレードの残りの項目を手動で続行する
+3. 監視対象のアップグレードを再開する
 
-The **Start-ServiceFabricApplicationRollback** command can be used at any time to start rolling back the application. Once the command returns successfully, the rollback request has been registered in the system and starts shortly thereafter.
+**Start-ServiceFabricApplicationRollback** コマンドを使用すると、アプリケーションのロールバックをいつでも開始できます。コマンドが正常に返されると、ロールバック要求はシステムに登録されているため、その後すぐに開始されます。
 
-The **Resume-ServiceFabricApplicationUpgrade** command can be used to proceed through the remainder of the upgrade manually, one upgrade domain at a time. In this mode, only safety checks are performed by the system. No more health checks are performed. This command can only be used when the *UpgradeState* shows *RollingForwardPending*, which means that the current upgrade domain has finished upgrading but the next one has not started (pending).
+**Resume-ServiceFabricApplicationUpgrade** コマンドを使用すると、アップグレードの残りの項目を一度にアップグレード ドメインを 1 つずつ手動で続行できます。このモードでは、安全性チェックのみが自動実行されます。その他の正常性チェックは実行されません。このコマンドは、*UpgradeState* が *RollingForwardPending* の場合、つまり、現在のアップグレード ドメインがアップグレードを完了したが、次が開始されていない (保留中) の場合にのみ使用できます。
 
-The **Update-ServiceFabricApplicationUpgrade** command can be used to resume the monitored upgrade with both safety and health checks being performed.
+**Update-ServiceFabricApplicationUpgrade** コマンドを使用すると、安全性チェックと正常性チェックの両方が実行されている、監視対象のアップグレードを再開できます。
 
 ~~~
 PS D:\temp> Update-ServiceFabricApplicationUpgrade fabric:/DemoApp -UpgradeMode Monitored
@@ -183,59 +182,55 @@ ServiceTypeHealthPolicyMap              :
 PS D:\temp>
 ~~~
 
-The upgrade continues from the upgrade domain where it was last suspended and use the same upgrade parameters and health policies as before. If needed, any of the upgrade parameters and health policies shown in the preceding output can be changed in the same command when the upgrade resumes. In this example, the upgrade was resumed in Monitored mode, with the parameters and the health policies unchanged.
+アップグレードは最後に中断したアップグレード ドメインから続行し、以前と同じアップグレード パラメーターと正常性ポリシーを使用します。必要に応じて、前の出力に示すアップグレード パラメーターと正常性ポリシーを、アップグレードを再開するときと同じコマンドで変更できます。この例では、アップグレードは、パラメーターと正常性ポリシーは変更されないまま、監視対象モードで再開されました。
 
-## <a name="further-troubleshooting"></a>Further troubleshooting
+## 詳細なトラブルシューティング
 
-### <a name="service-fabric-is-not-following-the-specified-health-policies"></a>Service Fabric is not following the specified health policies
+### Service Fabric が指定された正常性ポリシーに従っていない
 
-Possible Cause 1:
+考えられる原因 1:
 
-Service Fabric translates all percentages into actual numbers of entities (for example, replicas, partitions, and services) for health evaluation and always rounds up to whole entities. For example, if the maximum _MaxPercentUnhealthyReplicasPerPartition_ is 21% and there are five replicas, then Service Fabric allows up to two unhealthy replicas (that is,`Math.Ceiling (5\*0.21)). Thus, health policies should be set accordingly.
+Service Fabric は、すべてのパーセンテージを、正常性評価のためのエンティティ (レプリカ、パーティション、サービスなど) の実際の数値に変換し、全体のエンティティ数に常に切り上げます。たとえば、最大の _MaxPercentUnhealthyReplicasPerPartition_ が 21% で、5 個のレプリカがある場合、Service Fabric は最大 2 個の異常レプリカ (つまり `Math.Ceiling (5*0.21)) を許可します。このため、これに基づいて、正常性ポリシーを設定する必要があります。
 
-Possible Cause 2:
+考えられる原因 2:
 
-Health policies are specified in terms of percentages of total services and not specific service instances. For example, before an upgrade, if an application has four service instances A, B, C, and D, where service D is unhealthy but with little impact to the application. We want to ignore the known unhealthy service D during upgrade and set the parameter *MaxPercentUnhealthyServices* to be 25%, assuming only A, B, and C need to be healthy.
+正常性ポリシーは、特定のサービス インスタンスではなく、サービスの合計のパーセンテージにより指定されます。たとえば、アップグレードの前に、アプリケーションに A、B、C、および D の 4 つのサービス インスタンスがあり、サービス D が異常だが、アプリケーションにほとんど影響がないとします。この場合は、アップグレード中、既知の問題のあるサービス D を無視するように、パラメーター *MaxPercentUnhealthyServices* を 25% になるよう設定し、正常であることが必要とされるのが A、B、および C のみとなるようにします。
 
-However, during the upgrade, D may become healthy while C becomes unhealthy. The upgrade would still succeed because only 25% of the services are unhealthy. However, it might result in unanticipated errors due to C being unexpectedly unhealthy instead of D. In this situation, D should be modeled as a different service type from A, B, and C. Since health policies are specified per service type, different unhealthy percentage thresholds can be applied to different services. 
+ただし、アップグレード中、C が異常になり、D が正常になる可能性がありますこの場合でも、アップグレードは正常に完了します。異常なのは、サービスの 25% のみだからです。ただし、D ではなく C により予期しないエラーが発生する可能性があります。この状態では、D は A、B、および C とは異なるサービス型としてモデル化する必要があります。正常性ポリシーはサービス型ごとに指定されるため、さまざまな異常の割合のしきい値を、さまざまなサービスに割り当てることができます。
 
-### <a name="i-did-not-specify-a-health-policy-for-application-upgrade,-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>I did not specify a health policy for application upgrade, but the upgrade still fails for some time-outs that I never specified
+### アプリケーションのアップグレードの正常性ポリシーを指定していないが、未指定のタイムアウトによりアップグレードが失敗する
 
-When health policies aren't provided to the upgrade request, they are taken from the *ApplicationManifest.xml* of the current application version. For example, if you're upgrading Application X from version 1.0 to version 2.0, application health policies specified for in version 1.0 are used. If a different health policy should be used for the upgrade, then the policy needs to be specified as part of the application upgrade API call. The policies specified as part of the API call only apply during the upgrade. Once the upgrade is complete, the policies specified in the *ApplicationManifest.xml* are used.
+正常性ポリシーがアップグレード要求に指定されていない場合、現在のアプリケーションのバージョンの *ApplicationManifest.xml* から取得されます。たとえば、アプリケーション X をバージョン 1.0 から バージョン 2.0 にアップグレードしている場合は、バージョン 1.0 に指定されたアプリケーションの正常性ポリシーが使用されます。別の正常性ポリシーをアップグレードに使用するには、アプリケーションのアップグレードの API 呼び出しの一部としてポリシーを指定する必要があります。アップグレード中は、API 呼び出しの一部として指定されたポリシーのみが適用されます。アップグレードが完了すると、*ApplicationManifest.xml* で指定されたポリシーが使用されます。
 
-### <a name="incorrect-time-outs-are-specified"></a>Incorrect time-outs are specified
+### 不適切なタイムアウトが指定されている
 
-You may have wondered about what happens when time-outs are set inconsistently. For example, you may have an *UpgradeTimeout* that's less than the *UpgradeDomainTimeout*. The answer is that an error is returned. Errors are returned if the *UpgradeDomainTimeout* is less than the sum of *HealthCheckWaitDuration* and *HealthCheckRetryTimeout*, or if *UpgradeDomainTimeout* is less than the sum of *HealthCheckWaitDuration* and *HealthCheckStableDuration*.
+タイムアウトの設定に一貫性がないとどうなるでしょうか。たとえば、*UpgradeTimeout* が *UpgradeDomainTimeout* より小さい場合があります。このような場合は、エラーが返されます。*UpgradeDomainTimeout* が *HealthCheckWaitDuration* と *HealthCheckRetryTimeout* の合計より小さい場合や、*UpgradeDomainTimeout* が *HealthCheckWaitDuration* と *HealthCheckStableDuration* の合計より小さい場合も、エラーが返されます。
 
-### <a name="my-upgrades-are-taking-too-long"></a>My upgrades are taking too long
+### アップグレードの時間がかかりすぎる
 
-The time for an upgrade to complete depends on the health checks and time-outs specified. Health checks and time-outs depend on how long it takes to copy, deploy, and stabilize the application. Being too aggressive with time-outs might mean more failed upgrades, so we recommend starting conservatively with longer time-outs.
+アップグレードにかかる時間は、指定された正常性チェックとタイムアウトによって異なります。正常性チェックとタイムアウトの時間は、アプリケーションのコピー、デプロイ、および安定化にかかる時間によって異なります。タイムアウトが短すぎるとアップグレードが失敗する可能性が高くなるため、タイムアウトは長めにして開始することをお勧めします。
 
-Here's a quick refresher on how the time-outs interact with the upgrade times:
+タイムアウトが、アップグレードの時間にどのように影響するのか、以下で簡単に確認できます。
 
-Upgrades for an upgrade domain cannot complete faster than *HealthCheckWaitDuration* + *HealthCheckStableDuration*.
+アップグレード ドメインのアップグレードは、*HealthCheckWaitDuration* + *HealthCheckStableDuration* よりも速く完了できません。
 
-Upgrade failure cannot occur faster than *HealthCheckWaitDuration* + *HealthCheckRetryTimeout*.
+アップグレードの失敗が、*HealthCheckWaitDuration* + *HealthCheckRetryTimeout* より速く発生することはあり得ません。
 
-The upgrade time for an upgrade domain is limited by *UpgradeDomainTimeout*.  If *HealthCheckRetryTimeout* and *HealthCheckStableDuration* are both non-zero and the health of the application keeps switching back and forth, then the upgrade eventually times out on *UpgradeDomainTimeout*. *UpgradeDomainTimeout* starts counting down once the upgrade for the current upgrade domain begins.
+アップグレード ドメインのアップグレード時間は、*UpgradeDomainTimeout* によって制限されます。*HealthCheckRetryTimeout* と *HealthCheckStableDuration* が両方とも 0 以外であり、アプリケーションの正常性が切り替わる場合は、アップグレードが最終的に *UpgradeDomainTimeout* でタイムアウトします。*UpgradeDomainTimeout* は、現在のアップグレード ドメインがのアップグレードが開始されると、カウント ダウンを開始します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Upgrading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) walks you through an application upgrade using Visual Studio.
+[Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
-[Upgrading your Application Using Powershell](service-fabric-application-upgrade-tutorial-powershell.md) walks you through an application upgrade using PowerShell.
+[PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。
 
-Control how your application upgrades by using [Upgrade Parameters](service-fabric-application-upgrade-parameters.md).
+[アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。
 
-Make your application upgrades compatible by learning how to use [Data Serialization](service-fabric-application-upgrade-data-serialization.md).
+[データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
-Learn how to use advanced functionality while upgrading your application by referring to [Advanced Topics](service-fabric-application-upgrade-advanced.md).
+[高度なトピック](service-fabric-application-upgrade-advanced.md)を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
 
-Fix common problems in application upgrades by referring to the steps in [Troubleshooting Application Upgrades](service-fabric-application-upgrade-troubleshooting.md).
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

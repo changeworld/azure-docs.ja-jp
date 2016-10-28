@@ -1,45 +1,40 @@
-## <a name="connect-to-azure-sql-database-as-a-user"></a>Connect to Azure SQL Database as a user
+## Azure SQL Database にユーザーとして接続する
 
-Use the following steps to connect to Azure SQL Database with SSMS as a user.
+ユーザーとして SSMS で Azure SQL Database に接続するには、次の手順を使用します。
 
-1. Type "Microsoft SQL Server Management Studio" in the Windows search box, and then click the desktop app to start SSMS.
+1. Windows 検索ボックスで、「Microsoft SQL Server Management Studio」と入力し、デスクトップ アプリをクリックして SSMS を起動します。
 
-2. In the Connect to Server window, enter the following information:
+2. [サーバーへの接続] ウィンドウで次の情報を入力します。
 
-- **Server type**: The default is database engine; do not change this value.
- - **Server name**: Enter the name of the server that hosts your SQL database in the followinbg format: *&lt;servername>*.**database.windows.net**
- - **Authentication type**: If you are just getting started, select SQL Authentication. If you have enabled Active Directory for your SQL Database logical server, you can select either Active Directory Password Authentication or Active Directory Integrated Authentication.
- - **User name**: If you selected either SQL Authentication or Active Directory Password Authentication, enter the name of a user with access to a database on the server.
- - **Password**: If you selected either SQL Authentication or Active Directory Password Authentication, enter the password for the specified user.
+- **[サーバーの種類]**: 既定値はデータベース エンジンです。この値は変更しないでください。
+ - **[サーバー名]**: SQL Database をホストするサーバーの名前を、*&lt;サーバー名>*.**database.windows.net** の形式で入力します。
+ - **[認証の種類]**: 最初は [SQL 認証] を選択します。SQL Database 論理サーバーで Active Directory を有効にしてある場合は、[Active Directory パスワード認証] または [Active Directory 統合認証] を選択できます。
+ - **[ユーザー名]**: [SQL 認証] または [Active Directory パスワード認証] を選択した場合は、サーバーでデータベースへのアクセス権を持つユーザーの名前を入力します。
+ - **[パスワード]**: [SQL 認証] または [Active Directory パスワード認証] を選択した場合は、指定したユーザーのパスワードを入力します。
    
-       ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-1.png)
+       ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-sql-server-management-studio-connect-user/connect-user-1.png)
 
-3. Click **Options** to specify the database to which you want to connect.
+3. **[オプション]** をクリックして、接続するデータベースを指定します。
 
-      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-2.png)
+      ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-sql-server-management-studio-connect-user/connect-user-2.png)
  
-4. In the **Connect to Database**, select the database to which you wish to connect.
+4. **[データベースへの接続]** で、接続するデータベースを選択します。
 
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-3.png)
+     ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-sql-server-management-studio-connect-user/connect-user-3.png)
 
-5. Click **Connect**.
+5. **[接続]** をクリックします。
  
-6. If your client's IP address does not have access to the SQL Database logical server, you will be prompted to sign in to an Azure account and create a server-level firewall rule. If you are an Azure subscription administrator, Click **Sign in** to create a server-level firewall rule. If not, have an administrator create either a server-level firewall rule or a database-level firewall rule in the database to which you are trying to connect.
+6. クライアントの IP アドレスが SQL Database 論理サーバーへのアクセス権を持たない場合は、Azure アカウントにサインインしてサーバー レベルのファイアウォール規則を作成するように求められます。Azure サブスクリプション管理者の場合は、**[サインイン]** をクリックして、サーバー レベルのファイアウォール規則を作成します。それ以外の場合は、管理者に、サーバー レベルのファイアウォール規則または接続しようとしているデータベースでのデータベース レベルのファイアウォール規則を作成してもらいます。
  
-      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-4.png)
+      ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-sql-server-management-studio-connect-user/connect-user-4.png)
  
-7. If your credentials grant you access to the specified database, Object Explorer opens and you can now perform administrative tasks or query data, depending upon the user permissions.
+7. 資格情報で指定したデータベースにアクセスできる場合、オブジェクト エクスプローラーが開き、ユーザーのアクセス許可に応じて、管理タスクやデータのクエリを実行できます。
   
-      ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-sql-server-management-studio-connect-user/connect-user-5.png)
+      ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-sql-server-management-studio-connect-user/connect-user-5.png)
       
  
-## <a name="troubleshoot-connection-failures"></a>Troubleshoot connection failures
+## ## 接続に関するエラーのトラブルシューティング
 
-The most common reason for connection failures are mistakes in the server name (remember, <*servername*> is the name of the logical server, not the database), the user name, or the password, as well as the server not allowing connections for security reasons. 
+接続の失敗の最も一般的な原因は、サーバー名、ユーザー名 (<*servername*> はデータベースではなく論理サーバーの名前です)、パスワードの間違いや、サーバーがセキュリティ上の理由で接続を許可しないといったものです。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

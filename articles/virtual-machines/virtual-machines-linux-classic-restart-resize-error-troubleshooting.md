@@ -1,6 +1,6 @@
 <properties
-   pageTitle="VM restarting or resizing issues | Microsoft Azure"
-   description="Troubleshoot classic deployment issues with restarting or resizing an existing Linux Virtual Machine in Azure"
+   pageTitle="VM の再起動またはサイズ変更の問題 | Microsoft Azure"
+   description="Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="Deland-Han"
@@ -17,77 +17,72 @@
    ms.devlang="na"
    ms.author="delhan"/>
 
-
-# <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-linux-virtual-machine-in-azure"></a>Troubleshoot classic deployment issues with restarting or resizing an existing Linux Virtual Machine in Azure
+# Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
 
 > [AZURE.SELECTOR]
-- [Classic](../articles/virtual-machines/virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)
-- [Resource Manager](../articles/virtual-machines/virtual-machines-linux-restart-resize-error-troubleshooting.md)
+- [クラシック](../articles/virtual-machines/virtual-machines-linux-classic-restart-resize-error-troubleshooting.md)
+- [リソース マネージャー](../articles/virtual-machines/virtual-machines-linux-restart-resize-error-troubleshooting.md)
 
-When you try to start a stopped Azure Virtual Machine (VM), or resize an existing Azure VM, the common error you encounter is an allocation failure. This error results when the cluster or region either does not have resources available or cannot support the requested VM size.
+停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="collect-audit-logs"></a>Collect audit logs
+## 監査ログの収集
 
-To start troubleshooting, collect the audit logs to identify the error associated with the issue.
+トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。
 
-In the Azure portal, click **Browse** > **Virtual machines** > _your Linux virtual machine_ > **Settings** > **Audit logs**.
+Azure ポータルで、**[参照]**、**[仮想マシン]**、_対象の Linux 仮想マシン_、**[設定]**、**[監査ログ]** の順にクリックします。
 
-## <a name="issue:-error-when-starting-a-stopped-vm"></a>Issue: Error when starting a stopped VM
+## 問題: 停止している VM の起動時のエラー
 
-You try to start a stopped VM but get an allocation failure.
+停止している VM を起動しようとしたときに、割り当てエラーが発生します。
 
-### <a name="cause"></a>Cause
+### 原因
 
-The request to start the stopped VM has to be attempted at the original cluster that hosts the cloud service. However, the cluster does not have free space available to fulfill the request.
+停止している VM の起動要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、クラスターに要求の処理に使用できる空き領域がありません。
 
-### <a name="resolution"></a>Resolution
+### 解決策
 
-* Create a new cloud service and associate it with either a region or a region-based virtual network, but not an affinity group.
+* 新しいクラウド サービスを作成し、アフィニティ グループではなく、リージョンまたはリージョン ベースの仮想ネットワークに関連付けます。
 
-* Delete the stopped VM.
+* 停止している VM を削除します。
 
-* Recreate the VM in the new cloud service by using the disks.
+* ディスクを使用して、新しいクラウド サービスに VM を再作成します。
 
-* Start the re-created VM.
+* 再作成された VM を起動します。
 
-If you get an error when trying to create a new cloud service, either retry at a later time or change the region for the cloud service.
+新しいクラウド サービスを作成しようとしたときにエラーが発生した場合は、後で再試行するか、クラウド サービスのリージョンを変更します。
 
-> [AZURE.IMPORTANT] The new cloud service will have a new name and VIP, so you will need to change that information for all the dependencies that use that information for the existing cloud service.
+> [AZURE.IMPORTANT] 新しいクラウド サービスには、新しい名前と VIP が割り当てられるので、既存のクラウド サービスでこの情報を使用しているすべての依存関係について、この情報を変更する必要があります。
 
-## <a name="issue:-error-when-resizing-an-existing-vm"></a>Issue: Error when resizing an existing VM
+## 問題: 既存の VM のサイズ変更時のエラー
 
-You try to resize an existing VM but get an allocation failure.
+既存の VM のサイズを変更しようとしたときに割り当てエラーが発生します。
 
-### <a name="cause"></a>Cause
+### 原因
 
-The request to resize the VM has to be attempted at the original cluster that hosts the cloud service. However, the cluster does not support the requested VM size.
+VM のサイズ変更要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、クラスターが要求された VM サイズをサポートしていません。
 
-### <a name="resolution"></a>Resolution
+### 解決策
 
-Reduce the requested VM size, and retry the resize request.
+要求する VM サイズを小さくし、サイズ変更要求を再試行します。
 
-* Click **Browse all** > **Virtual machines (classic)** > _your virtual machine_ > **Settings** > **Size**. For detailed steps, see [Resize the virtual machine](https://msdn.microsoft.com/library/dn168976.aspx).
+* **[すべて参照]**、**[仮想マシン (クラシック)]**、_対象の仮想マシン_、**[設定]**、**[サイズ]** の順にクリックします。詳細な手順については、「[Resize the virtual machine (仮想マシンのサイズの変更)](https://msdn.microsoft.com/library/dn168976.aspx)」を参照してください。
 
-If it is not possible to reduce the VM size, follow these steps:
+VM サイズを小さくできない場合は、次の手順に従います。
 
-  * Create a new cloud service, ensuring it is not linked to an affinity group and not associated with a virtual network that is linked to an affinity group.
+  * アフィニティ グループにリンクしたり、アフィニティ グループにリンクされた仮想ネットワークに関連付けたりせずに、新しいクラウド サービスを作成します。
 
-  * Create a new, larger-sized VM in it.
+  * 作成したクラウド サービスにサイズの大きい新しい VM を作成します。
 
-You can consolidate all your VMs in the same cloud service. If your existing cloud service is associated with a region-based virtual network, you can connect the new cloud service to the existing virtual network.
+同じクラウド サービス内のすべての VM を統合できます。既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられている場合は、新しいクラウド サービスを既存の仮想ネットワークに接続できます。
 
-If the existing cloud service is not associated with a region-based virtual network, then you have to delete the VMs in the existing cloud service, and recreate them in the new cloud service from their disks. However, it is important to remember that the new cloud service will have a new name and VIP, so you will need to update these for all the dependencies that currently use this information for the existing cloud service.
+既存のクラウド サービスがリージョン ベースの仮想ネットワークに関連付けられていない場合は、既存のクラウド サービス内の VM を削除し、ディスクから新しいクラウド サービスに VM を再作成する必要があります。ただし、新しいクラウド サービスには新しい名前と VIP が割り当てられるので、既存のクラウド サービスでこれらの情報を現在使用しているすべての依存関係について、情報を更新する必要があります。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-If you encounter issues when you create a new Linux VM in Azure, see [Troubleshoot deployment issues with creating a new Linux virtual machine in Azure](../virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md).
+Azure で新しい Linux VM を作成するときに問題が発生する場合は、[Azure での新しい Linux 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../virtual-machines/virtual-machines-linux-troubleshoot-deployment-new-vm.md)に関するページを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

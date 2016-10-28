@@ -1,15 +1,11 @@
-## <a name="service-chaining---transit-through-peered-vnet"></a>Service Chaining - Transit through peered VNet
+## サービス チェイニング - ピアリングされた VNet 経由のトランジット
 
-Although the use of system routes facilitates traffic automatically for your deployment, there are cases in which you want to control the routing of packets through a virtual appliance.
-In this scenario, there are two VNets in a subscription, HubVNet and VNet1 as described in the diagram below. You deploy Network Virtual Appliance(NVA) in VNet HubVNet. After establishing VNet peering between HubVNet and VNet1, you can set up User Defined Routes and specify the next hop to NVA in the HubVNet.
+システム ルートを使用するとデプロイのトラフィックが自動的に促進されますが、仮想アプライアンスを通過するパケットのルーティングを自分で制御したい場合もあります。このシナリオでは、以下の図に示したように、HubVNet と VNet1 という 2 つの VNet がサブスクリプションに存在します。ネットワーク仮想アプライアンス (NVA) は、VNet HubVNet にデプロイします。HubVNet と VNet1 との間で VNet ピアリングを確立したら、ユーザー定義ルートを設定し、次ホップを HubVNet 内の NVA に指定できます。
 
 ![NVA Transit](./media/virtual-networks-create-vnetpeering-scenario-transit-include/figure01.PNG)
 
-> [AZURE.NOTE] For the simplicity, assume all VNets here are in the same subscription. But it also works for cross-subscription scenario.
+> [AZURE.NOTE] ここでは単純化するために、すべての VNet が同じサブスクリプションに存在することを前提としています。ただし、異なるサブスクリプション間のシナリオでも正常に機能します。
 
-The key property to enable Transit routing is the "Allow Forwarded Traffic" parameter. This allows accepting and sending traffic from/to the NVA in the peered VNet.  
+トランジット ルーティングの実現の鍵となるプロパティは、"Allow Forwarded Traffic" パラメーターです。この設定によって、ピアリングされた VNet 内の NVA からトラフィックを受信したり、その NVA にトラフィックを送信したりすることができます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

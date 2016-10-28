@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager and volumes | Microsoft Azure"
-   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to view and manage volumes and to configure backups."
+   pageTitle="StorSimple Snapshot Manager とボリューム | Microsoft Azure"
+   description="StorSimple Snapshot Manager MMC スナップインを使用して、ボリュームを表示および管理する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,265 +15,260 @@
    ms.date="04/18/2016"
    ms.author="v-sharos" />
 
+# StorSimple Snapshot Manager を使用したボリュームの表示と管理
 
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>Use StorSimple Snapshot Manager to view and manage volumes
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Snapshot Manager の **[ボリューム]** ノード (**スコープ** ウィンドウ) を使用してボリュームを選択し、それらのボリュームの情報を表示できます。ボリュームは、ホストにマウントされているボリュームに対応するドライブとして表示されます。**[ボリューム]** ノードには、ローカル ボリュームと StorSimple でサポートされているボリュームの種類が表示されます。これには、iSCSI とデバイスを使用して検出されたボリュームが含まれます。
 
-You can use the StorSimple Snapshot Manager **Volumes** node (on the **Scope** pane) to select volumes and view information about them. The volumes are presented as drives that correspond to the volumes mounted by the host. The **Volumes** node shows local volumes and volume types that are supported by StorSimple, including volumes discovered through the use of iSCSI and a device. 
+サポートされるボリュームの詳細については、「[各種ボリュームのサポート](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types)」をご覧ください。
 
-For more information about supported volumes, go to [Support for multiple volume types](storsimple-what-is-snapshot-manager.md#support-for-multiple-volume-types).
+![結果ウィンドウのボリューム リスト](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Volume_node.png)
 
-![Volume list in Results pane](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Volume_node.png)
+**[ボリューム]** ノードでは、StorSimple Snapshot Manager がボリュームを検出した後に、それらのボリュームの再スキャンや削除を実行することもできます。
 
-The **Volumes** node also lets you rescan or delete volumes after StorSimple Snapshot Manager discovers them. 
+このチュートリアルでは、ボリュームをマウントし、初期化してフォーマットした後に、StorSimple Snapshot Manager を使用して、次の操作を実行する方法について説明します。
 
-This tutorial explains how you can mount, initialize, and format volumes and then use StorSimple Snapshot Manager to:
+- ボリュームに関する情報を表示する 
+- ボリュームを削除する
+- ボリュームを再スキャンする 
+- ベーシック ボリュームを構成し、バックアップする
+- ダイナミック ミラー ボリュームを構成し、バックアップする
 
-- View information about volumes 
-- Delete volumes
-- Rescan volumes 
-- Configure a basic volume and back it up
-- Configure a dynamic mirrored volume and back it up
-
->[AZURE.NOTE] All of the **Volume** node actions are also available in the **Actions** pane.
+>[AZURE.NOTE] **[ボリューム]** ノードのすべての操作は、**[操作]** ウィンドウでも実行できます。
  
-## <a name="mount-volumes"></a>Mount volumes
+## ボリュームのマウント
 
-Use the following procedure to mount, initialize, and format StorSimple volumes. This procedure uses Disk Management, a system utility for managing hard disks and the corresponding volumes or partitions. For more information about Disk Management, go to [Disk Management](https://technet.microsoft.com/library/cc770943.aspx) on the Microsoft TechNet website.
+StorSimple ボリュームをマウントし、初期化してフォーマットするには、次の手順に従います。この手順で使用する "ディスクの管理" は、ハード ディスクおよび対応するボリュームまたはパーティションを管理するためのシステム ユーティリティです。ディスクの管理の詳細については、Microsoft TechNet Web サイトの「[Disk Management (ディスクの管理)](https://technet.microsoft.com/library/cc770943.aspx)」をご覧ください。
 
-#### <a name="to-mount-volumes"></a>To mount volumes
+#### ボリュームをマウントするには
 
-1. On your host computer, start the Microsoft iSCSI initiator.
+1. ホスト コンピューターで、Microsoft iSCSI イニシエーターを開始します。
 
-2. Supply one of the interface IP addresses as the target portal or discovery IP address, and connect to the device. After the device is connected, the volumes will be accessible to your Windows system. For more information about using the Microsoft iSCSI initiator, go to the section “Connecting to an iSCSI target device” in [Installing and Configuring Microsoft iSCSI Initiator][1].
+2. ターゲット ポータルとしてインターフェイス IP アドレスのいずれかを入力するか、検出 IP アドレスを入力し、デバイスに接続します。デバイスに接続したら、ボリュームは Windows システムにアクセスできるようになります。Microsoft iSCSI イニシエーターの使用方法の詳細については、「[Microsoft iSCSI イニシエーターのインストールと構成][1]」の「iSCSI ターゲット デバイスへの接続」をご覧ください。
 
-3. Use any of the following options to start Disk Management:
+3. 次のいずれかの方法を使用して、ディスクの管理を起動します。
 
-    - Type Diskmgmt.msc in the **Run** box.
+    - **[ファイル名を指定して実行]** ボックスに「Diskmgmt.msc」と入力します。
 
-    - Start Server Manager, expand the **Storage** node, and then select **Disk Management**.
+    - サーバー マネージャーを起動し、**[Storage]** ノードを展開して、**[ディスクの管理]** を選択します。
 
-    - Start **Administrative Tools**, expand the **Computer Management** node, and then select **Disk Management**. 
+    - **[管理ツール]** を起動し、**[コンピューターの管理]** ノードを展開して、**[ディスクの管理]** を選択します。
 
-    >[AZURE.NOTE] You must use administrator privileges to run Disk Management.
+    >[AZURE.NOTE] ディスクの管理を実行するには、管理者特権を使用する必要があります。
  
-4. Take the volume(s) online:
+4. ボリュームをオンラインにします。
 
-   1. In Disk Management, right-click any volume marked **Offline**.
+   1. [ディスクの管理] で、**[オフライン]** とマークされたボリュームを右クリックします。
 
-   2. Click **Reactivate Disk**. The disk should be marked **Online** after the disk is reactivated.
+   2. **[ディスクの再アクティブ化]** をクリックします。ディスクが再アクティブ化されると、**[オンライン]** とマークされます。
 
-5. Initialize the volume(s):
+5. ボリュームを初期化します。
 
-   1. Right-click the discovered volumes.
+   1. 検出されたボリュームを右クリックします。
 
-   2. On the menu, select **Initialize Disk**.
+   2. メニューの **[ディスクの初期化]** を選択します。
 
-   3. In the **Initialize Disk** dialog box, select the disks that you want to initialize, and then click **OK**.
+   3. **[ディスクの初期化]** ダイアログ ボックスで、初期化するディスクを選択し、**[OK]** をクリックします。
 
-6. Format simple volumes:
+6. シンプル ボリュームをフォーマットします。
 
-   1. Right-click a volume that you want to format.
+   1. フォーマットするボリュームを右クリックします。
 
-   2. On the menu, select **New Simple Volume**.
+   2. メニューの **[新しいシンプル ボリューム]** を選択します。
 
-   3. Use the New Simple Volume wizard to format the volume:
+   3. 新しいシンプル ボリューム ウィザードを使用して、ボリュームをフォーマットします。
 
-      - Specify the volume size.
-      - Supply a drive letter.
-      - Select the NTFS file system.
-      - Specify a 64 KB allocation unit size.
-      - Perform a quick format.
+      - ボリュームのサイズを指定します。
+      - ドライブ文字を指定します。
+      - NTFS ファイル システムを選択します。
+      - 64 KB アロケーション ユニット サイズを指定します。
+      - クイック フォーマットを実行します。
 
-7. Format multi-partition volumes. For instructions, go to the section, "Partitions and Volumes" in [Implementing Disk Management](https://msdn.microsoft.com/library/dd163556.aspx).
+7. 複数パーティション ボリュームをフォーマットします。手順については、「[Implementing Disk Management (ディスク管理の実装)](https://msdn.microsoft.com/library/dd163556.aspx)」の「Partitions and Volumes (パーティションとボリューム)」をご覧ください。
 
-## <a name="view-information-about-your-volumes"></a>View information about your volumes
+## ボリュームに関する情報の表示
 
-Use the following procedure to view information about local and Azure StorSimple volumes.
+ローカル ボリュームと Azure StorSimple ボリュームに関する情報を表示するには、次の手順に従います。
 
-#### <a name="to-view-volume-information"></a>To view volume information
+#### ボリューム情報を表示するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager. 
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
 
-2. In the **Scope** pane, click the **Volumes** node. A list of local and mounted volumes, including all Azure StorSimple volumes, appears in the **Results** pane. The columns in the **Results** pane are configurable. (Right-click the **Volumes** node, select **View**, and then select **Add/Remove Columns**.)
+2. **スコープ** ウィンドウで、**[ボリューム]** ノードをクリックします。**結果**ウィンドウに、すべての Azure StorSimple ボリュームを含む、ローカル ボリュームとマウントされたボリュームのリストが表示されます。**結果**ウィンドウ内の列は構成可能です (**[ボリューム]** ノードを右クリックして **[表示]** を選択し、**[列の追加と削除]** を選択します)。
 
-    ![Configure the columns](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
+    ![列の構成](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
 
-    Results column | Description 
+    結果の列 | 説明 
     :--------------|:-------------
-    Name           | The **Name** column contains the drive letter assigned to each discovered volume.
-    Device         | The **Device** column contains the IP address of the device connected to the host computer.
-    Device Volume Name | The **Device Volume Name** column contains the name of the device volume to which the selected volume belongs. This is the volume name defined in the Azure classic portal for that specific volume.
-    Access Paths   | The **Access Paths** column displays the access path to the volume. This is the drive letter or mount point at which the volume is accessible on the host computer.
+    名前 | **[名前]** 列には、検出された各ボリュームに割り当てられたドライブ文字が表示されます。
+    デバイス | **[デバイス]** 列には、ホスト コンピューターに接続されているデバイスの IP アドレスが表示されます。
+    デバイスのボリューム名 | **[デバイスのボリューム名]** 列には、選択したボリュームが属するデバイス ボリュームの名前が表示されます。これは、Azure クラシック ポータルで定義されたそのボリュームのボリューム名です。
+    アクセス パス | **[アクセス パス]** 列には、ボリュームへのアクセス パスが表示されます。これは、ホスト コンピューターのボリュームにアクセスする際のドライブ文字またはマウント ポイントです。
  
-## <a name="delete-a-volume"></a>Delete a volume
+## ボリュームを削除する
 
-Use the following procedure to delete a volume from StorSimple Snapshot Manager.
+StorSimple Snapshot Manager からボリュームを削除するには、次の手順に従います。
 
->[AZURE.NOTE] You cannot delete a volume if it is part of any volume group. (The delete option is not available for volumes that are members of a volume group.) You must delete the entire volume group to delete the volume.
+>[AZURE.NOTE] ボリューム グループに属するボリュームは削除できません (ボリューム グループのメンバーであるボリュームでは、削除オプションは使用できません)。 ボリュームを削除するには、ボリューム グループ全体を削除する必要があります。
 
 
-#### <a name="to-delete-a-volume"></a>To delete a volume
+#### ボリュームを削除するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, click the **Volumes** node. 
+2. **スコープ** ウィンドウで、**[ボリューム]** ノードをクリックします。
 
-3. In the **Results** pane, right-click the volume that you want to delete.
+3. **結果**ウィンドウで、削除するボリュームを右クリックします。
 
-4. On the menu, click **Delete**. 
+4. メニューの **[削除]** をクリックします。
 
-    ![Delete a volume](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Delete_volume.png) 
+    ![ボリュームを削除する](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Delete_volume.png)
 
-5. The **Delete Volume** dialog box appears. Type **Confirm** in the text box, and then click **OK**.
+5. **[ボリュームの削除]** ダイアログ ボックスが表示されます。テキスト ボックスに「**Confirm**」と入力し、**[OK]** をクリックします。
 
-6. By default, StorSimple Snapshot Manager backs up a volume before deleting it. This precaution can protect you from data loss if the deletion was unintentional. StorSimple Snapshot Manager displays an **Automatic Snapshot** progress message while it backs up the volume. 
+6. 既定では、StorSimple Snapshot Manager はボリュームを削除する前にバックアップします。この予防措置により、誤って削除してもデータが失われることはありません。ボリュームのバックアップ中、StorSimple Snapshot Manager に **[自動スナップショット]** 進行状況メッセージが表示されます。
 
-    ![Automatic snapshot message](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Automatic_snap.png) 
+    ![自動スナップショット メッセージ](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Automatic_snap.png)
 
-## <a name="rescan-volumes"></a>Rescan volumes
+## ボリュームの再スキャン
 
-Use the following procedure to rescan the volumes connected to StorSimple Snapshot Manager.
+StorSimple Snapshot Manager に接続されているボリュームを再スキャンするには、次の手順に従います。
 
-#### <a name="to-rescan-the-volumes"></a>To rescan the volumes
+#### ボリュームを再スキャンするには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, right-click **Volumes**, and then click **Rescan volumes**.
+2. **スコープ** ウィンドウで、**[ボリューム]** を右クリックし、**[ボリュームの再スキャン]** をクリックします。
 
-    ![Rescan volumes](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
+    ![ボリュームの再スキャン](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Rescan_volumes.png)
  
-    This procedure synchronizes the volume list with StorSimple Snapshot Manager. Any changes, such as new volumes or deleted volumes, will be reflected in the results.
+    この手順により、ボリューム リストが StorSimple Snapshot Manager と同期されます。新しいボリュームや削除されたボリュームなど、すべての変更が結果に反映されます。
 
-## <a name="configure-and-back-up-a-basic-volume"></a>Configure and back up a basic volume
+## ベーシック ボリュームの構成とバックアップ
 
-Use the following procedure to configure a backup of a basic volume, and then either start a backup immediately or create a policy for scheduled backups.
+ベーシック ボリュームのバックアップを構成した後、バックアップをすぐに開始するか、スケジュールされたバックアップのポリシーを作成するには、次の手順に従います。
 
-### <a name="prerequisites"></a>Prerequisites
+### 前提条件
 
-Before you begin:
+作業を開始する前に、次のことを行います。
 
-- Make sure that the StorSimple device and host computer are configured correctly. For more information, go to [Deploy your on-premises StorSimple device](storsimple-deployment-walkthrough-u2.md).
+- StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」をご覧ください。
 
-- Install and configure StorSimple Snapshot Manager. For more information, go to [Deploy StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+- StorSimple Snapshot Manager をインストールして構成します。詳細については、[Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
 
-#### <a name="to-configure-backup-of-a-basic-volume"></a>To configure backup of a basic volume
+#### ベーシック ボリュームのバックアップを構成するには
 
-1. Create a basic volume on the StorSimple device.
+1. StorSimple デバイスにベーシック ボリュームを作成します。
 
-2. Mount, initialize, and format the volume as described in [Mount volumes](#mount-volumes). 
+2. 「[ボリュームのマウント](#mount-volumes)」の説明に従って、ボリュームをマウントし、初期化してフォーマットします。
 
-3. Click the StorSimple Snapshot Manager icon on your desktop. The StorSimple Snapshot Manager window appears. 
+3. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックします。[StorSimple Snapshot Manager] ウィンドウが表示されます。
 
-4. In the **Scope** pane, right-click the **Volumes** node, and then select **Rescan volumes**. When the scan is finished, a list of volumes should appear in the **Results** pane. 
+4. **スコープ** ウィンドウで、**[ボリューム]** ノードを右クリックし、**[ボリュームの再スキャン]** を選択します。スキャンが終了すると、**結果**ウィンドウにボリュームのリストが表示されます。
 
-5. In the **Results** pane, right-click the volume, and then select **Create Volume Group**. 
+5. **結果**ウィンドウでボリュームを右クリックし、**[ボリューム グループの作成]** を選択します。
 
-    ![Create volume group](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png) 
+    ![ボリューム グループの作成](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Create_volume_group.png)
 
-6. In the **Create Volume Group** dialog box, type a name for the volume group, assign volumes to it, and then click **OK**.
+6. **[ボリューム グループの作成]** ダイアログ ボックスで、ボリューム グループの名前を入力し、ボリュームをこのグループに割り当てて、**[OK]** をクリックします。
 
-7. In the **Scope** pane, expand the **Volume Groups** node. The new volume group should appear under the **Volume Groups** node. 
+7. **スコープ** ウィンドウで、**[ボリューム グループ]** ノードを展開します。**[ボリューム グループ]** ノードの下に新しいボリューム グループが表示されます。
 
-8. Right-click the volume group name.
+8. ボリューム グループ名を右クリックします。
 
-    - To start an interactive (on-demand) backup job, click **Take Backup**. 
+    - 対話形式の (オンデマンド) バックアップ ジョブを開始するには、**[バックアップの作成]** をクリックします。 
 
-    - To schedule an automatic backup, click **Create Backup Policy**. On the **General** page, select a volume group from the list. On the **Schedule** page, enter the schedule details. When you are finished, click **OK**. 
+    - 自動バックアップをスケジュールするには、**[バックアップ ポリシーの作成]** をクリックします。**[全般]** ページで、リストからボリューム グループを選択します。**[スケジュール]** ページで、スケジュールの詳細を入力します。操作が終了したら、**[OK]** をクリックします。
 
-9. To confirm that the backup job has started, expand the **Jobs** node in the **Scope** pane, and then click the **Running** node. The list of currently running jobs appears in the **Results** pane. 
+9. バックアップ ジョブが開始されたことを確認するには、**スコープ** ウィンドウで **[ジョブ]** ノードを展開し、**[実行中]** ノードをクリックします。**結果**ウィンドウに、現在実行中のジョブのリストが表示されます。
 
-## <a name="configure-and-back-up-a-dynamic-mirrored-volume"></a>Configure and back up a dynamic mirrored volume
+## ダイナミック ミラー ボリュームの構成とバックアップ
 
-Complete the following steps to configure backup of a dynamic mirrored volume:
+ダイナミック ミラー ボリュームのバックアップを構成するには、次の手順を実行します。
 
-- Step 1: Use Disk Management to create a dynamic mirrored volume. 
+- 手順 1: ディスクの管理を使用してダイナミック ミラー ボリュームを作成する 
 
-- Step 2: Use StorSimple Snapshot Manager to configure backup.
+- 手順 2: StorSimple Snapshot Manager を使用してバックアップを構成する
 
-### <a name="prerequisites"></a>Prerequisites
+### 前提条件
 
-Before you begin:
+作業を開始する前に、次のことを行います。
 
-- Make sure that the StorSimple device and host computer are configured correctly. For more information, go to [Deploy your on-premises StorSimple device](storsimple-deployment-walkthrough-u2.md).
+- StorSimple デバイスとホスト コンピューターが正しく構成されていることを確認します。詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough-u2.md)」をご覧ください。
 
-- Install and configure StorSimple Snapshot Manager. For more information, go to [Deploy StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
+- StorSimple Snapshot Manager をインストールして構成します。詳細については、[Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
 
-- Configure two volumes on the StorSimple device. (In the examples, the available volumes are **Disk 1** and **Disk 2**.) 
+- StorSimple デバイスに 2 つのボリュームを構成します (この例では、使用できるボリュームは**ディスク 1** と**ディスク 2** です)。
 
-### <a name="step-1:-use-disk-management-to-create-a-dynamic-mirrored-volume"></a>Step 1: Use Disk Management to create a dynamic mirrored volume
+### 手順 1: ディスクの管理を使用してダイナミック ミラー ボリュームを作成する
 
-Disk Management is a system utility for managing hard disks and the volumes or partitions that they contain. For more information about Disk Management, go to [Disk Management](https://technet.microsoft.com/library/cc770943.aspx) on the Microsoft TechNet website.
+ディスクの管理は、ハード ディスクとハード ディスクに含まれるボリュームまたはパーティションを管理するためのシステム ユーティリティです。ディスクの管理の詳細については、Microsoft TechNet Web サイトの「[Disk Management (ディスクの管理)](https://technet.microsoft.com/library/cc770943.aspx)」をご覧ください。
 
-#### <a name="to-create-a-dynamic-mirrored-volume"></a>To create a dynamic mirrored volume
+#### ダイナミック ミラー ボリュームを作成するには
 
-1. Use any of the following options to start Disk Management: 
+1. 次のいずれかの方法を使用して、ディスクの管理を起動します。 
 
-   - Open the **Run** box, type **Diskmgmt.msc**, and press Enter.
+   - **[ファイル名を指定して実行]** ボックスを開き、「**Diskmgmt.msc**」と入力して、Enter キーを押します。
 
-   - Start Server Manager, expand the **Storage** node, and then select **Disk Management**. 
+   - サーバー マネージャーを起動し、**[Storage]** ノードを展開して、**[ディスクの管理]** を選択します。
 
-   - Start **Administrative Tools**, expand the **Computer Management** node, and then select **Disk Management**. 
+   - **[管理ツール]** を起動し、**[コンピューターの管理]** ノードを展開して、**[ディスクの管理]** を選択します。
 
-2. Make sure that you have two volumes available on the StorSimple device. (In the example, the available volumes are **Disk 1** and **Disk 2**.) 
+2. StorSimple デバイスに使用可能な 2 つのボリュームがあることを確認します (この例では、使用できるボリュームは**ディスク 1** と**ディスク 2** です)。 
 
-3. In the Disk Management window, in the right column of the lower pane, right-click **Disk 1** and select **New Mirrored Volume**. 
+3. [ディスクの管理] ウィンドウの下部ウィンドウの右側の列で、**[ディスク 1]** を右クリックし、**[新しいミラー ボリューム]** を選択します。
 
-    ![New Mirrored Volume](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png) 
+    ![新しいミラー ボリューム](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_New_mirrored_volume.png)
 
-4. On the **New Mirrored Volume** wizard page, click **Next**.
+4. **[新しいミラー ボリューム]** ウィザード ページで、**[次へ]** をクリックします。
 
-5. On the **Select Disks** page, select **Disk 2** in the **Selected** pane, click **Add**, and then click **Next**. 
+5. **[ディスクの選択]** ページの **[選択済み]** ウィンドウで **[ディスク 2]** を選択し、**[追加]** をクリックして、**[次へ]** をクリックします。
 
-6. On the **Assign Drive Letter or Path** page, accept the defaults, and then click **Next**. 
+6. **[ドライブ文字またはパスの割り当て]** ページで既定値をそのまま使用し、**[次へ]** をクリックします。
 
-7. On the **Format Volume** page, in the **Allocation Unit Size** box, select **64K**. Select the **Perform a quick format** check box, and then click **Next**. 
+7. **[ボリュームのフォーマット]** ページの **[アロケーション ユニット サイズ]** ボックスで、**[64K]** を選択します。**[クイック フォーマットする]** チェック ボックスをオンにし、**[次へ]** をクリックします。
 
-8. On the **Completing the New Mirrored Volume** page, review your settings, and then click **Finish**. 
+8. **[新しいミラー ボリューム ウィザードの完了]** ページで設定を確認し、**[完了]** をクリックします。
 
-9. A message appears to indicate that the basic disk will be converted to a dynamic disk. Click **Yes**.
+9. ベーシック ディスクがダイナミック ディスクに変換されることを示すメッセージが表示されます。**[はい]** をクリックします。
 
-    ![Dynamic disk conversion message](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png) 
+    ![ダイナミック ディスク変換メッセージ](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Disk_management_msg.png)
 
-10. In Disk Management, verify that Disk 1 and Disk 2 are shown as dynamic mirrored volumes. (**Dynamic** should appear in the status column, and the capacity bar color should change to red, indicating a mirrored volume.) 
+10. ディスクの管理で、Disk 1 と Disk 2 がダイナミック ミラー ボリュームとして表示されていることを確認します([状態] 列に **[動的]** と表示され、容量バーの色がミラー化されたボリュームを示す赤に変わっている必要があります)。
 
-    ![Disk Management mirrored dynamic disks](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png) 
+    ![ディスクの管理でミラー化されたダイナミック ディスク](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_Verify_dynamic_disks_2.png)
  
-### <a name="step-2:-use-storsimple-snapshot-manager-to-configure-backup"></a>Step 2: Use StorSimple Snapshot Manager to configure backup
+### 手順 2: StorSimple Snapshot Manager を使用してバックアップを構成する
 
-Use the following procedure to configure a dynamic mirrored volume, and then either start a backup immediately or create a policy for scheduled backups.
+ダイナミック ミラー ボリュームのバックアップを構成した後、バックアップをすぐに開始するか、スケジュールされたバックアップのポリシーを作成するには、次の手順に従います。
 
-#### <a name="to-configure-backup-of-a-dynamic-mirrored-volume"></a>To configure backup of a dynamic mirrored volume
+#### ダイナミック ミラー ボリュームのバックアップを構成するには
 
-1. Click the StorSimple Snapshot Manager icon on your desktop. The StorSimple Snapshot Manager window appears. 
+1. デスクトップの [StorSimple Snapshot Manager] アイコンをクリックします。[StorSimple Snapshot Manager] ウィンドウが表示されます。 
 
-2. In the **Scope** pane, right-click the **Volumes** node and select **Rescan volumes**. When the scan is finished, a list of volumes should appear in the **Results** pane. The dynamic mirrored volume is listed as a single volume. 
+2. **スコープ** ウィンドウで、**[ボリューム]** ノードを右クリックし、**[ボリュームの再スキャン]** を選択します。スキャンが終了すると、**結果**ウィンドウにボリュームのリストが表示されます。ダイナミック ミラー ボリュームは、1 つのボリュームとして表示されます。
 
-3. In the **Results** pane, right-click the dynamic mirrored volume, and then click **Create Volume Group**. 
+3. **結果**ウィンドウでダイナミック ミラー ボリュームを右クリックし、**[ボリューム グループの作成]** をクリックします。
 
-4. In the **Create Volume Group** dialog box, type a name for the volume group, assign the dynamic mirrored volume to this group, and then click **OK**. 
+4. **[ボリューム グループの作成]** ダイアログ ボックスで、ボリューム グループの名前を入力し、ダイナミック ミラー ボリュームをこのグループに割り当てて、**[OK]** をクリックします。
 
-5. In the **Scope** pane, expand the **Volume Groups** node. The new volume group should appear under the  **Volume Groups** node. 
+5. **スコープ** ウィンドウで、**[ボリューム グループ]** ノードを展開します。**[ボリューム グループ]** ノードの下に新しいボリューム グループが表示されます。
 
-6. Right-click the volume group name. 
+6. ボリューム グループ名を右クリックします。
 
-    - To start an interactive (on-demand) backup job, click **Take Backup**. 
+    - 対話形式の (オンデマンド) バックアップ ジョブを開始するには、**[バックアップの作成]** をクリックします。 
 
-    - To schedule an automatic backup, click **Create Backup Policy**. On the **General** page, select the volume group from the list. On the **Schedule** page, enter the schedule details. When you are finished, click **OK**. 
+    - 自動バックアップをスケジュールするには、**[バックアップ ポリシーの作成]** をクリックします。**[全般]** ページで、リストからボリューム グループを選択します。**[スケジュール]** ページで、スケジュールの詳細を入力します。操作が終了したら、**[OK]** をクリックします。
 
-7. You can monitor the backup job as it runs. In the **Scope** pane, expand the **Jobs** node, and then click **Running**, The job details appear in the **Results** pane. When the backup job is finished, the details are transferred to the **Last 24** hours job list. 
+7. バックアップ ジョブの実行状態を監視できます。**スコープ** ウィンドウで **[ジョブ]** ノードを展開し、**[実行中]** をクリックします。**結果**ウィンドウにジョブの詳細が表示されます。バックアップ ジョブが終了すると、詳細が **[過去 24 時間]** ジョブ リストに転送されます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
-- Learn how to [use StorSimple Snapshot Manager to create and manage volume groups](storsimple-snapshot-manager-manage-volume-groups.md).
+- [StorSimple Snapshot Manager を使用して StorSimple ソリューションを管理する](storsimple-snapshot-manager-admin.md)方法を確認します。
+- [StorSimple Snapshot Manager を使用してボリューム グループを作成および管理する](storsimple-snapshot-manager-manage-volume-groups.md)方法を確認します。
 
 <!--Reference links-->
 [1]: https://msdn.microsoft.com/library/ee338480(v=ws.10).aspx
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0511_2016-->

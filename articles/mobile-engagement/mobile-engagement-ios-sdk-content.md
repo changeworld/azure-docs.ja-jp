@@ -1,50 +1,45 @@
 <properties
-    pageTitle="Azure Mobile Engagement iOS SDK Content"
-    description="Latest updates and procedures for iOS SDK for Azure Mobile Engagement"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="MehrdadMzfr"
-    manager="dwrede"
-    editor="" />
+	pageTitle="Azure モバイル エンゲージメント iOS SDK コンテンツ"
+	description="Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="MehrdadMzfr"
+	manager="dwrede"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-ios"
-    ms.devlang="objective-c"
-    ms.topic="article"
-    ms.date="08/19/2016"
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="08/19/2016"
+	ms.author="piyushjo" />
 
+#SDK の内容
 
-#<a name="sdk-content"></a>SDK Content
+このドキュメントでは、SDK アーカイブの内容を一覧にして説明しています。
 
-This document lists and describes the content of the SDK archive.
-
-##<a name="engagement-sdk"></a>Engagement SDK
+##Engagement SDK
 
 `EngagementSDK`
 
-> The core Engagement SDK containing headers, library and an additional class provided as a source code to enable/disable IDFA collection.
+> コア Engagement SDK には、ヘッダー、ライブラリ、IDFA コレクションを有効または無効にするソース コードとして指定された追加のクラスが含まれています。
 
-##<a name="engagement-reach-sdk"></a>Engagement Reach SDK
+##Engagement Reach SDK
 
 `EngagementReach`
 
-> Engagement Reach SDK containing headers, library and associated resources.
+> Engagement Reach SDK には、ヘッダー、ライブラリ、関連付けられているリソースが含まれています。
 
-##<a name="additional-files"></a>Additional files
+##追加ファイル
 
-`doc/index.html` (in `doc` folder)
+`doc/index.html`(`doc` フォルダー内)
 
-> Engagement SDK and Reach SDK Objective-C documentation.
+> エンゲージメント SDK とリーチ SDK OBJECTIVE-C のドキュメント。
 
-`src` folder
+`src` フォルダー
 
-> Engagement view controllers and Reach SDK's source code (for power users who want to adapt Engagement classes to their needs).
+> エンゲージメント ビュー コントローラーとリーチ SDK のソース コード (エンゲージメント クラスをニーズに適応させたいパワー ユーザー向け)。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

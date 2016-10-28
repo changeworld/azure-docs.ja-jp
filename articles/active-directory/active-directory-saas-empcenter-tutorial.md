@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with EmpCenter | Microsoft Azure" 
-    description="Learn how to use EmpCenter with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と EmpCenter の統合 | Microsoft Azure" 
+    description="Azure Active Directory で EmpCenter を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,115 +14,109 @@
     ms.date="08/16/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-empcenter"></a>Tutorial: Azure Active Directory integration with EmpCenter
+#チュートリアル: Azure Active Directory と EmpCenter の統合
   
-The objective of this tutorial is to show the integration of Azure and EmpCenter.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルでは、Azure と EmpCenter の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   An EmpCenter single sign-on enabled subscription
+-   有効な Azure サブスクリプション
+-   EmpCenter でのシングル サインオンが有効なサブスクリプション
   
-After completing this tutorial, the Azure AD users you have assigned to EmpCenter will be able to single sign into the application at your EmpCenter company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルを完了すると、EmpCenter に割り当てた Azure AD ユーザーは、EmpCenter 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
   
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Enabling the application integration for EmpCenter
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  EmpCenter のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-![Scenario](./media/active-directory-saas-empcenter-tutorial/IC802916.png "Scenario")
-##<a name="enabling-the-application-integration-for-empcenter"></a>Enabling the application integration for EmpCenter
+![シナリオ](./media/active-directory-saas-empcenter-tutorial/IC802916.png "シナリオ")
+##EmpCenter のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for EmpCenter.
+このセクションでは、EmpCenter のアプリケーション統合を有効にする方法について説明します。
 
-###<a name="to-enable-the-application-integration-for-empcenter,-perform-the-following-steps:"></a>To enable the application integration for EmpCenter, perform the following steps:
+###EmpCenter のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-empcenter-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-empcenter-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-empcenter-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-empcenter-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-empcenter-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-empcenter-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-empcenter-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **EmpCenter**.
+6.  **検索ボックス**に、「**EmpCenter**」と入力します。
 
-    ![Application Gallery](./media/active-directory-saas-empcenter-tutorial/IC802917.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-empcenter-tutorial/IC802917.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **EmpCenter**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[EmpCenter]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![EmpCentral](./media/active-directory-saas-empcenter-tutorial/IC802918.png "EmpCentral")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
   
-The objective of this section is to outline how to enable users to authenticate to EmpCenter with their account in Azure AD using federation based on the SAML protocol.
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで EmpCenter に対する認証を行うことができるようにする方法を説明します。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **EmpCenter** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **EmpCenter** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802919.png "Configure Single Sign-On")
 
-2.  On the **How would you like users to sign on to EmpCenter** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの EmpCenter へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802920.png "Configure Single Sign-On")
 
-3.  On the **Configure App Settings** page, perform the following steps:
+3.  **[アプリケーション設定の構成]** ページで、次の手順を実行します。
 
     ![Configure App Settings](./media/active-directory-saas-empcenter-tutorial/IC802921.png "Configure App Settings")
 
-    1.  In the **Sign On URL** textbox, type the URL used by your users to sign-on to your EmpCenter application (e.g.: *https://partner-authenticati.empcenter.com/workforce/SSO.do*).
-    2.  Click **Next**
+    1.  **[サインオン URL]** ボックスに、ユーザーが EmpCenter アプリケーションへのサインオンに使用する URL (例: *https://partner-authenticati.empcenter.com/workforce/SSO.do*) を入力します。
+    2.  **[次へ]** をクリックします。
 
-4.  On the **Configure single sign-on at EmpCenter** page, to download your metadata, click **Download metadata**, and then save the metadata file on your computer.
+4.  **[EmpCenter でのシングル サインオンの構成]** ページで、メタデータをダウンロードするには、**[メタデータのダウンロード]** をクリックし、メタデータ ファイルをコンピューターに保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802922.png "Configure Single Sign-On")
 
-5.  Send the downloaded metadata file to your EmpCenter support team.
+5.  ダウンロードしたメタデータ ファイルを EmpCenter サポート チームに送信します。
 
-    >[AZURE.NOTE] Your EmpCenter support team has to do the actual SSO configuration.
-You will get a notification when SSO has been enabled for your subscription.
+    >[AZURE.NOTE] EmpCenter サポート チームが、実際に SSO を構成する必要があります。ご使用のサブスクリプションで SSO が有効になると通知が届きます。
 
-6.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+6.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-empcenter-tutorial/IC802923.png "Configure Single Sign-On")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-In order to enable Azure AD users to log into EmpCenter, they must be provisioned into EmpCenter.  
-In the case of EmpCenter, the user accounts need to be created by your EmpCenter support team.
+Azure AD ユーザーが EmpCenter にログインできるようにするには、そのユーザーを EmpCenter にプロビジョニングする必要があります。  
+EmpCenter の場合、ユーザー アカウントは、EmpCenter サポート チームが作成する必要があります。
 
->[AZURE.NOTE] You can use any other EmpCenter user account creation tools or APIs provided by EmpCenter to provision Azure Active Directory user accounts.
+>[AZURE.NOTE] EmpCenter から提供されている他の EmpCenter ユーザー アカウント作成ツールまたは API を使用して、Azure Active Directory ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-empcenter,-perform-the-following-steps:"></a>To assign users to EmpCenter, perform the following steps:
+###ユーザーを EmpCenter に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **EmpCenter **application integration page, click **Assign users**.
+2.  **EmpCenter** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-empcenter-tutorial/IC802924.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-empcenter-tutorial/IC802924.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-empcenter-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

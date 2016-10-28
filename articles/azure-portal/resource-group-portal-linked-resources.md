@@ -1,42 +1,37 @@
 <properties 
-    pageTitle="Related and linked resources in the tile gallery" 
-    description="Learn about related and linked resources that are displayed in the tile gallery of the Azure preview portal." 
-    services="azure-portal" 
-    documentationCenter="" 
-    authors="adamabdelhamed" 
-    manager="wpickett" 
-    editor=""/>
+	pageTitle="タイル ギャラリーの関連リソースとリンク済みリソース" 
+	description="Azure プレビュー ポータルのタイル ギャラリーに表示される関連リソースとリンク済みリソースについて説明します。" 
+	services="azure-portal" 
+	documentationCenter="" 
+	authors="adamabdelhamed" 
+	manager="wpickett" 
+	editor=""/>
 
 <tags 
-    ms.service="azure-portal" 
-    ms.workload="multiple" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/16/2015" 
-    ms.author="adamab"/>
+	ms.service="azure-portal" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/16/2015" 
+	ms.author="adamab"/>
 
+# タイル ギャラリーの関連リソースとリンク済みリソース
 
-# <a name="related-and-linked-resources-in-the-tile-gallery"></a>Related and linked resources in the tile gallery
+タイル ギャラリーを使用すると、特定のリソースのタイルを見つけて、現在のブレードにドラッグできます。タイル ギャラリーを使用して、リソースにまたがる管理ビューを作成できます。特定のリソースでは、関連リソースには、そのリソースと同じリソース グループを共有するすべてのリソースと、相互にリンクする任意のリソースが含まれています。
 
-The tile gallery enables you to find tiles for a particular resource and drag them onto your current blade. Using the tile gallery, you can create management views that span resources. For any specified resource, the related resources include all of the resources that share the same resource group as the resource, and any resources that link to or from the resource.
+## Azure リソース マネージャーのリンク済みリソース
 
-## <a name="linked-resources-in-azure-resource-manager"></a>Linked resources in Azure Resource Manager
+リンクは、Azure リソース マネージャーの機能です。同じリソース グループに存在していない場合でも、リソース間のリレーションシップを宣言できます。リンクがリソースのランタイム、課金、ロール ベースのアクセスに影響を与えることはありません。これは、タイル ギャラリーなどのツールが豊富な管理機能を提供できるように、単にリレーションシップを表すために使用できるメカニズムです。このツールは、API へのリンクを使用してリンクを検査し、カスタムのリレーションシップ管理機能も提供できます。
 
-Linking is a feature of the Azure Resource Manager.  It enables you to declare relationships between resources even if they do not reside in the same resource group. Linking has no impact on the runtime of your resources, no impact on billing, and no impact on role-based access.  It's simply a mechanism you can use to represent relationships so that tools like the tile gallery can provide a rich management experience.  Your tools can inspect the links using the links API and provide custom relationship management experiences as well. 
+## リソースをリンクする方法
 
-## <a name="how-do-i-link-my-resources?"></a>How do I link my resources?
+ポータル経由、または Azure PowerShell や Azure CLI からテンプレートをデプロイすることで、リソースを作成すると、リンクが一部の依存リソースで自動的に作成されます。また、[リンク済みリソースの REST API](https://msdn.microsoft.com/library/azure/mt238499.aspx) を使用するか、テンプレートでリレーションシップを宣言することで、プログラムを使用してリソースをリンクすることもできます。リンク済みリソースの使用の詳細については、「[Azure リソース マネージャーでのリソースのリンク](../resource-group-link-resources.md)」をご覧ください。
 
-When you create resources through the portal or by deploying a template through Azure PowerShell or Azure CLI, links are automatically created for some dependent resources. You can also programmatically link resources by using the [Linked Resources REST API](https://msdn.microsoft.com/library/azure/mt238499.aspx) or by declaring the relationships in the template. For a complete discussion of working with linked resources, see [Linking resources in Azure Resource Manager](../resource-group-link-resources.md).
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+- Azure リソース マネージャーのテンプレートの作成の概要については、「[テンプレートの作成](../resource-group-authoring-templates.md)」をご覧ください。
+- リソース間のリンクの作成方法の詳細については、「[Azure リソース マネージャーでのリソースのリンク](../resource-group-link-resources.md)」をご覧ください。
+- プレビュー ポータルからリソース グループを使用する方法の詳細については、「[Azure プレビュー ポータルを使用した Azure リソースの管理](resource-group-portal.md)」をご覧ください。
 
-- If you need an introduction to writing Azure Resource Manager templates, see [Authoring templates](../resource-group-authoring-templates.md).
-- To dive into greater detail about creating links between resources, see [Linking resources in Azure Resource Manager](../resource-group-link-resources.md).
-- To understand more about working with resource groups through the preview portal, see [Using the Azure Preview Portal to manage your Azure resources](resource-group-portal.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

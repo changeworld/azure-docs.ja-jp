@@ -1,264 +1,259 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with AppBlade | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and AppBlade."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と AppBlade の統合 | Microsoft Azure"
+	description="Azure Active Directory と AppBlade の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と AppBlade の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-appblade"></a>Tutorial: Azure Active Directory integration with AppBlade
+このチュートリアルの目的は、AppBlade と Azure Active Directory (Azure AD) を統合する方法を説明することです。AppBlade と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate AppBlade with Azure Active Directory (Azure AD).  
-Integrating AppBlade with Azure AD provides you with the following benefits:
+- AppBlade にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に AppBlade にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to AppBlade
-- You can enable your users to automatically get signed-on to AppBlade (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Azure AD と AppBlade の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with AppBlade, you need the following items:
-
-- An Azure AD subscription
-- A AppBlade single-sign on enabled subscription
+- Azure AD サブスクリプション
+- AppBlade でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
-
-
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
-
-1. Adding AppBlade from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-appblade-from-the-gallery"></a>Adding AppBlade from the gallery
-To configure the integration of AppBlade into Azure AD, you need to add AppBlade from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-**To add AppBlade from the gallery, perform the following steps:**
+1. ギャラリーからの AppBlade の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-    ![Active Directory][1]
+## ギャラリーからの AppBlade の追加
+Azure AD への AppBlade の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に AppBlade を追加する必要があります。
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+**ギャラリーから AppBlade を追加するには、次の手順に従います。**
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Applications][2]
+	![Active Directory][1]
 
-4. Click **Add** at the bottom of the page.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![アプリケーション][2]
+
+4. ページの下部にある **[追加]** をクリックします。
  
-    ![Applications][3]
+	![アプリケーション][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
  
-    ![Applications][4]
+	![アプリケーション][4]
 
-6. In the search box, type **AppBlade**.
+6. [検索] ボックスに、「**AppBlade**」と入力します。
 
-![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_01.png)
+![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_01.png)
 
-7. In the results pane, select **AppBlade**, and then click **Complete** to add the application.
+7. 結果ウィンドウで **[AppBlade]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_02.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_02.png)
 
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with AppBlade based on a test user called "Britta Simon".
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、AppBlade で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in AppBlade to a user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in AppBlade needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in AppBlade.
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する AppBlade ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと AppBlade の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、AppBlade の **[Username]** の値として割り当てることで確立されます。
 
-To configure and test Azure AD single sign-on with AppBlade, you need to complete the following building blocks:
+AppBlade で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a AppBlade test user](#creating-a-appblade-test-user)** - to have a counterpart of Britta Simon in AppBlade that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[AppBlade のテスト ユーザーの作成](#creating-a-appblade-test-user)** - AppBlade で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your AppBlade application.
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、AppBlade アプリケーションでシングル サインオンを構成することです。
 
 
 
-**To configure Azure AD single sign-on with AppBlade, perform the following steps:**
+**AppBlade で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. In the Azure classic portal, on the **AppBlade** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Azure クラシック ポータルの **AppBlade** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On][6] 
+	![Configure Single Sign-On][6]
 
-2. On the **How would you like users to sign on to AppBlade** page, select **Azure AD Single Sign-On**, and then click **Next**.
+2. **[ユーザーの AppBlade へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_03.png) >
+	![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_03.png) >
 
-3. On the **Configure App Settings** dialog page, perform the following steps:
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_04.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_04.png)
 
 
-    a. In the Sign On URL textbox, type the URL used by your users to sign-on to your AppBlade application using the following pattern: **“https://companyname.appblade.com/saml/tenantid”**.
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが AppBlade アプリケーションへのサインオンに使用する URL を入力します。**"https://companyname.appblade.com/saml/tenantid"**
 
-    b. Click **Next**.
+    b.**[次へ]** をクリックします。
 
 
-4. On the **Configure single sign-on at AppBlade** page, perform the following steps:
+4. **[AppBlade でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_05.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_05.png)
 
-    a. Click **Download metadata**, and then save the file on your computer.
+    a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
-    b. Click **Next**.
+    b.**[次へ]** をクリックします。
 
 
-5. To get SSO configured for your application, contact your AppBlade support team via **support@appblade.com** and attach the downloaded metadata file to your email. Also, please ask them to configure the **SSO Issuer URL** as **https://appblade.com/saml**. This setting is required for single sign-on to work.
+5. お使いのアプリケーション用に構成された SSO を取得するために、ダウンロードしたメタデータ ファイルを電子メールに添付して、AppBlade のサポート チーム (**support@appblade.com**) に問い合わせます。また、**[SSO 発行元 URL]** を [**https://appblade.com/saml**] に設定するように要請してください。この設定は、シングル サインオンが動作するために必要です。
 
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-    ![Azure AD Single Sign-On][10]
+	![Azure AD Single Sign-On][10]
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-    ![Azure AD Single Sign-On][11]
+	![Azure AD Single Sign-On][11]
 
 
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/create_aaduser_09.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/create_aaduser_03.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_03.png)
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/create_aaduser_05.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps:
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
 
-    e. Click **Next**.
+    e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_07.png)
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-appblade-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-appblade-tutorial/create_aaduser_08.png)
 
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
+    b.**[完了]** をクリックします。
 
 
 
-### <a name="creating-a-appblade-test-user"></a>Creating a AppBlade test user
+### AppBlade テスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in AppBlade. AppBlade supports just-in-time provisioning, which is by default enabled. **Please make sure that your domain name is configured with AppBlade for user provisoning. After that only the just-in-time user provisioning will work.**
+このセクションの目的は、AppBlade で Britta Simon というユーザーを作成することです。AppBlade では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。**ユーザー プロビジョニングのためにドメイン名を AppBlade で構成してください。構成後、Just-In-Time プロビジョニングが作動します。**
 
-If the user has an email address ending with the domain configured by AppBlade for your account then the user will automatically join the account as a member with the permission level you specify, which is one of "Basic" (a basic user who can only install applications), "Team Member" (a user who can upload new app versions and manage projects), or "Administrator" (full admin privileges to the account). Normally one would choose Basic and then promote users manually via an Admin login (AppBlade needs to configure either an email-based admin login in advance or promote a user on behalf of the customer after login).
+ユーザーの電子メール アドレスの末尾がアカウントに AppBlade が設定したドメインになっている場合、そのユーザーは自動的にそのアカウントのメンバーとなり、指定したアクセス許可レベルが与えられます。アクセス許可レベルには、Basic (アプリケーションのインストールのみが許可される基本ユーザー)、Team Member (新しいアプリ バージョンをアップロードし、プロジェクトを管理できるユーザー)、Administrator (アカウントの完全管理特権) があります。通常、Basic を選択し、その後、Admin ログオン経由で手動によりユーザーのアクセス許可レベルを上げます (AppBlade では、電子メール ベースの管理者ログインを前もって構成するか、ログイン後、お客様の代わりにユーザーのアクセス許可レベルを上げる必要があります)。
 
-There is no action item for you in this section. A new user will be created during an attempt to access AppBlade if it doesn't exist yet. [Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on).
+このセクションでは、ユーザー側で必要な操作はありません。存在しない AppBlade ユーザーにアクセスしようとすると、新しいユーザーが自動的に作成されます。[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)
 
-> [AZURE.NOTE] If you need to create a user manually, you need to contact the AppBlade support team.
+> [AZURE.NOTE] ユーザーを手動で作成する必要がある場合は、AppBlade のサポート チームにお問い合わせください。
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### Azure AD テスト ユーザーの割り当て
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to AppBlade.
+このセクションの目的は、Britta Simon に AppBlade へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-![Assign User][200] 
+![ユーザーの割り当て][200]
 
-**To assign Britta Simon to AppBlade, perform the following steps:**
+**AppBlade に Britta Simon を割り当てるには、次の手順に従います。**
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Assign User][201] 
+	![ユーザーの割り当て][201]
 
-2. In the applications list, select **AppBlade**.
+2. アプリケーションの一覧で **[AppBlade]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_50.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_50.png)
 
-1. In the menu on the top, click **Users**.
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-    ![Assign User][203] 
+	![ユーザーの割り当て][203]
 
-1. In the Users list, select **Britta Simon**.
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-2. In the toolbar on the bottom, click **Assign**.
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-    ![Assign User][205]
+	![ユーザーの割り当て][205]
 
 
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+### シングル サインオンのテスト
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the AppBlade tile in the Access Panel, you should get automatically signed-on to your AppBlade application.
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [AppBlade] タイルをクリックすると、自動的に AppBlade アプリケーションにサインオンします。
 
 
-## <a name="additional-resources"></a>Additional Resources
+## その他のリソース
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -279,8 +274,4 @@ When you click the AppBlade tile in the Access Panel, you should get automatical
 [204]: ./media/active-directory-saas-appblade-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-appblade-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

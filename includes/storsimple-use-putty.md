@@ -1,35 +1,33 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-connect-through-the-serial-console"></a>To connect through the serial console
+#### シリアル コンソールを使用して接続するには
 
-1. Connect your serial cable to the device (directly or through a USB-serial adapter).
+1. シリアル ケーブルをデバイスに接続します (直接、または USB シリアル アダプターを使用)。
 
-2. Open the **Control Panel**, and then open the **Device Manager**.
+2. **[コントロール パネル]** をクリックして、**[デバイス マネージャー]** をクリックします。
 
-3. Identify the COM port as shown in the following illustration.
+3. 次の図に示すように COM ポートを確認します。
 
-     ![Connecting through serial console](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
+     ![シリアル コンソールを使用した接続](./media/storsimple-use-putty/HCS_ConnectingDeviceS-include.png)
 
-4. Start PuTTY. 
+4. PuTTY を起動します。
 
-5. In the right pane, change the **Connection type** to **Serial**.
+5. 右側のウィンドウで、**[接続の種類]** を **[シリアル]** に変更します。
 
-6. In the right pane, type the appropriate COM port. Make sure that the serial configuration parameters are set as follows:
-  - Speed: 115,200
-  - Data bits: 8
-  - Stop bits: 1
-  - Parity: None
-  - Flow control: None
+6. 右側のウィンドウで、適切な COM ポートを入力します。シリアル構成パラメーターが次のように設定されていることを確認します。
+  - 速度: 115,200
+  - データ ビット: 8
+  - ストップ ビット: 1
+  - パリティ: なし
+  - フロー制御: なし
 
-    These settings are shown in the following illustration.
+    これらの設定を次の図に示します。
 
-     ![PuTTY settings](./media/storsimple-use-putty/HCS_PuttyConfig-include.png) 
+     ![PuTTY 設定](./media/storsimple-use-putty/HCS_PuttyConfig-include.png)
 
-    > [AZURE.NOTE] If the default flow control setting does not work, try setting the flow control to XON/XOFF.
+    > [AZURE.NOTE]既定のフロー制御の設定が動作しない場合は、フロー制御を [XON/XOFF] に設定してみてください。
 
-7. Click **Open** to start a serial session.
+7. **[開く]** をクリックして、シリアル セッションを開始します。
  
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

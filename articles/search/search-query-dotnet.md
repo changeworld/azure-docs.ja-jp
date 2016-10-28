@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Query your Azure Search Index using the .NET SDK | Microsoft Azure | Hosted cloud search service"
-    description="Build a search query in Azure search and use search parameters to filter and sort search results."
+    pageTitle=".NET SDK を使用した Azure Search インデックスの照会 | Microsoft Azure | ホステッド クラウド検索サービス"
+    description="Azure Search の検索クエリを作成し、検索パラメーターを使用して検索結果のフィルター処理と並べ替えを行います。"
     services="search"
     documentationCenter=""
     authors="brjohnstmsft"
@@ -15,38 +15,37 @@
     ms.date="08/29/2016"
     ms.author="brjohnst"/>
 
-
-# <a name="query-your-azure-search-index-using-the-.net-sdk"></a>Query your Azure Search index using the .NET SDK
+# .NET SDK を使用した Azure Search インデックスの照会
 > [AZURE.SELECTOR]
-- [Overview](search-query-overview.md)
-- [Portal](search-explorer.md)
+- [概要](search-query-overview.md)
+- [ポータル](search-explorer.md)
 - [.NET](search-query-dotnet.md)
-- [REST](search-query-rest-api.md)
+- [REST ()](search-query-rest-api.md)
 
-This article will show you how to query an index using the [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx).
+この記事では、[Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用してインデックスを照会する方法について説明します。
 
-Before beginning this walkthrough, you should already have [created an Azure Search index](search-what-is-an-index.md) and [populated it with data](search-what-is-data-import.md).
+このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んでいます](search-what-is-data-import.md)。
 
-Note that all sample code in this article is written in C#. You can find the full source code [on GitHub](http://aka.ms/search-dotnet-howto).
+この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。[GitHub](http://aka.ms/search-dotnet-howto) に完全なソース コードがあります。
 
-## <a name="i.-identify-your-azure-search-service's-query-api-key"></a>I. Identify your Azure Search service's query api-key
-Now that you have created an Azure Search index, you are almost ready to issue queries using the .NET SDK. First, you will need to obtain one of the query api-keys that was generated for the search service you provisioned. The .NET SDK will send this api-key on every request to your service. Having a valid key establishes trust, on a per request basis, between the application sending the request and the service that handles it.
+## I.Azure Search サービスのクエリ API キーの識別
+Azure Search インデックスの作成は済んでいるので、.NET SDK を使用してクエリを発行する準備はほとんどできています。まず、プロビジョニングした検索サービス用に生成されたクエリ API キーの 1 つを取得する必要があります。.NET SDK は、サービスに対する要求ごとに、この API キーを送信します。有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。
 
-1. To find your service's api-keys you must log into the [Azure Portal](https://portal.azure.com/)
-2. Go to your Azure Search service's blade
-3. Click on the "Keys" icon
+1. サービスの API キーを探すには、[Azure ポータル](https://portal.azure.com/)にログインする必要があります。
+2. Azure Search サービスのブレードに移動します。
+3. "キー" アイコンをクリックします。
 
-Your service will have *admin keys* and *query keys*.
+サービスで*管理者キー*と*クエリ キー*を使用できるようになります。
 
-  - Your primary and secondary *admin keys* grant full rights to all operations, including the ability to manage the service, create and delete indexes, indexers, and data sources. There are two keys so that you can continue to use the secondary key if you decide to regenerate the primary key, and vice-versa.
-  - Your *query keys* grant read-only access to indexes and documents, and are typically distributed to client applications that issue search requests.
+  - プライマリおよびセカンダリ*管理者キー*は、サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与するものです。キーは 2 つあるため、プライマリ キーを再生成することにした場合もセカンダリ キーを使い続けることができます (その逆も可能です)。
+  - *クエリ キー*はインデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。
 
-For the purposes of querying an index, you can use one of your query keys. Your admin keys can also be used for queries, but you should use a query key in your application code as this better follows the [Principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege).
+インデックスを照会する目的では、いずれかのクエリ キーを使用できます。クエリには管理者キーを使うこともできますが、アプリケーション コードではクエリ キーを使うようにしてください。この方が、[最少権限の原則](https://en.wikipedia.org/wiki/Principle_of_least_privilege)に適っています。
 
-## <a name="ii.-create-an-instance-of-the-searchindexclient-class"></a>II. Create an instance of the SearchIndexClient class
-To issue queries with the Azure Search .NET SDK, you will need to create an instance of the `SearchIndexClient` class. This class has several constructors. The one you want takes your search service name, index name, and a `SearchCredentials` object as parameters. `SearchCredentials` wraps your api-key.
+## II.SearchIndexClient クラスのインスタンスの作成
+Azure Search .NET SDK を使用してクエリを発行するには、`SearchIndexClient` クラスのインスタンスを作成する必要があります。このクラスにはいくつかのコンストラクターがあります。目的のコンストラクターは、検索サービスの名前、インデックスの名前、および `SearchCredentials` オブジェクトをパラメーターとして使用します。`SearchCredentials` は API キーをラップします。
 
-The code below creates a new `SearchIndexClient` for the "hotels" index (created in [Create an Azure Search index using the .NET SDK](search-create-index-dotnet.md)) using values for the search service name and api-key that are stored in the application's config file (`app.config` or `web.config`):
+次のコードは、アプリケーションの構成ファイル (`app.config` または `web.config`) に保存されている検索サービスの名前と API キーを表す値を使用して、"hotels" というインデックス (「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md)」で作成したもの) の `SearchIndexClient` を新たに作成します。
 
 ```csharp
 string searchServiceName = ConfigurationManager.AppSettings["SearchServiceName"];
@@ -55,19 +54,19 @@ string queryApiKey = ConfigurationManager.AppSettings["SearchServiceQueryApiKey"
 SearchIndexClient indexClient = new SearchIndexClient(searchServiceName, "hotels", new SearchCredentials(queryApiKey));
 ```
 
-`SearchIndexClient` has a `Documents` property. This property provides all the methods you need to query Azure Search indexes.
+`SearchIndexClient` には `Documents` プロパティがあります。このプロパティは、Azure Search インデックスの照会に必要なすべてのメソッドを提供します。
 
-## <a name="iii.-query-your-index"></a>III. Query your index
-Searching with the .NET SDK is as simple as calling the `Documents.Search` method on your `SearchIndexClient`. This method takes a few parameters, including the search text, along with a `SearchParameters` object that can be used to further refine the query.
+## III.インデックスの照会
+.NET SDK を使用した検索は簡単です。`Documents.Search` メソッドを `SearchIndexClient` で呼び出します。このメソッドは、検索テキストのほか、クエリをさらに絞り込むために使用できる `SearchParameters` オブジェクトなどのいくつかのパラメーターを受け取ります。
 
-#### <a name="types-of-queries"></a>Types of Queries
-The two main [query types](search-query-overview.md#types-of-queries) you will use are `search` and `filter`. A `search` query searches for one or more terms in all _searchable_ fields in your index. A `filter` query evaluates a boolean expression over all _filterable_ fields in an index.
+#### クエリの種類
+主に使用する[クエリの種類](search-query-overview.md#types-of-queries)は、`search` と `filter` の 2 つです。`search` クエリは、インデックスのすべての_検索可能_フィールドで 1 つ以上の語句を検索します。`filter` クエリは、インデックスのすべての_フィルター処理可能_フィールドでブール式を評価します。
 
-Both searches and filters are performed using the `Documents.Search` method. A search query can be passed in the `searchText` parameter, while a filter expression can be passed in the `Filter` property of the `SearchParameters` class. To filter without searching, just pass `"*"` for the `searchText` parameter. To search without filtering, just leave the `Filter` property unset, or do not pass in a `SearchParameters` instance at all.
+検索とフィルターは両方とも `Documents.Search` メソッドを使用して実行できます。検索クエリは `searchText` パラメーターで渡すことができます。一方、フィルター式は `SearchParameters` クラスの `Filter` プロパティで渡すことができます。検索せずにフィルター処理を実行するには、`"*"` を `searchText` パラメーターに渡します。フィルター処理を行わずに検索するには、`Filter` プロパティを未設定のままにするか、`SearchParameters` インスタンスを 1 つも渡さないようにします。
 
-#### <a name="example-queries"></a>Example Queries
+#### クエリの例
 
-The following sample code shows a few different ways to query the "hotels" index defined in [Create an Azure Search index using the .NET SDK](search-create-index-dotnet.md#DefineIndex). Note that the documents returned with the search results are instances of the `Hotel` class, which was defined in [Data Import in Azure Search using the .NET SDK](search-import-data-dotnet.md#HotelClass). The sample code makes use of a `WriteDocuments` method to output the search results to the console. This method is described in the next section.
+次のサンプル コードは、「[.NET SDK を使用した Azure Search インデックスの作成](search-create-index-dotnet.md#DefineIndex)」で定義した "hotels" というインデックスを照会するための、異なるいくつかの方法を示しています。検索結果で返されるドキュメントは `Hotel` クラスのインスタンスであることにご注意ください。このクラスは、「[.NET SDK を使用した Azure Search へのデータのアップロード](search-import-data-dotnet.md#HotelClass)」で定義したクラスです。サンプル コードでは、`WriteDocuments` メソッドを使用して検索結果をコンソールに出力しています。このメソッドについては次のセクションで説明します。
 
 ```csharp
 SearchParameters parameters;
@@ -123,8 +122,8 @@ results = indexClient.Documents.Search<Hotel>("motel", parameters);
 WriteDocuments(results);
 ```
 
-## <a name="iv.-handle-search-results"></a>IV. Handle search results
-The `Documents.Search` method returns a `DocumentSearchResult` object that contains the results of the query. The example in the previous section used a method called `WriteDocuments` to output the search results to the console:
+## IV.検索結果の処理方法
+`Documents.Search` メソッドは、クエリの結果を含む `DocumentSearchResult` オブジェクトを返します。前のセクションの例では、`WriteDocuments` というメソッドを使用して検索結果をコンソールに出力しています。
 
 ```csharp
 private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
@@ -138,7 +137,7 @@ private static void WriteDocuments(DocumentSearchResult<Hotel> searchResults)
 }
 ```
 
-Here is what the results look like for the queries in the previous section, assuming the "hotels" index is populated with the sample data in [Data Import in Azure Search using the .NET SDK](search-import-data-dotnet.md):
+前のセクションに示したクエリの結果は、次のようになります。インデックス "hotels" には「[.NET SDK を使用した Azure Search へのデータのアップロード](search-import-data-dotnet.md)」で示したサンプル データが読み込まれていると想定しています。
 
 ```
 Search the entire index for the term 'budget' and return only the hotelName field:
@@ -161,10 +160,6 @@ ID: 2   Base rate: 79.99        Description: Cheapest hotel in town     Descript
 
 ```
 
-The sample code above uses the console to output search results. You will likewise need to display search results in your own application. See [this sample on GitHub](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample) for an example of how to render search results in an ASP.NET MVC-based web application.
+上記のサンプル コードでは、コンソールを使って検索結果を出力します。同様に、独自のアプリケーションに検索結果を表示する場合もあります。ASP.NET MVC ベースの Web アプリケーションで検索結果を表示する方法を示した例については、[GitHub でこちらのサンプル](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetSample)を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

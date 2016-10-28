@@ -1,11 +1,9 @@
-| Mobile & Native Apps | Web Apps & Web APIs | Integrate Directly with Protocols |
+| モバイル アプリとネイティブ アプリ | Web Apps と Web API | プロトコルと直接統合する |
 | ----------------------- | ------------------------------- | --------------------- |
-| [Add Sign Up & Sign In to an iOS App](active-directory-b2c-devquickstarts-ios.md) | [Add Sign Up & Sign In to a .NET MVC App](active-directory-b2c-devquickstarts-web-dotnet.md) | [Register an Application](active-directory-b2c-app-registration.md) |
-| [Add Sign Up & Sign In to a Windows Desktop App](active-directory-b2c-devquickstarts-native-dotnet.md) | [Use a Sign Up/Sign In Policy in a .NET MVC App](active-directory-b2c-devquickstarts-web-dotnet-susi.md) | [Mobile Apps with OAuth 2.0](active-directory-b2c-reference-oauth-code.md) |
-|  | [Secure a .NET Web API](active-directory-b2c-devquickstarts-api-dotnet.md) | [Web Apps with OpenID Connect](active-directory-b2c-reference-oidc.md) |
-|  | [Call a Web API from a .NET Web App](active-directory-b2c-devquickstarts-web-api-dotnet.md) |  |
-| | [Add Sign Up & Sign In to a ASP.NET Core app](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) | |
+| [サインアップおよびサインインを iOS アプリに追加する](active-directory-b2c-devquickstarts-ios.md) | [サインアップおよびサインインを .NET MVC アプリに追加する](active-directory-b2c-devquickstarts-web-dotnet.md) | [アプリケーションを登録する](active-directory-b2c-app-registration.md) |
+| [サインアップとサインインを Windows デスクトップ アプリに追加する](active-directory-b2c-devquickstarts-native-dotnet.md) | [.NET MVC アプリでサインアップ/サインイン ポリシーを使用する](active-directory-b2c-devquickstarts-web-dotnet-susi.md) | [OAuth 2.0 を使用する Mobile Apps](active-directory-b2c-reference-oauth-code.md) |
+| | [.NET Web API をセキュリティで保護する](active-directory-b2c-devquickstarts-api-dotnet.md) | [OpenID Connect を使用する Web Apps](active-directory-b2c-reference-oidc.md) |
+| | [.NET Web アプリから Web API を呼び出す](active-directory-b2c-devquickstarts-web-api-dotnet.md) | |
+| | [サインアップとサインインを ASP.NET Core アプリに追加する](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-aspnetcore-b2c) | |
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

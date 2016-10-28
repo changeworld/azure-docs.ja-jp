@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Publish applications to individual users in an Azure RemoteApp collection (Preview) | Microsoft Azure"
-   description="Learn how you can publish apps to individual users, instead of depending on groups, in Azure RemoteApp."
+   pageTitle="Azure RemoteApp コレクション (プレビュー) で個々のユーザーにアプリケーションを発行する | Microsoft Azure"
+   description="Azure RemoteApp で、グループに応じてではなく、個々のユーザーにアプリケーションを発行する方法について説明します。"
    services="remoteapp-preview"
    documentationCenter=""
    authors="piotrci"
@@ -16,98 +16,93 @@
    ms.date="08/15/2016"
    ms.author="piotrci"/>
 
-
-# <a name="publish-applications-to-individual-users-in-an-azure-remoteapp-collection-(preview)"></a>Publish applications to individual users in an Azure RemoteApp collection (Preview)
+# Azure RemoteApp コレクション (プレビュー) で個々のユーザーにアプリケーションを発行する
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-This article explains how to publish applications to individual users in an Azure RemoteApp collection. This is new functionality in Azure RemoteApp, currently in “private preview” and available only to select early adopters for evaluation purposes.
+この記事では、Azure RemoteApp コレクションで個々のユーザーにアプリケーションを発行する方法について説明します。これは Azure RemoteApp の新機能で、現時点では "プライベート プレビュー" 段階のため、選ばれた早期採用者のみが評価の目的で使用できます。
 
-Originally Azure RemoteApp enabled only one way of “publishing” applications: the administrator would publish apps from the image and they would be visible to all users in the collection.
+当初は、Azure RemoteApp により、アプリケーションを "発行する" 唯一の方法が実現しました。この方法では、管理者がイメージからアプリケーションを発行すると、そのアプリケーションがコレクション内のすべてのユーザーに表示されるようになりました。
 
-A common scenario is to include many applications in a single image and deploy one collection in order to reduce management costs. Oftentimes not all applications are relevant to all users – administrators would prefer to publish apps to individual users so they don’t see unnecessary applications in their application feed.
+一般的なシナリオでは、管理コストを削減するために、多くのアプリケーションを 1 つのイメージに含めて 1 つのコレクションをデプロイします。多くの場合、必ずしもすべてのアプリケーションがすべてのユーザーに関連するとは限りません。そのため、管理者は、個々のユーザーにアプリケーションを発行し、ユーザーのアプリケーション フィードに不要なアプリケーションが表示されないようにすることができます。
 
-This is now possible in Azure RemoteApp – currently as a limited preview feature. Here is a brief summary of the new functionality:
+これは現在、Azure RemoteApp で限定プレビュー機能として使用できます。この新機能の簡単な概要を次に示します。
 
-1. A collection can be set into one of two modes:
+1. コレクションは、次の 2 つのモードのいずれかに設定できます。
  
-  - the original “collection mode”, where all users in a collection can see all published applications. This is the default mode.
-  - the new “application mode”, where users only see applications that have been explicitly assigned to them
+  - 本来の "コレクション モード"。このモードでは、コレクション内のすべてのユーザーに、発行済みアプリケーションがすべて表示されます。これは既定のモードです。
+  - 新しい "アプリケーション モード"。このモードでは、自身に明示的に割り当てられているアプリケーションのみが表示されます。
 
-2. At the moment the application mode can only be enabled using Azure RemoteApp PowerShell cmdlets.
+2. 現時点では、アプリケーション モードを有効にできるのは、Azure RemoteApp PowerShell コマンドレットを使用した場合のみです。
 
-  - When set to application mode, user assignment in the collection cannot be managed through the Azure portal. User assignment has to be managed through PowerShell cmdlets.
+  - アプリケーション モードに設定すると、コレクション内のユーザー割り当てを Azure ポータルを使用して管理することができません。ユーザー割り当ては、PowerShell コマンドレットを使用して管理する必要があります。
 
-3. Users will only see the applications published directly to them. However, it may still be possible for a user to launch the other applications available on the image by accessing them directly in the operating system.
-  - This feature does not provide a secure lockdown of applications; it only limits visibility in the application feed.
-  - If you need to isolate users from applications, you will need to use separate collections for that.
+3. ユーザーには、自身に直接発行されたアプリケーションのみが表示されます。ただし、ユーザーは引き続き、イメージ上の使用可能なその他のアプリケーションを、オペレーティング システム内で直接アクセスすることで起動できる場合があります。
+  - この機能では、アプリケーションのセキュリティで保護されたロックダウンが提供されません。アプリケーション フィードでの表示が制限されるだけです。
+  - アプリケーションからユーザーを分離する必要がある場合は、そのために個別のコレクションを使用する必要があります。
 
-## <a name="how-to-get-azure-remoteapp-powershell-cmdlets"></a>How to get Azure RemoteApp PowerShell cmdlets
+## Azure RemoteApp PowerShell コマンドレットを取得する方法
 
-To try the new preview functionality, you will need to use Azure PowerShell cmdlets. It is currently not possible to use the Azure Management portal to enable the new application publishing mode.
+新しいプレビュー機能を試すには、Azure PowerShell コマンドレットを使用する必要があります。現在、Azure 管理ポータルを使用して新しいアプリケーション発行モードを有効にすることはできません。
 
-First, make sure you have the [Azure PowerShell module](../powershell-install-configure.md) installed.
+最初に、[Azure PowerShell モジュール](../powershell-install-configure.md)がインストールされていることを確認します。
 
-Then launch the PowerShell console in administrator mode and run the following cmdlet:
+次に、PowerShell コンソールを管理者モードで起動し、次のコマンドレットを実行します。
 
-        Add-AzureAccount
+		Add-AzureAccount
 
-It will prompt you for your Azure user name and password. Once signed in, you will be able to run Azure RemoteApp cmdlets against your Azure subscriptions.
+このコマンドレットでは、Azure のユーザー名とパスワードの入力が求められます。サインインすると、Azure サブスクリプションに対して Azure RemoteApp コマンドレットを実行できるようになります。
 
-## <a name="how-to-check-which-mode-a-collection-is-in"></a>How to check which mode a collection is in
+## コレクションのモードを確認する方法
 
-Run the following cmdlet:
+次のコマンドレットを実行します。
 
-        Get-AzureRemoteAppCollection <collectionName>
+		Get-AzureRemoteAppCollection <collectionName>
 
 ![Check the collection mode](./media/remoteapp-perapp/araacllelvel.png)
 
-The AclLevel property can have the following values:
+AclLevel プロパティには、次の値が表示されます。
 
-- Collection: the original publishing mode. All users see all published apps.
-- Application: the new publishing mode. Users see only the apps published directly to them.
+- Collection: 本来の発行モード。すべてのユーザーに、すべての発行済みアプリケーションが表示されます。
+- Application: 新しい発行モード。ユーザーに表示されるのは、自身に直接発行されたアプリケーションのみです。
 
-## <a name="how-to-switch-to-application-publishing-mode"></a>How to switch to application publishing mode
+## アプリケーション発行モードに切り替える方法
 
-Run the following cmdlet:
+次のコマンドレットを実行します。
 
-        Set-AzureRemoteAppCollection -CollectionName -AclLevel Application
+		Set-AzureRemoteAppCollection -CollectionName -AclLevel Application
 
-Application publishing state will be preserved: initially all users will see all of the original published apps.
+アプリケーションの発行状態が保持されます。最初は、すべてのユーザーに元の発行済みアプリケーションがすべて表示されます。
 
-## <a name="how-to-list-users-who-can-see-a-specific-application"></a>How to list users who can see a specific application
+## 特定のアプリケーションを表示できるユーザーの一覧を表示する方法
 
-Run the following cmdlet:
+次のコマンドレットを実行します。
 
-        Get-AzureRemoteAppUser -CollectionName <collectionName> -Alias <appAlias>
+		Get-AzureRemoteAppUser -CollectionName <collectionName> -Alias <appAlias>
 
-This lists all users who can see the application.
+これにより、アプリケーションを表示できるすべてのユーザーの一覧が表示されます。
 
-Note: You can see the application aliases (called "app alias" in the syntax above) by running Get-AzureRemoteAppProgram -CollectionName <collectionName>.
+注: Get-AzureRemoteAppProgram -CollectionName <collectionName> を実行すると、アプリケーションのエイリアス (上記の構文では "アプリのエイリアス") が表示されます。
 
-## <a name="how-to-assign-an-application-to-a-user"></a>How to assign an application to a user
+## アプリケーションをユーザーに割り当てる方法
 
-Run the following cmdlet:
+次のコマンドレットを実行します。
 
-        Add-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
+		Add-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
-The user will now see the application in the Azure RemoteApp client and will be able to connect to it.
+これで、ユーザーの Azure RemoteApp クライアントにアプリケーションが表示され、ユーザーがそのアプリケーションに接続できるようになります。
 
-## <a name="how-to-remove-an-application-from-a-user"></a>How to remove an application from a user
+## ユーザーからアプリケーションを削除する方法
 
-Run the following cmdlet:
+次のコマンドレットを実行します。
 
-        Remove-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
+		Remove-AzureRemoteAppUser -CollectionName <collectionName> -UserUpn <user@domain.com> -Type <OrgId|MicrosoftAccount> -Alias <appAlias>
 
-## <a name="providing-feedback"></a>Providing feedback
-We appreciate your feedback and suggestions regarding this preview feature. Please fill out the [survey](http://www.instant.ly/s/FDdrb) to let us know what you think.
+## フィードバックの提供
+このプレビュー機能に関連したご意見やご提案をお待ちしています。[アンケート](http://www.instant.ly/s/FDdrb)に答えて感想をお聞かせください。
 
-## <a name="haven't-had-a-chance-to-try-the-preview-feature?"></a>Haven't had a chance to try the preview feature?
-If you have not participated in the preview yet, please use this [survey](http://www.instant.ly/s/AY83p) to request access.
+## プレビュー機能を試す機会がなかった場合
+プレビューにまだ参加していない方は、こちらの[アンケート](http://www.instant.ly/s/AY83p)を使って利用を申し込んでください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

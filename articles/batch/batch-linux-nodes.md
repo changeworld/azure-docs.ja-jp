@@ -1,64 +1,63 @@
 <properties
-    pageTitle="Linux nodes in Azure Batch pools | Microsoft Azure"
-    description="Learn how to process your parallel compute workloads on pools of Linux virtual machines in Azure Batch."
-    services="batch"
-    documentationCenter="python"
-    authors="mmacy"
-    manager="timlt"
-    editor="" />
+	pageTitle="Azure Batch プール内の Linux ノード | Microsoft Azure"
+	description="Azure Batch の Linux 仮想マシンのプールで並列コンピューティング ワークロードを処理する方法について説明します。"
+	services="batch"
+	documentationCenter="python"
+	authors="mmacy"
+	manager="timlt"
+	editor="" />
 
 <tags
-    ms.service="batch"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.tgt_pltfrm="vm-linux"
-    ms.workload="na"
-    ms.date="09/08/2016"
-    ms.author="marsma" />
+	ms.service="batch"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-linux"
+	ms.workload="na"
+	ms.date="09/08/2016"
+	ms.author="marsma" />
 
+# Azure Batch プールの Linux コンピューティング ノードのプロビジョニング
 
-# <a name="provision-linux-compute-nodes-in-azure-batch-pools"></a>Provision Linux compute nodes in Azure Batch pools
+Azure Batch を使用すると、Linux と Windows の両方の仮想マシンで並列コンピューティング ワークロードを実行できます。この記事では、[Batch Python][py_batch_package] と [Batch .NET][api_net] の両方のクライアント ライブラリを使用して、Batch サービスで Linux コンピューティング ノードのプールを作成する方法について説明します。
 
-You can use Azure Batch to run parallel compute workloads on both Linux and Windows virtual machines. This article details how to create pools of Linux compute nodes in the Batch service by using both the [Batch Python][py_batch_package] and [Batch .NET][api_net] client libraries.
+> [AZURE.NOTE] [Application packages](batch-application-packages.md) 、Linux コンピューティング ノードでは現在サポートされていません。
 
-> [AZURE.NOTE] [Application packages](batch-application-packages.md) are currently unsupported on Linux compute nodes.
+## 仮想マシンの構成
 
-## <a name="virtual-machine-configuration"></a>Virtual machine configuration
+Batch でコンピューティング ノードのプールを作成する場合は、Cloud Services 構成と仮想マシン構成という 2 つのオプションから、ノード サイズとオペレーティング システムを選択できます。
 
-When you create a pool of compute nodes in Batch, you have two options from which to select the node size and operating system: Cloud Services Configuration and Virtual Machine Configuration.
+**Cloud Services 構成**では、Windows コンピューティング ノード "*のみ*" が提供されます。使用可能なコンピューティング ノードのサイズについては、「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。使用可能なオペレーティング システムについては、「[Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」を参照してください。Azure Cloud Services ノードを含むプールを作成する場合は、前に示した記事に記載されているノード サイズとその "OS ファミリ" のみを指定する必要があります。Windows コンピューティング ノードのプールの場合は、Cloud Services が最もよく使用されます。
 
-**Cloud Services Configuration** provides Windows compute nodes *only*. Available compute node sizes are listed in [Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md), and available operating systems are listed in the [Azure Guest OS releases and SDK compatibility matrix](../cloud-services/cloud-services-guestos-update-matrix.md). When you create a pool that contains Azure Cloud Services nodes, you need to specify only the node size and its "OS family," which are found in the previously mentioned articles. For pools of Windows compute nodes, Cloud Services is most commonly used.
+**仮想マシン構成**では、Linux と Windows の両方のコンピューティング ノード イメージが提供されます。使用可能なコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」(Windows) を参照してください。仮想マシンの構成ノードを含むプールを作成する場合は、ノードのサイズ、仮想マシン イメージの参照、およびノードにインストールする Batch ノード エージェント SKU を指定する必要があります。
 
-**Virtual Machine Configuration** provides both Linux and Windows images for compute nodes. Available compute node sizes are listed in [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-linux-sizes.md) (Linux) and [Sizes for virtual machines in Azure](../virtual-machines/virtual-machines-windows-sizes.md) (Windows). When you create a pool that contains Virtual Machine Configuration nodes, you must specify the size of the nodes, the virtual machine image reference, and the Batch node agent SKU to be installed on the nodes.
+### 仮想マシン イメージの参照
 
-### <a name="virtual-machine-image-reference"></a>Virtual machine image reference
+Batch サービスでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用して、Linux コンピューティング ノードを提供します。これらの仮想マシンのオペレーティング システム イメージは、[Azure Marketplace][vm_marketplace] で提供されています。仮想マシン イメージの参照を構成する場合は、Marketplace 仮想マシン イメージのプロパティを指定します。仮想マシン イメージの参照を作成する際は、次のプロパティが必要です。
 
-The Batch service uses [Virtual machine scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) to provide Linux compute nodes. The operating system images for these virtual machines are provided by the [Azure Marketplace][vm_marketplace]. When you configure a virtual machine image reference, you specify the properties of a Marketplace virtual machine image. The following properties are required when you create a virtual machine image reference:
-
-| **Image reference properties** | **Example** |
+| **イメージの参照プロパティ** | **例** |
 | ----------------- | ------------------------ |
-| Publisher         | Canonical                |
-| Offer             | UbuntuServer             |
-| SKU               | 14.04.4-LTS              |
-| Version           | latest                   |
+| 発行元 | Canonical |
+| プラン | UbuntuServer |
+| SKU | 14\.04.4-LTS |
+| バージョン | 最新 |
 
-> [AZURE.TIP] You can learn more about these properties and how to list Marketplace images in [Navigate and select Linux virtual machine images in Azure with CLI or PowerShell](../virtual-machines/virtual-machines-linux-cli-ps-findimage.md). Note that not all Marketplace images are currently compatible with Batch. For more information, see [Node agent SKU](#node-agent-sku).
+> [AZURE.TIP] これらのプロパティと、Marketplace イメージを一覧表示する方法の詳細については、「[CLI または PowerShell を使用した Azure での Linux 仮想マシン イメージへの移動と選択](../virtual-machines/virtual-machines-linux-cli-ps-findimage.md)」を参照してください。現時点では、すべての Marketplace イメージに Batch との互換性があるわけではありません。詳細については、「[ノード エージェント SKU](#node-agent-sku)」を参照してください。
 
-### <a name="node-agent-sku"></a>Node agent SKU
+### ノード エージェント SKU
 
-The Batch node agent is a program that runs on each node in the pool and provides the command-and-control interface between the node and the Batch service. There are different implementations of the node agent, known as SKUs, for different operating systems. Essentially, when you create a Virtual Machine Configuration, you first specify the virtual machine image reference, and then you specify the node agent to install on the image. Typically, each node agent SKU is compatible with multiple virtual machine images. Here are a few examples of node agent SKUs:
+Batch ノード エージェントは、プール内の各ノードで実行されるプログラムで、ノードと Batch サービスの間のコマンドと制御のインターフェイスを提供します。オペレーティング システムに応じてさまざまなノード エージェントの実装 (SKU と呼ばれます) があります。基本的には、仮想マシン構成を作成する場合は、最初に仮想マシン イメージの参照を指定してから、イメージにインストールするノード エージェントを指定します。通常、各ノード エージェント SKU は、複数の仮想マシン イメージと互換性があります。ノード エージェント SKU の例をいくつか次に示します。
 
 * batch.node.ubuntu 14.04
 * batch.node.centos 7
 * batch.node.windows amd64
 
-> [AZURE.IMPORTANT] Not all virtual machine images that are available in the Marketplace are compatible with the currently available Batch node agents. You must use the Batch SDKs to list the available node agent SKUs and the virtual machine images with which they are compatible. See the [List of Virtual Machine images](#list-of-virtual-machine-images) later in this article for more information.
+> [AZURE.IMPORTANT] Marketplace から入手できる仮想マシン イメージの一部には、現在利用可能な Batch ノード エージェントとの互換性がありません。Batch SDK を使用して、使用可能なノード エージェント SKU と、それと互換性のある仮想マシン イメージの一覧を表示する必要があります。詳細については、この記事の後半にある「[仮想マシン イメージの一覧](#list-of-virtual-machine-images)」を参照してください。
 
-## <a name="create-a-linux-pool:-batch-python"></a>Create a Linux pool: Batch Python
+## Linux プールの作成: Batch Python
 
-The following code snippet shows an example of how to use the [Microsoft Azure Batch Client Library for Python][py_batch_package] to create a pool of Ubuntu Server compute nodes. Reference documentation for the Batch Python module can be found at [azure.batch package ][py_batch_docs] on Read the Docs.
+次のコード スニペットは、[Python 向けの Microsoft Azure Batch クライアント ライブラリ][py_batch_package]を使用して、Ubuntu Server コンピューティング ノードのプールを作成する方法の例を示しています。Batch Python モジュールのリファレンス ドキュメントについては、Read the Docs の [azure.batch package ][py_batch_docs] を参照してください。
 
-This snippet creates an [ImageReference][py_imagereference] explicitly and specifies each of its properties (publisher, offer, SKU, version). In production code, however, we recommend that you use the [list_node_agent_skus][py_list_skus] method to determine and select from the available image and node agent SKU combinations at runtime.
+このスニペットでは、[ImageReference][py_imagereference] を明示的に作成し、各プロパティ (publisher、offer、SKU、version) を指定します。ただし、運用環境のコードでは、[list\_node\_agent\_skus][py_list_skus] メソッドを使用して、実行時に使用可能なイメージとノード エージェント SKU の組み合わせを確認してから選択することをお勧めします。
 
 ```python
 # Import the required modules from the
@@ -114,7 +113,7 @@ new_pool.virtual_machine_configuration = vmc
 client.pool.add(new_pool)
 ```
 
-As mentioned previously, we recommend that instead of creating the [ImageReference][py_imagereference] explicitly, you use the [list_node_agent_skus][py_list_skus] method to dynamically select from the currently supported node agent/Marketplace image combinations. The following Python snippet shows usage of this method.
+前述のように、[ImageReference][py_imagereference] を明示的に作成する代わりに、[list\_node\_agent\_skus][py_list_skus] メソッドを使用して、現在サポートされているノード エージェントと Marketplace イメージの組み合わせから動的に選択することをお勧めします。次の Python スニペットでは、このメソッドの使用方法を示します。
 
 ```python
 # Get the list of node agents from the Batch service
@@ -133,11 +132,11 @@ vmc = batchmodels.VirtualMachineConfiguration(
     node_agent_sku_id = ubuntu1404agent.id)
 ```
 
-## <a name="create-a-linux-pool:-batch-.net"></a>Create a Linux pool: Batch .NET
+## Linux プールの作成: Batch .NET
 
-The following code snippet shows an example of how to use the [Batch .NET][nuget_batch_net] client library to create a pool of Ubuntu Server compute nodes. You can find the [Batch .NET reference documentation][api_net] on MSDN.
+次のコード スニペットは、[Batch .NET][nuget_batch_net] クライアント ライブラリを使用して、Ubuntu Server コンピューティング ノードのプールを作成する方法の例を示しています。MSDN の [Batch .NET リファレンス ドキュメント][api_net]を参照してください。
 
-The following code snippet uses the [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] method to select from the list of currently supported Marketplace image and node agent SKU combinations. This technique is desirable because the list of supported combinations may change from time to time. Most commonly, supported combinations are added.
+次のコード スニペットでは、[PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] メソッドを使用して、現在サポートされている Marketplace イメージとノード エージェント SKU の組み合わせの一覧から選択します。サポートされる組み合わせの一覧が変更される場合があるため、この手法をお勧めします。通常は、サポートされる組み合わせが追加されます。
 
 ```csharp
 // Pool settings
@@ -187,7 +186,7 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
 pool.Commit();
 ```
 
-Although the previous snippet uses the [PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] method to dynamically list and select from supported image and node agent SKU combinations (recommended), you can also configure an [ImageReference][net_imagereference] explicitly:
+上記のスニペットでは、[PoolOperations][net_pool_ops].[ListNodeAgentSkus][net_list_skus] メソッドを使用して、サポートされているイメージとノード エージェント SKU の組み合わせを動的に一覧表示してから選択しますが (推奨)、[ImageReference][net_imagereference] を明示的に構成することもできます。
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -197,43 +196,43 @@ ImageReference imageReference = new ImageReference(
     version: "latest");
 ```
 
-## <a name="list-of-virtual-machine-images"></a>List of virtual machine images
+## 仮想マシン イメージの一覧
 
-The following table lists the Marketplace virtual machine images that are compatible with the available Batch node agents when this article was last updated. It is important to note that this list is not definitive because images and node agents may be added or removed at any time. We recommend that your Batch applications and services always use [list_node_agent_skus][py_list_skus] (Python) and [ListNodeAgentSkus][net_list_skus] (Batch .NET) to determine and select from the currently available SKUs.
+この記事の最終更新時点で使用可能な Batch ノード エージェントと互換性のある Marketplace 仮想マシン イメージの一覧を、次の表に示します。イメージとノード エージェントは随時追加または削除される可能性があるため、これは最終的な一覧ではないことに注意してください。Batch アプリケーションとサービスでは、常に [list\_node\_agent\_skus][py_list_skus] \(Python) と [ListNodeAgentSkus][net_list_skus] (Batch .NET) を使用して、現在利用可能な SKU を確認してから選択することをお勧めします。
 
-> [AZURE.WARNING] The following list may change at any time. Always use the **list node agent SKU** methods available in the Batch APIs to list and then select from the compatible virtual machine and node agent SKUs when you run your Batch jobs.
+> [AZURE.WARNING] 次の一覧は、いつでも変更される可能性があります。Batch ジョブを実行するときに、Batch API で使用できる **ListNodeAgentSkus** メソッドを常に使用して、互換性のある仮想マシンとノード エージェント SKU を一覧表示してから選択します。
 
-| **Publisher** | **Offer** | **Image SKU** | **Version** | **Node agent SKU ID** |
+| **発行元** | **プラン** | **イメージ SKU** | **バージョン** | **ノード エージェント SKU ID** |
 | ------- | ------- | ------- | ------- | ------- |
-| Canonical | UbuntuServer | 14.04.0-LTS | latest | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 14.04.1-LTS | latest | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 14.04.2-LTS | latest | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 14.04.3-LTS | latest | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 14.04.4-LTS | latest | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 14.04.5-LTS | latest | batch.node.ubuntu 14.04 |
-| Canonical | UbuntuServer | 16.04.0-LTS | latest | batch.node.ubuntu 16.04 |
-| Credativ | Debian | 8 | latest | batch.node.debian 8 |
-| OpenLogic | CentOS | 7.0 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS | 7.1 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS-HPC | 7.1 | latest | batch.node.centos 7 |
-| OpenLogic | CentOS | 7.2 | latest | batch.node.centos 7 |
-| Oracle | Oracle-Linux | 7.0 | latest | batch.node.centos 7 |
-| SUSE | openSUSE | 13.2 | latest | batch.node.opensuse 13.2 |
-| SUSE | openSUSE-Leap | 42.1 | latest | batch.node.opensuse 42.1 |
-| SUSE | SLES-HPC | 12 | latest | batch.node.opensuse 42.1 |
-| SUSE | SLES | 12-SP1 | latest | batch.node.opensuse 42.1 |
-| microsoft-ads | standard-data-science-vm | standard-data-science-vm | latest | batch.node.windows amd64 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | latest | batch.node.centos 7 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | latest | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview | latest | batch.node.windows amd64 |
+| Canonical | UbuntuServer | 14\.04.0-LTS | 最新 | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 14\.04.1-LTS | 最新 | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 14\.04.2-LTS | 最新 | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 14\.04.3-LTS | 最新 | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 14\.04.4-LTS | 最新 | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 14\.04.5-LTS | 最新 | batch.node.ubuntu 14.04 |
+| Canonical | UbuntuServer | 16\.04.0-LTS | 最新 | batch.node.ubuntu 16.04 |
+| Credativ | Debian | 8 | 最新 | batch.node.debian 8 |
+| OpenLogic | CentOS | 7\.0 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS | 7\.1 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS-HPC | 7\.1 | 最新 | batch.node.centos 7 |
+| OpenLogic | CentOS | 7\.2 | 最新 | batch.node.centos 7 |
+| Oracle | Oracle-Linux | 7\.0 | 最新 | batch.node.centos 7 |
+| SUSE | openSUSE | 13\.2 | 最新 | batch.node.opensuse 13.2 |
+| SUSE | openSUSE-Leap | 42\.1 | 最新 | batch.node.opensuse 42.1 |
+| SUSE | SLES-HPC | 12 | 最新 | batch.node.opensuse 42.1 |
+| SUSE | SLES | 12-SP1 | 最新 | batch.node.opensuse 42.1 |
+| microsoft-ads | standard-data-science-vm | standard-data-science-vm | 最新 | batch.node.windows amd64 |
+| microsoft-ads | linux-data-science-vm | linuxdsvm | 最新 | batch.node.centos 7 |
+| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | 最新 | batch.node.windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | Windows-Server-Technical-Preview | 最新 | batch.node.windows amd64 |
 
-## <a name="connect-to-linux-nodes"></a>Connect to Linux nodes
+## Linux ノードへの接続
 
-During development or while troubleshooting, you may find it necessary to sign in to the nodes in your pool. Unlike Windows compute nodes, you cannot use Remote Desktop Protocol (RDP) to connect to Linux nodes. Instead, the Batch service enables SSH access on each node for remote connection.
+開発時またはトラブルシューティング時に、プール内のノードにサインインすることが必要な場合があります。Windows コンピューティング ノードとは異なり、リモート デスクトップ プロトコル (RDP) を使用して Linux ノードに接続することはできません。代わりに、Batch サービスを使用して、各ノードでリモート接続用に SSH アクセスを有効にします。
 
-The following Python code snippet creates a user on each node in a pool, which is required for remote connection. It then prints the secure shell (SSH) connection information for each node.
+次の Python コード スニペットでは、リモート接続に必要なユーザーをプール内の各ノードに作成します。その後、各ノードの Secure Shell (SSH) 接続情報を出力します。
 
 ```python
 import datetime
@@ -292,7 +291,7 @@ for node in nodes:
                                          login.remote_login_port))
 ```
 
-Here is sample output for the previous code for a pool that contains four Linux nodes:
+4 つの Linux ノードを含むプールに対する上記のコードのサンプル出力を次に示します。
 
 ```
 Password:
@@ -302,31 +301,31 @@ tvm-1219235766_3-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50002
 tvm-1219235766_4-20160414t192511z | ComputeNodeState.idle | 13.91.7.57 | 50001
 ```
 
-Note that instead of a password, you can specify an SSH public key when you create a user on a node. In the Python SDK, this is done by using the **ssh_public_key** parameter on [ComputeNodeUser][py_computenodeuser]. In .NET, this is done by using the [ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] property.
+ノードにユーザーを作成するときに、パスワードの代わりに、SSH 公開キーを指定できます。これを行うには、Python SDK の場合は、[ComputeNodeUser][py_computenodeuser] の **ssh\_public\_key** パラメーターを使用します。.NET の場合は、[ComputeNodeUser][net_computenodeuser].[SshPublicKey][net_ssh_key] プロパティを使用します。
 
-## <a name="pricing"></a>Pricing
+## 価格
 
-Azure Batch is built on Azure Cloud Services and Azure Virtual Machines technology. The Batch service itself is offered at no cost, which means you are charged only for the compute resources that your Batch solutions consume. When you choose **Cloud Services Configuration**, you will be charged based on the [Cloud Services pricing][cloud_services_pricing] structure. When you choose **Virtual Machine Configuration**, you will be charged based on the [Virtual Machines pricing][vm_pricing] structure.
+Azure Batch は Azure Cloud Services と Azure Virtual Machines テクノロジに基づいて構築されています。Batch サービス自体は、無料で提供されています。そのため、Batch ソリューションによって使用されたコンピューティング リソースに対してのみ課金されます。**Cloud Services 構成**を選択した場合は、[Cloud Services の料金][cloud_services_pricing]体系に基づいて課金されます。**仮想マシン構成**を選択した場合は、[Virtual Machines の料金][vm_pricing]体系に基づいて課金されます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-### <a name="batch-python-tutorial"></a>Batch Python tutorial
+### Batch Python のチュートリアル
 
-For a more in-depth tutorial about how to work with Batch by using Python, check out [Get started with the Azure Batch Python client](batch-python-tutorial.md). Its companion [code sample][github_samples_pyclient] includes a helper function, `get_vm_config_for_distro`, that shows another technique to obtain a virtual machine configuration.
+Python を使用した Batch の操作方法に関するより詳細なチュートリアルについては、「[Azure Batch Python クライアントの概要](batch-python-tutorial.md)」を参照してください。ヘルパー関数 `get_vm_config_for_distro` を含む関連ドキュメントの[コード サンプル][github_samples_pyclient]では、仮想マシンの構成を取得するためのもう 1 つの方法を紹介しています。
 
-### <a name="batch-python-code-samples"></a>Batch Python code samples
+### Batch Python コード サンプル
 
-Check out the other [Python code samples][github_samples_py] in the [azure-batch-samples][github_samples] repository on GitHub for several scripts that show you how to perform common Batch operations such as pool, job, and task creation. The [README][github_py_readme] that accompanies the Python samples has details about how to install the required packages.
+プール、ジョブ、タスクの作成などの一般的な Batch 操作の実行方法を示すさまざまなスクリプトについては、GitHub の [azure-batch-samples][github_samples] リポジトリにあるその他の [Python コード サンプル][github_samples_py]を参照してください。Python サンプルに付属する [README][github_py_readme] には、必要なパッケージのインストール方法の詳細が記載されています。
 
-### <a name="batch-forum"></a>Batch forum
+### Batch フォーラム
 
-The [Azure Batch Forum][forum] on MSDN is a great place to discuss Batch and ask questions about the service. Read helpful "stickied" posts, and post your questions as they arise while you build your Batch solutions.
+MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッションやサービスに関する質問を行うことができる優れた場所です。役立つ重要な投稿を参照したり、Batch ソリューションの構築中に生じた質問を投稿したりできます。
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [cloud_services_pricing]: https://azure.microsoft.com/pricing/details/cloud-services/
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
+[forum]: https://social.msdn.microsoft.com/forums/azure/ja-JP/home?forum=azurebatch
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
@@ -350,8 +349,4 @@ The [Azure Batch Forum][forum] on MSDN is a great place to discuss Batch and ask
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

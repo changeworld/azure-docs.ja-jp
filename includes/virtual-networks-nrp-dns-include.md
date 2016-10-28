@@ -1,93 +1,90 @@
-## <a name="azure-dns"></a>Azure DNS
+## Azure DNS
 
-Azure DNS is a hosting service for DNS domains, providing name resolution using Microsoft Azure infrastructure.
+Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。
 
 
-| Property | Description | Sample Value |
+| プロパティ | 説明 | 値の例 |
 |---|---|---|
-| **DNSzones** | Domain zone information to host DNS records of a particular domain | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com"| 
+| **DNSzones** | 特定ドメインの DNS レコードをホストするドメイン ゾーンの情報 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com"| 
 
 
-### <a name="dns-record-sets"></a>DNS record sets
+### DNS レコード セット
 
-DNS zones have a child object named record set. Record sets are a collection of host records by type for a DNS zone. Record types are A, AAAA, CNAME, MX, NS, SOA,SRV and TXT.
+DNS ゾーンには、レコード セットという名前の子オブジェクトがあります。レコード セットは、DNS ゾーンに対する種類別のホスト レコードのコレクションです。レコードの種類は、A、AAAA、CNAME、MX、NS、SOA、SRV、TXT です。
 
-| Property | Description | Sample value |
+| プロパティ | 説明 | 値の例 |
 |---|---|---|
-| A | IPv4 record type | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/A/www |
-| AAAA | IPv6 record type| /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/AAAA/hostrecord |
-| CNAME | canonical name record type <sup>1</sup> | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/CNAME/www |
-| MX | mail record type | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/MX/mail |
-| NS | name server record type | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/NS/ |
-| SOA | Start of Authority record type <sup>2</sup> | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SOA |
-| SRV | service record type | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SRV |
+| A | IPv4 レコードの種類 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/A/www |
+| AAAA | IPv6 レコードの種類| /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/AAAA/hostrecord |
+| CNAME | 正規名レコードの種類 <sup>1</sup> | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/CNAME/www |
+| MX | メール レコードの種類 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/MX/mail |
+| NS | ネーム サーバー レコードの種類 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/NS/ |
+| SOA | Start of Authority レコードの種類 <sup>2</sup> | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SOA |
+| SRV | サービス レコードの種類 | /subscriptions/{guid}/.../providers/Microsoft.Network/dnszones/contoso.com/SRV |
 
-<sup>1</sup> only allows one value per record set.
+<sup>1</sup> レコード セットごとに 1 つの値のみ許可されます。
 
-<sup>2</sup> only allows one record type SOA per DNS zone. 
+<sup>2</sup> DNS ゾーンごとに 1 つのレコード種類の SOA のみ許可されます。
 
-Sample of DNS zone in Json format:
+Json 形式での DNS ゾーンの例:
 
-    {
-      "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-        "newZoneName": {
-          "type": "String",
-          "metadata": {
-              "description": "The name of the DNS zone to be created."
-          }
-        },
-        "newRecordName": {
-          "type": "String",
-          "defaultValue": "www",
-          "metadata": {
-              "description": "The name of the DNS record to be created.  The name is relative to the zone, not the FQDN."
-          }
-        }
-      },
-      "resources": 
-      [
-        {
-          "type": "microsoft.network/dnszones",
-          "name": "[parameters('newZoneName')]",
-          "apiVersion": "2015-05-04-preview",
-          "location": "global",
-          "properties": {
-          }
-        },
-        {
-          "type": "microsoft.network/dnszones/a",
-          "name": "[concat(parameters('newZoneName'), concat('/', parameters('newRecordName')))]",
-        "apiVersion": "2015-05-04-preview",
-        "location": "global",
-        "properties": 
-        {
-            "TTL": 3600,
-            "ARecords": 
-            [
-                {
-                    "ipv4Address": "1.2.3.4"
-                },
-                {
-                    "ipv4Address": "1.2.3.5"
-                }
-            ]
-        },
-        "dependsOn": [
-            "[concat('Microsoft.Network/dnszones/', parameters('newZoneName'))]"
-        ]
-        }
-        ]
-    }
+	{
+	  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+	  "contentVersion": "1.0.0.0",
+	  "parameters": {
+	    "newZoneName": {
+	      "type": "String",
+	      "metadata": {
+	          "description": "The name of the DNS zone to be created."
+	      }
+	    },
+	    "newRecordName": {
+	      "type": "String",
+	      "defaultValue": "www",
+	      "metadata": {
+	          "description": "The name of the DNS record to be created.  The name is relative to the zone, not the FQDN."
+	      }
+	    }
+	  },
+	  "resources": 
+	  [
+	    {
+	      "type": "microsoft.network/dnszones",
+	      "name": "[parameters('newZoneName')]",
+	      "apiVersion": "2015-05-04-preview",
+	      "location": "global",
+	      "properties": {
+	      }
+	    },
+	    {
+	      "type": "microsoft.network/dnszones/a",
+		  "name": "[concat(parameters('newZoneName'), concat('/', parameters('newRecordName')))]",
+      	"apiVersion": "2015-05-04-preview",
+      	"location": "global",
+	  	"properties": 
+	  	{
+        	"TTL": 3600,
+			"ARecords": 
+			[
+			    {
+				    "ipv4Address": "1.2.3.4"
+				},
+				{
+				    "ipv4Address": "1.2.3.5"
+				}
+			]
+	  	},
+	  	"dependsOn": [
+        	"[concat('Microsoft.Network/dnszones/', parameters('newZoneName'))]"
+      	]
+    	}
+	  	]
+	}
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-Read the [REST API documentation for DNS zones ](https://msdn.microsoft.com/library/azure/mt130626.aspx) for more information.
+詳細については、[DNS ゾーンの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130626.aspx)を参照してください。
 
-Read the [REST API documentation for DNS record sets](https://msdn.microsoft.com/library/azure/mt130627.aspx) for more information.
+詳細については、[DNS レコード セットの REST API ドキュメント](https://msdn.microsoft.com/library/azure/mt130627.aspx)を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0128_2016-->

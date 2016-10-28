@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Accessing private Azure clouds with Visual Studio | Microsoft Azure"
-   description="Learn how to access private cloud resources by using Visual Studio."
+   pageTitle="Visual Studio での Azure プライベート クラウドへのアクセス | Microsoft Azure"
+   description="Visual Studio を使用してプライベート クラウドのリソースにアクセスする方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,38 +15,32 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Visual Studio での Azure プライベート クラウドへのアクセス
 
-# <a name="accessing-private-azure-clouds-with-visual-studio"></a>Accessing private Azure clouds with Visual Studio
+##Overview
 
-##<a name="overview"></a>Overview
+既定では、Visual Studio は Azure パブリック クラウドの REST エンドポイントをサポートします。ただし、このことは、Visual Studio を Azure プライベート クラウドと共に使用している場合に問題となる場合があります。証明書を使用すると、Azure プライベート クラウドの REST エンドポイントにアクセスするように Visual Studio を構成できます。この証明書は、Azure 発行設定ファイルを使用して入手できます。
 
-By default, Visual Studio supports public Azure cloud REST endpoints. This can be a problem, though, if you're using Visual Studio with a private Azure cloud. You can use certificates to configure Visual Studio to access private Azure cloud REST endpoints. You can get these certificates through your Azure publish settings file.
+## Visual Studio で Azure プライベート クラウドにアクセスするには
 
-## <a name="to-access-a-private-azure-cloud-in-visual-studio"></a>To access a private Azure cloud in Visual Studio
+1. プライベート クラウドの [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で、発行設定ファイルをダウンロードするか、管理者に連絡して発行設定ファイルを入手します。パブリック版の Azure では、このファイルをダウンロードするためのリンクは [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/) です(ダウンロードしたファイルには .publishsettings という拡張子が付きます)。
 
-1. In the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885) for the private cloud, download your publish settings file, or contact your administrator for a publish settings file. On the public version of Azure, the link to download this is [https://manage.windowsazure.com/publishsettings/](https://manage.windowsazure.com/publishsettings/). (The file you download should have a .publishsettings extension.)
-
-1. In **Server Explorer** in Visual Studio, choose the **Azure** node and, on the shortcut menu, choose the **Manage Subscriptions** command.
+1. Visual Studio の**サーバー エクスプローラー**で、**[Azure]** ノードを選択し、ショートカット メニューの **[サブスクリプションの管理]** コマンドを選択します。
 
     ![Manage subscriptions command](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790778.png)
 
-1. In the **Manage Microsoft Azure Subscriptions** dialog box, choose the **Certificates** tab, and then choose the **Import** button.
+1. **[Microsoft Azure サブスクリプションの管理]** ダイアログ ボックスで、**[証明書]** タブを選択し、**[インポート]** ボタンをクリックします。
 
     ![Importing Azure certificates](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790779.png)
 
-1. In the **Import Microsoft Azure Subscriptions** dialog box, browse to the folder where you saved the publish settings file and choose the file, then choose the **Import** button. This imports the certificates in the publish settings file into Visual Studio. You should now be able to interact with your private cloud resources.
+1. **[Microsoft Azure サブスクリプションのインポート]** ダイアログ ボックスで、発行設定ファイルを保存したフォルダーを参照してファイルを選択し、**[インポート]** ボタンをクリックします。発行設定ファイル内の証明書が Visual Studio にインポートされます。これで、プライベート クラウドのリソースを操作できるようになりました。
 
     ![Importing publish settings](./media/vs-azure-tools-access-private-azure-clouds-with-visual-studio/IC790780.png)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Publishing to an Azure Cloud Service from Visual Studio](https://msdn.microsoft.com/library/azure/ee460772.aspx)
+[Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)
 
-[How to: Download and Import Publish Settings and Subscription Information](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
+[方法: 発行設定とサブスクリプション情報のダウンロードとインポート](https://msdn.microsoft.com/library/dn385850(v=nav.70).aspx)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

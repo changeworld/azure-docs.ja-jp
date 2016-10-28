@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Enable Public Access to an ACS app | Microsoft Azure"
-   description="How to enable public access to an Azure Container Service."
+   pageTitle="ACS アプリへのパブリック アクセスを有効にする |Microsoft Azure"
+   description="Azure Container Service へのパブリック アクセスを有効にする方法。"
    services="container-service"
    documentationCenter=""
    authors="Thraka"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
+   keywords="Docker、コンテナー、マイクロ サービス、Mesos、Azure"/>
 
 <tags
    ms.service="container-service"
@@ -16,87 +16,83 @@
    ms.tgt_pltfrm="na"
    ms.workload="na"
    ms.date="08/26/2016"
-   ms.author="timlt"/>
+   ms.author="adegeo"/>
 
+# Azure Container Service アプリケーションへのパブリック アクセスを有効にする
 
-# <a name="enable-public-access-to-an-azure-container-service-application"></a>Enable public access to an Azure Container Service application
+ACS [パブリック エージェント プール](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container)のすべての DC/OS コンテナーは、自動的にインターネットに公開されます。既定では、ポート **80**、**443**、**8080** が開かれ、それらのポートでリッスンしているすべての (パブリック) コンテナーにアクセスできます。この記事では、Azure Container Service のアプリケーションのために、さらに多くのポートを開く方法について説明します。
 
-Any DC/OS container in the ACS [public agent pool](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) is automatically exposed to the internet. By default, ports **80**, **443**, **8080** are opened, and any (public) container listening on those ports are accessible. This article shows you how to open more ports for your applications in Azure Container Service.
+## ポートを開く (ポータル) 
 
-## <a name="open-a-port-(portal)"></a>Open a port (portal) 
+まず、必要なポートを開く必要があります。
 
-First, we need to open the port we want.
-
-1. Log in to the portal.
-2. Find the resource group that you deployed the Azure Container Service to.
-3. Select the agent load balancer (which is named similar to **XXXX-agent-lb-XXXX**).
+1. ポータルにログインします。
+2. Azure Container Service をデプロイしたリソース グループを見つけます。
+3. エージェント ロード バランサー (**XXXX-agent-lb-XXXX** というような名前) を選択します。
 
     ![Azure container service load balancer](media/container-service-dcos-agents/agent-load-balancer.png)
 
-4. Click **Probes** and then **Add**.
+4. **[プローブ]**、**[追加]** の順にクリックします。
 
     ![Azure container service load balancer probes](media/container-service-dcos-agents/add-probe.png)
 
-5. Fill out the probe form and click **OK**.
+5. プローブのフォームに入力し、**[OK]** をクリックします。
 
-  	| Field | Description |
-  	| ----- | ----------- |
-  	| Name  | A descriptive name of the probe. |
-  	| Port  | The port of the container to test. |
-  	| Path  | (When in HTTP mode) The relative website path to probe. HTTPS not supported. |
-  	| Interval | The amount of time between probe attempts, in seconds. |
-  	| Unhealthy threshold | Number of consecutive probe attempts before considering the container unhealthy. | 
+    | フィールド | Description |
+    | ----- | ----------- |
+    | 名前 | プローブのわかりやすい名前。 |
+    | ポート | テストするコンテナーのポート。 |
+    | パス | (HTTP モードの場合) プローブする相対 Web サイト パス。HTTPS はサポートされていません。 |
+    | 間隔 | プローブの試行の間隔 (秒単位)。 |
+    | 異常のしきい値 | コンテナーが異常と判断されるまでの、連続するプローブの試行回数。 | 
     
 
-6. Back at the properties of the agent load balancer, click **Load balancing rules** and then **Add**.
+6. エージェント ロード バランサーのプロパティに戻って、**[負荷分散規則]**、**[追加]** の順にクリックします。
 
     ![Azure container service load balancer rules](media/container-service-dcos-agents/add-balancer-rule.png)
 
-7. Fill out the load balancer form and click **OK**.
+7. ロード バランサーのフォームに入力し、**[OK]** をクリックします。
 
-  	| Field | Description |
-  	| ----- | ----------- |
-  	| Name  | A descriptive name of the load balancer. |
-  	| Port  | The public incoming port. |
-  	| Backend port | The internal-public port of the container to route traffic to. |
-  	| Backend pool | The containers in this pool will be the target for this load balancer. |
-  	| Probe | The probe used to determine if a target in the **Backend pool** is healthy. |
-  	| Session persistence | Determines how traffic from a client should be handled for the duration of the session.<br><br>**None**: Successive requests from the same client can be handled by any container.<br>**Client IP**: Successive requests from the same client IP are handled by the same container.<br>**Client IP and protocol**: Successive requests from the same client IP and protocol combination are handled by the same container. |
-  	| Idle timeout | (TCP only) In minutes, the time to keep a TCP/HTTP client open without relying on *keep-alive* messages. |
+    | フィールド | Description |
+    | ----- | ----------- |
+    | 名前 | ロード バランサーのわかりやすい名前。 |
+    | ポート | パブリック受信ポート。 |
+    | バックエンド ポート | トラフィックのルーティング先となるコンテナーの内部パブリック ポート。 |
+    | バックエンド プール | このプール内のコンテナーが、このロード バランサーの対象となります。 |
+    | プローブ | **バックエンド プール**内のターゲットが正常であるかどうかを判断するために使用されるプローブ。 |
+    | セッション永続化 | セッションの期間中にクライアントからのトラフィックをどのように処理するかを決定します。<br><br>**なし**: 同じクライアントからの後続の要求を任意のコンテナーが処理できます。<br>**クライアント IP**: 同じクライアント IP からの後続の要求が、同じコンテナーによって処理されます。<br>**クライアント IP とプロトコル**: 同じクライアント IP とプロトコルの組み合わせからの後続の要求が、同じコンテナーによって処理されます。 |
+    | アイドル タイムアウト | (TCP のみ) *keep-alive* メッセージに依存せずに、TCP/HTTP クライアントを開いたままにしておく時間 (分単位)。 |
 
-## <a name="add-a-security-rule-(portal)"></a>Add a security rule (portal)
+## セキュリティ規則を追加する (ポータル)
 
-Next, we need to add a security rule that routes traffic from our opened port through the firewall.
+次に、開いたポートからファイアウォールを介してトラフィックをルーティングするセキュリティ規則を追加する必要があります。
 
-1. Log in to the portal.
-2. Find the resource group that you deployed the Azure Container Service to.
-3. Select the **public** agent network security group (which is named similar to **XXXX-agent-public-nsg-XXXX**).
+1. ポータルにログインします。
+2. Azure Container Service をデプロイしたリソース グループを見つけます。
+3. **パブリック** エージェント ネットワーク セキュリティ グループ (**XXXX-agent-public-nsg-XXXX** のような名前) を選択します。
 
     ![Azure container service network security group](media/container-service-dcos-agents/agent-nsg.png)
 
-4. Select **Inbound security rules** and then **Add**.
+4. **[受信セキュリティ規則]**、**[追加]** の順に選択します。
 
     ![Azure container service network security group rules](media/container-service-dcos-agents/add-firewall-rule.png)
 
-5. Fill out the firewall rule to allow your public port and click **OK**.
+5. パブリック ポートを許可するようにファイアウォール規則を設定し、**[OK]** をクリックします。
 
-  	| Field | Description |
-  	| ----- | ----------- |
-  	| Name  | A descriptive name of the firewall rule. |
-  	| Priority | Priority rank for the rule. The lower the number the higher the priority. |
-  	| Source | Restrict the incoming IP address range to be allowed or denied by this rule. Use **Any** to not specify a restriction. |
-  	| Service | Select a set of predefined services this security rule is for. Otherwise use **Custom** to create your own. |
-  	| Protocol | Restrict traffic based on **TCP** or **UDP**. Use **Any** to not specify a restriction. |
-  	| Port range | When **Service** is **Custom**, specifies the range of ports that this rule affects. You can use a single port, such as **80**, or a range like **1024-1500**. |
-  	| Action | Allow or deny traffic that meets the criteria. |
+    | フィールド | Description |
+    | ----- | ----------- |
+    | 名前 | ファイアウォール規則のわかりやすい名前。 |
+    | 優先順位 | 規則の優先順位。数値が低いほど、優先度は高くなります。 |
+    | から | この規則によって許可または拒否される受信 IP アドレスの範囲を制限します。制限を指定しない場合は、**[任意]** を使用します。 |
+    | サービス | このセキュリティ規則の対象となる定義済みサービスのセットを選択します。または、**[カスタム]** を使用して独自に作成します。 |
+    | プロトコル | **TCP** または **UDP** に基づいて、トラフィックを制限します。制限を指定しない場合は、**[任意]** を使用します。 |
+    | ポートの範囲 | **[サービス]** が **[カスタム]** である場合は、この規則が影響するポートの範囲を指定します。**80** のような単一のポートを使用することも、**1024-1500** のような範囲を使用することもできます。 |
+    | アクション | 条件に一致するトラフィックを許可または拒否します。 |
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn about the difference between [public and private DC/OS agents](container-service-dcos-agents.md).
+[パブリックとプライベートの DC/OS エージェント](container-service-dcos-agents.md)の違いについて学習します。
 
-Read more information about [managing your DC/OS containers](container-service-mesos-marathon-ui.md).
+[DC/OS コンテナーの管理](container-service-mesos-marathon-ui.md)の詳細をお読みください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

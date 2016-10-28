@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Deactivate and delete a StorSimple Virtual Array | Microsoft Azure"
-   description="Describes how to remove StorSimple device from service by  first deactivating it and then deleting it."
+   pageTitle="StorSimple Virtual Array の非アクティブ化と削除 | Microsoft Azure"
+   description="StorSimple デバイスを非アクティブ化して削除することによって、サービスからこれを削除する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,94 +15,90 @@
    ms.date="06/20/2016"
    ms.author="alkohli" />
 
+# StorSimple Virtual Array の非アクティブ化と削除
 
-# <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deactivate and delete a StorSimple Virtual Array
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Virtual Array を非アクティブ化する場合は、デバイスとこれに対応する StorSimple Manager サービスの接続を切断します。非アクティブ化は永続的な操作であるため、元に戻すことはできません。非アクティブ化されたデバイスを StorSimple Manager サービスに再び登録することはできません。
 
-When you deactivate a StorSimple Virtual Array, you sever the connection between the device and the corresponding StorSimple Manager service. Deactivation is a PERMANENT operation and cannot be undone. A deactivated device cannot be registered with the StorSimple Manager service again.
-
-You may need to deactivate and delete a StorSimple virtual device in the following scenarios:
+次のシナリオでは、StorSimple 仮想デバイスを非アクティブ化してから削除することが必要になる場合があります。
 
 
-- Your device is online and you plan to fail over this device. You may need to do this if you are planning  to upgrade to a larger device. After the device data is transferred and the failover is complete, you can then delete the device.
+- デバイスがオンラインの状態で、このデバイスをフェールオーバーします。より大きなデバイスへのアップグレードを行う場合、フェールオーバーが必要になることがあります。デバイスのデータを転送し、フェール オーバーが完了したら、デバイスを削除できます。
 
-- Your device is offline and you plan to fail over this device. This may happen in the event of a disaster where due to an outage in the datacenter, your primary device is down. You plan to fail over the device to a secondary device. After the device data is transferred and the failover is complete, you can delete the device.
+- デバイスがオフラインの状態で、このデバイスをフェールオーバーします。このシナリオが考えられるのは、災害発生時にデータ センター内の障害によってプライマリ デバイスがダウンした場合です。セカンダリ デバイスにデバイスをフェールオーバーします。デバイスのデータを転送し、フェール オーバーが完了したら、デバイスを削除できます。
 
-- You want to decommission the device and then delete it. 
+- デバイスの使用を停止してからデバイスを削除します。
  
 
-When you deactivate a device, any data that was stored locally will no longer be accessible. Only the data stored in the cloud can be recovered. If you plan to keep the device data after deactivation, then you should take a cloud snapshot of all your data before you deactivate a device. This will allow you to recover all the data at a later stage.
+デバイスを非アクティブ化すると、ローカルに保存されていたすべてのデータにアクセスできなくなります。クラウドに格納されているデータのみを復元できます。非アクティブ化した後もデバイスのデータを保持する場合は、デバイスを非アクティブ化する前にすべてのデータのクラウド スナップショットを取得する必要があります。これを行うことにより、後ですべてのデータを回復できます。
 
 
-This tutorial explains how to:
+このチュートリアルでは、次の方法について説明します。
 
-- Deactivate a device 
-- Delete a deactivated device
+- デバイスの非アクティブ化 
+- 非アクティブ化されたデバイスの削除
 
 
-## <a name="deactivate-a-device"></a>Deactivate a device
+## デバイスの非アクティブ化
 
-Perform the following steps to deactivate your device.
+デバイスを非アクティブ化するには、次の手順を実行します。
 
-#### <a name="to-deactivate-the-device"></a>To deactivate the device   
+#### デバイスを非アクティブ化するには   
 
-1. Go to **Devices** page. Select the device that you wish to deactivate.
+1. **[デバイス]** ページを開きます。非アクティブ化するデバイスを選択します。
 
-    ![Select device to deactivate](./media/storsimple-ova-deactivate-and-delete-device/deactivate1m.png)
+	![非アクティブ化するデバイスの選択](./media/storsimple-ova-deactivate-and-delete-device/deactivate1m.png)
 
-3. At the bottom of the page, click **Deactivate**.
+3. ページの下部にある **[非アクティブ化]** をクリックします。
 
-    ![Click deactivate](./media/storsimple-ova-deactivate-and-delete-device/deactivate2m.png)
+	![[非アクティブ化] をクリック](./media/storsimple-ova-deactivate-and-delete-device/deactivate2m.png)
 
-4. A confirmation message will appear. Click **Yes** to continue. 
+4. 確認メッセージが表示されます。**[はい]** をクリックして続行します。
 
-    ![Confirm deactivate](./media/storsimple-ova-deactivate-and-delete-device/deactivate3m.png)
+	![非アクティブ化の確定](./media/storsimple-ova-deactivate-and-delete-device/deactivate3m.png)
 
-    The deactivate process will start and take a few minutes to complete.
+	非アクティブ化のプロセスが開始され、完了するまでに数分かかります。
 
-    ![Deactivate in progress](./media/storsimple-ova-deactivate-and-delete-device/deactivate4m.png)
+	![非アクティブ化中](./media/storsimple-ova-deactivate-and-delete-device/deactivate4m.png)
 
-3. After deactivation, the list of the devices will be refreshed. 
+3. 非アクティブ化されると、デバイスの一覧が更新されます。
 
-    ![Deactivate complete](./media/storsimple-ova-deactivate-and-delete-device/deactivate5m.png)
+	![非アクティブ化の完了](./media/storsimple-ova-deactivate-and-delete-device/deactivate5m.png)
 
-    You can now delete this device. 
+	これで、このデバイスを削除することができます。
 
-## <a name="delete-the-device"></a>Delete the device
+## デバイスの削除
 
-A device has to be first deactivated in order to delete it. Deleting a device removes it from the list of devices connected to the service. The service can then no longer manage the deleted device. The data associated with the device will however remain in the cloud. Be aware that this data will then accrue charges. 
+デバイスは、非アクティブ化してからでないと削除できません。デバイスを削除すると、サービスに接続されているデバイスの一覧からそのデバイスが削除されます。サービスは、削除されたデバイスをもはや管理できなくなります。ただし、デバイスに関連付けられているデータはクラウドに残ります。このデータには料金が発生するので注意してください。
 
-Complete the following steps to delete the device:
+次のようにしてデバイスを削除します。
 
-#### <a name="to-delete-the-device"></a>To delete the device 
+#### デバイスを削除するには 
 
- 1. On the StorSimple Manager service **Devices** page, select a deactivated device that you wish to delete.
+ 1. StorSimple Manager サービスの **[デバイス**] ページで、削除する非アクティブ化済みデバイスを選択します。
 
-    ![Select device to delete](./media/storsimple-ova-deactivate-and-delete-device/deactivate5m.png)
+	![削除するデバイスの選択](./media/storsimple-ova-deactivate-and-delete-device/deactivate5m.png)
 
- 2. On the bottom on the page, click **Delete**.
+ 2. ページの下部にある **[削除]** をクリックします。
  
-    ![Click delete](./media/storsimple-ova-deactivate-and-delete-device/deactivate6m.png)
+	![[削除] をクリック](./media/storsimple-ova-deactivate-and-delete-device/deactivate6m.png)
 
- 3. You will be prompted for confirmation. Type the device name to confirm device deletion. Note that deleting the device will not delete the cloud data associated with the device. Click the check icon to continue.
+ 3. 確認を求められます。デバイス名を入力して、デバイスの削除を確定します。デバイスを削除しても、デバイスに関連付けられているクラウド データは削除されないので注意してください。チェック マーク アイコンをクリックして、操作を続行します。
  
-    ![Confirm delete](./media/storsimple-ova-deactivate-and-delete-device/deactivate7m.png) 
+	![削除の確定](./media/storsimple-ova-deactivate-and-delete-device/deactivate7m.png)
 
- 5. It may take a few minutes for the device to be deleted. 
+ 5. デバイスが削除されるまで数分かかる場合があります。
 
-    ![Delete in progress](./media/storsimple-ova-deactivate-and-delete-device/deactivate8m.png)
+	![削除中](./media/storsimple-ova-deactivate-and-delete-device/deactivate8m.png)
 
-    After the device is deleted, the list of devices will be refreshed.
+ 	デバイスを削除すると、デバイスの一覧が更新されます。
 
-    ![Delete complete](./media/storsimple-ova-deactivate-and-delete-device/deactivate9m.png)
-
-
-## <a name="next-steps"></a>Next steps
-
-- To learn more about how to use the StorSimple Manager service, go to [Use the StorSimple Manager service to administer your StorSimple Virtual Array](storsimple-ova-manager-service-administration.md). 
+	![削除の完了](./media/storsimple-ova-deactivate-and-delete-device/deactivate9m.png)
 
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
 
+- StorSimple Manager サービスを使用する方法については、「[StorSimple Manager サービスを使用した StorSimple Virtual Array の管理](storsimple-ova-manager-service-administration.md)」を参照してください。 
 
+<!---HONumber=AcomDC_0622_2016-->

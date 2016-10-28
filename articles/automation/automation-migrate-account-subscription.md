@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Migrate Automation Account and Resources | Microsoft Azure"
-   description="This article describes how to move an Automation Account in Azure Automation and associated resources from one subscription to another."
+   pageTitle="Automation アカウントとリソースを移行する | Microsoft Azure"
+   description="この記事では、Azure Automation の Automation アカウントとそれに関連付けられているリソースをサブスクリプション間で移動する方法について説明します。"
    services="automation"
    documentationCenter=""
    authors="MGoedtel"
@@ -15,57 +15,52 @@
    ms.date="07/07/2016"
    ms.author="magoedte" />
 
+# Automation アカウントとリソースを移行する
 
-# <a name="migrate-automation-account-and-resources"></a>Migrate Automation Account and resources
+Azure ポータルで作成した Automation アカウントとそれに関連付けられているリソース (資産、Runbook、モジュールなど) をリソース グループ間またはサブスクリプション間で移行する操作は、Azure ポータルの[リソース移動](../resource-group-move-resources.md)機能を使用して簡単に実行できます。ただし、この操作を行う前に、[リソース移動前のチェックリスト](../resource-group-move-resources.md#Checklist-before-moving-resources)を確認した後、Automation に固有の次のリストもチェックする必要があります。
 
-For Automation accounts and its associated resources (i.e. assets, runbooks, modules, etc.) that you have created in the Azure portal and want to migrate from one resource group to another or from one subscription to another, you can accomplish this easily with the [move resources](../resource-group-move-resources.md) feature available in the Azure portal. However, before proceeding with this action, you should first review the following [checklist before moving resources](../resource-group-move-resources.md#Checklist-before-moving-resources) and additionally, the list below specific to Automation.   
-
-1.  The destination subscription/resource group must be in same region as the source.  Meaning, Automation accounts cannot be moved across regions.
-2.  When moving resources (e.g. runbooks, jobs, etc.), both the source group and the target group are locked for the duration of the operation. Write and delete operations are blocked on the groups until the move completes.  
-3.  Any runbooks or variables which reference a resource or subscription ID from the existing subscription will need to be updated after migration is completed.   
+1.  移動先のサブスクリプション/リソース グループは、移動元と同じリージョン内に存在する必要があります。つまり、Automation アカウントは、リージョン間で移動することはできません。
+2.  リソース (Runbook やジョブなど) を移動する場合は、その操作の間、ソース グループとターゲット グループの両方がロックされます。これらのグループに対する書き込み操作および削除操作は、移動が完了するまでブロックされます。
+3.  既存のサブスクリプションからリソースまたはサブスクリプション ID を参照する Runbook または変数は、移行が完了した後に更新する必要があります。
 
 
->[AZURE.NOTE] This feature does not support moving Classic automation resources.
+>[AZURE.NOTE] この機能は、クラシック オートメーション リソースの移動をサポートしていません。
 
-## <a name="to-move-the-automation-account-using-the-portal"></a>To move the Automation Account using the portal
+## ポータルを使用して Automation アカウントを移動するには
 
-1. From your Automation account, click **Move** at the top of the blade.<br> ![Move option](media/automation-migrate-account-subscription/automation-menu-move.png)<br> 
-2. On the **Move resources** blade, note that it presents resources related to both your Automation account and your resource group(s).  Select the **subscription** and **resource group** from the drop-down lists, or select the option **create a new resource group** and enter a new resource group name in the field provided.  
-3. Review and select the checkbox to acknowledge you *understand tools and scripts will need to be updated to use new resource IDs after resources have been moved* and then click **OK**.<br> ![Move Resources Blade](media/automation-migrate-account-subscription/automation-move-resources-blade.png)<br>   
+1. 自分の Automation アカウントで、ブレードの上部にある **[移動]** をクリックします。<br>![[移動] オプション](media/automation-migrate-account-subscription/automation-menu-move.png)<br>
+2. **[リソースの移動]** ブレードに、Automation アカウントとリソース グループの両方に関連するリソースが表示されます。**[サブスクリプション]** ボックスの一覧と **[リソース グループ]** ボックスの一覧から選択するか、**[新しいリソース グループの作成]** オプションを選択して、表示されたフィールドに新しいグループ名を入力します。
+3. *[リソースの移動後に新しいリソース ID を使用するにはツールとスクリプトの更新が必要であることを理解しました]* チェックボックスをオンにし、**[OK]** をクリックします。<br> ![[リソースの移動] ブレード](media/automation-migrate-account-subscription/automation-move-resources-blade.png)<br>
 
-This action will take several minutes to complete.  In **Notifications**, you will be presented with a status of each action that takes place - validation, migration, and then finally when it is completed.     
+この操作は、完了までに数分かかります。**[通知]** に、実行されている操作の状態が表示され、検証と移行の実行後に操作が完了します。
 
-## <a name="to-move-the-automation-account-using-powershell"></a>To move the Automation Account using PowerShell
+## PowerShell を使用して Automation アカウントを移動するには
 
-To move existing Automation resources to another resource group or subscription, use the  **Get-AzureRmResource** cmdlet to get the specific Automation account and then **Move-AzureRmResource** cmdlet to perform the move.
+既存の Automation リソースを別のリソース グループまたはサブスクリプションに移動するには、**Get-AzureRmResource** コマンドレットを使用して Automation アカウントを取得した後、**Move-AzureRmResource** コマンドレットを使用して移動を実行します。
 
-The first example shows how to move an Automation account to a new resource group.
+最初の例では、Automation アカウントを新しいリソース グループに移動する方法を示します。
 
    ```
     $resource = Get-AzureRmResource -ResourceName "TestAutomationAccount" -ResourceGroupName "ResourceGroup01"
     Move-AzureRmResource -ResourceId $resource.ResourceId -DestinationResourceGroupName "NewResourceGroup"
    ``` 
 
-After you execute the above code example, you will be prompted to verify you want to perform this action.  Once you click **Yes** and allow the script to proceed, you will not receive any notifications while it's performing the migration.  
+上のコード例を実行すると、この操作を実行することの確認を求められます。**[はい]** をクリックしてスクリプトの続行を許可した後、移行実行中は通知を受信しません。
 
-To move to a new subscription, include a value for the *DestinationSubscriptionId* parameter.
+新しいサブスクリプションに移動する場合は、*DestinationSubscriptionId* パラメーターの値を含めます。
 
    ```
     $resource = Get-AzureRmResource -ResourceName "TestAutomationAccount" -ResourceGroupName "ResourceGroup01"
     Move-AzureRmResource -ResourceId $resource.ResourceId -DestinationResourceGroupName "NewResourceGroup" -DestinationSubscriptionId "SubscriptionId"
    ``` 
 
-As with the previous example, you will be prompted to confirm the move.  
+前の例と同じように、移動することの確認を求められます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- For more information about moving resources to new resource group or subscription, see [Move  resources to new resource group or subscription](../resource-group-move-resources.md)
-- For more information about Role-based Access Control in Azure Automation, refer to [Role-based access control in Azure Automation](../automation/automation-role-based-access-control.md).
-- To learn about PowerShell cmdlets for managing your subscription, see [Using Azure PowerShell with Resource Manager](../powershell-azure-resource-manager.md)
-- To learn about portal features for managing your subscription, see [Using the Azure Portal to manage resources](../azure-portal/resource-group-portal.md). 
+- 新しいリソース グループまたはサブスクリプションへのリソースの移動については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../resource-group-move-resources.md)」を参照してください。
+- Azure Automation におけるロールベースのアクセス制御の詳細については、「[Azure Automation におけるロールベースのアクセス制御](../automation/automation-role-based-access-control.md)」を参照してください。
+- サブスクリプションを管理するための PowerShell コマンドレットについては、「[Resource Manager での Azure PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+- サブスクリプションを管理するためのポータル機能については、「[Azure ポータルを使用したリソース管理](../azure-portal/resource-group-portal.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

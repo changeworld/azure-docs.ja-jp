@@ -1,119 +1,114 @@
 <properties
-    pageTitle="Monitor Azure web app performance | Microsoft Azure"
-    description="Application performance monitoring for Azure web apps. Chart load and response time, dependency information and set alerts on performance."
-    services="application-insights"
+	pageTitle="Azure Web アプリのパフォーマンスの監視 | Microsoft Azure"
+	description="Azure Web アプリのアプリケーション パフォーマンスの監視。チャートの読み込みおよび応答時間、依存関係の情報やパフォーマンス警告を設定します。"
+	services="application-insights"
     documentationCenter=".net"
-    authors="alancameronwills"
-    manager="douge"/>
+	authors="alancameronwills"
+	manager="douge"/>
 
 <tags
-    ms.service="azure-portal"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/01/2016"
-    ms.author="awills"/>
+	ms.service="azure-portal"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/01/2016"
+	ms.author="awills"/>
 
+# Azure Web アプリのパフォーマンスの監視
 
-# <a name="monitor-azure-web-app-performance"></a>Monitor Azure web app performance
+[Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service-web/app-service-web-overview.md)のアプリケーション パフォーマンス監視を設定することができます。[Visual Studio Application Insights](app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
 
-In the [Azure Portal](https://portal.azure.com) you can set up application performance monitoring for your [Azure web apps](../app-service-web/app-service-web-overview.md). [Visual Studio Application Insights](app-insights-overview.md) instruments your app to send telemetry about its activities to the Application Insights service, where it is stored and analyzed. There, metric charts and search tools can be used to help diagnose issues, improve performance, and assess usage.
+## 実行時またはビルド時
 
-## <a name="run-time-or-build-time"></a>Run time or build time
+監視は、アプリを次の 2 つの方法のどちらかでインストルメント化することによって構成できます。
 
-You can configure monitoring by instrumenting the app in either of two ways:
+* **実行時** - Web アプリが既に実行されているときにパフォーマンス監視拡張機能を選択できます。アプリを再構築または再インストールする必要はありません。応答時間、成功率、例外、依存関係などを監視するパッケージの標準セットを利用できます。
 
-* **Run-time** - You can select a performance monitoring extension when your web app is already live. It isn't necessary to rebuild or re-install your app. You get a standard set of packages that monitor response times, success rates, exceptions, dependencies, and so on. 
-
-    **Application Insights** and **New Relic** are two of the runtime performance monitoring extensions that are available.
+    **Application Insights** と **New Relic** は、利用できる実行時パフォーマンス監視拡張機能のうちの 2 つです。
  
-* **Build time** - You can install a package in your app in development. This option is more versatile. In addition to the same standard packages, you can write code to customize the telemetry or to send your own telemetry. You can log specific activities or record events according to the semantics of your app domain. 
+* **ビルド時** - 開発時にアプリにパッケージをインストールすることができます。これは、汎用性が高い方法です。同じ標準パッケージに加えて、コードを記述してテレメトリをカスタマイズしたり、独自のテレメトリを送信したりすることができます。アプリのドメインのセマンティクスに従って、特定のアクティビティをログに記録したり、イベントを記録したりすることができます。
 
-    **Application Insights** provides build-time packages. 
-
-
-## <a name="build-the-app-with-the-application-insights-package..."></a>Build the app with the Application Insights package...
-
-Application Insights can provide more detailed telemetry by installing an SDK into your app.
-
-In Visual Studio (2013 update 2 or later), add the Application Insights SDK to your project.
-
-![Right-click the web project and choose Add Application Insights](./media/app-insights-azure-web-apps/03-add.png)
-
-If you're asked to sign in, use the credentials for your Azure account.
-
-The operation has two effects:
-
-1. Creates an Application Insights resource in Azure, where telemetry is stored, analyzed and displayed.
-2. Adds the Application Insights NuGet package to your code, and configures it to send telemetry to the Azure resource.
-
-You can test the telemetry by running the app in your development machine (F5), or you can just go ahead and republish the app.
-
-The SDK provides an API so that you can [write custom telemetry](../application-insights/app-insights-api-custom-events-metrics.md) to track usage.
-
-### <a name="...or-set-up-a-resource-manually"></a>...or set up a resource manually
-
-If you didn't add the SDK in Visual Studio, you must set up an Application Insights resource in Azure, where telemetry is stored, analyzed and displayed.
-
-![Click Add, Developer Services, Application Insights. Choose ASP.NET app type.](./media/app-insights-azure-web-apps/01-new.png)
+    **Application Insights** は、ビルド時パッケージを提供します。
 
 
-## <a name="enable-an-extension"></a>Enable an extension
+## Application Insights パッケージを使用したアプリケーションのビルド
 
-1. Browse to the control blade of the web app or virtual machine you would like to instrument.
+Application Insights では、アプリへの SDK のインストールによって、より詳細なテレメトリを提供できます。
 
-2. Add the Application Insights or the New Relic extension.
+Visual Studio (2013 Update 2 以降) で、Application Insights SDK をプロジェクトに追加します。
 
-    If you're instrumenting a web app:
+![Web プロジェクトを右クリックし、[Application Insights の追加] を選択する](./media/app-insights-azure-web-apps/03-add.png)
 
-![Settings, Extensions, Add, Application Insights](./media/app-insights-azure-web-apps/05-extend.png)
+サインインが要求されたら、Azure アカウントの資格情報を使用します。
 
-Or if you're using a virtual machine:
+この操作には、次の 2 つの効果があります。
 
-![Click the Analytics tile](./media/app-insights-azure-web-apps/10-vm1.png)
+1. Azure に Application Insights リソースが作成されます。このリソースでテレメトリが格納、分析、表示されます。
+2. Application Insights NuGet パッケージがコードに追加され、テレメトリを Azure リソースに送信するように構成されます。
+
+テレメトリをテストするには、開発用コンピューターでアプリを実行する (F5 キーを押す) か、単純にアプリを再発行します。
+
+SDK には[カスタム テレメトリを記述して](../application-insights/app-insights-api-custom-events-metrics.md)利用状況を追跡する API があります。
+
+### リソースを手動でセットアップする
+
+Visual Studio で SDK を追加しなかった場合は、テレメトリが格納、分析、表示される Application Insights リソースを Azure でセットアップする必要があります。
+
+![Click Add, Developer Services, Application Insights.Choose ASP.NET app type.](./media/app-insights-azure-web-apps/01-new.png)
+
+
+## 拡張機能を有効にする
+
+1. インストルメント化する Web アプリまたは仮想マシンの制御ブレードを参照します。
+
+2. Application Insights または New Relic の拡張機能を追加します。
+
+    Web アプリをインストルメント化する場合:
+
+![設定、拡張機能、追加、Application Insights](./media/app-insights-azure-web-apps/05-extend.png)
+
+仮想マシンを使用している場合は、次のように操作します。
+
+![分析タイルをクリックする](./media/app-insights-azure-web-apps/10-vm1.png)
 
 
 
-## <a name="explore-the-data"></a>Explore the data
+## データを検索する
 
-1. Open the Application Insights resource (either directly from Browse, or from the Performance Monitoring tool of the web app).
+1. Application Insights リソースを開きます ([参照] から直接開くか、Web アプリのパフォーマンス管理ツールから開きます)。
 
-2. Click through any chart to get more detail:
+2. 任意のグラフをクリックすると、より詳細な情報が表示されます。
 
     ![On the Application Insights overview blade, click a chart](./media/app-insights-azure-web-apps/07-dependency.png)
 
-    You can [customize metrics blades](../application-insights/app-insights-metrics-explorer.md).
+    [メトリック ブレードをカスタマイズする](../application-insights/app-insights-metrics-explorer.md)ことができます。
 
-3. Click through further to see individual events and their properties:
+3. 個々のイベントとそのプロパティを表示するには、さらにクリックします。
 
     ![Click an event type to open a search filtered on that type](./media/app-insights-azure-web-apps/08-requests.png)
 
-    Notice the "..." link to open all properties.
+    "..." というリンクを使用すると、すべてのプロパティが開かれます。
 
-    You can [customize searches](../application-insights/app-insights-diagnostic-search.md).
+    [検索をカスタマイズ](../application-insights/app-insights-diagnostic-search.md)できます。
 
-For more powerful searches over your telemetry, use the [Analytics query language](../application-insights/app-insights-analytics-tour.md).
-
-
-## <a name="q-&-a"></a>Q & A
-
-How do I change to send data to a different Application Insights resource?
-
-* *If you added Application Insights to your code in Visual Studio:* Right-click the project, choose **Application Insights > Configure** and choose the resource you want. You get the option to create a new resource. Rebuild and redeploy.
-* *Otherwise:* In Azure, open the web app control blade, and open **Tools > Extensions**. Delete the Application Insights extension. Then open **Tools > Performance**, 'click here', choose Application Insights, and then the resource that you want. (If you want to create a new Application Insights resource, do that first.)
+テレメトリに対するより強力な検索については、[Analytics クエリ言語](../application-insights/app-insights-analytics-tour.md)を使用してください。
 
 
-## <a name="next-steps"></a>Next steps
+## Q & A
 
-* [Enable Azure diagnostics](app-insights-azure-diagnostics.md) to be sent to Application Insights.
-* [Monitor service health metrics](../azure-portal/insights-how-to-customize-monitoring.md) to make sure your service is available and responsive.
-* [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md) whenever operational events happen or metrics cross a threshold.
-* Use [Application Insights for JavaScript apps and web pages](app-insights-web-track-usage.md) to get client telemetry from the browsers that visit a web page.
-* [Set up Availability web tests](app-insights-monitor-web-app-availability.md) to be alerted if your site is down.
+別の Application Insights リソースにデータを送信するように変更するには、どうすればよいですか。
 
+* "*Visual Studio で Application Insights をコードに追加した場合:*" プロジェクトを右クリックし、**[Application Insights]、[構成]** の順に選択して、目的のリソースを選択します。新しいリソースを作成するオプションが表示されます。リビルドして再デプロイします。
+* "*それ以外の場合:*" Azure で Web アプリの制御ブレードを開き、**[ツール]、[拡張機能]** の順に開きます。Application Insights 拡張機能を削除します。次に、**[ツール]、[パフォーマンス]** の順に開き、[ここをクリック] をクリックして、[Application Insights] を選択し、目的のリソースを選択します (新しい Application Insights リソースを作成する場合は、先に作成します)。
 
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
 
+* [Azure 診断](app-insights-azure-diagnostics.md)が Application Insights に送信されるように設定します。
+* [サービスの正常性のメトリックスを監視](../azure-portal/insights-how-to-customize-monitoring.md)して、サービスの可用性と応答性を確認します。
+* 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../azure-portal/insights-receive-alert-notifications.md)ます。
+* [JavaScript のアプリや Web ページに Application Insights](app-insights-web-track-usage.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
+* [可用性 Web テストを設定](app-insights-monitor-web-app-availability.md)して、サイトがダウンした場合にアラートを送信するようにします。
 
+<!---HONumber=AcomDC_0907_2016-->

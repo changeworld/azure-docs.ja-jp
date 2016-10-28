@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to complete an access review | Microsoft Azure"
-   description="After you started an access review in Azure AD Privileged Identity Management, learn how to complete it and view the results"
+   pageTitle="アクセス レビューを完了する方法 | Microsoft Azure"
+   description="Azure AD Privileged Identity Management でのアクセス レビューの開始後に、レビューを完了して結果を確認する方法について説明します"
    services="active-directory"
    documentationCenter=""
    authors="kgremban"
@@ -16,49 +16,48 @@
    ms.date="06/30/2016"
    ms.author="kgremban"/>
 
+# Azure AD Privileged Identity Management でアクセス レビューを完了する方法
 
-# <a name="how-to-complete-an-access-review-in-azure-ad-privileged-identity-management"></a>How to complete an access review in Azure AD Privileged Identity Management
 
+[セキュリティ レビューが開始](active-directory-privileged-identity-management-how-to-start-security-review.md)されると、特権ロール管理者は特権アクセスの状況を確認できるようになります。ユーザーにアクセスを確認するよう求める電子メールは Azure AD Privileged Identity Management (PIM) によって自動的に送信されます。電子メールが届かなかったユーザーがいる場合は、セキュリティ管理者が[セキュリティ レビューを実行する方法](active-directory-privileged-identity-management-how-to-perform-security-review.md)についての指示をユーザーに送信します。
 
-Privileged role administrators can review privileged access once a [security review has been started](active-directory-privileged-identity-management-how-to-start-security-review.md). Azure AD Privileged Identity Management (PIM) will automatically send an email prompting users to review their access. If a user did not get an email, you can send them the instructions in [how to perform a security review](active-directory-privileged-identity-management-how-to-perform-security-review.md).
+セキュリティ レビューの期間が終わった後、またはすべてのユーザーが自己レビューを完了した後に、この記事に記載されている手順に従って、レビューを管理し、結果を表示することができます。
 
-After the security review period is over, or all the users have finished their self-review, follow the steps in this article to manage the review and see the results.
+## セキュリティ レビューの管理
 
-## <a name="manage-security-reviews"></a>Manage security reviews
+1. [Azure ポータル](https://portal.azure.com/)に移動し、ダッシュボードで **Azure AD Privileged Identity Management** アプリケーションを選択します。
+2. ダッシュボードの **[アクセス レビュー]** セクションをクリックします。
+3. 管理するアクセス レビューを選択します。
 
-1. Go to the [Azure portal](https://portal.azure.com/) and select the **Azure AD Privileged Identity Management** application on your dashboard.
-2. Select the **Access reviews** section of the dashboard.
-3. Select the access review that you want to manage.
+アクセス レビューの [詳細] ブレードには、このレビューを管理するためのオプションが多数あります。
 
-On the access review's detail blade there are a number options for managing that review.
+![PIM アクセス レビューのボタン - スクリーンショット][1]
 
-![PIM access review buttons - screenshot][1]
+### リマインダーを送信
 
-### <a name="remind"></a>Remind
+ユーザーが各自をレビューできるようにアクセス レビューが設定された場合、**[リマインダーを送信]** をクリックすると通知が送信されます。
 
-If an access review is set up so that the users review themselves, the **Remind** button sends out a notification. 
+### Stop
 
-### <a name="stop"></a>Stop
+すべてのアクセス レビューには終了日が設定されていますが、**[停止]** ボタンを使用するとレビューを早期に終了することができます。この時点までにレビューを行っていないユーザーは、レビューが停止されるとレビューを行うことができなくなります。レビューを停止後に再開することはできません。
 
-All access reviews have an end date, but you can use the **Stop** button to finish it early. If any users haven't been reviewed by this time, they won't be able to after you stop the review. You cannot restart a review after it's been stopped.
+### 適用
 
-### <a name="apply"></a>Apply
+終了日に達するか手動で停止されたためにアクセス レビューが完了した後で、**[適用]** ボタンをクリックすると、レビューの結果が適用されます。レビューでユーザーのアクセスが拒否された場合は、この手順によりそのユーザーのロール割り当てが削除されます。
 
-After an access review is completed, either because you reached the end date or stopped it manually, the **Apply** button implements the outcome of the review. If a user's access was denied in the review, this is the step that will remove their role assignment.  
+### エクスポート
 
-### <a name="export"></a>Export
+セキュリティ レビューの結果を手動で適用する場合は、レビューをエクスポートできます。**[エクスポート]** ボタンをクリックすると、CSV ファイルのダウンロードが開始されます。Excel など、CSV ファイルを開くことができるプログラムで結果を管理できます。
 
-If you want to apply the results of the security review manually, you can export the review. The **Export** button will start downloading a CSV file. You can manage the results in Excel or other programs that open CSV files.
+### 削除
 
-### <a name="delete"></a>Delete
+そのレビューが今後も必要なければ、削除します。**[削除]** ボタンをクリックすると、レビューが PIM アプリケーションから削除されます。
 
-If you are not interested in the review any further, delete it. The **Delete** button removes the review from the PIM application.
-
-> [AZURE.IMPORTANT] You will not get a warning before deletion occurs, so be sure that you want to delete that review.
+> [AZURE.IMPORTANT] 削除する前に警告は表示されないため、そのレビューを削除してよいのか確認してください。
 
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 [AZURE.INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 
@@ -66,8 +65,4 @@ If you are not interested in the review any further, delete it. The **Delete** b
 
 [1]: ./media/active-directory-privileged-identity-management-how-to-complete-review/PIM_review_buttons.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

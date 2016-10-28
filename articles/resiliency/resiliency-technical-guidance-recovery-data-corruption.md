@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resiliency technical guidance for recovering from data corruption or accidental deletion | Microsoft Azure"
-   description="Article on understanding how to recover from data corruption of data or accidental data deletion to and designing resilient, highly available, fault tolerant applications as well as planning for disaster recovery"
+   pageTitle="Azure の回復性技術ガイダンス - データの破損または偶発的な削除からの復旧 | Microsoft Azure"
+   description="データの破損または偶発的なデータの削除から復旧する方法、回復力と高可用性を備えたフォールト トレラント アプリケーションを設計する方法、障害復旧を計画する方法に関する記事"
    services=""
    documentationCenter="na"
    authors="adamglick"
@@ -16,89 +16,85 @@
    ms.date="08/18/2016"
    ms.author="aglick"/>
 
+#Azure の回復性技術ガイダンス - データの破損または偶発的な削除からの復旧
 
-#<a name="azure-resiliency-technical-guidance:-recovery-from-data-corruption-or-accidental-deletion"></a>Azure resiliency technical guidance: recovery from data corruption or accidental deletion
+堅牢なビジネス継続性計画の一環として、データが破損した場合や誤って削除された場合に備えた計画を作成します。以下に、アプリケーション エラーによってデータが破損したか、オペレーターのエラーによってデータが誤って削除された後の復旧に関する情報を示します。
 
-Part of a robust business continuity plan is having a plan if your data gets corrupted or accidentally deleted. The following is information about recovery after data has been corrupted or accidentally deleted, due to application errors or operator error.
+##Virtual Machines
 
-##<a name="virtual-machines"></a>Virtual Machines
+Azure Virtual Machines (サービスとしてのインフラストラクチャ VM と呼ばれる場合もあります) をアプリケーション エラーや偶発的な削除から保護するには、[Azure Backup](https://azure.microsoft.com/services/backup/) を使用します。Azure Backup を使用すると、複数の VM ディスク間で一貫性のあるバックアップを作成できます。さらに、バックアップ コンテナーをリージョン間でレプリケートし、リージョン損失からの復旧に備えることができます。
 
-To protect your Azure Virtual Machines (sometimes called infrastructure-as-a-service VMs) from application errors or accidental deletion, use [Azure Backup](https://azure.microsoft.com/services/backup/). Azure Backup enables the creation of backups that are consistent across multiple VM disks. In addition, the Backup Vault can be replicated across regions to provide recovery from region loss.
+##Storage
 
-##<a name="storage"></a>Storage
+Azure Storage は自動レプリカによるデータの回復性を備えていますが、アプリケーション コード (または開発者やユーザー) による偶発的または意図しない削除や更新などから発生するデータの破損を防ぐことはできません。アプリケーション エラーやユーザー エラーが発生した場合にデータの忠実性を維持するには、監査ログと共にセカンダリ ストレージの場所にデータをコピーするなどの高度な手法が必要です。開発者は BLOB の[スナップショット機能](https://msdn.microsoft.com/library/azure/ee691971.aspx)を利用できます。これは、特定の時点における BLOB の内容の読み取り専用スナップショットを作成する機能です。この機能を Azure Storage BLOB のデータ忠実性ソリューションの基盤として使用できます。
 
-Note that while Azure Storage provides data resiliency through automated replicas, this does not prevent your application code (or developers/users) from corrupting data through accidental or unintended deletion, update, and so on. Maintaining data fidelity in the face of application or user error requires more advanced techniques, such as copying the data to a secondary storage location with an audit log. Developers can take advantage of the blob [snapshot capability](https://msdn.microsoft.com/library/azure/ee691971.aspx), which can create read-only point-in-time snapshots of blob contents. This can be used as the basis of a data-fidelity solution for Azure Storage blobs.
+###BLOB と Table Storage のバックアップ
 
-###<a name="blob-and-table-storage-backup"></a>Blob and Table Storage Backup
+BLOB とテーブルは高い持続性を持ち、常にデータの最新状態を表します。意図しない変更やデータの削除からの復旧では、以前の状態にデータを復元する必要があります。これは、Azure で提供されている、特定の時点のコピーを保存して保持する機能を活用することで実現できます。
 
-While blobs and tables are highly durable, they always represent the current state of the data. Recovery from unwanted modification or deletion of data may require restoring data to a previous state. This can be achieved by taking advantage of the capabilities provided by Azure to store and retain point-in-time copies.
+Azure BLOB については、[BLOB スナップショット機能](https://msdn.microsoft.com/library/ee691971.aspx)を使用して特定の時点のバックアップを行うことができます。各スナップショットについて、BLOB 内で前回のスナップショットの状態との差分を保存するために必要なストレージのみに課金されます。スナップショットには、差分を取るための基になる BLOB が存在している必要があるため、別の BLOB または別のストレージ アカウントにコピーすることをお勧めします。これにより、バックアップ データを誤って削除してしまうことから確実に保護できます。Azure テーブルについては、別のテーブルまたは別の Azure BLOB をコピー先として特定の時点のコピーを作成できます。テーブルおよび BLOB に対してアプリケーション レベルのバックアップを実行する場合は、以下の詳細なガイダンスと例を参照してください。
 
-For Azure Blobs, you can perform point-in-time backups using the [blob snapshot feature](https://msdn.microsoft.com/library/ee691971.aspx). For each snapshot, you are only charged for the storage required to store the differences within the blob since the last snapshot state. The snapshots are dependent on the existence of the original blob they are based on, so a copy operation to another blob or even another storage account is advisable. This ensures that backup data is properly protected against accidental deletion. For Azure Tables, you can make point-in-time copies to a different table or to Azure Blobs. More detailed guidance and examples of performing application-level backups of tables and blobs can be found here:
+  * [Protecting Your Tables Against Application Errors (アプリケーション エラーからのテーブルの保護)](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/05/03/protecting-your-tables-against-application-errors/)
+  * [Protecting Your Blobs Against Application Errors (アプリケーション エラーからの BLOB の保護)](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/04/29/protecting-your-blobs-against-application-errors/)
 
-  * [Protecting Your Tables Against Application Errors](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/05/03/protecting-your-tables-against-application-errors/)
-  * [Protecting Your Blobs Against Application Errors](https://blogs.msdn.microsoft.com/windowsazurestorage/2010/04/29/protecting-your-blobs-against-application-errors/)
+##データベース
 
-##<a name="database"></a>Database
+Azure SQL Database で使用できる[ビジネス継続性](../sql-database/sql-database-business-continuity.md) (バックアップ、復元) のオプションは複数あります。データベースは、[データベース コピー](../sql-database/sql-database-copy.md)機能を使用するか、SQL Server bacpac ファイルを[エクスポート](../sql-database/sql-database-export.md)および[インポート](https://msdn.microsoft.com/library/hh710052.aspx)することでコピーできます。データベース コピーではトランザクション上の一貫性が維持されますが、bacpac (Import/Export サービス) ではこの一貫性は維持されません。これらのオプションの両方が、データセンター内でキュー ベースのサービスとして実行され、現時点では完了までの時間に関する SLA は提供されていません。
 
-There are several [business continuity](../sql-database/sql-database-business-continuity.md) (backup, restore) options available for Azure SQL Database. Databases can be copied by using the [Database Copy](../sql-database/sql-database-copy.md) functionality, or by  [exporting](../sql-database/sql-database-export.md) and [importing](https://msdn.microsoft.com/library/hh710052.aspx) a SQL Server bacpac file. Database Copy provides transactionally consistent results, while a bacpac (through the import/export service) does not. Both of these options run as queue-based services within the data center, and they do not currently provide a time-to-completion SLA.
+>[AZURE.NOTE]データベース コピーと Import/Export のオプションはソース データベースに大きな負荷がかかります。そのため、リソースの競合や調整イベントがトリガーされることがあります。
 
->[AZURE.NOTE]The database copy and import/export options place a significant degree of load on the source database. They can trigger resource contention or throttling events.
+###SQL Database のバックアップ
 
-###<a name="sql-database-backup"></a>SQL Database Backup
+Microsoft Azure SQL Database の特定の時点のバックアップは、[Azure SQL データベースをコピーする](../sql-database/sql-database-copy.md)ことによって実現します。このコマンドを使用すると、同じ論理データベース サーバー上に、または別のサーバーに、トランザクション上の一貫性があるデータベースのコピーを作成できます。いずれの場合も、データベース コピーは完全に機能し、ソース データベースから完全に独立しています。作成する各コピーは、特定の時点の回復オプションを表します。ソース データベース名で新しいデータベースの名前を変更して、データベースの状態を完全に回復できます。または、Transact-SQL クエリを使用して新しいデータベースからデータの特定のサブセットを復元することができます。SQL Database の詳細については、「[Azure SQL Database によるビジネス継続性の概要](../sql-database/sql-database-business-continuity.md)」を参照してください。
 
-Point-in-time backups for Microsoft Azure SQL Database are achieved by [copying your Azure SQL database](../sql-database/sql-database-copy.md). You can use this command to create a transactionally consistent copy of a database on the same logical database server or to a different server. In either case, the database copy is fully functional and completely independent of the source database. Each copy you create represents a point-in-time recovery option. You can recover the database state completely by renaming the new database with the source database name. Alternatively, you can recover a specific subset of data from the new database by using Transact-SQL queries. For additional details about SQL Database, see [Overview of business continuity with Azure SQL Database](../sql-database/sql-database-business-continuity.md).
+###Virtual Machines 上の SQL Server のバックアップ
 
-###<a name="sql-server-on-virtual-machines-backup"></a>SQL Server on Virtual Machines Backup
+Azure のサービスとしてのインフラストラクチャである仮想マシン (多くの場合、IaaS または IaaS VM と呼ばれます) で使用される SQL Server の場合、従来のバックアップとログ配布という 2 つのオプションがあります。従来のバックアップを使用すると、特定の時点の状態に復元できますが、回復プロセスは低速です。従来のバックアップを復元するには、最初に完全バックアップから開始し、その後にそれ以降に作成されたバックアップを適用する必要があります。2 番目のオプションでは、ログ バックアップの復元を (たとえば 2 時間) 遅延するログ配布セッションを構成します。これにより、プライマリで発生したエラーから回復するための時間が確保されます。
 
-For SQL Server used with Azure infrastructure as a service virtual machines (often called IaaS or IaaS VMs), there are two options: traditional backups and log shipping. Using traditional backups enables you to restore to a specific point in time, but the recovery process is slow. Restoring traditional backups requires starting with an initial full backup, and then applying any backups taken after that. The second option is to configure a log shipping session to delay the restore of log backups (for example, by two hours). This provides a window to recover from errors made on the primary.
+##その他の Azure プラットフォーム サービス
 
-##<a name="other-azure-platform-services"></a>Other Azure platform services
+Azure の一部のプラットフォーム サービスは、ユーザー制御のストレージ アカウントまたは Azure SQL Database に情報を格納します。アカウントまたはストレージのリソースが削除されたか破損した場合は、サービスに重大なエラーが発生する可能性があります。そのような場合に備えて、バックアップを保持することが重要です。バックアップがあれば、リソースが削除されたか破損した場合にリソースを作成し直すことができます。
 
-Some Azure platform services store information in a user-controlled storage account or Azure SQL Database. If the account or storage resource is deleted or corrupted, this could cause serious errors with the service. In these cases, it is important to maintain backups that would enable you to re-create these resources if they were deleted or corrupted.
+Azure Web Sites と Azure Mobile Services では、関連付けられたデータベースをバックアップし、管理する必要があります。Azure Media Service と Virtual Machines では、関連付けられた Azure Storage アカウントとそのアカウントのすべてのリソースを管理する必要があります。たとえば、Virtual Machines の場合、Azure Blob Storage で VM ディスクをバックアップし、管理する必要があります。
 
-For Azure Web Sites and Azure Mobile Services, you must backup and maintain the associated databases. For Azure Media Service and Virtual Machines, you must maintain the associated Azure Storage account and all resources in that account. For example, for Virtual Machines, you must back up and manage the VM disks in Azure blob storage.
+##データの破損または偶発的な削除に対するチェックリスト
 
-##<a name="checklists-for-data-corruption-or-accidental-deletion"></a>Checklists for data corruption or accidental deletion
+##Virtual Machines のチェックリスト
 
-##<a name="virtual-machines-checklist"></a>Virtual Machines checklist
+  1. このドキュメントの「Virtual Machines」セクションを確認する。
+  2. Azure Backup (または Azure Blob Storage と VHD スナップショットを使用した独自のバックアップ システム) を使用して、VM ディスクをバックアップし、管理する。
 
-  1. Review the Virtual Machines section of this document.
-  2. Back up and maintain the VM disks with Azure Backup (or your own backup system by using Azure blob storage and VHD snapshots).
+##Storage のチェックリスト
 
-##<a name="storage-checklist"></a>Storage checklist
+  1. このドキュメントの「Storage」セクションを確認する。
+  2. 重要なストレージ リソースを定期的にバックアップする。
+  3. BLOB に対してスナップショット機能の使用を検討する。
 
-  1. Review the Storage section of this document.
-  2. Regularly back up critical storage resources.
-  3. Consider using the snapshot feature for blobs.
+##Database のチェックリスト
 
-##<a name="database-checklist"></a>Database checklist
+  1. このドキュメントの「データベース」セクションを確認する。
+  2. データベース コピー コマンドを使用して特定の時点のバックアップを作成する。
 
-  1. Review the Database section of this document.
-  2. Create point-in-time backups by using the Database Copy command.
+##Virtual Machines 上の SQL Server のバックアップ チェックリスト
 
-##<a name="sql-server-on-virtual-machines-backup-checklist"></a>SQL Server on Virtual Machines Backup checklist
+  1. このドキュメントの「Virtual Machines 上の SQL Server のバックアップ」セクションを確認する。
+  2. 従来のバックアップと復元の手法を使用する。
+  3. 遅延ログ配布セッションを作成する。
 
-  1. Review the SQL Server on Virtual Machines Backup section of this document.
-  2. Use traditional backup and restore techniques.
-  3. Create a delayed log shipping session.
+##Web Apps のチェックリスト
 
-##<a name="web-apps-checklist"></a>Web Apps checklist
+  1. 関連付けられたデータベースがある場合は、バックアップして管理する。
 
-  1. Back up and maintain the associated database, if any.
+##Media Services のチェックリスト
 
-##<a name="media-services-checklist"></a>Media Services checklist
+  1. 関連付けられたストレージ リソースをバックアップして管理する。
 
-  1. Back up and maintain the associated storage resources.
+##詳細情報
 
-##<a name="more-information"></a>More information
+Azure のバックアップと復元の機能の詳細については、[ストレージ、バックアップ、復旧のシナリオ](https://azure.microsoft.com/documentation/scenarios/storage-backup-recovery/)に関するページを参照してください。
 
-For more information about backup and restore features in Azure, see [Storage, backup and recovery scenarios](https://azure.microsoft.com/documentation/scenarios/storage-backup-recovery/).
+##次のステップ
 
-##<a name="next-steps"></a>Next steps
+この記事は、[Azure の回復性技術ガイダンス](./resiliency-technical-guidance.md)について重点的に説明したシリーズの一部です。回復性、障害復旧、高可用性に関するその他のリソースを探している場合は、Azure の回復性技術ガイダンスの「[その他のリソース](./resiliency-technical-guidance.md#additional-resources)」を参照してください。
 
-This article is part of a series focused on [Azure resiliency technical guidance](./resiliency-technical-guidance.md). If you are looking for more resiliency, disaster recovery, and high availability resources, see the Azure resiliency technical guidance [additional resources](./resiliency-technical-guidance.md#additional-resources).
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

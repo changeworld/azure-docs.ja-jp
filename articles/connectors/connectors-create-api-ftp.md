@@ -1,10 +1,10 @@
 <properties
-pageTitle="Learn how to use the FTP connector in logic apps| Microsoft Azure"
-description="Create logic apps with Azure App service. Connect to FTP server to manage your files. You can perform various actions such as upload, update, get, and delete files in FTP server."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+pageTitle="ロジック アプリで FTP コネクタを使用する方法 | Microsoft Azure"
+description="Azure App Service を使用してロジック アプリを作成します。FTP サーバーに接続して、ファイルを管理します。FTP サーバーのファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,429 +17,428 @@ ms.workload="integration"
 ms.date="07/22/2016"
 ms.author="deonhe"/>
 
+# FTP コネクタの使用
 
-# <a name="get-started-with-the-ftp-connector"></a>Get started with the FTP connector
+FTP コネクタを使用して、FTP サーバー上のファイルを監視、管理、作成します。
 
-Use the FTP connector to monitor, manage and create files on an  FTP server. 
+[任意のコネクタ](./apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。ロジック アプリの作成方法については、[こちら](../app-service-logic/app-service-logic-create-a-logic-app.md)をご覧ください。
 
-To use [any connector](./apis-list.md), you first need to create a logic app. You can get started by [creating a logic app now](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## FTP に接続する
 
-## <a name="connect-to-ftp"></a>Connect to FTP
+ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの "*接続*" を作成する必要があります。[接続](./connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。
 
-Before your logic app can access any service, you first need to create a *connection* to the service. A [connection](./connectors-overview.md) provides connectivity between a logic app and another service.  
+### FTP への接続を作成する
 
-### <a name="create-a-connection-to-ftp"></a>Create a connection to FTP
+>[AZURE.INCLUDE [FTP への接続を作成する手順](../../includes/connectors-create-api-ftp.md)]
 
->[AZURE.INCLUDE [Steps to create a connection to FTP](../../includes/connectors-create-api-ftp.md)]
+## FTP トリガーを使用する
 
-## <a name="use-a-ftp-trigger"></a>Use a FTP trigger
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-A trigger is an event that can be used to start the workflow defined in a logic app. [Learn more about triggers](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
+>[AZURE.IMPORTANT]FTP コネクタを使用するには、インターネットからアクセスできる、パッシブ モードで動作するように構成されている FTP サーバーが必要です。また、FTP コネクタは、**暗黙的 FTPS (FTP over SSL) に対応していません**。FTP コネクタは、明示的 FTPS (FTP over SSL) のみをサポートしています。
 
->[AZURE.IMPORTANT]The FTP connector requires an FTP server that  is accessible from the Internet and is configured to operate with PASSIVE mode. Also, the FTP connector is **not compatible with implicit FTPS (FTP over SSL)**. The FTP connector only supports explicit FTPS (FTP over SSL).  
+この例では、FTP サーバー上でファイルが追加または変更されたときに、**[FTP - When a file is added or modified (FTP - ファイルが追加または変更されたとき)]** トリガーによりロジック アプリ ワークフローを開始する方法について説明します。エンタープライズの例では、このトリガーを使用して、FTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。次に、**[Get file content (ファイルの内容を取得する)]** などの FTP コネクタ アクションを使用して注文の内容を取得し、後続の処理や注文データベースへの格納を行うことができます。
 
-In this example, I will show you how to use the **FTP - When a file is added or modified** trigger to initiate a logic app workflow when a file is added to, or modified on, an FTP server. In an enterprise example, you could use this trigger to monitor an FTP folder for new files that represent orders from customers.  You could then use an FTP connector action such as **Get file content** to get the contents of the order for further processing and storage in your orders database.
-
-1. Enter *ftp* in the search box on the logic apps designer then select the **FTP - When a file is added or modified**  trigger   
+1. Logic Apps デザイナーの検索ボックスに「*ftp*」と入力し、**[FTP - When a file is added or modified (FTP - ファイルが追加または変更されたとき)]** トリガーを選択します。  
 ![FTP trigger image 1](./media/connectors-create-api-ftp/ftp-trigger-1.png)  
-The **When a file is added or modified** control opens up  
+**[When a file is added or modified (ファイルが追加または変更されたとき)]** コントロールが開きます。  
 ![FTP trigger image 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
-- Select the **...** located on the right side of the control. This opens the folder picker control  
+- コントロールの右側にある **[...]** を選択します。これによりフォルダー ピッカー コントロールが開きます。  
 ![FTP trigger image 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
-- Select the **>** (right arrow) and browse to find the folder that you want to monitor for new or modified files. Select the folder and notice the folder is now displayed in the **Folder** control.  
-![FTP trigger image 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)   
+- **[>]** (右矢印) を選択し、新しいファイルや変更されたファイルを監視するフォルダーを参照します。そのフォルダーを選択します。フォルダーが **[フォルダー]** コントロールに表示されます。
+![FTP trigger image 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)  
 
 
-At this point, your logic app has been configured with a trigger that will begin a run of the other triggers and actions in the workflow when a file is either modified or created in the specific FTP folder. 
+これで、特定の FTP フォルダーでファイルが変更または作成されたときにワークフローの他のトリガーおよびアクションの実行を開始するトリガーがロジック アプリに構成されました。
 
->[AZURE.NOTE]For a logic app to be functional, it must contain at least one trigger and one action. Follow the steps in the next section to add an action.  
+>[AZURE.NOTE]ロジック アプリを機能させるには、少なくとも 1 つのトリガーとアクションが含まれている必要があります。アクションを追加するには、次のセクションの手順に従います。
 
 
 
-## <a name="use-a-ftp-action"></a>Use a FTP action
+## FTP アクションを使用する
 
-An action is an operation carried out by the workflow defined in a logic app. [Learn more about actions](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts).  
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらをご覧ください](../app-service-logic/app-service-logic-what-are-logic-apps.md#logic-app-concepts)。
 
-Now that you have added a trigger, follow these steps to add an action that will get the contents of the new or modified file found by the trigger.    
+トリガーを追加した後は、次の手順に従って、トリガーによって検出された新しいファイルまたは変更されたファイルの内容を取得するアクションを追加します。
 
-1. Select **+ New step** to add the the action to get the contents of the file on the FTP server  
-- Select the **Add an action** link.  
+1. **[+ 新しいステップ]** を選択して、FTP サーバー上のファイルの内容を取得するアクションを追加します。
+- **[アクションの追加]** のリンクを選択します。  
 ![FTP action image 1](./media/connectors-create-api-ftp/ftp-action-1.png)  
-- Enter *FTP* to search for all actions related to FTP.
-- Select **FTP - Get file content**  as the action to take when a new or modified file is found in the FTP folder.      
+- 「*FTP*」と入力して、FTP に関連するすべてのアクションを検索します。
+- FTP フォルダーで新しいファイルまたは変更されたファイルが検出されたときに実行するアクションとして **[FTP - Get file content (FTP - ファイルの内容を取得する)]** を選択します。  
 ![FTP action image 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
-The **Get file content** control opens. **Note**: you will be prompted to authorize your logic app to access your FTP server account if you have not done so previously.  
-![FTP action image 3](./media/connectors-create-api-ftp/ftp-action-3.png)   
-- Select the **File** control (the white space located below **FILE***). Here, you can use any of the various properties from the new or modified file found on the FTP server.  
-- Select the **File content** option.  
-![FTP action image 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
--  The control is updated, indicating that the **FTP - Get file content** action will get the *file content* of the new or modified file on the FTP server.      
-![FTP action image 5](./media/connectors-create-api-ftp/ftp-action-5.png)     
-- Save your work then add a file to the FTP folder to test your workflow.    
+**[Get file content (ファイルの内容を取得する)]** コントロールが開きます。**注**: ロジック アプリによる FTP サーバー アカウントへのアクセスをまだ承認していない場合は、承認を求められます。  
+![FTP action image 3](./media/connectors-create-api-ftp/ftp-action-3.png)  
+- **[ファイル]** コントロール (**[ファイル]*** の下にある空白) を選択します。ここでは、FTP サーバーで検出された新しいファイルまたは変更されたファイルの各種プロパティを使用することができます。
+- **[File content (ファイルの内容)]** オプションを選択します。  
+![FTP action image 4](./media/connectors-create-api-ftp/ftp-action-4.png)  
+-  コントロールが更新され、FTP サーバー上の新しいファイルまたは変更されたファイルについて、**[FTP - Get file content (FTP - ファイルの内容を取得する)]** アクションによって "*ファイルの内容*" が取得されることが示されます。  
+![FTP action image 5](./media/connectors-create-api-ftp/ftp-action-5.png)       
+- 作業内容を保存し、ファイルを FTP フォルダーに追加して、ワークフローをテストします。
 
-At this point, the logic app has been configured with a trigger to monitor a folder on an FTP server and initiate the workflow when it finds either a new file or a modified file on the FTP server. 
+これで、FTP サーバー上のフォルダーを監視し、FTP フォルダーで新しいファイルまたは変更されたファイルを検出したときにワークフローを開始するトリガーがロジック アプリに構成されました。
 
-The logic app also has been configured with an action to get the contents of the new or modified file.
+このロジック アプリには、新しいファイルまたは変更されたファイルの内容を取得するアクションも構成されています。
 
-You can now add another action such as the [SQL Server - insert row](./connectors-create-api-sqlazure.md#insert-row) action to insert the contents of the new or modified file into a SQL database table.  
+この段階で、別のアクション (たとえば、新しいファイルまたは変更されたファイルの内容を SQL データベース テーブルに挿入する [[SQL Server - insert row (SQL Server - 行を挿入する)]](./connectors-create-api-sqlazure.md#insert-row) アクション) を追加することができます。
 
-## <a name="technical-details"></a>Technical Details
+## 技術的な詳細
 
-Here are the details about the triggers, actions and responses that this connection supports:
+ここでは、この接続でサポートされるトリガー、アクション、応答について詳しく説明します。
 
-## <a name="ftp-triggers"></a>FTP triggers
+## FTP トリガー
 
-FTP has the following trigger(s):  
+FTP には、次のトリガーがあります。
 
-|Trigger | Description|
+|トリガー | 説明|
 |--- | ---|
-|[When a file is added or modified](connectors-create-api-ftp.md#when-a-file-is-added-or-modified)|This operation triggers a flow when a file is added or modified in a folder.|
+|[[When a file is added or modified (ファイルが追加または変更されたとき)]](connectors-create-api-ftp.md#when-a-file-is-added-or-modified)|この操作では、フォルダーでファイルが追加または変更されたときにフローをトリガーします。|
 
 
-## <a name="ftp-actions"></a>FTP actions
+## FTP アクション
 
-FTP has the following actions:
+FTP には、次のアクションがあります。
 
 
-|Action|Description|
+|アクション|説明|
 |--- | ---|
-|[Get file metadata](connectors-create-api-ftp.md#get-file-metadata)|This operation gets the metadata for a file.|
-|[Update file](connectors-create-api-ftp.md#update-file)|This operation updates a file.|
-|[Delete file](connectors-create-api-ftp.md#delete-file)|This operation deletes a file.|
-|[Get file metadata using path](connectors-create-api-ftp.md#get-file-metadata-using-path)|This operation gets the metadata of a file using the path.|
-|[Get file content using path](connectors-create-api-ftp.md#get-file-content-using-path)|This operation gets the content of a file using the path.|
-|[Get file content](connectors-create-api-ftp.md#get-file-content)|This operation gets the content of a file.|
-|[Create file](connectors-create-api-ftp.md#create-file)|This operation creates a file.|
-|[Copy file](connectors-create-api-ftp.md#copy-file)|This operation copies a file to an FTP server.|
-|[List files in folder](connectors-create-api-ftp.md#list-files-in-folder)|This operation gets the list of files and subfolders in a folder.|
-|[List files in root folder](connectors-create-api-ftp.md#list-files-in-root-folder)|This operation gets the list of files and subfolders in the root folder.|
-|[Extract folder](connectors-create-api-ftp.md#extract-folder)|This operation extracts an archive file into a folder (example: .zip).|
-### <a name="action-details"></a>Action details
+|[ファイルのメタデータを取得する](connectors-create-api-ftp.md#get-file-metadata)|この操作では、ファイルのメタデータを取得します。|
+|[ファイルを更新する](connectors-create-api-ftp.md#update-file)|この操作では、ファイルを更新します。|
+|[ファイルを削除する](connectors-create-api-ftp.md#delete-file)|この操作では、ファイルを削除します。|
+|[パスを使用してファイルのメタデータを取得する](connectors-create-api-ftp.md#get-file-metadata-using-path)|この操作では、パスを使用してファイルのメタデータを取得します。|
+|[パスを使用してファイルの内容を取得する](connectors-create-api-ftp.md#get-file-content-using-path)|この操作では、パスを使用してファイルの内容を取得します。|
+|[ファイルの内容を取得する](connectors-create-api-ftp.md#get-file-content)|この操作では、ファイルの内容を取得します。|
+|[ファイルを作成する](connectors-create-api-ftp.md#create-file)|この操作では、ファイルを作成します。|
+|[ファイルをコピーする](connectors-create-api-ftp.md#copy-file)|この操作では、ファイルを FTP サーバーにコピーします。|
+|[フォルダー内のファイルを一覧表示する](connectors-create-api-ftp.md#list-files-in-folder)|この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。|
+|[ルート フォルダー内のファイルを一覧表示する](connectors-create-api-ftp.md#list-files-in-root-folder)|この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。|
+|[フォルダーを抽出する](connectors-create-api-ftp.md#extract-folder)|この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。|
+### アクションの詳細
 
-Here are the details for the actions and triggers for this connector, along with their responses:
-
-
-
-### <a name="get-file-metadata"></a>Get file metadata
-This operation gets the metadata for a file. 
+ここでは、このコネクタのアクションおよびトリガーとその応答について詳しく説明します。
 
 
-|Property Name| Display Name|Description|
+
+### ファイルのメタデータを取得する
+この操作では、ファイルのメタデータを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|ファイル|ファイルを選択する|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="update-file"></a>Update file
-This operation updates a file. 
+### ファイルを更新する
+この操作では、ファイルを更新します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
-|body*|File content|Content of the file|
+|id*|ファイル|ファイルを選択する|
+|body*|ファイルのコンテンツ|ファイルの内容|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="delete-file"></a>Delete file
-This operation deletes a file. 
+### ファイルを削除する
+この操作では、ファイルを削除します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|id*|File|Select a file|
+|id*|ファイル|ファイルを選択する|
 
-An * indicates that a property is required
-
-
+* は、必須のプロパティを示します。
 
 
-### <a name="get-file-metadata-using-path"></a>Get file metadata using path
-This operation gets the metadata of a file using the path. 
 
 
-|Property Name| Display Name|Description|
+### パスを使用してファイルのメタデータを取得する
+この操作では、パスを使用してファイルのメタデータを取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|path*|File path|Select a file|
+|path*|ファイル パス|ファイルを選択する|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+
+
+### パスを使用してファイルの内容を取得する
+この操作では、パスを使用してファイルの内容を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|path*|ファイル パス|ファイルを選択する|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### ファイルの内容を取得する
+この操作では、ファイルの内容を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|ファイル|ファイルを選択する|
+
+* は、必須のプロパティを示します。
+
+
+
+
+### ファイルを作成する
+この操作では、ファイルを作成します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|folderPath*|フォルダー パス|フォルダーを選択する|
+|name*|ファイル名|ファイルの名前|
+|body*|ファイルのコンテンツ|ファイルの内容|
+
+* は、必須のプロパティを示します。
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="get-file-content-using-path"></a>Get file content using path
-This operation gets the content of a file using the path. 
+### ファイルをコピーする
+この操作では、ファイルを FTP サーバーにコピーします。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|path*|File path|Select a file|
+|source*|Source url (コピー元 URL)|ソース ファイルの URL|
+|destination*|Destination file path (コピー先ファイル パス)|対象ファイル名を含む、コピー先ファイル パス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-
-
-
-### <a name="get-file-content"></a>Get file content
-This operation gets the content of a file. 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|id*|File|Select a file|
-
-An * indicates that a property is required
-
-
-
-
-### <a name="create-file"></a>Create file
-This operation creates a file. 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|folderPath*|Folder path|Select a folder|
-|name*|File name|Name of the file|
-|body*|File content|Content of the file|
-
-An * indicates that a property is required
-
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="copy-file"></a>Copy file
-This operation copies a file to an FTP server. 
+### When a file is added or modified (ファイルの追加または変更時)
+この操作では、フォルダーでファイルが追加または変更されたときにフローをトリガーします。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|source*|Source url|Url to source file|
-|destination*|Destination file path|Destination file path, including target filename|
-|overwrite|Overwrite?|Overwrites the destination file if set to 'true'|
+|folderId*|フォルダー|フォルダーを選択する|
 
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
-#### <a name="output-details"></a>Output Details
+
+
+
+### フォルダー内のファイルを一覧表示する
+この操作では、フォルダー内のファイルとサブフォルダーの一覧を取得します。
+
+
+|プロパティ名| Displayname Settings|説明|
+| ---|---|---|
+|id*|フォルダー|フォルダーを選択する|
+
+* は、必須のプロパティを示します。
+
+
+
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
+|ETag|string|
+|FileLocator|文字列|
+
+
+
+
+### ルート フォルダー内のファイルを一覧表示する
+この操作では、ルート フォルダー内のファイルとサブフォルダーの一覧を取得します。
+
+
+この呼び出しには、パラメーターはありません
+
+#### 出力の詳細
+
+BlobMetadata
+
+
+| プロパティ名 | データ型 |
+|---|---|---|
+|ID|string|
+|名前|string|
+|DisplayName|string|
+|パス|string|
+|LastModified|string|
+|サイズ|integer|
+|MediaType|string|
+|IsFolder|ブール値|
 |ETag|string|
 |FileLocator|string|
 
 
 
 
-### <a name="when-a-file-is-added-or-modified"></a>When a file is added or modified
-This operation triggers a flow when a file is added or modified in a folder. 
+### フォルダーを抽出する
+この操作では、フォルダーにアーカイブ ファイル (例: .zip) を抽出します。
 
 
-|Property Name| Display Name|Description|
+|プロパティ名| Displayname Settings|説明|
 | ---|---|---|
-|folderId*|Folder|Select a folder|
+|source*|Source archive file path (ソース アーカイブ ファイルのパス)|アーカイブ ファイルのパス|
+|destination*|Destination folder path (抽出先フォルダー パス)|宛先フォルダーのパス|
+|overwrite|Overwrite? (上書きを許可)|’true’ に設定すると、宛先ファイルが上書きされます|
 
-An * indicates that a property is required
-
-
-
-
-### <a name="list-files-in-folder"></a>List files in folder
-This operation gets the list of files and subfolders in a folder. 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|id*|Folder|Select a folder|
-
-An * indicates that a property is required
+* は、必須のプロパティを示します。
 
 
 
-#### <a name="output-details"></a>Output Details
+#### 出力の詳細
 
 BlobMetadata
 
 
-| Property Name | Data Type |
+| プロパティ名 | データ型 |
 |---|---|---|
-|Id|string|
-|Name|string|
+|ID|string|
+|名前|string|
 |DisplayName|string|
-|Path|string|
+|パス|string|
 |LastModified|string|
-|Size|integer|
+|サイズ|integer|
 |MediaType|string|
-|IsFolder|boolean|
+|IsFolder|ブール値|
 |ETag|string|
-|FileLocator|string|
+|FileLocator|文字列|
 
 
 
+## HTTP 応答
 
-### <a name="list-files-in-root-folder"></a>List files in root folder
-This operation gets the list of files and subfolders in the root folder. 
+上記のアクションとトリガーは、次の HTTP 状態コードを 1 つ以上返す場合があります。
 
-
-There are no parameters for this call
-
-#### <a name="output-details"></a>Output Details
-
-BlobMetadata
-
-
-| Property Name | Data Type |
-|---|---|---|
-|Id|string|
-|Name|string|
-|DisplayName|string|
-|Path|string|
-|LastModified|string|
-|Size|integer|
-|MediaType|string|
-|IsFolder|boolean|
-|ETag|string|
-|FileLocator|string|
-
-
-
-
-### <a name="extract-folder"></a>Extract folder
-This operation extracts an archive file into a folder (example: .zip). 
-
-
-|Property Name| Display Name|Description|
-| ---|---|---|
-|source*|Source archive file path|Path to the archive file|
-|destination*|Destination folder path|Path to the destination folder|
-|overwrite|Overwrite?|Overwrites the destination files if set to 'true'|
-
-An * indicates that a property is required
-
-
-
-#### <a name="output-details"></a>Output Details
-
-BlobMetadata
-
-
-| Property Name | Data Type |
-|---|---|---|
-|Id|string|
-|Name|string|
-|DisplayName|string|
-|Path|string|
-|LastModified|string|
-|Size|integer|
-|MediaType|string|
-|IsFolder|boolean|
-|ETag|string|
-|FileLocator|string|
-
-
-
-## <a name="http-responses"></a>HTTP responses
-
-The actions and triggers above can return one or more of the following HTTP status codes: 
-
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occurred.|
-|default|Operation Failed.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
+|default|操作に失敗しました。|
 
 
 
@@ -447,10 +446,7 @@ The actions and triggers above can return one or more of the following HTTP stat
 
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=AcomDC_0803_2016-->

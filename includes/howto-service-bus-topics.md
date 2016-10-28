@@ -1,61 +1,56 @@
-## <a name="what-are-service-bus-topics-and-subscriptions?"></a>What are Service Bus topics and subscriptions?
+## Service Bus トピックとサブスクリプションとは
 
-Service Bus topics and subscriptions support a *publish/subscribe* messaging communication model. When using topics and subscriptions, components of a distributed application do not communicate directly with each other; instead they exchange messages via a topic, which acts as an intermediary.
+Service Bus のトピックとサブスクリプションは、メッセージ通信の*発行/サブスクライブ* モデルをサポートします。トピックとサブスクリプションを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者の役割を果たすトピックを介してメッセージをやり取りすることになります。
 
 ![TopicConcepts](./media/howto-service-bus-topics/sb-topics-01.png)
 
-In contrast with Service Bus queues, in which each message is processed by a single consumer, topics and subscriptions provide a "one-to-many" form of communication, using a publish/subscribe pattern. It is possible to register multiple subscriptions to a topic. When a message is sent to a topic, it is then made available to each subscription to handle/process independently.
+各メッセージが 1 つのコンシューマーによって処理される Service Bus キューとは異なり、トピックとサブスクリプションでは、発行/サブスクライブ パターンを使用した "1 対多" 形式の通信を行います。複数のサブスクリプションを 1 つのトピックに登録できます。トピックに送信されたメッセージはサブスクリプションに渡され、各サブスクリプションで独立して処理できます。
 
-A subscription to a topic resembles a virtual queue that receives copies of the messages that were sent to the topic. You can optionally register filter rules for a topic on a per-subscription basis, which enables you to filter or restrict which messages to a topic are received by which topic subscriptions.
+トピックにとってのサブスクリプションは、トピックに送信されたメッセージのコピーを受け取る仮想キューのようなものです。トピックに対するフィルター ルールをサブスクリプション単位で登録することもできます。これを使用すると、トピックに送信されるどのメッセージをどのトピック サブスクリプションで受信するかをフィルター処理または制限することができます。
 
-Service Bus topics and subscriptions enable you to scale and process a very large number of messages across many users and applications.
+Service Bus のトピックとサブスクリプションを使用することで、多くのユーザーやアプリケーションの間でやり取りされる膨大な数のメッセージを処理することもできます。
 
-## <a name="create-a-namespace"></a>Create a namespace
+## 名前空間の作成
 
-To begin using Service Bus topics and subscriptions in Azure, you must first create a *service namespace*. A namespace provides a scoping container for addressing Service Bus resources within your application.
+Azure で Service Bus のトピックとサブスクリプションの使用を開始するには、最初に*サービス名前空間*を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-To create a namespace:
+名前空間を作成するには:
 
-1. Log on to the [Azure portal][].
+1. [Azure ポータル][]にログオンします。
 
-2. In the left navigation pane of the portal, click **New**, then click **Enterprise Integration**, and then click **Service Bus**.
+2. ポータルの左側のナビゲーション ウィンドウで **[新規]** をクリックし、**[Enterprise Integration]**、**[Service Bus]** の順にクリックします。
 
-4. In the **Create namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.
+4. **[名前空間の作成]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。
 
-5. After making sure the namespace name is available, choose the pricing tier (Basic, Standard, or Premium).
+5. 入力した名前空間の名前が使用できることを確認したら、価格レベル (Basic、Standard、Premium) を選択します。
 
-7. In the **Subscription** field, choose an Azure subscription in which to create the namespace.
+7. **[サブスクリプション]** フィールドで、名前空間を作成する Azure サブスクリプションを選択します。
 
-9. In the **Resource group** field, choose an existing resource group in which the namespace will live, or create a new one.      
+9. **[リソース グループ]** フィールドで、名前空間を追加する既存のリソース グループを選択するか、新しいリソース グループを作成します。
 
-8. In **Location**, choose the country or region in which your namespace should be hosted.
+8. **[場所]** で、名前空間をホストする国またはリージョンを選択します。
 
-    ![Create namespace][create-namespace]
+	![名前空間の作成][create-namespace]
 
-6. Click the **Create** button. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
+6. **[Create]** ボタンをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
  
-### <a name="obtain-the-credentials"></a>Obtain the credentials
+### 資格情報を取得する
 
-1. In the list of namespaces, click the newly created namespace name.
+1. 名前空間の一覧で、新しく作成した名前空間の名前をクリックします。
  
-3. In the **Service Bus namespace** blade, click **Shared access policies**.
+3. **[Service Bus 名前空間]** ブレードで、**[共有アクセス ポリシー]** をクリックします。
 
-4. In the **Shared access policies** blade, click **RootManageSharedAccessKey**.
+4. **[共有アクセス ポリシー]** ブレードで、**[RootManageSharedAccessKey]** をクリックします。
 
-    ![connection-info][connection-info]
+	![connection-info][connection-info]
 
-5. In the **Policy: RootManageSharedAccessKey** blade, click the copy button next to **Connection string–primary key**, to copy the connection string to your clipboard for later use.
+5. **[ポリシー: RootManageSharedAccessKey]** ブレードで、**[Connection string–primary key (接続文字列 - プライマリ キー)]** の横にあるコピー ボタンをクリックし、後で使用するために接続文字列をクリップボードにコピーします。
 
-    ![connection-string][connection-string]
+	![connection-string][connection-string]
 
-[Azure portal]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 [create-namespace]: ./media/howto-service-bus-topics/create-namespace.png
 [connection-info]: ./media/howto-service-bus-topics/connection-info.png
 [connection-string]: ./media/howto-service-bus-topics/connection-string.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

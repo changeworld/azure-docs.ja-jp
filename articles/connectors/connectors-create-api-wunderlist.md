@@ -1,10 +1,10 @@
 <properties
 pageTitle="Wunderlist | Microsoft Azure"
-description="Create Logic apps with Azure App service. Wunderlist provide a todo list and task manager to help people get their stuff done.  Whether you’re sharing a grocery list with a loved one, working on a project, or planning a vacation, Wunderlist makes it easy to capture, share, and complete your to¬dos. Wunderlist instantly syncs between your phone, tablet and computer, so you can access all your tasks from anywhere."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Azure App Service を使用してロジック アプリを作成します。Wunderlist では、ユーザーの作業を支援する todo リストとタスク マネージャーを提供します。買い物メモを家族と共有したり、プロジェクトで作業したり、休暇の計画を立てたりするときも、Wunderlist を使えばタスクを簡単に確認、共有、完了できます。Wunderlist は携帯電話、タブレット、コンピューター間で即時に同期するため、すべてのタスクにどこからでもアクセスできます。"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,889 +17,885 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# Wunderlist コネクタの使用
 
-# <a name="get-started-with-the-wunderlist-connector"></a>Get started with the Wunderlist connector
+Wunderlist では、ユーザーの作業を支援する todo リストとタスク マネージャーを提供します。買い物メモを家族と共有したり、プロジェクトで作業したり、休暇の計画を立てたりするときも、Wunderlist を使えばタスクを簡単に確認、共有、完了できます。Wunderlist は携帯電話、タブレット、コンピューター間で即時に同期するため、すべてのタスクにどこからでもアクセスできます。
 
-Wunderlist provide a todo list and task manager to help people get their stuff done.  Whether you’re sharing a grocery list with a loved one, working on a project, or planning a vacation, Wunderlist makes it easy to capture, share, and complete your to¬dos. Wunderlist instantly syncs between your phone, tablet and computer, so you can access all your tasks from anywhere.
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+Wunderlist コネクタは、アクションとして使用できます。Wunderlist コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-The Wunderlist connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+ Wunderlist コネクタでは、次のアクションやトリガーを使用できます。
 
- The Wunderlist connector has the following action(s) and/or trigger(s) available:
+### Wunderlist のアクション
+実行できるアクションは以下のとおりです。
 
-### <a name="wunderlist-actions"></a>Wunderlist actions
-You can take these action(s):
-
-|Action|Description|
+|アクション|Description|
 |--- | ---|
-|[RetrieveLists](connectors-create-api-wunderlist.md#retrievelists)|Retrieve the lists associated with your account.|
-|[CreateList](connectors-create-api-wunderlist.md#createlist)|Create a list.|
-|[ListTasks](connectors-create-api-wunderlist.md#listtasks)|Retrieve tasks from a specific list.|
-|[CreateTask](connectors-create-api-wunderlist.md#createtask)|Create a task|
-|[ListSubTasks](connectors-create-api-wunderlist.md#listsubtasks)|Retrieve subtasks from a specific list or from a specific task.|
-|[CreateSubTask](connectors-create-api-wunderlist.md#createsubtask)|Create a subtask within a specific task|
-|[ListNotes](connectors-create-api-wunderlist.md#listnotes)|Retrieve notes for a specific list or a specific task.|
-|[CreateNote](connectors-create-api-wunderlist.md#createnote)|Add a note to a specific task|
-|[ListComments](connectors-create-api-wunderlist.md#listcomments)|Retrieve task comments for a specific list or a specific task.|
-|[CreateComment](connectors-create-api-wunderlist.md#createcomment)|Add a comment to a specific task|
-|[RetrieveReminders](connectors-create-api-wunderlist.md#retrievereminders)|Retrieve reminders for a specific list or a specific task.|
-|[CreateReminder](connectors-create-api-wunderlist.md#createreminder)|Set a reminder.|
-|[RetrieveFiles](connectors-create-api-wunderlist.md#retrievefiles)|Retrieve files for a specific list or a specific task.|
-|[GetList](connectors-create-api-wunderlist.md#getlist)|Retrieves a specific list|
-|[DeleteList](connectors-create-api-wunderlist.md#deletelist)|Deletes a list|
-|[UpdateList](connectors-create-api-wunderlist.md#updatelist)|Update a specific list|
-|[GetTask](connectors-create-api-wunderlist.md#gettask)|Retrieves a specific task|
-|[UpdateTask](connectors-create-api-wunderlist.md#updatetask)|Updates a specific task|
-|[DeleteTask](connectors-create-api-wunderlist.md#deletetask)|Deletes a specific task|
-|[GetSubTask](connectors-create-api-wunderlist.md#getsubtask)|Retrieves a specific subtask|
-|[UpdateSubTask](connectors-create-api-wunderlist.md#updatesubtask)|Updates a specific subtask|
-|[DeleteSubTask](connectors-create-api-wunderlist.md#deletesubtask)|Deletes a specific subtask|
-|[GetNote](connectors-create-api-wunderlist.md#getnote)|Retrieve a specific note|
-|[UpdateNote](connectors-create-api-wunderlist.md#updatenote)|Update a specific note|
-|[DeleteNote](connectors-create-api-wunderlist.md#deletenote)|Delete a specific note|
-|[GetComment](connectors-create-api-wunderlist.md#getcomment)|Retrieve a specific task comment|
-|[UpdateReminder](connectors-create-api-wunderlist.md#updatereminder)|Update a specific reminder|
-|[DeleteReminder](connectors-create-api-wunderlist.md#deletereminder)|Delete a specific reminder|
-### <a name="wunderlist-triggers"></a>Wunderlist triggers
-You can listen for these event(s):
+|[RetrieveLists](connectors-create-api-wunderlist.md#retrievelists)|自分のアカウントに関連付けられたリストを取得します。|
+|[CreateList](connectors-create-api-wunderlist.md#createlist)|リストを作成します。|
+|[ListTasks](connectors-create-api-wunderlist.md#listtasks)|特定のリストからタスクを取得します。|
+|[CreateTask](connectors-create-api-wunderlist.md#createtask)|タスクを作成します。|
+|[ListSubTasks](connectors-create-api-wunderlist.md#listsubtasks)|特定のリストまたは特定のタスクからサブタスクを取得します。|
+|[CreateSubTask](connectors-create-api-wunderlist.md#createsubtask)|特定のタスク内にサブタスクを作成します。|
+|[ListNotes](connectors-create-api-wunderlist.md#listnotes)|特定のリストまたは特定のタスクのメモを取得します。|
+|[CreateNote](connectors-create-api-wunderlist.md#createnote)|特定のタスクにメモを追加します。|
+|[ListComments](connectors-create-api-wunderlist.md#listcomments)|特定のリストまたは特定のタスクのタスク コメントを取得します。|
+|[CreateComment](connectors-create-api-wunderlist.md#createcomment)|特定のタスクにコメントを追加します。|
+|[RetrieveReminders](connectors-create-api-wunderlist.md#retrievereminders)|特定のリストまたは特定のタスクのアラームを取得します。|
+|[CreateReminder](connectors-create-api-wunderlist.md#createreminder)|アラームを設定します。|
+|[RetrieveFiles](connectors-create-api-wunderlist.md#retrievefiles)|特定のリストまたは特定のタスクのファイルを取得します。|
+|[GetList](connectors-create-api-wunderlist.md#getlist)|特定のリストを取得します。|
+|[DeleteList](connectors-create-api-wunderlist.md#deletelist)|リストを削除します。|
+|[UpdateList](connectors-create-api-wunderlist.md#updatelist)|特定のリストを更新します。|
+|[GetTask](connectors-create-api-wunderlist.md#gettask)|特定のタスクを取得します。|
+|[UpdateTask](connectors-create-api-wunderlist.md#updatetask)|特定のタスクを更新します。|
+|[DeleteTask](connectors-create-api-wunderlist.md#deletetask)|特定のタスクを削除します。|
+|[GetSubTask](connectors-create-api-wunderlist.md#getsubtask)|特定のサブタスクを取得します。|
+|[UpdateSubTask](connectors-create-api-wunderlist.md#updatesubtask)|特定のサブタスクを更新します。|
+|[DeleteSubTask](connectors-create-api-wunderlist.md#deletesubtask)|特定のサブタスクを削除します。|
+|[GetNote](connectors-create-api-wunderlist.md#getnote)|特定のメモを取得します。|
+|[UpdateNote](connectors-create-api-wunderlist.md#updatenote)|特定のメモを更新します。|
+|[DeleteNote](connectors-create-api-wunderlist.md#deletenote)|特定のメモを削除します。|
+|[GetComment](connectors-create-api-wunderlist.md#getcomment)|特定のタスク コメントを取得します。|
+|[UpdateReminder](connectors-create-api-wunderlist.md#updatereminder)|特定のアラームを更新します。|
+|[DeleteReminder](connectors-create-api-wunderlist.md#deletereminder)|特定のアラームを削除します。|
+### Wunderlist のトリガー
+次のイベントをリッスンできます。
 
-|Trigger | Description|
+|トリガー | Description|
 |--- | ---|
-|When a task is due|Triggers a new flow when a task in the list is due|
-|When a new task is created|Triggers a new flow when a new task is created in the list|
-|When a reminder occurs|Triggers a new flow when a reminder occurs|
+|タスクの期限日|リスト内のタスクの期限が来たときに新しいフローをトリガーします|
+|新しいタスクの作成時|新しいタスクがリストで作成されたときに新しいフローをトリガーします|
+|アラームの発生時|アラームが発生したときに新しいフローをトリガーします|
 
 
-## <a name="create-a-connection-to-wunderlist"></a>Create a connection to Wunderlist
-To create Logic apps with Wunderlist, you must first create a **connection** then provide the details for the following properties: 
+## Wunderlist への接続を作成する
+Wunderlist を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|Property| Required|Description|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|Token|Yes|Provide Wunderlist Credentials|
-After you create the connection, you can use it to execute the actions and listen for the triggers described in this article. 
+|トークン|はい|Wunderlist の資格情報を提供します|
+接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
 
 
->[AZURE.INCLUDE [Steps to create a connection to Wunderlist](../../includes/connectors-create-api-wunderlist.md)] 
+>[AZURE.INCLUDE [Wunderlist への接続を作成する手順](../../includes/connectors-create-api-wunderlist.md)]
 
 
->[AZURE.TIP] You can use this connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
-## <a name="reference-for-wunderlist"></a>Reference for Wunderlist
-Applies to version: 1.0
+## Wunderlist のリファレンス
+適用されるバージョン: 1.0
 
-## <a name="triggertaskdue"></a>TriggerTaskDue
-When a task is due: Triggers a new flow when a task in the list is due 
+## TriggerTaskDue
+タスクの期限日: リスト内のタスクの期限が来たときに新しいフローをトリガーします
 
-```GET: /trigger/tasksdue``` 
+```GET: /trigger/tasksdue```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
+|list\_id|integer|○|query|なし|リスト ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation successful|
+|200|操作に成功しました|
 
 
-## <a name="triggertasknew"></a>TriggerTaskNew
-When a new task is created: Triggers a new flow when a new task is created in the list 
+## TriggerTaskNew
+新しいタスクの作成時: 新しいタスクがリストで作成されたときに新しいフローをトリガーします
 
-```GET: /trigger/tasksnew``` 
+```GET: /trigger/tasksnew```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
+|list\_id|integer|○|query|なし|リスト ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation successful|
+|200|操作に成功しました|
 
 
-## <a name="triggerreminder"></a>TriggerReminder
-When a reminder occurs: Triggers a new flow when a reminder occurs 
+## TriggerReminder
+アラームの発生時: アラームが発生したときに新しいフローをトリガーします
 
-```GET: /trigger/reminders``` 
+```GET: /trigger/reminders```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|○|query|なし|リスト ID|
+|task\_id|integer|×|query|なし|タスク ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation successful|
+|200|操作に成功しました|
 
 
-## <a name="retrievelists"></a>RetrieveLists
-Get lists: Retrieve the lists associated with your account. 
+## RetrieveLists
+リストの取得: 自分のアカウントに関連付けられたリストを取得します。
 
-```GET: /lists``` 
+```GET: /lists```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|400|正しくない要求|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createlist"></a>CreateList
-Create a list: Create a list. 
+## CreateList
+リストの作成: リストを作成します。
 
-```POST: /lists``` 
+```POST: /lists```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New list to be created|
+|post| |○|body|なし|作成する新しいリスト|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation successful|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|default|操作に失敗しました。|
 
 
-## <a name="listtasks"></a>ListTasks
-Get tasks: Retrieve tasks from a specific list. 
+## ListTasks
+タスクの取得: 特定のリストからタスクを取得します。
 
-```GET: /tasks``` 
+```GET: /tasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|completed|boolean|no|query|none|Completed|
+|list\_id|integer|○|query|なし|リスト ID|
+|完了|boolean|×|query|なし|完了|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|400|正しくない要求|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createtask"></a>CreateTask
-Create a task: Create a task 
+## CreateTask
+タスクの作成: タスクを作成します
 
-```POST: /tasks``` 
+```POST: /tasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New task to be created|
+|post| |○|body|なし|作成する新しいタスク|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|Description|
 |---|---|
-|201|Created|
+|201|作成日時|
 
 
-## <a name="listsubtasks"></a>ListSubTasks
-Get subtasks: Retrieve subtasks from a specific list or from a specific task. 
+## ListSubTasks
+サブタスクの取得: 特定のリストまたは特定のタスクからサブタスクを取得します。
 
-```GET: /subtasks``` 
+```GET: /subtasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
-|completed|boolean|no|query|none|Completed|
+|list\_id|integer|○|query|なし|リスト ID|
+|task\_id|integer|×|query|なし|タスク ID|
+|完了|boolean|×|query|なし|完了|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|400|正しくない要求|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createsubtask"></a>CreateSubTask
-Create a subtask: Create a subtask within a specific task 
+## CreateSubTask
+サブタスクの作成: 特定のタスク内にサブタスクを作成します
 
-```POST: /subtasks``` 
+```POST: /subtasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New subtask to be created|
+|post| |○|body|なし|作成する新しいサブタスク|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|Description|
 |---|---|
-|201|Created|
+|201|作成日時|
 
 
-## <a name="listnotes"></a>ListNotes
-Get notes: Retrieve notes for a specific list or a specific task. 
+## ListNotes
+メモの取得: 特定のリストまたは特定のタスクのメモを取得します。
 
-```GET: /notes``` 
+```GET: /notes```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|○|query|なし|リスト ID|
+|task\_id|integer|×|query|なし|タスク ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|400|正しくない要求|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createnote"></a>CreateNote
-Create a note: Add a note to a specific task 
+## CreateNote
+メモの作成: 特定のタスクにメモを追加します
 
-```POST: /notes``` 
+```POST: /notes```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New note to be created|
+|post| |○|body|なし|作成する新しいメモ|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|Description|
 |---|---|
-|201|Created|
+|201|作成日時|
 
 
-## <a name="listcomments"></a>ListComments
-Get task comments: Retrieve task comments for a specific list or a specific task. 
+## ListComments
+タスク コメントの取得: 特定のリストまたは特定のタスクのタスク コメントを取得します。
 
-```GET: /task_comments``` 
+```GET: /task_comments```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|○|query|なし|リスト ID|
+|task\_id|integer|×|query|なし|タスク ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|400|正しくない要求|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createcomment"></a>CreateComment
-Add a comment to a task: Add a comment to a specific task 
+## CreateComment
+タスクのコメントの追加: 特定のタスクにコメントを追加します
 
-```POST: /task_comments``` 
+```POST: /task_comments```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New task comment to be created|
+|post| |○|body|なし|作成する新しいタスク コメント|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|Description|
 |---|---|
-|201|Created|
+|201|作成日時|
 
 
-## <a name="retrievereminders"></a>RetrieveReminders
-Get reminders: Retrieve reminders for a specific list or a specific task. 
+## RetrieveReminders
+アラームの取得: 特定のリストまたは特定のタスクのアラームを取得します。
 
-```GET: /reminders``` 
+```GET: /reminders```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|○|query|なし|リスト ID|
+|task\_id|integer|×|query|なし|タスク ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|400|正しくない要求|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createreminder"></a>CreateReminder
-Set a reminder: Set a reminder. 
+## CreateReminder
+アラームの設定: アラームを設定します。
 
-```POST: /reminders``` 
+```POST: /reminders```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|post| |yes|body|none|New reminder to be created|
+|post| |○|body|なし|作成する新しいアラーム|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation successful|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|default|操作に失敗しました。|
 
 
-## <a name="retrievefiles"></a>RetrieveFiles
-Get files: Retrieve files for a specific list or a specific task. 
+## RetrieveFiles
+ファイルの取得: 特定のリストまたは特定のタスクのファイルを取得します。
 
-```GET: /files``` 
+```GET: /files```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|task_id|integer|no|query|none|Task ID|
+|list\_id|integer|○|query|なし|リスト ID|
+|task\_id|integer|×|query|なし|タスク ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|200|Operation successful|
-|400|Bad Request|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|200|操作に成功しました|
+|400|正しくない要求|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="getlist"></a>GetList
-Get list: Retrieves a specific list 
+## GetList
+リストの取得: 特定のリストを取得します
 
-```GET: /lists/{id}``` 
+```GET: /lists/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|yes|path|none|List ID|
+|id|string|○|path|なし|リスト ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
-|---|---|
-|200|OK|
-
-
-## <a name="deletelist"></a>DeleteList
-Delete list: Deletes a list 
-
-```DELETE: /lists/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|integer|yes|path|none|List ID|
-|revision|integer|yes|query|none|Revision|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="updatelist"></a>UpdateList
-Update a list: Update a specific list 
-
-```PATCH: /lists/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|integer|yes|path|none|List ID|
-|post| |yes|body|none|List details|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="gettask"></a>GetTask
-Get task: Retrieves a specific task 
+## DeleteList
+リストの削除: リストを削除します
 
-```GET: /tasks/{id}``` 
+```DELETE: /lists/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|id|integer|yes|path|none|Task ID|
+|id|integer|○|path|なし|リスト ID|
+|revision|integer|○|query|なし|リビジョン|
 
-#### <a name="response"></a>Response
+#### 応答
 
 |Name|Description|
+|---|---|
+|204|コンテンツなし|
+
+
+## UpdateList
+リストの更新: 特定のリストを更新します
+
+```PATCH: /lists/{id}```
+
+| Name| データ型|必須|場所|既定値|Description|
+| ---|---|---|---|---|---|
+|id|integer|○|path|なし|リスト ID|
+|post| |○|body|なし|リストの詳細|
+
+#### 応答
+
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="updatetask"></a>UpdateTask
-Update a task: Updates a specific task 
+## GetTask
+タスクの取得: 特定のタスクを取得します
 
-```PATCH: /tasks/{id}``` 
+```GET: /tasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|id|integer|yes|path|none|Task ID|
-|post| |yes|body|none|Task details|
+|list\_id|integer|○|query|なし|リスト ID|
+|id|integer|○|path|なし|タスク ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="deletetask"></a>DeleteTask
-Delete task: Deletes a specific task 
+## UpdateTask
+タスクの更新: 特定のタスクを更新します
 
-```DELETE: /tasks/{id}``` 
+```PATCH: /tasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|list_id|integer|yes|query|none|List ID|
-|id|integer|yes|path|none|Task ID|
-|revision|integer|yes|query|none|Revision|
+|list\_id|integer|○|query|なし|リスト ID|
+|id|integer|○|path|なし|タスク ID|
+|post| |○|body|なし|タスクの詳細|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="getsubtask"></a>GetSubTask
-Get subtask: Retrieves a specific subtask 
-
-```GET: /subtasks/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|string|yes|path|none|Subtask ID|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="updatesubtask"></a>UpdateSubTask
-Update a subtask: Updates a specific subtask 
+## DeleteTask
+タスクの削除: 特定のタスクを削除します
 
-```PATCH: /subtasks/{id}``` 
+```DELETE: /tasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Subtask ID|
-|post| |yes|body|none|Subtask details|
+|list\_id|integer|○|query|なし|リスト ID|
+|id|integer|○|path|なし|タスク ID|
+|revision|integer|○|query|なし|リビジョン|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|Description|
+|---|---|
+|204|コンテンツなし|
+
+
+## GetSubTask
+サブタスクの取得: 特定のサブタスクを取得します
+
+```GET: /subtasks/{id}```
+
+| Name| データ型|必須|場所|既定値|Description|
+| ---|---|---|---|---|---|
+|id|string|○|path|なし|サブタスク ID|
+
+#### 応答
+
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="deletesubtask"></a>DeleteSubTask
-Delete a subtask: Deletes a specific subtask 
+## UpdateSubTask
+サブタスクの更新: 特定のサブタスクを更新します
 
-```DELETE: /subtasks/{id}``` 
+```PATCH: /subtasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Subtask ID|
-|revision|integer|yes|query|none|Revision|
+|id|integer|○|path|なし|サブタスク ID|
+|post| |○|body|なし|サブタスクの詳細|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="getnote"></a>GetNote
-Get a note: Retrieve a specific note 
-
-```GET: /notes/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|string|yes|path|none|Note ID|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="updatenote"></a>UpdateNote
-Update a note: Update a specific note 
+## DeleteSubTask
+サブタスクの削除: 特定のサブタスクを削除します
 
-```PATCH: /notes/{id}``` 
+```DELETE: /subtasks/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Note ID|
-|post| |yes|body|none|Note details|
+|id|integer|○|path|なし|サブタスク ID|
+|revision|integer|○|query|なし|リビジョン|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|Description|
+|---|---|
+|204|コンテンツなし|
+
+
+## GetNote
+メモの取得: 特定のメモを取得します
+
+```GET: /notes/{id}```
+
+| Name| データ型|必須|場所|既定値|Description|
+| ---|---|---|---|---|---|
+|id|string|○|path|なし|メモ ID|
+
+#### 応答
+
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="deletenote"></a>DeleteNote
-Delete a note: Delete a specific note 
+## UpdateNote
+メモの更新: 特定のメモを更新します
 
-```DELETE: /notes/{id}``` 
+```PATCH: /notes/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Note ID|
-|revision|integer|yes|query|none|Revision|
+|id|integer|○|path|なし|メモ ID|
+|post| |○|body|なし|メモの詳細|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
-|---|---|
-|204|No Content|
-
-
-## <a name="getcomment"></a>GetComment
-Get task comment: Retrieve a specific task comment 
-
-```GET: /task_comments/{id}``` 
-
-| Name| Data Type|Required|Located In|Default Value|Description|
-| ---|---|---|---|---|---|
-|id|string|yes|path|none|Comment ID|
-
-#### <a name="response"></a>Response
-
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="updatereminder"></a>UpdateReminder
-Update a reminder: Update a specific reminder 
+## DeleteNote
+メモの削除: 特定のメモを削除します
 
-```PATCH: /reminders/{id}``` 
+```DELETE: /notes/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|Reminder ID|
-|post| |yes|body|none|Reminder details|
+|id|integer|○|path|なし|メモ ID|
+|revision|integer|○|query|なし|リビジョン|
 
-#### <a name="response"></a>Response
+#### 応答
 
 |Name|Description|
+|---|---|
+|204|コンテンツなし|
+
+
+## GetComment
+タスク コメントの取得: 特定のタスク コメントを取得します
+
+```GET: /task_comments/{id}```
+
+| Name| データ型|必須|場所|既定値|Description|
+| ---|---|---|---|---|---|
+|id|string|○|path|なし|コメント ID|
+
+#### 応答
+
+|名前|説明|
 |---|---|
 |200|OK|
 
 
-## <a name="deletereminder"></a>DeleteReminder
-Delete a reminder: Delete a specific reminder 
+## UpdateReminder
+アラームの更新: 特定のアラームを更新します
 
-```DELETE: /reminders/{id}``` 
+```PATCH: /reminders/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|integer|yes|path|none|ID of the reminder.|
-|revision|integer|yes|query|none|Revision|
+|id|integer|○|path|なし|アラーム ID|
+|post| |○|body|なし|アラームの詳細|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
-|204|No Content|
+|200|OK|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## DeleteReminder
+アラームの削除: 特定のアラームを削除します
 
-### <a name="list"></a>List
+```DELETE: /reminders/{id}```
+
+| 名前| データ型|必須|場所|既定値|Description|
+| ---|---|---|---|---|---|
+|id|integer|○|path|なし|アラームの ID です。|
+|revision|integer|○|query|なし|リビジョン|
+
+#### 応答
+
+|名前|Description|
+|---|---|
+|204|コンテンツなし|
 
 
-| Property Name | Data Type | Required |
+## オブジェクト定義 
+
+### 一覧表示
+
+
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|created_at|string|No |
-|title|string|No |
-|list_type|string|No |
-|type|string|No |
-|revision|integer|No |
+|id|integer|なし |
+|created\_at|string|なし |
+|title|string|なし |
+|list\_type|string|なし |
+|type|string|なし |
+|revision|integer|なし |
 
 
 
-### <a name="createdlist"></a>CreatedList
+### CreatedList
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|created_at|string|No |
-|title|string|No |
-|revision|integer|No |
-|type|string|No |
+|id|integer|なし |
+|created\_at|string|なし |
+|title|string|なし |
+|revision|integer|なし |
+|type|string|なし |
 
 
 
-### <a name="task"></a>Task
+### タスク
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|assignee_id|integer|No |
-|assigner_id|integer|No |
-|created_at|string|No |
-|created_by_id|integer|No |
-|due_date|string|No |
-|list_id|integer|No |
-|revision|integer|No |
-|starred|boolean|No |
-|title|string|No |
+|id|integer|なし |
+|assignee\_id|integer|なし |
+|assigner\_id|integer|なし |
+|created\_at|string|なし |
+|created\_by\_id|integer|なし |
+|due\_date|string|なし |
+|list\_id|integer|なし |
+|revision|integer|なし |
+|starred|boolean|なし |
+|title|string|なし |
 
 
 
-### <a name="subtask"></a>Subtask
+### サブタスク
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|task_id|integer|No |
-|created_at|string|No |
-|created_by_id|integer|No |
-|revision|string|No |
-|title|string|No |
+|id|integer|なし |
+|task\_id|integer|なし |
+|created\_at|string|なし |
+|created\_by\_id|integer|なし |
+|revision|string|なし |
+|title|string|なし |
 
 
 
-### <a name="note"></a>Note
+### 注
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|task_id|integer|No |
-|content|string|No |
-|created_at|string|No |
-|updated_at|string|No |
-|revision|integer|No |
+|id|integer|なし |
+|task\_id|integer|なし |
+|content|string|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
+|revision|integer|なし |
 
 
 
-### <a name="comment"></a>Comment
+### コメント
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|task_id|integer|No |
-|revision|integer|No |
-|text|string|No |
-|type|string|No |
-|created_at|string|No |
+|id|integer|なし |
+|task\_id|integer|なし |
+|revision|integer|なし |
+|text|string|なし |
+|type|string|なし |
+|created\_at|string|なし |
 
 
 
-### <a name="reminder"></a>Reminder
+### アラーム
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|date|string|No |
-|task_id|integer|No |
-|revision|integer|No |
-|type|string|No |
-|created_at|string|No |
-|updated_at|string|No |
+|id|integer|なし |
+|date|string|なし |
+|task\_id|integer|なし |
+|revision|integer|なし |
+|type|string|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
 
 
 
-### <a name="createdreminder"></a>CreatedReminder
+### CreatedReminder
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|date|string|No |
-|task_id|integer|No |
-|revision|integer|No |
-|created_at|string|No |
-|updated_at|string|No |
+|id|integer|なし |
+|date|string|なし |
+|task\_id|integer|なし |
+|revision|integer|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
 
 
 
-### <a name="file"></a>File
+### ファイル
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|integer|No |
-|url|string|No |
-|task_id|integer|No |
-|list_id|integer|No |
-|user_id|integer|No |
-|file_name|string|No |
-|content_type|string|No |
-|file_size|integer|No |
-|local_created_at|string|No |
-|created_at|string|No |
-|updated_at|string|No |
-|type|string|No |
-|revision|integer|No |
+|id|integer|なし |
+|url|string|なし |
+|task\_id|integer|なし |
+|list\_id|integer|なし |
+|user\_id|integer|なし |
+|file\_name|string|なし |
+|content\_type|string|なし |
+|file\_size|integer|なし |
+|local\_created\_at|string|なし |
+|created\_at|string|なし |
+|updated\_at|string|なし |
+|type|string|なし |
+|revision|integer|なし |
 
 
 
-### <a name="newtask"></a>NewTask
+### NewTask
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list_id|integer|Yes |
-|title|string|Yes |
-|assignee_id|integer|No |
-|completed|boolean|No |
-|recurrence_type|string|No |
-|recurrence_count|integer|No |
-|due_date|string|No |
-|starred|boolean|No |
+|list\_id|integer|はい |
+|title|string|はい |
+|assignee\_id|integer|なし |
+|完了|boolean|なし |
+|recurrence\_type|string|なし |
+|recurrence\_count|integer|なし |
+|due\_date|string|なし |
+|starred|boolean|なし |
 
 
 
-### <a name="newlist"></a>NewList
+### NewList
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|title|string|Yes |
+|title|string|はい |
 
 
 
-### <a name="newsubtask"></a>NewSubtask
+### NewSubtask
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|title|string|Yes |
-|completed|boolean|No |
+|list\_id|integer|はい |
+|task\_id|integer|はい |
+|title|string|はい |
+|完了|boolean|なし |
 
 
 
-### <a name="newnote"></a>NewNote
+### NewNote
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|content|string|Yes |
+|list\_id|integer|はい |
+|task\_id|integer|はい |
+|content|string|はい |
 
 
 
-### <a name="newcomment"></a>NewComment
+### NewComment
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|text|string|Yes |
+|list\_id|integer|はい |
+|task\_id|integer|はい |
+|text|string|はい |
 
 
 
-### <a name="newreminder"></a>NewReminder
+### NewReminder
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|list_id|integer|Yes |
-|task_id|integer|Yes |
-|date|string|Yes |
+|list\_id|integer|はい |
+|task\_id|integer|はい |
+|date|string|はい |
 
 
 
-### <a name="updatetask"></a>UpdateTask
+### UpdateTask
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|No |
-|title|string|No |
-|assignee_id|integer|No |
-|completed|boolean|No |
-|recurrence_type|string|No |
-|recurrence_count|integer|No |
-|due_date|string|No |
-|starred|boolean|No |
+|revision|integer|なし |
+|title|string|なし |
+|assignee\_id|integer|なし |
+|完了|boolean|なし |
+|recurrence\_type|string|なし |
+|recurrence\_count|integer|なし |
+|due\_date|string|なし |
+|starred|boolean|なし |
 
 
 
-### <a name="updatelist"></a>UpdateList
+### UpdateList
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|No |
-|title|string|No |
+|revision|integer|なし |
+|title|string|なし |
 
 
 
-### <a name="updatesubtask"></a>UpdateSubtask
+### UpdateSubtask
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|No |
-|title|string|No |
-|completed|boolean|No |
+|revision|integer|なし |
+|title|string|なし |
+|完了|boolean|なし |
 
 
 
-### <a name="updatenote"></a>UpdateNote
+### UpdateNote
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|revision|integer|No |
-|content|string|No |
+|revision|integer|なし |
+|content|string|なし |
 
 
 
-### <a name="updatereminder"></a>UpdateReminder
+### UpdateReminder
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|date|string|No |
-|revision|integer|No |
+|date|string|なし |
+|revision|integer|なし |
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

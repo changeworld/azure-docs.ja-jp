@@ -1,40 +1,37 @@
-### <a name="configure-a-dns-label-for-the-public-ip-address"></a>Configure a DNS Label for the public IP address
+### パブリック IP アドレスの DNS ラベルの構成
 
-To connect to the SQL Server Database Engine from the Internet, first configure a DNS Label for your public IP address.
+インターネットから SQL Server データベース エンジンに接続するには、最初にパブリック IP アドレスの DNS ラベルを構成します。
 
-> [AZURE.NOTE] DNS Labels are not required if you plan to only connect to the SQL Server instance within the same Virtual Network or only locally.
+> [AZURE.NOTE] 同じ Virtual Network 内の SQL Server インスタンスのみに接続する場合、またはローカルでのみ接続する予定の場合は、DNS ラベルは必要ありません。
 
-To create a DNS Label, first select **Virtual machines** in the portal. Select your SQL Server VM to bring up its properties.
+DNS ラベルを作成するには、最初にポータルで **[Virtual Machines]** を選びます。SQL Server VM を選択し、そのプロパティを表示します。
 
-1. In the virtual machine blade, select your **Public IP address.**
+1. 仮想マシン ブレードで、**[パブリック IP アドレス]** を選びます。
 
-    ![public ip address](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
+	![パブリック IP アドレス](./media/virtual-machines-sql-server-connection-steps/rm-public-ip-address.png)
 
-2. In the properties for your Public IP address, expand **Configuration**.
+2. パブリック IP アドレスのプロパティで、**[構成]** を展開します。
 
-3. Enter a DNS Label name. This name is an A Record that can be used to connect to your SQL Server VM by name instead of by IP Address directly.
+3. DNS ラベル名を入力します。この名前は、IP アドレスを直接使用するのではなく名前で SQL Server VM に接続するために使用できる A レコードです。
 
-4. Click the **Save** button.
+4. **[保存]** ボタンをクリックします。
 
-    ![dns label](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
+	![DNS ラベル](./media/virtual-machines-sql-server-connection-steps/rm-dns-label.png)
 
-### <a name="connect-to-the-database-engine-from-another-computer"></a>Connect to the Database Engine from another computer
+### 別のコンピューターからデータベース エンジンに接続する
 
-1. On a computer connected to the internet, open SQL Server Management Studio (SSMS).
+1. インターネットに接続されたコンピューターで、SQL Server Management Studio (SSMS) を開きます。
 
-2. In the **Connect to Server** or **Connect to Database Engine** dialog box, edit the **Server name** value. Enter the full DNS name of the virtual machine (determined in the previous task).
+2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** の値を編集します。前のタスクで決定した仮想マシンの完全な DNS 名を入力します。
 
-3. In the **Authentication** box, select **SQL Server Authentication**.
+3. **[認証]** ボックスで、**[SQL Server 認証]** を選択します。
 
-5. In the **Login** box, type the name of a valid SQL login.
+5. **[ログイン]** ボックスに、有効な SQL ログインの名前を入力します。
 
-6. In the **Password** box, type the password of the login.
+6. **[パスワード]** ボックスに、ログインのパスワードを入力します。
 
-7. Click **Connect**.
+7. **[接続]** をクリックします。
 
-    ![ssms connect](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
+	![SSMS 接続](./media/virtual-machines-sql-server-connection-steps/rm-ssms-connect.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

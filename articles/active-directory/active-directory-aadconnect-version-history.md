@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure AD Connect: Version Release History | Microsoft Azure"
-   description="This topic lists all releases of Azure AD Connect and Azure AD Sync"
+   pageTitle="Azure AD Connect: バージョンのリリース履歴 | Microsoft Azure"
+   description="このトピックは、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧です"
    services="active-directory"
    documentationCenter=""
    authors="AndKjell"
@@ -14,309 +14,304 @@
    ms.tgt_pltfrm="na"
    ms.workload="identity"
    ms.date="08/23/2016"
-   ms.author="billmath"/>
+   ms.author="andkjell"/>
 
+# Azure AD Connect: バージョンのリリース履歴
 
-# <a name="azure-ad-connect:-version-release-history"></a>Azure AD Connect: Version Release History
+Azure Active Directory チームは、Azure AD Connect を新機能で定期的に更新しています。すべての追加機能がすべてのユーザーに適用されるわけではありません。
 
-The Azure Active Directory team regularly updates Azure AD Connect with new features and functionality. Not all additions are applicable to all audiences.
+この記事は、リリースされたバージョンを追跡し、最新バージョンに更新する必要があるかどうかを判断できるようにするためのものです。
 
-This article is designed to help you keep track of the versions that have been released, and to understand whether you need to update to the newest version or not.
+以下は、関連トピックの一覧です。
 
-This is list of related topics:
-
-Topic |  
+トピック |  
 --------- | --------- |
-Steps to upgrade from Azure AD Connect | Different methods to [upgrade from a previous version to the latest](active-directory-aadconnect-upgrade-previous-version.md) Azure AD Connect release.
-Required permissions | For permissions required to apply an update, see [accounts and permissions](./aad-connect/active-directory-aadconnect-accounts-permissions.md#upgrade)
-Download| [Download Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771)
+Azure AD Connect からのアップグレード手順 | Azure AD Connect の[以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md)するさまざまな方法を説明しています。
+必要なアクセス許可 | 更新プログラムの適用に必要な空きについては、「[Azure AD Connect に必要なアカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)」を参照してください。
+ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)
 
-## <a name="1.1.281.0"></a>1.1.281.0
-Released: 2016 August
+## 1\.1.281.0
+リリース日: 2016 年 8 月
 
-**Fixed issues:**
+**修正された問題:**
 
-- Changes to sync interval does not take place until after next sync cycle completes.
-- Azure AD Connect wizard does not accept Azure AD account whose username starts with an underscore (\_).
-- Azure AD Connect wizard fails to authenticate Azure AD account provided if account password contains too many special characters. Error message "Unable to validate credentials. An unexpected error has occurred." is returned.
-- Uninstalling staging server disables password synchronization in Azure AD tenant and causes password synchronization to fail with active server.
-- Password synchronization fails in uncommon cases when there is no password hash stored on the user.
-- When Azure AD Connect server is enabled for staging mode, password writeback is not temporarily disabled.
-- Azure AD Connect wizard does not show the actual password synchronization and password writeback configuration when server is in staging mode. It always shows them as disabled.
-- Configuration changes to password synchronization and password writeback are not persisted by Azure AD Connect wizard when server is in staging mode.
+- 同期間隔の変更が、次の同期サイクルの完了後まで反映されません。
+- Azure AD Connect ウィザードで、アンダースコア (\_) で始まるユーザー名を持つ Azure AD アカウントを使用できません。
+- Azure AD Connect ウィザードで、アカウントのパスワードに含まれる特殊文字の数が多すぎると、指定した Azure AD アカウントの認証が失敗します。"資格情報を検証できません。予期しないエラーが発生しました" というエラー メッセージが返されます。
+- ステージング サーバーをアンインストールすると、Azure AD テナントでパスワード同期が無効になり、アクティブなサーバーでのパスワード同期が失敗します。
+- ユーザーに対してパスワードのハッシュが格納されていない場合、例外的な状況でパスワード同期が失敗します。
+- Azure AD Connect サーバーでステージング モードが有効になっている場合、パスワード ライトバックが一時的に無効になりません。
+- サーバーがステージング モードの場合、Azure AD Connect ウィザードでパスワード同期とパスワード ライトバックの実際の構成が表示されません。常に無効として表示されます。
+- サーバーがステージング モードの場合、パスワード同期とパスワード ライトバックの構成への変更が Azure AD Connect ウィザードで保持されません。
 
-**Improvements:**
+**機能強化:**
 
-- Updated Start-ADSyncSyncCycle cmdlet to indicate whether it is able to successfully start a new sync cycle or not.
-- Added Stop-ADSyncSyncCycle cmdlet to terminate sync cycle and operation which are currently in progress.
-- Updated Stop-ADSyncScheduler cmdlet to terminate sync cycle and operation which are currently in progress.
-- When configuring [Directory Extensions](active-directory-aadconnectsync-feature-directory-extensions.md) in Azure AD Connect wizard, AD attribute of type "Teletex string" can now be selected.
+- Start-ADSyncSyncCycle コマンドレットが更新され、新しい同期サイクルを正常に開始できるかどうかを示すようになりました。
+- Stop-ADSyncSyncCycle コマンドレットが追加され、現在実行中の同期サイクルと操作を終了できるようになりました。
+- Stop-ADSyncScheduler コマンドレットが更新され、現在実行中の同期サイクルと操作を終了できるようになりました。
+- Azure AD Connect ウィザードで[ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)を構成するときに、"Teletex 文字列" タイプの AD 属性を選択できるようになりました。
 
-## <a name="1.1.189.0"></a>1.1.189.0
-Released: 2016 June
+## 1\.1.189.0
+リリース日: 2016 年 6 月
 
-**Fixed issues and improvements:**
+**修正された問題と機能強化:**
 
-- Azure AD Connect can now be installed on a FIPS compliant server.
-    - For password synchronization, see [Password Sync and FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)
-- Fixed an issue where a NetBIOS name could not be resolved to the FQDN in the Active Directory Connector.
+- Azure AD Connect を FIPS 準拠のサーバーにインストールできます。
+    - パスワードの同期については、「[パスワード同期と FIPS](active-directory-aadconnectsync-implement-password-synchronization.md#password-synchronization-and-fips)」を参照してください
+- Active Directory コネクタで、NetBIOS を FQDN に名前解決できないという問題が修正されました。
 
-## <a name="1.1.180.0"></a>1.1.180.0
-Released: 2016 May
+## 1\.1.180.0
+リリース日: 2016 年 5 月
 
-**New features:**
+**新機能:**
 
-- Warns and helps you verifying domains if you didn’t do it before running Azure AD Connect.
-- Added support for [Microsoft Cloud Germany](active-directory-aadconnect-instances.md#microsoft-cloud-germany).
-- Added support for the latest [Microsoft Azure Government cloud](active-directory-aadconnect-instances.md#microsoft-azure-government-cloud) infrastructure with new URL requirements.
+- Azure AD Connect 実行前にドメインの確認が行われなかった場合に、ドメインの確認について警告し、必要なヘルプ情報を提供します。
+- [Microsoft Cloud Germany](active-directory-aadconnect-instances.md#microsoft-cloud-germany) のサポートが追加されました。
+- 新しい URL 要件を含む最新の [Microsoft Azure Government クラウド](active-directory-aadconnect-instances.md#microsoft-azure-government-cloud) インフラストラクチャのサポートが追加されました。
 
-**Fixed issues and improvements:**
+**修正された問題と機能強化:**
 
-- Added filtering to the Sync Rule Editor to make it easy to find sync rules.
-- Improved performance when deleting a connector space.
-- Fixed an issues when the same object was both deleted and added in the same run (called delete/add).
-- A disabled Sync Rule will no longer re-enable included objects and attributes on upgrade or directory schema refresh.
+- 同期規則を探しやすくするフィルターが同期規則エディターに追加されました。
+- コネクタ スペースを削除するときのパフォーマンスが改善されました。
+- 同じオブジェクトに対して削除と追加の両方が同一の実行で行われた場合 (削除/追加) の問題が修正されました。
+- 無効にした同期規則で、含まれるオブジェクトや属性が、アップグレードまたはディレクトリ スキーマの更新時に再び有効になることはありません。
 
-## <a name="1.1.130.0"></a>1.1.130.0
-Released: 2016 April
+## 1\.1.130.0
+リリース日: 2016 年 4 月
 
-**New features:**
+**新機能:**
 
-- Added support for multi-valued attributes to [Directory Extensions](active-directory-aadconnectsync-feature-directory-extensions.md).
-- Added support for more configuration variations for [automatic upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) to be considered eligible for upgrade.
-- Added some cmdlets for [custom scheduler](active-directory-aadconnectsync-feature-scheduler.md#custom-scheduler).
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)に、複数値の属性のサポートが追加されました。
+- アップグレードの対象と見なされる[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)の構成バリエーションが増えました。
+- [カスタム スケジューラ](active-directory-aadconnectsync-feature-scheduler.md#custom-scheduler)にコマンドレットがいくつか追加されました。
 
-## <a name="1.1.119.0"></a>1.1.119.0
-Released: 2016 March
+## 1\.1.119.0
+リリース日: 2016 年 3
 
-**Fixed issues:**
+**修正された問題:**
 
-- Made sure Express install cannot be used on Windows Server 2008 (pre-R2) since password sync is not supported on this operating system.
-- Upgrade from DirSync with a custom filter configuration did not work as expected.
-- When upgrading to a newer release and there are no changes to the configuration, a full import/synchronization should not be scheduled.
+- このオペレーティング システムではパスワード同期がサポートされないため、Windows Server 2008 (R2 より前のバージョン) で高速インストールは使用できなくなりました。
+- カスタム フィルター構成での DirSync からのアップグレードが予期したとおりに動作しません。
+- 新しいリリースへのアップグレード時に構成に変更がない場合は、フル インポート/同期をスケジュールすることはできません。
 
-## <a name="1.1.110.0"></a>1.1.110.0
-Released: 2016 February
+## 1\.1.110.0
+リリース日: 2016 年 2 月
 
-**Fixed issues:**
+**修正された問題:**
 
-- Upgrade from earlier releases does not work if installation is not in the default **C:\Program Files** folder.
-- If you install and unselect **Start the synchronization process..** at the end of the installation wizard, re-running the installation wizard will not enable the scheduler.
-- The scheduler will not work as expected on servers where the date/time format is not US-en. It will also block `Get-ADSyncScheduler` to return correct times.
-- If you installed an earlier release of Azure AD Connect with ADFS as the sign-in option and upgrade, you cannot run the installation wizard again.
+- インストールが既定の **C:\\Program Files** フォルダーにない場合、以前のリリースからのアップグレードが機能しません。
+- インストール時に、インストール ウィザードの最後で **[...同期処理を開始してください]** をオフにした場合、インストール ウィザードを再実行しても、スケジューラが有効になりません。
+- 日付と時刻の形式が US-en ではない場合、スケジューラはサーバーで予想どおりに機能しません。また、正しい時刻を返す `Get-ADSyncScheduler` もブロックされます。
+- サインイン オプションおよびアップグレードとして ADFS を使用して以前のリリースの Azure AD Connect をインストールした場合、インストール ウィザードを再度実行することはできません。
 
-## <a name="1.1.105.0"></a>1.1.105.0
-Released: 2016 February
+## 1\.1.105.0
+リリース日: 2016 年 2 月
 
-**New features:**
+**新機能:**
 
-- [Automatic upgrade](active-directory-aadconnect-feature-automatic-upgrade.md) feature for Express settings customers.
-- Support for the global admin using MFA and PIM in the installation wizard.
-    - You need to allow your proxy to also allow traffic to https://secure.aadcdn.microsoftonline-p.com if you use MFA.
-    - You need to add https://secure.aadcdn.microsoftonline-p.com to your trusted sites list for MFA to properly work.
-- Allow changing the user's sign-in method after initial install.
-- Allow [Domain and OU filtering](./aad-connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) in the installation wizard. This also allows connecting to forests where not all domains are available.
-- [Scheduler](active-directory-aadconnectsync-feature-scheduler.md) is built-in to the sync engine.
+- 簡単設定ユーザー向けの[自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)機能。
+- インストール ウィザードで MFA と PIM を使用するグローバル管理者のサポート。
+    - MFA を使用する場合は、https://secure.aadcdn.microsoftonline-p.com へのトラフィックも許可するようにプロキシを設定する必要があります。
+    - MFA を正しく動作させるには、信頼済みサイトの一覧に https://secure.aadcdn.microsoftonline-p.com を追加する必要があります。
+- 初期インストール後のユーザーのサインイン方法の変更を許可。
+- インストール ウィザードでの[ドメインと OU のフィルター処理](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)を許可。これによって、一部のドメインは使用できないフォレストへの接続も許可されます。
+- 同期エンジンに組み込まれた[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)。
 
-**Features promoted from preview to GA:**
+**プレビューから GA に昇格した機能:**
 
-- [Device writeback](active-directory-aadconnect-feature-device-writeback.md).
-- [Directory extensions](active-directory-aadconnectsync-feature-directory-extensions.md).
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)。
+- [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md)。
 
-**New preview features:**
+**新しいプレビュー機能:**
 
-- The new default sync cycle interval is 30 minutes. Used to be 3 hours for all earlier releases. Adds support to change the [scheduler](active-directory-aadconnectsync-feature-scheduler.md) behavior.
+- 新しい既定の同期サイクル間隔は 30 分です。以前のすべてのリリースでは、3 時間でした。[スケジューラ](active-directory-aadconnectsync-feature-scheduler.md)の動作の変更がサポートされるようになりました。
 
-**Fixed issues:**
+**修正された問題:**
 
-- The verify DNS domains page didn't always recognize the domains.
-- Prompts for domain admin credentials when configuring ADFS .
-- The on-premises AD accounts are not recognized by the installation wizard if located in a domain with a different DNS tree than the root domain.
+- DNS ドメインの検証ページが、ドメインを認識できない場合がありました。
+- ADFS を構成するときに、ドメイン管理者の資格情報を求めるメッセージが表示されます。
+- オンプレミス AD アカウントが、ルート ドメインとは異なる DNS ツリーを持つドメイン内にある場合、インストール ウィザードがそのアカウントを認識できません。
 
-## <a name="1.0.9131.0"></a>1.0.9131.0
-Released: 2015 December
+## 1\.0.9131.0
+リリース日: 2015 年 12 月
 
-**Fixed issues:**
+**修正された問題:**
 
-- Password sync might not work when you change passwords in AD DS, but works when you do set password.
-- When you have a proxy server, authentication to Azure AD might fail during installation or un upgrade on the configuration page.
-- Updating from a previous release of Azure AD Connect with a full SQL Server will fail if you are not SA in SQL.
-- Updating from a previous release of Azure AD Connect with a remote SQL Server will show the error “Unable to access the ADSync SQL database”.
+- AD DS でパスワードを変更するときにはパスワードの同期が機能しない場合があるが、パスワードの設定時には機能する。
+- プロキシ サーバーがある場合、Azure AD に対する認証が、構成ページ上でのインストールまたはアップグレード中に失敗する場合がある。
+- SQL の SA でない場合、完全な SQL Server で以前のリリースの Azure AD Connect から更新すると失敗する。
+- リモートの SQL Server で以前のリリースの Azure AD Connect から更新すると、「ADSync SQL データベースにアクセスできません」というエラーが表示される。
 
-## <a name="1.0.9125.0"></a>1.0.9125.0
-Released: 2015 November
+## 1\.0.9125.0
+リリース: 2015 年 11 月
 
-**New features:**
+**新機能:**
 
-- Can reconfigure the ADFS to Azure AD trust.
-- Can refresh the Active Directory schema and regenerate Sync Rules.
-- Can disable a sync rule.
-- Can define "AuthoritativeNull" as a new literal in a Sync Rule.
+- ADFS から Azure AD に対する信頼を再構成できるようになりました。
+- Active Directory スキーマを更新し、同期規則を再生成できるようになりました。
+- 同期規則を無効にできるようになりました。
+- 同期規則の新しいリテラルとして "AuthoritativeNull" を定義できるようになりました。
 
-**New preview features:**
+**新しいプレビュー機能:**
 
-- [Azure AD Connect Health for sync](active-directory-aadconnect-health-sync.md).
-- Support for [Azure AD Domain Services](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) password synchronization.
+- [Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)。
+- [Azure AD Domain Services](active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords) のパスワード同期がサポートされました。
 
-**New supported scenario:**
+**新しくサポートされたシナリオ:**
 
-- Supports multiple on-premises Exchange organizations. See [Hybrid deployments with multiple Active Directory forests](https://technet.microsoft.com/library/jj873754.aspx) for more information.
+- 複数のオンプレミス Exchange 組織がサポートされました。詳細については、「[複数の Active Directory フォレストを伴うハイブリッド デプロイメント](https://technet.microsoft.com/library/jj873754.aspx)」を参照してください。
 
-**Fixed issues:**
+**修正された問題:**
 
-- Password synchronization issues:
-    - An object moved from out-of-scope to in-scope will not have its password synchronized. This incudes both OU and attribute filtering.
-    - Selecting a new OU to include in sync does not require a full password sync.
-    - When a disabled user is enabled the password does not sync.
-    - The password retry queue is infinite and the previous limit of 5,000 objects to be retired has been removed.
-    - [Improved troubleshooting](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization).
-- Not able to connect to Active Directory with Windows Server 2016 forest-functional level.
-- Not able to change the group used for group filtering after initial install.
-- Will no longer create a new user profile on the Azure AD Connect server for every user doing a password change with password writeback enabled.
-- Not able to use Long Integer values in Sync Rules scopes.
-- The checkbox "device writeback" remains disabled if there are unreachable domain controllers.
+- パスワード同期の問題:
+    - スコープ外からスコープ内に移動されたオブジェクトのパスワードは同期されなくなります。これには、OU と属性フィルターの両方が含まれます。
+    - 同期に含める新しい OU を選択する際に、完全なパスワード同期は必要ありません。
+    - 無効なユーザーが有効になっても、パスワードは同期されません。
+    - パスワード再試行キューは無制限です。5,000 個のオブジェクトを上限として削除されるという以前の制限は削除されました。
+    - [トラブルシューティングが改善されました](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)。
+- Windows Server 2016 フォレスト機能レベルを使用して Active Directory に接続することはできなくなりました。
+- 最初のインストール後にグループ フィルターに使用したグループを変更できなくなりました。
+- パスワード ライトバックを有効にした状態でパスワードを変更して、各ユーザーの Azure AD Connect の新しいユーザー プロファイルを作成することはできなくなりました。
+- 同期規則スコープに Long Integer 値を使用できなくなりました。
+- 到達不能なドメイン コントローラーがある場合、[デバイスの書き戻し] チェックボックスは無効なままです。
 
-## <a name="1.0.8667.0"></a>1.0.8667.0
-Released: 2015 August
+## 1\.0.8667.0
+リリース日: 2015 年 8 月
 
-**New features:**
+**新機能:**
 
-- The Azure AD Connect installation wizard is now localized to all Windows Server languages.
-- Added support for account unlock when using Azure AD password management.
+- Azure AD Connect インストール ウィザードが、すべての Windows Server 言語にローカライズされました。
+- Azure AD パスワード管理を使用する場合のアカウント ロック解除のサポートが追加されました。
 
-**Fixed issues:**
+**修正された問題:**
 
-- Azure AD Connect installation wizard crashes if another user continues installation rather than the person who first started the installation.
-- If a previous uninstall of Azure AD Connect fails to uninstall Azure AD Connect sync cleanly, it is not possible to reinstall.
-- Cannot install Azure AD Connect using Express install if the user is not in the root domain of the forest or if a non-English version of Active Directory is used.
-- If the FQDN of the Active Directory user account cannot be resolved, a misleading error message “Failed to commit the schema” is shown.
-- If the account used on the Active Directory Connector is changed outside the wizard, the wizard will fail on subsequent runs.
-- Azure AD Connect sometimes fails to install on a domain controller.
-- Cannot enable and disable “Staging mode” if extension attributes have been added.
-- Password writeback fails in some configuration because of a bad password on the Active Directory Connector.
-- DirSync cannot be upgraded if dn is used in attribute filtering.
-- Excessive CPU usage when using password reset.
+- インストールを開始したユーザー以外のユーザーがインストールを続けると、Azure AD Connect インストール ウィザードがクラッシュします。
+- 以前の Azure AD Connect のアンインストールで Azure AD Connect Sync を完全にアンインストールできなかった場合、再インストールすることができません。
+- ユーザーがフォレストのルート ドメインに属していないか、英語以外のバージョンの Active Directory が使用されている場合、高速インストールを使用して Azure AD Connect をインストールすることはできません。
+- Active Directory ユーザー アカウントの FQDN を解決できない場合、スキーマをコミットできなかったという誤ったエラー メッセージが表示されます。
+- Active Directory Connector で使用されているアカウントがウィザードの外部で変更された場合、ウィザードのその後の実行が失敗します。
+- ドメイン コントローラーで、Azure AD Connect のインストールが失敗することがあります。
+- 拡張属性が追加されている場合、"ステージング モード" の有効化や無効化ができません。
+- Active Directory Connector での正しくないパスワードのために、一部の構成ではパスワード ライトバックが失敗します。
+- 属性フィルターで dn が使用されている場合、DirSync をアップグレードできません。
+- パスワード リセットの使用時に CPU 使用量が過剰になります。
 
-**Removed preview features:**
+**削除されたプレビュー機能:**
 
-- The preview feature [User writeback](active-directory-aadconnect-feature-preview.md#user-writeback) was temporarily removed based on feedback from our preview customers. It will be re-added later when we have addressed the provided feedback.
+- [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback)プレビュー機能は、プレビューを利用されているお客様からのフィードバックに基づいて一時的に削除されました。このプレビュー機能は、提供されたフィードバックに対処した後で、再度追加されます。
 
-## <a name="1.0.8641.0"></a>1.0.8641.0
-Released: 2015 June
+## 1\.0.8641.0
+リリース日: 2015 年 6 月
 
-**Initial release of Azure AD Connect.**
+**Azure AD Connect の最初のリリースです。**
 
-Changed name from Azure AD Sync to Azure AD Connect.
+名前が Azure AD Sync から Azure AD Connect に変更されました。
 
-**New features:**
+**新機能:**
 
-- [Express settings](./aad-connect/active-directory-aadconnect-get-started-express.md) installation
-- Can [configure ADFS](./aad-connect/active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)
-- Can [upgrade from DirSync](./aad-connect/active-directory-aadconnect-dirsync-upgrade-get-started.md)
-- [Prevent accidental deletes](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
-- Introduced [staging mode](active-directory-aadconnectsync-operations.md#staging-mode)
+- [簡単設定](active-directory-aadconnect-get-started-express.md)を使用したインストール
+- [ADFS の構成](active-directory-aadconnect-get-started-custom.md#configuring-federation-with-ad-fs)
+- [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+- [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
+- [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)の導入
 
-**New preview features:**
+**新しいプレビュー機能:**
 
-- [User writeback](active-directory-aadconnect-feature-preview.md#user-writeback)
-- [Group writeback](active-directory-aadconnect-feature-preview.md#group-writeback)
-- [Device writeback](active-directory-aadconnect-feature-device-writeback.md)
-- [Directory extensions](active-directory-aadconnect-feature-preview.md#directory-extensions)
+- [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback)
+- [グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)
+- [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)
+- [ディレクトリ拡張機能](active-directory-aadconnect-feature-preview.md#directory-extensions)
 
 
-## <a name="1.0.494.0501"></a>1.0.494.0501
-Released: 2015 May
+## 1\.0.494.0501
+リリース日: 2015 年 5 月
 
-**New Requirement:**
+**新しい要件:**
 
-- Azure AD Sync now requires the .Net framework version 4.5.1 to be installed.
+- Azure AD Sync のインストールに .Net framework 4.5.1 が必要になりました。
 
-**Fixed issues:**
+**修正された問題:**
 
-- Password writeback from Azure AD is failing with a servicebus connectivity error.
+- Azure AD からのパスワード ライトバックが、servicebus 接続のエラーで失敗します。
 
-## <a name="1.0.491.0413"></a>1.0.491.0413
-Released: 2015 April
+## 1\.0.491.0413
+リリース日: 2015 年 4 月
 
-**Fixed issues and improvements:**
+**修正された問題と機能強化:**
 
-- The Active Directory Connector does not process deletes correctly if the recycle bin is enabled and there are multiple domains in the forest.
-- The performance of import operations has been improved for the Azure Active Directory Connector.
-- When a group has exceeded the membership limit (by default, the limit is set to 50k objects), the group was deleted in Azure Active Directory. The new behavior is that the group will remain, an error is thrown and no new membership changes will be exported.
-- A new object cannot be provisioned if a staged delete with the same DN is already present in the connector space.
-- Some objects are marked for being synchronized during a delta sync although there is no change staged on the object.
-- Forcing a password sync also removes the preferred DC list.
-- CSExportAnalyzer has problems with some objects states.
+- ごみ箱が有効になっていて、フォレスト内に複数のドメインがある場合、Active Directory Connector が削除を正しく処理しません。
+- Azure Active Directory Connector で、インポート操作のパフォーマンスが改善されました。
+- グループがメンバーシップの制限を超えた場合 (既定では、制限は 50 k オブジェクトに設定)、Azure Active Directory でグループが削除されます。新しい動作では、グループは残り、エラーがスローされ、新しいメンバーシップの変更はエクスポートされません。
+- 同じ DN のステージングされた削除がコネクタ スペース内に既に存在する場合、新しいオブジェクトをプロビジョニングすることはできません。
+- オブジェクトでステージングされている変更はありませんが、一部のオブジェクトが差分同期中に同期中としてマークされます。
+- パスワード同期を強制すると、優先 DC リストも削除されます。
+- CSExportAnalyzer には、一部のオブジェクトの状態に関する問題があります。
 
-**New features:**
+**新機能:**
 
-- A join can now connect to “ANY” object type in the MV.
+- 結合で、MV の "任意" のオブジェクト型に接続できるようになりました。
 
-## <a name="1.0.485.0222"></a>1.0.485.0222
-Released: 2015 February
+## 1\.0.485.0222
+リリース日: 2015 年 2 月
 
-**Improvements:**
+**機能強化:**
 
-- Improved import performance.
+- インポートのパフォーマンスが強化されました。
 
-**Fixed issues:**
+**修正された問題:**
 
-- Password Sync honors the cloudFiltered attribute used by attribute filtering. Filtered objects will no longer be in scope for password synchronization.
-- In rare situations where the topology had very many domain controllers, password sync doesn’t work.
-- “Stopped-server” when importing from the Azure AD Connector after device management has been enabled in Azure AD/Intune.
-- Joining Foreign Security Principals (FSPs) from multiple domains in same forest causes an ambiguous-join error.
+- パスワード同期が、属性フィルターで使用される cloudFiltered 属性を受け取ります。フィルター処理されたオブジェクトが、パスワード同期のスコープに含まれなくなります。
+- トポロジが非常に多くのドメイン コントローラーを持つまれな状況では、パスワード同期が機能しません。
+- Azure AD/Intune でデバイス管理が有効化された後、Azure AD Connector からのインポート時に、"サーバーが停止" します。
+- 同じフォレスト内の複数のドメインの外部セキュリティ プリンシパル (FSP) を結合すると、あいまい結合のエラーが発生します。
 
-## <a name="1.0.475.1202"></a>1.0.475.1202
-Released: 2014 December
+## 1\.0.475.1202
+リリース日: 2014 年 12 月
 
-**New features:**
+**新機能:**
 
-- It is now supported to do password synchronization with attribute based filtering. For more details, see [Password synchronization with filtering](active-directory-aadconnectsync-configure-filtering.md).
-- The attribute msDS-ExternalDirectoryObjectID is written back to AD. This adds support for Office 365 applications using OAuth2 to access both, Online and On-Premises mailboxes in a Hybrid Exchange Deployment.
+- 属性ベースのフィルターでのパスワード同期がサポートされるようになりました。詳細については、[フィルターによるパスワード同期](active-directory-aadconnectsync-configure-filtering.md)に関するページを参照してください。
+- 属性 msDS-ExternalDirectoryObjectID が AD に書き戻されます。これによって、ハイブリッド Exchange デプロイでオンラインとオンプレミスの両方のメールボックスにアクセスするために OAuth2 を使用する Office 365 アプリケーションのサポートが追加されます。
 
-**Fixed upgrade issues:**
+**修正されたアップグレードの問題:**
 
-- A newer version of the sign-in assistant is available on the server.
-- A custom installation path was used to install Azure AD Sync.
-- An invalid custom join criterion blocks the upgrade.
+- より新しいバージョンのサインイン アシスタントをサーバーで利用できます。
+- Azure AD Sync をインストールするために、カスタム インストール パスが使用されていました。
+- 無効なカスタム結合条件によって、アップグレードがブロックされます。
 
-**Other fixes:**
+**その他の修正:**
 
-- Fixed the templates for Office Pro Plus.
-- Fixed installation issues caused by user names that start with a dash.
-- Fixed losing the sourceAnchor setting when running the installation wizard a second time.
-- Fixed ETW tracing for password synchronization
+- Office Pro Plus 用のテンプレートが修正されました。
+- ダッシュで始まるユーザー名によって発生する、インストールの問題が修正されました。
+- インストール ウィザードを 2 回目に実行しているときに sourceAnchor 設定が失われる問題を修正しました。
+- パスワード同期の ETW トレースの問題が修正されました。
 
-## <a name="1.0.470.1023"></a>1.0.470.1023
-Released: 2014 October
+## 1\.0.470.1023
+リリース日: 2014 年 10 月
 
-**New features:**
+**新機能:**
 
-- Password synchronization from multiple on-premises AD to Azure AD.
-- Localized installation UI to all Windows Server languages.
+- 複数のオンプレミス AD から Azure AD へのパスワードの同期。
+- すべての Windows Server 言語にローカライズされたインストール UI。
 
-**Upgrading from AADSync 1.0 GA**
+**AADSync 1.0 GA からのアップグレード**
 
-If you already have Azure AD Sync installed, there is one additional step you have to take in case you have changed any of the out-of-box Synchronization Rules. After you have upgraded to the 1.0.470.1023 release, the synchronization rules you have modified are duplicated. For each modified Sync Rule do the following:
+Azure AD Sync が既にインストールされている場合、標準の同期規則を変更したのであれば、追加の手順が 1 つ必要になります。1.0.470.1023 リリースにアップグレードした後で、変更した同期規則は複製されます。変更された各同期規則で、次の操作を行ってください。
 
-- Locate the Sync Rule you have modified and take a note of the changes.
-- Delete the Sync Rule.
-- Locate the new Sync Rule created by Azure AD Sync and re-apply the changes.
+- 変更した同期規則を探して、変更内容をメモしておきます。
+- 同期規則を削除します。
+- Azure AD Sync によって作成された新しい同期規則を探して、変更を再適用します。
 
-**Permissions for the AD account**
+**AD アカウントのアクセス許可**
 
-The AD account must be granted additional permissions to be able to read the password hashes from AD. The permissions to grant are named “Replicating Directory Changes” and “Replicating Directory Changes All”. Both permissions are required to be able to read the password hashes
+AD アカウントには、AD からのパスワード ハッシュを読み取ることができるように、追加のアクセス許可を与える必要があります。付与するアクセス許可の名前は、[ディレクトリの変更のレプリケート] と [ディレクトリの変更をすべてにレプリケート] です。パスワード ハッシュを読み取るためには、両方のアクセス許可が必要です。
 
-## <a name="1.0.419.0911"></a>1.0.419.0911
-Released: 2014 September
+## 1\.0.419.0911
+リリース日: 2014 年 9 月
 
-**Initial release of Azure AD Sync.**
+**Azure AD Sync の最初のリリースです。**
 
-## <a name="next-steps"></a>Next steps
-Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
+## 次のステップ
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

@@ -1,13 +1,13 @@
 
 <properties
-    pageTitle="Add the HTTP + Swagger action in Logic apps | Microsoft Azure"
-    description="Overview of the HTTP + Swagger action and operations"
-    services=""
-    documentationCenter=""
-    authors="jeffhollan"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="ロジック アプリに HTTP + Swagger アクションを追加する | Microsoft Azure"
+	description="HTTP + Swagger アクションと操作の概要"
+	services=""
+	documentationCenter=""
+	authors="jeffhollan"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -18,121 +18,115 @@
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
+# HTTP + Swagger アクションの概要
 
-# <a name="get-started-with-the-http-+-swagger-action"></a>Get started with the HTTP + Swagger action
+HTTP + Swagger アクションでは、[Swagger ドキュメント](https://swagger.io)を使用して REST エンドポイントへのファースト クラス コネクタを作成できます。ロジック アプリ デザイナーの優れたエクスペリエンスを使用し、ロジック アプリを拡張して任意の REST エンドポイントを呼び出すこともできます。
 
-With the HTTP + Swagger action, you can create a first-class connector to any REST endpoint through a [Swagger document](https://swagger.io). You can also extend a logic app to call any REST endpoint with a first-class Logic App Designer experience.
-
-To get started with the HTTP + Swagger action in a logic app, see [Create a new logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+ロジック アプリで HTTP + Swagger アクションの使用を開始する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
 ---
 
-## <a name="use-http-+-swagger-as-a-trigger-or-an-action"></a>Use HTTP + Swagger as a trigger or an action
+## トリガーまたはアクションとしての HTTP + Swagger の使用
 
-The HTTP + Swagger trigger and action function the same as the [HTTP action](connectors-native-http.md) but provide a better design experience by showing the shape of the API and outputs in the designer from the [Swagger metadata](https://swagger.io). In addition, you can use HTTP + Swagger as a trigger. If you want to implement a polling trigger, it should follow the polling pattern that's described in [Creating a custom API to use with logic apps](../app-service-logic/app-service-logic-create-api-app.md#polling-triggers).
+HTTP + Swagger トリガーおよびアクションは [HTTP アクション](connectors-native-http.md)と同様に機能しますが、[Swagger メタデータ](https://swagger.io)を使用してデザイナーで API と出力の状態を表示することでデザイン エクスペリエンスが向上します。また、HTTP + Swagger をトリガーとして使用することもできます。ポーリング トリガーを実装する場合は、「[Logic Apps で使用するカスタム API の作成](../app-service-logic/app-service-logic-create-api-app.md#polling-triggers)」に記載されているポーリング パターンに従ってください。
 
-[Learn more about logic app triggers and actions.](connectors-overview.md)
+[ロジック アプリのトリガーとアクションの詳細についてはこちらを参照してください](connectors-overview.md)。
 
-Here's an example of how to use the HTTP + Swagger operation as an action in a workflow in a logic app.
+ロジック アプリでワークフローのアクションとして HTTP + Swagger 操作を使用する方法の例を次に示します。
 
-1. Select the **New Step** button.
-2. Select **Add an action**.
-3. In the action search box, type **swagger** to list the HTTP + Swagger action.
+1. **[新しいステップ]** をクリックします。
+2. **[アクションの追加]** を選択します。
+3. アクションの検索ボックスに「**swagger**」と入力して、HTTP + Swagger アクションを表示します。
 
-    ![Select HTTP + Swagger action](./media/connectors-native-http-swagger/using-action-1.png)
+	![HTTP + Swagger アクションの選択](./media/connectors-native-http-swagger/using-action-1.png)
 
-4. Type the URL for a Swagger document:
-    - To work from the Logic App Designer, the URL must be an HTTPS endpoint and have CORS enabled.
-    - If the Swagger document doesn't meet this requirement, you can use [Azure Storage with CORS enabled](#hosting-swagger-from-storage) to store the document.
-5. Click **Next** to read and render from the Swagger document.
-6. Add in any parameters that are required for the HTTP call.
+4. Swagger ドキュメントの URL を入力します。
+	- ロジック アプリ デザイナーで使用するには、この URL が HTTPS エンドポイントであり、CORS が有効になっている必要があります。
+	- Swagger ドキュメントがこの要件を満たしていない場合は、[CORS を有効にした Azure Storage](#hosting-swagger-from-storage) を使用してドキュメントを格納できます。
+5. **[次へ]** をクリックし、Swagger ドキュメントを読み込んで表示します。
+6. HTTP 呼び出しに必要なすべてのパラメーターを追加します。
 
-    ![Complete HTTP action](./media/connectors-native-http-swagger/using-action-2.png)
+	![Complete HTTP action](./media/connectors-native-http-swagger/using-action-2.png)
 
-1. Click **Save** on the upper-left corner of the toolbar, and your logic app will both save and publish (activate).
+1. ツール バーの左上隅にある **[保存]** をクリックすると、ロジック アプリが保存されて発行 (アクティブ化) されます。
 
-### <a name="host-swagger-from-azure-storage"></a>Host Swagger from Azure Storage
+### Azure Storage からの Swagger のホスト
 
-You might want to reference a Swagger document that's not hosted, or that doesn't meet the security and cross-origin requirements for the designer. To resolve this issue, you can store the Swagger document in Azure Storage and enable CORS to reference the document.  
+ホストされていない Swagger ドキュメントや、デザイナーのセキュリティとクロス オリジンの要件を満たしていない Swagger ドキュメントを参照することが必要になることがあります。この問題を解決するには、Swagger ドキュメントを Azure Storage に格納し、CORS を有効にすることで、ドキュメントを参照します。
 
-Here are the steps to create, configure, and store Swagger documents in Azure Storage:
+Azure Storage で Swagger ドキュメントを作成、構成し、格納する手順を次に示します。
 
-1. [Create an Azure storage account with Azure Blob storage](../storage/storage-create-storage-account.md). (To do this, set permissions to **Public Access**.)
-2. Enable CORS on the blob. You can use [this PowerShell script](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1) to configure that setting automatically.
-3. Upload the Swagger file into the blob. You can do this from the [Azure portal](https://portal.azure.com) or from a tool like [Azure Storage Explorer](http://storageexplorer.com/).
-1. Reference an HTTPS link to the document in Azure Blob storage. (The link follows the format `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*`.)
+1. [Azure BLOB ストレージでストレージ アカウントを作成します](../storage/storage-create-storage-account.md) (これを行うには、アクセス許可を **[パブリック アクセス]** に設定します)。
+2. BLOB で CORS を有効にします。[こちらの PowerShell スクリプト](https://github.com/logicappsio/EnableCORSAzureBlob/blob/master/EnableCORSAzureBlob.ps1)を使用して、この設定を自動的に構成できます。
+3. Swagger ファイルを BLOB にアップロードします。これは、[Azure ポータル](https://portal.azure.com)、または [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールから実行できます。
+1. Azure BLOB ストレージ内のドキュメントへの HTTPS リンクを参照します (リンクは `https://*storageAccountName*.blob.core.windows.net/*container*/*filename*` の形式に従います)。
 
 
 
-## <a name="technical-details"></a>Technical details
+## 技術的な詳細
 
-Following are the details for the triggers and actions that this HTTP + Swagger connector supports.
+この HTTP + Swagger コネクタでサポートされているトリガーとアクションの詳細を次に示します。
 
-## <a name="http-+-swagger-triggers"></a>HTTP + Swagger triggers
+## HTTP + Swagger トリガー
 
-A trigger is an event that can be used to start the workflow that's defined in a logic app. [Learn more about triggers.](connectors-overview.md) The HTTP + Swagger connector has one trigger.
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタにはトリガーが 1 つあります。
 
-|Trigger|Description|
+|トリガー|Description|
 |---|---|
-|HTTP + Swagger|Make an HTTP call and return the response content|
+|HTTP + Swagger|HTTP 呼び出しを実行し、応答コンテンツを返します|
 
-## <a name="http-+-swagger-actions"></a>HTTP + Swagger actions
+## HTTP + Swagger アクション
 
-An action is an operation that's carried out by the workflow that's defined in a logic app. [Learn more about actions.](connectors-overview.md) The HTTP + Swagger connector has one possible action.
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください。](connectors-overview.md) HTTP + Swagger コネクタには、使用可能なアクションが 1 つあります。
 
-|Action|Description|
+|アクション|Description|
 |---|---|
-|HTTP + Swagger|Make an HTTP call and return the response content|
+|HTTP + Swagger|HTTP 呼び出しを実行し、応答コンテンツを返します|
 
-### <a name="action-details"></a>Action details
+### アクションの詳細
 
-The HTTP + Swagger connector comes with one possible action. Following is information about each of the actions, their required and optional input fields, and the corresponding output details that are associated with their usage.
+HTTP + Swagger コネクタには、使用可能なアクションが 1 つ用意されています。各アクションの情報、必須および任意の入力フィールド、アクションの使用に伴う出力の詳細を次に示します。
 
-#### <a name="http-+-swagger"></a>HTTP + Swagger
+#### HTTP + Swagger
 
-Make an HTTP outbound request with assistance of Swagger metadata.
-An asterisk (*) means a required field.
+Swagger メタデータを使用して HTTP 送信要求を行います。アスタリスク (*) は、必須フィールドであることを意味します。
 
-|Display name|Property name|Description|
+|表示名|プロパティ名|Description|
 |---|---|---|
-|Method*|method|HTTP verb to use.|
-|URI*|uri|URI for the HTTP request.|
-|Headers|headers|A JSON object of HTTP headers to include.|
-|Body|body|The HTTP request body.|
-|Authentication|authentication|Authentication to use for request. [For more details, see HTTP](./connectors-native-http.md#authentication).|
+|メソッド*|静的メソッド|使用する HTTP 動詞|
+|URI*|uri|HTTP 要求の URI|
+|ヘッダー|headers|含める HTTP ヘッダーの JSON オブジェクト|
+|本文|body|HTTP 要求の本文|
+|認証|authentication|要求に使用する認証詳細については、[HTTP](./connectors-native-http.md#authentication) に関するページをご覧ください。|
 
-**Output details**
+**出力の詳細**
 
-HTTP response
+HTTP 応答
 
-|Property Name|Data type|Description|
+|プロパティ名|データ型|Description|
 |---|---|---|
-|Headers|object|Response headers|
-|Body|object|Response object|
-|Status Code|int|HTTP status code|
+|ヘッダー|オブジェクト|応答ヘッダー|
+|本文|オブジェクト|応答オブジェクト|
+|状態コード|int|HTTP 状態コード|
 
-### <a name="http-responses"></a>HTTP responses
+### HTTP 応答
 
-When making calls to various actions, you might get certain responses. Following is a table that outlines corresponding responses and descriptions.
+さまざまなアクションを呼び出すと、特定の応答を受け取る場合があります。次の表に、対応する応答と説明を示します。
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|202|Accepted|
-|400|Bad request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal server error. Unknown error occurred.|
+|202|承認済み|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました。|
 
 ---
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md) now. You can explore the other available connectors in logic apps by looking at our [list of APIs](apis-list.md).
+プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API のリスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

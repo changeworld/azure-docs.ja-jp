@@ -1,217 +1,214 @@
 
 
 
-Azure offers you great cloud solutions, built on virtual machines&mdash;based on the emulation of physical computer hardware&mdash;to enable agile movement of software deployments and dramatically better resource consolidation than physical hardware. In the past few years, largely thanks to  the [Docker](https://www.docker.com) approach to containers and the docker ecosystem, Linux container technology has dramatically expanded the ways you can develop and manage distributed software. Application code in a container is isolated from the host Azure VM as well as other containers on the same VM, which gives you more development and deployment agility at the application level&mdash;in addition to the agility that Azure VMs already give you.
+Azure は、物理コンピューター ハードウェアをエミュレートした仮想マシンを利用して、ソフトウェア デプロイメントの移動を迅速化し、物理ハードウェアよりも格段に効率的なリソース統合を可能にするすばらしいクラウド ソリューションです。この数年間、[Docker](https://www.docker.com) のコンテナー アプローチと Docker エコシステムが業界に大きな影響を与えたこともあり、Linux のコンテナー テクノロジは分散型ソフトウェアの開発や管理のあり方を大きく変えています。コンテナー内のアプリケーション コードは、ホストの Azure VM からだけでなく、同じ VM 上にあるその他のコンテナーからも分離されるため、Azure VM がもたらす開発やデプロイメントのアジリティをアプリケーション レベルでさらに高めることにつながります。
 
-**But that's old news.** The *new* news is that Azure offers you even more Docker goodness:
+**しかし、このことはもはやニュースではありません。** 注目すべきは、Docker がもたらす次のようなメリットを Azure で活用できるようになったということです。
 
-- [Many](../articles/virtual-machines/virtual-machines-linux-docker-machine.md) [different](../articles/virtual-machines/virtual-machines-linux-dockerextension.md) ways to create Docker hosts for containers to suit your situation
-- The [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) creates clusters of container hosts using orchestrators such as **marathon** and **swarm**.
-- [Azure Resource Manager](../articles/resource-group-overview.md) and [resource group templates](../articles/resource-group-authoring-templates.md) to simplify deploying and updating complex distributed applications
-- integration with a large array of both proprietary and open-source configuration management tools
+- 状況に応じて、[さまざま](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)[な](../articles/virtual-machines/virtual-machines-linux-dockerextension.md)方法で Docker ホストを作成できる
+- [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/) で **marathon** や **swarm** といったオーケストレーターを使用して、コンテナー ホストのクラスターを作成できる
+- [Azure リソース マネージャー](../articles/resource-group-overview.md)と[リソース グループ テンプレート](../articles/resource-group-authoring-templates.md)を使用して、複雑な分散アプリケーションのデプロイや更新を簡略化できる
+- 自社製かオープン ソースかを問わず、さまざまな構成管理ツールを統合できる
 
-And because you can programmatically create VMs and Linux containers on Azure, you can also use VM and container *orchestration* tools to create groups of Virtual Machines (VMs) and to deploy applications inside both Linux containers and now [Windows Containers](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview).
+また、VM や Linux コンテナーを Azure 上でコーディングできるので、VM とコンテナーの*オーケストレーション* ツールを使用して Virtual Machines (VM) のグループを作成し、Linux コンテナーと [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)の両方にアプリケーションをデプロイすることができます。
 
-This article not only discusses these concepts at a high level, it also contains tons of links to more information, tutorials, and products related to container and cluster usage on Azure. If you know all this, and just want the links, they're right here at [tools for working with containers](#tools-for-working-with-containers).
+この記事では、これらの技術の概念について俯瞰的に説明とともに、 Azure でのコンテナーとクラスターの使用に関連する詳細情報、チュートリアル、および製品へのリンクを紹介します。技術については既にご存知で、リンクだけを確認したいという方は[コンテナーを操作するためのツールに関するページ](#tools-for-working-with-containers)でご確認ください。
 
-## <a name="the-difference-between-virtual-machines-and-containers"></a>The difference between virtual machines and containers
+## 仮想マシンとコンテナーの違い
 
-Virtual machines run inside an isolated hardware virtualization environment provided by a [hypervisor](http://en.wikipedia.org/wiki/Hypervisor). In Azure, the [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) service handles all that for you: You just create Virtual Machines by choosing the operating system and configuring it to run the way you want&mdash;or by uploading your own custom VM image. Virtual Machines are a time-tested, "battle-hardened" technology, and there are many tools available to manage operating systems and to configure the applications you install and run. Anything running in a virtual machine is hidden from the host operating system and, from the point of view of an application or user running inside a virtual machine, the virtual machine appears to be an autonomous physical computer.
+仮想マシンは、[ハイパーバイザー](http://en.wikipedia.org/wiki/Hypervisor)によって提供される隔離されたハードウェア仮想化環境内で実行されます。Azure では、[Virtual Machines](https://azure.microsoft.com/services/virtual-machines/) サービスによってすべてが管理されるため、ユーザーはオペレーティング システムを選択し、必要に応じて構成を変更したり、独自のカスタム VM をアップロードするだけで Virtual Machines を作成できます。Virtual Machines は市場で長年使用され、その価値を広く認められているテクノロジであり、オペレーティング システムの管理やアプリケーションの構成を行うためのツールも多数提供されています。仮想マシンで実行されるプログラムはホスト オペレーティング システムからは見えず、仮想マシン内で実行されているアプリケーションやユーザーの観点から見ると、仮想マシンは自立した物理コンピューターのように見えます。
 
-[Linux containers](http://en.wikipedia.org/wiki/LXC)&mdash;which includes those created and hosted using docker tools, and there are other approaches&mdash;do not require or use a hypervisor to provide isolation. Instead, the container host uses the process and file system isolation features of the Linux kernel to expose to the container (and its application) only certain kernel features and its own isolated file system (at a minimum). From the point of view of an application running inside a container, the container appears to be a unique operating system instance. A contained application cannot see processes or any other resources outside of its container.
+[Linux コンテナー](http://en.wikipedia.org/wiki/LXC)は Docker などのツールを使用して作成、ホストされ、ハイパーバイザーによる分離機能を必要としません。代わりにコンテナー ホストによって、特定のカーネル機能と独自の分離型ファイル システムだけが (最小限の単位で) コンテナー (およびそのアプリケーション) に公開されます。コンテナーの内部で実行されるアプリケーションから見ると、コンテナーは独立したオペレーティング システム インスタンスのように見えます。内部のアプリケーションからは、コンテナーの外部にあるその他のプロセスやリソースは見えません。
 
-Because in this isolation and execution model the kernel of the Docker host computer is shared, and because the disk requirements of the container now do not include an entire operating system, both the start-up time of the container and the required disk storage overhead are much, much smaller.
+この分離型の実行モデルでは、Docker ホスト コンピューターのカーネルが共有され、コンテナーのディスク要件にオペレーティング システム全体を含める必要がなくなるため、コンテナーの起動時間と、必要なディスク ストレージのオーバーヘッドがかなり縮小されます。
 
-It's pretty cool.
+実に合理的です。
 
-Windows Containers provide the same advantages as Linux containers for applications that run on Windows. Windows Containers support the Docker image format and Docker API, but they can also be managed using PowerShell. Two container runtimes are available with Windows Containers, Windows Server Containers and Hyper-V Containers. Hyper-V Containers provide an additional layer of isolation by hosting each container in a super-optimized virtual machine. To learn more about Windows Containers see [About Windows Containers]( https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview). To try Windows Containers in Azure, see the [Windows Container Azure Quick Start]( https://msdn.microsoft.com/virtualization/windowscontainers/quick_start/azure_setup).
+Windows コンテナーは、Linux コンテナーと同じメリットを Windows 上のアプリケーションに提供するためのものです。Windows コンテナーは、Docker イメージのフォーマットと Docker API をサポートしていますが、PowerShell を使用して管理することもできます。2 つのコンテナーのランタイムは、Windows コンテナー、Windows コンテナー、Hyper-V コンテナーで使用可能です。Hyper-V コンテナーは、非常に強力に最適化された仮想マシンで各コンテナーをホストすることで分離のレイヤーを追加します。Windows コンテナーの詳細については、[Windows コンテナーに関するページ](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)をご覧ください。Azure で Windows コンテナーを試すには、[Windows コンテナー Azure クイック スタート](https://msdn.microsoft.com/virtualization/windowscontainers/quick_start/azure_setup)を参照してください。
 
-That's pretty cool, too.
+これも大きな魅力と言えます。
 
-### <a name="is-this-too-good-to-be-true?"></a>Is this too good to be true?
+### 話がうますぎるとお思いですか。
 
-Well, yes&mdash;and no. Containers, like any other technology, do not magically wipe away all the hard work required by distributed applications. Yet, at the same time containers do really change:
+確かに、メリットばかりを言い過ぎたかもしれません。コンテナーも他のテクノロジと同様、分散アプリケーションにまつわる面倒な作業をすべて魔法のように消してくれるわけではありません。しかし、次のようなメリットをもたらしてくれることは事実です。
 
-- how fast application code can be developed and shared widely
-- how fast and with what confidence it can be tested
-- how fast and with what confidence it can be deployed
+- アプリケーション コードをすばやく開発し、広範囲に共有できる
+- テストにかかる時間を短縮し、その信頼性を高めることができる
+- デプロイにかかるを短縮し、その信頼性を高めることができる
 
-That said, remember containers execute on a container host&mdash;an operating system, and in Azure that means an Azure Virtual Machine. Even if you already love the idea of containers, you're still going to need a VM infrastructure hosting the containers, but the benefits are that containers do not care on which VM they are running (although whether the container wants a Linux or Windows execution environment will be important, for example).
+ただし、コンテナーを実行するにはコンテナー ホスト (オペレーティング システム) が必要です。Azure でいうところの Azure 仮想マシンです。コンテナーのメリットを活用するには、コンテナーをホストする VM インフラストラクチャが必要なのです。しかし、コンテナーの利点は実行するための VM を選ばないという点にあります (コンテナーの実行環境として Linux と Windows のどちらが適しているか、などといったことは重要になりますが)。
 
-## <a name="what-are-containers-good-for?"></a>What are containers good for?
+## コンテナーのメリット
 
-They're great for many things, but they encourage&mdash;as do [Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) and [Azure Service Fabric](../articles/service-fabric/service-fabric-overview.md)&mdash;the creation of single-service, microservice-oriented distributed applications, in which application design is based on more small, composable parts rather than on larger, more strongly coupled components.
+さまざまなメリットが期待できますが、[Azure Cloud Services](https://azure.microsoft.com/services/cloud-services/) や [Azure Service Fabric](../articles/service-fabric/service-fabric-overview.md) のように、単一サービスやマイクロサービス指向の分散アプリケーションを効果的に作成できるのが第一のメリットです。これにより、大規模で結合性の強いコンポーネントではなく、より小規模な構成パーツによってアプリケーションを設計することができます。
 
-This is especially true in public cloud environments like Azure, in which you rent VMs when and where you want them. Not only do you get isolation and rapid deployment and orchestration tools, but you can make more efficient application infrastructure decisions.
+これは、必要な場所に必要なタイミングで VM をレンタルできる、Azure のようなパブリック クラウド環境においては特に有効です。分離性を確保し、デプロイメントを迅速化し、便利なオーケストレーション ツールを活用できるだけでなく、アプリケーション インフラストラクチャをより効率的に管理することができます。
 
-For example, you might currently have a deployment consisting of 9 Azure VMs of a large size for a highly-available, distributed application. If the components of this application can be deployed in containers, you might be able to use only 4 VMs and deploy your application components inside 20 containers for redundancy and load balancing.
+たとえば現在、高可用性を備えた大規模な分散アプリケーションのデプロイメントを、9 つの Azure VM で構成しているとします。このアプリケーションのコンポーネントをコンテナーでデプロイすれば、わずか 4 つの VM を使用して、20 個のコンテナー内にアプリケーション コンポーネントをデプロイし、冗長性と負荷分散を実現することができます。
 
-This is just an example, of course, but if you can do this in your scenario, you can adjust to usage spikes with more containers rather than more Azure VMs, and use the remaining overall CPU load much more efficiently than before.
+これは単なる例に過ぎませんが、組織のシナリオに合わせてこのようなデプロイメントを行えば、Azure VM ではなくコンテナーの追加によって処理パワーを調整し、残りの CPU パワーをより効率的に使用することができます。
 
-In addition, there are many scenarios that do not lend themselves to a microservices approach; you will know best whether microservices and containers will help you.
+またコンテナーは、マイクロサービス アプローチ以外にもさまざまなシナリオに適用できます。ここからは、マイクロサービスとコンテナーのメリットについてより具体的に説明していきます。
 
-### <a name="container-benefits-for-developers"></a>Container benefits for developers
+### 開発者にとってのコンテナーの利点
 
-In general, it's easy to see that container technology is a step forward, but there are more specific benefits as well. Let's take the example of Docker containers. This topic will not dive deeply into Docker right now (read [What is Docker?](https://www.docker.com/whatisdocker/) for that story, or [wikipedia](http://wikipedia.org/wiki/Docker_%28software%29)), but Docker and its ecosystem offer tremendous benefits to both developers and IT professionals.
+コンテナー テクノロジが新たなメリットをもたらすことは一般的な観点からも明らかですが、事業部単位でもさまざまなメリットが期待できます。Docker コンテナーの例で見てみましょう。このトピックでは Docker について深く掘り下げることはしませんが (詳細については、「[What is Docker?](https://www.docker.com/whatisdocker/)」や [Wikipedia](http://wikipedia.org/wiki/Docker_%28software%29) を参照してください)、Docker とそのエコシステムは開発者と IT プロフェッショナルに大きなメリットをもたらします。
 
-Developers take to Docker containers quickly, because above all it makes using Linux and Windows containers easy:
+Docker コンテナーは開発者の間で急速に普及していますが、これは、Linux および Windows コンテナーを使いやすくする次のようなメリットがあるためです。
 
-- They can use simple, incremental commands to create a fixed image that is easy to deploy and can automate building those images using a dockerfile
-- They can share those images easily using simple, [git](https://git-scm.com/)-style push and pull commands to [public](https://registry.hub.docker.com/) or [private docker registries](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)
-- They can think of isolated application components instead of computers
-- They can use a large number of tools that understand docker containers and different base images
+- シンプルなコマンドを使用して固定イメージを作成し、それらを簡単にデプロイできるだけでなく、Dockerfile を使用してそれらのイメージ作成を自動化することができる
+- シンプルな [Git](https://git-scm.com/) スタイルのコマンドを使用して、[パブリック](https://registry.hub.docker.com/)や[プライベートの Docker レジストリにイメージを](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)プッシュ/プルし、それらを簡単に共有できる
+- コンピューター単位ではなく、分離されたアプリケーション コンポーネント単位で開発が行える
+- さまざまなツールを使用して、Docker コンテナーや各種ベース イメージの構成を把握できる
 
-### <a name="container-benefits-for-operations-and-it-professionals"></a>Container benefits for operations and IT professionals
+### オペレーション スタッフや IT プロフェッショナルにとってのコンテナーの利点
 
-IT and operations professionals also benefit from the combination of containers and virtual machines.
+IT コンテナーと仮想マシンの組み合わせは、オペレーション スタッフや IT プロフェッショナルにもメリットをもたらします。
 
-- contained services are isolated from VM host execution environment
-- contained code is verifiably identical
-- contained services can be started, stopped, and moved quickly between development, test, and production environments
+- コンテナー内のサービスを VM ホストの実行環境から分離できる
+- コンテナー内のコードを完全に統一できる
+- コンテナー内のサービスをすばやく起動、停止できるだけでなく、開発環境、テスト環境、および運用環境間の移動もすばやく行える。
 
-Features like these&mdash;and there are more&mdash;excite established businesses, where professional information technology organizations have the job of fitting resources&mdash;including pure processing power&mdash;to the tasks required to not only stay in business, but increase customer satisfaction and reach. Small businesses, ISVs, and startups have exactly the same requirement, but they might describe it differently.
+これら機能は、老舗の大手企業にとっては特に魅力的なものです。このような企業の IT スタッフは、事業継続だけでなく、顧客満足度や顧客リーチの改善のために必要な各種のタスクに対し、処理パワーなどのリソースをバランスよく割り当てなければならないからです。小規模企業、ISV、新興企業などでも同様の要件はありますが、具体的な事情は多少異なるかもしれません。
 
-## <a name="what-are-virtual-machines-good-for?"></a>What are virtual machines good for?
+## 仮想マシンの役割
 
-Virtual machines provide the backbone of cloud computing, and that doesn't change. If virtual machines start more slowly, have a larger disk footprint, and do not map directly to a microservices architecture, they do have very important benefits:
+仮想マシンはクラウド コンピューティングのバックボーンを提供するものであり、そのことは今でも変わりません。仮想マシンは起動が遅く、ディスク フットプリントが大きく、マイクロサービス アーキテクチャに直接マップすることもできませんが、非常に重要な役割を担っています。
 
-1. By default, they have much more robust default security protections for host computer
-2. They support any major OS and application configurations
-3. They have longstanding tool ecosystems for command and control
-4. They provide the execution environment to host containers
+1. ホスト コンピューターに対する強力なセキュリティ保護機能を標準で備えている
+2. 主要な OS とアプリケーション構成をすべてサポートしている
+3. コマンドや管理ツールのエコシステムが長年にわたって整備されている
+4. コンテナーをホストするための実行環境を提供してくれる
 
-The last item is important, because a contained application still requires a specific operating system and CPU type, depending upon the calls the application will make. It's important to remember that you install containers on VMs because they contain the applications you want to deploy; containers are not replacements for VMs or operating systems.
+最後の項目は特に重要です。コンテナー内のアプリケーションでは、プロセスの呼び出し方法に応じて特定のオペレーティング システムや CPU タイプが必要になるからです。コンテナーをインストールするには、あくまでも VM が必要です。コンテナーはデプロイするアプリケーションの格納手段であり、VM やオペレーティング システムに取って代わるものではないのです。
 
-## <a name="high-level-feature-comparison-of-vms-and-containers"></a>High-level feature comparison of VMs and containers
+## VM とコンテナーの大まかな機能比較
 
-The following table describes at a very high level the kind of feature differences that&mdash;without much extra work&mdash;exist between VMs and Linux containers. Note that some features maybe more or less desirable depending upon your own application needs, and that as with all software, extra work provides increased feature support, especially in the area of security.
+次の表は、VM と Linux コンテナーの機能 の違いを、大規模な作業を伴わない機能に限って、きわめて大まかに示したものです。どちらの機能がより有効かは、組織のニーズによって変わってくる場合もあります。また、どのアプリケーションでも、追加作業によって機能のサポート レベルを向上させることは可能です (特にセキュリティ面)。
 
-|   Feature      | VMs | Containers  |
+| 機能 | VM | コンテナー |
 | :------------- |-------------| ----------- |
-| "Default" security support | to a greater degree | to a slightly lesser degree |
-| Memory on disk required | Complete OS plus apps | App requirements only |
-| Time taken to start up | Substantially Longer: Boot of OS plus app loading | Substantially shorter: Only apps need to start because kernel is already running  |
-| Portability | Portable With Proper Preparation | Portable within image format; typically smaller |
-| Image Automation | Varies widely depending on OS and apps | [Docker registry](https://registry.hub.docker.com/); others
+| "既定" のセキュリティ サポート | より充実している | 充実度においてやや劣る |
+| 必要なディスク上のメモリ | OS 全体とアプリ | アプリ要件のみ |
+| 起動にかかる時間 | 非常に長い: OS のブートとアプリの読み込み | 非常に短い: カーネルが既に実行されているため必要なのはアプリの起動のみ |
+| 移植性 | 適切な準備をすれば移植可能 | イメージ フォーマット内でのみ移植可能 (通常はより限定的) |
+| イメージの自動化 | OS やアプリによって大きく異なる | [Docker レジストリ](https://registry.hub.docker.com/)など
 
-## <a name="creating-and-managing-groups-of-vms-and-containers"></a>Creating and managing groups of VMs and containers
+## VM とコンテナーのグループ作成とその管理
 
-At this point, any architect, developer, or IT operations specialist might be thinking, "I can automate ALL of this; this really IS Data-Center-As-A-Service!".
+ここまでお読みになって、設計者、開発者、IT オペレーション スペシャリストの皆さんはこう思っているのではないでしょうか。「これなら何でも自動化できる。これこそ真の DCaaS (Data-Center-As-A-Service) だ」と。
 
-You're right, it can be, and there are any number of systems, many of which you may already use, that can either manage groups of Azure VMs and inject custom code using scripts, often with the [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) or the [CustomScriptingExtension for Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/). You can&mdash;and perhaps already have&mdash;automated your Azure deployments using PowerShell or Azure CLI scripts.
+その通りです。コンテナーにはそれだけの可能性があります。Azure VM のグループを管理したり、スクリプトを使用してカスタム コードを挿入できるシステムは既に多数存在しています (その多くは [CustomScriptingExtension for Windows](https://msdn.microsoft.com/library/azure/dn781373.aspx) や [CustomScriptingExtension for Linux](https://azure.microsoft.com/blog/2014/08/20/automate-linux-vm-customization-tasks-using-customscript-extension/) を使用したものです)。既に使用している方もいらっしゃるかもしれませんが、PowerShell や Azure CLI のスクリプトを使用すれば、Azure デプロイメントを自動化することもできます。
 
-These abilities are often then migrated to tools like [Puppet](https://puppetlabs.com/) and [Chef](https://www.chef.io/) to automate the creation of and configuration for VMs at scale. (Here are some links to [using these tools with Azure](#tools-for-working-with-containers).)
+また多くの場合、これらの機能は [Puppet](https://puppetlabs.com/) や [Chef](https://www.chef.io/) などのツールに移行され、VM の作成や構成を柔軟に自動化する目的に使用されます。(Azure でこれらのツールを使用する方法については、[こちら](#tools-for-working-with-containers)のリンクを参照してください。)
 
-### <a name="azure-resource-group-templates"></a>Azure resource group templates
+### Azure のリソース グループ テンプレート
 
-More recently, Azure released the [Azure resource management](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md) REST API, and updated PowerShell and Azure CLI tools to use it easily. You can deploy, modify, or redeploy entire application topologies using [Azure Resource Manager templates](../articles/resource-group-authoring-templates.md) with the Azure resource management API using:
+Azure では先ごろ、[Azure リソース管理](../articles/virtual-machines/virtual-machines-windows-compare-deployment-models.md) REST API と、この API を簡単に使用できるように更新された、PowerShell および Azure CLI ツールをリリースしました。[Azure リリース マネージャー テンプレート](../articles/resource-group-authoring-templates.md)と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
 
-- the [Azure portal using templates](https://github.com/Azure/azure-quickstart-templates)&mdash;hint, use the "DeployToAzure" button
-- the [Azure CLI](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)
-- the [Azure PowerShell modules](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)
+- [テンプレートを使用した Azure ポータル](https://github.com/Azure/azure-quickstart-templates)&mdash;"DeployToAzure" ボタンを使用するなど
+- [Azure CLI](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)
+- [Azure PowerShell モジュール](../articles/virtual-machines/virtual-machines-linux-cli-deploy-templates.md)
 
-### <a name="deployment-and-management-of-entire-groups-of-azure-vms-and-containers"></a>Deployment and management of entire groups of Azure VMs and containers
+### Azure VM とコンテナーのグループの一括的なデプロイメントと管理
 
-There are several popular systems that can deploy entire groups of VMs and install Docker (or other Linux container host systems) on them as an automatable group. For direct links, see the [containers and tools](#containers-and-vm-technologies) section, below. There are several systems that do this to a greater or lesser extent, and this list is not exhaustive. Depending upon your skill set and scenarios, they may or may not be useful.
+複数の VM グループを一括でデプロイし、それらのデプロイメントに Docker (またはその他の Linux コンテナー ホスト システム) をインストールして、自動化可能なグループにするための主なシステムを紹介します。ダイレクト リンクは、[コンテナーとツール](#containers-and-vm-technologies)のセクションを参照してください。機能の範囲はシステムによって異なります。また、ここに挙げるものがこの種のシステムのすべてというわけではありません。どのシステムが便利かは、ユーザーのスキル セットやシナリオによって変わってきます。
 
-Docker has its own set of VM-creation tools ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)) and a load-balancing, docker-container cluster management tool ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)). In addition, the [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) comes with default support for [`docker-compose`](https://docs.docker.com/compose/), which can deploy configured application containers across multiple containers.
+Docker は、独自の VM 作成ツール セット ([docker-machine](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)) を提供しています。また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
 
-In addition, you can try out [Mesosphere's Data Center Operating System (DCOS)](http://docs.mesosphere.com/install/azurecluster/). DCOS is based on the open-source [mesos](http://mesos.apache.org/) "distributed systems kernel" that enables you to treat your datacenter as one addressable service. DCOS has built-in packages for several important systems such as [Spark](http://spark.apache.org/) and [Kafka](http://kafka.apache.org/) (and others) as well as built-in services such as [Marathon](https://mesosphere.github.io/marathon/) (a container control system) and [Chronos](https://mesos.github.io/chronos/) (a distributed scheduler). Mesos was derived from lessons learned at Twitter, AirBnb, and other web-scale businesses. You can also use **swarm** as the orchestration engine.
+[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/) も有効なシステムです。DCOS は、[Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。また、**swarm** をオーケストレーション エンジンとして使用することもできます。
 
-Also, [kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) is an open-source system for VM and container group management derived from lessons learned at Google. You can even use [kubernetes with weave to provide networking support](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave).
+[Kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。[Kubernetes を Weave と併用して、ネットワーク サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
 
-[Deis](http://deis.io/overview/) is an open source "Platform-as-a-Service" (PaaS) that makes it easy to deploy and manage applications on your own servers. Deis builds upon Docker and CoreOS to provide a lightweight PaaS with a Heroku-inspired workflow. You can easily [create a 3-Node Azure VM group and install Deis](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md) on Azure and then [install a Hello World Go application](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md#deploy-and-scale-a-hello-world-application).
+[Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (Platform-as-a-Service) です。Deis はDocker と CoreOS をベースとしており、それによって、Heroku 風のワークフローを使用した軽量な PaaS を実現しています。Azure では、[3 ノードの Azure VM グループを簡単に作成して Deis をインストール](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)した後、[Hello World Go アプリケーションをインストール](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md#deploy-and-scale-a-hello-world-application)できます。
 
-[CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html), a Linux distribution with an optimized footprint, Docker support, and their own container system called [rkt](https://github.com/coreos/rkt), also has a container group management tool called [fleet](https://coreos.com/using-coreos/clustering/).
+[CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](https://coreos.com/using-coreos/clustering/) というコンテナー グループ管理ツールも備えています。
 
-Ubuntu, another very popular Linux distribution, supports Docker very well, but also supports [Linux (LXC-style) clusters](https://help.ubuntu.com/lts/serverguide/lxc.html).
+Ubuntu も非常にポピュラーな Linux ディストリビューションで、Docker のサポートに優れているほか、[Linux (LXC スタイル) クラスター](https://help.ubuntu.com/lts/serverguide/lxc.html)もサポートしています 。
 
-## <a name="tools-for-working-with-azure-vms-and-containers"></a>Tools for working with Azure VMs and containers
+## Azure VM とコンテナーを操作するためのツール
 
-Working with containers and Azure VMs uses tools. This section provides a list of only some of the most useful or important concepts and tools about containers, groups, and the larger configuration and orchestration tools used with them.
+コンテナーと Azure VM の操作には各種のツールを使用します。このセクションでは、コンテナー、グループ、またはより大きな構成を扱ううえで特に有用かつ重要な概念とツールを紹介するとともに、それらを操作するためのオーケストレーション ツールを列挙します。
 
-> [AZURE.NOTE] This area is changing amazingly rapidly, and while we will do our best to keep this topic and its links up to date, it might well be an impossible task. Make sure you search on interesting subjects to keep up to date!
+> [AZURE.NOTE] この分野のトレンドはきわめて目まぐるしく変化するため、マイクロソフトではトピックとそのリンクをできる限り最新に維持するよう努めていますが、更新が追いつかない場合もあります。興味のあるテーマについては、ご自身でも検索を行い、最新の情報をチェックしてください。
 
-### <a name="containers-and-vm-technologies"></a>Containers and VM technologies
+### コンテナーと VM のテクノロジ
 
-Some Linux container technologies:
+主な Linux コンテナー テクノロジ:
 
 - [Docker](https://www.docker.com)
 - [LXC](https://linuxcontainers.org/)
-- [CoreOS and rkt](https://github.com/coreos/rkt)
+- [CoreOS と rkt](https://github.com/coreos/rkt)
 - [Open Container Project](http://opencontainers.org/)
 - [RancherOS](http://rancher.com/rancher-os/)
 
-Windows Container links:
+Windows コンテナー関連のリンク:
 
-- [Windows Containers](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)
+- [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)
 
-Visual Studio Docker links:
+Visual Studio Docker 関連のリンク:
 
 - [Visual Studio 2015 RC Tools for Docker - Preview](https://visualstudiogallery.msdn.microsoft.com/6f638067-027d-4817-bcc7-aa94163338f0)
 
-Docker tools:
+Docker ツール:
 
-- [Docker daemon](https://docs.docker.com/installation/#installation)
-- Docker clients
-    - [Windows Docker Client on Chocolatey](https://chocolatey.org/packages/docker)
-    - [Docker installation instructions](https://docs.docker.com/installation/#installation)
+- [Docker デーモン](https://docs.docker.com/installation/#installation)
+- Docker クライアント
+	- [Chocolatey の Windows Docker クライアント](https://chocolatey.org/packages/docker)
+	- [Docker のインストール手順](https://docs.docker.com/installation/#installation)
 
 
 Docker on Microsoft Azure:
 
-- [Docker VM Extension for Linux on Azure](../articles/virtual-machines/virtual-machines-linux-dockerextension.md)
-- [Azure Docker VM Extension User Guide](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
-- [Using the Docker VM Extension from the Azure Command-line Interface (Azure CLI)](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)
-- [Using the Docker VM Extension from the Azure portal](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)
-- [How to use docker-machine on Azure](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)
-- [How to use docker with swarm on Azure](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)
-- [Get Started with Docker and Compose on Azure](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md)
-- [Using an Azure resource group template to create a Docker host on Azure quickly](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
-- [The built-in support for `compose`](https://github.com/Azure/azure-docker-extension#11-public-configuration-keys) for contained applications
-- [Implement a Docker private registry on Azure](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)
+- [Azure での Linux 用 Docker VM 拡張機能](../articles/virtual-machines/virtual-machines-linux-dockerextension.md)
+- [Azure の Docker 用 VM 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
+- [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-cli-use-docker.md)
+- [Azure ポータルでの Docker VM 拡張機能の使用](../articles/virtual-machines/virtual-machines-linux-classic-portal-use-docker.md)
+- [Azure で docker マシンを使用する方法](../articles/virtual-machines/virtual-machines-linux-docker-machine.md)
+- [Azure 上の Swarm における Docker の使用方法](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md)
+- [Azure での Docker および Compose の概要](../articles/virtual-machines/virtual-machines-linux-docker-compose-quickstart.md)
+- [Azure のリソース グループ テンプレートを使用して Azure 上に Docker ホストをすばやく作成する方法](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)
+- コンテナー内アプリケーションのための[組み込み `compose` サポート](https://github.com/Azure/azure-docker-extension#11-public-configuration-keys)
+- [Azure への独自のプライベート Docker Registry のデプロイ](../articles/virtual-machines/virtual-machines-linux-docker-registry-in-blob-storage.md)
 
-Linux distributions and Azure examples:
+Linux ディストリビューションと Azure での導入例:
 
 - [CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html)
 
-Configuration, cluster management, and container orchestration:
+構成、クラスター管理、およびコンテナー オーケストレーション:
 
-- [Fleet on CoreOS](https://coreos.com/using-coreos/clustering/)
+- [CoreOS の Fleet](https://coreos.com/using-coreos/clustering/)
 
--   Deis
-    - [Create a 3-Node Azure VM group, install Deis, and start a Hello World Go application](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)
+-	Deis
+	- [3 ノードの Azure VM グループを作成し、Deis をインストールして、Hello World Go アプリケーションを起動する方法](../articles/virtual-machines/virtual-machines-linux-deis-cluster.md)
 
--   Kubernetes
-    - [Complete guide to automated Kubernetes cluster deployment with CoreOS and Weave](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
-    - [Kubernetes Visualizer](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/)
+-	Kubernetes
+	- [CoreOS と Weave を使用した Kubernetes クラスターのデプロイの自動化に関する包括的なガイド](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
+	- [Kubernetes Visualizer](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/)
 
--   [Mesos](http://mesos.apache.org/)
-    -   [Mesosphere's Data Center Operating System (DCOS)](http://beta-docs.mesosphere.com/install/azurecluster/)
+-	[Mesos](http://mesos.apache.org/)
+	-	[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://beta-docs.mesosphere.com/install/azurecluster/)
 
--   [Jenkins](https://jenkins-ci.org/) and [Hudson](http://hudson-ci.org/)
-    - [Blog: Jenkins Slave Plug-in for Azure](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
-    - [GitHub repo: Jenkins Storage Plug-in for Azure](https://github.com/jenkinsci/windows-azure-storage-plugin)
-    - [Third Party: Hudson Slave Plug-in for Azure](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
-    - [Third Party: Hudson Storage Plug-in for Azure](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
+-	[Jenkins](https://jenkins-ci.org/) と [Hudson](http://hudson-ci.org/)
+	- [ブログ: Azure 用 Jenkins スレーブ プラグイン](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
+	- [GitHub のリポジトリ: Azure 用 Jenkins ストレージ プラグイン](https://github.com/jenkinsci/windows-azure-storage-plugin)
+	- [サード パーティ: Azure 用 Hudson スレーブ プラグイン](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
+	- [サード パーティ: Azure 用 Hudson ストレージ プラグイン](https://github.com/hudson3-plugins/windows-azure-storage-plugin)
 
--   [Azure Automation](https://azure.microsoft.com/services/automation/)
-    - [Video: How to Use Azure Automation with Linux VMs](http://channel9.msdn.com/Shows/Azure-Friday/Azure-Automation-104-managing-Linux-and-creating-Modules-with-Joe-Levy)
+-	[Azure Automation](https://azure.microsoft.com/services/automation/)
+	- [ビデオ: Linux VM で Azure Automation を使用する方法](http://channel9.msdn.com/Shows/Azure-Friday/Azure-Automation-104-managing-Linux-and-creating-Modules-with-Joe-Levy)
 
--   Powershell DSC for Linux
-    - [Blog: How to do Powershell DSC for Linux](http://blogs.technet.com/b/privatecloud/archive/2014/05/19/powershell-dsc-for-linux-step-by-step.aspx)
-    - [GitHub: Docker Client DSC](https://github.com/anweiss/DockerClientDSC)
+-	Linux 用の Powershell DSC
+    - [ビデオ: Linux 用 Powershell DSC を実行する方法](http://blogs.technet.com/b/privatecloud/archive/2014/05/19/powershell-dsc-for-linux-step-by-step.aspx)
+    - [GitHub: Docker クライアント DSC](https://github.com/anweiss/DockerClientDSC)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Check out [Docker](https://www.docker.com) and [Windows Containers](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview).
+[Docker](https://www.docker.com) と [Windows コンテナー](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)についてチェックしてください。
 
 <!--Anchors-->
 [microservices]: http://martinfowler.com/articles/microservices.html
 [microservice]: http://martinfowler.com/articles/microservices.html
 <!--Image references-->
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

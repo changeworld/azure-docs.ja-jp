@@ -1,63 +1,58 @@
 <properties
-    pageTitle="Manage Azure Key Vault using Azure Automation | Microsoft Azure"
-    description="Learn about how the Azure Automation service can be used to manage Azure Key Vault."
-    services="Key-Vault, automation"
-    documentationCenter=""
-    authors="mgoedtel"
-    manager="jwhit"
-    editor=""/>
+	pageTitle="Azure Automation を使用した Azure Key Vault の管理 | Microsoft Azure"
+	description="Azure Automation サービスを使用して Azure Key Vault を管理する方法について説明します。"
+	services="Key-Vault, automation"
+	documentationCenter=""
+	authors="mgoedtel"
+	manager="jwhit"
+	editor=""/>
 
 <tags
-    ms.service="key-vault"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/29/2016"
-    ms.author="magoedte;csand"/>
+	ms.service="key-vault"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/29/2016"
+	ms.author="magoedte;csand"/>
+
+#Azure Automation を使用した Azure Key Vault の管理
+
+このガイドでは、Azure Automation サービスと、このサービスを使用して Azure Key Vault でのキーとシークレットの管理を簡略化する方法について紹介します。
+
+## Azure Automation とは
+
+[Azure Automation](../automation/automation-intro.md) は、プロセスの自動化と必要な状態の構成によってクラウド管理を簡略化するための Azure サービスです。Azure Automation を使用して手動タスク、繰り返しタスク、実行時間の長いタスク、エラーが発生しやすいタスクを自動化し、信頼性と効率性を向上して組織のゴール達成までの時間を短縮できます。
+
+Azure Automation は、ニーズに対応可能な信頼性と可用性の高いワークフロー実行エンジンを提供します。Azure Automation では、サード パーティ製のシステムによって手動でプロセスを開始したり、必要なときに正確にタスクが起動されるようにスケジュールされた間隔でプロセスを開始できます。
+
+Azure Automation でクラウド管理タスクを自動実行すれば、運用上のオーバーヘッドが削減され、IT と DevOps スタッフの負担が軽減されるため、ビジネス価値の向上にフォーカスすることができます。
 
 
-#<a name="managing-azure-key-vault-using-azure-automation"></a>Managing Azure Key Vault using Azure Automation
+## Azure Automation を Azure Key Vault の管理に役立てる方法
 
-This guide will introduce you to the Azure Automation service and how it can be used to simplify management of your keys and secrets in Azure Key Vault.
+[Azure Key Vault コマンドレット](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4)および [Azure Classic Key Vault コマンドレット](https://msdn.microsoft.com/library/azure/dn868052.aspx)を使用することにより、Azure Automation で Key Vault を管理できます。クラシック Key Vault を管理するための Azure モジュールは Azure Automation で自動的に使用でき、[AzureRM-KeyVault モジュール](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4)を Azure Automation にインポートできるので、サービス内で Key Vault 管理タスクの多くを実行できます。Azure Automation 内のこれらのコマンドレットと別の Azure サービスのコマンドレットを組み合わせて、Azure サービスおよびサード パーティ システム全体の複雑なタスクを自動化することもできます。
 
-## <a name="what-is-azure-automation?"></a>What is Azure Automation?
+Azure Key Vault コマンドレットを使用すると、次のタスクを実行できます。
 
-[Azure Automation](../automation/automation-intro.md) is an Azure service for simplifying cloud management through process automation and desired state configuration. Using Azure Automation, manual, repeated, long-running, and error-prone tasks can be automated to increase reliability, efficiency, and time to value for your organization.
+- キー コンテナーを作成して構成する
+- キーを作成またはインポートする
+- シークレットを作成または更新する
+- キーの属性を更新する
+- キーまたはシークレットを取得する
+- キーまたはシークレットを削除する
 
-Azure Automation provides a highly-reliable, highly-available workflow execution engine that scales to meet your needs. In Azure Automation, processes can be kicked off manually, by 3rd-party systems, or at scheduled intervals so that tasks happen exactly when needed.
+PowerShell を使用して Key Vault を管理するいくつかの例を次に示します。
 
-Reduce operational overhead and free up IT and DevOps staff to focus on work that adds business value by moving your cloud management tasks to be run automatically by Azure Automation.
-
-
-## <a name="how-can-azure-automation-help-manage-azure-key-vault?"></a>How can Azure Automation help manage Azure Key Vault?
-
-Key Vault can be managed in Azure Automation by using the [AzureRM Key Vault cmdlets] (https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) and [Azure Classic Key Vault cmdlets](https://msdn.microsoft.com/library/azure/dn868052.aspx). The Azure module for managing classic Key Vault is available automatically in Azure Automation, and you can import the [AzureRM-KeyVault module](https://www.powershellgallery.com/packages/AzureRM.KeyVault/1.1.4) into Azure Automation, so that you can perform many of your Key Vault management tasks within the service. You can also pair these cmdlets in Azure Automation with the cmdlets for other Azure services, to automate complex tasks across Azure services and 3rd party systems.
-
-With the Azure Key Vault cmdlets you can perform these tasks among others: 
-
-- Create and configure a key vault
-- Create or import a key
-- Create or update a secret
-- Update attributes of a key
-- Get a key or secret
-- Delete a key or secret
-
-Here are some examples of using PowerShell to manage Key Vault:  
-
-* [Azure Key Vault - Step by Step](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step)
-* [Setting Up and Configuring an Azure Key Vault](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
+* [Azure Key Vault - Step by Step (Azure Key Vault - ステップ バイ ステップ)](https://blogs.technet.microsoft.com/kv/2015/06/02/azure-key-vault-step-by-step)
+* [Setting Up and Configuring an Azure Key Vault (Azure Key Vault のセットアップと構成)](https://www.simple-talk.com/cloud/platform-as-a-service/setting-up-and-configuring-an-azure-key-vault)
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now that you've learned the basics of Azure Automation and how it can be used to manage Azure Key Vault, follow these links to learn more about Azure Automation.
+ここまで、Azure Automation の基本と Azure Automation を使用して Azure Key Vault を管理する方法について説明しました。Azure Automation の詳細については、次の各リンクを参照してください。
 
-* See the Azure Automation [Getting Started Tutorial](../automation/automation-first-runbook-graphical.md).
-* See the [Azure Key Vault PowerShell scripts](https://gallery.technet.microsoft.com/scriptcenter/site/search?query=azure%20key%20vault&f%5B0%5D.Value=azure%20key%20vault&f%5B0%5D.Type=SearchText&ac=5).
+* Azure Automation の[作業開始のチュートリアル](../automation/automation-first-runbook-graphical.md)に関するページを参照してください。
+* [Azure Key Vault の PowerShell スクリプト](https://gallery.technet.microsoft.com/scriptcenter/site/search?query=azure%20key%20vault&f%5B0%5D.Value=azure%20key%20vault&f%5B0%5D.Type=SearchText&ac=5)に関するページを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

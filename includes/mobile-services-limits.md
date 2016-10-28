@@ -1,20 +1,17 @@
 
-| TIER: | FREE | BASIC | STANDARD |
+| レベル: | 無料 | 基本 | 標準 |
 |----|----|----|----|
-| API Calls | 500 K | 1.5 M / unit | 15 M / unit |
-| Active Devices | 500 | Unlimited | Unlimited |
-| Scale | N/A | Up to 6 units | Unlimited units |
-| Push Notifications | Notification Hubs Free Tier included, up to 1 M pushes | Notification Hubs Basic Tier included, up to 10 M pushes | Notification Hubs Standard Tier included, up to 10 M pushes |
-| Real time messaging/<br/>Web Sockets | Limited | 350 / mobile service | Unlimited |
-| Offline synchronizations | Limited | Included | Included |
-| Scheduled jobs  | Limited | Included | Included |
-| SQL Database (required) <br/>Standard rates apply for additional capacity | 20 MB included | 20 MB included | 20 MB included |
-| CPU capacity | 60 minutes / day | Unlimited | Unlimited |
-| Outbound data transfer | 165 MB per day (daily Rollover) | Included | Included |
+| API 呼び出し | 500 K | 1\.5 M/ユニット | 15 M/ユニット |
+| アクティブなデバイス | 500 | 無制限 | 無制限 |
+| スケール | 該当なし | 最大 6 ユニット | 無制限のユニット |
+| プッシュ通知 | Notification Hubs の Free レベルが付属、最大で 1 M のプッシュ | Notification Hubs の Basic レベルが付属、最大で 10 M のプッシュ | Notification Hubs の Standard レベルが付属、最大で 10 M のプッシュ |
+| リアルタイムのメッセージング/<br/>Web ソケット | 制限あり | 350/モバイル サービス | 無制限 |
+| オフライン同期 | 制限あり | あり | あり |
+| スケジュールされたジョブ | 制限あり | あり | あり |
+| SQL Database (必須)<br/>追加の容量には標準料金が適用される | 20 MB が含まれる | 20 MB が含まれる | 20 MB が含まれる |
+| CPU の使用率 | 60 分/日 | 無制限 | 無制限 |
+| 送信データ転送 | 1 日 (1 日のロール オーバー) 165 MB | あり | あり |
 
-For additional details on these limits and for information on pricing, see [Mobile Services Pricing](https://azure.microsoft.com/pricing/details/mobile-services/). 
+これらの制限に関する詳細と価格の詳細については、「[Mobile Services 料金](https://azure.microsoft.com/pricing/details/mobile-services/)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

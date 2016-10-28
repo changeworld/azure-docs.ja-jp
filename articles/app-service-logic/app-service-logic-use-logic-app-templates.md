@@ -1,6 +1,6 @@
 <properties
- pageTitle="Logic App templates | Microsoft Azure"
- description="Learn how to use pre-created Logic app templates to help you get started"
+ pageTitle="ロジック アプリ テンプレート | Microsoft Azure"
+ description="事前に作成されているロジック アプリ テンプレートを使用して開始する方法について説明します"
  authors="kevinlam1"
  manager="dwrede"
  editor=""
@@ -8,69 +8,59 @@
  documentationCenter=""/>
 
 <tags
-    ms.service="app-service-logic"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/24/2016"
-    ms.author="klam"/>
+	ms.service="app-service-logic"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/24/2016"
+	ms.author="klam"/>
 
+# ロジック アプリ テンプレート
 
-# <a name="logic-app-templates"></a>Logic App templates
+## ロジック アプリ テンプレートとは
 
-## <a name="what-are-logic-app-templates"></a>What are logic app templates
+ロジック アプリ テンプレートは、あらかじめ作成されたロジック アプリで、これを使用すると独自のワークフローの作成をすばやく開始できます。
 
-A logic app template is a pre-built logic app that you can use to quickly get started creating your own workflow. 
+これらのテンプレートは、ロジック アプリを使用して構築できるさまざまなパターンを見つけるのに適した方法です。これらのテンプレートは、そのまま使用することも、自分のシナリオに合わせて変更することもできます。
 
-These templates are a good way to discover various patterns that can be built using logic apps. You can either use these templates as-is or modify them to fit your scenario.
+## 使用可能なテンプレートの概要
 
-## <a name="overview-of-available-templates"></a>Overview of available templates
+ロジック アプリ プラットフォームでは、現在、使用可能な多くのテンプレートが発行されています。一部のカテゴリの例と、そのカテゴリで使用されるコネクタの種類を次に示します。
 
-There are many available templates currently published in the logic app platform. Some example categories, as well as the type of connectors used in them, are listed below.
+### エンタープライズ クラウド テンプレート
+エンタープライズ クラウドのニーズに応じた Dynamics CRM、Salesforce、Box、Azure BLOB などのコネクタを統合するテンプレートです。これらのテンプレートでできることの例として、潜在顧客の整理や企業のファイル データのバックアップなどがあります。
 
-### <a name="enterprise-cloud-templates"></a>Enterprise cloud templates
-Templates that integrate Dynamics CRM, Salesforce, Box, Azure Blob, and other connectors for your enterprise cloud needs. Some examples of what can be done with these templates include organizing your leads and backing up your corporate file data.
+### Enterprise Integration Pack テンプレート
+VETER (検証、抽出、変換、強化、ルーティング) パイプラインの構成、AS2 経由での X12 EDI ドキュメントの受信と XML への変換、X12 メッセージと AS2 メッセージの処理。
 
-### <a name="enterprise-integration-pack-templates"></a>Enterprise integration pack templates
-Configurations of VETER (validate, extract, transform, enrich, route) pipelines, receiving an X12 EDI document over AS2 and transforming it to XML, as well as X12 and AS2 message handling.
+### プロトコル パターン テンプレート
+これらのテンプレートは、HTTP 経由の要求と応答や FTP と SFTP 間の統合など、プロトコル パターンを含むロジック アプリで構成されます。これらをそのまま使用するか、より複雑なプロトコル パターンを作成するための基礎として使用します。
 
-### <a name="protocol-pattern-templates"></a>Protocol pattern templates
-These templates consist of logic apps that contain protocol patterns such as request-response over HTTP as well as integrations across FTP and SFTP. Use these as they exist, or as a basis for creating more complex protocol patterns.  
+### 個人的生産性テンプレート
+個人的生産性の向上に役立つパターンには、毎日のアラームを設定するテンプレート、重要な作業項目を To Do リストに変換するテンプレート、長期にわたる冗長なタスクを 1 人のユーザーの承認手順に自動化するテンプレートが含まれます。
 
-### <a name="personal-productivity-templates"></a>Personal productivity templates
-Patterns to help improve personal productivity include templates that set daily reminders, turn important work items into to-do lists, and automate lengthy tasks down to a single user approval step.
+### コンシューマー クラウド テンプレート
+Twitter、Slack、電子メールなどのソーシャル メディア サービスと統合し、最終的にソーシャル メディア マーケティング戦略を強化できるシンプルなテンプレートです。これには、従来繰り返しタスクに費やしていた時間を節約することで生産性の向上に役立つ、クラウドのコピーなどのテンプレートも含まれます。
 
-### <a name="consumer-cloud-templates"></a>Consumer cloud templates
-Simple templates that integrate with social media services such as Twitter, Slack, and email, ultimately capable of strengthening social media marketing initiatives. These also include templates such as cloudy copying, which can help increase productivity by saving time spent on traditionally repetitive tasks. 
+## テンプレートを使用したロジック アプリの作成方法 
 
-## <a name="how-to-create-a-logic-app-using-a-template"></a>How to create a logic app using a template 
+ロジック アプリ テンプレートの使用を開始するには、ロジック アプリ デザイナーに移動します。既存のロジック アプリを開いてデザイナーを起動すると、ロジック アプリは自動的にデザイナー ビューに読み込まれます。一方、新しいロジック アプリを作成する場合は、次の画面が表示されます。![](../../includes/media/app-service-logic-templates/template7.png)
 
-To get started using a logic app template, go into the logic app designer. If you're entering the designer by opening an existing logic app, the logic app automatically loads in your designer view. However, if you're creating a new logic app, you see the screen below.  
- ![](../../includes/media/app-service-logic-templates/template7.png)  
+この画面で、空のロジック アプリを使用するか、あらかじめ作成されているテンプレートを使用するかを選択できます。テンプレートのいずれかを選択すると、追加情報が表示されます。この例では、"*新しいファイルが Dropbox に作成されたときにそのファイルを OneDrive にコピーする*" テンプレートを使用します。![](../../includes/media/app-service-logic-templates/template2.png)
 
-From this screen, you can either choose to start with a blank logic app or a pre-built template. If you select one of the templates, you are provided with additional information. In this example, we use the *When a new file is created in Dropbox, copy it to OneDrive* template.  
- ![](../../includes/media/app-service-logic-templates/template2.png)  
+このテンプレートを使用することにした場合は、*[このテンプレートを使用する]* ボタンを選択するだけです。テンプレートで使用するコネクタに基づいて自身のアカウントにサインインするよう求められます。また、これらのコネクタとの接続を既に確立している場合は、次に示すように [続行] を選択できます。![](../../includes/media/app-service-logic-templates/template3.png)
 
-If you choose to use the template, just select the *use this template* button. You'll be asked to sign in to your accounts based on which connectors the template utilizes. Or, if you've previously established a connection with these connectors, you can select continue as seen below.  
- ![](../../includes/media/app-service-logic-templates/template3.png)  
+接続を確立して *[続行]* を選択すると、ロジック アプリがデザイナー ビューで開きます。![](../../includes/media/app-service-logic-templates/template4.png)
 
-After establishing the connection and selecting *continue*, the logic app opens in designer view.  
- ![](../../includes/media/app-service-logic-templates/template4.png)  
+上記の例では、多くのテンプレートと同様に、必須プロパティ フィールドには、コネクタ内で値が設定されているものもありますが、ロジック アプリを適切にデプロイできるように値の入力が必要なフィールドもあります。いくつかのフィールドに値を入力しないままデプロイしようとすると、エラー メッセージで通知されます。
 
-In the example above, as is the case with many templates, some of the mandatory property fields may be filled out within the connectors; however, some might still require a value before being able to properly deploy the logic app. If you try to deploy without entering some of the missing fields, you'll be notified with an error message.
+テンプレート ビューアーに戻る場合は、上部のナビゲーション バーの *[テンプレート]* ボタンを選択します。テンプレート ビューアーに戻ると、保存されていない作業は失われます。テンプレート ビューアーに戻る前に、このことを通知する警告メッセージが表示されます。![](../../includes/media/app-service-logic-templates/template5.png)
 
-If you wish to return to the template viewer, select the *Templates* button in the top navigation bar. By switching back to the template viewer, you lose any unsaved progress. Prior to switching back into template viewer, you'll see a warning message notifying you of this.  
- ![](../../includes/media/app-service-logic-templates/template5.png)  
+## テンプレートから作成したロジック アプリをデプロイする方法
 
-## <a name="how-to-deploy-a-logic-app-created-from-a-template"></a>How to deploy a logic app created from a template
+テンプレートを読み込んで必要な変更を行ったら、左上隅にある [保存] ボタンをクリックします。これにより、ロジック アプリが保存され、発行されます。![](../../includes/media/app-service-logic-templates/template6.png)
 
-Once you have loaded your template and made any desired changes, select the save button in the upper left corner. This saves and publishes your logic app.  
- ![](../../includes/media/app-service-logic-templates/template6.png)  
+既存のロジック アプリ テンプレートにさらに手順を追加する方法や一般的な編集を行う方法の詳細については、[ロジック アプリの作成](app-service-logic-create-a-logic-app.md)に関するページを参照してください。
 
-If you would like more information on how to add more steps into an existing logic app template, or make edits in general, read more at [Create a logic app](app-service-logic-create-a-logic-app.md).
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Understanding the OAuth2 implicit grant flow in Azure Active Directory | Microsoft Azure"
-   description="Learn more about Azure Active Directory's implementation of the OAuth2 implicit grant flow, and whether it's right for your application."
+   pageTitle="Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて | Microsoft Azure"
+   description="OAuth2 の暗黙的な許可フローの Azure Active Directory の実装の詳細と、これが適切なアプリケーションについて説明します。"
    services="active-directory"
    documentationCenter="dev-center-name"
    authors="vibronet"
@@ -16,52 +16,51 @@
    ms.date="08/17/2016"
    ms.author="vittorib;bryanla"/>
 
+# Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 
-# <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-(ad)"></a>Understanding the OAuth2 implicit grant flow in Azure Active Directory (AD)
+OAuth2 の暗黙的な許可は、OAuth2 仕様のセキュリティ問題を最も多く含むアクセス許可であることで知られています。それでも、ADAL JS によって実装されるアプローチであり、SPA アプリケーションを作成するときにお勧めするアプローチでもあります。何のためでしょう。 これはすべてトレードオフの問題です。結局のところ、暗黙的な許可が、ブラウザーで JavaScript を使用して Web API を使用するアプリケーションのために行うことができる最善のアプローチだからです。
 
-The OAuth2 implicit grant is notorious for being the grant with the longest list of security concerns in the OAuth2 specification. And yet, that is the approach implemented by ADAL JS and the one we recommend when writing SPA applications. What gives? It’s all a matter of tradeoffs: and as it turns out, the implicit grant is the best approach you can pursue for applications that consume a Web API via JavaScript from a browser.
+## OAuth2 の暗黙的な許可とは
 
-## <a name="what-is-the-oauth2-implicit-grant?"></a>What is the OAuth2 implicit grant?
+典型的な [OAuth2 認証コード付与](https://tools.ietf.org/html/rfc6749#section-1.3.1)は、2 つの別個のエンドポイントを使用する認証付与です。承認エンドポイントはユーザーによる操作の段階で使用され、その結果、承認コードが生成されます。続いて、このコードをアクセス トークン (多くの場合は更新トークンも) と交換するために、トークン エンドポイントがクライアントによって使用されます。Web アプリケーションは、承認サーバーがクライアントを認証できるように、トークン エンドポイントに独自のアプリケーション資格情報を示す必要があります。
 
-The quintessential [OAuth2 authorization code grant](https://tools.ietf.org/html/rfc6749#section-1.3.1) is the authorization grant which uses two separate endpoints. The authorization endpoint is used for the user interaction phase, which results in an authorization code. The token endpoint is then used by the client for exchanging the code for an access token, and often a refresh token as well. Web applications are required to present their own application credentials to the token endpoint, so that the authorization server can authenticate the client.
+[OAuth2 の暗黙的な許可](https://tools.ietf.org/html/rfc6749#section-1.3.2)は、トークン エンドポイントにアクセスしたり、クライアント アプリケーションを認証したりすることなく、クライアントがアクセス トークン ([OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html) の場合は id\_token) を承認エンドポイントから直接取得できるようにするバリアントです。このバリアントは、特に Web ブラウザーで実行される JavaScript ベースのアプリケーションを想定したものです。元の OAuth2 仕様では、トークンは URI フラグメントとして返されます。これにより、クライアントの JavaScript コードでトークン ビットを使用できるようになりますが、サーバーへのリダイレクトには含まれないことが保証されます。ブラウザーを使用してトークンを返すと、承認エンドポイントから直接リダイレクトされます。これには、クロス オリジン呼び出しに関する要件がなくなるという利点もあります。クロス オリジン呼び出しは、JavaScript アプリケーションがトークン エンドポイントにアクセスしなければならない場合に必要になるものです。
 
-The [OAuth2 implicit grant](https://tools.ietf.org/html/rfc6749#section-1.3.2) is a variant allowing a client to obtain an access token (and id_token, in the case of [OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html)) directly from the authorization endpoint, without contacting the token endpoint nor authenticating the client application. This variant was specifically designed for JavaScript based applications running in a Web browser: in the original OAuth2 specification, tokens are returned in a URI fragment. That makes the token bits available to the JavaScript code in the client, but it guarantees they won’t be included in redirects toward the server. Returning tokens via browser redirects directly from the authorization endpoint. It also has the advantage of eliminating any requirements for cross origin calls, which are necessary if the JavaScript application is required to contact the token endpoint.
+OAuth2 の暗黙的な許可の重要な特性は、このフローでクライアントに更新トークンが返されないという事実です。次のセクションで説明するとおり、これは本当は必要なく、実際にはセキュリティ上の問題になることがあります。
 
-An important characteristic of the OAuth2 implicit grant is the fact that such flows never return refresh tokens to the client. As we will see in the next section, that isn’t really necessary and would in fact be a security issue.
+## OAuth2 の暗黙的な許可の適切なシナリオ
 
-## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Suitable scenarios for the OAuth2 implicit grant
+OAuth2 の仕様自体で明らかにされているとおり、暗黙的な許可はユーザー エージェント アプリケーション (つまり、ブラウザー内で実行される JavaScript アプリケーション) を実現にするために考案されました。このようなアプリケーションに特徴的なのは、サーバー リソース (通常は Web API) にアクセスするため、そしてアプリケーション UX を適切に更新するために、JavaScript コードが使用されるという点です。Gmail や Outlook Web Access のようなアプリケーションを考えてみてください。受信トレイからメッセージを選択したときに、メッセージ視覚化パネルのみが変更されて新しい選択内容が表示され、ページの残りの部分は変更されません。これは、ユーザー操作ごとにページ全体がポストバックされ、新しいサーバー応答によりページ全体がレンダリングされる、従来のリダイレクト ベースの Web アプリとは対照的です。
 
-As the OAuth2 specification itself declares, the implicit grant has been devised to enable user-agent applications – that is to say, JavaScript applications executing within a browser. The defining characteristic of such applications is that JavaScript code is used for accessing server resources (typically a Web API) and for updating the application UX accordingly. Think of applications like Gmail or Outlook Web Access: when you select a message from your inbox, only the message visualization panel changes to display the new selection, while the rest of the page remains unmodified. This is in contrast with traditional redirect-based Web apps, where every user interaction results in a full page postback and a full page rendering of the new server response.
+JavaScript ベースのアプローチを全面的に採用したアプリケーションのことを、シングル ページ アプリケーション (SPA) と呼びます。この考え方では、アプリケーションは最初の HTML ページおよび関連する JavaScript のみに作用し、後続のすべての操作は、JavaScript を介して実行される Web API 呼び出しによって行われます。ただし、ハイブリッド アプローチも珍しくはありません。このアプローチでは、アプリケーションはほとんどの場合ポストバックに基づきますが、JS 呼び出しを実行することもあります。暗黙的フローの使用方法に関する議論は、ハイブリッド アプローチにも当てはまります。
 
-Applications that take the JavaScript based approach to its extreme are called Single Page Applications, or SPAs: the idea is that those applications only serve an initial HTML page and associated JavaScript, with all subsequent interactions being driven by Web API calls performed via JavaScript. However, hybrid approaches, where the application is mostly postback-driven but performs occasional JS calls, are not uncommon – the discussion about implicit flow usage is relevant for those as well.
+リダイレクト ベースのアプリケーションでは通常、Cookie を使用して要求をセキュリティ保護します。ただし、このアプローチは JavaScript アプリケーションではうまくいきません。Cookie はその生成元のドメインに対してのみ機能しますが、JavaScript 呼び出しは他のドメインにリダイレクトされる可能性があるためです。これは実際、多くの場合に発生します。Microsoft Graph API、Office API、Azure API を呼び出すアプリケーションを考えてみてください。これらの API はいずれもアプリケーションが動作するドメインの外部にあります。JavaScript アプリケーションでは、バックエンドを一切持たず、サード パーティの Web API に 100% 依存してビジネス機能を実装する傾向が強まっています。
 
-Redirect-based applications typically secure their requests via cookies, however, that approach does not work as well for JavaScript applications. Cookies only work against the domain they have been generated for, while JavaScript calls might be directed toward other domains. In fact, that will frequently be the case: think of applications invoking Microsoft Graph API, Office API, Azure API – all residing outside the domain from where the application is served. A growing trend for JavaScript applications is to have no backend at all, relying 100% on 3rd party Web APIs to implement their business function.
+現時点で推奨される Web API 呼び出しの保護方法は、OAuth2 べアラー トークンのアプローチを使用する方法です。このアプローチでは、すべての呼び出しに OAuth2 のアクセス トークンが付随します。Web API は受信したアクセス トークンを調べ、アクセス トークン内に必要なスコープが見つかった場合に、要求された操作へのアクセス許可を与えます。暗黙的フローは、JavaScript アプリケーションが Web API 用のアクセス トークンを取得するための便利なメカニズムを提供するものであり、Cookie に関してさまざまなメリットがあります。
 
-Currently, the preferred method of protecting calls to a Web API is to use the OAuth2 bearer token approach, where every call is accompanied by an OAuth2 access token. The Web API examines the incoming access token and, if it finds in it the necessary scopes, it grants access to the requested operation. The implicit flow provides a convenient mechanism for JavaScript applications to obtain access tokens for a Web API, offering numerous advantages in respect to cookies:
+- クロス オリジン呼び出しをしなくても、トークンを確実に取得できます。トークンが返されるリダイレクト URI の登録が必須であるため、トークンが置換されないことが保証されます。
+- JavaScript アプリケーションは、ドメインの制限なしに、対象とする Web API の数だけ、必要な数のアクセス トークンを取得できます。
+- セッションやローカル ストレージなどの HTML5 機能ではトークンのキャッシュと有効期間管理にフル コントロールを許可しますが、Cookie の管理はアプリにとって非透過的です。
+- アクセス トークンはクロスサイト リクエスト フォージェリ (CSRF) 攻撃をあまり受けません。
 
-- Tokens can be reliably obtained without any need for cross origin calls – mandatory registration of the redirect URI to which tokens are return guarantees that tokens are not displaced
-- JavaScript applications can obtain as many access tokens as they need, for as many Web APIs they target – with no restriction on domains
-- HTML5 features like session or local storage grant full control over token caching and lifetime management, whereas cookies management is opaque to the app
-- Access tokens aren’t susceptible to Cross-site request forgery (CSRF) attacks
+暗黙的な許可フローでは、主にセキュリティ上の理由から、更新トークンを発行しません。更新トークンはアクセス トークンほどスコープが狭義ではないため、多くの権限を付与すると、リークされた場合のダメージが大きくなります。暗黙的フローでは、トークンは URL の形式で配信されるため、傍受されるリスクが認証コード付与よりも高くなります。
 
-The implicit grant flow does not issue refresh tokens, mostly for security reasons. A refresh token isn’t as narrowly scoped as access tokens, granting far more power hence inflicting far more damage in case it is leaked out. In the implicit flow, tokens are delivered in the URL, hence the risk of interception is higher than in the authorization code grant.
+ただし、JavaScript アプリケーションには、ユーザーに資格情報を繰り返し求めずにアクセス トークンを更新するための、自由に使用可能な別のメカニズムがあることに注意してください。アプリケーションは非表示の iframe を使用して、Azure AD の承認エンドポイントに対して新しいトークン要求を実行します。ブラウザーが Azure AD ドメインに対してアクティブなセッション (読み取り: セッション Cookie あり) を持っている限り、この認証要求は正常に行われ、ユーザーの操作は必要ありません。
 
-However, note that a JavaScript application has another mechanism at its disposal for renewing access tokens without repeatedly prompting the user for credentials. The application can use a hidden iframe to perform new token requests against the authorization endpoint of Azure AD: as long as the browser still has an active session (read: has a session cookie) against the Azure AD domain, the authentication request can successfully occur without any need for user interaction. 
+このモデルにより、JavaScript アプリケーションは独立してアクセス トークンを更新できるようになるほか、(ユーザーが事前に同意している場合は) 新しい API の新しいアクセス トークンを取得することさえ可能になります。これにより、更新トークンなどの高価値のアーティファクトを取得、管理、保護する負担を増やさずに済みます。サイレント更新を可能にするアーティファクト、Azure AD のセッション Cookie は、アプリケーションの外部で管理されます。このアプローチのもう 1 つの利点は、いずれかのブラウザー タブで実行されている、Azure AD にサインインしているいずれかのアプリケーションを使用して、ユーザーが Azure AD からサインアウトできることです。サインアウトすると、Azure AD のセッション Cookie が削除され、JavaScript アプリケーションは自動的に、サインアウトしたユーザーのトークンを更新できなくなります。
 
-This model grants the JavaScript application the ability to independently renew access tokens and even acquire new ones for a new API (provided that the user previously consented for them. This avoids the added burden of acquiring, maintaining and protecting a high value artifact such as a refresh token. The artifact which makes the silent renewal possible, the Azure AD session cookie, is managed outside of the application. Another advantage of this approach is a user can sign out from Azure AD, using any of the applications signed into Azure AD, running in any of the browser tabs. This results in the deletion of the Azure AD session cookie, and the JavaScript application will automatically lose the ability to renew tokens for the signed out user.
+## 暗黙的な許可に適切なアプリ
 
-## <a name="is-the-implicit-grant-suitable-for-my-app?"></a>Is the implicit grant suitable for my app?
+暗黙的な許可では、他の許可方法よりも多くのリスクが生じます。注意を払う必要がある領域が詳しく解説されています (たとえば「[Misuse of Access Token to Impersonate Resource Owner in Implicit Flow (暗黙的フローでの偽装リソース所有者に対するアクセス トークンの誤用)][OAuth2-Spec-Implicit-Misuse]」、「[OAuth 2.0 Threat Model and Security Considerations (OAuth 2.0 の脅威モデルとセキュリティの考慮事項)][OAuth2-Threat-Model-And-Security-Implications]」などを参照)。ただし、よりリスクが高いプロファイルは、多くの場合、リモート リソースによってブラウザーに対して処理されるアクティブ コードを実行するアプリケーションを有効にしなければならないという事実に起因します。SPA アーキテクチャを計画していて、バックエンド コンポーネントがない場合、または JavaScript を使用して Web API を呼び出そうとしている場合は、トークンの取得に暗黙的フローを使用することをお勧めします。
 
-The implicit grant presents more risks than other grants. The areas you need to pay attention to are well documented (see for example [Misuse of Access Token to Impersonate Resource Owner in Implicit Flow][OAuth2-Spec-Implicit-Misuse] and [OAuth 2.0 Threat Model and Security Considerations][OAuth2-Threat-Model-And-Security-Implications]). However, the higher risk profile is largely due to the fact that it is meant to enable applications that execute active code, served by a remote resource to a browser. If you are planning an SPA architecture, have no backend components or intend to invoke a Web API via JavaScript, use of the implicit flow for token acquisition is recommended.
+アプリケーションがネイティブ クライアントの場合は、暗黙的フローはあまり向いていません。ネイティブ クライアントのコンテキストには Azure AD のセッション Cookie がないので、アプリケーションには存続期間の長いセッションを維持する手段がありません。つまり、アプリケーションは新しいリソースのアクセス トークンを取得する場合、繰り返しユーザーに求めることになります。
 
-If your application is a native client, the implicit flow isn’t a great fit. The absence of the Azure AD session cookie in the context of a native client deprives your application from the means of maintaining a long lived session. Which means your application will repeatedly prompt the user when obtaining access tokens for new resources.
+バックエンドを含む Web アプリケーションを開発しており、そのバックエンド コードから API を使用する場合も、暗黙的フローはあまり向いていません。他の方法の方がはるかに便利です。たとえば、OAuth2 クライアント資格情報付与では、ユーザー委任とは対照的に、アプリケーション自体に割り当てられているアクセス許可を反映したトークンを取得できます。これは、ユーザーがセッションにアクティブに関与していない場合などでも、クライアントがプログラムによるリソース アクセスを維持できることを意味します。メリットはそれだけにとどまりません。このような付与では、セキュリティ保証が強化されます。たとえば、アクセス トークンがユーザーのブラウザーを通過せず、ブラウザーの履歴に保存されるなどのリスクがありません。また、クライアント アプリケーションは、トークンの要求時に強力な認証を実行できます。
 
-If you are developing a Web application which includes a backend, and consuming an API from its backend code, the implicit flow is also not a good fit. Other grants give you far more power. For example, the OAuth2 client credentials grant provides the ability to obtain tokens that reflect the permissions assigned to the application itself, as opposed to user delegations. This means the client has the ability to maintain programmatic access to resources even when a user is not actively engaged in a session, and so on. Not only that, but such grants give higher security guarantees. For instance, access tokens never transit through the user browser, they don’t risk being saved in the browser history, and so on. The client application can also perform strong authentication when requesting a token.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
-
-- For a complete list of developer resources, including reference information for the protocols and OAuth2 authorization grant flows support by Azure AD, refer to the [Azure AD Developer's Guide][AAD-Developers-Guide]
-- See [How to integrate an application with Azure AD] [ACOM-How-To-Integrate] for additional depth on the application integration process.
+- Azure AD によってサポートされるプロトコルや OAuth2 承認付与フローなどの開発者向けリソースの一覧については、[Azure Active Directory 開発者ガイド][AAD-Developers-Guide]を参照してください。
+- アプリケーションの統合プロセスの詳細については、[アプリケーションを Azure AD と統合する方法についてのページ][ACOM-How-To-Integrate]を参照してください。
 
 <!--Image references-->
 
@@ -69,12 +68,7 @@ If you are developing a Web application which includes a backend, and consuming 
 [AAD-Developers-Guide]: active-directory-developers-guide.md
 [ACOM-How-And-Why-Apps-Added-To-AAD]: active-directory-how-applications-are-added.md
 [ACOM-How-To-Integrate]: active-directory-how-to-integrate.md
-[OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16 
+[OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
 [OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

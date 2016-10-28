@@ -1,13 +1,10 @@
-Resource|Default Limit|Maximum Limit
+リソース|既定の制限|上限
 ---|---|---
-[Virtual machines](../articles/virtual-machines/virtual-machines-linux-about.md) per cloud service<sup>1</sup>|50|50
-Input endpoints per cloud service<sup>2</sup>|150|150
+クラウド サービスあたりの[仮想マシン数](../articles/virtual-machines/virtual-machines-linux-about.md) <sup>1</sup>|50|50
+クラウド サービスあたりの入力エンドポイント数 <sup>2</sup>|150|150
 
-<sup>1</sup>Virtual machines created in Service Management (instead of Resource Manager) are automatically stored in a cloud service. You can add more virtual machines to that cloud service for load balancing and availability. See  [How to Connect Virtual Machines with a Virtual Network or Cloud Service](../articles/virtual-machines/virtual-machines-linux-classic-connect-vms.md).
+<sup>1</sup>サービス管理 (リソース マネージャーではなく) で作成された仮想マシンは自動的にクラウド サービスに格納されます。より多くの仮想マシンをそのクラウド サービスに追加することで、負荷分散と可用性を実現できます。「[Virtual Machines を Virtual Network または Cloud Service と接続する方法](../articles/virtual-machines/virtual-machines-linux-classic-connect-vms.md)」を参照してください。
 
-<sup>2</sup>Input endpoints allow communications to a virtual machine from outside the virtual machine's cloud service. Virtual machines in the same cloud service or virtual network can automatically communicate with each other. See [How to Set Up Endpoints to a Virtual Machine](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md). 
+<sup>2</sup>入力エンドポイントは、仮想マシンのクラウド サービスの外部から仮想マシンへの通信を可能にします。同じクラウド サービスまたは仮想ネットワーク内の仮想マシンは自動的に相互に通信できます。「[仮想マシンに対してエンドポイントを設定する方法](../articles/virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0323_2016-->

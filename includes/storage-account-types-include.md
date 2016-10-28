@@ -1,32 +1,27 @@
-There are two types of storage accounts:
+ストレージ アカウントには、次の 2 種類があります。
 
-### <a name="general-purpose-storage-accounts"></a>General-purpose Storage Accounts
+### 汎用ストレージ アカウント
 
-A general-purpose storage account gives you access to Azure Storage services such as Tables, Queues, Files, Blobs and Azure virtual machine disks under a single account. This type of storage account has two performance tiers:
+汎用ストレージ アカウントを使用すると、1 つのアカウントにあるテーブル、キュー、ファイル、BLOB、Azure 仮想マシン ディスクなどの Azure Storage サービスにアクセスできます。この種類のストレージ アカウントには、次の 2 つのパフォーマンス レベルがあります。
 
-- A standard storage performance tier which allows you to store Tables, Queues, Files, Blobs and Azure virtual machine disks.
-- A premium storage performance tier which currently only supports Azure virtual machine disks. See [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../articles/storage/storage-premium-storage.md) for an in-depth overview of Premium storage.
+- テーブル、キュー、ファイル、BLOB、および Azure 仮想マシン ディスクを格納できる、Standard Storage パフォーマンス レベル。
+- 現在、Azure 仮想マシン ディスクのみをサポートしている、Premium Storage パフォーマンス レベル。Premium Storage の詳細については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/storage-premium-storage.md)」をご覧ください。
 
-### <a name="blob-storage-accounts"></a>Blob Storage Accounts
+### BLOB ストレージ アカウント
 
-A Blob storage account is a specialized storage account for storing your unstructured data as blobs (objects) in Azure Storage. Blob storage accounts are similar to your existing general-purpose storage accounts and share all the great durability, availability, scalability, and performance features that you use today including 100% API consistency for block blobs and append blobs. For applications requiring only block or append blob storage, we recommend using Blob storage accounts.
+BLOB ストレージ アカウントとは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。BLOB ストレージ アカウントは、既存の汎用ストレージ アカウントと同様で、現在使用されているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。
 
-> [AZURE.NOTE] Blob storage accounts support only block and append blobs, and not page blobs.
+> [AZURE.NOTE] BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB のみをサポートします。ページ BLOB はサポートしません。
 
-Blob storage accounts expose the **Access Tier** attribute which can be specified during account creation and modified later as needed. There are two types of access tiers that can be specified based on your data access pattern:
+BLOB ストレージ アカウントは、**アクセス層**属性を公開します。この属性は、アカウント作成時に指定し、必要に応じて後で変更できます。アクセス層には次の 2 つの種類があり、データ アクセス パターンに応じて指定することができます。
 
-- A **Hot** access tier which indicates that the objects in the storage account will be more frequently accessed. This allows you to store data at a lower access cost.
-- A **Cool** access tier which indicates that the objects in the storage account will be less frequently accessed. This allows you to store data at a lower data storage cost.
+- **ホット** アクセス層。ストレージ アカウント内のオブジェクトが頻繁にアクセスされることを示します。より低いアクセス コストで、データを格納することができます。
+- **クール** アクセス層。ストレージ アカウント内のオブジェクトが低い頻度でアクセスされることを示します。より低いデータ ストレージ コストで、データを格納することができます。
 
-If there is a change in the usage pattern of your data, you can also switch between these access tiers at any time. Changing the access tier may result in additional charges. Please see [Pricing and billing for Blob storage accounts](../articles/storage/storage-blob-storage-tiers.md#pricing-and-billing) for more details.
+データの使用パターンが変化した場合は、いつでもこれらのアクセス層を切り替えることができます。アクセス層を変更すると、追加料金が発生することがあります。詳細については、[BLOB ストレージ アカウントの価格と課金](../articles/storage/storage-blob-storage-tiers.md#pricing-and-billing)に関するセクションを参照してください。
 
-For more details on Blob storage accounts, see [Azure Blob Storage: Cool and Hot tiers](../articles/storage/storage-blob-storage-tiers.md).
+BLOB ストレージ アカウントの詳細については、「[Azure Blob Storage: クール層とホット層](../articles/storage/storage-blob-storage-tiers.md)」を参照してください。
 
-Before you can create a storage account, you must have an Azure subscription, which is a plan that gives you access to a variety of Azure services. You can get started with Azure with a [free account](https://azure.microsoft.com/pricing/free-trial/). Once you decide to purchase a subscription plan, you can choose from a variety of [purchase options](https://azure.microsoft.com/pricing/purchase-options/). If you’re an [MSDN subscriber](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), you get free monthly credits that you can use with Azure services, including Azure Storage. See [Azure Storage Pricing ](https://azure.microsoft.com/pricing/details/storage/) for information on volume pricing.
+ストレージ アカウントを作成するには、事前に Azure サブスクリプション (多様な Azure サービスにアクセスするためのプラン) が必要です。Azure を初めて使うときは、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)で試用することができます。サブスクリプション プランの購入時には、さまざまな[購入オプション](https://azure.microsoft.com/pricing/purchase-options/)から選択できます。[MSDN サブスクライバー](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)には、毎月、Azure Storage を含む Azure サービスに使用できる無料使用分のクレジットが与えられます。ボリューム価格については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
-To learn how to create a storage account, see [Create a storage account](../articles/storage/storage-create-storage-account.md#create-a-storage-account) for more details. You can create up to 100 uniquely named storage accounts with a single subscription. See [Azure Storage Scalability and Performance Targets](../articles/storage/storage-scalability-targets.md) for details about storage account limits.
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+ストレージ アカウントの作成方法の詳細については、「[ストレージ アカウントの作成](../articles/storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。1 つのサブスクリプションに対し、最大 100 の一意の名前を持つストレージ アカウントを作成できます。ストレージ アカウントの制限の詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)」を参照してください。

@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Integrating Applications with Azure Active Directory | Microsoft Azure"
-   description="Details on how to add, update, or remove an application in Azure Active Directory (Azure AD)."
+   pageTitle="Azure Active Directory とアプリケーションの統合 | Microsoft Azure"
+   description="Azure Active Directory (Azure AD) でアプリケーションを追加、更新、削除する方法について詳しく説明します。"
    services="active-directory"
    documentationCenter=""
-   authors="bryanla"
+   authors="msmbaldwin"
    manager="mbaldwin"
    editor="mbaldwin" />
 <tags
@@ -12,351 +12,344 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/11/2016"
+   ms.date="07/25/2016"
    ms.author="mbaldwin;bryanla" />
 
-
-# <a name="integrating-applications-with-azure-active-directory"></a>Integrating applications with Azure Active Directory
+# Azure Active Directory とアプリケーションの統合
 
 [AZURE.INCLUDE [active-directory-devguide](../../includes/active-directory-devguide.md)]
 
-Enterprise developers and software-as-a-service (SaaS) providers can develop commercial cloud services or line of business applications that can be integrated with Azure Active Directory (Azure AD) to provide secure sign in and authorization for their services. To integrate an application or service with Azure AD, a developer must first register the details about their application with Azure AD through the Azure classic portal.
+エンタープライズ開発者と SaaS (サービスとしてのソフトウェア) プロバイダーは、自社のサービスのセキュリティで保護されたサインインと承認を実現するために、Azure Active Directory (Azure AD) と統合できる商用クラウド サービスまたは基幹業務アプリケーションを開発できます。アプリケーションまたはサービスを Azure AD と統合するには、Azure クラシック ポータルを使用して、アプリケーションに関する詳細情報を Azure AD に登録しておく必要があります。
 
-This article shows you how to add, update, or remove an application in Azure AD. You will learn about the different types of applications that can be integrated with Azure AD, how to configure your applications to access other resources such as Web APIs, and more.
+この記事では、Azure AD でアプリケーションを追加、更新、削除する方法を説明します。また、Azure AD と統合できるさまざまな種類のアプリケーション、Web API などの他のリソースにアクセスするようにアプリケーションを構成する方法などについても説明します。
 
-To learn more about the two Azure AD objects that represent a registered application and the relationship between them, see [Application Objects and Service Principal Objects](active-directory-application-objects.md); to learn more about the branding guidelines you should use when developing applications with Azure Active Directory, see [Branding Guidelines for Integrated Apps](active-directory-branding-guidelines.md).
+登録されたアプリケーションおよびそれらの間の関係を表す 2 つの Azure AD オブジェクトの詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)」をご覧ください。Azure Active Directory でアプリケーションを開発するときに使用するブランド化ガイドラインの詳細については、「[アプリケーションのブランド化ガイドライン](active-directory-branding-guidelines.md)」をご覧ください。
 
-## <a name="adding-an-application"></a>Adding an application
+## アプリケーションの追加
 
-Any application that wants to use the capabilities of Azure AD must first be registered in an Azure AD tenant. This registration process involves giving Azure AD details about your application, such as the URL where it’s located, the URL to send replies after a user is authenticated, the URI that identifies the app, and so on.
+Azure AD の機能を使用するアプリケーションは、まず Azure AD テナントに登録する必要があります。この登録プロセスでは、アプリケーションが配置されている URL、ユーザーの認証後の応答の送信先となる URL、アプリケーションを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
 
-If you’re building a Web application that just needs to support sign-in for users in Azure AD, you can simply follow the instructions below. If your application needs access to a Web API, or you want to enable your application as multi-tenant to allow users from other Azure AD tenants to access it, you’ll need to continue reading the [Updating an Application](#updating-an-application) section to continue configuring your application.
+Azure AD でのユーザーのサインインのサポートだけを必要とする Web アプリケーションを構築する場合は、次の手順に従うだけでかまいません。アプリケーションが Web API にアクセスする必要がある場合、またはマルチテナント アプリケーションとして他の Azure AD テナントのユーザーによるアクセスを許可する場合は、「[アプリケーションの更新](#updating-an-application)」を参照して、アプリケーションを引き続き構成する必要があります。
 
-### <a name="to-register-a-new-application-in-the-azure-classic-portal"></a>To register a new application in the Azure classic portal
+### Azure クラシック ポータルで新しいアプリケーションを登録するには
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
-1. Click on the Active Directory icon on the left menu, and then click on the desired directory.
+1. 左側のメニューの [Active Directory] アイコンをクリックし、目的のディレクトリをクリックします。
 
-1. On the top menu, click **Applications**. If no apps have been added to your directory, this page will only show the Add an App link. Click on the link, or alternatively you can click on the **Add** button on the command bar.
+1. 上部のメニューで、**[アプリケーション]** をクリックします。ディレクトリに追加されているアプリケーションがない場合、このページには [アプリケーションの追加] リンクだけが表示されます。このリンクをクリックします。または、コマンド バーの **[追加]** をクリックすることもできます。
 
-1. On the What do you want to do page, click on the link to **Add an application my organization is developing**.
+1. [実行する作業を選択してください] ページで、**[組織で開発中のアプリケーションを追加]** リンクをクリックします。
 
-1. On the Tell us about your application page, you must specify a name for your application as well as indicate the type of application you are registering with Azure AD.  You can choose from a Web application and/or Web API (default, known as a confidential client in OAuth2) or Native client application which represents an application that is installed on a device such as a phone or computer (known as a public client in OAuth2). Once finished, click the arrow icon on the bottom-right corner of the page.
+1. [アプリケーション情報の指定] ページでは、アプリケーションの名前と、Azure AD に登録するアプリケーションの種類を指定する必要があります。[Web アプリケーションや Web API]\(既定、OAuth2 では秘密のクライアントと呼ばれます) またはスマートフォンやコンピューターなどのデバイスにインストールされるアプリケーションを表す [ネイティブ クライアント アプリケーション]\(OAuth2 ではパブリック クライアントと呼ばれます) を選択できます。完了したら、ページの右下にある矢印アイコンをクリックします。
 
-1. On the App properties page, provide the Sign-on URL and App ID URI if you’re registering a Web application or just the Redirect URI for a Native client application, then click the checkbox in the bottom-right hand corner of the page.
+1. [アプリケーションのプロパティ] ページで、Web アプリケーションの [サインオン URL] と \[アプリケーション ID/URI]\(Web アプリケーションを登録する場合)、または [リダイレクト URI]\(ネイティブ クライアント アプリケーションを登録する場合) を指定し、ページの右下にあるチェック ボックスをクリックします。
 
-1. Your application has been added, and you will be taken to the Quick Start page for your application. Depending on whether your application is a Web or Native application, you will see different options on how to add additional capabilities to your application. Once your application has been added, you can begin updating your application to enable users to sign in, access Web APIs in other applications, or configure multi-tenant application (which allows other organizations to access your application).
+1. アプリケーションが追加されると、アプリケーションのクイック スタート ページが表示されます。アプリケーションが Web アプリケーションとネイティブ アプリケーションのどちらであるかに応じて、アプリケーションに機能を追加する方法のさまざまなオプションが表示されます。アプリケーションが追加されたら、ユーザーによるサインインの有効化、他のアプリケーションの Web API へのアクセスの提供、(他の組織がアプリケーションにアクセスできるようにするための) マルチテナント アプリケーションの構成などを目的に、アプリケーションを更新できるようになります。
 
->[AZURE.NOTE] By default, the newly created application registration is configured to allow users from your directory to sign in to your application.
+>[AZURE.NOTE] 既定では、新しく作成されたアプリケーションの登録は、ディレクトリのユーザーがアプリケーションにサインインできるように構成されます。
 
-## <a name="updating-an-application"></a>Updating an application
+## アプリケーションの更新
 
-Once your application has been registered with Azure AD, it may need to be updated to provide access to Web APIs, be made available in other organizations, and more. This section describes various ways in which you may need to configure your application further. First we will start with an overview of the Consent Framework, which is important to understand if you are building resource/API applications that will be consumed by client applications built by developers in your organization or another organization.
+アプリケーションを Azure AD に登録したら、Web API にアクセスできるようにしたり、他の組織で使用できるようにしたりするために、アプリケーションを更新することが必要な場合があります。このセクションでは、アプリケーションの各種構成方法について説明します。まず、同意フレームワークの概要について説明します。これは、自分の組織または別の組織の開発者が作成したクライアント アプリケーションで使用されるリソース/API アプリケーションを構築する場合に理解しておくことが重要です。
 
-For more information on the way authentication works in Azure AD, see [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md).
+Azure AD での認証のしくみの詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」をご覧ください。
 
-### <a name="overview-of-the-consent-framework"></a>Overview of the consent framework
+### 同意フレームワークの概要
 
-Azure AD’s consent framework makes it easy to develop multi-tenant Web and Native client applications that need to access Web APIs secured by an Azure AD tenant, different from the one where the client application is registered. These Web APIs include the Graph API, Office 365, and other Microsoft services, in addition to your own Web APIs. The framework is based on a user or an administrator giving consent to an application that asks to be registered in their directory, which may involve accessing directory data.
+Azure AD の同意フレームワークを使用すると、クライアント アプリケーションが登録されているものとは異なる、Azure AD テナントによって保護された Web API にアクセスする必要があるマルチテナントの Web クライアント アプリケーションやネイティブ クライアント アプリケーションの開発が容易になります。これらの Web API には、独自の Web API だけでなく、Graph API、Office 365、その他の Microsoft サービスも含まれます。このフレームワークは、ディレクトリ データへのアクセスを必要とする場合がある、ディレクトリへの登録を要求するアプリケーションに同意するユーザーまたは管理者に基づいています。
 
-For example, if a Web client application needs to call an Office 365 Web API/resource application to read calendar information about the user, that user will be required to consent to the client application. After consent is given, the client application will be able to call the Office 365 Web API on behalf of the user, and use the calendar information as needed.
+たとえば、Web クライアント アプリケーションで Office 365 Web API/リソース アプリケーションを呼び出して、ユーザーに関するカレンダー情報を読み取る必要がある場合、そのユーザーはそのクライアント アプリケーションに同意する必要があります。ユーザーが同意すると、クライアント アプリケーションはユーザーに代わって Office 365 Web API を呼び出し、必要に応じてカレンダー情報を使用できるようになります。
 
-The consent framework is built on OAuth 2.0 and its various flows, such as authorization code grant and client credentials grant, using public or confidential clients. By using OAuth 2.0, Azure AD makes it possible to build many different types of client applications, such as on a phone, tablet, server, or a Web application, and gain access to the required resources.
+同意フレームワークは、OAuth 2.0 と、パブリック クライアントまたは秘密のクライアントを使用した各種フロー (認証コードの付与やクライアント資格情報の付与など) を基盤としています。Azure AD は、OAuth 2.0 を使用することで、スマートフォン、タブレット、サーバーなどで実行されるさまざまな種類のクライアント アプリケーションや Web アプリケーションを構築し、必要なリソースにアクセスすることを可能にします。
 
-For more detailed information about the consent framework, see [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx), [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md), and Office 365 topic [Understanding authentication with Office 365 APIs](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks).
+同意フレームワークの詳細については、「[Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx)」、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」、および Office 365 のトピック「[Understanding authentication with Office 365 APIs (Office 365 API での認証の概要)](https://msdn.microsoft.com/office/office365/howto/common-app-authentication-tasks)」をご覧ください。
 
-#### <a name="example-of-the-consent-experience"></a>Example of the consent experience
+#### 同意エクスペリエンスの例
 
-The following steps will show you how the consent experience works for both the application developer and user.
+次の手順は、アプリケーション開発者とユーザーに対して、同意エクスペリエンスがどのように機能するかを示しています。
 
-1. On your Web client application’s configuration page in the Azure classic portal, set the permissions your application requires by using the drop-down menus in the Permissions to other applications control.
+1. Azure クラシック ポータルの Web クライアント アプリケーションの構成ページで、[他のアプリケーションに対するアクセス許可] コントロールのドロップダウン メニューを使用して、アプリケーションに必要なアクセス許可を設定します。
 
-    ![Permissions to other applications](./media/active-directory-integrating-applications/permissions.png)
+    ![他のアプリケーションに対するアクセス許可](./media/active-directory-integrating-applications/permissions.png)
 
-1. Consider that your application’s permissions have been updated, the application is running, and a user is about to use it for the first time. If the application has not already acquired an access or refresh token, the application needs to go to Azure AD’s authorization endpoint to obtain an authorization code that can be used to acquire a new access and refresh token.
+1. たとえば、アプリケーションのアクセス許可の更新後、アプリケーションが実行され、ユーザーがアプリケーションを初めて使用しようとしているとします。アプリケーションがアクセス トークンも更新トークンもまだ取得していない場合、アプリケーションは Azure AD の承認エンドポイントにアクセスして、新しいアクセス トークンと更新トークンを取得する際に使用できる認証コードを取得する必要があります。
 
-1. If the user is not already authenticated, they’ll be asked to sign in to Azure AD.
+1. ユーザーがまだ認証されていない場合、Azure AD にサインインするよう求められます。
 
-    ![User or administrator sign in to Azure AD](./media/active-directory-integrating-applications/useradminsignin.png)
+    ![ユーザーまたは管理者による Azure AD へのサインイン](./media/active-directory-integrating-applications/useradminsignin.png)
 
-1. After the user has signed in, Azure AD will determine if the user needs to be shown a consent page. This determination is based on whether the user (or their organization’s administrator) has already granted the application consent. If consent has not already been granted, Azure AD will prompt the user for consent and will display the required permissions it needs to function. The set of permissions that is displayed in the consent dialog are the same as what was selected in the Permissions to other applications control in the Azure classic portal.
+1. ユーザーがサインインすると、ユーザーに同意ページを表示する必要があるかどうかが Azure AD により判別されます。この判断は、ユーザー (または組織の管理者) がアプリケーションに既に同意しているかどうかに基づいています。まだ同意していない場合、Azure AD によりユーザーに同意を求めるメッセージが表示され、アプリケーションが機能するために必要なアクセス許可が表示されます。同意ダイアログに表示される一連のアクセス許可は、Azure クラシック ポータルの [他のアプリケーションに対するアクセス許可] コントロールで選択したアクセス許可と同じです。
 
-    ![User consent experience](./media/active-directory-integrating-applications/userconsent.png)
+    ![ユーザーの同意エクスペリエンス](./media/active-directory-integrating-applications/userconsent.png)
 
-1. After the user grants consent, an authorization code is returned to your application, which can be redeemed to acquire an access token and refresh token. For more information about this flow, see the [Web Application to Web API section](active-directory-authentication-scenarios.md#web-application-to-web-api) section in [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md).
+1. ユーザーが同意すると、アプリケーションに認証コードが返されます。この認証コードを使用して、アクセス トークンと更新トークンを取得できます。このフローの詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」の「[Web アプリケーション対 Web API](active-directory-authentication-scenarios.md#web-application-to-web-api)」をご覧ください。
 
-### <a name="configuring-a-client-application-to-access-web-apis"></a>Configuring a client application to access Web APIs
+### Web API にアクセスするためのクライアント アプリケーションの構成
 
-When a client application is configured to access a Web API exposed by a resource application (ie: Azure AD Graph API), the consent framework described above will ensure the client obtains the permission grant required, based on the permissions requested. By default, all applications can choose permissions from Azure Active Directory (Graph API) and Azure Service Management API, with the Azure AD “Enable sign on and read user’s profile” permission already selected by default. If your client application is being registered in an Office 365 Azure AD tenant, Web APIs and permissions for SharePoint and Exchange Online will also be available for selection. You can select from two types of permissions in the drop-down menus next to the desired Web API:
+リソース アプリケーションによって公開されている Web API (つまりAzure AD Graph API) にアクセスするようにクライアント アプリケーションを構成すると、前に説明した同意フレームワークにより、要求されたアクセス許可に基づいてクライアントが必要なアクセス許可を取得することが保証されます。既定では、すべてのアプリケーションが Azure Active Directory (Graph API) と Azure サービス管理 API のアクセス許可を選択できます。Azure AD の "サインオンを有効にし、ユーザーのプロファイルを読み取る" アクセス許可は、既定で既に選択されています。クライアント アプリケーションが Office 365 Azure AD テナントに登録している場合は、SharePoint Online および Exchange Online に対する Web API とアクセス許可も選択できます。目的の Web API の横にあるドロップダウン メニューでは、次の 2 種類のアクセス許可から選択できます。
 
-- Application Permissions: Your client application needs to access the Web API directly as itself (no user context). This type of permission requires administrator consent and is also not available for Native client applications.
+- アプリケーションのアクセス許可: クライアント アプリケーションは、(ユーザー コンテキストなしで) アプリケーションとして Web API に直接アクセスする必要があります。この種類のアクセス許可には管理者の同意が必要であり、ネイティブ クライアント アプリケーションでは使用できません。
 
-- Delegated Permissions: Your client application needs to access the Web API as the signed-in user, but with access limited by the selected permission. This type of permission can be granted by a user unless the permission is configured as requiring administrator consent.
+- 委任されたアクセス許可: クライアント アプリケーションは、サインインしているユーザーとして Web API にアクセスする必要がありますが、選択したアクセス許可によってアクセスが制限されます。この種類のアクセス許可は、管理者の同意を要求するように構成されていない限り、ユーザーが付与できます。
 
-#### <a name="to-add-access-to-web-apis"></a>To add access to Web APIs
+#### Web API へのアクセスを追加するには
 
-1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
-1. Click on the Active Directory icon on the left menu, then click on the desired directory.
+1. 左側のメニューの [Active Directory] アイコンをクリックし、目的のディレクトリをクリックします。
 
-1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
+1. 上部のメニューで **[アプリケーション]** をクリックし、構成するアプリケーションをクリックします。クイック スタート ページが開き、シングル サインオンと他の構成情報が表示されます。
 
-1. Expand the Access Web APIs in Other Applications section of the Quick Start, and then click the **Configure it now** link under the Select permissions section. The application properties page will appear.
+1. クイック スタートの [他のアプリケーションの Web API へのアクセス] を展開し、[アクセス許可の選択] セクションの **[今すぐ構成]** リンクをクリックします。アプリケーションのプロパティ ページが表示されます。
 
-1. Scroll down to the Permissions to other applications section. The first column allows you to select from the available resource applications in your directory that expose a Web API.  Once selected, you may select application and delegation permissions that the Web API exposes.
+1. [他のアプリケーションに対するアクセス許可] セクションまで下にスクロールします。1 列目では、ディレクトリ内の、Web API を公開している利用可能なリソース アプリケーションの中から選択できます。アプリケーションを選択したら、Web API が公開しているアプリケーションのアクセス許可と委任されたアクセス許可を選択できます。
 
-1. Once selected, click the **Save** button on the command bar.
+1. 選択が完了したら、コマンド バーの **[保存]** をクリックします。
 
->[AZURE.NOTE] Clicking the Save button also automatically sets the permissions for your application in your directory based on the Permissions to other applications that you configured.  You can view these application permissions by looking at the application Properties tab.
+>[AZURE.NOTE] [保存] をクリックすると、構成済みの [他のアプリケーションに対するアクセス許可] に基づいて、ディレクトリ内のアプリケーションのアクセス許可も自動的に設定されます。これらのアプリケーションのアクセス許可は、アプリケーションの [プロパティ] タブで確認できます。
 
-### <a name="configuring-a-resource-application-to-expose-web-apis"></a>Configuring a resource application to expose Web APIs
+### Web API を公開するためのリソース アプリケーションの構成
 
-You can develop a Web API and make it available to client applications by exposing access scopes. A correctly configured Web API is made available just like the other Microsoft Web APIs, including the Graph API and the Office 365 APIs. Access scopes are exposed through your application's manifest, which is a JSON file that represents your application’s identity configuration. You can expose your scopes by navigating to your application in the Azure classic portal and clicking on the Application Manifest button on the command bar.  
+Web API を開発し、アクセス スコープを公開することによってクライアント アプリケーションで使用できるようにすることができます。適切に構成された Web API は、Graph API や Office 365 API など、他の Microsoft Web API と同様に使用できます。アクセス スコープを公開するには、アプリケーションのマニフェストを使用します。アプリケーション マニフェストは、アプリケーションの ID 構成を示す JSON ファイルです。アクセス スコープを公開するには、Azure クラシック ポータルでアプリケーションに移動し、コマンド バーの [アプリケーション マニフェスト] をクリックします。
 
-#### <a name="adding-access-scopes-to-your-resource-application"></a>Adding access scopes to your resource application
+#### リソース アプリケーションへのアクセス スコープの追加
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com).
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
-1. Click on the Active Directory icon on the left menu, then click on the desired directory.
+1. 左側のメニューの [Active Directory] アイコンをクリックし、目的のディレクトリをクリックします。
 
-1. On the top menu, click **Applications**, and then click the resource application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
+1. 上部のメニューで **[アプリケーション]** をクリックし、構成するリソース アプリケーションをクリックします。クイック スタート ページが開き、シングル サインオンと他の構成情報が表示されます。
 
-1. Click on the **Manage manifest** button in the command bar, and select **Download manifest**.
+1. コマンド バーの **[マニフェストの管理]** をクリックし、**[マニフェストのダウンロード]** を選択します。
 
-1. Open the JSON application manifest file and replace “oauth2Permissions” node with the following JSON snippet. This snippet is an example of how to expose a scope known as "user impersonation", which allows a resource owner to give a client application a type of delegated access to a resource. Make sure that you change the text and values for your own application:
+1. JSON アプリケーション マニフェスト ファイルを開き、"oauth2Permissions" ノードを次の JSON スニペットに置き換えます。このスニペットは、リソースの所有者が一種のリソースへの委任アクセス権をクライアント アプリケーションに付与できるように、"user impersonation" というスコープを公開する方法の一例を示したものです。テキストと値は実際のアプリケーションのものに変更してください。
 
-        "oauth2Permissions": [
-        {
-            "adminConsentDescription": "Allow the application full access to the Todo List service on behalf of the signed-in   user",
-            "adminConsentDisplayName": "Have full access to the Todo List service",
-            "id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e40",
-            "isEnabled": true,
-            "type": "User",
-            "userConsentDescription": "Allow the application full access to the todo service on your behalf",
-            "userConsentDisplayName": "Have full access to the todo service",
-            "value": "user_impersonation"
-            }
-        ],
+		"oauth2Permissions": [
+		{
+			"adminConsentDescription": "Allow the application full access to the Todo List service on behalf of the signed-in 	user",
+			"adminConsentDisplayName": "Have full access to the Todo List service",
+			"id": "b69ee3c9-c40d-4f2a-ac80-961cd1534e40",
+			"isEnabled": true,
+			"type": "User",
+			"userConsentDescription": "Allow the application full access to the todo service on your behalf",
+			"userConsentDisplayName": "Have full access to the todo service",
+			"value": "user_impersonation"
+			}
+		],
 
-    The id value must be a new generated GUID that you create by using a [GUID generation tool](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx) or programmatically. It represents a unique identifier for the permission that is exposed by the Web API. Once your client is appropriately configured to request access to your Web API and calls the Web API, it will present an OAuth 2.0 JWT token that has the scope (scp) claim set to the value above, which in this case is user_impersonation.
+    id 値は、[GUID 生成ツール](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)またはプログラムを使用して作成した新しい GUID である必要があります。GUID は、Web API によって公開されているアクセス許可の一意の識別子です。Web API へのアクセスを要求するように適切に構成されているクライアントは、Web API を呼び出すと、スコープ (scp) 要求が上記の値 (この例では user\_impersonation) に設定された OAuth 2.0 JWT トークンを提示します。
 
-    >[AZURE.NOTE] You can expose additional scopes later as necessary. Consider that your Web API might expose multiple scopes associated with a variety of different functions. Now you can control access to the Web API by using the scope (scp) claim in the received OAuth 2.0 JWT token.
+	>[AZURE.NOTE] 必要に応じて、他のスコープを後で公開することもできます。たとえば、Web API で、さまざまな機能に関連付けられた複数のスコープを公開しているとします。この場合、受け取った OAuth 2.0 JWT トークンのスコープ (scp) 要求を使用して、Web API へのアクセスを制御できるようになります。
 
-1. Save the updated JSON file and upload it by clicking the **Manage manifest** button in the command bar, selecting **Upload manifest**, browsing to your updated manifest file and then selecting it. Once uploaded, your Web API is now configured to be used by other applications in your directory.
+1. 更新された JSON ファイルを保存したら、コマンド バーの **[マニフェストの管理]** をクリックし、**[マニフェストのアップロード]** を選択します。次に、更新されたマニフェスト ファイルを参照して選択し、ファイルをアップロードします。アップロードが完了すると、ディレクトリ内の他のアプリケーションが使用できるように Web API が構成されます。
 
-#### <a name="to-verify-the-web-api-is-exposed-to-other-applications-in-your-directory"></a>To verify the Web API is exposed to other applications in your directory
+#### ディレクトリ内の他のアプリケーションに Web API が公開されていることを確認するには
 
-1. On the top menu, click **Applications**, select the desired client application you want to configure access to the Web API, and then click **Configure**.
+1. 上部のメニューで **[アプリケーション]** をクリックし、Web API へのアクセスを構成するクライアント アプリケーションを選択して、**[構成]** をクリックします。
 
-1. Scroll down to the permissions to other applications section. Click on the Select application drop-down menu and you will be able to select the Web API that you just exposed a permission for. From the Delegated Permissions drop-down menu, select the new permission.
+1. [他のアプリケーションに対するアクセス許可] セクションまで下にスクロールします。[アプリケーションの選択] ドロップダウン メニューをクリックすると、先ほどアクセス許可を公開した Web API を選択できます。[委任されたアクセス許可] ドロップダウン メニューから、新しいアクセス許可を選択します。
 
-![Todo List permissions are shown](./media/active-directory-integrating-applications/listpermissions.png)
+![Todo リストのアクセス許可の表示](./media/active-directory-integrating-applications/listpermissions.png)
 
-#### <a name="more-on-the-application-manifest"></a>More on the application manifest
-The application manifest actually serves as a mechanism for updating the Application entity, which defines all attributes of an Azure AD application's identity configuration, including the API access scopes we discussed. For more information on the Application entity, please see the [Graph API Application entity documentation](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity). In it, you will find complete reference information on the Application entity members used to specify permissions for your API:  
+#### アプリケーション マニフェストの詳細
+アプリケーション マニフェストは、実際にはアプリケーション エンティティを更新するためのメカニズムとして機能します。このエンティティでは、上記の API アクセス スコープなど、Azure AD アプリケーションの ID 構成のすべての属性が定義されています。アプリケーション エンティティの詳細については、[Graph API アプリケーション エンティティ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)に関するセクションをご覧ください。API のアクセス許可を指定するために使用するアプリケーション エンティティ メンバーについての詳細な参照情報がわかります。
 
-- the appRoles member, which is a collection of [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) entities that can be used to define the **Application Permissions** for a Web API  
-- the oauth2Permissions member, which is a collection of  [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) entities that can be used to define the **Delegated Permissions** for a Web API
+- appRoles メンバー: Web API の**アプリケーション アクセス許可**を定義するために使用できる [AppRole](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#approle-type) エンティティのコレクションです
+- oauth2Permissions メンバー: Web API の**委任されたアクセス許可**を定義するために使用できる [OAuth2Permission](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#oauth2permission-type) エンティティのコレクションです
 
-For more information on application manifest concepts in general, please refer to [Understanding the Azure Active Directory application manifest](active-directory-application-manifest.md).
+アプリケーション マニフェストの一般的概念の詳細については、「[Azure Active Directory のアプリケーション マニフェストについて](active-directory-application-manifest.md)」をご覧ください。
 
-### <a name="accessing-the-azure-ad-graph-and-office-365-apis"></a>Accessing the Azure AD Graph and Office 365 APIs
+### Azure AD Graph API および Office 365 API へのアクセス
 
-As mentioned earlier, in addition to exposing/accessing APIs on your own resource applications, you can also update your client application to access APIs exposed by Microsoft resources.  The Azure AD Graph API, which is called “Azure Active Directory” in the list of Permissions to other applications, is available by default for all applications that are registered with Azure AD. If you are registering your client application in an Azure AD tenant that was provisioned by Office 365, you can also access all of the permissions exposed by the APIs to various Office 365 resources.
+前に説明したように、独自のリソース アプリケーションで API を公開してアクセスできるようにするだけでなく、Microsoft のリソースによって公開される API にアクセスするようにクライアント アプリケーションを更新することもできます。Azure AD Graph API (他のアプリケーションに対するアクセス許可のリストでは “Azure Active Directory” と呼ばれます) は、Azure AD に登録されたすべてのアプリケーションが既定で使用できます。Office 365 によってプロビジョニングされた Azure AD テナントでクライアント アプリケーションを登録する場合は、API によって公開される、さまざまな Office 365 リソースへのすべてのアクセス許可にアクセスできます。
 
-For a complete discussion on access scopes exposed by:  
+次のものによって公開されるアクセス スコープの詳細については、各資料を参照してください。
 
-- Azure AD Graph API, please see the [Permission scopes | Graph API concepts](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes) article.
-- Office 365 APIs, please see the [Authentication and Authorization using Common Consent Framework](https://msdn.microsoft.com/office/office365/howto/application-manifest) article. See [Set up your Office 365 development environment](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment) for the larger discussion on how to build a client app that integrates with Office 365 APIs.
+- Azure AD Graph API: 記事「[Permission scopes | Graph API concepts (アクセス許可スコープ | Graph API の概念)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)」をご覧ください。
+- Office 365 API: 「[Authentication and Authorization using Common Consent Framework (共通の同意フレームワークを使用した認証と承認)](https://msdn.microsoft.com/office/office365/howto/application-manifest)」記事をご覧ください。Office 365 API と統合するクライアント アプリケーションを構築する方法の概要については、「[Set up your Office 365 development environment (Office 365 開発環境のセットアップ)](https://msdn.microsoft.com/office/office365/HowTo/setup-development-environment)」をご覧ください。
 
->[AZURE.NOTE] Due to a current limitation, Native client applications can only call into the Azure AD Graph API if they use the “Access your organization's directory” permission.  This restriction does not apply for Web applications.
+>[AZURE.NOTE] 現在の制限により、ネイティブ クライアント アプリケーションは、"組織のディレクトリにアクセスする" アクセス許可を使用する場合に、Azure AD Graph API しか呼び出すことはできません。この制限は、Web アプリケーションには適用されません。
 
-### <a name="configuring-multi-tenant-applications"></a>Configuring multi-tenant applications
+### マルチテナント アプリケーションの構成
 
-When adding an application to Azure AD, you may want your application to be accessed only by users in your organization. Alternatively, you may want your application to be accessed by users in external organizations. These two application types are called single tenant and multi-tenant applications. You can modify the configuration of a single tenant application to make it a multi-tenant application, which this section discusses below.
+Azure AD にアプリケーションを追加するときに、組織のユーザーだけがアプリケーションにアクセスできるようにする場合があります。また、外部組織のユーザーがアプリケーションにアクセスできるようにする場合もあります。前者をシングル テナント アプリケーション、後者をマルチテナント アプリケーションと呼びます。このセクションで後述するように、シングル テナント アプリケーションの構成を変更して、マルチテナント アプリケーションにすることができます。
 
-It’s important to note the differences between a single tenant and multi-tenant application:  
+シングル テナント アプリケーションとマルチテナント アプリケーションの違いに注意することが重要です。
 
-- A single tenant application is intended for use in one organization. They are typically a line-of-business (LoB) application written by an enterprise developer. A single tenant application only needs to be accessed by users in one directory, and as a result, it only needs to be provisioned in one directory.
-- A multi-tenant application intended for use in many organizations. They are a software-as-a-service (SaaS) Web application typically written by an independent software vendor (ISV). Multi-tenant applications need to be provisioned in each directory where they will be used, which requires user or administrator consent to register them, supported via the Azure AD consent framework. Note that all Native client applications are multi-tenant by default as they are installed on the resource owner's device. See the Overview of the Consent Framework section above for more details on the consent framework.
+- シングル テナント アプリケーションは、1 つの組織で使用することを目的としています。通常、これらのアプリケーションは、エンタープライズ開発者によって作成された基幹業務 (LOB) アプリケーションです。シングル テナント アプリケーションには、1 つのディレクトリ内のユーザーだけがアクセスできればよいため、1 つのディレクトリにプロビジョニングするだけで済みます。
+- マルチテナント アプリケーションは、多数の組織で使用することを目的としています。通常、これらのアプリケーションは、独立系ソフトウェア ベンダー (ISV) によって作成された SaaS (サービスとしてのソフトウェア) Web アプリケーションです。マルチテナント アプリケーションは、アプリケーションが使用される各ディレクトリにプロビジョニングする必要があります。アプリケーションを登録するには、ユーザーまたは管理者の同意が必要です。これは、Azure AD 同意フレームワークによってサポートされます。すべてのネイティブ クライアント アプリケーションは、リソース所有者のデバイスにインストールされるので、既定でマルチテナントになることに注意してください。同意フレームワークの詳細については、前の「同意フレームワークの概要」セクションを参照してください。
 
-#### <a name="enabling-external-users-to-grant-your-application-access-to-their-resources"></a>Enabling external users to grant your application access to their resources
+#### 外部ユーザーがアプリケーションにリソースへのアクセスを付与できるようにする
 
-If you are writing an application that you want to make available to your customers or partners outside of your organization, you will need to update the application definition in the Azure classic portal.
+組織の外部の顧客やパートナーが使用できるアプリケーションを作成する場合、Azure クラシック ポータルでアプリケーションの定義を更新する必要があります。
 
->[AZURE.NOTE] When enabling multi-tenant, you must ensure that your application’s App ID URI belongs in a verified domain. Additionally, the Return URL must begin with https://. For more information, see [Application Objects and Service Principal Objects](active-directory-application-objects.md).
+>[AZURE.NOTE] マルチテナントを有効にするときは、アプリケーションのアプリケーション ID URI が検証済みドメインに属していることを確認する必要があります。また、戻り先 URL が https:// で始まる必要があります。詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)」をご覧ください。
 
-To enable access to your app for external users: 
+アプリケーションへの外部ユーザーのアクセスを有効にするには、次の手順に従います。
 
-1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
-1. Click on the Active Directory icon on the left menu, then click on the desired directory.
+1. 左側のメニューの [Active Directory] アイコンをクリックし、目的のディレクトリをクリックします。
 
-1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with configuration options.
+1. 上部のメニューで **[アプリケーション]** をクリックし、構成するアプリケーションをクリックします。[クイック スタート] ページに構成オプションが表示されます。
 
-1. Expand the **Configure Multi-tenant Application** section of the Quick Start, then click the **Configure it now** link in the Enable Access section. The application properties page will appear.
+1. クイック スタートの **[マルチテナント アプリケーションの構成]** セクションを展開し、[アクセスの有効化] セクションの **[今すぐ構成]** リンクをクリックします。アプリケーションのプロパティ ページが表示されます。
 
-1. Click the **Yes** button next to Application is multi-tenant, then click the **Save** button on the command bar.
+1. [アプリケーションはマルチテナントです] の横の **[はい]** をクリックし、コマンド バーの **[保存]** をクリックします。
 
-Once you have made the change above, users and administrators in other organizations will be able to grant your application access to their directory and other data.
+上記の変更を完了すると、他の組織のユーザーと管理者は、アプリケーションにディレクトリや他のデータへのアクセスを許可することができるようになります。
 
-#### <a name="triggering-the-azure-ad-consent-framework-at-runtime"></a>Triggering the Azure AD consent framework at runtime
+#### 実行時の Azure AD 同意フレームワークのトリガー
 
-To use the consent framework, multi-tenant client applications must request authorization using OAuth 2.0. [Code samples](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant) are available to show you how a Web application, Native application, or server/daemon application requests authorization codes and access tokens to call Web APIs.
+同意フレームワークを使用するには、マルチテナント クライアント アプリケーションが OAuth 2.0 を使用して承認を要求する必要があります。Web アプリケーション、ネイティブ アプリケーション、またはサーバー/デーモン アプリケーションが、認証コードとアクセス トークンを要求して Web API を呼び出す方法を示す[コード サンプル](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant)が用意されています。
 
-Your Web application may also offer a sign-up experience for users. If you do offer a sign-up experience, it is expected that the user will click on a sign up button that will redirect the browser to the Azure AD OAuth2.0 authorize endpoint or an OpenID Connect userinfo endpoint. These endpoints allow the application to get information about the new user by inspecting the id_token. Following the sign-up phase the user will be presented with a consent prompt similar to the one shown above in the Overview of the Consent Framework section.
+Web アプリケーションでは、ユーザーにサインアップ エクスペリエンスを提供することもできます。サインアップ エクスペリエンスを提供する場合、ユーザーがサインアップ ボタンをクリックしたときに、Azure AD OAuth2.0 承認エンドポイントまたは OpenID Connect ユーザー情報エンドポイントにブラウザーをリダイレクトすることが求められます。これらのエンドポイントでは、アプリケーションが id\_token を調べて、新しいユーザーに関する情報を取得できます。サインアップ フェーズの後、前の「同意フレームワークの概要」セクションで示したものと似た同意プロンプトがユーザーに表示されます。
 
-Alternatively, your Web application may also offer an experience that allows administrators to “sign up my company”. This experience would also redirect the user to the Azure AD OAuth 2.0 authorize endpoint. In this case though, you pass a prompt=admin_consent parameter to the authorize endpoint to force the administrator consent experience, where the administrator will grant consent on behalf of their organization. Only a user that authenticates with an account that belongs to the Global Admin role can provide consent; others will receive an error. On successful consent, the response will contain admin_consent=true. When redeeming an access token, you’ll also receive an id_token that will provide information on the organization and the administrator that signed up for your application.
+また、Web アプリケーションでは、管理者が "自社をサインアップ" できるエクスペリエンスを提供することもできます。このエクスペリエンスでも、ユーザーを Azure AD OAuth 2.0 承認エンドポイントにリダイレクトします。この場合、prompt=admin\_consent パラメーターを承認エンドポイントに渡して、管理者が組織に代わって同意する、管理者の同意エクスペリエンスを強制的に表示します。グローバル管理者ロールに属するアカウントで認証したユーザーだけが同意できます。他のユーザーが同意するとエラーが発生します。同意に成功すると、応答に admin\_consent=true が含まれます。アクセス トークンを使用したときに、アプリケーションにサインアップした組織や管理者に関する情報を提供する id\_token も受け取ります。
 
-### <a name="enabling-oauth-2.0-implicit-grant-for-single-page-applications"></a>Enabling OAuth 2.0 implicit grant for Single Page Applications
+### シングル ページ アプリケーションでの OAuth 2.0 Implicit Grant の有効化
 
-Single Page Application’s (SPAs) are typically structured with a JavaScript-heavy front end that runs in the browser, which calls the application’s Web API back end to perform its business logic. For SPAs hosted in Azure AD, you use OAuth 2.0 Implicit Grant to authenticate the user with Azure AD and obtain a token that you can use to secure calls from the application's JavaScript client to its back end Web API. After the user has granted consent, this same authentication protocol can be used to obtain tokens to secure calls between the client and other Web API resources configured for the application. To learn more about the implicit authorization grant, and help you decide whether it's right for your application scenario, see [Understanding the OAuth2 implicit grant flow in Azure Active Directory ](active-directory-dev-understanding-oauth2-implicit-grant.md).
+通常、シングル ページ アプリケーション (SPA) は、ブラウザーで実行される JavaScript ヘビーなフロント エンドで構成されており、このフロント エンドがアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行します。Azure AD でホストされている SPA では、Azure AD でのユーザーの認証と、アプリケーションの JavaScript クライアントからバックエンド Web API への呼び出しを保護するために使用できるトークンの取得に OAuth 2.0 Implicit Grant を使用します。ユーザーの同意後、この同じ認証プロトコルを使用して、クライアントと、アプリケーション用に構成された他の Web API リソースとの間での呼び出しを保護するトークンを取得できます。暗黙的な認証付与の詳細と、この機能がご使用のアプリケーション シナリオに適しているかどうかについては、[Azure Active Directory での OAuth2 の暗黙的な許可フロー](active-directory-dev-understanding-oauth2-implicit-grant.md)に関するページを参照してください。
 
-By default, OAuth 2.0 implicit Grant is disabled for applications. You can enable OAuth 2.0 Implicit Grant for your application by setting the `oauth2AllowImplicitFlow`”` value in its [application manifest](active-directory-application-manifest.md), which is a JSON file that represents your application's identity configuration.
+既定では、OAuth 2.0 Implicit Grant はアプリケーションに対して無効化されています。[アプリケーション マニフェスト](active-directory-application-manifest.md)で `oauth2AllowImplicitFlow` の値を設定することにより、アプリケーションに対して OAuth 2.0 Implicit Grant を有効化できます。アプリケーション マニフェストは、アプリケーションの ID 構成を示す JSON ファイルです。
 
-#### <a name="to-enable-oauth-2.0-implicit-grant"></a>To enable OAuth 2.0 implicit grant 
+#### OAuth 2.0 Implicit Grant を有効化するには 
 
-1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
-1. Click on the **Active Directory** icon on the left menu, then click on the desired directory.
-1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
-1. Click on the **Manage manifest** button in the command bar, and select **Download manifest**.
-Open the JSON application manifest file and set the “oauth2AllowImplicitFlow” value to “true”. By default, it is “false”.
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
+1. 左側のメニューの **[Active Directory]** アイコンをクリックし、目的のディレクトリをクリックします。
+1. 上部のメニューで **[アプリケーション]** をクリックし、構成するアプリケーションをクリックします。クイック スタート ページが開き、シングル サインオンと他の構成情報が表示されます。
+1. コマンド バーの **[マニフェストの管理]** をクリックし、**[マニフェストのダウンロード]** を選択します。
+JSON アプリケーション マニフェスト ファイルを開き、"oauth2AllowImplicitFlow" 値を "true" に設定します。既定では、"false" になっています。
 
     `"oauth2AllowImplicitFlow": true,`
 
-1. Save the updated JSON file and upload it by clicking the **Manage manifest** button in the command bar, selecting **Upload manifest**, browsing to your updated manifest file and then selecting it. Once uploaded, your Web API is now configured to use OAuth 2.0 Implicit Grant to authenticate users.
+1. 更新された JSON ファイルを保存したら、コマンド バーの **[マニフェストの管理]** をクリックし、**[マニフェストのアップロード]** を選択します。次に、更新されたマニフェスト ファイルを参照して選択し、ファイルをアップロードします。アップロードが完了すると、Web API でユーザー認証に OAuth 2.0 Implicit Grant が使用されるように構成されます。
 
 
-### <a name="legacy-experiences-for-granting-access"></a>Legacy experiences for granting access
+### アクセスを許可する際の従来のエクスペリエンス
 
-This section describes the legacy consent experience prior to March 12, 2014. This experience is still supported, and is described below. Prior to the new functionality, you could only grant the following permissions:
+ここでは、2014 年 3 月 12 日より前の、従来の同意エクスペリエンスについて説明します。以下で説明するこのエクスペリエンスは、引き続きサポートされています。新機能の前には、次のアクセス許可だけを付与することができました。
 
-- Sign on users from their organization
+- 組織のユーザーをサインオンする
 
-- Sign on users and read the their organization’s directory data (as the application only)
+- ユーザーをサインオンし、組織のディレクトリ データを読み取る (アプリケーションとしてのみ)
 
-- Sign on users and read and write their organization’s directory data (as the application only)
+- ユーザーをサインオンし、組織のディレクトリ データの読み取りと書き込みを行う (アプリケーションとしてのみ)
 
-You can follow the steps in the [Developing Multi-Tenant Web Applications with Azure AD](https://msdn.microsoft.com/library/azure/dn151789.aspx) to grant access for new applications registered in Azure AD. It’s important to note that the new consent framework allows much more powerful applications, and also enables users to consent to these applications instead of just administrators.
+「[Azure AD でのマルチテナント Web アプリケーションの開発](https://msdn.microsoft.com/library/azure/dn151789.aspx)」の手順に従って、Azure AD に登録された新しいアプリケーションにアクセスを許可することができます。新しい同意フレームワークでは、さらに強力なアプリケーションを許可し、管理者だけでなく、ユーザーもこれらのアプリケーションに同意できるようになったことに注意してください。
 
-#### <a name="building-the-link-that-grants-access-for-external-users-(legacy)"></a>Building the link that grants access for external users (Legacy)
+#### 外部ユーザーのアクセスを許可するリンクの作成 (旧)
 
-In order for external users to sign up for your app using their organizational accounts, you’ll need to update your app to show a button that links to the page on Azure AD that enables them to grant access. Branding guidance for this sign up button is discussed in the [Branding Guidelines for Integrated Applications](active-directory-branding-guidelines.md) topic. After the user either grants or denies access, the Azure AD grant access page will redirect the browser back to your app with a response. For more information about application properties, see [Application Objects and Service Principles](active-directory-application-objects.md).
+外部ユーザーが組織のアカウントを使用してアプリケーションにサインアップするには、ユーザーがアクセスを許可できる Azure AD のページにリンクするボタンを表示するようにアプリケーションを更新する必要があります。このサインアップ ボタンのブランド化のガイダンスについては、「[アプリケーションのブランド化ガイドライン](active-directory-branding-guidelines.md)」をご覧ください。ユーザーがアクセスを許可または拒否すると、応答でブラウザーが Azure AD のアクセスの許可ページからアプリケーションにリダイレクトされます。アプリケーションのプロパティの詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)」をご覧ください。
 
-The grant access page is created by Azure AD, and you can find a link to it in your app’s Configuration page in the Azure classic portal. To get to the Configuration page, click on the **Applications** link in the top menu of your Azure AD tenant, click the app you want to configure, then click on **Configure** from the top menu of the Quick Start page.
+アクセスの許可ページは Azure AD によって作成されます。このページへのリンクは、Azure クラシック ポータルのアプリケーションの [構成] ページに表示されます。[構成] ページにアクセスするには、Azure AD テナントの上部のメニューの **[アプリケーション]** リンクをクリックし、構成するアプリケーションをクリックして、クイック スタート ページの上部のメニューの **[構成]** をクリックします。
 
-The link for your application will look like this: `http://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=058eb9b2-4f49-4850-9b78-469e3176e247&RequestedPermissions=DirectoryReaders&ConsentReturnURL=https%3A%2F%2Fadatum.com%2FExpenseReport.aspx%3FContextId%3D123456`. The following table describes the parts of the link:
+アプリケーションのリンクは、`http://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=058eb9b2-4f49-4850-9b78-469e3176e247&RequestedPermissions=DirectoryReaders&ConsentReturnURL=https%3A%2F%2Fadatum.com%2FExpenseReport.aspx%3FContextId%3D123456` のようになります。次の表に、このリンクの各部分の説明を示します。
 
-|Parameter|Description|
+|パラメーター|説明|
 |---|---|
-|ClientId|Required. The Client ID you obtained as part of adding your app.|
-|RequestedPermissions|Optional. Access level that your app is requesting, that will be displayed to the user granting your app access. If not specified, the requested access level will default to single sign-on only. The other options are DirectoryReaders and DirectoryWriters. See Application Access Levels for more details on these access levels.|
-|ConsentReturnUrl|Optional. The URL that you want the grant access response returned to. This value must be URL-encoded and must be under the same domain as the Reply URL configured in your app definition. If not supplied, the grant access response will be redirected to your configured Reply URL.|
+|ClientId|必須。アプリケーションの追加操作の一環として取得したクライアント ID。|
+|RequestedPermissions|省略可能。アプリケーションが要求するアクセス レベル。アプリケーションにアクセスを許可するユーザーに表示されます。このパラメーターを指定しない場合、要求するアクセス レベルは既定でシングル サインオンのみに設定されます。他のオプションとして、DirectoryReaders と DirectoryWriters があります。これらのアクセス レベルの詳細については、アプリケーションのアクセス レベルに関するページをご覧ください。|
+|ConsentReturnUrl|省略可能。アクセスの許可の応答が返される URL。この値は URL エンコードする必要があり、アプリケーションの定義で構成した応答 URL と同じドメインに属する必要があります。このパラメーターを指定しない場合、アクセスの許可の応答は、構成済みの応答 URL にリダイレクトされます。|
 
-Specifying a ConsentReturnUrl separate from the Reply URL will allow your app to implement separate logic that can process the response on a different URL from the Reply URL (which normally processes SAML tokens for sign on). You may also specify additional parameters in the ConsentReturnURL encoded URL; these will be passed back as query string parameters to your app upon redirection.  This mechanism can be used to maintain additional info or to tie your app’s request for an access grant to the response from Azure AD.
+応答 URL とは別に ConsentReturnUrl を指定すると、アプリケーションは (通常はサインオンの SAML トークンを処理する) 応答 URL とは異なる URL で応答を処理できる別のロジックを実装することが可能になります。また、ConsentReturnURL にエンコードされた URL に追加のパラメーターを指定することもできます。これらのパラメーターは、リダイレクト時にクエリ文字列パラメーターとしてアプリケーションに渡されます。このメカニズムを使用して、追加情報を保持したり、アプリケーションによるアクセスの許可要求を Azure AD からの応答に関連付けたりすることができます。
 
-#### <a name="grant-access-user-experience-and-response-(legacy)"></a>Grant access user experience and response (Legacy)
+#### アクセスの許可のユーザー エクスペリエンスと応答 (旧)
 
-When an application redirects to the grant access link, the following images demonstrate what the user will experience.
+アプリケーションがアクセスの許可リンクにリダイレクトすると、次のような画面がユーザーに表示されます。
 
-If the user is not already signed in, they will be prompted to do so:
+ユーザーがまだサインインしていない場合は、サインインを求められます。
 
-![Sign in to AAD](./media/active-directory-integrating-applications/signintoaad.png)
+![AAD へのサインイン](./media/active-directory-integrating-applications/signintoaad.png)
 
-Once the user is authenticated, Azure AD will redirect the user to the grant access page:
+ユーザーは、認証されると、Azure AD によりアクセスの許可ページにリダイレクトされます。
 
-![Grant Access](./media/active-directory-integrating-applications/grantaccess.png)
+![アクセスの許可](./media/active-directory-integrating-applications/grantaccess.png)
 
->[AZURE.NOTE] Only the company administrator of the external organization can grant access to your app. If the user is not a company administrator, they will be given the option to send mail to their company administrator to request that this app be granted access.
+>[AZURE.NOTE] 外部組織の会社の管理者だけが、アプリケーションにアクセスを許可できます。ユーザーが会社の管理者ではない場合は、このアプリケーションにアクセスを許可するよう依頼するメールを会社の管理者に送ることができます。
 
-After the customer has granted access for your app by clicking Grant Access, or if they have denied access by clicking Cancel, Azure AD sends a response to the ConsentReturnUrl or to your configured Reply URL. This response contains the following parameters:
+顧客が [アクセスの許可] をクリックしてアプリケーションにアクセスを許可した後、または [取り消し] をクリックしてアクセスを拒否した場合、Azure AD は ConsentReturnUrl または構成済みの応答 URL に応答を送信します。この応答には次のパラメーターが含まれます。
 
-|Parameter|Description|
+|パラメーター|説明|
 |---|---|
-|TenantId|The unique ID of the organization in Azure AD that has granted access for your app. This parameter will only be specified if the customer granted access.|
-|Consent|The value will be set to Granted if the app was granted access, or Denied if the request was rejected.|
+|TenantId|アプリケーションにアクセスを許可した Azure AD 内の組織の一意の ID。このパラメーターは、顧客がアクセスを許可した場合にのみ指定されます。|
+|同意|アプリケーションにアクセスを許可した場合、この値は Granted に設定され、要求が拒否された場合は Denied に設定されます。|
 
-Additional parameters will be returned to the app if they were specified as part of the ConsentReturnUrl encoded URL. The following is an example response to a grant access request that indicates the application has been authorized, and it includes a ContextID that was supplied in the grant access request: `https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Granted&TenantId=f03dcba3-d693-47ad-9983-011650e64134`.
+ConsentReturnUrl にエンコードされた URL の一部として、追加のパラメーターが指定されていた場合、それらのパラメーターがアプリケーションに返されます。次の例は、アプリケーションが承認されたことを示す、アクセスの許可要求への応答を示しています。この応答には、アクセスの許可要求で指定されていた ContextID が含まれています。`https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Granted&TenantId=f03dcba3-d693-47ad-9983-011650e64134`
 
->[AZURE.NOTE] The access grant response will not contain a security token for the user; the app must sign the user in separately.
+>[AZURE.NOTE] アクセスの許可の応答に、ユーザーのセキュリティ トークンは含まれません。アプリケーションは、ユーザーを別途サインインさせる必要があります。
 
-The following is an example response to an access grant request that was denied: `https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Denied`
+次の例は、拒否されたアクセスの許可要求への応答を示しています。`https://adatum.com/ExpenseReport.aspx?ContextID=123456&Consent=Denied`
 
-#### <a name="rolling-app-keys-for-uninterrupted-access-to-the-graph-api-(legacy)"></a>Rolling app keys for uninterrupted access to the Graph API (Legacy)
+#### Graph API へのアクセスが中断されないようにするためのアプリケーション キーのローリング (旧)
 
-During the lifetime of your app, you may need to change the keys that you use when you call into Azure AD to acquire an access token to call the Graph API.  Generally changing keys falls into two categories: emergency roll over where your key has been compromised or a roll over when your current key is about to expire. The following procedure should be followed to provide your app with uninterrupted access while you refresh your keys (primarily for the second case).
+アプリケーションの有効期間中に、Azure AD にアクセスして Graph API を呼び出すアクセス トークンを取得するときに使用するキーを変更することが必要な場合があります。通常、キーの変更は、キーが侵害された場合の緊急ロールオーバーと、現在のキーが間もなく期限切れになるときのロールオーバーの 2 つのカテゴリに分類されます。(主に 2 番目のケースで) キーを更新する間、アプリケーションへのアクセスが中断されないようにするには、次の手順に従う必要があります。
 
-1. In the Azure classic portal, click on your directory tenant, click **Applications** from the top menu, then click the app you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
+1. Azure クラシック ポータルで、ディレクトリ テナントをクリックし、上部のメニューの **[アプリケーション]** をクリックして、構成するアプリケーションをクリックします。クイック スタート ページが開き、シングル サインオンと他の構成情報が表示されます。
 
-1. Click on **Configure** in the top menu to see a list of your app’s properties, and you’ll see a list of your keys.
+1. 上部のメニューの **[構成]** をクリックすると、アプリケーションのプロパティの一覧と、キーの一覧が表示されます。
 
-1. Under Keys, click on the drop down that says **Select duration** and pick 1 or 2 years, and then click **Save** in the command bar. This generates a new password key for your app. Copy this new password key. At this point both the existing and new key can be used by your app to obtain an access token from Azure AD.
+1. [キー] の **[時間の選択]** というドロップダウンをクリックし、1 年または 2 年を選択して、コマンド バーの **[保存]** をクリックします。これにより、アプリケーションの新しいパスワード キーが生成されます。この新しいパスワード キーをコピーします。この時点では、アプリケーションは Azure AD からアクセス トークンを取得する際に、既存のキーと新しいキーのどちらも使用できます。
 
-1. Go back to your app and update the configuration to start using the new password key. See [Using the Graph API to Query Azure AD](https://msdn.microsoft.com/library/azure/dn151791.aspx) for an example of where this update should happen.
+1. アプリケーションに戻り、新しいパスワード キーを使用するように構成を更新します。この更新を行う必要がある状況の例については、「[Graph API を使用した Azure AD のクエリ](https://msdn.microsoft.com/library/azure/dn151791.aspx)」をご覧ください。
 
-1. You should now roll this change out across your production environment – verifying it first on one service node, before rolling it out across the rest.
+1. この変更は、運用環境全体に展開する必要があります。まず 1 つのサービス ノードで検証してから、残りのノードに展開してください。
 
-1. Once the update is complete across your production deployment, you are free to come back to the Azure classic portal and remove the old key.
+1. 運用環境デプロイメント全体にわたって更新が完了したら、Azure クラシック ポータルに戻り、古いキーを削除できます。
 
-#### <a name="changing-app-properties-after-enabling-access-(legacy)"></a>Changing app properties after enabling access (Legacy)
+#### アクセス有効化後のアプリケーションのプロパティの変更 (旧)
 
-Once you enable access for external users to your app, you may still continue to make changes to your app’s properties in the Azure classic portal. However, customers who have already granted access to your app before you made app changes will not see those changes reflected when viewing details about your app in the Azure classic portal. Once the app is made available to customers, you need to be very careful when making certain changes. For example, if you update the App ID URI, then your existing customers who granted access before this change will be unable to log in to your app using their company or school accounts.
+アプリケーションへの外部ユーザーのアクセスを有効にしたら、Azure クラシック ポータルで引き続きアプリケーションのプロパティを変更することもできます。ただし、アプリケーションに変更を加える前に、既にアプリケーションにアクセスを許可していた顧客は、Azure クラシック ポータルでアプリケーションに関する詳細情報を表示したときに、変更内容は反映されません。顧客がアプリケーションを既に使用できる場合は、変更を加えるときに十分に注意する必要があります。たとえば、アプリケーション ID URI を更新した場合、この変更前にアクセスを許可していた既存の顧客は、会社または学校のアカウントを使用して、アプリケーションにログインできなくなります。
 
-If you make a change to the RequestedPermissions to request a greater access level, existing customers using app functionality that now leverages new API calls using this increased access level may get an access denied response from the Graph API.  Your app should handle these cases and ask the customer to grant access to your app with the request for an increased access level.
+より高いアクセス レベルを要求するように RequestedPermissions を変更した場合、その高いアクセス レベルを使用して新しい API 呼び出しを利用するようになったアプリケーションの機能を使用する既存の顧客には、Graph API からアクセスの拒否の応答が返される可能性があります。アプリケーションは、このような状況に対応し、高いアクセス レベルの要求があるアプリケーションにアクセスを許可するよう顧客に求める必要があります。
 
-## <a name="removing-an-application"></a>Removing an application
+## アプリケーションの削除
 
-This section describes how to remove an application from your Azure AD tenant.
+このセクションでは、Azure AD テナントからアプリケーションを削除する方法について説明します。
 
-### <a name="removing-an-application-authored-by-your-organization"></a>Removing an application authored by your organization
-These are the applications that show under the "Applications my company owns" filter on the main "Applications" page for your Azure AD tenant. In technical terms, these are applications you registered either manually via the Azure classic portal, or programmatically via PowerShell or the Graph API. More specifically, they are represented by both an Application and Service Principal object in your tenant. See [Application Objects and Service Principal Objects](active-directory-application-objects.md) for more information.
+### 組織によって作成されたアプリケーションの削除
+これらは、Azure AD テナントのメイン [アプリケーション] ページで [自分の会社が所有するアプリケーション] フィルターを使用すると表示されるアプリケーションです。技術的には、これらは、Azure クラシック ポータルを使用して手動で登録した、あるいは PowerShell または Graph API を使用してプログラムで登録したアプリケーションです。具体的には、テナント内ではアプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方によって表されます。詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)」を参照してください。
 
-#### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>To remove a single tenant application from your directory
+#### ディレクトリからシングル テナント アプリケーションを削除するには
 
-1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
-1. Click on the Active Directory icon on the left menu, and then click on the desired directory.
+1. 左側のメニューの [Active Directory] アイコンをクリックし、目的のディレクトリをクリックします。
 
-1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
+1. 上部のメニューで **[アプリケーション]** をクリックし、構成するアプリケーションをクリックします。クイック スタート ページが開き、シングル サインオンと他の構成情報が表示されます。
 
-1. Click on the **Delete** button in the command bar.
+1. コマンド バーの **[削除]** をクリックします。
 
-1. Click **Yes** in the confirmation message.
+1. 確認メッセージが表示されたら、**[はい]** をクリックします。
 
-#### <a name="to-remove-a-multi-tenant-application-from-your-directory"></a>To remove a multi-tenant application from your directory
+#### ディレクトリからマルチテナント アプリケーションを削除するには
 
-1. Sign in to the [Azure classic portal.](https://manage.windowsazure.com)
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
-1. Click on the Active Directory icon on the left menu, and then click on the desired directory.
+1. 左側のメニューの [Active Directory] アイコンをクリックし、目的のディレクトリをクリックします。
 
-1. On the top menu, click **Applications**, and then click the application you want to configure. The Quick Start page will appear with single sign-on and other configuration information.
+1. 上部のメニューで **[アプリケーション]** をクリックし、構成するアプリケーションをクリックします。クイック スタート ページが開き、シングル サインオンと他の構成情報が表示されます。
 
-1. On the Application is multi-tenant section, click **No**. This converts your application to be single tenant, but the application will still remain in an organization who has already consented to it.
+1. [アプリケーションはマルチテナントです] セクションで **[いいえ]** をクリックします。これでアプリケーションはシングル テナントに変換されますが、アプリケーションは既に同意している組織に引き続き残されます。
 
-1. Click on the **Delete** button in the command bar.
+1. コマンド バーの **[削除]** をクリックします。
 
-1. Click **Yes** in the confirmation message.
+1. 確認メッセージが表示されたら、**[はい]** をクリックします。
 
-### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>Removing a multi-tenant application authorized by another organization
-These are a subset of the applications that show under the "Applications my company uses" filter on the main "Applications" page for your Azure AD tenant, specifically the ones that are not listed under the "Applications my company owns" list. In technical terms, these are multi-tenant applications registered during the consent process. More specifically, they are represented by only a Service Principal object in your tenant. See [Application Objects and Service Principal Objects](active-directory-application-objects.md) for more information.
+### 別の組織によって承認されたマルチテナント アプリケーションの削除
+これらは、Azure AD テナントのメイン [アプリケーション] ページで [自分の会社が使用するアプリケーション] フィルターを使用すると表示されるアプリケーションのサブセットであり、[自分の会社が所有するアプリケーション] リストに表示されないアプリケーションです。技術的には、これらは同意プロセス中に登録されたマルチテナント アプリケーションです。具体的には、テナント内ではサービス プリンシパル オブジェクトのみによって表されます。詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)」を参照してください。
 
-In order to remove a multi-tenant application’s access to your directory (after having granted consent), the company administrator must have an Azure subscription to remove access through the Azure classic portal. You simply navigate to the application's configuration page, and click the "Manage Access" button at the bottom. Alternatively, the company administrator can use the [Azure AD PowerShell Cmdlets](http://go.microsoft.com/fwlink/?LinkId=294151) to remove access.
+(同意後に) ディレクトリへのマルチテナント アプリケーションのアクセス権を削除するには、Azure クラシック ポータルからアクセス権を削除するための Azure サブスクリプションを会社の管理者が持っている必要があります。アプリケーションの構成ページに移動し、下部にある [アクセスの管理] ボタンをクリックします。または、会社の管理者が、[Azure AD PowerShell コマンドレット](http://go.microsoft.com/fwlink/?LinkId=294151)を使用してアクセス権を削除することもできます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- See the [Branding Guidelines for Integrated Apps](active-directory-branding-guidelines.md) for tips on visual guidance for your app.
+- [統合アプリケーションのブランド化に関するガイドライン](active-directory-branding-guidelines.md)を参照する
 
-- For more details on the relationship between an application's Application and Service Principal object(s), see [Application Objects and Service Principal Objects](active-directory-application-objects.md).
+- [アプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)について学ぶ
 
-- To learn more about the role the app manifest plays, see [Understanding the Azure Active Directory application manifest](active-directory-application-manifest.md)
+- [Azure Active Directory のアプリケーション マニフェスト](active-directory-application-manifest.md)について理解する
 
-- See the [Azure AD developer glossary](active-directory-dev-glossary.md) for definitions of some of the core Azure Active Directory (AD) developer concepts.
+- [Active Directory 開発者ガイド](active-directory-developers-guide.md)にアクセスする
 
-- Visit the [Active Directory developer's guide](active-directory-developers-guide.md) for an overview of all developer related content.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

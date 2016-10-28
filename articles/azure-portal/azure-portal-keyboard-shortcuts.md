@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure portal keyboard shortcuts | Microsoft Azure"
-   description="This article will always be an up-to-date listing of the keyboard shortcuts that work throughout the Azure portal. Individual services might have their own specialized keyboard shortcuts."
+   pageTitle="Azure ポータルのキーボード ショートカット | Microsoft Azure"
+   description="この記事では、Azure ポータル全体で使用できる最新のキーボード ショートカットの一覧を紹介します。個々のサービスで専用のキーボード ショートカットが特別に用意されている場合もあります。"
    services="azure-portal"
    documentationCenter=""
    authors="flanakin"
@@ -16,39 +16,33 @@
    ms.date="02/07/2016"
    ms.author="micflan"/>
 
+# Azure ポータルのキーボード ショートカット
 
-# <a name="azure-portal-keyboard-shortcuts"></a>Azure portal keyboard shortcuts
+## ハブを開く
 
-## <a name="open-hubs"></a>Open hubs
-
-| Shortcut | Action |
+| ショートカット | アクション |
 |--------|----------|
-| N | Notifications |
-| / | Browse services |
-| A | Active sessions |
-| B | Billing |
-| C | Create |
+| N | 通知 |
+| / | サービスの参照 |
+| A | アクティブなセッション |
+| B | 課金 |
+| C | 作成 |
 
-## <a name="navigation"></a>Navigation
+## ナビゲーション
 
-| Shortcut | Action |
+| ショートカット | アクション |
 |--------|----------|
-| H | Azure Start dashboard |
-| F | First open blade |
-| J | Previous open blade |
-| K | Next open blade |
-| L | Last open blade |
-| - | Minimize blade or restore from maximized |
-| + | Maximize blade or restore from minimized |
-| # | Close current blade |
-| ¦ | Close all blades |
-| , | Move focus to command bar |
-| . | Move focus to navigation bar |
-| ? | View keyboard shortcuts |
+| H | Azure スタート ダッシュボード |
+| F | 最初に開いたブレード |
+| J | 前に開いたブレード |
+| K | 次に開いたブレード |
+| L | 最後に開いたブレード |
+|- |ブレードを最小化または最大化から復元 |
+|+ |ブレードを最大化または最小化から復元 |
+| # | 現在のブレードを閉じる |
+| ¦ | すべてのブレードを閉じる |
+| , | コマンド バーにフォーカスを移動 |
+| . | ナビゲーション バーにフォーカスを移動 |
+| ? | キーボード ショートカットを表示 |
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0504_2016-->

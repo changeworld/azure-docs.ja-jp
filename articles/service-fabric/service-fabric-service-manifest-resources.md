@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Specifying Service Fabric service endpoints | Microsoft Azure"
-   description="How to describe endpoint resources in a service manifest, including how to set up HTTPS endpoints"
+   pageTitle="Service Fabric サービス エンドポイントの指定 | Microsoft Azure"
+   description="サービス マニフェストにエンドポイント リソースを記述する方法 (HTTPS エンドポイントの設定方法を含みます)"
    services="service-fabric"
    documentationCenter=".net"
    authors="mani-ramaswamy"
@@ -16,16 +16,15 @@
    ms.date="09/14/2016"
    ms.author="subramar"/>
 
+# サービス マニフェストにリソースを指定する
 
-# <a name="specify-resources-in-a-service-manifest"></a>Specify resources in a service manifest
+## Overview
 
-## <a name="overview"></a>Overview
+サービス マニフェストを使用すると、コンパイルしたコードを変更することなく、サービスで使用するリソースを宣言/変更できます。Azure Service Fabric は、サービスで使用するエンドポイント リソースの構成をサポートします。サービス マニフェストで指定したリソースへのアクセスは、SecurityGroup を使用してアプリケーション マニフェスト内で制御できます。リソースを宣言すると、宣言したリソースをデプロイメント時に変更できるため、サービスに新しい構成メカニズムを導入する必要がありません。ServiceManifest.xml ファイルのスキーマ定義は、Service Fabric SDK およびツールと共に *C:\\Program Files\\Microsoft SDKs\\Service Fabric\\schemas\\ServiceFabricServiceModel.xsd* にインストールされます。
 
-The service manifest allows resources that are used by the service to be declared/changed without changing the compiled code. Azure Service Fabric supports configuration of endpoint resources for the service. The access to the resources that are specified in the service manifest can be controlled via the SecurityGroup in the application manifest. The declaration of resources allows these resources to be changed at deployment time, meaning the service doesn't need to introduce a new configuration mechanism. The schema definition for the ServiceManifest.xml file is installed with the Service Fabric SDK and tools to *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd*.
+## エンドポイント
 
-## <a name="endpoints"></a>Endpoints
-
-When an endpoint resource is defined in the service manifest, Service Fabric assigns ports from the reserved application port range when a port isn't specified explicitly. For example, look at the endpoint *ServiceEndpoint1* specified in the manifest snippet provided after this paragraph. Additionally, services can also request a specific port in a resource. Service replicas running on different cluster nodes can be assigned different port numbers, while replicas of a service running on the same node share the port. The service replicas can then use these ports as needed for replication and listening for client requests.
+サービス マニフェストにエンドポイント リソースが定義されているが、ポートが明示的に指定されていない場合、Service Fabric は、予約済みのアプリケーション ポートの範囲からポートを割り当てます。たとえば、この後のマニフェスト スニペットで指定されているエンドポイント *ServiceEndpoint1* をご覧ください。さらに、サービスでリソースの特定のポートを要求することもできます。別のクラスター ノードで実行されているサービスのレプリカには、異なるポート番号を割り当てることができます。一方、同じノードで実行されているサービスのレプリカはポートを共有します。その後、サービス レプリカは、レプリケーションやクライアント要求のリッスンのために、必要に応じてこのポートを使用できます。
 
 ```xml
 <Resources>
@@ -37,13 +36,13 @@ When an endpoint resource is defined in the service manifest, Service Fabric ass
 </Resources>
 ```
 
-Refer to [Configuring stateful Reliable Services](service-fabric-reliable-services-configuration.md) to read more about referencing endpoints from the config package settings file (settings.xml).
+構成パッケージ設定ファイル (settings.xml) からエンドポイントを参照する方法の詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」をご覧ください。
 
-## <a name="example:-specifying-an-http-endpoint-for-your-service"></a>Example: specifying an HTTP endpoint for your service
+## 例: サービスの HTTP エンドポイントを指定する
 
-The following service manifest defines one TCP endpoint resource and two HTTP endpoint resources in the &lt;Resources&gt; element.
+次のサービス マニフェストは、1 つの TCP エンドポイント リソースと 2 つの HTTP エンドポイント リソース を &lt;Resources&gt; 要素内に定義しています。
 
-HTTP endpoints are automatically ACL'd by Service Fabric.
+HTTP エンドポイントは Service Fabric によって自動的に ACL に登録されます。
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -89,14 +88,14 @@ HTTP endpoints are automatically ACL'd by Service Fabric.
 </ServiceManifest>
 ```
 
-## <a name="example:-specifying-an-https-endpoint-for-your-service"></a>Example: specifying an HTTPS endpoint for your service
+## 例: サービスの HTTPS エンドポイントを指定する
 
-The HTTPS protocol provides server authentication and is also used for encrypting client-server communication. To enable HTTPS on your Service Fabric service, specify the protocol in the *Resources -> Endpoints -> Endpoint* section of the service manifest, as shown earlier for the endpoint *ServiceEndpoint3*.
+HTTPS プロトコルはサーバー認証を提供し、また、クライアント/サーバー間通信の暗号化に使用されます。Service Fabric サービスで HTTPS を有効にするには、サービス マニフェストの "*リソース -> エンドポイント -> エンドポイント*" セクションにプロトコルを指定します (前述のエンドポイント *ServiceEndpoint3* を参照してください)。
 
->[AZURE.NOTE] A service’s protocol cannot be changed during application upgrade without it constituting a breaking change.
+>[AZURE.NOTE] アプリケーションのアップグレード中にサービスのプロトコルを変更すると、それは重大な変更と見なされます。
 
 
-Here is an example ApplicationManifest that you need to set for HTTPS. The thumbprint for your certificate must be provided. The EndpointRef is a reference to EndpointResource in ServiceManifest, for which you set the HTTPS protocol. You can add more than one EndpointCertificate.  
+HTTPS で設定する必要がある ApplicationManifest の例を次に示します 証明書のサムプリントを指定する必要があります。EndpointRef は、HTTPS プロトコルを設定する ServiceManifest 内の EndpointResource への参照です。複数の EndpointCertificate を追加することができます。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -138,8 +137,4 @@ Here is an example ApplicationManifest that you need to set for HTTPS. The thumb
 </ApplicationManifest>
 ```
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

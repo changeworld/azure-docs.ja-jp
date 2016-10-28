@@ -1,273 +1,266 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Kindling | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and Kindling."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と Kindling の統合 | Microsoft Azure"
+	description="Azure Active Directory と Kindling の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/09/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/09/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と Kindling の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-kindling"></a>Tutorial: Azure Active Directory integration with Kindling
+このチュートリアルの目的は、Kindling と Azure Active Directory (Azure AD) を統合する方法を説明することです。Kindling と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate Kindling with Azure Active Directory (Azure AD).  
-Integrating Kindling with Azure AD provides you with the following benefits: 
-
-- You can control in Azure AD who has access to Kindling 
-- You can enable your users to automatically get signed-on to Kindling (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal 
+- Kindling にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Kindling にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-## <a name="prerequisites"></a>Prerequisites 
+## 前提条件 
 
-To configure Azure AD integration with Kindling, you need the following items:
+Kindling と Azure AD の統合を構成するには、次のものが必要です。
 
-- An Azure AD subscription
-- A Kindling subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Azure AD サブスクリプション
+- Kindling サブスクリプション
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
+
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
+
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. Adding Kindling from the gallery 
-2. Configuring and testing Azure AD single sign-on
+1. ギャラリーからの Kindling の追加
+2. Azure AD シングル サインオンの構成とテスト
 
 
-## <a name="adding-kindling-from-the-gallery"></a>Adding Kindling from the gallery
-To configure the integration of Kindling into Azure AD, you need to add Kindling from the gallery to your list of managed SaaS apps.
+## ギャラリーからの Kindling の追加
+Azure AD への Kindling の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Kindling を追加する必要があります。
 
-**To add Kindling from the gallery, perform the following steps:**
+**ギャラリーから Kindling を追加するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Active Directory][1]
+	![Active Directory][1]
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications][2]
+	![アプリケーション][2]
 
-4. Click **Add** at the bottom of the page.
+4. ページの下部にある **[追加]** をクリックします。
 
-    ![Applications][3]
+	![アプリケーション][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Applications][4]
+	![アプリケーション][4]
 
-6. In the search box, type **Kindling**.
+6. 検索ボックスに、「**Kindling**」と入力します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_01.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_01.png)
 
-7. In the results pane, select **Kindling**, and then click **Complete** to add the application.
+7. 結果ウィンドウで **[Kindling]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_02.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Kindling based on a test user called "Britta Simon".
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、Kindling で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Kindling to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Kindling needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Kindling.
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Kindling ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Kindling の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、Kindling の **[Username]** の値として割り当てることで確立されます。
  
-To configure and test Azure AD single sign-on with Kindling, you need to complete the following building blocks:
+Kindling で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a Kindling test user](#creating-a-kindling-test-user)** - to have a counterpart of Britta Simon in Kindling that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-6. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Kindling のテスト ユーザーの作成](#creating-a-kindling-test-user)** - Kindling で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+6. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Kindling application. As part of this procedure, you are required to create a base-64 encoded certificate file. If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Kindling アプリケーションでシングル サインオンを構成することです。この手順の途中で、base-64 でエンコードされた証明書ファイルを作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-To configure single sign-on for Kindling, you need a registered domain. If you don't have a registered domain yet, contact your Kindling support team via [support@kindlingapp.com](mailto:support@kindlingapp.com).  
-
-
-
-**To configure Azure AD single sign-on with Kindling, perform the following steps:**
-
-1. In the Azure classic portal, on the **Kindling** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
-
-    ![Configure Single Sign-On][6] 
-
-2. On the **How would you like users to sign on to Kindling** page, select **Azure AD Single Sign-On**, and then click **Next**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_03.png) 
-
-3. On the **Configure App Settings** dialog page, perform the following steps:
-
-    ![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_04.png) 
+Kindling のシングル サインオンを構成するには、登録済みのドメインが必要です。登録済みのドメインがない場合は、Kindling のサポート チーム ([support@kindlingapp.com](mailto:support@kindlingapp.com)) にお問い合わせください。
 
 
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Kindling application  using the following pattern: `https://<company name>.kindlingapp.com/`
 
-    b. Contact yout Kindling support team via [support@kindlingapp.com](mailto:support@kindlingapp.com) to get the **Issuer** and the **Reply URL** value.   
+**Kindling で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-    c. In the **Issuer** textbox, type your Issuer URL.
+1. Azure クラシック ポータルの **Kindling** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    d. In the **Reply URL** textbox, type your Reply URL.   
+	![Configure Single Sign-On][6]
+
+2. **[ユーザーの Kindling へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+
+	![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_03.png)
+
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+
+	![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_04.png)
+
+
+    a.ユーザーが Kindling アプリケーションへのサインオンに使用する URL を **[サインオン URL]** ボックスに `https://<company name>.kindlingapp.com/` 形式で入力します。
+
+    b.**[発行者]** 値と **[応答 URL]** 値を取得するには、Kindling サポート チーム ([support@kindlingapp.com](mailto:support@kindlingapp.com)) にご連絡ください。
+
+    c.**[発行者]** ボックスに、発行者の URL を入力します。
+
+    d.**[応答 URL]** ボックスに、使用している応答 URL を入力します。
  
-    e. Click **Next**.
+    e.**[次へ]** をクリックします。
  
  
-4. On the **Configure single sign-on at Kindling** page, perform the following steps:
+4. **[Kindling でのシングル サインオンの構成]** ページで、次の手順に従います。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_05.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_05.png)
 
-    a. Click **Download certificate**, and then save the file on your computer.
+    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
-    b. Click **Next**.
-
-
-
-1. Contact your Kindling support team via [support@kindlingapp.com](mailto:support@kindlingapp.com) and provide them with the following:
-
-    - The downloaded certificate
-    - The **Issuer URL** value that maps to Kindling's **Entity ID**
-    - The **Single Sign-On Service URL** that maps to Kindling's **SSO Sign On URL** 
-    - The **Single Sign-Out Service URL** that maps to Kindling's **SSO Sign Out URL**. 
-
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**. 
-
-    ![Azure AD Single Sign-On][10]
-
-7. On the **Single sign-on confirmation** page, click **Complete**.  
-    
-    ![Azure AD Single Sign-On][11]
+    b.**[次へ]** をクリックします。
 
 
 
+1. Kindling のサポート チーム ([support@kindlingapp.com](mailto:support@kindlingapp.com)) に連絡し、次の情報を伝えてください。
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
+	- ダウンロードした証明書
+	- Kindling の**エンティティ ID** に対応する**発行者の URL** 値
+	- Kindling の **SSO サインオン URL** に対応する**シングル サインオン サービス URL**
+	- Kindling の **SSO サインアウト URL** に対応する**シングル サインアウト サービス URL**
 
-![Create Azure AD User][20]
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-**To create a test user in Azure AD, perform the following steps:**
+	![Azure AD Single Sign-On][10]
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+	
+	![Azure AD Single Sign-On][11]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/create_aaduser_09.png) 
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
 
-3. To display the list of users, in the menu on the top, click **Users**.
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/create_aaduser_03.png) 
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][20]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_09.png)
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_03.png)
  
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps: 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/create_aaduser_05.png)  
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps: 
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_06.png)
  
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
-    e. Click **Next**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_07.png)
  
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-kindling-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-kindling-tutorial/create_aaduser_08.png)
   
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
+    b.**[完了]** をクリックします。
 
   
  
-### <a name="creating-a-kindling-test-user"></a>Creating a Kindling test user
+### Kindling テスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in Kindling.
-Kindling supports just-in-time provisioning. You have already enabled it in [Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on).
+このセクションの目的は、Kindling で Britta Simon というユーザーを作成することです。Kindling では、ジャストインタイム プロビジョニングがサポートされています。この機能は、「[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)」で既に有効にしています。
 
-There is no action item for you in this section.
-
+このセクションでは、ユーザー側で必要な操作はありません。
 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Kindling.
+### Azure AD テスト ユーザーの割り当て
 
-![Assign User][200] 
+このセクションの目的は、Britta Simon に Kindling へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-**To assign Britta Simon to Kindling, perform the following steps:**
+![ユーザーの割り当て][200]
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+**Kindling に Britta Simon を割り当てるには、次の手順に従います。**
 
-    ![Assign User][201] 
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-2. In the applications list, select **Kindling**.
+	![ユーザーの割り当て][201]
 
-    ![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_50.png) 
+2. アプリケーションの一覧で **[Kindling]** を選択します。
 
-1. In the menu on the top, click **Users**.
+	![Configure Single Sign-On](./media/active-directory-saas-kindling-tutorial/tutorial_kindling_50.png)
 
-    ![Assign User][203] 
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-1. In the Users list, select **Britta Simon**.
+	![ユーザーの割り当て][203]
 
-2. In the toolbar on the bottom, click **Assign**.
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-    ![Assign User][205]
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-
-
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
-
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the Kindling tile in the Access Panel, you should get automatically signed-on to your Kindling application.
+	![ユーザーの割り当て][205]
 
 
-## <a name="additional-resources"></a>Additional Resources
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [Kindling] タイルをクリックすると、自動的に Kindling アプリケーションにサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -288,14 +281,4 @@ When you click the Kindling tile in the Access Panel, you should get automatical
 [204]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-kindling-tutorial/tutorial_general_205.png
 
-
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

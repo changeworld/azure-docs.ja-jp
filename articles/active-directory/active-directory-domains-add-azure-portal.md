@@ -1,104 +1,95 @@
 <properties
-    pageTitle="Add your custom domain name to Azure Active Directory preview | Microsoft Azure"
-    description="How to add your company's domain names to Azure Active Directory, and how to verify the domain name."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeffsta"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory プレビューにカスタム ドメイン名を追加する | Microsoft Azure"
+	description="Azure Active Directory に会社のドメイン名を追加する方法とドメイン名を検証する方法"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeffsta"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
+# Azure Active Directory プレビューにカスタム ドメイン名を追加する
 
-# <a name="add-a-custom-domain-name-to-azure-active-directory-preview"></a>Add a custom domain name to Azure Active Directory preview
+組織にはビジネス向けに使用する 1 つ以上のドメイン名があり、ユーザーはその会社のドメイン名を使用してその会社のネットワークにサインインします。Azure Active Directory (Azure AD) プレビューを使用している場合、会社のドメイン名を Azure AD にも追加することができます。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 これにより、ディレクトリ内で "alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を割り当てることができます。 この場合のプロセスは単純です。
 
-> [AZURE.SELECTOR]
-- [Azure portal](active-directory-domains-add-qzure-portal.md)
-- [Azure classic portal](active-directory-add-domain.md)
+1. カスタム ドメイン名をディレクトリに追加する
+2. ドメイン名レジストラーでドメイン名の DNS エントリを追加する
+3. Azure AD でカスタム ドメイン名を検証する
 
-You've got one or more domain names that your organization uses to do business, and your users sign in to your corporate network using your corporate domain name. Using Azure Active Directory (Azure AD) preview, you can add your corporate domain name to Azure AD as well. [What's in the preview?](active-directory-preview-explainer.md) This allows you to assign user names in the directory that are familiar to your users, such as ‘alice@contoso.com.’ The process is simple:
+## ドメイン名を追加する方法
 
-1. Add the custom domain name to your directory
-2. Add a DNS entry for the domain name at the domain name registrar
-3. Verify the custom domain name in Azure AD
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-## <a name="how-do-i-add-a-domain-name?"></a>How do I add a domain name?
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+    ![ユーザー管理を開く](./media/active-directory-domains-add-azure-portal/user-management.png)
 
-2.  Select **More services**, enter **Azure Active Directory** in the text box, and then select **Enter**.
+3. **[*ディレクトリ名*]** ブレードで、**[ドメイン名]** を選択します。
 
-    ![Opening user management](./media/active-directory-domains-add-azure-portal/user-management.png)
+4. **[*ディレクトリ名* -ドメイン名]** ブレードで、**[追加]** をクリックします。
 
-3. On the ***directory-name*** blade, select **Domain names**.
+  ![[追加] をクリックする](./media/active-directory-domains-add-azure-portal/add-command.png)
 
-4. On the ***directory-name* - Domain names** blade, select the **Add** command.
+5. **[ドメイン名]** ブレードで、ボックスにカスタム ドメインの名前 ("contoso.com" など) を入力し、**[ドメインの追加]** をクリックします。必ず、.com、.net、その他の上位拡張子を含めます。
 
-  ![Selecting the Add command](./media/active-directory-domains-add-azure-portal/add-command.png)
+6. **[*domainname*]** ブレード (タイトルが新しいドメイン名である、開いているブレード) で、組織がそのカスタム ドメイン名を所有していることを確認するために Azure AD が使用する DNS エントリ情報を取得します。
 
-5. On the **Domain name** blade, enter the name of your custom domain in the box, such as 'contoso.com', and then select **Add Domain**. Be sure to include the .com, .net, or other top-level extension.
+  ![DNS エントリ情報を取得する](./media/active-directory-domains-add-azure-portal/get-dns-info.png)
 
-6. On the ***domainname*** blade (that is, the blade that opens that has your new domain name in the title), get the DNS entry information that Azure AD will use to verify that your organization owns the custom domain name.
+ドメイン名を追加したので、Azure AD では、そのドメイン名が組織に所有されていることを検証する必要があります。Azure AD でこの検証を実行するには、ドメイン名の DNS ゾーン ファイルに DNS エントリを追加する必要があります。この作業は、ドメイン名のドメイン名レジストラーの Web サイトで実行できます。
 
-  ![get DNS entry information](./media/active-directory-domains-add-azure-portal/get-dns-info.png)
+## ドメインのドメイン名レジストラーで DNS エントリを追加する
 
-Now that you've added the domain name, Azure AD must verify that your organization owns the domain name. Before Azure AD can perform this verification, you must add a DNS entry in the DNS zone file for the domain name. This task is performed at the website for domain name registrar for the domain name.
+Azure AD でカスタム ドメイン名を使用できるようにするために、次の手順としてドメインの DNS ゾーン ファイルを更新します。これにより、組織がそのカスタム ドメイン名を所有していることを Azure AD で検証できます。
 
-## <a name="add-the-dns-entry-at-the-domain-name-registrar-for-the-domain"></a>Add the DNS entry at the domain name registrar for the domain
+1.  ドメインのドメイン名レジストラーにサインインします。DNS エントリを更新するアクセス権がない場合は、アクセス権を持つ人物またはチームに連絡し、手順 2. の実行と、完了後の連絡を依頼します。
 
-The next step to use your custom domain name with Azure AD is to update the DNS zone file for the domain. This enables Azure AD to verify that your organization owns the custom domain name.
+2.  Azure AD から提供された DNS エントリを追加し、ドメインの DNS ゾーン ファイルを更新します。この DNS エントリにより、Azure AD でドメインの所有権を検証することが可能になります。メール ルーティングや Web ホスティングなどの動作は変更されません。
 
-1.  Sign in to the domain name registrar for the domain. If you don't have access to update the DNS entry, ask the person or team who has this access to complete step 2 and to let you know when it is completed.
+DNS エントリの追加に関するヘルプについては、[一般的な DNS レジストラーで DNS エントリを追加する手順](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)に関するページをご覧ください。
 
-2.  Update the DNS zone file for the domain by adding the DNS entry provided to you by Azure AD. This DNS entry enables Azure AD to verify your ownership of the domain. The DNS entry doesn't change any behaviors such as mail routing or web hosting.
+## Azure AD との間でドメイン名を検証する
 
-For help with this adding the DNS entry, read [Instructions for adding a DNS entry at popular DNS registrars](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/)
+DNS エントリを追加すると、Azure AD でドメイン名を検証することができるようになります。
 
-## <a name="verify-the-domain-name-with-azure-ad"></a>Verify the domain name with Azure AD
+DNS レコードが反映された後でないと、ドメイン名を検証できません。反映には数秒しかかからない場合がほとんどですが、1 時間以上かかる場合もあります。最初から検証が機能しない場合は、後でもう一度やり直してください。
 
-Once you have added the DNS entry, you are ready to verify the domain name with Azure AD.
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-A domain name can be verified only after the DNS records have propagated. This propagation often takes only seconds, but it can sometimes take an hour or more. If verification doesn’t work the first time, try again later.
+2.  **[参照]** を選択し、テキスト ボックスに「ユーザー管理」と入力して、**Enter** キーを押します。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+    ![ユーザー管理を開く](./media/active-directory-domains-add-azure-portal/user-management.png)
 
-2.  Select **Browse**, enter User Management in the text box, and then select **Enter**.
+3. **[ユーザー管理 - ドメイン名]** ブレードで、検証する必要がある未確認のドメイン名を選択します。
 
-    ![Opening user management](./media/active-directory-domains-add-azure-portal/user-management.png)
+4. **[*domainname*]** ブレード (タイトルが新しいドメイン名である、開いているブレード) で、**[確認]** をクリックして検証を実行します。
 
-3. On the **User management - Domain names** blade, select the unverified domain name that you want to verify.
+これで[カスタム ドメイン名を含むユーザー名を割り当てる](active-directory-create-users-azure-portal.md)ことができます。
 
-4. On the ***domainname*** blade (that is, the blade that opens that has your new domain name in the title), select **Verify** to complete the verification.
+## トラブルシューティング
 
-Now you can [assign user names that include your custom domain name](active-directory-users-create-azure-portal.md).
+カスタム ドメイン名を検証できない場合は、次のことを試してください。以下では、最も一般的な原因から順に列挙します。
 
-## <a name="troubleshooting"></a>Troubleshooting
+1.	**1 時間待つ**: DNS レコードは、Azure AD がドメインを検証する前に反映されている必要があります。これに 1 時間以上かかる場合があります。
 
-If you can't verify a custom domain name, try the following. We'll start with the most common and work down to the least common.
+2.	**DNS レコードが正しく入力されていることを確認する**: ドメインのドメイン名レジストラーの Web サイトで、この手順を実行します。Azure AD は、DNS エントリが DNS ゾーン ファイルに存在しない場合、または Azure AD によって提供された DNS エントリと完全に一致しない場合は、ドメイン名を検証できません。ドメインの DNS レコードをドメイン名レジストラーで更新するアクセス権がない場合は、組織内でそのアクセス権を持つ人物またはチームと DNS エントリを共有し、DNS エントリの追加を依頼します。
 
-1.  **Wait an hour**. DNS records need to propagate before Azure AD can verify the domain. This can take an hour or more.
+3.	**Azure AD の別のディレクトリからドメイン名を削除する**: ドメイン名は、1 つのディレクトリ内だけでしか検証できません。ドメイン名が以前に他のディレクトリで検証されていた場合は、新しいディレクトリで検証する前に、前のディレクトリ内から削除されている必要があります。ドメイン名の削除については、[カスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)に関する記事をご覧ください。
 
-2.  **Ensure the DNS record was entered, and that it is correct**. Complete this step at the website for the domain name registrar for the domain. Azure AD cannot verify the domain name if the DNS entry is not present in the DNS zone file, or if it is not an exact match with the DNS entry that Azure AD provided you. If you do not have access to update DNS records for the domain at the domain name registrar, share the DNS entry with the person or team at your organization who has this access, and ask them to add the DNS entry.
+## カスタム ドメイン名を追加する
 
-3.  **Delete the domain name from another directory in Azure AD**. A domain name can be verified in only a single directory. If a domain name was previously verified in another directory, it must be deleted there before it can be verified in your new directory. To learn about deleting domain names, read [Manage custom domain names](active-directory-domains-manage-azure-portal.md).    
+複数のカスタム ドメイン名 (たとえば "contoso.com" と "contosobank.com" など) を使用する場合、ドメイン名は最大 900 個まで使用することができます。この記事の同じ手順に従って各ドメイン名を追加してください。
 
-## <a name="add-more-custom-domain-names"></a>Add more custom domain names
+## 次のステップ
 
-If your organization uses multiple custom domain names, such as ‘contoso.com’ and ‘contosobank.com’, you can add them up to a maximum of 900 domain names. Use the same steps in this article to add each of your domain names.
+[カスタム ドメイン名を管理する](active-directory-domains-manage-azure-portal.md)
 
-## <a name="next-steps"></a>Next steps
-
-[Manage custom domain names](active-directory-domains-manage-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

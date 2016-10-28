@@ -1,18 +1,15 @@
-1. In the Visual Studio **Solution Explorer**, right-click the project and select **Add > Docker Support** from the context menu.
+1. Visual Studio の**ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[追加]、[Docker サポート]** の順に選択します。
 
-    ![Add Docker Support context menu](media/vs-azure-tools-docker-add-docker-support/docker-support-context-menu.png)
+    ![Docker サポート コンテキスト メニューの追加](media/vs-azure-tools-docker-add-docker-support/docker-support-context-menu.png)
 
-1. Adding Docker support to an ASP.NET Core web project results in the addition of several Docker-related files being added to the project, including Docker-Compose files, deployment Windows PowerShell scripts, and Docker property files. 
+1. ASP.NET Core Web プロジェクトに Docker サポートを追加すると、プロジェクトに追加されているいくつかの Docker 関連ファイル (Docker-Compose ファイル、デプロイの Windows PowerShell スクリプト、および Docker プロパティ ファイルなど) が追加されます。
 
-    ![Docker files added to project](media/vs-azure-tools-docker-add-docker-support/docker-files-added.png)
+    ![プロジェクトに追加された Docker ファイル](media/vs-azure-tools-docker-add-docker-support/docker-files-added.png)
     
-> [AZURE.NOTE] If using the [Docker for Windows Beta](https://beta.docker.com), open Properties\Docker.props, remove the default value and restart Visual Studio for the value to take effect.
+> [AZURE.NOTE] [Docker for Windows のベータ版](https://beta.docker.com)を使用している場合は、Properties\\Docker.props を開き、既定値を削除して、Visual Studio を再起動すると、値が反映されます。
 > 
 > ```
 > <DockerMachineName Condition="'$(DockerMachineName)'=='' "></DockerMachineName>
 > ```
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

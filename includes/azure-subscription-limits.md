@@ -1,23 +1,20 @@
-Resource|Default Limit|Maximum Limit
+リソース|既定の制限|上限
 ---|---|---
-Cores per [subscription](../articles/billing-buy-sign-up-azure-subscription.md) <sup>1</sup>|20|10,000
-[Co-administrators](../articles/billing-add-change-azure-subscription-administrator.md) per subscription|200|200
-[Storage accounts](../articles/storage/storage-create-storage-account.md) per subscription<sup>2</sup>|200|250
-[Cloud services](../articles/cloud-services/cloud-services-choose-me.md) per subscription|20|200
-[Local networks](http://msdn.microsoft.com/library/jj157100.aspx) per subscription|10|500
-SQL Database servers per subscription|6|150
-DNS servers per subscription|9|100
-Reserved IPs per subscription|20|100
-Hosted service certificates per subscription|400|400
-[Affinity groups](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) per subscription|256|256
-[Batch](https://azure.microsoft.com/services/batch/) accounts per region per subscription|1|50
-Alert rules per subscription|250|250
+[サブスクリプション](../articles/billing-buy-sign-up-azure-subscription.md)あたりのコア数 <sup>1</sup>|20|10,000
+サブスクリプションあたりの[共同管理者](../articles/billing-add-change-azure-subscription-administrator.md)数|200|200
+サブスクリプションあたりの[ストレージ アカウント](../articles/storage/storage-create-storage-account.md)数<sup>2</sup>|200|250
+サブスクリプションあたりの[クラウド サービス](../articles/cloud-services/cloud-services-choose-me.md)数|20|200
+サブスクリプションあたりの[ローカル ネットワーク](http://msdn.microsoft.com/library/jj157100.aspx)数|10|500
+サブスクリプションあたりの SQL Database サーバー数|6|150
+サブスクリプションあたりの DNS サーバー数|9|100
+サブスクリプションあたりの予約済み IP 数|20|100
+サブスクリプションあたりのホストされるサービスの証明書数|400|400
+サブスクリプションあたりの[アフィニティ グループ](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md)数|256|256
+サブスクリプションあたりのリージョンごとの [Batch](https://azure.microsoft.com/services/batch/) アカウント数|1|50
+サブスクリプションあたりのアラート ルール数|250|250
 
-<sup>1</sup>Extra Small instances count as one core towards the core limit despite using a partial core.
+<sup>1</sup>XS のインスタンスで、使用するコア数が 1 コアに満たなくても、コア制限を上限として 1 コアとカウントされます。
 
-<sup>2</sup>This includes both Standard and Premium storage accounts. If you require more than 200 storage accounts, make a request through [Azure Support](https://azure.microsoft.com/support/faq/). The Azure Storage team will review your business case and may approve up to 250 storage accounts. 
+<sup>2</sup>これには、Standard および Premium ストレージ アカウントの両方が含まれます。必要なストレージ アカウントが 200 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,16 +1,13 @@
-1. From the Visual Studio menu, select **File > New > Project**.
+1. Visual Studio のメニューで、**[ファイル]、[新規作成]、[プロジェクト]** の順に選択します。
 
-1. Under the **Templates** section of the **New Project** dialog box, select **Visual C# > Web**.
+1. **[新しいプロジェクト]** ダイアログ ボックスの **[テンプレート]** セクションで、**[Visual C#]、[Web]** の順に選択します。
 
-1. Select **ASP.NET Core Web Application (.NET Core)**.
+1. **ASP.NET Core Web アプリケーション (.NET Core)** を選択します。
 
-1. Give your new application a name (or take the default) and select **OK**.
+1. 新しいアプリケーションに名前を設定 (または、既定の名前をそのまま使用) して、**[OK]** を選択します。
 
-1. Under **ASP.NET Core Templates**, select **Web Application** and select **OK**.
+1. **[ASP.NET Core テンプレート]** で、**[Web アプリケーション]** を選択して、**[OK]** を選択します。
 
-1. Unselect **Host in the cloud**. You'll be using Docker as your deployment solution.
+1. **[クラウドでのホスト]** の選択を解除します。デプロイ ソリューションとして Docker を使用することになります。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

@@ -1,136 +1,131 @@
 <properties
-    pageTitle="Create a WordPress web app in Azure App Service | Microsoft Azure"
-    description="Learn how to create a new Azure web app for a WordPress blog using the Azure Portal."
-    services="app-service\web"
-    documentationCenter="php"
-    authors="rmcmurray"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Azure App Service での WordPress Web アプリの作成 | Microsoft Azure"
+	description="Azure ポータルを使用して WordPress ブログ用の新しい Azure Web アプリを作成する方法について説明します。"
+	services="app-service\web"
+	documentationCenter="php"
+	authors="rmcmurray"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="PHP"
-    ms.topic="hero-article"
-    ms.date="08/11/2016"
-    ms.author="robmcm"/>
+	ms.service="app-service-web"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="PHP"
+	ms.topic="hero-article"
+	ms.date="08/11/2016"
+	ms.author="robmcm"/>
 
+# Azure App Service での WordPress Web アプリの作成
 
-# <a name="create-a-wordpress-web-app-in-azure-app-service"></a>Create a WordPress web app in Azure App Service
+[AZURE.INCLUDE [タブ](../../includes/app-service-web-get-started-nav-tabs.md)]
 
-[AZURE.INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
+このチュートリアルでは、WordPress ブログ サイトを Azure Marketplace からデプロイする方法について説明します。
 
-This tutorial shows how to deploy a WordPress blog site from the Azure Marketplace.
+チュートリアルを完了すると、独自の WordPress ブログ サイトをクラウドで運用できるようになります。
 
-When you're done with the tutorial you'll have your own WordPress blog site up and running in the cloud.
+![WordPress サイト](./media/web-sites-php-web-site-gallery/wpdashboard.png)
 
-![WordPress site](./media/web-sites-php-web-site-gallery/wpdashboard.png)
+学習内容:
 
-You'll learn:
+* Azure Marketplace でアプリケーション テンプレートを検索する方法。
+* Azure App Service でテンプレートに基づく Web アプリを作成する方法。
+* 新しい Web アプリとデータベースの Azure App Service 設定を構成する方法。
 
-* How to find an application template in the Azure Marketplace.
-* How to create a web app in Azure App Service that is based on the template.
-* How to configure Azure App Service settings for the new web app and database.
+Azure Marketplace には、Microsoft、サード パーティ企業、およびオープン ソース ソフトウェア活動によって開発された多種多様な人気の Web アプリが用意されています。これらの Web アプリは、この WordPress の例で使用される [PHP](/develop/nodejs/) をはじめ、[.NET](/develop/net/)、[Node.js](/develop/nodejs/)、[Java](/develop/java/)、[Python](/develop/python/) など、さまざまなよく知られたフレームワーク上に構築されています。Azure Marketplace から Web アプリを作成するために必要なソフトウェアは、[Azure ポータル](https://portal.azure.com/)に使用するブラウザーだけです。
 
-The Azure Marketplace makes available a wide range of popular web apps developed by Microsoft, third party companies, and open source software initiatives. The web apps are built on a wide range of popular frameworks, such as [PHP](/develop/nodejs/) in this WordPress example, [.NET](/develop/net/), [Node.js](/develop/nodejs/), [Java](/develop/java/), and [Python](/develop/python/), to name a few. To create a web app from the Azure Marketplace the only software you need is the browser that you use for the [Azure Portal](https://portal.azure.com/). 
-
-The WordPress site that you deploy in this tutorial uses MySQL for the database. If you wish to instead use SQL Database for the database, see [Project Nami](http://projectnami.org/). **Project Nami** is also available through the Marketplace.
+このチュートリアルでデプロイする WordPress サイトは、データベースに MySQL を使用します。SQL Database に変更する場合は、[Project Nami](http://projectnami.org/) の Web サイトを参照してください。**Project Nami** は Marketplace からも入手できます。
 
 > [AZURE.NOTE]
-> To complete this tutorial, you need a Microsoft Azure account. If you don't have an account, you can [activate your Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F) or [sign up for a free trial](/en-us/pricing/free-trial/?WT.mc_id=A261C142F).
+このチュートリアルを完了するには、Microsoft Azure アカウントが必要です。アカウントを持っていない場合は、[Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)か、[無料試用版にサインアップ](/ja-JP/pricing/free-trial/?WT.mc_id=A261C142F)してください。
 >
-> If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751). There, you can immediately create a short-lived starter web app in App Service—no credit card required, and no commitments.
+> Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」にアクセスしてください。有効期間が短いスターター Web アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="select-wordpress-and-configure-for-azure-app-service"></a>Select WordPress and configure for Azure App Service
+## WordPress を選択して Azure App Service 用に構成する
 
-1. Log in to the [Azure Portal](https://portal.azure.com/).
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
 
-2. Click **New**.
-    
-    ![Create New][5]
-    
-3. Search for **WordPress**, and then click **WordPress**. If you wish to use SQL Database instead of MySQL, search for **Project Nami**.
+2. **[新規]** をクリックします。
+	
+    ![新規作成][5]
+	
+3. **WordPress** を検索し、**[WordPress]** をクリックします。MySQL の代わりに SQL Database を使用する場合は、**Project Nami** を検索してください。
 
-    ![WordPress from list][7]
-    
-5. After reading the description of the WordPress app, click **Create**.
+	![WordPress リスト][7]
+	
+5. WordPress アプリの説明を読んだら、**[作成]** をクリックします。
 
-    ![Create](./media/web-sites-php-web-site-gallery/create.png)
+	![作成](./media/web-sites-php-web-site-gallery/create.png)
 
-4. Enter a name for the web app in the **Web app** box.
+4. **[Web アプリ]** ボックスに Web アプリの名前を入力します。
 
-    This name must be unique in the azurewebsites.net domain because the URL of the web app will be {name}.azurewebsites.net. If the name you enter isn't unique, a red exclamation mark appears in the text box.
+	Web アプリの URL は {name}.azurewebsites.net のようになるため、この名前は azurewebsites.net ドメイン内で一意である必要があります。入力した名前が一意でない場合は、テキスト ボックスに赤色の感嘆符が表示されます。
 
-8. If you have more than one subscription, choose the one you want to use. 
+8. サブスクリプションが複数ある場合には、使用するものを 1 つ選択します。
 
-5. Select a **Resource Group** or create a new one.
+5. **リソース グループ**を選択するか、新しく作成します。
 
-    For more information about resource groups, see [Azure Resource Manager overview](../resource-group-overview.md).
+	リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
-5. Select an **App Service plan/Location** or create a new one.
+5. **App Service プラン/場所**を選択するか、新しく作成します。
 
-    For more information about App Service plans, see [Azure App Service plans overview](../azure-web-sites-web-hosting-plans-in-depth-overview.md) 
+	App Service プランの詳細については、[Azure App Service プランの概要](../azure-web-sites-web-hosting-plans-in-depth-overview.md)に関するページを参照してください。
 
-7. Click **Database**, and then in the **New MySQL Database** blade provide the required values for configuring your MySQL database.
+7. **[データベース]** をクリックし、**[新しい MySQL データベース]** ブレードで、MySQL データベースを構成するために必要な値を指定します。
 
-    a. Enter a new name or leave the default name.
+	a.新しい名前を入力するか、既定の名前をそのまま使用します。
 
-    b. Leave the **Database Type** set to **Shared**.
+	b.**[データベースの種類]** は **[共有]** のままにします。
 
-    c. Choose the same location as the one you chose for the web app.
+	c.Web アプリ用に選択したのと同じ場所を選択します。
 
-    d. Choose a pricing tier. Mercury (free with minimal allowed connections and disk space) is fine for this tutorial.
+	d.価格レベルを選択します。このチュートリアルでは、Mercury (無料で、最小限の許可された接続とディスク領域を使用可能) で問題ありません。
 
-8. In the **New MySQL Database** blade, click **OK**. 
+8. **[新しい MySQL データベース]** ブレードで、**[OK]** をクリックします。
 
-8. In the **WordPress** blade, accept the legal terms, and then click **Create**. 
+8. **[WordPress]** ブレードで、法律条項に同意し、**[作成]** をクリックします。
 
-    ![Configure web app](./media/web-sites-php-web-site-gallery/configure.png)
+	![Web アプリの構成](./media/web-sites-php-web-site-gallery/configure.png)
 
-    Azure App Service creates the web app, typically in less than a minute. You can watch the progress by clicking the bell icon at the top of the portal page.
+	Azure App Service によって、通常は 1 分以内に Web アプリが作成されます。進捗状況を監視するには、ポータル ページの上部にあるベル アイコンをクリックします。
 
-    ![Progress indicator](./media/web-sites-php-web-site-gallery/progress.png)
+	![進捗状況インジケーター](./media/web-sites-php-web-site-gallery/progress.png)
 
-## <a name="launch-and-manage-your-wordpress-web-app"></a>Launch and manage your WordPress web app
-    
-7. When the web app creation is finished, navigate in the Azure Portal to the resource group in which you created the application, and you can see the web app and the database.
+## WordPress Web アプリの起動と管理
+	
+7. Web アプリの作成が完了したら、Azure ポータルで、アプリケーションを作成したリソース グループに移動し、Web アプリとデータベースを確認できます。
 
-    The extra resource with the light bulb icon is [Application Insights](/services/application-insights/), which provides monitoring services for your web app.
+	電球のアイコンが表示された追加のリソースは [Application Insights](/services/application-insights/) であり、Web アプリの監視サービスを提供します。
 
-1. In the **Resource group** blade, click the web app line.
+1. **[リソース グループ]** ブレードで、Web アプリの行をクリックします。
 
-    ![Configure web app](./media/web-sites-php-web-site-gallery/resourcegroup.png)
+	![Web アプリの構成](./media/web-sites-php-web-site-gallery/resourcegroup.png)
 
-2. In the Web app blade, click **Browse**.
+2. Web アプリ ブレードで **[参照]** をクリックします。
 
-    ![site URL][browse]
+    ![サイトの URL][browse]
 
-3. In the WordPress **Welcome** page, enter the configuration information required by WordPress, and then click **Install WordPress**.
+3. WordPress の **[ようこそ]** ページで、WordPress に必要な構成情報を入力し、**[WordPress のインストール]** をクリックします。
 
-    ![Configure WordPress](./media/web-sites-php-web-site-gallery/wpconfigure.png)
+	![WordPress の構成](./media/web-sites-php-web-site-gallery/wpconfigure.png)
 
-4. Log in using the credentials you created on the **Welcome** page.  
+4. **[ようこそ]** ページで作成した資格情報を使用して、ログインします。
 
-5. Your site Dashboard page opens.    
+5. サイトのダッシュボード ページが開きます。
 
-    ![WordPress site](./media/web-sites-php-web-site-gallery/wpdashboard.png)
+	![WordPress サイト](./media/web-sites-php-web-site-gallery/wpdashboard.png)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-You've seen how to create and deploy a PHP web app from the gallery. For more information about using PHP in Azure, see the [PHP Developer Center](/develop/php/).
+これでギャラリーから PHP Web アプリを作成してデプロイする方法はわかりました。Azure での PHP の使用に関する詳細については、「[PHP デベロッパー センター](/develop/php/)」を参照してください。
 
-For more information about how to work with App Service Web Apps, see the links on the left side of the page (for wide browser windows) or at the top of the page (for narrow browser windows). 
+App Service Web Apps の使用方法の詳細については、ページの左側 (ワイド ブラウザー ウィンドウの場合) またはページの上部 (幅の狭いブラウザー ウィンドウの場合) に表示されるリンクを参照してください。
 
-## <a name="what's-changed"></a>What's changed
-* For a guide to the change from Websites to App Service, see [Azure App Service and its impact on existing Azure Services](http://go.microsoft.com/fwlink/?LinkId=529714).
+## 変更内容
+* Websites から App Service への変更ガイドについては、「[Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)」を参照してください。
 
 [5]: ./media/web-sites-php-web-site-gallery/startmarketplace.png
 [7]: ./media/web-sites-php-web-site-gallery/search-web-app.png
 [browse]: ./media/web-sites-php-web-site-gallery/browse-web.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

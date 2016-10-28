@@ -1,22 +1,19 @@
-The following table describes each of the major quotas, limits, defaults, and throttles in Azure Scheduler.
+次の表に、Azure Scheduler の主要なクォータ、制限、既定値、および調整について説明します。
 
-|Resource|Limit Description|
+|リソース|制限についての説明|
 |---|---|
-|**Job size**|The maximum job size is 16K. If a PUT or a PATCH results in a job larger than these limits, a 400 Bad Request status code is returned.|
-|**Request URL size**|Maximum size of the request URL is 2048 chars.|
-|**Aggregate header size**|Maximum aggregate header size is 4096 chars.|
-|**Header count**|Maximum header count is 50 headers.|
-|**Body size**|Maximum body size is 8192 chars.|
-|**Recurrence span**|Maximum recurrence span is 18 months.|
-|**Time to start time**|Maximum “time to start time” is 18 months.|
-|**Job history**|Maximum response body stored in job history is 2048 bytes.|
-|**Frequency**|The default max frequency quota is 1 hour in a free job collection and 1 minute in a standard job collection. The max frequency is configurable on a job collection to be lower than the maximum. All jobs in the job collection are limited the value set on the job collection. If you attempt to create a job with a higher frequency than the maximum frequency on the job collection then request will fail with a 409 Conflict status code.|
-|**Jobs**|The default max jobs quota is 5 jobs in a free job collection and 50 jobs in a standard job collection. The maximum number of jobs is configurable on a job collection. All jobs in the job collection are limited the value set on the job collection. If you attempt to create more jobs than the maximum jobs quota, then the request fails with a 409 Conflict status code.|
-|**Job history retention**|Job history is retained for up to 2 months or up to the last 1000 executions.|
-|**Completed and faulted job retention**|Completed and faulted jobs are retained for 60 days.|
-|**Timeout**|There’s a static (not configurable) request timeout of 60 seconds for HTTP actions. For longer running operations, follow HTTP asynchronous protocols; for example, return a 202 immediately but continue working in the background.|
+|**ジョブ サイズ**|ジョブの最大サイズは 16 K です。PUT または PATCH 操作の結果としてジョブのサイズがこの制限値を超える場合、"400 正しくない要求" 状態コードが返されます。|
+|**要求 URL のサイズ**|要求 URL の最大サイズは 2,048 文字です。|
+|**ヘッダーの合計サイズ**|ヘッダーの合計最大サイズは 4,096 文字です。|
+|**ヘッダーの数**|ヘッダーの最大数は 50 個です。|
+|**本文のサイズ**|本文の最大サイズは 8,192 文字です。|
+|**定期実行のスパン**|定期実行の最大スパンは 18 か月です。|
+|**開始時刻までの時間**|"開始時刻までの時間" の最大値は 18 か月です。|
+|**ジョブ履歴**|ジョブ履歴に格納される最大の応答本文は 2,048 バイトです。|
+|**頻度**|既定の最大頻度クォータは、Free ジョブ コレクションの場合で 1 時間、Standard ジョブ コレクションの場合で 1 分です。最大頻度は、最大値よりも小さくなるようにジョブ コレクションで構成できます。ジョブ コレクション内のすべてのジョブは、ジョブ コレクションに対して設定された値に制限されます。ジョブ コレクションに対する最大頻度より高い頻度でジョブを作成しようとすると、要求は状態コード "409 競合" で失敗します。|
+|**ジョブ**|既定の最大ジョブ クォータは、Free ジョブ コレクションの場合で 5 個のジョブ、Standard ジョブ コレクションの場合で 50 個のジョブです。ジョブの最大数は、ジョブ コレクションに対して構成できます。ジョブ コレクション内のすべてのジョブは、ジョブ コレクションに対して設定された値に制限されます。最大ジョブ クォータを超える数のジョブを作成しようとすると、要求は状態コード "409 競合" で失敗します。|
+|**ジョブ履歴の保有期間**|ジョブ履歴は、最大 2 か月間 (または実行回数で直近 1,000 件まで) 保存されます。|
+|**完了したジョブとエラーが発生したジョブの保有期間**|完了したジョブとエラーが発生したジョブは、60 日間保持されます。|
+|**タイムアウト**|HTTP アクションに対しては、30 秒間の静的 (構成不可) 要求タイムアウトがあります。長時間実行される処理の場合は HTTP 非同期プロトコルに従います。たとえば、202 をすぐに返す一方で、バックグラウンドで処理を続行します。|
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0316_2016-->

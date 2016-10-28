@@ -1,18 +1,15 @@
-With Azure Resource Manager, you define parameters for values you want to specify when the template is deployed. The template includes a section called Parameters that contains all of the parameter values.
-You should define a parameter for those values that will vary based on the project you are deploying or based on the environment you are deploying to. Do not define parameters for values that will always stay the same. Each parameter value is used in the template to define the resources that are deploy. 
+Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む Parameters という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
-When defining parameters, use the **allowedValues** field to specify which values a user can provide during deployment. Use the **defaultValue** field to assign a value to the parameter, if no value is provided during deployment.
+デプロイ中にユーザーが指定できる値を指定するには、パラメーターを定義するときに **allowedValues** フィールドを使用します。**defaultValue** フィールドは、デプロイ中に値が指定されなかった場合にパラメーターに割り当てる値を指定するために使用します。
 
-We will describe each parameter in the template.
+テンプレートに含まれるそれぞれのパラメーターについて説明します。
 
-### <a name="logicappname"></a>logicAppName
+### logicAppName
 
-The name of the logic app to create.
+作成するロジック アプリの名前。
 
     "logicAppName": {
         "type": "string"
     }
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

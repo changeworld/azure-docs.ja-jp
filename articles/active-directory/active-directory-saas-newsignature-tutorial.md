@@ -1,257 +1,252 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Cloud Management Portal for Microsoft Azure | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and Cloud Management Portal for Microsoft Azure."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合 | Microsoft Azure"
+	description="Azure Active Directory と Cloud Management Portal for Microsoft Azure の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/16/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/16/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と Cloud Management Portal for Microsoft Azure の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Tutorial: Azure Active Directory integration with Cloud Management Portal for Microsoft Azure
+このチュートリアルの目的は、Cloud Management Portal for Microsoft Azure と Azure Active Directory (Azure AD) を統合する方法を説明することです。Cloud Management Portal for Microsoft Azure と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate Cloud Management Portal for Microsoft Azure with Azure Active Directory (Azure AD).  
-Integrating Cloud Management Portal for Microsoft Azure with Azure AD provides you with the following benefits:
+- Cloud Management Portal for Microsoft Azure にアクセスできるユーザーを Azure AD で制御できます
+- ユーザーが自分の Azure AD アカウントで自動的に Cloud Management Portal for Microsoft Azure にサインオンできるようにします (シングル サインオン)。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to Cloud Management Portal for Microsoft Azure
-- You can enable your users to automatically get signed-on to Cloud Management Portal for Microsoft Azure (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
 
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Cloud Management Portal for Microsoft Azure と Azure AD の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with Cloud Management Portal for Microsoft Azure, you need the following items:
+- Azure AD サブスクリプション
+- Cloud Management Portal for Microsoft Azure でのシングル サインオンが有効なサブスクリプション
 
-- An Azure AD subscription
-- A Cloud Management Portal for Microsoft Azure single-sign on enabled subscription
 
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
 
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-To test the steps in this tutorial, you should follow these recommendations:
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
 
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
+1. ギャラリーからの Cloud Management Portal for Microsoft Azure の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. Adding Cloud Management Portal for Microsoft Azure from the gallery
-2. Configuring and testing Azure AD single sign-on
 
+## ギャラリーからの Cloud Management Portal for Microsoft Azure の追加
+Azure AD への Cloud Management Portal for Microsoft Azure の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Cloud Management Portal for Microsoft Azure を追加する必要があります。
 
-## <a name="adding-cloud-management-portal-for-microsoft-azure-from-the-gallery"></a>Adding Cloud Management Portal for Microsoft Azure from the gallery
-To configure the integration of Cloud Management Portal for Microsoft Azure into Azure AD, you need to add Cloud Management Portal for Microsoft Azure from the gallery to your list of managed SaaS apps.
+**ギャラリーから Cloud Management Portal for Microsoft Azure を追加するには、次の手順を実行します。**
 
-**To add Cloud Management Portal for Microsoft Azure from the gallery, perform the following steps:**
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+	![Active Directory][1]
 
-    ![Active Directory][1]
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+	![アプリケーション][2]
 
-    ![Applications][2]
+4. ページの下部にある **[追加]** をクリックします。
 
-4. Click **Add** at the bottom of the page.
+	![アプリケーション][3]
 
-    ![Applications][3]
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+	![アプリケーション][4]
 
-    ![Applications][4]
+6. 検索ボックスに、「**Cloud Management Portal for Microsoft Azure**」と入力します。
 
-6. In the search box, type **Cloud Management Portal for Microsoft Azure**.
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_01.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_01.png)
+7. 結果ウィンドウで **[Cloud Management Portal for Microsoft Azure]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-7. In the results pane, select **Cloud Management Portal for Microsoft Azure**, and then click **Complete** to add the application.
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_02.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_02.png)
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーを使用して、Cloud Management Portal for Microsoft Azure との Azure AD シングル サインオンを構成してテストする方法を示すことです。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Cloud Management Portal for Microsoft Azure based on a test user called "Britta Simon".
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Cloud Management Portal for Microsoft Azure ユーザーが Azure AD で認識される必要があります。言い換えると、Azure AD ユーザーと Cloud Management Portal for Microsoft Azure の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、Cloud Management Portal for Microsoft Azure の **[Username]** の値として割り当てることで確立されます。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Cloud Management Portal for Microsoft Azure to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Cloud Management Portal for Microsoft Azure needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Cloud Management Portal for Microsoft Azure.
+Cloud Management Portal for Microsoft Azure での Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-To configure and test Azure AD single sign-on with Cloud Management Portal for Microsoft Azure, you need to complete the following building blocks:
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Cloud Management Portal for Microsoft Azure のテスト ユーザーの作成](#creating-a-newsignature-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Cloud Management Portal for Microsoft Azure で作成します。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a Cloud Management Portal for Microsoft Azure test user](#creating-a-newsignature-test-user)** - to have a counterpart of Britta Simon in Cloud Management Portal for Microsoft Azure that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+### Azure AD シングル サインオンの構成
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+このセクションの目的は、Azure クラシック ポータルで Azure AD シングル サインオンを有効にし、Cloud Management Portal for Microsoft Azure アプリケーションでのシングル サインオンを構成することです。
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Cloud Management Portal for Microsoft Azure application.
 
 
+**Cloud Management Portal for Microsoft Azure との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-**To configure Azure AD single sign-on with Cloud Management Portal for Microsoft Azure, perform the following steps:**
+1. Azure クラシック ポータルの **Cloud Management Portal for Microsoft Azure** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして **[シングル サインオンの構成]** ダイアログを開きます。
 
-1. In the Azure classic portal, on the **Cloud Management Portal for Microsoft Azure** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+	![Configure Single Sign-On][6]
 
-    ![Configure Single Sign-On][6] 
+2. **[ユーザーの Cloud Management Portal for Microsoft Azure へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-2. On the **How would you like users to sign on to Cloud Management Portal for Microsoft Azure** page, select **Azure AD Single Sign-On**, and then click **Next**.
+	![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_03.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_03.png) 
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-3. On the **Configure App Settings** dialog page, perform the following steps:.
+	![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_04.png) 
+    a.**[サインオン URL]** ボックスに、`https://portal.igcm.com/<instance name>` のパターンを使用して、ユーザーが Cloud Management Portal for Microsoft Azure アプリケーションへのサインオンに使用する URL を入力します。
 
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your Cloud Management Portal for Microsoft Azure application using the following pattern: `https://portal.igcm.com/<instance name>`
+    b.**[次へ]** をクリックします。
 
-    b. Click **Next**.
 
+4. **[Cloud Management Portal for Microsoft Azure でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-4. On the **Configure single sign-on at Cloud Management Portal for Microsoft Azure** page, perform the following steps:
+	![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_05.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_05.png) 
+    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
-    a. Click **Download certificate**, and then save the file on your computer.
+    b.**[次へ]** をクリックします。
 
-    b. Click **Next**.
 
+5. お使いのアプリケーション用に構成された SSO を取得するには、ダウンロードした証明書ファイルを電子メールに添付して、Cloud Management Portal for Microsoft Azure のサポート チーム ([jczernuszka@newsignature.com](mailTo:jczernuszka@newsignature.com)) に問い合わせます。発行元 URL、SAML SSO URL、シングル サインアウト サービス URL もお知らせください。サポート チームが SSO 統合で設定します。
 
-5. To get SSO configured for your application, contact your Cloud Management Portal for Microsoft Azure support team at [jczernuszka@newsignature.com](mailTo:jczernuszka@newsignature.com) and email the attach downloaded certificate file. Also please do provide the Issuer URL, SAML SSO URL and Single Sign Out Service URL so that they can be configured for SSO integration.
 
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+	![Azure AD Single Sign-On][10]
 
-    ![Azure AD Single Sign-On][10]
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+	![Azure AD Single Sign-On][11]
 
-    ![Azure AD Single Sign-On][11]
 
 
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
+![Azure AD ユーザーの作成][20]
 
-![Create Azure AD User][20]
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-**To create a test user in Azure AD, perform the following steps:**
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/create_aaduser_09.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_09.png) 
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/create_aaduser_03.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_03.png) 
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/create_aaduser_04.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_04.png) 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/create_aaduser_05.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_05.png) 
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    a. As Type Of User, select New user in your organization.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    c.**[次へ]** をクリックします。
 
-    c. Click **Next**.
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-6.  On the **User Profile** dialog page, perform the following steps:
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/create_aaduser_06.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_06.png) 
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    a. In the **First Name** textbox, type **Britta**.  
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
 
-    d. In the **Role** list, select **User**.
+    e.**[次へ]** をクリックします。
 
-    e. Click **Next**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/create_aaduser_07.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_07.png) 
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-newsignature-tutorial/create_aaduser_08.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-newsignature-tutorial/create_aaduser_08.png) 
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    a. Write down the value of the **New Password**.
+    b.**[完了]** をクリックします。
 
-    b. Click **Complete**.   
 
 
+### Cloud Management Portal for Microsoft Azure テスト ユーザーの作成
 
-### <a name="creating-a-cloud-management-portal-for-microsoft-azure-test-user"></a>Creating a Cloud Management Portal for Microsoft Azure test user
+このセクションの目的は、Cloud Management Portal for Microsoft Azure で Britta Simon というユーザーを作成することです。Cloud Management Portal for Microsoft Azure サポート チームと連携し、Cloud Management Portal for Microsoft Azure システムにユーザーを追加してください。
 
-The objective of this section is to create a user called Britta Simon in Cloud Management Portal for Microsoft Azure. Please work with Cloud Management Portal for Microsoft Azure support team to add the users in the Cloud Management Portal for Microsoft Azure account. 
 
+> [AZURE.NOTE] ユーザーを手動で作成する必要がある場合は、Cloud Management Portal for Microsoft Azure のサポート チームにお問い合わせください。
 
-> [AZURE.NOTE] If you need to create an user manually, you need to contact the Cloud Management Portal for Microsoft Azure support team.
 
+### Azure AD テスト ユーザーの割り当て
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+このセクションの目的は、Britta Simon に Cloud Management Portal for Microsoft Azure へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Cloud Management Portal for Microsoft Azure.
+![ユーザーの割り当て][200]
 
-![Assign User][200] 
+**Cloud Management Portal for Microsoft Azure に Britta Simon を割り当てるには、次の手順に従います。**
 
-**To assign Britta Simon to Cloud Management Portal for Microsoft Azure, perform the following steps:**
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+	![ユーザーの割り当て][201]
 
-    ![Assign User][201] 
+2. アプリケーションの一覧で **Cloud Management Portal for Microsoft Azure** を選択します。
 
-2. In the applications list, select **Cloud Management Portal for Microsoft Azure**.
+	![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_50.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-newsignature-tutorial/tutorial_newsignature_50.png) 
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-1. In the menu on the top, click **Users**.
+	![ユーザーの割り当て][203]
 
-    ![Assign User][203] 
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-1. In the Users list, select **Britta Simon**.
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
 
-2. In the toolbar on the bottom, click **Assign**.
+	![ユーザーの割り当て][205]
 
-    ![Assign User][205]
 
 
+### シングル サインオンのテスト
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで Cloud Management Portal for Microsoft Azure のタイルをクリックすると、自動的に Cloud Management Portal for Microsoft Azure アプリケーションにサインオンします。
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the Cloud Management Portal for Microsoft Azure tile in the Access Panel, you should get automatically signed-on to your Cloud Management Portal for Microsoft Azure application.
 
+## その他のリソース
 
-## <a name="additional-resources"></a>Additional Resources
-
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -272,8 +267,4 @@ When you click the Cloud Management Portal for Microsoft Azure tile in the Acces
 [204]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-newsignature-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

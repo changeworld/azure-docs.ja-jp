@@ -1,158 +1,154 @@
 <properties
-    pageTitle="Azure Mobile Engagement demo app | Microsoft Azure"
-    description="Describes where to download, how to use, and the benefits of using Azure Mobile Engagement demo app"
-    services="mobile-engagement"
-    documentationCenter="mobile"
-    authors="piyushjo"
-    manager="erikre"
-    editor="" />
+	pageTitle="Azure Mobile Engagement デモ アプリ | Microsoft Azure"
+	description="Azure Mobile Engagement デモ アプリのダウンロード場所、使用方法、および使用した場合の利点について説明します"
+	services="mobile-engagement"
+	documentationCenter="mobile"
+	authors="piyushjo"
+	manager="erikre"
+	editor="" />
 
 <tags
-    ms.service="mobile-engagement"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/10/2016"
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/10/2016"
+	ms.author="piyushjo" />
 
+# Azure Mobile Engagement デモ アプリ
 
-# <a name="azure-mobile-engagement-demo-app"></a>Azure Mobile Engagement demo app
+有用なリソースを検索し、Azure Mobile Engagement について理解を深めることができるように、**iOS**、**Android**、**Windows** の各プラットフォーム用の Azure Mobile Engagement デモ アプリを発行しました。
 
-We've published an Azure Mobile Engagement demo app for **iOS**, **Android**, and **Windows** platforms to help you to find useful resources and learn more about Mobile Engagement.
+アプリは次の用途に役立ちます。
 
-The app helps you to:
+- ビデオ、ドキュメント、サポート フォーラム、機能に関する要望の投稿先など、Mobile Engagement のリソースへの便利なリンクを簡単に検索する。
+- Mobile Engagement でサポートされているサンプルの通知を経験し、独自のモバイル アプリケーションの発想を得る。
+- 参照実装を使用して、独自のアプリに Mobile Engagement を実装する方法を習得する。次のことを習得できます。
 
-- Easily find useful links to Mobile Engagement resources like videos, documentation, the support forum, and where to go to raise feature requests.
-- Experience sample notifications that are supported by Mobile Engagement to get ideas for your own mobile applications.
-- Use a reference implementation to study how to implement Mobile Engagement into your own app. You can learn to:
+	- 分析データを収集する。
+	- *全画面スポット ビュー*や*ポップアップ*などの種類の高度な通知シナリオを実装する。
+	- アンケートや投票を実装する。
+	- サイレント プッシュ データとプッシュ シナリオを実装する。   
 
-    - Collect analytics data.
-    - Implement advanced notification scenarios of types such as *Full-screen interstitial* or *Pop-up*.
-    - Implement surveys and polls.
-    - Implement silent push data and push scenarios.   
+## アプリのインストール
+このアプリは、次のアプリ ストアで入手できます。
 
-## <a name="app-installation"></a>App installation
-This app is available in the following app stores:
+- **Windows ユニバーサル デモ アプリの場合**:
 
-- **Windows Universal demo app**:
+	- [Windows ストア](https://www.microsoft.com/ja-JP/store/apps/azure-mobile-engagement/9nblggh4qmh2)でアプリをダウンロードします。
+	- アプリは、Windows 10 ユニバーサル アプリとして開発されました。ソース コードは [GitHub](https://github.com/Azure/azure-mobile-engagement-app-windows) から入手できます。
 
-    - Download the app at the [Windows App store](https://www.microsoft.com/en-us/store/apps/azure-mobile-engagement/9nblggh4qmh2).
-    - The app was developed as a Windows 10 Universal app. The source code is available on [GitHub](https://github.com/Azure/azure-mobile-engagement-app-windows).
+- **iOS デモ アプリの場合:**
 
-- **iOS demo app**:
+	- [Apple Store](https://itunes.apple.com/us/app/azure%20mobile%20engagement/id1105090090) でアプリをダウンロードします。
+	- このアプリは、iOS Swift で開発されました。ソース コードは [Github](https://github.com/Azure/azure-mobile-engagement-app-ios) から入手できます。
 
-    - Download the app at the [Apple store](https://itunes.apple.com/us/app/azure%20mobile%20engagement/id1105090090).
-    - The app was developed in iOS Swift. The source code is available on [GitHub](https://github.com/Azure/azure-mobile-engagement-app-ios).
+- **Android デモ アプリの場合:**
 
-- **Android demo app**:
-
-    - Download the app at the [Google Play store](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement).
-    - The source code is available on [GitHub](https://github.com/Azure/azure-mobile-engagement-app-android).
+	- [Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.azure.engagement)でアプリをダウンロードします。
+	- ソース コードは [Github](https://github.com/Azure/azure-mobile-engagement-app-android) から入手できます。
 
 ![Windows Universal demo app][1]
 
-![iOS demo app][2]
-![Android demo app][3]
+![iOS demo app][2] ![Android demo app][3]
 
 
-## <a name="usage"></a>Usage
+## 使用法
 
-You can use this app in the following ways:
+このアプリは、次の方法で使用できます。
 
-**Download the app on your device from the application store links (provided earlier):**
+**(前述の) アプリケーション ストアのリンクからデバイスにアプリをダウンロードします。**
 
->[AZURE.IMPORTANT] You don't need an Azure account or need to connect the app to a back end. The app works independently.
+>[AZURE.IMPORTANT] Azure アカウントは不要です。またバックエンドにアプリを接続する必要もありません。アプリは独立して動作します。
 
-- After you have the app on your device, then you can go through the links in the left-side menu to find the useful resources about Mobile Engagement.
-- We've added the [service's RSS feed](https://aka.ms/azmerssfeed) into this application so that you're always updated about the latest product updates.
-- You can also go through the sample notification scenarios to experience the type of notifications that are supported by Mobile Engagement for each platform. These notifications can be experienced locally--that is, you can click the buttons on the screens to show you the notifications experience, which is identical to sending the notifications from the Mobile Engagement platform.
+- デバイスにアプリを実装すると、左側のメニューにあるリンクにアクセスして、Mobile Engagement に関する有用なリソースを検索できます。
+- 製品の最新の更新プログラムについては常に最新の状態にしておくために、このアプリケーションに[サービスの RSS フィード](https://aka.ms/azmerssfeed)が追加されました。
+- また、サンプルの通知シナリオに進み、プラットフォームごとに Mobile Engagement でサポートされている種類の通知を発生させることもできます。これらの通知はローカルで発生させることができます。つまり、画面上のボタンをクリックすると、Mobile Engagement プラットフォームから通知を送信する場合と同じ通知を表示することができます。
 
 ![App menu for Windows][4]
 
-![App menu for iOS][5]
-![App menu for Android][6]
+![App menu for iOS][5] ![App menu for Android][6]
 
-**Download the source code from the GitHub links (provided earlier):**
+**(前述の) Github のリンクからソース コードをダウンロードします。**
 
-- After you've downloaded the source code, open it in the respective development environment--XCode for iOS, Android Studio for Android, and Visual Studio for Windows.
-- You should next follow our [basic SDK integration steps](mobile-engagement-windows-store-dotnet-get-started.md) so that you're able to connect this app to its own Mobile Engagement back-end instance.
-    - You need to configure a connection string in the app.
-    - You also need to configure the push notification platform for your app.
-- You'll notice that the app itself is instrumented with Mobile Engagement. Therefore, as you open the app after connecting it to the back end, you'll be able to see the user session, activities, events, and so on, on the **Monitor** tab.
-- You'll also be able to send notifications to this app from your own Mobile Engagement instance, instead of using local notifications.
-    - Here you can add your device as a test device by using the **Get the Device ID** menu item in the app. This gives you a device ID that you then register as a test device with your platform back-end instance.
+- ソース コードのダウンロードが完了したら、コードをそれぞれの開発環境 (iOS の場合は XCode、Android の場合は Android Studio、Windows の場合は Visual Studio) で開きます。
+- 次に、[基本的な SDK の統合手順](mobile-engagement-windows-store-dotnet-get-started.md)に従って、独自の Mobile Engagement バックエンド インスタンスにこのアプリを接続できるようにする必要があります。
+	- アプリで接続文字列を構成する必要があります。
+	- アプリのプッシュ通知プラットフォームも構成する必要があります。
+- アプリ自体が Mobile Engagement を使用してインストルメント化されていることに注意してください。したがって、アプリをバックエンドに接続した後に開くと、**[Monitor]** (モニター) タブに、ユーザー セッション、アクティビティ、イベントなどを表示できるようになります。
+- ローカル通知を使用する代わりに、独自の Mobile Engagement インスタンスからこのアプリに通知を送信することもできます。
+	- ここでは、アプリの **[Get the Device ID]** (デバイス ID の取得) メニュー項目を使用して、お使いのデバイスをテスト デバイスとして追加できます。これにより、後でテスト デバイスとしてプラットフォームのバックエンド インスタンスに登録するデバイス ID が付与されます。
 
-    ![Device ID on Windows][7]
+	![Device ID on Windows][7]
 
-    ![Device ID on iOS][8]
-    ![Device ID on Android][9]
+	![Device ID on iOS][8] ![Device ID on Android][9]
 
-## <a name="key-features-of-the-demo-app"></a>Key features of the demo app
+## デモ アプリの主な機能
 
-- As mentioned earlier, with this app, you have all the key resources for Mobile Engagement in your hand. You can go through the links on the left menu.
+- 既に説明したように、このアプリを使用すると、Mobile Engagement の主要なリソースを理解できます。左側のメニューにあるリンクにアクセスしてください。
 
-- You can experience out-of-app notifications for each platform. These notifications can be delivered as **Notification only**, where clicking the notification simply opens up a native screen of the application (by using **deep linking**)--or as a **Web announcement**, where you can deliver additional HTML content from the Mobile Engagement back end to be displayed when the notification is clicked.
+- 各プラットフォームでアプリ外通知を発生させることができます。これらの通知は、"**通知のみ**" として配信できます。ここで、通知をクリックするとアプリケーションのネイティブ画面 (**ディープ リンクの設定**を使用) が単に開きます。また、"**Web のアナウンス**" として配信することもできます。ここでは、通知をクリックしたときに表示される Mobile Engagement バックエンドから追加の HTML コンテンツを配信できます。
 
-    ![Out-of-app notifications][29]
+	![Out-of-app notifications][29]
 
-- On iOS, you have to close the app to see the out-of-app or system push notifications. You can look at the implementation here for adding **Action buttons**, like the ones that are added to this out-of-app notification for *Feedback* and *Share* (so that the user can take action right from the notification itself).
+- iOS では、アプリを閉じて、アプリ外通知またはシステムのプッシュ通知を確認する必要があります。このアプリ外通知に追加される *[Feedback]* (フィードバック) と *[Share]* (共有) のボタンのように、**動作設定ボタン**の追加の実装をここで確認できます (これにより、ユーザーは通知自体から操作を行うことが可能になります)。
 
-    ![Out-of-app notifications on iOS][11] ![Out-of-app notification display on iOS][14]
+	![Out-of-app notifications on iOS][11] ![Out-of-app notification display on iOS][14]
 
-- On Android, the options that are supported are adding multiline text (**Big Text**) or a notification image (**Big Picture**) to the notification, along with the **Action buttons** (as supported by iOS).
+- Android では、(iOS でサポートされているように) **動作設定ボタン**と共に、複数行のテキスト (**テキスト大**) または通知イメージ (**大きい画像**) を通知に追加するオプションがサポートされています。
 
-    ![Out-of-app notifications on Android][12] ![Out-of-app notification display on Android][15]
+	![Out-of-app notifications on Android][12] ![Out-of-app notification display on Android][15]
 
-- On Windows 10, you can see how the notifications look on the PC. This notification also shows up in the Windows 10 **Notification Center**. There is no support for adding **Action buttons** at the moment in the Windows SDK.
+- Windows 10 では、通知の外観を PC で確認できます。この通知は Windows 10 の**通知センター**にも表示されます。現時点で、Windows SDK への**動作設定ボタン**の追加はサポートされていません。
 
-    ![Out-of-app notifications on Windows][10] ![Out-of-app display on Windows][13]
+	![Out-of-app notifications on Windows][10] ![Out-of-app display on Windows][13]
 
-- You can experience default "in-app" notifications for each platform. This is a two-step experience where a **Notification** window is displayed first. When you click it, it opens up a full screen **Announcement**, as displayed in the following screenshot. The content of this announcement comes from your Mobile Engagement back-end instance. The SDK has the templates for both notifications and announcements. You can easily customize them, as shown in this demo app with the addition of our logo and coloring.  
+- 各プラットフォームで既定の "アプリ内" 通知を発生させることができます。これは 2 段階で発生します。最初に、**通知**ウィンドウが表示され、そのウィンドウをクリックすると、次のスクリーンショットに表示されるように、全画面の**アナウンス**が開きます。このアナウンスの内容は、Mobile Engagement バックエンド インスタンスから取得されます。SDK には、通知とアナウンス両方のテンプレートが用意されています。これらは、このデモ アプリで示すように、ロゴや色の追加によって簡単にカスタマイズできます。
 
-    ![In-app notifications on Windows][16]
+	![In-app notifications on Windows][16]
 
-    ![In-app notifications on iOS][17]  ![In-app notifications on Android][18]
+	![In-app notifications on iOS][17] ![In-app notifications on Android][18]
 
-    **iOS**, **Android**
+	**iOS**、**Android**
 
-- You can also use the **Category** feature of Mobile Engagement to customize this default experience. In the demo app, we've demonstrated two common ways to change the experience of the notifications. Note that the Category feature is not yet supported in the Windows SDK.
+- Mobile Engagement の **[カテゴリ]** 機能を使用して、この既定の発生をカスタマイズすることもできます。デモ アプリでは、通知の発生を変更するための一般的な方法を 2 つ説明してきました。Windows SDK では、[カテゴリ] 機能がまだサポートされていないことに注意してください。
 
-    **Full-screen interstitial:**
+	**全画面スポット ビュー:**
 
-    ![In-app notification - Interstitial category][30]
+	![In-app notification - Interstitial category][30]
 
-    ![Interstitial category on iOS][21]  ![Interstitial category on Android][22]
+	![Interstitial category on iOS][21] ![Interstitial category on Android][22]
 
-    **Pop-up notification:**
+	**ポップアップ通知:**
 
-    ![In-app notification - Pop-up category][31]
+	![In-app notification - Pop-up category][31]
 
-    ![Pop-up notification on iOS][19]   ![Pop-up notification on Android][20]
+	![Pop-up notification on iOS][19] ![Pop-up notification on Android][20]
 
-**iOS**, **Android**
+**iOS**、**Android**
 
-- Mobile Engagement also supports a specialized type of in-app notification called **Polls**. This allows you to send out quick surveys to your segmented app users. You can add questions and options for each question as in the following screenshot. This will then get displayed as an in-app notification to the app user.   
+- Mobile Engagement では、**ポーリング**と呼ばれる、特殊な種類のアプリ内通知もサポートしています。これにより、簡単なアンケートをセグメント化されたアプリ ユーザーに送信することができます。次のスクリーンショットに示すように、複数の質問と各質問に対する選択肢を追加することができます。その後、これは、アプリ内通知としてアプリ ユーザーに表示されます。   
 
-    ![Poll notifications][32]
+	![Poll notifications][32]
 
-    ![Survey on Windows][26]
+	![Survey on Windows][26]
 
-    ![Survey on iOS][27]   ![Survey on Android][28]
+	![Survey on iOS][27] ![Survey on Android][28]
 
-**iOS**, **Android**
+**iOS**、**Android**
 
-- Mobile Engagement also supports sending silent **Data Push** notifications. With these notifications, you can send data from your service (like the JSON data in the following example), which you can handle in your app and take some action. An example is how we're changing the price of an item selectively by using data push notifications.
+- Mobile Engagement では、サイレントな**データ プッシュ**通知の送信もサポートしています。この通知を使用すると、サービスのデータ (次の例の JSON データなど) を送信できます。このデータは、アプリで処理して、なんらかの処理を行うことができます。たとえば、データ プッシュ通知を使用することでどのように品物の価格を選択的に変更しているかを示します。
 
-    ![Data push notification][33]
+	![Data push notification][33]
 
-    ![Data push notification on Windows][23]
+	![Data push notification on Windows][23]
 
-    ![Data push notification on iOS][24]  ![Data push notification on Android][25]
+	![Data push notification on iOS][24] ![Data push notification on Android][25]
 
-**iOS**, **Android**
+**iOS**、**Android**
 
-> [AZURE.NOTE] You can view detailed step-by-step instructions for any of these notifications by clicking **Click here for instructions on how to send these notifications from Mobile Engagement platform** on any sample notification screen.
+> [AZURE.NOTE] サンプル通知画面の **[Click here for instructions on how to send these notifications from Mobile Engagement platform (Mobile Engagement プラットフォームからこれらの通知を送信する手順についてはここをクリック) ]** をクリックすると、これらの通知の詳細な手順を確認できます。
 
 
 [1]: ./media/mobile-engagement-demo-apps/home-windows.png
@@ -189,8 +185,4 @@ You can use this app in the following ways:
 [32]: ./media/mobile-engagement-demo-apps/notification-poll.png
 [33]: ./media/mobile-engagement-demo-apps/notification-data-push.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

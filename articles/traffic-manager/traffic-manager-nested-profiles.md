@@ -1,151 +1,153 @@
-<properties
-    pageTitle="Nested Traffic Manager Profiles | Microsoft Azure"
-    description="This article explains the 'Nested Profiles' feature of Azure Traffic Manager"
-    services="traffic-manager"
-    documentationCenter=""
-    authors="sdwheeler"
-    manager="carmonm"
-    editor=""
-/>
-<tags
-    ms.service="traffic-manager"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="10/11/2016"
-    ms.author="sewhee"
-/>
+<properties 
+   pageTitle="入れ子になった Traffic Manager プロファイル | Microsoft Azure"
+   description="この記事では、Azure Traffic Manager の ";入れ子になったプロファイル"; 機能について説明します。"
+   services="traffic-manager"
+   documentationCenter=""
+   authors="sdwheeler"
+   manager="carmonm"
+   editor="tysonn" />
+<tags 
+   ms.service="traffic-manager"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="05/25/2016"
+   ms.author="sewhee" />
 
+# 入れ子になった Traffic Manager プロファイル
 
-# <a name="nested-traffic-manager-profiles"></a>Nested Traffic Manager profiles
+Traffic Manager では、さまざまなトラフィック ルーティング方法を使用して、Traffic Manager が各エンド ユーザーからのトラフィックを受信するエンドポイントを選択する方法を制御できます。トラフィック ルーティング方法については、「[Traffic Manager のトラフィック ルーティング方法](traffic-manager-routing-methods.md)」をご覧ください。トラフィック ルーティング方法により、Traffic Manager は最も一般的なトラフィック ルーティング要件に対応できます。
 
-Traffic Manager includes a range of traffic-routing methods that allow you to control how Traffic Manager chooses which endpoint should receive traffic from each end user. For more information, see [Traffic Manager traffic-routing methods](traffic-manager-routing-methods.md).
+Traffic Manager プロファイルごとに 1 つのトラフィック ルーティング方法を指定します。ただし、より複雑なアプリケーションでは、単一の Traffic Manager プロファイルで提供できるものよりも高度なトラフィック ルーティングが必要になる場合もあります。
 
-Each Traffic Manager profile specifies a single traffic-routing method. However, there are scenarios that require more sophisticated traffic routing than the routing provided by a single Traffic Manager profile. You can nest Traffic Manager profiles to combine the benefits of more than one traffic-routing method. Nested profiles allow you to override the default Traffic Manager behavior to support larger and more complex application deployments.
+このような複雑なアプリケーションをサポートするために、Traffic Manager では Traffic Manager プロファイルを組み合わせる、つまりは*入れ子にする*ことができます。これにより、2 つのアプリケーションで複数のトラフィック ルーティング方法を使用することによるメリットが得られます。入れ子になったプロファイルを使用すると、柔軟性の高い強力なトラフィック ルーティング スキームを作成して、より大規模で複雑なデプロイメントのニーズに対応できます。
 
-The following examples illustrate how to use nested Traffic Manager profiles in various scenarios.
+また、入れ子になったプロファイルでは、リージョン内でのトラフィックのルーティングや、パフォーマンス トラフィック ルーティング使用時のフェールオーバーなど、場合によっては、Traffic Manager の既定の動作を上書きできます。
 
-## <a name="example-1:-combining-'performance'-and-'weighted'-traffic-routing"></a>Example 1: Combining 'Performance' and 'Weighted' traffic routing
+このページの残りの部分では、一連の例を使って、入れ子になった Traffic Manager プロファイルをさまざまなシナリオで使用する方法について説明します。最後に、入れ子になったプロファイルについてよく寄せられる質問を紹介します。
 
-Suppose that you deployed an application in the following Azure regions: West US, West Europe, and East Asia. You use Traffic Manager's 'Performance' traffic-routing method to distribute traffic to the region closest to the user.
+## 例 1: "パフォーマンス" トラフィック ルーティングと "加重" トラフィック ルーティングの組み合わせ
 
-![Single Traffic Manager profile][1]
+アプリケーションが複数の Azure リージョン (米国西部、西ヨーロッパ、東アジア) にデプロイされているとします。Traffic Manager の "パフォーマンス" トラフィック ルーティング方法を使用して、ユーザーに最も近いリージョンにトラフィックを振り分けます。
 
-Now, suppose you wish to test an update to your service before rolling it out more widely. You want to use the 'weighted' traffic-routing method to direct a small percentage of traffic to your test deployment. You set up the test deployment alongside the existing production deployment in West Europe.
+![単一の Traffic Manager プロファイル][1]
 
-You cannot combine both 'Weighted' and 'Performance traffic-routing in a single profile. To support this scenario, you create a Traffic Manager profile using the two West Europe endpoints and the 'Weighted' traffic-routing method. Next, you add this 'child' profile as an endpoint to the 'parent' profile. The parent profile still uses the Performance traffic-routing method and contains the other global deployments as endpoints.
+次に、サービスの更新を広くロールアウトする前に、少数のユーザーで試してみる必要があるとします。この場合、"加重" トラフィック ルーティング方法を使用することで、トラフィックのごく一部を試用デプロイメントに送信できます。単一プロファイルでは、"加重" と "パフォーマンス" のトラフィック ルーティングを組み合わせることはできません。入れ子になったプロファイルを使用すると、この両方を実行できます。
 
-The following diagram illustrates this example:
+その方法を説明します。たとえば、新しいデプロイメントを西ヨーロッパで試したいとします。この場合、既存の運用環境デプロイメントと共にに試用デプロイメントをセットアップし、この 2 つのエンドポイントと "加重" トラフィック ルーティング方法を使用して Traffic Manager プロファイルを作成します。次に、この "子" プロファイルを "親" プロファイルにエンドポイントとして追加します。"親" プロファイルでは、パフォーマンス トラフィック ルーティング方法が引き続き使用され、エンドポイントとして他のグローバル デプロイメントも含まれています。
 
-![Nested Traffic Manager profiles][2]
+次の図にこの例を示します。
 
-In this configuration, traffic directed via the parent profile distributes traffic across regions normally. Within West Europe, the nested profile distributes traffic to the production and test endpoints according to the weights assigned.
+![入れ子になった Traffic Manager プロファイル][2]
 
-When the parent profile uses the 'Performance' traffic-routing method, each endpoint must be assigned a location. The location is assigned when you configure the endpoint. Choose the Azure region closest to your deployment. The Azure regions are the location values supported by the Internet Latency Table. For more information, see [Traffic Manager 'Performance' traffic-routing method](traffic-manager-routing-methods.md#performance-traffic-routing-method).
+この配置では、親プロファイルを経由して送信されるトラフィックは、通常どおり各リージョンに振り分けられます。西ヨーロッパ内では、割り当てられた重みに従って、運用環境デプロイメントと試用デプロイメントにトラフィックが送信されます。
 
-## <a name="example-2:-endpoint-monitoring-in-nested-profiles"></a>Example 2: Endpoint monitoring in Nested Profiles
+親プロファイルで "パフォーマンス" トラフィック ルーティング方法を使用するときは、各エンドポイントの場所がわかっている必要があります。入れ子になったエンドポイントの場合、外部エンドポイントに関して、この場所をエンドポイント構成の一部として指定する必要があります。使用するデプロイメントに最も近い Azure リージョンを選択します。Azure リージョンは、インターネット待機時間テーブルでサポートされている場所であるため選択可能です。詳細については、[Traffic Manager の "パフォーマンス" トラフィック ルーティング方法](traffic-manager-routing-methods.md#performance-traffic-routing-method)に関するセクションをご覧ください。
 
-Traffic Manager actively monitors the health of each service endpoint. If an endpoint is unhealthy, Traffic Manager directs users to alternative endpoints to preserve the availability of your service. This endpoint monitoring and failover behavior applies to all traffic-routing methods. For more information, see [Traffic Manager Endpoint Monitoring](traffic-manager-monitoring.md). Endpoint monitoring works differently for nested profiles. With nested profiles, the parent profile doesn't perform health checks on the child directly. Instead, the health of the child profile's endpoints is used to calculate the overall health of the child profile. This health information is propagated up the nested profile hierarchy. The parent profile this aggregated health to determine whether to direct traffic to the child profile. See the [FAQ](#faq) section of this article for full details on health monitoring of nested profiles.
+## 例 2: 入れ子になったプロファイルでのエンドポイントの監視
 
-Returning to the previous example, suppose the production deployment in West Europe fails. By default, the 'child' profile directs all traffic to the test deployment. If the test deployment also fails, the parent profile determines that the child profile should not receive traffic since all child endpoints are unhealthy. Then, the parent profile distributes traffic to the other regions.
+Traffic Manager は、各サービス エンドポイントの正常性をアクティブに監視します。エンドポイントが異常であると判断された場合、Traffic Manager はユーザーを代替エンドポイントにルーティングすることで、サービスの全体的な可用性を維持します。このエンドポイントの監視とフェールオーバーの動作は、すべてのトラフィック ルーティング方法に適用されます。詳細については、[Traffic Manager のエンドポイント監視](traffic-manager-monitoring.md)に関する記事をご覧ください。
 
-![Nested Profile failover (default behavior)][3]
+入れ子になったプロファイルの場合、特別なエンドポイント監視ルールが適用されます。親プロファイルに子プロファイルが入れ子になったエンドポイントとして構成されている場合、親が子の正常性チェックを直接実行するわけではありません。代わりに、子プロファイルのエンドポイントの正常性を使用して、子プロファイル全体の正常性が計算されます。この情報が入れ子になったプロファイル階層に伝達され、親プロファイル内の入れ子になったエンドポイントの正常性が判断されます。この判断によって、親プロファイルがトラフィックを子に送信するかどうかが決定されます。親プロファイルの入れ子になったエンドポイントの正常性が子プロファイルの正常性から計算されるしくみの詳細については、[こちら](#faq)をご覧ください。
 
-You might be happy with this arrangement. Or you might be concerned that all traffic for West Europe is now going to the test deployment instead of a limited subset traffic. Regardless of the health of the test deployment, you want to fail over to the other regions when the production deployment in West Europe fails. To enable this failover, you can specify the 'MinChildEndpoints' parameter when configuring the child profile as an endpoint in the parent profile. The parameter determines the minimum number of available endpoints in the child profile. The default value is '1'. For this scenario, you set the MinChildEndpoints value to 2. Below this threshold, the parent profile considers the entire child profile to be unavailable and directs traffic to the other endpoints.
+例 1 に戻って、西ヨーロッパの運用環境デプロイメントで障害が発生したとします。既定では、"子" プロファイルはすべてのトラフィックを試用デプロイメントに送信します。試用デプロイメントでも障害が発生した場合、親プロファイルは、すべての子エンドポイントが異常であるため、子プロファイルはトラフィックを受信できないと判断し、西ヨーロッパのすべてのトラフィックを他のリージョンにフェールオーバーします。
 
-The following figure illustrates this configuration:
+![入れ子になったプロファイルのフェールオーバー (既定の動作)][3]
 
-![Nested Profile failover with 'MinChildEndpoints' = 2][4]
+この配置で問題ない場合もありますが、西ヨーロッパのすべてのトラフィックのフェールオーバーとして試用デプロイメントを使用することに懸念があり、西ヨーロッパの運用環境デプロイメントで障害が発生した場合は、試用デプロイメントの正常性に*関係なく*、他のリージョンにフェールオーバーする方が望ましい場合もあります。次のような方法もあります。子プロファイルを親プロファイルのエンドポイントとして構成するときに、"MinChildEndpoints" パラメーターを指定します。このパラメーターは、子プロファイルで使用できる必要があるエンドポイントの最小数を指定するものです。このしきい値 (既定値は 1) を下回ると、親プロファイルは子プロファイル全体を使用不可と見なし、トラフィックを他の親プロファイル エンドポイントに送信します。
 
->[AZURE.NOTE]
->The 'Priority' traffic-routing method distributes all traffic to a single endpoint. Thus there is little purpose in a MinChildEndpoints setting other than '1' for a child profile.
+次の例では、MinChildEndpoints の値が 2 に設定されています。この場合、西ヨーロッパのいずれかのデプロイメントで障害が発生すると、親プロファイルは子プロファイルがトラフィックを受信できないと判断し、ユーザーを他のリージョンにルーティングします。
 
-## <a name="example-3:-prioritized-failover-regions-in-'performance'-traffic-routing"></a>Example 3: Prioritized failover regions in 'Performance' traffic routing
+!["MinChildEndpoints" が 2 に設定された入れ子になったプロファイルのフェールオーバー][4]
 
-The default behavior for the 'Performance' traffic-routing method is designed to avoid over-loading the next nearest endpoint and causing a cascading series of failures. When an endpoint fails, all traffic that would have been directed to that endpoint is evenly distributed to the other endpoints across all regions.
+子プロファイルで "優先順位" トラフィック ルーティング方法を使用すると、その子へのすべてのトラフィックが 1 つのエンドポイントで受信されます。そのため、この場合、MinChildEndpoints を "1" 以外の値に設定してもほとんど意味はありません。
 
-!['Performance' traffic routing with default failover][5]
+## 例 3: "パフォーマンス" トラフィック ルーティングにおける優先フェールオーバー リージョン
 
-However, suppose you prefer the West Europe traffic failover to West US, and only direct traffic to other regions when both endpoints are unavailable. You can create this solution using a child profile with the 'Priority' traffic-routing method.
+"パフォーマンス" トラフィック ルーティングを使用する単一プロファイルがあり、エンドポイント (西ヨーロッパなど) で障害が発生した場合、そのエンドポイントに送信されていたすべてのトラフィックが、代わりに全リージョンの他のエンドポイントに分散されます。これは、次に最も近いエンドポイントが過負荷になり、連鎖的な障害が発生するのを防ぐことを目的とした、"パフォーマンス" トラフィック ルーティング方法の既定の動作です。
 
-!['Performance' traffic routing with preferential failover][6]
+![既定のフェールオーバーを使用する "パフォーマンス" トラフィック ルーティング][5]
 
-Since the West Europe endpoint has higher priority than the West US endpoint, all traffic is sent to the West Europe endpoint when both endpoints are online. If West Europe fails, its traffic is directed to West US. With the nested profile, traffic is directed to East Asia only when both West Europe and West US fail.
+西ヨーロッパのトラフィックをなるべく米国西部にフェールオーバーし、これらのエンドポイントがどちらも使用できない場合にのみ、他の場所に送信するとします。これを実行するには、次のように、"優先順位" トラフィック ルーティング方法を使用する子プロファイルを作成します。
 
-You can repeat this pattern for all regions. Replace all three endpoints in the parent profile with three child profiles, each providing a prioritized failover sequence.
+![優先フェールオーバーを使用する "パフォーマンス" トラフィック ルーティング][6]
 
-## <a name="example-4:-controlling-'performance'-traffic-routing-between-multiple-endpoints-in-the-same-region"></a>Example 4: Controlling 'Performance' traffic routing between multiple endpoints in the same region
+西ヨーロッパ エンドポイントは米国西部エンドポイントよりも優先順位が高いため、どちらもオンラインの場合は、すべてのトラフィックが西ヨーロッパ エンドポイントに送信されます。西ヨーロッパで障害が発生した場合、トラフィックは米国西部に送信されます。米国西部でも障害が失敗した場合にのみ、西ヨーロッパのトラフィックは東アジアに送信されます。
 
-Suppose the 'Performance' traffic-routing method is used in a profile that has more than one endpoint in a particular region. By default, traffic directed to that region is distributed evenly across all available endpoints in that region.
+親プロファイルの全 3 つのエンドポイントを 3 つの子プロファイルに置き換え、それぞれの子プロファイルで優先フェールオーバー シーケンスを提供することで、すべてのリージョンでこのパターンを繰り返すことができます。
 
-!['Performance' traffic routing in-region traffic distribution (default behavior)][7]
+## 例 4: 同じリージョンの複数のエンドポイント間での "パフォーマンス" トラフィック ルーティングの制御
 
-Instead of adding multiple endpoints in West Europe, those endpoints are enclosed in a separate child profile. The child profile is added to the parent as the only endpoint in West Europe. The settings on the child profile can control the traffic distribution with West Europe by enabling priority-based or weighted traffic routing within that region.
+米国西部など、特定のリージョンの複数のエンドポイントを含むプロファイルで "パフォーマンス" トラフィック ルーティング方法が使用されているとします。既定では、そのリージョンに送信されるトラフィックは、そのリージョンの使用可能なすべてのエンドポイントに均等に分散されます。
 
-!['Performance' traffic routing with custom in-region traffic distribution][8]
+!["パフォーマンス" トラフィック ルーティングのリージョン内トラフィック分散 (既定の動作)][7]
 
-## <a name="example-5:-per-endpoint-monitoring-settings"></a>Example 5: Per-endpoint monitoring settings
+この既定の動作は、入れ子になった Traffic Manager プロファイルを使用して変更できます。米国西部に複数のエンドポイントを追加するのではなく、それらのエンドポイントを別の子プロファイルに含め、その子プロファイルを米国西部の唯一のエンドポイントとして親に追加することができます。その後、(たとえば) そのリージョン内で優先順位ベースまたは加重のトラフィック ルーティングを有効にすることで、子プロファイルの設定を使用して米国西部でのトラフィック分散を制御できます。
 
-Suppose you are using Traffic Manager to smoothly migrate traffic from a legacy on-premises web site to a new Cloud-based version hosted in Azure. For the legacy site, you want to use the home page URI to monitor site health. But for the new Cloud-based version, you are implementing a custom monitoring page (path '/monitor.aspx') that includes additional checks.
+!["パフォーマンス" トラフィック ルーティングのカスタムのリージョン内トラフィック分散][8]
 
-![Traffic Manager endpoint monitoring (default behavior)][9]
+## 例 5: エンドポイントごとの監視設定
 
-The monitoring settings in a Traffic Manager profile apply to all endpoints within a single profile. With nested profiles, you use a different child profile per site to define different monitoring settings.
+従来のオンプレミス Web サイトと Azure でホストされる新しいクラウドベースのバージョン間でトラフィックをスムーズに移行するために、Traffic Manager を使用するとします。従来の Web サイトでは、ホーム ページ (パスは "/") を使用してサイトの正常性を監視しますが、新しいクラウドベースのバージョンでは、その他のチェックも含まれたカスタムの監視ページ (パスは "/monitor.aspx") を実装します。
 
-![Traffic Manager endpoint monitoring with per-endpoint settings][10]
+![Traffic Manager のエンドポイント監視 (既定の動作)][9]
 
-## <a name="faq"></a>FAQ
+Traffic Manager プロファイルの監視設定は、そのプロファイル内のすべてのエンドポイントに適用されるので、これまでは両方のサイトで同じパスを使用しなければなりませんでした。入れ子になった Traffic Manager プロファイルを使用すると、サイトごとに子プロファイルを使用して、それぞれ異なる監視設定を定義できるようになります。
 
-### <a name="how-do-i-configure-nested-profiles?"></a>How do I configure nested profiles?
+![エンドポイントごとの設定を使用する Traffic Manager のエンドポイント監視][10]
 
-Nested Traffic Manager profiles can be configured using both the Azure Resource Manager and the classic Azure REST APIs, Azure PowerShell cmdlets and cross-platform Azure CLI commands. They are also supported via the new Azure portal. They are not supported in the classic portal.
+## FAQ
 
-### <a name="how-many-layers-of-nesting-does-traffic-manger-support?"></a>How many layers of nesting does Traffic Manger support?
+### 入れ子になったプロファイルを構成するにはどうすればよいですか。
 
-You can nest profiles up to 10 levels deep. 'Loops' are not permitted.
+入れ子になった Traffic Manager プロファイルは、Azure Resource Manager (ARM) と Azure Service Management (ASM) REST API (PowerShell コマンドレットとクロスプラットフォームの Azure CLI コマンド) を使用して構成できます。入れ子になった Traffic Manager プロファイルは、Azure ポータルでもサポートされていますが、"クラシック" ポータルではサポートされていません。
 
-### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles,-in-the-same-traffic-manager-profile?"></a>Can I mix other endpoint types with nested child profiles, in the same Traffic Manager profile?
+### Traffic Manager では、何層の入れ子がサポートされますか。
+プロファイルは最大 10 レベルまで入れ子にすることができます。"ループ" は使用できません。
 
-Yes. There are no restrictions on how you combine endpoints of different types within a profile.
+### 同じ Traffic Manager プロファイルに、入れ子になった子プロファイルと他の種類のエンドポイントを混在させることはできますか。
 
-### <a name="how-does-the-billing-model-apply-for-nested-profiles?"></a>How does the billing model apply for Nested profiles?
+はい。プロファイル内での異なる種類のエンドポイントの組み合わせには制限はありません。
 
-There is no negative pricing impact of using nested profiles.
+### 入れ子になったプロファイルに対して課金モデルはどのように適用されますか。
 
-Traffic Manager billing has two components: endpoint health checks and millions of DNS queries
+入れ子になったプロファイルの使用が料金に悪影響を及ぼすことはありません。
 
-- Endpoint health checks: There is no charge for a child profile when configured as an endpoint in a parent profile. Monitoring of the endpoints in the child profile are billed in the usual way.
-- DNS queries: Each query is only counted once. A query against a parent profile that returns an endpoint from a child profile is counted against the parent profile only.
+Traffic Manager の課金には、エンドポイントの正常性チェックと数百万の DNS クエリの 2 つの構成要素があります (詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/traffic-manager/)をご覧ください)。 これは入れ子になったプロファイルに次のように適用されます。
 
-For full details, see the [Traffic Manager pricing page](https://azure.microsoft.com/pricing/details/traffic-manager/).
+- エンドポイントの正常性チェック: 親プロファイルのエンドポイントとして構成されている子プロファイルには課金されません。基になるサービスを監視する子プロファイルのエンドポイントには、通常どおり課金されます。
 
-### <a name="is-there-a-performance-impact-for-nested-profiles?"></a>Is there a performance impact for nested profiles?
+- DNS クエリ: 各クエリは 1 回だけカウントされます。子プロファイルからエンドポイントを返す親プロファイルに対するクエリは、親プロファイルにのみ課金されます。
 
-No. There is no performance impact incurred when using nested profiles.
+### 入れ子になったプロファイルでは、パフォーマンスへの影響はありますか。
 
-The Traffic Manager name servers traverse the profile hierarchy internally when processing each DNS query. A DNS query to a parent profile can receive a DNS response with an endpoint from a child profile. A single CNAME record is used whether you are using a single profile or nested profiles. There is no need to create a CNAME record for each profile in the hierarchy.
+いいえ。入れ子になったプロファイルを使用しても、パフォーマンスに影響はありません。
 
-### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile?"></a>How does Traffic Manager compute the health of a nested endpoint in a parent profile?
+Traffic Manager のネーム サーバーは、各 DNS クエリを処理するときにプロファイル階層を内部的にスキャンするので、親プロファイルに対する DNS クエリは子プロファイルのエンドポイントで DNS 応答を受信できます。
 
-The parent profile doesn't perform health checks on the child directly. Instead, the health of the child profile's endpoints are used to calculate the overall health of the child profile. This information is propagated up the nested profile hierarchy to determine the health of the nested endpoint. The parent profile uses this aggregated health to determine whether the traffic can be directed to the child.
+そのため、単一の Traffic Manager プロファイルを使用するのと同様に、CNAME レコードが 1 つだけ使用されます。階層内のプロファイルごとに一連の CNAME レコードを必要と**しない**ため、パフォーマンスが低下することはありません。
 
-The following table describes the behavior of Traffic Manager health checks for a nested endpoint.
+### Traffic Manager では、子プロファイルの正常性に基づいて、親プロファイルの入れ子になったエンドポイントの正常性をどのように計算するのですか。
 
-|Child Profile Monitor status|Parent Endpoint Monitor status|Notes|
+親プロファイルに子プロファイルが入れ子になったエンドポイントとして構成されている場合、親が子の正常性チェックを直接実行するわけではありません。代わりに、子プロファイルのエンドポイントの正常性を使用して、子プロファイル全体の正常性が計算されます。この情報が入れ子になったプロファイル階層に伝達され、親プロファイル内の入れ子になったエンドポイントの正常性が判断されます。この判断によって、親プロファイルがトラフィックを子に送信するかどうかが決定されます。
+
+次の表に、子プロファイルを参照する親プロファイルの入れ子になったエンドポイントに対する Traffic Manager 正常性チェックの動作を示します。
+
+|子プロファイル モニターの状態|親エンドポイント監視の状態|メモ|
 |---|---|---|
-|Disabled. The child profile has been disabled.|Stopped|The parent endpoint state is Stopped, not Disabled. The Disabled state is reserved for indicating that you have disabled the endpoint in the parent profile.|
-|Degraded. At least one child profile endpoint is in a Degraded state.| Online: the number of Online endpoints in the child profile is at least the value of MinChildEndpoints.<BR>CheckingEndpoint: the number of Online plus CheckingEndpoint endpoints in the child profile is at least the value of MinChildEndpoints.<BR>Degraded: otherwise.|Traffic is routed to an endpoint of status CheckingEndpoint. If MinChildEndpoints is set too high, the endpoint is always degraded.|
-|Online. At least one child profile endpoint is an Online state. No endpoint is in the Degraded state.|See above.||
-|CheckingEndpoints. At least one child profile endpoint is 'CheckingEndpoint'. No endpoints are 'Online' or 'Degraded'|Same as above.||
-|Inactive. All child profile endpoints are either Disabled or Stopped, or this profile has no endpoints.|Stopped||
+|無効。子プロファイルは、ユーザーによって無効化されています。|停止済み|親エンドポイントの状態は停止で、無効ではありません。無効な状態は、親プロファイルでエンドポイントを無効にしたことを示すために予約されています。|
+|低下。1 つ以上の子プロファイル エンドポイントが "低下" 状態です。|オンライン: 子プロファイルの "オンライン" 状態のエンドポイントの数が MinChildEndpoints の値以上です。エンドポイントの確認: 子プロファイルの "オンライン" 状態および "エンドポイントの確認" 状態のエンドポイントの数が MinChildEndpoints の値以上です。低下: それ以外の場合。|トラフィックは、"エンドポイントの確認" 状態のエンドポイントにルーティングされます。MinChildEndpoints の設定値が大きすぎると、エンドポイントは常に "低下" 状態になります。|
+|オンライン。1 つ以上の子プロファイル エンドポイントが "オンライン" 状態であり、いずれも "低下" 状態ではありません。|上記を参照してください。||
+|エンドポイントの確認。1 つ以上の子プロファイル エンドポイントが "エンドポイントの確認" 状態であり、いずれも "オンライン" 状態または "低下" 状態ではありません。|上記と同じです。||
+|非アクティブ。すべての子プロファイル エンドポイントが "無効" 状態または "停止済み" 状態であるか、プロファイルにエンドポイントがありません。|停止済み||
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn more about [how Traffic Manager works](traffic-manager-how-traffic-manager-works.md)
+[Traffic Manager のしくみ](traffic-manager-how-traffic-manager-works.md)の詳細を確認する
 
-Learn how to [create a Traffic Manager profile](traffic-manager-manage-profiles.md)
+[Traffic Manager プロファイルの作成](traffic-manager-manage-profiles.md)方法を確認する
 
 <!--Image references-->
 [1]: ./media/traffic-manager-nested-profiles/figure-1.png
@@ -159,9 +161,4 @@ Learn how to [create a Traffic Manager profile](traffic-manager-manage-profiles.
 [9]: ./media/traffic-manager-nested-profiles/figure-9.png
 [10]: ./media/traffic-manager-nested-profiles/figure-10.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

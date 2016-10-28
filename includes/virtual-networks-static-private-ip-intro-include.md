@@ -1,7 +1,5 @@
-Your IaaS virtual machines (VMs) and PaaS role instances in a virtual network automatically receive a private IP address from a range that you specify, based on the subnet they are connected to. That address is retained by the VMs and role instances, until they are decommissioned. You decommission a VM or role instance by stopping it from PowerShell, the Azure CLI, or the Azure portal. In those cases, once the VM or role instance starts again, it will receive an available IP address from the Azure infrastructure, which might not be the same it previously had. If you shut down the VM or role instance from the guest operating system, it retains the IP address it had.  
+仮想ネットワーク内の IaaS 仮想マシン (VM) と PaaS ロール インスタンスは、接続されているサブネットに基づいて、指定された範囲のプライベート IP アドレスを自動的に受信します。VM とロール インスタンスは、使用中止されるまで、そのアドレスを保持します。VM またはロール インスタンスは、PowerShell、Azure CLI、または Azure ポータルから停止することで使用中止されます。このような場合、VM またはロール インスタンスを再度開始すると、VM またはロール インスタンスは、利用できる IP アドレスを Azure インフラストラクチャから受信しますが、その IP アドレスは前回受信したものと異なっている可能性があります。ゲスト オペレーティング システムから VM またはロール インスタンスを停止した場合は、IP アドレスが保持されます。
 
-In certain cases, you want a VM or role instance to have a static IP address, for example, if your VM is going to run DNS or will be a domain controller. You can do so by setting a static private IP address.
+VM またはロール インスタンスで静的 IP アドレスの保持が必要になることがあります。たとえば、VM で DNS を実行する場合、または VM がドメイン コントローラーになる場合です。静的プライベート IP アドレスを設定することで、これを行うことができます。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

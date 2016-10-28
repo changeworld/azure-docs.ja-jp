@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Workday | Microsoft Azure" 
-    description="Learn how to use Workday with Azure Active Directory to enable single sign-on, automated provisioning, and more!." 
+    pageTitle="チュートリアル: Azure Active Directory と Workday の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Workday を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,222 +14,214 @@
     ms.date="09/09/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-workday"></a>Tutorial: Azure Active Directory integration with Workday
+#チュートリアル: Azure Active Directory と Workday の統合
   
-The objective of this tutorial is to show the integration of Azure and Workday. The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルでは、Azure と Workday の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   A tenant in Workday
+-   有効な Azure サブスクリプション
+-   Workday のテナント
   
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Enabling the application integration for Workday
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Configuring user provisioning
+1.  Workday のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザー プロビジョニングの構成
 
-![Scenario](./media/active-directory-saas-workday-tutorial/IC782919.png "Scenario")
+![シナリオ](./media/active-directory-saas-workday-tutorial/IC782919.png "シナリオ")
 
-##<a name="enabling-the-application-integration-for-workday"></a>Enabling the application integration for Workday
+##Workday のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for Salesforce.
+このセクションでは、Workday のアプリケーション統合を有効にする方法について説明します。
 
-###<a name="to-enable-the-application-integration-for-workday,-perform-the-following-steps:"></a>To enable the application integration for Workday, perform the following steps:
+###Workday のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-workday-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-workday-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-workday-tutorial/IC700994.png "アプリケーション")
 
-4.  To open the **Application Gallery**, click **Add An App**, and then click **Add an application for my organization to use**.
+4.  **アプリケーション ギャラリー**を開くには、**[アプリケーションの追加]**、**[組織で使用するアプリケーションを追加]** の順にクリックします。
 
-    ![What do you want to do?](./media/active-directory-saas-workday-tutorial/IC700995.png "What do you want to do?")
+    ![どの操作を行いますか。](./media/active-directory-saas-workday-tutorial/IC700995.png "どの操作を行いますか。")
 
-5.  In the **search box**, type **Workday**.
+5.  **検索ボックス**に、「**Workday**」と入力します。
 
     ![Workday](./media/active-directory-saas-workday-tutorial/IC701021.png "Workday")
 
-6.  In the results pane, select **Workday**, and then click **Complete** to add the application.
+6.  結果ウィンドウで **[Workday]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Workday](./media/active-directory-saas-workday-tutorial/IC701022.png "Workday")
 
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
   
-The objective of this section is to outline how to enable users to authenticate to Workday with their account in Azure AD using federation based on the SAML protocol.  
-As part of this procedure, you are required to create a base-64 encoded certificate.  
-If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Workday に対する認証を行うことができるようにする方法を説明します。この手順の途中で、Base-64 でエンコードされた証明書を作成する必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  On the **Workday** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  **[Workday]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782920.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to Workday** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Workday へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782921.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, perform the following steps, and then click **Next**.
+3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-workday-tutorial/IC782957.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-workday-tutorial/IC782957.png "アプリケーション URL の構成")
 
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign in to Workday using the following pattern: `https://impl.workday.com/<tenant>/login-saml2.htmld`
+	a.**[サインオン URL]** ボックスに、ユーザーが Workday へのサインオンに使用する URL を `https://impl.workday.com/<tenant>/login-saml2.htmld` という形式で入力します。
 
-    b.  In the **Workday Reply URL** textbox, type the Workday reply URL using the following pattern: `https://impl.workday.com/<tenant>/login-saml.htmld`
+	b.**[Workday 応答 URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml.htmld` という形式で Workday 応答 URL を入力します。
 
-    >[AZURE.NOTE] Your reply URL must have a sub-domain (e.g.: www, wd2, wd3, wd3-impl, wd5, wd5-impl). 
-    >Using something like "*http://www.myworkday.com*" works but "*http://myworkday.com*" does not. 
+	>[AZURE.NOTE] 応答 URL には必ずサブドメインを入れます (例: www、wd2、wd3、wd3-impl、wd5、wd5-impl)。「http://www.myworkday.com*」のようなものは動作しますが、「http://myworkday.com*」は動作しません。
  
-4.  On the **Configure single sign-on at Workday** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
+4.  **[Workday でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックして証明書をダウンロードし、証明書ファイルをコンピューターに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782922.png "Configure single sign-on")
 
-5.  In a different web browser window, log into your Workday company site as an administrator.
+5.  別の Web ブラウザー ウィンドウで、Workday 企業サイトに管理者としてログインします。
 
-6.  Go to **Menu \> Workbench**.
+6.  **[メニュー] > [ワークベンチ]** に移動します。
 
-    ![Workbench](./media/active-directory-saas-workday-tutorial/IC782923.png "Workbench")
+    ![ワークベンチ](./media/active-directory-saas-workday-tutorial/IC782923.png "ワークベンチ")
 
-7.  Go to **Account Administration**.
+7.  **[アカウント管理]** に移動します。
 
-    ![Account Administration](./media/active-directory-saas-workday-tutorial/IC782924.png "Account Administration")
+    ![アカウント管理](./media/active-directory-saas-workday-tutorial/IC782924.png "アカウント管理")
 
-8.  Go to **Edit Tenant Setup – Security**.
+8.  **[テナントのセットアップの編集 – セキュリティ]** に移動します。
 
-    ![Edit Tenant Security](./media/active-directory-saas-workday-tutorial/IC782925.png "Edit Tenant Security")
+    ![テナントのセキュリティの編集](./media/active-directory-saas-workday-tutorial/IC782925.png "テナントのセキュリティの編集")
 
-9.  In the **Redirection URLs** section, perform the following steps:
+9.  **[リダイレクト URL]** セクションで、次の手順を実行します。
 
-    ![Redirection URLs](./media/active-directory-saas-workday-tutorial/IC7829581.png "Redirection URLs")
+    ![リダイレクト URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "リダイレクト URL")
 
-    a. Click **Add Row**.
+	a.**[行の追加]** をクリックします。
 
-    b. In the **Login Redirect URL** textbox and the **Mobile Redirect URL** textbox, type the **Workday Tenant URL** you have entered on the **Configure App URL** page of the Azure classic portal.
+	b.**[ログイン リダイレクトの URL]** ボックスと **[モバイル リダイレクトの URL]** ボックスに、Azure クラシック ポータルの **[アプリケーション URL の構成]** で **[Workday テナント URL]** に入力した URL を入力します。
     
-    c. In the Azure classic portal, on the **Configure single sign-on at Workday** dialog page, copy the **Single Sign-Out Service URL**, and then paste it into the **Logout Redirect URL** textbox.
+	c.Azure クラシック ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** をコピーし、**[ログアウト リダイレクト URL]** ボックスに貼り付けます。
 
-    d.  In **Environment** textbox, type the environment name.  
-
-
-    >[AZURE.NOTE] The value of the Environment attribute is tied to the value of the tenant URL:
-    >
-    >-   If the domain name of the Workday tenant URL starts with impl (e.g.: *https://impl.workday.com/\<tenant\>/login-saml2.htmld*), the **Environment** attribute must be set to Implementation.
-    >-   If the domain name starts with something else, you need to contact Workday to get the matching **Environment** value.
-
-10. In the **SAML Setup** section, perform the following steps:
-
-    ![SAML Setup](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
-
-    a.  Select **Enable SAML Authentication**.
-
-    b.  Click **Add Row**.
-
-11. In the SAML Identity Providers section, perform the following steps:
-
-    ![SAML Identity Providers](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML Identity Providers")
-
-    a. In the Identity Provider Name textbox, type a provider name (e.g.: *SPInitiatedSSO*).
-
-    b. In the Azure classic portal, on the **Configure single sign-on at Workday** dialog page, copy the **Identity Provider ID** value, and then paste it into the **Issuer** textbox.
-
-    c. Select **Enable Workday Initialted Logout**.
-
-    d. In the Azure classic portal, on the **Configure single sign-on at Workday** dialog page, copy the **Single Sign-Out Service URL** value, and then paste it into the **Logout Request URL** textbox.
+	d.**[環境]** テキスト ボックスに、環境の名前を入力します。
 
 
-    e. Click **Identity Provider Public Key Certificate**, and then click **Create**. 
+	>[AZURE.NOTE] [環境] 属性の値が、テナント URL の値に関連付けられます。
+	>
+    >-   Workday テナント URL のドメイン名が impl で始まる場合 (例: *https://impl.workday.com/\<tenant>/login-saml2.htmld*)、**[環境]** 属性を "実装" に設定する必要があります。
+    >-   ドメイン名が impl 以外で始まる場合は、Workday に問い合わせて、対応する **[環境]** の値を取得してください。
 
-    ![Create](./media/active-directory-saas-workday-tutorial/IC782928.png "Create")
+10. **[SAML 設定]** セクションで、次の手順を実行します。
 
-    f. Click **Create x509 Public Key**. 
+    ![SAML Setup](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML のセットアップ")
+
+	a.**[Enable SAML Authentication]** を選択します。
+
+	b.**[行の追加]** をクリックします。
+
+11. [SAML ID プロバイダー] セクションで、次の手順に従います。
+
+    ![SAML ID プロバイダー](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML ID プロバイダー")
+
+	a.[ID プロバイダー名] テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
+
+    b.Azure クラシック ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[ID プロバイダーの ID]** の値をコピーし、**[発行者]** テキスト ボックスに貼り付けます。
+
+    c.**[Workday 始動ログアウトを有効にする]** を選択します。
+
+    d.Azure クラシック ポータルで、**[Workday でのシングル サインオンの構成]** ダイアログ ページの **[シングル サインアウト サービス URL]** 値をコピーし、**[ログアウト要求 URL]** ボックスに貼り付けます。
+
+
+    e.**[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。
+
+	![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
+
+    f.**[x509 公開鍵の作成]** をクリックします。
         
-    ![Create](./media/active-directory-saas-workday-tutorial/IC782929.png "Create")
+	![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
 
 
-1. In the **View x509 Public Key** section, perform the following steps: 
+1. **[x509 公開鍵の表示]** セクションで、次の手順を実行します。
 
-    ![View x509 Public Key](./media/active-directory-saas-workday-tutorial/IC782930.png "View x509 Public Key") 
+	![X509 公開鍵の表示](./media/active-directory-saas-workday-tutorial/IC782930.png "X509 公開鍵の表示")
 
-    a. In the **Name** textbox, type a name for your certificate (e.g.: *PPE\_SP*).
-        
-    b. In the **Valid From** textbox, type the valid from attribute value of your certificate.
+	a.**[名前]** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
+    	
+	b.**[有効期間の開始日]** テキスト ボックスに、証明書の有効期間の開始日を示す属性の値を入力します。
     
-    c.  In the **Valid To** textbox, type the valid to attribute value of your certificate.
-        
-    >[AZURE.NOTE] You can get the valid from date and the valid to date from the downloaded certificate by double-clicking it. The dates are listed under the **Details** tab.
+	c.**[有効期間の終了日]** テキスト ボックスに、証明書の有効期間の終了日を示す属性の値を入力します。
+		
+    >[AZURE.NOTE] 有効期間の開始日と終了日は、ダウンロードした証明書をダブルクリックして確認できます。日付は **[詳細]** タブに表示されます。
 
-    d. Create a **Base-64 encoded** file from your downloaded certificate.  
+	d.ダウンロードした証明書から **base-64 でエンコードされた**ファイルを作成します。
 
-    >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
+	>[AZURE.TIP] 詳細については、[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o) をご覧ください。
 
-    e.  Open your base-64 encoded certificate in notepad, and then copy the content of it.
+	e.Base 64 でエンコードされた証明書をメモ帳で開き、その内容をコピーします。
     
-    f.  In the **Certificate** textbox, paste the content of your clipboard.
+	f.**[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
     
-    g.  Click **OK**.
+	g.**[OK]** をクリックします。
 
-12.  Perform the following steps: 
+12.  次の手順に従います。
 
-    ![SSO configuration](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO configuration")
+	![SSO 構成](./media/active-directory-saas-workday-tutorial/IC7829351111.png "SSO 構成")
 
-    a.  Enable the **x509 Private Key Pair**.
+	a.**[x509 秘密鍵のペア]** を有効にします。
 
-    b.  In the **Service Provider ID** textbox, type **http://www.workday.com**.
+	b.**[サービス プロバイダー ID]** テキスト ボックスに「**http://www.workday.com**」と入力します。
 
-    c.  Select **Enable SP Initiated SAML Authentication**.
+	c.**[SP によって開始された SAML 認証を有効にする]** を選択します。
 
-    d.  In the Azure classic portal, on the **Configure single sign-on at Workday** dialog page, copy the **Single Sign-On Service URL** value, and then paste it into the **IdP SSO Service URL** textbox.
+	d.Azure クラシック ポータルの **[Workday でのシングル サインオンの構成]** ダイアログ ページで、**[シングル サインオン サービス URL]** の値をコピーし、**[IdP SSO サービス URL]** テキスト ボックスに貼り付けます。
      
-    e. Select **Do Not Deflate SP-initiated Authentication Request**.
+	e.**[SP によって開始された認証要求を圧縮しない]** を選択します。
 
-    f. As **Authentication Request Signature Method**, select **SHA256**. 
+    f.**[認証要求署名方法]** として **[SHA256]** を選択します。
         
-    ![Authentication Request Signature Method](./media/active-directory-saas-workday-tutorial/IC782932.png "Authentication Request Signature Method") 
+	![認証要求署名方法](./media/active-directory-saas-workday-tutorial/IC782932.png "認証要求署名方法")
  
-    g. Click **OK**. 
+	g.**[OK]** をクリックします。
         
-    ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
+	![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
 
-12. In the Azure classic portal, on the **Configure single sign-on at Workday** page, click **Next**. 
+12. Azure クラシック ポータルの **[Workday でのシングル サインオンの構成]** ページで、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782934.png "Configure single sign-on")
 
-13. On the **Single sign-on confirmation** page, click **Complete**. 
+13. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-workday-tutorial/IC782935111.png "Configure single sign-on")
 
 
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-To get a test user provisioned into Workday, you need to contact the Workday support team.  
-The Workday support team will create the user for you.
+Workday にテスト ユーザーをプロビジョニングするには、Workday のサポート チームに連絡する必要があります。Workday のサポート チームにユーザーを作成してもらいます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-workday,-perform-the-following-steps:"></a>To assign users to Workday, perform the following steps:
+###ユーザーを Workday に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Workday **application integration page, click **Assign users**.
+2.  **Workday** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-workday-tutorial/IC782935.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-workday-tutorial/IC782935.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-workday-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

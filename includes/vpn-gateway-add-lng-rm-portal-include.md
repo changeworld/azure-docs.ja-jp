@@ -1,22 +1,19 @@
-1. In the portal, from **All resources**, click **+Add**. In the **Everything** blade search box, type **Local network gateway**, then click to search. This will return a list. Click **Local network gateway** to open the blade, then click **Create** to open the **Create local network gateway** blade.
+1. ポータルで、**[新規]**、**[ネットワーク]**、**[ローカル ネットワーク ゲートウェイ]** の順に移動します。
 
-    ![create local network gateway](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)
+	![create local network gateway](./media/vpn-gateway-add-lng-rm-portal-include/addlng250.png)
 
-2. On the **Create local network gateway blade**, specify a **Name** for your local network gateway object.
+2. **[ローカル ネットワーク ゲートウェイの作成]** ブレードで、ローカル ネットワーク ゲートウェイ オブジェクトの **[名前]** を指定します。
  
-3. Specify a valid public **IP address** for the VPN device or virtual network gateway to which you want to connect.<br>If this local network represents an on-premises location, this is the public IP address of the VPN device that you want to connect to. It cannot be behind NAT and has to be reachable by Azure.<br>If this local network represents another VNet, you will specify the public IP address that was assigned to the virtual network gateway for that VNet.<br>
+3. 接続先の VPN デバイスまたは仮想ネットワーク ゲートウェイの有効なパブリック IP アドレスを **[IP アドレス]** に指定します。<br>このローカル ネットワークがオンプレミスの場所を表す場合、この値が接続先の VPN デバイスのパブリック IP アドレスになります。NAT の内側を指定することはできません。Azure からアクセスできる必要があります。<br>このローカル ネットワークが別の VNet を表す場合は、その VNet の仮想ネットワーク ゲートウェイに割り当てられているパブリック IP アドレスを指定します。<br>
 
-4. **Address Space** refers to the address ranges for the network that this local network represents. You can add multiple address space ranges. Make sure that the ranges you specify here do not overlap with ranges of other networks that you want to connect to.
+4. **[アドレス空間]** は、このローカル ネットワークが表すネットワークのアドレス範囲を参照します。複数のアドレス領域の範囲を追加することができます。ここで指定した範囲が、接続先となる他のネットワークの範囲と重複しないようにしてください。
  
-5. For **Subscription**, verify that the correct subscription is showing.
+5. **[サブスクリプション]** では、正しいサブスクリプションが表示されていることを確認します。
 
-6. For **Resource Group**, select the resource group that you want to use. You can either create a new resource group, or select one that you have already created.
+6. **[リソース グループ]** では、使用するリソース グループを選択します。新しいリソース グループを作成することも、作成済みのリソース グループを選択することもできます。
 
-7. For **Location**, select the location that this object will be created in. You may want to select the same location that your VNet resides in, but you are not required to do so.
+7. **[場所]** では、このオブジェクトが作成される場所を選択します。VNet が存在するのと同じ場所を選択することもできますが、必須ではありません。
 
-8. Click **Create** to create the local network gateway.
+8. **[作成]** をクリックして、ローカル ネットワーク ゲートウェイを作成します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---------HONumber=AcomDC_0810_2016-->

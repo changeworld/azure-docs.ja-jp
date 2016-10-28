@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Network Security Best Practices | Microsoft Azure"
-   description="This article provides a set of best practices for network security using built in Azure capabilities."
+   pageTitle="Azure のネットワーク セキュリティに関するベスト プラクティス |Microsoft Azure"
+   description="この記事では、Azure の組み込み機能を利用した、ネットワーク セキュリティに関する一連のベスト プラクティスについて説明します。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,228 +16,219 @@
    ms.date="05/25/2016"
    ms.author="TomSh"/>
 
+# Azure のネットワーク セキュリティに関するベスト プラクティス
 
-# <a name="azure-network-security-best-practices"></a>Azure Network Security Best Practices
+Microsoft Azure では、仮想マシンや仮想アプライアンスを Azure Virtual Network に配置して、ネットワークに接続された他のデバイスと接続できます。Azure Virtual Network の仮想ネットワーク構造では、仮想ネットワーク インターフェイス カードを仮想ネットワークに接続し、ネットワーク対応デバイス間で TCP/IP ベースの通信を実行できるようになっています。Azure の仮想ネットワークに接続された Azure 仮想マシンは、同じ Azure 仮想ネットワーク上のデバイス、異なる Azure 仮想ネットワーク上のデバイス、インターネット上のデバイス、さらにはオンプレミス ネットワーク上のデバイスにも接続できます。
 
-Microsoft Azure enables you to connect virtual machines and appliances to other networked devices by placing them on Azure Virtual Networks. An Azure Virtual Network is a virtual network construct that allows you to connect virtual network interface cards to a virtual network to allow TCP/IP-based communications between network enabled devices. Azure Virtual Machines connected to an Azure Virtual Network are able to connect to devices on the same Azure Virtual Network, different Azure Virtual Networks, on the Internet or even on your own on-premises networks.
+この記事では、Azure のネットワーク セキュリティに関するベスト プラクティスについて説明します。このベスト プラクティスは、Azure のネットワークに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
-In this article we will discuss a collection of Azure network security best practices. These best practices are derived from our experience with Azure networking and the experiences of customers like yourself.
+それぞれのベスト プラクティスについて、次の点を説明します。
 
-For each best practice, we’ll explain:
+- ベスト プラクティスの内容
+- そのベスト プラクティスをお勧めする理由
+- そのベスト プラクティスを実践しなかった場合に発生する可能性がある事態
+- そのベスト プラクティスに代わる対処法
+- そのベスト プラクティスを実践する方法
 
-- What the best practice is
-- Why you want to enable that best practice
-- What might be the result if you fail to enable the best practice
-- Possible alternatives to the best practice
-- How you can learn to enable the best practice
+この「Azure のネットワーク セキュリティに関するベスト プラクティス」の記事は、この記事の執筆時点における共通認識と、Azure プラットフォームの機能および機能セットに基づいています。共通認識とテクノロジは時間が経つにつれて変化するため、そのような変化に対応するために、この記事は定期的に更新されます。
 
-This Azure Network Security Best Practices article is based on a consensus opinion, and Azure platform capabilities and feature sets, as they exist at the time this article was written. Opinions and technologies change over time and this article will be updated on a regular basis to reflect those changes.
+この記事で説明する Azure のネットワーク セキュリティに関するベスト プラクティスは、次のとおりです。
 
-Azure Network security best practices discussed in this article include:
-
-- Logically segment subnets
-- Control routing behavior
-- Enable Forced Tunneling
-- Use Virtual network appliances
-- Deploy DMZs for security zoning
-- Avoid exposure to the Internet with dedicated WAN links
-- Optimize uptime and performance
-- Use global load balancing
-- Disable RDP Access to Azure Virtual Machines
-- Enable Azure Security Center
-- Extend your datacenter into Azure
+- サブネットを論理的にセグメント化する
+- ルーティングの動作を制御する
+- 強制トンネリングを有効にする
+- 仮想ネットワーク アプライアンスを使用する
+- DMZ をデプロイしてセキュリティ ゾーンを構築する
+- 専用の WAN リンクを使用して、インターネットへの接続を防ぐ
+- アップタイムとパフォーマンスを最適化する
+- グローバル負荷分散を使用する
+- Azure Virtual Machines への RDP アクセスを無効にする
+- Azure Security Center を有効にする
+- 自社のデータセンターを Azure に拡張する
 
 
-## <a name="logically-segment-subnets"></a>Logically segment subnets
+## サブネットを論理的にセグメント化する
 
-[Azure Virtual Networks](https://azure.microsoft.com/documentation/services/virtual-network/) are similar to a LAN on your on-premises network. The idea behind an Azure Virtual Network is that you create a single private IP address space-based network on which you can place all your [Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/). The private IP address spaces available are in the Class A (10.0.0.0/8), Class B (172.16.0.0/12) and Class C (192.168.0.0/16) ranges.
+[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) はオンプレミス ネットワークの LAN に似ています。Azure Virtual Network のベースにある考え方は、単一のプライベート IP アドレス空間に基づくネットワークを作成し、自社で使用する [Azure 仮想マシン](https://azure.microsoft.com/services/virtual-machines/)をすべてそこに配置できる、というものです。使用可能なプライベート IP アドレス空間は、クラス A \(10.0.0.0/8\)、クラス B \(172.16.0.0/12\)、およびクラス C \(192.168.0.0/16\) の範囲です。
 
-Similar to what you do on-premises, you’ll want to segment the larger address space into subnets. You can use [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) based subnetting principles to create your subnets.
+オンプレミスの場合と同様、大きいアドレス空間はサブネットに分割することをお勧めします。サブネットの作成には、[CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) ベースのサブネット原則が利用できます。
 
-Routing between subnets will happen automatically and you do not need to manually configure routing tables. However, the default setting is that there are no network access controls between the subnets you create on the Azure Virtual Network. In order to create network access controls between subnets, you’ll need to put something between the subnets.
+サブネット間のルーティングは自動的に処理されるため、ルーティング テーブルを手動で構成する必要はありません。ただし、既定の設定では、Azure Virtual Network で作成したサブネット間にはネットワーク アクセス制御がありません。サブネット間にネットワーク アクセス制御を作成するには、サブネット間になんらかの要素を配置する必要があります。
 
-One of the things you can use to accomplish this task is a [Network Security Group](../virtual-network/virtual-networks-nsg.md) (NSG). NSGs are simple stateful packet inspection devices that use the 5-tuple (the source IP, source port, destination IP, destination port, and layer 4 protocol) approach to create allow/deny rules for network traffic. You can allow or deny traffic to and from single IP address, to and from multiple IP addresses or even to and from entire subnets.
+この目的に使用できる要素の 1 つは、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md) \(NSG\) です。NSG は、シンプルなステートフル パケット インスペクション デバイスで、5 タプル \(発信元 IP、発信元ポート、接続先 IP、接続先ポート、レイヤー 4 プロトコル\) アプローチを使用して、ネットワーク トラフィックに対する許可/拒否の規則を作成します。許可または拒否の対象には、1 つの IP アドレス、複数の IP アドレス、またはサブネット全体との間のトラフィックを指定できます。
 
-Using NSGs for network access control between subnets enables you to put resources that belong to the same security zone or role in their own subnets. For example, think of a simple 3-tier application that has a web tier, an application logic tier and a database tier. You put virtual machines that belong to each of these tiers into their own subnets. Then you use NSGs to control traffic between the subnets:
+サブネット間のネットワーク アクセス制御に NSG を使用すると、同じセキュリティ ゾーンまたはロールに属するリソースを専用のサブネットに配置できます。たとえば、Web 層、アプリケーション ロジック層、データベース層からなるシンプルな 3 層アプリケーションの場合であれば、各階層に属している仮想マシンを専用のサブネットに配置します。そして、NSG を使用して、サブネット間のトラフィックを制御します。
 
-- Web tier virtual machines can only initiate connections to the application logic machines and can only accept connections from the Internet
-- Application logic virtual machines can only initiate connections with database tier and can only accept connections from the web tier
-- Database tier virtual machines cannot initiate connection with anything outside of their own subnet and can only accept connections from the application logic tier
+- Web 層の仮想マシンは、アプリケーション ロジック層のマシンへの接続のみを開始でき、インターネットからの接続のみを受け付けます。
+- アプリケーション ロジック層の仮想マシンは、データベース層への接続のみを開始でき、Web 層からの接続のみを受け付けます。
+- データベース層の仮想マシンは自身が属するサブネットの外には接続を開始できず、アプリケーション ロジック層からの接続のみを受け付けることができます。
 
-To learn more about Network Security Groups and how you can use them to logically segment your Azure Virtual Networks, please read the article [What is a Network Security Group](../virtual-network/virtual-networks-nsg.md) (NSG).
+ネットワーク セキュリティ グループ \(NSG\) の詳細と、NSG を使用して Azure Virtual Networks を論理的にセグメント化する方法については、「[ネットワーク セキュリティ グループ \(NSG\) について](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
 
-## <a name="control-routing-behavior"></a>Control routing behavior
+## ルーティングの動作を制御する
 
-When you put a virtual machine on an Azure Virtual Network, you’ll notice that the virtual machine can connect to any other virtual machine on the same Azure Virtual Network, even if the other virtual machines are on different subnets. The reason why this is possible is that there is a collection of system routes that are enabled by default that allow this type of communication. These default routes allow virtual machines on the same Azure Virtual Network to initiate connections with each other, and with the Internet (for outbound communications to the Internet only).
+Azure 仮想ネットワークに仮想マシンを配置すると、同じ Azure 仮想ネットワークにある他の仮想マシンには、たとえサブネットが異なっていても、接続することができます。これが可能であるのは、このような通信を許可する一連のシステム ルートが既定で有効になっているためです。これらの既定のルートでは、同じ Azure 仮想ネットワーク上にある仮想マシンに対して、相互接続およびインターネットとの接続の開始が許可されています \(インターネットの場合はインターネットへの送信のみ\)。
 
-While the default system routes are useful for many deployment scenarios, there are times when you want to customize the routing configuration for your deployments. These customizations will allow you to configure the next hop address to reach specific destinations.
+既定のシステム ルートは多くのデプロイ シナリオで有用ですが、自社のデプロイ状況に合わせてルーティング構成をカスタマイズする必要が生じることもあります。カスタマイズによって、特定の接続先に到達するための次ホップ アドレスを構成できます。
 
-We recommend that you configure User Defined Routes when you deploy a virtual network security appliance, which we’ll talk about in a later best practice.
+仮想ネットワークのセキュリティ アプライアンスをデプロイする場合は、ユーザー定義のルートを構成することをお勧めします。これについては、後のベスト プラクティスで説明します。
 
-> [AZURE.NOTE] user Defined Routes are not required and the default system routes will work in most instances.
+> [AZURE.NOTE] ユーザー定義のルートは必須ではありません。既定のシステム ルートはほとんどの状況で問題なく機能します。
 
-You can learn more about User Defined Routes and how to configure them by reading the article [What are User Defined Routes and IP Forwarding](../virtual-network/virtual-networks-udr-overview.md).
+ユーザー定義のルートの詳細と構成方法については、「[ユーザー定義のルートおよび IP 転送とは](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。
 
-## <a name="enable-forced-tunneling"></a>Enable Forced Tunneling
+## 強制トンネリングを有効にする
 
-To better understand forced tunneling, it’s useful to understand what “split tunneling” is.
-The most common example of split tunneling is seen with VPN connections. Imagine that you establish a VPN connection from your hotel room to your corporate network. This connection allows you to connect to resources on your corporate network and all communications to resources on your corporate network go through the VPN tunnel.
+強制トンネリングを正しく理解するには、"分割トンネリング" について理解するのが効果的です。分割トンネリングが最もよく見られるのは、VPN 接続です。ホテルの部屋から会社のネットワークに確立する VPN 接続を想像してください。この接続によって会社のネットワーク上にあるリソースにアクセスできるわけですが、これらのリソースに対する通信はすべて VPN トンネルを経由します。
 
-What happens when you want to connect to resources on the Internet? When split tunneling is enabled, those connections go directly to the Internet and not through the VPN tunnel. Some security experts consider this to be a potential risk and therefore recommend that split tunneling be disabled and all connections, those destined for the Internet and those destined for corporate resources, go through the VPN tunnel. The advantage of doing this is that connections to the Internet are then forced through the corporate network security devices, which wouldn’t be the case if the VPN client connected to the Internet outside of the VPN tunnel.
+インターネット上のリソースに接続する場合はどうなるのでしょうか。 分割トンネリングを有効にすると、この接続は VPN トンネルを経由せず、インターネットに直接向かいます。セキュリティの専門家の中には、これが潜在的なリスクになると考え、分割トンネリングは無効にして、宛先がインターネットであっても会社のリソースであっても、すべての接続を VPN トンネル経由で行うよう推奨している人もいます。この推奨策の利点は、インターネットへの接続が会社のネットワークのセキュリティ デバイスを経由するよう強制できることです。ただし、VPN クライアントが VPN トンネルの外部でインターネットに接続されると効果がありません。
 
-Now let’s bring this back to virtual machines on an Azure Virtual Network. The default routes for an Azure Virtual Network allow virtual machines to initiate traffic to the Internet. This too can represent a security risk, as these outbound connections could increase the attack surface of a virtual machine and be leveraged by attackers.
-For this reason, we recommend that you enable forced tunneling on your virtual machines when you have cross-premises connectivity between your Azure Virtual Network and your on-premises network. We will talk about cross premises connectivity later in this Azure networking best practices document.
+では、Azure Virtual Network 上の仮想マシンについて考えてみましょう。Azure Virtual Network の既定のルートでは、仮想マシンはインターネットへのトラフィックを開始できます。これもセキュリティ リスクとなる可能性があります。これらの発信接続によって仮想マシンの攻撃対象領域が増え、攻撃者に利用されるおそれがあります。そのため、Microsoft では、Azure Virtual Network とオンプレミス ネットワークの間でクロスプレミス接続を行う場合は、仮想マシンに対して強制トンネリングを有効にすることを推奨しています。クロスプレミス接続については、この Azure ネットワークのベスト プラクティスに関するドキュメントの後半で説明します。
 
-If you do not have a cross premises connection, make sure you take advantage of Network Security Groups (discussed earlier) or Azure virtual network security appliances (discussed next) to prevent outbound connections to the Internet from your Azure Virtual Machines.
+クロスプレミス接続を行わない場合は、ネットワーク セキュリティ グループ \(前述\) または Azure 仮想ネットワーク セキュリティ アプライアンス \(次項で説明\) を利用して、Azure 仮想マシンからインターネットへの発信接続を防ぐようにしてください。
 
-To learn more about forced tunneling and how to enable it, please read the article [Configure Forced Tunneling using PowerShell and Azure Resource Manager](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md).
+強制トンネリングの詳細と有効にする方法については、「[PowerShell および Azure Resource Manager を使用した強制トンネリングの構成](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)」をご覧ください。
 
-## <a name="use-virtual-network-appliances"></a>Use virtual network appliances
+## 仮想ネットワーク アプライアンスを使用する
 
-While Network Security Groups and User Defined Routing can provide a certain measure of network security at the network and transport layers of the [OSI model](https://en.wikipedia.org/wiki/OSI_model), there are going to be situations where you’ll want or need to enable security at high levels of the stack. In such situations, we recommend that you deploy virtual network security appliances provided by Azure partners.
+ネットワーク セキュリティ グループとユーザー定義のルーティングを使用すれば [OSI 参照モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク層とトランスポート層において一定のネットワーク セキュリティを確保できますが、より上位のスタックでセキュリティを確保することが必要になる状況もあります。このような状況では、Azure のパートナーによって提供されている仮想ネットワーク セキュリティ アプライアンスのデプロイをお勧めします。
 
-Azure network security appliances can deliver significantly enhanced levels of security over what is provided by network level controls. Some of the network security capabilities provided by virtual network security appliances include:
+Azure のネットワーク セキュリティ アプライアンスを使用すると、ネットワーク レベルの制御で提供されるよりも、はるかに高いレベルのセキュリティを実現できます。仮想ネットワーク セキュリティ アプライアンスが備えるネットワーク セキュリティ機能には、次のようなものがあります。
 
-- Firewalling
-- Intrusion detection/Intrusion Prevention
-- Vulnerability management
-- Application control
-- Network-based anomaly detection
-- Web filtering
-- Antivirus
-- Botnet protection
+- ファイアウォール
+- 不正侵入検出/侵入防止
+- 脆弱性の管理
+- アプリケーションの制御
+- ネットワーク ベースの異常検出
+- Web フィルタリング
+- ウイルス対策
+- ボットネットからの保護
 
-If you require a higher level of network security than you can obtain with network level access controls, then we recommend that you investigate and deploy Azure virtual network security appliances.
+ネットワーク レベルのアクセス制御で得られるネットワーク セキュリティよりも高いレベルを必要とする場合は、Azure の仮想ネットワーク セキュリティ アプライアンスを調査して、デプロイすることをお勧めします。
 
-To learn about what Azure virtual network security appliances are available, and about their capabilities, please visit the [Azure Marketplace](https://azure.microsoft.com/marketplace/) and search for “security” and “network security”.
+Azure の仮想ネットワーク セキュリティ アプライアンスの製品や機能の詳細については、[Azure Marketplace](https://azure.microsoft.com/marketplace/) にアクセスし、"security" や "network security" で検索してください。
 
-##<a name="deploy-dmzs-for-security-zoning"></a>Deploy DMZs for security zoning
-A DMZ or “perimeter network” is a physical or logical network segment that is designed to provide an additional layer of security between your assets and the Internet. The intent of the DMZ is to place specialized network access control devices on the edge of the DMZ network so that only desired traffic is allowed past the network security device and into your Azure Virtual Network.
+##DMZ をデプロイしてセキュリティ ゾーンを構築する
+DMZ \(境界ネットワーク\) は、資産とインターネットの間に追加のセキュリティ層を提供するために設計された物理的または論理的なネットワーク セグメントです。DMZ の目的は、DMZ ネットワークの境界にネットワーク アクセス制御専用デバイスを配置し、目的のトラフィックのみがネットワーク セキュリティ デバイスを通過し、Azure 仮想ネットワークに入ることが許可されるようにすることです。
 
-DMZs are useful because you can focus your network access control management, monitoring, logging and reporting on the devices at the edge of your Azure Virtual Network. Here you would typically enable DDoS prevention, Intrusion Detection/Intrusion Prevention systems (IDS/IPS), firewall rules and policies, web filtering, network antimalware and more. The network security devices sit between the Internet and your Azure Virtual Network and have an interface on both networks.
+DMZ を使用すると、ネットワーク アクセス制御の管理、監視、ログ記録、レポート作成を、Azure 仮想ネットワークの境界にあるデバイスでのみ行えば済むようになります。このデバイスでは、通常、DDoS 防止、侵入検出/侵入防止システム \(IDS/IPS\)、ファイアウォール ルールとポリシー、Web フィルタリング、ネットワーク マルウェア対策などを有効にします。ネットワーク セキュリティ デバイスは、インターネットと Azure 仮想ネットワークの間に配置され、両方のネットワークに対するインターフェイスが備わっています。
 
-While this is the basic design of a DMZ, there are many different DMZ designs, such as back-to-back, tri-homed, multi-homed, and others.
+これは DMZ の基本的な設計で、他にも、バックツーバック、3 分岐、マルチホームなど、多様な DMZ 設計があります。
 
-We recommend for all high security deployments that you consider deploying a DMZ to enhance the level of network security for your Azure resources.
+高いセキュリティが求められるデプロイメントでは、Azure リソースのネットワーク セキュリティ レベルを強化するために、DMZ をデプロイすることをお勧めします。
 
-To learn more about DMZs and how to deploy them in Azure, please read the article [Microsoft Cloud Services and Network Security](../best-practices-network-security.md).
+DMZ の詳細と Azure でのデプロイ方法については、「[Microsoft クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md)」をご覧ください。
 
-## <a name="avoid-exposure-to-the-internet-with-dedicated-wan-links"></a>Avoid exposure to the Internet with dedicated WAN links
-Many organizations have chosen the Hybrid IT route. In hybrid IT, some of the company’s information assets are in Azure, while others remain on-premises. In many cases some components of a service will be running in Azure while other components remain on-premises.
+## 専用の WAN リンクを使用して、インターネットへの接続を防ぐ
+多くの組織で、ハイブリッド IT というアプローチが採用されています。ハイブリッド IT では、企業の情報資産の一部が Azure に移行され、残りはオンプレミスに残されます。サービスのコンポーネントの一部が Azure で実行され、残りのコンポーネントがオンプレミスで実行されるというケースもよく見られます。
 
-In the hybrid IT scenario, there is usually some type of cross-premises connectivity. This cross-premises connectivity allows the company to connect their on-premises networks to Azure Virtual Networks. There are two cross-premises connectivity solutions available:
+ハイブリッド IT シナリオでは、通常、なんらかのタイプのクロスプレミス接続が使用されます。企業は、このクロスプレミス接続を通じて、オンプレミス ネットワークを Azure Virtual Network に接続できます。現在提供されているクロスプレミス接続ソリューションは 2 つあります。
 
-- Site-to-site VPN
+- サイト間 VPN
 - ExpressRoute
 
-[Site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) represents a virtual private connection between your on-premises network and an Azure Virtual Network. This connection takes place over the Internet and allows you to “tunnel” information inside an encrypted link between your network and Azure. Site-to-site VPN is a secure, mature technology that has been deployed by enterprises of all sizes for decades. Tunnel encryption is performed using [IPsec tunnel mode](https://technet.microsoft.com/library/cc786385.aspx).
+[サイト間 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) は、オンプレミス ネットワークと Azure Virtual Network の間に確立された仮想プライベート接続に相当します。この接続はインターネットをまたいでいるため、自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。トンネルの暗号化は、[IPsec トンネル モード](https://technet.microsoft.com/library/cc786385.aspx)を使用して実現されています。
 
-While site-to-site VPN is a trusted, reliable, and established technology, traffic within the tunnel does traverse the Internet. In addition, bandwidth is relatively constrained to a maximum of about 200Mbps.
+サイト間 VPN は信頼性が高く、実績のあるテクノロジですが、トンネル内のトラフィックはインターネットを経由します。また、帯域幅は最大 200 Mbps 程度で、それほど大きくありません。
 
-If you require an exceptional level of security or performance for your cross-premises connections, we recommend that you use Azure ExpressRoute for your cross-premises connectivity. ExpressRoute is a dedicated WAN link between your on-premises location or an Exchange hosting provider. Because this is a telco connection, your data doesn’t travel over the Internet and therefore is not exposed to the potential risks inherent in Internet communications.
+クロスプレミス接続できわめて高いレベルのセキュリティやパフォーマンスが必要な場合は、クロスプレミス接続に Azure ExpressRoute を使用することをお勧めします。ExpressRoute は、オンプレミスの場所または Exchange ホスティング プロバイダーとの間に確立する専用 WAN リンクです。これは電話会社の接続であるため、データはインターネットを経由せずに送信され、インターネット通信に付随する潜在的なリスクにさらされることがありません。
 
-To learn more about how Azure ExpressRoute works and how to deploy, please read the article [ExpressRoute Technical Overview](../expressroute/expressroute-introduction.md).
+Azure ExpressRoute のしくみとデプロイ方法の詳細については、「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」をご覧ください。
 
-## <a name="optimize-uptime-and-performance"></a>Optimize uptime and performance
-Confidentiality, integrity and availability (CIA) comprise the triad of today’s most influential security model. Confidentiality is about encryption and privacy, integrity is about making sure that data is not changed by unauthorized personnel, and availability is about making sure that authorized individuals are able to access the information they are authorized to access. Failure in any one of these areas represents a potential breach in security.
+## アップタイムとパフォーマンスを最適化する
+機密性、整合性、可用性 \(confidentiality、integrity、availabilit: CIA\) は、現在最も影響力のあるセキュリティ モデルを構成している 3 要素です。機密性は暗号化とプライバシーを指し、整合性はデータが未承認のユーザーによって変更されないようにすることを指します。可用性は、承認されたユーザーがアクセスを許可された情報にアクセスできるようにすることを意味しています。これらの領域のいずれか 1 つでも達成されていないと、セキュリティ侵害が生じるおそれがあります。
 
-Availability can be thought of as being about uptime and performance. If a service is down, information can’t be accessed. If performance is so poor as to make the data unusable, then we can consider the data to be inaccessible. Therefore, from a security perspective, we need to do whatever we can to make sure our services have optimal uptime and performance.
-A popular and effective method used to enhance availability and performance is to use load balancing. Load balancing is a method of distributing network traffic across servers that are part of a service. For example, if you have front-end web servers as part of your service, you can use load balancing to distribute the traffic across your multiple front-end web servers.
+可用性は、アップタイムとパフォーマンスに関連していると考えることができます。サービスがダウンしていると、情報にアクセスすることはできません。パフォーマンスが低下していてデータが利用できない場合も、データはアクセス不能と見なされます。そのため、セキュリティの観点から、サービスが最適なアップタイムとパフォーマンスを提供できるように、あらゆる手段を講じる必要があります。可用性とパフォーマンスを向上させるために広く使用され、効果をあげている手法に、負荷分散があります。負荷分散とは、サービスを構成する複数のサーバー間でネットワーク トラフィックを分散する手法です。たとえば、サービスにフロント エンド Web サーバーが含まれている場合は、負荷分散を使用して、トラフィックを複数のフロント エンド Web サーバーに分散させることができます。
 
-This distribution of traffic increases availability because if one of the web servers becomes unavailable, the load balancer will stop sending traffic to that server and redirect traffic to the servers that are still online. Load balancing also helps performance, because the processor, network and memory overhead for serving requests is distributed across all the load balanced servers.
+いずれかの Web サーバーが使用不能になると、負荷分散装置 \(ロード バランサー\) によってそのサーバーへのトラフィックの送信が停止され、オンラインを維持している他のサーバーにトラフィックがリダイレクトされます。これが、トラフィック分散によって可用性が向上するしくみです。負荷分散はパフォーマンスの向上にも効果があります。要求を処理するときのプロセッサ、ネットワーク、メモリのオーバーヘッドも、すべての負荷分散サーバーに分散されるためです。
 
-We recommend that you employ load balancing whenever you can, and as appropriate for your services. We’ll address appropriateness in the following sections.
-At the Azure Virtual Network level, Azure provides you with three primary load balancing options:
+可能な限り、提供するサービスに合わせて、負荷分散を使用することをお勧めします。サービスに応じた負荷分散の検討については、次のセクションで説明します。Azure Virtual Network には、主に次の 3 つの負荷分散オプションが用意されています。
 
-- HTTP-based load balancing
-- External load balancing
-- Internal load balancing
+- HTTP ベースの負荷分散
+- 外部負荷分散
+- 内部負荷分散
 
-## <a name="http-based-load-balancing"></a>HTTP-based Load Balancing
-HTTP-based load balancing bases decisions about what server to send connections using characteristics of the HTTP protocol. Azure has an HTTP load balancer that goes by the name of Application Gateway.
+## HTTP ベースの負荷分散
+HTTP ベースの負荷分散では、HTTP プロトコルの特性を使用して、接続の転送先サーバーを決定します。Azure には、Application Gateway という名称の HTTP ロード バランサーが用意されています。
 
-We recommend that you us Azure Application Gateway when:
+次の条件に該当する場合は、Azure Application Gateway の利用をお勧めします。
 
-- Applications that require requests from the same user/client session to reach the same back-end virtual machine. Examples of this would be shopping cart apps and web mail servers.
-- Applications that want to free web server farms from SSL termination overhead by taking advantage of Application Gateway’s [SSL offload](https://f5.com/glossary/ssl-offloading) feature.
-- Applications, such as a content delivery network, that require multiple HTTP requests on the same long-running TCP connection to be routed or load balanced to different back-end servers.
+- 同じユーザー/クライアントのセッションからの要求が同じバックエンド仮想マシンに到達する必要があるアプリケーション。この例としては、ショッピング カート アプリや Web メール サーバーなどが挙げられます。
+- Application Gateway の [SSL オフロード](https://f5.com/glossary/ssl-offloading)機能を使用して、Web サーバー ファームを SSL ターミネーションのオーバーヘッドから解放する必要があるアプリケーション。
+- 実行時間の長い同じ TCP 接続で複数の HTTP 要求を異なるバックエンド サーバーにルーティング/負荷分散する必要があるアプリケーション \(コンテンツ配信ネットワークなど\)。
 
-To learn more about how Azure Application Gateway works and how you can use it in your deployments, please read the article [Application Gateway Overview](../application-gateway/application-gateway-introduction.md).
+Azure Application Gateway のしくみと、使用しているデプロイでの使用方法の詳細については、「[Application Gateway の概要](../application-gateway/application-gateway-introduction.md)」をご覧ください。
 
-## <a name="external-load-balancing"></a>External Load Balancing
-External load balancing takes place when incoming connections from the Internet are load balanced among your servers located in an Azure Virtual Network. The Azure External Load balancer can provide you this capability and we recommend that you use it when you don’t require the sticky sessions or SSL offload.
+## 外部負荷分散
+外部負荷分散は、インターネットからの着信接続が Azure Virtual Network に配置されたサーバー間で分散される手法です。この機能は Azure の外部ロード バランサーで利用できます。スティッキー セッションや SSL オフロードを必要としない場合に使用することをお勧めします。
 
-In contrast to HTTP-based load balancing, the External Load Balancer uses information at the network and transport layers of the OSI networking model to make decisions on what server to load balance connection to.
+HTTP ベースの負荷分散とは異なり、外部ロード バランサーは OSI ネットワーク モデルのネットワーク層とトランスポート層の情報を使用して、接続の負荷分散先サーバーを決定します。
 
-We recommend that you use External Load Balancing whenever you have [stateless applications](http://whatis.techtarget.com/definition/stateless-app) accepting incoming requests from the Internet.
+インターネットからの着信要求を受け付ける[ステートレスなアプリケーション](http://whatis.techtarget.com/definition/stateless-app)がある場合は、外部負荷分散の使用をお勧めします。
 
-To learn more about how the Azure External Load Balancer works and how you can deploy it, please read the article [Get Started Creating an Internet Facing Load Balancer in Resource Manager using PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md).
+Azure 外部ロード バランサーのしくみとデプロイ方法の詳細については、「[リソース マネージャーで PowerShell を使用して、インターネットに接続するロード バランサーの作成を開始する](../load-balancer/load-balancer-get-started-internet-arm-ps.md)」をご覧ください。
 
-## <a name="internal-load-balancing"></a>Internal Load Balancing
-Internal load balancing is similar to external load balancing and uses the same mechanism to load balance connections to the servers behind them. The only difference is that the load balancer in this case is accepting connections from virtual machines that are not on the Internet. In most cases, the connections that are accepted for load balancing are initiated by devices on an Azure Virtual Network.
+## 内部負荷分散
+内部負荷分散は、外部負荷分散に似ており、同じメカニズムを使用して、背後にあるサーバーに接続を負荷分散します。唯一の違いは、この手法のロード バランサーが、インターネット上にない仮想マシンからの接続を受け入れる点です。負荷分散で受け入れられるのは、ほとんどの場合、Azure Virtual Network 上のデバイスで開始された接続です。
 
-We recommend that you use internal load balancing for scenarios that will benefit from this capability, such as when you need to load balance connections to SQL Servers or internal web servers.
+SQL サーバーや内部 Web サーバーへの接続を負荷分散する必要がある場合など、この機能からメリットを得られるシナリオで、内部負荷分散を使用することをお勧めします。
 
-To learn more about how Azure Internal Load Balancing works and how you can deploy it, please read the article [Get Started Creating an Internal Load Balancer using PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer).
+Azure 内部負荷分散のしくみとデプロイ方法の詳細については、「[PowerShell を使用した内部ロード バランサーの作成の開始](../load-balancer/load-balancer-get-started-internet-arm-ps.md#update-an-existing-load-balancer)」をご覧ください。
 
-## <a name="use-global-load-balancing"></a>Use global load balancing
-Public cloud computing makes it possible to deploy globally distributed applications that have components located in datacenters all over the world. This is possible on Microsoft Azure due to Azure’s global datacenter presence. In contrast to the load balancing technologies mentioned earlier, global load balancing makes it possible to make services available even when entire datacenters might become unavailable.
+## グローバル負荷分散を使用する
+パブリック クラウド コンピューティングを活用すれば、コンポーネントが世界中のデータセンターに配置されたグローバル分散アプリケーションをデプロイできます。Microsoft Azure のデータセンターは世界各地にあるため、Azure でもこれを実現できます。グローバル負荷分散は、前述の負荷分散テクノロジとは異なり、データセンター全体が使用できなくなった場合でも、サービスを提供することが可能です。
 
-You can get this type of global load balancing in Azure by taking advantage of [Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/). Traffic Manager makes is possible to load balance connections to your services based on the location of the user.
+Azure では、[Azure Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/) を通じて、このタイプのグローバル負荷分散を利用できます。Traffic Manager を使用すると、ユーザーの場所に基づいてサービスへの接続を負荷分散できます。
 
-For example, if the user is making a request to your service from the EU, the connection is directed to your services located in an EU datacenter. This part of Traffic Manager global load balancing helps to improve performance because connecting to the nearest datacenter is faster than connecting to datacenters that are far away.
+たとえば、ユーザーが EU からサービスに要求を行った場合は、その接続が EU のデータセンター内にあるサービスに転送されます。Traffic Manager グローバル負荷分散のこの処理によって、パフォーマンスも向上します。遠く離れたデータセンターに接続するよりも、最寄りのデータセンターに接続する方が、高速になるためです。
 
-On the availability side, global load balancing makes sure that your service is available even if an entire datacenter should become available.
+可用性の面では、仮にデータセンター全体が利用不能になった場合でも、グローバル負荷分散を使用していれば、サービスを確実に提供できます。
 
-For example, if an Azure datacenter should become unavailable due to environmental reasons or due to outages (such as regional network failures), connections to your service would be rerouted to the nearest online datacenter. This global load balancing is accomplished by taking advantage of DNS policies that you can create in Traffic Manager.
+たとえば、環境に起因する理由や障害 \(地域のネットワーク障害など\) が原因で万が一 Azure データセンターが利用不能に陥った場合でも、サービスへの接続は、オンラインを維持している最も近いデータセンターに再ルーティングされます。このグローバル負荷分散は、Traffic Manager で作成する DNS ポリシーを利用して実現されます。
 
-We recommend that you use Traffic Manager for any cloud solution you develop that has a widely distributed scope across multiple regions and requires the highest level of uptime possible.
+開発したクラウド ソリューションで、スコープが複数の地域にわたって広く分散している場合や、できる限り高いレベルのアップタイムを必要とする場合は、Traffic Manager を使用することをお勧めします。
 
-To learn more about Azure Traffic Manager and how to deploy it, please read the article [What is Traffic Manager](../traffic-manager/traffic-manager-overview.md).
+Azure Traffic Manager の詳細とデプロイ方法については、「[Traffic Manager について](../traffic-manager/traffic-manager-overview.md)」をご覧ください。
 
-## <a name="disable-rdp/ssh-access-to-azure-virtual-machines"></a>Disable RDP/SSH Access to Azure Virtual Machines
-It is possible to reach Azure Virtual Machines using the [Remote Desktop Protocol](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) (RDP)and the [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) (SSH) protocols. These protocols make it possible to manage virtual machines from remote locations and are standard in datacenter computing.
+## Azure Virtual Machines への RDP/SSH アクセスを無効にする
+Azure Virtual Machines へのアクセスには、[リモート デスクトップ プロトコル](https://en.wikipedia.org/wiki/Remote_Desktop_Protocol) \(RDP\) と [Secure Shell](https://en.wikipedia.org/wiki/Secure_Shell) \(SSH\) プロトコルを使用できます。これらのプロトコルを使用すると、遠隔地から仮想マシンを管理できるため、データセンター コンピューティングでは標準のプロトコルとして使用されています。
 
-The potential security problem with using these protocols over the Internet is that attackers can use various [brute force](https://en.wikipedia.org/wiki/Brute-force_attack) techniques to gain access to Azure Virtual Machines. Once the attackers gain access, they can use your virtual machine as a launch point for compromising other machines on your Azure Virtual Network or even attack networked devices outside of Azure.
+ただし、これらのプロトコルをインターネット経由で使用すると、攻撃者がさまざまな[ブルート フォース](https://en.wikipedia.org/wiki/Brute-force_attack) テクニックを使って Azure Virtual Machines へのアクセス権を取得できるという潜在的なセキュリティの問題が生じます。攻撃者がアクセス権を取得すると、仮想マシンを起点として同じ Azure 仮想ネットワーク上の他のマシンを侵害したり、Azure の外部にあるネットワーク接続されたデバイスを攻撃したりすることができます。
 
-Because of this, we recommend that you disable direct RDP and SSH access to your Azure Virtual Machines from the Internet. After direct RDP and SSH access from the Internet is disabled, you have other options you can use to access these virtual machines for remote management:
+そのため、インターネットから Azure 仮想マシンへの RDP および SSH による直接アクセスは無効にすることをお勧めします。インターネットからの RDP および SSH の直接アクセスを無効にした場合は、リモート管理のための仮想マシンへのアクセスに、次のオプションを使用できます。
 
-- Point-to-site VPN
-- Site-to-site VPN
+- ポイント対サイト VPN
+- サイト間 VPN
 - ExpressRoute
 
-[Point-to-site VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) is another term for a remote access VPN client/server connection. A point-to-site VPN enables a single user to connect to an Azure Virtual Network over the Internet. After the point-to-site connection is established, the user will be able to use RDP or SSH to connect to any virtual machines located on the Azure Virtual Network that the user connected to via point-to-site VPN. This assumes that the user is authorized to reach those virtual machines.
+[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) は、リモート アクセス VPN によるクライアント/サーバー接続の別名です。ポイント対サイト VPN では、1 人のユーザーがインターネット経由で Azure Virtual Network に接続できます。ポイント対サイト接続が確立されると、ユーザーは、ポイント対サイト VPN を介して接続した Azure 仮想ネットワーク上にあるすべての仮想マシンに RDP または SSH を使用して接続できます。この場合、そのユーザーがそれらの仮想マシンにアクセスすることを許可されていることが前提になります。
 
-Point-to-site VPN is more secure than direct RDP or SSH connections because the user has to authenticate twice before connecting to a virtual machine. First, the user needs to authenticate (and be authorized) to establish the point-to-site VPN connection; second, the user needs to authenticate (and be authorized) to establish the RDP or SSH session.
+ユーザーは仮想マシンに接続する前に 2 回認証を受ける必要があるため、ポイント対サイト VPN は RDP や SSH による直接接続よりも安全です。ユーザーは、まず、ポイント対サイト VPN 接続を確立するための認証 \(および承認\) を受け、次に、RDP または SSH セッションを確立するための認証 \(および承認\) を受ける必要があります。
 
-A [site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) connects an entire network to another network over the Internet. You can use a site-to-site VPN to connect your on-premises network to an Azure Virtual Network. If you deploy a site-to-site VPN, users on your on-premises network will be able to connect to virtual machines on your Azure Virtual Network by using the RDP or SSH protocol over the site-to-site VPN connection and does not require you to allow direct RDP or SSH access over the Internet.
+[サイト間 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) は、インターネット経由でネットワーク全体を別のネットワークに接続します。サイト間 VPN を使用すると、オンプレミスのネットワークを Azure Virtual Network に接続できます。サイト間 VPN をデプロイした場合、オンプレミス ネットワークのユーザーは、Azure 仮想ネットワーク上の仮想マシンにサイト間 VPN 接続経由で RDP プロトコルまたは SSH プロトコルを使用して接続でき、インターネット経由の直接 RDP/SSH アクセスの許可を受ける必要がありません。
 
-You can also use a dedicated WAN link to provide functionality similar to the site-to-site VPN. The main differences are 1. the dedicated WAN link doesn’t traverse the Internet, and 2. dedicated WAN links are typically more stable and performant. Azure provides you a dedicated WAN link solution in the form of [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
+専用 WAN リンクでも、サイト間 VPN に似た機能を提供できます。主な相違点は、1. 専用 WAN リンクはインターネットを経由せず、2. 一般的には専用 WAN リンクの方が安定性とパフォーマンスに優れています。Azure では、専用の WAN リンク ソリューションを [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) として提供しています。
 
-## <a name="enable-azure-security-center"></a>Enable Azure Security Center
-Azure Security Center helps you prevent, detect, and respond to threats, and provides you increased visibility into, and control over, the security of your Azure resources. It provides integrated security monitoring and policy management across your Azure subscriptions, helps detect threats that might otherwise go unnoticed, and works with a broad ecosystem of security solutions.
+## Azure Security Center を有効にする
+Azure Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
 
-Azure Security Center helps you optimize and monitor network security by:
+Azure Security Center は、ネットワーク セキュリティの最適化と監視に役立つ次の機能を備えています。
 
-- Providing network security recommendations
-- Monitoring the state of your network security configuration
-- Alerting you to network based threats both at the endpoint and network levels
+- ネットワーク セキュリティに関する推奨事項を提供する
+- ネットワーク セキュリティ構成の状態を監視する
+- ネットワーク ベースの脅威をエンドポイント レベルとネットワーク レベルの両方で警告する
 
-We highly recommend that you enable Azure Security Center for all of your Azure deployments.
+すべての Azure デプロイメントで Azure Security Center を有効にすることを強くお勧めします。
 
-To learn more about Azure Security Center and how to enable it for your deployments, please read the article [Introduction to Azure Security Center](../security-center/security-center-intro.md).
+Azure Security Center の詳細と、使用しているデプロイで有効にする方法については、「[Azure Security Center 入門](../security-center/security-center-intro.md)」をご覧ください。
 
-## <a name="securely-extend-your-datacenter-into-azure"></a>Securely extend your datacenter into Azure
-Many enterprise IT organizations are looking to expand into the cloud instead of growing their on-premises datacenters. This expansion represents an extension of existing IT infrastructure into the public cloud. By taking advantage of cross-premises connectivity options it’s possible to treat your Azure Virtual Networks as just another subnet on your on-premises network infrastructure.
+## 自社のデータセンターを Azure に安全に拡張する
+多くの企業の IT 部門で、オンプレミスのデータセンターを拡大する代わりに、クラウドに拡張することが検討されています。この拡張とは、既存の IT インフラストラクチャをパブリック クラウドに拡張することを指しています。クロスプレミス接続オプションを利用すれば、Azure Virtual Network をオンプレミス ネットワーク インフラストラクチャに追加された1 つのサブネットとして扱うことができます。
 
-However, there is a lot of planning and design issues that need to be addressed first. This is especially important in the area of network security. One of the best ways to understand how you approach such a design is to see an example.
+ただし、最初に解決しておくべき計画と設計上の問題が多数あります。これは、ネットワーク セキュリティの領域で特に重要です。このような設計への対処法を理解するのに最適な方法の 1 つは、例を参照することです。
 
-Microsoft has created the [Datacenter Extension Reference Architecture Diagram](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content) and supporting collateral to help you understand what such a datacenter extension would look like. This provides an example reference implementation that you can use to plan and design a secure enterprise datacenter extension to the cloud. We recommend that you review this document to get an idea of the key components of a secure solution.
+Microsoft では、このデータセンター拡張を詳しく把握するうえで役立つ[データセンター拡張の参照アーキテクチャ図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84#content)と関連資料を提供しています。これに記載された実装例を利用して、エンタープライズ データセンターをクラウドに安全に拡張するための計画と設計を作成できます。このドキュメントを参照し、安全なソリューションの主要要素を理解することをお勧めします。
 
-To learn more about how to securely extend your datacenter into Azure, please view the video [Extending Your Datacenter to Microsoft Azure](https://www.youtube.com/watch?v=Th1oQQCb2KA).
+データセンターを Azure に安全に拡張する方法の詳細については、ビデオ「[Extending Your Datacenter to Microsoft Azure \(Microsoft Azure へのデータセンターの拡張\)](https://www.youtube.com/watch?v=Th1oQQCb2KA)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

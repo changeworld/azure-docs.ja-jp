@@ -1,15 +1,12 @@
-If you use an Azure subscription where you are not the administrator/owner, such as a company owned subscription, you must verify the following before using the steps in this document:
+会社が所有するサブスクリプションなど、自分が管理者でも所有者でもない Azure サブスクリプションを使用する場合は、このドキュメントの手順を実行する前に、以下の点を確認してください。
 
-* Your Azure login must have at least __Contributor__ access to the Azure resource group that you use when creating HDInsight (and other Azure resources.)
+* ご利用の Azure ログインには、HDInsight (他の Azure リソースを含む) の作成時に使用する Azure リソース グループへの、少なくとも__共同作成者__のアクセス権が必要となります。
 
-* Someone with at least __Contributor__ access to the Azure subscription must have previously registered the provider for the resource you are using. Provider registration happens when a user with Contributor access to the subscription creates a resource for the first time on the subscription. It can also be accomplished without creating a resource by [registering a provider using REST](https://msdn.microsoft.com/library/azure/dn790548.aspx).
+* これから使おうとするリソースのプロバイダーは、Azure サブスクリプションに対する__共同作成者__以上のアクセス権を持つユーザーによって前もって登録されていることが必要です。プロバイダーの登録は、サブスクリプションに対する共同作成者アクセス権を持つユーザーが、そのサブスクリプションで初めてリソースを作成したときに行われます。ただし、[REST を使ってプロバイダーを登録](https://msdn.microsoft.com/library/azure/dn790548.aspx)する方法もあり、その場合、リソースの作成は不要です。
 
-For more information on working with access management, see the following documents:
+アクセス管理の操作の詳細については、次のドキュメントを参照してください。
 
-* [Get started with access management in the Azure portal](../articles/active-directory/role-based-access-control-what-is.md)
-* [Use role assignments to manage access to your Azure subscription resources](../articles/active-directory/role-based-access-control-configure.md)
+* [Azure ポータルでのアクセス管理の概要](../articles/active-directory/role-based-access-control-what-is.md)
+* [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../articles/active-directory/role-based-access-control-configure.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

@@ -1,6 +1,6 @@
 <properties
- pageTitle="Scheduler concepts, terms, and entities | Microsoft Azure"
- description="Azure Scheduler concepts, terminology, and entity hierarchy, including jobs and job collections.  Shows a comprehensive example of a scheduled job."
+ pageTitle="Scheduler の概念、用語、およびエンティティ | Microsoft Azure"
+ description="Azure Scheduler の概念、用語、およびエンティティ階層構造 (ジョブやジョブ コレクションなど)。スケジュールされたジョブの全体をまとめた例を示します。"
  services="scheduler"
  documentationCenter=".NET"
  authors="derek1ee"
@@ -15,212 +15,203 @@
  ms.date="08/18/2016"
  ms.author="deli"/>
 
+# Scheduler の概念、用語集、エンティティ階層構造
 
-# <a name="scheduler-concepts,-terminology,-+-entity-hierarchy"></a>Scheduler concepts, terminology, + entity hierarchy
+## Scheduler エンティティの階層構造
 
-## <a name="scheduler-entity-hierarchy"></a>Scheduler entity hierarchy
+次の表では、Scheduler API で公開または使用される主要なリソースについて説明します。
 
-The following table describes the main resources exposed or used by the Scheduler API:
-
-|Resource | Description |
+|リソース | Description |
 |---|---|
-|**Job collection**|A job collection contains a group of jobs and maintains settings, quotas, and throttles that are shared by jobs within the collection. A job collection is created by a subscription owner and groups jobs together based on usage or application boundaries. It’s constrained to one region. It also allows the enforcement of quotas to constrain the usage of all jobs in that collection. The quotas include MaxJobs and MaxRecurrence.|
-|**Job**|A job defines a single recurrent action, with simple or complex strategies for execution. Actions may include HTTP, storage queue, service bus queue, or service bus topic requests.|
-|**Job history**|A job history represents details for an execution of a job. It contains success vs. failure, as well as any response details.|
+|**ジョブ コレクション**|ジョブ コレクションはジョブのグループを含み、コレクション内のジョブで共有される設定、クォータ、調整を保持します。ジョブ コレクションは、サブスクリプションの所有者によって作成され、使用状況やアプリケーションの境界に基づいてジョブをグループ化します。ジョブ コレクションは、1 つのリージョンに制限されます。ジョブ コレクションでは、クォータを適用して、そのコレクション内のすべてのジョブの使用量を制限することもできます。クォータには、MaxJobs と MaxRecurrence が含まれます。|
+|**ジョブ**|ジョブは、単純または複雑な実行方法による単一の反復的な操作を定義します。操作には、HTTP、ストレージ キュー、Service Bus キュー、Service Bus トピックの要求が含まれます。|
+|**ジョブ履歴**|ジョブ履歴は、ジョブの実行の詳細を表します。応答の詳細と、ジョブの実行結果 (成功または失敗) が含まれます。|
 
-## <a name="scheduler-entity-management"></a>Scheduler entity management
+## Scheduler エンティティの管理
 
-At a high level, the scheduler and the service management API expose the following operations on the resources:
+大まかに言うと、Scheduler およびサービス管理 API は、リソースに対する次の操作を公開します。
 
-|Capability|Description and URI address|
+|機能|説明と URI アドレス|
 |---|---|
-|**Job collection management**|GET, PUT, and DELETE support for creating and modifying job collections and the jobs contained therein. A job collection is a container for jobs and maps to quotas and shared settings. Examples of quotas, described later, are maximum number of jobs and smallest recurrence interval. <p>PUT and DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p>
-|**Job management**|GET, PUT, POST, PATCH, and DELETE support for creating and modifying jobs. All jobs must belong to a job collection that already exists, so there is no implicit creation. <p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p>|
-|**Job history management**|GET support for fetching 60 days of job execution history, such as job elapsed time and job execution results. Adds query string parameter support for filtering based on state and status. <P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p>|
+|**ジョブ コレクションの管理**|ジョブ コレクションとジョブ コレクション内のジョブを作成と変更するための GET、PUT、および DELETE のサポート。ジョブ コレクションはジョブのコンテナーであり、クォータと共有設定にマップされます。後で説明するクォータの例としては、ジョブの最大数や最小の繰り返し間隔があります。<p>PUT および DELETE: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p><p>GET: `https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}`</p>
+|**ジョブの管理**|ジョブを作成と変更するための GET、PUT、POST、PATCH、および DELETE のサポート。すべてのジョブは既に存在するジョブ コレクションに属する必要があるため、暗黙的な作成はありません。<p>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}`</p>|
+|**ジョブ履歴の管理**|ジョブの経過時間やジョブの実行結果など、60 日分のジョブの実行履歴を取得するための GET のサポート。状態およびステータスに基づいてフィルター処理を行うためのクエリ文字列パラメーターのサポートを追加します。<P>`https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Scheduler/jobCollections/{jobCollectionName}/jobs/{jobName}/history`</p>|
 
-## <a name="job-types"></a>Job types
-
-There are multiple types of jobs: HTTP jobs (including HTTPS jobs that support SSL), storage queue jobs, service bus queue jobs, and service bus topic jobs. HTTP jobs are ideal if you have an endpoint of an existing workload or service. You can use storage queue jobs to post messages to storage queues, so those jobs are ideal for workloads that use storage queues. Similarly, service bus jobs are ideal for workloads that use service bus queues and topics.
-
-## <a name="the-"job"-entity-in-detail"></a>The "job" entity in detail
-
-At a basic level, a scheduled job has several parts:
-
-- The action to perform when the job timer fires  
-
-- (Optional) The time to run the job  
-
-- (Optional) When and how often to repeat the job  
-
-- (Optional) An action to fire if the primary action fails  
+## ジョブの種類
+
+ジョブには、HTTP ジョブ (SSL をサポートする HTTPS ジョブを含む)、ストレージ キュー ジョブ、Service Bus キュー ジョブ、Service Bus トピック ジョブなど、さまざまな種類が存在します。HTTP ジョブは、既存のワークロードやサービスのエンドポイントがある場合に最適です。ストレージ キュー ジョブを使用すればストレージ キューにメッセージを送信できるため、このジョブはストレージ キューを使用するワークロードに最適です。同様に、Service Bus キューと Service Bus トピックを使用するワークロードには、Service Bus ジョブが最適です。
+
+## "ジョブ" エンティティの詳細
+
+基本的なレベルでは、スケジュールされたジョブは、次のような要素で構成されます。
+
+- ジョブ タイマーが起動するときに実行するアクション
+
+- (省略可能) ジョブを実行する時間
+
+- (省略可能) ジョブを繰り返し実行するタイミングと頻度
+
+- (省略可能) プライマリ アクションが失敗した場合に実行するアクション
 
-Internally, a scheduled job also contains system-provided data such as the next scheduled execution time.
+内部的には、スケジュールされたジョブには、システム指定のデータ (次のスケジュールされた実行時間など) も含まれています。
 
-The following code provides a comprehensive example of a scheduled job. Details are provided in subsequent sections.
+次のコードは、スケジュールされたジョブの全体をまとめた例です。詳細については、後続のセクションで説明します。
 
-    {
-        "startTime": "2012-08-04T00:00Z",               // optional
-        "action":
-        {
-            "type": "http",
-            "retryPolicy": { "retryType":"none" },
-            "request":
-            {
-                "uri": "http://contoso.com/foo",        // required
-                "method": "PUT",                        // required
-                "body": "Posting from a timer",         // optional
-                "headers":                              // optional
+	{
+		"startTime": "2012-08-04T00:00Z",               // optional
+		"action":
+		{
+			"type": "http",
+			"retryPolicy": { "retryType":"none" },
+			"request":
+			{
+				"uri": "http://contoso.com/foo",        // required
+				"method": "PUT",                        // required
+				"body": "Posting from a timer",         // optional
+				"headers":                              // optional
 
-                {
-                    "Content-Type": "application/json"
-                },
-            },
-           "errorAction":
-           {
-               "type": "http",
-               "request":
-               {
-                   "uri": "http://contoso.com/notifyError",
-                   "method": "POST",
-               },
-           },
-        },
-        "recurrence":                                   // optional
-        {
-            "frequency": "week",                        // can be "year" "month" "day" "week" "minute"
-            "interval": 1,                              // optional, how often to fire (default to 1)
-            "schedule":                                 // optional (advanced scheduling specifics)
-            {
-                "weekDays": ["monday", "wednesday", "friday"],
-                "hours": [10, 22]
-            },
-            "count": 10,                                 // optional (default to recur infinitely)
-            "endTime": "2012-11-04",                     // optional (default to recur infinitely)
-        },
-        "state": "disabled",                           // enabled or disabled
-        "status":                                       // controlled by Scheduler service
-        {
-            "lastExecutionTime": "2007-03-01T13:00:00Z",
-            "nextExecutionTime": "2007-03-01T14:00:00Z ",
-            "executionCount": 3,
-                                                "failureCount": 0,
-                                                "faultedCount": 0
-        },
-    }
+				{
+					"Content-Type": "application/json"
+				},
+			},
+		   "errorAction":
+		   {
+			   "type": "http",
+			   "request":
+			   {
+				   "uri": "http://contoso.com/notifyError",
+				   "method": "POST",
+			   },
+		   },
+		},
+		"recurrence":                                   // optional
+		{
+			"frequency": "week",                        // can be "year" "month" "day" "week" "minute"
+			"interval": 1,                              // optional, how often to fire (default to 1)
+			"schedule":                                 // optional (advanced scheduling specifics)
+			{
+				"weekDays": ["monday", "wednesday", "friday"],
+				"hours": [10, 22]
+			},
+			"count": 10,                                 // optional (default to recur infinitely)
+			"endTime": "2012-11-04",                     // optional (default to recur infinitely)
+		},
+		"state": "disabled",                           // enabled or disabled
+		"status":                                       // controlled by Scheduler service
+		{
+			"lastExecutionTime": "2007-03-01T13:00:00Z",
+			"nextExecutionTime": "2007-03-01T14:00:00Z ",
+			"executionCount": 3,
+											    "failureCount": 0,
+												"faultedCount": 0
+		},
+	}
 
-As seen in the sample scheduled job above, a job definition has several parts:
+上記のスケジュールされたジョブの例に示すように、ジョブ定義はいくつかの要素から構成されます。
 
-- Start time (“startTime”)  
+- 開始時刻 ("startTime")
 
-- Action (“action”), which includes error action (“errorAction”)
+- アクション ("action")。エラー時のアクション ("errorAction") が含まれています。
 
-- Recurrence (“recurrence”)  
+- 繰り返し ("recurrence")
 
-- State (“state”)  
+- 状態 ("state")
 
-- Status (“status”)  
+- ステータス ("status")
 
-- Retry policy (“retryPolicy”)  
+- 再試行ポリシー ("retryPolicy")
 
-Let’s examine each of these in detail:
+以降では、これらについて詳しく説明します。
 
-## <a name="starttime"></a>startTime
+## startTime
 
-The "startTime” is the start time and allows the caller to specify a time zone offset on the wire in [ISO-8601 format](http://en.wikipedia.org/wiki/ISO_8601).
+"startTime" は開始時刻を示します。呼び出し元は、ネットワークにおけるタイム ゾーン オフセットを [ISO 8601 形式](http://en.wikipedia.org/wiki/ISO_8601)で指定できます。
 
-## <a name="action-and-erroraction"></a>action and errorAction
+## action と errorAction
 
-The “action” is the action invoked on each occurrence and describes a type of service invocation. The action is what will be executed on the provided schedule. Scheduler supports HTTP, storage queue, service bus topic, and service bus queue actions.
+"action" は、それぞれの実行時に呼び出されるアクションであり、サービスの呼び出しの種類を示します。アクションは、指定されたスケジュールに従って実行されます。Scheduler は、HTTP、ストレージ キュー、Service Bus トピック、Service Bus キューの操作をサポートしています。
 
-The action in the example above is an HTTP action. Below is an example of a storage queue action:
+上の例のアクションは HTTP アクションです。ストレージ キュー アクションの例を次に示します。
 
-    {
-            "type": "storageQueue",
-            "queueMessage":
-            {
-                "storageAccount": "myStorageAccount",  // required
-                "queueName": "myqueue",                // required
-                "sasToken": "TOKEN",                   // required
-                "message":                             // required
-                    "My message body",
-            },
-    }
+	{
+			"type": "storageQueue",
+			"queueMessage":
+			{
+				"storageAccount": "myStorageAccount",  // required
+				"queueName": "myqueue",                // required
+				"sasToken": "TOKEN",                   // required
+				"message":                             // required
+					"My message body",
+			},
+	}
 
-Below is an example of a service bus topic action.
+Service Bus トピックの操作の例を次に示します。
 
-  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
+  "action": { "type": "serviceBusTopic", "serviceBusTopicMessage": { "topicPath": "t1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, }
 
-Below is an example of a service bus queue action:
+Service Bus キューの操作の例を次に示します。
 
 
-  "action": { "serviceBusQueueMessage": { "queueName": "q1",  
-      "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": {  
-        "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message",  
-      "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
+  "action": { "serviceBusQueueMessage": { "queueName": "q1", "namespace": "mySBNamespace", "transportType": "netMessaging", // Can be either netMessaging or AMQP "authentication": { "sasKeyName": "QPolicy", "type": "sharedAccessKey" }, "message": "Some message", "brokeredMessageProperties": {}, "customMessageProperties": { "appname": "FromScheduler" } }, "type": "serviceBusQueue" }
 
-The “errorAction” is the error handler, the action invoked when the primary action fails. You can use this variable to call an error-handling endpoint or send a user notification. This can be used for reaching a secondary endpoint in the case that the primary is not available (e.g., in the case of a disaster at the endpoint’s site) or can be used for notifying an error handling endpoint. Just like the primary action, the error action can be simple or composite logic based on other actions. To learn how to create a SAS token, refer to [Create and Use a Shared Access Signature](https://msdn.microsoft.com/library/azure/jj721951.aspx).
+"errorAction" はエラー ハンドラーであり、プライマリ アクションが失敗したときに呼び出されるアクションを示します。この変数を使用すると、エラー処理エンドポイントを呼び出したり、ユーザー通知を送信したりできます。これは、(たとえば、エンドポイントのサイトの障害が原因で) プライマリが使用できない場合にセカンダリ エンドポイントにアクセスしたり、エラー処理エンドポイントに通知したりするために使用できます。エラー アクションは、プライマリ アクションと同じように、単純なロジックにすることも、他のアクションに基づいた複合型のロジックにすることもできます。SAS トークンを作成する方法については、「[Shared Access Signature の作成と使用](https://msdn.microsoft.com/library/azure/jj721951.aspx)」を参照してください。
 
-## <a name="recurrence"></a>recurrence
+## recurrence
 
-Recurrence has several parts:
+recurrence には、次の要素が含まれます。
 
-- Frequency: One of minute, hour, day, week, month, year  
+- frequency: minute、hour、day、week、month、または year。
 
-- Interval: Interval at the given frequency for the recurrence  
+- interval: 指定した頻度で繰り返しジョブを実行する間隔。
 
-- Prescribed schedule: Specify minutes, hours, weekdays, months, and monthdays of the recurrence  
+- 所定の schedule: 繰り返しジョブを実行する minutes (分)、hours (時)、weekdays (曜日)、months (月)、および monthdays (日にち) を指定します。
 
-- Count: Count of occurrences  
+- count: 実行回数。
 
-- End time: No jobs will execute after the specified end time  
+- endTime: 指定された終了日時以降、ジョブは実行されません。
 
-A job is recurring if it has a recurring object specified in its JSON definition. If both count and endTime are specified, the completion rule that occurs first is honored.
+JSON 定義に定期実行オブジェクトが指定されている場合、ジョブは定期的に実行されます。count と endTime の両方を指定した場合、最初に実行される完了ルールが優先されます。
 
-## <a name="state"></a>state
+## state
 
-The state of the job is one of four values: enabled, disabled, completed, or faulted. You can PUT or PATCH jobs so as to update them to the enabled or disabled state. If a job has been completed or faulted, that is a final state that cannot be updated (though the job can still be DELETED). An example of the state property is as follows:
+ジョブの状態は、enabled、disabled、completed、faulted のいずれかになります。PUT ジョブまたは PATCH ジョブを使用して、ジョブの状態を enabled または disabled に更新できます。completed または faulted のジョブの状態は、更新できない最終的な状態です (ただし、ジョブを削除することはできます)。state プロパティの例を次に示します。
 
 
-        "state": "disabled", // enabled, disabled, completed, or faulted
-Completed and faulted jobs are deleted after 60 days.
+    	"state": "disabled", // enabled, disabled, completed, or faulted
+completed または faulted のジョブは、60 日後に削除されます。
 
-## <a name="status"></a>status
+## status
 
-Once a Scheduler job has started, information will be returned about the current status of the job. This object is not settable by the user—it’s set by the system. However, it is included in the job object (rather than a separate linked resource) so that one can obtain the status of a job easily.
+Scheduler ジョブが開始すると、ジョブの現在のステータスに関する情報が返されます。このオブジェクトは、ユーザーが設定することはできず、システムによって設定されます。ただし、このオブジェクトは (別個のリンクされたリソースではなく) ジョブ オブジェクトに含まれるため、ジョブのステータスを簡単に取得できます。
 
-Job status includes the time of the previous execution (if any), the time of the next scheduled execution (for in-progress jobs), and the execution count of the job.
+ジョブのステータスには、前回の実行の時間 (存在する場合)、次回のスケジュールされた実行の時間 (進行中ジョブの場合)、ジョブの実行回数が含まれます。
 
-## <a name="retrypolicy"></a>retryPolicy
+## retryPolicy
 
-If a Scheduler job fails, it is possible to specify a retry policy to determine whether and how the action is retried. This is determined by the **retryType** object—it is set to **none** if there is no retry policy, as shown above. Set it to **fixed** if there is a retry policy.
+Scheduler ジョブが失敗した場合、再試行ポリシーを指定して、アクションを再試行するかどうかと再試行の方法を指定できます。そのためには、**retryType** オブジェクトを使用します。再試行ポリシーがない場合は、上の例に示すように、このオブジェクトを **none** に設定します。再試行ポリシーがある場合は、このオブジェクトを **fixed** に設定します。
 
-To set a retry policy, two additional settings may be specified: a retry interval (**retryInterval**) and the number of retries (**retryCount**).
+再試行ポリシーを設定する場合、再試行間隔 (**retryInterval**) と再試行回数 (**retryCount**) の 2 つの追加の設定を指定できます。
 
-The retry interval, specified with the **retryInterval** object, is the interval between retries. Its default value is 30 seconds, its minimum configurable value is 15 seconds, and its maximum value is 18 months. Jobs in Free job collections have a minimum configurable value of 1 hour.  It is defined in the ISO 8601 format. Similarly, the value of the number of retries is specified with the **retryCount** object; it is the number of times a retry is attempted. Its default value is 4, and its maximum value is 20\. Both **retryInterval** and **retryCount** are optional. They are given their default values if **retryType** is set to **fixed** and no values are specified explicitly.
+**retryInterval** オブジェクトを使用して指定する再試行間隔は、再試行の間隔を示します。既定値は 30 秒、最小構成可能値は 15 秒で、最大値は 18 か月です。無料ジョブ コレクションのジョブの最小構成可能値は、1 時間です。この値は、ISO 8601 形式で定義します。同様に、**retryCount** オブジェクトを使用して指定する再試行回数は、再試行を行う回数を示します。既定値は 4、最大値は 20 です。**retryInterval** と **retryCount** は両方とも省略可能です。**retryType** を **fixed** に設定し、値を明示的に指定しない場合、これらの設定では既定値が使用されます。
 
-## <a name="see-also"></a>See also
+## 関連項目
 
- [What is Scheduler?](scheduler-intro.md)
+ [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
 
- [Get started using Scheduler in the Azure portal](scheduler-get-started-portal.md)
+ [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
- [Plans and billing in Azure Scheduler](scheduler-plans-billing.md)
+ [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
- [How to build complex schedules and advanced recurrence with Azure Scheduler](scheduler-advanced-complexity.md)
+ [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
 
- [Azure Scheduler REST API reference](https://msdn.microsoft.com/library/mt629143)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
- [Azure Scheduler PowerShell cmdlets reference](scheduler-powershell-reference.md)
+ [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
- [Azure Scheduler high-availability and reliability](scheduler-high-availability-reliability.md)
+ [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
 
- [Azure Scheduler limits, defaults, and error codes](scheduler-limits-defaults-errors.md)
+ [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
- [Azure Scheduler outbound authentication](scheduler-outbound-authentication.md)
+ [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

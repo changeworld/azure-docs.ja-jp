@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Active Directory Developer Glossary | Microsoft Azure"
-   description="A list of terms for commonly used Azure Active Directory developer concepts and features."
+   pageTitle="Azure Active Directory 開発者向け用語集 | Microsoft Azure"
+   description="Azure Active Directory 開発で頻出する概念や機能に関する用語の定義を記載しています。"
    services="active-directory"
    documentationCenter=""
    authors="bryanla"
@@ -16,163 +16,162 @@
    ms.date="08/31/2016"
    ms.author="bryanla"/>
 
+# Azure Active Directory 開発者向け用語集
+この記事では、Azure Active Directory (AD) 開発で重要となるいくつかの概念について定義しています。Azure AD のアプリケーション開発を習得する際の参考としてください。
 
-# <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory developer glossary
-This article contains definitions for some of the core Azure Active Directory (AD) developer concepts, which are helpful when learning about application development for Azure AD.
+## Twitter アプリケーションの 
+[承認サーバー](#authorization-server)によって発行される[セキュリティ トークン](#security-token)の一種。[クライアント アプリケーション](#client-application)が、[保護されたリソース サーバー](#resource-server)にアクセスする目的で使用します。要求されたレベルのアクセスに関して、[リソース所有者](#resource-owner)がクライアントに付与しているアクセス権限を通常 [JSON Web トークン (JWT)][JWT] の形式で 1 つにまとめたものがこのトークンです。このトークンは、認証対象に関して当てはまる[要求](#claim)をすべて含んでおり、クライアント アプリケーションが特定のリソースにアクセスする際に一種の資格情報として使用することができます。また、これを使用すると、リソース所有者がクライアントに資格情報を開示する必要がなくなります。
 
-## <a name="access-token"></a>access token 
-A type of [security token](#security-token) issued by an [authorization server](#authorization-server), and used by a [client application](#client-application) in order to access a [protected resource server](#resource-server). Typically in the form of a [JSON Web Token (JWT)][JWT], the token embodies the authorization granted to the client by the [resource owner](#resource-owner), for a requested level of access. The token contains all applicable [claims](#claim) about the subject, enabling the client application to use it as a form of credential when accessing a given resource. This also eliminates the need for the resource owner to expose credentials to the client. 
+表現の対象となる資格情報によっては、アクセス トークンを "User+App" や "App-Only" と呼ぶこともあります。たとえばクライアント アプリケーションが使用する承認付与には、次のようなタイプがあります。
 
-Access tokens are sometimes referred to as "User+App" or "App-Only", depending on the credentials being represented. For example, when a client application uses the:
+- ["承認コード" 型の承認付与](#authorization-grant): エンド ユーザーはまず、リソース所有者として認証を行い、リソースにアクセスするための承認をクライアントに委任します。その後クライアントは、アクセス トークンを取得した時点で認証を行います。このトークンは、クライアント アプリケーションを承認したユーザーとアプリケーションの両方を表すことから、より具体的に "User+App" トークンと呼ばれることがあります。
+- ["クライアント資格情報" 型の承認付与](#authorization-grant): クライアントが行うのは単一の認証のみです。クライアントがリソース所有者の認証/承認なしで機能することから、このトークンは、"App-Only" トークンと呼ばれることがあります。
 
-- ["Authorization code" authorization grant](#authorization-grant), the end user authenticates first as the resource owner, delegating authorization to the client to access the resource. The client authenticates afterward when obtaining the access token. The token can sometimes be referred to more specifically as a "User+App" token, as it represents both the user that authorized the client application, and the application. 
-- ["Client credentials" authorization grant](#authorization-grant), the client provides the sole authentication, functioning without the resource-owner's authentication/authorization, so the token can sometimes be referred to as an "App-Only" token.
+詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
-See [Azure AD Token Reference][AAD-Tokens-Claims] for more details.
+## アプリケーション マニフェスト  
+[Azure クラシック ポータル][AZURE-classic-portal]に備わっている機能の 1 つで、アプリケーションの ID 構成が JSON 形式で生成されて表現されます。そのマニフェストが関連付けられている [Application][AAD-Graph-App-Entity] エンティティと [ServicePrincipal][AAD-Graph-Sp-Entity] エンティティを更新するための機構として使用されます。詳細については、「[Azure Active Directory のアプリケーション マニフェストについて][AAD-App-Manifest]」を参照してください。
 
-## <a name="application-manifest"></a>application manifest  
-A feature provided by the [Azure classic portal][AZURE-classic-portal], which produces a JSON representation of the application's identity configuration, used as a mechanism for updating its associated [Application][AAD-Graph-App-Entity] and [ServicePrincipal][AAD-Graph-Sp-Entity] entities. See [Understanding the Azure Active Directory application manifest][AAD-App-Manifest] for more details.
+## アプリケーション オブジェクト  
+[Azure クラシック ポータル][AZURE-classic-portal]でアプリケーションを登録/更新すると、そのテナントを対象に、アプリケーション オブジェクトおよび対応する[サービス プリンシパル オブジェクト](#service-principal-object)の両方が作成/更新されます。アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (そのアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
 
-## <a name="application-object"></a>application object  
-When you register/update an application in the [Azure classic portal][AZURE-classic-portal], the portal creates/updates both an application object and a corresponding [service principal object](#service-principal-object) for that tenant. The application object *defines* the application's identity configuration globally (across all tenants where it has access), providing a template from which its corresponding service principal object(s) are *derived* for use locally at run-time (in a specific tenant).
+詳細については、「[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト][AAD-App-SP-Objects]」を参照してください。
 
-See [Application and Service Principal Objects][AAD-App-SP-Objects] for more information.
+## アプリケーションの登録  
+アプリケーションの "ID とアクセス管理" の機能を Azure AD で行うためには、そのアプリケーションを Azure AD [テナント](#tenant)に登録する必要があります。アプリケーションを Azure AD に登録するとき、アプリケーションに使用する ID 構成を指定します。これによって Azure AD との連携が可能となり、次のような機能が使用できるようになります。
 
-## <a name="application-registration"></a>application registration  
-In order to allow an application to integrate with and delegate Identity and Access Management functions to Azure AD, it must be registered with an Azure AD [tenant](#tenant). When you register your application with Azure AD, you are providing an identity configuration for your application, allowing it to integrate with Azure AD and use features such as:
+- Azure AD Identity Management と [OpenID Connect][OpenIDConnect] プロトコル実装によるシングル サインオンの強固な管理
+- [クライアント アプリケーション](#client-application)による[保護されたリソース](#resource-server)へのブローカー アクセス (Azure AD の OAuth 2.0 [承認サーバー](#authorization-server)実装を介したアクセス)
+- リソース所有者の承認に基づいて保護されたリソースへのクライアント アクセスを管理する[同意フレームワーク](#consent)
 
-- Robust management of Single Sign-On using Azure AD Identity Management and [OpenID Connect][OpenIDConnect] protocol implementation
-- Brokered access to [protected resources](#resource-server) by [client applications](#client-application), via Azure AD's OAuth 2.0 [authorization server](#authorization-server) implementation
-- [Consent framework](#consent) for managing client access to protected resources, based on resource owner authorization.
+詳細については、「[Azure Active Directory とアプリケーションの統合][AAD-Integrating-Apps]」を参照してください。
 
-See [Integrating applications with Azure Active Directory][AAD-Integrating-Apps] for more details.
+## authentication
+特定の当事者に対し、本物の資格情報の提示を要求する行為。ID 管理とアクセス制御に必要なセキュリティ プリンシパルの拠り所となります。たとえば [OAuth2 承認付与](#authorization-grant)時には、使用する付与形態に応じて、[リソース所有者](#resource-owner)または[クライアント アプリケーション](#client-application)の役割を果たす当事者が、本物であることを証明する側になります。
 
-## <a name="authentication"></a>authentication
-The act of challenging a party for legitimate credentials, providing the basis for creation of a security principal to be used for identity and access control. During an [OAuth2 authorization grant](#authorization-grant) for example, the party authenticating is filling the role of either [resource owner](#resource-owner) or [client application](#client-application), depending on the grant used.
+## authorization
+認証済みのセキュリティ プリンシパルに対し、何かを実行する権限を付与する行為。Azure AD プログラミング モデルでは、主に次の 2 つの使用ケースが存在します。
 
-## <a name="authorization"></a>authorization
-The act of granting an authenticated security principal permission to do something. There are two primary use cases in the Azure AD programming model:
+- [OAuth2 承認付与](#authorization-grant)フロー時: [リソース所有者](#resource-owner)が[クライアント アプリケーション](#client-application)に承認を付与すると、その所有者のリソースにクライアントがアクセスできます。
+- クライアントによるリソース アクセス時: [リソース サーバー](#resource-server)側で実装されます。[アクセス トークン](#access-token)内に存在する [claim](#claim) 値に基づいてアクセス制御の判断を行います。
 
-- During an [OAuth2 authorization grant](#authorization-grant) flow: when the [resource owner](#resource-owner) grants authorization to the [client application](#client-application), allowing the client to access the resource owner's resources.
-- During resource access by the client: as implemented by the [resource server](#resource-server), using the [claim](#claim) values present in the [access token](#access-token) to make access control decisions based upon them.
+## 承認コード
+"承認コード" 型 (4 種類ある OAuth2 [承認付与](#authorization-grant) の 1 つ) のフローの過程で[承認エンドポイント](#authorization-endpoint)から[クライアント アプリケーション](#client-application)に提供される有効期間の短い "トークン"。[リソース所有者](#resource-owner)の認証に対する応答としてこのコードがクライアント アプリケーションに返されることで、要求されたリソースにアクセスするための承認がリソース所有者から委任されていることが示されます。このフローの中で、このコードは後で[アクセス トークン](#access-token)と引き換えられます。
 
-## <a name="authorization-code"></a>authorization code
-A short lived "token" provided to a [client application](#client-application) by the [authorization endpoint](#authorization-endpoint), as part of the "authorization code" flow, one of the four OAuth2 [authorization grants](#authorization-grant). The code is returned to the client application in response to authentication of a [resource owner](#resource-owner), indicating the resource owner has delegated authorization to access the requested resources. As part of the flow, the code is later redeemed for an [access token](#access-token).
+## 承認エンドポイント
+[承認サーバー](#authorization-server)によって実装されるエンドポイントの 1 つ。OAuth2 承認付与フローの過程で[承認付与](#authorization-grant)を提供するための、[リソース所有者](#resource-owner)との対話に使用されます。実際に付与される内容は、使用されている承認付与フローによって異なる場合があります ([承認コード](#authorization-code)、[セキュリティ トークン](#security-token)など)。
 
-## <a name="authorization-endpoint"></a>authorization endpoint
-One of the endpoints implemented by the [authorization server](#authorization-server), used to interact with the [resource owner](#resource-owner) in order to provide an [authorization grant](#authorization-grant) during an OAuth2 authorization grant flow. Depending on the authorization grant flow used, the actual grant provided can vary, including an [authorization code](#authorization-code) or [security token](#security-token).
+詳細については、OAuth2 仕様の[承認付与タイプ][OAuth2-AuthZ-Grant-Types]と[承認エンドポイント][OAuth2-AuthZ-Endpoint]に関するセクションおよび [OpenIDConnect 仕様][OpenIDConnect-AuthZ-Endpoint]を参照してください。
 
-See the OAuth2 specification's [authorization grant types][OAuth2-AuthZ-Grant-Types] and [authorization endpoint][OAuth2-AuthZ-Endpoint] sections, and the [OpenIDConnect specification][OpenIDConnect-AuthZ-Endpoint] for more details.
+## 承認付与
+[リソース所有者](#resource-owner)の保護されたリソースにアクセスしてよいという[承認](#authorization)を表す資格情報。[クライアント アプリケーション](#client-application)に対して付与されます。クライアント アプリケーションは、その種類や要件に応じて、[OAuth2 Authorization Framework によって規定された 4 つの付与タイプ][OAuth2-AuthZ-Grant-Types] \("承認コード付与"、"クライアント資格情報付与"、"暗黙的付与"、"リソース所有者パスワード資格情報付与") のいずれかを使ってアクセス許可を得ることができます。クライアントに返される資格情報は、使用された承認付与のタイプに応じて、[アクセス トークン](#access-token)と[承認コード](#authorization-code) (その後アクセス トークンに交換される) のいずれかになります。
 
-## <a name="authorization-grant"></a>authorization grant
-A credential representing the [resource owner's](#resource-owner) [authorization](#authorization) to access its protected resources, granted to a [client application](#client-application). A client application can use one of the [four grant types defined by the OAuth2 Authorization Framework][OAuth2-AuthZ-Grant-Types] to obtain a grant, depending on client type/requirements: "authorization code grant", "client credentials grant", "implicit grant", and "resource owner password credentials grant". The credential returned to the client is either an [access token](#access-token), or an [authorization code](#authorization-code) (exchanged later for an access token), depending on the type of authorization grant used. 
+## 承認サーバー
+[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)を認証し、その承認を得た後にアクセス トークンを[クライアント](#client-application)に発行するサーバーをいいます。[クライアント アプリケーション](#client-application)は実行時に、その[承認](#authorization-endpoint)エンドポイントおよび[トークン](#token-endpoint) エンドポイントを介し、OAuth2 によって定義された[承認付与](#authorization-grant)に従って承認サーバーと対話します。
 
-## <a name="authorization-server"></a>authorization server
-As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], the server responsible for issuing access tokens to the [client](#client-application) after successfully authenticating the [resource owner](#resource-owner) and obtaining its authorization. A [client application](#client-application) interacts with the authorization server at runtime via its [authorization](#authorization-endpoint) and [token](#token-endpoint) endpoints, in accordance with the OAuth2 defined [authorization grants](#authorization-grant).
+Azure AD アプリケーション統合の場合、Azure AD アプリケーションと Microsoft サービス API ([Microsoft Graph API][Microsoft-Graph] など) に使用する承認サーバーのロールを Azure AD が実装します。
 
-In the case of Azure AD application integration, Azure AD implements the authorization server role for Azure AD applications and Microsoft service APIs, for example [Microsoft Graph APIs][Microsoft-Graph].
+## 要求
+[セキュリティ トークン](#security-token)には要求が格納されます。この要求を通じて、一方のエンティティ ([クライアント アプリケーション](#client-application)、[リソース所有者](#resource-owner)など) に関するアサーションが、もう一方のエンティティ ([リソース サーバー](#resource-server)など) に渡されます。要求は、トークンのサブジェクト ([承認サーバー](#authorization-server)によって認証されたセキュリティ プリンシパルなど) に関する事実を伝達する名前と値のペアです。特定のトークンとして提示される要求は、いくつかの不確定要素 (トークンの種類、サブジェクトの認証に使用された資格情報の種類、アプリケーション構成など) に依存します。
 
-## <a name="claim"></a>claim
-A [security token](#security-token) contains claims, which provide assertions about one entity (such as a [client application](#client-application) or [resource owner](#resource-owner)) to another entity (such as the [resource server](#resource-server)). Claims are name/value pairs that relay facts about the token subject (for example, the security principal that was authenticated by the [authorization server](#authorization-server)). The claims present in a given token are dependent upon several variables, including the type of token, the type of credential used to authenticate the subject, the application configuration, etc.
+詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
-See [Azure AD token reference][AAD-Tokens-Claims] for more details.
+## クライアント アプリケーション  
+[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、[リソース所有者](#resource-owner)に代わって、保護されたリソースを要求するアプリケーションをいいます。"クライアント" という言葉の意味には、特定のハードウェア実装上の特性 (アプリケーションがサーバーで実行されるのか、デスクトップで実行されるのか、またはそれ以外のデバイスで実行されるのか、など) は含まれません。
 
-## <a name="client-application"></a>client application  
-As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], an application that makes protected resource requests on behalf of the [resource owner](#resource-owner). The term "client" does not imply any particular hardware implementation characteristics (for instance, whether the application executes on a server, a desktop, or other devices).  
+クライアント アプリケーションは、リソース所有者に[承認](#authorization)を要求することによって、[OAuth2 承認付与](#authorization-grant)フローに参加し、リソース所有者に代わって API やデータにアクセスすることができます。OAuth2 Authorization Framework では、資格情報の機密維持に対するクライアントの能力に基づき、"confidential" と "public" という [2 種類のクライアント][OAuth2-Client-Types]を定義しています。アプリケーションは、Web サーバー上で実行される [Web クライアント (confidential)](#web-client)、デバイス上にインストールされる[ネイティブ クライアント (public)](#native-client)、またはデバイスのブラウザーで実行される[ユーザーエージェントベース クライアント (public)](#user-agent-based-client) を実装できます。
 
-A client application requests [authorization](#authorization) from a resource owner to participate in an [OAuth2 authorization grant](#authorization-grant) flow, and may access APIs/data on the resource owner's behalf. The OAuth2 Authorization Framework [defines two types of clients][OAuth2-Client-Types], "confidential" and "public", based on the client's ability to maintain the confidentiality of its credentials. Applications can implement a [web client (confidential)](#web-client) which runs on a web server, a [native client (public)](#native-client) installed on a device, or a [user-agent-based client (public)](#user-agent-based-client) which runs in a device's browser.
+## 同意
+[リソース所有者](#resource-owner)から[クライアント アプリケーション](#client-application)に承認 (リソース所有者に代わって保護されたリソースにアクセスするための具体的な[権限](#permissions)) を付与するプロセス。クライアントから要求された権限によっては、組織データまたは個人データへのアクセスを許可することへの同意を管理者 (組織のデータの場合) またはユーザー (個人のデータの場合) が求められます。さらに、[マルチテナント](#multi-tenant-application)のシナリオでは、同意するユーザーのテナントにアプリケーションの[サービス プリンシパル](#service-principal-object)が記録されます。
 
-## <a name="consent"></a>consent
-The process of a [resource owner](#resource-owner) granting authorization to a [client application](#client-application), specific [permissions](#permissions) to access protected resources, on behalf of the resource owner. Depending on the permissions requested by the client, an administrator or user will be asked to consent to allow access to their organization/individual data respectively. Note, in a [multi-tenant](#multi-tenant-application) scenario, the application's [service principal](#service-principal-object) is also recorded in the tenant of the consenting user.
+## ID トークン
+[承認サーバー](#authorization-server)の[承認エンドポイント](#authorization-endpoint)から提供される [OpenID Connect][OpenIDConnect-ID-Token] [セキュリティ トークン](#security-token)。このトークンには、エンド ユーザーの[リソース所有者](#resource-owner)の認証に関連した[要求](#claim)が格納されます。ID トークンもアクセス トークンと同様、デジタル署名された [JSON Web トークン (JWT)][JWT] として表現されます。ただし、アクセス トークンとは異なり、ID トークンの要求は、リソース アクセス (特にアクセス制御) に関連した目的には使用されません。
 
-## <a name="id-token"></a>ID token
-An [OpenID Connect][OpenIDConnect-ID-Token] [security token](#security-token) provided by an [authorization server's](#authorization-server) [authorization endpoint](#authorization-endpoint), which contains [claims](#claim) pertaining to the authentication of an end user [resource owner](#resource-owner). Like an access token, ID tokens are also represented as a digitally signed [JSON Web Token (JWT)][JWT]. Unlike an access token though, an ID token's claims are not used for purposes related to resource access and specifically access control.
+詳細については、「[Azure AD のトークン リファレンス][AAD-Tokens-Claims]」を参照してください。
 
-See [Azure AD token reference][AAD-Tokens-Claims] for more details.
+## マルチテナント アプリケーション
+クライアントが登録されたテナントに限らず、任意の Azure AD [テナント](#tenant)にプロビジョニングされたユーザーによるサインインと[同意](#consent)を有効にする[クライアント アプリケーション](#client-application)のクラス。一方シングル テナントとして登録されるアプリケーションの場合は、アプリケーションの登録先と同じテナントにプロビジョニングされたユーザー アカウントからのみサインインが許可されます。[ネイティブ クライアント](#native-client) アプリケーションは、既定ではマルチテナントとなります。これに対し、[Web クライアント](#web-client) アプリケーションは、シングル テナントとマルチテナントを選択できるようになっています。
 
-## <a name="multi-tenant-application"></a>multi-tenant application
-A class of [client application](#client-application) that enables sign in and [consent](#consent) by users provisioned in any Azure AD [tenant](#tenant), including tenants other than the one where the client is registered. By contrast, an application registered as single-tenant, would only allow sign-ins from user accounts provisioned in the same tenant as the one where the application is registered. [Native client](#native-client) applications are multi-tenant by default, whereas [web client](#web-client) applications have the ability to select between single and multi-tenant.
+詳細については、「[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法][AAD-Multi-Tenant-Overview]」を参照してください。
 
-See [How to sign in any Azure AD user using the multi-tenant application pattern][AAD-Multi-Tenant-Overview] for more details.
+## ネイティブ クライアント
+デバイス上にネイティブでインストールされるタイプの[クライアント アプリケーション](#client-application)。すべてのコードがデバイス上で実行され、機密性を保った状態でプライベートに資格情報を保存することができないため、"public" クライアントと見なされます。詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するセクションを参照してください。
 
-## <a name="native-client"></a>native client
-A type of [client application](#client-application) that is installed natively on a device. Since all code is executed on a device, it is considered a "public" client due to its inability to store credentials privately/confidentially. See [OAuth2 client types and profiles][OAuth2-Client-Types] for more details.
+## アクセス許可
+[クライアント アプリケーション](#client-application)は、アクセス許可要求を宣言することで[リソース サーバー](#resource-server)へのアクセス権を取得します。次の 2 種類があります。
 
-## <a name="permissions"></a>permissions
-A [client application](#client-application) gains access to a [resource server](#resource-server) by declaring permission requests. Two types are available: 
+- "委任" されたアクセス許可。サインインした[リソース所有者](#resource-owner)から委任された承認の下で、[スコープに基づく](#scopes)アクセス権を要求します。実行時には、クライアントの[アクセス トークン](#access-token)の ["scp" 要求](#claim)としてリソースに提示されます。
+- "アプリケーション" のアクセス許可。クライアント アプリケーションの資格情報/ID の下で[ロールベース](#roles)のアクセス権を要求します。実行時には、クライアントのアクセス トークンの ["roles" 要求](#claim)としてリソースに提示されます。
 
-- "Delegated" permissions, which request [scope-based](#scopes) access under delegated authorization from the signed-in [resource owner](#resource-owner), are presented to the resource at run-time as ["scp" claims](#claim) in the client's [access token](#access-token).
-- "Application" permissions, which request [role-based](#roles) access under the client application's credentials/identity, are presented to the resource at run-time as ["roles" claims](#claim) in the client's access token. 
+これらの要求は[同意](#consent)プロセス時にも出現し、管理者またはリソース所有者には、そのテナント内のリソースに対するクライアント アクセスを許可/拒否する機会が与えられます。
 
-They also surface during the [consent](#consent) process, giving the administrator or resource owner the opportunity to grant/deny the client access to resources in their tenant.
+アクセス許可要求の構成は、[Azure クラシック ポータル][AZURE-classic-portal]の [アプリケーション] タブまたは [構成] タブにある [他のアプリケーションに対するアクセス許可] で、必要な "委任されたアクセス許可" と "アプリケーションのアクセス許可" (後者には全体管理者ロールのメンバーシップが必要) を選択することによって行います。[public クライアント](#client-application)は、資格情報を維持できないため、要求できるのは委任されたアクセス許可のみです。一方 [confidential クライアント](#client-application)は、委任されたアクセス許可とアプリケーションのアクセス許可のどちらでも要求することができます。クライアントの[アプリケーション オブジェクト](#application-object)は、宣言された権限をその [requiredResourceAccess プロパティ][AAD-Graph-App-Entity]に格納します。
 
-Permission requests are configured on the "Applications" / "Configure" tab in the [Azure classic portal][AZURE-classic-portal], under "Permissions to other applications", by selecting the desired "Delegated Permissions" and "Application Permissions" (the latter requires membership in the Global Admin role). Because a [public client](#client-application) can't maintain credentials, it can only request delegated permissions, while a [confidential client](#client-application) has the ability to request both delegated and application permissions. The client's [application object](#application-object) stores the declared permissions in its [requiredResourceAccess property][AAD-Graph-App-Entity].
+## リソース所有者
+[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースへのアクセス権を付与することのできるエンティティをいいます。リソース所有者が人である場合は、"エンド ユーザー" と呼ばれます。たとえば[クライアント アプリケーション](#client-application)は、[Microsoft Graph API][Microsoft-Graph] を介してユーザーのメールボックスにアクセスする必要があるとき、そのメールボックスのリソース所有者に権限を要求する必要があります。
 
-## <a name="resource-owner"></a>resource owner
-As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], an entity capable of granting access to a protected resource. When the resource owner is a person, it is referred to as an end user. For example, when a [client application](#client-application) wants to access a user's mailbox through the [Microsoft Graph API][Microsoft-Graph], it requires permission from the resource owner of the mailbox.
+## リソース サーバー
+[OAuth2 Authorization Framework][OAuth2-Role-Def] の定義によれば、保護されたリソースのホストとして、[アクセス トークン](#access-token)を提示する[クライアント アプリケーション](#client-application)からのリソース要求 (保護されたリソースに対する要求) を受理し、応答する機能を備えたサーバーをいいます。保護されたリソース サーバーまたはリソース アプリケーションと呼ばれることもあります。
 
-## <a name="resource-server"></a>resource server
-As defined by the [OAuth2 Authorization Framework][OAuth2-Role-Def], a server that hosts protected resources, capable of accepting and responding to protected resource requests by [client applications](#client-application) that present an [access token](#access-token). Also known as a protected resource server, or resource application.
+リソース サーバーは API を公開しており、そこで保護されているリソースに対しては、OAuth 2.0 Authorization Framework を使用して、[スコープ](#scopes)と[ロール](#roles)を介したアクセスが強制的に適用されます。たとえば、Azure AD テナント データへのアクセスを提供する Azure AD Graph API や、メール、カレンダーなどのデータへのアクセスを提供する Office 365 API があります。これらの API はどちらも [Microsoft Graph API][Microsoft-Graph] から利用することができます。
 
-A resource server exposes APIs and enforces access to its protected resources through [scopes](#scopes) and [roles](#roles), using the OAuth 2.0 Authorization Framework. Examples include the Azure AD Graph API which provides access to Azure AD tenant data, and the Office 365 APIs that provide access to data such as mail and calendar. Both of these are also accessible via the [Microsoft Graph API][Microsoft-Graph].  
+リソース アプリケーションの ID 構成は、クライアント アプリケーションと同様、Azure AD テナントへの[登録](#application-registration)を通じて確立され、アプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方が得られます。Azure AD Graph API など、Microsoft が提供している一部の API には、あらかじめ登録されているサービス プリンシパルが存在し、プロビジョニング時にすべてのテナントで利用できるようになっています。
 
-Just like a client application, resource application's identity configuration is established via [registration](#application-registration) in an Azure AD tenant, providing both the application and service principal object. Some Microsoft-provided APIs, such as the Azure AD Graph API, have pre-registered service principals made available in all tenants during provisioning.
+## roles
+ロールは、[スコープ](#scopes)と同様、[リソース サーバー](#resource-server)の保護されたリソースへのアクセスを管理するための手段です。ロールには、"ユーザー" ロールと "アプリケーション" ロールの 2 種類があります。ユーザー ロールでは、リソースへのアクセスを必要とするユーザー/グループに関してロールベースのアクセス制御を実装します。これに対してアプリケーション ロールで実装するのは、アクセスを要求する[クライアント アプリケーション](#client-application)の場合と同じです。
 
-## <a name="roles"></a>roles
-Like [scopes](#scopes), roles provide a way for a [resource server](#resource-server) to govern access to its protected resources. There are two types: a "user" role implements role-based access control for users/groups that require access to the resource, while an "application" role implements the same for [client applications](#client-application) that require access. 
+ロールは、リソースによって定義される文字列 ("経費承認者"、"読み取り専用"、"Directory.ReadWrite.All" など) です。[Azure クラシック ポータル][AZURE-classic-portal]からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [appRoles プロパティ][AAD-Graph-Sp-Entity]に格納されます。Azure クラシック ポータルは、ユーザーを "ユーザー" ロールに割り当てたり、"アプリケーション" ロールに対するクライアント [アプリケーションのアクセス許可](#permissions)を構成したりするためにも使用します。
 
-Roles are resource-defined strings (for example "Expense approver", "Read-only", "Directory.ReadWrite.All"), managed in the [Azure classic portal][AZURE-classic-portal] via the resource's [application manifest](#application-manifest), and stored in the resource's [appRoles property][AAD-Graph-Sp-Entity]. The Azure classic portal is also used to assign users to "user" roles, and configure client [application permissions](#permissions) to access an "application" role.
+Azure AD の Graph API によって公開されているアプリケーション ロールの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。具体的な実装例については、「[Role based access control in cloud applications using Azure AD (Azure AD を使用したクラウド アプリケーションでのロール ベースのアクセス制御)][Duyshant-Role-Blog]」を参照してください。
 
-For a detailed discussion of the application roles exposed by Azure AD's Graph API, see [Graph API Permission Scopes][AAD-Graph-Perm-Scopes]. For a step-by-step implementation example, see [Role based access control in cloud applications using Azure AD][Duyshant-Role-Blog]. 
+## スコープ
+スコープは、[ロール](#roles)と同様、[リソース サーバー](#resource-server)の保護されたリソースへのアクセスを管理するための手段です。リソースへの委任されたアクセス権を所有者から付与されている[クライアント アプリケーション](#client-application)に対し、[スコープベース][OAuth2-Access-Token-Scopes]のアクセス制御を実装する目的で使用されます。
 
-## <a name="scopes"></a>scopes
-Like [roles](#roles), scopes provide a way for a [resource server](#resource-server) to govern access to its protected resources. Scopes are used to implement [scope-based][OAuth2-Access-Token-Scopes] access control, for a [client application](#client-application) that has been given delegated access to the resource by its owner. 
+スコープは、リソースによって定義される文字列 ("Mail.Read"、"Directory.ReadWrite.All" など) です。[Azure クラシック ポータル][AZURE-classic-portal]からリソースの[アプリケーション マニフェスト](#application-manifest)を介して管理され、リソースの [oauth2Permissions プロパティ][AAD-Graph-Sp-Entity]に格納されます。Azure クラシック ポータルは、クライアント アプリケーションの、スコープに対する[委任されたアクセス許可](#permissions)を構成するためにも使用します。
 
-Scopes are resource-defined strings (for example "Mail.Read", "Directory.ReadWrite.All"), managed in the [Azure classic portal][AZURE-classic-portal] via the resource's [application manifest](#application-manifest), and stored in the resource's [oauth2Permissions property][AAD-Graph-Sp-Entity]. The Azure classic portal is also used to configure client application [delegated permissions](#permissions) to access a scope.
+推奨される名前付け規則は、"resource.operation.constraint" 形式です。Azure AD の Graph API によって公開されているスコープの詳しい説明については、[Graph API のアクセス許可スコープ][AAD-Graph-Perm-Scopes]に関するページを参照してください。Office 365 サービスによって公開されているスコープについては、「[Office 365 API permissions reference (Office 365 API アクセス許可リファレンス)][O365-Perm-Ref]」を参照してください。
 
-A best practice naming convention, is to use a "resource.operation.constraint" format. For a detailed discussion of the scopes exposed by Azure AD's Graph API, see [Graph API Permission Scopes][AAD-Graph-Perm-Scopes]. For scopes exposed by Office 365 services, see [Office 365 API permissions reference][O365-Perm-Ref]. 
+## セキュリティ トークン
+要求を含んだ署名付きのドキュメント (OAuth2 トークン、SAML 2.0 アサーションなど)。OAuth2 [承認付与](#authorization-grant)の場合、[アクセス トークン](#access-token) (OAuth2) と [ID Token](OpenID Connect) がセキュリティ トークンの種類になります。どちらも [JSON Web トークン (JWT)][JWT] として実装されます。
 
-## <a name="security-token"></a>security token
-A signed document containing claims, such as an OAuth2 token or SAML 2.0 assertion. For an OAuth2 [authorization grant](#authorization-grant), an [access token](#access-token) (OAuth2) and an [ID Token](OpenID Connect) are types of security tokens, both of which are implemented as a [JSON Web Token (JWT)][JWT].
+## サービス プリンシパル オブジェクト
+[Azure クラシック ポータル][AZURE-classic-portal]でアプリケーションを登録/更新すると、そのテナントを対象に、[アプリケーション オブジェクト](#application-object)と対応するサービス プリンシパル オブジェクトの両方が作成/更新されます。アプリケーション オブジェクトは、アプリケーションの ID 構成をグローバルに (関連するアプリケーションがアクセスできるすべてのテナントに対して) "*定義*" します。このオブジェクトをテンプレートとして、対応するサービス プリンシパル オブジェクトが "*生成*" され、実行時にローカル (特定のテナント) で使用されます。
 
-## <a name="service-principal-object"></a>service principal object
-When you register/update an application in the [Azure classic portal][AZURE-classic-portal], the portal creates/updates both an [application object](#application-object) and a corresponding service principal object for that tenant. The application object *defines* the application's identity configuration globally (across all tenants where the associated application has been granted access), and is the template from which its corresponding service principal object(s) are *derived* for use locally at run-time (in a specific tenant).
+詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト][AAD-App-SP-Objects]に関するページを参照してください。
 
-See [Application and Service Principal Objects][AAD-App-SP-Objects] for more information.
+## サインイン
+[クライアント アプリケーション](#client-application)がエンド ユーザーの認証を開始し、関連する状態を収集するプロセス。[セキュリティ トークン](#security-token)を取得すると共に、アプリケーションのセッションをその状態に限定することを目的としています。状態には、ユーザー プロファイル情報などのアーティファクトや、トークンの要求から生成される情報が含まれている場合があります。
 
-## <a name="sign-in"></a>sign-in
-The process of a [client application](#client-application) initiating end user authentication and capturing related state, for the purpose of acquiring a [security token](#security-token) and scoping the application session to that state. State can include artifacts such as user profile information, and information derived from token claims. 
+アプリケーションのサインイン機能は通常、シングル サインオン (SSO) を実装するために使用されます。また、この機能は、エンド ユーザーが (初回サインイン時に) アプリケーションにアクセスするためのエントリ ポイントとして "サインアップ" 機能の前に実行されることがあります。サインアップ機能は、ユーザーごとの特別な状態を収集して永続化するために使用され、[ユーザーの同意](#consent)を必要とする場合があります。
 
-The sign-in function of an application is typically used to implement single-sign-on (SSO). It may also be preceded by a "sign-up" function, as the entry point for an end user to gain access to an application (upon first sign-in). The sign-up function is used to gather and persist additional state specific to the user, and may require [user consent](#consent).
+## サインアウト
+エンド ユーザーの認証を取り消し、[サインイン](#sign-in)の過程で[クライアント アプリケーション](#client-application)のセッションに関連付けられたユーザーの状態を解除するプロセス。
 
-## <a name="sign-out"></a>sign-out
-The process of un-authenticating an end user, detaching the user state associated with the [client application](#client-application) session during [sign-in](#sign-in)
+## テナント
+Azure AD ディレクトリのインスタンスを "Azure AD テナント" といいます。テナントには、次のようなさまざまな機能が備わっています。
 
-## <a name="tenant"></a>tenant
-An instance of an Azure AD directory is referred to as an Azure AD tenant. It provides a variety of features, including:
+- 統合アプリケーションのレジストリ サービス
+- ユーザー アカウントや登録済みアプリケーションの認証
+- OAuth2、SAML などの各種プロトコルをサポートするうえで必要な REST エンドポイント ([承認エンドポイント](#authorization-endpoint)、[トークン エンドポイント](#token-endpoint) のほか、[マルチテナント アプリケーション](#multi-tenant-application)によって使用される "共通" エンドポイントなど)
 
-- a registry service for integrated applications
-- authentication of user accounts and registered applications
-- REST endpoints required to support various protocols including OAuth2 and SAML, including the [authorization endpoint](#authorization-endpoint), [token endpoint](#token-endpoint) and the "common" endpoint used by [multi-tenant applications](#multi-tenant-application).
+また、テナントはサブスクリプションのプロビジョニング中に Azure AD または Office 365 のサブスクリプションに関連付けられるため、サブスクリプションの ID 管理機能とアクセス管理機能が利用できるようになります。テナントを利用するための各種方法について詳しくは、「[Azure Active Directory テナントを取得する方法][AAD-How-To-Tenant]」をご覧ください。サブスクリプションと Azure AD テナントの関係について詳しくは、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法][AAD-How-Subscriptions-Assoc]」をご覧ください。
 
-A tenant is also associated with an Azure AD or Office 365 subscription during provisioning of the subscription, providing Identity & Access Management features for the subscription. See [How to get an Azure Active Directory tenant][AAD-How-To-Tenant] for details on the various ways you can get access to a tenant. See [How Azure subscriptions are associated with Azure Active Directory][AAD-How-Subscriptions-Assoc] for details on the relationship between subscriptions and an Azure AD tenant.
+## トークン エンドポイント
+[承認サーバー](#authorization-server)によって実装されるエンドポイントの 1 つ。OAuth2 [承認付与](#authorization-grant)をサポートするために使用されます。付与された承認によっては、[クライアント](#client-application)への[アクセス トークン](#access-token) (と関連する "更新" トークン) を取得したり、[OpenID Connect][OpenIDConnect] プロトコルと共に使用する場合に [ID トークン](#ID-token)を取得したりできます。
 
-## <a name="token-endpoint"></a>token endpoint
-One of the endpoints implemented by the [authorization server](#authorization-server) to support OAuth2 [authorization grants](#authorization-grant). Depending on the grant, it can be used to acquire an [access token](#access-token) (and related "refresh" token) to a [client](#client-application), or [ID token](#ID-token) when used with the [OpenID Connect][OpenIDConnect] protocol.
+## ユーザー エージェント ベースのクライアント
+Web サーバーからコードをダウンロードしてユーザー エージェント (Web ブラウザーなど) 内で実行する[クライアント アプリケーション](#client-application)の一種。その例としてシングル ページ アプリケーション (SPA) が挙げられます。すべてのコードがデバイス上で実行され、機密性を保った状態でプライベートに資格情報を保存することができないため、"public" クライアントと見なされます。詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するセクションを参照してください。
 
-## <a name="user-agent-based-client"></a>User-agent-based client
-A type of [client application](#client-application) that downloads code from a web server and executes within a user-agent (for instance, a web browser), such as a Single Page Application (SPA). Since all code is executed on a device, it is considered a "public" client due to its inability to store credentials privately/confidentially. See [OAuth2 client types and profiles][OAuth2-Client-Types] for more details.
+## ユーザー プリンシパル
+サービス プリンシパル オブジェクトはアプリケーション インスタンスを表現するためのセキュリティ プリンシパルです。一方、ユーザー プリンシパル オブジェクトも、セキュリティ プリンシパルのひとつですが、表現の対象となるのはユーザーです。ユーザー オブジェクトのスキーマは、Azure AD Graph の[ユーザー エンティティ][AAD-Graph-User-Entity]によって定義されます (姓や名をはじめとするユーザー関連のプロパティ、ユーザー プリンシパル名、ディレクトリ ロール メンバーシップなど)。これにより、実行時にユーザー プリンシパルを設定するための Azure AD のユーザー ID 構成が提供されます。ユーザー プリンシパルは、シングル サインオン、[同意](#consent)の委任の記録、アクセス制御の意思決定などの際に、認証済みのユーザーを表す目的で使用されます。
 
-## <a name="user-principal"></a>user principal
-Similar to the way a service principal object is used to represent an application instance, a user principal object is another type of security principal, which represents a user. The Azure AD Graph [User entity][AAD-Graph-User-Entity] defines the schema for a user object, including user-related properties such as first and last name, user principal name, directory role membership, etc. This provides the user identity configuration for Azure AD to establish a user principal at run-time. The user principal is used to represent an authenticated user for Single Sign-On, recording [consent](#consent) delegation, making access control decisions, etc.
+## Web クライアント
+Web サーバーですべてのコードを実行する[クライアント アプリケーション](#client-application)の一種。資格情報をサーバー上に安全に保存することで、"confidential" クライアントとして動作することができます。詳細については、[OAuth2 のクライアント タイプとプロファイル][OAuth2-Client-Types]に関するセクションを参照してください。
 
-## <a name="web-client"></a>web client
-A type of [client application](#client-application) that executes all code on a web server, and able to function as a "confidential" client by securely storing its credentials on the server. See [OAuth2 client types and profiles][OAuth2-Client-Types] for more details.
+## 次のステップ
+「[Azure Active Directory 開発者ガイド][AAD-Dev-Guide]」をお読みください。Azure AD と[アプリケーションの統合][AAD-How-To-Integrate]や、[Azure AD 認証の基礎、サポートされる認証シナリオ][AAD-Auth-Scenarios]など、Azure AD 開発に関連したあらゆるトピックへの入口となっています。
 
-## <a name="next-steps"></a>Next steps
-The [Azure AD Developer's Guide][AAD-Dev-Guide] is the portal to use for all Azure AD development related topics, including an overview of [application integration][AAD-How-To-Integrate] and the basics of [Azure AD authentication and supported authentication scenarios][AAD-Auth-Scenarios]. 
-
-Please use the following Disqus comments section to provide feedback and help us refine and shape our content.
+Microsoft のコンテンツ改善のため、次の Disqus コメント セクションよりご意見をお寄せください。
 
 <!--Image references-->
 
@@ -196,32 +195,14 @@ Please use the following Disqus comments section to provide feedback and help us
 [Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
-[O365-Perm-Ref]: https://msdn.microsoft.com/en-us/office/office365/howto/application-manifest
+[O365-Perm-Ref]: https://msdn.microsoft.com/ja-JP/office/office365/howto/application-manifest
 [OAuth2-Access-Token-Scopes]: https://tools.ietf.org/html/rfc6749#section-3.3
 [OAuth2-AuthZ-Endpoint]: https://tools.ietf.org/html/rfc6749#section-3.1
-[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3 
+[OAuth2-AuthZ-Grant-Types]: https://tools.ietf.org/html/rfc6749#section-1.3
 [OAuth2-Client-Types]: https://tools.ietf.org/html/rfc6749#section-2.1
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-AuthZ-Endpoint]: http://openid.net/specs/openid-connect-core-1_0.html#AuthorizationEndpoint
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

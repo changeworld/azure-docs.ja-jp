@@ -1,10 +1,10 @@
 <properties
- pageTitle="Plans and Billing in Azure Scheduler"
- description="Plans and Billing in Azure Scheduler"
+ pageTitle="Azure Scheduler のプランと課金"
+ description="Azure Scheduler のプランと課金"
  services="scheduler"
  documentationCenter=".NET"
- authors="derek1ee"
- manager="kevinlam1"
+ authors="krisragh"
+ manager="dwrede"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,88 +13,83 @@
  ms.devlang="dotnet"
  ms.topic="article"
  ms.date="08/18/2016"
- ms.author="deli"/>
+ ms.author="krisragh"/>
 
+# Azure Scheduler のプランと課金
 
-# <a name="plans-and-billing-in-azure-scheduler"></a>Plans and Billing in Azure Scheduler
+## ジョブ コレクション プラン
 
-## <a name="job-collection-plans"></a>Job Collection Plans
+ジョブ コレクションは、Azure Scheduler における課金対象のエンティティです。複数のジョブを格納するジョブ コレクションは、Free、Standard、および Premium の 3 つのプランで提供されます。以降では、これらのプランについて説明します。
 
-Job collections are the billable entity in Azure Scheduler. Job collections contain a number of jobs and come in three plans – Free, Standard, and Premium – that are described below.
-
-|**Job Collection Plan**|**Max # of Jobs per Job Collection**|**Max Recurrence**|**Max Job Collections per Subscription**|**Limits**|
+|**ジョブ コレクション プラン**|**ジョブ コレクションあたりのジョブの最大数**|**最大繰り返し頻度**|**サブスクリプションあたりのジョブ コレクションの最大数**|**制限**|
 |:---|:---|:---|:---|:---|
-|**Free**|5 jobs per job collection|Once per hour. Cannot execute jobs more often than once an hour|A subscription is allowed up to 1 free job collection|Cannot use [HTTP outbound authorization object](scheduler-outbound-authentication.md)
-|**Standard**|50 jobs per job collection|Once per minute. Cannot execute jobs more often than once a minute|A subscription is allowed up to 100 standard job collections|Access to full feature set of Scheduler|
-|**P10 Premium**|50 jobs per job collection|Once per minute. Cannot execute jobs more often than once a minute|A subscription is allowed up to 10,000 P10 Premium job collections. <a href="mailto:wapteams@microsoft.com">Contact us</a> for more.|Access to full feature set of Scheduler|
-|**P20 Premium**|1000 jobs per job collection|Once per minute. Cannot execute jobs more often than once a minute|A subscription is allowed up to 10,000 P20 Premium job collections. <a href="mailto:wapteams@microsoft.com">Contact us</a> for more.|Access to full feature set of Scheduler|
+|**Free**|ジョブ コレクションあたり 5 個のジョブ|1 時間に 1 回。1 時間に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 1 個の Free ジョブ コレクションが許可されます。|[HTTP 送信承認オブジェクト](scheduler-outbound-authentication.md)を使用できません。
+|**Standard**|ジョブ コレクションあたり 50 個のジョブ|1 分に 1 回。1 分に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 100 個の Standard ジョブ コレクションが許可されます。|Scheduler の完全な機能セットへのアクセス|
+|**P10 Premium**|ジョブ コレクションあたり 50 個のジョブ|1 分に 1 回。1 分に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 10,000 個の P10 Premium ジョブ コレクションが許可されます。詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。|Scheduler の完全な機能セットへのアクセス|
+|**P20 Premium**|ジョブ コレクションあたり 1,000 個のジョブ|1 分に 1 回。1 分に 1 回を超えてジョブを実行できません。|1 つのサブスクリプションに最大で 10,000 個の P20 Premium ジョブ コレクションが許可されます。詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。|Scheduler の完全な機能セットへのアクセス|
 
-## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Upgrades and Downgrades of Job Collection Plans
+## ジョブ コレクション プランのアップグレードとダウングレード
 
-You may upgrade or downgrade a job collection plan anytime among the Free, Standard, and Premium plans. However, when downgrading to a free job collection, the downgrade may fail for one of the following reasons:
+ジョブ コレクション プランは、Free、Standard、および Premium の間でいつでもアップグレードまたはダウングレードできます。ただし、Free ジョブ コレクションにダウングレードする場合、次のいずれかの理由でダウングレードが失敗することがあります。
 
-- A free job collection already exists in the subscription
-- A job in the job collection has a higher recurrence than allowed for jobs in free job collections. The maximum recurrence allowed in a free job collection is once per hour
-- There are more than 5 jobs in the job collection
-- A job in the job collection has an HTTP or HTTPS action that uses an [HTTP outbound authorization object](scheduler-outbound-authentication.md)
+- サブスクリプションに既に Free ジョブ コレクションが存在している。
+- ジョブ コレクション内のジョブに、Free ジョブ コレクションのジョブに許可されているよりも高い繰り返し頻度が設定されている。Free ジョブ コレクションで許可される最大繰り返し頻度は 1 時間に 1 回です。
+- ジョブ コレクションに 5 つを超えるジョブが含まれている。
+- ジョブ コレクション内のジョブに、[HTTP 送信承認オブジェクト](scheduler-outbound-authentication.md)を使用する HTTP アクションまたは HTTPS アクションが含まれている。
 
-## <a name="billing-and-azure-plans"></a>Billing and Azure Plans
+## 課金および Azure プラン
 
-Subscriptions are not charged for free job collections. If you have more than 100 standard job collections (10 standard billing units), then it's a better deal to have all job collections in the premium plan.
+Free ジョブ コレクションについては、課金されません。100 を超える Standard ジョブ コレクション (Standard 課金単位 10 単位) を使用している場合は、Premium プランにすべてのジョブ コレクションを移行することをお勧めします。
 
-If you have one standard job collection and one premium job collection, you are billed one standard billing unit _and_ one premium billing unit. The Scheduler service bills based on the number of active job collections that are set to either standard or premium; this is explained further in the next two sections.
+1 つの Standard ジョブ コレクションと 1 つの Premium ジョブ コレクションを使用している場合、Standard プランの 1 課金単位_と_ Premium プランの 1 課金単位が請求されます。Scheduler サービスでは、Standard または Premium のどちらかに設定されているアクティブなジョブ コレクションの数に基づいて課金されます。これについては、次の 2 つのセクションで詳しく説明します。
 
-## <a name="standard-billable-units"></a>Standard Billable Units
+## Standard 課金単位
 
-A standard billable unit can include up to 10 standard job collections. Since a standard job collection can have up to 50 jobs per job collection, one standard billing unit allows a subscription to have up to 500 jobs – up to almost 22 million job executions per month.
+Standard 課金単位には、最大 10 個の Standard ジョブ コレクションを含めることができます。Standard ジョブ コレクションでは、ジョブ コレクションあたり最大で 50 個のジョブを含めることができるため、Standard 課金単位 1 単位でサブスクリプションに最大 500 個のジョブを含めることができます (これは、1 か月あたり約 2,200 万件のジョブ実行に相当します)。
 
-If you have between 1 and 10 standard job collections, you'll be billed for 1 standard billing unit. If you have between 11 and 20 standard job collections, you'll be billed for 2 standard billing units. If you have between 21 and 30 standard job collections, you'll be billed for 3 standard billing units, and so on.
+使用している Standard ジョブ コレクションが 1 ～ 10 個の場合、Standard 課金単位 1 単位分が課金されます。使用している Standard ジョブ コレクションが 11 ～ 20 個の場合、Standard 課金単位 2 単位分が課金されます。使用している Standard ジョブ コレクションが 21 ～ 30 個の場合、Standard 課金単位 3 単位分が課金されます。それ以上の数についても同様の計算になります。
 
-## <a name="p10-premium-billable-units"></a>P10 Premium Billable Units
+## P10 Premium 課金単位
 
-A P10 premium billable unit can include up to 10,000 P10 premium job collections. Since a P10 premium job collection can have up to 50 jobs per job collection, one premium billing unit allows a subscription to have up to 500,000 jobs – up to almost 22 billion job executions per month.
+P10 Premium 課金単位には、最大 10,000 個の P10 Premium ジョブ コレクションを含めることができます。P10 Premium ジョブ コレクションでは、ジョブ コレクションあたり最大で 50 個のジョブを含めることができるため、Premium 課金単位 1 単位でサブスクリプションに最大 500,000 個のジョブを含めることができます (これは、1 か月あたり約 220 億件のジョブ実行に相当します)。
 
-If you have between 1 and 10,000 premium job collections, you'll be billed for 1 P10 premium billing unit. If you have between 10,001 and 20,000 premium job collections, you'll be billed for 2 P10 premium billing units, and so on.
+使用している Premium ジョブ コレクションが 1 ～ 10,000 個の場合、P10 Premium 課金単位 1 単位分が課金されます。使用している Premium ジョブ コレクションが 10,001 ～ 20,000 個の場合、P10 Premium 課金単位 2 単位分が課金されます。それ以上の数についても同様の計算になります。
 
-Thus, P10 premium job collections have the same functionality as the standard job collections but provide a price break in case your application requires a lot of job collections.
+このように、P10 Premium ジョブ コレクションでは、Standard ジョブ コレクションと同じ機能を提供する一方で、大量のジョブ コレクションを必要とするアプリケーションのために割引価格を実現しています。
 
-## <a name="p20-premium-billable-units"></a>P20 Premium Billable Units
+## P20 Premium 課金単位
 
-A P20 premium billable unit can include up to 5,000 P20 premium job collections. Since a P20 premium job collection can have up to 1,000 jobs per job collection, one premium billing unit allows a subscription to have up to 5,000,000 jobs – up to almost 220 billion job executions per month.
+P20 Premium 課金単位には、最大 5,000 個の P20 Premium ジョブ コレクションを含めることができます。P20 Premium ジョブ コレクションでは、ジョブ コレクションあたり最大で 1,000 個のジョブを含めることができるため、Premium 課金単位 1 単位でサブスクリプションに最大 5,000,000 個のジョブを含めることができます (これは、1 か月あたり約 2,200 億件のジョブ実行に相当します)。
 
-P20 premium job collections provides the same capabilities as P10 premium job collections but also supports a greater number jobs per job collection and a greater total number of jobs overall than P10 premium allowing you to have more scalability.
+P20 Premium ジョブ コレクションで提供される機能は P10 Premium ジョブ コレクションと同じですが、P10 Premium ジョブ コレクションよりもジョブ コレクションあたりでサポートされるジョブの数が多く、ジョブ全体の総数もより多くなるため、スケーラビリティが向上します。
 
-## <a name="billing-and-active-status"></a>Billing and Active Status
+## 課金とアクティブ状態
 
-Job collections are always active unless your entire subscription has gone into some temporary disabled state due to billing issues. The only way to ensure that a job collection is not billed is to either set it to the _Free_ plan or to delete the job collection.
+ジョブ コレクションは、サブスクリプション全体が課金に関する問題のために一時的な無効状態にならない限り、常にアクティブです。ジョブ コレクションが課金されないようにするには、_Free_ プランに設定するか、またはジョブ コレクションを削除します。
 
-Although you may disable all jobs within a job collection in a single operation, it does not change the billing status of the job collection – the job collection will _still_ be billed. Similarly, empty job collections are considered active and will be billed.
+1 回の操作でジョブ コレクション内のすべてのジョブを無効にすることができますが、その操作を行ってもジョブ コレクションの課金状態は変更されず、ジョブ コレクションに対して_依然として_課金されます。同様に、空のジョブ コレクションもアクティブと見なされ、課金の対象となります。
 
-## <a name="pricing"></a>Pricing
+## 価格
 
-For pricing details, please see [Scheduler Pricing](https://azure.microsoft.com/pricing/details/scheduler/).
+料金の詳細については、「[Scheduler 料金](https://azure.microsoft.com/pricing/details/scheduler/)」を参照してください。
 
-## <a name="see-also"></a>See Also
-
-
- [What is Scheduler?](scheduler-intro.md)
-
- [Azure Scheduler concepts, terminology, and entity hierarchy](scheduler-concepts-terms.md)
-
- [Get started using Scheduler in the Azure portal](scheduler-get-started-portal.md)
-
- [Azure Scheduler REST API reference](https://msdn.microsoft.com/library/mt629143)
-
- [Azure Scheduler PowerShell cmdlets reference](scheduler-powershell-reference.md)
-
- [Azure Scheduler high-availability and reliability](scheduler-high-availability-reliability.md)
-
- [Azure Scheduler limits, defaults, and error codes](scheduler-limits-defaults-errors.md)
-
- [Azure Scheduler outbound authentication](scheduler-outbound-authentication.md)
+## 関連項目
 
 
+ [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
 
-<!--HONumber=Oct16_HO2-->
+ [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
+ [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
+
+ [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
+
+ [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
+
+ [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
+
+ [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
+
+<!---HONumber=AcomDC_0824_2016-->

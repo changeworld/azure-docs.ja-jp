@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Migrate to SQL Database using transactional replication | Microsoft Azure"
-   description="Microsoft Azure SQL Database, database migration, import database, transactional replication"
+   pageTitle="トランザクション レプリケーションを使用して SQL Database に移行する | Microsoft Azure"
+   description="Microsoft Azure SQL Database、データベースの移行、データベースのインポート、トランザクション レプリケーション"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,56 +16,51 @@
    ms.date="08/23/2016"
    ms.author="carlrab"/>
 
-
-# <a name="migrate-sql-server-database-to-azure-sql-database-using-transactional-replication"></a>Migrate SQL Server database to Azure SQL Database using transactional replication
+# トランザクション レプリケーションを使用して SQL Server データベースを Azure SQL Database に移行する
 
 > [AZURE.SELECTOR]
-- [SSMS Migration Wizard](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
-- [Export to BACPAC File](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
-- [Import from BACPAC File](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
-- [Transactional Replication](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
+- [SSMS の移行ウィザード](sql-database-cloud-migrate-compatible-using-ssms-migration-wizard.md)
+- [BACPAC ファイルへのエクスポート](sql-database-cloud-migrate-compatible-export-bacpac-ssms.md)
+- [BACPAC ファイルからのインポート](sql-database-cloud-migrate-compatible-import-bacpac-ssms.md)
+- [トランザクション レプリケーション](sql-database-cloud-migrate-compatible-using-transactional-replication.md)
 
-In this article, you learn to migrate a compatible SQL Server database to Azure SQL Database with minimal downtime using SQL Server transactional replication.
+この記事では、SQL Server のトランザクション レプリケーションを使用して最小限のダウンタイムで Azure SQL Database へ互換性のある SQL Server データベースを移行する方法について説明します。
 
-## <a name="understanding-the-transactional-replication-architecture"></a>Understanding the Transactional Replication architecture
+## トランザクション レプリケーションのアーキテクチャについて
 
-When you cannot afford to remove your SQL Server database from production while the migration is occurring, you can use SQL Server transactional replication as your migration solution. To use this solution, you configure your Azure SQL Database as a subscriber to the on-premises SQL Server instance that you wish to migrate. The on-premises transactional replication distributor synchronizes data from the on-premises database to be synchronized (the publisher) while new transactions continue occur. 
+移行中、SQL Server データベースを外す余裕がない場合、移行ソリューションとして SQL Server トランザクション レプリケーションを使用できます。このソリューションを使用するには、Azure SQL Database を移行対象のオンプレミス SQL Server インスタンスへのサブスクライバーとして構成します。オンプレミスのトランザクション レプリケーション ディストリビューターは、新しいトランザクションが発生し続ける中で、同期対象のオンプレミスのデータベース (パブリッシャー) からデータを同期します。
 
-You can also use transactional replication to migrate a subset of your on-premises database. The publication that you replicate to Azure SQL Database can be limited to a subset of the tables in the database being replicated. For each table being replicated, you can limit the data to a subset of the rows and/or a subset of the columns.
+また、トランザクション レプリケーションを使用し、オンプレミス データベースの一部を移行できます。Azure SQL Database に複製するパブリケーションは、複製されるデータベースのテーブルの一部に制限できます。複製されるテーブルごとに、行の一部または列の一部にデータを制限できます。
 
-With transactional replication, all changes to your data or schema show up in your Azure SQL Database. Once the synchronization is complete and you are ready to migrate, change the connection string of your applications to point them to your Azure SQL Database. Once transactional replication drains any changes left on your on-premises database and all your applications point to Azure DB, you can uninstall transactional replication. Your Azure SQL Database is now your production system.
+トランザクション レプリケーションでは、データやスキーマのすべての変更が Azure SQL Database に表示されます。同期が完了し、移行の準備ができたら、アプリケーションの接続文字列を変更し、Azure SQL Database をポイントするようにします。トランザクション レプリケーションがオンプレミス データベースに残っているすべての変更を抜き取り、すべてのアプリケーションが Azure DB をポイントしたら、トランザクション レプリケーションをアンインストールできます。これで、Azure SQL Database が実稼働システムになります。
 
- ![SeedCloudTR diagram](./media/sql-database-cloud-migrate/SeedCloudTR.png)
+ ![SeedCloudTR ダイアグラム](./media/sql-database-cloud-migrate/SeedCloudTR.png)
 
-## <a name="transactional-replication-requirements"></a>Transactional Replication requirements
+## トランザクション レプリケーションの要件
 
-Transactional replication is a technology built-in and integrated with SQL Server since SQL Server 6.5. It is a mature and proven technology that most of DBAs know with which they have experience. With the [SQL Server 2016](https://www.microsoft.com/en-us/cloud-platform/sql-server), it is now possible to configure your Azure SQL Database as a [transactional replication subscriber](https://msdn.microsoft.com/library/mt589530.aspx) to your on-premises publication. The experience that you get setting it up from Management Studio is the same as if you set up a transactional replication subscriber on an on-premises server. Support for this scenario is supported when the publisher and the distributor are at least one of the following SQL Server versions:
+トランザクション レプリケーションは、SQL Server 6.5 以降、SQL Server に内蔵された技術です。成熟した証明済みのテクノロジであり、ほとんどの DBA に運用経験があります。[SQL Server 2016](https://www.microsoft.com/ja-JP/cloud-platform/sql-server) では、Azure SQL Database をオンプレミス パブリケーションの[トランザクション レプリケーション サブスクライバー](https://msdn.microsoft.com/library/mt589530.aspx)として構成できるようになりました。Management Studio の設定は、オンプレミス サーバーでトランザクション レプリケーション サブスクライバーを設定する場合と同じです。このシナリオは、パブリッシャーとディストリビューターの SQL Server のバージョンが次のいずれか以上である場合にサポートされます。
 
- - SQL Server 2016 and above 
- - SQL Server 2014 SP1 CU3 and above
- - SQL Server 2014 RTM CU10 and above
- - SQL Server 2012 SP2 CU8 and above
- - SQL Server 2012 SP3 and above
-
-
-> [AZURE.IMPORTANT] Use the latest version of SQL Server Management Studio to remain synchronized with updates to Microsoft Azure and SQL Database. Older versions of SQL Server Management Studio cannot set up SQL Database as a subscriber. [Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+ - SQL Server 2016 以降
+ - SQL Server 2014 SP1 CU3 以降
+ - SQL Server 2014 RTM CU10 以降
+ - SQL Server 2012 SP2 CU8 以降
+ - SQL Server 2012 SP3 以降
 
 
-## <a name="next-steps"></a>Next steps
+> [AZURE.IMPORTANT] 最新バージョンの SQL Server Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持します。以前のバージョンの SQL Server Management Studio では、サブスクライバーとして SQL Database を設定できません。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
 
-- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
-- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [SQL Server 2016 ](https://www.microsoft.com/en-us/cloud-platform/sql-server)
 
-## <a name="additional-resources"></a>Additional resources
+## 次のステップ
 
-- [Transactional Replication](https://msdn.microsoft.com/library/mt589530.aspx)
+- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [SQL Server 2016](https://www.microsoft.com/ja-JP/cloud-platform/sql-server)
+
+## その他のリソース
+
+- [トランザクション レプリケーション](https://msdn.microsoft.com/library/mt589530.aspx)
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
-- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

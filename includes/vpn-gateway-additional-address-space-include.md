@@ -1,21 +1,18 @@
-### <a name="to-add-address-space"></a>To add address space
+### アドレス空間を追加するには
 
-1. To add additional address space, click **All settings** to open the **Settings** blade. 
+1. アドレス空間を追加するには、**[すべての設定]** をクリックして、**[設定]** ブレードを開きます。 
 
-2. On the **Settings** blade, click **Address space** to open the Address space blade. Add the additional address space in this blade, and then click **Save** at the top of the blade.
+2. **[設定]** ブレードで **[アドレス空間]** をクリックして、[アドレス空間] ブレードを開きます。このブレードでアドレス空間を追加し、ブレードの上部にある **[保存]** をクリックします。
 
-    ![Add address space](./media/vpn-gateway-additional-address-space-include/address400.png)
+	![Add address space](./media/vpn-gateway-additional-address-space-include/address400.png)
 
-### <a name="to-add-subnets"></a>To add subnets 
+### サブネットを追加するには 
 
-1. To add additional subnets to your address spaces, in the **Settings** blade, click **Subnets** to open the **Subnets** blade. 
+1. アドレス空間にサブネットを追加するには、**[設定]** ブレードで、**[サブネット]** をクリックして **[サブネット]** ブレードを開きます。 
 
-2. In the Subnets blade, click **Add** to open the **Add subnet** blade. Name your new subnet and specify the address range, and then click **OK** at the bottom of the blade. Once a subnet has been created, you can use the subnets blade to view all of your subnets for a VNet.
-
-
-    ![Subnet settings](./media/vpn-gateway-additional-address-space-include/addsubnet250.png)       
+2. [サブネット] ブレードで、**[追加]** をクリックして **[サブネットの追加]** ブレードを開きます。新しいサブネットに名前を付けてアドレス範囲を指定し、ブレードの下部にある **[OK]** をクリックします。サブネットが作成されたら、[サブネット] ブレードを使用して、VNet のすべてのサブネットを表示できます。
 
 
-<!--HONumber=Oct16_HO2-->
+	![サブネット設定](./media/vpn-gateway-additional-address-space-include/addsubnet250.png)
 
-
+<!---------HONumber=AcomDC_0406_2016-->

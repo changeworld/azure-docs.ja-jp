@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Get started with Data Lake Store using REST API| Microsoft Azure" 
-   description="Use WebHDFS REST APIs to perform operations on Data Lake Store" 
+   pageTitle="REST API で Data Lake Store の使用を開始する | Microsoft Azure" 
+   description="WebHDFS REST API を使用して Data Lake Store に対する操作を実行する" 
    services="data-lake-store" 
    documentationCenter="" 
    authors="nitinme" 
@@ -16,259 +16,254 @@
    ms.date="09/27/2016"
    ms.author="nitinme"/>
 
-
-# <a name="get-started-with-azure-data-lake-store-using-rest-apis"></a>Get started with Azure Data Lake Store using REST APIs
+# REST API で Azure Data Lake Store の使用を開始する
 
 > [AZURE.SELECTOR]
-- [Portal](data-lake-store-get-started-portal.md)
+- [ポータル](data-lake-store-get-started-portal.md)
 - [PowerShell](data-lake-store-get-started-powershell.md)
 - [.NET SDK](data-lake-store-get-started-net-sdk.md)
 - [Java SDK](data-lake-store-get-started-java-sdk.md)
 - [REST API](data-lake-store-get-started-rest-api.md)
 - [Azure CLI](data-lake-store-get-started-cli.md)
-- [Node.js](data-lake-store-manage-use-nodejs.md)
+- [Node.JS](data-lake-store-manage-use-nodejs.md)
 
-In this article, you will learn how to use WebHDFS REST APIs and Data Lake Store REST APIs to perform account management as well as filesystem operations on Azure Data Lake Store. Azure Data Lake Store exposes its own REST APIs for account management operations. However, because Data Lake Store is compatible with HDFS and Hadoop ecosystem, it supports using WebHDFS REST APIs for filesystem operations.
+この記事では、WebHDFS REST API と Data Lake Store REST API を使用して、アカウントの管理と、Azure Data Lake Store に対するファイル システム操作を実行する方法について説明します。Azure Data Lake Store では、アカウント管理操作用の独自の REST API を公開しています。ただし、Data Lake Store は、HDFS および Hadoop エコシステムと互換性があるため、WebHDFS REST API を使用したファイル システム操作もサポートしています。
 
->[AZURE.NOTE] For detailed information on the REST API support for Data Lake Store, see [Azure Data Lake Store REST API Reference](https://msdn.microsoft.com/library/mt693424.aspx).
+>[AZURE.NOTE] Data Lake Store の REST API サポートの詳細については、「[Azure Data Lake Store REST API リファレンス](https://msdn.microsoft.com/library/mt693424.aspx)」を参照してください。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-- **Create an Azure Active Directory Application**. You use the Azure AD application to authenticate the Data Lake Store application with Azure AD. There are different approaches to authenticate with Azure AD, which are **end-user authentication** or **service-to-service authentication**. For instructions and more information on how to authenticate, see [Authenticate with Data Lake Store using Azure Active Directory](data-lake-store-authenticate-using-active-directory.md).
+- **Azure Active Directory アプリケーションを作成する**。Azure AD アプリケーションを使用して、Azure AD で Data Lake Store アプリケーションを認証します。Azure AD での認証方法には、**エンドユーザー認証**と**サービス間認証**という異なる方法があります。認証方法の手順と詳しい情報については、「[Authenticate with Data Lake Store using Azure Active Directory (Azure Active Directory を使用した Data Lake Store)](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
 
-- [cURL](http://curl.haxx.se/). This article uses cURL to demonstrate how to make REST API calls against a Data Lake Store account.
+- [cURL](http://curl.haxx.se/)。この記事では、cURL を使用して、Data Lake Store アカウントに対して REST API 呼び出しを行う方法を説明します。
 
-## <a name="how-do-i-authenticate-using-azure-active-directory?"></a>How do I authenticate using Azure Active Directory?
+## Azure Active Directory を使用して認証する方法
 
-You can use two approaches to authenticate using Azure Active Directory.
+Azure Active Directory を使用した認証方法には 2 つあります。
 
-### <a name="end-user-authentication-(interactive)"></a>End-user authentication (interactive)
+### エンド ユーザー認証 (対話型)
 
-In this scenario, the application prompts the user to log in and all the operations are performed in the context of the user. Perform the following steps for interactive authentication.
+このシナリオでは、アプリケーションはユーザーにログインを求め、すべての操作はユーザーのコンテキストで実行されます。対話型認証のためには次の手順を実行します。
 
-1. Through your application, redirect the user to the following URL:
+1. アプリケーションでユーザーを次の URL にリダイレクトします。
 
-        https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
+		https://login.microsoftonline.com/<TENANT-ID>/oauth2/authorize?client_id=<CLIENT-ID>&response_type=code&redirect_uri=<REDIRECT-URI>
 
-    >[AZURE.NOTE] \<REDIRECT-URI> needs to be encoded for use in a URL. So, for https://localhost, use `https%3A%2F%2Flocalhost`)
+	>[AZURE.NOTE] \<REDIRECT-URI> は、URL で使用するにはエンコードする必要があります。そのため、https://localhost には `https%3A%2F%2Flocalhost` を使用してください。
 
-    For the purpose of this tutorial, you can replace the placeholder values in the URL above and paste it in a web browser's address bar. You will be redirected to authenticate using your Azure login. Once you succesfully log in, the response is displayed in the browser's address bar. The response will be in the following format:
-        
-        http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
+	このチュートリアルでは、上記 URL のプレースホルダーの値を置換し、Web ブラウザーのアドレス バーに貼り付けることができます。ユーザーは、Azure ログインを使用して認証するためにリダイレクトされます。正常にログインすると、ブラウザーのアドレス バーに応答が表示されます。応答は次の形式になります。
+		
+		http://localhost/?code=<AUTHORIZATION-CODE>&session_state=<GUID>
 
-2. Capture the authorization code from the response. For this tutorial, you can copy the authorization code from the address bar of the web browser and pass it in the POST request to the token endpoint, as shown below:
+2. 応答から承認コードをキャプチャします。このチュートリアルでは、Web ブラウザーのアドレス バーから承認コードをコピーして、次に示すように POST 要求でトークン エンドポイントに渡すことができます。
 
-        curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
+		curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token \
         -F redirect_uri=<REDIRECT-URI> \
         -F grant_type=authorization_code \
         -F resource=https://management.core.windows.net/ \
         -F client_id=<CLIENT-ID> \
         -F code=<AUTHORIZATION-CODE>
 
-    >[AZURE.NOTE] In this case, the \<REDIRECT-URI> need not be encoded.
+	>[AZURE.NOTE] この場合、\<REDIRECT-URI> をエンコードする必要はありません。
 
-3. The response is a JSON object that contains an access token (e.g., `"access_token": "<ACCESS_TOKEN>"`) and a refresh token (e.g., `"refresh_token": "<REFRESH_TOKEN>"`). Your application uses the access token when accessing Azure Data Lake Store and the refresh token to get another access token when an access token expires.
+3. 応答は、アクセス トークン (例: `"access_token": "<ACCESS_TOKEN>"`) および更新トークン (例: `"refresh_token": "<REFRESH_TOKEN>"`) を含む JSON オブジェクトです。アプリケーションでは、Azure Data Lake Store にアクセスするときにアクセス トークンを使用し、アクセス トークンの有効期限が切れたときに別のアクセス トークンを取得するために更新トークンを使用します。
 
-        {"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before": "1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
+		{"token_type":"Bearer","scope":"user_impersonation","expires_in":"3599","expires_on":"1461865782","not_before":	"1461861882","resource":"https://management.core.windows.net/","access_token":"<REDACTED>","refresh_token":"<REDACTED>","id_token":"<REDACTED>"}
 
-4.  When the access token expires, you can request a new access token using the refresh token, as shown below:
+4.  アクセス トークンの有効期限が切れたときは、次のように更新トークンを使用して新しいアクセス トークンを要求できます。
 
-         curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
-            -F grant_type=refresh_token \
-            -F resource=https://management.core.windows.net/ \
-            -F client_id=<CLIENT-ID> \
-            -F refresh_token=<REFRESH-TOKEN>
+		 curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+      		-F grant_type=refresh_token \
+      		-F resource=https://management.core.windows.net/ \
+      		-F client_id=<CLIENT-ID> \
+      		-F refresh_token=<REFRESH-TOKEN>
  
-For more information on interactive user authentication, see [Authorization code grant flow](https://msdn.microsoft.com/library/azure/dn645542.aspx).
+対話型ユーザー認証の詳細については、[承認コード付与フロー](https://msdn.microsoft.com/library/azure/dn645542.aspx)に関するページを参照してください。
 
-### <a name="service-to-service-authentication-(non-interactive)"></a>Service-to-service authentication (non-interactive)
+### サービス間認証 (非対話型)
 
-In this scenario, the the application provides its own credentials to perform the operations. For this, you must issue a POST request like the one shown below. 
+このシナリオでは、操作を実行するための独自の資格情報をアプリケーションが提供します。このアプローチの場合は、次に示すように POST 要求を発行する必要があります。
 
-    curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
+	curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
       -F resource=https://management.core.windows.net/ \
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-The output of this request will include an authorization token (denoted by `access-token` in the output below) that you will subsequently pass with your REST API calls. Save this authentication token in a text file; you will need this later in this article.
+この要求の出力には、後で REST API 呼び出しで渡す認証トークン (以下の出力の `access-token` で示される) が取り込まれます。この認証トークンをテキスト ファイルに保存します。この記事の後半で必要となります。
 
-    {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
+	{"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
-This article uses the **non-interactive** approach. For more information on non-interactive (service-to-service calls), see [Service to service calls using credentials](https://msdn.microsoft.com/library/azure/dn645543.aspx).
+この記事では、**非対話型**のアプローチを使用します。非対話型 (サービス間呼び出し) の詳細については、[資格情報を使用したサービス間呼び出し](https://msdn.microsoft.com/library/azure/dn645543.aspx)に関するページを参照してください。
 
-## <a name="create-a-data-lake-store-account"></a>Create a Data Lake Store account
+## Data Lake Store アカウントを作成する
 
-This operation is based on the REST API call defined [here](https://msdn.microsoft.com/library/mt694078.aspx).
+この操作は、[ここ](https://msdn.microsoft.com/library/mt694078.aspx)で定義されている REST API 呼び出しをベースにしています。
 
-Use the following cURL command. Replace **\<yourstorename>** with your Data Lake Store name.
+次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
+	curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
-In the above command, replace \<`REDACTED`\> with the authorization token you retrieved earlier. The request payload for this command is contained in the **input.json** file that is provided for the `-d` parameter above. The contents of the input.json file resemble the following:
+上記のコマンドで、<`REDACTED`> を、以前に取得した承認トークンに置換します。このコマンドの要求ペイロードは、上記の `-d` パラメーターで指定した **input.json** ファイルに含まれています。input.json ファイルの内容は、次のようになります。
 
-    {
-    "location": "eastus2",
-    "tags": {
-        "department": "finance"
-        },
-    "properties": {}
-    }   
+	{
+	"location": "eastus2",
+	"tags": {
+		"department": "finance"
+		},
+	"properties": {}
+	}	
 
-## <a name="create-folders-in-a-data-lake-store-account"></a>Create folders in a Data Lake Store account
+## Data Lake Store アカウントでフォルダーを作成する
 
-This operation is based on the WebHDFS REST API call defined [here](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory).
+この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Make_a_Directory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-Use the following cURL command. Replace **\<yourstorename>** with your Data Lake Store name.
+次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS
+	curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=MKDIRS
 
-In the above command, replace \<`REDACTED`\> with the authorization token you retrieved earlier. This command creates a directory called **mytempdir** under the root folder of your Data Lake Store account.
+上記のコマンドで、<`REDACTED`> を、以前に取得した承認トークンに置換します。このコマンドを実行すると、Data Lake Store アカウントのルート フォルダーの下に **mytempdir** という名前のディレクトリが作成されます。
 
-You should see a response like this if the operation completes successfully:
+操作が正常に完了すると、次のような応答が表示されます。
 
-    {"boolean":true}
+	{"boolean":true}
 
-## <a name="list-folders-in-a-data-lake-store-account"></a>List folders in a Data Lake Store account
+## Data Lake Store アカウントのフォルダーを一覧する
 
-This operation is based on the WebHDFS REST API call defined [here](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory).
+この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#List_a_Directory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-Use the following cURL command. Replace **\<yourstorename>** with your Data Lake Store name.
+次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-    curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS
+	curl -i -X GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/?op=LISTSTATUS
 
-In the above command, replace \<`REDACTED`\> with the authorization token you retrieved earlier.
+上記のコマンドで、<`REDACTED`> を、以前に取得した承認トークンに置換します。
 
-You should see a response like this if the operation completes successfully:
+操作が正常に完了すると、次のような応答が表示されます。
 
-    {
-    "FileStatuses": {
-        "FileStatus": [{
-            "length": 0,
-            "pathSuffix": "mytempdir",
-            "type": "DIRECTORY",
-            "blockSize": 268435456,
-            "accessTime": 1458324719512,
-            "modificationTime": 1458324719512,
-            "replication": 0,
-            "permission": "777",
-            "owner": "NotSupportYet",
-            "group": "NotSupportYet"
-        }]
-    }
-    }
+	{
+	"FileStatuses": {
+		"FileStatus": [{
+			"length": 0,
+			"pathSuffix": "mytempdir",
+			"type": "DIRECTORY",
+			"blockSize": 268435456,
+			"accessTime": 1458324719512,
+			"modificationTime": 1458324719512,
+			"replication": 0,
+			"permission": "777",
+			"owner": "NotSupportYet",
+			"group": "NotSupportYet"
+		}]
+	}
+	}
 
-## <a name="upload-data-into-a-data-lake-store-account"></a>Upload data into a Data Lake Store account
+## Data Lake Store アカウントにデータをアップロードする
 
-This operation is based on the WebHDFS REST API call defined [here](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File).
+この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Create_and_Write_to_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-Uploading data using the WebHDFS REST API is a two-step process, as explained below.
+WebHDFS REST API を使用したデータのアップロードは、次に説明するように 2 段階のプロセスとなります。
 
-1. Submit a HTTP PUT request without sending the file data to be uploaded. In the following command, replace **\<yourstorename>** with your Data Lake Store name.
+1. アップロードするファイル データを送信することなく、HTTP PUT 要求を送信します。次のコマンドで、**<yourstorename>** は自分の Data Lake Store 名に置き換えます。
 
-        curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=CREATE
+		curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/?op=CREATE
 
-    The output for this command will be contain a temporary redirect URL, like the one shown below.
+	このコマンドの出力には、次に示すように、一時的なリダイレクト URL が含まれます。
 
-        HTTP/1.1 100 Continue
+		HTTP/1.1 100 Continue
 
-        HTTP/1.1 307 Temporary Redirect
-        ...
-        ...
-        Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=CREATE&write=true
-        ...
-        ...
+		HTTP/1.1 307 Temporary Redirect
+		...
+		...
+		Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=CREATE&write=true
+		...
+		...
 
-2. You must now submit another HTTP PUT request against the URL listed for the **Location** property in the response. Replace **\<yourstorename>** with your Data Lake Store name.
+2. 次に、応答内の **Location** プロパティに関して一覧表示された URL に対して別の HTTP PUT 要求を送信する必要があります。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-        curl -i -X PUT -T myinputfile.txt -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=CREATE&write=true
+		curl -i -X PUT -T myinputfile.txt -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=CREATE&write=true
 
-    The output will be similar to the following:
+	出力は次のようになります。
 
-        HTTP/1.1 100 Continue
+		HTTP/1.1 100 Continue
 
-        HTTP/1.1 201 Created
-        ...
-        ...
+		HTTP/1.1 201 Created
+		...
+		...
 
-## <a name="read-data-from-a-data-lake-store-account"></a>Read data from a Data Lake Store account
+## Data Lake Store アカウントからデータを読み取る
 
-This operation is based on the WebHDFS REST API call defined [here](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File).
+この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Open_and_Read_a_File)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-Reading data from a Data Lake Store account is a two-step process.
+Data Lake Store アカウントからのデータの読み取りは、2 段階のプロセスとなります。
 
-* You first submit a GET request against the endpoint `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`. This will return a location to submit the next GET request to.
-* You then submit the GET request against the endpoint `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true`. This will display the contents of the file.
+* まず、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN` に対して GET 要求を送信します。これにより、次の GET 要求を送信する場所が返されます。
+* 次に、エンドポイント `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` に対して GET 要求を送信します。これにより、ファイルの内容が表示されます。
 
-However, because there is no difference in the input parameters between the first and the second step, you can use the `-L` parameter to submit the first request. `-L` option essentially combines two requests into one and will make cURL redo the request on the new location. Finally, the output from all the request calls is displayed, like shown below. Replace **\<yourstorename>** with your Data Lake Store name.
+ただし、1 番目の手順と 2 番目の手順の間に入力パラメーターの違いはないため、`-L` パラメーターを使用して最初の要求を送信できます。`-L` オプションは、基本的に 2 つの要求を 1 つの要求に結合し、新しい場所で cURL により要求をやり直します。最後に、次のように、すべての要求呼び出しの出力が表示されます。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-    curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
+	curl -i -L GET -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN
 
-You should see an output similar to the following:
+次のような出力が表示されます。
 
-    HTTP/1.1 307 Temporary Redirect
-    ...
-    Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=OPEN&read=true
-    ...
-    
-    HTTP/1.1 200 OK
-    ...
-    
-    Hello, Data Lake Store user!
+	HTTP/1.1 307 Temporary Redirect
+	...
+	Location: https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/somerandomfile.txt?op=OPEN&read=true
+	...
+	
+	HTTP/1.1 200 OK
+	...
+	
+	Hello, Data Lake Store user!
 
-## <a name="rename-a-file-in-a-data-lake-store-account"></a>Rename a file in a Data Lake Store account
+## Data Lake Store アカウントのファイルの名前を変更する
 
-This operation is based on the WebHDFS REST API call defined [here](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory).
+この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Rename_a_FileDirectory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-Use the following cURL command to rename a file. Replace **\<yourstorename>** with your Data Lake Store name.
+ファイルの名前を変更するには、次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt
+	curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -d "" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=RENAME&destination=/mytempdir/myinputfile1.txt
 
-You should see an output similar to the following:
+次のような出力が表示されます。
 
-    HTTP/1.1 200 OK
-    ...
-    
-    {"boolean":true}
+	HTTP/1.1 200 OK
+	...
+	
+	{"boolean":true}
 
-## <a name="delete-a-file-from-a-data-lake-store-account"></a>Delete a file from a Data Lake Store account
+## Data Lake Store アカウントからファイルを削除する
 
-This operation is based on the WebHDFS REST API call defined [here](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory).
+この操作は、[ここ](http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/WebHDFS.html#Delete_a_FileDirectory)で定義されている WebHDFS REST API 呼び出しをベースにしています。
 
-Use the following cURL command to delete a file. Replace **\<yourstorename>** with your Data Lake Store name.
+次の cURL コマンドを使用して、ファイルを削除します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE
+	curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile1.txt?op=DELETE
 
-You should see an output like the following:
+出力は次のように表示されます。
 
-    HTTP/1.1 200 OK
-    ...
-    
-    {"boolean":true}
+	HTTP/1.1 200 OK
+	...
+	
+	{"boolean":true}
 
-## <a name="delete-a-data-lake-store-account"></a>Delete a Data Lake Store account
+## Data Lake Store アカウントを削除する
 
-This operation is based on the REST API call defined [here](https://msdn.microsoft.com/library/mt694075.aspx).
+この操作は、[ここ](https://msdn.microsoft.com/library/mt694075.aspx)で定義されている REST API 呼び出しをベースにしています。
 
-Use the following cURL command to delete a Data Lake Store account. Replace **\<yourstorename>** with your Data Lake Store name.
+Data Lake Store アカウントを削除するには、次の cURL コマンドを使用します。**<yourstorename>** は、自分の Data Lake Store 名に置き換えます。
 
-    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview
+	curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview
 
-You should see an output like the following:
+出力は次のように表示されます。
 
-    HTTP/1.1 200 OK
-    ...
-    ...
+	HTTP/1.1 200 OK
+	...
+	...
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-- [Open Source Big Data applications compatible with Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
+- [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

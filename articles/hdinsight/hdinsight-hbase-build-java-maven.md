@@ -1,6 +1,6 @@
 <properties
-pageTitle="Build an HBase application using Maven, and deploy to Windows-based HDInsight | Microsoft Azure"
-description="Learn how to use Apache Maven to build a Java-based Apache HBase application, then deploy it to a Windows-based Azure HDInsight cluster."
+pageTitle="Maven を使用した HBase アプリケーションのビルドと、Windows ベースの HDInsight へのデプロイ |Microsoft Azure"
+description="Apache Maven を使用して Java ベースの Apache HBase アプリケーションをビルドし、Windows ベースの Azure HDInsight クラスターにデプロイする方法について説明します。"
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
@@ -14,49 +14,46 @@ ms.workload="big-data"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="10/03/2016"
+ms.date="07/25/2016"
 ms.author="larryfr"/>
 
+#Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
 
-#<a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-(hadoop)"></a>Use Maven to build Java applications that use HBase with Windows-based HDInsight (Hadoop)
+Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。その後、このアプリケーションを Azure HDInsight (Hadoop) で使用します。
 
-Learn how to create and build an [Apache HBase](http://hbase.apache.org/) application in Java by using Apache Maven. Then use the application with Azure HDInsight (Hadoop).
+[Maven](http://maven.apache.org/) は、Java プロジェクトのソフトウェア、ドキュメント、レポートを作成するためのソフトウェア プロジェクト管理および包含ツールです。この記事では、このツールを使用して、Azure HDInsight クラスターでの HBase テーブルの作成、クエリ、および削除を実行する基本的な Java アプリケーションを作成する方法について説明します。
 
-[Maven](http://maven.apache.org/) is a software project management and comprehension tool that allows you to build software, documentation, and reports for Java projects. In this article, you learn how to use it to create a basic Java application that that creates, queries, and deletes an HBase table on an Azure HDInsight cluster.
+> [AZURE.NOTE] このドキュメントの手順は、Windows ベースの HDInsight クラスターを使用することを前提としています。Linux ベースの HDInsight クラスターを使用する方法の詳細については、「[Linux ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する](hdinsight-hbase-build-java-maven-linux.md)」を参照してください。
 
-> [AZURE.NOTE] The steps in this document assume that you are using a Windows-based HDInsight cluster. For information on using a Linux-based HDInsight cluster, see [Use Maven to build Java applications that use HBase with Linux-based HDInsight](hdinsight-hbase-build-java-maven-linux.md)
+##必要条件
 
-##<a name="requirements"></a>Requirements
-
-* [Java platform JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 or later
+* [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
 
 * [Maven](http://maven.apache.org/)
 
+* [Windows ベースの HDInsight クラスターと HBase](hdinsight-hbase-get-started.md#create-hbase-cluster)
 
-* [A Windows-based HDInsight cluster with HBase](hdinsight-hbase-tutorial-get-started.md#create-hbase-cluster)
+    > [AZURE.NOTE] このドキュメントの手順は、HDInsight クラスター バージョン 3.2、3.3、3.4 でテスト済みです。例で指定される既定値は、HDInsight 3.3 クラスターに対応しています。
 
+##プロジェクトを作成する
 
-    > [AZURE.NOTE] The steps in this document have been tested with HDInsight cluster versions 3.2 and 3.3. The default values provided in examples are for a HDInsight 3.3 cluster.
+1. 開発環境のコマンド ラインから、プロジェクトを作成する場所にディレクトリを変更します。例: `cd code\hdinsight`
 
-##<a name="create-the-project"></a>Create the project
-
-1. From the command line in your development environment, change directories to the location where you want to create the project, for example, `cd code\hdinsight`.
-
-2. Use the __mvn__ command, which is installed with Maven, to generate the scaffolding for the project.
+2. Maven でインストールされた __mvn__ コマンドを使用し、プロジェクトのスキャフォールディングを生成します。
 
         mvn archetype:generate -DgroupId=com.microsoft.examples -DartifactId=hbaseapp -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 
-    This command creates a directory in the current location, with the name specified by the __artifactID__ parameter (**hbaseapp** in this example.) This directory contains the following items:
+    これにより、__artifactID__ パラメーターで指定した名前 (この例では **hbaseapp**) で、新しいディレクトリが現在のディレクトリに作成されます。 このディレクトリには、次の項目が含まれます。
 
-    * __pom.xml__:  The Project Object Model ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) contains information and configuration details used to build the project.
+    * __pom.xml__: プロジェクト オブジェクト モデル ([POM](http://maven.apache.org/guides/introduction/introduction-to-the-pom.html)) には、プロジェクトのビルドに使用される情報と構成の詳細が含まれています。
 
-    * __src__: The directory that contains the __main\java\com\microsoft\examples__ directory, where you will author the application.
+    * __src__: アプリケーションを作成する __main\\java\\com\\microsoft\\examples__ ディレクトリに含まれるディレクトリです。
 
-3. Delete the __src\test\java\com\microsoft\examples\apptest.java__ file because it is not used in this example.
+3. __src\\test\\java\\com\\microsoft\\examples\\apptest.java__ ファイルはこの例では使用されないため、削除します。
 
-##<a name="update-the-project-object-model"></a>Update the Project Object Model
+##プロジェクト オブジェクト モデルを更新する
 
-1. Edit the __pom.xml__ file and add the following code inside the `<dependencies>` section:
+1. __pom.xml__ ファイルを編集し、`<dependencies>` セクション内に次のコードを追加します。
 
         <dependency>
           <groupId>org.apache.hbase</groupId>
@@ -64,18 +61,18 @@ Learn how to create and build an [Apache HBase](http://hbase.apache.org/) applic
           <version>1.1.2</version>
         </dependency>
 
-    This section tells Maven that the project requires __hbase-client__ version __1.1.2__. At compile time, this dependency is downloaded from the default Maven repository. You can use the [Maven Central Repository Search](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar) to learn more about this dependency.
+    これは Maven に対して、__hbase-client__ のバージョン __1.1.2__ がプロジェクトに必要であることを伝えます。これはコンパイル時に、既定の Maven リポジトリからダウンロードされます。[Maven セントラル リポジトリ検索](http://search.maven.org/#artifactdetails%7Corg.apache.hbase%7Chbase-client%7C0.98.4-hadoop2%7Cjar)を使用して、この依存関係についての詳細を確認できます。
 
-    > [AZURE.IMPORTANT] The version number must match the version of HBase that is provided with your HDInsight cluster. Use the following table to find the correct version number.
+    > [AZURE.IMPORTANT] バージョン番号は、HDInsight クラスターに付属の HBase のバージョンと一致する必要があります。次の表を使用して、正しいバージョン番号を調べてください。
 
-  	| HDInsight cluster version | HBase version to use |
-  	| ----- | ----- |
-  	| 3.2 | 0.98.4-hadoop2 |
-  	| 3.3 | 1.1.2 |
+    | HDInsight クラスターのバージョン | 使用する HBase のバージョン |
+    | ----- | ----- |
+    | 3\.2 | 0\.98.4-hadoop2 |
+    | 3\.3 | 1\.1.2 |
 
-    For more information on HDInsight versions and components, see [What are the different Hadoop components available with HDInsight](hdinsight-component-versioning.md).
+    HDInsight のバージョンとコンポーネントの詳細については、「[HDInsight で使用できる Hadoop コンポーネントの種類を教えてください](hdinsight-component-versioning.md)」を参照してください。
 
-2. If you are using an HDInsight 3.3 cluster, you must also add the following to the `<dependencies>` section:
+2. HDInsight 3.3 クラスターを使用している場合は、`<dependencies>` セクションに次のコードも追加する必要があります。
 
         <dependency>
             <groupId>org.apache.phoenix</groupId>
@@ -83,9 +80,9 @@ Learn how to create and build an [Apache HBase](http://hbase.apache.org/) applic
             <version>4.4.0-HBase-1.1</version>
         </dependency>
     
-    This dependency will load the phoenix-core components, which are used by Hbase version 1.1.x.
+    これにより、Hbase Version 1.1.x で使用される phoenix コア コンポーネントが読み込まれます。
 
-2. Add the following code to the __pom.xml__ file. This section must be inside the `<project>...</project>` tags in the file, for example, between `</dependencies>` and `</project>`.
+2. __pom.xml__ ファイルに次のコードを追加します。これは、ファイルの `<project>...</project>` タグ内に配置する必要があります (たとえば `</dependencies>` と `</project>` の間)。
 
         <build>
           <sourceDirectory>src</sourceDirectory>
@@ -130,17 +127,17 @@ Learn how to create and build an [Apache HBase](http://hbase.apache.org/) applic
           </plugins>
         </build>
 
-    The `<resources>` section configures a resource (__conf\hbase-site.xml__) that contains configuration information for HBase.
+    これにより、HBase の構成情報が含まれているリソース (__conf\\hbase-site.xml__) が構成されます。
 
-    > [AZURE.NOTE] You can also set configuration values via code. See the comments in the __CreateTable__ example that follows for how to do this.
+    > [AZURE.NOTE] コードを介して構成値を設定することもできます。その方法については、__CreateTable__ サンプル内のコメントをご覧ください。
 
-    This `<plugins>` section configures the [Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) and [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/). The compiler plug-in is used to compile the topology. The shade plug-in is used to prevent license duplication in the JAR package that is built by Maven. The reason this is used is that the duplicate license files cause an error at run time on the HDInsight cluster. Using maven-shade-plugin with the `ApacheLicenseResourceTransformer` implementation prevents this error.
+    これによって、[Maven Compiler Plugin](http://maven.apache.org/plugins/maven-compiler-plugin/) と [Maven Shade Plugin](http://maven.apache.org/plugins/maven-shade-plugin/) も構成されます。トポロジのコンパイルにはコンパイラ プラグインが使用されます。シャードのプラグインは、Maven でビルドされる JAR パッケージ内のライセンスの重複を防ぐために使用されます。ライセンス ファイルの重複は、HDInsight クラスターでの実行時に発生するエラーの原因となるためです。maven-shade-plugin を `ApacheLicenseResourceTransformer` 実装で使用すると、エラーを回避できます。
 
-    The maven-shade-plugin also produces an uber jar (or fat jar) that contains all the dependencies required by the application.
+    また、maven-shade-plugin は、アプリケーションで必要とされるすべての依存関係を含む uberjar (または fatjar) も生成します。
 
-3. Save the __pom.xml__ file.
+3. __pom.xml__ ファイルを保存します。
 
-4. Create a new directory named __conf__ in the __hbaseapp__ directory. In the __conf__ directory, create a file named __hbase-site.xml__. Use the following as the contents of the file:
+4. __conf__ という名前の新しいディレクトリを __hbaseapp__ ディレクトリ内に作成します。__conf__ ディレクトリに、__hbase-site.xml__ という名前の新しいファイルを作成し、内容として以下を使用します。
 
         <?xml version="1.0"?>
         <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
@@ -180,17 +177,17 @@ Learn how to create and build an [Apache HBase](http://hbase.apache.org/) applic
           </property>
         </configuration>
 
-    This file will be used to load the HBase configuration for an HDInsight cluster.
+    このファイルは、HDInsight クラスター用の HBase 構成の読み込みに使用されます。
 
-    > [AZURE.NOTE] This is a minimal hbase-site.xml file, and it contains the bare minimum settings for the HDInsight cluster.
+    > [AZURE.NOTE] これは、HDInsight クラスター用の最小限の設定が含まれた最小限の hbase-site.xml ファイルです。
 
-3. Save the __hbase-site.xml__ file.
+3. __hbase-site.xml__ ファイルを保存します。
 
-##<a name="create-the-application"></a>Create the application
+##アプリケーションを作成する
 
-1. Go to the __hbaseapp\src\main\java\com\microsoft\examples__ directory and rename the app.java file to __CreateTable.java__.
+1. __hbaseapp\\src\\main\\java\\com\\microsoft\\examples__ ディレクトリに移動し、app.java ファイルの名前を __CreateTable.java__ に変更します。
 
-2. Open the __CreateTable.java__ file and replace the existing contents with the following code:
+2. __CreateTable.java__ ファイルを開き、既存の内容を次のコードで置き換えます。
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -256,11 +253,11 @@ Learn how to create and build an [Apache HBase](http://hbase.apache.org/) applic
           }
         }
 
-    This is the __CreateTable__ class, which will create a table named __people__ and populate it with some predefined users.
+    これは、__people__ という名前のテーブルを作成して定義済みユーザーを設定する __CreateTable__ クラスです。
 
-3. Save the __CreateTable.java__ file.
+3. __CreateTable.java__ ファイルを保存します。
 
-4. In the __hbaseapp\src\main\java\com\microsoft\examples__ directory, create a new file named __SearchByEmail.java__. Use the following code as the contents of this file:
+4. __hbaseapp\\src\\main\\java\\com\\microsoft\\examples__ ディレクトリに、__SearchByEmail.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -333,11 +330,11 @@ Learn how to create and build an [Apache HBase](http://hbase.apache.org/) applic
           }
         }
 
-    The __SearchByEmail__ class can be used to query for rows by email address. Because it uses a regular expression filter, you can provide either a string or a regular expression when using the class.
+    __SearchByEmail__ クラスを使用し、電子メール アドレスによって行を照会できます。正規表現フィルターが使用されるため、このクラスを使用するときに文字列または正規表現を指定できます。
 
-5. Save the __SearchByEmail.java__ file.
+5. __SearchByEmail.java__ ファイルを保存します。
 
-6. In the __hbaseapp\src\main\hava\com\microsoft\examples__ directory, create a new file named __DeleteTable.java__. Use the following code as the contents of this file:
+6. __hbaseapp\\src\\main\\hava\\com\\microsoft\\examples__ ディレクトリに、__DeleteTable.java__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
         package com.microsoft.examples;
         import java.io.IOException;
@@ -359,32 +356,32 @@ Learn how to create and build an [Apache HBase](http://hbase.apache.org/) applic
           }
         }
 
-    This class is for cleaning up this example by disabling and dropping the table created by the __CreateTable__ class.
+    このクラスは、このサンプルのクリーンアップに使用するため、最初に __CreateTable__ クラスで作成されたテーブルを無効にし、次にそれを削除します。
 
-7. Save the __DeleteTable.java__ file.
+7. __DeleteTable.java__ ファイルを保存します。
 
-##<a name="build-and-package-the-application"></a>Build and package the application
+##アプリケーションをビルドおよびパッケージ化する
 
-1. Open a command prompt and change directories to the __hbaseapp__ directory.
+1. コマンド プロンプトを開き、ディレクトリを __hbaseapp__ ディレクトリに変更します。
 
-2. Use the following command to build a JAR file that contains the application:
+2. 次のコマンドを使用し、アプリケーションを含む JAR ファイルをビルドします。
 
         mvn clean package
 
-    This cleans any previous build artifacts, downloads any dependencies that have not already been installed, then builds and packages the application.
+    これにより、前のビルド アーティファクトを整理し、まだインストールされていない依存関係をダウンロードして、アプリケーションをビルドしてパッケージ化します。
 
-3. When the command completes, the __hbaseapp\target__ directory contains a file named __hbaseapp-1.0-SNAPSHOT.jar__.
+3. コマンドが完了すると、__hbaseapp\\target__ ディレクトリに __hbaseapp-1.0-SNAPSHOT.jar__ という名前のファイルが格納されます。
 
-    > [AZURE.NOTE] The __hbaseapp-1.0-SNAPSHOT.jar__ file is an uber jar (sometimes called a fat jar,) which contains all the dependencies required to run the application.
+    > [AZURE.NOTE] __hbaseapp-1.0-SNAPSHOT.jar__ ファイルは、アプリケーションの実行に必要なすべての依存関係を含む uberjar (fatjar とも呼ばれる) です。
 
-##<a name="upload-the-jar-file-and-start-a-job"></a>Upload the JAR file and start a job
+##JAR ファイルをアップロードしてジョブを開始する
 
-There are many ways to upload a file to your HDInsight cluster, as described in [Upload data for Hadoop jobs in HDInsight](hdinsight-upload-data.md). The following steps use Azure PowerShell.
+「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」で説明されているように、ファイルを HDInsight にアップロードするには多くの方法があります。次の手順では、Azure PowerShell を使用します。
 
 [AZURE.INCLUDE [upgrade-powershell](../../includes/hdinsight-use-latest-powershell.md)]
 
 
-1. After installing and configuring Azure PowerShell, create a new file named __hbase-runner.psm1__. Use the following as the contents of this file:
+1. Azure PowerShell をインストールし、構成した後で、__hbase-runner.psm1__ という名前の新しいファイルを作成します。このファイルの内容として以下を使用します。
 
         <#
         .SYNOPSIS
@@ -590,41 +587,41 @@ There are many ways to upload a file to your HDInsight cluster, as described in 
         # Only export the verb-phrase things
         export-modulemember *-*
 
-    This file contains two modules:
+    このファイルには 2 つのモジュールが含まれます。
 
-    * __Add-HDInsightFile__ - used to upload files to HDInsight
+    * __Add-HDInsightFile__ - HDInsight へのファイルのアップロードに使用されます
 
-    * __Start-HBaseExample__ - used to run the classes created earlier
+    * __Start-HBaseExample__ - 前に作成されたクラスの実行に使用されます
 
-2. Save the __hbase-runner.psm1__ file.
+2. __hbase-runner.psm1__ ファイルを保存します。
 
-3. Open a new Azure PowerShell window, change directories to the __hbaseapp__ directory, and then run the following command.
+3. 新しい Azure PowerShell ウィンドウを開き、ディレクトリを __hbaseapp__ ディレクトリに変更して、次のコマンドを実行します。
 
         PS C:\ Import-Module c:\path\to\hbase-runner.psm1
 
-    Change the path to the location of the __hbase-runner.psm1__ file created earlier. This registers the module for this Azure PowerShell session.
+    前に作成した __hbase-runner.psm1__ ファイルの場所にパスを変更します。これにより、この Azure PowerShell セッションのモジュールが登録されます。
 
-2. Use the following command to upload the __hbaseapp-1.0-SNAPSHOT.jar__ to your HDInsight cluster.
+2. 次のコマンドを使用して、__hbaseapp-1.0-SNAPSHOT.jar__ を HDInsight クラスターにアップロードします。
 
         Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
 
-    Replace __hdinsightclustername__ with the name of your HDInsight cluster. The command uploads the __hbaseapp-1.0-SNAPSHOT.jar__ to the __example/jars__ location in the primary storage for your HDInsight cluster.
+    __hdinsightclustername__ を、使用する HDInsight クラスターの名前で置き換えます。このコマンドは、HDInsight クラスターのプライマリ ストレージの __example/jars__ の場所に __hbaseapp-1.0-SNAPSHOT.jar__ をアップロードします。
 
-3. After the files are uploaded, use the following code to create a table using the __hbaseapp__:
+3. ファイルをアップロードした後で、次のコードを使用し、__hbaseapp__ を使用して新しいテーブルを作成します。
 
         Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
 
-    Replace __hdinsightclustername__ with the name of your HDInsight cluster.
+    __hdinsightclustername__ を、使用する HDInsight クラスターの名前で置き換えます。
 
-    This command creates a new table named __people__ in your HDInsight cluster. This command does not show any output in the console window.
+    このコマンドにより、HDInsight クラスターに __people__ という名前の新しいテーブルが作成されます。このコマンドを実行しても、コンソール ウィンドウに出力結果は表示されません。
 
-2. To search for entries in the table, use the following command:
+2. テーブル内のエントリを検索するには、次のコマンドを使用します。
 
         Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
 
-    Replace __hdinsightclustername__ with the name of your HDInsight cluster.
+    __hdinsightclustername__ を、使用する HDInsight クラスターの名前で置き換えます。
 
-    This command uses the **SearchByEmail** class to search for any rows where the __contactinformation__ column family and the __email__ column, contains the string __contoso.com__. You should receive the following results:
+    このコマンドは **SearchByEmail** クラスを使用して、__contactinformation__ の列ファミリの __email__ 列に文字列 __contoso.com__ が含まれている行を検索します。次の結果が表示されます。
 
           Franklin Holtz - ID: 2
           Franklin Holtz - franklin@contoso.com - ID: 2
@@ -633,24 +630,20 @@ There are many ways to upload a file to your HDInsight cluster, as described in 
           Gabriela Ingram - ID: 6
           Gabriela Ingram - gabriela@contoso.com - ID: 6
 
-    Using __fabrikam.com__ for the `-emailRegex` value returns the users that have __fabrikam.com__ in the email field. Since this search is implemented by using a regular expression-based filter, you can also enter regular expressions, such as __^r__, which returns entries where the email begins with the letter 'r'.
+    `-emailRegex` の値に __fabrikam.com__ を使用すると、__fabrikam.com__ が電子メール フィールドに含まれているユーザーが返されます。この検索は正規表現ベースのフィルターを使用して実装されるため、電子メールが "r" という文字で始まるエントリを返す __^r__ などの正規表現を使用することもできます。
 
-##<a name="delete-the-table"></a>Delete the table
+##テーブルを削除する
 
-When you are done with the example, use the following command from the Azure PowerShell session to delete the __people__ table used in this example:
+サンプルの操作が終了したら、Azure PowerShell セッションから次のコマンドを使用し、このサンプルで使用された __people__ テーブルを削除します。
 
     Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName hdinsightclustername
 
-Replace __hdinsightclustername__ with the name of your HDInsight cluster.
+__hdinsightclustername__ を、使用する HDInsight クラスターの名前で置き換えます。
 
-##<a name="troubleshooting"></a>Troubleshooting
+##トラブルシューティング
 
-###<a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>No results or unexpected results when using Start-HBaseExample
+###Start-HBaseExample を使用したときに、結果が表示されないか、予期しない結果が表示される
 
-Use the `-showErr` parameter to view the standard error (STDERR) that is produced while running the job.
+`-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

@@ -2,35 +2,30 @@
 
 ![Virtual machines in a standalone cloud service](./media/virtual-machines-common-classic-connect-vms/CloudServiceExample.png)
 
-If you place your virtual machines in a virtual network, you can decide how many cloud services you want to use for load balancing and availability sets. Additionally, you can organize the virtual machines on subnets in the same way as your on-premises network and connect the virtual network to your on-premises network. Here's an example:
+仮想マシンを仮想ネットワークに配置する場合、負荷分散と可用性セットに使用するクラウド サービスの数を決めることができます。さらに、オンプレミスのネットワークと同じように仮想マシンをサブネットにまとめ、仮想ネットワークをオンプレミスのネットワークに接続することもできます。次に例を示します。
 
 ![Virtual machines in a virtual network](./media/virtual-machines-common-classic-connect-vms/VirtualNetworkExample.png)
 
-Virtual networks are the recommended way to connect virtual machines in Azure. The best practice is to configure each tier of your application in a separate cloud service. However, you may need to combine some virtual machines from different application tiers into the same cloud service to remain within the maximum of 200 cloud services per subscription. To review this and other limits, see [Azure Subscription and Service Limits, Quotas, and Constraints](../articles/azure-subscription-service-limits.md).
+仮想ネットワークは、Azure で仮想マシンを接続するためのお勧めの方法です。また、アプリケーションの各階層を別々のクラウド サービスで構成することもお勧めします。ただし、各サブスクリプションで割り当てられるクラウド サービスの最大数である 200 を超えないように、異なるアプリケーション層にあるいくつかの仮想マシンを同じクラウド サービスにまとめることが必要になる場合もあります。これとその他の制限については、「[Azure サブスクリプションとサービスの制限、クォータ、および制約](../articles/azure-subscription-service-limits.md)」をご覧ください。
 
-## <a name="connect-vms-in-a-virtual-network"></a>Connect VMs in a virtual network
+## 仮想ネットワークでの VM の接続
 
-To connect virtual machines in a virtual network:
+仮想マシンを仮想ネットワークで接続する方法:
 
-1.  Create the virtual network in the [Azure portal](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md).
-2.  Create the set of cloud services for your deployment to reflect your design for availability sets and load balancing. In the Azure classic portal, click **New > Compute > Cloud Service > Custom Create** for each cloud service.
-3.  To create each new virtual machine, click **New > Compute > Virtual Machine > From Gallery**. Choose the correct cloud service and virtual network for the VM. If the cloud service is already joined to a virtual network, its name will already be selected for you.
+1.	[Azure ポータル](../articles/virtual-network/virtual-networks-create-vnet-classic-pportal.md)で仮想ネットワークを作成します。
+2.	デプロイメントで可用性セットと負荷分散用の設計を反映させるため、クラウド サービスのセットを作成します。Azure クラシック ポータルで、各クラウド サービスについて **[新規]、[コンピューティング]、[クラウド サービス]、[カスタム作成]** の順にクリックします。
+3.	新しい仮想マシンを作成するには、それぞれについて **[新規]、[Compute]、[仮想マシン]、[ギャラリーから]** の順にクリックします。VM の適切なクラウド サービスと仮想ネットワークを選択します。仮想ネットワークに既に参加しているクラウド サービスがある場合、その名前が既定で選択されます。
 
 ![Selecting a cloud service for a virtual machine](./media/virtual-machines-common-classic-connect-vms/VMConfig1.png)
 
-## <a name="connect-vms-in-a-standalone-cloud-service"></a>Connect VMs in a standalone cloud service
+## スタンドアロン クラウド サービスでの VM の接続
 
-To connect virtual machines in a standalone cloud service:
+仮想マシンをスタンドアロンのクラウド サービスで接続するには:
 
-1.  Create the cloud service in the [Azure classic portal](http://manage.windowsazure.com). Click **New > Compute > Cloud Service > Custom Create**. Or, you can create the cloud service for your deployment when you create your first virtual machine.
+1.	[Azure クラシック ポータル](http://manage.windowsazure.com)でクラウド サービスを作成します。**[新規]、[Compute]、[クラウド サービス]、[カスタム作成]** の順にクリックします。また、仮想マシンを初めて作成するときに、デプロイメント用のクラウド サービスを作成することもできます。
 
-2.  When you create the virtual machines, choose the name of cloud service created in the previous step.
+2.	仮想マシンを作成するときは、前の手順で作成したクラウド サービスの名前を選択します。
 
-    ![Add a virtual machine to an existing cloud service](./media/virtual-machines-common-classic-connect-vms/Connect-VM-to-CS.png)
+	![仮想マシンを既存のクラウド サービスに追加する](./media/virtual-machines-common-classic-connect-vms/Connect-VM-to-CS.png)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0330_2016------>

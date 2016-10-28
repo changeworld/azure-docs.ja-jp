@@ -1,90 +1,86 @@
 <properties 
-    pageTitle="Learn about Enterprise Integration Pack Decode AS2 Message Connctor | Microsoft Azure App Service | Microsoft Azure" 
-    description="Learn how to use partners with the Enterprise Integration Pack and Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="padmavc" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Enterprise Integration Pack の Decode AS2 Message コネクタの詳細情報 | Microsoft Azure App Service | Microsoft Azure" 
+	description="Enterprise Integration Pack と Logic Apps を使用してパートナーを使用する方法について説明します。" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="padmavc" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="padmavc"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/15/2016" 
+	ms.author="padmavc"/>
 
+# Decode AS2 Message を使ってみる
 
-# <a name="get-started-with-decode-as2-message"></a>Get started with Decode AS2 Message
+Decode AS2 Message に接続すると、メッセージを転送するときに、セキュリティと信頼性を確保できます。デジタル署名、解読、およびメッセージ処理通知 (MDN) による受信確認が可能になります。
 
-Connect to Decode AS2 Message to establish security and reliability while transmitting messages. It provides digital signing, decryption, and acknowledgements via Message Disposition Notifications (MDN).
+## 接続の作成
 
-## <a name="create-the-connection"></a>Create the connection
+### 前提条件
 
-### <a name="prerequisites"></a>Prerequisites
+* Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
 
-* An Azure account; you can create a [free account](https://azure.microsoft.com/free)
+* Decode AS2 Message コネクタを使用するには、統合アカウントが必要です。[統合アカウント](./app-service-logic-enterprise-integration-create-integration-account.md)、[パートナー](./app-service-logic-enterprise-integration-partners.md)、および [AS2 契約](./app-service-logic-enterprise-integration-as2.md)の作成方法の詳細を確認してください。
 
-* An Integration Account is required to use Decode AS2 message connector. See details on how to create an [Integration Account](./app-service-logic-enterprise-integration-create-integration-account.md), [partners](./app-service-logic-enterprise-integration-partners.md) and an [AS2 agreement](./app-service-logic-enterprise-integration-as2.md)
+### 次の手順に従って、Decode AS2 Message に接続します。
 
-### <a name="connect-to-decode-as2-message-using-the-following-steps:"></a>Connect to Decode AS2 Message using the following steps:
+1. [ロジック アプリの作成](./app-service-logic-create-a-logic-app.md)に関する記事に例が記載されています。
 
-1. [Create a Logic App](./app-service-logic-create-a-logic-app.md) provides an example.
+2. このコネクタにはトリガーがありません。ロジック アプリを起動するには、他のトリガー (要求トリガーなど) を使用します。Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。ドロップダウン リストから [Microsoft が管理している API を表示] を選択し、検索ボックスに「AS2」と入力します。[AS2 – Decode AS2 Message] を選択します。
 
-2. This connector does not have any triggers. Use other triggers to start the Logic App, such as a Request trigger.  In the Logic App designer, add a trigger and add an action.  Select Show Microsoft managed APIs in the drop-down list and then enter “AS2” in the search box.  Select AS2 – Decode AS2 Message
+	![Search AS2](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage1.png)
 
-    ![Search AS2](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage1.png)
+3. これまでに統合アカウントへの接続を作成したことがない場合は、接続の詳細情報を求められます。
 
-3. If you haven’t previously created any connections to Integration Account, you are prompted for the connection details
+	![Create integration connection](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage2.png)
 
-    ![Create integration connection](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage2.png)
+4. 統合アカウントの詳細を入力します。アスタリスクが付いているプロパティは必須です。
 
-4. Enter the Integration Account details.  Properties with an asterisk are required
+	| プロパティ | 詳細 |
+	| --------   | ------- |
+	| 接続名 * | 接続の任意の名前を入力します。 |
+	| 統合アカウント * | 統合アカウント名を入力します。統合アカウントとロジック アプリが同じ Azure の場所にあることを確認してください。 |
 
-  	| Property   | Details |
-  	| --------   | ------- |
-  	| Connection Name *    | Enter any name for your connection |
-  	| Integration Account * | Enter the Integration Account name. Be sure your Integration Account and Logic app are in the same Azure location |
+  	入力を完了すると、接続の詳細は次のようになります。
 
-    Once complete, your connection details look similar to the following
+  	![integration connection](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage3.png)
 
-    ![integration connection](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage3.png)
+5. **[作成]** を選択します。
+	
+6. 接続が作成されたことを確認します。これで、ロジック アプリで他の手順に進むことができます。
 
-5. Select **Create**
-    
-6. Notice the connection has been created.  Now, proceed with the other steps in your Logic App
+	![integration connection created](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage4.png)
 
-    ![integration connection created](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage4.png) 
+7. 要求の出力から本文とヘッダーを選択します。
 
-7. Select Body and Headers from Request outputs
+	![provide mandatory fields](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage5.png)
 
-    ![provide mandatory fields](./media/app-service-logic-enterprise-integration-AS2connector/as2decodeimage5.png) 
+## AS2 Decode の機能
 
-## <a name="the-as2-decode-does-the-following"></a>The AS2 Decode does the following
+* AS2/HTTP ヘッダーを処理する
+* 署名を検証する (構成されている場合)
+* メッセージを解読する (構成されている場合)
+* メッセージを展開する (構成されている場合)
+* 受信した MDN と元の送信メッセージを調整する
+* 否認不可データベースのレコードを更新し、関連付ける
+* AS2 状態レポート用のレコードを書き込む
+* 出力ペイロードの内容は、base64 でエンコードされる
+* AS2 契約の構成に基づいて、MDN が必要かどうかや、MDN を同期にするか非同期にするかを判断する
+* 同期または非同期の MDN を生成する (契約の構成に基づいて)
+* MDN の関連付けトークンとプロパティを設定する
 
-* Processes AS2/HTTP headers
-* Verifies the signature (if configured)
-* Decrypts the messages (if configured)
-* Decompresses the message (if configured)
-* Reconciles a received MDN with the original outbound message
-* Updates and correlates records in the non-repudiation database
-* Writes records for AS2 status reporting
-* The output payload contents are base64 encoded
-* Determines whether an MDN is required, and whether the MDN should be synchronous or asynchronous based on configuration in AS2 agreement
-* Generates a synchronous or asynchronous MDN (based on agreement configurations)
-* Sets the correlation tokens and properties on the MDN
+##試してみる
 
-##<a name="try-it-for-yourself"></a>Try it for yourself
+実際に試してみましょう。Logic Apps AS2 の機能を使用して、本格的な機能を備えた独自のロジック アプリをデプロイするには、[こちら](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/)をクリックしてください。
 
-Why not give it a try. Click [here](https://azure.microsoft.com/documentation/templates/201-logic-app-as2-send-receive/) to deploy a fully operational logic app of your own using the Logic Apps AS2 features 
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+[Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-[Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack") 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

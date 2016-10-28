@@ -1,48 +1,43 @@
 <properties
-    pageTitle="Database on server is not currently available, connect to SQL Database | Microsoft Azure"
-    description="Troubleshoot the database on server is not currently available error when an application connects to SQL Database."
-    services="sql-database"
-    documentationCenter=""
-    authors="dalechen"
-    manager="felixwu"
-    editor=""
-    keywords="database on server is not currently available, connect to sql database"/>
+	pageTitle="サーバーのデータベースは現在使用できません、SQL データベースに接続してください | Microsoft Azure"
+	description="アプリケーションが SQL データベースに接続するときの ";サーバーのデータベースは現在使用できません"; というエラーをトラブルシューティングします。"
+	services="sql-database"
+	documentationCenter=""
+	authors="dalechen"
+	manager="felixwu"
+	editor=""
+	keywords="サーバーのデータベースは現在使用できません, SQL データベースへの接続"/>
 
 <tags
-    ms.service="sql-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/21/2016"
-    ms.author="daleche"/>
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/21/2016"
+	ms.author="daleche"/>
 
-
-# <a name="error-"database-on-server-is-not-currently-available"-when-connecting-to-sql-database"></a>Error "Database on server is not currently available" when connecting to sql database
+# SQL データベースに接続するときの "サーバーのデータベースは現在使用できません" というエラー
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-When an application connects to an Azure SQL database, you receive the following error message:
+アプリケーションが Azure SQL データベースに接続するとき、次のエラー メッセージが表示されます。
 
 ```
 Error code 40613: "Database <x> on server <y> is not currently available. Please retry the connection later. If the problem persists, contact customer support, and provide them the session tracing ID of <z>"
 ```
 
-> [AZURE.NOTE] This error message is typically transient (short-lived).
+> [AZURE.NOTE] 通常、このエラー メッセージは (短時間の) 一時的なものです。
 
-This error occurs when the Azure database is being moved (or reconfigured) and your application loses its connection to the SQL database. SQL database reconfiguration events occurs because of a planned event (for example, a software upgrade) or an unplanned event (for example, a process crash, or load balancing). Most reconfiguration events are generally short-lived and should be completed in less than 60 seconds at most. However, these events can occasionally take longer to finish, such as when a large transaction causes a long-running recovery.
+このエラーは、Azure データベースが移動 (または再構成) されたり、アプリケーションが SQL データベースへの接続を失ったときに発生します。SQL データベースの再構成イベントは、計画されたイベント (ソフトウェアのアップグレードなど) または計画されていないイベント (プロセスのクラッシュ、負荷分散など) が原因で発生します。通常、ほとんどの再構成イベントは一時的であり、長くて 1 分もかかりませんが、これらのイベントは、大規模なトランザクションによる実行時間の長い復旧など、場合によっては、完了に時間がかかることがあります。
 
-## <a name="steps-to-resolve-transient-connectivity-issues"></a>Steps to resolve transient connectivity issues
-1.  Check the [Microsoft Azure Service Dashboard](https://azure.microsoft.com/status) for any known outages that occurred during the time during which the errors were reported by the application.
-2. Applications that connect to a cloud service such as Azure SQL Database should expect periodic reconfiguration events and implement retry logic to handle these errors instead of surfacing these as application errors to users. Review the [Transient errors](sql-database-connectivity-issues.md) section and the best practices and design guidelines at [SQL Database Development Overview](sql-database-develop-overview.md) for more information and general retry strategies. Then, see code samples at [Connection Libraries for SQL Database and SQL Server](sql-database-libraries.md) for specifics.
-3.  As a database approaches its resource limits, it can seem to be a transient connectivity issue. See [Troubleshooting Performance Issues](sql-database-troubleshoot-performance.md).
-4.  If connectivity problems continue, or if the duration for which your application encounters the error exceeds 60 seconds or if you see multiple occurrences of the error in a given day, file an Azure support request by selecting **Get Support** on the [Azure Support](https://azure.microsoft.com/support/options) site.
+## 一時的な接続の問題を解決する手順
+1.	アプリケーションによって報告されたエラーで発生している既知の障害については、[Microsoft Azure サービス ダッシュボード](https://azure.microsoft.com/status)を参照してください。
+2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、これらをアプリケーション エラーとしてユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。詳細および一般的な再試行戦略については、[一時エラー](sql-database-connectivity-issues.md)のセクション、および「[SQL Database の開発: 概要](sql-database-develop-overview.md)」のベスト プラクティスや設計ガイドラインを参照してください。その後、具体的な内容を「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」のコード サンプルで確認してください。
+3.	データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。[パフォーマンスの問題のトラブルシューティング](sql-database-troubleshoot-performance.md)のトピックを参照してください。
+4.	接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、[Azure サポート](https://azure.microsoft.com/support/options) サイトの **[サポートの要求]** を選択して、サポート要求を送信してください。
 
-## <a name="next-steps"></a>Next steps
-- If you receive a different error, evaluate the [error message](sql-database-develop-error-messages.md) for clues about the cause.
-- If the issue is persistent, visit the guidance in [Troubleshoot common connection issues to Azure SQL Database](sql-database-troubleshoot-common-connection-issues.md).
+## 次のステップ
+- 別のエラーが発生している場合は、原因の手掛かりとなる[エラー メッセージ](sql-database-develop-error-messages.md)を確認してください。
+- 問題が解消されない場合は、「[Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md)」のガイダンスを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

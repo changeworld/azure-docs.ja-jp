@@ -1,10 +1,10 @@
 <properties
 pageTitle="Trello | Microsoft Azure"
-description="Create Logic apps with Azure App service. Trello gives you perspective over all your projects, at work and at home.  It is an easy, free, flexible, and visual way to manage your projects and organize anything.  Connect to Trello to manage your boards, lists and cards"
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Azure App Service を使用してロジック アプリを作成します。Trello を使用すると、職場でも家庭でも、すべてのプロジェクトを把握できます。プロジェクトを管理したり何かを整理するための、簡単で、自由度が高く、柔軟性があり、視覚化された方法です。Trello に接続してボード、一覧、およびカードを管理する"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,595 +17,591 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# Trello コネクタの使用
 
-# <a name="get-started-with-the-trello-connector"></a>Get started with the Trello connector
+Trello を使用すると、職場でも家庭でも、すべてのプロジェクトを把握できます。プロジェクトを管理したり何かを整理するための、簡単で、自由度が高く、柔軟性があり、視覚化された方法です。Trello に接続すると、ボード、一覧、およびカードを管理できます。
 
-Trello gives you perspective over all your projects, at work and at home.  It is an easy, free, flexible, and visual way to manage your projects and organize anything.  Connect to Trello to manage your boards, lists and cards.
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+Trello コネクタは、アクションとして使用できます。Trello コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-The Trello connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+ Trello コネクタでは、次のアクションやトリガーを使用できます。
 
- The Trello connector has the following action(s) and/or trigger(s) available:
+### Trello のアクション
+実行できるアクションは以下のとおりです。
 
-### <a name="trello-actions"></a>Trello actions
-You can take these action(s):
-
-|Action|Description|
+|アクション|Description|
 |--- | ---|
-|[ListCards](connectors-create-api-trello.md#listcards)|List cards in board|
-|[GetCard](connectors-create-api-trello.md#getcard)|Get card by id|
-|[UpdateCard](connectors-create-api-trello.md#updatecard)|Update card|
-|[DeleteCard](connectors-create-api-trello.md#deletecard)|Delete card|
-|[CreateCard](connectors-create-api-trello.md#createcard)|Creates a new card in your trello account|
-|[ListBoards](connectors-create-api-trello.md#listboards)|List boards|
-|[GetBoard](connectors-create-api-trello.md#getboard)|Gets board by Id|
-|[ListLists](connectors-create-api-trello.md#listlists)|List card lists in board|
-|[GetList](connectors-create-api-trello.md#getlist)|Gets list by Id|
-### <a name="trello-triggers"></a>Trello triggers
-You can listen for these event(s):
+|[ListCards](connectors-create-api-trello.md#listcards)|ボードのカードを一覧表示します|
+|[GetCard](connectors-create-api-trello.md#getcard)|ID を使用してカードを取得します|
+|[UpdateCard](connectors-create-api-trello.md#updatecard)|カードを更新します|
+|[DeleteCard](connectors-create-api-trello.md#deletecard)|カードを削除します|
+|[CreateCard](connectors-create-api-trello.md#createcard)|Trello アカウントに新しいカードを作成します|
+|[ListBoards](connectors-create-api-trello.md#listboards)|ボードを一覧表示します|
+|[GetBoard](connectors-create-api-trello.md#getboard)|ID を使用してボードを取得します|
+|[ListLists](connectors-create-api-trello.md#listlists)|ボードのカードの一覧を一覧表示します|
+|[GetList](connectors-create-api-trello.md#getlist)|ID を使用して一覧を取得します|
+### Trello のトリガー
+次のイベントをリッスンできます。
 
-|Trigger | Description|
+|トリガー | Description|
 |--- | ---|
-|When a new card is added to a board|Triggers a flow when a new card is added to a board|
-|When a new card is added to a list|Triggers a flow when a new card is added to a list|
+|ボードに新しいカードが追加されたタイミング|ボードに新しいカードが追加されたときに、フローをトリガーします|
+|一覧に新しいカードが追加されたタイミング|一覧に新しいカードが追加されたときに、フローをトリガーします|
 
 
-## <a name="create-a-connection-to-trello"></a>Create a connection to Trello
-To create Logic apps with Trello, you must first create a **connection** then provide the details for the following properties: 
+## Trello への接続を作成する
+Trello を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|Property| Required|Description|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|Token|Yes|Provide Trello Credentials|
-After you create the connection, you can use it to execute the actions and listen for the triggers described in this article. 
+|トークン|はい|Trello 資格情報を提供します|
+接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
 
->[AZURE.INCLUDE [Steps to create a connection to Trello](../../includes/connectors-create-api-trello.md)]
+>[AZURE.INCLUDE [Trello への接続を作成する手順](../../includes/connectors-create-api-trello.md)]
 
->[AZURE.TIP] You can use this connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
-## <a name="reference-for-trello"></a>Reference for Trello
-Applies to version: 1.0
+## Trello のリファレンス
+適用されるバージョン: 1.0
 
-## <a name="onnewcardinboard"></a>OnNewCardInBoard
-When a new card is added to a board: Triggers a flow when a new card is added to a board 
+## OnNewCardInBoard
+ボードに新しいカードが追加されたタイミング: ボードに新しいカードが追加されたときに、フローをトリガーします。
 
-```GET: /trigger/boards/{board_id}/cards``` 
+```GET: /trigger/boards/{board_id}/cards```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|path|none|Unique id of the board to fetch cards in|
+|board\_id|string|○|path|なし|カードを取得するボードの一意の ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="onnewcardinlist"></a>OnNewCardInList
-When a new card is added to a list: Triggers a flow when a new card is added to a list 
+## OnNewCardInList
+一覧に新しいカードが追加されたタイミング: 一覧に新しいカードが追加されたときに、フローをトリガーします。
 
-```GET: /trigger/lists/{list_id}/cards``` 
+```GET: /trigger/lists/{list_id}/cards```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|query|none|Unique id of the board to fetch cards in|
-|list_id|string|yes|path|none|Unique id of the list to fetch cards in|
+|board\_id|string|○|query|なし|カードを取得するボードの一意の ID|
+|list\_id|string|○|path|なし|カードを取得する一覧の一意の ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="listcards"></a>ListCards
-List cards in board: List cards in board 
+## ListCards
+ボードのカードの一覧表示: ボードのカードを一覧表示します。
 
-```GET: /boards/{board_id}/cards``` 
+```GET: /boards/{board_id}/cards```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|path|none|Id of the board to fetch all the cards|
-|actions|string|no|query|none|List the actions to return. Specify 'all' or a comma seperated list of valid values|
-|attachments|boolean|no|query|none|Show attachments|
-|attachment_fields|string|no|query|none|List the attachment fields to return. Specify 'all' or a comma seperated list of valid values|
-|stickers|boolean|no|query|none|Show stickers|
-|members|boolean|no|query|none|Show members|
-|memeber_fields|string|no|query|none|List the member fields to return. Specify 'all' or a comma seperated list of valid values|
-|CheckItemStates|boolean|no|query|none|Return the card states|
-|Checklists|string|no|query|none|Show checklists|
-|limit|integer|no|query|none|The max number of results to return, between 1 and 1000|
-|since|string|no|query|none|Fetch all cards after this date|
-|before|string|no|query|none|Fetch all cards before this date|
-|filter|string|no|query|none|Filter the response|
-|fields|string|no|query|none|List the card fields to return. Specify 'all' or a comma seperated list of valid values|
+|board\_id|string|○|path|なし|すべてのカードを取得するボードの ID|
+|actions|string|×|query|なし|返すアクションの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|attachments|boolean|×|query|なし|添付ファイルを表示するか|
+|attachment\_fields|string|×|query|なし|返す添付ファイル フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|stickers|boolean|×|query|なし|ステッカーを表示するか|
+|members|boolean|×|query|なし|メンバーを表示するか|
+|memeber\_fields|string|×|query|なし|返すメンバー フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|CheckItemStates|boolean|×|query|なし|カードの状態を返すか|
+|Checklists|string|×|query|なし|表示チェックリスト|
+|limit|integer|×|query|なし|返す結果の最大数。1 ～ 1000|
+|since|string|×|query|なし|この日付より後のすべてのカードを取得します|
+|準備|string|×|query|なし|この日付より前のすべてのカードを取得します|
+|filter|string|×|query|なし|応答をフィルター処理します|
+|fields|string|×|query|なし|返すカード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="getcard"></a>GetCard
-Get card by id: Get card by id 
+## GetCard
+ID を使用するカードの取得: ID を使用してカードを取得します。
 
-```GET: /cards/{card_id}``` 
+```GET: /cards/{card_id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|query|none|Id of the board to fetch cards in|
-|card_id|string|yes|path|none|Id of the card to fetch|
-|actions|string|no|query|none|List the actions to return. Specify 'all' or a comma seperated list of valid values|
-|actions_entities|boolean|no|query|none|Return action entities|
-|actions_display|boolean|no|query|none|Return action displays|
-|actions_limit|integer|no|query|none|Max number of actions to return|
-|action_fields|string|no|query|none|List of action fields to return for each action. Specify 'all' or a comma seperated list of valid values|
-|action_memberCreator_fields|string|no|query|none|List of action member creator fields to return. Specify 'all' or a comma seperated list of valid values|
-|attachments|boolean|no|query|none|Return attachments|
-|attachement_fields|string|no|query|none|List of attachment fields to return for each attachment. Specify 'all' or a comma seperated list of valid values|
-|members|boolean|no|query|none|Return members|
-|member_fields|string|no|query|none|List of member fields to return for each member. Specify 'all' or a comma seperated list of valid values|
-|membersVoted|boolean|no|query|none|Return voted members|
-|memberVoted_fields|string|no|query|none|List of voted member fields to return for each voted member. Specify 'all' or a comma seperated list of valid values|
-|checkItemStates|boolean|no|query|none|Return card states|
-|checkItemState_fields|string|no|query|none|List of state fields to return for each of the card item state. Specify 'all' or a comma seperated list of valid values|
-|checklists|string|no|query|none|Return checklists|
-|checklist_fields|string|no|query|none|List of checklist fields to return for each checklist. Specify 'all' or a comma seperated list of valid values|
-|board|boolean|no|query|none|Return the board which the card belongs to|
-|board_fields|string|no|query|none|List the board fields to return. Specify 'all' or a comma seperated list of valid values|
-|list|boolean|no|query|none|Return the list which the card belongs to|
-|list_fields|string|no|query|none|List the list fields to return. Specify 'all' or a comma seperated list of valid values|
-|stickers|boolean|no|query|none|Return stickers|
-|sticker_fields|string|no|query|none|List the sticker fields to return for each sticker. Specify 'all' or a comma seperated list of valid values|
-|fields|string|no|query|none|List the card fields to return. Specify 'all' or a comma seperated list of valid values|
+|board\_id|string|○|query|なし|カードを取得するボードの ID|
+|card\_id|string|○|path|なし|取得するカードの ID|
+|actions|string|×|query|なし|返すアクションの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|actions\_entities|boolean|×|query|なし|アクション エンティティを返すか|
+|actions\_display|boolean|×|query|なし|アクション表示を返すか|
+|actions\_limit|integer|×|query|なし|返すアクションの最大数|
+|action\_fields|string|×|query|なし|各アクションについて返すアクション フィールドの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|action\_memberCreator\_fields|string|×|query|なし|返すアクション メンバー作成者のフィールドの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|attachments|boolean|×|query|なし|添付ファイルを返すか|
+|attachement\_fields|string|×|query|なし|各添付ファイルについて返す添付ファイルのフィールドの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|members|boolean|×|query|なし|メンバーを返すか|
+|member\_fields|string|×|query|なし|各メンバーについて対して返すメンバー フィールドの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|membersVoted|boolean|×|query|なし|投票されたメンバーを返すか|
+|memberVoted\_fields|string|×|query|なし|投票された各メンバーについて返す投票されたメンバー フィールドの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|checkItemStates|boolean|×|query|なし|カードの状態を返すか|
+|checkItemState\_fields|string|×|query|なし|各カード項目の状態について返す状態フィールドの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|checklists|string|×|query|なし|返すチェックリスト|
+|checklist\_fields|string|×|query|なし|各チェックリストについて返すチェックリスト フィールドの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|board|boolean|×|query|なし|カードが属するボードを返すか|
+|board\_fields|string|×|query|なし|返すボード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|list|boolean|×|query|なし|カードが属する一覧を返すか|
+|list\_fields|string|×|query|なし|返す一覧フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|stickers|boolean|×|query|なし|ステッカーを返すか|
+|sticker\_fields|string|×|query|なし|各ステッカーについて返すステッカー フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|fields|string|×|query|なし|返すカード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="updatecard"></a>UpdateCard
-Update card: Update card 
+## UpdateCard
+カードの更新: カードを更新します。
 
-```PUT: /cards/{card_id}``` 
+```PUT: /cards/{card_id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|query|none|Id of the board to fetch cards from|
-|card_id|string|yes|path|none|Id of the card to update|
-|updateCard| |yes|body|none|Updated card values|
+|board\_id|string|○|query|なし|カードを取得するボードの ID|
+|card\_id|string|○|path|なし|更新するカードの ID|
+|updateCard| |○|body|なし|更新されたカード値|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="deletecard"></a>DeleteCard
-Delete card: Delete card 
+## DeleteCard
+カードの削除: カードを削除します。
 
-```DELETE: /cards/{card_id}``` 
+```DELETE: /cards/{card_id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|query|none|Id of the board to fetch cards from|
-|card_id|string|yes|path|none|Id of the card to delete|
+|board\_id|string|○|query|なし|カードを取得するボードの ID|
+|card\_id|string|○|path|なし|削除するカードの ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="createcard"></a>CreateCard
-Create card: Creates a new card in your trello account 
+## CreateCard
+カードの作成: Trello アカウントに新しいカードを作成します。
 
-```POST: /cards``` 
+```POST: /cards```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|query|none|Unique id of the board to create cards in|
-|newCard| |yes|body|none|New card to add to the trello board|
+|board\_id|string|○|query|なし|カードを作成するボードの一意の ID|
+|newCard| |○|body|なし|Trello ボードに追加する新しいカード|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="listboards"></a>ListBoards
-List boards: List boards 
+## ListBoards
+ボードの一覧表示: ボードを一覧表示します。
 
-```GET: /member/me/boards``` 
+```GET: /member/me/boards```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|filter|string|no|query|none|List filters to apply to board results. Specify 'all' or a comma seperated list of valid values|
-|fields|string|no|query|none|List the board fields to return. Specify 'all' or a comma seperated list of valid values|
-|actions|string|no|query|none|List the action fields to return. Specify 'all' or a comma seperated list of valid values|
-|actions_entities|boolean|no|query|none|Return action entities|
-|actions_limit|integer|no|query|none|Max number of actions to return|
-|actions_format|string|no|query|none|Specify the format of the actions to return|
-|actions_since|string|no|query|none|Return actions after the specified date|
-|action_fields|string|no|query|none|List the fields of the action to return. Specify 'all' or a comma seperated list of valid values|
-|memberships|string|no|query|none|Specify membership information to return. Specify 'all' or a comma seperated list of valid values|
-|organization|boolean|no|query|none|Specify to return organization information|
-|organization_fields|string|no|query|none|List the organization fields to return. Specify 'all' or a comma seperated list of valid values|
-|lists|string|no|query|none|Specify whether to return lists which belong to the board|
+|filter|string|×|query|なし|ボードの結果に適用するフィルターの一覧。'all' または有効な値のコンマ区切りの一覧を指定します|
+|fields|string|×|query|なし|返すボード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|actions|string|×|query|なし|返すアクション フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|actions\_entities|boolean|×|query|なし|アクション エンティティを返すか|
+|actions\_limit|integer|×|query|なし|返すアクションの最大数|
+|actions\_format|string|×|query|なし|返すアクションの形式を指定します|
+|actions\_since|string|×|query|なし|指定した日付より後のアクションを返します|
+|action\_fields|string|×|query|なし|返すアクションのフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|memberships|string|×|query|なし|返すメンバーシップ情報を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|organization|boolean|×|query|なし|組織の情報を返すかどうかを指定します|
+|organization\_fields|string|×|query|なし|返す組織フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|lists|string|×|query|なし|ボードに属している一覧を返すかどうかを指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="getboard"></a>GetBoard
-Gets board by Id: Gets board by Id 
+## GetBoard
+ID を使用するボードの取得: ID を使用してボードを取得します。
 
-```GET: /boards/{board_id}``` 
+```GET: /boards/{board_id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|path|none|Unique id of the board to get|
-|actions|string|no|query|none|List the actions to return. Specify 'all' or a comma seperated list of valid values|
-|action_entities|boolean|no|query|none|Specify whether to return action entities|
-|actions_display|boolean|no|query|none|Specify whether to return actions display|
-|actions_format|string|no|query|none|Specify the format of the actions to return|
-|actions_since|string|no|query|none|Only return the actions after this date|
-|actions_limit|integer|no|query|none|Max number of actions to return|
-|action_fields|string|no|query|none|List the fields to return with each field. Specify 'all' or a comma seperated list of valid values|
-|action_memeber|boolean|no|query|none|Specify whether to return action members|
-|action_member_fields|string|no|query|none|List the member fields to return with each action member. Specify 'all' or a comma seperated list of valid values|
-|action_memberCreator|boolean|no|query|none|Specify whether to return action member creator|
-|action_memberCreator_fields|string|no|query|none|List the action member creator fields to return. Specify 'all' or a comma seperated list of valid values|
-|cards|string|no|query|none|Specify the cards to return|
-|card_fields|string|no|query|none|List the fields to return for each card. Specify 'all' or a comma seperated list of valid values|
-|card_attachments|boolean|yes|query|none|Specify whether to return attachments on cards|
-|card_attachment_fields|string|no|query|none|List the attachment fields to return for each attachment. Specify 'all' or a comma seperated list of valid values|
-|card_checklists|string|no|query|none|Specify the checklists to return for each card|
-|card_stickers|boolean|no|query|none|Specify whether to return card stickers|
-|boardStarts|string|no|query|none|Specify the board stars to return|
-|labels|string|no|query|none|Specify the labels to return|
-|label_fields|string|no|query|none|List the label fields to return for each label. Specify 'all' or a comma seperated list of valid values|
-|labels_limits|integer|no|query|none|Max number of labels to return|
-|lists|string|no|query|none|Specify the lists to return|
-|list_fields|string|no|query|none|List the list fields to return for each list. Specify 'all' or a comma seperated list of valid values|
-|memberships|string|no|query|none|List the memberships to return. Specify 'all' or a comma seperated list of valid values|
-|memberships_member|boolean|no|query|none|Specify whether to return membership members|
-|memberships_member_fields|string|no|query|none|List the member fields to return for each membership member. Specify 'all' or a comma seperated list of valid values|
-|members|string|no|query|none|List the members to return|
-|member_fields|string|no|query|none|List the member fields to return for each member. Specify 'all' or a comma seperated list of valid values|
-|membersInvited|string|no|query|none|Specify the invited members to return|
-|membersInvited_fields|string|no|query|none|List the fields to return for each. Specify 'all' or a comma seperated list of valid values|
-|checklists|string|no|query|none|Specify the checklists to return|
-|checklist_fields|string|no|query|none|List the checklist fields to return for each checklist. Specify 'all' or a comma seperated list of valid values|
-|organization|boolean|no|query|none|Specify whether to return the organization information|
-|organization_fields|string|no|query|none|List the organization fields to return for each organization. Specify 'all' or a comma seperated list of valid values|
-|organization_memberships|string|no|query|none|List the organization memberships to return. Specify 'all' or a comma seperated list of valid values|
-|myPerfs|boolean|no|query|none|Specify whether to return my perfs|
-|fields|string|no|query|none|List the fields to return. Specify 'all' or a comma seperated list of valid values|
+|board\_id|string|○|path|なし|取得するボードの一意の ID|
+|actions|string|×|query|なし|返すアクションの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|action\_entities|boolean|×|query|なし|アクション エンティティを返すかどうかを指定します|
+|actions\_display|boolean|×|query|なし|アクション表示を返すかどうかを指定します|
+|actions\_format|string|×|query|なし|返すアクションの形式を指定します|
+|actions\_since|string|×|query|なし|この日付より後のアクションのみを返します|
+|actions\_limit|integer|×|query|なし|返すアクションの最大数|
+|action\_fields|string|×|query|なし|各フィールドについて返すフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|action\_memeber|boolean|×|query|なし|アクション メンバーを返すかどうかを指定します|
+|action\_member\_fields|string|×|query|なし|各アクション メンバーについて返すメンバー フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|action\_memberCreator|boolean|×|query|なし|アクション メンバー作成者を返すかどうかを指定します|
+|action\_memberCreator\_fields|string|×|query|なし|返すアクション メンバー作成者フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|cards|string|×|query|なし|返すカードを指定します|
+|card\_fields|string|×|query|なし|各カードについて返すフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|card\_attachments|boolean|○|query|なし|カードの添付ファイルを返すかどうかを指定します|
+|card\_attachment\_fields|string|×|query|なし|各添付ファイルについて返す添付ファイル フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|card\_checklists|string|×|query|なし|各カードについて返すチェックリストを指定します|
+|card\_stickers|boolean|×|query|なし|カード ステッカーを返すかどうかを指定します|
+|boardStarts|string|×|query|なし|返すボードの星を指定します|
+|ラベル|string|×|query|なし|返すラベルを指定します|
+|label\_fields|string|×|query|なし|各カードについて返すラベル フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|labels\_limits|integer|×|query|なし|返すラベルの最大数|
+|lists|string|×|query|なし|返す一覧を指定します|
+|list\_fields|string|×|query|なし|各一覧について返す一覧フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|memberships|string|×|query|なし|返すメンバーシップの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|memberships\_member|boolean|×|query|なし|メンバーシップ メンバーを返すかどうかを指定します。|
+|memberships\_member\_fields|string|×|query|なし|各メンバーシップ メンバーについて返すメンバー フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|members|string|×|query|なし|返すメンバーシップの一覧を指定します|
+|member\_fields|string|×|query|なし|各メンバーについて返すメンバー フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|membersInvited|string|×|query|なし|返す招待されたメンバーを指定します|
+|membersInvited\_fields|string|×|query|なし|それぞれについて返すフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|checklists|string|×|query|なし|返すチェックリストを指定します|
+|checklist\_fields|string|×|query|なし|各チェックリストについて返すチェックリスト フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|organization|boolean|×|query|なし|組織の情報を返すかどうかを指定します|
+|organization\_fields|string|×|query|なし|各組織について返す組織フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|organization\_memberships|string|×|query|なし|返す組織メンバーシップの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|myPerfs|boolean|×|query|なし|マイ パフォーマンスを返すかどうかを指定します|
+|fields|string|×|query|なし|返すフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="listlists"></a>ListLists
-List card lists in board: List card lists in board 
+## ListLists
+ボードのカード一覧の一覧表示: ボードのカード一覧を一覧表示します。
 
-```GET: /boards/{board_id}/lists``` 
+```GET: /boards/{board_id}/lists```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|path|none|Unique id of the board to fetch lists|
-|cards|string|no|query|none|Specify the cards to return|
-|card_fields|string|no|query|none|List the card fields to return from. Specify 'all' or a comma seperated list of valid values|
-|filter|string|no|query|none|Specify the filter property for lists|
-|fields|string|no|query|none|List the fields to return. Specify 'all' or a comma seperated list of valid values|
+|board\_id|string|○|path|なし|一覧を取得するボードの一意の ID|
+|cards|string|×|query|なし|返すカードを指定します|
+|card\_fields|string|×|query|なし|返すカード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|filter|string|×|query|なし|一覧のフィルター プロパティを指定します|
+|fields|string|×|query|なし|返すフィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="getlist"></a>GetList
-Gets list by Id: Gets list by Id 
+## GetList
+ID を使用する一覧の取得: ID を使用して一覧を取得します。
 
-```GET: /lists/{list_id}``` 
+```GET: /lists/{list_id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|board_id|string|yes|query|none|Unique id of the board to fetch the lists from|
-|list_id|string|yes|path|none|Unique id of the list to fetch|
-|cards|string|no|query|none|Specify the cards to return|
-|card_fields|string|no|query|none|List the card fields to return for each card. Specify 'all' or a comma seperated list of valid values|
-|board|boolean|no|query|none|Specify whether to return board information|
-|board_fields|string|no|query|none|List the board fields to return. Specify 'all' or a comma seperated list of valid values|
-|fields|string|no|query|none|List the list fields to return. Specify 'all' or a comma seperated list of valid values|
+|board\_id|string|○|query|なし|一覧を取得するボードの一意の ID|
+|list\_id|string|○|path|なし|取得する一覧の一意の ID|
+|cards|string|×|query|なし|返すカードを指定します|
+|card\_fields|string|×|query|なし|各カードについて返すカード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|board|boolean|×|query|なし|ボード情報を返すかどうかを指定します|
+|board\_fields|string|×|query|なし|返すボード フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
+|fields|string|×|query|なし|返す一覧フィールドの一覧を指定します。'all' または有効な値のコンマ区切りの一覧を指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## オブジェクト定義 
 
-### <a name="card"></a>Card
+### Card
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|No |
-|checkItemStates|array|No |
-|closed|boolean|No |
-|dateLastActivity|string|No |
-|desc|string|No |
-|idBoard|string|No |
-|idList|string|No |
-|idMembersVoted|array|No |
-|idShort|integer|No |
-|idAttachmentCover|string|No |
-|manualCoverAttachment|boolean|No |
-|idLabels|array|No |
-|name|string|No |
-|pos|integer|No |
-|shortLink|string|No |
-|badges|not defined|No |
-|due|string|No |
-|email|string|No |
-|shortUrl|string|No |
-|subscribed|boolean|No |
-|url|string|No |
+|id|string|なし |
+|checkItemStates|array|なし |
+|closed|boolean|なし |
+|dateLastActivity|string|なし |
+|desc|string|なし |
+|idBoard|string|なし |
+|idList|string|なし |
+|idMembersVoted|array|なし |
+|idShort|integer|なし |
+|idAttachmentCover|string|なし |
+|manualCoverAttachment|boolean|なし |
+|idLabels|array|なし |
+|name|string|なし |
+|pos|integer|なし |
+|shortLink|string|なし |
+|badges|未定義|なし |
+|due|string|なし |
+|電子メール|string|なし |
+|shortUrl|string|なし |
+|subscribed|boolean|なし |
+|url|string|なし |
 
 
 
-### <a name="badges"></a>Badges
+### Badges
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Votes|integer|No |
-|ViewingMemberVoted|boolean|No |
-|Subscribed|boolean|No |
-|Fogbugz|string|No |
-|CheckItems|integer|No |
-|CheckItemsChecked|integer|No |
-|Comments|integer|No |
-|Attachments|integer|No |
-|Description|boolean|No |
-|Due|string|No |
+|Votes|integer|なし |
+|ViewingMemberVoted|boolean|なし |
+|Subscribed|boolean|なし |
+|Fogbugz|string|なし |
+|CheckItems|integer|なし |
+|CheckItemsChecked|integer|なし |
+|説明|integer|なし |
+|[添付ファイル]|integer|なし |
+|Description|boolean|なし |
+|Due|string|なし |
 
 
 
-### <a name="object"></a>Object
+### オブジェクト
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
 
 
 
-### <a name="createcard"></a>CreateCard
+### CreateCard
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|idList|string|Yes |
-|name|string|Yes |
-|desc|string|No |
-|pos|string|No |
-|idMembers|string|No |
-|idLabels|string|No |
-|urlSource|string|No |
-|fileSource|string|No |
-|idCardSource|string|No |
-|keepFromSource|string|No |
+|idList|string|はい |
+|name|string|はい |
+|desc|string|なし |
+|pos|string|なし |
+|idMembers|string|なし |
+|idLabels|string|なし |
+|urlSource|string|なし |
+|fileSource|string|なし |
+|idCardSource|string|なし |
+|keepFromSource|string|なし |
 
 
 
-### <a name="updatecard"></a>UpdateCard
+### UpdateCard
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|name|string|No |
-|desc|string|No |
-|closed|boolean|No |
-|idMembers|string|No |
-|idAttachmentCover|string|No |
-|idList|string|No |
-|idBoard|string|No |
-|pos|string|No |
-|due|string|No |
-|subscribed|boolean|No |
+|name|string|なし |
+|desc|string|なし |
+|closed|boolean|なし |
+|idMembers|string|なし |
+|idAttachmentCover|string|なし |
+|idList|string|なし |
+|idBoard|string|なし |
+|pos|string|なし |
+|due|string|なし |
+|subscribed|boolean|なし |
 
 
 
-### <a name="board"></a>Board
+### Board
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|No |
-|closed|boolean|No |
-|dateLastActivity|string|No |
-|dateLastView|string|No |
-|desc|string|No |
-|idOrganization|string|No |
-|invitations|array|No |
-|invited|boolean|No |
-|labelNames|not defined|No |
-|memberships|array|No |
-|name|string|No |
-|pinned|boolean|No |
-|powerUps|array|No |
-|perfs|not defined|No |
-|shortLink|string|No |
-|shortUrl|string|No |
-|starred|string|No |
-|subscribed|string|No |
-|url|string|No |
+|id|string|なし |
+|closed|boolean|なし |
+|dateLastActivity|string|なし |
+|dateLastView|string|なし |
+|desc|string|なし |
+|idOrganization|string|なし |
+|invitations|array|なし |
+|invited|boolean|なし |
+|labelNames|未定義|なし |
+|memberships|array|なし |
+|name|string|なし |
+|pinned|boolean|なし |
+|powerUps|array|なし |
+|perfs|未定義|なし |
+|shortLink|string|なし |
+|shortUrl|string|なし |
+|starred|string|なし |
+|subscribed|string|なし |
+|url|string|なし |
 
 
 
-### <a name="label"></a>Label
+### ラベル
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|green|string|No |
-|yellow|string|No |
-|orange|string|No |
-|red|string|No |
-|purple|string|No |
-|blue|string|No |
-|sky|string|No |
-|lime|string|No |
-|pink|string|No |
-|black|string|No |
+|green|string|なし |
+|yellow|string|なし |
+|orange|string|なし |
+|red|string|なし |
+|purple|string|なし |
+|blue|string|なし |
+|sky|string|なし |
+|lime|string|なし |
+|pink|string|なし |
+|black|string|なし |
 
 
 
-### <a name="membership"></a>Membership
+### Membership
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|No |
-|idMember|string|No |
-|memberType|string|No |
-|unconfirmed|boolean|No |
+|id|string|なし |
+|idMember|string|なし |
+|memberType|string|なし |
+|unconfirmed|boolean|なし |
 
 
 
-### <a name="perfs"></a>Perfs
+### Perfs
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|permissionLevel|string|No |
-|voting|string|No |
-|comments|string|No |
-|invitations|string|No |
-|selfJoin|boolean|No |
-|cardCovers|boolean|No |
-|calendarFeedEnabled|boolean|No |
-|background|string|No |
-|backgroundColor|string|No |
-|backgroundImage|string|No |
-|backgroundImageScaled|string|No |
-|backgroundTile|boolean|No |
-|backgroundBrightness|string|No |
-|canBePublic|boolean|No |
-|canBeOrg|boolean|No |
-|canBePrivate|boolean|No |
-|canInvite|boolean|No |
+|permissionLevel|string|なし |
+|voting|string|なし |
+|コメント|string|なし |
+|invitations|string|なし |
+|selfJoin|boolean|なし |
+|cardCovers|boolean|なし |
+|calendarFeedEnabled|boolean|なし |
+|background|string|なし |
+|backgroundColor|string|なし |
+|backgroundImage|string|なし |
+|backgroundImageScaled|string|なし |
+|backgroundTile|boolean|なし |
+|backgroundBrightness|string|なし |
+|canBePublic|boolean|なし |
+|canBeOrg|boolean|なし |
+|canBePrivate|boolean|なし |
+|canInvite|boolean|なし |
 
 
 
-### <a name="list"></a>List
+### 一覧表示
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|id|string|No |
-|name|string|No |
-|closed|boolean|No |
-|idBoard|string|No |
-|pos|number|No |
-|subscribed|boolean|No |
-|cards|array|No |
-|board|not defined|No |
+|id|string|なし |
+|name|string|なし |
+|closed|boolean|なし |
+|idBoard|string|なし |
+|pos|number|なし |
+|subscribed|boolean|なし |
+|cards|array|なし |
+|board|未定義|なし |
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -15,34 +15,34 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. Log in to the [Azure portal](https://portal.azure.com/) at http://portal.azure.com/.
+1. http://portal.azure.com/ で [Azure ポータル](https://portal.azure.com/)にログインします。
 
-2. In the left banner, click **BROWSE ALL**. The **Browse** blade is displayed.
+2. 左側のバナーの **[すべて参照]** をクリックします。**[参照]** ブレードが表示されます。
 
-3. Scroll and click **SQL servers**. The **SQL servers** blade is displayed.
+3. スクロールを行い、**[SQL サーバー]** をクリックします。**[SQL サーバー]** ブレードが表示されます。
 
-    ![Find your Azure SQL Database server in the portal][b21-FindServerInPortal]
+	![ポータルで Azure SQL Database サーバーを見つける][b21-FindServerInPortal]
 
-4. For convenience, click the minimize control on the earlier **Browse** blade.
+4. 作業しやすいように、前の **[参照]** ブレードの最小化コントロールをクリックします。
 
-5. In the filter text box, start typing the name of your server. Your row is displayed.
+5. フィルター テキスト ボックスで、サーバーの名前の入力を開始します。行が表示されます。
 
-6. Click the row for your server. A blade for your server is displayed.
+6. サーバーの行をクリックします。サーバー用のブレードが表示されます。
 
-7. On your server blade, click **Settings**. The **Settings** blade is displayed.
+7. サーバー用のブレードで **[設定]** をクリックします。**[設定]** ブレードが表示されます。
 
-8. Click **Firewall**. The **Firewall Settings** blade is displayed.
+8. **[ファイアウォール]** をクリックします。**[ファイアウォール設定]** ブレードが表示されます。
 
-    ![Click Settings > Firewall][b31-SettingsFirewallNavig]
+	![[設定]、[ファイアウォール] の順にクリックします。][b31-SettingsFirewallNavig]
 
-9. Click **Add Client IP**. Type in a name for your new rule into the first text box.
+9. **[クライアント IP の追加]** をクリックします。最初のテキスト ボックスに、新しい規則の名前を入力します。
 
-10. Type in the low and high IP address values for the range you want to enable.
-    - It can be handy to have the low value end with **.0** and the high with **.255**.
+10. 有効にする範囲の IP アドレスの値を入力します。
+	- 低いほうの値を **.0**、高いほうの値を **.255** にしておくと便利です。
 
-    ![Add an IP address range to allow][b41-AddRange]
+	![許可する IP アドレスの範囲を追加する][b41-AddRange]
 
-11. Click **Save**.
+11. **[保存]** をクリックします。
 
 
 
@@ -63,7 +63,4 @@ includes/sql-database-include-ip-address-22-v12portal.md
 ? includes/sql-database-include-ip-address-*.md
 -->
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0330_2016------>

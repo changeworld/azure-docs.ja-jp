@@ -1,42 +1,41 @@
 <properties
-    pageTitle="Create an Azure VM using PowerShell | Microsoft Azure"
-    description="Use Azure PowerShell and Azure Resource Manager to easily create a new VM running Windows Server."
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="davidmu1"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="PowerShell を使用して Azure VM を作成する | Microsoft Azure"
+	description="Azure PowerShell と Azure Resource Manager を使用すると、Windows Server を実行する新しい VM を簡単に作成できます。"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="davidmu1"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/27/2016"
-    ms.author="davidmu"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/27/2016"
+	ms.author="davidmu"/>
 
+# Resource Manager と PowerShell を使用して Windows VM を作成する
 
-# <a name="create-a-windows-vm-using-resource-manager-and-powershell"></a>Create a Windows VM using Resource Manager and PowerShell
+この記事では、Windows Server を実行する Azure 仮想マシンとそれに必要なリソースを [Resource Manager](../resource-group-overview.md) と PowerShell を使用してすばやく作成する方法を紹介します。
 
-This article shows you how to quickly create an Azure Virtual Machine running Windows Server and the resources it needs using [Resource Manager](../resource-group-overview.md) and PowerShell. 
+仮想マシンを作成するには、この記事のすべての手順を実施する必要があります。所要時間は約 30 分です。
 
-All the steps in this article are required to create a virtual machine and it should take about 30 minutes to do the steps.
+## 手順 1: Azure PowerShell をインストールする
 
-## <a name="step-1:-install-azure-powershell"></a>Step 1: Install Azure PowerShell
-
-See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for information about installing the latest version of Azure PowerShell, selecting your subscription, and signing in to your account.
+最新バージョンの Azure PowerShell をインストールし、サブスクリプションを選択して、ご利用のアカウントにサインインする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
         
-## <a name="step-2:-create-a-resource-group"></a>Step 2: Create a resource group
+## 手順 2: リソース グループを作成する
 
-First, you create a resource group.
+まず、リソース グループを作成します。
 
-1. Get a list of available locations where resources can be created.
+1. リソースを作成できる場所の一覧を取得します。
 
-        Get-AzureRmLocation | sort Location | Select Location
+	    Get-AzureRmLocation | sort Location | Select Location
         
-    You should see something like this example:
+    次のような結果が表示されます。
     
         Location
         --------
@@ -61,120 +60,116 @@ First, you create a resource group.
         westindia
         westus
 
-2. Replace the value of **$locName** with a location from the list. Create the variable.
+2. **$locName** の値を一覧の場所に置き換えます。変数を作成します。
 
         $locName = "centralus"
         
-3. Replace the value of **$rgName** with a name for the new resource group. Create the variable and the resource group.
+3. **$rgName** の値を、新しいリソース グループの名前に置き換えます。変数とリソース グループを作成します。
 
         $rgName = "mygroup1"
         New-AzureRmResourceGroup -Name $rgName -Location $locName
     
-## <a name="step-3:-create-a-storage-account"></a>Step 3: Create a storage account
+## ステップ 3: ストレージ アカウントを作成する
 
-A [storage account](../storage/storage-introduction.md) is needed to store the virtual hard disk that is used by the virtual machine that you create.
+作成する仮想マシン用の仮想ハード ディスクを格納するためには[ストレージ アカウント](../storage/storage-introduction.md)が必要です。
 
-1. Replace the value of **$stName** with a name for the storage account. Test the name for uniqueness.
+1. **$stName** の値は、ストレージ アカウントの名前に置き換えます。名前の一意性をテストします。
 
         $stName = "mystorage1"
         Get-AzureRmStorageAccountNameAvailability $stName
 
-    If this command returns **True**, your proposed name is unique within Azure. Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
+    このコマンドで **True** が返された場合は、提案した名前は Azure 内で一意です。ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
     
-2. Now, run the command to create the storage account.
+2. 次のコマンドを実行して、ストレージ アカウントを作成します。
     
         $storageAcc = New-AzureRmStorageAccount -ResourceGroupName $rgName -Name $stName -SkuName "Standard_LRS" -Kind "Storage" -Location $locName
         
-## <a name="step-4:-create-a-virtual-network"></a>Step 4: Create a virtual network
+## 手順 4: 仮想ネットワークを作成する
 
-All virtual machines are part of a [virtual network](../virtual-network/virtual-networks-overview.md).
+すべての仮想マシンは[仮想ネットワーク](../virtual-network/virtual-networks-overview.md)に属します。
 
-1. Replace the value of **$subnetName** with a name for the subnet. Create the variable and the subnet.
-        
+1. **$subnetName** の値を、サブネットの名前に置き換えます。変数とサブネットを作成します。
+    	
         $subnetName = "mysubnet1"
         $singleSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
         
-2. Replace the value of **$vnetName** with a name for the virtual network. Create the variable and the virtual network with the subnet.
+2. **$vnetName** の値を、仮想ネットワークの名前に置き換えます。サブネットで変数と仮想ネットワークを作成します。
 
         $vnetName = "myvnet1"
         $vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $locName -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
         
-    Use values that make sense for your application and environment.
+    実際のアプリケーションと環境に合った値を使用してください。
         
-## <a name="step-5:-create-a-public-ip-address-and-network-interface"></a>Step 5: Create a public IP address and network interface
+## 手順 5: パブリック IP アドレスとネットワーク インターフェイスを作成する
 
-To enable communication with the virtual machine in the virtual network, you need a [public IP address](../virtual-network/virtual-network-ip-addresses-overview-arm.md) and a network interface.
+仮想ネットワークでの仮想マシンとの通信を有効にするには、[パブリック IP アドレス](../virtual-network/virtual-network-ip-addresses-overview-arm.md)とネットワーク インターフェイスが必要です。
 
-1. Replace the value of **$ipName** with a name for the public IP address. Create the variable and the public IP address.
+1. **$ipName** の値を、パブリック IP アドレスの名前に置き換えます。変数とパブリック IP アドレスを作成します。
 
         $ipName = "myIPaddress1"
         $pip = New-AzureRmPublicIpAddress -Name $ipName -ResourceGroupName $rgName -Location $locName -AllocationMethod Dynamic
         
-2. Replace the value of **$nicName** with a name for the network interface. Create the variable and the network interface.
+2. **$nicName** の値を、ネットワーク インターフェイスの名前に置き換えます。変数とネットワーク インターフェイスを作成します。
 
         $nicName = "mynic1"
         $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $rgName -Location $locName -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id
         
-## <a name="step-6:-create-a-virtual-machine"></a>Step 6: Create a virtual machine
+## 手順 6: 仮想マシンを作成する
 
-Now that you have all the pieces in place, it's time to create the virtual machine.
+すべての準備ができたので、仮想マシンを作成します。
 
-1. Run the command to set the administrator account name and password for the virtual machine.
+1. 次のコマンドを実行し、仮想マシンの管理者アカウントの名前とパスワードを設定します。
 
         $cred = Get-Credential -Message "Type the name and password of the local administrator account."
         
-    The password must be at 12-123 characters long and have at least one lower case character, one upper case character, one number, and one special character. 
+    パスワードは、12 ～ 123 文字で指定する必要があります。また、少なくとも 1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字を含める必要があります。
         
-2. Replace the value of **$vmName** with a name for the virtual machine. Create the variable and the virtual machine configuration.
+2. **$vmName** の値を、仮想マシンの名前に置き換えます。変数と仮想マシンの構成を作成します。
 
         $vmName = "myvm1"
         $vm = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A1"
         
-    See [Sizes for virtual machines in Azure](virtual-machines-windows-sizes.md) for a list of available sizes for a virtual machine.
+    仮想マシンに使用できるサイズの一覧は、「[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。
     
-3. Replace the value of **$compName** with a computer name for the virtual machine. Create the variable and add the operating system information to the configuration.
+3. **$compName** の値を、仮想マシンのコンピューター名に置き換えます。変数を作成し、オペレーティング システムの情報を構成に追加します。
 
         $compName = "myvm1"
         $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName $compName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate
         
-4. Define the image to use to provision the virtual machine. 
+4. 仮想マシンのプロビジョニングに使用するイメージを定義します。
 
         $vm = Set-AzureRmVMSourceImage -VM $vm -PublisherName MicrosoftWindowsServer -Offer WindowsServer -Skus 2012-R2-Datacenter -Version "latest"
         
-    For more information about selecting images to use, see [Navigate and select Windows virtual machine images in Azure with PowerShell or the CLI](virtual-machines-windows-cli-ps-findimage.md) .
+    使用するイメージの選択の詳細については、「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines-windows-cli-ps-findimage.md)」を参照してください。
         
-5. Add the network interface that you created to the configuration.
+5. 作成したネットワーク インターフェイスを構成に追加します。
 
         $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
         
-6. Replace the value of **$blobPath** with a path and filename in storage of the virtual hard disk. The virtual hard disk file is usually stored in a container, for example **vhds/WindowsVMosDisk.vhd**. Create the variables.
+6. **$blobPath** の値を、仮想ハード ディスクのストレージ内のパスとファイル名に置き換えます。通常、仮想ハード ディスク ファイルはコンテナーに格納されます (例: **vhds/WindowsVMosDisk.vhd**)。変数を作成します。
 
         $blobPath = "vhds/WindowsVMosDisk.vhd"
         $osDiskUri = $storageAcc.PrimaryEndpoints.Blob.ToString() + $blobPath
         
-7. Replace The value of **$diskName** with a name for the operating system disk. Create the variable and add the disk information to the configuration.
+7. **$diskName** の値を、オペレーティング システム ディスクの名前に置き換えます。変数を作成し、ディスクの情報を構成に追加します。
 
         $diskName = "windowsvmosdisk"
         $vm = Set-AzureRmVMOSDisk -VM $vm -Name $diskName -VhdUri $osDiskUri -CreateOption fromImage
         
-8. Finally, create the virtual machine.
+8. 最後に、仮想マシンを作成します。
 
         New-AzureRmVM -ResourceGroupName $rgName -Location $locName -VM $vm
 
-    You should see the resource group and all its resources in the Azure portal and a success status in the PowerShell window:
+    Azure ポータルにリソース グループとそのすべてのリソースが表示され、PowerShell ウィンドウに成功ステータスが表示されます。
 
         RequestId  IsSuccessStatusCode  StatusCode  ReasonPhrase
         ---------  -------------------  ----------  ------------
                                   True          OK  OK
                                   
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-- If there were issues with the deployment, a next step would be to look at [Troubleshooting resource group deployments with Azure portal](../resource-manager-troubleshoot-deployments-portal.md)
-- Learn how to manage the virtual machine that you created by reviewing [Manage virtual machines using Azure Resource Manager and PowerShell](virtual-machines-windows-ps-manage.md).
-- Take advantage of using a template to create a virtual machine by using the information in [Create a Windows virtual machine with a Resource Manager template](virtual-machines-windows-ps-template.md)
+- デプロイに問題がある場合は、[Azure Portal でのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)に関する記事をご覧ください。
+- [Azure Resource Manager と PowerShell を使用した仮想マシンの管理](virtual-machines-windows-ps-manage.md)に関する記事で、作成した仮想マシンを管理する方法を確認します。
+- テンプレートを使用して仮想マシンを作成する方法については、「[Resource Manager テンプレートで Windows 仮想マシンを作成する](virtual-machines-windows-ps-template.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

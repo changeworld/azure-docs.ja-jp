@@ -1,49 +1,48 @@
 <properties
-    pageTitle="Machine learning algorithm cheat sheet | Microsoft Azure"
-    description="A printable machine learning algorithm cheat sheet helps you choose the right algorithm for your predictive model in Azure Machine Learning Studio."
-    keywords="algorithm cheat sheet,cheat sheet,machine learning algorithm"
-    services="machine-learning"
-    documentationCenter=""
-    authors="brohrer"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="機械学習アルゴリズム チート シート | Microsoft Azure"
+	description="印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。"
+	keywords="アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム"
+	services="machine-learning"
+	documentationCenter=""
+	authors="brohrer"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/09/2016"
-    ms.author="brohrer;garye" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/09/2016"
+	ms.author="brohrer;garye" />
 
 
+# Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート
 
-# <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Machine learning algorithm cheat sheet for Microsoft Azure Machine Learning Studio
+**Microsoft Azure Machine Learning チート シート**を使用すると、予測分析モデルに最適なアルゴリズムを選択できます。
 
-The **Microsoft Azure Machine Learning Algorithm Cheat Sheet** helps you choose the right algorithm for a predictive analytics model.
-
-[Azure Machine Learning Studio](https://studio.azureml.net/) has a large library of algorithms from the  ***regression***, ***classification***, ***clustering***, and ***anomaly detection*** families. Each is designed to address a different type of machine learning problem.
+[Azure Machine Learning Studio](https://studio.azureml.net/) には、***regression***、***classification***、***clustering***、***anomaly detection*** ファミリの多様なアルゴリズムのライブラリがあります。各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
 
 
-## <a name="download:-machine-learning-algorithm-cheat-sheet"></a>Download: Machine learning algorithm cheat sheet
+## ダウンロード: 機械学習アルゴリズム チート シート
 
-**Download the cheat sheet here: [Machine Learning Algorithm Cheat Sheet (11x17 in.)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
+**チート シートをダウンロードする: [Machine Learning アルゴリズム チート シート (11 x 17 インチ)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
 
-![Machine Learning Algorithm cheat sheet: Learn how to choose a Machine Learning algorithm.][cheat-sheet]
+![Machine Learning Algorithm Cheat Sheet : Machine Learning アルゴリズムの選択方法][cheat-sheet]
 
 [cheat-sheet]: ./media/machine-learning-algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
-Download and print the Machine Learning Algorithm Cheat Sheet in tabloid size to keep it handy and get help choosing an algorithm.
+Machine Learning アルゴリズム チート シートをダウンロードし、タブロイド サイズで印刷すると、手元に保管しやすくなり、アルゴリズムを選択するときに役立ちます。
 
-> [AZURE.NOTE] See the article [How to choose algorithms for Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md) for a detailed guide to using this cheat sheet.
+> [AZURE.NOTE] このチート シートを使用する詳細なガイドについては、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」をご覧ください。
 
-## <a name="more-help-with-algorithms"></a>More help with algorithms
+## アルゴリズムに関するその他のヘルプ
 
-* For a deeper discussion of the different types of machine learning algorithms, how they're used, and how to use this cheat sheet for choosing the right algorithm, see [How to choose algorithms for Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
-* For a list by category of all the machine learning algorithms available in Machine Learning Studio, see [Initialize Model][initialize-model] in the Machine Learning Studio Algorithm and Module Help.
-* For a complete list of algorithms and modules in Machine Learning Studio, see [A-Z list of Machine Learning Studio modules][a-z-list] in Machine Learning Studio Algorithm and Module Help.
-* To download and print a diagram that gives an overview of the capabilities of Machine Learning Studio, see [Overview diagram of Azure Machine Learning Studio capabilities](machine-learning-studio-overview-diagram.md).
+* さまざまな種類の機械学習アルゴリズムの詳細、その使用方法、このチート シートを使用して適切なアルゴリズムを選択する方法については、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」を参照してください。
+* Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページを参照してください。
+* Machine Learning Studio で使用可能なすべてのアルゴリズムとモジュールの一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」を参照してください。
+* Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -88,8 +87,4 @@ Download and print the Machine Learning Algorithm Cheat Sheet in tabloid size to
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

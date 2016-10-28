@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory Integration with Bonus.ly | Microsoft Azure" 
-    description="Learn how to use Bonus.ly with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Bonus.ly の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Bonus.ly を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,160 +11,152 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
+#チュートリアル: Azure Active Directory と Bonus.ly の統合
 
-#<a name="tutorial:-azure-active-directory-integration-with-bonus.ly"></a>Tutorial: Azure Active Directory Integration with Bonus.ly
+このチュートリアルでは、Azure と Bonus.ly の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-The objective of this tutorial is to show the integration of Azure and Bonus.ly. The scenario outlined in this tutorial assumes that you already have the following items:
+-   有効な Azure サブスクリプション
+-   Bonus.ly のテスト テナント
 
--   A valid Azure subscription
--   A test tenant in Bonus.ly
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+1.  Bonus.ly のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-1.  Enabling the application integration for Bonus.ly
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+![シナリオ](./media/active-directory-saas-bonus-tutorial/IC773679.png "シナリオ")
+##Bonus.ly のアプリケーション統合の有効化
 
-![Scenario](./media/active-directory-saas-bonus-tutorial/IC773679.png "Scenario")
-##<a name="enabling-the-application-integration-for-bonus.ly"></a>Enabling the application integration for Bonus.ly
+このセクションでは、Bonus.ly のアプリケーション統合を有効にする方法について説明します。
 
-The objective of this section is to outline how to enable the application integration for Bonus.ly.
+###Bonus.ly のアプリケーション統合を有効にするには、次の手順を実行します。
 
-###<a name="to-enable-the-application-integration-for-bonus.ly,-perform-the-following-steps:"></a>To enable the application integration for Bonus.ly, perform the following steps:
-
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Enable single sign-on](./media/active-directory-saas-bonus-tutorial/IC773680.png "Enable single sign-on")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-bonus-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-bonus-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-bonus-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-bonus-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-bonus-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-bonus-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **Bonus.ly**.
+6.  **検索ボックス**に、「**Bonus.ly**」と入力します。
 
-    ![Application gallery](./media/active-directory-saas-bonus-tutorial/IC773681.png "Application gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-bonus-tutorial/IC773681.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **Bonus.ly**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[Bonus.ly]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Bonusly](./media/active-directory-saas-bonus-tutorial/IC773682.png "Bonusly")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
 
-The objective of this section is to outline how to enable users to authenticate to Bonus.ly with their account in Azure AD using federation based on the SAML protocol.  
-Configuring single sign-on for Bonus.ly requires you to retrieve a thumbprint value from a certificate.  
-If you are not familiar with this procedure, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI).
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Bonus.ly に対する認証を行えるようにする方法を説明します。Bonus.ly のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Bonus.ly** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Bonus.ly** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-bonus-tutorial/IC749323.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to Bonus.ly** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Bonus.ly へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-bonus-tutorial/IC773683.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, in the **Bonus.ly Tenant URL** textbox, type your URL using the following pattern "*https://\<tenant-name\>.Bonus.ly*", and then click **Next**: 
+3.  **[アプリケーション URL の構成]** ページで、**[Bonus.ly テナント URL]** ボックスに、"*https://\<テナント名>.Bonus.ly*" のパターンで URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure app URL](./media/active-directory-saas-bonus-tutorial/IC773684.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-bonus-tutorial/IC773684.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at Bonus.ly** page, click **download Certificate**, and then save the certificate file locally as **c:\\Bonusly.cer**.
+4.  **[Bonus.ly でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルを **c:\\Bonusly.cer** としてローカルに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-bonus-tutorial/IC773685.png "Configure single sign-on")
 
-5.  In a different browser window, log in to your **Bonus.ly** tenant.
+5.  別のブラウザー ウィンドウで、**Bonus.ly** テナントにログインします。
 
-6.  In the toolbar on the top, click **Settings**, and then select **Integrations and apps**.
+6.  上部のツール バーの **[Settings]** をクリックし、**[Integrations and apps]** を選択します。
 
     ![Bonusly](./media/active-directory-saas-bonus-tutorial/IC773686.png "Bonusly")
 
-7.  Under **Single Sign-On**, select **SAML**.
+7.  **[Single Sign-On]** の **[SAML]** を選択します。
 
-8.  On the **SAML** dialog page, perform the following steps:
+8.  **[SAML]** ダイアログ ページで、次の手順を実行します。
 
     ![Bonusly](./media/active-directory-saas-bonus-tutorial/IC773687.png "Bonusly")
 
-    1.  In the Azure classic portal, on the **Configure single sign-on at Bonus.ly** dialog page, copy the **Remote Login URL** value, and then paste it into the **IdP SSO target URL** textbox.
-    2.  In the Azure classic portal, on the **Configure single sign-on at Bonus.ly** dialog page, copy the **Issuer ID** value, and then paste it into the **IdP Issuer** textbox.
-    3.  In the Azure classic portal, on the **Configure single sign-on at Bonus.ly** dialog page, copy the **Remote Login URL** value, and then paste it into the **IdP Login URL** textbox.
-    4.  Copy the **Thumbprint** value from the exported certificate, and then paste it into the **Cert Fingerprint** textbox.
+    1.  Azure クラシック ポータルで、**[Bonus.ly でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[IdP SSO target URL]** ボックスに貼り付けます。
+    2.  Azure クラシック ポータルで、**[Bonus.ly でのシングル サインオンの構成]** ダイアログ ページの **[発行者 ID]** の値をコピーし、**[IdP Issuer]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[Bonus.ly でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[IdP ログイン URL]** ボックスに貼り付けます。
+    4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[Cert Fingerprint]** ボックスに貼り付けます。
 
-        >[AZURE.TIP] For more details, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
+        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI) (証明書のサムプリント値を取得する方法)」をご覧ください。
 
-9.  Click **save**.
+9.  **[Save]** をクリックします。
 
-10. On the Microsoft Azure classic portal, select the configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+10. Microsoft Azure クラシック ポータルで構成確認を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-bonus-tutorial/IC773689.png "Configure single sign-on")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
 
-In order to enable Azure AD users to log into Bonus.ly, they must be provisioned into Bonus.ly.  
-In the case of Bonus.ly, provisioning is a manual task.
+Azure AD ユーザーが Bonus.ly にログインできるようにするには、ユーザーを Bonus.ly にプロビジョニングする必要があります。Bonus.ly の場合、プロビジョニングは手動で行います。
 
-###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  In a web browser window, log into your Bonus.ly tenant.
+1.  Web ブラウザー ウィンドウで、Bonus.ly テナントにログインします。
 
-2.  Click **Settings**
+2.  **[設定]** をクリックします
 
     ![Settings](./media/active-directory-saas-bonus-tutorial/IC781041.png "Settings")
 
-3.  Click the **Users and bonuses** tab.
+3.  **[Users and bonuses]** タブをクリックします。
 
     ![Users and bonuses](./media/active-directory-saas-bonus-tutorial/IC781042.png "Users and bonuses")
 
-4.  Click **Manage Users**.
+4.  **[Manage Users]** をクリックします。
 
     ![Manage Users](./media/active-directory-saas-bonus-tutorial/IC781043.png "Manage Users")
 
-5.  Click **Add User**.
+5.  **[Add User]** をクリックします。
 
-    ![Add User](./media/active-directory-saas-bonus-tutorial/IC781044.png "Add User")
+    ![ユーザーの追加](./media/active-directory-saas-bonus-tutorial/IC781044.png "ユーザーの追加")
 
-6.  On the **Add User** dialog, perform the following steps:
+6.  **[Add User]** ダイアログで、次の手順を実行します。
 
-    ![Add User](./media/active-directory-saas-bonus-tutorial/IC781045.png "Add User")
+    ![ユーザーの追加](./media/active-directory-saas-bonus-tutorial/IC781045.png "ユーザーの追加")
 
-    1.  Type the “**Email**, **First name**, **Last name**” of a valid AAD account you want to provision into the related textboxes.
-    2.  Click **Save**.
+    1.  **[Email]**、**[First name]**、**[Last name]** の各ボックスに、プロビジョニングする有効な AAD アカウントの対応する値を入力します。
+    2.  **[保存]** をクリックします。
 
-    >[AZURE.NOTE] The AAD account holder will receive an email that includes a link to confirm the account before it becomes active.
+    >[AZURE.NOTE] アカウントがアクティブになる前に、AAD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE] You can use any other Bonus.ly user account creation tools or APIs provided by Bonus.ly to provision AAD user accounts.
+>[AZURE.NOTE] Bonus.ly から提供されている他の Bonus.ly ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-bonus.ly,-perform-the-following-steps:"></a>To assign users to Bonus.ly, perform the following steps:
+###ユーザーを Bonus.ly に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the Bonus.ly application integration page, click **Assign users**.
+2.  Bonus.ly アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign users](./media/active-directory-saas-bonus-tutorial/IC773690.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-bonus-tutorial/IC773690.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-bonus-tutorial/IC767830.png "Yes")
 
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

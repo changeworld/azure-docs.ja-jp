@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a record set and records for a DNS Zone using CLI| Microsoft Azure"
-   description="How to create host records for Azure DNS.Setting up record sets and records using CLI"
+   pageTitle="CLI を使用して DNS ゾーンのレコード セットとレコードを作成する | Microsoft Azure"
+   description="Azure DNS のホスト レコードを作成する方法。CLI を使用したレコード セットとレコードの設定"
    services="dns"
    documentationCenter="na"
    authors="sdwheeler"
@@ -16,59 +16,54 @@
    ms.date="08/16/2016"
    ms.author="sewhee"/>
 
-
-# <a name="create-dns-record-sets-and-records-by-using-cli"></a>Create DNS record sets and records by using CLI
+# CLI を使用した DNS レコード セットとレコードの作成
 
 > [AZURE.SELECTOR]
-- [Azure Portal](dns-getstarted-create-recordset-portal.md)
+- [Azure ポータル](dns-getstarted-create-recordset-portal.md)
 - [PowerShell](dns-getstarted-create-recordset.md)
 - [Azure CLI](dns-getstarted-create-recordset-cli.md)
 
 
-This article walks you through the process of creating records and records sets by using CLI. After creating your DNS zone, you need to add the DNS records for your domain. To do this, you first need to understand DNS records and record sets.
+この記事では、CLI を使用してレコードとレコード セットを作成する手順を説明します。DNS ゾーンを作成した後は、ドメインの DNS レコードを追加する必要があります。そのために、まずは DNS レコードとレコード セットについて理解することが必要です。
 
 [AZURE.INCLUDE [dns-about-records-include](../../includes/dns-about-records-include.md)]
 
-## <a name="create-a-record-set-and-record"></a>Create a record set and record
+## レコード セットとレコードの作成
 
-In this section, we'll show you how to create a record set and records. In this example, you'll create a record set that has the relative name "www" in the DNS zone "contoso.com". The fully-qualified name of the records is "www.contoso.com". The record type is "A", and the time to live (TTL) is 60 seconds. After completing this step, you will have created an empty record set.
+このセクションでは、レコード セットとレコードの作成方法を説明します。この例では、DNS ゾーン "contoso.com" に相対名 "www" を持つレコード セットを作成します。レコードの完全修飾名は、"www.contoso.com" になります。レコードの種類は "A" で、Time to Live (TTL) は 60 秒です。この手順を完了すると、空のレコード セットが作成されます。
 
-To create a record set in the apex of the zone (in this case, "contoso.com"), use the record name "@", including the quotation marks. This is a common DNS convention.
+ゾーンの頂点 (この場合は "contoso.com") にレコード セットを作成するには、レコード名 "@" (引用符を含みます) を使用します。これは、一般的な DNS の規則です。
 
-### <a name="1.-create-a-record-set"></a>1. Create a record set
+### 1\.レコード セットの作成
 
-To create record set, use `azure network dns record-set create`. Specify the resource group, zone name, record set relative name, the record type, and the TTL. If the `--ttl` parameter is not defined, the value defaults to four (in seconds). After completing this step, you will have an empty "www" record set.
+レコード セットを作成するには、`azure network dns record-set create` を使用します。リソース グループ、ゾーン名、レコード セットの相対名、レコードの種類、TTL を指定します。`--ttl` パラメーターを定義しないと、値は既定で 4 (秒) になります。この手順を完了すると、空の "www" レコード セットが作成されます。
 
-*Usage: network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>*
+*使用法: network dns record-set create <resource-group> <dns-zone-name> <name> <type> <ttl>*
 
-    azure network dns record-set create myresourcegroup  contoso.com  www A  60
+	azure network dns record-set create myresourcegroup  contoso.com  www A  60
 
-### <a name="2.-add-records"></a>2. Add records
+### 2\.レコードの追加
 
-To use the newly created "www" record set, you need to add records to it. You add records to record sets by using `azure network dns record-set add-record`.
+新しく作成した "www" レコード セットを使用するには、レコードを追加する必要があります。`azure network dns record-set add-record` を使用して、レコードをレコード セットに追加します。
 
-The parameters for adding records to a record set vary depending on the type of the record set. For example, when using a record set of type "A", you will only be able to specify records with the parameter `-a <IPv4 address>`.
+レコード セットにレコードを追加するためのパラメーターは、レコード セットの種類によって異なります。たとえば、"A" という種類のレコード セットを使用する場合、レコードの指定に使用できるのは、`-a <IPv4 address>` パラメーターのみです。
 
-You can add IPv4 *A* records to the "www" record set by using the following command:
+次のコマンドを使用して、IPv4 *A* レコードを "www" レコード セットに追加できます。
 
-*Usage: network dns record-set add-record <resource-group> <dns-zone-name> <record-set-name> <type>*
+*使用法: network dns record-set add-record <resource-group> <dns-zone-name> <record-set-name> <type>*
 
-    azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
+	azure network dns record-set add-record myresourcegroup contoso.com  www A  -a 134.170.185.46
 
-## <a name="additional-record-type-examples"></a>Additional record type examples
+## その他のレコードの種類の例
 
-The following examples show how to create a record set of each record type. Each record set contains a single record.
+次の例では、各種のレコード セットを作成する方法を示します。各レコード セットには、1 つのレコードが含まれています。
 
 [AZURE.INCLUDE [dns-add-record-cli-include](../../includes/dns-add-record-cli-include.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To manage your record set and records, see [Manage DNS records and record sets by using CLI](dns-operations-recordsets-portal.md).
+レコード セットとレコードを管理する方法については、「[CLI を使用した DNS レコードとレコード セットの管理](dns-operations-recordsets-portal.md)」を参照してください。
 
-For more information about Azure DNS, see the [Azure DNS Overview](dns-overview.md).
+Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

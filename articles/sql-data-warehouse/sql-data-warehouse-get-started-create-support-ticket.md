@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to create a support ticket for SQL Data Warehouse | Microsoft Azure"
-   description="How to create a support ticket in Azure SQL Data Warehouse."
+   pageTitle="SQL Data Warehouse のサポート チケットを作成する方法 | Microsoft Azure"
+   description="Azure SQL Data Warehouse でサポート チケットを作成する方法。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="sonyam"
@@ -16,73 +16,72 @@
    ms.date="09/01/2016"
    ms.author="sonyama;barbkess"/>
 
-
-# <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>How to create a support ticket for SQL Data Warehouse
+# SQL Data Warehouse のサポート チケットを作成する方法
  
-If you having any issues with your SQL Data Warehouse, please create a support ticket so that our engineering team can assist you.
+SQL Data Warehouse で問題が発生した場合は、サポート チケットを作成してください。エンジニアリング チームがサポートいたします。
 
-## <a name="create-a-support-ticket"></a>Create a support ticket
+## サポート チケットの作成
 
-1. Open the [Azure portal][].
+1. [Azure ポータル][] を開きます。
 
-2. On the Home screen, click the **Help + support** tile.
+2. ホーム画面で **[ヘルプとサポート]** タイルをクリックします。
 
-    ![Help + support](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
+    ![ヘルプとサポート](./media/sql-data-warehouse-get-started-create-support-ticket/help-support.png)
 
-3. On the Help + Support blade, click **Create support request**.
+3. [ヘルプとサポート] ブレードで **[サポート要求の作成]** をクリックします。
 
-    ![New support request](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
+    ![新しいサポート要求](./media/sql-data-warehouse-get-started-create-support-ticket/create-support-request.png)
     
-    <a name="request-quota-change"></a> 
+    <a name="request-quota-change"></a>
 
-4. Select the **Request Type**.
+4. **[要求の種類]** を選択します。
 
-    ![Request type](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
+    ![要求の種類](./media/sql-data-warehouse-get-started-create-support-ticket/request-type.png)
     
-    >[AZURE.NOTE]  By default, each SQL server (e.g. myserver.database.windows.net) has a **DTU Quota** of 45,000. This quota is simply a safety limit. You can increase your quota by creating a support ticket and selecting *Quota* as the request type. To calculate your DTU needs, multiply the 7.5 by the total [DWU][] needed. For example, you would like to host two DW6000s on one SQL server, then you should request a DTU quota of 90,000.  You can view your current DTU consumption from the SQL server blade in the portal. Both paused and un-paused databases count toward the DTU quota. 
+    >[AZURE.NOTE]  既定では、各 SQL Server (myserver.database.windows.net など) の **DTU クォータ**は 45,000 に設定されています。このクォータは単に安全上の制限です。サポート チケットを作成し、要求の種類として *[クォータ]* を選択すれば、クォータを引き上げることができます。実際に必要な DTU を計算するには、必要とされる [DWU][] の合計に 7.5 を掛けます。たとえば、2 つの DW6000 を 1 つの SQL Server でホストする場合、90,000 の DTU クォータを要求する必要があります。現在の DTU 消費量は、ポータルの [SQL Server] ブレードから確認できます。DTU クォータには、一時停止しているデータベースと一時停止していないデータベースの両方が考慮されます。
 
-5. Select the **Subscription** that hosts the database with the problem you are reporting.
+5. 報告する問題が発生しているデータベースをホストしている **[サブスクリプション]** を選択します。
 
-    ![Subscription](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
+    ![サブスクリプション](./media/sql-data-warehouse-get-started-create-support-ticket/subscription.png)
 
-6. Select **SQL Data Warehouse** as the Resource.
+6. [リソース] として **[SQL Data Warehouse]** を選択します。
 
-    ![Resource](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
+    ![リソース](./media/sql-data-warehouse-get-started-create-support-ticket/resource.png)
 
-7. Select your [Azure support plan][].
+7. [Azure サポート プラン][] を選択します。
 
-    - **Billing, quota and subscription management** support is available at all support levels.
-    - **Break-fix** support is provided through [Developer][], [Standard][], [Professional Direct][] or [Premier][] support. Break-fix issues are problems experienced by customers while using Azure where there is a reasonable expectation that Microsoft caused the problem.
-    - **Developer mentoring** and **advisory services** are available at the [Professional Direct][] and [Premier][] support levels. 
+    - **課金、クォータ、サブスクリプション管理**のサポートは、すべてのサポート レベルでご利用いただけます。
+    - **障害対応**のサポートは、[Developer][] サポート、[Standard][] サポート、[Professional Direct][] サポート、[Premier][] サポートにより提供されます。障害対応のサポートとは、Azure のご利用に際して発生した、マイクロソフトが原因と想定される問題への対応です。
+    - **開発者支援**および**アドバイザリ サービス**は、[Professional Direct][] サポートと [Premier][] サポートでご利用いただけます。
     
-    If you have a Premier support plan, you can also report SQL Data Warehouse related issues on the [Microsoft Premier online portal][].  See [Azure support plans][Azure support plan] to learn more about the various support plans, including scope, response times, pricing, etc.  For frequently asked questions about Azure support, see [Azure support FAQs][].  
+    Premier サポート プランを持っている場合は、[Microsoft Premier オンライン ポータル][]でも SQL Data Warehouse 関連の問題を連絡できます。サポートの範囲、応答時間、価格など各プランの詳細については、[Azure サポート プラン][Azure support plan]をご覧ください。Azure のサポートに関してよく寄せられる質問については、「[Azure サポートに関する FAQ][]」をご覧ください。
 
-    ![Support plan](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
+    ![サポート プラン](./media/sql-data-warehouse-get-started-create-support-ticket/support-plan.png)
 
-8. Select the **Problem Type** and **Category**.
+8. **[問題の種類]** と **[カテゴリ]** を選択します。
 
-    ![Problem type category](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
+    ![問題の種類のカテゴリ](./media/sql-data-warehouse-get-started-create-support-ticket/problem-type-category.png)
 
-9. Describe the problem and choose the level of business impact.
+9. 問題を記述し、業務への影響のレベルを選択します。
 
-    ![Problem description](./media/sql-data-warehouse-get-started-create-support-ticket/problem-description.png)
+    ![問題の説明](./media/sql-data-warehouse-get-started-create-support-ticket/problem-description.png)
 
-10. Your **contact information** for this support ticket will be pre-filled. Update this if necessary.
+10. このサポート チケットの**連絡先情報**は自動的に設定されます。必要な場合は更新します。
 
-    ![Contact info](./media/sql-data-warehouse-get-started-create-support-ticket/contact-info.png)
+    ![連絡先情報](./media/sql-data-warehouse-get-started-create-support-ticket/contact-info.png)
 
-11. Click **Create** to submit the support request.
+11. **[作成]** をクリックしてサポート要求を送信します。
 
 
-## <a name="monitor-a-support-ticket"></a>Monitor a support ticket
+## サポート チケットの状態の確認
 
-After you have submitted the support request, the Azure support team will contact you. To check your request status and details, click **Manage support requests** on the dashboard.
+サポート要求を送信すると、Azure サポート チームから連絡があります。要求の状態と詳細を確認するには、ダッシュボードで **[サポート要求の管理]** をクリックします。
 
-![Check status](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
+![状態の確認](./media/sql-data-warehouse-get-started-create-support-ticket/check-status.png)
 
-## <a name="other-resources"></a>Other Resources
+## その他のリソース
 
-Additionally, you can connect with the SQL Data Warehouse community on [Stack Overflow][] or on the [Azure SQL Data Warehouse MSDN forum][].
+さらに、[Stack Overflow][] または [Azure SQL Data Warehouse MSDN フォーラム][]で SQL Data Warehouse のコミュニティと交流することができます。
 
 <!--Image references--> 
 
@@ -92,20 +91,16 @@ Additionally, you can connect with the SQL Data Warehouse community on [Stack Ov
 <!--MSDN references--> 
 
 <!--Other web references--> 
-[Azure portal]: https://portal.azure.com/
-[Azure support plan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/  
-[Developer]: https://azure.microsoft.com/support/plans/developer/  
-[Standard]: https://azure.microsoft.com/support/plans/standard/  
-[Professional Direct]: https://azure.microsoft.com/support/plans/prodirect/  
-[Premier]: https://azure.microsoft.com/support/plans/premier/  
-[Azure support FAQs]: https://azure.microsoft.com/support/faq/
-[Microsoft Premier online portal]: https://premier.microsoft.com/
+[Azure ポータル]: https://portal.azure.com/
+[Azure support plan]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[Azure サポート プラン]: https://azure.microsoft.com/support/plans/?WT.mc_id=Support_Plan_510979/
+[Developer]: https://azure.microsoft.com/support/plans/developer/
+[Standard]: https://azure.microsoft.com/support/plans/standard/
+[Professional Direct]: https://azure.microsoft.com/support/plans/prodirect/
+[Premier]: https://azure.microsoft.com/support/plans/premier/
+[Azure サポートに関する FAQ]: https://azure.microsoft.com/support/faq/
+[Microsoft Premier オンライン ポータル]: https://premier.microsoft.com/
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-sqldw/
-[Azure SQL Data Warehouse MSDN forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
+[Azure SQL Data Warehouse MSDN フォーラム]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse/
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!-------HONumber=AcomDC_0907_2016-->

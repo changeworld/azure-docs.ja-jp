@@ -1,54 +1,51 @@
 <properties 
-    pageTitle="How To Configure TLS Mutual Authentication for Web App" 
-    description="Learn how to configure your web app to use client certificate authentication on TLS." 
-    services="app-service" 
-    documentationCenter="" 
-    authors="naziml" 
-    manager="wpickett" 
-    editor="jimbe"/>
+	pageTitle="Web アプリの TLS 相互認証を構成する方法" 
+	description="Web アプリを TLS でクライアント証明書認証を使用するように構成する方法について説明します。" 
+	services="app-service" 
+	documentationCenter="" 
+	authors="naziml" 
+	manager="wpickett" 
+	editor="jimbe"/>
 
 <tags 
-    ms.service="app-service" 
-    ms.workload="na" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/08/2016" 
-    ms.author="naziml"/>    
+	ms.service="app-service" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/08/2016" 
+	ms.author="naziml"/>
+
+# Web アプリの TLS 相互認証を構成する方法
+
+## Overview ##
+さまざまな種類の認証を有効にすることで、Azure Web アプリへのアクセスを制限できます。これを行う 1 つの方法は、要求が TLS と SSL を経由するときに、クライアント証明書を使用して認証することです。このメカニズムは、TLS 相互認証またはクライアント証明書認証と呼ばれます。この記事では、Web アプリをクライアント証明書認証を使用するように設定する方法について詳しく説明します。
+
+> **注:** HTTPS ではなく HTTP 経由でサイトにアクセスする場合は、クライアント証明書を受信しません。したがって、アプリケーションにクライアント証明書が必要な場合は、HTTP 経由でのアプリケーションへの要求を許可しないでください。
 
 
-# <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>How To Configure TLS Mutual Authentication for Web App
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-## <a name="overview"></a>Overview ##
-You can restrict access to your Azure web app by enabling different types of authentication for it. One way to do so is to authenticate using a client certificate when the request is over TLS/SSL. This mechanism is called TLS mutual authentication or client certificate authentication and this article will detail how to setup your web app to use client certificate authentication.
+## Web アプリのクライアント証明書認証を構成する ##
+Web アプリを、クライアント証明書を要求するように設定するには、Web アプリ用の clientCertEnabled サイト設定を追加し、true に設定する必要があります。現時点では、この設定は、ポータルでの管理エクスペリエンスを通して実行することはできません。これを実現するには REST API を使用する必要があります。
 
-> **Note:** If you access your site over HTTP and not HTTPS, you will not receive any client certificate. So if your application requires client certificates you should not allow requests to your application over HTTP.
-
-
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
-
-## <a name="configure-web-app-for-client-certificate-authentication"></a>Configure Web App for Client Certificate Authentication ##
-To setup your web app to require client certificates you need to add the clientCertEnabled site setting for your web app and set it to true. This setting is not currently available through the management experience in the Portal, and the REST API will need to be used to accomplish this.
-
-You can use the [ARMClient tool](https://github.com/projectkudu/ARMClient) to make it easy to craft the REST API call. After you log in with the tool you will need to issue the following command:
+[ARMClient ツール](https://github.com/projectkudu/ARMClient)を使用して、REST API 呼び出しを簡単に作成できます。このツールを使用してログインした後、次のコマンドを発行する必要があります。
 
     ARMClient PUT subscriptions/{Subscription Id}/resourcegroups/{Resource Group Name}/providers/Microsoft.Web/sites/{Website Name}?api-version=2015-04-01 @enableclientcert.json -verbose
     
-replacing everything in {} with information for your web app and creating a file called enableclientcert.json with the following JSON content:
+{} 内のすべての Web アプリの情報に置き換え、enableclientcert.json という名前の次の JSON コンテンツを持つファイルを作成します。
 
-> { "location": "My Web App Location",   
->   "properties": {  
->     "clientCertEnabled": true } }  
+> { "location": "My Web App Location", "properties": { "clientCertEnabled": true } }
 
-Make sure to change the value of "location" to wherever your web app is located e.g. North Central US or West US etc.
+"location" の値を、Web アプリが配置される場所に変更します。例: 米国中北部、米国西部など。
 
-> **Note:** If you run ARMClient from Powershell, you will need to escape the @ symbol for the JSON file with a back tick `.
+> **注:** PowerShell から ARMClient を実行する場合、JSON ファイルの @ 記号をアクサン グラーブ (`) でエスケープする必要があります。
 
-## <a name="accessing-the-client-certificate-from-your-web-app"></a>Accessing the Client Certificate From Your Web App ##
-If you are using ASP.NET and configure your app to use client certificate authentication, the certificate will be available through the **HttpRequest.ClientCertificate** property. For other application stacks, the client cert will be available in your app through a base64 encoded value in the "X-ARR-ClientCert" request header. Your application can create a certificate from this value and then use it for authentication and authorization purposes in your application.
+## Web アプリからクライアント証明書にアクセスする ##
+ASP.NET を使用し、クライアント証明書認証を使用するようにアプリを構成する場合、証明書は **HttpRequest.ClientCertificate** プロパティを通じて利用可能になります。他のアプリケーション スタックの場合は、"X-ARR-ClientCert" 要求ヘッダー内の base64 エンコード値を通して、アプリでクライアント証明書を使用できます。アプリケーションは、この値から証明書を作成した後、アプリケーションの認証と承認の目的でそれを使用できます。
 
-## <a name="special-considerations-for-certificate-validation"></a>Special Considerations for Certificate Validation ##
-The client certificate that is sent to the application does not go through any validation by the Azure Web Apps platform. Validating this certificate is the responsibility of the web app. Here is sample ASP.NET code that validates certificate properties for authentication purposes.
+## 証明書の検証に関する特別な考慮事項 ##
+アプリケーションに送信されるクライアント証明書は、Azure Web Apps プラットフォームによる検証を受けません。この証明書の検証は、Web アプリが実行する必要があります。認証するために証明書のプロパティを検証するサンプル ASP.NET コードを次に示します。
 
     using System;
     using System.Collections.Specialized;
@@ -185,8 +182,4 @@ The client certificate that is sent to the application does not go through any v
         }
     }
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

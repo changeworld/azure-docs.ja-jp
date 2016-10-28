@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Debug U-SQL jobs | Microsoft Azure" 
-   description="Learn how to debug U-SQL failed vertex using Visual Studio. " 
+   pageTitle="U-SQL ジョブのデバッグ | Microsoft Azure" 
+   description="Visual Studio を使用して、U-SQL の失敗した頂点をデバッグする方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="mumian" 
@@ -18,87 +18,81 @@
 
 
 
+#Data Lake Analytics ジョブに U-SQL で C# コードをデバッグする 
 
-#<a name="debug-c#-code-in-u-sql-for-data-lake-analytics-jobs"></a>Debug C# code in U-SQL for Data Lake Analytics jobs 
+Azure Data Lake Visual Studio ツールを使用して、ユーザー コード内のバグが原因で失敗した U-SQL ジョブをデバッグする方法について説明します。
 
-Learn how to use Azure Data Lake Visual Studio tools to debug failed U-SQL jobs due to bugs inside user code. 
+Visual Studio ツールでは、失敗したジョブをトレースおよびデバッグするために、コンパイル済みのコードと必要な頂点データをクラスターからダウンロードすることができます。
 
-The Visual Studio tool allows you to download compiled code and necessary vertex data from  cluster to trace and debug failed jobs .
+ビッグ データ システムは、通常、Java、C#、Python などの言語で記述した機能拡張モデルを提供します。これら多くのシステムが出すランタイム デバッグ情報には制限があり、カスタム コード内でランタイム エラーをデバッグすることを難しくしています。最新の Visual Studio ツールには、"Failed Vertex Debug" と呼ばれる機能が備わっています。この機能を使用すると、Azure からローカル ワークステーションにランタイム データをダウンロードすることができ、クラウドの同じランタイム データと入力データを使用して失敗したカスタム C# コードをデバッグできます。問題解決後に、ツールから、Azure で変更後のコードを再実行することができます。
 
-Big data systems usually provide extensibility model through languages such as Java, C#, Python, etc. Many these systems provide limited runtime debugging information, that makes it hard to debug runtime errors in custom code. The latest Visual Studio tools comes with a feature called “Failed Vertex Debug”. Using this feature, you can download the runtime data from Azure to local workstation so that you can debug failed custom C# code using the same runtime and exact input data from the cloud.  After the problems are fixed, you can re-run the revised code in Azure from the tools.
+この機能を紹介するビデオについては、「[Azure Data Lake Analytics でカスタム コードをデバッグする](https://mix.office.com/watch/1bt17ibztohcb)」を参照してください。
 
-For a video presentation of this feature, see [Debug your custom code in Azure Data Lake Analytics](https://mix.office.com/watch/1bt17ibztohcb).
-
->[AZURE.NOTE] Visual Studio may hang or crash if you don’t have the following two windows upgrades: [Microsoft Visual C++ 2015 Redistributable Update 2](https://www.microsoft.com/download/details.aspx?id=51682), [Universal C Runtime for Windows](https://www.microsoft.com/download/details.aspx?id=50410&wa=wsignin1.0).
+>[AZURE.NOTE] 2 つの Windows アップグレード ([Microsoft Visual C++ 2015 再頒布可能 Update 2](https://www.microsoft.com/download/details.aspx?id=51682) と [Windows Universal C Runtime](https://www.microsoft.com/download/details.aspx?id=50410&wa=wsignin1.0)) を適用していない場合は、Visual Studio がハングまたはクラッシュする可能性があります。
 
 
-##<a name="prerequisites"></a>Prerequisites
--   Have gone through the [Get started](data-lake-analytics-data-lake-tools-get-started.md) article.
+##前提条件
+-	[使用の開始](data-lake-analytics-data-lake-tools-get-started.md)に関する記事を確認済みである。
 
-## <a name="create-and-configure-debug-projects"></a>Create and configure debug projects
+## デバッグ プロジェクトを作成および構成する
 
-When you open a failed job in Data Lake Visual Studio tool, you will get an alert. The detailed error info will be shown in the error tab and the yellow alert bar on the top of the window. 
+失敗したジョブを Data Lake Visual Studio ツールで開くと、アラートが表示されます。エラーに関する詳細情報が、[エラー] タブとウィンドウの上部にある黄色のアラート バーに表示されます。
 
-![Azure Data Lake Analytics U-SQL debug visual studio download vertex](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
+![Azure Data Lake Analytics の U-SQL デバッグ Visual Studio 頂点のダウンロード](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
-**To download vertex and create a debug solution**
+**頂点をダウンロードしてデバッグ ソリューションを作成するには**
 
-1.  Open a failed U-SQL job in Visual Studio.
-2.  Click **Download** to download all the required resources and input streams. Click **Retry** if the download failed.
-3.  Click **Open** after the download is completed to create a local debug project. A new Visual Studio solution called **VertexDebug** with an empty project called **LocalVertexHost** will be created.
+1.	失敗した U-SQL ジョブを Visual Studio で開きます。
+2.	**[ダウンロード]** をクリックして必要なリソースと入力ストリームをすべてダウンロードします。ダウンロードに失敗した場合は **[再試行]** をクリックします。
+3.	ダウンロードが完了したら、**[開く]** をクリックしてローカル デバッグ プロジェクトを作成します。**VertexDebug** という新しい Visual Studio ソリューションと **LocalVertexHost** という空のプロジェクトが作成されます。
 
-If user defined operators are used in U-SQL code behind (Script.usql.cs), you must create a Class Library C# project with the user defined operators code, and include the project in the VertexDebug Solution.
+U-SQL 分離コード (Script.usql.cs) でユーザー定義演算子を使用している場合、ユーザー定義演算子コードを含むクラス ライブラリ C# プロジェクトを作成し、このプロジェクトを VertexDebug ソリューションに含める必要があります。
 
-If you have registered .dll assemblies to your Data Lake Analytics database, you must add the source code of the assemblies to the VertexDebug Solution.
+.dll アセンブリを Data Lake Analytics データベースに登録している場合は、そのアセンブリのソース コードを VertexDebug ソリューションに追加する必要があります。
  
-If you created a separate C# class library for your U-SQL code and registered .dll assemblies to your Data Lake Analytics database, you need to add the source C# project of the assemblies to the VertexDebug Solution.
+U-SQL 分離コードに個別の C# クラス ライブラリを作成して .dll アセンブリを Data Lake Analytics データベースに登録している場合は、そのアセンブリのソース C# プロジェクトを VertexDebug ソリューションに追加する必要があります。
 
-In some rare cases, you use user defined operators in U-SQL code behind (Script.usql.cs) file in the original solution. If you want to make it work, you need to create a C# library containing the source code and change the assembly name to the one registered in the cluster. You can get the assembly name registered in the cluster by checking the script that got running in the cluster. You can do so by opening the U-SQL job and click “script” in the job panel. 
+U-SQL 分離コード (Script.usql.cs) でユーザー定義演算子を使用している場合、ユーザー定義演算子コードを含むクラス ライブラリ C# プロジェクトを作成し、このプロジェクトを VertexDebug ソリューションに含める必要があります。これを機能させるには、ソース コードを含む C# ライブラリを作成し、クラスターに登録されている 1 つに、アセンブリ名を変更する必要があります。クラスターで実行されているスクリプトをチェックすると、クラスターに登録されているアセンブリ名を取得することができます。U-SQL ジョブを開き、ジョブ パネルの ”スクリプト” をクリックすることにより、これを行うことができます。
 
-**To configure the solution**
+**ソリューションをを構成するには**
 
-1.  From Solution explorer, right-click the C# project you just created, and then click **Properties**.
-2.  Set the Output path as LocalVertexHost project working directory path. You can get LocalVertexHost project Working Directory path through LocalVertexHost properties.
-3.  Build your C# project in order to put the .pdb file into the LocalVertexHost project Working Directory, or you can copy the .pdb file to this folder manually.
-4.  In **Exception Settings**, check Common Language Runtime Exceptions:
+1.	ソリューション エクスプローラーで、作成した C# プロジェクトを右クリックしてから **[プロパティ]** をクリックします。
+2.	出力パスを LocalVertexHost プロジェクトの作業ディレクトリのパスとして設定します。LocalVertexHost プロジェクトの作業ディレクトリのパスは、LocalVertexHost プロパティから取得できます。
+3.	C# プロジェクトを作成して .pdb ファイルをLocalVertexHost プロジェクトの作業ディレクトリに配置します。または、.pdb ファイルをこのフォルダーに手動でコピーできます。
+4.	**[例外設定]** で [Common Language Runtime Exceptions] チェック マークをクリックします。
 
-![Azure Data Lake Analytics U-SQL debug visual studio setting](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
+![Azure Data Lake Analytics の U-SQL デバッグ Visual Studio 設定](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
  
-##<a name="debug-the-job"></a>Debug the job
+##ジョブをデバッグする
 
-After you have created a debug solution by downloading the vertex and have configured the environment, you can start debugging your U-SQL code.
+頂点をダウンロードしてデバッグ ソリューションを作成し、環境を構成したら、U-SQL コードをデバッグできます。
 
-1.  From Solution Explorer, right-click the **LocalVertexHost** project you just created, point to **Debug**, and then click **Start new instance**. The LocalVertexHost must be set as the Startup project. You may see the following message for the first time which you can ignore. It can take up to one minute to get to the debug screen.
+1.	ソリューション エクスプローラーで、作成した **[LocalVertexHost]** プロジェクトを右クリックし、**[デバッグ]** をポイントして、**[新しいインスタンスを開始]** をクリックします。LocalVertexHost は、スタートアップ プロジェクトとして設定する必要があります。最初に次のメッセージが表示される場合がありますが、このメッセージは無視できます。デバッグ画面が表示されるまで最大 1 分間かかることがあります。
  
-    ![Azure Data Lake Analytics U-SQL debug visual studio warning](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-visual-studio-u-sql-debug-warning.png)
+    ![Azure Data Lake Analytics の U-SQL デバッグ Visual Studio 警告](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-visual-studio-u-sql-debug-warning.png)
 
-4.  Use Visual Studio based debugging experience (watch, variables, etc.) to troubleshoot the problem. 
-5.  After you have identified an issue, fix the code, and then rebuild the C# project before testing it again until all the problems are resolved. After the debug has been completed successfully, the output window showing the following message 
+4.	Visual Studio ベースのデバッグ機能 (ウォッチ、変数など) を使用して、問題のトラブルシューティングを行います。
+5.	問題を特定したら、コードを修正し、C# プロジェクトをリビルドしてから再度テストして、最終的にすべての問題を解決します。デバッグが正常に完了したら、出力ウィンドウに次のメッセージが表示されます。
 
         The Program ‘LocalVertexHost.exe’ has exited with code 0 (0x0).
  
-##<a name="resubmit-the-job"></a>Resubmit the job
+##ジョブを再送信する
 
-After you have completed debugging your U-SQL code, you can resubmit the failed job.
+U-SQL コードのデバッグが完了したら、失敗したジョブを再送信することができます。
 
-1. Register new .dll assemblies to your ADLA database.
+1. 新しい .dll アセンブリを ADLA データベースに登録します。
 
-    1.  From Server Explorer/Cloud Explorer in Data Lake Visual Studio Tool, expand the **Databases** node 
-    2.  Right-click Assemblies to Register assemblies. 
-    3.  Register your new .dll assemblies to the ADLA database.
+    1.	Data Lake Visual Studio ツールのサーバー エクスプローラーまたはクラウド エクスプローラーで、**[データベース]** ノードを展開します。
+    2.	アセンブリを登録するためにアセンブリを右クリックしてします。
+    3.	新しい .dll アセンブリを ADLA データベースに登録します。
  
-2.  Or copy your C# code to script.usql.cs--C# code behind file.
-3.  Resubmit your job.
+2.	または、C# コードを script.usql.cs (C# 分離コード ファイル) にコピーします 。
+3.	ジョブを再送信します。
 
-##<a name="next-steps"></a>Next Steps
+##次のステップ
 
-- [Tutorial: Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)
-- [Tutorial: develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-- [Develop U-SQL User defined operators for Azure Data Lake Analytics jobs](data-lake-analytics-u-sql-develop-user-defined-operators.md)
+- [チュートリアル: Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
+- [チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+- [Azure Data Lake Analytics ジョブの U-SQL ユーザー定義演算子の開発](data-lake-analytics-u-sql-develop-user-defined-operators.md)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

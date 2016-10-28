@@ -1,8 +1,5 @@
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-Not using elastic database tools yet? Check out our [Getting Started Guide](../articles/sql-database/sql-database-elastic-scale-get-started.md) and [Documentation Map](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/).  For questions, please reach out to us on the [SQL Database forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) and for feature requests, please add them to the [SQL Database feedback forum](https://feedback.azure.com/forums/217321-sql-database/).
+まだ弾力性データベース ツールを使用していない場合は、 [弾力性データベースの概要](../articles/sql-database/sql-database-elastic-scale-get-started.md)に関するページと、[関連ドキュメント](https://azure.microsoft.com/documentation/learning-paths/sql-database-elastic-scale/)をご覧ください。質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

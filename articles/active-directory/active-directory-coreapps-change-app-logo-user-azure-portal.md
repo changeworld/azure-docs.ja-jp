@@ -1,59 +1,54 @@
 <properties
-    pageTitle="Change the name or logo of an enterprise app in Azure Active Directory preview | Microsoft Azure"
-    description="How to change the name or logo for a custom enterprise app in Azure Active Directory"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory プレビューでエンタープライズ アプリケーションの名前またはロゴを変更する | Microsoft Azure"
+	description="Azure Active Directory でカスタム エンタープライズ アプリケーションの名前またはロゴを変更する方法"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
+# Azure Active Directory プレビューでエンタープライズ アプリケーションの名前またはロゴを変更する
 
-# <a name="change-the-name-or-logo-of-an-enterprise-app-in-azure-active-directory-preview"></a>Change the name or logo of an enterprise app in Azure Active Directory preview
+Azure Active Directory (Azure AD) プレビューで、カスタム エンタープライズ アプリケーションの名前またはロゴを簡単に変更できます。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 これらの変更を行うには、適切なアクセス許可が必要です。現在のプレビューでは、カスタム アプリケーションの作成者である必要があります。
 
-It's easy to change the name or logo for a custom enterprise application in Azure Active Directory (Azure AD) preview. [What's in the preview?](active-directory-preview-explainer.md) You must have the appropriate permissions to make these changes. In the current preview, you must be the creator of the custom app.
+## エンタープライズ アプリケーションの名前またはロゴを変更する方法
 
-## <a name="how-do-i-change-an-enterprise-app's-name-or-logo?"></a>How do I change an enterprise app's name or logo?
+1. ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-1. Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2. **[その他のサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
 
-2. Select **More services**, enter **Azure Active Directory** in the text box, and then select **Enter**.
+3. **[Azure Active Directory - *ディレクトリ名*]** ブレード (管理対象のディレクトリの Azure AD ブレード) で、**[Enterprise applications (エンタープライズ アプリケーション)]** を選択します。
 
-3. On the **Azure Active Directory - *directoryname*** blade (that is, the Azure AD blade for the directory you are managing), select **Enterprise applications**.
+	![エンタープライズ アプリケーションを開く](./media/active-directory-coreapps-change-app-logo-azure-portal/open-enterprise-apps.png)
 
-    ![Opening Enterprise apps](./media/active-directory-coreapps-change-app-logo-azure-portal/open-enterprise-apps.png)
+4. **[Enterprise applications (エンタープライズ アプリケーション)]** ブレードで、**[すべてのアプリケーション]** を選択します。管理できるアプリケーションの一覧が表示されます。
 
-4. On the **Enterprise applications** blade, select **All applications**. You'll see a list of the apps you can manage.
+5. **[Enterprise applications - All applications (エンタープライズ アプリケーション - すべてのアプリケーション)]** ブレードで、アプリケーションを選択します。
 
-5. On the **Enterprise applications - All applications** blade, select an app.
+6. **[*アプリケーション名*]** ブレード (タイトルが選択したアプリケーションの名前であるブレード) で、**[プロパティ]** を選択します。
 
-6. On the ***appname*** blade (that is, the blade with the name of the selected app in the title), select **Properties**.
+	![[プロパティ] を選択する](./media/active-directory-coreapps-change-app-logo-azure-portal/select-app.png)
 
-    ![Selecting the properties command](./media/active-directory-coreapps-change-app-logo-azure-portal/select-app.png)
+7. **[*アプリケーション名***** - プロパティ]** ブレードで、新しいロゴとして使用するファイルを参照するか、アプリケーション名を編集します。またはこの両方を行います。
 
-7. On the ***appname*** **- Properties** blade, browse for a file to use as a new logo, or edit the app name, or both.
+	![アプリケーションのロゴまたは名前プロパティを変更する](./media/active-directory-coreapps-change-app-logo-azure-portal/change-logo.png)
 
-    ![Changing the app logo or nameproperties command](./media/active-directory-coreapps-change-app-logo-azure-portal/change-logo.png)
+8. **[保存]** をクリックします。
 
-8. Select the **Save** command.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+- [自分のグループをすべて表示する](active-directory-groups-view-azure-portal.md)
+- [エンタープライズ アプリケーションにユーザーまたはグループを割り当てる](active-directory-coreapps-assign-user-azure-portal.md)
+- [エンタープライズ アプリケーションからユーザーまたはグループの割り当てを削除する](active-directory-coreapps-remove-assignment-user-azure-portal.md)
+- [エンタープライズ アプリケーションのユーザー サインインを無効にする](active-directory-coreapps-disable-app-azure-portal.md)
 
-- [See all of my groups](active-directory-groups-view-azure-portal.md)
-- [Assign a user or group to an enterprise app](active-directory-coreapps-assign-user-azure-portal.md)
-- [Remove a user or group assignment from an enterprise app](active-directory-coreapps-remove-assignment-azure-portal.md)
-- [Disable user sign-ins for an enterprise app](active-directory-coreapps-disable-app-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

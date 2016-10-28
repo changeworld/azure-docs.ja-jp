@@ -1,67 +1,60 @@
 <properties
-    pageTitle=" Upload files into a Media Services account using the Azure portal | Microsoft Azure"
-    description="This tutorial walks you through the steps of uploading files into a Media Services account using the Azure portal"
-    services="media-services"
-    documentationCenter=""
-    authors="Juliako"
-    manager="erikre"
-    editor=""/>
+	pageTitle=" Azure Portal を使用した Media Services アカウントへのファイルのアップロード | Microsoft Azure"
+	description="このチュートリアルでは、Azure Portal を使用して Media Services アカウントにファイルをアップロードする手順について説明します。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="media-services"
-    ms.workload="media"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/29/2016"
-    ms.author="juliako"/>
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/29/2016"
+	ms.author="juliako"/>
 
 
-
-# <a name="upload-files-into-a-media-services-account-using-the-azure-portal"></a>Upload files into a Media Services account using the Azure portal 
+# Azure Portal を使用した Media Services アカウントへのファイルのアップロード 
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-upload-files.md)
+- [ポータル](media-services-portal-upload-files.md)
 - [.NET](media-services-dotnet-upload-files.md)
-- [REST](media-services-rest-upload-files.md)
+- [REST ()](media-services-rest-upload-files.md)
 
-> [AZURE.NOTE] To complete this tutorial, you need an Azure account. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/). 
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-In Media Services, you upload your digital files into an asset. The Asset  can contain video, audio, images, thumbnail collections, text tracks and closed caption files (and the metadata about these files.) Once the files are uploaded, your content is stored securely in the cloud for further processing and streaming.
+Media Services で、デジタル ファイルを資産にアップロードします。資産には、ビデオ、オーディオ、画像、縮小表示のコレクション、テキスト トラック、字幕ファイル (各ファイルのメタデータを含む) を追加できます。 ファイルをアップロードすると、クラウドにコンテンツが安全に保存され、処理したりストリーミングしたりできるようになります。
  
-1. In the **Setting** window, click **Assets**.
+1. **[設定]** ウィンドウで、**[資産]** をクリックします。
 
-    ![Upload files](./media/media-services-portal-vod-get-started/media-services-upload.png)
+	![ファイルのアップロード](./media/media-services-portal-vod-get-started/media-services-upload.png)
 
-3. Click the **Upload** button.
+3. **[アップロード]** ボタンをクリックします。
 
-    The **Upload a video asset** window appears.
+	**[Upload a video asset (ビデオ資産をアップロード)]** ウィンドウが表示されます。
 
-    >[AZURE.NOTE] There is no file size limitation.
-    
-4. Browse to the desired video on your computer, select it, and hit OK.  
+	>[AZURE.NOTE] ファイル サイズの制限はありません。
+	
+4. コンピューターで目的のビデオを参照して選択し、[OK] をクリックします。
 
-    The upload starts and you can see the progress under the file name.  
+	アップロードが開始され、ファイル名の下に進行状況が表示されます。
 
-Once the upload completes, you will see the new asset listed in the **Assets** window. 
+アップロードが完了すると、**[資産]** ウィンドウの一覧に新しい資産が表示されます。
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-You can now encode your uploaded assets. For more information, see [Encode assets](media-services-portal-encode.md).
+これで、アップロードした資産をエンコードできます。詳細については、[資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。
 
-## <a name="media-services-learning-paths"></a>Media Services learning paths
+## Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

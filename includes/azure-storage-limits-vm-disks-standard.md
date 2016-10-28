@@ -1,11 +1,9 @@
-**Virtual machine disks: per disk limits**
+**仮想マシンのディスク: ディスクあたりの上限**
 
- VM Tier | Basic Tier VM | Standard Tier VM
+ VM のレベル | Basic レベルの VM | Standard レベルの VM
 ---|---|---
-Disk size | 1023 GB | 1023 GB
-Max 8 KB IOPS per persistent disk | 300 | 500
-Max number of disks performing max IOPS | 66 | 40
+ディスク サイズ | 1023 GB | 1023 GB
+永続ディスクあたり最大 8 KB IOPS | 300 | 500
+最大 IOPS を実行するディスクの最大数 | 66 | 40
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

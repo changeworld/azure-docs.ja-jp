@@ -1,47 +1,46 @@
 <properties
-    pageTitle="Infographic: Machine learning basics - algorithm examples | Microsoft Azure"
-    description="An easy-to-understand overview of machine learning basics includes algorithm examples. The downloadable infographic covers most machine learning questions."
-    keywords="machine learning basics,algorithm examples,machine learning for beginners,machine learning questions,popular algorithms,algorithm infographic"
-    services="machine-learning"
-    documentationCenter=""
-    authors="garyericson"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="インフォグラフィック: Machine Learning の基礎とアルゴリズムの使用例| Microsoft Azure"
+	description="アルゴリズムの使用例を交えながら機械学習の基礎をわかりやすく概説します。ダウンロード可能なインフォグラフィックで、機械学習に関するさまざまな疑問点に答えます。"
+	keywords="機械学習の基礎,アルゴリズム使用例,初級者向けの機械学習,機械学習の疑問,広く使われているアルゴリズム,アルゴリズムのインフォグラフィック"
+	services="machine-learning"
+	documentationCenter=""
+	authors="garyericson"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/19/2016"
-    ms.author="garye" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/19/2016"
+	ms.author="garye" />
 
 
+# インフォグラフィックのダウンロード: Machine Learning の基礎とアルゴリズムの使用例
 
-# <a name="downloadable-infographic:-machine-learning-basics-with-algorithm-examples"></a>Downloadable Infographic: Machine learning basics with algorithm examples
+機械学習の基礎の概要については、このわかりやすいインフォグラフィックをダウンロードしてください。よく使用されるアルゴリズムについて説明して、機械学習に関する一般的な質問に答えます。機械学習の初心者向けに、使用するアルゴリズムの選択や目的を理解するうえで役立つ使用例が用意されています。
 
-Download this easy-to-understand infographic overview of machine learning basics. Learn about popular algorithms used to answer common machine learning questions. Algorithm examples help the machine learning beginner understand which algorithms to use and what they are used for.
+## Machine Learning Studio でよく使用されるアルゴリズム
 
-## <a name="popular-algorithms-in-machine-learning-studio"></a>Popular algorithms in Machine Learning Studio
+[Azure Machine Learning Studio](https://studio.azureml.net/) には、予測分析の多様なアルゴリズムのライブラリが用意されています。このインフォグラフィックは、**regression**、**anomaly detection**、**clustering**、**classification** という、よく使用されるアルゴリズム ファミリを示しています。
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) comes with a large library of algorithms for predictive analytics. The infographic shows popular families of algorithms: **regression**, **anomaly detection**, **clustering**, and **classification**.
+[Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) は、実際の多くのソリューションでこれらのアルゴリズムを適用する方法を示しています。インフォグラフィックのリンクをクリックすると、実行例が表示されます。
 
-[Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) shows how these algorithms can be applied in many real-world solutions. Follow links in the infographic to see working examples.
+## インフォグラフィックとアルゴリズムの例をダウンロードする
 
-## <a name="download-the-infographic-with-algorithm-examples"></a>Download the infographic with algorithm examples
-
-**[Download: Infographic of machine learning basics with links to algorithm examples (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
+**[ダウンロード: 機械学習の基礎に関するインフォグラフィックとアルゴリズム使用例へのリンク (PDF)](http://download.microsoft.com/download/0/5/A/05AE6B94-E688-403E-90A5-6035DBE9EEC5/machine-learning-basics-infographic-with-algorithm-examples.pdf)**
 
 
-![Infographic: Machine learning basics with algorithm examples. Popular algorithms. Machine learning for beginners.](./media/machine-learning-basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
+![Infographic: Machine learning basics with algorithm examples.Popular algorithms.Machine learning for beginners.](./media/machine-learning-basics-infographic-with-algorithm-examples/machine-learning-basics-infographic-with-algorithm-examples.png)
 
-## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>More help with algorithms for beginners and advanced users
+## アルゴリズムの初級ユーザーと上級ユーザーのための追加情報
 
-* For a deeper discussion of the different types of machine learning algorithms, how they're used, and how to choose the right one for your solution, see [How to choose algorithms for Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
-* For a list by category of all the machine learning algorithms available in Machine Learning Studio, see [Initialize Model][initialize-model] in the Machine Learning Studio Algorithm and Module Help.
-* For a complete list of algorithms and modules in Machine Learning Studio, see [A-Z list of Machine Learning Studio modules][a-z-list] in Machine Learning Studio Algorithm and Module Help.
-* To download and print a diagram that gives an overview of the capabilities of Machine Learning Studio, see [Overview diagram of Azure Machine Learning Studio capabilities](machine-learning-studio-overview-diagram.md).
+* 機械学習の各種アルゴリズムの詳細とその使用方法、問題解決に適したアルゴリズムの選択方法については、「[Microsoft Azure Machine Learning のアルゴリズムを選択する方法](machine-learning-algorithm-choice.md)」を参照してください。
+* Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページを参照してください。
+* Machine Learning Studio で使用可能なすべてのアルゴリズムとモジュールの一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」を参照してください。
+* Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「[Azure Machine Learning Studio 機能の概要図](machine-learning-studio-overview-diagram.md)」参照してください。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
@@ -53,8 +52,4 @@ Download this easy-to-understand infographic overview of machine learning basics
 [k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
 [one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

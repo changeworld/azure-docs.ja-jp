@@ -1,12 +1,12 @@
 <properties
-    pageTitle="What is SQL Database? Intro to SQL Database | Microsoft Azure"
-    description="Get an introduction to SQL Database: technical details and capabilities of Microsoft's relational database management system (RDBMS) in the cloud."
-    keywords="introduction to sql,intro to sql,what is sql database"
-    services="sql-database"
-    documentationCenter=""
-    authors="shontnew"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="SQL Database とは SQL Database の概要 | Microsoft Azure"
+	description="SQL Database の概要: クラウド内の Microsoft のリレーショナル データベース管理システム (RDBMS) の技術の詳細と機能について説明します。"
+	keywords="sql の概要,sql の紹介,sql database とは"
+	services="sql-database"
+	documentationCenter=""
+	authors="shontnew"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
    ms.service="sql-database"
@@ -17,51 +17,45 @@
    ms.date="08/16/2016"
    ms.author="shkurhek"/>
 
+# SQL Database とは SQL Database の概要
 
-# <a name="what-is-sql-database?-introduction-to-sql-database"></a>What is SQL Database? Introduction to SQL Database
+SQL Database は、ミッション クリティカルな機能を備えた、市場をリードする Microsoft SQL Server エンジンに基づくクラウド内のリレーショナル データベース サービスです。SQL Database は、予測可能なパフォーマンス、ダウンタイムなしの拡張性、ビジネス継続性、データ保護を提供し、いずれの場合も管理をほとんど必要としません。仮想マシンとインフラストラクチャの管理に煩わされることなく、迅速なアプリケーション開発および製品化に要する時間の短縮化に専念することができます。SQL Database は、[SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) エンジンを基礎としているため、既存の SQL Server ツール、ライブラリ、および API をサポートしています。したがって、クラウドへの移行およびクラウドへの拡張が簡単です。
 
-SQL Database is a relational database service in the cloud based on the market-leading Microsoft SQL Server engine, with mission-critical capabilities. SQL Database delivers predictable performance, scalability with no downtime, business continuity and data protection—all with near-zero administration. You can focus on rapid app development and accelerating your time to market, rather than managing virtual machines and infrastructure. Because it’s based on the [SQL Server](https://msdn.microsoft.com/library/bb545450.aspx) engine, SQL Database supports existing SQL Server tools, libraries and APIs, which makes it easier for you to move and extend to the cloud.
-
-This article is an introduction to SQL Database core concepts and features related to performance, scalability, and manageability, with links to explore details. If you’re ready to jump in, you can [Create your first SQL database](sql-database-get-started.md) or [Create an elastic database pool](sql-database-elastic-pool-create-portal.md) in minutes. If you want a deeper dive, watch this 30 minute video.
+この記事では、パフォーマンス、スケーラビリティ、および管理容易性に関連する、SQL Database の中心概念および機能について紹介し、詳細を参照するためのリンクも提供します。先に進む準備ができたら、[最初の SQL Database の作成](sql-database-get-started.md)または[エラスティック データベース プールの作成](sql-database-elastic-pool-create-portal.md)を数分で実行できます。さらに詳しく知りたい場合は、この 30 分間のビデオをご覧ください。
 
 > [AZURE.VIDEO azurecon-2015-get-started-with-azure-sql-database]
 
-## <a name="adjust-performance-and-scale-without-downtime"></a>Adjust performance and scale without downtime
+## ダウンタイムなしでのパフォーマンスの調整とスケール
+SQL Database は、Basic、Standard、Premium の *サービス階層* で使用できます。各サービス階層では、軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、[さまざまなレベルのパフォーマンスと機能](sql-database-service-tiers.md)を提供しています。最初のアプリケーションを月数ドルで小規模データベースにビルドし、やがてアプリケーションが世界中に急速に広まってきたら、アプリケーションやお客様にダウンタイムを発生させずに、いつでも手動またはプログラムで[サービス層を変更](sql-database-scale-up.md)することができます。
 
-SQL databases is available in Basic, Standard, and Premium *service tiers*. Each service tier offers [different levels of performance and capabilities](sql-database-service-tiers.md) to support lightweight to heavyweight database workloads. You can build your first app on a small database for a few bucks a month, then [change the service tier](sql-database-scale-up.md) manually or programmatically at any time as your app goes viral worldwide, without downtime to your app or your customers.
+特に使用パターンが比較的予測可能である場合、多くのビジネスとアプリについては、データベースを作成し、要求に応じて単一のデータベースのパフォーマンスを調整する能力は十分です。しかし、使用パターンが予測できない場合、コストおよびビジネス モデルを管理するのが難しくなる可能性があります。
 
-For many businesses and apps, being able to create databases and dial single database performance up or down on demand is enough, especially if usage patterns are relatively predictable. But if you have unpredictable usage patterns, it can make it hard to manage costs and your business model.
+この問題は、SQL Database の[エラスティック プール](sql-database-elastic-pool.md)によって解決されます。概念は単純です。プールにパフォーマンスを割り当てたら、単一のデータベースのパフォーマンスに対してではなく、プールの全体的なパフォーマンスに対して支払いを行います。データベースのパフォーマンスを高くしたり低くしたりして調整する必要はありません。*エラスティック データベース*と呼ばれるプール内のデータベースでは、需要に合わせて自動的にスケール アップおよびスケール ダウンが行われます。エラスティック データベースでの使用はプールの上限を超えることはありません。したがってデータベースの使用状況が予測できなくても、コストが予測可能なことに変わりはありません。さらに、[プールに対してデータベースの追加および削除を行う](sql-database-elastic-pool-manage-portal.md)ことで、すべて制御可能な予算内で、アプリケーションを数個のデータベースから何千ものデータベースに及ぶ範囲でスケーリングすることができます。エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「[Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database (Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン)](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。
 
-[Elastic pools](sql-database-elastic-pool.md) in SQL Database solve this problem. The concept is simple. You allocate performance to a pool, and pay for the collective performance of the pool rather than single database performance. You don’t need to dial database performance up or down. The databases in the pool, called *elastic databases*, automatically scale up and down to meet demand. Elastic databases consume but don’t exceed the limits of the pool, so your cost remains predictable even if database usage doesn’t. What’s more, you can [add and remove databases to the pool](sql-database-elastic-pool-manage-portal.md), scaling your app from a handful of databases to thousands, all within a budget that you control. To learn more about design patterns for SaaS applications using elastic pools, see [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+単一のデータベースまたはエラスティック データベースのどちらを使用したとしても、それに固定されることはありません。Single Database をエラスティック データベース プールと組み合わせ、Single Database とプールのサービス階層を変更することで、革新的なデザインを作成することができます。さらに、Azure の強力さと幅広さを利用して、さまざまな Azure サービスを SQL Database とうまく組み合わせることにより、独自の最新アプリ設計のニーズを満たし、コストとリソースの効率性を向上させ、新たなビジネス チャンスを開くことができます。
 
-Either way you go—single or elastic—you’re not locked in. You can blend single databases with elastic database pools, and change the service tiers of single databases and pools to create innovative designs. Moreover, with the power and reach of Azure, you can mix-and-match Azure services with SQL Database to meet your unique modern app design needs, drive cost and resource efficiencies, and unlock new business opportunities.
+しかし、データベースとデータベース プールの相対的なパフォーマンスはどのようにして比較できますか? パフォーマンスの高低を調整するとき、何に基づいて右クリックでストップをかけますか? 答えは、単一のデータベースの場合はデータベース トランザクション ユニット (DTU)、エラスティック データベースとデータベース プールの場合はエラスティック DTU (eDTU) です。詳細については、「[SQL Database のオプションとパフォーマンス: 各サービス階層で使用できる内容について理解します](sql-database-service-tiers.md)」を参照してください。
 
-But how can you compare the relative performance of databases and database pools? How do you know the right click-stop when you dial up and down? The answer is the Database Transaction Unit (DTU) for single databases and the elastic DTU (eDTU) for elastic databases and database pools. See [SQL Database options and performance: Understand what's available in each service tier](sql-database-service-tiers.md) for details.
+## アプリケーションとビジネスの継続的な稼働
 
-## <a name="keep-your-app-and-business-running"></a>Keep your app and business running
-
-Azure's industry leading 99.99% availability service level agreement [(SLA)](http://azure.microsoft.com/support/legal/sla/), powered by a global network of Microsoft-managed datacenters, helps keep your app running 24/7. With every SQL database, you take advantage of built-in data protection, fault tolerance, and data protection that you would otherwise have to design, buy, build, and manage. Even so, depending on the demands of your business, you may demand additional layers of protection to ensure your app and your business can recover quickly in the event of a disaster, an error, or something else. With SQL Database, each service tier offers a different menu of features you can use to get up and running and stay that way. You can use point-in-time restore to return a database to an earlier state, as far back as 35 days. In addition, if the datacenter hosting your databases experiences an outage, you can failover to database replicas in a different region. Or you can use replicas for upgrades or relocation to different regions.
+Microsoft が管理するデータ センターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](http://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。すべての SQL Database で、組み込みのデータ保護やフォールト トレランスを利用できます。これらは、本来なら自身で設計、購入、構築、および管理する必要があります。それでも、ビジネスの要求に応じて、災害やエラーなどが発生した場合にアプリケーションおよびビジネスが迅速に回復するように、追加の保護レイヤーを必要とする場合があります。SQL Database では、サービス階層ごとに、異なる機能メニューが用意されており、それを使用すると、稼働させてその状態を維持することができます。ポイントインタイム リストアを使用すると、データベースを 35 日間分遡って以前の状態に戻すことができます。さらに、データベースをホストしているデータ センターで障害が発生した場合は、別のリージョンにあるデータベース レプリカにフェールオーバーことができます。あるいは、レプリカを使用して、アップグレードまたは異なる地域への再配置を行うことができます。
 
 ![SQL Database Geo-Replication](./media/sql-database-technical-overview/azure_sqldb_map.png)
 
 
-See [Business Continuity](sql-database-business-continuity.md) for details about the different business continuity features available for different service tiers.
+それぞれのサービス階層で使用できるさまざまなビジネス継続性機能の詳細については、「[ビジネス継続性](sql-database-business-continuity.md)」をご覧ください。
 
-## <a name="secure-your-data"></a>Secure your data
-SQL Server has a tradition of solid  data security that SQL Database upholds with features that limit access, protect data, and help you monitor activity. See [Securing your SQL database](sql-database-security.md) for a quick rundown of security options you have in SQL Database. See the [Security Center for SQL Server Database Engine and SQL Database](https://msdn.microsoft.com/library/bb510589) for a more comprehensive view of security features. And visit the [Azure Trust Center](https://azure.microsoft.com/support/trust-center/security/) for information about Azure's platform security.
+## データのセキュリティ保護
+SQL サーバーには、アクセスの制限、データの保護、および監視アクティビティの支援を行う機能を備えた SQL Database によって維持される従来の信頼性の高いデータ セキュリティがあります。SQL Database で提供されているセキュリティ オプションの迅速なランダウンについては、「[SQL Database のセキュリティ保護](sql-database-security.md)」をご覧ください。セキュリティ機能をより包括的に把握したい場合は、「[SQL Server データベース エンジンと SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)」をご覧ください。Azure のプラットフォーム セキュリティについては、「[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/security/)」をご覧ください。
 
-## <a name="next-steps"></a>Next steps
-Now that you've read an introduction to SQL Database and answered the question "What is SQL Database?", you're ready to:
+## 次のステップ
+ここでは、SQL Database の概要を紹介し、"SQL Database とは何か" という問いに対する答えを示したので、次のステップに進むことができます。
 
-- See the [pricing page](https://azure.microsoft.com/pricing/details/sql-database/) for single database and elastic database cost comparisons and calculators.
-- Learn about [elastic pools](sql-database-elastic-pool.md).
-- Get started by [creating your first database](sql-database-get-started.md).
-- [Connect and query with SSMS](sql-database-connect-query-ssms.md)
-- Build your first app in C#, Java, Node.js, PHP, Python, or Ruby: [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md)
-- See an index of the titles and descriptions of [All topics for Azure sql-database service](sql-database-index-all-articles.md).
+- 単一データベースとエラスティック データベースのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
+- [エラスティック プール](sql-database-elastic-pool.md)について学習します。
+- [最初のデータベースを作成する](sql-database-get-started.md)ことによって作業を開始します。
+- [SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)
+- 初めてのアプリを C#、Java、Node.js、PHP、Python、Ruby で作成します。「[SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)」を参照してください。
+- 「[Azure SQL Database サービスに関するすべてのトピック](sql-database-index-all-articles.md)」のタイトルと説明のインデックスを確認します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

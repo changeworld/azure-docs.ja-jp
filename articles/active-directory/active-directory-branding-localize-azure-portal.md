@@ -1,6 +1,6 @@
 <properties
-pageTitle="Add language-specific company branding to your sign-in page in the Azure Active Directory preview | Microsoft Azure"
-description="Learn how to add a language specific company branding pictures and text to an Azure sign-in page"
+pageTitle="Azure Active Directory プレビューでサインイン ページに言語固有の会社のブランドを追加する | Microsoft Azure"
+description="Azure サインイン ページに言語固有の会社のブランドの画像とテキストを追加する方法について説明します。"
 services="active-directory"
 documentationCenter=""
 authors="curtand"
@@ -16,47 +16,42 @@ ms.topic="article"
 ms.date="09/12/2016"
 ms.author="curtand"/>
 
+# Azure Active Directory プレビューでサインイン ページに言語固有の会社のブランドを追加する
 
-# <a name="add-language-specific-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>Add language-specific company branding to your sign-in page in the Azure Active Directory preview
+多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。Azure Active Directory プレビューでは、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。このページを使用して資格情報を入力します。
 
-To avoid confusion, many companies want to apply a consistent look and feel across all the websites and services they manage. Azure Active Directory preview provides this capability by allowing you to customize the appearance of the sign-in page with your company logo and custom color schemes. [What's in the preview?](active-directory-preview-explainer.md) The sign-in page is the page that appears when you sign in to Office 365 or other web-based applications that are using Azure AD as your identity provider. You interact with this page to enter your credentials.
+## 別の言語のサインイン ページのカスタマイズ
 
-## <a name="customizing-the-sign-in-page-for-another-language"></a>Customizing the sign-in page for another language
+カスタム サインイン ページに言語固有の要素を追加できるのは、[サインイン ページへの会社のブランドの追加](active-directory-branding-custom-signon-azure-portal.md)に関する記事の説明に従って、カスタム サインイン ページを既に作成している場合に限られます。カスタマイズ可能な要素の既定のセットを使用して、ディレクトリごとに 1 つのサインイン ページを構成できます。ページ要素の既定のセットを構成したら、さまざまなロケール用に追加のバージョンを構成できます。さまざまな要素を混在させたり、一致させたりすることもできます。たとえば、次のことが可能です。
 
-You can add language-specific elements to your custom sign-in page only if you have already created a custom sign-in page as described in [Add company branding to your sign-in page](active-directory-branding-custom-signon-azure-portal.md). You can configure one sign-in page per directory with a default set of customizable elements. After you’ve configured the default set of page elements, you can configure more versions for different locales. You can also mix and match various elements. For example, you could:
+- すべてのカルチャに対応する既定の**サインイン ページの画像**を作成してから、英語とフランス語固有のバージョンを作成します。ブラウザーをこの 2 つの言語のいずれかに設定すると、その言語固有の画像が表示されます。それ以外の言語ではすべて既定の画像が表示されます。
 
-- Create a default **Sign-in page image** that works for all cultures, then create specific versions for English and French. When you set your browsers to one of these two languages, the language-specific image appears, while the default illustration appears for all other languages.
+- 組織のさまざまなロゴ (日本語やヘブライ語のバージョンなど) を構成します。
 
-- Configure different logos for your organization (for example, Japanese or Hebrew versions).
+メンテナンスとパフォーマンス上の理由から、言語のバリエーションは少数にしておくことをお勧めします。
 
-We recommend that you keep the number of language variations low, for maintenance and performance reasons.
+**ディレクトリに会社のブランドを追加するには**
 
-**To add company branding to your directory:**
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+    ![ユーザー管理を開く](./media/active-directory-branding-localize-azure-portal/user-management.png)
 
-    ![Opening user management](./media/active-directory-branding-localize-azure-portal/user-management.png)
+3. **[ユーザーとグループ]** ブレードで、**[Company branding (会社のブランド)]** を選択します。
 
-3. On the **Users and groups** blade, select **Company branding**.
+4. **[Users and groups - Company branding (ユーザーとグループ - 会社のブランド)]** ブレードで、**[言語の追加]** をクリックします。
 
-4. On the **Users and groups - Company branding** blade, select the **Add language** command.
+    ![言語固有のブランド要素を追加する](./media/active-directory-branding-localize-azure-portal/add-language.png)
 
-    ![Add language-specific branding elements](./media/active-directory-branding-localize-azure-portal/add-language.png)
+5. カスタマイズする要素に変更を加えます。すべての要素は省略できます。
 
-5. Modify the elements you want to customize. All elements are optional.
+6. [**Save**] をクリックします。
 
-6. Click **Save**.
+サインイン ページのブランドに加えた変更が表示されるまでに、最大 1 時間かかる場合があります。
 
-It can take up to an hour for any changes you made to the sign-in page branding to appear.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+[サインイン ページに会社のブランドを追加する](active-directory-branding-custom-signon-azure-portal.md)
 
-[Add company branding to your sign-in page](active-directory-branding-custom-signon-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Enable VM Agent in Azure Security Center | Microsoft Azure"
-   description="This document shows you how to implement the Azure Security Center recommendation **Enable VM Agent**."
+   pageTitle="Azure Security Center での VM エージェントの有効化 | Microsoft Azure"
+   description="このドキュメントでは、";VM エージェントの有効化"; という Azure Security Center の推奨事項を実装する方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -13,45 +13,38 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/17/2016"
+   ms.date="07/21/2016"
    ms.author="terrylan"/>
 
+# Azure Security Center での VM エージェントの有効化
 
-# <a name="enable-vm-agent-in-azure-security-center"></a>Enable VM Agent in Azure Security Center
+VM エージェントは、[データ収集を有効にする](security-center-enable-data-collection.md)ために、仮想マシン (VM) にインストールする必要があります。Azure Security Center では、VM エージェントを必要とする VM を確認することができ、それらの VM で VM エージェントを有効にするよう推奨されます。
 
-The VM Agent must be installed on virtual machines (VMs) in order to [enable data collection](security-center-enable-data-collection.md).  Azure Security Center enables you to see which VMs require the VM Agent and will recommend that you enable the VM Agent on those VMs.
-
-The VM Agent is installed by default for VMs that are deployed from the Azure Marketplace. The article [VM Agent and Extensions – Part 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) provides information on how to install the VM Agent.
+既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。「[VM エージェントと拡張機能 – パート 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)」の記事には、VM エージェントのインストール方法が記載されています。
 
 
-> [AZURE.NOTE] This document introduces the service by using an example deployment. This is not a step-by-step guide.
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
-## <a name="implement-the-recommendation"></a>Implement the recommendation
+## 推奨事項の実装
 
-1. In the **Recommendations blade**, select **Enable VM Agent**.
-![Enable VM Agent][1]
+1. **[推奨事項]** ブレードで、**[VM エージェントを有効にする]** を選択します。![VM エージェントの有効化][1]
 
-2. This opens the blade **VM Agent Is Missing Or Not Responding**. This blade lists the VMs that require the VM Agent. Follow the instructions on the blade to install the VM agent.
-![VM Agent is missing][2]
+2. **[VM エージェントが見つからないか、応答していません]** ブレードが開きます。このブレードには、VM エージェントを必要とする VM が一覧表示されます。ブレードの指示に従って、VM エージェントをインストールします。![VM エージェントが見つからない][2]
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-To learn more about Security Center, see the following:
+セキュリティ センターの詳細については、次を参照してください。
 
-- [Setting security policies in Azure Security Center](security-center-policies.md)--Learn how to configure security policies for your Azure subscriptions and resource groups.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md)--Learn how recommendations help you protect your Azure resources.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md)--Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)--Learn how to manage and respond to security alerts.
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
-- [Azure Security Center FAQ](security-center-faq.md)--Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/)--Get the latest Azure security news and information.
+- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」-- セキュリティの警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-enable-vm-agent/enable-vm-agent.png
 [2]: ./media/security-center-enable-vm-agent/vm-agent-is-missing.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

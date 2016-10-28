@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Azure Container Service Introduction | Microsoft Azure"
-   description="Azure Container Service provides a way to simplify the creation, configuration, and management of a cluster of virtual machines that are preconfigured to run containerized applications."
+   pageTitle="Azure Container Service の概要 | Microsoft Azure"
+   description="Azure Container Service を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。"
    services="container-service"
    documentationCenter=""
    authors="rgardler"
    manager="timlt"
    editor=""
    tags="acs, azure-container-service"
-   keywords="Docker, Containers, Micro-services, Mesos, Azure"/>
+   keywords="Docker、コンテナー、マイクロ サービス、Mesos、Azure"/>
 
 <tags
    ms.service="container-service"
@@ -18,97 +18,92 @@
    ms.date="09/13/2016"
    ms.author="rogardle"/>
 
+# Azure Container Service の概要
 
-# <a name="azure-container-service-introduction"></a>Azure Container Service introduction
-
-Azure Container Service makes it simpler for you to create, configure, and manage a cluster of virtual machines that are preconfigured to run containerized applications. It uses an optimized configuration of popular open-source scheduling and orchestration tools. This enables you to use your existing skills, or draw upon a large and growing body of community expertise, to deploy and manage container-based applications on Microsoft Azure.
-
-
-![Azure Container Service provides a means to manage containerized applications on multiple hosts on Azure.](./media/acs-intro/acs-cluster.png)
+Azure Container Service を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。Azure Container Service では、評判のよいオープンソースのスケジューリングおよびオーケストレーション ツールの最適化された構成を使用します。これにより、既存のスキルを使用して、または増え続けている大規模な専門家コミュニティの知恵に頼って、Microsoft Azure にコンテナーベースのアプリケーションをデプロイおよび管理できます。
 
 
-Azure Container Service leverages the Docker container format to ensure that your application containers are fully portable. It also supports your choice of Marathon and DC/OS or Docker Swarm so that you can scale these applications to thousands of containers, or even tens of thousands.
+![Azure Container Service では、Azure 上の複数のホストのコンテナー化されたアプリケーションを管理できます。](./media/acs-intro/acs-cluster.png)
 
-By using Azure Container Service, you can take advantage of the enterprise-grade features of Azure, while still maintaining application portability--including portability at the orchestration layers.
 
-<a name="using-azure-container-service"></a>Using Azure Container Service
+Azure Container Service では、Docker コンテナー形式を活用し、アプリケーション コンテナーの完全な移植性を保証しています。また、このようなアプリケーションを何千、何万ものコンテナーに拡張できるように、ユーザーの選択に応じて Marathon と DC/OS または Docker Swarm もサポートします。
+
+Azure Container Service を使用することで、オーケストレーション レイヤーでの移植性も含め、アプリケーションの移植性を維持しながら、エンタープライズ レベルの Azure の機能を活用することができます。
+
+Azure Container Service の使用
 -----------------------------
 
-Our goal with Azure Container Service is to provide a container hosting environment by using open-source tools and technologies that are popular among our customers today. To this end, we expose the standard API endpoints for your chosen orchestrator (DC/OS or Docker Swarm). By using these endpoints, you can leverage any software that is capable of talking to those endpoints. For example, in the case of the Docker Swarm endpoint, you might choose to use the Docker command-line interface (CLI). For DC/OS, you might choose to use the DCOS CLI.
+Azure Container Service は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。これに対応するために、選択したオーケストレーター (DC/OS または Docker Swarm) 用の標準 API エンドポイントを公開しています。これらのエンドポイントを使用することにより、それらのエンドポイントと通信できる任意のソフトウェアを活用できます。たとえば、Docker Swarm エンドポイントの場合、Docker コマンド ライン インターフェイス (CLI) を使用することができます。DC/OS の場合、DCOS CLI を使用することもできます。
 
-<a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Creating a Docker cluster by using Azure Container Service
+Azure Container Service を使用した Docker クラスターの作成
 -------------------------------------------------------
 
-To begin using Azure Container Service, you deploy an Azure Container Service cluster via the portal (search for 'Azure Container Service'), by using an Azure Resource Manager template ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm) or [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)) or with the [CLI](/documentation/articles/xplat-cli-install/). The provided quickstart templates can be modified to include additional or advanced Azure configuration. For more information on deploying an Azure Container Service cluster, see [Deploy an Azure Container Service cluster](container-service-deployment.md).
+Azure Container Service を使用するには、ポータル経由か ("Azure Container Service" を検索)、Azure Resource Manager テンプレート ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm) または [DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)) を使用するか、または [CLI](/documentation/articles/xplat-cli-install/) を使用して、Azure Container Service クラスターをデプロイします。提供されたクイック スタート テンプレートを変更して、Azure の追加または高度な構成を含めることができます。Azure Container Service クラスターのデプロイの詳細については、「[Azure コンテナー サービス クラスターのデプロイ](container-service-deployment.md)」をご覧ください。
 
-<a name="deploying-an-application"></a>Deploying an application
+アプリケーションのデプロイ
 ------------------------
 
-Azure Container Service provides a choice of either Docker Swarm or DC/OS for orchestration. How you deploy your application depends on your choice of orchestrator.
+Azure Container Service では、オーケストレーション用に Docker Swarm または DC/OS を選択できます。アプリケーションをデプロイする方法は、選択したオーケストレーターによって異なります。
 
-### <a name="using-dc/os"></a>Using DC/OS
+### DC/OS の使用
 
-DC/OS is a distributed operating system based on the Apache Mesos distributed systems kernel. Apache Mesos is housed at the Apache Software Foundation and lists some of the [biggest names in IT](http://mesos.apache.org/documentation/latest/powered-by-mesos/) as users and contributors.
+DC/OS は、Apache Mesos 分散システムのカーネルをベースとする分散オペレーティング システムです。Apache Mesos は、Apache Software Foundation の下で管理されており、そのユーザーや協力会社として[大手 IT 企業](http://mesos.apache.org/documentation/latest/powered-by-mesos/)が名前を連ねています。
 
-![Azure Container Service configured for Swarm showing agents and masters.](media/acs-intro/dcos.png)
+![Swarm の構成がされた Azure Container Service のエージェントとマスターを示します。](media/acs-intro/dcos.png)
 
-DC/OS and Apache Mesos include an impressive feature set:
+DC/OS と Apache Mesos の特筆すべき機能を以下に示します。
 
--   Proven scalability
+-   実証済みのスケーラビリティ
 
--   Fault-tolerant replicated master and slaves using Apache ZooKeeper
+-   Apache ZooKeeper を使用したフォールト トレランス機能を備えたレプリケートされたマスターおよびスレーブ
 
--   Support for Docker-formatted containers
+-   Docker 形式コンテナーのサポート
 
--   Native isolation between tasks with Linux containers
+-   Linux コンテナーを使用したタスク間のネイティブな分離
 
--   Multiresource scheduling (memory, CPU, disk, and ports)
+-   (メモリ、CPU、ディスクおよびポートの) マルチリソース スケジューリング
 
--   Java, Python, and C++ APIs for developing new parallel applications
+-   新しい並列アプリケーションを開発するための Java、Python、および C++ API
 
--   A web UI for viewing cluster state
+-   クラスターの状態を参照するための Web UI
 
-By default, DC/OS running on Azure Container Service includes the Marathon  orchestration platform for scheduling workloads. However, included with the DC/OS deployment of ACS is the Mesosphere Universe of services that can be added to your service, these include Spark, Hadoop, Cassandra and much more.
+Azure Container Service 上で実行される DC/OS には、ワークロードをスケジューリングするための Marathon オーケストレーション プラットフォームが既定で備わっています。ただし、ACS の DC/OS のデプロイには、ご使用のサービスに追加できる Mesosphere Universe サービスが含まれ、Spark、Hadoop、Cassandra などがこれに含まれます。
 
-![DC/OS Universe in Azure Container Service](media/dcos/universe.png)
+![Azure コンテナー サービスの DC/OS Universe](media/dcos/universe.png)
 
-#### <a name="using-marathon"></a>Using Marathon
+#### Marathon の使用
 
-Marathon is a cluster-wide init and control system for services in cgroups--or, in the case of Azure Container Service, Docker-formatted containers. Marathon provides a web UI from which you can deploy your applications. You can access this at a URL that looks something like `http://DNS_PREFIX.REGION.cloudapp.azure.com` where DNS\_PREFIX and REGION are both defined at deployment time. Of course, you can also provide your own DNS name. For more information on running a container using the Marathon web UI, see [Container management through the web UI](container-service-mesos-marathon-ui.md).
+Marathon は、クラスター全体の cgroups (または Azure Container Service の場合は Docker 形式コンテナー) のサービスを、初期化および制御するシステムです。Marathon には、アプリケーションをデプロイできる Web UI があります。これには、`http://DNS_PREFIX.REGION.cloudapp.azure.com` のような URL からアクセスできます (この DNS\_PREFIX と REGION はいずれもデプロイ時に定義します)。独自の DNS 名を作成することも可能です。Marathon Web UI を使用したコンテナーの実行の詳細については、「[Web UI 経由のコンテナー管理](container-service-mesos-marathon-ui.md)」をご覧ください。
 
-![Marathon Applications List](media/dcos/marathon-applications-list.png)
+![Marathon アプリケーションの一覧](media/dcos/marathon-applications-list.png)
 
-You can also use the REST APIs for communicating with Marathon. There are a number of client libraries that are available for each tool. They cover a variety of languages--and, of course, you can use the HTTP protocol in any language. In addition, many popular DevOps tools provide support for Marathon. This provides maximum flexibility for your operations team when you are working with an Azure Container Service cluster. For more information on running a container by using the Marathon REST API, see [Container management with the REST API](container-service-mesos-marathon-rest.md).
+Marathon との通信には、REST API を使用することも可能です。各ツールで利用可能なクライアント ライブラリが多数あります。さまざまな言語に対応するだけでなく、当然、任意の言語で HTTP プロトコルを使用することもできます。さらに、Marathon は、多数の人気の DevOps ツールによってもサポートされています。このため、Azure Container Service クラスターで作業する際に、オペレーション チームに最大限の柔軟性を提供します。Marathon REST API を使用したコンテナーの実行の詳細については、[REST API を使用したコンテナー管理](container-service-mesos-marathon-rest.md)に関するページをご覧ください。
 
-### <a name="using-docker-swarm"></a>Using Docker Swarm
+### Docker Swarm の使用
 
-Docker Swarm provides native clustering for Docker. Because Docker Swarm serves the standard Docker API, any tool that already communicates with a Docker daemon can use Swarm to transparently scale to multiple hosts on Azure Container Service.
+Docker Swarm は、Docker のネイティブ クラスタリングを提供しています。Docker Swarm には標準の Docker API があるため、Docker デーモンと既に通信するすべてのツールは Swarm を使用し、Azure Container Service の複数のホストに透過的にスケーリングできます。
 
 ![Azure Container Service configured to use DC/OS--showing jumpbox, agents, and masters.](media/acs-intro/acs-swarm2.png)
 
-Supported tools for managing containers on a Swarm cluster include, but are not limited to, the following:
+Swarm クラスターでコンテナーを管理するためにサポートされているツールには、(これらに限定はされていませんが) 以下があります。
 
 -   Dokku
 
--   Docker CLI and Docker Compose
+-   Docker CLI および Docker Compose
 
 -   Krane
 
 -   Jenkins
 
-<a name="videos"></a>Videos
+ビデオ
 ------
 
-Getting started with Azure Container Service (101):  
+Azure Container Service の概要 (101):
 
 > [AZURE.VIDEO azure-container-service-101]
 
-Building Applications Using the Azure Container Service (Build 2016)
+Azure Container Service を使用したアプリケーションの構築 (Build 2016)
 
 > [AZURE.VIDEO build-2016-building-applications-using-the-azure-container-service]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

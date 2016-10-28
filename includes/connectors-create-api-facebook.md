@@ -1,20 +1,11 @@
-### <a name="prerequisites"></a>Prerequisites
-- A [Facebook](https://www.facebook.com/) account 
+### 前提条件
+- [Facebook](https://www.facebook.com/) アカウント 
 
-Before you can use your Facebook account in a Logic app, you must authorize the Logic app to connect to your Facebook account. Fortunately, you can do this easily from within your Logic app on the Azure Portal. 
+ロジック アプリで Facebook アカウントを使用するには、Facebook アカウントに接続するロジック アプリを承認する必要があります。幸い、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
-Here are the steps to authorize your Logic app to connect to your Facebook account:
+次に、Facebook アカウントに接続するロジック アプリを承認する手順を示します。
 
-1. To create a connection to Facebook, in the Logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *Facebook* in the search box. Select the trigger or action you'll like to use:  
-  ![facebook step 1](./media/connectors-create-api-facebook/facebook-1.png)
-2. If you haven't created any connections to Facebook before, you'll get prompted to provide your Facebook credentials. These credentials will be used to authorize your Logic app to connect to, and access your Facebook account's data:  
-  ![facebook step 2](./media/connectors-create-api-facebook/facebook-2.png)
-3. Provide your Facebook user name and password to authorize your Logic app:  
-  ![facebook step 3](./media/connectors-create-api-facebook/facebook-3.png)   
-4. Notice the connection has been created and you are now free to proceed with the other steps in your Logic app:  
-  ![facebook step 4](./media/connectors-create-api-facebook/facebook-4.png)   
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+1. Facebook への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Show Microsoft managed APIs]** (Microsoft Managed API を表示) を選択し、検索ボックスに「*Facebook*」と入力します。使用するトリガーまたはアクションを選択します。 ![facebook 手順 1](./media/connectors-create-api-facebook/facebook-1.png)
+2. これまでに Facebook への接続を作成していない場合は、Facebook の資格情報を指定するよう求められます。この資格情報を使用して、接続するロジック アプリの承認と、Facebook アカウントのデータへのアクセスが行われます。 ![facebook 手順 2](./media/connectors-create-api-facebook/facebook-2.png)
+3. Facebook のユーザー名とパスワードを入力して、ロジック アプリを承認します。 ![facebook 手順 3](./media/connectors-create-api-facebook/facebook-3.png)   
+4. 接続が作成され、ロジック アプリで他の手順を実行できるようになります。 ![facebook 手順 4](./media/connectors-create-api-facebook/facebook-4.png)   

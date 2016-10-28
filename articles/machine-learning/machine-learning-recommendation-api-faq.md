@@ -1,147 +1,140 @@
 <properties 
-    pageTitle="Set up and use the Machine Learning Recommendations API | Microsoft Azure" 
-    description="Microsoft RECOMMENDATIONS API built with Azure Machine Learning FAQ" 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="LuisCabrer" 
-    manager="jhubbard" 
-    editor="cgronlun"/>
+	pageTitle="Machine Learning Recommendations API の設定と使用 | Microsoft Azure" 
+	description="Azure Machine Learning で作成された Microsoft Recommendations API の FAQ" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="LuisCabrer" 
+	manager="jhubbard" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/08/2016" 
-    ms.author="luisca"/> 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/08/2016" 
+	ms.author="luisca"/>
+
+#Machine Learning Recommendations API の設定と使用に関する FAQ
 
 
-#<a name="setting-up-and-using-machine-learning-recommendations-api-faq"></a>Setting up and using Machine Learning Recommendations API FAQ
+**Recommendations とは何ですか。**
 
+>[AZURE.NOTE] このバージョンの代わりに Recommendations API Cognitive Service の使用を開始することをお勧めします。このサービスは Recommendations Cognitive Service に置き換えられ、新機能はすべて Cognitive Service で開発されるようになります。Cognitive Service には、バッチ処理のサポート、API エクスプローラーの改善、API サーフェスの簡素化、より一貫性のあるサインアップおよび課金方法などの新機能が含まれています。詳細については、「[Migrating to the new Cognitive Service](http://aka.ms/recomigrate)」(新しい Cognitive Service への移行) を参照してください。
 
-**What is RECOMMENDATIONS?**
-
->[AZURE.NOTE] You should start using the Recommendations API Cognitive Service instead of this version. The Recommendations Cognitive Service will be replacing this service, and all the new features will be developed there. It has new capabilities like batching support, a better API Explorer, a cleaner API surface, more consistent signup/billing experience, etc.
-> Learn more about [Migrating to the new Cognitive Service](http://aka.ms/recomigrate)
-
-For organizations and businesses that rely on recommendations to cross-sell and up-sell products and services to their customers, RECOMMENDATIONS in Azure Machine Learning provides a self-service recommendations engine. It is an implementation of collaborative filtering that uses matrix factorization as its core algorithm. Application developers can access RECOMMENDATIONS by using REST APIs. 
+顧客への製品やサービスのクロスセルやアップセルのために推奨機能を利用している組織や事業に対して、Azure Machine Learning の Recommendations サービスは、セルフサービスの推奨エンジンを提供します。これは、コア アルゴリズムとして行列因子分解を使用した協調フィルタリングの実装です。アプリケーション開発者は REST Api を使用してRecommendations にアクセスできます。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-**What can I do with RECOMMENDATIONS?**
+**Recommendations では何ができますか。**
 
-RECOMMENDATIONS takes as input an item or a set of items and returns a list of relevant recommendations. For example: A customer of an online retailer clicks a product. The online retailer sends that product as input to RECOMMENDATIONS, gets a list of products in return, and decides which of these products will be shown to the customer. You may want to use RECOMMENDATIONS to optimize your online store or even to inform your inside sales department or call center.
+Recommendations は、1 つの項目または一連の項目を入力として受け取り、関連する推奨の一覧を返します。たとえば、オンライン小売業者の顧客が製品をクリックします。オンライン小売業者が Recommendations への入力としてその製品を送信すると、製品一覧が返されます。業者は、一覧のどの製品を顧客に表示するかを決定します。Recommendations を使用してオンライン ストアを最適化したり、社内の販売部門やコール センターに知らせたりすることもできます。
 
-**Are there any usage limitations?**
+**使用制限はありますか。**
 
-Recommendations has the following usage limitations:
-* Maximum number of models per subscription: 10
-* Maximum number of items that a catalog can hold: 100,000
-* The maximum number of usage points that are kept is ~5,000,000. The oldest will be deleted if new ones will be uploaded or reported.
-* Maximum size of data that can be sent in email (for example, import catalog data, import usage data) is 200 MB
-* Number of transactions per second (TPS) for a Recommendations model build that is not active is ~2 TPS. A Recommendations model build that is active can hold up to 20 TPS.
+Recommendations には次の使用制限があります。
+* サブスクリプションごとのモデルの最大数: 10
+* カタログが保持できる項目の最大数: 100,000
+* 保持される使用状況ポイントの最大数は ~5,000,000 です。新しいデータがアップロードまたは報告されると、最も古いデータが削除されます。
+* 電子メールで送信できるデータ (例: カタログ データのインポート、使用データのインポート) の最大サイズは 200 MB です。
+* アクティブではない Recommendations モデルのビルドの 1 秒あたりのトランザクション数 (TPS) は ~2 TPS です。アクティブな推奨モデルのビルドは、最大 20 TPS を保持できます。
 
-##<a name="purchase-and-billing"></a>Purchase and Billing 
+##購入と請求 
 
 
-**How much does Recommendations cost during the launch period?**
+**開始期間中の Recommendations の料金はいくらですか。**
 
-Recommendations is a subscription-based service. Charging is based on volume of transactions per month. You can check the [offer page] (https://datamarket.azure.com/dataset/amla/recommendations) in Microsoft Azure Marketplace for pricing information.
+Recommendations は、サブスクリプション ベースのサービスです。課金は、1 か月あたりのトランザクションのボリュームに基づいて行われます。料金情報については、Microsoft Azure Marketplace の[プランに関するページ](https://datamarket.azure.com/dataset/amla/recommendations)をご確認ください。
 
-**Are there any costs associated with having Recommendations track and store user activity for me?**
+**Recommendations の追跡やユーザー アクティビティの格納に関連する料金はありますか。**
 
-Not at the moment.
+現時点ではありません。
 
-**Does Recommendations have a free trial?**
+**Recommendations には、無料試用版がありますか。**
 
-There is a free trail which is restricted to 10,000 transactions per month.
+1 か月あたり 10,000 トランザクションに制限された無料試用版があります。
 
-**When will I be billed for Recommendations?**
+**Recommendations への請求はいつ行われますか。**
 
-A paid subscription is any subscription for which there is a monthly fee. When you purchase a paid subscription, you are immediately charged for the first month's use. You are charged the amount that is associated with the offer on the subscription page (plus applicable taxes). This monthly charge is made each month on the same calendar date as your original purchase until you cancel the subscription. 
+有料サブスクリプションは、月額料金のサブスクリプションです。有料サブスクリプションを購入すると、最初の使用月からすぐに課金されます。サブスクリプション ページのプランに表示される金額 (さらに適用される税金) が課金されます。この月額料金は、サブスクリプションを取り消すまで、最初の購入時と同じ日付で毎月発生します。
 
-**How do I upgrade to a higher tier service?**
+**上位のサービスへのアップグレード方法を教えてください。**
 
-You can buy or update your subscription from the [offer page] (https://datamarket.azure.com/dataset/amla/recommendations) page on Microsoft Azure Marketplace.
+Microsoft Azure Marketplace の [プランに関するページ](https://datamarket.azure.com/dataset/amla/recommendations) からサブスクリプションを購入または更新できます。
 
-When you upgrade a subscription:
+サブスクリプションをアップグレードする場合:
 
-* Transactions that are remaining on your old subscription are not added to your new subscription. 
-* You pay full price for the new subscription, even though you have unused transactions on your old subscription.
+* 古いサブスクリプションに残っているトランザクションは、新しいサブスクリプションには追加されません。
+* 古いサブスクリプションで未使用のトランザクションがある場合でも、新しいサブスクリプションの全額をお支払いください。
 
-Process to upgrade a subscription:
+サブスクリプションのアップグレード プロセス:
 
-* Nevigate to the [offer page] (https://datamarket.azure.com/dataset/amla/recommendations).
-* Sign in to the Marketplace if you aren't already Signed in.
-* In the right pane, all the available plans are listed. Click the radio button for the plan you want to upgrade to.
-* If you want to upgrade, click **OK**. If you do not want to upgrade, click **Cancel**.
+* [プランに関するページ](https://datamarket.azure.com/dataset/amla/recommendations)に移動します。
+* まだサインインしていない場合は、Marketplace にサインインします。
+* 右側のペインに、使用可能なすべてのプランが一覧表示されます。アップグレードするプランのラジオ ボタンをクリックします。
+* アップグレードする場合は、**[OK]** をクリックします。アップグレードしない場合は、**[取り消し]** をクリックします。
 
-**Important** Carefully read the dialog box before you upgrade because there are billing and use implications.
+**重要** 請求と使用に関係しますので、アップグレードする前に、ダイアログ ボックスに表示された内容をよくご確認ください。
 
-**When will my subscription to Recommendations end?**
+**Recommendations のサブスクリプションはいつ終了しますか。**
 
-Your subscription will end when you cancel it. If you would like to cancel your subscriptions, see the following instructions.
+取り消した時点で、お客様のサブスクリプションが終了します。サブスクリプションを取り消す場合は、以下の手順をご覧ください。
 
-**How do I cancel my Recommendations subscription?**
+**Recommendations のサブスクリプションを取り消す方法を教えてください。**
 
-To cancel your subscription, use the following steps. If your current subscription is a paid subscription, your subscription continues in effect until the end of the current billing period. If you need the cancellation to be effective immediately, contact us at [Microsoft Support](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn).
+サブスクリプションを取り消すには、次の手順を使用します。現在のサブスクリプションが有料サブスクリプションの場合、お客様のサブスクリプションは現在の請求期間が終了するまで有効です。すぐに取り消しを有効にする必要がある場合は、[Microsoft サポート](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn)にお問い合わせください。
 
-**Note** No refund is given if you cancel before the end of a billing period or for unused transactions in a billing period.
+**注** 請求期間前の取り消し、または請求期間内の未使用トランザクションに対する払い戻しはありません。
 
-* Navigate to the [offer page] (https://datamarket.azure.com/dataset/amla/recommendations).
-* Sign in to the Marketplace if you aren't already Signed in.
-* Click **Cancel** to the right of the dataset name and status. You can use this subscription until the end of the current billing period or your transaction limit is reached (whichever occurs first).
+* [プランに関するページ](https://datamarket.azure.com/dataset/amla/recommendations)に移動します。
+* まだサインインしていない場合は、Marketplace にサインインします。
+* データ セットの名前と状態の右側にある **[取り消し]** をクリックします。現在の請求期間が終了するまで、またはトランザクションの上限に達するまで、このサブスクリプションを使用することができます。
 
-If you would like to cancel your subscription immediately so you can purchase a new subscription, file a ticket at [Microsoft Support](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn).
+新しいサブスクリプションを購入するためにサブスクリプションを今すぐ取り消す場合は、[Microsoft サポート](https://support.microsoft.com/oas/default.aspx?gprid=17024&st=1&wfxredirect=1&sd=gn) でチケットを申請してください。
 
-##<a name="getting-started-with-recommendations"></a>Getting started with Recommendations
+##Recommendations の概要
 
-**Is Recommendations for me?** 
+**Recommendations は私に適していますか。**
 
-Recommendations in Machine Learning is for organizations and businesses that rely on recommendations to cross-sell and up-sell products or services to their customers. If you have a customer-facing website, a sales force, an inside sales force, or a call center, and if you offer a catalog of more than a few dozen products or services, your bottom line may benefit from using Recommendations. 
+Machine Learning の Recommendations サービスは、顧客への製品やサービスのクロスセルやアップセルのために推奨機能を利用している組織や事業を対象にしています。顧客対応のための Web サイト、営業スタッフ、社内営業スタッフ、またはコール センターがあり、数十以上の製品やサービスのカタログを提供している場合、Recommendations を使用することによって収益が向上する可能性があります。
 
-Experimenting with Recommendations is designed to be fairly simple. The current API-based version requires basic programming skills. If you need assistance, contact the vendor who developed your website. If you have an internal IT department or an in-house developer, they should be able to get Recommendations to work for you. 
+Recommendations は簡単に利用できるように設計されています。現在の API ベースのバージョンには、基本的なプログラミング スキルが必要です。サポートが必要な場合は、お客様の Web サイトを作成したベンダーにお問い合わせください。社内に IT 部門がある、または社内開発者がいらっしゃる場合は、それらの方に支援を依頼することをお勧めします。
 
-**What are the prerequisites for setting up Recommendations?**
+**Recommendations を設定するための前提条件とは何ですか。**
 
-Recommendations requires that you have a log of user choices as it relates to your catalog. If you don�t have such a log and you do have a customer facing website, Recommendations can collect user activity for you. 
+Recommendations には、お客様のカタログに関するユーザーの選択内容のログが必要です。このようなログがなくても、顧客対応の Web サイトを運営している場合は、Recommendations がユーザー アクティビティを収集できます。
 
-Recommendations also requires a catalog of your products or services. If you don�t have the catalog, Recommendations can use the actual customer usage data and distill a catalog. An �implied� catalog will not include items that were not �reported� as part of user transactions.
+Recommendations には、お客様の製品やサービスのカタログも必要です。カタログがない場合は、Recommendations が実際の顧客の使用状況データを使用して、カタログを抽出することができます。"暗黙" のカタログには、ユーザー トランザクションの一部として "報告" されていない項目は含まれません。
 
-**How do I set up Recommendations for the first time?**
+**Recommendations の最初の設定方法を教えてください。**
 
-After [subscribing] (https://datamarket.azure.com/dataset/amla/recommendations) to Recommendations, you should use the API documentation in the [Azure Machine Learning Recommendations � Quick Start Guide](machine-learning-recommendation-api-quick-start-guide.md) to set up the service.
+Recommendations を[サブスクライブ](https://datamarket.azure.com/dataset/amla/recommendations)したら、「[Azure Machine Learning Recommendations – クイック スタート ガイド](machine-learning-recommendation-api-quick-start-guide.md)」にある API ドキュメントを使用してサービスを設定する必要があります。
 
-**Where can I find API documentation?** 
+**API ドキュメントはどこで入手できますか。**
 
-The API documentation is [Azure Machine Learning Recommendations � Quick Start Guide](machine-learning-recommendation-api-quick-start-guide.md).
+API ドキュメントは、「[Azure Machine Learning Recommendations - クイック スタート ガイド](machine-learning-recommendation-api-quick-start-guide.md)」から入手できます。。
 
-**What options do I have to upload catalog and usage data to Recommendations?**
+**Recommendations にカタログや使用状況データをアップロードする場合にはどのようなオプションがありますか。**
 
-You have two options for uploading your catalog and usage data: You can export the data from your CRM system or other logs and upload it to Recommendations, or you can add tags to your website that will track user activities. If you use the latter method, the data will be stored in Azure.
+カタログや使用状況データのアップロードには 2 つのオプションがあります。CRM システムまたはその他のログからこれらのデータをエクスポートして Recommendations にアップロードするか、ユーザー アクティビティを追跡するタグを Web サイトに追加することができます。後者を使用する場合、データは Azure に格納されます。
 
-##<a name="maintenance-and-support"></a>Maintenance and support
+##メンテナンスとサポート
 
-**How large can my data set be?**
+**データ セットの大きさはどの程度まで許容されますか。**
 
-Each data set can contain up to 100,000 catalog items and up to 2048 MB of usage data.
-In addition, a subscription can contain up to 10 data sets (models).
+各データ セットには、最大 100,000 のカタログ項目、および最大 2,048 MB の使用状況データを保持できます。さらに、サブスクリプションには最大 10 個のデータ セット (モデル) を含めることができます。
 
-**Where can I get technical support for Recommendations?**
+**どこで Recommendations についてのテクニカル サポートを受けられますか。**
 
-Technical support is available on the [Microsoft Azure Support](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) site.
+テクニカル サポートは、「[Microsoft Azure サポート](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)」サイトで利用できます。
 
-**Where can I find the terms of use?**
+**使用条件はどこで入手できますか。**
 
-[Microsoft Azure Machine Learning Recommendations API Terms of Service](https://datamarket.azure.com/dataset/amla/recommendations#terms).
+「[Microsoft Azure Machine Learning Recommendations API Terms of Service](https://datamarket.azure.com/dataset/amla/recommendations#terms)」をご覧ください。
 
 
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

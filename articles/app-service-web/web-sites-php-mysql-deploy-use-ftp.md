@@ -1,275 +1,274 @@
 <properties 
-    pageTitle="Create a PHP-MySQL web app in Azure App Service and deploy using FTP" 
-    description="A tutorial that demonstrates how to create a PHP web app that stores data in MySQL and use FTP deployment to Azure." 
-    services="app-service\web" 
-    documentationCenter="php" 
-    authors="rmcmurray" 
-    manager="wpickett" 
-    editor=""/>
+	pageTitle="Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする" 
+	description="MySQL にデータを保存する PHP Web アプリを作成し、Azure への FTP デプロイを使用する方法を説明するチュートリアル。" 
+	services="app-service\web" 
+	documentationCenter="php" 
+	authors="rmcmurray" 
+	manager="wpickett" 
+	editor=""/>
 
 <tags 
-    ms.service="app-service-web" 
-    ms.workload="web" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="PHP" 
-    ms.topic="article" 
-    ms.date="08/11/2016" 
-    ms.author="robmcm"/>
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="PHP" 
+	ms.topic="article" 
+	ms.date="08/11/2016" 
+	ms.author="robmcm"/>
 
 
+#Azure App Service で PHP-MySQL Web アプリを作成して FTP でデプロイする
 
-#<a name="create-a-php-mysql-web-app-in-azure-app-service-and-deploy-using-ftp"></a>Create a PHP-MySQL web app in Azure App Service and deploy using FTP
-
-This tutorial shows you how to create a PHP-MySQL web app and how to deploy it using FTP. This tutorial assumes you have [PHP][install-php], [MySQL][install-mysql], a web server, and an FTP client installed on your computer. The instructions in this tutorial can be followed on any operating system, including Windows, Mac, and  Linux. Upon completing this guide, you will have a PHP/MySQL web app running in Azure.
+このチュートリアルでは、PHP-MySQL Web アプリを作成する方法と、FTP を使用してそれをデプロイする方法について説明します。このチュートリアルは、コンピューターに [PHP][install-php]、[MySQL][install-mysql]、Web サーバー、および FTP クライアントがインストールされていることを前提としています。このチュートリアルの手順は、Windows、Mac、Linux など、任意のオペレーティング システムで使用できます。このチュートリアルを完了すると、Azure で動作する PHP/MySQL Web アプリが完成します。
  
-You will learn:
+学習内容:
 
-* How to create a web app and a MySQL database using the Azure Portal. Because PHP is enabled in Web Apps by default, nothing special is required to run your PHP code.
-* How to publish your application to Azure using FTP.
+* Azure ポータルを使用して Web アプリと MySQL データベースを作成する方法。Web Apps では PHP が既定で有効になっているため、特に何もしなくても PHP コードを実行できます。
+* FTP を使用して Azure にアプリケーションを発行する方法。
  
-By following this tutorial, you will build a simple registration web app in PHP. The application will be hosted in a Web App. A screenshot of the completed application is below:
+このチュートリアルでは、登録用の単純な Web アプリを PHP で作成します。このアプリケーションは Web Apps でホストされます。完成したアプリケーションのスクリーンショットは次のようになります。
 
 ![Azure PHP Web Site][running-app]
 
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required, no commitments. 
+>[AZURE.NOTE] アカウントにサインアップする前に Azure App Service を使用を開始するには、[「App Service を試す」](http://go.microsoft.com/fwlink/?LinkId=523751)にアクセスしてください。App Service で、有効期限付きのスターター Web アプリケーションをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 
-##<a name="create-a-web-app-and-set-up-ftp-publishing"></a>Create a web app and set up FTP publishing
+##Web アプリの作成と FTP 発行の設定
 
-Follow these steps to create a web app and a MySQL database:
+Web アプリと MySQL データベースを作成するには、次のステップに従います。
 
-1. Login to the [Azure Portal][management-portal].
-2. Click the **+ New** icon on the top left of the Azure Portal.
+1. [Azure ポータル][management-portal]にログインします。
+2. Azure ポータルの左上にある **[+ 新規]** アイコンをクリックします。
 
-    ![Create New Azure Web Site][new-website]
+	![新しい Azure の Web サイトの作成][new-website]
 
-3. In the search type **Web app + MySQL** and click on **Web app + MySQL**.
+3. 検索に「**Web アプリ + MySQL**」と入力し、**[Web アプリ + MySQL]** をクリックします。
 
-    ![Custom Create a new Web Site][custom-create]
+	![Custom Create a new Web Site][custom-create]
 
-4. Click **Create**. Enter a unique app service name, a valid name for the resource group and a new service plan.
+4. **[作成]** をクリックします。一意のアプリ サービス名、リソース グループの有効な名前と新しいサービス プランを入力します。
 
-    ![Set resource group name][resource-group]
-
-
-6. Enter values for your new database, including agreeing to the legal terms.
-
-    ![Create new MySQL database][new-mysql-db]
-    
-7. When the web app has been created, you will see the new app service blade.
+    ![リソース グループ名の設定][resource-group]
 
 
-6. Click on **Settings** > **Deployment credentials**. 
+6. 法律条項への同意も含めて、新しいデータベースについての値を入力します。
 
-    ![Set deployment credentials][set-deployment-credentials]
+	![新しい MySQL データベースの作成][new-mysql-db]
+	
+7. Web アプリが作成されると、新しいアプリ サービスのブレードが表示されます。
 
-7. To enable FTP publishing, you must provide a user name and password. Save the credentials and make a note of the user name and password you create.
 
-    ![Create publishing credentials][portal-ftp-username-password]
+6. **[設定]**、**[デプロイ資格情報]** の順にクリックします。
 
-##<a name="build-and-test-your-app-locally"></a>Build and test your app locally
+	![デプロイ資格情報の設定][set-deployment-credentials]
 
-The Registration application is a simple PHP application that allows you to register for an event by providing your name and email address. Information about previous registrants is displayed in a table. Registration information is stored in a MySQL database. The app consists of two files:
+7. FTP 発行を有効にするには、ユーザー名とパスワードを指定する必要があります。資格情報を保存します。作成したユーザー名とパスワードはメモしておいてください。
 
-* **index.php**: Displays a form for registration and a table containing registrant information.
-* **createtable.php**: Creates the MySQL table for the application. This file will only be used once.
+	![発行資格情報の作成][portal-ftp-username-password]
 
-To build and run the app locally, follow the steps below. Note that these steps assume you have PHP, MySQL, and a web server set up on your local machine, and that you have enabled the [PDO extension for MySQL][pdo-mysql].
+##アプリケーションの作成とローカル テスト
 
-1. Create a MySQL database called `registration`. You can do this from the MySQL command prompt with this command:
+Registration アプリケーションは、名前と電子メール アドレスを入力してイベントに登録するための、単純な PHP アプリケーションです。それまでの登録者情報がテーブルに表示されます。登録情報は MySQL データベースに保存されます。アプリケーションは、次の 2 つのファイルで構成されます。
 
-        mysql> create database registration;
+* **index.php**: 登録用のフォームと登録者情報が含まれたテーブルを表示します。
+* **createtable.php**: アプリケーション用の MySQL テーブルを作成します。このファイルは 1 度しか使用されません。
 
-2. In your web server's root directory, create a folder called `registration` and create two files in it - one called `createtable.php` and one called `index.php`.
+アプリケーションを作成してローカルで実行するには、次の手順に従います。ここに示す手順は、ローカル コンピューターに PHP、MySQL、および Web サーバーがセットアップされており、[MySQL 用 PDO 拡張機能][pdo-mysql]が有効になっていることを前提としています。
 
-3. Open the `createtable.php` file in a text editor or IDE and add the code below. This code will be used to create the `registration_tbl` table in the `registration` database.
+1. "`registration`" という MySQL データベースを作成します。これには、MySQL コマンド プロンプトで次のコマンドを実行します。
 
-        <?php
-        // DB connection info
-        $host = "localhost";
-        $user = "user name";
-        $pwd = "password";
-        $db = "registration";
-        try{
-            $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
-            $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-            $sql = "CREATE TABLE registration_tbl(
-                        id INT NOT NULL AUTO_INCREMENT, 
-                        PRIMARY KEY(id),
-                        name VARCHAR(30),
-                        email VARCHAR(30),
-                        date DATE)";
-            $conn->query($sql);
-        }
-        catch(Exception $e){
-            die(print_r($e));
-        }
-        echo "<h3>Table created.</h3>";
-        ?>
+		mysql> create database registration;
 
-    > [AZURE.NOTE] 
-    > You will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
+2. Web サーバーのルート ディレクトリで、`registration` というフォルダーを作成し、その中に 2 つのファイル (`createtable.php` と `index.php`) を作成します。
 
-4. Open a web browser and browse to [http://localhost/registration/createtable.php][localhost-createtable]. This will create the `registration_tbl` table in the database.
+3. `createtable.php` ファイルをテキスト エディターまたは IDE で開き、次のコードを追加します。このコードは、`registration_tbl` データベースに `registration` テーブルを作成するために使用します。
 
-5. Open the **index.php** file in a text editor or IDE and add the basic HTML and CSS code for the page (the PHP code will be added in later steps).
+		<?php
+		// DB connection info
+		$host = "localhost";
+		$user = "user name";
+		$pwd = "password";
+		$db = "registration";
+		try{
+			$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+			$sql = "CREATE TABLE registration_tbl(
+						id INT NOT NULL AUTO_INCREMENT, 
+						PRIMARY KEY(id),
+						name VARCHAR(30),
+						email VARCHAR(30),
+						date DATE)";
+			$conn->query($sql);
+		}
+		catch(Exception $e){
+			die(print_r($e));
+		}
+		echo "<h3>Table created.</h3>";
+		?>
 
-        <html>
-        <head>
-        <Title>Registration Form</Title>
-        <style type="text/css">
-            body { background-color: #fff; border-top: solid 10px #000;
-                color: #333; font-size: .85em; margin: 20; padding: 20;
-                font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-            }
-            h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
-            h1 { font-size: 2em; }
-            h2 { font-size: 1.75em; }
-            h3 { font-size: 1.2em; }
-            table { margin-top: 0.75em; }
-            th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
-            td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
-        </style>
-        </head>
-        <body>
-        <h1>Register here!</h1>
-        <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
-        <form method="post" action="index.php" enctype="multipart/form-data" >
-              Name  <input type="text" name="name" id="name"/></br>
-              Email <input type="text" name="email" id="email"/></br>
-              <input type="submit" name="submit" value="Submit" />
-        </form>
-        <?php
+	> [AZURE.NOTE] 
+	<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
-        ?>
-        </body>
-        </html>
+4. Web ブラウザーを開いて、[http://localhost/registration/createtable.php][localhost-createtable] にアクセスします。このコードは、データベースに `registration_tbl` テーブルを作成するために使用します。
 
-6. Within the PHP tags, add PHP code for connecting to the database.
+5. **index.php** ファイルをテキスト エディターまたは IDE で開いて、ページの基本的な HTML コードおよび CSS コードを追加します (PHP コードは後で追加します)。
 
-        // DB connection info
-        $host = "localhost";
-        $user = "user name";
-        $pwd = "password";
-        $db = "registration";
-        // Connect to database.
-        try {
-            $conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
-            $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-        }
-        catch(Exception $e){
-            die(var_dump($e));
-        }
+		<html>
+		<head>
+		<Title>Registration Form</Title>
+		<style type="text/css">
+			body { background-color: #fff; border-top: solid 10px #000;
+			    color: #333; font-size: .85em; margin: 20; padding: 20;
+			    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+			}
+			h1, h2, h3,{ color: #000; margin-bottom: 0; padding-bottom: 0; }
+			h1 { font-size: 2em; }
+			h2 { font-size: 1.75em; }
+			h3 { font-size: 1.2em; }
+			table { margin-top: 0.75em; }
+			th { font-size: 1.2em; text-align: left; border: none; padding-left: 0; }
+			td { padding: 0.25em 2em 0.25em 0em; border: 0 none; }
+		</style>
+		</head>
+		<body>
+		<h1>Register here!</h1>
+		<p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+		<form method="post" action="index.php" enctype="multipart/form-data" >
+		      Name  <input type="text" name="name" id="name"/></br>
+		      Email <input type="text" name="email" id="email"/></br>
+		      <input type="submit" name="submit" value="Submit" />
+		</form>
+		<?php
 
-    > [AZURE.NOTE]
-    > Again, you will need to update the values for <code>$user</code> and <code>$pwd</code> with your local MySQL user name and password.
+		?>
+		</body>
+		</html>
 
-7. Following the database connection code, add code for inserting registration information into the database.
+6. PHP タグ内に、データベースに接続するための PHP コードを追加します。
 
-        if(!empty($_POST)) {
-        try {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $date = date("Y-m-d");
-            // Insert data
-            $sql_insert = "INSERT INTO registration_tbl (name, email, date) 
-                           VALUES (?,?,?)";
-            $stmt = $conn->prepare($sql_insert);
-            $stmt->bindValue(1, $name);
-            $stmt->bindValue(2, $email);
-            $stmt->bindValue(3, $date);
-            $stmt->execute();
-        }
-        catch(Exception $e) {
-            die(var_dump($e));
-        }
-        echo "<h3>Your're registered!</h3>";
-        }
+		// DB connection info
+		$host = "localhost";
+		$user = "user name";
+		$pwd = "password";
+		$db = "registration";
+		// Connect to database.
+		try {
+			$conn = new PDO( "mysql:host=$host;dbname=$db", $user, $pwd);
+			$conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+		}
+		catch(Exception $e){
+			die(var_dump($e));
+		}
 
-8. Finally, following the code above, add code for retrieving data from the database.
+	> [AZURE.NOTE]
+	ここでも、<code>$user</code> と <code>$pwd</code> の値は、ローカルの MySQL ユーザー名とパスワードに置き換える必要があります。
 
-        $sql_select = "SELECT * FROM registration_tbl";
-        $stmt = $conn->query($sql_select);
-        $registrants = $stmt->fetchAll(); 
-        if(count($registrants) > 0) {
-            echo "<h2>People who are registered:</h2>";
-            echo "<table>";
-            echo "<tr><th>Name</th>";
-            echo "<th>Email</th>";
-            echo "<th>Date</th></tr>";
-            foreach($registrants as $registrant) {
-                echo "<tr><td>".$registrant['name']."</td>";
-                echo "<td>".$registrant['email']."</td>";
-                echo "<td>".$registrant['date']."</td></tr>";
-            }
-            echo "</table>";
-        } else {
-            echo "<h3>No one is currently registered.</h3>";
-        }
+7. データベース接続コードの次に、登録情報をデータベースに挿入するためのコードを追加します。
 
-You can now browse to [http://localhost/registration/index.php][localhost-index] to test the app.
+		if(!empty($_POST)) {
+		try {
+			$name = $_POST['name'];
+			$email = $_POST['email'];
+			$date = date("Y-m-d");
+			// Insert data
+			$sql_insert = "INSERT INTO registration_tbl (name, email, date) 
+						   VALUES (?,?,?)";
+			$stmt = $conn->prepare($sql_insert);
+			$stmt->bindValue(1, $name);
+			$stmt->bindValue(2, $email);
+			$stmt->bindValue(3, $date);
+			$stmt->execute();
+		}
+		catch(Exception $e) {
+			die(var_dump($e));
+		}
+		echo "<h3>Your're registered!</h3>";
+		}
 
-##<a name="get-mysql-and-ftp-connection-information"></a>Get MySQL and FTP connection information
+8. 上のコードの次に、データベースからデータを取得するためのコードを追加します。
 
-To connect to the MySQL database that is running in Web Apps, your will need the connection information. To get MySQL connection information, follow these steps:
+		$sql_select = "SELECT * FROM registration_tbl";
+		$stmt = $conn->query($sql_select);
+		$registrants = $stmt->fetchAll(); 
+		if(count($registrants) > 0) {
+			echo "<h2>People who are registered:</h2>";
+			echo "<table>";
+			echo "<tr><th>Name</th>";
+			echo "<th>Email</th>";
+			echo "<th>Date</th></tr>";
+			foreach($registrants as $registrant) {
+				echo "<tr><td>".$registrant['name']."</td>";
+				echo "<td>".$registrant['email']."</td>";
+				echo "<td>".$registrant['date']."</td></tr>";
+		    }
+		 	echo "</table>";
+		} else {
+			echo "<h3>No one is currently registered.</h3>";
+		}
 
-1. From the app service web app blade click on the resource group link:
+これで、[http://localhost/registration/index.php][localhost-index] にアクセスしてアプリをテストできます。
 
-    ![Select Resource Group][select-resourcegroup]
+##MySQL と FTP の接続情報の取得
 
-1. From your resource group, click the database:
+Web Apps で実行されている MySQL データベースに接続するには、接続情報が必要になります。MySQL の接続情報を取得するには、次の手順に従います。
 
-    ![Select database][select-database]
+1. App Service Web アプリのブレードで、次のリソース グループのリンクをクリックします。
 
-2. From the database summary, select **Settings** > **Properties**.
+	![リソース グループの選択][select-resourcegroup]
 
-    ![Select properties][select-properties]
-    
-2. Make note of the values for `Database`, `Host`, `User Id`, and `Password`.
+1. リソース グループで、データベースをクリックします。
 
-    ![Note properties][note-properties]
+	![データベースの選択][select-database]
 
-3. From your web app, click the **Download publish profile** link at the bottom right corner of the page:
+2. データベース サマリーから、**[設定]**、**[プロパティ]** の順に選択します。
 
-    ![Download publish profile][download-publish-profile]
+    ![プロパティの選択][select-properties]
+	
+2. `Database`、`Host`、`User Id`、`Password` の各値をメモします。
 
-4. Open the `.publishsettings` file in an XML editor. 
+    ![プロパティへの注記][note-properties]
 
-3. Find the `<publishProfile >` element with `publishMethod="FTP"` that looks similar to this:
+3. Web アプリで、ページの右下にある **[発行プロファイルのダウンロード]** リンクをクリックします。
 
-        <publishProfile publishMethod="FTP" publishUrl="ftp://[mysite].azurewebsites.net/site/wwwroot" ftpPassiveMode="True" userName="[username]" userPWD="[password]" destinationAppUrl="http://[name].antdf0.antares-test.windows-int.net" 
-            ...
-        </publishProfile>
-    
-Make note of the `publishUrl`, `userName`, and `userPWD` attributes.
+	![発行プロファイルのダウンロード][download-publish-profile]
 
-##<a name="publish-your-app"></a>Publish your app
+4. XML エディターで `.publishsettings` ファイルを開きます。
 
-After you have tested your app locally, you can publish it to your web app using FTP. However, you first need to update the database connection information in the application. Using the database connection information you obtained earlier (in the **Get MySQL and FTP connection information** section), update the following information in **both** the `createdatabase.php` and `index.php` files with the appropriate values:
+3. 次のように `<publishProfile >` が指定されている `publishMethod="FTP"` 要素を確認します。
 
-    // DB connection info
-    $host = "value of Data Source";
-    $user = "value of User Id";
-    $pwd = "value of Password";
-    $db = "value of Database";
+		<publishProfile publishMethod="FTP" publishUrl="ftp://[mysite].azurewebsites.net/site/wwwroot" ftpPassiveMode="True" userName="[username]" userPWD="[password]" destinationAppUrl="http://[name].antdf0.antares-test.windows-int.net" 
+			...
+		</publishProfile>
+	
+`publishUrl`、`userName`、`userPWD` の各属性を記録します。
 
-Now you are ready to publish your app using FTP.
+##アプリケーションの発行
 
-1. Open your FTP client of choice.
+アプリケーションをローカルでテストした後、FTP を使用してそのアプリケーションを Web アプリに発行できます。ただし、まずアプリケーション内のデータベース接続情報を更新する必要があります。先ほど (「**MySQL と FTP の接続情報の取得**」セクションで) 取得したデータベース接続情報を使用し、`createdatabase.php` ファイルと `index.php` ファイルの**両方**で、次の情報を適切な値に置き換えます。
 
-2. Enter the *host name portion* from the `publishUrl` attribute you noted above into your FTP client.
+	// DB connection info
+	$host = "value of Data Source";
+	$user = "value of User Id";
+	$pwd = "value of Password";
+	$db = "value of Database";
 
-3. Enter the `userName` and `userPWD` attributes you noted above unchanged into your FTP client.
+これで、FTP を使用してアプリケーションを発行する準備ができました。
 
-4. Establish a connection.
+1. 好みの FTP クライアントを開きます。
 
-After you have connected you will be able to upload and download files as needed. Be sure that you are uploading files to the root directory, which is `/site/wwwroot`.
+2. 先ほどメモしておいた `publishUrl` 属性の*ホスト名部分*を FTP クライアントに入力します。
 
-After uploading both `index.php` and `createtable.php`, browse to **http://[site name].azurewebsites.net/createtable.php** to create the MySQL table for the application, then browse to **http://[site name].azurewebsites.net/index.php** to begin using the application.
+3. 先ほどメモしておいた `userName` 属性および `userPWD` 属性をそのまま FTP クライアントに入力します。
+
+4. 接続を確立します。
+
+接続した後、必要に応じて、ファイルをアップロードおよびダウンロードすることができます。ファイルのアップロード先は、必ずルート ディレクトリ (`/site/wwwroot`) にしてください。
+
+`index.php` と `createtable.php` の両方をアップロードした後、**http://[sitename].azurewebsites.net/createtable.php** に移動してアプリケーション用の MySQL テーブルを作成し、**http://[sitename].azurewebsites.net/index.php** に移動してアプリケーションの使用を開始します。
  
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For more information, see the [PHP Developer Center](/develop/php/).
+詳細については、[PHP デベロッパー センター](/develop/php/)を参照してください。
 
 [install-php]: http://www.php.net/manual/en/install.php
 [install-mysql]: http://dev.mysql.com/doc/refman/5.6/en/installing.html
@@ -296,8 +295,4 @@ For more information, see the [PHP Developer Center](/develop/php/).
 [download-publish-profile]: ./media/web-sites-php-mysql-deploy-use-ftp/download_publish_profile_3.png
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

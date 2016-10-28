@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Application upgrade: data serialization | Microsoft Azure"
-   description="Best practices for data serialization and how it affects rolling application upgrades."
+   pageTitle="アプリケーションのアップグレード: データのシリアル化 | Microsoft Azure"
+   description="データのシリアル化のベスト プラクティスとデータのシリアル化がアプリケーションのローリング アップグレードに与える影響"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,62 +13,57 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/19/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 
+# データのシリアル化がアプリケーションのアップグレードに与える影響
 
-# <a name="how-data-serialization-affects-an-application-upgrade"></a>How data serialization affects an application upgrade
-
-In a [rolling application upgrade](service-fabric-application-upgrade.md), the upgrade is applied to a subset of nodes, one upgrade domain at a time. During this process, some upgrade domains will be on the newer version of your application, and some upgrade domains will be on the older version of your application. During the rollout, the new version of your application must be able to read the old version of your data, and the old version of your application must be able to read the new version of your data. If the data format is not forward and backward compatible, the upgrade may fail, or worse, data may be lost or corrupted. This article discusses what constitutes your data format and offers best practices for ensuring that your data is forward and backward compatible.
-
-
-## <a name="what-makes-up-your-data-format?"></a>What makes up your data format?
-
-In Azure Service Fabric, the data that is persisted and replicated comes from your C# classes. For applications that use [Reliable Collections](service-fabric-reliable-services-reliable-collections.md), that is the objects in the reliable dictionaries and queues. For applications that use [Reliable Actors](service-fabric-reliable-actors-introduction.md), that is the backing state for the actor. These C# classes must be serializable to be persisted and replicated. Therefore, the data format is defined by the fields and properties that are serialized, as well as how they are serialized. For example, in an `IReliableDictionary<int, MyClass>` the data is a serialized `int` and a serialized `MyClass`.
-
-### <a name="code-changes-that-result-in-a-data-format-change"></a>Code changes that result in a data format change
-
-Since the data format is determined by C# classes, changes to the classes may cause a data format change. Care must be taken to ensure that a rolling upgrade can handle the data format change. Examples that may cause data format changes:
-
-- Adding or removing fields or properties
-- Renaming fields or properties
-- Changing the types of fields or properties
-- Changing the class name or namespace
-
-### <a name="data-contract-as-the-default-serializer"></a>Data Contract as the default serializer
-
-The serializer is generally responsible for reading the data and deserializing it into the current version, even if the data is in an older or *newer* version. The default serializer is the [Data Contract serializer](https://msdn.microsoft.com/library/ms733127.aspx), which has well-defined versioning rules. Reliable Collections allow the serializer to be overridden, but Reliable Actors currently do not. The data serializer plays an important role in enabling rolling upgrades. The Data Contract serializer is the serializer that we recommend for Service Fabric applications.
+[アプリケーションのローリング アップグレード](service-fabric-application-upgrade.md)では、アップグレードはノードのサブセットに、一度に 1 つのアップグレード ドメインのみに適用されます。このプロセス中に、一部のアップグレード ドメインがアプリケーションの新しいバージョンになり、一部のアップグレード ドメインはアプリケーションの以前のバージョンになります。ロールアウト時に、アプリケーションの新しいバージョンは、古いバージョンのデータを、アプリケーションの古いバージョンは新しいバージョンのデータを読み取ることができる必要があります。データ形式の上位互換性と下位互換性がない場合は、アップグレードが失敗するか、データが失われたり、破損したりするおそれがあります。この記事では、データ形式の構成要素と、データが上位互換性と下位互換性を確保するためのベスト プラクティスについて説明します。
 
 
-## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>How the data format affects a rolling upgrade
+## データ形式の構成要素
 
-During a rolling upgrade, there are two main scenarios where the serializer may encounter an older or *newer* version of your data:
+Azure Service Fabric では、永続化されレプリケートされたデータが C# クラスから取得されます。[Reliable Collections](service-fabric-reliable-services-reliable-collections.md) を使用するアプリケーションの場合は、信頼性の高いディクショナリとキューのオブジェクトです。[Reliable Actors](service-fabric-reliable-actors-introduction.md) を使用するアプリケーションの場合は、アクターのバッキング ステートです。これらの c# クラスは、永続化されレプリケートされるよう、シリアル化可能である必要があります。そのため、データの形式は、シリアル化されるフィールドやプロパティ、シリアル化の方法によっても定義されます。たとえば、`IReliableDictionary<int, MyClass>` では、データはシリアル化された `int` で、シリアル化された `MyClass` です。
 
-1. After a node is upgraded and starts back up, the new serializer will load the data that was persisted to disk by the old version.
-2. During the rolling upgrade, the cluster will contain a mix of the old and new versions of your code. Since replicas may be placed in different upgrade domains, and replicas send data to each other, the new and/or old version of your data may be encountered by the new and/or old version of your serializer.
+### 結果的にデータ形式が変更されるコード変更
 
-> [AZURE.NOTE] The "new version" and "old version" here refer to the version of your code that is running. The "new serializer" refers to the serializer code that is executing in the new version of your application. The "new data" refers to the serialized C# class from the new version of your application.
+C# クラスによって、データ形式が決まるため、クラスへの変更によってデータ形式が変わることがあります。ローリング アップグレードで、データ形式の変更を処理できるようにするには、特に注意する必要があります。データ形式が変更される可能性のある例:
 
-The two versions of code and data format must be both forward and backward compatible. If they are not compatible, the rolling upgrade may fail or data may be lost. The rolling upgrade may fail because the code or serializer may throw exceptions or a fault when it encounters the other version. Data may be lost if, for example, a new property was added but the old serializer discards it during deserialization.
+- フィールドまたはプロパティを追加または削除する
+- フィールドまたはプロパティの名前を変更する
+- フィールドまたはプロパティの種類を変更する
+- クラスの名前または名前空間を変更する
 
-Data Contract is the recommended solution for ensuring that your data is compatible. It has well-defined versioning rules for adding, removing, and changing fields. It also has support for dealing with unknown fields, hooking into the serialization and deserialization process, and dealing with class inheritance. For more information, see [Using Data Contract](https://msdn.microsoft.com/library/ms733127.aspx).
+### データ コントラクトが既定のシリアライザーです
 
-
-## <a name="next-steps"></a>Next steps
-
-[Uprading your Application Using Visual Studio](service-fabric-application-upgrade-tutorial.md) walks you through an application upgrade using Visual Studio.
-
-[Uprading your Application Using Powershell](service-fabric-application-upgrade-tutorial-powershell.md) walks you through an application upgrade using PowerShell.
-
-Control how your application upgrades by using [Upgrade Parameters](service-fabric-application-upgrade-parameters.md).
-
-Learn how to use advanced functionality while upgrading your application by referring to [Advanced Topics](service-fabric-application-upgrade-advanced.md).
-
-Fix common problems in application upgrades by referring to the steps in [Troubleshooting Application Upgrades ](service-fabric-application-upgrade-troubleshooting.md).
+通常、このシリアライザーには、データが古いまたは*新しい*バージョンの場合でも、データを読み取り、現在のバージョンにシリアル化を解除する役割があり。既定のシリアライザーは、バージョン管理を適切に定義された規則を持つ[データ コントラクト シリアライザー](https://msdn.microsoft.com/library/ms733127.aspx)です。Reliable Collections では、シリアライザーをオーバーライドできますが、Reliable Actors では現在のところオーバーライドできません。データ シリアライザーは、ローリング アップグレードを有効にする際に重要な役割を果たします。データ コントラクト シリアライザーは、Service Fabric アプリケーションに推奨されるシリアライザーです。
 
 
+## データの形式がローリング アップグレードに与える影響
 
-<!--HONumber=Oct16_HO2-->
+ローリング アップグレード中に、シリアライザーが古いバージョンと*新しい*バージョンのデータを発見する可能性がある主なシナリオは 2 つあります。
+
+1. ノードがアップグレードされ、バックアップを開始すると、新しいシリアライザーは古いバージョンで保存されたデータを読み込みます。
+2. ローリング アップグレード中、クラスターにコードの古いバージョンと新しいバージョンが混在します。レプリカは異なるアップグレード ドメインで配置されることがあり、互いにデータを送信するため、新規と既存の両方のバージョンのデータが、新規または既存のバージョンのシリアライザーによって検出される可能性があります。
+
+> [AZURE.NOTE] ここでは、"新しいバージョン" と "古いバージョン" は実行中のコードのバージョンを指します。"新しいシリアライザー" は、アプリケーションの新しいバージョンで実行される、シリアライザーのコードを指します。"新しいデータ" は、アプリケーションの新しいバージョンからのシリアライズされた C# クラスを指します。
+
+コードとデータ形式の 2 つのバージョンは、上位互換性と下位互換性の両方がある必要があります。互換性がない場合は、ローリング アップグレードが失敗するか、データが失われる可能性があります。コードまたはシリアライザーが古いバージョンを検出した時に、例外またはエラーをスローする可能性があるため、ローリング アップグレードが失敗することがあります。たとえば、新しいプロパティが追加され、古いシリアライザーが逆シリアル化中にそれを破棄する場合、データが失われることがあります。
+
+データ コントラクトは、データの互換性を確保するための推奨されるソリューションです。これには、フィールドの追加、削除、変更用に適切に定義されたバージョン管理規則があります。また、不明なフィールドの処理、シリアル化と逆シリアル化プロセスへのフッキング、クラスの継承に対するサポートもあります。詳細については、「[データ コントラクトの使用](https://msdn.microsoft.com/library/ms733127.aspx)」をご覧ください。
 
 
+## 次のステップ
+
+「[Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)」では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
+
+「[Powershell によるアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md)」では、PowerShell を使用してアプリケーションをアップグレードする方法について説明します。
+
+[アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。
+
+「[高度なトピック](service-fabric-application-upgrade-advanced.md)」を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
+
+「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
+
+<!---HONumber=AcomDC_0713_2016-->

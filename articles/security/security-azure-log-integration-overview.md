@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Introduction to Microsoft Azure log integration | Microsoft Azure"
-   description="Learn about Azure log integration, its key capabilities, and how it works."
+   pageTitle="Microsoft Azure ログ統合の概要 | Microsoft Azure"
+   description="Azure ログ統合と、その主な機能およびしくみについて紹介します。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,46 +16,41 @@
    ms.date="08/24/2016"
    ms.author="TomSh"/>
 
+# Microsoft Azure ログ統合の概要 (プレビュー)
 
-# <a name="introduction-to-microsoft-azure-log-integration-(preview)"></a>Introduction to Microsoft Azure log integration (Preview)
+Azure ログ統合と、その主な機能およびしくみについて紹介します。
 
-Learn about Azure log integration, its key capabilities, and how it works.
+## Overview
 
-## <a name="overview"></a>Overview
+Azure でホストされるサービスとしてのプラットフォーム (PaaS) とサービスとしてのインフラストラクチャ (IaaS) によって、大量のデータがセキュリティ ログに生成されます。このログには、ポリシー違反、内部および外部の脅威、法規制遵守に関する問題、および異常なネットワーク、ホスト、ユーザー アクティビティに関する強力な洞察、およびインテリジェンスを提供する重要な情報が含まれます。
 
-Platform as a Service (PaaS) and Infrastructure as a Service (IaaS) hosted in Azure generate a large amount of data in security logs. These logs contain vital information that can provide intelligence and powerful insights into policy violations, internal and external threats, regulatory compliance issues, and anomalies in network, host, and user activity.
+Azure ログ統合を使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。Azure ログ統合は、Windows *(WAD)* の仮想マシンから Azure 診断を収集するだけでなく、Web アプリケーション ファイアウォール (WAF) などのパートナー ソリューションによる診断も収集します。この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これによりセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
 
-Azure log integration enables you to integrate raw logs from your Azure resources into your on-premises Security Information and Event Management (SIEM) systems. Azure log integration collects Azure Diagnostics from your Windows *(WAD)* virtual machines, as well as diagnostics from partner solutions such as a Web Application Firewall (WAF). This integration provides a unified dashboard for all your assets, on-premises or in the cloud, so that you can aggregate, correlate, analyze, and alert for security events.
+![Azure ログ統合][1]
 
-![Azure log integration][1]
+## 統合できるログ
 
-## <a name="what-logs-can-i-integrate?"></a>What logs can I integrate?
+Azure サービスでは、すべてのサービスの広範なログ記録を作成します。これらのログは、主に次の 2 つのタイプに分類されます。
 
-Azure produces extensive logging for every Azure service. These logs are categorized by two main types:
+- **コントロール/管理ログ**。Azure Resource Manager の CREATE、UPDATE、および DELETE 操作の可視性を提供します。Azure 監査ログは、このタイプのログです。
+- **データ プレーン ログ**。Azure リソース使用の一環として発生するイベントの可視性を提供します。仮想マシンの Windows イベントのシステム ログ、セキュリティ ログ、およびアプリケーション ログは、このタイプのログです。
 
-- **Control/management logs**, which give visibility into the Azure Resource Manager CREATE, UPDATE, and DELETE operations. Azure Audit Logs is an example of this type of log.
-- **Data plane logs**, which give visibility into the events raised as part of the usage of an Azure resource. Examples of this type of log are the Windows event System, Security, and Application logs in a virtual machine.
+Azure ログ統合では、現在、Azure 監査ログ、仮想マシンのログ、および Azure Security Center の警告の統合がサポートされています。
 
-Azure log integration currently supports integration of Azure Audit Logs, virtual machine logs, and Azure Security Center alerts.
+Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com) 宛に電子メールを送信してください。
 
-If you have questions about Azure Log Integration, please send an email to [AzSIEMteam@microsoft.com] (mailto:AzSIEMteam@microsoft.com)
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+このドキュメントでは、Azure ログ統合について紹介しました。Azure ログ統合と、サポートされているログのタイプの詳細については、次をご覧ください。
 
-In this document, you were introduced to Azure log integration. To learn more about Azure log integration and the types of logs supported, see the following:
-
-- [Microsoft Azure Log Integration for Azure logs (Preview)](https://www.microsoft.com/download/details.aspx?id=53324) – Download Center for details, system requirements, and install instructions on Azure log integration.
-- [Get started with Azure log integration](security-azure-log-integration-get-started.md) - This tutorial walks you through installation of Azure log integration and integrating logs from Azure storage, Azure Audit Logs, and Security Center alerts.
-- [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – This blog post shows you how to configure Azure log integration to work with partner solutions Splunk, HP ArcSight, and IBM QRadar.
-- [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) - This FAQ answers questions about Azure log integration.
-- [Integrating Security Center alerts with Azure log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md) – This document shows you how to sync Security Center alerts, along with virtual machine security events collected by Azure Diagnostics and Azure Audit Logs, with your log analytics or SIEM solution.
-- [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) – This blog post introduces you to Azure Audit Logs and other features that help you gain insights into the operations of your Azure resources.
+- [Azure ログ用の Microsoft Azure ログ統合 (プレビュー)](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
+- [Azure ログ統合の使用](security-azure-log-integration-get-started.md) – このチュートリアルでは、Azure ログ統合のインストール、Azure ストレージのログ、Azure 監査ログ、および Security Center の警告の統合について説明します。
+- [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。
+- [Azure ログ統合のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md) – この FAQ は、Azure ログ統合について寄せられる質問とその回答です。
+- [Azure ログ統合への Security Center の警告の統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
+- [Azure 診断および Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) – このブログ投稿では、Azure 監査ログと、Azure リソースの操作の洞察を得るのに役立つその他の機能を紹介します。
 
 <!--Image references-->
 [1]: ./media/security-azure-log-integration-overview/azure-log-integration.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

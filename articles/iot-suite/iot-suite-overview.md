@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Microsoft Azure IoT Suite overview | Microsoft Azure"
-    description="Overview of how Azure IoT Suite delivers internet of things preconfigured solutions to collect, analyze, and store data, provide visualizations, and integrate with other systems."
-    services=""
+	pageTitle="Microsoft Azure IoT Suite の概要 | Microsoft Azure"
+	description="Azure IoT Suite は、事前構成済みの IoT (モノのインターネット) ソリューションによって、データの収集、分析、保存、可視化、他のシステムとの統合を実現します。"
+	services=""
     suite="iot-suite"
-    documentationCenter=""
-    authors="dominicbetts"
-    manager="timlt"
-    editor=""/>
+	documentationCenter=""
+	authors="dominicbetts"
+	manager="timlt"
+	editor=""/>
 
 <tags
      ms.service="iot-suite"
@@ -17,44 +17,43 @@
      ms.date="08/09/2016"
      ms.author="dobett"/>
 
+# Azure IoT Suite とは
 
-# <a name="what-is-azure-iot-suite?"></a>What is Azure IoT Suite?
+Azure IoT (モノのインターネット) サービスには、さまざまな機能が用意されています。このエンタープライズ クラスのサービスを使用すると、次の操作を実行できます。
 
-The Azure internet of things (IoT) services offer a broad range of capabilities. These enterprise grade services enable you to:
+- デバイスからデータを収集する
+- インモーション データ ストリームを分析する
+- 大規模なデータ セットを格納して照会する
+- リアルタイム データと履歴データを表示する
+- バックオフィス システムと統合する
 
-- Collect data from devices
-- Analyze data streams in-motion
-- Store and query large data sets
-- Visualize both real-time and historical data
-- Integrate with back-office systems
+これらの機能を提供するため、Azure IoT Suite では、複数の Azure サービスとカスタム拡張機能が*構成済みソリューション*としてパッケージ化されています。構成済みソリューションは、一般的な IoT ソリューション パターンの基本実装です。このソリューションを使用すると、IoT ソリューションの提供に必要な時間を短縮できます。[IoT ソフトウェア開発キット][lnk-sdks]を使用し、独自の要件を満たすためにこのソリューションをカスタマイズして拡張することができます。新しい IoT ソリューションを開発する場合は、例やテンプレートとしてこのソリューションを使用することもできます。
 
-To deliver these capabilities, Azure IoT Suite packages together multiple Azure services with custom extensions as *preconfigured solutions*. These preconfigured solutions are base implementations of common IoT solution patterns that help to reduce the time you take to deliver your IoT solutions. Using the [IoT software development kits][lnk-sdks], you can customize and extend these solutions to meet your own requirements. You can also use these solutions as examples or templates when you are developing new IoT solutions.
-
-The following video provides an introduction to Azure IoT Suite:
+次のビデオで、Azure IoT Suite の概要について説明します。
 
 > [AZURE.VIDEO azurecon-2015-introducing-the-microsoft-azure-iot-suite]
 
-## <a name="azure-iot-services-in-azure-iot-suite"></a>Azure IoT services in Azure IoT Suite
+## Azure IoT Suite の Azure IoT サービス
 
-The preconfigured solutions typically use the following services:
+通常、構成済みソリューションでは次のサービスが使用されます。
 
-- Core to Azure IoT Suite is the [Azure IoT Hub][lnk-iot-hub] service. This service provides the device-to-cloud and cloud-to-device messaging capabilities and acts as the gateway to the cloud and the other key IoT Suite services. The service enables you to receive messages from your devices at scale, and send commands to your devices.
+- Azure IoT Suite の中核となるものは [Azure IoT Hub][lnk-iot-hub] サービスです。このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要な IoT Suite サービスに対するゲートウェイとして機能します。このサービスを使用すると、デバイスから大規模にメッセージを受信し、デバイスにコマンドを送信することができます。
 
-- [Azure Stream Analytics][lnk-asa] provides in-motion data analysis. IoT Suite leverages this service to process incoming telemetry, perform aggregation, and detect events. The preconfigured solutions also use stream analytics to process informational messages that contain data such as metadata or command responses from devices. The solutions use Stream Analytics to process the messages from your devices and deliver those messages to other services.
+- [Azure Stream Analytics][lnk-asa] には、インモーション データ分析機能があります。IoT Suite は、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。また、事前構成されたソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。ソリューションでは、Stream Analytics を使用し、デバイスからのメッセージを処理して他のサービスに配信します。
 
-- [Azure Storage][lnk-azure-storage] and [Azure DocumentDB][lnk-document-db] provide the data storage capabilities. The preconfigured solutions use blob storage to store telemetry and to make it available for analysis. The solutions use DocumentDB to store device metadata and enable the device management capabilities of the solutions.
+- [Azure Storage][lnk-azure-storage] と [Azure DocumentDB][lnk-document-db] には、データ ストレージ機能があります。構成済みソリューションでは、BLOB ストレージを使用してテレメトリを保存し、分析に使用することができます。ソリューションでは、DocumentDB を使用してデバイスのメタデータを格納し、ソリューションのデバイス管理機能を有効にします。
 
-- [Azure Web Apps][lnk-web-apps] and [Microsoft Power BI][lnk-power-bi] provide the data visualization capabilities. The flexibility of Power BI enables you to quickly build your own interactive dashboards that use IoT Suite data.
+- [Azure Web Apps][lnk-web-apps] と [Microsoft Power BI][lnk-power-bi] には、データ仮想化機能があります。Power BI は柔軟なので、IoT Suite データを使用する独自の対話型ダッシュボードをすばやく構築できます。
 
-For an overview of the architecture of a typical IoT solution, see [Microsoft Azure and the Internet of Things (IoT)][iot-suite-what-is-azure-iot].
+一般的な IoT ソリューションのアーキテクチャの概要については、「[Microsoft Azure とモノのインターネット (IoT)][iot-suite-what-is-azure-iot]」を参照してください。
 
-## <a name="preconfigured-solutions"></a>Preconfigured solutions
+## 構成済みのソリューション
 
-IoT Suite includes preconfigured solutions that enable you to quickly get started with and to explore the common IoT scenarios, such as *Remote monitoring* and *Predictive maintenance*, that Azure IoT Suite makes possible. You can deploy these solutions to your Azure subscription and then run a complete, end-to-end IoT scenario.
+IoT Suite には構成済みソリューションが含まれており、そのソリューションを使用すると、Azure IoT Suite で実現できる一般的な IoT シナリオ (*リモート監視*、*予測的なメンテナンス*など) をすぐに始めて、調べることができます。これらのソリューションを Azure サブスクリプションにデプロイし、完全なエンドツーエンドの IoT シナリオを実行することができます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now that you have an overview of what IoT Suite can do and what are its main components, you can learn more about the preconfigured solutions in IoT Suite, see [What are the Azure IoT preconfigured solutions?][lnk-what-are-preconfig]
+これで、IoT Suite で実行できる内容の概要と、主要なコンポーネントを把握できました。次は、[Azure IoT Suite の構成済みソリューションの概要][lnk-what-are-preconfig]に関するページを参照して、IoT Suite の構成済みソリューションの詳細について学習しましょう。
 
 [lnk-sdks]: https://azure.microsoft.com/documentation/articles/iot-hub-sdks-summary/
 [lnk-iot-hub]: https://azure.microsoft.com/documentation/services/iot-hub/
@@ -66,8 +65,4 @@ Now that you have an overview of what IoT Suite can do and what are its main com
 [iot-suite-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
 [lnk-what-are-preconfig]: iot-suite-what-are-preconfigured-solutions.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

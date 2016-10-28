@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Availability of Service Fabric services | Microsoft Azure"
-   description="Describes fault detection, failover, and recovery for services"
+   pageTitle="Service Fabric サービスの可用性 | Microsoft Azure"
+   description="障害の検出、フェールオーバー、サービスの回復について説明します"
    services="service-fabric"
    documentationCenter=".net"
    authors="appi101"
@@ -16,43 +16,38 @@
    ms.date="08/10/2016"
    ms.author="aprameyr"/>
 
+# Service Fabric サービスの可用性
+Azure Service Fabric サービスには、ステートレスなものとステートフルなものがあります。この記事では、障害発生時に Service Fabric がサービスの可用性を維持する方法の概要を示します。
 
-# <a name="availability-of-service-fabric-services"></a>Availability of Service Fabric services
-Azure Service Fabric services can be either stateful or stateless. This article gives an overview of how Service Fabric maintains availability of a service in the event of failures.
+## Service Fabric ステートレス サービスの可用性
+ステートレス サービスとは、[ローカル継続状態](service-fabric-concepts-state.md)のないアプリケーション サービスです。
 
-## <a name="availability-of-service-fabric-stateless-services"></a>Availability of Service Fabric stateless services
-A stateless service is an application service that does not have any [local persistent state](service-fabric-concepts-state.md).
+ステートレス サービスを作成するには、インスタンス カウント、つまりクラスター内で実行されるステートレス サービスのインスタンス数を定義する必要があります。これらは、クラスター内でインスタンス化されるアプリケーション ロジックのコピーの数です。ステートレス サービスをスケール アップする場合は、インスタンス数を増やす方法が推奨されています。
 
-Creating a stateless service requires defining an instance count, which is the number of instances of the stateless service that should be running in the cluster. This is the number of copies of the application logic that will be instantiated in the cluster. Increasing the number of instances is the recommended way of scaling up a stateless service.
+ステートレス サービスのインスタンスでエラーが検出されると、クラスター内の他の適当なノードに新しいインスタンスが作成されます。
 
-When a fault is detected on any instance of a stateless service, a new instance is created on some other eligible node in the cluster.
+## Service Fabric ステートフル サービスの可用性
+ステートフル サービスには、関連付けられている状態があります。Service Fabric の場合、ステートフル サービスはレプリカのセットとしてモデル化されます。各レプリカは、状態のコピーを持つサービスのコードのインスタンスです。読み取りおよび書き込み操作は、1 つのレプリカ (プライマリと呼ばれます) で実行されます。書き込み操作からの状態の変更は、他の複数のレプリカ (アクティブ セカンダリと呼ばれます) に*レプリケート*されます。このようなプライマリ レプリカとアクティブ セカンダリ レプリカの組み合わせが、サービスのレプリカ セットです。
 
-## <a name="availability-of-service-fabric-stateful-services"></a>Availability of Service Fabric stateful services
-A stateful service has some state associated with it. In Service Fabric, a stateful service is modeled as a set of replicas. Each replica is an instance of the code of the service that has a copy of the state. Read and write operations are performed at one replica (called the primary). Changes to state from write operations are *replicated* to multiple other replicas (called active secondaries). The combination of primary and active secondary replicas is the replica set of the service.
+読み取りおよび書き込み要求を処理するプライマリ レプリカは 1 つのみですが、アクティブ セカンダリ レプリカは複数ある場合があります。アクティブ セカンダリ レプリカの数は構成可能で、レプリカの数を多くすると、ソフトウェア障害やハードウェア障害が多数同時発生した場合への耐性が得られます。
 
-There can be only one primary replica servicing read and write requests, but there can be multiple active secondary replicas. The number of active secondary replicas is configurable, and a higher number of replicas can tolerate a greater number of concurrent software and hardware failures.
+エラーが発生した場合 (プライマリ レプリカがダウンした場合)、Service Fabric はアクティブ セカンダリ レプリカの 1 つを新しいプライマリ レプリカにします。このアクティブ セカンダリ レプリカは、更新されたバージョンの状態を (*レプリケーション*経由で) 既に取得しているため、その先の読み取り処理と書き込み処理を続行できます。
 
-In the event of a fault (when the primary replica goes down), Service Fabric makes one of the active secondary replicas the new primary replica. This active secondary replica already has the updated version of the state (via *replication*), and it can continue processing further read and write operations.
+レプリカがプライマリであったりアクティブ セカンダリであったりするこの概念は、レプリカ ロールと呼ばれます。
 
-This concept--of a replica being either a primary or active secondary--is known as the replica role.
+### レプリカ ロール
+レプリカのロールは、そのレプリカによって管理されている状態のライフサイクルを管理するために使用されます。ロールがプライマリになっているレプリカは、読み取り要求を処理します。また、状態を更新し、レプリカ セット内のアクティブ セカンダリに変更内容をレプリケートして、書き込み要求も処理します。アクティブ セカンダリのロールは、プライマリ レプリカがレプリケートした状態の変更を受信し、その状態のビューを更新することです。
 
-### <a name="replica-roles"></a>Replica roles
-The role of a replica is used to manage the life cycle of the state being managed by that replica. A replica whose role is primary services read requests. It also services write requests by updating its state and replicating the changes to the active secondaries in its replica set. The role of an active secondary is to receive state changes that the primary replica has replicated and update its view of the state.
+>[AZURE.NOTE] [Reliable Actors フレームワーク](service-fabric-reliable-actors-introduction.md)など、抽象度の高いプログラミング モデルの場合、開発者がレプリカ ロールの概念を意識することはありません。
 
->[AZURE.NOTE] Higher-level programming models such as the [reliable actors framework](service-fabric-reliable-actors-introduction.md) abstract away the concept of replica role from the developer.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+Service Fabric の概念の詳細については、次を参照してください。
 
-For more information on Service Fabric concepts, see the following:
+- [Service Fabric サービスの拡張性](service-fabric-concepts-scalability.md)
 
-- [Scalability of Service Fabric services](service-fabric-concepts-scalability.md)
+- [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 
-- [Partitioning Service Fabric services](service-fabric-concepts-partitioning.md)
+- [状態の定義と管理](service-fabric-concepts-state.md)
 
-- [Defining and managing state](service-fabric-concepts-state.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

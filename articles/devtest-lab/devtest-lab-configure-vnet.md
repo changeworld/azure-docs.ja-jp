@@ -1,74 +1,70 @@
 <properties
-    pageTitle="Configure a virtual network in Azure DevTest Labs  | Microsoft Azure"
-    description="Learn how to configure an existing virtual network and subnet, and use them in a VM with Azure DevTest Labs"
-    services="devtest-lab,virtual-machines"
-    documentationCenter="na"
-    authors="tomarcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="Azure DevTest Labs で仮想ネットワークを構成する | Microsoft Azure"
+	description="既存の仮想ネットワークとサブネットを構成し、それらを VM で Azure DevTest Labs と共に使用する方法について説明します"
+	services="devtest-lab,virtual-machines"
+	documentationCenter="na"
+	authors="tomarcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="devtest-lab"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/06/2016"
-    ms.author="tarcher"/>
+	ms.service="devtest-lab"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/06/2016"
+	ms.author="tarcher"/>
 
+# Azure DevTest Labs で仮想ネットワークを構成する
 
-# <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Configure a virtual network in Azure DevTest Labs
+「[アーティファクトを含む VM を Azure DevTest ラボに追加する](devtest-lab-add-vm-with-artifacts.md)」の記事で説明しているように、ラボで VM を作成する際に、構成されている仮想ネットワークを指定できます。これを行う 1 つのシナリオは、ExpressRoute またはサイト間 VPN で構成されている仮想ネットワークを使用して、VM から企業ネットワーク リソースにアクセスする必要がある場合です。以下のセクションでは、VM の作成時に選択できるように、ラボの Virtual Network の設定に既存の仮想ネットワークを追加する方法を説明します。
 
-As explained in the article, [Add a VM with artifacts to a lab](devtest-lab-add-vm-with-artifacts.md), when you create a VM in a lab, you can specify a configured virtual network. One scenario for doing this is if you need to access your corpnet resources from your VMs using the virtual network that was configured with ExpressRoute or site-to-site VPN. The following sections illustrate how to add your existing virtual network into a lab's Virtual Network settings so that it is available to choose when creating VMs.
+## Azure ポータルを使用してラボ用の仮想ネットワークを構成する
+次に、ラボに既存の仮想ネットワーク (およびサブネット) を追加し、同じラボで VM を作成するときにそれを使用できるようにするための手順を説明します。
 
-## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Configure a virtual network for a lab using the Azure portal
-The following steps walk you through adding an existing virtual network (and subnet) to a lab so that it can be used when creating a VM in the same lab. 
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
-1. Select **More Services**, and then select **DevTest Labs** from the list.
+1. ラボの一覧で目的のラボを選択します。
 
-1. From the list of labs, select the desired lab. 
+1. ラボのブレードで、**[構成]** を選択します。
 
-1. On the lab's blade, select **Configuration**.
+1. ラボの **[構成]** ブレードで、**[仮想ネットワーク]** を選択します。
 
-1. On the lab's **Configuration** blade, select **Virtual networks**.
+1. **[仮想ネットワーク]** ブレードに、現在のラボに構成した仮想ネットワークのほか、ラボ用に作成される既定の仮想ネットワークの一覧が表示されます。
 
-1. On the **Virtual networks** blade, you see a list of virtual networks configured for the current lab as well as the default virtual network that is created for your lab. 
+1. **[+ 追加]** を選択します。
 
-1. Select **+ Add**.
+	![既存の仮想ネットワークをラボに追加する](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
+	
+1. **[仮想ネットワーク]** ブレードで、**[Select virtual network (仮想ネットワークの選択)]** を選択します。
 
-    ![Add an existing virtual network to your lab](./media/devtest-lab-configure-vnet/lab-settings-vnet-add.png)
-    
-1. On the **Virtual network** blade, select **[Select virtual network]**.
+	![既存の仮想ネットワークを選択する](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
+	
+1. **[仮想ネットワークの選択]** ブレードで、目的の仮想ネットワークを選択します。ブレードには、サブスクリプションのラボと同じリージョンの下にあるすべての仮想ネットワークが表示されます。
 
-    ![Select an existing virtual network](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet1.png)
-    
-1. On the **Choose virtual network** blade, select the desired virtual network. The blade shows all the virtual networks that are under the same region in the subscription as the lab.  
+1. 仮想ネットワークを選択後、**[仮想ネットワーク]** ブレードに戻ると、いくつかのフィールドが有効になっていることがわかります。
 
-1. After selecting a virtual network, you are returned to the **Virtual network** blade and several fields are enabled.  
+	![既存の仮想ネットワークを選択する](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
 
-    ![Select an existing virtual network](./media/devtest-lab-configure-vnet/lab-settings-vnets-vnet2.png)
+1. 仮想ネットワーク/ラボの組み合わせの説明を指定します。
 
-1. Specify a description for your virtual network / lab combination.
+1. ラボ VM の作成にサブネットを使用できるようにするには、**[仮想マシンの作成に使用]** を選択します。
 
-1. To allow a subnet to be used in lab VM creation, select **USE IN VIRTUAL MACHINE CREATION**.
+1. サブネットでパブリック IP アドレスを許可するには、**[パブリック IP の許可]** を選択します。
 
-1. To allow public IP addresses in a subnet, select **ALLOW PUBLIC IP**.
+1. **[ユーザーあたりの最大仮想マシン数]** フィールドに、サブネットごとのユーザーあたりの最大 VM 数を指定します。無制限の VM 数が必要な場合は、このフィールドを空白のままにします。
 
-1. In the **MAXIMUM VIRTUAL MACHINES PER USER** field, specify the maximum VMs per user for each subnet. If you want an unrestricted number of VMs, leave this field blank.
+1. [**保存**] を選択します。
 
-1. Select **Save**.
-
-1. Now that the virtual network is configured, it can be selected when creating a VM. To see how to create a VM and specify a virtual network, refer to the article, [Add a VM with artifacts to a lab](devtest-lab-add-vm-with-artifacts.md). 
+1. 仮想ネットワークが構成されたので、VM の作成時にそれを選択できます。VM の作成方法および仮想ネットワークの指定方法については、「[アーティファクトを含む VM をラボに追加する](devtest-lab-add-vm-with-artifacts.md)」を参照してください。
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Once you have added the desired virtual network to your lab, the next step is to [add a VM to your lab](devtest-lab-add-vm-with-artifacts.md).
+ラボに目的の仮想ネットワークを追加したら、次は[ラボに VM を追加](devtest-lab-add-vm-with-artifacts.md)します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

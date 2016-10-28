@@ -1,72 +1,68 @@
 <properties
-    pageTitle="Move a Windows VM | Microsoft Azure"
-    description="Move a Windows VM to another Azure subscription or resource group in the Resource Manager deployment model."
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Windows VM の移動 | Microsoft Azure"
+	description="Resource Manager デプロイメント モデルで Windows VM を他の Azure サブスクリプションまたはリソース グループに移動します。"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="cynthn"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/08/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/08/2016"
+	ms.author="cynthn"/>
 
-    
+	
 
 
+# 他の Azure サブスクリプションまたはリソース グループへの Windows VM の移動 
 
-# <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Move a Windows VM to another Azure subscription or resource group 
+この記事では、リソース グループまたはサブスクリプション間で Windows VM を移動する方法について説明します。サブスクリプション間での移動は、個人のサブスクリプションで作成した VM を、会社のサブスクリプションに移動して作業を続ける場合に便利です。
 
-This article walks you through how to move a Windows VM between resource groups or subscriptions. Moving between subscriptions can be handy if you originally created a VM in a personal subscription and now want to move it to your company's subscription to continue your work.
-
-> [AZURE.NOTE] New resource IDs will be created as part of the move. Once the VM has been moved, you will need to update your tools and scripts to use the new resource IDs. 
+> [AZURE.NOTE] 移動の一環として新しいリソース ID が作成されます。VM を移動したら、この新しいリソース ID を使用するために、ツールやスクリプトを更新する必要があります。
 
 
 [AZURE.INCLUDE [virtual-machines-common-move-vm](../../includes/virtual-machines-common-move-vm.md)]
 
 
-## <a name="use-powershell-to-move-a-vm"></a>Use Powershell to move a VM
+## PowerShell を使用した VM の移動
 
-To move a virtual machine to another resource group, you need to make sure that you also move all of the dependent resources. To use the Move-AzureRMResource cmdlet, you need the resource name and the type of resource. You can get both from the Find-AzureRMResource cmdlet.
+仮想マシンを他のリソース グループに移動するには、依存リソースも必ずすべて移動する必要があります。Move-AzureRMResource コマンドレットを使用するには、リソース名とリソースの種類が必要です。これは両方とも、Find-AzureRMResource コマンドレットで取得できます。
 
-    Find-AzureRMResource -ResourceGroupNameContains "<sourceResourceGroupName>"
+	Find-AzureRMResource -ResourceGroupNameContains "<sourceResourceGroupName>"
+	
+
+VM を移動するには、複数のリソースを移動する必要があります。リソースごとに個別の変数を作成するだけで、その変数を一覧表示できます。この例には、VM の基本的なリソースのほとんどが含まれていますが、必要に応じて追加することもできます。
+
+	$sourceRG = "<sourceResourceGroupName>"
+	$destinationRG = "<destinationResourceGroupName>"
     
-
-To move a VM we need to move multiple resources. We can just create separate variables for each resource and then list them. This example includes most of the basic resources for a VM, but you can add more as needed.
-
-    $sourceRG = "<sourceResourceGroupName>"
-    $destinationRG = "<destinationResourceGroupName>"
-    
-    $vm = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Compute/virtualMachines" -ResourceName "<vmName>"
+	$vm = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Compute/virtualMachines" -ResourceName "<vmName>"
     $storageAccount = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Storage/storageAccounts" -ResourceName "<storageAccountName>"
-    $diagStorageAccount = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Storage/storageAccounts" -ResourceName "<diagnosticStorageAccountName>"
-    $vNet = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/virtualNetworks" -ResourceName "<vNetName>"
-    $nic = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkInterfaces" -ResourceName "<nicName>"
-    $ip = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/publicIPAddresses" -ResourceName "<ipName>"
-    $nsg = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkSecurityGroups" -ResourceName "<nsgName>"
-    
-    Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
+	$diagStorageAccount = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Storage/storageAccounts" -ResourceName "<diagnosticStorageAccountName>"
+	$vNet = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/virtualNetworks" -ResourceName "<vNetName>"
+	$nic = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkInterfaces" -ResourceName "<nicName>"
+	$ip = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/publicIPAddresses" -ResourceName "<ipName>"
+	$nsg = Get-AzureRmResource -ResourceGroupName $sourceRG -ResourceType "Microsoft.Network/networkSecurityGroups" -ResourceName "<nsgName>"
+	
+	Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
 
-To move the resources to different subscription, include the **-DestinationSubscriptionId** parameter. 
+リソースを他のサブスクリプションに移動するには、**-DestinationSubscriptionId** パラメーターを含めます。
 
-    Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
+	Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vm.ResourceId, $storageAccount.ResourceId, $diagStorageAccount.ResourceId, $vNet.ResourceId, $nic.ResourceId, $ip.ResourceId, $nsg.ResourceId
 
 
 
-You will be asked to confirm that you want to move the specified resources. Type **Y** to confirm that you want to move the resources.
+指定したリソースを移動することの確認を求められます。「**Y**」を入力して、リソースの移動を確定します。
 
   
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-You can move many different types of resources between resource groups and subscriptions. For more information, see [Move resources to new resource group or subscription](../resource-group-move-resources.md).    
+リソース グループとサブスクリプションの間でさまざまな種類のリソースを移動できます。詳細については、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../resource-group-move-resources.md)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

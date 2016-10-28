@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Testability: Service communication | Microsoft Azure"
-   description="Service-to-service communication is a critical integration point of a Service Fabric application. This article discusses design considerations and testing techniques."
+   pageTitle="Testability: サービス通信 | Microsoft Azure"
+   description="サービス間通信は、Service Fabric アプリケーションの重要な統合ポイントです。この記事では、設計の考慮事項とテスト手法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -16,43 +16,42 @@
    ms.date="07/06/2016"
    ms.author="vturecek"/>
 
+# Service Fabric Testability シナリオ: サービス通信
 
-# <a name="service-fabric-testability-scenarios:-service-communication"></a>Service Fabric testability scenarios: Service communication
+マイクロサービスおよびサービス指向アーキテクチャ スタイルは、Azure Service Fabric に無理なく適用できます。このような種類の分散アーキテクチャでは、コンポーネント化されたマイクロサービス アプリケーションは、相互に通信する必要がある複数のサービスで構成されることが一般的です。一般的に、最も単純な場合でも、相互に通信する必要があるステートレス Web サービスとステートフル データ ストレージ サービスが最低限必要です。
 
-Microservices and service-oriented architectural styles surface naturally in Azure Service Fabric. In these types of distributed architectures, componentized microservice applications are typically composed of multiple services that need to talk to each other. In even the simplest cases, you generally have at least a stateless web service and a stateful data storage service that need to communicate.
+各サービスは他のサービスに対してリモート API を公開するため、サービス間の通信はアプリケーションの重要な統合ポイントです。I/O を伴う一連の API 境界を操作するには、一般的に多少の注意と、テストと検証を十分に行う必要があります。
 
-Service-to-service communication is a critical integration point of an application, because each service exposes a remote API to other services. Working with a set of API boundaries that involves I/O generally requires some care, with a good amount of testing and validation.
+分散システムでこれらのサービス境界を接続するときには、さまざまな考慮事項があります。
 
-There are numerous considerations to make when these service boundaries are wired together in a distributed system:
+ - *トランスポート プロトコル*。相互運用性を高める HTTP を使用するか、スループットを最大化するカスタム バイナリ プロトコルを使用するか。
+ - *エラー処理*。永続的なエラーと一時的なエラーをどのように処理するか。 サービスが異なるノードに移動した場合は何が起こるか。
+ - *タイムアウトと待機時間*。多層アプリケーションで、各サービス レイヤーがスタックからユーザーまでの待機時間をどのように処理するか。
 
- - *Transport protocol*. Will you use HTTP for increased interoperability, or a custom binary protocol for maximum throughput?
- - *Error handling*. How will permanent and transient errors be handled? What will happen when a service moves to a different node?
- - *Timeouts and latency*. In multitiered applications, how will each service layer handle latency through the stack and to the user?
+Service Fabric によって提供されるいずれかの組み込みサービス通信コンポーネントを使用する場合も、独自のコンポーネントを構築する場合も、サービス間の対話をテストすることは、アプリケーションの回復性を確保するために不可欠です。
 
-Whether you use one of the built-in service communication components provided by Service Fabric or you build your own, testing the interactions between your services is critical to ensuring resiliency in your application.
+## サービスを移動する準備をする
 
-## <a name="prepare-for-services-to-move"></a>Prepare for services to move
+サービス インスタンスは、時間の経過と共に移動することがあります。これは、カスタム調整された最適なリソース分散のためのロード メトリックが構成されている場合に特に当てはまります。Service Fabric は、アップグレード、フェールオーバー、スケールアウト、および分散システムの有効期間に発生するその他の状況下でも、サービス インスタンスを移動することでその可用性を最大化します。
 
-Service instances may move around over time. This is especially true when they are configured with load metrics for custom-tailored optimal resource balancing. Service Fabric moves your service instances to maximize their availability even during upgrades, failovers, scale-out, and other situations that occur over the lifetime of a distributed system.
+サービスはクラスター全体を移動するため、クライアントやその他サービスは、サービスとの通信時に対応できるように、2 つのシナリオに合わせて準備する必要があります。
 
-As services move around in the cluster, your clients and other services should be prepared to handle two scenarios when they talk to a service:
+- サービス インスタンスまたはパーティション レプリカが、前回の通信時から移動している場合。これはサービスのライフサイクルの正常な処理であり、アプリケーションの有効期間中に発生することが予想されます。
+- サービス インスタンスまたはパーティション レプリカが移動の処理中である場合。1 つのノードから別のノードへのサービスのフェールオーバーは Service Fabric で非常に高速に行われますが、通信コンポーネントの開始に時間がかかると、可用性にかかわる遅延が発生する場合があります。
 
-- The service instance or partition replica has moved since the last time you talked to it. This is a normal part of a service lifecycle, and it should be expected to happen during the lifetime of your application.
-- The service instance or partition replica is in the process of moving. Although failover of a service from one node to another occurs very quickly in Service Fabric, there may be a delay in availability if the communication component of your service is slow to start.
+これらのシナリオを正しく処理することは、システムのスムーズな実行にとって重要です。これを行うには、次の点に留意します。
 
-Handling these scenarios gracefully is important for a smooth-running system. To do so, keep in mind that:
+- 接続できるすべてのサービスには、リッスンする*アドレス* (HTTP や Web ソケットなど) があります。サービス インスタンスまたはパーティションが移動すると、そのアドレス エンドポイントが変わります (別の IP アドレスを持つ別のノードに移動します)。 組み込み通信コンポーネントを使用すると、コンポーネントは再解決するサービスのアドレスを処理します。
+- サービス インスタンスがリスナーを再度開始するときに、サービスの待機時間が一時的に増加する可能性があります。これは、サービス インスタンスが移動された後で、サービスがどれだけ迅速に開くかによって決まります。
+- 既存の接続を閉じ、新しいノードでサービスが開いた後で再度開く必要があります。グレースフルなノードのシャットダウンまたは再起動では、既存の接続を正常にシャットダウンするための時間が与えられます。
 
-- Every service that can be connected to has an *address* that it listens on (for example, HTTP or WebSockets). When a service instance or partition moves, its address endpoint changes. (It moves to a different node with a different IP address.) If you're using the built-in communication components, they will handle re-resolving service addresses for you.
-- There may be a temporary increase in service latency as the service instance starts up its listener again. This depends on how quickly the service opens the listener after the service instance is moved.
-- Any existing connections need to be closed and reopened after the service opens on a new node. A graceful node shutdown or restart allows time for existing connections to be shut down gracefully.
+### テスト: サービス インスタンスの移動
 
-### <a name="test-it:-move-service-instances"></a>Test it: Move service instances
+Service Fabric の Testability ツールを使用して、このような状況をさまざまな方法でテストするためのテスト シナリオを作成できます。
 
-By using Service Fabric's testability tools, you can author a test scenario to test these situations in different ways:
+1. ステートフル サービスのプライマリ レプリカを移動します。
 
-1. Move a stateful service's primary replica.
-
-    The primary replica of a stateful service partition can be moved for any number of reasons. Use this to target the primary replica of a specific partition to see how your services react to the move in a very controlled manner.
+    ステートフル サービス パーティションのプライマリ レプリカは、さまざまな理由で移動できます。これを使用して、特定のパーティションのプライマリ レプリカをターゲットとし、サービスが移動にどのように反応するかを高度に制御された方法で確認します。
 
     ```powershell
 
@@ -60,11 +59,11 @@ By using Service Fabric's testability tools, you can author a test scenario to t
 
     ```
 
-2. Stop a node.
+2. ノードを停止します。
 
-    When a node is stopped, Service Fabric moves all of the service instances or partitions that were on that node to one of the other available nodes in the cluster. Use this to test a situation where a node is lost from your cluster and all of the service instances and replicas on that node have to move.
+    ノードが停止すると、そのノード上にあったすべてのサービス インスタンスやパーティションが、Service Fabric によって、クラスター内の他の使用可能なノードのいずれかに移されます。このシナリオを使用して、ノードがクラスターから失われ、そのノード上のすべてのサービス インスタンスとレプリカを移動する必要がある状況をテストできます。
 
-    You can stop a node by using the PowerShell **Stop-ServiceFabricNode** cmdlet:
+    ノードは、PowerShell の **Stop-ServiceFabricNode** コマンドレットを使用して停止できます。
 
     ```powershell
 
@@ -72,17 +71,17 @@ By using Service Fabric's testability tools, you can author a test scenario to t
 
     ```
 
-## <a name="maintain-service-availability"></a>Maintain service availability
+## サービスの可用性の維持
 
-As a platform, Service Fabric is designed to provide high availability of your services. But in extreme cases, underlying infrastructure problems can still cause unavailability. It is important to test for these scenarios, too.
+プラットフォームとして、Service Fabric は、サービスの高可用性を実現するように設計されています。ただし、極端な場合は、基盤となるインフラストラクチャの問題が原因で、可用性が失われる可能性があります。これらのシナリオをテストすることも重要です。
 
-Stateful services use a quorum-based system to replicate state for high availability. This means that a quorum of replicas needs to be available to perform write operations. In rare cases, such as a widespread hardware failure, a quorum of replicas may not be available. In these cases, you will not be able to perform write operations, but you will still be able to perform read operations.
+ステートフル サービスは、クォーラム ベースのシステムを使用して、高可用性の状態をレプリケートします。つまり、書き込み操作を実行するためには、レプリカのクォーラムを利用できる必要があります。広範囲にわたるハードウェアの障害などのまれなケースで、レプリカのクォーラムを使用できない場合があります。この場合、書き込み操作を実行することはできませんが、読み取り操作は実行できます。
 
-### <a name="test-it:-write-operation-unavailability"></a>Test it: Write operation unavailability
+### テスト: 書き込み操作を実行できない
 
-By using the testability tools in Service Fabric, you can inject a fault that induces quorum loss as a test. Although such a scenario is rare, it is important that clients and services that depend on a stateful service are prepared to handle situations where they cannot make write requests to it. It is also important that the stateful service itself is aware of this possibility and can gracefully communicate it to callers.
+Service Fabric の Testability ツールを使用して、テストとしてクォーラム損失を誘発させる障害を注入できます。そのようなシナリオはめったにありませんですが、ステートフル サービスに依存するクライアントとサービスは、ステートフル サービスに書き込み要求ができない状況に対処できるように準備しておくことが重要です。ステートフル サービス自体がこのような可能性を認識し、呼び出し元に対してグレースフルな通知を行えることも同様に重要です。
 
-You can induce quorum loss by using the PowerShell **Invoke-ServiceFabricPartitionQuorumLoss** cmdlet:
+クォーラム損失は、PowerShell の **Invoke-ServiceFabricPartitionQuorumLoss** コマンドレットを使用して誘発させることができます。
 
 ```powershell
 
@@ -90,16 +89,12 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 ```
 
-In this example, we set `QuorumLossMode` to `QuorumReplicas` to indicate that we want to induce quorum loss without taking down all replicas. This way, read operations are still possible. To test a scenario where an entire partition is unavailable, you can set this switch to `AllReplicas`.
+この例では、`QuorumLossMode` を `QuorumReplicas` に設定して、すべてのレプリカを停止させることなくクォーラム損失を誘発させることを指示します。これにより、読み取り操作は引き続き可能です。パーティション全体が使用できない状況をテストする場合は、このスイッチを `AllReplicas` に設定することができます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Learn more about testability actions](service-fabric-testability-actions.md)
+[Testability アクションの詳細](service-fabric-testability-actions.md)
 
-[Learn more about testability scenarios](service-fabric-testability-scenarios.md)
+[Testability シナリオの詳細](service-fabric-testability-scenarios.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

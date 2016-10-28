@@ -1,512 +1,516 @@
 <properties 
-    pageTitle="Manage Azure Media Services Accounts with PowerShell" 
-    description="Learn how to manage Azure Media Services accounts with PowerShell cmdlets." 
-    authors="Juliako" 
-    manager="erikre" 
-    editor="" 
-    services="media-services" 
-    documentationCenter=""/>
+	pageTitle="PowerShell を使用して Azure Media Services アカウントを管理する" 
+	description="PowerShell コマンドレットを使用して Azure Media Services アカウントを管理する方法を説明します。" 
+	authors="Juliako" 
+	manager="erikre" 
+	editor="" 
+	services="media-services" 
+	documentationCenter=""/>
 
 <tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/03/2016"
-    ms.author="juliako"/>
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/04/2016"
+	ms.author="juliako"/>
 
 
+#PowerShell を使用して Azure Media Services アカウントを管理する
 
-#<a name="manage-azure-media-services-accounts-with-powershell"></a>Manage Azure Media Services Accounts with PowerShell
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-create-account.md)
+- [ポータル](media-services-portal-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
-- [REST](http://msdn.microsoft.com/library/azure/dn194267.aspx)
+- [REST ()](http://msdn.microsoft.com/library/azure/dn194267.aspx)
 
-> [AZURE.NOTE] To be able to create an Azure Media Services account, you must have an Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see <a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure Free Trial</a>.
 
-##<a name="overview"></a>Overview 
+> [AZURE.NOTE] Azure Media Services アカウントを作成するには、Azure アカウントが必要です。アカウントがない場合は、無料試用アカウントを数分で作成することができます。詳細については、「<a href="http://www.windowsazure.com/pricing/free-trial/?WT.mc_id=A8A8397B5" target="_blank">Azure の無料試用版サイト</a>」をご覧ください。
 
-This article lists the Azure PowerShell cmdlets for Azure Media Services (AMS) in the Azure Resource Manager framework. The cmdlets exist in the **Microsoft.Azure.Commands.Media** namespace.
+##概要 
 
-## <a name="versions"></a>Versions
+この記事では、Azure Resource Manager フレームワークにある Azure Media Services (AMS) 用の Azure PowerShell コマンドレットについて説明します。コマンドレットは、**Microsoft.Azure.Commands.Media** 名前空間にあります。
 
-**ApiVersion**:   "2015-10-01"
+## バージョン
+
+**ApiVersion**: "2015-10-01"
                
 
-## <a name="new-azurermmediaservice"></a>New-AzureRmMediaService
+## New-AzureRmMediaService
 
-Creates a media service.
+メディア サービスを作成します。
 
-### <a name="syntax"></a>Syntax
+### 構文
 
-Parameter Set: StorageAccountIdParamSet
+パラメーター セット: StorageAccountIdParamSet
 
-    New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccountId] <string> [-Tags <hashtable>]  [<CommonParameters>]
+	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccountId] <string> [-Tags <hashtable>]  [<CommonParameters>]
 
-Parameter Set: StorageAccountsParamSet
+パラメーター セット: StorageAccountsParamSet
 
-    New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccounts] <PSStorageAccount[]> [-Tags <hashtable>]  [<CommonParameters>]
+	New-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Location] <string> [-StorageAccounts] <PSStorageAccount[]> [-Tags <hashtable>]  [<CommonParameters>]
 
-### <a name="parameters"></a>Parameters
+### パラメーター
 
 **-ResourceGroupName &lt;String&gt;**
 
-Specifies the name of the resource group to which this media service belongs.
+このメディア サービスが属するリソース グループの名前を指定します。
 
-Aliases | none
+別名 | なし
 ---|---
-Required?   |  true
-Position?   |  0
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters?  |false
+必須 | true
+位置 | 0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-AccountName &lt;String&gt;**
 
-Specifies the name of the media service.
+メディア サービスの名前を指定します。
 
-Aliases |Name
+別名 |Name
 ---|---
-Required? |true
-Position? |1
-Default value |none
-Accept pipeline input? |false
-Accept wildcard characters? |false
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |false
+ワイルドカード文字を許可する |false
 
 **-Location &lt;String&gt;**
 
-Specifies the resource location of the media service.
+メディア サービスのリソースの場所を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position? |2
-Default value  |none
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-StorageAccountId &lt;String&gt;**
 
-Specifies a primary storage account that associated with the media service.
+メディア サービスに関連付けられているプライマリ ストレージ アカウントを指定します。
 
-- New storage account (created with the Resource Manager API) supported only.
+- (Resource Manager API で作成された) 新しいストレージ アカウントのみがサポートされます。
 
-- The storage account must exist and has the same location with the media service.
+- このストレージ アカウントは、存在し、メディア サービスと同じ場所を持っている必要があります。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position? |3
-Default value  |none
-Accept pipeline input? |true(ByPropertyName)
-Parameter set name |StorageAccountIdParamSet
-Accept wildcard characters?|false
+必須 |true
+位置 |3
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |StorageAccountIdParamSet
+ワイルドカード文字を許可する|false
 
-**-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
+**-StorageAccounts &lt;PSStorageAccount[]&gt;**
 
-Specifies storage accounts that associated with the media service.
+メディア サービスに関連付けられたストレージ アカウントを指定します。
 
-- New storage account (created with the Resource Manager API) supported only.
+- (Resource Manager API で作成された) 新しいストレージ アカウントのみがサポートされます。
 
-- The storage account must exist and has the same location with the media service.
+- このストレージ アカウントは、存在し、メディア サービスと同じ場所を持っている必要があります。
 
-- Only one storage account can be specified as primary.
+- プライマリとして指定できるストレージ アカウントは 1 つだけです。
 
-Aliases |none
+別名 |なし
 ---|---
-Required?  |true
-Position?  |3
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Parameter set name |StorageAccountsParamSet
-Accept wildcard characters? |false
+必須 |true
+位置 |3
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |StorageAccountsParamSet
+ワイルドカード文字を許可する |false
 
 **-Tags &lt;Hashtable&gt;**
 
-Specifies a hash table of the tags that are associated with the media service.
+メディア サービスに関連付けられているタグのハッシュ テーブルを指定します。
 
-- Example: @{"tag1"="value1";"tag2"=:value2"}
+- 例: @{"tag1"="value1";"tag2"=:value2"}
 
-Aliases |none
+別名 |なし
 ---|---
-Required?  |false
-Position?  |named
-Default value |none
-Accept pipeline input? |false
-Accept wildcard characters? |false
+必須 |false
+位置 |named
+既定値 |なし
+パイプライン入力を許可する |false
+ワイルドカード文字を許可する |false
 
 **&lt;CommandParameters&gt;**
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-### <a name="inputs"></a>Inputs
+### 入力
 
-The input type is the type of the objects that you can pipe to the cmdlet.
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-### <a name="outputs"></a>Outputs
+### 出力  
 
-The output type is the type of the objects that the cmdlet emits.
 
-## <a name="set-azurermmediaservice"></a>Set-AzureRmMediaService
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-Updates a media service.
+## Set-AzureRmMediaService
 
-### <a name="syntax"></a>Syntax
+メディア サービスを更新します。
 
-    Set-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Tags <hashtable>] [-StorageAccounts <PSStorageAccount[]>]  [<CommonParameters>]
+### 構文
 
-### <a name="parameters"></a>Parameters
+	Set-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string> [-Tags <hashtable>] [-StorageAccounts <PSStorageAccount[]>]  [<CommonParameters>]
+
+### パラメーター
 
 **-ResourceGroupName &lt;String&gt;**
 
-Specifies the name of the resource group to which this media service belongs.
+このメディア サービスが属するリソース グループの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required?  |true
-Position?  |0
-Default Value |none
-Accept Pipeline Input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-AccountName &lt;String&gt;**
 
-Specifies the name of the media service.
+メディア サービスの名前を指定します。
 
-Aliases |Name
+別名 |Name
 ---|---
-Required? |True
-Position? |1
-Default value |None
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |False
+必須 |True
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |False
 
-**-StorageAccounts &lt;PSStorageAccount\[\]&gt;**
+**-StorageAccounts &lt;PSStorageAccount[]&gt;**
 
-Specifies storage accounts that associated with the media service.
+メディア サービスに関連付けられたストレージ アカウントを指定します。
 
-- New storage account (created with the Resource Manager API) supported only.
+- (Resource Manager API で作成された) 新しいストレージ アカウントのみがサポートされます。
 
-- The storage account must exist and has the same location with the media service.
+- このストレージ アカウントは、存在し、メディア サービスと同じ場所を持っている必要があります。
 
-- Only one storage account can be specified as primary.
+- プライマリとして指定できるストレージ アカウントは 1 つだけです。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |false
-Position? |Named
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Parameter set name |StorageAccountsParamSet
-Accept wildcard characters? |false
+必須 |false
+位置 |named
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |StorageAccountsParamSet
+ワイルドカード文字を許可する |false
 
 **-Tags &lt;Hashtable&gt;**
 
-Specifies a hash table of the tags that are associated with this media service.
+このメディア サービスに関連付けられているタグのハッシュ テーブルを指定します。
 
-- The tags that are associated with the media service are replaced with value specified by the customer.
+- メディア サービスに関連付けられているタグは、お客様が指定した値に置き換えられます。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |False
-Position?  |Named
-Default value |None
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |False
+位置 |named
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **&lt;CommandParameters&gt;**
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-### <a name="inputs"></a>Inputs
+### 入力
 
-The input type is the type of the objects that you can pipe to the cmdlet.
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-### <a name="outputs"></a>Outputs
+### 出力  
 
-The output type is the type of the objects that the cmdlet emits.
 
-## <a name="remove-azurermmediaservice"></a>Remove-AzureRmMediaService
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-Removes a media service.
+## Remove-AzureRmMediaService
 
-### <a name="syntax"></a>Syntax
+メディア サービスを削除します。
 
-    Remove-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+### 構文
 
-### <a name="parameters"></a>Parameters
+	Remove-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### パラメーター
 
 **-ResourceGroupName &lt;String&gt;**
 
-Specifies the name of the resource group to which this media service belongs.
+このメディア サービスが属するリソース グループの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position? |0
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-AccountName &lt;String&gt;**
 
-Specifies the name of the media service.
+メディア サービスの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position? |2
-Default value |None
-Accept pipeline input?  |true(ByPropertyName)
-Accept wildcard characters? |False
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |False
 
 **&lt;CommandParameters&gt;**
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-### <a name="inputs"></a>Inputs
+### 入力
 
-The input type is the type of the objects that you can pipe to the cmdlet.
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-### <a name="outputs"></a>Outputs
+### 出力  
 
-The output type is the type of the objects that the cmdlet emits.
 
-## <a name="get-azurermmediaservice"></a>Get-AzureRmMediaService
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-Gets all media services in a resource group or a media service with a given name.
+## Get-AzureRmMediaService
 
-### <a name="syntax"></a>Syntax
+リソース グループ内のすべてのメディア サービス、または指定された名前を持つメディア サービスを取得します。
+
+### 構文
 
 ParameterSet: ResourceGroupParameterSet
 
-    Get-AzureRmMediaService [-ResourceGroupName] <string>  [<CommonParameters>] 
+	Get-AzureRmMediaService [-ResourceGroupName] <string>  [<CommonParameters>]	
 
 ParameterSet: AccountNameParameterSet
 
-    Get-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+	Get-AzureRmMediaService [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
 
-### <a name="parameters"></a>Parameters
+### パラメーター
 
 **-ResourceGroupName &lt;String&gt;**
 
-Specifies the name of the resource group to which this media service belongs.
+このメディア サービスが属するリソース グループの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position?  |0
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Parameter set name |ResourceGroupParameterSet, AccountNameParameterSet
-Accept wildcard characters?   false
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |ResourceGroupParameterSet、AccountNameParameterSet
+ワイルドカード文字を許可する false
 
 **-AccountName &lt;String&gt;**
 
-Specifies the name of the media service.
+メディア サービスの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position?  |1
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Parameter set name  |AccountNameParameterSet
-Accept wildcard characters? |false
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+パラメーター セット名 |AccountNameParameterSet
+ワイルドカード文字を許可する |false
 
 **&lt;CommandParameters&gt;**
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-### <a name="inputs"></a>Inputs
+### 入力
 
-The input type is the type of the objects that you can pipe to the cmdlet.
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-### <a name="outputs"></a>Outputs
+### 出力  
 
-The output type is the type of the objects that the cmdlet emits.
 
-## <a name="get-azurermmediaservicekeys"></a>Get-AzureRmMediaServiceKeys
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-Gets keys of a media service.
+## Get-AzureRmMediaServiceKeys
 
-### <a name="syntax"></a>Syntax
+メディア サービスのキーを取得します。
 
-    Get-AzureRmMediaServiceKeys [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+### 構文
 
-### <a name="parameters"></a>Parameters
+	Get-AzureRmMediaServiceKeys [-ResourceGroupName] <string> [-AccountName] <string>  [<CommonParameters>]
+
+### パラメーター
 
 **-ResourceGroupName &lt;String&gt;**
 
-Specifies the name of the resource group to which this media service belongs.
+このメディア サービスが属するリソース グループの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position?  |0
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-AccountName &lt;String&gt;**
 
-Specifies the name of the media service.
+メディア サービスの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position? |1
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **&lt;CommandParameters&gt;**
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-### <a name="inputs"></a>Inputs
+### 入力
 
-The input type is the type of the objects that you can pipe to the cmdlet.
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-### <a name="outputs"></a>Outputs
+### 出力  
 
-The output type is the type of the objects that the cmdlet emits.
 
-## <a name="set-azurermmediaservicekey"></a>Set-AzureRmMediaServiceKey
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-Regenerates a primary or secondary key of a media service.
+## Set-AzureRmMediaServiceKey
 
-### <a name="syntax"></a>Syntax
+メディア サービスのプライマリまたはセカンダリ キーを再生成します。
 
-    Set-AzureRmMediaServiceKey [-ResourceGroupName] <string> [-AccountName] <string> [-KeyType] <KeyType> {Primary | Secondary}  [<CommonParameters>]
+### 構文
 
-### <a name="parameters"></a>Parameters
+	Set-AzureRmMediaServiceKey [-ResourceGroupName] <string> [-AccountName] <string> [-KeyType] <KeyType> {Primary | Secondary}  [<CommonParameters>]
+
+### パラメーター
 
 **-ResourceGroupName &lt;String&gt;**
 
-Specifies the name of the resource group to which this media service belongs.
+このメディア サービスが属するリソース グループの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required?  |true
-Position?  |0
-Default value |none
-Accept pipeline input?  |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-AccountName &lt;String&gt;**
 
-Specifies the name of the media service.
+メディア サービスの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position?  |1
-Default value |none
-Accept pipeline input?   |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-KeyType &lt;KeyType&gt;**
 
-Specifies the key type of the media service.
+メディア サービスのキーの種類を指定します。
 
-- Primary or Secondary
+- Primary または Secondary
 
-Aliases |none
+別名 |なし
 ---|---
-Required?  |true
-Position?  |2
-Default value |none
-Accept pipeline input? |false
-Accept wildcard characters? |false
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する |false
+ワイルドカード文字を許可する |false
 
 **&lt;CommandParameters&gt;**
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-### <a name="inputs"></a>Inputs
+### 入力
 
-The input type is the type of the objects that you can pipe to the cmdlet.
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-### <a name="outputs"></a>Outputs
+### 出力  
 
-The output type is the type of the objects that the cmdlet emits.
 
-## <a name="sync-azurermmediaservicestoragekeys"></a>Sync-AzureRmMediaServiceStorageKeys
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-Synchronizes storage account keys for a storage account associated with the media service.
+## Sync-AzureRmMediaServiceStorageKeys
 
-### <a name="syntax"></a>Syntax
+メディア サービスに関連付けられたストレージ アカウントのストレージ アカウント キーを同期します。
 
-    Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountId] <string>  [<CommonParameters>]
+### 構文
 
-### <a name="parameters"></a>Parameters
+	Sync-AzureRmMediaServiceStorageKeys [-ResourceGroupName] <string> [-MediaServiceAccountName] <string>    [-StorageAccountName] <string>  [<CommonParameters>]
+
+### パラメーター
 
 **-ResourceGroupName &lt;String&gt;**
 
-Specifies the name of the resource group to which this media service belongs.
+このメディア サービスが属するリソース グループの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position? |0
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |0
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-AccountName &lt;String&gt;**
 
-Specifies the name of the media service.
+メディア サービスの名前を指定します。
 
-Aliases |none
+別名 |なし
 ---|---
-Required? |true
-Position? |1
-Default value |none
-Accept pipeline input? |true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |1
+既定値 |なし
+パイプライン入力を許可する |true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **-StorageAccountId &lt;String&gt;**
 
-Specifies the storage account associated with the media service.
+メディア サービスに関連付けられたストレージ アカウントを指定します。
 
-Aliases |Id
+別名 |ID
 ---|---
-Required? |true
-Position?  |2
-Default value |none
-Accept pipeline input? |      true(ByPropertyName)
-Accept wildcard characters? |false
+必須 |true
+位置 |2
+既定値 |なし
+パイプライン入力を許可する | true(ByPropertyName)
+ワイルドカード文字を許可する |false
 
 **&lt;CommandParameters&gt;**
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
+このコマンドレットは、一般的なパラメーターをサポートしています。-Debug、-ErrorAction、-ErrorVariable、-InformationAction、-InformationVariable、-OutVariable、-OutBuffer、-PipelineVariable、-Verbose、-WarningAction、-WarningVariable です。
 
-### <a name="inputs"></a>Inputs
+### 入力
 
-The input type is the type of the objects that you can pipe to the cmdlet.
+入力の型は、コマンドレットにパイプできるオブジェクトの型です。
 
-### <a name="outputs"></a>Outputs
+### 出力  
 
-The output type is the type of the objects that the cmdlet emits.
 
-## <a name="next-step"></a>Next step 
+出力の型は、コマンドレットが出力するオブジェクトの型です。
 
-Check out Media Services learning paths.
+## 次のステップ 
+
+Media Services のラーニング パスをご覧ください。
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

@@ -1,94 +1,88 @@
 <properties
-    pageTitle="Create a Universal Windows Platform (UWP) that uses on Mobile Apps | Microsoft Azure"
-    description="Follow this tutorial to get started with using Azure mobile app backends for Universal Windows Platform (UWP) app development in C#, Visual Basic, or JavaScript."
-    services="app-service\mobile"
-    documentationCenter="windows"
-    authors="adrianhall"
-    manager="erikre"
-    editor=""/>
+	pageTitle="Mobile Apps で使用する Universal Windows Platform (UWP) を作成する | Microsoft Azure"
+	description="このチュートリアルに従って、Azure モバイル アプリ バックエンドを使用して、C#、Visual Basic、または JavaScript で Universal Windows Platform (UWP) アプリの開発を開始します。"
+	services="app-service\mobile"
+	documentationCenter="windows"
+	authors="adrianhall"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-windows"
-    ms.devlang="dotnet"
-    ms.topic="hero-article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="10/01/2016"
+	ms.author="adrianha"/>
 
-
-#<a name="create-a-windows-app"></a>Create a Windows app
+#Create a Windows app (Windows アプリの作成)
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
 
-##<a name="overview"></a>Overview
+##Overview
 
-This tutorial shows you how to add a cloud-based backend service to a Universal Windows Platform (UWP) app. For more information, see [What are Mobile Apps](app-service-mobile-value-prop.md). The following are screen captures from the completed app:
+このチュートリアルでは、Universal Windows Platform (UWP) アプリにクラウドベースのバックエンド サービスを追加する方法を示します。詳細については、「[モバイル アプリとは](app-service-mobile-value-prop.md)」を参照してください。次に示すのは、完了したアプリの画面キャプチャです。
 
-![Completed desktop app](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png)   
-Running on a desktop. 
+![Completed desktop app](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed-desktop.png) デスクトップで実行されています。
 
-![Completed phone app](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)  
-Running on a phone
+![Completed phone app](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png) スマート フォンで実行されています。
 
-Completing this tutorial is a prerequisite for all other Mobile App tutorials for UWP apps. 
+UWP アプリの他のすべての Mobile Apps チュートリアルを行う前に、このチュートリアルを完了する必要があります。
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
-To complete this tutorial, you need the following:
+このチュートリアルを完了するには、以下が必要です。
 
-* An active Azure account. If you don't have an account, you can sign up for an Azure trial and get up to 10 free mobile apps that you can keep using even after your trial ends. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
+* アクティブな Azure アカウント。アカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料モバイル アプリを入手できます。このアプリは評価終了後も使用できます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-* [Visual Studio Community 2015] or a later version.
+* [Visual Studio Community 2015] 以降のバージョン。
 
->[AZURE.NOTE] If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile). There, you can immediately create a short-lived starter mobile app in App Service—no credit card required, and no commitments.
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service を開始する場合は、「[Azure App Service アプリケーションの作成](https://tryappservice.azure.com/?appServiceName=mobile)」にアクセスしてください。有効期間が短いスターター モバイル アプリを App Service ですぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-##<a name="create-a-new-azure-mobile-app-backend"></a>Create a new Azure Mobile App backend
+##新しい Azure Mobile App バックエンドの作成
 
-Follow these steps to create a new Mobile App backend.
+新しいモバイル アプリ バックエンドを作成するには、次の手順に従います。
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-You have now provisioned an Azure Mobile App backend that can be used by your mobile client applications. Next, you will download a server project for a simple "todo list" backend and publish it to Azure.
+これで、モバイル クライアント アプリケーションで使用できる Azure モバイル アプリ バックエンドのプロビジョニングが完了しました。次は、簡単な "todo list" バックエンドのサーバー プロジェクトをダウンロードして、それを Azure に発行します。
 
-## <a name="configure-the-server-project"></a>Configure the server project
+## サーバー プロジェクトの構成
 
 [AZURE.INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-##<a name="download-and-run-the-client-project"></a>Download and run the client project
+##クライアント プロジェクトのダウンロードおよび実行
 
-Once you have configured your Mobile App backend, you can either create a new client app or modify an existing app to connect to Azure. In this section, you download a UWP app template project that is customized to connect to your Mobile App backend.
+モバイル アプリ バックエンドを構成した後は、新しいクライアント アプリを作成したり、既存のアプリを Azure に接続するように変更したりできます。このセクションでは、モバイル アプリ バックエンドに接続するようにカスタマイズされた UWP アプリ テンプレート プロジェクトをダウンロードします。
 
-1. Back in the **Quick start** blade for your Mobile App backend, click **Create a new app** > **Download**, then extract the compressed project files to your local computer.
+1. モバイル アプリ バックエンドの **[クイック スタート]** ブレードに戻り、**[新しいアプリの作成]**、**[ダウンロード]** の順にクリックして、圧縮されたプロジェクト ファイルをローカル コンピューターに展開します。
 
-    ![Download Windows quickstart project](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
+	![Download Windows quickstart project](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-app-windows-quickstart.png)
 
-3. (Optional) Add the UWP app project to the same solution as the server project. This makes it easier to debug and test both the app and the backend in the same Visual Studio solution, if you choose to do so. To add a UWP app project to the solution, you must be using Visual Studio 2015 or a later version.
+3. (省略可能) サーバー プロジェクトと同じソリューションに UWP アプリ プロジェクトを追加します。これにより、必要であれば、同じ Visual Studio ソリューションでアプリとバックエンドの両方をより簡単にデバッグおよびテストできるようになります。UWP アプリ プロジェクトをソリューションに追加するには、Visual Studio 2015 以降のバージョンを使用している必要があります。
 
-4. With the UWP app as the startup project, press the F5 key to deploy and run the app.
+4. UWP アプリをスタートアップ プロジェクトにして F5 キーを押し、アプリをデプロイおよび実行します。
 
-5. In the app, type meaningful text, such as *Complete the tutorial*, in the **Insert a TodoItem** text box, and then click **Save**.
+5. アプリで、**[Insert a TodoItem]** テキスト ボックスに意味のあるテキスト (たとえば、「 *チュートリアルの完了* 」) を入力し、**[Save]** をクリックします。
 
-    ![Windows quickstart complete desktop](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
+	![Windows quickstart complete desktop](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-startup.png)
 
-    This sends a POST request to the new mobile app backend that's hosted in Azure.
+	これで、Azure でホストされている新しいモバイル アプリ バックエンドに POST 要求が送信されます。
 
-6. (Optional) Stop the app and restart it on a different device or mobile emulator.
+6. (省略可能) アプリを停止し、別のデバイスまたはモバイル エミュレーターで再開します。
 
-    ![Windows quickstart complete phone](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
+	![Windows quickstart complete phone](./media/app-service-mobile-windows-store-dotnet-get-started/mobile-quickstart-completed.png)
 
-    Notice that data saved from the previous step is loaded from Azure after the UWP app starts. 
+	UWP アプリの開始後、前の手順で保存したデータが Azure から読み込まれる点に注目してください。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-* [Add authentication to your app](app-service-mobile-windows-store-dotnet-get-started-users.md)  
-  Learn how to authenticate users of your app with an identity provider.
+* [アプリへの認証の追加](app-service-mobile-windows-store-dotnet-get-started-users.md) ID プロバイダーを使用してアプリのユーザーを認証する方法について説明します。
 
-* [Add push notifications to your app](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-  Learn how to add push notifications support to your app and configure your Mobile App backend to use Azure Notification Hubs to send push notifications.
+* [アプリへのプッシュ通知の追加](app-service-mobile-windows-store-dotnet-get-started-push.md) アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使ってプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
 
-* [Enable offline sync for your app](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Learn how to add offline support your app using an Mobile App backend. Offline sync allows end-users to interact with a mobile app&mdash;viewing, adding, or modifying data&mdash;even when there is no network connection.
+* [アプリのオフライン同期の有効化](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) モバイル アプリ バックエンドを使用してオフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
 
 <!-- Anchors. -->
 <!-- Images. -->
@@ -97,8 +91,4 @@ Once you have configured your Mobile App backend, you can either create a new cl
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2015]: https://go.microsoft.com/fwLink/p/?LinkID=534203
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

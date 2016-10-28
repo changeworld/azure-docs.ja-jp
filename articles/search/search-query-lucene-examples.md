@@ -1,11 +1,11 @@
 <properties
-    pageTitle="Lucene query examples for Azure Search | Microsoft Azure Search"
-    description="Lucene query syntax for fuzzy search, proximity search, term boosting, regular expression search, and wildcard search."
+    pageTitle="Azure Search の Lucene クエリ例 | Microsoft Azure Search"
+    description="あいまい検索、近接検索、用語ブースト、正規表現検索、ワイルドカード検索の Lucene クエリ構文。"
     services="search"
     documentationCenter=""
-    authors="LiamCa"
-    manager="pablocas"
-    editor=""
+	authors="LiamCa"
+	manager="pablocas"
+	editor=""
     tags="Lucene query analyzer syntax"
 />
 
@@ -19,118 +19,114 @@
     ms.author="liamca"
 />
 
+# Azure Search でクエリを作成するための Lucene クエリ構文例
 
-# <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Lucene query syntax examples for building queries in Azure Search
+Azure Search のクエリを構築するときは、既定の[単純なクエリ構文](https://msdn.microsoft.com/library/azure/dn798920.aspx)または代替の [Azure Search の Lucene Query Parser](https://msdn.microsoft.com/library/azure/mt589323.aspx) を使用できます。Lucene Query Parser では、フィールド スコープ クエリ、あいまい検索、近接検索、用語ブースト、正規表現検索など、複雑なクエリ構文に対応しています。
 
-When constructing queries for Azure Search, you can use either the default [simple query syntax](https://msdn.microsoft.com/library/azure/dn798920.aspx) or the alternative [Lucene Query Parser in Azure Search](https://msdn.microsoft.com/library/azure/mt589323.aspx). The Lucene Query Parser supports more complex query constructs, such as field-scoped queries, fuzzy search, proximity search, term boosting, and reqular expression search.
+この記事では、Lucene クエリ構文と結果が横並びに表示された例を順番に確認できます。例は [JSFiddle](https://jsfiddle.net/) に事前に読み込んでおいた検索インデックスに対して実行されます。JSFiddle は、スクリプトと HTML をテストするためのオンライン コード エディターです。
 
-In this article, you can step through examples that display Lucene query syntax and results side by side. Examples run against a pre-loaded Search index in [JSFiddle](https://jsfiddle.net/), an online code editor for testing script and HTML. 
+クエリ例の URL を右クリックし、JSFiddle を新しいブラウザー ウィンドウで開きます。
 
-Right-click on the query example URLs to open JSFiddle in a separate browser window.
+> [AZURE.NOTE] 次の例では、[City of New York OpenData](https://nycopendata.socrata.com/) イニシアティブが提供するデータセットのジョブで構成されている検索インデックスを活用します。このデータが最新のものであるとか、完全であるとはお考えにならないでください。このインデックスは、Microsoft が提供するサンドボックス サービスにあります。Azure サブスクリプションや Azure Search がなくてもこれらのクエリを試すことができます。
 
-> [AZURE.NOTE] The following examples leverage a search index consisting of jobs available based on a dataset provided by the [City of New York OpenData](https://nycopendata.socrata.com/) initiative. This data should not be considered current or complete. The index is on a sandbox service provided by Microsoft. You do not need an Azure subscription or Azure Search to try these queries.
+## この記事の例の表示
 
-## <a name="viewing-the-examples-in-this-article"></a>Viewing the examples in this article
+この記事のすべての例では、**queryType** 検索パラメーターを使用して Lucene Query Parser を指定します。コードから Lucene Query Parser を使用する場合、要求ごとに **queryType** を指定します。有効な値には **simple**|**full** が含まれます。**simple** が既定値で、**full** は Lucene Query Parser 用です。クエリ パラメーターの指定に関する詳細については、「[ドキュメントの検索 (Azure Search サービスの REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx)」を参照してください。
 
-All of the examples in this article specify the Lucene Query Parser via the**queryType** search parameter. When using the Lucene Query Parser from your code, you'll specify the **queryType** on every request.  Valid values include **simple**|**full**, with **simple** as the default and **full** for the Lucene Query Parser. See [Search Documents (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn798927.aspx) for details about specifying query parameters.
-
-**Example 1** -- Right-click the following query snippet to open it in a new browser page that loads JSFiddle and runs the query:
+**例 1** -- 次のクリエ スニペットを右クリックし、新しいブラウザー ページで開きます。新しいページが JSFiddle を読み込み、クエリを実行します。
 - [&queryType=full&search=*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*)
 
-This query returns documents from our Jobs index (loaded on a sandbox service)
+このクエリは Jobs インデックス (サンドボックス サービスに読み込まれています) からドキュメントを返します。
 
-In the new browser window, you'll see the JavaScript source and HTML output side by side. The script references a query, which is provided by the example URLs in this article. For instance, in **Example 1**, the underlying query is as follows:
+新しいブラウザー ウィンドウで、JavaScript のソースと HTML 出力が横並びで表示されます。このスクリプトでは、この記事のサンプル URL で提供されているクエリが参照されています。たとえば、**例 1** では、基になるクエリは次のとおりです。
 
     http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26searchFields=business_title%26$select=business_title%26queryType=full%26search=*
 
-Notice the query uses a preconfigured Azure Search index called nycjobs. The **searchFields** parameter restricts the search to just the business title field. The **queryType** is set to **full**, which instructs Azure Search to use the Lucene Query Parser for this query.
+クエリでは、nycjobs という構成済みの Azure Search インデックスが使用されていることに注意してください。**searchFields** パラメーターは、検索範囲をビジネス タイトル フィールドだけに制限します。**queryType** は **full** に設定されています。これによって、このクエリで Lucene Query Parser を使用するように Azure Search に指示しています。
 
-### <a name="fielded-query-operation"></a>Fielded query operation
+### フィールド クエリ操作
 
-You can modify the examples in this article by specifying a **fieldname:searchterm** construction to define a fielded query operation, where the field is a single word, and the search term is also a single word or a phrase, optionally with Boolean operators. Some examples include the following:
+この記事の例を変更するには、**fieldname:searchterm** 構造を指定し、フィールド クエリ操作を定義します。フィールドは 1 つの単語であり、検索語句も 1 つの単語または語句です。ブール演算子を利用することもあります。たとえば、次のようになります。
 
-- business_title:(senior NOT junior)
+- business\_title:(senior NOT junior)
 - state:("New York" AND "New Jersey")
 
-Be sure to put multiple strings within quotation marks if you want both strings to be evaluated as a single entity, as in this case searching for two distinct cities in the location field. Also, ensure the operator is capitalized as you see with NOT and AND.
+複数の文字列を 1 つのエンティティとして評価するのであれば、複数の文字列を引用符で囲ってください。この例では、場所フィールドで 2 つの異なる都市を検索しています。また、NOT や AND のように、演算子は大文字表記になります。
 
-The field specified in **fieldname:searchterm** must be a searchable field. See [Create Index (Azure Search Service REST API)](https://msdn.microsoft.com/library/azure/dn798941.aspx) for details on how index attributes are used in field definitions.
+**fieldname:searchterm** に指定されたフィールドは検索可能フィールドである必要があります。フィールド定義におけるインデックス属性の利用方法に関する詳細については、「[Create Index (Azure Search Service REST API) (インデックスの作成 (Azure Search サービス REST API))](https://msdn.microsoft.com/library/azure/dn798941.aspx)」を参照してください。
 
-## <a name="fuzzy-search"></a>Fuzzy search
+## あいまい検索
 
-A fuzzy search finds matches in terms that have a similar construction. Per [Lucene documentation](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html), fuzzy searches are based on [Damerau-Levenshtein Distance](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance).
+あいまい検索では、似たような構造の言い回しの一致が検索されます。[Lucene ドキュメント](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)によると、あいまい検索は [Damerau-Levenshtein Distance](https://en.wikipedia.org/wiki/Damerau%e2%80%93Levenshtein_distance) を基盤としています。
 
-To do a fuzzy search, use the tilde "~" symbol at the end of a single word with an optional parameter, a value between 0 and 2, that specifies the edit distance. For example, "blue~" or "blue~1" would return blue, blues, and glue.
+あいまい検索を実行するには、1 つの言葉の終わりにチルダ記号 "~" を付けます。任意で編集距離を指定するパラメーターとして 0 ～ 2 の値を指定します。たとえば、"blue~" または "blue~1" は blue、blues、glue を返します。
 
-**Example 2** -- Right-click the following query snippet to give it a try. This query searches for business titles with the term senior in them, but not junior:
+**例 2** -- 次のクエリ スニペットを右クリックすると試すことができます。このクエリは、junior ではなく、senior という表現を含む肩書きを検索します。
 
-- [&queryType=full&search= business_title:senior NOT junior](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
+- [&queryType=full&search= business\_title:senior NOT junior](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:senior+NOT+junior)
 
-## <a name="proximity-search"></a>Proximity Search
+## 近接検索
 
-Proximity searches are used to find terms that are near each other in a document. Insert a tilde "~" symbol at the end of a phrase followed by the number of words that create the proximity boundary. For example, "hotel airport"~5 will find the terms hotel and airport within 5 words of each other in a document.
+近接検索は、ある文書で互いに近くにある言葉を検索します。言葉の終わりにチルダ記号 "~" を挿入し、近接境界となる語数を続けます。たとえば、"hotel airport"~5 と指定すると、ある文書で hotel という言葉と airport という言葉が互いに 5 語以内にある箇所が検索されます。
 
-**Example 3** -- Right-click the following query snippet. This query searches for jobs with the term associate (where it is misspelled):
+**例 3** -- 次のクエリ スニペットを右クリックします。このクエリは、associate という言葉を含む仕事を検索します (スペルが間違っています)。
 
-- [&queryType=full&search= business_title:asosiate~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
+- [&queryType=full&search= business\_title:asosiate~](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:asosiate~)
 
-**Example 4** -- Right-click the query. Search for jobs with the term "senior analyst" where it is separated by no more than one word:
+**例 4** -- クエリを右クリックします。"senior analyst" という言い回しを含む仕事を検索します。間に 1 語だけ含まれます。
 
-- [&queryType=full&search=business_title:"senior analyst"~1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
+- [&queryType=full&search=business\_title:"senior analyst"~1](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~1)
 
-**Example 5** -- Try it again removing the words between the term "senior analyst".
+**例 5** -- "senior analyst" の間の言葉を削除してもう一度試します。
 
-- [&queryType=full&search=business_title:"senior analyst"~0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
+- [&queryType=full&search=business\_title:"senior analyst"~0](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:%22senior%20analyst%22~0)
 
-## <a name="term-boosting"></a>Term Boosting
+## 用語ブースト
 
-Term boosting refers to ranking a document higher if it contains the boosted term, relative to documents that do not contain the term. This differs from scoring profiles in that scoring profiles boost certain fields, rather than specific terms. The following example helps illustrate the differences.
+用語ブーストでは、指定用語を含む文書に含まない文書より高い順位が設定されます (ブーストされます)。これはスコアリング プロファイルとは違います。スコアリング プロファイルは、特定の用語ではなく、特定のフィールドをブーストします。次の例はその違いを示しています。
 
-Consider a scoring profile that boosts matches in a certain field, such as **genre** in the musicstoreindex example. Term boosting could be used to further boost certain search terms higher than others. For example, "rock^2 electronic" will boost documents that contain the search terms in the **genre** field higher than other searchable fields in the index. Furthermore, documents that contain the search term "rock" will be ranked higher than the other search term "electronic" as a result of the term boost value (2).
+musicstoreindex の例の **genre** など、特定のフィールドの一致がブーストされるスコアリング プロファイルについて考えてみましょう。用語ブーストでは、特定の用語に他の用語より高い順位を与えます。たとえば、"rock^2 electronic" と指定した場合、**genre** フィールドに検索語句を含む文書に、インデックスの他の検索可能フィールドより高い順位が与えられます。さらに、用語のブースト値 (2) により、"rock" という検索用語を含む文書に、"electronic" というもう 1 つの用語よりも高い順位が与えられます。
 
-To boost a term, use the caret, "^", symbol with a boost factor (a number) at the end of the term you are searching. The higher the boost factor, the more relevant the term will be relative to other search terms. By default, the boost factor is 1. Although the boost factor must be positive, it can be less than 1 (for example, 0.2).
+用語をブーストするには、キャレット記号 "^" とブースト係数 (数字) を検索語句の終わりに付けます。ブースト係数が高ければ高いほど、その語句の関連性が他の検索語句に比べて大きくなります。既定のブースト係数は 1 です。ブースト係数は整数にする必要がありますが、1 に満たない (0.2 など) 数字にすることができます。
 
-**Example 6**  -- Right-click the query. Search for jobs with the term "computer analyst" where we see there are no results with both words computer and analyst, yet analyst jobs are at the top of the results.
+**例 6** -- クエリを右クリックします。"computer analyst" という言葉を含む仕事を検索します。computer と analyst の両方を含む結果は出ませんが、アナリストの仕事が結果の上位に表示されています。
 
-- [&queryType=full&search=business_title:computer analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+- [&queryType=full&search=business\_title:computer analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
-**Example 7**  --  Try it again, this time boosting results with the term computer over the term analyst if both words do not exist.
+**例 7** -- もう一度試します。今度は、両方の言葉が存在しない場合、computer という言葉に analyst という言葉より高い優先順位を与えます。
 
-- [&queryType=full&search=business_title:computer^2 analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
+- [&queryType=full&search=business\_title:computer^2 analyst](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26$select=business_title%26queryType=full%26search=business_title:computer%5e2%20analyst)
 
-## <a name="regular-expression"></a>Regular Expression
+## 正規表現
 
-A regular expression search finds a match based on the contents between forward slashes "/", as documented in the [RegExp class](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html).
+正規表現検索では、スラッシュ "/" の間のコンテンツに基づいて一致が検索されます。[RegExp クラス](http://lucene.apache.org/core/4_10_2/core/org/apache/lucene/util/automaton/RegExp.html)に詳細があります。
 
-**Example 8** -- Right-click the query. Search for jobs with either the term Senior or Junior.
+**例 8** -- クエリを右クリックします。Senior または Junior という言葉を含む仕事を検索します。
 
 - `&queryType=full&$select=business_title&search=business_title:/(Sen|Jun)ior/`
 
-The URL for this example will not render properly in the page. As a workaround, copy the URL below and paste it into the browser URL address:     `http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
+この例の URL はページで正しく表示されません。回避策として、下の URL をコピーし、ブラウザーの URL アドレスに貼り付けます。`http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26queryType=full%26$select=business_title%26search=business_title:/(Sen|Jun)ior/)`
 
 
-## <a name="wildcard-search"></a>Wildcard Search
+## ワイルドカード検索
 
-You can use generally recognized syntax for multiple (\*) or single (?) character wildcard searches. Note the Lucene query parser supports the use of these symbols with a single term, and not a phrase.
+一般的に認められている構文を利用できます。複数の場合は * を、単数の場合は ? をワイルドカード文字として検索できます。Lucene Query Parser では、これらの文字を語句ではなく 1 つの用語に利用することにご注意ください。
 
-**Example 9** -- Right-click the  query. Search for jobs that contain the prefix 'prog' which would include business titles with the terms programming and programmer in it.
+**例 9** -- クエリを右クリックします。'prog' という接頭辞を含む仕事を検索します。プログラミングやプログラマーなどの用語が肩書きに含まれる仕事が検索されます。
 
-- [&queryType=full&$select=business_title&search=business_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26queryType=full%26$select=business_title%26search=business_title:prog*)
+- [&queryType=full&$select=business\_title&search=business\_title:prog*](http://fiddle.jshell.net/liamca/gkvfLe6s/1/?index=nycjobs&apikey=252044BE3886FE4A8E3BAA4F595114BB&query=api-version=2015-02-28-Preview%26queryType=full%26$select=business_title%26search=business_title:prog*)
 
-You cannot use a * or ? symbol as the first character of a search.
+検索の最初の文字として * または ? を使用することはできません。
 
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-Try specifying the Lucene Query Parser in your code. The following links explain how to set up search queries for both .NET and the REST API. The links use the default simple syntax so you will need to apply what you learned from this article to specify the **queryType**.
+自分のコードに Lucene Query Parser を指定してみてください。次のリンクでは、.NET と REST API の両方の検索クエリを設定する方法について説明しています。これらのリンクでは、既定の単純な構文を使用しています。**queryType** を指定するには、この記事で学習したことを応用する必要があります。
 
-- [Query your Azure Search Index using the .NET SDK](search-query-dotnet.md)
-- [Query your Azure Search Index using the REST API](search-query-rest-api.md)
+- [.NET SDK を使用した Azure Search インデックスの照会](search-query-dotnet.md)
+- [REST API を使用した Azure Search インデックスの照会](search-query-rest-api.md)
 
 
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

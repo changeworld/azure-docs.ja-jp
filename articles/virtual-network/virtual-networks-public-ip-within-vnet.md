@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="How to use public IP addresses in a virtual network"
-   description="Learn how to configure a virtual network to use public IP addresses"
+   pageTitle="仮想ネットワークでのパブリック IP アドレスの使用方法"
+   description="パブリック IP アドレスが使用されるように仮想ネットワークを構成する方法を学習します。"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,40 +15,36 @@
    ms.date="04/27/2016"
    ms.author="jdial" />
 
+# Virtual Network (VNet) でのパブリック IP アドレス空間
 
-# <a name="public-ip-address-space-in-a-virtual-network-(vnet)"></a>Public IP address space in a Virtual Network (VNet)
+仮想ネットワーク (VNet) には、パブリックとプライベート (RFC 1918 アドレス ブロック) の両方の IP アドレス空間を含めることができます。パブリック IP アドレス範囲を追加すると、VNet 内、相互接続された VNet 内、およびオンプレミスの場所からのみ通信可能なプライベート VNet IP アドレス空間の一部として扱われます。
 
-Virtual networks (VNets) can contain both public and private (RFC 1918 address blocks) IP address spaces. When you add a public IP address range, it will be treated as part of the private VNet IP address space that is only reachable within the VNet, interconnected VNets, and from your on-premises location.
+次の図は、パブリックおよびプライベート IP アドレス空間を含む VNet を示しています。
 
-The picture below shows a VNet that includes public and private IP adress spaces.
+![パブリック IP の概念](./media/virtual-networks-public-ip-within-vnet/IC775683.jpg)
 
-![Public IP Conceptual](./media/virtual-networks-public-ip-within-vnet/IC775683.jpg)
+## パブリック IP アドレス範囲をどうやって追加するのですか。
 
-## <a name="how-do-i-add-a-public-ip-address-range?"></a>How do I add a public IP address range?
+パブリック IP アドレス範囲を追加するには、プライベート IP アドレス範囲を追加する場合と同様に、*netcfg* ファイルを使用するか、[Azure ポータル](http://portal.azure.com)で構成を追加します。パブリック IP アドレス範囲は、VNet の作成時に追加することも、後で追加することもできます。次の例は、同じ VNet 内で構成されたパブリックとプライベートの両方の IP アドレス空間を示しています。
 
-You add a public IP address range the same way you would add a private IP address range; by either using a *netcfg* file, or by adding the configuration in the [Azure portal](http://portal.azure.com). You can add a public IP address range when you create your VNet, or you can go back and add it afterward. The example below shows both public and private IP address spaces configured in the same VNet.
+![ポータルでのパブリック IP アドレス](./media/virtual-networks-public-ip-within-vnet/IC775684.png)
 
-![Public IP Address in Portal](./media/virtual-networks-public-ip-within-vnet/IC775684.png)
+## 制限事項はありますか。
 
-## <a name="are-there-any-limitations?"></a>Are there any limitations?
+許可されていない、いくつかの IP アドレス範囲があります。
 
-There are a few IP address ranges that are not allowed:
+- 224\.0.0.0/4 (マルチキャスト)
 
-- 224.0.0.0/4 (Multicast)
+- 255\.255.255.255/32 (ブロードキャスト)
 
-- 255.255.255.255/32 (Broadcast)
+- 127\.0.0.0/8 (ループバック)
 
-- 127.0.0.0/8 (loopback)
+- 169\.254.0.0/16 (リンク ローカル)
 
-- 169.254.0.0/16 (link-local)
+- 168\.63.129.16/32 (内部 DNS)
 
-- 168.63.129.16/32 (Internal DNS)
+## 次のステップ
 
-## <a name="next-steps"></a>Next Steps
+[VNet で使用される DNS サーバーを管理する方法](virtual-networks-manage-dns-in-vnet.md)
 
-[How to manage DNS servers used by a VNet](virtual-networks-manage-dns-in-vnet.md)
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

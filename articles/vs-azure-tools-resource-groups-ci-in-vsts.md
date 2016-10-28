@@ -1,153 +1,152 @@
 <properties
-    pageTitle="Continuous integration in VS Team Services using Azure Resource Group projects | Microsoft Azure"
-    description="Describes how to set up continuous integration in Visual Studio Team Services by using Azure Resource Group deployment projects in Visual Studio."
-    services="visual-studio-online"
-    documentationCenter="na"
-    authors="mlearned"
-    manager="erickson-doug"
-    editor="" />
+	pageTitle="Azure リソース グループのプロジェクトを使用した VS Team Services での継続的インテグレーション | Microsoft Azure"
+	description="Visual Studio で Azure リソース グループのデプロイメント プロジェクトを使用して、Visual Studio Team Services での継続的インテグレーションを設定する方法を説明します。"
+	services="visual-studio-online"
+	documentationCenter="na"
+	authors="mlearned"
+	manager="erickson-doug"
+	editor="" />
 
  <tags
-    ms.service="azure-resource-manager"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="08/01/2016"
-    ms.author="mlearned" />
+	ms.service="azure-resource-manager"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="08/01/2016"
+	ms.author="mlearned" />
 
+# Azure リソース グループのデプロイメント プロジェクトを使用した Visual Studio Team Services での継続的インテグレーション
 
-# <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Continuous integration in Visual Studio Team Services using Azure Resource Group deployment projects
+Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) を通してタスクを実行する必要があります。Visual Studio Team Services (VS Team Services) でこれを行うには、2 つの方法があります。どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
 
-To deploy an Azure template, you need to perform tasks to go through the various stages: Build, Test, Copy to Azure (also called "Staging"), and Deploy Template.  There are two different ways to do this in Visual Studio Team Services (VS Team Services). Both methods provide the same results, so choose the one that best fits your workflow.
+-	Azure リソース グループ デプロイメント プロジェクト (Deploy-AzureResourceGroup.ps1) に含まれている PowerShell スクリプトを実行するビルド定義にシングル ステップを追加します。このスクリプトではアーティファクトをコピーして、テンプレートをデプロイします。
+-	それぞれが単一のタスクを実行する、複数の VS Team Services のビルド ステップを追加します。
 
--   Add a single step to your build definition that runs the PowerShell script that’s included in the Azure Resource Group deployment project (Deploy-AzureResourceGroup.ps1). The script copies artifacts and then deploys the template.
--   Add multiple VS Team Services build steps, each one performing a stage task.
+この記事では、最初のオプション (ビルド定義を使用して PowerShell スクリプトを実行する) の使用方法を示します。このオプションの利点は、Visual Studio で開発者が使用するスクリプトが、VS Team Services で使用されるスクリプトと同じであるということです。この手順では、Visual Studio デプロイメント プロジェクトが VS Team Services にチェックインしていることを前提としています。
 
-This article demonstrates how to use the first option (use a build definition to run the PowerShell script). One advantage of this option is that the script used by developers in Visual Studio is the same script that is used by VS Team Services. This procedure assumes you already have a Visual Studio deployment project checked into VS Team Services.
+## Azure へのアーティファクトのコピー 
 
-## <a name="copy-artifacts-to-azure"></a>Copy artifacts to Azure 
+シナリオに関係なく、テンプレート デプロイメントに必要なアーティファクトがある場合、このアーティファクトに Azure リソース マネージャーのアクセス権を付与する必要があります。これらのアーティファクトには、次のファイルを含めることができます。
 
-Regardless of the scenario, if you have any artifacts that are needed for template deployment, you will need to give Azure Resource Manager access to them. These artifacts can include files such as:
+-	入れ子になったテンプレート
+-	構成スクリプトと DSC スクリプト
+-	アプリケーションのバイナリ
 
--   Nested templates
--   Configuration scripts and DSC scripts
--   Application binaries
+### 入れ子になったテンプレートと構成スクリプト
+Visual Studio が提供する (または、Visual Studio のスニペットでビルドされた) テンプレートを使用すると、PowerShell スクリプトはアーティファクトをステージングするだけでなく、さまざまなデプロイメントのリソースに対する URI もパラメーター化します。次に、スクリプトはアーティファクトを Azure のセキュリティで保護されたコンテナーにコピーし、そのコンテナーの SaS トークンを作成して、テンプレート デプロイメントにその情報を渡します。入れ子になったテンプレートの詳細については、「[テンプレート デプロイメントの作成](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。
 
-### <a name="nested-templates-and-configuration-scripts"></a>Nested Templates and Configuration Scripts
-When you use the templates provided by Visual Studio (or built with Visual Studio snippets), the PowerShell script not only stages the artifacts, it also parameterizes the URI for the resources for different deployments. The script then copies the artifacts to a secure container in Azure, creates a SaS token for that container, and then passes that information on to the template deployment. See [Create a template deployment](https://msdn.microsoft.com/library/azure/dn790564.aspx) to learn more about nested templates.
+## VS Team Services での継続的なデプロイメントの設定
 
-## <a name="set-up-continuous-deployment-in-vs-team-services"></a>Set up continuous deployment in VS Team Services
+VS Team Services で PowerShell スクリプトを呼び出すには、ビルド定義を更新する必要があります。簡単に言うと、手順は次のとおりです。
 
-To call the PowerShell script in VS Team Services, you need to update your build definition. In brief, the steps are: 
+1.	ビルド定義を編集します。
+1.	VS Team Services で Azure 認証を設定します。
+1.	Azure リソース グループ デプロイメント プロジェクトで PowerShell スクリプトを参照する Azure PowerShell のビルド ステップを追加します。
+1.	*-ArtifactsStagingDirectory* パラメーターの値を設定し、VS Team Services に組み込まれているプロジェクトを操作します。
 
-1.  Edit the build definition.
-1.  Set up Azure authorization in VS Team Services.
-1.  Add an Azure PowerShell build step that references the PowerShell script in the Azure Resource Group deployment project.
-1.  Set the value of the *-ArtifactsStagingDirectory* parameter to work with a project built in VS Team Services.
+### 詳細なチュートリアル
 
-### <a name="detailed-walkthrough"></a>Detailed walkthrough
+次の手順では、VS Team Services で継続的なデプロイメントを構成するために必要な手順を説明します。
 
-The following steps will walk you through the steps necessary to configure continuous deployment in VS Team Services 
-
-1.  Edit your VS Team Services build definition and add an Azure PowerShell build step. Choose the build definition under the **Build definitions** category and then choose the **Edit** link.
+1.	VS Team Services のビルド定義を編集し、Azure PowerShell のビルド ステップを追加します。**[ビルド定義]** カテゴリでビルド定義を選択し、**[編集]** リンクを選択します。
 
     ![][0]
 
-1.  Add a new **Azure PowerShell** build step to the build definition and then choose the **Add build step…** button.
+1.	新しい **Azure PowerShell** のビルド ステップをビルド定義に追加して、**[ビルド ステップの追加...]** ボタンを選択します。
 
     ![][1]
 
-1.  Choose the **Deploy task** category, select the **Azure PowerShell** task, and then choose its **Add** button.
+1.	**[タスクのデプロイ]** カテゴリを選択し、**Azure PowerShell** タスクを選択して、**[追加]** ボタンをクリックします。
 
     ![][2]
 
-1.  Choose the **Azure PowerShell** build step and then fill in its values.
+1.	**Azure PowerShell** のビルド ステップを選択して、その値を入力します。
 
-    1.  If you already have an Azure service endpoint added to VS Team Services, choose the subscription in the **Azure Subscription** drop down list box and then skip to the next section. 
+    1.	既に Azure サービス エンドポイントが VS Team Services に追加されている場合、**[Azure Subscription]** ドロップダウン リスト ボックスでサブスクリプションを選択して、次のセクションにスキップします。
 
-        If you don’t have an Azure service endpoint in VS Team Services, you’ll need to add one. This subsection takes you through the process. If your Azure account uses a Microsoft account (such as Hotmail), you’ll need to take the following steps to get a Service Principal authentication.
+        VS Team Services に Azure サービス エンドポイントがない場合、1 つ追加する必要があります。この項では、プロセスを示します。Azure アカウントが Microsoft アカウント (Hotmail など) を使用する場合、サービス プリンシパルの認証を取得するために、次の手順を実行する必要があります。
 
-    1.  Choose the **Manage** link next to the **Azure Subscription** drop down list box.
+    1.	**[Azure サブスクリプション]** ドロップダウン リスト ボックスの横にある **[管理]** リンクを選択します。
 
         ![][3]
 
-    1. Choose **Azure** in the **New Service Endpoint** drop down list box.
+    1. **[新しいサービス エンドポイント]** ドロップダウン リスト ボックスで **[Azure]** を選択します。
 
         ![][4]
 
-    1.  In the **Add Azure Subscription** dialog box, select the **Service Principal** option.
+    1.	**[Azure サブスクリプションの追加]** ダイアログ ボックスで、**[サービス プリンシパル]** オプションを選択します。
 
         ![][5]
 
-    1.  Add your Azure subscription information to the **Add Azure Subscription** dialog box. You’ll need to provide the following items:
-        -   Subscription Id
-        -   Subscription Name
-        -   Service Principal Id
-        -   Service Principal Key
-        -   Tenant Id
+    1.	Azure サブスクリプション情報を **[Azure サブスクリプションの追加]** ダイアログ ボックスに追加します。次の項目を指定する必要があります。
+        -	サブスクリプション ID
+        -	サブスクリプション名
+        -	サービス プリンシパル ID
+        -	サービス プリンシパル キー
+        -	テナント ID
 
-    1.  Add a name of your choice to the **Subscription** name box. This value will appear later in the **Azure Subscription** drop down list in VS Team Services. 
+    1.	任意の名前を **[サブスクリプション名]** ボックスに追加します。この値は、後で VS Team Services の **[Azure サブスクリプション]** ドロップダウン リストに表示されます。
 
-    1.  If you don’t know your Azure subscription ID, you can use one of the following commands to get it.
+    1.	Azure サブスクリプション ID がわからない場合は、次のいずれかのコマンドを使用して取得することができます。
         
-        For PowerShell scripts, use:
+        PowerShell スクリプトでは、次を使用します。
 
         `Get-AzureRmSubscription`
 
-        For Azure CLI, use:
+        Azure CLI では、次を使用します。
 
         `azure account show`
     
 
-    1.  To get a Service Principal ID, Service Principal Key, and Tenant ID, follow the procedure in [Create Active Directory application and service principal using portal](resource-group-create-service-principal-portal.md) or [Authenticating a service principal with Azure Resource Manager](resource-group-authenticate-service-principal.md).
+    1.	サービス プリンシパル ID、サービス プリンシパル キー、およびテナント ID を取得するには、「[ポータルを使用して Active Directory アプリケーションとサービス プリンシパルを作成する](resource-group-create-service-principal-portal.md)」または「[Azure リソース マネージャーでのサービス プリンシパルの認証](resource-group-authenticate-service-principal.md)」の手順を行います。
 
-    1.  Add the Service Principal ID, Service Principal Key, and Tenant ID values to the **Add Azure Subscription** dialog box and then choose the **OK** button.
+    1.	サービス プリンシパル ID、サービス プリンシパル キー、およびテナント ID の値を **[Azure サブスクリプションの追加]** ダイアログ ボックスに追加し、**[OK]** ボタンをクリックします。
 
-        You now have a valid Service Principal to use to run the Azure PowerShell script.
+        これで、Azure PowerShell スクリプトを実行するために使用する有効なサービス プリンシパルがあります。
 
-1.  Edit the build definition and choose the **Azure PowerShell** build step. Select the subscription in the **Azure Subscription** drop down list box. (If the subscription doesn't appear, choose the **Refresh** button next the **Manage** link.) 
+1.	ビルド定後を編集して、**Azure PowerShell** のビルド ステップを選択します。**[Azure サブスクリプション**] ドロップダウン リスト ボックスでサブスクリプションを選択します。(サブスクリプションが表示されない場合、**[管理]** リンクの横にある **[更新]** ボタンをクリックします)。
 
     ![][8]
 
-1.  Provide a path to the Deploy-AzureResourceGroup.ps1 PowerShell script. To do this, choose the ellipsis (…) button next to the **Script Path** box, navigate to the Deploy-AzureResourceGroup.ps1 PowerShell script in the **Scripts** folder of your project, select it, and then choose the **OK** button. 
+1.	Deploy-AzureResourceGroup.ps1 のPowerShell スクリプトのパスを指定します。これを行うには、**[スクリプト パス]** ボックスの横にある省略記号 (...) ボタンを選択して、プロジェクトの **[スクリプト]** フォルダーの Deploy-AzureResourceGroup.ps1 PowerShell スクリプトに移動し、それを選択して、**[OK]** ボタンをクリックします。
 
     ![][9]
 
-1. After you select the script, update the path to the script so that it’s run from the Build.StagingDirectory (the same directory that *ArtifactsLocation* is set to). You can do this by adding “$(Build.StagingDirectory)/” to the beginning of the script path.
+1. スクリプトを選択した後、Build.StagingDirectory (*ArtifactsLocation* の設定と同じディレクトリ) から実行できるように、スクリプトのパスを更新します。“$(Build.StagingDirectory)/” をスクリプト パスの先頭に追加して、これを実行することができます。
 
     ![][10]
 
-1.  In the **Script Arguments** box, enter the following parameters (in a single line). When you run the script in Visual Studio, you can see how VS uses the parameters in the **Output** window. You can use this as a starting point for setting the parameter values in your build step.
+1.	**[スクリプトの引数]** ボックスに、次のパラメーター (1 行) を入力します。Visual Studio でスクリプトを実行すると、**[出力]** ウィンドウで　VS がパラメーターを使用する方法を確認することができます。ビルド ステップでパラメーター値を設定するための出発点として、この方法を使用できます。
 
-  	| Parameter | Description|
-  	|---|---|
-  	| -ResourceGroupLocation           | The geo-location value where the resource group is located, such as **eastus** or **'East US'**. (Add single quotes if there's a space in the name.) See [Azure Regions](https://azure.microsoft.com/en-us/regions/) for more information.|                                                                                                                                                                                                                              |
-  	| -ResourceGroupName               | The name of the resource group used for this deployment.|                                                                                                                                                                                                                                                                                                                                                                                                                |
-  	| -UploadArtifacts                 | This parameter, when present, specifies that artifacts need to be uploaded to Azure from the local system. You only need to set this switch if your template deployment requires extra artifacts that you want to stage using the PowerShell script (such as configuration scripts or nested templates).                                                                                                                                                                 |
-  	| -StorageAccountName              | The name of the storage account used to stage artifacts for this deployment. This parameter is required only if you’re copying artifacts to Azure. This storage account will not be automatically created by the deployment, it must already exist.|                                                                                                                                                                                                                     |
-  	| -StorageAccountResourceGroupName | The name of the resource group associated with the storage account. This parameter is required only if you’re copying artifacts to Azure.|                                                                                                                                                                                                                                                                                                                               |
-  	| -TemplateFile                    | The path to the template file in the Azure Resource Group deployment project. To enhance flexibility, use a path for this parameter that is relative to the location of the PowerShell script instead of an absolute path.|
-  	| -TemplateParametersFile          | The path to the parameters file in the Azure Resource Group deployment project. To enhance flexibility, use a path for this parameter that is relative to the location of the PowerShell script instead of an absolute path.|
-  	| -ArtifactStagingDirectory        | This parameter lets the PowerShell script know the folder from where the project’s binary files should be copied. This value overrides the default value used by the PowerShell script. For VS Team Services use, set the value to: -ArtifactStagingDirectory $(Build.StagingDirectory)                                                                                                                                                                                              |
+    | パラメーター | 説明|
+    |---|---|
+    | -ResourceGroupLocation | **eastus** や **'East US'** など、リソース グループが配置される geo ロケーションの値です。(名前にスペースが含まれる場合は、一重引用符を追加します)。 詳細については、「[Azure のリージョン](https://azure.microsoft.com/regions/)」を参照してください。| |
+    | -ResourceGroupName | このデプロイメントに使用するリソース グループの名前。| |
+    | -UploadArtifacts | このパラメーターは、存在する場合、アーティファクトがローカル システムから Azure にアップロードする必要があることを指定します。テンプレート デプロイメントに、PowerShell スクリプト (構成スクリプトや入れ子になったテンプレートなど) を使用してステージングする追加のアーティファクトが必要な場合にのみ、このスイッチを設定する必要があります。 |
+    | -StorageAccountName | このデプロイメントのアーティファクトをステージングするためのストレージ アカウントの名前。Azure にアーティファクトをコピーしている場合にのみ、このパラメーターが必要です。このストレージ アカウントはデプロイメントで自動的に作成されることはありません。既に存在している必要があります。| |
+    | -StorageAccountResourceGroupName | ストレージ アカウントに関連付けられているリソース グループの名前。Azure にアーティファクトをコピーしている場合にのみ、このパラメーターが必要です。| |
+    | -TemplateFile | Azure リソース グループのデプロイメント プロジェクト内のテンプレート ファイルへのパス。柔軟性を高めるには、絶対パスの代わりに、PowerShell スクリプトの場所に関連するこのパラメーターのパスを使用します。|
+    | -TemplateParametersFile | Azure リソース グループのデプロイメント プロジェクト内のパラメーター ファイルへのパス。柔軟性を高めるには、絶対パスの代わりに、PowerShell スクリプトの場所に関連するこのパラメーターのパスを使用します。|
+    | -ArtifactStagingDirectory | このパラメーターを使用すると、PowerShell スクリプトが、プロジェクトのバイナリ ファイルがコピーされる必要のあるフォルダーを認識することができます。この値は、PowerShell スクリプトが使用する既定値を上書きします。VS Team Services を使用する場合、次の値を設定します: -ArtifactStagingDirectory $(Build.StagingDirectory) |
 
-    Here’s a script arguments example (line broken for readability):
+    スクリプト引数の例を次に示します (読みやすくするために改行しています)。
 
-    ``` 
+    ```	
     -ResourceGroupName 'MyGroup' -ResourceGroupLocation 'eastus' -TemplateFile '..\templates\azuredeploy.json' 
     -TemplateParametersFile '..\templates\azuredeploy.parameters.json' -UploadArtifacts -StorageAccountName 'mystorageacct' 
-    –StorageAccountResourceGroupName 'Default-Storage-EastUS' -ArtifactStagingDirectory '$(Build.StagingDirectory)' 
+    –StorageAccountResourceGroupName 'Default-Storage-EastUS' -ArtifactStagingDirectory '$(Build.StagingDirectory)'	
     ```
 
-    When you’re finished, the **Script Arguments** box should resemble the following.
+    完了すると、**[スクリプトの引数]** ボックスは次のようになります。
 
     ![][11]
 
-1.  After you’ve added all the required items to the Azure PowerShell build step, choose the **Queue** build button to build the project. The **Build** screen shows the output from the PowerShell script.
+1.	Azure PowerShell のビルドのステップにすべての必須項目を追加したら、**[キュー]** ビルド ボタンを選択してプロジェクトをビルドします。**[ビルド]** 画面には、PowerShell スクリプトからの出力が表示されます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Read [Azure Resource Manager overview](resource-group-overview.md) to learn more about Azure Resource Manager and Azure resource groups.
+Azure リソース マネージャーと Azure リソース グループの詳細については、「[Azure リソース マネージャーの概要](resource-group-overview.md)」を参照してください。
 
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png
@@ -161,8 +160,4 @@ Read [Azure Resource Manager overview](resource-group-overview.md) to learn more
 [10]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough11b.png
 [11]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough12.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

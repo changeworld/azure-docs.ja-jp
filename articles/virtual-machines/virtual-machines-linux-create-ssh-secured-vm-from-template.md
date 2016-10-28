@@ -1,45 +1,27 @@
 <properties
-    pageTitle="Create a Linux VM using an Azure template | Microsoft Azure"
-    description="Create a Linux VM on Azure using an Azure Resource Manager template."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="vlivech"
-    manager="timlt"
-    editor=""
-    tags="azure-service-management,azure-resource-manager" />
+	pageTitle="Azure テンプレートを使用して Linux VM を作成する | Microsoft Azure"
+	description="Azure Resource Manager テンプレートを使用して、Linux VM を Azure に作成します。"
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="vlivech"
+	manager="timlt"
+	editor=""
+	tags="azure-service-management,azure-resource-manager" />
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/17/2016"
-    ms.author="v-livech"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="08/17/2016"
+	ms.author="v-livech"/>
 
+# Azure テンプレートを使用して Linux VM を作成する
 
-# <a name="create-a-linux-vm-using-an-azure-template"></a>Create a Linux VM using an Azure template
+この記事では、Azure テンプレートを使用してすばやく Linux 仮想マシンを Azure にデプロイする方法を紹介します。この記事では、Azure アカウント ([無料試用版の入手](https://azure.microsoft.com/pricing/free-trial/)) のほか、[Azure CLI](../xplat-cli-install.md) へのログイン (`azure login`) および Resource Manager モードの有効化 (`azure config mode arm`) が必要です。[Azure ポータル](virtual-machines-linux-quick-create-portal.md)または [Azure CLI](virtual-machines-linux-quick-create-cli.md) を使用して、すばやく Linux VM をデプロイすることもできます。
 
-This article shows how to quickly deploy a Linux Virtual Machine on Azure using an Azure Template.  The article requires an Azure account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/)] with the [Azure CLI](../xplat-cli-install.md) logged in (`azure login`) and in Resource Manager mode (`azure config mode arm`).  You can also quickly deploy a Linux VM using the [Azure portal](virtual-machines-linux-quick-create-portal.md) or the [Azure CLI](virtual-machines-linux-quick-create-cli.md).
-
-## <a name="quick-command-summary"></a>Quick Command Summary
-
-```bash
-azure group create \
--n quicksecuretemplate \
--l eastus \
---template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
-```
-
-## <a name="detailed-walkthrough"></a>Detailed Walkthrough
-
-Templates allow you to create VMs on Azure with settings that you want to customize during the launch, settings like usernames and hostnames. For this article, we are launching an Azure template utilizing an Ubuntu VM along with a network security group (NSG) with port 22 open for SSH.
-
-Azure Resource Manager templates are JSON files that can be used for simple one-off tasks like launching an Ubuntu VM as done in this article.  Azure Templates can also be used to construct complex Azure configurations of entire environments like a testing, dev, or production deployment stack.
-
-## <a name="create-the-linux-vm"></a>Create the Linux VM
-
-The following code example shows how to call `azure group create` to create a resource group and deploy an SSH-secured Linux VM at the same time using [this Azure Resource Manager template](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json). Remember that in your example you need to use names that are unique to your environment. This example uses `quicksecuretemplate` as the resource group name, `securelinux` as the VM name, and `quicksecurelinux` as a subdomain name.
+## クイック コマンドの概要
 
 ```bash
 azure group create \
@@ -48,7 +30,24 @@ azure group create \
 --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 ```
 
-Output
+## 詳細なチュートリアル
+
+テンプレートを使用すると、ユーザー名やホスト名など、起動時にカスタマイズされる設定で VM を Azure に作成できます。この記事では、Ubuntu VM とネットワーク セキュリティ グループ (NSG) を使用する Azure テンプレートを紹介します。このテンプレートでは、ポート 22 が SSH 用に開かれています。
+
+Azure Resource Manager テンプレートは、この記事で行う Ubuntu VM の起動のような、単純で 1 回限りのタスクに使用できる JSON ファイルです。Azure テンプレートは、テスト、開発、または運用デプロイ スタックのような、環境全体の複雑な Azure 構成の構築にも使用できます。
+
+## Linux VM の作成
+
+次のコードは、`azure group create` を呼び出してリソース グループを作成すると当時に、SSH で保護された Linux VM をデプロイする例です。[こちらの Azure Resource Manager テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json)を使用しています。この例で使われている各種の名前は、実際の環境に合わせて調整する必要があります。この例では、リソース グループ名として `quicksecuretemplate` を、VM 名として `securelinux` を、サブドメイン名として `quicksecurelinux` を使用しています。
+
+```bash
+azure group create \
+-n quicksecuretemplate \
+-l eastus \
+--template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
+```
+
+出力
 
 ```bash
 info:    Executing command group create
@@ -69,14 +68,10 @@ data:
 info:    group create command OK
 ```
 
-That example deployed a VM using the `--template-uri` parameter.  You can also download or create a template locally and pass the template using the `--template-file` parameter with a path to the template file as an argument. The Azure CLI prompts you for the parameters required by the template.
+この例では、`--template-uri` パラメーターを使用して VM をデプロイしています。また、テンプレートをローカルでダウンロードまたは作成し、`--template-file` パラメーターを使ってテンプレート ファイルへのパスを引数として指定して、そのテンプレートを渡すこともできます。テンプレートで必要となるパラメーターは、Azure CLI のプロンプトで入力します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Search the [templates gallery](https://azure.microsoft.com/documentation/templates/) to discover what app frameworks to deploy next.
+次にデプロイするアプリ フレームワークを見つけるには、[テンプレート ギャラリー](https://azure.microsoft.com/documentation/templates/)を検索します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

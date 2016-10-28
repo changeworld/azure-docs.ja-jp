@@ -1,8 +1,8 @@
 <properties
-    pageTitle="Using App-V apps with Azure RemoteApp| Microsoft Azure"
-    description="Learn how to use App-V apps in Azure RemoteApp."
+    pageTitle="Azure RemoteApp で App-V アプリを使用する | Microsoft Azure"
+    description="Azure RemoteApp で App-V アプリを使用する方法について説明します。"
     services="remoteapp"
-    documentationCenter=""
+	documentationCenter=""
     authors="ericorman"
     manager="mbaldwin" />
 
@@ -17,31 +17,26 @@
 
 
 
-
-# <a name="using-app-v-apps-in-azure-remoteapp"></a>Using App-V apps in Azure RemoteApp
+# Azure RemoteApp で App-V アプリを使用する
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-You can use App-V applications in a Azure RemoteApp hybrid collection, which requires domain join.
+ドメイン参加を必要とする Azure RemoteApp ハイブリッド コレクションで App-V アプリケーションを使用できます。
 
-Before you get started, make sure to install the App-V 5.1 client with the latest updates. You will need to create a [custom image](remoteapp-create-custom-image.md) that includes the App-V client.  
+開始前に、最新の更新プログラムで App-V 5.1 クライアントをインストールしてください。App-V クライアントを含む[カスタム イメージ](remoteapp-create-custom-image.md)を作成する必要があります。
 
-It’s easy to use your existing App-V infrastructure with Azure RemoteApp. Since a hybrid collection is deployed into an Azure VNET that has access to your domain controller and the VMs are domain joined, you can leverage your existing App-v infrastructure and deployment methods to easyily host App-V application in Azure RemoteApp. Here are some considerations that you should be aware of based on the type of App-V deployment you currently have:
+既存の App-V インフラストラクチャを Azure RemoteApp で簡単に利用できます。ハイブリッド コレクションはお使いのドメイン コントローラーにアクセスできる Azure VNET にデプロイされ、VM はドメインに参加するため、既存の App-V インフラストラクチャとデプロイメント手法を活用し、Azure RemoteApp に App-V アプリケーションを簡単にホストできます。現在の App-V デプロイメントに基づいて次のような項目を考慮する必要があります。
 
-| Configuration options |                       | Positive                                                               | Negative                                                                                              |
+| 構成オプション | | Positive | Negative |
 |-----------------------|-----------------------|------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
-| Delivery method       | Streaming (on-demand) | App is always the latest and fresh                                     | First time latency                                                                                    |
-|                       | Mounted               | Fastest; app is already present on the VM                              | Bloat - takes up image space (127 GB limit)                                                           |
-| App location storage  | Shared content        | App runs in memory of Azure RemoteApp instance                         | Eats memory and good connection to streaming (file) server where the app resides                      |
-|                       | Disk (Cached)         | Fast execution. App not dependent on availability of Content Source | Bloat - takes up image space (127 GB limit)                                                           |
-| Targeting             | User                  | Requires full standalone App-V infrastructure                          |                                                                                                       |
-|                       | Global (machine)      |  Pre-publish or target using Publishing server                         |  Need to update your Azure image if you want to update the app (huge). Takes up some space on image. |
+| 配信方法 | ストリーミング (オンデマンド) | アプリケーションが常に最新の状態である | 最初の待ち時間 |
+| | マウントされている | 最速。アプリは既に VM 上に存在する。 | 肥大化 - イメージ領域を占有する (127 GB 上限) |
+| アプリ場所ストレージ | 共有コンテンツ | アプリは Azure RemoteApp インスタンスのメモリ内で実行される | アプリが置かれているストリーミング (ファイル) サーバーのメモリを占有し、接続を低下させる |
+| | ディスク (キャッシュ済み) | 高速実行。アプリはコンテンツ リソースの可用性に依存しない | 肥大化 - イメージ領域を占有する (127 GB 上限) |
+| 対象設定 | User | 完全なスタンドアロンの App-V インフラストラクチャを必要とする | |
+| | グローバル (コンピューター) | パブリッシング サーバーを利用した事前公開または対象設定 | (大きな) アプリを更新する場合、Azure イメージを更新する必要があります。イメージの一部の領域を占有します。 |
 
- After you create your custom image and your hybrid collection, publish your application, assign users and enjoy your existing App-V applications hosted in Azure RemoteApp delivered to any device anywhere.
+ カスタム イメージとハイブリッド コレクションを作成したら、アプリケーションを公開し、ユーザーを割り当てれば、Azure RemoteApp にホストされている既存の App-V アプリケーションを、場所を問わず、あらゆるデバイスに配信できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

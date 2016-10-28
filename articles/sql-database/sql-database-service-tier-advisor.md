@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Pricing tier recommendations for Azure SQL Database" 
-   description="When changing pricing tiers in the Azure portal, pricing tier recommendations are provided that recommend the tier that is best suited for running an existing Azure SQL Database’s workload. Pricing tiers describe the service tier and performance level of a SQL database." 
+   pageTitle="Azure SQL Database の価格レベルの提案" 
+   description="Azure ポータルで価格レベルを変更するとき、価格レベルの提案により、既存の Azure SQL Database のワークロードを実行するのに最適なレベルが提案されます。価格レベルは、SQL Database のサービス レベルとパフォーマンス レベルを説明します。" 
    services="sql-database" 
    documentationCenter="" 
    authors="stevestein" 
@@ -16,77 +16,76 @@
    ms.date="08/08/2016"
    ms.author="sstein"/>
 
+# SQL Database の価格レベルの提案
 
-# <a name="sql-database-pricing-tier-recommendations"></a>SQL Database pricing tier recommendations
+ 価格レベルの提案では、既存の Azure SQL Database のワークロードを実行するのに最適なサービス レベルとパフォーマンス レベルを提案します。
 
- Pricing tier recommendations suggest the service tier and performance level that is best suited for running an existing Azure SQL database’s workload.
-
-> [AZURE.NOTE] Pricing tier recommendations are only available for Web and Business databases and elastic database pools -- and only available in the [Azure portal](https://portal.azure.com/).
+> [AZURE.NOTE] 価格レベルの提案は、Web データベース、ビジネス データベース、およびエラスティック データベース プールのみを対象として、[Azure ポータル](https://portal.azure.com/)でのみ利用できます。
 
 
-Get pricing tier recommendations during the following tasks:
+価格レベルの提案は、次のタスクの実行中に取得します。
 
-- [Change the service tier and performance level (pricing tier) of a SQL database](sql-database-scale-up.md)
-- [Upgrade Azure SQL server to V12](sql-database-upgrade-server-portal.md)
-- Browse to your V12 server. See [SQL Database pricing tier recommendations](sql-database-service-tier-advisor.md).
-- [Create an elastic database pool](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
-
+- [SQL Database のサービス階層とパフォーマンス レベル (価格レベル) を変更する](sql-database-scale-up.md)
+- [Azure SQL サーバーを V12 にアップグレードする](sql-database-upgrade-server-portal.md)
+- V12 サーバーに移動します。「[SQL Database の価格レベルの提案](sql-database-service-tier-advisor.md)」を参照してください。
+- [エラスティック データベース プールを作成します](sql-database-elastic-pool.md#elastic-database-pool-pricing-tier-recommendations)
 
 
 
 
-## <a name="overview"></a>Overview
 
-The SQL Database service analyzes current performance and feature requirements by assessing historical resource usage for a SQL database. In addition, the minimum acceptable service tier is determined based on the size of the database, and enabled [business continuity](sql-database-business-continuity.md) features. 
+## Overview
 
-This information is analyzed and the service tier and performance level that is best suited for running the database’s typical workload and maintaining it's current feature set is recommended.
+SQL Database サービスでは、SQL Database の過去のリソースの使用状況を評価して、現在のパフォーマンス要件と機能要件が分析されます。また、最小限許容可能なサービス階層については、データベースのサイズと有効になっている[ビジネス継続性](sql-database-business-continuity.md)に基づいて判断されます。
 
-- The service examines the previous 15 to 30 days of historical data (resource usage, database size, and database activity) and performs a comparison between the amount of resources consumed and the actual limitations of the currently available service tiers and performance levels.
-- Data is analyzed in 15 second intervals and each interval's resultset is categorized into the existing service tier and performance level that is best suited for handling that resultset's workload.
-- These 15 second samples are then aggregated into the larger 15-30 day analysis and the service tier and performance level that can optimally handle 95% of the historical workload is recommended.
+この情報を分析することにより、データベースの一般的なワークロードを実行し、現在の機能セットを維持するために最適なサービス階層とパフォーマンス レベルが提案されます。
 
-### <a name="recommendations"></a>Recommendations
+- 過去 15 ～ 30 日間の履歴データ (リソースの使用状況、データベース サイズ、データベース アクティビティ) が検査され、使用されたリソースの量と、現在利用可能なサービス階層とパフォーマンス レベルの実際の制限とが比較されます。
+- データは 15 秒間隔で分析されます。それぞれの間隔の結果セットは、その結果セットのワークロードを処理するために最適な既存のサービス階層とパフォーマンス レベルに分類されます。
+- これらの 15 秒間隔のサンプルはより大きな 15 ～ 30 日間隔の分析に集計され、履歴のワークロードの 95% を最適に処理できるサービス階層とパフォーマンス レベルが提案されます。
 
-Based on your database's usage, there are currently 2 categories of recommendations that can be encountered:
+### 推奨事項
+
+データベースの使用量に基づく提案は、現在次の 2 つのカテゴリに分類されます。
 
 
-| Recommendation | Description |
+| 推奨 | Description |
 | :--- | :--- |
-| Upgrade | Upgrade to a new tier. |
-| Unavailable | A database requires a minimum workload or approximately 35 days of activity. There is not enough data to provide a valid recommendation. |
+| アップグレード | 新しいレベルにアップグレードします。 |
+| 使用不可 | データベースは、最小のワークロードまたは約 35 日間のアクティビティを必要とします。有効な提案を行ううえで十分なデータがありません。 |
 
-## <a name="getting-pricing-tier-recommendations"></a>Getting pricing tier recommendations
+## 価格レベルの提案を受ける
 
-Get pricing tier recommendations by selecting an existing Web or Business database, click **All settings**, then click **Pricing tier (scale DTUs)**. (Pricing tier recommendations are also available when you [Upgrade Azure SQL server to V12](sql-database-upgrade-server-portal.md).)
+価格レベルの提案を受けるには、既存の Web または Business データベースを選択して、**[すべての設定]** をクリックし、**[価格レベル (DTU のスケール)]** をクリックします。(価格レベルの提案は、[SQL サーバーを V12 にアップグレードする](sql-database-upgrade-server-portal.md)ときにも利用できます)。
 
-1. Sign in to the [Azure portal](https://portal.azure.com/).
-2. Click **BROWSE** > **SQL databases**.
-4. In the **SQL databases** blade, click the database that you want to see a recommendation for:
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. **[参照]**、**[SQL データベース]** の順にクリックします。
+4. **[SQL データベース]** ブレードで、推奨情報を見るデータベースをクリックします。
 
-    ![Select database][1]
+    ![データベースの選択][1]
 
-5. On the database blade, select **All settings** then select **Pricing tier (scale DTUs)**.
-
-
-7. The **Recommended pricing tiers** open where you can click the suggested tier and then click the **Select** button to change to that tier.
-
-    ![Sign up for the preview][4]
-
-8. Optionally, click **View usage details** to open the **Pricing Tier Recommendation Details** blade where you can view the recommended tier for the database, a feature comparison between current and recommended tiers, and a graph of the  historical resource usage analysis.
-
-    ![Sign up for the preview][5]
+5. データベース ブレードで、**[すべての設定]** を選択し、**[価格レベル (DTU のスケール)]** を選択します。
 
 
+7. **[お勧めの価格レベル]** が開き、提案されたレベルをクリックして **[選択]** をクリックすると、そのレベルに変更できます。
 
-## <a name="summary"></a>Summary
+    ![プレビューのサインアップ][4]
 
-Pricing tier recommendations provide an automated experience for gathering telemetry data for each SQL database and recommending the best service tier/performance level combination based on a database's actual performance needs and feature requirements. On the Settings blade click **Pricing tier (scale DTUs)** to see pricing tier recommendations for any Web and Business databases.
+8. オプションで、**[使用状況の詳細の表示]** をクリックして **[お勧めの価格レベルの詳細]** ブレードを開きます。このブレードでは、データベースに対して提案されるレベル、現在のレベルと提案されたレベルでの機能の比較、過去のリソース利用状況の分析グラフを表示できます。
+
+    ![プレビューのサインアップ][5]
 
 
 
-## <a name="next-steps"></a>Next steps
+## まとめ
 
-Depending on the details of your specific database, performing an upgrade or downgrade usually does not happen instantaneously. The portal will provide notifications as the database transitions to it's new tier, or you can monitor the upgrade status by querying the [sys.dm_operation_status (Azure SQL Database)](https://msdn.microsoft.com/library/dn270022.aspx) view in the SQL Database Server's master database.
+価格レベルの提案では、自動的に各 SQL データベースの製品利用統計情報データが収集され、データベースの実際のパフォーマンス ニーズと機能要件に基づいてサービス階層とパフォーマンス レベルの最適な組み合わせが提案されます。[設定] ブレードで、**[価格レベル (DTU のスケール)]** をクリックして、Web および Business データベースの価格レベルの提案を確認します。
+
+
+
+## 次のステップ
+
+データベースの内容によっては、アップグレードまたはダウングレードをすぐに実行することはできません。ポータルでは、データベースが新しいレベルに移行されるときに通知が提供されます。また、SQL Database サーバーのマスター データベースで [sys.dm\_operation\_status (Azure SQL Database )](https://msdn.microsoft.com/library/dn270022.aspx) ビューを照会することにより、アップグレードを監視できます。
 
 
 <!--Image references-->
@@ -97,8 +96,4 @@ Depending on the details of your specific database, performing an upgrade or dow
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

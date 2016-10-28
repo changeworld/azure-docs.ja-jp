@@ -1,52 +1,51 @@
 <properties 
-    pageTitle="App Service Environment | Microsoft Azure" 
-    description="What is an Azure App Service Environment? An introduction to App Service Environment." 
-    keywords="azure app service environment, virtual network, secure networking"
-    services="app-service" 
-    documentationCenter="" 
-    authors="stefsch" 
-    manager="wpickett" 
-    editor=""/>
+	pageTitle="App Service 環境 | Microsoft Azure" 
+	description="Azure App Service Environment とは App Service Environment の概要" 
+	keywords="azure app service environment, 仮想ネットワーク, ネットワークの保護"
+	services="app-service" 
+	documentationCenter="" 
+	authors="yochay" 
+	manager="wpickett" 
+	editor=""/>
 
 <tags 
-    ms.service="app-service" 
-    ms.workload="na" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/04/2016" 
-    ms.author="stefsch"/>
+	ms.service="app-service" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/15/2016" 
+	ms.author="stefsch"/>
 
+# App Service 環境のドキュメント
 
-# <a name="app-service-environment-documentation"></a>App Service Environment Documentation
+App Service 環境は、Azure App Service アプリを高スケールで安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium][PremiumTier] サービス プラン オプションです。App Service 環境には、[Web Apps][WebApps]、[Mobile Apps][MobileApps]、[API Apps][APIApps] が含まれています。
 
-An App Service Environment is a [Premium][PremiumTier] service plan option of Azure App Service that provides a fully isolated and dedicated environment for securely running Azure App Service apps at high scale, including [Web Apps][WebApps], [Mobile Apps][MobileApps], and [API Apps][APIApps].  
+App Service 環境は、以下を必要とするアプリケーション ワークロードに最適です。
 
-App Service Environments are ideal for application workloads requiring:
+- 高スケール
+- 分離およびセキュリティで保護されたネットワーク アクセス
 
-- Very high scale
-- Isolation and secure network access
+顧客は、複数の App Service 環境を 1 つの Azure リージョン内に作成することも、複数の Azure リージョンにわたって作成することもできます。そのため、App Service 環境は、高 RPS のワークロードをサポートするステートレス アプリケーション層の水平方向のスケーリングに最適です。
 
-Customers can create multiple App Service Environments within a single Azure region, as well as across multiple Azure regions.  This makes App Service Environments ideal for horizontally scaling state-less application tiers in support of high RPS workloads.
+App Service 環境は、単一の顧客のアプリケーションだけを実行するために分離され、常に仮想ネットワークにデプロイされます。顧客は、[ネットワーク セキュリティ グループ][NetworkSecurityGroups]を使用することで、受信と送信の両方のアプリケーション ネットワーク トラフィックをきめ細かく制御することができます。また、アプリケーションは仮想ネットワークを介した、オンプレミスの企業リソースへのセキュリティで保護された高速な接続を確立することができます。
 
-App Service Environments are isolated to running only a single customer's applications, and are always deployed into a virtual network.  Customers have fine-grained control over both inbound and outbound application network traffic using [network security groups][NetworkSecurityGroups].  Applications can also establish high-speed secure connections over virtual networks to on-premises corporate resources.
+アプリは、内部データベースや Web サービスなどの企業リソースに頻繁にアクセスする必要があります。App Service Environment で動作するアプリは、[サイト間][SiteToSite] VPN 接続や [Azure ExpressRoute][ExpressRoute] 接続を介してリソースにアクセスすることができます。
 
-Apps frequently need to access corporate resources such as internal databases and web services.  Apps running on App Service Environments can access resources reachable via [Site-to-Site][SiteToSite] VPN and [Azure ExpressRoute][ExpressRoute] connections.
+* [App Service 環境とは](../app-service-web/app-service-app-service-environment-intro.md)
+* [App Service 環境の作成](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
+* [App Service 環境でのアプリの作成](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
+* [App Service Environment での内部ロード バランサーの作成と使用](../app-service-web/app-service-environment-with-internal-load-balancer.md)
+* [App Service 環境の構成](../app-service-web/app-service-web-configure-an-app-service-environment.md)
+* [App Service 環境でのアプリのスケーリング](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
+* [ネットワークのセキュリティとアーキテクチャ](../app-service-web/app-service-app-service-environment-network-architecture-overview.md)
 
-* [What is an App Service Environment?](../app-service-web/app-service-app-service-environment-intro.md)
-* [Creating an App Service Environment](../app-service-web/app-service-web-how-to-create-an-app-service-environment.md)
-* [Creating Apps in an App Service Environment](../app-service-web/app-service-web-how-to-create-a-web-app-in-an-ase.md)
-* [Creating and Using an Internal Load Balancer with App Service Environments](../app-service-web/app-service-environment-with-internal-load-balancer.md)
-* [Configuring an App Service Environment](../app-service-web/app-service-web-configure-an-app-service-environment.md) 
-* [Scaling Apps in an App Service Environment](../app-service-web/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
-* [Network Security and Architecture](../app-service-web/app-service-app-service-environment-network-architecture-overview.md)
-
-## <a name="how-to's"></a>How To's
+## 方法
 
 [AZURE.INCLUDE [app-service-blueprint-app-service-environment](../../includes/app-service-blueprint-app-service-environment.md)]
 
 
-## <a name="videos"></a>Videos
+## ビデオ
 [AZURE.VIDEO azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps]
 
 [AZURE.VIDEO microsoft-ignite-2015-running-enterprise-web-and-mobile-apps-on-azure-app-service]
@@ -61,8 +60,4 @@ Apps frequently need to access corporate resources such as internal databases an
 [SiteToSite]: https://azure.microsoft.com/documentation/articles/vpn-gateway-site-to-site-create/
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

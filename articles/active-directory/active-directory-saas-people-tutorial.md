@@ -1,275 +1,272 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with People | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and People."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と People の統合 | Microsoft Azure"
+	description="Azure Active Directory と People の間でシングル サインオンを構成する方法について確認します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/29/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/11/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と People の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-people"></a>Tutorial: Azure Active Directory integration with People
+このチュートリアルの目的は、People と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
-The objective of this tutorial is to show you how to integrate People with Azure Active Directory (Azure AD).
+People と Azure AD の統合には、次の利点があります。
 
-Integrating People with Azure AD provides you with the following benefits:
+- People にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に People にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to People
-- You can enable your users to automatically get signed-on to People (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+People と Azure AD の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with People, you need the following items:
-
-- An Azure subscription
-- A People single-sign on enabled subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Azure サブスクリプション
+- People でのシングル サインオンが有効なサブスクリプション
 
 
-To test the steps in this tutorial, you should follow these recommendations:
-
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-1. Adding People from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-people-from-the-gallery"></a>Adding People from the gallery
-To configure the integration of People into Azure AD, you need to add People from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-**To add People from the gallery, perform the following steps:**
+1. ギャラリーからの People の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+
+## ギャラリーからの People の追加
+Azure AD への People の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に People を追加する必要があります。
+
+**ギャラリーから People を追加するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
  
-    ![Active Directory][1]
+	![Active Directory][1]
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications][2]
+	![アプリケーション][2]
 
-4. Click **Add** at the bottom of the page.
+4. ページの下部にある **[追加]** をクリックします。
 
-    ![Applications][3]
+	![アプリケーション][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Applications][4]
+	![アプリケーション][4]
 
-6. In the search box, type **People**.
+6. 検索ボックスに、「**People**」と入力します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/tutorial_people_01.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/tutorial_people_01.png)
 
-7. In the results pane, select **People**, and then click **Complete** to add the application.
+7. 結果ウィンドウで **[People]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/tutorial_people_02.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/tutorial_people_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with People based on a test user called "Britta Simon".
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、People で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-To configure and test Azure AD single sign-on with People, you need to complete the following building blocks:
+People で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a People test user](#creating-a-people-test-user)** - to have a counterpart of Britta Simon in People that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[People のテスト ユーザーの作成](#creating-a-people-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを People で作成します。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your People application.
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、People アプリケーションでシングル サインオンを構成することです。
 
 
 
-**To configure Azure AD single sign-on with People, perform the following steps:**
+**People で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. In the Azure classic portal, on the **People** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Azure クラシック ポータルの **People** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    [Configure Single Sign-On][6] 
+	[Configure Single Sign-On][6]
 
-2. On the **How would you like users to sign on to People** page, select **Azure AD Single Sign-On**, and then click **Next**.
+2. **[ユーザーの People へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_03.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_03.png)
 
-3. On the **Configure App Settings** dialog page, perform the following steps and then click **Next**:
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_04.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_04.png)
 
-    a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your People application using the following pattern: **“https://\<company name\>.peoplehr.com/”**. 
+    a.**[サインオン URL]** ボックスに、**“https://<企業名>.peoplehr.com/”** という形式で、ユーザーが People アプリケーションへのサインオンに使用する URL を入力します。
 
-    b. If you don't know your tenant URL, contact the People support team via [customerservices@peoplehr.com](mailto:customerservices@peoplehr.com) to get it.  
+    b.テナントの URL がわからない場合、[customerservices@peoplehr.com](mailto:customerservices@peoplehr.com) から People のサポート チームに問い合わせて取得します。
 
-    c. In the **Identifier** textbox, type the tenant URL. 
+	c.**[識別子]** ボックスに、テナントの URL を入力します。
 
-    d. In the **Reply URL** textbox, type the URL in the following pattern: "**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**".
+    d.**[応答 URL]** ボックスに、"**https://itgs.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx**" の形式で URL を入力します。
 
-    e. Click **Next**
-
-
-4. On the **Configure single sign-on at People** page, perform the following steps and then click **Next**:
-
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_05.png) 
-
-    a. Click **Download metadata**, and then save the file on your computer.
-
-    b. Click **Next**.
+	e.**[次へ]** をクリックします。
 
 
-5. To get SSO configured for your application, you need to sign-on to your People tenant as an administrator.
+4. **[People シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
+
+	![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_05.png)
+
+    a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
+
+    b.**[次へ]** をクリックします。
+
+
+5. アプリケーションに合わせて SSO を構成するには、管理者として People テナントにサインオンする必要があります。
+	
+	a.左側にあるメニューで、**[設定]** をクリックします。
     
-    a. In the menu on the left side, click **Settings**.
+	![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_001.png)
+
+	b.**[会社]** をクリックします。
     
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_001.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_002.png)
 
-    b. Click **“Company”**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_002.png) 
+	c.**[シングル サインオン SAML メタデータ ファイルのアップロード]** で **[参照]** をクリックし、ダウンロードしたメタデータ ファイルをアップロードします。
 
-    c. On the **“Upload 'Single Sign On' SAML meta-data file”**, click **Browse** to upload the downloaded metadata file.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_003.png)
+	![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_003.png)
 
 
 
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
  
-    ![Azure AD Single Sign-On][10]
+	![Azure AD Single Sign-On][10]
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-    ![Azure AD Single Sign-On][11]
-
-
+	![Azure AD Single Sign-On][11]
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
-In the Users list, select **Britta Simon**.
-
-![Create Azure AD User][20]
 
 
-**To create a People test user in Azure AD, perform the following steps:**
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。ユーザーの一覧で **[Britta Simon]** を選択します。
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+![Azure AD ユーザーの作成][20]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+**Azure AD で People テスト ユーザーを作成するには、次の手順に従います。**
 
-3. To display the list of users, in the menu on the top, click **Users**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_09.png)
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
  
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/create_aaduser_03.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_03.png)
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
  
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/create_aaduser_05.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps:
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
 
-    e. Click **Next**.
+    e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_07.png)
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-people-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_08.png)
 
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
-
-
-
-### <a name="creating-a-people-test-user"></a>Creating a People test user
-
-The objective of this section is to create a user called Britta Simon in People. People does not support just-in-time provisioning so you need contact the People support team to create an user manually.
+    b.**[完了]** をクリックします。
 
 
 
+### People テスト ユーザーの作成
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to People.
-
-![Assign User][200] 
-
-**To assign Britta Simon to People, perform the following steps:**
-
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Assign User][201] 
-
-2. In the applications list, select **People**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_50.png) 
-
-1. In the menu on the top, click **Users**.
-
-    ![Assign User][203] 
-
-1. In the Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-
-    ![Assign User][205]
+このセクションの目的は、People で Britta Simon というユーザーを作成することです。People ではジャストインタイム プロビジョニングがサポートされていないため、手動でユーザーを作成する場合、People のサポート チームにお問い合わせください。
 
 
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
-When you click the People tile in the Access Panel, you should get automatically signed-on to your People application.
+### Azure AD テスト ユーザーの割り当て
+
+このセクションの目的は、Britta Simon に People へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+
+![ユーザーの割り当て][200]
+
+**People に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![ユーザーの割り当て][201]
+
+2. アプリケーションの一覧で **[People]** を選択します。
+
+	![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_50.png)
+
+1. 上部のメニューで **[ユーザー]** をクリックします。
+
+	![ユーザーの割り当て][203]
+
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
+
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+	![ユーザーの割り当て][205]
 
 
-## <a name="additional-resources"></a>Additional Resources
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [People] タイルをクリックすると、自動的に People アプリケーションにサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -290,8 +287,4 @@ When you click the People tile in the Access Panel, you should get automatically
 [204]: ./media/active-directory-saas-people-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-people-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

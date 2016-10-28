@@ -1,6 +1,6 @@
 <properties
    pageTitle="Microsoft Security Response Center | Microsoft Azure"
-   description="The article provides a curated list of Microsoft Security Response Center (MSRC) resources that can be used to obtain more information about MSRC practices and recommendations."
+   description="この記事では、MSRC のプラクティスと推奨事項に関する詳細を入手するために使用できる、Microsoft Security Response Center (MSRC) のリソースを精選した一覧を提供します。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -13,36 +13,31 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/18/2016"
+   ms.date="08/02/2016"
    ms.author="yurid"/>
 
+# Microsoft Security Response Center
 
-# <a name="microsoft-security-response-center"></a>Microsoft Security Response Center
+Microsoft Security Response Center (MSRC) は、世界中で最も経験のあるセキュリティの専門家で指揮を執っています。これらの専門家は、年中 24 時間体制で、セキュリティ インシデントおよびオンプレミスとクラウドの脆弱性を識別、監視、対応、および解決しています。
 
-The Microsoft Security Response Center (MSRC) is led by some of the world’s most experienced security experts. These experts identify, monitor, respond to and resolve security incidents and on-premises and cloud vulnerabilities around the clock, each day of the year.
+MSRC がバックグラウンドで実行する継続的な作業に加え、お客様がより効果的に Azure の資産とデプロイをセキュリティ保護する方法を理解できるように、MSRC チームは利用可能な多くのリソースを用意しています。
 
-In addition to the continuous work the MSRC does in the background, the MSRC team has a number of resources available to you so that you can understand how to secure your Azure assets and deployments more effectively.
+## MSRC のブログ
 
-## <a name="the-msrc-blog"></a>The MSRC Blog
-
-The [MSRC blog](https://blogs.technet.microsoft.com/msrc/) is the place to go to get the latest news on what the MSRC is doing to help protect you against cloud threats.
+[MSRC のブログ](https://blogs.technet.microsoft.com/msrc/)は、クラウドの脅威からお客様を保護するために、MSRC が行っている内容の最新ニュースを取得できる場所です。
  
-## <a name="white-papers"></a>White Papers
+## ホワイト ペーパー
 
-The MSRC has published a number of [white papers](https://technet.microsoft.com/library/bb969102.aspx) that will help you understand what they do and how they do it. Some provide insights into how we secure the Microsoft cloud and include useful information on how you can employ the same security configurations.
+MSRC は、MSRC が行っている内容やその方法を理解するために役立つ、多くの[ホワイト ペーパー](https://technet.microsoft.com/library/bb969102.aspx)を公開しています。そこでは、Microsoft のクラウドをセキュリティで保護する方法に対する洞察を提供し、同じセキュリティ構成を使用する方法に関する有益な情報が含まれています。
  
-## <a name="security-researcher-engagement-and-bounty-programs"></a>Security Researcher Engagement and Bounty Programs
+## セキュリティ研究員の取り組みとバウンティ プログラム
 
-The MSRC supports collaboration and relationships with security researchers globally to advance Microsoft product security.
+MSRC では、Microsoft 製品のセキュリティを高めるために、世界中のセキュリティ研究員とのコラボレーションおよび関係をサポートします。
 
-Microsoft bounty programs pay researchers for novel exploitation techniques, defensive ideas that mitigate novel exploitations, and identification of critical vulnerabilities in Microsoft on-premises and cloud software.
+Microsoft バウンティ プログラムでは、新しい攻撃手法や新しい攻撃を軽減する防御のアイデアを入手したり、Microsoft のオンプレミスとクラウドのソフトウェアの重大な脆弱性を特定したりするために、研究員に費用を支払っています。
  
-Learn more about these programs at the [MSRC Bug Bounty](https://technet.microsoft.com/security/dn425036) page and the [MSRC blog](https://blogs.technet.microsoft.com/msrc/).
+これらのプログラムの詳細については、「[MSRC Bug Bounty](https://technet.microsoft.com/security/dn425036)」ページと「[MSRC のブログ](https://blogs.technet.microsoft.com/msrc/)」をご覧ください。
 
-To learn more about the MSRC, please visit the [MSRC home page](https://technet.microsoft.com/library/dn440717.aspx).
+MSRC の詳細については、「[MSRC ホーム ページ](https://technet.microsoft.com/library/dn440717.aspx)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

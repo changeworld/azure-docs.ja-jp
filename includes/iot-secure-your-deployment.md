@@ -1,134 +1,131 @@
-# <a name="securing-your-iot-deployment"></a>Securing your IoT deployment
+# IoT デプロイのセキュリティ保護
 
-This article provides the next level of detail for securing the Azure IoT-based Internet of Things (IoT) infrastructure. It links to implementation level details for configuring and deploying each component. It also provides comparisons and choices between various competing methods.
+この記事では、Azure の IoT インフラストラクチャを保護する詳細事項の次のレベルを説明します。各コンポーネントを設定し、デプロイする実装レベルの詳細へリンクします。また、さまざまな方法の比較や選択肢についても説明しています。
 
-Securing the Azure IoT deployment can be divided into the following three security areas:
+Azure IoT デプロイの保護は、次の 3 つのセキュリティ領域に分類できます。
 
-- **Device Security**: Securing the IoT device while it is deployed in the wild.
-- **Connection Security**: Ensuring all data transmitted between the IoT device and IoT Hub is confidential and tamper-proof.
-- **Cloud Security**: Providing a means to secure data while it moves through, and is stored in the cloud.
+- **デバイスのセキュリティ**: デプロイされている間に、IoT デバイスをセキュリティ保護。
+- **接続のセキュリティ**: IoT デバイスと IoT Hub の間で送信されるすべてのデータの保護、改ざん防止。
+- **クラウド セキュリティ**: クラウド経由、またクラウド格納によりデータを保護する手段の提供。
 
-![Three security areas][img-overview]
+![次の 3 つのセキュリティ領域][img-overview]
 
-## <a name="secure-device-provisioning-and-authentication"></a>Secure device provisioning and authentication
+## 安全なデバイス プロビジョニングと認証
 
-The Azure IoT Suite secures IoT devices by the following two methods:
+Azure IoT Suite では、次の 2 つの方法で IoT デバイスをセキュリティ保護します。
 
-- By providing a unique identity key (security tokens) for each device, which can be used by the device to communicate with the IoT Hub.
+- デバイスで IoT Hub と通信するために使用される各デバイスの一意の id キー (セキュリティ トークン) の提供。
 
-- By using an on-device [X.509 certificate][lnk-x509] and private key as a means to authenticate the device to the IoT Hub. This authentication method ensures that the private key on the device is not known outside the device at any time, providing a higher level of security.
+- IoT Hub にデバイスを認証させる手段として、デバイスでの [X.509 証明書][lnk-x509] と秘密キーの使用。この認証メソッドでは、デバイスの秘密キーがデバイス以外では分からなくなるため、常に高レベルのセキュリティ保護を提供できます。
 
-The security token method provides authentication for each call made by the device to IoT Hub by associating the symmetric key to each call. X.509-based authentication allows authentication of an IoT device at the physical layer as part of the TLS connection establishment. The security-token-based method can be used without the X.509 authentication which is a less secure pattern. The choice between the two methods is primarily dictated by how secure the device authentication needs to be, and availability of secure storage on the device (to store the private key securely).
+セキュリティ トークンの方法では、各呼び出しに対称キーを関連付けることによって、IoT Hub にデバイスで実行する各呼び出しの認証を提供します。X.509 ベースの認証は、TLS 接続の確立の一部として物理層に IoT デバイスの認証を許可します。安全性が低いパターンである X.509 認証を行わず、セキュリティ トークン ベースのメソッドを使用できます。2 つの方法の選択は主に、いかに安全なデバイス認証が必要であるか、また (秘密キーを安全に格納して) デバイスにセキュリティで保護された記憶域の可用性によって決まります。
 
-## <a name="iot-hub-security-tokens"></a>IoT Hub security tokens
+## IoT Hub のセキュリティ トークン
 
-IoT Hub uses security tokens to authenticate devices and services to avoid sending keys on the network. Additionally, security tokens are limited in time validity and scope. Azure IoT Hub SDKs automatically generate tokens without requiring any special configuration. Some scenarios, however, require the user to generate and use security tokens directly. These include the direct use of the AMQP, MQTT, or HTTP surfaces, or the implementation of the token service pattern.
+IoT Hub では、デバイスとサービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。さらに、セキュリティ トークンには、有効期間とスコープの制限があります。Azure IoT Hub SDK を使用すると、自動的にトークンを生成できます。その際、特別な構成は必要ありません。ただし、一部のシナリオでは、ユーザーがセキュリティ トークンを直接生成して使用する必要があります。これには、AMQP、MQTT、HTTP サーフェスの直接的な使用や、トークン サービス パターンの実装が含まれます。
 
-More details on the structure of the security token and its usage can be found in the following articles:
+セキュリティ トークンとその使用状況の構造の詳細については、次の記事で説明します。
 
--   [Security token structure][lnk-security-tokens]
--   [Using SAS tokens as a device][lnk-sas-tokens]
+-   [セキュリティ トークンの構造][lnk-security-tokens]
+-   [デバイスとして SAS トークンを使用する][lnk-sas-tokens]
 
-Each IoT Hub has a [Device Identity Registry][lnk-identity-registry] that can be used to create per-device resources in the service, such as a queue that contains in-flight cloud-to-device messages, and to allow access to the device-facing endpoints. The IoT Hub identity registry provides secure storage of device identities and security keys for a solution. Individual or groups of device identities can be added to an allow list, or a block list, enabling complete control over device access. The following articles provide more details on the structure of the Device Identity Registry and supported operations.
+各 IoT Hub には、転送中の C2D メッセージを含むキューなど、サービスでデバイスごとのリソースを作成するのに使用し、デバイス向けのエンドポイントにアクセスできる [デバイス ID レジストリ][lnk-identity-registry] があります。IoT Hub ID レジストリでは、ソリューションのデバイス ID とセキュリティ キーのセキュリティで保護されたストレージが提供されます。デバイス ID は個別に、またはまとめて許可リストあるいはブロック リストに追加できるため、デバイスへのアクセスを完全に制御できます。次の記事では、デバイス ID レジストリの構造について詳しく説明し、操作がサポートします。
 
-[IoT Hub supports protocols such as AMQP, MQTT, and HTTPS][lnk-protocols]. Each of these protocols use security tokens from the IoT device to IoT Hub differently:
+[IoT Hub は、AMQP、MQTT、および HTTPS などのプロトコルをサポートします][lnk-protocols]。各プロトコルは、IoT デバイスから IoT Hub まで異なる方法でセキュリティ トークンを使用します。
 
-- AMQP: SASL PLAIN and AMQP Claims-based security ({policyName}@sas.root.{iothubName} in the case of Hub-level tokens; {deviceId} in case of device-scoped tokens).
+- AMQP: SASL PLAIN および AMQP クレーム ベースのセキュリティ (ハブ レベルのトークンの場合、{policyName}@sas.root.{iothubName}。デバイス スコープのトークンの場合、 {deviceid} )。
 
-- MQTT: CONNECT packet uses {deviceId} as the {ClientId}, {IoThubhostname}/{deviceId} in the **Username** field and a SAS token in the **Password** field.
+- MQTT: CONNECT パケットは、**[ユーザー名]** フィールドで {ClientId}, {IoThubhostname}/{deviceid} として {deviceid} を、**[パスワード]** フィールドで SAS トークンを使用します。
 
-- HTTP: Valid token is in the authorization request header.
+- HTTP: 有効なトークンは、承認要求ヘッダーにあります。
 
-IoT Hub Device Identity Registry can be used to configure per-device security credentials and access control. However, if an IoT solution already has a significant investment in a [custom device identity registry and/or authentication scheme][lnk-custom-auth], it can be integrated into an existing infrastructure with IoT Hub by creating a token service.
+IoT Hub のデバイス ID レジストリを使用して、デバイスごとのセキュリティ資格情報とアクセス制御を構成できます。ただし、IoT ソリューションで既に [カスタム デバイス ID レジストリや認証スキーム][lnk-custom-auth] にかなり投資している場合、トークン サービスを作成すると、この既存のインフラストラクチャに IoT Hub を統合できます。
 
-### <a name="x.509-certificate-based-device-authentication"></a>X.509 certificate-based device authentication
+### X.509 証明書ベースのデバイスの認証
 
-The use of a [device-based X.509 certificate][lnk-use-x509] and its associated private and public key pair allows additional authentication at the physical layer. The private key is stored securely in the device and is not discoverable outside the device. The X.509 certificate contains information about the device, such as device ID, and other organizational details. A signature of the certificate is generated by using the private key.
+[デバイス ベースのX.509 証明書][lnk-use-x509] とその関連付けられた秘密キーおよびパブリック キーの組み合わせを使用することにより、物理層で追加の認証ができます。秘密キーは、デバイスに安全に格納され、デバイスの外側では検出されません。X.509 証明書には、デバイス ID など、デバイスとその他の組織の詳細に関する情報が含まれています。証明書の署名は、秘密キーを使用して生成されます。
 
-High-level device provisioning flow:
+高度なデバイスのプロビジョニング フロー:
 
-- Associate an identifier to a physical device – device identity and/or X.509 certificate associated to the device during device manufacturing or commissioning.
+- デバイスの製造または有効化中に、デバイスに関連付けられた物理デバイス - デバイス ID や X.509 証明書に対する識別子を結び付けます。
 
-- Create a corresponding identity entry in IoT Hub – device identity and associated device information in the IoT Hub Device Registry.
+- IoT Hub – デバイスの ID や IoT Hub デバイス レジストリの関連するデバイス情報に対応する ID のエントリを作成します。
 
-- Securely store X.509 certificate thumbprint in IoT Hub device registry.
+- IoT Hub デバイス レジストリの X.509 証明書の拇印を安全に格納します。
 
-### <a name="root-certificate-on-device"></a>Root certificate on device
+### デバイス上のルート証明書
 
-While establishing a secure TLS connection with IoT Hub, the IoT device authenticates IoT Hub using a root certificate which is part of the device SDK. For the C client SDK the certificate is located under the folder "\\c\\certs" under the root of the repo. Though these root certificates are long-lived, they still may expire or be revoked. If there is no way of updating the certificate on the device, the device may not be able to subsequently connect to the IoT Hub (or any other cloud service). Having a means to update the root certificate once the IoT device is deployed will effectively mitigate this risk.
+IoT Hub でセキュリティで保護された TLS 接続を確立している間は、IoT デバイスは、デバイスの SDK の一部であるルート証明書を使用して IoT Hub を認証します。C クライアントの SDKでは、証明書はリポジトリのルートの下の、"\\c\\certs"フォルダーの下にあります。これらのルート証明書の有効期間が長期間であるとしても、それが切れるまたは取り消される可能性があります。デバイスで証明書を更新できない場合、デバイスは IoT Hub (またはその他のクラウド サービス) に、後で接続することできません。IoT デバイスをデプロイした後に、ルート証明書を更新するための手段を持つと、このようなリスクを効果的に軽減します。
 
-## <a name="securing-the-connection"></a>Securing the connection
+## 接続のセキュリティ保護
 
-Internet connection between the IoT device and IoT Hub is secured using the Transport Layer Security (TLS) standard. Azure IoT supports [TLS 1.2][lnk-tls12], TLS 1.1 and TLS 1.0, in this order. Support for TLS 1.0 is provided for backward compatibility only. It is recommended to use TLS 1.2 since it provides the most security.
+IoT デバイスと IoT Hub の間でのインターネット接続は、トランスポート層セキュリティ (TLS) 規格を使用してセキュリティ保護されます。Azure IoT は [TLS 1.2][lnk-tls12]、TLS 1.1、TLS 1.0 の順序でサポートします。TLS 1.0 のサポートは、旧バージョンとの互換性を保つために提供されます。セキュリティ保護ができているため、TLS 1.2 を使用することをお勧めします。
 
-Azure IoT Suite supports the following Cipher Suites, in this order.
+Azure IoT Suite は、次の順序で Cipher Suite をサポートしています。
 
 | Cipher Suite | Length |
 |--------------|--------|
-| TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 (0xc028) ECDH secp384r1 (eq. 7680 bits RSA) FS | 256    |
-| TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA256 (0xc027) ECDH secp256r1 (eq. 3072 bits RSA) FS | 128    |
-| TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA (0xc014) ECDH secp384r1 (eq. 7680 bits RSA) FS           | 256    |
-| TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA (0xc013) ECDH secp256r1 (eq. 3072 bits RSA) FS           | 128    |
-| TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384 (0x9d) | 256    |
-| TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256 (0x9c) | 128    |
-| TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA256 (0x3d) | 256    |
-| TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA256 (0x3c) | 128    |
-| TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA (0x35)    | 256    |
-| TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA (0x2f)    | 128    |
-| TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA (0xa)    | 112    |
+| TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 (0xc028) ECDH secp384r1 (eq.7680 bits RSA) FS | 256 |
+| TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA256 (0xc027) ECDH secp256r1 (eq.3072 bits RSA) FS | 128 |
+| TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA (0xc014) ECDH secp384r1 (eq.7680 bits RSA) FS | 256 |
+| TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA (0xc013) ECDH secp256r1 (eq.3072 bits RSA) FS | 128 |
+| TLS\_RSA\_WITH\_AES\_256\_GCM\_SHA384 (0x9d) | 256 |
+| TLS\_RSA\_WITH\_AES\_128\_GCM\_SHA256 (0x9c) | 128 |
+| TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA256 (0x3d) | 256 |
+| TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA256 (0x3c) | 128 |
+| TLS\_RSA\_WITH\_AES\_256\_CBC\_SHA (0x35) | 256 |
+| TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA (0x2f) | 128 |
+| TLS\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA (0xa) | 112 |
 
-## <a name="securing-the-cloud"></a>Securing the cloud
+## クラウドを保護する
 
-Azure IoT Hub allows definition of [access control policies][lnk-protocols] for each security key. It uses the following set of permissions to grant access to each of IoT Hub's endpoints. Permissions limit the access to an IoT Hub based on functionality.
+Azure IoT Hub はセキュリティ キーごとに [アクセス制御ポリシー][lnk-protocols] の定義付けを行います。それは次の一連のアクセス許可を使用して、各 IoT Hub のエンドポイントへのアクセスを許可します。次のアクセス許可により、機能に応じて IoT Hub へのアクセスを制限します。
 
-- **RegistryRead**. Grants read access to the Device Identity Registry. For more information, see [Device Identity Registry][lnk-identity-registry].
+- **RegistryRead**。デバイス ID レジストリへの読み取りアクセス権を許可します。詳細については、「[デバイス ID レジストリ][lnk-identity-registry]」を参照してください。
 
-- **RegistryReadWrite**. Grants read and write access to the Device Identity Registry. For more information, see [Device Identity Registry][lnk-identity-registry].
+- **RegistryReadWrite**。デバイス ID レジストリへの読み取りと書き込みのアクセスを許可します。詳細については、「[デバイス ID レジストリ][lnk-identity-registry]」を参照してください。
 
-- **ServiceConnect**. Grants access to cloud service-facing communication and monitoring endpoints. For example, it grants permission to back-end cloud services to receive device-to-cloud messages, send cloud-to-device messages, and retrieve the corresponding delivery acknowledgments.
+- **ServiceConnect**。クラウド サービス向けの通信エンドポイントと監視エンドポイントへのアクセスを許可します。たとえば、D2C メッセージの受信、C2D メッセージの送信、対応する配信確認メッセージの取得のアクセス許可をバックエンド クラウド サービスに付与します。
 
-- **DeviceConnect**. Grants access to device-facing communication endpoints. For example, it grants permission to send device-to-cloud messages and receive cloud-to-device messages. This permission is used by devices.
+- **DeviceConnect**。デバイス向けの通信エンドポイントへのアクセスを許可します。たとえば、D2C メッセージの送信と、C2D メッセージの受信のアクセス許可を付与します。このアクセス許可はデバイスによって使用されます。
 
-There are two ways to obtain **DeviceConnect** permissions with IoT Hub with [security tokens][lnk-sas-tokens]: using a device identity key, or a shared access policy key. Moreover, it is important to note that all functionality accessible from devices is exposed by design on endpoints with prefix `/devices/{deviceId}`.
+[セキュリティ トークン][lnk-sas-tokens] を使用して IoT Hub で **DeviceConnect** アクセス許可を取得するには、デバイス ID キーを使用する方法と共有アクセス ポリシー キーを使用する方法の 2 通りがあります。さらに、デバイスからアクセスできるすべての機能は、仕様により、`/devices/{deviceId}` というプレフィックスを持つエンドポイントで公開されることに注意することが重要です。
 
-[Service components can only generate security tokens][lnk-service-tokens] using shared access policies granting the appropriate permissions.
+[サービス コンポーネントでは、適切なアクセス許可を付与する共有アクセス ポリシーを使用した場合にのみセキュリティ トークンを生成できます。][lnk-service-tokens]
 
-Azure IoT Hub and other services which may be part of the solution allow management of users using the Azure Active Directory.
+Azure IoT Hub とソリューションの一部として使用するその他のサービスは、Azure Active Directory を使用してユーザーの管理ができます。
 
-Data ingested by Azure IoT Hub can be consumed by a variety of services such as Azure Stream Analytics, blob storage, etc. These services allow management access. Read more about these services and available options below:
+Azure IoT Hub によって取り込まれたデータは、Azure Stream Analytics や Blob Storage などのさまざまなサービスで使用できます。これらのサービスでは、管理アクセスが可能になります。これらのサービスと利用可能なオプションの詳細については、以下をご覧ください。
 
-- [Azure DocumentDB][lnk-docdb]: A scalable, fully-indexed database service for semi-structured data that manages metadata for the devices you provision, such as attributes, configuration, and security properties. DocumentDB offers high-performance and high-throughput processing, schema-agnostic indexing of data, and a rich SQL query interface.
+- [Azure DocumentDB][lnk-docdb]\: 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。DocumentDB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付け、および豊富な SQL クエリ インターフェイスが提供されます。
 
-- [Azure Stream Analytics][lnk-asa]: Real-time stream processing in the cloud that enables you to rapidly develop and deploy a low-cost analytics solution to uncover real-time insights from devices, sensors, infrastructure, and applications. The data from this fully-managed service can scale to any volume while still achieving high throughput, low latency, and resiliency.
+- [Azure Stream Analytics][lnk-asa]\: クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからのリアルタイムの洞察を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
 
-- [Azure App Services][lnk-appservices]: A cloud platform to build powerful web and mobile apps that connect to data anywhere; in the cloud or on-premises. Build engaging mobile apps for iOS, Android, and Windows. Integrate with your Software as a Service (SaaS) and enterprise applications with out-of-the-box connectivity to dozens of cloud-based services and enterprise applications. Code in your favorite language and IDE (.NET, NodeJS, PHP, Python, or Java) to build web apps and APIs faster than ever.
+- [Azure App Services][lnk-appservices]\: データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。お気に入りの言語や IDE (.NET、NodeJS、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
 
-- [Logic Apps][lnk-logicapps]: The Logic Apps feature of Azure App Service helps integrate your IoT solution to your existing line-of-business systems and automate workflow processes. Logic Apps enables developers to design workflows that start from a trigger and then execute a series of steps—rules and actions that use powerful connectors to integrate with your business processes. Logic Apps offers out-of-the-box connectivity to a vast ecosystem of SaaS, cloud-based, and on-premises applications.
+- [Logic Apps][lnk-logicapps]\: Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
 
-- [Blob storage][lnk-blob]: Reliable, economical cloud storage for the data that your devices send to the cloud.
+- [Blob Storage][lnk-blob]\: デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。
 
-## <a name="conclusion"></a>Conclusion
+## まとめ
 
-This article provides overview of implementation level details for designing and deploying an IoT infrastructure using Azure IoT. Configuring each component to be secure is key in securing the overall IoT infrastructure. The design choices available in Azure IoT provide some level of flexibility and choice; however, each choice may have security implications. It is recommended that each of these choices be evaluated through a risk/cost assessment.
+この記事では、Azure IoT を使って IoT インフラストラクチャの設計や導入について実装レベルの詳細の概要を説明します。各コンポーネントをセキュリティで保護して構成することが、IoT インフラストラクチャ全体をセキュリティ保護するポイントです。Azure IoT で利用可能な設計についての選択肢は、ある程度の柔軟性と選択の幅を持たせますが、セキュリティに影響が及ぶことがあります。これらの選択肢がリスクやコストから評価されることをお勧めします。
 
 [img-overview]: media/iot-secure-your-deployment/overview.png
 
-[lnk-security-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#security-token-structure
-[lnk-sas-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#use-sas-tokens-as-a-device
-[lnk-identity-registry]: ../articles/iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-protocols]: ../articles/iot-hub/iot-hub-devguide-security.md
-[lnk-custom-auth]: ../articles/iot-hub/iot-hub-devguide-security.md#custom-device-authentication
+[lnk-security-tokens]: ../articles/iot-hub/iot-hub-sas-tokens.md#security-token-structure
+[lnk-sas-tokens]: ../articles/iot-hub/iot-hub-sas-tokens.md#use-sas-tokens-as-a-device
+[lnk-identity-registry]: ../articles/iot-hub/iot-hub-devguide.md#device-identity-registry
+[lnk-protocols]: ../articles/iot-hub/iot-hub-devguide.md#security
+[lnk-custom-auth]: ../articles/iot-hub/iot-hub-guidance.md#custom-device-authentication
 [lnk-x509]: http://www.itu.int/rec/T-REC-X.509-201210-I/en
-[lnk-use-x509]: ../articles/iot-hub/iot-hub-devguide-security.md
+[lnk-use-x509]: ../articles/iot-hub/iot-hub-sas-tokens.md
 [lnk-tls12]: https://tools.ietf.org/html/rfc5246
-[lnk-service-tokens]: ../articles/iot-hub/iot-hub-devguide-security.md#using-security-tokens-from-service-components
+[lnk-service-tokens]: ../articles/iot-hub/iot-hub-sas-tokens.md#using-security-tokens-from-service-components
 [lnk-docdb]: https://azure.microsoft.com/services/documentdb/
 [lnk-asa]: https://azure.microsoft.com/services/stream-analytics/
 [lnk-appservices]: https://azure.microsoft.com/services/app-service/
 [lnk-logicapps]: https://azure.microsoft.com/services/app-service/logic/
 [lnk-blob]: https://azure.microsoft.com/services/storage/
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,160 +1,156 @@
 <properties 
-    pageTitle="Starting and stopping virtual machines - Graph | Microsoft Azure"
-    description="PowerShell Workflow version of Azure Automation scenario including runbooks to start and stop classic virtual machines."
-    services="automation"
-    documentationCenter=""
-    authors="mgoedtel"
-    manager="jwhit"
-    editor="tysonn" />
+	pageTitle="仮想マシンの起動と停止 - グラフ | Microsoft Azure"
+	description="クラシック仮想マシンを起動および停止するための Runbook を含む Azure Automation シナリオの PowerShell ワークフロー バージョン。"
+	services="automation"
+	documentationCenter=""
+	authors="mgoedtel"
+	manager="jwhit"
+	editor="tysonn" />
 <tags 
-    ms.service="automation"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="07/06/2016"
-    ms.author="bwren" />
+	ms.service="automation"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="07/06/2016"
+	ms.author="bwren" />
 
+# Azure Automation シナリオ - 仮想マシンの起動と停止
 
-# <a name="azure-automation-scenario---starting-and-stopping-virtual-machines"></a>Azure Automation scenario - starting and stopping virtual machines
+この Azure Automation シナリオには、クラシック仮想マシンを起動および停止するための Runbook が含まれています。このシナリオは、次のいずれかの場合に使用できます。
 
-This Azure Automation scenario includes runbooks to start and stop classic virtual machines.  You can use this scenario for any of the following:  
-
-- Use the runbooks without modification in your own environment. 
-- Modify the runbooks to perform customized functionality.  
-- Call the runbooks from another runbook as part of an overall solution. 
-- Use the runbooks as tutorials to learn runbook authoring concepts. 
+- 独自の環境で Runbook を変更せずに使用する場合。
+- カスタマイズされた機能を実行するために Runbook を変更する場合。
+- ソリューション全体の一部として別の Runbook から Runbook を呼び出す場合。
+- Runbook の作成概念を学習するためのチュートリアルとして Runbook を使用する場合。
 
 > [AZURE.SELECTOR]
-- [Graphical](automation-solution-startstopvm-graphical.md)
-- [PowerShell Workflow](automation-solution-startstopvm-psworkflow.md)
+- [グラフィカル](automation-solution-startstopvm-graphical.md)
+- [PowerShell ワークフロー](automation-solution-startstopvm-psworkflow.md)
 
-This is the graphical runbook version of this scenario. It is also available using [PowerShell Workflow runbooks](automation-solution-startstopvm-psworkflow.md).
+これは、このシナリオの Runbook のグラフィカル バージョンです。[PowerShell ワークフローの Runbook](automation-solution-startstopvm-psworkflow.md) を使用して利用することもできます。
 
-## <a name="getting-the-scenario"></a>Getting the scenario
+## シナリオの取得
 
-This scenario consists of two two graphical runbooks that you can download from the following links.  See the [PowerShell Workflow version](automation-solution-startstopvm-psworkflow.md) of this scenario for links to the PowerShell Workflow runbooks.
+このシナリオは、次のリンクからダウンロード可能な 2 つのグラフィカル Runbook で構成されています。PowerShell ワークフローの Runbook へのリンクについては、このシナリオの [PowerShell ワークフローのバージョン](automation-solution-startstopvm-psworkflow.md)を参照してください。
 
 
-| Runbook | Link | Type | Description |
+| Runbook | リンク | 型 | 説明 |
 |:---|:---|:---|:---|
-| StartAzureClassicVM | [Start Azure Classic VM Graphical Runbook](https://gallery.technet.microsoft.com/scriptcenter/Start-Azure-Classic-VM-c6067b3d) | Graphical | Starts all classic virtual machines in an Azure subscription or all virtual machines with a particular service name. |
-| StopAzureClassicVM | [Stop Azure Classic VM Graphical Runbook](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-Classic-VM-397819bd) | Graphical | Stops all virtual machines in an automation account or all virtual machines with a particular service name.  |
+| StartAzureClassicVM | [Azure クラシック VM のグラフィカル Runbook の開始](https://gallery.technet.microsoft.com/scriptcenter/Start-Azure-Classic-VM-c6067b3d) | グラフィカル | Azure サブスクリプションのすべてのクラシック仮想マシンまたは特定のサービス名を持つすべての仮想マシンを起動します。 |
+| StopAzureClassicVM | [Azure クラシック VM のグラフィカル Runbook の停止](https://gallery.technet.microsoft.com/scriptcenter/Stop-Azure-Classic-VM-397819bd) | グラフィカル | Azure アカウントのすべての仮想マシンまたは特定のサービス名を持つすべての仮想マシンを停止します。 |
 
 
-## <a name="installing-and-configuring-the-scenario"></a>Installing and configuring the scenario
+## シナリオのインストールと構成
 
-### <a name="1.-install-the-runbooks"></a>1. Install the runbooks
+### 1\.Runbook をインストールする
 
-After downloading the runbooks, you can import them using the procedure in [Graphical runbook procedures](automation-graphical-authoring-intro.md#graphical-runbook-procedures).
+Runbook をダウンロードしたら、[グラフィカル Runbook の手順](automation-graphical-authoring-intro.md#graphical-runbook-procedures)に関するページの手順を使用してインポートすることができます。
 
-### <a name="2.-review-the-description-and-requirements"></a>2. Review the description and requirements
-The runbooks include an activity called **Read Me** that includes a description and required assets.  You can view this information by selecting the **Read Me** activity and then the **Workflow Script** parameter.  You can also get the same information from this article. 
+### 2\.説明と要件を確認する
+Runbook には、説明と必要な資産を含む **Read Me** というアクティビティが含まれています。この情報は、**[Read Me]** アクティビティを選択してから **[ワークフロー スクリプト]** パラメーターを選択することで表示できます。また、この記事から同じ情報を取得することもできます。
 
-### <a name="3.-configure-assets"></a>3. Configure assets
-The runbooks require the following assets that you must create and populate with appropriate values.  The names are default.  You can use assets with different names if you specify those names in the [input parameters](#using-the-runbooks) when you start the runbook.
+### 3\.資産を構成する
+Runbook には以下の資産が必要です。これらを作成し、適切な値を設定する必要があります。名前は既定値です。Runbook の開始時に[入力パラメーター](#using-the-runbooks)に別の名前を指定すれば、その名前の資産を使用できます。
 
-| Asset Type | Default Name | Description |
+| 資産の種類 | 既定の名前 | 説明 |
 |:---|:---|:---|:---|
-| [Credential](automation-credentials.md) | AzureCredential | Contains credentials for an account that has authority to start and stop virtual machines in the Azure subscription.  |
-| [Variable](automation-variables.md) | AzureSubscriptionId | Contains the subscription ID of your Azure subscription. |
+| [資格情報](automation-credentials.md) | AzureCredential | Azure サブスクリプションの仮想マシンを起動および停止する権限を持つアカウントの資格情報が含まれています。 |
+| [Variable](automation-variables.md) | AzureSubscriptionId | Azure サブスクリプションのサブスクリプション ID が含まれています。 |
 
-## <a name="using-the-scenario"></a>Using the scenario
+## シナリオの使用
 
-### <a name="parameters"></a>Parameters
+### パラメーター
 
-The runbooks each have the following [input parameters](automation-starting-a-runbook.md#runbook-parameters).  You must provide values for any mandatory parameters and can optionally provide values for other parameters depending on your requirements.
+Runbook にはそれぞれ以下の[入力パラメーター](automation-starting-a-runbook.md#runbook-parameters)があります。すべての必須パラメーターの値を指定する必要があります。必要に応じて、要件に合わせて他のパラメーターの値を指定することができます。
 
-| Parameter | Type | Mandatory | Description |
+| パラメーター | 型 | 必須 | 説明 |
 |:---|:---|:---|:---|
-| ServiceName | string | No | If a value is provided, then all virtual machines with that service name are started or stopped.  If no value is provided, then all classic virtual machines in the Azure subscription are started or stopped. |
-| AzureSubscriptionIdAssetName | string | No | Contains the name of the [variable asset](#installing-and-configuring-the-scenario) that contains the subscription ID of your Azure subscription.  If you don't specify a value, *AzureSubscriptionId* is used.  |
-| AzureCredentialAssetName | string | No | Contains the name of the [credential asset](#installing-and-configuring-the-scenario) that contains the credentials for the runbook to use.  If you don't specify a value, *AzureCredential* is used.  |
+| ServiceName | string | いいえ | 値が指定されている場合、そのサービス名を持つすべての仮想マシンが起動または停止します。値が指定されていない場合、Azure サブスクリプションのすべてのクラシック仮想マシンが起動または停止します。 |
+| AzureSubscriptionIdAssetName | string | いいえ | Azure サブスクリプションのサブスクリプション ID を含む[変数資産](#installing-and-configuring-the-scenario)の名前が含まれています。値を指定しない場合、*AzureSubscriptionId* が使用されます。 |
+| AzureCredentialAssetName | string | いいえ | 使用する Runbook の資格情報を含む[資格情報資産](#installing-and-configuring-the-scenario)の名前が含まれます。値を指定しない場合、*AzureCredential* が使用されます。 |
 
-### <a name="starting-the-runbooks"></a>Starting the runbooks
+### Runbook の開始
 
-You can use any of the methods in [Starting a runbook in Azure Automation](automation-starting-a-runbook.md) to start either of the runbooks in this article.
+「[Azure Automation での Runbook の開始](automation-starting-a-runbook.md)」に示されている方法のいずれかを使用して、この記事の Runbook のいずれかを開始できます。
 
-The following sample commands uses Windows PowerShell to run **StartAzureClassicVM** to start all virtual machines with the service name *MyVMService*.
+次のサンプル コマンドでは、Windows PowerShell を使用して **StartAzureClassicVM** を実行し、*MyVMService* というサービス名のすべての仮想マシンを起動します。
 
-    $params = @{"ServiceName"="MyVMService"}
-    Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "StartAzureClassicVM" –Parameters $params
+	$params = @{"ServiceName"="MyVMService"}
+	Start-AzureAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "StartAzureClassicVM" –Parameters $params
 
-### <a name="output"></a>Output
+### Output
 
-The runbooks will [output a message](automation-runbook-output-and-messages.md) for each virtual machine indicating whether or not the start or stop instruction was successfully submitted.  You can look for a specific string in the output to determine the result for each runbook.  The possible output strings are listed in the following table.
+Runbook は各仮想マシンに対して[メッセージを出力](automation-runbook-output-and-messages.md)します。このメッセージは、開始または停止命令が正常に送信されたかどうかを示します。出力の特定の文字列を検索して、各 Runbook の結果を判別することができます。考えられる出力文字列を次の表にリストします。
 
-| Runbook | Condition | Message |
+| Runbook | 条件 | メッセージ |
 |:---|:---|:---|
-| StartAzureClassicVM | Virtual machine is already running  | MyVM is already running |
-| StartAzureClassicVM | Start request for virtual machine successfully submitted | MyVM has been started |
-| StartAzureClassicVM | Start request for virtual machine failed  | MyVM failed to start |
-| StopAzureClassicVM | Virtual machine is already running  | MyVM is already stopped |
-| StopAzureClassicVM | Start request for virtual machine successfully submitted | MyVM has been started |
-| StopAzureClassicVM | Start request for virtual machine failed  | MyVM failed to start |
+| StartAzureClassicVM | 仮想マシンが既に実行されている | MyVM is already running |
+| StartAzureClassicVM | 仮想マシンの起動要求が正常に送信されました | MyVM has been started |
+| StartAzureClassicVM | 仮想マシンの起動要求に失敗しました | MyVM failed to start |
+| StopAzureClassicVM | 仮想マシンが既に実行されている | MyVM is already stopped |
+| StopAzureClassicVM | 仮想マシンの起動要求が正常に送信されました | MyVM has been started |
+| StopAzureClassicVM | 仮想マシンの起動要求に失敗しました | MyVM failed to start |
 
 
-Following is an image of using the **StartAzureClassicVM** as a [child runbook](automation-child-runbooks.md) in a sample graphical runbook.  This uses the conditional links in the following table.
+サンプルのグラフィカル Runbook で[子 Runbook](automation-child-runbooks.md) として **StartAzureClassicVM** を使用するイメージを以下に示します。この場合、以下の表の条件付きリンクが使用されます。
 
-| Link | Criteria |
+| リンク | 条件 |
 |:---|:---|
-| Success link | $ActivityOutput['StartAzureClassicVM'] -like "\* has been started"    |
-| Error link   | $ActivityOutput['StartAzureClassicVM'] -notlike "\* has been started" |
+| 正常なリンク | $ActivityOutput['StartAzureClassicVM'] -like "* has been started" |
+| エラー リンク | $ActivityOutput['StartAzureClassicVM'] -notlike "* has been started" |
 
-![Child runbook example](media/automation-solution-startstopvm/graphical-childrunbook-example.png)
+![子 Runbook の例](media/automation-solution-startstopvm/graphical-childrunbook-example.png)
 
 
-## <a name="detailed-breakdown"></a>Detailed breakdown
+## 詳細な内訳
 
-Following is a detailed breakdown of the runbooks in this scenario.  You can use this information to either customize the runbooks or just to learn from them for authoring your own automation scenarios.
+このシナリオでの Runbook の詳細な内訳を以下に示します。Runbook をカスタマイズする場合や、独自の自動化シナリオの作成方法の学習のみの目的でこの情報を使用することができます。
  
 
-### <a name="authentication"></a>Authentication
+### 認証
 
-![Authentication](media/automation-solution-startstopvm/graphical-authentication.png)
+![認証](media/automation-solution-startstopvm/graphical-authentication.png)
 
-The runbook starts with activities to set the [credentials](automation-configuring.md#configuring-authentication-to-azure-resources) and Azure subscription that will be used for the rest of the runbook.
+Runbook は[資格情報](automation-configuring.md#configuring-authentication-to-azure-resources)および Azure サブスクリプションを設定するアクティビティから始まります。これらは Runbook の残りの部分で使用されます。
 
-The first two activities, **Get Subscription Id** and **Get Azure Credential**, retrieve the [assets](#installing-the-runbook) that are used by the next two activities.  Those activities could directly specify the assets, but they need the asset names.  Since we are allowing the user to specify those names in the [input parameters](#using-the-runbooks), we need these activities to retrieve the assets with a name specified by an input parameter.
+最初の 2 つのアクティビティである **サブスクリプション ID の取得**と **Azure 資格情報の取得**では、次の 2 つのアクティビティで使用される[資産](#installing-the-runbook)を取得します。これらのアクティビティでは直接資産を指定できますが、資産名が必要になります。ユーザーが[入力パラメーター](#using-the-runbooks)でこれらの名前を指定できるようにするため、これらのアクティビティでは入力パラメーターで指定された名前を持つ資産を取得する必要があります。
 
-**Add-AzureAccount** sets the credentials that will be used for the rest of the runbook.  The credential asset that it retrieves from **Get Azure Credential** must have access to start and stop virtual machines in the Azure subscription.  The subscription that's used is selected by **Select-AzureSubscription** which uses the subscription Id from **Get Subscription Id**.
+**Add-AzureAccount** では、Runbook の残りの部分で使用される資格情報を設定します。**Azure 資格情報の取得**で取得される資格情報資産には、Azure サブスクリプションの仮想マシンを起動および停止するためのアクセス権が必要です。使用されるサブスクリプションは、**サブスクリプション ID の取得**のサブスクリプション ID を使用する **Select-AzureSubscription** で選択されます。
 
-### <a name="get-virtual-machines"></a>Get virtual machines
+### 仮想マシンの取得
 
-![Get VMs](media/automation-solution-startstopvm/graphical-getvms.png)
+![VM の取得](media/automation-solution-startstopvm/graphical-getvms.png)
 
-The runbook needs to determine which virtual machines it will be working with and whether they are already started or stopped (depending on the runbook).   One of two activities will retrieve the VMs.  **Get VMs in Service** will run if the *ServiceName* input parameter for the runbook contains a value.  **Get All VMs** will run if the *ServiceName* input parameter for the runbook does not contain a value.  This logic is performed by the conditional links preceding each activity.
+Runbook は、使用する仮想マシンと、(Runbook に応じて) それらが既に起動しているか停止しているかを判別する必要があります。2 つのアクティビティのいずれかで VM が取得されます。**サービス内の VM の取得**は、Runbook の *ServiceName* 入力パラメーターに値が含まれている場合に実行されます。**すべての VM の取得**は、Runbook の *ServiceName* 入力パラメーターに値が含まれていない場合に実行されます。このロジックは、各アクティビティの前の条件付きリンクで実行されます。
 
-Both activities use the **Get-AzureVM** cmdlet.  **Get All VMs** uses the **ListAllVMs** parameter set to return all virtual machines.  **Get VMs in Service** uses the **GetVMByServiceAndVMName** parameter set and provides the **ServiceName** input parameter for the **ServiceName** parameter.  
+両方のアクティビティで **Get-azurevm** コマンドレットが使用されます。**すべての VM の取得**では、すべての仮想マシンを返す **ListAllVMs** パラメーター セットを使用します。**サービス内の VM の取得**では **GetVMByServiceAndVMName** パラメーター セットを使用し、**ServiceName** パラメーターの **ServiceName** 入力パラメーターを指定します。
 
-### <a name="merge-vms"></a>Merge VMs
+### VM のマージ
 
-![Merge VMs](media/automation-solution-startstopvm/graphical-mergevms.png)
+![VM のマージ](media/automation-solution-startstopvm/graphical-mergevms.png)
 
-The **Merge VMs** activity is required to provide input to **Start-AzureVM** which needs the name and service name of the vm(s) to start.  That input could come from either **Get All VMs** or **Get VMs in Service**, but **Start-AzureVM** can only specify one activity for its input.   
+**VM のマージ** アクティビティは、起動する VM の名前とサービス名を必要とする **Start-AzureVM** への入力を提供するために必要です。その入力元は**すべての VM の取得**または**サービス内の VM の取得**の場合がありますが、その入力の 1 つのアクティビティを指定できるのは **Start-AzureVM** のみです。
 
-The scenario is to create **Merge VMs** which runs the **Write-Output** cmdlet.  The **InputObject** parameter for that cmdlet is a PowerShell Expression that combines the input of the previous two activities.  Only one of those activities will run, so only one set of output is expected.  **Start-AzureVM** can use that output for its input parameters. 
+シナリオは、**Write-Output** コマンドレットを実行する **VM のマージ**を作成することです。そのコマンドレットの **InputObject** パラメーターは、前の 2 つのアクティビティの入力を結合する PowerShell 式です。これらのアクティビティの 1 つのみが実行されるため、予想される出力のセットは 1 つのみです。**Start-AzureVM** では、入力パラメーターでその出力を使用することができます。
 
-### <a name="start/stop-virtual-machines"></a>Start/Stop virtual machines
+### 仮想マシンの起動/停止
 
-![Start VMs](media/automation-solution-startstopvm/graphical-startvm.png) ![Stop VMs](media/automation-solution-startstopvm/graphical-stopvm.png)
+![VM の起動](media/automation-solution-startstopvm/graphical-startvm.png) ![VM の停止](media/automation-solution-startstopvm/graphical-stopvm.png)
 
-Depending on the runbook, the next activities attempt to start or stop the runbook using **Start-AzureVM** or **Stop-AzureVM**.  Since the activity is preceded by a pipeline link, it will run once for each object returned from **Merge VMs**.  The link is conditional so that the activity will only run if the *RunningState* of the virtual machine is *Stopped* for **Start-AzureVM** and *Started* for **Stop-AzureVM**. If this condition is not met, then **Notify Already Started** or **Notify Already Stopped** is run to send a message using **Write-Output**.
+Runbook に応じて、次のアクティビティでは、**Start-AzureVM** または **Stop-AzureVM** を使用して Runbook の起動または停止を試みます。アクティビティはパイプライン リンクの前にあるため、**VM のマージ**から返されるオブジェクトごとに 1 回実行されます。リンクは条件付きであるため、アクティビティが実行されるのは、仮想マシンの *RunningState* が **Start-AzureVM** で *Stopped* になっており、**Stop-AzureVM** で *Started* になっている場合のみです。この条件が満たされていない場合は、**開始済み通知**または**停止済み通知**が実行され、**Write-Output** を使用してメッセージが送信されます。
 
-### <a name="send-output"></a>Send output
+### 出力の送信
 
-![Notify Start VMs](media/automation-solution-startstopvm/graphical-notifystart.png) ![Notify Stop VMs](media/automation-solution-startstopvm/graphical-notifystop.png)
+![VM の起動通知](media/automation-solution-startstopvm/graphical-notifystart.png) ![VM の停止通知](media/automation-solution-startstopvm/graphical-notifystop.png)
 
-The final step in the runbook is to send output whether the start or stop request for each virtual machine was successfully submitted. There is a separate **Write-Output** activity for each, and we determine which one to run with conditional links.  **Notify VM Started** or **Notify VM Stopped** is run if *OperationStatus* is *Succeeded*.  If *OperationStatus* is any other value, then **Notify Failed To Start** or **Notify Failed to Stop** is run.
-
-
-## <a name="next-steps"></a>Next steps
-
-- [Graphical authoring in Azure Automation](automation-graphical-authoring-intro.md)
-- [Child runbooks in Azure Automation](automation-child-runbooks.md) 
-- [Runbook output and messages in Azure Automation](automation-runbook-output-and-messages.md)
+Runbook の最後の手順は、各仮想マシンの起動または停止要求が正常に送信されたかどうかを示す出力の送信です。**Write-Output** はそれぞれ別個になっており、条件付きリンクでどれを実行するかを判別します。**VM 起動通知**または **VM 停止通知**は、*OperationStatus* が *Succeeded* の場合に実行されます。*OperationStatus* が他の値の場合、**起動失敗通知**または**停止失敗通知**が実行されます。
 
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
 
+- [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
+- [Azure Automation での子 Runbook](automation-child-runbooks.md)
+- [Runbook output and messages in Azure Automation (Azure Automation での Runbook の出力および メッセージ)](automation-runbook-output-and-messages.md)
 
+<!---HONumber=AcomDC_0713_2016-->

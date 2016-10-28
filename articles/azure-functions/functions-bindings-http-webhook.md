@@ -1,51 +1,50 @@
 <properties
-    pageTitle="Azure Functions HTTP and webhook bindings | Microsoft Azure"
-    description="Understand how to use HTTP and webhook triggers and bindings in Azure Functions."
-    services="functions"
-    documentationCenter="na"
-    authors="christopheranderson"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
+	pageTitle="Azure Functions における HTTP と Webhook のバインド | Microsoft Azure"
+	description="Azure Functions で HTTP トリガー、Webhook トリガー、バインドを使用する方法について説明します。"
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
 
 <tags
-    ms.service="functions"
-    ms.devlang="multiple"
-    ms.topic="reference"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="08/22/2016"
-    ms.author="chrande"/>
+	ms.service="functions"
+	ms.devlang="multiple"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="08/22/2016"
+	ms.author="chrande"/>
 
-
-# <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions HTTP and webhook bindings
+# Azure Functions における HTTP と Webhook のバインド
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-This article explains how to configure and code HTTP and webhook triggers and bindings in Azure Functions. 
+この記事では、HTTP トリガー、Webhook トリガー、バインディングの構成とコーディングを Azure Functions で行う方法について説明します。
 
-[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)] 
+[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="function.json-for-http-and-webhook-bindings"></a>function.json for HTTP and webhook bindings
+## HTTP と Webhook のバインドに使用する function.json
 
-The *function.json* file provides properties that pertain to both the request and response.
+*function.json* ファイルでは、要求と応答の両方に関連するプロパティを指定します。
 
-Properties for the HTTP request:
+HTTP 要求のプロパティ:
 
-- `name` : Variable name used in function code for the request object (or the request body in the case of Node.js functions).
-- `type` : Must be set to *httpTrigger*.
-- `direction` : Must be set to *in*. 
-- `webHookType` : For WebHook triggers, valid values are *github*, *slack*, and *genericJson*. For an HTTP trigger that isn't a WebHook, set this property to an empty string. For more information on WebHooks, see the following [WebHook triggers](#webhook-triggers) section.
-- `authLevel` : Doesn't apply to WebHook triggers. Set to "function" to require the API key, "anonymous" to drop the API key requirement, or "admin" to require the master API key. See [API keys](#apikeys) below for more information.
+- `name`: オブジェクトの関数コードで使用される変数名 (または Node.js 関数の要求本文)。
+- `type`: *httpTrigger* に設定する必要があります。
+- `direction`: *in* に設定する必要があります。
+- `webHookType`: WebHook トリガーの場合、有効な値は *github*、*slack*、*genericJson* です。WebHook ではない HTTP トリガーの場合、このプロパティを空の文字列に設定します。WebHook の詳細については、以下の「[WebHook トリガー](#webhook-triggers)」を参照してください。
+- `authLevel`: WebHook トリガーには適用されません。API キーを要求するには "function" に、API の主な要件を破棄するには "anonymous" に、マスター API キーを要求するには "admin" に設定します。詳しくは、以下の「[API キー](#apikeys)」を参照してください。
 
-Properties for the HTTP response:
+HTTP 応答のプロパティ:
 
-- `name` : Variable name used in function code for the response object.
-- `type` : Must be set to *http*.
-- `direction` : Must be set to *out*. 
+- `name`: response オブジェクトの関数コードで使用される変数名。
+- `type`: *http* に設定する必要があります。
+- `direction`: *out* に設定する必要があります。
  
-Example *function.json*:
+*function.json* の例:
 
 ```json
 {
@@ -67,29 +66,29 @@ Example *function.json*:
 }
 ```
 
-## <a name="webhook-triggers"></a>WebHook triggers
+## WebHook トリガー
 
-A WebHook trigger is an HTTP trigger that has the following features designed for WebHooks:
+WebHook トリガーとは、Webhook 用に設計された次の機能を備えた HTTP トリガーを指します。
 
-* For specific WebHook providers (currently GitHub and Slack are supported), the Functions runtime validates the provider's signature.
-* For Node.js functions, the Functions runtime provides the request body instead of the request object. There is no special handling for C# functions, because you control what is provided by specifying the parameter type. If you specify `HttpRequestMessage` you get the request object. If you specify a POCO type, the Functions runtime tries to parse a JSON object in the body of the request to populate the object properties.
-* To trigger a WebHook function the HTTP request must include an API key. For non-WebHook HTTP triggers,  this requirement is optional.
+* 特定の WebHook プロバイダー (現在 GitHub と Slack がサポートされています) について、Functions ランタイムによりプロバイダーの署名が検証されます。
+* Node.js 関数の場合、Functions ランタイムは request オブジェクトではなく、要求本文を提供します。C# 関数では、何が提供されるかは、パラメーターの種類を指定することで管理されるため、特別な処理は存在しません。`HttpRequestMessage` を指定すると、request オブジェクトが取得されます。POCO 型を指定すると、Functions ランタイムにより要求の本文で JSON オブジェクトの解析が試行され、オブジェクトのプロパティが入力されます。
+* WebHook 関数をトリガーするには、HTTP 要求に API キーを含める必要があります。WebHook 以外の HTTP トリガーの場合、この要件は省略できます。
 
-For information about how to set up a GitHub WebHook, see [GitHub Developer - Creating WebHooks](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409).
+GitHub WebHook を設定する方法の詳細については、[GitHub Developer の WebHook の作成](http://go.microsoft.com/fwlink/?LinkID=761099&clcid=0x409)に関するページを参照してください。
 
-## <a name="url-to-trigger-the-function"></a>URL to trigger the function
+## 関数をトリガーする URL
 
-To trigger a function, you send an HTTP request to a URL that is a combination of the function app URL and the function name:
+関数をトリガーするには、Function App の URL と関数名を組み合わせた URL に HTTP 要求を送信します。
 
 ```
  https://{function app name}.azurewebsites.net/api/{function name} 
 ```
 
-## <a name="api-keys"></a>API keys
+## API キー
 
-By default, an API key must be included with an HTTP request to trigger an HTTP or WebHook function. The key can be included in a query string variable named `code`, or it can be included in an `x-functions-key` HTTP header. For non-WebHook functions, you can indicate that an API key is not required by setting the `authLevel` property to "anonymous" in the *function.json* file.
+既定では、API キーを HTTP 要求に含めて、HTTP または WebHook 機能をトリガーします。キーは、`code` という名前のクエリ文字列の変数に含めることも、`x-functions-key` HTTP ヘッダーに含めることもできます。WebHook 以外の関数では、*function.json* ファイルで `authLevel` プロパティを "anonymous" に設定することで、API キーが不要であることを示せます。
 
-You can find API key values in the *D:\home\data\Functions\secrets* folder in the file system of the function app.  The master key and function key are set in the *host.json* file, as shown in this example. 
+API キーは関数アプリのファイル システムの *D:\\home\\data\\Functions\\secrets* フォルダーにあります。マスター キーと関数キーは、この例で示されているように *host.json* ファイルで設定します。
 
 ```json
 {
@@ -98,9 +97,9 @@ You can find API key values in the *D:\home\data\Functions\secrets* folder in th
 }
 ```
 
-The function key from *host.json* can be used to trigger any function but won't trigger a disabled function. The master key can be used to trigger any function and will trigger a function even if it's disabled. You can configure a function to require the master key by setting the `authLevel` property to "admin". 
+*host.json* の関数キーを使用して関数をトリガーできますが、無効な関数はトリガーされません。マスター キーは任意の関数のトリガーに使用でき、無効になっている関数もトリガーします。マスター キーを要求するように関数を構成するには、`authLevel` プロパティを "admin" に設定します。
 
-If the *secrets* folder contains a JSON file with the same name as a function, the `key` property in that file can also be used to trigger the function, and this key will only work with the function it refers to. For example, the API key for a function named `HttpTrigger` is specified in *HttpTrigger.json* in the *secrets* folder. Here is an example:
+*secrets* フォルダーに関数と同じ名前の JSON ファイルが含まれる場合、そのファイルの `key` プロパティを使用して関数をトリガーできます。このキーは、それが参照する関数でのみ機能します。たとえば、`HttpTrigger` という名前の関数の API キーは、*secrets* フォルダー内の *HttpTrigger.json* に指定します。たとえば次のようになります。
 
 ```json
 {
@@ -108,11 +107,11 @@ If the *secrets* folder contains a JSON file with the same name as a function, t
 }
 ```
 
-> [AZURE.NOTE] When you're setting up a WebHook trigger, don't share the master key with the WebHook provider. Use a key that will only work with the function that processes the WebHook.  The master key can be used to trigger any function, even disabled functions.
+> [AZURE.NOTE] WebHook のトリガーを設定するときに、マスター キーを WebHook プロバイダーと共有しないでください。WebHook を処理する関数でのみ機能するキーを使用します。マスター キーを使用すると、無効になっている関数も含め、すべての関数をトリガーできます。
 
-## <a name="example-c#-code-for-an-http-trigger-function"></a>Example C# code for an HTTP trigger function 
+## HTTP トリガー関数の C# コードの例 
 
-The example code looks for a `name` parameter either in the query string or the body of the HTTP request.
+コード例では、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
 
 ```csharp
 using System.Net;
@@ -139,9 +138,9 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 }
 ```
 
-## <a name="example-f#-code-for-an-http-trigger-function"></a>Example F# code for an HTTP trigger function
+## HTTP トリガー関数の F# コードの例
 
-The example code looks for a `name` parameter either in the query string or the body of the HTTP request.
+コード例では、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
 
 ```fsharp
 open System.Net
@@ -165,7 +164,7 @@ let Run(req: HttpRequestMessage) =
     } |> Async.StartAsTask
 ```
 
-You will need a `project.json` file that uses NuGet to reference the `FSharp.Interop.Dynamic` and `Dynamitey` assemblies, like this:
+次のように、NuGet を使用して `FSharp.Interop.Dynamic` および `Dynamitey` アセンブリを参照する `project.json` ファイルが必要です。
 
 ```json
 {
@@ -180,11 +179,11 @@ You will need a `project.json` file that uses NuGet to reference the `FSharp.Int
 }
 ```
 
-This will use NuGet to fetch your dependencies and will reference them in your script.
+このファイルは NuGet を使用して依存関係を取得し、それをスクリプト内で参照します。
 
-## <a name="example-node.js-code-for-an-http-trigger-function"></a>Example Node.js code for an HTTP trigger function 
+## HTTP トリガー関数の Node.js コードの例 
 
-This example code looks for a `name` parameter either in the query string or the body of the HTTP request.
+次のコード例では、クエリ文字列または HTTP 要求の本文で `name` パラメーターを探します。
 
 ```javascript
 module.exports = function(context, req) {
@@ -206,9 +205,9 @@ module.exports = function(context, req) {
 };
 ```
 
-## <a name="example-c#-code-for-a-github-webhook-function"></a>Example C# code for a GitHub WebHook function 
+## GitHub WebHook 関数の C# コードの例 
 
-This example code logs GitHub issue comments.
+次のコード例では、GitHub の問題に対するコメントをログに記録します。
 
 ```csharp
 #r "Newtonsoft.Json"
@@ -231,9 +230,9 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 }
 ```
 
-## <a name="example-f#-code-for-a-github-webhook-function"></a>Example F# code for a GitHub WebHook function
+## GitHub WebHook 関数の F# コードの例
 
-This example code logs GitHub issue comments.
+次のコード例では、GitHub の問題に対するコメントをログに記録します。
 
 ```fsharp
 open System.Net
@@ -256,9 +255,9 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
     } |> Async.StartAsTask
 ```
 
-## <a name="example-node.js-code-for-a-github-webhook-function"></a>Example Node.js code for a GitHub WebHook function 
+## GitHub WebHook 関数の Node.js コードの例 
 
-This example code logs GitHub issue comments.
+次のコード例では、GitHub の問題に対するコメントをログに記録します。
 
 ```javascript
 module.exports = function (context, data) {
@@ -268,12 +267,8 @@ module.exports = function (context, data) {
 };
 ```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[AZURE.INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)] 
+[AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

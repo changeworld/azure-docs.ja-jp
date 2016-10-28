@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="What is a Network Security Group (NSG)"
-   description="Learn about the distributed firewall in Azure using Network Security Groups (NSGs), and how to use NSGs to isolate and control traffic flow within your virtual networks (VNets)."
+   pageTitle="ネットワーク セキュリティ グループ (NSG)"
+   description="ネットワーク セキュリティ グループ (NSG) を使用した Azure でのファイアウォールの分散について、さらに、NSG を使用して仮想ネットワーク (VNet) 内のトラフィック フローを分離および制御する方法について説明します。"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,276 +15,271 @@
    ms.date="02/11/2016"
    ms.author="jdial" />
 
+# ネットワーク セキュリティ グループ (NSG) について
 
-# <a name="what-is-a-network-security-group-(nsg)?"></a>What is a Network Security Group (NSG)?
+ネットワーク セキュリティ グループ (NSG) には、Virtual Network の VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。
 
-Network security group (NSG) contains a list of Access Control List (ACL) rules that allow or deny network traffic to your VM instances in a Virtual Network. NSGs can be associated with either subnets or individual VM instances within that subnet. When a NSG is associated with a subnet, the ACL rules apply to all the VM instances in that subnet. In addition, traffic to an individual VM can be restricted further by associating a NSG directly to that VM.
+## NSG リソース
 
-## <a name="nsg-resource"></a>NSG resource
+NSG には、次のプロパティが含まれています。
 
-NSGs contain the following properties.
-
-|Property|Description|Constraints|Considerations|
+|プロパティ|Description|制約|考慮事項|
 |---|---|---|---|
-|Name|Name for the NSG|Must be unique within the region<br/>Can contain letters, numbers, underscores, periods and hyphens<br/>Must start with a letter or number<br/>Must end with a letter, number, or underscore<br/>Can have up to 80 characters|Since you may need to create several NSGs, make sure you have a naming convention that makes it easy to identify the function of your NSGs|
-|Region|Azure region where the NSG is hosted|NSGs can only be applied to resources within the region it is created|See [limits](#Limits) below to understand how many NSGs you can have in a region|
-|Resource group|Resource group the NSG belongs to|Although an NSG belongs to a resource group, it can be associated to resources in any resource group, as long as the resource is part of the same Azure region as the NSG|Resource groups are used to manage multiple resources together, as a deployment unit<br/>You may consider grouping the NSG with resources it is associated to|
-|Rules|Rules that define what traffic is allowed, or denied||See [NSG rules](#Nsg-rules) below| 
+|Name|NSG の名前|リージョン内で一意である必要があります。<br/>英字、数字、アンダー スコア、ピリオド、ハイフンを含めることができます。<br/>先頭は英字または数字にする必要があります。<br/>末尾は英字、数字、またはアンダー スコアにする必要があります。<br/>最大 80 字を指定できます。|複数の NSG の作成が必要になることがあるため、NSG の機能が識別しやすくなる名前付け規則を用意してください。|
+|リージョン|NSG がホストされる Azure リージョン|NSG は NSG が作成されたリージョン内のリソースにのみ適用できます。|1 つのリージョンで作成できる NSG の数については、下の「[制限](#Limits)」を参照してください。|
+|リソース グループ|NSG が属するリソース グループ|NSG はリソース グループに属しますが、リソースが NSG と同じ Azure リージョン内にあれば、任意のリソース グループ内のリソースに関連付けることができます。|リソース グループは、複数のリソースをまとめて 1 つのデプロイメント単位として管理するために使用します。<br/>NSG を、関連付けられているリソースとグループ化することができます。|
+|ルール|許可または拒否するトラフィックを定義するルール||下の「[NSG ルール](#Nsg-rules)」を参照してください。| 
 
->[AZURE.NOTE] Endpoint-based ACLs and network security groups are not supported on the same VM instance. If you want to use an NSG and have an endpoint ACL already in place, first remove the endpoint ACL. For information about how to do this, see [Managing Access Control Lists (ACLs) for Endpoints by using PowerShell](virtual-networks-acl-powershell.md).
+>[AZURE.NOTE] エンドポイント ベースの ACL とネットワーク セキュリティ グループは、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[PowerShell を使用したエンドポイントのアクセス制御リスト (ACL) の管理](virtual-networks-acl-powershell.md)を参照してください。
 
-### <a name="nsg-rules"></a>NSG rules
+### NSG ルール
 
-NSG rules contain the following properties.
+NSG ルールには、次のプロパティが含まれています。
 
-|Property|Description|Constraints|Considerations|
+|プロパティ|Description|制約|考慮事項|
 |---|---|---|---|
-|**Name**|Name for the rule|Must be unique within the region<br/>Can contain letters, numbers, underscores, periods and hyphens<br/>Must start with a letter or number<br/>Must end with a letter, number, or underscore<br/>Can have up to 80 characters|You may have several rules within an NSG, so make sure you follow a naming convention that allows you to identify the function of your rule|
-|**Protocol**|Protocol to match for the rule|TCP, UDP, or \*|Using \* as a protocol includes ICMP (East-West traffic only), as well as UDP and TCP and may reduce the number of rules you need<br/>At the same time, using \* might be too broad an approach, so make sure you only use when really necessary|
-|**Source port range**|Source port range to match for the rule|Single port number from 1 to 65535, port range (i.e. 1-65635), or \* (for all ports)|Source ports could be ephemeral. Unless your client program is using a specific port, please use "*" in most cases.<br/>Try to use port ranges as much as possible to avoid the need for multiple rules<br/>Multiple ports or port ranges cannot be grouped by a comma
-|**Destination port range**|Destination port range to match for the rule|Single port number from 1 to 65535, port range (i.e. 1-65535), or \* (for all ports)|Try to use port ranges as much as possible to avoid the need for multiple rules<br/>Multiple ports or port ranges cannot be grouped by a comma
-|**Source address prefix**|Source address prefix or tag to match for the rule|Single IP address (i.e. 10.10.10.10), IP subnet (i.e. 192.168.1.0/24), [default tag](#default-tags), or * (for all addresses)|Consider using ranges, default tags, and * to reduce the number of rules|
-|**Destination address prefix**|Destination address prefix or tag to match for the rule|single IP address (i.e. 10.10.10.10), IP subnet (i.e. 192.168.1.0/24), [default tag](#default-tags), or * (for all addresses)|Consider using ranges, default tags, and * to reduce the number of rules|
-|**Direction**|Direction of traffic to match for the rule|inbound or outbound|Inbound and outbound rules are processed separately, based on direction|
-|**Priority**|Rules are checked in the order of priority, once a rule applies, no more rules are tested for matching|Number between 100 and 4096|Consider creating rules jumping priorities by 100 for each rule, to leave space for new rules to come between existing rules|
-|**Access**|Type of access to apply if the rule matches|allow or deny|Keep in mind that if an allow rule is not found for a packet, the packet is dropped|
+|**名前**|ルールの名前|リージョン内で一意である必要があります。<br/>英字、数字、アンダー スコア、ピリオド、ハイフンを含めることができます。<br/>先頭は英字または数字にする必要があります。<br/>末尾は英字、数字、またはアンダー スコアにする必要があります。<br/>最大 80 字を指定できます。|1 つの NSG 内に複数のルールを作成することがあるため、ルールの機能を識別できる名前付け規則に準拠してください。|
+|**プロトコル**|規則に関して一致するプロトコル|TCP、UDP、または *|* をプロトコルとして使用すると、UDP と TCP に加えて ICMP (East-West トラフィックのみ) も含まれ、必要なルール数を減らすことができます。<br/>一方で、* を使用すると、アプローチの幅が広くなりすぎることがあるため、必要な場合にのみ使用してください。|
+|**発信元ポート範囲**|規則に関して一致するソース ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65635 など)、または * (すべてのポート)|発信元は、短期ポートである場合があります。クライアント プログラムが特定のポートを使用している場合を除き、ほとんどのケースでは "*" を使用してください。<br/>複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。
+|**宛先ポート範囲**|規則に関して一致する宛先ポート範囲|1 から 65535 までの 1 つのポート番号、ポート範囲 (1 ～ 65535 など)、または * (すべてのポート)|複数のルールを設定する必要がないように、できるだけポート範囲を使用してください。<br/>複数のポートまたは複数のポート範囲をコンマでグループ化することはできません。
+|**発信元アドレスのプレフィックス**|規則に関して一致する発信元アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#default-tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
+|**宛先アドレスのプレフィックス**|規則に関して一致する宛先アドレスのプレフィックスまたはタグ|1 つの IP アドレス (例: 10.10.10.10)、IP サブネット (例: 192.168.1.0/24)、[既定のタグ](#default-tags)、または * (すべてのアドレス)|ルールの数を減らすには、範囲、既定のタグ、* の使用を検討してください。|
+|**方向**|規則に関して一致するトラフィックの方向|受信または送信|受信ルールと送信ルールは方向に基づいて個別に処理されます。|
+|**優先順位**|ルールは優先度の順序でチェックされます。ルールが適用されると、それ以上はルールの一致テストが行われなくなります。|100 ～ 4096 の数値|既存のルールの間に新しいルールを追加する余地を残すために、各ルールの優先度の数値を 100 ずつ飛ばして設定することを検討してください。|
+|**Access (アクセス)**|規則が一致した場合に適用されるアクセスの種類|許可または拒否|パケットに一致する許可ルールが見つからない場合はパケットが削除されることに留意してください。|
 
-NSGs contain two sets of rules: inbound and outbound. The priority for a rule must be unique within each set. 
+NSG には受信と送信の 2 つのルール セットがあります。ルールの優先順位は、各セット内で一意である必要があります。
 
-![NSG rule processing](./media/virtual-network-nsg-overview/figure3.png) 
+![NSG ルールの処理](./media/virtual-network-nsg-overview/figure3.png)
 
-The figure above shows how NSG rules are processed.
+上図に、NSG ルールの処理方法を示します。
 
-### <a name="default-tags"></a>Default Tags
+### 既定のタグ
 
-Default tags are system-provided identifiers to address a category of IP addresses. You can use default tags in the **source address prefix** and **destination address prefix** properties of any rule. There are three default tags you can use.
+既定のタグは、IP アドレスのカテゴリに対応するシステム指定の識別子です。既定のタグは、任意のルールの**発信元アドレスのプレフィックス**および**宛先アドレスのプレフィックス** プロパティで使用できます。使用できる既定のタグは 3 種類あります。
 
-- **VIRTUAL_NETWORK:** This default tag denotes all of your network address space. It includes the virtual network address space (CIDR ranges defined in Azure) as well as all connected on-premises address spaces and connected Azure VNets (local networks).
+- **VIRTUAL\_NETWORK:** この既定のタグは、ネットワーク アドレス空間のすべてを表します。これには、仮想ネットワーク アドレス空間 (Azure で定義されている CIDR 範囲) だけでなく、すべての接続されているオンプレミス アドレス空間および接続されている Azure VNet (ローカル ネットワーク) が含まれます。
 
-- **AZURE_LOADBALANCER:** This default tag denotes Azure’s Infrastructure load balancer. This will translate to an Azure datacenter IP where Azure’s health probes originate.
+- **AZURE\_LOADBALANCER:** この既定のタグは、Azure のインフラストラクチャの Load Balancer を表します。これは、Azure の正常性プローブが開始される Azure データ センター IP に変換されます。
 
-- **INTERNET:** This default tag denotes the IP address space that is outside the virtual network and reachable by public Internet. This range includes [Azure owned public IP space](https://www.microsoft.com/download/details.aspx?id=41653) as well.
+- **INTERNET:** この既定のタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。この範囲には、[Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)も含まれます。
 
-### <a name="default-rules"></a>Default Rules
+### 既定のルール
 
-All NSGs contain a set of default rules. The default rules cannot be deleted, but because they are assigned the lowest priority, they can be overridden by the rules that you create. 
+すべての NSG に既定のルール一式が含まれています。既定のルールは削除できませんが、これには最も低い優先順位が割り当てられているため、ルールを作成することで上書きできます。
 
-As illustrated by the default rules below, traffic originating and ending in a virtual network is allowed both in Inbound and Outbound directions. While connectivity to the Internet is allowed for Outbound direction, it is by default blocked for Inbound direction. There is a default rule to allow Azure’s load balancer to probe the health of your VMs and role instances. You can override this rule, if you are not using a load balanced set.
+次の既定のルールが示すように、仮想ネットワーク内で発信および着信するトラフィックについては、受信方向と送信方向の両方で許可されます。インターネットへの接続は送信方向で許可されていますが、既定で、受信方向はブロックされています。既定のルールでは、Azure のロード バランサーによる VM とロール インスタンスの正常性プローブが許可されます。負荷分散セットを使用していない場合は、このルールを上書きできます。
 
-**Inbound default rules**
+**受信の既定のルール**
 
-| Name                              | Priority | Source IP          | Source Port | Destination IP  | Destination Port | Protocol | Access |
+| Name | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | Access |
 |-----------------------------------|----------|--------------------|-------------|-----------------|------------------|----------|--------|
-| ALLOW VNET INBOUND                | 65000    | VIRTUAL_NETWORK    | *           | VIRTUAL_NETWORK | *                | *        | ALLOW  |
-| ALLOW AZURE LOAD BALANCER INBOUND | 65001    | AZURE_LOADBALANCER | *           | *               | *                | *        | ALLOW  |
-| DENY ALL INBOUND                  | 65500    | *                  | *           | *               | *                | *        | DENY   |
+| ALLOW VNET INBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ALLOW |
+| ALLOW AZURE LOAD BALANCER INBOUND | 65001 | AZURE\_LOADBALANCER | * | * | * | * | ALLOW |
+| DENY ALL INBOUND | 65500 | * | * | * | * | * | DENY |
 
-**Outbound default rules**
+**送信の既定のルール**
 
-| Name                    | Priority | Source IP       | Source Port | Destination IP  | Destination Port | Protocol | Access |
+| Name | 優先順位 | 発信元 IP | 発信元ポート | 宛先 IP | 宛先ポート | プロトコル | Access |
 |-------------------------|----------|-----------------|-------------|-----------------|------------------|----------|--------|
-| ALLOW VNET OUTBOUND     | 65000    | VIRTUAL_NETWORK | *           | VIRTUAL_NETWORK | *                | *        | ALLOW  |
-| ALLOW INTERNET OUTBOUND | 65001    | *               | *           | INTERNET        | *                | *        | ALLOW  |
-| DENY ALL OUTBOUND       | 65500    | *               | *           | *               | *                | *        | DENY   |
+| ALLOW VNET OUTBOUND | 65000 | VIRTUAL\_NETWORK | * | VIRTUAL\_NETWORK | * | * | ALLOW |
+| ALLOW INTERNET OUTBOUND | 65001 | * | * | INTERNET | * | * | ALLOW |
+| DENY ALL OUTBOUND | 65500 | * | * | * | * | * | DENY |
 
-## <a name="associating-nsgs"></a>Associating NSGs
+## NSG の関連付け
 
-You can associate an NSG to VMs, NICs, and subnets, depending on the deployment model you are using.
+NSG は、使用しているデプロイ モデルに応じて、VM、NIC、およびサブネットに関連付けることができます。
 
 [AZURE.INCLUDE [learn-about-deployment-models-both-include.md](../../includes/learn-about-deployment-models-both-include.md)]
  
-- **Associating an NSG to a VM (classic deployments only).** When you associate an NSG to a VM, the network access rules in the NSG are applied to all traffic that destined and leaving the VM. 
+- **VM に対する NSG の関連付け (クラシック デプロイメントのみ)。** VM に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その VM を宛先とするすべてのトラフィックに適用されます。
 
-- **Associating an NSG to a NIC (Resource Manager deployments only).** When you associate an NSG to a NIC, the network access rules in the NSG are applied only to that NIC. That means that in a multi-NIC VM, if an NSG is applied to a single NIC, it does not affect traffic bound to other NICs. 
+- **NIC に対する NSG の関連付け (リソース マネージャー デプロイメントのみ)。** NIC に対して NSG を関連付ける場合、NSG のネットワーク アクセス ルールが、その NIC にのみ適用されます。これは、複数 NIC の VM で、NSG が 1 つの NIC に適用されている場合、その NIC を宛先とするトラフィックに影響がないことを意味します。
 
-- **Associating an NSG to a subnet (all deployments)**. When you associate an NSG to a subnet, the network access rules in the NSG are applied to all the IaaS and PaaS resources in the subnet. 
+- **サブネットに対する NSG の関連付け (すべてのデプロイメント)**。NSG をサブネットに関連付けた場合、NSG のネットワーク アクセス ルールは、サブネット内のすべての IaaS リソースと PaaS リソースに適用されます。
 
-You can associate different NSGs to a VM (or NIC, depending on the deployment model) and the subnet that a NIC or VM is bound to. When that happens, all network access rules are applied to the traffic, by priority in each NSG,  in the following order:
+さまざまな NSG を VM (デプロイメント モデルによっては NIC) および NIC や VM の宛先のサブネットに関連付けることができます。この場合、すべてのネットワーク アクセス ルールが、各 NSG 内の優先度に基づき、次の順番でトラフィックに適用されます。
 
-- **Inbound traffic**
-    1. NSG applied to subnet. 
-    
-           If subnet NSG has a matching rule to deny traffic, packet will be dropped here.
-    2. NSG applied to NIC (Resource Manager) or VM (classic). 
-       
-           If VM\NIC NSG has a matching rule to deny traffic, packet will be dropped at VM\NIC, although subnet NSG has a matching rule to allow traffic.
-- **Outbound traffic**
-    1. NSG applied to NIC (Resource Manager) or VM (classic). 
-      
-           If VM\NIC NSG has a matching rule to deny traffic, packet will be dropped here.
-    2. NSG applied to subnet.
-       
-           If subnet NSG has a matching rule to deny traffic, packet will be dropped here, although VM\NIC NSG has a matching rule to allow traffic.
+- **受信トラフィック**
+	1. サブネットに適用される NSG
+	
+           サブネット NSG に、トラフィックを拒否する照合ルールがある場合、パケットはここで破棄されます。
+	2. NIC (リソース マネージャー) または VM (クラシック) に適用される NSG
+	   
+           トラフィックを拒否する照合ルールが VM\\NIC NSG にある場合、サブネット NSG にトラフィックを許可する照合ルールがあったとしても、パケットは VM\\NIC で破棄されます。
+- **送信トラフィック**
+	1. NIC (リソース マネージャー) または VM (クラシック) に適用される NSG
+	  
+           VM\\NIC NSG に、トラフィックを拒否する照合ルールがある場合、パケットはここで破棄されます。
+	2. サブネットに適用される NSG
+	   
+           トラフィックを拒否する照合ルールがサブネット NSG にある場合、VM\\NIC NSG にトラフィックを許可する照合ルールがあったとしても、パケットはここで破棄されます。
 
-    ![NSG ACLs](./media/virtual-network-nsg-overview/figure2.png)
+	![NSG ACL](./media/virtual-network-nsg-overview/figure2.png)
 
->[AZURE.NOTE] Although you can only associate a single NSG to a subnet, VM, or NIC; you can associate the same NSG to as many resources as you want.
+>[AZURE.NOTE] 1 つの NSG は 1 つのサブネット、VM、または NIC に関連付けられますが、同じ NSG は必要なだけの数のリソースに関連付けることができます。
 
-## <a name="implementation"></a>Implementation
-You can implement NSGs in the classic or Resource Manager deployment models using the different tools listed below.
+## 実装
+従来のデプロイ モデルまたはリソース マネージャーによるデプロイ モデルで、以下に示す各種のツールを使用して、NSG を実装することができます。
 
-|Deployment tool|Classic|Resource Manager|
+|デプロイ ツール|クラシック|リソース マネージャー|
 |---|---|---|
-|Classic portal|![No](./media/virtual-network-nsg-overview/red.png)|![No](./media/virtual-network-nsg-overview/red.png)|
-|Azure portal|![Yes](./media/virtual-network-nsg-overview/green.png)|[![Yes][green]](virtual-networks-create-nsg-arm-pportal.md)|
-|PowerShell|[![Yes][green]](virtual-networks-create-nsg-classic-ps.md)|[![Yes][green]](virtual-networks-create-nsg-arm-ps.md)|
-|Azure CLI|[![Yes][green]](virtual-networks-create-nsg-classic-cli.md)|[![Yes][green]](virtual-networks-create-nsg-arm-cli.md)|
-|ARM template|![No](./media/virtual-network-nsg-overview/red.png)|[![Yes][green]](virtual-networks-create-nsg-arm-template.md)|
+|クラシック ポータル|![いいえ](./media/virtual-network-nsg-overview/red.png)|![いいえ](./media/virtual-network-nsg-overview/red.png)|
+|Azure ポータル|![はい](./media/virtual-network-nsg-overview/green.png)|[![はい][green]](virtual-networks-create-nsg-arm-pportal.md)|
+|PowerShell|[![はい][green]](virtual-networks-create-nsg-classic-ps.md)|[![はい][green]](virtual-networks-create-nsg-arm-ps.md)|
+|Azure CLI|[![はい][green]](virtual-networks-create-nsg-classic-cli.md)|[![はい][green]](virtual-networks-create-nsg-arm-cli.md)|
+|ARM テンプレート|![いいえ](./media/virtual-network-nsg-overview/red.png)|[![はい][green]](virtual-networks-create-nsg-arm-template.md)|
 
-|**Key**|![Yes](./media/virtual-network-nsg-overview/green.png) Supported.|![No](./media/virtual-network-nsg-overview/red.png) Not Supported.|
+|**キー**|![はい](./media/virtual-network-nsg-overview/green.png) サポートされています。|![いいえ](./media/virtual-network-nsg-overview/red.png) サポートされていません。|
 |---|---|---|
 
-## <a name="planning"></a>Planning
+## 計画
 
-Before implementing NSGs, you need to answer the questions below:   
+NSG を実装する前に、次の質問への回答を用意する必要があります。
 
-1. What types of resources do you want to filter traffic to or from (NICs in the same VM, VMs or other resources such as cloud services or application service environments connected to the same subnet, or between resources connected to different subnets)?
+1. どのような種類のリソース間のトラフィックをフィルター処理する必要があるか (同じ VM 内の NIC 間、同じサブネットに接続されている VM 間またはクラウド サービスやアプリケーション サービス環境などのリソース間、異なるサブネットに接続されているリソース間のいずれか)。
 
-2. Are the resources you want to filter traffic to/from connected to subnets in existing VNets or will they be connected to new VNets or subnets?
+2. トラフィックをフィルター処理するリソースは、既存の VNet 内のサブネットに接続されているか、新しい VNet またはサブネットに接続されているか。
  
-For more information on planning for network security in Azure, read the [best practices for cloud services and network security](../best-practices-network-security.md). 
+Azure におけるネットワーク セキュリティの計画に関する詳細については、「[Microsoft クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md)」を参照してください。
 
-## <a name="design-considerations"></a>Design considerations
+## 設計上の考慮事項
 
-Once you know the answers to the questions in the [Planning](#Planning) section, review the following before defining your NSGs.
+「[計画](#Planning)」セクションの質問に対する回答を用意できたら、NSG を定義する前に、以下を確認します。
 
-### <a name="limits"></a>Limits
+### 制限
 
-You need to consider the following limits when designing your NSGs.
+NSG の設計時には、次の制限事項を考慮する必要があります。
 
-|**Description**|**Default Limit**|**Implications**|
+|**説明**|**既定の制限**|**説明**|
 |---|---|---|
-|Number of NSGs you can associate to a subnet, VM, or NIC|1|This means you cannot combine NSGs. Ensure all the rules needed for a given set of resources are included in a single NSG.|
-|NSGs per region per subscription|100|By default, a new NSG is created for each VM you create in the Azure portal. If you allow this default behavior, you will run out of NSGs quickly. Make sure you keep this limit in mind during your design, and separate your resources into multiple regions or subscriptions if necessary. |
-|NSG rules per NSG|200|Use a broad range of IP and ports to ensure you do not go over this limit. |
+|サブネット、VM、または NIC に関連付けられる NSG の数|1|NSG を組み合わせることはできません。特定のリソース セットに必要なすべてのルールが 1 つの NSG に含まれるようにしてください。|
+|サブスクリプションあたりのリージョンごとの NSG 数|100|既定では、Azure ポータルで作成する各 VM に新しい NSG が 1 つ作成されます。この既定の動作を許可すると、NSG はすぐに上限に達します。設計時はこの制限に留意し、必要に応じてリソースを複数のリージョンまたはサブスクリプションに分割してください。 |
+|NSG あたりの NSG ルール数|200|この上限を超えないように IP とポートの広い範囲を使用してください。 |
 
->[AZURE.IMPORTANT] Make sure you view all the [limits related to networking services in Azure](../azure-subscription-service-limits.md#networking-limits) before designing your solution. Some limits can be increased by opening a support ticket.
+>[AZURE.IMPORTANT] ソリューションを設計する前に、[Azure のネットワーク サービスに関連するすべての制限事項](../azure-subscription-service-limits.md#networking-limits)を確認してください。一部の制限は、サポート チケットを開いて引き上げることができます。
 
-### <a name="vnet-and-subnet-design"></a>VNet and subnet design
+### VNet とサブネットの設計
 
-Since NSGs can be applied to subnets, you can minimize the number of NSGs by grouping your resources by subnet, and applying NSGs to subnets.  If you decide to apply NSGs to subnets, you may find that existing VNets and subnets you have were not defined with NSGs in mind. You may need to define new VNets and subnets to support your NSG design. And deploy your new resources to your new subnets. You could then define a migration strategy to move existing resources to the new subnets. 
+NSG はサブネットに適用できるため、リソースをサブネットごとにグループ化し、NSG をサブネットに適用することで、NSG の数を最小限に抑えることができます。NSG をサブネットに適用することにしたものの、既存の VNet とサブネットが NSG のことを考えて定義されていないことがあります。用意した NSG 設計をサポートするために、VNet とサブネットを新たに定義する必要が生じる場合があります。このようなときは、新しいサブネットを作成して、新しいリソースをデプロイします。その後、新しいサブネットに既存のリソースを移動する移行戦略を定義できます。
 
-### <a name="special-rules"></a>Special rules
+### 特殊なルール
 
-You need to take into account the special rules listed below. Make sure you do not block traffic allowed by those rules, otherwise your infrastructure will not be able to communicate with essential Azure services.
+次に示す特殊なルールを考慮する必要があります。これらのルールで許可されるトラフィックをブロックしないでください。ブロックすると、インフラストラクチャが Azure の重要なサービスと通信できなくなります。
 
-- **Virtual IP of the Host Node:** Basic infrastructure services such as DHCP, DNS, and Health monitoring are provided through the virtualized host IP address 168.63.129.16. This public IP address belongs to Microsoft and will be the only virtualized IP address used in all regions for this purpose. This IP address maps to the physical IP address of the server machine (host node) hosting the virtual machine. The host node acts as the DHCP relay, the DNS recursive resolver, and the probe source for the load balancer health probe and the machine health probe. Communication to this IP address should not be considered as an attack.
+- **ホスト ノードの仮想 IP:** DHCP、DNS、および正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 を通じて提供されます。このパブリック IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使用される唯一の仮想化 IP アドレスです。この IP アドレスは、仮想マシンをホストしているサーバー マシン (ホスト ノード) の物理 IP アドレスにマッピングされます。ホスト ノードは、DHCP リレー、DNS の再帰的リゾルバー、および Load Balancer の正常性プローブとマシンの正常性プローブのプローブ元として機能します。この IP アドレスへの通信を攻撃と見なさないでください。
 
-- **Licensing (Key Management Service):** Windows images running in the virtual machines should be licensed. To do this, a licensing request is sent to the Key Management Service host servers that handle such queries. This will always be on outbound port 1688.
+- **ライセンス (キー管理サービス):** 仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。このためには、要求を処理するキー管理サービスのホスト サーバーにライセンス要求を送信します。これは、常に送信ポート 1688 上にあります。
 
-### <a name="icmp-traffic"></a>ICMP traffic
+### ICMP トラフィック
 
-The current NSG rules only allow for protocols *TCP* or *UDP*. There is not a specific tag for *ICMP*. However, ICMP traffic is allowed within a Virtual Network by default through the Inbound VNet rule(Default rule 65000 inbound) that allows traffic from/to any port and protocol within the VNet.
+現在の NSG のルールは、プロトコル *TCP* または *UDP* のみを許可します。*ICMP* 専用のタグはありません。ただし、ICMP トラフィックは、VNet 内で任意のポートおよびプロトコル間のトラフィックを許可する受信 VNet ルール (既定のルール 65000 受信) を通じて、既定で Virtual Network 内で許可されます。
 
-### <a name="subnets"></a>Subnets
+### サブネット
 
-- Consider the number of tiers your workload requires. Each tier can be isolated by using a subnet, with an NSG applied to the subnet. 
-- If you need to implement a subnet for a VPN gateway, or ExpressRoute circuit, make sure you do **NOT** apply an NSG to that subnet. If you do so, your cross VNet or cross premises connectivity will not work.
-- If you need to implement a virtual appliance, make sure you deploy the virtual appliance on its own subnet, so that your User Defined Routes (UDRs) can work correctly. You can implement a subnet level NSG to filter traffic in and out of this subnet. Learn more about [how to control traffic flow and use virtual appliances](virtual-networks-udr-overview.md).
+- ワークロードに必要な階層の数を考慮してください。サブネットを使用して各層を分離し、NSG をそのサブネットに適用できます。
+- VPN ゲートウェイまたは ExpressRoute 回線用のサブネットを実装する必要がある場合は、そのサブネットに NSG を**適用しない**ようにします。適用すると、VNet 間接続またはクロス プレミス接続が機能しません。
+- 仮想アプライアンスを実装する必要がある場合は、ユーザー定義のルート (UDR) が正しく機能するように、必ず専用のサブネットに仮想アプライアンスをデプロイしてください。サブネット レベルの NSG を実装して、このサブネットに出入りするトラフィックをフィルター処理できます。詳細については、[トラフィック フローを制御し、仮想アプライアンスを使用する方法](virtual-networks-udr-overview.md)に関するページを参照してください。
 
-### <a name="load-balancers"></a>Load balancers
+### ロード バランサー
 
-- Consider the load balancing and NAT rules for each load balancer being used by each of your workloads.These rules are bound to a back end pool that contains NICs (Resource Manager deployments) or VMs/role instances (classic deployments). Consider creating an NSG for each back end pool, allowing only traffic mapped through the rules implemented in the load balancers. That guarantees that traffic coming to the backend pool directly, without passing through the load balancer, is also filtered.
-- In classic deployments, you create endpoints that map ports on a load balancer to ports on your VMs or role instances. You can also create your own individual public facing load balancer in a Resource Manager deployment. If you are restricting traffic to VMs and role instances that are part of a backend pool in a load balancer by using NSGs, keep in mind that the destination port for the incoming traffic is the actual port in the VM or role instance, not the port exposed by the load balancer. Also keep in mind that the source port and address for the connection to the VM is a port and address on the remote computer in the Internet, not the port and address exposed by the load balancer.
-- Similar to public facing load balancers, when you create NSGs to filter traffic coming through an internal load balancer (ILB), you need to understand that the source port and address range applied are the ones from the computer originating the call, not the load balancer. And the destination port and address range are related to the computer receiving the traffic, not the load balancer.
+- 各ワークロードで使用されているロード バランサーごとに負荷分散と NAT に関するルールを検討してください。これらのルールは、NIC (リソース マネージャー デプロイ) または VM/ロール インスタンス (クラシック デプロイ) が属しているバックエンド プールにバインドされています。ロード バランサーに実装されたルールでマップされたトラフィックのみを許可する NSG をバックエンド プールごとに作成することを検討してください。これにより、ロード バランサーを経由せずにバックエンド プールに直接送信されるトラフィックも確実にフィルター処理されます。
+- クラシック デプロイでは、ロード バランサーのポートを VM またはロール インスタンスのポートにマップするエンドポイントを作成します。リソース マネージャー デプロイでは、パブリックに公開されたロード バランサーを自分で個別に作成することもできます。ロード バランサー内のバックエンド プールに属する VM とロール インスタンスへのトラフィックを NSG で制限している場合は、受信トラフィックの宛先ポートが、ロード バランサーによって公開されているポートではなく、VM またはロール インスタンスの実際のポートであることに注意してくださいまた、VM への接続用の発信元ポートとアドレスは、ロード バランサーによって公開されているポートとアドレスではなく、インターネット上にあるリモート コンピューターの発信元ポートとアドレスであることに注意してください。
+- パブリックに公開されたロード バランサーと同様に、内部ロード バランサー (ILB) を経由するトラフィックをフィルター処理する NSG を作成する場合は、適用される発信元ポートとアドレス範囲が、ロード バランサーではなく、呼び出しを開始するコンピューターのものであることを理解しておく必要があります。宛先ポートとアドレス範囲は、ロード バランサーではなく、トラフィックを受信するコンピューターに関連付けられています。
 
-### <a name="other"></a>Other
+### その他
 
-- Endpoint-based ACLs and NSGs are not supported on the same VM instance. If you want to use an NSG and have an endpoint ACL already in place, first remove the endpoint ACL. For information about how to do this, see [Manage endpoint ACLs](virtual-networks-acl-powershell.md).
-- In the Resource Manager deployment model, you can use an NSG associated to a NIC for VMs with multiple NICs to enable management (remote access) by NIC, therefore segregating traffic.
-- Similar to the use of load balancers, when filtering traffic from other VNets, you must use the source address range of the remote computer, not the gateway connecting the VNets.
-- Many Azure services cannot be connected to Azure Virtual Networks and therefore, traffic to and from them cannot be filtered with NSGs.  Read the documentation for the services you use to determine whether or not they can be connected to VNets.
+- エンドポイント ベースの ACL と NSG は、同じ VM インスタンスではサポートされません。エンドポイントの ACL が既に導入されている場合に NSG を使用するには、初めにエンドポイントの ACL を削除します。これを行う方法については、[エンドポイント ACL の管理に関するページ](virtual-networks-acl-powershell.md)を参照してください。
+- リソース マネージャー デプロイ モデルの場合、複数の NIC を持つ VM で 1 つの NIC に 1 つの NSG を関連付けて、NIC ごとの管理 (リモート アクセス) を有効にし、トラフィックを分離できます。
+- ロード バランサーを使用する場合と同様に、他の VNet からのトラフィックをフィルター処理する際は、VNet に接続しているゲートウェイではなく、リモート コンピューターの発信元アドレス範囲を使用する必要があります。
+- 多くの Azure サービスは、Azure Virtual Network に接続することはできないため、NSG を使用してそれらの間のトラフィックをフィルター処理することはできません。VNet に接続できるかどうかを判断するには、使用しているサービスのドキュメントを参照してください。
 
-## <a name="sample-deployment"></a>Sample deployment
+## サンプル デプロイメント
 
-To illustrate the application of the information in this article, we’ll define NSGs to filter network traffic for a two tier workload solution with the following requirements:
+この記事の内容の応用例を示すために、次の要件を持つ 2 層構成のワークロード ソリューションについてネットワーク トラフィックをフィルター処理する NSG を定義します。
 
-1. Separation of traffic between front end (Windows web servers) and back end (SQL database servers).
-2. Load balancing rules forwarding traffic to the load balancer to all web servers on port 80.
-3. NAT rules forwarding traffic coming in port 50001 on load balancer to port 3389 on only one VM in the front end.
-4. No access to the front end or back end VMs from the Internet, with exception of requirement number 1.
-5. No access from the front end or back end to the Internet.
-6. Access to port 3389 to any web server in the front end, for traffic coming from the front end subnet itself.
-7. Access to port 3389 to all SQL Server VMs in the back end from the front end subnet only.
-8. Access to port 1433 to all SQL Server VMs in the back end from the front end subnet only.
-9. Separation of management traffic (port 3389) and database traffic (1433) on different NICs in the back end VMs.
+1. フロントエンド (Windows Web サーバー) とバックエンド (SQL Database サーバー) の間のトラフィックを分離
+2. トラフィックをロード バランサーを経由してすべての Web サーバーのポート 80 に転送する負荷分散ルール
+3. ロード バランサーのポート 50001 に送信されるトラフィックをフロント エンド内の 1 つの VM のポート 3389 に転送する NAT ルール
+4. 要件番号 1 を除き、インターネットからフロントエンドまたはバックエンドの VM へのアクセスを拒否
+5. フロントエンドまたはバックエンドからインターネットへのアクセスを拒否
+6. フロントエンドのサブネットから送信されたトラフィックに対して、フロントエンドにある任意の Web サーバーのポート 3389 へのアクセスを許可
+7. フロントエンドのサブネットのみからバックエンドのすべての SQL Server VM のポート 3389 へのアクセスを許可
+8. フロントエンドのサブネットのみからバックエンドのすべての SQL Server VM のポート 1433 へのアクセスを許可
+9. バックエンド VM の複数の NIC で管理トラフィック (ポート 3389) とデータベース トラフィック (ポート 1433) を分離
 
-![NSGs](./media/virtual-network-nsg-overview/figure1.png)
+![NSG](./media/virtual-network-nsg-overview/figure1.png)
 
-As seen in the diagram above, the *Web1* and *Web2* VMs are connected to the *FrontEnd* subnet, and the *DB1* and *DB2* VMs are connected to the *BackEnd* subnet.  Both subnets are part of the *TestVNet* VNet. All resources are assigned to the *West US* Azure region.
+上の図に示すように、*Web1* VM と *: Web2* VM が*フロントエンド* サブネットに接続され、*DB1* VM と *DB2* VM が*バックエンド* サブネットに接続されています。どちらのサブネットも *TestVNet* VNet の一部です。すべてのリソースが*米国西部* Azure リージョンに割り当てられています。
 
-Requirements 1-6 (with exception of 3) above are all confined to subnet spaces. To minimize the number of rules required for each NSG, and to make it easy to add additional VMs to the subnets running the same workload types as the existing VMs, we can implement the following subnet level NSGs.
+上記の要件 1 ～ 6 (3 を除く) は、すべてサブネット空間に限定されます。次のサブネット レベル NSG を実装すると、各 NSG で必要となるルールの数を最小限に抑えることができ、既存の VM と同じ種類のワークロードを実行している VM をサブネットに容易に追加できます。
 
-### <a name="nsg-for-frontend-subnet"></a>NSG for FrontEnd subnet
+### フロントエンド サブネット向けの NSG
 
-**Incoming rules**
+**受信ルール**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|ルール|Access (アクセス)|優先順位|発信元アドレス範囲|発信元ポート|宛先アドレス範囲|宛先ポート|プロトコル|
 |---|---|---|---|---|---|---|---|
-|allow HTTP|Allow|100|INTERNET|\*|\*|80|TCP|
-|allow RDP from FrontEnd|Allow|200|192.168.1.0/24|\*|\*|3389|TCP|
-|deny anything from Internet|Deny|300|INTERNET|\*|\*|\*|TCP|
+|HTTP を許可する|許可|100|INTERNET|*|*|80|TCP|
+|フロントエンドからの RDP を許可する|許可|200|192\.168.1.0/24|*|*|3389|TCP|
+|インターネットからのすべてのアクセスを拒否する|拒否|300|INTERNET|*|*|*|TCP|
 
-**Outgoing rules**
+**送信ルール**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|ルール|Access (アクセス)|優先順位|発信元アドレス範囲|発信元ポート|宛先アドレス範囲|宛先ポート|プロトコル|
 |---|---|---|---|---|---|---|---|
-|deny Internet|Deny|100|\*|\*|INTERNET|\*|\*|
+|インターネットを拒否する|拒否|100|*|*|INTERNET|*|*|
 
-### <a name="nsg-for-backend-subnet"></a>NSG for BackEnd subnet
+### バックエンド サブネット向けの NSG
 
-**Incoming rules**
+**受信ルール**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|ルール|Access (アクセス)|優先順位|発信元アドレス範囲|発信元ポート|宛先アドレス範囲|宛先ポート|プロトコル|
 |---|---|---|---|---|---|---|---|
-|deny Internet|Deny|100|INTERNET|\*|\*|\*|\*|
+|インターネットを拒否する|拒否|100|INTERNET|*|*|*|*|
 
-**Outgoing rules**
+**送信ルール**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|ルール|Access (アクセス)|優先順位|発信元アドレス範囲|発信元ポート|宛先アドレス範囲|宛先ポート|プロトコル|
 |---|---|---|---|---|---|---|---|
-|deny Internet|Deny|100|\*|\*|INTERNET|\*|\*|
+|インターネットを拒否する|拒否|100|*|*|INTERNET|*|*|
 
-### <a name="nsg-for-single-vm-(nic)-in-frontend-for-rdp-from-internet"></a>NSG for single VM (NIC) in FrontEnd for RDP from Internet
+### インターネットからの RDP に対するフロントエンド内の単一 VM (NIC) 向けの NSG
 
-**Incoming rules**
+**受信ルール**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|ルール|Access (アクセス)|優先順位|発信元アドレス範囲|発信元ポート|宛先アドレス範囲|宛先ポート|プロトコル|
 |---|---|---|---|---|---|---|---|
-|allow RDP from Internet|Allow|100|INTERNET|*|\*|3389|TCP|
+|インターネットからの RDP を許可する|許可|100|INTERNET|*|*|3389|TCP|
 
->[AZURE.NOTE] Notice how the source address range for this rule is **Internet**, and not the VIP for the load balancer; the source port is **\***, not 500001. Do not get confused between NAT rules/load balancing rules and NSG rules. The NSG rules are always related to the original source and final destination of traffic, **NOT** the load balancer between the two. 
+>[AZURE.NOTE] このルールの発信元アドレス範囲はロード バランサーの VIP ではなく**インターネット**で、発信元ポートは 500001 ではなく ***** である点に注意してください。NAT ルール/負荷分散ルールと NSG ルールを混同しないようにしてください。NSG ルールは、常にトラフィックの最初の発信元と最終的な宛先に関連付けられ、両者の間にあるロード バランサーは**関係しません**。
 
-### <a name="nsg-for-management-nics-in-backend"></a>NSG for management NICs in BackEnd
+### バックエンドの管理 NIC 向けの NSG
 
-**Incoming rules**
+**受信ルール**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|ルール|Access (アクセス)|優先順位|発信元アドレス範囲|発信元ポート|宛先アドレス範囲|宛先ポート|プロトコル|
 |---|---|---|---|---|---|---|---|
-|allow RDP from front end|Allow|100|192.168.1.0/24|*|\*|3389|TCP|
+|フロント エンドからの RDP を許可する|許可|100|192\.168.1.0/24|*|*|3389|TCP|
 
-### <a name="nsg-for-database-access-nics-in-back-end"></a>NSG for database access NICs in back end
+### バック エンドのデータベース アクセス NIC 向けの NSG
 
-**Incoming rules**
+**受信ルール**
 
-|Rule|Access|Priority|Source address range|Source port|Destination address range|Destination port|Protocol|
+|ルール|Access (アクセス)|優先順位|発信元アドレス範囲|発信元ポート|宛先アドレス範囲|宛先ポート|プロトコル|
 |---|---|---|---|---|---|---|---|
-|allow SQL from front end|Allow|100|192.168.1.0/24|*|\*|1433|TCP|
+|フロント エンドからの SQL を許可する|許可|100|192\.168.1.0/24|*|*|1433|TCP|
 
-Since some of the NSGs above need to be associated to individual NICs, you need to deploy this scenario as a Resource Manager deployment. Notice how rules are combined for subnet and NIC level, depending on how they need to be applied. 
+上記の NSG のいくつかは個々の NIC に関連付ける必要があるため、このシナリオはリソース マネージャー デプロイとしてデプロイする必要があります。サブネット レベルのルールと NIC レベルのルールが、それぞれに必要な適用方法に応じて、どのように組み合わされているかに注目してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Deploy NSGs in the classic deployment model](virtual-networks-create-nsg-classic-ps.md).
-- [Deploy NSGs in Resource Manager](virtual-networks-create-nsg-arm-pportal.md).
-- [Manage NSG logs](virtual-network-nsg-manage-log.md).
+- [クラシック デプロイメント モデルで NSG をデプロイします](virtual-networks-create-nsg-classic-ps.md)。
+- [リソース マネージャーで NSG をデプロイします](virtual-networks-create-nsg-arm-pportal.md)。
+- [NSG のログを管理します](virtual-network-nsg-manage-log.md)。
 
 [green]: ./media/virtual-network-nsg-overview/green.png
 [yellow]: ./media/virtual-network-nsg-overview/yellow.png
 [red]: ./media/virtual-network-nsg-overview/red.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!-------HONumber=AcomDC_0907_2016-->

@@ -1,59 +1,54 @@
 <properties
-    pageTitle="Azure Active Directory B2C: Custom attributes | Microsoft Azure"
-    description="How to use custom attributes in Azure Active Directory B2C to collect information about your consumers"
-    services="active-directory-b2c"
-    documentationCenter=""
-    authors="swkrish"
-    manager="mbaldwin"
-    editor="bryanla"/>
+	pageTitle="Azure Active Directory B2C: カスタム属性 | Microsoft Azure"
+	description="Azure Active Directory B2C でカスタム属性を使用してコンシューマーに関する情報を収集する方法"
+	services="active-directory-b2c"
+	documentationCenter=""
+	authors="swkrish"
+	manager="msmbaldwin"
+	editor="bryanla"/>
 
 <tags
-    ms.service="active-directory-b2c"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/24/2016"
-    ms.author="swkrish"/>
+	ms.service="active-directory-b2c"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/24/2016"
+	ms.author="swkrish"/>
 
+#  Azure Active Directory B2C: カスタム属性を使用してコンシューマーに関する情報を収集する
 
-#  <a name="azure-active-directory-b2c:-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: Use custom attributes to collect information about your consumers
-
-Your Azure Active Directory (Azure AD) B2C directory comes with a built-in set of information (attributes): Given Name, Surname, City, Postal Code, and other attributes. However, every consumer-facing application has unique requirements on what attributes to gather from consumers. With Azure AD B2C, you can extend the set of attributes stored on each consumer account. You can create custom attributes on the [Azure portal](https://portal.azure.com/) and use it in your sign-up policies, as shown below. You can also read and write these attributes by using the [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md).
+Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの情報セット (属性) が用意されています (名、姓、市区町村、郵便番号など)。ただし、どのようなコンシューマー向けアプリケーションにも、コンシューマーから収集する属性について固有の要件があります。Azure AD B2C では、各コンシューマー アカウントで保持される属性セットを拡張できます。以下で示すように、[Azure ポータル](https://portal.azure.com/)でカスタム属性を作成し、サインアップ ポリシーで使用できます。また、[Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用してこれらの属性を読み書きすることもできます。
 
 > [AZURE.NOTE]
-Custom attributes use [Azure AD Graph API Directory Schema Extensions](https://msdn.microsoft.com/library/azure/dn720459.aspx).
+カスタム属性では、[Azure AD Graph API ディレクトリ スキーマ拡張機能](https://msdn.microsoft.com/library/azure/dn720459.aspx)が使用されています。
 
-## <a name="create-a-custom-attribute"></a>Create a custom attribute
+## カスタム属性を作成する
 
-1. [Follow these steps to navigate to the B2C features blade on the Azure portal](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Click **User attributes**.
-3. Click **+Add** at the top of the blade.
-4. Provide a **Name** for the custom attribute (for example, "ShoeSize") and optionally, a **Description**. Click **Create**.
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+2. **[ユーザー属性]** をクリックします。
+3. ブレードの上部にある **[+追加]** をクリックします。
+4. **[名前]** にカスタム属性の名前を入力し (例: "ShoeSize")、必要に応じて **[説明]** を入力します。**[作成]** をクリックします。
 
     > [AZURE.NOTE]
-    Only the "String" **Data Type** is currently available.
+    現時点では、"String" **データ型**のみを使用できます。
 
-The custom attribute is now available in the list of **User attributes**, and for use in your sign-up policies.
+**[ユーザー属性]** の一覧およびサインアップ ポリシーで、カスタム属性を使用できるようになります。
 
-## <a name="use-a-custom-attribute-in-your-sign-up-policy"></a>Use a custom attribute in your sign-up policy
+## サインアップ ポリシーでカスタム属性を使用する
 
-1. [Follow these steps to navigate to the B2C features blade on the Azure portal](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade).
-2. Click **Sign-up policies**.
-3. Click your sign-up policy (for example, "B2C_1_SiUp") to open it. Click **Edit** at the top of the blade.
-4. Click **Sign-up attributes** and select the custom attribute (for example, "ShoeSize"). Click **OK**.
-5. Click **Application claims** and select the custom attribute. Click **OK**.
-6. Click **Save** at the top of the blade.
+1. [この手順に従って、Azure ポータルで B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade)。
+2. **[サインアップ ポリシー]** をクリックします。
+3. クリックしてサインアップ ポリシーを開きます (例: "B2C\_1\_SiUp")。ブレードの上部にある **[編集]** をクリックします。
+4. **[サインアップ属性]** をクリックして、カスタム属性 (例: "ShoeSize") を選択します。**[OK]** をクリックします。
+5. **[アプリケーションの要求]** をクリックして、カスタム属性を選択します。**[OK]** をクリックします。
+6. ブレードの上部にある **[保存]** をクリックします。
 
-You can use the "Run now" feature on the policy to verify the consumer experience. You should now see "ShoeSize" in the list of attributes collected during consumer sign-up, and see it in the token sent back to your application.
+ポリシーで [今すぐ実行] 機能を使用して、コンシューマー エクスペリエンスを確認できます。コンシューマーのサインアップ時に収集される属性の一覧、およびアプリケーションに返送されるトークンに、"ShoeSize" が表示されるようになります。
 
-## <a name="notes"></a>Notes
+## メモ
 
-- Along with sign-up policies, custom attributes can also be used in sign-up or sign-in policies and profile editing policies.
-- There is a known limitation of custom attributes. It is only created the first time it is used in any policy, and not when you add it to the list of **User attributes**.
+- サインアップ ポリシーと共に、カスタム属性をサインアップ/サインイン ポリシーおよびプロファイル編集ポリシーとして使用することもできます。
+- カスタム属性には既知の制限があります。カスタム属性が作成されるのは、いずれかのポリシーで初めて使用されるときだけであり、**[ユーザー属性]** の一覧に追加されるときではありません。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

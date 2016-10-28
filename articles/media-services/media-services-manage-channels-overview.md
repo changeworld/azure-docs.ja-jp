@@ -1,176 +1,169 @@
 <properties 
-    pageTitle="Overview of Live Steaming using Azure Media Services | Microsoft Azure" 
-    description="This topic gives an overview of live steaming using Azure Media Services." 
-    services="media-services" 
-    documentationCenter="" 
-    authors="Juliako" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Azure Media Services を使用したライブ ストリーミングの概要 | Microsoft Azure" 
+	description="このトピックでは、Azure Media Services を使用したライブ ストリーミングの概要を説明します。" 
+	services="media-services" 
+	documentationCenter="" 
+	authors="Juliako" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="media-services" 
-    ms.workload="media" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="ne" 
-    ms.topic="article" 
-    ms.date="10/12/2016"
-    ms.author="juliako"/>
+	ms.service="media-services" 
+	ms.workload="media" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="ne" 
+	ms.topic="article" 
+	ms.date="09/19/2016"
+	ms.author="juliako"/>
+
+#Azure Media Services を使用したライブ ストリーミングの概要
+
+##Overview
+
+Azure Media Services を使用してライブ ストリーミング イベントを配信する場合、通常、次のコンポーネントが必要になります。
+
+- イベントのブロードキャストに使用されるカメラ。
+- カメラからの信号をライブ ストリーミング サービスに送信されるストリームに変換するライブ ビデオ エンコーダー。
+
+	(省略可) ライブ ストリーミングのタイミングを同期させた複数のエンコーダー。非常に高い可用性と高品質が要求される重要なライブ イベントでは、タイミングを同期させたアクティブ/アクティブの冗長エンコーダーを使用して、データを失わないシームレスなフェールオーバーを実現することをお勧めします。
+- 次の操作を実行できるライブ ストリーミング サービス。
+	
+	- さまざまなライブ ストリーミング プロトコル (RTMP、スムーズ ストリーミングなど) を使用してライブ コンテンツを取り込む。
+	- (省略可) ストリームをアダプティブ ビットレート ストリームにエンコードする。
+	- ライブ ストリームをプレビューする。
+	- 後でストリーミングするために、取り込んだコンテンツを記録して保存する (ビデオ オン デマンド)。
+	- コンテンツを一般的なストリーミング プロトコル (MPEG DASH、Smooth、HLS、HDS など) を使用して顧客に配信したり、再配布のための Content Delivery Network (CDN) に直接配信する。
 
 
-#<a name="overview-of-live-steaming-using-azure-media-services"></a>Overview of Live Steaming using Azure Media Services
+**Microsoft Azure Media Services** (AMS) は、ライブ ストリーミング コンテンツの取り込み、エンコード、プレビュー、保存、配信を行う機能を提供します。
 
-##<a name="overview"></a>Overview
+コンテンツを顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。これを実現するには、ライブ エンコーダーを使用して、ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。異なるデバイスでのストリーミングに対応するには、Media Services の[動的パッケージ](media-services-dynamic-packaging-overview.md)を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。Media Services で配信がサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、MPEG DASH、HDS (Adobe PrimeTime/Access のライセンスが必要) です。
 
-When delivering live streaming events with Azure Media Services the following components are commonly involved:
+Azure Media Services、**チャネル**、**プログラム**、**ストリーミング エンドポイント**で、インジェスト、書式設定、DVR、セキュリティ、スケーラビリティ、冗長性などのすべてのライブ ストリーミングの機能を処理します。
 
-- A camera that is used to broadcast an event.
-- A live video encoder that converts signals from the camera to streams that are sent to a live streaming service.
+**チャネル**は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。チャネルは次の方法でライブ入力ストリームを受信できます。
 
-    Optionally, multiple live time synchronized encoders. For certain critical live events that demand very high availability and quality of experience, it is recommended to employ active-active redundant encoders with time synchronization to achieve seamless failover with no data loss.
-- A live streaming service that enables you to do the following:
-    
-    - ingest live content using various live streaming protocols (for example RTMP or Smooth Streaming),
-    - (optionally) encode your stream into adaptive bitrate stream
-    - preview your live stream,
-    - record and store the ingested content in order to be streamed later (Video-on-Demand)
-    - deliver the content through common streaming protocols (for example, MPEG DASH, Smooth, HLS, HDS) directly to your customers, or to a Content Delivery Network (CDN) for further distribution.
+- オンプレミスのライブ エンコーダーは、マルチビットレート **RTMP** または**スムーズ ストリーミング** (Fragmented MP4) を、**パススルー**配信用に設定されたチャネルに送信します。**パススルー配信**とは、取り込んだストリームが、追加の処理なしで**チャネル**を通過することをいいます。マルチ ビットレートのスムーズ ストリーミングを出力するライブ エンコーダーとして、Elemental、Envivio、Cisco を使用できます。Adobe Flash Media Live Encoder (FMLE)、Telestream Wirecast、Tricaster トランスコーダーは、RTMP を出力するライブ エンコーダーです。ライブ エンコーダーは、ライブ エンコードが有効になっていないチャネルにシングル ビットレート ストリームも送信できますが、これはお勧めしません。Media Services は、要求に応じて、ストリームを顧客に配信します。
+
+	>[AZURE.NOTE] 長期にわたって複数のイベントを配信する場合で、かつオンプレミスのエンコーダーを既に導入済みである場合、ライブ ストリーミングの手段としてはパススルー方式が最も低コストです。詳しくは、[価格情報](/pricing/details/media-services/)ページを参照してください。
+	
+	
+- オンプレミスのライブ エンコーダーは、RTMP またはスムーズ ストリーミング (Fragmented MP4) のいずれかの形式で、シングル ビットレート ストリームを Media Services によるライブ エンコードが有効なチャネルに送信します。また、RTP (MPEG-TS) もサポートされています (Azure データ センターへの専用接続がある場合)。RTMP を出力するライブ エンコーダーである Telestream Wirecast と FMLE が、この種類のチャネルで機能することがわかっています。次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 
-**Microsoft Azure Media Services** (AMS) provides the ability to ingest,  encode, preview, store, and deliver your live streaming content.
+Media Services 2.10 リリース以降、チャネルを作成するときに、チャネルで入力ストリームを受信する方法、およびチャネルでストリームのライブ エンコードを実行するかどうかを指定できます。2 つのオプションがあります。
 
-When delivering your content to customers your goal is to deliver a high quality video to various devices under different network conditions. To achieve this, use live encoders to encode your stream to a multi-bitrate (adaptive bitrate) video stream.  To take care of streaming on different devices, use Media Services [dynamic packaging](media-services-dynamic-packaging-overview.md) to dynamically re-package your stream to different protocols. Media Services supports delivery of the following adaptive bitrate streaming technologies: HTTP Live Streaming (HLS), Smooth Streaming, MPEG DASH, and HDS (for Adobe PrimeTime/Access licensees only).
+- **なし** (パススルー) – オンプレミスのライブ エンコーダーを使用してマルチビットレート ストリーム (パススルー ストリーム) を出力する場合には、この値を指定します。この場合は、受信ストリームはエンコードなしで出力に渡されます。これは、2.10 リリースより前のチャネル動作です。
 
-In Azure Media Services, **Channels**, **Programs**, and **StreamingEndpoints** handle all the live streaming functionalities including ingest, formatting, DVR, security, scalability and redundancy.
+- **Standard** – Media Services を使用して、シングル ビットレートのライブ ストリームをマルチ ビットレート ストリームにエンコードする場合に、この値を選択します。この方式は、頻度の低いイベントですばやくスケールアップする場合に、より経済的です。ライブ エンコードは課金に影響することと、ライブ エンコード チャネルを "実行中" 状態のままにしておくと請求料金が課されることに注意してください。余分な時間料金を課されないようにするために、ライブ ストリーミング イベントが完了したら、チャネルの実行をすぐに停止することをお勧めします。
 
-A **Channel** represents a pipeline for processing live streaming content. A Channel can receive a live input streams in the following ways:
+##チャネルの種類の比較
 
-- An on-premises live encoder sends multi-bitrate **RTMP** or **Smooth Streaming** (fragmented MP4) to the Channel that is configured for **pass-through** delivery. The **pass-through** delivery is when the ingested streams pass through **Channel**s without any further processing. You can use the following live encoders that output multi-bitrate Smooth Streaming: Elemental, Envivio, Cisco.  The following live encoders output RTMP: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, and Tricaster transcoders.  A live encoder can also send a single bitrate stream to a channel that is not enabled for live encoding, but that is not recommended. When requested, Media Services delivers the stream to customers.
+次の表では、Media Services でサポートされている 2 種類のチャネルを比較し、説明しています。
 
-    >[AZURE.NOTE] Using a pass-through method is the most economical way to do live streaming when you are doing multiple events over a long period of time, and you have already invested in on-premises encoders. See [pricing](/pricing/details/media-services/) details.
-    
-    
-- An on-premises live encoder sends a single-bitrate stream to the Channel that is enabled to perform live encoding with Media Services in one of the following formats: RTMP or Smooth Streaming (fragmented MP4). RTP (MPEG-TS) is also supported, provided you have a dedicated connection to the Azure data center. The following live encoders with RTMP output are known to work with channels of this type: Telestream Wirecast, FMLE. The Channel then performs live encoding of the incoming single bitrate stream to a multi-bitrate (adaptive) video stream. When requested, Media Services delivers the stream to customers.
-
-
-Starting with the Media Services 2.10 release, when you create a Channel, you can specify in which way you want for your channel to receive the input stream and whether or not you want for the channel to perform live encoding of your stream. You have two options:
-
-- **None** (pass-through) – Specify this value, if you plan to use an on-premises live encoder which will output multi-bitrate stream (a pass-through stream). In this case, the incoming stream passed through to the output without any encoding. This is the behavior of a Channel prior to 2.10 release.  
-
-- **Standard** – Choose this value, if you plan to use Media Services to encode your single bitrate live stream to multi-bitrate stream. This method is more economical for scaling up quickly for infrequent events. Be aware that there is a billing impact for live encoding and you should remember that leaving a live encoding channel in the "Running" state will incur billing charges.  It is recommended that you immediately stop your running channels after your live streaming event is complete to avoid extra hourly charges. 
-
-##<a name="comparison-of-channel-types"></a>Comparison of Channel Types
-
-Following table provides a guide to comparing the two Channel types supported in Media Services
-
-Feature|Pass-through Channel|Standard Channel
+機能|パススルー チャネル|標準チャネル
 ---|---|---
-Single bitrate input is encoded into multiple bitrates in the cloud|No|Yes
-Maximum resolution, number of layers|1080p, 8 layers, 60+fps|720p, 6 layers, 30 fps
-Input protocols|RTMP, Smooth Streaming|RTMP, Smooth Streaming, and RTP
-Price|See the [pricing page](/pricing/details/media-services/) and click on "Live Video" tab|See the [pricing page](/pricing/details/media-services/) 
-Maximum run time|24x7|8 hours
-Support for inserting slates|No|Yes
-Support for ad signaling|No|Yes
-Pass-through CEA 608/708 captions|Yes|Yes
-Ability to recover from brief stalls in contribution feed|Yes|No (Channel will begin slating after 6+ seconds w/o input data)
-Support for non-uniform input GOPs|Yes|No – input must be fixed 2sec GOPs
-Support for variable frame rate input|Yes|No – input must be fixed frame rate.<br/>Minor variations are tolerated, for example, during high motion scenes. But encoder cannot drop to 10 frames/sec.
-Auto-shutoff of Channels when input feed is lost|No|After 12 hours, if there is no Program running 
+シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる|なし|はい
+最大解像度、層の数|1080p、8 層、60 fps 以上|720p、6 層、30 fps
+入力プロトコル|RTMP、スムーズ ストリーミング|RTMP、スムーズ ストリーミング、RTP
+料金|[価格に関するページ](/pricing/details/media-services/)を参照し、[ライブ ビデオ] タブをクリックしてください。|[価格に関するページ](/pricing/details/media-services/)を参照してください。 
+最長実行時間|24 時間 365 日|8 時間
+スレートの挿入のサポート|なし|はい
+広告信号のサポート|なし|はい
+パススルー CEA 608/708 キャプション|はい|はい
+投稿フィードでの短時間の停止から回復する機能|はい|なし (6 秒経過しても入力データがない場合、チャネルはスレートを開始します)
+均一でない入力 GOP のサポート|はい|いいえ – 入力は固定の 2 秒の GOP である必要があります
+可変フレーム レートの入力のサポート|はい|いいえ – 入力は固定のフレーム レートである必要があります。<br/>たとえば、ハイ モーションのシーンの間、わずかな変化は許容されます。しかし、エンコーダーは 10 フレーム/秒に下げることはできません。
+入力フィードがなくなった場合のチャネルの自動停止|なし|12 時間後 (実行中のプログラムがない場合) 
 
-##<a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-(pass-through)"></a>Working with Channels that receive multi-bitrate live stream from on-premises encoders (pass-through)
+##オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルを操作する (パススルー)
 
-The following diagram shows the major parts of the AMS platform that are involved in the **pass-through** workflow.
+次の図は、**パススルー** ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
 
-![Live workflow](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
+![ライブ ワークフロー](./media/media-services-live-streaming-workflow/media-services-live-streaming-current.png)
 
-For more information, see [Working with Channels that Receive Multi-bitrate Live Stream from On-premises Encoders](media-services-live-streaming-with-onprem-encoders.md).
+詳細については、[オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの操作](media-services-live-streaming-with-onprem-encoders.md)に関するページを参照してください。
 
-##<a name="working-with-channels-that-are-enabled-to-perform-live-encoding-with-azure-media-services"></a>Working with Channels that are enabled to perform live encoding with Azure Media Services
+##Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する
 
-The following diagram shows the major parts of the AMS platform that are involved in Live Streaming workflow where a Channel is enabled to perform live encoding with Media Services.
+次の図は、Media Services による Live Encoding の実行が有効なチャネルのライブ ストリーミング ワークフローに関連する AMS プラットフォームの主要な部分を示しています。
 
-![Live workflow](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
+![ライブ ワークフロー](./media/media-services-live-streaming-workflow/media-services-live-streaming-new.png)
 
-For more information, see [Working with Channels that are Enabled to Perform Live Encoding with Azure Media Services](media-services-manage-live-encoder-enabled-channels.md).
+詳細については、「[Azure Media Services を使用してライブ エンコードの実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)」をご覧ください。
 
-##<a name="description-of-a-channel-and-its-related-components"></a>Description of a Channel and its related components
+##チャネルとその関連コンポーネントの説明
 
-###<a name="channel"></a>Channel
+###チャネル
 
-In Media Services, [Channel](https://msdn.microsoft.com/library/azure/dn783458.aspx)s are responsible for processing live streaming content. A Channel provides an input endpoint (ingest URL) that you then provide to a live transcoder. The channel receives live input streams from the live transcoder and makes it available for streaming through one or more StreamingEndpoints. Channels also provide a preview endpoint (preview URL) that you use to preview and validate your stream before further processing and delivery.
+Media Services においてライブ ストリーミング コンテンツの処理を担うのが[チャネル](https://msdn.microsoft.com/library/azure/dn783458.aspx)です。チャネルは入力エンドポイントであり、その取り込み URL をライブ トランスコーダーに対して指定します。チャネルは、ライブ トランスコーダーからライブ入力ストリームを受け取り、1 つまたは複数の StreamingEndpoint を介してストリーミングできる状態にします。また、ストリームはあらかじめプレビューし、確認したうえで処理、配信しますが、チャネルはその際に使用するプレビュー エンドポイント (プレビュー URL) も提供します
 
-You can get the ingest URL and the preview URL when you create the channel. To get these URLs, the channel does not have to be in the started state. When you are ready to start pushing data from a live transcoder into the channel, the channel must be started. Once the live transcoder starts ingesting data, you can preview your stream.
+チャネル作成時に取り込み URL とプレビュー URL を取得できます。これらの URL を取得するには、チャネルが開始済み状態である必要はありません。ライブ トランスコーダーからチャネルへのデータのプッシュを開始する準備ができたら、チャネルを開始する必要があります。ライブ トランスコーダーがデータの取り込みを開始した後、ストリームをプレビューできます。
 
-Each Media Services account can contain multiple Channels, multiple Programs, and multiple StreamingEndpoints. Depending on the bandwidth and security needs, StreamingEndpoint services can be dedicated to one or more channels. Any StreamingEndpoint can pull from any Channel.
-
-
-###<a name="program"></a>Program 
-
-A [Program](https://msdn.microsoft.com/library/azure/dn783463.aspx) enables you to control the publishing and storage of segments in a live stream. Channels manage Programs. The Channel and Program relationship is very similar to traditional media where a channel has a constant stream of content and a program is scoped to some timed event on that channel.
-You can specify the number of hours you want to retain the recorded content for the program by setting the **ArchiveWindowLength** property. This value can be set from a minimum of 5 minutes to a maximum of 25 hours. 
-
-ArchiveWindowLength also dictates the maximum amount of time clients can seek back in time from the current live position. Programs can run over the specified amount of time, but content that falls behind the window length is continuously discarded. This value of this property also determines how long the client manifests can grow.
-
-Each program is associated with an Asset. To publish the program you must create a locator for the associated asset. Having this locator will enable you to build a streaming URL that you can provide to your clients.
-
-A channel supports up to three concurrently running programs so you can create multiple archives of the same incoming stream. This allows you to publish and archive different parts of an event as needed. For example, your business requirement is to archive 6 hours of a program, but to broadcast only last 10 minutes. To accomplish this, you need to create two concurrently running programs. One program is set to archive 6 hours of the event but the program is not published. The other program is set to archive for 10 minutes and this program is published.
+各 Media Services アカウントには、複数のチャネル、複数のプログラム、複数 StreamingEndpoints を含めることができます。帯域幅とセキュリティのニーズに応じて、StreamingEndpoint サービスを 1 つまたは複数のチャネル専用にすることができます。StreamingEndpoint は、どのチャネルからでもプルできます。
 
 
-##<a name="billing-implications"></a>Billing Implications
+###プログラム 
 
-A channel begins billing as soon as it's state transitions to "Running" via the API.  
+ライブ ストリームでのセグメントの公開と保存は、[プログラム](https://msdn.microsoft.com/library/azure/dn783463.aspx)を使用して制御します。プログラムはチャネルによって管理されます。チャネルとプログラムの関係は、従来のメディアとよく似ています。チャネルが絶えずコンテンツのストリームを配信するのに対し、プログラムは、そのチャネル上で決まった時間に生じるイベントです。録画されたコンテンツの保持時間は、プログラムの **ArchiveWindowLength** プロパティで設定できます。この値は、最小 5 分から最大 25 時間までの範囲で設定できます。
 
-The following table shows how Channel states map to billing states in the API and Azure portal. Note that the states are slightly different between the API and Portal UX. As soon as a channel is in the "Running" state via the API, or in the "Ready" or "Streaming" state in the Azure Classic Portal, billing will be active.
+クライアントが現在のライブ位置からさかのぼってシークできる最長時間も ArchiveWindowLength によって決まります。プログラムの放送は、指定された期間継続しますが、ArchiveWindowLength を過ぎたコンテンツは絶えず破棄されていきます。さらに、このプロパティの値によって、クライアント マニフェストが肥大した場合の最大サイズも決まります。
 
-To stop the Channel from billing you further, you have to Stop the Channel via the API or in the Azure portal.
-You are responsible for stopping your channels when you are done with the channel. Failure to stop the channel will result in continued billing.
+各プログラムは資産に関連付けられています。プログラムを公開するには、関連付けられた資産のロケーターを作成する必要があります。このロケーターを作成すると、ストリーミング URL を構築してクライアントに提供できます。
 
->[AZURE.NOTE]When working with Standard channels, AMS will auto shutoff any Channel that is still in “Running” state 12 hours after the input feed is lost, and there are no Programs running. However, you will still be billed for the time the Channel was in “Running” state.
+チャネルは、最大 3 つの同時実行プログラムをサポートするため、同じ受信ストリームのアーカイブを複数作成できます。これにより、1 つのイベントのさまざまな部分を必要に応じて発行したりアーカイブしたりできます。たとえば、ビジネス要件によって 1 つのプログラムの 6 時間分をアーカイブする一方、最後の 10 分間のみをブロードキャストする場合があります。これを実現するには、2 つの同時実行プログラムを作成する必要があります。1 つのプログラムは 6 時間分のイベントをアーカイブするように設定しますが、プログラムは発行されません。もう 1 つのプログラムは 10 分間のアーカイブを行うように設定します。このプログラムは発行されます。
 
-###<a name="<a-id="states"></a>channel-states-and-how-they-map-to-the-billing-mode"></a><a id="states"></a>Channel states and how they map to the billing mode 
 
-The current state of a Channel. Possible values include:
+##課金への影響
 
-- **Stopped**. This is the initial state of the Channel after its creation (unless autostart was selected in the portal.) No billing occurs in this state. In this state, the Channel properties can be updated but streaming is not allowed.
-- **Starting**. The Channel is being started. No billing occurs in this state. No updates or streaming is allowed during this state. If an error occurs, the Channel returns to the Stopped state.
-- **Running**. The Channel is capable of processing live streams. It is now billing usage. You must stop the channel to prevent further billing. 
-- **Stopping**. The Channel is being stopped. No billing occurs in this transient state. No updates or streaming is allowed during this state.
-- **Deleting**. The Channel is being deleted. No billing occurs in this transient state. No updates or streaming is allowed during this state.
+チャネルでは、API を通じて状態が "実行中" に遷移するとすぐに、課金が開始されます。
 
-The following table shows how Channel states map to the billing mode. 
+次の表は、API と Azure クラシック ポータルでチャネルの状態がどのように課金の状態に対応しているかを示しています。API とポータルのユーザー エクスペリエンスとでは状態が少し異なることに注意してください。チャネルが API を通じて "実行中" 状態になるか、Azure クラシック ポータルで "準備完了" または "ストリーミング" 状態になるとすぐに、課金がアクティブになります。
+
+チャネルへの課金を停止するには、API を通じて、または Azure クラシック ポータルで、チャネルを停止する必要があります。チャネルが終了したら、自分でチャネルを停止する必要があります。チャネルの停止に失敗すると、課金が継続されます。
+
+>[AZURE.NOTE]Standard チャネルを使用している場合、入力フィードがなくなり、実行中のプログラムがなくなってから 12 時間後に、まだ "実行中" 状態のチャネルは AMS により自動的に停止されます。ただし、チャネルが "実行中" 状態だった期間については課金されます。
+
+###<a id="states"></a>チャネルの状態と、どのように課金モードにマッピングされているか 
+
+現在のチャネルの状態。指定できる値は、次のとおりです。
+
+- **停止済み**。これは、チャネル作成後の初期状態です (ポータルで自動開始が選択されなかった場合)。 この状態では、課金は行われません。この状態で、チャネルのプロパティを更新できますが、ストリーミングは許可されていません。
+- **開始中**。チャネルを開始しています。この状態では、課金は行われません。この状態の場合、更新やストリーミングはできません。エラーが発生した場合は、チャネルは Stopped 状態に戻ります。
+- **実行中**。チャネルは、ライブ ストリームを処理できます。課金が始まります。課金されないようにするには、チャネルを停止する必要があります。
+- **停止中**。チャネルを停止しています。この遷移状態では、課金は行われません。この状態の場合、更新やストリーミングはできません。
+- **削除中**。チャネルが削除されました。この遷移状態では、課金は行われません。この状態の場合、更新やストリーミングはできません。
+
+次の表は、チャネルの状態と課金モードとの対応を示しています。
  
-Channel state|Portal UI Indicators|Is it Billing?
+チャネルの状態|ポータル UI インジケーター|課金対象
 ---|---|---
-Starting|Starting|No (transient state)
-Running|Ready (no running programs)<br/>or<br/>Streaming (at least one running program)|YES
-Stopping|Stopping|No (transient state)
-Stopped|Stopped|No
+開始中|Starting|いいえ (遷移状態)
+実行中|準備完了 (実行中プログラムなし)<br/>または<br/>ストリーミング (実行中プログラムが最低 1 つ存在)|はい
+停止中|停止中|いいえ (遷移状態)
+停止済み|停止済み|なし
 
 
-##<a name="media-services-learning-paths"></a>Media Services learning paths
+##Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 
 
-##<a name="related-topics"></a>Related topics
+##関連トピック
 
-[Azure Media Services Fragmented MP4 Live Ingest Specification](media-services-fmp4-live-ingest-overview.md)
+[Azure Media Services の Fragmented MP4 ライブ インジェスト仕様](media-services-fmp4-live-ingest-overview.md)
 
-[Working with Channels that are Enabled to Perform Live Encoding with Azure Media Services](media-services-manage-live-encoder-enabled-channels.md)
+[Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する](media-services-manage-live-encoder-enabled-channels.md)
 
-[Working with Channels that Receive Multi-bitrate Live Stream from On-premises Encoders](media-services-live-streaming-with-onprem-encoders.md)
+[オンプレミスのエンコーダーからマルチ ビットレートのライブ ストリームを受信するチャネルを操作する](media-services-live-streaming-with-onprem-encoders.md)
 
-[Quotas and limitations](media-services-quotas-and-limitations.md).  
+[クォータと制限](media-services-quotas-and-limitations.md)。
 
-[Media Services Concepts](media-services-concepts.md)
+[Media Services の概念](media-services-concepts.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

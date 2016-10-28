@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get started with Azure log integration | Microsoft Azure"
-   description="Learn how to install the Azure log integration service and integrate logs from Azure storage, Azure Audit Logs and Azure Security Center alerts."
+   pageTitle="Azure ログ統合の使用 | Microsoft Azure"
+   description="Azure ログ統合サービスをインストールし、Azure ストレージのログ、Azure 監査ログ、および Azure Security Center の警告を統合する方法について説明します。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,131 +16,126 @@
    ms.date="08/24/2016"
    ms.author="TomSh"/>
 
+# Azure ログ統合の使用 (プレビュー)
 
-# <a name="get-started-with-azure-log-integration-(preview)"></a>Get started with Azure log integration (Preview)
+Azure ログ統合を使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
 
-Azure log integration enables you to integrate raw logs from your Azure resources into your on-premises Security Information and Event Management (SIEM) systems. This integration provides a unified dashboard for all your assets, on-premises or in the cloud, so that you can aggregate, correlate, analyze, and alert for security events associated with your applications.
+このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージのログ、Azure 監査ログ、および Azure Security Center の警告を統合する方法について説明します。このチュートリアルの推定所要時間は 1 時間です。
 
-This tutorial walks you through how to install Azure log integration and integrate logs from Azure storage, Azure Audit Logs, and Azure Security Center alerts. Estimated time to complete this tutorial is one hour.
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+このチュートリアルを完了するには、以下が必要です。
 
-To complete this tutorial, you must have the following:
+- Azure ログ統合サービスをインストールするコンピューター (オンプレミスまたはクラウド)。64 ビット Windows OS が実行され、.Net 4.5.1 がインストールされている必要があります。このコンピューターは、**Azlog インテグレーター**と呼ばれます。
+- として機能します。このサブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。
+- Azure 仮想マシン (VM) が有効になっている Azure 診断。Cloud Services に対する診断の有効化については、「[Azure Cloud Services での Azure 診断の有効化](../cloud-services/cloud-services-dotnet-diagnostics.md)」をご覧ください。Windows を実行している Azure VM に対する診断の有効化については、「[PowerShell を使用して Windows を実行している仮想マシンで Azure 診断を有効にする](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md)」をご覧ください。
+- Azlog インテグレーターから Azure ストレージへの接続、および Azure サブスクリプションに対する認証と承認。
+- Azure VM ログについては、SIEM エージェント (Splunk Universal Forwarder、HP ArcSight Windows Event Collector エージェント、IBM QRadar WinCollect など) を Azlog インテグレーターにインストールする必要があります。
 
-- A machine (on-premises or in the cloud) to install the Azure log integration service. This machine must be running a 64-bit Windows OS with .Net 4.5.1 installed. This machine is called the **Azlog Integrator**.
-- Azure subscription. If you do not have one, you can sign up for a [free account](https://azure.microsoft.com/free/).
-- Azure Diagnostics enabled for your Azure virtual machines (VMs). To enable diagnostics for Cloud Services, see [Enabling Azure Diagnostics in Azure Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics.md). To enable diagnostics for an Azure VM running Windows, see [Use PowerShell to enable Azure Diagnostics in a Virtual Machine Running Windows](../virtual-machines/virtual-machines-windows-ps-extensions-diagnostics.md).
-- Connectivity from the Azlog Integrator to Azure storage and to authenticate and authorize to Azure subscription.
-- For Azure VM logs, the SIEM agent (for example, Splunk Universal Forwarder, HP ArcSight Windows Event Collector agent, or IBM QRadar WinCollect) must be installed on the Azlog Integrator.
+## デプロイメントに関する考慮事項
 
-## <a name="deployment-considerations"></a>Deployment considerations
+大量のイベントがある場合は、複数の Azlog インテグレーター インスタンスを実行できます。Windows 用 Azure 診断 *(WAD)* ストレージ アカウントの負荷分散と、インスタンスに提供するサブスクリプションの数は、容量をベースにする必要があります。
 
-You can run multiple instances of the Azlog Integrator if event volume is high. Load balancing of Azure Diagnostics storage accounts for Windows *(WAD)* and the number of subscriptions to provide to the instances should be based on your capacity.
+8 プロセッサ (コア) コンピューターでは、1 つの Azlog インテグレーター インスタンスが、1 日あたり 2,400 万 (1 時間あたり最大 100 万) のイベントを処理できます。
 
-On an 8-processor (core) machine, a single instance of Azlog Integrator can process about 24 million events per day (~1M/hour).
+4 プロセッサ (コア) コンピューターでは、1 つの Azlog インテグレーター インスタンスが、1 日あたり 150 万 (1 時間あたり最大 62,500 ) のイベントを処理できます。
 
-On a 4-processor (core) machine, a single instance of Azlog Integrator can process about 1.5 million events per day (~62.5K/hour).
+## Azure ログ統合のインストール
 
-## <a name="install-azure-log-integration"></a>Install Azure log integration
+[Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)をダウンロードします。
 
-Download [Azure log integration](https://www.microsoft.com/download/details.aspx?id=53324).
+Azure ログ統合サービスは、インストール先のマシンから利用統計情報を収集します。収集される利用統計情報を以下に示します。
 
-The Azure log integration service collects telemetry data from the machine on which it is installed.  Telemetry data collected is:
+- Azure ログ統合の実行中に発生する例外
+- 処理されたクエリおよびイベントの数に関するメトリック
+- 使用されている Azlog.exe コマンド ライン オプションについての統計情報
 
-- Exceptions that occur during execution of Azure log integration
-- Metrics about the number of queries and events processed
-- Statistics about which Azlog.exe command line options are being used
+> [AZURE.NOTE] このオプションをオフにして、利用統計情報の収集を無効にすることができます。
 
-> [AZURE.NOTE] You can turn off collection of telemetry data by unchecking this option.
+## Azure 診断ストレージ アカウントからの Azure VM ログの統合
 
-## <a name="integrate-azure-vm-logs-from-your-azure-diagnostics-storage-accounts"></a>Integrate Azure VM logs from your Azure Diagnostics storage accounts
+1. 上記の前提条件をチェックして、Azure ログ統合を続行する前に、WAD ストレージ アカウントがログを収集していることを確認します。WAD ストレージ アカウントがログを収集していない場合は、以下の手順を実行しないでください。
 
-1. Check the prerequisites listed above to ensure that your WAD storage account is collecting logs before continuing your Azure log integration. Do not perform the following steps if your WAD storage account is not collecting logs.
+2. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\\Program Files\\Microsoft Azure Log Integration** に変更します。
 
-2. Open the command prompt and **cd** into **c:\Program Files\Microsoft Azure Log Integration**.
-
-3. Run the command
+3. コマンドを実行します
 
         azlog source add <FriendlyNameForTheSource> WAD <StorageAccountName> <StorageKey>
 
-      Replace StorageAccountName with the name of the Azure storage account configured to receive diagnostics events from your VM.
+      StorageAccountName を、VM から診断イベントを受信するように構成された Azure ストレージ アカウントの名前に置き換えます。
 
         azlog source add azlogtest WAD azlog9414 fxxxFxxxxxxxxywoEJK2xxxxxxxxxixxxJ+xVJx6m/X5SQDYc4Wpjpli9S9Mm+vXS2RVYtp1mes0t9H5cuqXEw==
 
-      If you would like the subscription id to show up in the event XML, append the subscription ID to the friendly name:
+      サブスクリプション ID がイベント XML に表示されるようにするには、サブスクリプション ID を表示名に追加します。
 
         azlog source add <FriendlyNameForTheSource>.<SubscriptionID> WAD <StorageAccountName> <StorageKey>
 
-4. Wait 30 - 60 minutes (it could take as long as an hour), then view the events that are pulled from the storage account. To view, open **Event Viewer > Windows Logs > Forwarded Events** on the Azlog Integrator.
+4. 30 ～ 60 分間待って (1 時間かかる場合があります)、ストレージ アカウントから取得されたイベントを表示します。表示するには、Azlog インテグレーターで **[イベント ビューアー] > [Windows ログ] > [転送されたイベント]** を開きます。
 
-5. Make sure that your standard SIEM connector installed on the machine is configured to pick events from the **Forwarded Events** folder and pipe them to your SIEM instance. Review the SIEM specific configuration to configure and see the logs integrating.
+5. コンピューターにインストールされている標準 SIEM コネクタが、**[転送されたイベント]** フォルダーからイベントを選択し、SIEM インスタンスにパイプするように構成されていることを確認します。SIEM 固有の構成を確認してログ統合を構成し、表示します。
 
-## <a name="what-if-data-is-not-showing-up-in-the-forwarded-events-folder?"></a>What if data is not showing up in the Forwarded Events folder?
+## [転送されたイベント] フォルダーにデータが表示されない場合
 
-If after an hour data is not showing up in the **Forwarded Events** folder, then:
+1 時間経過しても、**[転送されたイベント]** フォルダーにデータが表示されない場合は、次の操作を行います。
 
-1. Check the machine and confirm that it can access Azure. To test connectivity, try to open the [Azure portal](http://portal.azure.com) from the browser.
+1. コンピューターを確認し、Azure にアクセスできることを確かめます。接続をテストするには、[Azure ポータル](http://portal.azure.com)をブラウザーから開いてみます。
 
-2. Make sure the user account **azlog** has write permission on the folder **users\azlog**.
+2. ユーザー アカウント **azlog** に、**users\\azlog** フォルダーに対する書き込みアクセス許可が付与されていることを確認します。
 
-3. Make sure the storage account added in the command **azlog source add** is listed when you run the command **azlog source list**.
-4. Go to **Event Viewer > Windows Logs > Application** to see if there are any errors reported from the Azure log integration.
+3. **azlog source list** コマンドを実行して、**azlog source add** コマンドに追加されたストレージ アカウントが表示されることを確認します。
+4. **[イベント ビューアー] > [Windows ログ] > [アプリケーション]** の順にアクセスして、Azure ログ統合からエラーが報告されていないかどうかを確認します。
 
-If you still don’t see the events, then:
+イベントがまだ表示されない場合は、次の操作を行います。
 
-1. Download [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+1. [Microsoft Azure Storage Explorer](http://storageexplorer.com/) をダウンロードします。
 
-2. Connect to the storage account added in the command **azlog source add**.
+2. **azlog source add** コマンドに追加されたストレージ アカウントに接続します。
 
-3. In Microsoft Azure Storage Explorer, browse to table **WADWindowsEventLogsTable** to see if there is any data. If not, then diagnostics in the VM is not configured correctly.
+3. Microsoft Azure Storage Explorer で **WADWindowsEventLogsTable** テーブルに移動して、データがあるかどうかを確認します。データがない場合は、VM で診断が正しく構成されていません。
 
-## <a name="integrate-azure-audit-logs-and-security-center-alerts"></a>Integrate Azure audit logs and Security Center alerts
+## Azure 監査ログと Security Center の警告の統合
 
-1. Open the command prompt and **cd** into **c:\Program Files\Microsoft Azure Log Integration**.
+1. コマンド プロンプトを開き、**cd** により、現在のディレクトリを **C:\\Program Files\\Microsoft Azure Log Integration** に変更します。
 
-2. Run the command
+2. コマンドを実行します
 
         azlog createazureid
 
-      This command prompts you for your Azure login. The command then creates an [Azure Active Directory Service Principal](../active-directory/active-directory-application-objects.md) in the Azure AD Tenants that host the Azure subscriptions in which the logged in user is an Administrator, a Co-Administrator, or an Owner. The command will fail if the logged in user is only a Guest user in the Azure AD Tenant. Authentication to Azure is done through Azure Active Directory (AD).  Creating a service principal for Azlog Integration creates the Azure AD identity that will be given access to read from Azure subscriptions.
+      このコマンドは Azure ログインを要求します。このコマンドは、管理者、共同管理者、または所有者としてログインしている、Azure サブスクリプションをホストする Azure AD テナントに [Azure Active Directory サービス プリンシパル](../active-directory/active-directory-application-objects.md)を作成します。単なる Guest ユーザーとして Azure AD テナントにログインしている場合、コマンドは失敗します。Azure への認証は、Azure Active Directory (AD) によって行われます。Azlog 統合のサービス プリンシパルを作成すると、Azure AD の ID が作成され、Azure サブスクリプションからの読み取りアクセス許可が付与されます。
 
-3. Run the command
+3. コマンドを実行します
 
         azlog authorize <SubscriptionID>
 
-      This assigns reader access on the subscription to the service principal created in step 2. If you don’t specify a SubscriptionID, then it attempts to assign the service principal reader role to all subscriptions to which you have any access.
+      これにより、サブスクリプションの閲覧者アクセス許可が、手順 2. で作成されたサービス プリンシパルに割り当てられます。SubscriptionID を指定しないと、このコマンドは、サービス プリンシパルの閲覧者ロールを、アクセスできるすべてのサブスクリプションに割り当てようとします。
 
         azlog authorize 0ee9d577-9bc4-4a32-a4e8-c29981025328
 
-      > [AZURE.NOTE] You may see warnings if you run the **authorize** command immediately after the **createazureid** command. There is some latency between when the Azure AD account is created and when the account is available for use. If you wait about 10 seconds after running the **createazureid** command to run the **authorize** command, then you should not see these warnings.
+      > [AZURE.NOTE] **createazureid** コマンドの実行後すぐに **authorize** コマンドを実行すると、警告が表示される可能性があります。Azure AD アカウントが作成されてから、そのアカウントが使用できるようになるまで、少し時間がかかります。**createazureid** コマンドを実行した後で約 10 秒間待ってから **authorize** コマンドを実行すれば、この警告が表示されることはありません。
 
-4. Check the following folders to confirm that the Audit log JSON files are there:
+4. 次のフォルダーを調べて、監査ログの JSON ファイルがあることを確認します。
 
-  - **c:\Users\azlog\AzureResourceManagerJson**
-  - **c:\Users\azlog\AzureResourceManagerJsonLD**
+  - **C:\\Users\\azlog\\AzureResourceManagerJson**
+  - **C:\\Users\\azlog\\AzureResourceManagerJsonLD**
 
-5. Check the following folders to confirm that Security Center alerts exist in them:
+5. 次のフォルダーを調べて、Security Center のアラートが存在することを確認します。
 
-  - **c:\Users\azlog\ AzureSecurityCenterJson**
-  - **c:\Users\azlog\AzureSecurityCenterJsonLD**
+  - **C:\\Users\\azlog\\AzureSecurityCenterJson**
+  - **C:\\Users\\azlog\\AzureSecurityCenterJsonLD**
 
-6. Point the standard SIEM file forwarder connector to the appropriate folder to pipe the data to the SIEM instance. You may need some field mappings based on the SIEM product you are using.
+6. 標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
 
-If you have questions about Azure Log Integration, please send an email to [AzSIEMteam@microsoft.com] (mailto:AzSIEMteam@microsoft.com)
+Azure ログ統合に関する質問がある場合は、[AzSIEMteam@microsoft.com](mailto:AzSIEMteam@microsoft.com) 宛に電子メールを送信してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-In this tutorial, you learned how to install Azure log integration and integrate logs from Azure storage. To learn more, see the following:
+このチュートリアルでは、Azure ログ統合をインストールし、Azure ストレージからログを統合する方法について説明しました。詳細については、次の記事を参照してください。
 
-- [Microsoft Azure Log Integration for Azure logs (Preview)](https://www.microsoft.com/download/details.aspx?id=53324) – Download Center for details, system requirements, and install instructions on Azure log integration.
-- [Introduction to Azure log integration](security-azure-log-integration-overview.md) – This document introduces you to Azure log integration, its key capabilities, and how it works.
-- [Partner configuration steps](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – This blog post shows you how to configure Azure log integration to work with partner solutions Splunk, HP ArcSight, and IBM QRadar.
-- [Azure log Integration frequently asked questions (FAQ)](security-azure-log-integration-faq.md) - This FAQ answers questions about Azure log integration.
-- [Integrating Security Center alerts with Azure log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md) – This document shows you how to sync Security Center alerts, along with virtual machine security events collected by Azure Diagnostics and Azure Audit Logs, with your log analytics or SIEM solution.
-- [New features for Azure diagnostics and Azure Audit Logs](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) – This blog post introduces you to Azure Audit Logs and other features that help you gain insights into the operations of your Azure resources.
+- [Azure ログ用の Microsoft Azure ログ統合 (プレビュー)](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
+- [Azure ログ統合の概要](security-azure-log-integration-overview.md) – このドキュメントでは、Azure ログ統合と、その主な機能およびしくみについて紹介します。
+- [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。
+- [Azure ログ統合のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md) – この FAQ は、Azure ログ統合について寄せられる質問とその回答です。
+- [Azure ログ統合への Security Center の警告の統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
+- [Azure 診断および Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) – このブログ投稿では、Azure 監査ログと、Azure リソースの操作の洞察を得るのに役立つその他の機能を紹介します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

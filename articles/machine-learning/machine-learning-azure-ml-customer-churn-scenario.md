@@ -1,242 +1,236 @@
 <properties
-    pageTitle="Analyzing Customer Churn using Machine Learning | Microsoft Azure"
-    description="Case study of developing an integrated model for analyzing and scoring customer churn"
-    services="machine-learning"
-    documentationCenter=""
-    authors="jeannt"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="Machine Learning を使用した顧客離れの分析 | Microsoft Azure"
+	description="顧客離れの分析とスコア付けのための統合モデルを作成するケース スタディ"
+	services="machine-learning"
+	documentationCenter=""
+	authors="jeannt"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/20/2016" 
-    ms.author="jeannt"/>
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/20/2016" 
+	ms.author="jeannt"/>
 
+# Azure Machine Learning を使用した顧客離れの分析
 
-# <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Analyzing Customer Churn by using Azure Machine Learning
+##Overview
+このトピックは、Azure Machine Learning Studio を使用して構築された顧客離れ分析プロジェクトの参照実装を表します。産業界の顧客離れの問題を総合的に解決するための関連の汎用モデルについて説明します。さらに、Machine Learning を使用して構築されたモデルの正確度を測定し、モデルの開発を進めるために方向性を評価します。
 
-##<a name="overview"></a>Overview
-This topic presents a reference implementation of a customer churn analysis project that is built by using Azure Machine Learning Studio. It discusses associated generic models for holistically solving the problem of industrial customer churn. We also measure the accuracy of models that are built by using Machine Learning, and we assess directions for further development.  
+### 謝辞
 
-### <a name="acknowledgements"></a>Acknowledgements
+この実験は、Serge Berger (Microsoft 主任データ サイエンティスト)、Roger Barga (Microsoft Azure Machine Learning の前プロダクト マネージャー) によって開発およびテストされました。Azure ドキュメント チームは、このホワイト ペーパーに情報と知識をご提供いただいたこの 2 人に感謝いたします。
 
-This experiment was developed and tested by Serge Berger, Principal Data Scientist at Microsoft, and Roger Barga, formerly Product Manager for Microsoft Azure Machine Learning. The Azure documentation team gratefully acknowledges their expertise and thanks them for sharing this white paper.
-
->[AZURE.NOTE] The data used for this experiment is not publicly available. For an example of how to build a machine learning model for churn analysis, see: [Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) in [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/)
+>[AZURE.NOTE] この実験のデータは公開されていません。顧客離れ分析の機械学習モデルを構築する方法の例については、「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」の「[Telco churn model template (Telco の顧客離れモデルのテンプレート)](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」を参照してください
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-##<a name="the-problem-of-customer-churn"></a>The problem of customer churn
-Businesses in the consumer market and in all enterprise sectors have to deal with churn. Sometimes churn is excessive and influences policy decisions. The traditional solution is to predict high-propensity churners and address their needs via a concierge service, marketing campaigns, or by applying special dispensations. These approaches can vary from industry to industry and even from a particular consumer cluster to another within one industry (for example, telecommunications).
+##顧客離れの問題
+コンシューマー市場とあらゆるエンタープライズ セクターの企業は、顧客離れの問題に対処する必要があります。この問題がきわめて重くのしかかり、ポリシーの決定に影響を及ぼすこともあります。従来は、これを防ぐために、離反の可能性が高い顧客を予測し、コンセルジュ サービスやマーケティング キャンペーン、優待によってそのニーズを満たすという方法がとられてきました。こうしたアプローチは業界によって異なるほか、(電気通信など) 同じ業界内の消費者クラスターによっても異なることがあります。
 
-The common factor is that businesses need to minimize these special customer retention efforts. Thus, a natural methodology would be to score every customer with the probability of churn and address the top N ones. The top customers might be the most profitable ones; for example, in more sophisticated scenarios, a profit function is employed during the selection of candidates for special dispensation. However, these considerations are only a part of the holistic strategy for dealing with churn. Businesses also have to take into account risk (and associated risk tolerance), the level and cost of the intervention, and plausible customer segmentation.  
+それでも共通するのは、企業は、顧客維持のための特別な労力をできるだけ小さくする必要があるという点です。そこで、すべての顧客の離反の可能性を点数化し、その上位の顧客に対応するという方法が採用されることになります。上位の顧客は、最も収益性の高い顧客である可能性があります。さらに高度なシナリオでは、優待の候補者を選ぶ際に利潤関数が使用されます。ただし、こうした考慮事項は、顧客離れに対処するための包括的な戦略の一部に過ぎません。各企業は、リスク (および関連するリスク許容度)、介入のレベルとコスト、妥当な顧客セグメンテーションも考慮する必要があります。
 
-##<a name="industry-outlook-and-approaches"></a>Industry outlook and approaches
-Sophisticated handling of churn is a sign of a mature industry. The classic example is the telecommunications industry where subscribers are known to frequently switch from one provider to another. This voluntary churn is a prime concern. Moreover, providers have accumulated significant knowledge about *churn drivers*, which are the factors that drive customers to switch.
+##業界の展望とアプローチ
+離反への高度な対処は、業界の成熟の表れです。その典型例として、電気通信業界が挙げられます。この業界では、利用者は頻繁にプロバイダーを乗り換えることが知られています。この自発的な離反は、最も大きな懸念事項となっています。さらに、プロバイダーは*離反の要因*に関する知識を大量に蓄積してきました。離反の要因とは、顧客が乗り換えを決める要因のことです。
 
-For instance, handset or device choice is a well-known driver of churn in the mobile phone business. As a result, a popular policy is to subsidize the price of a handset for new subscribers and charging a full price to existing customers for an upgrade. Historically, this policy has led to customers hopping from one provider to another to get a new discount, which in turn, has prompted providers to refine their strategies.
+たとえば、携帯電話ビジネスにおいては、ハンドセットやデバイスの選択が離反の要因としてよく知られており、新規契約者にはハンドセットの料金を補助し、既存の顧客にはアップグレードの際に全額を請求するという方針が一般的になっています。歴史的に見ると、この方針が原因で、顧客が新たなディスカウントを求めてプロバイダーを乗り換え、それを受けてプロバイダーが戦略を見直すという流れになっています。
 
-High volatility in handset offerings is a factor that very quickly invalidates models of churn that are based on current handset models. Additionally, mobile phones are not only telecommunication devices; they are also fashion statements (consider the iPhone), and these social predictors are outside the scope of regular telecommunications data sets.
+ハンドセット製品における流動性の高さは、現在のハンドセット モデルに基づく離反モデルが短期間で役に立たなくなる要因となっています。また、携帯電話は単なる通信デバイスではなく、ファッションを表すものでもあります (iPhone が良い例です)。こうした社会的な予測因子は、通常の電気通信データセットの範囲には含まれません。
 
-The net result for modeling is that you cannot devise a sound policy simply by eliminating known reasons for churn. In fact, a continuous modeling strategy, including classic models that quantify categorical variables (such as decision trees), is **mandatory**.
+モデリングから最終的にわかるのは、既知の離反要因を取り除くだけでは適切な方針を定めることはできないということです。実際に、カテゴリの変数を定量化する従来のモデル (たとえば、ディメンション ツリー) など、継続的なモデリング戦略は**必須**です。
 
-Using big data sets on their customers, organizations are performing big data analytics (in particular, churn detection based on big data) as an effective approach to the problem. You can find more about the big data approach to the problem of churn in the Recommendations on ETL section.  
+企業は、顧客に関するビッグ データ セットを利用してビッグ データ分析 (特にビッグ データに基づく離反検出) を行い、問題に対する効果的なアプローチとして利用しています。ETL のセクションの推奨事項の変化の問題について、ビッグ データの方法の詳細を検索できます。
 
-##<a name="methodology-to-model-customer-churn"></a>Methodology to model customer churn
-A common problem-solving process to solve customer churn is depicted in Figures 1-3:  
+##顧客離れのモデリング手法
+図 1 ～ 3 は、顧客離れの問題の一般的な解決プロセスを示しています。
 
-1.  A risk model allows you to consider how actions affect probability and risk.
-2.  An intervention model allows you to consider how the level of intervention could affect the probability of churn and the amount of customer lifetime value (CLV).
-3.  This analysis lends itself to a qualitative analysis that is escalated to a proactive marketing campaign that targets customer segments to deliver the optimal offer.  
+1.	リスク モデルでは、可能性とリスクに対するアクションの影響を検討できます。
+2.	介入モデルでは、離反の可能性と顧客生涯価値 (CLV) の大きさに対する介入レベルの影響を検討できます。
+3.	この分析は、最適なプランを配信する顧客セグメントを対象とする事前対応型のマーケティング キャンペーンにエスカレートを質的、分析に適しています。  
 
 ![][1]
 
-This forward looking approach is the best way to treat churn, but it comes with complexity: we have to develop a multi-model archetype and trace dependencies between the models. The interaction among models can be encapsulated as shown in the following diagram:  
+この将来を考慮したアプローチは顧客離れに対処する最適な方法ではあるものの、複雑であり、マルチモデルのアーキタイプを作成し、モデル間の依存関係をトレースする必要があります。モデル間の相互作用は、次の図のようにまとめられます。
 
 ![][2]
 
-*Figure 4: Unified multi-model archetype*  
+*図 4: 統合されたマルチモデルのアーキタイプ*
 
-Interaction between the models is key if we are to deliver a holistic approach to customer retention. Each model necessarily degrades over time; therefore, the architecture is an implicit loop (similar to the archetype set by the CRISP-DM data mining standard, [***3***]).  
+顧客維持のための包括的なアプローチを提供するなら、モデル間の相互作用が鍵となります。各モデルの効果は時間の経過と共に必然的に低下するため、アーキテクチャは暗黙的なループになります (CRISP-DM データ マイニング標準によるアーキタイプと同様 [***3***])。
 
-The overall cycle of risk-decision-marketing segmentation/decomposition is still a generalized structure, which is applicable to many business problems. Churn analysis is simply a strong representative of this group of problems because it exhibits all the traits of a complex business problem that does not allow a simplified predictive solution. The social aspects of the modern approach to churn are not particularly highlighted in the approach, but the social aspects are encapsulated in the modeling archetype, as they would be in any model.  
+リスク - 決定 - マーケティングというセグメンテーション/分解の全体的なサイクルは、多くのビジネス上の問題に適用できる一般化された構造です。離反分析はこの問題グループを的確に表したものにすぎません。単純な予測ソリューションが役に立たない複雑なビジネス上の問題の特徴が余すところなく表れています。このアプローチでは、離反に対する最新のアプローチの社会的な側面はそれほど強調されていませんが、他のモデルにも見られるように、社会的な側面がモデリング アーキタイプの中に内包されています。
 
-An interesting addition here is big data analytics. Today's telecommunication and retail businesses collect exhaustive data about their customers, and we can easily foresee that the need for multi-model connectivity will become a common trend, given emerging trends such as the Internet of Things and ubiquitous devices, which allow business to employ smart solutions at multiple layers.  
+ビッグ データ分析も興味深いテーマです。今日の電気通信事業者と小売業者は、顧客に関する情報を徹底的に収集しています。モノのインターネットやユビキタス デバイスなどが流行しつつあり、企業は複数のレイヤーでスマート ソリューションを採用できるようになっているため、マルチモデルの連結が一般的になることは想像に難くありません。
 
  
-##<a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>Implementing the modeling archetype in Machine Learning Studio
-Given the problem just described, what is the best way to implement an integrated modeling and scoring approach? In this section, we will demonstrate how we accomplished this by using Azure Machine Learning Studio.  
+##Machine Learning Studio でのモデリング アーキタイプの実装
+先ほど説明した問題を踏まえると、モデリングとスコア付けの統合アプローチを実装する最適な方法は何でしょうか。 このセクションでは、Microsoft Azure Cloud ML Studio を使用してこれを実現する方法を紹介します。
 
-The multi-model approach is a must when designing a global archetype for churn. Even the scoring (predictive) part of the approach should be multi-model.  
+マルチモデルのアプローチは、離反のグローバル アーキタイプを設計するうえで欠かすことができないものです。このアプローチのスコア付け (予測) の部分さえもマルチモデルである必要があります。
 
-The following diagram shows the prototype we created, which employs four scoring algorithms in Machine Learning Studio to predict churn. The reason for using a multi-model approach is not only to create an ensemble classifier to increase accuracy, but also to protect against over-fitting and to improve prescriptive feature selection.  
+次の図は、こちらで作成したプロトタイプです。離反を予測するための Cloud ML Studio の 4 種類のスコア付けアルゴリズムを採用しています。マルチモデルのアプローチを採用したのは、正確度を高めるためのアンサンブル分類器を作成するためだけではなく、過学習を防ぎ、予測特徴選択を強化するためでもあります。
 
 ![][3]
 
-*Figure 5: Prototype of a churn modeling approach*  
+*図 5: 離反モデリング アプローチのプロトタイプ*
 
-The following sections provide more details about the prototype scoring model that we implemented by using Machine Learning Studio.  
+次のセクションでは、Cloud ML Studio を使用して実装したプロトタイプのスコア付けモデルについて詳しく説明します。
 
-###<a name="data-selection-and-preparation"></a>Data selection and preparation
-The data used to build the models and score customers was obtained from a CRM vertical solution, with the data obfuscated to protect customer privacy. The data contains information about 8,000 subscriptions in the U.S., and it combines three sources: provisioning data (subscription metadata), activity data (usage of the system), and customer support data. The data does not include any business related information about the customers; for example, it does not include loyalty metadata or credit scores.  
+###データの選択と準備
+モデルを構築し、顧客のスコアを計算するために使用したデータは、CRM バーティカル ソリューションから取得しました。顧客のプライバシーを保護するために、データは難読化されています。データ自体には米国における 8,000 件のサブスクリプションに関する情報が含まれ、プロビジョニング データ (サブスクリプション メタデータ)、アクティビティ データ (システムの使用量)、カスタマー サポート データの 3 つのソースが組み合わされています。データには、顧客に関するビジネス関連情報は一切含まれていません。たとえば、ロイヤルティ メタデータやクレジット スコアは含まれていません。
 
-For simplicity, ETL and data cleansing processes are out of scope because we assume that data preparation has already been done elsewhere.   
+説明を簡略化するために、データの準備は他の場所で既に行われているものとし、ETL とデータ クレンジング プロセスについては取り上げません。
 
-Feature selection for modeling is based on preliminary significance scoring of the set of predictors, included in the process that uses the random forest module. For the implementation in Machine Learning Studio, we calculated the mean, median, and ranges for representative features. For example, we added aggregates for the qualitative data, such as minimum and maximum values for user activity.    
+モデリング機能の選択は、暫定的な有意性を予測子をランダムなフォレストのモジュールを使用するプロセスに含まれる一連のスコアに基づきます。Cloud ML Studio での実装では、典型的な特徴に対して平均、中央値、範囲を計算しました。たとえば、ユーザー アクティビティの最小値と最大値など、定性的データの集計を追加しました。
 
-We also captured temporal information for the most recent six months. We analyzed data for one year and we established that even if there were statistically significant trends, the effect on churn is greatly diminished after six months.  
+また、ここ 6 か月間の時間的情報も収集しました。1 年間のデータを分析した結果、統計的に有意なトレンドが存在したとしても、離反に対する影響は、6 か月経過した後では大幅に小さくなることがわかりました。
 
-The most important point is that the entire process, including ETL, feature selection, and modeling was implemented in Machine Learning Studio, using data sources in Microsoft Azure.   
+最も重要なのは、ETL、特徴選択、モデリングを含めたプロセス全体が、Microsoft Azure のデータ ソースを使用して Cloud ML Studio で実装されたという点です。
 
-The following diagrams illustrate the data that was used.  
+次の図に、使用したデータを示します。
 
 ![][4]
 
-*Figure 6: Excerpt of data source (obfuscated)*  
+*図 6: データ ソースの一部 (難読化済み)*
 
 ![][5]
 
 
-*Figure 7: Features extracted from data source*
- 
-> Note that this data is private and therefore the model and data cannot be shared.
-> However, for a similar model using publicly available data, see this sample experiment in the [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/): [Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+*図 7: データ ソースから抽出された特徴*  
+> これはプライベート データであるため、モデルとデータを共有することはできません。ただし、パブリックに使用可能なデータを使用する同様のモデルに関しては、「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383)」の「[Telco Customer Churn (Telco の顧客離れ)](http://gallery.cortanaintelligence.com/)」にあるサンプル実験を参照してください。
 > 
-> To learn more about how you can implement a churn analysis model using Cortana Intelligence Suite, we also recommend [this video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) by Senior Program Manager Wee Hyong Tok. 
+> Cortana Intelligence Suite を使用して顧客離れ分析モデルを実装する方法の詳細については、上級プログラム マネージャーの Wee Hyong Tok による[こちらのビデオ](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html)をご覧になることをお勧めします。
 > 
 
-###<a name="algorithms-used-in-the-prototype"></a>Algorithms used in the prototype
+###プロトタイプで使用されたアルゴリズム
 
-We used the following four machine learning algorithms to build the prototype (no customization):  
+次の 4 つの機械学習アルゴリズムを使ってプロトタイプを作成しました (カスタマイズはしていません)。
 
-1.  Logistic regression (LR)
-2.  Boosted decision tree (BT)
-3.  Averaged perceptron (AP)
-4.  Support vector machine (SVM)  
-
-
-The following diagram illustrates a portion of the experiment design surface, which indicates the sequence in which the models were created:  
-
-![][6]  
+1.	ロジスティック回帰 (LR)
+2.	ブースト デシジョン ツリー (BT)
+3.	平均化パーセプトロン (AP)
+4.	サポート ベクター マシン (SVM)  
 
 
-*Figure 8: Creating models in Machine Learning Studio*  
+次の図に、実験のデザイン サーフェイスの一部を示します。これは、モデルが作成されたシーケンスを示しています。
 
-###<a name="scoring-methods"></a>Scoring methods
-We scored the four models by using a labeled training dataset.  
+![][6]
 
-We also submitted the scoring dataset to a comparable model built by using the desktop edition of SAS Enterprise Miner 12. We measured the accuracy of the SAS model and all four Machine Learning Studio models.  
 
-##<a name="results"></a>Results
-In this section, we present our findings about the accuracy of the models, based on the scoring dataset.  
+*図 8: Machine Learning Studio でモデルを作成する*
 
-###<a name="accuracy-and-precision-of-scoring"></a>Accuracy and precision of scoring
-Generally, the implementation in Azure Machine Learning is behind SAS in accuracy by about 10-15% (Area Under Curve or AUC).  
+###スコア付けの手法
+ラベル付けされたトレーニング データセットを使用して、4 つのモデルのスコアを計算しました。
 
-However, the most important metric in churn is the misclassification rate: that is, of the top N churners as predicted by the classifier, which of them actually did **not** churn, and yet received special treatment? The following diagram compares this misclassification rate for all the models:  
+SAS Enterprise Miner 12 のデスクトップのエディションを使用して構築された同等のモデルには、スコアのデータセットを提出しました。SAS モデルと 4 つのすべてのマシン ラーニング Studio モデルの精度を測定しました。
+
+##結果
+このセクションでは、スコア付けデータセットに基づいて、モデルの正確度に関してわかったことを紹介します。
+
+###スコア付けの正確度と精度
+一般に、Azure Machine Learning での実装は、正確度の点で SAS よりも約 10 ～ 15% 劣っていました (AUC)。
+
+ただし、離反で最も重要なメトリックは、誤分類率です。つまり、分類器によって予測された上位の離反者のうち、実際には**離反しておらず**、特別な扱いを受けている人々です。 次の図では、すべてのモデルでこの誤分類を比較しています。
 
 ![][7]
 
 
-*Figure 9: Passau prototype area under curve*
+*図 9: Passau プロトタイプの曲線下面積*
 
-###<a name="using-auc-to-compare-results"></a>Using AUC to compare results
-Area Under Curve (AUC) is a metric that represents a global measure of *separability* between the distributions of scores for positive and negative populations. It is similar to the traditional Receiver Operator Characteristic (ROC) graph, but one important difference is that the AUC metric does not require you to choose a threshold value. Instead, it summarizes the results over **all** possible choices. In contrast, the traditional ROC graph shows the positive rate on the vertical axis and the false positive rate on the horizontal axis, and the classification threshold varies.   
+###AUC を使用した結果の比較
+曲線下面積 (AUC) は、正と負の母集団のスコア分布の*可分性*の大域尺度を表すメトリックです。従来の Receiver Operator Characteristic (ROC) グラフと似ているものの、AUC メトリックではしきい値を選択する必要がないという重要な違いがあります。AUC では、可能性のある**すべての**選択肢を対象にした結果がまとめられます。それとは対照的に、従来の ROC グラフでは縦軸に陽性率、横軸に偽陽性率が示され、分類のしきい値は変動します。
 
-AUC is generally used as a measure of worth for different algorithms (or different systems) because it allows models to be compared by means of their AUC values. This is a popular approach in industries such as meteorology and biosciences. Thus, AUC represents a popular tool for assessing classifier performance.  
+AUC は一般に、異なるアルゴリズム (または異なるシステム) の価値の尺度として使用されます。AUC 値を使ってモデルを比較できるためです。これは、気象学や生物科学、その他多数の産業でよく使われる手法です。このため、AUC は分類器のパフォーマンスを評価するための一般的なツールとなっています。
 
-###<a name="comparing-misclassification-rates"></a>Comparing misclassification rates
-We compared the misclassification rates on the dataset in question by using the CRM data of approximately 8,000 subscriptions.  
+###誤分類率の比較
+およそ 8,000 件のサブスクリプションが含まれる CRM データを使用して、問題のデータセットの誤分類率を比較しました。
 
--   The SAS misclassification rate was 10-15%.
--   The Machine Learning Studio misclassification rate was 15-20% for the top 200-300 churners.  
+-	SAS の誤分類率は 10 ～ 15% でした。
+-	Machine Learning Studio の誤分類率は、上位 200 ～ 300 名の離反者については 15 ～ 20% でした。  
 
-In the telecommunications industry, it is important to address only those customers who have the highest risk to churn by offering them a concierge service or other special treatment. In that respect, the Machine Learning Studio implementation achieves results on par with the SAS model.  
+電気通信業界では、離反のリスクが最も高い顧客のみにコンセルジュ サービスや優待を提供して対処することが重要です。その点で、Azure Cloud ML を使用した実装は、SAS モデルに匹敵する結果を出しています。
 
-By the same token, accuracy is more important than precision because we are mostly interested in correctly classifying potential churners.  
+同様に、正確度は精度よりもさらに重要です。離反の可能性のある顧客を正しく分類することが最大の目的であるためです。
 
-The following diagram from Wikipedia depicts the relationship in a lively, easy-to-understand graphic:  
+Wikipedia から引用した次の図には、わかりやすいグラフィックを利用して関係が示されています。
 
 ![][8]
 
-*Figure 10: Tradeoff between accuracy and precision*
+*図 10: 正確度と精度のトレードオフ*
 
-###<a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Accuracy and precision results for boosted decision tree model  
+###ブースト ツリー モデルの正確度と精度の結果  
 
-The following chart displays the raw results from scoring using the Machine Learning prototype for the boosted decision tree model, which happens to be the most accurate among the four models:  
+次の図には、Machine Learning プロトタイプを使用した、ブースト デシジョン ツリー モデルのスコア付けの結果がそのまま示されています。4 つのモデルの中で、このモデルの正確度が最も高くなっています。
 
 ![][9]
 
-*Figure 11: Boosted decision tree model characteristics*
+*図 11: ブースト デシジョン ツリー モデルの特性*
 
-##<a name="performance-comparison"></a>Performance comparison
-We compared the speed at which data was scored using the Machine Learning Studio models and a comparable model created by using the desktop edition of SAS Enterprise Miner 12.1.  
+##パフォーマンスの比較
+Machine Learning Studio モデルと、SAS Enterprise Miner 12.1 のデスクトップ エディションを使用して作成した同等のモデルを使用して、データのスコア付けの速度を比較しました。
 
-The following table summarizes the performance of the algorithms:  
+次の表に、各アルゴリズムのパフォーマンスをまとめます。
 
-*Table 1. General performance (accuracy) of the algorithms*
+表 1.各アルゴリズムの一般的なパフォーマンス (正確度)
 
 | LR|BT|AP|SVM|
 |---|---|---|---|
-|Average Model|The Best Model|Underperforming|Average Model|
+|平均的なモデル|最高のモデル|平均未満|平均的なモデル|
 
-The models hosted in Machine Learning Studio outperformed SAS by 15-25% for speed of execution, but accuracy was largely on par.  
+Machine Learning Studio でホストされたモデルは、実行速度の点で SAS を 15 ～ 25% 上回っていたものの、正確度にほとんど違いはありませんでした。
 
-##<a name="discussion-and-recommendations"></a>Discussion and recommendations
-In the telecommunications industry, several practices have emerged to analyze churn, including:  
+##考察と推奨事項
+電気通信業界では、離反の分析用に、いくつかのプラクティスが登場しています。
 
--   Derive metrics for four fundamental categories:
-    -   **Entity (for example, a subscription)**. Provision basic information about the subscription and/or customer that is the subject of churn.
-    -   **Activity**. Obtain all possible usage information that is related to the entity, for example, the number of logins.
-    -   **Customer support**. Harvest information from customer support logs to indicate whether the subscription had issues or interactions with customer support.
-    -   **Competitive and business data**. Obtain any information possible about the customer (for example, can be unavailable or hard to track).
--   Use importance to drive feature selection. This implies that the boosted decision tree model is always a promising approach.  
+-	4 つの基本的なカテゴリに対応したメトリックを探してください。
+	-	**エンティティ (サブスクリプションなど)**。離反の主体であるサブスクリプションまたは顧客に関する基本的な情報を準備します。
+	-	**[アクティビティ]**: たとえば、ログインの数など、エンティティに関連するすべての可能な使用状況情報を取得します。
+	-	**カスタマー サポート**。サブスクリプションに問題やカスタマー サポートとのやり取りがあったかどうかを示す情報をカスタマー サポート ログから収集します。
+	-	**競合に関するデータとビジネス データ**。顧客に関して入手可能な情報をすべて入手します (入手できない場合や、トラッキングできない場合もあります)。
+-	重要度を特徴選択に利用します。これは、ブースト デシジョン ツリー モデルが常に有効なアプローチとなることを意味します。  
 
-The use of these four categories creates the illusion that a simple *deterministic* approach, based on indexes formed on reasonable factors per category, should suffice to identify customers at risk for churn. Unfortunately, although this notion seems plausible, it is a false understanding. The reason is that churn is a temporal effect and the factors contributing to churn are usually in transient states. What leads a customer to consider leaving today might be different tomorrow, and it certainly will be different six months from now. Therefore, a *probabilistic* model is a necessity.  
+この 4 つのカテゴリを利用すると、カテゴリごとの合理的なファクターによるインデックスに基づいた、単純かつ "決定論的" なアプローチにより、離反のリスクがある顧客を十分特定できるという楽観的な誤解が生じます。これはもっともらしく思えるものの、残念なことに間違った理解です。というのも、離反というものは一時的な現象であり、離反に影響するファクターは一般に不変ではないためです。今顧客が離反を検討している理由は、明日には変わる可能性があります。そして 6 か月もすれば確実に変わっています。だからこそ*確率論的*モデルが不可欠なのです。
 
-This important observation is often overlooked in business, which generally prefers a business intelligence-oriented approach to analytics, mostly because it is an easier sell and admits straightforward automation.  
+この重要な考えは実務では見逃されがちで、一般には BI 指向の分析アプローチが好まれています。その方が販売しやすく、単純な自動化が可能であるというのが、その主な理由です。
 
-However, the promise of self-service analytics by using Machine Learning Studio is that the four categories of information, graded by division or department, become a valuable source for machine learning about churn.  
+しかし、Machine Learning Studio を使用したセルフサービス分析なら、部門または部署別に分けられた情報の 4 つのカテゴリが離反に関する機械学習の貴重なソースとなるという見込みがあります。
 
-Another exciting capability coming in Azure Machine Learning is the ability to add a custom module to the repository of predefined modules that are already available. This capability, essentially, creates an opportunity to select libraries and create templates for vertical markets. It is an important differentiator of Azure Machine Learning in the market place.  
+Azure Machine Learning にはほかにも便利な機能があり、元から利用できる事前定義済みモジュールのリポジトリにカスタム モジュールを追加できます。この機能を利用すれば、ライブラリを選択し、垂直市場向けのテンプレートを作成できます。これは、市場で Azure Machine Learning を差別化している重要な機能です。
 
-We hope to continue this topic in the future, especially related to big data analytics.
-  
-##<a name="conclusion"></a>Conclusion
-This paper describes a sensible approach to tackling the common problem of customer churn by using a generic framework. We considered a prototype for scoring models and implemented it by using Azure Machine Learning. Finally, we assessed the accuracy and performance of the prototype solution with regard to comparable algorithms in SAS.  
+このトピックについては、いずれ、ビッグ データ分析との絡みで説明できればと考えています。
+##まとめ
+このペーパーでは、汎用フレームワークを使用して、顧客離れという一般的な問題に対処するための効果的なアプローチを取り上げました。スコア付けモデルのプロトタイプについて検討し、それを Azure Machine Learning を使って実装しました。最後に、同等の SAS のアルゴリズムと比較しつつ、プロトタイプ ソリューションの正確度とパフォーマンスを評価しました。
 
-**For more information:**  
+**詳細:**
 
-Did this paper help you? Please give us your feedback. Tell us on a scale of 1 (poor) to 5 (excellent), how would you rate this paper and why have you given it this rating? For example:  
+このペーパーはお役に立ちましたか。 フィードバックをお待ちしております。1 を "役に立たなかった"、5 を "非常に役に立った" としてこのペーパーを評価すると共に、その評価の理由をお聞かせください。 次に例を示します。
 
--   Are you rating it high due to having good examples, excellent screen shots, clear writing, or another reason?
--   Are you rating it low due to poor examples, fuzzy screen shots, or unclear writing?  
+-	適切な例があった、スクリーン ショットがわかりやすかった、文章がわかりやすかったなど、高く評価した理由を教えてください。
+-	例が不適切だった、スクリーン ショットがわかりにくかった、文章がわかりにくかったなど、低く評価した理由を教えてください。  
 
-This feedback will help us improve the quality of white papers we release.   
+このフィードバックは、今後発表するホワイト ペーパーの品質向上に利用させていただきます。
 
-[Send feedback](mailto:sqlfback@microsoft.com).
- 
-##<a name="references"></a>References
-[1] Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, July/August 2011, p.18-20.  
+[こちらからフィードバックをお送りください](mailto:sqlfback@microsoft.com)。
+##参照
+[1] 予測分析: Beyond the Predictions (予想を超える)、W. McKnight、Information Management、2011 年 7 月/8 月、p18～20。
 
-[2] Wikipedia article: [Accuracy and precision](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia の記事: [Accuracy and precision (正確性と精度)](http://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [CRISP-DM 1.0: Step-by-Step Data Mining Guide](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+\[3] [CRISP-DM 1.0: ステップ バイ ステップのデータ マイニングのガイド](http://www.the-modeling-agency.com/crisp-dm.pdf)
 
-[4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
+\[4] [ビッグ データ マーケティング: お客様に効率の向上と価値の促進を保証する ](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) in [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) 
- 
-##<a name="appendix"></a>Appendix
+\[5] 「[Cortana Intelligence Gallery (Cortana Intelligence ギャラリー)](http://gallery.cortanaintelligence.com/)」 の「[Telco churn model template (Telco の顧客離れモデルのテンプレート)](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5)」  
+##付録
 
 ![][10]
 
-*Figure 12: Snapshot of a presentation on churn prototype*
+*図 12: 離反プロトタイプに関するプレゼンテーションのスナップショット*
 
 
 [1]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-1.png
@@ -250,8 +244,4 @@ This feedback will help us improve the quality of white papers we release.
 [9]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-9.png
 [10]: ./media/machine-learning-azure-ml-customer-churn-scenario/churn-10.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

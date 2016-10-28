@@ -1,63 +1,58 @@
 <properties
-    pageTitle="Setting up Azure AD Join for your users| Microsoft Azure"
-    description="Explains how administrators can set up Azure AD Join for on-premises directory and device registration."
-    services="active-directory"
-    documentationCenter=""
-    authors="femila"
-    manager="swadhwa"
-    editor=""
-    tags="azure-classic-portal"/>
+	pageTitle="ユーザーの Azure AD 参加の設定 | Microsoft Azure"
+	description="管理者が、オンプレミス ディレクトリとデバイス登録のために Azure AD 参加を設定する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="femila"
+	manager="swadhwa"
+	editor=""
+	tags="azure-classic-portal"/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/27/2016"
-    ms.author="femila"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/27/2016"
+	ms.author="femila"/>
+
+# 組織での Azure AD 参加の設定
+
+Azure Active Directory 参加 (Azure AD 参加) を設定する前に、ユーザーのオンプレミスのディレクトリをクラウドに同期するか、Azure AD に管理アカウントを手動で作成する必要があります。
+
+オンプレミスのユーザーを Azure AD に同期するための詳しい手順については、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
 
-# <a name="setting-up-azure-ad-join-in-your-organization"></a>Setting up Azure AD Join in your organization
+Azure AD にユーザーを手動で作成して管理する方法については、「[Azure AD でのユーザー管理](https://msdn.microsoft.com/library/azure/hh967609.aspx)」を参照してください。
 
-Before you set up Azure Active Directory Join (Azure AD Join), you need to either sync up your on-premises directory of users to the cloud or manually create managed accounts in Azure AD.
+## デバイスの登録の設定
+1. Azure ポータルに管理者としてサインインします。
+2. 左ウィンドウで、**[Active Directory]** を選択します。
+3. **[ディレクトリ]** タブで、ディレクトリを選択します。
+4. **[構成]** タブをクリックします。
+5. **[デバイス]** セクションに移動します。
+6. **[デバイス] **タブで、次のように設定します。
+   * **[ユーザーごとのデバイスの最大数]**: Azure AD でユーザーが持つことができるデバイスの最大数を選択します。ユーザーがこのクォータに達した場合、1 つ以上の既存のデバイスを削除するまでデバイスを追加できなくなります。
+   * **[デバイスを参加させるには Multi-factor Auth が必要]**: 有効にした場合、ユーザーはデバイスを Azure AD に参加させるために 2 つ目の認証要素を提供する必要があります。Azure Multi-Factor Authentication の詳細については、[クラウドでの Azure Multi-Factor Authentication の概要](..\multi-factor-authentication\multi-factor-authentication-get-started-cloud.md)に関するページを参照してください。
+   * **[ユーザーはデバイスの Azure AD 参加を実行できます]**: デバイスを Azure AD に参加させることができるユーザーとグループを選択します。
+   * **[Azure AD 参加済みデバイスの追加の管理者]**: Azure AD Premium または Enterprise Mobility Suite (EMS) では、デバイスに対するローカル管理者権限が許可されるユーザーを選択できます。全体管理者とデバイスの所有者には、既定でローカル管理者権限が付与されます。
 
-Detailed instructions for syncing your on-premises users to Azure AD is covered in [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
+<center>![デバイスの登録の設定](./media/active-directory-azureadjoin/active-directory-aadjoin-configure-devices.png) </center>
 
+ユーザーの Azure AD 参加を設定すると、ユーザーは、会社のデバイスまたは個人のデバイスから Azure AD に接続できます。
 
-To manually create and manage users in Azure AD, refer to [User management in Azure AD](https://msdn.microsoft.com/library/azure/hh967609.aspx).
+Azure AD 参加をユーザーが設定できるようにする 3 つのシナリオを次に示します。
 
-## <a name="set-up-device-registration"></a>Set up device registration
-1. Log on to the Azure portal as an administrator.
-2. On the left pane, select **Active Directory**.
-3. On the **Directory** tab, select your directory.
-4. Select the **Configure** tab.
-5. Go to the **Devices** section.
-6. On the **devices** tab, set the following:  
-   * **MAXIMUM NUMBER OF DEVICES PER USER**: Select the maximum number of devices that a user can have in Azure AD.  If a user reaches this quota, they will not be able to add additional devices until one or more of their existing devices are removed.
-   * **REQUIRE MULTI-FACTOR AUTH TO JOIN DEVICES**: Set whether users are required to provide a second authentication factor to join their device to Azure AD. For more information on Azure Multi-Factor Authentication, see [Getting started with Azure Multi-Factor Authentication in the cloud](..\multi-factor-authentication\multi-factor-authentication-get-started-cloud.md).
-   * **USERS MAY AZURE AD JOIN DEVICES**: Select the users and groups that are allowed to join devices to Azure AD.
-   * **ADDITIONAL ADMINISTRATORS ON AZURE AD JOINED DEVICES**: With Azure AD Premium or the Enterprise Mobility Suite (EMS), you can choose which users are granted local administrator rights to the device. Global administrators and device owners are granted local administrator rights by default.
+- ユーザーが会社所有のデバイスを直接 Azure AD に参加させる。
+- ユーザーが、会社所有のデバイスをオンプレミスの Active Directory にドメイン参加させ、Azure AD に拡張する。
+- ユーザーが個人のデバイス上の Windows に職場または学校のアカウントを追加する。
 
-<center>![Set up device regisration](./media/active-directory-azureadjoin/active-directory-aadjoin-configure-devices.png) </center>
+## 追加情報
+* [エンタープライズ向け Windows 10: デバイスを仕事に使用する方法](active-directory-azureadjoin-windows10-devices-overview.md)
+* [Azure Active Directory 参加を使用したクラウド機能の Windows 10 デバイスへの拡張](active-directory-azureadjoin-user-upgrade.md)
+* [Azure AD 参加の使用シナリオについて](active-directory-azureadjoin-deployment-aadjoindirect.md)
+* [Windows 10 エクスペリエンスのためのドメイン参加済みデバイスの Azure AD への接続](active-directory-azureadjoin-devices-group-policy.md)
+* [Azure AD 参加の設定](active-directory-azureadjoin-setup.md)
 
-After you set up Azure AD Join for your users, they can connect to Azure AD through their corporate or personal devices.
-
-Following are the three scenarios you can use to enable your users to set up Azure AD Join:
-
-- Users join a company-owned device directly to Azure AD.
-- Users domain-join a company-owned device to the on-premises Active Directory and then extend the device to Azure AD.
-- Users add work or school accounts to Windows on a personal device
-
-## <a name="additional-information"></a>Additional information
-* [Windows 10 for the enterprise: Ways to use devices for work](active-directory-azureadjoin-windows10-devices-overview.md)
-* [Extending cloud capabilities to Windows 10 devices through Azure Active Directory Join](active-directory-azureadjoin-user-upgrade.md)
-* [Learn about usage scenarios for Azure AD Join](active-directory-azureadjoin-deployment-aadjoindirect.md)
-* [Connect domain-joined devices to Azure AD for Windows 10 experiences](active-directory-azureadjoin-devices-group-policy.md)
-* [Set up Azure AD Join](active-directory-azureadjoin-setup.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

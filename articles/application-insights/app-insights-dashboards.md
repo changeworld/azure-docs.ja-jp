@@ -1,169 +1,158 @@
 <properties
-    pageTitle="Using the Application Insights portal"
-    description="Metrics, search, dashboards and settings in the Application Insights portal."
-    services="application-insights"
+	pageTitle="Application Insights ポータルの使用"
+	description="Application Insights ポータルのメトリック、ダッシュボード、および設定。"
+	services="application-insights"
     documentationCenter=""
-    authors="alancameronwills"
-    manager="douge"/>
+	authors="alancameronwills"
+	manager="douge"/>
 
 <tags
-    ms.service="application-insights"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="ibiza"
-    ms.devlang="multiple"
-    ms.topic="article" 
-    ms.date="07/30/2016"
-    ms.author="awills"/>
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="multiple"
+	ms.topic="article" 
+	ms.date="07/30/2016"
+	ms.author="awills"/>
+
+# Application Insights ポータルのナビゲーションおよびダッシュボード
+
+[Application Insights をプロジェクトに設定](app-insights-overview.md)すると、アプリのパフォーマンスと使用状況に関するテレメトリ データが、[Azure ポータル](https://portal.azure.com)でプロジェクトの Application Insights リソースに表示されます。
+
+## テレメトリの検索
+
+[Azure ポータル](https://portal.azure.com)にサインインし、アプリ用に作成した Application Insights リソースを参照します。
+
+![[参照] をクリックし、[Application Insights]、アプリの順に選択します。](./media/app-insights-dashboards/00-start.png)
+
+[概要] ページには、いくつかの基本的なテレメトリとその他のリンクが示されます。内容は、アプリの種類によって異なり、カスタマイズすることができます。
 
 
-# <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Navigation and Dashboards in the Application Insights portal
+## アプリの [概要] ブレード
 
-After you have [set up Application Insights on your project](app-insights-overview.md), telemetry data about your app's performance and usage will appear in your project's Application Insights resource in the [Azure portal](https://portal.azure.com).
+アプリの [概要] ブレード (ページ) には、アプリの主要な診断メトリックの概要が表示されます。また、[概要] ブレードはポータルの他の機能のゲートウェイでもあります。
 
-## <a name="find-your-telemetry"></a>Find your telemetry
+次の機能を利用できます。
 
-Sign in to the [Azure portal](https://portal.azure.com) and browse to the Application Insights resource that you created for your app.
-
-![Click Browse, select Application Insights, then your app.](./media/app-insights-dashboards/00-start.png)
-
-The overview page gives you some basic telemetry, plus links to more.
-The contents depend on the type of your app, and can be customized.
-
-
-## <a name="the-app-overview-blade"></a>The app overview blade
-
-The overview blade (page) for your app shows a summary of the key diagnostic metrics of your app, and is a gateway to the other features of the portal.
-
-Click:
-
-* **Any chart or tile** to see more detail about what's displayed on the chart.
-* **Settings** to get to predefined blades of other metrics, as well as configuration pages.
-* [**Metrics Explorer**](app-insights-metrics-explorer.md) to create metrics pages of your own choice.
-* [**Search**](app-insights-diagnostic-search.md) to investigate specific instances of events such as requests, exceptions, or log traces.
-* [**Analytics**](app-insights-analytics.md) for powerful queries over your telemetry.
-* [**Live Stream**](app-insights-metrics-explorer.md#live-stream) for a fixed set of near-instant metrics, useful when deploying a new build or debugging.
+* **グラフやタイル**をクリックすると、グラフに表示されているアイテムの詳細が表示されます。
+* **[設定]** をクリックすると、他のメトリックの定義済みブレードと、構成ページが表示されます。
+* [**[メトリックス エクスプ ローラー]**](app-insights-metrics-explorer.md) をクリックすると、選択したメトリックのページが作成されます。
+* [**[検索]**](app-insights-diagnostic-search.md) をクリックすると、要求、例外、またはログ トレースなど、特定のイベントのインスタンスを見つけることができます。
+* [**[分析]**](app-insights-analytics.md) をクリックすると、テレメトリに対して強力なクエリを実行することができます。
+* [**[Live Stream (ライブ ストリーム)]**](app-insights-metrics-explorer.md#live-stream) をクリックすると、ほぼ即時メトリックの固定セットが表示されます。これは、新しいビルドを展開するとき、またはデバッグのときに便利です。
 
 
-![Major routes to view your telemetry](./media/app-insights-dashboards/010-oview.png)
+![テレメトリを表示する主な方法](./media/app-insights-dashboards/010-oview.png)
 
 
-### <a name="customize-the-overview-blade"></a>Customize the overview blade 
+### [概要] ブレードのカスタマイズ 
 
-Choose what you want to see on the overview. In Customize, you can insert section titles, drag tiles and charts around, remove items, and add new tiles and charts from the gallery.
+概要を表示する対象を選択します。[カスタマイズ] では、セクション タイトルの挿入、タイルやグラフのドラッグ、項目の削除、ギャラリーからの新しいタイルやグラフの追加ができます。
 
-![Click Edit. Drag tiles and charts. Add tiles from the gallery. Then click Done.](./media/app-insights-dashboards/020-customize.png)
+![[編集] をクリックします。タイルやグラフをドラッグします。ギャラリーからタイルを追加します。[完了] をクリックします。](./media/app-insights-dashboards/020-customize.png)
 
-## <a name="dashboards"></a>Dashboards
+## ダッシュボード
 
-The first thing you see after you sign in to the [Microsoft Azure portal](https://portal.azure.com) is a dashboard. Here you can bring together the charts that are most important to you across all your Azure resources, including telemetry from [Visual Studio Application Insights](app-insights-overview.md).
+[Microsoft Azure ポータル](https://portal.azure.com)にサインインすると、まず、ダッシュボードが表示されます。ここでは、[Visual Studio Application Insights](app-insights-overview.md) のテレメトリなどを含む、すべての Azure リソースから最も重要なグラフをまとめて表示することができます。
  
 
-![A customized dashboard.](./media/app-insights-dashboards/31.png)
+![カスタマイズされたダッシュボード](./media/app-insights-dashboards/31.png)
 
 
-1. Edit, create, and share dashboards using the dashboard toolbar.
-2. Return to the current dashboard, or switch to other recent views.
-3. Switch dashboards.
-4. Create, edit, and share dashboards.
-5. Hover over a tile and then use its top bar to move, customize, or remove it.
+1. ダッシュボードを編集、作成、共有するには、ダッシュボードのツールバーを使用します。
+2. 現在のダッシュボードに戻るか、または最近アクセスした他のビューに切り替えます。
+3. ダッシュボードを切り替えます。
+4. ダッシュボードを作成、編集、共有します。
+5. タイルにマウス ポインターを合わせてから、上部のバーを使ってタイルを移動、カスタマイズ、削除します。
 
-## <a name="add-to-a-dashboard"></a>Add to a dashboard
+## ダッシュボードへの追加
 
-When you're looking at a blade or set of charts that's particularly interesting, you can pin a copy of it to the dashboard. You'll see it next time you return there.
+特に重要なブレードやグラフのセットがあれば、そのコピーをダッシュボードにピン留めしておきましょう。ダッシュボードを開いたときにすぐに見ることができます。
 
-![To pin a chart, hover over it and then click "..." in the header.](./media/app-insights-dashboards/33.png)
+![グラフをピン留めするには、マウスでポイントし、ヘッダーの [...] をクリックします。](./media/app-insights-dashboards/33.png)
 
-1. Pin chart to dashboard. A copy of the chart appears on the dashboard.
-2. Pin the whole blade to the dashboard - it appears on the dashboard as a tile that you can click through.
-3. Click the top left corner to return to the current dashboard. Then you can use the drop-down menu to return to the current view.
+1. ダッシュボードにグラフをピン留めします。グラフのコピーがダッシュボードに表示されます。
+2. ブレード全体をダッシュボードにピン留めします。クリックして進むことのできるタイルとしてブレード全体がダッシュボードに表示されます。
+3. 現在のダッシュボードに戻るには、左上隅をクリックします。その後ドロップダウン メニューを使用して現在のビューに戻ることができます。
 
-Notice that charts are grouped into tiles: a tile can contain more than one chart. You pin the whole tile to the dashboard.
+グラフはタイルにグループ化されます。1 つのタイルに複数のグラフを含めることができます。タイル全体をダッシュボードにピン留めします。
 
-### <a name="analytics-charts"></a>Analytics charts
+### Analytics のグラフ
 
-You can also [pin Analytics](app-insights-analytics-using.md#pin-to-dashboard) charts to a [shared](#share-dashboards-with-your-team) dashboard. This allows you to add charts of any arbitrary query alongside the standard metrics.
+[共有](#share-dashboards-with-your-team)ダッシュボードに[Analytics のグラフをピン留め](app-insights-analytics-using.md#pin-to-dashboard)することもできます。これにより、任意のクエリのグラフを標準的なメトリックの横に追加できます。
 
-## <a name="adjust-a-tile-on-the-dashboard"></a>Adjust a tile on the dashboard
+## ダッシュボード上のタイルの調整
 
-Once a tile is on the dashboard, you can adjust it.
+タイルをダッシュボード上に追加すると、タイルを調整することができます。
 
-![Hover over a chart in order to edit it.](./media/app-insights-dashboards/36.png)
+![グラフを編集するには、そのグラフ上にポインターを置きます。](./media/app-insights-dashboards/36.png)
 
-1. Add a chart to the tile. 
-2. Set the metric, group-by dimension and style (table, graph) of a chart.
-3. Set the timespan and filter properties for the charts on the tile. You can set the chart's own timespan, or inherit from the timespan of the dashboard.
-4. Set tile title.
+1. タイルにグラフを追加します。
+2. メトリック、グループ化ディメンションおよびグラフのスタイル (テーブル、グラフ) を設定します。
+3. タイルのグラフに、期間とフィルターのプロパティを設定します。グラフの独自の期間を設定したり、ダッシュ ボードの期間を継承したりすることができます。
+4. タイルのタイトルを設定します。
 
-Tiles pinned from metric explorer blades have more editing options than tiles pinned from an Overview blade.
+メトリックス エクスプ ローラーのブレードからピン留めされたタイルには、概要ブレードからピン留めされたタイルよりも多くの編集オプションがあります。
 
-The original tile that you pinned isn't affected by your edits.
-
-
-## <a name="switch-between-dashboards"></a>Switch between dashboards
-
-You can save more than one dashboard and switch between them. When you pin a chart or blade, they're added to the current dashboard.
-
-![To switch between dashboards, click Dashboard and select a saved dashboard. To create and save a new dashboard, click New. To rearrange, click Edit.](./media/app-insights-dashboards/32.png)
-
-For example, you might have one dashboard for displaying full screen in the team room, and another for general development.
+ピン留めした元のタイルは、編集の影響を受けません。
 
 
-On the dashboard, a blade appears as a tile: click it to go to the blade. A chart replicates the chart in its original location.
+## ダッシュボード間の切り替え
 
-![Click a tile to open the blade it represents](./media/app-insights-dashboards/35.png)
+複数のダッシュボードを保存して、切り替えることができます。ピン留めしたグラフやブレードは、そのとき開いていたダッシュボードに追加されます。
+
+![ダッシュボード間を切り替えるには、[ダッシュボード] をクリックし、保存されているダッシュボードを選択します。新しいダッシュボードを作成して保存するには、[新規] をクリックします。並べ替えるには、[編集] をクリックします。](./media/app-insights-dashboards/32.png)
+
+たとえば、チーム ルームを全画面で表示するダッシュボードを作成し、全般的な開発用に別のダッシュボードを作成することができます。
 
 
-## <a name="share-dashboards-with-your-team"></a>Share dashboards with your team
+このダッシュボードでは、ブレードがタイルとして表示されています。タイルをクリックするとブレードに移動します。グラフは、元の場所のグラフを複製したものです。
 
-When you've created a dashboard, you can share it with other users.
+![タイルを表すブレードを開くには、そのタイルをクリックします](./media/app-insights-dashboards/35.png)
 
-![In the dashboard header, click Share](./media/app-insights-dashboards/41.png)
 
-Learn about [Roles and access control](app-insights-resources-roles-access-control.md).
+## チームとのダッシュボードの共有
 
-## <a name="settings"></a>Settings
+ダッシュボードを作成すると、他のユーザーとそのダッシュボードを共有できます。
 
-The Settings button on the overview blade is not only about configuration, but also provides a way into several types of chart.
+![ダッシュボードのヘッダーで [共有] をクリックします](./media/app-insights-dashboards/41.png)
 
-* **Audit logs** - Review alerts and actions that have been performed on your app resource.
-* [New support request](app-insights-get-dev-support.md) - Options for help with any aspect of Azure. For Application Insights, you can also get help by using the smiley button at top right of the window.
-* [Application map](app-insights-dependencies.md#application-map) - Active map showing the components of your application, derived from the dependency information.
-* [Live Metrics Stream](app-insights-metrics-explorer.md#live-metrics-stream) - Key metrics with a latency of about 1s, for monitoring a new release.
-* **Failures** - Failed requests, failed dependency calls, and exceptions. [Editable metrics blade](app-insights-metrics-explorer.md).
-* **Performance** - Response time, dependency response times. [Editable metrics blade](app-insights-metrics-explorer.md).
-* [Servers](app-insights-web-monitor-performance.md) - Performance counters. Available if you [install Status Monitor](app-insights-monitor-performance-live-website-now.md).
-* **Browser** - Page view and AJAX performance. Available if you [instrument your web pages](app-insights-javascript.md).
-* **Usage** - Page view, user, and session counts. Available if you [instrument your web pages](app-insights-javascript.md).
-* **Getting started** - inline tutorial.
-* **Properties** - instrumentation key, subscription and resource id.
-* [Availability](app-insights-monitor-web-app-availability.md) - web test configuration and results.
-* [Alerts](app-insights-alerts.md) - metric alert configuration.
-* [Continuous export](app-insights-export-telemetry.md) - configure export of telemetry to Azure storage.
-* [Performance testing](app-insights-monitor-web-app-availability.md#performance-tests) - set up a synthetic load on your website.
-* [Quota and pricing](app-insights-pricing.md) and [ingestion sampling](app-insights-sampling.md).
-* **API Access** - currently used to create [release annotations](app-insights-annotations.md) and for the Data Access API.
-* [**Work Items**](app-insights-diagnostic-search.md#create-work-item) - connect to a work tracking system so that you can create bugs while inspecting telemetry.
-* [**Users**](app-insights-resources-roles-access-control.md) - Manage who has access to your app resource.
-* [**Roles**](app-insights-resources-roles-access-control.md) - manage what users can do.
-* [**Tags**](..\resource-group-using-tags.md) - organize Azure resources.
-* [**Locks**](..\resource-group-lock-resources.md) - lock Azure resources
-* [**Export template**](app-insights-powershell.md) - export a definition of the Azure resource so that you can use it as a template to create new resources.
+詳細については、[ロールとアクセス制御](app-insights-resources-roles-access-control.md)に関するページをご覧ください。
 
-## <a name="what's-next?"></a>What's next?
+## Settings
+
+[概要] ブレードの [設定] ボタンは、構成に関するものだけでなく、複数の種類のグラフを設定することもできます。
+
+* **監査ログ** - アラートと、アプリ リソース上で実行されたアクションを確認します。
+* [新しいサポート要求](app-insights-get-dev-support.md) - Azure のさまざまな側面が記載されたヘルプのオプションです。Application Insights では、ウィンドウの右上にある [スマイリー] ボタンを使用してヘルプを取得することもできます。
+* [アプリケーション マップ](app-insights-dependencies.md#application-map) - 依存関係情報から取得されるアプリケーションのコンポーネントを示すアクティブ マップです。
+* [ライブ メトリック ストリーム](app-insights-metrics-explorer.md#live-metrics-stream) - 新しいリリースを監視するための、待機時間が約 1 秒の重要なメトリックです。
+* **エラー** - 失敗した要求、失敗した依存関係の呼び出し、例外です。[編集可能なメトリック ブレード](app-insights-metrics-explorer.md)です。
+* **パフォーマンス** - 応答時間および依存関係の応答時間です。[編集可能なメトリック ブレード](app-insights-metrics-explorer.md)です。
+* [サーバー](app-insights-web-monitor-performance.md) - パフォーマンス カウンターです。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)している場合に使用できます。
+* **ブラウザー** - ページ ビューと AJAX パフォーマンスです。[Web ページをインストルメント化](app-insights-javascript.md)している場合に使用できます。
+* **使用状況** - ページ ビュー、ユーザー、およびセッションの数です。[Web ページをインストルメント化](app-insights-javascript.md)している場合に使用できます。
+* **作業の開始** - インライン チュートリアルです。
+* **プロパティ** - インストルメンテーション キー、サブスクリプション、およびリソース ID です。
+* [状態](app-insights-monitor-web-app-availability.md) - Web テストの構成と結果です。
+* [アラート](app-insights-alerts.md) - メトリック アラートの構成です。
+* [連続エクスポート](app-insights-export-telemetry.md) - Azure ストレージへのテレメトリのエクスポートを構成します。
+* [パフォーマンス テスト](app-insights-monitor-web-app-availability.md#performance-tests) - Web サイトでの代理負荷を設定します。
+* [クォータと価格](app-insights-pricing.md)および[インジェスト サンプリング](app-insights-sampling.md)。
+* **API アクセス** - 現在は、[リリース注釈](app-insights-annotations.md)の作成とデータ アクセス API で使用されています。
+* [**作業項目**](app-insights-diagnostic-search.md#create-work-item) - テレメトリを確認しながらバグを作成できるように、作業項目追跡システムに接続します。
+* [**ユーザー**](app-insights-resources-roles-access-control.md) - アプリ リソースにアクセスできるユーザーを管理します。
+* [**ロール**](app-insights-resources-roles-access-control.md) - ユーザーができることを管理します。
+* [**タグ**](..\resource-group-using-tags.md) - Azure リソースを整理します。
+* [**ロック**](..\resource-group-lock-resources.md) - Azure リソースをロックします。
+* [**テンプレートのエクスポート**](app-insights-powershell.md) - 新しいリソースを作成するテンプレートとして使用できるように、Azure リソースの定義をエクスポートします。
+
+## 次の手順
 
 ||
 |---|---
-|[Metrics explorer](app-insights-metrics-explorer.md)<br/>Filter and segment metrics|![Search example](./media/app-insights-dashboards/64.png)
-|[Diagnostic search](app-insights-diagnostic-search.md)<br/>Find and inspect events, related events, and create bugs |![Search example](./media/app-insights-dashboards/61.png)
-|[Analytics](app-insights-analytics.md)<br/>Powerful query language| ![Search example](./media/app-insights-dashboards/63.png)
+|[メトリックス エクスプローラー](app-insights-metrics-explorer.md)<br/>メトリックのフィルター処理と分割|![検索例](./media/app-insights-dashboards/64.png)
+|[診断検索](app-insights-diagnostic-search.md)<br/>イベントや関連イベントを検索して確認し、バグを作成 |![検索例](./media/app-insights-dashboards/61.png)
+|[Analytics](app-insights-analytics.md)<br/>強力なクエリ言語| ![検索例](./media/app-insights-dashboards/63.png)
 
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

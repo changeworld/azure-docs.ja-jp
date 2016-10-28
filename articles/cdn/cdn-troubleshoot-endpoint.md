@@ -1,105 +1,100 @@
 <properties
-    pageTitle="Troubleshooting Azure CDN endpoints returning 404 status | Microsoft Azure"
-    description="Troubleshoot 404 response codes with Azure CDN endpoints."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="404 状態を返す Azure CDN エンドポイントのトラブルシューティング | Microsoft Azure"
+	description="Azure CDN エンドポイントでの 404 応答コードのトラブルシューティングを行います。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/28/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2016"
+	ms.author="casoper"/>
     
+# 404 状態を返す CDN エンドポイントのトラブルシューティング
 
-# <a name="troubleshooting-cdn-endpoints-returning-404-statuses"></a>Troubleshooting CDN endpoints returning 404 statuses
+この記事は、404 エラーを返す [CDN エンドポイント](cdn-create-new-endpoint.md)に関する問題のトラブルシューティングを行う際に役立ちます。
 
-This article helps you troubleshoot issues with [CDN endpoints](cdn-create-new-endpoint.md) returning 404 errors.
+この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムとスタック オーバーフロー フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。または、Azure サポート インシデントを送信できます。その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。
 
-If you need more help at any point in this article, you can contact the Azure experts on [the MSDN Azure and the Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can also file an Azure support incident. Go to the [Azure Support site](https://azure.microsoft.com/support/options/) and click on **Get Support**.
+## 症状
 
-## <a name="symptom"></a>Symptom
+CDN プロファイルとエンドポイントを作成しましたが、コンテンツが CDN で使用できないようです。CDN URL を使用してコンテンツにアクセスしようとすると、HTTP 404 状態コードを受け取ります。
 
-You've created a CDN profile and an endpoint, but your content doesn't seem to be available on the CDN.  Users who attempt to access your content via the CDN URL receive HTTP 404 status codes. 
+## 原因
 
-## <a name="cause"></a>Cause
+以下のような原因が考えられます。
 
-There are several possible causes, including:
+- ファイルの配信元が CDN で認識されない。
+- エンドポイントが正しく構成されていないため、CDN が間違った場所を参照している。
+- ホストが CDN からのホスト ヘッダーを拒否している。
+- エンドポイントが CDN に反映される時間がなかった。
 
-- The file's origin isn't visible to the CDN
-- The endpoint is misconfigured, causing the CDN to look in the wrong place
-- The host is rejecting the host header from the CDN
-- The endpoint hasn't had time to propagate throughout the CDN
+## トラブルシューティングの手順
 
-## <a name="troubleshooting-steps"></a>Troubleshooting steps
+> [AZURE.IMPORTANT] CDN エンドポイントが作成されてから登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントはすぐには利用できません。<b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は 1 分以内で完了します。<b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。このドキュメントの手順を完了しても、404 応答を受け取る場合は、サポート チケットを開く前に数時間待ってからもう一度確認することを検討してください。
 
-> [AZURE.IMPORTANT] After creating a CDN endpoint, it will not immediately be available for use, as it takes time for the registration to propagate through the CDN.  For <b>Azure CDN from Akamai</b> profiles, propagation usually completes within one minute.  For <b>Azure CDN from Verizon</b> profiles, propagation will usually complete within 90 minutes, but in some cases can take longer.  If you complete the steps in this document and you're still getting 404 responses, consider waiting a few hours to check again before opening a support ticket.
+### 元のファイルを確認する
 
-### <a name="check-the-origin-file"></a>Check the origin file
+まず、キャッシュする必要があるファイルが配信元で使用可能で、パブリックにアクセスできることを確認する必要があります。これを行うに最も簡単な方法は、InPrivate または Incognito セッションでブラウザーを開き、ファイルを直接参照することです。単にアドレス ボックスに URL を入力するか貼り付け、それが予期したファイルかどうかを確認します。この例では、Azure ストレージ アカウントのファイル (`https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt` でアクセス可能) を使用します。ご覧のように、テストは正常に合格しています。
 
-First, we should verify the that the file we want cached is available on our origin and is publicly accessible.  The quickest way to do that is to open a browser in an In-Private or Incognito session and browse directly to the file.  Just type or paste the URL into the address box and see if that results in the file you expect.  For this example, I'm going to use a file I have in an Azure Storage account, accessible at `https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt`.  As you can see, it successfully passes the test.
+![成功です。](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
 
-![Success!](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
+> [AZURE.WARNING] これはファイルが公開されているかどうかを確認する最も早く簡単な方法ですが、組織内の一部のネットワーク構成では、このファイルが実際にはネットワークのユーザーにのみ表示される場合でも公開されているように錯覚することがあります (Azure でホストされている場合も同様)。組織のネットワークに接続されていないモバイル デバイスや Azure の仮想マシンなど、テストできる外部ブラウザーがあれば理想的です。
 
-> [AZURE.WARNING] While this is the quickest and easiest way to verify your file is publicly available, some network configurations in your organization could give you the illusion that this file is publicly available when it is, in fact, only visible to users of your network (even if it's hosted in Azure).  If you have an external browser from which you can test, such as a mobile device that is not connected to your organization's network, or a virtual machine in Azure, that would be best.
+### 配信元の設定を確認する
 
-### <a name="check-the-origin-settings"></a>Check the origin settings
+これで、ファイルがインターネットで公開されていることが確認できました。次は配信元の設定を確認する必要があります。[Azure ポータル](https://portal.azure.com)で、CDN プロファイルを参照し、トラブルシューティングを行うエンドポイントをクリックします。表示された **[エンドポイント]** ブレードで、配信元をクリックします。
 
-Now that we've verified the file is publicly available on the internet, we should verify our origin settings.  In the [Azure Portal](https://portal.azure.com), browse to your CDN profile and click the endpoint you're troubleshooting.  In the resulting **Endpoint** blade, click the origin.  
+![配信元が強調表示されている [エンドポイント] ブレード](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
 
-![Endpoint blade with origin highlighted](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
+**[配信元]** ブレードが表示されます。
 
-The **Origin** blade appears. 
+![[配信元] ブレード](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
 
-![Origin blade](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
+#### 配信元の種類とホスト名
 
-#### <a name="origin-type-and-hostname"></a>Origin type and hostname
+**[配信元の種類]** が正しいことを確認し、**[配信元のホスト名]** を確認します。この例では、URL `https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt` のホスト名部分は `cdndocdemo.blob.core.windows.net` です。スクリーンショットを見れば、これが正しいことがわかります。Azure Storage、Web アプリ、クラウド サービスが配信元の場合、**[配信元のホスト名]** フィールドはドロップダウン リストになっているため、スペルが正しいかどうかを気にする必要はありません。ただし、カスタムの配信元を使用する場合は、ホスト名のスペルが正しいかどうかが*きわめて重要*になります。
 
-Verify the **Origin type** is correct, and verify the **Origin hostname**.  In my example, `https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt`, the hostname portion of the URL is `cdndocdemo.blob.core.windows.net`.  As you can see in the screenshot, this is correct.  For Azure Storage, Web App, and Cloud Service origins, the **Origin hostname** field is a dropdown, so we don't need to worry about spelling it correctly.  However, if you're using a custom origin, it is *absolutely critical* your hostname is spelled correctly!
+#### HTTP および HTTPS ポート
 
-#### <a name="http-and-https-ports"></a>HTTP and HTTPS ports
+ここで **HTTP** および **HTTPS ポート**も確認します。ほとんどの場合、80 と 443 は正しいポートであるため、変更する必要はありません。ただし、配信元サーバーが別のポートでリッスンしている場合は、ここに示す必要があります。不明な場合は、元のファイルの URL を確認してください。HTTP および HTTPS の仕様では、既定値としてポート 80 と 443 が指定されています。この例の URL `https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt` では、ポートは指定されていないため、既定値の 443 を前提としており、正しい設定になっています。
 
-The other thing to check here is your **HTTP** and **HTTPS ports**.  In most cases, 80 and 443 are correct, and you will require no changes.  However, if the origin server is listening on a different port, that will need to be represented here.  If you're not sure, just look at the URL for your origin file.  The HTTP and HTTPS specifications specify ports 80 and 443 as the defaults. In my URL, `https://cdndocdemo.blob.core.windows.net/publicblob/lorem.txt`, a port is not specified, so the default of 443 is assumed and my settings are correct.  
+ただし、前の手順でテストした元のファイルの URL は `http://www.contoso.com:8080/file.txt` です。ホスト名セグメントの末尾が `:8080` であることに注意してください。これにより、`www.contoso.com` の Web サーバーに接続する場合にポート `8080` を使用するようにブラウザーに指示されるため、**[HTTP ポート]** フィールドには 8080 を入力する必要があります。これらのポート設定が影響するのは、配信元から情報を取得するためにエンドポイントが使用するポートのみであることに注意してください。
 
-However, say the URL for your origin file that you tested earlier is `http://www.contoso.com:8080/file.txt`.  Note the `:8080` at the end of the hostname segment.  That tells the browser to use port `8080` to connect to the web server at `www.contoso.com`, so you'll need to enter 8080 in the **HTTP port** field.  It's important to note that these port settings only affect what port the endpoint uses to retrieve information from the origin.
-
-> [AZURE.NOTE] **Azure CDN from Akamai** endpoints do not allow the full TCP port range for origins.  For a list of origin ports that are not allowed, see [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx).  
+> [AZURE.NOTE] **Azure CDN from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。使用できない配信元ポートの一覧については、「[Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](https://msdn.microsoft.com/library/mt757337.aspx)」を参照してください。
   
-### <a name="check-the-endpoint-settings"></a>Check the endpoint settings
+### エンドポイント設定を確認する
 
-Back on the **Endpoint** blade, click the **Configure** button.
+**[エンドポイント]** ブレードに戻り、**[構成]** ボタンをクリックします。
 
-![Endpoint blade with configure button highlighted](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
+![[構成] ボタンが強調表示されている [エンドポイント] ブレード](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
 
-The endpoint's **Configure** blade appears.
+エンドポイントの **[構成]** ブレードが表示されます。
 
-![Configure blade](./media/cdn-troubleshoot-endpoint/cdn-configure.png)
+![[構成] ブレード](./media/cdn-troubleshoot-endpoint/cdn-configure.png)
 
-#### <a name="protocols"></a>Protocols
+#### プロトコル
 
-For **Protocols**, verify that the protocol being used by the clients is selected.  The same protocol used by the client will be the one used to access the origin, so it's important to have the origin ports configured correctly in the previous section.  The endpoint only listens on the default HTTP and HTTPS ports (80 and 443), regardless of the origin ports.
+**[プロトコル]** では、クライアントで使用されているプロトコルが選択されていることを確認します。クライアントで使用されているものと同じプロトコルが配信元へのアクセス時に使用されるため、前のセクションで配信元のポートを正しく構成することが重要になります。エンドポイントは、配信元のポートに関係なく、既定の HTTP および HTTPS ポート (80 および 443) でのみリッスンします。
 
-Let's return to our hypothetical example with `http://www.contoso.com:8080/file.txt`.  As you'll remember, Contoso specified `8080` as their HTTP port, but let's also assume they specified `44300` as their HTTPS port.  If they created an endpoint named `contoso`, their CDN endpoint hostname would be `contoso.azureedge.net`.  A request for `http://contoso.azureedge.net/file.txt` is an HTTP request, so the endpoint would use HTTP on port 8080 to retrieve it from the origin.  A secure request over HTTPS, `https://contoso.azureedge.net/file.txt`, would cause the endpoint to use HTTPS on port 44300 when retriving the file from the origin.
+`http://www.contoso.com:8080/file.txt` を使用する仮想例に戻りましょう。前述のとおり、Contoso では HTTP ポートとして `8080` が指定されていますが、HTTPS ポートとして `44300` が指定されていることも前提とします。`contoso` という名前のエンドポイントを作成した場合、CDN エンドポイントのホスト名は `contoso.azureedge.net` になります。`http://contoso.azureedge.net/file.txt` の要求は HTTP 要求であるため、エンドポイントはポート 8080 で HTTP を使ってファイルを配信元から取得します。`https://contoso.azureedge.net/file.txt` のうような HTTPS 経由のセキュリティで保護された要求の場合は、配信元からファイルを取得する際にポート 44300 で HTTPS を使うことになります。
 
-#### <a name="origin-host-header"></a>Origin host header
+#### 配信元のホスト ヘッダー
 
-The **Origin host header** is the host header value sent to the origin with each request.  In most cases, this should be the same as the **Origin hostname** we verified earlier.  An incorrect value in this field won't generally cause 404 statuses, but is likely to cause other 4xx statuses, depending on what the origin expects.
+**[配信元のホスト ヘッダー]** は、各要求で配信元に送られるホスト ヘッダーの値です。ほとんどの場合、これは前の手順で確認した **[配信元のホスト名]** と同じになります。通常、このフィールドの値が正しくなくても 404 状態は表示されません。ただし、配信元の要求に応じて、他の 4xx 状態が表示される可能性があります。
 
-#### <a name="origin-path"></a>Origin path
+#### 配信元のパス
 
-Lastly, we should verify our **Origin path**.  By default this is blank.  You should only use this field if you want to narrow the scope of the origin-hosted resources you want to make available on the CDN.  
+最後に、**[配信元のパス]** を確認する必要があります。既定では、これは空白になっています。このフィールドは、CDN で使用できるようにする配信元でホストされているリソースの範囲を限定する場合にのみ使用する必要があります。
 
-For example, in my endpoint, I wanted all resources on my storage account to be available, so I left **Origin path** blank.  This means that a request to `https://cdndocdemo.azureedge.net/publicblob/lorem.txt` results in a connection from my endpoint to `cdndocdemo.core.windows.net` that requests `/publicblob/lorem.txt`.  Likewise, a request for `https://cdndocdemo.azureedge.net/donotcache/status.png` results in the endpoint requesting `/donotcache/status.png` from the origin.
+たとえば、この例のエンドポイントの場合、ストレージ アカウントのすべてのリソースを使用できるようにするため、**[配信元のパス]** は空白のままにします。つまり、`https://cdndocdemo.azureedge.net/publicblob/lorem.txt` への要求では、エンドポイントから `/publicblob/lorem.txt` を要求する `cdndocdemo.core.windows.net` に接続されることになります。同様に、`https://cdndocdemo.azureedge.net/donotcache/status.png` の要求では、エンドポイントは配信元からの `/donotcache/status.png` を要求します。
 
-But what if I don't want to use the CDN for every path on my origin?  Say I only wanted to expose the `publicblob` path.  If I enter */publicblob* in my **Origin path** field, that will cause the endpoint to insert */publicblob* before every request being made to the origin.  This means that the request for `https://cdndocdemo.azureedge.net/publicblob/lorem.txt` will now actually take the request portion of the URL, `/publicblob/lorem.txt`, and append `/publicblob` to the beginning. This results in a request for `/publicblob/publicblob/lorem.txt` from the origin.  If that path doesn't resolve to an actual file, the origin will return a 404 status.  The correct URL to retrieve lorem.txt in this example would actually be `https://cdndocdemo.azureedge.net/lorem.txt`.  Note that we don't include the */publicblob* path at all, because the request portion of the URL is `/lorem.txt` and the endpoint adds `/publicblob`, resulting in `/publicblob/lorem.txt` being the request passed to the origin.
+しかし、配信元の各パスで CDN を使用しない場合もあります。 つまり、`publicblob` パスを使用する場合に、**[配信元のパス]** フィールドに「*/publicblob*」と入力すると、配信元へのすべての要求の前にエンドポイントが */publicblob* を挿入します。これは、`https://cdndocdemo.azureedge.net/publicblob/lorem.txt` の要求では実際に URL の要求部分である `/publicblob/lorem.txt` を使用し、先頭に `/publicblob` が付加されるようになることを意味します。そのため、配信元からの `/publicblob/publicblob/lorem.txt` が要求されます。そのパスが実際のファイルに解決されない場合、配信元は 404 状態を返します。この例の lorem.txt を取得するための正しい URL は、実際には `https://cdndocdemo.azureedge.net/lorem.txt` になります。URL の要求部分は `/lorem.txt` であるため、*/publicblob* パスを一切指定していなくても、エンドポイントによって `/publicblob` が付加されることで、配信元に渡される要求が `/publicblob/lorem.txt` になることに注意してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

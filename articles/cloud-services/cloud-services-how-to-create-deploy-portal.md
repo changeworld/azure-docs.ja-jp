@@ -1,126 +1,122 @@
 <properties
-    pageTitle="How to create and deploy a cloud service | Microsoft Azure"
-    description="Learn how to create and deploy a cloud service using the Azure portal."
-    services="cloud-services"
-    documentationCenter=""
-    authors="Thraka"
-    manager="timlt"
-    editor=""/>
+	pageTitle="クラウド サービスを作成してデプロイする方法 | Microsoft Azure"
+	description="Azure ポータルを使用してクラウド サービスを作成およびデプロイする方法について説明します。"
+	services="cloud-services"
+	documentationCenter=""
+	authors="Thraka"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="cloud-services"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/11/2016"
-    ms.author="adegeo"/>
+	ms.service="cloud-services"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/05/2016"
+	ms.author="adegeo"/>
 
 
 
 
-
-# <a name="how-to-create-and-deploy-a-cloud-service"></a>How to create and deploy a cloud service
+# クラウド サービスを作成してデプロイする方法
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-create-deploy-portal.md)
-- [Azure classic portal](cloud-services-how-to-create-deploy.md)
+- [Azure ポータル](cloud-services-how-to-create-deploy-portal.md)
+- [Azure クラシック ポータル](cloud-services-how-to-create-deploy.md)
 
-The Azure portal provides two ways for you to create and deploy a cloud service: *Quick Create* and *Custom Create*.
+Azure ポータルには、クラウド サービスを作成してデプロイする方法として、*[簡易作成]* と *[カスタム作成]* の 2 つの方法が用意されています。
 
-This article explains how to use the Quick Create method to create a new cloud service and then use **Upload** to upload and deploy a cloud service package in Azure. When you use this method, the Azure portal makes available convenient links for completing all requirements as you go. If you're ready to deploy your cloud service when you create it, you can do both at the same time using Custom Create.
+このトピックでは、簡易作成の方法を使って新しいクラウド サービスを作成し、その後、[**アップロード**] を使用して Azure にクラウド サービス パッケージをアップロードしてデプロイする方法について説明します。この方法を使うと、Azure ポータルに、必要な事項をすべて完了するのに便利なリンクが操作の進行につれて表示されます。クラウド サービスの作成時にデプロイする準備が整っている場合は、[カスタム作成] を使用して作成とデプロイを同時に実行できます。
 
-> [AZURE.NOTE] If you plan to publish your cloud service from Visual Studio Team Services (VSTS), use Quick Create, and then set up VSTS publishing from the Azure Quickstart or the dashboard. For more information, see [Continuous Delivery to Azure by Using Visual Studio Team Services][TFSTutorialForCloudService], or see help for the **Quick Start** page.
+> [AZURE.NOTE] Visual Studio Team Services (VSTS) からクラウド サービスを発行する予定の場合は、[簡易作成] を使用した後、[Azure クイック スタート] またはダッシュボードから VSTS 発行を設定する必要があります。詳細については、「[Visual Studio Team Services を使用した Azure への継続的な配信][TFSTutorialForCloudService]」を参照するか、**[クイック スタート]** ページのヘルプを参照してください。
 
-## <a name="concepts"></a>Concepts
-Three components are required to deploy an application as a cloud service in Azure:
+## 概念
+Azure のクラウド サービスとしてアプリケーションをデプロイするには、3 つのコンポーネントが必要です。
 
-- **Service Definition**  
-  The cloud service definition file (.csdef) defines the service model, including the number of roles.
+- **サービス定義**  
+  クラウド サービス定義ファイル (.csdef) では、ロールの数などのサービス モデルを定義します。
 
-- **Service Configuration**  
-  The cloud service configuration file (.cscfg) provides configuration settings for the cloud service and individual roles, including the number of role instances.
+- **サービス構成**  
+  クラウド サービス構成ファイル (.cscfg) では、ロール インスタンスの数など、クラウド サービスと個々のロールの構成設定を指定します。
 
-- **Service Package**  
-  The service package (.cspkg) contains the application code and configurations and the service definition file.
+- **サービス パッケージ**  
+  サービス パッケージ (.cspkg) には、アプリケーション コード、構成、サービス定義ファイルが含まれます。
 
-You can learn more about these and how to create a package [here](cloud-services-model-and-package.md).
+[ここ](cloud-services-model-and-package.md)では、これらのコンポーネントとパッケージを作成する方法の詳細について説明します。
 
-## <a name="prepare-your-app"></a>Prepare your app
-Before you can deploy a cloud service, you must create the cloud service package (.cspkg) from your application code and a cloud service configuration file (.cscfg). The Azure SDK provides tools for preparing these required deployment files. You can install the SDK from the [Azure Downloads](https://azure.microsoft.com/downloads/) page, in the language in which you prefer to develop your application code.
+## アプリケーションの準備
+クラウド サービスをデプロイする前に、アプリケーション コードとクラウド サービス構成ファイル (.cscfg) からクラウド サービス パッケージ (.cspkg) を作成する必要があります。Azure SDK には、こういった必須のデプロイ ファイルを準備するためのツールが用意されています。SDK は、[Azure のダウンロード](https://azure.microsoft.com/downloads/) ページからアプリケーション コードの開発に使用する言語でインストールできます。
 
-Three cloud service features require special configurations before you export a service package:
+サービス パッケージをエクスポートする前に、以下の 3 つのクラウド サービス機能について特別な構成が必要です。
 
-- If you want to deploy a cloud service that uses Secure Sockets Layer (SSL) for data encryption, [configure your application](cloud-services-configure-ssl-certificate-portal.md#modify) for SSL.
+- データ暗号化のために Secure Sockets Layer (SSL) を使用するクラウド サービスをデプロイする場合は、[アプリケーションを SSL 用に構成](cloud-services-configure-ssl-certificate-portal.md#modify)します。
 
-- If you want to configure Remote Desktop connections to role instances, [configure the roles](cloud-services-role-enable-remote-desktop.md) for Remote Desktop. This can only be done in the classic portal.
+- ロール インスタンスに対するリモート デスクトップ接続を構成する場合は、リモート デスクトップ用に[ロールを構成](cloud-services-role-enable-remote-desktop.md)します。これは、クラシック ポータルでのみ実行できます。
 
-- If you want to configure verbose monitoring for your cloud service, enable Azure Diagnostics for the cloud service. *Minimal monitoring* (the default monitoring level) uses performance counters gathered from the host operating systems for role instances (virtual machines). *Verbose monitoring* gathers additional metrics based on performance data within the role instances to enable closer analysis of issues that occur during application processing. To find out how to enable Azure Diagnostics, see [Enabling diagnostics in Azure](cloud-services-dotnet-diagnostics.md).
+- クラウド サービスの詳細監視を構成する場合は、クラウド サービスの Azure 診断を有効にします。*最小監視* (既定の監視レベル) では、ロール インスタンス (仮想マシン) のホスト オペレーティング システムから収集したパフォーマンス カウンターが使用されます。*詳細監視* は、アプリケーション処理時に発生する問題を詳しく分析できるように、ロール インスタンス内のパフォーマンス データに基づいて追加のメトリックを収集します。Azure 診断を有効にする方法については、[Enabling Diagnostics in Azure (Azure における診断の有効化)](cloud-services-dotnet-diagnostics.md) を参照してください。
 
-To create a cloud service with deployments of web roles or worker roles, you must [create the service package](cloud-services-model-and-package.md#servicepackagecspkg).
+Web ロールまたは worker ロールのデプロイを伴うクラウド サービスを作成するには、[サービス パッケージを作成する](cloud-services-model-and-package.md#servicepackagecspkg)必要があります。
 
-## <a name="before-you-begin"></a>Before you begin
+## 開始する前に
 
-- If you haven't installed the Azure SDK, click **Install Azure SDK** to open the [Azure Downloads page](https://azure.microsoft.com/downloads/), and then download the SDK for the language in which you prefer to develop your code. (You'll have an opportunity to do this later.)
+- Azure SDK をまだインストールしていない場合は、**[Azure SDK のインストール]** をクリックして [Azure のダウンロード ページ](https://azure.microsoft.com/downloads/)を開き、アプリケーション コードの開発に使用する言語用の SDK をダウンロードします。(これは後でも実行する機会があります)。
 
-- If any role instances require a certificate, create the certificates. Cloud services require a .pfx file with a private key. [You can upload the certificates to Azure]() as you create and deploy the cloud service.
+- 証明書を必要とするロール インスタンスがある場合は、証明書を作成します。クラウド サービスには、秘密キーのある .pfx ファイルが必要です。クラウド サービスを作成してデプロイするときに、[証明書を Azure にアップロード]()できます。
 
-- If you plan to deploy the cloud service to an affinity group, create the affinity group. You can use an affinity group to deploy your cloud service and other Azure services to the same location in a region. You can create the affinity group in the **Networks** area of the Azure classic portal, on the **Affinity Groups** page.
-
-
-## <a name="create-and-deploy"></a>Create and deploy
-
-1. Log in to the [Azure portal](https://portal.azure.com/).
-2. Click **New > Virtual Machines**, and then scroll down to and click **Cloud Service**.
-
-    ![Publish your cloud service](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
-
-3. At the bottom of the information page that displays, click **Create**. 
-4. In the new **Cloud Service** blade, enter a value for the **DNS name**.
-5. Create a new **Resource Group** or select an existing one.
-6. Select a **Location**.
-7. Click **Package**. This will open the **Upload a package** blade. Fill in the required fields.  
-
-     If any of your roles contain a single instance, ensure **Deploy even if one or more roles contain a single instance** is selected.
-
-8. Make sure that **Start deployment** is selected.
-9. Click **OK** which will close the **Upload a package** blade.
-10. If you do not have any certificates to add, click **Create**.
-
-    ![Publish your cloud service](media/cloud-services-how-to-create-deploy-portal/select-package.png)
-
-## <a name="upload-a-certificate"></a>Upload a certificate
-
-If your deployment package was [configured to use certificates](cloud-services-configure-ssl-certificate-portal.md#modify), you can upload the certificate now.
-
-1. Select **Certificates**, and on the **Add certificates** blade, select the SSL certificate .pfx file, and then provide the **Password** for the certificate,
-2. Click **Attach certificate**, and then click **OK** on the **Add certificates** blade.
-3. Click **Create** on the **Cloud Service** blade. When the deployment has reached the **Ready** status, you can proceed to the next steps.
-
-    ![Publish your cloud service](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+- クラウド サービスをアフィニティ グループにデプロイすることを予定している場合は、アフィニティ グループを作成します。アフィニティ グループを使用すると、自分のクラウド サービスおよびその他の Azure サービスをリージョンの同じ場所にデプロイすることができます。アフィニティ グループは、Azure クラシック ポータルの **[Networks]** 領域にある **[アフィニティ グループ]** ページで作成できます。
 
 
-## <a name="verify-your-deployment-completed-successfully"></a>Verify your deployment completed successfully
+## Create and deploy
 
-1. Click the cloud service instance.
+1. [Azure ポータル](https://portal.azure.com/)にログインします。
+2. **[新規] > [仮想マシン]** をクリックし、下にスクロールして **[クラウド サービス]** をクリックします。
 
-    The status should show that the service is **Running**.
+    ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/create-cloud-service.png)
 
-2. Under **Essentials**, click the **Site URL** to open your cloud service in a web browser.
+3. 表示される情報ページの下部にある **[作成]** をクリックします。
+4. 新しい [**クラウド サービス**] ブレードで、[**DNS 名**] の値を入力します。
+5. 新しい**リソース グループ**を作成するか、または既存のリソース グループを選択します。
+6. **[場所]** を選択します。
+7. **[パッケージ]** をクリックします。**[パッケージのアップロード]** ブレードが開きます。必須フィールドに必要事項を入力します。
 
-    ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
+     いずれかのロールに単一インスタンスが含まれている場合は、[**1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします**] チェック ボックスがオンになっていることを確認してください。
+
+8. [**デプロイの開始**] がオンになっていることを確認します。
+9. **[OK]** をクリックして、**[パッケージのアップロード]** ブレードを閉じます。
+10. 追加する証明書がない場合は、**[作成]** をクリックします。
+
+    ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/select-package.png)
+
+## 証明書のアップロード
+
+デプロイメント パッケージが[証明書を使用するように構成](cloud-services-configure-ssl-certificate-portal.md#modify)されている場合は、ここで証明書をアップロードできます。
+
+1. [**証明書**] を選択し、[**証明書の追加**] ブレードで SSL 証明書 .pfx ファイルを選択し、証明書の [**パスワード**] を入力します。
+2. [**証明書のアタッチ**] をクリックし、[**証明書の追加**] ブレードで [**OK**] をクリックします。
+3. **[クラウド サービス]** ブレードで、**[作成]** をクリックします。デプロイの状態が **[準備完了]** になったら、次の手順に進むことができます。
+
+    ![クラウド サービスの発行](media/cloud-services-how-to-create-deploy-portal/attach-cert.png)
+
+
+## デプロイが正常に完了したことを確認する
+
+1. クラウド サービス インスタンスをクリックします。
+
+	サービスのステータスが、**実行中**になっていることを確認します。
+
+2. **[Essentials]** で **[サイトの URL]** をクリックして、Web ブラウザーでクラウド サービスを開きます。
+
+    ![CloudServices\_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
 
 [TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-* [General configuration of your cloud service](cloud-services-how-to-configure-portal.md).
-* Configure a [custom domain name](cloud-services-custom-domain-name-portal.md).
-* [Manage your cloud service](cloud-services-how-to-manage-portal.md).
-* Configure [ssl certificates](cloud-services-configure-ssl-certificate-portal.md).
+* [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
+* [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

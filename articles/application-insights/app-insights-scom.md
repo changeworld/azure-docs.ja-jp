@@ -1,118 +1,113 @@
 <properties 
-    pageTitle="SCOM integration with Application Insights | Microsoft Azure" 
-    description="If you're an SCOM user, monitor performance and diagnose issues with Application Insights. Comprehensive dashboards, smart alerts, powerful diagnostic tools and analysis queries." 
-    services="application-insights" 
+	pageTitle="Application Insights による SCOM 統合 | Microsoft Azure" 
+	description="SCOM をご使用の場合は、Application Insights でパフォーマンスを監視して問題を診断します。包括的なダッシュ ボード、スマート アラート、強力な診断ツール、および分析クエリです。" 
+	services="application-insights" 
     documentationCenter=""
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/12/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/12/2016" 
+	ms.author="awills"/>
  
+# SCOM での Application Insights を使用したアプリケーション パフォーマンス監視
 
-# <a name="application-performance-monitoring-using-application-insights-for-scom"></a>Application Performance Monitoring using Application Insights for SCOM
+サーバーの管理に System Center Operations Manager (SCOM) を使用する場合、[Visual Studio Application Insights](app-insights-asp-net.md) を利用して、パフォーマンスを監視し、パフォーマンスの問題を診断することができます。Application Insights では、Web アプリケーションに入力される要求、出力される REST と SQL、例外、ログ トレースが監視されます。また、メトリック グラフとスマート アラートだけでなく、このテレメトリに対する強力な診断検索と分析クエリがダッシュボードに用意されています。
 
-If you use System Center Operations Manager (SCOM) to manage your servers, you can monitor performance and diagnose performance issues with the help of [Visual Studio Application Insights](app-insights-asp-net.md). Application Insights monitors your web application's incoming requests, outgoing REST and SQL calls, exceptions, and log traces. It provides dashboards with metric charts and smart alerts, as well as powerful diagnostic search and analytical queries over this telemetry. 
+SCOM 管理パックを使用して、Application Insights の監視方法を切り替えることができます。
 
-You can switch on Application Insights monitoring by using an SCOM management pack.
+## 開始する前に
 
-## <a name="before-you-start"></a>Before you start
+次を想定しています。
 
-We assume:
+* SCOM を使い慣れていて、IIS Web サーバー の管理に SCOM 2012 R2 または 2016 を使用している。
+* Application Insights を使用して監視する Web アプリケーションをサーバーに既にインストールしている。
+* アプリケーション フレームワークのバージョンが .NET 4.5 以降である。
+* [Microsoft Azure](https://azure.com) のサブスクリプションに対するアクセス権があり、[Azure ポータル](https://portal.azure.com)にサインインできる。組織でサブスクリプションを所有でき、それにユーザーの Microsoft アカウントを追加できる。
 
-* You're familiar with SCOM, and that you use SCOM 2012 R2 or 2016 to manage your IIS web servers.
-* You have already installed on your servers a web application that you want to monitor with Application Insights.
-* App framework version is .NET 4.5 or later.
-* You have access to a subscription in [Microsoft Azure](https://azure.com) and can sign in to the [Azure portal](https://portal.azure.com). Your organization may have a subscription, and can add your Microsoft account to it.
+(開発チームが Web アプリに [Application Insights SDK](app-insights-asp-net.md) をビルドできること。このビルド時のインストルメンテーションにより、カスタムのテレメトリをさらに柔軟に記述できます。ただし、これは重要ではありません。SDK をビルドするかどうかに関係なく、ここで説明されている手順に従うことができます)。
 
-(The development team might build the [Application Insights SDK](app-insights-asp-net.md) into the web app. This build-time instrumentation gives them greater flexibility in writing custom telemetry. However, it doesn't matter: you can follow the steps described here either with or without the SDK built in.)
+## (1 回) Application Insights の管理パックをインストールする
 
-## <a name="(one-time)-install-application-insights-management-pack"></a>(One time) Install Application Insights management pack
+Operations Manager が実行されているコンピューターで以下の手順に従います。
 
-On the machine where you run Operations Manager:
-
-2. Uninstall any old version of the management pack:
- 1. In Operations Manager, open Administration, Management Packs. 
- 2. Delete the old version.
-1. Download and install the management pack from the catalog.
-2. Restart Operations Manager.
+2. 以前のバージョンの管理パックをアンインストールします。
+ 1. Operations Manager で、[管理]、[管理パック] を開きます。
+ 2. 以前のバージョンを削除します。
+1. カタログから管理パックをダウンロードしてインストールします。
+2. Operations Manager を再起動します。
 
 
-## <a name="create-a-management-pack"></a>Create a management pack
+## 管理パックを作成する
 
-1. In Operations Manager, open **Authoring**, **.NET...with Application Insights**, **Add Monitoring Wizard**, and again choose **.NET...with Application Insights**.
+1. Operations Manager で **[作成]**、**[.NET...with Application Insights (Application Insights を使用した .NET アプリケーション パフォーマンス監視)]**、**[監視の追加ウィザード]** の順に開き、**[.NET...with Application Insights (Application Insights を使用した .NET アプリケーション パフォーマンス監視)]** を再度選択します。
 
     ![](./media/app-insights-scom/020.png)
 
-2. Name the configuration after your app. (You have to instrument one app at a time.)
+2. アプリにちなんで構成に名前を付けます (1 回に 1 つのアプリケーションをインストルメント化する必要があります)。
     
     ![](./media/app-insights-scom/030.png)
 
-3. On the same wizard page, either create a new management pack, or select a pack that you created for Application Insights earlier.
+3. 同じウィザード ページで、新しい管理パックを作成するか、Application Insights 用に先ほど作成したパックを選択します
 
-     (The Application Insights [management pack](https://technet.microsoft.com/library/cc974491.aspx) is a template, from which you create an instance. You can reuse the same instance later.)
+     (Application Insights の[管理パック](https://technet.microsoft.com/library/cc974491.aspx)は、インスタンスを作成するためのテンプレートです。このインスタンスは後で再利用できます)。
 
 
-    ![In the General Properties tab, type the name of the app. Click New and type a name for a management pack. Click OK, then click Next.](./media/app-insights-scom/040.png)
+    ![[全般プロパティ] タブで、アプリの名前を入力します。[新規] をクリックし、管理パックの名前を入力します。[OK]、[次へ] の順にクリックします。](./media/app-insights-scom/040.png)
 
-4. Choose one app that you want to monitor. The search feature searches among apps installed on your servers.
+4. 監視対象のアプリを 1 つ選択します。検索機能では、サーバーにインストールされているアプリが検索されます。
 
-    ![On What to Monitor tab, click Add, type part of the app name, click Search, choose the app, and then Add, OK.](./media/app-insights-scom/050.png)
+    ![[What to Monitor (監視対象)] タブの [追加] をクリックして、アプリ名の一部を入力し、[検索] をクリックします。アプリを選択して [追加]、[OK] を選択します。](./media/app-insights-scom/050.png)
 
-    The optional Monitoring scope field can be used to specify a subset of your servers, if you don't want to monitor the app in all servers.
+    すべてのサーバー内のアプリを監視するわけではない場合は、[監視範囲] フィールドを使用してサーバーのサブセットを指定することができます (この操作は省略可能です)。
 
-5. On the next wizard page, you must first provide your credentials to sign in to Microsoft Azure.
+5. 次のウィザード ページで、Microsoft Azure にサインインするための資格情報をまず指定する必要があります。
 
-    On this page, you choose the Application Insights resource where you want the telemetry data to be analyzed and displayed. 
+    このページでは、テレメトリ データの分析と表示を行う Application Insights リソースをクリックします。
 
- * If the application was configured for Application Insights during development, select its existing resource.
- * Otherwise, create a new resource named for the app. If there are other apps that are components of the same system, put them in the same resource group, to make access to the telemetry easier to manage.
+ * アプリケーションが、開発時に Application Insights 用に構成されている場合は、既存のリソースを選択します。
+ * それ以外の場合は、アプリの名前が付いた新しいリソースを作成します。同じシステムのコンポーネントとして他にもアプリがある場合は、同じリソース グループに配置して、テレメトリへのアクセスを簡単に管理できるようにします。
 
-    You can change these settings later.
+    これらの設定は後で変更できます。
 
-    ![On Application Insights settings tab, click 'sign in' and provide your Microsoft account credentials for Azure. Then choose a subscription, resource group, and resource.](./media/app-insights-scom/060.png)
+    ![[Application Insights settings (Application Insights の設定)] タブの [サインイン] をクリックし、Azure 用の Microsoft アカウントの資格情報を指定します。次に、サブスクリプション、リソース グループ、リソースをクリックします。](./media/app-insights-scom/060.png)
 
-6. Complete the wizard.
+6. ウィザードを終了します。
 
     ![Click Create](./media/app-insights-scom/070.png)
     
-Repeat this procedure for each app that you want to monitor.
+監視対象のアプリごとにこの手順を繰り返します。
 
-If you need to change settings later, re-open the properties of the monitor from the Authoring window.
+後で設定を変更する必要がある場合は、[作成] ウィンドウからモニターのプロパティを再度開きます。
 
-![In Authoring, select .NET Application Performance Monitoring with Application Insights, select your monitor, and click Properties.](./media/app-insights-scom/080.png)
+![[作成] で、[NET Application Performance Monitoring with Application Insights (Application Insights を使用した .NET アプリケーション パフォーマンス監視)] を選択し、モニターを選択して、プロパティをクリックします。](./media/app-insights-scom/080.png)
 
-## <a name="verify-monitoring"></a>Verify monitoring
+## 監視を確認する
 
-The monitor that you have installed searches for your app on every server. Where it finds the app, it configures Application Insights Status Monitor to monitor the app. If necessary, it first installs Status Monitor on the server.
+インストールしたモニターでは、すべてのサーバーのアプリが検索されます。アプリが見つかる場所には、アプリを監視するために Application Insights Status Monitor が構成されます。必要に応じて、最初に状態モニターがサーバーにインストールされます。
 
-You can verify which instances of the app it has found:
+どのアプリのインスタンスが検出されたかを確認できます。
 
-![In Monitoring, open Application Insights](./media/app-insights-scom/100.png)
-
-
-## <a name="view-telemetry-in-application-insights"></a>View telemetry in Application Insights
-
-In the [Azure portal](https://portal.azure.com), browse to the resource for your app. You [see charts showing telemetry](app-insights-dashboards.md) from your app. (If it hasn't shown up on the main page yet, click Live Metrics Stream.)
+![[監視] で Application Insights を開く](./media/app-insights-scom/100.png)
 
 
-## <a name="next-steps"></a>Next steps
+## Application Insights でテレメトリを表示する
 
-* [Set up a dashboard](app-insights-dashboards.md) to bring together the most important charts monitoring this and other apps.
-* [Learn about metrics](app-insights-metrics-explorer.md)
-* [Set up alerts](app-insights-alerts.md)
-* [Diagnosing performance issues](app-insights-detect-triage-diagnose.md)
-* [Powerful Analytics queries](app-insights-analytics.md)
-* [Availability web tests](app-insights-monitor-web-app-availability.md)
+[Azure ポータル](https://portal.azure.com)で、アプリのリソースを参照します。アプリから[テレメトリを示すグラフを参照](app-insights-dashboards.md)します (メイン ページに表示されない場合は、[ライブ メトリック ストリーム] をクリックします)。
 
 
+## 次のステップ
 
-<!--HONumber=Oct16_HO2-->
+* [ダッシュ ボードを設定](app-insights-dashboards.md)し、これと他のアプリを監視する最も重要なグラフをまとめて表示します。
+* [メトリックの詳細](app-insights-metrics-explorer.md)
+* [アラートの設定](app-insights-alerts.md)
+* [パフォーマンスの問題の診断](app-insights-detect-triage-diagnose.md)
+* [分析クエリ](app-insights-analytics.md)
+* [可用性 Web テスト](app-insights-monitor-web-app-availability.md)
 
-
+<!---HONumber=AcomDC_0817_2016-->

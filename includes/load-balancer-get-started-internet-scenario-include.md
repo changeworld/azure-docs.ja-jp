@@ -1,12 +1,9 @@
-The following tasks will be done in this scenario:
+このシナリオでは、次のタスクを実行します。
 
-* Create a load balancer that receives network traffic on port 80 and send load-balanced traffic to virtual machines "web1" and "web2"
-* Create NAT rules for remote desktop access/SSH for virtual machines behind the load balancer
-* Create health probes
+* ポート 80 でネットワーク トラフィックを受信するロード バランサーを作成し、負荷分散されたトラフィックを仮想マシン "web1" と "web2" に送信する
+* ロード バランサーの背後にある仮想マシンのリモート デスクトップ アクセス/ SSH 用の NAT 規則を作成する
+* 正常性プローブを作成する
 
-![Load balancer scenario](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
+![ロード バランサーのシナリオ](./media/load-balancer-get-started-internet-scenario-include/scenario-classic.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

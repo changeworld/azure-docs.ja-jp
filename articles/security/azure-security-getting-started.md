@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Getting started with Microsoft Azure security | Microsoft Azure"
-   description="This article provides an overview of Microsoft Azure Security capabilities and general considerations for organizations that are migrating their assets to a cloud provider."
+   pageTitle="Microsoft Azure セキュリティの概要 | Microsoft Azure"
+   description="この記事では、Microsoft Azure のセキュリティ機能の概要と、クラウド プロバイダーにアセットを移行しようとする組織の一般的な考慮事項について説明します。"
    services="security"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,234 +16,229 @@
    ms.date="05/19/2016"
    ms.author="yuridio"/>
 
+#Microsoft Azure セキュリティの概要
 
-#<a name="getting-started-with-microsoft-azure-security"></a>Getting started with Microsoft Azure security
+IT アセットを構築し、クラウド プロバイダーに移行すると、サービスに委託したアプリケーションとデータの保護や、クラウド ベースのアセットのセキュリティ制御は、そのプロバイダーの能力に依存することになります。
 
-When you build or migrate IT assets to a cloud provider, you are relying on that organization’s abilities to protect the applications and data you entrust to their services and the security controls they provide you to control the security of your cloud-based assets.
+Azure のインフラストラクチャでは、数百万の顧客を同時にホストできるように施設からアプリケーションまでが設計されており、ビジネスのセキュリティ ニーズを満たす信頼性の高い基盤が提供されています。また、Azure には構成可能な幅広いセキュリティ オプションが用意されており、デプロイの独自の要件を満たすようにセキュリティをカスタマイズできます。
 
-Azure’s infrastructure is designed from the facility to applications for hosting millions of customers simultaneously, and providing a trustworthy foundation upon which businesses’ can meet their security needs. In addition, Azure provides you with a wide array of configurable security options and the ability to control them so that you can customize security to meet the unique requirements for your deployments.
+この Azure セキュリティの概要記事では、以下の点について説明します。
 
-In this overview article on Azure security, we’ll look at:
+-   Azure 内でデータとサービスを保護するために使用できる、Azure のサービスと機能
 
--   Azure services and features you can use to help secure your services and data within Azure
+-   データやアプリケーションを保護するための Azure インフラストラクチャのセキュリティのしくみ
 
--   How Microsoft secures the Azure infrastructure to help protect your data and applications
+##ID 管理とアクセス管理
 
-##<a name="identity-and-access-management"></a>Identity and access management
 
+IT インフラストラクチャ、データ、およびアプリケーションへのアクセスの制御は、非常に重要です。Microsoft Azure では、そのための機能が、Azure Active Directory、Azure Storage などのサービスと、さまざまな標準および API のサポートによって提供されています。
 
-Controlling access to IT infrastructure, data, and applications is critical. In Microsoft Azure, these capabilities are delivered by services such as Azure Active Directory, Azure Storage, and support for numerous standards and APIs.
+[Azure Active Directory](../active-directory/active-directory-whatis.md) (Azure AD) は、組織のユーザー、グループ、およびオブジェクトの認証、承認、およびアクセス制御を行う ID リポジトリとエンジンです。Azure AD を使用すると、開発者はアプリケーションで ID 管理を効果的に統合できます。[SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0)、[WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx)、[OpenID Connect](http://openid.net/connect/) など、業界標準のプロトコルがサポートされているため、.NET、Java、Node.js、PHP など幅広いプラットフォームでのサインインを実現できます。
 
-[Azure Active Directory](../active-directory/active-directory-whatis.md) (Azure AD) is an identity repository and engine that provides authentication, authorization, and access control for an organization's users, groups, and objects. Azure AD also offers developers an effective way to integrate identity management in their applications. Industry standard protocols such as [SAML 2.0](https://en.wikipedia.org/wiki/SAML_2.0), [WS-Federation](https://msdn.microsoft.com/library/bb498017.aspx), and [OpenID Connect](http://openid.net/connect/) makes sign-in possible on a variety of platforms such as .NET, Java, Node.js, and PHP.
+REST ベースの Graph API により、開発者は任意のプラットフォームからディレクトリに対して読み取りと書き込みを行うことができます。[OAuth 2.0](http://oauth.net/2/) がサポートされることで、開発者は、マイクロソフトやサード パーティの Web API と連携するモバイル アプリケーションや Web アプリケーションを作成できるほか、セキュリティに優れた独自の Web API を作成することができます。.NET、Windows ストア、iOS、Android 向けにオープン ソースのクライアント ライブラリが用意されており、その他のライブラリも開発が進められています。
 
-The REST-based Graph API enables developers to read and write to the directory from any platform. Through support for [OAuth 2.0](http://oauth.net/2/), developers can build mobile and web applications that integrate with Microsoft and third party web APIs, and build their own secure web APIs. Open source client libraries are available for .Net, Windows Store, iOS and Android with additional libraries under development.
+### Azure の ID 管理とアクセス管理のしくみ
 
-### <a name="how-azure-enables-identity-and-access-management"></a>How Azure enables identity and access management
+Azure AD は、組織のスタンドアロン クラウド ディレクトリとして使用することも、既存のオンプレミス Active Directory との統合ソリューションとして使用することもできます。一部の統合機能には、ディレクトリ同期とシングル サインオン (SSO) が含まれています。これらの機能により、既存のオンプレミス ID の有効範囲がクラウドまで拡張され、管理者とエンド ユーザーのエクスペリエンスが向上します。
 
-Azure AD can be used as a standalone cloud directory for your organization or as an integrated solution with your existing on-premises Active Directory. Some integration features include directory sync and single sign-on (SSO). These extend the reach of your existing on-premises identities into the cloud and improve the admin and end user experience.
+ID およびアクセス管理に関しては、他にも次のような機能があります。
 
-Some other capabilities for identity and access management include:
+-   Azure AD では、どこでホストされているかにかかわらず、SaaS アプリケーションへの [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) が可能です。一部のアプリケーションは Azure AD とフェデレーションされ、他のアプリケーションはパスワード SSO を使用します。フェデレーション アプリケーションでは、ユーザー プロビジョニングとパスワード保管もサポートできます。
 
--   Azure AD enables [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) to SaaS applications, regardless of where they are hosted. Some applications are federated with Azure AD, and others use password SSO. Federated applications can also support user provisioning and password vaulting.
+-   [Azure Storage](https://azure.microsoft.com/services/storage/) のデータへのアクセスは、認証によって制御されます。各ストレージ アカウントには、プライマリ キー ([ストレージ アカウント キー](https://msdn.microsoft.com/library/azure/ee460785.aspx) (SAK)) とセカンダリ秘密キー (Shared Access Signature (SAS)) があります。
 
--   Access to data in [Azure Storage](https://azure.microsoft.com/services/storage/) is controlled via authentication. Each Storage Account has a primary key ([Storage Account Key](https://msdn.microsoft.com/library/azure/ee460785.aspx), or SAK) and secondary secret key (the Shared Access Signature or SAS).
+-   Azure AD は、フェデレーションを通じて、ID をサービスとして提供します (オンプレミス ディレクトリとの [Active Directory フェデレーション サービス](../active-directory/fundamentals-identity.md)、同期、およびレプリケーションを使用)。
 
--   Azure AD provides Identity as a Service through federation (using [Active Directory Federation Services](../active-directory/fundamentals-identity.md), synchronization, and replication with on-premises directories.
+-   [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) は、ユーザーにモバイル アプリ、電話、またはテキスト メッセージを使用したサインインの確認も要求する多要素認証サービスです。Azure MFA サーバーによってオンプレミス リソースをセキュリティで保護するために Azure AD と共に使用したり、SDK を利用してカスタム アプリケーションやディレクトリと共に使用したりすることができます。
 
--   [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) is the multi-factor authentication service that requires users to also verify sign-ins using a mobile app, phone call or text message. It is available to use with Azure AD, to secure on-premises resources with the Azure MFA Server, and with custom applications and directories using the SDK.
+-   [Azure AD ドメイン サービス](https://azure.microsoft.com/services/active-directory-ds/)を使用すると、ドメイン コントローラーをデプロイしなくても、Azure 仮想マシンをドメインに参加させることができます。ユーザーは会社の Active Directory 資格情報を使用してこれらの仮想マシンにサインインし、グループ ポリシーによってすべての Azure 仮想マシンにセキュリティ基準を適用することで、ドメインに参加している仮想マシンを管理できます。
 
--   [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) lets you join Azure virtual machines to a domain without the need to deploy domain controllers. Users can sign in to these virtual machines using their corporate Active Directory credentials and administer domain-joined virtual machines using Group Policy to enforce security baselines on all of your Azure virtual machines.
+-   [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) は、数億個の ID を扱うコンシューマー向けアプリケーション用の高可用性グローバル ID 管理サービスを提供します。モバイルと Web の両方のプラットフォームにわたる統合を実現できます。コンシューマーは、既に持っているソーシャル アカウントを使用するか、新たな資格情報を作成して、すべてのアプリケーションにログオンできます。その場合のエクスペリエンスは、カスタマイズすることができます。
 
--   [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) provides you a highly available, global, identity management service for consumer-facing applications that scales to hundreds of millions of identities. It can be integrated across mobile and web platforms. Your consumers can log on to all your applications through customizable experiences by using their existing social accounts or by creating new credentials.
+##データ アクセス制御と暗号化
 
-##<a name="data-access-control-and-encryption"></a>Data access control and encryption
+Microsoft は、Azure の運営全般にわたって、職務の分離と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)の原則を採用しています。Azure のサポート担当者がデータにアクセスするときには明示的な許可が必要であり、アクセス許可は "ジャストインタイム" ベースで付与され、ログ記録と監査が行われて、契約完了後は取り消されます。
 
-Microsoft employs the principles of Separation of Duties and [Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) throughout Azure operations. Access to data by Azure support personnel requires your explicit permission and is granted on a “just-in-time” basis that is logged and audited, then revoked after completion of the engagement.
+Azure には、さらに、転送中および保存中のデータを保護するための複数の機能があります。たとえば、データ、ファイル、アプリケーション、サービス、通信、およびドライブの暗号化などです。Azure に配置する前に情報を暗号化したり、キーをオンプレミスのデータセンターに格納したりするオプションもあります。
 
-In addition, Azure provides multiple capabilities for protecting data in-transit and at-rest, including encryption for data, files, applications, services, communications, and drives. You have the option to encrypt information before placing it in Azure, as well as storing keys in your on-premises datacenters.
+![Azure での Microsoft マルウェア対策](./media/azure-security-getting-started/sec-azgsfig1.PNG)
 
-![Microsoft Antimalware in Azure](./media/azure-security-getting-started/sec-azgsfig1.PNG)
+### Azure の暗号化テクノロジ
 
-### <a name="azure-encryption-technologies"></a>Azure encryption technologies
+[Azure AD レポート](../active-directory/active-directory-reporting-audit-events.md)を使用すると、サブスクリプション環境への管理アクセスについての詳細情報を収集することができます。Azure 内の機密情報が含まれている VHD に対して [BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)を構成するオプションがあります。
 
-You can gather details on administrative access to your subscription environment by using [Azure AD Reporting](../active-directory/active-directory-reporting-audit-events.md). You have the option to configure [BitLocker Drive Encryption](https://technet.microsoft.com/library/cc732774.aspx) on VHDs containing sensitive information in Azure.
+Azure には、その他に、データのセキュリティを保持するための次のような機能もあります。
 
-Other capabilities in Azure that will assist you to keep your data secure include:
+-   アプリケーション開発者は、Windows [CryptoAPI](https://msdn.microsoft.com/library/ms867086.aspx) と .NET Framework を使用して、Azure にデプロイするアプリケーションに暗号化を組み込むことができます。
 
--   Application developers can build encryption into the applications they deploy in Azure using the Windows [CryptoAPI](https://msdn.microsoft.com/library/ms867086.aspx) and .NET Framework.
+- Microsoft BLOB ストレージのクライアント側暗号化では、キーを完全に制御できます。ストレージ サービスがキーを参照することはなく、データを復号化することもできません。
 
-- Client side encryption for Microsoft blob storage enable you to completely control the keys.  The storage service never sees the keys and is incapable of decrypting the data.
+-   [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) と [RMS SDK](https://msdn.microsoft.com/library/dn758244.aspx) を使用すると、ファイルおよびデータ レベルの暗号化と、ポリシー ベースのアクセス管理によるデータ リークの防止が可能になります。
 
--   [Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) (with the [RMS SDK](https://msdn.microsoft.com/library/dn758244.aspx) provides file and data-level encryption and data leak prevention through policy-based access management.
+-   Azure では SQL Server 仮想マシンでの[テーブル レベルおよび列レベルの暗号化 (TDE/CLE)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database.aspx) がサポートされており、お客様のデータセンターでのサードパーティのオンプレミス キー管理サーバーがサポートされています。
 
--   Azure supports [table-level and column-level encryption (TDE/CLE)](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database.aspx) in SQL Server Virtual Machines, and supports third-party on-premises key management servers in customers’ datacenters.
+-   ストレージ アカウント キー、共有アクセス署名、管理証明書、およびその他のキーは、Azure テナントごとに固有です。
 
--   Storage Account Keys, Shared Access Signatures, management certificates, and other keys are unique to each Azure tenant.
+-   Azure [StorSimple](http://www.microsoft.com/server-cloud/products/storsimple/overview.aspx) ハイブリッド ストレージは、データを Azure Storage にアップロードする前に、128 ビット パブリック/プライベート キー ペアによってデータを暗号化します。
 
--   Azure [StorSimple](http://www.microsoft.com/server-cloud/products/storsimple/overview.aspx) hybrid storage encrypts data via a 128-bit public / private key pair prior to uploading it to Azure Storage.
+-   Azure では、データ型、コンテナー、およびトランスポートに応じて、SSL/TLS、IPsec、AES などのさまざまな暗号化メカニズムをサポートし、使用します。
 
--   Azure supports and uses numerous encryption mechanisms, including SSL/TLS, IPsec, and AES, depending on the data types and containers and transports.
+##仮想化
 
-##<a name="virtualization"></a>Virtualization
+Azure プラットフォームでは、仮想化された環境を使用します。ユーザー インスタンスは、物理ホスト サーバーへのアクセス権を持たないスタンドアロン仮想マシンとして動作し、この分離は物理[プロセッサ (リング 0/リング 3) 特権レベル](https://en.wikipedia.org/wiki/Protection_ring)によって強制されます。
 
-The Azure platform uses a virtualized environment. User instances operate as standalone virtual machines that do not have access to a physical host server and this isolation is enforced using physical [processor (ring-0/ring-3) privilege levels](https://en.wikipedia.org/wiki/Protection_ring).
+リング 0 は最も高い特権で、3 は最も低い特権です。ゲスト OS はより低い特権であるリング 1 で実行し、アプリケーションは最低の特権であるリング 3 で実行します。この物理リソースの仮想化によって、ゲスト OS とハイパーバイザーが明確に分離され、この 2 つの間に追加のセキュリティ分離が生じます。
 
-Ring 0 is the most privileged and 3 is the least. The guest OS runs in a lesser-privileged Ring 1 and applications in the last privileged Ring 3. This virtualization of physical resources leads to a clear separation between guest OS and hypervisor, resulting in additional security separation between the two.
+Azure のハイパーバイザーは、マイクロ カーネルのように動作し、ゲスト VM からのすべてのハードウェア アクセス要求を、VMBus と呼ばれる共有メモリ インターフェイスを使用して処理するために、ホストに渡します。そうすることで、ユーザーがシステムへの生の読み取り/書き込み/実行アクセスを取得できないようにし、共有システム リソースのリスクを軽減します。
 
-Azure’s Hypervisor acts like a micro-kernel and passes all hardware access requests from guest VMs to the host for processing using a shared-memory interface called VMBus. This prevents users from obtaining raw read/write/execute access to the system and mitigates the risk of sharing system resources.
+![Azure での Microsoft マルウェア対策](./media/azure-security-getting-started/sec-azgsfig2.PNG)
 
-![Microsoft Antimalware in Azure](./media/azure-security-getting-started/sec-azgsfig2.PNG)
+### Azure での仮想化の実装方法
 
-### <a name="how-azure-implements-virtualization"></a>How Azure implements virtualization
+Azure では、ハイパーバイザー ファイアウォール (パケット フィルター) を使用します。このファイアウォールはハイパーバイザー内で実装され、ファブリック コントローラー エージェントによって構成されます。これにより、テナントを不正アクセスから保護できます。既定では、VM が作成されると、すべてのトラフィックがブロックされ、ファブリック コントローラー エージェントがパケット フィルターを構成して、承認されたトラフィックを許可するように*ルールと例外*を追加します。
 
-Azure uses a hypervisor firewall (packet filter), which is implemented in the hypervisor and configured by a fabric controller agent. This helps protect tenants from unauthorized access. By default, when a VM is created, all traffic is blocked and then the fabric controller agent configures the packet filter to add *rules and exceptions* to allow authorized traffic.
+ここでプログラムされるルールには、次の 2 つのカテゴリがあります。
 
-There are two categories of rules that are programmed here:
+-   **マシン構成またはインフラストラクチャのルール**: 既定では、すべての通信がブロックされています。VM に DHCP および DNS トラフィックの送受信を許可する例外があります。VM は、トラフィックを "パブリック" インターネットに送信したり、トラフィックをクラスター内の他の VM や OS ライセンス認証サーバーに送信したりすることもできます。VM の発信先の許可リストには、Azure ルーター サブネット、Azure 管理バック エンド、およびその他の Microsoft サービスは含まれていません。
 
--   **Machine Configuration or Infrastructure Rules**: By default, all communication is blocked. There are exceptions to allow a VM to send and receive DHCP and DNS traffic. VMs can also send traffic to the “public” internet and send traffic to other VMs within the cluster and OS Activation server. The VMs’ allowed list of outgoing destinations does not include Azure router subnets, Azure management back end, and other Microsoft properties.
+-   **ロール構成ファイル**: テナントのサービス モデルに基づく受信 ACL を定義します。たとえば、テナントが特定の VM のポート 80 に Web フロント エンドを持っている場合、[Azure Service Management](../resource-manager-deployment-model.md) モデル内にエンドポイントを構成していると、Azure はすべての IP に対して TCP ポート 80 を開きます。VM でバックエンド ロールまたは worker ロールが実行されている場合は、同じテナント内の VM に対してだけ、worker ロールが開かれます。
 
--   **Role Configuration File**: This defines the inbound ACLs based on the tenants’ service model. For example, if a tenant has a Web front-end on port 80 on a certain VM, then Azure opens TCP port 80 to all IPs if you’re configuring an endpoint in the [Azure Service Management](../resource-manager-deployment-model.md) model. If the VM has a backend or worker role running, then we open the worker role only to the VM within the same tenant.
+##分離:
 
-##<a name="isolation"></a>Isolation
+共有マルチ テナント アーキテクチャ内のデプロイ間で、許可されておらず、意図されてしない情報の転送が行われないようにするために分離を維持することは、もう 1 つの重要なクラウド セキュリティ要件です。
 
-Maintaining separation to prevent unauthorized and unintentional transfer of information between deployments in a shared multi-tenant architecture is another important cloud security requirement.
+Azure は、VLAN 分離、ACL、ロード バランサー、および IP フィルターによる[ネットワーク アクセス制御](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)と分離を実装しています。仮想マシンが受信する外部トラフィックは、定義したポートとプロトコルだけに制限されます。ネットワーク フィルター処理は、なりすましトラフィックを避けるために実装されていて、送受信トラフィックをトラステッド プラットフォーム コンポーネントだけに制限します。トラフィック フローのポリシーは、既定ではトラフィックを拒否する境界保護デバイス上で実装されます。
 
-Azure implements [network access control](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/) and segregation through VLAN isolation, ACLs, load balancers and IP filters. External traffic inbound to your virtual machine(s) is restricted to ports and protocols you define. Network filtering is implemented to prevent spoofed traffic and restricts incoming and outgoing traffic to trusted platform components. Traffic flow policies are implemented on boundary protection devices that deny traffic by default.
+![Azure での Microsoft マルウェア対策](./media/azure-security-getting-started/sec-azgsfig3.PNG)
 
-![Microsoft Antimalware in Azure](./media/azure-security-getting-started/sec-azgsfig3.PNG)
+ネットワーク アドレス変換 (NAT) は、内部ネットワーク トラフィックを外部トラフィックから分離するために使用されます。内部トラフィックは、外部にはルーティングできません。外部にルーティングできる[仮想 IP アドレス](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx)は、Azure 内だけでルーティングできる[内部の動的 IP](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) アドレスに変換されます。
 
-Network Address Translation (NAT) is used to separate internal network traffic from external traffic. Internal traffic is not externally routable. [Virtual IP addresses](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) that are externally routable are translated into [internal Dynamic IP](http://blogs.msdn.com/b/cloud_solution_architect/archive/2014/11/08/vips-dips-and-pips-in-microsoft-azure.aspx) addresses that are only routable within Azure.
+Azure 仮想マシンへの外部トラフィックは、ルーター、ロード バランサー、およびレイヤー 3 スイッチで、アクセス制御リスト (ACL) によってファイアウォールの対象となります。特定の既知のプロトコルのみが許可されます。ACL は、管理に使用されるその他の VLAN にゲスト VM から送信されたトラフィックを制限する役割を果たします。また、ホスト OS で IP フィルターによってフィルター処理されたトラフィックは、データ リンクとネットワーク レイヤーの両方でも制限されます。
 
-External traffic to Azure virtual machines is firewalled via Access Control Lists (ACLs) on routers, load balancers, and Layer 3 switches. Only specific known protocols are permitted. ACLs are in place to limit traffic originating from guest VMs to other VLANs used for management. In addition, traffic filtered via IP filters on the host OS, further limit the traffic on both data link and network layers.
+### Azure での分離の実装方法
 
-### <a name="how-azure-implements-isolation"></a>How Azure implements isolation
+Azure ファブリック コントローラーは、テナントのワークロードにインフラストラクチャのリソースを割り当て、ホストから VM への一方向の通信を管理します。Azure ハイパーバイザーは、VM 間のメモリおよびプロセスの分離を強制し、ネットワーク トラフィックをゲスト OS テナントに安全にルーティングします。Azure では、次のように、テナント、ストレージ、および仮想ネットワークの分離も実装されています。
 
-The Azure Fabric Controller is responsible for allocating infrastructure resources to tenant workloads, and manages unidirectional communications from the host to VMs. The Azure hypervisor enforces memory and process separation between VMs, and securely routes network traffic to guest OS tenants. Azure also implements isolation for tenants, storage and virtual networks:
+-   各 Azure AD テナントは、セキュリティ境界を使用して、論理的に分離されています。
 
--   Each Azure AD tenant is logically isolated using security boundaries.
+-   Azure ストレージ アカウントはサブスクリプションごとに一意であり、アクセスはストレージ アカウント キーを使用して認証される必要があります。
 
--   Azure Storage Accounts are unique to each subscription, and access must be authenticated using a Storage Account Key.
+-   仮想ネットワークは、一意のプライベート IP アドレス、ファイアウォール、および IP ACL の組み合わせによって、論理的に分離されています。ロード バランサーは、エンドポイント定義に基づいて、トラフィックを適切なテナントにルーティングします。
 
--   Virtual Networks are logically isolated through a combination of unique private IP addresses, firewalls, and IP ACLs. Load balancers route traffic to the appropriate tenants based on endpoint definitions.
+##仮想ネットワークとファイアウォール
 
-##<a name="virtual-network-and-firewall"></a>Virtual Network and firewall
+Azure の[分散仮想ネットワーク](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx)は、プライベート ネットワーク トラフィックを他の Azure 仮想ネットワーク上のトラフィックから論理的に分離するために役立ちます。
 
-The [distributed and virtual networks](http://download.microsoft.com/download/4/3/9/43902EC9-410E-4875-8800-0788BE146A3D/Windows%20Azure%20Network%20Security%20Whitepaper%20-%20FINAL.docx) in Azure help ensure that your private network traffic is logically isolated from traffic on other Azure Virtual Networks.
+![Azure での Microsoft マルウェア対策](./media/azure-security-getting-started/sec-azgsfig4.PNG)
 
-![Microsoft Antimalware in Azure](./media/azure-security-getting-started/sec-azgsfig4.PNG)
+サブスクリプションには、分離された複数のプライベート ネットワークを含めることができ、ファイアウォール、負荷分散、およびネットワーク アドレス変換も含めることができます。
 
-Your subscription can contain multiple isolated private networks (and include firewall, load-balancing, and network address translation).
+Azure では、各 Azure クラスター内に、トラフィックを論理的に分離するための、ネットワーク分離の 3 つのプライマリ レベルがあります。[仮想ローカル エリア ネットワーク](https://azure.microsoft.com/services/virtual-network/) (VLAN) は、顧客のトラフィックを Azure ネットワークの残りの部分から分離するために使用されます。クラスターの外部からの Azure ネットワークへのアクセスは、ロード バランサーによって制限されます。
 
-Azure provides three primary levels of network segregation in each Azure cluster to logically segregate traffic. [Virtual Local Area Networks](https://azure.microsoft.com/services/virtual-network/) (VLANs) are used to separate customer traffic from the rest of the Azure network. Access to the Azure network from outside the cluster is restricted through load balancers.
+VM 間のネットワーク トラフィックは、ハイパーバイザーの仮想スイッチを通じて渡される必要があります。ルート OS の IP フィルター コンポーネントは、ゲスト VM からルート VM を分離し、各ゲスト VM を分離します。このコンポーネントは、テナントのノードとパブリック インターネット間の通信を制限するために、顧客のサービスの構成に基づいてトラフィックのフィルター処理を実行し、他のテナントから分離します。
 
-Network traffic to and from VMs must pass through the hypervisor virtual switch. The IP filter component in the Root OS isolates the root VM from the guest VMs and the guest VMs from one another. It performs filtering of traffic to restrict communication between tenant's nodes and the public Internet (based on customer's service configuration), segregating them from other tenants.
+IP フィルターは、ゲスト VM による以下の動作を防ぐために役立ちます。
 
-The IP filter helps prevent guest VMs from:
+- なりすましトラフィックの生成
 
-- Generating spoofed traffic
+- ゲスト VM が宛先になっていないトラフィックの受信
 
-- Receiving traffic not addressed to them
+- 保護されたインフラストラクチャ エンドポイントへのトラフィックの転送
 
-- Directing traffic to protected infrastructure endpoints
+- 不適切なブロードキャスト トラフィックの送受信
 
-- Sending or receiving inappropriate broadcast traffic
+仮想マシンは、[Azure Virtual Networks](https://azure.microsoft.com/documentation/services/virtual-network/) に配置できます。これらの仮想ネットワークは、オンプレミス環境で構成するネットワークに似ています。この環境では、通常、ネットワークが仮想スイッチに関連付けられています。同じ Azure Virtual Network に接続されている仮想マシンどうしは、追加の構成なしで通信できます。また、Azure Virtual Network 内に別のサブネットを構成するオプションもあります。
 
-You can place your virtual machines onto [Azure Virtual Networks](https://azure.microsoft.com/documentation/services/virtual-network/). These virtual networks are similar to the networks you configure in on-premises environments, where they are typically associated with a virtual switch. Virtual machines connected to the same Azure Virtual Network can communicate with one another without additional configuration. You also have the option to configure different subnets within your Azure Virtual Network.
+Azure Virtual Network で安全な通信を行うために、以下の Azure Virtual Network テクノロジを使用できます。
 
-You can use the following Azure Virtual Network technologies to help secure communications on your Azure Virtual Network:
+-   [**ネットワーク セキュリティ グループ (NSG)**](../virtual-network/virtual-networks-nsg.md)。NSG を使用して、仮想ネットワーク内で 1 つまたは複数の仮想マシン (VM) のインスタンスに対するトラフィックを制御できます。NSG には、トラフィックの方向、プロトコル、ソース アドレスとポート、および送信先アドレスとポートに基づいて、トラフィックを許可または拒否するアクセス制御ルールが含まれています。
 
--   [**Network Security Groups (NSG)**](../virtual-network/virtual-networks-nsg.md). You can use an NSG to control traffic to one or more virtual machine (VM) instances in your virtual network. An NSG contains access control rules that allow or deny traffic based on traffic direction, protocol, source address and port, and destination address and port.
+-   [**ユーザー定義ルーティング**](../virtual-network/virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスに到達するように特定のサブネットに送信されるパケットの次のホップを指定するユーザー定義のルートを作成することによって、仮想アプライアンスを通じてパケットのルーティングを制御できます。
 
--   [**User Defined Routing**](../virtual-network/virtual-networks-udr-overview.md). You can control the routing of packets through a virtual appliance by creating user defined routes that specify the next hop for packets flowing to a specific subnet to go a your virtual network security appliance.
+-   [**IP 転送**](../virtual-network/virtual-networks-udr-overview.md)。仮想ネットワーク セキュリティ アプライアンスは、自分宛てではない着信トラフィックを受信できることが必要です。VM が自分以外の宛先へのトラフィックを受信できるようにするには、VM の IP 転送を有効にします。
 
--   [**IP forwarding**](../virtual-network/virtual-networks-udr-overview.md). A virtual network security appliance must be able to receive incoming traffic that is not addressed to itself. To allow a VM to receive traffic addressed to other destinations, you enable IP Forwarding for the VM.
+-   [**強制トンネリング**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md)。強制トンネリングでは、検査と監査のために、Azure Virtual Network 内の仮想マシンによって生成されたインターネットへのすべてのトラフィックを、サイト間 VPN トンネルを介してオンプレミスの場所にリダイレクトまたは "強制的に" 戻すことができます。
 
--   [**Forced tunneling**](../vpn-gateway/vpn-gateway-about-forced-tunneling.md). Forced tunneling lets you redirect or "force" all Internet-bound traffic generated by your virtual machines in an Azure Virtual back to your on-premises location via a site-to-site VPN tunnel for inspection and auditing
+-   [**エンドポイント** ACL](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md)。エンドポイント ACL を定義することで、どのコンピューターがインターネットから Azure Virtual Network 上の仮想マシンへの着信接続を許可されるかを制御できます。
 
--   [**Endpoint** ACLs](../virtual-machines/virtual-machines-windows-classic-setup-endpoints.md). You can control which machines are allowed inbound connections from the Internet to a virtual machine on your Azure Virtual Network by defining endpoint ACLs.
+-   [**パートナー ネットワーク セキュリティ ソリューション**](https://azure.microsoft.com/marketplace/)。Azure Marketplace から、多くのパートナー ネットワーク セキュリティ ソリューションにアクセスできます。
 
--   [**Partner network security solutions**](https://azure.microsoft.com/marketplace/). There are a number of partner network security solution that you can access from the Azure Marketplace.
+### Azure での仮想ネットワークとファイアウォールの実装方法
 
-### <a name="how-azure-implements-virtual-networks-and-firewall"></a>How Azure implements virtual networks and firewall
+Azure は、既定ではすべてのホスト VM とゲスト VM 上で、パケット フィルター ファイアウォールを実装しています。Azure ギャラリーの Windows OS イメージでも、Windows ファイアウォールが既定で有効になっています。Azure のパブリックに公開されたネットワークの境界にあるロード バランサーは、顧客管理者によって管理されている IP ACL に基づいて通信を制御します。
 
-Azure implements packet-filtering firewalls on all host and guest VMs by default. Windows OS images from the Azure Gallery also have Windows Firewall enabled by default. Load balancers at the perimeter of Azure’s public facing networks control communications based on IP ACLs managed by customer administrators.
+Azure で通常業務の一環として、または障害発生時に、顧客のデータを移動する場合は、暗号化されたプライベート通信チャネル経由で行います。仮想ネットワークおよびファイアウォールで Azure に利用されるその他の機能は、次のとおりです。
 
-If Azure moves a customer’s data as part of normal operations or during a disaster, it does so over private, encrypted communications channels. Other capabilities leveraged by Azure to use in virtual networks and firewall are:
+-   **ネイティブ ホスト ファイアウォール**: Azure のファブリックとストレージは、ハイパーバイザーがないネイティブ OS で実行されるため、Windows ファイアウォールは上記の 2 つのルールのセットで構成されます。ストレージは、パフォーマンスを最適化するために、ネイティブで実行されます。
 
--   **Native Host Firewall**: Azure fabric and storage run on a native OS which has no hypervisor and hence the windows firewall is configured with the above two sets of rules. Storage runs native to optimize performance.
+-   **ホスト ファイアウォール**: ホスト ファイアウォールは、ハイパーバイザーを実行しているホスト オペレーティング システムを保護します。ルールは、ファブリック コントローラーとジャンプ ボックスだけに特定のポートでのホスト OS との対話を許可するようにプログラミングされています。その他の例外として、DHCP 応答と DNS 返信の許可があります。Azure では、ホスト OS 用のファイアウォール ルールのテンプレートがあるマシン構成ファイルを使用します。ホスト自体は、既知の認証済みのソースからの通信だけを許可するように構成されている Windows ファイアウォールによって、外部からの攻撃から保護されています。
 
--   **Host Firewall**: The host firewall is to protect the host operating system which runs the hypervisor. The rules are programmed to allow only the fabric controller and jump boxes to talk to the host OS on a specific port. The other exceptions are to allow DHCP response and DNS Replies. Azure uses a machine configuration file which it has the template of firewall rules for the host OS. The host itself is protected from external attack by a Windows firewall configured to only permit communication from known, authenticated sources.
+-   **ゲスト ファイアウォール**: VM スイッチ パケット フィルターのルールをレプリケートしますが、別のソフトウェア (つまり、ゲスト OS の Windows Firewall 部分) によってプログラミングされています。ゲスト VM ファイアウォールは、ゲスト VM との間の通信を、ホスト IP フィルターの構成では許可されている場合でも制限するように構成できます。たとえば、ゲスト VM ファイアウォールを使用して、相互に接続するように構成されている 2 つの VNet 間の通信を制限することもできます。
 
--   **Guest Firewall**: Replicates the rules in the VM Switch packet filter but programmed in different software (i.e. the Windows Firewall piece of the guest OS). The guest VM firewall can be configured to restrict communications to or from the guest VM, even if the communication is permitted by configurations at the host IP Filter. For example, you may choose to use the guest VM firewall to restrict communication between two of your VNets that have been configured to connect to one another.
+-   **ストレージ ファイアウォール (FW)**: ストレージ フロントエンドのファイアウォールは、ポート 80/443 とその他の必要なユーティリティ ポート上のトラフィックだけになるようにフィルタリングします。ストレージ バックエンドのファイアウォールは、通信がストレージ フロントエンド サーバーだけから来るように制限します。
 
--   **Storage Firewall (FW)**: The firewall on the storage front-end filters traffic to be only on ports 80/443 and other necessary utility ports. The firewall on the storage back-end restricts communications to only come from storage front-end servers.
+-   **仮想ネットワーク ゲートウェイ**: [Azure Virtual Network ゲートウェイ](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) は、Azure Virtual Network のワークロードをオンプレミス サイトに接続するクロス プレミス ゲートウェイとして機能します。[IPsec サイト間 VPN トンネル](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md)または [ExpressRoute](../expressroute/expressroute-introduction.md) 回路を介して、オンプレミス サイトに接続する必要があります。IPsec/IKE VPN トンネルの場合、ゲートウェイは IKE ハンドシェイクを実行し、仮想ネットワークとオンプレミス サイト間の IPsec S2S VPN トンネルを確立します。仮想ネットワーク ゲートウェイは、[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) も終了させます。
 
--   **Virtual Network Gateway**: [Azure Virtual Network Gateways](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md) serve as the cross premises gateways connecting your workloads in Azure Virtual Network to your on premises sites. It is required to connect to on premises sites through [IPsec site-to-site VPN tunnels](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md), or through [ExpressRoute](../expressroute/expressroute-introduction.md) circuits. For IPsec/IKE VPN tunnels, the gateways perform IKE handshakes, and establish the IPsec S2S VPN tunnels between the Virtual Networks and on premises sites. Virtual Network Gateways also terminate [point-to-site VPNs](../vpn-gateway/vpn-gateway-point-to-site-create.md).
+##セキュリティで保護されたリモート アクセス
 
-##<a name="secure-remote-access"></a>Secure Remote Access
+クラウドに格納されたデータは、悪用されず、転送中の機密性と整合性が維持されるように、十分に保護されている必要があります。たとえば、組織のポリシー ベースの監査可能な ID およびアクセス管理メカニズムと結び付いたネットワーク制御などです。
 
-Data stored in the cloud must have sufficient safeguards enabled to prevent exploits and maintain confidentiality and integrity while in-transit. This includes network controls that tie in with an organization’s policy-based, auditable identity and access management mechanisms.
+組み込みの暗号化テクノロジを使用すると、デプロイ内やデプロイ間の通信、Azure リージョン間の通信、および Azure からオンプレミス データセンターへの通信を暗号化できます。[リモート デスクトップ セッション](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)、[リモート Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx)、および Microsoft Azure 管理ポータルを介した仮想マシンへの管理者アクセスは、常に暗号化されます。
 
-Built-in cryptographic technology enables you to encrypt communications within and between deployments, between Azure regions, and from Azure to on-premises datacenters. Administrator access to virtual machines through [remote desktop sessions](../virtual-machines/virtual-machines-windows-classic-connect-logon.md), [remote Windows PowerShell](http://blogs.technet.com/b/heyscriptingguy/archive/2013/09/07/weekend-scripter-remoting-the-cloud-with-windows-azure-and-powershell.aspx), and the Azure Management Portal is always encrypted.
+オンプレミス データセンターをクラウドに安全に拡張するために、Azure には [サイト間 VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) と [ポイント対サイト VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) や、[ExpressRoute](../expressroute/expressroute-introduction.md) との専用リンクが用意されています (VPN 経由での Azure 仮想ネットワークへの接続は暗号化されます)。
 
-To securely extend your on-premises datacenter to the cloud, Azure provides both [site-to-site VPN](../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) and [point-to-site VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md), as well as dedicated links with [ExpressRoute](../expressroute/expressroute-introduction.md) (connections to Azure Virtual Networks over VPN are encrypted).
+### Azure での安全なリモート アクセスの実装方法
 
-### <a name="how-azure-implements-secure-remote-access"></a>How Azure implements secure remote access
+Azure ポータルへの接続は、常に認証される必要があり、SSL や TLS を必要とします。セキュリティで保護された管理ができるように、管理証明書を構成することができます。[SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx)、[IPsec](https://en.wikipedia.org/wiki/IPsec) など、セキュリティで保護された業界標準プロトコルが完全にサポートされています。
 
-Connections to Azure Portal must always be authenticated and they require SSL/TLS. You can configure management certificates to enable secure management. Industry standard secure protocols such as [SSTP](https://technet.microsoft.com/magazine/2007.06.cableguy.aspx) and [IPsec](https://en.wikipedia.org/wiki/IPsec) are fully supported.
+[Azure ExpressRoute](../expressroute/expressroute-introduction.md) を使用すると、Azure のデータセンターとオンプレミスや共用環境にあるインフラストラクチャ間にプライベート接続を作成できます。ExpressRoute 接続では、公共のインターネットを利用できません。一般的なインターネット ベースのリンクよりも信頼性が高く、高速で、待機時間が少なく、セキュリティの高い接続が提供されます。オンプレミスと Azure の間のデータ転送に ExpressRoute 接続を使用することで、大きなコスト上のメリットが得られる場合もあります。
 
-[Azure ExpressRoute](../expressroute/expressroute-introduction.md) lets you create private connections between Azure datacenters and infrastructure that’s on your premises or in a co-location environment. ExpressRoute connections do not go over the public Internet. They offer more reliability, faster speeds, lower latencies and higher security than typical Internet-based links. In some cases, using ExpressRoute connections to transfer data between on-premises and Azure can also yield significant cost benefits.
+##ログ記録と監視
 
-##<a name="logging-and-monitoring"></a>Logging and monitoring
+Azure には、監査証跡を生成するセキュリティ関連イベントの認証済みログ記録機能があり、改ざんができないように設計されています。記録されるのは、Azure インフラストラクチャ VM と Azure AD のセキュリティ イベント ログのようなシステム情報などです。セキュリティ イベントの監視には、さまざまなイベントの収集が含まれます。たとえば、DHCP または DNS サーバーの IP アドレスの変更、仕様によってブロックされているポート、プロトコル、または IP アドレスへのアクセス試行、セキュリティ ポリシーまたはファイアウォール設定の変更、アカウントまたはグループの作成、予期しないプロセス、ドライバーのインストールなどです。
 
-Azure provides authenticated logging of security-relevant events that generate an audit trail, and is engineered to be resistant to tampering. This includes system information, such as security event logs in Azure infrastructure VMs and Azure AD. Security event monitoring includes collecting events such as changes in DHCP or DNS server IP addresses, attempted access to ports, protocols or IP addresses that are blocked by design, changes in security policy or firewall settings, account or group creation, unexpected processes or driver installation.
+![Azure での Microsoft マルウェア対策](./media/azure-security-getting-started/sec-azgsfig5.PNG)
 
-![Microsoft Antimalware in Azure](./media/azure-security-getting-started/sec-azgsfig5.PNG)
+特権を持つユーザーのアクセスとアクティビティ、承認されているアクセス試行と承認されていないアクセス試行、システム例外、および情報セキュリティ イベントを記録する監査ログは、所定の期間、保持されます。ログの収集と保有は独自の要件に合わせてユーザーが構成するため、ログの保有期間はユーザーの判断で決まります。
 
-Audit logs recording privileged user access and activities, authorized and unauthorized access attempts, system exceptions, and information security events are retained for a set period of time. The retention of your logs is at your discretion because you configure log collection and retention to your own requirements.
+### Azure でのログ記録と監視の実装方法
 
-### <a name="how-azure-implements-logging-and-monitoring"></a>How Azure implements logging and monitoring
+Azure では、ノードがネイティブか仮想かにかかわらず、管理下の各コンピューティング ノード、ストレージ ノード、またはファブリック ノードに管理エージェント (MA) と Azure セキュリティ モニター (ASM) エージェントをデプロイします。各管理エージェントは、Azure 証明書ストアから取得された証明書でサービス チーム ストレージ アカウントを認証し、事前に構成された診断とイベント データをストレージ アカウントに転送するように構成されています。これらのエージェントは、顧客の仮想マシンにはデプロイされません。
 
-Azure deploys Management Agents (MA) and Azure Security Monitor (ASM) agents to each compute, storage, or fabric node under management whether they are native or virtual. Each Management Agent is configured to authenticate to a service team storage account with a certificate obtained from the Azure certificate store and forward pre-configured diagnostic and event data to the storage account. These agents are not deployed to customers’ virtual machines.
+Azure 管理者は、ログへのアクセスを認証および制御される必要があるため、Web ポータルを通じてログにアクセスします。管理者は、ログの解析、フィルター処理、関連付け、および分析を行うことができます。ログ用の Azure サービス チーム ストレージ アカウントは、ログの改ざんを防止するために、直接の管理者アクセスから保護されています。
 
-Azure administrators access logs through a web portal for authenticated and controlled access to the logs. An administrator can parse, filter, correlate, and analyze logs. The Azure service team storage accounts for logs are protected from direct administrator access to help prevent against log tampering.
+Microsoft は、Syslog プロトコルを使用してネットワーク デバイスからログを収集し、Microsoft 監査コレクション サービス (ACS) を使用してホスト サーバーからログを収集しています。これらのログはログ データベースに格納され、不審なイベントがあると、このデータベースから Microsoft 管理者への直接の警告が生成されます。管理者は、これらのログにアクセスして分析することができます。
 
-Microsoft collects logs from network devices using the Syslog protocol and from host servers using Microsoft Audit Collection Services (ACS). These logs are placed into a log database from which alerts are generated for suspicious events directly to a Microsoft administrator. The administrator can access and analyze these logs.
+[Azure 診断](https://msdn.microsoft.com/library/azure/gg433048.aspx)は、Azure で実行されているアプリケーションから診断データを収集できるようにするための Azure の機能です。診断データは、デバッグとトラブルシューティング、パフォーマンスの測定、リソース使用状況の監視、トラフィック分析とキャパシティ プランニング、監査などに使用できます。収集された診断データは、保存用に Azure ストレージ アカウントに転送できます。転送は、スケジュールして実行することも、オンデマンドで実行することもできます。
 
-[Azure Diagnostics](https://msdn.microsoft.com/library/azure/gg433048.aspx) is a feature of Azure that enables you to collect diagnostic data from an application running in Azure. This is diagnostic data for debugging and troubleshooting, measuring performance, monitoring resource usage, traffic analysis, and capacity planning, and auditing. After the diagnostic data is collected, it can be transferred to an Azure storage account for persistence. Transfers can either be scheduled or on-demand.
+##脅威の緩和
 
-##<a name="threat-mitigation"></a>Threat Mitigation
+Azure では、インフラストラクチャとサービスを保護するために、分離、暗号化、フィルター処理の他にも、脅威を緩和するためのさまざまなメカニズムとプロセスを採用しています。たとえば、DDoS、特権昇格、[OWASP Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project) などの高度な脅威を検出および修復するための内部制御やテクノロジです。
 
-In addition to isolation, encryption, and filtering, Azure employs a number of threat mitigation mechanisms and processes to protect infrastructure and services. These include internal controls and technologies used to detect and remediate advanced threats such as DDoS, privilege escalation, and the [OWASP Top-10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
+クラウド インフラストラクチャをセキュリティで保護するために Microsoft が採用しているセキュリティ コントロールおよびリスク管理プロセスによって、セキュリティ インシデントのリスクが軽減されます。それでも問題が発生した場合のために、Microsoft Online Security Services & Compliance (OSSC) チームの Security Incident Management (SIM) チームが、24 時間、365 日体制で応対しています。
 
-The security controls and risk management processes Microsoft has in place to secure its cloud infrastructure reduce the risk of security incidents. But, in the event an incident occurs, the Security Incident Management (SIM) team within the Microsoft Online Security Services & Compliance (OSSC) team is ready 24 x 7 to respond.
+### Azure での脅威の緩和の実装方法
 
-### <a name="how-azure-implements-threat-mitigation"></a>How Azure implements threat mitigation
+Azure には、脅威の緩和を実装し、お客様の環境での潜在的な脅威の緩和を支援するためのセキュリティ コントロールがあります。次の一覧は、Azure が提供する脅威緩和機能をまとめたものです。
 
-Azure has security controls in place to implement threat mitigation and also to assist customers mitigate potential threats in their environments. The list below summarizes the threat mitigation capabilities offered by Azure:
+-   [Azure Anti-Malware](../security/azure-security-antimalware.md)は、すべてのインフラストラクチャ サーバーで、既定で有効になっています。必要に応じて、独自の VM 内でも有効にできます。
 
--   [Azure Anti-Malware](../security/azure-security-antimalware.md) is enabled by default on all infrastructure servers. You can optionally enable it within your own VMs.
+-   Microsoft は、脅威を検出し、攻撃を防ぐために、サーバー、ネットワーク、およびアプリケーションで、継続的な監視を行っています。異常な動作は自動アラートによって管理者に通知されるため、内部および外部の脅威に対して修正措置を取ることができます。
 
--   Microsoft maintains continuous monitoring across servers, networks, and applications to detect threats and prevent exploits. Automated alerts notify administrators of anomalous behaviors, allowing them to take corrective action on both internal and external threats.
+-   サブスクリプション内に、[Barracuda](https://techlib.barracuda.com/ng54/deployonazure) の Web アプリケーション ファイアウォールなどのサード パーティ製セキュリティ ソリューションをデプロイすることもできます。
 
--   You have the option to deploy 3rd-party security solutions within your subscriptions, such as web application firewalls from [Barracuda](https://techlib.barracuda.com/ng54/deployonazure).
+-   Microsoft の侵入テストには、"[レッド チーム](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)" も含まれています。このテストでは、Microsoft のセキュリティ専門家が Azure の実際の運用システム (お客様のシステム以外) を攻撃して、現実の高度な継続的脅威に対する防御を検証します。
 
--   Microsoft’s approach to penetration-testing includes “[Red-Teaming](http://download.microsoft.com/download/C/1/9/C1990DBA-502F-4C2A-848D-392B93D9B9C3/Microsoft_Enterprise_Cloud_Red_Teaming.pdf)”, which involves Microsoft security professionals attacking (non-customer) live production systems in Azure to test defenses against real-world, advanced persistent threats.
+-   Azure プラットフォーム全体にわたるセキュリティ更新プログラムの配布とインストールは、統合されたデプロイ システムが管理しています。
 
--   Integrated deployment systems manage the distribution and installation of security patches across the Azure platform.
+##次のステップ
 
-##<a name="next-steps"></a>Next Steps
+[Azure のトラスト センター](https://azure.microsoft.com/support/trust-center/)
 
-[Azure Trust Center](https://azure.microsoft.com/support/trust-center/)
-
-[Azure Security Team Blog](http://blogs.msdn.com/b/azuresecurity/)
+[Azure セキュリティ チームのブログ](http://blogs.msdn.com/b/azuresecurity/)
 
 [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx)
 
-[Active Directory Blog](http://blogs.technet.com/b/ad/)
+[Active Directory のブログ](http://blogs.technet.com/b/ad/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0525_2016-->

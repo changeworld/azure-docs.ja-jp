@@ -1,69 +1,64 @@
 <properties
-    pageTitle="Create an Azure Search index using the Azure Portal | Microsoft Azure | Hosted cloud search service"
-    description="Create an index using the Azure Portal."
-    services="search"
-    authors="ashmaka"
-    documentationCenter=""/>
+	pageTitle="Azure ポータルを使用した Azure Search インデックスの作成 | Microsoft Azure | ホステッド クラウド検索サービス"
+	description="Azure ポータルを利用してインデックスを作成する"
+	services="search"
+	authors="ashmaka"
+	documentationCenter=""/>
 
 <tags
-    ms.service="search"
-    ms.devlang="NA"
-    ms.workload="search"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="ashmaka"/>
+	ms.service="search"
+	ms.devlang="NA"
+	ms.workload="search"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.date="08/29/2016"
+	ms.author="ashmaka"/>
 
-
-# <a name="create-an-azure-search-index-using-the-azure-portal"></a>Create an Azure Search index using the Azure Portal
+# Azure ポータルを利用して Azure Search インデックスを作成する
 > [AZURE.SELECTOR]
-- [Overview](search-what-is-an-index.md)
-- [Portal](search-create-index-portal.md)
+- [概要](search-what-is-an-index.md)
+- [ポータル](search-create-index-portal.md)
 - [.NET](search-create-index-dotnet.md)
-- [REST](search-create-index-rest-api.md)
+- [REST ()](search-create-index-rest-api.md)
 
-This article will walk you through the process of creating an Azure Search [index](search-what-is-an-index.md) using the Azure Portal.
+この記事では、Azure ポータルを使用して Azure Search の[インデックス](search-what-is-an-index.md)を作成するプロセスについて説明します。
 
-Before following this guide and creating an index, you should have already [created an Azure Search service](search-create-service-portal.md).
+このガイドに従ってインデックスを作成する前に、既に [Azure Search サービスを作成済み](search-create-service-portal.md)である必要があります。
 
 
-## <a name="i.-go-to-your-azure-search-blade"></a>I. Go to your Azure Search blade
-1. Click on "All resources" in the menu on the left side of the [Azure Portal](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)
-2. Select your Azure Search service
+## I.Azure Search ブレードに移動する
+1. [Azure ポータル](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)の左側のメニューで [すべてのリソース] をクリックします。
+2. Azure Search サービスを選択する
 
-## <a name="ii.-add-and-name-your-index"></a>II. Add and name your index
-1. Click on the "Add index" button
-2. Name your Azure Search index. Since we are creating an index to search for hotels in this guide, we have named our index "hotels".
-  * The index name must start with a letter and contain only lowercase letters, digits, or dashes ("-").
-  * Similar to your service name, the index name you pick will also be part of the endpoint URL where you will send your HTTP requests for the Azure Search API
-3. Click on the "Fields" entry to open a new blade
+## II.インデックスを追加し、名前を付ける
+1. [インデックスの追加] ボタンをクリックする
+2. Azure Search インデックスに名前を付けます。このガイドではホテルを検索するインデックスを作成するので、"hotels" という名前をインデックスに付けました。
+  * インデックス名は文字で始め、小文字、数字、ダッシュ ("-") のみで作成します。
+  * サービス名と同様に、選択したインデックス名は、Azure Search API の HTTP 要求を送信するエンドポイント URL の一部にもなります。
+3. "Fields" エントリをクリックし、新しいブレードを開く
 
 ![](./media/search-create-index-portal/add-index.png)
 
 
-## <a name="iii.-create-and-define-the-fields-of-your-index"></a>III. Create and define the fields of your index
-1. By selecting the "Fields" entry, a new blade will open with a form to enter your index definition.
-2. Add fields to your index using the form.
+## III.インデックスのフィールドを作成し、定義する
+1. "Fields" エントリを選択すると、インデックスの定義を入力するフォームを含む新しいブレードが開きます。
+2. フォームを利用し、インデックスにフィールドを追加します。
 
-  * A *key* field of type Edm.String is mandatory for every Azure Search index. This key field is created by default with the field name "id". We have changed it to "hotelId" in our index.
-  * Certain properties of your index schema can only be set once and cannot be updated in the future. Because of this, any schema updates that would require re-indexing such as changing field types are not currently possible after the initial configuration.
-  * We have carefully chosen the property values for each field based on how we think they will be used in an application. Keep your search user experience and business needs in mind when designing your index as each field must be assigned the [appropriate properties](https://msdn.microsoft.com/library/azure/dn798941.aspx). These properties control which search features (filtering, faceting, sorting, full-text search, etc.) apply to which fields. For example, it is likely that people searching for hotels will be interested in keyword matches on the "description" field, so we enable full-text search for that field by setting the "Searchable" property.
-    * You can also set the [language analyzer](https://msdn.microsoft.com/en-us/library/azure/dn879793.aspx) for each field by clicking on the "Analyzer" tab at the top of the blade. You can see below that we have selected a French analyzer for a field in our index intended for French text.
+  * Edm.String 型の*キー* フィールドはすべての Azure Search インデックスで必須です。既定では、このキー フィールドはフィールド名 "id" で作成されます。このガイドでは、それを "hotelId" に変更しています。
+  * インデックス スキーマの特定のプロパティは 1 回だけ設定可能であり、将来更新することはできません。そのような理由から、初回の構成後は、フィールドの種類の変更といったインデックスの再作成を必要とするスキーマ更新は現在のところ不可能です。
+  * 各フィールドのプロパティの値は、アプリケーションでどのように使用されるかに応じて、慎重に選択されています。各フィールドには[適切なプロパティ](https://msdn.microsoft.com/library/azure/dn798941.aspx)を割り当てる必要があるため、インデックスを設計する際は、検索のユーザー エクスペリエンスとビジネス ニーズに留意してください。これらのプロパティでは、どのフィールドにどの検索機能 (フィルター、ファセット、全文検索の並べ替えなど) が適用されるかを制御します。たとえば、ホテルについて検索するユーザーは "description" フィールドでのキーワードの一致に関心がある可能性が高いです。そのため、"Searchable" プロパティを設定してそのフィールドの全文検索を有効にします。
+	* ブレードの上部にある [アナライザー] タブをクリックし、フィールド別に[言語アナライザー](https://msdn.microsoft.com/ja-JP/library/azure/dn879793.aspx)を設定することもできます。下の図では、インデックスのフィールドにフランス語テキスト用のフランス語アナライザーを選択していることがわかります。
 
-3. Click **OK** on the "Fields" blade to confirm your field definitions
-4. Click **OK** on the "Add index" blade to save and create the index you just defined.
+3. "Fields" ブレードで **[OK]** をクリックし、フィールド定義を確定します。
+4. "Add index" ブレードで **[OK]** をクリックし、定義したインデックスを保存し、作成します。
 
-In the screenshots below, you can see how we have named and defined the fields for our "hotels" index.
+下のスクリーンショットでは、"hotels" インデックスのフィールドに名前を付け、定義していることがわかります。
 
 ![](./media/search-create-index-portal/field-definitions.png)
 
 ![](./media/search-create-index-portal/set-analyzer.png)
 
-## <a name="next"></a>Next
-After creating an Azure Search index, you will be ready to [upload your content into the index](search-what-is-data-import.md) so you can start searching your data.
+## 次へ
+Azure Search インデックスを作成すると、データの検索を開始できるように[インデックスにコンテンツをアップロードする](search-what-is-data-import.md)準備が完了します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

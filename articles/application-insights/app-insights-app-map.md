@@ -1,120 +1,113 @@
 <properties 
-    pageTitle="Application Map in Application Insights | Microsoft Azure" 
-    description="A visual presentation of the dependencies between app components, labeled with KPIs and alerts." 
-    services="application-insights" 
+	pageTitle="Application Insights のアプリケーション マップ | Microsoft Azure" 
+	description="アプリケーション コンポーネント間の依存関係を、KPI やアラートと共に視覚的に表します。" 
+	services="application-insights" 
     documentationCenter=""
-    authors="SoubhagyaDash" 
-    manager="douge"/>
+	authors="SoubhagyaDash" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="06/15/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/15/2016" 
+	ms.author="awills"/>
  
+# Application Insights のアプリケーション マップ
 
-# <a name="application-map-in-application-insights"></a>Application Map in Application Insights
+[Visual Studio Application Insights](app-insights-overview.md) のアプリケーション マップは、アプリケーション コンポーネントにおける依存関係のレイアウトを視覚的に表したものです。負荷やパフォーマンス、エラー、アラートといった KPI がコンポーネントごとに表示されるので、パフォーマンスの問題やエラーの原因となっているコンポーネントを容易に検出することができます。Application Insights から、またはアプリで Azure サービスを使用している場合は Azure 診断 (SQL Database アドバイザーのアドバイス情報など) から任意のコンポーネントをクリックして、さらに詳しい診断結果にアクセスすることができます。
 
-In [Visual Studio Application Insights](app-insights-overview.md), Application Map is a visual layout of the dependency relationships of your application components. Each component shows KPIs such as load, performance, failures, and alerts, to help you discover any component causing a performance issue or failure. You can click through from any component to more detailed diagnostics, both from Application Insights, and - if your app uses Azure services - Azure diagnostics, such as the SQL Database Advisor recommendations.
+アプリケーション マップは他のグラフと同様、Azure ダッシュボードにピン留めし、すべての機能を利用することができます。
 
-Like other charts, you can pin an application map to the Azure dashboard, where it is fully functional. 
+## アプリケーション マップを開く
 
-## <a name="open-the-application-map"></a>Open the application map
-
-Open the map from the overview blade for your application:
+アプリケーション マップは、対象アプリケーションの概要ブレードから開きます。
 
 ![open app map](./media/app-insights-app-map/01.png)
 
 ![app map](./media/app-insights-app-map/02.png)
 
-The map shows:
+マップには次の情報が表示されます。
 
-* Availability tests
-* Client side component (monitored with the JavaScript SDK)
-* Server side component
-* Dependencies of the client and server components
+* 可用性テスト
+* クライアント側コンポーネント (JavaScript SDK で監視)
+* サーバー側コンポーネント
+* クライアント コンポーネントとサーバー コンポーネントの依存関係
 
-You can expand and collapse dependency link groups:
+依存関係リンク グループは、展開したり折りたたんだりすることができます。
 
 ![collapse](./media/app-insights-app-map/03.png)
  
-If you have a large number of dependencies of one type (SQL, HTTP etc.), they may appear grouped. 
+特定の種類 (SQL、HTTP など) の依存関係が多数存在する場合、それらがグループ化されて表示されます。
 
 
 ![grouped dependencies](./media/app-insights-app-map/03-2.png)
  
  
-## <a name="spot-problems"></a>Spot problems
+## 問題の特定
 
-Each node has relevant performance indicators, such as the load, performance and failure rates for that component. 
+それぞれのノードには、関連するパフォーマンス指標 (対応するコンポーネントの負荷、パフォーマンス、エラー率など) が表示されます。
 
-Warning icons highlight possible problems. An orange warning means there are failures in requests, page views or dependency calls. Red means a failure rate above 5%.
+問題のリスクは、警告アイコンによって強調表示されます。オレンジ色の警告は、要求、ページ ビュー、依存関係の呼び出しにおけるエラーの存在を意味します。赤色は、エラー率が 5% を超えていることを示します。
 
 
 ![failure icons](./media/app-insights-app-map/04.png)
 
  
-Active alerts also show up: 
+アクティブな警告も表示されます。
 
 
 ![active alerts](./media/app-insights-app-map/05.png)
  
-If you use SQL Azure, there's an icon that shows when there are recommendations on how you can improve performance. 
+SQL Azure を使用している場合、パフォーマンスを高める方法についての推奨事項が存在するときにアイコンが表示されます。
 
 
 ![Azure recommendation](./media/app-insights-app-map/06.png)
 
-Click any icon to get more details:
+アイコンをクリックすると、詳しい情報にアクセスできます。
 
 
 ![azure recommendation](./media/app-insights-app-map/07.png)
  
  
-## <a name="diagnostic-click-through"></a>Diagnostic click through
+## 診断のリンク
 
-Each of the nodes on the map offers targeted click through for diagnostics. The options vary depending on the type of the node.
+マップ上の各ノードには、診断を目的としたリンクが表示されます。表示されるオプションは、ノードの種類によって異なります。
 
 ![server options](./media/app-insights-app-map/09.png)
 
  
-For components that are hosted in Azure, the options include direct links to them.
+Azure でホストされるコンポーネントの場合、そのコンポーネントに直接アクセスするためのリンクがオプションに含まれます。
 
 
-## <a name="filters-and-time-range"></a>Filters and time range
+## フィルターと時間範囲
 
-By default, the map summarizes all the data available for the chosen time range. But you can filter it to include only specific operation names or dependencies.
+既定では、選択した時間範囲に関して入手できるすべてのデータがマップに集約されます。ただしフィルターを適用することで、表示内容を特定の操作名や依存関係に限定することができます。
 
-* Operation name: This includes both page views and server side request types. With this option, the map shows the KPI on the server/client side node for the selected operations only. It shows the dependencies called in the context of those specific operations.
-* Dependency base name: This includes the AJAX browser side dependencies and server side dependencies. If you report custom dependency telemetry with the TrackDependency API, they will also show here. You can select the dependencies to show on the map. Please note that at this time, this will not filter the server side requests, or the client side page views.
+* 操作名: ページ ビューのほか、サーバー側の要求の種類が表示対象となります。このオプションでは、選択した操作に限定して、サーバー/クライアント側ノードの KPI がマップに表示されます。その特定の操作のコンテキストで呼び出された依存関係が表示されます。
+* 依存関係のベース名: AJAX ブラウザー側の依存関係とサーバー側の依存関係が表示対象となります。TrackDependency API を使ってカスタムの依存関係のテレメトリを報告対象にしている場合、それらもここに表示されます。マップに表示する依存関係は選択できます。現時点では、サーバー側の要求やクライアント側のページ ビューはフィルタリングされません。
 
 
 ![Set filters](./media/app-insights-app-map/11.png)
 
  
  
-## <a name="save-filters"></a>Save filters
+## フィルターの保存
 
-To save the filters you have applied, pin the filtered view onto a [dashboard](app-insights-dashboards.md).
+適用したフィルターを保存するには、フィルタリングされたビューを[ダッシュボード](app-insights-dashboards.md)にピン留めします。
 
 
-![Pin to dashboard](./media/app-insights-app-map/12.png)
+![ダッシュボードにピン留めする](./media/app-insights-app-map/12.png)
  
 
 
-## <a name="feedback"></a>Feedback
+## フィードバック
 
-Please [provide feedback through the portal feedback option](app-insights-get-dev-support.md).
+[ご意見やご感想は、ポータルのフィードバック オプションからお寄せください](app-insights-get-dev-support.md)。
 
 
 ![MapLink-1 image](./media/app-insights-app-map/13.png)
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

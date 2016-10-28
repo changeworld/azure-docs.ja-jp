@@ -2,7 +2,4 @@
 - [Azure Portal](../articles/storage/storage-enable-and-view-metrics.md)
 - [Azure Classic Portal](../articles/storage/storage-enable-and-view-metrics-classic-portal.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1203_2015-->

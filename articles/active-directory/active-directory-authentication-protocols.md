@@ -1,8 +1,8 @@
 <properties
-   pageTitle="Azure Active Directory Authentication Protocols | Microsoft Azure"
-   description="An overview of the authentication protocols supported by Azure Active Directory (AD)"
+   pageTitle="Azure Active Directory 認証プロトコル | Microsoft Azure"
+   description="Azure Active Directory (AD) でサポートされる認証プロトコルの概要"
    documentationCenter="dev-center-name"
-   authors="bryanla"
+   authors="msmbaldwin"
    services="active-directory"
    manager="mbaldwin"
    editor=""/>
@@ -16,48 +16,43 @@
    ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
+# Azure Active Directory の認証プロトコル
 
-# <a name="azure-active-directory-authentication-protocols"></a>Azure Active Directory Authentication Protocols
+Azure Active Directory (Azure AD) では、最も広く使用されている認証および承認のプロトコルを複数サポートしています。このセクションの各トピックでは、Azure AD でサポートされているプロトコルとその実装について説明します。トピックには、サポートされている要求の種類の確認、フェデレーション メタデータの用途の概要、OAuth 2.0 および SAML 2.0 プロトコルの詳しいリファレンス ドキュメント、トラブルシューティング セクションなどがあります。
 
-Azure Active Directory (Azure AD) supports several of the most widely used authentication and authorization protocols. The topics in this section describe the supported protocols and their implementation in Azure AD. The topics included a review of supported claim types, an introduction to the use of federation metadata, detailed OAuth 2.0. and SAML 2.0 protocol reference documentation, and a troubleshooting section.
+## 認証プロトコルの記事とリファレンス
 
-## <a name="authentication-protocols-articles-and-reference"></a>Authentication Protocols Articles and Reference
-
-- [Important Information About Signing Key Rollover in Azure AD](active-directory-signing-key-rollover.md) – Learn about Azure AD’s signing key rollover cadence, changes you can make to update the key automatically, and discussion for how to update the most common application scenarios.
-
-
-- [Supported Token and Claim Types](active-directory-token-and-claims.md) - Learn about the claims in the tokens that Azure AD issue.
+- [Azure AD での署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md) - Azure AD の署名キーのロールオーバーの周期、キーを自動的に更新するために可能な変更、最も一般的なアプリケーション シナリオを更新する方法について説明します。
 
 
-- [Federation Metadata](https://msdn.microsoft.com/library/azure/dn195592.aspx) - Learn how to find and interpret the metadata documents that Azure AD generates.
+- [サポートされているトークンとクレームの種類](active-directory-token-and-claims.md) - Azure AD が発行するトークンのクレームについて説明します。
 
 
-- [OAuth 2.0 in Azure AD](https://msdn.microsoft.com/library/azure/dn645545.aspx) - Learn about the implementation of OAuth 2.0 in Azure AD.
+- [フェデレーション メタデータ](https://msdn.microsoft.com/library/azure/dn195592.aspx) - Azure AD が生成するメタデータ ドキュメントの検索と解釈の方法について説明します。
 
 
-- [OpenID Connect 1.0](https://msdn.microsoft.com/library/azure/dn645541.aspx) - Learn how to use OAuth 2.0, an authorization protocol, for authentication.
+- [Azure AD での OAuth 2.0](https://msdn.microsoft.com/library/azure/dn645545.aspx) - Azure AD での OAuth 2.0 の実装について説明します。
 
 
-- [SAML Protocol Reference](https://msdn.microsoft.com/library/azure/dn195591.aspx) - Learn about the Single Sign-On and Single Sign-out SAML profiles of Azure AD.
+- [OpenID Connect 1.0](https://msdn.microsoft.com/library/azure/dn645541.aspx) - 認証に OAuth 2.0 (承認プロトコル) を使用する方法について説明します。
 
 
-- [WS-Federation 1.2](https://msdn.microsoft.com/library/azure/dn903702.aspx) - Learn about WS-Federation 1.2 in Azure AD.
+- [SAML プロトコル リファレンス](https://msdn.microsoft.com/library/azure/dn195591.aspx) - Azure AD のシングル サインオンおよびシングル サインアウト SAML プロファイルについて説明します。
 
 
-- [Troubleshooting Authentication Protocols](https://msdn.microsoft.com/library/azure/dn195584.aspx) - Learn how to prevent problems and interpret and resolve errors when using Azure AD.
+- [WS-Federation 1.2](https://msdn.microsoft.com/library/azure/dn903702.aspx) - Azure AD での WS-Federation 1.2 について説明します。
 
 
-
-## <a name="see-also"></a>See Also
-
-[Azure Active Directory Developer's Guide](active-directory-developers-guide.md)
-
-[Using Azure AD for Authentication](../app-service-web/web-sites-authentication-authorization.md)
-
-[Active Directory Code Samples](active-directory-code-samples.md)
+- [認証プロトコルのトラブルシューティング](https://msdn.microsoft.com/library/azure/dn195584.aspx) - Azure AD の使用時に発生する問題を回避する方法と、エラーを解釈し、解決する方法について説明します。
 
 
 
-<!--HONumber=Oct16_HO2-->
+## 関連項目
 
+[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
+[認証に Azure AD を使用する](../app-service-web/web-sites-authentication-authorization.md)
+
+[Active Directory のコード例](active-directory-code-samples.md)
+
+<!---HONumber=AcomDC_0921_2016-->

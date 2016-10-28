@@ -1,103 +1,98 @@
 <properties
-    pageTitle="Create text analytics models in Azure Machine Learning Studio | Microsoft Azure"
-    description="How to create text analytics models in Azure Machine Learning Studio using modules for text preprocessing, N-grams or feature hashing"
-    services="machine-learning"
-    documentationCenter=""
-    authors="rastala"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="Azure Machine Learning Studio でテキスト分析モデルを作成する | Microsoft Azure"
+	description="テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法"
+	services="machine-learning"
+	documentationCenter=""
+	authors="rastala"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/06/2016"
-    ms.author="roastala" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/06/2016"
+	ms.author="roastala" />
 
 
+#Azure Machine Learning Studio でテキスト分析モデルを作成する
 
-#<a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Create text analytics models in Azure Machine Learning Studio
+Azure Machine Learning を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。
 
-You can use Azure Machine Learning to build and operationalize text analytics models. These models can help you solve, for example, document classification or sentiment analysis problems.
+通常のテキスト分析の実験では、次の作業を行います。
 
-In a text analytics experiment, you would typically:
+ 1. テキスト データセットのクリーニングと前処理
+ 2. 前処理されたテキストからの数値特徴ベクトルの抽出
+ 3. 分類モデルまたは回帰モデルのトレーニング
+ 4. モデルのスコア付けと検証
+ 5. 運用環境へのモデルのデプロイ
 
- 1. Clean and preprocess text dataset
- 2. Extract numeric feature vectors from pre-processed text
- 3. Train classification or regression model
- 4. Score and validate the model
- 5. Deploy the model to production
+このチュートリアルでは、Amazon の書評のデータセットを使用したセンチメント分析モデルを使ってこれらの手順について説明します (John Blitzer、Mark Dredze、Fernando Pereira による次の研究論文を参照してください: 「Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification (伝記、ボリウッド、ラジオカセットレコーダ、ミキサー: 感想の分類に対する領域適応)」、コンピューター言語学会 (ACL)、2007 年)。 このデータセットは、レビュー スコア (1-2 または 4-5) と自由形式のテキストから構成されています。目標は、レビュー スコアが低 (1-2) であるか高 (4-5) であるかを予測することです。
 
-In this tutorial, you learn these steps as we walk through a sentiment analysis model using Amazon Book Reviews dataset (see this research paper “Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification” by John Blitzer, Mark Dredze, and Fernando Pereira; Association of Computational Linguistics (ACL), 2007.) This dataset consists of review scores (1-2 or 4-5) and a free-form text. The goal is to predict the review score: low (1-2) or high (4-5).
+Cortana Intelligence Gallery で、このチュートリアルで取り上げた実験をご覧になれます。
 
-You can find experiments covered in this tutorial at Cortana Intelligence Gallery:
+[Predict Book Reviews (書評の予測)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
 
-[Predict Book Reviews] (https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
+[Predict Book Reviews - Predictive Experiment (書評の予測 - 予測実験)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
-[Predict Book Reviews - Predictive Experiment] (https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+## 手順 1: テキスト データセットの前処理とクリーニング
 
-## <a name="step-1:-clean-and-preprocess-text-dataset"></a>Step 1: Clean and preprocess text dataset
+実験ではまず、レビュー スコアを低と高のカテゴリーに分類し、問題を 2 クラス分類として形式化します。[Edit Metadata (メタデータの編集)](https://msdn.microsoft.com/library/azure/dn905986.aspx) モジュールと[Group Categorical Values (カテゴリ値のグループ化)](https://msdn.microsoft.com/library/azure/dn906014.aspx) モジュールを使用します。
 
-We begin the experiment by dividing the review scores into categorical low and high buckets to formulate the problem as two-class classification. We use [Edit Metadata] (https://msdn.microsoft.com/library/azure/dn905986.aspx) and [Group Categorical Values] (https://msdn.microsoft.com/library/azure/dn906014.aspx) modules.
+![ラベルの作成](./media/machine-learning-text-analytics-module-tutorial/create-label.png)
 
-![Create Label](./media/machine-learning-text-analytics-module-tutorial/create-label.png)
+次に、[Preprocess Text (テキストの前処理)](https://msdn.microsoft.com/library/azure/mt762915.aspx) モジュールを使用してテキストをクリーニングします。クリーニングによりデータセットのノイズが減少するため、最も重要な特徴を見つけて最終的なモデルの精度を上げることができます。ストップワード ("the" または "a" などの一般的な単語)、数字、特殊文字、重複している文字、電子メール アドレス、および URL を削除します。また、テキストを小文字に変換し、語句を見出語化するとともに、前処理されたテキスト中の "|||" 記号で示された文の境界を検出します。
 
-Then, we clean the text using [Preprocess Text] (https://msdn.microsoft.com/library/azure/mt762915.aspx) module. The cleaning reduces the noise in the dataset, help you find the most important features, and improve the accuracy of the final model. We remove stopwords - common words such as "the" or "a" - and numbers, special characters, duplicated characters, email addresses, and URLs. We also convert the text to lowercase, lemmatize the words, and detect sentence boundaries that are then indicated by "|||" symbol in pre-processed text.
+![テキストの前処理](./media/machine-learning-text-analytics-module-tutorial/preprocess-text.png)
 
-![Preprocess Text](./media/machine-learning-text-analytics-module-tutorial/preprocess-text.png)
+ストップワードのカスタム リストを使用するにはどうすればいいでしょうか。 このリストは、オプションの入力として渡すことができます。また、C# 構文のカスタム正規表現を使用して、部分文字列を置き換えたり、品詞 (名詞、動詞、形容詞) ごとに単語を削除したりすることもできます。
 
-What if you want to use a custom list of stopwords? You can pass it in as optional input. You can also use custom C# syntax regular expression to replace substrings, and remove words by part of speech: nouns, verbs, or adjectives.
+前処理が完了したら、データをトレーニング セットとテスト セットに分割します。
 
-After the preprocessing is complete, we split the data into train and test sets.
+## 手順 2: 前処理されたテキストからの数値特徴ベクトルの抽出
 
-## <a name="step-2:-extract-numeric-feature-vectors-from-pre-processed-text"></a>Step 2: Extract numeric feature vectors from pre-processed text
+通常、テキスト データのモデルを構築するには、自由形式のテキストを数値特徴ベクトルに変換する必要があります。この例では、[Extract N-Gram Features from Text (テキストからの N グラム特徴の抽出)](https://msdn.microsoft.com/library/azure/mt762916.aspx) モジュールを使って、テキスト データをそのような形式に変換します。このモジュールは空白文字で区切られた単語の列を受け取り、データセット中に出現する単語 (単語の N グラム) の辞書を計算します。次に、レコードごとの各単語 (N グラム) の出現回数をカウントし、そのカウントから特徴ベクトルを作成します。このチュートリアルでは、特徴ベクトルに単一の単語と後続の 2 つの単語の組み合わせが含まれるように、N グラムのサイズを 2 に設定します。
 
-To build a model for text data, you typically have to convert free-form text into numeric feature vectors. In this example, we use [Extract N-Gram Features from Text] (https://msdn.microsoft.com/library/azure/mt762916.aspx) module to transform the text data to such format. This module takes a column of whitespace-separated words and computes a dictionary of words, or N-grams of words, that appear in your dataset. Then, it counts how many times each word, or N-gram, appears in each record, and creates feature vectors from those counts. In this tutorial, we set N-gram size to 2, so our feature vectors include single words and combinations of two subsequent words.
+![N グラムの抽出](./media/machine-learning-text-analytics-module-tutorial/extract-ngrams.png)
 
-![Extract N-grams](./media/machine-learning-text-analytics-module-tutorial/extract-ngrams.png)
+N グラムのカウントに、TF*IDF (単語の出現頻度と逆文書頻度の積) の重み付けを適用します。この方法では、単一レコード内には頻出するがデータセット全体ではほとんど出現しない単語に重みが付けられます。他にも、バイナリ、TF、グラフによる重み付けを使用できます。
 
-We apply TF*IDF (Term Frequency Inverse Document Frequency) weighting to N-gram counts. This approach adds weight of words that appear frequently in a single record but are rare across the entire dataset. Other options include binary, TF, and graph weighing.
+一般的に、こうしたテキストの特徴は非常に高次元です。たとえば、コーパスに 100,000 個の一意の単語があるとすると、特徴空間は 100,000、あるいは N グラムが使われていればさらに多くの次元を持ちます。Extract N-Gram Features from Text (N グラム特徴の抽出) モジュールでは、次元を削減する各種オプションを使用できます。有意な予測値を得るために、短い単語や長い単語、また珍しすぎる単語や頻度が高すぎる単語を除外することもできます。このチュートリアルでは、登場するレコードの数が 5 個未満か 80% 超の N グラムを除外します。
 
-Such text features often have high dimensionality. For example, if your corpus has 100,000 unique words, your feature space would have 100,000 dimensions, or more if N-grams are used. The Extract N-Gram Features module gives you a set of options to reduce the dimensionality. You can choose to exclude words that are short or long, or too uncommon or too frequent to have significant predictive value. In this tutorial, we exclude N-grams that appear in fewer than 5 records or in more than 80% of records.
+特徴選択を使用して、予測のターゲットとの関連性が最も高い特徴だけを選択することもできます。ここでは、1000 個の特徴を選択するために、カイ 2 乗特徴選択を使用します。Extract N-Gram Features from Text (N グラム特徴の抽出) モジュールの右側の出力内容をクリックすると、選択された単語や N グラムのボキャブラリを表示できます
 
-Also, you can use feature selection to select only those features that are the most correlated with your prediction target. We use Chi-Squared feature selection to select 1000 features. You can view the vocabulary of selected words or N-grams by clicking the right output of Extract N-grams module.
+N グラム特徴抽出に代わる方法として、Feature Hashing (特徴ハッシュ) モジュールを利用できます。ただし、[特徴ハッシュ](https://msdn.microsoft.com/library/azure/dn906018.aspx)には、特徴選択機能や TF*IDF の重み付け機能は組み込まれていない点に注意してください。
 
-As an alternative approach to using Extract N-Gram Features, you can use Feature Hashing module. Note though that [Feature Hashing] (https://msdn.microsoft.com/library/azure/dn906018.aspx) does not have build-in feature selection capabilities, or TF*IDF weighing.
+## 手順 3: 分類または回帰モデルのトレーニング
 
-## <a name="step-3:-train-classification-or-regression-model"></a>Step 3: Train classification or regression model
+テキストが数値の特徴列に変換されました。データセットにはまだ前の段階からの文字列があるため、データセット内の列選択を使ってこれらを除外します。
 
-Now the text has been transformed to numeric feature columns. The dataset still contains string columns from previous stages, so we use Select Columns in Dataset to exclude them.
+その後、[2 クラスのロジスティック回帰](https://msdn.microsoft.com/library/azure/dn905994.aspx)を使ってターゲット、つまりレビュー スコアの高低を予測します。この時点で、テキスト分析の問題は、通常の分類問題に変換されています。Azure Machine Learning で使用できるツールを使って、モデルを改良できます。たとえば、実験の精度を確認するために異なる分類器を試したり、ハイパーパラメーター チューニングを使用して精度を向上させたりすることができます。
 
-We then use [Two-Class Logistic Regression] (https://msdn.microsoft.com/library/azure/dn905994.aspx) to predict our target: high or low review score. At this point, the text analytics problem has been transformed into a regular classification problem. You can use the tools available in Azure Machine Learning to improve the model. For example, you can experiment with different classifiers to find out how accurate results they give, or use hyperparameter tuning to improve the accuracy.
+![トレーニングとスコア付け](./media/machine-learning-text-analytics-module-tutorial/scoring-text.png)
 
-![Train and Score](./media/machine-learning-text-analytics-module-tutorial/scoring-text.png)
+## 手順 4: モデルのスコア付けと検証
 
-## <a name="step-4:-score-and-validate-the-model"></a>Step 4: Score and validate the model
+トレーニング済みのモデルを検証するにはどうすればよいでしょうか。 ここでは、テスト データセットに対してスコアを付けて、精度を評価します。ただし、モデルでは、トレーニング データセットから N グラムのボキャブラリとそれらの重みを学習しています。したがって、テスト データから特徴を抽出するときには、ボキャブラリを新しく作成するのではなく、これらのボキャブラリと重みを使用する必要があります。このため、実験のスコア付けブランチに Extract N-Gram Features (N グラム特徴の抽出モジュール) を追加して、トレーニング ブランチから出力ボキャブラリを接続し、ボキャブラリのモードを読み取り専用に設定します。また頻度による N グラムのフィルタリングを、最小値を 1 インスタンス、最大値を 100% に設定することで無効にし、特徴選択をオフにします。
 
-How would you validate the trained model? We score it against the test dataset and evaluate the accuracy. However, the model learned the vocabulary of N-grams and their weights from the training dataset. Therefore, we should use that vocabulary and those weights when extracting features from test data, as opposed to creating the vocabulary anew. Therefore, we add Extract N-Gram Features module to the scoring branch of the experiment, connect the output vocabulary from training branch, and set the vocabulary mode to read-only. We also disable the filtering of N-grams by frequency by setting the minimum to 1 instance and maximum to 100%, and turn off the feature selection.
+テスト データのテキスト列が数値の特徴列に変換された後で、トレーニング ブランチなどにある前の段階からの文字列を除外します。次に、Score Model (モデルのスコア付け) モジュールを使用して予測を行い、Evaluate Model (モデルの評価) モジュールを使用して精度を評価します。
 
-After the text column in test data has been transformed to numeric feature columns, we exclude the string columns from previous stages like in training branch. We then use Score Model module to make predictions and Evaluate Model module to evaluate the accuracy.
+## 手順 5: 運用環境へのモデルのデプロイ
 
-## <a name="step-5:-deploy-the-model-to-production"></a>Step 5: Deploy the model to production
+これで、モデルを運用環境にデプロイする準備がほぼ整いました。モデルは Web サービスとしてデプロイされると、自由形式のテキスト文字列を入力として受け取り、"高" または "低" の予測を返します。 学習した N グラム ボキャブラリを使用してテキストを特徴に変換し、トレーニング済みのロジスティック回帰モデルを使用してそれらの特徴から予測を行います。
 
-The model is almost ready to be deployed to production. When deployed as web service, it takes free-form text string as input, and return a prediction "high" or "low." It uses the learned N-gram vocabulary to transform the text to features, and trained logistic regression model to make a prediction from those features. 
+予測実験をセットアップするために、最初に N グラム ボキャブラリをデータセットとして保存し、実験のトレーニング ブランチからトレーニング済みのロジスティック回帰モデルを保存します。次に、[名前を付けて保存] で実験を保存し、予測実験の実験グラフを作成します。実験から Split Data (データの分割) モジュールとトレーニング ブランチを削除します。次に、以前に保存した N グラム ボキャブラリとモデルを、それぞれ Extract N-Gram Features (N グラム特徴の抽出) モジュールと Score Model (モデルのスコア付け) モジュールに接続します。Evaluate Model (モデルの評価) モジュールも削除します。
 
-To set up the predictive experiment, we first save the N-gram vocabulary as dataset, and the trained logistic regression model from the training branch of the experiment. Then, we save the experiment using "Save As" to create an experiment graph for predictive experiment. We remove the Split Data module and the training branch from the experiment. We then connect the previously saved N-gram vocabulary and model to Extract N-Gram Features and Score Model modules, respectively. We also remove the Evaluate Model module.
+ラベル列を削除するために、Select Columns in Dataset (データセット内の列の選択) モジュールを Preprocess Text (テキストの前処理) モジュールの前に挿入し、Score Model (モデルのスコア付け) モジュールの [Append score column to dataset (データセットにスコア列を追加)] オプションの選択を解除します。これにより、Web サービスでは予測対象のラベルが要求されず、応答で入力特徴がエコーされなくなります。
 
-We insert Select Columns in Dataset module before Preprocess Text module to remove the label column, and unselect "Append score column to dataset" option in Score Module. That way, the web service does not request the label it is trying to predict, and does not echo the input features in response.
+![予測実験](./media/machine-learning-text-analytics-module-tutorial/predictive-text.png)
 
-![Predictive Experiment](./media/machine-learning-text-analytics-module-tutorial/predictive-text.png)
+これで、Web サービスとして発行し、要求応答またはバッチ実行 API を使用して呼び出すことができる実験が完成しました。
 
-Now we have an experiment that can be published as a web service and called using request-response or batch execution APIs.
+## 次のステップ
 
-## <a name="next-steps"></a>Next Steps
+[MSDN ドキュメント](https://msdn.microsoft.com/library/azure/dn905886.aspx)でテキスト分析モジュールの詳細を確認してください。
 
-Learn about text analytics modules from [MSDN documentation] (https://msdn.microsoft.com/library/azure/dn905886.aspx).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

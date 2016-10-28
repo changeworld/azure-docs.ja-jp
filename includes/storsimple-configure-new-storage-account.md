@@ -1,24 +1,21 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-add-a-new-storage-account-in-storsimple-release-version-(ga)"></a>To add a new storage account in StorSimple Release version (GA)
+#### StorSimple リリース バージョン (GA) に新しいストレージ アカウントを追加するには
 
-1. On the StorSimple Manager service landing page, select your service and double-click it. This will take you to the **Quick Start** page. Select the **Configure** page.
+1. StorSimple Manager サービスのランディング ページでサービスを選択し、ダブルクリックします。この操作により、**[クイック スタート]** ページが表示されます。**[構成]** ページを選択します。
 
-2. Click **Add/edit storage account**.
+2. **[ストレージ アカウントの追加/編集]** をクリックします。
 
-3. In the **Add/Edit Storage Account** dialog box, do the following:
+3. **[ストレージ アカウントの追加/編集]** ダイアログ ボックスで、次の手順を実行します。
 
-  1. Click **Add new**.
-  2. Provide a name for your storage account.
-  3. Supply the primary **Access Key** for your Microsoft Azure storage account.
-  4. Select **Enable SSL Mode** to create a secure channel for network communication between your device and the cloud. Clear the **Enable SSL Mode** check box only if you are operating within a private cloud.
-  5. Click the check icon ![check icon](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png). You will be notified after the storage account is successfully created.
+  1. **[新規追加]** をクリックします。
+  2. ストレージ アカウントの名前を入力します。
+  3. Microsoft Azure ストレージ アカウントのプライマリ **アクセス キー**を入力します。
+  4. **[SSL モードを有効にする]** を選択して、デバイスとクラウド間のネットワーク通信用のセキュリティで保護されたチャネルを作成します。プライベート クラウド内で運用している場合にのみ、**[SSL モードを有効にする]** チェック ボックスをオフにします。
+  5. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-configure-new-storage-account/HCS_CheckIcon-include.png) をクリックします。ストレージ アカウントが正常に作成されると通知が表示されます。
 
-    ![Add storage account](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
+    ![ストレージ アカウントの追加](./media/storsimple-configure-new-storage-account/HCS_AddStorageAccount-include.png)
 
-4. The newly created storage account will be displayed on the **Configure** page under **Storage accounts**. Click **Save** to save the newly created storage account. Click **OK** when prompted for confirmation.
+4. 新しく作成されたストレージ アカウントは、**[構成]** ページの **[ストレージ アカウント]** に表示されます。**[保存]** をクリックして、新しく作成されたストレージ アカウントを保存します。確認を求められたら、**[OK]** をクリックします。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

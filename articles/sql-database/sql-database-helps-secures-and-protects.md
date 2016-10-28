@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Secures and Protects"
-   description="Learn how SQL Database helps secure and protect"
+   pageTitle="Azure SQL Database のセキュリティと保護"
+   description="SQL Database でセキュリティと保護を支援する方法"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -17,50 +17,42 @@
    ms.date="09/13/2016"
    ms.author="carlrab"/>
    
+# Azure SQL Database のセキュリティと保護
 
-# <a name="azure-sql-database-secures-and-protects"></a>Azure SQL Database Secures and Protects
+## アプリ データの安全とセキュリティを維持
 
-## <a name="keep-your-app’s-data-safe-and-secure"></a>Keep your app’s data safe and secure
-
-Azure SQL Database supports millions of mission-critical databases in the cloud&mdash;where they all benefit from high availability, security, compliance, and high performance. From the smallest startup to the largest enterprise, data security is increasingly top of mind for all businesses, and SQL Database supports everyone.
+Azure SQL Database は、数百万単位のミッションクリティカルなデータベースがクラウドに格納されるので、高可用性、セキュリティ、コンプライアンス、高パフォーマンスというすべての利点を活用できます。最小規模の新規企業から最大規模のエンタープライズまで、あらゆるビジネスでデータ セキュリティが最重要事項になっています。SQL Database はあらゆるビジネスに対応します。
 
 ![helps-secures-and-protects](./media/sql-database-helps-secures-and-protects/sql-database-helps-secures-and-protects.png)
 
-## <a name="we’ve-got-your-back"></a>We’ve got your back
+## 我々がサポートします
 
-You can only hope you don't need to access yesterday's backups or recover from a disaster. But if you find yourself in this situation, SQL Database is there to help. With 99.99% availability, automatic backups, Point-in-Time Restore, built-in Geo-Replication, and failover options, you'll rest easy knowing your app is safe and sound.
+誰でも、昨日のバックアップにアクセスしたり、災害から復旧したりする状況が起きないように、と願うものです。それでも、そのような状況になった場合は、SQL Database が役に立ちます。99.99% の可用性、自動バックアップ、ポイントインタイム リストア、組み込みの geo レプリケーション、フェールオーバー オプションが用意されているので、アプリが安全な状況にあると安心することができます。
 
-[Read the documentation](sql-database-business-continuity.md)
+[ドキュメントを参照する](sql-database-business-continuity.md)
 
-## <a name="the-largest-compliance-portfolio"></a>The largest compliance portfolio
+## 最大のコンプライアンス ポートフォリオ
 
-SQL Database has the largest compliance portfolio in the industry. So if you need HIPPA compliance or FERPA or even Singapore MTCS Level 3 don't worry&mdash;we got you covered.  
+SQL Database には、業界でも最大規模のコンプライアンス ポートフォリオがあります。そのため、HIPPA コンプライアンス、FERPA、さらにはシンガポールの MTCS レベル 3 が必要な場合でも対応できます。
 
-[Read the documentation](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
+[ドキュメントを参照する](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
 
-## <a name="layers-of-protection"></a>Layers of protection
+## 保護層
 
-SQL Database provides multiple layers of data protection. Your data is protected by encrypting data while at rest, in motion or in use, authenticating only authorized users against the database or application, and limiting user access to the appropriate subset of the data. Additionally, SQL Database provides continuous monitoring and auditing of activities to help detect potential threats and provide a record of critical events in case of a breach. These features are balanced by the ability to quickly implement features and mitigate security risk without compromising developer productivity or a customer’s experience.
+SQL Database には、複数層のデータ保護が用意されています。データの保管時、移動時、または使用時には暗号化し、データベースまたはアプリケーションに対する権限を持つユーザーのみを認証し、データの適切なサブセットに対してユーザー アクセスを制限することで、データは保護されています。また、SQL Database には、アクティビティの継続的な監視機能と監査機能があるため、脅威の可能性を検出し、違反の発生時に重大なイベントを記録することができます。これらの機能は、すばやく機能を実装し、セキュリティ リスクを軽減する機能とバランスが取られており、開発者の生産性や顧客の操作感を損ねることはありません。
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787593)
+[ドキュメントを参照する](http://go.microsoft.com/fwlink/?LinkID=787593)
 
-Go to the homepage to see what else SQL Database has to offer.
-[Check it out](https://azure.microsoft.com/services/sql-database/) 
+SQL Database の他の機能についてはホーム ページを[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Get a [free Azure subscription](https://azure.microsoft.com/get-started/) and [create your first Azure SQL Database](sql-database-get-started.md).
+[無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
  
-Review the [technical overview of SQL Database](sql-database-technical-overview.md).  
+[SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

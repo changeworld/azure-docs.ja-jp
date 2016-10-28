@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Autoscaling guidance | Microsoft Azure"
-   description="Guidance on how to autoscale to dynamically allocate resources required by an application."
+   pageTitle="自動スケール ガイダンス | Microsoft Azure"
+   description="自動スケールによってアプリケーションに必要なリソースを動的に割り当てる方法に関するガイダンス。"
    services=""
    documentationCenter="na"
    authors="dragon119"
@@ -17,103 +17,99 @@
    ms.date="07/13/2016"
    ms.author="masashin"/>
 
-
-# <a name="autoscaling-guidance"></a>Autoscaling guidance
+# 自動スケール ガイダンス
 
 [AZURE.INCLUDE [pnp-header](../includes/guidance-pnp-header-include.md)]
 
-## <a name="overview"></a>Overview
-Autoscaling is the process of dynamically allocating the resources required by an application to match performance requirements and satisfy service-level agreements (SLAs), while minimizing runtime costs. As the volume of work grows, an application may require additional resources to enable it to perform its tasks in a timely manner. As demand slackens, resources can be de-allocated to minimize costs, while still maintaining adequate performance and meeting SLAs.
-Autoscaling takes advantage of the elasticity of cloud-hosted environments while easing management overhead. It does so by reducing the need for an operator to continually monitor the performance of a system and make decisions about adding or removing resources.
->[AZURE.NOTE] Autoscaling applies to all of the resources used by an application, not just the compute resources. For example, if your system uses message queues to send and receive information, it could create additional queues as it scales.
+## 概要
+自動スケールとは、パフォーマンス要件を満たし、サービス レベル アグリーメント (SLA) に準拠しつつ、ランタイム コストを最小限に抑えられるように、アプリケーションに必要なリソースを動的に割り当てるプロセスです。作業の量が多くなると、アプリケーションで効率よく作業を実行できるようにするために、追加リソースが必要になる場合があります。需要が低くなれば、リソースの割り当てを解除してコストを最小限に抑えながら、十分なパフォーマンスを維持し、SLA に準拠できます。自動スケールは、クラウドでホストされている環境の弾力性を活用しながら、管理オーバーヘッドを削減します。これは、オペレーターがシステムのパフォーマンスを継続的に監視し、リソースの追加や削除に関して判断を行う必要性を軽減することで達成されます。
+<br\>
 
-## <a name="types-of-scaling"></a>Types of scaling
-Scaling typically takes one of the following two forms:
+>[AZURE.NOTE] 自動スケールは、コンピューティング リソースだけでなく、アプリケーションによって使用されるすべてのリソースに適用されます。たとえば、システムでメッセージ キューを使用して情報の送受信が行われている場合、そのスケール状況に合わせて追加のキューを作成できます。
 
-- **Vertical** (often referred to as _scaling up and down_). This form requires that you modify the hardware (expand or reduce its capacity and performance), or redeploy the solution using alternative hardware that has the appropriate capacity and performance. In a cloud environment, the hardware platform is typically a virtualized environment. Unless the original hardware was substantially overprovisioned, with the consequent upfront capital expense, vertically scaling up in this environment involves provisioning more powerful resources, and then moving the system onto these new resources. Vertical scaling is often a disruptive process that requires making the system temporarily unavailable while it is being redeployed. It may be possible to keep the original system running while the new hardware is provisioned and brought online, but there will likely be some interruption while the processing transitions from the old environment to the new one. It is uncommon to use autoscaling to implement a vertical scaling strategy.
-- **Horizontal** (often referred to as _scaling out and in_). This form requires deploying the solution on additional or fewer resources, which are typically commodity resources rather than high-powered systems. The solution can continue running without interruption while these resources are provisioned. When the provisioning process is complete, copies of the elements that comprise the solution can be deployed on these additional resources and made available. If demand drops, the additional resources can be reclaimed after the elements using them have been shut down cleanly. Many cloud-based systems, including Microsoft Azure, support automation of this form of scaling.
+## スケールのタイプ
+通常、スケーリングは次の 2 種類の形式のいずれかで行われます。
 
-## <a name="implement-an-autoscaling-strategy"></a>Implement an autoscaling strategy
-Implementing an autoscaling strategy typically involves the following components and processes:
+- **垂直方向** (_スケールアップまたはスケールダウン_と呼ばれることが多い)。この種類のスケーリングでは、ハードウェアを変更 (容量やパフォーマンスを拡大または縮小) したり、適切な容量やパフォーマンスを備えた代替ハードウェアを使用するソリューションを再デプロイしたりする必要があります。通常、クラウド環境ではハードウェア プラットフォームは仮想化環境です。結果として生じる事前の金銭的支出を加味して元のハードウェアが余裕を持って準備されていなければ、この環境で垂直方向のスケールアップを行うと、より強力なリソースをプロビジョニングしたり、新しいリソースにシステムを移動したりすることになります。垂直方向のスケーリングは、システムの再デプロイ中にシステムを一時的に使用不可にしなくてはならないため、中断を伴うプロセスになることがよくあります。新しいハードウェアがプロビジョニングされ、オンラインに設定される間、元のハードウェアを稼働し続けることは可能な場合もありますが、古い環境から新しい環境に移行している間に何らかの中断が生じる可能性はあります。自動スケールを使用して、垂直方向のスケーリング戦略を実装することはあまりありません。
+- **水平方向**(_スケールアウトまたはスケールイン_と呼ばれることが多い)。この種類のスケーリングでは、リソースの追加または削除に基づくソリューションをデプロイする必要があり、通常は高性能システムではなく、コモディティ リソースを使用します。これらのリソースをプロビジョニングしている間に、このソリューションは中断することなく継続的に実行できます。プロビジョニング プロセスが完了したら、ソリューションを構成している要素のコピーを追加リソースにデプロイして、使用できるようにすることができます。需要が下がれば、追加したリソースを使用している要素を正常にシャットダウンしてから、それらのリソースを再利用できます。Microsoft Azure を含む、多くのクラウド ベース システムでは、この形式の自動スケールがサポートされています。
 
-- Instrumentation and monitoring systems at the application, service, and infrastructure levels. These systems capture key metrics, such as response times, queue lengths, CPU utilization, and memory usage.
-- Decision-making logic that can evaluate the monitored scaling factors against predefined system thresholds or schedules, and make decisions regarding whether to scale or not.
-- Components that are responsible for carrying out tasks associated with scaling the system, such as provisioning or de-provisioning resources.
-- Testing, monitoring, and tuning of the autoscaling strategy to ensure that it functions as expected.
+## 自動スケール戦略の実装
+通常、自動スケール戦略を実装するには、次のコンポーネントやプロセスが必要になります。
 
-Most cloud-based environments, such as Azure, provide built-in autoscaling mechanisms that address common scenarios. If the environment or service you use doesn't provide the necessary automated scaling functionality, or if you have extreme autoscaling requirements beyond its capabilities, a custom implementation may be necessary. Use this customized implementation to collect operational and system metrics, analyze them to identify relevant data, and then scale resources accordingly.
+- アプリケーション、サービス、およびインフラストラクチャのレベルで運用する、インストルメンテーションおよび監視システム。これらのシステムは、応答時間、キューの長さ、CPU 使用率、メモリ使用量などの主要メトリックをキャプチャします。
+- 監視対象のスケーリング因子を、事前設定されたシステムしきい値やスケジュールに照らして評価し、スケールを実行するかどうかを決定できる意思決定ロジック。
+- リソースのプロビジョニングまたはプロビジョニング解除など、システムのスケールに関連するタスクを実行する役割を担うコンポーネント。
+- 自動スケール戦略を期待どおりに機能させるための、戦略のテスト、監視、および調整。
+
+Azure など、大部分のクラウドベース環境では、一般的な状況に対処するための組み込みの自動スケール メカニズムが用意されています。使用する環境またはサービスで必要な自動スケール機能が提供されていない場合、または提供されている機能を上回る非常に厳密な自動スケール要件に対処しなければならない場合は、カスタム実装が必要になることがあります。カスタマイズした実装を用いて、オペレーションとシステム メトリックを収集、分析して関連データを特定し、それに応じてリソースをスケールします。
 
 
-## <a name="configure-autoscaling-for-an-azure-solution"></a>Configure autoscaling for an Azure solution
-There are several options for configuring autoscaling for your Azure solutions:
+## Azure ソリューションの自動スケールの構成
+Azure ソリューションでは自動スケールを構成するためのオプションがいくつかあります。
 
-- **Azure Autoscale** supports the most common scaling scenarios based on a schedule and, optionally, triggered scaling operations based on runtime metrics (such as processor utilization, queue length, or built-in and custom counters). You can configure simple autoscaling policies for a solution quickly and easily by using the Azure portal. For more detailed control, you can make use of the [Azure Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) or the [Azure Resource Manager REST API](https://msdn.microsoft.com//library/azure/dn790568.aspx). The [Azure Monitoring Service Management Library](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring) and the [Microsoft Insights Library](https://www.nuget.org/packages/Microsoft.Azure.Insights/) (in preview) are SDKs that allow collecting metrics from different resources, and perform autoscaling by making use of the REST APIs. For resources where Azure Resource Manager support isn't available, or if you are using Azure Cloud Services, the Service Management REST API can be used for autoscaling. In all other cases, use Azure Resource Manager.
-- **A custom solution**, based on your instrumentation on the application, and management features of Azure, can be useful. For example, you could use Azure diagnostics or other methods of instrumentation in your application, along with custom code to continually monitor and export metrics of the application. You could have custom rules that work on these metrics, and make use of the Service Management or Resource Manager REST API's to trigger autoscaling. The metrics for triggering a scaling operation can be any built-in or custom counter, or other instrumentation you implement within the application. However, a custom solution is not simple to implement, and should be considered only if none of the previous approaches can fulfill your requirements. The [Autoscaling Application Block](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx) makes use of this approach.
-- **Third-party services**, such as [Paraleap AzureWatch](http://www.paraleap.com/AzureWatch), enable you to scale a solution based on schedules, service load and system performance indicators, custom rules, and combinations of different types of rules.
+- **Azure 自動スケール**は、スケジュールに基づいた最も一般的なスケーリング シナリオをサポートします。またオプションで、ランタイム メトリクス (プロセッサ使用率、キューの長さ、組み込みカウンター、カスタム カウンターなど) に基づいてトリガーされたスケーリング操作をサポートします。ソリューション用の単純な自動スケール ポリシーは、Azure ポータルを使用してすばやく簡単に構成できます。より細かい制御が必要な場合は、[Azure Service Management REST API](https://msdn.microsoft.com/library/azure/ee460799.aspx) または [Azure Resource Manager REST API](https://msdn.microsoft.com//library/azure/dn790568.aspx) をご利用ください。[Azure Monitoring Service 管理ライブラリ](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)と [Microsoft Insights ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Insights/) (プレビュー) は SDK です。REST API を利用して、さまざまなリソースからメトリックを収集し、自動スケールを実行することができます。Azure Resource Manager にリソースが対応していない場合や、Azure Cloud Services を使用している場合は、Service Management REST API を自動スケールに使用できます。それ以外のすべてのケースでは、Azure Resource Manager を使用してください。
+- 独自のインストルメンテーションをアプリケーションの基盤とした**カスタム ソリューション**と Azure の管理機能を活用することができます。たとえば、Azure 診断などのインストルメンテーション手法をアプリケーションで使用すると共に、カスタム コードでそのアプリケーションのメトリックを絶えず監視してエクスポートすることができます。これらのメトリックに基づくカスタム規則を作成すれば、Service Management または Resource Manager の REST API を利用して自動スケールをトリガーできます。スケーリング操作をトリガーするためのメトリックには、組み込みまたはカスタムのカウンター、あるいはアプリケーション内に実装するその他のツールを使用できます。ただし、カスタム ソリューションの実装は容易ではないため、前述の手法では要件を完全に満たすことができない場合にのみ検討してください。[Autoscaling Application Block](http://msdn.microsoft.com/library/hh680892%28v=pandp.50%29.aspx) には、この手法が使用されています。
+- [Paraleap AzureWatch](http://www.paraleap.com/AzureWatch) などの**サード パーティ サービス**を使用して、スケジュール、サービス負荷とシステム パフォーマンス インジケーター、カスタム ルール、およびさまざまなタイプのルールの組み合わせに基づいてソリューションをスケールできます。
 
-When choosing which autoscaling solution to adopt, consider the following points:
+採用する自動スケール ソリューションを選択する場合は、以下の点を考慮してください。
 
-- Use the built-in autoscaling features of the platform, if they can meet your requirements. If not, carefully consider whether you really do need more complex scaling features. Some examples of additional requirements may include more granularity of control, different ways to detect trigger events for scaling, scaling across subscriptions, and scaling other types of resources.
-- Consider if you can predict the load on the application with sufficient accuracy to depend only on scheduled autoscaling (adding and removing instances to meet anticipated peaks in demand). Where this isn't possible, use reactive autoscaling based on metrics collected at runtime, to allow the application to handle unpredictable changes in demand. Typically, you can combine these approaches. For example, create a strategy that adds resources such as compute, storage, and queues, based on a schedule of the times when you know the application is most busy. This helps to ensure that capacity is available when required, without the delay encountered when starting new instances. In addition, for each scheduled rule, define metrics that allow reactive autoscaling during that period to ensure that the application can handle sustained but unpredictable peaks in demand.
-- It's often difficult to understand the relationship between metrics and capacity requirements, especially when an application is initially deployed. Prefer to provision a little extra capacity at the beginning, and then monitor and tune the autoscaling rules to bring the capacity closer to the actual load.
+- プラットフォームに組み込まれた自動スケール機能で要件を満たすことができる場合は、それを使用します。満たせない場合は、より複雑なスケーリング機能が本当に必要かどうかを慎重に検討してください。追加要件には、より詳細な制御、スケーリングのトリガー イベントに対するさまざまな方法での検出、サブスクリプション間でのスケーリング、他の種類のリソースのスケーリングなどがあります。
+- スケジュールされた自動スケールしか使用しなくても (インスタンスを追加および削除して、予測される需要のピーク時に対応し) 十分な精度でアプリケーションの負荷を予測できるかどうかを検討します。これが不可能な場合は、実行時に収集されたメトリックに基づくリアクティブ自動スケールを使用して、予測不可能な需要の変化にアプリケーションが対応できるようにします。通常は、これらの手法を組み合わせることができます。たとえば、アプリケーションが最もビジー状態になることがわかっている時間のスケジュールに基づいて、コンピューティング、ストレージ、キューなどのリソースを追加する戦略を作成します。これは、新しいインスタンスの開始時に遅延を生じることなく、必要なときに容量を確実に使用できるようにするのに役立ちます。また、スケジュールされたルールごとに、その期間内にリアクティブ自動スケールを有効にし、持続的だが予測不可能な需要のピークをアプリケーションが処理できるようにするメトリックを定義します。
+- 特にアプリケーションが初めてデプロイされたときは、メトリックと容量要件の関係を理解しにくいことがよくあります。最初は容量を少量追加し、その後自動スケール ルールを監視および調整して、実際の負荷に容量を近づけることをお勧めします。
 
-### <a name="use-azure-autoscale"></a>Use Azure Autoscale
-Autoscale enables you to configure scale out and scale in options for a solution. Autoscale can automatically add and remove instances of Azure Cloud Services web and worker roles, Azure Mobile Services, and Web Apps feature in Azure App Service. It can also enable automatic scaling by starting and stopping instances of Azure Virtual Machines. An Azure autoscaling strategy includes two sets of factors:
+### Azure 自動スケールの使用
+自動スケールを使用して、ソリューションのスケールアウト オプションやスケールイン オプションを構成できます。自動スケールは、Azure Cloud Services の Web ロールと worker ロール、Azure Mobile Services、Azure App Service の Web Apps 機能の各インスタンスを自動で追加または削除します。また、Azure Virtual Machines のインスタンスを開始および停止することで、自動スケールを有効にすることもできます。Azure 自動スケール戦略には、次の 2 つの要素のセットが含まれます。
 
-- Schedule-based autoscaling that can ensure additional instances are available to coincide with an expected peak in usage, and can scale in once the peak time has passed. This enables you to ensure that you have sufficient instances already running, without waiting for the system to react to the load.
-- Metrics-based autoscaling that reacts to factors such as average CPU utilization over the last hour, or the backlog of messages that the solution is processing in an Azure storage or Azure Service Bus queue. This allows the application to react separately from the scheduled autoscaling rules to accommodate unplanned or unforeseen changes in demand.
+- スケジュール ベースの自動スケール。これにより、予想される使用量ピークに合わせて追加されたインスタンスを使用できるようになり、ピーク時間が過ぎるとスケールインできます。この機能によって、システムが負荷に対応するのを待たずに、十分なインスタンスを事前に実行させておくことができます。
+- メトリック ベースの自動スケール。これは、過去 1 時間の平均 CPU 使用率、または Azure Storage や Azure Service Bus のキューでソリューションが処理しているメッセージのバックログなどの要因に反応します。この機能によって、アプリケーションはスケジュールされた自動スケール ルールとは別個に反応し、計画されていない、または予期しない需要の変化に対処できます。
 
-Consider the following points when using Autoscale:
+自動スケールを使用するときは、次の点を考慮してください。
 
-- Your autoscaling strategy combines both scheduled and metrics-based scaling. You can specify both types of rules for a service.
-- You should configure the autoscaling rules, and then monitor the performance of your application over time. Use the results of this monitoring to adjust the way in which the system scales if necessary. However, keep in mind that autoscaling is not an instantaneous process. It takes time to react to a metric such as average CPU utilization exceeding (or falling below) a specified threshold.
-- Autoscaling rules that use a detection mechanism based on a measured trigger attribute (such as CPU usage or queue length) use an aggregated value over time, rather than instantaneous values, to trigger an autoscaling action. By default, the aggregate is an average of the values. This prevents the system from reacting too quickly, or causing rapid oscillation. It also allows time for new instances that are auto-started to settle into running mode, preventing additional autoscaling actions from occurring while the new instances are starting up. For Azure Cloud Services and Azure Virtual Machines, the default period for the aggregation is 45 minutes, so it can take up to this period of time for the metric to trigger autoscaling in response to spikes in demand. You can change the aggregation period by using the SDK, but be aware that periods of fewer than 25 minutes may cause unpredictable results (for more information, see [Auto Scaling Cloud Services on CPU Percentage with the Azure Monitoring Services Management Library](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)). For Web Apps, the averaging period is much shorter, allowing new instances to be available in about five minutes after a change to the average trigger measure.
-- If you configure autoscaling using the SDK rather than the web portal, you can specify a more detailed schedule during which the rules are active. You can also create your own metrics and use them with or without any of the existing ones in your autoscaling rules. For example, you may wish to use alternative counters, such as the number of requests per second or the average memory availability, or use custom counters that measure specific business processes.
-- When autoscaling Azure Virtual Machines, you must deploy a number of instances of the virtual machine that is equal to the maximum number you will allow autoscaling to start. These instances must be part of the same availability set. The Virtual Machines autoscaling mechanism does not create or delete instances of the virtual machine; instead, the autoscaling rules you configure will start and stop an appropriate number of these instances. For more information, see [Automatically scale an application running Web Roles, Worker Roles, or Virtual Machines](./cloud-services/cloud-services-how-to-scale.md).
-- If new instances cannot be started, perhaps because the maximum for a subscription has been reached or an error occurs during startup, the portal may show that an autoscaling operation succeeded. However, subsequent **ChangeDeploymentConfiguration** events displayed in the portal will show only that a service startup was requested, and there will be no event to indicate it was successfully completed.
-- You can use the web portal UI to link resources such as SQL Database instances and queues to a compute service instance. This allows you to more easily access the separate manual and automatic scaling configuration options for each of the linked resources. For more information, see [How to: Link a resource to a cloud service](cloud-services-how-to-manage.md#linkresources) and [How to Scale an Application](./cloud-services/cloud-services-how-to-scale.md).
-- When you configure multiple policies and rules, they could conflict with each other. Autoscale uses the following conflict resolution rules to ensure that there is always a sufficient number of instances running:
-  - Scale out operations always take precedence over scale in operations.
-  - When scale out operations conflict, the rule that initiates the largest increase in the number of instances takes precedence.
-  - When scale in operations conflict, the rule that initiates the smallest decrease in the number of instances takes precedence.
+- 自動スケール戦略では、スケジュールされたスケーリングとメトリックベース スケーリングの両方が組み合わされます。サービスに対して両方のタイプのルールを指定できます。
+- 自動スケール ルールを構成し、長期間アプリケーションのパフォーマンスを監視する必要があります。この監視結果を使用して、必要に応じてシステムをスケールする方法を調整します。ただし、自動スケールは即時に結果を得られるプロセスではありません。指定したしきい値を超過する (または下回る) 平均 CPU 使用率など、何らかのメトリックに反応するには一定の時間を要します。
+- 測定されたトリガー属性 (CPU 使用率やキューの長さなど) に基づく検出メカニズムを使用する自動スケール ルールでは、瞬間的な値ではなく、長期にわたって集計された値を使用して自動スケール アクションがトリガーされます。既定では、集計は値の平均になります。これにより、システムの反応が早すぎたり、急激な変動が生じたりすることが回避されます。また、自動的に開始された新しいインスタンスが実行モードになるまでの時間を確保し、新しいインスタンスの開始中に追加の自動スケール アクションが実行されないようにすることもできます。Azure Cloud Services や Azure Virtual Machines については、既定の集計期間は 45 分であるため、需要の急増に反応して自動スケールをトリガーするメトリックに、この長さまでの時間を設定できます。SDK を使用してこの集計期間を変更できますが、25 分未満に設定すると予期しない結果を招く可能性があります (詳細については、「[Auto Scaling Cloud Services on CPU Percentage with the Azure Monitoring Services Management Library (Azure Monitoring Services 管理ライブラリを使用した CPU 使用率に基づく Cloud Services の自動スケール)](http://rickrainey.com/2013/12/15/auto-scaling-cloud-services-on-cpu-percentage-with-the-windows-azure-monitoring-services-management-library/)」を参照してください)。Web Apps では、平均の期間はかなり短く、平均のトリガー測定への変更後、約 5 分間で新しいインスタンスを使用できるようになります。
+- この Web ポータルではなく、SDK を使用して自動スケールを構成する場合は、ルールが有効になる条件を定めた、より詳細なスケジュールを指定できます。独自のメトリックを作成し、自動スケール ルールで既存のメトリックと共に使用したり、単独で使用したりすることもできます。たとえば、1 秒あたりの要求数や使用可能なメモリ平均量などの代替カウンターを使用することも、特定のビジネス プロセスを測定するカスタム カウンターを使用することもできます。
+- Azure Virtual Machines を自動スケールするときは、自動スケールの開始を許可する最大数と同じ数の仮想マシンのインスタンスを多数デプロイする必要があります。これらのインスタンスは、同じ可用性セットの一部にする必要があります。Virtual Machines の自動スケール メカニズムでは、仮想マシンのインスタンスの作成または削除は行われません。代わりに、構成する自動スケール ルールによって、適切な数のインスランスが開始および停止されます。詳細については、「[Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定](./cloud-services/cloud-services-how-to-scale.md)」を参照してください。
+- サブスクリプションの最大値に達したか、起動中にエラーが発生したため新しいインスタンスを起動できない場合に、ポータルに自動スケール操作が成功したと表示されることがあります。ただし、ポータルに後で表示される **ChangeDeploymentConfiguration** イベントには、サービスの開始が要求されたことのみが表示され、それが正常に完了されたことを示すイベントは表示されません。
+- Web ポータルの UI を使用して、SQL Database のインスタンスやキューなどのリソースをコンピューティング サービス インスタンスにリンクできます。これにより、リンクされたリソースごとに、より簡単に別個の手動および自動スケーリング構成オプションにアクセスできます。詳細については、「[方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#linkresources)」と「[アプリケーションの規模の自動設定方法](./cloud-services/cloud-services-how-to-scale.md)」を参照してください。
+- 複数のポリシーとルールを構成するときは、それらが互いに競合する可能性があります。自動スケールでは次の競合の解決ルールに従って、常に十分な数のインスタンスが実行されます。
+  - スケールアウト操作は、スケールイン操作よりも常に優先されます。
+  - スケールアウト操作が競合した場合は、インスタンス数を最も増加させるルールが優先されます。
+  - スケールイン操作が競合した場合は、インスタンス数を最も減少させるルールが優先されます。
 
 <a name="the-azure-monitoring-services-management-library"></a>
 
-## <a name="application-design-considerations-for-implementing-autoscaling"></a>Application design considerations for implementing autoscaling
-Autoscaling isn't an instant solution. Simply adding resources to a system or running more instances of a process doesn't guarantee that the performance of the system will improve. Consider the following points when designing an autoscaling strategy:
+## アプリケーションの設計における自動スケール実装の考慮事項
+自動スケールは単純なソリューションではありません。単にリソースをシステムに追加したり、実行するプロセスのインスタンスを増やしたりするだけで、システムのパフォーマンスが確実に向上するわけではありません。自動スケール戦略を作成するときには、次の点を考慮してください。
 
-- The system must be designed to be horizontally scalable. Avoid making assumptions about instance affinity; do not design solutions that require that the code is always running in a specific instance of a process. When scaling a cloud service or web site horizontally, don't assume that a series of requests from the same source will always be routed to the same instance. For the same reason, design services to be stateless to avoid requiring a series of requests from an application to always be routed to the same instance of a service. When designing a service that reads messages from a queue and processes them, don't make any assumptions about which instance of the service handles a specific message. Autoscaling could start additional instances of a service as the queue length grows. The [Competing Consumers Pattern](http://msdn.microsoft.com/library/dn568101.aspx) describes how to handle this scenario.
-- If the solution implements a long-running task, design this task to support both scaling out and scaling in. Without due care, such a task could prevent an instance of a process from being shut down cleanly when the system scales in, or it could lose data if the process is forcibly terminated. Ideally, refactor a long-running task and break up the processing that it performs into smaller, discrete chunks. The [Pipes and Filters Pattern](http://msdn.microsoft.com/library/dn568100.aspx) provides an example of how you can achieve this.
-- Alternatively, you can implement a checkpoint mechanism that records state information about the task at regular intervals, and save this state in durable storage that can be accessed by any instance of the process running the task. In this way, if the process is shutdown, the work that it was performing can be resumed from the last checkpoint by using another instance.
-- When background tasks run on separate compute instances, such as in worker roles of a cloud services hosted application, you may need to scale different parts of the application using different scaling policies. For example, you may need to deploy additional user interface (UI) compute instances without increasing the number of background compute instances, or the opposite of this. If you offer different levels of service (such as basic and premium service packages), you may need to scale out the compute resources for premium service packages more aggressively than those for basic service packages in order to meet SLAs.
-- Consider using the length of the queue over which UI and background compute instances communicate as a criterion for your autoscaling strategy. This is the best indicator of an imbalance or difference between the current load and the processing capacity of the background task.
-- If you base your autoscaling strategy on counters that measure business processes, such as the number of orders placed per hour or the average execution time of a complex transaction, ensure that you fully understand the relationship between the results from these types of counters and the actual compute capacity requirements. It may be necessary to scale more than one component or compute unit in response to changes in business process counters.  
-- To prevent a system from attempting to scale out excessively, and to avoid the costs associated with running many thousands of instances, consider limiting the maximum number of instances that can be automatically added. Most autoscaling mechanisms allow you to specify the minimum and maximum number of instances for a rule. In addition, consider gracefully degrading the functionality that the system provides if the maximum number of instances have been deployed, and the system is still overloaded.
-- Keep in mind that autoscaling might not be the most appropriate mechanism to handle a sudden burst in workload. It takes time to provision and start new instances of a service or add resources to a system, and the peak demand may have passed by the time these additional resources have been made available. In this scenario, it may be better to throttle the service. For more information, see the [Throttling Pattern](http://msdn.microsoft.com/library/dn589798.aspx).
-- Conversely, if you do need the capacity to process all requests when the volume fluctuates rapidly, and cost isn't a major contributing factor, consider using an aggressive autoscaling strategy that starts additional instances more quickly. You can also use a scheduled policy that starts a sufficient number of instances to meet the maximum load before that load is expected.
-- The autoscaling mechanism should monitor the autoscaling process, and log the details of each autoscaling event (what triggered it, what resources were added or removed, and when). If you create a custom autoscaling mechanism, ensure that it incorporates this capability. Analyze the information to help measure the effectiveness of the autoscaling strategy, and tune it if necessary. You can tune both in the short term, as the usage patterns become more obvious, and over the long term, as the business expands or the requirements of the application evolve. If an application reaches the upper limit defined for autoscaling, the mechanism might also alert an operator who could manually start additional resources if necessary. Note that, under these circumstances, the operator may also be responsible for manually removing these resources after the workload eases.
+- システムは、水平方向にスケールできるように設計されている必要があります。インスタンスのアフィニティに関して仮説を立てることは避けます。あるコードが常にプロセスの特定のインスタンスで実行されている必要があるようなソリューションを作成しないでください。クラウド サービスまたは Web サイトを水平方向にスケールする場合、同じソースからの一連の要求が常に同じインスタンスにルーティングされると想定しないでください。同様の理由で、アプリケーションからの一連の要求が常にサービスの同じインスタンスにルーティングされなくても済むように、サービスはステートレスになるように設計します。キューからメッセージを読み取り、それらを処理するサービスを設計する場合、サービスのどのインスタンスが特定のメッセージを処理するかを事前に想定しないでください。キューの長さが長くなると、自動スケールによってサービスの追加インスタンスが開始される可能性があるためです。「[Competing Consumers pattern (競合コンシューマー パターン)](http://msdn.microsoft.com/library/dn568101.aspx)」には、この状況に対処する方法が記載されています。
+- ソリューションで長期タスクを実装する場合、このタスクを作成して、スケールアウトとスケールインの両方がサポートされるようにします。しかるべき注意を払わなければ、そのようなタスクにより、システムをスケールインするときにプロセスのインスタンスが正常にシャットダウンされなかったり、プロセスが強制的に終了された場合にデータが失われたりする可能性があります。可能であれば、長期タスクをリファクタリングし、プロセスを分割して、より小さい、個別のまとまりで実行されるようにします。「[Pipes and Filters pattern (パイプとフィルター パターン)](http://msdn.microsoft.com/library/dn568100.aspx)」には、これを行う方法の例が記載されています。
+- あるいは、一定の間隔でタスクの状態に関する情報を記録するチェックポイント メカニズムを使用し、タスクを実行しているプロセスのすべてのインスタンスがアクセスできる永続的ストレージにその状態を保存することもできます。このようにすることで、プロセスがシャットダウンされても、別のインスタンスを使用して、そのプロセスによって実行されていた作業を最後のチェックポイントから再開できます。
+- クラウド サービスでホストされているアプリケーションの worker ロールなど、別個のコンピューティング インスタンスでバックグラウンド タスクが実行されている場合、別のスケーリング ポリシーを使用してアプリケーションのさまざまな部分をスケールする必要が生じることがあります。たとえば、バックグラウンド コンピューティング インスタンスの数を増やさずに、ユーザーインターフェイス (UI) コンピューティング インスタンスをさらにデプロイしたり、その反対の処理を行ったりしなくてはならない場合があります。異なるレベルのサービス (Basic、および Premium サービス パッケージなど) を提供する場合、SLA に準拠するために、Basic サービス パッケージのコンピューティング リソースよりも、Premium サービス パッケージのコンピューティング リソースの方をより積極的にスケールアウトする必要が生じる可能性があります。
+- 自動スケール戦略の基準として、UI とバックグラウンド コンピューティング インスタンスが通信に使用するキューの長さを使用することを検討してください。これは、バックグラウンド タスクの現在の負荷と処理能力の間の不均衡または差異を最も明確に示す指標です。
+- 1 時間当たりに行われた命令数や複雑なトランザクションの平均実行時間など、ビジネス プロセスを測定するカウンターに基づいて自動スケール戦略を作成する場合は、そのようなタイプのカウンターから得られる結果と実際のコンピューティング能力の要件の関係を完全に理解してください。ビジネス プロセス カウンターの変更に応じて、複数のコンポーネントまたはコンピューティング ユニットをスケールする必要が生じる場合があります。
+- システムによって過度なスケールアウトが試行されたり、多数のインスタンス実行に関連するコストが生じたりしないようにするために、自動的に追加できるインスタンスの最大数を制限することを検討してください。大部分の自動スケール メカニズムでは、任意のルールに基づいてインスタンスの最小数と最大数を指定できます。また、インスタンスの最大数を設定しても、システムが依然としてオーバーロードの状態である場合には、システムによって提供される機能を適度に低下させることを検討してください。
+- 自動スケールは、ワークロードの急激な増加を処理する最も適切なメカニズムではない場合もあることに留意してください。サービスの新しいインスタンスをプロビジョニングして開始したり、リソースをシステムに追加したりする作業は時間を要します。また、追加したそれらのリソースが使用できるようになるまでに、ピーク需要が過ぎてしまう可能性もあります。このようなときは、サービスを調整したほうがよい場合があります。詳細については、「[Throttling pattern (調整パターン)](http://msdn.microsoft.com/library/dn589798.aspx)」を参照してください。
+- 逆に、ボリュームが急激に変動する場合にすべての要求を処理する容量が必要であり、コストが主な検討要因ではない場合は、追加インスタンスをより迅速に開始する積極的な自動スケール戦略の使用を検討してください。また、負荷が予見される前に、十分な数のインスタンスを開始して最大負荷に対応するようにスケジュール設定されたポリシーを使用する方法もあります。
+- 自動スケール メカニズムでは、自動スケール プロセスを監視し、各自動スケール イベントの詳細 (イベントがトリガーされた理由、追加または削除されたリソース、それらの日時) を記録する必要があります。カスタムの自動スケール メカニズムを作成する場合は、この機能が組み込まれていることを確認してください。情報を分析して、自動スケール戦略の効果を測定し、必要に応じて調整します。使用パターンがより明確な場合は短期間の調整を行い、ビジネスが拡大したり、アプリケーションの要件が増加したりする場合は長期間の調整を行うことができます。アプリケーションが自動スケールの定義された上限に到達すると、このメカニズムにより、必要に応じて追加リソースを手動で開始できる操作者にアラートが出される可能性もあります。このような状況では、ワークロードが軽減された後、操作者はそれらのリソースを手動で削除しなくてはならなくなる場合もあることに留意してください。
 
-## <a name="related-patterns-and-guidance"></a>Related patterns and guidance
-The following patterns and guidance may also be relevant to your scenario when implementing autoscaling:
+## 関連のあるパターンとガイダンス
+自動スケールを実装する場合、次のパターンとガイダンスも関連する可能性があります。
 
-- [Throttling Pattern](http://msdn.microsoft.com/library/dn589798.aspx). This pattern describes how an application can continue to function and meet SLAs when an increase in demand places an extreme load on resources. Throttling can be used with autoscaling to prevent a system from being overwhelmed while the system scales out.
-- [Competing Consumers Pattern](http://msdn.microsoft.com/library/dn568101.aspx). This pattern describes how to implement a pool of service instances that can handle messages from any application instance. Autoscaling can be used to start and stop service instances to match the anticipated workload. This approach enables a system to process multiple messages concurrently to optimize throughput, improve scalability and availability, and balance the workload.
-- [Instrumentation and Telemetry Guidance](http://msdn.microsoft.com/library/dn589775.aspx). Instrumentation and telemetry are vital for gathering the information that can drive the autoscaling process.
+- [調整パターン](http://msdn.microsoft.com/library/dn589798.aspx)。このパターンは、需要の増加によってリソースに極端な負荷がかけられた場合に、アプリケーションがどのようにして継続的に機能し、SLA に準拠できるかを示します。自動スケールとともに調整を使用して、システムがスケールアウトしている間にシステムに過剰な負荷が掛からないようにすることができます。
+- [競合コンシューマー パターン](http://msdn.microsoft.com/library/dn568101.aspx)。このパターンは、任意のアプリケーション インスタンスからのメッセージを処理できるサービス インスタンスのプールを実装する方法を示します。自動スケールを使用して、予測されるワークロードに対処できるように、サービス インスタンスを開始および停止できます。この手法を使用することで、システムは複数のメッセージを同時に処理し、スループットを最適化し、拡張性と可用性を向上させ、ワークロードのバランスを取ることができます。
+- [Instrumentation and Telemetry Guidance (インストルメンテーションと製品利用統計情報のガイダンス)](http://msdn.microsoft.com/library/dn589775.aspx)。インストルメンテーションと製品利用統計情報は、自動スケール プロセスを促進できる情報を収集するために不可欠です。
 
-## <a name="more-information"></a>More information
-- [How to Scale an Application](./cloud-services/cloud-services-how-to-scale.md)
-- [Automatically scale an application running Web Roles, Worker Roles, or Virtual Machines](cloud-services-how-to-manage.md#linkresources)
-- [How to: Link a resource to a cloud service](cloud-services-how-to-manage.md#linkresources)
-- [Scale linked resources](./cloud-services/cloud-services-how-to-scale.md#scale-link-resources)
-- [Azure Monitoring Services Management Library](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)
-- [Azure Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx)
-- [Azure Resource Manager REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx)
-- [Microsoft Insights library](https://www.nuget.org/packages/Microsoft.Azure.Insights/)
-- [Operations on Autoscaling](http://msdn.microsoft.com/library/azure/dn510374.aspx)
-- [Microsoft.WindowsAzure.Management.Monitoring.Autoscale Namespace](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
+## 詳細
+- [アプリケーションの規模の設定方法](./cloud-services/cloud-services-how-to-scale.md)
+- [Web ロール、ワーカー ロール、または仮想マシンを実行しているアプリケーションの規模の自動設定](cloud-services-how-to-manage.md#linkresources)
+- [方法: クラウド サービスに対するリソースのリンク](cloud-services-how-to-manage.md#linkresources)
+- [リンク済みリソースの規模の設定](./cloud-services/cloud-services-how-to-scale.md#scale-link-resources)
+- [Microsoft Azure Monitoring Services... 4.1.0](http://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring)
+- [サービス管理 REST API リファレンス](http://msdn.microsoft.com/library/azure/ee460799.aspx)
+- [Azure リソース マネージャー REST API](https://msdn.microsoft.com/library/azure/dn790568.aspx)
+- [Microsoft Insights ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.Insights/)
+- [自動スケールに対する操作](http://msdn.microsoft.com/library/azure/dn510374.aspx)
+- [Microsoft.WindowsAzure.Management.Monitoring.Autoscale 名前空間](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.management.monitoring.autoscale.aspx)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

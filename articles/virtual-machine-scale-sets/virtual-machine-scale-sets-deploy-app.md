@@ -1,65 +1,60 @@
 <properties
-    pageTitle="Deploy an App on Virtual Machine Scale Sets| Microsoft Azure"
-    description="Deploy an app on Virtual Machine Scale Sets"
-    services="virtual-machine-scale-sets"
-    documentationCenter=""
-    authors="gbowerman"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="仮想マシン スケール セットへのアプリケーションのデプロイ| Microsoft Azure"
+	description="仮想マシン スケール セットへのアプリケーションのデプロイ"
+	services="virtual-machine-scale-sets"
+	documentationCenter=""
+	authors="gbowerman"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machine-scale-sets"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/26/2016"
-    ms.author="guybo"/>
+	ms.service="virtual-machine-scale-sets"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2016"
+	ms.author="guybo"/>
 
+# 仮想マシン スケール セットへのアプリケーションのデプロイ
 
-# <a name="deploy-an-app-on-virtual-machine-scale-sets"></a>Deploy an App on Virtual Machine Scale Sets
+VM スケール セットで実行されているアプリケーションは、通常、次の 3 つのいずれかの方法でデプロイされます。
 
-An application running on a VM Scale Set is typically deployed in one of three ways:
+- デプロイするときにプラットフォーム イメージに新しいソフトウェアをインストールする。このコンテキストでのプラットフォーム イメージは、Ubuntu 16.04、Windows Server 2012 R2 など、Azure Marketplace からのオペレーティング システム イメージです。
 
-- Installing new software on a platform image at deployment time. A platform image in this context is an operating system image from the Azure Marketplace, like Ubuntu 16.04, Windows Server 2012 R2, etc.
+新しいソフトウェアをプラットフォーム イメージにインストールするには、[VM 拡張機能](../virtual-machines/virtual-machines-windows-extensions-features.md)を使用します。VM 拡張機能は、VM をデプロイするときに実行されるソフトウェアです。カスタム スクリプト拡張機能を使用すると、デプロイ時に好きなコードを実行できます。[こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale)の Azure Resource Manager テンプレートの例には、2 つの VM 拡張機能が用意されています。1 つは Apache や PHP をインストールするための Linux カスタム スクリプト拡張機能、もう 1 つは Azure 自動スケールで使用されるパフォーマンス データを出力する診断拡張機能です。
 
-You can install new software on a platform image using a [VM Extension](../virtual-machines/virtual-machines-windows-extensions-features.md). A VM extension is software that runs when a VM is deployed. You can run any code you like at deployment time using a custom script extension. [Here](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) is an example Azure Resource Manager Template with two VM extensions: a Linux Custom Script Extension to install Apache and PHP, and a Diagnostic Extension to emit performance data used by Azure Autoscale.
+このアプローチのメリットは、アプリケーション コードと OS の間に分離レベルがあり、アプリケーションを個別に管理できる点です。もちろん、これは動的なパーツが多くなることを意味しており、ダウンロードして構成するスクリプトに対する動的パーツが多いと、VM デプロイに時間がかかる可能性があります。
 
-An advantage of this approach is you have a level of separation between your application code and the OS, and can maintain your application separately. Of course that means there are also more moving parts, and VM deployment time could be longer if there is a lot for the script to download and configure.
+**カスタム スクリプト拡張機能コマンドで、パスワードなどの機密情報を渡す場合は、必ずカスタム スクリプト拡張機能の `protectedSettings` 属性で `commandToExecute` を指定してください。`settings` 属性ではありません。**
 
-**If you pass sensitive information in your Custom Script Extension command (such as a password), be sure to specify the `commandToExecute` in the `protectedSettings` attribute of the Custom Script Extension instead of the `settings` attribute.**
+- 1 つの VHD で OS とアプリケーションの両方を含むカスタム VM イメージを作成する。この場合、スケール設定は、ご自身で作成したイメージからコピーされた一連の VM で構成されており、これを管理する必要があります。このアプローチでは、VM をデプロイするときに追加の構成が不要です。ただし、VM スケール セット `2016-03-30` 以前のバージョンでは、そのスケール セットの VM に対する OS ディスクが 1 つのストレージ アカウントに制限されます。このため、スケール セットでは最大 40 VM しか使用できません。一方、プラットフォーム イメージにおけるスケール セットあたりの制限は 100 VM です。詳細については、[スケール セットの設計の概要](./virtual-machine-scale-sets-design-overview.md)に関するページをご覧ください。
 
-- Create a custom VM image that includes both the OS and the application in a single VHD. Here the scale set consists of a set of VMs copied from an image created by you, which you have to maintain. This approach requires no extra configuration at VM deployment time. However, in the `2016-03-30` version of VM Scale Sets (and earlier versions), the OS disks for the VMs in the scale set are limited to a single storage account. Thus, you can have a maximum of 40 VMs in a scale set, as opposed to the 100 VM per scale set limit with platform images. See [Scale Set Design Overview](./virtual-machine-scale-sets-design-overview.md) for more details.
+- 基本的にはコンテナー ホストであるプラットフォームまたはカスタム イメージをデプロイし、アプリケーションを、オーケストレーターまたは構成管理ツールで管理する 1 つ以上のコンテナーとしてインストールする。このアプローチで便利なのは、アプリケーション レイヤーからクラウド インフラストラクチャを抽象化し、切り離して管理できる点です。
 
-- Deploy a platform or a custom image which is basically a container host, and install your application as one or more containers that you manage with an orchestrator or configuration management tool. The nice thing about this approach is that you have abstracted your cloud infrastructure from the application layer and can maintain them separately.
+## VM スケール セットがスケール アウトすると、どうなりますか。
 
-## <a name="what-happens-when-a-vm-scale-set-scales-out?"></a>What happens when a VM Scale Set scales out?
+容量を増やすことで 1 つ以上の VM をスケール セットに追加すると、手動または自動スケールのどちらを使用した場合でも、アプリケーションは自動的にインストールされます。たとえば、スケール セットで拡張機能が定義されていると、その拡張機能は、新しい VM が作成されるたびに実行されます。スケール セットがカスタム イメージに基づいている場合は、新しい VM すべてがソース カスタム イメージのコピーです。スケール セット VM がコンテナー ホストの場合は、カスタム スクリプト拡張機能にコンテナーを読み込むためのスタートアップ コードが用意されている可能性があります。また、拡張機能によって、クラスター オーケストレーター (Azure Container Service など) に登録するエージェントがインストールされる場合もあります。
 
-When you add one or more VMs to a scale set by increasing the capacity – whether manually or through autoscale – the application is automatically installed. For example if the scale set has extensions defined, they run on a new VM each time it is created. If the scale set is based on a custom image, any new VM is a copy of the source custom image. If the scale set VMs are container hosts, then you might have startup code to load the containers in a Custom Script Extension, or an extension might install an agent that registers with a cluster orchestrator (such as Azure Container Service).
+## VM スケール セットではどのようにアプリケーション更新プログラムを管理しますか。
 
-## <a name="how-do-you-manage-application-updates-in-vm-scale-sets?"></a>How do you manage application updates in VM Scale Sets?
+VM スケール セットのアプリケーション更新プログラムでは、前述の 3 つのアプリケーション デプロイ方法から 3 つ方法でアプローチして管理できます。
 
-For application updates in VM Scale Sets, three main approaches follow from the three preceding application deployment methods:
+* VM 拡張機能を更新する。VM スケール セットに対して定義されている VM 拡張機能はすべて、新しい VM をデプロイする、既存の VM を再イメージ化する、または VM 拡張機能を更新するたびに実行されます。アプリケーションを更新する必要がある場合は、拡張機能を使用してアプリケーションを直接更新する手法が有効です。この場合、拡張機能の定義を更新するだけですみます。これを簡単に行う 1 つの方法は、新しいソフトウェアを指定する fileUris を変更することです。
 
-* Updating with VM extensions. Any VM extensions that are defined for a VM Scale Set are executed each time a new VM is deployed, an existing VM is reimaged, or a VM extension is updated. If you need to update your application, directly updating an application through extensions is a viable approach – you simply update the extension definition. One simple way to do so is by changing the fileUris to point to the new software.
+* 変更できないカスタム イメージ アプローチ。アプリケーション (またはアプリケーション コンポーネント) を VM イメージに組み込むと、信頼性の高いパイプラインを構築して、イメージのビルド、テスト、およびデプロイを自動化することに専念できます。ステージングされたスケール セットを、迅速かつ容易に本番環境にスワップできるようにアーキテクチャを設計することができます。このアプローチの典型的な例が、[Azure Spinnaker ドライバーの動作](https://github.com/spinnaker/deck/tree/master/app/scripts/modules/azure) - [http://www.spinnaker.io/](http://www.spinnaker.io/) です。
 
-* The immutable custom image approach. When you bake the application (or app components) into a VM image you can focus on building a reliable pipeline to automate build, test, and deployment of the images. You can design your architecture to facilitate rapid swapping of a staged scale set into production. A good example of this approach is the [Azure Spinnaker driver work](https://github.com/spinnaker/deck/tree/master/app/scripts/modules/azure) - [http://www.spinnaker.io/](http://www.spinnaker.io/).
+Packer および Terraform Azure でも Azure Resource Manager がサポートされているため、画像を "コードとして" 定義し、Azure でビルドしてから、スケール セットで VHD を使用することもできます。ただし、Marketplace イメージでは、これが問題になることがあります。Marketplace からはビットを直接操作しないため、拡張機能/カスタム スクリプトがより重要になります。
 
-Packer and Terraform also support Azure Resource Manager, so you can also define your images “as code” and build them in Azure, then use the VHD in your scale set. However, doing so would become problematic for Marketplace images, where extensions/custom scripts become more important since you don’t directly manipulate bits from Marketplace.
+* コンテナーを更新する。たとえば、アプリケーションおよびアプリケーション コンポーネントをコンテナーにカプセル化することで、アプリケーションのライフサイクル管理を、クラウド インフラストラクチャの上のレベルに抽象化し、そのコンテナーを、Chif/Puppet などのコンテナーのオーケストレーターおよび構成マネージャーで管理します。
 
-* Update containers. Abstract the application lifecycle management to a level above the cloud infrastructure, for example by encapsulating applications, and app components into containers and manage these containers through container orchestrators and configuration managers like Chef/Puppet.
+スケール セット VM はコンテナーの安定したサブストレートとなり、セキュリティと OS 関連の更新プログラムも稀にしか必要になりません。前に説明したように、このアプローチを採用し、それに基づいてサービスを構築している典型的な例が Azure Container Service です。
 
-The scale set VMs then become a stable substrate for the containers and only require occasional security and OS-related updates. As mentioned, the Azure Container Service is a good example of taking this approach and building a service around it.
+## OS の更新プログラムはどのように更新ドメインに展開するのでしょうか。
 
-## <a name="how-do-you-roll-out-an-os-update-across-update-domains?"></a>How do you roll out an OS update across update domains?
+VM スケール セットを実行しながら、OS イメージを更新する必要があるとします。これを行う 1 つの方法が、VM イメージを 1 つの VM ごとに更新することです。それには、PowerShell または Azure CLI を使用します。VM スケール セット モデル (その構成の定義方法) を更新して、個別の VM で "手動アップグレード" 呼び出しを発行するコマンドも別にあります。
 
-Suppose you want to update your OS image while keeping the VM Scale Set running. One way to do so is to update the VM images one VM at a time. You can do so with PowerShell or Azure CLI. There are separate commands to update the VM Scale Set model (how its configuration is defined), and to issue “manual upgrade” calls on individual VMs.
+[こちら](https://github.com/gbowerman/vmsstools)の Python スクリプトの例では、VM スケール セットを 1 つの更新ドメインごとに更新するプロセスを自動化しています (注: これは堅牢な運用対応ソリューションというよりも、概念実証です。エラー チェックなどを追加することをお勧めします)。
 
-[Here](https://github.com/gbowerman/vmsstools) is an example Python script that automates the process of updating a VM Scale Set one update domain at a time. (Caveat: it’s more of a proof of concept than a hardened production-ready solution – you might want to add some error checking etc.).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

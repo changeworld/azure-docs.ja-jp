@@ -1,105 +1,100 @@
 <properties
-    pageTitle="Service limits in Azure Search | Microsoft Azure"
-    description="Service limits used for capacity planning and maximum limits on requests and reponses for Azure Search."
-    services="search"
-    documentationCenter=""
-    authors="HeidiSteen"
-    manager="jhubbard"
-    editor=""
+	pageTitle="Azure Search サービスの制限 | Microsoft Azure"
+	description="容量計画で使用されるサービス上限と、Azure Search の要求および応答の上限。"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="jhubbard"
+	editor=""
     tags="azure-portal"/>
 
 <tags
-    ms.service="search"
-    ms.devlang="NA"
-    ms.workload="search"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.date="10/17/2016"
-    ms.author="heidist"/>
+	ms.service="search"
+	ms.devlang="NA"
+	ms.workload="search"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.date="08/03/2016"
+	ms.author="heidist"/>
 
+# Azure Search サービスの制限
 
-# <a name="service-limits-in-azure-search"></a>Service limits in Azure Search
+インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、Azure Search を **Free**、**Basic**、または **Standard** の価格レベルのいずれかで追加するかによって異なります。
 
-Maximum limits on storage, workloads, and quantities of indexes, documents, and other objects depend on whether you add Azure Search at a **Free**, **Basic**, or **Standard** pricing tier.
+- **Free** は、Azure サブスクリプションに付属しているマルチテナント共有サービスです。これは、サブスクライバーであれば専用リソースにサインアップする前にサービスを体験できる、追加コストなしのオプションです。
+- **Basic** は、小規模の運用環境のワークロード専用のコンピューティング リソースを提供します。
+- **Standard** は専用マシンで実行されます。最小構成を含むあらゆるレベルにおいて、さらに多くのストレージや処理能力を利用できます。Standard には 4 つのレベル (S1、S2、S3、S3 High Density (S3 HD)) があります。S3 と S3 HD は現在プレビュー段階であり、プレビュー期間中は 50% の割引料金で提供されます。
 
-- **Free** is a multi-tenant shared service that comes with your Azure subscription. It's a no-additional-cost option for existing subscribers that allows you to experiment with the service before signing up for dedicated resources. 
-- **Basic** provides dedicated computing resources for production workloads at a smaller scale. ).
-- **Standard** runs on dedicated machines, with more storage and processing capacity at every level, including the minimum configuration. Standard comes in four levels: S1, S2, S3, and S3 High Density (S3 HD). S3 and S3 HD are currently in Preview and offered at a 50% reduced rate during the Preview period.
+すべてのレベルが[ポータルでプロビジョニング](search-create-service-portal.md)できます。サービスには最初に 1 つのパーティションと 1 つのレプリカが割り当てられますが、サービスが作成されたらリソース割り当ての変更ができます。詳細については、「[Azure Search の容量計画](search-capacity-planning.md)」を参照してください。
 
-All tiers can be [provisioned in the portal](search-create-service-portal.md). A service is initially allocated one partition and one replica, but you can change the resource allocation once the service is created. See [Scale resource levels for query and indexing workloads](search-capacity-planning.md) for details.
-
-## <a name="per-subscription-limits"></a>Per subscription limits
+## 各サブスクリプションの制限
 
 [AZURE.INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="per-service-limits"></a>Per service limits ##
+## 各サービスの制限 ##
 
 [AZURE.INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
-## <a name="per-index-limits"></a>Per index limits ##
+## 各インデックスの制限 ##
 
-There is a one-to-one correspondence between limits on indexes and limits on indexers. Given a limit of 200 indexes per S2 service, the maximum indexers and indexer datasources is also 200 for the same service.
+インデックスの制限とインデクサーの制限の間には 1 対 1 の関係があります。S2 サービスあたりのインデックスの上限が 200 の場合、同じサービスのインデクサーとインデクサー データソースの最大数も 200 になります。
 
-Resource|Free|Basic |S1|S2|S3 (Preview)|S3 HD (Preview) 
+リソース|無料|基本 |S1|S2|S3 (プレビュー)|S3 HD (プレビュー) 
 ---|---|---|---|---- |---|----
-Index: maximum fields per index|1000|100 <sup>1</sup>|1000|1000|1000|1000 
-Index: maximum scoring profiles per index|16|16|16|16|16|16 
-Index: maximum functions per profile|8|8|8|8|8|8 
-Indexers: maximum indexing load per invocation|10,000 documents|Limited only by maximum documents|Limited only by maximum documents|Limited only by maximum documents|Limited only by maximum documents|N/A <sup>2</sup> 
-Indexers: maximum running time|3 minutes|24 hours|24 hours|24 hours|24 hours|N/A <sup>2</sup> 
-Blob indexer: maximum blob size, MB|16|16|128|256|256|N/A <sup>2</sup> 
-Blob indexer: maximum characters of content extracted from a blob|32,000|64,000|4 million|4 million|4 million|N/A <sup>2</sup> 
+インデックス: インデックスあたりの最大フィールド|1,000|100 <sup>1</sup>|1,000|1,000|1,000|1,000 
+インデックス: インデックスあたりの最大スコアリング プロファイル|16|16|16|16|16|16 
+インデックス: プロファイルあたりの最大関数|8|8|8|8|8|8 
+インデクサー: 呼び出しあたりの最大インデックス作成負荷|10,000 ドキュメント|最大ドキュメントによってのみ制限|最大ドキュメントによってのみ制限|最大ドキュメントによってのみ制限|最大ドキュメントによってのみ制限|該当なし <sup>2</sup> 
+インデクサー: 最大実行時間|3 分|24 時間|24 時間|24 時間|24 時間|該当なし <sup>2</sup> 
+BLOB インデクサー: BLOB の最大サイズ、MB|16|16|128|256|256|該当なし <sup>2</sup> 
+BLOB インデクサー: BLOB から抽出されたコンテンツの最大文字数|32,000|64,000|400 万|400 万|400 万|該当なし <sup>2</sup> 
 
-<sup>1</sup> Basic tier is the only SKU with a lower limit of 100 fields per index.
+<sup>1</sup> Basic レベルにのみ下限（インデックスあたり 100 フィールド）があります。
 
-<sup>2</sup> S3 HD doesn't currently support indexers or indexer datasources. Please contact Azure Support if you have an urgent need for this capability.
+<sup>2</sup> S3 HD では現在、インデクサーまたはインデクサー データソースはサポートされていません。この機能がすぐに必要な場合は、Azure サポートにご連絡ください。
 
-## <a name="document-size-limits"></a>Document size limits ##
+## ドキュメント サイズの制限 ##
 
-Resource|Free|Basic |S1|S2|S3 (Preview)|S3 HD (Preview) 
+リソース|無料|基本 |S1|S2|S3 (プレビュー)|S3 HD (プレビュー) 
 ---|---|---|---|---- |---|----
-Individual document size per Index API|<16 MB|<16 MB|<16 MB |<16 MB|<16 MB|<16 MB
+インデックス API ごとの各ドキュメント サイズ|<16 MB|<16 MB|<16 MB |<16 MB|<16 MB|<16 MB
 
-Refers to the maximum document size when calling an Index API. Document size is actually a limit on the size of the Index API request body. Since you can pass a batch of multiple documents to the Index API at once, the size limit actually depends on how many documents are in the batch. For a batch with a single document, the maximum document size will be to 16 MB of JSON.
+インデックス API を呼び出す場合は、最大ドキュメント サイズを参照します。ドキュメント サイズとは、実際にはインデックス API の要求本文のサイズに対する制限を意味します。複数のドキュメントのバッチを一度にインデックス API に渡すことができるため、このサイズの制限は、実際にバッチ内のドキュメント数に左右されます。バッチ内のドキュメントが 1 つの場合、最大ドキュメント サイズは JSON 形式で 16 MB になります。
 
-To keep document size down, remember to exclude non-queryable data from the request. Images and other binary data are not directly queryable and shouldn't be stored in the index. To integrate non-queryable data into search results, define a non-searchable field that stores a a URL reference to the resource.
+ドキュメント サイズを抑えるには、クエリ不可能なデータを要求から忘れずに除外してください。イメージとその他のバイナリ データは直接クエリできないため、インデックスには格納しないでください。クエリ不可能なデータを検索結果に含めるには、リソースの URL 参照を格納する検索不可能なフィールドを定義してください。　
 
-## <a name="workload-limits-(queries-per-second)"></a>Workload limits (Queries per second) ##
+## ワークロードの制限 (1 秒あたりのクエリ数) ##
 
-Resource|Free|Basic|S1|S2|S3 (Preview)|S3 HD (Preview)
+リソース|無料|基本|S1|S2|S3 (プレビュー)|S3 HD (プレビュー)
 ---|---|---|---|----|---|----
-QPS|N/A|~3 per replica|~15 per replica|~60 per replica|>60 per replica|>60 per replica
+QPS|該当なし|レプリカあたり最大 3|レプリカあたり最大 15|レプリカあたり最大 60|レプリカあたり 60 以上|レプリカあたり >60
 
-Queries per second (QPS) is an approximation based on heuristics, using simulated and actual customer workloads to derive estimated values. Exact QPS throughput will vary depending on your data and the nature of the query.
+1 秒あたりのクエリ数 (QPS) は、シミュレーションされたワークロードと実際の顧客のワークロードを推定値の取得のために使用した、ヒューリスティックに基づく概数です。正確な QPS スループットはデータとクエリの性質によって異なります。
 
-Although rough estimates are provided above, an actual rate is difficult to determine, especially in the Free shared service where throughput is based on available bandwidth and competition for system resources. In the Free tier, compute and storage resources are shared by multiple subscribers, so QPS for your solution will always vary depending on how many other workloads are running at the same time. 
+上記に概算がありますが、実際にレートを決定するのは難しくなります。特に、利用できる帯域幅とシステム リソースの競合にスループットが依存する無料の共有サービスの場合にそれが当てはまります。Free レベルでは、コンピューティング リソースとストレージ リソースは複数のサブスクライバーにより共有されます。そのため、お使いのソリューションの QPS は常に、同時に実行されるその他のワークロードの数によって変わります。
 
-At the standard level, you can estimate QPS more closely because you have control over more of the parameters. See the best practices section in [Manage your search solution](search-manage.md) for guidance on how to calculate QPS for your workloads. 
+Standard レベルでは、より多くのパラメーターを制御できるため、さらに厳密に QPS を見積もることができます。ワークロードの QPS を計算する方法のガイダンスについては、「[Microsoft Azure で検索サービスを管理する](search-manage.md)」のベスト プラクティス セクションをご覧ください。
 
-## <a name="api-request-limits"></a>API Request limits
+## API 要求の制限
 
-- Maximum of 16 MB per request <sup>1</sup>
-- Maximum 8 KB URL length
-- Maximum 1000 documents per batch of index uploads, merges, or deletes
-- Maximum 32 fields in $orderby clause
-- Maximum search term size is 32766 bytes (32 KB minus 2 bytes) of UTF-8 encoded text
+- 要求あたりの最大値: 16 MB<sup>1</sup>
+- URL の最大長: 8 KB
+- インデックスののアップロード、マージ、または削除のバッチあたりの最大ドキュメント数: 1,000
+- $orderby 句の最大フィールド数: 32
+- 検索用語の最大サイズ: UTF-8 でエンコードされたテキストの 32,766 バイト (32 KB - 2 バイト)
 
-<sup>1</sup> In Azure Search, the body of a request is subject to an upper limit of 16 MB, imposing a practical limit on the contents of individual fields or collections that are not otherwise constrained by theoretical limits (see [Supported data types](https://msdn.microsoft.com/library/azure/dn798938.aspx) for more information about field composition and restrictions).
+<sup>1</sup> Azure Search では、要求の本文は上限 16 MB に左右され、それ以外では理論的制限によって制約されない個々のフィールドまたはコレクションのコンテンツに実際的な制限が課せられます (フィールドの構成と制約の詳細については、「[Supported data types (サポートされているデータ型)](https://msdn.microsoft.com/library/azure/dn798938.aspx)」を参照してください)。
 
-## <a name="api-response-limits"></a>API Response limits
+## API 応答の制限
 
-- Maximum 1000 documents returned per page of search results
-- Maximum 100 suggestions returned per Suggest API request
+- 検索結果のページごとに返される最大ドキュメント数: 1,000
+- 検索候補 API 要求ごとに返される最大検索候補数: 100
 
-## <a name="api-key-limits"></a>API Key limits
+## API キーの制限
 
-Api-keys are used for service authentication. There are two types. Admin keys are specified in the request header and grant full read-write access to the service. Query keys are read-only, specified on the URL, and typically distributed to client applications.
+Api キーは、サービスの認証に使用されます。次の 2 つの種類があります。管理者キーは、要求ヘッダーで指定され、サービスに完全な読み取り/書き込みアクセス権を付与します。クエリ キーは、読み取り専用で、URL で指定され、通常はクライアント アプリケーションに配布されます。
 
-- Maximum of 2 admin keys per service
-- Maximum of 50 query keys per service
+- サービスあたりの最大管理キー数: 2
+- サービスあたりの最大クエリ キー数: 50
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

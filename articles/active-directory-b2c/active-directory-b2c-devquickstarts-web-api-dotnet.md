@@ -1,71 +1,70 @@
 <properties
-    pageTitle="Azure Active Directory B2C | Microsoft Azure"
-    description="How to build a web application that calls a web API by using Azure Active Directory B2C."
-    services="active-directory-b2c"
-    documentationCenter=".net"
-    authors="dstrockis"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure Active Directory B2C | Microsoft Azure"
+	description="Azure Active Directory B2C を使用して Web API を呼び出す Web アプリケーションを構築する方法。"
+	services="active-directory-b2c"
+	documentationCenter=".net"
+	authors="dstrockis"
+	manager="msmbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory-b2c"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="07/22/2016"
-    ms.author="dastrock"/>
+	ms.service="active-directory-b2c"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="07/22/2016"
+	ms.author="dastrock"/>
 
+# Azure AD B2C: .NET Web アプリから Web API を呼び出す
 
-# <a name="azure-ad-b2c:-call-a-web-api-from-a-.net-web-app"></a>Azure AD B2C: Call a web API from a .NET web app
+Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順で Web アプリや Web API に追加できます。この記事では、ベアラー トークンを使用して Web API を呼び出す .NET Model-View-Controller (MVC) の "To-Do List" Web アプリを作成する方法について説明します。
 
-By using Azure Active Directory (Azure AD) B2C, you can add powerful self-service identity management features to your web apps and web APIs in a few short steps. This article will discuss how to create a .NET Model-View-Controller (MVC) "to-do list" web app that calls a web API by using bearer tokens
+この記事では、Azure AD B2C でサインイン、サインアップ、プロファイルの管理を実装する方法については説明しません。ユーザーが既に認証された後での Web API の呼び出しに焦点を合わせています。まだ Azure AD B2C の基本を理解していない場合は、[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で学習してください。
 
-This article does not cover how to implement sign-in, sign-up and profile management with Azure AD B2C. It focuses on calling web APIs after the user is already authenticated. If you haven't already, you should start with the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md) to learn about the basics of Azure AD B2C.
+## Azure AD B2C ディレクトリの取得
 
-## <a name="get-an-azure-ad-b2c-directory"></a>Get an Azure AD B2C directory
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md)してください。
 
-Before you can use Azure AD B2C, you must create a directory, or tenant.  A directory is a container for all your users, apps, groups, and more.  If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue in this guide.
+## アプリケーションの作成
 
-## <a name="create-an-application"></a>Create an application
+次に、B2C ディレクトリにアプリを作成する必要があります。これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。ここでは、Web アプリと Web API の両方が単一の**アプリケーション ID** で表されます。これは、クライアント アプリと Web API が 1 つの論理アプリを構成するためです。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従います。次を行ってください。
 
-Next, you need to create an app in your B2C directory. This gives Azure AD information that it needs to securely communicate with your app. In this case, both the web app and web API will be represented by a single **Application ID**, because they comprise one logical app. To create an app, follow [these instructions](active-directory-b2c-app-registration.md). Be sure to:
-
-- Include a **web app/web API** in the application.
-- Enter `https://localhost:44316/` as a **Reply URL**. It is the default URL for this code sample.
-- Copy the **Application ID** that is assigned to your app. You will also need this later.
+- アプリケーションに **Web アプリまたは Web API** を含めます。
+- **[応答 URL]** に「`https://localhost:44316/`」と入力します。これはこのサンプル コードで使用する既定の URL です。
+- アプリに割り当てられた**アプリケーション ID** をコピーしておきます。この情報も後で必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## <a name="create-your-policies"></a>Create your policies
+## ポリシーの作成
 
-In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md). This web app contains three identity experiences: sign up, sign in, and edit profile. You need to create one policy of each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy). When you create the three policies, be sure to:
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。この Web アプリには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとに 1 つのポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-- Choose the **Display name** and other sign-up attributes in your sign-up policy.
-- Choose the **Display name** and **Object ID** application claims in every policy. You can choose other claims as well.
-- Copy the **Name** of each policy after you create it. It should have the prefix `b2c_1_`. You'll need those policy names later.
+- サインアップ ポリシーで、**[表示名]** と他のサインアップ属性を選択します。
+- すべてのポリシーで、アプリケーション要求として **[表示名]** と **[オブジェクト ID]** を選択します。その他のクレームも選択できます。
+- ポリシーの作成後、各ポリシーの**名前**をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名は後で必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-After you have created your three policies, you're ready to build your app.
+3 つのポリシーを作成したら、アプリをビルドできます。
 
-Note that this article does not cover how to use the policies that you just created. To learn about how policies work in Azure AD B2C, start with the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md).
+この記事では、作成したポリシーの使用方法については説明しません。ポリシーが Azure AD B2C でどのように機能するかを学習する場合は、[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)から始めてください。
 
-## <a name="download-the-code"></a>Download the code
+## コードのダウンロード
 
-The code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet). To build the sample as you go, you can [download the skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip). You can also clone the skeleton:
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet) で管理されています。手順に従ってサンプルを構築するには、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/skeleton.zip)します。スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git
 ```
 
-The completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip) or on the `complete` branch of the same repository.
+また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで入手できます。
 
-After you download the sample code, open the Visual Studio .sln file to get started.
+サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。
 
-## <a name="configure-the-task-web-app"></a>Configure the task web app
+## タスク Web アプリの構成
 
-To get `TaskWebApp` to communicate with Azure AD B2C, you need to provide a few common parameters. In the `TaskWebApp` project, open the `web.config` file in the root of the project and replace the values in the `<appSettings>` section. You can leave the `AadInstance`, `RedirectUri`, and `TaskServiceUrl` values as they are.
+`TaskWebApp` が Azure AD B2C と通信できるようにするために、一般的なパラメーターをいくつか指定する必要があります。`TaskWebApp` プロジェクトで、プロジェクトのルートにある `web.config` ファイルを開き、`<appSettings>` セクションの値を次の内容に置き換えます。`AadInstance`、`RedirectUri`、`TaskServiceUrl` の各値はそのまま使用できます。
 
 ```
   <appSettings>
@@ -82,33 +81,19 @@ To get `TaskWebApp` to communicate with Azure AD B2C, you need to provide a few 
   </appSettings>
 ```
 
-[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]  <appSettings>
-    <add key="webpages:Version" value="3.0.0.0" />
-    <add key="webpages:Enabled" value="false" />
-    <add key="ClientValidationEnabled" value="true" />
-    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
-    <add key="ida:Tenant" value="fabrikamb2c.onmicrosoft.com" />
-    <add key="ida:ClientId" value="90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6" />
-    <add key="ida:ClientSecret" value="E:i~5GHYRF$Y7BcM" />
-    <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}/v2.0/.well-known/openid-configuration?p={1}" />
-    <add key="ida:RedirectUri" value="https://localhost:44316/" />
-    <add key="ida:SignUpPolicyId" value="b2c_1_sign_up" />
-    <add key="ida:SignInPolicyId" value="b2c_1_sign_in" />
-    <add key="ida:UserProfilePolicyId" value="b2c_1_edit_profile" />
-    <add key="api:TaskServiceUrl" value="https://aadb2cplayground.azurewebsites.net" />
-  </appSettings>
+[AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)] <appSettings> <add key="webpages:Version" value="3.0.0.0" /> <add key="webpages:Enabled" value="false" /> <add key="ClientValidationEnabled" value="true" /> <add key="UnobtrusiveJavaScriptEnabled" value="true" /> <add key="ida:Tenant" value="fabrikamb2c.onmicrosoft.com" /> <add key="ida:ClientId" value="90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6" /> <add key="ida:ClientSecret" value="E:i~5GHYRF$Y7BcM" /> <add key="ida:AadInstance" value="https://login.microsoftonline.com/{0}/v2.0/.well-known/openid-configuration?p={1}" /> <add key="ida:RedirectUri" value="https://localhost:44316/" /> <add key="ida:SignUpPolicyId" value="b2c\_1_sign\_up" /> <add key="ida:SignInPolicyId" value="b2c_1_sign\_in" /> <add key="ida:UserProfilePolicyId" value="b2c_1\_edit\_profile" /> <add key="api:TaskServiceUrl" value="https://aadb2cplayground.azurewebsites.net" /> </appSettings>
 
-## <a name="get-access-tokens-and-call-the-task-api"></a>Get access tokens and call the task API
+## アクセス トークンの取得とタスク API の呼び出し
 
-This section will discuss how to use the token received during sign-in with Azure AD B2C in order to access a web API that is also secured with Azure AD B2C.
+このセクションでは、Azure AD B2C で保護されている Web API にアクセスするため、Azure AD B2C でサインイン中に受信したトークンを使用する方法について説明します。
 
-This article does not cover the details of how to secure the API. To learn how a web API securely authenticates requests by using Azure AD B2C, check out the [web API getting started article](active-directory-b2c-devquickstarts-api-dotnet.md).
+この記事では、API のセキュリティ保護方法の詳細は説明しません。Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、[Web API の概要についての記事](active-directory-b2c-devquickstarts-api-dotnet.md)を参照してください。
 
-### <a name="save-the-sign-in-token"></a>Save the sign in token
+### サインイン トークンを保存する
 
-First, authenticate the user (using any one of your policies) and receive a sign-in token from Azure AD B2C.  If you're not sure how to execute policies, go back and try the [.NET web app getting started tutorial](active-directory-b2c-devquickstarts-web-dotnet.md) to learn about the basics of Azure AD B2C.
+まずは、いずれかのポリシーを使用してユーザーを認証し、Azure AD B2C からサインイン トークンを受信します。ポリシーの実行方法がよくわからない場合は、[.NET Web アプリ入門チュートリアル](active-directory-b2c-devquickstarts-web-dotnet.md)で Azure AD B2C の基本を確認してください。
 
-Open the file `App_Start\Startup.Auth.cs`.  There is one important change you must make to the `OpenIdConnectAuthenticationOptions` - you must set `SaveSignInToken = true`.
+ファイル `App_Start\Startup.Auth.cs` を開きます。`OpenIdConnectAuthenticationOptions` への重要な変更箇所が 1 点あり、`SaveSignInToken = true` を設定する必要があります。
 
 ```C#
 // App_Start\Startup.Auth.cs
@@ -141,9 +126,9 @@ return new OpenIdConnectAuthenticationOptions
 };
 ```
 
-### <a name="get-a-token-in-the-controllers"></a>Get a token in the controllers
+### コントローラーでトークンを取得する
 
-The `TasksController` is responsible for communicating with the web API, sending HTTP requests to the API to read, create, and delete tasks.  Becuase the API is secured by Azure AD B2C, you need to first retrieve the token you saved in the above step.
+`TasksController` は Web API と通信する役割を担い、HTTP 要求を API に送信してタスクの読み取り、作成、および削除を行います。API は Azure AD B2C によって保護されているため、まずは前の手順で保存したトークンを取得する必要があります。
 
 ```C#
 // Controllers\TasksController.cs
@@ -154,15 +139,15 @@ public async Task<ActionResult> Index()
 
         var bootstrapContext = ClaimsPrincipal.Current.Identities.First().BootstrapContext as System.IdentityModel.Tokens.BootstrapContext;
         
-    ...
+	...
 }
 ```
 
-The `BootstrapContext` contains the sign in token that you acquired by executing one of your B2C policies.
+`BootstrapContext` には、B2C ポリシーの 1 つを実行して取得したサインイン トークンが含まれます。
 
-### <a name="read-tasks-from-the-web-api"></a>Read tasks from the web API
+### Web API からのタスク読み取り
 
-When you have a token, you can attach it to the HTTP `GET` request in the `Authorization` header to securely call `TaskService`:
+トークンを取得したら、`Authorization` ヘッダーの HTTP `GET` 要求にトークンをアタッチして、`TaskService` を安全に呼び出すことができます。
 
 ```C#
 // Controllers\TasksController.cs
@@ -206,15 +191,15 @@ public async Task<ActionResult> Index()
 
 ```
 
-### <a name="create-and-delete-tasks-on-the-web-api"></a>Create and delete tasks on the web API
+### Web API でのタスクの作成および削除
 
-Follow the same pattern when you send `POST` and `DELETE` requests to the web API, using the `BootstrapContext` to retrieve the sign in token. We implemented the create action for you. You can try finishing the delete action in `TasksController.cs`.
+`POST` 要求と `DELETE` 要求を Web API に送信する場合と同じパターンに従い、`BootstrapContext` を使用してサインイン トークンを取得します。作成アクションは既に実装されています。`TasksController.cs` で削除アクションを完成させてみてください。
 
-## <a name="run-the-sample-app"></a>Run the sample app
+## サンプル アプリを実行する
 
-Finally, build and run the app. Sign up and sign in, and create tasks for the signed-in user. Sign out and sign in as a different user. Create tasks for that user. Notice how the tasks are stored per-user on the API, because the API extracts the user's identity from the token it receives.
+最後に、アプリをビルドして実行します。サインアップおよびサインインを行い、サインインしているユーザーのタスクを作成します。サインアウトし、別のユーザーとしてサインインします。そのユーザーのタスクを作成します。API でタスクがユーザーごとに保存されたことを確認します。これは、API が、受信したトークンからユーザー ID を抽出したためです。
 
-For reference, the completed sample [is provided as a .zip file](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip). You can also clone it from GitHub:
+参照用に、完成したサンプルが[ここに .zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet/archive/complete.zip)。GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-WebApp-WebAPI-OpenIDConnect-DotNet.git```
 
@@ -230,8 +215,4 @@ You can now move on to more advanced B2C topics. You might try:
 
 -->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

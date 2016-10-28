@@ -1,6 +1,6 @@
 <properties
-  pageTitle="Load Balancer custom probes and monitoring health status | Microsoft Azure"
-  description="Learn how to use custom probes for Azure Load Balancer to monitor instances behind Load Balancer"
+  pageTitle="Load Balancer カスタム プローブと正常性状態の監視 | Microsoft Azure"
+  description="Azure Load Balancer でカスタム プローブを使用して、Load Balancer の背後にあるインスタンスを監視する方法を説明します"
   services="load-balancer"
   documentationCenter="na"
   authors="sdwheeler"
@@ -17,82 +17,77 @@
   ms.date="08/25/2016"
   ms.author="sewhee" />
 
+# Load Balancer プローブ
 
-# <a name="load-balancer-probes"></a>Load Balancer probes
+Azure Load Balancer には、プローブを使用してサーバー インスタンスの正常性を監視する機能があります。プローブが応答できない場合、Load Balancer は異常なインスタンスへの新しい接続の送信を停止します。既存の接続への影響はなく、新しい接続が正常なインスタンスに送信されます。
 
-Azure Load Balancer offers the capability to monitor the health of server instances by using probes. When a probe fails to respond, Load Balancer stops sending new connections to the unhealthy instance. The existing connections are not affected, and new connections are sent to healthy instances.
+クラウド サービス ロール (worker ロールと Web ロール) では、ゲスト エージェントを使用してプローブを監視します。Load Balancer の背後にある仮想マシンを使用する場合は、TCP または HTTP カスタム プローブを構成する必要があります。
 
-Cloud service roles (worker roles and web roles) use a guest agent for probe monitoring. TCP or HTTP custom probes must be configured when you use virtual machines behind Load Balancer.
+## プローブの数とタイムアウトについて
 
-## <a name="understand-probe-count-and-timeout"></a>Understand probe count and timeout
+プローブの動作は、以下の要素によって変わってきます。
 
-Probe behavior depends on:
+- インスタンスを実行中としてラベル付けできる成功プローブの数。
+- インスタンスが停止中としてラベル付けされる失敗プローブの数。
 
-- The number of successful probes that allow an instance to be labeled as up.
-- The number of failed probes that cause an instance to be labeled as down.
+タイムアウトをプローブの頻度の値で除算すると、SuccessFailCount に等しくなります。この値によって、インスタンスを実行中と見なすか、停止中と見なすかが決定されます。Azure ポータルの場合、タイムアウトは頻度の値の 2 倍に設定されます。
 
-The timeout divided by the probe frequency value is equal to SuccessFailCount which determines whether an instance is assumed to be up or down. In the Azure portal, the timeout is set to two times the value of the frequency.
-
-The probe configuration of all load-balanced instances for an endpoint (that is, a load-balanced set) must be the same. This means you cannot have a different probe configuration for each role instance or virtual machine in the same hosted service for a particular endpoint combination. For example, each instance must have identical local ports and timeouts.
-
-
->[AZURE.IMPORTANT] A Load Balancer probe uses the IP address 168.63.129.16. This public IP address facilitates communication to internal platform resources for the bring-your-own-IP Azure Virtual Network scenario. The virtual public IP address 168.63.129.16 is used in all regions and will not change. We recommend that you allow this IP address in any local firewall policies. It should not be considered a security risk because only the internal Azure platform can source a message from that address. If you do not do this, there will be unexpected behavior in a variety of scenarios like configuring the same IP address range of 168.63.129.16 and having duplicated IP addresses.
-
-## <a name="learn-about-the-types-of-probes"></a>Learn about the types of probes
-
-### <a name="guest-agent-probe"></a>Guest agent probe
-
-This probe is available for Azure Cloud Services only. Load Balancer utilizes the guest agent inside the virtual machine, and then listens and responds with an HTTP 200 OK response only when the instance is in the Ready state (that is, not in another state such as Busy, Recycling, or Stopping).
-
-For more information, see [Configuring the service definition file (csdef) for health probes](https://msdn.microsoft.com/library/azure/jj151530.asp) or [Get started creating an Internet-facing load balancer for cloud services](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services).
-
-### <a name="what-makes-a-guest-agent-probe-mark-an-instance-as-unhealthy?"></a>What makes a guest agent probe mark an instance as unhealthy?
-
-If the guest agent fails to respond with HTTP 200 OK, the Load Balancer marks the instance as unresponsive and stops sending traffic to that instance. Load Balancer continues to ping the instance. If the guest agent responds with an HTTP 200, Load Balancer sends traffic to that instance again.
-
-When you use a web role, the website code typically runs in w3wp.exe, which is not monitored by the Azure fabric or guest agent. This means that failures in w3wp.exe (for example, HTTP 500 responses) will not be reported to the guest agent, and Load Balancer will not take that instance out of rotation.
-
-### <a name="http-custom-probe"></a>HTTP custom probe
-
-The custom HTTP Load Balancer probe overrides the default guest agent probe, which means that you can create your own custom logic to determine the health of the role instance. Load Balancer probes your endpoint every 15 seconds, by default. The instance is considered to be in the Load Balancer rotation if it responds with an HTTP 200 within the timeout period (31 seconds by default).
-
-This can be useful if you want to implement your own logic to remove instances from Load Balancer rotation. For example, you could decide to remove an instance if it is above 90% CPU and returns a non-200 status. If you have web roles that use w3wp.exe, this also means you get automatic monitoring of your website, because failures in your website code will return a non-200 status to the Load Balancer probe.
-
->[AZURE.NOTE] The HTTP custom probe supports relative paths and HTTP protocol only. HTTPS is not supported.
-
-### <a name="what-makes-an-http-custom-probe-mark-an-instance-as-unhealthy?"></a>What makes an HTTP custom probe mark an instance as unhealthy?
-
-- The HTTP application returns an HTTP response code other than 200 (for example, 403, 404, or 500). This is a positive acknowledgment that the application instance should be taken out of service right away.
-
-. The HTTP server does not respond at all after the timeout period. Depending on the timeout value that is set, this might mean that multiple probe requests go unanswered before the probe gets marked as not running (that is, before SuccessFailCount probes are sent).
--   The server closes the connection via a TCP reset.
-
-### <a name="tcp-custom-probe"></a>TCP custom probe
-
-TCP probes initiate a connection by performing a three-way handshake with the defined port.
-
-### <a name="what-makes-a-tcp-custom-probe-mark-an-instance-as-unhealthy?"></a>What makes a TCP custom probe mark an instance as unhealthy?
-
-- The TCP server does not respond at all after the timeout period. When the probe is marked as not running depends on the number of failed probe requests that were configured to go unanswered before marking the probe as not running.
-- The probe receives a TCP reset from the role instance.
-
-For more information about configuring an HTTP health probe or a TCP probe, see [Get started creating an Internet-facing load balancer in Resource Manager using PowerShell](load-balancer-get-started-internet-arm-ps.md#create-lb-rules-nat-rules-a-probe-and-a-load-balancer).
-
-## <a name="add-healthy-instances-back-into-load-balancer-rotation"></a>Add healthy instances back into Load Balancer rotation
-
-TCP and HTTP probes are considered healthy and mark the role instance as healthy when:
-
-- Load Balancer gets a positive probe the first time the VM boots.
-- The number SuccessFailCount (described earlier) defines the value of successful probes that are required to mark the role instance as healthy. If a role instance was removed, the number of successful, successive probes must equal or exceed the value of SuccessFailCount to mark the role instance as running.
-
->[AZURE.NOTE] If the health of a role instance is fluctuating, Load Balancer waits longer before putting the role instance back in the healthy state. This is done via policy to protect the user and the infrastructure.
-
-## <a name="use-log-analytics-for-load-balancer"></a>Use log analytics for Load Balancer
-
-You can use [log analytics for Load Balancer](load-balancer-monitor-log.md) to check on the probe health status and probe count. Logging can be used with Power BI or Azure Operational Insights to provide statistics about Load Balancer health status.
+エンドポイントに対して負荷分散されたすべてのインスタンス (負荷分散されたセット) のプローブ構成は、同じにする必要があります。つまり、特定のエンドポイントの組み合わせに対してホストされる同じサービス内の各ロール インスタンスまたは仮想マシンに、異なるプローブ構成を設定することはできません。たとえば、各インスタンスには、同一のローカル ポートとタイムアウトが必要です。
 
 
+>[AZURE.IMPORTANT] Load Balancer プローブは、IP アドレス 168.63.129.16 を使用します。このパブリック IP アドレスを使うことで、独自の IP Azure Virtual Network を使用するシナリオで、内部プラットフォーム リソースへの通信が容易になります。仮想パブリック IP アドレス 168.63.129.16 は、すべてのリージョンで使用され、変更されることはありません。この IP アドレスは、すべてのローカル ファイアウォール ポリシーで許可することをお勧めします。これをセキュリティ リスクとして考慮する必要はありません。内部 Azure プラットフォームのみが、そのアドレスからのメッセージをソースにできるためです。これを行わないと、同じ IP アドレス範囲の 168.63.129.16 を構成し、重複する IP アドレスがあるようなさまざまなシナリオで、予期しない動作が発生します。
 
-<!--HONumber=Oct16_HO2-->
+## プローブの種類について
 
+### ゲスト エージェント プローブ
 
+このプローブは、Azure Cloud Services でのみ使用できます。Load Balancer は、仮想マシン内のゲスト エージェントを使用してリッスンし、インスタンスが準備完了状態の場合のみ (ビジー、リサイクル中、停止中などの状態でない場合) HTTP 200 OK 応答を返します。
+
+詳細については、「[正常性プローブのサービス定義ファイル (csdef) を構成する](https://msdn.microsoft.com/library/azure/jj151530.asp)」または「[インターネットに接続するロード バランサー (クラウド サービス用) の作成の開始](load-balancer-get-started-internet-classic-cloud.md#check-load-balancer-health-status-for-cloud-services)」を参照してください。
+
+### ゲスト エージェント プローブがインスタンスを異常としてマークする状況
+
+ゲスト エージェントが HTTP 200 OK で応答できない場合、Load Balancer は、そのインスタンスを応答不能と見なし、インスタンスへのトラフィックの送信を停止します。Load Balancer は、インスタンスへの ping を続けます。ゲスト エージェントが HTTP 200 で応答すると、Load Balancer はそのインスタンスへのトラフィックの送信を再開します。
+
+Web ロールを使用する場合、Web サイト コードは通常、Azure ファブリックやゲスト エージェントでは監視されない w3wp.exe で実行されます。つまり、w3wp.exe が失敗 (HTTP 500 応答など) してもゲスト エージェントにレポートされず、Load Balancer はそのインスタンスをローテーションから除外しません。
+
+### HTTP カスタム プローブ
+
+カスタム HTTP Load Balancer プローブは、既定のゲスト エージェント プローブをオーバーライドします。つまり、ユーザーは独自のカスタム ロジックを作成してロール インスタンスの正常性を特定できます。Load Balancer は、既定では 15 秒ごとにエンドポイントを調査します。タイムアウト期間内 (既定値は 31 秒) にインスタンスが HTTP 200 で応答した場合、そのインスタンスは Load Balancer ローテーション内にあると見なされます。
+
+これは、Load Balancer ローテーションからインスタンスを削除するユーザー独自のロジックを実装する必要がある場合に役立ちます。たとえば、CPU が 90% を超え、200 以外の状態が返される場合は、そのインスタンスが削除されるようにすることができます。w3wp.exe を使用する Web ロールがある場合も、Web サイトの自動監視を意味します。Web サイト コードが失敗したときに、Load Balancer プローブに 200 以外の状態が返されるためです。
+
+>[AZURE.NOTE] HTTP カスタム プローブは、相対パスと HTTP プロトコルのみをサポートします。HTTPS はサポートされていません。
+
+### HTTP カスタム プローブがインスタンスを異常としてマークする状況
+
+- HTTP アプリケーションが 200 以外の HTTP 応答コード (403、404、500 など) を返す。これは、アプリケーション インスタンスをすぐに使用不能にする肯定応答です。
+
+.タイムアウト期間後、HTTP サーバーがまったく応答しない。設定されているタイムアウト値によっては、プローブが停止中としてマークされる前に (つまり、SuccessFailCount プローブが送信される前に)、複数のプローブ要求が応答なしになる可能性があります。
+- 	サーバーが TCP リセットによって接続を閉じた。
+
+### TCP カスタム プローブ
+
+TCP プローブは、定義済みのポートに 3 ウェイ ハンドシェイクを実行して、接続を開始します。
+
+### TCP カスタム プローブがインスタンスを異常としてマークする状況
+
+- タイムアウト期間後、TCP サーバーがまったく応答しない。プローブが停止中としてマークされるタイミングは、プローブが停止中としてマークされる前に応答なしになるように構成された、失敗したプローブ要求の数によって異なります。
+- プローブがロール インスタンスから TCP リセットを受信した。
+
+HTTP 正常性プローブまたは TCP プローブの構成の詳細については、「[リソース マネージャーで PowerShell を使用して、インターネットに接続するロード バランサーの作成を開始する](load-balancer-get-started-internet-arm-ps.md#create-lb-rules-nat-rules-a-probe-and-a-load-balancer)」を参照してください。
+
+## 正常なインスタンスを Load Balancer ローテーションに戻す
+
+次の場合に、TCP と HTTP プローブは正常と見なされ、ロール インスタンスを正常としてマークします。
+
+- VM の初回起動時に、Load Balancer が正のプローブを取得します。
+- (前述した) SuccessFailCount の数により、ロール インスタンスを正常としてマークするために必要な成功プローブの値が定義されます。ロール インスタンスが削除された場合、そのロール インスタンスを実行中としてマークするには、連続して成功したプローブの数は、SuccessFailCount の値以上である必要があります。
+
+>[AZURE.NOTE] ロール インスタンスの正常性が変動する場合、Load Balancer は、さらに長い時間待機してから、ロール インスタンスを正常な状態に戻します。これは、ユーザーとインフラストラクチャを保護するポリシーによって実行されます。
+
+## Load Balancer のログ分析を使用する
+
+[Load Balancer のログ分析](load-balancer-monitor-log.md)を使用すると、プローブの正常性状態とプローブの数を確認できます。ログ記録と共に Power BI または Azure Operational Insights を使用することで、Load Balancer の正常性状態の統計情報を提供することができます。
+
+<!---HONumber=AcomDC_0921_2016-->

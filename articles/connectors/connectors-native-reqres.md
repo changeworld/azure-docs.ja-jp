@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Use request and response actions | Microsoft Azure"
-    description="Overview of the request and response trigger and action in an Azure logic app"
-    services=""
-    documentationCenter=""
-    authors="jeffhollan"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="要求アクションと応答アクションの使用 |Microsoft Azure"
+	description="Azure ロジック アプリの要求および応答のトリガーとアクションの概要"
+	services=""
+	documentationCenter=""
+	authors="jeffhollan"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,105 +17,100 @@
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
+# 要求コンポーネントと応答コンポーネントの概要
 
-# <a name="get-started-with-the-request-and-response-components"></a>Get started with the request and response components
+ロジック アプリで要求コンポーネントと応答コンポーネントを使用すると、リアルタイムでイベントに応答できます。
 
-With the request and response components in a logic app, you can respond in real time to events.
+たとえば、次のようなことができます。
 
-For example, you can:
+- ロジック アプリから、オンプレミスのデータベースのデータを使用して HTTP 要求に応答します。
+- 外部の webhook イベントからロジック アプリをトリガーします。
+- 他のロジック アプリ内からの要求アクションと応答アクションを使用してロジック アプリを呼び出します。
 
-- Respond to an HTTP request with data from an on-premises database through a logic app.
-- Trigger a logic app from an external webhook event.
-- Call a logic app with a request and response action from within another logic app.
+ロジック アプリでの要求アクションと応答アクションの使用を開始する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-To get started using the request and response actions in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## HTTP 要求トリガーの使用
 
-## <a name="use-the-http-request-trigger"></a>Use the HTTP Request trigger
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
 
-A trigger is an event that can be used to start the workflow that is defined in a logic app. [Learn more about triggers](connectors-overview.md).
+ロジック アプリ デザイナーで HTTP 要求をセットアップする方法の例を次に示します。
 
-Here’s an example sequence of how to set up an HTTP request in the Logic App Designer.
+1. ロジック アプリに **[要求 - HTTP 要求の受信時]** トリガーを追加します。必要に応じて、要求本文に JSON スキーマを指定できます ([JSONSchema.net](http://jsonschema.net) などのツールを使用します)。これにより、デザイナーで HTTP 要求のプロパティのトークンを生成できます。
+2. ロジック アプリを保存できるように別のアクションを追加します。
+3. ロジック アプリの保存後、要求カードから HTTP 要求の URL を取得できます。
+4. URL への HTTP POST ([Postman](https://www.getpostman.com/) などのツールを使用できます) によってロジック アプリがトリガーされます。
 
-1. Add the trigger **Request - When an HTTP request is received** in your logic app. You can optionally provide a JSON schema (by using a tool like [JSONSchema.net](http://jsonschema.net)) for the request body. This allows the designer to generate tokens for properties in the HTTP request.
-2. Add another action so that you can save the logic app.
-3. After saving the logic app, you can get the HTTP request URL from the request card.
-4. An HTTP POST (you can use a tool like [Postman](https://www.getpostman.com/)) to the URL triggers the logic app.
+>[AZURE.NOTE] 応答アクションを定義していない場合は、`202 ACCEPTED` 応答がすぐに呼び出し元に返されます。応答アクションを使用すると、応答をカスタマイズできます。
 
->[AZURE.NOTE] If you don't define a response action, a `202 ACCEPTED` response is immediately returned to the caller. You can use the response action to customize a response.
+![Response Trigger](./media/connectors-native-reqres/using-trigger.png)
 
-![Response trigger](./media/connectors-native-reqres/using-trigger.png)
+## HTTP 応答アクションの使用
 
-## <a name="use-the-http-response-action"></a>Use the HTTP Response action
+HTTP 応答アクションは、HTTP 要求によってトリガーされたワークフローで使用した場合にのみ有効です。応答アクションを定義していない場合は、`202 ACCEPTED` 応答がすぐに呼び出し元に返されます。応答アクションは、ワークフロー内のどのステップにでも追加できます。ロジック アプリは、応答のために受信要求を 1 分間だけオープンしたままにします。ワークフローから応答が送信されなかった場合は、(応答アクションが定義内に存在していても) 1 分後に `504 GATEWAY TIMEOUT` が呼び出し元に返されます。
 
-The HTTP Response action is only valid when you use it in a workflow that is triggered by an HTTP request. If you don't define a response action, a `202 ACCEPTED` response is immediately returned to the caller.  You can add a response action at any step within the workflow. The logic app only keeps the incoming request open for one minute for a response.  After one minute, if no response was sent from the workflow (and a response action exists in the definition), a `504 GATEWAY TIMEOUT` is returned to the caller.
+HTTP 応答アクションの追加方法を次に示します。
 
-Here's how to add an HTTP Response action:
+1. **[新しいステップ]** をクリックします。
+2. **[アクションの追加]** を選択します。
+3. アクションの検索ボックスに「**応答**」と入力して、応答アクションの一覧を表示します。
 
-1. Select the **New Step** button.
-2. Choose **Add an action**.
-3. In the action search box, type **response** to list the Response action.
+	![Select the response action](./media/connectors-native-reqres/using-action-1.png)
 
-    ![Select the response action](./media/connectors-native-reqres/using-action-1.png)
+4. HTTP 応答メッセージに必要なすべてのパラメーターを追加します。
 
-4. Add in any parameters that are required for the HTTP response message.
+	![Complete the response action](./media/connectors-native-reqres/using-action-2.png)
 
-    ![Complete the response action](./media/connectors-native-reqres/using-action-2.png)
+5. ツール バーの左上隅にある [保存] をクリックすると、ロジック アプリが保存されて発行 (アクティブ化) されます。
 
-5. Click the upper-left corner of the toolbar to save, and your logic app will both save and publish (activate).
+## 要求トリガー
 
-## <a name="request-trigger"></a>Request trigger
+ここでは、このコネクタでサポートされているトリガーの詳細について説明します。1 つの要求トリガーがあります。
 
-Here are the details for the trigger that this connector supports. There is a single request trigger.
-
-|Trigger|Description|
+|トリガー|Description|
 |---|---|
-|Request|Occurs when an HTTP request is received|
+|要求|HTTP 要求を受信したときに実行されます。|
 
-## <a name="response-action"></a>Response action
+## 応答アクション
 
-Here are the details for the action that this connector supports. There is a single response action that can only be used when it is accompanied by a request trigger.
+ここでは、このコネクタでサポートされているアクションの詳細について説明します。要求トリガーに伴う場合にのみ使用可能な応答アクションが 1 つあります。
 
-|Action|Description|
+|アクション|Description|
 |---|---|
-|Response|Returns a response to the correlated HTTP request|
+|Response|関連する HTTP 要求に応答を返します。|
 
-### <a name="trigger-and-action-details"></a>Trigger and action details
+### トリガーとアクションの詳細
 
-The following tables describe the input fields for the trigger and action, and the corresponding output details.
+次の表に、トリガーとアクションの必須および省略可能な入力フィールドと、対応する出力の詳細を示します。
 
-#### <a name="request-trigger"></a>Request trigger
-The following is an input field for the trigger from an incoming HTTP request.
+#### 要求トリガー
+受信 HTTP 要求からのトリガーの入力フィールドを次に示します。
 
-|Display name|Property name|Description|
+|表示名|プロパティ名|Description|
 |---|---|---|
-|JSON Schema|schema|The JSON schema of the HTTP request body|
+|JSON スキーマ|schema|HTTP 要求本文の JSON スキーマ|
 <br>
 
-**Output details**
+**出力の詳細**
 
-The following are output details for the request.
+要求の出力の詳細を次に示します。
 
-|Property name|Data type|Description|
+|プロパティ名|データ型|Description|
 |---|---|---|
-|Headers|object|Request headers|
-|Body|object|Request object|
+|ヘッダー|オブジェクト|要求ヘッダー|
+|本文|オブジェクト|要求オブジェクト|
 
-#### <a name="response-action"></a>Response action
+#### 応答アクション
 
-The following are input fields for the HTTP Response action. A * means that it is a required field.
+HTTP 応答アクションの入力フィールドを次に示します。* は、必須フィールドであることを示しています。
 
-|Display name|Property name|Description|
+|表示名|プロパティ名|Description|
 |---|---|---|
-|Status Code*|statusCode|The HTTP status code|
-|Headers|headers|A JSON object of any response headers to include|
-|Body|body|The response body|
+|状態コード*|StatusCode|HTTP 状態コード|
+|ヘッダー|headers|含める任意の応答ヘッダーの JSON オブジェクト|
+|本文|body|応答本文|
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
+プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

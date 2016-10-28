@@ -1,52 +1,51 @@
 <properties
-    pageTitle="Get started with Azure Blob storage (object storage) using .NET | Microsoft Azure"
-    description="Store unstructured data in the cloud with Azure Blob storage (object storage)."
-    services="storage"
-    documentationCenter=".net"
-    authors="tamram"
-    manager="carmonm"
-    editor="tysonn"/>
+	pageTitle=".NET を使用して Azure Blob Storage (オブジェクト ストレージ) を使用する | Microsoft Azure"
+	description="Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
+	services="storage"
+	documentationCenter=".net"
+	authors="tamram"
+	manager="carmonm"
+	editor="tysonn"/>
 
 <tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="hero-article"
-    ms.date="10/18/2016"
-    ms.author="tamram"/>
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="hero-article"
+	ms.date="09/20/2016"
+	ms.author="jwillis;tamram"/>
 
 
-
-# <a name="get-started-with-azure-blob-storage-using-.net"></a>Get started with Azure Blob storage using .NET
+# .NET を使用して Azure Blob Storage を使用する
 
 [AZURE.INCLUDE [storage-selector-blob-include](../../includes/storage-selector-blob-include.md)]
 <br/>
 [AZURE.INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="overview"></a>Overview
+## Overview
 
-Azure Blob storage is a service that stores unstructured data in the cloud as objects/blobs. Blob storage can store any type of text or binary data, such as a document, media file, or application installer. Blob storage is also referred to as object storage.
+Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
-### <a name="about-this-tutorial"></a>About this tutorial
+### このチュートリアルについて
 
-This tutorial shows how to write .NET code for some common scenarios using Azure Blob storage. Scenarios covered include uploading, listing, downloading, and deleting blobs.
+このチュートリアルでは、Azure Blob Storage を使用していくつかの一般的なシナリオの .NET コードを記述する方法を示します。紹介するシナリオは、BLOB のアップロード、一覧表示、ダウンロード、および削除です。
 
-**Estimated time to complete:** 45 minutes
+**推定所要時間:** 45 分
 
-**Prerequisities:**
+**前提条件:**
 
-- [Microsoft Visual Studio](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx)
-- [Azure Storage Client Library for .NET](https://www.nuget.org/packages/WindowsAzure.Storage/)
-- [Azure Configuration Manager for .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
-- An [Azure storage account](storage-create-storage-account.md#create-a-storage-account)
+- [Microsoft Visual Studio](https://www.visualstudio.com/ja-JP/visual-studio-homepage-vs.aspx)
+- [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+- [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
+- [Azure ストレージ アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 
 [AZURE.INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
 
-### <a name="more-samples"></a>More samples
+### その他のサンプル
 
-For additional examples using Blob storage, see [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/). You can download the sample application and run it, or browse the code on GitHub.
+Blob Storage を使用したその他の例については、「[Getting Started with Azure Blob Storage in .NET (.NET での Azure Blob Storage の使用)](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)」を参照してください。サンプル アプリケーションをダウンロードして実行することも、GitHub でコードを参照することもできます。
 
 
 [AZURE.INCLUDE [storage-blob-concepts-include](../../includes/storage-blob-concepts-include.md)]
@@ -55,31 +54,31 @@ For additional examples using Blob storage, see [Getting Started with Azure Blob
 
 [AZURE.INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
 
-### <a name="add-namespace-declarations"></a>Add namespace declarations
+### 名前空間宣言の追加
 
-Add the following `using` statements to the top of the `program.cs` file:
+次の `using` ステートメントを `program.cs` ファイルの先頭に追加します。
 
-    using Microsoft.Azure; // Namespace for CloudConfigurationManager
-    using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
+	using Microsoft.Azure; // Namespace for CloudConfigurationManager
+	using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
     using Microsoft.WindowsAzure.Storage.Blob; // Namespace for Blob storage types
 
-### <a name="parse-the-connection-string"></a>Parse the connection string
+### 接続文字列を解析する
 
 [AZURE.INCLUDE [storage-cloud-configuration-manager-include](../../includes/storage-cloud-configuration-manager-include.md)]
 
-### <a name="create-the-blob-service-client"></a>Create the Blob service client
+### BLOB サービス クライアントの作成
 
-The **CloudBlobClient** class enables you to retrieve containers and blobs stored in Blob storage. Here's one way to create the service client:
+**CloudBlobClient** クラスを使用すると、Blob Storage 内に格納されているコンテナーと BLOB を取得できます。サービス クライアントを作成する方法の 1 つを次に示します。
 
     CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-Now you are ready to write code that reads data from and writes data to Blob storage.
+これで、Blob Storage に対してデータの読み取りと書き込みを実行するコードを記述する準備が整いました。
 
-## <a name="create-a-container"></a>Create a container
+## コンテナーを作成する
 
 [AZURE.INCLUDE [storage-container-naming-rules-include](../../includes/storage-container-naming-rules-include.md)]
 
-This example shows how to create a container if it does not already exist:
+この例は、コンテナーがない場合に、コンテナーを作成する方法を示しています。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -94,20 +93,20 @@ This example shows how to create a container if it does not already exist:
     // Create the container if it doesn't already exist.
     container.CreateIfNotExists();
 
-By default, the new container is private, meaning that you must specify your storage access key to download blobs from this container. If you want to make the files within the container available to everyone, you can set the container to be public using the following code:
+既定では、新しいコンテナーはプライベートなので、このコンテナーから BLOB をダウンロードするにはストレージ アクセス キーを指定する必要があります。コンテナー内のファイルをだれでも利用できるようにする場合は、次のコードを使ってコンテナーをパブリックに設定できます。
 
     container.SetPermissions(
         new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
-Anyone on the Internet can see blobs in a public container, but you can modify or delete them only if you have the appropriate account access key or a shared access signature.
+パブリック コンテナー内の BLOB は、インターネットに接続しているすべてのユーザーが表示できますが、変更または削除できるのは、適切なアカウント アクセス キーまたは Shared Access Signature を持っているユーザーだけです。
 
-## <a name="upload-a-blob-into-a-container"></a>Upload a blob into a container
+## コンテナーに BLOB をアップロードする
 
-Azure Blob Storage supports block blobs and page blobs.  In the majority of cases, block blob is the recommended type to use.
+Azure Blob Storage では、ブロック BLOB とページ BLOB がサポートされています。ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
-To upload a file to a block blob, get a container reference and use it to get a block blob reference. Once you have a blob reference, you can upload any stream of data to it by calling the **UploadFromStream** method. This operation will create the blob if it didn't previously exist, or overwrite it if it does exist.
+ファイルをブロック blob にアップロードするには、コンテナーの参照を取得し、それを使用してブロック blob の参照を取得します。BLOB の参照を取得したら、**UploadFromStream** メソッドを呼び出すことによって、データの任意のストリームを BLOB にアップロードできます。この操作により、BLOB がまだ存在しない場合は作成され、存在する場合は上書きされます。
 
-The following example shows how to upload a blob into a container and assumes that the container was already created.
+次の例は、BLOB をコンテナーにアップロードする方法を示しています。この例では、既にコンテナーが作成されていることを前提としています。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -128,88 +127,88 @@ The following example shows how to upload a blob into a container and assumes th
         blockBlob.UploadFromStream(fileStream);
     }
 
-## <a name="list-the-blobs-in-a-container"></a>List the blobs in a container
+## コンテナー内の BLOB を一覧表示する
 
-To list the blobs in a container, first get a container reference. You can then use the container's **ListBlobs** method to retrieve the blobs and/or directories within it. To access the rich set of properties and methods for a returned **IListBlobItem**, you must cast it to a **CloudBlockBlob**, **CloudPageBlob**, or **CloudBlobDirectory** object.  If the type is unknown, you can use a type check to determine which to cast it to.  The following code demonstrates how to retrieve and output the URI of each item in the `photos` container:
+コンテナー内の BLOB を一覧表示するには、まず、コンテナーの参照を取得します。次に、コンテナーの **ListBlobs** メソッドを使用して、その中の BLOB やディレクトリを取得できます。返される **IListBlobItem** のプロパティやメソッドにアクセスするには、**CloudBlockBlob**、**CloudPageBlob**、**CloudBlobDirectory** のいずれかのオブジェクトにキャストする必要があります。型がわからない場合は、型チェックを使うとどれにキャストすればよいかがわかります。次のコードは、`photos` コンテナー内の各アイテムの URI を取得して出力する方法を示しています。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
     // Create the blob client.
-    CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+	CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 
-    // Retrieve reference to a previously created container.
-    CloudBlobContainer container = blobClient.GetContainerReference("photos");
+	// Retrieve reference to a previously created container.
+	CloudBlobContainer container = blobClient.GetContainerReference("photos");
+
+	// Loop over items within the container and output the length and URI.
+	foreach (IListBlobItem item in container.ListBlobs(null, false))
+	{
+		if (item.GetType() == typeof(CloudBlockBlob))
+		{
+			CloudBlockBlob blob = (CloudBlockBlob)item;
+
+			Console.WriteLine("Block blob of length {0}: {1}", blob.Properties.Length, blob.Uri);
+
+		}
+		else if (item.GetType() == typeof(CloudPageBlob))
+		{
+			CloudPageBlob pageBlob = (CloudPageBlob)item;
+
+			Console.WriteLine("Page blob of length {0}: {1}", pageBlob.Properties.Length, pageBlob.Uri);
+
+		}
+		else if (item.GetType() == typeof(CloudBlobDirectory))
+		{
+			CloudBlobDirectory directory = (CloudBlobDirectory)item;
+
+			Console.WriteLine("Directory: {0}", directory.Uri);
+		}
+	}
+
+上記のように、BLOB の名前はパス情報を含めて指定することができます。これで、従来のファイル システムと同じように、整理およびスキャン可能な仮想ディレクトリ構造が作成されます。ディレクトリ構造は仮想のみであり、Blob Storage で使用できるリソースはコンテナーと BLOB のみであることに注意してください。ただし、ストレージ クライアント ライブラリでは、仮想ディレクトリを参照し、この方法で整理される BLOB の操作プロセスを簡略化するための **CloudBlobDirectory** オブジェクトが提供されます。
+
+たとえば、`photos` という名前のコンテナーに次の一連のブロック BLOB があったとします。
+
+	photo1.jpg
+	2010/architecture/description.txt
+	2010/architecture/photo3.jpg
+	2010/architecture/photo4.jpg
+	2011/architecture/photo5.jpg
+	2011/architecture/photo6.jpg
+	2011/architecture/description.txt
+	2011/photo7.jpg
+
+'photos' コンテナーの **ListBlobs** を呼び出すと (上記サンプルを参照)、階層化された一覧が返されます。これには **CloudBlobDirectory** と **CloudBlockBlob** の両方のオブジェクトが含まれ、コンテナー内のディレクトリと BLOB をそれぞれ表します。結果の出力は次のようになります。
+
+	Directory: https://<accountname>.blob.core.windows.net/photos/2010/
+	Directory: https://<accountname>.blob.core.windows.net/photos/2011/
+	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
+
+
+必要に応じて、**ListBlobs** メソッドの **UseFlatBlobListing** パラメーターを **true** に設定することもできます。この場合、コンテナー内のすべての BLOB は **CloudBlockBlob** オブジェクトとして返されます。フラットな一覧を返す **ListBlobs** の呼び出しは次のようになります。
 
     // Loop over items within the container and output the length and URI.
-    foreach (IListBlobItem item in container.ListBlobs(null, false))
-    {
-        if (item.GetType() == typeof(CloudBlockBlob))
-        {
-            CloudBlockBlob blob = (CloudBlockBlob)item;
+	foreach (IListBlobItem item in container.ListBlobs(null, true))
+	{
+	   ...
+	}
 
-            Console.WriteLine("Block blob of length {0}: {1}", blob.Properties.Length, blob.Uri);
+結果は次のようになります。
 
-        }
-        else if (item.GetType() == typeof(CloudPageBlob))
-        {
-            CloudPageBlob pageBlob = (CloudPageBlob)item;
-
-            Console.WriteLine("Page blob of length {0}: {1}", pageBlob.Properties.Length, pageBlob.Uri);
-
-        }
-        else if (item.GetType() == typeof(CloudBlobDirectory))
-        {
-            CloudBlobDirectory directory = (CloudBlobDirectory)item;
-
-            Console.WriteLine("Directory: {0}", directory.Uri);
-        }
-    }
-
-As shown above, you can name blobs with path information in their names. This creates a virtual directory structure that you can organize and traverse as you would a traditional file system. Note that the directory structure is virtual only - the only resources available in Blob storage are containers and blobs. However, the storage client library offers a **CloudBlobDirectory** object to refer to a virtual directory and simplify the process of working with blobs that are organized in this way.
-
-For example, consider the following set of block blobs in a container named `photos`:
-
-    photo1.jpg
-    2010/architecture/description.txt
-    2010/architecture/photo3.jpg
-    2010/architecture/photo4.jpg
-    2011/architecture/photo5.jpg
-    2011/architecture/photo6.jpg
-    2011/architecture/description.txt
-    2011/photo7.jpg
-
-When you call **ListBlobs** on the 'photos' container (as in the above sample), a hierarchical listing is returned. It contains both **CloudBlobDirectory** and **CloudBlockBlob** objects, representing the directories and blobs in the container, respectively. The resulting output looks like:
-
-    Directory: https://<accountname>.blob.core.windows.net/photos/2010/
-    Directory: https://<accountname>.blob.core.windows.net/photos/2011/
-    Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
+	Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
+	Block blob of length 314618: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo3.jpg
+	Block blob of length 522713: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo4.jpg
+	Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2011/architecture/description.txt
+	Block blob of length 419048: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo5.jpg
+	Block blob of length 506388: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo6.jpg
+	Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
+	Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
 
 
-Optionally, you can set the **UseFlatBlobListing** parameter of of the **ListBlobs** method to **true**. In this case, every blob in the container is returned as a **CloudBlockBlob** object. The call to **ListBlobs** to return a flat listing looks like this:
+## BLOB をダウンロードする
 
-    // Loop over items within the container and output the length and URI.
-    foreach (IListBlobItem item in container.ListBlobs(null, true))
-    {
-       ...
-    }
-
-and the results look like this:
-
-    Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2010/architecture/description.txt
-    Block blob of length 314618: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo3.jpg
-    Block blob of length 522713: https://<accountname>.blob.core.windows.net/photos/2010/architecture/photo4.jpg
-    Block blob of length 4: https://<accountname>.blob.core.windows.net/photos/2011/architecture/description.txt
-    Block blob of length 419048: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo5.jpg
-    Block blob of length 506388: https://<accountname>.blob.core.windows.net/photos/2011/architecture/photo6.jpg
-    Block blob of length 399751: https://<accountname>.blob.core.windows.net/photos/2011/photo7.jpg
-    Block blob of length 505623: https://<accountname>.blob.core.windows.net/photos/photo1.jpg
-
-
-## <a name="download-blobs"></a>Download blobs
-
-To download blobs, first retrieve a blob reference and then call the **DownloadToStream** method. The following example uses the **DownloadToStream** method to transfer the blob contents to a stream object that you can then persist to a local file.
+BLOB をダウンロードするには、まず BLOB の参照を取得し、次に **DownloadToStream** メソッドを呼び出します。次の例は、**DownloadToStream** メソッドを使用して、ローカル ファイルに保存できるストリーム オブジェクトに BLOB の内容を転送します。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -230,9 +229,9 @@ To download blobs, first retrieve a blob reference and then call the **DownloadT
         blockBlob.DownloadToStream(fileStream);
     }
 
-You can also use the **DownloadToStream** method to download the contents of a blob as a text string.
+**DownloadToStream** メソッドを使用して BLOB の内容をテキスト文字列としてダウンロードすることもできます。
 
-    // Retrieve storage account from connection string.
+	// Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
         CloudConfigurationManager.GetSetting("StorageConnectionString"));
 
@@ -242,19 +241,19 @@ You can also use the **DownloadToStream** method to download the contents of a b
     // Retrieve reference to a previously created container.
     CloudBlobContainer container = blobClient.GetContainerReference("mycontainer");
 
-    // Retrieve reference to a blob named "myblob.txt"
-    CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
+	// Retrieve reference to a blob named "myblob.txt"
+	CloudBlockBlob blockBlob2 = container.GetBlockBlobReference("myblob.txt");
 
-    string text;
-    using (var memoryStream = new MemoryStream())
-    {
-        blockBlob2.DownloadToStream(memoryStream);
-        text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
-    }
+	string text;
+	using (var memoryStream = new MemoryStream())
+	{
+		blockBlob2.DownloadToStream(memoryStream);
+		text = System.Text.Encoding.UTF8.GetString(memoryStream.ToArray());
+	}
 
-## <a name="delete-blobs"></a>Delete blobs
+## BLOB を削除する
 
-To delete a blob, first get a blob reference and then call the **Delete** method on it.
+BLOB を削除するには、まず、BLOB の参照を取得し、次にその **Delete** メソッドを呼び出します。
 
     // Retrieve storage account from connection string.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -273,13 +272,13 @@ To delete a blob, first get a blob reference and then call the **Delete** method
     blockBlob.Delete();
 
 
-## <a name="list-blobs-in-pages-asynchronously"></a>List blobs in pages asynchronously
+## BLOB をページで非同期に一覧表示する
 
-If you are listing a large number of blobs, or you want to control the number of results you return in one listing operation, you can list blobs in pages of results. This example shows how to return results in pages asynchronously, so that execution is not blocked while waiting to return a large set of results.
+多数の BLOB を一覧表示する場合や、1 回の一覧表示操作で返される結果の数を制御する場合には、BLOB の一覧を結果のページで表示できます。この例は、大きな結果のセットを返すために待機している間に実行がブロックされないように、結果をページで非同期に返す方法を示しています。
 
-This example shows a flat blob listing, but you can also perform a hierarchical listing, by setting the `useFlatBlobListing` parameter of the **ListBlobsSegmentedAsync** method to `false`.
+この例は、BLOB をフラットな一覧で表示しますが、**ListBlobsSegmentedAsync** メソッドの `useFlatBlobListing` パラメーターを `false` に設定することによって、階層化された一覧で表示することもできます。
 
-Because the sample method calls an asynchronous method, it must be prefaced with the `async` keyword, and it must return a **Task** object. The await keyword specified for the **ListBlobsSegmentedAsync** method suspends execution of the sample method until the listing task completes.
+サンプル メソッドは非同期メソッドを呼び出すため、その先頭を `async` キーワードにする必要があり、**Task** オブジェクトを返す必要があります。**ListBlobsSegmentedAsync** メソッドに対して指定された await キーワードは、一覧表示タスクが完了するまで、サンプル メソッドの実行を中断します。
 
     async public static Task ListBlobsSegmentedInFlatListing(CloudBlobContainer container)
     {
@@ -310,13 +309,13 @@ Because the sample method calls an asynchronous method, it must be prefaced with
         while (continuationToken != null);
     }
 
-## <a name="writing-to-an-append-blob"></a>Writing to an append blob
+## 追加 BLOB への書き込み
 
-An append blob is a new type of blob, introduced with version 5.x of the Azure storage client library for .NET. An append blob is optimized for append operations, such as logging. Like a block blob, an append blob is comprised of blocks, but when you add a new block to an append blob, it is always appended to the end of the blob. You cannot update or delete an existing block in an append blob. The block IDs for an append blob are not exposed as they are for a block blob.
+追加 BLOB は .NET 向け Azure ストレージ クライアント ライブラリのバージョン 5 x で発表された新しいタイプの BLOB です。追加 BLOB は、ログ記録などの追加操作のために最適化されています。ブロック BLOB のように、追加 BLOB はブロックで構成されますが、追加 BLOB に新しいブロックを追加する場合は常に BLOB の最後に追加されます。追加 BLOB の既存のブロックは更新したり、削除することはできません。追加 BLOB のブロック ID はブロック BLOB 用のため、公開されることはありません。
 
-Each block in an append blob can be a different size, up to a maximum of 4 MB, and an append blob can include a maximum of 50,000 blocks. The maximum size of an append blob is therefore slightly more than 195 GB (4 MB X 50,000 blocks).
+追加 BLOB 内の各ブロックは、最大 4 MB のサイズにすることができます。また追加 BLOB には最大 50,000 のブロックを含めることができます。よって追加 BLOB の最大サイズは 195 GB (4 MB X 50,000 ブロック) よりも少し大きくなります。
 
-The example below creates a new append blob and appends some data to it, simulating a simple logging operation.
+次の例では、新しい追加 BLOB を作成し、データを追加してシンプルなログ記録操作をシミュレートしています。
 
     //Parse the connection string for the storage account.
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -355,49 +354,49 @@ The example below creates a new append blob and appends some data to it, simulat
     //Read the append blob to the console window.
     Console.WriteLine(appendBlob.DownloadText());
 
-See [Understanding Block Blobs, Page Blobs, and Append Blobs](https://msdn.microsoft.com/library/azure/ee691964.aspx) for more information about the differences between the three types of blobs.
+3 つの BLOB タイプにおける違いの詳細については、「[Understanding Block Blobs, Page Blobs, and Append Blobs (ブロック BLOB、ページ BLOB、追加 BLOB を理解する)](https://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。
 
-## <a name="managing-security-for-blobs"></a>Managing security for blobs
+## BLOB のセキュリティの管理
 
-By default, Azure Storage keeps your data secure by limiting access to the account owner, who is in possession of the account access keys. When you need to share blob data in your storage account, it is important to do so without compromising the security of your account access keys. Additionally, you can encrypt blob data to ensure that it is secure going over the wire and in Azure Storage.
+既定では、Azure Storage はアカウント所有者へのアクセスを制限することによってデータのセキュリティを維持します。アカウントの所有者は、アカウント アクセス キーを所持している人です。ストレージ アカウント内の BLOB データを共有する必要がある場合は、アカウント アクセス キーのセキュリティを損なわずに共有することが重要です。また、ネットワーク経由の送信と Azure Storage でのセキュリティを確保するために、BLOB データを暗号化することもできます。
 
 [AZURE.INCLUDE [storage-account-key-note-include](../../includes/storage-account-key-note-include.md)]
 
-### <a name="controlling-access-to-blob-data"></a>Controlling access to blob data
+### BLOB データへのアクセスの制御
 
-By default, the blob data in your storage account is accessible only to storage account owner. Authenticating requests against Blob storage requires the account access key by default. However, you may wish to make certain blob data available to other users. You have two options:
+既定では、ストレージ アカウント内の BLOB データには、ストレージ アカウント所有者だけがアクセスできます。Blob Storage に対する認証要求には、既定ではアカウント アクセス キーが必要です。ただし、特定の BLOB データは他のユーザーが使用できるようにしたい場合があります。2 つのオプションがあります。
 
-- **Anonymous access:** You can make a container or its blobs publicly available for anonymous access. See [Manage anonymous read access to containers and blobs](storage-manage-access-to-resources.md) for more information.
-- **Shared access signatures:** You can provide clients with a shared access signature (SAS), which provides delegated access to a resource in your storage account, with permissions that you specify and over an interval that you specify. See [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) for more information.
+- **匿名アクセス:** コンテナーまたはその BLOB を匿名アクセスに対して公開することができます。詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)」を参照してください。
+- **Shared Access Signature:** Shared Access Signature (SAS) をクライアントに提供することができます。この署名は、ストレージ アカウント内のリソースへの委任アクセスと指定されたアクセス許可を、指定された期間にわたって提供します。詳細については、「[Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-### <a name="encrypting-blob-data"></a>Encrypting blob data
+### BLOB データの暗号化
 
-Azure Storage supports encrypting blob data both at the client and on the server:
+Azure Storage では、クライアント側とサーバー側の両方で、BLOB データの暗号化をサポートしています。
 
-- **Client-side encryption:** The Storage Client Library for .NET supports encrypting data within client applications before uploading to Azure Storage, and decrypting data while downloading to the client. The library also supports integration with Azure Key Vault for storage account key management. See [Client-Side Encryption with .NET for Microsoft Azure Storage](storage-client-side-encryption.md) for more information. Also see [Tutorial: Encrypt and decrypt blobs in Microsoft Azure Storage using Azure Key Vault](storage-encrypt-decrypt-blobs-key-vault.md).
-- **Server-side encryption**: Azure Storage now supports server-side encryption. See [Azure Storage Service Encryption for Data at Rest (Preview)](storage-service-encryption.md).
+- **クライアント側の暗号化**: .NET 用ストレージ クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)についてのページを参照してください。また、「[チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)」も参照してください。
+- **サーバー側の暗号化**: Azure Storage は現在、サーバー側の暗号化をサポートしています。「[Azure Storage Service Encryption for Data at Rest (プレビュー)](storage-service-encryption.md)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now that you've learned the basics of Blob storage, follow these links to learn more.
+これで、Blob Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
-- [Microsoft Azure Storage Explorer (MASE)](../vs-azure-tools-storage-manage-with-storage-explorer.md) is a free, standalone app from Microsoft that enables you to work visually with Azure Storage data on Windows, OS X, and Linux.
+### Microsoft Azure ストレージ エクスプローラー
+- [Microsoft Azure ストレージ エクスプローラー (MASE)](../vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、OS X、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
-### <a name="blob-storage-samples"></a>Blob storage samples
+### Blob Storage のサンプル
 
-- [Getting Started with Azure Blob Storage in .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
+- [.Net での Azure Blob Storage の概要](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)
 
-### <a name="blob-storage-reference"></a>Blob storage reference
+### Blob Storage リファレンス
 
-- [Storage Client Library for .NET reference](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
-- [REST API reference](http://msdn.microsoft.com/library/azure/dd179355)
+- [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
+- [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
 
-### <a name="conceptual-guides"></a>Conceptual guides
+### 概念的なガイド
 
-- [Transfer data with the AzCopy command-line utility](storage-use-azcopy.md)
-- [Get started with File storage for .NET](storage-dotnet-how-to-use-files.md)
-- [How to use Azure blob storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
+- [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
+- [.NET 用の File Storage の概要](storage-dotnet-how-to-use-files.md)
+- [Web ジョブ SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)
 
   [Blob5]: ./media/storage-dotnet-how-to-use-blobs/blob5.png
   [Blob6]: ./media/storage-dotnet-how-to-use-blobs/blob6.png
@@ -410,8 +409,4 @@ Now that you've learned the basics of Blob storage, follow these links to learn 
   [.NET client library reference]: http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
   [REST API reference]: http://msdn.microsoft.com/library/azure/dd179355
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=AcomDC_0921_2016-->

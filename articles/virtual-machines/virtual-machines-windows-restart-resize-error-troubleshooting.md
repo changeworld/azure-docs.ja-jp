@@ -1,6 +1,6 @@
 <properties
-   pageTitle="VM restarting or resizing issues | Microsoft Azure"
-   description="Troubleshoot Resource Manager deployment issues with restarting or resizing an existing Windows Virtual Machine in Azure"
+   pageTitle="VM の再起動またはサイズ変更の問題 | Microsoft Azure"
+   description="Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング"
    services="virtual-machines-windows, azure-resource-manager"
    documentationCenter=""
    authors="Deland-Han"
@@ -17,66 +17,61 @@
    ms.date="09/09/2016"
    ms.author="delhan"/>
 
+# Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関する Resource Manager デプロイメントの問題のトラブルシューティング
 
-# <a name="troubleshoot-resource-manager-deployment-issues-with-restarting-or-resizing-an-existing-windows-virtual-machine-in-azure"></a>Troubleshoot Resource Manager deployment issues with restarting or resizing an existing Windows Virtual Machine in Azure
-
-When you try to start a stopped Azure Virtual Machine (VM), or resize an existing Azure VM, the common error you encounter is an allocation failure. This error results when the cluster or region either does not have resources available or cannot support the requested VM size.
+停止している Azure 仮想マシン (VM) を起動しようとしたとき、または既存の Azure VM のサイズを変更しようとしたときに発生する一般的なエラーは割り当てエラーです。このエラーは、クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできない場合に発生します。
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="collect-audit-logs"></a>Collect audit logs
+## 監査ログの収集
 
-To start troubleshooting, collect the audit logs to identify the error associated with the issue. The following links contain detailed information on the process:
+トラブルシューティングを開始するには、監査ログを収集して問題に関連するエラーを特定します。このプロセスの詳細については、次のリンクをご覧ください。
 
-[Troubleshooting resource group deployments with Azure Portal](../resource-manager-troubleshoot-deployments-portal.md)
+[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](../resource-manager-troubleshoot-deployments-portal.md)
 
-[Audit operations with Resource Manager](../resource-group-audit.md)
+[リソース マネージャーの監査操作](../resource-group-audit.md)
 
-## <a name="issue:-error-when-starting-a-stopped-vm"></a>Issue: Error when starting a stopped VM
+## 問題: 停止している VM の起動時のエラー
 
-You try to start a stopped VM but get an allocation failure.
+停止している VM を起動しようとしたときに、割り当てエラーが発生します。
 
-### <a name="cause"></a>Cause
+### 原因
 
-The request to start the stopped VM has to be attempted at the original cluster that hosts the cloud service. However, the cluster does not have free space available to fulfill the request.
+停止している VM の起動要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、クラスターに要求の処理に使用できる空き領域がありません。
 
-### <a name="resolution"></a>Resolution
+### 解決策
 
-*   Stop all the VMs in the availability set, and then restart each VM.
+*	可用性セットのすべての VM を停止し、各 VM を再起動します。
 
-  1. Click **Resource groups** > _your resource group_ > **Resources** > _your availability set_ > **Virtual Machines** > _your virtual machine_ > **Stop**.
+  1. **[リソース グループ]**、_対象のリソース グループ_、**[リソース]**、_対象の可用性セット_、**[Virtual Machines]**、_対象の仮想マシン_、**[停止]** の順にクリックします。
 
-  2. After all the VMs stop, select each of the stopped VMs and click Start.
+  2. すべての VM が停止したら、停止している各 VM を選択し、[起動] をクリックします。
 
-*   Retry the restart request at a later time.
+*	後で再起動要求を再試行します。
 
-## <a name="issue:-error-when-resizing-an-existing-vm"></a>Issue: Error when resizing an existing VM
+## 問題: 既存の VM のサイズ変更時のエラー
 
-You try to resize an existing VM but get an allocation failure.
+既存の VM のサイズを変更しようとしたときに割り当てエラーが発生します。
 
-### <a name="cause"></a>Cause
+### 原因
 
-The request to resize the VM has to be attempted at the original cluster that hosts the cloud service. However, the cluster does not support the requested VM size.
+VM のサイズ変更要求は、クラウド サービスをホストしている元のクラスターで行う必要がありますが、クラスターが要求された VM サイズをサポートしていません。
 
-### <a name="resolution"></a>Resolution
+### 解決策
 
-* Retry the request using a smaller VM size.
+* VM サイズを小さくして要求を再試行します。
 
-* If the size of the requested VM cannot be changed：
+* 要求した VM のサイズを変更できない場合は、次の手順を実行します。
 
-  1. Stop all the VMs in the availability set.
+  1. 可用性セットのすべての VM を停止します。
 
-    * Click **Resource groups** > _your resource group_ > **Resources** > _your availability set_ > **Virtual Machines** > _your virtual machine_ > **Stop**.
+    * **[リソース グループ]**、_対象のリソース グループ_、**[リソース]**、_対象の可用性セット_、**[Virtual Machines]**、_対象の仮想マシン_、**[停止]** の順にクリックします。
 
-  2. After all the VMs stop, resize the desired VM to a larger size.
-  3. Select the resized VM and click **Start**, and then start each of the stopped VMs.
+  2. すべての VM が停止したら、目的の VM のサイズを大きなサイズに変更します。
+  3. サイズ変更した VM を選択して **[起動]** をクリックした後、停止している各 VM を起動します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-If you encounter issues when you create a new Windows VM in Azure, see [Troubleshoot deployment issues with creating a new Windows virtual machine in Azure](../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md).
+Azure で新しい Windows VM を作成するときに問題が発生する場合は、「[Azure での新しい Windows 仮想マシンの作成に関するデプロイメントの問題のトラブルシューティング](../virtual-machines/virtual-machines-windows-troubleshoot-deployment-new-vm.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

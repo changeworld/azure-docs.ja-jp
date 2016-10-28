@@ -1,71 +1,67 @@
 <properties 
-    pageTitle="Data Factory Use Case - Product Recommendations" 
-    description="Learn about an use case implemented by using Azure Data Factory along with other services." 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="sharonlo101" 
-    manager="jhubbard" 
-    editor="monicar"/>
+	pageTitle="Data Factory の使用事例 - 製品推奨" 
+	description="Azure Data Factory と他のサービスを使用して実装した使用事例について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
 <tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/01/2016" 
-    ms.author="shlo"/>
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/01/2016" 
+	ms.author="spelluru"/>
 
+# 使用事例 - 製品に関する推奨事項 
 
-# <a name="use-case---product-recommendations"></a>Use Case - Product Recommendations 
+Azure Data Factory は、ソリューション アクセラレータの Cortana Intelligence Suite の実装に使用されている数多くあるサービスの 1 つです。このスイートの詳細については、[Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) のページを参照してください。このドキュメントでは、Azure ユーザーが Azure Data Factory と他の Cortana Intelligence コンポーネント サービスを使用して、既に解決および実装している一般的な使用事例について説明します。
 
-Azure Data Factory is one of many services used to implement the Cortana Intelligence Suite of solution accelerators.  See [Cortana Intelligence Suite](http://www.microsoft.com/cortanaanalytics) page for details about this suite. In this document, we describe a common use case that Azure users have already solved and implemented using Azure Data Factory and other Cortana Intelligence component services.
+## シナリオ
 
-## <a name="scenario"></a>Scenario
+一般的に、オンライン小売業者は、顧客が最も興味を持ち、結果として購入する可能性が最も高い製品を提示することで、顧客の購入意欲を高めます。そのために、個人用に設定された製品推奨を使用して、顧客のオンライン エクスペリエンスをカスタマイズする必要があります。個人用に設定された推奨は、ユーザーの現在および過去の購入行動データ、製品情報、新規取り扱いのブランド、製品と顧客のセグメント データを基に作成されます。さらに、全ユーザーの全体的な使用行動の分析に基づいて、ユーザーに製品推奨を提供することができます。
 
-Online retailers commonly want to entice their customers to purchase products by presenting them with products they are most likely to be interested in, and therefore most likely to buy. To accomplish this, online retailers need to customize their user’s online experience by using personalized product recommendations for that specific user. These personalized recommendations are to be made based on their current and historical shopping behavior data, product information, newly introduced brands, and product and customer segmentation data.  Additionally, they can provide the user product recommendations based on analysis of overall usage behavior from all their users combined.
+オンライン小売業者の目標は、ユーザーのクリックから売上への転換を最適化し、売上額を向上することです。そのためには、顧客の関心と操作に基づいて、状況と行動に応じた製品推奨を提供する必要があります。この使用事例では、ビジネスの一例として、顧客に合わせて最適化したいオンライン小売業者を取り上げています。しかし、ここで説明する原則は、個人用に設定された製品推奨を使用して商品やサービスに対する顧客の関心を引き、顧客の購入エクスペリエンスを強化したいと考えているすべての企業に適用できます。
 
-The goal of these retailers is to optimize for user click-to-sale conversions and earn higher sales revenue.  They achieve this conversion by delivering contextual, behavior-based product recommendations based on customer interests and actions. For this use case, we use online retailers as an example of businesses that want to optimize for their customers. However, these principles apply to any business that wants to engage its customers around its goods and services and enhance their customers’ buying experience with personalized product recommendations.
+## 課題
 
-## <a name="challenges"></a>Challenges
+オンライン小売業者がこのような使用事例を実装するときに直面する課題は数多くあります。
 
-There are many challenges that online retailers face when trying to implement this type of use case. 
+第 1 に、オンプレミスとクラウドに保存されている複数のデータ ソースから、さまざまな規模と形のデータを取り込みます。このデータには、製品データ、顧客の行動履歴データ、ユーザーがオンライン小売店サイトを閲覧するときのユーザー データが含まれます。
 
-First, data of different sizes and shapes must be ingested from multiple data sources, both on-premises and in the cloud. This data includes product data, historical customer behavior data, and user data as the user browses the online retail site. 
+第 2 に、個人用に設定された製品推奨を合理的かつ正確に計算し、予測する必要があります。オンライン小売業者は、製品、ブランド、顧客行動データ、ブラウザー データに加え、過去の顧客から寄せられたフィードバックも考慮して、ユーザーにとって最適な製品推奨を決定する必要があります。
 
-Second, personalized product recommendations must be reasonably and accurately calculated and predicted. In addition to product, brand, and customer behavior and browser data, online retailers also need to include customer feedback on past purchases to factor in the determination of the best product recommendations for the user. 
+第 3 に、シームレスな閲覧と購入のエクスペリエンス、最新で関連性が高い推奨を提供するために、推奨は即時にユーザーに示す必要があります。
 
-Third, the recommendations must be immediately deliverable to the user to provide a seamless browsing and purchasing experience, and provide the most recent and relevant recommendations. 
+最後に、小売業者は、全体的なアップセルとクロスセルについてクリックからの転換の成功を追跡して、アプローチの効果を測定し、調整して今後の推奨に生かす必要があります。
 
-Finally, retailers need to measure the effectiveness of their approach by tracking overall up-sell and cross-sell click-to-conversion sales successes, and adjust to their future recommendations.
+## ソリューションの概要
 
-## <a name="solution-overview"></a>Solution Overview
+この使用事例は、実在の Azure ユーザーが解決および実装したものです。このユーザーは、Azure Data Factory と他の Cortana Intelligence コンポーネント サービス ([HDInsight](https://azure.microsoft.com/services/hdinsight/) や [Power BI](https://powerbi.microsoft.com/) など) を使用します。
 
-This example use case has been solved and implemented by real Azure users by using Azure Data Factory and other Cortana Intelligence component services, including [HDInsight](https://azure.microsoft.com/services/hdinsight/) and [Power BI](https://powerbi.microsoft.com/).
+このオンライン小売業者は、ワークフロー全体のデータ ストレージ オプションとして、Azure BLOB ストア、オンプレミスの SQL サーバー、Azure SQL DB、およびリレーショナル データ マートを使用しています。BLOB ストアには、顧客情報、顧客行動データ、および製品情報データが含まれています。製品情報データには、オンプレミスの SQL データ ウェアハウスに格納された製品ブランド情報と製品カタログが含まれています。
 
-The online retailer uses an Azure Blob store, an on-premises SQL server, Azure SQL DB, and a relational data mart as their data storage options throughout the workflow.  The blob store contains customer information, customer behavior data, and product information data. The product information data includes product brand information and a product catalog stored on-premises in a SQL data warehouse. 
+すべてのデータは結合され、製品推奨システムに取り込まれます。ユーザーが Web サイトで製品を閲覧すると、顧客の関心と操作に基づいて個人用に設定された推奨が提供されます。また、特定の顧客に関連付けられていない Web サイト全体の使用パターンに基づいて、顧客が閲覧している製品に関連する製品も表示されます。
 
-All the data is combined and fed into a product recommendation system to deliver personalized recommendations based on customer interests and actions, while the user browses products in the catalog on the website. The customers also see products that are related to the product they are looking at based on overall website usage patterns that are not related to any one user.
+![使用事例の図](./media/data-factory-product-reco-usecase/diagram-1.png)
 
-![use case diagram](./media/data-factory-product-reco-usecase/diagram-1.png)
+オンライン小売業者の Web では、毎日 GB 単位の未加工の Web ログ ファイルが半構造ファイルとして生成されます。未加工の Web ログ ファイルと、顧客および製品のカタログ情報は、Data Factory のグローバルにデプロイされたサービスとしてのデータ移動機能を使用して、Azure BLOB ストレージに定期的に取り込まれます。長期保存のために、1 日の未加工のログ ファイルは (年月別に) 分割され、BLOB ストレージに保存されます。[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) は、未加工のログ ファイルを分割し、BLOB ストレージに保存し、取り込んだログを Hive および Pig スクリプトを使用して処理するために使用されます。その後、分割された Web ログ データは、機械学習推奨システムに必要な入力を抽出するために処理され、個人用に設定された製品推奨が生成されます。
 
-Gigabytes of raw web log files are generated daily from the online retailer’s website as semi-structured files. The raw web log files and the customer and product catalog information is ingested regularly into an Azure Blob storage using Data Factory’s globally deployed data movement as a service. The raw log files for the day are partitioned (by year and month) in blob storage for long-term storage.  [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) is used to partition the raw log files in the blob store and process the ingested logs at scale using both Hive and Pig scripts. The partitioned web logs data is then processed to extract the needed inputs for a machine learning recommendation system to generate the personalized product recommendations.
+この例の機械学習に使用されている推奨システムは、[Apache Mahout](http://mahout.apache.org/) 製のオープン ソースの機械学習推奨プラットフォームです。任意の [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) またはカスタム モデルをシナリオに適用することができます。Mahout モデルは、全体的な使用パターンに基づいて Web サイトのアイテム間の類似性を推測し、個々のユーザーに基づいて個人用に設定された推奨を生成するために使用されます。
 
-The recommendation system used for the machine learning in this example is an open source machine learning recommendation platform from [Apache Mahout](http://mahout.apache.org/).  Any [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) or custom model can be applied to the scenario.  The Mahout model is used to predict the similarity between items on the website based on overall usage patterns, and to generate the personalized recommendations based on the individual user.
+最後に、個人用に設定された製品の推奨事項の結果セットは、リレーショナル データ マートに移動され、小売業者の Web サイトに使用されます。また、別のアプリケーションで BLOB ストレージから結果セットに直接アクセスしたり、別の消費者と使用事例のために他のストアに結果セットを移動したりすることもできます。
 
-Finally, the result set of personalized product recommendations is moved to a relational data mart for consumption by the retailer website.  The result set could also be accessed directly from blob storage by another application, or moved to additional stores for other consumers and use cases.
+## メリット
 
-## <a name="benefits"></a>Benefits
+ソリューションの製品推奨戦略を最適化し、経営目標に合わせて調整することで、オンライン小売業者の販売とマーケティングの目標を達成することができます。また、この小売業者は、効率的で信頼性とコスト効果が高い方法で製品推奨ワークフローを運用および管理できるようになりました。そのアプローチにより、クリックから売上への転換の成功の測定に基づいて、モデルを更新し、効果を微調整しやすくなりました。小売業者は Azure Data Factory を使用することで、時間と費用がかかる手動のクラウド リソース管理を止め、オンデマンドのクラウド リソース管理に移行できました。そして、時間と費用を節約し、ソリューションのデプロイメントにかかる時間を短縮することができました。Azure ポータルから実行できる Data Factory の監視および管理の UI で、データ系列ビューと運用サービスのヘルス状態の確認とトラブルシューティングが簡単になりました。完了データが確実に生成され、ユーザーに提供されるように、ソリューションをスケジュールできるようになりました。また、データと処理の依存関係は自動的に管理されるようになり、人の操作は不要になりました。
 
-By optimizing their product recommendation strategy and aligning it with business goals, the solution met the online retailer’s merchandising and marketing objectives. Additionally, they were able to operationalize and manage the product recommendation workflow in an efficient, reliable, and cost effective manner. The approach made it easy for them to update their model and fine-tune its effectiveness based on the measures of sales click-to-conversion successes. By using Azure Data Factory, they were able to abandon their time consuming and expensive manual cloud resource management and move to on-demand cloud resource management. Therefore, they were able to save time, money, and reduce their time to solution deployment. Data lineage views and operational service health became easy to visualize and troubleshoot with the intuitive Data Factory monitoring and management UI available from the Azure portal. Their solution can now be scheduled and managed so that finished data is reliably produced and delivered to users, and data and processing dependencies are automatically managed without human intervention.
-
-By providing this personalized shopping experience, the online retailer created a more competitive, engaging customer experience and therefore increase sales and overall customer satisfaction.
+オンライン小売業者は、この個人用に設定されたショッピング エクスペリエンスを提供することで、より競争力が高く、魅力的なカスタマー エクスペリエンスを作り、売上と全体的な顧客満足度を向上しています。
 
 
 
   
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

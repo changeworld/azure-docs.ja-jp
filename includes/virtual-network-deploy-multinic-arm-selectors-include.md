@@ -3,7 +3,4 @@
 [Azure CLI](virtual-network-deploy-multinic-arm-cli.md)
 [Template](virtual-network-deploy-multinic-arm-template.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Nov15_HO4-->

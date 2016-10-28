@@ -1,38 +1,35 @@
-### <a name="configure-a-network-security-group-inbound-rule-for-the-vm"></a>Configure a Network Security Group inbound rule for the VM
+### 仮想マシンのネットワーク セキュリティ グループの受信の規則を構成する
 
-If you want to be able to connect to SQL Server over the internet, you have to configure an inbound rule on the Network Security Group for the port that your SQL Server instance is listening. By default, this is TCP port 1433.
+インターネット経由で SQL Server に接続する場合は、SQL Server インスタンスがリッスンしているポートのネットワーク セキュリティ グループに受信の規則を構成する必要があります。既定では、これは TCP ポート 1433 です。
 
-1. In the portal, select **Virtual machines**, and then select your SQL Server VM.
+1. ポータルで、**[仮想マシン]** を選び、SQL Server VM を選びます。
 
-3. Then select the **Nework interfaces**.
+3. 次に、**[ネットワーク インターフェイス]** を選択します。
 
-    ![network interface](./media/virtual-machines-sql-server-connection-steps/rm-network-interface.png)
+	![ネットワーク インターフェイス](./media/virtual-machines-sql-server-connection-steps/rm-network-interface.png)
 
-4. Then select the Network Interface for your VM.
+4. 仮想マシンのネットワーク インターフェイスを選びます。
 
-4. Click the **Network security group** link.
+4. **[ネットワーク セキュリティ グループ]** リンクをクリックします。
 
-    ![network interface](./media/virtual-machines-sql-server-connection-steps/rm-network-security-group.png)
+	![ネットワーク インターフェイス](./media/virtual-machines-sql-server-connection-steps/rm-network-security-group.png)
 
-6. In the properties of the Network Security Group, expand **Inbound security rules**.
+6. ネットワーク セキュリティ グループのプロパティで、**[受信セキュリティ規則]** を展開します。
 
-5. Click the **Add** button.
+5. **[Add] \(追加)** ボタンをクリックします。
 
-6. Provide a **Name** of "SQLServerPublicTraffic".
+6. **[名前]** に「SQLServerPublicTraffic」と入力します。
 
-7. Change **Protocol** to **TCP**.
+7. **[プロトコル]** を **[TCP]** に変更します。
 
-8. Specify a **Destination port range** of 1433 (or the port that your SQL Server Instance is listening on).
+8. **[宛先ポート範囲]** として「1433」 (または、SQL Server インスタンスがリッスンするポート) を指定します。
 
-9. Verify that **Action** is set to **Allow**. The security rule dialog should look similar to the following screenshot.
+9. **[アクション]** が **[許可]** に設定されていることを確認します。セキュリティ規則ダイアログは次のスクリーンショットのようになります。
 
-    ![network security rule](./media/virtual-machines-sql-server-connection-steps/rm-network-security-rule.png)
+	![ネットワークのセキュリティ規則](./media/virtual-machines-sql-server-connection-steps/rm-network-security-rule.png)
 
-9. Click **OK** to save the rule for your VM.
+9. **[OK]** をクリックして VM の規則を保存します。
 
->[AZURE.NOTE] It is possible to have a second Network Security Group associated with your subnet (this is separate from the network security group on the VM). This is not done for you by default; however, if you created a network security group on your subnet, you must open port 1433 on both the subnet's and the VM's Network Security Group. 
+>[AZURE.NOTE] 2 つ目のネットワーク セキュリティ グループをサブネットに関連付けることもできます (このグループは、VM 上のネットワーク セキュリティ グループとは異なります)。既定ではこの操作は行われませんが、サブネット上でネットワーク セキュリティ グループを作成した場合、サブネットと VM の両方のネットワーク セキュリティ グループでポート 1433 を開く必要があります。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

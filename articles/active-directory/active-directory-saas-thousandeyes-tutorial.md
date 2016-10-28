@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with ThousandEyes | Microsoft Azure" 
-    description="Learn how to use ThousandEyes with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と ThousandEyes の統合 | Microsoft Azure" 
+    description="Azure Active Directory で ThousandEyes を使用してシングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,160 +14,154 @@
     ms.date="09/11/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-thousandeyes"></a>Tutorial: Azure Active Directory integration with ThousandEyes
+#チュートリアル: Azure Active Directory と ThousandEyes の統合
   
-The objective of this tutorial is to show how to set up single sign-on between Azure Active Directory (Azure AD) and ThousandEyes.
+このチュートリアルでは、Azure Active Directory (Azure AD) と ThousandEyes の間でのシングル サインオンを設定する方法を説明します。
   
-The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   A ThousandEyes single sign on enabled subscription
+-   有効な Azure サブスクリプション
+-   ThousandEyes でのシングル サインオンが有効なサブスクリプション
   
-After completing this tutorial, the AAD users to whom you have assign ThousandEyes access will be able to single sign into the application at your ThousandEyes company site (service provider initiated sign on), or using the AAD Access Panel .
+このチュートリアルを完了すると、ThousandEyes に割り当てた AAD ユーザーは、ThousandEyes 企業サイト (サービス プロバイダーが開始したサインオン) で、または AAD アクセス パネルを使用して、アプリケーションにシングル サインオンできるようになります。
 
-1.  Enabling the application integration for ThousandEyes
-2.  Configuring Single Sign-On
-3.  Configuring user provisioning
-4.  Assigning users
+1.  ThousandEyes のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-![Scenario](./media/active-directory-saas-thousandeyes-tutorial/IC790059.png "Scenario")
+![シナリオ](./media/active-directory-saas-thousandeyes-tutorial/IC790059.png "シナリオ")
 
-##<a name="enabling-the-application-integration-for-thousandeyes"></a>Enabling the application integration for ThousandEyes
+##ThousandEyes のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for ThousandEyes.
+このセクションでは、ThousandEyes のアプリケーション統合を有効にする方法を説明します。
 
-###<a name="to-enable-the-application-integration-for-thousandeyes,-perform-the-following-steps:"></a>To enable the application integration for ThousandEyes, perform the following steps:
+###ThousandEyes のアプリケーション統合を有効にするには、次の手順に従います。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-thousandeyes-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-thousandeyes-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-thousandeyes-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-thousandeyes-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-thousandeyes-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-thousandeyes-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-thousandeyes-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **ThousandEyes**.
+6.  **検索ボックス**に、「**ThousandEyes**」と入力します。
 
-    ![Application Gallery](./media/active-directory-saas-thousandeyes-tutorial/IC790060.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-thousandeyes-tutorial/IC790060.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **ThousandEyes**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[ThousandEyes]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![ThousandEyes](./media/active-directory-saas-thousandeyes-tutorial/IC790061.png "ThousandEyes")
 
-##<a name="configuring-single-sign-on"></a>Configuring Single Sign-On
+##シングル サインオンの構成
   
-This section outlines how to enable users to authenticate to ThousandEyes with their account in Azure Active Directory, using federation based on the SAML protocol.
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure Active Directory でのユーザーのアカウントで ThousandEyes に対する認証を行えるようにする方法を説明します。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **ThousandEyes** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **ThousandEyes** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single SignOn](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "Configure Single SignOn")
+    ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790062.png "シングル サインオンの構成")
 
-2.  On the **How would you like users to sign on to ThousandEyes** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの ThousandEyes へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single SignOn](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "Configure Single SignOn")
+    ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790063.png "シングル サインオンの構成")
 
-3.  On the **Configure App URL** page, in the **ThousandEyes Sign On URL** textbox, type the URL users are using to sign into your ThousandEyes application (e.g.: "*https://app.thousandeyes.com/login/sso*"), and then click **Next**. 
+3.  **[アプリケーション URL の構成]** ページの **[ThousandEyes のサインオン URL]** テキストボックスに、ユーザーが ThousandEyes アプリケーションにサインオンするときに使用する URL (例: "https://app.thousandeyes.com/login/sso*") を入力し、[次へ] をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-thousandeyes-tutorial/IC790064.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at ThousandEyes** page, to download your certificate, click **Download certificate**, and then save the certificate file locally to your computer.
+4.  **[ThousandEyes でのシングル サインオン構成]** ページで、証明書をダウンロードするには、**[証明書のダウンロード]** をクリックし、コンピューターにローカルで証明書ファイルを保存します。
 
-    ![Configure Single SignOn](./media/active-directory-saas-thousandeyes-tutorial/IC790065.png "Configure Single SignOn")
+    ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790065.png "シングル サインオンの構成")
 
-5.  In a different web browser window, sign on to your **ThousandEyes** company site as an administrator.
+5.  別の Web ブラウザーのウィンドウで、管理者として **ThousandEyes** 企業サイトにサインオンします。
 
-6.  In the menu on the top, click **Settings**.
+6.  上部のメニューで **[Settings]** をクリックします。
 
     ![Settings](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
-7.  Click **Account**
+7.  **[Account]** をクリックします。
 
     ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
 
-8.  Click the **Security & Authentication** tab.
+8.  **[Security & Authentication]** タブをクリックします。
 
-    ![Security & Authentication](./media/active-directory-saas-thousandeyes-tutorial/IC790068.png "Security & Authentication")
+    ![セキュリティと認証](./media/active-directory-saas-thousandeyes-tutorial/IC790068.png "セキュリティと認証")
 
-9.  In the **Setup Single Sign-On** section, perform the following steps:
+9.  **[Setup Single Sign-On]** セクションで、次の手順を実行します。
 
-    ![Setup Single Sign-On](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "Setup Single Sign-On")
+    ![シングル サインオンの設定](./media/active-directory-saas-thousandeyes-tutorial/IC790069.png "シングル サインオンの設定")
 
-    1.  Select **Enable Single Sign-On**.
-    2.  In the Microsoft Azure classic portal, on the **Configure single sign-on at ThousandEyes** page, copy the **Remote Login URL** value, and then paste it into the **Login Page URL** textbox.
-    3.  In the Microsoft Azure classic portal, on the **Configure single sign-on at ThousandEyes** page, copy the **Remote Logout URL** value, and then paste it into the **Logout Page URL** textbox.
-    4.  In the Microsoft Azure classic portal, on the **Configure single sign-on at ThousandEyes** page, copy the **Issuer URL** value, and then paste it into the **Identity Provider Issuer** textbox.
-    5.  In **Identity Provider Certificate**, click **Choose file**, and then upload the certificate you have downloaded from the Microsoft Azure classic portal.
-    6.  Click **Save**.
+    1.  **[シングル サインオンを有効にする]** を選択します。
+    2.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログイン URL]** 値をコピーして、**[ログイン ページの URL]** テキスト ボックスに貼り付けます。
+    3.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[リモート ログアウト URL]** 値をコピーして、**[ログアウト ページの URL]** テキスト ボックスに貼り付けます。
+    4.  Microsoft Azure クラシック ポータルの **[ThousandEyes でのシングル サインオンの構成]** ページで、**[発行者の URL]** 値をコピーして、**[ID プロバイダーの発行者]** テキスト ボックスに貼り付けます。
+    5.  **[ID プロバイダー証明書]** で **[ファイルの選択]** をクリックし、Microsoft Azure クラシック ポータルからダウンロードした証明書をアップロードします。
+    6.  [**Save**] をクリックします。
 
-10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure Single SignOn](./media/active-directory-saas-thousandeyes-tutorial/IC790070.png "Configure Single SignOn")
+    ![シングル サインオンの構成](./media/active-directory-saas-thousandeyes-tutorial/IC790070.png "シングル サインオンの構成")
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-In order to enable Azure AD users to log into ThousandEyes, they must be provisioned into ThousandEyes.  
-In the case of ThousandEyes, provisioning is a manual task.
+Azure AD ユーザーが ThousandEyes にログインできるようにするには、そのユーザーを ThousandEyes にプロビジョニングする必要があります。ThousandEyes の場合、プロビジョニングは手動で行います。
 
-###<a name="to-provision-a-user-account-to-thousandeyes,-perform-the-following-steps:"></a>To provision a user account to ThousandEyes, perform the following steps:
+###ユーザー アカウントを ThousandEyes にプロビジョニングするには、次の手順に従います。
 
-1.  Log into your ThousandEyes company site as an administrator.
+1.  ThousandEyes 企業サイトに管理者としてログインします。
 
-2.  Click **Settings**.
+2.  **[Settings]** をクリックします。
 
     ![Settings](./media/active-directory-saas-thousandeyes-tutorial/IC790066.png "Settings")
 
-3.  Click **Account**.
+3.  [**アカウント**] クリックします。
 
-    ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "Account")
+    ![Account](./media/active-directory-saas-thousandeyes-tutorial/IC790067.png "アカウント")
 
-4.  Click the **Accounts & Users** tab.
+4.  **[Accounts & Users]** タブをクリックします。
 
-    ![Accounts & Users](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "Accounts & Users")
+    ![アカウントとユーザー](./media/active-directory-saas-thousandeyes-tutorial/IC790073.png "アカウントとユーザー")
 
-5.  In the **Add Users & Accounts** section, perform the following steps:
+5.  **[Add Users & Accounts]** セクションで、次の手順を実行します。
 
-    ![Add User Accounts](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "Add User Accounts")
+    ![ユーザー アカウントの追加](./media/active-directory-saas-thousandeyes-tutorial/IC790074.png "ユーザー アカウントの追加")
 
-    1.  Type the **Name**, **Email** and other details of a valid Azure Active Directory account you want to provision into the related textboxes.
-    2.  Click **Add New User to Account**.
+    1.  プロビジョニングする有効な Azure Active Directory アカウントの**[Name]**、**[Email]**、その他の詳細を該当するボックスに入力します。
+    2.  **[Add New User to Account]** をクリックします。
 
-        >[AZURE.NOTE] The AAD account holder will get an email including a link to confirm and activate the account.
+        >[AZURE.NOTE] AAD アカウントの所有者にアカウントの確認およびアクティブ化用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE] You can use any other ThousandEyes user account creation tools or APIs provided by ThousandEyes to provision AAD user accounts.
+>[AZURE.NOTE] ThousandEyes から提供されている他の ThousandEyes ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-thousandeyes,-perform-the-following-steps:"></a>To assign users to ThousandEyes, perform the following steps:
+###ユーザーを ThousandEyes に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **ThousandEyes** application integration page, click **Assign users**.
+2.  **ThousandEyes** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-thousandeyes-tutorial/IC790075.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-thousandeyes-tutorial/IC790075.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-thousandeyes-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

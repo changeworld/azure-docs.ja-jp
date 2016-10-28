@@ -1,59 +1,55 @@
 <properties
-    pageTitle="Reset the password for a user in Azure Active Directory preview | Microsoft Azure"
-    description="Explains how to reset the password for a user in Azure Active Directory"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory プレビューでのユーザー パスワードのリセット | Microsoft Azure"
+	description="Azure Active Directory でユーザーのパスワードをリセットする方法を説明します"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/13/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
-
-# <a name="reset-the-password-for-a-user-in-azure-active-directory-preview"></a>Reset the password for a user in Azure Active Directory preview
+# Azure Active Directory プレビューでのユーザー パスワードのリセット
 
 > [AZURE.SELECTOR]
-- [Azure portal](active-directory-users-reset-password-azure-portal.md)
-- [Azure classic portal](active-directory-create-users-reset-password.md)
+- [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
+- [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
 
+この記事では、Azure Active Directory (Azure AD) プレビューでディレクトリからユーザーを削除する方法を説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
 
-## <a name="how-to-reset-the-password-for-a-user"></a>How to reset the password for a user
+## ユーザーのパスワードのリセット
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+1.  ディレクトリのグローバル管理者のアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-    ![Opening user management](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
+    ![ユーザー管理を開く](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
 
-3.  On the **Users and groups** blade, select **Users**.
+3.  **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
 
-    ![Opening the Users blade](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
+    ![[ユーザー] ブレードを開く](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
 
-4. On the **Users and groups - Users** blade, select a user from the list.
+4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
 
-5. On the blade for the selected user, select **Overview**, and then in the command bar, select **Reset password**.
+5. 選択したユーザーのブレードで、**[概要]** を選択し、コマンド バーの **[パスワードのリセット]** をクリックします。
 
-    ![Selecting the Reset password command](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
+    ![[パスワードのリセット] コマンドの選択](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
 
-6. On the **Reset password** blade, select **Reset password**.
+6. **[パスワードのリセット]** ブレードで、**[パスワードのリセット]** を選択します。
 
-## <a name="what's-next"></a>What's next
+## 参照トピック
 
-- [Add a user](active-directory-users-create-azure-portal.md)
-- [Assign a user to a role in your Azure AD](active-directory-users-assign-role-azure-portal.md)
-- [Change a user's work information](active-directory-users-work-info-azure-portal.md)
-- [Manage user profiles](active-directory-users-profile-azure-portal.md)
-- [Delete a user in your Azure AD](active-directory-users-delete-user-azure-portal.md)
+- [ユーザーの追加](active-directory-users-create-azure-portal.md)
+- [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
+- [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
+- [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
+- [Azure AD でのユーザーの削除](active-directory-users-delete-user-azure-portal.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

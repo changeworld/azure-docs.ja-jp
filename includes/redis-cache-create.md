@@ -1,34 +1,30 @@
-To create a cache, first sign in to the [Azure portal](https://portal.azure.com), and click **New**, **Data + Storage**, **Redis Cache**.
+キャッシュを作成するには、まず [Azure ポータル](https://portal.azure.com)にサインインし、**[新規]**、**[データ + ストレージ]**、**[Redis Cache]** の順にクリックします。
 
->[AZURE.NOTE] If you don't have an Azure account, you can [Open an Azure account for free](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero) in just a couple of minutes.
+>[AZURE.NOTE] Azure アカウントがない場合は、数分あれば [Azure アカウントを無料で作成](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero)することができます。
 
-![New cache](media/redis-cache-create/redis-cache-new-cache-menu.png)
+![新しいキャッシュ](media/redis-cache-create/redis-cache-new-cache-menu.png)
 
->[AZURE.NOTE] In addition to creating caches in the Azure portal, you can also create them using Resource Manager templates, PowerShell, or Azure CLI.
+>[AZURE.NOTE] キャッシュは、Azure ポータルだけでなく、Resource Manager テンプレート、PowerShell、または Azure CLI を使用して作成することもできます。
 >
->-  To create a cache using Resource Manager templates, see [Create a Redis cache using a template](../articles/redis-cache/cache-redis-cache-arm-provision.md).
->-  To create a cache using Azure PowerShell, see [Manage Azure Redis Cache with Azure PowerShell](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md).
->-  To create a cache using Azure CLI, see [How to create and manage Azure Redis Cache using the Azure Command-Line Interface (Azure CLI)](../articles/redis-cache/cache-manage-cli.md).
+>-	Resource Manager テンプレートを使用してキャッシュを作成する方法については、「[テンプレートを使用して Redis Cache を作成する](../articles/redis-cache/cache-redis-cache-arm-provision.md)」をご覧ください。
+>-	Azure PowerShell を使用してキャッシュを作成する方法については、「[Azure PowerShell を使用した Azure Redis Cache の管理](../articles/redis-cache/cache-howto-manage-redis-cache-powershell.md)」をご覧ください。
+>-	Azure CLI を使用してキャッシュを作成する方法については、「[Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法](../articles/redis-cache/cache-manage-cli.md)」を参照してください。
 
-In the **New Redis Cache** blade, specify the desired configuration for the cache.
+**[Redis Cache の新規作成]** ブレードで、必要なキャッシュ構成を指定します。
 
-![Create cache](media/redis-cache-create/redis-cache-cache-create.png) 
+![キャッシュの作成](media/redis-cache-create/redis-cache-cache-create.png)
 
--   In **Dns name**, enter a cache name to use for the cache endpoint. The cache name must be a string between 1 and 63 characters and contain only numbers, letters, and the `-` character. The cache name cannot start or end with the `-` character, and consecutive `-` characters are not valid.
--   For **Subscription**, select the Azure subscription that you want to use for the cache. If your account has only one subscription, it will be automatically selected and the **Subscription** drop-down will not be displayed.
--   In **Resource group**, select or create a resource group for your cache. For more information, see [Using Resource groups to manage your Azure resources](../articles/resource-group-overview.md). 
--   Use **Location** to specify the geographic location in which your cache is hosted. For the best performance, Microsoft strongly recommends that you create the cache in the same region as the cache client application.
--   Use **Pricing Tier** to select the desired cache size and features.
--   **Redis cluster** allows you to create caches larger than 53 GB and to shard data across multiple Redis nodes. For more information, see [How to configure clustering for a Premium Azure Redis Cache](../articles/redis-cache/cache-how-to-premium-clustering.md).
--   **Redis persistence** offers the ability to persist your cache to an Azure Storage account. For instructions on configuring persistence, see [How to configure persistence for a Premium Azure Redis Cache](../articles/redis-cache/cache-how-to-premium-persistence.md).
--   **Virtual Network** provides enhanced security and isolation by restricting access to your cache to only those clients within the specified Azure Virtual Network. You can use all the features of VNet such as subnets, access control policies, and other features to further restrict access to Redis. For more information, see [How to configure Virtual Network support for a Premium Azure Redis Cache](../articles/redis-cache/cache-how-to-premium-vnet.md).
+-	キャッシュ エンドポイントに使用するキャッシュ名を **[DNS 名]** に入力します。キャッシュ名は 1 ～ 63 文字の文字列で、数字、英字、`-` 文字のみを使用する必要があります。キャッシュ名の先頭と末尾には `-` 文字を使用できません。また、連続する `-` 文字は無効です。
+-	**[サブスクリプション]** で、キャッシュに使用する Azure サブスクリプションを選択します。アカウントにサブスクリプションが 1 つしかない場合は自動的に選択されるため、**[サブスクリプション]** ドロップダウン リストは表示されません。
+-	**[リソース グループ]** で、キャッシュのリソース グループを選択または作成します。詳細については、[リソース グループを使用した Azure リソースの管理](../articles/resource-group-overview.md)に関するページを参照してください。
+-	**[場所]** を使用して、キャッシュのホストの地理的位置を指定します。パフォーマンスを最大限に引き出すために、キャッシュは、キャッシュ クライアント アプリケーションと同じリージョンに作成することを強くお勧めします。
+-	**[価格レベル]** を使用して、必要なキャッシュ サイズと機能を選択します。
+-	**Redis クラスター**では、53 GB を超えるキャッシュを作成でき、複数の Redis ノード間でデータを共有することもできます。詳細については、「[Premium Azure Redis Cache のクラスタリングの構成方法](../articles/redis-cache/cache-how-to-premium-clustering.md)」を参照してください。
+-	**Redis の永続化**を使用して、Azure ストレージ アカウントにキャッシュを保持できます。永続化の構成手順については、「[Premium Azure Redis Cache の永続性の構成方法](../articles/redis-cache/cache-how-to-premium-persistence.md)」を参照してください。
+-	**Virtual Network** では、指定された Azure Virtual Network 内にあるクライアントのみにキャッシュへのアクセス権を制限することで、セキュリティと分離が強化されます。サブネット、アクセス制御ポリシー、およびその他の Redis へのアクセスをさらに制限する機能を始め、VNet のすべての機能を使用できます。詳細については、「[Premium Azure Redis Cache の Virtual Network のサポートを構成する方法](../articles/redis-cache/cache-how-to-premium-vnet.md)」を参照してください。
 
-Once the new cache options are configured, click **Create**. It can take a few minutes for the cache to be created. To check the status, you can monitor the progress on the startboard. After the cache has been created, your new cache has a **Running** status and is ready for use with [default settings](../articles/redis-cache/cache-configure.md#default-redis-server-configuration).
+新しいキャッシュ オプションを構成したら、**[作成]** をクリックします。キャッシュが作成されるまで数分かかる場合があります。状態を確認するには、スタート画面で進行状況を監視してください。キャッシュが作成されると、新しいキャッシュの状態が**実行中**になって、[既定の設定](../articles/redis-cache/cache-configure.md#default-redis-server-configuration)で使用できるようになります。
 
-![Cache created](media/redis-cache-create/redis-cache-cache-created.png)
+![作成されたキャッシュ](media/redis-cache-create/redis-cache-cache-created.png)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

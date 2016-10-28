@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Secure a Service Fabric cluster | Microsoft Azure"
-   description="Describes the security scenarios for a Service Fabric cluster and the different technologies used to implement those scenarios."
+   pageTitle="Service Fabric クラスターをセキュリティで保護する | Microsoft Azure"
+   description="Service Fabric クラスターのためのセキュリティ シナリオと、これらのシナリオの実装に使用されるテクノロジについて説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -16,105 +16,100 @@
    ms.date="08/19/2016"
    ms.author="chackdan"/>
 
+# Service Fabric クラスターのセキュリティに関するシナリオ
 
-# <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric cluster security scenarios
+Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。クラスターは、特に運用ワークロードが実行されている場合などに、許可なくユーザーがクラスターに接続するのを防ぐために常にセキュリティで保護する必要があります。セキュリティ保護されていないクラスターを作成することはできますが、これを行うと、パブリック インターネットへの管理エンドポイントを公開している場合、すべての匿名ユーザーがこのクラスターに接続できるようになります。
 
-A Service Fabric cluster is a resource that you own. Clusters should always be secured to prevent unauthorized users from connecting to your cluster, especially when it has production workloads running on it. Although it is possible to create an unsecured cluster, doing so will allow any anonymous user to connect to it if it exposes management endpoints to the public Internet. 
+この記事では、Azure またはスタンドアロンで実行されるクラスターのセキュリティに関するシナリオと、そのようなシナリオを実装するために使用するさまざまなテクノロジの概要を示します。クラスターのセキュリティに関するシナリオは次のとおりです。
 
-This article provides an overview of the security scenarios for clusters running on Azure or standalone and the various technologies used to implement those scenarios. The cluster security scenarios are:
+- ノード間のセキュリティ
+- クライアントとノードの間のセキュリティ
+- ロール ベースのアクセス制御 (RBAC)
 
-- Node-to-node security
-- Client-to-node security
-- Role-based access control (RBAC)
+## ノード間のセキュリティ
+クラスター内の VM やマシンの間の通信をセキュリティで保護します。これにより、クラスターへの参加が許可されているコンピューターのみが、クラスター内でホストされているアプリケーションとサービスに参加できます。
 
-## <a name="node-to-node-security"></a>Node-to-node security
-Secures communication between the VMs or machines in the cluster. This ensures that only computers that are authorized to join the cluster can participate in hosting applications and services in the cluster.
+![ノード間通信の図][Node-to-Node]
 
-![Diagram of node-to-node communication][Node-to-Node]
+Azure で実行するクラスターまたは Windows で実行するスタンドアロン クラスターには、[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx) (Windows Server マシンの場合) を利用できます。
+### ノード間の証明書セキュリティ
+Service Fabric では、クラスターを作成するときにノード タイプの構成で指定した X.509 サーバー証明書を使用します。これらの証明書の概要とその入手または作成方法はこの記事の最後に記載されています。
 
-Clusters running on Azure or standalone clusters running on Windows can use either [Certificate Security](https://msdn.microsoft.com/library/ff649801.aspx) or [Windows Security](https://msdn.microsoft.com/library/ff649396.aspx) for Windows Server machines.
-### <a name="node-to-node-certificate-security"></a>Node-to-node certificate security
-Service Fabric uses X.509 server certificates that you specify as a part of the node-type configurations when you create a cluster. A quick overview of what these certificates are and how you can acquire or create them is provided at the end of this article.
+証明書セキュリティは、Azure ポータル、Azure Resource Manager テンプレート、またはスタンドアロン JSON テンプレートを使用してクラスターを作成する際に構成されます。プライマリ証明書と、証明書のロールオーバーに使用されるオプションのセカンダリ証明書を指定できます。指定するプライマリ証明書とセカンダリ証明書は、[クライアントとノードの間のセキュリティ](#client-to-node-security)に指定する管理用クライアント証明書と読み取り専用クライアント証明書とは異なります。
 
-Certificate security is configured while creating the cluster either through the Azure portal, Azure Resource Manager templates, or a standalone JSON template. You can specify a primary certificate and an optional secondary certificate that is used for certificate rollovers. The primary and secondary certificates you specify should be different than the admin client and read-only client certificates you specify for [Client-to-node security](#client-to-node-security).
+Azure のクラスターで証明書セキュリティを構成する方法については、[Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
 
-For Azure read [Set up a cluster by using an Azure Resource Manager template](service-fabric-cluster-creation-via-arm.md) to learn how to configure certificate security in a cluster.
+スタンドアロン Windows Server の場合は、「[X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)」を参照してください。
 
-For standalone Windows Server read [Secure a standalone cluster on Windows using X.509 certificates ](service-fabric-windows-cluster-x509-security.md)
+### ノード間の Windows セキュリティ
+スタンドアロン Windows Server の場合は、「[Windows 上のスタンドアロン クラスターを Windows セキュリティで保護する](service-fabric-windows-cluster-windows-security.md)」を参照してください。
 
-### <a name="node-to-node-windows-security"></a>Node-to-node windows security
-For standalone Windows Server read [Secure a standalone cluster on Windows using Windows security](service-fabric-windows-cluster-windows-security.md)
+## クライアントとノードの間のセキュリティ
+クライアントの認証を行い、クラスター内のクライアントと個々のノードの間の通信をセキュリティで保護します。この種類のセキュリティでは、クライアント側の通信を認証して保護するため、権限のあるユーザーのみがクラスターにデプロイされたクラスターとアプリケーションにアクセスできます。クライアントは、Windows セキュリティ資格情報または証明書のセキュリティ資格情報を通じて一意に識別されます。
 
-## <a name="client-to-node-security"></a>Client-to-node security
-Authenticates clients and secures communication between a client and individual nodes in the cluster. This type of security authenticates and secures client communications, which ensures that only authorized users can access the cluster and the applications deployed on the cluster. Clients are uniquely identified through either their Windows Security credentials or their certificate security credentials.
+![クライアントとノードの間の通信の図][Client-to-Node]
 
-![Diagram of client-to-node communication][Client-to-Node]
+Azure で実行するクラスターまたは Windows で実行するスタンドアロン クラスターには、[証明書セキュリティ](https://msdn.microsoft.com/library/ff649801.aspx)または [Windows セキュリティ](https://msdn.microsoft.com/library/ff649396.aspx)を利用できます。
 
-Clusters running on Azure or standalone clusters running on Windows can use either [Certificate Security](https://msdn.microsoft.com/library/ff649801.aspx) or [Windows Security](https://msdn.microsoft.com/library/ff649396.aspx).
+### クライアントとノードの間の証明書セキュリティ
+ クライアントとノードの間の証明書セキュリティを構成するには、Azure ポータル、Resource Manager テンプレート、またはスタンドアロン JSON テンプレートでクラスターを作成するときに、管理用クライアント証明書やユーザー クライアント証明書を指定します。指定する管理用クライアント証明書とユーザー クライアント証明書は、[ノード間のセキュリティ](#node-to-node-security)に指定するプライマリ証明書とセカンダリ証明書とは異なります。
 
-### <a name="client-to-node-certificate-security"></a>Client-to-node certificate security
- Client-to-node certificate security is configured while creating the cluster either through the Azure portal, Resource Manager templates or a standalone JSON template by specifying an admin client certificate and/or a user client certificate.  The admin client and user client certificates you specify should be different than the primary and secondary certificates you specify for [Node-to-node security](#node-to-node-security).
+管理用証明書を使用してクラスターに接続するクライアントには、管理機能へのフル アクセス権があります。読み取り専用ユーザー クライアント証明書を使用してクラスターに接続するクライアントには、管理機能に対する読み取りアクセス権しかありません。つまり、これらの証明書は、この記事の中で後で説明するロールベースのアクセス制御 (RBAC) に使用されます。
 
-Clients connecting to the cluster using the admin certificate have full access to management capabilities.  Clients connecting to the cluster using the read-only user client certificate have only read access to management capabilities. In other words these certificates are used for the role bases access control (RBAC) described later in this article.
+Azure のクラスターで証明書セキュリティを構成する方法については、[Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
 
-For Azure read [Set up a cluster by using an Azure Resource Manager template](service-fabric-cluster-creation-via-arm.md) to learn how to configure certificate security in a cluster.
+スタンドアロン Windows Server の場合は、「[X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)」を参照してください。
 
-For standalone Windows Server read [Secure a standalone cluster on Windows using X.509 certificates ](service-fabric-windows-cluster-x509-security.md)
+### Azure でのクライアントとノードの間の Azure Active Directory (AAD) セキュリティ
+Azure で実行されているクラスターは、Azure Active Directory (AAD) を使用して管理エンドポイントへのアクセスをセキュリティで保護することもできます。必要な AAD アーティファクトを作成する方法、クラスターの作成中にそれらを設定する方法、その後これらのクラスターに接続する方法については、[Azure Resource Manager テンプレートを使用したクラスターの設定](service-fabric-cluster-creation-via-arm.md)に関する記事を参照してください。
 
-### <a name="client-to-node-azure-active-directory-(aad)-security-on-azure"></a>Client-to-node Azure Active Directory (AAD) security on Azure
-Clusters running on Azure can also secure access to the management endpoints using Azure Active Directory (AAD). See [Set up a cluster by using an Azure Resource Manager template](service-fabric-cluster-creation-via-arm.md) for information on how to create the necessary AAD artifacts, how to populate them during cluster creation, and how to connect to those clusters afterwards.
+## セキュリティに関する推奨事項
+Azure クラスターについては、クライアントの認証に AAD セキュリティ、ノード間のセキュリティに証明書を使用することをお勧めします。
 
-## <a name="security-recommendations"></a>Security Recommendations
-For Azure clusters, it is recommended that you use AAD security to authenticate clients and certificates for node-to-node security.
+スタンドアロン Windows Server クラスターについては、Windows Server 2012 R2 と Active Directory を使用している場合、グループ管理アカウント (GMA) で Windows セキュリティを使用することをお勧めします。それ以外の場合は、引き続き Windows アカウントで Windows セキュリティを使用してください。
 
-For standalone Windows Server clusters it is recommended that you use Windows security with group managed accounts (GMA) if you have Windows Server 2012 R2 and Active Directory. Otherwise still use Windows security with Windows accounts.
+## ロールベースのアクセス制御 (RBAC)
+アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。クラスターに接続するクライアント用に、2 種類の異なるアクセス制御 (管理者ロールとユーザー ロール) がサポートされています。
 
-## <a name="role-based-access-control-(rbac)"></a>Role based access control (RBAC)
-Access control allows the cluster administrator to limit access to certain cluster operations for different groups of users, making the cluster more secure. Two different access control types are supported for clients connecting to a cluster: Administrator role and User role.
+管理者には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) があります。ユーザーには、既定で管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみがあります。
 
-Administrators have full access to management capabilities (including read/write capabilities). Users, by default, have only read access to management capabilities (for example, query capabilities), and the ability to resolve applications and services.
-
-You specify the administrator and user client roles at the time of cluster creation by providing separate identities (certificates, AAD etc.) for each. For more information on the default access control settings and how to change the default settings, see [Role based access control for Service Fabric clients](service-fabric-cluster-security-roles.md).
+クラスターの作成時に、管理者ロールとユーザー クライアント ロールを指定して、それぞれに個別の ID (証明書、AAD など) を設定します。既定のアクセス制御の設定と、既定の設定を変更する方法の詳細については、「[ロール ベースのアクセス制御 (Service Fabric クライアント用)](service-fabric-cluster-security-roles.md)」を参照してください。
 
 
-## <a name="x.509-certificates-and-service-fabric"></a>X.509 certificates and Service Fabric
-X.509 digital certificates are commonly used to authenticate clients and servers and to encrypt and digitally sign messages. For more details on these certificates, go to [Working with certificates](http://msdn.microsoft.com/library/ms731899.aspx).
+## X.509 証明書と Service Fabric
+一般的に、X.509 デジタル証明書は、クライアントとサーバーの認証、暗号化、メッセージのデジタル署名に使用されています。これらの証明書の詳細については、「[証明書の使用](http://msdn.microsoft.com/library/ms731899.aspx)」を参照してください。
 
-Some important things to consider:
+次のような、考慮すべき重要な点がいくつかあります。
 
-- Certificates used in clusters running production workloads should be created by using a correctly configured Windows Server certificate service or obtained from an approved [Certificate Authority (CA)](https://en.wikipedia.org/wiki/Certificate_authority).
-- Never use any temporary or test certificates in production that are created with tools such as MakeCert.exe.
-- You can use a self-signed certificate, but should only do so for test clusters and not in production.
+- 運用環境のワークロードを実行しているクラスターに使用する証明書は、正しく構成された Windows Server 証明書サービスを使用して作成するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) から取得する必要があります。
+- 運用環境では、MakeCert.exe などのツールで作成した一時証明書またはテスト証明書を使用しないでください。
+- 自己署名入りの証明書は使用できますが、運用環境のクラスターではなく、テスト環境のクラスターにのみ使用してください。
 
-### <a name="server-x.509-certificates"></a>Server X.509 certificates
+### サーバー X.509 証明書
 
-Server certificates have the primary task of authenticating a server (node) to clients, or authenticating a server (node) to a server (node). One of the initial checks when a client or node authenticates a node is to check the value of the common name in the Subject field. Either this common name or one of the certificates' subject alternative names must be present in the list of allowed common names.
+サーバー証明書の主な作業は、クライアントに対するサーバー (ノード) の認証とサーバー (ノード) に対するサーバー (ノード) の認証です。クライアントまたはノードがノードを認証するときに行う初期チェックの 1 つは、サブジェクト フィールドの共通名の値を確認することです。この共通名、または証明書のサブジェクト代替名の 1 つが、使用可能な共通名の一覧に存在する必要があります。
 
-The following article describes how to generate certificates with subject alternative names (SAN): [How to add a subject alternative name to a secure LDAP certificate](http://support.microsoft.com/kb/931351).
+「[セキュリティで保護された LDAP 証明書にサブジェクトの別名を追加する方法](http://support.microsoft.com/kb/931351)」という記事では、サブジェクト代替名 (SAN) で証明書を生成する方法について説明しています。
 
-The Subject field can contain several values, each prefixed with an initialization to indicate the value type. Most commonly, the initialization is "CN" for common name; for example, "CN = www.contoso.com". It is also possible for the Subject field to be blank. If the optional Subject Alternative Name field is populated, it must contain both the common name of the certificate and one entry per subject alternative name. These are entered as DNS Name values.
+サブジェクト フィールドには複数の値を指定できます。各値には、その値を示す初期設定のプレフィックスを付けます。よく使われる初期設定は、共通名を示す "CN" です。たとえば、"CN = www.contoso.com" です。サブジェクト フィールドは空白にすることもできます。省略可能なサブジェクト代替名フィールドに入力する場合は、証明書の共通名と、1 つのサブジェクト代替名につき 1 つのエントリを指定する必要があります。これらの値は DNS 名値として入力します。
 
-The value of the Intended Purposes field of the certificate should include an appropriate value, such as "Server Authentication" or "Client Authentication".
+証明書の目的フィールド値には、"サーバー認証" や "クライアント認証" などの適切な値を含めるようにしてください。
 
-### <a name="client-x.509-certificates"></a>Client X.509 certificates
+### クライアント X.509 証明書
 
-Client certificates are not typically issued by a third-party certificate authority. Instead, the Personal store of the current user location typically contains client certificates placed there by a root authority, with an intended purpose of "Client Authentication". The client can use such a certificate when mutual authentication is required.
+通常、クライアント証明書はサードパーティの証明機関から発行されません。通常、現在のユーザーの所在地の個人用ストアには、ルート機関が配置した "クライアント認証" 用のクライアント証明書が含まれています。相互認証が必要な場合、クライアントはこのような証明書を使用できます。
 
->[AZURE.NOTE] All management operations on a Service Fabric cluster require server certificates. Client certificates cannot be used for management.
+>[AZURE.NOTE] Service Fabric クラスター上のすべての管理操作には、サーバー証明書が必要です。クライアント証明書は管理に利用できません。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-This article provides conceptual information about cluster security. Next, [create a cluster in Azure using a Resource Manager template](service-fabric-cluster-creation-via-arm.md) or through the [Azure portal](service-fabric-cluster-creation-via-portal.md).
+この記事では、クラスターのセキュリティに関する概念的な情報について説明します。次に、[Azure でクラスターを作成します。Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)または [Azure ポータル](service-fabric-cluster-creation-via-portal.md)を使用します。
 
 <!--Image references-->
 [Node-to-Node]: ./media/service-fabric-cluster-security/node-to-node.png
 [Client-to-Node]: ./media/service-fabric-cluster-security/client-to-node.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

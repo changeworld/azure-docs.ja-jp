@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Add the Facebook connector in your Logic Apps | Microsoft Azure"
-    description="Overview of the Facebook connector with REST API parameters"
+    pageTitle="ロジック アプリに Facebook コネクタを追加する | Microsoft Azure"
+    description="Facebook コネクタと REST API パラメーターの概要"
     services=""
     documentationCenter="" 
     authors="MandiOhlinger"
@@ -17,433 +17,422 @@
    ms.date="08/18/2016"
    ms.author="mandia"/>
 
+# Facebook コネクタの使用
+Facebook に接続し、タイムラインへの投稿、ページ フィードの取得などを行います。
 
-# <a name="get-started-with-the-facebook-connector"></a>Get started with the Facebook connector
-Connect to Facebook and post to a timeline, get a page feed, and more. 
-
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
-
-
-With Facebook, you can:
-
-- Build your business flow based on the data you get from Facebook. 
-- Use a trigger when a new post is received.
-- Use actions that post to your timeline, get a page feed, and more. These actions get a response, and then make the output available for other actions. For example, when there is a new post on your timeline, you can take that post and push it to your Twitter feed. 
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
 
+Facebook では、次の操作を実行できます。
 
-To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+- Facebook から取得したデータに基づいてビジネス フローを構築できます。
+- 新しい投稿を取得したときにトリガーを使用できます。
+- タイムラインへの投稿、ページ フィードの取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、タイムラインに新しい投稿がある場合、その投稿を取得して、Twitter フィードにプッシュすることができます。
 
-## <a name="triggers-and-actions"></a>Triggers and actions
-The Facebook connector includes the following trigger and actions. 
 
-| Triggers | Actions|
+
+ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
+
+## トリガーとアクション
+Facebook コネクタには、次のトリガーとアクションがあります。
+
+| トリガー | アクション|
 | --- | --- |
-| <ul><li>When there is a new post on my timeline</li></ul> |<ul><li>Get feed from my timeline</li><li>Post to my timeline</li><li>When there is a new post on my timeline</li><li>Get page feed</li><li>Get user timeline</li><li>Post to page</li></ul>
+| <ul><li>タイムラインに新しい投稿がある場合</li></ul> |<ul><li>タイムラインからフィードを取得する</li><li>タイムラインに投稿する</li><li>タイムラインに新しい投稿がある場合</li><li>ページ フィードを取得する</li><li>ユーザーのタイムラインを取得する</li><li>ページに投稿する</li></ul>
 
-All connectors support data in JSON and XML formats.
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-## <a name="create-a-connection-to-facebook"></a>Create a connection to Facebook
-When you add this connector to your logic apps, you must authorize logic apps to connect to your Facebook.
+## Facebook への接続を作成する
+ロジック アプリにこのコネクタを追加するとき、Facebook に接続するロジック アプリを承認する必要があります。
 
-1. Sign in to your Facebook account
-2. Select **Authorize**, and allow your logic apps to connect and use your Facebook. 
+1. Facebook アカウントにサインインします。
+2. **[Authorize]** を選択して、ロジック アプリが Facebook に接続して使用することを許可します。
 
->[AZURE.INCLUDE [Steps to create a connection to Facebook](../../includes/connectors-create-api-facebook.md)]
+>[AZURE.INCLUDE [Facebook への接続を作成する手順](../../includes/connectors-create-api-facebook.md)]
 
->[AZURE.TIP] You can use this same Facebook connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでも、この同じ Facebook 接続を使用できます。
 
-## <a name="swagger-rest-api-reference"></a>Swagger REST API reference
-Applies to version: 1.0.
+## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
-### <a name="get-feed-from-my-timeline"></a>Get feed from my timeline
-Gets the feeds from the logged in user's timeline.  
-```GET: /me/feed```
+### タイムラインからフィードを取得する
+ログインしたユーザーのタイムラインからフィードを取得します。```GET: /me/feed```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|fields|string|no|query|none |Specify the fields you want returned. Example (id,name,picture).|
-|limit|integer|no|query| none|Maximum number of posts to be retrieved|
-|with|string|no|query| none|Restrict the list of posts to only those with location attached.|
-|filter|string|no|query| none|Retrieve only posts that match a particular stream filter.|
+|fields|string|×|query|なし |取得フィールドを指定します。例 (id、name、picture)。|
+|limit|integer|×|query| なし|取得する投稿の最大数|
+|を以下に置き換えることができます。|string|×|query| なし|投稿の一覧を、接続している場所の投稿に制限します。|
+|filter|string|×|query| なし|特定のストリーム フィルターに一致する投稿のみを取得します。|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|400|正しくない要求|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-### <a name="post-to-my-timeline"></a>Post to my timeline
-Post a status message to the logged in user's timeline.  
-```POST: /me/feed```
+### タイムラインに投稿する
+ログインしたユーザーのタイムラインにステータス メッセージを投稿します。```POST: /me/feed```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|post|string |yes|body|none |New message to be posted|
+|post|string |○|body|なし |投稿する新しいメッセージ|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|400|正しくない要求|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-### <a name="when-there-is-a-new-post-on-my-timeline"></a>When there is a new post on my timeline
-Triggers a new flow when there is a new post on the logged in user's timeline.  
-```GET: /trigger/me/feed```
+### タイムラインに新しい投稿がある場合
+ログインしているユーザーのタイムラインに新しい投稿があるときに、新しいフローをトリガーします。```GET: /trigger/me/feed```
 
-There are no parameters. 
+パラメーターはありません。
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|400|正しくない要求|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-### <a name="get-page-feed"></a>Get page feed
-Get posts from the feed of a specified page.  
-```GET: /{pageId}/feed```
+### ページ フィードを取得する
+指定したページのフィードから投稿を取得します。```GET: /{pageId}/feed```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|pageId|string|yes|path| none|Id of the page from which posts have to be retrieved.|
-|limit|integer|no|query| none|Maximum number of posts to be retrieved|
-|include_hidden|boolean|no|query|none |Whether or not to include any posts that were hidden by the Page|
-|fields|string|no|query|none |Specify the fields you want returned. Example (id,name,picture).|
+|pageId|string|○|path| なし|取得する投稿のページ ID。|
+|limit|integer|×|query| なし|取得する投稿の最大数|
+|include\_hidden|boolean|×|query|なし |ページで非表示にされていた投稿を含めるかどうか|
+|fields|string|×|query|なし |取得フィールドを指定します。例 (id、name、picture)。|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|400|正しくない要求|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-### <a name="get-user-timeline"></a>Get user timeline
-Get Posts from a user's timeline.  
-```GET: /{userId}/feed```
+### ユーザーのタイムラインを取得する
+ユーザーのタイムラインから投稿を取得します。```GET: /{userId}/feed```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|userId|string|yes|path|none |Id of the user whose timeline have to be retrieved.|
-|limit|integer|no|query|none |Maximum number of posts to be retrieved|
-|with|string|no|query|none |Restrict the list of posts to only those with location attached.|
-|filter|string|no|query| none|Retrieve only posts that match a particular stream filter.|
-|fields|string|no|query| none|Specify the fields you want returned. Example (id,name,picture).|
+|userId|string|○|path|なし |タイムラインを取得するユーザーの ID。|
+|limit|integer|×|query|なし |取得する投稿の最大数|
+|を以下に置き換えることができます。|string|×|query|なし |投稿の一覧を、接続している場所の投稿に制限します。|
+|filter|string|×|query| なし|特定のストリーム フィルターに一致する投稿のみを取得します。|
+|fields|string|×|query| なし|取得フィールドを指定します。例 (id、name、picture)。|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|400|正しくない要求|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-### <a name="post-to-page"></a>Post to page
-Post a message to a Facebook Page as the logged in user.  
-```POST: /{pageId}/feed```
+### ページに投稿する
+ログインしたユーザーとして Facebook ページにメッセージを投稿します。```POST: /{pageId}/feed```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|pageId|string|yes|path|none |Id of the page to post.|
-|post|many |yes|body|none |New message to be posted.|
+|pageId|string|○|path|なし |投稿するページの ID。|
+|post|many |○|body|なし |投稿する新しいメッセージ。|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|400|正しくない要求|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="object-definitions"></a>Object definitions
+## オブジェクト定義
 
-#### <a name="getfeedresponse"></a>GetFeedResponse
+#### GetFeedResponse
 
-|Property Name | Data Type | Required|
+|プロパティ名 | データ型 | 必須|
 |---|---|---|
-|data|array|no|
+|data|array|×|
 
-#### <a name="triggerfeedresponse"></a>TriggerFeedResponse
+#### TriggerFeedResponse
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|data|array|no|
+|data|array|×|
 
-#### <a name="postitem:-a-single-entry-in-a-profile's-feed"></a>PostItem: A single entry in a profile's feed
-The profile could be a user, page, app, or group. 
+#### PostItem: プロファイルのフィードの単一エントリ
+プロファイルには、user、page、app、または group を指定できます。
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|no|
-|admin_creator|array|no|
-|caption|string|no|
-|created_time|string|no|
-|description|string|no|
-|feed_targeting|not defined|no|
-|from|not defined|no|
-|icon|string|no|
-|is_hidden|boolean|no|
-|is_published|boolean|no|
-|link|string|no|
-|message|string|no|
-|name|string|no|
-|object_id|string|no|
-|picture|string|no|
-|place|not defined|no|
-|privacy|not defined|no|
-|properties|array|no|
-|source|string|no|
-|status_type|string|no|
-|story|string|no|
-|targeting|not defined|no|
-|to|array|no|
-|type|string|no|
-|updated_time|string|no|
-|with_tags|not defined|no|
+|id|string|×|
+|admin\_creator|array|×|
+|caption|string|×|
+|created\_time|string|×|
+|description|string|×|
+|feed\_targeting|未定義|×|
+|from|未定義|×|
+|icon|string|×|
+|is\_hidden|boolean|×|
+|is\_published|boolean|×|
+|link|string|×|
+|message|string|×|
+|name|string|×|
+|object\_id|string|×|
+|picture|string|×|
+|place|未定義|×|
+|privacy|未定義|×|
+|プロパティ|array|×|
+|source|string|×|
+|status\_type|string|×|
+|story|string|×|
+|targeting|未定義|×|
+|to|array|×|
+|type|string|×|
+|updated\_time|string|×|
+|with\_tags|未定義|×|
 
-#### <a name="triggeritem:-a-single-entry-in-a-profile's-feed"></a>TriggerItem: A single entry in a profile's feed
-The profile could be a user, page, app, or group.
+#### TriggerItem: プロファイルのフィードの単一エントリ
+プロファイルには、user、page、app、または group を指定できます。
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|no|
-|created_time|string|no|
-|from|not defined|no|
-|message|string|no|
-|type|string|no|
+|id|string|×|
+|created\_time|string|×|
+|from|未定義|×|
+|message|string|×|
+|type|string|×|
 
-#### <a name="adminitem"></a>AdminItem
+#### AdminItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|no|
-|link|string|no|
+|id|string|×|
+|link|string|×|
 
-#### <a name="propertyitem"></a>PropertyItem
+#### PropertyItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|name|string|no|
-|text|string|no|
-|href|string|no|
+|name|string|×|
+|text|string|×|
+|href|string|×|
 
-#### <a name="userpostfeedrequest"></a>UserPostFeedRequest
+#### UserPostFeedRequest
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|message|string|yes|
-|link|string|no|
-|picture|string|no|
-|name|string|no|
-|caption|string|no|
-|description|string|no|
-|place|string|no|
-|tags|string|no|
-|privacy|not defined|no|
-|object_attachment|string|no|
+|message|string|○|
+|link|string|×|
+|picture|string|×|
+|name|string|×|
+|caption|string|×|
+|description|string|×|
+|place|string|×|
+|tags|string|×|
+|privacy|未定義|×|
+|object\_attachment|string|×|
 
-#### <a name="pagepostfeedrequest"></a>PagePostFeedRequest
+#### PagePostFeedRequest
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|message|string|yes|
-|link|string|no|
-|picture|string|no|
-|name|string|no|
-|caption|string|no|
-|description|string|no|
-|actions|array|no|
-|place|string|no|
-|tags|string|no|
-|object_attachment|string|no|
-|targeting|not defined|no|
-|feed_targeting|not defined|no|
-|published|boolean|no|
-|scheduled_publish_time|string|no|
-|backdated_time|string|no|
-|backdated_time_granularity|string|no|
-|child_attachments|array|no|
-|multi_share_end_card|boolean|no|
+|message|string|○|
+|link|string|×|
+|picture|string|×|
+|name|string|×|
+|caption|string|×|
+|description|string|×|
+|actions|array|×|
+|place|string|×|
+|tags|string|×|
+|object\_attachment|string|×|
+|targeting|未定義|×|
+|feed\_targeting|未定義|×|
+|published|boolean|×|
+|scheduled\_publish\_time|string|×|
+|backdated\_time|string|×|
+|backdated\_time\_granularity|string|×|
+|child\_attachments|array|×|
+|multi\_share\_end\_card|boolean|×|
 
-#### <a name="postfeedresponse"></a>PostFeedResponse
+#### PostFeedResponse
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|no|
+|id|string|×|
 
-#### <a name="profilecollection"></a>ProfileCollection
+#### ProfileCollection
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|data|array|no|
+|data|array|×|
 
-#### <a name="useritem"></a>UserItem
+#### UserItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|no|
-|first_name|string|no|
-|last_name|string|no|
-|name|string|no|
-|gender|string|no|
-|about|string|no|
+|id|string|×|
+|first\_name|string|×|
+|last\_name|string|×|
+|name|string|×|
+|gender|string|×|
+|about|string|×|
 
-#### <a name="actionitem"></a>ActionItem
+#### ActionItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|name|string|no|
-|link|string|no|
+|name|string|×|
+|link|string|×|
 
-#### <a name="targetitem"></a>TargetItem
+#### TargetItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|countries|array|no|
-|locales|array|no|
-|regions|array|no|
-|cities|array|no|
+|countries|array|×|
+|locales|array|×|
+|regions|array|×|
+|cities|array|×|
 
-#### <a name="feedtargetitem:-object-that-controls-news-feed-targeting-for-this-post"></a>FeedTargetItem: Object that controls news feed targeting for this post
-Anyone in these groups is more likely to see this post, others are less likely. Applies to Pages only.
+#### FeedTargetItem: この投稿を対象とするニュース フィードを制御するオブジェクト
+これらのグループのメンバーはこの投稿を表示する可能性が高く、他のユーザーは可能性が低い場合です。ページにのみ適用されます。
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|countries|array|no|
-|regions|array|no|
-|cities|array|no|
-|age_min|integer|no|
-|age_max|integer|no|
-|genders|array|no|
-|relationship_statuses|array|no|
-|interested_in|array|no|
-|college_years|array|no|
-|interests|array|no|
-|relevant_until|integer|no|
-|education_statuses|array|no|
-|locales|array|no|
+|countries|array|×|
+|regions|array|×|
+|cities|array|×|
+|age\_min|integer|×|
+|age\_max|integer|×|
+|genders|array|×|
+|relationship\_statuses|array|×|
+|interested\_in|array|×|
+|college\_years|array|×|
+|interests|array|×|
+|relevant\_until|integer|×|
+|education\_statuses|array|×|
+|locales|array|×|
 
-#### <a name="placeitem"></a>PlaceItem
+#### PlaceItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|no|
-|name|string|no|
-|overall_rating|number|no|
-|location|not defined|no|
+|id|string|×|
+|name|string|×|
+|overall\_rating|number|×|
+|location|未定義|×|
 
-#### <a name="locationitem"></a>LocationItem
+#### LocationItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|city|string|no|
-|country|string|no|
-|latitude|number|no|
-|located_in|string|no|
-|longitude|number|no|
-|name|string|no|
-|region|string|no|
-|state|string|no|
-|street|string|no|
-|zip|string|no|
+|city|string|×|
+|country|string|×|
+|latitude|number|×|
+|located\_in|string|×|
+|longitude|number|×|
+|name|string|×|
+|region|string|×|
+|state|string|×|
+|street|string|×|
+|zip|string|×|
 
-#### <a name="privacyitem"></a>PrivacyItem
+#### PrivacyItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|description|string|no|
-|value|string|yes|
-|allow|string|no|
-|deny|string|no|
-|friends|string|no|
+|description|string|×|
+|値|string|○|
+|allow|string|×|
+|deny|string|×|
+|friends|string|×|
 
-#### <a name="childattachmentsitem"></a>ChildAttachmentsItem
+#### ChildAttachmentsItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|link|string|no|
-|picture|string|no|
-|image_hash|string|no|
-|name|string|no|
-|description|string|no|
+|link|string|×|
+|picture|string|×|
+|image\_hash|string|×|
+|name|string|×|
+|description|string|×|
 
-#### <a name="postphotorequest"></a>PostPhotoRequest
+#### PostPhotoRequest
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|url|string|yes|
-|caption|string|no|
+|url|string|○|
+|caption|string|×|
 
-#### <a name="postphotoresponse"></a>PostPhotoResponse
+#### PostPhotoResponse
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|yes|
-|post_id|string|yes|
+|id|string|○|
+|post\_id|string|○|
 
-#### <a name="postvideorequest"></a>PostVideoRequest
+#### PostVideoRequest
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|videoData|string|yes|
-|description|string|yes|
-|title|string|yes|
-|uploadedVideoName|string|no|
+|videoData|string|○|
+|description|string|○|
+|title|string|○|
+|uploadedVideoName|string|×|
 
-#### <a name="getphotoresponse"></a>GetPhotoResponse
+#### GetPhotoResponse
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|data|not defined|yes|
+|data|未定義|○|
 
-#### <a name="getphotoresponseitem"></a>GetPhotoResponseItem
+#### GetPhotoResponseItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|url|string|yes|
-|is_silhouette|boolean|yes|
-|height|string|no|
-|width|string|no|
+|url|string|○|
+|is\_silhouette|boolean|○|
+|height|string|×|
+|width|string|×|
 
-#### <a name="geteventresponse"></a>GetEventResponse
+#### GetEventResponse
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|data|array|yes|
+|data|array|○|
 
-#### <a name="geteventresponseitem"></a>GetEventResponseItem
+#### GetEventResponseItem
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|id|string|yes|
-|name|string|yes|
-|start_time|string|no|
-|end_time|string|no|
-|timezone|string|no|
-|location|string|no|
-|description|string|no|
-|ticket_uri|string|no|
-|rsvp_status|string|yes|
+|id|string|○|
+|name|string|○|
+|start\_time|string|×|
+|end\_time|string|×|
+|timezone|string|×|
+|location|string|×|
+|description|string|×|
+|ticket\_uri|string|×|
+|rsvp\_status|string|○|
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

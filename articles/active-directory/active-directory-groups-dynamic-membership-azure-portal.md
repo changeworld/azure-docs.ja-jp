@@ -1,107 +1,105 @@
 
 <properties
-    pageTitle="Using attributes to create advanced rules for group membership in Azure Active Directory preview | Microsoft Azure"
-    description="How to create advanced rules for dynamic group membership including supported expression rule operators and parameters."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="属性を使用して Azure Active Directory プレビューのグループ メンバーシップの高度なルールを作成する | Microsoft Azure"
+	description="サポートされている式のルールの演算子とパラメーターを含む、動的グループ メンバーシップの高度なルールを作成する方法。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
 
+# 属性を使用して Azure Active Directory プレビューのグループ メンバーシップの高度なルールを作成する
 
-# <a name="using-attributes-to-create-advanced-rules-for-group-membership-in-azure-active-directory-preview"></a>Using attributes to create advanced rules for group membership in Azure Active Directory preview
+Azure ポータルでは、Azure Active Directory (Azure AD) プレビュー グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 この記事では、これらの高度なルールを作成するためのルールの属性と構文について詳しく説明します。
 
-The Azure portal provides you with the ability to create advanced rules to enable more complex attribute-based dynamic memberships for Azure Active Directory (Azure AD) preview groups. [What's in the preview?](active-directory-preview-explainer.md) This article details the rule attributes and syntax to create these advanced rules.
+## 高度なルールを作成するには
 
-## <a name="to-create-the-advanced-rule"></a>To create the advanced rule
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+  ![ユーザー管理を開く](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
 
-  ![Opening user management](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
+3.  **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
 
-3.  On the **Users and groups** blade, select **All groups**.
+  ![グループ ブレードを開く](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
 
-  ![Opening the groups blade](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
+4. **[ユーザーとグループ - すべてのグループ]** ブレードで、**[追加]** をクリックします。
 
-4. On the **Users and groups - All groups** blade, select the **Add** command.
+  ![新しいグループを追加する](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
 
-  ![Add new group](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
+5. **[グループ]** ブレードで、新しいグループの名前と説明を入力します。**[メンバーシップの種類]** で、ユーザーとデバイスのどちらのルールを作成するかに応じて、**[Dynamic User (動的ユーザー)]** または **[Dynamic Device (動的デバイス)]** を選択し、**[Add dynamic query (動的クエリの追加)]** をクリックします。デバイスのルールに使用する属性については、「[属性を使用したデバイス オブジェクトのルールの作成](#using-attributes-to-create-rules-for-device-objects)」をご覧ください。
 
-5. On the **Group** blade, enter a name and description for the new group. Select a **Membership type** of either **Dynamic User** or **Dynamic Device**, depending on whether you want to create a rule for users or devices, and then select **Add dynamic query**. For the attributes used for device rules, see [Using attributes to create rules for device objects](#using-attributes-to-create-rules-for-device-objects).
+  ![動的メンバーシップのルールを追加する](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
 
-  ![Add dynamic membership rule](./media/active-directory-groups-dynamic-membership-azure-portal/add-dynamic-group-rule.png)
+6. **[Dynamic membership rules (動的メンバーシップのルール)]** ブレードで、**[Add dynamic membership advanced rule (動的メンバーシップの高度なルールの追加)]** ボックスにルールを入力し、ブレードの下部にある **[作成]** をクリックします。
 
-6. On the **Dynamic membership rules** blade, enter your rule into the **Add dynamic membership advanced rule** box, press Enter, and then select **Create** at the bottom of the blade.
+7. **[グループ]** ブレードの **[作成]** をクリックして、グループを作成します。
 
-7. Select **Create** on the **Group** blade to create the group.
+## 高度なルール本体の作成
 
-## <a name="constructing-the-body-of-an-advanced-rule"></a>Constructing the body of an advanced rule
+グループの動的なメンバーシップ管理を目的として作成される高度なルールは基本的に、3 つの構成要素から成る、true または false を結果として返す 2 項演算式です。その 3 つの構成要素を次に示します。
 
-The advanced rule that you can create for the dynamic memberships for groups is essentially a binary expression that consists of three parts and results in a true or false outcome. The three parts are:
+- 左辺のパラメーター
+- 2 項演算子
+- 右辺の定数
 
-- Left parameter
-- Binary operator
-- Right constant
+たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
 
-A complete advanced rule looks similar to this: (leftParameter binaryOperator "RightConstant"), where the opening and closing parenthesis are required for the entire binary expression, double quotes are required for the right constant, and the syntax for the left parameter is user.property. An advanced rule can consist of more than one binary expressions separated by the -and, -or, and -not logical operators.
-
-The following are examples of a properly constructed advanced rule:
+以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
 
 - (user.department -eq "Sales") -or (user.department -eq "Marketing")
 - (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 
-For the complete list of supported parameters and expression rule operators, see sections below. For the attributes used for device rules, see [Using attributes to create rules for device objects](#using-attributes-to-create-rules-for-device-objects).
+サポートされているパラメーターと式のルール演算子の全一覧については、以降のセクションを参照してください。デバイスのルールに使用する属性については、「[属性を使用したデバイス オブジェクトのルールの作成](#using-attributes-to-create-rules-for-device-objects)」をご覧ください。
 
-The total length of the body of your advanced rule cannot exceed 2048 characters.
+高度なルール本体の合計文字数が 2048 文字を超えないようにしてください。
 
 > [AZURE.NOTE]
->String and regex operations are case insensitive. You can also perform Null checks, using $null as a constant, for example, user.department -eq $null.
-Strings containing quotes " should be escaped using 'character, for example, user.department -eq \`"Sales".
+文字列演算と正規表現演算は、大文字と小文字が区別されません。定数に $null を使用することで Null チェックを実行することもできます (例: user.department -eq $null)。二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq `"Sales")。
 
-## <a name="supported-expression-rule-operators"></a>Supported expression rule operators
-The following table lists all the supported expression rule operators and their syntax to be used in the body of the advanced rule:
+## サポートされている式のルール演算子
+次の表に、高度なルール本体で使用できる、サポートされているすべての式のルール演算子とその構文を示します。
 
-| Operator        | Syntax         |
+| 演算子 | 構文 |
 |-----------------|----------------|
-| Not Equals      | -ne            |
-| Equals          | -eq            |
-| Not Starts With | -notStartsWith |
-| Starts With     | -startsWith    |
-| Not Contains    | -notContains   |
-| Contains        | -contains      |
-| Not Match       | -notMatch      |
-| Match           | -match         |
+| 等しくない | -ne |
+| 等しい | -eq |
+| 指定値で始まらない | -notStartsWith |
+| 指定値で始まる | -startsWith |
+| 指定値を含まない | -notContains |
+| 指定値を含む | -contains |
+| 一致しない | -notMatch |
+| 一致する | -match |
 
 
-## <a name="query-error-remediation"></a>Query error remediation
-The following table lists potential errors and how to correct them if they occur
+## クエリ エラーの修復
+次の表では、発生する可能性のあるエラーとその解決方法を示します。
 
-| Query Parse Error     | Error Usage       | Corrected Usage             |
+| クエリ解析エラー | 間違った使用法 | 修正後 |
 |-----------------------|-------------------|-----------------------------|
-| Error: Attribute not supported.                                      | (user.invalidProperty -eq "Value")       | (user.department -eq "value")<br/>Property should match one from the [supported properties list](#supported-properties).                          |
-| Error: Operator is not supported on attribute.                       | (user.accountEnabled -contains true)                                                                               | (user.accountEnabled -eq true)<br/>Property is of type boolean. Use the supported operators (-eq or -ne) on boolean type from the above list.                                                                                                                                   |
-| Error: Query compilation error.                                      | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>Logical operator should match one from the supported properties list above.(user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")Error in regular expression. |
-| Error: Binary expression is not in right format.                     | (user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales")                             | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>Query has multiple errors. Parenthesis not in right place.                                                                                                                            |
-| Error: Unknown error occurred during setting up dynamic memberships. | (user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain")                               | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>Query has multiple errors. Parenthesis not in right place.                                                                                                                            |
+| エラー: 属性がサポートされていません。 | (user.invalidProperty -eq "Value") | (user.department -eq "value")<br/>プロパティは、[サポートされているプロパティの一覧](#supported-properties)のいずれかと一致している必要があります。 |
+| エラー: 属性で演算子がサポートされていません。 | (user.accountEnabled -contains true) | (user.accountEnabled -eq true)<br/>プロパティはブール型です。前掲の一覧からブール型でサポートされている演算子 (-eq または -ne) を使用してください。 |
+| エラー: クエリ コンパイル エラー。 | (user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") | (user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>論理演算子は、サポートされているプロパティ一覧のいずれかと一致している必要があります。(user.userPrincipalName -match ".*@domain.ext") または (user.userPrincipalName -match "@domain.ext$") は正規表現ではエラーになります。 |
+| エラー: バイナリ式の形式が正しくありません。 | (user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
+| エラー: 動的メンバーシップの設定中に不明なエラーが発生しました。 | (user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") | (user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>クエリにいくつかの誤りが存在します。かっこの位置が正しくありません。 |
 
-## <a name="supported-properties"></a>Supported properties
-The following are all the user properties that you can use in your advanced rule:
+## サポートされているプロパティ
+高度なルールで使用できるすべてのユーザー プロパティを次に示します。
 
-### <a name="properties-of-type-boolean"></a>Properties of type boolean
+### ブール型のプロパティ
 
-Allowed operators
+使用可能な演算子
 
 * -eq
 
@@ -109,14 +107,14 @@ Allowed operators
 * -ne
 
 
-| Properties     | Allowed values  | Usage                          |
+| プロパティ | 使用できる値 | 使用法 |
 |----------------|-----------------|--------------------------------|
-| accountEnabled | true false      | user.accountEnabled -eq true)  |
+| accountEnabled | true false | user.accountEnabled -eq true) |
 | dirSyncEnabled | true false null | (user.dirSyncEnabled -eq true) |
 
-### <a name="properties-of-type-string"></a>Properties of type string
+### 文字列型のプロパティ
 
-Allowed operators
+使用可能な演算子
 
 * -eq
 
@@ -141,104 +139,98 @@ Allowed operators
 
 * -notMatch
 
-| Properties                 | Allowed values                                                                                        | Usage                                                     |
+| プロパティ | 使用できる値 | 使用法 |
 |----------------------------|-------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| city                       | Any string value or $null                                                                           | (user.city -eq "value")                                   |
-| country                    | Any string value or $null                                                                            | (user.country -eq "value")                                |
-| department                 | Any string value or $null                                                                          | (user.department -eq "value")                             |
-| displayName                | Any string value                                                                                 | (user.displayName -eq "value")                            |
-| facsimileTelephoneNumber   | Any string value or $null                                                                           | (user.facsimileTelephoneNumber -eq "value")               |
-| givenName                  | Any string value or $null                                                                           | (user.givenName -eq "value")                              |
-| jobTitle                   | Any string value or $null                                                                           | (user.jobTitle -eq "value")                               |
-| mail                       | Any string value or $null (SMTP address of the user)                                                  | (user.mail -eq "value")                                   |
-| mailNickName               | Any string value (mail alias of the user)                                                            | (user.mailNickName -eq "value")                           |
-| mobile                     | Any string value or $null                                                                           | (user.mobile -eq "value")                                 |
-| objectId                   | GUID of the user object                                                                            | (user.objectId -eq "1111111-1111-1111-1111-111111111111") |
-| passwordPolicies           | None DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |   (user.passwordPolicies -eq "DisableStrongPassword")                                                      |
-| physicalDeliveryOfficeName | Any string value or $null                                                                            | (user.physicalDeliveryOfficeName -eq "value")             |
-| postalCode                 | Any string value or $null                                                                            | (user.postalCode -eq "value")                             |
-| preferredLanguage          | ISO 639-1 code                                                                                        | (user.preferredLanguage -eq "en-US")                      |
-| sipProxyAddress            | Any string value or $null                                                                            | (user.sipProxyAddress -eq "value")                        |
-| state                      | Any string value or $null                                                                            | (user.state -eq "value")                                  |
-| streetAddress              | Any string value or $null                                                                            | (user.streetAddress -eq "value")                          |
-| surname                    | Any string value or $null                                                                            | (user.surname -eq "value")                                |
-| telephoneNumber            | Any string value or $null                                                                            | (user.telephoneNumber -eq "value")                        |
-| usageLocation              | Two lettered country code                                                                           | (user.usageLocation -eq "US")                             |
-| userPrincipalName          | Any string value                                                                                     | (user.userPrincipalName -eq "alias@domain")               |
-| userType                   | member guest $null                                                                                    | (user.userType -eq "Member")                              |
+| city | 任意の文字列値または $null | (user.city -eq "value") |
+| country | 任意の文字列値または $null | (user.country -eq "value") |
+| department | 任意の文字列値または $null | (user.department -eq "value") |
+| displayName | 任意の文字列値 | (user.displayName -eq "value") |
+| facsimileTelephoneNumber | 任意の文字列値または $null | (user.facsimileTelephoneNumber -eq "value") |
+| givenName | 任意の文字列値または $null | (user.givenName -eq "value") |
+| jobTitle | 任意の文字列値または $null | (user.jobTitle -eq "value") |
+| mail | 任意の文字列値または $null (ユーザーの SMTP アドレス) | (user.mail -eq "value") |
+| mailNickName | 任意の文字列値 (ユーザーのメール エイリアス) | (user.mailNickName -eq "value") |
+| mobile | 任意の文字列値または $null | (user.mobile -eq "value") |
+| objectId | ユーザー オブジェクトの GUID | (user.objectId -eq "1111111-1111-1111-1111-111111111111") |
+| passwordPolicies | なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword | (user.passwordPolicies -eq "DisableStrongPassword") |
+| physicalDeliveryOfficeName | 任意の文字列値または $null | (user.physicalDeliveryOfficeName -eq "value") |
+| postalCode | 任意の文字列値または $null | (user.postalCode -eq "value") |
+| preferredLanguage | ISO 639-1 コード | (user.preferredLanguage -eq "ja-JP") |
+| sipProxyAddress | 任意の文字列値または $null | (user.sipProxyAddress -eq "value") |
+| state | 任意の文字列値または $null | (user.state -eq "value") |
+| streetAddress | 任意の文字列値または $null | (user.streetAddress -eq "value") |
+| surname | 任意の文字列値または $null | (user.surname -eq "value") |
+| telephoneNumber | 任意の文字列値または $null | (user.telephoneNumber -eq "value") |
+| usageLocation | 2 文字の国コード | (user.usageLocation -eq "US") |
+| userPrincipalName | 任意の文字列値 | (user.userPrincipalName -eq "alias@domain") |
+| userType | member guest $null | (user.userType -eq "Member") |
 
-### <a name="properties-of-type-string-collection"></a>Properties of type string collection
+### 文字列コレクション型のプロパティ
 
-Allowed operators
+使用可能な演算子
 
 * -contains
 
 
 * -notContains
 
-| Poperties      | Allowed values                        | Usage                                                |
+| プロパティ | 使用できる値 | 使用法 |
 |----------------|---------------------------------------|------------------------------------------------------|
-| otherMails     | Any string value                      | (user.otherMails -contains "alias@domain")           |
+| otherMails | 任意の文字列値 | (user.otherMails -contains "alias@domain") |
 | proxyAddresses | SMTP: alias@domain smtp: alias@domain | (user.proxyAddresses -contains "SMTP: alias@domain") |
 
-## <a name="extension-attributes-and-custom-attributes"></a>Extension attributes and custom attributes
-Extension attributes and custom attributes are supported in dynamic membership rules.
+## 拡張属性とカスタム属性
+拡張属性とカスタム属性は、動的なメンバーシップ ルールでサポートされます。
 
-Extension attributes are synced from on premise Window Server AD and take the format of "ExtensionAttributeX", where X equals 1 - 15.
-An example of a rule that uses an extension attribute would be
+拡張属性はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。拡張属性を使用するルールの例を次に示します。
 
 (user.extensionAttribute15 -eq "Marketing")
 
-Custom Attributes are synced from on premise Windows Server AD or from a connected SaaS application and the the format of "user.extension_[GUID]\__[Attribute]", where [GUID] is the unique identifier in AAD for the application that created the attribute in AAD and [Attribute] is the name of the attribute as it was created.
-An example of a rule that uses a custom attribute is
+カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、"user.extension_[GUID]\__[Attribute]" という形式です。[GUID] は AAD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。カスタム属性を使用するルールの例を次に示します
 
-user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
+user.extension\_c272a57b722d4eb29bfe327874ae79cb\_\_OfficeNumber
 
-The custom attribute name can be found in the directory by querying a user's attribute using Graph Explorer and searching for the attribute name.
+カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
 
-## <a name="direct-reports-rule"></a>Direct Reports Rule
-You can now populate members in a group based on the manager attribute of a user.
+## 直接の部下のルール
+ユーザーのマネージャー属性に基づいてグループにメンバーを設定できるようになりました。
 
-**To configure a group as a “Manager” group**
+**"Manager" グループとしてグループを構成するには**
 
-1. Follow steps 1-5 in [To create the advanced rule](#to-create-the-advanced-rule), and select a **Membership type** of **Dynamic User**.
+1. 「[高度なルールを作成するには](#to-create-the-advanced-rule)」の手順 1. ～ 5. に従い、**[メンバーシップの種類]** で **[Dynamic User (動的ユーザー)]** を選択します。
 
-2. On the **Dynamic membership rules** blade, enter the rule with the following syntax:
+2. **[Dynamic membership rules (動的メンバーシップのルール)]** ブレードで、次の構文を使用してルールを入力します。
 
-    Direct Reports for *Direct Reports for {obectID_of_manager}*. An example of a valid rule for Direct Reports is
+	直属の部下用の場合は、*Direct Reports for {obectID\_of\_manager}* です。直属の部下の有効なルールの例を示します。
 
-                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
+					Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
 
-    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is the objectID of the manager. The object ID can be found in the Azure AD on the **Profile tab** of the user page for the user who is the manager.
+	ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。オブジェクト ID は、Azure AD にある、マネージャーであるユーザーのユーザー ページの **[プロファイル] タブ**で確認できます。
 
-3. When saving this rule, all users that satisfy the rule will be joined as members of the group. It can take some minutes for the group to initially populate.
+3. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。最初は、グループを設定するのに数分かかることがあります。
 
 
-## <a name="using-attributes-to-create-rules-for-device-objects"></a>Using attributes to create rules for device objects
+## 属性を使用したデバイス オブジェクトのルールの作成
 
-You can also create a rule that selects device objects for membership in a group. The following device attributes can be used:
+グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。次のデバイス属性を使用できます。
 
-| Properties           | Allowed values                  | Usage                                                |
+| プロパティ | 使用できる値 | 使用法 |
 |----------------------|---------------------------------|------------------------------------------------------|
-| displayName          | any string value                | (device.displayName -eq "Rob Iphone”)                 |
-| deviceOSType         | any string value                | (device.deviceOSType -eq "IOS")                      |
-| deviceOSVersion      | any string value                | (device.OSVersion -eq "9.1")                         |
-| isDirSynced          | true false null                 | (device.isDirSynced -eq "true")                      |
-| isManaged            | true false null                 | (device.isManaged -eq "false")                       |
-| isCompliant          | true false null                 | (device.isCompliant -eq "true")                      |
+| displayName | 任意の文字列値 | (device.displayName -eq "Rob Iphone”) |
+| deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "IOS") |
+| deviceOSVersion | 任意の文字列値 | (device.OSVersion -eq "9.1") |
+| isDirSynced | true false null | (device.isDirSynced -eq "true") |
+| isManaged | true false null | (device.isManaged -eq "false") |
+| isCompliant | true false null | (device.isCompliant -eq "true") |
 
 
-## <a name="additional-information"></a>Additional information
-These articles provide additional information on groups in Azure Active Directory.
+## 追加情報
+次の記事は、Azure Active Directory のグループに関する追加情報を提供します。
 
-* [See existing groups](active-directory-groups-view-azure-portal.md)
-* [Create a new group and adding members](active-directory-groups-create-azure-portal.md)
-* [Manage settings of a group](active-directory-groups-settings-azure-portal.md)
-* [Manage memberships of a group](active-directory-groups-membership-azure-portal.md)
-* [Manage dynamic rules for users in a group](active-directory-groups-dynamic-membership-azure-portal.md)
+* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
+* [新しいグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)
+* [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
+* [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
+* [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

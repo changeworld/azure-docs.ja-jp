@@ -1,86 +1,85 @@
 <properties 
-    pageTitle="XEvent Event File code for SQL Database | Microsoft Azure" 
-    description="Provides PowerShell and Transact-SQL for a two-phase code sample that demonstrates the Event File target in an extended event on Azure SQL Database. Azure Storage is a required part of this scenario." 
-    services="sql-database" 
-    documentationCenter="" 
-    authors="MightyPen" 
-    manager="jhubbard" 
-    editor="" 
-    tags=""/>
+	pageTitle="SQL Database の XEvent イベント ファイル コード | Microsoft Azure" 
+	description="Azure SQL Database の拡張イベントのイベント ファイル ターゲットを示す 2 段階コード サンプルの PowerShell と Transact-SQL を提供します。Azure Storage はこのシナリオの必須の部分です。" 
+	services="sql-database" 
+	documentationCenter="" 
+	authors="MightyPen" 
+	manager="jhubbard" 
+	editor="" 
+	tags=""/>
 
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="data-management" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/23/2016" 
-    ms.author="genemi"/>
+	ms.service="sql-database" 
+	ms.workload="data-management" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/23/2016" 
+	ms.author="genemi"/>
 
 
-
-# <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Event File target code for extended events in SQL Database
+# SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 
 [AZURE.INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
 
-You want a complete code sample for a robust way to capture and report information for an extended event.
+拡張イベントに関する情報を確かな方法で取得し、レポートするための完全なコード サンプルが必要です。
 
 
-In Microsoft SQL Server, the [Event File target](http://msdn.microsoft.com/library/ff878115.aspx) is used to store event outputs into a local hard drive file. But such files are not available to Azure SQL Database. Instead we use the Azure Storage service to support the Event File target.
+Microsoft SQL Server では、イベント出力をローカル ハード ドライブ ファイルに保存するために[イベント ファイル ターゲット](http://msdn.microsoft.com/library/ff878115.aspx)が使用します。ただし、このファイルは Azure SQL Database で利用できません。代わりに、イベント ファイル ターゲットをサポートする Azure ストレージ サービスを使用します。
 
 
-This topic presents a two-phase code sample:
+このトピックでは、2 段階のコード サンプルを使用します。
 
 
-- PowerShell, to create an Azure Storage container in the cloud.
+- PowerShell。クラウドで Azure Storage コンテナーを作成します。
 
 - Transact-SQL:
- - To assign the Azure Storage container to an Event File target.
- - To create and start the event session, and so on.
+ - イベント ファイル ターゲットに Azure Storage コンテナーを割り当てます。
+ - イベント セッションを作成し、開始するなどを行います。
 
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
 
-- An Azure account and subscription. You can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
+- Azure アカウントとサブスクリプション。[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 
-- Any database you can create a table in.
- - Optionally you can [create an **AdventureWorksLT** demonstration database](sql-database-get-started.md) in minutes.
+- テーブルを作成できるデータベース。
+ - 必要に応じて、数分で [**AdventureWorksLT** デモ データベースを作成できる](sql-database-get-started.md)。
 
 
-- SQL Server Management Studio (ssms.exe), ideally its latest monthly update version. You can download the latest ssms.exe from:
- - Topic titled [Download SQL Server Management Studio](http://msdn.microsoft.com/library/mt238290.aspx).
- - [A direct link to the download.](http://go.microsoft.com/fwlink/?linkid=616025)
+- SQL Server Management Studio (ssms.exe)。できれば、最新の月次更新バージョン。最新の ssms.exe をダウンロードすることができる。
+ - 「[SQL Server Management Studio のダウンロード](http://msdn.microsoft.com/library/mt238290.aspx)」というタイトルのトピック。
+ - [ダウンロードへの直接リンク。](http://go.microsoft.com/fwlink/?linkid=616025)
 
 
-- You must have the [Azure PowerShell modules](http://go.microsoft.com/?linkid=9811175) installed.
- - The modules provide commands such as - **New-AzureStorageAccount**.
+- [Azure PowerShell モジュール](http://go.microsoft.com/?linkid=9811175)をインストールしておく必要があります。
+ - このモジュールから **New-AzureStorageAccount** などのコマンドが提供されます。
 
 
-## <a name="phase-1:-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell code for Azure Storage container
+## フェーズ 1: Azure Storage コンテナーの PowerShell コード
 
 
-This PowerShell is phase 1 of the two-phase code sample.
+この PowerShell は 2 段階のコード サンプルの第 1 段階です。
 
-The script starts with commands to clean up after a possible previous run, and is rerunnable.
-
-
-
-1. Paste the PowerShell script into a simple text editor such as Notepad.exe, and save the script as a file with the extension **.ps1**.
-
-2. Start PowerShell ISE as an Administrator.
-
-3. At the prompt, type<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>and then press Enter.
-
-4. In PowerShell ISE, open your **.ps1** file. Run the script.
-
-5. The script first starts a new window in which you log in to Azure.
- - If you rerun the script without disrupting your session, you have the convenient option of commenting out the **Add-AzureAccount** command.
+このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まるので、再実行可能です。
 
 
-![PowerShell ISE, with Azure module installed, ready to run script.][30_powershell_ise]
+
+1. PowerShell スクリプトを Notepad.exe のような単純なテキスト エディターに貼り付け、**.ps1** 拡張子が付いたファイルとしてスクリプトを保存します。
+
+2. PowerShell ISE を管理者として起動します。
+
+3. プロンプトで、「<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>」と入力し、Enter キーを押します。
+
+4. PowerShell ISE で、**.ps1** ファイルを開きます。スクリプトを実行します。
+
+5. 最初に新しいウィンドウが開きます。そこから Azure にログインします。
+ - セッションを妨げずにスクリプトを再実行するために、**Add-AzureAccount** コマンドをコメントアウトする便利なオプションがあります。
+
+
+![Azure モジュールがインストールされ、スクリプトの実行準備が整っている PowerShell ISE。][30_powershell_ise]
 
 
 &nbsp;
@@ -260,39 +259,39 @@ Now shift to the Transact-SQL portion of the two-part code sample!'
 &nbsp;
 
 
-Take note of the few named values that the PowerShell script prints when it ends. You must edit those values into the Transact-SQL script that follows as phase 2.
+PowerShell スクリプトが終了したら、出力された名前付きの値を書き留めます。後続の第 2 段階で、これらの値を使用するように Transact-SQL スクリプトを編集する必要があります。
 
 
-## <a name="phase-2:-transact-sql-code-that-uses-azure-storage-container"></a>Phase 2: Transact-SQL code that uses Azure Storage container
+## フェーズ 2: Azure Storage コンテナーを使用する Trasact-SQL コード
 
 
-- In phase 1 of this code sample, you ran a PowerShell script to create an Azure Storage container.
-- Next in phase 2, the following Transact-SQL script must use the container.
+- このコード サンプルの第 1 段階で、PowerShell スクリプトを実行し、Azure ストレージ コンテナーを作成しました。
+- 次の第 2 段階では、次の Transact-SQL スクリプトでそのコンテナーを使用する必要があります。
 
 
-The script starts with commands to clean up after a possible previous run, and is rerunnable.
+このスクリプトは、前の実行があれば、その後でクリーンアップするコマンドで始まるので、再実行可能です。
 
 
-The PowerShell script printed a few named values when it ended. You must edit the Transact-SQL script to use those values. Find **TODO** in the Transact-SQL script to locate the edit points.
+PowerShell スクリプトの終了時に、名前付きの値がいくつか出力されました。それらの値を使用するように Transact-SQL スクリプトを編集する必要があります。Transact-SQL スクリプトの **TODO** を探し、編集する箇所を見つけます。
 
 
-1. Open SQL Server Management Studio (ssms.exe).
+1. SQL Server Management Studio (ssms.exe) を開きます。
 
-2. Connect to your Azure SQL Database database.
+2. Azure SQL Database データベースに接続します。
 
-3. Click to open a new query pane.
+3. クリックし、新しいクエリ ウィンドウを開きます。
 
-4. Paste the following Transact-SQL script into the query pane.
+4. 次の Transact-SQL スクリプトをクエリ ウィンドウに貼り付けます。
 
-5. Find every **TODO** in the script and make the appropriate edits.
+5. スクリプトにある **TODO** をすべて探し、適宜編集します。
 
-6. Save, and then run the script.
+6. 保存し、スクリプトを実行します。
 
 
 &nbsp;
 
 
-> [AZURE.WARNING] The SAS key value generated by the preceding PowerShell script might begin with a '?' (question mark). When you use the SAS key in the following T-SQL script, you must *remove the leading '?'*. Otherwise your efforts might be blocked by security.
+> [AZURE.WARNING] 前述の PowerShell スクリプトによって生成された SAS キーの値は、"?" (疑問符) で始まる場合があります。次の T-SQL スクリプトで SAS キーを使用する場合は、*先頭の "?" を削除*する必要があります。削除しないと、セキュリティによって操作がブロックされる可能性があります。
 
 
 &nbsp;
@@ -314,26 +313,26 @@ GO
 
 
 IF EXISTS
-    (SELECT * FROM sys.objects
-        WHERE type = 'U' and name = 'gmTabEmployee')
+	(SELECT * FROM sys.objects
+		WHERE type = 'U' and name = 'gmTabEmployee')
 BEGIN
-    DROP TABLE gmTabEmployee;
+	DROP TABLE gmTabEmployee;
 END
 GO
 
 
 CREATE TABLE gmTabEmployee
 (
-    EmployeeGuid         uniqueIdentifier   not null  default newid()  primary key,
-    EmployeeId           int                not null  identity(1,1),
-    EmployeeKudosCount   int                not null  default 0,
-    EmployeeDescr        nvarchar(256)          null
+	EmployeeGuid         uniqueIdentifier   not null  default newid()  primary key,
+	EmployeeId           int                not null  identity(1,1),
+	EmployeeKudosCount   int                not null  default 0,
+	EmployeeDescr        nvarchar(256)          null
 );
 GO
 
 
 INSERT INTO gmTabEmployee ( EmployeeDescr )
-    VALUES ( 'Jane Doe' );
+	VALUES ( 'Jane Doe' );
 GO
 
 
@@ -342,37 +341,37 @@ GO
 
 
 IF NOT EXISTS
-    (SELECT * FROM sys.symmetric_keys
-        WHERE symmetric_key_id = 101)
+	(SELECT * FROM sys.symmetric_keys
+		WHERE symmetric_key_id = 101)
 BEGIN
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = '0C34C960-6621-4682-A123-C7EA08E3FC46' -- Or any newid().
+	CREATE MASTER KEY ENCRYPTION BY PASSWORD = '0C34C960-6621-4682-A123-C7EA08E3FC46' -- Or any newid().
 END
 GO
 
 
 IF EXISTS
-    (SELECT * FROM sys.database_scoped_credentials
-        -- TODO: Assign AzureStorageAccount name, and the associated Container name.
-        WHERE name = 'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent')
+	(SELECT * FROM sys.database_scoped_credentials
+		-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+		WHERE name = 'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent')
 BEGIN
-    DROP DATABASE SCOPED CREDENTIAL
-        -- TODO: Assign AzureStorageAccount name, and the associated Container name.
-        [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent] ;
+	DROP DATABASE SCOPED CREDENTIAL
+		-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+		[https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent] ;
 END
 GO
 
 
 CREATE
-    DATABASE SCOPED
-    CREDENTIAL
-        -- use '.blob.',   and not '.queue.' or '.table.' etc.
-        -- TODO: Assign AzureStorageAccount name, and the associated Container name.
-        [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent]
-    WITH
-        IDENTITY = 'SHARED ACCESS SIGNATURE',  -- "SAS" token.
-        -- TODO: Paste in the long SasToken string here for Secret, but exclude any leading '?'.
-        SECRET = 'sv=2014-02-14&sr=c&si=gmpolicysastoken&sig=EjAqjo6Nu5xMLEZEkMkLbeF7TD9v1J8DNB2t8gOKTts%3D'
-    ;
+	DATABASE SCOPED
+	CREDENTIAL
+		-- use '.blob.',   and not '.queue.' or '.table.' etc.
+		-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+		[https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent]
+	WITH
+		IDENTITY = 'SHARED ACCESS SIGNATURE',  -- "SAS" token.
+		-- TODO: Paste in the long SasToken string here for Secret, but exclude any leading '?'.
+		SECRET = 'sv=2014-02-14&sr=c&si=gmpolicysastoken&sig=EjAqjo6Nu5xMLEZEkMkLbeF7TD9v1J8DNB2t8gOKTts%3D'
+	;
 GO
 
 
@@ -381,40 +380,40 @@ GO
 ------  and a has a target.
 
 IF EXISTS
-    (SELECT * from sys.database_event_sessions
-        WHERE name = 'gmeventsessionname240b')
+	(SELECT * from sys.database_event_sessions
+		WHERE name = 'gmeventsessionname240b')
 BEGIN
-    DROP
-        EVENT SESSION
-            gmeventsessionname240b
-        ON DATABASE;
+	DROP
+		EVENT SESSION
+			gmeventsessionname240b
+	    ON DATABASE;
 END
 GO
 
 
 CREATE
-    EVENT SESSION
-        gmeventsessionname240b
-    ON DATABASE
+	EVENT SESSION
+		gmeventsessionname240b
+	ON DATABASE
 
-    ADD EVENT
-        sqlserver.sql_statement_starting
-            (
-            ACTION (sqlserver.sql_text)
-            WHERE statement LIKE 'UPDATE gmTabEmployee%'
-            )
-    ADD TARGET
-        package0.event_file
-            (
-            -- TODO: Assign AzureStorageAccount name, and the associated Container name.
-            -- Also, tweak the .xel file name at end, if you like.
-            SET filename =
-                'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent/anyfilenamexel242b.xel'
-            )
-    WITH
-        (MAX_MEMORY = 10 MB,
-        MAX_DISPATCH_LATENCY = 3 SECONDS)
-    ;
+	ADD EVENT
+		sqlserver.sql_statement_starting
+			(
+			ACTION (sqlserver.sql_text)
+			WHERE statement LIKE 'UPDATE gmTabEmployee%'
+			)
+	ADD TARGET
+		package0.event_file
+			(
+			-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+			-- Also, tweak the .xel file name at end, if you like.
+			SET filename =
+				'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent/anyfilenamexel242b.xel'
+			)
+	WITH
+		(MAX_MEMORY = 10 MB,
+		MAX_DISPATCH_LATENCY = 3 SECONDS)
+	;
 GO
 
 
@@ -426,62 +425,62 @@ GO
 ------  the session must be stopped and restarted.
 
 ALTER
-    EVENT SESSION
-        gmeventsessionname240b
-    ON DATABASE
-    STATE = START;
+	EVENT SESSION
+		gmeventsessionname240b
+	ON DATABASE
+	STATE = START;
 GO
 
 
 SELECT 'BEFORE_Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 
 UPDATE gmTabEmployee
-    SET EmployeeKudosCount = EmployeeKudosCount + 2
-    WHERE EmployeeDescr = 'Jane Doe';
+	SET EmployeeKudosCount = EmployeeKudosCount + 2
+	WHERE EmployeeDescr = 'Jane Doe';
 
 UPDATE gmTabEmployee
-    SET EmployeeKudosCount = EmployeeKudosCount + 13
-    WHERE EmployeeDescr = 'Jane Doe';
+	SET EmployeeKudosCount = EmployeeKudosCount + 13
+	WHERE EmployeeDescr = 'Jane Doe';
 
 SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 GO
 
 
 ALTER
-    EVENT SESSION
-        gmeventsessionname240b
-    ON DATABASE
-    STATE = STOP;
+	EVENT SESSION
+		gmeventsessionname240b
+	ON DATABASE
+	STATE = STOP;
 GO
 
 
 -------------- Step 5.  Select the results. ----------
 
 SELECT
-        *, 'CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS!' as [CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS],
-        CAST(event_data AS XML) AS [event_data_XML]  -- TODO: In ssms.exe results grid, double-click this cell!
-    FROM
-        sys.fn_xe_file_target_read_file
-            (
-                -- TODO: Fill in Storage Account name, and the associated Container name.
-                'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent/anyfilenamexel242b',
-                null, null, null
-            );
+		*, 'CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS!' as [CLICK_NEXT_CELL_TO_BROWSE_ITS_RESULTS],
+		CAST(event_data AS XML) AS [event_data_XML]  -- TODO: In ssms.exe results grid, double-click this cell!
+	FROM
+		sys.fn_xe_file_target_read_file
+			(
+				-- TODO: Fill in Storage Account name, and the associated Container name.
+				'https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent/anyfilenamexel242b',
+				null, null, null
+			);
 GO
 
 
 -------------- Step 6.  Clean up. ----------
 
 DROP
-    EVENT SESSION
-        gmeventsessionname240b
-    ON DATABASE;
+	EVENT SESSION
+		gmeventsessionname240b
+	ON DATABASE;
 GO
 
 DROP DATABASE SCOPED CREDENTIAL
-    -- TODO: Assign AzureStorageAccount name, and the associated Container name.
-    [https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent]
-    ;
+	-- TODO: Assign AzureStorageAccount name, and the associated Container name.
+	[https://gmstorageaccountxevent.blob.core.windows.net/gmcontainerxevent]
+	;
 GO
 
 DROP TABLE gmTabEmployee;
@@ -495,7 +494,7 @@ GO
 &nbsp;
 
 
-If the target fails to attach when you run, you must stop and restart the event session:
+実行時にターゲットがアタッチできなかった場合、イベント セッションを停止し、再起動する必要があります。
 
 
 ```
@@ -509,12 +508,12 @@ GO
 &nbsp;
 
 
-## <a name="output"></a>Output
+## 出力
 
 
-When the Transact-SQL script completes, click a cell under the **event_data_XML** column header. One **<event>** element is displayed which shows one UPDATE statement.
+Transact-SQL スクリプトが完了したら、**event\_data\_XML** 列ヘッダーの下にあるセルをクリックします。**<event>** 要素が 1 つ表示されます。これに UPDATE ステートメントが 1 つ表示されます。
 
-Here is one **<event>** element that was generated during testing:
+ここに、テスト中に生成された **<event>** 要素が 1 つあります。
 
 
 &nbsp;
@@ -562,44 +561,44 @@ SELECT 'AFTER__Updates', EmployeeKudosCount, * FROM gmTabEmployee;
 &nbsp;
 
 
-The preceding Transact-SQL script used the following system function to read the event_file:
+前述のTransact-SQL スクリプトでは、event\_file の読み取りに次のシステム関数を使用します。
 
-- [sys.fn_xe_file_target_read_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
+- [sys.fn\_xe\_file\_target\_read\_file (Transact-SQL)](http://msdn.microsoft.com/library/cc280743.aspx)
 
 
-An explanation of advanced options for the viewing of data from extended events is available at:
+拡張イベントのデータ表示の高度なオプションについての説明は、次で入手できます。
 
-- [Advanced Viewing of Target Data from Extended Events](http://msdn.microsoft.com/library/mt752502.aspx)
+- [Advanced Viewing of Target Data from Extended Events (拡張イベントのターゲット データの高度な表示)](http://msdn.microsoft.com/library/mt752502.aspx)
 
 &nbsp;
 
 
-## <a name="converting-the-code-sample-to-run-on-sql-server"></a>Converting the code sample to run on SQL Server
+## SQL Server で実行できるようにコード サンプルを変換する
 
 
-Suppose you wanted to run the preceding Transact-SQL sample on Microsoft SQL Server.
+先の Transact-SQL サンプルを Microsoft SQL Server で実行するとします。
 
 
-- For simplicity, you would want to completely replace use of the Azure Storage container with a simple file such as **C:\myeventdata.xel**. The file would be written to the local hard drive of the computer that hosts SQL Server.
+- わかりやすくするために、Azure ストレージ コンテナーの使用を「**C:\\myeventdata.xel**」のような単純なファイルに完全に置換します。ファイルは SQL Server をホストするコンピューターのローカル ハード ドライブに書き込まれます。
 
 
-- You would not need any kind of Transact-SQL statements for **CREATE MASTER KEY** and **CREATE CREDENTIAL**.
+- **CREATE MASTER KEY** と **CREATE CREDENTIAL** には Transact-SQL ステートメントを必要としません。
 
 
-- In the **CREATE EVENT SESSION** statement, in its **ADD TARGET** clause, you would replace the Http value assigned made to **filename=** with a full path string like **C:\myfile.xel**.
- - No Azure Storage account need be involved.
+- **CREATE EVENT SESSION** ステートメントの **ADD TARGET** 句で、**filename=** に割り当てられている HTTP 値を「**C:\\myfile.xel**」のような完全パス文字列に置換します。
+ - Azure ストレージ アカウントは必要ありません。
 
 
-## <a name="more-information"></a>More information
+## 詳細情報
 
 
-For more info about accounts and containers in the Azure Storage service, see:
+Azure ストレージ サービスのアカウントとコンテナーに関する詳細については、次を参照してください。
 
-- [How to use Blob storage from .NET](../storage/storage-dotnet-how-to-use-blobs.md)
-- [Naming and Referencing Containers, Blobs, and Metadata](http://msdn.microsoft.com/library/azure/dd135715.aspx)
-- [Working with the Root Container](http://msdn.microsoft.com/library/azure/ee395424.aspx)
-- [Lesson 1: Create a stored access policy and a shared access signature on an Azure container](http://msdn.microsoft.com/library/dn466430.aspx)
-    - [Lesson 2: Create a SQL Server credential using a shared access signature](http://msdn.microsoft.com/library/dn466435.aspx)
+- [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)
+- [コンテナー、BLOB、メタデータの名前付けと参照](http://msdn.microsoft.com/library/azure/dd135715.aspx)
+- [ルート コンテナーの使用](http://msdn.microsoft.com/library/azure/ee395424.aspx)
+- [レッスン 1: 保存されているアクセス ポリシーと Shared Access Signature を Azure コンテナー上に作成する](http://msdn.microsoft.com/library/dn466430.aspx)
+    - [レッスン 2: Shared Access Signature を使用して SQL Server 資格情報を作成する](http://msdn.microsoft.com/library/dn466435.aspx)
 
 
 
@@ -610,9 +609,4 @@ Image references.
 
 [30_powershell_ise]: ./media/sql-database-xevent-code-event-file/event-file-powershell-ise-b30.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

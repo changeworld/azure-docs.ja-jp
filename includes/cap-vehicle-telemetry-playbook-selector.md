@@ -3,8 +3,4 @@
 - [Deep Dive into the Solution](../articles/cortana-analytics-playbook-vehicle-telemetry-deep-dive.md)
 - [PowerBI Dashboard Setup](../articles/machine-learning/cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1203_2015-->

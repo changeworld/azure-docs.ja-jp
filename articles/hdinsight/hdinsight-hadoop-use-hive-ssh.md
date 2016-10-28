@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Use the Hive shell in HDInsight (Hadoop) | Microsoft Azure"
-   description="Learn how to use the Hive shell with a Linux-based HDInsight cluster. You will learn how to connect to the HDInsight cluster using SSh, then use the Hive Shell to interactively run queries."
+   pageTitle="HDInsight (Hadoop) での Hive シェルの使用 | Microsoft Azure"
+   description="Linux ベースの HDInsight クラスターで Hive シェルを使用する方法について説明します。SSh を使用して HDInsight クラスターに接続してから、Hive シェルを使用して対話的にクエリを実行する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
    manager="jhubbard"
    editor="cgronlun"
-    tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -14,53 +14,52 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="big-data"
-   ms.date="10/04/2016"
+   ms.date="07/19/2016"
    ms.author="larryfr"/>
 
+#SSH による HDInsight での Hive と Hadoop の使用
 
-# <a name="use-hive-with-hadoop-in-hdinsight-with-ssh"></a>Use Hive with Hadoop in HDInsight with SSH
+[AZURE.INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
-[AZURE.INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
+この記事では、Secure Shell (SSH) を使用して Azure HDInsight クラスターで Hadoop に接続してから、Hive コマンド ライン インターフェイス (CLI) を使用して Hive クエリを対話的に実行する方法について説明します。
 
-In this article, you will learn how to use Secure Shell (SSH) to connect to a Hadoop on Azure HDInsight cluster and then interactively submit Hive queries by using the Hive command-line interface (CLI).
+> [AZURE.IMPORTANT] Hive コマンドは Linux ベースの HDInsight クラスターで利用できますが、Beeline の使用を検討してください。Beeline は Hive を使用するための最新クライアントであり、HDInsight クラスターに付属します。使用方法に関する詳細については、「[Beeline による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-beeline.md)」を参照してください。
 
-> [AZURE.IMPORTANT] While the Hive command is available on Linux-based HDInsight clusters, you should consider using Beeline. Beeline is a newer client for working with Hive, and is included with your HDInsight cluster. For more information on using this, see [Use Hive with Hadoop in HDInsight with Beeline](hdinsight-hadoop-use-hive-beeline.md).
+##<a id="prereq"></a>前提条件
 
-##<a name="<a-id="prereq"></a>prerequisites"></a><a id="prereq"></a>Prerequisites
+この記事の手順を完了するには、次のものが必要です。
 
-To complete the steps in this article, you will need the following:
+* HDInsight クラスターでの Linux ベースの Hadoop
 
-* A Linux-based Hadoop on HDInsight cluster.
+* SSH クライアントSSH クライアントを備えた Linux、Unix、および Mac OSWindows ユーザーは [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) などのクライアントをダウンロードする必要があります。
 
-* An SSH client. Linux, Unix, and Mac OS should come with an SSH client. Windows users must download a client, such as [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+##<a id="ssh"></a>SSH を使用した接続
 
-##<a name="<a-id="ssh"></a>connect-with-ssh"></a><a id="ssh"></a>Connect with SSH
+SSH コマンドを使用して、HDInsight クラスターの完全修飾ドメイン名 (FQDN) に接続します。FQDN はクラスターに指定した名前で、その後、**.azurehdinsight.net** が続きます。以下の例では、**myhdinsight** という名前のクラスターに接続します。
 
-Connect to the fully qualified domain name (FQDN) of your HDInsight cluster by using the SSH command. The FQDN will be the name you gave the cluster, then **.azurehdinsight.net**. For example, the following would connect to a cluster named **myhdinsight**:
+	ssh admin@myhdinsight-ssh.azurehdinsight.net
 
-    ssh admin@myhdinsight-ssh.azurehdinsight.net
+**HDInsight クラスターの作成時に SSH 認証に証明書キーを指定した場合は**、クライアント システムの秘密キーの場所を指定する必要があることがあります。
 
-**If you provided a certificate key for SSH authentication** when you created the HDInsight cluster, you may need to specify the location of the private key on your client system:
+	ssh admin@myhdinsight-ssh.azurehdinsight.net -i ~/mykey.key
 
-    ssh -i ~/mykey.key admin@myhdinsight-ssh.azurehdinsight.net
+**HDInsight クラスターの作成時に SSH 認証のパスワードを指定した場合は**、パスワードの入力を求められます。
 
-**If you provided a password for SSH authentication** when you created the HDInsight cluster, you will need to provide the password when prompted.
+HDInsight での SSH の使用に関する詳細については、「[Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-For more information on using SSH with HDInsight, see [Use SSH with Linux-based Hadoop on HDInsight from Linux, OS X, and Unix](hdinsight-hadoop-linux-use-ssh-unix.md).
+###PuTTY (Windows ベースのクライアント)
 
-###<a name="putty-(windows-based-clients)"></a>PuTTY (Windows-based clients)
+Windows ではビルトイン SSH クライアントは提供されません。[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
-Windows does not provide a built-in SSH client. We recommend using **PuTTY**, which can be downloaded from [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+PuTTY の使用については、「[HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する](hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-For more information on using PuTTY, see [Use SSH with Linux-based Hadoop on HDInsight from Windows ](hdinsight-hadoop-linux-use-ssh-windows.md).
+##<a id="hive"></a>Hive コマンドの使用
 
-##<a name="<a-id="hive"></a>use-the-hive-command"></a><a id="hive"></a>Use the Hive command
-
-2. Once connected, start the Hive CLI by using the following command:
+2. 接続したら、次のコマンドを使用して Hive CLI を起動します。
 
         hive
 
-3. Using the CLI, enter the following statements to create a new table named **log4jLogs** by using the sample data:
+3. CLI を使用して次のステートメントを入力し、サンプル データを使用して **log4jLogs** という名前の新しいテーブルを作成します。
 
         DROP TABLE log4jLogs;
         CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
@@ -68,59 +67,59 @@ For more information on using PuTTY, see [Use SSH with Linux-based Hadoop on HDI
         STORED AS TEXTFILE LOCATION 'wasbs:///example/data/';
         SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
 
-    These statements perform the following actions:
+    これらのステートメントは次のアクションを実行します。
 
-    * **DROP TABLE** - Deletes the table and the data file, in case the table already exists.
-    * **CREATE EXTERNAL TABLE** - Creates a new 'external' table in Hive. External tables only store the table definition in Hive. The data is left in the original location.
-    * **ROW FORMAT** - Tells Hive how the data is formatted. In this case, the fields in each log are separated by a space.
-    * **STORED AS TEXTFILE LOCATION** - Tells Hive where the data is stored (the example/data directory), and that it is stored as text.
-    * **SELECT** - Selects a count of all rows where column **t4** contains the value **[ERROR]**. This should return a value of **3** as there are three rows that contain this value.
-    * **INPUT__FILE__NAME LIKE '%.log'** - Tells Hive that we should only return data from files ending in .log. This restricts the search to the sample.log file that contains the data, and keeps it from returning data from other example data files that do not match the schema we defined.
+    * **DROP TABLE** - テーブルが既存の場合にテーブルとデータ ファイルを削除します。
+    * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは Hive にテーブル定義のみを格納します。データは元の場所に残されます。
+    * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
+    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
+    * **INPUT\_\_FILE\_\_NAME LIKE '%.log'** - Hive に .log で終わるファイルのデータのみを返す必要があることを示します。これにより、検索はデータを含む sample.log ファイルに制限され、定義したスキーマに一致しない他のサンプル データ ファイルのデータを返すことができなくなります。
 
-    > [AZURE.NOTE] External tables should be used when you expect the underlying data to be updated by an external source, such as an automated data upload process, or by another MapReduce operation, but always want Hive queries to use the latest data.
+    > [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
     >
-    > Dropping an external table does **not** delete the data, only the table definition.
+    > 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
-4. Use the following statements to create a new 'internal' table named **errorLogs**:
+4. 次のステートメントを使用して、**errorLogs** という名前の新しい "内部" テーブルを作成します。
 
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
-    These statements perform the following actions:
+    これらのステートメントは次のアクションを実行します。
 
-    * **CREATE TABLE IF NOT EXISTS** - Creates a table, if it does not already exist. Since the **EXTERNAL** keyword is not used, this is an internal table, which is stored in the Hive data warehouse and is managed completely by Hive.
-    * **STORED AS ORC** - Stores the data in Optimized Row Columnar (ORC) format. This is a highly optimized and efficient format for storing Hive data.
-    * **INSERT OVERWRITE ... SELECT** - Selects rows from the **log4jLogs** table that contain **[ERROR]**, then inserts the data into the **errorLogs** table.
+    * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
+    * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+    * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
 
-    To verify that only rows containing **[ERROR]** in column t4 were stored to the **errorLogs** table, use the following statement to return all the rows from **errorLogs**:
+    **errorLogs** テーブルには t4 列に **[ERROR]** を含む行のみが格納されていることを確認するには、次のステートメントを使用して、**errorLogs** 列からすべての列を返します。
 
         SELECT * from errorLogs;
 
-    Three rows of data should be returned, all containing **[ERROR]** in column t4.
+    3 つのデータ行が返され、各行の t4 列には **[ERROR]** が含まれます。
 
-    > [AZURE.NOTE] Unlike external tables, dropping an internal table will delete the underlying data as well.
+    > [AZURE.NOTE] 外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
 
-##<a name="<a-id="summary"></a>summary"></a><a id="summary"></a>Summary
+##<a id="summary"></a>概要
 
-As you can see, the Hive command provides an easy way to interactively run Hive queries on an HDInsight cluster, monitor the job status, and retrieve the output.
+このように、Hive コマンドを使用すると、HDInsight クラスターで簡単に対話的に Hive クエリを実行し、ジョブ ステータスを監視し、出力を取得できます。
 
-##<a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>Next steps
+##<a id="nextsteps"></a>次のステップ
 
-For general information on Hive in HDInsight:
+HDInsight での Hive に関する全般的な情報
 
-* [Use Hive with Hadoop on HDInsight](hdinsight-use-hive.md)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-For information on other ways you can work with Hadoop on HDInsight:
+HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-* [Use MapReduce with Hadoop on HDInsight](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-If you are using Tez with Hive, see the following documents for debugging information:
+Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
 
-* [Use the Tez UI on Windows-based HDInsight](hdinsight-debug-tez-ui.md)
+* [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
 
-* [Use the Ambari Tez view on Linux-based HDInsight](hdinsight-debug-ambari-tez-view.md)
+* [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
@@ -151,9 +150,4 @@ If you are using Tez with Hive, see the following documents for debugging inform
 
 [img-hdi-hive-powershell-output]: ./media/hdinsight-use-hive/HDI.Hive.PowerShell.Output.png
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

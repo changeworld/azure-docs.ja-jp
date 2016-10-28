@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to connect to data sources | Microsoft Azure"
-   description="How-to article highlighting how to connect to data sources discovered with Azure Data Catalog."
+   pageTitle="データ ソースへの接続方法 | Microsoft Azure"
+   description="Azure Data Catalog で検出されたデータ ソースへの接続方法を説明する操作方法に関する記事"
    services="data-catalog"
    documentationCenter=""
    authors="steelanddata"
@@ -17,59 +17,53 @@
    ms.author="maroche"/>
 
 
+# データ ソースへの接続方法
 
-# <a name="how-to-connect-to-data-sources"></a>How to connect to data sources
+## はじめに
+**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。つまり、**Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、理解、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。このシナリオの主な特徴はデータを使用することです。ユーザーがデータ ソースを検出しその目的を理解したら、次の手順としてデータ ソースに接続し、データを使用します。
 
-## <a name="introduction"></a>Introduction
-**Microsoft Azure Data Catalog** is a fully managed cloud service that serves as a system of registration and system of discovery for enterprise data sources. In other words, **Azure Data Catalog** is all about helping people discover, understand, and use data sources, and helping organizations to get more value from their existing data. A key aspect of this scenario is using the data – once a user discovers a data source and understands its purpose, the next step is to connect to the data source to put its data to use.
+## データ ソースの場所
+データ ソースの登録時に、**Azure Data Catalog** は、データ ソースに関するメタデータを受信します。このメタデータには、データ ソースの場所に関する詳細が含まれています。場所の詳細はデータ ソースによって異なりますが、それには必ず接続に必要な情報が含まれています。たとえば、SQL Server テーブルの場所には、サーバー名、データベース名、スキーマ名、およびテーブル名が含まれます。一方、SQL Server Reporting Services レポートには、サーバー名とレポートへのパスが含まれます。その他のデータ ソースの種類には、ソース システムの構造と機能を反映する場所が含まれます。
 
-## <a name="data-source-locations"></a>Data source locations
-During data source registration, **Azure Data Catalog** receives metadata about the data source. This metadata includes the details of the data source’s location. The details of the location will vary from data source to data source, but it will always contain the information needed to connect. For example, the location for a SQL Server table includes the server name, database name, schema name, and table name, while the location for a SQL Server Reporting Services report includes the server name and the path to the report. Other data source types will have locations that reflect the structure and capabilities of the source system.
+## 統合クライアント ツール
+データ ソースに接続する最も簡単な方法は、**Azure Data Catalog** ポータルで「開く」メニューを使用することです。このメニューには、選択したデータ資産に接続するためのオプションの一覧が表示されます。既定のタイル ビューを使用する場合、このメニューは各タイルで確認できます。
 
-## <a name="integrated-client-tools"></a>Integrated client tools
-The simplest way to connect to a data source is to use the “Open in…” menu in the **Azure Data Catalog** portal. This menu displays a list of options for connecting to the selected data asset.
-When using the default tile view, this menu is available on the each tile.
+ ![データ資産タイルから Excel で SQL Server のテーブルを開く](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
 
- ![Opening a SQL Server table in Excel from the data asset tile](./media/data-catalog-how-to-connect/data-catalog-how-to-connect1.png)
+リスト ビューを使用すると、ポータル ウィンドウの上部にある検索バーにメニューが表示されます。
 
-When using the list view, the menu is available in the search bar at the top of the portal window.
+ ![検索バーからレポート マネージャーで SQL Server Reporting Services レポートを開く](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
 
- ![Opening a SQL Server Reporting Services report in Report Manager from the search bar](./media/data-catalog-how-to-connect/data-catalog-how-to-connect2.png)
+## サポートされているクライアント アプリケーション
+Azure Data Catalog ポータルでデータ ソースの [開く] メニューを使用する場合は、適切なクライアント アプリケーションがクライアント コンピューターにインストールされている必要があります。
 
-## <a name="supported-client-applications"></a>Supported Client Applications
-When using the “Open in…” menu for data sources in the Azure Data Catalog portal, the correct client application must be installed on the client computer.
-
-| Open in application | File extension / protocol | Supported application versions |
+| 開くアプリケーション | ファイル拡張子/プロトコル | サポートされているアプリケーションのバージョン |
 | --- | --- | --- |
-| Excel | .odc | Excel 2010 or later |
-| Excel (Top 1000) | .odc | Excel 2010 or later |
-| Power Query | .xlsx | Excel 2016 or Excel 2010 or Excel 2013 with the Power Query for Excel add-in installed
-| Power BI Desktop | .pbix | Power BI Desktop July 2016 or later |
-| SQL Server Data Tools | vsweb:// | Visual Studio 2013 Update 4 or later with SQL Server tooling installed |
-| Report Manager | http:// | See [browser requirements for SQL Server Reporting Services](https://technet.microsoft.com/en-us/library/ms156511.aspx) |
+| Excel | .odc | Excel 2010 以降 |
+| Excel (上位 1000) | .odc | Excel 2010 以降 |
+| Power Query | .xlsx | Excel 2016、Power Query for Excel アドインがインストールされている Excel 2010 または Excel 2013
+| Power BI Desktop | .pbix | Power BI Desktop (2016 年 7 月以降) |
+| SQL Server Data Tools | vsweb:// | SQL Server ツールがインストールされている Visual Studio 2013 Update 4 以降 |
+| レポート マネージャー | http:// | [SQL Server Reporting Services のブラウザーの要件](https://technet.microsoft.com/ja-JP/library/ms156511.aspx)に関するページを参照してください。 |
 
-## <a name="your-data,-your-tools"></a>Your data, your tools
-The options available in the menu will depend on the type of data asset currently selected. Of course, not all possible tools will be included in the “Open in…” menu, but it is still easy to connect to the data source using any client tool. When a data asset is selected in the **Azure Data Catalog** portal, the complete location is displayed in the properties pane.
+## データ、ツール
+メニューで使用できるオプションは、現在選択されているデータ資産の種類によって異なります。もちろん、使用可能なツールがすべて「開く」メニューに表示されるわけではありませんが、それでも任意のクライアント ツールを使用してデータ ソースに簡単に接続できます。**Azure Data Catalog** ポータルでデータ資産を選択すると、プロパティ ペインに完全な場所が表示されます。
 
- ![Connection information for a SQL Server table](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
+ ![SQL Server テーブルの接続情報](./media/data-catalog-how-to-connect/data-catalog-how-to-connect3.png)
 
-The connection information details will differ from data source type to data source type, but the information included in the portal will give you everything you need to connect to the data source in any client tool. Users can copy the connection details for the data sources that they have discovered using **Azure Data Catalog**, enabling them to work with the data in their tool of choice.
+接続情報の詳細はデータ ソースの種類によって異なりますが、ポータルに含まれる情報を確認すれば、任意のクライアント ツールでデータ ソースに接続するために必要なすべての情報が得られます。ユーザーは、**Azure Data Catalog** を使用して検出したデータ ソースの接続に関する詳細をコピーすることができるので、適切なツールでデータを操作することができるようになります。
 
-## <a name="connecting-and-data-source-permissions"></a>Connecting and data source permissions
-Although **Azure Data Catalog** makes data sources discoverable, access to the data itself remains under the control of the data source owner or administrator. Discovering a data source in **Azure Data Catalog** does not give a user any permissions to access the data source itself.
+## 接続とデータ ソースのアクセス許可
+**Azure Data Catalog** を使用すればデータ ソースの探索は可能ですが、データ自体へのアクセスは引き続きデータ ソースの所有者または管理者の管理下にあります。**Azure Data Catalog** でのデータ ソースの探索で、データ ソース自体へのアクセス許可がユーザーに付与されることはありません。
 
-To make it easier for users who discover a data source but do not have permission to access its data, users can provide information in the Request Access property when annotating a data source. Information provided here – including links to the process or point of contact for gaining data source access – is presented alongside the data source location information in the portal.
+データ ソースを探索するがそのデータへのアクセス許可を持たないユーザーがデータにアクセスしやすくするために、ユーザーはデータ ソースに注釈を付ける際に、[アクセス権の要求] プロパティに情報を指定することができます。ここで指定した情報 (たとえば、データ ソースへのアクセス権を取得するためのプロセスまたは接続ポイントへのリンク) は、ポータルにデータ ソースの場所情報と共に表示されます。
 
- ![Connection information with request access instructions provided](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
+ ![アクセスの要求に関する指示が含まれた接続情報](./media/data-catalog-how-to-connect/data-catalog-how-to-connect4.png)
 
-##<a name="summary"></a>Summary
-Registering a data source with **Azure Data Catalog** makes that data discoverable by copying structural and descriptive metadata from the data source into the Catalog service. Once a data source has been registered, and discovered, users can connect to the data source from the **Azure Data Catalog** portal “Open in…”” menu or using their data tools of choice.
+##概要
+**Azure Data Catalog** にデータ ソースを登録すると、構造メタデータと記述メタデータがデータ ソースから Catalog サービスにコピーされ、データの探索が可能になります。データ ソースが登録され探索されると、ユーザーは **Azure Data Catalog** ポータルの [開く] メニューから、または適切なデータ ツールを使用してデータソースに接続できるようになります。
 
-## <a name="see-also"></a>See also
-- [Get Started with Azure Data Catalog](data-catalog-get-started.md) tutorial for step-by-step details about how to connect to data sources.
+## 関連項目
+- データ ソースに接続する方法の詳細な手順については、「[Azure Data Catalog の概要](data-catalog-get-started.md)」チュートリアルをご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

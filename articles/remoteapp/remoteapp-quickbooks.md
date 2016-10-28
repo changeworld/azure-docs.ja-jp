@@ -1,8 +1,8 @@
 <properties 
-    pageTitle="Deploy QuickBooks in Azure RemoteApp | Microsoft Azure" 
-    description="Learn how to share QuickBooks with Azure RemoteApp." 
+    pageTitle="Azure RemoteApp で QuickBooks をデプロイする | Microsoft Azure" 
+    description="Azure RemoteApp で QuickBooks を共有する方法について説明します。" 
     services="remoteapp" 
-    documentationCenter="" 
+	documentationCenter="" 
     authors="ericorman" 
     manager="mbaldwin" />
 
@@ -17,38 +17,34 @@
 
 
 
-
-# <a name="how-do-you-deploy-quickbooks-in-azure-remoteapp?"></a>How do you deploy QuickBooks in Azure RemoteApp?
+# Azure RemoteApp で QuickBooks をデプロイする方法
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Use the following information to share QuickBooks as an app in Azure RemoteApp.
-
-
-You can share QuickBooks 2015 Enterprise with Azure RemoteApp in either a hybrid or cloud collection. The company file must reside on a VM that is running QuickBooks database server that is separate from the Azure RemoteApp servers. Never store the company file on your Azure RemoteApp image - data loss is expected if you do this. Only QuickBooks Enterprise supports hosting the QuickBooks file on an external share with QuickBooks database server accessible via standard Windows networking.   
-
-> [AZURE.IMPORTANT] The QuickBooks database server that is hosting the company file must reside on a separate VM within the same VNET as the Azure RemoteApp collection.  
-
-## <a name="steps-to-deploy-quickbooks"></a>Steps to deploy QuickBooks
-
-1. Create an Azure VM and install QuickBooks, QuickBooks database server, and place the company file on a Azure VM.  Make sure to properly configure firewall rules.
-2. Install QuickBooks on a [custom image](remoteapp-imageoptions.md) and create an [Azure RemoteApp collection](remoteapp-collections.md), either cloud or hybrid, within the exact same VNET where the VM hosting the QuickBooks database server with company files resides. 
-3.  [Publish](remoteapp-publish.md) QuickBooks app to users
-4.  Launch the Azure RemoteApp-hosted QuickBooks client, navigate using standard Windows networking to the VM hosting the QuickBooks database server and open the company file. 
-
-## <a name="documentation-references"></a>Documentation references
-
-- QuickBooks [supported configurations](http://enterprisesuite.intuit.com/products/enterprise-solutions/technical/#top)
-- QuickBooks [deployment options](http://enterprisesuite.intuit.com/everythingenterprise/launchpad/new-user/)
-
-You can also check out my Ignite presentation, [Fundamentals of Microsoft Azure RemoteApp Management and Administration](https://channel9.msdn.com/Events/Ignite/2015/BRK3868) - fast-forward to 1:02:45 to get to the QuickBooks part.
-
-## <a name="deployment-architecture"></a>Deployment architecture
-
-![QuickBooks + Azure RemoteApp deployment](./media/remoteapp-quickbooks/ra-quickbooks.png)
+次の情報を使用して、QuickBooks を Azure RemoteApp のアプリとして共有します。
 
 
-<!--HONumber=Oct16_HO2-->
+ハイブリッドまたはクラウド コレクションで、QuickBooks 2015 Enterprise を Azure RemoteApp と共有できます。会社のファイルは、Azure RemoteApp サーバーとは別の QuickBooks データベース サーバーを実行している VM に格納する必要があります。会社のファイルは Azure RemoteApp イメージに格納しないでください。データの損失が発生します。標準の Windows ネットワークキング経由でアクセス可能な QuickBooks データベース サーバーとの外部共有で QuickBooks ファイルをホストできるのは、QuickBooks Enterprise のみです。
 
+> [AZURE.IMPORTANT] 会社のファイルをホストしている QuickBooks データベース サーバーは、Azure RemoteApp コレクションと同じ VNET 内の別の VM に配置する必要があります。
 
+## QuickBooks のデプロイ手順
+
+1. Azure VM を作成し、QuickBooks と QuickBooks データベース サーバーをインストールし、会社のファイルを Azure VM に格納します。ファイアウォールの規則を適切に構成します。
+2. [カスタム イメージ](remoteapp-imageoptions.md)に QuickBooks をインストールし、会社のファイルがある QuickBooks データベース サーバーをホストしている VM と同じ VNET 内に [Azure RemoteApp コレクション](remoteapp-collections.md) (クラウドまたはハイブリッド) を作成します。
+3.	QuickBooks アプリをユーザーに[発行](remoteapp-publish.md)します。
+4.	Azure RemoteApp がホストする QuickBooks クライアントを起動し、標準の Windows ネットワークキングを使用して QuickBooks データベース サーバーをホストするサーバーに移動し、会社のファイルを開きます。
+
+## ドキュメントの参照
+
+- QuickBooks の[サポートされる構成](http://enterprisesuite.intuit.com/products/enterprise-solutions/technical/#top)
+- QuickBooks の[デプロイメント オプション](http://enterprisesuite.intuit.com/everythingenterprise/launchpad/new-user/)
+
+私が作成した Ignite のプレゼンテーション「[Fundamentals of Microsoft Azure RemoteApp Management and Administration (Microsoft Azure RemoteApp の管理の基礎)](https://channel9.msdn.com/Events/Ignite/2015/BRK3868)」で、1:02:45 まで早送りして QuickBooks のパートを参照してください。
+
+## デプロイメント アーキテクチャ
+
+![QuickBooks + Azure RemoteApp のデプロイメント](./media/remoteapp-quickbooks/ra-quickbooks.png)
+
+<!---HONumber=AcomDC_0817_2016-->

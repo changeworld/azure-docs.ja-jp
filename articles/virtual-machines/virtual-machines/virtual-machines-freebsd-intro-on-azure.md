@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Introduction to FreeBSD on Azure | Microsoft Azure"
-   description="Learn about using FreeBSD virtual machines on Azure"
+   pageTitle="Azure の FreeBSD の概要 | Microsoft Azure"
+   description="Azure での FreeBSD 仮想マシンの使用について説明します。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="KylieLiang"
@@ -17,63 +17,54 @@
    ms.date="08/27/2016"
    ms.author="kyliel"/>
 
+# Azure の FreeBSD の概要
+このトピックでは、Azure での FreeBSD 仮想マシンの実行の概要を説明します。
 
-# <a name="introduction-to-freebsd-on-azure"></a>Introduction to FreeBSD on Azure
-This topic provides an overview of running a FreeBSD virtual machine in Azure.
+## Overview
+Microsoft Azure の FreeBSD は、最新のサーバー、デスクトップ、組み込みプラットフォームを強化するために使用される先進のコンピューター オペレーティング システムです。Microsoft Corporation が提供する FreeBSD 10.3 イメージは、Azure で使用でき、FreeBSD 10.3 リリースに基づいています。インストールされているのは、Azure VM Guest Agent [2\.1.4](https://github.com/Azure/WALinuxAgent/releases/tag/v2.1.4) で、エージェントは、初回使用時の VM のプロビジョニング (ユーザー名、パスワード、ホスト名など) や、選択的な VM 拡張機能の有効化などの操作で、FreeBSD VM と Azure ファブリック間の通信を担います。FreeBSD の今後のバージョンについては、最新の機能に対応し、FreeBSD リリース エンジニアリング チームが最新版をリリースしたらすぐに提供することを目指しています。次期リリースは [FreeBSD 11](https://www.freebsd.org/releases/11.0R/schedule.html) です。
 
-## <a name="overview"></a>Overview
-FreeBSD for Microsoft Azure is an advanced computer operating system used to power modern servers, desktops, and embedded platforms. The FreeBSD 10.3 image is provided by Microsoft Corporation and is available in Azure. It is based on the FreeBSD 10.3 release, and Azure VM Guest Agent [2.1.4](https://github.com/Azure/WALinuxAgent/releases/tag/v2.1.4) is installed. The agent is responsible for communication between the FreeBSD VM and the Azure fabric for operations, such as provisioning the VM on first use (user name, password, host name, etc.) and enabling functionality for selective VM extensions.
-As for future versions of FreeBSD, the strategy is to stay current and make the latest releases available shortly after they are released by the FreeBSD release engineering team. The upcoming release is [FreeBSD 11](https://www.freebsd.org/releases/11.0R/schedule.html).
+## FreeBSD 仮想マシンのデプロイ
+FreeBSD 仮想マシンのデプロイは、[Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/) で提供されるイメージを使用した簡単なプロセスです。
 
-## <a name="deploying-a-freebsd-virtual-machine"></a>Deploying a FreeBSD virtual machine
-Deploying a FreeBSD virtual machine is a straightforward process using an image from the [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/).
+## FreeBSD の VM 拡張機能
+FreeBSD でサポートされている VM 拡張機能を以下に示します。
 
-## <a name="vm-extensions-for-freebsd"></a>VM extensions for FreeBSD
-Following are supported VM extensions in FreeBSD.
+### VMAccess
 
-### <a name="vmaccess"></a>VMAccess
+[VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) 拡張機能では次のことが可能です。
 
-The [VMAccess](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) extension can:
+- 元の sudo ユーザーのパスワードをリセットする。
+- パスワードを指定して新しい sudo ユーザーを作成する。
+- 指定したキーで公開ホスト キーを設定する。
+- ホスト キーが指定されていない場合、VM のプロビジョニング時に指定された公開ホスト キーをリセットする。
+- reset\_ssh が true に設定されている場合に、SSH ポート (22) を開き、sshd\_config を復元する。
+- 既存のユーザーを削除する。
+- ディスクをチェックする。
+- 追加されたディスクを修復する。
 
-- Reset the password of the original sudo user.
-- Create a new sudo user with the password specified.
-- Set the public host key with the key given.
-- Reset the public host key provided during VM provisioning if the host key is not provided.
-- Open the SSH port (22) and restore the sshd_config if reset_ssh is set to true.
-- Remove the existing user.
-- Check disks.
-- Repair an added disk.
+### CustomScript
 
-### <a name="customscript"></a>CustomScript
+[CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) 拡張機能では次のことが可能です。
 
-The [CustomScript](https://github.com/Azure/azure-linux-extensions/tree/master/CustomScript) extension can:
+- 指定した場合、Azure Storage または外部パブリック ストレージ (GitHub など) からカスタマイズされたスクリプトをダウンロードする。
+- エントリ ポイント スクリプトを実行する。
+- インライン コマンドをサポートする。
+- シェル スクリプトと Python スクリプトで Windows 形式の改行を自動的に変換する。
+- シェル スクリプトと Python スクリプトで BOM を自動的に削除する。
+- CommandToExecute で機密データを保護する。
 
-- If provided, download the customized scripts from Azure Storage or external public storage (for example, GitHub).
-- Run the entry point script.
-- Support inline commands.
-- Convert Windows-style newline in shell and Python scripts automatically.
-- Remove BOM in shell and Python scripts automatically.
-- Protect sensitive data in CommandToExecute.
+## 認証: ユーザー名、パスワード、SSH キー
+Azure ポータルを使用して FreeBSD 仮想マシンを作成するときに、ユーザー名、パスワード、または SSH 公開キーを入力する必要があります。Azure に FreeBSD 仮想マシンをデプロイするためのユーザー名は、仮想マシン ("root" など) に既に存在するシステム アカウント (UID は 100 未満) の名前とは同じにしないでください。現在サポートされているのは、RSA SSH キーだけです。複数行の SSH キーは、"---- BEGIN SSH2 PUBLIC KEY ----" で始まり、"---- END SSH2 PUBLIC KEY ----" で終わる必要があります。
 
-## <a name="authentication:-user-names,-passwords,-and-ssh-keys"></a>Authentication: user names, passwords, and SSH keys
-When you're creating a FreeBSD virtual machine by using the Azure portal, you must provide a user name, password, or SSH public key.
-User names for deploying a FreeBSD virtual machine on Azure must not match names of system accounts (UID <100) already present in the virtual machine ("root," for example).
-Currently, only the RSA SSH key is supported. A multiline SSH key must begin with "---- BEGIN SSH2 PUBLIC KEY ----" and end with "---- END SSH2 PUBLIC KEY ----".
-
-## <a name="obtaining-superuser-privileges"></a>Obtaining superuser privileges
-The user account that is specified during virtual machine instance deployment on Azure is a privileged account. The package of sudo was installed in the published FreeBSD image.
-After you're logged in through this user account, you can run commands as root by using the command syntax.
+## スーパーユーザー権限の取得
+Azure での仮想マシン インスタンスをデプロイする際に指定したユーザー アカウントは、特権を持つアカウントです。公開済みの FreeBSD イメージには、sudo のパッケージがインストールされています。このユーザー アカウントを使用してログインすると、コマンド構文を使用して、root としてコマンドを実行できます。
 
     # sudo <COMMAND>
 
-You can optionally obtain a root shell by using sudo -s.
+sudo -s を使用して root シェルを取得することもできます。
 
-## <a name="next-steps"></a>Next steps
-- Go to [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/) to create a FreeBSD VM.
-- If you want to bring your own FreeBSD to Azure, refer to [Create and upload a FreeBSD VHD to Azure](../virtual-machines-linux-classic-freebsd-create-upload-vhd.md).
+## 次のステップ
+- [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/microsoft/freebsd103/) に移動して、FreeBSD VM を作成します。
+- 独自の FreeBSD を Azure で使用する場合は、「[FreeBSD VHD の作成と Azure へのアップロード](../virtual-machines-linux-classic-freebsd-create-upload-vhd.md)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

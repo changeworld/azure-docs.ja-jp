@@ -1,317 +1,315 @@
 <properties 
-    pageTitle="Monitor and manage Azure Data Factory pipelines" 
-    description="Learn how to use Monitoring and Management App to monitor and manage Azure data factories and pipelines." 
-    services="data-factory" 
-    documentationCenter="" 
-    authors="spelluru" 
-    manager="jhubbard" 
-    editor="monicar"/>
+	pageTitle="Azure Data Factory のパイプラインの監視と管理" 
+	description="監視と管理アプリを使用して Azure のデータ ファクトリとパイプラインを監視および管理する方法について説明します。" 
+	services="data-factory" 
+	documentationCenter="" 
+	authors="spelluru" 
+	manager="jhubbard" 
+	editor="monicar"/>
 
 <tags 
-    ms.service="data-factory" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/06/2016" 
-    ms.author="spelluru"/>
+	ms.service="data-factory" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/06/2016" 
+	ms.author="spelluru"/>
 
-
-# <a name="monitor-and-manage-azure-data-factory-pipelines-using-new-monitoring-and-management-app"></a>Monitor and manage Azure Data Factory pipelines using new Monitoring and Management App
+# 新しい監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [AZURE.SELECTOR]
-- [Using Azure Portal/Azure PowerShell](data-factory-monitor-manage-pipelines.md)
-- [Using Monitoring and Management App](data-factory-monitor-manage-app.md)
+- [Azure ポータルと Azure PowerShell の使用](data-factory-monitor-manage-pipelines.md)
+- [Monitoring and Management App の使用](data-factory-monitor-manage-app.md)
 
-This article describes how to monitor, manage and debug your pipelines, and create alerts to get notified on failures using the **Monitoring and Management App**. You can also watch the following video to learn about using the Monitoring and Management App.
+この記事では、**監視と管理アプリ**を使用して、パイプラインを監視、管理、デバッグする方法、およびアラートを作成して障害について通知を受け取る方法について説明します。監視と管理アプリの使用方法の詳細については、次のビデオを視聴することもできます。
    
 
 > [AZURE.VIDEO azure-data-factory-monitoring-and-managing-big-data-piplines]
       
-## <a name="launching-the-monitoring-and-management-app-a"></a>Launching the Monitoring and Management App a
-To launch the Monitor and Management App, click **Monitoring & Manage** tile on the **DATA FACTORY** blade for your data factory.
+## 監視と管理アプリの起動
+監視と管理アプリを起動するには、該当するデータ ファクトリの **[DATA FACTORY]** ブレードで **[監視と管理]** タイルをクリックします。
 
-![Monitoring tile on Data Factory home page](./media/data-factory-monitor-manage-app/MonitoringAppTile.png) 
+![Monitoring tile on Data Factory home page](./media/data-factory-monitor-manage-app/MonitoringAppTile.png)
 
-You should see the Monitoring and Management App launched in a separate tab/window.  
+監視と管理アプリが別のタブまたはウィンドウで起動したことがわかります。
 
 ![Monitoring and Management App](./media/data-factory-monitor-manage-app/AppLaunched.png)
 
-> [AZURE.NOTE] If you see that the web browser is stuck at "Authorizing...", disable/uncheck **Block third-party cookies and site data** setting (or) keep it enabled and create an exception for **login.microsoftonline.com** and then try launching the app again.
+> [AZURE.NOTE] 承認中であることを示すメッセージが表示されたまま Web ブラウザーが固まってしまう場合は、**サード パーティの Cookie とサイト データをブロック**する設定を無効にしてください。または、有効な状態のまま **login.microsoftonline.com** に対する例外を作成し、そのうえで、もう一度アプリを起動してください。
 
 
-If you do not see activity windows in the list at the bottom, click the **Refresh** button on the toolbar to refresh the list. In addition, set the right values for the **Start time** and **End time** filters.  
+下部にある一覧でアクティビティ ウィンドウを確認できない場合は、ツールバーの **[更新]** ボタンをクリックして、一覧を更新します。さらに、**[開始時刻]** および **[終了時刻]** フィルターに適切な値を設定します。
 
 
-## <a name="understanding-the-monitoring-and-management-app"></a>Understanding the Monitoring and Management App
-There are three tabs (**Resource Explorer**, **Monitoring Views**, and **Alerts**) on the left and the first tab (Resource Explorer) is selected by default. 
+## 監視と管理アプリについて
+左側には 3 つのタブ (**[リソース エクスプローラー]**、**[監視ビュー]**、**[アラート]**) があり、既定では、1 つ目のタブ ([リソース エクスプローラー]) が選択されています。
 
-### <a name="resource-explorer"></a>Resource Explorer
-You see the following: 
+### Resource Explorer
+次のように表示されます。
 
-- Resource Explorer **tree view** in the left pane.
-- **Diagram View** at the top.
-- **Activity Windows** list at the bottom in the middle pane.
-- **Properties**/**Activity Window Explorer** tabs in the right pane. 
+- 左側ウィンドウにリソース エクスプローラーの**ツリー ビュー**
+- 上部に**ダイアグラム ビュー**
+- 中央ウィンドウの下部に**アクティビティ ウィンドウ**
+- 右側ウィンドウに **[プロパティ]** タブと **[Activity Window Explorer (アクティビティ ウィンドウ エクスプローラー)]** タブ
 
-In Resource Explorer, you see all resources (pipelines, datasets, linked services) in the data factory in a tree view. When you select an object in Resource Explorer, you notice the following: 
+リソース エクスプローラーでは、データ ファクトリのすべてのリソース (パイプライン、データセット、リンクされたサービス) がツリー ビューに表示されます。リソース エクスプローラーでオブジェクトを選択する際は、次の点に注意します。
 
-- associated Data Factory entity is highlighted in the Diagram View.
-- associated activity windows (click [here](data-factory-scheduling-and-execution.md) to learn about activity windows) are highlighted in the Activity Windows list at the bottom.  
-- properties of the selected object in the Properties window in the right pane. 
-- JSON definition of the selected object if applicable. For example: a linked service or a dataset or a pipeline. 
+- 関連付けられている Data Factory エンティティはダイアグラム ビューで強調表示されます。
+- 関連付けられているアクティビティ ウィンドウ (アクティビティ ウィンドウの詳細については[こちら](data-factory-scheduling-and-execution.md)を参照してください) は、下部にある [アクティビティ ウィンドウ] の一覧で強調表示されます。
+- 選択したオブジェクトのプロパティは、右側のウィンドウにある [プロパティ] ウィンドウに表示されます。
+- 該当する場合は、選択したオブジェクトの JSON 定義が表示されます。例: リンクされたサービス、データセット、パイプライン
 
 ![Resource Explorer](./media/data-factory-monitor-manage-app/ResourceExplorer.png)
 
-See [Scheduling and Execution](data-factory-scheduling-and-execution.md) article for detailed conceptual information about activity window. 
+アクティビティ ウィンドウの概念の詳細については、記事「[スケジュールと実行](data-factory-scheduling-and-execution.md)」を参照してください。
 
-### <a name="diagram-view"></a>Diagram View
-The Diagram View of a data factory provides a single pane of glass to monitor and manage the data factory and its assets. When you select a Data Factory entity (dataset/pipeline) in the diagram view, you notice the following:
+### ダイアグラム ビュー
+Data Factory のダイアグラム ビューでは、Data Factory とその資産を監視および管理する 1 つのウィンドウが提供されます。ダイアグラム ビューで Data Factory エンティティ (データセットまたはパイプライン) を選択する際は、次の点に注意します。
  
-- the data factory entity is selected in the tree view
-- associated activity windows are highlighted in the Activity Windows list.
-- properties of the selected object in the Properties window
+- Data Factory エンティティはツリー ビューで選択されます。
+- 関連付けられているアクティビティ ウィンドウは [アクティビティ ウィンドウ] の一覧で強調表示されます。
+- 選択したオブジェクトのプロパティは [プロパティ] ウィンドウに表示されます。
 
-When the pipeline is enabled (not in paused state), it is shown with a green line. 
+パイプラインは、有効な場合 (一時停止状態ではない場合) は緑の線付きで示されます。
 
 ![Pipeline Running](./media/data-factory-monitor-manage-app/PipelineRunning.png)
 
-You notice that there are three command buttons for the pipeline in the diagram view. You can use the second button to pause the pipeline. Pausing does not terminate the currently running activities and let them proceed to completion. Third button pauses the pipeline and terminates its existing executing activities. First button resumes the pipeline. When your pipeline is paused, you notice the color change for the pipeline tile as follows.
+ダイアグラム ビューには、パイプライン用に 3 つのコマンド ボタンがあります。2 番目のボタンを使用すると、パイプラインを一時停止できます。これによって、現在実行中のアクティビティが終了することはありません。アクティビティは完了するまで続行されます。3 番目のボタンは、パイプラインを一時停止し、その既に実行中のアクティビティを終了します。1 番目のボタンは、パイプラインを再開します。パイプラインが一時停止されると、パイプラインのタイルの色が次のように変わります。
 
 ![Pause/Resume on Tile](./media/data-factory-monitor-manage-app/SuspendResumeOnTile.png)
 
-You can multi-select two or more pipelines (using CTRL) and use command bar buttons to pause/resume multiple pipelines at a time.
+(Ctrl キーを使用して) 複数のパイプラインを選択し、コマンド バーのボタンを使用すると、複数のパイプラインを同時に一時停止/再開することができます。
 
 ![Pause/Resume on Command bar](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
 
-You can see all the activities in the pipeline, by right-clicking the pipeline tile, and clicking **Open pipeline**.
+パイプラインのすべてのアクティビティを表示するには、パイプラインのタイルを右クリックし、**[パイプラインを開く]** をクリックします。
 
 ![Open Pipeline menu](./media/data-factory-monitor-manage-app/OpenPipelineMenu.png)
 
-In the opened pipeline view, you see all activities in the pipeline. In this example, there is only one activity: Copy Activity. To go back to the previous view, click data factory name in the breadcrumb menu at the top.
+開かれたパイプラインのビューには、パイプラインのすべてのアクティビティが表示されます。この例では、コピー アクティビティというアクティビティが 1 つだけあります。前のビューに戻るには、上部にある階層リンク メニューのデータ ファクトリ名をクリックします。
 
 ![Opened Pipeline](./media/data-factory-monitor-manage-app/OpenedPipeline.png)
 
-In the pipeline view, when you click an output dataset or when you move your mouse over the output dataset, you see the Activity Windows pop-up for that dataset.
+パイプライン ビューで、出力データセットをクリックするか出力データセットにマウスカーソルを重ねると、そのデータセットの [アクティビティ ウィンドウ] ポップアップが表示されます。
 
 ![Activity Windows popup](./media/data-factory-monitor-manage-app/ActivityWindowsPopup.png)
 
-You can click an activity window to see details for it in the **Property** window in the right pane. 
+アクティビティ ウィンドウをクリックすると、右側にある **[プロパティ]** ウィンドウにその詳細が表示されます。
 
 ![Activity Window Properties](./media/data-factory-monitor-manage-app/ActivityWindowProperties.png)
 
-In the right pane, switch to **Activity Window Explorer** tab to see more details.
+右側のウィンドウで、**[アクティビティ ウィンドウ エクスプローラー]** に切り替えてさらに詳細を表示します。
 
-![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png) 
+![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer.png)
 
-You also see **resolved variables** for each activity run attempt in the **Attempts** section. 
+アクティビティの実行が試みられるたびに **[試行]** セクションに **解決された変数**も表示されます。
 
-![Resolved variables](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
+![解決された変数](./media/data-factory-monitor-manage-app/ResolvedVariables.PNG)
 
-Switch to the **Script** tab to see the JSON script definition for the selected object.   
+**[スクリプト]** タブに切り替えて、選択したオブジェクトの JSON スクリプト定義を確認します。
 
-![Script tab](./media/data-factory-monitor-manage-app/ScriptTab.png)
+![[スクリプト] タブ](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
-You can see activity windows in three places:
+アクティビティ ウィンドウは、次の 3 か所で確認できます。
 
-- Activity Windows pop-up in the diagram view (middle pane).
-- Activity Window Explorer in the right pane.
-- Activity Windows list in the bottom pane.
+- ダイアグラム ビューに表示される [アクティビティ ウィンドウ] ポップアップ (中央のウィンドウ)。
+- 右側のウィンドウにあるアクティビティ ウィンドウ エクスプローラー。
+- 下部のウィンドウにある [アクティビティ ウィンドウ] の一覧。
 
-In the Activity Windows pop-up and Activity Window Explorer, you can scroll to previous week and next week using left and right arrows.
+[アクティビティ ウィンドウ] ポップアップとアクティビティ ウィンドウ エクスプローラーでは、左矢印と右矢印を使用して前の週と次の週にスクロールすることができます。
 
 ![Activity Window Explorer Left/Right Arrows](./media/data-factory-monitor-manage-app/ActivityWindowExplorerLeftRightArrows.png)
 
-At the bottom of the Diagram View, you see buttons to Zoom In, Zoom Out, Zoom to Fit, Zoom 100%, Lock layout. The Lock layout button prevents you from accidentally moving tables and pipelines in the diagram view and is ON by default. You can turn it off and move entities around in the diagram. When you turn it OFF, you can use the last button to automatically position tables and pipelines. You can also Zoom in/Zoom Out using mouse wheel.
+ダイアグラム ビューの下部には、拡大、縮小、画面に合わせたサイズ変更、100 % 表示、レイアウト ロックを行うためのボタンが表示されます。レイアウト ロック ボタンは、ダイアグラム ビューでテーブルやパイプラインが誤って動かされないようにするためのものであり、既定ではオンになっています。このボタンをオフにすると、ダイアグラム内でエンティティを移動できます。オフにするときに、最後のボタンを使用してテーブルやパイプラインを自動的に配置できます。また、マウス ホイールを使用して拡大/縮小することもできます。
 
 ![Diagram View Zoom commands](./media/data-factory-monitor-manage-app/DiagramViewZoomCommands.png)
 
 
-### <a name="activity-windows-list"></a>Activity Windows List
-The Activity windows list in the bottom of the middle pane displays all activity windows for the dataset you selected in the resource explorer or diagram view. By default, the list is in the descending order, which means that you see the latest activity window at the top. 
+### [アクティビティ ウィンドウ] の一覧
+中央のウィンドウの下部にある [アクティビティ ウィンドウ] の一覧には、リソース エクスプローラーまたはダイアグラム ビューで選択したデータセットのアクティビティ ウィンドウすべてが表示されます。既定では、この一覧は降順になっています。つまり、最新のアクティビティ ウィンドウが先頭に表示されます。
 
 ![Activity Windows List](./media/data-factory-monitor-manage-app/ActivityWindowsList.png)
 
-This list does not refresh automatically, so use the refresh button on the toolbar to manually refresh it.  
+この一覧は自動的に更新されないため、ツール バーの更新ボタンを使用するか、手動で更新してください。
 
 
-The activity windows can be in one of the following statuses:
+アクティビティ ウィンドウは、次の状態のいずれかになります。
 
 <table>
 <tr>
-    <th align="left">Status</th><th align="left">Substatus</th><th align="left">Description</th>
+	<th align="left">状態</th><th align="left">副状態</th><th align="left">Description</th>
 </tr>
 <tr>
-    <td rowspan="8">Waiting</td><td>ScheduleTime</td><td>The time has not come for the activity window to run.</td>
+	<td rowspan="8">待機中</td><td>ScheduleTime</td><td>アクティビティ ウィンドウが実行される時刻になっていません。</td>
 </tr>
 <tr>
-<td>DatasetDependencies</td><td>The upstream dependencies are not ready.</td>
+<td>DatasetDependencies</td><td>アップ ストリームの依存関係の準備ができていません。</td>
 </tr>
 <tr>
-<td>ComputeResources</td><td>The compute resources are not available.</td>
+<td>ComputeResources</td><td>コンピューティング リソースが使用できません。</td>
 </tr>
 <tr>
-<td>ConcurrencyLimit</td> <td>All the activity instances are busy running other activity windows.</td>
+<td>ConcurrencyLimit</td> <td>すべてのアクティビティ インスタンスが、他のアクティビティ ウィンドウを実行しています。</td>
 </tr>
 <tr>
-<td>ActivityResume</td><td>Activity is paused and cannot run the activity windows until it is resumed.</td>
+<td>ActivityResume</td><td>アクティビティは一時停止しており、再開されるまでアクティビティ ウィンドウを実行できません。</td>
 </tr>
 <tr>
-<td>Retry</td><td>Activity execution is retried.</td>
+<td>Retry</td><td>アクティビティの実行が再試行されます。</td>
 </tr>
 <tr>
-<td>Validation</td><td>Validation has not started yet.</td>
+<td>検証</td><td>検証がまだ開始されていません。</td>
 </tr>
 <tr>
-<td>ValidationRetry</td><td>Waiting for the validation to be retried.</td>
+<td>ValidationRetry</td><td>検証の再試行を待機しています。</td>
 </tr>
 <tr>
-<tr
-<td rowspan="2">InProgress</td><td>Validating</td><td>Validation in progress.</td>
+&lt; tr
+<td rowspan="2">InProgress</td><td>Validating</td><td>検証を実行中です。</td>
 </tr>
 <td></td>
-<td>The activity window is being processed.</td>
+<td>アクティビティ ウィンドウが処理されています。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>TimedOut</td><td>Execution took longer than that is allowed by the activity.</td>
+<td rowspan="4">Failed</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
 </tr>
 <tr>
-<td>Canceled</td><td>Canceled by user action.</td>
+<td>Canceled</td><td>ユーザーの操作によって取り消されました。</td>
 </tr>
 <tr>
-<td>Validation</td><td>Validation has failed.</td>
+<td>検証</td><td>検証が失敗しました。</td>
 </tr>
 <tr>
-<td></td><td>Failed to generate and/or validate the activity window.</td>
+<td></td><td>アクティビティ ウィンドウの生成またはアクティビティ ウィンドウの検証に失敗しました。</td>
 </tr>
-<td>Ready</td><td></td><td>The activity window is ready for consumption.</td>
-</tr>
-<tr>
-<td>Skipped</td><td></td><td>The activity window is not processed.</td>
+<td>Ready</td><td></td><td>アクティビティ ウィンドウは使用可能な状態です。</td>
 </tr>
 <tr>
-<td>None</td><td></td><td>An activity window that used to exist with a different status, but has been reset.</td>
+<td>Skipped</td><td></td><td>アクティビティ ウィンドウが処理されていません。</td>
+</tr>
+<tr>
+<td>なし</td><td></td><td>別のステータスで存在していたが、リセットされたアクティビティ ウィンドウです。</td>
 </tr>
 </table>
 
 
-When you click an activity window in the list, you see details about it in **Activity Windows Explorer** or **Properties** window on the right.
+一覧でアクティビティ ウィンドウをクリックすると、右側にある **[アクティビティ ウィンドウ エクスプローラー]** または**[プロパティ]** ウィンドウに詳細が表示されます。
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-2.png)
 
-### <a name="refresh-activity-windows"></a>Refresh activity windows  
-The details are not automatically refreshed, so you use the **refresh** button (second button) on the command bar to manually refresh the activity windows list.  
+### アクティビティ ウィンドウの更新  
+詳細は自動的に更新されないため、コマンド バーの **[更新]** ボタン (2 番目のボタン) を使用して、アクティビティ ウィンドウの一覧を手動で更新します。
  
 
-### <a name="properties-window"></a>Properties window
-The Properties window is in the right-most pane of the Monitoring and Management app. 
+### [プロパティ] ウィンドウ
+[プロパティ] ウィンドウは、監視と管理アプリの右端のウィンドウにあります。
 
 ![Properties window](./media/data-factory-monitor-manage-app/PropertiesWindow.png)
 
-It displays properties for the item you selected in the resource explorer (tree view) (or) diagram view (or) activity windows list. 
+ここには、リソース エクスプローラー (ツリー ビュー)、ダイアグラム ビュー、または [アクティビティ ウィンドウ] の一覧で選択した項目のプロパティが表示されます。
 
-### <a name="activity-window-explorer"></a>Activity Window Explorer
+### Activity Window Explorer
 
-The **Activity Window Explorer** window is in the right-most pane of the Monitoring and Management App. It displays details about the activity window you selected in the Activity Windows pop-up or Activity Windows list. 
+**[アクティビティ ウィンドウ エクスプローラー]** ウィンドウは、監視と管理アプリの右端のウィンドウにあります。ここには、[アクティビティ ウィンドウ] ポップアップまたは [アクティビティ ウィンドウ] の一覧で選択したアクティビティ ウィンドウの詳細が表示されます。
 
 ![Activity Window Explorer](./media/data-factory-monitor-manage-app/ActivityWindowExplorer-3.png)
 
-You can switch to another activity window by clicking it in the calendar view at the top. You can also use the **left arrow**/**right arrow** buttons at the top to see activity windows from the previous/next week.
+別のアクティビティ ウィンドウに切り替えるには、上部にあるカレンダー ビューでそのアクティビティ ウィンドウをクリックします。上部にある**左矢印**/**右矢印**ボタンを使用すると、前/次の週のアクティビティ ウィンドウを表示することもできます。
 
-You can use the toolbar buttons in the bottom pane to **rerun** the activity window or **refresh** the details in the pane. 
+下部のウィンドウにあるツール バー ボタンを使用して、アクティビティ ウィンドウを**再実行**したり、そのウィンドウの詳細を**更新**したりすることができます。
 
-### <a name="script"></a>Script 
-You can use the **Script** tab to view the JSON definition of the selected Data Factory entity (linked service, dataset, and pipeline). 
+### スクリプト 
+**[スクリプト]** タブを使用して、選択した Data Factory エンティティ (リンクされたサービス、データセット、およびパイプライン) の JSON 定義を表示することができます。
 
-![Script tab](./media/data-factory-monitor-manage-app/ScriptTab.png)
+![[スクリプト] タブ](./media/data-factory-monitor-manage-app/ScriptTab.png)
 
-## <a name="using-system-views"></a>Using system views
-The Monitoring and Management App includes pre-built system views (**Recent activity windows**, **Failed activity windows**, **In-Progress activity windows**) that allows you to view recent/failed/in-progress activity windows for your data factory. 
+## システム ビューの使用
+監視と管理アプリには、既成のシステム ビュー (**最近のアクティビティ ウィンドウ**、**失敗したアクティビティ ウィンドウ**、**進行中のアクティビティ ウィンドウ**) が用意されています。これらを使用すると、該当するデータ ファクトリの最近のアクティビティ ウィンドウ、失敗したアクティビティ ウィンドウ、進行中のアクティビティ ウィンドウを確認できます。
 
-Switch to the **Monitoring Views** tab on the left by clicking it. 
+左側の **[監視ビュー]** タブをクリックして切り替えます。
 
 ![Monitoring Views tab](./media/data-factory-monitor-manage-app/MonitoringViewsTab.png)
 
-Currently, there are three system views supported. Select an option to see recent activity windows (or) failed activity windows (or) in-progress activity windows in the Activity Windows list (at the bottom of the middle pane). 
+現時点でサポートされているシステム ビューは 3 つあります。(中央のウィンドウの下部にある) [アクティビティ ウィンドウ] の一覧に最近のアクティビティ ウィンドウ、失敗したアクティビティ ウィンドウ、または進行中のアクティビティ ウィンドウを表示するオプションを選択します。
 
-When you select **Recent activity windows** option, you see all recent activity windows in the descending order of **last attempt time**. 
+**[最近のアクティビティ ウィンドウ]** オプションを選択すると、最近のアクティビティ ウィンドウすべてが**最終試行時刻**の降順で表示されます。
 
-You can use the **Failed activity windows** view to see all failed activity windows in the list. Select a failed activity window in the list to see details about it in the **Properties** window (or) **Activity Window Explorer**. You can also download any logs for a failed activity window. 
+**[失敗したアクティビティ ウィンドウ]** ビューを使用すると、失敗したアクティビティ ウィンドウすべてを一覧に表示できます。一覧で失敗したアクティビティ ウィンドウを選択すると、その詳細が **[プロパティ]** ウィンドウまたは**アクティビティ ウィンドウ エクスプローラー**に表示されます。また、失敗したアクティビティ ウィンドウのログをダウンロードすることもできます。
 
 
-## <a name="sorting-and-filtering-activity-windows"></a>Sorting and filtering activity windows
-Change the **start time** and **end time** settings in the command bar to filter activity windows. After you change Start time and End time, click the button next to end-time to refresh the Activity Windows list.
+## アクティビティ ウィンドウの並べ替えとフィルター処理
+アクティビティ ウィンドウをフィルター処理するには、コマンド バーの **[開始時刻]** と **[終了時刻]** の設定を変更します。開始時刻と終了時刻を変更したら、終了時刻の横にあるボタンをクリックして、[アクティビティ ウィンドウ] の一覧を更新します。
 
 ![Start and End Times](./media/data-factory-monitor-manage-app/StartAndEndTimes.png)
 
-> [AZURE.NOTE] Currently, all times are in UTC format in the Monitoring and Management App. 
+> [AZURE.NOTE] 現時点では、監視と管理アプリの時刻はすべて UTC 形式になっています。
 
-In the **Activity Windows list**, click the name of a column (for example: Status). 
+**[アクティビティ ウィンドウ]** の一覧で、列の名前 (例: 状態) をクリックします。
 
 ![Activity Windows List column menu](./media/data-factory-monitor-manage-app/ActivityWindowsListColumnMenu.png)
 
-You can do the following:
+以下の操作を行うことができます。
 
-- Sort in the ascending order.
-- Sort in the descending order.
-- Filter by one or more values (Ready, Waiting, etc.)
+- 昇順で並べ替える。
+- 降順で並べ替える。
+- 1 つ以上の値 ("準備完了"、"待機中" など) でフィルター処理する。
 
-When you specify a filter on a column, you see the filter button enabled for that column to indicate that the values in the column are filtered values. 
+列にフィルターを指定すると、その列のフィルター ボタンが有効になり、列の値がフィルター処理された値を示していることがわかります。
 
 ![Filter in column of Activity Windows list](./media/data-factory-monitor-manage-app/ActivityWindowsListFilterInColumn.png)
 
-You can use the same pop-up window to clear filters. To clear all filters for the activity windows list, click the clear filter button on the command bar. 
+フィルターをクリアするには、同じポップアップ ウィンドウを使用できます。[アクティビティ ウィンドウ] の一覧のフィルターをすべてクリアするには、コマンド バーにある [フィルターのクリア] ボタンをクリックします。
 
 ![Clear all filters in Activity Windows list](./media/data-factory-monitor-manage-app/ClearAllFiltersActivityWindowsList.png)
 
 
-## <a name="performing-batch-actions"></a>Performing batch actions
+## バッチ操作の実行
 
-### <a name="rerun-selected-activity-windows"></a>Rerun selected activity windows
-Select an activity window, click the down arrow for the first command bar button and select **Rerun** / **Rerun with upstream in pipeline**. When you select **Rerun with upstream in pipeline** option, it reruns all upstream activity windows as well. 
-    ![Rerun an activity window](./media/data-factory-monitor-manage-app/ReRunSlice.png)
+### 選択したアクティビティ ウィンドウを再実行する
+アクティビティ ウィンドウを選択して、1 つ目のコマンド バー ボタンの下向き矢印をクリックし、**[再実行]** または **[パイプラインのアップストリームによる再実行]** を選択します。**[パイプラインのアップストリームによる再実行]** オプションを選択すると、アップストリーム アクティビティ ウィンドウもすべて再実行されます。![Rerun a activity window](./media/data-factory-monitor-manage-app/ReRunSlice.png)
 
-You can also select multiple activity windows in the list and rerun them at the same time. You may want to filter activity windows based on the status (for example: **Failed**) and then rerun the failed activity windows after correcting the issue that causes the activity windows to fail. See the following section for details about filtering activity windows in the list.  
+また、一覧で複数のアクティビティ ウィンドウを選択して、それらを同時に再実行することもできます。状態 (例: **失敗**) でアクティビティ ウィンドウをフィルター処理してから、アクティビティ ウィンドウが失敗した原因となる問題を解決した後に、失敗したアクティビティ ウィンドウを再実行することが必要になる場合もあります。一覧にあるアクティビティ ウィンドウのフィルター処理の詳細については、次のセクションを参照してください。
 
-### <a name="pause/resume-multiple-pipelines"></a>Pause/resume multiple pipelines
-You can multi-select two or more pipelines (using CTRL) and use command bar buttons (highlighted in red rectangle in the following image) to pause/resume them at a time.
+### 複数のパイプラインを一時停止/再開する
+(Ctrl キーを使用して) 複数のパイプラインを選択し、コマンド バーのボタン (次の図で赤の四角形で囲まれています) を使用すると、選択したパイプラインを同時に一時停止または再開することができます。
 
 ![Suspend/Resume on Command bar](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
 
-## <a name="creating-alerts"></a>Creating alerts 
-The Alerts page lets you create an alert, view/edit/delete existing alerts. You can also disable/enable an alert. To see the ALerts page, click the Alerts tab.
+## アラートの作成 
+[アラート] ページでは、アラートの作成のほか、既存のアラートの表示、編集、削除を実行できます。また、アラートを無効/有効にすることもできます。[アラート] ページを表示するには、[アラート] タブをクリックします。
 
 ![Alerts tab](./media/data-factory-monitor-manage-app/AlertsTab.png)
 
-### <a name="to-create-an-alert"></a>To create an alert
+### アラートを作成するには
 
-1. Click **Add Alert** to add an alert. You see the Details page. 
+1. **[アラートの追加]** をクリックしてアラートを追加します。[詳細] ページが表示されます。
 
-    ![Create Alerts - Details page](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-1. Specify the **name** and **description** for the alert, and click **Next**. You should see the **Filters** page.
+	![Create Alerts - Details page](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
+1. アラートの**名前**と**説明**を指定し、**[次へ]** をクリックします。**[フィルター]** ページが表示されます。
 
-    ![Create Alerts - Filters page](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
+	![Create Alerts - Filters page](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
 
-2. Select the **event**, **status**, and **substatus** (optional) on which you want the Data Factory service to alert you, and click **Next**. You should see the **Recipients** page.
+2. Data Factory サービスからアラートを受け取る**イベント**、**状態**、および**副状態** (オプション) を選択し、**[次へ]** をクリックします。**[宛先]** ページが表示されます。
 
-    ![Create Alerts - Recipients page](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png) 
-3. Select **Email subscription admins** option and/or enter **additional administrator email**, and click **Finish**. You should see the alert in the list. 
-    
-    ![Alerts list](./media/data-factory-monitor-manage-app/AlertsList.png)
+	![Create Alerts - Recipients page](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
+3. **[サブスクリプション管理者に電子メールを送る]** オプションを選択するか **[追加する管理者の電子メール]** を入力して、**[完了]** をクリックします。アラートが一覧に表示されます。
+	
+	![Alerts list](./media/data-factory-monitor-manage-app/AlertsList.png)
 
-In the Alerts list, use the buttons associated with the alert to edit/delete/disable/enable an alert. 
+[アラート] の一覧で、アラートの編集/削除/無効化/有効化を実行するには、アラートに関連付けられたボタンを使用します。
 
-### <a name="event/status/substatus"></a>Event/status/substatus
-The following table provides the list of available events and statuses (and substatuses).
+### イベント/状態/副状態
+次の表では、使用できるイベントと状態 (および副状態) の一覧を示します。
 
-Event name | Status | Sub status
+イベント名 | 状態 | 副状態
 -------------- | ------ | ----------
-Activity Run Started | Started | Starting
-Activity Run Finished | Succeeded | Succeeded 
-Activity Run Finished | Failed| Failed Resource Allocation<br/><br/>Failed Execution<br/><br/>Timed Out<br/><br/>Failed Validation<br/><br/>Abandoned
-On-Demand HDI Cluster Create Started | Started | &nbsp; |
-On-Demand HDI Cluster Created Successfully | Succeeded | &nbsp; |
-On-Demand HDI Cluster Deleted | Succeeded | &nbsp; |
-### <a name="to-edit/delete/disable-an-alert"></a>To edit/delete/disable an alert
+アクティビティの実行が開始されました | 開始済み | 開始中
+アクティビティの実行が完了しました | Succeeded | Succeeded 
+アクティビティの実行が完了しました | Failed| リソースの割り当ての失敗<br/><br/>実行の失敗<br/><br/>タイムアウト<br/><br/>検証の失敗<br/><br/>中止
+オンデマンド HDI クラスターの作成が開始されました | 開始済み | &nbsp; |
+オンデマンド HDI クラスターが正常に作成されました | Succeeded | &nbsp; |
+オンデマンド HDI クラスターが削除されました | Succeeded | &nbsp; |
+### アラートを編集/削除/無効にするには
 
 
 ![Alerts buttons](./media/data-factory-monitor-manage-app/AlertButtons.png)
@@ -321,10 +319,4 @@ On-Demand HDI Cluster Deleted | Succeeded | &nbsp; |
     
  
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Runbook execution in Azure Automation"
-   description="Describes the details of how a runbook in Azure Automation is processed."
+   pageTitle="Azure Automation での Runbook の実行"
+   description="Azure Automation で Runbook が処理される方法の詳細について説明します。"
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
@@ -15,105 +15,100 @@
    ms.date="03/21/2016"
    ms.author="bwren" />
 
-
-# <a name="runbook-execution-in-azure-automation"></a>Runbook execution in Azure Automation
-
-
-When you start a runbook in Azure Automation, a job is created. A job is a single execution instance of a runbook. An Azure Automation worker is assigned to run each job. While workers are shared by multiple Azure accounts, jobs from different Automation accounts are isolated from one another. You do not have control over which worker will service the request for your job.  A single runbook can have multiple jobs running at one time. When you view the list of runbooks in the Azure portal, it will list the status of the last job that was started for each runbook. You can view the list of jobs for each runbook in order to track the status of each. For a description of the different job statuses, see [Job Statuses](#job-statuses).
-
-The following diagram shows the lifecycle of a runbook job for [Graphical runbooks](automation-runbook-types.md#graphical-runbooks) and [PowerShell Workflow runbooks](automation-runbook-types.md#powershell-workflow-runbooks).
-
-![Job Statuses - PowerShell Workflow](./media/automation-runbook-execution/job-statuses.png)
-
-The following diagram shows the lifecycle of a runbook job for [PowerShell runbooks](automation-runbook-types.md#powershell-runbooks).
-
-![Job Statuses - PowerShell Script](./media/automation-runbook-execution/job-statuses-script.png)
+# Azure Automation での Runbook の実行
 
 
-Your jobs will have access to your Azure resources by making a connection to your Azure subscription. They will only have access to resources in your data center if those resources are accessible from the public cloud.
+Azure Automation で runbook を開始するときに、ジョブが作成されます。ジョブは、Runbook の単一の実行インスタンスです。各ジョブを実行する Azure Automation ワーカーが割り当てられます。ワーカーは複数の Azure アカウントで共有されるが、さまざまな Automation アカウントからのジョブは互いに分離されます。ジョブに対する要求をどのワーカーで処理するかを制御することはできません。1 つの Runbook で、複数のジョブを同時に実行することができます。Azure ポータルで Runbook の一覧を表示すると、各 Runbook に対して最後に起動されたジョブの状態が一覧表示されます。それぞれの状態を追跡するために、Runbook ごとにジョブの一覧を表示できます。ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」を参照してください。
 
-## <a name="job-statuses"></a>Job statuses
+次の図に、[グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks) と [PowerShell Workflow Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のための Runbook ジョブのライフサイクルを示します。
 
-The following table describes the different statuses that are possible for a job.
+![ジョブの状態 - PowerShell Workflow](./media/automation-runbook-execution/job-statuses.png)
 
-| Status| Description|
+次の図に、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) のための Runbook ジョブのライフサイクルを示します。
+
+![ジョブの状態 - PowerShell スクリプト](./media/automation-runbook-execution/job-statuses-script.png)
+
+
+ジョブは、Azure サブスクリプションに接続することにより Azure リソースにアクセスします。データ センター内のリソースにパブリック クラウドからアクセスできる場合、ジョブはそれらのリソースにのみアクセスします。
+
+## ジョブの状態
+
+次の表には、ジョブが取り得るさまざまな状態を説明します。
+
+| 状態| 説明|
 |:---|:---|
-|Completed|The job completed successfully.|
-|Failed| For [Graphical and PowerShell Workflow runbooks](automation-runbook-types.md), the runbook failed to compile.  For [PowerShell Script runbooks](automation-runbook-types.md), the runbook failed to start or the job encountered an exception. |
-|Failed, waiting for resources|The job failed because it reached the [fair share](#fairshare) limit three times and started from the same checkpoint or from the start of the runbook each time.|
-|Queued|The job is waiting for resources on an Automation worker to come available so that it can be started.|
-|Starting|The job has been assigned to a worker, and the system is in the process of starting it.|
-|Resuming|The system is in the process of resuming the job after it was suspended.|
-|Running|The job is running.|
-|Running, waiting for resources|The job has been unloaded because it reached the [fair share](#fairshare) limit. It will resume shortly from its last checkpoint.|
-|Stopped|The job was stopped by the user before it was completed.|
-|Stopping|The system is in the process of stopping the job.|
-|Suspended|The job was suspended by the user, by the system, or by a command in the runbook. A job that is suspended can be started again and will resume from its last checkpoint or from the beginning of the runbook if it has no checkpoints. The runbook will only be suspended by the system in the case of an exception. By default, ErrorActionPreference is set to **Continue** meaning that the job will keep running on an error. If this preference variable is set to **Stop** then the job will suspend on an error.  Applies to [Graphical and PowerShell Workflow runbooks](automation-runbook-types.md) only.|
-|Suspending|The system is attempting to suspend the job at the request of the user. The runbook must reach its next checkpoint before it can be suspended. If it has already passed its last checkpoint, then it will complete before it can be suspended.  Applies to [Graphical and PowerShell Workflow runbooks](automation-runbook-types.md) only.|
+|完了|ジョブは正常に完了しました。|
+|失敗| [グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) では、Runbook のコンパイルが失敗しました。[PowerShell スクリプト Runbook](automation-runbook-types.md) では、Runbook の開始に失敗したか、ジョブで例外が発生しました。 |
+|失敗、リソースを待機中|ジョブは [fair share](#fairshare) の限界に 3 回到達し、毎回、同じチェックポイントから、または Runbook の先頭から起動したために、失敗しました。|
+|キューに登録済み|ジョブは Automation ワーカー上のリソースが使用できるようになるのを待機しています。そうなれば、ジョブを起動できます。|
+|Starting|ジョブがワーカーに割り当てられており、システムがジョブを起動しているところです。|
+|再開中|システムは、ジョブが停止された後、そのジョブを再開しているところです。|
+|実行中|ジョブは実行中です。|
+|実行中、リソースを待機中|ジョブは [fair share](#fairshare) 制限に達したためにアンロードされました。ジョブは最後のチェックポイントからすぐに再開します。|
+|停止済み|ジョブは完了した後、ユーザーによって停止されました。|
+|停止中|システムがジョブを停止させているところです。|
+|Suspended|ユーザーか、システムか、または Runbook 内のコマンドによってジョブは中断されました。中断されているジョブは、再度起動することができ、最後のチェックポイントから、チェックポイントがない場合は Runbook の先頭から再開することになります。Runbook は、例外が発生した場合にシステムによってのみ中断されます。既定では、ErrorActionPreference は **Continue** に設定されます。これはエラー発生時にもジョブが実行を維持することを意味します。このユーザー設定変数を **Stop** に設定すると、エラー発生時にジョブは中断します。[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。|
+|中断中|ユーザーの要求を受けてシステムはジョブを中断しようとしています。Runbook は、次のチェックポイントに到達してからでないと、中断できません。Runbook は、次のチェックポイントに到達してからでないと、中断できません。[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。|
 
-## <a name="viewing-job-status-using-the-azure-management-portal"></a>Viewing job status using the Azure Management Portal
+## Microsoft Azure 管理ポータルを使用したジョブの状態の表示
 
-### <a name="automation-dashboard"></a>Automation Dashboard
+### Automation Dashboard
 
-The Automation Dashboard shows a summary of all of the runbooks for a particular automation account. It also includes a Usage Overview for the account. The summary graph shows the number of total jobs for all runbooks that entered each status over a given number of days or hours. You can select the time range on the top right corner of the graph. The time axis of the chart will change according to the type of time range that you select. You can choose whether to display the line for a particular status by clicking on it at the top of screen.
+Automation Dashboard は、特定の Automation アカウントについてすべての Runbook の概要を示します。これには、アカウントの [使用状況の概要] も含まれています。概要のグラフには、すべての Runbook について、各状態になり指定の日数または時間が経過したジョブの総数が表示されます。グラフの右上隅で時間の範囲を選択することができます。グラフの時間軸は選択した時間の範囲の種類に応じて変わります。特定の状態の行を表示するかどうかを選択するには、画面の上部で該当する状態をクリックします。
 
-You can use the following steps to display the Automation Dashboard.
+Automation Dashboard を表示するには、次の手順を使用します。
 
-1. In the Azure Management Portal, select **Automation** and then then click the name of an automation account.
-1. Select the **Dashboard** tab.
+1. Microsoft Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. **[ダッシュボード]** タブを選択します。
 
-### <a name="runbook-dashboard"></a>Runbook Dashboard
+### Runbook Dashboard
 
-The Runbook Dashboard shows a summary for a single runbook. The summary graph shows the number of total jobs for the runbook that entered each status over a given number of days or hours. You can select the time range on the top right corner of the graph. The time axis of the chart will change according to the type of time range that you select. You can choose whether to display the line for a particular status by clicking on it at the top of screen.
+Runbook Dashboard には、単一の Runbook の概要が表示されます。概要のグラフには、Runbook について、それぞれの状態になり指定の日数または時間が経過したジョブの総数が表示されます。グラフの右上隅で時間の範囲を選択することができます。グラフの時間軸は選択した時間の範囲の種類に応じて変わります。特定の状態の行を表示するかどうかを選択するには、画面の上部で該当する状態をクリックします。
 
-You can use the following steps to display the Runbook Dashboard.
+Runbook Dashboard を表示するには、次の手順を使用します。
 
-1. In the Azure Management Portal, select **Automation** and then then click the name of an automation account.
-1. Click the name of a runbook.
-1. Select the **Dashboard** tab.
+1. Microsoft Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. Runbook の名前をクリックします。
+1. **[ダッシュボード]** タブを選択します。
 
-### <a name="job-summary"></a>Job Summary
+### ジョブの概要
 
-You can view a list of all of the jobs that have been created for a particular runbook and their most recent status. You can filter this list by job status and the range of dates for the last change to the job. Click on the name of a job to view its detailed information and its output. The detailed view of the job includes the values for the runbook parameters that were provided to that job.
+特定の Runbook 用に作成されたすべてのジョブと、それらのジョブの最新の状態を一覧にして表示できます。この一覧は、ジョブの状態とジョブに最後に変更を加えた日付の範囲とによってフィルター処理することができます。ジョブの名前をクリックして、その詳細な情報と出力を表示します。ジョブの詳細表示には、そのジョブに指定された Runbook パラメーターの値が含まれます。
 
-You can use the following steps to view the jobs for a runbook.
+次の手順を使用して Runbook のジョブを表示します。
 
-1. In the Azure Management Portal, select **Automation** and then then click the name of an automation account.
-1. Click the name of a runbook.
-1. Select the **Jobs** tab.
-1. Click on the **Job Created** column for a job to view its detail and output.
+1. Microsoft Azure 管理ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前をクリックします。
+1. Runbook の名前をクリックします。
+1. **[ジョブ]** タブを選択します。
+1. ジョブの **[作成されたジョブ]** 列をクリックして、その詳細と出力を表示します。
 
-## <a name="retrieving-job-status-using-windows-powershell"></a>Retrieving job status using Windows PowerShell
+## Windows PowerShell を使用したジョブの状態の取得
 
-You can use the [Get-AzureAutomationJob](http://msdn.microsoft.com/library/azure/dn690263.aspx) to retrieve the jobs created for a runbook and the details of a particular job. If you start a runbook with Windows PowerShell using [Start-AzureAutomationRunbook](http://msdn.microsoft.com/library/azure/dn690259.aspx), then it will return the resulting job. Use [Get-AzureAutomationJob](http://msdn.microsoft.com/library/azure/dn690263.aspx)Output to get a job’s output.
+[Get-AzureAutomationJob](http://msdn.microsoft.com/library/azure/dn690263.aspx) を使用して、Runbook 用に作成されたジョブと、特定のジョブの詳細を取得することができます。[Start-AzureAutomationRunbook](http://msdn.microsoft.com/library/azure/dn690259.aspx) を使用して、Windows PowerShell で Runbook を開始すると、結果として作成されたジョブが返されます。[Get-AzureAutomationJobOutput](http://msdn.microsoft.com/library/azure/dn690263.aspx) を使用してジョブの出力を取得します。
 
-The following sample commands retrieves the last job for a sample runbook and displays it’s status, the values provide for the runbook parameters, and the output from the job.
+次のサンプル コマンドは、サンプル Runbook の最後のジョブを取得し、その状態、Runbook パラメーターに指定された値、およびジョブの出力を表示します。
 
-    $job = (Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" | sort LastModifiedDate –desc)[0]
-    $job.Status
-    $job.JobParameters
-    Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
+	$job = (Get-AzureAutomationJob –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" | sort LastModifiedDate –desc)[0]
+	$job.Status
+	$job.JobParameters
+	Get-AzureAutomationJobOutput –AutomationAccountName "MyAutomationAccount" -Id $job.Id –Stream Output
 
-## <a name="fair-share"></a>Fair share
+## フェア シェア
 
-In order to share resources among all runbooks in the cloud, Azure Automation will temporarily unload any job after it has been running for 3 hours.    [Graphical](automation-runbook-types.md#graphical-runbooks) and [PowerShell Workflow](automation-runbook-types.md#powershell-workflow-runbooks) runbooks will be resumed from their last [checkpoint](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints). During this time, the job will show a status of Running, Waiting for Resources. If the runbook has no checkpoints or the job had not reached the first checkpoint before being unloaded, then it will restart from the beginning.  [PowerShell](automation-runbook-types.md#powershell-runbooks) runbooks are always restarted from the beginning since they don't support checkpoints.
+クラウド内のすべての Runbook 間でリソースを共有するために、Azure Automation は任意のジョブが 3 時間実行された後で一時的にそのジョブをアンロードします。[グラフィカル](automation-runbook-types.md#graphical-runbooks) Runbook と [PowerShell ワークフロー](automation-runbook-types.md#powershell-workflow-runbooks) runbook は、最後の[チェックポイント](http://technet.microsoft.com/library/dn469257.aspx#bk_Checkpoints)から再開されます。この間、ジョブの状態は [実行中、リソースを待機中] となります。Runbook がチェックポイントを持っていないか、またはアンロードされる前にジョブがまだ最初のチェックポイントに達していない場合、ジョブは最初から再開されます。[PowerShell](automation-runbook-types.md#powershell-runbooks) Runbook はチェックポイントをサポートしていないため、常に最初から再開されます。
 
->[AZURE.NOTE] The fair share limit is not applicable to runbook jobs executing on Hybrid Runbook Workers.
+>[AZURE.NOTE] フェア シェアの制限は、Hybrid Runbook Worker で実行される Runbook ジョブには適用されません。
 
-If the runbook restarts from the same checkpoint or from the beginning of the runbook three consecutive times, it will be terminated with a status of Failed, waiting for resources. This is to protect from runbooks running indefinitely without completing, as they are not able to make it to the next checkpoint without being unloaded again. In this case, you will receive the following exception with the failure.
+Runbook が同じチェックポイントから、または Runbook の先頭から 3 回連続して再起動した場合、Runbook は終了し、[失敗、リソースを待機中] という状態になります。これは、Runbook が次のチェックポイントに進むことができず再度アンロードされない場合に、Runbook が完了せずに無期限に実行されるのを防ぐためのものです。この場合は、エラー発生時に次の例外を受信します。
 
-*The job cannot continue running because it was repeatedly evicted from the same checkpoint. Please make sure your Runbook does not perform lengthy operations without persisting its state.*
+*ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。時間のかかる操作を実行する場合は、Runbook でその状態が維持されることを確認してください。*
 
-When you create a runbook, you should ensure that the time to run any activities between two checkpoints will not exceed 3 hours. You may need to add checkpoints to your runbook to ensure that it does not reach this 3 hour limit or break up long running operations. For example, your runbook might perform a reindex on a large SQL database. If this single operation does not complete within the fair share limit, then the job will be unloaded and restarted from the beginning. In this case, you should break up the reindex operation into multiple steps, such as reindexing one table at a time, and then insert a checkpoint after each operation so that the job could resume after the last operation to complete.
-
-
-
-## <a name="next-steps"></a>Next Steps
-
-- [Starting a runbook in Azure Automation](automation-starting-a-runbook.md)
+Runbook を作成する際には、2 つのチェックポイント間で任意のアクティビティを実行するのにかかる時間が 3 時間を超えないことを確認してください。この 3 時間の制限に達したり、実行に時間のかかる操作を分割したりしないように、Runbook にチェックポイントを追加することが必要な場合があります。たとえば、Runbook が大規模な SQL データベースで再インデックス化を実行する可能性があります。この単一処理がフェア シェア制限内で完了しない場合、ジョブはアンロードされ、先頭から再開されます。この場合は再インデックス化処理を複数のステップに分割します。たとえば、一度に 1 つのテーブルを再インデックス化し、各処理の後にチェックポイントを挿入します。こうすれば、最後の処理が完了した後、ジョブは再開することが可能です。
 
 
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
 
+- [Azure Automation での Runbook を開始する](automation-starting-a-runbook.md)
 
+<!---HONumber=AcomDC_0323_2016-->

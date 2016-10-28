@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Using Azure Functions with Logic Apps | Microsoft Azure"
-   description="See how to use Azure Functions with Logic Apps"
+   pageTitle="Logic Apps での Azure Functions の使用 | Microsoft Azure"
+   description="Logic Apps で Azure Functions を使用する方法"
    services="logic-apps,functions"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -16,20 +16,19 @@
    ms.date="09/01/2016"
    ms.author="jehollan"/>
 
+# Logic Apps での Azure Functions の使用
 
-# <a name="using-azure-functions-with-logic-apps"></a>Using Azure Functions with Logic Apps
+ロジック アプリで Azure Functions を使用することにより、C# または node.js のカスタム スニペットを実行できます。[Azure Functions](../azure-functions/functions-overview.md) を使用すると、Microsoft Azure でサーバーを使わずに計算を実行できます。これは、次のタスクを実行するのに役立ちます。
 
-You can run custom snippets of C# or node.js by using Azure Functions from within a logic app.  [Azure Functions](../azure-functions/functions-overview.md) offers server-free computing in Microsoft Azure. This is useful for performing the following tasks:
+* アクションの値の書式設定 (例: DateTime から日付文字列への変換)
+* ワークフロー内での計算の実行
+* C# または node.js でサポートされる関数を使用した Logic Apps の機能の拡張
 
-* Formatting the value of an action (for example, converting from DateTime to a date string)
-* Performing calculations within a workflow
-* Extending the functionality of Logic Apps with functions that are supported in C# or node.js
+## Logic Apps 用の関数を作成する
 
-## <a name="create-a-function-for-logic-apps"></a>Create a function for Logic Apps
+"**汎用 Webhook - Node**" または "**汎用 Webhook - C#**" テンプレートを使用して、Azure Functions ポータルで新しい関数を作成することをお勧めします。そうすれば、ロジック アプリから `application/json` を受け取るテンプレートが自動的に生成されます。これらのテンプレートを使用する関数は自動的に検出されて、Logic Apps デザイナーの **[自分のリージョンの Azure Functions]** に一覧表示されます。
 
-We recommend that you create a new function in the Azure Functions portal by using the **Generic Webhook - Node** or **Generic Webhook - C#** templates. This auto-populates a template that accepts `application/json` from a logic app. Functions that use these templates are automatically discovered and listed in the Logic Apps designer under **Azure Functions in my region.**
-
-Webhook functions accept a request and pass it into the method via a `data` variable. You can access the properties of your payload by using dot notation like `data.foo`.  For example, a simple JavaScript function that converts a DateTime value into a date string looks like the following example:
+Webhook 関数は、要求を受け取ると、それを `data` 変数経由でメソッドに渡します。ペイロードのプロパティにアクセスするには、`data.foo` のようなドット表記を使用します。たとえば、DateTime 値を日付文字列に変換する単純な JavaScript 関数は次の例のようになります。
 
 ```
 function start(req, res){
@@ -40,29 +39,29 @@ function start(req, res){
 }
 ```
 
-## <a name="call-azure-functions-from-a-logic-app"></a>Call Azure Functions from a logic app
+## ロジック アプリから Azure Functions を呼び出す
 
-In the designer, if you click the **Actions** menu, you can select **Azure Functions in my Region**.  This lists the containers in your subscription and enables you to choose the function that you want to call.  
+デザイナーで **[アクション]** メニューをクリックすると、**[自分のリージョンの Azure Functions]** を選択できます。これを選択すると、サブスクリプションに含まれるコンテナーの一覧が表示されるため、呼び出す関数を選択できます。
 
-After you select the function, you are prompted to specify an input payload object. This is the message that the logic app sends to the function, and it must be a JSON object. For example, if you want to pass in the **Last Modified** date from a Salesforce trigger, the function payload might look like this:
+関数を選択すると、入力ペイロード オブジェクトの指定を求められます。これは、ロジック アプリから関数に送信されるメッセージで、JSON オブジェクトである必要があります。たとえば、Salesforce トリガーから **Last Modified** の日付を渡す場合、関数ペイロードは次のようになります。
 
-![Last modfied date][1]
+![最終変更日][1]
 
-## <a name="trigger-logic-apps-from-a-function"></a>Trigger logic apps from a function
+## 関数からロジック アプリをトリガーする
 
-It's also possible to trigger a logic app from within a function.  To do this, simply create a logic app with a manual trigger. For more information, see [Logic apps as callable endpoints](app-service-logic-http-endpoint.md).  Then, within your function, generate an HTTP POST to the manual trigger URL with the payload that you want to send to the logic app.
+関数内からロジック アプリをトリガーすることもできます。この操作を行うには、手動トリガーが組み込まれたロジック アプリを作成するだけです。詳細については、「[呼び出し可能なエンドポイントとしてのロジック アプリ](app-service-logic-http-endpoint.md)」を参照してください。その後、関数内で、手動トリガーの URL に対する HTTP POST を生成し、ロジック アプリに送信するペイロードを含めます。
 
-### <a name="create-a-function-from-the-designer"></a>Create a function from the designer
+### デザイナーから関数を作成する
 
-You can also create a node.js webhook function from within the designer. First, select **Azure Functions in my Region,** and then choose a container for your function.  If you don't yet have a container, you need to create one from the [Azure Functions portal](https://functions.azure.com/signin). Then select **Create New**.  
+Node.js webhook 関数は、デザイナー内から作成することもできます。最初に、**[自分のリージョンの Azure Functions]** を選択し、関数用にコンテナーを選択します。コンテナーがまだない場合は、[Azure Functions ポータル](https://functions.azure.com/signin)から作成する必要があります。**[新規作成]** を選択します。
 
-To generate a template based on the data that you want to compute, specify the context object that you plan to pass into a function. This must be a JSON object. For example, if you pass in the file content from an FTP action, the context payload will look like this:
+計算するデータに基づいてテンプレートを生成するには、関数に渡すコンテキスト オブジェクトを指定します。これは JSON オブジェクトである必要があります。たとえば、FTP アクションからファイル コンテンツを渡す場合、コンテキストのペイロードは次のようになります。
 
-![Context payload][2]
+![コンテキスト ペイロード][2]
 
->[AZURE.NOTE] Because this object wasn't cast as a string, the content will be added directly to the JSON payload. However, it will error out if it is not a JSON token (that is, a string or a JSON object/array). To cast it as a string, simply add quotes as shown in the first illustration in this article.
+>[AZURE.NOTE] このオブジェクトは文字列としてキャストされなかったため、コンテンツは JSON ペイロードに直接追加されます。ただし、JSON トークン (つまり、文字列か JSON オブジェクトまたは配列) でない場合は、エラーになります。文字列としてキャストするには、この記事の最初の図に示されているように引用符を追加します。
 
-The designer then generates a function template that you can create inline. Variables are pre-created based on the context that you plan to pass into the function.
+その後、デザイナーによって、インラインで作成できる関数テンプレートが生成されます。変数は、関数に渡す予定のコンテキストに基づいて事前に作成されます。
 
 
 
@@ -71,8 +70,4 @@ The designer then generates a function template that you can create inline. Vari
 [1]: ./media/app-service-logic-azure-functions/callFunction.png
 [2]: ./media/app-service-logic-azure-functions/createFunction.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

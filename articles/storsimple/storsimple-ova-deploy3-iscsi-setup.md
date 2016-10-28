@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Virtual Array iSCSI server setup | Microsoft Azure"
-   description="Describes how to perform initial setup, register your StorSimple iSCSI server, and complete device setup."
+   pageTitle="StorSimple Virtual Array の iSCSI サーバーのセットアップ | Microsoft Azure"
+   description="初期セットアップを実行し、StorSimple iSCSI サーバーを登録して、デバイスのセットアップを完了する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -16,296 +16,288 @@
    ms.author="alkohli" />
 
 
+# StorSimple Virtual Array をデプロイする – 仮想デバイスを iSCSI サーバーとしてセットアップする
 
-# <a name="deploy-storsimple-virtual-array-–-set-up-your-virtual-device-as-an-iscsi-server"></a>Deploy StorSimple Virtual Array – Set up your virtual device as an iSCSI server
+![iscsi セットアップ プロセス フロー](./media/storsimple-ova-deploy3-iscsi-setup/iscsi4.png)
 
-![iscsi setup process flow](./media/storsimple-ova-deploy3-iscsi-setup/iscsi4.png)
+## 概要
 
-## <a name="overview"></a>Overview
+このデプロイメント チュートリアルは、2016 年 3 月の一般公開 (GA) リリースを実行する Microsoft Azure StorSimple Virtual Array (StorSimple オンプレミス仮想デバイスまたは StorSimple 仮想デバイスとも呼ばれます) に適用されます。このチュートリアルでは、初期セットアップを実行し、StorSimple iSCSI サーバーを登録し、デバイス セットアップを完了した後、StorSimple 仮想デバイス iSCSI サーバーでボリュームを作成、マウント、初期化、フォーマットする方法を説明します。この記事に記載されている StorSimple のセットアップ情報は、StorSimple Virtual Array にのみ適用されます。
 
-This deployment tutorial applies to the Microsoft Azure StorSimple Virtual Array (also known as the StorSimple on-premises virtual device or the StorSimple virtual device) running March 2016 general availability (GA) release. This tutorial describes how to perform initial setup, register your StorSimple iSCSI server, complete the device setup, and then create, mount, initialize, and format volumes on your StorSimple virtual device iSCSI server. The StorSimple setup information in this article applies to StorSimple Virtual Arrays only. 
+ここで説明する手順の完了には、約 30 分から 1 時間かかります。この記事に記載されている情報は、StorSimple Virtual Array にのみ適用されます。
 
-The procedures described here take approximately 30 minutes to 1 hour to complete. The information published in this article applies to StorSimple Virtual Arrays only.
+## セットアップの前提条件
 
-## <a name="setup-prerequisites"></a>Setup prerequisites
+StorSimple 仮想デバイスを構成およびセットアップする前に、以下のことを確認します。
 
-Before you configure and set up your StorSimple virtual device, make sure that:
+- 「[StorSimple Virtual Array をデプロイする - Hyper-V で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で Virtual Array をプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の説明どおりに仮想デバイスをプロビジョニングして接続していること。
 
-- You have provisioned a virtual device and connected to it as described in [Deploy StorSimple Virtual Array - Provision a virtual array in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) or [Deploy StorSimple Virtual Array  - Provision a virtual array in VMware](storsimple-ova-deploy2-provision-vmware.md).
+- StorSimple 仮想デバイスを管理するために作成した、StorSimple Manager サービスからのサービス登録キーがあること。詳しくは、「[StorSimple Virtual Array のデプロイ - ポータルの準備](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」の「**手順 2: サービス登録キーを取得する**」を参照してください。
 
-- You have the service registration key from the StorSimple Manager service that you created to manage StorSimple virtual devices. For more information, see **Step 2: Get the service registration key** in [Deploy StorSimple Virtual Array - Prepare the portal](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+- 既存の StorSimple Manager サービスに登録する 2 番目または後続の仮想デバイスである場合は、サービス データ暗号化キーがあるはずです。このキーは、最初のデバイスがこのサービスに正常に登録されたときに生成されています。このキーを紛失した場合は、「[Web UI を使用した StorSimple Virtual Array の管理](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」の「**サービス データ暗号化キーの取得**」を参照してください。
 
-- If this is the second or subsequent virtual device that you are registering with an existing StorSimple Manager service, you should have the service data encryption key. This key was generated when the first device was successfully registered with this service. If you have lost this key, see **Get the service data encryption key** in [Use the Web UI to administer your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key).
+## セットアップの手順 
 
-## <a name="step-by-step-setup"></a>Step-by-step setup 
+StorSimple 仮想デバイスをセットアップして構成するには、次の詳細な手順を実行します。
 
-Use the following step-by-step instructions to set up and configure your StorSimple virtual device:
+-  [手順 1: ローカル Web UI のセットアップを完了し、デバイスを登録する](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
+-  [手順 2: 必要なデバイスのセットアップを完了する](#step-2-complete-the-required-device-setup)
+-  [手順 3: ボリュームを追加する](#step-3-add-a-volume)
+-  [手順 4: ボリュームをマウント、初期化、フォーマットする](#step-4-mount-initialize-and-format-a-volume)
 
--  [Step 1: Complete the local web UI setup and register your device](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
--  [Step 2: Complete the required device setup](#step-2-complete-the-required-device-setup)
--  [Step 3: Add a volume](#step-3-add-a-volume)
--  [Step 4: Mount, initialize, and format a volume](#step-4-mount-initialize-and-format-a-volume)  
+## 手順 1: ローカル Web UI のセットアップを完了し、デバイスを登録する 
 
-## <a name="step-1:-complete-the-local-web-ui-setup-and-register-your-device"></a>Step 1: Complete the local web UI setup and register your device 
+#### セットアップを完了し、デバイスを登録するには
 
-#### <a name="to-complete-the-setup-and-register-the-device"></a>To complete the setup and register the device
-
-1. Open a browser window and connect to the web UI by typing:
+1. ブラウザー ウィンドウを開き、以下を入力して Web UI に接続します。
 
     `https://<ip-address of network interface>`
 
-    Use the connection URL noted in the previous step. You will see an error notifying you that there is a problem with the website’s security certificate. Click **Continue to this web page**.
+    前の手順に記載されている接続 URL を使用します。Web サイトのセキュリティ証明書に問題があることを知らせるエラーが表示されます。**[続行]** をクリックして、この Web ページに進みます。
 
-    ![security certificate error](./media/storsimple-ova-deploy3-iscsi-setup/image3.png)
+    ![セキュリティ証明書エラー](./media/storsimple-ova-deploy3-iscsi-setup/image3.png)
 
-2. Sign in to the web UI of your virtual device as **StorSimpleAdmin**. Enter the device administrator password that you changed in Step 3: Start the virtual device in [Deploy StorSimple Virtual Array - Provision a virtual device in Hyper-V](storsimple-ova-deploy2-provision-hyperv.md) or [Deploy StorSimple Virtual Array - Provision a virtual device in VMware](storsimple-ova-deploy2-provision-vmware.md).
+2. 仮想デバイスの Web UI に **StorSimpleAdmin** としてサインインします。「[StorSimple Virtual Array をデプロイする - Hyper-V で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-hyperv.md)」または「[StorSimple Virtual Array をデプロイする - VMware で仮想デバイスをプロビジョニングする](storsimple-ova-deploy2-provision-vmware.md)」の仮想デバイスを起動する手順 3 で変更したデバイス管理者のパスワードを入力します。
 
-    ![Sign-in page](./media/storsimple-ova-deploy3-iscsi-setup/image4.png)
+    ![サインイン ページ](./media/storsimple-ova-deploy3-iscsi-setup/image4.png)
 
-3. You will be taken to the **Home** page. This page describes the various settings required to configure and register the virtual device with the StorSimple Manager service. Note that the **Network settings**, **Web proxy settings**, and **Time settings** are optional. The only required settings are **Device settings** and **Cloud settings**.
+3. **[ホーム]** ページが表示されます。このページは、仮想デバイスを StorSimple Manager サービスに構成、登録するのに必要なさまざまな設定を掲載しています。**ネットワーク設定**、**Web プロキシの設定**、**時刻の設定**はオプションであることに注意してください。必須の設定は、**デバイスの設定**と**クラウドの設定**のみです。
 
-    ![Home page](./media/storsimple-ova-deploy3-iscsi-setup/image5.png)
+    ![ホーム ページ](./media/storsimple-ova-deploy3-iscsi-setup/image5.png)
 
-4. On the **Network settings** page under **Network interfaces**, DATA 0 will be automatically configured for you. Each network interface is set by default to get an IP address automatically (DHCP). Therefore, an IP address, subnet, and gateway will be automatically assigned (for both IPv4 and IPv6).
+4. **[ネットワーク インターフェイス]** の **[ネットワーク設定]** ページで、DATA 0 が自動的に構成されます。各ネットワーク インターフェイスは、既定で IP アドレスを自動的に取得するように設定されます (DHCP)。そのため、IP アドレス、サブネット、およびゲートウェイは自動的に割り当てられます (IPv4 と IPv6 の両方に対して)。
 
-    As you plan to deploy your device as an iSCSI server (to provision block storage), we recommend that you disable the **Get IP address automatically** option and configure static IP addresses.
+    (ブロック記憶域をプロビジョニングするために) iSCSI サーバーとしてデバイスをデプロイする計画がある場合は、**[IP アドレスを自動的に取得する]** オプションを無効にして、静的 IP アドレスを構成することをお勧めします。
 
-    ![Network settings page](./media/storsimple-ova-deploy3-iscsi-setup/image6.png)
+    ![ネットワークの設定ページ](./media/storsimple-ova-deploy3-iscsi-setup/image6.png)
 
-    If you added more than one network interface during the provisioning of the device, you can configure them here. Note you can configure your network interface as IPv4 only or as both IPv4 and IPv6. IPv6 only configurations are not supported.
+    デバイスのプロビジョニング中に複数のネットワーク インターフェイスを追加した場合は、それらをここで構成できます。ネットワーク インターフェイスは IPv4 だけで構成するか、IPv4 と IPv6 の両方で構成することができます。IPv6 だけで構成することはできません。
 
-5. DNS servers are required because they are used when your device attempts to communicate with your cloud storage service providers or to resolve your device by name if it is configured as a file server. On the **Network settings** page under the **DNS servers**:
+5. DNS サーバーは必須です。これは、デバイスがクラウド ストレージのサービス プロバイダーとやり取りしたり、デバイスがファイル サーバーとして構成されている場合にデバイスを名前により解決したりする際に使用されます。**[DNS サーバー]** の**ネットワークの設定**ページで、以下の操作を行います。
 
-    1. A primary and secondary DNS server will be automatically configured. If you choose to configure static IP addresses, you can specify DNS servers. For high availability, we recommend that you configure a primary and a secondary DNS server.
+    1. プライマリおよびセカンダリ DNS サーバーが自動的に構成されます。静的 IP アドレスを構成することを選択した場合は、DNS サーバーを指定できます。高可用性を確保するため、プライマリとセカンダリ DNS サーバーを構成することをお勧めします。
 
-    2. Click **Apply**. This will apply and validate the network settings.
+    2. **[Apply]** をクリックします。これにより、ネットワークの設定が適用、検証されます。
 
-6. On the **Device settings** page:
+6. **デバイスの設定**ページで以下の操作を実行します。
 
-    1. Assign a unique **Name** to your device. This name can be 1-15 characters and can contain letter, numbers and hyphens.
+    1. デバイスに一意の**名前**を割り当てます。この名前は 1 ～ 15 文字を指定でき、文字、数字、ハイフンを含めることができます。
 
-    2. Click the **iSCSI server** icon ![iSCSI server icon](./media/storsimple-ova-deploy3-iscsi-setup/image7.png) for the **Type** of device that you are creating. An iSCSI server will allow you to provision block storage.
+    2. 作成するデバイスの**種類**として、**[iSCSI サーバー]** アイコン ![iSCSI サーバー アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image7.png) をクリックします。iSCSI サーバーでは、ブロック記憶域をプロビジョニングできます。
 
-    3. Specify if you want this device to be domain-joined. If your device is an iSCSI server, then joining the domain is optional. If you decide to not join your iSCSI server to a domain, click **Apply**, wait for the settings to be applied and then skip to the next step.
+    3. このデバイスをドメインに参加させるかどうかを指定します。デバイスが iSCSI サーバーの場合、ドメインへの参加はオプションです。iSCSI サーバーをドメインに参加させない場合は、**[適用]** をクリックし、設定が適用されるのを待機してから、次の手順に進みます。
 
-        If you want to join the device to a domain. Enter a **Domain name**, and then click **Apply**.
+        デバイスをドメインに参加させる場合は、**[ドメイン名]** を入力し、**[適用]** をクリックします。
 
-        > [AZURE.NOTE] If joining your iSCSI server to a domain, ensure that your virtual  array is in its own organizational unit (OU) for Microsoft Azure Active Directory and no group policy objects (GPO) are applied to it.
+        > [AZURE.NOTE] iSCSI サーバーをドメインに参加させるには、仮想アレイが Microsoft Azure Active Directory の独自の組織単位 (OU) にあり、グループ ポリシー オブジェクト (GPO) が適用されていないことを確認します。
 
-    5. A dialog box will appear. Enter your domain credentials in the specified format. Click the check icon ![check icon](./media/storsimple-ova-deploy3-iscsi-setup/image15.png). The domain credentials will be verified. You will see an error message if the credentials are incorrect.
+    5. ダイアログ ボックスが表示されます。ドメインの資格情報を指定された形式で入力します。チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image15.png) をクリックします。ドメインの資格情報が検証されます。資格情報が間違っていると、エラー メッセージが表示されます。
 
-        ![credentials](./media/storsimple-ova-deploy3-iscsi-setup/image8.png)
+        ![資格情報](./media/storsimple-ova-deploy3-iscsi-setup/image8.png)
 
-    6. Click **Apply**. This will apply and validate the device settings.
+    6. **[Apply]** をクリックします。これにより、デバイスの設定が適用、検証されます。
  
-7. (Optionally) configure your web proxy server. Although web proxy configuration is optional, be aware that if you use a web proxy, you can only configure it here.
+7. (省略可能) Web プロキシ サーバーを構成します。Web プロキシの構成は省略可能ですが、Web プロキシを使用する場合は、ここでのみ構成できることに注意してください。
 
-    ![configure web proxy](./media/storsimple-ova-deploy3-iscsi-setup/image9.png)
+    ![Web プロキシの構成](./media/storsimple-ova-deploy3-iscsi-setup/image9.png)
 
-    On the **Web proxy** page:
+    **[Web プロキシ設定]** ページで、以下のことを実行します。
 
-    1. Supply the **Web proxy URL** in this format: *http://host-IP address* or *FDQN:Port number*. Note that HTTPS URLs are not supported.
+    1. "http://host-IP アドレス" または "FDQN:ポート番号" の形式で、**[Web プロキシ URL]** を指定します。HTTPS URL はサポートされていないことに注意してください。
 
-    2. Specify **Authentication** as **Basic** or **None**.
+    2. **[認証]** に **[基本]** または **[なし]** を指定します。
 
-    3. If you are using authentication, you will also need to provide a **Username** and **Password**.
+    3. 認証を使用する場合は、**[ユーザー名]** と **[パスワード]** も指定する必要があります。
 
-    4. Click **Apply**. This will validate and apply the configured web proxy settings.
+    4. **[Apply]** をクリックします。これにより、構成済みの Web プロキシ設定が検証され、適用されます。
  
-8. (Optionally) configure the time settings for your device, such as time zone and the primary and secondary NTP servers. NTP servers are required because your device must synchronize time so that it can authenticate with your cloud service providers.
+8. (省略可能) デバイスの時刻設定を構成します (タイム ゾーン、プライマリおよびセカンダリ NTP サーバーなど)。デバイスは時刻を同期してクラウド サービス プロバイダーに対して認証できるようにする必要があるため、NTP サーバーが必要になります。
 
-    ![Time settings](./media/storsimple-ova-deploy3-iscsi-setup/image10.png)
+    ![時刻の設定](./media/storsimple-ova-deploy3-iscsi-setup/image10.png)
 
-    On the **Time settings** page:
+    **[時刻の設定]** ページで、次の操作を行います。
 
-    1. From the drop-down list, select the **Time zone** based on the geographic location in which the device is being deployed. The default time zone for your device is PST. Your device will use this time zone for all scheduled operations.
+    1. ドロップダウン リストから、デバイスをデプロイする地理的な場所に基づいて **[タイム ゾーン]** を選択します。デバイスの既定のタイム ゾーンは太平洋標準時です。デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
 
-    2. Specify a **Primary NTP server** for your device or accept the default value of time.windows.com. Ensure that your network allows NTP traffic to pass from your datacenter to the Internet.
+    2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
 
-    3. Optionally specify a **Secondary NTP server** for your device.
+    3. 必要に応じて、デバイスの **[セカンダリ NTP サーバー]** を指定します。
 
-    4. Click **Apply**. This will validate and apply the configured time settings.
+    4. **[Apply]** をクリックします。これにより、構成済みの時刻設定が検証され、適用されます。
 
-9. Configure the cloud settings for your device. In this step, you will complete the local device configuration and then register the device with your StorSimple Manager service.
+9. デバイスのクラウドの設定を構成します。この手順では、ローカル デバイスの構成を完了してから、StorSimple Manager サービスにデバイスを登録します。
 
-    1. Enter the **Service registration key** that you got in **Step 2: Get the service registration key** in [Deploy StorSimple Virtual Array - Prepare the Portal](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key).
+    1. 「[StorSimple Virtual Array のデプロイ - ポータルの準備](storsimple-ova-deploy1-portal-prep.md#step-2-get-the-service-registration-key)」の「**手順 2. サービス登録キーを取得する**」で取得した**サービス登録キー**を入力します。
 
-    2. If this is not the first device that you are registering with this service, you will need to provide the **Service data encryption key**. This key is required with the service registration key to register additional devices with the StorSimple Manager service. For more information, refer to [Get the service data encryption key](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) on your local web UI.
+    2. デバイスがこのサービスに登録する最初のデバイスでない場合は、**サービス データ暗号化キー**を指定する必要があります。このキーは、StorSimple Manager サービスに追加のデバイスを登録する際にサービス登録キーと共に必要になります。詳しくは、ローカル Web UI の「[サービス データ暗号化キーの取得](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key)」をご覧ください。
 
-    3. Click **Register**. This will restart the device. You may need to wait for 2-3 minutes before the device is successfully registered. After the device has restarted, you will be taken to the sign in page.
+    3. **[登録]** をクリックします。これにより、デバイスが再起動します。デバイスが正常に登録されるまでに、2 ～ 3 分間待機する必要がある場合があります。デバイスが再起動したら、サインイン ページが表示されます。
 
-       ![Register device](./media/storsimple-ova-deploy3-iscsi-setup/image11.png)
+       ![デバイスの登録](./media/storsimple-ova-deploy3-iscsi-setup/image11.png)
 
-10. Return to the Azure classic portal. On the **Devices** page, verify that the device has successfully connected to the service by looking up the status. The device status should be **Active**.
+10. Azure クラシック ポータルに戻ります。**[デバイス]** ページで、状態を参照して、デバイスが正常にサービスに接続されていることを確認します。デバイスの状態は **"アクティブ"** と表示されます。
 
-    ![Devices page](./media/storsimple-ova-deploy3-iscsi-setup/image12.png)
+    ![[デバイス] ページ](./media/storsimple-ova-deploy3-iscsi-setup/image12.png)
 
-## <a name="step-2:-complete-the-required-device-setup"></a>Step 2: Complete the required device setup
+## 手順 2: 必要なデバイスのセットアップを完了する
 
-To complete the device configuration of your StorSimple device, you need to:
+StorSimple デバイスのデバイス構成を完了するには、次の手順を実行する必要があります。
 
-- Select a storage account to associate with your device.
+- このデバイスに関連付けるストレージ アカウントを選択します。
 
-- Choose encryption settings for the data that is sent to cloud.
+- クラウドに送信されるデータの暗号化の設定を選択します。
 
-Perform the following steps in the Azure classic portal to complete the required device setup.
+必要なデバイスのセットアップを完了するには、Azure クラシック ポータルで次の手順を実行します。
 
-#### <a name="to-complete-the-minimum-device-setup"></a>To complete the minimum device setup
+#### デバイスの最小セットアップを完了するには
 
-1. On the **Devices** page, select the device that you just created. This device would show up as **Active**. Click the arrow next the device name and then click **Quick Start**.
+1. **[デバイス]** ページで、先ほど作成したデバイスを選択します。このデバイスは **"アクティブ"** として表示されます。デバイス名の横の矢印をクリックし、**[クイック スタート]** をクリックします。
 
-    ![Devices page](./media/storsimple-ova-deploy3-iscsi-setup/image13.png)
+    ![[デバイス] ページ](./media/storsimple-ova-deploy3-iscsi-setup/image13.png)
 
-2. Click **complete device setup** to start the Configure device wizard.
+2. **[デバイスのセットアップの完了]** をクリックして、デバイスの構成ウィザードを開始します。
 
-    ![Configure device wizard](./media/storsimple-ova-deploy3-iscsi-setup/image14.png)
+    ![デバイスの構成ウィザード](./media/storsimple-ova-deploy3-iscsi-setup/image14.png)
 
-3. In the  Configure device wizard, on the **Basic Settings** page, do the following:
+3. デバイスの構成ウィザードの **[基本設定]** ページで、次の手順を実行します。
 
-   1. Specify a storage account to be used with your device. In this subscription, you can select an existing storage account from the drop-down list, or you can specify **Add more** to choose an account from a different subscription.
+   1. このデバイスで使用するストレージ アカウントを指定します。このサブスクリプションでは、ドロップダウン リストから既存のストレージ アカウントを選択したり、**[追加]** を指定して、別のサブスクリプションのアカウントを選択したりできます。
 
-   2. Define the encryption settings for all the data at rest that will be sent to the cloud. (StorSimple uses AES-256 encryption.) To encrypt your data, select the **Enable cloud storage encryption** check box. Enter a cloud storage encryption that contains 32 characters. Reenter the key to confirm it.
+   2. クラウドに送信される、すべての保存データの暗号化設定を定義します。(StorSimple では、AES-256 暗号化を使用します。) データを暗号化するには、**[クラウド ストレージの暗号化の有効化]** チェック ボックスをオンにします。32 文字を含むクラウド ストレージの暗号化キーを入力します。確認のため、キーを再入力します。
 
-   3. Click the check icon ![check icon](./media/storsimple-ova-deploy3-iscsi-setup/image15.png).
+   3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image15.png) をクリックします。
 
-    ![Basic settings](./media/storsimple-ova-deploy3-iscsi-setup/image16.png)
+    ![基本設定](./media/storsimple-ova-deploy3-iscsi-setup/image16.png)
 
-    The settings will now be updated. After settings are updated successfully, the complete device setup button will be unavailable. You will return to the device **Quick Start** page.                                                        
+    これで設定が更新されました。設定が正常に更新されると、デバイスのセットアップの完了ボタンは使用できなくなります。デバイスの **[クイック スタート]** ページが再び表示されます。
 
->[AZURE.NOTE]You can modify all the other device settings at any time by accessing the **Configure** page.
+>[AZURE.NOTE]**[構成]** ページにアクセスすれば、その他すべてのデバイス設定をいつでも変更できます。
 
-## <a name="step-3:-add-a-volume"></a>Step 3: Add a volume
+## 手順 3: ボリュームを追加する
 
-Perform the following steps in the Azure classic portal to create a volume.
+ボリュームを作成するには、Azure クラシック ポータルで次の手順を実行します。
 
-#### <a name="to-create-a-volume"></a>To create a volume
+#### ボリュームを作成するには
 
-1. On the device **Quick Start** page, click **Add a volume**. This starts the Add a volume wizard.
+1. デバイスの **[クイック スタート]** ページで、**[ボリュームの追加]** をクリックします。ボリュームの追加ウィザードが開始されます。
 
-2. In the Add a volume wizard, under **Basic Settings**, do the following:
+2. ボリュームの追加ウィザードの **[基本設定]** で、次の操作を行います。
 
-    1. Supply a unique name for your volume. The name must be a string that contains 3 to 127 characters.
+    1. ボリュームの一意の名前を指定します。名前は 3 ～ 127 文字を含む文字列である必要があります。
 
-    2. Provide a description for the volume. The description will help identify the volume owners.
+    2. ボリュームの説明を入力します。説明は、ボリュームの所有者の特定に役立ちます。
 
-    3. Select a usage type for the volume. The usage type can be **Tiered volume** or **Locally pinned volume.** (**Tiered volume** is the default.) For workloads that require local guarantees, low latencies, and higher performance, select **Locally pinned** **volume**. For all other data, select **Tiered** **volume**.
+    3. ボリュームの使用法の種類を選択します。使用法の種類は、**[階層化ボリューム]** または **[ローカル固定ボリューム]** にすることができます (**[階層化ボリューム]** が既定値です)。 ローカルの保証、低待機時間、高パフォーマンスを必要とするワークロードでは、**[ローカル固定****ボリューム]** を選択します。それ以外のデータの場合は、**[階層化****ボリューム]**を選択します。
 
-        A locally pinned volume is thickly provisioned and ensures that the primary data in the volume stays on the device and does not spill to the cloud. If you create a locally pinned volume, the device will check for available space on the local tiers to provision a volume of the requested size. Creating a locally pinned volume may require spilling existing data from the device to the cloud, and the time taken to create the volume may be long. The total time depends on the size of the provisioned volume, available network bandwidth, and the data on your device.
+        ローカル固定のボリュームはシック プロビジョニングされ、ボリューム上のプライマリ データがデバイスに残り、クラウドへの書き込みは行われません。ローカル固定のボリュームを作成する場合、デバイスは、要求されたサイズのボリュームをプロビジョニングするため、ローカル階層で使用可能な領域を確認します。ローカル固定のボリュームの作成によって、デバイスからクラウドに既存のデータが書き込まれる必要がある場合があるため、ボリュームの作成にかかる時間が長くなる可能性があります。合計時間は、プロビジョニングされたボリューム、利用可能なネットワーク帯域幅、およびデバイスのデータのサイズによって異なります。
 
-        A tiered volume on the other hand is thinly provisioned and can be created very quickly. When you create a tiered volume, approximately 10% of the space is provisioned on the local tier and 90% of the space is provisioned in the cloud. For example, if you provisioned a 1 TB volume, 100 GB would reside in the local space and 900 GB would be used in the cloud when the data tiers. This in turn implies is that if you run out of all the local space on the device, you cannot provision a tiered share (because the 10% will not be available).
+        一方、階層化ボリュームはシン プロビジョニングされ、非常に簡単に作成できます。階層化ボリュームを作成した場合、領域の約 10% はローカル層にプロビジョニングされ、90% はクラウドにプロビジョニングされます。たとえば、1 TB ボリュームをプロビジョニングした場合、データが階層化されるとき、100 GB はローカル領域に格納され、900 GB はクラウドに使用されます。このため、これはデバイスのすべてのローカル領域が不足すると、階層化共有をプロビジョニングできないことを意味します (10% は利用できないため)。
 
-    4. Specify the provisioned capacity for your volume. Note that the specified capacity should be smaller than the available capacity. If you are creating a tiered volume, the size should be between 500 GB and 5 TB. For a locally pinned volume, specify a volume size between 50 GB and 500 GB. Use the available capacity as a guide to provisioning a volume. If the available local capacity is 0 GB, then you will not be allowed to provision a locally pinned or a tiered volume.
+    4. ボリュームのプロビジョニング容量を指定します。利用できる容量より小さい容量を指定する必要があります。階層化ボリュームを作成する場合、サイズは 500 GB ～ 5 TB にする必要があります。ローカル固定ボリュームの場合、50 ～ 500 GB のボリューム サイズを指定します。利用できる容量を、ボリュームのプロビジョニングのガイドとして使用します。利用可能なローカル容量が 0 GB の場合、ローカル固定ボリュームまたは階層化ボリュームをプロビジョニングすることはできません。
 
-        ![Basic settings](./media/storsimple-ova-deploy3-iscsi-setup/image17.png)
+        ![基本設定](./media/storsimple-ova-deploy3-iscsi-setup/image17.png)
 
-    5. Click the arrow icon ![arrow icon](./media/storsimple-ova-deploy3-iscsi-setup/image18.png) to go to the next page.
+    5. 矢印アイコン ![矢印アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image18.png) をクリックして、次のページに進みます。
 
-3. On the **Additional Settings** page, add a new access control record (ACR):
+3. **[追加設定]** ページで、新しい Access Control レコード (ACR) を追加します。
 
-    1. Supply a **Name** for your ACR.
+    1. ACR の **[名前]** を入力します。
 
-    2. Under **iSCSI Initiator Name**, provide the iSCSI Qualified Name (IQN) of your Windows host. If you don't have the IQN, go to [Appendix A: Get the IQN of a Windows Server host](#appendix-a-get-the-iqn-of-a-windows-server-host).
+    2. **[ISCSI イニシエーターの名前]** に Windows ホストの iSCSI 修飾名 (IQN) を指定します。IQN がない場合は、「[付録 A: Windows Server ホストの IQN を取得する](#appendix-a-get-the-iqn-of-a-windows-server-host)」をご覧ください。
 
-    3. We recommend that you enable a default backup by selecting the **Enable a default backup for this volume** check box. The default backup will create a policy that executes at 22:30 each day (device time) and creates a cloud snapshot of this volume.
+    3. **[このボリュームの既定のバックアップの有効化]** チェック ボックスをオンにして、既定のバックアップを有効にすることをお勧めします。既定のバックアップでは、毎日 22:30 (デバイスの時刻) に実行し、このボリュームのクラウド スナップショットを作成するというポリシーが作成されます。
 
-        ![additional settings](./media/storsimple-ova-deploy3-iscsi-setup/image19.png)
+        ![その他の設定](./media/storsimple-ova-deploy3-iscsi-setup/image19.png)
 
-    4. Click the check icon ![check icon](./media/storsimple-ova-deploy3-iscsi-setup/image15.png). This starts the volume creation job. You will see a progress message similar to the following.
+    4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-ova-deploy3-iscsi-setup/image15.png) をクリックします。ボリューム作成ジョブが開始されます。次のような進行状況についてのメッセージが表示されます。
 
-        ![progress message](./media/storsimple-ova-deploy3-iscsi-setup/image20.png)
+        ![進行状況についてのメッセージ](./media/storsimple-ova-deploy3-iscsi-setup/image20.png)
 
-        A volume will be created with the specified settings. By default, monitoring and backup will be enabled for the volume.
+        指定された設定でボリュームが作成されます。既定では、監視とバックアップがボリュームに対して有効になります。
 
-    5. To confirm that the volume was successfully created, go to the **Volumes** page. You should see the volume listed.
+    5. ボリュームが正常に作成されたことを確認するには、**[ボリューム]** ページに移動します。ボリュームが一覧表示されます。
 
         ![](./media/storsimple-ova-deploy3-iscsi-setup/image21.png)
 
-## <a name="step-4:-mount,-initialize,-and-format-a-volume"></a>Step 4: Mount, initialize, and format a volume
+## 手順 4: ボリュームをマウント、初期化、フォーマットする
 
-Perform the following steps to mount, initialize, and format your StorSimple volumes on a Windows Server host.
+次の手順に従って、Windows Server ホストに StorSimple ボリュームをマウント、初期化、フォーマットします。
 
-#### <a name="to-mount,-initialize,-and-format-a-volume"></a>To mount, initialize, and format a volume
+#### ボリュームをマウント、初期化、フォーマットするには
 
-1. Start the Microsoft iSCSI initiator.
+1. Microsoft iSCSI イニシエーターを開始します。
 
-2. In the **iSCSI Initiator Properties** window, on the **Discovery** tab, click **Discover Portal**.
+2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[探索]** タブで、**[ポータルの探索]** をクリックします。
 
-    ![discover portal](./media/storsimple-ova-deploy3-iscsi-setup/image22.png)
+    ![ポータルの探索](./media/storsimple-ova-deploy3-iscsi-setup/image22.png)
 
-3. In the **Discover Target Portal** dialog box, supply the IP address of your iSCSI-enabled network interface, and then click **OK**.
+3. **[ターゲット ポータルの探索]** ダイアログ ボックスで、iSCSI 対応のネットワーク インターフェイスの IP アドレスを入力し、**[OK]** をクリックします。
 
-    ![IP address](./media/storsimple-ova-deploy3-iscsi-setup/image23.png)
+    ![IP アドレス](./media/storsimple-ova-deploy3-iscsi-setup/image23.png)
 
-4. In the **iSCSI Initiator Properties** window, on the **Targets** tab, locate the **Discovered targets**. (Each volume will be a discovered target.) The device status should appear as **Inactive**.
+4. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[ターゲット]** タブで、**[検出されたターゲット]** を見つけます。(各ボリュームが検出されたターゲットになります。) デバイスの状態が **[非アクティブ]** になっています。
 
-    ![discovered targets](./media/storsimple-ova-deploy3-iscsi-setup/image24.png)
+    ![検出されたターゲット](./media/storsimple-ova-deploy3-iscsi-setup/image24.png)
 
-5. Select a target device and then click **Connect**. After the device is connected, the status should change to **Connected**. (For more information about using the Microsoft iSCSI initiator, see [Installing and Configuring Microsoft iSCSI Initiator] [1].
+5. ターゲット デバイスを選択し、**[接続]** をクリックします。デバイスが接続されると、状態が **[接続]** に変わります (Microsoft iSCSI イニシエーターの使用方法の詳細については、「[Installing and Configuring Microsoft iSCSI Initiator (Microsoft iSCSI イニシエーターのインストールと構成)][1]」をご覧ください)。
 
-    ![select target device](./media/storsimple-ova-deploy3-iscsi-setup/image25.png)
+    ![ターゲット デバイスの選択](./media/storsimple-ova-deploy3-iscsi-setup/image25.png)
 
-6. On your Windows host, press the Windows Logo key + X, and then click **Run**.
+6. Windows ホスト上で、Windows ロゴ キーを押しながら X キーを押し、**[ファイル名を指定して実行]** をクリックします。
 
-7. In the **Run** dialog box, type **Diskmgmt.msc**. Click **OK**, and the **Disk Management** dialog box will appear. The right pane will show the volumes on your host.
+7. **[ファイル名を指定して実行]** ダイアログ ボックスに、「**Diskmgmt.msc**」と入力します。**[OK]** をクリックします。**[ディスクの管理]** ダイアログ ボックスが表示されます。右側のウィンドウに、ホスト上のボリュームが表示されます。
 
-8. In the **Disk Management** window, the mounted volumes will appear as shown in the following illustration. Right-click the discovered volume (click the disk name), and then click **Online**.
+8. 次の図に示すように、マウントされているボリュームが **[ディスクの管理]** ウィンドウに表示されます。検出されたボリュームを右クリックし (ディスク名をクリック)、**[オンライン]** をクリックします。
 
-    ![disk management](./media/storsimple-ova-deploy3-iscsi-setup/image26.png)
+    ![ディスクの管理](./media/storsimple-ova-deploy3-iscsi-setup/image26.png)
 
-9. Right-click and select **Initialize Disk**.
+9. 右クリックし、**[ディスクの初期化]** を選択します。
 
-    ![initialize disk 1](./media/storsimple-ova-deploy3-iscsi-setup/image27.png)
+    ![ディスクの初期化 1](./media/storsimple-ova-deploy3-iscsi-setup/image27.png)
 
-10. In the dialog box, select the disk(s) to initialize, and then click **OK**.
+10. ダイアログ ボックスで、初期化するディスクを選択し、**[OK]** をクリックします。
 
-    ![initialize disk 2](./media/storsimple-ova-deploy3-iscsi-setup/image28.png)
+    ![ディスクの初期化 2](./media/storsimple-ova-deploy3-iscsi-setup/image28.png)
 
-11. The New Simple Volume wizard starts. Select a disk size, and then click **Next**.
+11. 新しいシンプル ボリューム ウィザードが起動します。ディスクのサイズを選択し、**[次へ]** をクリックします。
 
-    ![new volume wizard 1](./media/storsimple-ova-deploy3-iscsi-setup/image29.png)
+    ![新しいボリューム ウィザード 1](./media/storsimple-ova-deploy3-iscsi-setup/image29.png)
 
-12. Assign a drive letter to the volume, and then click **Next**.
+12. ドライブ文字をボリュームに割り当て、**[次へ]** をクリックします。
 
-    ![new volume wizard 2](./media/storsimple-ova-deploy3-iscsi-setup/image30.png)
+    ![新しいボリューム ウィザード 2](./media/storsimple-ova-deploy3-iscsi-setup/image30.png)
 
-13. Enter the parameters to format the volume. **On Windows Server, only NTFS is supported.** Set the AUS to 64K. Provide a label for your volume. It is a recommended best practice for this name to be identical to the volume name you provided on your StorSimple virtual device. Click **Next**.
+13. ボリュームをフォーマットするパラメーターを入力します。**Windows Server では、NTFS のみがサポートされています。** AUS を 64K に設定します。ボリュームのラベルを指定します。ベスト プラクティスとして、この名前を StorSimple 仮想デバイスに指定したボリューム名と同じにすることをお勧めします。**[次へ]** をクリックします。
 
-    ![new volume wizard 3](./media/storsimple-ova-deploy3-iscsi-setup/image31.png)
+    ![新しいボリューム ウィザード 3](./media/storsimple-ova-deploy3-iscsi-setup/image31.png)
 
-14. Check the values for your volume, and then click **Finish**.
+14. ボリュームの値を確認し、**[完了]** をクリックします。
 
-    ![new volume wizard 4](./media/storsimple-ova-deploy3-iscsi-setup/image32.png)
+    ![新しいボリューム ウィザード 4](./media/storsimple-ova-deploy3-iscsi-setup/image32.png)
 
-    The volumes will appear as **Online** on the **Disk Management** page.
+    ボリュームが **[ディスクの管理]** ページに **"オンライン"** として表示されます。
 
-    ![volumes online](./media/storsimple-ova-deploy3-iscsi-setup/image33.png)
+    ![オンラインのボリューム](./media/storsimple-ova-deploy3-iscsi-setup/image33.png)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn how to use the local web UI to [administer your StorSimple Virtual Array](storsimple-ova-web-ui-admin.md).
+ローカル Web UI を使用して、[StorSimple Virtual Array を管理する](storsimple-ova-web-ui-admin.md)方法を確認します。
 
-## <a name="appendix-a:-get-the-iqn-of-a-windows-server-host"></a>Appendix A: Get the IQN of a Windows Server host
+## 付録 A: Windows Server ホストの IQN を取得する
 
-Perform the following steps to get the iSCSI Qualified Name (IQN) of a Windows host that is running Windows Server 2012.
+Windows Server 2012 を実行する Windows ホストの iSCSI 修飾名 (IQN) を取得するには、次の手順を実行します。
 
-#### <a name="to-get-the-iqn-of-a-windows-host"></a>To get the IQN of a Windows host
+#### Windows ホストの IQN を取得するには
 
-1. Start the Microsoft iSCSI initiator on your Windows host.
+1. Windows ホストで、Microsoft iSCSI イニシエーターを起動します。
 
-2. In the **iSCSI Initiator Properties** window, on the **Configuration** tab, select and copy the string from the **Initiator Name** field.
+2. **[iSCSI イニシエーターのプロパティ]** ウィンドウの **[構成]** タブで、**[イニシエーター名]** フィールドから文字列を選択してコピーします。
 
-    ![iSCSI initiator properties](./media/storsimple-ova-deploy3-iscsi-setup/image34.png)
+    ![iSCSI イニシエーターのプロパティ](./media/storsimple-ova-deploy3-iscsi-setup/image34.png)
 
-2. Save this string.
+2. この文字列を保存します。
 
 <!--Reference link-->
 [1]: https://technet.microsoft.com/library/ee338480(WS.10).aspx
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

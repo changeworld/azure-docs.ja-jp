@@ -1,8 +1,8 @@
 <properties
-    pageTitle="Add a user to your Azure RemoteApp collection | Microsoft Azure"
-    description="Learn how to add users to your Azure RemoteApp collection"
+    pageTitle="ユーザーを Azure RemoteApp コレクションに追加する | Microsoft Azure"
+    description="Azure RemoteApp コレクションにユーザーを追加する方法について説明します。"
     services="remoteapp"
-    documentationCenter=""
+	documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -15,49 +15,44 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
-
-# <a name="how-to-add-a-user-to-your-azure-remoteapp-collection"></a>How to add a user to your Azure RemoteApp collection
+# Azure RemoteApp コレクションにユーザーを追加する方法
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Before your users can see and use your apps in Azure RemoteApp, you have to grant them access to your collection. This is the easy part: On the **User Access** tab, enter the account information for the user, and then click the check mark.
+Azure RemoteApp のアプリをユーザーが表示および使用できるようにするには、コレクションへのアクセス権をユーザーに付与しておく必要があります。これは簡単です。**[ユーザー アクセス]** タブで、対象となるユーザーのアカウント情報を入力し、チェック マークをクリックします。
 
-What account information do you need? That depends on the type of collection you created (cloud or hybrid) and whether you are using Office 365 ProPlus in that collection.
+どのようなアカウント情報が必要ですか。 作成したコレクション (クラウドまたはハイブリッド) のタイプとそのコレクションで Office 365 ProPlus を使用しているかどうかによって異なります。
 
-## <a name="supported-user-identities"></a>Supported user identities
+## サポートされているユーザー ID
 
-The different collection types (cloud vs. hybrid) support using different user identities for access to applications.  
+アプリケーションへのアクセスには、コレクションのタイプ (クラウドとハイブリッド) ごとに、異なるユーザー ID を使用できます。
 
-For a hybrid collection of RemoteApp, you need to set up an Active Directory domain infrastructure on premises and an Azure Active Directory tenant with Directory Integration (and optionally single sign-on). Additionally, you need to create some Active Directory objects in the on-premises directory.  
+RemoteApp のハイブリッド コレクションでは、オンプレミスの Active Directory ドメイン インフラストラクチャと Azure Active Directory テナントをディレクトリ統合でセットアップする必要があります (および必要に応じてシングル サインオン)。さらに、オンプレミスのディレクトリに Active Directory オブジェクトを作成する必要があります。
 
-For a cloud collection of RemoteApp, any user that has Azure Active Directory support identities can be granted user access to RemoteApp to include Microsoft Accounts.  See the table below.
+RemoteApp のクラウド コレクションの場合、Azure Active Directory サポート ID を持つすべてのユーザーに、Microsoft アカウントを組み込むための RemoteApp へのユーザー アクセス権を付与できます。次の表を参照してください。
 
-Office 365 users are Azure Active Directory users. If they have Azure Active Directory hybrid, Directory synchronized accounts, they can be granted user access in a RemoteApp hybrid deployment.   
+Office 365 ユーザーは、Azure Active Directory のユーザーです。そのユーザーに Azure Active Directory のハイブリッドのディレクトリ同期アカウントがあれば、RemoteApp ハイブリッド デプロイでのユーザー アクセス権を付与できます。
 
-You can use this table as a quick reference for which identity is supported in your collection and what the Active Directory requirements are.
+次の表は、コレクションでサポートされる ID と Active Directory の要件を確認するためのクイック リファレンスとして使用できます。
 
-|User accounts |Cloud   |Hybrid|
+|ユーザー アカウント |クラウド |ハイブリッド|
 |--------------|--------|------|
-|Microsoft Account|     Yes|    No|
+|Microsoft アカウント| 	はい|	なし|
 |Azure Active Directory (Azure AD)| | |
-|Azure AD cloud only    |Yes    |No |
-|ADsync with password sync  |Yes    |Yes    |
-|ADsync without password sync|  Yes |No |
-|ADsync with AD FS  |Yes    |Yes    |
-|[3rd-party Azure supported identity providers](https://msdn.microsoft.com/library/azure/jj679342.aspx)  (example Ping) |Yes    |Yes|
-|Multi-Factor Authentication    |Yes    |Yes    |
+|Azure AD クラウドのみ |はい |なし |
+|パスワード同期がある ADsync |はい |はい |
+|パスワード同期がない ADsync|	はい |なし |
+|AD FS がある ADsync |はい |はい |
+|[サード パーティの Azure サポート ID プロバイダー](https://msdn.microsoft.com/library/azure/jj679342.aspx) (Ping など) |はい |はい|
+|Multi-Factor Authentication |はい |はい |
 
-Check out [more information](remoteapp-ad.md) about configuring Active Directory for RemoteApp.
-
-
-> [AZURE.NOTE] The Azure Active Directory users must be from the tenant that's associated with your subscription. (You can view and modify your subscription on the **Settings** tab in the portal. See [Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md) for more information.)
-
-## <a name="office-365-proplus-user-account-information"></a>Office 365 ProPlus user account information
-If you are using the Office 365 ProPlus template image in your collection *or* if you created a custom image that uses Office 365, you are only allowed to add Azure Active Directory users that have Office 365 subscriptions for the default domain of your subscription. See [Using Office 365 with Azure RemoteApp](remoteapp-o365.md) for more information.
+RemoteApp を使用するために Active Directory を構成する方法の詳細については、[ここ](remoteapp-ad.md)を参照してください。
 
 
+> [AZURE.NOTE] Azure Active Directory ユーザーは、サブスクリプションに関連付けられているテナントに属している必要があります(サブスクリプションは、ポータルの **[設定]** タブで表示、変更できます。詳細については、「[Change the Azure Active Directory tenant used by RemoteApp](remoteapp-changetenant.md)」を参照してください)。
 
-<!--HONumber=Oct16_HO2-->
+## Office 365 ProPlus ユーザー アカウントの情報
+コレクションに、Office 365 ProPlus のテンプレート イメージを使用しているか*または* Office 365 を使用するカスタム イメージを作成した場合は、サブスクリプションの既定のドメイン用の Office 365 サブスクリプションを持つ Azure Active Directory のユーザーのみを追加できます。詳細については、「[Azure RemoteApp で Office 365 を使用する](remoteapp-o365.md)」を参照してください。
 
-
+<!---HONumber=AcomDC_0817_2016-->

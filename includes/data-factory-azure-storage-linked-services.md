@@ -1,58 +1,55 @@
-## <a name="azure-storage-linked-service"></a>Azure Storage Linked Service
+## Azure Storage のリンクされたサービス
 
-The **Azure Storage linked service** allows you to link an Azure storage account to an Azure data factory by using the **account key**. This provides the data factory with global access to the Azure Storage. The following table provides description for JSON elements specific to Azure Storage linked service.
+**Azure Storage のリンクされたサービス**を利用すると、**アカウント キー**を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。これによって、Data Factory は Azure Storage にグローバルにアクセスすることができます。次の表は、Azure Storage のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| Property | Description | Required |
+| プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
-| type | The type property must be set to: **AzureStorage** | Yes |
-| connectionString | Specify information needed to connect to Azure storage for the connectionString property. | Yes |
+| type | type プロパティを **AzureStorage** に設定する必要があります。 | はい |
+| connectionString | connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 | はい |
 
-See the following article for steps to view/copy the account key for an Azure Storage: [View, copy, and regenerate storage access keys](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
+Azure Storage のアカウント キーを表示またはコピーする手順については、[ストレージ アクセス キーの表示、コピー、再生成](../storage/storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)に関するページを参照してください。
 
-**Example:**  
+**例:**
   
-    {  
-        "name": "StorageLinkedService",  
-        "properties": {  
-            "type": "AzureStorage",  
-            "typeProperties": {  
-                "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"  
-            }  
-        }  
-    }  
+	{  
+		"name": "StorageLinkedService",  
+		"properties": {  
+			"type": "AzureStorage",  
+			"typeProperties": {  
+				"connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"  
+			}  
+		}  
+	}  
 
 
-## <a name="azure-storage-sas-linked-service"></a>Azure Storage Sas Linked Service  
-A shared access signature (SAS) provides delegated access to resources in your storage account. This means that you can grant a client limited permissions to objects in your storage account for a specified period of time and with a specified set of permissions, without having to share your account access keys. The SAS is a URI that encompasses in its query parameters all of the information necessary for authenticated access to a storage resource. To access storage resources with the SAS, the client only needs to pass in the SAS to the appropriate constructor or method. For detailed information about SAS, see [Shared Access Signatures: Understanding the SAS Model](../articles/storage/storage-dotnet-shared-access-signature-part-1.md)
+## Azure Storage SAS のリンクされたサービス  
+Shared Access Signature (SAS) を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。つまり、ストレージ アカウントのオブジェクトへの制限付きアクセス許可を、期間とアクセス許可セットを指定してクライアントに付与できます。また、アカウント アクセス キーを共有する必要はありません。SAS とは、ストレージ リソースへの認証アクセスに必要なすべての情報をクエリ パラメーター内に含む URI です。クライアントは、SAS 内で適切なコンストラクターまたはメソッドに渡すだけで、SAS でストレージ リソースにアクセスできます。SAS の詳細については、「[共有アクセス署名、第 1 部 : SAS モデルについて](../articles/storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
   
-The Azure Storage SAS linked service allows you to link an Azure Storage Account to an Azure data factory by using a Shared Access Signature (SAS). This provides the data factory with restricted/time-bound access to all/specific resources (blob/container) in the storage. The following table provides description for JSON elements specific to Azure Storage SAS linked service. 
+Azure Storage SAS のリンクされたサービスを利用すると、Shared Access Signature (SAS) を使用して Azure ストレージ アカウントを Azure Data Factory にリンクできます。これによって、Data Factory は、ストレージ内のすべてまたは特定のリソース (BLOB/コンテナー) へのアクセスが制限付きまたは期限付きになります。次の表は、Azure Storage SAS のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
 
-| Property | Description | Required |
+| プロパティ | 説明 | 必須 |
 | :-------- | :----------- | :-------- |
-| type | The type property must be set to: **AzureStorageSas**  | Yes |
-| sasUri | Specify Shared Access Signature URI to the Azure Storage resources such as blob, container, or table. See the notes below for details. | Yes | 
+| type | type プロパティを **AzureStorageSas** に設定する必要があります。 | はい |
+| sasUri | BLOB、コンテナー、テーブルなどの Azure Storage リソースへの Shared Access Signature URI を指定します。詳細については、下の注意事項を参照してください。 | はい | 
 
 
-**Example:**
+**例:**
   
-    {  
-        "name": "StorageSasLinkedService",  
-        "properties": {  
-            "type": "AzureStorageSas",  
-            "typeProperties": {  
-                "sasUri": "<storageUri>?<sasToken>"   
-            }  
-        }  
-    }  
+	{  
+		"name": "StorageSasLinkedService",  
+		"properties": {  
+			"type": "AzureStorageSas",  
+			"typeProperties": {  
+				"sasUri": "<storageUri>?<sasToken>"   
+			}  
+		}  
+	}  
 
-When creating an **SAS URI**, considering the following:  
+**SAS URI** を作成する際は、次の点を考慮してください。
 
-- Azure Data Factory supports only **Service SAS**, not Account SAS. See [Types of Shared Access Signatures](../articles/storage/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures) for details about these two types.
-- Appropriate read/write **permissions** need to be set on objects based on how the linked service (read, write, read/write) will be used in your data factory.
-- **Expiry time** needs to be set appropriately. Make sure that the access to Azure Storage objects does not expire within the active period of the pipeline.
-- Uri should be created at the right container/blob or Table level based on the need. A SAS Uri to an Azure blob allows the Data Factory service to access that particular blob. A SAS Uri to an Azure blob container allows the Data Factory service to iterate through blobs in that container. If you need to provide access more/fewer objects later, or update the SAS URI, remember to update the linked service with the new URI.   
+- Azure Data Factory は、**サービス SAS** のみをサポートします。アカウント SAS はサポートしません。この 2 種類の SAS の詳細については、「[共有アクセス署名の種類](../articles/storage/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures)」を参照してください。
+- リンクされたサービス (読み取り、書き込み、読み取り/書き込み) が Data Factory 内でどのように使用されるかに応じて、適切な読み取り/書き込み**アクセス許可**をオブジェクトに設定する必要があります。
+- **有効期限**は適切に設定する必要があります。Azure Storage オブジェクトへのアクセスがパイプラインのアクティブな期間内に期限切れにならないことを確認します。
+- URI は、必要に応じて、適切なコンテナーや BLOB またはテーブル レベルで作成する必要があります。Azure BLOB への SAS URI を使用すると、Data Factory サービスから特定の BLOB にアクセスできます。Azure BLOB コンテナーへの SAS URI を使用すると、Data Factory サービスはそのコンテナー内の BLOB に対して反復処理を行うことができます。アクセスするオブジェクトの数を後で変更する必要がある場合、または SAS URI を更新する必要がある場合は、リンクされたサービスを新しい URI で更新することを忘れないでください。   
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0224_2016-->

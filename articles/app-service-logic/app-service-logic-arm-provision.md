@@ -1,62 +1,61 @@
 <properties 
-    pageTitle="Create a Logic App using Azure Resource Manager templates in Azure App Service | Microsoft Azure" 
-    description="Use an Azure Resource Manager template to deploy an empty Logic App for defining workflows." 
-    services="logic-apps" 
-    documentationCenter="" 
-    authors="MSFTMan" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Azure App Service で Azure リソース マネージャー テンプレートを使用してロジック アプリを作成する |Microsoft Azure" 
+	description="Azure リソース マネージャー テンプレートを使用し、ワークフローを定義するための空のロジック アプリをデプロイします。" 
+	services="logic-apps" 
+	documentationCenter="" 
+	authors="MSFTMan" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/25/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/25/2016" 
+	ms.author="deonhe"/>
 
+# テンプレートを使用したロジック アプリの作成
 
-# <a name="create-a-logic-app-using-a-template"></a>Create a Logic App using a template
+Azure リソース マネージャー テンプレートを使用して、ワークフローを定義するために使用できる空のロジック アプリを作成します。デプロイ対象のリソースと、デプロイの実行時に指定されるパラメーターを定義できます。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-Use an Azure Resource Manager template to create an empty logic app that can be used to define workflows. You can define which resources are deployed and how to define parameters that are specified when the deployment is executed. You can use this template for your own deployments, or customize it to meet your requirements.
+ロジック アプリのプロパティの詳細については、[ロジック アプリ ワークフローの管理 API](https://msdn.microsoft.com/library/azure/mt643788.aspx) に関するページを参照してください。
 
-For more details on the Logic app properties, see [Logic App Workflow Management API](https://msdn.microsoft.com/library/azure/mt643788.aspx). 
+定義自体の例については、「[ロジック アプリの定義の作成](app-service-logic-author-definitions.md)」を参照してください。
 
-For examples of the definition itself, see [Author Logic App definitions](app-service-logic-author-definitions.md). 
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
-For more information about creating templates, see [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md).
+完全なテンプレートについては、[ロジック アプリのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)に関するページを参照してください。
 
-For the complete template, see [Logic App template](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json).
+## デプロイ対象
 
-## <a name="what-you-will-deploy"></a>What you will deploy
+このテンプレートを使用して、ロジック アプリをデプロイします。
 
-With this template, you deploy a logic app.
+デプロイを自動的に実行するには、次のボタンを選択します。
 
-To run the deployment automatically, select the following button:  
+[![Azure へのデプロイ](media/app-service-logic-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-[![Deploy to Azure](media/app-service-logic-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
-
-## <a name="parameters"></a>Parameters
+## パラメーター
 
 [AZURE.INCLUDE [app-service-logic-deploy-parameters](../../includes/app-service-logic-deploy-parameters.md)]
 
-### <a name="testuri"></a>testUri
+### testUri
 
      "testUri": {
         "type": "string",
-        "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
+        "defaultValue": "http://azure.microsoft.com/status/feed/"
       }
     
-## <a name="resources-to-deploy"></a>Resources to deploy
+## デプロイ対象のリソース
 
-### <a name="logic-app"></a>Logic app
+### ロジック アプリ
 
-Creates the logic app.
+ロジック アプリを作成します。
 
-The templates uses a parameter value for the logic app name. It sets the location of the logic app to the same location as the resource group. 
+テンプレートでは、ロジック アプリ名のパラメーター値を使用します。ロジック アプリの場所がリソース グループと同じ場所に設定されます。
 
-This particular definition runs once an hour, and pings the location specified in the **testUri** parameter. 
+この特定の定義は、1 時間に 1 回実行され、**testUri** パラメーターで指定された場所に ping を実行します。
 
     {
       "type": "Microsoft.Logic/workflows",
@@ -102,23 +101,19 @@ This particular definition runs once an hour, and pings the location specified i
     }
 
 
-## <a name="commands-to-run-deployment"></a>Commands to run deployment
+## デプロイを実行するコマンド
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### <a name="powershell"></a>PowerShell
+### PowerShell
 
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
-### <a name="azure-cli"></a>Azure CLI
+### Azure CLI
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
 
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

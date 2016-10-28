@@ -1,48 +1,44 @@
 <properties 
-    pageTitle="Application Insights for Microsoft Azure apps" 
-    description="Analyze usage and performance of your Azure app with Application Insights." 
-    services="application-insights" 
+	pageTitle="Microsoft Azure アプリ向けの Application Insights" 
+	description="Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。" 
+	services="application-insights" 
     documentationCenter="windows"
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/15/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/15/2016" 
+	ms.author="awills"/>
+
+#  Microsoft Azure アプリ向けの Application Insights
+
+*Application Insights はプレビュー段階です。*
 
 
-#  <a name="application-insights-for-microsoft-azure-apps"></a>Application Insights for Microsoft Azure apps
+課題を検出し、問題を解決して、アプリケーションを継続的に改善します。実際のアプリケーションの問題を今すぐ診断する。ユーザーがそれで何を行っているかを理解します。
 
-*Application Insights is in preview.*
+構成は非常に簡単であり、数分以内で結果を確認できます。
 
+どのような種類のアプリケーションがありますか。
 
-Detect issues, solve problems, and continuously improve your applications. Quickly diagnose any problems in your live application. Understand what your users do with it.
-
-Configuration is very easy, and you'll see results within minutes.
-
-What type of app do you have?
-
-* [Azure web app](app-insights-asp-net.md)
-* [Azure Cloud Services App - web and worker roles](app-insights-cloudservices.md)
-* [Web app on IIS in Azure VM](app-insights-asp-net.md)
-* [Application outside Azure](app-insights-overview.md)
+* [Azure の Web アプリ](app-insights-asp-net.md)
+* [Azure Cloud Services アプリ - Web ロールと worker ロール](app-insights-cloudservices.md)
+* [Azure VM の IIS の Web アプリ](app-insights-asp-net.md)
+* [Azure の外のアプリケーション](app-insights-overview.md)
 
 
-Additional telemetry
+追加の製品利用統計情報
 
-* [Show Azure diagnostic logs in Application Insights](app-insights-azure-diagnostics.md)
+* [Application Insights で Azure 診断ログ表示する](app-insights-azure-diagnostics.md)
 
 
 
 
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

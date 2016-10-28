@@ -1,83 +1,76 @@
 <properties
-    pageTitle="Create SharePoint server farms | Microsoft Azure"
-    description="Quickly create a new SharePoint 2013 or SharePoint 2016 farm in Azure."
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="JoeDavies-MSFT"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="SharePoint サーバー ファームの作成 | Microsoft Azure"
+	description="Azure で SharePoint 2013 または SharePoint 2016 の新しいファームを短時間で作成します。"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="JoeDavies-MSFT"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="josephd"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/08/2016"
+	ms.author="josephd"/>
 
+# SharePoint サーバー ファームの作成
 
-# <a name="create-sharepoint-server-farms"></a>Create SharePoint server farms
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] 従来のモデル。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic model.
+## SharePoint 2013 ファーム
 
-## <a name="sharepoint-2013-farms"></a>SharePoint 2013 farms
+Microsoft Azure ポータル Marketplace では、事前に構成された SharePoint Server 2013 ファームを簡単に作成できます。これにより、開発テスト環境で基本または高可用性の SharePoint ファームが必要な場合や、組織のコラボレーション ソリューションとして SharePoint Server 2013 を評価する場合の所要時間を大きく節約できます。
 
-With the Microsoft Azure portal marketplace, you can quickly create pre-configured SharePoint Server 2013 farms. This can save you a lot of time when you need a basic or high-availability SharePoint farm for a dev/test environment or if you are evaluating SharePoint Server 2013 as a collaboration solution for your organization.
+> [AZURE.NOTE] Azure ポータルの Azure Marketplace の **SharePoint サーバー ファーム**項目は削除されました。これは、**SharePoint 2013 非 HA ファーム**項目および **SharePoint 2013 HA ファーム**項目に置き換えられました。
 
-> [AZURE.NOTE] The **SharePoint Server Farm** item in the Azure Marketplace of the Azure portal has been removed. It has been replaced with the **SharePoint 2013 non-HA Farm** and **SharePoint 2013 HA Farm** items.
-
-The basic SharePoint farm consists of three virtual machines in this configuration.
+この構成では、次の 3 つの仮想マシンの基本的な SharePoint ファームで構成されます。
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/Non-HAFarm.png)
 
-You can use this farm configuration for a simplified setup for SharePoint app development or your first-time evaluation of SharePoint 2013.
+このファーム構成は、SharePoint アプリ開発の簡略化セットアップまたは、SharePoint 2013 の初回の評価で使用することができます。
 
-To create the basic (three-server) SharePoint farm:
+基本的な (3 サーバー) SharePoint ファームを作成するには:
 
-1. Click [here](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/).
-2. Click **Deploy**.
-3. On the **SharePoint 2013 non-HA Farm** pane, click **Create**.
-4. Specify settings on the steps of the **Create SharePoint 2013 non-HA Farm** pane, and then click **Create**.
+1. [ここ](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-nonha/)をクリックしてください。
+2. **[デプロイ]** をクリックします。
+3. **[SharePoint 2013 非 HA ファーム]** ウィンドウで、**[作成]** をクリックします。
+4. **[SharePoint 2013 非 HA ファームの作成]** ウィンドウの手順で設定を指定して、**[作成]** をクリックします。
 
-The high-availability SharePoint farm consists of nine virtual machines in this configuration.
+高可用性 SharePoint ファームは、次に示す構成の 9 台の仮想マシンで構成されます。
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/HAFarm.png)
 
-You can use this farm configuration to test higher client loads, high availability of the external SharePoint site, and SQL Server AlwaysOn Availability Groups for a SharePoint farm. You can also use this configuration for SharePoint app development in a high-availability environment.
+このファーム構成は、より大量のクライアント読み込みや外部の SharePoint サイトの高可用性をテストしたり、SharePoint ファームの SQL Server AlwaysOn 可用性グループをテストしたりする場合に使用できます。この構成は、高可用環境での SharePoint アプリケーション開発でも使用できます。
 
-To create the high-availability (nine-server) SharePoint farm:
+高可用性 (9 サーバー) の SharePoint ファームを作成するには:
 
-1. Click [here](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/).
-2. Click **Deploy**.
-3. On the **SharePoint 2013 HA Farm** pane, click **Create**.
-4. Specify settings on the seven steps of the **Create SharePoint 2013 HA Farm** pane, and then click **Create**.
+1. [ここ](https://azure.microsoft.com/marketplace/partners/sharepoint2013/sharepoint2013farmsharepoint2013-ha/)をクリックしてください。
+2. **[デプロイ]** をクリックします。
+3. **[SharePoint 2013 HA ファーム]** ウィンドウで、**[作成]** をクリックします。
+4. **[Create SharePoint 2013 HA Farm (SharePoint 2013 HA ファームの作成)]** ウィンドウの 7 つの手順で設定を指定して、**[作成]** をクリックします。
 
-> [AZURE.NOTE] You cannot create the **SharePoint 2013 non-HA Farm** or **SharePoint 2013 HA Farm** with an Azure Free Trial.
+> [AZURE.NOTE] Azure 無料試用版では **SharePoint 2013 非 HA ファーム**または **SharePoint 2013 HA ファーム**を作成することはできません。
 
-The Azure portal creates both of these farms in a cloud-only virtual network with an Internet-facing web presence. There is no site-to-site VPN or ExpressRoute connection back to your organization network.
+Azure ポータルは、インターネットに接続する Web プレゼンスを持つクラウド専用の仮想ネットワークにこれら両ファームを作成します。組織のネットワークに戻るサイト間 VPN 接続や ExpressRoute 接続はありません。
 
-> [AZURE.NOTE] When you create the basic or high-availability SharePoint farms using the Azure portal, you cannot specify an existing resource group. To work around this limitation, create these farms with Azure PowerShell. For more information, see [Create SharePoint 2013 dev/test farms with Azure PowerShell](https://technet.microsoft.com/library/mt743093.aspx#powershell).
+## SharePoint 2016 ファーム
 
-## <a name="sharepoint-2016-farms"></a>SharePoint 2016 farms
-
-See [this article](https://technet.microsoft.com/library/mt723354.aspx) for the instructions to build the following single-server SharePoint Server 2016 farm.
+次の SharePoint 2016 単一サーバー ファームの構築については、[こちらの記事](https://technet.microsoft.com/library/mt723354.aspx)をご覧ください。
 
 ![sharepointfarm](./media/virtual-machines-windows-sharepoint-farm/SP2016Farm.png)
 
-## <a name="managing-the-sharepoint-farms"></a>Managing the SharePoint farms
+## SharePoint ファームの管理
 
-You can administer the servers of these farms through Remote Desktop connections. For more information, see [Log on to the virtual machine](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine).
+これらのファームのサーバーはリモート デスクトップ接続を通じて管理できます。詳細については、「[仮想マシンへのログオン](virtual-machines-windows-hero-tutorial.md#log-on-to-the-virtual-machine)」を参照してください。
 
-From the Central Administration SharePoint site, you can configure My sites, SharePoint applications, and other functionality. For more information, see [Configure SharePoint](http://technet.microsoft.com/library/ee836142.aspx).
+SharePoint のサーバーの全体管理サイトで [My Sites]、SharePoint アプリケーション、その他の機能を構成できます。詳細については、[SharePoint の構成](http://technet.microsoft.com/library/ee836142.aspx)に関するページをご覧ください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Discover additional [SharePoint configurations](https://technet.microsoft.com/library/dn635309.aspx) in Azure infrastructure services.
+- Azure インフラストラクチャ サービスで、追加の [SharePoint の構成](https://technet.microsoft.com/library/dn635309.aspx)を検出します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

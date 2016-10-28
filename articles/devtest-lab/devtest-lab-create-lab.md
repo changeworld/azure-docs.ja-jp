@@ -1,75 +1,71 @@
 <properties
-    pageTitle="Create a lab in Azure DevTest Labs | Microsoft Azure"
-    description="Create a lab in Azure DevTest Labs for virtual machines"
-    services="devtest-lab,virtual-machines"
-    documentationCenter="na"
-    authors="tomarcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="Azure DevTest Labs でのラボの作成 | Microsoft Azure"
+	description="Azure DevTest Labs で仮想マシン用のラボを作成します。"
+	services="devtest-lab,virtual-machines"
+	documentationCenter="na"
+	authors="tomarcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="devtest-lab"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/12/2016"
-    ms.author="tarcher"/>
+	ms.service="devtest-lab"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/12/2016"
+	ms.author="tarcher"/>
 
+# Azure DevTest Labs でのラボの作成
 
-# <a name="create-a-lab-in-azure-devtest-labs"></a>Create a lab in Azure DevTest Labs
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+ラボを作成するには、次のものが必要です。
 
-To create a lab, you need:
+- Azure サブスクリプション。Azure 購入オプションの詳細は、「[Azure の購入方法](https://azure.microsoft.com/pricing/purchase-options/)」または「[1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。ラボを作成するには、サブスクリプションの所有者である必要があります。
 
-- An Azure subscription. To learn about Azure purchase options, see [How to buy Azure](https://azure.microsoft.com/pricing/purchase-options/) or [Free one-month trial](https://azure.microsoft.com/pricing/free-trial/). You must be the owner of the subscription to create the lab.
+## Azure DevTest Labs でラボを作成する手順
 
-## <a name="steps-to-create-a-lab-in-azure-devtest-labs"></a>Steps to create a lab in Azure DevTest Labs
+次の手順は、Azure Portal を使用して Azure DevTest Labs でラボを作成する方法を示しています。
 
-The following steps illustrate how to use the Azure portal to create a lab in Azure DevTest Labs. 
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
-1. Select **More services**, and then select **DevTest Labs** from the list.
-
-1. On the **DevTest Labs** blade, select **Add**.
+1. **[DevTest ラボ]** ブレードで **[追加]** を選択します。
 
     ![Add a lab](./media/devtest-lab-create-lab/add-lab-button.png)
 
-1. On the **Create a DevTest Lab** blade:
+1. **[DevTest ラボの作成]** ブレードで:
 
-    1. Enter a **Lab Name** for the new lab.
+    1. 新しいラボの **[ラボ名]** を入力します。
     
-    1. Select the **Subscription** to associate with the lab.
+	1. ラボに関連付ける **[サブスクリプション]** を選択します。
     
-    1. Select a **Location** in which to store the lab.
+	1. ラボを格納する **[場所]** を選択します。
     
-    1. Select **Auto-shutdown** to specify if you want to enable - and define the parameters for - the automatic shutting down of all the lab's VMs.
+	1. **[自動シャットダウン]** を選択し、ラボのすべての VM の自動シャットダウンを有効にする (およびそのパラメーターを定義する) かどうかを指定します。
+	
+	1. **[ストレージの種類]** を選択し、ラボの VM のストレージ ディスクの種類を指定します。
     
-    1. Select the **Storage type** to indicate the storage disk type for the lab's VMs. 
-    
-    1. Select **Create**.
+	1. **[作成]** を選択します。
 
     ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Once you've created your lab, here are some next steps to consider:
+ラボを作成した後は、次の手順を考慮します。
 
-- [Secure access to a lab](devtest-lab-add-devtest-user.md).
+- [ラボへのアクセスをセキュリティで保護します](devtest-lab-add-devtest-user.md)。
 
-- [Set lab policies](devtest-lab-set-lab-policy.md).
+- [ラボのポリシーを設定します](devtest-lab-set-lab-policy.md)。
 
-- [Create a lab template](devtest-lab-create-template.md).
+- [ラボ テンプレートを作成します](devtest-lab-create-template.md)。
 
-- [Create custom artifacts for your VMs](devtest-lab-artifact-author.md).
+- [VM のカスタム アーティファクトを作成します](devtest-lab-artifact-author.md)。
 
-- [Add a VM with artifacts to a lab](devtest-lab-add-vm-with-artifacts.md).
+- [アーティファクトを含む VM をラボに追加します](devtest-lab-add-vm-with-artifacts.md)。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

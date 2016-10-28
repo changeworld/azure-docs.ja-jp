@@ -1,15 +1,12 @@
-You are billed for Azure Storage usage based on your storage account. Storage costs are based on the following factors: region/location, account type, storage capacity, replication scheme, storage transactions, and data egress.
+Azure Storage は、ストレージ アカウントに基づいた使用量によって課金されます。ストレージのコストが基づいている要素は、リージョン/場所、アカウントの種類、ストレージ容量、レプリケーション スキーム、ストレージ トランザクション、および送信データ転送です。
 
-- Region refers to the geographical region in which your account is based.
-- Account type refers to whether you are using a general-purpose storage account or a Blob storage account. With a Blob storage account, the access tier also determines the billing model for the account.
-- Storage capacity refers to how much of your storage account allotment you are using to store data.
-- Replication determines how many copies of your data are maintained at one time, and in what locations.
-- Transactions refer to all read and write operations to Azure Storage.
-- Data egress refers to data transferred out of an Azure region. When the data in your storage account is accessed by an application that is not running in the same region, you are charged for data egress. (For Azure services, you can take steps to group your data and services in the same data centers to reduce or eliminate data egress charges.)
+- リージョンとは、自分のアカウントがベースとしている地理的領域を指します。
+- アカウントの種類は、汎用的なストレージ アカウントと BLOB ストレージ アカウントのどちらを使用しているかを表します。BLOB ストレージ アカウントでは、アクセス層もアカウントの課金モデルを決める要素です。
+- ストレージ容量とは、データの保存に使用するためにストレージ アカウントに割り当てられた容量を指します。
+- レプリケーションによって、1 回に保持するデータのコピー数や、データの場所が決定されます。
+- トランザクションには、Azure Storage に対するすべての読み取り操作と書き込み操作が含まれます。
+- 送信データ転送とは、Azure リージョンから転送されたデータを意味します。他のリージョンで動作しているアプリケーションがストレージ アカウント内のデータにアクセスした場合は、送信データ転送として課金されます (Azure サービスでは、同じデータ センター内のデータとサービスをグループ化して、送信データ転送処理とそれに伴う料金を削減または不要にする手順が用意されています)。
 
-The [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) page provides detailed pricing information based on account type, storage capacity, replication, and transactions. The [Data Transfers Pricing Details](https://azure.microsoft.com/pricing/details/data-transfers/) provides detailed pricing information for data egress. You can use the [Azure Storage Pricing Calculator](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) to help estimate your costs.
+アカウントの種類、ストレージ容量、レプリケーション、およびトランザクションに基づく詳細な料金情報については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」ページを参照してください。送信データ転送の価格の詳細については、「[データ転送の価格の詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。コストの見積には、[計算ツール](https://azure.microsoft.com/pricing/calculator/?scenario=data-management) をご利用ください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0427_2016-->

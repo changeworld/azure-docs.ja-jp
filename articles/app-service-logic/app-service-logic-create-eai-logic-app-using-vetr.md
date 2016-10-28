@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create EAI Logic App using VETR in logic apps in Azure App Service | Microsoft Azure"
-   description="Validate, Encode and Transform features of BizTalk XML services"
+   pageTitle="VETR を使用した EAI ロジック アプリの作成 (Azure App Service の Logic Apps) | Microsoft Azure"
+   description="BizTalk XML サービスの検証機能、エンコード機能、および変換機能"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="rajeshramabathiran"
@@ -17,104 +17,99 @@
    ms.author="rajram"/>
 
 
-
-# <a name="create-eai-logic-app-using-vetr"></a>Create EAI Logic App Using VETR
+# VETR を使用した EAI ロジック アプリの作成
 
 [AZURE.INCLUDE [app-service-logic-version-message](../../includes/app-service-logic-version-message.md)]
 
-Most Enterprise Application Integration (EAI) scenarios mediate data between a source and a destination. Such scenarios often have a common set of requirements:
+ほとんどの Enterprise Application Integration (EAI) シナリオでは、ソースと出力先との間でデータの仲介をします。このようなシナリオには、多くの場合、次のような共通の要件があります。
 
-- Ensure that data from different systems are correctly formatted.
-- Perform “look-up” on incoming data to make decisions.
-- Convert data from one format to another. For example, convert data from a CRM system's data format to an ERP system's data format.
-- Route data to desired application or system.
+- 異なるシステムから受け取るデータが正しい形式であることを確認する。
+- 受信データに対して "ルックアップ" を実行して意思決定を行う。
+- データの形式を変換する。ある形式から別の形式 (たとえば、CRM システムのデータ形式から ERP システムのデータ形式) にデータを変換する。
+- 目的のアプリケーションまたはシステムにデータを伝送するルートを作成する。
 
-This article shows you a common integration pattern: "one-way message mediation" or VETR (Validate, Enrich, Transform, Route). The VETR pattern mediates data between a source entity and a destination entity. Usually the source and destination are data sources.
+この記事では、一般的な統合パターンの "一方向メッセージ仲介" または VETR (検証、強化、変換、ルート) と呼ばれるパターンについて説明します。VETR パターンは、ソース エンティティと、出力先エンティティとの間でデータを仲介します。通常は、ソースも出力先もデータ ソースです。
 
-Consider a website that accepts orders. Users post orders to the system using HTTP. Behind the scenes, the system validates the incoming data for correctness, normalizes it, and persists it in a Service Bus queue for further processing. The system takes orders off the queue, expecting it in a particular format. Thus, the end-to-end flow is:
+注文を受け付ける Web サイトの場合を考えます。ユーザーは、HTTP を使用してシステムに注文をポストします。その間、システムは受信データが正確かどうかを検証したうえで正規化し、次の処理のために Service Bus キューに保持します。システムは、キューから注文を取り出し、特定の形式で待ち受けます。このため、エンド ツー エンド フローは、次のようになります。
 
-**HTTP** → **Validate** → **Transform** → **Service Bus**
+**HTTP** → **検証** → **変換** → **Service Bus**
 
-![Basic VETR Flow][1]
+![基本的な VETR フロー][1]
 
-The following BizTalk API Apps help build this pattern:
+次の BizTalk API は、このパターンを作成する際に役立ちます。
 
-* **HTTP Trigger** - Source to trigger message event
-* **Validate** - Validates correctness of incoming data
-* **Transform** - Transforms data from incoming format to format required by downstream system
-* **Service Bus Connector** - Destination entity where data is sent
-
-
-## <a name="constructing-the-basic-vetr-pattern"></a>Constructing the basic VETR pattern
-### <a name="the-basics"></a>The basics
-
-In the Azure portal, select **+New**, select **Web + Mobile**, and then select **Logic App**. Choose a name, location, subscription, resource group, and location that works. Resource groups act as containers for your apps; all of the resources for your app go to the same resource group.
-
-Next, let's add triggers and actions.
+* **HTTP トリガー** - メッセージ イベントをトリガーするソース。
+* **検証** - 受信データが正確であるかどうかを検証する。
+* **変換** - データを受信形式から下流システムで必要な形式に変換する。
+* **Service Bus コネクタ** - データを送信する出力先エンティティ。
 
 
-## <a name="add-http-trigger"></a>Add HTTP Trigger
-1. In **Logic App Templates**, select **Create from Scratch**.
-1. Select **HTTP Listener** from the gallery to create a new listener. Call it **HTTP1**.
-2. Set the **Send response automatically?** setting to false. Configure the trigger action by setting _HTTP Method_ to _POST_ and setting _Relative URL_ to _/OneWayPipeline_:  
-    ![HTTP Trigger][2]
-3. Select the green checkmark to complete the trigger.
+## 基本的な VETR パターンの構築
+### 基本
 
-## <a name="add-validate-action"></a>Add Validate Action
+Azure ポータルで、**[+新規]**、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。名前、場所、サブスクリプション、リソース グループ、および動作する場所を選択します。リソース グループは、アプリのコンテナーとして機能します。また、アプリのリソースはすべて同じリソース グループに移動します。
 
-Now, let’s enter actions that run whenever the trigger fires — that is, whenever a call is received on the HTTP endpoint.
-
-1. Add **BizTalk XML Validator** from the gallery and name it _(Validate1)_ to create an instance.
-2. Configure an XSD schema to validate the incoming XML messages. Select the _Validate_ action and select _triggers(‘httplistener’).outputs.Content_ as the value for the _inputXml_ parameter.
-
-Now, the validate action is the first action after the HTTP listener: 
-
-![BizTalk XML Validator][3]
-
-Similarly, let's add the rest of the actions. 
-
-## <a name="add-transform-action"></a>Add Transform action
-Let's configure transforms to normalize the incoming data.
-
-1. Add **BizTalk Transform Service** from the gallery.
-2. To configure a transform to transform the incoming XML messages, select the **Transform** action as the action to carry out when this API is called. Select ```triggers(‘httplistener’).outputs.Content``` as the value for _inputXml_. *Map* is an optional parameter since the incoming data is matched with all configured transforms, and only those that match the schema are applied.
-3. Lastly, the Transform runs only if Validate succeeds. To configure this condition, select the gear icon on the top right, and select _Add a condition to be met_. Set the condition to ```equals(actions('xmlvalidator').status,'Succeeded')```:  
-
-![BizTalk Transforms][4]
+次に、トリガーとアクションを追加します。
 
 
-## <a name="add-service-bus-connector"></a>Add Service Bus Connector
-Next, let's add the destination — a Service Bus Queue — to write data to.
+## HTTP トリガーの追加
+1. **[ロジック アプリのテンプレート]** の **[ゼロから作成]** を選択します。
+1. ギャラリーから **[HTTP リスナー]** を選択して新しいリスナーを作成します。このリスナーを **HTTP1** と呼びます。
+2. **[応答を自動的に送信しますか?]** を false に設定します。_HTTP メソッド_を _[投稿]_ に、_相対 URL_ を _[/OneWayPipeline]_ に設定して、トリガーのアクションを構成します。![HTTP トリガー][2]
+3. 緑色のチェックマークをオンにして、トリガーを完了します。
 
-1. Add a **Service Bus Connector** from the gallery. Set the **Name** to _Servicebus1_, set **Connection String** to the connection string to your service bus instance, set **Entity Name** to _Queue_, and skip **Subscription name**.
-2. Select the **Send Message** action and set the **Content** field for the action to _actions('transformservice').outputs.OutputXml_.
-3. Set the **Content Type** field to *application/xml*:  
+## 検証アクションの追加
+
+ここでは、トリガーが起動したとき (HTTP エンドポイントで呼び出しが受信されたとき) に常に実行されるアクションを入力します。
+
+1. ギャラリーから **[BizTalk XML Validator]** を追加し、_(Validate1)_ という名前を付けてインスタンスを作成します。
+2. 受信 XML メッセージを検証する XSD スキーマを構成します。_[検証]_ アクションを選択し、_inputXml_ パラメーターの値として _[triggers(‘httplistener’).outputs.Content]_ を選択します。
+
+これで、検証アクションは、HTTP リスナー後の最初のアクションになります。
+
+![BizTalk XML 検証][3]
+
+同様にして、他のアクションも追加します。
+
+## 変換アクションの追加
+受信データを正規化するために変換を構成します。
+
+1. ギャラリーから **BizTalk 変換サービス**を追加します。
+2. 変換を構成して受信 XML メッセージを変換するには、この API が呼び出されたときに実行するアクションとして **[変換]** アクションを選択します。次に、_inputXml_ の値として ```triggers(‘httplistener’).outputs.Content``` を選択します。受信データは、構成済みのすべての変換に適合しますが、スキーマに一致するものだけが適用されるため、*Map* はオプションのパラメーターです。
+3. 最後に、検証が成功した場合にのみ、変換が実行されるようにします。この条件を構成するには、右上にある歯車アイコンを選択し、_[満たされる条件を追加する]_ を選択します。条件を ```equals(actions('xmlvalidator').status,'Succeeded')``` に設定します。
+
+![BizTalk 変換][4]
+
+
+## Service Bus コネクタの追加
+次に、データを書き込む場所である出力先 (Service Bus キュー) を追加します。
+
+1. ギャラリーから **Service Bus コネクタ**を追加します。**[名前]** を _Servicebus1_ に、**[接続文字列]** をユーザーのサービス バス インスタンスへの接続文字列に、**[エンティティ名]** を _[キュー]_ に設定します。**[サブスクリプション名]** はスキップします。
+2. **メッセージの送信**アクションを選択し、このアクションの **[コンテンツ]** フィールドを _actions('transformservice').outputs.OutputXml_ に設定します。
+3. **[コンテンツの種類]** フィールドを *application/xml* に設定します。
 
 ![Service Bus][5]
 
 
-## <a name="send-http-response"></a>Send HTTP Response
-Once pipeline processing is done, send back an HTTP response for both success and failure with the following steps:
+## HTTP 応答の送信
+パイプライン処理の完了後、成功した場合と失敗した場合のそれぞれについて HTTP 応答を返すように構成します。手順は次のとおりです。
 
-1. Add an **HTTP Listener** from the gallery and select the **Send HTTP Response** action.
-2. Set **Response ID** to Send *Message*.
-2. Set **Response Content** to *Pipeline processing completed*.
-3. **Response Status Code** to *200* to indicate HTTP 200 OK.
-4. Select the drop down menu on the top right, and select **Add a condition to be met**.  Set the condition to the following expression:  
-    ```@equals(actions('azureservicebusconnector').status,'Succeeded')```  <br/>
-5. Repeat these steps to send an HTTP response on failure as well. Change **Condition** to the following expression:  
-```@not(equals(actions('azureservicebusconnector').status,'Succeeded'))``` <br/>
-6. Select **OK** then **Create**.
+1. ギャラリーから **HTTP リスナー**を追加し、**HTTP 応答の送信**アクションを選択します。
+2. **[応答 ID]** を "*メッセージの送信*" に設定します。
+2. **[応答コンテンツ]** を "*パイプライン処理が完了しました*" に設定します。
+3. HTTP 200 OK を指定するために **[応答状態コード]** を "*200*" に設定します。
+4. 右上のドロップダウン メニューをクリックし、**[満たされる条件を追加する]** を選択します。[条件] を次の式に設定します。```@equals(actions('azureservicebusconnector').status,'Succeeded')``` <br/>
+5. 失敗した場合も HTTP 応答を送信するために、同じ手順を繰り返します。**[条件]** を次の式に変更します。```@not(equals(actions('azureservicebusconnector').status,'Succeeded'))``` <br/>
+6. **[OK]** を選択し、**[作成]** を選択します。
 
 
 
-## <a name="completion"></a>Completion
-Every time someone sends a message to the HTTP endpoint, it triggers the app and executes the actions you just created. To manage any such logic apps you create, select **Browse** in the Azure Portal, and select **Logic Apps**. Select your app to see more information.
+## 完了
+メッセージが HTTP エンドポイントに送信されるたびに、エンドポイントがアプリをトリガーし、上記で作成したアクションが実行されます。このようにして作成したロジック アプリを管理するには、Azure ポータルで **[参照]** を選択し、**[Logic Apps]** を選択します。確認するアプリを選択すると、詳細が表示されます。
 
-Some helpful topics:
+いくつかの役に立つトピック:
 
-[Manage and Monitor your API Apps and Connectors](app-service-logic-monitor-your-connectors.md)  <br/>
-[Monitor your Logic Apps](app-service-logic-monitor-your-logic-apps.md)
+[組み込み API Apps とコネクタの管理と監視を実行する](app-service-logic-monitor-your-connectors.md) <br/> [Logic Apps を監視する](app-service-logic-monitor-your-logic-apps.md)
 
 <!--image references -->
 [1]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BasicVETR.PNG
@@ -123,8 +118,4 @@ Some helpful topics:
 [4]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/BizTalkTransforms.PNG
 [5]: ./media/app-service-logic-create-EAI-logic-app-using-VETR/AzureServiceBus.PNG
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

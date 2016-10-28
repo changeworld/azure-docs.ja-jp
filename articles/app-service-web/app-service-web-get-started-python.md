@@ -1,145 +1,138 @@
 <properties 
-    pageTitle="Deploy your first Python web app to Azure in five minutes | Microsoft Azure" 
-    description="Learn how easy it is to run web apps in App Service by deploying a sample app. Start doing real development quickly and see results immediately." 
-    services="app-service\web"
-    documentationCenter=""
-    authors="cephalin"
-    manager="wpickett"
-    editor=""
+	pageTitle="初めての Python Web アプリを Azure に 5 分でデプロイする | Microsoft Azure" 
+	description="サンプル アプリをデプロイして、App Service での Web アプリの実行がいかに簡単であるかを説明します。実際の開発を速やかに開始し、すぐに成果を確認できます。" 
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""
 />
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="09/16/2016" 
-    ms.author="cephalin"
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="09/16/2016" 
+	ms.author="cephalin"
 />
-    
+	
+# 初めての Python Web アプリを Azure に 5 分でデプロイする
 
-# <a name="deploy-your-first-python-web-app-to-azure-in-five-minutes"></a>Deploy your first Python web app to Azure in five minutes
+このチュートリアルでは、初めての Python Web アプリを [Azure App Service](../app-service/app-service-value-prop-what-is.md) にデプロイします。App Service を使用すると、Web アプリ、[モバイル アプリ バックエンド](/documentation/learning-paths/appservice-mobileapps/)、および [API アプリ](../app-service-api/app-service-api-apps-why-best-platform.md)を作成できます。
 
-This tutorial helps you deploy your first Python web app to [Azure App Service](../app-service/app-service-value-prop-what-is.md).
-You can use App Service to create web apps, [mobile app back ends](/documentation/learning-paths/appservice-mobileapps/), and [API apps](../app-service-api/app-service-api-apps-why-best-platform.md).
+このチュートリアルの内容は次のとおりです。
 
-You will: 
+- Azure App Service で Web アプリを作成する。
+- Python のサンプル コードをデプロイする。
+- 運用環境でライブ実行されているコードを確認する。
+- [Git コミットをプッシュする](https://git-scm.com/docs/git-push)ときと同じ方法で Web アプリを更新する。
 
-- Create a web app in Azure App Service.
-- Deploy sample Python code.
-- See your code running live in production.
-- Update your web app the same way you would [push Git commits](https://git-scm.com/docs/git-push).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+- [Git をインストールします](http://www.git-scm.com/downloads)。新しい Windows コマンド プロンプト、PowerShell ウィンドウ、Linux のシェル、または OS X ターミナルから `git --version` を実行して、インストールが正常に完了したことを確認します。
+- Microsoft Azure アカウントを取得します。アカウントを持っていない場合は、[無料試用版にサインアップする](/pricing/free-trial/?WT.mc_id=A261C142F)か [Visual Studio サブスクライバー特典を有効](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F)にしてください。
 
-- [Install Git](http://www.git-scm.com/downloads). Verify that your installation is successful by running `git --version` from a new Windows command prompt, PowerShell window, Linux shell, or OS X terminal.
-- Get a Microsoft Azure account. If you don't have an account, you can [sign up for a free trial](/pricing/free-trial/?WT.mc_id=A261C142F) or [activate your Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
-
->[AZURE.NOTE] You can [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751) without an Azure account. Create a starter app and play with it for up to an hour--no credit card required, no commitments.
+>[AZURE.NOTE] Azure アカウントがなくても、[App Service を試用](http://go.microsoft.com/fwlink/?LinkId=523751)できます。スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
 
 <a name="create"></a>
-## <a name="create-a-web-app"></a>Create a web app
+## Web アプリを作成する
 
-1. Sign in to the [Azure portal](https://portal.azure.com) with your Azure account.
+1. Azure アカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. From the left menu, click **New** > **Web + Mobile** > **Web App**.
+2. 左側のメニューで、**[新規]**、**[Web + モバイル]**、**[Web アプリ]** の順にクリックします。
 
     ![](./media/app-service-web-get-started-languages/create-web-app-portal.png)
 
-3. In the app creation blade, use the following settings for your new app:
+3. アプリ作成ブレードでは、新しいアプリに次の設定を使用します。
 
-    - **App name**: Type a unique name.
-    - **Resource group**: Select **Create new** and give the resource group a name.
-    - **App Service plan/Location**: Click it to configure, then click **Create New** to set the name, location, and pricing tier of the App Service plan. Feel free to use the **Free** pricing tier.
+    - **[アプリ名]**: 一意の名前を入力します。
+    - **[リソース グループ]**: **[新規作成]** を選択し、リソース グループに名前を付けます。
+    - **[App Service プラン/場所]**: このオプションをクリックし、**[新規作成]** をクリックして、App Service プランの名前、場所、価格レベルを設定します。**Free** 価格レベルを自由に使用してください。
 
-    When you're done, your app creation blade should look like this:
+    設定が完了すると、アプリ作成ブレードは次のようになります。
 
     ![](./media/app-service-web-get-started-languages/create-web-app-settings.png)
 
-3. Click **Create** at the bottom. You can click the **Notification** icon at the top to see the progress.
+3. 下部にある **[作成]** をクリックします。上部にある **[通知]** アイコンをクリックすると、進行状況を確認できます。
 
     ![](./media/app-service-web-get-started-languages/create-web-app-started.png)
 
-4. When deployment is finished, you should see this notification message. Click the message to open your deployment's blade.
+4. デプロイが完了すると、次の通知メッセージが表示されます。メッセージをクリックして、デプロイのブレードを開きます。
 
     ![](./media/app-service-web-get-started-languages/create-web-app-finished.png)
 
-5. In the **Deployment succeeded** blade, click the **Resource** link to open your new web app's blade.
+5. **[デプロイメントに成功しました]** ブレードで、**[リソース]** のリンクをクリックして、新しい Web アプリのブレードを開きます。
 
     ![](./media/app-service-web-get-started-languages/create-web-app-resource.png)
 
-## <a name="deploy-code-to-your-web-app"></a>Deploy code to your web app
+## Web アプリにコードをデプロイする
 
-Now, let's deploy some code to Azure using Git.
+次に、Git を使用して Azure にコードをデプロイしましょう。
 
-5. In the web app blade, scroll down to **Deployment options** or search for it, then click it. 
+5. [Web アプリ] ブレードで、下にスクロールして **[デプロイ オプション]** を表示するかこれを探してクリックします。
 
     ![](./media/app-service-web-get-started-languages/deploy-web-app-deployment-options.png)
 
-6. Click **Choose Source** > **Local Git Repository** > **OK**.
+6. **[ソースの選択]**、**[ローカル Git リポジトリ]**、**[OK]** の順にクリックします。
 
-7. Back in the web app blade, click **Deployment credentials**.
+7. [Web アプリ] ブレードに戻り、**[デプロイ資格情報]** をクリックします。
 
-8. Set your deployment credentials and click **Save**.
+8. デプロイ資格情報を設定し、**[保存]** をクリックします。
 
-7. Back in the web app blade, scroll down to **Properties** or search for it, then click it. Next to **Git URL**, click the **Copy** button.
+7. [Web アプリ] ブレードに戻り、下にスクロールして **[プロパティ]** を表示するかこれを探してクリックします。**[Git URL]** の横の **[コピー]** ボタンをクリックします。
 
     ![](./media/app-service-web-get-started-languages/deploy-web-app-properties.png)
 
-    You're now ready to deploy your code with Git.
+    これで Git を使用してコードをデプロイする準備ができました。
 
-1. In your command-line terminal, change to a working directory (`CD`) and clone the sample app like this:
+1. コマンド ライン端末で、作業ディレクトリに移動し (`CD`)、次のようにサンプル アプリを複製します。
 
         git clone https://github.com/Azure-Samples/app-service-web-python-get-started.git
 
     ![Clone the app sample code for your first web app in Azure](./media/app-service-web-get-started-languages/python-git-clone.png)
 
-    For *&lt;github_sample_url>*, use one of the following URLs, depending on the framework that you like:
+    *&lt;github\_sample\_url>* には、好みのフレームワークに応じて次の URL のいずれかを使用します。
 
-2. Change to the repository of your sample app. For example, 
+2. サンプル アプリのリポジトリに移動します。たとえば、次のように入力します。
 
         cd app-service-web-html-get-started
 
-3. Configure the Git remote for your Azure app its Git URL, which you copied from the Portal a few steps ago.
+3. いくつか前の手順でポータルからコピーした Azure アプリの Git URL に対応する Git リモートを構成します。
 
         git remote add azure <giturlfromportal>
 
-4. Deploy your sample code to your Azure app like you would push any code with Git:
+4. Git でコードをプッシュする場合と同様に、サンプル コードを Azure アプリにデプロイします。
 
         git push azure master
 
-    ![Push code to your first web app in Azure](./media/app-service-web-get-started-languages/python-git-push.png)    
+    ![Push code to your first web app in Azure](./media/app-service-web-get-started-languages/python-git-push.png)
 
-    If you used one of the language frameworks, you'll see different output. This is because `git push` not only puts code in Azure, but also triggers deployment tasks in the deployment engine. If you have any requirements.txt in your project (repository) root, the deployment script restores the required packages for you. 
+    いずれかの言語フレームワークを使用した場合は、別の出力が表示されます。`git push` を実行すると、Azure にコードが配置されるだけでなく、デプロイ エンジンのデプロイ タスクがトリガーされるためです。プロジェクト (リポジトリ) のルートに何らかの requirements.txt がある場合は、デプロイ スクリプトが必要なパッケージを復元します。
 
-That's it! Your code is now running live in Azure. In your browser, navigate to http://*&lt;appname>*.azurewebsites.net to see it in action. 
+これで完了です。 Azure でコードがライブ実行されています。ブラウザーで http://*&lt;appname>*.azurewebsites.net に移動して、実行中のコードを確認します。
 
-## <a name="make-updates-to-your-app"></a>Make updates to your app
+## アプリを更新する
 
-You can now use Git to push from your project (repository) root anytime to make an update to the live site. You do it the same way as when you deployed your code the first time. For example, every time you want to push a new change that you've tested locally, just run the following commands from your project (repository) root:
+Git を使用してプロジェクト (リポジトリ) のルートからプッシュして、いつでもライブ サイトを更新することができるようになりました。これは、初めてコードをデプロイしたときと同様に行います。たとえば、ローカルでテストした新しい変更をプッシュする場合は、プロジェクト (リポジトリ) のルートから次のコマンドを実行するだけで済みます。
 
     git add .
     git commit -m "<your_message>"
     git push azure master
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Create, configure, and deploy a Django web app to Azure in Visual Studio](web-sites-python-ptvs-django-mysql.md). By following this tutorial, you will learn the basic skills you need to run a Python web app in Azure, including:
+[Visual Studio で Django Web アプリを作成および構成して、Azure にデプロイします](web-sites-python-ptvs-django-mysql.md)。このチュートリアルでは、Azure で Python Web アプリを実行するのに必要となる、以下のような基本的なスキルを学習します。
 
-- Create and deploy a Python app using a template.
-- Set Python version.
-- Create virtual environments.
-- Connect to a database.
+- テンプレートを使用して、Python アプリを作成してデプロイする。
+- Python バージョンを設定する。
+- 仮想環境を作成する。
+- データベースに接続する。
 
-Or, do more with your first web app. For example:
+または、最初の Web アプリを活用します。次に例を示します。
 
-- Try out [other ways to deploy your code to Azure](../app-service-web/web-sites-deploy.md). For example, to deploy from one of your GitHub repositories, simply select **GitHub** instead of **Local Git Repository** in **Deployment options**.
-- Take your Azure app to the next level. Authenticate your users. Scale it based on demand. Set up some performance alerts. All with a few clicks. See [Add functionality to your first web app](app-service-web-get-started-2.md).
+- [Azure にコードをデプロイする他の方法](../app-service-web/web-sites-deploy.md)を試してみます。たとえば、GitHub リポジトリのいずれかからデプロイする場合、**[デプロイ オプション]** の **[ローカル Git リポジトリ]** ではなく、**[GitHub]** を選択します。
+- Azure アプリを次のレベルに進めます。ユーザーを認証します。必要に応じてスケールを変更したり、パフォーマンスのアラートを設定したりできます。いずれも、数回のクリックで実現できます。「[初めての Web アプリに機能を追加する](app-service-web-get-started-2.md)」を参照してください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!-----HONumber=AcomDC_0920_2016-->

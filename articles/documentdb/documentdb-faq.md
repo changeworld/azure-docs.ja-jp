@@ -1,131 +1,126 @@
 <properties 
-    pageTitle="DocumentDB Database Questions - Frequently Asked Questions | Microsoft Azure" 
-    description="Get answers to frequently asked questions about Azure DocumentDB a NoSQL document database service for JSON. Answer database questions about capacity, performance levels, and scaling." 
-    keywords="Database questions, frequently asked questions, documentdb, azure, Microsoft azure"
-    services="documentdb" 
-    authors="mimig1" 
-    manager="jhubbard" 
-    editor="monicar" 
-    documentationCenter=""/>
+	pageTitle="DocumentDB データベース質問 - よく寄せられる質問 | Microsoft Azure" 
+	description="JSON 用の NoSQL ドキュメント データベース サービスである Azure DocumentDB に関してよく寄せられる質問に対する回答を示します。容量、パフォーマンス レベル、およびスケーリングに関するデータベース質問に回答します。" 
+	keywords="データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure"
+	services="documentdb" 
+	authors="mimig1" 
+	manager="jhubbard" 
+	editor="monicar" 
+	documentationCenter=""/>
 
 <tags 
-    ms.service="documentdb" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/03/2016" 
-    ms.author="mimig"/>
+	ms.service="documentdb" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/01/2016" 
+	ms.author="mimig"/>
 
 
+#DocumentDB に関してよく寄せられる質問
 
-#<a name="frequently-asked-questions-about-documentdb"></a>Frequently asked questions about DocumentDB
+## Microsoft Azure DocumentDB の基礎に関するデータベース質問
 
-## <a name="database-questions-about-microsoft-azure-documentdb-fundamentals"></a>Database questions about Microsoft Azure DocumentDB fundamentals
-
-### <a name="what-is-microsoft-azure-documentdb?"></a>What is Microsoft Azure DocumentDB? 
-Microsoft Azure DocumentDB is a blazing fast, planet-scale NoSQL document database-as-a-service that offers rich querying over schema-free data, helps deliver configurable and reliable performance, and enables rapid development, all through a managed platform backed by the power and reach of Microsoft Azure. DocumentDB is the right solution for web, mobile, gaming and IoT applications when predictable throughput, high availability, low latency, and a schema-free data model are key requirements. DocumentDB delivers schema flexibility and rich indexing via a native JSON data model, and includes multi-document transactional support with integrated JavaScript.  
+### Microsoft Azure DocumentDB とは 
+Microsoft Azure DocumentDB は、超高速かつ世界規模の NoSQL ドキュメント データベースを提供する、サービスとしてのデータベースです。Microsoft Azure の強力な機能と守備範囲に支えられた管理プラットフォームを通じて、スキーマフリーのデータに対して高度なクエリを実行できるほか、構成可能で信頼性の高いパフォーマンスや、迅速な開発が実現できます。DocumentDB は、予測可能なスループット、高い可用性、遅延時間の短縮、およびスキーマフリー データ モデルが重要な要件となる、Web、モバイル、ゲーム、IoT の各アプリケーションに適したソリューションです。DocumentDB では、ネイティブ JSON データ モデルでスキーマの柔軟性と豊富なインデックス作成機能が提供され、統合 JavaScript でマルチドキュメント トランザクションがサポートされます。
   
-For more database questions, answers, and instructions on deploying and using this service, see the [DocumentDB documentation page](https://azure.microsoft.com/documentation/services/documentdb/).
+データベース質問および回答の詳細と、このサービスのデプロイおよび使用の手順については、[DocumentDB ドキュメント ページ](https://azure.microsoft.com/documentation/services/documentdb/)を参照してください。
 
-### <a name="what-kind-of-database-is-documentdb?"></a>What kind of database is DocumentDB?
-DocumentDB is a NoSQL document oriented database that stores data in JSON format.  DocumentDB supports nested, self-contained-data structures that can be queried through a rich DocumentDB [SQL query grammar](documentdb-sql-query.md). DocumentDB provides high performance transactional processing of server side JavaScript through [stored procedures, triggers, and user defined functions](documentdb-programming.md). The database also supports developer tunable consistency levels with associated [performance levels](documentdb-performance-levels.md).
+### DocumentDB はどのような種類のデータベースですか?
+DocumentDB は、JSON 形式でデータを格納する NoSQL ドキュメント指向のデータベースです。DocumentDB では、高度な DocumentDB [SQL クエリ文法](documentdb-sql-query.md)で照会できる入れ子になった自立的データ構造がサポートされます。DocumentDB では、[ストアド プロシージャ、トリガー、およびユーザー定義関数](documentdb-programming.md)を使用して、サーバー側 JavaScript のトランザクション処理を高いパフォーマンスで実行できます。また、開発者によって調整可能な一貫性レベルを、関連付けられた[パフォーマンス レベル](documentdb-performance-levels.md)と共にサポートします。
  
-### <a name="do-documentdb-databases-have-tables-like-a-relational-database-(rdbms)?"></a>Do DocumentDB databases have tables like a relational database (RDBMS)?
-No, DocumentDB  stores data in collections of JSON documents.  For information on DocumentDB resources, see [DocumentDB resource model and concepts](documentdb-resources.md). For more information about how NoSQL solutions such as DocumentDB differ from relational solutions, see [NoSQL vs SQL](documentdb-nosql-vs-sql.md).
+### DocumentDB データベースはリレーショナル データベース (RDBMS) のようなテーブルを保持しますか?
+いいえ、DocumentDB は JSON ドキュメントのコレクション内にデータを格納します。DocumentDB のリソースの詳細については、「[DocumentDB のリソース モデルと概念](documentdb-resources.md)」を参照してください。DocumentDB のような NoSQL ソリューションとリレーショナル ソリューションの相違点の詳細については、「[NoSQL 対 SQL](documentdb-nosql-vs-sql.md)」を参照してください。
 
-### <a name="do-documentdb-databases-support-schema-free-data?"></a>Do DocumentDB databases support schema-free data?
-Yes, DocumentDB allows applications to store arbitrary JSON documents without schema definition or hints. Data is immediately available for query through the DocumentDB SQL query interface.   
+### DocumentDB データベースはスキーマフリー データをサポートしますか?
+はい、DocumentDB ではスキーマ定義またはヒントなしで、アプリケーションが任意の JSON ドキュメントを格納できます。DocumentDB SQL クエリ インターフェイスを使用したクエリに、データをすぐに利用できます。
 
-### <a name="does-documentdb-support-acid-transactions?"></a>Does DocumentDB support ACID transactions?
-Yes, DocumentDB supports cross-document transactions expressed as JavaScript stored procedures and triggers. Transactions are scoped to a single partition within each collection and executed with ACID semantics as all or nothing isolated from other concurrently executing code and user requests.  If exceptions are thrown through the server side execution of JavaScript application code, the entire transaction is rolled back. For more information about transactions, see [Database program transactions](documentdb-programming.md#database-program-transactions).
+### DocumentDB は ACID トランザクションをサポートしますか?
+はい、DocumentDB では、JavaScript ストアド プロシージャおよびトリガーとして表現されるクロスドキュメント トランザクションをサポートします。トランザクションは、各コレクション内の単一のパーティションを対象とし、他の同時実行されるコードおよびユーザー要求から完全に分離された ACID セマンティクスで実行されます。JavaScript アプリケーション コードのサーバー側実行により例外がスローされた場合は、トランザクション全体がロールバックされます。トランザクションの詳細については、「[プログラム データベース トランザクション](documentdb-programming.md#database-program-transactions)」を参照してください。
 
-### <a name="what-are-the-typical-use-cases-for-documentdb?"></a>What are the typical use cases for DocumentDB?  
-DocumentDB is a good choice for new web, mobile, gaming and IoT applications where automatic scale, predictable performance, fast order of millisecond response times, and the ability to query over schema-free data is important. DocumentDB lends itself to rapid development and supporting the continuous iteration of application data models. Applications that manage user generated content and data are [common use cases for DocumentDB](documentdb-use-cases.md).  
+### DocumentDB の一般的な使用事例にはどのようなものがありますか?  
+DocumentDB は、自動スケール、予測可能なパフォーマンス、ミリ秒レベルの高速な応答時間、およびスキーマフリー データに対してクエリを実行できることが重要である新しい Web アプリケーション、モバイル アプリケーション、ゲーム、IoT アプリケーションに適しています。DocumentDB は、迅速な開発に役立ち、アプリケーション データ モデルの継続的な反復をサポートします。ユーザーが生成したコンテンツとデータを管理するアプリケーションは、[DocumentDB の一般的な使用事例](documentdb-use-cases.md)です。
 
-### <a name="how-does-documentdb-offer-predictable-performance?"></a>How does DocumentDB offer predictable performance?
-A [request unit](documentdb-request-units.md) is the measure of throughput in DocumentDB. 1 RU corresponds to the throughput of the GET of a 1KB document. Every operation in DocumentDB, including reads, writes, SQL queries, and stored procedure executions has a deterministic RU value based on the throughput required to complete the operation. Instead of thinking about CPU, IO and memory and how they each impact your application throughput, you can think in terms of a single RU measure.
+### DocumentDB では、予測可能なパフォーマンスをどのようにして実現していますか?
+DocumentDB ではスループットの単位として[要求ユニット](documentdb-request-units.md) (RU) を使用します。1 RU は、1KB のドキュメントを取得するスループットに相当します。DocumentDB におけるすべての操作 (読み取り、書き込み、SQL クエリ、ストアド プロシージャの実行など) には、操作を完了するのに必要なスループットに基づいて、明確な RU 値が設定されています。CPU、IO、メモリや、これらがアプリケーションのスループットに及ぼす影響を考慮する代わりに、RU という 1 つの単位を基にして考えることができます。
 
-Each DocumentDB collection can be reserved with provisioned throughput in terms of RUs of throughput per second. For applications of any scale, you can benchmark individual requests to measure their RU values, and provision collections to handle the sum total of request units across all requests. You can also scale up or scale down your collection’s throughput as the needs of your application evolve. For more information about request units and for help determining your collection needs, please read [Manage Performance and Capacity](documentdb-manage.md) and try the [throughput calculator](https://www.documentdb.com/capacityplanner). 
+DocumentDB の各コレクションを予約する際は、1 秒あたりのスループットを表す RU を単位としてプロビジョニングされたスループットを使用できます。アプリケーションがどのようなサイズでも、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようコレクションをプロビジョニングすることができます。アプリケーションのニーズの進化に合わせて、コレクションのスループットをスケールアップしたりスケールダウンしたりすることもできます。要求ユニットの詳細や、コレクションに必要なスループットを判断する方法については、[パフォーマンスと容量の管理](documentdb-manage.md)に関する記事を参照し、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。
 
-### <a name="is-documentdb-hipaa-compliant?"></a>Is DocumentDB HIPAA compliant?
-Yes, DocumentDB is HIPAA compliant. HIPAA establishes requirements for the use, disclosure, and safeguarding of individually identifiable health information. For more information, see the [Microsoft Trust Center](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA).
+### DocumentDB HIPAA は準拠していますか?
+はい、DocumentDB は HIPAA は準拠しています。HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/ja-JP/TrustCenter/Compliance/HIPAA)を参照してください。
 
-### <a name="what-are-the-storage-limits-of-documentdb?"></a>What are the storage limits of DocumentDB? 
-There is no theoretical limit to the total amount of data that a collection can store in DocumentDB. If you would like to store over 250 GB of data within a single collection, please [contact support](documentdb-increase-limits.md) to to have your account quota increased. 
+### DocumentDB のストレージ制限とは何ですか? 
+DocumentDB でコレクションが格納できる合計データ量には、理論上の制限はありません。1 つのコレクション内に 250 GB を超えるデータを格納する必要がある場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
 
-### <a name="what-are-the-throughput-limits-of-documentdb?"></a>What are the throughput limits of DocumentDB? 
-There is no theoretical limit to the total amount of throughput that a collection can support in DocumentDB, if your workload can be distributed roughly evenly among a sufficiently large number of partition keys. If you wish to exceed 250,000 request units/second per collection or account, please [contact support](documentdb-increase-limits.md) to to have your account quota increased. 
+### DocumentDB のスループット制限とは何ですか? 
+十分な数のパーティション キーにワークロードをほぼ均等に分散できる場合は、DocumentDB でコレクションがサポートできるスループットの合計量には、理論上の制限はありません。1 つのコレクションまたはアカウントあたり 250,000 要求ユニット/秒を超える場合は、[サポートに連絡して](documentdb-increase-limits.md)、アカウント クォータの増加を依頼してください。
 
-### <a name="how-much-does-microsoft-azure-documentdb-cost?"></a>How much does Microsoft Azure DocumentDB cost?
-Please refer to the [DocumentDB pricing details](https://azure.microsoft.com/pricing/details/documentdb/) page for details. DocumentDB usage charges are determined by the number of collections in use, the number of hours the collections were online, and the consumed storage and provisioned throughput for each collection. 
+### Microsoft Azure DocumentDB の料金はいくらですか?
+詳細については、「[DocumentDB 料金](https://azure.microsoft.com/pricing/details/documentdb/)」ページを参照してください。DocumentDB の利用料金は、使用されたコレクションの数、コレクションがオンラインであった時間数、および各コレクションの消費ストレージとプロビジョニング済みスループットによって決まります。
 
-### <a name="is-there-a-free-account-available?"></a>Is there a free account available?
-If you are new to Azure, you can sign up for an [Azure free account](https://azure.microsoft.com/free/), which gives you 30 days and $200 to try all the Azure services. Or, if you have an Visual Studio subscription, you are eligible for [$150 in free Azure credits per month](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) to use on any Azure service.  
+### 無料アカウントを使用できますか?
+Azure を初めて使用する場合は、30 日間使用できる [Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。すべての Azure サービスを試すには 200 ドルかかります。Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。
 
-### <a name="how-can-i-get-additional-help-with-documentdb?"></a>How can I get additional help with DocumentDB?
-If you need any help, please reach out to us on [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb), the [Azure DocumentDB MSDN Developer Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB), or schedule a [1:1 chat with the DocumentDB engineering team](http://www.askdocdb.com/). To stay up to date on the latest DocumentDB news and features, follow us on [Twitter](https://twitter.com/DocumentDB).
+### DocumentDB に関するその他のヘルプはどのようにして得られますか?
+ヘルプが必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-documentdb) または [Azure DocumentDB MSDN デベロッパー フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)を利用するか、または [DocumentDB エンジニアリング チームとの 1 対 1 のチャット](http://www.askdocdb.com/)をスケジュールしてください。DocumentDB の最新のニュースと機能については、[Twitter](https://twitter.com/DocumentDB) をフォローしてください。
 
-## <a name="set-up-microsoft-azure-documentdb"></a>Set up Microsoft Azure DocumentDB
+## Microsoft Azure DocumentDB のセットアップ
 
-### <a name="how-do-i-sign-up-for-microsoft-azure-documentdb?"></a>How do I sign-up for Microsoft Azure DocumentDB?
-Microsoft Azure DocumentDB is available in the [Azure Portal][azure-portal].  First you must sign up for a Microsoft Azure subscription.  Once you sign up for a Microsoft Azure subscription, you can add a DocumentDB account to your Azure subscription. For instructions on adding a DocumentDB account, see [Create a DocumentDB database account](documentdb-create-account.md).   
+### どのようにして Microsoft Azure DocumentDB にサインアップしますか?
+Microsoft Azure DocumentDB は、[Azure ポータル][azure-portal]で利用可能です。最初に、Microsoft Azure サブスクリプションにサインアップする必要があります。Microsoft Azure サブスクリプションにサインアップした後、DocumentDB アカウントを Azure サブスクリプションに追加できます。DocumentDB アカウントの追加方法については、「[DocumentDB データベース アカウントの作成](documentdb-create-account.md)」を参照してください。
 
-### <a name="what-is-a-master-key?"></a>What is a master key?
-A master key is a security token to access all resources for an account. Individuals with the key have read and write access to the all resources in the database account. Use caution when distributing master keys. The primary master key and secondary master key are available in the **Keys **blade of the [Azure Portal][azure-portal]. For more information about keys, see [View, copy, and regenerate access keys](documentdb-manage-account.md#keys).
+### マスター キーとは何ですか?
+マスター キーは、アカウントのすべてのリソースにアクセスするためのセキュリティ トークンです。キーを保持する個人には、データベース アカウント内のすべてのリソースへの読み取り/書き込みアクセスが許可されます。マスター キーを配布するときには十分な注意が必要となります。プライマリ マスター キーとセカンダリ マスター キーは、[Azure ポータル][azure-portal]の **[キー]** ブレードで入手できます。リソース キーの詳細については、「[アクセス キーを表示、コピー、および再生成する](documentdb-manage-account.md#keys)」を参照してください。
 
-### <a name="how-do-i-create-a-database?"></a>How do I create a database?
-You can create databases using the [Azure Portal]() as described in [Create a DocumentDB database](documentdb-create-database.md), one of the [DocumentDB SDKs](documentdb-sdk-dotnet.md), or through the [REST APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx).  
+### どのようにしてデータベースを作成しますか?
+「[DocumentDB データベースの作成](documentdb-create-database.md)」で説明されているように [Azure ポータル]()を使用するか、あるいは [DocumentDB SDK](documentdb-sdk-dotnet.md) のいずれかまたは [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用してデータベースを作成できます。
 
-### <a name="what-is-a-collection?"></a>What is a collection?
-A collection is a container of JSON documents and the associated JavaScript application logic. A collection is a billable entity, where the [cost](documentdb-performance-levels.md) is determined by the throughput and storaged used. Collections can span one or more partitions/servers and can scale to handle practically unlimited volumes of storage or throughput.
+### コレクションとは何ですか?
+コレクションには、JSON ドキュメントのほか、関連する JavaScript アプリケーション ロジックが格納されます。コレクションは課金対象のエンティティであり、その[コスト](documentdb-performance-levels.md)は、使用しているスループットとストレージによって決まります。コレクションは、1 つまたは複数のパーティション/サーバーにまたがって存在でき、拡張性があるので、扱うことのできるストレージのボリュームやスループットには実質的に制限がありません。
 
-Collections are also the billing entities for DocumentDB. Each collection is billed hourly based on the provisioned throughput and the storage space used. For more information, see [DocumentDB pricing](https://azure.microsoft.com/pricing/details/documentdb/).  
+コレクションも DocumentDB の課金エンティティです。各コレクションは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。詳細については、「[DocumentDB の価格](https://azure.microsoft.com/pricing/details/documentdb/)」を参照してください。
 
-### <a name="how-do-i-set-up-users-and-permissions?"></a>How do I set up users and permissions?
-You can create users and permissions using one of the [DocumentDB SDKs](documentdb-sdk-dotnet.md) or through the [REST APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx).   
+### どのようにしてユーザーおよびアクセス許可を設定しますか?
+[DocumentDB SDK](documentdb-sdk-dotnet.md) または [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を使用して、ユーザーおよびアクセス許可を作成できます。
 
-## <a name="database-questions-about-developing-against-microsoft-azure-documentdb"></a>Database questions about developing against Microsoft Azure DocumentDB
+## Microsoft Azure DocumentDB に対する開発についてのデータベース質問
 
-### <a name="how-to-do-i-start-developing-against-documentdb?"></a>How to do I start developing against DocumentDB?
-[SDKs](documentdb-sdk-dotnet.md) are available for .NET, Python, Node.js, JavaScript, and Java.  Developers can also leverage the [RESTful HTTP APIs](https://msdn.microsoft.com/library/azure/dn781481.aspx) to interact with DocumentDB resources from a variety of platforms and languages. 
+### どのようにして DocumentDB に対する開発を開始しますか?
+.NET、Python、Node.js、JavaScript、および Java では、[SDK](documentdb-sdk-dotnet.md) が利用可能です。開発者は、[RESTful HTTP API](https://msdn.microsoft.com/library/azure/dn781481.aspx) を利用して、さまざまなプラットフォームおよび言語から DocumentDB リソースとやり取りすることもできます。
 
-Samples for the DocumentDB [.NET](documentdb-dotnet-samples.md), [Java](https://github.com/Azure/azure-documentdb-java), [Node.js](documentdb-nodejs-samples.md), and [Python](documentdb-python-samples.md) SDKs are available on GitHub.
+GitHub では、[.NET](documentdb-dotnet-samples.md)、[Java](https://github.com/Azure/azure-documentdb-java)、[Node.js](documentdb-nodejs-samples.md)、[Python](documentdb-python-samples.md) 用の DocumentDB SDK のサンプルを入手できます。
 
-### <a name="does-documentdb-support-sql?"></a>Does DocumentDB support SQL?
-The DocumentDB SQL query language is an enhanced subset of the query functionality supported by SQL. The DocumentDB SQL query language provides rich hierarchical and relational operators and extensibility via JavaScript based user defined functions (UDFs). JSON grammar allows for modeling JSON documents as trees with labels as the tree nodes, which is used by both the DocumentDB automatic indexing techniques as well as the SQL query dialect of DocumentDB.  For details on how to use the SQL grammar, please see the [Query DocumentDB][query] article.
+### DocumentDB は SQL をサポートしますか?
+DocumentDB SQL クエリ言語は、SQL でサポートされるクエリ機能の強化版サブセットです。DocumentDB の SQL クエリ言語は、JavaScript ベースのユーザー定義関数 (UDF) により高度な階層型の関係演算子と機能拡張を提供します。JSON 文法では、JSON ドキュメントをツリー ノードとしてラベルが付けられたツリーとしてモデル化することができます。これは、DocumentDB の自動的なインデックス作成手法と DocumentDB の SQL クエリ方言の両方で利用されます。SQL 文法の使用方法の詳細については、「[DocumentDB のクエリ][query]」を参照してください。
 
-### <a name="what-are-the-data-types-supported-by-documentdb?"></a>What are the data types supported by DocumentDB?
-The primitive data types supported in DocumentDB are the same as JSON. JSON has a simple type system that consists of Strings, Numbers (IEEE754 double precision), and Booleans - true, false, and Nulls.  More complex data types like DateTime, Guid, Int64, and Geometry can be represented both in JSON and DocumentDB through the creation of nested objects using the { } operator and arrays using the [ ] operator. 
+### DocumentDB でサポートされるデータ型は何ですか?
+DocumentDB でサポートされるプリミティブ データ型は JSON と同じです。JSON には、文字列、数値 (IEEE754 倍精度)、ブール値 (true、false、Null) で構成されるシンプルな型システムがあります。{ } 演算子で入れ子になったオブジェクトを作成し、[ ] 演算子で配列を作成することにより、さらに複雑なデータ型 (DateTime、Guid、Int64、Geometry など) を JSON と DocumentDB の両方で表現できます。
 
-### <a name="how-does-documentdb-provide-concurrency?"></a>How does DocumentDB provide concurrency?
-DocumentDB supports optimistic concurrency control (OCC) through HTTP entity tags or etags. Every DocumentDB resource has an etag, and the etag is set on the server every time a document is updated. The etag header and the current value are included in all response messages. Etags can be used with the If-Match header to allow the server to decide if a resource should be updated. The If-Match value is the etag value to be checked against. If the etag value matches the server etag value, the resource will be updated. If the etag is no longer current, the server rejects the operation with an "HTTP 412 Precondition failure" response code. The client will then have to refetch the resource to acquire the current etag value for the resource. In addition, etags can be used with If-None-Match header to determine if a re-fetch of a resource is needed. 
+### DocumentDB はどのようにして同時実行を提供しますか?
+DocumentDB では、HTTP エンティティ タグ (または ETag) によるオプティミスティック同時実行制御 (OCC) をサポートしています。すべての DocumentDB リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。Etag を If-Match ヘッダーと共に使用すると、サーバーでリソースを更新するかどうかを判定できるようになります。If-Match 値は、チェック対象の ETag 値です。対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。ETag が現在の値ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。この場合、クライアントでは、リソースを再フェッチしてリソースの現在の ETag 値を取得する必要があります。また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判定することができます。
 
-To use optimistic concurrency in .NET, use the [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) class. For a .NET sample, see [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) in the DocumentManagement sample on github.
+.NET でオプティミスティック同時実行制御を使用するには、[AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) クラスを使用します。.NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
 
-### <a name="how-do-i-perform-transactions-in-documentdb?"></a>How do I perform transactions in DocumentDB?
-DocumentDB supports language-integrated transactions via JavaScript stored procedures and triggers. All database operations inside scripts are executed under snapshot isolation scoped to the collection if it is a single-partition collection, or documents with the same partition key value within a collection, if the collection is partitioned. A snapshot of the document versions (ETags) is taken at the start of the transaction and committed only if the script succeeds. If the JavaScript throws an error, the transaction is rolled back. See [DocumentDB server-side programming](documentdb-programming.md) for more details.
+### どのようにして DocumentDB のトランザクションを実行しますか?
+DocumentDB では、JavaScript ストアド プロシージャおよびトリガーを介して、統合された言語のトランザクションがサポートされます。スクリプト内のすべてのデータベース操作は、単一パーティション コレクションの場合はコレクションを対象として、スナップショット分離下で実行されます。コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントを対象として実行されます。ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。JavaScript がエラーをスローした場合、トランザクションはロールバックされます。詳細については、「[DocumentDB server-side programming](documentdb-programming.md)」(DocumentDB のサーバー側プログラミング) を参照してください。
 
-### <a name="how-can-i-bulk-insert-documents-into-documentdb?"></a>How can I bulk insert documents into DocumentDB? 
-There are three ways to bulk insert documents into DocumentDB:
+### どのようにして DocumentDB にドキュメントを一括挿入しますか? 
+DocumentDB にドキュメントを一括挿入するには 3 つの方法があります。
 
-- The data migration tool, as described in [Import data to DocumentDB](documentdb-import-data.md).
-- Document Explorer in the Azure Portal, as described in [Bulk add documents with Document Explorer](documentdb-view-json-document-explorer.md#BulkAdd).
-- Stored procedures, as described in [DocumentDB server-side programming](documentdb-programming.md).
+- データ移行ツール。「[DocumentDB にデータをインポートする](documentdb-import-data.md)」を参照してください。
+- Azure ポータルの Document Explorer。「[Document Explorer を使用したドキュメントの一括追加](documentdb-view-json-document-explorer.md#BulkAdd)」を参照してください。
+- ストアド プロシージャ。「[DocumentDB のサーバー側プログラミング](documentdb-programming.md)」を参照してください。
 
-### <a name="does-documentdb-support-resource-link-caching?"></a>Does DocumentDB support resource link caching?
-Yes, because DocumentDB is a RESTful service, resource links are immutable and can be cached. DocumentDB clients can specify an "If-None-Match" header for reads against any resource like document or collection and update their local copies only when the server version has change. 
+### DocumentDB はリソース リンク キャッシュをサポートしますか?
+はい、DocumentDB は RESTful サービスであるため、リソース リンクは不変であり、キャッシュできます。DocumentDB クライアントは、ドキュメントやコレクションなどリソースの読み取りに対して "If-None-Match" ヘッダーを指定でき、サーバー バージョンが変更された場合のみローカル コピーを更新できます。
 
-### <a name="is-a-local-instance-of-documentdb-available?"></a>Is a local instance of DocumentDB available?
-At this time a local instance of DocumentDB is not available. You can track the status of a local emulator and vote for it on the [feedback forum](https://feedback.azure.com/forums/263030-documentdb/suggestions/6328798-standalone-local-instance).
+### DocumentDB のローカル インスタンスは使用できますか?
+現在、DocumentDB のローカル インスタンスは使用できません。[フィードバック フォーラム](https://feedback.azure.com/forums/263030-documentdb/suggestions/6328798-standalone-local-instance)では、ローカル エミュレーターについて状況の追跡と投票ができます。
 
 
 [azure-portal]: https://portal.azure.com
 [query]: documentdb-sql-query.md
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

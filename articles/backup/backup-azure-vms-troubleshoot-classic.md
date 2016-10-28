@@ -1,132 +1,122 @@
 <properties
-    pageTitle="Troubleshoot Azure virtual machine backup | Microsoft Azure"
-    description="Troubleshoot backup and restore of Azure virtual machines"
-    services="backup"
-    documentationCenter=""
-    authors="trinadhk"
-    manager="shreeshd"
-    editor=""/>
+	pageTitle="Azure 仮想マシンのバックアップのトラブルシューティング | Microsoft Azure"
+	description="Azure 仮想マシンのバックアップと復元のトラブルシューティング"
+	services="backup"
+	documentationCenter=""
+	authors="trinadhk"
+	manager="shreeshd"
+	editor=""/>
 
 <tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/26/2016"
-    ms.author="trinadhk;jimpark;"/>
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/26/2016"
+	ms.author="trinadhk;jimpark;"/>
 
 
-
-# <a name="troubleshoot-azure-virtual-machine-backup"></a>Troubleshoot Azure virtual machine backup
+# Azure 仮想マシンのバックアップのトラブルシューティング
 
 > [AZURE.SELECTOR]
-- [Recovery services vault](backup-azure-vms-troubleshoot.md)
-- [Backup vault](backup-azure-vms-troubleshoot-classic.md)
+- [Recovery Services コンテナー](backup-azure-vms-troubleshoot.md)
+- [バックアップ資格情報コンテナー](backup-azure-vms-troubleshoot-classic.md)
 
-You can troubleshoot errors encountered while using Azure Backup with information listed in the table below.
+次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
-## <a name="discovery"></a>Discovery
+## 探索
 
-| Backup operation | Error details | Workaround |
+| バックアップ操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| Discovery | Failed to discover new items - Microsoft Azure Backup encountered and internal error. Wait for a few minutes and then try the operation again. | Retry the discovery process after 15 minutes.
-| Discovery | Failed to discover new items – Another Discovery operation is already in progress. Please wait until the current Discovery operation has completed. | None |
+| 探索 | 新しい項目を探索できませんでした - Microsoft Azure Backup で、内部エラーが発生しました。しばらくしてから操作をやり直してください。 | 15 分後に探索プロセスを再試行します。
+| 探索 | 新しい項目を探索できませんでした - 別の探索操作が既に進行中です。現在の探索操作が完了するまでお待ちください。 | なし |
 
-## <a name="register"></a>Register
-| Backup operation | Error details | Workaround |
+## 登録
+| バックアップ操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| Register | Number of data disks attached to the virtual machine exceeded the supported limit - Please detach some data disks on this virtual machine and retry the operation. Azure backup supports up to 16 data disks attached to an Azure virtual machine for backup | None |
-| Register | Microsoft Azure Backup encountered an internal error - Wait for a few minutes and then try the operation again. If the issue persists, contact Microsoft Support. | You can get this error due to one of the following unsupported configuration of VM on  Premium LRS. <br> Premium storage VMs can be backed up using recovery services vault. [Learn More](backup-introduction-to-azure-backup.md/#back-up-and-restore-premium-storage-vms) |
-| Register | Registration failed with Install Agent operation timeout | Check if the OS version of the virtual machine is supported. |
-| Register | Command execution failed - Another operation is in progress on this item. Please wait until the previous operation is completed | None |
-| Register | Virtual machines having virtual hard disks stored on Premium storage are not supported for backup | None |
-| Register | Virtual machine agent is not present on the virtual machine - Please install the required pre-requisite, VM agent and restart the operation. | [Read more](#vm-agent) about VM agent installation, and how to validate the VM agent installation. |
+| 登録 | 仮想マシンに接続されたデータ ディスクの数がサポートされている上限を超えています - この仮想マシンのデータ ディスクをいくつか切断してから、操作をやり直してください。Azure Backup では、バックアップ用に Azure の仮想マシンに接続できるデータ ディスクは 16 個までです。 | なし |
+| 登録 | Microsoft Azure Backup で内部エラーが発生しました。しばらくしてから操作をやり直してください。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。 | このエラーは、Premium LRS の VM の次のいずれかの構成がサポートされていないことが原因で発生する場合があります。<br> Premium Storage の VM は、Recovery Services コンテナーを使用してバックアップできます。[詳細情報](backup-introduction-to-azure-backup.md/#back-up-and-restore-premium-storage-vms) |
+| 登録 | エージェントのインストール処理がタイムアウトしたため、登録できませんでした | 仮想マシンの OS のバージョンがサポート対象かどうかを確認します。 |
+| 登録 | コマンド実行に失敗しました - この項目で別の操作が実行中です。前の操作が完了するまでお待ちください。 | なし |
+| 登録 | 仮想ハード ディスクが Premium Storage に格納されている仮想マシンは、バックアップでサポートされていません。 | なし |
+| 登録 | 仮想マシン エージェントが仮想マシン上に存在しません - 必要な前提条件である VM エージェントをインストールしてから、操作をやり直してください。 | VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
 
-## <a name="backup"></a>Backup
+## バックアップ
 
-| Backup operation | Error details | Workaround |
+| バックアップ操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| Backup | Could not communicate with the VM agent for snapshot status. Snapshot VM sub task timed out. - Please see the troubleshooting guide on how to resolve this. | This error is thrown if there is a problem with the VM Agent or network access to the Azure infrastructure is blocked in some way. Learn more about [debugging up VM snapshot issues](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md). <br> If the VM agent is not causing any issues, then restart the VM. At times an incorrect VM state can cause issues and restarting the VM resets this "bad state" |
-| Backup | Backup failed with an internal error - Please retry the operation in a few minutes. If the problem persists, contact Microsoft Support | Please check if there is a transient issue in accessing VM storage. Please check [Azure Status](https://azure.microsoft.com/en-us/status/) to see if there is any on-going issue related to compute/storage/network in the region. Please retry the backup post issue is mitigated. |
-| Backup | Could not perform the operation as VM no longer exists. | Backup cannot be performed as the VM configured for backup has been deleted. Please stop further backups by going to Protected items view, select protected item and click on Stop Protection. You can retain data by selecting Retain Backup data option. You can later resume protection for this virtual machine by clicking on configure protection from Registered Items view|
-| Backup | Failed to install the Azure Recovery Services extension on the selected item - VM Agent is a pre-requisite for Azure Recovery Services Extension. Please install the Azure VM agent and restart the registration operation | <ol> <li>Check if the VM agent has been installed correctly. <li>Ensure that the flag on the VM config is set correctly.</ol> [Read more](#validating-vm-agent-installation) about VM agent installation, and how to validate the VM agent installation. |
-| Backup | Command execution failed - Another operation is currently in progress on this item. Please wait until the previous operation is completed, and then retry | An existing backup or restore job for the VM is running, and a new job cannot be started while the existing job is running. |
-| Backup | Extension installation failed with the error "COM+ was unable to talk to the Microsoft Distributed Transaction Coordinator | This usually means that the COM+ service is not running. Contact Microsoft support for help on fixing this issue. |
-| Backup | Snapshot operation failed with the VSS operation error "This drive is locked by BitLocker Drive Encryption. You must unlock this drive from Control Panel. | Turn off BitLocker for all drives on the VM and observe if the VSS issue is resolved |
-| Backup | Virtual machines having virtual hard disks stored on Premium storage are not supported for backup | None |
-| Backup | Azure Virtual Machine Not Found. | This happens when the primary VM is deleted but the backup policy continues to look for a VM to perform backup. To fix this error: <ol><li>Recreate the virtual machine with the same name and same resource group name [cloud service name], <br>(OR) <li> Disable protection for this VM so that subsequent backups will not get triggered. </ol> |
-| Backup | Virtual machine agent is not present on the virtual machine - Please install the required pre-requisite, VM agent and restart the operation. | [Read more](#vm-agent) about VM agent installation, and how to validate the VM agent installation. |
+| バックアップ | スナップショットの状態について VM エージェントと通信できませんでした。スナップショット VM サブタスクがタイムアウトしました。 - この問題を解決する方法については、トラブルシューティング ガイドを参照してください。 | VM エージェントに問題があるか、Azure インフラストラクチャへのネットワーク アクセスが何らかの原因でブロックされている場合に、このエラーがスローされます。[VM のスナップショットに関する問題のデバッグについては、こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md)を参照してください。<br> VM エージェントで問題が発生していない場合は、VM を再起動してください。VM の状態が正しくないため問題が発生する場合があります。その場合は、VM を再起動すると、この "問題のある状態" がリセットされます。 |
+| バックアップ | バックアップ操作は内部エラーのため失敗しました - 数分以内に操作をやり直してください。問題が解決しない場合は、Microsoft サポートにお問い合わせください。 | VM ストレージへのアクセスに関する一時的な問題があるかどうかを確認してください。[Azure の状態](https://azure.microsoft.com/status/)を調べて、リージョンのコンピューティング/ストレージ/ネットワークに関連する問題が発生していないかどうかを確認します。バックアップをもう一度実行し、問題が軽減されないか確認してください。 |
+| バックアップ | 既に VM が存在しないため、操作を実行できませんでした。 | バックアップ用に構成された VM が削除されているため、バックアップを実行できません。[保護された項目] ビューで保護された項目を選択し、[保護の停止] をクリックして、バックアップを停止してください。[バックアップ データの保持] オプションを選択すると、データを保持できます。[保護された項目] ビューで [保護を構成] をクリックすることで、この仮想マシンの保護を後で再開できます。|
+| バックアップ | 選択した項目に Azure Recovery Services 拡張機能をインストールできませんでした - VM エージェントは、Azure Recovery Services 拡張機能の前提条件です。Azure VM エージェントをインストールしてから、登録操作をやり直してください。 | <ol> <li>VM エージェントが正しくインストールされていることを確認します。<li>VM 構成のフラグが正しく設定されていることを確認します。</ol> VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#validating-vm-agent-installation)を参照してください。 |
+| バックアップ | コマンド実行に失敗しました - 現在、この項目で別の操作が実行中です。前の操作が完了するまで待ってから、やり直してください。 | VM で既存のバックアップ ジョブまたは復元ジョブが実行されている場合、既存のジョブの実行中に新しいジョブを開始することはできません。 |
+| バックアップ | "COM+: Microsoft 分散トランザクション コーディネーターと通信できませんでした" というエラーで拡張機能のインストールが失敗しました。 | 通常、これは、COM + サービスが実行されていないことを意味します。この問題の修正については、Microsoft サポートにお問い合わせください。 |
+| バックアップ | スナップショットの操作は、"このドライブは、BitLocker ドライブ暗号化でロックされています。コントロール パネルからドライブのロックを解除してください。" という VSS 操作エラーで失敗しました。 | VM 上のすべてのドライブで BitLocker をオフにして、VSS の問題が解決されたかどうかを確認します。 |
+| バックアップ | 仮想ハード ディスクが Premium Storage に格納されている仮想マシンは、バックアップでサポートされていません。 | なし |
+| バックアップ | Azure 仮想マシンが見つかりません。 | これは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップを実行する VM が検索され続ける場合に発生します。このエラーを解決するには、次の手順に従います。<ol><li>同じ名前と同じリソース グループ名 [クラウド サービス名] を使用して仮想マシンを作成し直します。<br>(または)<li>後続のバックアップがトリガーされないように、この VM の保護を無効にします。</ol> |
+| バックアップ | 仮想マシン エージェントが仮想マシン上に存在しません - 必要な前提条件である VM エージェントをインストールしてから、操作をやり直してください。 | VM エージェントのインストール方法と、VM エージェントのインストールを検証する方法については、[こちら](#vm-agent)を参照してください。 |
 
-## <a name="jobs"></a>Jobs
-| Operation | Error details | Workaround |
+## ジョブ
+| 操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| Cancel job | Cancellation is not supported for this job type - Please wait until the job completes. | None |
-| Cancel job | The job is not in a cancelable state - Please wait until the job completes. <br>OR<br> The selected job is not in a cancelable state - Please wait for the job to complete.| In all likelihood, the job is almost completed; please wait until the job completes |
-| Cancel job | Cannot cancel the job because it is not in progress - Cancellation is only supported for jobs which are in progress. Please attempt cancel on an in progress job. | This happens due to a transitory state. Wait for a minute and retry the cancel operation |
-| Cancel job | Failed to cancel the Job - Please wait until job finishes. | None |
+| ジョブの取り消し | このジョブの種類では取り消しがサポートされていません - ジョブが完了するまでお待ちください。 | なし |
+| ジョブの取り消し | ジョブが取り消しできる状態にありません - ジョブが完了するまでお待ちください。<br>または<br>選択したジョブは取り消しできる状態にありません - ジョブが完了するまでお待ちください。| ジョブはほぼ完了しています。ジョブが完了するまでお待ちください。 |
+| ジョブの取り消し | 進行中ではないためジョブを取り消すことができません - 取り消しがサポートされているのは、進行中のジョブだけです。進行中のジョブの取り消しを試してください。 | これは一時的な状態が原因で発生しています。しばらく待ってから取り消し操作をやり直してください。 |
+| ジョブの取り消し | ジョブを取り消すことができませんでした - ジョブが終了するまでお待ちください。 | なし |
 
 
-## <a name="restore"></a>Restore
-| Operation | Error details | Workaround |
+## 復元
+| 操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| Restore | Restore failed with Cloud Internal error | <ol><li>Cloud service to which you are trying to restore is configured with DNS settings. You can check <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"  Get-AzureDns -DnsSettings $deployment.DnsSettings<br>If there is Address configured, this means that DNS settings are configured.<br> <li>Cloud service to which to you are trying to restore is configured with ReservedIP and existing VMs in cloud service are in stopped state.<br>You can check a cloud service has reserved IP by using following powershell cmdlets:<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>You are trying to restore a virtual machine with following special network configurations in to same cloud service. <br>- Virtual machines under load balancer configuration (Internal and external)<br>- Virtual machines with multiple Reserved IPs<br>- Virtual machines with multiple NICs<br>Please select a new cloud service in the UI or please refer to [restore considerations](./backup-azure-restore-vms.md/#restoring-vms-with-special-network-configurations) for VMs with special network configurations</ol> |
-| Restore | The selected DNS name is already taken - Please specify a different DNS name and try again. | The DNS name here refers to the cloud service name (usually ending with .cloudapp.net). This needs to be unique. If you encounter this error, you need to choose a different VM name during restore. <br><br> This error is shown only to users of the Azure portal. The restore operation through PowerShell succeeds because it only restores the disks and doesn't create the VM. The error will be faced when the VM is explicitly created by you after the disk restore operation. |
-| Restore | The specified virtual network configuration is not correct - Please specify a different virtual network configuration and try again. | None |
-| Restore | The specified cloud service is using a reserved IP, which doesn't match with the configuration of the virtual machine being restored - Please specify a different cloud service which is not using reserved IP, or choose another recovery point to restore from. | None |
-| Restore | Cloud service has reached limit on number of input end points - Retry the operation by specifying a different cloud service or by using an existing endpoint. | None |
-| Restore | Backup vault and target storage account are in two different regions - Ensure that the storage account specified in restore operation is in the same Azure region as the backup vault. | None |
-| Restore | Storage Account specified for the restore operation is not supported - Only Basic/Standard storage accounts with locally redundant or geo redundant replication settings are supported. Please select a supported storage account | None |
-| Restore | Type of Storage Account specified for restore operation is not online - Make sure that the storage account specified in restore operation is online | This might happen because of a transient error in Azure Storage or due to an outage. Please choose another storage account. |
-| Restore | Resource Group Quota has been reached - Please delete some resource groups from Azure portal or contact Azure support to increase the limits. | None |
-| Restore | Selected subnet does not exist - Please select a subnet which exists | None |
+| 復元 | クラウドの内部エラーの復元に失敗しました | <ol><li>復元を試みているクラウド サービスが DNS 設定で構成されています。<br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production" Get-AzureDns -DnsSettings $deployment.DnsSettings<br> を確認します。構成済みのアドレスがある場合は、DNS 設定が構成されていることを意味します。<br> <li>復元を試みているクラウド サービスが ReservedIP で構成されていて、クラウド サービスの既存の VM が停止状態になっています。<br>次の PowerShell コマンドレットを使用して、クラウド サービスに予約済み IP があることを確認できます。<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>次の特殊なネットワーク構成の仮想マシンを同じクラウド サービスに復元しようとしています。<br>- ロード バランサー構成の仮想マシン (内部と外部)<br>- 複数の予約済み IP がある仮想マシン<br>- 複数の NIC がある仮想マシン<br>UI で新しいクラウド サービスを選択するか、特殊なネットワーク構成の VM の[復元に関する考慮事項](./backup-azure-restore-vms.md/#restoring-vms-with-special-network-configurations)を参照してください</ol> |
+| 復元 | 選択した DNS 名は既に使用されています - 別の DNS 名を指定してからやり直してください。 | この場合、DNS 名はクラウド サービス名 (通常、末尾に cloudapp.net が付いています) を表します。これは一意である必要があります。このエラーが発生した場合は、復元中に別の VM の名前を選択する必要があります。<br><br> このエラーは Azure Portal のユーザーのみに表示されます。PowerShell による復元操作は、ディスクを復元するだけで VM を作成しないため、成功します。ディスクの復元操作後に VM を明示的に作成すると、このエラーが発生します。 |
+| 復元 | 指定された仮想ネットワークの構成が正しくありません - 別の仮想ネットワークの構成を指定してからやり直してください。 | なし |
+| 復元 | 指定したクラウド サービスでは、復元対象の仮想マシンの構成と一致しない予約済み IP が使用されています - 予約済み IP を使用していない別のクラウド サービスを指定するか、復元元に別の回復ポイントを選択してください。 | なし |
+| 復元 | クラウド サービスが入力エンドポイントの数に制限に達しました - 別のクラウド サービスを指定するか既存のエンドポイントを使用して、操作をやり直してください。 | なし |
+| 復元 | バックアップ資格情報コンテナーと対象のストレージ アカウントが 2 つの異なるリージョンに存在します - 復元操作で指定したストレージ アカウントが、バックアップ資格情報コンテナーと同じ Azure リージョンに存在するようにしてください。 | なし |
+| 復元 | 復元操作に指定されたストレージ アカウントがサポートされていません - サポートされているのは、ローカル冗長レプリケーションまたは geo 冗長レプリケーションの設定が指定された Basic または Standard ストレージ アカウントのみです。サポートされているストレージ アカウントを選択してください。 | なし |
+| 復元 | 復元操作に指定されたストレージ アカウントの種類がオンラインではありません - 復元操作で指定したストレージ アカウントがオンラインであることを確認してください。 | これは、Azure Storage の一時的なエラーや障害が原因で発生する可能性があります。別のストレージ アカウントを選択してください。 |
+| 復元 | リソース グループのクォータに達しました - Azure ポータルの一部のリソース グループを削除するか、Azure サポートに問い合わせて上限を引き上げてください。 | なし |
+| 復元 | 選択したサブネットが存在しません - 存在するサブネットを選択してください。 | なし |
 
 
-## <a name="policy"></a>Policy
-| Operation | Error details | Workaround |
+## ポリシー
+| 操作 | エラーの詳細 | 対処法 |
 | -------- | -------- | -------|
-| Create policy | Failed to create the policy - Please reduce the retention choices to continue with policy configuration. | None |
+| ポリシーの作成 | ポリシーを作成できませんでした - リテンション期間の選択肢を減らしてポリシーの構成を続行してください。 | なし |
 
 
-## <a name="vm-agent"></a>VM Agent
+## VM エージェント
 
-### <a name="setting-up-the-vm-agent"></a>Setting up the VM Agent
-Typically, the VM Agent is already present in VMs that are created from the Azure gallery. However, virtual machines that are migrated from on-premises datacenters would not have the VM Agent installed. For such VMs, the VM Agent needs to be installed explicitly. Read more about [installing the VM agent on an existing VM](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx).
+### VM エージェントの設定
+通常、VM エージェントは、Azure ギャラリーから作成された仮想マシン内に既に存在しています。しかし、オンプレミスのデータセンターから移行された仮想マシンには VM エージェントがインストールされていません。このような VM については、VM エージェントを明示的にインストールする必要があります。既存の仮想マシンに VM エージェントをインストールする方法については、[こちら](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)を参照してください。
 
-For Windows VMs:
+Windows VM の場合:
 
-- Download and install the [agent MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). You will need Administrator privileges to complete the installation.
-- [Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed.
+- [エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。インストールを実行するには、管理者特権が必要です。
+- [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。
 
-For Linux VMs:
+Linux VM の場合:
 
-- Install latest [Linux agent](https://github.com/Azure/WALinuxAgent) from github.
-- [Update the VM property](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx) to indicate that the agent is installed.
-
-
-### <a name="updating-the-vm-agent"></a>Updating the VM Agent
-For Windows VMs:
-
-- Updating the VM Agent is as simple as reinstalling the [VM Agent binaries](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). However, you need to ensure that no backup operation is running while the VM Agent is being updated.
-
-For Linux VMs:
-
-- Follow the instructions on [Updating Linux VM Agent](../virtual-machines/virtual-machines-linux-update-agent.md).
+- github から最新の [Linux エージェント](https://github.com/Azure/WALinuxAgent)をインストールします。
+- [VM プロパティを更新](http://blogs.msdn.com/b/mast/archive/2014/04/08/install-the-vm-agent-on-an-existing-azure-vm.aspx)して、エージェントがインストールされていることを示します。
 
 
-### <a name="validating-vm-agent-installation"></a>Validating VM Agent installation
-How to check for the VM Agent version on Windows VMs:
+### VM エージェントの更新
+Windows VM の場合:
 
-1. Log on to the Azure virtual machine and navigate to the folder *C:\WindowsAzure\Packages*. You should find the WaAppAgent.exe file present.
-2. Right-click the file, go to **Properties**, and then select the **Details** tab. The Product Version field should be 2.6.1198.718 or higher
+- VM エージェントを更新するには、単純に [VM エージェント バイナリ](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)を再インストールします。ただし、VM エージェントの更新中にバックアップ操作が実行されないようにする必要があります。
 
+Linux VM の場合:
 
-
-
-
+- [Linux VM エージェントの更新](../virtual-machines/virtual-machines-linux-update-agent.md)に関する手順に従ってください。
 
 
+### VM エージェントのインストールの検証
+Windows VM 上で VM エージェントのバージョンを確認する方法:
 
-<!--HONumber=Oct16_HO2-->
+1. Azure 仮想マシンにログオンし、フォルダー *C:\\WindowsAzure\\Packages* に移動します。WaAppAgent.exe ファイルを探します。
+2. このファイルを右クリックして、**[プロパティ]** をクリックした後、**[詳細]** タブを選択します。[製品バージョン] が 2.6.1198.718 以上であることを確認します。
 
-
+<!---HONumber=AcomDC_0921_2016-->

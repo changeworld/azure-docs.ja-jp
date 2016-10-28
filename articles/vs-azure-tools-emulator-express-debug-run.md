@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Using Emulator Express to run and debug a cloud service on a local machine | Microsoft Azure"
-   description="Using Emulator Express to run and debug a cloud service on a local machine"
+   pageTitle="Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ | Microsoft Azure"
+   description="Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ"
    services="visual-studio-online"
    documentationCenter="n/a"
    authors="TomArcher"
@@ -16,47 +16,42 @@
    ms.author="tarcher" />
 
 
+# Emulator Express を使用したローカル コンピューターでのクラウド サービス実行とデバッグ
 
-# <a name="using-emulator-express-to-run-and-debug-a-cloud-service-on-a-local-machine"></a>Using Emulator Express to run and debug a cloud service on a local machine
+Emulator Express を使用することにより、管理者として Visual Studio を実行せずに、クラウド サービスをテストおよびデバッグできます。クラウド サービスの要件に応じて、Emulator Express または完全なエミュレーターのどちらを使用するかをプロジェクト設定で指定できます。完全なエミュレーターの詳細については、「[コンピューティング エミュレーターでの Azure アプリケーションの実行](./storage/storage-use-emulator.md)」を参照してください。Emulator Express は Azure SDK 2.1 で最初に付属し、Azure SDK 2.3 以降は既定のエミュレーターになりました。
 
-By using Emulator Express, you can test and debug a cloud service without running Visual Studio as an administrator. You can set your project settings to use either Emulator Express or the full emulator, depending on the requirements of your cloud service. For more information about the full emulator, see [Run an Azure Application in the Compute Emulator](./storage/storage-use-emulator.md). Emulator Express was first included in Azure SDK 2.1, and as of Azure SDK 2.3, it is the default emulator.
+## Visual Studio IDE での Emulator Express の使用
 
-## <a name="using-emulator-express-in-the-visual-studio-ide"></a>Using Emulator Express in the Visual Studio IDE
+Azure SDK 2.3 以降で新しいプロジェクト作成すると、Emulator Express が既に選択されています。以前のバージョンの SDK で作成した既存のプロジェクトは、次の手順に従って Emulator Express を選択します。
 
-When you create a new project in Azure SDK 2.3 or later, Emulator Express is already selected. For existing projects that were created with an earlier version of the SDK, follow these steps to select Emulator Express.
+### Emulator Express を使用するようにプロジェクトを構成するには
 
-### <a name="to-configure-a-project-to-use-emulator-express"></a>To configure a project to use Emulator Express
+1. Azure プロジェクトのショートカット メニューで、**[プロパティ]** を選択し、**[Web]** タブを選択します。
 
-1. On the shortcut menu for the Azure project, choose **Properties**, and then choose the **Web** tab.
+1. **[ローカル開発サーバー]** で、**[IIS Express を使用する]** オプションを選択します。Emulator Express は IIS Web サーバーと互換性がありません。
 
-1. Under **Local Development Server**, choose the **Use IIS Express option** button. Emulator Express isn't compatible with IIS Web Server.
-
-1. Under **Emulator**, choose the **Use Emulator Express** option button.
+1. **[エミュレーター]** で、**[Emulator Express を使用する]** オプションを選択します。
 
     ![Emulator Express](./media/vs-azure-tools-emulator-express-debug-run/IC673363.gif)
 
-## <a name="launching-emulator-express-at-a-command-prompt"></a>Launching Emulator Express at a command prompt
+## コマンド プロンプトでの Emulator Express の起動
 
-At a command prompt, you can launch the express version of the Azure Compute Emulator, csrun.exe, by using the /useemulatorexpress option.
+コマンド プロンプトで、Express バージョンの Azure コンピューティング エミュレーター csrun.exe を起動するには、/useemulatorexpress オプションを使用します。
 
-## <a name="limitations"></a>Limitations
+## 制限事項
 
-Before you use Emulator Express, you should be aware of some limitations:
+Emulator Express を使用する前に、いくつかの制限事項に注意する必要があります。
 
-- Emulator Express isn't compatible with IIS Web Server.
+- Emulator Express は IIS Web サーバーと互換性がありません。
 
-- Your cloud service can contain multiple roles, but each role is limited to one instance.
+- クラウド サービスには複数のロールを含めることができますが、各ロールのインスタンスは 1 つに制限されます。
 
-- You can't access port numbers below 1000. For example, if you use an authentication provider that normally uses a port below 1000, you might need to change this value to a port number that's above 1000.
+- 1,000 未満のポート番号にはアクセスできません。たとえば、通常 1,000 未満のポートが使用される認証プロバイダーを使用する場合は、この値を 1,000 を超えるポート番号に変更する必要がある可能性があります。
 
-- Any limitations that apply to the Azure Compute Emulator also apply to Emulator Express. For example, you can't have more than 50 role instances per deployment. See [Run an Azure Application in the Compute Emulator](http://go.microsoft.com/fwlink/p/?LinkId=623050)
+- Azure コンピューティング エミュレーターに適用されるすべての制限は、Emulator Express にも適用されます。たとえば、デプロイあたり 50 を超えるロール インスタンスを保持できません。[コンピューティング エミュレーターでの Azure アプリケーションの実行](http://go.microsoft.com/fwlink/p/?LinkId=623050)に関するページを参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Debugging Cloud Services](https://msdn.microsoft.com/library/azure/ee405479.aspx)
+[Cloud Services のデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,123 +1,116 @@
 <properties
-    pageTitle="Create a new elastic pool with the Azure portal | Microsoft Azure"
-    description="How to add a scalable elastic database pool to your SQL database configuration for easier administration and resource sharing across many databases."
-    keywords="scalable database,database configuration"
-    services="sql-database"
-    documentationCenter=""
-    authors="ninarn"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="Azure ポータルによる新しいエラスティック プールの作成 | Microsoft Azure"
+	description="SQL Database 構成にスケーラブルなエラスティック データベース プールを追加して、多数のデータベースの管理とリソース共有を簡単にする方法について説明します。"
+	keywords="スケーラブルなデータベース、データベースの構成"
+	services="sql-database"
+	documentationCenter=""
+	authors="ninarn"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.date="07/20/2016"
-    ms.author="ninarn"
-    ms.workload="data-management"
-    ms.topic="get-started-article"
-    ms.tgt_pltfrm="NA"/>
+	ms.service="sql-database"
+	ms.devlang="NA"
+	ms.date="07/20/2016"
+	ms.author="ninarn"
+	ms.workload="data-management"
+	ms.topic="get-started-article"
+	ms.tgt_pltfrm="NA"/>
 
 
-
-# <a name="create-a-new-elastic-database-pool-with-the-azure-portal"></a>Create a new elastic database pool with the Azure portal
+# Azure ポータルによる新しい Elastic Database プールの作成
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-elastic-pool-create-portal.md)
+- [Azure ポータル](sql-database-elastic-pool-create-portal.md)
 - [PowerShell](sql-database-elastic-pool-create-powershell.md)
 - [C#](sql-database-elastic-pool-create-csharp.md)
 
-This article shows you how to create a scalable [elastic database pool](sql-database-elastic-pool.md) with the [Azure portal](https://portal.azure.com/). There are two ways you can create a pool. You can do it from scratch if you know the pool setup you want, or start with a recommendation from the service. SQL Database has built-in intelligence that recommends a pool setup if it's more cost-efficient for you based on the past usage telemetry for your databases.
+この記事では、[Azure ポータル](https://portal.azure.com/)でスケーラブルな[エラスティック データベース プール](sql-database-elastic-pool.md)を作成する方法について説明します。プールを作成する方法は 2 つあります。目的のプール設定がわかっている場合は、一から作成できます。また、サービスによる推奨設定から始めることもできます。SQL Database には、データベースの過去の使用状況テレメトリに基づいてコスト効率が高いプール設定を推奨するインテリジェンスが組み込まれています。
 
-You can add multiple pools to a server, but you can't add databases from different servers into the same pool. To create a pool, you need at least one database in a V12 server. If you don't have one, see [Create your first Azure SQL database](sql-database-get-started.md). You can create a pool with only one database, but pools are only cost-efficient with multiple databases. See [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md).
+サーバーに複数のプールを追加することはできますが、同じプールに異なるサーバーからデータベースを追加することはできません。プールを作成するには、V12 サーバーに 1 つ以上のデータベースが必要です。データベースがない場合は、「[SQL Database チュートリアル: サンプル データと Azure ポータルを使用して分単位で SQL Database を作成する](sql-database-get-started.md)」を参照してください。データベースが 1 つだけのプールを作成できますが、プールのコスト効率が高いのは、データベースが複数ある場合のみです。「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」を参照してください。
 
-> [AZURE.NOTE] Elastic pools are generally available (GA) in all Azure regions except West India where it is currently in preview.  GA of elastic pools in this region will occur as soon as possible. 
+> [AZURE.NOTE] エラスティック プールは、現在プレビュー段階にあるインド西部を除くすべての Azure リージョンで一般公開 (GA) されています。プレビュー段階のリージョンでも、できるだけ早く一般公開される予定です。
 
-## <a name="step-1:-create-a-new-pool"></a>Step 1: Create a new pool
+## 手順 1. 新しいプールを作成する
 
-This article shows how to create a new pool from an existing **server** blade in the portal, which is the easiest way to move existing databases into a pool. 
+この記事では、ポータルの既存の **[サーバー]** ブレードから新しいプールを作成する方法について説明します。これは、既存のデータベースをプールに移動する最も簡単な方法です。
 
-> [AZURE.NOTE] Whether you already have a server or not, you can also create a new pool from the **SQL elastic pools** blade (below the list on the left side of the portal, click **Browse** **>** **SQL elastic pools**). Clicking **+Add** on the **SQL elastic pools** blade provides steps to create a new server during the pool provisioning workflow.
+> [AZURE.NOTE] 既にサーバーを所有しているかどうかにかかわらず、**[SQL 可変プール]** ブレードから新しいプールを作成することもできます (ポータルの左側の一覧の下で、**[参照]** **、** **[SQL 可変プール]** の順にクリックします)。**[SQL 可変プール]** ブレードで **[+ 追加]** をクリックすると、プールのプロビジョニングのワークフロー中に、新しいサーバーを作成する手順が示されます。
 
-1. In the [Azure portal](http://portal.azure.com/) below the list on the left side, click **Browse** **>** **SQL servers**, and then click the server that contains the databases you want to add to a pool.
-2. Click **New pool**.
+1. [Azure Portal](http://portal.azure.com/) の左側の一覧の下で、**[参照]** **、** **[SQL サーバー]** の順にクリックし、プールに追加するデータベースが含まれているサーバーをクリックします。
+2. **[新しいプール]** をクリックします。
 
-    ![Add pool to a server](./media/sql-database-elastic-pool-create-portal/new-pool.png)
+    ![サーバーへのプールの追加](./media/sql-database-elastic-pool-create-portal/new-pool.png)
 
-    **-OR-**
+    **- または -**
 
-    You may see a message saying there are recommended elastic database pools for the server (V12 only). Click the message to see the recommended pools based on historical database usage telemetry, and then click the tier to see more details and customize the pool. See [Understand pool recommendations](#understand-pool-recommendations) later in this topic for how the recommendation is made.
+    そのサーバーに推奨されるエラスティック データベース プールがあることを示すメッセージが表示される場合があります (V12 のみ)。メッセージをクリックして、データベースの過去の使用状況テレメトリに基づいた推奨のプールを表示します。次に、レベルをクリックして詳細を確認し、プールをカスタマイズします。推奨のしくみについては、このトピックで後述する「[プールの推奨事項について](#understand-pool-recommendations)」を参照してください。
 
-    ![recommended pool](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
+    ![推奨されるプール](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
-    The **Elastic database pool** blade appears, which is where you'll set up your pool. If you clicked **New pool** in the previous step, the portal chooses a **Standard pool** under **Pricing tier**, a unique **Name** for the pool, and a default configuration for the pool. If you chose a recommended pool, the recommended tier and configuration of the pool are already chosen, but you can still change them.
+    **[エラスティック データベース プール]** ブレードが表示されます。ここで、プールを設定します。前の手順で **[新しいプール]** をクリックした場合は、**[価格レベル]** の **[Standard pool (Standard プール)]**、プールの一意の**名前**、プールの既定の構成が選択されます。推奨されるプールを選択した場合は、推奨されるレベルとプールの構成が既に選択されていますが、それらは変更することができます。
 
-    ![Configure elastic pool](./media/sql-database-elastic-pool-create-portal/configure-elastic-pool.png)
+    ![エラスティック プールの構成](./media/sql-database-elastic-pool-create-portal/configure-elastic-pool.png)
 
-3. Specify a name for the elastic pool, or leave it as the default.
+3. エラスティック プールの名前を指定するか、既定値を使用します。
 
-## <a name="step-2:-choose-a-pricing-tier"></a>Step 2: Choose a pricing tier
+## 手順 2. 価格レベルを選択する
 
-The pool's pricing tier determines the features available to the elastic databases in the pool, and the maximum number of eDTUs (eDTU MAX), and storage (GBs) available to each database. For details, see Service Tiers.
+プールの価格レベルによってプールのエラスティック データベースで使用できる機能が決まり、eDTU の最大数 (eDTU MAX) や各データベースで使用できるストレージ容量 (GB) が決まります。詳細については、「サービス プラン」を参照してください。
 
-To change the pricing tier for the pool, click **Pricing tier**, click the pricing tier your want, and then click **Select**.
+プールの価格レベルを変更するには、**[価格レベル]**、目的の価格レベル、**[選択]** の順にクリックします。
 
-> [AZURE.IMPORTANT] After you choose the pricing tier and commit your changes by clicking **OK** in the last step, you won't be able to change the pricing tier of the pool. To change the pricing tier for an existing elastic pool create a new elastic pool in the desired pricing tier and migrate the elastic databases to this new pool.
+> [AZURE.IMPORTANT] 価格レベルを選択し、最後の手順で **[OK]** をクリックして変更を確定すると、プールの価格レベルを変更できなくなります。既存のエラスティック プールの価格レベルを変更するには、任意の価格レベルで新しいエラスティック プールを作成し、その新しいプールにエラスティック データベースを移行します。
 
-![Select a pricing tier](./media/sql-database-elastic-pool-create-portal/pricing-tier.png)
+![料金レベルを選択します](./media/sql-database-elastic-pool-create-portal/pricing-tier.png)
 
-## <a name="step-3:-configure-the-pool"></a>Step 3: Configure the pool
+## 手順 3. プールを構成する
 
-After setting the pricing tier, click Configure pool where you add databases, set pool eDTUs and storage (pool GBs), and where you set the min and max eDTUs for the elastic databases in the pool.
+価格レベルを設定した後は、データベースを追加するプールで [プールの構成] をクリックし、プールの eDTU とストレージ (プールの GB 値) を設定して、さらにプール内のエラスティック データベースの最小および最大 eDTU を設定します。
 
-1. Click **Configure pool**
-2. Select the databases you want to add to the pool. This step is optional while creating the pool. Databases can be added after the pool has been created.
-    To add databases, click **Add database**, click the databases that you want to add, and then click the **Select** button.
+1. **[プールの構成]** をクリックします。
+2. プールに追加するデータベースを選択します。プールを作成する場合、この手順は省略できます。プールが作成されたら、データベースを追加できます。データベースを追加するには、**[データベースの追加]**、追加するデータベース、**[選択]** の順にクリックします。
 
-    ![Add databases](./media/sql-database-elastic-pool-create-portal/add-databases.png)
+    ![データベースの追加](./media/sql-database-elastic-pool-create-portal/add-databases.png)
 
-    If the databases you're working with have enough historical usage telemetry, the **Estimated eDTU and GB usage** graph and the **Actual eDTU usage** bar chart update to help you make configuration decisions. Also, the service may give you a recommendation message to help you right-size the pool. See [Dynamic Recommendations](#dynamic-recommendations).
+    使用するデータベースに過去の使用状況テレメトリが十分にある場合、構成の決定に役立つ **[Estimated eDTU and GB usage (推定される eDTU と GB の使用状況)]** グラフと **[Actual eDTU usage (実際の eDTU 使用量)]** 横棒グラフが更新されます。また、プールの適切なサイズ設定に役立つ推奨事項に関するメッセージが表示される場合もあります。詳細については、「[動的な推奨事項](#dynamic-recommendations)」を参照してください。
 
-3. Use the controls on the **Configure pool** page to explore settings and configure your pool. See [Elastic pools limits](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases) for more detail about limits for each service tier, and see [Price and performance considerations for elastic database pools](sql-database-elastic-pool-guidance.md) for detailed guidance on right-sizing a pool. For more details about pool settings, see [Elastic database pool properties](sql-database-elastic-pool.md#elastic-database-pool-properties).
+3. **[プールの構成]** ページにあるコントロールを使用して設定を確認し、プールを構成します。各サービス レベルの上限の詳細については、[エラスティック プールの上限](sql-database-elastic-pool.md#edtu-and-storage-limits-for-elastic-pools-and-elastic-databases)に関するトピックを参照してください。プールの適切なサイズ設定に関する詳細なガイダンスについては、[エラスティック データベース プールの価格とパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)についての記事を参照してください。プールの設定の詳細については、[エラスティック データベース プールのプロパティ](sql-database-elastic-pool.md#elastic-database-pool-properties)に関するページを参照してください。
 
-    ![Configure Elastic Pool](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
+	![エラスティック プールの構成](./media/sql-database-elastic-pool-create-portal/configure-performance.png)
 
-4. Click **Select** in the **Configure Pool** blade after changing settings.
-5. Click **OK** to create the pool.
+4. 設定を変更したら、**[プールの構成]** ブレードで **[選択]** をクリックします。
+5. **[OK]** をクリックすると、プールが作成されます。
 
 
-## <a name="understand-pool-recommendations"></a>Understand pool recommendations
+## プールの推奨事項について
 
-The SQL Database service evaluates usage history and recommends one or more pools when it is more cost-effective than using single databases. Each recommendation is configured with a unique subset of the server's databases that best fit the pool.
+SQL Database サービスでは使用状況の履歴を評価し、単一のデータベースを使用するよりコスト効率が高い場合は、1 つ以上のプールを推奨します。それぞれの推奨事項は、サーバーのデータベースでプールに最適なデータベースを一意の小集合にしたもので構成されます。
 
-![recommended pool](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)  
+![推奨されるプール](./media/sql-database-elastic-pool-create-portal/recommended-pool.png)
 
-The pool recommendation comprises:
+プールの推奨事項は、以下で構成されます。
 
-- A pricing tier for the pool (Basic, Standard, or Premium)
-- Appropriate **POOL eDTUs** (also called Max eDTUs per pool)
-- The **eDTU MAX** and **eDTU Min** per database
-- The list of recommended databases for the pool
+- プールの価格レベル (Basic、Standard、Premium)
+- 適切な**プールの eDTU** (プールあたりの最大 eDTU とも呼ばれます)
+- データベースあたりの **eDTU の最大値**と **eDTU の最小値**
+- プールの推奨データベースの一覧
 
-The service takes the last 30 days of telemetry into account when recommending pools. For a database to be considered as a candidate for an elastic database pool it must exist for at least 7 days. Databases that are already in an elastic database pool are not considered as candidates for elastic database pool recommendations.
+プールを推奨するとき、このサービスでは過去 30 日間のテレメトリが考慮されます。あるデータベースをエラスティック データベース プールの候補と見なすとき、それは 7 日間以上存在している必要があります。エラスティック データベース プールに既に存在するデータベースはエラスティック データベース プール推奨の候補として考慮されません。
 
-The service evaluates resource needs and cost effectiveness of moving the single databases in each service tier into pools of the same tier. For example, all Standard databases on a server are assessed for their fit into a Standard Elastic Pool. This means the service does not make cross-tier recommendations such as moving a Standard database into a Premium pool.
+このサービスでは、各サービス レベルの単一のデータベースを同じレベルのプールに移動することの必要性と対費用効果が評価されます。たとえば、サーバーのすべての Standard データベースの Standard エラスティック プールに対する適合性が評価されます。つまり、このサービスでは、Standard データベースを Premium プールに移動することなど、レベル間の推奨は行われません。
 
-### <a name="dynamic-recommendations"></a>Dynamic recommendations
+### 動的な推奨事項
 
-After adding databases to the pool, recommendations will be dynamically generated based on the historical usage of the databases you have selected. These recommendations will be shown in the eDTU and GB usage chart as well as in a recommendation banner at the top of the **Configure pool** blade. These recommendations are intended to assist you in creating a pool optimized for your specific databases.
+データベースをプールに追加した後は、選択したデータベースの使用状況の履歴に基づき、推奨事項が動的に生成されます。これらの推奨事項は、**[プールの構成]** ブレード上部の推奨事項バナーに加え、eDTU と GB の使用状況グラフにも表示されます。このような推奨事項は、特定のデータベース用に最適化されたプールの作成をサポートすることを目的としています。
 
 ![dynamic recommendations](./media/sql-database-elastic-pool-create-portal/dynamic-recommendation.png)
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-- [Manage a SQL Database elastic pool with the portal](sql-database-elastic-pool-manage-portal.md)
-- [Manage a SQL Database elastic pool with PowerShell](sql-database-elastic-pool-manage-powershell.md)
-- [Manage a SQL Database elastic pool with C#](sql-database-elastic-pool-manage-csharp.md)
-- [Scaling out with Azure SQL Database](sql-database-elastic-scale-introduction.md) 
+- [Azure ポータルを使用したエラスティック データベース プールの監視、管理、サイズ設定](sql-database-elastic-pool-manage-portal.md)
+- [エラスティック データベース プールの監視と管理 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)
+- [C# で SQL Database を作成し、管理する](sql-database-elastic-pool-manage-csharp.md)
+- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

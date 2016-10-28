@@ -1,116 +1,117 @@
 <properties
-    pageTitle="Azure AD Connect sync: Synchronization Service Manager UI | Microsoft Azure"
-    description="Understand the Connectors tab in the Synchronization Service Manager for Azure AD Connect."
-    services="active-directory"
-    documentationCenter=""
-    authors="andkjell"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure AD Connect 同期: Synchronization Service Manager UI | Microsoft Azure"
+	description="Azure AD Connect の Synchronization Service Manager の [コネクタ] タブについて"
+	services="active-directory"
+	documentationCenter=""
+	authors="andkjell"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/07/2016"
-    ms.author="billmath"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/07/2016"
+	ms.author="andkjell"/>
 
 
+# Azure AD Connect 同期: Synchronization Service Manager
 
-# <a name="azure-ad-connect-sync:-synchronization-service-manager"></a>Azure AD Connect sync: Synchronization Service Manager
-
-[Operations](active-directory-aadconnectsync-service-manager-ui-operations.md) | [Connectors](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [Metaverse Designer](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [Metaverse Search](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
+[操作](active-directory-aadconnectsync-service-manager-ui-operations.md) | [コネクタ](active-directory-aadconnectsync-service-manager-ui-connectors.md) | [メタバース デザイナー](active-directory-aadconnectsync-service-manager-ui-mvdesigner.md) | [メタバース検索](active-directory-aadconnectsync-service-manager-ui-mvsearch.md)
 --- | --- | --- | ---
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectors.png)
 
-The Connectors tab is used to manage all systems the sync engine is connected to.
+[コネクタ] タブを利用し、同期エンジンが接続されているすべてのシステムを管理します。
 
-## <a name="connector-actions"></a>Connector actions
+## コネクタのアクション
 
-Action | Comment
+アクション | コメント
 --- | ---
-Create | Do not use. For connecting to additional AD forests, use the installation wizard.
-Properties | Used for domain and OU filtering.
-[Delete](#delete) | Used to either delete the data in the connector space or to delete connection to a forest.
-[Configure Run Profiles](#configure-run-profiles) | Except for domain filtering, nothing to configure here. You can use this action to see already configured run profiles.
-Run | Used to start a one-off run of a profile.
-Stop | Stops a Connector currently running a profile.
-Export Connector | Do not use.
-Import Connector | Do not use.
-Update Connector | Do not use.
-Refresh Schema | Refreshes the cached schema. It is preferred to use the option in the installation wizard instead, since that also updates sync rules.
-[Search Connector Space](#search-connector-space) | Used to find objects and to [Follow an object and its data through the system](#follow-an-object-and-its-data-through-the-system).
+作成 | 使用しないでください。その他の AD フォレストに接続するには、インストール ウィザードを使用します。
+プロパティ | ドメインと OU フィルター処理に使用されます。
+[削除](#delete) | コネクタ スペースのデータを削除するか、フォレストへの接続を削除するために使用されます。
+[実行プロファイルの構成](#configure-run-profiles) | ドメイン フィルター処理を除き、ここで構成するものはありません。このアクションは、既に構成されている実行プロファイルを確認する場合に使用します。
+実行 | プロファイルの 1 回限りの実行を開始するために使用されます。
+停止 | 現在プロファイルを実行しているコネクタを停止します。
+コネクタのエクスポート | 使用しないでください。
+コネクタのインポート | 使用しないでください。
+コネクタの更新 | 使用しないでください。
+スキーマの更新 | キャッシュされたスキーマを更新します。このアクション代わりに、インストール ウィザードのオプションを使用することをお勧めします。インストール ウィザードのオプションであれば、同期規則も更新されます。
+[コネクタ スペースの検索](#search-connector-space) | オブジェクトを検索し、[オブジェクトとそのデータをシステム全体でフォローする](#follow-an-object-and-its-data-through-the-system)ために使用されます。
 
-### <a name="delete"></a>Delete
-The delete action is used for two different things.
+### 削除
+削除アクションには次の 2 つがあります。
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/connectordelete.png)
 
-The option **Delete connector space only** removes all data, but keep the configuration.
+**[Delete connector space only (コネクタ スペースのみを削除する)]** オプションを選択すると、すべてのデータが削除されますが、構成は維持されます。
 
-The option **Delete Connector and connector space** removes the data and the configuration. This option is used when you do not want to connect to a forest anymore.
+**[Delete Connector and connector space (コネクタとコネクタ スペースを削除する)]** オプションを選択すると、データと構成が削除されます。このオプションは、フォレストに今後接続しない場合に使用します。
 
-Both options sync all objects and update the metaverse objects. This action is a long running operation.
+いずれのオプションでも、すべてのオブジェクトが同期され、メタバース オブジェクトが更新されます。このアクションは、実行時間の長い操作となります。
 
-### <a name="configure-run-profiles"></a>Configure Run Profiles
-This option allows you to see the run profiles configured for a Connector.
+### 実行プロファイルの構成
+このオプションを使用すると、コネクタ用に構成された実行プロファイルを表示できます。
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/configurerunprofiles.png)
 
-### <a name="search-connector-space"></a>Search Connector Space
-The search connector space action is useful to find objects and troubleshoot data issues.
+### コネクタ スペースの検索
+コネクタ スペースの検索アクションは、オブジェクトを検索し、データ問題を解決するのに役立ちます。
 
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearch.png)
 
-Start by selecting a **scope**. You can search based on data (RDN, DN, Anchor, Sub-Tree), or state of the object (all other options).  
+まず、**[scope]** (範囲) を選択します。データ (RDN、DN、アンカー、サブツリー) またはオブジェクトの状態 (その他すべてのオプション) に基づいて検索できます。  
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchscope.png)  
-If you for example do a Sub-Tree search, you get all objects in one OU.
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png) From this grid you can select an object, select **properties**, and [follow it](#follow-an-object-and-its-data-through-the-system) from the source connector space, through the metaverse, and to the target connector space.
+たとえば、サブツリー検索を行うと、1 つの OU のすべてのオブジェクトが取得されます。
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cssearchsubtree.png) 
+このグリッドからオブジェクトを選択し、**[プロパティ]** を選択して、ソース コネクタ スペースからメタバースを経てターゲット コネクタ スペースまで[フォロー](#follow-an-object-and-its-data-through-the-system)できます。
 
-## <a name="follow-an-object-and-its-data-through-the-system"></a>Follow an object and its data through the system
-When you are troubleshooting a problem with data, follow an object from the source connector space, to the metaverse, and to the target connector space is a key procedure to understand why data does not have the expected values.
+## オブジェクトとそのデータをシステム全体でフォローする
+データの問題を解決するとき、ソース コネクタ スペースから、メタバースを経由し、ターゲット コネクタ スペースまでオブジェクトをフォローすることがデータの値が予想と異なる理由を理解するための鍵となります。
 
-### <a name="connector-space-object-properties"></a>Connector Space Object Properties
-**Import**  
-When you open a cs object, there are several tabs at the top. The **Import** tab shows the data that is staged after an import.
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/csimport.png) The **Old Value** shows what currently is stored in the system and the **New Value** what has been received from the source system and has not been applied yet. In this case, since there is a synchronization error, the change cannot be applied.
+### コネクタ スペース オブジェクトのプロパティ
+**インポート**  
+cs オブジェクトを開くと、いくつかのタブが上部に表示されます。**[インポート]** タブには、インポート後にステージングされるデータが表示されます。
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/csimport.png) 
+**[Old Value]** (古い値) にはシステムに現在保存されているデータが、**[New Value]** (新しい値) にはソース システムから受け取り、まだ適用されていないデータが表示されます。この場合、同期エラーがあるため、変更は適用できません。
 
-**Error**  
-The error page is only visible if there is a problem with the object. See the details on the operations page for more information on how to [troubleshoot synchronization errors](active-directory-aadconnectsync-service-manager-ui-operations.md#troubleshoot-errors-in-operations-tab).
+**エラー**  
+エラー ページは、オブジェクトに問題がある場合にのみ表示されます。[同期エラーを解決する](active-directory-aadconnectsync-service-manager-ui-operations.md#troubleshoot-errors-in-operations-tab)方法については、操作ページの詳細を参照してください。
 
-**Lineage**  
-The lineage tab shows how the connector space object is related to the metaverse object. You can see when the Connector last imported a change from the connected system and which rules applied to populate data in the metaverse.
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineage.png) In the **Action** column, you can see there is one **Inbound** sync rule with the action **Provision**. That indicates that as long as this connector space object is present, the metaverse object remains. If the list of sync rules instead shows a sync rule with direction **Outbound** and **Provision**, it indicates that this object is deleted when the metaverse object is deleted.
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineageout.png) You can also see in the **PasswordSync** column that the inbound connector space can contribute changes to the password since one sync rule has the value **True**. This password is then sent to Azure AD through the outbound rule.
+**系列**  
+[Lineage] \(系列) タブには、コネクタ スペース オブジェクトとメタバース オブジェクトの関係が表示されます。コネクタが接続されているシステムから変更を最後にインポートしたタイミングと、メタバースにデータを入力するために適用された規則を確認できます。
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineage.png)
+**[アクション]** 列に、アクションが **[Provision (プロビジョニング)]** である **[受信]** 同期規則が 1 つ表示されています。これは、このコネクタ スペース オブジェクトが存在する限り、メタバース オブジェクトが残ることを示します。同期規則の一覧に **[送信]** と **[Provision (プロビジョニング)]** が表示されている場合は、メタバース オブジェクトが削除されたときに、このオブジェクトが削除されることを示しています。
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/cslineageout.png) 
+また、**[PasswordSync]** 列を見ると、1 つの同期規則の値が **[True]** に設定されており、受信コネクタ スペースに起因してパスワードが変更される可能性があることがわかります。このパスワードはその後、受信ルールを経由して Azure AD に送信されます。
 
-From the lineage tab, you can get to the metaverse by clicking [Metaverse Object Properties](#metaverse-object-properties).
+[Lineage (系列)] タブで [[Metaverse Object Properties (メタバース オブジェクトのプロパティ)]](#metaverse-object-properties) をクリックすると、メタバースに移動できます。
 
-At the bottom of all tabs are two buttons: **Preview** and **Log**.
+すべてのタブの一番下に **[Preview]** (プレビュー) ボタンと **[Log]** (ログ) ボタンがあります。
 
-**Preview**  
-The preview page is used to synchronize one single object. It is useful if you are troubleshooting some customer sync rules and want to see the effect of a change on a single object. You can select between **Full Sync** and **Delta sync**. You can also select between **Generate Preview**, which only keeps the change in memory, and **Commit Preview**, which stages all changes to target connector spaces.
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/preview1.png) You can inspect the object and which rule applied for a particular attribute flow.
+**プレビュー** 
+[Preview] \(プレビュー) ページは、1 つのオブジェクトの同期に使用されます。顧客の同期ルールの問題を解決しているとき、1 つのオブジェクトに与える変更の影響を確認するのに便利です。**[Full Sync]** (完全同期) か**[Delta sync]** (差分同期) を選択できます。**[Generate Preview (プレビューの生成)]** か **[Commit Preview (プレビューのコミット)]** かも選択できます。生成の場合、変更はメモリにのみ保存されます。コミットの場合、すべての変更がターゲット コネクタ スペースにステージングされます。
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/preview1.png)
+オブジェクトを調べ、特定の属性フローに適用されたルールを確認できます。
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/preview2.png)
 
-**Log**  
-The Log page is used to see the password sync status and history, see [Troubleshoot password synchronization](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization) for more information.
+**ログ**  
+[Log] \(ログ) ページは、パスワードの同期状態と履歴を確認するために使用されます。詳細については、「[パスワード同期のトラブルシューティング](active-directory-aadconnectsync-implement-password-synchronization.md#troubleshoot-password-synchronization)」を参照してください。
 
-### <a name="metaverse-object-properties"></a>Metaverse Object Properties
-**Attributes**  
-On the attributes tab, you can see the values and which Connector contributed it.
+### メタバース オブジェクトのプロパティ
+**属性**
+[属性] タブには、値と、値を提供したコネクタが表示されます。
 ![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvattributes.png)
-**Connectors**  
-The Connectors tab shows all connector spaces that have a representation of the object.
-![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvconnectors.png) This tab also allows you to navigate to the [connector space object](#connector-space-object-properties).
+**コネクタ**  
+[コネクタ] タブには、オブジェクトを表すすべてのコネクタ スペースが表示されます。
+![Sync Service Manager](./media/active-directory-aadconnectsync-service-manager-ui/mvconnectors.png)
+このタブから[コネクタ スペース オブジェクト](#connector-space-object-properties)に移動することもできます。
 
-## <a name="next-steps"></a>Next steps
-Learn more about the [Azure AD Connect sync](active-directory-aadconnectsync-whatis.md) configuration.
+## 次のステップ
+[Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
-Learn more about [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
+「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

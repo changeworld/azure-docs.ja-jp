@@ -1,144 +1,143 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with Tableau Server | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and Tableau Server."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と Tableau Server の統合 | Microsoft Azure"
+	description="Azure Active Directory と Tableau Server の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/29/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/11/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と Tableau Server の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-tableau-server"></a>Tutorial: Azure Active Directory integration with Tableau Server
+このチュートリアルの目的は、Tableau Server と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
-The objective of this tutorial is to show you how to integrate Tableau Server with Azure Active Directory (Azure AD).
+Tableau Server と Azure AD の統合には、次の利点があります。
 
-Integrating Tableau Server with Azure AD provides you with the following benefits:
+- Tableau Server にアクセスするユーザーを Azure AD で管理できます。
+- ユーザーが各自の Azure AD アカウントで Tableau Server に自動的にサインオン (シングル サインオン) するように、設定が可能です。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to Tableau Server
-- You can enable your users to automatically get signed-on to Tableau Server (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Azure AD と Tableau Server の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with Tableau Server, you need the following items:
-
-- An Azure AD subscription
-- A Tableau Server single-sign on enabled subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Azure AD サブスクリプション
+- Tableau Server のシングル サインオンが有効なサブスクリプション
 
 
-To test the steps in this tutorial, you should follow these recommendations:
-
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment. 
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-The scenario outlined in this tutorial consists of two main building blocks:
-
-1. Adding Tableau Server from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-tableau-server-from-the-gallery"></a>Adding Tableau Server from the gallery
-To configure the integration of Tableau Server into Azure AD, you need to add Tableau Server from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-**To add Tableau Server from the gallery, perform the following steps:**
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
+1. ギャラリーから Tableau Server を追加する
+2. Azure AD シングル サインオンの構成とテスト
+
+
+## ギャラリーから Tableau Server を追加する
+Azure AD への Tableau Server の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Tableau Server を追加する必要があります。
+
+**ギャラリーから Tableau Server を追加するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
  
-    ![Active Directory][1]
+	![Active Directory][1]
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications][2]
+	![アプリケーション][2]
 
-4. Click **Add** at the bottom of the page.
+4. ページの下部にある **[追加]** をクリックします。
 
-    ![Applications][3]
+	![アプリケーション][3]
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Applications][4]
+	![アプリケーション][4]
 
-6. In the search box, type **Tableau Server**.
+6. 検索ボックスに「**Tableau Server**」と入力します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_01.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_01.png)
 
-7. In the results pane, select **Tableau Server**, and then click **Complete** to add the application.
+7. 結果ウィンドウで **[Tableau Server]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-    ![Selecting the app in the gallery](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_02.png)
+	![ギャラリーでアプリを選択する](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_02.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with Tableau Server based on a test user called "Britta Simon".
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーをベースに、Tableau Server での Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in Tableau Server to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in Tableau Server needs to be established.
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Tableau Server ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと Tableau Server の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in Tableau Server.
+このリンク関係は、Azure AD の **[ユーザー名]** の値を、Tableau Server の **[Username]** の値として割り当てることで確立されます。
 
-To configure and test Azure AD single sign-on with Tableau Server, you need to complete the following building blocks:
+Tableau Server で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a Tableau Server test user](#creating-a-tableauserver-test-user)** - to have a counterpart of Britta Simon in Tableau Server that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[Tableau Server のテスト ユーザーの作成](#creating-a-tableauserver-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Tableau Server で作成します。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+### Azure AD シングル サインオンの構成
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your Tableau Server application.
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、Tableau Server アプリケーションでシングル サインオンを構成することです。
 
-Tableau Server application expects the SAML assertions in a specific format. The following screenshot shows an example for this. 
+Tableau Server アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。次のスクリーンショットはその例です。
 
-![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_51.png) 
+![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_51.png)
 
-**To configure Azure AD single sign-on with Tableau Server, perform the following steps:**
+**Tableau Server で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
 
-1. In the Azure classic portal, on the **Tableau Server** application integration page, in the menu on the top, click **Attributes**.
+1. Azure クラシック ポータルの **[Tableau Server]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_81.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_81.png)
 
 
-1. On the **SAML token attributes** dialog, perform the following steps:
+1. **[Saml トークン属性]** ダイアログで、次の手順を実行します。
 
-    
+	
 
-    a. Click **add user attribute** to open the **Add User Attribure** dialog.
+	a.**[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_82.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_82.png)
 
 
-    b. In the **Attrubute Name** textbox, type **username**.
+	b.**[属性名]** テキストボックスに「**username**」と入力します。
 
-    c. From the **Attribute Value** list, selsect **user.displayname**.
+    c.**[属性値]** リストから **[user.displayname]** を選択します。
 
-    d. Click **Complete**.  
-    
+    d.**[完了]** をクリックします。
+	
 
 
 
-1. In the menu on the top, click **Quick Start**.
+1. 上部のメニューで **[クイック スタート]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_83.png)  
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_general_83.png)
 
 
 
@@ -147,180 +146,180 @@ Tableau Server application expects the SAML assertions in a specific format. The
 
 
 
-1. Click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. **[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログ ボックスを開きます。
 
-    ![Configure Single Sign-On][6] 
+	![Configure Single Sign-On][6]
 
 
 
-2. On the **How would you like users to sign on to Tableau Server** page, select **Azure AD Single Sign-On**, and then click **Next**.
+2. **[ユーザーの Tableau Server へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_03.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_03.png)
 
 
-3. On the **Configure App Settings** dialog page, perform the following steps and click **Next**:
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_04.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_04.png)
 
 
 
-    a. In the **Sign In URL** textbox, type the URL of your Tableau server. 
+    a.**[サインイン URL]** テキストボックスに Tableau Server の URL を入力します。
 
-    b. In the Identifier box copy the 
+	b.[識別子] ボックスで
 
-    c. Click **Next**
+	c.**[次へ]** をクリックします。
 
 
-4. On the **Configure single sign-on at Tableau Server** page, perform the following steps and click **Next**:
+4. **[Tableau Server シングル サインオン パラメーターの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_05.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_05.png)
 
 
-    a. Click **Download metadata**, and then save the file on your computer.
+    a.**[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
 
-    b. Click **Next**.
+    b.**[次へ]** をクリックします。
 
 
-6. To get SSO configured for your application, you need to sign-on to your Tableau Server tenant as an administrator.
+6. アプリケーションに合わせて SSO を構成するには、管理者として Tableau Server テナントにサインオンする必要があります。
 
-    a. In the Tableau Server configuration, click the **SAML** tab.
+	a.Tableau Server の構成で、**[SAML]** タブをクリックします。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_001.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_001.png)
 
 
-    b. Select the checkbox of **Use SAML for single sign-on**.
+	b.**[Use SAML for single sign-on]** チェックボックスをオンにします。
 
-    c. Locate your Federation Metadata file downloaded from Azure classic portal, and then upload it in the **SAML Idp metadata file**.
+	c.Azure クラシック ポータルからダウンロードしたフェデレーション メタデータ ファイルを検索し、**[SAML Idp metadata file]** でアップロードします。
 
-    d. Tableau Server return URL—The URL that Tableau Server users will be accessing, such as http://tableau_server. Using http://localhost is not recommended. Using a URL with a trailing slash (for example, http://tableau_server/) is not supported. Copy **Tableau Server return URL** and paste it to Azure AD **Sign On URL** textbox as shown in the step 3
+	d.[Tableau Server return URL]: Tableau Server ユーザーがアクセスする URL。http://tableau_server など。http://localhost の使用は推奨されません。末尾にスラッシュが付いている URL (http://tableau_server/ など) はサポートされていません。**[Tableau Server return URL]** をコピーし、手順 3 のように Azure AD の **[サインオン URL]** テキストボックスに貼り付けます。
 
-    e. SAML entity ID—The entity ID uniquely identifies your Tableau Server installation to the IdP. You can enter your Tableau Server URL again here, if you like, but it does not have to be your Tableau Server URL. Copy **SAML entity ID** and paste it to Azure AD **IDENTIFER** textbox as shown in the step 3.
+	e.[SAML entity ID]: IdP に対して Tableau Server のインストールを一意に識別するエンティティ ID。必要に応じてこの欄にも Tableau Server URL を入力できますが、使用する Tableau Server URL にする必要はありません。**[SAML entity ID]** をコピーし、手順 3 のように Azure AD の **[識別子]** テキストボックスに貼り付けます。
 
-    f. Click on the **Export Metadata File** and open it in the text editor application. Locate Assertion Consumer Service URL with Http Post and Index 0 and copy the URL. Now paste it to Azure AD **Reply URL** textbox as shown in step 3. 
+	f.**[Export Metadata File]** をクリックし、テキスト エディター アプリケーションで開きます。Http Post で Index 0 の [Assertion Consumer Service URL] を探し、URL をコピーします。手順 3 のように、その URL を Azure AD の **[応答 URL]** に貼り付けます。
 
-    g. Click **OK** button in the Tableau Server Configiuration page.
+	g.Tableau Server の [Configiuration] ページの **[OK]** ボタンをクリックします。
 
-    > [AZURE.NOTE] If you need help configuring SAML on Tableau Server then please refer this article [Configure SAML](http://onlinehelp.tableau.com/current/server/en-us/config_saml.htm) 
+	> [AZURE.NOTE] Tableau Server で SAML を構成する方法について不明な点がある場合は、こちらの記事「[SAML の構成](http://onlinehelp.tableau.com/current/server/ja-JP/config_saml.htm)」を参照してください。
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-    ![Azure AD Single Sign-On][10]
+	![Azure AD Single Sign-On][10]
 
-7. On the **Single sign-on confirmation** page, click **Complete**. 
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
  
-    ![Azure AD Single Sign-On][11]
+	![Azure AD Single Sign-On][11]
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
 
-In the Users list, select **Britta Simon**.
+ユーザーの一覧で **[Britta Simon]** を選択します。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_09.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
  
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_03.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_03.png)
 
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_04.png)
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_05.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_05.png)
 
-    a. As **Type Of User**, select **New user in your organization**.
+    a.**[ユーザーの種類]** として **[組織内の新しいユーザー]** を選択します。
 
-    b. In the **User Name** textbox, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps:
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順を実行します。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
 
-    e. Click **Next**.
+    e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_07.png)
 
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
  
-    ![Creating an Azure AD test user](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-tableauserver-tutorial/create_aaduser_08.png)
 
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
-
-
-
-### <a name="creating-a-tableau-server-test-user"></a>Creating a Tableau Server test user
-
-The objective of this section is to create a user called Britta Simon in Tableau Server. You need to provision all the users in the Tableau server. Also note that username of the user should match the value which you have configured in the Azure AD custom attribute of **username**. With the correct mapping the integration should work [Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on).
-
-> [AZURE.NOTE] If you need to create an user manually, you need to contact the Tableau Server administrator in your organization.
+    b.**[完了]** をクリックします。
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to Tableau Server.
+### Tableau Server テスト ユーザーの作成
 
-![Assign User][200] 
+このセクションの目的は、Tableau Server で Britta Simon というユーザーを作成することです。Tableau Server 内のすべてのユーザーをプロビジョニングする必要があります。また、ユーザーのユーザー名は、Azure AD のカスタム属性 **username** で構成した値と同じにする必要があります。正しい対応付けがあれば、統合で「[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)」が機能します。
 
-**To assign Britta Simon to Tableau Server, perform the following steps:**
+> [AZURE.NOTE] ユーザーを手動で作成する必要がある場合は、組織の Tableau Server 管理者に問い合わせてください。
 
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+
+### Azure AD テスト ユーザーの割り当て
+
+このセクションの目的は、Britta Simon に Tableau Server へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+
+![ユーザーの割り当て][200]
+
+**Tableau Server に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
  
-    ![Assign User][201] 
+	![ユーザーの割り当て][201]
 
-2. In the applications list, select **Tableau Server**.
+2. アプリケーションの一覧で **[Tableau Server]** を選択します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_50.png) 
-
-
-1. In the menu on the top, click **Users**.
-
-    ![Assign User][203]
-
-1. In the Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-
-![Assign User][205]
+	![Configure Single Sign-On](./media/active-directory-saas-tableauserver-tutorial/tutorial_tableauserver_50.png)
 
 
+1. 上部のメニューで **[ユーザー]** をクリックします。
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+	![ユーザーの割り当て][203]
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
 
-When you click the Tableau Server tile in the Access Panel, you should get automatically signed-on to your Tableau Server application.
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+![ユーザーの割り当て][205]
 
 
-## <a name="additional-resources"></a>Additional Resources
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+
+アクセス パネルで [Tableau Server] タイルをクリックすると、Tableau Server アプリケーションに自動的にサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -342,8 +341,4 @@ When you click the Tableau Server tile in the Access Panel, you should get autom
 [204]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-tableauserver-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Turn your StorSimple device on or off | Microsoft Azure"
-   description="Explains how to turn on a new StorSimple device, turn on a device that was shut down or lost power, and turn off a running device."
+   pageTitle="StorSimple デバイスのオンとオフ | Microsoft Azure"
+   description="新しい StorSimple デバイスの電源を入れる方法、シャットダウンまたは電力喪失後にデバイスの電源を入れる方法、動作中のデバイスの電源を切る方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,210 +15,204 @@
    ms.date="08/23/2016"
    ms.author="alkohli" />
 
+# StorSimple デバイスのオンとオフ 
 
-# <a name="turn-your-storsimple-device-on-or-off"></a>Turn your StorSimple device on or off 
+## Overview
 
-## <a name="overview"></a>Overview
+Microsoft Azure StorSimple デバイスを通常のシステム運用の一環としてシャットダウンする必要はありません。ただし、やむを得ずシャットダウンしたデバイスや新しいデバイスの電源をオンにしなければならないケースはあります。一般にシャットダウンは、故障したハードウェアを交換するときや、物理的に装置を移動するとき、デバイスを廃棄するときに必要となります。このチュートリアルでは、さまざまな状況で StorSimple デバイスの電源をオンにしたりシャットダウンしたりするために必要な手順を説明します。
 
-Shutting down a Microsoft Azure StorSimple device is not required as a part of normal system operation. However, you may need to turn on a new device or a device that had to be shut down. Generally, a shutdown is required in cases in which you must replace failed hardware, physically move a unit, or take a device out of service. This tutorial describes the required procedure for turning on and shutting down your StorSimple device in different scenarios.
+次の表は、StorSimple デバイスの電源オンとシャットダウンの各種シナリオの一覧です。必要な手順へのリンクも記載しています。
 
-The following table lists various scenarios for turning on and shutting down your StorSimple device and provides links to the appropriate procedures.
-
-|Scenario|Reference topics|
+|シナリオ|参照トピック|
 |:-------|:---------------|
-|Turn on a new device|[Turn on a new device](#turn-on-a-new-device)<ul><li>[New device with primary enclosure only](#new-device-with-primary-enclosure-only)</li><li>[New device with EBOD enclosure](#new-device-with-ebod-enclosure)</li></ul>|
-|Turn on a device after shutdown|[Turn on a device after shutdown](#turn-on-a-device-after-shutdown)<ul><li>[Device with primary enclosure only](#device-with-primary-enclosure-only)</li><li>[Device with EBOD enclosure](#device-with-ebod-enclosure)</li></ul>|
-|Turn on a device after a power loss|[Turn on a device after a power loss](#turn-on-a-device-after-a-power-loss)<ul><li>[Device with primary enclosure only](#8100)</li><li>[Device with EBOD enclosure](#8600)</li></ul>|
-|Turn on a device after the primary enclosure and EBOD connection is lost|[Turn on a device after the primary and EBOD enclosure connection is lost](#turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost)|
-|Shut down a running device|[Turn off a running device](#turn-off-a-running-device)<ul><li>[Device with primary enclosure only](#8100a)</li><li>[Device with EBOD enclosure](#8600a)</li></ul>|
+|新しいデバイスの電源をオンにする|[新しいデバイスの電源をオンにする](#turn-on-a-new-device)<ul><li>[主エンクロージャのみを備える新しいデバイス](#new-device-with-primary-enclosure-only)</li><li>[EBOD エンクロージャを備える新しいデバイス](#new-device-with-ebod-enclosure)</li></ul>|
+|シャットダウン後にデバイスの電源をオンにする|[シャットダウン後にデバイスの電源をオンにする](#turn-on-a-device-after-shutdown)<ul><li>[主エンクロージャのみを備えるデバイス](#device-with-primary-enclosure-only)</li><li>[EBOD エンクロージャを備えるデバイス](#device-with-ebod-enclosure)</li></ul>|
+|電力喪失後にデバイスの電源をオンにする|[電力喪失後にデバイスの電源をオンにする](#turn-on-a-device-after-a-power-loss)<ul><li>[主エンクロージャのみのデバイス](#8100)</li><li>[EBOD エンクロージャ付きのデバイス](#8600)</li></ul>|
+|主エンクロージャと EBOD の接続が失われた後にデバイスの電源をオンにする|[主エンクロージャと EBOD エンクロージャの接続が失われた後にデバイスの電源をオンにする](#turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost)|
+|動作中のデバイスをシャットダウンする|[動作中のデバイスの電源をオフにする](#turn-off-a-running-device)<ul><li>[主エンクロージャのみを備えるデバイス](#8100a)</li><li>[EBOD エンクロージャを備えるデバイス](#8600a)</li></ul>|
 
-## <a name="turn-on-a-new-device"></a>Turn on a new device
+## 新しいデバイスの電源をオンにする
 
-The steps for turning on a StorSimple device for the first time differ depending on whether the device is an 8100 or an 8600 model. The 8100 has a single primary enclosure, whereas the 8600 is a dual-enclosure device with a primary enclosure and an EBOD enclosure. The detailed steps for both models are covered in the following sections.
+StorSimple デバイスの電源を初めてオンにする手順は、デバイスが 8100 と 8600 のどちらのモデルであるかによって異なります。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。両モデルの詳しい手順を次の各セクションで説明します。
 
-- [New device with primary enclosure only](#new-device-with-primary-enclosure-only)
+- [主エンクロージャのみを備える新しいデバイス](#new-device-with-primary-enclosure-only)
 
-- [New device with EBOD enclosure](#new-device-with-ebod-enclosure)
+- [EBOD エンクロージャを備える新しいデバイス](#new-device-with-ebod-enclosure)
 
-### <a name="new-device-with-primary-enclosure-only"></a>New device with primary enclosure only
+### 主エンクロージャのみを備える新しいデバイス
 
-The StorSimple 8100 model is a single enclosure device. Your device includes redundant Power and Cooling Modules (PCMs). Both PCMs must be installed and connected to different power sources to ensure high availability.
+StorSimple 8100 モデルは、単一のエンクロージャ デバイスです。デバイスには冗長な電源および冷却モジュール (PCM) が含まれます。高可用性を確保するには、両方の PCM を取り付けて、異なる電源に接続する必要があります。
 
-Perform the following steps to cable your device for power.
+デバイスの電源ケーブル接続を行うには、次のステップを実行します。
 
 [AZURE.INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
->[AZURE.NOTE]For complete device setup and cabling instructions, go to [Install your StorSimple 8100 device](storsimple-8100-hardware-installation.md). Make sure that you follow the instructions exactly.
+>[AZURE.NOTE]デバイスのセットアップと配線に関する詳細な手順については、「[StorSimple 8100 デバイスの取り付け](storsimple-8100-hardware-installation.md)」を参照してください。説明されている手順に厳密に従ってください。
 
-### <a name="new-device-with-ebod-enclosure"></a>New device with EBOD enclosure
+### EBOD エンクロージャを備える新しいデバイス
 
-The StorSimple 8600 model has both a primary enclosure and an EBOD enclosure. This requires the units to be cabled together for Serial Attached SCSI (SAS) connectivity and power.
+StorSimple 8600 モデルには、主エンクロージャと EBOD エンクロージャの両方があります。そのため、それらのユニットを SAS (Serial Attached SCSI) ケーブルで接続し、電源にも接続する必要があります。
 
-When setting up this device for the first time, perform the steps for SAS cabling first and then complete the steps for power cabling.
+このデバイスのセットアップを初めて行うときは、最初に SAS ケーブル接続の手順を済ませ、その後電源ケーブル接続の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-sas-cable-8600](../../includes/storsimple-sas-cable-8600.md)]
 
 [AZURE.INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
->[AZURE.NOTE]For complete device setup and cabling instructions, go to [Install your StorSimple 8600 device](storsimple-8600-hardware-installation.md). Make sure that you follow the instructions exactly.
+>[AZURE.NOTE]デバイスのセットアップと配線に関する詳細な手順については、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」を参照してください。説明されている手順に厳密に従ってください。
 
-## <a name="turn-on-a-device-after-shutdown"></a>Turn on a device after shutdown
+## シャットダウン後にデバイスの電源をオンにする
 
-The steps for turning on a StorSimple device after it has been shut down are different depending on whether the device is an 8100 or an 8600 model. The 8100 has a single primary enclosure, whereas the 8600 is a dual-enclosure device with a primary enclosure and an EBOD enclosure.
+StorSimple デバイスのシャットダウン後に電源をオンにする手順は、デバイスが 8100 と 8600 のどちらのモデルであるかによって異なります。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
 
-- [Device with primary enclosure only](#device-with-primary-enclosure-only)
+- [主エンクロージャのみを備えるデバイス](#device-with-primary-enclosure-only)
 
-- [Device with EBOD enclosure](#device-with-ebod-enclosure)
+- [EBOD エンクロージャを備えるデバイス](#device-with-ebod-enclosure)
 
-### <a name="device-with-primary-enclosure-only"></a>Device with primary enclosure only
+### 主エンクロージャのみを備えるデバイス
 
-After a shutdown, use the following procedure to turn on a StorSimple device with a primary enclosure and no EBOD enclosure.
+EBOD エンクロージャを備えていない主エンクロージャのみの StorSimple デバイスで、シャットダウン後に電源を入れるには、以下の手順を実行します。
 
-#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>To turn on a device with a primary enclosure only
+#### 主エンクロージャのみを備えるデバイスの電源を入れるには
 
-1. Make sure that the power switches on both Power and Cooling Modules (PCMs) are in the OFF position. If the switches are not in the OFF position, then flip them to the OFF position and wait for the lights to go off.
+1. 両方の電源冷却モジュール (PCM) の電源スイッチが OFF の位置になっていることを確認します。スイッチが OFF の位置になっていない場合は、OFF の位置に設定し、ライトが消えるまで待ちます。
 
-2. Turn on the device by flipping the power switches on both PCMs to the ON position. The device should turn on.
+2. デバイスの電源を入れます。両方の PCM の電源スイッチを ON の位置に切り替えてください。これでデバイスの電源がオンになります。
 
-3. Check the following to verify that the device is fully on:
+3. 次の点をチェックして、デバイスの電源が完全に入っていることを確認します。
 
-    1. The OK LEDs on both PCM modules are green.
+    1. 両方の PCM モジュールにある OK LED が緑色になっていること。
 
-    2. The status LEDs on both controllers are solid green.
+    2. 両方のコントローラーのステータス LED が緑色で点灯していること。
 
-    3. The blue LED on one of the controllers is blinking, which indicates that the controller is active.
+    3. 一方のコントローラーの青い LED が点滅していること。これは、コントローラーがアクティブであることを示します。
 
-    If any of these conditions are not met, then your device is not healthy. Please [contact Microsoft Support](storsimple-contact-microsoft-support.md).
+    これらの条件のいずれか 1 つでも満たされていない場合、デバイス は正常ではありません。[Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 
-### <a name="device-with-ebod-enclosure"></a>Device with EBOD enclosure
+### EBOD エンクロージャを備えるデバイス
 
-After a shutdown, use the following procedure to turn on a StorSimple device with a primary enclosure and an EBOD enclosure. Perform each step in sequence exactly as described. Failure to do so could result in data loss.
+主エンクロージャと EBOD エンクロージャを備える StorSimple デバイスで、シャットダウン後に電源を入れるには、以下の手順を実行します。説明されているとおりに各手順を正しく順に実行してください。正しく実行しないとデータが失われる可能性があります。
 
-#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>To turn on a device with a primary and an EBOD enclosure
+#### プライマリ エンクロージャと EBOD エンクロージャを備えるデバイスの電源を入れるには
 
-1. Make sure that the EBOD enclosure is connected to the primary enclosure. For more information, see [Install your StorSimple 8600 device](storsimple-8600-hardware-installation.md).
+1. EBOD エンクロージャが主エンクロージャに接続されていることを確認します。詳細については、「[StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」を参照してください。
 
-2. Make sure that the Power and Cooling Modules (PCMs) on both the EBOD and primary enclosures are in the OFF position. If the switches are not in the OFF position, then flip them to the OFF position and wait for the lights to go off.
+2. EBOD エンクロージャと主エンクロージャの両方の電源冷却モジュール (PCM) が OFF の位置になっていることを確認します。スイッチが OFF の位置になっていない場合は、OFF の位置に設定し、ライトが消えるまで待ちます。
 
-3. Turn on the EBOD enclosure first by flipping the power switches on both PCMs to the ON position. The PCM LEDs should be green. A green EBOD controller LED on this unit indicates that the EBOD enclosure is on.
+3. EBOD エンクロージャの電源を入れます。両方の PCM の電源スイッチを ON の位置に切り替えてください。PCM の LED が緑色に光ります。この装置の EBOD コントローラー LED が緑色に光っている場合、EBOD エンクロージャの電源が入ったことを示します。
 
-4. Turn on the primary enclosure by flipping the power switches on both PCMs to the ON position. The entire system should now be on.
+4. 主エンクロージャの電源を入れます。両方の PCM の電源スイッチを ON の位置に切り替えてください。これでシステム全体の電源がオンになります。
 
-5. Verify that the SAS LEDs are green, which ensures that the connection between the EBOD enclosure and the primary enclosure is good.
+5. SAS LED が緑色であることを確認します。これは、EBOD エンクロージャと主エンクロージャの間の接続が正常であることを示します。
 
-## <a name="turn-on-a-device-after-a-power-loss"></a>Turn on a device after a power loss
+## 電力喪失後にデバイスの電源をオンにする
 
-A power outage or interruption can shut down a StorSimple device. The power outage can happen on one of the power supplies or both power supplies. The recovery steps are different depending on whether the device is an 8100 or an 8600 model. The 8100 has a single primary enclosure, whereas the 8600 is a dual-enclosure device with a primary enclosure and an EBOD enclosure. This section describes the recovery procedure for each scenario.
+電源の供給停止や瞬停が原因で、StorSimple デバイスがシャットダウンすることがあります。電源の供給停止は、一方の電源で発生することもあれば、両方の電源で発生することもあります。デバイスが 8100 と 8600 のどちらのモデルであるかによって復旧手順は異なります。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。このセクションでは、それぞれのシナリオの復旧手順について説明します。
 
-- [Device with primary enclosure only](#8100)
+- [主エンクロージャのみを備えるデバイス](#8100)
 
-- [Device with EBOD enclosure](#8600)
+- [EBOD エンクロージャを備えるデバイス](#8600)
 
-### <a name="device-with-primary-enclosure-only-<a-name="8100">"></a>Device with primary enclosure only <a name="8100">
+### 主エンクロージャのみを備えるデバイス <a name="8100">
 
-The system can continue its normal operation if there is power loss to one of its power supplies. However, to ensure high availability of the device, restore power to the power supply as soon as possible.
+1 つの電源で電力喪失が発生しても通常の操作を継続することができます。ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
 
-If there is a power outage or power interruption on both power supplies, the system will shut down in an orderly and controlled manner. When the power is restored, the system will automatically turn on.
+両方の電源で停止や瞬停が発生すると、システムは所定の制御手順でシャットダウンされます。電源が復旧すると、システムは自動的に起動します。
 
-### <a name="device-with-ebod-enclosure-<a-name="8600">"></a>Device with EBOD enclosure <a name="8600">
+### EBOD エンクロージャを備えるデバイス <a name="8600">
 
-#### <a name="power-loss-on-one-power-supply"></a>Power loss on one power supply
+#### 1 つの電源で電力喪失が発生
 
-The system can continue its normal operation if there is power loss to one of its power supplies on the primary enclosure or the EBOD enclosure. However, to ensure high availability of the device, please restore power to the power supply as soon as possible.
+主エンクロージャまたは EBOD エンクロージャの 1 つの電源で電力喪失が発生しても通常の操作を継続することができます。ただし、デバイスの高可用性を確保するため、できるだけ早く電源を復旧してください。
 
-#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Power loss on both power supplies on primary and EBOD enclosures
+#### プライマリ エンクロージャおよび EBOD エンクロージャ上の両方の電源で電力喪失が発生
 
-If there is a power outage or power interruption on both power supplies, the EBOD enclosure will shut down immediately and the primary enclosure will shut down in an orderly and controlled manner. When power is restored, the appliance will start automatically.
+両方の電源で停止や瞬停が発生すると、EBOD エンクロージャは直ちにシャットダウンされ、主エンクロージャは所定の制御手順でシャットダウンされます。電源が復旧すると、アプライアンスは自動的に起動します。
 
-If the power is switched off manually, then take the following steps to restore power to the system.
+電源を手動でオフにした場合は、次の手順でシステムの電源を再投入してください。
 
-1. Turn on the EBOD enclosure.
+1. EBOD エンクロージャの電源を入れます。
 
-2. After the EBOD enclosure is on, turn on the primary enclosure.
+2. EBOD エンクロージャの電源がオンになったら、主エンクロージャの電源を入れます。
 
-### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Power loss on both power supplies on EBOD enclosure
+### EBOD エンクロージャ上の両方の電源で電力喪失が発生
 
-When you set up your cables, you must ensure that the EBOD is never connected alone to a separate PDU. If the EBOD and primary enclosure fail at the same time, the system will recover.
+配線を行うときは、EBOD だけ別の PDU に接続することのないよう注意してください。EBOD エンクロージャと主エンクロージャで同時に異常が発生した場合に、システムは回復します。
 
-If only the EBOD enclosure fails on both power supplies, the system will not automatically recover. Take the following steps to turn on the system and restore it to a healthy state:
+EBOD エンクロージャだけ両方の電源で異常が発生した場合は、システムが自動的には回復しません。システムの電源を投入して正常な状態に復旧するには、次の手順に従います。
 
-1. If the primary enclosure is turned on, switch off both Power and Cooling Modules (PCMs).
+1. 主エンクロージャの電源がオンになっている場合は、電源冷却モジュール (PCM) を両方ともオフにします。
 
-2. Wait for a few minutes for the system to shut down.
+2. システムがシャットダウンするまで数分待ちます。
 
-3. Turn on the EBOD enclosure.
+3. EBOD エンクロージャの電源を入れます。
 
-4. After the EBOD enclosure is on, turn on the primary enclosure.
+4. EBOD エンクロージャの電源がオンになったら、主エンクロージャの電源を入れます。
 
-## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Turn on a device after the primary and EBOD enclosure connection is lost
+## 主エンクロージャと EBOD エンクロージャの接続が失われた後にデバイスの電源をオンにする
 
-If the connection is lost between the standby controller and the corresponding EBOD controller, the device continues to work. If the connection between the system active controller and the corresponding EBOD controller is lost, failover should occur and the device should continue to work as normal.
+スタンバイ コントローラーと対応する EBOD コントローラーとの間の接続が失われた場合、デバイスは動作し続けます。システムのアクティブ コントローラーと対応する EBOD コントローラーとの間の接続が失われた場合は、フェールオーバーが発生し、デバイスは通常どおりに動作し続けます。
 
-When both Serial Attached SCSI (SAS) cables are removed or the connection between the EBOD enclosure and the primary enclosure is severed, the device will stop working. At this point, perform the following steps.
+両方の Serial Attached SCSI (SAS) ケーブルを取り外した場合、または EBOD エンクロージャと主エンクロージャ間の接続が切断された場合、デバイスは動作を停止します。この時点で、次の手順を実行してください。
 
-### <a name="to-turn-on-the-device-after-connection-is-lost"></a>To turn on the device after connection is lost
+### 接続が失われた後にデバイスをオンにするには
 
-1. Access the back of the device.
+1. デバイスの背面を確認します。
 
-2. If the SAS cable connection between the EBOD enclosure and the primary enclosure is broken, all SAS lane LEDs on the EBOD enclosure will be off.
+2. EBOD エンクロージャと主エンクロージャ間の SAS ケーブル接続が切断されている場合、EBOD エンクロージャのすべての SAS レーン LED はオフになります。
 
-3. Shut down both Power and Cooling Modules (PCMs) on the EBOD enclosure and the primary enclosure.
+3. EBOD エンクロージャと主エンクロージャの両方の電源冷却モジュール (PCM) をシャットダウンします。
 
-4. Wait until all the lights on the back of both the enclosures turn off.
+4. 両方のエンクロージャの背面にあるライトがすべてオフになるまで待ちます。
 
-5. Reinsert the SAS cables, and ensure that there is a good connection between the EBOD enclosure and the primary enclosure.
+5. SAS ケーブルを再挿入し、EBOD エンクロージャと主エンクロージャの間の接続が正常であることを確認します。
 
-6. Turn on the EBOD enclosure first by flipping both PCM switches to the ON position.
+6. 両方の PCM のスイッチをオンの位置に切り替えて、先に EBOD エンクロージャをオンにします。
 
-7. Ensure that the EBOD enclosure is on by checking that the green LED is ON.
+7. 緑の LED がオンになっていることをチェックすることで EBOD エンクロージャがオンになっていることを確認します。
 
-8. Turn on the primary enclosure.
+8. 主エンクロージャをオンにします。
 
-9. Ensure that the primary enclosure is on by checking that the controller green LED is ON.
+9. コントローラーの緑の LED がオンになっていることをチェックすることで主エンクロージャがオンになっていることを確認します。
 
-10. Verify that the EBOD enclosure connection with the primary enclosure is good by checking that the SAS lane LEDs (four per EBOD controller) are all ON.
+10. SAS レーン LED (EBOD コントローラーあたり 4 つ) がすべてオンになっていることをチェックすることで、EBOD エンクロージャと主エンクロージャ間の接続が正常であることを確認します。
 
->[AZURE.IMPORTANT] If the SAS cables are defective or the connection between the EBOD enclosure and the primary enclosure is not good, when you turn on the system, it will go into recovery mode. Please [contact Microsoft Support](storsimple-contact-microsoft-support.md) if this happens.
+>[AZURE.IMPORTANT] システムをオンにしたときに、SAS ケーブルに欠陥がある場合、または EBOD エンクロージャと主エンクロージャ間の接続が正常でない場合、回復モードになります。このような場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-## <a name="turn-off-a-running-device"></a>Turn off a running device
+## 動作中のデバイスの電源をオフにする
 
-A running StorSimple device may need to be shut down if it is being moved, taken out of service, or has a malfunctioning component that needs to be replaced. The steps are different depending on whether the StorSimple device is an 8100 or an 8600 model. The 8100 has a single primary enclosure, whereas the 8600 is a dual-enclosure device with a primary enclosure and an EBOD enclosure. This section details the steps to shut down a running device.
+StorSimple デバイスを移動する場合や廃棄する場合、不具合の生じたコンポーネントを交換する必要がある場合は、動作中のデバイスをシャットダウンすることが必要な場合があります。この手順は、StorSimple デバイスが 8100 と 8600 のどちらのモデルであるかによって異なります。8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。このセクションでは、動作中のデバイスをシャットダウンする手順について詳しく説明します。
 
-- [Device with primary enclosure](#8100a)
+- [主エンクロージャを備えるデバイス](#8100a)
 
-- [Device with EBOD enclosure](#8600a)
+- [EBOD エンクロージャを備えるデバイス](#8600a)
 
-### <a name="device-with-primary-enclosure-<a-name="8100a">"></a>Device with primary enclosure <a name="8100a"> 
+### 主エンクロージャを備えるデバイス <a name="8100a"> 
 
-To shut down the device in an orderly and controlled manner, you can do it through the Azure classic portal or via the Windows PowerShell for StorSimple. 
+所定の制御手順でデバイスをシャットダウンするには、Azure クラシック ポータルまたは Windows PowerShell for StorSimple を使用します。
 
->[AZURE.IMPORTANT] Do not shut down a running device by using the power button on the back of the device.
+>[AZURE.IMPORTANT] デバイス背面の電源ボタンで動作中のデバイスをシャットダウンすることは避けてください。
 >
->Before shutting down the device, make sure that all the device components are healthy. In the Azure classic portal, navigate to **Devices** > **Maintenance** > **Hardware Status**, and verify that status of all the components is green. This is true only for a healthy system. If the system is being shut down to replace a malfunctioning component, you will see a failed (red) or degraded (yellow) status for the respective component in the **Hardware Status**.
+>デバイスをシャットダウンする前に、すべてのデバイス コンポーネントが正常であることを確認してください。Azure クラシック ポータルで、**[デバイス]**、**[メンテナンス]**、**[ハードウェアの状態]** の順に移動し、すべてのコンポーネントのステータスが緑色になっていることを確認します。この表示になるのは、システムが正常な状態にある場合だけです。システムをシャットダウンするときや、不調なコンポーネントを交換するとき、**[ハードウェア状態]** に、エラー (赤色) または機能低下 (黄色) ステータスがコンポーネントごとに表示されます。
 
-After you access the Windows PowerShell for StorSimple or the Azure classic portal, follow the steps in [shut down a StorSimple device](storsimple-manage-device-controller.md#shut-down-a-storsimple-device). 
+Windows PowerShell for StorSimple または Azure クラシック ポータルにアクセスしたら、「[StorSimple デバイスをシャットダウンする](storsimple-manage-device-controller.md#shut-down-a-storsimple-device)」の手順に従ってください。
 
-### <a name="device-with-ebod-enclosure-<a-name="8600a">"></a>Device with EBOD enclosure <a name="8600a">
+### EBOD エンクロージャを備えるデバイス <a name="8600a">
 
->[AZURE.IMPORTANT] Before shutting down the primary enclosure and the EBOD enclosure, ensure that all the device components are healthy. In the Azure classic portal, navigate to **Devices** > **Maintenance** > **Hardware Status**, and verify that all the components are healthy.
+>[AZURE.IMPORTANT] プライマリ エンクロージャと EBOD エンクロージャをシャットダウンする前に、すべてのデバイス コンポーネントが正常であることを確認してください。Azure クラシック ポータルで、**[デバイス]**、**[メンテナンス]**、**[ハードウェアの状態]** の順に移動し、すべてのコンポーネントが正常であることを確認します。
 
-#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>To shut down a running device with EBOD enclosure
+#### EBOD エンクロージャを備えた動作中のデバイスをシャットダウンするには
 
-1. Follow all the steps listed in [shut down a StorSimple device](storsimple-manage-device-controller.md#shut-down-a-storsimple-device) for the primary enclosure.
+1. プライマリ エンクロージャについては、「[StorSimple デバイスをシャットダウンする](storsimple-manage-device-controller.md#shut-down-a-storsimple-device)」の手順をすべて実行してください。
 
-2. After the primary enclosure is shut down, shut down the EBOD by flipping off both Power and Cooling Module (PCM) switches.
+2. プライマリ エンクロージャをシャットダウンした後、EBOD の両方の電源冷却モジュール (PCM) のスイッチをオフにして EBOD をシャットダウンします。
 
-3. To verify that the EBOD has shut down, check that all lights on the back of the EBOD enclosure are off.
+3. EBOD がシャットダウンされたことを確認するには、EBOD エンクロージャの背面にあるすべてのライトが消えていることを確認します。
 
->[AZURE.NOTE] The SAS cables that are used to connect the EBOD enclosure to the primary enclosure should not be removed until after the system is shut down.
+>[AZURE.NOTE] EBOD エンクロージャとプライマリ エンクロージャとの接続に使用されていた SAS ケーブルは、システムがシャットダウンされるまで取り外さないでください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Contact Microsoft Support](storsimple-contact-microsoft-support.md) if you encounter problems when turning on or shutting down a StorSimple device.
+StorSimple デバイスの電源を入れるときまたはシャットダウンするときに問題が発生した場合は、[Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md)。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

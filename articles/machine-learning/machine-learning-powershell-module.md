@@ -1,63 +1,58 @@
 <properties
-    pageTitle="PowerShell module for Machine Learning | Microsoft Azure"
-    description="The PowerShell module for Azure Machine Learning is available in public preview mode. Use PowerShell to create and manage workspaces, experiments, web serivces, and more."
-    keywords="experiment,linear regression,machine learning algorithms,machine learning tutorial,predictive modeling techniques,data science experiment"
-    services="machine-learning"
-    documentationCenter=""
-    authors="hning86"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="Machine Learning 用 PowerShell モジュール | Microsoft Azure"
+	description="Azure Machine Learning 用 PowerShell モジュールは、パブリック プレビューとしてご利用いただけます。ワークスペースや実験、Web サービスなどの作成と管理を PowerShell で行うことができます。"
+	keywords="実験, 線形回帰, 機械学習アルゴリズム, 機械学習チュートリアル, 予測モデリング手法, データ サイエンス実験"
+	services="machine-learning"
+	documentationCenter=""
+	authors="hning86"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="08/05/2016"
-    ms.author="garye;haining"/>
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="08/05/2016"
+	ms.author="garye;haining"/>
 
+# Microsoft Azure Machine Learning 用 PowerShell モジュール
 
-# <a name="powershell-module-for-microsoft-azure-machine-learning"></a>PowerShell module for Microsoft Azure Machine Learning
+Azure Machine Learning 用 PowerShell モジュールは、ワークスペースや実験、データセット、Web サービスなどを Windows PowerShell で管理することができる強力なツールです。
 
-The PowerShell module for Azure Machine Learning is a powerful tool that allows you to use Windows PowerShell to manage workspaces, experiments, datasets, web serivces, and more.
+関連するドキュメントを閲覧したり、完全なソース コード付きでモジュールをダウンロードしたりするには、[https://aka.ms/amlps](https://aka.ms/amlps) にアクセスしてください。
 
-You can view the documentation and download the module, along with the full source code, at [https://aka.ms/amlps](https://aka.ms/amlps). 
+## Machine Learning PowerShell モジュールとは
 
-## <a name="what-is-the-machine-learning-powershell-module?"></a>What is the Machine Learning PowerShell module?
+Machine Learning PowerShell モジュールは、Azure Machine Learning のワークスペースや実験、データセット、Web サービス、Web サービス エンドポイントを Windows PowerShell からすべて管理できる .NET ベースの DLL モジュールです。モジュールと共に、整然と分離された [C# API レイヤー](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs)を含んだ完全なソース コードをダウンロードできます。この DLL を独自の .NET プロジェクトから参照すれば、.NET コードから Azure Machine Learning を管理することができます。また、この DLL はその土台となる REST API に依存しており、好きなクライアントから直接これらの REST API を利用することができます。
 
-The Machine Learning PowerShell module is a .NET-based DLL module that allows you to fully manage Azure Machine Learning workspaces, experiments, datasets, web services, and web service endpoints from Windows PowerShell. Along with the module, you can download the full source code which includes a cleanly-separated [C# API layer](https://github.com/hning86/azuremlps/blob/master/code/AzureMLSDK.cs). This means you can reference this DLL from your own .NET project and manage Azure Machine Learning through .NET code. In addition, the DLL depends on underlying REST APIs that you can leverage directly from your favorite client.
+## PowerShell モジュールでできること
 
-## <a name="what-can-i-do-with-the-powershell-module?"></a>What can I do with the PowerShell module?
+以下、この PowerShell モジュールで実行できるタスクの例を挙げます。ここに挙げた以外にも、さまざまな機能があります。[こちらの詳しいドキュメント](https://aka.ms/amlps)を参照してください。
 
-Here are some of the tasks you can perform with this PowerShell module. Check out the [full documentation](https://aka.ms/amlps) for these and many more functions.
+- 管理証明書を使用して新しいワークスペースをプロビジョニングする ([New-AmlWorkspace](https://github.com/hning86/azuremlps#new-amlworkspace))
+- 実験グラフを表す JSON ファイルをエクスポート/インポートする ([Export-AmlExperimentGraph](https://github.com/hning86/azuremlps#export-amlexperimentgraph)/[Import-AmlExperimentGraph](https://github.com/hning86/azuremlps#import-amlexperimentgraph))
+- 実験を実行する ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment))
+- 予測実験から Web サービスを作成する ([New-AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice))
+- 発行済みの Web サービスに新しいエンドポイントを作成する ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
+- RRS/BES Web サービス エンドポイントを呼び出す ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint)/[Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
 
-- Provision a new workspace using a management certificate ([New-AmlWorkspace](https://github.com/hning86/azuremlps#new-amlworkspace))
-- Export and import a JSON file representing an experiment graph ([Export-AmlExperimentGraph](https://github.com/hning86/azuremlps#export-amlexperimentgraph) and [Import-AmlExperimentGraph](https://github.com/hning86/azuremlps#import-amlexperimentgraph))
-- Run an experiment ([Start-AmlExperiment](https://github.com/hning86/azuremlps#start-amlexperiment))
-- Create a web service out of a predictive experiment ([New-AmlWebService](https://github.com/hning86/azuremlps#new-amlwebservice))
-- Create a new endpoint on a published web service ([Add-AmlWebServiceEndpoint](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint))
-- Invoke an RRS and/or BES web service endpoint ([Invoke-AmlWebServiceRRSEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicerrsendpoint) and [Invoke-AmlWebServicBESEndpoint](https://github.com/hning86/azuremlps#invoke-amlwebservicebesendpoint))
+PowerShell を使用して既存の実験を実行する簡単な例を次に示します。
 
-Here's a quick example of using PowerShell to run an existing experiment:
+		#Find the first Experiment named “xyz”
+		$exp = (Get-AmlExperiment | where Description -eq ‘xyz’)[0]
+		#Run the Experiment
+		Start-AmlExperiment -ExperimentId $exp.ExperimentId 
 
-        #Find the first Experiment named “xyz”
-        $exp = (Get-AmlExperiment | where Description -eq ‘xyz’)[0]
-        #Run the Experiment
-        Start-AmlExperiment -ExperimentId $exp.ExperimentId 
+さらに詳しい使用例については、記事「[PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する](machine-learning-create-models-and-endpoints-with-powershell.md)」を参照してください。PowerShell モジュールを使用して、ごく一般的に要求されるタスクを自動化する例が紹介されています。
 
-For a more in-depth use case, see this article on using the PowerShell module to automate a very commonly-requested task: [Create many Machine Learning models and web service endpoints from one experiment using PowerShell](machine-learning-create-models-and-endpoints-with-powershell.md).
+## 開始するには?
 
-## <a name="how-do-i-get-started?"></a>How do I get started?
+Machine Learning PowerShell を初めて使用する方は、GitHub から[リリース パッケージ](https://github.com/hning86/azuremlps/releases)をダウンロードし、[インストール手順](https://github.com/hning86/azuremlps/blob/master/README.md)に従ってください。ダウンロード/解凍した DLL のブロックを解除してから、ご使用の PowerShell 環境にインポートする必要があります。ほとんどのコマンドレットで、ワークスペース ID とワークスペース承認トークン、そのワークスペースが存在する Azure リージョンの指定が必要となります。これらの情報を指定するには、既定の config.json ファイルを使用するのが最も簡単です。この点については、インストール手順に詳しく取り上げられています。当然、Git ツリーを複製して、そのコードに Visual Studio からローカルで変更を加え、コンパイルしてもかまいません。
 
-To get started with Machine Learning PowerShell, download the [release package](https://github.com/hning86/azuremlps/releases) from GitHub and follow the [instructions for installation](https://github.com/hning86/azuremlps/blob/master/README.md). You'll need to unblock the downloaded/unzipped DLL and then import it into your PowerShell environment. Most of the cmdlets require that you supply the workspace ID, the workspace authorization token, and the Azure region that the workspace is in. The simplest way to provide these is through a default config.json file, which is covered in detail in the installation instructions. Of course, you can also clone the git tree and modify/compile the code locally using Visual Studio.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+PowerShell モジュールは、このプレビュー期間中に引き続き改善され、拡張される予定です。「[Cortana Intelligence and Machine Learning Blog (Cortana Intelligence と Machine Learning のブログ)](https://blogs.technet.microsoft.com/machinelearning/)」で最新情報をチェックしてください。
 
-The PowerShell module will continue to be improved and expanded during this preview period. Keep an eye on the [Cortana Intelligence and Machine Learning Blog](https://blogs.technet.microsoft.com/machinelearning/) for more news and information.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

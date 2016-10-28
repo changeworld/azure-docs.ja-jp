@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="Free 30 day trial of Azure RemoteApp | Microsoft Azure"
-    description="Check out the 30 day free trial for Azure RemoteApp."
+    pageTitle="Azure RemoteApp の 30 日間無料評価版 | Microsoft Azure"
+    description="Azure RemoteApp の 30 日間無料評価版をお試しください。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -18,24 +18,19 @@
 
 
 
-
-# <a name="free-30-day-trial-of-azure-remoteapp"></a>Free 30 day trial of Azure RemoteApp
+# Azure RemoteApp の 30 日間無料評価版
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-If you have an Azure subscription, you can try [Azure RemoteApp free for 30 days](https://www.remoteapp.windowsazure.com/en/tour.aspx). To start, simply sign in to the Azure Management Portal, navigate to the Azure RemoteApp node, and then create a collection. This is a great way to test drive the full administrative experience before converting to a paid subscription of Azure RemoteApp.  
+Azure サブスクリプションをお持ちであれば、[Azure RemoteApp を無料で 30 日間](https://www.remoteapp.windowsazure.com/en/tour.aspx)お試しいただけます。Azure 管理ポータルにサインインして [Azure RemoteApp] ノードに移動し、コレクションを作成するだけで使用を開始できます。これは、Azure RemoteApp の有料サブスクリプションに変換する前に、管理者としての経験を積むための優れた方法です。
 
-While in trial mode, you can create two collections with a 10 user per collection limit. There are no other limitations. You can convert your trial to a paid subscription at any time. After 30 days your collections will go into disabled state if you don’t convert to paid subscription.
+評価版モードでは、2 つのコレクションとコレクションごとに 10 人までのユーザーを作成できます。その他の制限はありません。いつでも、評価版から有料サブスクリプションに変換できます。30 日が経過しても有料サブスクリプションに変換しない場合は、コレクションは無効状態になります。
 
->[AZURE.NOTE] The Azure SLA does not apply to collections created in trial mode.  
+>[AZURE.NOTE] 評価版モードで作成したコレクションには、Azure SLA は適用されません。
 
-Can’t wait? Watch a quick video on how to [create a cloud deployment](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/).
+すぐに使用したい場合 [クラウド デプロイメントの作成](https://azure.microsoft.com/documentation/videos/azure-remoteapp-cloud-deployment-overview/)方法に関する動画をご覧ください。
 
-Got feedback? Post questions to [the discussion forums](https://feedback.azure.com/forums/247748-azure-remoteapp/). If you have an [Azure support plan](https://azure.microsoft.com/support/plans/), you can submit a support case. Everyone can submit feedback on our [Feedback forum](https://feedback.azure.com/forums/247748-azure-remoteapp/).  
+フィードバックが欲しい場合 [ディスカッション フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)に質問を投稿してください。[Azure サポート プラン](https://azure.microsoft.com/support/plans/)に加入している場合は、サポート ケースを送信できます。[フィードバック フォーラム](https://feedback.azure.com/forums/247748-azure-remoteapp/)には、どなたでもフィードバックを送信できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

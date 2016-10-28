@@ -1,21 +1,21 @@
 
-1. Sign in to your Azure subscription using the steps listed in [Connect to Azure from the Azure CLI](../articles/xplat-cli-connect.md).
+1. 「[Azure コマンド ライン インターフェイス (CLI) からの Azure サブスクリプションへの接続](../articles/xplat-cli-connect.md)」で示されている手順を使用して、Azure サブスクリプションにサインインします。
 
-2. Make sure you are in the Classic deployment mode by using:
+2. 以下を使用して、クラシック デプロイメント モードであることを確認します。
 
         azure config mode asm
 
-3. Find out the Linux image that you want to load from the available images:
+3. 利用可能なイメージからロードする Linux イメージを探します。
 
         azure vm image list | grep "Linux"
 
-   In a Windows command-prompt window, use **find** instead of grep.
+   Windows コマンド プロンプト ウィンドウでは、grep ではなく **find** を使用します。
 
-4. Use `azure vm create` to create a new virtual machine with the Linux image from the previous list. This step creates a new cloud service and storage account. You could also connect this virtual machine to an existing cloud service with a `-c` option. It also creates an SSH endpoint to log in to the Linux virtual machine with the `-e` option.
+4. `azure vm create` を使用して、上記のリストの Linux イメージで新しい仮想マシンを作成します。この手順では、新しいクラウド サービスだけでなくストレージ アカウントも作成されます。`-c` オプションを使用して、この仮想マシンを既存のクラウド サービスに接続することもできます。`-e` オプションを使用すると、Linux 仮想マシンにログインするための SSH エンドポイントも作成されます。
 
-        ~$ azure vm create "MyTestVM" b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB -g adminUser -p P@ssw0rd! -z "Small" -e -l "West US"
+        ~$ azure vm create "MyTestVM" b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-ja-JP-30GB -g adminUser -p P@ssw0rd! -z "Small" -e -l "West US"
         info:    Executing command vm create
-        + Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB
+        + Looking up image b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-ja-JP-30GB
         + Looking up cloud service
         info:    cloud service MyTestVM not found.
         + Creating cloud service
@@ -23,23 +23,21 @@
         + Creating VM
         info:    vm create command OK
 
-    >[AZURE.NOTE] For a Linux virtual machine, you must provide the `-e` option in `vm create`. It is not possible to enable SSH after the virtual machine has been created. For more details on SSH, read [How to Use SSH with Linux on Azure](virtual-machines-linux-mac-create-ssh-keys.md).
+    >[AZURE.NOTE] Linux 仮想マシンの場合は、`vm create` で `-e` オプションを指定する必要があります。仮想マシンを作成した後に SSH を有効にすることはできません。SSH の詳細については、「[Azure 上の Linux における SSH の使用方法](virtual-machines-linux-mac-create-ssh-keys.md)」をご覧ください
 
-    The image *b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-en-us-30GB* is the one we chose from the image list in the previous step. *MyTestVM* is the name of our new virtual machine, and *adminUser* is the username to SSH into the virtual machine. You can replace these variables as per your requirement. For more details on this command, visit the [Using the Azure CLI with Classic deployment model](virtual-machines-command-line-tools.md).
+    イメージ *b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_4-LTS-amd64-server-20160516-ja-JP-30GB* は、上記の手順でイメージ リストから選択したものです。*MyTestVM* は新しい仮想マシンの名前であり、*adminUser* は仮想マシンに SSH するために使用するユーザー名です。これらの変数は、必要に応じて置き換えることができます。このコマンドの詳細については、「[Using the Azure CLI with Classic deployment model (クラシック デプロイメント モデルでの Azure CLI コマンド)](virtual-machines-command-line-tools.md)」を参照してください。
 
-5. The newly created Linux virtual machine appears in the list given by:
+5. 新しく作成された Linux 仮想マシンが、次のものによって指定される一覧に表示されます。
 
         azure vm list
 
-6. You can verify the attributes of the virtual machine by using the command:
+6. 次のコマンドを使用して、仮想マシンの属性を確認できます。
 
         azure vm show MyTestVM
 
-7. The newly created virtual machine is ready to start with the `azure vm start` command.
+7. 新しく作成された仮想マシンは、`azure vm start` コマンドで開始できます。
 
-## <a name="next-steps"></a>Next steps
-For details on all these Azure CLI virtual machine commands, read the [Using the Azure CLI with the Classic deployment API](../articles/virtual-machines-command-line-tools.md).
+## 次のステップ
+これらすべての Azure CLI 仮想マシン コマンドの詳細については、「[Using the Azure CLI with the Classic deployment API (クラシック デプロイメント API での Azure CLI コマンド)](../articles/virtual-machines-command-line-tools.md)」を参照してください。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

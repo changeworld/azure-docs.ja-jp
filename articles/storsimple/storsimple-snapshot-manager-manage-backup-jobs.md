@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager backup jobs | Microsoft Azure"
-   description="Describes how to use the StorSimple Snapshot Manager MMC snap-in to view and manage scheduled, currently running, and completed backup jobs."
+   pageTitle="StorSimple Snapshot Manager のバックアップ ジョブ | Microsoft Azure"
+   description="スケジュールされたバックアップ ジョブ、現在実行中のバックアップ ジョブ、および完了したバックアップ ジョブの表示し、管理するためのStorSimple Snapshot Manager MMC スナップインの使用方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -16,101 +16,100 @@
    ms.author="v-sharos" />
 
 
+# StorSimple Snapshot Manager を使用したバックアップ ジョブの表示と管理
 
-# <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Use StorSimple Snapshot Manager to view and manage backup jobs
+## 概要
 
-## <a name="overview"></a>Overview
+**[スコープ]** ウィンドウ内の **[ジョブ]** ノードは、対話的に、または構成済みポリシーに従って開始した **[スケジュール済み]**、**[過去 24 時間以内]**、および **[実行中]** のバクアップ タスクを表示します。
 
-The **Jobs** node in the **Scope** pane shows the **Scheduled**, **Last 24 hours**, and **Running** backup tasks that you initiated interactively or by a configured policy. 
+このチュートリアルでは、スケジュール済みのバックアップ ジョブ、最近のバックアップ ジョブ、および現在実行中のバックアップ ジョブに関する情報を表示するための **[ジョブ]** ノードの使用方法について説明します (ジョブとこれに対応する情報の一覧は、**[結果]** ウィンドウに表示されます)。 さらに、表示されているジョブを右クリックすると、使用可能な操作を一覧で示すコンテキスト メニューを表示できます。
 
-This tutorial explains how you can use the **Jobs** node to display information about scheduled, recent, and currently running backup jobs. (The list of jobs and corresponding information appears in the **Results** pane.) Additionally, you can right-click a listed job and see a context menu that lists available actions.
+## スケジュールされたジョブの表示
 
-## <a name="view-scheduled-jobs"></a>View scheduled jobs
+スケジュールされたバックアップ ジョブを表示するには、以下の手順を実行します。
 
-Use the following procedure to view scheduled backup jobs.
+#### スケジュールされたジョブを表示するには
 
-#### <a name="to-view-scheduled-jobs"></a>To view scheduled jobs
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
 
-1. Click the desktop icon to start StorSimple Snapshot Manager. 
+2. **[スコープ**] ウィンドウで、**[ジョブ]** ノードを展開し、**[スケジュール済み]** をクリックします。次の情報が **[結果]** ウィンドウに表示されます。
 
-2. In the **Scope** pane, expand the **Jobs** node, and click **Scheduled**. The following information appears in the **Results** pane:
+    - **[名前]** – スケジュールされたスナップショットの名前
 
-    - **Name** – the name of the scheduled snapshot
+    - **[次の実行]** – 次回スケジュールされているスナップショットの日時
 
-    - **Next Run** – the date and time of the next scheduled snapshot
+    - **[最後の実行]** – スケジュールされている最近のスナップショットの日時
 
-    - **Last Run** – the date and time of the most recent scheduled snapshot
-
-    >[AZURE.NOTE] For one-time only snapshots, the **Next Run** and **Last Run** will be the same. 
+    >[AZURE.NOTE] 1 回限りのみのスナップショットの場合、**[次の実行]** と **[最後の実行]** は同じになります。
  
-    ![Scheduled backup jobs](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png) 
+    ![スケジュールされたバックアップ ジョブ](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_scheduled.png)
  
-3. To perform additional actions on a specific job, right-click the job name in the **Results** pane and select from the menu options.
+3. 特定のジョブで追加の操作を実行するには、**[結果]** ウィンドウにあるジョブ名を右クリックしてメニュー オプションから選択します。
 
-## <a name="view-recent-jobs"></a>View recent jobs
+## 最近のジョブの表示
 
-Use the following procedure to view backup and restore jobs that were completed in the last 24 hours.
+バックアップを表示し、過去 24 時間以内に完了したジョブを復元するには、以下の手順を実行します。
 
-#### <a name="to-view-recent-jobs"></a>To view recent jobs
+#### 最近のジョブを表示するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, expand the **Jobs** node, and click **Last 24 hours**. The **Results** pane shows backup jobs for the last 24 hours (to a maximum of 64 jobs). The following information appears in the **Results** pane, depending on the **View** options you specify:
+2. **[スコープ**] ウィンドウで、**[ジョブ]** ノードを展開し、**[過去 24 時間以内]** をクリックします。**[結果]** ウィンドウに、過去 24 時間以内のバックアップ ジョブが表示されます (最大 64 のジョブ)。**[表示]** オプションの指定に応じて、次の情報が **[結果]** ウィンドウに表示されます。
 
-    - **Name** – the name of the scheduled snapshot.
+    - **[名前]** – スケジュールされたスナップショットの名前。
  
-    - **Started** – the date and time when the snapshot began.
+    - **[開始]** – スナップショットを開始した日時。
 
-    - **Stopped** – the date and time when the snapshot finished or was terminated.
+    - **[停止]** – スナップショットが修了または停止した日時。
 
-    - **Elapsed** – the amount of time between the **Started** and **Stopped** times.
+    - **[経過時間]** – **[開始]** 日時と **[停止]** 日時の間の時間。
 
-    - **Status** – the state of the recently completed job. **Success** indicates that the backup was created successfully. **Failed** indicates that the job did not run successfully.
+    - **[状態]** – 最近完了したジョブの状態。**[成功]** は、バックアップが正常に作成されたことを示します。**[失敗]** は、ジョブが正常に実行されなかったことを示します。
 
-    - **Information** – the reason for the failure.
+    - **[情報]** – 失敗の理由。
 
-    - **Bytes processed (MB)** – the amount of data from the volume group that was processed (in MBs). 
+    - **[処理バイト数 (MB)]** – 処理されたボリューム グループのデータ量 (MB)。
 
-    ![Jobs that ran in the last 24 hours](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png) 
+    ![過去 24 時間に実行したジョブ](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_Last_24_hours.png)
 
-3. To perform additional actions on a specific job, right-click the job name in the **Results** pane and select from the menu options.
+3. 特定のジョブで追加の操作を実行するには、**[結果]** ウィンドウにあるジョブ名を右クリックしてメニュー オプションから選択します。
 
-    ![Delete a job](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png) 
+    ![ジョブを削除する](./media/storsimple-snapshot-manager-manage-backup-catalog/HCS_SSM_Delete_backup.png)
      
-## <a name="view-currently-running-jobs"></a>View currently running jobs
+## 現在実行中のジョブの表示
 
-Use the following procedure to view jobs that are currently running.
+現在実行中のジョブを表示するには、以下の手順を実行します。
 
-#### <a name="to-view-currently-running-jobs"></a>To view currently running jobs
+#### 現在実行中のジョブを表示するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, expand the **Jobs** node, and click **Running**. Depending on the **View** options you specify, the following information appears in the **Results** pane: 
+2. **[スコープ]** ウィンドウで、**[ジョブ]** ノードを展開し、**[実行中]** をクリックします。指定した **[表示]** オプションに応じて、次の情報が **[結果]** ウィンドウに表示されます。
 
-    - **Name** – the name of the scheduled snapshot.
+    - **[名前]** – スケジュールされたスナップショットの名前。
 
-    - **Started** – the date and time when the snapshot began.
+    - **[開始]** – スナップショットを開始した日時。
 
-    - **Checkpoint** – the current action of the backup.
+    - **[チェックポイント]** – バックアップの現在の操作。
 
-    - **Status** – the percentage of completion.
+    - **[状態]** – 完了の割合。
     
-    - **Elapsed** – the amount of time that has passed since the backup began. 
+    - **[経過時間]** – バックアップの開始以降に経過した時間。
 
-    - **Average throughput (MB)** – ratio of total bytes of data processed to that of total time taken for processing (MBs).
+    - **[平均スループット (MB)]** – 処理の合計所要時間に対する処理されたデータの合計バイト数の比率 (MB 単位)。
 
-    - **Bytes processed (MB)** – total bytes of data processed (in MBs).
+    - **[処理バイト数 (MB)]** – 処理されたデータの合計バイト数 (MB 単位)。
 
-    - **Bytes written (MB)** – total bytes of data written (in MBs). It includes the data as well as the metadata and hence is typically greater than the Bytes Processed.
+    - **[書き込みバイト数 (MB)]** – 書き込まれたデータの合計バイト数 (MB 単位)。これには、データとメタデータが含まれるので、通常は処理バイト数よりも大きくなります。
 
-    ![Jobs currently running](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
+    ![現在実行中のジョブ](./media/storsimple-snapshot-manager-manage-backup-jobs/HCS_SSM_Jobs_running.png)
 
-3. To perform additional actions on a specific job, right-click the job name in the **Results** pane and select from the menu options.
+3. 特定のジョブで追加の操作を実行するには、**[結果]** ウィンドウにあるジョブ名を右クリックしてメニュー オプションから選択します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [use StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
-- Learn how to [use StorSimple Snapshot Manager to manage the backup catalog](storsimple-snapshot-manager-manage-backup-catalog.md).
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理方法](storsimple-snapshot-manager-admin.md)
+- [StorSimple Snapshot Manager を使用したバックアップ カタログの管理方法](storsimple-snapshot-manager-manage-backup-catalog.md)
 
 
 
@@ -131,9 +130,4 @@ Use the following procedure to view jobs that are currently running.
 
  
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0511_2016-->

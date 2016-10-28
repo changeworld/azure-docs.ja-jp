@@ -1,8 +1,8 @@
 <properties 
-    pageTitle="How do you redirect USB devices in Azure RemoteApp? | Microsoft Azure" 
-    description="Learn how to use redirection for USB devices in Azure RemoteApp." 
+    pageTitle="Azure RemoteApp で USB デバイスをリダイレクトする方法 | Microsoft Azure" 
+    description="Azure RemoteApp で USB デバイスのリダイレクトを使用する方法について説明します。" 
     services="remoteapp" 
-    documentationCenter="" 
+	documentationCenter="" 
     authors="lizap" 
     manager="mbaldwin" />
 
@@ -17,74 +17,67 @@
 
 
 
-
-# <a name="how-do-you-redirect-usb-devices-in-azure-remoteapp?"></a>How do you redirect USB devices in Azure RemoteApp?
+# Azure RemoteApp で USB デバイスをリダイレクトする方法
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Device redirection lets users use the USB devices attached to their computer or tablet with the apps in Azure RemoteApp. For example, if you shared Skype through Azure RemoteApp, your users need to be able to use their device cameras.
+デバイス リダイレクトを使用すると、ユーザーは、コンピューターやタブレットに接続された USB デバイスを Azure RemoteApp のアプリで利用できます。たとえば、Azure RemoteApp を利用して Skype を共有した場合、ユーザーはデバイスのカメラを使用できるようにする必要があります。
 
-Before you go further, make sure you read the USB redirection information in [Using redirection in Azure RemoteApp](remoteapp-redirection.md). However the recommended  nusbdevicestoredirect:s:* won't work for USB web cameras and may not work for some USB printers or USB multifunctional devices. By design and for security reasons, the Azure RemoteApp administrator has to enable redirection either by device class GUID or by device instance ID before your users can use those devices.
+先へ進む前に、「[Azure RemoteApp でリダイレクトを使用する](remoteapp-redirection.md)」で USB リダイレクトに関する情報を必ず確認してください。ただし、推奨されている nusbdevicestoredirect:s:* は USB Web カメラには使用できません。また、一部の USB プリンターや USB 多機能デバイスにも使用できない場合があります。仕様やセキュリティ上の理由により、Azure RemoteApp の管理者は、デバイス クラス GUID またはデバイス インスタンス ID を使用してリダイレクトを有効にしないと、ユーザーがこれらのデバイスを使用できません。
 
-Although this article talks about web camera redirection, you can use a similar approach to redirect USB printers and other USB multifunctional devices that are not redirected by the **nusbdevicestoredirect:s:*** command.
+この記事では、Web カメラのリダイレクトについて説明しますが、**nusbdevicestoredirect:s:*** コマンドでリダイレクトされない USB プリンターやその他の USB 多機能デバイスをリダイレクトする場合にも同様の方法を使用できます。
 
-## <a name="redirection-options-for-usb-devices"></a>Redirection options for USB devices
-Azure RemoteApp uses very similar mechanisms for redirecting USB devices as the ones available for Remote Desktop Services. The underlying technology lets you choose the correct redirection method for a given device, to get the best of both high-level and RemoteFX USB device redirection using the **usbdevicestoredirect:s:** command. There are four elements to this command:
+## USB デバイスのリダイレクト オプション
+Azure RemoteApp では、USB デバイスをリダイレクトするために、リモート デスクトップ サービスで使用できるものと非常によく似たメカニズムが使用されています。基盤となるテクノロジにより、**nusbdevicestoredirect:s:** コマンドを使用した高度な RemoteFX USB デバイスのリダイレクトよりも優れた、特定のデバイスに適切なリダイレクト方法を選ぶことができます。このコマンドに対する要素は 4 つあります。
 
-| Processing order | Parameter           | Description                                                                                                                |
+| 処理の順序 | パラメーター | Description |
 |------------------|---------------------|----------------------------------------------------------------------------------------------------------------------------|
-| 1                | *                   | Selects all devices that aren't picked up by high-level redirection. Note: By design, * doesn't work for USB web cameras.  |
-|                  | {Device class GUID} | Selects all devices that match the specified device setup class.                                                           |
-|                  | USB\InstanceID      | Selects a USB device specified for the given instance ID.                                                                  |
-| 2                | -USB\Instance ID    | Removes the redirection settings for the specified device.                                                                 |
+| 1 | * | 高度なリダイレクトで取得されないすべてのデバイスを選択します。注: 仕様により、* は USB Web カメラには使用できません。 |
+| | {Device class GUID} | 指定されたデバイス セットアップ クラスと一致するすべてのデバイスを選択します。 |
+| | USB\\InstanceID | 特定のインスタンス ID に指定された USB デバイスを選択します。 |
+| 2 | -USB\\Instance ID | 指定されたデバイスのリダイレクト設定を削除します。 |
 
-## <a name="redirecting-a-usb-device-by-using-the-device-class-guid"></a>Redirecting a USB device by using the device class GUID
-There are two ways to find the device class GUID that can be used for redirection. 
+## デバイス クラス GUID を使用した USB デバイスのリダイレクト
+リダイレクトに使用できるデバイス クラス GUID を検索する方法は 2 とおりあります。
 
-The first option is to use the [System-Defined Device Setup Classes Available to Vendors](https://msdn.microsoft.com/library/windows/hardware/ff553426.aspx). Pick the class that most closely matches the device attached to the local computer. For digital cameras this could be an Imaging Device class or Video Capture Device class. You'll need to do some experimentation with the device classes to find the correct class GUID that works with the locally attached USB device (in our case the web camera).
+最初のオプションでは、[ベンダーが使用できる、システム定義のデバイス セットアップ クラス](https://msdn.microsoft.com/library/windows/hardware/ff553426.aspx)を使用します。ローカル コンピューターに接続されているデバイスに対して最も適合性が高いクラスを選択します。デジタル カメラの場合、これは、イメージング デバイス クラスかキャプチャ デバイス クラスになります。ローカルに接続された USB デバイス (この場合は Web カメラ) で動作する適切なクラス GUID を見つけるには、デバイス クラスでいくつかの実験を行う必要があります。
 
-A better way, or the second option, is to follow these steps to find the specific device class GUID:
+さらに優れた方法、つまり 2 番目のオプションでは、次の手順に従って、特定のデバイス クラス GUID を見つけます。
 
-1. Open the Device Manager, locate the device that will be redirected and right-click it, and then open the properties.
-![Open the Device Manager](./media/remoteapp-usbredir/ra-devicemanager.png)
-2. On the **Details** tab, choose the property **Class Guid**. The value which appears is the Class GUID for that type of device.
-![Camera properties](./media/remoteapp-usbredir/ra-classguid.png)
-3. Use the Class Guid value to redirect devices that match it.
+1. デバイス マネージャーを開き、リダイレクトするデバイスを探して右クリックし、プロパティを開きます。![Open the Device Manager](./media/remoteapp-usbredir/ra-devicemanager.png)
+2. **[詳細]** タブで、**[クラス GUID]** プロパティを選択します。表示された値は、その種類のデバイスのクラス GUID です。![Camera properties](./media/remoteapp-usbredir/ra-classguid.png)
+3. このクラス GUID 値を使用して、それに対応するデバイスをリダイレクトします。
 
-For example:
+次に例を示します。
 
-        Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s:<Class Guid value>"
 
-You can combine multiple device redirections in the same cmdlet. For example: to redirect local storage and a USB web camera, cmdlet looks like this:
+複数のデバイス リダイレクトを 1 つのコマンドレットにまとめることができます。たとえば、ローカル ストレージと USB Web カメラをリダイレクトする場合、コマンドレットは次のようになります。
 
-        Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:<Class Guid value>"
+		Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "drivestoredirect:s:*`nusbdevicestoredirect:s:<Class Guid value>"
 
-When you set device redirection by class GUID all devices that match that class GUID in the specified collection are redirected. For example, if there are multiple computers on the local network that have the same USB web cameras, you can run a single cmdlet to redirect all of the web cameras.
+クラス GUID でデバイス リダイレクトを設定すると、指定されたコレクション内でそのクラス GUID に対応するすべてのデバイスがリダイレクトされます。たとえば、ローカル ネットワーク上の複数のコンピューターに同じ USB Web カメラが搭載されている場合、1 つのコマンドレットを実行して、すべての Web カメラをリダイレクトすることができます。
 
-## <a name="redirecting-a-usb-device-by-using-the-device-instance-id"></a>Redirecting a USB device by using the device instance ID
+## デバイス インスタンス ID を使用した USB デバイスのリダイレクト
 
-If you want more fine-grained control and want to control redirection per device, you can use the **USB\InstanceID** redirection parameter.
+より細かく制御する場合やデバイスごとにリダイレクトを制御する場合は、**USB\\InstanceID** リダイレクト パラメーターを使用できます。
 
-The hardest part of this method is finding the USB device instance ID. You'll need access to the computer and the specific USB device. Then follow these steps:
+この方法の最も難しい部分は、USB デバイス インスタンス ID を見つけるところです。コンピューターと特定の USB デバイスへのアクセス権が必要になります。その後、次の手順に従います。
 
-1. Enable the device redirection in Remote Desktop Session as described in [How can I use my devices and resources in a Remote Desktop session?](http://windows.microsoft.com/en-us/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session)
-2. Open a Remote Desktop Connection and click **Show Options**.
-3. Click **Save as** to save the current connection settings to an RDP file.  
-    ![Save the settings as an RDP file](./media/remoteapp-usbredir/ra-saveasrdp.png)
-4. Choose a file name and a location, for example “MyConnection.rdp” and “This PC\Documents”, and save the file.
-5. Open the MyConnection.rdp file using a text editor and find the instance ID of the device you want to redirect.
+1. 「[デバイスやリソースをリモート デスクトップ セッションで使用する方法](http://windows.microsoft.com/ja-JP/windows7/How-can-I-use-my-devices-and-resources-in-a-Remote-Desktop-session)」の説明に従い、リモート デスクトップ セッションでデバイス リダイレクトを有効にします。
+2. リモート デスクトップ接続を開き、**[オプションの表示]** をクリックします。
+3. **[名前を付けて保存]** をクリックし、現在の接続設定を RDP ファイルに保存します。![Save the settings as an RDP file](./media/remoteapp-usbredir/ra-saveasrdp.png)
+4. ファイル名と場所 (たとえば、"MyConnection.rdp" と "This PC\\Documents") を選択し、ファイルを保存します。
+5. テキスト エディターで MyConnection.rdp ファイルを開き、リダイレクトするデバイスのインスタンス ID を検索します。
 
-Now, use the instance ID in the following cmdlet:
+ここで、見つかったインスタンス ID を次のコマンドレットで使用します。
 
-    Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s: USB\<Device InstanceID value>"
+	Set-AzureRemoteAppCollection -CollectionName <collection name> -CustomRdpProperty "nusbdevicestoredirect:s: USB<Device InstanceID value>"
 
 
 
-### <a name="help-us-help-you"></a>Help us help you 
-Did you know that in addition to rating this article and making comments down below, you can make changes to the article itself? Something missing? Something wrong? Did I write something that's just confusing? Scroll up and click **Edit on GitHub** to make changes - those will come to us for review, and then, once we sign off on them, you'll see your changes and improvements right here.
+### サポートのお願い 
+記事を評価したり、下にコメントを投稿したりするだけでなく、記事自体を変更できることを知っていましたか。 説明不足ですか。 間違いがありますか。 わかりにくいことが書いてありますか。 上にスクロールし、**[GitHub で編集]** をクリックすると変更できます。届いたら確認されます。サインオフ後、変更と改善をここで確認できます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

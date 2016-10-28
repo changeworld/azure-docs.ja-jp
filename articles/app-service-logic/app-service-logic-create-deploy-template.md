@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a logic app deployment template | Microsoft Azure"
-   description="Learn how to create a logic app deployment template and use it for release management"
+   pageTitle="ロジック アプリのデプロイ テンプレートを作成する | Microsoft Azure"
+   description="ロジック アプリのデプロイ テンプレートを作成し、リリース管理で使用する方法について説明します。"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -16,78 +16,73 @@
    ms.date="05/25/2016"
    ms.author="jehollan"/>
 
+# ロジック アプリのデプロイ テンプレートの作成
 
-# <a name="create-a-logic-app-deployment-template"></a>Create a logic app deployment template
+ロジック アプリが作成された後は、このロジック アプリを Azure Resource Manager のテンプレートとして作成することができます。これにより、任意の環境またはリソース グループにロジック アプリを簡単にデプロイできます。Resource Manager テンプレートの概要は、「[Authoring Azure Resource Manager template (Azure Resource Manager テンプレートを作成する)](../resource-group-authoring-templates.md)」と「[Deploy resources with Azure Resource Manager template (Azure Resource Manager テンプレートでリソースをデプロイする)](../resource-group-template-deploy.md)」で確認できます。
 
-After a logic app has been created, you might want to create it as an Azure Resource Manager template. This way, you can easily deploy the logic app to any environment or resource group where you might need it. For an introduction to Resource Manager templates, be sure to check out the articles on [authoring Azure Resource Manager templates](../resource-group-authoring-templates.md) and [deploying resources by using Azure Resource Manager templates](../resource-group-template-deploy.md).
+## ロジック アプリ デプロイ テンプレート
 
-## <a name="logic-app-deployment-template"></a>Logic app deployment template
+ロジック アプリには、次の 3 つの基本的なコンポーネントがあります。
 
-A logic app has three basic components:
+* **ロジック アプリ リソース**。このリソースには、価格設定計画、場所、ワークフロー定義などの情報が含まれています。
+* **ワークフロー定義**。これは、コード ビューで表示されます。ワークフロー定義には、フロー手順の定義およびエンジンの実行方法が含まれています。これはロジック アプリ リソースの `definition` プロパティです。
+* **接続**。接続文字列やアクセス トークンなど、コネクタ接続関連のメタデータを安全に保存するための個別のリソースです。ロジック アプリでは、ロジック アプリ リソースの `parameters` セクションで参照されます。
 
-* **Logic app resource**. This resource contains information about things like pricing plan, location, and the workflow definition.
-* **Workflow definition**. This is what is seen in code view. It includes the definition of the steps of the flow and how the engine should execute. This is the `definition` property of the logic app resource.
-* **Connections**. These are separate resources that securely store metadata about any connector connections, such as a connection string and an access token. You reference these in a logic app in the `parameters` section of the logic app resource.
+以上のコンポーネントを既存のロジック アプリで参照する場合、[Azure リソース エクスプローラー](http://resources.azure.com)などのツールを利用できます。
 
-You can view all of these pieces for existing logic apps by using a tool like [Azure Resource Explorer](http://resources.azure.com).
+リソース グループ デプロイで使用するロジック アプリのテンプレートを作成するには、リソースを定義し、必要に応じてパラメーター化する必要があります。たとえば、開発環境、テスト環境、運用環境にデプロイする場合、環境ごとに異なる接続文字列を SQL データベースに使用すると効果的です。または、異なるサブスクリプションやリソース グループ内でデプロイすることもできます。
 
-To make a template for a logic app to use with resource group deployments, you need to define the resources and parameterize as needed. For example, if you're deploying to a development, test, and production environment, you'll likely want to use different connection strings to a SQL database in each environment. Or, you might want to deploy within different subscriptions or resource groups.  
+## ロジック アプリのデプロイ テンプレートの作成
 
-## <a name="create-a-logic-app-deployment-template"></a>Create a logic app deployment template
+ロジック アプリのデプロイ テンプレートの作成に役立つツールが提供されています。テンプレートは手書きで作成できます。つまり、上述のリソースを使用して、必要に応じてパラメータを作成できます。また、[Logic App Template Creator](https://github.com/jeffhollan/LogicAppTemplateCreator) という PowerShell モジュールを利用することもできます。このオープン ソース モジュールは、最初にロジック アプリとそれが利用している接続を評価し、デプロイに必要なパラメーターと共にテンプレート リソースを生成します。たとえば、ロジック アプリが Azure Service Bus キューからメッセージを受信し、Azure SQL データベースにデータを追加した場合、このツールはすべてのオーケストレーション ロジックを保存し、デプロイ時に設定できるように、SQL と Service Bus 接続文字列をパラメーター化します。
 
-A few tools can assist you as you create a logic app deployment template. You can author by hand, that is, by using the resources already discussed here to create parameters as needed. Another option is to use a [logic app template creator](https://github.com/jeffhollan/LogicAppTemplateCreator) PowerShell module. This open-source module first evaluates the logic app and any connections that it is using, and then generates template resources with the necessary parameters for deployment. For example, if you have a logic app that receives a message from an Azure Service Bus queue and adds data to an Azure SQL database, the tool will preserve all of the orchestration logic and parameterize the SQL and Service Bus connection strings so that they can be set at deployment.
+>[AZURE.NOTE] 接続はロジック アプリと同じリソース グループ内に置く必要があります。
 
->[AZURE.NOTE] Connections must be within the same resource group as the logic app.
+### ロジック アプリ テンプレートの PowerShell モジュールのインストール
 
-### <a name="install-the-logic-app-template-powershell-module"></a>Install the logic app template PowerShell module
+最も簡単なモジュールのインストール方法は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1)とコマンド `Install-Module -Name LogicAppTemplate` を使用することです。
 
-The easiest way to install the module is via the [PowerShell Gallery](https://www.powershellgallery.com/packages/LogicAppTemplate/0.1), by using the command `Install-Module -Name LogicAppTemplate`.  
+PowerShell モジュールを手動でインストールすることもできます。
 
-You also can install the PowerShell module manually:
+1. [ロジック アプリのテンプレート作成機能](https://github.com/jeffhollan/LogicAppTemplateCreator/releases)の最新リリースをダウンロードします。
+1. PowerShell モジュール フォルダー (通常は `%UserProfile%\Documents\WindowsPowerShell\Modules`) にフォルダーを解凍します。
 
-1. Download the latest release of the [logic app template creator](https://github.com/jeffhollan/LogicAppTemplateCreator/releases).  
-1. Extract the folder in your PowerShell module folder (usually `%UserProfile%\Documents\WindowsPowerShell\Modules`).
+モジュールがあらゆるテナントやサブスクリプション アクセス トークンで機能するように、[ARMClient](https://github.com/projectkudu/ARMClient) コマンド ライン ツールの使用をお勧めします。この[ブログの投稿](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html)では、ARMClient についてさらに詳しく説明しています。
 
-For the module to work with any tenant and subscription access token, we recommend that you use it with the [ARMClient](https://github.com/projectkudu/ARMClient) command line tool.  This [blog post ](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) discusses ARMClient in more detail.
+### PowerShell を使用したロジック アプリ テンプレートの生成
 
-### <a name="generate-a-logic-app-template-by-using-powershell"></a>Generate a logic app template by using PowerShell
-
-After PowerShell is installed, you can generate a template by using the following command:
+PowerShell をインストールした後は、次のコマンドを使用してテンプレートを生成できます。
 
 `armclient token $SubscriptionId | Get-LogicAppTemplate -LogicApp MyApp -ResourceGroup MyRG -SubscriptionId $SubscriptionId -Verbose | Out-File C:\template.json`
 
-`$SubscriptionId` is the Azure subscription ID. This line first gets an access token via ARMClient, then pipes it through to the PowerShell script, and then creates the template in a JSON file.
+`$SubscriptionId` は Azure サブスクリプション ID です。この行はまず、ARMClient を使用してアクセス トークンを取得し、このアクセス トークンを PowerShell スクリプトにパイプして、JSON ファイルでテンプレートを作成します。
 
-## <a name="add-parameters-to-a-logic-app-template"></a>Add parameters to a logic app template
+## ロジック アプリ テンプレートにパラメーターを追加する
 
-After you create your logic app template, you can continue to add or modify parameters that you might need. For example, if your definition includes a resource ID to an Azure function or nested workflow that you plan to deploy in a single deployment, you can add more resources to your template and parameterize IDs as needed. The same applies to any references to custom APIs or Swagger endpoints you expect to deploy with each resource group.
+ロジック アプリ テンプレートを作成したら、引き続き必要なパラメータを追加または変更できます。たとえば、定義により、1 回のデプロイでデプロイを予定している Azure 機能または入れ子になったワークフローにリソース ID が追加される場合、テンプレートにリソースを追加し、必要に応じて ID をパラメーター化すると便利です。これは、カスタム API や Swagger エンドポイントの参照をリソース グループごとにデプロイする予定の場合にも該当します。
 
-## <a name="deploy-a-logic-app-template"></a>Deploy a logic app template
+## ロジック アプリ テンプレートをデプロイする
 
-You can deploy your template by using any number of tools, including PowerShell, REST API, Visual Studio Release Management, and the Azure Portal Template Deployment. See this article about [deploying resources by using Azure Resource Manager templates](../resource-group-template-deploy.md) for additional information. Also, we recommend that you create a [parameter file](../resource-group-template-deploy.md#parameter-file) to store values for the parameter.
+PowerShell、REST API、Visual Studio Release Management、Azure ポータル テンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。詳細については、「[Deploy resources with Azure Resource Manager template (Azure Resource Manager テンプレートでリソースをデプロイする)](../resource-group-template-deploy.md)」を参照してください。パラメーターの値を保存する[パラメーター ファイル](../resource-group-template-deploy.md#parameter-file)の作成も推奨されます。
 
-### <a name="authorize-oauth-connections"></a>Authorize OAuth connections
+### OAuth 接続を作成する
 
-After deployment, the logic app works end-to-end with valid parameters. However, OAuth connections still will need to be authorized to generate a valid access token. You can do this by opening the logic app in the designer and then authorizing connections. Or, if you want to automate, you can use a script to consent to each OAuth connection. There's an example script on GitHub under the [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) project.
+デプロイ後、ロジック アプリは有効なパラメーターを使用してエンド ツー エンドで動作します。ただし、有効なアクセス トークンを生成するには、OAuth 接続を承認する必要があります。デザイナーでロジック アプリを開き、接続を承認することにより、これを行うことができます。または、自動化する場合は、各 OAuth 接続に対して同意するスクリプトを使用することができます。例として、[LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) プロジェクトの GitHub のスクリプトがあります。
 
-## <a name="visual-studio-release-management"></a>Visual Studio Release Management
+## Visual Studio Release Management
 
-A common scenario for deploying and managing an environment is to use a tool like Visual Studio Release Management, with a logic app deployment template. Visual Studio Team Services includes a [Deploy Azure Resource Group](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) task that you can add to any build or release pipeline. You need to have a [service principal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) for authorization to deploy, and then you can generate the release definition.
+環境をデプロイし、管理する一般的なシナリオは、Visual Studio Release Management のようなツールを ロジック アプリ デプロイ テンプレートと共に使用することです。Visual Studio Team Services に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース定義を生成できます。
 
-1. In Release Management, to create a new definition, select **Empty**  to start with an empty definition.
+1. Release Management で、新しい定義を作成するには、**空**を選択して空の定義を開始します。
 
-    ![Create a new, empty definition][1]   
+    ![新しい空の定義を作成します。][1]
 
-1. Choose any resources you need for this. This likely will be the logic app template generated manually or as part of the build process.
-1. Add an **Azure Resource Group Deployment** task.
-1. Configure with a [service principal](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/), and reference the Template and Template Parameters files.
-1. Continue to build out steps in the release process for any other environment, automated test, or approvers as needed.
+1. これに必要なリソースを選択します。多くの場合、手作業で生成したか、ビルド プロセスで生成されたロジック アプリ テンプレートを選択します。
+1. **Azure Resource Group Deployment (Azure リソース グループ デプロイ)** タスクを追加します。
+1. [サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)で構成し、テンプレート ファイルとテンプレート パラメーター ファイルを参照します。
+1. 必要に応じて、その他の環境、自動化されたテスト、承認者のために、リリース プロセスの手順の構築を続行します。
 
 <!-- Image References -->
 [1]: ./media/app-service-logic-create-deploy-template/emptyReleaseDefinition.PNG
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory Integration with Citrix ShareFile | Microsoft Azure" 
-    description="Learn how to use Citrix ShareFile with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Citrix ShareFile の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Citrix ShareFile を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,148 +11,140 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
+#チュートリアル: Azure Active Directory と Citrix ShareFile の統合
 
-#<a name="tutorial:-azure-active-directory-integration-with-citrix-sharefile"></a>Tutorial: Azure Active Directory Integration with Citrix ShareFile
+このチュートリアルでは、Azure と Citrix ShareFile の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-The objective of this tutorial is to show the integration of Azure and Citrix ShareFile.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+-   有効な Azure サブスクリプション
+-   Citrix ShareFile テナント
 
--   A valid Azure subscription
--   A Citrix ShareFile tenant
+このチュートリアルを完了すると、Citrix ShareFile に割り当てた Azure AD ユーザーは、Citrix ShareFile 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
-After completing this tutorial, the Azure AD users you have assigned to Citrix ShareFile will be able to single sign into the application at your Citrix ShareFile company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+1.  Citrix ShareFile のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-1.  Enabling the application integration for Citrix ShareFile
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+![シナリオ](./media/active-directory-saas-citrix-sharefile-tutorial/IC773620.png "シナリオ")
+##Citrix ShareFile のアプリケーション統合の有効化
 
-![Scenario](./media/active-directory-saas-citrix-sharefile-tutorial/IC773620.png "Scenario")
-##<a name="enabling-the-application-integration-for-citrix-sharefile"></a>Enabling the application integration for Citrix ShareFile
+このセクションでは、Citrix ShareFile のアプリケーション統合を有効にする方法を説明します。
 
-The objective of this section is to outline how to enable the application integration for Citrix ShareFile.
+###Citrix ShareFile のアプリケーション統合を有効にするには、次の手順を実行します。
 
-###<a name="to-enable-the-application-integration-for-citrix-sharefile,-perform-the-following-steps:"></a>To enable the application integration for Citrix ShareFile, perform the following steps:
-
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-citrix-sharefile-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-citrix-sharefile-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-citrix-sharefile-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-citrix-sharefile-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-citrix-sharefile-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-citrix-sharefile-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-citrix-sharefile-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **Citrix ShareFile**.
+6.  **検索ボックス**に、「**Citrix ShareFile**」と入力します。
 
-    ![Application gallery](./media/active-directory-saas-citrix-sharefile-tutorial/IC773621.png "Application gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-citrix-sharefile-tutorial/IC773621.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **Citrix ShareFile**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[Citrix ShareFile]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Citrix ShareFile](./media/active-directory-saas-citrix-sharefile-tutorial/IC773622.png "Citrix ShareFile")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
 
-The objective of this section is to outline how to enable users to authenticate to Citrix ShareFile with their account in Azure AD using federation based on the SAML protocol.
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Citrix ShareFile に対する認証を行えるようにする方法を説明します。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Citrix ShareFile** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Citrix ShareFile** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Enable single sign-on](./media/active-directory-saas-citrix-sharefile-tutorial/IC773623.png "Enable single sign-on")
 
-2.  On the **How would you like users to sign on to Citrix ShareFile** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Citrix ShareFile へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-citrix-sharefile-tutorial/IC773624.png "Configure Single Sign-On")
 
-3.  On the **Configure App URL** page, in the **Citrix ShareFile Sign On URL** textbox, type your URL using the following pattern `https://<tenant-name>.shareFile.com`, and then click **Next**.
+3.  **[アプリケーション URL の構成]** ページで、**[Citrix ShareFile サインオン URL]** ボックスに、`https://<tenant-name>.shareFile.com` のパターンで URL を入力し、**[次へ]** をクリックします。
 
     ![Configure App URL](./media/active-directory-saas-citrix-sharefile-tutorial/IC773625.png "Configure App URL")
 
-4.  On the **Configure single sign-on at Citrix ShareFile** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
+4.  **[Citrix ShareFile でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
-    ![ConfigureSingle Sign-On](./media/active-directory-saas-citrix-sharefile-tutorial/IC773626.png "ConfigureSingle Sign-On")
+    ![シングル サインオンの構成](./media/active-directory-saas-citrix-sharefile-tutorial/IC773626.png "シングル サインオンの構成")
 
-5.  In a different web browser window, log into your **Citrix ShareFile** company site as an administrator.
+5.  別の Web ブラウザー ウィンドウで、**Citrix ShareFile** 企業サイトに管理者としてログインします。
 
-6.  In the toolbar on the top, click **Admin**.
+6.  上部のツールバーの **[Admin]** をクリックします。
 
-7.  In the left navigation pane, select **Configure Single Sign-On**.
+7.  左側のナビゲーション ウィンドウで、**[Configure Single Sign-On]** を選択します。
 
-    ![Account Administration](./media/active-directory-saas-citrix-sharefile-tutorial/IC773627.png "Account Administration")
+    ![アカウント管理](./media/active-directory-saas-citrix-sharefile-tutorial/IC773627.png "アカウント管理")
 
-8.  On the **Single Sign-On/ SAML 2.0 Configuration** dialog page under **Basic Settings**, perform the following steps:
+8.  **[Single Sign-On/ SAML 2.0 Configuration]** ダイアログ ページの **[Basic Settings]** で、次の手順を実行します。
 
-    ![Single sign-on](./media/active-directory-saas-citrix-sharefile-tutorial/IC773628.png "Single sign-on")
+    ![シングル サインオン](./media/active-directory-saas-citrix-sharefile-tutorial/IC773628.png "シングル サインオン")
 
-    1.  Click **Enable SAML**.
-    2.  In the Azure classic portal, on the **Configure single sign-on at Citrix ShareFile** dialog page, copy the **Entity ID** value, and then paste it into the **Your IDP Issuer/ Entity ID** textbox.
-    3.  In the Azure classic portal, on the **Configure single sign-on at Citrix ShareFile** dialog page, copy the **Remote Login URL** value, and then paste it into the **Login URL** textbox.
-    4.  In the Azure classic portal, on **the Configure single sign-on at Citrix ShareFile** dialog page, copy the **Remote Logout URL** value, and then paste it into the **Logout URL** textbox.
-    5.  Click **Change** next to the **X.509 Certificate** field and then upload the certificate you downloaded from the Azure AD classic portal.
-        ![Basic Settings](./media/active-directory-saas-citrix-sharefile-tutorial/IC773629.png "Basic Settings")
+    1.  **[Enable SAML]** をクリックします。
+    2.  Azure クラシック ポータルで、**[Citrix ShareFile でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[Your IDP Issuer/ Entity ID]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[Citrix ShareFile でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[ログイン URL]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルで、**[Citrix ShareFile でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト URL]** ボックスに貼り付けます。
+    5.  **[X.509 Certificate]** フィールドの横の **[Change]** をクリックし、Azure AD クラシック ポータルからダウンロードした証明書をアップロードします。![基本設定](./media/active-directory-saas-citrix-sharefile-tutorial/IC773629.png "基本設定")
 
-9.  Click **Save** on the Citrix ShareFile management portal.
+9.  Citrix ShareFile 管理ポータルで **[Save]** をクリックします。
 
-10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    ![Configure single sign-on](./media/active-directory-saas-citrix-sharefile-tutorial/IC773630.png "Configure single sign-on")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+    ![シングル サインオンの構成](./media/active-directory-saas-citrix-sharefile-tutorial/IC773630.png "シングル サインオンの構成")
+##ユーザー プロビジョニングの構成
 
-In order to enable Azure AD users to log into Citrix ShareFile, they must be provisioned into Citrix ShareFile.  
-In the case of Citrix ShareFile, provisioning is a manual task.
+Azure AD ユーザーが Citrix ShareFile にログインできるようにするには、ユーザーを Citrix ShareFile にプロビジョニングする必要があります。Citrix ShareFile の場合、プロビジョニングは手動で行います。
 
-###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
+###ユーザー アカウントをプロビジョニングするには、次の手順を実行します。
 
-1.  Log in to your **Citrix ShareFile** tenant.
+1.  **Citrix ShareFile** テナントにログインします。
 
-2.  Click **Manage Users \> Manage Users Home \> + Create Employee**.
+2.  **[Manage Users]、[Manage Users Home]、[+ Create Employee]** の順にクリックします。
 
-    ![Create Employee](./media/active-directory-saas-citrix-sharefile-tutorial/IC781050.png "Create Employee")
+    ![従業員の作成](./media/active-directory-saas-citrix-sharefile-tutorial/IC781050.png "従業員の作成")
 
-3.  Enter the **Email**, **First name** and **Last name** of a valid Azure AD account you want to provision.
+3.  プロビジョニングする有効な Azure AD アカウントの**電子メール**、**名**、**姓**を入力します。
 
-    ![Basic Information](./media/active-directory-saas-citrix-sharefile-tutorial/IC799951.png "Basic Information")
+    ![基本情報](./media/active-directory-saas-citrix-sharefile-tutorial/IC799951.png "基本情報")
 
-4.  Click **Add User**.
+4.  **[Add User]** をクリックします。
 
-    >[AZURE.NOTE] The AAD account holder will receive an email and follow a link to confirm their account before it becomes active.
+    >[AZURE.NOTE] AAD アカウント所有者がメールを受信し、リンクに従ってアカウントを確認するとそのアカウントがアクティブになります。
 
->[AZURE.NOTE] You can use any other Citrix ShareFile user account creation tools or APIs provided by Citrix ShareFile to provision AAD user accounts.
+>[AZURE.NOTE] Citrix ShareFile から提供されている他の Citrix ShareFile ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-citrix-sharefile,-perform-the-following-steps:"></a>To assign users to Citrix ShareFile, perform the following steps:
+###ユーザーを Citrix ShareFile に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Citrix ShareFile **application integration page, click **Assign users**.
+2.  **Citrix ShareFile** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign users](./media/active-directory-saas-citrix-sharefile-tutorial/IC773631.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-citrix-sharefile-tutorial/IC773631.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-citrix-sharefile-tutorial/IC767830.png "Yes")
 
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

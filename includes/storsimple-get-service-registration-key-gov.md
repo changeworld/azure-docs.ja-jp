@@ -1,26 +1,24 @@
 <!--author=SharS last changed: 9/17/15-->
 
 
-#### <a name="to-get-the-storsimple-service-registration-key"></a>To get the StorSimple service registration key
+#### StorSimple サービス登録キーを取得するには
 
-1. On the **StorSimple Manager service** page, click the service that you created. This will take you to the **Quick Start** page. (You can click the quick start icon ![StorSimple Quick Start icon ](./media/storsimple-get-service-registration-key-gov/HCS_QuickStartIcon-include.png) to access the **Quick Start** page at any time.)
+1. **[StorSimple Manager]** サービス ページで、作成したサービスをクリックします。この操作により、**[クイック スタート]** ページが表示されます (**[クイック スタート]** ページには、クイック スタート アイコン ![StorSimple のクイック スタート アイコン](./media/storsimple-get-service-registration-key-gov/HCS_QuickStartIcon-include.png) をクリックすることによっていつでもアクセスできます)。
 
-     ![StorSimple Quick Start page](./media/storsimple-get-service-registration-key-gov/HCS_ServiceQuickStart-gov-include.png)
+     ![StorSimple のクイック スタート ページ](./media/storsimple-get-service-registration-key-gov/HCS_ServiceQuickStart-gov-include.png)
 
-2. Click **Get service registration key**. You can also click **Registration Key** at the bottom of the page. You will have to wait for a few minutes while the key is retrieved. The **Service Registration Key** dialog box appears.
+2. **[サービス登録キーの取得]** をクリックします。ページの下部にある **[登録キー]** をクリックすることもできます。キーが取得されるまで、数分間待つ必要があります。**[サービス登録キー]** ダイアログ ボックスが表示されます。
 
-     ![Service Registration Key dialog box](./media/storsimple-get-service-registration-key-gov/HCS_ServiceRegistrationKey-gov-include.png)
+     ![[サービス登録キー] ダイアログ ボックス](./media/storsimple-get-service-registration-key-gov/HCS_ServiceRegistrationKey-gov-include.png)
 
-3. Locate the service registration key.
+3. サービス登録キーを探します。
 
-4. Click the copy icon ![StorSimple Copy icon](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png) to copy the key and save it for later use.
+4. コピー アイコン ![StorSimple のコピー アイコン](./media/storsimple-get-service-registration-key-gov/HCS_CopyIcon-include.png) をクリックしてキーをコピーし、後で使用できるように保存します。
 
-5. Click the check icon ![StorSimple Check icon](./media/storsimple-get-service-registration-key-gov/HCS_CheckIcon-include.png) to close this dialog box and return to the **Quick Start** page.
+5. チェック マーク アイコン ![StorSimple のチェック マーク アイコン](./media/storsimple-get-service-registration-key-gov/HCS_CheckIcon-include.png) をクリックしてこのダイアログ ボックスを閉じ、**[クイック スタート]** ページに戻ります。
 
-> [AZURE.NOTE] The service registration key is used to register all the devices that need to register with your StorSimple Manager service.
+> [AZURE.NOTE]StorSimple Manager サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
 
  
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

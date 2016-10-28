@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Modify local network gateway IP address prefixes and gateway IP | Microsoft Azure"
-   description="This article walks you through changing IP address prefixes for your local network gateway"
+   pageTitle="ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスとゲートウェイ IP の変更 | Microsoft Azure"
+   description="この記事では、ローカル ネットワーク ゲートウェイの IP アドレスのプレフィックスを変更する手順について説明します。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="cherylmc"
@@ -17,30 +17,24 @@
    ms.date="08/08/2016"
    ms.author="cherylmc"/>
 
+# PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更
 
-# <a name="modify-local-network-gateway-settings-using-powershell"></a>Modify local network gateway settings using PowerShell
+ローカル ネットワーク ゲートウェイの AddressPrefix または GatewayIPAddress の設定が変わることがあります。次の手順に従うと、ローカル ネットワーク ゲートウェイの設定を変更することができます。これらの設定は、Azure ポータルで変更することもできます。
 
-Sometimes the settings for your local network gateway AddressPrefix or GatewayIPAddress change. The instructions below will help you modify your local network gateway settings. You can also modify these settings in the Azure portal.
+## 開始する前に
+	
+Azure リソース マネージャー PowerShell コマンドレットの最新版をインストールする必要があります。PowerShell コマンドレットのインストールの詳細については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-## <a name="before-you-begin"></a>Before you begin
-    
-You'll need to install the latest version of the Azure Resource Manager PowerShell cmdlets. See [How to install and configure Azure PowerShell](../powershell-install-configure.md) for more information about installing the PowerShell cmdlets.
-
-## <a name="to-modify-ip-address-prefixes"></a>To modify IP address prefixes
+## IP アドレスのプレフィックスを変更するには
 
 [AZURE.INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="to-modify-the-gateway-ip-address"></a>To modify the gateway IP address
+## ゲートウェイ IP アドレスを変更するには
 
 [AZURE.INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-You can verify your gateway connection. See [Verify a gateway connection](vpn-gateway-verify-connection-resource-manager.md).
+ゲートウェイの接続を確認することができます。「[Verify a gateway connection (ゲートウェイの接続を確認する)](vpn-gateway-verify-connection-resource-manager.md)」を参照してください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

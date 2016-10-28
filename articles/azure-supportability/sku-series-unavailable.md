@@ -1,52 +1,45 @@
 <properties
-     pageTitle="SKU series unavailable | Microsoft Azure"
-     description="Some SKU series are unavailable for the selected subscription for this region."
-     services="Azure Supportability"
-     documentationCenter=""
-     authors="ganganarayanan"
-     manager="scotthit"
-     editor=""/>
+	 pageTitle="利用できない SKU シリーズ | Microsoft Azure"
+	 description="一部の SKU シリーズは、このリージョンでは、選択されたサブスクリプションでご利用いただけません。"
+	 services="Azure Supportability"
+	 documentationCenter=""
+	 authors="ganganarayanan"
+	 manager="scotthit"
+	 editor=""/>
 
 <tags
-     ms.service="azure-supportability"
-     ms.workload="na"
-     ms.tgt_pltfrm="na"
-     ms.devlang="na"
-     ms.topic="article"
-     ms.date="08/12/2016"
-     ms.author="gangan"/>
+	 ms.service="azure-supportability"
+	 ms.workload="na"
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="article"
+	 ms.date="08/12/2016"
+	 ms.author="gangan"/>
 
+# 利用できない SKU シリーズ
 
-# <a name="sku-series-unavailable"></a>SKU series unavailable
+一部のリージョンでは、特定の SKU は新しいサブスクリプションで自動的に使用することができません。これは、[リージョンに、より強力な SKU が導入され](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/)、従来の SKU の需要が低下したときに起こることがあります。メッセージ "*一部の SKU シリーズは、このリージョンの選択されたサブスクリプションでご利用いただけません*" が、コンピューティング コアのクォータを増やすサポート要求を作成するときに表示されます。
 
-In some regions, certain SKUs are not automatically available on new subscriptions.  This may occur when [more powerful SKUs are introduced in a region](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/) and the popularity of the legacy SKU declines.
-The message "*Some SKU series are unavailable for the selected subscription for this region*" is displayed when creating a support request to increase compute core quota.
+SKU の可用性は、[Azure のリージョン別サービス](https://azure.microsoft.com/regions/#services)に関するページで確認することができます。
 
-You may review SKU availability on the [Azure services by region](https://azure.microsoft.com/regions/#services) page. 
+制限されている SKU へのアクセスをサブスクリプションから要求するには、"サブスクリプションの管理" サポート要求を作成します。
 
-To request access to a SKU that has been restricted from your subscription, create a "Subscription Management" support request.
+- [基本] ページで、[問題の種類] を [サブスクリプションの管理] として選択し、[次へ] をクリックします。
 
-- On the Basics page, select Issue type as "Subscription Management" and click "Next".
+![[基本] ブレード](./media/SKU-series-unavailable/BasicsSubMgmt.png)
 
-![Basics blade](./media/SKU-series-unavailable/BasicsSubMgmt.png)
+- [問題] ページで、[問題の種類] を [一般的な質問] として選択し、正確なリージョンと確認できない SKU を入力します。これにより、サポートの処理時間を短縮できます。
 
-- On the Problem page, select the Problem type as “Other General questions” and enter the exact region and SKU you aren’t seeing.
-This helps expedite the support process.
+![問題点](./media/SKU-series-unavailable/ProblemSubMgmt.png)
 
-![Problem](./media/SKU-series-unavailable/ProblemSubMgmt.png)
+- [連絡先情報] ページに連絡先の詳細情報を入力し、[作成] をクリックします。
 
-- On the Contact Information page, enter your contact details and click "Create".
+![連絡先情報](./media/SKU-series-unavailable/ContactInformation.png)
 
-![Contact Information](./media/SKU-series-unavailable/ContactInformation.png)
+## フィードバック
+ご意見とご提案をお待ちしております。 あなたの[提案](https://feedback.azure.com/forums/266794-support-feedback)をお寄せください。[Twitter](https://twitter.com/azuresupport) や [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure)でも、マイクロソフトの最新情報をご覧いただけます。
 
-## <a name="feedback"></a>Feedback
-We are always open to feedback and suggestions! Send us your [suggestions](https://feedback.azure.com/forums/266794-support-feedback). Additionally, you can engage with us via [Twitter](https://twitter.com/azuresupport) or the [MSDN forums](https://social.msdn.microsoft.com/Forums/azure).
+## 詳細情報
+[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq)
 
-## <a name="learn-more"></a>Learn more
-[Azure Support FAQ](https://azure.microsoft.com/support/faq)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

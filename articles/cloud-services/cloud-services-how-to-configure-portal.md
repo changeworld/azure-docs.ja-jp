@@ -1,117 +1,113 @@
 <properties 
-    pageTitle="How to configure a cloud service (portal) | Microsoft Azure" 
-    description="Learn how to configure cloud services in Azure. Learn to update the cloud service configuration and configure remote access to role instances. These examples use the Azure portal." 
-    services="cloud-services" 
-    documentationCenter="" 
-    authors="Thraka" 
-    manager="timlt" 
-    editor=""/>
+	pageTitle="クラウド サービスを構成する (ポータル) | Microsoft Azure" 
+	description="Azure のクラウド サービスの構成方法について説明します。クラウド サービスの構成の更新方法と、ロール インスタンスへのリモート アクセスの構成方法を紹介します。これらの例では、Azure ポータルを使用します。" 
+	services="cloud-services" 
+	documentationCenter="" 
+	authors="Thraka" 
+	manager="timlt" 
+	editor=""/>
 
 <tags 
-    ms.service="cloud-services" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/11/2016"
-    ms.author="adegeo"/>
+	ms.service="cloud-services" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/27/2016"
+	ms.author="adegeo"/>
 
-
-# <a name="how-to-configure-cloud-services"></a>How to Configure Cloud Services
+# Cloud Services の構成方法
 
 > [AZURE.SELECTOR]
-- [Azure portal](cloud-services-how-to-configure-portal.md)
-- [Azure classic portal](cloud-services-how-to-configure.md)
+- [Azure ポータル](cloud-services-how-to-configure-portal.md)
+- [Azure クラシック ポータル](cloud-services-how-to-configure.md)
 
-You can configure the most commonly used settings for a cloud service in the Azure portal. Or, if you like to update your configuration files directly, download a service configuration file to update, and then upload the updated file and update the cloud service with the configuration changes. Either way, the configuration updates are pushed out to all role instances.
+クラウド サービスで最もよく使用される設定は Azure ポータルで構成できます。また、構成ファイルを直接更新する場合は、サービス構成ファイルをダウンロードして内容を更新し、更新したファイルをアップロードして、クラウド サービスの構成を更新します。どちらの方法でも、構成の更新はすべてのロール インスタンスに適用されます。
 
-You can also manage the instances of your cloud service roles, or remote desktop into them.
+また、クラウド サービス ロールまたはリモート デスクトップのインスタンスを管理することもできます。
 
-Azure can only ensure 99.95 percent service availability during the configuration updates if you have at least two role instances for every role. That enables one virtual machine to process client requests while the other is being updated. For more information, see [Service Level Agreements](https://azure.microsoft.com/support/legal/sla/).
+Azure で構成の更新中に 99.95% の可用性を保証できるのは、各ロールに少なくとも 2 つのロール インスタンスがある場合だけです。この場合、1 台の仮想マシンでクライアントからの要求を処理し、もう 1 台で更新を行うことができます。詳細については、「[サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)」を参照してください。
 
-## <a name="change-a-cloud-service"></a>Change a cloud service
+## クラウド サービスの変更
 
-After opening the [Azure portal](https://portal.azure.com/), navigate to your cloud service. From here you manage many aspects of it. 
+[Azure ポータル](https://portal.azure.com/)を開いた後、クラウド サービスに移動します。ここから、多くの部分を管理します。
 
-![Settings Page](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+![[設定] ページ](./media/cloud-services-how-to-configure-portal/cloud-service.png)
 
-The **Settings** or **All settings** links will open up the **Settings** blade where you can change the **Properties**, change the **Configuration**, manage the **Certificates**, setup **Alert rules**, and manage the **Users** who have access to this cloud service.
+**[設定]** または **[すべての設定]** リンクからは **[設定]** ブレードが開き、**プロパティ**の設定、**構成**の変更、**証明書**の管理、**アラート ルール**のセットアップ、このクラウド サービスへのアクセス権を持つ**ユーザー**の管理を行うことができます。
 
-![Azure cloud service settings blade](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
+![Azure クラウド サービス設定ブレード](./media/cloud-services-how-to-configure-portal/cs-settings-blade.png)
 
 >[AZURE.NOTE]
->The operating system used for the cloud service cannot be changed using the **Azure portal**, you can only change this setting through the [Azure classic portal](http://manage.windowsazure.com/). This is detailed [here](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file).
+**Azure ポータル**を使用して、クラウド サービスで使用するオペレーティング システムを変更することはできません。この設定を変更するには、[Azure クラシック ポータル](http://manage.windowsazure.com/)を使用する必要があります。詳細については、[ここ](cloud-services-how-to-configure.md#update-a-cloud-service-configuration-file)を参照してください。
 
-## <a name="monitoring"></a>Monitoring
+## Monitoring
 
-You can add alerts to your cloud service. Click **Settings** > **Alert Rules** > **Add alert**. 
+クラウド サービスにアラートを追加できます。**[設定]**、**[アラート ルール]**、**[アラートの追加]** の順にクリックします。
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alerts.png)
 
-From here you can setup an alert. With the **Mertic** drop down box, you can setup an alert for the following types of data.
+ここでは、アラートをセットアップできます。**[メトリック]** ボックスの一覧で、次の種類のデータのアラートを設定できます。
 
-- Disk read
-- Disk write
-- Network in
-- Network out
-- CPU percentage 
+- ディスクの読み取り
+- ディスクの書き込み
+- ネットワーク受信
+- ネットワーク送信
+- CPU の割合
 
 ![](./media/cloud-services-how-to-configure-portal/cs-alert-item.png)
 
-### <a name="configure-monitoring-from-a-metric-tile"></a>Configure monitoring from a metric tile
+### メトリック タイルから監視を構成する
 
-Instead of using **Settings** > **Alert Rules**, you can click on one of the metric tiles in the **Monitoring** section of the **Cloud service** blade.
+**[設定]** の **[アラート ルール]** を使用する代わりに、**[クラウド サービス]** ブレードの **[監視]** セクションのメトリック タイルのいずれかをクリックできます。
 
-![Cloud Service Monitoring](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
+![クラウド サービスの監視](./media/cloud-services-how-to-configure-portal/cs-monitoring.png)
 
-From here you can customize the chart used with the tile, or add an alert rule.
-
-
-## <a name="reboot,-reimage,-or-remote-desktop"></a>Reboot, reimage, or remote desktop
-
-At this time you cannot configure remote desktop using the **Azure portal**. However, you can set it up through the [Azure classic portal](cloud-services-role-enable-remote-desktop.md), [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md), or through [Visual Studio](../vs-azure-tools-remote-desktop-roles.md). 
-
-First, click on the cloud service instance.
-
-![Cloud Service Instance](./media/cloud-services-how-to-configure-portal/cs-instance.png)
-
-From the blade that opens uou can initiate a remote desktop connection, remotely reboot the instance, or remotely reimage (start with a fresh image) the instance.
-
-![Cloud Service Instance Buttons](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
+ここからは、タイルで使用するグラフをカスタマイズしたり、アラート ルールを追加したりできます。
 
 
+## 再起動、再イメージ化、またはリモート デスクトップ
 
-## <a name="reconfigure-your-.cscfg"></a>Reconfigure your .cscfg
+現時点では、**Azure ポータル**を使用してリモート デスクトップを構成することはできません。ただし、[Azure クラシック ポータル](cloud-services-role-enable-remote-desktop.md)、[PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)、または [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) を使用すれば設定できます。
 
-You may need to reconfigure you cloud service through the [service config (cscfg)](cloud-services-model-and-package.md#cscfg) file. First you need to download your .cscfg file, modify it, then upload it.
+最初に、クラウド サービス インスタンスをクリックします。
 
-1. Click on the **Settings** icon or the **All settings** link to open up the **Settings** blade.
+![クラウド サービス インスタンス](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 
-    ![Settings Page](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+開かれるブレードでは、リモート デスクトップ接続の開始、インスタンスのリモート再起動、インスタンスのリモートでの再イメージ化 (新しいイメージで開始) を行うことができます。
 
-2. Click on the **Configuration** item.
+![クラウド サービス インスタンスのボタン](./media/cloud-services-how-to-configure-portal/cs-instance-buttons.png)
 
-    ![Configuration Blade](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
 
-3. Click on the **Download** button.
 
-    ![Download](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+## .cscfg を再構成する
 
-4. After you update the service configuration file, upload and apply the configuration updates:
+[サービス構成 (cscfg)](cloud-services-model-and-package.md#cscfg) ファイルを使用してクラウド サービスを再構成することが必要な場合があります。.cscfg ファイルをダウンロードし、変更して、アップロードする必要があります。
 
-    ![Upload](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png) 
+1. **[設定]** アイコンまたは **[すべての設定]** リンクをクリックして、**[設定]** ブレードを開きます。
+
+    ![[設定] ページ](./media/cloud-services-how-to-configure-portal/cloud-service.png)
+
+2. **[構成]** 項目をクリックします。
+
+    ![[構成] ブレード](./media/cloud-services-how-to-configure-portal/cs-settings-config.png)
+
+3. **[ダウンロード]** ボタンをクリックします。
+
+    ![ダウンロード](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-download.png)
+
+4. サービス構成ファイルを更新した後、次のステップでファイルをアップロードして構成の更新内容を適用します。
+
+    ![アップロード](./media/cloud-services-how-to-configure-portal/cs-settings-config-panel-upload.png)
     
-5. Select the .cscfg file and click **OK**.
+5. .cscfg ファイルを選択し、**[OK]** をクリックします。
 
-            
-## <a name="next-steps"></a>Next steps
+			
+## 次のステップ
 
-* Learn how to [deploy a cloud service](cloud-services-how-to-create-deploy-portal.md).
-* Configure a [custom domain name](cloud-services-custom-domain-name-portal.md).
-* [Manage your cloud service](cloud-services-how-to-manage-portal.md).
-* Configure [ssl certificates](cloud-services-configure-ssl-certificate-portal.md).
+* 方法: [クラウド サービスをデプロイする](cloud-services-how-to-create-deploy-portal.md)
+* [カスタム ドメイン名を構成する](cloud-services-custom-domain-name-portal.md)
+* [クラウド サービスを管理する](cloud-services-how-to-manage-portal.md)
+* [SSL 証明書を構成する](cloud-services-configure-ssl-certificate-portal.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

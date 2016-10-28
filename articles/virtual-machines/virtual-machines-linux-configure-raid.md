@@ -1,179 +1,174 @@
 <properties 
-    pageTitle="Configure software RAID on a virtual machine running Linux | Microsoft Azure" 
-    description="Learn how to use mdadm to configure RAID on Linux in Azure." 
-    services="virtual-machines-linux" 
-    documentationCenter="na" 
-    authors="rickstercdn"  
-    manager="timlt" 
-    editor="tysonn"
-    tag="azure-service-management,azure-resource-manager" />
+	pageTitle="Linux を実行する仮想マシンでのソフトウェア RAID の構成 | Microsoft Azure" 
+	description="mdadm を使用して Azure 内の Linux で RAID を構成する方法について説明します。" 
+	services="virtual-machines-linux" 
+	documentationCenter="na" 
+	authors="rickstercdn"  
+	manager="timlt" 
+	editor="tysonn"
+	tag="azure-service-management,azure-resource-manager" />
 
 <tags 
-    ms.service="virtual-machines-linux" 
-    ms.workload="infrastructure-services" 
-    ms.tgt_pltfrm="vm-linux" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/06/2016" 
-    ms.author="rclaus"/>
+	ms.service="virtual-machines-linux" 
+	ms.workload="infrastructure-services" 
+	ms.tgt_pltfrm="vm-linux" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/06/2016" 
+	ms.author="rclaus"/>
 
 
 
-
-# <a name="configure-software-raid-on-linux"></a>Configure Software RAID on Linux
-It's a common scenario to use software RAID on Linux virtual machines in Azure to present multiple attached data disks as a single RAID device. Typically this can be used to improve performance and allow for improved throughput compared to using just a single disk.
-
-
-## <a name="attaching-data-disks"></a>Attaching data disks
-Two or more empty data disks are needed to configure a RAID device.  The primary reason for creating a RAID device is to improve performance of your disk IO.  Based on your IO needs, you can choose to attach disks that are stored in our Standard Storage, with up to 500 IO/ps per disk or our Premium storage with up to 5000 IO/ps per disk. This article does not go into detail on how to provision and attach data disks to a Linux virtual machine.  See the Microsoft Azure article [attach a disk](virtual-machines-linux-add-disk.md) for detailed instructions on how to attach an empty data disk to a Linux virtual machine on Azure.
+# Linux でのソフトウェア RAID の構成
+一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
 
 
-## <a name="install-the-mdadm-utility"></a>Install the mdadm utility
+## データ ディスクをアタッチする
+RAID デバイスの構成には、2 つ以上の空のデータ ディスクが必要です。RAID デバイスを作成する主な目的は、ディスク I/O のパフォーマンスを向上させることです。IO ニーズに応じて、Standard Storage または Premium Storage に格納されているディスクをアタッチするように選択できます。Standard Storage ではディスクあたり最大 500 IO/ps が、Premium Storage ではディスクあたり最大 5000 IO/ps が実現します。この記事では、データ ディスクをプロビジョニングし、Linux 仮想マシンにアタッチする方法については詳しく説明しません。Azure 内の Linux 仮想マシンに空のデータ ディスクをアタッチする方法の詳細については、[ディスクの接続](virtual-machines-linux-add-disk.md)に関する Microsoft Azure の記事をご覧ください。
+
+
+## mdadm ユーティリティをインストールする
 
 - **Ubuntu**
 
-        # sudo apt-get update
-        # sudo apt-get install mdadm
+		# sudo apt-get update
+		# sudo apt-get install mdadm
 
-- **CentOS & Oracle Linux**
+- **CentOS と Oracle Linux**
 
-        # sudo yum install mdadm
+		# sudo yum install mdadm
 
-- **SLES and openSUSE**
+- **SLES と openSUSE**
 
-        # zypper install mdadm
+		# zypper install mdadm
 
 
-## <a name="create-the-disk-partitions"></a>Create the disk partitions
-In this example, we create a single disk partition on /dev/sdc. The new disk partition will be called /dev/sdc1.
+## ディスク パーティションを作成する
+この例では、/dev/sdc に 1 つのディスク パーティションを作成します。その後、新しいディスク パーティションに /dev/sdc1 という名前を付けます。
 
-1. Start fdisk to begin creating partitions
+1. fdisk を使用してパーティションの作成を開始する
 
-        # sudo fdisk /dev/sdc
-        Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
-        Building a new DOS disklabel with disk identifier 0xa34cb70c.
-        Changes will remain in memory only, until you decide to write them.
-        After that, of course, the previous content won't be recoverable.
+		# sudo fdisk /dev/sdc
+		Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
+		Building a new DOS disklabel with disk identifier 0xa34cb70c.
+		Changes will remain in memory only, until you decide to write them.
+		After that, of course, the previous content won't be recoverable.
 
-        WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
-                 switch off the mode (command 'c') and change display units to
-                 sectors (command 'u').
+		WARNING: DOS-compatible mode is deprecated. It's strongly recommended to
+				 switch off the mode (command 'c') and change display units to
+				 sectors (command 'u').
 
-2. Press 'n' at the prompt to create a **n**ew partition:
+2. プロンプトが表示されたら N キーを押して、新しいパーティションを作成します。
 
-        Command (m for help): n
+		Command (m for help): n
 
-3. Next, press 'p' to create a **p**rimary partition:
+3. 次に、P キーを押して、プライマリ パーティションを作成します。
 
-        Command action
-            e   extended
-            p   primary partition (1-4)
+		Command action
+			e   extended
+			p   primary partition (1-4)
 
-4. Press '1' to select partition number 1:
+4. 1 キーを押して、パーティション番号 1 を選択します。
 
-        Partition number (1-4): 1
+		Partition number (1-4): 1
 
-5. Select the starting point of the new partition, or press `<enter>` to accept the default to place the partition at the beginning of the free space on the drive:
+5. 新しいパーティションの開始位置を選択するか、`<enter>` キーを押して既定の設定をそのまま使用します。既定では、ドライブの空き領域の先頭にパーティションが配置されます。
 
-        First cylinder (1-1305, default 1):
-        Using default value 1
+		First cylinder (1-1305, default 1):
+		Using default value 1
 
-6. Select the size of the partition, for example type '+10G' to create a 10 gigabyte partition. Or, press `<enter>` create a single partition that spans the entire drive:
+6. パーティションのサイズとして、たとえば「+10G」と入力して、10 GB のパーティションを作成します。または、`<enter>` キーを押して、ドライブ全体にまたがる 1 つのパーティションを作成します。
 
-        Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
-        Using default value 1305
+		Last cylinder, +cylinders or +size{K,M,G} (1-1305, default 1305): 
+		Using default value 1305
 
-7. Next, change the ID and **t**ype of the partition from the default ID '83' (Linux) to ID 'fd' (Linux raid auto):
+7. 次に、パーティションの ID とタイプを変更します (コマンド 't')。既定の ID '83' (Linux) から ID 'fd' (Linux raid auto) に変更してください。
 
-        Command (m for help): t
-        Selected partition 1
-        Hex code (type L to list codes): fd
+		Command (m for help): t
+		Selected partition 1
+		Hex code (type L to list codes): fd
 
-8. Finally, write the partition table to the drive and exit fdisk:
+8. 最後に、パーティション テーブルをドライブに書き込み、fdisk を終了します。
 
-        Command (m for help): w
-        The partition table has been altered!
+		Command (m for help): w
+		The partition table has been altered!
 
 
-## <a name="create-the-raid-array"></a>Create the RAID array
+## RAID アレイを作成する
 
-1. The following example will "stripe" (RAID level 0) three partitions located on three separate data disks (sdc1, sdd1, sde1).  After running this command a new RAID device called **/dev/md127** is created. Also note that if these data disks we previously part of another defunct RAID array it may be necessary to add the `--force` parameter to the `mdadm` command:
+1. 次の例では、3 つの個別のデータ ディスク (sdc1、sdd1、sde1) にある 3 つのパーティションを "ストライピング" (RAID レベル 0) にします。このコマンドを実行した後、新しい RAID デバイスが **/dev/md127** という名前で作成されます。これらのデータ ディスクが前に別の無効 RAID アレイの一部となっていた場合は、必要に応じて `--force` パラメーターを `mdadm` コマンドに追加してください。
 
-        # sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
-          /dev/sdc1 /dev/sdd1 /dev/sde1
+		# sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
+		  /dev/sdc1 /dev/sdd1 /dev/sde1
 
-2. Create the file system on the new RAID device
+2. 新しい RAID デバイスにファイル システムを作成します。
 
-    **CentOS, Oracle Linux, SLES 12, openSUSE, and Ubuntu**
+	**CentOS、Oracle Linux、SLES 12、openSUSE、Ubuntu**
 
-        # sudo mkfs -t ext4 /dev/md127
+		# sudo mkfs -t ext4 /dev/md127
 
-    **SLES 11**
+	**SLES 11**
 
-        # sudo mkfs -t ext3 /dev/md127
+		# sudo mkfs -t ext3 /dev/md127
 
-    **SLES 11 & openSUSE** - enable boot.md and create mdadm.conf
+	**SLES 11 と openSUSE** - boot.md を有効にし、mdadm.conf を作成します
 
-        # sudo -i chkconfig --add boot.md
-        # sudo echo 'DEVICE /dev/sd*[0-9]' >> /etc/mdadm.conf
+		# sudo -i chkconfig --add boot.md
+		# sudo echo 'DEVICE /dev/sd*[0-9]' >> /etc/mdadm.conf
 
-    >[AZURE.NOTE] A reboot may be required after making these changes on SUSE systems. This step is *not* required on SLES 12.
+	>[AZURE.NOTE] SUSE システムでこれらの変更を行った後は再起動が必要になる場合があります。SLES 12 では、この手順は必須では*ありません*。
 
 
-## <a name="add-the-new-file-system-to-/etc/fstab"></a>Add the new file system to /etc/fstab
+## 新しいファイル システムを /etc/ fstab に追加する
 
-**Caution:** Improperly editing the /etc/fstab file could result in an unbootable system. If unsure, refer to the distribution's documentation for information on how to properly edit this file. It is also recommended that a backup of the /etc/fstab file is created before editing.
+**注意事項:** /etc/fstab ファイルを不適切に編集すると、システムが起動できなくなる可能性があります。編集方法がはっきりわからない場合は、このファイルを適切に編集する方法について、ディストリビューションのドキュメントを参照してください。編集する前に、/etc/fstab ファイルのバックアップを作成することもお勧めします。
 
-1. Create the desired mount point for your new file system, for example:
+1. 新しいファイル システムに必要なマウント ポイントを作成します。たとえば、次のようになります。
 
-        # sudo mkdir /data
+		# sudo mkdir /data
 
-2. When editing /etc/fstab, the **UUID** should be used to reference the file system rather than the device name.  Use the `blkid` utility to determine the UUID for the new file system:
+2. /etc/fstab を編集するとき、**UUID** は、デバイス名ではなくファイル システムを参照するために使用する必要があります。新しいファイル システムの UUID を調べるには、`blkid` ユーティリティを使用します。
 
-        # sudo /sbin/blkid
-        ...........
-        /dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
+		# sudo /sbin/blkid
+		...........
+		/dev/md127: UUID="aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee" TYPE="ext4"
 
-3. Open /etc/fstab in a text editor and add an entry for the new file system, for example:
+3. テキスト エディターで /etc/fstab を開き、新しいファイル システムのエントリを追加します。たとえば、次のようになります。
 
-        UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
+		UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults  0  2
 
-    Or on **SLES 11 & openSUSE**:
+	または、**SLES 11 と openSUSE** の場合は、次のようになります。
 
-        /dev/disk/by-uuid/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext3  defaults  0  2
+		/dev/disk/by-uuid/aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext3  defaults  0  2
 
-    Then, save and close /etc/fstab.
+	その後、/etc/fstab を保存して閉じます。
 
-4. Test that the /etc/fstab entry is correct:
+4. /etc/fstab のエントリが正しいことをテストします。
 
-        # sudo mount -a
+		# sudo mount -a
 
-    If this command results in an error message, please check the syntax in the /etc/fstab file.
+	このコマンドによりエラー メッセージが表示された場合は、/etc/fstab ファイル内の構文を確認してください。
 
-    Next run the `mount` command to ensure the file system is mounted:
+	次に、`mount` コマンドを実行して、ファイル システムがマウントされていることを確認します。
 
-        # mount
-        .................
-        /dev/md127 on /data type ext4 (rw)
+		# mount
+		.................
+		/dev/md127 on /data type ext4 (rw)
 
-5. (Optional) Failsafe Boot Parameters
+5. (オプション) フェールセーフ ブート パラメーター
 
-    **fstab configuration**
+	**fstab 構成**
 
-    Many distributions include either the `nobootwait` or `nofail` mount parameters that may be added to the /etc/fstab file. These parameters allow for failures when mounting a particular file system and allow the Linux system to continue to boot even if it is unable to properly mount the RAID file system. Refer to your distribution's documentation for more information on these parameters.
+	多くのディストリビューションでは、`nobootwait` または `nofail` のいずれかのマウント パラメーターが /etc/fstab ファイルに追加されている場合があります。これらのパラメーターにより、特定のファイル システムをマウントしているときのエラーが許容されます。RAID ファイル システムを適切にマウントできない場合でも、Linux システムの起動を続行できるようになります。これらのパラメーターの詳細については、使用しているディストリビューションのドキュメントを参照してください。
 
-    Example (Ubuntu):
+	例 (Ubuntu):
 
-        UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,nobootwait  0  2
+		UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,nobootwait  0  2
 
-    **Linux boot parameters**
+	**Linux ブート パラメーター**
 
-    In addition to the above parameters, the kernel parameter "`bootdegraded=true`" can allow the system to boot even if the RAID is perceived as damaged or degraded, for example if a data drive is inadvertently removed from the virtual machine. By default this could also result in a non-bootable system.
+	これらのパラメーターの他にも、カーネル パラメーター "`bootdegraded=true`" では、RAID が破損または劣化として認識された場合、たとえばデータ ドライブが誤って仮想マシンから削除された場合でも、システムを起動できるようになります。既定では、この場合はシステムが起動できなくなる可能性があります。
 
-    Please refer to your distribution's documentation on how to properly edit kernel parameters. For example, in many distributions (CentOS, Oracle Linux, SLES 11) these parameters may be added manually to the "`/boot/grub/menu.lst`" file.  On Ubuntu this parameter can be added to the `GRUB_CMDLINE_LINUX_DEFAULT` variable on "/etc/default/grub".
+	カーネル パラメーターの適切な編集方法については、使用しているディストリビューションのドキュメントを参照してください。たとえば、多くディストリビューション (CentOS、Oracle Linux、SLES 11) では、これらのパラメーターを "`/boot/grub/menu.lst`" ファイルに手動で追加することもできます。Ubuntu では、このパラメーターを "/etc/default/ grub" の `GRUB_CMDLINE_LINUX_DEFAULT` 変数に追加できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

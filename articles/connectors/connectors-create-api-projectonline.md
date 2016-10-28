@@ -1,10 +1,10 @@
 <properties
-pageTitle="ProjectOnline | Microsoft Azure"
-description="Create Logic apps with Azure App service. Project Online is a flexible online solution for project portfolio management (PPM) and everyday work from Microsoft. Delivered through Office 365, Project Online enables organizations to get started quickly with powerful project management capabilities to plan, prioritize, and manage projects and project portfolio investments—from almost anywhere on almost any device."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+pageTitle="ProjectOnline |Microsoft Azure"
+description="Azure App Service を使用してロジック アプリを作成します。Project Online は、プロジェクト ポートフォリオ管理 (PPM) や日常業務を行うための Microsoft の柔軟なオンライン ソリューションです。Office 365 経由で配信される Project Online により、強力なプロジェクト管理機能が直ちに実現します。ほとんどすべての場所やデバイスから、プロジェクトとプロジェクト ポートフォリオ投資の計画、優先順位付け、管理を実行できます。"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,509 +17,505 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# ProjectOnline コネクタの使用
 
-# <a name="get-started-with-the-projectonline-connector"></a>Get started with the ProjectOnline connector
+Project Online は、プロジェクト ポートフォリオ管理 (PPM) や日常業務を行うための Microsoft の柔軟なオンライン ソリューションです。Office 365 経由で配信される Project Online により、強力なプロジェクト管理機能が直ちに実現します。ほとんどすべての場所やデバイスから、プロジェクトとプロジェクト ポートフォリオ投資の計画、優先順位付け、管理を実行できます。
 
-Project Online is a flexible online solution for project portfolio management (PPM) and everyday work from Microsoft. Delivered through Office 365, Project Online enables organizations to get started quickly with powerful project management capabilities to plan, prioritize, and manage projects and project portfolio investments—from almost anywhere on almost any device.
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+ProjectOnline コネクタは、アクションとして使用できます。ProjectOnline コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-The ProjectOnline connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+ ProjectOnline コネクタでは、次のアクションやトリガーを使用できます。
 
- The ProjectOnline connector has the following action(s) and/or trigger(s) available:
+### ProjectOnline のアクション
+実行できるアクションは以下のとおりです。
 
-### <a name="projectonline-actions"></a>ProjectOnline actions
-You can take these action(s):
-
-|Action|Description|
+|アクション|Description|
 |--- | ---|
-|[ListProjects](connectors-create-api-projectonline.md#listprojects)|Lists the projects in your project online site|
-|[CreateProject](connectors-create-api-projectonline.md#createproject)|Creates a new project in your project online site|
-|[CreateTask](connectors-create-api-projectonline.md#createtask)|Creates a new task in you project|
-|[CreateResource](connectors-create-api-projectonline.md#createresource)|Creates an Enterprise Resources in your project online site|
-|[ListTasks](connectors-create-api-projectonline.md#listtasks)|Lists the published tasks in a project|
-|[CheckoutProject](connectors-create-api-projectonline.md#checkoutproject)|Checks out a project in your site|
-|[PublishProject](connectors-create-api-projectonline.md#publishproject)|Check in and publish and existing project in your site|
-### <a name="projectonline-triggers"></a>ProjectOnline triggers
-You can listen for these event(s):
+|[ListProjects](connectors-create-api-projectonline.md#listprojects)|プロジェクト オンライン サイトでプロジェクトを一覧表示します|
+|[CreateProject](connectors-create-api-projectonline.md#createproject)|プロジェクト オンライン サイトで新しいプロジェクトを作成します|
+|[CreateTask](connectors-create-api-projectonline.md#createtask)|プロジェクトで新しいタスクを作成します|
+|[CreateResource](connectors-create-api-projectonline.md#createresource)|プロジェクト オンライン サイトでエンタープライズ リソースを作成します|
+|[ListTasks](connectors-create-api-projectonline.md#listtasks)|プロジェクトで発行されたタスクを一覧表示します|
+|[CheckoutProject](connectors-create-api-projectonline.md#checkoutproject)|サイト内のプロジェクトをチェック アウトします|
+|[PublishProject](connectors-create-api-projectonline.md#publishproject)|サイト内の既存のプロジェクトをチェックインおよび発行します|
+### ProjectOnline のトリガー
+次のイベントをリッスンできます。
 
-|Trigger | Description|
+|トリガー | Description|
 |--- | ---|
-|When a new project is created|Triggers a flow whenever a new project is created|
-|When a new resource is created|Triggers a new flow when a new resource is created|
-|When a new task is created|Triggers a flow when a new task is created|
+|新しいプロジェクトの作成時|新しいプロジェクトが作成されるたびにフローをトリガーします|
+|新しいリソースの作成時|新しいリソースが作成されたときにフローをトリガーします|
+|新しいタスクの作成時|新しいタスクが作成されたときにフローをトリガーします|
 
 
-## <a name="create-a-connection-to-projectonline"></a>Create a connection to ProjectOnline
-To create Logic apps with ProjectOnline, you must first create a **connection** then provide the details for the following properties: 
+## ProjectOnline への接続を作成する
+ProjectOnline を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|Property| Required|Description|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|Token|Yes|Provide ProjectOnline Credentials|
+|トークン|はい|ProjectOnline の資格情報を提供します|
 
->[AZURE.INCLUDE [Steps to create a connection to ProjectOnline](../../includes/connectors-create-api-projectonline.md)]
+>[AZURE.INCLUDE [ProjectOnline への接続を作成する手順](../../includes/connectors-create-api-projectonline.md)]
 
->[AZURE.TIP] You can use this connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
-## <a name="reference-for-projectonline"></a>Reference for ProjectOnline
-Applies to version: 1.0
+## ProjectOnline のリファレンス
+適用されるバージョン: 1.0
 
-## <a name="onnewproject"></a>OnNewProject
-When a new project is created: Triggers a flow whenever a new project is created 
+## OnNewProject
+新しいプロジェクトの作成時: 新しいプロジェクトが作成されるたびにフローをトリガーします
 
-```GET: /trigger/_api/ProjectData/Projects``` 
+```GET: /trigger/_api/ProjectData/Projects```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="onnewresource"></a>OnNewResource
-When a new resource is created: Triggers a new flow when a new resource is created 
+## OnNewResource
+新しいリソースの作成時: 新しいリソースが作成されたときに新しいフローをトリガーします
 
-```GET: /trigger/_api/ProjectData/Resources``` 
+```GET: /trigger/_api/ProjectData/Resources```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="onnewtask"></a>OnNewTask
-When a new task is created: Triggers a flow when a new task is created 
+## OnNewTask
+新しいタスクの作成時: 新しいタスクが作成されたときにフローをトリガーします
 
-```GET: /trigger/_api/ProjectData/Tasks``` 
+```GET: /trigger/_api/ProjectData/Tasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="listprojects"></a>ListProjects
-List projects: Lists the projects in your project online site 
+## ListProjects
+プロジェクトの一覧表示: プロジェクト オンライン サイトでプロジェクトを一覧表示します
 
-```GET: /_api/ProjectServer/Projects``` 
+```GET: /_api/ProjectServer/Projects```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createproject"></a>CreateProject
-Creates new project: Creates a new project in your project online site 
+## CreateProject
+プロジェクトの新規作成: プロジェクト オンライン サイトで新しいプロジェクトを作成します
 
-```POST: /_api/ProjectServer/Projects``` 
+```POST: /_api/ProjectServer/Projects```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
-|proj| |yes|body|none|New project to create|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
+|proj| |○|body|なし|作成する新しいプロジェクト|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
+|400|正しくない要求|
+|401|権限がありません|
 |403|ForbIDden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createtask"></a>CreateTask
-Creates new task: Creates a new task in you project 
+## CreateTask
+新しいタスクの作成: プロジェクトで新しいタスクを作成します
 
-```POST: /_api/ProjectServer/Projects('{project_id}')/Draft/Tasks/Add``` 
+```POST: /_api/ProjectServer/Projects('{project_id}')/Draft/Tasks/Add```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
-|project_id|string|yes|path|none|Unique ID of the project to add the task to|
-|task| |yes|body|none|New task to add to the project|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
+|project\_id|string|○|path|なし|タスクを追加するプロジェクトの一意の ID|
+|タスク| |○|body|なし|プロジェクトに追加する新しいタスク|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="createresource"></a>CreateResource
-Create new resource: Creates an Enterprise Resources in your project online site 
+## CreateResource
+新しいリソースの作成: プロジェクト オンライン サイトでエンタープライズ リソースを作成します
 
-```POST: /_api/ProjectServer/EnterpriseResources``` 
+```POST: /_api/ProjectServer/EnterpriseResources```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
-|resource| |yes|body|none|New enterprise resource to add to the project|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
+|resource| |○|body|なし|プロジェクトに追加する新しいエンタープライズ リソース|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="listtasks"></a>ListTasks
-Lists tasks: Lists the published tasks in a project 
+## ListTasks
+タスクの一覧表示: プロジェクトで発行されたタスクを一覧表示します
 
-```GET: /_api/ProjectServer/Projects('{project_id}')/Tasks``` 
+```GET: /_api/ProjectServer/Projects('{project_id}')/Tasks```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
-|project_id|string|yes|path|none|Unique ID of the project to fetch tasks|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
+|project\_id|string|○|path|なし|タスクを取得するプロジェクトの一意の ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="checkoutproject"></a>CheckoutProject
-Checkout a project: Checks out a project in your site 
+## CheckoutProject
+プロジェクトのチェック アウト: サイト内のプロジェクトをチェック アウトします
 
-```POST: /_api/ProjectServer/Projects('{project_id}')/checkOut``` 
+```POST: /_api/ProjectServer/Projects('{project_id}')/checkOut```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
-|project_id|string|yes|path|none|Unique ID of the project to add the task to|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
+|project\_id|string|○|path|なし|タスクを追加するプロジェクトの一意の ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="publishproject"></a>PublishProject
-Checkin and publish project: Check in and publish and existing project in your site 
+## PublishProject
+プロジェクトのチェックインと発行: サイト内の既存のプロジェクトをチェックインおよび発行します
 
-```POST: /_api/ProjectServer/Projects('{project_id}')/Draft/Publish(true)``` 
+```POST: /_api/ProjectServer/Projects('{project_id}')/Draft/Publish(true)```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|siteUrl|string|yes|query|none|Root site url of your project site (Example: https://sampletenant.sharepoint.com/teams/sampleteam )|
-|project_id|string|yes|path|none|Unique ID of the project to checkin|
+|siteUrl|string|○|query|なし|プロジェクト サイトのルート サイト URL (例: https://sampletenant.sharepoint.com/teams/sampleteam)|
+|project\_id|string|○|path|なし|チェックインするプロジェクトの一意の ID|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|401|Unauthorized|
-|403|Forbidden|
-|404|Not Found|
-|500|Internal Server Error. Unknown error occured|
-|default|Operation Failed.|
+|400|正しくない要求|
+|401|権限がありません|
+|403|許可されていません|
+|404|見つかりません|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|default|操作に失敗しました。|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## オブジェクト定義 
 
-### <a name="triggerprojectswrapper"></a>TriggerProjectsWrapper
+### TriggerProjectsWrapper
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="triggerproject"></a>TriggerProject
+### TriggerProject
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ProjectStartDate|string|No |
-|ProjectFinishDate|string|No |
-|ProjectCreatedDate|string|No |
-|ProjectId|string|No |
-|ProjectModifiedDate|string|No |
-|ProjectType|integer|No |
-|ProjectName|string|No |
+|ProjectStartDate|string|なし |
+|ProjectFinishDate|string|なし |
+|ProjectCreatedDate|string|なし |
+|ProjectId|string|なし |
+|ProjectModifiedDate|string|なし |
+|ProjectType|integer|なし |
+|ProjectName|string|なし |
 
 
 
-### <a name="triggerresourceswrapper"></a>TriggerResourcesWrapper
+### TriggerResourcesWrapper
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="triggerresource"></a>TriggerResource
+### TriggerResource
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ResourceId|string|No |
-|ResourceBaseCalendar|string|No |
-|ResourceBookingType|integer|No |
-|ResourceCanLevel|boolean|No |
-|ResourceCostPerUse|number|No |
-|ResourceCreatedDate|string|No |
-|ResourceEarliestAvailableFrom|string|No |
-|ResourceEmail|string|No |
-|ResourceInitials|string|No |
-|ResourceIsActive|boolean|No |
-|ResourceIsGeneric|boolean|No |
-|ResourceLatestAvailableTo|string|No |
-|ResourceModifiedDate|string|No |
-|ResourceName|string|No |
-|ResourceStatsuName|string|No |
-|ResourceType|integer|No |
-|TypeDescription|string|No |
-|TypeName|string|No |
+|ResourceId|string|なし |
+|ResourceBaseCalendar|string|なし |
+|ResourceBookingType|integer|なし |
+|ResourceCanLevel|boolean|なし |
+|ResourceCostPerUse|number|なし |
+|ResourceCreatedDate|string|なし |
+|ResourceEarliestAvailableFrom|string|なし |
+|ResourceEmail|string|なし |
+|ResourceInitials|string|なし |
+|ResourceIsActive|boolean|なし |
+|ResourceIsGeneric|boolean|なし |
+|ResourceLatestAvailableTo|string|なし |
+|ResourceModifiedDate|string|なし |
+|ResourceName|string|なし |
+|ResourceStatsuName|string|なし |
+|ResourceType|integer|なし |
+|TypeDescription|string|なし |
+|TypeName|string|なし |
 
 
 
-### <a name="triggertaskswrapper"></a>TriggerTasksWrapper
+### TriggerTasksWrapper
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="triggertask"></a>TriggerTask
+### TriggerTask
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ProjectId|string|No |
-|TaskId|string|No |
-|ProjectName|string|No |
-|TaskName|string|No |
-|TaskCreatedDate|string|No |
-|TaskModifieddate|string|No |
-|TaskStartDate|string|No |
-|TaskFinishDate|string|No |
-|TaskPriority|integer|No |
-|TaskIsActive|boolean|No |
+|ProjectId|string|なし |
+|TaskId|string|なし |
+|ProjectName|string|なし |
+|TaskName|string|なし |
+|TaskCreatedDate|string|なし |
+|TaskModifieddate|string|なし |
+|TaskStartDate|string|なし |
+|TaskFinishDate|string|なし |
+|TaskPriority|integer|なし |
+|TaskIsActive|boolean|なし |
 
 
 
-### <a name="newproject"></a>NewProject
+### NewProject
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Name|string|Yes |
-|Description|string|No |
-|Start|string|No |
+|名前|string|はい |
+|Description|string|なし |
+|開始|string|なし |
 
 
 
-### <a name="newreource"></a>NewReource
+### NewReource
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Name|string|Yes |
-|IsBudget|boolean|No |
-|IsGeneric|boolean|No |
-|IsInactive|boolean|No |
+|名前|string|はい |
+|IsBudget|boolean|なし |
+|IsGeneric|boolean|なし |
+|IsInactive|boolean|なし |
 
 
 
-### <a name="project"></a>Project
+### Project
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|ApprovedStart|string|No |
-|ApprovedEnd|string|No |
-|CheckedOutDate|string|No |
-|CheckOutDescription|string|No |
-|CheckOutId|string|No |
-|CreatedDate|string|No |
-|Id|string|No |
-|IsCheckedOut|boolean|No |
-|LastPublishedDate|string|No |
-|LastSavedDate|string|No |
-|OptimizerDecision|integer|No |
-|PlannerDecision|integer|No |
-|ProjectType|integer|No |
-|Name|string|No |
-|WinprojVersion|string|No |
+|ApprovedStart|string|なし |
+|ApprovedEnd|string|なし |
+|CheckedOutDate|string|なし |
+|CheckOutDescription|string|なし |
+|CheckOutId|string|なし |
+|CreatedDate|string|なし |
+|ID|string|なし |
+|IsCheckedOut|boolean|なし |
+|LastPublishedDate|string|なし |
+|LastSavedDate|string|なし |
+|OptimizerDecision|integer|なし |
+|PlannerDecision|integer|なし |
+|ProjectType|integer|なし |
+|名前|string|なし |
+|WinprojVersion|string|なし |
 
 
 
-### <a name="projectswrapper"></a>ProjectsWrapper
+### ProjectsWrapper
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="newtask"></a>NewTask
+### NewTask
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|parameters|not defined|Yes |
+|parameters|未定義|はい |
 
 
 
-### <a name="taskparameters"></a>TaskParameters
+### TaskParameters
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Name|string|Yes |
-|Notes|string|No |
-|Start|string|No |
-|Duration|string|No |
+|名前|string|はい |
+|メモ|string|なし |
+|開始|string|なし |
+|時間|string|なし |
 
 
 
-### <a name="enterpriseresource"></a>EnterpriseResource
+### EnterpriseResource
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|CanLevel|boolean|No |
-|Code|string|No |
-|CostAccrual|integer|No |
-|CostCenter|string|No |
-|Created|string|No |
-|DefaultBookingType|integer|No |
-|Email|string|No |
-|ExternalId|string|No |
-|Group|string|No |
-|HireDate|string|No |
-|Id|string|No |
-|Initials|string|No |
-|IsActive|boolean|No |
-|IsBudget|boolean|No |
-|IsCheckedOut|boolean|No |
-|IsGeneric|boolean|No |
-|IsTeam|boolean|No |
-|MaterialLabel|string|No |
-|Modified|string|No |
-|Name|string|No |
-|Phonetics|string|No |
-|ResourceType|integer|No |
-|TerminationDate|string|No |
+|CanLevel|boolean|なし |
+|コード|string|なし |
+|CostAccrual|integer|なし |
+|CostCenter|string|なし |
+|作成日時|string|なし |
+|DefaultBookingType|integer|なし |
+|電子メール|string|なし |
+|ExternalId|string|なし |
+|グループ|string|なし |
+|HireDate|string|なし |
+|ID|string|なし |
+|Initials|string|なし |
+|IsActive|boolean|なし |
+|IsBudget|boolean|なし |
+|IsCheckedOut|boolean|なし |
+|IsGeneric|boolean|なし |
+|IsTeam|boolean|なし |
+|MaterialLabel|string|なし |
+|修正済み|string|なし |
+|名前|string|なし |
+|Phonetics|string|なし |
+|ResourceType|integer|なし |
+|TerminationDate|string|なし |
 
 
 
-### <a name="taskswrapper"></a>TasksWrapper
+### TasksWrapper
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|value|array|No |
+|値|array|なし |
 
 
 
-### <a name="task"></a>Task
+### タスク
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Created|string|No |
-|Modified|string|No |
-|Start|string|No |
-|Finish|string|No |
-|Name|string|No |
-|Id|string|No |
-|Priority|integer|No |
-|PercentComplete|integer|No |
-|Notes|string|No |
-|Contact|string|No |
+|作成日時|string|なし |
+|修正済み|string|なし |
+|開始|string|なし |
+|完了|string|なし |
+|Name|string|なし |
+|ID|string|なし |
+|優先順位|integer|なし |
+|PercentComplete|integer|なし |
+|メモ|string|なし |
+|連絡先|string|なし |
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Enable Transparent Data Encryption (TDE) for SQL Server Stretch Database on Azure | Microsoft Azure"
-   description="Enable Transparent Data Encryption (TDE) for SQL Server Stretch Database on Azure"
+   pageTitle="Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化 | Microsoft Azure"
+   description="Azure での SQL Server Stretch Database に対する Transparent Data Encryption (TDE) の有効化"
    services="sql-server-stretch-database"
    documentationCenter=""
    authors="douglaslMS"
@@ -16,41 +16,39 @@
    ms.date="06/14/2016"
    ms.author="douglaslMS"/>
 
-
-# <a name="enable-transparent-data-encryption-(tde)-for-stretch-database-on-azure"></a>Enable Transparent Data Encryption (TDE) for Stretch Database on Azure
+# Azure での Stretch Database に対する Transparent Data Encryption (TDE) の有効化
 > [AZURE.SELECTOR]
-- [Azure portal](sql-server-stretch-database-encryption-tde.md)
+- [Azure ポータル](sql-server-stretch-database-encryption-tde.md)
 - [TSQL](sql-server-stretch-database-tde-tsql.md)
 
-Transparent Data Encryption (TDE) helps protect against the threat of malicious activity by performing real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.
+Transparent Data Encryption (TDE) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。
 
-TDE encrypts the storage of an entire database by using a symmetric key called the database encryption key. The database encryption key is protected by a built-in server certificate. The built-in server certificate is unique for each Azure server. Microsoft automatically rotates these certificates at least every 90 days. For a general description of TDE, see [Transparent Data Encryption (TDE)].
+TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。組み込みのサーバー証明書は、Azure サーバーごとに一意です。Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。TDE の一般的な説明については、「[透過的なデータ暗号化 (TDE)]」を参照してください。
 
-##<a name="enabling-encryption"></a>Enabling Encryption
+##暗号化の有効化
 
-To enable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
+Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を有効にするには、次の操作を行います。
 
-1. Open the database in the [Azure portal](https://portal.azure.com)
-2. In the database blade, click the **Settings** button
-3. Select the **Transparent data encryption** option ![][1]
-4. Select the **On** setting, and then select **Save**
-![][2]
+1. [Azure ポータル](https://portal.azure.com)でデータベースを開きます
+2. データベース ブレードで **[設定]** ボタンをクリックします。
+3. **[Transparent Data Encryption]** オプションを選択します ![][1]
+4. **[オン]**、**[保存]** の順に選択します ![][2]
 
 
-##<a name="disabling-encryption"></a>Disabling Encryption
+##暗号化の無効化
 
-To disable TDE for an Azure database that's storing the data migrated from a Stretch-enabled SQL Server database, do the following things:
+Stretch 対応 SQL Server データベースから移行したデータを格納している Azure データベースの TDE を無効にするには、次の操作を行います。
 
-1. Open the database in the [Azure portal](https://portal.azure.com)
-2. In the database blade, click the **Settings** button
-3. Select the **Transparent data encryption** option
-4. Select the **Off** setting, and then select **Save**
+1. [Azure ポータル](https://portal.azure.com)でデータベースを開きます
+2. データベース ブレードで **[設定]** ボタンをクリックします。
+3. **[透過的なデータ暗号化]** オプションを選択します
+4. **[オフ]**、**[保存]** の順に選択します
 
 
 
 
 <!--Anchors-->
-[Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
+[透過的なデータ暗号化 (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
 
 
 <!--Image references-->
@@ -60,8 +58,4 @@ To disable TDE for an Azure database that's storing the data migrated from a Str
 
 <!--Link references-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

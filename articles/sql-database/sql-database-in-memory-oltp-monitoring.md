@@ -1,66 +1,61 @@
 <properties
-    pageTitle="Monitor XTP in-memory storage | Microsoft Azure"
-    description="Estimate and monitor XTP in-memory storage use, capacity; resolve capacity error 41823"
-    services="sql-database"
-    documentationCenter=""
-    authors="jodebrui"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="XTP インメモリ ストレージの監視 | Microsoft Azure"
+	description="XTP インメモリ ストレージの使用量と容量を推定し、監視します。また、容量不足エラー 41823 を解決します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="jodebrui"
+	manager="jhubbard"
+	editor=""/>
 
 
 <tags
-    ms.service="sql-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="jodebrui"/>
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/18/2016"
+	ms.author="jodebrui"/>
 
 
+# インメモリ OLTP ストレージの監視
 
-# <a name="monitor-in-memory-oltp-storage"></a>Monitor In-Memory OLTP Storage
+[インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳細については、[SQL Database のサービス レベル](sql-database-service-tiers.md#service-tiers-for-single-databases)に関する記事をご覧ください。この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。
 
-When using [In-Memory OLTP](sql-database-in-memory.md), data in memory-optimized tables and table variables resides in In-Memory OLTP storage. Each Premium service tier has a maximum In-Memory OLTP storage size, which is documented in the [SQL Database Service Tiers article](sql-database-service-tiers.md#service-tiers-for-single-databases). Once this limit is exceeded, insert and update operations may start failing (with error 41823). At that point you will need to either delete data to reclaim memory, or upgrade the performance tier of your database.
+## データがインメモリ ストレージの上限に収まるかどうかを判断する
 
-## <a name="determine-whether-data-will-fit-within-the-in-memory-storage-cap"></a>Determine whether data will fit within the in-memory storage cap
+ここでは、ストレージの上限を判断します。各種 Premium サービス階層のストレージ上限については、[SQL Database のサービス階層に関する記事](sql-database-service-tiers.md#service-tiers-for-single-databases)を参照してください。
 
-Determine the storage cap: consult the [SQL Database Service Tiers article](sql-database-service-tiers.md#service-tiers-for-single-databases) for the storage caps of the different Premium service tiers.
+メモリ最適化テーブルのメモリ必要量の推定は、Azure SQL Database で SQL Server の要件を推定する場合と同じように行います。少し時間をとって、[MSDN](https://msdn.microsoft.com/library/dn282389.aspx) でメモリ最適化テーブルのメモリ必要量の推定について確認してください。
 
-Estimating memory requirements for a memory-optimized table works the same way for SQL Server as it does in Azure SQL Database. Take a few minutes to review that topic on [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
+テーブル行とテーブル変数行、およびインデックスは、最大ユーザー データ サイズにカウントされるので注意してください。また、テーブル全体とそのインデックスの新しいバージョンを作成するには、ALTER TABLE に十分な領域が必要になります。
 
-Note that the table and table variable rows, as well as indexes, count toward the max user data size. In addition, ALTER TABLE needs enough room to create a new version of the entire table and its indexes.
+## 監視とアラート
 
-## <a name="monitoring-and-alerting"></a>Monitoring and alerting
+Azure [ポータル](https://portal.azure.com/)で、インメモリ ストレージの使用量を[パフォーマンス階層のストレージ上限](sql-database-service-tiers.md#service-tiers-for-single-databases)に対するパーセンテージとして監視できます。
 
-You can monitor in-memory storage use as a percentage of the [storage cap for your performance tier](sql-database-service-tiers.md#service-tiers-for-single-databases) in the Azure [portal](https://portal.azure.com/): 
+- [データベース] ブレードの [リソース使用率] ボックスで [編集] をクリックします。
+- メトリック `In-Memory OLTP Storage percentage` を選択します。
+- アラートを追加するには、[リソース使用率] チェック ボックスをオンにして [メトリック] ブレードを開き、[アラートの追加] をクリックします。
 
-- On the Database blade, locate the Resource utilization box and click on Edit.
-- Then select the metric `In-Memory OLTP Storage percentage`.
-- To add an alert, click on the Resource Utilization box to open the Metric blade, then click on Add alert.
-
-Or use the following query to show the in-memory storage utilization:
+または、次のクエリを使用して、インメモリ ストレージの使用率を表示します。
 
     SELECT xtp_storage_percent FROM sys.dm_db_resource_stats
 
 
-## <a name="correct-out-of-memory-situations---error-41823"></a>Correct out-of-memory situations - Error 41823
+## メモリ不足状況の修正 - エラー 41823
 
-Running out-of-memory results in INSERT, UPDATE, and CREATE operations failing with error message 41823.
+メモリが不足すると、INSERT、UPDATE、および CREATE 操作が失敗し、エラー メッセージ 41823 が表示されます。
 
-Error message 41823 indicates that the memory-optimized tables and table variables have exceeded the maximum size.
+エラー メッセージ 41823 は、メモリ最適化テーブルとテーブル変数が最大サイズを超えたことを示しています。
 
-To resolve this error, either:
-
-
-- Delete data from the memory-optimized tables, potentially offloading the data to traditional, disk-based tables; or,
-- Upgrade the service tier to one with enough in-memory storage for the data you need to keep in memory-optimized tables.
-
-## <a name="next-steps"></a>Next steps
-Additional resources about about [Monitoring Azure SQL Database using dynamic management views](sql-database-monitoring-with-dmvs.md)
+このエラーを解決するには、次のいずれかを実行します。
 
 
+- 従来のディスク ベース テーブルにデータをオフロードするなどして、メモリ最適化テーブルからデータを削除します。
+- メモリ最適化テーブルにデータを残す必要がある場合は、十分なインメモリ ストレージがあるサービス階層にアップグレードします。
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
+その他のリソースとして「[動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)」を参照する
 
-
+<!---HONumber=AcomDC_0720_2016-->

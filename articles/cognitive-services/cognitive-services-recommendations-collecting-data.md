@@ -1,134 +1,130 @@
 <properties
-    pageTitle="Collecting Data to Train your Model: Machine Learning Recommendations API | Microsoft Azure"
-    description="Azure Machine Learning Recommendations - Collecting Data to Train your Model"
-    services="cognitive-services"
-    documentationCenter=""
-    authors="luiscabrer"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="モデルをトレーニングするためのデータの収集: Machine Learning Recommendations API | Microsoft Azure"
+	description="Azure Machine Learning Recommendations - モデルをトレーニングするためのデータの収集"
+	services="cognitive-services"
+	documentationCenter=""
+	authors="luiscabrer"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="cognitive-services"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/06/2016"
-    ms.author="luisca"/>
+	ms.service="cognitive-services"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/06/2016"
+	ms.author="luisca"/>
+
+#  モデルをトレーニングするためのデータの収集 #
+
+Recommendations API は、特定のユーザーにどの項目を勧めればよいかを調べるために、過去のトランザクションから学習します。
+
+モデルを作成した後、トレーニングを行う前に、カタログ ファイルと使用状況データという 2 つの情報を提供する必要があります。
+
+>   [クイック スタート ガイド](cognitive-services-recommendations-quick-start.md)をまだ完了していない場合は、完了しておくことをお勧めします。
 
 
-#  <a name="collecting-data-to-train-your-model"></a>Collecting Data to Train your Model #
+## カタログ データ ##
 
-The Recommendations API learns from your past transactions to find what items should be recommended to a particular user.
+### カタログ ファイルの形式 ###
 
-After you have created a model, you will need to provide two piece of information before you can do any training: a catalog file, and usage data.
+カタログ ファイルには、顧客に提供している項目についての情報が含まれています。カタログ データは、次の形式に従う必要があります。
 
->   If you have not done so already, we encourage you to complete the [quick start guide](cognitive-services-recommendations-quick-start.md).
+- 特徴なし - `<Item Id>,<Item Name>,<Item Category>[,<Description>]`
 
+- 特徴あり - `<Item Id>,<Item Name>,<Item Category>,[<Description>],<Features list>`
 
-## <a name="catalog-data"></a>Catalog Data ##
+#### カタログ ファイルのサンプル行
 
-### <a name="catalog-file-format"></a>Catalog file format ###
-
-The catalog file contains information about the items you are offering to your customer.
-The catalog data should follow the following format:
-
-- Without features - `<Item Id>,<Item Name>,<Item Category>[,<Description>]`
-
-- With features - `<Item Id>,<Item Name>,<Item Category>,[<Description>],<Features list>`
-
-#### <a name="sample-rows-in-a-catalog-file"></a>Sample Rows in a Catalog File
-
-Without features:
+特徴なし:
 
     AAA04294,Office Language Pack Online DwnLd,Office
     AAA04303,Minecraft Download Game,Games
     C9F00168,Kiruna Flip Cover,Accessories
 
-With features:
+特徴あり:
 
     AAA04294,Office Language Pack Online DwnLd,Office,, softwaretype=productivity, compatibility=Windows
     BAB04303,Minecraft DwnLd,Games, softwaretype=gaming,, compatibility=iOS, agegroup=all
     C9F00168,Kiruna Flip Cover,Accessories, compatibility=lumia,, hardwaretype=mobile
 
-#### <a name="format-details"></a>Format details
+#### 形式の詳細
 
-| Name | Mandatory | Type |  Description |
+| 名前 | 必須 | 型 | Description |
 |:---|:---|:---|:---|
-| Item Id |Yes | [A-z], [a-z], [0-9], [_] &#40;Underscore&#41;, [-] &#40;Dash&#41;<br> Max length: 50 | Unique identifier of an item. |
-| Item Name | Yes | Any alphanumeric characters<br> Max length: 255 | Item name. |
-| Item Category | Yes | Any alphanumeric characters <br> Max length: 255 | Category to which this item belongs (e.g. Cooking Books, Drama…); can be empty. |
-| Description | No, unless features are present (but can be empty) | Any alphanumeric characters <br> Max length: 4000 | Description of this item. |
-| Features list | No | Any alphanumeric characters <br> Max length: 4000; Max number of features:20 | Comma-separated list of feature name=feature value that can be used to enhance model recommendation.|
+| 項目 ID |はい | [A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50 | 項目の一意識別子 |
+| Item Name | はい | 任意の英数字<br> 最大長: 255 | 項目名。 |
+| Item Category | はい | 任意の英数字 <br> 最大長: 255 | この項目が属しているカテゴリ (例: 料理本、ドラマ...)。空にすることができます。 |
+| Description | いいえ。ただし特徴が存在する場合を除きます (しかし、空にすることはできます) | 任意の英数字<br> 最大長: 4000 | この項目の説明。 |
+| Features list | なし | 任意の英数字<br> 最大長: 4000、特徴の最大数: 20 | モデルの推奨事項を強化するために使用できる "特徴名=特徴値" のコンマ区切りの一覧。|
 
-#### <a name="uploading-a-catalog-file"></a>Uploading a Catalog file
+#### カタログ ファイルのアップロード
 
-Look at the [API reference](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f316efeda5650db055a3e1) for uploading a catalog file.  
+カタログ ファイルのアップロードについては、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f316efeda5650db055a3e1)を参照してください。
 
-Note that the content of the catalog file should be passed as the request body.
+カタログ ファイルの内容は要求本文として渡す必要があることに注意してください。
 
-If you upload several catalog files to the same model with several calls, we will insert only the new catalog items. Existing items will remain with the original values. You cannot update catalog data by using this method.
+複数の呼び出しで同じモデルに複数のカタログ ファイルがアップロードされた場合は、新しいカタログ項目のみを挿入します。既存の項目は、元の値でそのまま残ります。このメソッドを使用して、カタログ データを更新することはできません。
 
->   Note: The maximum file size is 200MB.
->   The maximum number of items in the catalog supported is 100,000 items.
-
-
-## <a name="why-add-features-to-the-catalog?"></a>Why add features to the catalog?
-
-The recommendations engine creates a statistical model that tells you what items are likely to be liked or purchased by a customer. When you have a new product that has never been interacted with it is not possible to create a model on co-occurrences alone. Let's say you start offering a new "children's violin" in your store, since you have never sold that violin before you cannot tell what other items to recommend with that violin.
-
-That said, if the engine knows information about that violin (i.e. It's a musical instrument, it is for children ages 7-10, it is not an expensive violin, etc.), then the engine can learn from other products with similar features. For instance, you have sold violin's in the past and usually people that buy violins tend to buy classical music CDs and sheet music stands.  The system can find these connections between the features and provide recommendations based on the features while your new violin has little usage.
-
-Features are imported as part of the catalog data, and then their rank (or the importance of the feature in the model) is associated when a rank build is done. Feature rank can change according to the pattern of usage data and type of items. But for consistent usage/items, the rank should have only small fluctuations. The rank of features is a non-negative number. The number 0 means that the feature was not ranked (happens if you invoke this API prior to the completion of the first rank build). The date at which the rank was attributed is called the score freshness.
+>   注: ファイルの最大サイズは、200 MB です。カタログ内でサポートされる項目の最大数は 100,000 個です。
 
 
-###<a name="features-are-categorical"></a>Features are Categorical
+## カタログに特徴を追加する理由
 
-This means that you should create features that resemble a category. For instance, price=9.34 is not a categorical feature. On the other hand, a feature like priceRange=Under5Dollars is a categorical feature. Another common mistake is to use the name of the item as a feature. This would cause the name of an item to be unique so it would not describe a category. Make sure the features represent categories of items.
+推奨エンジンは、どの項目が顧客に好まれたり購入されたりする可能性があるかを示す統計モデルを作成します。今まで扱ったことがない新製品がある場合は、共起だけでモデルを作成することはできません。たとえば、店で新たに "子供用バイオリン" の販売を始めるとします。以前にそのバイオリンを販売したことがないため、そのバイオリンと一緒に他のどの項目を推奨すればよいかがわかりません。
 
+ただし、エンジンがそのバイオリンに関する情報 (楽器であること、7 ～ 10 歳の子供用であること、高価なバイオリンではないことなど) を認識している場合、エンジンは同じような特徴を持つ他の製品から学習できます。たとえば、過去にバイオリンを販売したことがあり、通常、バイオリンの購入者はクラシック音楽の CD や譜面台を購入する傾向にあります。新しいバイオリンがあまり使用されていなくても、システムは、特徴どおしのこうしたつながりを見つけ出して、特徴に基づいて推奨事項を提供することができます。
 
-###<a name="how-many/which-features-should-i-use?"></a>How many/which features should I use?
-
-
-Ultimately the Recommendations build supports building a model with up to 20 features. You could assign more than 20 features to the items in your catalog, but you are expected to do a ranking build and pick only the features that rank high. (A feature with a rank of 2.0 or more is a really good feature to use!). 
+特徴は、カタログ データの一部としてインポートされた後、その順位 (またはモデル内での特徴の重要度) は、順位のビルドが実行されたときに関連付けられます。使用状況データと項目の種類のパターンに従って特徴の順位を変更できます。しかし、使用状況と項目の一貫性を保つため、順位付けの変動は小さくなければなりません。特徴の順位は負以外の数値です。数値 0 は、特徴が順位付けされていないことを意味します (最初の順位付けのビルドが完了する前にこの API を呼び出すと、これが発生します)。順位付けの日付をスコアの鮮度と言います。
 
 
-###<a name="when-are-features-actually-used?"></a>When are features actually used?
+###特徴はカテゴリ
 
-Features are used by the model when there is not enough transaction data to provide recommendations on transaction information alone. So features will have the greatest impact on “cold items” – items with few transactions. If all your items have sufficient transaction information you may not need to enrich your model with features.
+これは、カテゴリのような特徴を作成する必要があるという意味です。たとえば、"price=9.34" はカテゴリのような特徴ではありません。一方、"priceRange=Under5Dollars" のような特徴はカテゴリです。よくある別の間違いは、項目の名前を特徴として使用することです。このようにすると項目の名前が一意になるため、カテゴリを表さなくなります。特徴は、項目のカテゴリを表すようにしてください。
 
 
-###<a name="using-product-features"></a>Using product features
+###使用する特徴の種類と数
 
-To use features as part of your build you need to:
 
-1. Make sure your catalog has features when you upload it.
+推奨ビルドは最終的には、最大 20 個の特徴を持つモデルのビルドをサポートします。20 個を超える特徴をカタログ内の項目に割り当てることもできますが、順位付けのビルドを実行して上位の特徴のみを選択する必要があります (ランクが 2.0 以上の特徴は非常に優れています)。
 
-2. Trigger a ranking build. This will do the analysis on the importance/rank of the features.
 
-3. Trigger a recommendations build, setting the following build parameters: Set useFeaturesInModel to true, allowColdItemPlacement to true, and modelingFeatureList should be set to the comma separated list of features that you want to use to enhance your model. See [Recommendations build type parameters](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d0) for more information.
+###特徴を実際に使用する場合
 
+特徴は、トランザクション情報のみに基づいて推奨を提供するのに十分なトランザクション データがない場合に、モデルによって使用されます。したがって、特徴が最も大きな影響を及ぼすのは、"コールド項目" (ほとんどトランザクションがない項目) です。すべての項目に十分なトランザクション情報がある場合は、特徴を使用してモデルを強化する必要がないこともあります。
+
+
+###製品の特徴の使用
+
+ビルドの一部として特徴を使用するには、次の手順を実行します。
+
+1. カタログをアップロードするときに、カタログに特徴が含まれていることを確認します。
+
+2. 順位付けのビルドをトリガーします。これで、特徴の重要度/順位の分析が行われます。
+
+3. 次のようにビルド パラメーターを設定して、推奨ビルドをトリガーします。useFeaturesInModel を true、allowColdItemPlacement を true に設定し、modelingFeatureList にはモデルの強化に使用する特徴のコンマ区切り一覧を設定します。詳細については、[Recommendations ビルド タイプのパラメーター](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3d0)に関するページを参照してください。
 
 
 
 
-## <a name="usage-data"></a>Usage Data ##
-A usage file contains information about how those items are used, or the transactions from your business.
 
-#### <a name="usage-format-details"></a>Usage Format details
-A usage file is a CSV (comma separated value) file where each row in a usage file represents an interaction between a user and an item. Each row is formatted as follows:<br>
-`<User Id>,<Item Id>,<Time>,[<Event>]`
+## 使用状況データ ##
+使用状況ファイルには、それらの項目がどのように使用されているかやビジネスのトランザクションに関する情報が含まれています。
+
+#### 使用状況の形式の詳細
+使用状況ファイルは CSV (コンマ区切り値) ファイルで、使用状況ファイルの各行はユーザーと項目の相互作用を表します。各行の形式は次のようになります。<br> `<User Id>,<Item Id>,<Time>,[<Event>]`
 
 
 
-| Name  | Mandatory | Type | Description
+| 名前 | 必須 | 型 | Description
 |-------|------------|------|---------------
-|User Id|         Yes|[A-z], [a-z], [0-9], [_] &#40;Underscore&#41;, [-] &#40;Dash&#41;<br> Max length: 255 |Unique identifier of a user.
-|Item Id|Yes|[A-z], [a-z], [0-9], [&#95;] &#40;Underscore&#41;, [-] &#40;Dash&#41;<br> Max length: 50|Unique identifier of an item.
-|Time|Yes|Date in format: YYYY/MM/DDTHH:MM:SS (e.g. 2013/06/20T10:00:00)|Time of data.
-|Event|No | One of the following:<br>• Click<br>• RecommendationClick<br>•  AddShopCart<br>• RemoveShopCart<br>• Purchase| The type of transaction. |
+|ユーザー ID| はい|[A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 255 |ユーザーの一意識別子。
+|項目 ID|はい|[A-z]、[a-z]、[0-9]、[\_] \(アンダースコア)、[-] \(ダッシュ) <br>最大長: 50|項目の一意識別子
+|Time|はい|YYYY/MM/DDTHH:MM:SS 形式の日付 (例: 2013/06/20T10:00:00)|データの時間。
+|イベント|いいえ | 次のいずれか:<br>• Click<br>• RecommendationClick<br>• AddShopCart<br>• RemoveShopCart<br>• Purchase| トランザクションの種類。 |
 
-#### <a name="sample-rows-in-a-usage-file"></a>Sample Rows in a Usage File
+#### 使用状況ファイルのサンプル行
 
     00037FFEA61FCA16,288186200,2015/08/04T11:02:52,Purchase
     0003BFFDD4C2148C,297833400,2015/08/04T11:02:50,Purchase
@@ -137,28 +133,22 @@ A usage file is a CSV (comma separated value) file where each row in a usage fil
     0003BFFDD4C20B63,297833400,2015/08/04T11:02:12,Purchase
     00037FFEC8567FB8,297833400,2015/08/04T11:02:04,Purchase
 
-#### <a name="uploading-a-usage-file"></a>Uploading a usage file
+#### 使用状況ファイルのアップロード
 
-Look at the [API reference](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f316efeda5650db055a3e2) for uploading usage files.
-Note that you need to pass the content of the usage file as the body of the HTTP call.
+使用状況ファイルのアップロードについては、[API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f316efeda5650db055a3e2)を参照してください。使用状況ファイルの内容を HTTP 呼び出しの本文として渡す必要があることに注意してください。
 
->  Note:
+>  注:
 
->  Maximum file size: 200MB. You may upload several usage files.
+>  ファイルの最大サイズは 200 MB です。複数の使用状況ファイルをアップロードすることができます。
 
->  You need to upload a catalog file before you start adding usage data to your model. Only items in the catalog file will be used during the training phase. All other items will be ignored.
+>  使用状況データをモデルに追加する前に、カタログ ファイルをアップロードする必要があります。トレーニング段階では、カタログ ファイル内の項目のみが使用されます。その他の項目はすべて無視されます。
 
-## <a name="how-much-data-do-you-need?"></a>How much data do you need?
+## 必要なデータ量
 
-The quality of your model is heavily dependent on the quality and quantity of your data.
-The system learns when users buy different items (We call this co-occurrences). For FBT builds, it is also important to know which items are purchased in the same transactions. 
+モデルの品質は、データの品質と量に大きく依存します。システムは、ユーザーがさまざまな商品をいつ購入したか (これを共起と呼びます) を学習します。FBT ビルドでは、同じトランザクションで購入された商品を把握することも重要となります。
 
-A good rule of thumb is to have most items be in 20 transactions or more, so if you had 10,000 items in your catalog, we would recommend that you have at least 20 times that number of transactions or about 200,000 transactions. Once again, this is a rule of thumb. You will need to experiment with your data.
+1 つの目安として、トランザクションが 20 個以上あれば、ほとんどの商品が含まれています。したがって、カタログに 10,000 個の商品が含まれている場合は、少なくともその 20 倍の数のトランザクション (約 200,000 個のトランザクション) を保持することをお勧めします。繰り返しますが、これはあくまで目安です。実際のデータでテストする必要があります。
 
-Once you have created a model, you can perform an [offline evaluation](cognitive-services-recommendations-buildtypes.md) to check how well your model is likely to perform.
+モデルを作成したら、[オフライン評価](cognitive-services-recommendations-buildtypes.md)を実行して、モデルがどの程度正常に機能する可能性があるかを確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

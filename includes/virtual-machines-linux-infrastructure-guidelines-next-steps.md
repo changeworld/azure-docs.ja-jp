@@ -1,15 +1,13 @@
-The full series of guidelines helps you understand all the different design considerations for building our your application infrastructure in Azure:
+総合的なガイドラインにより、Azure でアプリケーション インフラストラクチャを構築するためのさまざまな設計上の考慮事項をすべて理解することができます。
 
-- [Azure Subscription and Accounts Guidelines](../articles/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines.md)
-- [Azure Infrastructure Naming Guidelines](../articles/virtual-machines/virtual-machines-linux-infrastructure-naming-guidelines.md)
-- [Azure Resource Groups Guidelines](../articles/virtual-machines/virtual-machines-linux-infrastructure-resource-groups-guidelines.md)
-- [Azure Storage Guidelines](../articles/virtual-machines/virtual-machines-linux-infrastructure-storage-solutions-guidelines.md)
-- [Azure Networking Guidelines](../articles/virtual-machines/virtual-machines-linux-infrastructure-networking-guidelines.md)
-- [Azure Availability Set Guidelines](../articles/virtual-machines/virtual-machines-linux-infrastructure-availability-sets-guidelines.md)
-- [Azure Virtual Machine Guidelines](../articles/virtual-machines/virtual-machines-linux-infrastructure-virtual-machine-guidelines.md)
+- [Azure サブスクリプションとアカウントのガイドライン](../articles/virtual-machines/virtual-machines-linux-infrastructure-subscription-accounts-guidelines.md)
+- [Azure インフラストラクチャの名前付けのガイドライン](../articles/virtual-machines/virtual-machines-linux-infrastructure-naming-guidelines.md)
+- [Azure リソース グループのガイドライン](../articles/virtual-machines/virtual-machines-linux-infrastructure-resource-groups-guidelines.md)
+- [Azure Storage のガイドライン](../articles/virtual-machines/virtual-machines-linux-infrastructure-storage-solutions-guidelines.md)
+- [Azure ネットワークのガイドライン](../articles/virtual-machines/virtual-machines-linux-infrastructure-networking-guidelines.md)
+- [Azure 可用性セットのガイドライン](../articles/virtual-machines/virtual-machines-linux-infrastructure-availability-sets-guidelines.md)
+- [Azure 仮想マシンのガイドライン](../articles/virtual-machines/virtual-machines-linux-infrastructure-virtual-machine-guidelines.md)
 
-- [Azure Example Infrastructure Walkthrough](../articles/virtual-machines/virtual-machines-linux-infrastructure-example.md)
+- [サンプルの Azure インフラストラクチャによるチュートリアル](../articles/virtual-machines/virtual-machines-linux-infrastructure-example.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

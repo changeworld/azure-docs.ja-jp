@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Specifying DNS Settings in a service configuration file | Microsoft Azure"
-   description="specifying custom DNS settings using service configuration file for virtual network"
+   pageTitle="サービス構成ファイルでの DNS 設定の指定 | Microsoft Azure"
+   description="仮想ネットワークのサービス構成ファイルを使用してカスタム DNS 設定を指定する"
    services="virtual-network"
    documentationCenter="na"
    authors="jimdial"
@@ -15,14 +15,13 @@
    ms.date="02/24/2016"
    ms.author="jdial" />
 
+# サービス構成ファイルでの DNS 設定の指定
 
-# <a name="specifying-dns-settings-in-a-service-configuration-file"></a>Specifying DNS Settings in a Service Configuration File
+## DNS 要素
 
-## <a name="dns-elements"></a>DNS elements
+サービス構成ファイルでは、サービスが使用するドメイン ネーム システム (DNS) サーバーの IPv4 アドレスのリストである DnsServers 要素を指定できます。サービス構成ファイルの設定は、ネットワーク構成ファイルの設定より優先されます。詳細については、「[Microsoft Azure サービスの構成スキーマ (.cscfg ファイル)](https://msdn.microsoft.com/library/azure/ee758710.aspx)」を参照してください。
 
-A service configuration file may contain a DnsServers element with a list of IPv4 addresses for the Domain Name System (DNS) servers that the service will use. Settings in the service configuration file take precedence over settings in the network configuration file. For more information, see [Azure Service Configuration Schema (.cscfg File)](https://msdn.microsoft.com/library/azure/ee758710.aspx).
-
-**NetworkConfiguration element**
+**NetworkConfiguration 要素**
 
       <DnsServers>
         <DnsServer name="ID1" IPAddress="IPAddress1" />
@@ -30,21 +29,16 @@ A service configuration file may contain a DnsServers element with a list of IPv
         <DnsServer name="ID3" IPAddress="IPAddress3" />
       </DnsServers>
 
->[AZURE.WARNING] The **name** attribute in the **DnsServer** element is used only as a reference name. It does not represent the host name for the DNS server. Each **DnsServer** attribute value must be unique across the entire Microsoft Azure subscription.
+>[AZURE.WARNING] **DnsServer** 要素の **name** 属性は、参照名としてのみ使用されます。DNS サーバーのホスト名を表してはいません。各 **DnsServer** 属性の値は、Microsoft Azure サブスクリプション全体で一意である必要があります。
 
-## <a name="see-also"></a>See Also
+## 関連項目
 
-[Azure Service Configuration Schema (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
+[Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[Azure Virtual Network Configuration Schema](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
 
-[Configure a Virtual Network Using Network Configuration Files](http://go.microsoft.com/fwlink/?LinkId=248094)
+[ネットワーク構成ファイルを使用した Virtual Network の構成](http://go.microsoft.com/fwlink/?LinkId=248094)
 
-[About Virtual Network settings in the Management Portal](http://go.microsoft.com/fwlink/?LinkId=248092)
+[管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/?LinkId=248092)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

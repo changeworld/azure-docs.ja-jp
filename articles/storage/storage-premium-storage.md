@@ -1,581 +1,574 @@
 <properties
-    pageTitle="Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads | Microsoft Azure"
-    description="Premium Storage offers high-performance, low-latency disk support for I/O-intensive workloads running on Azure Virtual Machines. Azure DS-series, DSv2-series and GS-series VMs support Premium Storage."
-    services="storage"
-    documentationCenter=""
-    authors="yuemlu"
-    manager="aungoo-msft"
-    editor="tysonn"/>
+	pageTitle="Premium Storage: Azure の仮想マシン ワークロード用の高パフォーマンス ストレージ| Microsoft Azure"
+	description="Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Azure DS シリーズ、DSv2 シリーズおよび GS シリーズの VM は、Premium Storage をサポートしています。"
+	services="storage"
+	documentationCenter=""
+	authors="aungoo-msft"
+	manager="tadb"
+	editor="tysonn"/>
 
 <tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/28/2016"
-    ms.author="yuemlu;aungoo;robinsh"/>
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/19/2016"
+	ms.author="aungoo;robinsh"/>
 
 
+# Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ
 
-# <a name="premium-storage:-high-performance-storage-for-azure-virtual-machine-workloads"></a>Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads
+## Overview
 
-## <a name="overview"></a>Overview
+Azure Premium Storage は、高負荷の I/O ワークロードを実行する仮想マシン向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。Premium Storage を使用する仮想マシン (VM) では、ソリッド ステート ドライブ (SSD) にデータを格納します。アプリケーションの VM ディスクを Azure Premium Storage に移行することで、これらのディスクの速度とパフォーマンスを最大限に利用することができます。
 
-Azure Premium Storage delivers high-performance, low-latency disk support for virtual machines running I/O-intensive workloads. Virtual machine (VM) disks that use Premium Storage store data on solid state drives (SSDs). You can migrate your application's VM disks to Azure Premium Storage to take advantage of the speed and performance of these disks.
+Azure VM では複数の Premium Storage ディスクをアタッチすることができるので、アプリケーションには VM あたり最大で 64 TB のストレージを設定することができます。Premium Storage を使用すると、アプリケーションは、VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作) と、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。
 
-An Azure VM supports attaching several Premium Storage disks, so that your applications can have up to 64 TB of storage per VM. With Premium Storage, your applications can achieve 80,000 IOPS (input/output operations per second) per VM and 2000 MB per second disk throughput per VM with extremely low latencies for read operations.
+Premium Storage により、Azure は Dynamics AX、Dynamics CRM、Exchange Server、SharePoint Farms、SAP Business Suite などの要件の厳しいエンタープライズ アプリケーションを本当の意味でクラウドに昇格および移行できます。Premium Storage を使用すると、SQL Server、Oracle、MongoDB、MySQL、Redis のような一貫して高パフォーマンスと低待機時間を必要とする負荷の要件が厳しいデータベースを実行できます。
 
-With Premium Storage, Azure offers the ability to truly lift-and-shift your demanding enterprise applications like, Dynamics AX, Dynamics CRM, Exchange Server, SharePoint Farms, and SAP Business Suite, to the cloud. You can run a variety of performance intensive database workloads like SQL Server, Oracle, MongoDB, MySQL, Redis, that require consistent high performance and low latency on Premium Storage.
+>[AZURE.NOTE] 高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
 
->[AZURE.NOTE] We recommend migrating any virtual machine disk requiring high IOPS to Azure Premium Storage for the best performance for your application. If your disk does not require high IOPS, you can limit costs by maintaining it in Standard Storage, which stores virtual machine disk data on Hard Disk Drives (HDDs) instead of SSDs.
+Azure Premium Storage を使用するには、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)のページをご覧ください。既存の仮想マシンを Premium Storage に移行する方法の詳細については、「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照してください。
 
-To get started with Azure Premium Storage, visit [Get started for free](https://azure.microsoft.com/pricing/free-trial/) page. For information on migrating your existing virtual machines to Premium Storage, see [Migrating to Azure Premium Storage](storage-migration-to-premium-storage.md).
+>[AZURE.NOTE] 現在、Premium Storage は一部のリージョンでのみサポートされています。使用できるリージョンの一覧については、「[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services)」を参照してください。
 
->[AZURE.NOTE] Premium Storage is currently supported in some regions. You can find the list of available regions in [Azure Services by Region](https://azure.microsoft.com/regions/#services).
+## Premium Storage の機能
 
-## <a name="premium-storage-features"></a>Premium Storage Features
+**Premium Storage ディスク**: Azure Premium Storage は、Premium Storage でサポートされる DS、DSv2、GS、または Fs シリーズ Azure VM に接続可能な VM ディスクをサポートしています。Premium Storage の使用時に、それぞれパフォーマンス仕様の異なる P10 (128GiB)、P20 (512GiB)、P30 (1024GiB) の 3 つのディスク サイズから選択できます。アプリケーション要件に応じて、これらのディスクの 1 つ以上を Premium Storage でサポートされる VM に接続できます。[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)に関する次のセクションで、仕様についてさらに詳しく説明します。
 
-**Premium Storage Disks**: Azure Premium Storage supports VM disks that can be attached to Premium Storage supported Azure VMs (DS, DSv2, GS, or Fs series). When using Premium Storage you have a choice of three disk sizes namely, P10 (128GiB), P20 (512GiB) and P30 (1024GiB), each with its own performance specifications. Depending on your application requirement you can attach one or more of these disks to your Premium Storage supported VM. In the following section on [Premium Storage Scalability and Performance Targets ](#premium-storage-scalability-and-performance-targets) we will describe the specifications in more detail.
+**Premium ページ BLOB**: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使用されます。現在、Premium Storage は Azure ブロック BLOB、Azure ファイル、Azure 追加 BLOB、Azure テーブル、Azure キューをサポートしていません。Premium Storage アカウントに配置されている他のオブジェクトはページ BLOB であり、サポートされているプロビジョニングされたサイズのいずれかにスナップされます。したがって、Premium Storage アカウントは小さな BLOB を格納するためのものではありません。
 
-**Premium Page Blob**: Premium Storage supports Azure Page Blobs, which are used to hold persistent disks for Azure Virtual Machines (VMs). Currently, Premium Storage does not support Azure Block Blobs, Azure Append Blobs, Azure Files, Azure Tables, or Azure Queues. Any other object placed in a Premium Storage account will be a Page Blob, and it will snap to one of the supported provisioned sizes. Hence Premium Storage account is not meant for storing tiny blobs.
+**Premium Storage アカウント**: Premium Storage の使用を開始するには、Premium Storage アカウントを作成する必要があります。[Azure ポータル](https://portal.azure.com)を使用する場合は、"Premium" パフォーマンス レベルと、レプリケーション オプションとして "ローカル冗長ストレージ (LRS)" を指定することで、Premium Storage アカウントを作成できます。また、[Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) バージョン 2014-02-14 以降、[Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) バージョン 2014-10-01 以降 (クラシック デプロイ)、[Azure Storage Resource Provider REST API リファレンス](http://msdn.microsoft.com/library/azure/mt163683.aspx) (Resource Manager デプロイ)、[Azure PowerShell](../powershell-install-configure.md) バージョン 0.8.10 以降を使用している場合は、種類として "Premium\_LRS" を指定することで、Premium Storage アカウントを作成することもできます。Premium Storage アカウントの制限については、以降の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」を参照してください。
 
-**Premium Storage account**: To start using Premium Storage, you must create a Premium Storage account. If you prefer to use the [Azure portal](https://portal.azure.com), you can create a Premium Storage account by specifying the “Premium” performance tier and “Locally-redundant storage (LRS)” as the replication option. You can also create a Premium Storage account by specifying the type as “Premium_LRS” using the [Storage REST API](http://msdn.microsoft.com//library/azure/dd179355.aspx) version 2014-02-14 or later; the [Service Management REST API](http://msdn.microsoft.com/library/azure/ee460799.aspx) version 2014-10-01 or later (Classic deployments); the [Azure Storage Resource Provider REST API Reference](http://msdn.microsoft.com/library/azure/mt163683.aspx) (Resource Manager deployments); and the [Azure PowerShell](../powershell-install-configure.md) version 0.8.10 or later. Learn about premium storage account limits in the following section on [Premium Storage Scalability and Performance Targets](#premium-storage-scalability-and-performance-targets).
+**Premium ローカル冗長ストレージ**: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。Premium Storage を使用するときに Geo レプリケーションについて考慮すべき点については、この記事の「[スナップショットと Copy Blob](#snapshots-and-copy-blob)」を参照してください。
 
-**Premium Locally Redundant Storage**: A Premium Storage account only supports Locally Redundant Storage (LRS) as the replication option and keeps three copies of the data within a single region. For considerations regarding geo replication when using Premium Storage, see the [Snapshots and Copy Blob](#snapshots-and-copy-blob) section in this article.
+ストレージ アカウントは、オペレーティング システム (OS) とデータ ディスクのコンテナーとして使用されます。Azure DS、DSv2、GS、または Fs VM を作成して Azure Premium Storage アカウントを選択すると、オペレーティング システムとデータ ディスクはそのストレージ アカウントに格納されます。
 
-Azure uses the storage account as a container for your operating system (OS) and data disks. When you create an Azure DS, DSv2, GS, or Fs  VM and select an Azure Premium Storage account, your operating system and data disks are stored in that storage account.
+ディスク向け Premium Storage は次のいずれかの方法で使用できます。
+- まず、Premium Storage アカウントを作成します。次に、新しい DS、DSv2、GS、または Fs VM の作成時に、Storage の構成設定で Premium Storage アカウントを選択します。または
+- DS、DSv2、GS、Fs VM の作成時に、Storage の構成設定に新しい Premium Storage アカウントを作成するか、Azure Portal で既定の Premium Storage アカウントを自動作成します。
 
-You can use Premium Storage for Disks in one of two ways:
-- First, create a new premium storage account. Next, when creating a new DS, DSv2, GS, or Fs VM, select the premium storage account in the Storage configuration settings. OR,
-- When creating a new DS, DSv2, GS, or Fs VM create a new premium storage account in Storage configuration settings, or let Azure portal create a default premium storage account.
+詳細な手順については、この記事の以降の[クイック スタート](#quick-start)を参照してください。
 
-For step-by-step instructions, see the [Quick Start](#quick-start) section later in this article.
+>[AZURE.NOTE] Premium Storage のアカウントをカスタム ドメイン名にマッピングすることはできません。
 
->[AZURE.NOTE] A premium storage account cannot be mapped to a custom domain name.
+## Premium Storage でサポートされる VM
 
-## <a name="premium-storage-supported-vms"></a>Premium Storage supported VMs
+Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズおよび Fs シリーズの Azure Virtual Machines (VM) をサポートしています。Premium Storage でサポートされる VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。Premium Storage に互換性のない VM シリーズでは Premium Storage ディスクを使用できません。
 
-Premium Storage supports DS-series, DSv2-series, GS-series, and Fs-series Azure Virtual Machines (VMs). You can use both Standard and Premium storage disks with Premium Storage supported of VMs. But you cannot use Premium Storage disks with VM series which are not Premium Storage compatible.
+Windows VM で使用できる Azure VM の種類やサイズについては、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」を参照してください。Linux VM の VM の種類やサイズについては、「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
-For information on available Azure VM types and sizes for Windows VMs, see [Windows VM sizes](../virtual-machines/virtual-machines-windows-sizes.md). For information on VM types and sizes for Linux VMs, see [Linux VM sizes](../virtual-machines/virtual-machines-linux-sizes.md).
+次に、DS、DSv2、GS、および Fs シリーズ VM の機能をいくつか紹介します。
 
-Following are some of the features of DS, DSv2, GS, and Fs series VMs:
+**Cloud Service**: DS シリーズ VM は DS シリーズ VM のみを含むクラウド サービスに追加できます。DS シリーズ以外の VM が存在する既存のクラウド サービスに DS シリーズの VM を追加しないでください。既存の VHD を DS シリーズ VM のみを実行する新しいクラウド サービスに移行できます。DS シリーズ VM をホストする新しいクラウド サービスに引き続き同じ仮想 IP アドレス (VIP) を使用するには、[予約済み IP アドレス](../virtual-network/virtual-networks-instance-level-public-ip.md)を使います。GS シリーズの VM は G シリーズの VM のみ実行している既存のクラウド サービスに追加できます。
 
-**Cloud Service**: DS-series VMs can be added to a cloud service that includes only DS-series VMs. Do not add DS-series VMs to an existing cloud service that includes non-DS-series VMs. You can migrate your existing VHDs to a new cloud service running only DS-series VMs. If you want to retain the same virtual IP address (VIP) for the new cloud service that hosts your DS-series VMs, use the [Reserved IP Addresses](../virtual-network/virtual-networks-instance-level-public-ip.md). GS-series VMs can be added to an existing cloud service running only G-series VMs.
+**オペレーティング システム ディスク**: Premium Storage でサポートされる Azure 仮想マシンで使用するオペレーティング システム (OS) ディスクは、Standard Storage アカウントと Premium Storage アカウントのどちらでホストするように設定されていてもかまいません。最適なエクスペリエンスを実現するために、Premium Storage ベースの OS ディスクを使用することをお勧めします。
 
-**Operating System Disk**: The Premium Storage supported Azure virtual machines can be configured to use an operating system (OS) disk hosted either on a Standard Storage account or on a Premium Storage account. We recommend using Premium Storage based OS disk for best experience.
+**データ ディスク**: 同じ Premium Storage でサポートされる VM 内では、Premium Storage ディスクと Standard Storage ディスクの両方を使用できます。Premium Storage を使用すると、Premium Storage でサポートされる VM をプロビジョニングし、複数の永続データ ディスクを VM に接続できます。必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。
 
-**Data Disks**: You can use both Premium and Standard storage disks in the same Premium Storage supported VM. With Premium Storage, you can provision a Premium Storage supported VM and attach several persistent data disks to the VM. If needed, you can stripe across the disks to increase the capacity and performance of the volume.
+> [AZURE.NOTE] [記憶域スペース](http://technet.microsoft.com/library/hh831739.aspx)を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。既定では、サーバー マネージャー ユーザー インターフェイス (UI) で最大 8 つのディスクの列を設定できます。ただし、8 つ以上のディスクがある場合は、PowerShell を使用してボリュームを作成し、列の数を手動で指定する必要があります。そうしない場合、サーバー マネージャー UI はそれ以上のディスクがある場合でも 8 つの列を使用し続けます。たとえば、1 つのストライプ セット内に 32 のディスクがある場合は、32 の列を指定する必要があります。PowerShell の [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) コマンドレットの *NumberOfColumns* パラメーターを使用して、仮想ディスクが使用する列数を指定できます。詳細については、[記憶域スペースの概要](http://technet.microsoft.com/library/hh831739.aspx)に関するページおよび「[Storage Spaces Frequently Asked Questions (記憶域スペースに関してよく寄せられる質問)](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx)」をご覧ください。
 
-> [AZURE.NOTE] If you stripe Premium Storage data disks using [Storage Spaces](http://technet.microsoft.com/library/hh831739.aspx), you should configure it with one column for each disk that is used. Otherwise, overall performance of the striped volume may be lower than expected due to uneven distribution of traffic across the disks. By default, the Server Manager user interface (UI) allows you to setup columns up to 8 disks. But if you have more than 8 disks, you need to use PowerShell to create the volume and also specify the number of columns manually. Otherwise, the Server Manager UI continues to use 8 columns even though you have more disks. For example, if you have 32 disks in a single stripe set, you should specify 32 columns. You can use the *NumberOfColumns* parameter of the [New-VirtualDisk](http://technet.microsoft.com/library/hh848643.aspx) PowerShell cmdlet to specify the number of columns used by the virtual disk. For more information, see [Storage Spaces Overview](http://technet.microsoft.com/library/hh831739.aspx) and [Storage Spaces Frequently Asked Questions](http://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
+**キャッシュ**: Premium Storage でサポートされる VM は独自のキャッシュ機能を備えています。これにより、基になる Premium Storage ディスク パフォーマンス以上の高いレベルのスループットと待機時間を実現できます。Premium Storage ディスクで ReadOnly、ReadWrite、None などのディスク キャッシュ ポリシーを構成できます。既定のディスク キャッシュ ポリシーは、すべてのプレミアム データ ディスクで ReadOnly、オペレーティング システム ディスクで ReadWrite です。アプリケーションのパフォーマンスを最適化するために、適切な構成設定を使用してください。たとえば、SQL Server データ ファイルなどの読み取り負荷の高いデータ ディスクまたは読み取り専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "ReadOnly" に設定します。SQL Server ログ ファイルなどの書き込み負荷の高いまたは書き込み専用のデータ ディスクの場合、ディスク キャッシュ ポリシーを "None" に設定します。Premium Storage での設計の最適化について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」を参照してください。
 
-**Cache**: Premium Storage supported VMs have a unique caching capability with which you can get high levels of throughput and latency, which exceeds underlying Premium Storage disk performance. You can configure disk caching policy on the Premium Storage disks as ReadOnly, ReadWrite or None. The default disk caching policy is ReadOnly for all premium data disks and ReadWrite for operating system disks. Use the right configuration setting to achieve optimal performance for your application. For example, for read heavy or read only data disks, such as SQL Server data files, set disk caching policy to “ReadOnly”. For write heavy or write only data disks, such as SQL Server log files, set disk caching policy to “None”. Learn more about optimizing your design with Premium Storage in [Design for Performance with Premium Storage](storage-premium-storage-performance.md).
+**分析**: Premium Storage アカウントを使用して VM のパフォーマンスを分析するには、Azure ポータルで Azure VM 診断を有効にします。詳細については、「[Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension (Azure 診断の拡張機能を使用した Microsoft Azure の仮想マシンの監視)](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/)」をご覧ください。ディスクのパフォーマンスを確認するには、オペレーティング システム ベースのツール (Windows VM 向け [Windows パフォーマンス モニター](https://technet.microsoft.com/library/cc749249.aspx)、Linux VM 向け [IOSTAT](http://linux.die.net/man/1/iostat) など) を使用します。
 
-**Analytics**: To analyze the performance of VMs using disks on Premium Storage accounts, you can enable the Azure VM Diagnostics in the Azure portal. Refer to [Microsoft Azure Virtual Machine Monitoring with Azure Diagnostics Extension](https://azure.microsoft.com/blog/2014/09/02/windows-azure-virtual-machine-monitoring-with-wad-extension/) for details. To see the disk performance, use operating system based tools, such as [Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.aspx) for Windows VMs and [IOSTAT](http://linux.die.net/man/1/iostat) for Linux VMs.
+**VM のスケール制限とパフォーマンス**: 各 Premium Storage でサポートされる VM サイズにはスケール制限や、IOPS、帯域幅、VM ごとに接続できるディスク数に関するパフォーマンス仕様があります。Premium Storage でサポートされる VM で Premium Storage ディスクを使用するときは、ディスク トラフィックを円滑にするために VM に十分な IOPS と帯域幅があることを確認してください。たとえば、STANDARD\_DS1 VM では、Premium Storage ディスク トラフィック専用の帯域幅は 32 MB/秒です。P10 プレミアム ディスクでは、100 MB/秒の帯域幅が提供されます。この VM に接続された Premium Storage ディスクが P10 の場合も、32 MB/秒が上限となり、P10 ディスクのスループットの上限である 100 MB に達することはありません。
 
-**VM scale limits and performance**: Each Premium Storage supported VM size has scale limits and performance specification for IOPS, bandwidth and number of disks that can be attached per VM. When using premium storage disks with Premium Storage supported VMs, make sure there is sufficient IOPS and Bandwidth available on your VM to drive the disk traffic.
-For example, a STANDARD_DS1 VM has 32 MB per second dedicated bandwidth available for Premium Storage disk traffic. A P10 premium storage disk can provide 100 MB per second bandwidth. If a P10 Premium Storage disk were attached to this VM, it can only go up to 32 MB per second but not up to 100 MB per second that the P10 disk can provide.
+現時点では、DS シリーズ最大の VM は STANDARD\_DS14 であり、この VM の全ディスクの帯域幅は最大 512 MB/秒です。現時点では、DS シリーズ最大の VM は STANDARD\_GS5 であり、この VM の全ディスクの帯域幅は最大 2000 MB/秒です。これらの制限は、ディスク トラフィックのみを対象としており、キャッシュ ヒットとネットワーク トラフィックは対象外となります。VM のネットワーク トラフィックの帯域幅は別に用意されており、Premium Storage ディスク専用の帯域幅とは区別されています。
 
-Currently, the largest VM on DS-series is Standard_DS15_v2 and it can provide up to 960 MB per second across all disks. The largest VM on GS-series is Standard_GS5 and it can give up to 2000 MB per second across all disks.
-Note that these limits are for disk traffic alone, not including cache-hits and network traffic. There is a separate bandwidth available for VM network traffic, which is different from the dedicated bandwidth for Premium Storage disks.
+Premium Storage でサポートされる VM の最大 IOPS とスループット (帯域幅) の最新情報については、「[Windows VM のサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」または「[Linux VM のサイズ](../virtual-machines/virtual-machines-linux-sizes.md)」を参照してください。
 
-For the most up-to-date information on maximum IOPS and throughput (bandwidth) for Premium Storage supported VMs, see [Windows VM sizes](../virtual-machines/virtual-machines-windows-sizes.md) or [Linux VM sizes](../virtual-machines/virtual-machines-linux-sizes.md).
+Premium Storage のディスクそれぞれの IOPS とスループット上限については、この記事の「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」のセクションにある表を参照してください。
 
-To learn about the Premium storage disks and their IOPs and throughput limits, see the table in the [Premium Storage Scalability and Performance Targets](#premium-storage-scalability-and-performance-targets) section in this article.
+## Premium Storage の拡張性とパフォーマンスの目標
 
-## <a name="premium-storage-scalability-and-performance-targets"></a>Premium Storage Scalability and Performance Targets
+このセクションでは、Premium Storage を使用する際に考慮する必要のあるすべての拡張性とパフォーマンスの目標について説明します。
 
-In this section, we will describe all the Scalability and Performance targets you must consider when using Premium Storage.
+### Premium Storage アカウントの制限
 
-### <a name="premium-storage-account-limits"></a>Premium Storage account limits
-
-Premium Storage accounts have following scalability targets:
+Premium Storage アカウントの拡張性の目標は、以下のとおりです。
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
-    <td><strong>Total Account Capacity</strong></td>
-    <td><strong>Total Bandwidth for a Locally Redundant Storage Account</strong></td>
+	<td><strong>合計アカウント容量</strong></td>
+	<td><strong>ローカル冗長ストレージ アカウントの合計帯域幅</strong></td>
 </tr>
 <tr>
-    <td>
-    <ul>
-       <li type=round>Disk capacity: 35 TB</li>
-       <li type=round>Snapshot capacity: 10 TB</li>
+	<td>
+	<ul>
+       <li type=round>ディスク容量: 35 TB</li>
+       <li type=round>スナップショット容量: 10 TB</li>
     </ul>
-    </td>
-    <td>Up to 50 gigabits per second for Inbound + Outbound</td>
+	</td>
+	<td>受信と送信を合わせて最大 50 GB/秒</td>
 </tr>
 </tbody>
 </table>
 
-- Inbound refers to all data (requests) being sent to a storage account.
-- Outbound refers to all data (responses) being received from a storage account.
+- 受信とはストレージ アカウントに送信されるすべてのデータ (要求) のことです。
+- 送信とはストレージ アカウントから送信されるすべてのデータ (応答) のことです。
 
-For more information, see [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md).
+詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」をご覧ください。
 
-If the needs of your application exceed the scalability targets of a single storage account, build your application to use multiple storage accounts, and partition your data across those storage accounts. For example, if you want to attach 51 terabytes (TB) disks across a number of VMs, spread them across two storage accounts since 35 TB is the limit for a single Premium Storage account. Make sure that a single Premium Storage account has never more than 35 TB of provisioned disks.
+アプリケーションのニーズが単一のストレージ アカウントの拡張性ターゲットを上回った場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築し、それらのストレージ アカウント間でデータを分割します。たとえば、多数の VM があり、アタッチするディスクの合計が 51 テラバイト (TB) の場合は、ディスクを 2 つのストレージ アカウントに分散させます。Premium Storage アカウント 1 つあたりの上限は 35 TB であるからです。1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 
-### <a name="premium-storage-disks-limits"></a>Premium Storage Disks Limits
+### Premium Storage ディスクの制限
 
-When you provision a disk against a Premium Storage account, how much input/output operations per second (IOPS) and throughput (bandwidth) it can get depends on the size of the disk. Currently, there are three types of Premium Storage disks: P10, P20, and P30. Each one has specific limits for IOPS and throughput as specified in the following table:
+Premium Storage アカウントにディスクをプロビジョニングする場合、アカウントが利用可能な 1 秒あたりに処理できる入力/出力 (IOPS) の量やスループット (帯域幅) は、ディスクのサイズによって異なります。現在、Premium Storage ディスクには、P10、P20、P30 の 3 種類があります。次の表に示すように、それぞれに IOPS とスループットに固有の制限があります。
 
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
-    <td><strong>Premium Storage Disk Type</strong></td>
-    <td><strong>P10</strong></td>
-    <td><strong>P20</strong></td>
-    <td><strong>P30</strong></td>
+	<td><strong>Premium Storage ディスク タイプ</strong></td>
+	<td><strong>P10</strong></td>
+	<td><strong>P20</strong></td>
+	<td><strong>P30</strong></td>
 </tr>
 <tr>
-    <td><strong>Disk size</strong></td>
-    <td>128 GiB</td>
-    <td>512 GiB</td>
-    <td>1024 GiB (1 TB)</td>
+	<td><strong>ディスク サイズ</strong></td>
+	<td>128 GiB</td>
+	<td>512 GiB</td>
+	<td>1024 GiB (1 TB)</td>
 </tr>
 <tr>
-    <td><strong>IOPS per disk</strong></td>
-    <td>500</td>
-    <td>2300</td>
-    <td>5000</td>
+	<td><strong>ディスクあたりの IOPS</strong></td>
+	<td>500</td>
+	<td>2300</td>
+	<td>5000</td>
 </tr>
 <tr>
-    <td><strong>Throughput per disk</strong></td>
-    <td>100 MB per second </td>
-    <td>150 MB per second </td>
-    <td>200 MB per second </td>
+	<td><strong>ディスクあたりのスループット</strong></td>
+	<td>100 MB/秒 </td>
+	<td>150 MB/秒 </td>
+	<td>200 MB/秒 </td>
 </tr>
 </tbody>
 </table>
 
-> [AZURE.NOTE] Make sure that there is sufficient bandwidth available on your VM to drive the disk traffic as explained in the [Premium Storage supported VMs](#ds-dsv2-and-gs-series-vms) section earlier in this article. Otherwise, your disk throughput and IOPS will be constrained to lower values based on the VM limits rather than the disk limits mentioned in the previous table.  
+> [AZURE.NOTE] この記事の「[Premium Storage でサポートされる VM](#ds-dsv2-and-gs-series-vms)」で説明したように、VM の帯域幅が、ディスク トラフィックを処理するのに十分な大きさであることを確認してください。このとおりでない場合は、ディスクのスループットと IOPS が VM の上限の制約を受けて低くなり、前述の表で示したディスクの上限は達成できなくなります。
 
-Here are some important things you must know regarding Premium Storage scalability and performance targets:
+Premium Storage の拡張性とパフォーマンスの目標についか知っておく必要のある重要事項をいくつか説明します。
 
-- **Provisioned Capacity and Performance**: When you provision a premium storage disk, unlike standard storage, you are guaranteed the Capacity, IOPS and Throughput for that disk. For example, if you create a P30 disk, Azure provisions 1024 GB storage capacity, 5000 IOPS and 200 MB per second Throughput for that disk. Your application can use all or part of the capacity and performance.
+- **プロビジョニングされた容量とパフォーマンス**: Premium Storage ディスクをプロビジョニングした場合、Standard Storage とは異なり、対象ディスクの容量、IOPS、スループットが保証されます。たとえば、P30 ディスクを作成した場合、Azure により、対象のディスクに 1024 GB のストレージ容量、5000 IOPS、200 MB/秒のスループットがプロビジョニングされます。アプリケーションでは、容量とパフォーマンスのすべてまたは一部を使用できます。
 
-- **Disk Size**: Azure maps the disk size (rounded up) to the nearest Premium Storage Disk option as specified in the table. For example, a disk of size 100 GiB is classified as a P10 option and can perform up to 500 IO units per second, and with up to 100 MB per second throughput. Similarly, a disk of size 400 GiB is classified as a P20 option, and can perform up to 2300 IO units per second and up to 150 MB per second throughput.
+- **ディスク サイズ**: Azure はディスク サイズ (切り上げたもの) を、表にある最も近い Premium Storage ディスク オプションにマッピングします。たとえば、ディスクのサイズが 100 GiB ならば P10 に分類され、1 秒間に処理できる I/O ユニットは最大 500、スループットは最大 100 MB/秒となります。同様に、ディスクのサイズが 400 GiB ならば P20 に分類され、1 秒間に処理できる I/O ユニットは最大 2300、スループットは最大 150 MB/秒となります。
 
-    > [AZURE.NOTE] You can easily increase the size of existing disks. For example, if you wish to increase the size of a 30 GB disk to 128GB or to 1 TB. Or, if you wish to convert your P20 disk to a P30 disk because you need more capacity or more IOPS and throughput. You can expand the disk using "Update-AzureDisk" PowerShell commandlet with "-ResizedSizeInGB" property. For performing this action, disk needs to be detached from the VM or the VM needs to be stopped.
+	> [AZURE.NOTE] 既存のディスクのサイズを簡単に増やすことができます。たとえば、30 GB のディスクのサイズを 128 GB または 1 TB (テラバイト) にしたい場合があります。また、容量を増やしたり、IOPS とスループットを向上させたりする必要があるため、P20 ディスクを P30 ディスクに変換したい場合もあります。"-ResizedSizeInGB" プロパティを指定した "Update-AzureDisk" PowerShell コマンドレットを使用して、ディスクを拡張できます。この操作を実行するには、ディスクを VM からデタッチするか、VM を停止する必要があります。
 
-- **IO Size**: The input/output (I/O) unit size is 256 KB. If the data being transferred is less than 256 KB, it is considered a single I/O unit. The larger I/O sizes are counted as multiple I/Os of size 256 KB. For example, 1100 KB I/O is counted as five I/O units.
+- **IO サイズ**: 入力/出力 (I/O) ユニット サイズは 256 KB です。転送されるデータが 256 KB に満たない場合は、単一の I/O ユニットとみなされます。I/O のサイズが大きくなると、サイズが 256 KB の複数の I/O としてカウントされます。たとえば、1100 KB I/O は 5 つの I/O ユニットとしてカウントされます。
 
-- **Throughput**: The throughput limit includes writes to the disk as well as reads from that disk that are not served from the cache. For example, a P10 disk has 100 MB per second throughput per disk. Some examples of valid throughput for the P10 disk are,
+- **スループット**: スループットの制限には、ディスクへの書き込みと、キャッシュからではなく、そのディスクからの読み取りが含まれます。たとえば、P10 ディスクのスループットは、ディスクあたり 100 MB/秒です。P10 ディスクの有効なスループットの例を以下にいくつか示します。
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
-    <td><strong>Max Throughput per P10 disk</strong></td>
-    <td><strong>Non-cache Reads from disk</strong></td>
-    <td><strong>Non-cache Writes to disk</strong></td>
+<td><strong>P10 ディスクあたりの最大スループット</strong></td>
+<td><strong>ディスクからの非キャッシュの読み取り</strong></td>
+<td><strong>ディスクからの非キャッシュの書き込み</strong></td>
 </tr>
 <tr>
-    <td>100 MB per sec</td>
-    <td>100 MB per sec</td>
-    <td>0</td>
+<td>100 MB/秒</td>
+<td>100 MB/秒</td>
+<td>0</td>
 </tr>
 <tr>
-    <td>100 MB per sec</td>
-    <td>0</td>
-    <td>100 MB per sec</td>
+<td>100 MB/秒</td>
+<td>0</td>
+<td>100 MB/秒</td>
 </tr>
 <tr>
-    <td>100 MB per second </td>
-    <td>60 MB per second </td>
-    <td>40 MB per second </td>
+<td>100 MB/秒 </td>
+<td>60 MB/秒 </td>
+<td>40 MB/秒 </td>
 </tr>
 </tbody>
 </table>
 
-- **Cache hits**: Cache-hits are not limited by the allocated IOPS/Throughput of the disk. For example, when you use a data disk with ReadOnly cache setting on a Premium Storage supported VM, Reads that are served from the cache are not subject to Premium Storage disk limits. Hence you could get very high throughput from a disk if the workload is predominantly Reads. Note that, cache is subject to separate IOPS / Throughput limits at VM level based on the VM size. DS-series VMs have roughly 4000 IOPS and 33 MB/sec per core for cache and local SSD IOs. GS-series VMs have a limit of 5000 IOPS and 50 MB/sec per core for cache and local SSD IOs.
+- **キャッシュ ヒット**: キャッシュ ヒットには、ディスクの割り当て済みの IOPS とスループットによる制限はありません。たとえば、Premium Storage でサポートされる VM でキャッシュを読み取り専用に設定したデータ ディスクを使用する場合、そのキャッシュからの読み取りは、Premium Storage のディスク制限の対象にはなりません。そのため、ワークロードの大部分が読み取りの場合、ディスクから非常に高いスループットが得られます。キャッシュには、VM サイズに基づいて、VM レベルで IOPS とスループットの個別の制限が適用されます。DS シリーズ VM は、IOPS が約 4000 で、キャッシュとローカル SSD の IO がコアあたり 33 MB/秒です。GS シリーズ VM の制限は、IOPS が 5000 で、キャッシュとローカル SSD の IO がコアあたり 50 MB/秒です。
 
-## <a name="throttling"></a>Throttling
-You may see throttling if your application IOPS or throughput exceed the allocated limits for a Premium Storage disk or if your total disk traffic across all disks on the VM exceeds the disk bandwidth limit available for the VM. To avoid throttling, we recommend that you limit the number of pending I/O requests for disk based on the scalability and performance targets for the disk you have provisioned and based on the disk bandwidth available to the VM.  
+## 調整
+アプリケーションの IOPS またはスループットが Premium Storage ディスクの上限を超えた場合や、VM の全ディスクのディスク トラフィック合計がその VM でのディスク帯域幅上限を超えた場合に、調整 (スロットル) が行われることがあります。調整を回避するために、プロビジョニングしたディスクの拡張性とパフォーマンスのターゲット、および VM で使用可能なディスク帯域幅に基づいて、ディスクの保留中の I/O 要求の数を制限することをお勧めします。
 
-Your application can achieve the lowest latency when it is designed to avoid throttling. On the other hand, if the number of pending I/O requests for the disk is too small, your application cannot take advantage of the maximum IOPS and throughput levels that are available to the disk.
+調整を回避できれば、アプリケーションの待ち時間を最短にすることができます。一方で、ディスクの保留中の I/O 要求の数が少なすぎる場合は、ディスクで利用可能な最大 IOPS とスループット レベルのメリットを活用できません。
 
-The following examples demonstrate how to calculate the throttling levels. All calculations are based on I/O unit size of 256 KB:
+次の例は、スロットル レベルの計算方法を示しています。すべての計算は、256 KB の I/O ユニット サイズに基づいて行われます。
 
-### <a name="example-1:"></a>Example 1:
-Your application has done 495 I/O units of 16 KB size in one second on a P10 disk. These will be counted as 495 I/O Units per second (IOPS). If you try a 2 MB I/O in the same second, the total of I/O units is equal to 495 + 8. This is because 2 MB I/O results in 2048 KB / 256 KB = 8 I/O Units when the I/O unit size is 256 KB. Since the sum of 495 + 8 exceeds the 500 IOPS limit for the disk, throttling occurs.
+### 例 1:
+アプリケーションは、P10 ディスク上で、1 秒間に 16 KB サイズの I/O ユニットを 495 回実行しました。これらは、1 秒間あたり (IOPS) 495 I/O ユニットとしてカウントされます。同じ 1 秒内に 2 MB の I/O を実行すると、I/O の合計ユニットは 495 + 8 となります。これは、I/O ユニット サイズが 256 KB であることから、2 MB の I/O は 2048 KB / 256 KB = 8 I/O ユニットとなるためです。合計の 495 + 8 はディスク制限の 500 IOPS を超過するため、調整が発生します。
 
-### <a name="example-2:"></a>Example 2:
-Your application has done 400 I/O units of 256 KB size on a P10 disk. The total bandwidth consumed is (400 * 256) / 1024 = 100 MB/sec. A P10 disk has throughput limit of 100 MB per second. If your application tries to perform more I/O in that second, it gets throttled because it exceeds the allocated limit.
+### 例 2:
+アプリケーションが P10 ディスク上で、256 KB サイズの I/O ユニットを 400 回実行しました。合計消費帯域幅は、(400 * 256) / 1024 = 100 MB/秒になります。P10 ディスクには、100 MB/秒というスループット制限があります。アプリケーションが 1 秒間あたりにより多くの I/O を実行しようとすると、割り当てられた制限を超過してしまうため、調整が発生します。
 
-### <a name="example-3:"></a>Example 3:
-You have a DS4 VM with two P30 disks attached. Each P30 disk is capable of 200 MB per second throughput. However, a DS4 VM has a total disk bandwidth capacity of 256 MB per second. Therefore, you cannot drive the attached disks to the maximum throughput on this DS4 VM at the same time. To resolve this, you can sustain traffic of 200 MB per second on one disk and 56 MB per second on the other disk. If the sum of your disk traffic goes over 256 MB per second, the disk traffic gets throttled.
+### 例 3:
+DS4 VM に P30 ディスクが 2 つアタッチされています。P30 ディスク 1 つあたりのスループットは 200 MB/秒です。しかし、DS4 VM のディスク帯域幅合計は 256 MB/秒が上限です。したがって、この DS4 VM では、アタッチされたディスクの両方が最大スループットを発揮することはできません。このことを解決するには、一方のディスクのトラフィックを 200 MB/秒で維持し、他方では 56 MB/秒で維持します。ディスク トラフィックの合計が 256 MB/秒を超えると、ディスク トラフィックの調整が行われます。
 
->[AZURE.NOTE] If the disk traffic mostly consists of small I/O sizes, it is highly likely that your application will hit the IOPS limit before the throughput limit. On the other hand, if the disk traffic mostly consists of large I/O sizes, it is highly likely that your application will hit the throughput limit instead of the IOPS limit. You can maximize your application IOPS and throughput capacity by using optimal I/O sizes and also by limiting the number of pending I/O requests for disk.
+>[AZURE.NOTE] ディスク トラフィックの大部分が小さなサイズの I/O で構成されていると、アプリケーションがスループット制限に達する前に、IOPS 制限に達してしまう場合がほとんどです。逆に、ディスク トラフィックの大部分が大きなサイズの I/O で構成されている場合は、IOPS 制限ではなくスループット制限に達してしまうことがほとんどです。最適なサイズの I/O を使用し、ディスクの保留中の I/O 要求の数を制限することで、アプリケーションの IOPS とスループットを最大化できます。
 
-To learn about designing for high performance using Premium Storage read the article, [Design for Performance with Premium Storage](storage-premium-storage-performance.md).
+Premium Storage を使用した高パフォーマンスのための設計について詳しくは、「[Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)」を参照してください。
 
-## <a name="snapshots-and-copy-blob"></a>Snapshots and Copy Blob
-You can create a snapshot for Premium Storage in the same way as you create a snapshot when using Standard Storage. Since Premium Storage only supports Locally Redundant Storage (LRS) as the replication option, we recommend that you create snapshots and then copy those snapshots to a geo-redundant standard storage account. For more information, see [Azure Storage Redundancy Options](storage-redundancy.md).
+## スナップショットと BLOB のコピー
+Premium Storage の場合も、Standard Storage を使用してスナップショットを作成するときと同じ方法でスナップショットを作成できます。Premium Storage はレプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートするため、スナップショットを作成し、そのスナップショットを geo 冗長 Standard Storage アカウントにコピーすることをお勧めします。詳細については、「[Azure Storage 冗長オプション](storage-redundancy.md)」をご覧ください。
 
-If a disk is attached to a VM, certain API operations are not permitted on the page blob backing the disk. For example, you cannot perform a [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx) operation on that blob as long as the disk is attached to a VM. Instead, first create a snapshot of that blob by using the [Snapshot Blob](http://msdn.microsoft.com/library/azure/ee691971.aspx) REST API method, and then perform the [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx) of the snapshot to copy the attached disk. Alternatively, you can detach the disk and then perform any necessary operations on the underlying blob.
+ディスクが VM にアタッチされている場合、ディスクをバックアップするページ BLOB で特定の API 操作が許可されなくなります。たとえば、ディスクが VM にアタッチされている間は、その BLOB に対して [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx) 操作を実行できません。代わりに、[Snapshot Blob](http://msdn.microsoft.com/library/azure/ee691971.aspx) REST API メソッドを使用して BLOB のスナップショットを作成してから、スナップショットの [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx) を実行してアタッチされたディスクをコピーします。または、ディスクのアタッチを解除してから、基盤となる BLOB に対して必要な操作を実行します。
 
-Following limits apply to Premium Storage blob snapshots:
+Premium Storage BLOB スナップショットには次の制限が適用されます。
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
-    <td><strong>Premium Storage Limit</strong></td>
-    <td><strong>Value</strong></td>
+	<td><strong>Premium Storage の制限</strong></td>
+	<td><strong>値</strong></td>
 </tr>
 <tr>
-    <td>Max. number of snapshots per blob</td>
-    <td>100</td>
+	<td>BLOB あたりの最大スナップショット数</td>
+	<td>100</td>
 </tr>
 <tr>
-    <td>Storage account capacity for snapshots (Includes data in snapshots only, and does not include data in base blob)</td>
-    <td>10 TB</td>
+	<td>スナップショットのストレージ アカウントの容量 (スナップショットのデータのみを含み、ベース BLOB のデータは含まない)</td>
+	<td>10 TB</td>
 </tr>
 <tr>
-    <td>Min. time between consecutive snapshots</td>
-    <td>10 minutes</td>
+	<td>連続したスナップショットの最小時間間隔</td>
+	<td>10 分</td>
 </tr>
 </tbody>
 </table>
 
-To maintain geo-redundant copies of your snapshots, you can copy snapshots from a Premium Storage account to a geo-redundant standard storage account by using AzCopy or Copy Blob. For more information, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md) and [Copy Blob](http://msdn.microsoft.com/library/azure/dd894037.aspx).
+スナップショットの地理冗長コピーを維持するには、AzCopy か Copy Blob を使用して、Premium Storage アカウントから地理冗長 Standard Storage アカウントにスナップショットをコピーできます。詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」および「[BLOB のコピー](http://msdn.microsoft.com/library/azure/dd894037.aspx)」を参照してください。
 
-For detailed information on performing REST operations against page blobs in Premium Storage accounts, see [Using Blob Service Operations with Azure Premium Storage](http://go.microsoft.com/fwlink/?LinkId=521969) in the MSDN library.
+Premium Storage アカウントでページ BLOB に対して REST 操作を実行する方法の詳細については、MSDN ライブラリの「[Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)」をご覧ください。
 
-## <a name="using-linux-vms-with-premium-storage"></a>Using Linux VMs with Premium Storage
-Please refer to important instructions below for configuring your Linux VMs on Premium Storage:
+## Linux VM とともに Premium Storage を使用する
+Premium Storage 上で Linux VM を設定するときは、次の重要な手順を参照してください。
 
-- For all Premium Storage disks with cache setting as either “ReadOnly” or “None”, you must disable “barriers” while mounting the file system in order to achieve the scalability targets for Premium Storage. You do not need barriers for this scenario because the writes to Premium Storage backed disks are durable for these cache settings. When the write request successfully completes, data has been written to the persistent store. Please use the following methods for disabling “barriers” depending on your file system:
-    - If you use **reiserFS**, disable barriers using the mount option “barrier=none” (For enabling barriers, use “barrier=flush”)
-    - If you use **ext3/ext4**, disable barriers using the mount option “barrier=0” (For enabling barriers, use “barrier=1”)
-    - If you use **XFS**, disable barriers using the mount option “nobarrier” (For enabling barriers, use the option “barrier”)
+- Premium Storage ディスクのキャッシュ設定が ReadOnly または None に設定されている場合は、ファイル システムをマウントするときに "バリア" を無効にする必要があります。有効のままでは Premium Storage の拡張性ターゲットを達成できないからです。Premium Storage ディスクでこれらのキャッシュ設定を使用する場合は、ディスクへの書き込みの耐久性が保証されるので、バリアは必要ありません。書き込み要求が正常に完了した時点で、データは永続的なストアに書き込まれた状態になっています。お使いのファイル システムに応じて、次の方法を使用して "バリア" を無効にしてください。
+	- **reiserFS**: バリアを無効にするには、マウント オプション "barrier=none" を使用します (バリアを有効にするには "barrier=flush" を使用します)。
+	- **ext3/ext4**: バリアを無効にするには、マウント オプション "barrier=0" を使用します (バリアを有効にするには "barrier=1" を使用します)。
+	- **XFS**: バリアを無効にするには、マウント オプション "nobarrier" を使用します (バリアを有効にするには "barrier" を使用します)。
 
-- For Premium Storage disks with cache setting “ReadWrite”, barriers should be enabled for durability of writes.
-- For the volume labels to persist after VM reboot, you must update /etc/fstab with the UUID references to the disks. Also refer to [How to Attach a Data Disk to a Linux Virtual Machine](../virtual-machines/virtual-machines-linux-classic-attach-disk.md)
+- Premium Storage ディスクのキャッシュ設定が ReadWrite の場合は、書き込みの耐久性を保証するためにバリアを有効にしてください。
+- VM を再起動してもボリューム ラベルが変更されないようにするには、ディスクに対する UUID 参照で /etc/fstab を更新する必要があります。「[データ ディスクを Linux 仮想マシンに接続する方法](../virtual-machines/virtual-machines-linux-classic-attach-disk.md)」も参照してください。
 
-Following are the Linux Distributions that we validated with Premium Storage. We recommend that you upgrade your VMs to at least one of these versions (or later) for better performance and stability with Premium Storage. Also, some of the versions require the latest LIS (Linux Integration Services v4.0 for Microsoft Azure). Please follow the link provided below for download and installation. We will continue to add more images to the list as we complete additional validations. Please note, our validations showed that performance varies for these images, and it also depends on workload characteristics and settings on the images. Different images are tuned for different kinds of workload.
+次に示す Linux ディストリビューションは、Premium Storage での検証が完了しています。Premium Storage を使用するときのパフォーマンスと安定性を高めるために、VM をこれらのバージョン (以降) の少なくとも 1 つにアップグレードすることをお勧めします。また、バージョンによっては最新の LIS (Linux Integration Services v4.0 for Microsoft Azure) が必要になります。下記のリンクからダウンロードとインストールを行ってください。マイクロソフトは今後もイメージの検証を行い、この一覧に追加していきます。これらのイメージのパフォーマンスは変動することが検証時に判明しています。また、ワークロードの特性とイメージの設定にも依存することにご注意ください。ワークロードの種類に応じて、異なるイメージをチューニングします。
 <table border="1" cellspacing="0" cellpadding="5" style="border: 1px solid #000000;">
 <tbody>
 <tr>
-    <td><strong>Distribution</strong></td>
-    <td><strong>Version</strong></td>
-    <td><strong>Supported Kernel</strong></td>
-    <td><strong>Details</strong></td>
+	<td><strong>ディストリビューション</strong></td>
+	<td><strong>バージョン</strong></td>
+	<td><strong>サポートされるカーネル</strong></td>
+	<td><strong>詳細</strong></td>
 </tr>
 <tr>
-    <td rowspan="2"><strong>Ubuntu</strong></td>
-    <td>12.04</td>
-    <td>3.2.0-75.110+</td>
-    <td>Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB</td>
+	<td rowspan="2"><strong>Ubuntu</strong></td>
+	<td>12.04</td>
+	<td>3.2.0-75.110+</td>
+	<td>Ubuntu-12_04_5-LTS-amd64-server-20150119-ja-JP-30GB</td>
 </tr>
 <tr>
-    <td>14.04+</td>
-    <td>3.13.0-44.73+</td>
-    <td>Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB</td>
+	<td>14.04+</td>
+	<td>3.13.0-44.73+</td>
+	<td>Ubuntu-14_04_1-LTS-amd64-server-20150123-ja-JP-30GB</td>
 </tr>
 <tr>
-    <td><strong>Debian</strong></td>
-    <td>7.x, 8.x</td>
-    <td>3.16.7-ckt4-1+</td>
+	<td><strong>Debian</strong></td>
+	<td>7.x、8.x</td>
+	<td>3.16.7-ckt4-1+</td>
     <td> </td>
 </tr>
 <tr>
-    <td rowspan="2"><strong>SUSE</strong></td>
-    <td>SLES 12</td>
-    <td>3.12.36-38.1+</td>
-    <td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td>
+	<td rowspan="2"><strong>SUSE</strong></td>
+	<td>SLES 12</td>
+	<td>3.12.36-38.1+</td>
+	<td>suse-sles-12-priority-v20150213<br>suse-sles-12-v20150213</td>
 </tr>
 <tr>
-    <td>SLES 11 SP4</td>
+	<td>SLES 11 SP4</td>
     <td>3.0.101-0.63.1+</td>
     <td> </td>
 </tr>
 <tr>
-    <td><strong>CoreOS</strong></td>
-    <td>584.0.0+</td>
-    <td>3.18.4+</td>
-    <td>CoreOS 584.0.0</td>
+	<td><strong>CoreOS</strong></td>
+	<td>584.0.0+</td>
+	<td>3.18.4+</td>
+	<td>CoreOS 584.0.0</td>
 </tr>
 <tr>
-    <td rowspan="2"><strong>CentOS</strong></td>
-    <td>6.5, 6.6, 6.7, 7.0</td>
-    <td></td>
-    <td>
-        <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS4 Required </a> <br/>
-        *See note below*
-    </td>
+	<td rowspan="2"><strong>CentOS</strong></td>
+	<td>6.5、6.6、6.7、7.0</td>
+	<td></td>
+	<td>
+		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS4 が必須</a> <br/>
+		*下記の注参照*
+	</td>
 </tr>
 <tr>
-    <td>7.1+</td>
-    <td>3.10.0-229.1.2.el7+</td>
-    <td>
-        <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409"> LIS4 Recommended </a> <br/>
-        *See note below*
-    </td>
+	<td>7.1+</td>
+	<td>3.10.0-229.1.2.el7+</td>
+	<td>
+		<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS4 が推奨</a> <br/>
+		*下記の注参照*
+	</td>
 </tr>
 <tr>
-    <td><strong>RHEL</strong></td>
-    <td>6.8+, 7.2+</td>
+	<td><strong>RHEL</strong></td>
+	<td>6.8+、7.2+</td>
+	<td> </td>
+	<td></td>
+</tr>
+<tr>
+	<td rowspan="3"><strong>Oracle</strong></td>
+    <td>6.8+、7.2+</td>
     <td> </td>
-    <td></td>
-</tr>
-<tr>
-    <td rowspan="3"><strong>Oracle</strong></td>
-    <td>6.8+, 7.2+</td>
-    <td> </td>
-    <td> UEK4 or RHCK </td>
+    <td> UEK4 または RHCK </td>
 
 </tr>
 <tr>
-    <td>7.0-7.1</td>
-    <td> </td>
-    <td>UEK4 or RHCK w/<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS 4.1+</a></td>
+	<td>7.0-7.1</td>
+	<td> </td>
+	<td>UEK4 または RHCK と <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS 4.1 +</a></td>
 </tr>
 <tr>
-    <td>6.4-6.7</td>
-    <td></td>
-    <td>UEK4 or RHCK w/<a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS 4.1+</a></td>
+	<td>6.4-6.7</td>
+	<td></td>
+	<td>UEK4 または RHCK と <a href="http://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409">LIS 4.1 +</a></td>
 </tr>
 </tbody>
 </table>
 
 
-### <a name="lis-drivers-for-openlogic-centos"></a>LIS Drivers for Openlogic CentOS
+### Openlogic Centos 用 LIS ドライバー
 
-Customers running OpenLogic CentOS VMs should run the following command to install the latest drivers:
+OpenLogic CentOS VM を実行しているお客様は、次のコマンドを実行して最新のドライバーをインストールする必要があります。
 
-    sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
-    sudo yum install microsoft-hyper-v
+	sudo rpm -e hypervkvpd  ## (may return error if not installed, that's OK)
+	sudo yum install microsoft-hyper-v
 
-A reboot will then be required to activate the new drivers.
+その後再起動して、新しいドライバーをアクティブ化する必要があります。
 
-## <a name="pricing-and-billing"></a>Pricing and Billing
-When using Premium Storage, the following billing considerations apply:
-- Premium Storage Disk / Blob Size
-- Premium Storage Snapshots
-- Outbound data transfers
+## 価格と課金
+Premium Storage を使用するときには、課金に関する次の考慮事項が適用されます。
+- Premium Storage のディスク/BLOB サイズ
+- Premium Storage のスナップショット
+- 送信データ転送
 
-**Premium Storage Disk / Blob Size**: Billing for a Premium Storage disk/blob depends on the provisioned size of the disk/blob. Azure maps the provisioned size (rounded up) to the nearest Premium Storage Disk option as specified in the table given in the [Scalability and Performance Targets when using Premium Storage](#premium-storage-scalability-and-performance-targets) section. All objects stored in a Premium Storage account will map to one of the the supported provisioned sizes and will be billed accordingly. Hence avoid using Premium Storage account for storing tiny blobs. Billing for any provisioned disk/blob is prorated hourly using the monthly price for the Premium Storage offer. For example, if you provisioned a P10 disk and deleted it after 20 hours, you are billed for the P10 offering prorated to 20 hours. This is regardless of the amount of actual data written to the disk or the IOPS/throughput used.
+**Premium Storage のディスク/BLOB サイズ**: Premium Storage ディスク/BLOB への課金は、プロビジョニングされたディスク/BLOB のサイズによって異なります。Azure は、プロビジョニングされたサイズ (切り上げたもの) を、「[Premium Storage の拡張性とパフォーマンスの目標](#premium-storage-scalability-and-performance-targets)」にある表に記載されているオプションの中で最も近い Premium Storage ディスク オプションにマップします。Premium Storage アカウントに保存されているすべてのオブジェクトが、サポートされているプロビジョニングされたサイズのいずれかにマップされ、それに応じて課金されます。そのため、小さな BLOB の格納には Premium Storage アカウントを使用しないでください。プロビジョニングされたディスク/BLOB には、Premium Storage プランの月額料金を使用して、時間割りで計算して課金されます。たとえば、P10 ディスクをプロビジョニングし、20 時間後にそのディスクを削除した場合は、P10 製品の 20 時間分に対して課金されます。これは、実際にディスクに書き込まれたデータの量や、使用した IOPS/スループットには関係ありません。
 
-**Premium Storage Snapshots**: Snapshots on Premium Storage are billed for the additional capacity used by the snapshots. For information on snapshots, see [Creating a Snapshot of a Blob](http://msdn.microsoft.com/library/azure/hh488361.aspx).
+**Premium Storage のスナップショット**: Premium Storage でのスナップショットについては、スナップショットで使用した追加の容量に対して課金されます。スナップショットの詳細については、「[BLOB のスナップショットの作成](http://msdn.microsoft.com/library/azure/hh488361.aspx)」をご覧ください。
 
-**Outbound data transfers**: [Outbound data transfers](https://azure.microsoft.com/pricing/details/data-transfers/) (data going out of Azure data centers) incur billing for bandwidth usage.
+**送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
-For detailed information on pricing for Premium Storage,  Premium Storage supported VMs, see:
+Premium Storage と Premium Storage でサポートされる VM の料金についての詳細は、次の項目を参照してください。
 
-- [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/)
-- [Virtual Machines Pricing](https://azure.microsoft.com/pricing/details/virtual-machines/)
+- [Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)
+- [Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)
 
-## <a name="backup"></a>Backup
-Virtual machines using premium storage can be backed up using Azure Backup. [More details](../backup/backup-azure-vms-first-look-arm.md).
+## バックアップ
+Premium Storage を使用した仮想マシンは、Azure Backup を使用してバックアップできます。[詳細についてはこちらをご覧ください](../backup/backup-azure-vms-first-look-arm.md)。
 
-## <a name="quick-start"></a>Quick Start
+## クイック スタート
 
-## <a name="create-and-use-a-premium-storage-account-for-a-virtual-machine-data-disk"></a>Create and use a Premium Storage account for a virtual machine data disk
+## 仮想マシンのデータ ディスク用に Premium Storage アカウントを作成する
 
-In this section we will demonstrate the following scenarios using Azure portal, Azure PowerShell and Azure CLI:
+このセクションでは、Azure ポータル、Azure PowerShell および Azure CLI を使用した次のシナリオについて説明します。
 
-- How to create a Premium Storage account.
-- How to create a virtual machine and attach a data disk to the virtual machine when using Premium Storage.
-- How to change disk caching policy of a data disk attached to a virtual machine.
+- Premium Storage アカウントの作成方法。
+- Premium Storage を使用した際に、仮想マシンを作成して、その仮想マシンにデータ ディスクを接続する方法。
+- 仮想マシンに接続されたデータ ディスクのディスク キャッシュ ポリシーを変更する方法。
 
-### <a name="create-an-azure-virtual-machine-using-premium-storage-via-the-azure-portal"></a>Create an Azure virtual machine using Premium Storage via the Azure portal
+### Premium Storage を使用する Azure 仮想マシンを Azure ポータルで作成する
 
-#### <a name="i.-create-a-premium-storage-account-in-azure-portal"></a>I. Create a Premium Storage account in Azure portal
+#### I.Azure ポータルで Premium Storage アカウントを作成する
 
-This section shows how to create a Premium Storage account using the Azure portal.
+ここでは、Azure ポータルを使用して Premium Storage アカウントを作成する方法を説明します。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com). Check out the [Free Trial](https://azure.microsoft.com/pricing/free-trial/) offer if you do not have a subscription yet.
+1.	[Azure ポータル](https://portal.azure.com)にサインインします。まだサブスクリプションをお持ちでない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)をお試しください。
 
-2. On the Hub menu, select **New** -> **Data + Storage** -> **Storage account**.
+2. ハブ メニューで、**[新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
 
-3. Enter a name for your storage account.
+3. ストレージ アカウントの名前を入力します。
 
-    > [AZURE.NOTE] Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
-    >  
-    > Your storage account name must be unique within Azure. The Azure portal will indicate if the storage account name you select is already in use.
+	> [AZURE.NOTE] ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
+	>  
+	> ストレージ アカウント名は Azure 内で一意である必要があります。選択したストレージ アカウント名が既に使用されているかどうかが、Azure ポータルによって示されます。
 
-4. Specify the deployment model to be used: **Resource Manager** or **Classic**. **Resource Manager** is the recommended deployment model. For more information, see [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md).
+4. 使用するデプロイメント モデル (**[Resource Manager]** または **[クラシック]**) を指定します。**[リソース マネージャー]** が、推奨されるデプロイ モデルです。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
 
-5. Specify the performance tier for the storage account as **Premium**.
+5. ストレージ アカウントのパフォーマンス レベルとして **[Premium]** を指定します。
 
-6. **Locally-redundant storage (LRS)** is the only available replication option with Premium Storage. For more details on Azure Storage replication options, see [Azure Storage replication](storage-redundancy.md).
+6. **ローカル冗長ストレージ (LRS)** は、Premium Storage で使用できる唯一のレプリケーション オプションです。Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。
 
-7. Select the subscription in which you want to create the new storage account.
+7. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 
-8. Specify a new resource group or select an existing resource group. For more information on resource groups, see [Azure Resource Manager overview](../resource-group-overview.md).
+8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」をご覧ください。
 
-9. Select the geographic location for your storage account. You can confirm whether Premium Storage is available in the selected Location by referring to [Azure Services by Region](https://azure.microsoft.com/regions/#services).
+9. ストレージ アカウントの地理的な場所を選択します。「[リージョン別のサービス](https://azure.microsoft.com/regions/#services)」を参照して、選択した場所で Premium Storage を使用できるかどうかを確認できます。
 
-10. Click **Create** to create the storage account.
+10. **[作成]** をクリックしてストレージ アカウントを作成します。
 
-#### <a name="ii.-create-an-azure-virtual-machine-via-azure-portal"></a>II. Create an Azure virtual machine via Azure portal
+#### II.Azure ポータルで Azure 仮想マシンを作成する
 
-You must create a Premium Storage supported VM to be able to use Premium Storage. Follow the steps in [Create a Windows virtual machine in the Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) to create a new DS, DSv2, GS, or Fs virtual machine.
+Premium Storage を使用するには、Premium Storage でサポートされる VM を作成する必要があります。[Azure Portal での Windows 仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページの手順に従って、DS、DSv2、GS または Fs 仮想マシンを新しく作成します。
 
-#### <a name="iii.-attach-a-premium-storage-data-disk-via-azure-portal"></a>III. Attach a premium storage data disk via Azure portal
+#### III.Azure ポータルで Premium Storage データ ディスクを接続する
 
-1. Find the new or existing DS, DSv2, GS, or Fs VM in Azure portal.
-2. In the VM **All Settings**, go to **Disks** and click on **Attach New**.
-3. Enter the name of your data disk and select the **Type** as **Premium**. Select the desired **Size** and **Host caching** setting.
+1. Azure Portal で新規または既存の DS、DSv2、GS または Fs VM を探します。
+2. VM の **[すべての設定]** で、**[ディスク]** に移動し、**[新しいディスクの接続]** をクリックします。
+3. データ ディスクの名前を入力し、**[種類]** として **[Premium]** を選択します。**[サイズ]** と **[ホスト キャッシュ]** で目的の設定を選択します。
 
-    ![Premium Disk][Image1]
+	![Premium ディスク][Image1]
 
-See more detailed steps in [How to attach a data disk in Azure portal](../virtual-machines/virtual-machines-windows-attach-disk-portal.md).
+詳細な手順については、[Azure ポータルでデータ ディスクを接続する方法](../virtual-machines/virtual-machines-windows-attach-disk-portal.md)に関するページをご覧ください。
 
-#### <a name="iv.-change-disk-caching-policy-via-azure-portal"></a>IV. Change disk caching policy via Azure portal
+#### IV.Azure ポータルでディスク キャッシュ ポリシーを変更する
 
-1. Find the new or existing DS, DSv2, GS, or Fs VM in Azure portal.
-2. In the VM All Settings, go to Disks and click on the disk you wish to change.
-3. Change the Host caching option to the desired value, None or ReadOnly or ReadWrite
+1. Azure Portal で新規または既存の DS、DSv2、GS または Fs VM を探します。
+2. VM の [すべての設定] で、[ディスク] に移動し、変更するディスクをクリックします。
+3. ホスト キャッシュ オプションを目的の値 (None、ReadOnly、ReadWrite) に変更します。
 
->[AZURE.WARNING] Changing the cache setting of an Azure disk detaches and re-attaches the target disk. If it is the operating system disk, the VM is restarted. Stop all applications/services that might be affected by this disruption before changing the disk cache setting.
+>[AZURE.WARNING] Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。オペレーティング システム ディスクの場合は、VM が再起動されます。ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
 
-### <a name="create-an-azure-virtual-machine-using-premium-storage-via-azure-powershell"></a>Create an Azure virtual machine using Premium Storage via Azure PowerShell
+### Premium Storage を使用する Azure 仮想マシンを Azure PowerShell で作成する
 
-#### <a name="i.-create-a-premium-storage-account-in-azure-powershell"></a>I. Create a Premium Storage account in Azure PowerShell
+#### I.Azure PowerShell で Premium Storage アカウントを作成する
 
-This PowerShell example shows how to create a new Premium Storage account and attach a data disk that uses that account to a new Azure virtual machine.
+この PowerShell の例では、新しい Premium Storage アカウントを作成してこのアカウントを使用するデータ ディスクを新しい Azure 仮想マシンにアタッチする方法を説明します。
 
-1. Setup your PowerShell environment by following the steps given at [How to install and configure Azure PowerShell](../powershell-install-configure.md).
-2. Start the PowerShell console, connect to your subscription, and run the following PowerShell cmdlet in the console window. As seen in this PowerShell statement, you need to specify the **Type** parameter as **Premium_LRS** when you create a Premium Storage account.
+1. 「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」に記載された手順に従って、PowerShell 環境を設定します。
+2. PowerShell コンソールを起動してサブスクリプションに接続し、コンソール ウィンドウで次の PowerShell コマンドレットを実行します。この PowerShell ステートメントで示されているように、Premium Storage アカウントを作成するときは、**Type** パラメーターを **Premium\_LRS** に指定する必要があります。
 
-        New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "West US" -Type "Premium_LRS"
+		New-AzureStorageAccount -StorageAccountName "yourpremiumaccount" -Location "West US" -Type "Premium_LRS"
 
-#### <a name="ii.-create-an-azure-virtual-machine-via-azure-powershell"></a>II. Create an Azure virtual machine via Azure PowerShell
+#### II.Azure PowerShell で Azure 仮想マシンを作成する
 
-Next, create a new DS-Series VM and specify that you want Premium Storage by running the following PowerShell cmdlets in the console window. You can create a GS-series VM using the same steps. Specify the appropriate VM size in the commands. For e.g. Standard_GS2:
+次に、DS シリーズの VM を作成し、コンソール ウィンドウで次の PowerShell コマンドレットを実行して Premium Storage を指定します。同様の手順で GS シリーズの VM を作成できます。コマンドでは適切な VM サイズを指定してください。例: Standard\_GS2
 
-        $storageAccount = "yourpremiumaccount"
-        $adminName = "youradmin"
-        $adminPassword = "yourpassword"
-        $vmName ="yourVM"
-        $location = "West US"
-        $imageName = "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201409.01-en.us-127GB.vhd"
-        $vmSize ="Standard_DS2"
-        $OSDiskPath = "https://" + $storageAccount + ".blob.core.windows.net/vhds/" + $vmName + "_OS_PIO.vhd"
-        $vm = New-AzureVMConfig -Name $vmName -ImageName $imageName -InstanceSize $vmSize -MediaLocation $OSDiskPath
-        Add-AzureProvisioningConfig -Windows -VM $vm -AdminUsername $adminName -Password $adminPassword
-        New-AzureVM -ServiceName $vmName -VMs $VM -Location $location
+    	$storageAccount = "yourpremiumaccount"
+    	$adminName = "youradmin"
+    	$adminPassword = "yourpassword"
+    	$vmName ="yourVM"
+    	$location = "West US"
+    	$imageName = "a699494373c04fc0bc8f2bb1389d6106__Windows-Server-2012-R2-201409.01-en.us-127GB.vhd"
+    	$vmSize ="Standard_DS2"
+    	$OSDiskPath = "https://" + $storageAccount + ".blob.core.windows.net/vhds/" + $vmName + "_OS_PIO.vhd"
+    	$vm = New-AzureVMConfig -Name $vmName -ImageName $imageName -InstanceSize $vmSize -MediaLocation $OSDiskPath
+    	Add-AzureProvisioningConfig -Windows -VM $vm -AdminUsername $adminName -Password $adminPassword
+    	New-AzureVM -ServiceName $vmName -VMs $VM -Location $location
 
-#### <a name="iii.-attach-a-premium-storage-data-disk-via-azure-powershell"></a>III. Attach a premium storage data disk via Azure PowerShell
+#### III.Azure PowerShell で Premium Storage データ ディスクを接続する
 
-If you want more disk space for your VM, attach a new data disk to an existing Premium Storage supported VM after it is created by running the following PowerShell cmdlets in the console window:
+VM のディスク領域を増やしたい場合は、VM の作成後に、コンソール ウィンドウで次の PowerShell コマンドレットを実行して既存の Premium Storage でサポートされる VM に新しいデータ ディスクをアタッチします。
 
-        $storageAccount = "yourpremiumaccount"
-        $vmName ="yourVM"
-        $vm = Get-AzureVM -ServiceName $vmName -Name $vmName
-        $LunNo = 1
-        $path = "http://" + $storageAccount + ".blob.core.windows.net/vhds/" + "myDataDisk_" + $LunNo + "_PIO.vhd"
-        $label = "Disk " + $LunNo
-        Add-AzureDataDisk -CreateNew -MediaLocation $path -DiskSizeInGB 128 -DiskLabel $label -LUN $LunNo -HostCaching ReadOnly -VM $vm | Update-AzureVm
+    	$storageAccount = "yourpremiumaccount"
+    	$vmName ="yourVM"
+    	$vm = Get-AzureVM -ServiceName $vmName -Name $vmName
+    	$LunNo = 1
+    	$path = "http://" + $storageAccount + ".blob.core.windows.net/vhds/" + "myDataDisk_" + $LunNo + "_PIO.vhd"
+    	$label = "Disk " + $LunNo
+    	Add-AzureDataDisk -CreateNew -MediaLocation $path -DiskSizeInGB 128 -DiskLabel $label -LUN $LunNo -HostCaching ReadOnly -VM $vm | Update-AzureVm
 
-#### <a name="iv.-change-disk-caching-policy-via-azure-powershell"></a>IV. Change disk caching policy via Azure PowerShell
+#### IV.Azure PowerShell でディスク キャッシュ ポリシーを変更する
 
-To update the disk caching policy, note the LUN number of the data disk attached. Run the following command to update data disk attached at LUN number 2, to ReadOnly.
+ディスク キャッシュ ポリシーを更新するには、接続されているデータ ディスクの LUN 番号を書き留めます。次のコマンドを実行して、LUN 番号 2 に接続されているデータ ディスクを ReadOnly に変更します。
 
-        Get-AzureVM "myservice" -name "MyVM" | Set-AzureDataDisk -LUN 2 -HostCaching ReadOnly | Update-AzureVM
+		Get-AzureVM "myservice" -name "MyVM" | Set-AzureDataDisk -LUN 2 -HostCaching ReadOnly | Update-AzureVM
 
->[AZURE.WARNING] Changing the cache setting of an Azure disk detaches and re-attaches the target disk. If it is the operating system disk, the VM is restarted. Stop all applications/services that might be affected by this disruption before changing the disk cache setting.
+>[AZURE.WARNING] Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。オペレーティング システム ディスクの場合は、VM が再起動されます。ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
 
-### <a name="create-an-azure-virtual-machine-using-premium-storage-via-the-azure-command-line-interface"></a>Create an Azure virtual machine using Premium Storage via the Azure Command-Line Interface
+### Premium Storage を使用する Azure 仮想マシンを Azure コマンド ライン インターフェイスで作成する
 
-The [Azure Command-Line Interface](../xplat-cli-install.md)(Azure CLI) provides a provides a set of open source, cross-platform commands for working with the Azure Platform. The following examples show how to use Azure CLI (version 0.8.14 and later) to create a Premium Storage account, a new virtual machine, and attach a new data disk from a Premium Storage account.
+[Azure コマンド ライン インターフェイス](../xplat-cli-install.md) (Azure CLI) は、Azure Platform を使用するための、一連のオープン ソース クロスプラットフォーム コマンドを提供します。以下の例では、Azure CLI (バージョン 0.8.14 以降) を使用して、Premium Storage アカウントを作成する方法、新しい仮想マシンを作成する方法、新しいデータ ディスクを Premium Storage アカウントからアタッチする方法を示します。
 
-#### <a name="i.-create-a-premium-storage-account-via-azure-cli"></a>I. Create a Premium Storage account via Azure CLI
+#### I.Azure CLI で Premium Storage アカウントを作成する
 
 ````
 azure storage account create "premiumtestaccount" -l "west us" --type PLRS
 ````
 
-#### <a name="ii.-create-a-ds-series-virtual-machine-via-azure-cli"></a>II. Create a DS-series virtual machine via Azure CLI
+#### II.Azure CLI で DS シリーズの仮想マシンを作成する
 
-    azure vm create -z "Standard_DS2" -l "west us" -e 22 "premium-test-vm"
-        "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-en-us-30GB" -u "myusername" -p "passwd@123"
+	azure vm create -z "Standard_DS2" -l "west us" -e 22 "premium-test-vm"
+		"b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_10-amd64-server-20150202-ja-JP-30GB" -u "myusername" -p "passwd@123"
 
-Display information about the virtual machine
+仮想マシンに関する情報を表示する
 
-    azure vm show premium-test-vm
+	azure vm show premium-test-vm
 
-#### <a name="iii.-attach-a-new-premium-data-disk-via-azure-cli"></a>III. Attach a new premium data disk via Azure CLI
+#### III.Azure CLI で新しいプレミアム データを接続する
 
-    azure vm disk attach-new premium-test-vm 20 https://premiumstorageaccount.blob.core.windows.net/vhd-store/data1.vhd
+	azure vm disk attach-new premium-test-vm 20 https://premiumstorageaccount.blob.core.windows.net/vhd-store/data1.vhd
 
-Display information about the new data disk
+新しいデータ ディスクに関する情報を表示する
 
-    azure vm disk show premium-test-vm-premium-test-vm-0-201502210429470316
+	azure vm disk show premium-test-vm-premium-test-vm-0-201502210429470316
 
-#### <a name="iv.-change-disk-caching-policy"></a>IV. Change disk caching policy
+#### IV.ディスク キャッシュ ポリシーを変更する
 
-To change the cache policy on one of your disks using Azure CLI, run the following command:
+Azure CLI を使用して、いずれかのディスクのキャッシュ ポリシーを変更するには、次のコマンドを実行します。
 
-        $ azure vm disk attach -h ReadOnly <VM-Name> <Disk-Name>
+		$ azure vm disk attach -h ReadOnly <VM-Name> <Disk-Name>
 
-Note that the caching policy options can be ReadOnly, None, or ReadWrite. For more options, see the help by running the following command:
+キャッシュ ポリシーのオプションは、ReadOnly、None、ReadWrite があります。その他のオプションについては、次のコマンドを実行してヘルプを参照してください。
 
-        azure vm disk attach --help
+		azure vm disk attach --help
 
->[AZURE.WARNING] Changing the cache setting of an Azure disk detaches and re-attaches the target disk. If it is the operating system disk, the VM is restarted. Stop all applications/services that might be affected by this disruption before changing the disk cache setting.
+>[AZURE.WARNING] Azure ディスクのキャッシュ設定を変更すると、対象となるディスクをデタッチして再アタッチします。オペレーティング システム ディスクの場合は、VM が再起動されます。ディスク キャッシュの設定を変更する前に、この中断の影響を受ける可能性があるすべてのアプリケーションまたはサービスを停止します。
 
-## <a name="faqs"></a>FAQs
+## FAQ
 
-1. **Can I attach both premium and standard data disks to a Premium Storage supported VM?**
+1. **Premium および Standard データ ディスクの両方を Premium Storage でサポートされる VM に接続できますか?**
 
-    Yes. You can attach both premium and standard data disks to a Premium Storage supported series VM.
+	はい。Premium および Standard データ ディスクの両方を Premium Storage でサポートされる VM に接続できます。
 
-2. **Can I attach both premium and standard data disks to a D, Dv2, G or F series VM?**
+2. **Premium および Standard データ ディスクの両方を D、Dv2、G または F シリーズ VM に接続できますか?**
 
-    No. You can only attach a standard data disk to all VMs that are not Premium Storage supported series.
+	いいえ。Standard データ ディスクを接続できるのは、Premium Storage でサポートされていないシリーズの VM です。
 
-3. **If I create a premium data disk from an existing VHD that was 80 GB in size, how much will that cost me?**
+3. **Premium データ ディスクをサイズが 80 GB の既存の VHD から作成した場合、どのくらいの料金がかかりますか?**
 
-    A premium data disk created from 80 GB VHD will be treated as the next available premium disk size, a P10 disk. You will be charged as per the P10 disk pricing.
+	80 GB の VHD から作成した Premium データ ディスクは、次の使用可能な Premium ディスク サイズ、P10 ディスクとして考慮されます。従って、P10 ディスクの価格が課金されます。
 
-4. **Are there any transaction costs when using Premium Storage?**
+4. **Premium Storage の使用ではトランザクションのコストは発生しますか?**
 
-    There is a fixed cost for each disk size which comes provisioned with certain number of IOPS and Throughput. The only other costs are outbound bandwidth and snapshots capacity, if applicable. See [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) for more details.
+	これは、特定の数の IOPS およびスループットでプロビジョニングされる各ディスク サイズに固定のコストが設けられています。それ以外にかかるコストは、送信帯域幅とスナップショットの容量のみです (該当する場合)。詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」をご覧ください。
 
-5. **Where can I store boot diagnostics for my Premium Storage supported series VM?**
+5. **Premium Storage でサポートされる VM のブート診断はどこに保存できますか?**
 
-    Create a standard storage account to store the boot diagnostics of your Premium Storage supported series VM.
+	Standard ストレージ アカウントを作成して、Premium Storage でサポートされるシリーズの VM のブート診断を保存できます。
 
-6. **How many IOPS and Throughput can I get from the disk cache?**
+6. **ディスク キャッシュから入手できる IOPS 数とスループットを教えてください。**
 
-    The combined limits for cache and local SSD for a DS series are 4000 IOPS per core and 33 MB per second per core. GS series offers 5000 IOPS per core and 50 MB per second per core.
+	DS シリーズのキャッシュとローカル SSD の制限の合計は、コアあたり 4000 IOPS、またコアあたり 33 MB/秒 です。GS シリーズでは、コアあたり 5000 IOP、コアあたり 50 MB/秒です。
 
-7. **What is the local SSD in a Premium Storage supported series VM?**
+7. **Premium Storage でサポートされるシリーズの VM のローカル SSD とは何ですか?**
 
-    The local SSD is a temporary storage that is included with a Premium Storage supported series VM. There is no extra cost for this temporary storage. It is recommended that you do not use this temporary storage or local SSD for storing your application data as it is not persisted in Azure Blob Storage.
+	ローカル SSD とは、Premium Storage でサポートされるシリーズの VM に含まれている一時的なストレージです。この一時ストレージに追加の料金は発生しません。これは Azure Blob Storage に永続化されないため、アプリケーション データの保存にこの一時的なストレージを使用しないことをお勧めします。
 
-8. **Can I convert my standard storage account to a Premium Storage account?**
+8. **Standard Storage アカウントを Premium Storage アカウントに変換できますか?**
 
-    No. It is not possible to convert standard storage account to Premium Storage account or vice versa. You must create a new storage account with the desired type and copy data to new storage account, if applicable.
+	いいえ。Standard Storage アカウントを Premium Storage アカウントに変換することはできません。また、Premium Storage アカウントを Standard Storage アカウントに変換することもできません。該当する新しいストレージ アカウントに対応する種類とコピー データを提供する新しいストレージ アカウントを作成する必要があります。
 
-9. **How can I convert my D series VM to a DS series VM?**
+9. **D シリーズ VM を DS シリーズ VM に変換する方法を教えてください。**
 
-    Please refer to the migration guide, [Migrating to Azure Premium Storage](storage-migration-to-premium-storage.md) to move your workload from a D series VM using standard storage account to a DS series VM using Premium Storage account.
+	移行ガイドの「[Azure Premium Storage への移行](storage-migration-to-premium-storage.md)」を参照して、Standard Storage アカウントを使用する D シリーズ VM のワークロードを Premium Storage アカウントを使用する DS シリーズ VM に移行します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For more information about Azure Premium Storage refer to the following articles.
+Azure Premium Storage の詳細については、以下の記事を参照してください。
 
-### <a name="design-and-implement-with-azure-premium-storage"></a>Design and implement with Azure Premium Storage
+### Design and implement with Azure Premium Storage (Azure Premium Storage での設計と実装)
 
-- [Design for Performance with Premium Storage](storage-premium-storage-performance.md)
-- [Using Blob Service Operations with Azure Premium Storage](http://go.microsoft.com/fwlink/?LinkId=521969)
+- [Premium Storage を使用した高パフォーマンスのための設計](storage-premium-storage-performance.md)
+- [Azure Premium Storage での BLOB サービス操作の使用](http://go.microsoft.com/fwlink/?LinkId=521969)
 
-### <a name="operational-guidance"></a>Operational guidance
+### 操作ガイダンス
 
-- [Migrating to Azure Premium Storage](storage-migration-to-premium-storage.md)
+- [Azure Premium Storage への移行](storage-migration-to-premium-storage.md)
 
-### <a name="blog-posts"></a>Blog Posts
+### ブログ記事
 
-- [Azure Premium Storage Generally Available](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
-- [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
+- [Azure Premium Storage を一般に提供](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/)
+- [Announcing the GS-Series: Adding Premium Storage Support to the Largest VMs in the Public Cloud (GS シリーズの提供開始を発表: パブリック クラウドの最大の VM に Premium Storage サポートを追加)](https://azure.microsoft.com/blog/azure-has-the-most-powerful-vms-in-the-public-cloud/)
 
 [Image1]: ./media/storage-premium-storage/Azure_attach_premium_disk.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

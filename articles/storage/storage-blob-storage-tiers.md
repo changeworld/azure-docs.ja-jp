@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure cool storage for blobs | Microsoft Azure"
-    description="Storage tiers for Azure Blob storage offer cost-efficient storage for object data based on access patterns. The cool storage tier is optimized for data that is accessed less frequently."
+    pageTitle="BLOB 用 Azure クール ストレージ | Microsoft Azure"
+    description="Azure Blob Storage のストレージ層では、アクセス パターンに基づいてオブジェクト データをコスト効率の高い方法で格納できるストレージを提供しています。クール ストレージ層は、アクセス頻度の低いデータ向けに最適化されています。"
     services="storage"
     documentationCenter=""
     authors="michaelhauss"
@@ -17,345 +17,327 @@
     ms.author="mihauss;robinsh"/>
 
 
+# Azure Blob Storage: ホット ストレージ層とクール ストレージ層
 
-# <a name="azure-blob-storage:-hot-and-cool-storage-tiers"></a>Azure Blob Storage: Hot and cool storage tiers
+## Overview
 
-## <a name="overview"></a>Overview
+Azure Storage では現在、Blob Storage (オブジェクト ストレージ) 用に 2 つのストレージ層が提供されています。そのため、使い方しだいで、コスト効率の高い方法でデータを格納することができます。Azure **ホット ストレージ層**は、頻繁にアクセスされるデータの格納に適しています。Azure **クール ストレージ層**は、アクセスされる頻度は低いものの、保管期間が長いデータの格納に適しています。クール ストレージ層に格納されるデータについては、可用性が若干低くても許容できますが、高い持続性は必要で、アクセスにかかる時間とスループット特性もホット データと同程度である必要があります。クール データの場合、可用性の SLA が若干低く、アクセス コストが高めであっても、ストレージ コストが大幅に低ければ許容できます。
 
-Azure Storage now offers two storage tiers for Blob storage (object storage), so that you can store your data most cost-effectively depending on how you use it. The Azure **hot storage tier** is optimized for storing data that is accessed frequently. The Azure **cool storage tier** is optimized for storing data that is infrequently accessed and long-lived. Data in the cool storage tier can tolerate a slightly lower availability, but still requires high durability and similar time to access and throughput characteristics as hot data. For cool data, slightly lower availability SLA and higher access costs are acceptable trade-offs for much lower storage costs.
+最近では、クラウドに格納されるデータが急激に増加しています。ストレージのニーズが拡大する中でコストを管理するには、アクセスの頻度や予定保有期間などの属性に基づいてデータを整理する方法が効果的です。クラウドに格納されるデータは、有効期間を通じてどのように生成、処理、およびアクセスされるかという点で、まったく異なる場合があります。有効期間を通じて活発にアクセスおよび変更されるデータもあれば、有効期間の初期に頻繁にアクセスされ、古くなるにつれて大幅にアクセスが減るデータもあります。また、クラウド内でアイドル状態のままとなり、格納されてからはほとんどアクセスされないデータもあります。
 
-Today, data stored in the cloud is growing at an exponential pace. To manage costs for your expanding storage needs, it's helpful to organize your data based on attributes like frequency of access and planned retention period. Data stored in the cloud can be quite different in terms of how it is generated, processed, and accessed over its lifetime. Some data is actively accessed and modified throughout its lifetime. Some data is accessed very frequently early in its lifetime, with access dropping drastically as the data ages. Some data remains idle in the cloud and is rarely, if ever, accessed once stored.
+前の各データ アクセス シナリオは、特定のアクセス パターン用に最適化されたストレージの分化された層の利点を利用しています。Azure Blob Storage は現在、ホットとクールの各ストレージ層を導入し、分化されたストレージ層に対するニーズに異なる価格モデルで対応しています。
 
-Each of these data access scenarios described above benefits from a differentiated tier of storage that is optimized for a particular access pattern. With the introduction of hot and cool storage tiers, Azure Blob storage now addresses this need for differentiated storage tiers with separate pricing models.
+## BLOB ストレージ アカウント
 
-## <a name="blob-storage-accounts"></a>Blob storage accounts
+**BLOB ストレージ アカウント**とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。BLOB ストレージ アカウントでは現在、ストレージ層としてホット ストレージまたはクール ストレージを選択できます。アクセス頻度が低いクール データは、より低いストレージ コストで格納し、アクセス頻度が高いホット データは、より低いアクセス コストで格納することができます。BLOB ストレージ アカウントは、既存の汎用ストレージ アカウントと同様で、現在使用されているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。
 
-**Blob storage accounts** are specialized storage accounts for storing your unstructured data as blobs (objects) in Azure Storage. With Blob storage accounts, you can now choose between hot and cool storage tiers to store your less frequently accessed cool data at a lower storage cost, and store more frequently accessed hot data at a lower access cost. Blob storage accounts are similar to your existing general-purpose storage accounts and share all the great durability, availability, scalability, and performance features that you use today, including 100% API consistency for block blobs and append blobs.
+> [AZURE.NOTE] BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB のみをサポートします。ページ BLOB はサポートしません。
 
-> [AZURE.NOTE] Blob storage accounts support only block and append blobs, and not page blobs.
+BLOB ストレージ アカウントは、**アクセス層**属性を公開します。この属性を使用すると、アカウントに格納されているデータに応じてストレージ層を**ホット**または**クール**として指定できます。データの使用パターンが変化した場合は、いつでもこれらのストレージ層を切り替えることができます。
 
-Blob storage accounts expose the **Access Tier** attribute, which allow you to specify the storage tier as **Hot** or **Cool** depending on the data stored in the account. If there is a change in the usage pattern of your data, you can also switch between these storage tiers at any time.
+> [AZURE.NOTE] ストレージ層を変更すると、追加料金が発生することがあります。詳細については、「[価格と課金](storage-blob-storage-tiers.md#pricing-and-billing)」セクションを参照してください。
 
-> [AZURE.NOTE] Changing the storage tier may result in additional charges. Please see the [Pricing and Billing](storage-blob-storage-tiers.md#pricing-and-billing) section for more details.
+ホット ストレージ層の使用シナリオの例には、次のようなものがあります。
 
-Example usage scenarios for the hot storage tier include:
+- 活発に使用されたり、頻繁にアクセス (読み取りまたは書き込み) されると予想されるデータ。
+- 処理段階にあり、最終的にはクール ストレージ層に移行されるデータ。
 
-- Data that is in active use or expected to be accessed (read from and written to) frequently.
-- Data that is staged for processing and eventual migration to the cool storage tier.
+クール ストレージ層の使用シナリオの例には、次のようなものがあります。
 
-Example usage scenarios for the cool storage tier include:
+- バックアップ、アーカイブ、および障害復旧のデータセット。
+- 既に頻繁に参照されなくなっているものの、アクセスされたときにはすぐに利用できることが期待されている、古いメディア コンテンツ。
+- 今後処理するためにさらにデータが収集されている場合に、コスト効率の高い方法で格納する必要がある、大規模なデータ セット (たとえば、長期保存する科学データや、製造施設からの未加工のテレメトリ データ)。
+- 最終的に使用可能な形式に処理した後も保持する必要がある、元の (未加工の) データ (たとえば、他の形式にコード変換した後の未加工のメディア ファイル)。
+- 長期間格納しておく必要があり、ほとんどアクセスされることがない、コンプライアンスおよびアーカイブ データ (たとえば、監視カメラ映像、医療機関の古い X 線/MRI 画像、金融サービスの顧客電話の音声録音や会話記録)。
 
-- Backup, archival and disaster recovery datasets.
-- Older media content not viewed frequently anymore but is expected to be available immediately when accessed.
-- Large data sets that need to be stored cost effectively while more data is being gathered for future processing. (*e.g.*, long-term storage of scientific data, raw telemetry data from a manufacturing facility)
-- Original (raw) data that must be preserved, even after it has been processed into final usable form. (*e.g.*, Raw media files after transcoding into other formats)
-- Compliance and archival data that needs to be stored for a long time and is hardly ever accessed. (*e.g.*, Security camera footage, old X-Rays/MRIs for healthcare organizations, audio recordings and transcripts of customer calls for financial services)
+ストレージ アカウントの詳細については、「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。
 
-See [About Azure storage accounts](storage-create-storage-account.md) for more information on storage accounts.
+ブロックまたは追加 Blob Storage だけを必要とするアプリケーションでは、階層化されたストレージの分化された料金モデルの利点を活用するために、BLOB ストレージ アカウントを使用することをお勧めします。ただし、状況によってはそのようにできず、汎用ストレージ アカウントを使用するしかない場合もあります。たとえば、次のような場合です。
 
-For applications requiring only block or append blob storage, we recommend using Blob storage accounts, to take advantage of the differentiated pricing model of tiered storage. However, we understand that this might not be possible under certain circumstances where using general-purpose storage accounts would be the way to go, such as:
+- テーブル、キュー、またはファイルを使用する必要があり、BLOB を同じストレージ アカウントに格納したい。同じ共有キーを持つこと以外に、これらを同じアカウント内に格納する技術的な利点はないことに注意してください。
+- まだクラシック デプロイ モデルを使用する必要がある。BLOB ストレージ アカウントは、Azure Resource Manager デプロイメント モデルだけで利用できます。
+- ページ BLOB を使用する必要がある。BLOB ストレージ アカウントはページ BLOB をサポートしていません。一般に、ページ BLOB が必要な特別な理由がなければ、ブロック BLOB を使用することをお勧めします。
+- [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) の 2014-02-14 より前のバージョンか、クライアント ライブラリの 4.x より前のバージョンを使用していて、アプリケーションをアップグレードできない。
 
-- You need to use tables, queues, or files and want your blobs stored in the same storage account. Note that there is no technical advantage to storing these in the same account other than having the same shared keys.
-- You still need to use the Classic deployment model. Blob storage accounts are only available via the Azure Resource Manager deployment model.
-- You need to use page blobs. Blob storage accounts do not support page blobs. We generally recommend using block blobs unless you have a specific need for page blobs.
-- You use a version of the [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) that is earlier than 2014-02-14 or a client library with a version lower than 4.x, and cannot upgrade your application.
+> [AZURE.NOTE] BLOB ストレージ アカウントは、現在、ほとんどの Azure リージョンでサポートされており、残りのリージョンでも順次サポートされていきます。利用できるリージョンの更新された一覧については、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-> [AZURE.NOTE] Blob storage accounts are currently supported in a majority of Azure regions with more to follow. You can find the updated list of available regions on the [Azure Services by Region](https://azure.microsoft.com/regions/#services) page.
+## ストレージ層の比較
 
-## <a name="comparison-between-the-storage-tiers"></a>Comparison between the storage tiers
-
-The following table highlights the comparison between the two storage tiers:
+次の表では、2 つのストレージ層を比較しています。
 
 <table border="1" cellspacing="0" cellpadding="0" style="border: 1px solid #000000;">
-<col width="250">
-<col width="250">
-<col width="250">
+<col width="250"> <col width="250"> <col width="250">
 <tbody>
 <tr>
     <td><strong><center></center></strong></td>
-    <td><strong><center>Hot storage tier</center></strong></td>
-    <td><strong><center>Cool storage tier</center></strong></td
+    <td><strong><center>ホット ストレージ層</center></strong></td>
+    <td><strong><center>クール ストレージ層</center></strong>&lt;/td
 </tr>
 <tr>
-    <td><strong><center>Availability</center></strong></td>
+    <td><strong><center>可用性</center></strong></td>
     <td><center>99.9%</center></td>
     <td><center>99%</center></td>
 </tr>
 <tr>
-    <td><strong><center>Availability<br>(RA-GRS reads)</center></strong></td>
+    <td><strong><center>可用性<br>(RA-GRS 読み取り)</center></strong></td>
     <td><center>99.99%</center></td>
     <td><center>99.9%</center></td>
 </tr>
 <tr>
-    <td><strong><center>Usage charges</center></strong></td>
-    <td><center>Higher storage costs<br>Lower access and transaction costs</center></td>
-    <td><center>Lower storage costs<br>Higher access and transaction costs</center></td>
+    <td><strong><center>利用料金</center></strong></td>
+    <td><center>より高いストレージ コスト<br>より低いアクセスおよびトランザクション コスト</center></td>
+    <td><center>より低いストレージ コスト<br>より高いアクセスおよびトランザクション コスト</center></td>
 </tr>
 <tr>
-    <td><strong><center>Minimum object size<center></strong></td>
-    <td colspan="2"><center>N/A</center></td>
+    <td><strong><center>最小オブジェクト サイズ<center></strong></td>
+    <td colspan="2"><center>該当なし</center></td>
 </tr>
 <tr>
-    <td><strong><center>Minimum storage duration<center></strong></td>
-    <td colspan="2"><center>N/A</center></td>
+    <td><strong><center>最小ストレージ存続期間<center></strong></td>
+    <td colspan="2"><center>該当なし</center></td>
 </tr>
 <tr>
-    <td><strong><center>Latency<br>(Time to first byte)<center></strong></td>
-    <td colspan="2"><center>milliseconds</center></td>
+    <td><strong><center>待機時間<br>(1 バイト目にかかる時間)<center></strong></td>
+    <td colspan="2"><center>ミリ秒</center></td>
 </tr>
 <tr>
-    <td><strong><center>Scalability and performance targets<center></strong></td>
-    <td colspan="2"><center>Same as general-purpose storage accounts</center></td>
+    <td><strong><center>スケーラビリティとパフォーマンスのターゲット<center></strong></td>
+    <td colspan="2"><center>汎用ストレージ アカウントと同じ</center></td>
 </tr>
 </tbody>
 </table>
 
-> [AZURE.NOTE] Blob storage accounts support the same performance and scalability targets as general-purpose storage accounts. See [Azure Storage Scalability and Performance Targets](storage-scalability-targets.md) for more information.
+> [AZURE.NOTE] BLOB ストレージ アカウントは、汎用ストレージ アカウントと同じパフォーマンスとスケーラビリティ ターゲットをサポートしています。詳細については、「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
 
-## <a name="pricing-and-billing"></a>Pricing and Billing
+## 価格と課金
 
-Blob storage accounts use a new pricing model for blob storage based on the storage tier. When using a Blob storage account, the following billing considerations apply:
+BLOB ストレージ アカウントでは、ストレージ層に基づいて、Blob Storage の新しい価格モデルを採用しています。BLOB ストレージ アカウントを使用するときには、課金に関して次の点を考慮してください。
 
-- **Storage costs**: In addition to the amount of data stored, the cost of storing data varies depending on the storage tier. The per-gigabyte cost is lower for the cool storage tier than for the hot storage tier.
-- **Data access costs**: For data in the cool storage tier, you will be charged a per-gigabyte data access charge for reads and writes.
-- **Transaction costs**: There is a per-transaction charge for both tiers. However, the per-transaction cost for the cool storage tier is higher than that for the hot storage tier.
-- **Geo-Replication data transfer costs**: This only applies to accounts with geo-replication configured, including GRS and RA-GRS. Geo-replication data transfer incurs a per-gigabyte charge.
-- **Outbound data transfer costs**: Outbound data transfers (data that is transferred out of an Azure region) incur billing for bandwidth usage on a per-gigabyte basis, consistent with general-purpose storage accounts.
-- **Changing the storage tier**: Changing the storage tier from cool to hot will incur a charge equal to reading all the data existing in the storage account for every transition. On the other hand, changing the storage tier from hot to cool will be free of cost.
+- **ストレージ コスト**: データの格納のコストは、格納されているデータの量だけでなく、ストレージ層にも左右されます。ギガバイトあたりのコストは、クール ストレージ層の方がホット ストレージ層よりも低くなります。
+- **データ アクセス コスト**: クール ストレージ層のデータの場合、読み取りと書き込みに対して、ギガバイト単位のデータ アクセス料金が課金されます。
+- **トランザクション コスト**: どちらの層も、トランザクションごとの料金が発生します。ただし、クール ストレージ層のトランザクション単位のコストは、ホット ストレージ層の場合よりも高くなります。
+- **geo レプリケーション データ転送コスト**: GRS と RA-GRS を含む geo レプリケーションが構成されているアカウントだけに適用されます。geo レプリケーション データ転送には、ギガバイトあたりの料金がかかります。
+- **送信データ転送コスト**: 送信データ転送 (Azure リージョン外に転送されるデータ) では、帯域幅使用量に対する課金がギガバイトあたりで発生します。これは、汎用ストレージ アカウントと同じです。
+- **ストレージ層の変更**: ストレージ層をクールからホットに変更すると、切り替えごとに、ストレージ アカウントに存在するすべてのデータの読み取りと同等の課金が発生します。一方、ホットからクールへのストレージ層の変更では、コストは発生しません。
 
-> [AZURE.NOTE] In order to allow users to try out the new storage tiers and validate functionality post launch, the charge for changing the storage tier from cool to hot will be waived off until June 30th 2016. Starting July 1st 2016, the charge will be applied to all transitions from cool to hot. For more details on the pricing model for Blob storage accounts see, [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) page. For more details on the outbound data transfer charges see, [Data Transfers Pricing Details](https://azure.microsoft.com/pricing/details/data-transfers/) page.
+> [AZURE.NOTE] ユーザーが新しいストレージ層を試し、サービス開始後の機能を検証できるように、クールからホットへのストレージ層の変更に対する課金は 2016 年 6 月 30 日までは免除されます。2016 年 7 月 1 日からは、クールからホットへのすべての切り替えに課金が適用されます。BLOB ストレージ アカウントの価格モデルの詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」ページを参照してください。送信データ転送の価格の詳細については、「[Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)」を参照してください。
 
-## <a name="quick-start"></a>Quick Start
+## クイック スタート
 
-In this section we will demonstrate the following scenarios using the Azure portal:
+このセクションでは、Azure ポータルを使用して、次のシナリオについて説明します。
 
-- How to create a Blob storage account.
-- How to manage a Blob storage account.
+- BLOB ストレージ アカウントの作成方法。
+- BLOB ストレージ アカウントの管理方法。
 
-### <a name="using-the-azure-portal"></a>Using the Azure portal
+### Azure ポータルの使用
 
-#### <a name="create-a-blob-storage-account-using-the-azure-portal"></a>Create a Blob storage account using the Azure portal
+#### Azure ポータルを使用した BLOB ストレージ アカウントの作成
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. On the Hub menu, select **New** > **Data + Storage** > **Storage account**.
+2. ハブ メニューで、**[新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
 
-3. Enter a name for your storage account.
+3. ストレージ アカウントの名前を入力します。
 
-    This name must be globally unique; it is used as part of the URL used to access the objects in the storage account.  
+	この名前は、グローバルに一意である必要があります。この名前は、ストレージ アカウントのオブジェクトにアクセスするための URL の一部として使用されます。
 
-4. Select **Resource Manager** as the deployment model.
+4. デプロイ モデルとして **[Resource Manager]** を選択します。
 
-    Tiered storage can only be used with Resource Manager storage accounts; this is the recommended deployment model for new resources. For more information, check out the [Azure Resource Manager overview](../resource-group-overview.md).  
+	階層型ストレージは、Resource Manager ストレージ アカウントでのみ使用できます。これは、新しいリソースに推奨されるデプロイ モデルです。詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
-5. In the Account Kind dropdown list, select **Blob Storage**.
+5. [Account Kind (アカウントの種類)] ボックスの一覧の **[Blob Storage (Blob Storage)]** を選択します。
 
-    This is where you select the type of storage account. Tiered storage is not available in general-purpose storage; it is only available in the Blob storage type account.    
+	ここで、ストレージ アカウントの種類を選択します。階層型ストレージは汎用ストレージでは利用できません。種類が Blob Storage のアカウントでのみ利用できます。
 
-    Note that when you select this, the performance tier is set to Standard. Tiered storage is not available with the Premium performance tier.
+	これを選択すると、パフォーマンス レベルが [Standard] に設定されます。階層型ストレージは、Premium パフォーマンス レベルでは利用できません。
 
-6. Select the replication option for the storage account: **LRS**, **GRS**, or **RA-GRS**. The default is **RA-GRS**.
+6. ストレージ アカウントのレプリケーション オプション (**[LRS]**、**[GRS]**、または **[RA-GRS]**) を選択します。既定値は **[RA-GRS]** です。
 
-    LRS = locally redundant storage; GRS = geo-redundant storage (2 regions); RA-GRS is read-access geo-redundant storage (2 regions with read access to the second).
+	LRS はローカル冗長ストレージ、GRS は geo 冗長ストレージ (2 つのリージョン)、RA-GRS は読み取りアクセス geo 冗長ストレージ (2 つのリージョン。セカンダリに対する読み取りアクセス権が付与される) です。
 
-    For more details on Azure Storage replication options, check out [Azure Storage replication](storage-redundancy.md).
+	Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページを参照してください。
 
-7. Select the right storage tier for your needs: Set the **Access tier** to either **Cool** or **Hot**. The default is **Hot**.
+7. ニーズに応じた適切なストレージ層を選択します。**[アクセス レベル]** を **[クール]** と **[ホット]** のいずれかに設定します。既定値は **[ホット]** です。
 
-8. Select the subscription in which you want to create the new storage account.
+8. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 
-9. Specify a new resource group or select an existing resource group. For more information on resource groups, see [Azure Resource Manager overview](../resource-group-overview.md).
+9. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」を参照してください。
 
-10. Select the region for your storage account.
+10. ストレージ アカウントのリージョンを選択します。
 
-11. Click **Create** to create the storage account.
+11. **[作成]** をクリックしてストレージ アカウントを作成します。
 
-#### <a name="change-the-storage-tier-of-a-blob-storage-account-using-the-azure-portal"></a>Change the storage tier of a Blob storage account using the Azure portal
+#### Azure ポータルを使用した BLOB ストレージ アカウントのストレージ層の変更
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. To navigate to your storage account, select All Resources, then select your storage account.
+2. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
 
-3. In the Settings blade, click **Configuration** to view and/or change the account configuration.
+3. [設定] ブレードで **[構成]** をクリックし、アカウント構成を表示または変更します。
 
-4. Select the right storage tier for your needs: Set the **Access tier** to either **Cool** or **Hot**.
+4. ニーズに応じた適切なストレージ層を選択します。**[アクセス レベル]** を **[クール]** と **[ホット]** のいずれかに設定します。
 
-5. Click Save at the top of the blade.
+5. ブレードの上部にある [保存] をクリックします。
 
-> [AZURE.NOTE] Changing the storage tier may result in additional charges. Please see the [Pricing and Billing](storage-blob-storage-tiers.md#pricing-and-billing) section for more details.
+> [AZURE.NOTE] ストレージ層を変更すると、追加料金が発生することがあります。詳細については、「[価格と課金](storage-blob-storage-tiers.md#pricing-and-billing)」セクションを参照してください。
 
-## <a name="evaluating-and-migrating-to-blob-storage-accounts"></a>Evaluating and migrating to Blob storage accounts
+## BLOB ストレージ アカウントの評価と移行
 
-The purpose of this section is to help users to make a smooth transition to using Blob storage accounts. There are two user scenarios:
+このセクションの目的は、ユーザーが BLOB ストレージ アカウントの使用にスムーズに移行できるようにお手伝いすることです。2 つのユーザー シナリオがあります。
 
-- You have an existing general-purpose storage account and want to evaluate a change to a Blob storage account with the right storage tier.
-- You have decided to use a Blob storage account or already have one and want to evaluate whether you should use the hot or cool storage tier.
+- 汎用ストレージ アカウントを既に持っており、適切なストレージ層の BLOB ストレージ アカウントへの変更を評価したい。
+- BLOB ストレージ アカウントの使用を決定しているか、既に所有しており、ホット ストレージ層とクール ストレージ層のどちらを使用すべきかを評価したい。
 
-In both cases, the first order of business is to estimate the cost of storing and accessing your data stored in a Blob storage account and compare that against your current costs.
+いずれの場合も、最初にすべきことは、BLOB ストレージ アカウントに格納されたデータの格納とアクセスにかかるコストを見積もり、そのコストを現在のコストと比較することです。
 
-### <a name="evaluating-blob-storage-account-tiers"></a>Evaluating Blob storage account tiers
+### BLOB ストレージ アカウント レベルの評価
 
-In order to estimate the cost of storing and accessing data stored in a Blob storage account, you will need to evaluate your existing usage pattern or approximate your expected usage pattern. In general, you will want to know:
+BLOB ストレージ アカウントに格納されたデータの格納とアクセスにかかるコストを見積もるためには、既存の使用パターンを評価するか、予想される使用パターンを概算する必要があります。一般に、以下のことを調べる必要があります。
 
-- Your storage consumption - How much data is being stored and how does this change on a monthly basis?
-- Your storage access pattern - How much data is being read from and written to the account (including new data)? How many transactions are used for data access, and what kinds of transactions are they?
+- ストレージの使用量 - どのくらいの量のデータが格納され、その量は月ごとにどのように変化するか。
+- ストレージ アクセス パターン - アカウントに対してどのくらいの量のデータの読み取りや書き込みがあるか (新規データも含めて)。 データ アクセスにはどのくらいのトランザクションが使用されるか。また、そのトランザクションの種類は何か。
 
-#### <a name="monitoring-existing-storage-accounts"></a>Monitoring existing storage accounts
+#### 既存のストレージ アカウントの監視
 
-To monitor your existing storage accounts and gather this data, you can make use of Azure Storage Analytics which performs logging and provides metrics data for a storage account.
-Storage Analytics can store metrics that include aggregated transaction statistics and capacity data about requests to the Blob storage service for both general-purpose storage accounts as well as Blob storage accounts.
-This data is stored in well-known tables in the same storage account.
+既存のストレージ アカウントを監視し、そのデータを収集するには、Azure Storage Analytics を利用できます。これにより、ログ記録が実行され、ストレージ アカウントのメトリック データが得られます。Storage Analytics では、汎用ストレージ アカウントと BLOB ストレージ アカウントの両方について、Blob Storage サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。このデータは、同じストレージ アカウント内の既知のテーブルに格納されます。
 
-For more details, please see [About Storage Analytics Metrics](https://msdn.microsoft.com/library/azure/hh343258.aspx) and [Storage Analytics Metrics Table Schema](https://msdn.microsoft.com/library/azure/hh343264.aspx)
+詳細については、「[About Storage Analytics Metrics (Storage Analytics Metrics について)](https://msdn.microsoft.com/library/azure/hh343258.aspx)」と「[Storage Analytics Metrics Table Schema (Storage Analytics Metrics のテーブル スキーマ)](https://msdn.microsoft.com/library/azure/hh343264.aspx)」を参照してください。
 
-> [AZURE.NOTE] Blob storage accounts expose the table service endpoint only for storing and accessing the metrics data for that account.
+> [AZURE.NOTE] BLOB ストレージ アカウントは、そのアカウントのメトリック データの格納とアクセスのためだけに Table サービス エンドポイントを公開します。
 
-To monitor the storage consumption for the Blob storage service, you will need to enable the capacity metrics.
-With this enabled, capacity data is recorded daily for a storage account’s Blob service, and recorded as a table entry that is written to the *$MetricsCapacityBlob* table within the same storage account.
+Blob Storage サービスのストレージ使用量を監視するには、容量メトリックを有効にする必要があります。これを有効にすると、ストレージ アカウントの BLOB サービスに関する容量データが毎日記録されます。これは、同じストレージ アカウント内の *$MetricsCapacityBlob* テーブルに書き込まれるテーブル エントリとして記録されます。
 
-To monitor the data access pattern for the Blob storage service, you will need to enable the hourly transaction metrics at an API level.
-With this enabled, per API transactions are aggregated every hour, and recorded as a table entry that is written to the *$MetricsHourPrimaryTransactionsBlob* table within the same storage account. The *$MetricsHourSecondaryTransactionsBlob* table records the transactions to the secondary endpoint in case of RA-GRS storage accounts.
+Blob Storage サービスのデータ アクセス パターンを監視するには、API レベルで時間単位のトランザクション メトリックを有効にする必要があります。これを有効にすると、API あたりのトランザクションが 1 時間ごとに集計され、同じストレージ アカウント内の *$MetricsHourPrimaryTransactionsBlob* テーブルに書き込まれるテーブル エントリとして記録されます。*$MetricsHourSecondaryTransactionsBlob* テーブルには、RA-GRS ストレージ アカウントを使用している場合のセカンダリ エンドポイントに対するトランザクションが記録されます。
 
-> [AZURE.NOTE] In case you have a general-purpose storage account in which you have stored page blobs and virtual machine disks alongside block and append blob data, this estimation process is not applicable. This is because you will have no way of distinguishing capacity and transaction metrics based on the type of blob for only block and append blobs which can be migrated to a Blob storage account.
+> [AZURE.NOTE] 汎用ストレージ アカウントがあり、そのアカウントに、ページ BLOB のほか、ブロック BLOB データと追加 BLOB データと共に仮想マシン ディスクを格納している場合、この見積もりプロセスは適用できません。これは、BLOB ストレージ アカウントに移行され得るブロック BLOB と追加 BLOB のみ、BLOB の種類に基づいて容量とトランザクションのメトリックを区別できないためです。
 
-To get a good approximation of you data consumption and access pattern, we recommend you choose a retention period for the metrics that is representative of your regular usage, and extrapolate.
-One option is to retain the metrics data for 7 days and collect the data every week, for analysis at the end of the month.
-Another option is to retain the metrics data for the last 30 days and collect and analyze the data at the end of the 30 day period.
+データ使用量とアクセス パターンを正確に見積もるには、通常の使用状況を表すメトリックのリテンション期間を選択したうえで推定することをお勧めします。その方法の 1 つとして、メトリック データを 7 日間保持し、そのデータを毎週収集して、月末に分析を行う方法があります。そのほかに、過去 30 日間のメトリック データを保持し、30 日の期間の最後にそのデータを収集、分析する方法もあります。
 
-For details on enabling, collecting and viewing metrics data, please see, [Enabling Azure Storage metrics and viewing metrics data](storage-enable-and-view-metrics.md).
+メトリック データの有効化、収集、表示の詳細については、「[Azure のストレージ メトリックの有効化とメトリック データの表示](storage-enable-and-view-metrics.md)」をご覧ください。
 
-> [AZURE.NOTE] Storing, accessing and downloading analytics data is also charged just like regular user data.
+> [AZURE.NOTE] 分析データの格納、アクセス、ダウンロードについても、通常のユーザー データと同様に課金されます。
 
-#### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Utilizing usage metrics to estimate costs
+#### コストを見積もるための使用状況メトリックの利用
 
-##### <a name="storage-costs"></a>Storage costs
+##### ストレージ コスト
 
-The latest entry in the capacity metrics table *$MetricsCapacityBlob* with the row key *'data'* shows the storage capacity consumed by user data.
-The latest entry in the capacity metrics table *$MetricsCapacityBlob* with the row key *'analytics'* shows the storage capacity consumed by the analytics logs.
+行キー *"data"* がある容量メトリック テーブル *$MetricsCapacityBlob* の最新のエントリは、ユーザー データによって使用されたストレージ容量を示します。行キー *"analytics"* がある容量メトリック テーブル *$MetricsCapacityBlob* の最新のエントリは、分析ログによって使用されたストレージ容量を示します。
 
-This total capacity consumed by both user data and analytics logs (if enabled) can then be used to estimate the cost of storing data in the storage account.
-The same method can also be used for estimating storage costs for block and append blobs in general-purpose storage accounts.
+ユーザー データと分析ログ (有効な場合) の両方によって使用されたこの合計容量は、ストレージ アカウントにデータを格納するコストを見積もるために使用できます。また、同じ方法を使用して、汎用ストレージ アカウントでのブロック BLOB と追加 BLOB のストレージ コストを見積もることができます。
 
-##### <a name="transaction-costs"></a>Transaction costs
+##### トランザクション料金
 
-The sum of *'TotalBillableRequests'*, across all entries for an API in the transaction metrics table indicates the total number of transactions for that particular API. *e.g.*, the total number of *'GetBlob'* transactions in a given period can be calculated by the sum of total billable requests for all entries with the row key *'user;GetBlob'*.
+*"TotalBillableRequests"* の合計は、トランザクション メトリック テーブル内の API のすべてのエントリを対象とし、その特定の API のトランザクションの総数を示すものです。"*例*" として、特定期間の *"GetBlob"* トランザクションの合計は、行キー *"user;GetBlob"* を持つすべてのエントリに対する課金対象の要求をすべて加算することによって計算できます。
 
-In order to estimate transaction costs for Blob storage accounts, you will need to break down the transactions into three groups since they are priced differently.
+BLOB ストレージ アカウントのトランザクション コストを見積もるには、トランザクションを 3 つのグループに分類する必要があります (それぞれ価格が異なるため)。
 
-- Write transactions such as *'PutBlob'*, *'PutBlock'*, *'PutBlockList'*, *'AppendBlock'*, *'ListBlobs'*, *'ListContainers'*, *'CreateContainer'*, *'SnapshotBlob'*, and *'CopyBlob'*.
-- Delete transactions such as *'DeleteBlob'* and *'DeleteContainer'*.
-- All other transactions.
+- *"PutBlob"*、*"PutBlock"*、*"PutBlockList"*、*"AppendBlock"*、*"ListBlobs"*、*"ListContainers"*、*"CreateContainer"*、*"SnapshotBlob"*、*"CopyBlob"* などの書き込みトランザクション。
+- *"DeleteBlob"*、*"DeleteContainer"* などの削除トランザクション。
+- その他すべてのトランザクション。
 
-In order to estimate transaction costs for general-purpose storage accounts, you need to aggregate all transactions irrespective of the operation/API.
+汎用ストレージ アカウントのトランザクション コストを見積もるには、操作と API に関係なく、すべてのトランザクションを集計する必要があります。
 
-##### <a name="data-access-and-geo-replication-data-transfer-costs"></a>Data access and geo-replication data transfer costs
+##### データ アクセスと geo レプリケーション データ転送のコスト
 
-While storage analytics does not provide the amount of data read from and written to a storage account, it can be roughly estimated by looking at the transaction metrics table.
-The sum of *'TotalIngress'* across all entries for an API in the transaction metrics table indicates the total amount of ingress data in bytes for that particular API.
-Similarly the sum of *'TotalEgress'* indicates the total amount of egress data, in bytes.
+Storage Analytics では、ストレージ アカウントに対する読み取りと書き込みのデータ量は示されませんが、トランザクション メトリック テーブルを確認することで大まかに見積もることは可能です。トランザクション メトリック テーブル内の API の全エントリを対象とした *"TotalIngress"* の合計は、その特定の API の受信データの総量をバイトで示すものです。同様に、*"TotalEgress"* の合計は、送信データの総量をバイトで示します。
 
-In order to estimate the data access costs for Blob storage accounts, you will need to break down the transactions into two groups.
+BLOB ストレージ アカウントのデータ アクセス コストを見積もるには、トランザクションを 2 つのグループに分類する必要があります。
 
-- The amount of data retrieved from the storage account can be estimated by looking at the sum of *'TotalEgress'* for primarily the *'GetBlob'* and *'CopyBlob'* operations.
-- The amount of data written to the storage account can be estimated by looking at the sum of *'TotalIngress'* for primarily the *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* and *'AppendBlock'* operations.
+- ストレージ アカウントから取得されたデータの量は、主に *"GetBlob"* 操作と *"CopyBlob"* 操作の *"TotalEgress"* の合計を確認することで見積もることができます。
+- ストレージ アカウントに書き込まれたデータの量は、主に *"PutBlob"* 操作、*"PutBlock"* 操作、*"CopyBlob"* 操作、*"AppendBlock"* 操作の *"TotalIngress"* の合計を確認することで見積もることができます。
 
-The cost of geo-replication data transfer for Blob storage accounts can also be calculated by using the estimate for the amount of data written in case of a GRS or RA-GRS storage account.
+また、BLOB ストレージ アカウントの geo レプリケーション データ転送のコストは、GRS ストレージ アカウントまたは RA-GRS ストレージ アカウントの場合に書き込まれるデータ量の見積もりを使用することによって計算できます。
 
-> [AZURE.NOTE] For a more detailed example about calculating the costs for using the hot or cool storage tier, please take a look at the FAQ titled *'What are Hot and Cool access tiers and how should I determine which one to use?'* in the [Azure Storage Pricing Page](https://azure.microsoft.com/pricing/details/storage/).
+> [AZURE.NOTE] ホット ストレージ層またはクール ストレージ層を使用する場合のコストの計算に関する詳細な例については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」というページにある、*"ホットおよびクール アクセス層とはどのようなものですか? また、どちらを使用すればよいのでしょうか?"* というタイトルの FAQ を参照してください。
 
-### <a name="migrating-existing-data"></a>Migrating existing data
+### 既存のデータの移行
 
-A Blob storage account is specialized for storing only block and append blobs. Existing general-purpose storage accounts, which allow you to store tables, queues, files and disks, as well as blobs, cannot be converted to Blob storage accounts. To use the storage tiers, you will need to create new Blob storage accounts and migrate your existing data into the newly created accounts.
-You can use the following methods to migrate existing data into Blob storage accounts from on-premise storage devices, from third-party cloud storage providers, or from your existing general-purpose storage accounts in Azure:
+BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納に特化しています。テーブル、キュー、ファイル、ディスク、および BLOB を格納できる既存の汎用ストレージ アカウントは、BLOB ストレージ アカウントに変換することはできません。つまり、ストレージ層を使用するには、新しい BLOB ストレージ アカウントを作成し、既存のデータを新たに作成したアカウントに移行する必要があります。オンプレミス ストレージ デバイス、サード パーティのクラウド ストレージ プロバイダー、または Azure の既存の汎用ストレージ アカウントから、既存のデータを BLOB ストレージ アカウントに移行するには、以下の方法を使用できます。
 
-#### <a name="azcopy"></a>AzCopy
+#### AzCopy
 
-AzCopy is a Windows command-line utility designed for high-performance copying of data to and from Azure Storage. You can use AzCopy to copy data into your Blob storage account from your existing general-purpose storage accounts, or to upload data from your on-premises storage devices into your Blob storage account.
+AzCopy は、Azure Storage との間で高パフォーマンスのデータ コピーを行うように設計された Windows コマンドライン ユーティリティです。AzCopy を使用して、既存の汎用ストレージ アカウントから BLOB ストレージ アカウントにデータをコピーできます。またオンプレミス ストレージ デバイスから BLOB ストレージ アカウントにデータをアップロードすることもできます。
 
-For more details, see [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md).
+詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
-#### <a name="data-movement-library"></a>Data Movement Library
+#### データ移動ライブラリ
 
-Azure Storage data movement library for .NET is based on the core data movement framework that powers AzCopy. The library is designed for high-performance, reliable and easy data transfer operations similar to AzCopy. This allows you to take full benefits of the features provided by AzCopy in your application natively without having to deal with running and monitoring external instances of AzCopy.
+Azure Storage Data Movement Library for .NET は、AzCopy を動作させているコア データ移動フレームワークに基づいています。ライブラリは、AzCopy と同じように、高パフォーマンスで信頼性が高く簡単なデータ転送操作ができるように設計されています。そのため、AzCopy によって提供される機能の利点をアプリケーションでネイティブに活用でき、AzCopy の外部インスタンスを実行したり監視したりする必要はありません。
 
-For more details, see [Azure Storage Data Movement Library for .Net](https://github.com/Azure/azure-storage-net-data-movement)
+詳細については、[Azure Storage Data Movement Library for .Net](https://github.com/Azure/azure-storage-net-data-movement) に関するページを参照してください。
 
-#### <a name="rest-api-or-client-library"></a>REST API or Client Library
+#### REST API またはクライアント ライブラリ
 
-You can create a custom application to migrate your data into a Blob storage account using one of the Azure client libraries or the Azure storage services REST API. Azure Storage provides rich client libraries for multiple languages and platforms like .NET, Java, C++, Node.JS, PHP, Ruby, and Python. The client libraries offer advanced capabilities such as retry logic, logging, and parallel uploads. You can also develop directly against the REST API, which can be called by any language that makes HTTP/HTTPS requests.
+Azure クライアント ライブラリのいずれかまたは Azure ストレージ サービス REST API を使用して、データを BLOB ストレージ アカウントに移行するためのカスタム アプリケーションを作成することができます。Azure Storage には、.NET、Java、C++、Node.js、PHP、Ruby、Python などの複数の言語とプラットフォーム用の豊富なクライアント ライブラリが用意されています。クライアント ライブラリは、再試行ロジック、ログ、並列アップロードといった高度な機能を提供します。また、REST API を直接使用して開発することもでき、HTTP/HTTPS 要求を行うどの言語からでも呼び出すことができます。
 
-For more details, see [Get Started with Azure Blob storage](storage-dotnet-how-to-use-blobs.md).
+詳細については、[Azure Blob Storage の概要](storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。
 
-> [AZURE.NOTE] Blobs encrypted using client-side encryption store encryption-related metadata stored with the blob. It is absolutely critical that any copy mechanism should ensure that the blob metadata, and especially the encryption-related metadata, is preserved. If you copy the blobs without this metadata, the blob content will not be retrievable again. For more details regarding encryption-related metadata, see [Azure Storage client side encryption](storage-client-side-encryption.md).
+> [AZURE.NOTE] クライアント側の暗号化を使用して暗号化された BLOB には、その BLOB と共に格納される暗号化関連メタデータが格納されます。すべてのコピー メカニズムで、BLOB メタデータと、特に暗号化に関連するメタデータが必ず保持されることがきわめて重要です。このメタデータなしで BLOB をコピーした場合、BLOB コンテンツを再度取得できなくなります。暗号化関連メタデータの詳細については、[Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)に関するページを参照してください。
 
-## <a name="faqs"></a>FAQs
+## FAQ
 
-1. **Are existing storage accounts still available?**
+1. **既存のストレージ アカウントを引き続き使用できますか。**
 
-    Yes, existing storage accounts are still available and are unchanged in pricing or functionality.  They do not have the ability to choose an storage tier and will not have tiering capabilities in the future.
+    はい。既存のストレージ アカウントはまだ使用可能であり、料金や機能も変更されていません。それらにはストレージ層を選択する機能がなく、今後も階層化機能は導入されません。
 
-2. **Why and when should I start using Blob storage accounts?**
+2. **BLOB ストレージ アカウントは、いつ、どのようなときに使用し始めればよいですか。**
 
-    Blob storage accounts are specialized for storing blobs and allow us to introduce new blob-centric features. Going forward, Blob storage accounts are the recommended way for storing blobs, as future capabilities such as hierarchical storage and tiering will be introduced based on this account type. However, it is up to you when you would like to migrate based on your business requirements.
+    BLOB ストレージ アカウントは、BLOB を格納するために特化しており、新しい BLOB 主体の機能を導入できます。今後、BLOB ストレージ アカウントは、このアカウントの種類に基づいて階層型ストレージや階層化などの新たな機能が導入されるため、BLOB を格納する方法として推奨されるようになります。ただし、いつ移行するかは、ビジネス要件に応じてお客様が判断する必要があります。
 
-3. **Can I convert my existing storage account to a Blob storage account?**
+3. **既存のストレージ アカウントを BLOB ストレージ アカウントに変換できますか。**
 
-    No. Blob storage account is a different kind of storage account and you will need to create it new and migrate your data as explained above.
+    いいえ。BLOB ストレージ アカウントは別種のストレージ アカウントであり、上で説明したように、新規に作成してデータを移行する必要があります。
 
-4. **Can I store objects in both storage tiers in the same account?**
+4. **同じアカウントの両方のストレージ層にオブジェクトを格納することはできますか。**
 
-    The *'Access Tier'* attribute which indicates the storage tier is set at an account level and applies to all objects in that account. You cannot set the access tier attribute at an object level.
+    ストレージ層を示す "*アクセス層*" 属性はアカウント レベルで設定され、そのアカウント内のすべてのオブジェクトに適用されます。アクセス層属性はオブジェクト レベルでは設定できません。
 
-5. **Can I change the storage tier of my Blob storage account?**
+5. **自分の BLOB ストレージ アカウントのストレージ層を変更することはできますか。**
 
-    Yes. You will be able to change the storage tier by setting the *'Access Tier'* attribute on the storage account. Changing the storage tier will apply to all objects stored in the account. Change the storage tier from hot to cool will not incur any charges, while changing from cool to hot will incur a per GB cost for reading all the data in the account.
+    はい。ストレージ アカウントの "*アクセス層*" 属性を設定して、ストレージ層を変更することができます。ストレージ層の変更は、アカウントに格納されているすべてのオブジェクトに適用されます。ホットからクールへのストレージ層の変更では、料金は発生しません。一方、クールからホットへの変更では、アカウント内のすべてのデータの読み取りに対して GB あたりのコストが発生します。
 
-6. **How frequently can I change the storage tier of my Blob storage account?**
+6. **自分の BLOB ストレージ アカウントのストレージ層は、どの程度の頻度で変更できますか。**
 
-    While we do not enforce a limitation on how frequently the storage tier can be changed, please be aware that changing the storage tier from cool to hot will incur significant charges. We do not recommend changing the storage tier frequently.
+    ストレージ層の変更頻度に対して制限は設けられていませんが、ストレージ層をクールからホットに変更すると、かなりの料金が発生することに注意してください。ストレージ層を頻繁に変更することは、お勧めしません。
 
-7. **Will the blobs in the cool storage tier behave differently than the ones in the hot storage tier?**
+7. **クール ストレージ層内の BLOB の動作は、ホット ストレージ層内の BLOB とは異なりますか。**
 
-    Blobs in the hot storage tier have the same latency as blobs in general-purpose storage accounts. Blobs in the cool storage tier have a similar latency (in milliseconds) as blobs in general-purpose storage accounts.
+    ホット ストレージ層内の BLOB の待機時間は、汎用ストレージ アカウントの BLOB と同じになります。クール ストレージ層内の BLOB の待機時間は、汎用ストレージ アカウントの BLOB と類似しています (ミリ秒)。
 
-    Blobs in the cool storage tier will have a slightly lower availability service level (SLA) than the blobs stored in the hot storage tier. For more details, see [SLA for storage](https://azure.microsoft.com/support/legal/sla/storage).
+    クール ストレージ層内の BLOB は、ホット ストレージ層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage)」を参照してください。
 
-8. **Can I store page blobs and virtual machine disks in Blob storage accounts?**
+8. **BLOB ストレージ アカウントにページ BLOB と仮想マシンのディスクを保存できますか。**
 
-    Blob storage accounts support only block and append blobs, and not page blobs. Azure virtual machine disks are backed by page blobs and as a result Blob storage accounts cannot be used to store virtual machine disks. However it is possible to store backups of the virtual machine disks as block blobs in a Blob storage account.
+    BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB のみをサポートします。ページ BLOB はサポートしません。Azure の仮想マシンのディスクではページ BLOB が使用されるため、BLOB ストレージ アカウントは仮想マシンのディスクの格納に使用できません。ただし、仮想マシンのディスクのバックアップを BLOB ストレージ アカウント内にブロック BLOB として格納することはできます。
 
-9. **Will I need to change my existing applications to use Blob storage accounts?**
+9. **BLOB ストレージ アカウントを使用するには、既存のアプリケーションを変更する必要がありますか。**
 
-    Blob storage accounts are 100% API consistent with general-purpose storage accounts for block and append blobs. As long as your application is using block blobs or append blobs, and you are using the 2014-02-14 version of the [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) or greater then your application should just work. If you are using an older version of the protocol, then you will need to update your application to use the new version so as to work seamlessly with both types of storage accounts. In general, we always recommend using the latest version regardless of which storage account type you use.
+    BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB に関して、汎用ストレージ アカウントとの100% の API 整合性を備えています。アプリケーションでブロック BLOB または追加 BLOB が使用されており、[Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx) の 2014-02-14 バージョン以降を使用している限り、アプリケーションは機能します。プロトコルの古いバージョンを使用している場合は、新しいバージョンを使用して両方の種類のストレージ アカウントとシームレスに動作するように、アプリケーションを更新する必要があります。一般に、どの種類のストレージ アカウントを使用するかにかかわらず、常に最新バージョンを使用することをお勧めしています。
 
-10. **Will there be a change in user experience?**
+10. **ユーザー エクスペリエンスに変更はありますか。**
 
-    Blob storage accounts are very similar to a general-purpose storage accounts for storing block and append blobs, and support all the key features of Azure Storage, including high durability and availability, scalability, performance, and security. Other than the features and restrictions specific to Blob storage accounts and its storage tiers that have been called out above, everything else remains the same.
+    BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB の格納に関しては汎用ストレージ アカウントとよく似ており、高い持続性、可用性、スケーラビリティ、パフォーマンス、セキュリティなどの Azure Storage のすべての主要機能をサポートしています。BLOB ストレージ アカウントに固有の機能および制限と、上に記載したストレージ層を除き、いずれも同じままです。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-### <a name="evaluate-blob-storage-accounts"></a>Evaluate Blob storage accounts
+### BLOB ストレージ アカウントを評価する
 
-[Check availability of Blob storage accounts by region](https://azure.microsoft.com/regions/#services)
+[リージョン別に BLOB ストレージ アカウントの可用性を確認する](https://azure.microsoft.com/regions/#services)
 
-[Evaluate usage of your current storage accounts by enabling Azure Storage metrics](storage-enable-and-view-metrics.md)
+[Azure Storage のメトリックを有効にして現在のストレージ アカウントの使用状況を評価する](storage-enable-and-view-metrics.md)
 
-[Check Blob storage pricing by region](https://azure.microsoft.com/pricing/details/storage/)
+[リージョン別に Blob Storage の価格を確認する](https://azure.microsoft.com/pricing/details/storage/)
 
-[Check data transfers pricing](https://azure.microsoft.com/pricing/details/data-transfers/)
+[データ転送の価格を確認する](https://azure.microsoft.com/pricing/details/data-transfers/)
 
-### <a name="start-using-blob-storage-accounts"></a>Start using Blob storage accounts
+### BLOB ストレージ アカウントの利用を開始する
 
-[Get Started with Azure Blob storage](storage-dotnet-how-to-use-blobs.md)
+[Azure Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
 
-[Moving data to and from Azure Storage](storage-moving-data.md)
+[Azure Storage との間でのデータの移動](storage-moving-data.md)
 
-[Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md)
+[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
 
-[Browse and explore your storage accounts](http://storageexplorer.com/)
+[自分のストレージ アカウントを調べる](http://storageexplorer.com/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,56 +1,51 @@
 <properties
-    pageTitle="How to document data sources | Microsoft Azure"
-    description="How-to article highlighting how to document data assets in Azure Data Catalog."
-    services="data-catalog"
-    documentationCenter=""
-    authors="spelluru"
-    manager="NA"
-    editor=""
-    tags=""/>
+	pageTitle="データ ソースの文書化の方法 | Microsoft Azure"
+	description="この記事では、Azure Data Catalog でデータ資産を文書化する方法について重点的に説明しています。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="spelluru"
+	manager="NA"
+	editor=""
+	tags=""/>
 <tags
-    ms.service="data-catalog"
-    ms.devlang="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"
-    ms.workload="data-catalog"
-    ms.date="09/13/2016"
-    ms.author="spelluru"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="09/13/2016"
+	ms.author="spelluru"/>
 
+# データ ソースの文書化
 
-# <a name="document-data-sources"></a>Document data sources
+## はじめに
 
-## <a name="introduction"></a>Introduction
+**Microsoft Azure Data Catalog** は、完全に管理されたクラウド サービスであり、エンタープライズ データ ソースの登録のシステムと検出のシステムとして機能します。つまり、**Azure Data Catalog** を使用すると、ユーザーはデータ ソースを検出、*理解*、使用でき、組織は既存のデータからより多くの価値を引き出すことができます。
 
-**Microsoft Azure Data Catalog** is a fully managed cloud service that serves as a system of registration and system of discovery for enterprise data sources. In other words, **Azure Data Catalog** is all about helping people discover, *understand*, and use data sources, and helping organizations to get more value from their existing data.
+データ ソースが **Azure Data Catalog** に登録されると、そのメタデータはサービスによってコピーされてインデックスが付けられます。ただし、これで終わりではありません。**Azure Data Catalog** では、ユーザーが包括的な文書を独自に用意し、データ ソースの使用法や一般的なシナリオを記述することができます。
 
-When a data source is registered with **Azure Data Catalog**, its metadata is copied and indexed by the service, but the story doesn’t end there. **Azure Data Catalog** also allows users to provide their own complete documentation that can describe the usage and common scenarios for the data source.
+「[データ ソースに注釈を付ける方法](data-catalog-how-to-annotate.md)」では、データ ソースについて熟知している担当者がタグや説明を注釈として追加する機能を紹介しています。**Azure Data Catalog** ポータルには、ユーザーがデータ資産とコンテナーを詳細に文書化できるよう、リッチ テキスト エディターが備わっています。エディターは、段落の書式設定 (見出しなど) やテキストの書式設定、記号付きの箇条書き、番号付きの箇条書き、表に対応します。
 
-In [How to annotate data sources](data-catalog-how-to-annotate.md), you learn that experts who know the data source can annotate it with tags and a description. The **Azure Data Catalog** portal includes a rich text editor so that users can fully document data assets and containers. The editor includes paragraph formatting, such as headings, text formatting, bulleted lists, numbered lists, and tables.
-
-Tags and descriptions are great for simple annotations. However, to help data consumers better understand the use of a data source, and business scenarios for a data source, an expert can provide complete, detailed documentation. It's easy to document a data source. Select a data asset or container, and choose **Documentation**.
+単純な注釈であればタグと説明で十分です。しかし、データ ソースの用途や業務上のシナリオをデータの利用者が理解しやすいよう、データ ソースについて熟知している担当者が包括的かつ詳細な文書を提供することもできます。データ ソースの文書化は簡単です。データ資産またはコンテナーを選択し、**[ドキュメント]** を選択するだけです。
 
 ![](media\data-catalog-documentation\data-catalog-documentation.png)
 
-## <a name="documenting-data-assets"></a>Documenting data assets
+## データ資産の文書化
 
-The benefit of **Azure Data Catalog** documentation allows you to use your Data Catalog as a content repository to create a complete narrative of your data assets. You can explore detailed content that describes containers and tables. If you already have content in another content repository, such as SharePoint or a file share, you can add to the asset documentation links to reference this existing content. This feature makes your existing documents more discoverable.
+**Azure Data Catalog** における文書化の利点は、データ カタログをコンテンツのリポジトリとして、既にあるデータ資産を網羅した概要を作成できることです。ユーザーは、コンテナーやテーブルが表す詳細なコンテンツを広範囲に探ることができます。既に別のコンテンツ リポジトリ (SharePoint やファイル共有など) にコンテンツがある場合、その既存のコンテンツを参照する、資産ドキュメントのリンクを追加することができます。この機能によって、既存のドキュメントが発見されやすくなります。
 
-> [AZURE.NOTE] Documentation is not included in search index.
+> [AZURE.NOTE] 文書化の内容そのものは、検索インデックスに追加されません。
 
 ![](media\data-catalog-documentation\data-catalog-documentation2.png)
 
-The level of documentation can range from describing the characteristics and value of a data asset container to a detailed description of table schema within a container. The level of documentation provided should be driven by your business needs. But in general, here are a few pros and cons of documenting data assets:
+データ資産コンテナーの特徴や価値を記述しただけのものから、コンテナー内のテーブルのスキーマを詳細に記述したものまで、文書化にはさまざまなレベルがあります。文書化のレベルは、ビジネス ニーズに応じて決めることが大切です。ただしデータ資産の文書化には、良い点と悪い点があるのが普通です。
 
--   Document just a container: All the content is in one place, but might lack necessary details for users to make an informed decision.
--   Document just the tables: Content is specific to that object, but your users have multiple places for documents.
--   Document containers and tables: Most comprehensive approach, but might introduce more maintenance of the documents.
+-	コンテナーのみを文書化: すべてのコンテンツが一元化されますが、しかるべき情報に基づく判断の拠り所となる細かなデータが得られない可能性もあります。
+-	テーブルのみを文書化: 対象のオブジェクトに固有のコンテンツとなりますが、ドキュメントが複数の場所に分散されます。
+-	コンテナーとテーブルを文書化: 最も包括的な手法ですが、ドキュメントのメンテナンスの手間が増える可能性があります。
 
-## <a name="summary"></a>Summary
+## 概要
 
-Documenting data sources with **Azure Data Catalog** can create a narrative about your data assets in as much detail as you need.  By using links, you can link to content stored in an existing content repository, which brings your existing docs and data assets together. Once your users discover appropriate data assets, they can have a complete set of documentation.
+**Azure Data Catalog** でデータ ソースを文書化することにより、ニーズに応じた詳細度でデータ資産の概要を作成できます。既存のコンテンツ リポジトリに保存されているコンテンツは、リンクを使って関連付けることで、既にある文書やデータ資産を一元化することができます。ユーザーは適切なデータ資産を発見したうえで、ドキュメント全体を余さず利用することができます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

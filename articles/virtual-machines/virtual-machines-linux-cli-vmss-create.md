@@ -1,55 +1,49 @@
 <properties
-    pageTitle="What are VM scale sets? | Microsoft Azure"
-    description="Learn about VM scale sets."
-    keywords="linux virtual machine,virtual machine scale sets" 
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="gatneil"
-    manager="madhana"
-    editor="tysonn"
-    tags="azure-resource-manager" />
+	pageTitle="VM スケール セットとは | Microsoft Azure"
+	description="VM スケール セットについて説明します。"
+	keywords="Linux 仮想マシン,仮想マシン スケール セット" 
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="gatneil"
+	manager="madhana"
+	editor="tysonn"
+	tags="azure-resource-manager" />
 
 <tags
-    ms.service="virtual-machine-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="03/24/2016"
-    ms.author="gatneil"/>
+	ms.service="virtual-machine-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/24/2016"
+	ms.author="gatneil"/>
 
+# 仮想マシン スケール セットとは
 
-# <a name="what-are-virtual-machine-scale-sets?"></a>What are virtual machine scale sets?
+仮想マシン スケール セットを利用すれば、複数の VM を セットとして管理できます。大まかに言うと、スケール セットには次のような長所と短所があります。
 
-Virtual Machine Scale Sets allow you to manage multiple VMs as a set. At a high level, scale sets have the following pros and cons:
+長所:
 
-Pros:
+1. 高可用性:各スケール セットでは、VM が 5 つの障害ドメイン (FD) と 5 つの更新ドメイン (UD) を持つ可用性セットに割り当てられ、可用性が保証されます (FD と UD の詳細については、「[Linux 仮想マシンの可用性管理](./virtual-machines-linux-manage-availability.md)」を参照してください)。 
+2. Azure Load Balancer および Application Gateway との容易な統合。
+3. Azure 自動スケールとの容易な統合。
+4. VM の簡略化されたデプロイ、管理、クリーンアップ。
+5. カスタム イメージだけでなく、Windows や Linux の一般的なディストリビューションもサポート。
 
-1. High availability. Each scale set puts its VMs into an Availability Set with 5 Fault Domains (FDs) and 5 Update Domains (UDs) to ensure availability (for more information on FDs and UDs, see [VM availability](./virtual-machines-linux-manage-availability.md)). 
-2. Easy integration with Azure Load Balancer and App Gateway.
-3. Easy integration with Azure Autoscale.
-4. Simplified deployment, management, and clean up of VMs.
-5. Support common Windows and Linux flavors, as well as custom images.
+短所:
 
-Cons:
+1. スケール セット内の VM インスタンスにデータ ディスクをアタッチすることはできません。代わりに、Blob Storage、Azure Files、Azure テーブルなどのストレージ ソリューションを使用する必要があります。
 
-1. Cannot attach data disks to VM instances in a scale set. Instead, must use Blob Storage, Azure Files, Azure Tables, or other storage solution.
-
-## <a name="quick-create-using-azure-cli"></a>Quick-create using Azure CLI
+## Azure CLI を使用した簡易作成
 
 [AZURE.INCLUDE [cli-vmss-quick-create](../../includes/virtual-machines-linux-cli-vmss-quick-create-include.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For general information, check out the [main landing page for scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+全般的な情報については、[VM スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
 
-For more documentation, check out the [main documentation page for scale sets](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md).
+ドキュメントについては、[スケール セットのメイン ドキュメント ページ](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)をご覧ください。
 
-For example Resource Manager templates using scale sets, search for "vmss" in the [Azure Quickstart Templates github repo](https://github.com/Azure/azure-quickstart-templates).
+スケール セットを使用した Resource Manager テンプレートの例については、[Azure クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

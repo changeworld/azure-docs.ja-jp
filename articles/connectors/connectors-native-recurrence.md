@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Add the recurrence trigger in logic apps | Microsoft Azure"
-    description="Overview of the recurrence trigger, and how to use it with an Azure logic app."
-    services=""
-    documentationCenter=""
-    authors="jeffhollan"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="ロジック アプリに定期実行のトリガーを追加する |Microsoft Azure"
+	description="定期実行のトリガーの概要と Azure ロジック アプリでの使用方法"
+	services=""
+	documentationCenter=""
+	authors="jeffhollan"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,53 +17,47 @@
    ms.date="07/18/2016"
    ms.author="jehollan"/>
 
+# 定期実行のトリガーの概要
 
-# <a name="get-started-with-the-recurrence-trigger"></a>Get started with the recurrence trigger
+定期実行のトリガーを使用すると、クラウドに強力なワークフローを作成できます。
 
-By using the recurrence trigger, you can create powerful workflows in the cloud.
+たとえば、次のようなことができます。
 
-For example, you can:
+- SQL ストアド プロシージャを毎日実行するようにワークフローをスケジュールする。
+- 特定のハッシュタグに関する 1 週間以内のすべてのツイートの概要を電子メールで送信する。
 
-- Schedule a workflow to run a SQL stored procedure every day.
-- Email a summary of all tweets within the last week about a certain hashtag.
+ロジック アプリでの定期実行のトリガーの使用を開始する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-To get started using the recurrence trigger in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## 定期実行のトリガーの使用
 
-## <a name="use-a-recurrence-trigger"></a>Use a recurrence trigger
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
 
-A trigger is an event that can be used to start the workflow that is defined in a logic app. [Learn more about triggers](connectors-overview.md).
+ロジック アプリで定期実行のトリガーをセットアップする方法の例を次に示します。
 
-Here’s an example sequence of how to set up a recurrence trigger in a logic app:
+1. ロジック アプリの最初の手順として、**定期実行**のトリガーを追加します。
+2. 繰り返し間隔のパラメーターを入力します。
 
-1. Add the **Recurrence** trigger as the first step in a logic app.
-2. Fill in the parameters for the recurrence interval.
-
-The logic app now starts a run after each interval of time.
+これで、ロジック アプリは、この時間間隔ごとに実行が開始されます。
 
 ![HTTP trigger](./media/connectors-native-recurrence/using-trigger.png)
 
-## <a name="trigger-details"></a>Trigger details
+## トリガーの詳細
 
-The recurrence trigger has the following properties that you can configure.
+定期実行のトリガーには、構成可能な次のプロパティがあります。
 
-It fires a logic app after a specified time interval.
-A * means that it is a required field.
+指定された期間の後にロジック アプリを起動します。* は、必須フィールドであることを示しています。
 
-|Display name|Property name|Description|
+|表示名|プロパティ名|Description|
 |---|---|---|
-|Frequency*|frequency|The unit of time: `Second`, `Minute`, `Hour`, `Day`, or `Year`.|
-|Interval*|interval|The interval of the given frequency for the recurrence.|
-|Time Zone|timeZone|If a start time is provided without a UTC offset, this time zone will be used.|
-|Start time|startTime|The start time in [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations).|
+|頻度*|frequency|時間の単位: `Second`、`Minute`、`Hour`、`Day`、`Year` のいずれか|
+|間隔*|interval|指定した頻度で繰り返し実行する間隔|
+|タイム ゾーン|timeZone|開始時刻が UTC オフセットなしで指定されている場合、このタイム ゾーンが使用されます。|
+|開始時刻|startTime|開始時刻は [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)です。|
 <br>
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
+プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

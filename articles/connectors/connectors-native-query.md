@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Add the query action in logic apps | Microsoft Azure"
-    description="Overview of the query action for performing actions like filter array."
-    services=""
-    documentationCenter=""
-    authors="jeffhollan"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="ロジック アプリにクエリ アクションを追加する | Microsoft Azure"
+	description="配列のフィルター処理などのアクションを実行するためのクエリ アクションの概要です。"
+	services=""
+	documentationCenter=""
+	authors="jeffhollan"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,74 +17,68 @@
    ms.date="07/20/2016"
    ms.author="jehollan"/>
 
+# クエリ アクションの概要
 
-# <a name="get-started-with-the-query-action"></a>Get started with the query action
+クエリ アクションを使用し、バッチと配列を操作して次のワークフローを実現できます。
 
-By using the query action, you can work with batches and arrays to accomplish workflows to:
+- データベースの優先度の高いすべてのレコードを対象とするタスクを作成する。
+- 電子メールのすべての PDF 添付ファイルを Azure BLOB に保存する。
 
-- Create a task for all high-priority records from a database.
-- Save all PDF attachments for emails into an Azure blob.
+ロジック アプリでクエリ アクションの使用を開始するには、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-To get started using the query action in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## クエリ アクションの使用
 
-## <a name="use-the-query-action"></a>Use the query action
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](connectors-overview.md)。
 
-An action is an operation that is carried out by the workflow that is defined in a logic app. [Learn more about actions](connectors-overview.md).  
+現在、クエリ アクションでは、"配列のフィルター処理" という操作だけがデザイナーで公開されています。このクエリ アクションでは、配列を照会し、フィルター処理された一連の結果を返すことができます。
 
-The query action currently has one operation, called the filter array, that is exposed in the designer. This allows you to query an array and return a set of filtered results.
+ロジック アプリにクエリ アクションを追加する方法を次に示します。
 
-Here's how you can add it in a logic app:
+1. **[新しいステップ]** をクリックします。
+2. **[アクションの追加]** を選択します。
+3. アクションの検索ボックスに「**フィルター**」と入力して、**[配列のフィルター処理]** アクションを表示します。
 
-1. Select the **New Step** button.
-2. Choose **Add an action**.
-3. In the action search box, type **filter** to list the **Filter array** action.
+	![クエリ アクションを選択する](./media/connectors-native-query/using-action-1.png)
 
-    ![Select the query action](./media/connectors-native-query/using-action-1.png)
+4. フィルター処理する配列を選択します (次のスクリーン ショットは、Twitter 検索結果の配列を示しています)。
+5. 各項目について評価する条件を作成します (次のスクリーン ショットは、フォロワー数が 100 を超えるユーザーのツイートをフィルター処理したものです)。
 
-4. Select an array to filter. (The following screenshot shows the array of results from a Twitter search.)
-5. Create a condition to evaluate on each item. (The following screenshot filters tweets from users who have more than 100 followers.)
+	![クエリ アクションを完了する](./media/connectors-native-query/using-action-2.png)
 
-    ![Complete the query action](./media/connectors-native-query/using-action-2.png)
+	フィルター要件を満たす結果だけが含まれた新しい配列が出力されます。
+6. ツール バーの左上隅にある [保存] をクリックすると、ロジック アプリが保存されて発行 (アクティブ化) されます。
 
-    The action will output a new array that contains only results that met the filter requirements.
-6. Click the upper-left corner of the toolbar to save, and your logic app will both save and publish (activate).
+## クエリ アクション
 
-## <a name="query-action"></a>Query action
+ここでは、このコネクタでサポートされているアクションの詳細について説明します。このコネクタには、使用可能なアクションが 1 つあります。
 
-Here are the details for the action that this connector supports. The connector has one possible action.
-
-|Action|Description|
+|アクション|Description|
 |---|---|
-|Filter array|Evaluates a condition for each item in an array and returns the results|
+|配列のフィルター処理|配列内の各項目について条件を評価し、結果を返します。|
 
-## <a name="action-details"></a>Action details
+## アクションの詳細
 
-The query action comes with one possible action. The following tables describe the required and optional input fields for the action and the corresponding output details that are associated with using the action.
+このクエリ アクションには、使用可能なアクションが 1 つ用意されています。次の表に、アクションの必須および省略可能な入力フィールドと、各アクションの使用に伴う出力の詳細を示します。
 
-### <a name="filter-array"></a>Filter array
-The following are input fields for the action, which makes an HTTP outbound request.
-A * means that it is a required field.
+### 配列のフィルター処理
+HTTP 送信要求を実行するアクションの入力フィールドを次に示します。* は、必須フィールドであることを示しています。
 
-|Display name|Property name|Description|
+|表示名|プロパティ名|Description|
 |---|---|---|
-|From*|from|The array to filter|
-|Condition*|where|The condition to evaluate for each item|
+|From*|from|フィルター処理する配列|
+|Condition*|各値の説明:|各項目について評価する条件|
 <br>
 
-### <a name="output-details"></a>Output details
+### 出力の詳細
 
-The following are output details for the HTTP response.
+HTTP 応答の出力の詳細を次に示します。
 
-|Property name|Data type|Description|
+|プロパティ名|データ型|Description|
 |---|---|---|
-|Filtered array|array|An array that contains an object for each filtered result|
+|Filtered array|array|フィルター処理された各結果を表すオブジェクトを含む配列|
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in logic apps by looking at our [APIs list](apis-list.md).
+プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

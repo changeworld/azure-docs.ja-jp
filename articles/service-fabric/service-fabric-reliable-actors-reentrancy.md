@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Actors reentrancy | Microsoft Azure"
-   description="Introduction to reentrancy for Service Fabric Reliable Actors"
+   pageTitle="Reliable Actors の再入 | Microsoft Azure"
+   description="Service Fabric Reliable Actors の再入の概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,19 +13,18 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/19/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
 
+# Reliable Actors の再入
+Reliable Actors ランタイムは、論理呼び出しコンテキスト ベースの再入を既定で許可します。これにより、アクターは、同じ呼び出しコンテキストのチェーンにある場合は再入可能になります。たとえば、アクター A がアクター C にメッセージを送信するアクター B にメッセージを送信するとします。メッセージ処理の一環として、アクター C がアクター A を呼び出した場合、メッセージは再入可能であるため、再入が許可されます。処理が完了するまで、アクター A では別の呼び出しコンテキストの一部である他のメッセージがブロックされます。
 
-# <a name="reliable-actors-reentrancy"></a>Reliable Actors reentrancy
-The Reliable Actors runtime, by default, allows logical call context-based reentrancy. This allows for actors to be reentrant if they are in the same call context chain. For example, Actor A sends a message to Actor B, who sends a message to Actor C. As part of the message processing, if Actor C calls Actor A, the message is reentrant, so it will be allowed. Any other messages that are part of a different call context will be blocked on Actor A until it finishes processing.
 
+`ActorReentrancyMode` 列挙型で定義されているアクターの再入に使用できるオプションには、次の 2 つがあります。
 
-There are two options available for actor reentrancy defined in the `ActorReentrancyMode` enum:
-
- - `LogicalCallContext` (default behavior)
- - `Disallowed` - disables reentrancy
+ - `LogicalCallContext` (既定の動作)
+ - `Disallowed` - 再入を無効にします
 
 ```csharp
 public enum ActorReentrancyMode
@@ -35,9 +34,9 @@ public enum ActorReentrancyMode
 }
 ```
 
-Reentrancy can be configured in an `ActorService`'s settings during registration. The setting applies to all actor instances created in the actor service.
+再入は、登録時に `ActorService` の設定で構成できます。この設定は、アクター サービスで作成されたすべてのアクター インスタンスに適用されます。
 
-The following example shows an actor service that sets the reentrancy mode to `ActorReentrancyMode.Disallowed`. In this case, if an actor sends a reentrant message to another actor, an exception of type `FabricException` will be thrown.
+次の例では、再入モードを `ActorReentrancyMode.Disallowed` に設定したアクター サービスを示しています。この場合、アクターが別のアクターに再入メッセージを送信すると、`FabricException` 型の例外がスローされます。
 
 ```csharp
 static class Program
@@ -70,13 +69,9 @@ static class Program
 }
 ```
 
-## <a name="next-steps"></a>Next steps
- - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
- - [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [Sample code](https://github.com/Azure/servicefabric-samples)
+## 次のステップ
+ - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
+ - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

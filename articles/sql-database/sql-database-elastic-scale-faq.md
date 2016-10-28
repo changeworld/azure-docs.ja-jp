@@ -1,63 +1,59 @@
 <properties 
-    pageTitle="Azure SQL Elastic Scale FAQ | Microsoft Azure" 
-    description="Frequently Asked Questions about Azure SQL Database Elastic Scale." 
-    services="sql-database" 
-    documentationCenter="" 
-    manager="jhubbard" 
-    authors="ddove" 
-    editor=""/>
+	pageTitle="Azure SQL Elastic Scale の FAQ | Microsoft Azure" 
+	description="Azure SQL Database の Elastic Scale に関してよく寄せられる質問。" 
+	services="sql-database" 
+	documentationCenter="" 
+	manager="jhubbard" 
+	authors="ddove" 
+	editor=""/>
 
 <tags 
-    ms.service="sql-database" 
-    ms.workload="sql-database" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="05/03/2016" 
-    ms.author="ddove"/>
+	ms.service="sql-database" 
+	ms.workload="sql-database" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="05/03/2016" 
+	ms.author="ddove"/>
 
+# エラスティック データベース ツールに関する FAQ 
 
-# <a name="elastic-database-tools-faq"></a>Elastic database tools FAQ 
+#### シャードごとにシングルテナントはあるが、シャーディング キーがない場合、スキーマ情報にどのようにしてシャーディング キーを取り込むのですか。
 
-#### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key,-how-do-i-populate-the-sharding-key-for-the-schema-info?"></a>If I have a single-tenant per shard and no sharding key, how do I populate the sharding key for the schema info?
+スキーマ情報オブジェクトは、分割や結合といったシナリオの場合にのみ使用します。アプリケーションがシングルテナントである場合は、Split Merge ツールは必要ないため、スキーマ情報オブジェクトを取り込む必要はありません。
 
-The schema info object is only used to split merge scenarios. If an application is inherently single-tenant, then it does not require the Split Merge tool and thus there is no need to populate the schema info object.
+#### データベースをプロビジョニングし、既にシャード マップ マネージャーもあります。このデータベースをシャードとして登録するにはどうしたらいいですか。
 
-#### <a name="i’ve-provisioned-a-database-and-i-already-have-a-shard-map-manager,-how-do-i-register-this-new-database-as-a-shard?"></a>I’ve provisioned a database and I already have a Shard Map Manager, how do I register this new database as a shard?
+「**[エラスティック データベース クライアント ライブラリを使用してアプリケーションに共有を追加する](sql-database-elastic-scale-add-a-shard.md)**」を参照してください。
 
-Please see **[Adding a shard to an application using the elastic database client library](sql-database-elastic-scale-add-a-shard.md)**. 
+#### エラスティック データベースデータベース ツールにはどの程度のコストがかかりますか。
 
-#### <a name="how-much-do-elastic-database-tools-cost?"></a>How much do elastic database tools cost?
+エラスティック データベース クライアント ライブラリの使用にコストは発生しません。コストが発生するのは、シャードとシャード マップ マネージャーに使用した Azure SQL データベースと、Split Merge ツールにプロビジョニングした Web/worker ロールに対してのみです。
 
-Using the elastic database client library does not incur any costs. Costs accrue only for the Azure SQL databases that you use for shards and the Shard Map Manager, as well as the web/worker roles you provision for the Split Merge tool.
+#### 別のサーバーからシャードを追加した場合に、資格情報が機能しないのはどうしてですか。
+資格情報は「User ID=username@servername」の形式ではなく、単純に「User ID = username」を使用します。また、「username」ログインがシャードで権限を持っていることを確認します。
 
-#### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server?"></a>Why are my credentials not working when I add a shard from a different server?
-Do not use credentials in the form of “User ID=username@servername”, instead simply use “User ID = username”.  Also, be sure that the “username” login has permissions on the shard.
+#### アプリケーションを起動するたびに、シャード マップ マネージャーを作成してシャードを取り込む必要がありますか。
 
-#### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications?"></a>Do I need to create a Shard Map Manager and populate shards every time I start my applications?
+必要ありません。シャード マップ マネージャー (たとえば **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) の作成は 1 回だけの操作です。アプリケーションは、アプリケーションの起動時に **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** 呼び出しを使用する必要があります。アプリケーション ドメインごとにそのような呼び出しを 1 回行います。
 
-No—the creation of the Shard Map Manager (for example, **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) is a one-time operation.  Your application should use the call **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** at application start-up time.  There should only one such call per application domain.
+#### エラスティック データベース ツールの使い方について質問がある場合、どこに問い合わせればよいですか。 
 
-#### <a name="i-have-questions-about-using-elastic-database-tools,-how-do-i-get-them-answered?"></a>I have questions about using elastic database tools, how do I get them answered? 
+[Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) フォーラムからお問い合わせください。
 
-Please reach out to us on the [Azure SQL Database forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+#### シャーディング キーを使用してデータベース接続を取得する場合でも、同じシャードの別のシャーディング キーでデータを照会できますか。設計によって異なりますか。
 
-#### <a name="when-i-get-a-database-connection-using-a-sharding-key,-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard.-is-this-by-design?"></a>When I get a database connection using a sharding key, I can still query data for other sharding keys on the same shard.  Is this by design?
+Elastic Scale API を使用すると、シャーディング キーの接続データベースに接続できますが、シャーディング キーのフィルター機能は利用できません。提供されるシャーディング キーの範囲を制限するには、必要に応じて、**WHERE** 句をクエリに追加します。
 
-The Elastic Scale APIs give you a connection to the correct database for your sharding key, but do not provide sharding key filtering.  Add **WHERE** clauses to your query to restrict the scope to the provided sharding key, if necessary.
+#### 自分のシャード セットのシャードごとに異なる Azure データベース エディションを使用できますか。
 
-#### <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set?"></a>Can I use a different Azure Database edition for each shard in my shard set?
+できます。シャードは個別のデータベースであるため、あるシャードに Premium エディションを使用し、別のシャードに Standard エディションを使用できます。さらに、シャードの有効期間中に、シャードのエディションを何度もスケール アップまたはスケール ダウンできます。
 
-Yes, a shard is an individual database, and thus one shard could be a Premium edition while another be a Standard edition. Further, the edition of a shard can scale up or down multiple times during the lifetime of the shard.
+#### 分割や結合といった操作の実行時に、Split Merge ツールではデータベースがプロビジョニング (または削除) されますか。 
 
-#### <a name="does-the-split-merge-tool-provision-(or-delete)-a-database-during-a-split-or-merge-operation?"></a>Does the Split Merge tool provision (or delete) a database during a split or merge operation? 
-
-No. For **split** operations, the target database must exist with the appropriate schema and be registered with the Shard Map Manager.  For **merge** operations, you must delete the shard from the shard map manager and then delete the database.
+されません。**分割**操作の場合、適切なスキーマを持ったターゲット データベースが存在し、シャード マップ マネージャーに登録されている必要があります。**結合**操作の場合、シャード マップ マネージャーからシャードを削除してから、データベースを削除する必要があります。
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0601_2016-->

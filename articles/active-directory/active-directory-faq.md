@@ -1,213 +1,205 @@
 <properties
-    pageTitle="Azure Active Directory FAQ | Microsoft Azure"
-    description="Azure Active Directory FAQ that provides answers to questions in conjunction with accessing Azure and Azure Active Directory, password management and application access."
-    services="active-directory"
-    documentationCenter=""
-    authors="markusvi"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory に関する FAQ | Microsoft Azure"
+	description="Azure と Azure Active Directory へのアクセス、パスワード管理、アプリケーション アクセスに関する質問にお答えする Azure Active Directory の FAQ。"
+	services="active-directory"
+	documentationCenter=""
+	authors="markusvi"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/16/2016"
-    ms.author="markusvi"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/16/2016"
+	ms.author="markusvi"/>
+
+# Azure Active Directory に関する FAQ
+
+Azure Active Directory は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
 
 
-# <a name="azure-active-directory-faq"></a>Azure Active Directory FAQ
-
-Azure Active Directory is a comprehensive Identity as a Service (IDaaS) solution that spans all aspects of identity, access management, and security.
-
-
-For more details, see [What is Azure Active Directory?](active-directory-whatis.md).
+詳細については、「[Azure Active Directory とは](active-directory-whatis.md)」をご覧ください。
 
 
 
-## <a name="accessing-azure-and-azure-active-directory"></a>Accessing Azure and Azure Active Directory
+## Azure と Azure Active Directory へのアクセス
 
 
-**Q: Why do I get “No subscriptions found” when I try to access Azure AD in the Azure classic portal (https://manage.windowsazure.com)?**
+**Q: Azure クラシック ポータルで Azure AD にアクセスしようとすると "サブスクリプションが見つかりません" と表示されるのはなぜですか (https://manage.windowsazure.com)?**
 
-**A:** Accessing the Azure classic portal requires each user to have permissions on an Azure subscription. If you have a paid Office 365 or Azure AD navigate to  [http://aka.ms/accessAAD](http://aka.ms/accessAAD) for a one-time activation step, otherwise you will need to activate a full [Azure trial](https://azure.microsoft.com/pricing/free-trial/) or a paid subscription. 
+**A:** Azure クラシック ポータルにアクセスするには、Azure サブスクリプションに対するアクセス許可が各ユーザーに付与されている必要があります。有料の Office 365 または Azure AD をご利用の場合は、1 回限りのアクティブ化手順を行うために [http://aka.ms/accessAAD](http://aka.ms/accessAAD) に移動してください。これらをご利用でない場合は、完全な [Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)または有料サブスクリプションをアクティブ化する必要があります。
 
-For more details, see:
+詳細については、次のリンクを参照してください。
 
-- [How Azure subscriptions are associated with Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+- [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 
-- [Manage the directory for your Office 365 subscription in Azure](active-directory-manage-o365-subscription.md)
+- [Azure での Office 365 サブスクリプションのディレクトリの管理](active-directory-manage-o365-subscription.md)
 
 ---
 
-**Q: What’s the relationship between Azure AD, Office 365, and Azure?**
+**Q: Azure AD、Office 365、Azure の関係はどうなっていますか?**
 
-**A:** Azure Active Directory provides you with common identity and access capabilities to all Microsoft online services. Whether you are using Office 365, Microsoft Azure, Intune or others, you are already using an Azure AD to enable sign-on and access management for all of these services. 
+**A:** Azure Active Directory を使用すると、すべての Microsoft オンライン サービスに共通の ID とアクセス機能が提供されます。Office 365、Microsoft Azure、Intune などのサービスをご利用の場合は、Azure AD を既に使用しており、これらのサービスすべてでサインオンとアクセス管理が有効になっています。
 
-In fact, all the users you have enabled for Microsoft Online services are defined as user accounts in one or more Azure AD instances. You can enable these accounts for free Azure AD capabilities such as cloud application access.
+実際に、Microsoft オンライン サービスが有効になっているすべてのユーザーは、1 つ以上の Azure AD インスタンスでユーザー アカウントとして定義されます。クラウド アプリケーション アクセスなど、無料の Azure AD 機能をこれらのアカウントで有効にすることができます。
  
-Additionally, Azure AD paid services (e.g.: Azure AD basic, Premium, EMS, etc.) complement other Online services such as Office 365 and Microsoft Azure with comprehensive enterprise scale management and security solutions.
+さらに、Azure AD 有料サービス (Azure AD Basic、Premium、EMS など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Office 365 や Microsoft Azure などの他のオンライン サービスを補完します。
 
 
 ---
 
 
 
-## <a name="getting-started-with-hybrid-azure-ad"></a>Getting started with Hybrid Azure AD
+## ハイブリッド Azure AD の使用
 
 
-**Q: How can I connect my on-premises directory to Azure AD?**
+**Q: オンプレミスのディレクトリを Azure AD に接続するにはどうすればよいですか?**
 
-**A:** You can connect your on-premises directory to Azure AD using **Azure AD Connect**. 
+**A:** オンプレミスのディレクトリを Azure AD に接続するには、**Azure AD Connect** を使用します。
 
-For more details, see [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
 
 ---
 
-**Q: How do I set up SSO between my on-premises directory and my cloud applications?**
+**Q: オンプレミスのディレクトリとクラウド アプリケーションの間で SSO を設定するにはどうすればよいですか?**
 
-**A:** You only need to set up SSO between your on-premises directory and Azure AD. As long as you access your cloud applications through Azure AD, the service automatically drives your users to correctly authenticate with their on-premises credentials.
+**A:** 必要なのは、オンプレミスのディレクトリと Azure AD の間で SSO を設定することだけです。Azure AD を介してクラウド アプリケーションにアクセスしている限り、自動的にこのサービスによって、オンプレミスの資格情報を使ったユーザー認証が正しく行われます。
 
-Implementing SSO from on-premises can be easily achieved with federation solutions such as ADFS or by configuring password hash sync. You can easily deploy both options using the Azure AD Connect configuration wizard.
+オンプレミスからの SSO は、ADFS などのフェデレーション ソリューションを使用したり、パスワード ハッシュ同期を構成したりすることによって簡単に実装できます。どちらのオプションも Azure AD Connect 構成ウィザードを使って簡単にデプロイできます。
   
 
-For more details, see [Integrating your on-premises identities with Azure Active Directory](active-directory-aadconnect.md).
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
   
 
 ---
 
-**Q: Does Azure Active Directory provide a self-service portal for users in my organization?**
+**Q: Azure Active Directory には、所属する組織のユーザーのためのセルフサービス ポータルが用意されていますか?**
 
-**A:** Yes, Azure Active Directory provides you with the [Azure AD Access Panel](http://myapps.microsoft.com) for user self-service and application access. IF you are an Office 365 customer, you can find many of the same capabilities in the Office 365 portal. 
+**A:** はい。Azure Active Directory には、ユーザーによるセルフサービスとアプリケーション アクセス用に [Azure AD アクセス パネル](http://myapps.microsoft.com)が用意されています。Office 365 を利用している方は、これと同じ機能の多くを Office 365 ポータルで使用できます。
 
-For more information, see the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md). 
+詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-
-
----
-
-**Q: Does Azure AD help me manage my on-premises infrastructure?**
-
-**A:** Yes, it does. The Azure AD Premium edition provides you with **Connect Health**. Azure AD Connect Health helps you monitor and gain insight into your on-premises identity infrastructure and the synchronization services.  
-
-For more details, see [Monitor your on-premises identity infrastructure and synchronization services in the cloud](active-directory-aadconnect-health.md).  
-
----
-
-## <a name="password-management"></a>Password management
-
-**Q: Can I use Azure AD password write-back without password sync? (AKA, I would like to use Azure AD SSPR with password write-back but I don’t want my passwords stored in the cloud?)**
-
-**A:** You do not need to synchronize your AD passwords to Azure AD in order to enable write-back. In a federated environment, Azure AD SSO relies on the on-premises directory to authenticate the user. This scenario does not require the on-premises password to be tracked in Azure AD.
-
----
-
-**Q: How long does it take for a password to be written back to AD on-premises?**
-
-**A:** Password write-back operates in real-time. 
-
-For more details, see [Getting started with Password Management](active-directory-passwords-getting-started.md) 
 
 
 ---
 
-**Q: Can I use password write-back with passwords that are managed by an administrator?**
+**Q: Azure AD はオンプレミスのインフラストラクチャの管理に役立ちますか?**
 
-**A:** Yes, if you have password write-back enabled, the password operations performed by an administrator are written back to your on-premises environment.  
+**A:** はい。Azure AD Premium Edition には **Connect Health** が用意されています。Azure AD Connect Health では、オンプレミスの ID インフラストラクチャと同期サービスを監視、分析できます。
 
-For more answers to password related questions, see [Password Management Frequently Asked Questions](active-directory-passwords-faq.md).
-
----
-
-## <a name="application-access"></a>Application access
-
-
-**Q: Where can I find a list of applications that are pre-integrated with Azure AD and their capabilities?**
-
-**A:** Azure AD has over 2600 pre-integrated applications from Microsoft, application service providers, or partners. All pre-integrated applications support SSO. SSO enables you to use your organizational credentials to access your apps. Some of the applications also support automated provisioning and de-provisioning
-
-For a complete list of the pre-integrated applications, see the [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
-
+詳細については、「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](active-directory-aadconnect-health.md)」を参照してください。
 
 ---
 
-**Q: What if the application I need is not in the Azure AD marketplace?**
+## パスワード管理
 
-**A:** With Azure AD Premium, you can add and configure any application you want. Depending on your application’s capabilities and your preferences, you can configure SSO and automated provisioning.  
+**Q: パスワード同期を使わずに Azure AD パスワード ライトバックを使用することはできますか (パスワード ライトバックを使って Azure AD SSPR を使用したいが、パスワードをクラウドに保存したくない場合)?**
 
-For more details, see:
+**A:** ライトバックを有効にするために AD パスワードを Azure AD に同期する必要はありません。フェデレーション環境では、Azure AD SSO は、ユーザーの認証のためにオンプレミスのディレクトリを利用します。このシナリオでは、オンプレミスのパスワードを Azure AD で追跡する必要はありません。
 
-- [Configuring single sign-on to applications that are not in the Azure Active Directory application gallery](active-directory-saas-custom-apps.md)
-- [Using SCIM to enable automatic provisioning of users and groups from Azure Active Directory to applications](active-directory-scim-provisioning.md) 
+---
+
+**Q: パスワードが AD オンプレミスに書き戻されるのに、どれくらいの時間がかかりますか?**
+
+**A:** パスワード ライトバックはリアルタイムで行われます。
+
+詳細については、「[パスワード管理の概要](active-directory-passwords-getting-started.md)」を参照してください。
 
 
 ---
 
-**Q: How do users sign into applications using Azure Active Directory?**
+**Q: 管理者によって管理されるパスワードでパスワード ライトバックを使用できますか?**
+
+**A:** はい。パスワード ライトバックが有効になっていれば、管理者によって実行されるパスワード操作は、オンプレミスの環境に書き戻されます。
+
+パスワード関連の質問に対する回答については、「[パスワード管理に関するよく寄せられる質問 (FAQ)](active-directory-passwords-faq.md)」を参照してください。
+
+---
+
+## アプリケーション アクセス
+
+
+**Q: Azure AD とその機能にあらかじめ統合されているアプリケーションの一覧はどこにありますか?**
+
+**A:** Azure AD には、Microsoft、アプリケーション サービス プロバイダー、パートナーが開発した、2,600 個を超える事前統合されたアプリケーションがあります。すべての事前統合されたアプリケーションで SSO がサポートされています。SSO を使用すると、対象のアプリへのアクセスに、所属する組織の資格情報を使うことができます。また、一部のアプリケーションでは、プロビジョニングとプロビジョニング解除の自動化がサポートされています。
+
+事前統合されたアプリケーションの完全な一覧については、「[Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)」を参照してください。
+
+
+---
+
+**Q: 必要なアプリケーションが Azure AD Marketplace にない場合はどうすればよいですか?**
+
+**A:** Azure AD Premium なら、お求めのアプリケーションを追加、構成できます。アプリケーションの機能と必要性に応じて SSO と自動プロビジョニングを構成できます。
+
+詳細については、次のリンクを参照してください。
+
+- [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](active-directory-saas-custom-apps.md)
+- [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md)
+
+
+---
+
+**Q: ユーザーが Azure Active Directory を使用してアプリケーションにサインインする場合、どのような方法がありますか?**
  
-**A:** Azure Active directory provides several ways for users to view and access their applications such as:
+**A:** Azure Active Directory では、ユーザーがアプリケーションを表示してアクセスする方法は複数あります。たとえば、次の方法があります。
 
-- The Azure AD access panel
+- Azure AD アクセス パネル
 
-- The Office 365 application launcher
+- Office 365 アプリケーション起動プログラム
 
-- Direct sign-on to federated apps
+- フェデレーション アプリへの直接サインオン
 
-- Deep links to federated, password-based, or existing apps
+- フェデレーション アプリ、パスワードベースのアプリ、または既存のアプリへのディープ リンク
 
-For more information, see [Deploying Azure AD integrated applications to users](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users).
+詳細については、「[Azure AD 統合アプリケーションをユーザーにデプロイする](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)」を参照してください。
 
 
 ---
 
-**Q: What are the different ways Azure Active Directory enables authentication and single sign-on to applications?**
+**Q: Azure Active Directory でアプリケーションに対する認証とシングル サインオンを有効にする方法には、どのようなものがありますか?**
  
-**A:** Azure Active Directory supports many standardized protocols for authentication and authorization such as SAML 2.0, OpenID Connect, OAuth 2.0, and WS-Federation. Azure AD also supports password vaulting and automated sign-in capabilities for apps that only support forms-based authentication.  
+**A:** Azure Active Directory では、SAML 2.0、OpenID Connect、OAuth 2.0、WS-Federation など、認証と承認に関する標準化されたプロトコルが多数サポートされています。Azure AD では、フォーム ベース認証しかサポートしていないアプリのために、パスワード保管と自動サインインの機能もサポートされています。
 
-For more information, see:
+詳細については、次を参照してください。
 
-- [Authentication Scenarios for Azure AD](active-directory-authentication-scenarios.md)
+- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
 
-- [Active Directory Authentication Protocols](https://msdn.microsoft.com/library/azure/dn151124.aspx)
+- [Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)
 
-- [How does single sign-on with Azure Active Directory work?](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)
+- [Azure Active Directory によるシングル サインオンのしくみ](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)
 
 
 ---
 
-**Q: Can I add applications I’m running on-premises?**
+**Q: オンプレミスで実行しているアプリケーションを追加することはできますか?**
 
-**A:** Azure AD Application Proxy provides you with easy and secure access to on-premises web applications that you choose. You can access these applications in the same way you are accessing your SaaS apps in Azure Active Directory. There is no need for a VPN or changing your network infrastructure.  
+**A:** Azure AD アプリケーション プロキシを使用すれば、選択したオンプレミスの Web アプリケーションに簡単かつ安全にアクセスできます。これらのアプリケーションには、Azure Active Directory で SaaS アプリにアクセスしているのと同じ方法でアクセスできます。VPN を使ったり、ネットワーク インフラストラクチャを変更したりする必要はありません。
 
-For more details, see [How to provide secure remote access to on-premises applications](active-directory-application-proxy-get-started.md).
+詳細については、「[オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)」を参照してください。
 
 
 --- 
 
-**Q: How do I require MFA for users accessing a particular application?**
+**Q: 特定のアプリケーションにアクセスするユーザーに対して MFA を要求するにはどうすればよいですか?**
 
-**A:** With Azure AD conditional access, you can assign a unique access policy for each application. In your policy, you can require MFA at all times, or when users are not connected to the local network.  
+**A:** Azure AD 条件付きアクセスを使用して、各アプリケーションに一意のアクセス ポリシーを割り当てることができます。ポリシーでは、MFA を常に要求するようにしたり、ユーザーがローカル ネットワークに接続されていない場合に要求するようにしたりできます。
 
-For more details, see [Securing access to Office 365 and other apps connected to Azure Active Directory](active-directory-conditional-access.md).
+詳細については、「[Azure Active Directory に接続されている Office 365 とその他のアプリへのアクセスの保護](active-directory-conditional-access.md)」を参照してください。
 
 
 ---
 
-**Q: What is Automated User Provisioning for SaaS Apps?**
+**Q: SaaS アプリへのユーザー プロビジョニングの自動化とはなんですか?**
 
-**A:** Azure Active Directory allows you to automate the creation, maintenance, and removal of user identities in many popular cloud (SaaS) applications. 
+**A:** Azure Active Directory を使用すると、多くの一般的なクラウド (SaaS) アプリケーションでユーザー ID の作成、保守、削除を自動化できます。
 
-For more information, see [Automate User Provisioning and Deprovisioning to SaaS Applications with Azure Active Directory](active-directory-saas-app-provisioning.md)
+詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
 
 ---
 
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

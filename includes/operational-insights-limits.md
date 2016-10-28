@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Operational Insights limits table"
-   description="Describes system limits for Operational Insights."
+   pageTitle="Operational Insights 制限の表"
+   description="Operational Insights のシステム制限について説明します。"
    services="operational-insights"
    documentationCenter="NA"
    authors="bandersmsft"
@@ -16,21 +16,16 @@
    ms.author="banders" />
 
 
+次の制限は、Operational Insights のサブスクリプションに適用されます。
 
-The following limits apply to Operational Insights subscriptions.
 
-
-|   |FREE|STANDARD|PREMIUM|
+| |無料|標準|プレミアム|
 |---|---|---|---|
-|Daily data transfer limit|500 MB<sup>1</sup>|None|None|
-|Data retention period|7 days|1 month|12 months|
-|Data storage limit|500 MB * 7 days = 3.5 GB|unlimited|unlimited|
+|日次データ転送の上限|500 MB<sup>1</sup>|なし|なし|
+|データ保持期間|7 日|1 か月|12 か月|
+|データ ストレージの上限|500 MB * 7 日 = 3.5 GB|無制限|無制限|
 
 
-<sup>1</sup>When customers reach their 500MB daily data transfer limit, data analysis stops and resumes at the start of the next day. A day is based on UTC.
+<sup>1</sup>500 MB の 1 日のデータ転送の上限に達した場合、データの分析は停止し、翌日のはじめに再開されます。1 日は UTC に基づきます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

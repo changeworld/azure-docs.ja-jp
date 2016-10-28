@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Security Center Planning and Operations Guide | Microsoft Azure"
-   description="This document helps you to plan before adopting Azure Security Center and considerations regarding daily operations."
+   pageTitle="Security Center 計画および運用ガイド | Microsoft Azure"
+   description="このドキュメントを利用して、Azure Security Center と日常的な運用に関する考慮事項の採用前に計画を立てることができます。"
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,237 +16,232 @@
    ms.date="09/22/2016"
    ms.author="yurid"/>
 
+# Azure Security Center 計画および運用ガイド
+このガイドは、所属組織が Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
-# <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center planning and operations guide
-This guide is for information technology (IT) professionals, IT architects, information security analysts, and cloud administrators whose organizations are planning to use Azure Security Center.
+## 計画ガイド
+このガイドでは、組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。Security Center を最大限に活用するには、安全な開発と運用、監視、ガバナンス、インシデント対応のニーズを満たすために、組織内のさまざまな個人やチームがこのサービスをどのように使用するのかを把握することが重要です。Security Center の使用を計画するうえで考慮が必要となる主な領域は次のとおりです。
 
-## <a name="planning-guide"></a>Planning guide
-This guide covers a set of steps and tasks that you can follow to optimize your use of Security Center based on your organization’s security requirements and cloud management model. To take full advantage of Security Center, it is important to understand how different individuals or teams in your organization use the service to meet secure development and operations, monitoring, governance, and incident response needs. The key areas to consider when planning to use Security Center are:
+- セキュリティ ロールとアクセス制御
+- セキュリティ ポリシーと推奨事項
+- データの収集と保存
+- 継続的なセキュリティの監視
+- インシデント対応
 
-- Security Roles and Access Controls
-- Security Policies and Recommendations
-- Data Collection and Storage
-- Ongoing Security Monitoring
-- Incident Response
+次のセクションでは、これらの領域のそれぞれについて計画し、自社の要件に合わせて推奨事項を適用する方法について説明します。
 
-In the next section, you will learn how to plan for each one of those areas and apply those recommendations based on your requirements.
-
-> [AZURE.NOTE] Read [Azure Security Center frequently asked questions (FAQ)](security-center-faq.md) for a list of common questions that can also be useful during the designing and planning phase.
+> [AZURE.NOTE] 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」に、設計と計画のフェーズにも役立つ一般的な質問の一覧が記載されています。
 
 
-## <a name="security-roles-and-access-controls"></a>Security roles and access controls
-Depending on the size and structure of your organization, multiple individuals and teams may use Security Center to perform different security-related tasks. In the following diagram you have an example of fictitious personas and their respective roles and security responsibilities:
+## セキュリティ ロールとアクセス制御
+組織の規模と構造によっては、複数の個人やチームが Security Center を使用して、セキュリティ関連のさまざまなタスクを実行する場合があります。次の図には、架空の人物のほか、それぞれの役割とセキュリティ責任が例として挙げられています。
 
-![Roles](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-ga.png)
+![ロール](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-ga.png)
 
-Security Center enables these individuals to meet these various responsibilities. For example:
+Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。次に例を示します。
 
-**Jeff (Cloud Workload Owner)**
+**Jeff (クラウド ワークロード所有者)**
 
-- Manage a cloud workload and its related resources
-- Responsible for implementing and maintaining protections in accordance with company security policy
+- クラウド ワークロードとその関連リソースを管理する
+- 会社のセキュリティ ポリシーに従って保護を実装、管理する責任を負う
 
 **Ellen (CISO/CIO)**
 
-- Responsible for all aspects of security for the company
-- Wants to understand the company's security posture across cloud workloads
-- Needs to be informed of major attacks and risks
+- 会社のセキュリティに関して全面的な責任を負う
+- クラウド ワークロード全般について会社のセキュリティ体制を把握したいと考えている
+- 主な攻撃とリスクを把握している必要がある
 
-**David (IT Security)**
+**David (IT セキュリティ担当者)**
 
-- Sets company security policies to ensure the appropriate protections are in place
-- Monitors compliance with policies
-- Generates reports for leadership or auditors
+- 適切な保護が実施されるように、会社のセキュリティ ポリシーを設定する
+- ポリシーを使用してコンプライアンスを監視する
+- リーダーまたは監査担当者向けのレポートを作成する
 
-**Judy (Security Operations)**
+**Judy (セキュリティ運用担当者)**
 
-- Monitors and responds to security alerts 24/7
-- Escalates to Cloud Workload Owner or IT Security Analyst
+- 24 時間 365 日監視を行い、セキュリティ アラートに対応する
+- クラウド ワークロード所有者または IT セキュリティ アナリストに報告を行う
 
-**Sam (Security Analyst)**
+**Sam (セキュリティ アナリスト)**
 
-- Investigate attacks
-- Remediates alerts or works with Cloud Workload Owner to apply remediation 
+- 攻撃を調査する
+- 自分でアラートを修復するか、クラウド ワークロード所有者と連携して修復を実施する
 
 
-Security Center uses [Role-Based Access Control (RBAC)](../active-directory/role-based-access-control-configure.md), which provides [built-in roles](../active-directory/role-based-access-built-in-roles.md) that can be assigned to users, groups, and services in Azure. When a user opens Security Center, they only see information related to resources they have access to. Which means the user is assigned the role of Owner, Contributor, or Reader to the subscription or resource group that a resource belongs to. Using the personas explained in the previous diagram, the following RBAC would be needed:
+Security Center では[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) が使用されています。RBAC が提供する[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。ユーザーが Security Center を開くと、アクセス権のあるリソースに関する情報のみが表示されます。これは、サブスクリプションまたはリソースが属するリソース グループについて、所有者、共同作業者、閲覧者のいずれかのロールがユーザーに割り当てられていることを意味します。前の図で説明した人物の例では、次の RBAC が必要になります。
 
-**Jeff (Cloud Workload Owner)**
+**Jeff (クラウド ワークロード所有者)**
 
-- Resource Group Owner/Collaborator
+- リソース グループの所有者/共同作業者
 
-**David (IT Security)**
+**David (IT セキュリティ担当者)**
 
-- Subscription Owner/Collaborator
+- サブスクリプションの所有者/共同作業者
 
-**Judy (Security Operations)**
+**Judy (セキュリティ運用担当者)**
 
-- Subscription Reader to View Alerts
-- Subscription Owner/Collaborator Required to Dismiss Alerts
+- サブスクリプションの閲覧者 (アラートを表示するために必要)
+- サブスクリプションの所有者/共同作業者 (アラートを解除するために必要)
 
-**Sam (Security Analyst)**
+**Sam (セキュリティ アナリスト)**
 
-- Subscription Reader to View Alerts
-- Subscription Owner/Collaborator Required to Remediate or Dismiss Alerts
-- Access to Storage May Be Required
+- サブスクリプションの閲覧者 (アラートを表示するために必要)
+- サブスクリプションの所有者/共同作業者 (アラートを修復または解除するために必要)
+- ストレージへのアクセスが必要になることがある
 
-Some other important information to consider:
+上記に加えて、次の点を考慮する必要があります。
 
-- Only subscription Owners and Contributors can edit a security policy
-- Only subscription and resource group Owners and Contributors can apply security recommendations for a resource
+- セキュリティ ポリシーを編集できるのは、サブスクリプションの所有者と共同作成者のみです。
+- セキュリティに関する推奨事項をリソースに適用できるのは、サブスクリプションとリソース グループの所有者と共同作成者のみです。
 
-When planning access control using RBAC for Security Center, be sure to understand who in your organization will be using Security Center. Also, what types of tasks they will be performing and then configure RBAC accordingly.
+Security Center の RBAC を使用してアクセス制御を計画する際は、組織内のどのユーザーが Security Center を使用するのかを必ず把握してください。また、実行されるタスクの種類を把握し、それに応じて RBAC を構成してください。
 
-> [AZURE.NOTE] We recommend that you assign the least permissive role needed for users to complete their tasks. For example, users who only need to view information about the security state of resources but not take action, such as applying recommendations or editing policies, should be assigned the Reader role.
+> [AZURE.NOTE] タスクを実行するために必要となる最小限の権限ロールをユーザーに割り当てることをお勧めします。たとえば、リソースのセキュリティ状態に関する情報の表示のみが必要で、推奨事項の適用やポリシーの編集などの操作を行う必要がないユーザーには、閲覧者ロールを割り当てます。
 
-## <a name="security-policies-and-recommendations"></a>Security policies and recommendations
-A security policy defines the set of controls, which are recommended for resources within the specified subscription or resource group. In Security Center, you define policies according to your company's security requirements and the type of applications or sensitivity of the data.
+## セキュリティ ポリシーと推奨事項
+セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。Security Center では、セキュリティに関する会社の要件、アプリケーションの種類、データの機密度に合わせてポリシーを定義できます。
 
-Policies that are enabled in the subscription level automatically propagate to all resources groups within the subscription as shown in the following diagram:
+次の図に示すように、サブスクリプション レベルで有効になっているポリシーは、サブスクリプション内のすべてのリソース グループに自動的に反映されます。
 
 ![Security Policies](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig2-ga.png)
 
-As shown in the preceding figure, security policies for resource groups can be inherited from the subscription level.
+前の図のとおり、リソース グループのセキュリティ ポリシーはサブスクリプション レベルから継承できます。
 
-In some scenarios where you may have resources in a resource group that require a different set of policies, you can disable inheritance and apply custom policies to a specific Resource Group.
+リソース グループ内に別のポリシー セットを必要とするリソースがあるシナリオでは、継承を無効にして、特定のリソース グループにカスタム ポリシーを適用できます。
 
-If you need custom policies in specific resource groups, you should disable inheritance in the resource group and change the security policies. For example, if you have some workloads that do not require the SQL Transparent Data Encryption policy, turn off the policy at the subscription level and enable it only in the resources groups where SQL TDE is required.
+特定のリソース グループにカスタム ポリシーが必要な場合は、リソース グループの継承を無効にし、セキュリティ ポリシーを変更する必要があります。たとえば、SQL Transparent Data Encryption ポリシーを必要としないワークロードが混在している場合は、サブスクリプション レベルのポリシーを無効にして、SQL TDE が必要なリソース グループでのみ有効にします。
 
-When you start creating custom policies for different resource groups, you should plan your policy deployment knowing that in case of a policy conflict (subscription versus resource group), the resource group policy prevails.
+複数のリソース グループに対してカスタム ポリシーを作成する際は、ポリシーが競合した場合 (サブスクリプションとリソース グループとの間の競合など)、リソース グループ ポリシーが優先されることを踏まえたうえでポリシーのデプロイを計画する必要があります。
 
-> [AZURE.NOTE] If you need to review which policies were changed, you can use [Azure Audit Logs](https://blogs.msdn.microsoft.com/cloud_solution_architect/2015/03/10/audit-logs-for-azure-events/). Policy changes are always logged in Azure Audit Logs.
+> [AZURE.NOTE] 変更が加えられたポリシーを特定する必要がある場合は、[Azure 監査ログ](https://blogs.msdn.microsoft.com/cloud_solution_architect/2015/03/10/audit-logs-for-azure-events/)を使用して確認できます。ポリシーの変更は常に Azure 監査ログに記録されます。
 
-### <a name="security-recommendations"></a>Security recommendations
+### セキュリティに関する推奨事項
 
-Before configuring security policies, review each of the [security recommendations](security-center-recommendations.md), and determine whether these policies are appropriate for your various subscriptions and resource groups. It is also important to understand what action is taken to address Security Recommendations.
+セキュリティ ポリシーを構成する前に、[セキュリティに関する推奨事項](security-center-recommendations.md)をそれぞれ確認し、対象の各種サブスクリプションとリソース グループに対してこれらのポリシーが適切かどうかを判断します。また、セキュリティに関する推奨事項への対応として必要なアクションを理解することも重要です。
 
-**Endpoint Protection**: If a virtual machine does not have an endpoint protection solution enabled, Security Center recommends that you install one. If you have a preferred endpoint protection solution that you’ve already adopted on-premises, you need to decide if you use the same antimalware for your Azure VMs. Security Center provides you with several endpoint protection options.  You can use the free Microsoft Antimalware or choose among a list of endpoint protection solutions from integrated partners. For more information on how to deploy antimalware using Security Center, read [Install Endpoint Protection in Azure Security Center](security-center-install-endpoint-protection.md).
+**エンドポイントの保護**: 仮想マシンでエンドポイント保護ソリューションが有効になっていない場合、エンドポイント保護ソリューションをインストールするよう Security Center から推奨されます。オンプレミスで既に採用している使い慣れたエンドポイント保護ソリューションがある場合は、Azure VM に同じマルウェア対策を使用するかどうかを決定する必要があります。Security Center にも、エンドポイント保護オプションがいくつか用意されています。無料の Microsoft マルウェア対策を使用したり、統合パートナーが提供するエンドポイント保護ソリューションの一覧から選択したりすることができます。Security Center を使用してマルウェア対策をデプロイする方法の詳細については、「[Azure Security Center で Endpoint Protection をインストールする](security-center-install-endpoint-protection.md)」を参照してください。
 
-**System Updates**: Security Center identifies virtual machines that are missing security or critical operating system updates for IaaS and Cloud Services (PaaS). Consider who is responsible for applying updates when needed and how they are applied. Many organizations use WSUS, Windows Update, or another tool.
+**システムの更新**: Security Center は、IaaS と Cloud Services (PaaS) のセキュリティ更新プログラムや重要なオペレーティング システム更新プログラムが適用されていない仮想マシンを識別します。必要に応じて、更新プログラムの適用を担当するユーザーと適用方法を検討してください。多くの組織では、WSUS や Windows Update などのツールが使用されています。
 
-**Baseline Configurations**: If virtual machine operating system configurations do not match the recommended baselines, a recommendation is surfaced. Review the set of baselines [here](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) and consider how operating system configurations are applied.
+**ベースライン構成**: 仮想マシン オペレーティング システムの構成が推奨されるベースラインと一致していない場合は、推奨事項が提示されます。ベースラインのセットを[こちら](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)で確認し、オペレーティング システムの構成を適用する方法を検討してください。
 
-**Disk Encryption**: If you have virtual machine disks that are not encrypted, Security Center recommends you to apply Azure Disk Encryption. This feature leverages BitLocker for Windows and DM-Crypt for Linux to provide volume encryption for the OS and data disks. This recommendation redirects you to a [step by step guide](security-center-disk-encryption.md) that has the instructions on how to perform this encryption.
+**ディスク暗号化**: 仮想マシンのディスクが暗号化されていない場合、Azure Disk Encryption を適用するよう Security Center から推奨されます。この機能では、Windows 用に BitLocker、Linux 用に DM-Crypt を利用して、OS とデータ ディスクのボリューム暗号化を行います。この推奨に応じると、この暗号化を実行する手順を示した[ステップ バイ ステップ ガイド](security-center-disk-encryption.md)が表示されます。
 
-Be aware that there are several encryption scenarios that you need to address. You will need to plan for the unique requirements for each of these scenarios:
+対処の必要な暗号化のシナリオがいくつかあります。下に示す各シナリオに固有の要件を踏まえて計画する必要があります。
 
-- Encryption of new Azure Virtual Machines from VHDs that you have encrypted using your own encryption keys
-- Encryption of new Azure Virtual Machines that were created from the Azure Gallery
-- Encryption of Azure Virtual Machines that are already running in Azure
+- 独自の暗号化キーを使用して暗号化されている VHD から新規作成された Azure Virtual Machines の暗号化
+- Azure ギャラリーから新規作成された Azure Virtual Machines の暗号化
+- Azure で既に実行されている Azure Virtual Machines の暗号化
 
-Planning requirements will be different for each of these scenarios. Please refer to the [Azure Disk Encryption white paper](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0) for details of each of these scenarios.
+要件の計画はこれらのシナリオごとに異なります。各シナリオの詳細については、[Azure Disk Encryption のホワイト ペーパー](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)を参照してください。
 
-**Web Application Firewall**: Security Center will identify virtual machines running web applications and recommend that you install a Web Application Firewall (WAF). Evaluate the available partner solutions to determine which is the best fit for your organization and determine how the solution will be licensed (partners may support Bring Your Own License and/or Pay As You Go models). For more information on how to deploy a web application firewall in your Azure VMs using Security Center, read [Add a web application firewall in Azure Security Center](security-center-add-web-application-firewall.md).
+**Web アプリケーション ファイアウォール**: Security Center は、Web アプリケーションを実行している仮想マシンを識別すると、Web アプリケーション ファイアウォール (WAF) をインストールすることを推奨します。利用可能なパートナー ソリューションを評価し、自社に最適なソリューションと、そのライセンスの取得方法を特定してください (パートナーがライセンス持ち込みモデルや従量課金モデルに対応している場合があります)。Security Center を使用して Azure VM で Web アプリケーション ファイアウォールをデプロイする方法の詳細については、「[Azure Security Center で Web アプリケーション ファイアウォールを追加する](security-center-add-web-application-firewall.md)」を参照してください。
 
-**Next Generation Firewall**: Enable you to provision a virtual appliance from leading vendors, including Check Point and soon after Cisco and Fortinet. This extends network protections beyond Network Security Groups, which are built in to Azure. Security Center will discover deployments for which a Next Generation Firewall is recommended, and enable you to provision a virtual appliance.
+**次世代ファイアウォール**: 主要ベンダーの仮想アプライアンスをプロビジョニングできるようになります。Check Point のほか、間もなく Cisco および Fortinet のものもサポートされます。これを利用すると、Azure に組み込まれているネットワーク セキュリティ グループの適用範囲外までネットワーク保護が拡張されます。次世代ファイアウォールの利用が推奨されるデプロイが Security Center によって検出されると、仮想アプライアンスをプロビジョニングできるようになります。
 
-**Virtual Networking**: Security Center evaluates your [Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) infrastructure and configuration to check that [Network Security Groups](../virtual-network/virtual-networks-nsg.md) are applied and properly configured with inbound traffic rules. You should consider what traffic rules should be defined and communicate this to the individuals who will be applying the related security recommendations.
+**仮想ネットワーク**: Security Center は、[Azure Virtual Network](https://azure.microsoft.com/documentation/services/virtual-network/) のインフラストラクチャと構成を評価し、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)が適用され、かつ着信トラフィック規則を使用して正しく構成されているかどうかを確認します。トラフィック規則での定義が必要な項目を検討し、関連するセキュリティ推奨事項を適用する個人に通知する必要があります。
 
-Security Center will recommend that you provide security contact details for your Azure subscription. This information will be used by Microsoft to contact you if the Microsoft Security Response Center (MSRC) discovers that your customer data has been accessed by an unlawful or unauthorized party. Read [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) for more information on how to enable this recommendation.
+Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定するよう推奨されます。この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。この推奨事項を有効にする方法の詳細については、「[Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md)」を参照してください。
 
-## <a name="data-collection-and-storage"></a>Data collection and storage
+## データの収集と保存
 
-We strongly recommend that you turn data collection on for each of your subscriptions as this will ensure that security monitoring is available for all your VMs. Data collection is enabled via the Azure Monitoring Agent (ASMAgentLauncher.exe) and the Azure Security Monitoring extension (ASMMonitoringAgent.exe).
+サブスクリプションごとにデータ収集を有効にすることを強くお勧めします。これにより、すべての VM でセキュリティの監視を利用できるようになります。データ収集は、Azure 監視エージェント (ASMAgentLauncher.exe) と Azure セキュリティ監視拡張機能 (ASMMonitoringAgent.exe) を使用して実行されます。
 
-The Azure Security Monitoring extension scans for various security relevant configuration and collects security logs from the virtual machine. This data is sent to a Storage account you specify. The scan manager (ASMSoftwareScanner.exe) will be also installed in the virtual machine and be used as a patch scanner.
+Azure セキュリティ監視拡張機能では、さまざまなセキュリティ関連の構成がスキャンされ、仮想マシンからセキュリティ ログが収集されます。このデータは、指定したストレージ アカウントに送信されます。スキャン マネージャー (ASMSoftwareScanner.exe) も仮想マシンにインストールされ、更新プログラム スキャナーとして使用されます。
 
-After data collection is enabled in the security policy, the monitoring agent and extensions are installed automatically on all existing and any new supported virtual machines that are provisioned in Azure.  The agent’s process is non-invasive and doesn’t affect the VM’s performance.
+セキュリティ ポリシーでデータ収集が有効になると、Azure にプロビジョニングされている既存のすべての仮想マシンと新たにプロビジョニングされるサポート対象の仮想マシンに、監視エージェントと拡張機能が自動的にインストールされます。エージェントのプロセスは非干渉型で、VM のパフォーマンスには影響しません。
 
-> [AZURE.NOTE] To troubleshoot Azure Security Monitoring Agent related issues, read [Azure Security Center Troubleshooting Guide](security-center-troubleshooting-guide.md).
+> [AZURE.NOTE] Azure セキュリティ監視エージェントに関する問題のトラブルシューティングについては、「[Azure Security Center トラブルシューティング ガイド](security-center-troubleshooting-guide.md)」を参照してください。
 
-If at some point you want to disable Data Collection, you can turn it off in the security policy. To delete monitoring agents previously deployed, select the Delete Agents menu option.
+ある時点で、データ収集を無効にする必要が生じた場合は、セキュリティ ポリシーで無効にすることができます。デプロイ済みの監視エージェントを削除する場合は、[エージェントの削除] メニュー オプションを選択します。
 
-> [AZURE.NOTE] to find a list of supported VMs, read the [Azure Security Center frequently asked questions (FAQ)](security-center-faq.md).
+> [AZURE.NOTE] サポート対象の VM の一覧については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」を参照してください。
 
-For each region in which you have virtual machines running, you choose the storage account where data collected from those virtual machines is stored. If you do not choose a storage account for each region, one will be created for you. You can choose the storage location per region or store all information in a central location. While security policies can be set at the Azure subscription level and resource group level, the region for your storage account can only be selected at the subscription level.
+実行している仮想マシンがある各リージョンに対し、これらの仮想マシンから収集されたデータが格納されているストレージ アカウントを選択します。リージョンごとにストレージ アカウントを選択しないと、自動的に作成されます。リージョンごとにストレージの場所を選択することも、中央の場所にすべての情報を格納することもできます。セキュリティ ポリシーは Azure サブスクリプション レベルとリソース グループ レベルで設定できますが、ストレージ アカウントのリージョンはサブスクリプション レベルでのみ選択できます。
 
-If you are using a storage account shared among different Azure resources, ensure that you read [Azure Storage Scalability and Performance Targets](../storage/storage-scalability-targets.md) article for more information about size limits and constraints. Your subscription also has storage account limits, review [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md) to better understand these limits.
+使用するストレージ アカウントが別の Azure リソースとの間で共有されている場合は、記事「[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../storage/storage-scalability-targets.md)」で、サイズの制限と制約に関する詳細をご確認ください。サブスクリプションにもストレージ アカウントの制限があります。記事「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を確認し、これらの制限について理解を深めてください。
 
-> [AZURE.NOTE] Costs associated with this storage are not included in the price of the  Security Center service and will be charged separately at regular [Azure storage rates](https://azure.microsoft.com/pricing/details/storage/).
+> [AZURE.NOTE] このストレージに関連するコストは、Security Center サービスの料金には含まれません。通常の [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)が別途適用されます。
 
-Performance and scalability considerations should also be planned according to your Azure environment size and the resources that are consuming your storage account. Review [Microsoft Azure Storage Performance and Scalability Checklist](../storage/storage-performance-checklist.md) for more information.
+パフォーマンスとスケーラビリティに関する考慮事項も、Azure 環境の規模とストレージ アカウントを使用しているリソースに応じて計画する必要があります。詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/storage-performance-checklist.md)」を参照してください。
 
-## <a name="ongoing-security-monitoring"></a>Ongoing security monitoring
+## 継続的なセキュリティの監視
 
-After initial configuration and application of Security Center recommendations, the next step is considering Security Center operational processes.
+Security Center の初期構成と推奨事項の適用を完了したら、次の手順は Security Center の運用プロセスの検討です。
 
-To access Security Center from the Azure portal you can click **Browse** and type **Security Center** in the **Filter** field. The views that the user gets are according to these applied filters.
+Azure ポータルから Security Center にアクセスするには、**[参照]** をクリックし、**[フィルター]** フィールドに「**Security Center**」と入力します。ユーザーに表示されるビューは、ここで適用するフィルターによって異なります。
 
-Security Center will not interfere with your normal operational procedures, it will passively monitor your deployments and provide recommendations based on the security policies you enabled.
+Security Center は、通常の運用上の手順には干渉しません。デプロイを受動的に監視し、有効にされたセキュリティ ポリシーに基づいて推奨事項を提供します。
 
-The Security Center dashboard is divided into two major parts:
+Security Center ダッシュボードは、主に 2 つの部分に分かれています。
 
-- Prevention
-- Detection
+- 防止
+- 検出
 
-When you first enable data collection in Security Center for your current Azure environment, make sure that you review all recommendations, which can be done in the **Recommendations** blade or per resource (**Virtual Machine**, **Networking**, **SQL** and **Application**).
+Security Center で現在の Azure 環境に対してデータ収集を初めて有効にする際は、必ずすべての推奨事項を確認してください。この手順は、**[推奨事項]** ブレードで行うか、リソース単位 (**仮想マシン**、**ネットワーク**、**SQL**、**アプリケーション**) で実行できます。
 
-Once you address all recommendations, the **Prevention** section should be green for all resources that were addressed. Ongoing monitoring at this point becomes easier since you will only take actions based on changes in the resource security health and recommendations tiles.
+すべての推奨事項に対処すると、**[防止策]** セクションの対処済みのリソースがすべて緑色になります。これで、今後は [リソースのセキュリティ正常性] タイルと [推奨事項] タイルの変化に基づいて対処するだけで済むようになるため、継続的な監視が容易になります。
 
-The **Detection** section is more reactive, these are alerts regarding issues that are either taking place now, or occurred in the past and were detected by Security Center controls and 3rd party systems. The Security Alerts tile will show bar graphs that represent the number of threat detection alerts that were found in each day, and their distribution among the different severity categories (low, medium, high). For more information about Security Alerts, read [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md).
+**[検出]** セクションは事後対応型であり、現在対処中の問題、または過去に発生し、Security Center のコントロールやサード パーティ システムで検出された問題に関するアラートが表示されます。[セキュリティ アラート] タイルには、各日に発行された脅威検出アラートの数を表す棒グラフと、各重要度カテゴリ (低、中、高) における分布図が表示されます。セキュリティ アラートの詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 
-> [AZURE.NOTE] You can also leverage Microsoft Power BI to visualize your Security Center data. Read [Get insights from Azure Security Center data with Power BI](security-center-powerbi.md).
+> [AZURE.NOTE] Microsoft Power BI を活用して、Security Center のデータを視覚化することもできます。詳細については、「[Power BI で Azure Security Center のデータから洞察を得る](security-center-powerbi.md)」を参照してください。
 
-### <a name="monitoring-for-new-or-changed-resources"></a>Monitoring for new or changed resources
+### 新しいリリースや変更されたリソースの監視
 
-Most Azure environments are dynamic, with new resources being spun up and down on a regular basis, configurations or changes, etc. Security Center helps ensure that you have visibility into the security state of these new resources.
+ほとんどの Azure 環境は動的で、新しいリソースが日常的に増減されたり、構成や変更が実施されたりします。Security Center を使用すると、これらの新しいリソースのセキュリティ状態を可視化できるようになります。
 
-When you add new resources (VMs, SQL DBs) to your Azure Environment, Security Center will automatically discover these resources and begin to monitor their security. This also includes PaaS web roles and worker roles. If Data Collection is enabled in the [Security Policy](security-center-policies.md), additional monitoring capabilities will be enabled automatically for your virtual machines.
+Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security Center によって自動的にこれらのリソースが検出され、セキュリティの監視が開始されます。これには、PaaS の Web ロールと worker ロールも含まれます。データ収集が[セキュリティ ポリシー](security-center-policies.md)で有効になっている場合は、仮想マシンに対して追加の監視機能が自動的に有効になります。
 
 ![Key areas](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-ga.png)
 
-1.  For virtual machines, access the **Resource security health** tile, click **Virtual Machines**. Any issues with enabling data collection or related recommendations will be surfaced in the **Monitoring Recommendations** section.
-2.  View the **Recommendations** to see what, if any, security risks were identified for the new resource.
-3.  It is very common that when new VMs are added to your environment, only the operating system is initially installed. The resource owner might need some time to deploy other apps that will be used by these VMs.  Ideally, you should know the final intent of this workload. Is it going to be an Application Server? Based on what this new workload is going to be, you can enable the appropriate **Security Policy**, which is the third step in this workflow.
-4.  As new resources are added to your Azure environment, it is possible that new alerts appear in the **Security Alerts** tile. Always verify if there are new alerts in this tile and take actions according to Security Center recommendations.
+1.	仮想マシンについて、**[リソース セキュリティの正常性]** タイルにアクセスし、**[Virtual Machines]** をクリックします。データ収集または関連する推奨事項の有効化に問題があれば、**[監視の推奨事項]** セクションに表示されます。
+2.	**[推奨事項]** を表示し、新しいリソースに関してセキュリティ上のリスクが特定されているかどうか、あればどのようなリスクかを確認します。
+3.	環境に新しい VM が追加されると、通常は、最初にオペレーティング システムのみがインストールされます。リソースの所有者は、ある時点で、これらの VM で使用されるアプリをデプロイする必要が生じることがあります。理想としては、このワークロードの最終的な目的を理解している必要があります。たとえば、アプリケーション サーバーかもしれません。 新しいこのワークロードの目的に基づき、適切な**セキュリティ ポリシー**を有効にできます。これは、このワークフローの 3 番目の手順です。
+4.	Azure 環境に新しいリソースを追加すると、**[セキュリティ アラート]** タイルに新しいアラートが表示される可能性があります。このタイルに新しいアラートがあるかどうかを絶えず確認し、Security Center の推奨事項に従って対処してください。
 
-You will also want to regularly monitor the state of existing resources to identify configuration changes that have created security risks, drift from recommended baselines, and security alerts. Start at the Security Center dashboard. From there you have three major areas to review on a consistent basis.
+既存のリソースの状態を定期的に監視し、セキュリティ リスクの原因となった構成の変更、推奨されたベースラインからのズレ、およびセキュリティ アラートを特定する必要もあります。出発点となるのは、Security Center のダッシュボードです。ここで、主に 3 つの領域を定期的に確認します。
 
-![Operations](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4.png)
+![操作](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4.png)
 
-1.  The **Resource security health** panel provides you quick access to your key resources. Use this option to monitor your Virtual Machines, Networks, SQL and Applications.
-2.  The **Recommendations** panel enables you to review Security Center recommendations. During your ongoing monitoring you may find that you don’t have recommendations on a daily basis, which is normal since you addressed all recommendations on the initial Security Center set up. For this reason, you may not have new information in this section every day and will just need to access it as needed.
-3.  The **Detection** panel might change on either a very frequent or very infrequent basis. Always review your security alerts and take actions based on Security Center recommendations.
+1.	**[リソース セキュリティの正常性]** パネルでは、主要なリソースにすばやくアクセスできます。このオプションを使用して、仮想マシン、ネットワーク、SQL、およびアプリケーションを監視できます。
+2.	**[推奨事項]** パネルでは、Security Center の推奨事項を確認できます。継続的な監視の実施中、推奨事項は毎日表示されるわけではありません。これは、Security Center の初回の設定時にすべての推奨事項に対処したためです。この理由から、このセクションには毎日新しい情報が表示されるとは限らず、必要に応じてアクセスするだけで十分です。
+3.	**[検出]** パネルは、頻繁に変化するか、ほとんど変化しないかのどちらかになる可能性があります。セキュリティ アラートを常に確認し、Security Center の推奨事項に従って対処してください。
 
-## <a name="incident-response"></a>Incident response
+## インシデント対応
 
-Security Center detects and alerts you to threats as they occur. Organizations should monitor for new security alerts and take action as needed to investigate further or remediate the attack. For more information on how Security Center threat detection works, read [Azure Security Center detection capabilities](security-center-detection-capabilities.md).
+脅威が発生すると、Security Center によって検出され、アラートが生成されます。組織は新しいセキュリティ アラートの有無を監視し、必要に応じて、詳しい調査や攻撃の修復のための対策を講じる必要があります。Security Center の検出機能に関する詳細については、「[Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
 
-While this article doesn’t have the intent to assist you creating your own Incident Response plan, we are going to use Microsoft Azure Security Response in the Cloud lifecycle as the foundation for incident response stages. The stages are shown in the following diagram:
+この記事は実際のインシデント対応プランの作成支援を目的としていないため、インシデント対応の段階のベースとして、クラウド ライフサイクルにおける Microsoft Azure のセキュリティ レスポンスを使用します。段階は次の図のとおりです。
 
 ![Suspicious activity](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-1.png)
 
-> [AZURE.NOTE] You can use the National Institute of Standards and Technology (NIST) [Computer Security Incident Handling Guide](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf) as a reference to assist you building your own.
+> [AZURE.NOTE] 計画の作成については、米国国立標準技術研究所 (NIST) の『[Computer Security Incident Handling Guide (コンピューター セキュリティ インシデント対応ガイド)](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)』が参考資料としてご利用いただけます。
 
-You can use Security Center Alerts during the following stages:
+次の段階で、Security Center の警告を使用できます。
 
-- **Detect**: identify a suspicious activity in one or more resources. 
-- **Assess**: perform the initial assessment to obtain more information about the suspicious activity.
-- **Diagnose**: use the remediation steps to conduct the technical procedure to address the issue.
+- **検出**: 1 つまたは複数のリソースで、疑わしいアクティビティを識別します。
+- **評価**: 最初の評価を実行して、疑わしいアクティビティに関する詳細情報を入手します。
+- **診断**: 修復手順を使用して技術的な処置を施し、問題に対処します。
 
-Each Security Alert provides information that can be used to better understand the nature of the attack and suggest possible mitigations. Some alerts also provide links to either more information or to other sources of information within Azure. You can use the information provided for further research and to begin mitigation.
+各セキュリティ アラートで提供される情報は、攻撃の性質に関する理解を深め、緩和策を提案するために活用できます。詳細情報へのリンクか Azure 内の他の情報源へのリンクがアラートに記載されている場合もあります。これらの情報を使用して、さらに詳しい調査を実施したり、対応策を開始したりすることができます。
 
-The following example shows a suspicious RDP activity taking place:
+次の例は、疑わしい RDP アクティビティの発生を示しています。
 
 ![Suspicious activity](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-As you can see, this blade shows details regarding the time that the attack took place, the source hostname, the target VM and also gives recommendation steps. In some circumstances the source information of the attack may be empty. Read [Missing Source Information in Azure Security Center Alerts](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) for more information about this type of behavior.
+上の図のように、このブレードには、攻撃が発生した時間、ソース ホスト名、標的となった VM に関する詳細情報と、推奨される手順が表示されます。状況によっては、攻撃元の情報が空白になっていることもあります。このような動作の詳細については、「[Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/)」を参照してください。
 
-In the [How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) video you can see some demonstrations that can help you to understand how Security Center can be used in each one of those stages.
+ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (Azure Security Center と Microsoft Operations Management Suite をインシデントの対応に活用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」では、上記の各段階における Security Center の使用方法を理解するのに役立つデモを、いくつかご覧いただけます。
 
-> [AZURE.NOTE] Read [Leveraging Azure Security Center for Incident Response](security-center-incident-response.md) for more information on how to use Security Center capabilities to assist you during your Incident Response process. 
+> [AZURE.NOTE] インシデント対応に役立つ Security Center 機能を使用する方法の詳細については、「[Azure Security Center を活用したインシデント対応](security-center-incident-response.md)」を参照してください。
 
-## <a name="see-also"></a>See also
-In this document, you learned how to plan for Security Center adoption. To learn more about Security Center, see the following:
+## 関連項目
+このドキュメントでは、Security Center の導入を計画する方法について説明しました。セキュリティ センターの詳細については、次を参照してください。
 
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md) — Learn how to monitor the health of your Azure resources.
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) — Learn how to monitor the health status of your partner solutions.
-- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Find blog posts about Azure security and compliance.
+- [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

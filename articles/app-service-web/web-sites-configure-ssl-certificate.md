@@ -1,174 +1,171 @@
 <properties
-    pageTitle="Secure your app's custom domain with HTTPS | Microsoft Azure"
-    description="Learn how secure the custom domain name for your app in Azure App Service by configuring an SSL certificate binding. You will also learn how to get an SSL certificate from multiple tools."
-    services="app-service"
-    documentationCenter=".net"
-    authors="cephalin"
-    manager="wpickett"
-    editor="jimbe"
-    tags="top-support-issue"/>
+	pageTitle="HTTPS を使用したアプリのカスタム ドメインのセキュリティ保護 | Microsoft Azure"
+	description="SSL 証明書バインドを構成することによって Azure App Service でアプリのカスタム ドメイン名のセキュリティを高める方法について説明します。複数のツールで SSL 証明書を取得する方法についても説明します。"
+	services="app-service"
+	documentationCenter=".net"
+	authors="cephalin"
+	manager="wpickett"
+	editor="jimbe"
+	tags="top-support-issue"/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/08/2016"
-    ms.author="cephalin"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/08/2016"
+	ms.author="cephalin"/>
 
-
-# <a name="secure-your-app's-custom-domain-with-https"></a>Secure your app's custom domain with HTTPS
+# HTTPS を使用したアプリのカスタム ドメインのセキュリティ保護
 
 
 > [AZURE.SELECTOR]
-- [Buy SSL cert in Azure](web-sites-purchase-ssl-web-site.md)
-- [Use SSL cert from elsewhere](web-sites-configure-ssl-certificate.md)
+- [Azure での SSL 証明書の購入](web-sites-purchase-ssl-web-site.md)
+- [別の場所から取得した SSL 証明書の使用](web-sites-configure-ssl-certificate.md)
 
 
-This article shows you how to enable HTTPS for a web app, a mobile app backend, or an API app in [Azure App Service](../app-service/app-service-value-prop-what-is.md) that uses a custom domain name. It covers server-only authentication. If you need mutual authentication (including client authentication), see [How To Configure TLS Mutual Authentication for App Service](app-service-web-configure-tls-mutual-auth.md).
+この記事では、[Azure App Service](../app-service/app-service-value-prop-what-is.md) でカスタム ドメイン名を使用している Web アプリ、モバイル アプリ バックエンド、または API アプリに対して HTTPS を有効にする方法について説明します。サーバーのみの認証について取り上げます。相互認証 (クライアント認証を含む) を使用する必要がある場合は、「[Web アプリの TLS 相互認証を構成する方法](app-service-web-configure-tls-mutual-auth.md)」を参照してください。
 
-To secure with HTTPS an app that has a custom domain name, you add a certificate for that domain name. By default, Azure secures the **\*.azurewebsites.net** wildcard domain with a single SSL certificate, so your clients can already access your app at **https://*&lt;appname>*.azurewebsites.net**. But if you want to use a custom domain, like **contoso.com**, **www.contoso.com**, and **\*.contoso.com**, the default certificate can't secure that. Furthermore, like all [wildcard certificates](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/), the default certificate is not as secure as using a custom domain and a certificate for that custom domain.   
+カスタム ドメイン名を使用しているアプリのセキュリティを HTTPS で保護するには、そのドメイン名の証明書を追加します。Azure の既定では、1 つの SSL 証明書を使用して ***.azurewebsites.net** というワイルドカード ドメインをセキュリティで保護しているため、クライアントは最初から **https://*&lt;appname>*.azurewebsites.net** のアプリにアクセスできるようになっています。ただし、**contoso.com**、**www.contoso.com**、***.contoso.com** のようなカスタム ドメインを使用する場合、既定の証明書ではセキュリティを確保できません。さらに、すべての[ワイルドカード証明書](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)がそうであるように、既定の証明書は、カスタム ドメインを使用し、そのカスタム ドメイン用の証明書を使用する場合ほど安全性は高くありません。
 
->[AZURE.NOTE] You can get help from Azure experts anytime on the [Azure forums](https://azure.microsoft.com/support/forums/). For more personalized support, go to [Azure Support](https://azure.microsoft.com/support/options/) and click **Get Support**.
+>[AZURE.NOTE] [Azure フォーラム](https://azure.microsoft.com/support/forums/)では、Azure の専門家からいつでもアドバイスを得ることができます。個別対応のサポートが必要な場合は、[Azure のサポート](https://azure.microsoft.com/support/options/)にアクセスし、**[サポートの要求]** をクリックしてください。
 
 <a name="bkmk_domainname"></a>
-## <a name="what-you-need"></a>What you need
-To secure your custom domain name with HTTPS, you bind a custom SSL certificate to that custom domain in Azure. Before binding a custom certificate, you need to do the following:
+## 必要なもの
+HTTPS でカスタム ドメイン名をセキュリティで保護するには、Azure でそのカスタム ドメインにカスタム SSL 証明書をバインドします。カスタム証明書をバインドする前に、次の手順を実行する必要があります。
 
-- **Configure the custom domain** - App Service only allows adding a certificate for a domain name that's already configured in your app. For instructions, see [Map a custom domain name to an Azure app](web-sites-custom-domain-name.md). 
-- **Scale up to Basic tier or higher** App Service plans in lower pricing tiers don't support custom SSL certificates. For instructions, see [Scale up an app in Azure](web-sites-scale.md). 
-- **Get an SSL certificate** - If you do not already have one, you need to get one from a trusted [certificate authority](http://en.wikipedia.org/wiki/Certificate_authority) (CA). The certificate must meet all the following requirements:
+- **カスタム ドメインを構成する** - App Service では、アプリで既に構成されているドメイン名の証明書のみを追加できます。手順については、「[Azure アプリへのカスタム ドメイン名のマッピング](web-sites-custom-domain-name.md)」を参照してください。
+- **Basic レベル以上にスケールアップする** - 低価格層の App Service プランでは、カスタム SSL 証明書がサポートされていません。手順については、「[Azure でのアプリのスケールアップ](web-sites-scale.md)」を参照してください。
+- **SSL 証明書を取得する** - まだ取得していない場合は、信頼された[証明機関](http://en.wikipedia.org/wiki/Certificate_authority) (CA) から SSL 証明書を取得する必要があります。証明書は、次のすべての要件を満たしている必要があります。
 
-    - It is signed by a trusted CA (no private CA servers).
-    - It contains a private key.
-    - It is created for key exchange, and exported to a .PFX file.
-    - It uses a minimum of 2048-bit encryption.
-    - Its subject name matches the custom domain it needs to secure. To secure multiple domains with one certificate, you need to use a wildcard name (e.g. **\*.contoso.com**) or specify subjectAltName values.
-    - It is merged with all **[intermediate certificates](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities)** used by your CA. Otherwise, you may run into irreproducible interoperability problems on some clients.
+	- 信頼された CA (プライベート CA サーバーではなく) によって署名されていること。
+	- 秘密キーが含まれていること。
+	- キー交換用に作成され、.PFX ファイルとしてエクスポートされていること。
+	- 2048 ビット以上の暗号化を使用していること。
+	- サブジェクト名が、セキュリティで保護する対象のカスタム ドメインと一致すること。1 つの証明書で複数のドメインを保護するには、ワイルドカード名 (例: ***. contoso.com**) を使用するか、subjectAltName の値を指定する必要があります。
+	- CA で使用されているすべての**[中間証明書](http://en.wikipedia.org/wiki/Intermediate_certificate_authorities)**と統合されていること。そうでない場合、一部のクライアントで再現性のない相互運用性の問題が発生することがあります。
 
-        >[AZURE.NOTE] The easiest way to get an SSL certificate that meets all the requirements is to         [buy one in the Azure portal directly](web-sites-purchase-ssl-web-site.md). This article shows you how to do it manually and then bind it to your custom domain in App Service.
-        >   
-        > **Elliptic Curve Cryptography (ECC) certificates** can work with App Service, but outside the scope of this article. Work with your CA on the exact steps to create ECC certificates.
+		>[AZURE.NOTE] すべての要件を満たす SSL 証明書を取得する最も簡単な方法は、[Azure ポータルで直接購入する](web-sites-purchase-ssl-web-site.md)ことです。この記事では、それを手動で行う方法と、App Service でカスタム ドメインにバインドする方法を示します。
+		>	
+		> **楕円曲線暗号 (ECC) 証明書**は、App Service で使用できますが、この記事では説明しません。ECC 証明書を作成する正確な手順については、CA にお問い合わせください。
 
 <a name="bkmk_getcert"></a>
-## <a name="step-1.-get-an-ssl-certificate"></a>Step 1. Get an SSL certificate
+## 手順 1.SSL 証明書を取得する
 
-Because CAs provide the various SSL certificate types at different price points, you should start by deciding what type of SSL certificate to buy. To secure a single domain name (**www.contoso.com**), you just need a basic certificate. To secure multiple domain names (**contoso.com** *and* **www.contoso.com** 
-*and* **mail.contoso.com**), you need either a [wildcard certificate](http://en.wikipedia.org/wiki/Wildcard_certificate) or a certificate with [Subject Alternate Name](http://en.wikipedia.org/wiki/SubjectAltName) (`subjectAltName`).
+さまざまな種類の SSL 証明書が、さまざまな価格で CA から提供されているため、購入する SSL 証明書の種類を決めることからまず始めます。1 つのドメイン名 (**www.contoso.com**) を保護する場合は、基本的な証明書で十分です。複数のドメイン名 (**contoso.com**、**www.contoso.com**、**mail.contoso.com** のすべて) を保護する場合は、[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)、または[サブジェクト代替名](http://en.wikipedia.org/wiki/SubjectAltName) (`subjectAltName`) を使用した証明書が必要です。
 
-Once you know which SSL certificate to buy, you submit a Certificate Signing Request (CSR) to a CA. When you get requested certificate back from the CA, you then generate a .pfx file from the certificate. You can perform these steps using the tool of your choice. Here are instructions for the common tools:
+どの SSL 証明書を購入するかが決まったら、証明書署名要求 (CSR) を CA に送信します。要求した証明書が CA から送信されてきたら、証明書から .pfx ファイルを生成します。この手順は任意のツールを使用して実行できます。一般的なツールでの手順は次のとおりです。
 
-- [Certreq.exe steps](#bkmk_certreq) - the Windows utility for creating certificate requests. It has been part of Windows since Windows XP/Windows Server 2000.
-- [IIS Manager steps](#bkmk_iismgr) - The tool of choice if you're already familiar with it.
-- [OpenSSL steps](#bkmk_openssl) - an [open-source, cross-platform tool](https://www.openssl.org). Use it to help you get an SSL certificate from any platform.
-- [subjectAltName steps using OpenSSL](#bkmk_subjectaltname) - steps for getting `subjectAltName` certificates.
+- [Certreq.exe を使用した手順](#bkmk_certreq) - 証明書要求を作成するための Windows ユーティリティです。Windows XP または Windows Server 2000 以降の Windows に組み込まれています。
+- [IIS マネージャーを使用した手順](#bkmk_iismgr) - 既に使い慣れている場合は、このツールを選んでください。
+- [OpenSSL を使用した手順](#bkmk_openssl) - [オープン ソースのクロスプラットフォーム ツール](https://www.openssl.org)です。このツールを使用すると、任意のプラットフォームから SSL 証明書を取得できます。
+- [OpenSSL を使用した subjectAltName 取得の手順](#bkmk_subjectaltname) - `subjectAltName` 証明書を取得するための手順です。
 
-If you want to test the setup in App Service before buying a certificate, you can generate a [self-signed certificate](https://en.wikipedia.org/wiki/Self-signed_certificate). This tutorial gives you two ways to generate it:
+証明書を購入する前に App Service で設定をテストする場合は、[自己署名証明書](https://en.wikipedia.org/wiki/Self-signed_certificate)を生成することができます。このチュートリアルでは、それを生成する 2 つの方法を示します。
 
-- [Self-signed certificate, Certreq.exe steps](#bkmk_sscertreq)
-- [Self-signed certificate, OpenSSL steps](#bkmk_ssopenssl)
+- [Certreq.exe を使用した自己署名証明書の手順](#bkmk_sscertreq)
+- [OpenSSL を使用した自己署名証明書の手順](#bkmk_ssopenssl)
 
 <a name="bkmk_certreq"></a>
-### <a name="get-a-certificate-using-certreq.exe"></a>Get a certificate using Certreq.exe
+### Certreq.exe を使用した証明書の取得
 
-1. Create a file (e.g. **myrequest.txt**), and copy into it the following text, and save it in a working directory. Replace the `<your-domain>` placeholder with the custom domain name of your app.
+1. ファイル (例: **myrequest.txt**) を作成し、そのファイルに次のテキストをコピーして、作業ディレクトリに保存します。プレースホルダー `<your-domain>` はアプリのカスタム ドメイン名に置き換えてください。
 
-        [NewRequest]
-        Subject = "CN=<your-domain>"  ; E.g. "CN=www.contoso.com", or "CN=*.contoso.com" for a wildcard certificate
-        Exportable = TRUE
-        KeyLength = 2048              ; Required minimum is 2048
-        KeySpec = 1
-        KeyUsage = 0xA0
-        MachineKeySet = True
-        ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
-        ProviderType = 12
-        HashAlgorithm = SHA256
+		[NewRequest]
+		Subject = "CN=<your-domain>"  ; E.g. "CN=www.contoso.com", or "CN=*.contoso.com" for a wildcard certificate
+		Exportable = TRUE
+		KeyLength = 2048              ; Required minimum is 2048
+		KeySpec = 1
+		KeyUsage = 0xA0
+		MachineKeySet = True
+		ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
+		ProviderType = 12
+		HashAlgorithm = SHA256
 
-        [EnhancedKeyUsageExtension]
-        OID=1.3.6.1.5.5.7.3.1         ; Server Authentication
+		[EnhancedKeyUsageExtension]
+		OID=1.3.6.1.5.5.7.3.1         ; Server Authentication
 
-    For more information on the options in the CSR, and other available options, see the [Certreq reference documentation](https://technet.microsoft.com/library/dn296456.aspx).
+	CSR に関するオプションの詳細と他の使用可能なオプションについては、[Certreq のリファレンス ドキュメント](https://technet.microsoft.com/library/dn296456.aspx)を参照してください。
 
-4. In a command prompt, `CD` into your working directory and run the following command to create the CSR:
+4. コマンド プロンプトで、`CD` を使用して作業ディレクトリに移動し、次のコマンドを実行して CSR を作成します。
 
-        certreq -new myrequest.txt myrequest.csr
+		certreq -new myrequest.txt myrequest.csr
 
-    **myrequest.csr** is now created in your current working directory.
+	**myrequest.csr** が現在の作業ディレクトリに作成されます。
 
-5. Submit **myrequest.csr** to a CA to obtain an SSL certificate. You either upload the file, or copy its content from a text editor into a web form.
+5. **myrequest.csr** を CA に送信して SSL 証明書を取得します。ファイルをアップロードするか、テキスト エディターから Web フォームにファイルの内容をコピーします。
 
-    For a list of CAs trusted by Microsoft, see [Microsoft Trusted Root Certificate Program: Participants][cas].
+	Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
 
-6. Once the CA has responded to you with a certificate (.CER) file, save it in your working directory. Then, run the following command to complete the pending CSR.
+6. CA から証明書 (.CER) ファイルを受け取ったら、作業ディレクトリに保存します。それから次のコマンドを実行して保留中の CSR を完了します。
 
-        certreq -accept -user <certificate-name>.cer
+		certreq -accept -user <certificate-name>.cer
 
-    This command stores the finished certificate in the Windows certificate store.
+	このコマンドで、完成した証明書を Windows 証明書ストアに格納します。
 
-6. If your CA uses intermediate certificates, install them before you proceed. They usually come as a separate download from your CA, and in several formats for different web server types. Select the version for Microsoft IIS.
+6. CA が中間証明書を使用している場合は、中間証明書をインストールしてから続行します。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じて複数の形式で提供されています。Microsoft IIS 用のバージョンを選択します。
 
-    Once you have downloaded the certificates, right-click each of them in Windows Explorer and select  **Install certificate**. Use the default values in the **Certificate Import Wizard**, and continue selecting **Next** until the import has completed.
+	証明書をダウンロードした後、エクスプローラーで各証明書を右クリックし、**[証明書のインストール]** を選択します。**証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次]** のクリックを続けます。
 
-7. To export your SSL certificate from the certificate store, press `Win`+`R` and run **certmgr.msc** to launch Certificate Manager. Select **Personal** > **Certificates**. In the **Issued To** column, you should see an entry with your custom domain name, and the CA you used to generate the certificate in the **Issued By** column.
+7. 証明書ストアから SSL 証明書をエクスポートするには、`Win` キーを押しながら `R` キーを押し、**certmgr.msc** を実行して証明書マネージャーを起動します。**[個人用]** > **[証明書]** を選択します。**[発行先]** 列に、カスタム ドメイン名に対応するエントリが表示されます。**[発行元]** 列には、証明書を生成するために使用した証明機関が表示されます。
 
-    ![insert image of cert manager here][certmgr]
+	![証明書マネージャーに関するイメージをここに挿入します][certmgr]
 
-9. Right-click the certificate and select **All Tasks** > **Export**. In the **Certificate Export Wizard**, click **Next**, then select **Yes, export the private key**, and then click **Next** again.
+9. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** を選択します。**証明書のエクスポート ウィザード**で、**[次へ]** をクリックしてから **[はい、秘密キーをエクスポートします]** を選択し、**[次へ]** を選択します。
 
-    ![Export the private key][certwiz1]
+	![秘密キーをエクスポートします][certwiz1]
 
-10. Select **Personal Information Exchange - PKCS #12**, **Include all certificates in the certificate path if possible**, and **Export all extended properties**. Then, click **Next**.
+10. **[個人情報の交換 - PKCS #12]**、**[証明のパスにある証明書を可能であればすべて含む]**、および **[すべての拡張プロパティをエクスポートする]** を選択します。次に、**[次へ]** をクリックします。
 
-    ![include all certs and extended properties][certwiz2]
+	![すべての証明書と拡張プロパティを含める][certwiz2]
 
-11. Select **Password**, and then enter and confirm the password. Click **Next**.
+11. **[パスワード]** をクリックし、パスワードの入力と確認入力を行います。**[次へ]** をクリックします。
 
-    ![specify a password][certwiz3]
+	![パスワードの指定][certwiz3]
 
-12. Provide a path and filename for the exported certificate, with the extension **.pfx**. Click **Next** to finish.
+12. エクスポートした証明書を格納するパスとファイル名を指定します。ファイル名には **.pfx** という拡張子を付ける必要があります。**[次へ]** をクリックして完了します。
 
-    ![provide a file path][certwiz4]
+	![ファイル パスを指定する][certwiz4]
 
-You are now ready to upload the exported PFX file to App Service. See [Step 2. Upload and bind the custom SSL certificate](#bkmk_configuressl).
+これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[手順 2.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
 
 <a name="bkmk_iismgr"></a>
-### <a name="get-a-certificate-using-the-iis-manager"></a>Get a certificate using the IIS Manager
+### IIS マネージャーを使用した証明書の取得
 
-1. Generate a CSR with IIS Manager to send to the CA. For more information on generating a CSR, see [Request an Internet Server Certificate (IIS 7)][iiscsr].
+1. IIS マネージャーを使用して、証明機関に送信する CSR を生成します。CSR 生成の詳細については、「[インターネット サーバー証明書を要求する (IIS 7)][iiscsr]」を参照してください。
 
-3. Submit your CSR to a CA to get an SSL certificate. For a list of CAs trusted by Microsoft, see [Microsoft Trusted Root Certificate Program: Participants][cas].
+3. SSL 証明書を取得するために、CSR を CA に送信します。Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
 
 
-3. Complete the CSR with the certificate that the CA sends back to you. For more information on completing the CSR, see [Install an Internet Server Certificate (IIS 7)][installcertiis].
+3. CA から届いた証明書を使用して CSR を完了します。CSR の完了手順については、「[インターネット サーバー証明書をインストールする (IIS 7)][installcertiis]」を参照してください。
 
-4. If your CA uses intermediate certificates, install them before you proceed. They usually come as a separate download from your CA, and in several formats for different web server types. Select the version for Microsoft IIS.
+4. CA が中間証明書を使用している場合は、中間証明書をインストールしてから続行します。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じて複数の形式で提供されています。Microsoft IIS 用のバージョンを選択します。
 
-    Once you have downloaded the certificates, right-click each of them in Windows Explorer and select **Install certificate**. 
-    Use the default values in the **Certificate Import Wizard**, and continue selecting **Next** until the import has completed.
+	証明書をダウンロードした後、エクスプローラーで各証明書を右クリックし、**[証明書のインストール]** を選択します。**証明書のインポート ウィザード**で既定値を使用し、インポートが完了するまで、**[次]** のクリックを続けます。
 
-4. Export the SSL certificate from IIS Manager. For more information on exporting the certificate, see [Export a Server Certificate (IIS 7)][exportcertiis]. 
+4. IIS マネージャーから SSL 証明書をエクスポートします。証明書のエクスポートの詳細については、「[サーバー証明書をエクスポートする (IIS 7)][exportcertiis]」を参照してください。
 
-    >[AZURE.IMPORTANT] In the **Certificate Export Wizard**, make sure that you select **Yes, export the private key**  
-    >
-    >![Export the private key][certwiz1]  
-    >
-    > and also select **Personal Information Exchange - PKCS #12**, **Include all certificates in the certificate path if possible**, and     **Export all extended properties**.
-    >
-    >![include all certs and extended properties][certwiz2]
+	>[AZURE.IMPORTANT] **証明書のエクスポート ウィザード**で、**[はい、秘密キーをエクスポートします]** を選択していることを確認します。
+	>
+	>![秘密キーをエクスポートします][certwiz1]
+	>
+	> **[個人情報の交換 - PKCS #12]**、**[証明のパスにある証明書を可能であればすべて含む]**、および **[すべての拡張プロパティをエクスポートする]** を選択します。
+	>
+	>![すべての証明書と拡張プロパティを含める][certwiz2]
 
-You are now ready to upload the exported PFX file to App Service. See [Step 2. Upload and bind the custom SSL certificate](#bkmk_configuressl).
+これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[手順 2.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
 
 <a name="bkmk_openssl"></a>
-### <a name="get-a-certificate-using-openssl"></a>Get a certificate using OpenSSL
+### OpenSSL を使用した証明書の取得
 
-1. In a command-line terminal, `CD` into a working directory generate a private key and CSR by running the following command:
+1. コマンド ライン端末で、`CD` を使用して作業ディレクトリに移動し、次のコマンドを実行して秘密キーと CSR を生成します。
 
-        openssl req -sha256 -new -nodes -keyout myserver.key -out server.csr -newkey rsa:2048
+		openssl req -sha256 -new -nodes -keyout myserver.key -out server.csr -newkey rsa:2048
 
-2. When prompted, enter the appropriate information. For example:
+2. メッセージが表示されたら、適切な情報を入力します。次に例を示します。
 
-        Country Name (2 letter code)
+ 		Country Name (2 letter code)
         State or Province Name (full name) []: Washington
         Locality Name (eg, city) []: Redmond
         Organization Name (eg, company) []: Microsoft
@@ -176,204 +173,201 @@ You are now ready to upload the exported PFX file to App Service. See [Step 2. U
         Common Name (eg, YOUR name) []: www.microsoft.com
         Email Address []:
 
-        Please enter the following 'extra' attributes to be sent with your certificate request
+		Please enter the following 'extra' attributes to be sent with your certificate request
 
-        A challenge password []:
+       	A challenge password []:
 
-    When finished, you should have two files in your working directory: **myserver.key** and **server.csr**. 
-    The **server.csr** contains the CSR, and you need **myserver.key** later.
+	この処理が完了すると、**myserver.key** と **server.csr** という 2 つのファイルが作業ディレクトリに生成されます。**server.csr** には CSR が含まれます。**myserver.key** は後で必要になります。
 
-3. Submit your CSR to a CA to get an SSL certificate. For a list of CAs trusted by Microsoft, see [Microsoft Trusted Root Certificate Program: Participants][cas].
+3. SSL 証明書を取得するために、CSR を CA に送信します。Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
 
 
-4. Once the CA sends you the requested certificate, save it to a file named **myserver.crt** in your working directory. If your CA provides it in a text format, simply copy the content into **myserver.crt** in a text editor and save it. Your file should look like the following:
+4. 要求した証明書が CA から届いたら、作業ディレクトリの **myserver.crt** という名前のファイルに保存します。CA からテキスト形式で証明書が提供された場合は、テキスト エディターでその内容を **myserver.crt** にコピーするだけです。ファイルは次のようになります。
 
-        -----BEGIN CERTIFICATE-----
-        MIIDJDCCAgwCCQCpCY4o1LBQuzANBgkqhkiG9w0BAQUFADBUMQswCQYDVQQGEwJV
-        UzELMAkGA1UECBMCV0ExEDAOBgNVBAcTB1JlZG1vbmQxEDAOBgNVBAsTB0NvbnRv
-        c28xFDASBgNVBAMTC2NvbnRvc28uY29tMB4XDTE0MDExNjE1MzIyM1oXDTE1MDEx
-        NjE1MzIyM1owVDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAwDgYDVQQHEwdS
-        ZWRtb25kMRAwDgYDVQQLEwdDb250b3NvMRQwEgYDVQQDEwtjb250b3NvLmNvbTCC
-        ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN96hBX5EDgULtWkCRK7DMM3
-        enae1LT9fXqGlbA7ScFvFivGvOLEqEPD//eLGsf15OYHFOQHK1hwgyfXa9sEDPMT
-        3AsF3iWyF7FiEoR/qV6LdKjeQicJ2cXjGwf3G5vPoIaYifI5r0lhgOUqBxzaBDZ4
-        xMgCh2yv7NavI17BHlWyQo90gS2X5glYGRhzY/fGp10BeUEgIs3Se0kQfBQOFUYb
-        ktA6802lod5K0OxlQy4Oc8kfxTDf8AF2SPQ6BL7xxWrNl/Q2DuEEemjuMnLNxmeA
-        Ik2+6Z6+WdvJoRxqHhleoL8ftOpWR20ToiZXCPo+fcmLod4ejsG5qjBlztVY4qsC
-        AwEAATANBgkqhkiG9w0BAQUFAAOCAQEAVcM9AeeNFv2li69qBZLGDuK0NDHD3zhK
-        Y0nDkqucgjE2QKUuvVSPodz8qwHnKoPwnSrTn8CRjW1gFq5qWEO50dGWgyLR8Wy1
-        F69DYsEzodG+shv/G+vHJZg9QzutsJTB/Q8OoUCSnQS1PSPZP7RbvDV9b7Gx+gtg
-        7kQ55j3A5vOrpI8N9CwdPuimtu6X8Ylw9ejWZsnyy0FMeOPpK3WTkDMxwwGxkU3Y
-        lCRTzkv6vnHrlYQxyBLOSafCB1RWinN/slcWSLHADB6R+HeMiVKkFpooT+ghtii1
-        A9PdUQIhK9bdaFicXPBYZ6AgNVuGtfwyuS5V6ucm7RE6+qf+QjXNFg==
-        -----END CERTIFICATE-----
+		-----BEGIN CERTIFICATE-----
+		MIIDJDCCAgwCCQCpCY4o1LBQuzANBgkqhkiG9w0BAQUFADBUMQswCQYDVQQGEwJV
+		UzELMAkGA1UECBMCV0ExEDAOBgNVBAcTB1JlZG1vbmQxEDAOBgNVBAsTB0NvbnRv
+		c28xFDASBgNVBAMTC2NvbnRvc28uY29tMB4XDTE0MDExNjE1MzIyM1oXDTE1MDEx
+		NjE1MzIyM1owVDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAwDgYDVQQHEwdS
+		ZWRtb25kMRAwDgYDVQQLEwdDb250b3NvMRQwEgYDVQQDEwtjb250b3NvLmNvbTCC
+		ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN96hBX5EDgULtWkCRK7DMM3
+		enae1LT9fXqGlbA7ScFvFivGvOLEqEPD//eLGsf15OYHFOQHK1hwgyfXa9sEDPMT
+		3AsF3iWyF7FiEoR/qV6LdKjeQicJ2cXjGwf3G5vPoIaYifI5r0lhgOUqBxzaBDZ4
+		xMgCh2yv7NavI17BHlWyQo90gS2X5glYGRhzY/fGp10BeUEgIs3Se0kQfBQOFUYb
+		ktA6802lod5K0OxlQy4Oc8kfxTDf8AF2SPQ6BL7xxWrNl/Q2DuEEemjuMnLNxmeA
+		Ik2+6Z6+WdvJoRxqHhleoL8ftOpWR20ToiZXCPo+fcmLod4ejsG5qjBlztVY4qsC
+		AwEAATANBgkqhkiG9w0BAQUFAAOCAQEAVcM9AeeNFv2li69qBZLGDuK0NDHD3zhK
+		Y0nDkqucgjE2QKUuvVSPodz8qwHnKoPwnSrTn8CRjW1gFq5qWEO50dGWgyLR8Wy1
+		F69DYsEzodG+shv/G+vHJZg9QzutsJTB/Q8OoUCSnQS1PSPZP7RbvDV9b7Gx+gtg
+		7kQ55j3A5vOrpI8N9CwdPuimtu6X8Ylw9ejWZsnyy0FMeOPpK3WTkDMxwwGxkU3Y
+		lCRTzkv6vnHrlYQxyBLOSafCB1RWinN/slcWSLHADB6R+HeMiVKkFpooT+ghtii1
+		A9PdUQIhK9bdaFicXPBYZ6AgNVuGtfwyuS5V6ucm7RE6+qf+QjXNFg==
+		-----END CERTIFICATE-----
 
-5. In the command-line terminal, run the following command to export **myserver.pfx** from **myserver.key** and **myserver.crt**:
+5. コマンド ライン端末で次のコマンドを実行して、**myserver.pfx** を **myserver.key** および **myserver.crt** からエクスポートします。
 
-        openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
+		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
-    When prompted, define a password to secure the .pfx file.
+	メッセージが表示されたら、.pfx ファイルをセキュリティで保護するパスワードを定義します。
 
-    > [AZURE.NOTE] If your CA uses intermediate certificates, you must include them with the `-certfile` parameter. They usually come as a separate download from your CA, and in several formats for different web server types. Select the version with the `.pem` extension.
-    >
-    > Your `openssl -export` command should look like the following example, which creates a .pfx file that includes the intermediate certificates from the **intermediate-cets.pem** file:
-    >  
-    > `openssl pkcs12 -chain -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem`
+	> [AZURE.NOTE] CA が中間証明書を使用している場合は、`-certfile` パラメーターを使用して、それらの証明書を含める必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じて複数の形式で提供されています。拡張子 `.pem` のバージョンを選択します。
+	>
+	> `openssl -export` コマンドは次の例のようになります。このコマンドは、**intermediate-cets.pem** ファイルにある中間証明書を含む .pfx ファイルを作成します。
+	>  
+	> `openssl pkcs12 -chain -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem`
 
-You are now ready to upload the exported PFX file to App Service. See [Step 2. Upload and bind the custom SSL certificate](#bkmk_configuressl).
+これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[手順 2.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
 
 <a name="bkmk_subjectaltname"></a>
-### <a name="get-a-subjectaltname-certificate-using-openssl"></a>Get a SubjectAltName certificate using OpenSSL
+### OpenSSL を使用した SubjectAltName 証明書の取得
 
-1. Create a file named **sancert.cnf**, copy the following text into it, and save it in a working directory:
+1. **sancert.cnf** という名前のファイルを作成し、そのファイルに次のテキストをコピーして、作業ディレクトリに保存します。
 
-        # -------------- BEGIN custom sancert.cnf -----
-        HOME = .
-        oid_section = new_oids
-        [ new_oids ]
-        [ req ]
-        default_days = 730
-        distinguished_name = req_distinguished_name
-        encrypt_key = no
-        string_mask = nombstr
-        req_extensions = v3_req # Extensions to add to certificate request
-        [ req_distinguished_name ]
-        countryName = Country Name (2 letter code)
-        countryName_default =
-        stateOrProvinceName = State or Province Name (full name)
-        stateOrProvinceName_default =
-        localityName = Locality Name (eg, city)
-        localityName_default =
-        organizationalUnitName  = Organizational Unit Name (eg, section)
-        organizationalUnitName_default  =
-        commonName              = Your common name (eg, domain name)
-        commonName_default      = www.mydomain.com
-        commonName_max = 64
-        [ v3_req ]
-        subjectAltName=DNS:ftp.mydomain.com,DNS:blog.mydomain.com,DNS:*.mydomain.com
-        # -------------- END custom sancert.cnf -----
+		# -------------- BEGIN custom sancert.cnf -----
+		HOME = .
+		oid_section = new_oids
+		[ new_oids ]
+		[ req ]
+		default_days = 730
+		distinguished_name = req_distinguished_name
+		encrypt_key = no
+		string_mask = nombstr
+		req_extensions = v3_req # Extensions to add to certificate request
+		[ req_distinguished_name ]
+		countryName = Country Name (2 letter code)
+		countryName_default =
+		stateOrProvinceName = State or Province Name (full name)
+		stateOrProvinceName_default =
+		localityName = Locality Name (eg, city)
+		localityName_default =
+		organizationalUnitName  = Organizational Unit Name (eg, section)
+		organizationalUnitName_default  =
+		commonName              = Your common name (eg, domain name)
+		commonName_default      = www.mydomain.com
+		commonName_max = 64
+		[ v3_req ]
+		subjectAltName=DNS:ftp.mydomain.com,DNS:blog.mydomain.com,DNS:*.mydomain.com
+		# -------------- END custom sancert.cnf -----
 
-    In the line that begins with `subjectAltName`, replace the value with all domain names you want to secure (in addition to  `commonName`). For example:
+	`subjectAltName` で始まる行で、(`commonName` に加えて) セキュリティ保護するすべてのドメイン名に値を置き換えます。次に例を示します。
 
-        subjectAltName=DNS:sales.contoso.com,DNS:support.contoso.com,DNS:fabrikam.com
+		subjectAltName=DNS:sales.contoso.com,DNS:support.contoso.com,DNS:fabrikam.com
 
-    You do not need to change any other field, including `commonName`. You will be prompted to specify them in the next few steps.
+	`commonName` を含め、その他のフィールドを変更する必要はありません。この後のいくつかの手順で、それらを指定するよう求められます。
 
-1. In a command-line terminal, `CD` into your working directory and run the following command:
+1. コマンド ライン端末で、`CD` を使用して作業ディレクトリに移動し、次のコマンドを実行します。
 
-        openssl req -sha256 -new -nodes -keyout myserver.key -out server.csr -newkey rsa:2048 -config sancert.cnf
+		openssl req -sha256 -new -nodes -keyout myserver.key -out server.csr -newkey rsa:2048 -config sancert.cnf
 
-2. When prompted, enter the appropriate information. For example:
+2. メッセージが表示されたら、適切な情報を入力します。次に例を示します。
 
-        Country Name (2 letter code) []: US
+ 		Country Name (2 letter code) []: US
         State or Province Name (full name) []: Washington
         Locality Name (eg, city) []: Redmond
         Organizational Unit Name (eg, section) []: Azure
         Your common name (eg, domain name) []: www.microsoft.com
 
-    Once finished, you should have two files in your working directory: **myserver.key** and **server.csr**. 
-    The **server.csr** contains the CSR, and you need **myserver.key** later.
+	この処理が完了すると、**myserver.key** と **server.csr** という 2 つのファイルが作業ディレクトリに生成されます。**server.csr** には CSR が含まれます。**myserver.key** は後で必要になります。
 
-3. Submit your CSR to a CA to get an SSL certificate. For a list of CAs trusted by Microsoft, see [Microsoft Trusted Root Certificate Program: Participants][cas].
+3. SSL 証明書を取得するために、CSR を CA に送信します。Microsoft によって信頼された CA の一覧については、「[Microsoft Trusted Root Certificate Program: Participants][cas]」(Microsoft が信頼するルート証明書プログラム: 参加者) を参照してください。
 
 
-4. Once the CA sends you the requested certificate, save it to a file named **myserver.crt**. If your CA provides it in a text format, simply copy the content into **myserver.crt** in a text editor and save it. The file should look like the following:
+4. 要求した証明書が CA から届いたら、**myserver.crt** という名前のファイルに保存します。CA からテキスト形式で証明書が提供された場合は、テキスト エディターでその内容を **myserver.crt** にコピーするだけです。ファイルは次のようになります。
 
-        -----BEGIN CERTIFICATE-----
-        MIIDJDCCAgwCCQCpCY4o1LBQuzANBgkqhkiG9w0BAQUFADBUMQswCQYDVQQGEwJV
-        UzELMAkGA1UECBMCV0ExEDAOBgNVBAcTB1JlZG1vbmQxEDAOBgNVBAsTB0NvbnRv
-        c28xFDASBgNVBAMTC2NvbnRvc28uY29tMB4XDTE0MDExNjE1MzIyM1oXDTE1MDEx
-        NjE1MzIyM1owVDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAwDgYDVQQHEwdS
-        ZWRtb25kMRAwDgYDVQQLEwdDb250b3NvMRQwEgYDVQQDEwtjb250b3NvLmNvbTCC
-        ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN96hBX5EDgULtWkCRK7DMM3
-        enae1LT9fXqGlbA7ScFvFivGvOLEqEPD//eLGsf15OYHFOQHK1hwgyfXa9sEDPMT
-        3AsF3iWyF7FiEoR/qV6LdKjeQicJ2cXjGwf3G5vPoIaYifI5r0lhgOUqBxzaBDZ4
-        xMgCh2yv7NavI17BHlWyQo90gS2X5glYGRhzY/fGp10BeUEgIs3Se0kQfBQOFUYb
-        ktA6802lod5K0OxlQy4Oc8kfxTDf8AF2SPQ6BL7xxWrNl/Q2DuEEemjuMnLNxmeA
-        Ik2+6Z6+WdvJoRxqHhleoL8ftOpWR20ToiZXCPo+fcmLod4ejsG5qjBlztVY4qsC
-        AwEAATANBgkqhkiG9w0BAQUFAAOCAQEAVcM9AeeNFv2li69qBZLGDuK0NDHD3zhK
-        Y0nDkqucgjE2QKUuvVSPodz8qwHnKoPwnSrTn8CRjW1gFq5qWEO50dGWgyLR8Wy1
-        F69DYsEzodG+shv/G+vHJZg9QzutsJTB/Q8OoUCSnQS1PSPZP7RbvDV9b7Gx+gtg
-        7kQ55j3A5vOrpI8N9CwdPuimtu6X8Ylw9ejWZsnyy0FMeOPpK3WTkDMxwwGxkU3Y
-        lCRTzkv6vnHrlYQxyBLOSafCB1RWinN/slcWSLHADB6R+HeMiVKkFpooT+ghtii1
-        A9PdUQIhK9bdaFicXPBYZ6AgNVuGtfwyuS5V6ucm7RE6+qf+QjXNFg==
-        -----END CERTIFICATE-----
+		-----BEGIN CERTIFICATE-----
+		MIIDJDCCAgwCCQCpCY4o1LBQuzANBgkqhkiG9w0BAQUFADBUMQswCQYDVQQGEwJV
+		UzELMAkGA1UECBMCV0ExEDAOBgNVBAcTB1JlZG1vbmQxEDAOBgNVBAsTB0NvbnRv
+		c28xFDASBgNVBAMTC2NvbnRvc28uY29tMB4XDTE0MDExNjE1MzIyM1oXDTE1MDEx
+		NjE1MzIyM1owVDELMAkGA1UEBhMCVVMxCzAJBgNVBAgTAldBMRAwDgYDVQQHEwdS
+		ZWRtb25kMRAwDgYDVQQLEwdDb250b3NvMRQwEgYDVQQDEwtjb250b3NvLmNvbTCC
+		ASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAN96hBX5EDgULtWkCRK7DMM3
+		enae1LT9fXqGlbA7ScFvFivGvOLEqEPD//eLGsf15OYHFOQHK1hwgyfXa9sEDPMT
+		3AsF3iWyF7FiEoR/qV6LdKjeQicJ2cXjGwf3G5vPoIaYifI5r0lhgOUqBxzaBDZ4
+		xMgCh2yv7NavI17BHlWyQo90gS2X5glYGRhzY/fGp10BeUEgIs3Se0kQfBQOFUYb
+		ktA6802lod5K0OxlQy4Oc8kfxTDf8AF2SPQ6BL7xxWrNl/Q2DuEEemjuMnLNxmeA
+		Ik2+6Z6+WdvJoRxqHhleoL8ftOpWR20ToiZXCPo+fcmLod4ejsG5qjBlztVY4qsC
+		AwEAATANBgkqhkiG9w0BAQUFAAOCAQEAVcM9AeeNFv2li69qBZLGDuK0NDHD3zhK
+		Y0nDkqucgjE2QKUuvVSPodz8qwHnKoPwnSrTn8CRjW1gFq5qWEO50dGWgyLR8Wy1
+		F69DYsEzodG+shv/G+vHJZg9QzutsJTB/Q8OoUCSnQS1PSPZP7RbvDV9b7Gx+gtg
+		7kQ55j3A5vOrpI8N9CwdPuimtu6X8Ylw9ejWZsnyy0FMeOPpK3WTkDMxwwGxkU3Y
+		lCRTzkv6vnHrlYQxyBLOSafCB1RWinN/slcWSLHADB6R+HeMiVKkFpooT+ghtii1
+		A9PdUQIhK9bdaFicXPBYZ6AgNVuGtfwyuS5V6ucm7RE6+qf+QjXNFg==
+		-----END CERTIFICATE-----
 
-5. In the command-line terminal, run the following command to export **myserver.pfx** from **myserver.key** and **myserver.crt**:
+5. コマンド ライン端末で次のコマンドを実行して、**myserver.pfx** を **myserver.key** および **myserver.crt** からエクスポートします。
 
-        openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
+		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
-    When prompted, define a password to secure the .pfx file.
+	メッセージが表示されたら、.pfx ファイルをセキュリティで保護するパスワードを定義します。
 
-    > [AZURE.NOTE] If your CA uses intermediate certificates, you must include them with the `-certfile` parameter. They usually come as a separate download from your CA, and in several formats for different web server types. Select the version with the `.pem` extension).
-    >
-    > Your `openssl -export` command should look like the following example, which creates a .pfx file that includes the intermediate certificates from the **intermediate-cets.pem** file:
-    >  
-    > `openssl pkcs12 -chain -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem`
+	> [AZURE.NOTE] CA が中間証明書を使用している場合は、`-certfile` パラメーターを使用して、それらの証明書を含める必要があります。通常、これらの証明書は CA から個別のダウンロードとして提供されており、Web サーバーの種類に応じて複数の形式で提供されています。拡張子 `.pem` のバージョンを選択します。
+	>
+	> `openssl -export` コマンドは次の例のようになります。このコマンドを実行すると、**intermediate-cets.pem** ファイルにある中間証明書を含む .pfx ファイルが作成されます。
+	>  
+	> `openssl pkcs12 -chain -export -out myserver.pfx -inkey myserver.key -in myserver.crt -certfile intermediate-cets.pem`
 
-You are now ready to upload the exported PFX file to App Service. See [Step 2. Upload and bind the custom SSL certificate](#bkmk_configuressl).
+これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[手順 2.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
 
 <a name="bkmk_sscertreq"></a>
-### <a name="generate-a-self-signed-certificate-using-certreq.exe"></a>Generate a self-signed certificate using Certreq.exe ###
+### Certreq.exe を使用した自己署名証明書の生成 ###
 
->[AZURE.IMPORTANT] Self-signed certificates are for test purposes only. Most browsers return errors when visiting a website that's secured by a self-signed certificate. Some browsers may even refuse to navigate to the site. 
+>[AZURE.IMPORTANT] 自己署名証明書はテスト目的専用です。ほとんどのブラウザーは、自己署名証明書で保護されている Web サイトにアクセスしたときにエラーを返します。ブラウザーによっては、サイトの表示を拒否することもあります。
 
-1. Create a text file (e.g. **mycert.txt**), copy into it the following text, and save the file in a working directory. Replace the `<your-domain>` placeholder with the custom domain name of your app.
+1. テキスト ファイル (例: **mycert.txt**) を作成し、そのファイルに次のテキストをコピーして、作業ディレクトリに保存します。プレースホルダー `<your-domain>` はアプリのカスタム ドメイン名に置き換えてください。
 
-        [NewRequest]
-        Subject = "CN=<your-domain>"  ; E.g. "CN=www.contoso.com", or "CN=*.contoso.com" for a wildcard certificate
-        Exportable = TRUE
-        KeyLength = 2048              ; KeyLength can be 2048, 4096, 8192, or 16384 (required minimum is 2048)
-        KeySpec = 1
-        KeyUsage = 0xA0
-        MachineKeySet = True
-        ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
-        ProviderType = 12
-        HashAlgorithm = SHA256
-        RequestType = Cert            ; Self-signed certificate
-        ValidityPeriod = Years
-        ValidityPeriodUnits = 1
+		[NewRequest]
+		Subject = "CN=<your-domain>"  ; E.g. "CN=www.contoso.com", or "CN=*.contoso.com" for a wildcard certificate
+		Exportable = TRUE
+		KeyLength = 2048              ; KeyLength can be 2048, 4096, 8192, or 16384 (required minimum is 2048)
+		KeySpec = 1
+		KeyUsage = 0xA0
+		MachineKeySet = True
+		ProviderName = "Microsoft RSA SChannel Cryptographic Provider"
+		ProviderType = 12
+		HashAlgorithm = SHA256
+		RequestType = Cert            ; Self-signed certificate
+		ValidityPeriod = Years
+		ValidityPeriodUnits = 1
 
-        [EnhancedKeyUsageExtension]
-        OID=1.3.6.1.5.5.7.3.1         ; Server Authentication
+		[EnhancedKeyUsageExtension]
+		OID=1.3.6.1.5.5.7.3.1         ; Server Authentication
 
-    The important parameter is `RequestType = Cert`, which specifies a self-signed certificate. 
-    For more information on the options in the CSR, and other available options, see the [Certreq reference documentation](https://technet.microsoft.com/library/dn296456.aspx).
+	`RequestType = Cert` は、自己署名証明書を指定する重要なパラメーターです。CSR に関するオプションの詳細と他の使用可能なオプションについては、[Certreq のリファレンス ドキュメント](https://technet.microsoft.com/library/dn296456.aspx)を参照してください。
 
-4. In the command prompt, `CD` to your working directory and run the following command:
+4. コマンド プロンプトで、`CD` を使用して作業ディレクトリに移動し、次のコマンドを実行します。
 
-        certreq -new mycert.txt mycert.crt
-    
-    Your new self-signed certificate is now installed in the certificate store.
+		certreq -new mycert.txt mycert.crt
+	
+	これで、新しい自己署名証明書が証明書ストアにインストールされました。
 
-7. To export the certificate from the certificate store, press `Win`+`R` and run **certmgr.msc** to launch Certificate Manager. Select **Personal** > **Certificates**. In the **Issued To** column, you should see an entry with your custom domain name, and the CA you used to generate the certificate in the **Issued By** column.
+7. 証明書ストアから証明書をエクスポートするには、`Win` キーを押しながら `R` キーを押し、**certmgr.msc** を実行して証明書マネージャーを起動します。**[個人用]** > **[証明書]** を選択します。**[発行先]** 列に、カスタム ドメイン名に対応するエントリが表示されます。**[発行元]** 列には、証明書を生成するために使用した証明機関が表示されます。
 
-    ![insert image of cert manager here][certmgr]
+	![証明書マネージャーに関するイメージをここに挿入します][certmgr]
 
-9. Right-click the certificate and select **All Tasks** > **Export**. In the **Certificate Export Wizard**, click **Next**, then select **Yes, export the private key**, and then click **Next** again.
+9. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** を選択します。**証明書のエクスポート ウィザード**で、**[次へ]** をクリックしてから **[はい、秘密キーをエクスポートします]** を選択し、**[次へ]** を選択します。
 
-    ![Export the private key][certwiz1]
+	![秘密キーをエクスポートします][certwiz1]
 
-10. Select **Personal Information Exchange - PKCS #12**, **Include all certificates in the certificate path if possible**, and **Export all extended properties**. Then, click **Next**.
+10. **[個人情報の交換 - PKCS #12]**、**[証明のパスにある証明書を可能であればすべて含む]**、および **[すべての拡張プロパティをエクスポートする]** を選択します。次に、**[次へ]** をクリックします。
 
-    ![include all certs and extended properties][certwiz2]
+	![すべての証明書と拡張プロパティを含める][certwiz2]
 
-11. Select **Password**, and then enter and confirm the password. Click **Next**.
+11. **[パスワード]** をクリックし、パスワードの入力と確認入力を行います。**[次へ]** をクリックします。
 
-    ![specify a password][certwiz3]
+	![パスワードの指定][certwiz3]
 
-12. Provide a path and filename for the exported certificate, with the extension **.pfx**. Click **Next** to finish.
+12. エクスポートした証明書を格納するパスとファイル名を指定します。ファイル名には **.pfx** という拡張子を付ける必要があります。**[次へ]** をクリックして完了します。
 
-    ![provide a file path][certwiz4]
+	![ファイル パスを指定する][certwiz4]
 
-You are now ready to upload the exported PFX file to App Service. See [Step 2. Upload and bind the custom SSL certificate](#bkmk_configuressl).
+これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[手順 2.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
 
 <a name="bkmk_ssopenssl"></a>
-###<a name="generate-a-self-signed-certificate-using-openssl"></a>Generate a self-signed certificate using OpenSSL ###
+###OpenSSL を使用した自己署名証明書の生成 ###
 
->[AZURE.IMPORTANT] Self-signed certificates are for test purposes only. Most browsers return errors when visiting a website that's secured by a self-signed certificate. Some browsers may even refuse to navigate to the site. 
+>[AZURE.IMPORTANT] 自己署名証明書はテスト目的専用です。ほとんどのブラウザーは、自己署名証明書で保護されている Web サイトにアクセスしたときにエラーを返します。ブラウザーによっては、サイトの表示を拒否することもあります。
 
-1. Create a text file named **serverauth.cnf**, then copy the following content into it, and then save it in a working directory:
+1. **serverauth.cnf** という名前のテキスト ファイルを作成し、そのファイルに次の内容をコピーして、作業ディレクトリに保存します。
 
         [ req ]
         default_bits           = 2048
@@ -383,22 +377,22 @@ You are now ready to upload the exported PFX file to App Service. See [Step 2. U
         x509_extensions        = v3_ca
 
         [ req_distinguished_name ]
-        countryName         = Country Name (2 letter code)
-        countryName_min         = 2
-        countryName_max         = 2
-        stateOrProvinceName     = State or Province Name (full name)
-        localityName            = Locality Name (eg, city)
-        0.organizationName      = Organization Name (eg, company)
-        organizationalUnitName      = Organizational Unit Name (eg, section)
-        commonName          = Common Name (eg, your app's domain name)
-        commonName_max          = 64
-        emailAddress            = Email Address
-        emailAddress_max        = 40
+        countryName			= Country Name (2 letter code)
+        countryName_min			= 2
+        countryName_max			= 2
+        stateOrProvinceName		= State or Province Name (full name)
+        localityName			= Locality Name (eg, city)
+        0.organizationName		= Organization Name (eg, company)
+        organizationalUnitName		= Organizational Unit Name (eg, section)
+        commonName			= Common Name (eg, your app's domain name)
+        commonName_max			= 64
+        emailAddress			= Email Address
+        emailAddress_max		= 40
 
         [ req_attributes ]
-        challengePassword       = A challenge password
-        challengePassword_min       = 4
-        challengePassword_max       = 20
+        challengePassword		= A challenge password
+        challengePassword_min		= 4
+        challengePassword_max		= 20
 
         [ v3_ca ]
          subjectKeyIdentifier=hash
@@ -407,131 +401,129 @@ You are now ready to upload the exported PFX file to App Service. See [Step 2. U
          keyUsage=nonRepudiation, digitalSignature, keyEncipherment
          extendedKeyUsage = serverAuth
 
-2. In a command-line terminal, `CD` into your working directory and run the following command:
+2. コマンド ライン端末で、`CD` を使用して作業ディレクトリに移動し、次のコマンドを実行します。
 
-        openssl req -sha256 -x509 -nodes -days 365 -newkey rsa:2048 -keyout myserver.key -out myserver.crt -config serverauth.cnf
+		openssl req -sha256 -x509 -nodes -days 365 -newkey rsa:2048 -keyout myserver.key -out myserver.crt -config serverauth.cnf
 
-    This command creates two files: **myserver.crt** (the self-signed certificate) and **myserver.key** (the private key), based on the settings in **serverauth.cnf**.
+	このコマンドを実行すると、**myserver.crt** (自己署名証明書) および **myserver.key** (秘密キー) という 2 つのファイルが、**serverauth.cnf** の設定に基づいて作成されます。
 
-3. Export the certificate to a .pfx file by running the following command:
+3. 次のコマンドを実行して証明書を .pfx ファイルにエクスポートします。
 
-        openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
+		openssl pkcs12 -export -out myserver.pfx -inkey myserver.key -in myserver.crt
 
-    When prompted, define a password to secure the .pfx file.
+	メッセージが表示されたら、.pfx ファイルをセキュリティで保護するパスワードを定義します。
 
-You are now ready to upload the exported PFX file to App Service. See [Step 2. Upload and bind the custom SSL certificate](#bkmk_configuressl).
+これで、エクスポートした PFX ファイルを App Service にアップロードできるようになります。「[手順 2.カスタム SSL 証明書のアップロードとバインド](#bkmk_configuressl)」を参照してください。
 
 <a name="bkmk_configuressl"></a>
-## <a name="step-2.-upload-and-bind-the-custom-ssl-certificate"></a>Step 2. Upload and bind the custom SSL certificate
+## 手順 2.カスタム SSL 証明書のアップロードとバインド
 
-Before you move on, review the [What you need](#bkmk_domainname) section and verify that:
+先に進む前に、「[必要なもの](#bkmk_domainname)」セクションを見直し、次のことを確認します。
 
-- you have a custom domain that maps to your Azure app,
-- your app is running in **Basic** tier or higher, and
-- you have an SSL certificate for the custom domain from a CA.
+- Azure アプリにマップするカスタム ドメインがある。
+- アプリが **Basic** レベル以上で実行されている。
+- CA から発行されたカスタム ドメインの SSL 証明書がある。
 
 
-1. In your browser, open the **[Azure Portal.](https://portal.azure.com/)**
-2.  Click the **App Service** option on the left side of the page.
-3.  Click the name of your app to which you want to assign this certificate. 
-4.  In the **Settings**, Click **SSL certificates**
-5.  Click **Upload Certificate**
-6.  Select the .pfx file that you exported in [Step 1](#bkmk_getcert) and specify the password that you create before. Then, click **Upload** to upload the certificate. You should now see your uploaded certificate back in the **SSL certificate** blade.
-7. In the **ssl bindings** section Click on **Add bindings**
-8. In the **Add SSL Binding** blade use the dropdowns to select the domain name to secure with SSL, and the certificate to use. You may also select whether to use **[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** or IP based SSL.
+1. ブラウザーで、**[Azure ポータル](https://portal.azure.com/)**を開きます。
+2.	ページの左側にある **[App Service]** オプションをクリックします。
+3.	この証明書を割り当てるアプリの名前をクリックします。
+4.	**[設定]**で、**[SSL certificates (SSL 証明書)]** をクリックします。
+5.	**[証明書のアップロード]** をクリックします。
+6.	[手順 1](#bkmk_getcert) でエクスポートした .pfx ファイルを選択し、以前に作成したパスワードを指定します。次に、**[アップロード]** をクリックして、証明書をアップロードします。アップロードした証明書が **[SSL certificate (SSL 証明書)]** ブレードに表示されます。
+7. **[SSL バインド]** セクションで、**[Add bindings (バインドの追加)]** をクリックします。
+8. **[Add SSL Binding (SSL バインドの追加)]** ブレードで、ドロップダウン リストから SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。また、**[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (SNI) または IP ベースの SSL のどちらを使用するかを選択できます。
 
-    ![insert image of SSL Bindings](./media/web-sites-configure-ssl-certificate/sslbindings.png)
+    ![SSL バインドのイメージを挿入](./media/web-sites-configure-ssl-certificate/sslbindings.png)
 
-       •    IP based SSL associates a certificate with a domain name by mapping the dedicated public IP address of the server to the domain name. This requires each domain name (contoso.com, fabricam.com, etc.) associated with your service to have a dedicated IP address. This is the traditional          method of associating SSL certificates with a web server.
-       •    SNI based SSL is an extension to SSL and **[Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) that allows multiple domains to share the same IP address, with separate security certificates for each domain. Most modern browsers (including Internet Explorer, Chrome, Firefox and Opera) support SNI, however older browsers may not support SNI. For more information on SNI, see the **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** article on Wikipedia.
+       • IP ベースの SSL は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。これは SSL 証明書と Web サーバーを関連付ける従来の方式です。 • SNI ベースの SSL は、SSL と**[トランスポート層セキュリティ](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) の拡張機能です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。SNI の詳細については、Wikipedia の **[Server name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** に関する記事を参照してください。
      
-9. Click **Add Binding** to save the changes and enable SSL.
+9. 変更を保存して SSL を有効にするには、**[Add Binding (バインドの追加)]** をクリックします。
 
-## <a name="step-3.-change-your-domain-name-mapping-(ip-based-ssl-only)"></a>Step 3. Change your domain name mapping (IP based SSL only)
+## 手順 3.ドメイン名マッピングの変更 (IP ベースの SSL のみ)
 
-If you use **SNI SSL** bindings only, skip this section. Multiple **SNI SSL** bindings can work together on the existing shared IP address assigned to your app. However, if you create an **IP based SSL** binding, App Service creates a dedicated IP address for the binding because the **IP based SSL** requires one. Only one dedicated IP address can be created, therefore only one **IP based SSL** binding may be added.
+**SNI SSL** バインドを使用する場合にのみ、このセクションをスキップしてください。アプリに割り当てられている既存の共有 IP アドレスで複数の **SNI SSL** バインドを使用できます。ただし、**IP ベースの SSL** バインドを作成した場合、App Service はバインドのための専用 IP アドレスを作成します (**IP ベースの SSL** で必要なため)。専用 IP アドレスは 1 つだけ作成できるので、**IP ベースの SSL** バインドも 1 つだけ追加できます。
 
-Because of this dedicated IP address, you will need to configure your app further if:
+この専用 IP アドレスのために、次の場合はアプリの追加構成が必要です。
 
-- You [used an A record to map your custom domain](web-sites-custom-domain-name.md#a) to your Azure app, and you just added an **IP based SSL** binding. In this scenario, you need to remap the existing A record to point to the dedicated IP address by following these steps:
+- [A レコードを使用してカスタム ドメインを Azure アプリにマッピング](web-sites-custom-domain-name.md#a)済みで、**IP ベースの SSL** バインドを追加した場合。このシナリオでは、次の手順を実行して、専用 IP アドレスを参照するように既存の A レコードをマッピングし直す必要があります。
 
-    1. After you have configured an IP based SSL binding, a dedicated IP address is assigned to your app. You can find this IP address on the **Custom domain** page under settings of your app, right above the **Hostnames** section. It will be listed as **External IP Address**
+	1. IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。この IP アドレスは、アプリの設定の **[カスタム ドメイン]** ページで確認できます。これは、**[Hostnames (ホスト名)]** セクションの上にあります。このアドレスは、**[外部 IP アドレス]** として示されます。
     
-        ![Virtual IP address](./media/web-sites-configure-ssl-certificate/virtual-ip-address.png)
+	    ![Virtual IP address](./media/web-sites-configure-ssl-certificate/virtual-ip-address.png)
 
-    2. [Remap the A record for your custom domain name to this new IP address](web-sites-custom-domain-name.md#a).
+	2. [カスタム ドメイン名の A レコードをこの新しい IP アドレスにマッピングし直します](web-sites-custom-domain-name.md#a)。
 
-- You already have one or more **SNI SSL** bindings in your app, and you just added an **IP based SSL** binding. Once the binding is complete, your *&lt;appname>*.azurewebsites.net domain name points to the new IP address. Therefore, any existing [CNAME mapping from the custom domain](web-sites-custom-domain-name.md#cname) to *&lt;appname>*.azurewebsites.net, including the ones that the **SNI SSL** secure, also receives traffic on the new address, which is created for the **IP based SSL** only. In this scenario, you need to send the **SNI SSL** traffic back to the original shared IP address by following these steps:
+- 既に 1 つ以上の **SNI SSL** バインドがアプリに存在し、**IP ベースの SSL** バインドを追加した場合。バインドが完了すると、*&lt;appname>*.azurewebsites.net ドメイン名は新しい IP アドレスを参照するようになります。そのため、既存の [CNAME マッピング](web-sites-custom-domain-name.md#cname) (現在のドメインから *&lt;appname>*.azurewebsites.net へのマッピング) は、**SNI SSL** で保護されているものも含めて、**IP ベースの SSL** 専用に作成された新しいアドレスでトラフィックを受信します。このシナリオでは、次の手順に従って、**SNI SSL** トラフィックを元の共有 IP アドレスに送り返す必要があります。
 
-    1. Identify all [CNAME mappings of custom domains](web-sites-custom-domain-name.md#cname) to your app that has an **SNI SSL** binding.
+	1. アプリに対する[カスタム ドメインの CNAME マッピング](web-sites-custom-domain-name.md#cname)で、**SNI SSL** バインドを使用するマッピングをすべて識別します。
 
-    2. Remap each CNAME record to **sni.**&lt;appname>.azurewebsites.net instead of &lt;appname>.azurewebsites.net.
+	2. 各 CNAME レコードを &lt;appname>.azurewebsites.net ではなく **sni.**&lt;appname>.azurewebsites.net にマッピングし直します。
 
-## <a name="step-4.-test-https-for-your-custom-domain"></a>Step 4. Test HTTPS for your custom domain
+## 手順 4.カスタム ドメインに対して HTTPS をテストする
 
-All that's left to do now is to make sure that HTTPS works for your custom domain. In various browsers, browse to `https://<your.custom.domain>` to see that it serves up your app.
+この時点で残っている作業は、HTTPS がカスタム ドメインで機能するかどうかを確認することだけです。さまざまなブラウザーで `https://<your.custom.domain>` にアクセスし、アプリの要求を処理できることを確認します。
 
-- If your app gives you certificate validation errors, you're probably using a self-signed certificate.
+- アプリで証明書検証エラーが返された場合は、自己署名証明書を使用している可能性があります。
 
-- If that's not the case, you may have left out intermediate certificates when you export your .pfx certificate. Go back to [What you need](#bkmk_domainname) to verify that your CSR meets all the requirements by App Service.
+- そうでない場合は、.pfx 証明書をエクスポートするときに中間証明書を含めなかった可能性があります。「[必要なもの](#bkmk_domainname)」に戻り、CSR が App Service のすべての要件を満たしていることを確認します。
 
 <a name="bkmk_enforce"></a>
-## <a name="enforce-https-on-your-app"></a>Enforce HTTPS on your app
+## アプリに HTTPS を適用する
 
-If you still want to allow HTTP access to your app, skip this step. App Service does *not* enforce HTTPS, so visitors can still access your app using HTTP. If you want to enforce HTTPS for your app, you can define a rewrite rule in the `web.config` file for your app. Every App Service app has this file, regardless of the language framework of your app.
+HTTP によるアプリへのアクセスを許可する場合は、この手順をスキップしてください。App Service では HTTPS の使用が強制されないため、訪問者は引き続き HTTP を使用してアプリにアクセスできます。アプリで HTTPS を強制する場合は、アプリの `web.config` ファイルで書き換え規則を定義することができます。このファイルは、アプリの言語フレームワークに関係なく、すべての App Service アプリに存在します。
 
-> [AZURE.NOTE] There is language-specific redirection of requests. ASP.NET MVC can use the [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) filter instead of the rewrite rule in `web.config` (see [Deploy a secure ASP.NET MVC 5 app to a web app](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)).
+> [AZURE.NOTE] 言語に固有の要求のリダイレクトがあります。ASP.NET MVC では、`web.config` 内の書き換え規則に代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用できます ([セキュリティで保護された ASP.NET MVC 5 アプリを Web アプリにデプロイする方法](web-sites-dotnet-deploy-aspnet-mvc-app-membership-oauth-sql-database.md)に関するページを参照してください)。
 
-Follow these steps:
+次の手順に従います。
 
-1. Navigate to the Kudu debug console for your app. Its address is `https://<appname>.scm.azurewebsites.net/DebugConsole`.
+1. アプリの Kudu デバッグ コンソールに移動します。アドレスは `https://<appname>.scm.azurewebsites.net/DebugConsole` です。
 
-2. In the debug console, CD to `D:\home\site\wwwroot`.
+2. デバッグ コンソールで、CD を使用して `D:\home\site\wwwroot` に移動します。
 
-3. Open `web.config` by clicking the pencil button.
+3. 鉛筆のアイコンをクリックして `web.config` を開きます。
 
-    ![](./media/web-sites-configure-ssl-certificate/openwebconfig.png)
+	![](./media/web-sites-configure-ssl-certificate/openwebconfig.png)
 
-    If you deploy your app with Visual Studio or Git, App Service automatically generates the appropriate `web.config` for your .NET, PHP, Node.js, or Python app in the application root. 
-    If `web.config` doesn't exist, run `touch web.config` in the web-based command prompt to create it. Or, you can create it in your local project and redeploy your code.
+	Visual Studio または Git を使用してアプリをデプロイする場合、App Service は .NET、PHP、Node.js、または Python アプリ用の適切な `web.config` をアプリケーションのルートに自動的に作成します。`web.config` がない場合は、Web ベースのコマンド プロンプトで `touch web.config` を実行して作成します。または、ローカル プロジェクトでこのファイルを作成し、コードを再デプロイすることができます。
 
-4. If you had to create a `web.config`, copy the following code into it and save it. If you opened an existing web.config, then you just need to copy the entire `<rule>` tag into your `web.config`'s `configuration/system.webServer/rewrite/rules` element.
+4. `web.config` を作成する必要がある場合は、次のコードをコピーし、ファイルを保存します。既存の web.config を開いた場合は、`<rule>` タグ全体を `web.config` の `configuration/system.webServer/rewrite/rules` 要素にコピーするだけで済みます。
 
-        <?xml version="1.0" encoding="UTF-8"?>
-        <configuration>
-          <system.webServer>
-            <rewrite>
-              <rules>
-                <!-- BEGIN rule TAG FOR HTTPS REDIRECT -->
-                <rule name="Force HTTPS" enabled="true">
-                  <match url="(.*)" ignoreCase="false" />
-                  <conditions>
-                    <add input="{HTTPS}" pattern="off" />
-                  </conditions>
-                  <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
-                </rule>
-                <!-- END rule TAG FOR HTTPS REDIRECT -->
-              </rules>
-            </rewrite>
+		<?xml version="1.0" encoding="UTF-8"?>
+		<configuration>
+		  <system.webServer>
+		    <rewrite>
+		      <rules>
+			    <!-- BEGIN rule TAG FOR HTTPS REDIRECT -->
+		        <rule name="Force HTTPS" enabled="true">
+		          <match url="(.*)" ignoreCase="false" />
+		          <conditions>
+		            <add input="{HTTPS}" pattern="off" />
+		          </conditions>
+		          <action type="Redirect" url="https://{HTTP_HOST}/{R:1}" appendQueryString="true" redirectType="Permanent" />
+		        </rule>
+				<!-- END rule TAG FOR HTTPS REDIRECT -->
+		      </rules>
+		    </rewrite>
           </system.webServer>
-        </configuration>
+		</configuration>
 
-    This rule returns an HTTP 301 (permanent redirect) to the HTTPS protocol whenever the user requests a page using HTTP. It redirects from http://contoso.com to https://contoso.com.
+	この規則は、ユーザーが HTTP を使用しているページを要求したときに、HTTPS プロトコルに HTTP 301 (永続的リダイレクト) を返します。これにより、http://contoso.com から https://contoso.com にリダイレクトされます。
 
-    >[AZURE.IMPORTANT] If there are already other `<rule>` tags in your `web.config`, then place the copied `<rule>` tag before the other `<rule>` tags.
+	>[AZURE.IMPORTANT] 既に他の `<rule>` タグが `web.config` 内にある場合は、コピーした `<rule>` タグを他の `<rule>` タグの前に配置します。
 
-4. Save the file in the Kudu debug console. It should take effect immediately redirect all requests to HTTPS.
+4. Kudu デバッグ コンソールでファイルを保存します。ファイルはすぐに有効になり、すべての要求を HTTPS にリダイレクトします。
 
-For more information on the IIS URL Rewrite module, see the [URL Rewrite](http://www.iis.net/downloads/microsoft/url-rewrite) documentation.
+IIS URL 書き換えモジュールの詳細については、[URL 書き換え](http://www.iis.net/downloads/microsoft/url-rewrite)のドキュメントを参照してください。
 
-## <a name="more-resources"></a>More Resources ##
-- [Microsoft Azure Trust Center](/support/trust-center/security/)
-- [Configuration options unlocked in Azure Web Sites](/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
-- [Enable diagnostic logging](web-sites-enable-diagnostic-log.md)
-- [Configure web apps in Azure App Service](web-sites-configure.md)
-- [Azure Management Portal](https://manage.windowsazure.com)
+## その他のリソース ##
+- [Microsoft Azure のトラスト センター](/support/trust-center/security/)
+- [Azure Web Sites でロックを解除された構成オプション](/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
+- [診断ログの有効化](web-sites-enable-diagnostic-log.md)
+- [Azure App Service での Web アプリの構成](web-sites-configure.md)
+- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
 
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter app in App Service. No credit cards required; no commitments.
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 [customdomain]: web-sites-custom-domain-name.md
 [iiscsr]: http://technet.microsoft.com/library/cc732906(WS.10).aspx
@@ -557,10 +549,4 @@ For more information on the IIS URL Rewrite module, see the [URL Rewrite](http:/
 [certwiz3]: ./media/web-sites-configure-ssl-certificate/waws-certwiz3.png
 [certwiz4]: ./media/web-sites-configure-ssl-certificate/waws-certwiz4.png
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

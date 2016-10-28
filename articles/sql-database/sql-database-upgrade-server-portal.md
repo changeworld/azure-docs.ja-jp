@@ -1,165 +1,163 @@
 <properties
-    pageTitle="Upgrade to Azure SQL Database V12 using the Azure portal | Microsoft Azure"
-    description="Explains how to upgrade to Azure SQL Database V12 including how to upgrade Web and Business databases, and how to upgrade a V11 server migrating its databases directly into an elastic database pool using the Azure portal."
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="Azure ポータルを使用した Azure SQL Database V12 へのアップグレード | Microsoft Azure"
+	description="Web および Business データベースのアップグレード方法を含む Azure SQL Database V12 へのアップグレード方法を説明します。また、Azure ポータルを使用してエラスティック データベース プールにデータベースを直接移行することで V11 サーバーをアップグレードする方法も説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="data-management"
-    ms.date="08/08/2016"
-    ms.author="sstein"/>
+	ms.service="sql-database"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="data-management"
+	ms.date="08/08/2016"
+	ms.author="sstein"/>
 
 
-
-# <a name="upgrade-to-azure-sql-database-v12-using-the-azure-portal"></a>Upgrade to Azure SQL Database V12 using the Azure portal
+# Azure ポータルを使用した Azure SQL Database V12 へのアップグレード
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-upgrade-server-portal.md)
+- [Azure ポータル](sql-database-upgrade-server-portal.md)
 - [PowerShell](sql-database-upgrade-server-powershell.md)
 
 
-SQL Database V12 is the latest version so upgrading existing servers to SQL Database V12 is recommended.
-SQL Database V12 has many [advantages over the previous version](sql-database-v12-whats-new.md) including:
+SQL Database V12 が最新バージョンであるため、既存のサーバーを SQL Database V12 にアップグレードすることをお勧めします。SQL Database V12 には、[以前のバージョンと比較して次のような利点が](sql-database-v12-whats-new.md)多数あります。
 
-- Increased compatibility with SQL Server.
-- Improved premium performance and new performance levels.
-- [Elastic database pools](sql-database-elastic-pool.md).
+- SQL Server との互換性の強化。
+- Premium のパフォーマンスの向上と新しいパフォーマンス レベル。
+- [エラスティック データベース プール](sql-database-elastic-pool.md)。
 
-This article provides directions for upgrading existing SQL Database V11 servers and databases to SQL Database V12.
+この記事では、既存の SQL Database V11 サーバーとデータベースを SQL Database V12 にアップグレードする方法について説明します。
 
-During the process of upgrading to V12 you will upgrade any Web and Business databases to a new service tier so directions for upgrading Web and Business databases are included.
+V12 にアップグレードする過程で、すべての Web および Business データベースを新しいサービス レベルにアップグレードするため、Web および Business データベースのアップグレードに関する説明も含まれています。
 
-In addition, migrating to an [elastic database pool](sql-database-elastic-pool.md) can be more cost effective than upgrading to individual performance levels (pricing tiers) for single databases. Pools also simplify database management because you only need to manage the performance settings for the pool rather than separately managing the performance levels of individual databases. If you have databases on multiple servers consider moving them into the same server and taking advantage of putting them into a pool. You can easily [auto-migrate databases from V11 servers directly into elastic database pools using PowerShell](sql-database-upgrade-server-powershell.md). You can also use the portal to migrate V11 databases into a pool but in the portal you must already have a V12 server to create a pool. Directions are provided later in this article to create the pool after the server upgrade if you have [databases that can benefit from a pool](sql-database-elastic-pool-guidance.md).
+また、[エラスティック データベース プール](sql-database-elastic-pool.md)への移行は、データベースが 1 台の場合に個々のパフォーマンス レベル (価格レベル) にアップグレードするよりもコスト効率が良くなる可能性があります。プールを使用してデータベース管理を簡略化することもできます。これは、個々のデータベースのパフォーマンス レベルを個別に管理するのではなく、プールのパフォーマンス設定を管理するだけでよいからです。複数のサーバーにデータベースがある場合は、それらを同じサーバーに移動し、それらを 1 つのプールに置くと便利です。簡単に、[PowerShell を使用して、V11 サーバーからエラスティック データベース プールにデータベースを自動で直接移行](sql-database-upgrade-server-powershell.md)できます。ポータルを使用して V11 データベースをプールに移行することもできますが、ポータルにはプールを作成するための V12 サーバーが既にある必要があります。[プールからメリットを得られるデータベース](sql-database-elastic-pool-guidance.md)がある場合は、この記事の後の方に記載されている説明を参照して、サーバーのアップグレード後にプールを作成してください。
 
-Note that your databases will remain online and continue to work throughout the upgrade operation. At the time of the actual transition to the new performance level temporary dropping of the connections to the database can happen for a very small duration that is typically around 90 seconds but can be as much as 5 minutes. If your application has [transient fault handling for connection terminations](sql-database-connectivity-issues.md) then it is sufficient to protect against dropped connections at the end of the upgrade.
+アップグレード操作全体にわたって、データベースはオンラインのままであり、機能し続けます。新しいパフォーマンス レベルに実際に切り替えるときには、データベースへの接続が非常に短い時間、一時的に解除される場合があります。多くの場合、これは 90 秒程度ですが、最長で 5 分間ほど解除される場合もあります。[接続が終了した場合に発生する一時的なエラーに対処するための機能](sql-database-connectivity-issues.md)がアプリケーションに備わっている場合は、アップグレードの終了時の接続解除に対して保護するだけで十分です。
 
-Upgrading to SQL Database V12 cannot be undone. After an upgrade the server cannot be reverted to V11.
+SQL Database V12 へのアップグレードを元に戻すことはできません。アップグレードした後に、サーバーを V11 に戻すことはできません。
 
-After upgrading to V12, [service tier recommendations](sql-database-service-tier-advisor.md) and [elastic pool performance considerations](sql-database-elastic-pool-guidance.md) will not immediately be available until the service has time to evaluate your workloads on the new server. V11 server recommendation history does not apply to V12 servers so it is not retained.
+V12 にアップグレードした後、[サービス レベルの推奨事項](sql-database-service-tier-advisor.md)と[エラスティック プールのパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)は、サービスが新しいサーバーでのワークロードを評価し終わるまで、すぐには利用できません。V11 サーバーの推奨履歴は V12 サーバーには適用されないため、履歴は保持されません。
 
-## <a name="prepare-to-upgrade"></a>Prepare to upgrade
+## アップグレードの準備
 
-- **Upgrade all Web and Business databases**: See [Upgrade all Web and Business databases](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases) section below or see [Monitor and manage an elastic database pool (PowerShell)](sql-database-elastic-pool-manage-powershell.md).
-- **Review and suspend Geo-Replication**: If your Azure SQL database is configured for Geo-Replication you should document its current configuration and [stop Geo-Replication](sql-database-geo-replication-portal.md#remove-secondary-database). After the upgrade completes reconfigure your database for Geo-Replication.
-- **Open these ports if you have clients on an Azure VM**: If your client program connects to SQL Database V12 while your client runs on an Azure virtual machine (VM), you must open port ranges 11000-11999 and 14000-14999 on the VM. For details, see [Ports for SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md).
-
+- **すべての Web および Business データベースのアップグレード**: 後述の「[すべての Web および Business データベースのアップグレード](sql-database-upgrade-server-portal.md#upgrade-all-web-and-business-databases)」を参照するか、[「エラスティック データベース プールの監視と管理 (PowerShell)](sql-database-elastic-pool-manage-powershell.md)」をご覧ください。
+- **geo レプリケーションをレビューして一時停止**: Azure SQL Database が geo レプリケーション用に構成されている場合、現在の構成を文書化し、[geo レプリケーションを停止](sql-database-geo-replication-portal.md#remove-secondary-database)する必要があります。アップグレードが完了したら、geo レプリケーション用にデータベースを再構成します。
+- **Azure VM にクライアントがある場合、これらのポートを開く**: クライアントが Azure 仮想マシン (VM) で実行されるときに、クライアント プログラムが SQL Database V12 に接続する場合、VM でポート範囲の 11000 ～ 11999 と 14000 ～ 14999 を開く必要があります。詳細については、「[SQL Database V12のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」をご覧ください。
 
 
-## <a name="start-the-upgrade"></a>Start the upgrade
 
-1. In the [Azure portal](https://portal.azure.com/) browse to the server you want to upgrade by selecting **BROWSE** > **SQL servers**, and selecting the v2.0 server you want to upgrade.
-2. Select **Latest SQL Database Update**, then select **Upgrade this server**.
+## アップグレードを開始する
 
-      ![upgrade server][1]
+1. [Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[SQL サーバー]** の順に選択し、アップグレードする v2.0 サーバーを選択します。
+2. **[最新の SQL Database Update]** を選択し、**[このサーバーをアップグレード]** を選択します。
 
-3. Upgrading a server to the latest SQL Database Update is permanent and irreversible. To confirm the upgrade, type the name of your server and click **OK**.
+      ![サーバーのアップグレード][1]
 
-## <a name="upgrade-all-web-and-business-databases"></a>Upgrade all Web and Business databases
+3. 最新の SQL Database Update へのサーバーのアップグレードは永続的であり、元に戻すことはできません。アップグレードを確認するには、サーバーの名前を入力し、**[OK]** をクリックします。
 
-If your server has any Web or Business databases you must upgrade them. During the process of upgrading to SQL Database V12 you will update all Web and Business databases to a new service tier.    
+## すべての Web および Business データベースのアップグレード
 
-To assist you with upgrading, the SQL Database service recommends an appropriate service tier and performance level (pricing tier) for each database. The service recommends the best tier for running your existing database’s workload by analyzing the historical usage for your database.
+サーバーに Web データベースまたは Business データベースがある場合は、それらをアップグレードする必要があります。SQL Database V12 へのアップグレードの過程で、すべての Web/Business データベースを新しいサービス レベルに更新します。
 
-3. In the **Upgrade this server** blade select each database to review and select the recommended pricing tier to upgrade to. You can always browse the available pricing tiers and select the one that suits your environment best.
+アップグレードする際、SQL Database サービスによって、各データベースに適したサービス層とパフォーマンス レベル (価格レベル) が推奨されます。サービスでは、データベースの使用履歴を分析することで、既存データベースのワークロードを実行するための最適なレベルを使用することが推奨されます。
+
+3. **[このサーバーをアップグレード]** ブレードで、各データベースを選択して見直しを行い、アップグレードするための推奨価格レベルを選択します。利用できる価格レベルはいつでも参照でき、お使いの環境に最適な価格レベルを選択できます。
 
 
      ![databases][2]
 
 
-7. After clicking the suggested tier you will be presented with the **Choose your pricing tier** blade where you can select a tier and then click the **Select** button to change to that tier. Select a new tier for each Web or Business database.
+7. 提案されているレベルをクリックすると、**[価格レベルの選択]** ブレードが表示されます。このブレードでレベルを選択し、**[選択]** をクリックして、そのレベルに変更できます。Web データベースまたは Business データベースごとに新しいレベルを選択します。
 
-    What is important to note is that your SQL database is not locked into any specific service tier or performance level, so as the requirements of your database change you can easily change between the available service tiers and performance levels. In fact, Basic, Standard, and Premium SQL Databases are billed by the hour, and you have the ability to scale each database up or down 4 times within a 24 hour period.
+    SQL Database は特定のサービス レベルやパフォーマンス レベルに固定されるわけではないことに注意してください。このため、データベースの要件の変化に応じて、使用可能なサービス レベルとパフォーマンス レベル間での変更は簡単に行えます。実際、Basic、Standard、Premium の SQL Database は時間単位で課金され、各データベースは 24 時間に 4 回スケールアップまたはスケールダウンすることができます。
 
-    ![recommendations][6]
-
-
-After all databases on the server are eligible you are ready to start the upgrade
-
-## <a name="confirm-the-upgrade"></a>Confirm the upgrade
-
-3. When all the databases on the server are eligible for upgrade you need to **TYPE THE SERVER NAME** to verify that you want to perform the upgrade, and then click **OK**.
-
-    ![verify upgrade][3]
+    ![推奨事項][6]
 
 
-4. The upgrade starts and displays the in progress notification. The upgrade process is initiated. Depending on the details of your specific databases upgrading to V12 can take some time. During this time all databases on the server will remain online but server and database management actions will be restricted.
+サーバー上のすべてのデータベースを処理した後、アップグレードを開始できます。
 
-    ![upgrade in progress][4]
+## アップグレードの確認
 
-    At the time of the actual transition to the new performance level temporary dropping of the connections to the database can happen for a very small duration (typically measured in seconds). If an application has transient fault handling (retry logic) for connection terminations then it is sufficient to protect against dropped connections at the end of the upgrade.
+3. サーバー上のすべてのデータベースをアップグレードの対象にしたら、アップグレードを実行することを確認するために**サーバー名を入力**し、**[OK]** をクリックします。
 
-5. After the upgrade operation completes the **Latest Update** blade will display **Enabled**.
-
-    ![V12 enabled][5]  
-
-## <a name="move-your-databases-into-an-elastic-database-pool"></a>Move your databases into an elastic database pool
-
-In the [Azure portal](https://portal.azure.com/) browse to the V12 server and click **Add pool**.
-
--or-
-
-If you see a message saying **Click here to view the recommended elastic database pools for this server**, click it to easily create a pool that is optimized for your server's databases. For details, see [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md).
-
-![Add pool to a server][7]
-
-Follow the directions in the [Create an elastic database pool](sql-database-elastic-pool.md) article to finish creating your pool.
-
-## <a name="monitor-databases-after-upgrading-to-sql-database-v12"></a>Monitor databases after upgrading to SQL Database V12
-
->[AZURE.IMPORTANT] Upgrade to the latest version of SQL Server Management Studio (SSMS) to take advantage of the new v12 capabilities. [Download SQL Server Management Studio] (https://msdn.microsoft.com/library/mt238290.aspx).
-
-After upgrading, actively monitor the database to ensure applications are running at the desired performance, and then optimize settings as required.
-
-In addition to monitoring individual databases, you can monitor elastic database pools [Monitor, manage, and size an elastic database pool with the Azure portal](sql-database-elastic-pool-manage-portal.md) or with [PowerShell](sql-database-elastic-pool-manage-powershell.md).
+    ![アップグレードの確認][3]
 
 
-**Resource consumption data:** For Basic, Standard, and Premium databases resource consumption data is available through the [sys.dm_ db_ resource_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV in the user database. This DMV provides near real time resource consumption information at 15 second granularity for the previous hour of operation. The DTU percentage consumption for an interval is computed as the maximum percentage consumption of the CPU, IO and log dimensions. Here is a query to compute the average DTU percentage consumption over the last hour:
+4. アップグレードが開始され、進行中であることを通知するメッセージが表示されます。アップグレード処理が始まります。お使いのデータベースの詳細によっては、V12 へのアップグレードに時間がかかることがあります。その間、サーバー上のすべてのデータベースはオンラインのままですが、サーバーとデータベースの管理アクションは制限されます。
+
+    ![アップグレードが進行中][4]
+
+    新しいパフォーマンス レベルに実際に切り替えるときには、データベースへの接続が非常に短い時間 (通常は数秒)、一時的に解除される場合があります。接続が終了した場合に発生する一時的なエラーに対処するための機能 (再試行ロジック) がアプリケーションに備わっている場合は、アップグレードの終了に発生する接続解除に備えるだけで十分です。
+
+5. アップグレード操作が完了したら、**[最新の更新プログラム]** ブレードに **[有効]** が表示されます。
+
+    ![V12 の有効化][5]
+
+## エラスティック データベース プールへのデータベースの移動
+
+[Azure ポータル](https://portal.azure.com/)で、V12 サーバーを参照して **[プールの追加]** をクリックします。
+
+または
+
+**[ここをクリックして、このサーバーの推奨エラスティック データベース プールを表示します]** というメッセージが表示されたら、それをクリックして、サーバーのデータベースに最適化されたプールを簡単に作成できます。詳細については、「[エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)」をご覧ください。
+
+![サーバーへのプールの追加][7]
+
+「[エラスティック データベース プールの作成](sql-database-elastic-pool.md)」の記事の説明に従って、プールの作成を完了します。
+
+## SQL Database V12 へのアップグレード後のデータベースの監視
+
+>[AZURE.IMPORTANT] 新しい V12 の機能を利用するには、最新バージョンの SQL Server Management Studio (SSMS) にアップグレードします。[SQL Server Management Studio をダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)します。
+
+アップグレード後、アプリケーションが希望のパフォーマンスで実行されていることを確認し、必要に応じて設定を最適化できるように、データベースを積極的に監視します。
+
+個々のデータベースを監視するだけでなく、[Azure ポータル](sql-database-elastic-pool-manage-portal.md)または [PowerShell](sql-database-elastic-pool-powershell.md#monitoring-elastic-databases-and-elastic-database-pools) を使用してエラスティック データベース プールを監視することもできます。
+
+
+**リソース消費データ:** Basic、Standard、Premium の各データベースの場合、ユーザー データベース内の [sys.dm_db_ resource\_stats](http://msdn.microsoft.com/library/azure/dn800981.aspx) DMV から、リソース消費データを利用できます。この DMV は、直近 1 時間の操作に関する 15 秒おきのほぼリアル タイムのリソース消費情報を提供します。1 つの間隔内の DTU 消費割合は、CPU、IO、ログにおける最大消費割合として算出されます。次は、過去 1 時間における DTU の平均消費割合を算出するクエリです。
 
     SELECT end_time
-         , (SELECT Max(v)
+    	 , (SELECT Max(v)
              FROM (VALUES (avg_cpu_percent)
                          , (avg_data_io_percent)
                          , (avg_log_write_percent)
-           ) AS value(v)) AS [avg_DTU_percent]
+    	   ) AS value(v)) AS [avg_DTU_percent]
     FROM sys.dm_db_resource_stats
     ORDER BY end_time DESC;
 
-Additional monitoring information:
+その他の監視情報
 
-- [Azure SQL Database performance guidance for single databases](http://msdn.microsoft.com/library/azure/dn369873.aspx).
-- [Price and performance considerations for an elastic database pool](sql-database-elastic-pool-guidance.md).
-- [Monitoring Azure SQL Database using dynamic management views](sql-database-monitoring-with-dmvs.md)
-
-
-
-
-**Alerts:** Set up 'Alerts' in the Azure portal to notify you when the DTU consumption for an upgraded database approaches certain high level. Database alerts can be setup in the Azure portal for various performance metrics like DTU, CPU, IO, and Log. Browse to your database and select **Alert rules** in the **Settings** blade.
-
-For example, you can set up an email alert on “DTU Percentage” if the average DTU percentage value exceeds 75% over the last 5 minutes. Refer to [Receive alert notifications](../azure-portal/insights-receive-alert-notifications.md) to learn more about how to configure alert notifications.
+- [データベースが 1 台の場合の Azure SQL Database のパフォーマンス ガイダンス](http://msdn.microsoft.com/library/azure/dn369873.aspx)。
+- [エラスティック データベース プールの価格およびパフォーマンスに関する考慮事項](sql-database-elastic-pool-guidance.md)。
+- [動的管理ビューを使用した Azure SQL Database の監視](sql-database-monitoring-with-dmvs.md)
 
 
 
 
+**アラート:** アップグレードしたデータベースの DTU 消費が特定の高レベルに近づいた場合に通知を表示するには、Azure ポータルで 'アラート' を設定します。データベース アラートは、Azure ポータルで、DTU、CPU、IO、ログといったさまざまなパフォーマンス指標に対して設定できます。データベースを参照し、**[設定]** ブレードで **[アラート ルール]** を選択します。
 
-## <a name="next-steps"></a>Next steps
-
-- [Check for pool recommendations and create a pool](sql-database-elastic-pool-create-portal.md).
-- [Change the service tier and performance level of your database](sql-database-scale-up.md).
+たとえば、DTU の平均割合の値が 5 分間にわたって 75% を超過したような場合に、「DTU 割合」に関する電子メール アラートを送るように設定できます。アラート通知の構成方法については、「[アラート通知の受信](../azure-portal/insights-receive-alert-notifications.md)」をご覧ください。
 
 
 
-## <a name="related-links"></a>Related Links
 
-- [What's new in SQL Database V12](sql-database-v12-whats-new.md)
-- [Plan and prepare to upgrade to SQL Database V12](sql-database-v12-plan-prepare-upgrade.md)
+
+## 次のステップ
+
+- [プールに関する推奨事項を確認し、プールを作成する](sql-database-elastic-pool-create-portal.md)。
+- [データベースのサービス レベルとパフォーマンス レベルを変更する](sql-database-scale-up.md)。
+
+
+
+## 関連リンク
+
+- [SQL Database V12 の新機能](sql-database-v12-whats-new.md)
+- [SQL Database V12 へのアップグレードの計画と準備](sql-database-v12-plan-prepare-upgrade.md)
 
 
 <!--Image references-->
@@ -171,8 +169,4 @@ For example, you can set up an email alert on “DTU Percentage” if the averag
 [6]: ./media/sql-database-upgrade-server-portal/recommendations.png
 [7]: ./media/sql-database-upgrade-server-portal/new-elastic-pool.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

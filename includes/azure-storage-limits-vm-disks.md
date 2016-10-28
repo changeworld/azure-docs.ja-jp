@@ -1,11 +1,9 @@
-An Azure virtual machine supports attaching a number of data disks. For optimal performance, you will want to limit the number of highly utilized disks attached to the virtual machine to avoid possible throttling. If all disks are not being highly utilized at the same time, the storage account can support a larger number disks.
+Azure Virtual Machines は、複数のデータ ディスクの接続をサポートしています。パフォーマンスを最適化するには、仮想マシンに接続する使用率が高いディスク数を制限して、スロットルを回避するようにします。すべてのディスクの使用率が同時に高くならなければ、ストレージ アカウントは多数のディスクをサポートできます。
 
-- **For standard storage accounts:** A standard storage account has a maximum total request rate of 20,000 IOPS. The total IOPS across all of your virtual machine disks in a standard storage account should not exceed this limit.
+- **Standard ストレージ アカウントの場合:** Standard ストレージ アカウントには、20,000 IOPS という最大合計要求レートがあります。Standard ストレージ アカウントの仮想マシン ディスク全体の合計 IOPS は、この制限を超えることはできません。
 
-    You can roughly calculate the number of highly utilized disks supported by a single standard storage account based on the request rate limit. For example, for a Basic Tier VM, the maximum number of highly utilized disks is about 66 (20,000/300 IOPS per disk), and for a Standard Tier VM, it is about 40 (20,000/500 IOPS per disk), as shown in the table below. 
+	1 つの Standard ストレージ アカウントでサポートされる使用率が高いディスク数は、要求レート制限に基づいて概算できます。たとえば、次の表に示すように、Basic レベルの VM では、使用率の高いディスクの最大数は約 66 (ディスクあたり 20,000/300 IOPS) であり、Standard レベルの VM では約 40 (ディスクあたり IOPS 20,000/500) です。
  
-- **For premium storage accounts:** A premium storage account has a maximum total throughput rate of 50 Gbps. The total throughput across all of your VM disks should not exceed this limit.
+- **Premium Storage アカウントの場合:** Premium Storage アカウントの最大合計スループット レートは 50 Gbps です。すべての VM ディスク全体の合計スループットは、この制限を超えることはできません。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1125_2015-->

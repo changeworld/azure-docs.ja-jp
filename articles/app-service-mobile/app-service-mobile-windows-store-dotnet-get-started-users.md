@@ -1,47 +1,46 @@
 <properties
-    pageTitle="Add authentication to your Universal Windows Platform (UWP) app | Azure Mobile Apps"
-    description="Learn how to use Azure App Service Mobile Apps to authenticate users of your Universal Windows Platform (UWP) app using a variety of identity providers, including: AAD, Google, Facebook, Twitter, and Microsoft."
-    services="app-service\mobile"
-    documentationCenter="windows"
-    authors="adrianhall"
-    manager="erikre"
-    editor=""/>
+	pageTitle="ユニバーサル Windows プラットフォーム (UWP) アプリに認証を追加する | Azure Mobile Apps"
+	description="Azure App Service Mobile Apps を使用して、AAD、Google、Facebook、Twitter、Microsoft などのさまざまな ID プロバイダーを使ってユニバーサル Windows プラットフォーム (UWP) アプリのユーザーを認証する方法を説明します。"
+	services="app-service\mobile"
+	documentationCenter="windows"
+	authors="ggailey777"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-windows"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-windows"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="05/14/2016"
+	ms.author="glenga"/>
 
-
-# <a name="add-authentication-to-your-windows-app"></a>Add authentication to your Windows app
+# Windows アプリに認証を追加する
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
-This topic shows you how to add cloud-based authentication to your mobile app. In this tutorial, you add authentication to the Universal Windows Platform (UWP) quickstart project for Mobile Apps using an identity provider that is supported by Azure App Service. After being successfully authenticated and authorized by your Mobile App backend, the user ID value is displayed.
+このトピックでは、モバイル アプリにクラウド ベースの認証を追加する方法を説明します。このチュートリアルでは、Azure App Service でサポートされている ID プロバイダーを使用して、Mobile Apps のユニバーサル Windows プラットフォーム (UWP) のクイック スタート プロジェクトに認証を追加します。Mobile Apps のバックエンドによって正常に認証され、承認されると、ユーザー ID 値が表示されます。
 
-This tutorial is based on the Mobile Apps quickstart. You must first complete the tutorial [Get started with Mobile Apps](app-service-mobile-windows-store-dotnet-get-started.md).
+このチュートリアルは、Mobile Apps のクイック スタートに基づいています。事前に[Mobile Apps の使用](app-service-mobile-windows-store-dotnet-get-started.md)に関するチュートリアルを完了している必要があります。
 
-##<a name="<a-name="register"></a>register-your-app-for-authentication-and-configure-the-app-service"></a><a name="register"></a>Register your app for authentication and configure the App Service
+##<a name="register"></a>アプリケーションを認証に登録し、App Service を構成する
 
 [AZURE.INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-##<a name="<a-name="permissions"></a>restrict-permissions-to-authenticated-users"></a><a name="permissions"></a>Restrict permissions to authenticated users
+##<a name="permissions"></a>アクセス許可を、認証されたユーザーだけに制限する
 
 [AZURE.INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
-Now, you can verify that anonymous access to your backend has been disabled. With the UWP app project set as the start-up project, deploy and run the app; verify that an unhandled exception with a status code of 401 (Unauthorized) is raised after the app starts. This happens because the app attempts to access your Mobile App Code as an unauthenticated user, but the *TodoItem* table now requires authentication.
+これで、バックエンドへの匿名アクセスが無効になっていることを確認できます。スタートアップ プロジェクトとして設定された UWP アプリ プロジェクトを使用し、アプリをデプロイして実行します。アプリケーションの開始後、状態コード 401 (許可されていません) のハンドルされない例外が発生することを確認します。この問題は、認証されていないユーザーとしてアプリケーションがモバイル アプリ コードにアクセスしようとしても、現在の *TodoItem* テーブルでは認証が要求されるために発生します。
 
-Next, you will update the app to authenticate users before requesting resources from your App Service.
+次に、App Service のリソースを要求する前にユーザーを認証するようにアプリケーションを更新します。
 
-##<a name="<a-name="add-authentication"></a>add-authentication-to-the-app"></a><a name="add-authentication"></a>Add authentication to the app
+##<a name="add-authentication"></a>アプリケーションに認証を追加する
 
-1. In the UWP app project file MainPage.cs and add the following code snippet to the MainPage class:
-    
-        // Define a member variable for storing the signed-in user. 
+1. UWP アプリ プロジェクトの MainPage.cs ファイルを開き、次のコード スニペットを MainPage クラスに追加します。
+	
+		// Define a member variable for storing the signed-in user. 
         private MobileServiceUser user;
 
         // Define a method that performs the authentication process
@@ -72,29 +71,29 @@ Next, you will update the app to authenticate users before requesting resources 
             return success;
         }
 
-    This code authenticates the user with a Facebook login. If you are using an identity provider other than Facebook, change the value of **MobileServiceAuthenticationProvider** above to the value for your provider.
+    このコードでは、Facebook ログインを使用してユーザーを認証します。Facebook 以外の ID プロバイダーを使用している場合は、上の **MobileServiceAuthenticationProvider** の値をプロバイダーに対応する値に変更してください。
 
-3. Comment-out or delete the call to the **ButtonRefresh_Click** method (or the **InitLocalStoreAsync** method) in the existing **OnNavigatedTo** method override. This prevents the data from being loaded before the user is authenticated. Next, you will add a **Sign in** button to the app that triggers authentication.
+3. 既存の **OnNavigatedTo** メソッドのオーバーライドで、**ButtonRefresh\_Click** メソッド (または **InitLocalStoreAsync** メソッド) の呼び出しをコメントにするか、削除します。これを行うと、ユーザーが認証されるまでデータが読み込まれなくなります。次は、認証をトリガーするアプリに**サインイン** ボタンを追加します。
 
-4. Add the following code snippet to the MainPage class:
+4. MainPage クラスに、次のコード スニペットを追加します。
 
-        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
-        {
-            // Login the user and then load data from the mobile app.
-            if (await AuthenticateAsync())
-            {
-                // Switch the buttons and load items from the mobile app.
-                ButtonLogin.Visibility = Visibility.Collapsed;
-                ButtonSave.Visibility = Visibility.Visible;
-                //await InitLocalStoreAsync(); //offline sync support.
-                await RefreshTodoItems();
-            }
-        }
-        
-5. Open the MainPage.xaml project file, locate the element that defines the **Save** button and replace it with the following code:
+	    private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
+	    {
+	        // Login the user and then load data from the mobile app.
+	        if (await AuthenticateAsync())
+	        {
+	            // Switch the buttons and load items from the mobile app.
+	            ButtonLogin.Visibility = Visibility.Collapsed;
+	            ButtonSave.Visibility = Visibility.Visible;
+	            //await InitLocalStoreAsync(); //offline sync support.
+	            await RefreshTodoItems();
+	        }
+	    }
+		
+5. MainPage.xaml プロジェクト ファイルを開き、**[保存]** ボタンを定義している要素を探して、次のコードに置き換えます。
 
         <Button Name="ButtonSave" Visibility="Collapsed" Margin="0,8,8,0" 
-                Click="ButtonSave_Click">
+				Click="ButtonSave_Click">
             <StackPanel Orientation="Horizontal">
                 <SymbolIcon Symbol="Add"/>
                 <TextBlock Margin="5">Save</TextBlock>
@@ -108,34 +107,27 @@ Next, you will update the app to authenticate users before requesting resources 
             </StackPanel>
         </Button>
 
-9. Press the F5 key to run the app, click the **Sign in** button, and sign into the app with your chosen identity provider. After your sign-in is successful, the app runs without errors and you are able to query your backend and make updates to data.
+9. F5 キーを押してアプリを実行します。**[サインイン]** ボタンをクリックして、選択した ID プロバイダーでアプリにサインインします。サインインに成功すると、アプリはエラーなしで実行し、バックエンドに対してクエリを行ってデータを更新できるようになります。
 
 
-##<a name="<a-name="tokens"></a>store-the-authentication-token-on-the-client"></a><a name="tokens"></a>Store the authentication token on the client
+##<a name="tokens"></a>クライアント側で認証トークンを保存する
 
-The previous example showed a standard sign-in, which requires the client to contact both the identity provider and the App Service every time that the app starts. Not only is this method inefficient, you can run into usage-relates issues should many customers try to start you app at the same time. A better approach is to cache the authorization token returned by your App Service and try to use this first before using a provider-based sign-in.
+前の例では、標準のサインインを示しました。標準のサインインでは、アプリケーションが開始するたびに、クライアントは ID プロバイダーと App Service の両方にアクセスする必要があります。この方法は非効率であるだけでなく、多くの顧客が同時にアプリケーションを開始すると、使用率に関連した問題が発生する場合があります。よって、App Service から返される承認トークンをキャッシュし、最初にその承認トークンの使用を試してから、プロバイダー ベースのサインインを使用するほうが効果的です。
 
->[AZURE.NOTE]You can cache the token issued by App Services regardless of whether you are using client-managed or service-managed authentication. This tutorial uses service-managed authentication.
+>[AZURE.NOTE]クライアントによって管理される認証とサービスによって管理される認証のどちらを使用する場合でも、App Services が発行したトークンをキャッシュできます。このチュートリアルでは、サービスによって管理される認証を使用します。
 
 [AZURE.INCLUDE [mobile-windows-universal-dotnet-authenticate-app-with-token](../../includes/mobile-windows-universal-dotnet-authenticate-app-with-token.md)]
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-Now that you completed this basic authentication tutorial, consider continuing on to one of the following tutorials:
+これで基本的な認証チュートリアルは完了しましたので、引き続き次のいずれかのチュートリアルのご利用を検討してください。
 
-+ [Add push notifications to your app](app-service-mobile-windows-store-dotnet-get-started-push.md)  
-  Learn how to add push notifications support to your app and configure your Mobile App backend to use Azure Notification Hubs to send push notifications.
++ [アプリへのプッシュ通知の追加](app-service-mobile-windows-store-dotnet-get-started-push.md) アプリにプッシュ通知のサポートを追加して、Azure Notification Hubs を使用してプッシュ通知を送信するようにモバイル アプリ バックエンドを構成する方法について説明します。
 
-+ [Enable offline sync for your app](app-service-mobile-windows-store-dotnet-get-started-offline-data.md)  
-  Learn how to add offline support your app using an Mobile App backend. Offline sync allows end-users to interact with a mobile app&mdash;viewing, adding, or modifying data&mdash;even when there is no network connection.
++ [アプリのオフライン同期の有効化](app-service-mobile-windows-store-dotnet-get-started-offline-data.md) モバイル アプリ バックエンドを使用して、オフライン サポートをアプリに追加する方法について説明します。オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリとやり取りできます。
 
 
 <!-- URLs. -->
 [Get started with your mobile app]: app-service-mobile-windows-store-dotnet-get-started.md
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

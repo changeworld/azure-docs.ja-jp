@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to manage service configurations and profiles | Microsoft Azure"
-   description="Learn how to work with service configurations and profiles configuration files| which store settings for the deployment environments and publish settings for cloud services."
+   pageTitle="サービス構成とプロファイルを管理する方法 | Microsoft Azure"
+   description="サービス構成とプロファイルの構成ファイルを使用する方法について説明します。構成ファイルには、デプロイ環境の設定とクラウド サービスの発行設定が保存されます。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,125 +15,120 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# サービス構成とプロファイルを管理する方法
 
-# <a name="how-to-manage-service-configurations-and-profiles"></a>How to manage service configurations and profiles
+## Overview
 
-## <a name="overview"></a>Overview
+クラウド サービスを発行すると、Visual Studio は、サービス構成とプロファイルという 2 種類の構成ファイルに構成情報を保存します。サービス構成 (.cscfg ファイル) には、Azure クラウド サービスのデプロイ環境の設定が保存されます。Azure は、クラウド サービスを管理するときに、これらの構成ファイルを使用します。その一方で、プロファイル (.azurePubxml ファイル) には、クラウド サービスの発行設定が保存されます。この設定は、発行ウィザードで選択された内容の記録であり、Visual Studio によってローカルで使用されます。ここでは、両方の種類の構成ファイルを使用する方法について説明します。
 
-When you publish a cloud service, Visual Studio stores configuration information in two kinds of configuration files: service configurations and profiles. Service configurations (.cscfg files) store settings for the deployment environments for an Azure cloud service. Azure uses these configuration files when it manages your cloud services. On the other hand, profiles (.azurePubxml files) store publish settings for cloud services. These settings are a record of what you choose when you use the publish wizard, and are used locally by Visual Studio. This topic explains how to work with both types of configuration files.
+## サービス構成
 
-## <a name="service-configurations"></a>Service Configurations
+複数のサービス構成を作成し、それらを各デプロイ環境に使用できます。たとえば、ローカル環境用のサービス構成を作成して Azure アプリケーションの実行とテストに使用し、別のサービス構成を運用環境用に作成します。
 
-You can create multiple service configurations to use for each of your deployment environments. For example, you might create a service configuration for the local environment that you use to run and test an Azure application and another service configuration for your production environment.
-
-You can add, delete, rename, and modify these service configurations based on your requirements. You can manage these service configurations from Visual Studio, as shown in the following illustration.
+これらのサービス構成は、要件に基づいて追加、削除、名前変更、および変更できます。次の図に示すように、Visual Studio からこれらのサービス構成を管理できます。
 
 ![Manage Service Configurations](./media/vs-azure-tools-service-configurations-and-profiles-how-to-manage/manage-service-config.png)
 
-You can also open the **Manage Configurations** dialog box from the role’s property pages. To open the properties for a role in your Azure project, open the shortcut menu for that role, and then choose **Properties**. On the **Settings** tab, expand the **Service Configuration** list, and then select **Manage** to open the **Manage Configurations** dialog box.
+ロールのプロパティ ページから **[構成の管理]** ダイアログ ボックスを開くこともできます。Azure プロジェクトのロールのプロパティを開くには、ロールのショートカット メニューを開き、**[プロパティ]** をクリックします。**[設定]** タブで、**[サービス構成]** ボックスの一覧を展開し、**[管理]** を選択して **[構成の管理]** ダイアログ ボックスを開きます。
 
-### <a name="to-add-a-service-configuration"></a>To add a service configuration
+### サービス構成を追加するには
 
-1. In Solution Explorer open the shortcut menu for the Azure project and then select **Manage Configurations**.
+1. ソリューション エクスプローラーで、Azure プロジェクトのショートカット メニューを開き、**[構成の管理]** を選択します。
 
-    The **Manage Service Configurations** dialog box appears.
+    **[サービス構成の管理]** ダイアログ ボックスが表示されます。
 
-1. To add a service configuration, you must create a copy of an existing configuration. To do this, choose the configuration that you want to copy from the Name list and then select **Create copy**.
+1. サービス構成を追加するには、既存の構成のコピーを作成する必要があります。これを行うには、[名前] ボックスの一覧で、コピーする構成を選択し、**[コピーの作成]** を選択します。
 
-1. (Optional) To give the service configuration a different name, choose the new service configuration from the Name list and then select **Rename**. In the **Name** text box, type the name that you want to use for this service configuration and then select **OK**.
+1. (省略可能) サービス構成の名前を変更するには、[名前] ボックスの一覧から新しいサービス構成を選択し、**[名前の変更]** を選択します。**[名前]** ボックスに、このサービス構成に使用する名前を入力し、**[OK]** を選択します。
 
-    A new service configuration file that is named ServiceConfiguration.[New Name].cscfg is added to the Azure project in Solution Explorer.
-
-
-### <a name="to-delete-a-service-configuration"></a>To delete a service configuration
-
-1. In Solution Explorer, open the shortcut menu for the Azure project and then select **Manage Configurations**.
-
-    The **Manage Service Configurations** dialog box appears.
-
-1. To delete a service configuration, choose the configuration that you want to delete from the **Name** list and then select **Remove**. A dialog box appears to verify that you want to delete this configuration.
-
-1. Select **Delete**.
-
-     The service configuration file is removed from the Azure project in Solution Explorer.
+    ServiceConfiguration.[New Name].cscfg という新しいサービス構成ファイルがソリューション エクスプローラーの Azure プロジェクトに追加されます。
 
 
-### <a name="to-rename-a-service-configuration"></a>To rename a service configuration
+### サービス構成を削除するには
 
-1. In Solution Explorer, open the shortcut menu for the Azure project, and then select **Manage Configurations**.
+1. ソリューション エクスプローラーで、Azure プロジェクトのショートカット メニューを開き、**[構成の管理]** を選択します。
 
-    The **Manage Service Configurations** dialog box appears.
+    **[サービス構成の管理]** ダイアログ ボックスが表示されます。
 
-1. To rename a service configuration, choose the new service configuration from the **Name** list, and then select **Rename**. In the **Name** text box, type the name that you want to use for this service configuration, and then select **OK**.
+1. サービス構成を削除するには、**[名前]** ボックスの一覧から削除する構成を選択し、**[削除]** を選択します。この構成を削除することを確認するダイアログ ボックスが表示されます。
 
-    The name of the service configuration file is changed in the Azure project in Solution Explorer.
+1. **[削除]** を選択します。
 
-### <a name="to-change-a-service-configuration"></a>To change a service configuration
+     ソリューション エクスプローラーの Azure プロジェクトからサービス構成ファイルが削除されます。
 
-- If you want to change a service configuration, open the shortcut menu for the specific role you want to change in the Azure project, and then select **Properties**. See [How to: Configure the Roles for an Azure Cloud Service with Visual Studio](https://msdn.microsoft.com/library/azure/hh369931.aspx) for more information.
 
-## <a name="make-different-setting-combinations-by-using-profiles"></a>Make different setting combinations by using profiles
+### サービス構成の名前を変更するには
 
-By using a profile, you can automatically fill in the **Publish Wizard** with different combinations of settings for different purposes. For example, you can have one profile for debugging and another for release builds. In that case, your **Debug** profile would have **IntelliTrace** enabled and the **Debug** configuration selected, and your **Release** profile would have **IntelliTrace** disabled and the **Release** configuration selected. You could also use different profiles to deploy a service using a different storage account.
+1. ソリューション エクスプローラーで、Azure プロジェクトのショートカット メニューを開き、**[構成の管理]** を選択します。
 
-When you run the wizard for the first time, a default profile is created. Visual Studio stores the profile in a file that has an .azurePubXml extension, which is added to your Azure project under the **Profiles** folder. If you manually specify different choices when you run the wizard later, the file automatically updates. Before you run the following procedure, you should have already published your cloud service at least once.
+    **[サービス構成の管理]** ダイアログ ボックスが表示されます。
 
-### <a name="to-add-a-profile"></a>To add a profile
+1. サービス構成の名前を変更するには、**[名前]** ボックスの一覧から新しいサービス構成を選択し、**[名前の変更]** を選択します。**[名前]** ボックスに、このサービス構成に使用する名前を入力し、**[OK]** を選択します。
 
-1. Open the shortcut menu for your Azure project, and then select **Publish**.
+    ソリューション エクスプローラーの Azure プロジェクトでサービス構成ファイルの名前が変更されます。
 
-1. Next to the **Target profile** list, select the **Save Profile** button, as the following illustration shows. This creates a profile for you.
+### サービス構成を変更するには
+
+- サービス構成を変更する場合は、Azure プロジェクトで変更するロールのショートカット メニューを開き、**[プロパティ]** を選択します。詳細については、「[方法: Visual Studio を使用した Azure クラウド サービスのロールの構成](https://msdn.microsoft.com/library/azure/hh369931.aspx)」を参照してください。
+
+## プロファイルを使用してさまざまな設定を組み合わせる
+
+プロファイルを使用すると、目的に応じて異なる設定の組み合わせを自動的に**発行ウィザード**に入力できます。たとえば、デバッグ用にプロファイルを 1 つ作成し、リリース ビルド用に別のプロファイルを作成します。その場合、**デバッグ** プロファイルでは **IntelliTrace** が有効になり、**デバッグ**構成が選択されます。**リリース** プロフィールでは **IntelliTrace** が無効になり、**リリース**構成が選択されます。また、別のプロファイルを使用して、別のストレージ アカウントでサービスをデプロイすることもできます。
+
+初めてウィザードを実行すると、既定のプロファイルが作成されます。プロファイルが格納されたファイルは、.azurePubXml 拡張子が付き、Azure プロジェクトの **Profiles** フォルダーの下に追加されます。後でウィザードを実行するときに手動で別の選択を指定すると、ファイルは自動的に更新されます。次の手順を実行する前に、クラウド サービスを少なくとも 1 回発行する必要があります。
+
+### プロファイルを追加するには
+
+1. Azure プロジェクトのショートカット メニューを開き、**[発行]** を選択します。
+
+1. 次の図に示すように、**[ターゲット プロファイル]** ボックスの横にある **[プロファイルの保存]** ボタンを選択します。プロファイルが自動的に作成されます。
 
     ![Create an new profile](./media/vs-azure-tools-service-configurations-and-profiles-how-to-manage/create-new-profile.png)
 
-1. After the profile is created, select **<Manage…>** in the **Target profile** list.
+1. プロファイルが作成されたら、**[ターゲット プロファイル]** ボックスの一覧の **[<管理>]** を選択します。
 
-    The **Manage Profiles** dialog box appears, as the following illustration shows.
+    次の図に示すように、**[プロファイルの管理]** ダイアログ ボックスが表示されます。
 
     ![Manage Profiles Dialog](./media/vs-azure-tools-service-configurations-and-profiles-how-to-manage/manage-profiles.png)
 
-1. In the **Name** list, choose a profile, and then select **Create Copy**.
+1. **[名前]** ボックスの一覧で、プロファイルを選択し、**[コピーの作成]** を選択します。
 
-1. Choose the **Close** button.
+1. **[閉じる]** をクリックします。
 
-    The new profile appears in the Target profile list.
+    新しいプロファイルが [ターゲット プロファイル] ボックスの一覧に表示されます。
 
-1. In the **Target profile** list, select the profile that you just created. The Publish Wizard settings are filled in with the choices from the profile you selected.
+1. **[ターゲット プロファイル]** ボックスの一覧で、先ほど作成したプロファイルを選択します。選択したプロファイルで選択されている内容が、発行ウィザードの設定項目に入力されます。
 
-1. Select the **Previous** and **Next** buttons to display each page of the Publish Wizard, and then customize the settings for this profile. See [Publish Azure Application Wizard](http://go.microsoft.com/fwlink/p/?LinkID=623085) for information.
+1. **[前へ]** と **[次へ]** を選択して発行ウィザードの各ページを表示し、このプロファイルの設定をカスタマイズします。詳細については、[Azure アプリケーションの公開ウィザード](http://go.microsoft.com/fwlink/p/?LinkID=623085)に関するページを参照してください。
 
-1. After you finish customizing the settings, select **Next** to go back to the Settings page. The profile is saved when you publish the service by using these settings or if you select **Save** next to the list of profiles.
+1. 設定のカスタマイズが完了したら、**[次へ]** を選択して [設定] ページに戻ります。プロファイルが保存されるのは、これらの設定を使用してサービスを発行したときか、プロファイルの一覧の横にある **[保存]** を選択したときです。
 
-### <a name="to-rename-or-delete-a-profile"></a>To rename or delete a profile
+### プロファイルを削除するには
 
-1. Open the shortcut menu for your Azure project, and then select **Publish**.
+1. Azure プロジェクトのショートカット メニューを開き、**[発行]** を選択します。
 
-1. In the **Target profile** list, select **Manage**.
+1. **[ターゲット プロファイル]** ボックスの一覧の **[管理]** を選択します。
 
-1. In the **Manage Profiles** dialog box, select the profile that you want to delete, and then select **Remove**.
+1. **[プロファイルの管理]** ダイアログ ボックスで、削除するプロファイルを選択し、**[削除]** を選択します。
 
-1. In the confirmation dialog box that appears, select **OK**.
+1. 確認のダイアログ ボックスが表示されたら、**[OK]** を選択します。
 
-1. Select **Close**.
+1. **[閉じる]** を選択します。
 
-### <a name="to-change-a-profile"></a>To change a profile
+### プロファイルを変更するには
 
-1. Open the shortcut menu for your Azure project, and then select **Publish**.
+1. Azure プロジェクトのショートカット メニューを開き、**[発行]** を選択します。
 
-1. In the **Target profile** list, select the profile that you want to change.
+1. **[ターゲット プロファイル]** ボックスの一覧で、変更するプロファイルを選択します。
 
-1. Select the **Previous** and **Next** buttons to display each page of the Publish Wizard, and then change the settings you want. See [Publish Azure Application Wizard](http://go.microsoft.com/fwlink/p/?LinkID=623085) for information.
+1. **[前へ]** と **[次へ]** を選択して発行ウィザードの各ページを表示し、目的の設定を変更します。詳細については、[Azure アプリケーションの公開ウィザード](http://go.microsoft.com/fwlink/p/?LinkID=623085)に関するページを参照してください。
 
-1. After you finish changing the settings, select **Next** to go back to the **Settings** page.
+1. 設定の変更が完了したら、**[次へ]** を選択して **[設定]** ページに戻ります。
 
-1. (Optional) select **Publish** to publish the cloud service using the new settings. If you don’t want to publish your cloud service at this time, and you close the Publish Wizard, Visual Studio asks you if you want to save the changes to the profile.
+1. (省略可能) **[発行]** を選択し、新しい設定を使用してクラウド サービスを発行します。この時点でクラウド サービスを発行せずに発行ウィザードを閉じると、変更をプロファイルに保存するかどうかをたずねるメッセージが表示されます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn about configuring other parts of your Azure project from Visual Studio, see [Configuring an Azure Project](http://go.microsoft.com/fwlink/p/?LinkID=623075)
+Visual Studio で Azure プロジェクトの他の部分を構成する方法については、[Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)に関するページを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

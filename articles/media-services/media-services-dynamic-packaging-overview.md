@@ -1,88 +1,83 @@
 <properties
-    pageTitle="Dynamic packaging overview | Microsoft Azure"
-    description="The topic gives and overview of dynamic packaging."
-    authors="Juliako"
-    manager="erikre"
-    editor=""
-    services="media-services"
-    documentationCenter=""/>
+	pageTitle="ダイナミック パッケージの概要 | Microsoft Azure"
+	description="このトピックでは、ダイナミック パッケージの概要について説明します。"
+	authors="Juliako"
+	manager="erikre"
+	editor=""
+	services="media-services"
+	documentationCenter=""/>
 
 <tags
-    ms.service="media-services"
-    ms.workload="media"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/19/2016" 
-    ms.author="juliako"/>
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/19/2016" 
+	ms.author="juliako"/>
 
 
+#動的パッケージ
 
-#<a name="dynamic-packaging"></a>Dynamic packaging
+##概要
 
-##<a name="overview"></a>Overview
+Microsoft Azure Media Services を使用して、多数のメディア ソース ファイルの形式、メディア ストリーミング形式、およびコンテンツ保護形式をさまざまなクライアント テクノロジ (iOS、XBOX、Silverlight、Windows 8 など) に配信できます。これらのクライアントは異なるプロトコルを認識します。たとえば、iOS は HTTP Live Streaming (HLS) V4 形式が必要で、Silverlight および Xbox はスムーズ ストリーミングが必要です。MPEG DASH、HLS またはスムーズ ストリーミングを認識するクライアントに提供する、一連のアダプティブ ビットレート (マルチビット レート) MP4 (ISO Base Media 14496-12) ファイルまたは一連のアダプティブ ビットレート スムーズ ストリーミング ファイルがある場合、Media Services の動的パッケージを活用する必要があります。
 
-Microsoft Azure Media Services can be used to deliver many media source file formats, media streaming formats, and content protection formats to a variety of client technologies (for example, iOS, XBOX, Silverlight, Windows 8). These clients understand different protocols, for example iOS requires an HTTP Live Streaming (HLS) V4 format and Silverlight and Xbox require Smooth Streaming. If you have a set of adaptive bitrate (multi-bitrate) MP4 (ISO Base Media 14496-12) files or a set of adaptive bitrate Smooth Streaming files that you want to serve to clients that understand MPEG DASH, HLS or Smooth Streaming, you should take advantage of Media Services dynamic packaging.
+動的パッケージを使用すれば、一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート スムーズ ストリーミング ファイルを含むアセットを作成するだけで済みます。そうすれば、マニフェストまたはフラグメント要求で指定された形式に基づき、オンデマンド ストリーミング サーバーによって、ユーザーが選択したプロトコルでストリームを受信するようになります。その結果、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて、適切な応答を構築して返します。
 
-With dynamic packaging all you need is to create an asset that contains a set of adaptive bitrate MP4 files or adaptive bitrate Smooth Streaming files. Then, based on the specified format in the manifest or fragment request, the On-Demand Streaming server will ensure that you receive the stream in the protocol you have chosen. As a result, you only need to store and pay for the files in single storage format and Media Services service will build and serve the appropriate response based on requests from a client.
+次の図は、従来のエンコードおよび静的パッケージングのワークフローを示しています。
 
-The following diagram shows the traditional encoding and static packaging workflow.
+![静的なエンコード](./media/media-services-dynamic-packaging-overview/media-services-static-packaging.png)
 
-![Static Encoding](./media/media-services-dynamic-packaging-overview/media-services-static-packaging.png)
+次の図は、動的パッケージのワークフローを示しています。
 
-The following diagram shows the dynamic packaging workflow.
-
-![Dynamic Encoding](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
-
-
->[AZURE.NOTE]To take advantage of dynamic packaging, you must first get at least one On-demand streaming unit for the streaming endpoint from which you plan to delivery your content. For more information, see [How to Scale Media Services](media-services-portal-manage-streaming-endpoints.md).
-
-##<a name="common-scenario"></a>Common scenario
-
-1. Upload an input file (called a mezzanine file). For example, H.264, MP4, or WMV (for the list of supported formats see [Formats Supported by the Media Encoder Standard](media-services-media-encoder-standard-formats.md).
-
-1. Encode your mezzanine file to H.264 MP4 adaptive bitrate sets.
-
-1. Publish the asset that contains the adaptive bitrate MP4 set by creating the On-Demand Locator.
-
-1. Build the streaming URLs to access and stream your content.
+![動的なエンコード](./media/media-services-dynamic-packaging-overview/media-services-dynamic-packaging.png)
 
 
-##<a name="preparing-assets-for-dynamic-streaming"></a>Preparing assets for dynamic streaming
+>[AZURE.NOTE]動的パッケージを活用するには、コンテンツの配信元となるストリーミング エンドポイントのオンデマンド ストリーミング ユニットを 1 つ以上取得する必要があります。詳細については、「[Media Services の規模の設定方法](media-services-portal-manage-streaming-endpoints.md)」を参照してください。
 
-To prepare your asset for dynamic streaming you have two options:
+##一般的なシナリオ
 
-1. [Upload a master file](media-services-dotnet-upload-files.md).
-2. [Use the Media Encoder Standard encoder to produce H.264 MP4 adaptive bitrate sets](media-services-dotnet-encode-with-media-encoder-standard.md).
-3. [Stream your content](media-services-deliver-content-overview.md).
+1. 入力ファイル (中間ファイル) をアセットにアップロードします。たとえば、H.264、MP4、または WMV などです (サポートされている形式の一覧については、「[Media Encoder Standard の形式とコーデック](media-services-media-encoder-standard-formats.md)」を参照してください)。
 
--OR-
+1. Mezzanine ファイルを H.264 MP4 アダプティブ ビットレート セットにエンコードします。
 
-1. Upload pre-enocded MP4 files.
+1. オンデマンド ロケーターを作成することによって、アダプティブ ビットレート MP4 セットを含むアセットを発行します。
 
-    >[AZURE.NOTE] This opiton is not recommended.
-
-2. [Validate your pre-encoded files](media-services-static-packaging.md#validating-adaptive-bitrate-mp4s-encoded-with-external-encoders).
-3. [Stream your content](media-services-deliver-content-overview.md).
+1. コンテンツにアクセスしてストリーミングするストリーミング URL を構築します。
 
 
-##<a name="<a-id="unsupported_formats"></a>formats-that-are-not-supported-by-dynamic-packaging"></a><a id="unsupported_formats"></a>Formats that are not supported by dynamic packaging
+##動的ストリーミング用のアセットの準備
 
-The following source file formats are not supported by dynamic packaging.
+動的ストリーミング用にアセットを準備するには、2 つのオプションがあります。
 
-- Dolby digital mp4 files.
-- Dolby digital smooth files.
+1. [マスター ファイルをアップロードします](media-services-dotnet-upload-files.md)。
+2. [Media Encoder Standard エンコーダーを使用して、H.264 MP4 アダプティブ ビットレート セットを生成します](media-services-dotnet-encode-with-media-encoder-standard.md)。
+3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
 
-##<a name="media-services-learning-paths"></a>Media Services learning paths
+-または-
+ 
+1. 事前にエンコードされた MP4 ファイルをアップロードします。 
+
+	>[AZURE.NOTE] このオプションは推奨されません。
+	
+2. [事前にエンコードされたファイルを検証します](media-services-static-packaging.md#validating-adaptive-bitrate-mp4s-encoded-with-external-encoders)。
+3. [コンテンツをストリーミングします](media-services-deliver-content-overview.md)。
+
+
+##<a id="unsupported_formats"></a>動的パッケージでサポートされない形式
+
+動的パッケージでは、次のソース ファイルの形式はサポートされません。
+
+- ドルビー デジタル mp4 ファイル。
+- ドルビー デジタル スムーズ ファイル。
+
+##Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

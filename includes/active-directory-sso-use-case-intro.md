@@ -1,28 +1,25 @@
-Organizations are using more [Software as a Service (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) applications for productivity because cloud technology and tools are becoming more readily available. As the number of SaaS apps grows, it becomes challenging for the administrators to manage accounts and access rights, and for the users to remember their different passwords. Managing these applications individually creates extra work and is less secure.
+クラウド テクノロジーとツールを以前より簡単に使用できるようになったため、生産性を高めるためにサービスとしての[ソフトウェア (SaaS)](https://azure.microsoft.com/overview/what-is-saas/) アプリケーションを使用する組織はますます増加してきています。SaaS アプリケーションの増加に伴い、管理者はアカウントやアクセス権の管理が困難になり、ユーザーはさまざまなパスワードを記憶することが困難になってきています。これらのアプリケーションを個別に管理すると、余分な作業が発生し、セキュリティが低下します。
 
 
-- Employees who have to keep track of many passwords tend to use less-secure methods to remember them, either writing down passwords or using the same passwords across many accounts.
+- 多数のパスワードを管理する必要のある従業員は概して、パスワードを書き留めたり、多数のアカウントで同じパスワードを使用したりして、安全性の低い方法でそれらを記憶する傾向があります。
 
-- When a new employee arrives or one leaves, all their accounts must be individually provisioned or de-provisioned.
+- 新しい従業員が入ってきたり、従業員が退職したりすると、それらのすべてのアカウントを個別にプロビジョニングしたり、再プロビジョニングしたりしなければなりません。
 
-- Additionally, employees may start using SaaS apps for their work without going through IT, which means they are creating their own accounts on systems that the IT administrators haven't approved and aren't monitoring.  
+- また、従業員が IT 部門を介さずに業務に SaaS アプリを使用し始める可能性があります。つまり、IT 管理者が承認しておらず、監視していないアカウントを従業員が自分でシステム上に作成することになります。
 
-A solution for all of these challenges is single sign-on (SSO). It's the simplest way to manage multiple apps and provide users with a consistent sign-on experience. Azure Active Directory (Azure AD) provides a robust SSO solution and has many available pre-integrated applications, with tutorials for admins to quickly set up a new app and start provisioning users.
-
-
-## <a name="how-does-azure-active-directory-integrate-apps?"></a>How does Azure Active Directory integrate apps?  
-
-Azure AD allows you to integrate your apps and provisioned accounts. This can be done through either of two approaches.
-
-- If the app is pre-integrated in the app Gallery, you can go through that portal to set up apps and configure the settings to allow SSO. For any Gallery app, you can get started by follow the simple step-by-step instructions presented in the app gallery and in the Azure portal to enable single sign-on.
-
-- If the app is not in the Gallery, you can still set up most apps in Azure AD as a custom app. This requires a bit more technical expertise to configure. You can add any application that supports SAML 2.0 as a federated app, or any application that has an HTML-based sign-in page as a password SSO app.
-
-In the case where users have created their own accounts for SaaS apps that aren't managed by IT, the [Cloud App Discovery](../articles/active-directory/active-directory-cloudappdiscovery-whatis.md) tool provides a solution. This tool monitors the web traffic to identify which apps are being used throughout the organization, and the number of people using each of them. IT can use this information to learn what apps the users prefer and decide which to integrate into Azure AD for SSO.  
-
-When you integrate an app into Azure AD, you can map the users' established application identities to their respective Azure AD identities.  
+これらのすべての課題を解決するのがシングル サインオン (SSO) です。これは、複数のアプリを管理し、一貫性のあるサインオン エクスペリエンスをユーザーに提供する最も簡単な方法です。Azure Active Directory (Azure AD) には、堅牢な SSO ソリューションが備わっており、管理者が新しいアプリをすばやくセットアップし、ユーザーへのプロビジョニングを開始できるようにするためのチュートリアルを含む、多数の事前統合されたアプリケーションを使用できます。
 
 
-<!--HONumber=Oct16_HO2-->
+## Azure Active Directory によるアプリの統合方法  
 
+Azure AD を使用して、プロビジョニングされたアカウントとアプリを統合できます。これは、次の 2 つの方法のいずれかで実行できます。
 
+- アプリがアプリ ギャラリーで事前に統合されている場合、ポータルにアクセスしてアプリをセットアップし、SSO を許可するように設定を構成できます。すべてのギャラリー アプリに対して、アプリ ギャラリーや Azure ポータルに示される簡単な手順に従ってシングル サインオンを有効にできます。
+
+- アプリケーションがギャラリーにない場合でも、Azure AD のほとんどのアプリをカスタム アプリとしてセットアップできます。これを行うには、構成に関する技術的知識がもう少し必要です。SAML 2.0 をサポートする任意のアプリケーション、または HTML ベースのサインイン ページをパスワード SSO アプリとして持つ任意のアプリケーションをフェデレーション アプリケーションとして追加できます。
+
+ユーザーが IT 部門によって管理されていない SaaS アプリ用の独自アカウントを作成していた場合、[Cloud App Discovery](../articles/active-directory/active-directory-cloudappdiscovery-whatis.md) ツールで解決できます。このツールは Web トラフィックを監視し、組織全体で使用されているアプリと、それらの各アプリケーションを使用しているユーザー数を特定します。IT 部門はこの情報を使用して、ユーザーがどのアプリを気に入っているかを確認し、SSO に対応するように Azure AD に統合するアプリを決定できます。
+
+アプリを Azure AD に統合するときは、ユーザーの確立済みアプリケーション ID を各自の Azure AD ID にマップできます。
+
+<!---HONumber=AcomDC_0727_2016-->

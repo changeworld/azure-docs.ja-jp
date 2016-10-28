@@ -1,6 +1,6 @@
 <properties
- pageTitle="Azure solutions for Internet of Things | Microsoft Azure"
- description="A overview of IoT on Azure including a sample solution architecture and how it relates to Azure IoT Hub, device SDKs, and preconfigured solutions"
+ pageTitle="モノのインターネット用の Azure ソリューション | Microsoft Azure"
+ description="サンプル ソリューション アーキテクチャや、それが、Azure IoT Hub、デバイス SDK、および構成済みソリューションとどのように関連するかなど、Azure での IoT の概要。"
  services="iot-hub"
  documentationCenter=""
  authors="dominicbetts"
@@ -16,27 +16,26 @@
  ms.date="10/05/2016"
  ms.author="dobett"/>
 
-
 [AZURE.INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Azure IoT Hub is an Azure service that enables secure and reliable bi-directional communications between your application back end and millions of devices. It enables the application back end to:
+Azure IoT Hub は、アプリケーション バックエンドと何百万ものデバイスとの間に信頼性のある保護された双方向通信を確立できるサービスです。これによりアプリケーション バックエンドから次のことを実行できるようになります。
 
-- Receive telemetry at scale from your devices.
-- Route data from your devices to a stream event processor.
-- Receive file uploads from devices.
-- Send cloud-to-device commands to specific devices.
+- デバイスから大量のテレメトリを受信する。
+- デバイスからストリーム イベント プロセッサにデータをルーティングする。
+- デバイスからアップロードされたファイルを受信する。
+- クラウドからデバイスへのコマンドを特定のデバイスに送信する。
 
-You can use IoT Hub to implement your own solution back end. In addition, IoT Hub includes a device identity registry used to provision devices, their security credentials, and their rights to connect to the hub. To learn more about IoT Hub, see [What is IoT Hub?][lnk-iot-hub].
+IoT Hub を使用して、独自のソリューション バックエンドを実装できます。さらに、IoT Hub には、デバイスと、デバイスのセキュリティ資格情報と、デバイスがハブに接続するための権限とをプロビジョニングするために使用するデバイス ID レジストリが含まれています。IoT Hub の詳細については、「[Azure IoT Hub とは][lnk-iot-hub]」を参照してください。
 
-To learn how Azure IoT Hub enables standards-based IoT device management for you to remotely manage, configure, and update your devices, see [Overview of Azure IoT Hub device management][lnk-device-management].
+Azure IoT Hub では、標準ベースの IoT デバイス管理が可能となっており、リモートからデバイスを管理、構成、更新することができます。詳細については、「[Azure IoT Hub デバイス管理の概要][lnk-device-management]」を参照してください。
 
-To implement client applications on a wide variety of device hardware platforms and operating systems, you can use the IoT device SDKs. The IoT device SDKs include libraries that facilitate sending telemetry to an IoT hub and receiving cloud-to-device commands. When you use the SDKs, you can choose from several network protocols to communicate with IoT Hub. To learn more, see the [information about device SDKs][lnk-device-sdks].
+クライアント アプリケーションを各種デバイス ハードウェア プラットフォームやオペレーティング システムに実装するために、IoT デバイス SDK を使用できます。IoT デバイス SDK には、テレメトリを IoT Hub に送信し、クラウドからデバイスへのコマンドを受信する操作を容易にするライブラリが含まれています。これらの SDK を使用すると、さまざまなネットワーク プロトコルのうちのいずれかを選択して IoT Hub と通信することができます。詳細については、[デバイス SDK に関する情報][lnk-device-sdks]を参照してください。
 
-To get started writing some code and running some samples, see the [Get started with IoT Hub][lnk-getstarted] tutorial.
+実際にコードを作成してサンプルを実行するには、[IoT Hub の使用][lnk-getstarted]に関するチュートリアルを参照してください。
 
-You may also be interested in [Azure IoT Suite][lnk-iot-suite], which is a collection of preconfigured solutions. IoT Suite enables you to get started quickly and scale IoT projects to address common IoT scenarios--such as remote monitoring, asset management, and predictive maintenance.
+構成済みのソリューションのコレクションである [Azure IoT Suite][lnk-iot-suite] もご確認ください。IoT Suite を使用すると、リモート モニタリング、資産管理、予測メンテナンスなど、一般的な IoT シナリオに対処するための IoT プロジェクトをすばやく開始してスケーリングできます。
 
 [lnk-getstarted]: iot-hub-csharp-csharp-getstarted.md
 [lnk-device-sdks]: https://github.com/Azure/azure-iot-sdks/blob/master/readme.md
@@ -45,7 +44,4 @@ You may also be interested in [Azure IoT Suite][lnk-iot-suite], which is a colle
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-device-management-overview.md
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

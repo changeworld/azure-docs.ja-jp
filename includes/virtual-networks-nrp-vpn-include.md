@@ -1,15 +1,13 @@
-## <a name="vpn-gateway"></a>VPN Gateway 
-A VPN gateway resource enables you to create a secure connection between their on-premises data center and Azure. A VPN gateway resource can be configured in three different ways:
+## VPN Gateway 
+VPN ゲートウェイ リソースでは、オンプレミスのデータ センターと Azure の間にセキュリティで保護された接続を作成することができます。VPN ゲートウェイ リソースは、次の 3 つの異なる方法で構成できます。
  
-- **Point to Site** – you can securely access your Azure resources hosted in a VNET by using a VPN client from any computer. 
-- **Multi-site connection** – you can securely connect from your on-premises data centers to resources running in a VNET. 
-- **VNET to VNET** – you can securely connect across Azure VNETS within the same region, or across regions to build workloads with geo-redundancy.
+- **ポイント対サイト** – 任意のコンピューターから VPN クライアントを使用して、VNET 内でホストされている Azure のリソースに安全にアクセスすることができます。 
+- **複数サイト接続** – オンプレミスのデータ センターから VNET で実行しているリソースに安全に接続できます。 
+- **VNET 対 VNET** – 同じリージョン内またはリージョン間で、Azure VNET 間を安全に接続できます。これにより、地理的冗長性のあるワークロードをビルドできます。
 
-Key properties of a VPN gateway include:
+VPN ゲートウェイの主なプロパティは次のとおりです。
  
-- **Gateway type** - dynamically routed or a static routed gateway. 
-- **VPN Client Address Pool Prefix** – IP addresses to be assigned to clients connecting in a point to site configuration.
+- **ゲートウェイの種類** - 動的にルーティングされたゲートウェイ、または静的にルーティングされたゲートウェイ。 
+- **VPN クライアント アドレス プールのプレフィックス** – ポイント対サイトの構成で接続しているクライアントに割り当てられる IP アドレスです。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

@@ -1,38 +1,35 @@
-1. Sign in to the [classic portal](http://manage.windowsazure.com). 
+1. [クラシック ポータル](http://manage.windowsazure.com)にサインインします。 
 
-2. On the command bar at the bottom of the window, click **New**.
+2. ウィンドウの下部にあるコマンド バーで、**[新規]** をクリックします。
 
-3. Under **Compute**, click **Virtual Machine**, and then click **From Gallery**.
+3. **[Compute]** で、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-    ![Navigate to From Gallery in the Command Bar](./media/virtual-machines-create-WindowsVM/fromgallery.png)
+	![Navigate to From Gallery in the Command Bar](./media/virtual-machines-create-WindowsVM/fromgallery.png)
 
-4. The first screen after this lets you **Choose an Image** for your virtual machine from the list of available images. You can choose an image from the gallery or select from images and disks that you have uploaded. The available images may differ depending on the subscription you're using.
+4. この操作を行った後の最初の画面の **[イメージの選択]** で、利用できるイメージの一覧から仮想マシンのイメージを選択できますイメージは、ギャラリーから選択することも、アップロード済みのイメージおよびディスクの中から選択することもできます。利用できるイメージは、使用しているサブスクリプションによって異なる場合があります。
 
-5. The second screen lets you pick a computer name, size, and administrative user name and password. Use the tier and size required to run your app or workload. Here are some tips:
+5. 2 番目の画面では、コンピューターの名前、サイズ、管理ユーザーの名前とパスワードを選択します。アプリやワークロードの実行に必要な階層とサイズを選択してください。いくつかのヒントを次に示します。
 
-    - **Virtual Machine Name** can only contain letters, numbers and hypens. It also must start with a letter and end with a letter or a number.
-    - **New User Name** refers to the administrative account that you use to manage the server. The password must be 8-123 characters long and have at least three of the following: lower case character, upper case character, number, and a special character. **You'll need the user name and password to connect and log on to the virtual machine**.
-    - A virtual machine's size affects the cost of using it, as well as configuration options such as how many data disks you can attach. For details, see [Sizes for virtual machines](virtual-machines-windows-sizes.md).
+	- **[仮想マシン名]** には、文字、数字、ハイフンのみを使用できます。また、仮想マシン名は、文字で始まり、文字または数字で終わる必要があります。
+	- **[新しいユーザー名]** とは、サーバーの管理に使用する管理アカウントの名前です。パスワードは、8 ～ 123 文字で指定する必要があります。また、小文字、大文字、数字、特殊文字のうち、少なくとも 3 つを含める必要があります。**仮想マシンに接続してログオンする際に、このユーザー名とパスワードが必要になります。**
+	- 仮想マシンのサイズによって、使用料金が変わります。また、接続できるデータ ディスク数などの構成オプションも料金に影響します。詳細については、「[仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。
 
-6. The third screen lets you configure resources for networking, storage, and availability. Here are some tips:
+6. 3 番目の画面では、リソースのネットワーク、ストレージ、可用性を構成できます。いくつかのヒントを次に示します。
 
-    - The **Cloud Service DNS Name** is the global DNS name that becomes part of the URI that's used to contact the virtual machine. You'll need to come up with your own cloud service name because it must be unique in Azure. Cloud services are important for scenarios using [multiple virtual machines](virtual-machines-windows-classic-connect-vms.md).
+	- **[クラウド サービス DNS 名]** は、仮想マシンへの接続に使用する URI の一部となるグルーバル DNS 名です。クラウド サービス名は Azure 上で一意な名前にする必要があるため、独自のクラウド サービス名を考えてください。クラウド サービスは、[複数の仮想マシン](virtual-machines-windows-classic-connect-vms.md)を使用するシナリオで重要となります。
 
-    - For **Region/Affinity Group/Virtual Network**, use a region that's appropriate to your location. You can also choose to specify a virtual network instead.
+	- **[リージョン/アフィニティ グループ/仮想ネットワーク]** では、現在の場所に対応するリージョンを指定します。代わりに仮想ネットワークを指定することもできます。
 
-    - If you want a virtual machine to use a virtual network, you **must** specify the virtual network when you create the virtual machine. You can't join the virtual machine to a virtual network after you create the VM. For more information, see [Azure Virtual Network Overview](virtual-networks-overview.md).
-    
-    - For details about configuring endpoints, see [How to Set Up Endpoints to a Virtual Machine](virtual-machines-windows-classic-setup-endpoints.md).
+	- 仮想マシンで仮想ネットワークを使用する場合、仮想マシンの作成時に仮想ネットワークを指定する**必要があります**。仮想マシンの作成後に VM を仮想ネットワークに参加させることはできません。詳細については、「[Virtual Network の概要](virtual-networks-overview.md)」を参照してください。
+	
+	- エンドポイントの構成の詳細については、「[仮想マシンに対してエンドポイントを設定する方法](virtual-machines-windows-classic-setup-endpoints.md)」を参照してください。
 
-7. The fourth configuration screen lets you install the VM Agent and configure some of the available extensions.
+7. 4 番目の構成画面では、VM エージェントをインストールし、使用可能な一部の拡張機能を構成できます。
 
-    >[AZURE.NOTE] The VM agent provides the environment for you to install extensions that can help you interact with or manage the virtual machine. For details, see [About the VM agent and extensions](virtual-machines-windows-classic-agents-and-extensions.md).  
+	>[AZURE.NOTE] VM エージェントには、仮想マシンの操作と管理に役立つ拡張機能をインストールするための環境が用意されています。詳細については、「[Azure VM エージェントおよび VM 拡張機能](virtual-machines-windows-classic-agents-and-extensions.md)」を参照してください。
 
-8. After the virtual machine is created, the classic portal lists the new virtual machine under **Virtual Machines**. The corresponding cloud service and storage account also are created and are listed in those sections. Both the virtual machine and cloud service are started automatically and their status is listed as **Running**.
+8. 仮想マシンが作成されると、旧ポータルの **[Virtual Machines]** に新しい仮想マシンが一覧表示されます。対応するクラウド サービスとストレージ アカウントも作成され、それぞれのセクションに表示されます。仮想マシンとクラウド サービスが自動的に起動し、その状態がいずれも "**実行中**" として表示されます。
 
-    ![Configure VM Agent and the endpoints of the virtual machine](./media/virtual-machines-create-WindowsVM/vmcreated.png)
+	![VM エージェントと仮想マシンのエンドポイントを構成します](./media/virtual-machines-create-WindowsVM/vmcreated.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0608_2016-->

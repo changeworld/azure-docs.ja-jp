@@ -1,56 +1,50 @@
 <properties
-    pageTitle="Overview diagram of Machine Learning Studio capabilities | Microsoft Azure"
-    description="A printable diagram of the capabilities of Azure Machine Learning Studio, demonstrating how to use Studio to develop a predictive analytics experiment and operationalize it in the Azure cloud."
-    keywords="machine learning studio,overview diagram,download"
-    services="machine-learning"
-    documentationCenter=""
-    authors="hning86"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="Machine Learning Studio 機能の概要図 | Microsoft Azure"
+	description="Azure Machine Learning Studio を使用して予測分析実験を開発し、それを Azure クラウドで運用可能にする方法を示す、Azure Machine Learning Studio の機能の印刷可能な図です。"
+	keywords="Machine Learning Studio、概要図、ダウンロード"
+	services="machine-learning"
+	documentationCenter=""
+	authors="hning86"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/21/2016"
-    ms.author="haining;garye" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/21/2016"
+	ms.author="haining;garye" />
 
 
+# Azure Machine Learning Studio 機能の概要図
 
-# <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Overview diagram of Azure Machine Learning Studio capabilities
+**Microsoft Azure Machine Learning Studio 機能の概要**図には、Machine Learning Studio を使用して予測分析モデルを開発し、Azure クラウドでそれを運用可能にする方法の概要が示されています。
 
-The **Microsoft Azure Machine Learning Studio Capabilities Overview** diagram gives you a high-level overview of how you can use Machine Learning Studio to develop a predictive analytics model and operationalize it in the Azure cloud.
+[Azure Machine Learning Studio](https://studio.azureml.net/) では、多数の機械学習アルゴリズムに加え、データの入力、出力、準備、および可視化に役立つモジュールも利用できます。これらのコンポーネントを使用して、予測分析実験の開発、反復処理、モデルのトレーニングを行うことができます。次に、ワンクリックでモデルを Azure クラウドで運用可能にすることができ、これを使用して新しいデータにスコアを付けることができます。
 
-[Azure Machine Learning Studio](https://studio.azureml.net/) has available a large number of machine learning algorithms, along with modules that help with data input, output, preparation, and visualization. Using these components you can develop a predictive analytics experiment, iterate on it, and use it to train your model.
-Then with one click you can operationalize your model in the Azure cloud so that it can be used to score new data.
+この図は、これらすべての項目が互いにどのように関連するかを示しています。
 
-This diagram shows how all those pieces fit together.
+> [AZURE.NOTE] Machine Learning Studio で使用可能な機械学習アルゴリズムを調べて選択する際の詳しいサポートについては、「[Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート](machine-learning-algorithm-cheat-sheet.md)」をご覧ください。
 
-> [AZURE.NOTE] See [Machine learning algorithm cheat sheet for Microsoft Azure Machine Learning Studio](machine-learning-algorithm-cheat-sheet.md) for additional help in navigating through and choosing the machine learning algorithms available in Machine Learning Studio.
+## Machine Learning Studio 概要図のダウンロード
 
-## <a name="download-the-machine-learning-studio-overview-diagram"></a>Download the Machine Learning Studio overview diagram
+**Microsoft Azure Machine Learning Studio 機能の概要**図をダウンロードして、Machine Learning Studio の機能の概要を確認します。図をタブロイド サイズ (11 x 17 インチ) で印刷し、手元に置いておくことができます。
 
-Download the **Microsoft Azure Machine Learning Studio Capabilities Overview** diagram and get a high-level view of the capabilities of Machine Learning Studio. To keep it nearby, you can print the diagram in tabloid size (11 x 17 in.).
+**ここから図をダウンロード: [Microsoft Azure Machine Learning Studio 機能の概要](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
 
-**Download the diagram here: [Microsoft Azure Machine Learning Studio Capabilities Overview](http://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf)**
-
-![Microsoft Azure Machine Learning Studio Capabilities Overview][studio-overview]
+![Microsoft Azure Machine Learning Studio 機能の概要][studio-overview]
 
 [studio-overview]: ./media/machine-learning-studio-overview-diagram/ml_studio_overview_v1.1.png
 
 
-## <a name="more-help-with-machine-learning-studio"></a>More help with Machine Learning Studio
+## Machine Learning Studio に役立つその他の情報
 
-* For an overview of Microsoft Azure Machine Learning, see [Introduction to machine learning on Microsoft Azure](machine-learning-what-is-machine-learning.md)
-* For an overview of Machine Learning Studio, see [What is Azure Machine Learning Studio?](machine-learning-what-is-ml-studio.md).
-* For a detailed discussion of the machine learning algorithms available in Machine Learning Studio, see [How to choose algorithms for Microsoft Azure Machine Learning](machine-learning-algorithm-choice.md).
+* Microsoft Azure Machine Learning の概要については、「[Microsoft Azure での機械学習の概要](machine-learning-what-is-machine-learning.md)」を参照してください。
+* Machine Learning Studio の概要については、「[Azure Machine Learning Studio とは](machine-learning-what-is-ml-studio.md)」を参照してください。
+* Machine Learning Studio で使用可能な機械学習アルゴリズムの詳細については、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](machine-learning-algorithm-choice.md)」を参照してください。
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

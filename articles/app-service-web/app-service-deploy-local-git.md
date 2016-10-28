@@ -1,189 +1,183 @@
 <properties
-    pageTitle="Local Git Deployment to Azure App Service"
-    description="Learn how to enable local Git deployment to Azure App Service."
-    services="app-service"
-    documentationCenter=""
-    authors="dariagrigoriu"
-    manager="wpickett"
-    editor="mollybos"/>
+	pageTitle="Azure App Service へのローカル Git デプロイ"
+	description="Azure App Service へのローカル Git デプロイを有効にする方法を説明します。"
+	services="app-service"
+	documentationCenter=""
+	authors="dariagrigoriu"
+	manager="wpickett"
+	editor="mollybos"/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/13/2016"
-    ms.author="dariagrigoriu"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/13/2016"
+	ms.author="dariagrigoriu"/>
     
+# Azure App Service へのローカル Git デプロイ
 
-# <a name="local-git-deployment-to-azure-app-service"></a>Local Git Deployment to Azure App Service
+このチュートリアルでは、ローカル コンピューター上の Git リポジトリから [Azure App Service] にアプリをデプロイする方法を説明します。この方法は、App Service により、[Azure ポータル]の**ローカル Git** デプロイ オプションでサポートされています。この記事に記載されている Git コマンドの多くは、[ここ](app-service-web-get-started.md)に説明されている [Azure コマンド ライン インターフェイス]を使用して App Service アプリを作成する際に自動的に実行されます。
 
-This tutorial shows you how to deploy your app to [Azure App Service] from a Git repository on your local computer. App Service supports this approach with the **Local Git** deployment option in the [Azure Portal].  
-Many of the Git commands described in this article are performed automatically when creating an App Service app using the [Azure Command-Line Interface] as described [here](app-service-web-get-started.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+このチュートリアルを完了するには、次のものが必要です。
 
-To complete this tutorial, you need:
+- Gitインストール バイナリを[こちら](http://www.git-scm.com/downloads)でダウンロードできます。
+- Git の基本的な知識。
+- Microsoft Azure アカウント。アカウントを持っていない場合は、[無料試用版にサインアップする](https://azure.microsoft.com/pricing/free-trial)か [Visual Studio サブスクライバー特典を有効](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)にしてください。
 
-- Git. You can download the installation binary [here](http://www.git-scm.com/downloads).  
-- Basic knowledge of Git.
-- A Microsoft Azure account. If you don't have an account, you can [sign up for a free trial](https://azure.microsoft.com/pricing/free-trial) or [activate your Visual Studio subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details).
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter app in App Service. No credit cards required; no commitments.  
+## <a id="Step1"></a>手順 1: ローカル リポジトリを作成する
 
-## <a name="<a-name="step1"></a>step-1:-create-a-local-repository"></a><a name="Step1"></a>Step 1: Create a local repository
+次のタスクを実行して、新しい Git リポジトリを作成します。
 
-Perform the following tasks to create a new Git repository.
+1. **GitBash** (Windows) や **Bash** (Unix シェル) などのコマンド ライン ツールを起動します。OS X システムでは、**ターミナル** アプリケーションを使用してコマンド ラインにアクセスできます。
 
-1. Start a command-line tool, such as **GitBash** (Windows) or **Bash** (Unix Shell). On OS X systems you can access the command-line through the **Terminal** application.
+2. デプロイするコンテンツが配置されるディレクトリに移動します。
 
-2. Navigate to the directory where the content to deploy would be located.
+3. 次のコマンドを使用して、新しい Git リポジトリを初期化します。
 
-3. Use the following command to initialize a new Git repository:
+		git init
 
-        git init
+## <a id="Step2"></a>手順 2: コンテンツをコミットする
 
-## <a name="<a-name="step2"></a>step-2:-commit-your-content"></a><a name="Step2"></a>Step 2: Commit your content
+App Service では、さまざまなプログラミング言語で作成されたアプリケーションをサポートしています。
 
-App Service supports applications created in a variety of programming languages. 
+1. リポジトリに既にコンテンツが含まれている場合は、このポイントをスキップし、以下のポイント 2 に進みます。リポジトリにまだコンテンツが含まれていない場合は、静的 .html ファイルにより値を次のように設定します。
 
-1. If your repository already includes content skip this point and move to point 2 below. If your repository does not already include content simply populate with a static .html file as follows: 
-
-    - Using a text editor, create a new file named **index.html** at the root of the Git repository
-    - Add the following text as the contents for the index.html file and save it: *Hello Git!*
+    - テキスト エディターを使用して、Git リポジトリのルートに **index.html** という名前の新しいファイルを作成します。
+    - index.html ファイルの内容として次のテキストを追加し、ファイルを保存します: *Hello Git!*。
         
-2. From the command-line, verify that you are under the root of your Git repository. Then use the following command to add files to your repository:
+2. コマンド ラインで、Git リポジトリのルートにいることを確認します。次のコマンドを使用して、リポジトリにファイルを追加します。
 
-        git add -A 
+		git add -A 
 
-4. Next, commit the changes to the repository by using the following command:
+4. 次に、次のコマンドを使用して、リポジトリへの変更をコミットします。
 
-        git commit -m "Hello Azure App Service"
+		git commit -m "Hello Azure App Service"
 
-## <a name="<a-name="step3"></a>step-3:-enable-the-app-service-app-repository"></a><a name="Step3"></a>Step 3: Enable the App Service app repository
+## <a id="Step3"></a>手順 3: App Service アプリのリポジトリを有効にする
 
-Perform the following steps to enable a Git repository for your App Service app.
+次に示している手順を実行して、App Service アプリに対して Git リポジトリを有効にします。
 
-1. Log in to the [Azure Portal].
+1. [Azure ポータル]にログインします。
 
-2. In your App Service app's blade, click **Settings > Deployment source**. Click **Choose source**, then click **Local Git Repository**, and then click **OK**.  
+2. App Service アプリのブレードで、**[設定]、[デプロイ ソース]** の順にクリックします。**[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。
 
-    ![Local Git Repository](./media/app-service-deploy-local-git/local_git_selection.png)
+	![ローカルの Git リポジトリ](./media/app-service-deploy-local-git/local_git_selection.png)
 
-3. If this is your first time setting up a repository in Azure, you need to create login credentials for it. You will use them to log into the Azure repository and push changes from your local Git repository. From your app's blade, click **Settings > Deployment credentials**, then configure your deployment username and password. When you're done, click **Save**.
+3. Azure で初めてリポジトリを設定した場合、そのログイン資格情報を作成する必要があります。それらを使用して、Azure リポジトリにログインし、ローカル Git リポジトリから変更をプッシュします。アプリのブレードで **[設定]、[デプロイ資格情報]** の順にクリックし、デプロイ用のユーザー名とパスワードを構成します。終了したら **[保存]** をクリックします。
 
-    ![](./media/app-service-deploy-local-git/deployment_credentials.png)
+	![](./media/app-service-deploy-local-git/deployment_credentials.png)
 
-## <a name="<a-name="step4"></a>step-4:-deploy-your-project"></a><a name="Step4"></a>Step 4: Deploy your project
+## <a id="Step4"></a>手順 4: プロジェクトをデプロイする
 
-Use the following steps to publish your app to App Service using Local Git.
+次に示している手順に従って、ローカル Git を使用してアプリを App Service に発行します。
 
-1. In your app's blade in the Azure Portal, click **Settings > Properties** for the **Git URL**.
+1. Azure ポータルの対象アプリのブレードで、**Git URL** について **[設定]、[プロパティ]** の順にクリックします。
 
-    ![](./media/app-service-deploy-local-git/git_url.png)
+	![](./media/app-service-deploy-local-git/git_url.png)
 
-    **Git URL** is the remote reference to deploy to from your local repository. You'll use this URL in the following steps.
+	**Git URL** は、ローカル リポジトリからデプロイする際のリモート参照です。この URL は次の手順で使用します。
 
-2. Using the command-line, verify that you are in the root of your local Git repository.
+2. コマンド ラインを使用して、現在の位置がローカル Git リポジトリのルートであることを確認します。
 
-3. Use `git remote` to add the remote reference listed in **Git URL** from step 1. Your command will look similar to the following:
+3. `git remote` を使用して、手順 1 の **[Git の URL]** にリストされたリモート参照を追加します。コマンドは次のようになります。
 
-        git remote add azure https://<username>@localgitdeployment.scm.azurewebsites.net:443/localgitdeployment.git         
-    > [AZURE.NOTE] The **remote** command adds a named reference to a remote repository. In this example, it creates a reference named 'azure' for your web app's repository.
+		git remote add azure https://<username>@localgitdeployment.scm.azurewebsites.net:443/localgitdeployment.git         
+    > [AZURE.NOTE] この **remote** コマンドは、名前付きの参照をリモート リポジトリに追加します。この例では、Web アプリのリポジトリに「azure」という名前の参照を作成しています。
 
-4. Push your content to App Service using the new **azure** remote you just created.
+4. 作成した新しい **azure** リモートを使用して、コンテンツを App Service にプッシュします。
 
-        git push azure master
+		git push azure master
 
-    You will be prompted for the password you created earlier when you reset your deployment credentials in the Azure Portal. Enter the password (note that Gitbash does not echo asterisks to the console as you type your password). 
+	Azure ポータルでデプロイメント資格情報をリセットしたときに作成したパスワードの入力を求められます。パスワードを入力します (パスワードを入力しても Gitbash によってコンソールにアスタリスクはエコーされません)。
        
-5. Go back to your app in the Azure Portal. A log entry of your most recent push should be displayed in the **Deployments** blade. 
+5. Azure ポータル内のアプリに戻ります。最近使用したプッシュのログ エントリが **[デプロイ]** ブレードに表示されます。
 
-    ![](./media/app-service-deploy-local-git/deployment_history.png)
+	![](./media/app-service-deploy-local-git/deployment_history.png)
 
-6. Click the **Browse** button at the top of the app's blade to verify the content has been deployed. 
+6. アプリのブレード上部の **[参照]** ボタンをクリックして、コンテンツがデプロイされていることを確認します。
     
-## <a name="<a-name="step5"></a>troubleshooting"></a><a name="Step5"></a>Troubleshooting
+## <a id="Step5"></a>トラブルシューティング
 
-The following are errors or problems commonly encountered when using Git to publish to an App Service app in Azure:
-
-****
-
-**Symptom**: Unable to access '[siteURL]': Failed to connect to [scmAddress]
-
-**Cause**: This error can occur if the app is not up and running.
-
-**Resolution**: Start the app in the Azure Portal. Git deployment will not work unless the app is running. 
-
+Git を使用して Azure の App Service に発行する場合に発生する一般的なエラーまたは問題を以下に示します。
 
 ****
 
-**Symptom**: Couldn't resolve host 'hostname'
+**症状**: '[siteURL]' にアクセスできません: [scmAddress] に接続できませんでした
 
-**Cause**: This error can occur if the address information entered when creating the 'azure' remote was incorrect.
+**原因**: このエラーはアプリが実行されていない場合に発生する可能性があります。
 
-**Resolution**: Use the `git remote -v` command to list all remotes, along with the associated URL. Verify that the URL for the 'azure' remote is correct. If needed, remove and recreate this remote using the correct URL.
+**解決策**: Azure ポータルでアプリを起動します。Git デプロイはアプリが実行されていない限り機能しません。
+
 
 ****
 
-**Symptom**: No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.
+**症状**: ホスト 『hostname』 を解決できませんでした
 
-**Cause**: This error can occur if you do not specify a branch when performing a git push operation, and have not set the push.default value used by Git.
+**原因**: このエラーは、"azure" リモートを作成するときに入力したアドレス情報が間違っている場合に発生します。
 
-**Resolution**: Perform the push operation again, specifying the master branch. For example:
-
-    git push azure master
+**解決策**: `git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。"azure" リモートの URL が正しいことを確認します。必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。
 
 ****
 
-**Symptom**: src refspec [branchname] does not match any.
+**症状**: 参照が共通していないか、指定されていません。未対応です。『master』 などの分岐を指定する必要があります。
 
-**Cause**: This error can occur if you attempt to push to a branch other than master on the 'azure' remote.
+**原因**: このエラーは、git push 操作を実行するときに分岐を指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
-**Resolution**: Perform the push operation again, specifying the master branch. For example:
+**解決策**: master 分岐を指定して、もう一度 push 操作を実行します。次に例を示します。
 
-    git push azure master
+	git push azure master
 
 ****
 
-**Symptom**: Error - Changes committed to remote repository but your web app not updated.
+**症状**: src refspec [分枝名] に一致するものがありません。
 
-**Cause**: This error can occur if you are deploying a Node.js app containing a package.json file that specifies additional required modules.
+**原因**: このエラーは、"azure" リモートの master 以外の分岐にプッシュしようとした場合に発生します。
 
-**Resolution**: Additional messages containing 'npm ERR!' should be logged prior to this error, and can provide additional context on the failure. The following are known causes of this error and the corresponding 'npm ERR!' message:
+**解決策**: master 分岐を指定して、もう一度 push 操作を実行します。次に例を示します。
 
-* **Malformed package.json file**: npm ERR! Couldn't read dependencies.
+	git push azure master
 
-* **Native module that does not have a binary distribution for Windows**:
+****
 
-    * npm ERR! \`cmd "/c" "node-gyp rebuild"\` failed with 1
+**症状**: エラー - 変更がリモート リポジトリにコミットされましたが、Web アプリは更新されていません。
 
-        OR
+**原因**: このエラーは、必要な追加モジュールを指定する package.json ファイルを含む Node.js アプリをデプロイする場合に発生します。
 
-    * npm ERR! [modulename@version] preinstall: \`make || gmake\`
+**解決策**: このエラーの前に "npm ERR!" を含む追加のメッセージがログに記録されます。このメッセージによって、このエラーに関する追加のコンテキストが提供される場合があります。このエラーの既知の原因と、対応する "npm ERR!" メッセージを以下に示します。
+
+* **形式が正しくない package.json ファイル**: npm ERR! Couldn't read dependencies.
+
+* **Windows 用のバイナリ配布がないネイティブ モジュール**:
+
+	* npm ERR! `cmd "/c" "node-gyp rebuild"` failed with 1
+
+		または
+
+	* npm ERR! [modulename@version] preinstall: `make || gmake`
 
 
-## <a name="additional-resources"></a>Additional Resources
+## その他のリソース
 
-* [Git documentation](http://git-scm.com/documentation)
-* [Project Kudu documentation](https://github.com/projectkudu/kudu/wiki)
-* [Continous Deployment to Azure App Service](app-service-continuous-deployment.md)
-* [How to use PowerShell for Azure](../powershell-install-configure.md)
-* [How to use the Azure Command-Line Interface](../xplat-cli-install.md)
+* [Git に関するドキュメント](http://git-scm.com/documentation)
+* [Project Kudu に関するドキュメント](https://github.com/projectkudu/kudu/wiki)
+* [Azure App Service への継続的なデプロイ](app-service-continuous-deployment.md)
+* [How to use PowerShell for Azure (Azure 用の PowerShell を使用する方法)](../powershell-install-configure.md)
+* [Azure コマンド ライン インターフェイスの使用方法](../xplat-cli-install.md)
 
 [Azure App Service]: https://azure.microsoft.com/documentation/articles/app-service-changes-existing-services/
-[Azure Developer Center]: http://www.windowsazure.com/en-us/develop/overview/
-[Azure Portal]: https://portal.azure.com
+[Azure Developer Center]: http://azure.microsoft.com/develop/overview/
+[Azure ポータル]: https://portal.azure.com
 [Git website]: http://git-scm.com
 [Installing Git]: http://git-scm.com/book/en/Getting-Started-Installing-Git
-[Azure Command-Line Interface]: https://azure.microsoft.com/en-us/documentation/articles/xplat-cli-azure-resource-manager/
+[Azure コマンド ライン インターフェイス]: https://azure.microsoft.com/documentation/articles/xplat-cli-azure-resource-manager/
 
 [Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
 [Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

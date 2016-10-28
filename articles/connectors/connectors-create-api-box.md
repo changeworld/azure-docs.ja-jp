@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Add the Box connector to your Logic Apps | Microsoft Azure"
-    description="Overview of the Box connector with REST API parameters"
+    pageTitle="Box コネクタをロジック アプリに追加する | Microsoft Azure"
+    description="Box コネクタと REST API パラメーターの概要"
     services=""
     documentationCenter="" 
     authors="MandiOhlinger"
@@ -17,262 +17,246 @@
    ms.date="08/18/2016"
    ms.author="mandia"/>
 
+# Box コネクタの使用
+Box に接続し、ファイルの作成、削除などを行います。
 
-# <a name="get-started-with-the-box-connector"></a>Get started with the Box connector
-Connect to Box and create files, delete files, and more. 
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
+Box では、次の操作を実行できます。
 
-With Box, you can:
+- Box から取得したデータに基づいてビジネス フローを構築できます。
+- ファイルを作成または更新するときにトリガーを使用できます。
+- ファイルのコピー、ファイルの削除などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Box でファイルを変更するときに、Office 365 でそのファイルを取得して電子メールで送信することができます。
 
-- Build your business flow based on the data you get from Box. 
-- Use triggers when a file is created or updated.
-- Use actions that copy a file, delete a file, and more. These actions get a response, and then make the output available for other actions. For example, when a file is changed on Box, you can take that file and email it using Office 365.
+ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
-To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
+Box には、次のトリガーとアクションがあります。
 
-## <a name="triggers-and-actions"></a>Triggers and actions
-Box includes the following trigger and actions.
-
-| Triggers | Actions|
+| トリガー | アクション|
 | --- | --- |
-|<ul><li>When a file is created</li><li>When a file is modified</li></ul> | <ul><li>Create file</li><li>When a file is created</li><li>Copy file</li><li>Delete file</li><li>Extract archive to folder</li><li>Get file content using id</li><li>Get file content using path</li><li>Get file metadata using id</li><li>Get file metadata using path</li><li>Update file</li><li>When a file is modified</li></ul>
+|<ul><li>ファイルの作成時</li><li>ファイルの変更時</li></ul> | <ul><li>ファイルを作成する</li><li>ファイルの作成時</li><li>ファイルをコピーする</li><li>ファイルを削除する</li><li>アーカイブをフォルダーに抽出する</li><li>ID を使用してファイルの内容を取得する</li><li>パスを使用してファイルの内容を取得する</li><li>ID を使用してファイルのメタデータを取得する</li><li>パスを使用してファイルのメタデータを取得する</li><li>ファイルを更新する</li><li>ファイルの変更時</li></ul>
 
-All connectors support data in JSON and XML formats.
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-## <a name="create-a-connection-to-box"></a>Create a connection to Box
-When you add this connector to your logic apps, you must authorize logic apps to connect to your Box.
+## Box への接続を作成する
+ロジック アプリにこのコネクタを追加するとき、Box に接続するロジック アプリを承認する必要があります。
 
->[AZURE.INCLUDE [Steps to create a connection to box](../../includes/connectors-create-api-box.md)]
+>[AZURE.INCLUDE [Box への接続を作成する手順](../../includes/connectors-create-api-box.md)]
 
-After you create the connection, you enter the Box properties. The **REST API reference** in this topic describes these properties.
+接続を作成したら、Box のプロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**をご覧ください。
 
->[AZURE.TIP] You can use this same Box connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでも、この同じ Box 接続を使用できます。
 
-## <a name="swagger-rest-api-reference"></a>Swagger REST API reference
-Applies to version: 1.0.
+## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
-### <a name="create-file"></a>Create file
-Uploads a file to Box.  
-```POST: /datasets/default/files```
+### ファイルを作成する
+Box にファイルをアップロードします。```POST: /datasets/default/files```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderPath|string|Yes|query|None |Folder path to upload the file to Box|
-|name|string|Yes|query|None |Name of the file to create in Box|
-|body|string(binary) |Yes|body|None |Content of the file to upload to Box|
+|folderPath|string|はい|query|なし |ファイルを Box にアップロードするフォルダーのパス|
+|name|string|はい|query|なし |Box で作成するファイルの名前|
+|body|string (binary) |はい|body|なし |Box にアップロードするファイルの内容|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="when-a-file-is-created"></a>When a file is created
-Triggers a flow when a new file is created in a Box folder.  
-```GET: /datasets/default/triggers/onnewfile```
+### ファイルの作成時
+Box フォルダーに新しいファイルが作成されたときにフローをトリガーします。```GET: /datasets/default/triggers/onnewfile```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderId|string|Yes|query|None |Unique identifier of the folder in Box|
+|folderId|string|はい|query|なし |Box のフォルダーの一意識別子|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="copy-file"></a>Copy file
-Copies a file to Box.  
-```POST: /datasets/default/copyFile```
+### ファイルをコピーする
+ファイルを Box にコピーします。```POST: /datasets/default/copyFile```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|source|string|Yes|query|None |Url to source file|
-|destination|string|Yes|query| None|Destination file path in Box, including target filename|
-|overwrite|boolean|No|query| None|Overwrites the destination file if set to 'true'|
+|source|string|はい|query|なし |ソース ファイルの URL|
+|destination|string|はい|query| なし|対象ファイル名を含む Box の宛先ファイル パス|
+|overwrite|boolean|なし|query| なし|’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="delete-file"></a>Delete file
-Deletes a file from Box.  
-```DELETE: /datasets/default/files/{id}```
+### ファイルを削除する
+Box からファイルを削除します。```DELETE: /datasets/default/files/{id}```
 
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|Yes|path|None |Unique identifier of the file to delete from Box|
+|id|string|はい|path|なし |Box から削除するファイルの一意識別子|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="extract-archive-to-folder"></a>Extract archive to folder
-Extracts an archive file into a folder in Box (example: .zip).  
-```POST: /datasets/default/extractFolderV2```
+### アーカイブをフォルダーに抽出する
+Box のフォルダーにアーカイブ ファイル (例: .zip) を抽出します。```POST: /datasets/default/extractFolderV2```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|source|string|Yes|query| |Path to the archive file|
-|destination|string|Yes|query| |Path in Box to extract the archive contents|
-|overwrite|boolean|No|query| |Overwrites the destination files if set to 'true'|
+|source|string|はい|query| |アーカイブ ファイルのパス|
+|destination|string|はい|query| |アーカイブの内容を抽出する Box 内のパス|
+|overwrite|boolean|なし|query| |’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="get-file-content-using-id"></a>Get file content using id
-Retrieves file contents from Box using id.  
-```GET: /datasets/default/files/{id}/content```
+### ID を使用してファイルの内容を取得する
+ID を使用して Box からファイルの内容を取得します。```GET: /datasets/default/files/{id}/content```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|Yes|path|None |Unique identifier of the file in Box|
+|id|string|はい|path|なし |Box 内のファイルの一意識別子|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="get-file-content-using-path"></a>Get file content using path
-Retrieves file contents from Box using path.  
-```GET: /datasets/default/GetFileContentByPath```
+### パスを使用してファイルの内容を取得する
+パスを使用して Box からファイルの内容を取得します。```GET: /datasets/default/GetFileContentByPath```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|path|string|Yes|query|None |Unique path to the file in Box|
+|path|string|はい|query|なし |Box 内のファイルの一意のパス|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="get-file-metadata-using-id"></a>Get file metadata using id
-Retrieves file metadata from Box using file id.  
-```GET: /datasets/default/files/{id}```
+### ID を使用してファイルのメタデータを取得する
+ファイル ID を使用して Box からファイルのメタデータを取得します。```GET: /datasets/default/files/{id}```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|Yes|path| None|Unique identifier of the file in Box|
+|id|string|はい|path| なし|Box 内のファイルの一意識別子|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="get-file-metadata-using-path"></a>Get file metadata using path
-Retrieves file metadata from Box using path.  
-```GET: /datasets/default/GetFileByPath```
+### パスを使用してファイルのメタデータを取得する
+パスを使用して Box からファイルのメタデータを取得します。```GET: /datasets/default/GetFileByPath```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|path|string|Yes|query|None |Unique path to the file in Box|
+|path|string|はい|query|なし |Box 内のファイルの一意のパス|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="update-file"></a>Update file
-Updates a file in Box.  
-```PUT: /datasets/default/files/{id}```
+### ファイルを更新する
+Box 内のファイルを更新します。```PUT: /datasets/default/files/{id}```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| 名前|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|Yes|path| None|Unique identifier of the file to update in Box|
-|body|string(binary) |Yes|body|None |Content of the file to update in Box|
+|id|string|はい|path| なし|Box 内の更新するファイルの一意識別子|
+|body|string (binary) |はい|body|なし |Box 内の更新するファイルの内容|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-### <a name="when-a-file-is-modified"></a>When a file is modified
-Triggers a flow when a file is modified in a Box folder.  
-```GET: /datasets/default/triggers/onupdatedfile```
+### ファイルの変更時
+Box フォルダー内のファイルが変更されたときにフローをトリガーします。```GET: /datasets/default/triggers/onupdatedfile```
 
-| Name|Data Type|Required|Located In|Default Value|Description|
+| Name|データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderId|string|Yes|query|None |Unique identifier of the folder in Box|
+|folderId|string|はい|query|なし |Box のフォルダーの一意識別子|
 
-#### <a name="response"></a>Response
-|Name|Description|
+#### 応答
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="object-definitions"></a>Object definitions
+## オブジェクト定義
 
-#### <a name="datasetsmetadata"></a>DataSetsMetadata
+#### DataSetsMetadata
 
-|Property Name | Data Type | Required|
+|プロパティ名 | データ型 | 必須|
 |---|---|---|
-|tabular|not defined|no|
-|blob|not defined|no|
+|tabular|未定義|×|
+|BLOB|未定義|×|
 
-#### <a name="tabulardatasetsmetadata"></a>TabularDataSetsMetadata
+#### TabularDataSetsMetadata
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
-|tableDisplayName|string|no|
-|tablePluralName|string|no|
+|source|string|×|
+|displayName|string|×|
+|urlEncoding|string|×|
+|tableDisplayName|string|×|
+|tablePluralName|string|×|
 
-#### <a name="blobdatasetsmetadata"></a>BlobDataSetsMetadata
+#### BlobDataSetsMetadata
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|source|string|no|
-|displayName|string|no|
-|urlEncoding|string|no|
+|source|string|×|
+|displayName|string|×|
+|urlEncoding|string|×|
 
-#### <a name="blobmetadata"></a>BlobMetadata
+#### BlobMetadata
 
-|Property Name | Data Type |Required|
+|プロパティ名 | データ型 |必須|
 |---|---|---|
-|Id|string|no|
-|Name|string|no|
-|DisplayName|string|no|
-|Path|string|no|
-|LastModified|string|no|
-|Size|integer|no|
-|MediaType|string|no|
-|IsFolder|boolean|no|
-|ETag|string|no|
-|FileLocator|string|no|
+|ID|string|×|
+|Name|string|×|
+|DisplayName|string|×|
+|パス|string|×|
+|LastModified|string|×|
+|サイズ|integer|×|
+|MediaType|string|×|
+|IsFolder|boolean|×|
+|ETag|string|×|
+|FileLocator|string|×|
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+[ロジック アプリを作成する](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

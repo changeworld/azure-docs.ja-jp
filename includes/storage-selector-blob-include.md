@@ -9,6 +9,4 @@
 - [iOS](../articles/storage/storage-ios-how-to-use-blob-storage.md)
 - [Xamarin](../articles/storage/storage-xamarin-blob-storage.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

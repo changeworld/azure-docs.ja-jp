@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Upgrading to the Azure Search .NET SDK version 1.1 | Microsoft Azure | Hosted cloud search service"
-   description="Upgrading to the Azure Search .NET SDK version 1.1"
+   pageTitle="Azure Search .NET SDK バージョン 1.1 へのアップグレード | Microsoft Azure | ホスト型クラウド検索サービス"
+   description="Azure Search .NET SDK バージョン 1.1 へのアップグレード"
    services="search"
    documentationCenter=""
    authors="brjohnstmsft"
@@ -16,134 +16,133 @@
    ms.date="08/15/2016"
    ms.author="brjohnst"/>
 
+# Azure Search .NET SDK バージョン 2.0-preview へのアップグレード
 
-# <a name="upgrading-to-the-azure-search-.net-sdk-version-2.0-preview"></a>Upgrading to the Azure Search .NET SDK version 2.0-preview
+バージョン 1.1 以前の [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx) を使用している場合は、この記事を参考にして、次のメジャー バージョンである 2.0-preview を使用するようにアプリケーションをアップグレードできます。
 
-If you're using version 1.1 or older of the [Azure Search .NET SDK](https://msdn.microsoft.com/library/azure/dn951165.aspx), this article will help you upgrade your application to use the next major version, 2.0-preview.
+例を含む SDK の一般的なチュートリアルについては、「[.NET アプリケーションから Azure Search を使用する方法](search-howto-dotnet-sdk.md)」を参照してください。
 
-For a more general walkthrough of the SDK including examples, see [How to use Azure Search from a .NET Application](search-howto-dotnet-sdk.md).
+Azure Search .NET SDK のバージョン 2.0-preview には、以前のバージョンからの変更がいくつか含まれています。ほとんどは小さなものなので、コードの変更に必要な作業は最小限で済みます。新しいバージョンの SDK を使用するようにコードを変更する方法については、「[アップグレードの手順](#UpgradeSteps)」を参照してください。
 
-Version 2.0-preview of the Azure Search .NET SDK contains some changes from earlier versions. These are mostly minor, so changing your code should require only minimal effort. See [Steps to upgrade](#UpgradeSteps) for instructions on how to change your code to use the new SDK version.
-
-> [AZURE.NOTE] If you're using version 0.13-preview or older, you should upgrade to version 1.1 first, and then upgrade to 2.0-preview. See [Appendix: Steps to upgrade to version 1.1](#UpgradeStepsV1) for instructions.
+> [AZURE.NOTE] 0.13-preview 以前のバージョンを使用している場合は、バージョン 1.1 にアップグレードした後、2.0-preview にアップグレードする必要があります。手順については、「[付録: バージョン 1.1 にアップグレードするための手順](#UpgradeStepsV1)」を参照してください。
 
 <a name="WhatsNew"></a>
-## <a name="what's-new-in-version-2.0-preview"></a>What's new in version 2.0-preview
+## バージョン 2.0-preview の新機能
 
-Version 2.0-preview is the first version of the Azure Search .NET SDK to target a preview version of the Azure Search REST API, specifically 2015-02-28-preview. This makes it possible to use many preview features of Azure Search from a .NET application, including the following:
+バージョン 2.0-preview は、Azure Search REST API のプレビュー バージョン (具体的には 2015-02-28-Preview) をターゲットとする Azure Search .NET SDK の最初のバージョンです。これにより、以下のような Azure Search の多数のプレビュー機能を .NET アプリケーションから使用することが可能になります。
 
-- [Custom analyzers](https://aka.ms/customanalyzers)
-- [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) and [Azure Table Storage](search-howto-indexing-azure-tables.md) indexer support
-- Indexer customization via [field mappings](search-indexer-field-mappings.md)
-- ETags support to enable safe concurrent updating of index definitions, indexers, and data sources
-- Support for .NET Core and .NET Portable Profile 111
+- [カスタム アナライザー](https://aka.ms/customanalyzers)
+- [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) と [Azure Table Storage](search-howto-indexing-azure-tables.md) のインデクサーのサポート
+- [フィールド マッピング](search-indexer-field-mappings.md)によるインデクサーのカスタマイズ
+- インデックスの定義、インデクサー、およびデータ ソースの安全な同時更新を有効にする Etag のサポート
+- .NET Core と .NET Portable Profile 111 のサポート
 
 <a name="UpgradeSteps"></a>
-## <a name="steps-to-upgrade"></a>Steps to upgrade
+## アップグレードの手順
 
-First, update your NuGet reference for `Microsoft.Azure.Search` using either the NuGet Package Manager Console or by right-clicking on your project references and selecting "Manage NuGet Packages..." in Visual Studio. Make sure you enable Pre-release packages by selecting "Include Prerelease" in the NuGet "Manage Packages" window in Visual Studio, or by using the `-IncludePrerelease` switch if you're using NuGet Package Manager Console.
+最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することで、`Microsoft.Azure.Search` の NuGet 参照を更新します。Visual Studio で NuGet の [パッケージの管理] ウィンドウで [プレリリースを含める] を選択するか、NuGet パッケージ マネージャー コンソールを使用している場合は `-IncludePrerelease` スイッチを使用して、プレリリース パッケージを有効にします。
 
-Once NuGet has downloaded the new packages and their dependencies, rebuild your project. Depending on how your code is structured, it may rebuild successfully. If so, you're ready to go!
+NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。コードの構成方法に応じて、正常にリビルドされます。リビルドされれば、準備は完了です。
 
-If your build fails, you should see a build error like the following:
+ビルドが失敗した場合は、次のようにビルド エラーが表示されます。
 
     Program.cs(31,45,31,86): error CS0266: Cannot implicitly convert type 'Microsoft.Azure.Search.ISearchIndexClient' to 'Microsoft.Azure.Search.SearchIndexClient'. An explicit conversion exists (are you missing a cast?)
 
-The next step is to fix this build error. See [Breaking changes in version 2.0-preview](#ListOfChanges) for details on what causes the error and how to fix it.
+次の手順として、このビルド エラーを修正します。エラーの原因と修正方法については、「[バージョン 2.0-preview における重大な変更](#ListOfChanges)」を参照してください。
 
-You may see additional build warnings related to obsolete methods or properties. The warnings will include instructions on what to use instead of the deprecated feature. For example, if your application uses the `SearchRequestOptions.RequestId` property, you should get a warning that says `"This property is deprecated. Please use ClientRequestId instead."`
+古いメソッドまたはプロパティに関連するビルド警告が表示される場合があります。それらの警告には、非推奨の機能の代わりに何を使用するかについての指示が含まれます。たとえば、アプリケーションで `SearchRequestOptions.RequestId` プロパティ使用している場合は、「`"This property is deprecated. Please use ClientRequestId instead."`」という警告が表示されます。
 
-Once you've fixed any build errors, you can make changes to your application to take advantage of new functionality if you wish. New features in the SDK are detailed in [What's new in version 2.0-preview](#WhatsNew).
+すべてのビルド エラーを修正した後、必要に応じて新しい機能を利用するようにアプリケーションを変更できます。SDK の新機能の詳細については、「[バージョン 2.0-preview の新機能](#WhatsNew)」を参照してください。
 
 <a name="ListOfChanges"></a>
-## <a name="breaking-changes-in-version-2.0-preview"></a>Breaking changes in version 2.0-preview
+## バージョン 2.0-preview における重大な変更
 
-There is only one breaking change in version 2.0-preview that may require code changes in addition to rebuilding your application.
+アプリケーションのリビルドの他に、コードを変更する必要があるバージョン 2.0-preview の大幅な変更は 1 つしかありません。
 
-### <a name="indexes.getclient-return-type"></a>Indexes.GetClient return type
+### Indexes.GetClient の戻り型
 
-The `Indexes.GetClient` method has a new return type. Previously, it returned `SearchIndexClient`, but this has been changed to `ISearchIndexClient` in version 2.0-preview. This is to support customers that wish to mock the `GetClient` method for unit tests by returning a mock implementation of `ISearchIndexClient`.
+`Indexes.GetClient` メソッドには新しい戻り型があります。前に返されていたのは `SearchIndexClient` ですが、バージョン 2.0-preview では、これが `ISearchIndexClient` に変更されています。これは、単体テストで `ISearchIndexClient` の模擬実装を返すことによって `GetClient` メソッドの模擬テストを実行したいユーザーをサポートするための変更です。
 
-#### <a name="example"></a>Example
+#### 例
 
-If your code looks like this:
+次のようなコードがあるものとします。
 
 ```csharp
 SearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-You can change it to this to fix any build errors:
+この場合、次のように変更することでビルド エラーを解決できます。
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
-## <a name="conclusion"></a>Conclusion
-If you need more details on using the Azure Search .NET SDK, see our recently updated [How-to](search-howto-dotnet-sdk.md).
+## まとめ
+Azure Search .NET SDK の使用方法の詳細については、最近更新された[方法](search-howto-dotnet-sdk.md)に関する記事を参照してください。
 
-We welcome your feedback on the SDK. If you encounter problems, feel free to ask us for help on the [Azure Search MSDN forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azuresearch). If you find a bug, you can file an issue in the [Azure .NET SDK GitHub repository](https://github.com/Azure/azure-sdk-for-net/issues). Make sure to prefix your issue title with "Search SDK: ".
+SDK についてのご意見をお待ちしております。問題が発生した場合は、[Azure Search の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/ja-JP/home?forum=azuresearch)でご質問ください。バグを発見した場合は、[Azure .NET SDK の GitHub リポジトリ](https://github.com/Azure/azure-sdk-for-net/issues)で問題を報告できます。問題のタイトルの前に、必ず "Search SDK: " を付けてください。
 
-Thank you for using Azure Search!
+Azure Search をお使いいただきありがとうございます。
 
 <a name="UpgradeStepsV1"></a>
-## <a name="appendix:-steps-to-upgrade-to-version-1.1"></a>Appendix: Steps to upgrade to version 1.1 
+## 付録: バージョン 1.1 にアップグレードするための手順 
 
-> [AZURE.NOTE] This section applies only to users of the Azure Search .NET SDK version 0.13-preview and older.
+> [AZURE.NOTE] このセクションは、Azure Search .NET SDK バージョン 0.13-preview 以前を使用しているユーザーにのみ適用されます。
 
-First, update your NuGet reference for `Microsoft.Azure.Search` using either the NuGet Package Manager Console or by right-clicking on your project references and selecting "Manage NuGet Packages..." in Visual Studio.
+最初に、NuGet パッケージ マネージャー コンソールを使用して、または Visual Studio でプロジェクト参照を右クリックして [NuGet パッケージの管理...] を選択することで、`Microsoft.Azure.Search` の NuGet 参照を更新します。
 
-Once NuGet has downloaded the new packages and their dependencies, rebuild your project.
+NuGet が新しいパッケージとその依存関係をダウンロードした後、プロジェクトをリビルドします。
 
-If you were previously using version 1.0.0-preview, 1.0.1-preview, or 1.0.2-preview, the build should succeed and you're ready to go!
+以前にバージョン 1.0.0-preview、1.0.1-preview、または 1.0.2-preview を使用していた場合、ビルドは成功するはずであり、次に進む準備が整います。
 
-If you were previously using version 0.13.0-preview or older, you should see build errors like the following:
+0\.13.0-preview 以前のバージョンを使用していた場合、次のようなビルド エラーが表示されます。
 
     Program.cs(137,56,137,62): error CS0117: 'Microsoft.Azure.Search.Models.IndexBatch' does not contain a definition for 'Create'
     Program.cs(137,99,137,105): error CS0117: 'Microsoft.Azure.Search.Models.IndexAction' does not contain a definition for 'Create'
     Program.cs(146,41,146,54): error CS1061: 'Microsoft.Azure.Search.IndexBatchException' does not contain a definition for 'IndexResponse' and no extension method 'IndexResponse' accepting a first argument of type 'Microsoft.Azure.Search.IndexBatchException' could be found (are you missing a using directive or an assembly reference?)
     Program.cs(163,13,163,42): error CS0246: The type or namespace name 'DocumentSearchResponse' could not be found (are you missing a using directive or an assembly reference?)
 
-The next step is to fix the build errors one by one. Most will require changing some class and method names that have been renamed in the SDK. [List of breaking changes in version 1.1](#ListOfChangesV1) contains a list of these name changes.
+次のステップとして、ビルド エラーを 1 つずつ修正します。ほとんどの修正では、SDK で名前が変更されたクラスとメソッドの名前を変更する必要があります。このような名前変更の一覧については、「[バージョン 1.1 における重大な変更の一覧](#ListOfChangesV1)」を参照してください。
 
-If you're using custom classes to model your documents, and those classes have properties of non-nullable primitive types (for example, `int` or `bool` in C#), there is a bug fix in the 1.1 version of the SDK of which you should be aware. See [Bug fixes in version 1.1](#BugFixesV1) for more details.
+カスタム クラスを使用してドキュメントをモデル化していて、それらのクラスに null 非許容プリミティブ型のプロパティ (たとえば、C# での `int` や `bool`) がある場合、1.1 バージョンの SDK で行われたバグ修正について認識しておく必要があります。詳細については、「[バージョン 1.1 でのバグ修正](#BugFixesV1)」を参照してください。
 
-Finally, once you've fixed any build errors, you can make changes to your application to take advantage of new functionality if you wish.
+最後に、ビルド エラーを修正した後は、必要に応じて、新しい機能を利用するようにアプリケーションを変更できます。
 
 <a name="ListOfChangesV1"></a>
-### <a name="list-of-breaking-changes-in-version-1.1"></a>List of breaking changes in version 1.1
+### バージョン 1.1 における重大な変更の一覧
 
-The following list is ordered by the likelihood that the change will affect your application code.
+以下の一覧は、変更によってアプリケーション コードが影響を受ける可能性の高い順になっています。
 
-#### <a name="indexbatch-and-indexaction-changes"></a>IndexBatch and IndexAction changes
+#### IndexBatch と IndexAction の変更
 
-`IndexBatch.Create` has been renamed to `IndexBatch.New` and no longer has a `params` argument. You can use `IndexBatch.New` for batches that mix different types of actions (merges, deletes, etc.). In addition, there are new static methods for creating batches where all the actions are the same: `Delete`, `Merge`, `MergeOrUpload`, and `Upload`.
+`IndexBatch.Create` は名前が `IndexBatch.New` に変更され、`params` 引数はなくなりました。`IndexBatch.New` は、異なる種類のアクション (マージ、削除など) が混在するバッチに使用できます。さらに、すべてのアクションが同じバッチを作成するための新しい静的メソッドがあります。`Delete`、`Merge`、`MergeOrUpload`、および `Upload` です。
 
-`IndexAction` no longer has public constructors and its properties are now immutable. You should use the new static methods for creating actions for different purposes: `Delete`, `Merge`, `MergeOrUpload`, and `Upload`. `IndexAction.Create` has been removed. If you used the overload that takes only a document, make sure to use `Upload` instead.
+`IndexAction` はパブリック コンストラクターを持たなくなり、そのプロパティは変更可能になっています。さまざまな目的のアクションの作成には、新しい静的メソッドである `Delete`、`Merge`、`MergeOrUpload`、および `Upload` を使用する必要があります。`IndexAction.Create` は削除されました。ドキュメントだけを受け取るオーバーロードを使用していた場合は、代わりに `Upload` を使用してください。
 
-##### <a name="example"></a>Example
+##### 例
 
-If your code looks like this:
+次のようなコードがあるものとします。
 
     var batch = IndexBatch.Create(documents.Select(doc => IndexAction.Create(doc)));
     indexClient.Documents.Index(batch);
 
-You can change it to this to fix any build errors:
+この場合、次のように変更することでビルド エラーを解決できます。
 
     var batch = IndexBatch.New(documents.Select(doc => IndexAction.Upload(doc)));
     indexClient.Documents.Index(batch);
 
-If you want, you can further simplify it to this:
+必要であれば、さらに次のように単純化できます。
 
     var batch = IndexBatch.Upload(documents);
     indexClient.Documents.Index(batch);
 
-#### <a name="indexbatchexception-changes"></a>IndexBatchException changes
+#### IndexBatchException の変更
 
-The `IndexBatchException.IndexResponse` property has been renamed to `IndexingResults`, and its type is now `IList<IndexingResult>`.
+`IndexBatchException.IndexResponse` プロパティは名前が `IndexingResults` に変更され、型は `IList<IndexingResult>` になりました。
 
-##### <a name="example"></a>Example
+##### 例
 
-If your code looks like this:
+次のようなコードがあるものとします。
 
     catch (IndexBatchException e)
     {
@@ -152,7 +151,7 @@ If your code looks like this:
             String.Join(", ", e.IndexResponse.Results.Where(r => !r.Succeeded).Select(r => r.Key)));
     }
 
-You can change it to this to fix any build errors:
+この場合、次のように変更することでビルド エラーを解決できます。
 
     catch (IndexBatchException e)
     {
@@ -162,20 +161,20 @@ You can change it to this to fix any build errors:
     }
 
 <a name="OperationMethodChanges"></a>
-#### <a name="operation-method-changes"></a>Operation method changes
+#### 操作メソッドの変更
 
-Each operation in the Azure Search .NET SDK is exposed as a set of method overloads for synchronous and asynchronous callers. The signatures and factoring of these method overloads has changed in version 1.1.
+Azure Search .NET SDK の各操作は、同期および非同期の呼び出し元に対するメソッドのオーバーロードのセットとして公開されます。これらのメソッド オーバーロードのシグネチャと要素分解は、バージョン 1.1 で変更されました。
 
-For example, the "Get Index Statistics" operation in older versions of the SDK exposed these signatures:
+たとえば、旧バージョンの SDK の「インデックス統計の取得」操作は、次のようなシグネチャを公開しました。
 
-In `IIndexOperations`:
+`IIndexOperations` で、次のように記述します。
 
     // Asynchronous operation with all parameters
     Task<IndexGetStatisticsResponse> GetStatisticsAsync(
         string indexName,
         CancellationToken cancellationToken);
 
-In `IndexOperationsExtensions`:
+`IndexOperationsExtensions` で、次のように記述します。
 
     // Asynchronous operation with only required parameters
     public static Task<IndexGetStatisticsResponse> GetStatisticsAsync(
@@ -187,9 +186,9 @@ In `IndexOperationsExtensions`:
         this IIndexOperations operations,
         string indexName);
 
-The method signatures for the same operation in version 1.1 look like this:
+バージョン 1.1 での同じ操作のメソッド シグネチャは、次のようになります。
 
-In `IIndexesOperations`:
+`IIndexesOperations` で、次のように記述します。
 
     // Asynchronous operation with lower-level HTTP features exposed
     Task<AzureOperationResponse<IndexGetStatisticsResult>> GetStatisticsWithHttpMessagesAsync(
@@ -198,7 +197,7 @@ In `IIndexesOperations`:
         Dictionary<string, List<string>> customHeaders = null,
         CancellationToken cancellationToken = default(CancellationToken));
 
-In `IndexesOperationsExtensions`:
+`IndexesOperationsExtensions` で、次のように記述します。
 
     // Simplified asynchronous operation
     public static Task<IndexGetStatisticsResult> GetStatisticsAsync(
@@ -213,25 +212,25 @@ In `IndexesOperationsExtensions`:
         string indexName,
         SearchRequestOptions searchRequestOptions = default(SearchRequestOptions));
 
-Starting with version 1.1, the Azure Search .NET SDK organizes operation methods differently:
+バージョン 1.1 以降では、Azure Search .NET SDK での操作メソッドの編成が異なります。
 
- - Optional parameters are now modeled as default parameters rather than additional method overloads. This reduces the number of method overloads, sometimes dramatically.
- - The extension methods now hide a lot of the extraneous details of HTTP from the caller. For example, older versions of the SDK returned a response object with an HTTP status code, which you often didn't need to check because operation methods throw `CloudException` for any status code that indicates an error. The new extension methods just return model objects, saving you the trouble of having to unwrap them in your code.
- - Conversely, the core interfaces now expose methods that give you more control at the HTTP level if you need it. You can now pass in custom HTTP headers to be included in requests, and the new `AzureOperationResponse<T>` return type gives you direct access to the `HttpRequestMessage` and `HttpResponseMessage` for the operation. `AzureOperationResponse` is defined in the `Microsoft.Rest.Azure` namespace and replaces `Hyak.Common.OperationResponse`.
+ - 省略可能なパラメーターが、追加メソッドのオーバーロードではなく、既定のパラメーターとしてモデル化されるようになっています。これにより、メソッドのオーバーロードの数が、場合によっては大幅に減少します。
+ - 拡張メソッドで、HTTP の重要ではない細部の多くが呼び出し元に開示しないようになっています。たとえば、以前のバージョンの SDK では、HTTP 状態コードで応答オブジェクトが返されましたが、操作メソッドはエラーを示す状態コードに対して `CloudException` をスローするため、応答オブジェクトをチェックする必要はほとんどありませんでした。新しい拡張メソッドはモデル オブジェクトだけを返すので、コードでラップを解除する必要がある問題が減ります。
+ - 逆に、コア インターフェイスでは、必要がある場合に HTTP レベルでの詳細な制御を提供するメソッドが公開されるようになっています。要求に含めるカスタム HTTP ヘッダーを渡すことができ、`AzureOperationResponse<T>` 型の戻り値を使用すると操作の `HttpRequestMessage` および `HttpResponseMessage` に直接アクセスできます。`AzureOperationResponse` は `Microsoft.Rest.Azure` 名前空間で定義されており、`Hyak.Common.OperationResponse` に代わるものです。
 
-#### <a name="scoringparameters-changes"></a>ScoringParameters changes
+#### ScoringParameters の変更
 
-A new class named `ScoringParameter` has been added in the latest SDK to make it easier to provide parameters to scoring profiles in a search query. Previously the `ScoringProfiles` property of the `SearchParameters` class was typed as `IList<string>`; Now it is typed as `IList<ScoringParameter>`.
+最新の SDK に `ScoringParameter` という新しいクラスが追加され、検索クエリでスコアリング プロファイルにパラメーターを簡単に指定できるようになりました。これまで、`SearchParameters` クラスの `ScoringProfiles` プロパティは `IList<string>` と型指定されていました。このプロパティが `IList<ScoringParameter>` と型指定されるようになりました。
 
-##### <a name="example"></a>Example
+##### 例
 
-If your code looks like this:
+次のようなコードがあるものとします。
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
     sp.ScoringParameters = new[] { "featuredParam-featured", "mapCenterParam-" + lon + "," + lat };
 
-You can change it to this to fix any build errors: 
+この場合、次のように変更することでビルド エラーを解決できます。
 
     var sp = new SearchParameters();
     sp.ScoringProfile = "jobsScoringFeatured";      // Use a scoring profile
@@ -242,22 +241,22 @@ You can change it to this to fix any build errors:
             new ScoringParameter("mapCenterParam", GeographyPoint.Create(lat, lon))
         };
 
-#### <a name="model-class-changes"></a>Model class changes
+#### モデル クラスの変更
 
-Due to the signature changes described in [Operation method changes](#OperationMethodChanges), many classes in the `Microsoft.Azure.Search.Models` namespace have been renamed or removed. For example:
+「[操作メソッドの変更](#OperationMethodChanges)」で説明されているシグネチャの変更により、`Microsoft.Azure.Search.Models` 名前空間の多くのクラスの名前が変更されるか、またはクラスが削除されました。次に例を示します。
 
- - `IndexDefinitionResponse` has been replaced by `AzureOperationResponse<Index>`
- - `DocumentSearchResponse` has been renamed to `DocumentSearchResult`
- - `IndexResult` has been renamed to `IndexingResult`
- - `Documents.Count()` now returns a `long` with the document count instead of a `DocumentCountResponse`
- - `IndexGetStatisticsResponse` has been renamed to `IndexGetStatisticsResult`
- - `IndexListResponse` has been renamed to `IndexListResult`
+ - `IndexDefinitionResponse` は `AzureOperationResponse<Index>` によって置き換えられました
+ - `DocumentSearchResponse` の名前が `DocumentSearchResult` に変更されました
+ - `IndexResult` の名前が `IndexingResult` に変更されました
+ - `Documents.Count()` は、`DocumentCountResponse` ではなく、ドキュメントの数を含む `long` を返すようになりました
+ - `IndexGetStatisticsResponse` の名前が `IndexGetStatisticsResult` に変更されました
+ - `IndexListResponse` の名前が `IndexListResult` に変更されました
 
-To summarize, `OperationResponse`-derived classes that existed only to wrap a model object have been removed. The remaining classes have had their suffix changed from `Response` to `Result`.
+まとめると、モデル オブジェクトをラップするためだけに存在していた `OperationResponse` 派生クラスが削除されました。残りのクラスについては、サフィックスが `Response` から `Result` に変更されました。
 
-##### <a name="example"></a>Example
+##### 例
 
-If your code looks like this:
+次のようなコードがあるものとします。
 
     IndexerGetStatusResponse statusResponse = null;
 
@@ -273,7 +272,7 @@ If your code looks like this:
 
     IndexerExecutionResult lastResult = statusResponse.ExecutionInfo.LastResult;
 
-You can change it to this to fix any build errors:
+この場合、次のように変更することでビルド エラーを解決できます。
 
     IndexerExecutionInfo status = null;
 
@@ -289,9 +288,9 @@ You can change it to this to fix any build errors:
 
     IndexerExecutionResult lastResult = status.LastResult;
 
-##### <a name="response-classes-and-ienumerable"></a>Response classes and IEnumerable
+##### 応答クラスと IEnumerable
 
-An additional change that may affect your code is that response classes that hold collections no longer implement `IEnumerable<T>`. Instead, you can access the collection property directly. For example, if your code looks like this:
+コードに影響する可能性のあるその他の変更として、コレクションを保持する応答クラスが `IEnumerable<T>` を実装しなくなりました。代わりに、コレクション プロパティに直接アクセスすることができます。たとえば、次のようなコードがあるものとします。
 
     DocumentSearchResponse<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response)
@@ -299,7 +298,7 @@ An additional change that may affect your code is that response classes that hol
         Console.WriteLine(result.Document);
     }
 
-You can change it to this to fix any build errors:
+この場合、次のように変更することでビルド エラーを解決できます。
 
     DocumentSearchResult<Hotel> response = indexClient.Documents.Search<Hotel>(searchText, sp);
     foreach (SearchResult<Hotel> result in response.Results)
@@ -307,9 +306,9 @@ You can change it to this to fix any build errors:
         Console.WriteLine(result.Document);
     }
 
-##### <a name="important-note-for-web-applications"></a>Important note for web applications
+##### Web アプリケーションに関する重要な注意事項
 
-If you have a web application that serializes `DocumentSearchResponse` directly to send search results to the browser, you will need to change your code or the results will not serialize correctly. For example, if your code looks like this:
+`DocumentSearchResponse` を直接シリアル化して検索結果をブラウザーに送信する Web アプリケーションがある場合、コードを変更する必要があります。変更しないと、結果が正しくシリアル化されません。たとえば、次のようなコードがあるものとします。
 
     public ActionResult Search(string q = "")
     {
@@ -324,7 +323,7 @@ If you have a web application that serializes `DocumentSearchResponse` directly 
         };
     }
 
-You can change it by getting the `.Results` property of the search response to fix search result rendering:
+これを変更するには、検索応答の `.Results` プロパティを取得して検索結果のレンダリングを修正します。
 
     public ActionResult Search(string q = "")
     {
@@ -339,79 +338,79 @@ You can change it by getting the `.Results` property of the search response to f
         };
     }
 
-You will have to look for such cases in your code yourself; **The compiler will not warn you** because `JsonResult.Data` is of type `object`.
+開発者自身がコード内でこのようなケースを探す必要があります。`JsonResult.Data` は `object` 型であるため、**コンパイラは警告を生成しません**。
 
-#### <a name="cloudexception-changes"></a>CloudException changes
+#### CloudException の変更
 
-The `CloudException` class has moved from the `Hyak.Common` namespace to the `Microsoft.Rest.Azure` namespace. Also, its `Error` property has been renamed to `Body`.
+`CloudException` クラスは、`Hyak.Common` 名前空間から `Microsoft.Rest.Azure` 名前空間に移動されました。また、その `Error` プロパティの名前が `Body` に変更されています。
 
-#### <a name="searchserviceclient-and-searchindexclient-changes"></a>SearchServiceClient and SearchIndexClient changes
+#### SearchServiceClient と SearchIndexClient の変更
 
-The type of the `Credentials` property has changed from `SearchCredentials` to its base class, `ServiceClientCredentials`. If you need to access the `SearchCredentials` of a `SearchIndexClient` or `SearchServiceClient`, please use the new `SearchCredentials` property.
+`Credentials` プロパティの型が、`SearchCredentials` からその基本クラス `ServiceClientCredentials` に変更されました。`SearchIndexClient` または `SearchServiceClient` の `SearchCredentials` にアクセスする必要がある場合は、新しい `SearchCredentials` プロパティを使用してください。
 
-In older versions of the SDK, `SearchServiceClient` and `SearchIndexClient` had constructors that took an `HttpClient` parameter. These have been replaced with constructors that take an `HttpClientHandler` and an array of `DelegatingHandler` objects. This makes it easier to install custom handlers to pre-process HTTP requests if necessary.
+古いバージョンの SDK では、`SearchServiceClient` および `SearchIndexClient` に `HttpClient` パラメーターを受け取るコンストラクターがありました。これらは、`HttpClientHandler` と、`DelegatingHandler` オブジェクトの配列を受け取るコンストラクターに置き換えられました。これにより、必要な場合に前処理 HTTP 要求にカスタム ハンドラーをインストールするのが容易になります。
 
-Finally, the constructors that took a `Uri` and `SearchCredentials` have changed. For example, if you have code that looks like this:
+最後に、`Uri` および `SearchCredentials` を受け取るコンストラクターが変更されています。たとえば、次のようなコードがあるものとします。
 
     var client =
         new SearchServiceClient(
             new SearchCredentials("abc123"),
             new Uri("http://myservice.search.windows.net"));
 
-You can change it to this to fix any build errors:
+この場合、次のように変更することでビルド エラーを解決できます。
 
     var client =
         new SearchServiceClient(
             new Uri("http://myservice.search.windows.net"),
             new SearchCredentials("abc123"));
 
-Also note that the type of the credentials parameter has changed to `ServiceClientCredentials`. This is unlikely to affect your code since `SearchCredentials` is derived from `ServiceClientCredentials`.
+また、資格情報パラメーターの型が `ServiceClientCredentials` に変更されたことにも注意してください。`SearchCredentials` は `ServiceClientCredentials` から派生しているので、コードへの影響はないものと思われます。
 
-#### <a name="passing-a-request-id"></a>Passing a request ID
+#### 要求 ID の受け渡し
 
-In older versions of the SDK, you could set a request ID on the `SearchServiceClient` or `SearchIndexClient` and it would be included in every request to the REST API. This is useful for troubleshooting issues with your search service if you need to contact support. However, it is more useful to set a unique request ID for every operation rather than to use the same ID for all operations. For this reason, the `SetClientRequestId` methods of `SearchServiceClient` and `SearchIndexClient` have been removed. Instead, you can pass a request ID to each operation method via the optional `SearchRequestOptions` parameter.
+古いバージョンの SDK では、要求 ID は `SearchServiceClient` または `SearchIndexClient` で設定でき、REST API へのすべての要求に組み込まれていました。これは、サポートに連絡する必要がある場合、Search サービスに関する問題のトラブルシューティングに役立ちました。しかし、すべての操作に同じ ID を使用するのではなく、操作ごとに一意の要求 ID を設定する方が便利です。このため、`SearchServiceClient` および `SearchIndexClient` の `SetClientRequestId` メソッドは削除されました。代わりに、省略可能な `SearchRequestOptions` パラメーターを使用して、各操作メソッドに要求 ID を渡すことができます。
 
-> [AZURE.NOTE] In a future release of the SDK, we will add a new mechanism for setting a request ID globally on the client objects that is consistent with the approach used by other Azure SDKs.
+> [AZURE.NOTE] SDK の今後のリリースでは、他の Azure SDK で使用されている方法と整合性があるように、クライアント オブジェクトでグローバルに要求 ID を設定する新しいメカニズムが追加されます。
 
-#### <a name="example"></a>Example
+#### 例
 
-If you have code that looks like this:
+次のようなコードがあるものとします。
 
     client.SetClientRequestId(Guid.NewGuid());
     ...
     long count = client.Documents.Count();
 
-You can change it to this to fix any build errors:
+この場合、次のように変更することでビルド エラーを解決できます。
 
     long count = client.Documents.Count(new SearchRequestOptions(requestId: Guid.NewGuid()));
 
-#### <a name="interface-name-changes"></a>Interface name changes
+#### インターフェイス名の変更
 
-The operation group interface names have all changed to be consistent with their corresponding property names:
+操作グループのインターフェイス名が、対応するプロパティ名と一致するようにすべて変更されています。
 
- - The type of `ISearchServiceClient.Indexes` has been renamed from `IIndexOperations` to `IIndexesOperations`.
- - The type of `ISearchServiceClient.Indexers` has been renamed from `IIndexerOperations` to `IIndexersOperations`.
- - The type of `ISearchServiceClient.DataSources` has been renamed from `IDataSourceOperations` to `IDataSourcesOperations`.
- - The type of `ISearchIndexClient.Documents` has been renamed from `IDocumentOperations` to `IDocumentsOperations`.
+ - `ISearchServiceClient.Indexes` の型の名前が、`IIndexOperations` から `IIndexesOperations` に変更されました。
+ - `ISearchServiceClient.Indexers` の型の名前が、`IIndexerOperations` から `IIndexersOperations` に変更されました。
+ - `ISearchServiceClient.DataSources` の型の名前が、`IDataSourceOperations` から `IDataSourcesOperations` に変更されました。
+ - `ISearchIndexClient.Documents` の型の名前が、`IDocumentOperations` から `IDocumentsOperations` に変更されました。
 
-This change is unlikely to affect your code unless you created mocks of these interfaces for test purposes.
+テスト目的でこれらのインターフェイスのモックを作成した場合を除き、この変更がコードに影響する可能性はありません。
 
 <a name="BugFixesV1"></a>
-### <a name="bug-fixes-in-version-1.1"></a>Bug fixes in version 1.1
+### バージョン 1.1 でのバグ修正
 
-There was a bug in older versions of the Azure Search .NET SDK relating to serialization of custom model classes. The bug could occur if you created a custom model class with a property of a non-nullable value type.
+古いバージョンの Azure Search .NET SDK には、カスタム モデル クラスのシリアル化に関するバグがありました。このバグは、null 非許容値型のプロパティを使用してカスタム モデル クラスを作成した場合に発生する可能性がありました。
 
-#### <a name="steps-to-reproduce"></a>Steps to reproduce
+#### 再現手順
 
-Create a custom model class with a property of non-nullable value type. For example, add a public `UnitCount` property of type `int` instead of `int?`.
+null 非許容値型のプロパティを使用してカスタム モデル クラスを作成します。たとえば、`int?` ではなく `int` 型のパブリック `UnitCount` プロパティを追加します。
 
-If you index a document with the default value of that type (for example, 0 for `int`), the field will be null in Azure Search. If you subsequently search for that document, the `Search` call will throw `JsonSerializationException` complaining that it can't convert `null` to `int`.
+その型の既定値 (たとえば、`int` の場合は 0) でドキュメントのインデックスを設定した場合、フィールドは Azure Search では null になります。その後、そのドキュメントを検索した場合、`Search` の呼び出しで、`null` を `int` に変換できないことを示す `JsonSerializationException` がスローされます。
 
-Also, filters may not work as expected since null was written to the index instead of the intended value.
+また、意図した値ではなく null がインデックスに書き込まれるため、フィルターは期待どおりに機能しません。
 
-#### <a name="fix-details"></a>Fix details
+#### 修正の詳細
 
-We have fixed this issue in version 1.1 of the SDK. Now, if you have a model class like this:
+この問題は、SDK のバージョン 1.1 で解決されました。次のようなモデル クラスがあるものとします。
 
     public class Model
     {
@@ -420,20 +419,16 @@ We have fixed this issue in version 1.1 of the SDK. Now, if you have a model cla
         public int IntValue { get; set; }
     }
 
-and you set `IntValue` to 0, that value is now correctly serialized as 0 on the wire and stored as 0 in the index. Round tripping also works as expected.
+さらに `IntValue` を 0 に設定します。現在では、この値はネットワーク上で正しく 0 としてシリアル化され、インデックスに 0 と格納されるようになっています。ラウンドトリップも予期したとおりに動作します。
 
-There is one potential issue to be aware of with this approach: If you use a model type with a non-nullable property, you have to **guarantee** that no documents in your index contain a null value for the corresponding field. Neither the SDK nor the Azure Search REST API will help you to enforce this.
+この方法で注意すべき潜在的な問題が 1 つあります。null 非許容プロパティを使用する種類のモデルを使用する場合、対応するフィールドに null 値が含まれるドキュメントがインデックス内に存在しないことを、開発者が**保証する**必要があります。SDK も Azure Search REST API も、このことを強制する役には立ちません。
 
-This is not just a hypothetical concern: Imagine a scenario where you add a new field to an existing index that is of type `Edm.Int32`. After updating the index definition, all documents will have a null value for that new field (since all types are nullable in Azure Search). If you then use a model class with a non-nullable `int` property for that field, you will get a `JsonSerializationException` like this when trying to retrieve documents:
+これは単なる仮定上の問題ではありません。`Edm.Int32` 型の既存のインデックスに新しいフィールドを追加する場合を考えてみてください。インデックスの定義を更新した後、(Azure Search ではすべての型が null を許容するので) すべてのドキュメントでその新しいフィールドの値が null になります。その後、そのフィールドが null 非許容型の `int` プロパティであるモデル クラスを使用した場合、ドキュメントを取得しようとすると、次のような `JsonSerializationException` が発生します。
 
     Error converting value {null} to type 'System.Int32'. Path 'IntValue'.
 
-For this reason, we still recommend that you use nullable types in your model classes as a best practice.
+このため、ベスト プラクティスとして、モデル クラスではまだ null 許容型を使用することをお勧めします。
 
-For more details on this bug and the fix, please see [this issue on GitHub](https://github.com/Azure/azure-sdk-for-net/issues/1063).
+このバグの詳細と修正については、[GitHub でのこの問題の解説](https://github.com/Azure/azure-sdk-for-net/issues/1063)を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

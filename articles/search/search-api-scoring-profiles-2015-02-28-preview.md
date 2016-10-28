@@ -1,35 +1,34 @@
 <properties
-    pageTitle="Scoring profiles (Azure Search REST API Version 2015-02-28-Preview) | Microsoft Azure | Azure Search Preview API"
-    description="Azure Search is a hosted cloud search service that supports tuning of ranked results based on user-defined scoring profiles."
-    services="search"
-    documentationCenter=""
-    authors="HeidiSteen"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview) | Azure Search Preview API"
+	description="Azure Search は、ユーザーが定義したスコアリング プロファイルに基づき、ランク付けされた結果を調整するホスト型のクラウド検索サービスです。"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="search"
-    ms.devlang="rest-api"
-    ms.workload="search"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.author="heidist"
-    ms.date="08/29/2016" />
+	ms.service="search"
+	ms.devlang="rest-api"
+	ms.workload="search"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.author="heidist"
+	ms.date="08/29/2016" />
 
+# スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)
 
-# <a name="scoring-profiles-(azure-search-rest-api-version-2015-02-28-preview)"></a>Scoring Profiles (Azure Search REST API Version 2015-02-28-Preview)
+> [AZURE.NOTE] この記事では、[2015-02-28-Preview](search-api-2015-02-28-preview.md) のスコアリング プロファイルについて説明します。現在、[MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) のドキュメントで説明されている `2015-02-28` バージョンとここで説明する `2015-02-28-Preview` バージョンの間に違いはありませんが、API 全体についてのドキュメントを提供するため、ここにも掲載しておきます。
 
-> [AZURE.NOTE] This article describes scoring profiles in the [2015-02-28-Preview](search-api-2015-02-28-preview.md). Currently there is no difference between the `2015-02-28` version documented on [MSDN](http://msdn.microsoft.com/library/azure/mt183328.aspx) and the `2015-02-28-Preview` version described here, but we offer this document anyway in order to provide document coverage across the entire API.
+## Overview
 
-## <a name="overview"></a>Overview
+スコアリングとは、検索結果に返されるすべての項目の検索スコアを計算することです。スコアは、現在の検索操作のコンテキストにおける項目の関連性を示すインジケーターです。スコアが高いほど、項目の関連性が高くなります。検索結果内の項目は、項目ごとに計算された検索スコアに基づいて、順位の高い順に並べられます。
 
-Scoring refers to the computation of a search score for every item returned in search results. The score is an indicator of an item's relevance in the context of the current search operation. The higher the score, the more relevant the item. In search results, items are rank ordered from high to low, based on the search score calculated for each item.
+Azure Search では、既定のスコアリングを使用して初期スコアを計算しますが、スコアリング プロファイルを介して計算をカスタマイズすることができます。スコアリング プロファイルでは、検索結果の項目の順位付けをより細かく制御できます。たとえば、収益の可能性に基づいて項目をブーストしたり、より新しい項目を昇格させたり、場合によっては在庫期間が長すぎる項目をブーストしたりできます。
 
-Azure Search uses default scoring to compute an initial score, but you can customize the calculation through a scoring profile. Scoring profiles give you greater control over the ranking of items in search results. For example, you might want to boost items based on their revenue potential, promote newer items, or perhaps boost items that have been in inventory too long.
+スコアリング プロファイルは、インデックス定義の一部であり、フィールド、関数、およびパラメーターで構成されます。
 
-A scoring profile is part of the index definition, composed of fields, functions, and parameters.
-
-To give you an idea of what a scoring profile looks like, the following example shows a simple profile named 'geo'. This one boosts items that have the search term in the `hotelName` field. It also uses the `distance` function to favor items that are within ten kilometers of the current location. If someone searches on the term 'inn', and 'inn' happens to be part of the hotel name, documents that include hotels with 'inn' will appear higher in the search results.
+スコアリング プロファイルとはどのようなものかを説明するために、次の例に 'geo' という名前の簡単なプロファイルを示します。このプロファイルは、`hotelName` フィールド内の検索語句を含む項目をブーストします。また、`distance` 関数を使用して、現在の場所から 10 キロメートル以内にある項目を優先します。他のユーザーが語句 'inn' の検索を実行し、'inn' がたまたまホテル名の一部であった場合、'inn' を含むホテルが記載されているドキュメントが検索結果で上位に表示されます。
 
     "scoringProfiles": [
       {
@@ -52,59 +51,59 @@ To give you an idea of what a scoring profile looks like, the following example 
       }
     ]
 
-To use this scoring profile, your query is formulated to specify the profile on the query string. In the query below, notice the query parameter, `scoringProfile=geo` in the request.
+このスコアリング プロファイルを使用するには、クエリを作成して、クエリ文字列にプロファイルを指定します。次のクエリで、要求内のクエリ パラメーター `scoringProfile=geo` に注目してください。
 
     GET /indexes/hotels/docs?search=inn&scoringProfile=geo&scoringParameter=currentLocation--122.123,44.77233&api-version=2015-02-28-Preview
 
-This query searches on the term 'inn' and passes in the current location. Note that this query includes other parameters, such as `scoringParameter`. Query parameters are described in [Search Documents (Azure Search API)](search-api-2015-02-28-preview.md#SearchDocs).
+このクエリは、語句 'inn' を検索し、現在の場所を渡します。このクエリには、`scoringParameter` などの他のパラメーターも含まれていることがわかります。クエリ パラメーターについては、「[ドキュメントの検索 (Azure Search API)](search-api-2015-02-28-preview.md#SearchDocs)」を参照してください。
 
-Click [Example](#example) to review a more detailed example of a scoring profile.
+スコアリング プロファイルの詳細な例を確認するには、「[例](#example)」をクリックします。
 
-## <a name="what-is-default-scoring?"></a>What is default scoring?
+## 既定のスコアリングとは
 
-Scoring computes a search score for each item in a rank ordered result set. Every item in a search result set is assigned a search score, then ranked highest to lowest. Items with the higher scores are returned to the application. By default, the top 50 are returned, but you can use the `$top` parameter to return a smaller or larger number of items (up to 1000 in a single response).
+スコアリングでは、順位に従って並べられる結果セット内の各項目の検索スコアを計算します。検索結果セット内のすべての項目にそれぞれ検索スコアが割り当てられ、最上位から最下位まで順位が付けられます。アプリケーションには、より高いスコアを持つ項目が返されます。既定では、上位 50 個が返されますが、`$top` パラメーターを使用することで、返される項目数を減らしたり増やしたりできます (1 回の応答で 1000 個まで)。
 
-By default, a search score is computed based on statistical properties of the data and the query. Azure Search finds documents that include the search terms in the query string (some or all, depending on `searchMode`), favoring documents that contain many instances of the search term. The search score goes up even higher if the term is rare across the data corpus, but common within the document. The basis for this approach to computing relevance is known as TF-IDF or (term frequency-inverse document frequency).
+既定では、検索スコアは、データとクエリの統計プロパティに基づいて計算されます。Azure Search はクエリ文字列内の検索語句 (`searchMode` に応じて一部またはすべて) を含むドキュメントを検索し、検索語句のインスタンスを多く含むドキュメントを優先します。データ コーパス全体での語句の出現頻度は低いがドキュメント内でよく使用されている場合、検索スコアはより高くなります。関連性を計算するこのアプローチの基礎となる手法は、TF-IDF (単語の出現頻度 - 逆文書頻度) と呼ばれています。
 
-Assuming there is no custom sorting, results are then ranked by search score before they are returned to the calling application. If `$top` is not specified, 50 items having the highest search score are returned.
+カスタムの並べ替えが行われないと仮定した場合、結果は検索スコアによって順位付けされてから、呼び出し元のアプリケーションに返されます。`$top` が指定されていない場合、最も高い検索スコアを持つ 50 個の項目が返されます。
 
-Search score values can be repeated throughout a result set. For example, you might have 10 items with a score of 1.2, 20 items with a score of 1.0, and 20 items with a score of 0.5. When multiple hits have the same search score, the ordering of same scored items is not defined, and is not stable. Run the query again, and you might see items shift position. Given two items with an identical score, there is no guarantee which one appears first.
+検索スコアの値は、結果セット全体で繰り返すことができます。たとえば、スコアが 1.2 である項目が 10 個、スコアが 1.0 である項目が 20 個、スコアが 0.5 である項目が 20 個あるとします。同じ検索スコアを持つ項目が複数ヒットした場合、同じスコアを持つ項目の順序付けは定義されていないので安定しません。もう一度クエリを実行すると、項目の位置が変わる可能性があります。同一スコアの項目が 2 つ存在する場合、最初に表示される項目を特定することはできません。
 
-## <a name="when-to-use-custom-scoring"></a>When to use custom scoring
+## カスタム スコアリングを使用する場合
 
-You should create one or more scoring profiles when the default ranking behavior doesn’t go far enough in meeting your business objectives. For example, you might decide that search relevance should favor newly added items. Likewise, you might have a field that contains profit margin, or some other field indicating revenue potential. Boosting hits that bring benefits to your business can be an important factor in deciding to use scoring profiles.
+既定の順位付けの動作ではビジネス目標を達成するに至らない場合、1 つ以上のスコアリング プロファイルを作成する必要があります。たとえば、検索の関連性で、新しく追加された項目を優先するとします。同様に、利益率を含んでいるフィールド、または他に収益の可能性を示す何らかのフィールドがあるとします。ビジネスに利点をもたらすブースティング ヒットは、スコアリング プロファイルの使用を決定する上で重要な要因になる場合があります。
 
-Relevancy-based ordering is also implemented through scoring profiles. Consider search results pages you’ve used in the past that let you sort by price, date, rating, or relevance. In Azure Search, scoring profiles drive the 'relevance' option. The definition of relevance is controlled by you, predicated on business objectives and the type of search experience you want to deliver.
+関連性に基づく順序付けも、スコアリング プロファイルを通して実装されます。価格、日付、評価、または関連性での並べ替えが可能な、以前に使用した検索結果ページを検討してしてください。Azure Search では、スコアリング プロファイルによって「関連性」オプションが開始されます。関連性の定義は、ビジネス目標および提供する検索機能の種類に基づいて、ユーザーによって制御されます。
 
 <a name="example"></a>
-## <a name="example"></a>Example
+## 例
 
-As noted, customized scoring is implemented through scoring profiles defined in an index schema.
+前述のように、カスタマイズされたスコアリングは、インデックス スキーマに定義されたスコアリング プロファイルを介して実装されます。
 
-This example shows the schema of an index with two scoring profiles (`boostGenre`, `newAndHighlyRated`). Any query against this index that includes either profile as a query parameter will use the profile to score the result set.
+次の例では、2 つのスコアリング プロファイル (`boostGenre`、`newAndHighlyRated`) を使用するインデックス スキーマを示します。いずれかのプロファイルをクエリ パラメーターとして指定したクエリを、このインデックスに対して実行すると、該当するプロファイルを使用して結果セットのスコアリングが行われます。
 
-[Try this example](search-get-started-scoring-profiles.md).
+[次の例を試してみてください](search-get-started-scoring-profiles.md)。
 
     {
       "name": "musicstoreindex",
-      "fields": [
-        { "name": "key", "type": "Edm.String", "key": true },
-        { "name": "albumTitle", "type": "Edm.String" },
-        { "name": "albumUrl", "type": "Edm.String", "filterable": false },
-        { "name": "genre", "type": "Edm.String" },
-        { "name": "genreDescription", "type": "Edm.String", "filterable": false },
-        { "name": "artistName", "type": "Edm.String" },
-        { "name": "orderableOnline", "type": "Edm.Boolean" },
-        { "name": "rating", "type": "Edm.Int32" },
-        { "name": "tags", "type": "Collection(Edm.String)" },
-        { "name": "price", "type": "Edm.Double", "filterable": false },
-        { "name": "margin", "type": "Edm.Int32", "retrievable": false },
-        { "name": "inventory", "type": "Edm.Int32" },
-        { "name": "lastUpdated", "type": "Edm.DateTimeOffset" }
-      ],
+	  "fields": [
+	    { "name": "key", "type": "Edm.String", "key": true },
+	    { "name": "albumTitle", "type": "Edm.String" },
+	    { "name": "albumUrl", "type": "Edm.String", "filterable": false },
+	    { "name": "genre", "type": "Edm.String" },
+	    { "name": "genreDescription", "type": "Edm.String", "filterable": false },
+	    { "name": "artistName", "type": "Edm.String" },
+	    { "name": "orderableOnline", "type": "Edm.Boolean" },
+	    { "name": "rating", "type": "Edm.Int32" },
+	    { "name": "tags", "type": "Collection(Edm.String)" },
+	    { "name": "price", "type": "Edm.Double", "filterable": false },
+	    { "name": "margin", "type": "Edm.Int32", "retrievable": false },
+	    { "name": "inventory", "type": "Edm.Int32" },
+	    { "name": "lastUpdated", "type": "Edm.DateTimeOffset" }
+	  ],
       "scoringProfiles": [
         {
-          "name": "boostGenre",
+	      "name": "boostGenre",
           "text": {
             "weights": {
               "albumTitle": 1.5,
@@ -112,9 +111,9 @@ This example shows the schema of an index with two scoring profiles (`boostGenre
               "artistName": 2
             }
           }
-        },
+	    },
         {
-          "name": "newAndHighlyRated",
+	      "name": "newAndHighlyRated",
           "functions": [
             {
               "type": "freshness",
@@ -149,41 +148,41 @@ This example shows the schema of an index with two scoring profiles (`boostGenre
     }
 
 
-## <a name="workflow"></a>Workflow
+## ワークフロー
 
-To implement custom scoring behavior, add a scoring profile to the schema that defines the index. You can have multiple scoring profiles within an index, but you can only specify one profile at time in any given query.
+カスタムのスコアリング動作を実装するには、インデックスを定義するスキーマにスコアリング プロファイルを追加します。インデックスには複数のスコアリング プロファイルを含めることができますが、クエリには一度に 1 つのプロファイルしか指定できません。
 
-Start with the [Template](#bkmk_template) provided in this topic.
+このトピックで提供される[テンプレート](#bkmk_template)を使用して開始します。
 
-Provide a name. Scoring profiles are optional, but if you add one, the name is required. Be sure to follow the naming conventions for fields (starts with a letter, avoids special characters and reserved words). See [Naming Rules](http://msdn.microsoft.com/library/azure/dn857353.aspx) for more information.
+名前を指定します。スコアリング プロファイルは省略できますが、追加する場合は、名前が必要ですフィールドの名前付け規則に従ってください (文字で始め、特殊文字や予約語の使用は避ける)。詳細については、「[名前付け規則 (Azure Search)](http://msdn.microsoft.com/library/azure/dn857353.aspx)」を参照してください。
 
-The body of the scoring profile is constructed from weighted fields and functions.
+スコアリング プロファイルの本文は、重み付けされたフィールドと関数によって構成されます。
 
-### <a name="weights"></a>Weights ###
+### Weights ###
 
-The `weights` property of a scoring profile specifies name-value pairs that assign a relative weight to a field. In the [Example](#example), the albumTitle, genre, and artistName fields are boosted 1.5, 5, and 2, respectively. Why is genre boosted so much higher than the others? If search is conducted over data that is somewhat homogeneous (as is the case with 'genre' in the `musicstoreindex`), you might need a larger variance in the relative weights. For example, in the `musicstoreindex`, 'rock' appears as both a genre and in identically phrased genre descriptions. If you want genre to outweigh genre description, the genre field will need a much higher relative weight.
+スコアリング プロファイルの `weights` プロパティは、相対的な重みをフィールドに割り当てる名前と値のペアを指定します。[例](#example)では、albumTitle、genre、および artistName のフィールドはそれぞれ 1.5、5、および 2 でブーストされます。なぜ genre は他のものよりも大幅に高くブーストされるのでしょうか? ある程度同じようなデータに対して検索を実行する場合 (`musicstoreindex` での 'genre' の場合のように)、相対的な重みをより分散することが必要になる可能性があります。たとえば、`musicstoreindex` では、「ロック」はジャンルとして表示されると共に、言葉で表現されるジャンルの説明の中にも表示されます。ジャンルがジャンルの説明を上回るようにする場合は、genre フィールドの相対的な重みをより高くする必要があります。
 
-### <a name="functions"></a>Functions ###
+### 関数 ###
 
-Functions are used when additional calculations are required for specific contexts. Valid function types are `freshness`, `magnitude`, `distance` and `tag`. Each function has parameters that are unique to it.
+関数は、特定のコンテキストに対して追加の計算が必要な場合に使用されます。有効な関数の種類は、`freshness`、`magnitude`、`distance`、および `tag` です。各関数には、固有のパラメーターがあります。
 
-  - `freshness` should be used when you want to boost by how new or old an item is. This function can only be used with datetime fields (`Edm.DataTimeOffset`). Note the `boostingDuration` attribute is used only with the freshness function.
-  - `magnitude` should be used when you want to boost based on how high or low a numeric value is. Scenarios that call for this function include boosting by profit margin, highest price, lowest price, or a count of downloads. You can reverse the range, high to low, if you want the inverse pattern (for example, to boost lower-priced items more than higher-priced items). Given a range of prices from $100 to $1, you would set `boostingRangeStart` at 100 and `boostingRangeEnd` at 1 to boost the lower-priced items. This function can only be used with double and integer fields.
-  - `distance` should be used when you want to boost by proximity or geographic location. This function can only be used with `Edm.GeographyPoint` fields.
-  - `tag` should be used when you want to boost by tags in common between documents and search queries. This function can only be used with `Edm.String` and `Collection(Edm.String)` fields.
+  - `freshness` は、項目の新しさまたは古さによってブーストする場合に使用する必要があります。この関数は、datetime フィールド (`Edm.DataTimeOffset`) でのみ使用できます。`boostingDuration` 属性は、freshness 関数でのみ使用することに注意してください。
+  - `magnitude` は、数値の高低に基づいてブーストする場合に使用する必要があります。この関数を呼び出すシナリオとしては、利益率、最高価格、最低価格、またはダウンロード回数に基づくブーストがあります。逆のパターンが必要な場合 (たとえば、価格がより高い項目より価格がより低い項目をブーストする場合) に、高範囲から低範囲に反転することができます。たとえば、価格の範囲が 100 ～ 1 ドルである場合、`boostingRangeStart` を 100 に、`boostingRangeEnd` を 1 に設定して、より低い価格の項目をブーストします。この関数は、倍精度浮動小数点フィールドと整数フィールドでのみ使用できます。
+  - `distance` は、距離の近さや地理的な場所によってブーストする場合に使用する必要があります。この関数は、`Edm.GeographyPoint` フィールドでのみ使用できます。
+  - `tag` は、ドキュメントと検索クエリで共通のタグに基づいてブーストする場合に使用する必要があります。この関数は、`Edm.String` フィールドと `Collection(Edm.String)` フィールドでのみ使用できます。
   
-#### <a name="rules-for-using-functions"></a>Rules for using functions ####
+#### 関数の使用に関する規則 ####
 
-  - Function type (freshness, magnitude, distance, tag) must be lower case.
-  - Functions cannot include null or empty values. Specifically, if you include fieldname, you have to set it to something.
-  - Functions can only be applied to filterable fields. See [Create Index](search-api-2015-02-28.md#CreateIndex) for more information about filterable fields.
-  - Functions can only be applied to fields that are defined in the fields collection of an index.
+  - 関数型 (freshness、magnitude、distance、tag) は小文字にする必要があります。
+  - 関数に null または空の値を含めることはできません。具体的には、フィールド名を含めた場合、それを何かに設定する必要があります。
+  - 関数はフィルターの適用が可能なフィールドにのみ適用できます。フィルターの適用が可能なフィールドの詳細については、「[インデックスの作成](search-api-2015-02-28.md#createindex)」を参照してください。
+  - 関数は、インデックスのフィールド コレクションで定義されているフィールドにのみ適用できます。
 
-After the index is defined, build the index by uploading the index schema, followed by documents. See [Create Index](search-api-2015-02-28-preview.md#CreateIndex) and [Add or Update Documents](search-api-2015-02-28-preview.md#AddOrUpdateDocuments) for instructions on these operations. Once the index is built, you should have a functional scoring profile that works with your search data.
+インデックスが定義されたら、インデックス スキーマをアップロードし、ドキュメントをアップロードして、インデックスを構築します。これらの操作の手順については、「[インデックスの作成](search-api-2015-02-28-preview.md#createindex)」と「[ドキュメントの追加または更新](search-api-2015-02-28-preview.md#AddOrUpdateDocuments)」を参照してください。インデックスが構築されると、検索データと連携する機能的なスコアリング プロファイルが使用できるようになります。
 
 <a name="bkmk_template"></a>
-## <a name="template"></a>Template
-This section shows the syntax and template for scoring profiles. Refer to [Index attribute reference](#bkmk_indexref) in the next section for descriptions of the attributes.
+## テンプレート
+このセクションでは、スコアリング プロファイルの構文とテンプレートを示します。属性の説明については、次のセクションの「[インデックスの属性のリファレンス](#bkmk_indexref)」を参照してください。
 
     ...
     "scoringProfiles": [
@@ -236,75 +235,67 @@ This section shows the syntax and template for scoring profiles. Refer to [Index
     ...
 
 <a name="bkmk_indexref"></a>
-## <a name="scoring-profile-property-reference"></a>Scoring profile property reference
+## スコアリング プロファイル プロパティのリファレンス
 
-**Note** A scoring function can only be applied to fields that are filterable.
+**注**： スコアリング関数はフィルターの適用が可能なフィールドにのみ適用できます。
 
-| Property | Description |
+| プロパティ | Description |
 |----------|-------------|
-| `name`   | Required. This is the name of the scoring profile. It follows the same naming conventions of a field. It must start with a letter, cannot contain dots, colons or @ symbols, and cannot start with the phrase "azureSearch" (case-sensitive). |
-| `text` | Contains the Weights property. |
-| `weights` | Optional. A name-value pair that specifies a field name and relative weight. Relative weight must be a positive integer or floating-point number. You can specify the field name without a corresponding weight. Weights are used to indicate the importance of one field relative to another. |
-| `functions` | Optional. Note that a scoring function can only be applied to fields that are filterable. |
-| `type` | Required for scoring functions. Indicates the type of function to use. Valid values include `magnitude`, `freshness`, `distance` and `tag`. You can include more than one function in each scoring profile. The function name must be lower case. |
-| `boost` | Required for scoring functions. A positive number used as multiplier for raw score. It cannot be equal to 1. |
-| `fieldName` | Required for scoring functions. A scoring function can only be applied to fields that are part of the field collection of the index, and that are filterable. In addition, each function type introduces additional restrictions (freshness is used with datetime fields, magnitude with integer or double fields, distance with location fields and tag with string or string collection fields). You can only specify a single field per function definition. For example, to use magnitude twice in the same profile, you would need to include two definitions magnitude, one for each field. |
-| `interpolation` | Required for scoring functions. Defines the slope for which the score boosting increases from the start of the range to the end of the range. Valid values include `linear` (default), `constant`, `quadratic`, and `logarithmic`. See [Set interpolations](#bkmk_interpolation) for details. |
-| `magnitude` | The magnitude scoring function is used to alter rankings based on the range of values for a numeric field. Some of the most common usage examples of this are:<ul><li>Star ratings: Alter the scoring based on the value within the "Star Rating" field. When two items are relevant, the item with the higher rating will be displayed first.</li><li>Margin: When two documents are relevant, a retailer may wish to boost documents that have higher margins first.</li><li>Click counts: For applications that track click through actions to products or pages, you could use magnitude to boost items that tend to get the most traffic.</li><li>Download counts: For applications that track downloads, the magnitude function lets you boost items that have the most downloads.</li></ul> |
-| `magnitude:boostingRangeStart` | Sets the start value of the range over which magnitude is scored. The value must be an integer or floating-point number. For star ratings of 1 through 4, this would be 1. For margins over 50%, this would be 50. |
-| `magnitude:boostingRangeEnd` | Sets the end value of the range over which magnitude is scored. The value must be an integer or floating-point number. For star ratings of 1 through 4, this would be 4. |
-| `magnitude:constantBoostBeyondRange` | Valid values are true or false (default). When set to true, the full boost will continue to apply to documents that have a value for the target field that’s higher than the upper end of the range. If false, the boost of this function won’t be applied to documents having a value for the target field that falls outside of the range. |
-| `freshness` | The freshness scoring function is used to alter ranking scores for items based on values in DateTimeOffset fields. For example, an item with a more recent date can be ranked higher than older items. (Note that it is also possible to rank items like calendar events with future dates such that items closer to the present can be ranked higher than items further in the future.) In the current service release, one end of the range will be fixed to the current time. The other end is a time in the past based on the `boostingDuration`. To boost a range of times in the future use a negative `boostingDuration`. The rate at which the boosting changes from a maximum and minimum range is determined by the Interpolation applied to the scoring profile (see the figure below). To reverse the boosting factor applied, choose a boost factor of less than 1. |
-| `freshness:boostingDuration` | Sets an expiration period after which boosting will stop for a particular document. See [Set boostingDuration][#bkmk_boostdur] in the following section for syntax and examples. |
-| `distance` | The distance scoring function is used to affect the score of documents based on how close or far they are relative to a reference geographic location. The reference location is given as part of the query in a parameter (using the `scoringParameter` query parameter) as a lon,lat argument. |
-| `distance:referencePointParameter` | A parameter to be passed in queries to use as reference location. scoringParameter is a query parameter. See [Search Documents](search-api-2015-02-28-preview.md#SearchDocs) for descriptions of query parameters. |
-| `distance:boostingDistance` | A number that indicates the distance in kilometers from the reference location where the boosting range ends. |
-| `tag` | The tag scoring function is used to affect the score of documents based on tags in documents and search queries. Documents that have tags in common with the search query will be boosted. The tags for the search query is provided as a scoring parameter in each search request(using the `scoringParameter` query parameter). |
-| `tag:tagsParameter` | A parameter to be passed in queries to specify tags for a particular request. `scoringParameter` is a query parameter. See [Search Documents](search-api-2015-02-28-preview.md#SearchDocs) for descriptions of query parameters. |
-| `functionAggregation` | Optional. Applies only when functions are specified. Valid values include: `sum` (default), `average`, `minimum`, `maximum`, and `firstMatching`. A search score is a single value that is computed from multiple variables, including multiple functions. This attributes indicates how the boosts of all the functions are combined into a single aggregate boost that is then applied to the base document score. The base score is based on the tf-idf value computed from the document and the search query. |
-| `defaultScoringProfile` | When executing a search request, if no scoring profile is specified, then default scoring is used (tf-idf only). A default scoring profile name can be set here, causing Azure Search to use that profile when no specific profile is given in the search request. |
+| `name` | 必須。これは、スコアリング プロファイルの名前です。これは、フィールドの場合と同じ名前付け規則に従います。先頭は英文字にする必要があります。ドット、コロン、または @ 記号を含めることはできません。さらに、'azureSearch' (大文字小文字の区別あり) という句で開始することはできません。 |
+| `text` | 重み プロパティが含まれます。 |
+| `weights` | 省略可能。フィールドの名前と相対的な重みを指定する名前と値のペア。相対的な重みは、正の整数または浮動小数点数にする必要があります。対応する重みなしでフィールド名を指定することができます。フィールド間の相対的な重要度を示すには、重みを使用します。 |
+| `functions` | 省略可能。スコアリング関数はフィルターの適用が可能なフィールドにのみ適用できることに注意してください。 |
+| `type` | スコアリング関数の場合は必須です。使用する関数の型を示します。有効な値として、`magnitude`、`freshness`、`distance`、`tag` があります。各スコアリング プロファイルには複数の関数を含めることができます。関数名は小文字にする必要があります。 |
+| `boost` | スコアリング関数の場合は必須です。生のスコアの乗数として使用される正の数値。1 にすることはできません。 |
+| `fieldName` | スコアリング関数の場合は必須です。スコアリング関数は、インデックスのフィールド コレクションに属し、フィルターの適用が可能なフィールドにのみ適用できます。さらに、各関数型には追加の制限 (freshness は日時フィールドで使用され、magnitude は整数または倍精度浮動小数点フィールドで使用され、distance は場所フィールドで使用され、tag は文字列または文字列コレクションで使用される) が導入されています。関数の定義ごとに指定できるフィールドは 1 つだけです。たとえば、同じプロファイルで magnitude を 2 回使用するには、magnitude の定義を 2 つ含める必要があります (フィールドごとに 1 つ)。 |
+| `interpolation` | スコアリング関数の場合は必須です。スコア ブースティングが範囲の始点から範囲の終点に向かって高くなる場合の傾斜を定義します。有効な値として、`linear` (既定値)、`constant`、`quadratic`、`logarithmic` があります。詳細については、「[補間の設定](#bkmk_interpolation)」を参照してください。 |
+| `magnitude` | 数値フィールドの値の範囲に基づいて順位付けを変更するには、magnitude スコアリング関数を使用します。最も一般的な使用例には、次のようなものがあります。<ul><li>星評価: "星評価" フィールド内の値に基づいて、スコアリングを変更します。2 つの項目が該当する場合、評価の高い項目が最初に表示されます。</li><li>マージン: 2 つのドキュメントが該当する場合、小売業者は販売利益の高いドキュメントをブーストすることができます。</li><li>クリック回数: 製品やページに対するクリック スルー操作を追跡するアプリケーションの場合は、magnitude を使用して、最大トラフィックを示す傾向にある項目をブーストすることができます。</li><li>ダウンロード回数: ダウンロードを追跡するアプリケーションの場合、magnitude 関数を使用して、ダウンロード回数が最も多い項目をブーストすることができます。</li></ul> |
+| `magnitude:boostingRangeStart` | magnitude をスコアリングする範囲の開始値を設定します。値は整数または浮動小数点数にする必要があります。1 ～ 4 の星評価を対象とする場合、これは 1 になります。50% を超える利益を対象とする場合、これは 50 になります。 |
+| `magnitude:boostingRangeEnd` | magnitude をスコアリングする範囲の終了値を設定します。値は整数または浮動小数点数にする必要があります。1 ～ 4 の星評価を対象とする場合、これは 4 になります。 |
+| `magnitude:constantBoostBeyondRange` | 有効な値は、true または false (既定値) です。true に設定すると、対象フィールドの値が範囲の上限を超えているドキュメントに、フル ブーストが継続的に適用されます。false に設定すると、対象フィールドの値が範囲外にあるドキュメントに対して、この関数のブーストは適用されません。 |
+| `freshness` | DateTimeOffset フィールドの値に基づいて項目の順位付けのスコアを変更するには、freshness スコアリング関数を使用します。たとえば、最近の日付を持つ項目に、より古い日付を持つ項目よりも高い順位を付けることができます。(将来の日付を使用して、カレンダー イベントなどの項目に順位を付けることもできます。たとえば、現在に近い日付の項目を遠い日付の項目よりも高い順位にすることができます) 現在のサービス リリースでは、範囲の一端が現在の時刻に固定されます。もう一端は、`boostingDuration` に基づく過去の時刻です。将来の時刻の範囲をブーストするには、負の値の `boostingDuration` を使用します。最大および最小の範囲からのブースティングの変化率は、スコアリング プロファイルに適用した補間によって決定されます (下図参照)。適用されるブースティング係数を反転するには、ブースト係数として 1 未満を選択します。 |
+| `freshness:boostingDuration` | 特定のドキュメントに対して有効期限を設定します。この期限を過ぎるとブースティングは停止します。構文と例については、次のセクションの [boostingDuration の設定][#bkmk\_boostdur] を参照してください。 |
+| `distance` | 地理的な参照場所との間の距離に基づいてドキュメントのスコアに影響を与えるには、distance スコアリング関数を使用します。参照場所は、クエリの一部としてパラメーター (`scoringParameter` クエリ パラメーターを使用) 内に lon,lat 引数で指定します。 |
+| `distance:referencePointParameter` | 参照場所として使用するためにクエリに渡されるパラメーター。scoringParameter はクエリ パラメーターです。クエリ パラメーターの説明については、「[ドキュメントの検索](search-api-2015-02-28-preview.md#SearchDocs)」を参照してください。 |
+| `distance:boostingDistance` | ブースティング範囲が終了する、参照場所からの距離をキロメートルで示す数値。 |
+| `tag` | ドキュメントと検索クエリのタグに基づいてドキュメントのスコアに影響を与えるには、tag スコアリング関数を使用します。検索クエリと共通のタグを持つドキュメントがブーストされます。検索クエリのタグは、(`scoringParameter` クエリ パラメーターを使用して) 各検索要求でスコアリング パラメーターとして提供されます。 |
+| `tag:tagsParameter` | 特定の要求のタグを指定するためにクエリに渡されるパラメーター。`scoringParameter` はクエリ パラメーターです。クエリ パラメーターの説明については、「[ドキュメントの検索](search-api-2015-02-28-preview.md#SearchDocs)」を参照してください。 |
+| `functionAggregation` | 省略可能。関数を指定した場合にのみ適用されます。有効な値として、`sum` (既定値)、`average`、`minimum`、`maximum`、`firstMatching` があります。検索スコアは、複数の変数 (複数の関数など) から計算される単一の値です。この属性は、すべての関数のブーストを、基本ドキュメント スコアに適用される 1 つの集計ブーストに集約する方法を示します。基本スコアは、ドキュメントと検索クエリから算出される tf-idf 値に基づいています。 |
+| `defaultScoringProfile` | 検索要求の実行時に、スコアリング プロファイルが指定されていない場合は、既定のスコアリングが使用されます (tf-idf のみ)。ここでは既定のスコアリング プロファイル名を設定できます。Azure Search は検索要求に特定のプロファイルが指定されていない場合、そのプロファイルを使用します。 |
 
 <a name="bkmk_interpolation"></a>
-## <a name="set-interpolations"></a>Set interpolations
+## 補間の設定
 
-Interpolations allow you to define the slope for which the score boosting increases from the start of the range to the end of the range. The following interpolations can be used:
+補間を使用することにより、スコア ブースティングが範囲の始点から範囲の終点に向かって高くなる場合の傾斜を定義できます。次の補間を使用できます。
 
-  - `Linear`: For items that are within the max and min range, the boost applied to the item will be done in a constantly decreasing amount. Linear is the default interpolation for a scoring profile.
-  - `Constant`: For items that are within the start and ending range, a constant boost will be applied to the rank results.
-  - `Quadratic`: In comparison to a Linear interpolation that has a constantly decreasing boost, Quadratic will initially decrease at smaller pace and then as it approaches the end range, it decreases at a much higher interval. This interpolation option is not allowed in tag scoring functions.
-  - `Logarithmic`: In comparison to a Linear interpolation that has a constantly decreasing boost, Logarithmic will initially decrease at higher pace and then as it approaches the end range, it decreases at a much smaller interval. This interpolation option is not allowed in tag scoring functions.
+  - `Linear`: 最大および最小の範囲内にある項目の場合、項目に適用されるブーストは一定の減少量で行われます。線形はスコアリング プロファイルの既定の補間です。
+  - `Constant`: 開始と終了の範囲内にある項目については、一定のブーストが順位の結果に適用されます。
+  - `Quadratic`: ブーストが一定の割合で低下する線形補間と比較して、二次方程式の場合は、最初は遅いペースで低下しますが、終了範囲に近づくにつれて低下するペースが速くなります。tag スコアリング関数では、この補間オプションは使用できません。
+  - `Logarithmic`: ブーストが一定の割合で低下する線形補間と比較して、対数の場合は、最初は速いペースで低下しますが、終了範囲に近づくにつれて低下するペースが遅くなります。tag スコアリング関数では、この補間オプションは使用できません。
 
-<a name="Figure1"></a>
- ![][1]
+<a name="Figure1"></a> ![][1]
 
 <a name="bkmk_boostdur"></a>
-## <a name="set-boostingduration"></a>Set boostingDuration
+## boostingDuration の設定
 
-`boostingDuration` is an attribute of the freshness function. You use it to set an expiration period after which boosting will stop for a particular document. For example, to boost a product line or brand for a 10-day promotional period, you would specify the 10-day period as "P10D" for those documents. Or to boost upcoming events in the next week specify "-P7D".
+`boostingDuration` は freshness 関数の属性です。これを使用して特定のドキュメントに対して有効期限を設定します。この期限が過ぎるとブースティングは停止します。たとえば、10 日のプロモーション期間中に製品ラインまたはブランドをブーストするには、該当するドキュメントに対して 10 日の期間を "P10D" で指定します。また、翌週に予定しているイベントをブーストするには、"-P7D" と指定します。
 
-`boostingDuration` must be formatted as an XSD "dayTimeDuration" value (a restricted subset of an ISO 8601 duration value). The pattern for this is: `[-]P[nD][T[nH][nM][nS]]`.
+`boostingDuration` は、XSD "dayTimeDuration" 値 (ISO 8601 期間値の制限されたサブセット) としてフォーマットする必要があります。使用されるパターンは、`[-]P[nD][T[nH][nM][nS]]` です。
 
-The following table provides several examples.
+次の表に、いくつかの例を示します。
 
-| Duration | boostingDuration |
+| 時間 | boostingDuration |
 |----------|------------------|
-| 1 day | "P1D" |
-| 2 days and 12 hours | "P2DT12H" |
-| 15 minutes | "PT15M" |
-| 30 days, 5 hours, 10 minutes, and 6.334 seconds | "P30DT5H10M6.334S" |
+| 1 日 | "P1D" |
+| 2 日と 12 時間 | "P2DT12H" |
+| 約 15 分 | "PT15M" |
+| 30 日 と 5 時間 10 分 6.334 秒 | "P30DT5H10M6.334S" |
 
-For more examples, see [XML Schema: Datatypes (W3.org web site)](http://www.w3.org/TR/xmlschema11-2/).
+他の例については、「[XML スキーマ: データ型 (W3.org web サイト)](http://www.w3.org/TR/xmlschema11-2/)」を参照してください。
 
-**See Also**
-[Azure Search Service REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx) on MSDN <br/>
-[Create Index (Azure Search API)](http://msdn.microsoft.com/library/azure/dn798941.aspx) on MSDN<br/>
-[Add a scoring profile to a search index](http://msdn.microsoft.com/library/azure/dn798928.aspx) on MSDN<br/>
+**関連項目:** MSDN の「[Azure Search サービス REST API](http://msdn.microsoft.com/library/azure/dn798935.aspx)」<br/>MSDN の「[Create Index (Azure Search サービス REST API)](http://msdn.microsoft.com/library/azure/dn798941.aspx)」<br/>MSDN の「[検索インデックスにスコア付けプロファイルを追加する (Azure Search サービス REST API)](http://msdn.microsoft.com/library/azure/dn798928.aspx)」<br/>
 
 <!--Image references-->
 [1]: ./media/search-api-scoring-profiles-2015-02-28-Preview/scoring_interpolations.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

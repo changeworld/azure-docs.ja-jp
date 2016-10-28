@@ -1,141 +1,137 @@
 <properties
-    pageTitle="Logic App limits and configuration | Microsoft Azure"
-    description="Overview of the service limits and configuration values available for Logic Apps."
-    services="logic-apps"
-    documentationCenter=".net,nodejs,java"
-    authors="jeffhollan"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="ロジック アプリの制限と構成 | Microsoft Azure"
+	description="Logic Apps におけるサービスの制限と使用できる構成値の概要です。"
+	services="logic-apps"
+	documentationCenter=".net,nodejs,java"
+	authors="jeffhollan"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="logic-apps"
-    ms.workload="integration"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/22/2016"
-    ms.author="jehollan"/>
+	ms.service="logic-apps"
+	ms.workload="integration"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/22/2016"
+	ms.author="jehollan"/>
 
+# ロジック アプリの制限と構成
 
-# <a name="logic-app-limits-and-configuration"></a>Logic App limits and configuration
+以下、Azure Logic Apps に関する現在の制限と構成について詳しく取り上げます。
 
-Below are information on the current limits and configuration details for Azure Logic Apps.
+## 制限
 
-## <a name="limits"></a>Limits
+### HTTP 要求の制限
 
-### <a name="http-request-limits"></a>HTTP request limits
+次に示したのは、1 回の HTTP 要求/コネクタ呼び出しに関する制限です。
 
-These are limits for a single HTTP request and/or connector call
+#### タイムアウト
 
-#### <a name="timeout"></a>Timeout
-
-|Name|Limit|Notes|
+|名前|制限|メモ|
 |----|----|----|
-|Request Timeout|1 Minute|An [async pattern](app-service-logic-create-api-app.md) or [until loop](app-service-logic-loops-and-scopes.md) can compensate as needed|
+|要求タイムアウト|1 分|必要に応じて[非同期パターン](app-service-logic-create-api-app.md)または [until ループ](app-service-logic-loops-and-scopes.md)で対応できます。|
 
-#### <a name="message-size"></a>Message size
+#### メッセージ サイズ
 
-|Name|Limit|Notes|
+|名前|制限|メモ|
 |----|----|----|
-|Message size|50 MB|Some connectors and APIs may not support 50MB.  Request trigger supports up to 25MB|
-|Expression evaluation limit|131,072 characters|`@concat()`, `@base64()`, `string` cannot be longer than this|
+|メッセージ サイズ|50 MB|一部のコネクタと API は 50 MB をサポートしていません。要求トリガーは最大 25 MB をサポートします。|
+|式評価の制限|131,072 文字|`@concat()`、`@base64()`、`string` をこれより長くすることはできません。|
 
-#### <a name="retry-policy"></a>Retry policy
+#### 再試行ポリシー
 
-|Name|Limit|Notes|
+|名前|制限|メモ|
 |----|----|----|
-|Retry attempts|4|Can configure with the [retry policy parameter](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Retry max delay|1 hour|Can configure with the [retry policy parameter](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
-|Retry min delay|20 min|Can configure with the [retry policy parameter](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)|
+|再試行|4|[再試行ポリシー パラメーター](https://msdn.microsoft.com/ja-JP/library/azure/mt643939.aspx)を使って構成できます。|
+|再試行の最大間隔|1 時間|[再試行ポリシー パラメーター](https://msdn.microsoft.com/ja-JP/library/azure/mt643939.aspx)を使って構成できます。|
+|再試行の最小間隔|20 分|[再試行ポリシー パラメーター](https://msdn.microsoft.com/ja-JP/library/azure/mt643939.aspx)を使って構成できます。|
 
-### <a name="run-duration-and-retention"></a>Run duration and retention
+### 実行継続時間とリテンション期間
 
-These are the limits for a single logic app run.
+次に示したのは、ロジック アプリの 1 回の実行に関する制限です。
 
-|Name|Limit|Notes|
+|名前|制限|メモ|
 |----|----|----|
-|Run duration|90 days||
-|Storage retention|90 days|This is from the run start time|
-|Min recurrence interval|15 sec||
-|Max recurrence interval|500 days||
+|時間継続時間|90 日間||
+|ストレージのリテンション期間|90 日間|実行の開始時刻が起点となります。|
+|最小の繰り返し間隔|15 秒||
+|最大の繰り返し間隔|500 日||
 
 
-### <a name="looping-and-debatching-limits"></a>Looping and debatching limits
+### ループと分割処理の制限
 
-These are limits for a single logic app run.
+次に示したのは、ロジック アプリの 1 回の実行に関する制限です。
 
-|Name|Limit|Notes|
+|名前|制限|メモ|
 |----|----|----|
-|ForEach items|5,000|You can use the [query action](../connectors/connectors-native-query.md) to filter larger arrays as needed|
-|Until iterations|10,000||
-|SplitOn items|10,000||
-|ForEach Parallelism|20|You can set to a sequential foreach by adding `"operationOptions": "Sequential"` to the `foreach` action|
+|ForEach 項目数|5,000|必要に応じて[クエリ アクション](../connectors/connectors-native-query.md)を使用することで、さらに大きな配列にフィルターを適用できます。|
+|Until 反復数|10,000||
+|SplitOn 項目数|10,000||
+|ForEach 並列処理|20|`"operationOptions": "Sequential"` を `foreach` アクションに追加することによってシーケンシャルな foreach に設定できます。|
 
 
-### <a name="throughput-limits"></a>Throughput limits
+### スループットの制限
 
-These are limits for a single logic app instance. 
+次に示したのは、1 つのロジック アプリのインスタンスに関する制限です。
 
-|Name|Limit|Notes|
+|名前|制限|メモ|
 |----|----|----|
-|Triggers per second|100|Can distribute workflows across multiple apps as needed|
+|1 秒あたりのトリガー数|100|必要に応じて複数のアプリにワークフローを分散させることができます。|
 
-### <a name="definition-limits"></a>Definition limits
+### 定義の制限
 
-These are limits for a single logic app definition.
+次に示したのは、ロジック アプリの 1 つの定義に関する制限です。
 
-|Name|Limit|Notes|
+|名前|制限|メモ|
 |----|----|----|
-|Actions in ForEach|1|You can add nested workflows to extend this as needed|
-|Actions per workflow|60|You can add nested workflows to extend this as needed|
-|Allowed action nesting depth|5|You can add nested workflows to extend this as needed|
-|Flows per region per subscription|1000||
-|Triggers per workflow|10||
-|Max characters per expression|8,192||
-|Max `trackedProperties` size in characters|16,000|
-|`action`/`trigger` name limit|80||
-|`description` length limit|256||
-|`parameters` limit|50||
-|`outputs` limit|10||
+|ForEach でのアクション数|1|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
+|ワークフローごとのアクション数|60|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
+|アクションの入れ子に許容される深さ|5|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
+|サブスクリプションごとの 1 リージョンあたりのフロー数|1,000||
+|ワークフローごとのトリガー数|10||
+|式ごとの最大文字数|8,192||
+|最大 `trackedProperties` サイズ (文字数)|16,000|
+|`action`/`trigger` 名の制限|80||
+|`description` の長さの制限|256||
+|`parameters` の制限|50||
+|`outputs` の制限|10||
 
-## <a name="configuration"></a>Configuration
+## 構成
 
-### <a name="ip-address"></a>IP Address
+### IP アドレス
 
-Calls made from a [connector](../connectors/apis-list.md) will come from the IP Address specified below.
+[コネクタ](../connectors/apis-list.md)から実行される呼び出しは、以下に示した IP アドレスが発信元となります。
 
-Calls made from a logic app directly (i.e. via [HTTP](../connectors/connectors-native-http.md) or [HTTP + Swagger](../connectors/connectors-native-http-swagger.md)) may come from any of the [Azure Datacenter IP Ranges](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
+ロジック アプリから直接 ([HTTP](../connectors/connectors-native-http.md) または [HTTP + Swagger](../connectors/connectors-native-http-swagger.md) を介して) 実行される呼び出しは、[Azure データセンターの IP 範囲](https://www.microsoft.com/ja-JP/download/details.aspx?id=41653)に該当するいずれかのアドレスが発信元となります。
 
-|Logic App Region|Outbound IP|
+|ロジック アプリのリージョン|送信 IP|
 |-----|----|
-|Australia East|40.126.251.213|
-|Australia Southeast|40.127.80.34|
-|Brazil South|191.232.38.129|
-|Central India|104.211.98.164|
-|Central US|40.122.49.51|
-|East Asia|23.99.116.181|
-|East US|191.237.41.52|
-|East US 2|104.208.233.100|
-|Japan East|40.115.186.96|
-|Japan West|40.74.130.77|
-|North Central US|65.52.218.230|
-|North Europe|104.45.93.9|
-|South Central US|104.214.70.191|
-|Southeast Asia|13.76.231.68|
-|South India|104.211.227.225|
-|West Europe|40.115.50.13|
-|West India|104.211.161.203|
-|West US|104.40.51.248|
+|オーストラリア東部|40\.126.251.213|
+|オーストラリア南東部|40\.127.80.34|
+|ブラジル南部|191\.232.38.129|
+|インド中部|104\.211.98.164|
+|米国中央部|40\.122.49.51|
+|東アジア|23\.99.116.181|
+|米国東部|191\.237.41.52|
+|米国東部 2|104\.208.233.100|
+|東日本|40\.115.186.96|
+|西日本|40\.74.130.77|
+|米国中北部|65\.52.218.230|
+|北ヨーロッパ|104\.45.93.9|
+|米国中南部|104\.214.70.191|
+|東南アジア|13\.76.231.68|
+|インド南部|104\.211.227.225|
+|西ヨーロッパ|40\.115.50.13|
+|インド西部|104\.211.161.203|
+|米国西部|104\.40.51.248|
 
 
-## <a name="next-steps"></a>Next Steps  
+## 次のステップ  
 
-- To get started with Logic Apps, follow the [create a Logic App](app-service-logic-create-a-logic-app.md) tutorial.  
-- [View common examples and scenarios](app-service-logic-examples-and-scenarios.md)
-- [You can automate business processes with Logic Apps](http://channel9.msdn.com/Events/Build/2016/T694) 
-- [Learn How to Integrate your systems with Logic Apps](http://channel9.msdn.com/Events/Build/2016/P462)
+- Logic Apps の使用を開始するには、[ロジック アプリの作成](app-service-logic-create-a-logic-app.md)に関するページのチュートリアルに従ってください。
+- [一般的な例とシナリオを確認する](app-service-logic-examples-and-scenarios.md)
+- [Logic Apps を使用してビジネス プロセスを自動化する](http://channel9.msdn.com/Events/Build/2016/T694)
+- [Logic Apps を使用してシステムを統合する方法を説明する](http://channel9.msdn.com/Events/Build/2016/P462)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

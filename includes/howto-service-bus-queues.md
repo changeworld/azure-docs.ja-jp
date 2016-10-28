@@ -1,68 +1,63 @@
-## <a name="what-are-service-bus-queues?"></a>What are Service Bus queues?
+## Service Bus キューとは
 
-Service Bus queues support a **brokered messaging** communication model. When using queues, components of a distributed application do not communicate directly with each other; instead they exchange messages via a queue, which acts as an intermediary (broker). A message producer (sender) hands off a message to the queue and then continues its processing. Asynchronously, a message consumer (receiver) pulls the message from the queue and processes it. The producer does not have to wait for a reply from the consumer in order to continue to process and send further messages. Queues offer **First In, First Out (FIFO)** message delivery to one or more competing consumers. That is, messages are typically received and processed by the receivers in the order in which they were added to the queue, and each message is received and processed by only one message consumer.
+Service Bus キューは、**ブローカー メッセージング**通信モデルをサポートしています。キューを使用すると、分散アプリケーションのコンポーネントが互いに直接通信することがなくなり、仲介者 (ブローカー) の役割を果たすキューを介してメッセージをやり取りすることになります。メッセージ プロデューサー (送信者) はキューにメッセージを送信した後で、それまでの処理を引き続き実行します。メッセージ コンシューマー (受信者) は、キューからメッセージを非同期に受信して処理します。メッセージ プロデューサーは、それ以降のメッセージの処理と送信を続ける場合、メッセージ コンシューマーからの応答を待つ必要がありません。キューでは、コンシューマーが競合している場合のメッセージ配信に**先入先出法 (FIFO)** を使用します。つまり、通常はキューに追加された順番にメッセージが受信され、処理されます。このとき、メッセージを受信して処理できるメッセージ コンシューマーは、メッセージ 1 件につき 1 つだけです。
 
 ![QueueConcepts](./media/howto-service-bus-queues/sb-queues-08.png)
 
-Service Bus queues are a general-purpose technology that can be used for a wide variety of scenarios:
+Service Bus キューは汎用テクノロジであり、幅広いシナリオで使用できます。
 
--   Communication between web and worker roles in a multi-tier Azure application.
--   Communication between on-premises apps and Azure-hosted apps in a hybrid solution.
--   Communication between components of a distributed application running on-premises in different organizations or departments of an organization.
+-   多層 Azure アプリケーションでの Web ロールと Worker ロールとの間の通信。
+-   ハイブリッド ソリューションでのオンプレミスのアプリと Azure によってホストされるアプリケーションとの間の通信。
+-   複数の組織で実行される分散アプリケーションまたは 1 つの組織内の異なる部署でオンプレミスで実行される分散アプリケーションのコンポーネント間の通信。
 
-Using queues enables you to scale your applications more easily, and enable more resiliency to your architecture.
+キューを使用すると、アプリケーションのスケールがより簡単になり、アーキテクチャの復元性が高まります。
 
-## <a name="create-a-service-namespace"></a>Create a service namespace
+## サービス名前空間の作成
 
-To begin using Service Bus queues in Azure, you must first create a service namespace. A namespace provides a scoping container for addressing Service Bus resources within your application.
+Azure の Service Bus キューを使用するには、最初にサービス名前空間を作成する必要があります。名前空間は、アプリケーション内で Service Bus リソースをアドレス指定するためのスコープ コンテナーを提供します。
 
-To create a namespace:
+名前空間を作成するには:
 
-1.  Log on to the [Azure classic portal][].
+1.  [Azure クラシック ポータル][]にログオンします。
 
-2.  In the left navigation pane of the portal, click **Service Bus**.
+2.  ポータルの左のナビゲーション ウィンドウで、**[Service Bus]** をクリックします。
 
-3.  In the lower pane of the portal, click **Create**.
-    ![](./media/howto-service-bus-queues/sb-queues-03.png)
+3.  ポータルの下のウィンドウで、**[作成]** をクリックします。
+	![](./media/howto-service-bus-queues/sb-queues-03.png)
 
-4.  In the **Add a new namespace** dialog, enter a namespace name. The system immediately checks to see if the name is available.   
-    ![](./media/howto-service-bus-queues/sb-queues-04.png)
+4.  **[新しい名前空間を追加する]** ダイアログで、名前空間の名前を入力します。その名前が使用できるかどうかがすぐに自動で確認されます。
+	![](./media/howto-service-bus-queues/sb-queues-04.png)
 
-5.  After making sure the namespace name is available, choose the country or region in which your namespace should be hosted (make sure you use the same country/region in which you are deploying your compute resources).
+5.  入力した名前空間の名前が利用できることを確認できたら、名前空間をホストする国またはリージョンを選択します (コンピューティング リソースを展開する国またはリージョンと同じ国またはリージョンを必ず使用してください)。
 
-     > [AZURE.IMPORTANT] Pick the **same region** that you intend to choose for deploying your application. This will give you the best performance.
+	 >[AZURE.IMPORTANT] アプリケーションをデプロイする予定の国またはリージョンと**同じ国/リージョン**を選択してください。そうすることで、パフォーマンスが最高になります。
 
-6.  Leave the other fields in the dialog with their default values (**Messaging** and **Standard Tier**), then click the OK check mark. The system now creates your namespace and enables it. You might have to wait several minutes as the system provisions resources for your account.
+6. 	ダイアログ ボックスの他のフィールドは、既定値 (**[メッセージング]** と **[標準階層]**) のままにして、[OK] チェック マークをクリックします。これで、システムによってサービス名前空間が作成され、有効になります。システムがアカウントのリソースを準備し 終わるまでに、数分間かかる場合があります。
 
-    ![](./media/howto-service-bus-queues/getting-started-multi-tier-27.png)
+	![](./media/howto-service-bus-queues/getting-started-multi-tier-27.png)
 
-The namespace you created takes a moment to activate, and will then appear in the portal. Wait until the namespace status is **Active** before continuing.
+作成した名前空間はアクティブになるまで少し時間がかかります。その後、ポータルに表示されます。名前空間のステータスが **[アクティブ]** になるのを待ってから、次に進みます。
 
-## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>Obtain the default management credentials for the namespace
+## 名前空間の既定の管理資格情報の取得
 
-In order to perform management operations, such as creating a queue on the new namespace, you must obtain the management credentials for the namespace. You can obtain these credentials from the [Azure classic portal][].
+新規作成した名前空間に対してキューの作成などの管理操作を実行するには、名前空間の管理資格情報を取得する必要があります。これらの資格情報は [Azure クラシック ポータル][]から取得できます。
 
-###<a name="to-obtain-management-credentials-from-the-portal"></a>To obtain management credentials from the portal
+###ポータルから管理資格情報を取得するには
 
-1.  In the left navigation pane, click the **Service Bus** node, to display the list of available namespaces:   
-    ![](./media/howto-service-bus-queues/sb-queues-13.png)
+1.  左側のナビゲーション ウィンドウで **[Service Bus]** ノードをクリックして、利用可能な名前空間の一覧を表示します。
+	![](./media/howto-service-bus-queues/sb-queues-13.png)
 
-2.  Select the namespace you just created from the list shown:   
-    ![](./media/howto-service-bus-queues/sb-queues-09.png)
+2.  表示された一覧から先ほど作成した名前空間を選択します。 
+	![](./media/howto-service-bus-queues/sb-queues-09.png)
 
-3.  Click **Connection Information**.   
-    ![](./media/howto-service-bus-queues/sb-queues-06.png)
+3.  **[接続情報]** をクリックします。
+	![](./media/howto-service-bus-queues/sb-queues-06.png)
 
-4.  In the **Access connection information** pane, find the connection string that contains the SAS key and key name.   
+4.  **[接続情報へのアクセス]** ウィンドウで、SAS キーとキー名を含む接続文字列を見つけます。
 
-    ![](./media/howto-service-bus-queues/multi-web-45.png)
+	![](./media/howto-service-bus-queues/multi-web-45.png)
     
-5.  Make a note of the key, or copy it to the clipboard.
+5.  キーを書き留めておくか、クリップボードにコピーしておいてください。
 
-  [Azure classic portal]: http://manage.windowsazure.com
-
-
-
-<!--HONumber=Oct16_HO2-->
-
+  [Azure クラシック ポータル]: http://manage.windowsazure.com
 

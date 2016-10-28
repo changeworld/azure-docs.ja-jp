@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Deploy resources with REST API and template | Microsoft Azure"
-   description="Use Azure Resource Manager and Resource Manager REST API to deploy a resources to Azure. The resources are defined in a Resource Manager template."
+   pageTitle="REST API とテンプレートを使用してリソースをデプロイする |Microsoft Azure"
+   description="Azure Resource Manager と Resource Manager REST API を使用してリソースを Azure にデプロイします。リソースは Resource Manager テンプレートで定義されます。"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="tfitzmac"
@@ -16,29 +16,28 @@
    ms.date="07/11/2016"
    ms.author="tomfitz"/>
 
-
-# <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Deploy resources with Resource Manager templates and Resource Manager REST API
+# Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-template-deploy.md)
 - [Azure CLI](resource-group-template-deploy-cli.md)
-- [Portal](resource-group-template-deploy-portal.md)
+- [ポータル](resource-group-template-deploy-portal.md)
 - [REST API](resource-group-template-deploy-rest.md)
 
-This article explains how to use the Resource Manager REST API with Resource Manager templates to deploy your resources to Azure.  
+この記事では、Resource Manager REST API と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明します。
 
-> [AZURE.TIP] For help with debugging an error during deployment, see:
+> [AZURE.TIP] デプロイ時のエラーのデバッグについては、以下を参照してください。
 >
-> - [View deployment operations with REST API](resource-manager-troubleshoot-deployments-rest.md) to learn about getting information that helps you troubleshoot your error
-> - [Troubleshoot common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md) to learn how to resolve common deployment errors
+> - エラーのトラブルシューティングに役立つ情報を入手するためには、[REST API を使用したデプロイ操作の表示](resource-manager-troubleshoot-deployments-rest.md)に関するページを参照してください。
+> - 一般的なデプロイ エラーを解決するためには、「[Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーをトラブルシューティングする](resource-manager-common-deployment-errors.md)」
 
-Your template can be either a local file or an external file that is available through a URI. When your template resides in a storage account, you can restrict access to the template and provide a shared access signature (SAS) token during deployment.
+テンプレートは、ローカル ファイルまたは URI を通じて利用できる外部ファイルのいずれも使用できます。テンプレートがストレージ アカウントに存在する場合は、テンプレートへのアクセスを制限し、デプロイ時に Shared Access Signature (SAS) トークンを設定できます。
 
 [AZURE.INCLUDE [resource-manager-deployments](../includes/resource-manager-deployments.md)]
 
-## <a name="deploy-with-the-rest-api"></a>Deploy with the REST API
-1. Set [common parameters and headers](https://msdn.microsoft.com/library/azure/8d088ecc-26eb-42e9-8acc-fe929ed33563#bk_common), including authentication tokens.
-2. If you do not have an existing resource group, create a resource group. Provide your subscription id, the name of the new resource group, and location that you need for your solution. For more information, see [Create a resource group](https://msdn.microsoft.com/library/azure/dn790525.aspx).
+## REST API でデプロイする
+1. [一般的なパラメーターおよびヘッダー](https://msdn.microsoft.com/library/azure/8d088ecc-26eb-42e9-8acc-fe929ed33563#bk_common) (認証トークンを含む) を設定します。
+2. 既存のリソース グループがない場合は、リソース グループを作成します。ソリューションに必要なサブスクリプション ID、新しいリソース グループの名前、場所を指定します。詳細については、「[リソース グループの作成](https://msdn.microsoft.com/library/azure/dn790525.aspx)」を参照してください。
 
         PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>?api-version=2015-01-01
           <common headers>
@@ -49,9 +48,9 @@ Your template can be either a local file or an external file that is available t
             }
           }
    
-3. Validate your deployment before executing it by running the [Validate a template deployment](https://msdn.microsoft.com/library/azure/dn790547.aspx) operation. When testing the deployment, provide parameters exactly as you would when executing the deployment (shown in the next step).
+3. [テンプレート デプロイを検証する](https://msdn.microsoft.com/library/azure/dn790547.aspx)操作を実行して、デプロイを実行する前に検証します。デプロイをテストする場合、(次の手順で示すように) デプロイの実行時に必要なパラメーターを正確に指定します。
 
-3. Create a deployment. Provide your subscription id, the name of the resource group to deploy, the name of the deployment, and a link to your template. For information about the template file, see [Parameter file](#parameter-file). For more information about the REST API to create a resource group, see [Create a template deployment](https://msdn.microsoft.com/library/azure/dn790564.aspx). Notice the **mode** is set to **Incremental**. To run a complete deployment, set **mode** to **Complete**. Be careful when using the complete mode as you can inadvertently delete resources that are not in your template.
+3. デプロイを作成します。サブスクリプション ID、デプロイするリソース グループの名前、デプロイの名前、テンプレートへのリンクを指定します。テンプレート ファイルについては、「[パラメーター ファイル](./#parameter-file)」を参照してください。リソース グループを作成する REST API の詳細については、「[テンプレートのデプロイを作成する](https://msdn.microsoft.com/library/azure/dn790564.aspx)」を参照してください。**[モード]** が **[増分]** に設定されていることに注意してください。完全デプロイメントを実行するには、**[モード]** を **[完全]** に設定します。テンプレートにないリソースを誤って削除する可能性があるため、完全モードを使用する際は注意してください。
     
         PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
           <common headers>
@@ -69,29 +68,25 @@ Your template can be either a local file or an external file that is available t
             }
           }
    
-      If you want to log response content, request content, or both, include **debugSetting** in the request.
+      応答の内容、要求の内容、またはその両方を記録するには、要求に **debugSetting** を含めます。
 
         "debugSetting": {
           "detailLevel": "requestContent, responseContent"
         }
 
-      You can set up your storage account to use a shared access signature (SAS) token. For more information, see [Delegating Access with a Shared Access Signature](https://msdn.microsoft.com/library/ee395415.aspx).
+      ストレージ アカウントを設定して、Shared Access Signature (SAS) トークンを使用することができます。詳細については、「[Delegating Access with a Shared Access Signature (Shared Access Signature を使用したアクセスの委任)](https://msdn.microsoft.com/library/ee395415.aspx)」を参照してください。
 
-4. Get the status of the template deployment. For more information, see [Get information about a template deployment](https://msdn.microsoft.com/library/azure/dn790565.aspx).
+4. テンプレートのデプロイの状態を取得します。詳細については、「[テンプレートのデプロイに関する情報を取得](https://msdn.microsoft.com/library/azure/dn790565.aspx)」を参照してください。
 
           GET https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2015-01-01
            <common headers>
 
 [AZURE.INCLUDE [resource-manager-parameter-file](../includes/resource-manager-parameter-file.md)]
 
-## <a name="next-steps"></a>Next steps
-- For an example of deploying resources through the .NET client library, see [Deploy resources using .NET libraries and a template](virtual-machines/virtual-machines-windows-csharp-template.md).
-- To define parameters in template, see [Authoring templates](resource-group-authoring-templates.md#parameters).
-- For guidance on deploying your solution to different environments, see [Development and test environments in Microsoft Azure](solution-dev-test-environments.md).
-- For details about using a KeyVault reference to pass secure values, see [Pass secure values during deployment](resource-manager-keyvault-parameter.md).
+## 次のステップ
+- .NET クライアント ライブラリを使用したリソースのデプロイの例については、[.NET ライブラリとテンプレートを使用したリソースのデプロイ](virtual-machines/virtual-machines-windows-csharp-template.md)に関する記事を参照してください。
+- テンプレートのパラメーターの定義については、[テンプレートの作成](resource-group-authoring-templates.md#parameters)に関する記事を参照してください。
+- ソリューションを別の環境にデプロイする方法については、「[Microsoft Azure の開発環境とテスト環境](solution-dev-test-environments.md)」を参照してください。
+- セキュリティで保護された値を渡す KeyVault 参照を使用する方法については、「[デプロイメント時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

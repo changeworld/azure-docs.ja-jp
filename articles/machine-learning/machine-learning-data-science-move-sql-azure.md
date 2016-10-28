@@ -1,97 +1,88 @@
 <properties 
-    pageTitle="Move data to an Azure SQL Database for Azure Machine Learning | Azure" 
-    description="Create SQL Table and load data to SQL Table" 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="bradsev"
-    manager="jhubbard"
-    editor="cgronlun" />
+	pageTitle="Azure Machine Learning 用にデータを Azure SQL Database に移動する | Azure" 
+	description="SQL テーブルを作成して SQL テーブルにデータを読み込みます" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="bradsev"
+	manager="jhubbard"
+	editor="cgronlun" />
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/14/2016"
-    ms.author="bradsev" /> 
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/14/2016"
+	ms.author="bradsev" />
 
+# Azure Machine Learning 用にデータを Azure SQL Database に移動する
 
-# <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Move data to an Azure SQL Database for Azure Machine Learning
+このトピックでは、フラット ファイル (CSV 形式または TSV 形式) のデータまたはオンプレミスの SQL Server に格納されているデータを、Azure SQL Database に移動するためのオプションについて説明します。このクラウドへのデータ移動タスクは、Team Data Science Process の一部です。
 
-This topic outlines the options for moving data either from flat files (CSV or TSV formats) or from data stored in an on-premise SQL Server to an Azure SQL database. These tasks for moving data to the cloud are part of the Team Data Science Process.
+Machine Learning 用にオンプレミスの SQL Server にデータを移動するためのオプションについては、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」をご覧ください。
 
-For a topic that outlines the options for moving data to an on-premise SQL Server for Machine Learning, see [Move data to SQL Server on an Azure virtual machine](machine-learning-data-science-move-sql-server-virtual-machine.md).
-
-The following **menu** links to topics that describe how to ingest data into target environments where the data can be stored and processed during the Team Data Science Process (TDSP).
+次の**メニュー**は、Team Data Science Process (TDSP) でデータを保存および処理できるターゲット環境にデータを取り込む方法について説明するトピックにリンクしています。
 
 [AZURE.INCLUDE [cap-ingest-data-selector](../../includes/cap-ingest-data-selector.md)]
 
-The following table summarizes the options for moving data to an Azure SQL Database.
+次の表は、Azure SQL Database にデータを移動するためのオプションをまとめたものです。
 
-<b>SOURCE</b> |<b>DESTINATION: Azure SQL Database</b> |
+<b>ソース</b> |<b>移動先: Azure SQL Database</b> |
 -------------- |--------------------------------|
-<b>Flat file (CSV or TSV formatted)</b> |<a href="#bulk-insert-sql-query">Bulk Insert SQL Query |
-<b>On-premise SQL Server</b> | 1. <a href="#export-flat-file">Export to Flat File<br> 2. <a href="#insert-tables-bcp">SQL Database Migration Wizard<br> 3. <a href="#db-migration">Database back up and restore<br> 4. <a href="#adf">Azure Data Factory |
+<b>フラット ファイル (CSV または TSV 形式)</b> |<a href="#bulk-insert-sql-query">一括挿入 SQL クエリ |
+<b>オンプレミスの SQL Server</b> | 1\.<a href="#export-flat-file">フラット ファイルへのエクスポート<br> 2.<a href="#insert-tables-bcp">SQL Database 移行ウィザード<br> 3.<a href="#db-migration">データベースのバックアップと復元<br> 4.<a href="#adf">Azure Data Factory |
 
 
-## <a name="<a-name="prereqs"></a>prerequisites"></a><a name="prereqs"></a>Prerequisites
-The procedures outlined here require that you have:
+## <a name="prereqs"></a>前提条件
+ここに記載されている手順には次のものが必要です。
 
-* An **Azure subscription**. If you do not have a subscription, you can sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
-* An **Azure storage account**. You use an Azure storage account for storing the data in this tutorial. If you don't have an Azure storage account, see the [Create a storage account](storage-create-storage-account.md#create-a-storage-account) article. After you have created the storage account, you need to obtain the account key used to access the storage. See [View, copy and regenerate storage access keys](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys).
-* Access to an **Azure SQL Database**. If you must set up an Azure SQL Database, [Getting Started with Microsoft Azure SQL Database](../sql-database/sql-database-get-started.md) provides information on how to provision a new instance of an Azure SQL Database.
-* Installed and configured **Azure PowerShell** locally. For instructions, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
+* **Azure サブスクリプション**。サブスクリプションがない場合は、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* **Azure ストレージ アカウント**。このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」を参照してください。ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。「[ストレージ アクセス キーの表示、コピーおよび再生成](storage-create-storage-account.md#view-copy-and-regenerate-storage-access-keys)」を参照してください。
+* **Azure SQL Database** へのアクセス権。Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、[Microsoft Azure SQL Database の概要](../sql-database/sql-database-get-started.md)に関する記事をご覧ください。
+* **Azure PowerShell** がローカルにインストールされ構成されていること。手順については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
 
-**Data**: The migration processes are demonstrated using the [NYC Taxi dataset](http://chriswhong.com/open-data/foil_nyc_taxi/). The NYC Taxi dataset contains information on trip data and fairs and is available, as noted that post, on Azure blob storage: [NYC Taxi Data](http://www.andresmh.com/nyctaxitrips/). A sample and description of these files are provided in [NYC Taxi Trips Dataset Description](machine-learning-data-science-process-sql-walkthrough.md#dataset).
+**データ**: 移行プロセスは、[NYC タクシー データセット](http://chriswhong.com/open-data/foil_nyc_taxi/)を使用して説明されています。NYC タクシー データセットには乗車データと料金についての情報が含まれています。投稿で説明されているように、NYC タクシー データセットは Azure BLOB ストレージの [NYC タクシー データ](http://www.andresmh.com/nyctaxitrips/)で入手できます。これらのファイルのサンプルと説明については、「[NYC タクシー乗車データセットの説明](machine-learning-data-science-process-sql-walkthrough.md#dataset)」をご覧ください。
  
-You can either adapt the procedures described here to a set of your own data or follow the steps as described by using the NYC Taxi dataset. To upload the NYC Taxi dataset into your on-premise SQL Server database, follow the procedure outlined in [Bulk Import Data into SQL Server Database](machine-learning-data-science-process-sql-walkthrough.md#dbload). These instructions are for a SQL Server on an Azure Virtual Machine, but the procedure for uploading to the on-premise SQL Server is the same.
+ここで説明されている手順は、自身のデータに適用することも、NYC タクシー データセットを使用してこの手順に従って行うこともできます。NYC タクシー データセットを自身のオンプレミス SQL Server データベースにアップロードするには、「[SQL Server データベースにデータを一括インポートする](machine-learning-data-science-process-sql-walkthrough.md#dbload)」に記載されている手順に従います。これらは Azure Virtual Machine 上の SQL Server にアップロードする手順ですが、オンプレミスの SQL Server へのアップロード手順も同じです。
 
 
-## <a name="<a-name="file-to-azure-sql-database"></a>-moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> Moving data from a flat file source to an Azure SQL database
+## <a name="file-to-azure-sql-database"></a>フラット ファイル ソースから Azure SQL Database へのデータの移動
 
-Data in flat files (CSV or TSV formatted) can be moved to an Azure SQL database using a Bulk Insert SQL Query.
+フラット ファイル (CSV 形式または TSV 形式) のデータは、一括挿入 SQL クエリを使用して Azure SQL Database に移動できます。
 
-### <a name="<a-name="bulk-insert-sql-query"></a>-bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> Bulk Insert SQL Query
+### <a name="bulk-insert-sql-query"></a>一括挿入 SQL クエリ
 
-The steps for the procedure using the Bulk Insert SQL Query are similar to those covered in the sections for moving data from a flat file source to SQL Server on an Azure VM. For details, see [Bulk Insert SQL Query](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery).
+一括挿入 SQL クエリを使用する手順は、フラット ファイル ソースから Azure VM 上の SQL Server にデータを移動する手順と似ています。詳細については、「[一括挿入 SQL クエリ](machine-learning-data-science-move-sql-server-virtual-machine.md#insert-tables-bulkquery)」をご覧ください。
 
 
-##<a name="<a-name="sql-on-prem-to-sazure-sql-database"></a>-moving-data-from-on-premise-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> Moving Data from on-premise SQL Server to an Azure SQL database
+##<a name="sql-on-prem-to-sazure-sql-database"></a>オンプレミスの SQL Server から Azure SQL Database へのデータの移動
 
-If the source data is stored in an on-premise SQL Server, there are various possibilities for moving the data to an Azure SQL database:
+ソース データがオンプレミスの SQL Server に保存されている場合は、さまざまな方法で Azure SQL Database にデータを移動できます。
 
-1. [Export to Flat File](#export-flat-file) 
-2. [SQL Database Migration Wizard](#insert-tables-bcp)
-3. [Database back up and restore](#db-migration)
+1. [フラット ファイルへのエクスポート](#export-flat-file)
+2. [SQL Database 移行ウィザード](#insert-tables-bcp)
+3. [データベースのバックアップと復元](#db-migration)
 4. [Azure Data Factory](#adf)
 
-The steps for the first three are very similar to those sections in [Move data to SQL Server on an Azure virtual machine](machine-learning-data-science-move-sql-server-virtual-machine.md) that cover these same procedures. Links to the appropriate sections in that topic are provided in the following instructions.
+最初の 3 つの手順は、「[Azure Virtual Machine 上の SQL Server にデータを移動する](machine-learning-data-science-move-sql-server-virtual-machine.md)」の対応する手順とよく似ています。以降の説明には、そのトピックの該当するセクションへのリンクが含まれています。
 
-###<a name="<a-name="export-flat-file"></a>export-to-flat-file"></a><a name="export-flat-file"></a>Export to Flat File
+###<a name="export-flat-file"></a>フラット ファイルへのエクスポート
 
-The steps for this exporting to a flat file are similar to those covered in [Export to Flat File](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file).
+フラット ファイルにエクスポートする手順は、「[フラット ファイルへのエクスポート](machine-learning-data-science-move-sql-server-virtual-machine.md#export-flat-file)」の手順と似ています。
 
-###<a name="<a-name="insert-tables-bcp"></a>sql-database-migration-wizard"></a><a name="insert-tables-bcp"></a>SQL Database Migration Wizard
+###<a name="insert-tables-bcp"></a>SQL Database 移行ウィザード
 
-The steps for using the SQL Database Migration Wizard are similar to those covered in [SQL Database Migration Wizard](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration).
+SQL Database 移行ウィザードを使用する手順は、「[SQL Database 移行ウィザード](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-migration)」の手順と似ています。
 
-###<a name="<a-name="db-migration"></a>database-back-up-and-restore"></a><a name="db-migration"></a>Database back up and restore
+###<a name="db-migration"></a>データベースのバックアップと復元
 
-The steps for using database back up and restore are similar to those covered in [Database back up and restore](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-backup).
+データベースのバックアップと復元を使用する手順は、「[データベースのバックアップと復元](machine-learning-data-science-move-sql-server-virtual-machine.md#sql-backup)」の手順と似ています。
 
-###<a name="<a-name="adf"></a>azure-data-factory"></a><a name="adf"></a>Azure Data Factory
+###<a name="adf"></a>Azure Data Factory
 
-The procedure for moving data to an Azure SQL database with Azure Data Factory (ADF) is provided in the topic [Move data from an on-premise SQL server to SQL Azure with Azure Data Factory](machine-learning-data-science-move-sql-azure-adf.md). This topic shows how to move data from an on-premise SQL Server database to an Azure SQL database via Azure Blob Storage using ADF. 
+Azure Data Factory (ADF) を使用して Azure SQL Database にデータを移動する手順は、「[Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する](machine-learning-data-science-move-sql-azure-adf.md)」に記載されています。このトピックでは、ADF を使用してオンプレミスの SQL Server データベースから Azure BLOB ストレージ経由で Azure SQL Database にデータを移動する方法が示されています。
 
-Consider using ADF when data needs to be continually migrated in a hybrid scenario that accesses both on-premise and cloud resources, and when the data is transacted or needs to be modified or have business logic added to it when being migrated. ADF allows for the scheduling and monitoring of jobs using simple JSON scripts that manage the movement of data on a periodic basis. ADF also has other capabilities such as support for complex operations.
+オンプレミスとクラウドの両方のリソースにアクセスするハイブリッド シナリオで、データを継続的に移行する必要がある場合、移行時にデータを処理する場合、移行時にデータを変更したり、ビジネス ロジックを追加したりする必要がある場合には、ADF の使用を検討してください。ADF では、定期的にデータの移動を管理するシンプルな JSON スクリプトを使用して、ジョブのスケジュールと監視ができます。ADF には他にも、複雑な操作のサポートなどの機能があります。
 
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

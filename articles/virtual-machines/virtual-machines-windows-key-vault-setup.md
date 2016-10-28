@@ -1,57 +1,56 @@
 <properties
-    pageTitle="Set up Key Vault for virtual machines in Azure Resource Manager | Microsoft Azure"
-    description="How to set up Key Vault for use with an Azure Resource Manager virtual machine."
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="singhkays"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Azure Resource Manager の仮想マシンに Key Vault を設定する | Microsoft Azure"
+	description="Azure Resource Manager の仮想マシンと共に使用するために Key Vault を設定する方法"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="singhkays"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="05/31/2016"
-    ms.author="singhkay"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="05/31/2016"
+	ms.author="singhkay"/>
 
+# Azure Resource Manager の仮想マシンの Key Vault を設定する
 
-# <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Set up Key Vault for virtual machines in Azure Resource Manager
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model
-
-In Azure Resource Manager stack, secrets/certificates are modeled as resources that are provided by the resource provider of Key Vault. To learn more about Key Vault, see [What is Azure Key Vault?](../key-vault/key-vault-whatis.md)
+Azure Resource Manager スタックでは、Key Vault のリソース プロバイダーにより提供されるリソースとしてシークレット/証明書がモデル化されます。Key Vault の詳細については、「[Azure Key Vault とは](../key-vault/key-vault-whatis.md)」をご覧ください。
 
 >[AZURE.NOTE] 
 >
->1. In order for Key Vault to be used with Azure Resource Manager virtual machines, the **EnabledForDeployment** property on Key Vault must be set to true. You can do this in various clients.
+>1. Key Vault を Azure Resource Manager 仮想マシンと共に使用するには、Key Vault の **EnabledForDeployment** プロパティを True に設定する必要があります。この設定は、さまざまなクライアントで実行できます。
 >
->2. The Key Vault needs to be created in the same subscription and location as the Virtual Machine.
+>2. Key Vault は、仮想マシンと同じサブスクリプションと場所に作成する必要があります。
 
-## <a name="use-powershell-to-set-up-key-vault"></a>Use PowerShell to set up Key Vault
-To create a key vault by using PowerShell, see [Get started with Azure Key Vault](../key-vault/key-vault-get-started.md#vault).
+## PowerShell を使用して Key Vault を設定する
+PowerShell を使用して Key Vault を作成するには、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md#vault)」を参照してください。
 
-For new key vaults, you can use this PowerShell cmdlet:
+新しい Key Vault の場合は、次の PowerShell コマンドレットを使用することができます。
 
-    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+	New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
-For existing key vaults, you can use this PowerShell cmdlet:
+既存の Key Vault の場合は、次の PowerShell コマンドレットを使用することができます。
 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+	Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
-## <a name="us-cli-to-set-up-key-vault"></a>Us CLI to set up Key Vault
-To create a key vault by using the command-line interface (CLI), see [Manage Key Vault using CLI](../key-vault/key-vault-manage-with-cli.md#create-a-key-vault).
+## CLI を使用して Key Vault を設定する
+コマンド ライン インターフェイス (CLI) を使用して Key Vault を作成するには、「[CLI を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli.md#create-a-key-vault)」を参照してください。
 
-For CLI, you have to create the key vault before you assign the deployment policy. You can do this by using the following command:
+CLI の場合、デプロイ ポリシーを割り当てる前に、Key Vault を作成する必要があります。この処理には、次のコマンドを使用できます。
 
-    azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
+	azure keyvault set-policy ContosoKeyVault –enabled-for-deployment true
 
-## <a name="use-templates-to-set-up-key-vault"></a>Use templates to set up Key Vault
-While you use a template, you need to set the `enabledForDeployment` property to `true` for the Key Vault resource.
+## テンプレートを使用して Key Vault を設定する
+テンプレートを使用する場合、Key Vault リソースの `enabledForDeployment` プロパティを `true` に設定する必要があります。
 
-    {
+	{
       "type": "Microsoft.KeyVault/vaults",
       "name": "ContosoKeyVault",
       "apiVersion": "2015-06-01",
@@ -63,10 +62,6 @@ While you use a template, you need to set the `enabledForDeployment` property to
       }
     }
 
-For other options that you can configure when you create a key vault by using templates, see [Create a key vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/).
+テンプレートを使用して、Key Vault の作成時に構成できるその他のオプションについては、「[Create a Key Vault](https://azure.microsoft.com/documentation/templates/101-key-vault-create/)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

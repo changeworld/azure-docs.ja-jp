@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Mobile Engagement User Interface - Reach Criterion" 
-   description="Learn how to use targeting criteria to send push campaigns to a select subset of your users using Azure Mobile Engagement" 
+   pageTitle="Azure モバイル エンゲージメント ユーザー インターフェイス - Reach の条件" 
+   description="Azure モバイル エンゲージメントを使用して、ユーザーの選択したサブセットにプッシュ キャンペーンを送信する方法について説明します" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -17,71 +17,70 @@
    ms.author="piyushjo"/>
 
 
+# 対象条件を使用して、ユーザーの選択したサブセットにプッシュ キャンペーンを送信する方法
 
-# <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>How to use targeting criteria to send push campaigns to a select subset of your users
+[New Criteria (新しい条件)] ボタンを使用して特定の条件を指定することで対象ユーザーを絞り込む方法は、Azure モバイル エンゲージメントの最も重要な概念の 1 つであり、すべてのユーザーにプッシュ通知を送る代わりに、ユーザーに関連するプッシュ通知を送ることで反応を得やすくなります。標準的な条件に基づいて対象ユーザーを限定し、プッシュをシミュレートすることで、通知を受信するユーザー数を確認できます。
 
-Targeting your audience by specific criteria with the "New Criteria" button is one of the most powerful concepts in Azure Mobile Engagement that helps you send relevant push notifications that the customers will respond to instead of Spamming everyone. You can limit your audience based on standard criteria and simulate pushes to determine how many people will receive the notification.
+**関連項目:**
 
-**See also:**
+- [UI ドキュメント - Reach - 新しいのプッシュ キャンペーン][Link 27]
 
-- [UI Documentation - Reach - New Push Campaign][Link 27]
+## 対象ユーザーの条件には次のようなものを使用できます:
+- **テクニカル:** [分析] セクションおよび [監視] セクションに表示されるのと同一の技術情報に基づいて対象を絞り込むことができます。**関連項目：** [UI ドキュメント - 分析][Link 15]、[UI ドキュメント- 監視][Link 16]
+- **位置:** Geo-Fencing を用いた "Real time location reporting (リアルタイムの位置報告)" を使用するアプリケーションでは、Geo-Location を条件として使用して GPS の位置から対象ユーザーを設定できます。"大まかなエリアの位置報告" の呼び出しを使用して携帯電話の位置から対象ユーザーを決定することもできます ("Real time location reporting" と "大まかなエリアの位置報告" は、SDK からアクティブ化する必要があります)。**関連項目:**[「SDK ドキュメント - iOS - 統合][Link 5]、[SDK ドキュメント - Android - 統合][Link 5]
+- **Reach のフィードバック:** アナウンス、アンケート、データ プッシュからのリーチ フィードバックを通じて、過去のリーチ通知へのユーザーのフィードバックに基づいて対象ユーザーを設定できます。この方法は、初めてのキャンペーンよりも数回リーチ キャンペーンを行った後に使用することでより的確な対象ユーザーを絞り込むことができます。また、特定の過去のキャンペーンをすでに受信したユーザーにキャンペーンを送信しないよう設定すると、すでに同様のコンテンツの通知を受け取ったユーザーを除外できます。さらに、現在アクティブな特定のキャンペーンに含まれているユーザーを新しいプッシュから除外することもできます。**関連項目:** [UI ドキュメント - Reach - プッシュのコンテンツ][Link 29]
+- **インストールの追跡:** ユーザーがアプリをインストールした場所に基づいて情報を追跡できます。関連項目: UI ドキュメント - 設定**関連項目:** [UI ドキュメント - 設定][Link 20]
+- **ユーザー プロファイル:** 標準のユーザー情報に基づいたターゲティングや、作成したカスタムのアプリ情報に基づいたターゲティングもできます。これには、過去のキャンペーンへの反応だけでなく、現在ログインしているユーザーと、特定の質問に応答したユーザーが含まれます。アプリで定義したすべてのアプリ情報はこの一覧に表示されます。
+- セグメント： 複数の条件を含む特定のユーザー操作に基づいて作成したセグメントから対象ユーザーを設定することもできます。アプリで定義したすべてのセグメントはこの一覧に表示されます。**関連項目:** [UI ドキュメント - セグメント][Link 18]
+- **アプリ情報:** カスタムのアプリ情報タグを [Settings (設定)] で作成すると、ユーザーの挙動を追跡できます。**関連項目:** [UI ドキュメント - 設定][Link 20]
 
-## <a name="audience-criteria-can-include:"></a>Audience criteria can include:
-- **Technicals: ** You can target based on the same technical information you can see in the Analytics and Monitor sections. **See also:** [UI Documentation - Analytics][Link 15],  [UI Documentation - Monitor][Link 16]
-- **Location:** Applications that use "Real time location reporting" with Geo-Fencing can use Geo-Location as a criteria to target an audience from the GPS location. "Lazy Area Location Reporting" call also be used to target an audience from the cell phone location ("Real time location reporting" and "Lazy Area Location Reporting" must be activated from the SDK). **See also:** [SDK Documentation - iOS -  Integration][Link 5], [SDK Documentation - Android -  Integration][Link 5]
-- **Reach Feedback:** You can target your audience based on their feedback from previous reach notifications through reach feedback from Announcements, Polls, and Data Pushes. This enables you to better target your audience after two or three reach campaigns than you could the first time. It can also be used to filter out users who already received a notification with similar content, by setting a campaign to NOT be sent to users who already received a specific previous campaign. You can even exclude users who are included a specific campaign that is still active from receiving new Pushes. **See also:** [UI Documentation -  Reach - Push Content][Link 29]
-- **Install Tracking:** You can track information based on where your users installed your App. **See also:** [UI Documentation -  Settings][Link 20]
-- **User Profile:** You can target based on standard user information and you can target based on the custom app info that you have created. This includes users who are currently logged in and users that have answered specific questions you have asked them to set in the app itself instead of just how they have responded to previous campaigns. All of your App Info's defined for your app show up on this list.
-- Segments: You can also target based on segments that you have created based on specific user behavior containing multiple criteria. All of your segments defined for your app show up on this list. **See also:** [UI Documentation -  Segments][Link 18]
-- **App Info:** Custom App Info Tags can be created from “Settings” to track user behavior. **See also:** [UI Documentation -  Settings][Link 20]
+## 例: 
+アプリ内購入の操作を行ったユーザーのみにアナウンスをプッシュする場合。
 
-## <a name="example:"></a>Example: 
-If you want to push an announcement only to the sub-set of your users that have performed an in-app purchase action.
-
-1. Go to your application settings page, select the "App info" menu and select "New app info"
-2. Register a new Boolean app info called "inAppPurchase"
-3. Make your application set this app info to "true" when the user successfully performs an in-app purchase (by using the sendAppInfo("inAppPurchase", ...) function)
-4. If you don't want to do this from your application, you can do it from your backend by using the device API)
-5. Then, you just need to create your announcement, with a criterion limiting your audience to users having "inAppPurchase" set to "true")
+1. アプリケーションの設定ページに移動し、[App Info (アプリ情報)] メニューを選択して [New app info (新しいアプリ情報)] を選択します。
+2. "inAppPurchase" という新しいブール型のアプリ情報を登録します。
+3. ユーザーが正常にアプリ内購入を実行したときにアプリケーションがこのアプリ情報を "true" に設定するようにします (sendAppInfo("inAppPurchase", ...) 関数を使用)。
+4. この操作をアプリケーションで行いたくない場合は、device API を使用してバックエンドで行うことができます。
+5. その後、アナウンスを作成して、"inAppPurchase" が "true" になっているユーザーのみを対象とする条件を付けます。
  
-> Note: Targeting based on criteria other than app info tags requires Azure Mobile Engagement to gather information from your users' devices before the push is sent and so can cause a delay. Complex push configuration options (like updating badges) can also delay pushes. Using a "one shot" campaign from the Push API is the absolute fastest push method in Azure Mobile Engagement. Using only app info tags as push criteria for a Reach campaign (either from the Reach API or the UI) is the next fastest method since app info tags are stored on the server side. Using other targeting criteria for a push campaign is the most flexible but slowest push method since Azure Mobile Engagement has to query the devices in order to send the campaign.
+> 注：アプリ情報のタグ以外の条件に基づいたターゲティングを行う場合は、プッシュの送信前に Azure モバイル エンゲージメントがユーザーのデバイスから情報を収集する必要があるため、送信に遅延が生じる場合があります。複雑なプッシュ構成のオプション (バッジのアップデートなど) の場合も、プッシュに遅延が生じる可能性があります。Push API から "ワンショット" キャンペーンを使用する方法が、Azure モバイル エンゲージメントで最もすばやくプッシュを送信できる方法です。その次にすばやく送信できる方法は、アプリ情報のタグのみをリーチ キャンペーンのプッシュ条件として使用する方法です。これは、アプリ情報のタグはサーバー側に保存されるためです。プッシュ キャンペーンにその他のターゲティング条件を使用する場合は、柔軟性は非常に高くなりますが、キャンペーンの送信に Azure モバイル エンゲージメントからデバイスをクエリする必要があるため、送信までに最も時間がかかる方法になります。
  
-![Reach-Criterion1][29] 
+![リーチ - Criterion1][29]
 
-## <a name="criterion-options-apply-to:"></a>Criterion Options Apply to:
-- **Technicals**     
-- Firmware name:    Firmware name
-- Firmware version:    Firmware version
-- Device model:    Device model
-- Device manufacturer:    Device manufacturer
-- Application version:    Application version
-- Carrier name:    Carrier name, undefined
-- Carrier country:    Carrier country, undefined
-- Network type:    Network type
-- Locale:    Locale
-- Screen size:    Screen size
-- **Location**      
-- Last known area:    Country, Region, Locality
-- Real time geo-fencing:    List of POIs (Name, Actions), Circular POI (Name, Latitude, Longitude, Radius in meters)
-- **Reach feedback**     
-- Announcement feedback:    Announcement, feedback
-- Poll feedback:    Poll, feedback
-- Poll answer feedback:    Poll answer feedback, question, choice
-- Data Push feedback:    Data Push, feedback
-- **Install Tracking**     
-- Store:    Store, Undefined
-- Source:    Source, Undefined
-- **User profile**     
-- Gender:    male or female, undefined
-- Birth date:    operator, date, undefined
-- Opt-in:    true or false, undefined
-- **App Info**      
-- String:    String, undefined
-- Date:    operator, date, undefined
-- Integer:    operator, number, undefined
-- Boolean:    true or false, undefined
-- **Segment**    
-- Name of Segments (from dropdown list), Exclusion (target users that are not a part of this segment).
+## 条件オプションの適用対象:
+- **テクニカル**
+- ファームウェア名: ファームウェアの名
+- ファームウェアのバージョン： ファームウェアのバージョン
+- デバイス モデル: デバイス モデル
+- デバイスの製造元: デバイスの製造元
+- アプリケーションのバージョン: アプリケーションのバージョン
+- 通信会社名： 通信会社名、未定義
+- 通信会社の国: 通信会社の国、未定義
+- ネットワークの種類: ネットワークの種類
+- ロケール: ロケール
+- 画面サイズ: 画面サイズ
+- **位置**
+- 最後に検出された場所: 国、地域、市区町村
+- リアルタイム ジオフェンシング： POI の一覧 (名前、操作内容)、円形 POI (名前、緯度、経度、半径メートル)
+- **Reach のフィードバック**
+- アナウンスのフィードバック: アナウンス、フィードバック
+- アンケートのフィードバック: アンケート、フィードバック
+- アンケートの回答のフィードバック：アンケートの回答のフィードバック、質問、選択
+- データ プッシュのフィードバック: データ プッシュ、フィードバック
+- **インストールの追跡**
+- ストア: ストア、未定義
+- ソース: ソース、未定義
+- **ユーザー プロファイル**
+- 性別: 男性、女性、未定義
+- 誕生日: 演算子、日付、未定義
+- オプトイン: true または false、未定義
+- **アプリ情報**
+- 文字列:文字列、未定義
+- Date： 演算子、日付、未定義
+- 整数: 演算子、数字、未定義
+- ブール値： true または false、未定義
+- **セグメント**
+- セグメントの名前 (ドロップダウン リストから)、除外リスト (セグメントに含まれない対象ユーザー)。
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -175,8 +174,4 @@ If you want to push an announcement only to the sub-set of your users that have 
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

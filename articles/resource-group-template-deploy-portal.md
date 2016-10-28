@@ -1,131 +1,121 @@
 <properties 
-    pageTitle="Use Azure portal to deploy Azure resources | Microsoft Azure" 
-    description="Use Azure portal and Azure Resource Manage to deploy your resources." 
-    services="azure-resource-manager,azure-portal" 
-    documentationCenter="" 
-    authors="tfitzmac" 
-    manager="timlt" 
-    editor="tysonn"/>
+	pageTitle="Azure ポータルを使用した Azure リソースのデプロイ | Microsoft Azure" 
+	description="Azure ポータルと Azure Resource Manager を使用して、リソースをデプロイします。" 
+	services="azure-resource-manager,azure-portal" 
+	documentationCenter="" 
+	authors="tfitzmac" 
+	manager="timlt" 
+	editor="tysonn"/>
 
 <tags 
-    ms.service="azure-resource-manager" 
-    ms.workload="multiple" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/15/2016" 
-    ms.author="tomfitz"/>
+	ms.service="azure-resource-manager" 
+	ms.workload="multiple" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/15/2016" 
+	ms.author="tomfitz"/>
 
-
-# <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal
+# Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
 > [AZURE.SELECTOR]
 - [PowerShell](resource-group-template-deploy.md)
 - [Azure CLI](resource-group-template-deploy-cli.md)
-- [Portal](resource-group-template-deploy-portal.md)
+- [ポータル](resource-group-template-deploy-portal.md)
 - [REST API](resource-group-template-deploy-rest.md)
 
-This topic shows how to use the [Azure portal](https://portal.azure.com) with [Azure Resource Manager](resource-group-overview.md) to deploy your Azure resources. To learn about managing your resources, see [Manage Azure resources through portal](./azure-portal/resource-group-portal.md).
+このトピックでは、[Azure ポータル](https://portal.azure.com)と [Azure Resource Manager](resource-group-overview.md) を使用して Azure リソースをデプロイする方法について説明します。リソース管理の詳細については、「[ポータルを使用した Azure リソースの管理](./azure-portal/resource-group-portal.md)」を参照してください。
 
-Currently, not every service supports the portal or Resource Manager. For those services, you need to use the [classic portal](https://manage.windowsazure.com). For the status of each service, see [Azure portal availability chart](https://azure.microsoft.com/features/azure-portal/availability/).
+現時点では、すべてのサービスでポータルまたはリソース マネージャーがサポートされているわけではありません。これらのサービスの場合、[クラシック ポータル](https://manage.windowsazure.com)を使用する必要があります。各サービスの状態については、「[Azure ポータルの可用性チャート](https://azure.microsoft.com/features/azure-portal/availability/)」を参照してください。
 
-## <a name="create-resource-group"></a>Create resource group
+## Create resource group
 
-1. To create an empty resource group, select **New** > **Management** > **Resource Group**.
+1. 空のリソース グループを作成するには、**[新規]**、**[管理]**、**[リソース グループ]** の順に選択します。
 
-    ![create empty resource group](./media/resource-group-template-deploy-portal/create-empty-group.png)
+    ![空のリソース グループの作成](./media/resource-group-template-deploy-portal/create-empty-group.png)
 
-2. Give it a name and location, and, if necessary, select a subscription. You need to provide a location for the resource group because the resource group stores metadata about the resources. For compliance reasons, you may want to specify where that metadata is stored. In general, we recommend that you specify a location where most of your resources will reside. Using the same location can simplify your template.
+2. 名前と場所を指定し、必要に応じてサブスクリプションを選択します。リソース グループにはリソースに関するメタデータが格納されるため、リソース グループの場所を入力する必要があります。場合によっては、コンプライアンス上の理由から、そのメタデータが格納される場所を指定する必要があります。一般に、ほとんどのリソースが存在する場所を指定することをお勧めします。同じ場所を使用することで、テンプレートを簡素化できます。
 
-    ![set group values](./media/resource-group-template-deploy-portal/set-group-properties.png)
+    ![グループの値の設定](./media/resource-group-template-deploy-portal/set-group-properties.png)
 
-## <a name="deploy-resources-from-marketplace"></a>Deploy resources from Marketplace
+## Marketplace からリソースをデプロイする
 
-After you create a resource group, you can deploy resources to it from the Marketplace. The Marketplace provides pre-defined solutions for common scenarios.
+リソース グループを作成したら、それに Marketplace からリソースをデプロイできます。Marketplace には、一般的なシナリオに対応する事前定義されたソリューションが用意されています。
 
-1. To start a deployment, select **New** and the type of resource you would like to deploy. Then, look for the particular version of the resource you would like to deploy.
+1. デプロイを開始するには、**[新規]** を選択し、デプロイするリソースの種類を選択します。次に、デプロイするリソースの特定のバージョンを探します。
 
     ![deploy resource](./media/resource-group-template-deploy-portal/deploy-resource.png)
 
-2. If you do not see the particular solution you would like to deploy, you can search the Marketplace for it.
+2. デプロイする特定のソリューションが表示されない場合は、Marketplace で検索できます。
 
     ![search marketplace](./media/resource-group-template-deploy-portal/search-resource.png)
 
-3. Depending on the type of selected resource, you have a collection of relevant properties to set before deployment. Those options are not shown here, as they vary based on resource type. For all types, you must select a destination resource group. The following image shows how to create a web app and deploy it to the resource group you created.
+3. 選択したリソースの種類によっては、デプロイ前に設定する必要がある、関連する一連のプロパティがあります。それらのオプションは、リソースの種類によって異なるため、ここでは説明しません。すべての種類で、対象リソース グループを選択する必要があります。次の画像は、Web アプリを作成し、先ほど作成したリソース グループにデプロイする方法を示しています。
 
-    ![create resource group](./media/resource-group-template-deploy-portal/select-existing-group.png)
+    ![リソースグループの作成](./media/resource-group-template-deploy-portal/select-existing-group.png)
 
-    Alternatively, you can decide to create a resource group when deploying your resources. Select **Create new** and give the resource group a name.
+    また、リソースをデプロイするときにリソース グループを作成することもできます。**[新規作成]** を選択して、リソース グループに名前を付けます。
 
-    ![create new resource group](./media/resource-group-template-deploy-portal/select-new-group.png)
+    ![新しいリソース グループの作成](./media/resource-group-template-deploy-portal/select-new-group.png)
 
-4. Your deployment begins. The deployment could take a few minutes. When the deployment has finished, you see a notification.
+4. デプロイが開始されます。デプロイには数分かかる場合があります。デプロイが完了すると、通知が表示されます。
 
     ![view notification](./media/resource-group-template-deploy-portal/view-notification.png)
 
-5. After deploying your resources, you can add more resources to the resource group by using the **Add** command on the resource group blade.
+5. リソースのデプロイ後、リソース グループのブレードにある **[追加]** コマンドを使用して、リソース グループにリソースを追加することができます。
 
-    ![add resource](./media/resource-group-template-deploy-portal/add-resource.png)
+    ![リソースの追加](./media/resource-group-template-deploy-portal/add-resource.png)
 
-## <a name="deploy-resources-from-custom-template"></a>Deploy resources from custom template
+## カスタム テンプレートからリソースをデプロイする
 
-If you want to execute a deployment but not use any of the templates in the Marketplace, you can create a customized template that defines the infrastructure for your solution. To learn about creating templates, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。テンプレートの作成の詳細については、「[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 
-1. To deploy a customized template through the portal, select **New**, and start searching for **Template Deployment** until you can select it from the options.
+1. ポータルからカスタマイズしたテンプレートをデプロイするには、**[新規]** を選択し、**[テンプレートのデプロイ]** を検索してオプションに表示します。
 
-    ![search template deployment](./media/resource-group-template-deploy-portal/search-template.png)
+    ![テンプレートのデプロイの検索](./media/resource-group-template-deploy-portal/search-template.png)
 
-2. Select **Template Deployment** from the available resources.
+2. 使用可能なリソースから **[テンプレートのデプロイ]** を選択します。
 
-    ![select template deployment](./media/resource-group-template-deploy-portal/select-template.png)
+    ![テンプレートのデプロイの選択](./media/resource-group-template-deploy-portal/select-template.png)
 
-3. After launching the template deployment, open the blank template that is available for customizing.
+3. テンプレートのデプロイを開始したら、カスタマイズに利用可能な空のテンプレートを開きます。
 
-    ![create template](./media/resource-group-template-deploy-portal/show-custom-template.png)
+    ![テンプレートの作成](./media/resource-group-template-deploy-portal/show-custom-template.png)
 
-    In the editor, add the JSON syntax that defines the resources you want to deploy. Select **Save** when done. For guidance on writing the JSON syntax, see [Resource Manager template walkthrough](resource-manager-template-walkthrough.md).
+    エディターで、デプロイするリソースを定義する JSON 構文を追加します。完了したら、**[保存]** を選択します。JSON 構文の作成に関するガイダンスについては、「[Resource Manager テンプレートのチュートリアル](resource-manager-template-walkthrough.md)」をご覧ください。
 
-    ![edit template](./media/resource-group-template-deploy-portal/edit-template.png)
+    ![テンプレートの編集](./media/resource-group-template-deploy-portal/edit-template.png)
 
-4. Or, you can select a pre-existing template from the [Azure quickstart templates](https://azure.microsoft.com/documentation/templates/). These templates are contributed by the community. They cover many common scenarios, and someone may have added a template that is similar to what you are trying to deploy. You can search the templates to find something that matches your scenario.
+4. あるいは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)から既存のテンプレートを選択できます。これらのテンプレートはコミュニティによって提供されています。さまざまな共通シナリオが取り上げられています。あなたがデプロイしようとしているテンプレートと似たようなテンプレートを追加している人がいるかもしれません。自分のシナリオに一致するテンプレートを検索できます。
 
-    ![select quickstart template](./media/resource-group-template-deploy-portal/select-quickstart-template.png)
+    ![クイックスタート テンプレートの選択](./media/resource-group-template-deploy-portal/select-quickstart-template.png)
 
-    You can view the selected template in the editor.
+    エディターで、選択したテンプレートを表示できます。
 
-5. After providing all the other values, select **Create** to deploy the template. 
+5. その他の値をすべて指定してから、**[作成]** を選択してテンプレートをデプロイします。
 
-    ![deploy template](./media/resource-group-template-deploy-portal/create-custom-deploy.png)
+    ![テンプレートのデプロイ](./media/resource-group-template-deploy-portal/create-custom-deploy.png)
 
-## <a name="deploy-resources-from-a-template-saved-to-your-account"></a>Deploy resources from a template saved to your account
+## アカウントに保存されたテンプレートからリソースをデプロイする
 
-The portal enables you to save a template to your Azure account, and redeploy it later. For more information about working with these saved templates, [Get started with private templates on the Azure portal](./marketplace-consumer/mytemplates-getstarted.md).
+ポータルでは、Azure アカウントにテンプレートを保存し、後で再デプロイを行うことができます。保存したテンプレートの操作の詳細については、「[Azure ポータルでプライベート テンプレートを使ってみる](./marketplace-consumer/mytemplates-getstarted.md)」を参照してください。
 
-1. To find your saved templates, select **Browse** > **Templates**.
+1. 保存したテンプレートを検索するには、**[参照]**、**[テンプレート]** の順に選択します。
 
-    ![browse templates](./media/resource-group-template-deploy-portal/browse-templates.png)
+    ![テンプレートの参照](./media/resource-group-template-deploy-portal/browse-templates.png)
 
-2. From the list of templates saved to your account, select the one you wish to work on.
+2. アカウントに保存されたテンプレートの一覧から、使用するテンプレートを選択します。
 
-    ![saved templates](./media/resource-group-template-deploy-portal/saved-templates.png)
+    ![保存されているテンプレート](./media/resource-group-template-deploy-portal/saved-templates.png)
 
-3. Select **Deploy** to redeploy this saved template.
+3. **[デプロイ]** を選択し、保存されたテンプレートを再デプロイします。
 
-    ![deploy saved template](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
+    ![保存されているテンプレートのデプロイ](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-- To view audit logs, see [Audit operations with Resource Manager](resource-group-audit.md).
-- To troubleshoot deployment errors, see [Troubleshooting resource group deployments with Azure portal](resource-manager-troubleshoot-deployments-portal.md).
-- To retrieve a template from a deployment or resource group, see [Export Azure Resource Manager template from existing resources](resource-manager-export-template.md).
+- 監査ログの表示については、「[Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
+- デプロイ エラーのトラブルシューティングについては、[Azure ポータルでのリソース グループのデプロイのトラブルシューティング](resource-manager-troubleshoot-deployments-portal.md)に関するページを参照してください。
+- デプロイまたはリソース グループからテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

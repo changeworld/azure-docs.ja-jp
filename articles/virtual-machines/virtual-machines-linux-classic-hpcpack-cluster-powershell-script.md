@@ -1,6 +1,6 @@
 <properties
-   pageTitle="PowerShell script to deploy Linux HPC cluster | Microsoft Azure"
-   description="Run a PowerShell script to deploy a Linux HPC Pack cluster in Azure virtual machines"
+   pageTitle="PowerShell スクリプトで Linux HPC クラスターをデプロイする | Microsoft Azure"
+   description="PowerShell スクリプトを実行し、Azure 仮想マシンで Linux HPC Pack クラスターをデプロイします。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="dlepow"
@@ -16,20 +16,19 @@
    ms.date="07/07/2016"
    ms.author="danlep"/>
 
+# HPC Pack IaaS デプロイ スクリプトを使用し、Linux ハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
 
-# <a name="create-a-linux-high-performance-computing-(hpc)-cluster-with-the-hpc-pack-iaas-deployment-script"></a>Create a Linux high performance computing (HPC) cluster with the HPC Pack IaaS deployment script
-
-Run the HPC Pack IaaS deployment PowerShell script to deploy a complete HPC cluster for Linux workloads in Azure virtual machines. The cluster consists of an Active Directory-joined head node running Windows Server and Microsoft HPC Pack, and compute nodes that run one of the Linux distributions supported by HPC Pack. If you want to deploy an HPC Pack cluster in Azure for Windows workloads, see [Create a Windows HPC cluster with the HPC Pack IaaS deployment script](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md). You can also use an Azure Resource Manager template to deploy an HPC Pack cluster. For an example, see [Create an HPC cluster with Linux compute nodes](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/).
+HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Linux ワークロード用に完全な HPC クラスターを Azure 仮想マシンにデプロイします。このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、HPC Pack でサポートされるいずれかの Linux ディストリビューションを実行するコンピューティング ノードとから成ります。Windows ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は「[HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md)」を参照してください。Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。具体例については、「[Linux コンピューティング ノードがある HPC クラスターを作成する](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-linux-cn/)」を参照してください。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
-## <a name="example-configuration-file"></a>Example configuration file
+## 構成ファイルの例
 
-The following configuration file creates a new domain controller and domain forest and deploys an HPC Pack cluster which has 1 head node with local databases and 10 Linux compute nodes. All the cloud services are created directly in the East Asia location. The Linux compute nodes are created in 2 cloud services and 2 storage accounts (i.e. _MyLnxCN-0001_ to _MyLnxCN-0005_ in _MyLnxCNService01_ and _mylnxstorage01_, and _MyLnxCN-0006_ to _MyLnxCN-0010_ in _MyLnxCNService02_ and _mylnxstorage02_). The compute nodes are created from an OpenLogic CentOS version 7.0 Linux image. 
+次の構成ファイルでは、新しいドメイン コントローラーとドメイン フォレストが作成され、ローカル データベースを持つ 1 つのヘッド ノードと 10 の Linux コンピューティング ノードを含む HPC Pack クラスターがデプロイされます。すべてのクラウド サービスは東アジアの場所に直接作成されます。Linux コンピューティング ノードは、2 つのクラウド サービスと 2 つのストレージ アカウント (_MyLnxCNService01_ と _mylnxstorage01_ の _MyLnxCN-0001_ ～ _MyLnxCN-0005_、_MyLnxCNService02_ と _mylnxstorage02_ の _MyLnxCN-0006_ ～ _MyLnxCN-0010_) で作成されます。コンピューティング ノードは OpenLogic CentOS バージョン 7.0 Linux イメージから作成されます。
 
-Substitute your own values for your subscription name and the account and service names.
+サブスクリプション名、アカウント名、サービス名には、実際の値を使用してください。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -71,26 +70,20 @@ Substitute your own values for your subscription name and the account and servic
   </LinuxComputeNodes>
 </IaaSClusterConfig>
 ```
-## <a name="troubleshooting"></a>Troubleshooting
+## トラブルシューティング
 
-* **“VNet doesn’t exist” error** - If you run the HPC Pack IaaS deployment script to deploy multiple clusters in Azure concurrently under one subscription, one or more deployments may fail with the error “VNet *VNet\_Name* doesn't exist”.
-If this error occurs, re-run the script for the failed deployment.
+* **「VNet が存在しない」エラー** - 1 つサブスクリプションの下で HPC Pack IaaS デプロイ スクリプトを実行して Azure で複数のクラスターを同時にデプロイするとき、「VNet *VNet\_Name* が存在しない」というエラーで 1 つまたは複数のデプロイが失敗することがあります。このエラーが発生した場合、失敗したデプロイに対してスクリプトを再実行してください。
 
-* **Problem accessing the Internet from the Azure virtual network** - If you create an HPC Pack cluster with a new domain controller by using the deployment script, or you manually promote a head node VM to domain controller, you may experience problems connecting the VMs in the Azure virtual network to the Internet. This can occur if a forwarder DNS server is automatically configured on the domain controller, and this forwarder DNS server doesn’t resolve properly.
+* **Azure Virtual Network からインターネットにアクセスできない** - デプロイ スクリプトを利用し、新しいドメイン コントローラーを含む HPC Pack クラスターを作成する場合、あるいは手動でヘッド ノード VM をドメイン コントローラーに昇格する場合、Azure Virtual Network の VM をインターネットに接続できないことがあります。この問題は、フォワーダー DNS サーバーがドメイン コントローラーで自動的に構成されるとき、このフォワーダー DNS サーバーが適切に解決しない場合に発生することがあります。
 
-    To work around this problem, log on to the domain controller and either remove the forwarder configuration setting or configure a valid forwarder DNS server. To do this, in Server Manager click **Tools** >
-    **DNS** to open DNS Manager, and then double-click **Forwarders**.
+    この問題を回避するには、ドメイン コントローラーにログオンし、フォワーダー構成設定を削除するか、有効なフォワーダー DNS サーバーを構成します。これを行うには、サーバー マネージャーで、**[ツール]** > **[DNS]** をクリックして DNS マネージャーを開き、**[フォワーダー]** をダブルクリックします。
     
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-* See [Get started with Linux compute nodes in an HPC Pack cluster in Azure](virtual-machines-linux-classic-hpcpack-cluster.md) for information about supported Linux distributions, moving data, and submitting jobs to an HPC Pack cluster with Linux compute nodes.
-* For tutorials that use the script to create a cluster and run a Linux HPC workload, see:
-    * [Run NAMD with Microsoft HPC Pack on Linux compute nodes in Azure](virtual-machines-linux-classic-hpcpack-cluster-namd.md)
-    * [Run OpenFOAM with Microsoft HPC Pack on Linux compute nodes in Azure](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md)
-    * [Run STAR-CCM+ with Microsoft HPC Pack on Linux compute nodes in Azure](virtual-machines-linux-classic-hpcpack-cluster-starccm.md)
+* Linux コンピューティング ノードから成る HPC Pack クラスターにおける Linux ディストリビューションのサポート、データの移動、ジョブの送信については、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](virtual-machines-linux-classic-hpcpack-cluster.md)」を参照してください。
+* クラスターの作成と Linux HPC ワークロードの実行をスクリプトで行うチュートリアルについては、以下のページを参照してください。
+    * [Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する](virtual-machines-linux-classic-hpcpack-cluster-namd.md)
+    * [Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して OpenFOAM を実行する](virtual-machines-linux-classic-hpcpack-cluster-openfoam.md)
+    * [Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して STAR-CCM+ を実行する](virtual-machines-linux-classic-hpcpack-cluster-starccm.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

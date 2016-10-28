@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Using Remote Desktop with Azure Roles | Microsoft Azure"
-   description="Using Remote Desktop with Azure Roles"
+   pageTitle="Azure ロールでのリモート デスクトップの使用 | Microsoft Azure"
+   description="Azure ロールでのリモート デスクトップの使用"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,71 +15,64 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# Azure ロールでのリモート デスクトップの使用
 
-# <a name="using-remote-desktop-with-azure-roles"></a>Using Remote Desktop with Azure Roles
+Azure SDK およびリモート デスクトップ サービスを使用すると、Azure のロールと Azure にホストされている仮想マシンにアクセスできます。Visual Studio では、Azure プロジェクトからリモート デスクトップ サービスを構成できます。リモート デスクトップ サービスを有効にするには、1 つ以上のロールを含む作業用プロジェクトを作成し、Azure に発行する必要があります。
 
-By using the Azure SDK and Remote Desktop Services, you can access Azure roles and virtual machines that are hosted by Azure. In Visual Studio, you can configure Remote Desktop Services from an Azure project. To enable Remote Desktop Services, you must create a working project that contains one or more roles and then publish it to Azure.
+>[AZURE.IMPORTANT] Azure のロールには、トラブルシューティングまたは開発のためにのみアクセスする必要があります。各仮想マシンの目的は、Azure アプリケーションで特定のロールを実行することであり、他のクライアント アプリケーションを実行することではありません。任意の目的に使用できる仮想マシンをホストするのに Azure を使用する場合は、サーバー エクスプローラーから Azure Virtual Machines へのアクセスに関するページを参照してください。
 
->[AZURE.IMPORTANT] You should access an Azure role for troubleshooting or development only. The purpose of each virtual machine is to run a specific role in your Azure application, not to run other client applications. If you want to use Azure to host a virtual machine that you can use for any purpose, see Accessing Azure Virtual Machines from Server Explorer.
+## Azure ロールのためのリモート デスクトップを有効にして使用するには
 
-## <a name="to-enable-and-use-remote-desktop-for-an-azure-role"></a>To enable and use Remote Desktop for an Azure Role
+1. [ソリューション エクスプローラー] で、プロジェクトのショートカット メニューを開き、**[発行]** をクリックします。
 
-1. In Solution Explorer, open the shortcut menu for your project, and then choose **Publish**.
-
-    The **Publish Azure Application** wizard appears.
+    **Azure アプリケーションの公開**ウィザードが表示されます。
 
     ![Publish command for a Cloud Service project](./media/vs-azure-tools-remote-desktop-roles/IC799161.png)
 
-1. At the bottom of **Microsoft Azure Publish Settings** page of the wizard, select the **Enable Remote Desktop** for all roles check box. 
+1. ウィザードの **[Microsoft Azure 発行設定]** ページの下部にある、**[すべてのロールのリモート デスクトップを有効にする]** チェック ボックスをオンにします。
 
-    The **Remote Desktop Configuration** dialog box appears.
+    **[リモート デスクトップ構成]** ダイアログ ボックスが表示されます。
 
-1. At the bottom of the **Remote Desktop Configuration** dialog box, choose the **More Options** button. 
+1. **[リモート デスクトップ構成]** ダイアログ ボックスの下にある **[その他のオプション]** をクリックします。
  
-    This displays a dropdown list box that lets you create or choose a certificate so that you can encrypt credentials information when connecting via remote desktop.
+    証明書を作成または選択できるドロップダウン ボックスが表示されます。証明書により、リモート デスクトップを使用して接続するときに資格情報を暗号化できます。
 
-1. In the dropdown list, choose **&lt;Create>**, or choose an existing one from the list. 
+1. ドロップダウン リストで、**[作成]** を選択するか、一覧から既存の証明書を選択します。
 
-    If you choose an existing certificate, skip the following steps.
+    既存の証明書を選択した場合、次の手順は省略します。
 
-    >[AZURE.NOTE] The certificates that you need for a remote desktop connection are different from the certificates that you use for other Azure operations. The remote access certificate must have a private key.
+    >[AZURE.NOTE] リモート デスクトップ接続に必要な証明書は、他の Azure 操作で使用する証明書とは異なります。リモート アクセス証明書には、秘密キーが必要です。
 
-    The **Create Certificate** dialog box appears.
+    **[証明書の作成]** ダイアログ ボックスが表示されます。
 
-    1. Provide a friendly name for the new certificate, and then choose the **OK** button. The new certificate appears in the dropdown list box.
+    1. 新しい証明書の表示名を入力し、**[OK]** ボタンをクリックします。ドロップダウン ボックスに新しい証明書が表示されます。
 
-    1. In the **Remote Desktop Configuration** dialog box, provide a user name and a password.
+    1. **[リモート デスクトップ構成]** ダイアログ ボックスでユーザー名とパスワードを入力します。
     
-        You can’t use an existing account. Don’t specify Administrator as the user name for the new account.
+        既存のアカウントを使用することはできません。新しいアカウントのユーザー名として Administrator を指定しないでください。
 
-        >[AZURE.NOTE] If the password doesn’t meet the complexity requirements, a red icon appears next to the password text box. The password must include capital letters, lowercase letters, and numbers or symbols.
+        >[AZURE.NOTE] パスワードが複雑さの要件を満たしていない場合、パスワードのテキスト ボックスの隣に赤いアイコンが表示されます。パスワードは大文字と小文字、数字または記号を含める必要があります。
 
-    1. Choose a date on which the account will expire and after which remote desktop connections will be blocked.
+    1. アカウントが期限切れになり、リモート デスクトップ接続がブロックされる日付を選択します。
 
-    1. After you've provided all the required information, choose the **OK** button.
+    1. 必要な情報をすべて入力したら、**[OK]** をクリックします。
     
-        Several settings that enable Remote Access Services are added to the .cscfg and .csdef files.
+        .cscfg ファイルと .csdef ファイルに、リモート アクセス サービスを有効にするいくつかの設定が追加されます。
 
-1. In the **Microsoft Azure Publish Settings** wizard, choose the **OK** button when you’re ready to publish your cloud service.
+1. クラウド サービスを発行する準備ができたら、**Microsoft Azure 発行設定**ウィザードで **[OK]** をクリックします。
 
-    If you're not ready to publish, choose the **Cancel** button. The configuration settings are saved, and you can publish your cloud service later.
+    発行する準備ができていない場合は、**[キャンセル]** をクリックします。構成設定が保存され、後でクラウド サービスを発行できるようになります。
 
-## <a name="connect-to-an-azure-role-by-using-remote-desktop"></a>Connect to an Azure Role by using Remote Desktop
+## リモート デスクトップを使用して Azure ロールに接続する
 
-After you publish your cloud service on Azure, you can use Server Explorer to log into the virtual machines that Azure hosts. 
+Azure にクラウド サービスを発行したら、サーバー エクスプローラーを使用して Azure にホストされている仮想マシンにログインします。
 
-1. In Server Explorer, expand the **Azure** node, and then expand the node for a cloud service and one of its roles to display a list of instances.
+1. サーバー エクスプローラーで、**[Azure]** ノードを展開し、いずれかのクラウド サービスのノードとそのロールを 1 つ展開して、インスタンスの一覧を表示します。
 
-1. Open the shortcut menu for an instance node, and then choose **Connect Using Remote Desktop**.
+1. インスタンス ノードでショートカット メニューを開き、**[リモート デスクトップを使用して接続]** をクリックします。
 
     ![Connecting via remote desktop](./media/vs-azure-tools-remote-desktop-roles/IC799162.png)
 
-1. Enter the user name and password that you created previously. You are now logged into your remote session.
+1. 以前作成したユーザー名とパスワードを入力します。これでリモート セッションにログインした状態になります。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

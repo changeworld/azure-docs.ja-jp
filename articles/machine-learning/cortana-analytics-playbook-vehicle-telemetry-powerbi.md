@@ -1,451 +1,405 @@
 <properties 
-    pageTitle="Vehicle telemetry analytics solution template PowerBI Dashboard setup instructions | Microsoft Azure" 
-    description="Use the capabilities of Cortana Intelligence to gain real-time and predictive insights on vehicle health and driving habits." 
-    services="machine-learning" 
-    documentationCenter="" 
-    authors="bradsev" 
-    manager="jhubbard" 
-    editor="cgronlun" />
+	pageTitle="車両テレメトリ分析ソリューション テンプレートの PowerBI ダッシュボードのセットアップ手順 | Microsoft Azure" 
+	description="Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。" 
+	services="machine-learning" 
+	documentationCenter="" 
+	authors="bradsev" 
+	manager="jhubbard" 
+	editor="cgronlun" />
 
 <tags 
-    ms.service="machine-learning" 
-    ms.workload="data-services" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/12/2016" 
-    ms.author="bradsev" />
+	ms.service="machine-learning" 
+	ms.workload="data-services" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/12/2016" 
+	ms.author="bradsev" />
 
 
+# 車両テレメトリ分析ソリューション テンプレートの PowerBI ダッシュボードのセットアップ手順
 
-# <a name="vehicle-telemetry-analytics-solution-template-powerbi-dashboard-setup-instructions"></a>Vehicle telemetry analytics solution template PowerBI Dashboard setup instructions
-
-This **menu** links to the chapters in this playbook. 
+この**メニュー**は、このプレイブック内の各章にリンクされています。
 
 [AZURE.INCLUDE [cap-vehicle-telemetry-playbook-selector](../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 
-The Vehicle Telemetry Analytics solution showcases how car dealerships, automobile manufacturers and insurance companies can leverage the capabilities of Cortana Intelligence to gain real-time and predictive insights on vehicle health and driving habits to drive improvements in the area of customer experience, R&D and marketing campaigns. This document contains step by step instructions on how you can configure the PowerBI reports and dashboard once the solution is deployed in your subscription. 
+車両テレメトリ分析ソリューションでは、自動車販売代理店、自動車メーカー、および保険会社が Cortana Intelligence の機能を使用して車両の状態と運転の習慣に関するリアルタイムの情報と予測情報を把握し、カスタマー エクスペリエンス、R&D、およびマーケティング キャンペーンの分野での向上を促進するための方法を紹介します。このドキュメントには、サブスクリプション内でソリューションがデプロイされた後で PowerBI のレポートとダッシュボードを構成する方法の詳細な手順が含まれています。
 
 
-## <a name="prerequisites"></a>Prerequisites
-1.  Deploy the Vehicle Telemetry Analytics solution by navigating to [https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3](https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3)  
-2.  [Install Microsoft Power BI Desktop](http://www.microsoft.com/download/details.aspx?id=45331)
-3.  An [Azure subscription](https://azure.microsoft.com/pricing/free-trial/). If you don't have an Azure subscription, get started with Azure free subscription
-4.  Microsoft PowerBI account
-    
+## 前提条件
+1.	[https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3](https://gallery.cortanaanalytics.com/SolutionTemplate/Vehicle-Telemetry-Analytics-3) に移動して、車両テレメトリ分析ソリューションをデプロイします。
+2.	[Microsoft Power BI Desktop をインストールします。](http://www.microsoft.com/download/details.aspx?id=45331)
+3.	[Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/)。Azure サブスクリプションを持っていない場合は、Azure 無料サブスクリプションで開始します
+4.	Microsoft PowerBI アカウント
+	
 
-## <a name="cortana-intelligence-suite-components"></a>Cortana Intelligence Suite Components
-As part of the Vehicle Telemetry Analytics solution template, the following Cortana Intelligence services are deployed in your subscription.
+## Cortana Intelligence Suite コンポーネント
+車両テレメトリ分析ソリューション テンプレートの一部として、サブスクリプション内に以下の Cortana Intelligence サービスがデプロイされます。
 
-- **Event Hubs** for ingesting millions of vehicle telemetry events into Azure.
-- **Stream Analytic**s for gaining real-time insights on vehicle health and persists that data into long-term storage for richer batch analytics.
-- **Machine Learning** for anomaly detection in real-time and batch processing to gain predictive insights.
-- **HDInsight** is leveraged to transform data at scale
-- **Data Factory** handles orchestration, scheduling, resource management and monitoring of the batch processing pipeline.
+- **Event Hubs** 数百万の車両テレメトリ イベントを Azure に取り込みます。
+- **Stream Analytics** 車両の状態に関するリアルタイムの洞察を得て、より高度な一括分析のために長期的なストレージにそのデータを保持します。
+- **Machine Learning** リアルタイムで異常検出を行い、バッチ処理で予測分析を行います。
+- **HDInsight** 大量のデータを変換します。
+- **Data Factory** オーケストレーション、スケジュール設定、リソース管理、およびバッチ処理のパイプラインの監視を処理します。
 
-**Power BI** gives this solution a rich dashboard for real-time data and predictive analytics visualizations. 
+**Power BI** このソリューションに機能豊富なダッシュボードを提供し、リアルタイムのデータおよび予測分析を視覚化します。
 
-The solution uses two different data sources: **Simulated vehicle signals and diagnostic dataset** and **vehicle catalog**.
+ソリューションは、2 つの異なるデータ ソースを使用します。1 つは**シミュレートされた車両信号と診断のデータセット**で、もう 1 つは**車両カタログ**です。
 
-A vehicle telematics simulator is included as part of this solution. It emits diagnostic information and signals corresponding to the state of the vehicle and driving pattern at a given point in time. 
+車両テレマティックス シミュレーターは、このソリューションの一部として含まれています。診断情報と信号を出力し、信号は特定の時点での車両の状態と運転パターンに対応しています。
 
-The Vehicle Catalog is a reference dataset containing VIN to model mapping
+車両カタログは、モデルのマッピングに対する VIN を含む参照データセットです。
 
 
-## <a name="powerbi-dashboard-preparation"></a>PowerBI Dashboard Preparation
+## PowerBI ダッシュボードの準備
 
-### <a name="deployment"></a>Deployment
+### デプロイ
 
-Once the deployment is completed, you should see the following diagram with all of these components marked in GREEN. 
+デプロイが完了すると、次の図のように、すべてのコンポーネントが緑色でマークされます。
 
-- To navigate to the corresponding services to validate whether all of these have deployed successfully, click the arrow on the upper right of the green nodes.
-- To download the data simulator package, click the arrow on the upper right on the **Vehicle Telematics Simulator** node. Save and extract the files locally on your machine. 
+- 対応するサービスに移動し、正常にデプロイされたかどうかを確認するには、緑色のノードの右上隅にある矢印をクリックします。
+- データ シミュレーター パッケージをダウンロードするには、**車両テレマティックス シミュレーター** ノードの右上隅にある矢印をクリックします。ローカルのコンピューターにファイルを保存して、展開します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/1-deployed-components.png)
 
-Now, you are ready to configure the PowerBI dashboard with rich visualizations to gain real-time and predictive insights on vehicle health and driving habits. It takes about 45 minutes to an hour to create all the reports and configure the dashboard. 
+これで、PowerBI ダッシュボードを構成する準備ができました。ダッシュボードの豊富な視覚化機能で、車両の状態と運転の習慣に関するリアルタイム情報や予測情報を把握できます。すべてのレポートを作成し、ダッシュボードを構成するには、45 分から 1 時間ほどかかります。
 
 
-### <a name="setup-power-bi-real-time-dashboard"></a>Setup Power BI Real-Time Dashboard
+### Power BI リアルタイム ダッシュボードのセットアップ
 
-**Generate simulated data**
+**シミュレートされたデータの生成**
 
-1. On your local machine, go to the folder where you extracted the Vehicle Telematics Simulator package ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/2-vehicle-telematics-simulator-folder.png)
-2.  Execute the application ***CarEventGenerator.exe***.
-3.  It emits diagnostic information and signals corresponding to the state of the vehicle and driving pattern at a given point in time. This is published to an Azure Event Hub instance that is configured as part of your deployment.
+1. ローカル コンピューター上で、車両テレマティックス シミュレーター パッケージを展開したフォルダーに移動します。![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/2-vehicle-telematics-simulator-folder.png)
+2.	***CarEventGenerator.exe*** アプリケーションを実行します。
+3.	診断情報と信号を出力し、信号は特定の時点での車両の状態と運転パターンに対応しています。これが、デプロイの一部として構成されている Azure Event Hub インスタンスに発行されます。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/3-vehicle-telematics-diagnostics.png)
-     
-**Start the real-time dashboard application**
+	 
+**リアルタイム ダッシュボード アプリケーションの開始**
 
-The solution includes an application that generates a real-time dashboard in PowerBI. This application listens to an Event Hub instance, from which Stream Analytics publishes the events continuously. For every event that this application receives, it processes the data using a Machine Learning Request-Response scoring endpoint. The resultant dataset is published to the PowerBI push APIs for visualization. 
+ソリューションには、PowerBI でリアルタイムのダッシュ ボードを生成するアプリケーションが含まれています。このアプリケーションは Event Hub インスタンスをリッスンしますが、そのインスタンスから Stream Analytics がイベントを継続的に発行しています。このアプリケーションが受信されるすべてのイベントに対して、Machine Learning Request-Response スコアリング エンドポイントを使用してデータを処理します。結果のデータセットは、PowerBI プッシュ API に発行され視覚化されます。
 
-To download the application:
+アプリケーションをダウンロードするには:
 
-1.  Click the PowerBI node on the diagram view and click the **Download Real-time Dashboard Application**’ link on the properties pane.![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard-new1.png)
-2.  Extract and save the application locally ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/4-real-time-dashboard-application.png)
+1.	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで "**Download Real-time Dashboard Application**" リンクをクリックします。![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard-new1.png)
+2.	アプリケーションをローカルに展開して保存します。![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/4-real-time-dashboard-application.png)
 
-3.  Execute the application **RealtimeDashboardApp.exe**
-4.  Provide valid Power BI credentials, sign in and click **Accept**
-    
-    ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/5-sign-into-powerbi.png)
-    
-    ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-powerbi-dashboard-permissions.png)
+3.	**RealtimeDashboardApp.exe** アプリケーションを実行します。
+4.	有効な Power BI 資格情報を指定し、サインインして、**[Accept]** をクリックします。
+	
+	![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/5-sign-into-powerbi.png)
+	
+	![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-powerbi-dashboard-permissions.png)
 
 
-### <a name="configure-powerbi-reports"></a>Configure PowerBI reports
-The real-time reports and the dashboard take about 30-45 minutes to complete. Browse to [http://powerbi.com](http://powerbi.com) and login.
+### PowerBI レポートの構成
+リアルタイム レポートとダッシュボードが完了するまでに、30 ～ 45 分ほどかかります。[http://powerbi.com](http://powerbi.com) に移動して、ログインします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/6-1-powerbi-signin.png)
 
-A new dataset is generated in Power BI. Click the **ConnectedCarsRealtime** dataset.
+Power BI では、新しいデータセットが生成されます。**ConnectedCarsRealtime** データセットをクリックします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/7-select-connected-cars-realtime-dataset.png)
 
-Save the blank report using **Ctrl + s**.
+**Ctrl + S** キーを使用して、空のレポートを保存します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/8-save-blank-report.png)
 
-Provide report name *Vehicle Telemetry Analytics Real-time - Reports*.
+レポート名として、*"Vehicle Telemetry Analytics Real time - Reports"* を指定します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9-provide-report-name.png)
 
-## <a name="real-time-reports"></a>Real-time reports
-There are three real-time reports in this solution:
+## リアルタイム レポート
+このソリューションには、次の 3 つのリアルタイム レポートが用意されています:
 
-1.  Vehicles in operation
-2.  Vehicles Requiring Maintenance
-3.  Vehicles Health Statistics
+1.	Vehicles in operation
+2.	Vehicles Requiring Maintenance
+3.	Vehicles Health Statistics
 
-You can choose to configure all the three real-time reports or stop after any stage and proceed to the next section of configuring the batch reports. We recommend you to create all the three reports to visualize the full insights of the real-time path of the solution.  
+3 つのリアルタイム レポートをすべて構成することも、いずれかのレポート構成段階が終了した時点で次のセクションのバッチ レポートの構成に進むこともできます。3 つのレポートをすべて作成して、ソリューションのリアルタイム パスに対する詳細な洞察を視覚化することをお勧めします。
 
-### <a name="1.-vehicles-in-operation"></a>1. Vehicles in operation
+### 1\.Vehicles in operation
   
-Double-click **Page 1** and rename it to “Vehicles in operation”  
-    ![Connected Cars - Vehicles in operation](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4a.png)  
+**[ページ 1]** をダブルクリックして、名前を「Vehicles in operation」に変更します。![Connected Cars - Vehicles in operation](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4a.png)
 
-Select **vin** field from **Fields** and choose visualization type as **“Card”**.  
+**[フィールド]** で **[vin]** フィールドを選択し、視覚化の種類として **[カード]** を選択します。
 
-Card visualization is created as shown in figure.  
-    ![Connected Cars - Select vin](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4b.png)
+図に示されているような、カードの視覚化が作成されます。![Connected Cars - Select vin](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4b.png)
 
-Click the blank area to add new visualization.  
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **City** and **vin** from fields. Change visualization to **“Map”**. Drag **vin** in values area. Drag **city** from fields to **Legend** area.   
-    ![Connected Cars - Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4c.png)
+フィールドから **[City]** と **[vin]** を選択します。視覚化を **[地図]** に変更します。**[vin]** を値領域にドラッグします。フィールドから **[city]** を **[凡例]** 領域にドラッグします。![Connected Cars - Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4c.png)
   
-Select **format** section from **Visualizations**, click **Title** and change the **Text** to **“Vehicles in operation by city”**.  
-    ![Connected Cars - Vehicles in operation by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)   
+**[視覚化]** の **[書式]** を選択し、**[タイトル]** をクリックして**テキスト**を **"Vehicles in operation by city"** に変更します。![Connected Cars - Vehicles in operation by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4d.png)
 
-Final visualization looks as shown in figure.    
-    ![Connected Cars - Final visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4e.png)
+最終的に、視覚化は次の図のようになります。![Connected Cars - Final visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4e.png)
 
-Click the blank area to add new visualization.  
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **City** and **vin**, change visualization type to **Clustered Column Chart**. Ensure **City** field in **Axis area** and **vin** in **Value area**  
+**[City]** と **[vin]** を選択し、視覚化の種類を **[集合縦棒グラフ]** に変更します。**[軸]** 領域の **[City]** フィールドと、**[値]** 領域の **[vin]** を確認します。
 
-Sort chart by **“Count of vin”**  
-    ![Connected Cars - Count of vin](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4f.png)  
+**[Count of vin]** でグラフを並べ替えます。![Connected Cars - Count of vin](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4f.png)
 
-Change chart **Title** to **“Vehicles in operation by city”**  
+グラフの **[タイトル]** を **"Vehicles in operation by city"** に変更します。
 
-Click the **Format** section, then select **Data Colors**,  Click the **“On”** to **Show All**  
-    ![Connected Cars - Show all Data Colors](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4g.png)  
+**[書式]** セクションをクリックし、**[データの色]** を選択して、**[すべての表示]** の **[オン]** をクリックします。![Connected Cars - Show all Data Colors](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4g.png)
 
-Change the color of individual city by clicking on color icon.  
-    ![Connected Cars - Change Colors](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4h.png)  
+色のアイコンをクリックして、各都市の色を変更します。![Connected Cars - Change Colors](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4h.png)
 
-Click the blank area to add new visualization.  
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **Clustered Column Chart** visualization from visualizations, drag **city** field in **Axis** area, **Model** in **Legend** area and **vin** in **Value** area.  
-    ![Connected Cars - Clustered Column Chart](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4i.png)  
-    ![Connected Cars - Rendering](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4j.png)
+視覚化から **[集合縦棒グラフ]** を選択し、**[city]** フィールドを **[軸]** 領域に、**[Model]** を **[凡例]** 領域に、**[vin]** を **[値]** 領域にドラッグします。![Connected Cars - Clustered Column Chart](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4i.png) ![Connected Cars - Rendering](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4j.png)
   
-Rearrange all visualization on this page as shown in figure.  
-    ![Connected Cars - Visualizations](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
+このページのすべての視覚化を、次の図のように再配置します。![Connected Cars - Visualizations](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
-You have successfully configured the “Vehicles in operation” real-time report. You can proceed to create the next real-time report or stop here and configure the dashboard. 
+これで、Vehicles in operation リアルタイム レポートを正しく構成できました。次のリアルタイム レポートを作成するか、ここで終了して、ダッシュボードの構成に進むことができます。
 
-### <a name="2.-vehicles-requiring-maintenance"></a>2. Vehicles Requiring Maintenance
+### 2\.Vehicles Requiring Maintenance
   
-Click ![Add](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) to add a new report, rename it to **“Vehicles Requiring Maintenance”**
+![Add](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) をクリックして、新しいレポートを追加し、名前を **"Vehicles Requiring Maintenance"** に変更します。
 
-![Connected Cars - Vehicles Requiring Maintenance](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4l.png)  
+![Connected Cars - Vehicles Requiring Maintenance](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4l.png)
 
-Select **vin** field and change visualization type to **Card**.  
-    ![Connected Cars - Vin Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4m.png)  
+**[vin]** フィールドを選択し、視覚化の種類を **[カード]** に変更します。![Connected Cars - Vin Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4m.png)
 
-We have a field named “MaintenanceLabel” In the dataset. This field can have a value of “0” or “1”.” It is set by the Azure Machine Learning model provisioned as part of solution and integrated with the real-time path. The value “1” indicates a vehicle requires maintenance. 
+データセットに "MaintenanceLabel" という名前のフィールドがあります。このフィールドには "0" または "1" の値を指定できます。 値は、ソリューションの一部としてプロビジョニングされ、リアルタイム パスと統合される Azure Machine Learning モデルによって設定されます。値 "1" は、車両にメンテナンスが必要であることを示します。
 
-To add a **Page Level** filter for showing vehicles data, which are requiring maintenance: 
+メンテナンスを必要とする車両データを表示するための**ページ レベル** フィルターを追加するには:
 
-1. Drag the **“MaintenanceLabel”** field into **Page Level Filters**.  
-![Connected Cars - Page Level Filters](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)  
+1. **"MaintenanceLabel"** フィールドを **[ページ レベル フィルター]** にドラッグします。![Connected Cars - Page Level Filters](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)
 
-2. Click **Basic Filtering** menu present at bottom of MaintenanceLabel Page Level Filter.  
-![Connected Cars - Basic Filtering](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n2.png)  
+2. MaintenanceLabel ページ レベル フィルターの下部にある **[基本フィルター]** メニューをクリックします。![Connected Cars - Basic Filtering](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n2.png)
 
-3.  Set its filter value to **“1”**    
-![Connected Cars - Filter Value](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n3.png)  
+3.  そのフィルター値を **"1"** に設定します。![Connected Cars - Filter Value](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n3.png)
 
 
-Click the blank area to add new visualization.  
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **Clustered Column Chart** from visualizations  
-![Connected Cars - Vind Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4o.png)  
-![Connected Cars - Clustered Column Chart](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4p.png)
+視覚化から **[集合縦棒グラフ]** を選択します。![Connected Cars - Vind Card Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4o.png) ![Connected Cars - Clustered Column Chart](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4p.png)
 
-Drag field **Model** into **Axis** area, **Vin** to **Value** area. Then sort visualization by **Count of vin**.  Change chart **Title** to **“Vehicles requiring maintenance by model”**  
+フィールド **[Model]** を **[軸]** 領域に、**[Vin]** を **[値]** 領域にドラッグします。次に、**[Count of vin]** で視覚化を並べ替えます。グラフの **[タイトル]** を **"Vehicles requiring maintenance by model"** に変更します。
 
-Drag **vin** fields into **Color Saturation** present at **Fields** ![Fields](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) section of **Visualization** tab  
-![Connected Cars - Color Saturation](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
+**[vin]** フィールドを、**[視覚化]** タブの **[フィールド]** ![フィールド](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) セクションにある **[色の彩度]** にドラッグします。![Connected Cars - Color Saturation](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)
 
-Change **Data Colors** in visualizations from **Format** section  
-Change Minimum color to: **F2C812**  
-Change Maximum color to: **FF6300**  
-![Connected Cars - Color Changes](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4r.png)  
-![Connected Cars - New Visualization Colors](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4s.png)  
+**[書式]** セクションの視覚化の **[データの色]** を変更します。最小値の色を **F2C812** に変更します。最大値の色を **FF6300** に変更します。![Connected Cars - Color Changes](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4r.png) ![Connected Cars - New Visualization Colors](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4s.png)
 
-Click the blank area to add new visualization.  
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **Clustered column chart** from visualizations, drag **vin** field into **Value** area, drag **City** field into **Axis** area. Sort chart by **“Count of vin”**. Change chart **Title** to **“Vehicles requiring maintenance by city”**   
-![Connected Cars - Vehicles requiring maintenance by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4t.png)  
+視覚化から **[集合縦棒グラフ]** を選択し、**[vin]** フィールドを **[値]** 領域に、**[City]** フィールドを **[軸]** 領域にドラッグします。**[Count of vin]** でグラフを並べ替えます。グラフの **[タイトル]** を **"Vehicles requiring maintenance by city"** に変更します。![Connected Cars - Vehicles requiring maintenance by city](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4t.png)
 
-Click the blank area to add new visualization.  
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **Multi-Row Card** visualization from visualizations, drag **Model** and **vin** into the **Fields** area.  
-![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4u.png)    
+視覚化から **[複数の行カード]** を選択し、**[Model]** と **[vin]** を **[フィールド]** 領域にドラッグします。![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4u.png)
 
-Rearranging all of the visualization, the final report looks as follows:  
-![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4v.png)  
+すべての視覚化を並べ替えると、最終的なレポートは次のようになります: ![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4v.png)
 
-You have successfully configured the “Vehicles Requiring Maintenance” real-time report. You can proceed to create the next real-time report or stop here and configure the dashboard. 
+これで、Vehicles Requiring Maintenance リアルタイム レポートを正しく構成できました。次のリアルタイム レポートを作成するか、ここで終了して、ダッシュボードの構成に進むことができます。
 
-### <a name="3.-vehicles-health-statistics"></a>3. Vehicles Health Statistics
+### 3\.Vehicles Health Statistics
   
-Click ![Add](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) to add new report, rename it to **“Vehicles Health Statistics”**  
+![Add](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4add.png) をクリックして、新しいレポートを追加し、名前を **"Vehicles Health Statistics"** に変更します。
 
-Select **Gauge** visualization from visualizations, then drag the **Speed** field into **Value, Minimum Value, Maximum Value** areas.  
-![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4w.png)  
+視覚化から **[ゲージ]** を選択し、**[Speed]** フィールドを **[値]、[最小値]、[最大値]** 領域にドラッグします。![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4w.png)
 
-Change the default aggregation of **speed** in **Value area** to **Average** 
+**[値]** 領域の **[speed]** の既定の集計を **[平均]** に変更します。
 
-Change the default aggregation of **speed** in **Minimum area** to **Minimum**
+**[最小]** 領域の **[speed]** の既定の集計を **[最小]** に変更します。
 
-Change the default aggregation of **speed** in **Maximum area** to **Maximum**
+**[最大]** 領域の **[speed]** の既定の集計を **[最大]** に変更します。
 
-![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4x.png)  
+![Connected Cars - Multi-Row Card](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4x.png)
 
-Rename the **Gauge Title** to **“Average speed”** 
+**Gauge Title** という名前を **"Average speed"** に変更します。
  
-![Connected Cars - Gauge](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4y.png)  
+![Connected Cars - Gauge](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4y.png)
 
-Click the blank area to add new visualization.  
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Similarly add a **Gauge** for **average engine oil**, **average fuel**, and **average engine temperate**.  
+同様に、**[average engine oil]**、**[average fuel]**、および **[average engine temperate]** に **[ゲージ]** を追加します。
 
-Change the default aggregation of fields in each gauge as per above steps in **“Average speed”** gauge.
+上の **"Average speed"** ゲージでの手順に従って、各ゲージのフィールドの既定の集計を変更します。
 
 ![Connected Cars - Gauges](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4z.png)
 
-Click the blank area to add new visualization.
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **Line and Clustered Column Chart** from visualizations, then drag **City** field into **Shared Axis**, drag **speed**, **tirepressure and engineoil fields** into **Column Values** area, change their aggregation type to **Average**. 
+視覚化から **[折れ線グラフおよび集合縦棒グラフ]** を選択し、**[City]** フィールドを **[共有の軸]** に、**[speed]**、**[tirepressure]、および [engineoil]** フィールドを **[各棒の値]** 領域にドラッグして、集計の種類を **[平均]** に変更します。
 
-Drag the **engineTemperature** field into **Line Values** area, change the  aggregation type to **Average**. 
+**[engineTemperature]** フィールドを **[線の値]** 領域にドラッグし、集計の種類を **[平均]** に変更します。
 
 ![Connected Cars - Visualizations Fields](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4aa.png)
 
-Change the chart **Title** to **“Average speed, tire pressure, engine oil and engine temperature”**.  
+グラフの **[タイトル]** を **"Average speed, tire pressure, engine oil and engine temperature"** に変更します。
 
 ![Connected Cars - Visualizations Fields](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4bb.png)
 
-Click the blank area to add new visualization.
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **Treemap** visualization from visualizations, drag the **Model** field into the **Group** area, and drag the field **MaintenanceProbability** into the **Values** area.
+視覚化から **[ツリーマップ]** を選択し、**[Model]** フィールドを **[グループ]** 領域に、**[MaintenanceProbability]** フィールドを **[値]** 領域にドラッグします。
 
-Change the chart **Title** to **“Vehicle models requiring maintenance”**.
+グラフの **[タイトル]** を **"Vehicle models requiring maintenance"** に変更します。
 
 ![Connected Cars - Change Chart Title](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4cc.png)
 
-Click the blank area to add new visualization.
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **100% Stacked Bar Chart** from visualization, drag the **city** field into the **Axis** area, and drag the **MaintenanceProbability**, **RecallProbability** fields into the **Value** area.
+視覚化から **[100% 積み上げ横棒グラフ]** を選択し、**[city]** フィールドを **[軸]** 領域にドラッグして、**[MaintenanceProbability]**、**[RecallProbability]** フィールドを **[値]** 領域にドラッグします。
 
 ![Connected Cars - Add New Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4dd.png)
 
-Click **Format**, select **Data Colors**, and set the **MaintenanceProbability** color to the value **“F2C80F”**.
+**[書式]** をクリックし、**[データの色]** を選択して、**[MaintenanceProbability]** の色の値を **"F2C80F"** に設定します。
 
-Change the **Title** of the chart to **“Probability of Vehicle Maintenance & Recall by City”**.
+グラフの **[タイトル]** を **"Probability of Vehicle Maintenance & Recall by City"** に変更します。
 
 ![Connected Cars - Add New Visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ee.png)
 
-Click the blank area to add new visualization.
+新しい視覚化を追加するために、空の領域をクリックします。
 
-Select **Area Chart** from visualization from visualizations, drag the **Model** field into the **Axis** area, and drag the **engineOil, tirepressure, speed and MaintenanceProbability** fields into the **Values** area. Change their aggregation type to **“Average”**. 
+視覚化から **[面グラフ]** を選択し、**[Model]** フィールドを **[軸]** 領域にドラッグして、**[engineOil]、[tirepressure]、[speed]、および [MaintenanceProbability]** フィールドを **[値]** 領域にドラッグします。それらの集計の種類を **[平均]** に変更します。
 
 ![Connected Cars - Change Aggregation Type](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ff.png)
 
-Change the title of the chart to **“Average engine oil, tire pressure, speed and maintenance probability by model”**.
+グラフのタイトルを **"Average engine oil, tire pressure, speed and maintenance probability by model"** に変更します。
 
 ![Connected Cars - Change Chart Title](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4gg.png)
 
-Click the blank area to add new visualization:
+新しい視覚化を追加するために、空の領域をクリックします。
 
-1. Select **Scatter Chart** visualization from visualizations.
-2. Drag the **Model** field into the **Details** and **Legend** area.
-3. Drag the **fuel** field into the **X-Axis** area, change the aggregation to **Average**.
-4. Drag **engineTemparature** into **Y-Axis area**, change the aggregation to **Average**
-5. Drag the **vin** field into the **Size** area.
+1. 視覚化から **[散布図]** を選択します。
+2. **[Model]** フィールドを **[詳細]** および **[凡例]** 領域にドラッグします。
+3. **[fuel]** フィールドを **[X 軸]** 領域にドラッグし、集計を **[平均]** に変更します。
+4. **[engineTemparature]** を **[Y 軸]** にドラッグし、集計を **[平均]** に変更します。
+5. **[vin]** フィールドを **[サイズ]** 領域にドラッグします。
 
 
 ![Connected Cars - Add new visualization](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4hh.png)
 
-Change the chart **Title** to **“Averages of Fuel, Engine Temperature by Model”**.
+グラフの **[タイトル]** を **"Averages of Fuel, Engine Temperature by Model"** に変更します。
 
 ![Connected Cars - Change Chart Title](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ii.png)
 
-The final report will look like as shown below.
+最終的に、レポートは次の図のようになります。
 
 ![Connected Cars-Final Report](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4jj.png)
 
-### <a name="pin-visualizations-from-the-reports-to-the-real-time-dashboard"></a>Pin visualizations from the reports to the real-time dashboard
+### リアルタイム ダッシュボードへのレポートの視覚化のピン留め
   
-Create a blank dashboard by clicking on the plus icon next to Dashboards. You can name it “Vehicle Telemetry Analytics Dashboard”
+ダッシュボードの横にあるプラス記号のアイコンをクリックして、空のダッシュボードを作成します。このダッシュボードに "Vehicle Telemetry Analytics Dashboard" という名前を設定します。
 
 ![Connected Cars-Dashboard](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.5.png)
 
-Pin the visualization from the above reports to the dashboard. 
+上記のレポートからこのダッシュボードに視覚化をピン留めします。
  
 ![Connected Cars-Dashboard](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.6.png)
 
-The dashboard should look as follows when all the three reports are created and the corresponding visualizations are pinned to the dashboard. If you have not created all the reports, your dashboard could look different. 
+3 つのレポートがすべて作成され、対応する視覚化がダッシュボードにピン留めされている場合、ダッシュボードは次のようになります。レポートの一部を作成していない場合、ダッシュボードの外観は下図とは異なったものになる可能性があります。
 
 ![Connected Cars-Dashboard](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-4.0.png)
 
-Congratulations! You have successfully created the real-time dashboard. As you continue to execute CarEventGenerator.exe and RealtimeDashboardApp.exe, you should see live updates on the dashboard. It should take about 10 to 15 minutes to complete the following steps.
+お疲れさまでした。 これで、リアルタイム ダッシュボードが正常に作成されました。続けて CarEventGenerator.exe および RealtimeDashboardApp.exe を実行すると、ダッシュボードにライブ更新が表示されるようになります。以下の手順を完了するには、10 ～ 15 分ほどかかります。
 
  
-##  <a name="setup-power-bi-batch-processing-dashboard"></a>Setup Power BI batch processing dashboard
+##  Power BI バッチ処理ダッシュボードのセットアップ
 
->[AZURE.NOTE] It takes about two hours (from the successful completion of the deployment) for the end to end batch processing pipeline to finish execution and process a year worth of generated data. So wait for the processing to finish before proceeding with the next steps. 
+>[AZURE.NOTE] エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約 2 時間かかります。したがって、次のステップに進む前に、処理が終了するまで待ってください。
 
-**Download the PowerBI designer file**
+**PowerBI デザイナー ファイルのダウンロード**
 
--   A pre-configured PowerBI designer file is included as part of the deployment
--   Click the PowerBI node on the diagram view and click **Download the PowerBI designer file** link on the properties pane ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
+-	事前に構成された PowerBI デザイナー ファイルは、デプロイの一部として含まれています
+-	ダイアグラム ビューで PowerBI ノードをクリックし、プロパティ ウィンドウで **"Download the PowerBI designer" ファイル** リンクをクリックします![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/9.5-download-powerbi-designer.png)
 
--   Save locally
+-	ローカルに保存します
 
-**Configure PowerBI reports**
+**PowerBI レポートの構成**
 
--   Open the designer file ‘VehicleTelemetryAnalytics - Desktop Report.pbix’ using PowerBI Desktop. If you do not already have, install the PowerBI Desktop from [PowerBI Desktop install](http://www.microsoft.com/download/details.aspx?id=45331). 
+-	PowerBI Desktop を使用して、デザイナー ファイル "VehicleTelemetryAnalytics - Desktop Report.pbix" を開きます。PowerBI Desktop をまだ持っていない場合は、[PowerBI Desktop インストール サイト](http://www.microsoft.com/download/details.aspx?id=45331)でインストールします。
 
--   Click the **Edit Queries**.
+-	**[クエリを編集]** をクリックします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/10-edit-powerbi-query.png)
 
-- Double-click the **Source**.
+- **[ソース]** をダブルクリックします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11-set-powerbi-source.png)
 
-- Update Server connection string with the Azure SQL server that got provisioned as part of the deployment. Click the Azure SQL node on the diagram and view the server name of the properties pane.
+- デプロイの一部としてプロビジョニングされた Azure SQL Server を使用してサーバー接続文字列を更新します。図の Azure SQL ノードをクリックし、プロパティ ウィンドウのサーバー名を表示します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/11.5-view-server-name.png)
 
-- Leave **Database** as *connectedcar*.
+- **[データベース]** の設定を *connectedcar* のままにします。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/12-set-powerbi-database.png)
 
-- Click **OK**.
-- You will see **Windows credential** tab selected by default, change it to **Database credentials** by clicking on **Database** tab at right.
-- Provide the **Username** and **Password** of your Azure SQL Database that was specified during its deployment setup.
+- **[OK]** をクリックします。
+- 既定で選択されている **[Windows 資格情報]** タブが表示されるので、右側の **[データベース]** タブをクリックして、**[データベース資格情報]** に変更します。
+- デプロイのセットアップ中に指定した Azure SQL Database の**名前**と**パスワード**を入力します。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/13-provide-database-credentials.png)
 
-- Click **Connect**
-- Repeat the above steps for each of the three remaining queries present at right pane, and then update the data source connection details.
-- Click **Close and Load**. Power BI Desktop file datasets are connected to SQL Azure Database tables.
-- **Close** Power BI Desktop file.
+- **[接続]** をクリックします。
+- 右側のウィンドウにある残りの 3 つのクエリに対して、上の手順を繰り返し、データ ソース接続の詳細を更新します。
+- **[閉じて読み込む]** をクリックします。Power BI Desktop のファイル データセットは、SQL Azure Database テーブルに接続されます。
+- Power BI Desktop ファイルを**閉じます**。
 
 ![](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/14-close-powerbi-desktop.png)
 
-- Click **Save** button to save the changes. 
+- **[保存]** ボタンをクリックして、変更を保存します。
  
-You have now configured all the reports corresponding to the batch processing path in the solution. 
+これで、ソリューション内のバッチ処理パスに対応するすべてのレポートが構成されました。
 
 
-## <a name="upload-to-*powerbi.com*"></a>Upload to *powerbi.com*
+## *powerbi.com* へのアップロード
  
-1.  Navigate to the PowerBI web portal at http://powerbi.com and login.
-2.  Click **Get Data**  
-3.  Upload the Power BI Desktop File.  
-4.  To upload, click **Get Data -> Files Get -> Local file**  
-5.  Navigate to the **“VehicleTelemetryAnalytics – Desktop Report.pbix”**  
-6.  Once the file is uploaded, you will be navigated back to your Power BI work space.  
+1.	PowerBI Web ポータル (http://powerbi.com) に移動してログインします。
+2.	**[データの取得]** をクリックします。
+3.	Power BI Desktop ファイルをアップロードします。
+4.	アップロードするには、**[データの取得]、[ファイル] の [取得]、[ローカル ファイル]** の順にクリックします。
+5.	**"VehicleTelemetryAnalytics – Desktop Report.pbix"** の場所に移動します。
+6.	ファイルがアップロードされると、Power BI のワークスペースに戻ります。
 
-A dataset, report and a blank dashboard will be created for you.  
+データセット、レポート、および空のダッシュボードが作成されます。
  
 
-Pin charts to the existing dashboard **Vehicle Telemetry Analytics Dashboard** in **Power BI**. Click the blank dashboard created above and then navigate to the **Reports** section click the newly uploaded report.  
+**Power BI** 内の既存のダッシュボード **Vehicle Telemetry Analytics Dashboard** にグラフをピン留めします。上で作成した空のダッシュボードをクリックし、**[レポート]** セクションに移動して、新しくアップロードされたレポートをクリックします。
 
-![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png) 
+![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard1.png)
 
 
-**Note the report has six pages:**  
-Page 1: Vehicle density  
-Page 2: Real-time vehicle health  
-Page 3: Aggressively Driven Vehicles   
-Page 4: Recalled vehicles  
-Page 5: Fuel Efficiently Driven Vehicles  
-Page 6: Contoso Logo  
+**レポートには、次の 6 つのページがあります。** ページ 1: 車両の密度 ページ 2: リアルタイムの車両状態 ページ 3: アグレッシブに運転されている車両 ページ 4: リコールされた車両 ページ 5: 低燃費で運転されている車両 ページ 6: Contoso ロゴ
 
 ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard2.png)
  
 
-**From Page 3**, pin the following:  
+**ページ 3 から**、以下のものをピン留めします。
 
-1.  Count of VIN  
-    ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png) 
+1.	Count of VIN ![Connected Cars PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png)
 
-2.  Aggressively driven vehicles by model – Waterfall chart  
-    ![Vehicle Telemetry - Pin Charts 4](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard4.png)
+2.	Aggressively driven vehicles by model – ウォーター フォール図 ![Vehicle Telemetry - Pin Charts 4](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard4.png)
 
-**From Page 5**, pin the following: 
+**ページ 5 から**、以下のものをピン留めします。
  
-1.  Count of vin    
-    ![Vehicle Telemetry - Pin Charts 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)  
-2.  Fuel efficient vehicles by model: Clustered column chart  
-    ![Vehicle Telemetry - Pin Charts 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
+1.	Count of vin ![Vehicle Telemetry - Pin Charts 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)
+2.	Fuel efficient vehicles by model : 集合縦棒グラフ ![Vehicle Telemetry - Pin Charts 6](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard6.png)
 
-**From Page 4**, pin the following:  
+**ページ 4 から**、以下のものをピン留めします:
 
-1.  Count of vin  
-    ![Vehicle Telemetry - Pin Charts 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
+1.	Count of vin ![Vehicle Telemetry - Pin Charts 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png)
 
-2.  Recalled vehicles by city, model: Treemap  
-    ![Vehicle Telemetry - Pin Charts 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)  
+2.	Recalled vehicles by city, model: ツリーマップ ![Vehicle Telemetry - Pin Charts 8](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard8.png)
 
-**From Page 6**, pin the following:  
+**ページ 6 から**、以下のものをピン留めします。
 
-1.  Contoso Motors logo  
-    ![Vehicle Telemetry - Pin Charts 9](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
+1.	Contoso Motors のロゴ ![Vehicle Telemetry - Pin Charts 9](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard9.png)
 
-**Organize the dashboard**  
+**ダッシュボードの整理**
 
-1.  Navigate to the dashboard
-2.  Hover over each chart and rename it based on the naming provided in the complete dashboard image below. Also move the charts around to look like the dashboard below.  
-    ![Vehicle Telemetry - Organize Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard2.png)  
-    ![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard.png)
-3.  If you have created all the reports as mentioned in this document, the final completed dashboard should look like the following figure. 
+1.	ダッシュボードに移動します。
+2.	各グラフにポインターを合わせ、以下の完成したダッシュボードの画像で指定されている名前に合わせて名前を変更します。また、以下のダッシュボードと同じになるように、グラフも移動します。 ![Vehicle Telemetry - Organize Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard2.png) ![Vehicle Telemetry PowerBI.com](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard.png)
+3.  すべてのレポートをこのドキュメントで説明したとおりに作成した場合、最終的に完成したダッシュボードは次のようになります。
 
 ![Vehicle Telemetry - Organize Dashboard 2](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-organize-dashboard3.png)
 
-Congratulations! You have successfully created the reports and the dashboard to gain real-time, predictive and batch insights on vehicle health and driving habits.  
+お疲れさまでした。 レポートとダッシュボードが正常に作成され、車両の状態と運転の習慣に関するリアルタイム情報や予測情報を一括して把握できるようになりました。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

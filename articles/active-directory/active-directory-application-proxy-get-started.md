@@ -1,94 +1,89 @@
 <properties
-    pageTitle="How to provide secure remote access to on-premises apps"
-    description="Covers how to use Azure AD Application Proxy to provide secure remote access to your on-premises apps."
-    services="active-directory"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor=""/>
+	pageTitle="オンプレミス アプリへの安全なリモート アクセスを実現する方法"
+	description="Azure AD アプリケーション プロキシを使用して、オンプレミス アプリへの安全なリモート アクセスを実現する方法について取り上げます。"
+	services="active-directory"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/25/2016"
-    ms.author="kgremban"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2016"
+	ms.author="kgremban"/>
 
+# オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法
 
-# <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>How to provide secure remote access to on-premises applications
+> [AZURE.NOTE] アプリケーション プロキシは、Azure Active Directory の Premium または Basic エディションにアップグレードしている場合にのみ利用できる機能です。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
-> [AZURE.NOTE] Application Proxy is a feature that is available only if you upgraded to the Premium or Basic edition of Azure Active Directory. For more information, see [Azure Active Directory editions](active-directory-editions.md).
+現在、従業員は、どこでも、いつでも、どんなデバイスからでも生産的であることを望んでいます。タブレット、電話、ラップトップを問わず、自分のデバイスで作業したいと考えています。そして、すべてのアプリケーション (クラウドにある SaaS アプリとオンプレミスの社内アプリの両方) にアクセスできることを期待しています。オンプレミスのアプリケーションへのアクセス提供には、従来、仮想プライベート ネットワーク (VPN) や非武装地帯 (DMZ)、オンプレミスのリバース プロキシが必要でした。これらのソリューションは、複雑でセキュリティ保護が困難であるだけでなく、設定と管理にコストがかかります。
 
-Employees today want to be productive at any place, at any time, and from any device. They want to work on their own devices, whether they be tablets, phones, or laptops. And they expect to be able to access all their applications, both SaaS apps in the cloud and corporate apps on-premises. Providing access to on-premises applications has traditionally involved virtual private networks (VPNs), demilitarized zones (DMZs), or on-premises reverse proxies. Not only are these solutions complex and hard to make secure, but they are costly to set up and manage.
+もっと良い方法があります。
 
-There is a better way!
+モバイルであること、クラウドであることを優先する世界の現在の従業員には、最新のリモート アクセス ソリューションが必要です。Azure AD アプリケーション プロキシは、Azure Active Directory Premium オファリングの機能であり、サービスとしてリモート アクセスを提供します。つまり、デプロイ、使用、および管理が簡単です。
 
-A modern workforce in the mobile-first, cloud-first world needs a modern remote access solution. Azure AD Application Proxy is a feature of the Azure Active Directory Premium offering, and offers remote access as a service. That means it's easy to deploy, use, and manage.
+## Azure Active Directory アプリケーション プロキシとは何か
+Azure AD アプリケーション プロキシは、オンプレミスでホストされている Web アプリケーションのシングル サインオンと安全なリモート アクセスを実現します。これには、SharePoint サイト、Outlook Web Access、またはお持ちのその他の LOB Web アプリケーションを含めることができます。これらのオンプレミスの Web アプリケーションは、Azure AD (O365 で使用するのと同じ ID、およびコントロール プラットフォーム) に統合されます。これにより、エンドユーザーは、O365 にアクセスするようにオンプレミスのアプリケーションにアクセスでき、Azure AD に統合された他の SaaS アプリにもアクセスできます。このソリューションをユーザーに提供するために、ネットワーク インフラストラクチャを変更したり、VPN を導入したりする必要はありません。
 
-## <a name="what-is-azure-active-directory-application-proxy?"></a>What is Azure Active Directory Application Proxy?
-Azure AD Application Proxy provides single sign-on (SSO) and secure remote access for web applications hosted on-premises. This can include SharePoint sites, Outlook Web Access, or any other LOB web applications you have. These on-premises web applications are integrated with Azure AD, the same identity and control platform that is used by O365. End users can then access your on-premises applications the same way they access O365 and other SaaS apps integrated with Azure AD. You don't need to change the network infrastructure or require VPN to provide this solution for your users.
+## 優れたソリューションである理由
+Azure AD アプリケーション プロキシは、すべてのオンプレミスのアプリケーションに、簡単、安全、かつコスト効率の高いリモート アクセス ソリューションを提供します。
 
-## <a name="why-is-this-a-better-solution?"></a>Why is this a better solution?
-Azure AD Application Proxy provides a simple, secure, and cost-effective remote access solution to all your on-premises applications.
+Azure AD アプリケーション プロキシは:
 
-Azure AD Application Proxy:  
+- クラウドで動作するため、時間とコストを節約できます。オンプレミスのソリューションでは、DMZ、エッジ サーバー、またはその他の複雑なインフラストラクチャを設定し維持する必要があります。
 
-- Works in the cloud, so you can save time and money. On-premises solutions require you to set up and maintain DMZs, edge servers, or other complex infrastructures.  
+- ファイアウォール経由で受信接続を開く必要がないため、オンプレミスのソリューションよりも設定が簡単で安全です。
 
-- Is easier to set up and secure than on-premises solutions because you don't have to open any inbound connections through your firewall.  
+- 優れたセキュリティを提供します。Azure AD アプリケーション プロキシを使用してアプリを発行するときは、Azure の豊富な承認制御とセキュリティ分析を活用できます。つまり、アプリを変更しなくても、既存のすべてのアプリのセキュリティ機能が強化されます。
 
-- Offers great security. When you publish your apps using Azure AD Application Proxy, you can take advantage of the rich authorization controls and security analytics in Azure. This means that you get advanced security capabilities for all your existing apps without having to change any app.  
+- ユーザーに、一貫性のある認証エクスペリエンスを提供します。シングル サインオンにより、エンド ユーザーは生産的であるために必要なすべてのアプリに、1 つのパスワードで簡単かつシンプルにアクセスできます。
 
-- Gives your users a consistent authentication experience. Single sign-on gives your end users the ease and simplicity of access to all the apps they need to be productive with one password.  
+## Azure AD アプリケーション プロキシと連動するアプリケーションの種類
+Azure AD アプリケーション プロキシを使用すると、次のようなさまざまな種類の内部アプリケーションにアクセスできます。
 
-## <a name="what-kind-of-applications-work-with-azure-ad-application-proxy?"></a>What kind of applications work with Azure AD Application Proxy?
-With Azure AD Application Proxy you can access different types of internal applications:
+- 認証に統合 Windows 認証を使用する Web アプリケーション
+- フォーム ベースのアクセスを使用する Web アプリケーション
+- さまざまなデバイスの豊富なアプリケーションに公開する Web API
+- リモート デスクトップ ゲートウェイの背後でホストされているアプリケーション
 
-- Web applications that use Integrated Windows Authentication for authentication  
-- Web applications that use form-based access  
-- Web APIs that you want to expose to rich applications on different devices  
-- Applications hosted behind a Remote Desktop Gateway  
+## それはどのように機能しますか?
+アプリケーション プロキシは、社内ネットワークに "コネクタ" と呼ばれる軽量の Windows Server サービスをインストールすることによって機能します。コネクタを使用すると、受信ポートを開いたり、DMZ に配置したりする必要はありません。アプリのトラフィック量が多い場合は、コネクタを増設すれば、このサービスによって負荷分散が行われます。コネクタはステートレスで、すべての情報が必要に応じてクラウドから取得されます。
 
-## <a name="how-does-it-work?"></a>How does it work?
-Application Proxy works by installing a slim Windows Server service called a connector inside your network. With the connector, you don't have to open any inbound ports or put anything in the DMZ. If you have high traffic in your apps you can add more connectors, and the service takes care of the load balancing. The connectors are stateless and pull everything from the cloud as necessary.
+ユーザーは、アプリケーションにリモートでアクセスするときは、公開されているエンドポイントに接続します。ユーザーは、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。
 
-When users access applications remotely, they connect to the published endpoint. Users authenticate in Azure AD and then are routed through the connector to the on-premises application.
+ ![Azure AD アプリケーション プロキシ ダイアグラム](./media/active-directory-appssoaccess-whatis/azureappproxxy.png)
 
- ![AzureAD Application Proxy diagram](./media/active-directory-appssoaccess-whatis/azureappproxxy.png)
+1. ユーザーがアプリケーション プロキシ経由でアプリケーションにアクセスすると、認証のための Azure AD サインイン ページが表示されます。
+2. サインインに成功すると、トークンが生成され、ユーザーに送信されます。
+3. ユーザーはここでアプリケーション プロキシにトークンを送信します。アプリケーション プロキシは、そのトークンからユーザー プリンシパル名 (UPN) とセキュリティ プリンシパル名 (SPN) を取得し、コネクタに要求を送信します。
+4. コネクタは、ユーザーの代理として内部 (Windows) 認証に使用できる Kerberos チケットを要求します。これは Kerberos の制約付き委任として知られています。
+5. Active Directory では、Kerberos チケットを取得します。
+6. チケットは、アプリケーション サーバーに送信されて検証されます。
+7. 応答がアプリケーション プロキシ経由でエンドユーザーに送信されます。
 
-1. The user accesses the application through the Application Proxy and is directed to the Azure AD sign-in page to authenticate.
-2. After a successful sign-in, a token is generated and sent to the user.
-3. The user sends the token to Application Proxy, which retrieves the user principal name (UPN) and security principal name (SPN) from the token, then directs the request to the connector.
-4. On behalf of the user, the connector requests a Kerberos ticket that can be used for internal (Windows) authentication. This is known as Kerberos Constrained Delegation.
-5. Active Directory retrieves the Kerberos ticket.
-6. The ticket is sent to the application server and verified.
-7. The response is sent through Application Proxy to the user.
+### シングル サインオン
+Azure AD アプリケーション プロキシは、統合 Wndows 認証 (IWA) や要求に対応するアプリケーションへのシングル サインオン (SSO) を提供します。発行対象のアプリケーションで IWA が使用されている場合、アプリケーション プロキシが Kerberos の制約付き委任を使い、見かけ上ユーザーとして振る舞うことで、SSO を実現します。Azure Active Directory を信頼している要求に対応するアプリケーションでは、Azure AD によってユーザーが認証済みであるために SSO が成立します。
 
-### <a name="single-sign-on"></a>Single sign-on
-Azure AD Application Proxy provides single sign-on (SSO) to applications that use Integrated Windows Authentication (IWA), or claims-aware applications. If your application uses IWA, Application Proxy impersonates the user using Kerberos Constrained Delegation to provide SSO. If you have a claims-aware application that trusts Azure Active Directory, SSO is achieved because the user was already authenticated by Azure AD.
+## ファースト ステップ
+Azure AD Basic または Azure AD Premium サブスクリプションに加え、自分が全体管理者となっている Azure AD ディレクトリが必要です。ディレクトリ管理者、およびアプリにアクセスするユーザーについても、Azure AD Basic または Azure AD Premium のライセンスが必要となります。詳細については、「[Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
-## <a name="how-to-get-started"></a>How to get started
-Make sure you have an Azure AD basic or premium subscription and an Azure AD directory for which you are a global administrator. You also need Azure AD basic or premium licenses for the directory administrator and users accessing the apps. See [Azure Active Directory editions](active-directory-editions.md) for more information.
+アプリケーション プロキシの設定は、次の 2 つの手順で行います。
 
-Setting up Application Proxy is accomplished in two steps:
+1. [アプリケーション プロキシを有効にしてコネクタを構成する。](active-directory-application-proxy-enable.md)
+2. [アプリケーションを発行する。](active-directory-application-proxy-publish.md)ウィザードを使ってオンプレミスのアプリを発行し、リモートからアクセスできるようにします。
 
-1. [Enable Application Proxy and configure the connector](active-directory-application-proxy-enable.md)    
-2. [Publish applications](active-directory-application-proxy-publish.md) - use the quick and easy wizard to get your on-premises apps published and accessible remotely.
+## 次の手順
+アプリケーション プロキシを使ってできることは他にもたくさんあります。
 
-## <a name="what's-next?"></a>What's next?
-There's a lot more you can do with Application Proxy:
+- [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
+- [シングル サインオンを有効にする](active-directory-application-proxy-sso-using-kcd.md)
+- [要求に対応するアプリケーションを利用する](active-directory-application-proxy-claims-aware-apps.md)
+- [条件付きアクセスを有効にする](active-directory-application-proxy-conditional-access.md)
 
-- [Publish applications using your own domain name](active-directory-application-proxy-custom-domains.md)
-- [Enable single-sign on](active-directory-application-proxy-sso-using-kcd.md)
-- [Working with claims aware applications](active-directory-application-proxy-claims-aware-apps.md)
-- [Enable conditional access](active-directory-application-proxy-conditional-access.md)
+最新のニュースと更新プログラムについては、[アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)をご覧ください。
 
-For the latest news and updates, check out the [Application Proxy blog](http://blogs.technet.com/b/applicationproxyblog/)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

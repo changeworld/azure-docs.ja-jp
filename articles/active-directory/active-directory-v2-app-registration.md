@@ -1,55 +1,50 @@
 <properties
-    pageTitle="v2.0 app registration | Microsoft Azure"
-    description="How to register an app with Microsoft for enabling sign-in and accessing Microsoft services using the v2.0 endpoint"
-    services="active-directory"
-    documentationCenter=""
-    authors="dstrockis"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="v2.0 アプリケーションの登録 | Microsoft Azure"
+	description="v2.0 エンドポイントを使用し、アプリケーションを Microsoft に登録して Microsoft サービスへのサインインとアクセスを有効にする方法"
+	services="active-directory"
+	documentationCenter=""
+	authors="dstrockis"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/16/2016"
-    ms.author="dastrock"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/16/2016"
+	ms.author="dastrock"/>
 
+# v2.0 エンドポイントを使用してアプリケーションを登録する方法
 
-# <a name="how-to-register-an-app-with-the-v2.0-endpoint"></a>How to register an app with the v2.0 endpoint
-
-To build an app that accepts both MSA & Azure AD sign-in, you'll first need to register an app with Microsoft.  At this time, you won't be able to use any existing apps you may have with Azure AD or MSA - you'll need to create a brand new one.
+MSA および Azure AD サインインの両方を受け付けるアプリを構築するには、最初に、アプリを Microsoft に登録する必要があります。現時点では、Azure AD または MSA で利用している既存のアプリは使用できません。新しいアプリを作成してください。
 
 > [AZURE.NOTE]
-    Not all Azure Active Directory scenarios & features are supported by the v2.0 endpoint.  To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
-## <a name="visit-the-microsoft-app-registration-portal"></a>Visit the Microsoft app registration portal
-First things first - navigate to [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com).  This is a new app registration portal where you can manage your Microsoft apps.
+## Microsoft アプリ登録ポータルにアクセスする
+まず、[https://apps.dev.microsoft.com](https://apps.dev.microsoft.com) に移動します。これは、マイクロソフトのアプリに関するあらゆることを管理できる新しいアプリ登録ポータルです。
 
-Sign in with either a personal or work or school Microsoft account.  If you don't have either, sign up for a new personal account. Go ahead, it won't take long - we'll wait here.
+Microsoft の個人または職場/学校アカウントのいずれかでサインインします。いずれのアカウントもをお持ちでない場合は、新しい個人アカウントを新規登録します。簡単に登録できますので、今すぐサインアップしましょう。
 
-Done? You should now be looking at your list of Microsoft apps, which is probably empty.  Let's change that.
+サインアップできましたか? おそらく空の Microsoft アプリの一覧が表示されているはずです。これを変更してみましょう。
 
-Click **Add an app**, and give it a name.  The portal will assign your app a globally unique  Application Id that you'll use later in your code.  If your app includes a server-side component that needs access tokens for calling APIs (think: Office, Azure, or your own web API), you'll want to create an **Application Secret** here as well.
+**[アプリの追加]** をクリックし、名前を付けます。ポータルにより、アプリにグローバルに一意のアプリケーション ID が割り当てられます。これは、後ほどコードで使用します。アプリに API を呼び出すためのアクセス トークンが必要なサーバー側コンポーネントが含まれる場合 (Office、Azure、独自の Web API など)、**アプリケーションのシークレット**を作成することもできます。
 <!-- TODO: Link for app secrets -->
 
-Next, add the Platforms that your app will use.
+次に、アプリで使用するプラットフォームを追加します。
 
-- For web based apps, provide a **Redirect URI** where sign-in messages can be sent.
-- For mobile apps, copy down the default redirect uri automatically created for you.
+- Web ベースのアプリの場合、サインイン メッセージを送信できる**リダイレクト URI** を指定します。
+- モバイル アプリの場合、自動的に作成される既定のリダイレクト URI をメモしておきます。
 
-Optionally, you can customize the look and feel of your sign-in page in the Profile section.  Make sure to click **Save** before moving on.
+必要に応じて、[プロファイル] セクションでサインイン ページの外観をカスタマイズできます。続行する前に、忘れずに **[保存]** をクリックします。
 
-> [AZURE.NOTE] When you create an application using [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com), the application will be registered in the home tenant of the account that you use to sign into the portal.  This means that you can not register an application in your Azure AD tenant using a personal Microsoft account.  If you explicitly wish to register an application in a particular tenant, sign in with an account originally created in that tenant.
+> [AZURE.NOTE] [https://apps.dev.microsoft.com](https://apps.dev.microsoft.com) を使用して作成したアプリケーションは、このポータルへのサインインに使用しているアカウントのホーム テナントに登録されます。つまり、個人の Microsoft アカウントを使用して Azure AD テナントにアプリケーションを登録することはできません。アプリケーションを特定のテナントに登録する場合は、そのテナントで作成したアカウントを使ってサインインしてください。
 
-## <a name="build-a-quick-start-app"></a>Build a quick start app
-Now that you have a Microsoft app, you can complete one of our v2.0 quick start tutorials.  Here are a few recommendations:
+## クイック スタート アプリケーションを構築する
+Microsoft アプリを構築したら、いずれかの v2.0 クイック スタート チュートリアルを実行します。以下に、推奨事項をいくつか示します。
 
 [AZURE.INCLUDE [active-directory-v2-quickstart-table](../../includes/active-directory-v2-quickstart-table.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

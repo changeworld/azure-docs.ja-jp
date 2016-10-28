@@ -1,7 +1,3 @@
-> [AZURE.NOTE]
-> To complete this tutorial, you need an Azure account. You can <a href="http://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/" target="_blank">activate your MSDN subscriber benefits</a> or <a href="http://www.windowsazure.com/pricing/free-trial/" target="_blank">sign up for a free trial</a>.
+> [AZURE.NOTE]このチュートリアルを完了するには、Azure アカウントが必要です。<a href="http://www.windowsazure.com/pricing/member-offers/msdn-benefits-details/" target="_blank">MSDN サブスクライバーの特典を有効にする</a>か、<a href="http://www.windowsazure.com/pricing/free-trial/" target="_blank">無料試用版にサインアップ</a>してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

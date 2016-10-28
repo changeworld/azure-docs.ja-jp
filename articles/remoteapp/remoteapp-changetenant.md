@@ -1,7 +1,7 @@
 
 <properties
-    pageTitle="Change the Azure Active Directory tenant in Azure RemoteApp | Microsoft Azure"
-    description="Learn how to change the Azure Active Directory tenant associated with Azure RemoteApp"
+    pageTitle="Azure RemoteApp で Azure Active Directory テナントを変更する | Microsoft Azure"
+    description="Azure RemoteApp に関連付けられている Azure Active Directory テナントの変更方法について説明します。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -18,41 +18,36 @@
 
 
 
-
-# <a name="change-the-azure-active-directory-tenant-in-azure-remoteapp"></a>Change the Azure Active Directory tenant in Azure RemoteApp
+# Azure RemoteApp で Azure Active Directory テナントを変更する
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Azure RemoteApp uses Azure Active Directory (Azure AD) to allow user access. The only Azure AD tenant that you can use in Azure RemoteApp is the one associated with the Azure subscription. You can view the associated subscription on the **Settings** page in the portal. Look at the **Directory** column on the **Subscriptions** tab.
+Azure RemoteApp では Azure Active Directory (Azure AD) を使用してユーザーのアクセスを許可します。Azure RemoteApp で使用可能な唯一の Azure AD テナントは、Azure サブスクリプションに関連付けられているテナントです。ポータルの **[設定]** ページで、関連付けられているサブスクリプションを確認できます。**[サブスクリプション]** タブの **[ディレクトリ]** 列に注目します。
 
-> [AZURE.NOTE] For this change to succeed, first remove all users from the existing Azure Active Directory tenant from all Azure RemoteApp collections. To do this, go to the Azure Portal, go to the **Azure RemoteApp** tab and open every Azure RemoteApp collection. Go to the **Users** tab and remove users that belong to your current Azure Active Directory tenant. Repeat for all existing Azure RemoteApp collections. Without doing this, you will not be able to create or patch collections.
+> [AZURE.NOTE] この変更を完了するには、まず、すべての Azure RemoteApp コレクションの既存の Azure Active Directory テナントからすべてのユーザーを削除します。これを行うには、Azure ポータルに移動し、**[Azure RemoteApp]** タブに進み、すべての Azure RemoteApp コレクションを開きます。**[ユーザー]** タブに進み、現在の Azure Active Directory テナントに属しているユーザーを削除します。すべての既存の Azure RemoteApp コレクションに対して繰り返します。この作業を行わないと、コレクションを作成またはパッチできません。
 
-If you want to use a different tenant, use these steps to change the association with your subscription:
+別のテナントを使用する場合は、この手順を使用して、サブスクリプションの関連付けを変更します。
 
-1. In the portal, remove any Azure AD users to which you’ve given access to Azure RemoteApp collections. (See the note above for steps on how to do this.)
-
-
-2. Set a Microsoft account (formerly called a Live ID) as the Service administrator. (Don't know if you already are the service admin? You can find out by clicking **Settings -> Administrators**.) Now, here's how you change that:
-    1. Click the user in the upper right corner, and then click **View my bill**.
-    2. Click the subscription. Then, on the new page, scroll down and click **Edit subscription details** in the right. (Sort of the middle bottom right, if that helps you find it.)
-    3. Type the Microsoft account for the user that should be the service admin.
-
-3. Now, sign out of the portal, and then sign back in with the Microsoft account you specified in the previous step.
+1. ポータルで、Azure RemoteApp コレクションへのアクセス許可を付与した Azure AD ユーザーを削除します。(これを行う手順については、上の注を参照してください。)
 
 
-4. Click **New -> App Services -> Active Directory -> Directory -> Custom Create**.
-5. Under **Directory**, choose **Use existing directory**. We're going to have to sign you out of the portal now, so choose **I am ready to be signed out now**.
-6. Sign back into the portal as a global admin of the directory you want to add. (If you weren't already a global admin, you will be after a round of sign in and then sign out.)
-7. You'll be asked when you sign in if you want to use your existing AD tenant with your subscription. Click **Continue**, and then click **Sign out now**.
-5. Sign back in again, and go back to **Settings -> Subscriptions**. Select your subscription, and then click **Edit Directory**. Select the Azure AD tenant that you want to use.
+2. サービス管理者として、Microsoft アカウント (以前の Live ID) を設定します。(サービス管理者になっているかわかりませんか。 **[設定] -> [管理者]** の順にクリックすると、わかります。) それでは、変更方法です。
+	1. 右上隅のユーザーをクリックし、**[明細の表示]** をクリックします。
+	2. サブスクリプションをクリックします。次に、新しいページで、下にスクロールし、右にある **[サブスクリプションの詳細を編集]** をクリックします。(正確に言うと、真ん中の一番下の右です。)
+	3. ユーザーの Microsoft アカウントを入力します。このユーザーはサービス管理者にする必要があります。
+
+3. ポータルからサインアウトし、前の手順で指定した Microsoft アカウントを使用して再度サインインします。
 
 
-
-You can now use the new Azure AD tenant to control access to the Azure subscription and to configure user access in Azure RemoteApp.
+4. **[新規]、[App Services]、[Active Directory]、[ディレクトリ]、[カスタム作成]** の順にクリックします。
+5. **[ディレクトリ]** の下で、**[既存のディレクトリの使用]** を選択します。これからサインアウトしなければならないので、**[サインアウトする準備ができました]** を選択します。
+6. 追加するディレクトリのグローバル管理者としてポータルに再度サインインします。(グローバル管理者になっていなかった場合、サインインしてサインアウトした後にグローバル管理者になります。)
+7. サインインすると、サブスクリプションで既存の AD テナントを使用するか問われます。**[続行]** をクリックし、**[今すぐサインアウト]** をクリックします。
+5. 再度サインインし、**[設定] -> [サブスクリプション]** に戻ります。サブスクリプションを選択し、**[ディレクトリの編集]** をクリックします。使用する Azure AD テナントを選択します。
 
 
 
-<!--HONumber=Oct16_HO2-->
+これで新しい Azure AD テナントを使用し、Azure サブスクリプションへのアクセスを制御したり、Azure RemoteApp 内のユーザー アクセスを構成したりできます。
 
-
+<!---HONumber=AcomDC_0817_2016-->

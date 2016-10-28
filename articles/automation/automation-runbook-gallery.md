@@ -1,147 +1,141 @@
 <properties
-    pageTitle="Runbook and module galleries for Azure Automation | Microsoft Azure"
-    description="Runbooks and modules from Microsoft and the community are available for you to install and use in your Azure Automation environment.  This article describes how you can access these resources and to contribute your runbooks to the gallery."
-    services="automation"
-    documentationCenter=""
-    authors="mgoedtel"
-    manager="jwhit"
-    editor="tysonn" />
+	pageTitle="Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー | Microsoft Azure"
+	description="Microsoft やコミュニティからの Runbook とモジュールを Azure Automation 環境にインストールして使用できます。この記事では、これらのリソースにアクセスしたり、自分の Runbook をギャラリーに投稿したりする方法について説明します。"
+	services="automation"
+	documentationCenter=""
+	authors="mgoedtel"
+	manager="jwhit"
+	editor="tysonn" />
 <tags
-    ms.service="automation"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="09/18/2016"
-    ms.author="magoedte;bwren" />
+	ms.service="automation"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="infrastructure-services"
+	ms.date="09/18/2016"
+	ms.author="magoedte;bwren" />
 
 
+# Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 
-# <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook and module galleries for Azure Automation
+Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているさまざまなシナリオにアクセスできます。これらのシナリオを変更しないでそのまま使用することも、特定の要件に合うように編集することもできます。
 
-Rather than creating your own runbooks and modules in Azure Automation, you can access a variety of scenarios that have already been built by Microsoft and the community.  You can either use these scenarios without modification or you can use them as a starting point and edit them for your specific requirements.
+Runbook は [Runbook ギャラリー](#runbooks-in-runbook-gallery)から、モジュールは [PowerShell ギャラリー](#modules-in-powerShell-gallery)から入手できます。開発したシナリオを共有することにより、コミュニティに貢献することもできます。
 
-You can get runbooks from the [Runbook Gallery](#runbooks-in-runbook-gallery) and modules from the [PowerShell Gallery](#modules-in-powerShell-gallery).  You can also contribute to the community by sharing scenarios that you develop.
+## Runbook ギャラリーでの Runbook
 
-## <a name="runbooks-in-runbook-gallery"></a>Runbooks in Runbook Gallery
+[Runbook ギャラリー](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=RootCategory&f[0].Value=WindowsAzure&f[1].Type=SubCategory&f[1].Value=WindowsAzure_automation&f[1].Text=Automation)では、Microsoft やコミュニティからさまざまな Runbook が提供されており、それを Azure Automation にインポートできます。[TechNet スクリプト センター](http://gallery.technet.microsoft.com/)でホストされているギャラリーから Runbook をダウンロードすることも、Azure クラシック ポータルまたは Azure ポータルでギャラリーから Runbook を直接インポートすることもできます。
 
-The [Runbook Gallery](http://gallery.technet.microsoft.com/scriptcenter/site/search?f[0].Type=RootCategory&f[0].Value=WindowsAzure&f[1].Type=SubCategory&f[1].Value=WindowsAzure_automation&f[1].Text=Automation) provides a variety of runbooks from Microsoft and the community that you can import into Azure Automation. You can either download a runbook from the gallery which is hosted in the [TechNet Script Center](http://gallery.technet.microsoft.com/), or you can directly import runbooks from the gallery from either the Azure classic portal or Azure portal.
+Runbook ギャラリーから直接インポートできるのは、Azure クラシック ポータルまたは Azure ポータルを使用した場合のみです。Windows PowerShell を使用してこの機能を実行することはできません。
 
-You can only import directly from the Runbook Gallery using the Azure classic portal or Azure portal. You cannot perform this function using Windows PowerShell.
+>[AZURE.NOTE] Runbook ギャラリーから取得した Runbook は、内容を検証し、運用環境でインストールおよび実行するときは細心の注意を払う必要があります。
 
->[AZURE.NOTE] You should validate the contents of any runbooks that you get from the Runbook Gallery and use extreme caution in installing and running them in a production environment.|
+### Azure クラシック ポータルで Runbook ギャラリーから Runbook をインポートするには
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-classic-portal"></a>To import a runbook from the Runbook Gallery with the Azure classic portal
+1. Azure ポータルで、**[新規]**、**[App Services]**、**[Automation]**、**[Runbook]**、**[ギャラリーから]** の順にクリックします。
+2. カテゴリを選択して関連する Runbook を表示し、Runbook を選択して詳細を表示します。目的の Runbook を選択するときは、右矢印ボタンをクリックします。
 
-1. In the Azure Portal, click, **New**, **App Services**, **Automation**, **Runbook**, **From Gallery**.
-2. Select a category to view related runbooks, and select a runbook to view its details. When you select the runbook you want, click the right arrow button.
+    ![Runbook ギャラリー](media/automation-runbook-gallery/runbook-gallery.png)
 
-    ![Runbook gallery](media/automation-runbook-gallery/runbook-gallery.png)
+3. Runbook の内容を確認し、説明の要件に注意します。終了したら右矢印ボタンをクリックします。
+4. Runbook の詳細を入力し、チェック マーク ボタンをクリックします。Runbook の名前は既に設定されています。
+5. Runbook が Automation アカウントの **[Runbook]** タブに表示されます。
 
-3. Review the contents of the runbook and note any requirements in the description. Click the right arrow button when you’re done.
-4. Enter the runbook details and then click the checkmark button. The runbook name will already be filled in.
-5. The runbook will appear on the **Runbooks** tab for the Automation Account.
+### Azure ポータルで Runbook ギャラリーから Runbook をインポートするには
 
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>To import a runbook from the Runbook Gallery with the Azure portal
+1. Azure ポータルで、Automation アカウントを開きます。
+2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
+3. **[ギャラリーの参照]** ボタンをクリックします。
 
-1. In the Azure Portal, open your Automation account.
-2. Click on the **Runbooks** tile to open the list of runbooks.
-3. Click **Browse gallery** button.
+    ![[ギャラリーの参照] ボタン](media/automation-runbook-gallery/browse-gallery-button.png)
 
-    ![Browse gallery button](media/automation-runbook-gallery/browse-gallery-button.png)
+4. 必要なギャラリー項目を探し、選択して詳細を表示します。
 
-4. Locate the gallery item you want and select it to view its details.
+    ![ギャラリーの参照](media/automation-runbook-gallery/browse-gallery.png)
 
-    ![Browse gallery](media/automation-runbook-gallery/browse-gallery.png)
+4. **[ソース プロジェクトの表示]** をクリックして、[TechNet スクリプト センター](http://gallery.technet.microsoft.com/)の項目を表示します。
+5. 項目をインポートするには、項目クリックして詳細を表示し、**[インポート]** ボタンをクリックします。
 
-4. Click on **View source project** to view the item in the [TechNet Script Center](http://gallery.technet.microsoft.com/).
-5. To import an item, click on it to view its details and then click the **Import** button.
+    ![[インポート] ボタン](media/automation-runbook-gallery/gallery-item-detail.png)
 
-    ![Import button](media/automation-runbook-gallery/gallery-item-detail.png)
-
-6. Optionally, change the name of the runbook and then click **OK** to import the runbook.
-5. The runbook will appear on the **Runbooks** tab for the Automation Account.
+6. 必要に応じて Runbook の名前を変更し、**[OK]** をクリックして Runbook をインポートします。
+5. Runbook が Automation アカウントの **[Runbook]** タブに表示されます。
 
 
-### <a name="adding-a-runbook-to-the-runbook-gallery"></a>Adding a runbook to the runbook gallery
+### Runbook ギャラリーへの Runbook の追加
 
-Microsoft encourages you to add runbooks to the Runbook Gallery that you think would be useful to other customers.  You can add a runbook by [uploading it to the Script Center](http://gallery.technet.microsoft.com/site/upload) taking into account the following details.
+他のユーザーにも役に立つと思われる Runbook を Runbook ギャラリーに追加してください。[Runbook をスクリプト センターにアップロード](http://gallery.technet.microsoft.com/site/upload)して追加するときは、次の詳細を考慮してください。
 
-- You must specify *Windows Azure* for the **Category** and *Automation* for the **Subcategory** for the runbook to be displayed in the wizard.  
+- Runbook をウィザードに表示するには、**カテゴリ**として *Microsoft Azure* を指定し、**サブカテゴリ**として *Automation* を指定する必要があります。
 
-- The upload must be a single .ps1 or .graphrunbook file.  If the runbook requires any modules, child runbooks, or assets, then you should list those in the description of the submission and in the comments section of the runbook.  If you have a scenario requiring multiple runbooks, then upload each separately and list the names of the related runbooks in each of their descriptions. Make sure that you use the same tags so that they will show up in the same category. A user will have to read the description to know that other runbooks are required the scenario to work.
+- アップロードは、単一の .ps1 ファイルまたは .graphrunbook ファイルである必要があります。Runbook でモジュール、子 Runbook、または資産が必要な場合は、送信の説明および Runbook のコメント セクションで列記する必要があります。複数の Runbook を必要とするシナリオがある場合は、各 Runbook を個別にアップロードし、それぞれの説明に関連する Runbook の名前を列記します。同じカテゴリに表示されるように同じタグを使用していることを確認します。シナリオが動作するためには他の Runbook が必要であることをユーザーが知るには、説明を読む必要があります。
 
-- Add the tag "GraphicalPS" if you are publishing a **Graphical runbook** (not a Graphical Workflow). 
+- (グラフィカル ワークフローではなく) **グラフィック Runbook** を発行する場合は、"GraphicalPS" タグを追加します。
 
-- Insert either a PowerShell or PowerShell Workflow code snippet into the description using **Insert code section** icon.
+- **[コード セクションの挿入]** アイコンを使用して、PowerShell または PowerShell ワークフローのコード スニペットを説明に挿入します。
 
-- The Summary for the upload will be displayed in the Runbook Gallery results so you should provide detailed information that will help a user identify the functionality of the runbook.
+- アップロードの概要が Runbook ギャラリーの結果に表示されるので、ユーザーが Runbook の機能を特定するのに役立つ詳細な情報を提供する必要があります。
 
-- You should assign one to three of the following Tags to the upload.  The runbook will be listed in the wizard under the categories that match its tags.  Any tags not on this list will be ignored by the wizard. If you don’t specify any matching tags, the runbook will be listed under the Other category.
+- 次のタグから 1 ～ 3 個をアップロードに割り当てる必要があります。ウィザードでは、Runbook はそのタグに一致するカテゴリの下に表示されます。この一覧にないタグは、ウィザードによって無視されます。一致するタグを指定しないと、Runbook はその他のカテゴリに表示されます。
 
- - Backup
- - Capacity Management
+ - バックアップ
+ - 容量管理
  - Change Control
- - Compliance
+ - コンプライアンス
  - Dev / Test Environments
- - Disaster Recovery
- - Monitoring
+ - 障害復旧
+ - 監視
  - Patching
- - Provisioning
- - Remediation
+ - プロビジョニング
+ - 修復
  - VM Lifecycle Management
 
 
-- Automation updates the Gallery once an hour, so you won’t see your contributions immediately.
+- Automation はギャラリーを 1 時間に 1 回更新するので、投稿物がすぐに表示されないことがあります。
 
-## <a name="modules-in-powershell-gallery"></a>Modules in PowerShell Gallery
+## PowerShell ギャラリーのモジュール
 
-PowerShell modules contain cmdlets that you can use in your runbooks, and existing modules that you can install in Azure Automation are available in the [PowerShell Gallery](http://www.powershellgallery.com).  You can launch this gallery from the Azure portal and install them directly into Azure Automation or you can download them and install them manually.  You cannot install the modules directly from the Azure classic portal, but you can download them install them as you would any other module.
+PowerShell モジュールには Runbook で使用できるコマンドレットが含まれ、Azure Automation でインストールできる既存のモジュールを [PowerShell ギャラリー](http://www.powershellgallery.com)から入手できます。このギャラリーは Azure ポータルから起動でき、Azure Automation に直接インストールするか、ダウンロードして手動でインストールすることができます。Azure クラシック ポータルからは直接モジュールをインストールすることはできませんが、他のモジュールと同じように、ダウンロードしてインストールすることはできます。
 
-### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>To import a module from the Automation Module Gallery with the Azure portal
+### Azure ポータルで Automation モジュール ギャラリーからモジュールをインポートするには
 
-1. In the Azure Portal, open your Automation account.
-2. Click on the **Assets** tile to open the list of assets.
-3. Click on the **Modules** tile to open the list of modules.
-4. Click on the **Browse gallery** button and the Browse gallery blade is launched.
+1. Azure ポータルで、Automation アカウントを開きます。
+2. **[アセット]** タイルをクリックして、資産の一覧を開きます。
+3. **[モジュール]** タイルをクリックして、モジュールの一覧を開きます。
+4. **[ギャラリーを参照]** ボタンをクリックして、ギャラリーの参照ブレードを起動します。
 
-    ![Module gallery](media/automation-runbook-gallery/modules-blade.png) <br>
-5. After you have launched the Browse gallery blade, you can search by the following fields:
+    ![モジュール ギャラリー](media/automation-runbook-gallery/modules-blade.png) <br>
+5. ギャラリーの参照ブレードを起動した後は、次のフィールドで検索できます。
 
-   - Module Name
-   - Tags
-   - Author
-   - Cmdlet/DSC resource name
+   - モジュール名
+   - タグ
+   - 作成者
+   - コマンドレット/DSC リソース名
 
-6. Locate a module that you're interested in and select it to view its details.  
-When you drill into a specific module, you can view more information about the module, including a link back to the PowerShell Gallery, any required dependencies, and all of the cmdlets and/or DSC resources that the module contains.
+6. 目的のモジュールを探し、選択して詳細を表示します。特定のモジュールにドリル ダウンする場合は、PowerShell ギャラリーに戻るリンク、必要な依存関係、およびモジュールが含むコマンドレット/DSC リソースのすべてを含むモジュールの詳細を表示できます。
 
-    ![PowerShell module details](media/automation-runbook-gallery/gallery-item-details-blade.png) <br>
+    ![PowerShell モジュールの詳細](media/automation-runbook-gallery/gallery-item-details-blade.png) <br>
 
-7. To install the module directly into Azure Automation, click the **Import** button.
+7. モジュールを Azure Automation に直接インストールするには、**[インポート]** ボタンをクリックします。
 
-    ![Import module button](media/automation-runbook-gallery/module-import-button.png)
+    ![[モジュールのインポート] ボタン](media/automation-runbook-gallery/module-import-button.png)
 
-8. When you click the Import button, you will see the module name that you are about to import. If all the dependencies are installed, the **OK** button will be active. If you are missing dependencies, you need to import those before you can import this module.
-9. Click **OK** to import the module, and the module blade will launch. When Azure Automation imports a module to your account, it extracts metadata about the module and the cmdlets.
+8. [インポート] ボタンをクリックすると、インポートしようとしているモジュール名が表示されます。すべての依存関係がインストールされている場合は、**[OK]** ボタンがアクティブになります。依存関係が存在しない場合は、このモジュールをインポートする前に、その依存関係をインポートする必要があります。
+9. **[OK]** をクリックしてモジュールをインポートすると、モジュールのブレードが開きます。Azure Automation がモジュールをアカウントにインポートする場合は、モジュールとコマンドレットについてのメタデータが抽出されます。
 
-    ![Import module blade](media/automation-runbook-gallery/module-import-blade.png)
+    ![[モジュールのインポート] ブレード](media/automation-runbook-gallery/module-import-blade.png)
 
-    This may take a couple of minutes since each activity needs to be extracted.
-10. You will receive a notification that the module is being deployed and a notification when it has completed.
-11. After the module is imported, you will see the available activities, and you can use its resources in your runbooks and Desired State Configuration.
+    各アクティビティを抽出する必要があるため、数分かかる場合があります。
+10. モジュールがデプロイされていることを示す通知、および完了したことを示す通知を受け取ります。
+11. モジュールがインポートされた後は、使用可能なアクティビティが表示され、Runbook と Desired State Configuration でそのリソースを使用できます。
 
-## <a name="requesting-a-runbook-or-module"></a>Requesting a runbook or module
+## Runbook またはモジュールの要求
 
-You can send requests to [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  If you need help writing a runbook or have a question about PowerShell, post a question to our [forum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).
+[ユーザーの声](https://feedback.azure.com/forums/246290-azure-automation/)に要求を送信できます。Runbook の作成について支援が必要な場合、または PowerShell について質問がある場合は、[フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/ja-JP/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc)に質問を投稿してください。
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-- To get started with runbooks, see [Creating or importing a runbook in Azure Automation](automation-creating-importing-runbook.md)
-- To understand the differences between PowerShell and PowerShell Workflow with runbooks, see [Learning PowerShell workflow](automation-powershell-workflow.md)
+- Runbookの使用を開始するには、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
+- Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「[PowerShell ワークフローについて](automation-powershell-workflow.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

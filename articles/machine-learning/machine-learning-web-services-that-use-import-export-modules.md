@@ -1,158 +1,152 @@
 <properties
-    pageTitle="Deploying Azure ML web services that use Data Import and Data Export modules | Microsoft Azure"
-    description="Learn how to use the Import Data and Export Data modules to send and receive data from a web service."
-    services="machine-learning"
-    documentationCenter=""
-    authors="vDonGlover"
-    manager="raymondlaghaeian"
-    editor=""/>
+	pageTitle="データのインポート モジュールとエクスポート モジュールを使用する Azure ML Web サービスのデプロイ | Microsoft Azure"
+	description="データのインポート モジュールとデータのエクスポート モジュールを使用して、Web サービスとデータを送受信する方法について説明します。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="vDonGlover"
+	manager="raymondlaghaeian"
+	editor=""/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/12/2016"
-    ms.author="v-donglo"/>
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/12/2016"
+	ms.author="v-donglo"/>
 
 
 
+# データのインポート モジュールとエクスポート モジュールを使用する Azure ML Web サービスのデプロイ 
 
-# <a name="deploying-azure-ml-web-services-that-use-data-import-and-data-export-modules"></a>Deploying Azure ML web services that use Data Import and Data Export modules 
+予測実験を作成するときには通常、Web サービスの入力と出力を追加します。実験を展開するときに、コンシューマーはこれらの入力と出力を介して Web サービスとのデータの送受信を行うことができます。一部のアプリケーションでは、コンシューマーのデータはデータ フィードから利用できるか、または Azure BLOB ストレージなどの外部データ ソースに既に存在しています。このような場合、Web サービスの入力と出力を使用してデータを読み書きする必要はありません。代わりに、バッチ実行サービス (BES) を使用して、データのインポート モジュールを使用してデータ ソースからデータを読み取り、データのエクスポート モジュールを使用して、スコア付けの結果を他のデータの場所に書き込むことができます。
 
-When you create a predictive experiment, you typically add a web service input and output. When you deploy the experiment, consumers can send and receive data from the web service through the inputs and outputs. For some applications, a consumer's data may be available from a data feed or already reside in an external data source such as Azure Blob storage. In these cases, they do not need read and write data using web service inputs and outputs. They can, instead, use the Batch Execution Service (BES) to read data from the data source using an Import Data module and write the scoring results to a different data location using an Export Data module.
+データのインポート モジュールとエクスポート モジュールは、HTTP を使用する Web URL、Hive クエリ、Azure SQL データベース、Azure テーブル ストレージ、Azure BLOB ストレージ、提供されているデータ フィード、またはオンプレミスの SQL データベースなどの多数のデータの場所に対してデータの読み取りと書き込みを行うことができます。
 
-The Import Data and Export data modules, can read from and write to a number of data locations such as a Web URL via HTTP, a Hive Query, an Azure SQL database, Azure Table storage, Azure Blob storage, a Data Feed provide, or an on-premise SQL database.
+このトピックでは "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" サンプルを使用しており、このデータセットは censusdata という名前の Azure SQL テーブルに既に読み込まれていることを前提としています。
 
-This topic uses the "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" sample and assumes the dataset has already been loaded into an Azure SQL table named censusdata.
-
-## <a name="create-the-training-experiment"></a>Create the training experiment 
+## トレーニング実験を作成する 
  
-When you open the "Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" sample it uses the sample Adult Census Income Binary Classification dataset. And the experiment in the canvas will look similar to the following image.
+"Sample 5: Train, Test, Evaluate for Binary Classification: Adult Dataset" サンプルを開くと、これはサンプル Adult Census Income Binary Classification データセットを使用しています。キャンバスの実験は以下の図のようになります。
 
-![Initial configuration of the experiment.](./media/machine-learning-web-services-that-use-import-export-modules/initial-look-of-experiment.png)
+![実験の初期構成です。](./media/machine-learning-web-services-that-use-import-export-modules/initial-look-of-experiment.png)
   
 
-To read the data from the Azure SQL table:
+Azure SQL テーブルからデータを読み取るには:
 
-1.  Delete the dataset module.
-2.  In the components search box, type import.
-3.  From the results list, add an *Import Data* module to the experiment canvas.
-4.  Connect output of the *Import Data* module the input of the *Clean Missing Data* module.
-5.  In properties pane, select **Azure SQL Database** in the **Data Source** dropdown.
-6.  In the **Database server name**, **Database name**, **User name**, and **Password** fields, enter the appropriate information for your database.
-7.  In the Database query field, enter the following query.
+1. 	データセット モジュールを削除します。
+2.	コンポーネントの検索ボックスで、「インポート」と入力します。
+3.	結果の一覧から、*データのインポート*モジュールを実験キャンバスに追加します。
+4.	*データのインポート*モジュールの出力と*見つからないデータのクリーンアップ*モジュールの入力を接続します。
+5.	[プロパティ] ウィンドウで、**[データ ソース]** ドロップダウンから **[Azure SQL Database]** を選択します。
+6.	**[データベース サーバー名]**、**[データベース名]**、**[ユーザー名]**、および **[パスワード]** フィールドに、データベースの適切な情報を入力します。
+7.	データベースのクエリ フィールドに、次のクエリを入力します。
 
-        select [age],
-           [workclass],
-           [fnlwgt],
-           [education],
-           [education-num],
-           [marital-status],
-           [occupation],
-           [relationship],
-           [race],
-           [sex],
-           [capital-gain],
-           [capital-loss],
-           [hours-per-week],
-           [native-country],
-           [income]
-        from dbo.censusdata;
+		select [age],
+		   [workclass],
+		   [fnlwgt],
+		   [education],
+		   [education-num],
+		   [marital-status],
+		   [occupation],
+		   [relationship],
+		   [race],
+		   [sex],
+		   [capital-gain],
+		   [capital-loss],
+		   [hours-per-week],
+		   [native-country],
+		   [income]
+		from dbo.censusdata;
 
-8.  At the bottom of the experiment canvas, click **Run**.
+8.	実験キャンバスの下部で、**[実行]** をクリックします。
 
-## <a name="create-the-predictive-experiment"></a>Create the predictive experiment
+## 予測実験を作成する
 
-Next you set up the predictive experiment from which you will deploy your web service.
+次に、Web サービスの展開元の予測実験を設定します。
 
-1.  At the bottom of the experiment canvas, click **Set Up Web Service** and select **Predictive Web Service [Recommended]**.
-2.  Remove the *Web Service Input* and *Web Service Output modules* from the predictive experiment. 
-3.  In the components search box, type export.
-4.  From the results list, add an *Export Data* module to the experiment canvas.
-5.  Connect output of the *Score Model* module the input of the *Export Data* module. 
-6.  In properties pane, select **Azure SQL Database** in the data destination dropdown.
-7.  In the **Database server name**, **Database name**, **Server user account name**, and **Server user account password** fields, enter the appropriate information for your database.
-8.  In the **Comma separated list of columns to be saved** field, type Scored Labels.
-9.  In the **Data table name field**, type dbo.ScoredLabels. If the table does not exist, it is created when the experiment is run or the web service is called.
-10. In the **Comma separated list of datatable columns** field, type ScoredLabels.
+1.	実験キャンバスの下部で、**[Web サービスの設定]** をクリックして **[予測 Web サービス] \(推奨)** を選択します。
+2.	予測実験から *Web サービス入力モジュール*と *Web サービス出力モジュール*を削除します。
+3.	コンポーネントの検索ボックスで、「エクスポート」と入力します。
+4.	結果の一覧から、*データのエクスポート*モジュールを実験キャンバスに追加します。
+5.	*モデルのスコア付け*モジュールの出力と*データのエクスポート*モジュールの入力を接続します。
+6.	[プロパティ] ウィンドウで、データの移動先ドロップダウンから **[Azure SQL Database]** を選択します。
+7.	**[データベース サーバー名]**、**[データベース名]**、**[サーバー ユーザー アカウント名]**、および **[サーバー ユーザー アカウント パスワード]** フィールドに、データベースの適切な情報を入力します。
+8.	**[保存する列のコンマ区切りリスト]** フィールドで、「スコア付けラベル」と入力します。
+9.	**[データ テーブル名] フィールド**で、「dbo.ScoredLabels」と入力します。テーブルが存在しない場合、テーブルは実験を実行したとき、または Web サービスが呼び出されたときに作成されます。
+10.	**[データベース列のコンマ区切りリスト]** フィールドで、「スコア付けラベル」と入力します。
 
-When you write an application that calls the final web service, you may want to specify a different input query or destination table at run time. To configure these inputs and outputs, you can use the Web Service Parameters feature to set the *Import Data* module *Data source* property and the *Export Data* mode data destination property.  For more information on Web Service Parameters, see the [AzureML Web Service Parameters entry](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/) on the Cortana Intelligence and Machine Learning Blog.
+最終的な Web サービスを呼び出すアプリケーションを作成する場合は、実行時に別の入力クエリまたは変換先テーブルを指定します。これらの入力と出力を構成するために、Web サービス パラメーターの機能を使用して*データのインポート*モジュールの*データソース*プロパティおよび*データのエクスポート*モード データの変換先プロパティを設定できます。Web サービス パラメーターの詳細については、Cortana Intelligence と Machine Learning ブログの[AzureML Web サービス パラメーターに関するエントリ](https://blogs.technet.microsoft.com/machinelearning/2014/11/25/azureml-web-service-parameters/)を参照してください。
 
-To configure the Web Service Parameters for the import query and the destination table:
+クエリのインポートおよび変換先テーブルの Web サービス パラメーターを構成するには:
 
-1.  In the properties pane for the *Import Data* module, click the icon at the top right of the **Database query** field and select **Set as web service parameter**.
-2.  In the properties pane for the *Export Data* module, click the icon at the top right of the **Data table name** field and select **Set as web service parameter**.
-3.  At the bottom of the *Export Data* module properties pane, in the **Web Service Parameters** section, click Database query and rename it Query.
-4.  Click **Data table name** and rename it **Table**.
+1.	*データのインポート*モジュールの [プロパティ] ウィンドウで、**[データベース クエリ]** フィールドの右上部にあるアイコンをクリックして、**[Set as web service parameter]** を選択します。
+2.	*データのエクスポート*モジュールの [プロパティ] ウィンドウで、**[データテーブル名]** フィールドの右上部にあるアイコンをクリックして、**[Set as web service parameter]** を選択します。
+3.	*データのエクスポート* モジュールの [プロパティ] ウィンドウの下部にある **[Web サービス パラメーター]** セクションで、[データベース クエリ] をクリックし、そのクエリの名前を「Query」に変更します。
+4.	**[データ テーブル名]** をクリックし、名前を 「**Table**」に変更します。
 
-When you are done, your experiment should look similar to the following image.
+完了すると、実験は以下の図のようになります。
  
-![Final look of experiment.](./media/machine-learning-web-services-that-use-import-export-modules/experiment-with-import-data-added.png)
+![最終的に実験は次のようになります。](./media/machine-learning-web-services-that-use-import-export-modules/experiment-with-import-data-added.png)
 
-Now you can deploy the experiment as a web service.
+Web サービスとして予測実験をデプロイできるようになります。
 
-## <a name="deploy-the-web-service"></a>Deploy the web service 
-You can deploy to either a Classic or New web service.
+## Web サービスをデプロイする 
+従来の、または新しい Web サービスにデプロイすることができます。
 
-### <a name="deploy-a-classic-web-service"></a>Deploy a Classic Web Service
+### 従来の Web サービスとしてデプロイする
 
-To deploy as a Classic Web Service and create an application to consume it:
+従来の Web サービスとしてデプロイし、それを使用するアプリケーションを作成します。
 
-1.  At the bottom of the experiment canvas, click Run.
-2.  When the run has completed, click **Deploy Web Service** and select **Deploy Web Service [Classic]**.
-3.  On the web service dashboard, locate your API key. Copy and save it to use later.
-4.  In the **Default Endpoint** table, click the **Batch Execution** link to open the API Help Page.
-5.  In Visual Studio, create a C# console application.
-6.  On the API Help Page, find the **Sample Code** section at the bottom of the page.
-7.  Copy and paste the C# sample code into your Program.cs file, and remove all references to the blob storage.
-8.  Update the value of the *apiKey* variable with the API key saved earlier.
-9.  Locate the request declaration and update the values of Web Service Parameters that are passed to the *Import Data* and *Export Data* modules. In this case, you will use the original query, but define a new table name.
+1.	実験キャンバスの下部で、[実行] をクリックします。
+2.	実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [Classic] \(Web サービスのデプロイ [従来])]** を選択します。
+3.	Web サービス ダッシュボードで、API キーを見つけます。この API キーをコピーして、後で使用できるように保存します。
+4.	**[既定のエンドポイント]** テーブルで、**[バッチ実行]** リンクをクリックして API ヘルプ ページを開きます。
+5.	Visual Studio で、C# コンソール アプリケーションを作成します。
+6.	API ヘルプ ページで、ページ下部にある **[サンプル コード]** セクションを見つけます。
+7.	C# サンプル コードをコピーして Program.cs ファイルに貼り付け、BLOB ストレージへの参照をすべて削除します。
+8.	*apiKey* 変数の値を、以前に保存した API キーで更新します。
+9.	要求の宣言を見つけて、*データのインポート*モジュールと*データのエクスポート*モジュールに渡される Web サービス パラメーターの値を更新します。この場合、元のクエリを使用しますが、新しいテーブル名を定義します。
 
-        var request = new BatchExecutionRequest() 
-        {   
-            GlobalParameters = new Dictionary<string, string>() {
-            { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-            { "Table", "dbo.ScoredTable2" },
-            }
-        };
+		var request = new BatchExecutionRequest() 
+		{	
+		    GlobalParameters = new Dictionary<string, string>() {
+			{ "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+			{ "Table", "dbo.ScoredTable2" },
+		    }
+		};
 
-10. Run the application. 
+10.	アプリケーションを実行します。
 
-On completion of the run, a new table is added to the database containing the scoring results.
+実行が完了すると、新しいテーブルがスコア付けの結果を含むデータベースに追加されます。
 
-### <a name="deploy-a-new-web-service"></a>Deploy a New Web Service
+### 新しい Web サービスのデプロイ
 
-To deploy as a New Web Service and create an application to consume it:
+新しい Web サービスとしてデプロイし、それを使用するアプリケーションを作成します。
 
-1.  At the bottom of the experiment canvas, click **Run**.
-2.  When the run has completed, click **Deploy Web Service** and select **Deploy Web Service [New]**.
-3.  On the Deploy Experiment page, enter a name for your web service and select a pricing plan, then click **Deploy**.
-4.  On the **Quickstart** page, click **Consume**.
-5.  In the **Sample Code** section, click **Batch**.
-6.  In Visual Studio, create a C# console application.
-7.  Copy and paste the C# sample code into your Program.cs file.
-8.  Update the value of the *apiKey* variable with the **Primary Key** located in the **Basic consumption info** section.
-9.  Locate the *scoreRequest* declaration and update the values of Web Service Parameters that are passed to the *Import Data* and *Export Data* modules. In this case, you will use the original query, but define a new table name.
+1.	実験キャンバスの下部で、**[実行]** をクリックします。
+2.	実行が完了したら、**[Web サービスのデプロイ]** をクリックして、**[Deploy Web Service [New] \(Web サービスのデプロイ [新規])]** を選択します。
+3.	[実験のデプロイ] ページで、Web サービスの名前を入力し、料金プランを選択して **[デプロイ]** をクリックします。
+4.	**[クイック スタート]** ページで **[使用]** をクリックします。
+5.	**[サンプル コード]** セクションで、**[Batch]** をクリックします。
+6.	Visual Studio で、C# コンソール アプリケーションを作成します。
+7.	C# サンプル コードをコピーして Program.cs ファイルに貼り付けます。
+8.	*apiKey* 変数の値を、**[Basic consumption info (基本的な実行情報)]** セクションにある **プライマリ キー** を使用して更新します。
+9.	*scoreRequest* 宣言を見つけて、*データのインポート*モジュールと*データのエクスポート*モジュールに渡される Web サービス パラメーターの値を更新します。この場合、元のクエリを使用しますが、新しいテーブル名を定義します。
 
-        var scoreRequest = new
-        {
-            Inputs = new Dictionary<string, StringTable>()
-            {
-            },
-            GlobalParameters = new Dictionary<string, string>() {
-                 { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
-                { "Table", "dbo.ScoredTable3" },
-            }
-        };
+		var scoreRequest = new
+		{
+		    Inputs = new Dictionary<string, StringTable>()
+		    {
+		    },
+		    GlobalParameters = new Dictionary<string, string>() {
+		         { "Query", @"select [age], [workclass], [fnlwgt], [education], [education-num], [marital-status], [occupation], [relationship], [race], [sex], [capital-gain], [capital-loss], [hours-per-week], [native-country], [income] from dbo.censusdata" },
+		        { "Table", "dbo.ScoredTable3" },
+		    }
+		};
 
-10. Run the application. 
+10.	アプリケーションを実行します。
  
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

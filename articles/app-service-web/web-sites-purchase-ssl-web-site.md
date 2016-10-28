@@ -1,225 +1,212 @@
 <properties
-    pageTitle="Buy and Configure an SSL Certificate for your Azure App Service"
-    description="Learn how to Buy and Configure an SSL Certificate for your Azure App Service."
-    services="app-service"
-    documentationCenter=".net"
-    authors="apurvajo"
-    manager="stefsch"
-    editor="cephalin"
-    tags="buy-ssl-certificates"/>
+	pageTitle="Azure App Service の SSL 証明書を購入して構成する"
+	description="Azure App Service の SSL 証明書を購入して構成する方法を説明します"
+	services="app-service"
+	documentationCenter=".net"
+	authors="apurvajo"
+	manager="stefsch"
+	editor="cephalin"
+	tags="buy-ssl-certificates"/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/19/2016"
-    ms.author="apurvajo"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/01/2016"
+	ms.author="apurvajo"/>
 
-
-#<a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Buy and Configure an SSL Certificate for your Azure App Service
+#Azure App Service の SSL 証明書を購入して構成する
 
 > [AZURE.SELECTOR]
-- [Buy SSL cert in Azure](web-sites-purchase-ssl-web-site.md)
-- [Use SSL cert from elsewhere](web-sites-configure-ssl-certificate.md)
+- [Azure での SSL 証明書の購入](web-sites-purchase-ssl-web-site.md)
+- [別の場所からの SSL 証明書の使用](web-sites-configure-ssl-certificate.md)
 
-By default, **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** already enables HTTPS for your web app with a wildcard certificate for the *.azurewebsites.net domain. If you don't plan to configure a custom domain, then you can benefit from the default HTTPS certificate. However, like all *[wildcard domains](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates), it is not as secure as using a custom domain with your own certificate. Azure App Service now provides you a really simplified way to purchase and manage an SSL certificate right from Azure Portal without ever leaving the portal.  
-This article explains how to buy and configure an SSL Certificate for your **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** in 3 simple steps. 
+**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Web アプリに対して、HTTPS が既定で既に有効になっています。カスタム ドメインを構成する予定がない場合は、既定の HTTPS 証明書を利用できます。ただし、*[他のワイルドカード ドメイン](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates)と同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません。Azure App Service では、ポータルを離れることなく Azure ポータルから SSL 証明書を購入して管理する簡単な方法が提供されるようになっています。この記事では、3 つの簡単な手順で **[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** 用の SSL 証明書を購入して構成する方法を説明します。
 
 > [AZURE.NOTE]
-> SSL Certificates for Custom domain names cannot be used with Free and Shared web app. You must configure your web app for Basic, Standard or Premium mode, which may change how much you are billed for your subscription. See **[Web Apps Pricing Details](https://azure.microsoft.com/pricing/details/web-sites/)** for more information.
+カスタム ドメイン名用の SSL 証明書は、無料および共有 Web アプリでは使用できません。Web アプリを Basic モード、Standard モード、または Premium モード用に構成する必要があります。その場合、サブスクリプションに対して課金される金額が変更される可能性があります。詳細については、「**[Web Apps の料金詳細](https://azure.microsoft.com/pricing/details/web-sites/)**」を参照してください。
 
 
 
-##<a name="<a-name="bkmk_overview"></a>overview"></a><a name="bkmk_Overview"></a>Overview
+##<a name="bkmk_Overview"></a>概要
 > [AZURE.NOTE]
-> Please do not attempt to purchase an SSL Certificate using a subscription that does not have an Active Credit Card associated with it. This could result in your subscription being disabled. 
+有効なクレジット カードが関連付けられていないサブスクリプションを使用して SSL 証明書を購入しないでください。お使いのサブスクリプションが無効になる可能性があります。
 
-##<a name="<a>-purchase,-store-and-assign-an-ssl-certificate-for-your-custom-domain-</a>"></a><a> Purchase, Store and Assign an SSL Certificate for your custom domain </a>
-To enable HTTPS for a custom domain, such as contoso.com, you must first **[configure a custom domain name in Azure App Service.](web-sites-custom-domain-name.md)**
+##<a>カスタム ドメイン用の SSL 証明書を購入、保存、および割り当てる</a>
+contoso.com などのカスタム ドメインに対して HTTPS を有効にするには、まず **[Azure App Service でカスタム ドメイン名を構成する](web-sites-custom-domain-name.md)**必要があります。
 
-Before requesting an SSL certificate, you must first determine which domain names will be secured by the certificate. This will determine what type of certificate you must obtain. If you just need to secure a single domain name such as contoso.com or www.contoso.com a Standard (basic) certificate is sufficient. If you need to secure multiple domain names, such as contoso.com, www.contoso.com, and mail.contoso.com, then you can get a **[wildcard certificate](http://en.wikipedia.org/wiki/Wildcard_certificate)**
+SSL 証明書を要求する前に、その証明書により、どのドメイン名をセキュリティで保護するかを最初に決定する必要があります。この結果、どのような種類の証明書を取得する必要があるかが決まります。contoso.com または www.contoso.com のように、ただ 1 つのドメイン名を保護する必要がある場合は、Standard (基本的な) 証明書で十分です。contoso.com、www.contoso.com、および mail.contoso.com のように、複数のドメイン名を保護する必要がある場合は、**[ワイルドカード証明書](http://en.wikipedia.org/wiki/Wildcard_certificate)**を取得できます。
 
-##<a name="<a-name="bkmk_purchasecert"></a>step-0:-place-an-ssl-certificate-order"></a><a name="bkmk_purchasecert"></a>Step 0: Place an SSL certificate order
+##<a name="bkmk_purchasecert"></a>手順 0: SSL 証明書を注文する
 
-In this Step, you will learn how to place an Order for an SSL Certificate of your choice.
+この手順では、選択した SSL 証明書を注文する方法を説明します。
 
-1.  In the **[Azure Portal](https://portal.azure.com/)**, click Browse and Type “App Service Certificates” in search bar and select “App Service Certificates” from the result and Click Add. 
+1.	**[Azure ポータル](https://portal.azure.com/)**で、[参照] をクリックし、検索バーに「App Service 証明書」と入力し、結果から "App Service 証明書" を選択して、[追加] をクリックします。
 
-    ![insert image of create using browse](./media/app-service-web-purchase-ssl-web-site/browse.jpg)
+    ![参照を使用して作成のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/browse.jpg)
 
-    ![insert image of create using browse](./media/app-service-web-purchase-ssl-web-site/add.jpg)
+    ![参照を使用して作成のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/add.jpg)
 
-2.  Enter **friendly name** for your SSL Certificate.
+2.	SSL 証明書の**フレンドリ名**を入力します。
 
-3.  Enter **Host Name**
+3.	**[ホスト名]** を入力します。
 > [AZURE.NOTE]
-    This is one of the most critical parts of the purchase process. Make sure to enter correct host name (custom domain) that you want to protect with this certificate. **DO NOT** append the Host name with WWW. For example, if your custom domain name is www.contoso.com then just enter contoso.com in the Host Name field, the certificate in question will protect both www and root domains. 
+    これは、購入プロセスの最も重要な部分の 1 つです。この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。ホスト名には WWW を**付けないでください**。たとえば、カスタム ドメイン名が www.contoso.com の場合、[ホスト名] には contoso.com だけを入力します。購入した証明書では、www ドメインとルート ドメインの両方が保護されます。
     
-4.  Select your **subscription**. 
+4.	**サブスクリプション**を選択します。
 
-    If you have multiple subscriptions, then make sure to create an SSL Certificate in the same subscription that you have used for your custom domain or Web App in question.
+    複数のサブスクリプションがある場合は、対象のカスタム ドメインまたは Web アプリに使用したものと同じサブスクリプションで、SSL 証明書を作成してください。
        
-5.  Select or create a **resource group**.
+5.	**リソース グループ**を選択または作成します。
 
-    Resource groups enable you to manage related Azure resources as a unit and are useful when establishing role-based access control (RBAC) rules for your apps. For more information, see Managing your Azure resources.
+    リソース グループを使用すると、関連する Azure リソースを 1 つの単位として管理でき、アプリ用にロール ベースのアクセス制御 (RBAC) 規則を作成する際に便利です。詳細については、Azure リソースの管理に関するページを参照してください。
      
-6.  Select the **Certificate SKU** 
+6.	**[証明書 SKU]** を選択します。
 
-    Finally, select the certificate SKU that fits your need and click Create. Today, Azure App Service allows you to purchase two different SKUs •    S1 – Standard Certificate with 1-year validity and auto renewal  
-           •    W1 – Wild card Certificate with 1-year validity and auto renewal      
-    See **[Web Apps Pricing Details](https://azure.microsoft.com/pricing/details/web-sites/)** for more information.
+    最後に、ニーズに合った証明書 SKU を選択し、[作成] をクリックします。現在、Azure App Service では 2 種類の SKU を購入できます。 • S1 – 有効期間 1 年で自動更新される標準証明書 • W1 – 有効期間 1 年で自動更新されるワイルドカード証明書 詳細については、「**[Web Apps の料金詳細](https://azure.microsoft.com/pricing/details/web-sites/)**」を参照してください。
 
-![insert image of certificate SKU](./media/app-service-web-purchase-ssl-web-site/SKU.jpg)
+![証明書 SKU のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/SKU.jpg)
 
 > [AZURE.NOTE]
-> SSL Certificate creation will take anywhere from 1 – 10 minutes. This process performs multiple steps in background that are otherwise very cumbersome to perform manually.  
+SSL 証明書の作成には 1 ～ 10 分かかります。このプロセスでは、手作業で行うと非常に面倒な複数の手順がバック グラウンドで実行されます。
 
-##<a name="<a-name="bkmk_storekeyvault"></a>step-1:-store-the-certificate-in-azure-key-vault"></a><a name="bkmk_StoreKeyVault"></a>Step 1: Store the certificate in Azure Key Vault
+##<a name="bkmk_StoreKeyVault"></a>手順 1: 証明書を Azure Key Vault に保存する
 
-In this Step, you will learn how to place an Store an SSL Certificate that you purchased to Azure Key Vault of your choice.
+この手順では、選択した Azure Key Vault に購入した SSL 証明書を格納する方法を説明します。
 
-1.  Once the SSL Certificate purchase is complete You will need to manually open **App Service Certificates** Resource blade by browsing to it again (See Step 1 above)   
+1.	SSL 証明書の購入が完了した後は、**[App Service 証明書]** リソース ブレードを再度参照して手動で開く必要があります (手順 1 を参照)。
 
-    ![insert image of ready to store in KV](./media/app-service-web-purchase-ssl-web-site/ReadyKV.jpg)
+    ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.jpg)
 
-    You will notice that Certificate status is **“Pending Issuance”** as there are few more steps you need to complete before you can start using this certificates.
+    この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあるため、証明書の状態は **[発行保留中]** になっています。
  
-2. Click on **“Certificate Configuration”** inside Certificate Properties blade and Click on **“Step 1: Store”** to store this certificate in Azure Key Vault.
+2. [証明書のプロパティ] ブレードの **[証明書の構成]** をクリックし、**[ステップ 1: 格納]** をクリックして Azure Key Vault にこの証明書を格納します。
 
-3.  From **“Key Vault Status”** Blade click on **“Key Vault Repository”** to choose an existing Key Vault to store this certificate **OR “Create New Key Vault”** to create new Key Vault inside same subscription and resource group.
+3.	**[Key Vault の状態]** ブレードの **[Key Vault リポジトリ]** をクリックして、この証明書を格納する Key Vault を選択するか、**[Key Vault の新規作成]** をクリックして同じサブスクリプションとリソース グループに新しい Key Vault を作成します。
  
-    ![insert image of create new KV](./media/app-service-web-purchase-ssl-web-site/NewKV.jpg)
+    ![新規 KV 作成のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/NewKV.jpg)
  
     > [AZURE.NOTE]
-    Azure Key Vault has very minimal charges for storing this certificate. See **[Azure Key Vault Pricing Details](https://azure.microsoft.com/pricing/details/key-vault/)** for more information.
+    最小限の料金でこの証明書を Azure Key Vault に格納できます。詳細については、「**[Key Vault の価格](https://azure.microsoft.com/pricing/details/key-vault/)**」をご覧ください。
 
-4. Once you have selected the Key Vault Repository to store this certificate in, go ahead and store it by clicking on **“Store”** button at the top of **“Key Vault Status”** blade.  
+4. この証明書を格納する Key Vault リポジトリを選択した後、**[Key Vault の状態]** ブレードの上部にある **[格納]** ボタンをクリックして格納します。
 
-    This should complete step to storing the Certificate you purchased with Azure Key Vault of your choice. Upon refreshing the Blade, you should see Green Check mark against this step as well.
+    購入した証明書を選択した Azure Key Vault に格納する手順はこれで完了です。ブレードを更新すると、この手順に緑のチェック マークが表示されます。
     
-##<a name="<a-name="bkmk_verifyownership"></a>step-2:-verify-the-domain-ownership"></a><a name="bkmk_VerifyOwnership"></a>Step 2: Verify the Domain Ownership
+##<a name="bkmk_VerifyOwnership"></a>手順 2: ドメインの所有権を検証する
 
-In this Step, you will learn how to perform Domain Ownership Verification for an SSL Certificate that you just placed an order for. 
+この手順では、注文した SSL 証明書のドメイン所有権を検証する方法を説明します。
 
-1.  Click on **“Step 2: Verify”** Step from the **“Certificate Configuration”** Blade. There are 4 types of domain Verification supported by App Service Certificates.
+1.	**[証明書の構成]** ブレードで **[ステップ 2: 検証]** をクリックします。App Service 証明書では 4 種類のドメイン検証がサポートされています。
 
-    * **App Service Verification** 
+    * **App Service 検証**
     
-        * This is the most convenient process if you already have **your custom domain assigned to the App Service Apps.** This method will list out all the App Service Apps that meet this criteria. 
-           For example, in this case, **contosocertdemo.com** is a custom domain assigned to App Service App called **“ContosoCertDemo”** and hence that’s the only App Service App listed here. If there were multi-region deployment, then it would list them all across the regions.
+        * これは、既に **App Service アプリにカスタム ドメインを割り当ててある**場合に、最も簡単なプロセスです。 この方法では、この条件を満たすすべての App Service アプリが一覧表示されます。たとえば、この例では、**contosocertdemo.com** は **"ContosoCertDemo"** という名前の App Service アプリに割り当てられているカスタム ドメインであり、ここで表示される唯一の App Service アプリです。複数リージョンのデプロイがあった場合、すべてのリージョンのアプリが一覧表示されます。
         
-           The verification method is ONLY available for Standard (Basic) certificate purchases. For Wild Card Certificates, please skip and move to option B, C or D below.
-        * Click on **“Verify”** button to complete this step.
-        * Click on **“Refresh”** to update the Certificate status after verification is completed. It might take few minutes for verification to complete.
+           この検証方法は、Standard (基本) 証明書購入にのみ使用できます。ワイルドカード証明書の場合は、以下で説明する他の 3 つのオプションを使用してください。
+        * **[検証]** ボタンをクリックして、この手順を実行します。
+        * 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
         
-        ![insert image of App Service Verification](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)     
+        ![App Service 検証のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/AppVerify.jpg)
 
-    * **Domain Verification** 
+    * **ドメイン検証**
 
-        * This is the most convenient process **ONLY IF** you have **[purchased your custom domain from Azure App Service.](custom-dns-web-site-buydomains-web-app.md)**
+        * この方法は、**[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)** **場合にのみ**、最も便利な方法です。
         
-        * Click on **“Verify”** button to complete this step.
+        * **[検証]** ボタンをクリックして、この手順を実行します。
         
-        * Click on **“Refresh”** to update the Certificate status after verification is completed. It might take few minutes for verification to complete.
+        * 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
 
-    * **Mail Verification**
+    * **メール検証**
         
-        * Verification email has already been sent to the Email Address(es) associated with this custom domain.
+        * 検証の電子メールは、このカスタム ドメインに関連付けられているメール アドレスに既に送信されています。
          
-        * Open the email and Click on the verification link to complete the Email Verification step. 
+        * 電子メールを開き、検証リンクをクリックして、電子メール検証手順を実行します。
         
-        * If you need to resend the verification email, Click on the **"Resend Email"** button.
+        * 検証メールを再送信する必要がある場合は、**[電子メールを再送信]** ボタンをクリックします。
          
-    * **Manual Verification**    
+    * **手動検証**
                  
-        1. **HTML Web Page Verification**
+        1. **HTML Web ページ検証**
         
-            * Create an HTML file named **{Domain Verification Token}**.html (You can copy the token from he Domain Verification Status Blade)
+            * **{ドメイン検証トークン}**.html という名前の HTML ファイルを作成します (トークンは [ドメイン検証の状態] ブレードからコピーできます)。
             
-            * Content of this file should be the exact same name of **Domain Verification Token**.
+            * このファイルの内容は、**ドメイン検証トークン**の名前と正確に同じにする必要があります。
             
-            * Upload this file at the root of the web server hosting your domain.
+            * ドメインをホストする Web サーバーのルートに、このファイルをアップロードします。
             
-            * Click on **“Refresh”** to update the Certificate status after verification is completed. It might take few minutes for verification to complete.
+            * 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
             
-            For example, if you are buying a standard certificate for contosocertdemo.com with Domain Verification Token **‘cAGgQrKc’** then a web request made to **‘http://contosocertdemo.com/cAGgQrKc.html’** should return **cAGgQrKc.**
-        2. **DNS TXT Record Verification**
+            たとえば、**‘cAGgQrKc’** というドメイン検証トークンで contosocertdemo.com の Standard 証明書を購入した場合、**‘http://contosocertdemo.com/cAGgQrKc.html’** に対する Web 要求からは **cAGgQrKc** が返ります。
+        2. **DNS TXT レコード検証**
 
-            * Using your DNS manager, Create a TXT record on the **‘DZC’** subdomain with value equal to the **Domain Verification Token.**
+            * DNS マネージャーを使用して、**"DZC"** サブドメインに、**ドメイン検証トークン**と同じ値の TXT レコードを作成します。
             
-            * Click on **“Refresh”** to update the Certificate status after verification is completed. It might take few minutes for verification to complete.
+            * 検証が完了した後、**[更新]** をクリックして証明書の状態を更新します。検証が完了するまで数分かかる場合があります。
                               
-            For example, in order to perform validation for a wildcard certificate with hostname **\*.contosocertdemo.com** or **\*.subdomain.contosocertdemo.com** and Domain Verification Token **cAGgQrKc**, you need to create a TXT record on dzc.contosocertdemo.com with value **cAGgQrKc.**     
+            たとえば、ホスト名が ***.contosocertdemo.com** または ***.subdomain.contosocertdemo.com** でドメイン検証トークンが **cAGgQrKc** であるワイルドカード証明書の検証を実行するには、dzc.contosocertdemo.com に **cAGgQrKc** という値の TXT レコードを作成する必要があります。
 
 
-##<a name="<a-name="bkmk_assigncertificate"></a>step-3:-assign-certificate-to-app-service-app"></a><a name="bkmk_AssignCertificate"></a>Step 3: Assign Certificate to App Service App
+##<a name="bkmk_AssignCertificate"></a>手順 3: App Service アプリに証明書を割り当てる
 
-In this Step, you will learn how to assign this newly purchased certificate to your App Service Apps. 
+この手順では、この新しく購入した証明書を App Service アプリに割り当てる方法を説明します。
 
 > [AZURE.NOTE]
-> Before performing the steps in this section, you must have associated a custom domain name with your app. For more information, see **[Configuring a custom domain name for a web app.](web-sites-custom-domain-name.md)**
+このセクションの手順を実行する前に、アプリにカスタム ドメイン名が関連付けられている必要があります。詳細については、「**[Azure App Service のカスタム ドメイン名の構成](web-sites-custom-domain-name.md)**」を参照してください。
 
-1.  In your browser, open the **[Azure Portal.](https://portal.azure.com/)**
-2.  Click the **App Service** option on the left side of the page.
-3.  Click the name of your app to which you want to assign this certificate. 
-4.  In the **Settings**, Click **SSL certificates**
-5.  Click **Import App Service Certificate** and select the Certificate that you just purchased
+1.	ブラウザーで、**[Azure ポータル](https://portal.azure.com/)**を開きます。
+2.	ページの左側にある **[App Service]** オプションをクリックします。
+3.	この証明書を割り当てるアプリの名前をクリックします。
+4.	**[設定]**で、**[SSL certificates (SSL 証明書)]** をクリックします。
+5.	**[Import App Service Certificate (App Service 証明書のインポート)]** をクリックして、購入した証明書を選択します。
 
-    ![insert image of Import Certificate](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
+    ![証明書インポートのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ImportCertificate.png)
 
-6. In the **ssl bindings** section Click on **Add bindings**
-7. In the **Add SSL Binding** blade use the dropdowns to select the domain name to secure with SSL, and the certificate to use. You may also select whether to use **[Server Name Indication (SNI)](http://en.wikipedia.org/wiki/Server_Name_Indication)** or IP based SSL.
+6. **[SSL バインド]** セクションで、**[Add bindings (バインドの追加)]** をクリックします。
+7. **[Add SSL Binding (SSL バインドの追加)]** ブレードで、ドロップダウン リストから SSL でセキュリティ保護するドメイン名、および使用する証明書を選択します。また、**[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** (SNI) または IP ベースの SSL のどちらを使用するかを選択できます。
 
-    ![insert image of SSL Bindings](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
+    ![SSL バインドのイメージを挿入](./media/app-service-web-purchase-ssl-web-site/SSLBindings.png)
 
-       •    IP based SSL associates a certificate with a domain name by mapping the dedicated public IP address of the server to the domain name. This requires each domain name (contoso.com, fabricam.com, etc.) associated with your service to have a dedicated IP address. This is the traditional          method of associating SSL certificates with a web server.
-       •    SNI based SSL is an extension to SSL and **[Transport Layer Security](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) that allows multiple domains to share the same IP address, with separate security certificates for each domain. Most modern browsers (including Internet Explorer, Chrome, Firefox and Opera) support SNI, however older browsers may not support SNI. For more information on SNI, see the **[Server Name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** article on Wikipedia.
+       • IP ベースの SSL は、サーバーの専用パブリック IP アドレスをドメイン名にマッピングすることによって、証明書をドメイン名に関連付けします。これは、サービスに関連付けられている各ドメイン名 (contoso.com、fabricam.com など) の専用の IP アドレスが必要となります。これは SSL 証明書と Web サーバーを関連付ける従来の方式です。 • SNI ベースの SSL は、SSL と**[トランスポート層セキュリティ](http://en.wikipedia.org/wiki/Transport_Layer_Security)** (TLS) の拡張機能です。TLS では、複数のドメインが同じ IP アドレスを共有し、各ドメインが独自のセキュリティ証明書を持つことができます。最新のブラウザー (Internet Explorer、Chrome、Firefox、および Opera を含む) のほとんどが SNI をサポートしていますが、古いブラウザーには、SNI をサポートしていないものもあります。SNI の詳細については、Wikipedia の **[Server name Indication](http://en.wikipedia.org/wiki/Server_Name_Indication)** に関する記事を参照してください。
        
-7. Click **Add Binding** to save the changes and enable SSL.
+7. 変更を保存して SSL を有効にするには、**[Add Binding (バインドの追加)]** をクリックします。
 
 
 
-If you selected **IP based SSL** and your custom domain is configured using an A record, you must perform the following additional steps:
+**[IP ベースの SSL]** を選択し、カスタム ドメインが A レコードを使用して構成されている場合は、次の追加手順を実行する必要があります。
 
-* After you have configured an IP based SSL binding, a dedicated IP address is assigned to your app. You can find this IP address on the **Custom domain** page under settings of your app, right above the **Hostnames** section. It will be listed as **External IP Address**
+* IP ベースの SSL バインドを構成すると、専用の IP アドレスがアプリに割り当てられます。この IP アドレスは、アプリの設定の **[カスタム ドメイン]** ページで確認できます。これは、**[Hostnames (ホスト名)]** セクションの上にあります。このアドレスは、**[外部 IP アドレス]** として示されます。
     
-    ![insert image of IP SSL](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
+    ![IP SSL のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/virtual-ip-address.png)
 
-    Note that this IP address will be different than the virtual IP address used previously to configure the A record for your domain. If you are configured to use SNI based SSL, or are not configured to use SSL, no address will be listed for this entry.
+    この IP アドレスは、ドメイン用の A レコードを構成するために以前使用した仮想 IP アドレスとは異なります。SNI ベースの SSL を使用するように構成する場合、または SSL を使用するように構成しない場合は、このエントリに対してアドレスは表示されません。
     
-2. Using the tools provided by your domain name registrar, modify the A record for your custom domain name to point to the IP address from the previous step.
-At this point, you should be able to visit your app using HTTPS:// instead of HTTP:// to verify that the certificate has been configured correctly.
+2. ドメイン名レジストラーから提供されるツールを使用して、前の手順の IP アドレスを指定するようにカスタム ドメイン名用の A レコードを変更します。ここで、証明書が正しく構成されていることを確認するために、HTTP:// ではなく、HTTPS:// を使用してアプリを参照することができる必要があります。
 
 
-##<a name="<a-name="bkmk_rekey"></a>rekey-and-sync-the-certificate"></a><a name="bkmk_Rekey"></a>Rekey and Sync the Certificate
+##<a name="bkmk_Rekey"></a>キーを更新して証明書を同期する
 
-1. For security reasons, if you ever need to Rekey your certificate then simply select **"Rekey and Sync"** option from **"Certificate Properties"** Blade. 
+1. セキュリティ上の理由から証明書のキーを更新する必要がある場合は、**[証明書のプロパティ]** ブレードの **[キーの更新と同期]** オプションを選択します。
 
-2. Click on **"Rekey"** Button to initiate the process. This process can take 1-10 minutes to complete. 
+2. **[キー更新]** ボタンをクリックして処理を開始します。処理が完了するまでに 1 ～ 10 分かかることがあります。
 
-    ![insert image of ReKey SSL](./media/app-service-web-purchase-ssl-web-site/Rekey.jpg)
+    ![SSL キー更新のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/Rekey.jpg)
 
-3. Rekeying your certificate will roll the certificate with a new certificate issued from the certificate authority.
-4. You will not be charged for the Rekeying for the lifetime of the certificate. 
-5. Rekeying your certificate will go through Pending Issuance state. 
-6. Once the certificate is ready make sure you sync your resources using this certificate to prevent disruption to the service.
-7. Sync option is not available for Certificates that are not yet assigned to the Web App. 
+3. 証明書のキーを更新すると、証明機関から発行された新しい証明書が展開されます。
+4. 証明書の有効期間中は、キーを更新しても課金されません。
+5. 証明書のキーを更新すると、発行保留中状態になります。
+6. 証明書の準備ができたら、サービスの中断を防ぐため、この証明書を使用してリソースを同期する必要があります。
+7. 同期オプションは、Web アプリにまだ割り当てられていない証明書に対しては使用できません。
 
-## <a name="more-resources"></a>More Resources ##
-- [Enable HTTPS for an app in Azure App Service](web-sites-configure-ssl-certificate.md)
-- [Buy and Configure a custom domain name in Azure App Service](custom-dns-web-site-buydomains-web-app.md)
-- [Microsoft Azure Trust Center](/support/trust-center/security/)
-- [Configuration options unlocked in Azure Web Sites](http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
-- [Azure Management Portal](https://manage.windowsazure.com)
+## その他のリソース ##
+- [アプリに対する HTTPS を Azure App Service で有効にする](web-sites-configure-ssl-certificate.md)
+- [Azure App Service でのカスタム ドメイン名の購入と構成](custom-dns-web-site-buydomains-web-app.md)
+- [Microsoft Azure のトラスト センター](/support/trust-center/security/)
+- [Azure Web Sites でロックを解除された構成オプション](http://azure.microsoft.com/blog/2014/01/28/more-to-explore-configuration-options-unlocked-in-windows-azure-web-sites/)
+- [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)
 
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスしてください。App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

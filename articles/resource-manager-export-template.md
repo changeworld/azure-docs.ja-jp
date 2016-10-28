@@ -1,122 +1,160 @@
 <properties
-    pageTitle="Export Azure Resource Manager template | Microsoft Azure"
-    description="Use Azure Resource Manage to export a template from an existing resource group."
-    services="azure-resource-manager"
-    documentationCenter=""
-    authors="tfitzmac"
-    manager="timlt"
-    editor="tysonn"/>
+	pageTitle="Azure Resource Manager テンプレートをエクスポートする | Microsoft Azure"
+	description="Azure Resource Manager を使用して、既存のリソース グループからテンプレートをエクスポートします。"
+	services="azure-resource-manager"
+	documentationCenter=""
+	authors="tfitzmac"
+	manager="timlt"
+	editor="tysonn"/>
 
 <tags
-    ms.service="azure-resource-manager"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/03/2016"
-    ms.author="tomfitz"/>
+	ms.service="azure-resource-manager"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/03/2016"
+	ms.author="tomfitz"/>
 
+# 既存のリソースから Azure Resource Manager テンプレートをエクスポートする
 
-# <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Export an Azure Resource Manager template from existing resources
+Resource Manager を使用すると、サブスクリプション内の既存のリソースから Resource Manager テンプレートをエクスポートできます。この生成されたテンプレートを使用すると、テンプレートの構文を学習したり、必要に応じてソリューションの再デプロイを自動化したりすることができます。
 
-Resource Manager enables you to export a Resource Manager template from existing resources in your subscription. You can use that generated template to learn about the template syntax or to automate the redeployment of your solution as needed.
+テンプレートのエクスポートには 2 つの異なる方法があることに注意する必要があります。
 
-It is important to note that there are two different ways to export a template:
+- デプロイに使用した実際のテンプレートをエクスポートできます。エクスポートしたテンプレートには、元のテンプレートで定義されたのと同じパラメーターと変数がすべて含まれます。この方法は、ポータルからリソースをデプロイした場合に役立ちます。それらのリソースを作成するためのテンプレートの構築方法をご確認ください。
+- リソース グループの現在の状態を表すテンプレートをエクスポートできます。エクスポートしたテンプレートは、デプロイに使用したテンプレートに基づいていません。代わりに、リソース グループのスナップショットであるテンプレートが作成されます。エクスポートしたテンプレートにはハードコーディングされた多くの値が含まれ、おそらく、通常定義するのと同程度のパラメーターは含まれません。この方法は、ポータルまたはスクリプトでリソース グループを修正してあり、そのリソース グループをテンプレートとしてキャプチャする必要が生じた場合に役に立ちます。
 
-- You can export the actual template that you used for a deployment. The exported template includes all the parameters and variables exactly as they appeared in the original template. This approach is helpful when you have deployed resources through the portal. Now, you want to see how to construct the template to create those resources.
-- You can export a template that represents the current state of the resource group. The exported template is not based on any template that you used for deployment. Instead, it creates a template that is a snapshot of the resource group. The exported template has many hard-coded values and probably not as many parameters as you would typically define. This approach is useful when you have modified the resource group through the portal or scripts. Now, you need to capture the resource group as a template.
+このトピックでは、両方の方法を示します。記事「[エクスポートした Azure Resource Manager テンプレートのカスタマイズ](resource-manager-customize-template.md)」では、リソース グループの現在の状態から生成されたテンプレートを取得し、ソリューションの再デプロイに活用する方法について確認できます。
 
-This topic shows both approaches. In the [Customize an exported Azure Resource Manager template](resource-manager-customize-template.md) article, you see how to take a template you generated from the current state of the resource group and make it more useful for redeploying your solution.
+このチュートリアルではまず、Azure ポータルにサインインし、ストレージ アカウントを作成して、そのストレージ アカウントのテンプレートをエクスポートします。次に、仮想ネットワークを追加してリソース グループに変更を加えます。最後に、その最新の状態を表す新しいテンプレートをエクスポートします。この記事では、単純なインフラストラクチャを扱っていますが、より複雑なソリューションのテンプレートのエクスポートにも、同様の手順を使用できます。
 
-In this tutorial, you sign in to the Azure portal, create a storage account, and export the template for that storage account. You add a virtual network to modify the resource group. Finally, you export a new template that represents its current state. Although this article focuses on a simplified infrastructure, you could use these same steps to export a template for a more complicated solution.
+## ストレージ アカウントの作成
 
-## <a name="create-a-storage-account"></a>Create a storage account
-
-1. In the [Azure portal](https://portal.azure.com), select **New** > **Data + Storage** > **Storage account**.
+1. [Azure ポータル](https://portal.azure.com)で、**[新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順に選択します。
 
       ![create storage](./media/resource-manager-export-template/create-storage.png)
 
-2. Create a storage account with the name **storage**, your initials, and the date. The storage account name must be unique across Azure. If you initially try a name that's already in use, try a variation. For resource group, use **ExportGroup**. You can use the default values for the other properties. Select **Create**.
+2. ストレージ アカウントを作成し、名前を **storage**、自分のイニシャル、日付の組み合わせにします。ストレージ アカウント名は Azure 内で一意である必要があります。最初に指定した名前が既に使用されていた場合は、別の名前を指定してください。リソース グループには、**ExportGroup** を使用します。他のプロパティには既定値をそのまま使用します。**[作成]** を選択します。
 
       ![provide values for storage](./media/resource-manager-export-template/provide-storage-values.png)
 
-After the deployment finishes, your subscription contains the storage account.
+デプロイが完了すると、サブスクリプションにストレージ アカウントが含まれた状態になります。
 
-## <a name="export-the-template-from-deployment-history"></a>Export the template from deployment history
+## デプロイ履歴からのテンプレートのエクスポート
 
-1. Go to the resource group blade for your new resource group. Notice that the blade shows the result of the last deployment. Select this link.
+1. 新しいリソース グループのリソース グループ ブレードに移動します。ブレードに直前のデプロイの結果が表示されていることがわかります。そのリンクを選択します。
 
       ![resource group blade](./media/resource-manager-export-template/resource-group-blade.png)
 
-2. You see a history of deployments for the group. In your case, the blade probably lists only one deployment. Select this deployment.
+2. グループのデプロイの履歴が表示されます。このケースでは、ブレードに表示されるデプロイはおそらく 1 つだけです。このデプロイを選択します。
 
-     ![last deployment](./media/resource-manager-export-template/last-deployment.png)
+     ![最終デプロイ](./media/resource-manager-export-template/last-deployment.png)
 
-3. The blade displays a summary of the deployment. The summary includes the status of the deployment and its operations and the values that you provided for parameters. To see the template that you used for the deployment, select **View template**.
+3. ブレードにデプロイの概要が表示されます。概要には、デプロイの状態とその操作、およびパラメーターに指定した値が含まれています。デプロイに使用されたテンプレートを表示するには、**[テンプレートの表示]** を選択します。
 
      ![view deployment summary](./media/resource-manager-export-template/deployment-summary.png)
 
-4. Resource Manager retrieves the following six files for you:
+4. Resource Manager によって、次の 6 つのファイルが取得されます。
 
-   1. **Template** - The template that defines the infrastructure for your solution. When you created the storage account through the portal, Resource Manager used a template to deploy it and saved that template for future reference.
-   2. **Parameters** - A parameter file that you can use to pass in values during deployment. It contains the values that you provided during the first deployment, but you can change any of these values when you redeploy the template.
-   3. **CLI** - An Azure command-line-interface (CLI) script file that you can use to deploy the template.
-   4. **PowerShell** - An Azure PowerShell script file that you can use to deploy the template.
-   5. **.NET** - A .NET class that you can use to deploy the template.
-   6. **Ruby** - A Ruby class that you can use to deploy the template.
+   1. **Template** - ソリューションのインフラストラクチャを定義するテンプレート。ポータルでストレージ アカウントを作成したときに、Resource Manager はテンプレートを使用してそれをデプロイし、今後参照できるようにテンプレートを保存しました。
+   2. **Parameters** - デプロイ中に値を渡すために使用できるパラメーター ファイル。最初のデプロイ中に指定した値が含まれていますが、テンプレートを再デプロイするときに任意の値を変更することができます。
+   3. **CLI** - テンプレートをデプロイするために使用できる Azure CLI (コマンド ライン インターフェイス) スクリプト ファイル。
+   4. **PowerShell** - テンプレートをデプロイするために使用できる Azure PowerShell スクリプト ファイル。
+   5. **.NET** - テンプレートをデプロイするために使用できる .NET クラス。
+   6. **Ruby** - テンプレートをデプロイするために使用できる Ruby クラス。
 
-     The files are available through links across the blade. By default, the blade displays the template.
+     ファイルは、ブレードのリンクを通じて使用できます。テンプレートは、このブレードに既定で表示されます。
 
        ![view template](./media/resource-manager-export-template/view-template.png)
 
-     Let's pay particular attention to the template. Your template should look similar to:
+     特にテンプレートに気を付けてください。テンプレートは次のようになっているはずです。
 
-        {     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",     "contentVersion": "1.0.0.0",     "parameters": {       "name": {         "type": "String"       },       "accountType": {         "type": "String"       },       "location": {         "type": "String"       },       "encryptionEnabled": {         "defaultValue": false,         "type": "Bool"       }     },     "resources": [       {         "type": "Microsoft.Storage/storageAccounts",         "sku": {           "name": "[parameters('accountType')]"         },         "kind": "Storage",         "name": "[parameters('name')]",         "apiVersion": "2016-01-01",         "location": "[parameters('location')]",         "properties": {           "encryption": {             "services": {               "blob": {                 "enabled": "[parameters('encryptionEnabled')]"               }             },             "keySource": "Microsoft.Storage"           }         }       }     ]   }
+        {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+            "name": {
+              "type": "String"
+            },
+            "accountType": {
+              "type": "String"
+            },
+            "location": {
+              "type": "String"
+            },
+            "encryptionEnabled": {
+              "defaultValue": false,
+              "type": "Bool"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "sku": {
+                "name": "[parameters('accountType')]"
+              },
+              "kind": "Storage",
+              "name": "[parameters('name')]",
+              "apiVersion": "2016-01-01",
+              "location": "[parameters('location')]",
+              "properties": {
+                "encryption": {
+                  "services": {
+                    "blob": {
+                      "enabled": "[parameters('encryptionEnabled')]"
+                    }
+                  },
+                  "keySource": "Microsoft.Storage"
+                }
+              }
+            }
+          ]
+        }
  
-This template is the actual template used to create your storage account. Notice it contains parameters that enable you to deploy different types of storage accounts. To learn more about the structure of a template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md). For the complete list of the functions you can use in a template, see [Azure Resource Manager template functions](resource-group-template-functions.md).
+これは、ストレージ アカウントの作成に使用した実際のテンプレートです。さまざまな種類のストレージ アカウントをデプロイできるパラメーターが含まれていることに注目してください。テンプレートの構造の詳細については、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。テンプレートで使用できる関数の完全な一覧については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 
 
-## <a name="add-a-virtual-network"></a>Add a virtual network
+## 仮想ネットワークの追加
 
-The template that you downloaded in the previous section represented the infrastructure for that original deployment. However, it will not account for any changes you make after the deployment.
-To illustrate this issue, let's modify the resource group by adding a virtual network through the portal.
+前のセクションでダウンロードしたテンプレートは、元のデプロイのインフラストラクチャを表しています。デプロイ後に行われた変更には対応できません。この問題をわかりやすく示すために、ポータルで仮想ネットワークを追加して、リソース グループを変更してみましょう。
 
-1. In the resource group blade, select **Add**.
+1. リソース グループのブレードで、**[追加]** を選択します。
 
-      ![add resource](./media/resource-manager-export-template/add-resource.png)
+      ![リソースの追加](./media/resource-manager-export-template/add-resource.png)
 
-2. Select **Virtual network** from the available resources.
+2. 利用可能なリソースから、**[Virtual Network]** を選択します。
 
       ![select virtual network](./media/resource-manager-export-template/select-vnet.png)
 
-2. Name your virtual network **VNET**, and use the default values for the other properties. Select **Create**.
+2. 仮想ネットワークの名前を **VNET** にし、その他のプロパティには既定値を使用します。**[作成]** を選択します。
 
       ![set alert](./media/resource-manager-export-template/create-vnet.png)
 
-3. After the virtual network has successfully deployed to your resource group, look again at the deployment history. You now see two deployments. If you do not see the second deployment, you may need to close your resource group blade and reopen it. Select the more recent deployment.
+3. 仮想ネットワークがリソース グループに正常にデプロイされた後で、デプロイの履歴を見直してください。今度は 2 つのデプロイが表示されます。2 つ目のデプロイが表示されない場合は、リソース グループのブレードを閉じてもう一度開く必要があります。最新のデプロイを選択します。
 
       ![deployment history](./media/resource-manager-export-template/deployment-history.png)
 
-4. Look at the template for that deployment. Notice that it defines only the changes that you have made to add the virtual network.
+4. そのデプロイのテンプレートを確認します。仮想ネットワークを追加するために行った変更だけが定義されていることに注意してください。
 
-It is generally a best practice to work with a template that deploys all the infrastructure for your solution in a single operation. This approach is more reliable than remembering many different templates to deploy.
+一般的には、ソリューションのすべてのインフラストラクチャを 1 回の操作でデプロイするテンプレートを使用することをお勧めします。その方が、デプロイするテンプレートをいくつも覚えておくよりも信頼性の点で有利です。
 
 
-## <a name="export-the-template-from-resource-group"></a>Export the template from resource group
+## リソース グループからのテンプレートのエクスポート
 
-Although each deployment shows only the changes that you have made to your resource group, at any time you can export a template to show the attributes of your entire resource group.  
+各デプロイには、リソース グループに対して行った変更のみが表示されますが、いつでもテンプレートをエクスポートしてリソース グループ全体の属性を表示できます。
 
-> [AZURE.NOTE] You cannot export a template for a resource group that has more than 200 resources.
+> [AZURE.NOTE] 200 を超えるリソースが含まれるリソース グループのテンプレートをエクスポートすることはできません。
 
-1. To view the template for a resource group, select **Automation script**.
+1. リソース グループのテンプレートを表示するには、**[Automation スクリプト]** を選択します。
 
-      ![export resource group](./media/resource-manager-export-template/export-resource-group.png)
+      ![リソース グループのエクスポート](./media/resource-manager-export-template/export-resource-group.png)
 
-     Not all resource types support the export template function. If your resource group only contains the storage account and virtual network shown in this article, you will not see an error. However, if you have created other resource types, you may see an error stating that there is a problem with the export. You learn how to handle those issues in the [Fix export issues](#fix-export-issues) section.
+     テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。この記事で紹介するストレージ アカウントと仮想ネットワークのみがリソース グループに含まれる場合、エラーは表示されません。しかし、他のリソースの種類を作成した場合、エクスポートに関する問題が存在することを示すエラーが表示される可能性があります。これらの問題に対処する方法については、「[エクスポートの問題の修正](#fix-export-issues)」セクションで説明します。
 
       
 
-2. You again see the six files that you can use to redeploy the solution, but this time the template is a little different. This template has only two parameters: one for the storage account name, and one for the virtual network name.
+2. ソリューションを再デプロイするために使用できる 6 個のファイルが再び表示されますが、今度のテンプレートは少し異なります。このテンプレートには、パラメーターが 2 つだけあります (ストレージ アカウント名用が 1 つと、仮想ネットワーク名用が 1 つ)。
 
         "parameters": {
           "virtualNetworks_VNET_name": {
@@ -129,7 +167,7 @@ Although each deployment shows only the changes that you have made to your resou
           }
         },
 
-     Resource Manager did not retrieve the templates that you used during deployment. Instead, it generated a new template that's based on the current configuration of the resources. For example, the template sets the storage account location and replication value to:
+     Resource Manager は、デプロイ時に使用されたテンプレートを取得しませんでした。代わりに、リソースの現在の構成に基づいて、新しいテンプレートを生成しました。たとえばこのテンプレートでは、ストレージ アカウントの場所とレプリケーションの値が、次のように設定されます。
 
         "location": "northeurope",
         "tags": {},
@@ -137,31 +175,31 @@ Although each deployment shows only the changes that you have made to your resou
             "accountType": "Standard_RAGRS"
         },
 
-3. Download the template so that you can work on it locally.
+3. ローカルに作業できるように、テンプレートをダウンロードします。
 
       ![download template](./media/resource-manager-export-template/download-template.png)
 
-4. Find the .zip file that you downloaded and extract the contents. You can use this downloaded template to redeploy your infrastructure.
+4. ダウンロードした .zip ファイルを検索し、内容を展開します。このダウンロードしたテンプレートは、インフラストラクチャを再デプロイするために使用できます。
 
-## <a name="fix-export-issues"></a>Fix export issues
+## エクスポートの問題の修正
 
-Not all resource types support the export template function. Resource Manager specifically does not export some resource types to prevent exposing sensitive data. For example, if you have a connection string in your site config, you probably do not want it explicitly displayed in an exported template. You can get around this issue by manually adding the missing resources back into your template.
+テンプレート関数のエクスポートは、すべてのリソースの種類でサポートされているわけではありません。リソースの種類によっては、機密データの公開を防止するために、Resource Manager によってエクスポートされないものもあります。たとえば、サイトの構成内に接続文字列がある場合、エクスポートしたテンプレートにそれが表示されるのは望ましくありません。この問題は、欠けているリソースを対象のテンプレートに手動で追加することで回避できます。
 
-> [AZURE.NOTE] You only encounter export issues when exporting from a resource group rather than from your deployment history. If your last deployment accurately represents the current state of the resource group, you should export the template from the deployment history rather than from the resource group. Only export from a resource group when you have made changes to the resource group that are not defined in a single template.
+> [AZURE.NOTE] エクスポートの問題は、リソース グループからエクスポートする場合にのみ発生します。デプロイ履歴からのエクスポートでは発生しません。最後のデプロイがリソース グループの現在の状態を正確に表しているようであれば、リソース グループからではなく、デプロイ履歴からテンプレートをエクスポートすることをお勧めします。単一のテンプレートで定義されていない変更をリソース グループに加えた場合にのみ、リソース グループからエクスポートしてください。
 
-For example, if you export a template for a resource group that contains a web app, SQL Database, and a connection string in the site config, you will see the following message.
+たとえば、Web アプリ、SQL Database、サイト構成内の接続文字列が含まれたリソース グループのテンプレートをエクスポートすると、次のようなメッセージが表示されます。
 
 ![show error](./media/resource-manager-export-template/show-error.png)
 
-Selecting the message shows you exactly which resource types were not exported. 
+メッセージを選択すると、エクスポートされなかったリソースの種類が正確に表示されます。
      
 ![show error](./media/resource-manager-export-template/show-error-details.png)
 
-This topic shows the following common fixes. To implement these resources, you need to add parameters to template. For more information, see [Customize and redeploy exported template](resource-manager-customize-template.md).
+このトピックでは、次の一般的な修正について説明します。これらのリソースを実装するには、パラメーターをテンプレートに追加する必要があります。詳細については、[エクスポートしたテンプレートのカスタマイズと再デプロイ](resource-manager-customize-template.md)に関するページを参照してください。
 
-### <a name="connection-string"></a>Connection string
+### 接続文字列
 
-In the web sites resource, add a definition for the connection string to the database:
+Web サイト リソースで、接続文字列の定義をデータベースに追加します。
 
 ```
 {
@@ -186,9 +224,9 @@ In the web sites resource, add a definition for the connection string to the dat
 }
 ```    
 
-### <a name="web-site-extension"></a>Web site extension
+### Web サイト拡張機能
 
-In the web site resource, add a definition for the code to install:
+Web サイト リソースで、インストールするコードの定義を追加します。
 
 ```
 {
@@ -216,13 +254,13 @@ In the web site resource, add a definition for the code to install:
 }
 ```
 
-### <a name="virtual-machine-extension"></a>Virtual machine extension
+### 仮想マシン拡張機能
 
-For examples of virtual machine extensions, see [Azure Windows VM Extension Configuration Samples](./virtual-machines/virtual-machines-windows-extensions-configuration-samples.md).
+仮想マシン拡張機能の例については、「[Azure Windows VM 拡張機能の構成サンプル](./virtual-machines/virtual-machines-windows-extensions-configuration-samples.md)」を参照してください。
 
-### <a name="virtual-network-gateway"></a>Virtual network gateway
+### 仮想ネットワーク ゲートウェイ
 
-Add a virtual network gateway resource type.
+仮想ネットワーク ゲートウェイのリソースの種類を追加します。
 
 ```
 {
@@ -256,9 +294,9 @@ Add a virtual network gateway resource type.
 },
 ```
 
-### <a name="local-network-gateway"></a>Local network gateway
+### ローカル ネットワーク ゲートウェイ
 
-Add a local network gateway resource type.
+ローカル ネットワーク ゲートウェイのリソースの種類を追加します。
 
 ```
 {
@@ -274,9 +312,9 @@ Add a local network gateway resource type.
 }
 ```
 
-### <a name="connection"></a>Connection
+### 接続
 
-Add a connection resource type.
+接続のリソースの種類を追加します。
 
 ```
 {
@@ -299,16 +337,12 @@ Add a connection resource type.
 ```
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Congratulations! You have learned how to export a template from resources that you created in the portal.
+ご利用ありがとうございます。 ポータルで作成したリソースからテンプレートをエクスポートする方法について説明しました。
 
-- In the second part of this tutorial, you customize the template that you downloaded by adding more parameters and redeploy it through a script. See [Customize and redeploy exported template](resource-manager-customize-template.md).
-- To see how to export a template through PowerShell, see [Using Azure PowerShell with Azure Resource Manager](powershell-azure-resource-manager.md).
-- To see how to export a template through Azure CLI, see [Use the Azure CLI for Mac, Linux, and Windows with Azure Resource Manager](xplat-cli-azure-resource-manager.md).
+- このチュートリアルのパート 2 では、ダウンロードしたテンプレートにパラメーターを追加してカスタマイズし、スクリプトで再デプロイします。[エクスポートしたテンプレートのカスタマイズと再デプロイ](resource-manager-customize-template.md)に関するページを参照してください。
+- PowerShell を使用してテンプレートをエクスポートする方法を確認するには、「[Azure Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
+- Azure CLI を使用してテンプレートをエクスポートする方法を確認するには、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,156 +1,151 @@
 <properties
-    pageTitle="Detailed SSH troubleshooting for an Azure VM | Microsoft Azure"
-    description="More detailed SSH troubleshooting steps for issues connecting to an Azure virtual machine"
-    keywords="ssh connection refused,ssh error,azure ssh,SSH connection failed"
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="iainfoulds"
-    manager="timlt"
-    editor=""
-    tags="top-support-issue,azure-service-management,azure-resource-manager"/>
+	pageTitle="Azure VM の SSH の詳細なトラブルシューティング | Microsoft Azure"
+	description="Azure 仮想マシンへの接続問題に関する SSH の詳細なトラブルシューティングの手順"
+	keywords="拒否されたSSH 接続,SSH エラー,Azure SSH,失敗した SSH 接続"
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="iainfoulds"
+	manager="timlt"
+	editor=""
+	tags="top-support-issue,azure-service-management,azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="support-article"
-    ms.date="09/01/2016"
-    ms.author="iainfou"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="support-article"
+	ms.date="09/01/2016"
+	ms.author="iainfou"/>
+
+# SSH の詳細なトラブルシューティング手順
+
+SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。[SSH のトラブルシューティングの一般的な手順](virtual-machines-linux-troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
+
+## 準備作業を行う
+
+次の図は、関係しているコンポーネントを示しています。
+
+![SSH サービスのコンポーネントを示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot1.png)
+
+次の手順は、エラーの原因を分離し、解決策や回避策を見つけ出すのに役立ちます。
+
+まず、ポータルで VM の状態を確認します。
+
+[Azure ポータル](https://portal.azure.com)で次の操作を行います。
+
+1. クラシック デプロイメント モデルを使用して作成された VM の場合は、**[参照]**、**[仮想マシン (クラシック)]**、*VM 名*の順に選択します。
+
+	- または -
+
+	Resource Manager モデルを使用して作成された VM の場合は、**[参照]**、**[仮想マシン]**、*VM 名*の順に選択します。
+
+	VM の状態ウィンドウには、"**実行中**" と表示されます。コンピューティング、ストレージ、およびネットワーク リソースの最近のアクティビティを確認するには、下にスクロールします。
+
+2. エンドポイント、IP アドレスなどの設定を確認するには、**[設定]** を選択します。
+
+	Resource Manager を使用して作成された VM のエンドポイントを識別するには、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)が定義されていることを確認します。ネットワーク セキュリティ グループにルールが適用され、サブネットで参照されていることも確認します。
+
+[Azure クラシック ポータル](https://manage.windowsazure.com)で、クラシック デプロイメント モデルを使用して作成された VM について、次の手順を実行します。
+
+1. **[仮想マシン]**、*VM 名*の順に選択します。
+2. VM の**ダッシュボード**を選択して、その状態を確認します。
+3. **[監視]** を選択して、コンピューティング、ストレージ、ネットワークの各リソースの最近のアクティビティを確認します。
+4. **[エンドポイント]** を選択して、SSH トラフィックのエンドポイントがあることを確認します。
+
+ネットワーク接続を確認するには、構成されているエンドポイントを確認します。また、HTTP などの別のプロトコルや他のサービスを使用して、VM に到達できるかどうかを確認します。
+
+以上の手順を完了したら、SSH 接続を再試行してください。
 
 
-# <a name="detailed-ssh-troubleshooting-steps"></a>Detailed SSH troubleshooting steps
+## 問題のソースを見つける
 
-There are many possible reasons that the SSH client might not be able to reach the SSH service on the VM. If you have followed through the more [general SSH troubleshooting steps](virtual-machines-linux-troubleshoot-ssh-connection.md), you need to further troubleshoot the connection issue. This article guides you through detailed troubleshooting steps to determine where the SSH connection is failing and how to resolve it.
+お使いのコンピューター上の SSH クライアントは、以下に問題または誤構成があるために Azure VM の SSH サービスに到達できないことがあります。
 
-## <a name="take-preliminary-steps"></a>Take preliminary steps
+- [SSH クライアント コンピューター](#source-1-ssh-client-computer)
+- [組織の境界デバイス](#source-2-organization-edge-device)
+- [クラウド サービス エンドポイントとアクセス制御リスト (ACL)](#source-3-cloud-service-endpoint-and-acl)
+- [ネットワーク セキュリティ グループ](#source-4-network-security-groups)
+- [Linux ベースの Azure VM](#source-5-linux-based-azure-virtual-machine)
 
-The following diagram shows the components that are involved.
+## ソース 1: SSH クライアント コンピューター
 
-![Diagram that shows components of SSH service](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot1.png)
+エラーのソースであるコンピューターを排除するには、そのコンピューターから他のオンプレミスの Linux コンピューターに SSH 接続できることを確認します。
 
-The following steps help you isolate the source of the failure and figure out solutions or workarounds.
+![SSH クライアント コンピューターのコンポーネントを示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
 
-First, check the status of the VM in the portal.
+接続できない場合は、そのコンピューターで以下を確認してください。
 
-In the [Azure portal](https://portal.azure.com):
+- 受信または送信の SSH トラフィック (TCP 22) をブロックしているローカル ファイアウォールの設定
+- SSH 接続を妨げている、ローカルでインストールされたクライアント プロキシのソフトウェア
+- SSH 接続を妨げている、ローカルでインストールされたネットワーク監視ソフトウェア
+- トラフィックを監視する、あるいは特定種類のトラフィックを許可または禁止する別の種類のセキュリティ ソフトウェア
 
-1. For VMs created by using the classic deployment model, select **Browse** > **Virtual machines (classic)** > *VM name*.
+これらの条件のいずれかに該当する場合は、ソフトウェアを一時的に無効にし、オンプレミス コンピューターへの SSH 接続を試して、ご使用のコンピューターで接続がブロックされている理由を調べます。次に、ネットワーク管理者とともに、SSH 接続が可能になるようにソフトウェアの設定を修正してください。
 
-    -OR-
-
-    For VMs created by using the Resource Manager model, select **Browse** > **Virtual machines** > *VM name*.
-
-    The status pane for the VM should show **Running**. Scroll down to show recent activity for compute, storage, and network resources.
-
-2. Select **Settings** to examine endpoints, IP addresses, and other settings.
-
-    To identify endpoints in VMs that were created by using Resource Manager, verify that a [network security group](../virtual-network/virtual-networks-nsg.md) has been defined. Also verify that the rules have been applied to the network security group and that they're referenced in the subnet.
-
-In the [Azure classic portal](https://manage.windowsazure.com), for VMs that were created by using the classic deployment model:
-
-1. Select **Virtual machines** > *VM name*.
-2. Select the VM's **Dashboard** to check its status.
-3. Select **Monitor** to see recent activity for compute, storage, and network resources.
-4. Select **Endpoints** to ensure that there is an endpoint for SSH traffic.
-
-To verify network connectivity, check the configured endpoints and see if you can reach the VM through another protocol, such as HTTP or another service.
-
-After these steps, try the SSH connection again.
-
-
-## <a name="find-the-source-of-the-issue"></a>Find the source of the issue
-
-The SSH client on your computer might fail to reach the SSH service on the Azure VM due to issues or misconfigurations in the following:
-
-- [SSH client computer](#source-1-ssh-client-computer)
-- [Organization edge device](#source-2-organization-edge-device)
-- [Cloud service endpoint and access control list (ACL)](#source-3-cloud-service-endpoint-and-acl)
-- [Network security groups](#source-4-network-security-groups)
-- [Linux-based Azure VM](#source-5-linux-based-azure-virtual-machine)
-
-## <a name="source-1:-ssh-client-computer"></a>Source 1: SSH client computer
-
-To eliminate your computer as the source of the failure, verify that it can make SSH connections to another on-premises, Linux-based computer.
-
-![Diagram that highlights SSH client computer components](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot2.png)
-
-If the connection fails, check for the following on your computer:
-
-- A local firewall setting that is blocking inbound or outbound SSH traffic (TCP 22)
-- Locally installed client proxy software that is preventing SSH connections
-- Locally installed network monitoring software that is preventing SSH connections
-- Other types of security software that either monitor traffic or allow/disallow specific types of traffic
-
-If one of these conditions apply, temporarily disable the software and try an SSH connection to an on-premises computer to find out the reason the connection is being blocked on your computer. Then work with your network administrator to correct the software settings to allow SSH connections.
-
-If you are using certificate authentication, verify that you have these permissions to the .ssh folder in your home directory:
+証明書認証を使用している場合は、ホーム ディレクトリの .ssh フォルダーに対してこれらのアクセス許可があることを確認します。
 
 - Chmod 700 ~/.ssh
-- Chmod 644 ~/.ssh/\*.pub
-- Chmod 600 ~/.ssh/id_rsa (or any other files that have your private keys stored in them)
-- Chmod 644 ~/.ssh/known_hosts (contains hosts that you’ve connected to via SSH)
+- Chmod 644 ~/.ssh/*.pub
+- Chmod 600 ~/.ssh/id\_rsa (またはプライベート キーが格納されている他のファイル)
+- Chmod 644 ~/.ssh/known\_hosts (SSH 経由で接続したホストが含まれます)
 
-## <a name="source-2:-organization-edge-device"></a>Source 2: Organization edge device
+## ソース 2: 組織のエッジ デバイス
 
-To eliminate your organization edge device as the source of the failure, verify that a computer that's directly connected to the Internet can make SSH connections to your Azure VM. If you are accessing the VM over a site-to-site VPN or an Azure ExpressRoute connection, skip to [Source 4: Network security groups](#nsg).
+エラーのソースである組織のエッジ デバイスを排除するには、インターネットに直接接続されているコンピューターから Azure VM に SSH 接続できることを確認します。サイト間 VPN 接続または Azure ExpressRoute 接続を介して VM にアクセスする場合は、「[ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
 
-![Diagram that highlights organization edge device](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
+![組織の境界デバイスを示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot3.png)
 
-If you don't have a computer that is directly connected to the Internet, create a new Azure VM in its own resource group or cloud service and use it. For more information, see [Create a virtual machine running Linux in Azure](virtual-machines-linux-quick-create-cli.md). Delete the resource group or VM and cloud service when you're done with your testing.
+インターネットに直接接続されているコンピューターがない場合は、新しい Azure VM を独自のリソース グループまたはクラウド サービスに作成して使用します。詳細については、「[Azure 上で Linux を実行する仮想マシンの作成](virtual-machines-linux-quick-create-cli.md)」を参照してください。テストの完了後に、そのリソース グループまたは VM と、クラウド サービスを削除します。
 
-If you can create an SSH connection with a computer that's directly connected to the Internet, check your organization edge device for:
+インターネットに直接接続されているコンピューターとの SSH 接続を作成できる場合は、組織のエッジ デバイスで以下を確認してください。
 
-- An internal firewall that's blocking SSH traffic with the Internet
-- A proxy server that's preventing SSH connections
-- Intrusion detection or network monitoring software running on devices in your edge network that's preventing SSH connections
+- インターネットでの SSH トラフィックをブロックしている内部ファイアウォール
+- SSH 接続を妨げているプロキシ サーバー
+- SSH 接続を妨げている、エッジ ネットワーク内のデバイスで実行されている侵入検出またはネットワーク監視ソフトウェア
 
-Work with your network administrator to correct the settings of your organization edge devices to allow SSH traffic with the Internet.
+ネットワーク管理者と協力して、インターネットでの SSH トラフィックを許可するように組織のエッジ デバイスの設定を修正します。
 
-## <a name="source-3:-cloud-service-endpoint-and-acl"></a>Source 3: Cloud service endpoint and ACL
+## ソース 3: クラウド サービス エンドポイントと ACL
 
-> [AZURE.NOTE] This source applies only to VMs that were created by using the classic deployment model. For VMs that were created by using Resource Manager, skip to [source 4: Network security groups](#nsg).
+> [AZURE.NOTE] このソースは、クラシック デプロイ モデルを使用して作成された VM にのみ適用されます。Resource Manager を使用して作成された VM については、「[ソース 4: ネットワーク セキュリティ グループ](#nsg)」に進みます。
 
-To eliminate the cloud service endpoint and ACL as the source of the failure, verify that another Azure VM in the same virtual network can make SSH connections to your VM.
+エラーのソースであるクラウド サービス エンドポイントと ACL を排除するには、同じ仮想ネットワーク内の別の Azure VM からご使用の VM に SSH 接続できることを確認します。
 
-![Diagram that highlights cloud service endpoint and ACL](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
+![クラウド サービス エンドポイントと ACL を示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot4.png)
 
-If you don't have another VM in the same virtual network, you can easily create a new one. For more information, see [Create a Linux VM on Azure using the CLI](virtual-machines-linux-quick-create-cli.md). Delete the extra VM when you are done with your testing.
+同じ仮想ネットワーク内に別の VM がない場合、新しい VM を簡単に作成することができます。詳細については、「[CLI を使用した Azure での Linux VM の作成](virtual-machines-linux-quick-create-cli.md)」をご覧ください。テストの完了後に、追加した VM を削除してください。
 
-If you can create an SSH connection with a VM in the same virtual network, check the following:
+同じ仮想ネットワーク内にある VM に対して SSH 接続を作成できる場合は、次の点を確認します。
 
-- **The endpoint configuration for SSH traffic on the target VM.** The private TCP port of the endpoint should match the TCP port on which the SSH service on the VM is listening. (The default port is 22). For VMs created by using the Resource Manager deployment model, verify the SSH TCP port number in the Azure portal by selecting **Browse** > **Virtual machines (v2)** > *VM name* > **Settings** > **Endpoints**.
+- **ターゲットの VM での SSH トラフィック向けエンドポイントの構成。** エンドポイントのプライベート TCP ポートは、VM 上の SSH サービスがリッスンする TCP ポートと一致する必要があります (既定のポートは 22 です)。Resource Manager デプロイ モデルを使用して作成された VM では、Azure Portal で **[参照]**、**[仮想マシン (v2)]**、*VM 名*、**[設定]**、**[エンドポイント]** の順に選択して、SSH TCP ポート番号を確認します。
 
-- **The ACL for the SSH traffic endpoint on the target virtual machine.** An ACL enables you to specify allowed or denied incoming traffic from the Internet, based on its source IP address. Misconfigured ACLs can prevent incoming SSH traffic to the endpoint. Check your ACLs to ensure that incoming traffic from the public IP addresses of your proxy or other edge server is allowed. For more information, see [About network access control lists (ACLs)](../virtual-network/virtual-networks-acl.md).
+- **ターゲットの仮想マシンでの、SSH トラフィック向けエンドポイントの ACL。** ACL を使用すると、発信元 IP アドレスに基づいて、インターネットからの受信トラフィックを許可または拒否するかを指定できます。ACL が正しく構成されていないと、そのエンドポイントへの SSH 受信トラフィックを受け取れない場合があります。プロキシまたは他のエッジ サーバーのパブリック IP アドレスからの受信トラフィックが ACL で許可されていることを確認します。詳細については、[ネットワーク アクセス制御リスト (ACL) の概要](../virtual-network/virtual-networks-acl.md)に関するページを参照してください。
 
-To eliminate the endpoint as a source of the problem, remove the current endpoint, create a new endpoint, and specify the SSH name (TCP port 22 for the public and private port number). For more information, see [Set up endpoints on a virtual machine in Azure](virtual-machines-windows-classic-setup-endpoints.md).
+問題のソースであるエンドポイントを排除するには、現在のエンドポイントを削除し、新しいエンドポイントを作成して、SSH 名を指定します (パブリックとプライベートのポート番号には TCP ポート 22)。詳細については、「[Azure での仮想マシンに対するエンドポイントの設定](virtual-machines-windows-classic-setup-endpoints.md)」をご覧ください
 
 <a id="nsg"></a>
-## <a name="source-4:-network-security-groups"></a>Source 4: Network security groups
+## ソース 4: ネットワーク セキュリティ グループ
 
-Network security groups enable you to have more granular control of allowed inbound and outbound traffic. You can create rules that span subnets and cloud services in an Azure virtual network. Check your network security group rules to ensure that SSH traffic to and from the Internet is allowed.
-For more information, see [About network security groups](../virtual-network/virtual-networks-nsg.md).
+ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。ネットワーク セキュリティ グループ ルールで、インターネットからの SSH トラフィックが許可されていることを確認します。詳細については、「[ネットワーク セキュリティ グループについて](../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
-## <a name="source-5:-linux-based-azure-virtual-machine"></a>Source 5: Linux-based Azure virtual machine
+## ソース 5: Linux ベースの Azure 仮想マシン
 
-The last source of possible problems is the Azure virtual machine itself.
+最後に考えられる問題のソースは、Azure 仮想マシン自体に関連するものです。
 
-![Diagram that highlights Linux-based Azure virtual machine](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
+![Linux ベースの Azure 仮想マシンを示す図](./media/virtual-machines-linux-detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-If you haven't done so already, follow the instructions [to reset a password or SSH for Linux-based virtual machines](virtual-machines-linux-classic-reset-access.md).
+[Linux ベースの仮想マシンのパスワードまたは SSH をリセットする](virtual-machines-linux-classic-reset-access.md)手順をまだ実行していない場合は、仮想マシンでその手順に従います。
 
-Try connecting from your computer again. If it still fails, the following are some of the possible issues:
+もう一度、コンピューターから接続を試みてください。引き続き接続できない場合は、以下の問題が考えられます。
 
-- The SSH service is not running on the target virtual machine.
-- The SSH service is not listening on TCP port 22. To test this, install a telnet client on your local computer and run "telnet *cloudServiceName*.cloudapp.net 22". This determines if the virtual machine allows inbound and outbound communication to the SSH endpoint.
-- The local firewall on the target virtual machine has rules that are preventing inbound or outbound SSH traffic.
-- Intrusion detection or network monitoring software that's running on the Azure virtual machine is preventing SSH connections.
-
-
-## <a name="additional-resources"></a>Additional resources
-For more information about troubleshooting application access, see [Troubleshoot access to an application running on an Azure virtual machine](virtual-machines-linux-troubleshoot-app-connection.md)
+- SSH サービスがターゲット仮想マシンで実行されていない。
+- SSH サービスが TCP ポート 22 をリッスンしていない。これをテストするには、ローカル コンピューターに telnet クライアントをインストールし、"telnet *cloudServiceName*.cloudapp.net 22" を実行します。これで、SSH エンドポイントに対する受信方向と送信方向の通信が仮想マシンで許可されているかどうかを確認できます。
+- ターゲット仮想マシンのローカル ファイアウォールに、受信または送信の SSH トラフィックを妨げているルールがある。
+- Azure 仮想マシンで実行されている侵入検出ソフトウェアまたはネットワーク監視ソフトウェアが、SSH 接続を妨げている。
 
 
-<!--HONumber=Oct16_HO2-->
+## その他のリソース
+アプリケーションへのアクセスのトラブルシューティングの詳細については、[Azure 仮想マシンで実行されているアプリケーションへのアクセスのトラブルシューティング](virtual-machines-linux-troubleshoot-app-connection.md)に関する記事をご覧ください。
 
-
+<!---HONumber=AcomDC_0907_2016-->

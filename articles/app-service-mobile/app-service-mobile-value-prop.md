@@ -1,111 +1,105 @@
 <properties
-    pageTitle="What are Mobile Apps"
-    description="Learn what advantages does App Service bring to your enterprise mobile apps."
-    services="app-service\mobile"
-    documentationCenter=""
-    authors="adrianhall"
-    manager="yochayk"
-    editor=""/>
+	pageTitle="モバイル アプリとは"
+	description="App Service が企業のモバイル アプリにもたらす利点について説明します。"
+	services="app-service\mobile"
+	documentationCenter=""
+	authors="adrianhall"
+	manager="yochayk"
+	editor=""/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="na"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+	ms.service="app-service-mobile"
+	ms.workload="na"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="10/01/2016"
+	ms.author="adrianha"/>
 
+# <a name="getting-started"> </a>Mobile Apps とは
 
-# <a name="<a-name="getting-started">-</a>what-is-mobile-apps?"></a><a name="getting-started"> </a>What is Mobile Apps?
-
-Azure App Service is a fully managed [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) offering for professional developers that brings a rich set of capabilities to web, mobile and integration scenarios. *Mobile Apps* in *Azure App Service* offer a highly scalable, globally available mobile application development platform for Enterprise Developers and System Integrators that brings a rich set of capabilities to mobile developers.
+Azure App Service は、プロの開発者のための完全に管理された[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。
 
 ![Mobile Apps](./media/app-service-mobile-value-prop/overview.png)
 
-##<a name="why-mobile-apps?"></a>Why Mobile Apps?
-*Mobile Apps* in *Azure App Service* offers a highly scalable, globally available mobile application development platform for Enterprise Developers and System Integrators that brings a rich set of capabilities to mobile developers. With Mobile Apps you can:
+##モバイル アプリを使用する理由
+*Azure App Service* の *Mobile Apps* は、拡張性が高くグローバルに使用可能な、企業の開発者やシステム インテグレーター向けのモバイル アプリ開発プラットフォームで、モバイル開発者に豊富な機能のセットを提供します。モバイル アプリでは、次のことを実行できます。
 
-- **Build native and cross platform apps** - whether you're building native iOS, Android, and Windows apps or cross-platform Xamarin or Cordova (Phonegap) apps, you can take advantage of App Service using native SDKs.
-- **Connect to your enterprise systems** - with Mobile Apps you can add corporate sign on in minutes, and connect to your enterprise on-premises or cloud resources.
-- **Build offline-ready apps with data sync** - make your mobile workforce productive by building apps that work offline and use Mobile Apps to sync data in the background when connectivity is present with any of your enterprise data sources or SaaS APIs.
-- **Push Notifications to millions in seconds** - engage your customers with instant push notifications on any device, personalized to their needs, sent when the time is right.
+- **ネイティブ アプリとクロスプラットフォーム アプリの構築** - iOS、Android、Windows のネイティブ アプリを構築する場合でも、Xamarin や Cordova (Phonegap) のクロスプラットフォーム アプリを構築する場合でも、ネイティブ SDK を使用して App Service を活用することができます。
+- **エンタープライズ システムへの接続** - Mobile Apps を使用して、企業へのサインオンを数分で追加し、企業のオンプレミス リソースまたはクラウド リソースに接続することができます。
+- **データ同期を使用したオフライン対応のアプリの構築** - オフラインでも動作し、企業のデータ ソースや SaaS API と接続したときに Mobile Apps を使用してバックグラウンドでデータを同期するアプリを構築することにより、モバイル ユーザーの生産性が向上します。
+- **瞬時に多数のユーザーへプッシュ通知** - 顧客のニーズに合わせてカスタマイズされ、適切なタイミングで送信される、任意のデバイスへの即時のプッシュ通知によって顧客の関心を引きます。
 
-## <a name="mobile-app-features"></a>Mobile App Features
-The following features are important to cloud-enabled mobile development:
+## モバイル アプリの機能
+クラウド対応のモバイル開発には次の機能が重要です。
 
-- **Authentication and Authorization** - Select from an ever-growing list of identity providers, including Azure Active Directory for enterprise authentication, plus social providers like Facebook, Google, Twitter and Microsoft Account.  Azure Mobile Apps provides an OAuth 2.0  service for each provider.  You can also integrate the SDK for the identity provider for provider specific functionality.
+- **認証と承認** - エンタープライズ認証用の Azure Active Directory などの ID プロバイダーや Facebook、Google、Twitter、Microsoft アカウントのようなソーシャル プロバイダーの豊富な一覧から選択します。Azure Mobile Apps は、各プロバイダーに対して OAuth 2.0 サービスを提供します。また、プロバイダー固有の機能を実現するために、ID プロバイダーの SDK を統合することもできます。
 
-  Discover more about our [authentication features].
+  [認証機能]の詳細を確認してください。
 
-- **Data Access** - Azure Mobile Apps provides a mobile-friendly OData v3 data source linked to SQL Azure or an on-premises SQL Server.  This service can be based on Entity Framework, allowing you to easily integrate with other NoSQL and SQL data providers, including [Azure Table Storage], MongoDB, [DocumentDB] and SaaS API providers like Office 365 and Salesforce.com.
-- **Offline Sync** - Our Client SDKs make it easy for you to build robust and responsive mobile applications that operate with an offline data set that can be automatically synchronized with the backend data, including conflict resolution support.
+- **データ アクセス** - Azure Mobile Apps では、SQL Azure またはオンプレミス SQL Server にリンクされた、モバイル対応の OData v3 データ ソースを提供しています。このサービスは Entity Framework に基づいているため、他の NoSQL および SQL データ プロバイダー ([Azure Table Storage]、MongoDB、[DocumentDB] など) および SaaS API プロバイダー (Office 365、Salesforce.com など) と簡単に統合できます。
+- **オフライン同期** - クライアント SDK を使用することで、オフライン データ セットで動作する堅牢で応答性の高いモバイル アプリケーションを簡単に構築できます。オフライン データ セットは、競合解決サポートを含めてバックエンド データと自動的に同期できます。
 
-  Discover more about our [data features].
+  [データ機能]の詳細を確認してください。
 
-- **Push Notifications** - Our Client SDKS seamlessly integrate with the registration capabilities of Azure Notification Hubs, allowing you to send push notifications to millions of users simultaneously.
+- **プッシュ通知** - クライアント SDK は Azure Notification Hubs の登録機能にシームレスに統合されます。これにより、数百万人のユーザーに同時にプッシュ通知を送信できます。
 
-  Discover more about our [push notification features].
+  [プッシュ通知機能]の詳細を確認してください。
 
-- **Client SDKs** - We provide a complete set of Client SDKs that cover native development ([iOS], [Android] and [Windows]), cross-platform development ([Xamarin for iOS and Android], [Xamarin Forms]) and hybrid application development ([Apache Cordova]).  Each client SDK is available with an MIT license and is open-source.
+- **クライアント SDK** - ネイティブ開発 ([iOS]、[Android]、[Windows])、クロスプラットフォーム開発 ([iOS および Android 用 Xamarin]、[Xamarin Forms])、およびハイブリッド アプリケーション開発 ([Apache Cordova]) に対応したクライアント SDK の完全なセットを提供します。各クライアント SDK は、オープンソースであり、MIT ライセンスで使用できます。
 
-## <a name="azure-app-service-features."></a>Azure App Service Features.
-The following platform features are generally useful for mobile production sites.
+## Azure App Service の機能
+次のプラットフォーム機能は、一般的に、モバイル運用サイトに役立ちます。
 
-- **Auto Scaling** - App Service enables you to quickly scale-up or out to handle any incoming customer load. Manually select the number and size of VMs or set up auto-scaling to scale your mobile app backend based on load or schedule.
+- **自動スケール** - App Service では、スケール アップやスケール アウトをすばやく実行して、将来の顧客負荷に対処することができます。VM の数やサイズを手動で選択するか、負荷またはスケジュールに基づいてモバイル アプリ バックエンドのスケール設定を行うように自動スケールを設定します。
 
-  Discover more about [auto scaling].
+  [自動スケール]の詳細を確認してください。
 
-- **Staging Environments** - App Service can run multiple versions of your site, allowing you to perform A/B testing, test in production as part of a larger DevOps plan and do in-place staging of a new backend.
+- **ステージング環境** - App Service では、サイトの複数のバージョンを実行できるため、A/B テスト、大規模な DevOps 計画の一環としての運用環境でのテスト、新しいバックエンドのインプレース ステージングを実行できます。
 
-  Discover more about [staging environments].
+  [ステージング環境]の詳細を確認してください。
 
-- **Continuous Deployment** - App Service can integrate with common SCM systems, allowing you to automatically deploy a new version of your backend by pushing to a branch of your SCM system.
+- **継続的なデプロイ** - App Service は一般的な SCM システムと統合できるため、バックエンドの新しいバージョンを SCM システムのブランチにプッシュすることで自動的にデプロイできます。
 
-  Discover more about [deployment options].
+  [デプロイ オプション]の詳細を確認してください。
 
-- **Virtual Networking** - App Service can connect to on-premises resources using virtual network, ExpressRoute or hybrid connections.
+- **仮想ネットワーク** - App Service は、仮想ネットワーク、ExpressRoute、またはハイブリッド接続を使用してオンプレミスのリソースに接続できます。
 
-  Discover more about [hybrid connections], [virtual networks], and [ExpressRoute].
+  [ハイブリッド接続]、[仮想ネットワーク]、および [ExpressRoute] の詳細を確認してください。
 
-- **Isolated / Dedicated Environments** - App Service can be run in a fully isolated and dedicated enviroment for securely running Azure App Service apps at high scale.  This is ideal for application workloads requiring very high scale, isolation or secure network access.
+- **分離/専用環境** - App Service は、Azure App Service アプリを高スケールで安全に実行するために、完全に分離された専用環境で実行できます。これは、高スケール、分離、またはセキュリティで保護されたネットワーク アクセスを必要とするアプリケーション ワークロードに最適です。
 
-  Discover more about [App Service Environments].
+  [App Service 環境]の詳細を確認してください。
 
-## <a name="getting-started"></a>Getting Started ##
-To get started with Mobile Apps, follow the [Get Started] tutorial.  This will cover the basics of producing a mobile backend and client of your choice, then integrating authentication, offline sync and push notifications.  You can follow the [Get Started] tutorial several times - once for each client application.
+## Getting Started (概要) ##
+Mobile Apps の使用を開始するには、[作業の開始]に関するチュートリアルに従ってください。このチュートリアルでは、モバイル バックエンドと任意のクライアントを生成した後、認証、オフライン同期、およびプッシュ通知を統合する方法の基礎を取り上げます。[作業の開始]に関するチュートリアルは、クライアント アプリケーションごとに 1 回ずつ、複数回行うことができます。
 
-For more information on Azure Mobile Apps, please review our [learning map].
-For more information on the Azure App Service platform, see [Azure App Service].
+Azure Mobile Apps の詳細については、[学習マップ]を確認してください。Azure App Service プラットフォームの詳細については、[Azure App Service] に関するページを参照してください。
 
->[AZURE.NOTE] If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](https://tryappservice.azure.com/?appServiceName=mobile), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](https://tryappservice.azure.com/?appServiceName=mobile)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
 <!-- URLs. -->
 [Migrate your Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
-[Get Started]: app-service-mobile-ios-get-started.md
+[作業の開始]: app-service-mobile-ios-get-started.md
 [Azure Table Storage]: ../storage/storage-getting-started-guide.md
 [DocumentDB]: ../documentdb/documentdb-get-started.md
-[authentication features]: ./app-service-mobile-auth.md
-[data features]: ./app-service-mobile-offline-data-sync.md
-[push notification features]: ../notification-hubs/notification-hubs-push-notification-overview.md
+[認証機能]: ./app-service-mobile-auth.md
+[データ機能]: ./app-service-mobile-offline-data-sync.md
+[プッシュ通知機能]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [iOS]: ./app-service-mobile-ios-how-to-use-client-library.md
 [Android]: ./app-service-mobile-android-how-to-use-client-library.md
 [Windows]: ./app-service-mobile-dotnet-how-to-use-client-library.md
-[Xamarin for iOS and Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
+[iOS および Android 用 Xamarin]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[auto scaling]: ../app-service-web/web-sites-scale.md
-[staging environments]: ../app-service-web/web-sites-staged-publishing.md
-[deployment options]: ../app-service-web/web-sites-deploy.md
-[hybrid connections]: ../app-service-web/web-sites-hybrid-connection-get-started.md
-[virtual networks]: ../app-service-web/web-sites-integrate-with-vnet.md
+[自動スケール]: ../app-service-web/web-sites-scale.md
+[ステージング環境]: ../app-service-web/web-sites-staged-publishing.md
+[デプロイ オプション]: ../app-service-web/web-sites-deploy.md
+[ハイブリッド接続]: ../app-service-web/web-sites-hybrid-connection-get-started.md
+[仮想ネットワーク]: ../app-service-web/web-sites-integrate-with-vnet.md
 [ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
-[App Service Environments]: ../app-service-web/app-service-app-service-environment-intro.md
-[learning map]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
+[App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
+[学習マップ]: https://azure.microsoft.com/documentation/learning-paths/appservice-mobileapps/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

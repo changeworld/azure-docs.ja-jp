@@ -1,39 +1,36 @@
-#### <a name="to-create-a-new-service"></a>To create a new service
+#### 新しいサービスを作成するには
 
-1.  Using your Microsoft account credentials, log on to the Azure classic portal at this URL: [https://manage.windowsazure.com/](https://manage.windowsazure.com/). If deploying the device in Government portal, log in at:  [https://manage.windowsazure.us/](https://manage.windowsazure.us/)
+1.  Microsoft アカウント資格情報を使用して、この URL ([https://manage.windowsazure.com/](https://manage.windowsazure.com/)) から Azure クラシック ポータルにログオンします。Government ポータルにデバイスをデプロイする場合、[https://manage.windowsazure.us/](https://manage.windowsazure.us/) にログインします。
 
-2.  In the portal, click **New > Data Services > StorSimple Manager > Quick Create**.
+2.  ポータルで、**[新規]、[Data Services]、[StorSimple Manager]、[簡易作成]** の順にクリックします。
 
-3.  In the form that is displayed, do the following:
+3.  表示されるフォームで、次の手順を実行します。
 
-    1.  Supply a unique **Name** for your service. This is a friendly name that can be used to identify the service. The name can have between 2 and 50 characters that can be letters, numbers, and hyphens. The name must start and end with a letter or a number.
+	1.  サービスの一意の **[名前]** を指定します。これは、サービスの識別に使用できるフレンドリ名です。名前の長さは 2 ～ 50 文字とし、文字、数字、ハイフンを含めることができます。名前の最初と最後は、文字か数字とする必要があります。
 
-    2.  For a service to manage a StorSimple virtual device, from the drop down list for **Managed devices type**, choose **Virtual device series**.
+	2.  StorSimple 仮想デバイスを管理するサービスの **[管理されているデバイスの種類]** ボックスの一覧で、**[仮想デバイス シリーズ]** を選択します。
 
-    3.  Supply a **Location** for your service. Location refers to the geographical region where you want to deploy your device.
+	3.  サービスの **[場所]** を指定します。場所は、デバイスをデプロイする地理的領域です。
 
-     -   If you have other workloads in Azure that you intend to deploy with your StorSimple device, we recommend that you use that datacenter.
+	 -   Azure 内の既存のワークロードを StorSimple デバイスにもデプロイする場合、そのデータセンターを使用する必要があります。
 
-     -   The StorSimple Manager and Azure storage can be in two separate locations. In such a case, you are required to create the StorSimple Manager and Azure storage account separately. To create an Azure storage account, go to the Azure Storage service in portal and follow the steps in [Create an Azure Storage account](storage-create-storage-account.md#create-a-storage-account). After this account is created, add this account to the StorSimple Manager service by following the steps in [Configure a new storage account for the service](#optional-step-configure-a-new-storage-account-for-the-service).
-     
-     -   If deploying the virtual device in the Government Portal, the StorSimple Manager service is available in US Iowa and US Virginia locations.
-     
-        
-    1.  Choose a **Subscription** from the drop-down list. The subscription is linked to your billing account. This field is not present when you have only one subscription.
+   	 -   StorSimple Manager と Azure Storage は別々の場所に置くことができます。その場合、StorSimple Manager と Azure Storage のアカウントを別々に作成する必要があります。Azure Storage のアカウントを作成するには、ポータルで Azure Storage サービスに移動し、「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」に記載されている手順に従います。このアカウントが作成されたら、それを StorSimple Manager サービスに追加します。それには、「[サービスの新しいストレージ アカウントを構成する](#optional-step-configure-a-new-storage-account-for-the-service)」に記載されている手順を実行してください。
+   	 
+   	 -   Government ポータルに仮想デバイスをデプロイする場合、米国アイオワ州と米国バージニア州で StorSimple Manager サービスを使用できます。
+   	 
+   	 	
+	1.  **[サブスクリプション]** ボックスの一覧で、サブスクリプションを選択します。サブスクリプションは、課金アカウントにリンクされます。このフィールドは、保有するサブスクリプションが 1 つだけの場合は表示されません。
 
-    1.  Select **Create a new Azure storage account** to automatically create a storage account with the service. This storage account will have a special name such as "storsimplebwv8c6dcnf". If you need your data in a different location, clear this check box.
+	1.  **[新しい Azure ストレージ アカウントを作成する]** をオンにすると、サービスの作成時にストレージ アカウントが自動的に作成されます。このストレージ アカウントは、"storsimplebwv8c6dcnf" などの特別な名前になります。別の場所でデータが必要になる場合、このボックスをオフにします。
 
-    1.  Click **Create StorSimple Manager** to create the service.
+	1.  **[StorSimple Manager の作成]** をクリックしてサービスを作成します。
 
-        ![](./media/storsimple-ova-create-new-service/image1m-include.png)
+		![](./media/storsimple-ova-create-new-service/image1m-include.png)
 
-    You will be directed to the **Service** landing page. The service creation will take a few minutes. After the service is successfully created, you will be notified appropriately.
+	**[サービス]** ランディング ページが表示されます。サービスの作成には数分かかります。サービスが正常に作成されると通知が表示されます。
 
-    ![](./media/storsimple-ova-create-new-service/image2-include.png)
+	![](./media/storsimple-ova-create-new-service/image2-include.png)
 
-    The status of the service will change to **Active**.
+	サービスの状態が **"アクティブ"** に変わります。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0316_2016-->

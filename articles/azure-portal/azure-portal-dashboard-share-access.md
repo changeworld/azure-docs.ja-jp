@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure portal dashboard access | Microsoft Azure"
-   description="This article explains how to share access to a dashboard in the Azure portal."
+   pageTitle="Azure ポータルのダッシュボード アクセス | Microsoft Azure"
+   description="この記事では、Azure ポータルのダッシュボードへのアクセスを共有する方法について説明します。"
    services="azure-portal"
    documentationCenter=""
    authors="tfitzmac"
@@ -16,73 +16,69 @@
    ms.date="08/01/2016"
    ms.author="tomfitz"/>
 
+# Azure ダッシュボードの共有
 
-# <a name="sharing-azure-dashboards"></a>Sharing Azure dashboards
+構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。ダッシュボードへのアクセスを第三者に許可するには、Azure の[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用します。特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。
 
-After configuring a dashboard, you can publish it and share it with other users in your organization. You permit others to access your dashboard by using Azure [Role Based Access Control](../active-directory/role-based-access-control-configure.md). You assign a user or group of users to a role, and that role defines whether those users can view or modify the published dashboard. 
+発行したダッシュボードはすべて Azure リソースとして実装されます。つまり、それらは管理可能な要素としてサブスクリプションに存在し、リソース グループに属します。アクセス制御の見地からは、ダッシュボードはその他のリソース (仮想マシン、ストレージ アカウントなど) と変わりありません。
 
-All published dashboards are implemented as Azure resources, which means they exist as manageable items within your subscription and are contained in a resource group.  From an access control perspective, dashboards are no different than other resources, such as a virtual machine or a storage account.
+> [AZURE.TIP] ダッシュボードの個々のタイルには、表示されているリソースに基づいて、独自のアクセス制御の要件が適用されます。つまり、広く共有しながらも個々のタイルのデータを保護するようにダッシュボードを設計することができます。
 
-> [AZURE.TIP] Individual tiles on the dashboard enforce their own access control requirements based on the resources they display.  Therefore, you can design a dashboard that is shared broadly while still protecting the data on individual tiles.
+## ダッシュボードのアクセス制御について
 
-## <a name="understanding-access-control-for-dashboards"></a>Understanding access control for dashboards
+ロールベースのアクセス制御では、以下に示した 3 つのスコープ レベルでユーザーをロールに割り当てることができます。
 
-With role-based access control, you can assign users to roles at three different levels of scope:
-
-- subscription
-- resource group
+- サブスクリプション
+- リソース グループ
 - resource
 
-The permissions you assign are inherited from subscription down to the resource. The published dashboard is a resource. Therefore, you may already have users assigned to roles for the subscription which also work for the published dashboard. 
+割り当てたアクセス許可は、サブスクリプションからリソースへと継承されます。発行したダッシュボードはリソースです。したがってサブスクリプションのロールに対して既にユーザーが割り当てられていると、発行したダッシュボードに対しても、そのロールが作用します。
 
-Here is an example.  Let's say you have an Azure subscription and various members of your team have been assigned the roles of **owner**, **contributor**, or **reader** for the subscription. Users who are owners or contributors are able to list, view, create, modify, or delete dashboards within the subscription.  Users who are readers are able to list and view dashboards, but cannot modify or delete them.  Users with reader access are able to make local edits to a published dashboard (such as, when troubleshooting an issue), but are not able to publish those changes back to the server.  They will have the option to make a private copy of the dashboard for themselves
+たとえば次のようになります。Azure サブスクリプションがあり、チームのさまざまなメンバーに、サブスクリプションの**所有者**、**共同作業者**、または**閲覧者**ロールが割り当てられているとします。所有者または共同作成者であるユーザーは、サブスクリプション内でダッシュボードを一覧表示、表示、作成、変更、および削除できます。閲覧者であるユーザーは、ダッシュボードの一覧表示と表示はできますが、変更と削除はできません。閲覧者アクセス許可を持つユーザーは、発行されたダッシュボードにローカルで編集を加えることはできますが (たとえば、問題のトラブルシューティングを行う場合)、その変更をサーバーに戻すことはできません。このようなユーザーは、個人用にダッシュボードのプライベート コピーを作成することが可能です。
 
-However, you could also assign permissions to the resource group that contains several dashboards or to an individual dashboard. For example, you may decide that a group of users should have limited permissions across the subscription but greater access to a particular dashboard. You assign those users to a role for that dashboard. 
+一方、複数のダッシュボードを含んだリソース グループにアクセス許可を割り当てたり、個々のダッシュボードにアクセス許可を割り当てたりすることもできます。たとえば一連のユーザーについて、サブスクリプション レベルでは権限を制限しつつ、特定のダッシュボードについては、それよりも大きなアクセス権を割り当てることができます。この場合は、一連のユーザーをそのダッシュボードのロールに割り当てることになります。
 
-## <a name="publish-dashboard"></a>Publish dashboard
+## ダッシュボードの発行
 
-Let's suppose you have finished configuring a dashboard that you want to share with a group of users in your subscription. The steps below depict a customized group called Storage Managers, but you can name your group whatever you would like. For information about creating an Active Directory group and adding users to that group, see [Managing groups in Azure Active Directory](../active-directory/active-directory-accessmanagement-manage-groups.md).
+サブスクリプション内の一連のユーザーとの間で共有するダッシュボードの設定が済んでいるとしましょう。以下の手順では、Storage Managers というカスタム グループを想定していますが、対象グループには好きな名前を付けてかまいません。Active Directory グループの作成とそのグループへのユーザーの追加については、「[Azure Active Directory におけるグループの管理](../active-directory/active-directory-accessmanagement-manage-groups.md)」を参照してください。
 
-1. In the dashboard, select **Share**.
+1. ダッシュボードで **[共有]** を選択します。
 
      ![select share](./media/azure-portal-dashboard-share-access/select-share.png)
 
-2. Before assigning access, you must publish the dashboard. By default, the dashboard will be published to a resource group named **dashboards**. Select **Publish**.
+2. アクセス権を割り当てる前に、ダッシュボードを発行する必要があります。既定では、**"ダッシュボード"** という名前のリソース グループにダッシュボードが発行されます。**[発行]** を選択します。
 
      ![publish](./media/azure-portal-dashboard-share-access/publish.png)
 
-Your dashboard is now published. If the permissions inherited from the subscription are suitable, you do not need to do anything more. Other users in your organization will be able to access and modify the dashboard based on their subscription level role. However, for this tutorial, let's assign a group of users to a role for that dashboard.
+ダッシュボードが発行されました。サブスクリプションから継承されたアクセス許可が適切であれば、これ以上の作業は不要です。同じ組織内の他のユーザーが、そのサブスクリプション レベルのロールに応じてダッシュボードにアクセスし、変更を加えることができます。ただしこのチュートリアルでは、ダッシュボードのロールに一連のユーザーを割り当てることにします。
 
-## <a name="assign-access-to-a-dashboard"></a>Assign access to a dashboard
+## ダッシュボードへのアクセス権の割り当て
 
-1. After publishing the dashboard, select **Manage users**.
+1. ダッシュボードを発行した後、**[ユーザーの管理]** を選択します。
 
-     ![manage users](./media/azure-portal-dashboard-share-access/manage-users.png)
+     ![ユーザーの管理](./media/azure-portal-dashboard-share-access/manage-users.png)
 
-2. You will see a list of existing users that are already assigned a role for this dashboard. Your list of existing users will be different than the image below. Most likely, the assignments are inherited from the subscription. To add a new user or group, select **Add**.
+2. このダッシュボードのロールが既に割り当てられている既存のユーザーが一覧表示されます。一覧表示される既存のユーザーは、以下の画像とは異なる場合があります。ほとんどの割り当てはサブスクリプションから継承されたものであると考えられます。新しいユーザーまたはグループを追加するには、**[追加]** を選択します。
 
      ![add user](./media/azure-portal-dashboard-share-access/existing-users.png)
 
-3. Select the role that represents the permissions you would like to grant. For this example, select **Contributor**.
+3. 許可するアクセス許可に相当するロールを選択します。この例では、**[共同作成者]** を選択します。
 
      ![select role](./media/azure-portal-dashboard-share-access/select-role.png)
 
-4. Select the user or group that you wish to assign to the role. If you do not see the user or group you are looking for in the list, use the search box. Your list of available groups will depend on the groups you have created in your Active Directory.
+4. ロールに割り当てるユーザーまたはグループを選択します。探しているユーザーまたはグループが一覧に見当たらない場合は、検索ボックスを使用してください。選択できるグループの一覧は、Active Directory に作成したグループによって異なります。
 
-     ![select user](./media/azure-portal-dashboard-share-access/select-user.png) 
+     ![select user](./media/azure-portal-dashboard-share-access/select-user.png)
 
-5. When you have finished adding users or groups, select **OK**. 
+5. ユーザーまたはグループを追加したら、**[OK]** を選択します。
 
-6. The new assignment is added to the list of users. Notice that its **Access** is listed as **Assigned** rather than **Inherited**.
+6. 新しい割り当てがユーザーの一覧に追加されます。対応する **[アクセス]** 欄が、**[継承済み]** ではなく **[割り当て済み]** になっていることに注目してください。
 
      ![assigned roles](./media/azure-portal-dashboard-share-access/assigned-roles.png)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- For a list of roles, see [RBAC: Built-in roles](../active-directory/role-based-access-built-in-roles.md).
-- To learn about managing resources, see [Manage Azure resources through portal](resource-group-portal.md).
+- 一連のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
+- リソース管理の詳細については、「[ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

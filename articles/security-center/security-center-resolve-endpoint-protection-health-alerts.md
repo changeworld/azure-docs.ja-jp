@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resolve endpoint protection health alerts in Azure Security Center| Microsoft Azure"
-   description="This document shows you how to implement the Azure Security Center recommendation **Resolve Endpoint Protection health alerts**."
+   pageTitle="Azure Security Center での Endpoint Protection の正常性アラートの解決 | Microsoft Azure"
+   description="このドキュメントでは、";Endpoint Protection の正常性アラートの解決"; という Azure Security Center の推奨事項を実装する方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,36 +16,31 @@
    ms.date="07/29/2016"
    ms.author="terrylan"/>
 
+# Azure Security Center での Endpoint Protection の正常性アラートの解決
 
-# <a name="resolve-endpoint-protection-health-alerts-in-azure-security-center"></a>Resolve endpoint protection health alerts in Azure Security Center
+Azure Security Center では、検出されたEndpoint Protection の正常性アラートを解決するよう推奨します。Security Center では、Endpoint Protection エラーが発生している仮想マシン (VM) とエラーの数を確認できます。
 
-Azure Security Center will recommend that you resolve detected endpoint protection health alerts.  Security Center enables you to see which virtual machines (VMs) have endpoint protection failures and how many failures.
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
-> [AZURE.NOTE] This document introduces the service by using an example deployment. This is not a step-by-step guide.
+## 推奨事項の実装
 
-## <a name="implement-the-recommendation"></a>Implement the recommendation
+1. **[推奨事項]** ブレードで、**[Resolve Endpoint Protection health alerts (Endpoint Protection の正常性アラートの解決)]** を選択します。![Endpoint Protection の正常性アラートの解決][1]
 
-1. In the **Recommendations blade**, select **Resolve Endpoint Protection health alerts**.
-![Resolve endpoint protection health alerts][1]
+2. **[Endpoint Protection failure (Endpoint Protection エラー)]** ブレードが開き、エラーが発生している VM と各 VM のエラーの数が表示されます。一覧から VM を選択します。![Endpoint Protection エラー][2]
 
-2. This opens the blade **Endpoint Protection failure** which lists VMs with failures and the number of failures for each VM. Select a VM from the list.
-![Endpoint protection failure][2]
+3. 選択した VM の **[Failures List (エラー リスト)]** ブレードが開き、エラーの一覧が表示されます。一覧から詳細を確認するエラーを選択します。選択したエラーに関する情報が含まれたブレードが開きます。![エラー リスト][3] ![エラー イベント][4]
 
-3. A **Failures List** blade opens for the selected VM, displaying a list of failures. Select a failure from the list to learn more. This opens a blade with information about the selected failure.
-![Failures list][3]
-  ![Failure event][4]
+## 関連項目
 
-## <a name="see-also"></a>See also
+セキュリティ センターの詳細については、次を参照してください。
 
-To learn more about Security Center, see the following:
-
-- [Setting security policies in Azure Security Center](security-center-policies.md)--Learn how to configure security policies for your Azure subscriptions and resource groups.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md)--Learn how recommendations help you protect your Azure resources.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md)--Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md)--Learn how to manage and respond to security alerts.
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md) -- Learn how to monitor the health status of your partner solutions.
-- [Azure Security Center FAQ](security-center-faq.md)--Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/)--Get the latest Azure security news and information.
+- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」-- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)」-- パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」-- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-resolve-endpoint-protection/resolve-endpoint-protection.png
@@ -53,8 +48,4 @@ To learn more about Security Center, see the following:
 [3]: ./media/security-center-resolve-endpoint-protection/failure-list.png
 [4]: ./media/security-center-resolve-endpoint-protection/failure-event.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

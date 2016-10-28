@@ -2,7 +2,4 @@
 [PowerShell](virtual-network-create-udr-classic-ps.md)
 [Azure CLI](virtual-network-create-udr-classic-cli.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

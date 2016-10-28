@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Python Flask Web Application Development with DocumentDB | Microsoft Azure"
-    description="Review a database tutorial on using DocumentDB to store and access data from a Python Flask web application hosted on Azure. Find application development solutions." 
-    keywords="Application development, database tutorial, python flask, python web application, python web development, documentdb, azure, Microsoft azure"
+    pageTitle="DocumentDB による Python Flask Web アプリケーション開発 | Microsoft Azure"
+    description="DocumentDB を使用してデータを格納し、Azure にホストされた Python Flask Web アプリケーションからそのデータにアクセスする方法をデータベース チュートリアルで確認します。アプリケーション開発ソリューションを探します。" 
+	keywords="アプリケーション開発, データベース チュートリアル, python flask, python web アプリケーション, python web 開発, documentdb, azure, Microsoft azure"
     services="documentdb"
     documentationCenter="python"
-    authors="syamkmsft"
+    authors="AndrewHoh"
     manager="jhubbard"
     editor="cgronlun"/>
 
@@ -15,156 +15,154 @@
     ms.devlang="python"
     ms.topic="hero-article"
     ms.date="08/25/2016"
-    ms.author="syamk"/>
+    ms.author="anhoh"/>
 
-
-# <a name="python-flask-web-application-development-with-documentdb"></a>Python Flask Web Application Development with DocumentDB
+# DocumentDB による Python Flask Web アプリケーション開発
 
 > [AZURE.SELECTOR]
 - [.NET](documentdb-dotnet-application.md)
-- [Node.js](documentdb-nodejs-application.md)
+- [Node.JS](documentdb-nodejs-application.md)
 - [Java](documentdb-java-application.md)
 - [Python](documentdb-python-application.md)
 
-This tutorial shows you how to use Azure DocumentDB to store and access data from a Python web application hosted on Azure and presumes that you have some prior experience using Python and Azure websites.
+このチュートリアルでは、Azure DocumentDB を使用して、Azure にホストされている Python Web アプリケーションからデータを保存する方法や、データにアクセスする方法を説明します。Python と Azure Websites の使用経験がある読者を想定しています。
 
-This database tutorial covers:
+このデータベース チュートリアルの内容:
 
-1. Creating and provisioning a DocumentDB account.
-2. Creating a Python MVC application.
-3. Connecting to and using Azure DocumentDB from your web application.
-4. Deploying the web application to Azure Websites.
+1. DocumentDB アカウントを作成してプロビジョニングする
+2. Python MVC アプリケーションを作成する
+3. Web アプリケーションから Azure DocumentDB に接続して使用する
+4. Web アプリケーションを Azure Websites にデプロイする
 
-By following this tutorial, you will build a simple voting application that allows you to vote for a poll.
+このチュートリアルの手順を実行すると、アンケートに回答する単純な投票アプリケーションを作成できます。
 
-![Screen shot of the todo list web application created by this database tutorial](./media/documentdb-python-application/image1.png)
+![このデータベース チュートリアルで作成された、ToDo リスト Web アプリケーションのスクリーン ショット](./media/documentdb-python-application/image1.png)
 
 
-## <a name="database-tutorial-prerequisites"></a>Database tutorial prerequisites
+## データベース チュートリアルの前提条件
 
-Before following the instructions in this article, you should ensure that you have the following installed:
+この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-- An active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/).
-- [Visual Studio 2013](http://www.visualstudio.com/) or higher, or [Visual Studio Express](), which is the free version. The instructions in this tutorial are written specifically for Visual Studio 2015. 
-- Python Tools for Visual Studio from [GitHub](http://microsoft.github.io/PTVS/). This tutorial uses Python Tools for VS 2015. 
-- Azure Python SDK for Visual Studio, version 2.4 or higher available from [azure.com](https://azure.microsoft.com/downloads/). We used Microsoft Azure SDK for Python 2.7.
-- Python 2.7 from [python.org][2]. We used Python 2.7.11. 
+- アクティブな Azure アカウント。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+- [Visual Studio 2013](http://www.visualstudio.com/) 以降、またはその無償版の [Visual Studio Express]()。このチュートリアルの手順は、Visual Studio 2015 を想定して作成されています。
+- Python Tools for Visual Studio ([GitHub](http://microsoft.github.io/PTVS/) から入手できます)。このチュートリアルでは、Python Tools for VS 2015 を使用します。
+- Azure Python SDK for Visual Studio Version 2.4 以降 ([azure.com](https://azure.microsoft.com/downloads/) から入手できます)。ここでは、Microsoft Azure SDK for Python 2.7 を使用しました。
+- Python 2.7 ([python.org][2] から入手できます)。ここでは、Python 2.7.11 を使用しました。
 
-> [AZURE.IMPORTANT] If you are installing Python 2.7 for the first time, ensure that in the Customize Python 2.7.11 screen, you select **Add python.exe to Path**.
+> [AZURE.IMPORTANT] 初めて Python 2.7 をインストールする場合は、[Customize Python 2.7.11] 画面で必ず **[Add python.exe to Path]** を選択してください。
 > 
 >    ![Screen shot of the Customize Python 2.7.11 screen, where you need to select Add python.exe to Path](./media/documentdb-python-application/image2.png)
 
-- Microsoft Visual C++ Compiler for Python 2.7 from the [Microsoft Download Center][3].
+- Microsoft Visual C++ Compiler for Python 2.7 ([Microsoft ダウンロード センター][3]から入手できます)。
 
-## <a name="step-1:-create-a-documentdb-database-account"></a>Step 1: Create a DocumentDB database account
+## 手順 1: DocumentDB データベース アカウントを作成する
 
-Let's start by creating a DocumentDB account. If you already have an account, you can skip to [Step 2: Create a new Python Flask web application](#step-2:-create-a-new-python-flask-web-application).
+最初に、DocumentDB アカウントを作成します。既にアカウントを持っている場合は、この手順を省略して「[手順 2. 新しい Python Flask Web アプリケーションを作成する](#step-2:-create-a-new-python-flask-web-application)」に進んでください。
 
 [AZURE.INCLUDE [documentdb-create-dbaccount](../../includes/documentdb-create-dbaccount.md)]
 
-<br/>
-We will now walk through how to create a new Python Flask web application from the ground up.
+<br/> 次のセクションでは、新しい Python Flask Web アプリケーションをゼロから作成する方法について説明します。
 
-## <a name="step-2:-create-a-new-python-flask-web-application"></a>Step 2: Create a new Python Flask web application
+## 手順 2: 新しい Python Flask Web アプリケーションを作成する
 
-1. In Visual Studio, on the **File** menu, point to **New**, and then click **Project**.
+1. Visual Studio で、**[ファイル]** メニューの **[新規作成]** をポイントし、**[プロジェクト]** をクリックします。
 
-    The **New Project** dialog box appears.
+    **[新しいプロジェクト]** ダイアログ ボックスが表示されます。
 
-2. In the left pane, expand **Templates** and then **Python**, and then click **Web**. 
+2. 左側のウィンドウで、**[テンプレート]**、**[Python]**、**[Web]** の順に展開します。
 
-3. Select **Flask  Web Project** in the center pane, then in the **Name** box type **tutorial**, and then click **OK**. Remember that Python package names should be all lowercase, as described in the [Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/#package-and-module-names).
+3. 中央のウィンドウで、**[Flask Web Project]** を選択し、**[名前]** ボックスに「**tutorial**」と入力して、**[OK]** をクリックします。[Python コードのスタイル ガイド](https://www.python.org/dev/peps/pep-0008/#package-and-module-names)に関するページで説明されているように、Python パッケージの名前はすべて小文字にする必要があることに注意してください。
 
-    For those new to Python Flask, it is a web application development framework that helps you build web applications in Python faster.
+	Python Flask は、Python で Web アプリケーションを短時間で作成するための Web アプリケーション開発フレームワークです。
 
-    ![Screen shot of the New Project window in Visual Studio with Python highlighted on the left, Python Flask Web Project selected in the middle, and the name tutorial in the Name box](./media/documentdb-python-application/image9.png)
+	![Visual Studio の [新しいプロジェクト] ウィンドウのスクリーン ショット。左側で [Python] が強調表示され、中央で [Python Flask Web プロジェクト] が選択され、[名前] ボックスに tutorial という名前が入力されている](./media/documentdb-python-application/image9.png)
 
-4. In the **Python Tools for Visual Studio** window, click **Install into a virtual environment**. 
+4. **[Python Tools for Visual Studio]** ウィンドウで、**[Install into a virtual environment]** をクリックします。
 
-    ![Screen shot of the database tutorial - Python Tools for Visual Studio window](./media/documentdb-python-application/image10.png)
+	![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image10.png)
 
-5. In the **Add Virtual Environment** window, you can accept the defaults and use Python 2.7 as the base environment because PyDocumentDB does not currently support Python 3.x, and then click **Create**. This sets up the required Python virtual environment for your project.
+5. 現時点では PyDocumentDB は Python 3.x をサポートしていないため、**[Add Virtual Environment]** ウィンドウで、既定の設定をそのまま使用し、ベース環境として Python 2.7 を使用します。**[Create]** をクリックします。これで、プロジェクトに必要な Python 仮想環境が設定されます。
 
-    ![Screen shot of the database tutorial - Python Tools for Visual Studio window](./media/documentdb-python-application/image10_A.png)
+	![[database tutorial - Python Tools for Visual Studio] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image10_A.png)
 
-    The output window displays `Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.` when the environment is successfully installed.
+    環境が正常にインストールされると、出力ウィンドウに "`Successfully installed Flask-0.10.1 Jinja2-2.8 MarkupSafe-0.23 Werkzeug-0.11.5 itsdangerous-0.24 'requirements.txt' was installed successfully.`" と表示されます。
 
-## <a name="step-3:-modify-the-python-flask-web-application"></a>Step 3: Modify the Python Flask web application
+## 手順 3: Python Flask Web アプリケーションを変更する
 
-### <a name="add-the-python-flask-packages-to-your-project"></a>Add the Python Flask packages to your project
+### プロジェクトへの Python Flask パッケージの追加
 
-After your project is set up, you'll need to add the required Flask packages to your project, including pydocumentdb, the Python package for DocumentDB.
+プロジェクトを設定した後は、プロジェクトに必要な Flask パッケージ (DocumentDB 用の Python パッケージ pydocumentdb など) を追加する必要があります。
 
-1. In Solution Explorer, open the file named **requirements.txt** and replace the contents with the following:
+1. ソリューション エクスプローラーで、**requirements.txt** という名前のファイルを開き、既存のコードを次のコードに置き換えます。
 
-        flask==0.9
-        flask-mail==0.7.6
-        sqlalchemy==0.7.9
-        flask-sqlalchemy==0.16
-        sqlalchemy-migrate==0.7.2
-        flask-whooshalchemy==0.55a
-        flask-wtf==0.8.4
-        pytz==2013b
-        flask-babel==0.8
-        flup
-        pydocumentdb>=1.0.0
+    	flask==0.9
+    	flask-mail==0.7.6
+    	sqlalchemy==0.7.9
+    	flask-sqlalchemy==0.16
+    	sqlalchemy-migrate==0.7.2
+    	flask-whooshalchemy==0.55a
+    	flask-wtf==0.8.4
+    	pytz==2013b
+    	flask-babel==0.8
+    	flup
+    	pydocumentdb>=1.0.0
 
-2. Save the **requirements.txt** file. 
-3. In Solution Explorer, right-click **env** and click **Install from requirements.txt**.
+2. **requirements.txt** ファイルを保存します。
+3. ソリューション エクスプローラーで、**[env]** を右クリックし、**[Install from requirements.txt]** をクリックします。
 
-    ![Screen shot showing env (Python 2.7) selected with Install from requirements.txt highlighted in the list](./media/documentdb-python-application/image11.png)
+	![[env (Python 2.7)] を示すスクリーン ショット。リストで [requirements.txt からインストール] が選択されている](./media/documentdb-python-application/image11.png)
 
-    After successful installation, the output window displays the following:
+    正常にインストールされると、出力ウィンドウに次のメッセージが表示されます。
 
         Successfully installed Babel-2.3.2 Tempita-0.5.2 WTForms-2.1 Whoosh-2.7.4 blinker-1.4 decorator-4.0.9 flask-0.9 flask-babel-0.8 flask-mail-0.7.6 flask-sqlalchemy-0.16 flask-whooshalchemy-0.55a0 flask-wtf-0.8.4 flup-1.0.2 pydocumentdb-1.6.1 pytz-2013b0 speaklater-1.3 sqlalchemy-0.7.9 sqlalchemy-migrate-0.7.2
 
-    > [AZURE.NOTE] In rare cases, you might see a failure in the output window. If this happens, check if the error is related to cleanup. Sometimes the cleanup fails, but the installation will still be successful (scroll up in the output window to verify this). You can check your installation by [Verifying the virtual environment](#verify-the-virtual-environment). If the installation failed but the verification is successful, it's OK to continue.
+    > [AZURE.NOTE] まれに、出力ウィンドウにエラーが表示されることがあります。その場合は、エラーがクリーンアップに関連しているかどうか確認してください。クリーンアップには失敗しても、インストールは正常に行われる場合があります (出力ウィンドウを上方向へスクロールして確認してください)。[仮想環境を確認する](#verify-the-virtual-environment)ことで、インストールを確認できます。インストールに失敗しても、確認に成功した場合は、続行してかまいません。
 
-### <a name="verify-the-virtual-environment"></a>Verify the virtual environment
+### 仮想環境の確認
 
-Let's make sure that everything is installed correctly.
+すべてが正しくインストールされているかどうかを確認してみましょう。
 
-1. Build the solution by pressing **Ctrl**+**Shift**+**B**.
-2. Once the build succeeds, start the website by pressing **F5**. This launches the Flask development server and starts your web browser. You should see the following page.
+1. **Ctrl** + **Shift** + **B** キーを押して、ソリューションをビルドします。
+2. ビルドが成功したら、**F5** キーを押して、Web サイトを開きます。Flask 開発サーバーが起動し、Web ブラウザーが開きます。次のページが表示されます。
 
-    ![The empty Python Flask web development project displayed in a browser](./media/documentdb-python-application/image12.png)
+	![空の Python Flask Web 開発プロジェクトがブラウザーで表示されます](./media/documentdb-python-application/image12.png)
 
-3. Stop debugging the website by pressing **Shift**+**F5** in Visual Studio.
+3. Visual Studio で **Shift** + **F5** キーを押して、Web サイトのデバッグを停止します。
 
-### <a name="create-database,-collection,-and-document-definitions"></a>Create database, collection, and document definitions
+### データベース、コレクション、およびドキュメント定義の作成
 
-Now let's create your voting application by adding new files and updating others.
+これで、新しいファイルを追加し、既存のファイルを更新して、投票アプリケーションを作成できます。
 
-1. In Solution Explorer, right-click the **tutorial** project, click **Add**, and then click **New Item**. Select **Empty Python File** and name the file **forms.py**.  
-2. Add the following code to the forms.py file, and then save the file.
+1. ソリューション エクスプローラーで、**tutorial** プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。**[Empty Python File]** を選択し、ファイルに **forms.py** という名前を付けます。
+2. forms.py ファイルに次のコードを追加し、ファイルを保存します。
 
 ```python
 from flask.ext.wtf import Form
 from wtforms import RadioField
 
 class VoteForm(Form):
-    deploy_preference  = RadioField('Deployment Preference', choices=[
+	deploy_preference  = RadioField('Deployment Preference', choices=[
         ('Web Site', 'Web Site'),
         ('Cloud Service', 'Cloud Service'),
         ('Virtual Machine', 'Virtual Machine')], default='Web Site')
 ```
 
 
-### <a name="add-the-required-imports-to-views.py"></a>Add the required imports to views.py
+### views.py への必要な import ステートメントの追加
 
-1. In Solution Explorer, expand the **tutorial** folder, and open the **views.py** file. 
-2. Add the following import statements to the top of the **views.py** file, then save the file. These import DocumentDB's PythonSDK and the Flask packages.
+1. ソリューション エクスプローラーで、**tutorial** フォルダーを展開し、**views.py** ファイルを開きます。
+2. 次の import ステートメントを **views.py** ファイルの先頭に追加し、ファイルを保存します。これらのステートメントにより、DocumentDB の PythonSDK および Flask パッケージがインポートされます。
 
-    ```python
-    from forms import VoteForm
-    import config
-    import pydocumentdb.document_client as document_client
-    ```
+	```python
+	from forms import VoteForm
+	import config
+	import pydocumentdb.document_client as document_client
+	```
 
 
-### <a name="create-database,-collection,-and-document"></a>Create database, collection, and document
+### データベース、コレクション、およびドキュメントの作成
 
-- Still in **views.py**, add the following code to the end of the file. This takes care of creating the database used by the form. Do not delete any of the existing code in **views.py**. Simply append this to the end.
+- 引き続き **views.py** で、次のコードをファイルの末尾に追加します。これにより、フォームで使用されるデータベースの作成が処理されます。**views.py** 内の既存のコードを削除しないように注意してください。単にこのコードを末尾に追加してください。
 
 ```python
 @app.route('/create')
@@ -201,12 +199,12 @@ def create():
         message='You just created a new database, collection, and document.  Your old votes have been deleted')
 ```
 
-> [AZURE.TIP] The **CreateCollection** method takes an optional **RequestOptions** as the third parameter. This can be used to specify the Offer Type for the collection. If no offerType value is supplied, then the collection will be created using the default Offer Type. For more information on DocumentDB Offer Types, see [Performance levels in DocumentDB](documentdb-performance-levels.md).
+> [AZURE.TIP] **CreateCollection** メソッドは、省略可能な 3 番目のパラメーター **RequestOptions** を受け取ります。これを使用すると、コレクションのプランの種類を指定することができます。offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。DocumentDB のプランの種類の詳細については、「[DocumentDB のパフォーマンス レベル](documentdb-performance-levels.md)」を参照してください。
 
 
-### <a name="read-database,-collection,-document,-and-submit-form"></a>Read database, collection, document, and submit form
+### データベース、コレクション、およびドキュメントの読み取りとフォームの送信
 
-- Still in **views.py**, add the following code to the end of the file. This takes care of setting up the form, reading the database, collection, and document. Do not delete any of the existing code in **views.py**. Simply append this to the end.
+- 引き続き **views.py** で、次のコードをファイルの末尾に追加します。このコードでは、フォームの設定と、データベース、コレクション、およびドキュメントの読み取りを行っています。**views.py** 内の既存のコードを削除しないように注意してください。単にこのコードを末尾に追加してください。
 
 ```python
 @app.route('/vote', methods=['GET', 'POST'])
@@ -256,178 +254,178 @@ def vote():
 ```
 
 
-### <a name="create-the-html-files"></a>Create the HTML files
+### HTML ファイルの作成
 
-1. In Solution Explorer, in the **tutorial** folder, right click the **templates** folder, click **Add**, and then click **New Item**. 
-2. Select **HTML Page**, and then in the name box type **create.html**. 
-3. Repeat steps 1 and 2 to create two additional HTML files: results.html and vote.html.
-4. Add the following code to **create.html** in the `<body>` element. It displays a message stating that we created a new database, collection, and document.
+1. ソリューション エクスプローラーで、**tutorial** フォルダー内の **templates** フォルダーを右クリックし、**[追加]**、**[新しい項目]** の順にクリックします。
+2. **[HTML ページ]** を選択し、[名前] ボックスに「**create.html**」と入力します。
+3. 手順 1. と 2. を繰り返して、results.html と vote.html という 2 つの追加の HTML ファイルを作成します。
+4. 次のコードを **create.html** の `<body>` 要素に追加します。このコードは、新しいデータベース、コレクション、およびドキュメントを作成したことを示すメッセージを表示します。
 
-    ```html
-    {% extends "layout.html" %}
-    {% block content %}
-    <h2>{{ title }}.</h2>
-    <h3>{{ message }}</h3>
-    <p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
-    {% endblock %}
-    ```
+	```html
+	{% extends "layout.html" %}
+	{% block content %}
+	<h2>{{ title }}.</h2>
+	<h3>{{ message }}</h3>
+	<p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
+	{% endblock %}
+	```
 
-5. Add the following code to **results.html** in the `<body`> element. It displays the results of the poll.
+5. 次のコードを **results.html** の `<body`> 要素に追加します。このコードは、投票の結果を表示します。
 
-    ```html
-    {% extends "layout.html" %}
-    {% block content %}
-    <h2>Results of the vote</h2>
-        <br />
-        
-    {% for choice in vote_object.choices %}
-    <div class="row">
-        <div class="col-sm-5">{{choice}}</div>
-            <div class="col-sm-5">
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="{{vote_object.choices[choice]}}" aria-valuemin="0" aria-valuemax="{{vote_object.total_votes}}" style="width: {{(vote_object.choices[choice]/vote_object.total_votes)*100}}%;">
-                                {{vote_object.choices[choice]}}
-                </div>
-            </div>
-            </div>
-    </div>
-    {% endfor %}
-    
-    <br />
-    <a class="btn btn-primary" href="{{ url_for('vote') }}">Vote again?</a>
-    {% endblock %}
-    ```
+	```html
+	{% extends "layout.html" %}
+	{% block content %}
+	<h2>Results of the vote</h2>
+		<br />
+		
+	{% for choice in vote_object.choices %}
+	<div class="row">
+		<div class="col-sm-5">{{choice}}</div>
+	        <div class="col-sm-5">
+	        	<div class="progress">
+	        		<div class="progress-bar" role="progressbar" aria-valuenow="{{vote_object.choices[choice]}}" aria-valuemin="0" aria-valuemax="{{vote_object.total_votes}}" style="width: {{(vote_object.choices[choice]/vote_object.total_votes)*100}}%;">
+	                    		{{vote_object.choices[choice]}}
+				</div>
+			</div>
+	        </div>
+	</div>
+	{% endfor %}
+	
+	<br />
+	<a class="btn btn-primary" href="{{ url_for('vote') }}">Vote again?</a>
+	{% endblock %}
+	```
 
-6. Add the following code to **vote.html** in the `<body`> element. It displays the poll and accepts the votes. On registering the votes, the control is passed over to views.py where we will recognize the vote cast and append the document accordingly.
+6. 次のコードを **vote.html** の `<body`> 要素に追加します。このコードは、アンケートを表示し、投票を受け付けます。投票が登録されると、制御が views.py に渡されます。これにより、投票が行われたことを確認して、ドキュメントを適宜追加できます。
 
-    ```html
-    {% extends "layout.html" %}
-    {% block content %}
-    <h2>What is your favorite way to host an application on Azure?</h2>
-    <form action="" method="post" name="vote">
-        {{form.hidden_tag()}}
-            {{form.deploy_preference}}
-            <button class="btn btn-primary" type="submit">Vote</button>
-    </form>
-    {% endblock %}
-    ```
+	```html
+	{% extends "layout.html" %}
+	{% block content %}
+	<h2>What is your favorite way to host an application on Azure?</h2>
+	<form action="" method="post" name="vote">
+		{{form.hidden_tag()}}
+	        {{form.deploy_preference}}
+	        <button class="btn btn-primary" type="submit">Vote</button>
+	</form>
+	{% endblock %}
+	```
 
-7. In the **templates** folder, replace the contents of **index.html** with the following. This serves as the landing page for your application.
-    
-    ```html
-    {% extends "layout.html" %}
-    {% block content %}
-    <h2>Python + DocumentDB Voting Application.</h2>
-    <h3>This is a sample DocumentDB voting application using PyDocumentDB</h3>
-    <p><a href="{{ url_for('create') }}" class="btn btn-primary btn-large">Create/Clear the Voting Database &raquo;</a></p>
-    <p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
-    {% endblock %}
-    ```
+7. **templates** フォルダーの **index.html** の内容を次の内容に置き換えます。これが、アプリケーションのランディング ページとなります。
+	
+	```html
+	{% extends "layout.html" %}
+	{% block content %}
+	<h2>Python + DocumentDB Voting Application.</h2>
+	<h3>This is a sample DocumentDB voting application using PyDocumentDB</h3>
+	<p><a href="{{ url_for('create') }}" class="btn btn-primary btn-large">Create/Clear the Voting Database &raquo;</a></p>
+	<p><a href="{{ url_for('vote') }}" class="btn btn-primary btn-large">Vote &raquo;</a></p>
+	{% endblock %}
+	```
 
-### <a name="add-a-configuration-file-and-change-the-\_\_init\_\_.py"></a>Add a configuration file and change the \_\_init\_\_.py
+### 構成ファイルの追加と、\_\_init\_\_.py の変更
 
-1. In Solution Explorer, right-click the **tutorial** project, click **Add**, click **New Item**, select **Empty Python File**, and then name the file **config.py**. This config file is required by forms in Flask. You can use it to provide a secret key as well. This key is not needed for this tutorial though.
+1. ソリューション エクスプローラーで、**tutorial** プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックして、**[Empty Python File]** を選択し、ファイルに **config.py** という名前を付けます。この構成ファイルは、Flask のフォームで必要になります。これを使用して秘密キーを指定することもできます。このチュートリアルではこのキーは不要です。
 
-2. Add the following code to config.py, you'll need to alter the values of **DOCUMENTDB\_HOST** and **DOCUMENTDB\_KEY** in the next step.
+2. 次のコードを config.py に追加します。次の手順で **DOCUMENTDB\_HOST** と **DOCUMENTDB\_KEY** の値を変更する必要があります。
 
-    ```python
-    CSRF_ENABLED = True
-    SECRET_KEY = 'you-will-never-guess'
-    
-    DOCUMENTDB_HOST = 'https://YOUR_DOCUMENTDB_NAME.documents.azure.com:443/'
-    DOCUMENTDB_KEY = 'YOUR_SECRET_KEY_ENDING_IN_=='
-    
-    DOCUMENTDB_DATABASE = 'voting database'
-    DOCUMENTDB_COLLECTION = 'voting collection'
-    DOCUMENTDB_DOCUMENT = 'voting document'
-    ```
+	```python
+	CSRF_ENABLED = True
+	SECRET_KEY = 'you-will-never-guess'
+	
+	DOCUMENTDB_HOST = 'https://YOUR_DOCUMENTDB_NAME.documents.azure.com:443/'
+	DOCUMENTDB_KEY = 'YOUR_SECRET_KEY_ENDING_IN_=='
+	
+	DOCUMENTDB_DATABASE = 'voting database'
+	DOCUMENTDB_COLLECTION = 'voting collection'
+	DOCUMENTDB_DOCUMENT = 'voting document'
+	```
 
-3. In the [Azure portal](https://portal.azure.com/), navigate to the **Keys** blade by clicking **Browse**, **DocumentDB Accounts**, double-click the name of the account to use, and then click the **Keys** button in the **Essentials** area. In the **Keys** blade, copy the **URI** value and paste it into the **config.py** file, as the value for the **DOCUMENTDB\_HOST** property. 
-4. Back in the Azure portal, in the **Keys** blade, copy the value of the **Primary Key** or the **Secondary Key**, and paste it into the **config.py** file, as the value for the **DOCUMENTDB\_KEY** property.
-5. In the **\_\_init\_\_.py** file, add the following line. 
+3. [Azure ポータル](https://portal.azure.com/)で、**[参照]**、**[DocumentDB アカウント]** の順にクリックして、**[キー]** ブレードに移動します。使用するアカウントの名前をダブルクリックし、**[Essentials]** 領域で **[キー]** ボタンをクリックします。**[キー]** ブレードで、**[URI]** の値をコピーし、**config.py** ファイルに **DOCUMENTDB\_HOST** プロパティの値として貼り付けます。
+4. Azure ポータルに戻り、**[キー]** ブレードで、**[プライマリ キー]** または **[セカンダリ キー]** の値をコピーし、**config.py** ファイルに **DOCUMENTDB\_KEY** プロパティの値として貼り付けます。
+5. **\_\_init\_\_.py** ファイルに次の行を追加します。
 
         app.config.from_object('config')
 
-    So that the content of the file is:
+    ファイルの内容は次のようになります。
 
-    ```python
-    from flask import Flask
-    app = Flask(__name__)
-    app.config.from_object('config')
-    import tutorial.views
-    ```
+	```python
+	from flask import Flask
+	app = Flask(__name__)
+	app.config.from_object('config')
+	import tutorial.views
+	```
 
-6. After adding all the files, Solution Explorer should look like this:
+6. すべてのファイルを追加すると、ソリューション エクスプローラーは次のようになります。
 
-    ![Screen shot of the Visual Studio Solution Explorer window](./media/documentdb-python-application/image15.png)
+	![Visual Studio ソリューション エクスプローラーのウィンドウのスクリーンショット](./media/documentdb-python-application/image15.png)
 
 
-## <a name="step-4:-run-your-web-application-locally"></a>Step 4: Run your web application locally
+## 手順 4: ローカルで Web アプリケーションを実行する
 
-1. Build the solution by pressing **Ctrl**+**Shift**+**B**.
-2. Once the build succeeds, start the website by pressing **F5**. You should see the following on your screen.
+1. **Ctrl** + **Shift** + **B** キーを押して、ソリューションをビルドします。
+2. ビルドが成功したら、**F5** キーを押して、Web サイトを開きます。次の画面が表示されます。
 
-    ![Screen shot of the Python + DocumentDB Voting Application displayed in a web browser](./media/documentdb-python-application/image16.png)
+	![Web ブラウザーに表示される [Python + DocumentDB Voting Application] のスクリーンショット](./media/documentdb-python-application/image16.png)
 
-3. Click **Create/Clear the Voting Database** to generate the database.
+3. **[投票データベースの作成/クリア]** をクリックして、データベースを生成します。
 
-    ![Screen shot of the Create Page of the web application – development details](./media/documentdb-python-application/image17.png)
+	![Web アプリケーションの [Create Page] ページのスクリーン ショット - 開発詳細](./media/documentdb-python-application/image17.png)
 
-4. Then, click **Vote** and select your option.
+4. 次に、**[投票]** をクリックし、回答を選択します。
 
-    ![Screen shot of the web application with a voting question posed](./media/documentdb-python-application/image18.png)
+	![投稿用の質問を表示する Web アプリケーションのスクリーン ショット](./media/documentdb-python-application/image18.png)
 
-5. For every vote you cast, it increments the appropriate counter.
+5. 回答を投票するごとに、該当するカウンターの値が増加します。
 
-    ![Screen shot of the Results of the vote page shown](./media/documentdb-python-application/image19.png)
+	![投票結果のページが表示されているスクリーン ショット](./media/documentdb-python-application/image19.png)
 
-6. Stop debugging the project by pressing Shift+F5.
+6. Shift + F5 キーを押して、プロジェクトのデバッグを停止します。
 
-## <a name="step-5:-deploy-the-web-application-to-azure-websites"></a>Step 5: Deploy the web application to Azure Websites
+## 手順 5: Web アプリケーションを Azure Websites にデプロイする
 
-Now that you have the complete application working correctly against DocumentDB, we're going to deploy this to Azure Websites.
+以上で、DocumentDB と連携するアプリケーションが完成しました。今度は、このアプリケーションを Azure Websites にデプロイします。
 
-1. Right-click the project in Solution Explorer (make sure you're not still running it locally) and select **Publish**.  
+1. ソリューション エクスプローラーでプロジェクトを右クリックし (ローカル実行したままになっていないことを確認してください)、**[発行]** を選択します。
 
-    ![Screen shot of the tutorial selected in Solution Explorer, with the Publish option highlighted](./media/documentdb-python-application/image20.png)
+ 	![tutorial が選択されたソリューション エクスプローラーのスクリーンショット。[発行] オプションが強調表示されている](./media/documentdb-python-application/image20.png)
 
-2. In the **Publish Web** window, select **Microsoft Azure Web Apps**, and then click **Next**.
+2. **[Web の発行]** ウィンドウで **[Microsoft Azure Web Apps]** を選択し、**[次へ]** をクリックします。
 
-    ![Screen shot of the Publish Web window with Microsoft Azure Web Apps highlighted](./media/documentdb-python-application/image21.png)
+	![Microsoft Azure Web Apps が強調表示されている [Web の発行] ウィンドウのスクリーン ショット](./media/documentdb-python-application/image21.png)
 
-3. In the **Microsoft Azure Web Apps Window** window, click **New**.
+3. **[Microsoft Azure Web Apps]** ウィンドウで、**[新規]** をクリックします。
 
-    ![Screen shot of the Microsoft Azure Web Apps Window window](./media/documentdb-python-application/select-existing-website.png)
+	![[Microsoft Azure Web Apps] ウィンドウのスクリーン ショット](./media/documentdb-python-application/select-existing-website.png)
 
-4. In the **Create site on Microsoft Azure** window, enter a **Web app name**, **App Service plan**, **Resource group**, and **Region**, then click **Create**.
+4. **[Microsoft Azure でのサイトの作成]** ウィンドウで、**[App アプリ名]**、**[App Service プラン]**、**[リソース グループ]**、および **[リージョン]** を入力し、**[作成]** をクリックします。
 
-    ![Screen shot of the Create site on Microsoft Azure window](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
+	![Screen shot of the Create site on Microsoft Azure window](./media/documentdb-python-application/create-site-on-microsoft-azure.png)
 
-5. In the **Publish Web** window, click **Publish**.
+5. **[Web の発行]** ウィンドウで、**[発行]** をクリックします。
 
-    ![Screen shot of the Create site on Microsoft Azure window](./media/documentdb-python-application/publish-web.png)
+	![Screen shot of the Create site on Microsoft Azure window](./media/documentdb-python-application/publish-web.png)
 
-3. In a few seconds, Visual Studio will finish publishing your web application and launch a browser where you can see your handy work running in Azure!
+3. 数秒すると、Web アプリケーションの発行が完了し、ブラウザーが起動されます。作成したアプリケーションが Azure で実行されているようすが確認できます。
 
-## <a name="troubleshooting"></a>Troubleshooting
+## トラブルシューティング
 
-If this is the first Python app you've run on your computer, ensure that the following folders (or the equivalent installation locations) are included in your PATH variable:
+これがコンピューターで実行した最初の Python アプリの場合は、PATH 変数に次のフォルダー (または同等のインストールの場所) が含まれていることを確認します。
 
     C:\Python27\site-packages;C:\Python27\;C:\Python27\Scripts;
 
-If you receive an error on your vote page, and you named your project something other than **tutorial**, make sure that **\_\_init\_\_.py** references the correct project name in the line: `import tutorial.view`.
+プロジェクトに **tutorial** 以外の名前を付けた場合に、投票ページでエラーが発生したときは、**\_\_init\_\_.py** の `import tutorial.view` 行で正しいプロジェクト名を参照していることを確認してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Congratulations! You have just completed your first Python web application using Azure DocumentDB and published it to Azure Websites.
+ご利用ありがとうございます。 ここでは初めての方を対象に、Azure DocumentDB を使用して Python Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
-We update and improve this topic frequently based on your feedback.  Once you've completed the tutorial, please using the voting buttons at the top and bottom of this page, and be sure to include your feedback on what improvements you want to see made. If you'd like us to contact you directly, feel free to include your email address in your comments.
+マイクロソフトでは、このトピックをお客様からのフィードバックに基づいて頻繁に更新、改善しています。チュートリアルを終了したら、このページの上部と下部にある投票ボタンを使用し、希望される改善内容についてのフィードバックをお寄せください。マイクロソフトから直接ご連絡を差し上げて問題がなければ、コメント欄に電子メール アドレスをご記入ください。
 
-To add additional functionality to your web application, review the APIs available in the [DocumentDB Python SDK](documentdb-sdk-python.md).
+Web アプリケーションに機能を追加する場合は、[DocumentDB Python SDK](documentdb-sdk-python.md) から入手できる API を参考にしてください。
 
-For more information about Azure, Visual Studio, and Python, see the [Python Developer Center](https://azure.microsoft.com/develop/python/). 
+Azure、Visual Studio、Python の詳細については、「[Python デベロッパー センター](https://azure.microsoft.com/develop/python/)」を参照してください。
 
-For additional Python Flask tutorials, see [The Flask Mega-Tutorial, Part I: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world). 
+Python Flask の追加のチュートリアルについては、[Flask メガ チュートリアルのパート 1: Hello, World!](http://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) というブログ記事を参照してください。
 
   [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx
   [2]: https://www.python.org/downloads/windows/
@@ -435,8 +433,4 @@ For additional Python Flask tutorials, see [The Flask Mega-Tutorial, Part I: Hel
   [Microsoft Web Platform Installer]: http://www.microsoft.com/web/downloads/platform.aspx
   [Azure portal]: http://portal.azure.com
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

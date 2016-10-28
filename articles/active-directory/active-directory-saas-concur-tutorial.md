@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Concur | Microsoft Azure" 
-    description="Learn how to use Concur with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Concur の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Concur を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,154 +11,148 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
+#チュートリアル: Azure Active Directory と Concur の統合  
 
-#<a name="tutorial:-azure-active-directory-integration-with-concur"></a>Tutorial: Azure Active Directory integration with Concur  
 
+このチュートリアルでは、Azure と Concur の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-The objective of this tutorial is to show the integration of Azure and Concur.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+-   有効な Azure サブスクリプション
+-   Concur のテナント
 
--   A valid Azure subscription
--   A tenant in Concur
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+1.  Concur のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-1.  Enabling the application integration for Concur
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+![シナリオ](./media/active-directory-saas-concur-tutorial/IC769766.png "シナリオ")
 
-![Scenario](./media/active-directory-saas-concur-tutorial/IC769766.png "Scenario")
+>[AZURE.NOTE] SAML を使用してフェデレーション SSO に対して Concur サブスクリプションを構成するのは別個の作業です。したがって、Concur 社に実施を依頼してください。
 
->[AZURE.NOTE] The configuration of your Concur subscription for federated SSO via SAML is a separate task, which you must contact Concur to perform.
+##Concur のアプリケーション統合の有効化
 
-##<a name="enabling-the-application-integration-for-concur"></a>Enabling the application integration for Concur
+このセクションでは、Concur のアプリケーション統合を有効にする方法について説明します。
 
-The objective of this section is to outline how to enable the application integration for Concur.
+###Concur のアプリケーション統合を有効にするには、次の手順を実行します。
 
-###<a name="to-enable-the-application-integration-for-concur,-perform-the-following-steps:"></a>To enable the application integration for Concur, perform the following steps:
-
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-concur-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-concur-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-concur-tutorial/IC700994.png "アプリケーション")
 
-4.  To open the **Application Gallery**, click **Add An App**, and then click **Add an application for my organization to use**.
+4.  **アプリケーション ギャラリー**を開くには、**[アプリケーションの追加]**、**[組織で使用するアプリケーションを追加]** の順にクリックします。
 
-    ![What do you want to do?](./media/active-directory-saas-concur-tutorial/IC700995.png "What do you want to do?")
+    ![どの操作を行いますか。](./media/active-directory-saas-concur-tutorial/IC700995.png "どの操作を行いますか。")
 
-5.  In the **search box**, type **Concur**.
+5.  **検索ボックス**に、「**Concur**」と入力します。
 
-    ![Application Gallery](./media/active-directory-saas-concur-tutorial/IC721727.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-concur-tutorial/IC721727.png "アプリケーション ギャラリー")
 
-6.  In the results pane, select **Concur**, and then click **Complete** to add the application.
+6.  結果ウィンドウで **[Concur]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Concur](./media/active-directory-saas-concur-tutorial/IC721728.png "Concur")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
 
-The objective of this section is to outline how to enable users to authenticate to Concur with their account in Azure AD using federation based on the SAML protocol.
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Concur に対する認証を行うことができるようにする方法を説明します。
 
->[AZURE.NOTE] The configuration of your Concur subscription for federated SSO via SAML is a separate task, which you must contact Concur to perform.
+>[AZURE.NOTE] SAML を使用してフェデレーション SSO に対して Concur サブスクリプションを構成するのは別個の作業です。したがって、Concur 社に実施を依頼してください。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Concur **application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Concur** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-concur-tutorial/IC769767.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to Concur** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Concur へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-concur-tutorial/IC769768.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, in the **Concur Sign In URL** textbox, type your concur tenant sign-in URL, and then click **Next**: 
+3.  **[アプリの URL の構成]** ページの **[Concur サインイン URL]** ボックスに、Concur のテナント サインイン URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure sign in URL](./media/active-directory-saas-concur-tutorial/IC769769.png "Configure sign in URL")
+    ![サインイン URL の構成](./media/active-directory-saas-concur-tutorial/IC769769.png "サインイン URL の構成")
 
-4.  On the **Configure single sign-on at Concur** page, perform the following steps.
+4.  **[Concur でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    ![Configure sign in URL](./media/active-directory-saas-concur-tutorial/IC769770.png "Configure sign in URL")
+    ![サインイン URL の構成](./media/active-directory-saas-concur-tutorial/IC769770.png "サインイン URL の構成")
 
-    1.  Click Download the metadata, and then safe the data file to your computer.
-    2.  Contact the Concur support team to configure SSO for your tenant.
-    3.  Select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.  
+    1.  [メタデータのダウンロード] をクリックし、データ ファイルをコンピューターに保存します。
+    2.  Concur サポート チームに問い合わせて、テナントの SSO を構成します。
+    3.  [シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
-    >[AZURE.NOTE] The configuration of your Concur subscription for federated SSO via SAML is a separate task, which you must contact Concur to perform.
+	>[AZURE.NOTE] SAML を使用してフェデレーション SSO に対して Concur サブスクリプションを構成するのは別個の作業です。したがって、Concur 社に実施を依頼してください。
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
 
-The objective of this section is to outline how to enable provisioning of Active Directory user accounts to Concur.
+このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを Concur に対して有効にする方法について説明します。
 
-To enable apps in the Expense Service, there has to be proper setup and use of a Web Service Admin profile. Don't simply add the WS Admin role to your existing administrator profile that you use for T&E administrative functions.
+Expense Service でアプリケーションを有効にするには、正しい設定と共に、Web サービス管理者のプロファイルを使用する必要があります。T&E 管理機能で使用する既存の管理者プロファイルに WS 管理者のロールを追加するだけでは十分ではありません。
 
-Concur Consultants or the client administrator must create a distinct Web Service Administrator profile and the Client administrator must use this profile for the Web Services Administrator functions (e.g. enabling apps). These profiles must be kept separate from the client administrator's daily T&E admin profile (the T&E admin profile should not have the WSAdmin role assigned).
+Concur コンサルタントまたはクライアント管理者は、Web サービス管理者プロファイルを別に作成する必要があります。クライアント管理者は、Web サービス管理者の機能 (アプリケーションの有効化など) に対してこのプロファイルを使用します。このプロファイルは、クライアント管理者が日々使用する T&E 管理者プロファイルとは別にする必要があります (T&E 管理者プロファイルには、WS 管理者のロールを割り当てないでください)。
 
-When you create the profile to be used for enabling the app, enter the client administrator's name into the user profile fields. This will assign ownership to the profile.Once the profile(s) is created, the client must log in with this profile to click the "*Enable*" button for a Partner App within the Web Services menu.
+アプリケーションの有効化に使用するプロファイルを作成するときは、ユーザー プロファイルのフィールドにクライアント管理者の名前を入力します。これにより、プロファイルに所有者が割り当てられます。プロファイルの作成が完了したら、クライアントはそのプロファイルを使用してログインし、[Web サービス] メニューにあるパートナー アプリケーションの *[有効にする]* ボタンをクリックします。
 
-For the following reasons, this action should not be done with the profile they use for normal T&E administration.
+次の理由から、通常の T&E の管理に使用するプロファイルではこのアクションを実行しないでください。
 
-1.  The client has to be the one that clicks "*Yes*" on the dialogue window that is displayed after an app is enabled. This click acknowledges the client is willing for the Partner application to access their data, so you or the Partner cannot click that Yes button.
-2.  If a client administrator that has enabled an app using the T&E admin profile leaves the company (resulting in the profile being inactivated), any apps enabled using that profile will not function until the app is enabled with another active WS Admin profile. This is why you are supposed to create distinct WS Admin profiles.
-3.  If an administrator leaves the company, the name associated to the WS Admin profile can be changed to the replacement administrator if desired without impacting the enabled app because that profile does not need inactivated
+1.  クライアントは、アプリケーションを有効にした後で表示されるダイアログ ウィンドウで *[はい]* をクリックしたクライアントと同一でなければなりません。このクリックは、クライアントがパートナー アプリケーションに対して自分のデータにアクセスすることを許可する意思を示すものです。したがって、パートナーなど、クライアント以外の人物が [はい] をクリックすることはできません。
+2.  クライアント管理者が T&E 管理者プロファイルを使用してアプリケーションを有効にした後で、会社を退職した場合 (その結果、プロファイルが非アクティブになった場合)、そのプロファイルを使用して有効にしたアプリケーションは、別のアクティブな WS 管理者プロファイルで有効にするまで機能しなくなります。このため、WS 管理者プロファイルを別途作成する必要があります。
+3.  管理者が会社を退職した場合、その WS 管理者プロファイルに関連付けられている名前を、必要に応じて別の管理者に変更することができます。この方法では、プロファイルを非アクティブ化する必要がないため、有効にしたアプリケーションに影響が及ぶことはありません。
 
-###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  Logon to your **Concur** tenant.
+1.  **Concur** テナントにログインします。
 
-2.  From the **Administration** menu, select **Web Services**.
+2.  **[管理]** メニューの **[Web サービス]** をクリックします。
 
-    ![Concur tenant](./media/active-directory-saas-concur-tutorial/IC721729.png "Concur tenant")
+    ![Concur テナント](./media/active-directory-saas-concur-tutorial/IC721729.png "Concur テナント")
 
-3.  On the left side, from the **Web Services** pane, select **Enable Partner Application**.
+3.  左側の **[Web サービス]** ウィンドウで、**[パートナー アプリケーションの有効化]** を選択します。
 
-    ![Enable Partner Application](./media/active-directory-saas-concur-tutorial/IC721730.png "Enable Partner Application")
+    ![パートナー アプリケーションの有効化](./media/active-directory-saas-concur-tutorial/IC721730.png "パートナー アプリケーションの有効化")
 
-4.  From the **Enable Application** list, select **Azure Active Directory**, and then click **Enable**.
+4.  **[アプリケーションを有効にする]** ボックスの一覧で **[Azure Active Directory]** を選択し、**[有効にする]** をクリックします。
 
     ![Microsoft Azure Active Directory](./media/active-directory-saas-concur-tutorial/IC721731.png "Microsoft Azure Active Directory")
 
-5.  Click **Yes** to close the **Confirm Action** dialog.
+5.  **[はい]** をクリックして、**[アクションの確認]** ダイアログを閉じます。
 
-    ![Confirm Action](./media/active-directory-saas-concur-tutorial/IC721732.png "Confirm Action")
+    ![アクションの確認](./media/active-directory-saas-concur-tutorial/IC721732.png "アクションの確認")
 
-6.  In the Azure classic portal, select **Concur** from the applications list to open the **Concur** dialog page.
+6.  Azure クラシック ポータルで、アプリケーションの一覧から **[Concur]** を選択して **[Concur]** ダイアログ ページを開きます。
 
-7.  To open the **Configure User Provisioning** dialog page, click **Configure user provisioning**.
+7.  **[ユーザー プロビジョニングの構成]** ダイアログ ページを開くには、**[ユーザー プロビジョニングの構成]** をクリックします。
 
-8.  Enter the user name and the password of your Concur administrator, and then click **Next**.
+8.  Concur 管理者のユーザー名とパスワードを入力し、**[次へ]** をクリックします。
 
-9.  To finish the configuration, on the **Confirmation** page, click the **Complete** button.
+9.  構成を終了するには、**[確認]** ページで **[完了]** をクリックします。
 
-You can now create a test account, wait for 10 minutes and verify that the account has been synchronized to Concur.
-##<a name="assigning-users"></a>Assigning users
+ここで、テスト アカウントを作成して 10 分間待機し、アカウントが Concur に同期されていることを確認します。
+##ユーザーの割り当て
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-concur,-perform-the-following-steps:"></a>To assign users to Concur, perform the following steps:
+###ユーザーを Concur に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Concur **application integration page, click **Assign users**.
+2.  **Concur** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign users](./media/active-directory-saas-concur-tutorial/IC769771.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-concur-tutorial/IC769771.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-concur-tutorial/IC767830.png "Yes")
 
-You should now wait for 10 minutes and verify that the account has been synchronized to Concur.
+ここで 10 分間待機し、アカウントが Concur に同期されたことを確認します。
 
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

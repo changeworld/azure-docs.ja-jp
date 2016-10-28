@@ -1,338 +1,329 @@
 <properties
-    pageTitle="Azure billing and subscription FAQ | Microsoft Azure"
-    description="Provide answers to the common Azure Billing and Subscription questions"
-    services=""
-    documentationCenter=""
-    authors="genlin"
-    manager="mbaldwin"
-    editor=""
-    tags="billing"/>
+	pageTitle="Azure の課金とサブスクリプションに関する FAQ | Microsoft Azure"
+	description="Azure の課金とサブスクリプションに関する一般的な質問に回答しています。"
+	services=""
+	documentationCenter=""
+	authors="genlin"
+	manager="msmbaldwin"
+	editor=""
+	tags="billing"/>
 
 <tags
-    ms.service="billing"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/07/2016"
-    ms.author="genli"/>
+	ms.service="billing"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/07/2016"
+	ms.author="genli"/>
 
+#  Azure の課金とサブスクリプションに関する FAQ
 
-#  <a name="azure-billing-and-subscription-faq"></a>Azure billing and subscription FAQ
+この記事では、Azure の課金とサブスクリプションについて特によく寄せられる質問に回答しています。
 
-This article answers some of the most common questions about Azure Billing and Subscription.
+> [AZURE.NOTE] この記事についてさらにヘルプが必要な場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-> [AZURE.NOTE] If you need more help at any point in this article, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
+## アカウント管理
 
-## <a name="account-administration"></a>Account administration
+- [新しい Azure ポータルではどのようにして管理者アカウントを管理するのですか。](#how-do-i-manage-administrator-accounts-in-the-new-azure-portal)
+- [通知は、マイ アカウントに関連付けられたアカウント所有者のメール アドレス以外のメール アドレスに送信できますか。](#can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account)
+- [サブスクリプションの編集や詳細の追加ができないのはなぜですか。](#why-cant-i-edit-or-add-details-to-my-subscription)
+- [Azure ポータルにログインできません](#i-am-unable-to-log-in-to-the-azure-portal)
 
-- [How do I manage Administrator accounts in the new Azure portal?](#how-do-i-manage-administrator-accounts-in-the-new-azure-portal)
-- [Can notifications be sent to a different email address other than the Account Owner email address associated with my account?](#can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account)
-- [Why can't I edit or add details to my subscription?](#why-cant-i-edit-or-add-details-to-my-subscription)
-- [I am unable to log in to the Azure portal](#i-am-unable-to-log-in-to-the-azure-portal)
+## 課金
 
-## <a name="billing"></a>Billing
+- [請求書のコピーを取得するにはどうすればよいですか。](#how-do-i-get-a-copy-of-my-invoice)
+- [前回の請求期間の請求書が表示されません。なぜですか?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
+- [支払い方法を教えてください。](#how-do-i-make-a-payment)
 
-- [How do I get a copy of my invoice?](#how-do-i-get-a-copy-of-my-invoice)
-- [I do not see an invoice for the last billing period. Why?](#i-do-not-see-an-invoice-for-the-last-billing-period-why)
-- [How do I make a payment?](#how-do-i-make-a-payment)
+## 無料試用版
 
-## <a name="free-trial"></a>Free Trial
+- [Azure の試用は無料ですか。課金される可能性はありませんか。](#can-i-try-azure-for-free-without-any-risk-of-being-charged)
+- [無料試用版サブスクリプションとは何ですか。また、有効期間はどのくらいですか。](#what-is-a-free-trial-subscription-and-how-long-does-it-last)
+- [無料試用版で利用できるリソースを教えてください。](#what-resources-are-available-whja-JPing-a-free-trial)
+- [無料試用版の使用制限を削除するとどうなりますか。](#what-happens-if-i-remove-the-spending-limit-on-my-free-trial)
+- [無料試用版サブスクリプションでクォータの引き上げは可能ですか。](#can-i-get-a-quota-increase-on-a-free-trial-subscription)
+- [無料試用版についての詳しい情報はどこで確認できますか。](#where-can-i-get-more-details-on-free-trial)
 
-- [Can I try Azure for free without any risk of being charged?](#can-i-try-azure-for-free-without-any-risk-of-being-charged)
-- [What is a Free Trial subscription and how long does it last?](#what-is-a-free-trial-subscription-and-how-long-does-it-last)
-- [What resources are available when using a Free Trial?](#what-resources-are-available-when-using-a-free-trial)
-- [What happens if I remove the spending limit on my free trial?](#what-happens-if-i-remove-the-spending-limit-on-my-free-trial)
-- [Can I get a quota increase on a free trial subscription?](#can-i-get-a-quota-increase-on-a-free-trial-subscription)
-- [Where can I get more details on Free Trial?](#where-can-i-get-more-details-on-free-trial)
+## Azure の購入方法
 
-## <a name="how-to-buy-azure"></a>How to buy Azure
+- [Microsoft Azure が販売されている国と地域はどこですか。Azure の購入に使用できる通貨はどれですか。](#in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure)
+- [禁輸措置を受けている国に対する Azure ベースのサービスの再販は制限を受けますか。](#do-we-restrict-resale-of-azure-based-service-into-countries-under-embargo)
+- [Azure と SQL Database は Microsoft Services Provider License Agreement で利用できますか。](#are-azure-and-sql-database-available-through-microsoft-services-provider-license-agreement)
+- [Azure 以外で購入した既存の Windows ライセンスは使用できますか。](#can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure)
+- [Azure サービスはだれが購入できますか。](#who-can-purchase-azure-services)
 
-- [In which countries and regions is Microsoft Azure commercially available and what currencies can be used to purchase Azure?](#in-which-countries-and-regions-is-microsoft-azure-commercially-available-and-what-currencies-can-be-used-to-purchase-azure)
-- [Do we restrict resale of Azure based service into countries under embargo?](#do-we-restrict-resale-of-azure-based-service-into-countries-under-embargo)
-- [Are Azure and SQL Database available through Microsoft Services Provider License Agreement?](#are-azure-and-sql-database-available-through-microsoft-services-provider-license-agreement)
-- [Can I use my existing Windows licenses that I bought outside of Azure?](#can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure)
-- [Who can purchase Azure services?](#who-can-purchase-azure-services)
+## 支払いについて
 
-## <a name="making-payments"></a>Making payments
+- [Azure の購入には、どのような支払い方法がありますか。](#what-payment-options-do-i-have-in-purchasing-azure)
+- [請求書による支払いをリクエストするにはどうすればよいですか。](#how-can-i-request-the-invoice-method-of-payment)
+- [クレジット カードによる支払い状況を確認するにはどうすればよいですか。](#how-do-i-check-the-status-of-a-payment-made-by-credit-card)
+- [Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)
+- [クレジット カードの情報を更新または変更するにはどうすればよいですか。](#how-can-i-update-or-change-my-credit-card-information)
+- [Azure サブスクリプションの支払い情報を編集するにはどうすればよいですか。](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
+- [国際クレジット カードを使用する必要があるというメッセージが表示されるのはなぜですか。](#why-am-i-seeing-a-message-that-i-need-to-use-an-international-credit-card)
 
-- [What payment options do I have in purchasing Azure?](#what-payment-options-do-i-have-in-purchasing-azure)
-- [How can I request the invoice method of payment?](#how-can-i-request-the-invoice-method-of-payment)
-- [How do I check the status of a payment made by credit card?](#how-do-i-check-the-status-of-a-payment-made-by-credit-card)
-- [How do I remove a credit card that I no longer use as an Azure payment method?](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)
-- [How can I update or change my credit card information?](#how-can-i-update-or-change-my-credit-card-information)
-- [How can I edit my payment information for my Azure subscriptions?](#how-can-i-edit-my-payment-information-for-my-azure-subscriptions)
-- [Why am I seeing a message that I need to use an international credit card?](#why-am-i-seeing-a-message-that-i-need-to-use-an-international-credit-card)
+## Azure の価格
 
-## <a name="azure-pricing"></a>Azure pricing
+- [Azure サービスの利点と価格に関する情報はどこで確認できますか。](#where-can-i-find-the-benefits-and-pricing-information-for-azure-services)
+- [価格プランを変更するにはどうすればよいですか。](#how-do-i-change-my-pricing-plan)
 
-- [Where can I find the Benefits and Pricing information for Azure Services?](#where-can-i-find-the-benefits-and-pricing-information-for-azure-services)
-- [How do I change my pricing plan?](#how-do-i-change-my-pricing-plan)
+## サービス レベル アグリーメント (SLA)
 
-## <a name="service-level-agreements-(sla)"></a>Service Level Agreements (SLA)
+- [予定されている保守作業のためのサービス ダウンタイムについて事前に知るにはどうすればよいですか。](#how-do-we-know-in-advance-about-service-downtime-for-planned-maintenance)
+- [稼働時間と接続に関する Azure SLA 契約はどのような内容ですか。](#what-is-the-azure-sla-agreement-for-uptime-and-connectivity)
+- [Azure SLA クレジットとは何ですか。](#what-are-the-azure-sla-credits)
+- [Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
 
-- [How do we know in advance about service downtime for planned maintenance?](#how-do-we-know-in-advance-about-service-downtime-for-planned-maintenance)
-- [What is the Azure SLA agreement for uptime and connectivity?](#what-is-the-azure-sla-agreement-for-uptime-and-connectivity)
-- [What are the Azure SLA Credits?](#what-are-the-azure-sla-credits)
-- [How will Azure Service Level Agreements work with current on-premises Microsoft licensing agreements?](#how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements)
+## 使用制限
 
-## <a name="spending-limits"></a>Spending limits
+- [使用制限を無効にした場合、再度有効にすることはできますか。](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
+- [使用制限の量は調整できますか。](#can-i-adjust-the-amount-of-the-spending-limit)
 
-- [Can I turn the Spending Limit back on if I turn off it?](#can-i-turn-the-spending-limit-back-on-if-i-turn-off-it)
-- [Can I adjust the amount of the Spending Limit?](#can-i-adjust-the-amount-of-the-spending-limit)
+## サポート プラン
 
-## <a name="support-plans"></a>Support plans
+- [Azure サポートの購入方法は?](#how-do-i-purchase-azure-support)
+- [月額料金は 1 つの Azure プランが対象ですか? それともアカウント全体が対象になりますか?](#does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account)
+- [Azure サポート プランを上位プランにアップグレードするには?](#how-do-i-upgrade-to-a-higher-tier-azure-support-plan)
+- [Azure サポートはいつ課金されますか?](#when-will-i-be-billed-for-azure-support)
+- [期間が終わるとどうなりますか?](#what-happens-at-the-end-of-the-term)
+- [Azure サポート プランを解約するにはどうすればよいですか?](#how-do-i-cancel-my-azure-support-plan)
 
-- [How do I purchase Azure Support?](#how-do-i-purchase-azure-support)
-- [Does the monthly rate cover a single Azure plan or the entire account?](#does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account)
-- [How do I upgrade to a higher tier Azure Support plan?](#how-do-i-upgrade-to-a-higher-tier-azure-support-plan)
-- [When will I be billed for Azure Support?](#when-will-i-be-billed-for-azure-support)
-- [What happens at the end of the term?](#what-happens-at-the-end-of-the-term)
-- [How do I cancel my Azure Support plan?](#how-do-i-cancel-my-azure-support-plan)
+## サブスクリプション、サービス、データの移行
 
-## <a name="migrating-subscriptions,-services,-and-data"></a>Migrating subscriptions, services, and data
+- [Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
+- [自分のサブスクリプションの所有権を譲渡するにはどうすればよいですか。](#how-do-i-transfer-ownership-of-my-subscriptions)
 
-- [How do I migrate data and services for my Azure subscription to a new subscription?](#how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription)
-- [How do I transfer ownership of my subscriptions?](#how-do-i-transfer-ownership-of-my-subscriptions)
+## サブスクリプション サービスの制限 (クォータ)
 
-## <a name="subscription-service-limits-(quotas)"></a>Subscription service limits (quotas)
+- [無料試用版サブスクリプションでクォータの引き上げは可能ですか。](#can-i-get-a-quota-increase-on-a-free-trial-subscription)
 
-- [Can I get a quota increase on a free trial subscription?](#can-i-get-a-quota-increase-on-a-free-trial-subscription)
+### Azure の購入には、どのような支払い方法がありますか。
 
-### <a name="what-payment-options-do-i-have-in-purchasing-azure?"></a>What payment options do I have in purchasing Azure?
-
-You can purchase Azure using a credit or debit card or choose to be invoiced.
+Azure の購入には、クレジット カードかデビット カード、または請求書払いをご利用いただけます。
 
 > [AZURE.NOTE]
 
-> - Once you opt for the invoice option, you can't move to the credit card option. To sign up for invoicing, see [Azure Invoicing](https://azure.microsoft.com/pricing/invoicing/).
-> - Please note that we do not accept prepaid and virtual credit cards.
-> - You are solely responsible for any credit card interest or other credit card charges that may result.
+> - いったん請求書払いのオプションを選択すると、クレジット カード払いには変更できなくなります。請求書払いを申し込む方法については、「[Azure の請求処理](https://azure.microsoft.com/pricing/invoicing/)」を参照してください。
+> - プリペイド カードおよびバーチャル クレジット カードでのお支払いは受け付けておりません。
+> - お客様は、クレジット カードの利息および発生する可能性のある他のクレジット カードの請求について全責任を負います。
 
-### <a name="how-can-i-request-the-invoice-method-of-payment?"></a>How can I request the invoice method of payment?
+### 請求書による支払いをリクエストするにはどうすればよいですか。
 
-Follow the steps in [Azure Invoicing](https://azure.microsoft.com//pricing/invoicing/) to submit a request to pay by invoice. Once your request has been approved, you will be provided instructions on how to set up your subscription for the invoice payment method.
+「[Azure の請求処理](https://azure.microsoft.com//pricing/invoicing/)」に記載されている手順に従って、請求書による支払いのリクエストを送信してください。リクエストが承認されると、請求書による支払いで、サブスクリプションを設定するための手続きの方法が通知されます。
 
-### <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card?"></a>How do I check the status of a payment made by credit card?
+### クレジット カードによる支払い状況を確認するにはどうすればよいですか。
 
-You must submit a support ticket to request assistance. To create a support ticket to check the status of a payment made by credit card see [How to Create a Support Ticket for Azure Billing and Subscription Issues](billing-how-to-create-billing-support-ticket.md).
+サポート チケットを送信してサポートを要求する必要があります。クレジット カードによる支払い状況を確認するためのサポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
-### <a name="how-do-i-get-a-copy-of-my-invoice?"></a>How do I get a copy of my invoice?
+### 請求書のコピーを取得するにはどうすればよいですか。
 
-As the Azure Account Administrator, you can view the current bill at the Azure Account Center and download statements for the previous six billing periods as well. For more detail, see [How to download your Azure billing invoice and daily usage data](billing-download-azure-invoice-daily-usage-date.md).
+Azure アカウント管理者の場合、Azure アカウント センターで現在の料金を確認し、過去 6 か月間の料金の明細書をダウンロードすることができます。詳細については、「[Azure の請求書と毎日の使用状況データをダウンロードする方法](billing-download-azure-invoice-daily-usage-date.md)」を参照してください。
 
-### <a name="how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method?"></a>How do I remove a credit card that I no longer use as an Azure payment method?
+### Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。
 
-You must submit a support ticket to request assistance. To create a support ticket to remove a credit card, see the article [How to Create a Support Ticket for Azure Billing and Subscription Issues](billing-how-to-create-billing-support-ticket.md).
+サポート チケットを送信してサポートを要求する必要があります。クレジット カードを削除するためのサポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
-### <a name="how-can-i-update-or-change-my-credit-card-information?"></a>How can I update or change my credit card information?
+### クレジット カードの情報を更新または変更するにはどうすればよいですか。
 
-If your credit card gets renewed and the number remains the same, you can simply update the details of the existing credit card, such as expiration date. If your card number changes or you would like to use a different card, you will need to add the new card. You can find instructions to update or add a credit card here: [How to change the credit card used to pay for an Azure subscription](billing-how-to-change-credit-card.md).
+クレジット カード番号が変更されない更新の場合は、有効期限など、既存のクレジット カードの詳細情報を更新するだけです。カード番号が変更された場合、または別のカードを使用する場合は、新しいカードを追加する必要があります。クレジット カードを更新または追加する手順については、「[Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法](billing-how-to-change-credit-card.md)」を参照してください。
 
-### <a name="how-do-we-know-in-advance-about-service-downtime-for-planned-maintenance?"></a>How do we know in advance about service downtime for planned maintenance?
+### 予定されている保守作業のためのサービス ダウンタイムについて事前に知るにはどうすればよいですか。
 
-Our Service Level Agreement for availability applies to customer applications which use a minimum of two role instances.  There is no SLA for single instances. Please refer to your [SLA page](https://azure.microsoft.com/support/legal/sla/) for complete details.
+可用性に関するマイクロソフトのサービス レベル アグリーメントは、2 つ以上のロール インスタンスを使用しているアプリケーションに適用されます。単一のインスタンスに対する SLA はありません。詳細については、お客様の [SLA のページ](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
-#### <a name="planned-maintenance-(classic-portal)"></a>Planned maintenance (Classic Portal)
+#### 計画的なメンテナンス (クラシック ポータル)
 
-For both single- and multi-instance configurations, Azure sends email communications in advance to alert you of upcoming planned maintenance (one week in advance for single-instance and 48 hours in advance for multi-instance). The email will be sent to the Account Administrator, Service Administrator and Co-administrator email accounts provided in the subscription.
+単一インスタンス構成とマルチインスタンス構成のどちらの場合でも、Azure では計画的なメンテナンスが近づいていることを注意喚起するために電子メールを事前に送信します (単一インスタンスについては 1 週間前、マルチインスタンスについては 48 時間前に)。この電子メールは、サブスクリプションに設定されているアカウント管理者、サービス管理者、共同管理者の電子メール アカウントに送信されます。
 
->[AZURE.NOTE] For more information specific to Virtual Machines see the article [Planned maintenance for Azure virtual machines](virtual-machines/virtual-machines-linux-planned-maintenance.md).
+>[AZURE.NOTE] Virtual Machines 固有の詳細については、[Azure 仮想マシンの計画的なメンテナンス](virtual-machines/virtual-machines-linux-planned-maintenance.md)に関する記事を参照してください。
 
-#### <a name="unplanned-maintenance"></a>Unplanned maintenance
+#### 計画外のメンテナンス
 
-In the event of an unplanned service disruption on the Azure Platform, status updates will be made on our [service dashboard](http://status.azure.com/)  and customers will also receive notice in the [Azure classic portal](https://manage.windowsazure.com/).
+Azure プラットフォームにおいて予定外のサービス中断が発生した場合は、[サービス ダッシュボード](http://status.azure.com/)の状態が更新され、[Azure クラシック ポータル](https://manage.windowsazure.com/)にお客様への通知が届きます。
 
-### <a name="what-is-the-azure-sla-agreement-for-uptime-and-connectivity?"></a>What is the Azure SLA agreement for uptime and connectivity?
+### 稼働時間と接続に関する Azure SLA 契約はどのような内容ですか。
 
-Azure has separate SLA’s for all services that are generally available and not in preview. The Service Level Agreement (SLA) describes Microsoft’s commitments for uptime and connectivity. Please refer to your [SLA page](https://azure.microsoft.com/support/legal/sla/) for the latest details.
+プレビュー版ではなく一般提供されているすべての Azure サービスに対して、個別に SLA が用意されています。サービス レベル アグリーメント (SLA) では、稼働時間と接続に関するマイクロソフトの確約内容について説明しています。最新の詳細情報については、お客様の [SLA のページ](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
-### <a name="what-are-the-azure-sla-credits?"></a>What are the Azure SLA Credits?
+### Azure SLA クレジットとは何ですか。
 
-Azure SLA Credits are calculated on a per subscription basis as a percentage of the bill for that service in the billing month the SLA was missed. The service credits are applied to the subsequent month’s bill. Generally, we provide 10% credit if we fall below the first threshold (99.95% or 99.9%, depending on the service) and 25% if we fall beneath the subsequent threshold (99%). Please refer to your [SLA page](https://azure.microsoft.com/support/legal/sla/) for complete details.
+Azure SLA クレジットは、サブスクリプションごとに、SLA が履行されなかった請求月の該当サービスの請求に対する比率として計算されます。サービス クレジットは、翌月の請求に適用されます。一般に、最初のしきい値 (サービスによって 99.95% または 99.9%) を下回ると 10% のクレジット、次のしきい値 (99%) を下回ると 25% のクレジットが提供されます。詳細については、お客様の [SLA のページ](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
-### <a name="how-will-azure-service-level-agreements-work-with-current-on-premises-microsoft-licensing-agreements?"></a>How will Azure Service Level Agreements work with current on premises Microsoft licensing agreements?
+### Azure サービス レベル アグリーメントは、現在のオンプレミスのマイクロソフト ライセンス契約にどのように関係しますか。
 
-Azure Service Level Agreements are independent of our on-premises Microsoft licensing agreements. Our SLAs for Azure provide you a monthly uptime guarantee for those services you consume in the cloud, with SLA credits against what we have billed you in the event we fail to meet the guarantee.
+Azure サービス レベル アグリーメントは、オンプレミスのマイクロソフト ライセンス契約から独立したものです。Azure の SLA では、クラウドでご利用いただくサービスの月間アップタイム保証と、保証を履行できなかった場合に請求に対して適用される SLA クレジットを提供しています。
 
-### <a name="i-do-not-see-an-invoice-for-the-last-billing-period.-why?"></a>I do not see an invoice for the last billing period. Why?
+### 前回の請求期間の請求書が表示されません。なぜですか?
 
-There could be several reasons for this:
+これにはいくつかの理由が考えられます。
 
-- It is less than 30 days from the day you subscribed to Azure.
+- Azure にサブスクライブした日から 30 日以上経過していない。
 
-- Your subscription type is Free Trial or one of the member offers (MSDN/Open/BizSpark/DreamSpark) that doesn't have a credit card or other payment instrument associated with it.
+- サブスクリプションの種類が無料試用版であるか、メンバー プラン (MSDN/Open/BizSpark/DreamSpark) のいずれかである (クレジット カードまたはクレジット カードに関連付けられた他の支払い方法が使用されていない)。
 
-- The invoice generation date has not yet arrived.
+- まだ請求書の生成日になっていない。
 
-### <a name="i-am-unable-to-log-in-to-the-azure-portal"></a>I am unable to log in to the Azure portal
+### Azure ポータルにログインできません
 
-Please see [I am unable to log in to manage my Azure subscription](billing-cannot-login-subscription.md).
+「[Azure サブスクリプションにログインして管理することができない](billing-cannot-login-subscription.md)」を参照してください。
 
->[AZURE.NOTE] Make sure you are logging in as the right administrator: an Account Administrator can only access the [Account Center](https://account.windowsazure.com/) whereas Service Administrators (SA) and Co-Administrators (CA) only have access to the [Azure portal](https://portal.azure.com/) or the [Azure classic portal](https://manage.windowsazure.com/).
+>[AZURE.NOTE] 適切な管理者としてログインしていることを確認してください。アカウント管理者は[アカウント センター](https://account.windowsazure.com/)のみにアクセスできるのに対し、サービス管理者 (SA) と共同管理者 (CA) がアクセスできるのは [Azure ポータル](https://portal.azure.com/)または [Azure クラシック ポータル](https://manage.windowsazure.com/)のみです。
 
-### <a name="how-do-i-purchase-azure-support?"></a>How do I purchase Azure Support?
+### Azure サポートの購入方法は?
 
-Azure Support plans may be purchased either online or through an Enterprise Agreement. The Developer, Standard, or Professional Direct Support plans are available online through the [Azure Support Plans](https://azure.microsoft.com/support/plans/) page. You must be the Microsoft Azure account owner to purchase a support plan.
+Azure サポート プランは、オンラインで、またはエンタープライズ契約を介してご購入いただけます。オンラインでは、[Azure サポート プラン](https://azure.microsoft.com/support/plans/)のページから Developer、Standard、Professional Direct の各サポート プランを購入できます。サポート プランを購入するには、Microsoft Azure アカウントの所有者である必要があります。
 
-If you purchase Microsoft Azure through an Enterprise Agreement (EA), you can add either a Standard or Professional Direct support plan to your Enterprise Agreement, by contacting your Large Account Reseller (LAR). Developer Support is not available through an Enterprise Agreement.
+エンタープライズ契約 (EA) を通じて Microsoft Azure を購入した場合は、ラージ アカウント リセラー (LAR) に連絡すれば、エンタープライズ契約に Standard サポート プランまたは Professional Direct サポート プランを追加できます。Developer サポートは、エンタープライズ契約を通じてはご利用いただけません。
 
-### <a name="does-the-monthly-rate-cover-a-single-azure-plan-or-the-entire-account?"></a>Does the monthly rate cover a single Azure plan or the entire account?
+### 月額料金は 1 つの Azure プランが対象ですか? それともアカウント全体が対象になりますか?
 
-The flat monthly cost for Azure Support covers one account, regardless of how many subscriptions or users you have on the account.
+Azure サポートの月額固定料金は、アカウントに含まれるサブスクリプション数やユーザー数に関係なく、1 つのアカウントが対象になります。
 
-All subscriptions under an account will share the same support plan, and all users with admin/owner access to any of the subscriptions under the account with a Support Plan will also be entitled to support for those specific account’s subscriptions they have access to.
+1 つのアカウントの下にあるすべてのサブスクリプションには、同一のサポート プランが適用されます。サポート プランの付いたアカウントの下にあるいずれかのサブスクリプションに対して管理者または所有者アクセス権限を持つすべてのユーザーも、自分がアクセス権限を持つサブスクリプションを所有する特定のアカウントに対するサポートを受ける資格があります。
 
-A Microsoft Azure account can be accessed from the [Azure Account Center](https://account.windowsazure.com/Home/Index). From there you can see the list of subscriptions that belong to the account and will be entitled for support.
+Microsoft Azure のアカウントには、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)からアクセスできます。アカウントに含まれており、サポートの対象になるサブスクリプションの一覧を、このポータルから確認できます。
 
-### <a name="how-do-i-upgrade-to-a-higher-tier-azure-support-plan?"></a>How do I upgrade to a higher tier Azure Support plan?
+### Azure サポート プランを上位プランにアップグレードするには?
 
-You can upgrade to a higher-tier plan by [submitting a support request](billing-how-to-create-billing-support-ticket.md) and choosing **Subscription Management**. Microsoft will waive the remaining payments on your original Azure Support plan and charge you at the higher tier for the remaining months of your initial commitment.
+上位プランにアップグレードするには、[サポート要求を送信し](billing-how-to-create-billing-support-ticket.md)、**[サブスクリプション管理]** を選択してください。元の Azure サポート プランに対する残りの料金は請求されず、初期コミットメントで定められた期間の残り月数には、上位プランの料金が課金されます。
 
-### <a name="when-will-i-be-billed-for-azure-support?"></a>When will I be billed for Azure Support?
+### Azure サポートはいつ課金されますか?
 
-When you purchase an Azure Support plan online, you will be charged immediately for the first month. You will be charged the monthly amount on the first day of each subsequent billing cycle. Enterprise Agreement (EA) purchases will follow the agreement billing cycle.
+Azure サポート プランをオンラインで購入すると、直ちに、最初の月に対する料金が課金されます。その後、各請求サイクルの最初の日に、月額が課金されます。エンタープライズ契約 (EA) でのご購入の場合は、契約で規定された請求サイクルが適用されます。
 
-### <a name="what-happens-at-the-end-of-the-term?"></a>What happens at the end of the term?
+### 期間が終わるとどうなりますか?
 
-At the end of your 6-month term, your plans will automatically renew to the same Azure Support plan for another 6 months, using the same payment method. As an account owner, you can elect to turn off the auto-renew functionality through the [Azure Account Center](https://account.windowsazure.com/Home/Index).
+6 か月の期間が終了すると、プランは自動的に更新され、次の 6 か月間について同じ Azure サポート プランが同じ支払い方法を使用して開始されます。アカウントの所有者は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)から、自動更新機能をオフにすることを選択できます。
 
-If you do not wish to auto renew, please log into the [Azure Account Center](https://account.windowsazure.com/Home/Index), select the support plan in question, click on the "Change renewal details," and unselect the default option to auto renew.
+自動更新をご希望でない場合は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインし、対象のサポート プランを選択してから、[更新の詳細の変更] をクリックして自動更新の既定のオプションをオフにします。
 
-### <a name="how-do-i-cancel-my-azure-support-plan?"></a>How do I cancel my Azure Support plan?
+### Azure サポート プランを解約するにはどうすればよいですか?
 
-An account owner can cancel an Azure Support plan by logging into the [Azure Account Center](https://account.windowsazure.com/Home/Index), then selecting **subscriptions**. If you have a subscription, your list of subscriptions will be displayed. Select the subscription you wish to cancel. The details of the subscription will then be displayed with a list of options on the right side of the screen. Select **Cancel** and proceed. If you do not have a subscription, then the message “You do not have any subscriptions.” will be displayed.
+アカウントの所有者は、[Azure アカウント センター](https://account.windowsazure.com/Home/Index)にログインし、**サブスクリプション**を選択することにより、Azure サポート プランを解約できます。サブスクリプションを所有している場合、サブスクリプションの一覧が表示されます。解約を希望するサブスクリプションを選択します。画面の右側にサブスクリプションの詳細がオプションの一覧と一緒に表示されます。**[キャンセル]** を選択して次に進みます。サブスクリプションを所有していない場合は、"使用できるサブスクリプションがありません" というメッセージが表示されます。
 
->[AZURE.NOTE] An Azure Support plan has a 6-month term and Microsoft requires continued monetary commitment for the duration of the term. Cancellation before the term expires does not forgive the remaining commitment or provide refunds any pre-paid amount.
-For details see [How to cancel your Azure subscription](billing-how-to-cancel-azure-subscription.md).
+>[AZURE.NOTE] Azure サポート プランの期間は 6 か月単位であり、Microsoft では、その期間全体について継続的な料金のコミットメントを必須としております。期間の満了前に解約した場合でも、残りの期間についてのコミットメントが免除されることはなく、既にお支払いいただいた料金の払い戻しもありません。詳細については、「[Azure サブスクリプションをキャンセルする方法](billing-how-to-cancel-azure-subscription.md)」を参照してください。
 
-### <a name="how-do-i-migrate-data-and-services-for-my-azure-subscription-to-a-new-subscription?"></a>How do I migrate data and services for my Azure subscription to a new subscription?
+### Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するにはどうすればよいですか。
 
-Please contact [Azure support](https://azure.microsoft.com/support/options/) for more information. To create a support ticket to migrate data and services for an Azure subscription to a new subscription see the article [How to Create a Support Ticket for Azure Billing and Subscription Issues](billing-how-to-create-billing-support-ticket.md).
+[Azure サポート](https://azure.microsoft.com/support/options/)に詳細をお問い合わせください。Azure サブスクリプションのデータとサービスを新しいサブスクリプションに移行するためのサポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
-### <a name="how-do-i-manage-administrator-accounts-in-the-new-azure-portal?"></a>How do I manage Administrator accounts in the new Azure portal?
+### 新しい Azure ポータルではどのようにして管理者アカウントを管理するのですか。
 
-Azure Role-Based Access Control (RBAC) enables fine-grained access management for Azure. Using RBAC, you can segregate duties within your DevOps team and grant only the amount of access to users that they need to perform their jobs. For more information, see [Azure Role-Based Access Control](.\active-directory\Azure Role-Based Access Control.md).
+Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。RBAC を使用して、開発チーム内で職務を分離し、職務に必要なアクセス権のみをユーザーに付与します。詳細については、「[Azure のロールベースのアクセス制御](.\\active-directory\\Azure Role-Based Access Control.md)」を参照してください。
 
-### <a name="how-do-i-transfer-ownership-of-my-subscriptions?"></a>How do I transfer ownership of my subscriptions?
+### 自分のサブスクリプションの所有権を譲渡するにはどうすればよいですか。
 
-You can now do this easily in the Microsoft Azure Account Center- for Pay-As-You-Go, MSDN, Action Pack, or BizSpark subscriptions. We’ve added the ability to transfer your subscription to another user. In other words, you can now change the account admin on any Pay-As-You-Go, MSDN, Action Pack, or BizSpark subscription that you own. Note that the recipient’s user account must be in the same country and that you cannot transfer subscriptions that are associated with a marketplace purchase.
-For details, see the article [How to transfer an Azure subscription](billing-subscription-transfer.md).
+従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションについては、Microsoft Azure アカウント センターで今すぐ簡単に実行できます。サブスクリプションを別のユーザーに譲渡する機能が追加されました。つまり、所有する任意の従量課金、MSDN、Action Pack、または BizSpark のサブスクリプションでアカウント管理者を変更できるようになりました。ただし、譲渡先のユーザー アカウントが同じ国内にある必要があります。また、Marketplace での購入物に関連付けられているサブスクリプションを譲渡することはできません。詳細については、[Azure サブスクリプションを譲渡する方法](billing-subscription-transfer.md)に関する記事を参照してください。
 
-### <a name="can-i-use-my-existing-windows-licenses-that-i-bought-outside-of-azure?"></a>Can I use my existing Windows licenses that I bought outside of Azure?
+### Azure 以外で購入した既存の Windows ライセンスは使用できますか。
 
-Yes, through license mobility if you have SA you can "bring-your-own-license" for all Virtual Machines supported server products except for Windows Server. For more information see [License Mobility through Software Assurance on Azure](https://azure.microsoft.com/pricing/license-mobility/).
+はい。ライセンス モビリティを利用することで可能です。SA をお持ちの場合は、Virtual Machines をサポートしているすべてのサーバー製品 (Windows Server 以外) に "ライセンスを持ち込む" ことができます。詳細については、「[Azure でのソフトウェア アシュアランスによるライセンス モビリティ](https://azure.microsoft.com/pricing/license-mobility/)」を参照してください。
 
-### <a name="where-can-i-find-the-benefits-and-pricing-information-for-azure-services?"></a>Where can I find the Benefits and Pricing information for Azure Services?
+### Azure サービスの利点と価格に関する情報はどこで確認できますか。
 
-For information on the benefits of Azure services, see [Microsoft Azure Offer Details](https://azure.microsoft.com/support/legal/offer-details/). For pricing information, see the [Azure pricing page](https://azure.microsoft.com/pricing/).
+Azure サービスの利点については、「[Microsoft Azure プランの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。料金情報については、「[Azure の価格](https://azure.microsoft.com/pricing/)」ページを参照してください。
 
-### <a name="how-do-i-change-my-pricing-plan?"></a>How do I change my pricing plan?
+### 価格プランを変更するにはどうすればよいですか。
 
-You can switch your Pay-As-You-Go subscription to the [12-Month Prepay Offer](https://azure.microsoft.com/offers/ms-azr-0026p/). With this offer, you prepay for Azure services for a 12-month term and receive a 5% discount on Azure services. In the [Azure Account Center](https://account.windowsazure.com/Subscriptions), go to your subscription and click on Switch Offer. This is currently the only offer that can be switched via the Account Center. Alternatively, you can contact [Azure support](https://azure.microsoft.com/support/options/) to switch to a different offer.
+従量課金制サブスクリプションを [12 か月の前払いプラン](https://azure.microsoft.com/offers/ms-azr-0026p/)に切り替えることができます。このプランでは、12 か月間の Azure サービスについて前払いをご利用いただくと、Azure サービスに 5% の割引が適用されます。プランを切り替えるには、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で対象のサブスクリプションにアクセスし、[プランの切り替え] をクリックします。現時点では、12 か月の前払いプランが、アカウント センターで切り替えることができる唯一のプランです。別のプランに切り替える場合は、[Azure サポート](https://azure.microsoft.com/support/options/)までお問い合わせください。
 
-### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-owner-email-address-associated-with-my-account?"></a>Can notifications be sent to a different email address other than the Account Owner email address associated with my account?
+### 通知は、マイ アカウントに関連付けられたアカウント所有者のメール アドレス以外のメール アドレスに送信できますか。
 
-Yes. If you would like to specify a different email address to receive notifications, please follow these directions:
+はい。別のメール アドレスで通知を受け取る場合は、次の手順に従って指定してください。
 
-1.  Go to the [Profile tab](https://account.windowsazure.com/Profile) in the Azure Accounts Portal.
-2.  Click **Edit Details** to update your email address to receive notifications.
+1.	Azure アカウント ポータルで [[プロファイル] タブ](https://account.windowsazure.com/Profile)に移動します。
+2.	**[詳細の編集]** をクリックして、通知を受け取るメール アドレスを更新します。
 
-### <a name="how-can-i-edit-my-payment-information-for-my-azure-subscription/s?"></a>How can I edit my payment information for my Azure Subscription/s?
+### Azure サブスクリプションの支払い情報を編集するにはどうすればよいですか。
 
-To view and edit the Azure account information, you must sign in to the Azure Account Center as the account administrator. Below are instructions in managing the payment method for Azure subscription/s.**
+Azure アカウント情報を表示して編集するには、Azure アカウント センターにアカウント管理者としてサインインする必要があります。Azure サブスクリプションの支払い方法を管理する手順は次のとおりです。**
 
-1.  Go to the [Azure Account Center](https://account.windowsazure.com/Subscriptions).
-2.  On the subscriptions page, click the subscription for which you want to update the payment method.
-3.  On the **subscription** summary page, click Change payment method. The **Change Payment Method** tool appears in a separate window.
+1.	[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にアクセスします。
+2.	[サブスクリプション] ページで、支払い方法を更新するサブスクリプションをクリックします。
+3.	**サブスクリプション**の概要ページで、[支払い方法の変更] をクリックします。**[支払い方法の変更]** ツールが別のウィンドウに表示されます。
 
-    **Note**: You can also access the Account Center from the Microsoft Azure classic portal. To do so, click your account name, and then click View my bill.
-4.  On the **Choose payment method** page, click the drop-down list, select the payment method you want update, and then click **Edit**.
-5.  On the details page, verify that you have selected the correct credit card type and card number.
-6.  Make necessary changes to the card details, and then click **Next**.
+	**注:** Microsoft Azure クラシック ポータルからアカウント センターにアクセスすることもできます。その場合は、自分のアカウント名をクリックし、[明細の表示] をクリックします。
+4.	**[支払方法の選択]** ページで、ドロップダウン リストをクリックし、更新する支払い方法を選択して、**[編集]** をクリックします。
+5.	[詳細] ページで、正しいクレジット カードの種類と番号が選択されていることを確認します。
+6.	修正が必要な場合はカードの詳細に変更を加え、**[次へ]** をクリックします。
 
-For more information, see the article [How to change the credit card used to pay for an Azure subscription](billing-how-to-change-credit-card.md).
+詳細については、「[Azure サブスクリプションの支払いに使用するクレジット カードを変更する方法](billing-how-to-change-credit-card.md)」を参照してください。
 
->[AZURE.NOTE] Currently, the Change Payment Method tool does not allow you to remove an existing credit card as a payment method. For information about how to remove a credit card, see the [How do I remove a credit card that I no longer use as an Azure payment method?](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method) in this article.
+>[AZURE.NOTE] 現時点では、[支払い方法の変更] ツールでは支払い方法として設定されている既存のクレジット カードを削除できません。クレジット カードの削除方法の詳細については、「[Azure の支払い方法として使用しなくなったクレジット カードを削除するにはどうすればよいですか。](#how-do-i-remove-a-credit-card-that-i-no-longer-use-as-an-azure-payment-method)」を参照してください。
 
-### <a name="why-am-i-seeing-a-message-that-i-need-to-use-an-international-credit-card?"></a>Why am I seeing a message that I need to use an international credit card?
+### 国際クレジット カードを使用する必要があるというメッセージが表示されるのはなぜですか。
 
-In some cases, although you’re paying for Azure services in your local/preferred currency, you are purchasing services through a non-local Microsoft entity and your credit card is being processed by a non-local bank. In these cases, cards issued by local banks may fail which can negatively impact your Azure services. If you’re unsure whether your credit card is enabled for international transactions, please contact your bank or card issuer to confirm. See [supported countries and currencies](billing-countries-and-currencies.md).
+Azure サービスの支払いを現地/優先通貨で行っているが、現地以外の Microsoft エンティティを通じてサービスを購入したことで、クレジット カードが地元以外の銀行で処理される場合があります。この場合、地元の銀行によって発行されたカードは承認されず、これによって Azure サービスに影響が出る可能性があります。ご使用のクレジット カードが国際取引に対応しているか不明な場合は、ご利用の銀行またはカード発行会社にお問い合わせください。[サポートされる国および通貨](billing-countries-and-currencies.md)に関するページを参照してください。
 
-### <a name="why-can't-i-edit-or-add-details-to-my-subscription?"></a>Why can't I edit or add details to my subscription?
+### サブスクリプションの編集や詳細の追加ができないのはなぜですか。
 
-To view and edit the Azure account information, you must sign in to the Azure Account Center as the account administrator.  If you are the AA and still cannot edit the subscription, please submit a support ticket to request assistance. To create a support ticket, see the article [How to Create a Support Ticket for Azure Billing and Subscription Issues](billing-how-to-create-billing-support-ticket.md).
+Azure アカウント情報を表示して編集するには、Azure アカウント センターにアカウント管理者としてサインインする必要があります。アカウント管理者としてサインインしたのにサブスクリプションを編集できない場合は、サポート チケットを送信してサポートを要求してください。サポート チケットを作成する方法については、「[Azure の請求とサブスクリプションの問題についてサポート チケットを作成する方法](billing-how-to-create-billing-support-ticket.md)」を参照してください。
 
-### <a name="who-can-purchase-azure-services?"></a>Who can purchase Azure services?
+### Azure サービスはだれが購入できますか。
 
-Azure is intended for use by businesses to build cloud scale applications and services. However, anyone may purchase Azure services.
+Azure は、クラウド規模のアプリケーションとサービスを構築する事業者による使用を想定していますが、Azure サービスは、どなたでも購入していただけます。
 
-### <a name="can-i-try-azure-for-free,-without-any-risk-of-being-charged?"></a>Can I try Azure for free, without any risk of being charged?
+### Azure の試用は無料ですか。課金される可能性はありませんか。
 
-Yes. With our [Spending Limit feature](https://azure.microsoft.com/pricing/spending-limits/), customers who sign up for a Free Trial, MSDN, MPN, or BizSpark offer can utilize Azure without getting charged as long as they keep the Spending Limit feature turned on. All new customers who sign up for these offers will have the Spending Limit turned on with a value of $0.
+はい。[使用制限機能](https://azure.microsoft.com/pricing/spending-limits/)を利用すると、その機能を有効にしている限り、無料試用版、MSDN、MPN、または BizSpark プランにご契約いただいたお客様は、課金される心配なしに Azure をご利用いただけます。これらのプランにサインアップした新しいお客様はすべて、価格が $0 として使用制限が有効になります。
 
-For information on signing up for Azure, see the article [How to sign up for, purchase, upgrade or activate an Azure subscription](billing-buy-sign-up-azure-subscription.md).
+Azure にサインアップする方法の詳細については、[Azure サブスクリプションのサインアップ、購入、アップグレード、または有効化の方法](billing-buy-sign-up-azure-subscription.md)に関する記事を参照してください。
 
-### <a name="can-i-turn-the-spending-limit-back-on-if-i-turn-off-it?"></a>Can I turn the Spending Limit back on if I turn off it?
+### 使用制限を無効にした場合、再度有効にすることはできますか。
 
-For those on our member benefit offers (e.g., MSDN), you do have the ability to have the Spending Limit feature re-enabled at the beginning of your next billing cycle. The Spending Limit cannot be re-enabled for the current billing period once turned off.
-For more information, see [Change the Azure Spending Limit](https://msdn.microsoft.com/library/azure/dn465781.aspx).
+メンバー特典プラン (MSDN など) のお客様は、次の請求サイクルの始めに使用制限機能を再度有効にすることができます。使用制限は、一度無効にすると、現在の請求期間に対して再度有効にすることはできません。詳細については、「[Azure 使用制限の変更](https://msdn.microsoft.com/library/azure/dn465781.aspx)」を参照してください。
 
-### <a name="can-i-adjust-the-amount-of-the-spending-limit?"></a>Can I adjust the amount of the Spending Limit?
+### 使用制限の量は調整できますか。
 
-For the initial release of this feature, the Spending Limit is set at $0 and cannot be adjusted. It is designed to enable customers on our Free Trial, MSDN, MPN or BizSpark offers to utilize Azure with complete assurance of not being billed.
-For more information, see [Azure Spending Limit](https://azure.microsoft.com/pricing/spending-limits/).
+この機能の初回リリースでは、使用制限は $0 に設定されており、調整はできません。この機能は、無料試用版、MSDN、MPN、または BizSpark プランのお客様が、課金されないという完全な保証付きで Azure を利用できるように設計されています。詳細については、「[Azure 使用制限](https://azure.microsoft.com/pricing/spending-limits/)」を参照してください。
 
-### <a name="in-which-countries-and-regions-is-microsoft-azure-commercially-available,-and-what-currencies-can-be-used-to-purchase-azure?"></a>In which countries and regions is Microsoft Azure commercially available, and what currencies can be used to purchase Azure?
+### Microsoft Azure が販売されている国と地域および Azure の購入に使用できる通貨
 
-Azure is available for purchase in more than 140 countries around the world, and we support billing in many currencies. Click [here](billing-countries-and-currencies.md) to see a list of countries and currencies.
+Azure は、世界の 140 を超える国で購入でき、課金は多数の通貨でサポートされています。国と通貨の一覧は[こちら](billing-countries-and-currencies.md)で確認できます。
 
-### <a name="do-we-restrict-resale-of-azure-based-service-into-countries-under-embargo?"></a>Do we restrict resale of Azure based service into countries under embargo?
+### 禁輸措置を受けている国に対する Azure ベースのサービスの再販は制限を受けますか。
 
-Yes.
+はい。
 
-### <a name="are-azure-and-sql-database-available-through-microsoft-services-provider-license-agreement?"></a>Are Azure and SQL Database available through Microsoft Services Provider License Agreement?
+### Azure と SQL Database は Microsoft Services Provider License Agreement で利用できますか。
 
-There are currently no plans to offer Azure or SQL Database through SPLA.
+現在、Azure または SQL Database を SPLA で提供する計画はありません。
 
-### <a name="what-is-a-free-trial-subscription-and-how-long-does-it-last?"></a>What is a Free Trial subscription and how long does it last?
+### 無料試用版サブスクリプションとは何ですか。また、有効期間はどのくらいですか。
 
-An Azure Free Trial subscription is a one-month free trial for any new customer and provide credits of $200 USD of Azure at no charge. To see what services free trial credits cover and do not cover, see the [Free Trial offer page](https://azure.microsoft.com/offers/ms-azr-0044p/).
+Azure 無料試用版サブスクリプションは、新規ユーザーを対象とした 1 か月間無料の試用版で、$200 (米ドル) の Azure クレジットを無料で提供しています。無料試用版クレジットの対象となるサービスと対象外のサービスについては、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
 
-You can sign up for a trial subscription [here](http://azure.microsoft.com/pricing/free-trial/). See [this guide](billing-buy-sign-up-azure-subscription.md#sign-up-for-an-azure-free-trial-subscription) for step-by-step instructions.
+試用版サブスクリプションには、[こちら](http://azure.microsoft.com/pricing/free-trial/)からサインアップできます。詳細な手順については、[こちらのガイド](billing-buy-sign-up-azure-subscription.md#sign-up-for-an-azure-free-trial-subscription)を参照してください。
 
-### <a name="what-resources-are-available-when-using-a-free-trial?"></a>What resources are available when using a Free Trial?
+### 無料試用版で利用できるリソースを教えてください。
 
-You receive $200 USD of Azure credits with the Free Trial to use over 30 days. The choice is now yours on how you use your Azure credits. See the [Free Trial offer page](https://azure.microsoft.com/offers/ms-azr-0044p/) for more details.
+無料試用版では、30 日間使用できる $200 (米ドル) の Azure クレジットを受け取れます。Azure クレジットをどう使うかは、お客様しだいです。詳細については、[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)を参照してください。
 
-You can sign up for a trial subscription [here](http://azure.microsoft.com/pricing/free-trial/).
+試用版サブスクリプションには、[こちら](http://azure.microsoft.com/pricing/free-trial/)からサインアップできます。
 
-Also see the [Free Trial FAQ](https://azure.microsoft.com/pricing/free-trial-faq/).
+[無料試用版の FAQ](https://azure.microsoft.com/pricing/free-trial-faq/) も参照してください。
 
-### <a name="what-happens-if-i-remove-the-spending-limit-on-my-free-trial?"></a>What happens if I remove the spending limit on my free trial?
+### 無料試用版の使用制限を削除するとどうなりますか。
 
-Once you remove the spending limit, you start getting charged for consuming resources beyond the free trial credit. You will not be able to reset the spending limit once it has been removed.
+使用制限を削除すると、無料試用版のクレジットを超えた部分について、リソースの使用に応じた課金が開始されます。いったん削除した使用制限をリセットすることはできません。
 
-### <a name="can-i-get-a-quota-increase-on-a-free-trial-subscription?"></a>Can I get a quota increase on a Free Trial subscription?
+### 無料試用版サブスクリプションでクォータの引き上げは可能ですか。
 
-Free Trial subscriptions are not eligible for quota increases. If you have a Free Trial, you can upgrade to a [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) subscription. For details on how to upgrade see [Upgrade Azure Free Trial to Pay-As-You-Go](billing-buy-sign-up-azure-subscription.md#UpgradeFreeToPYG).
+無料試用版サブスクリプションは、クォータ引き上げの適用対象外です。無料試用版をお持ちの場合、[従量課金](https://azure.microsoft.com/offers/ms-azr-0003p/)のサブスクリプションにアップグレードしてください。アップグレードの詳しい方法については、「[Azure 無料試用版を従量課金制にアップグレード](billing-buy-sign-up-azure-subscription.md#UpgradeFreeToPYG)」をご覧ください。
 
->[AZURE.NOTE] DreamSpark subscriptions are also ineligible for quota increases.
+>[AZURE.NOTE] DreamSpark サブスクリプションも、クォータ引き上げの適用対象外となります。
 
-### <a name="where-can-i-get-more-details-on-free-trial?"></a>Where can I get more details on Free Trial?
+### 無料試用版についての詳しい情報はどこで確認できますか。
 
-Visit the [Free Trial offer page](https://azure.microsoft.com/offers/ms-azr-0044p/) and read the [Official Free Trial FAQ](https://azure.microsoft.com/pricing/free-trial-faq/).
+[無料試用版のページ](https://azure.microsoft.com/offers/ms-azr-0044p/)と[無料試用版に関する公式 FAQ](https://azure.microsoft.com/pricing/free-trial-faq/) を参照してください。
 
-> [AZURE.NOTE] If you still have further questions, please [contact support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) to get your issue resolved quickly.
+> [AZURE.NOTE] まだ他に質問がある場合は、問題を迅速に解決できるよう[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
-### <a name="how-do-i-make-a-payment?"></a>How do I make a payment?
+### 支払い方法を教えてください。
 
-If you have set up a credit card or a debit card as your payment method, the payment will be made automatically.
+支払い方法としてクレジット カードやデビット カードを設定している場合、支払いは自動的に行われます。
 
-If you are set up to use an [invoice method of payment](https://azure.microsoft.com/pricing/invoicing/), send your payment to the location listed at the bottom of your invoice. For more help, [contact support](billing-how-to-create-billing-support-ticket.md).
+[支払い方法として請求書](https://azure.microsoft.com/pricing/invoicing/)を利用するように設定している場合、請求書の下部に記載されている場所に支払いを送付します。詳しくは、[サポートにお問い合わせください](billing-how-to-create-billing-support-ticket.md)。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

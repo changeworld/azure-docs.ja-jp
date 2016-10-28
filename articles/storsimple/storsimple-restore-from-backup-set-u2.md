@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Restore a StorSimple volume from backup | Microsoft Azure"
-   description="Explains how to use the StorSimple Manager service Backup Catalog page to restore a StorSimple volume from a backup set."
+   pageTitle="バックアップからの StorSimple ボリュームの復元 | Microsoft Azure"
+   description="StorSimple Manager サービスの [バックアップ カタログ] ページを使用してバックアップ セットから StorSimple ボリュームを復元する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,109 +15,104 @@
    ms.date="04/26/2016"
    ms.author="v-sharos" />
 
-
-# <a name="restore-a-storsimple-volume-from-a-backup-set-(update-2)"></a>Restore a StorSimple volume from a backup set (Update 2)
+# バックアップ セットからの StorSimple ボリュームの復元 (Update 2)
 
 [AZURE.INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]
 
-## <a name="overview"></a>Overview
+## 概要
 
-The **Backup Catalog** page displays all the backup sets that are created when manual or automated backups are taken. You can use this page to list all the backups for a backup policy or a volume, select or delete backups, or use a backup to restore or clone a volume.
+**[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
- ![Backup Catalog page](./media/storsimple-restore-from-backup-set-u2/restore.png)
+ ![[バックアップ カタログ] ページ](./media/storsimple-restore-from-backup-set-u2/restore.png)
 
-This tutorial explains how to use the **Backup Catalog** page to restore your device from a backup set.
+このチュートリアルでは、**[バックアップ カタログ]** ページを使用してバックアップ セットからデバイスを復元する方法について説明します。
 
-You can restore a volume from a local or cloud backup. In either case, the restore operation brings the volume online immediately while data is downloaded in the background. 
+ボリュームをローカルまたはクラウドのバックアップから復元することができます。いずれの場合でも、復元操作では、データがバックグラウンドでダウンロードされている間に、ボリュームがすぐにオンラインになります。
 
-Before you initiate a restore operation, you should be aware of the following:
+復元操作を開始する前に、次の点に注意する必要があります。
 
-- **You must take the volume offline** – Take the volume offline on both the host and the device before you initiate the restore operation. Although the restore operation automatically brings the volume online on the device, you must manually bring the device online on the host. You can bring the volume online on the host as soon as the volume is online on the device. (You do not need to wait until the restore operation is finished.) For procedures, go to [Take a volume offline](storsimple-manage-volumes-u2.md#take-a-volume-offline).
+- **ボリュームをオフラインにする必要があります** - 復元操作を開始する前に、ホストとデバイスの両方でボリュームをオフラインにします。復元操作では、ボリュームは自動的にデバイス上でオンラインになりますが、デバイスをホスト上でオンラインにする操作は手動で行う必要があります。ボリュームがデバイス上でオンラインになるとすぐに、ホスト上でボリュームをオンラインにすることができます。(復元操作が完了するまで待機する必要はありません。) 具体的な手順については、「[ボリュームをオフラインにする](storsimple-manage-volumes-u2.md#take-a-volume-offline)」を参照してください。
 
-- **Volume type after restore** – Deleted volumes are restored based on the type in the snapshot; that is, volumes that were locally pinned are restored as locally pinned volumes and volumes that were tiered are restored as tiered volumes.
+- **復元後のボリュームの種類** - 削除されたボリュームは、スナップショットの種類に基づいて復元されます。つまり、ローカルに固定されていたボリュームはローカル固定ボリュームとして復元され、階層化されていたボリュームは階層化ボリュームとして復元されます。
 
-    For existing volumes, the current usage type of the volume overrides the type that is stored in the snapshot. For example, if you restore a volume from a snapshot that was taken when the volume type was tiered and that volume type is now locally pinned (due to a conversion operation that was performed), then the volume will be restored as a locally pinned volume. Similarly, if an existing locally pinned volume was expanded and subsequently restored from an older snapshot taken when the volume was smaller, the restored volume will retain the current expanded size.
+    既存のボリュームの場合、ボリュームで現在使用されている種類は、スナップショットに格納されている種類をオーバーライドします。たとえば、ボリュームの種類が階層化のときに作成されたスナップショットからボリュームを復元する際に、そのボリュームの種類が現在はローカル固定の場合 (変換操作が実行されたため)、そのボリュームはローカル固定ボリュームとして復元されます。同様に、既存のローカル固定ボリュームが拡張され、その後に、ボリュームが小さかったときに作成された古いスナップショットを復元した場合、復元されたボリュームは現在の拡張サイズを保持します。
 
-    You cannot convert a volume from a tiered volume to a locally pinned volume or from a locally pinned volume to a tiered volume while the volume is being restored. Wait until the restore operation is finished, and then you can convert the volume to another type. For information about converting a volume, go to [Change the volume type](storsimple-manage-volumes-u2.md#change-the-volume-type). 
+    ボリュームの復元中に、階層化ボリュームからローカル固定ボリュームに、またはローカル固定ボリュームから階層化ボリュームに変換することはできません。復元操作が完了するまで待機し、その後で、ボリュームを別の種類に変換できます。ボリュームを変換する方法については、「[ボリュームの種類を変更する](storsimple-manage-volumes-u2.md#change-the-volume-type)」を参照してください。
 
-- **The volume size will be reflected in the restored volume** – This is an important consideration if you are restoring a locally pinned volume that has been deleted (because locally pinned volumes are fully provisioned). Make sure that you have sufficient space before you attempt to restore a locally pinned volume that was previously deleted. 
+- **ボリューム サイズは復元されたボリュームに反映されます** - これは、削除されたローカル固定ボリュームを復元する場合の重要な考慮事項です (ローカル固定ボリュームは完全にプロビジョニングされるため)。以前に削除されたローカル固定ボリュームを復元しようとする前に、十分な領域があることを確認してください。
 
-- **You cannot expand a volume while it is being restored** – Wait until the restore operation is finished before you attempt to expand the volume. For information about expanding a volume, go to [Modify a volume](storsimple-manage-volumes-u2.md#modify-a-volume).
+- **ボリュームが復元されているときに、そのボリュームを拡張することはできません** - ボリュームを拡張する前に、復元操作が完了するまで待機してください。ボリュームを拡張する方法については、「[ボリュームを変更する](storsimple-manage-volumes-u2.md#modify-a-volume)」を参照してください。
 
-- **You can perform a backup while you are restoring a local volume** – For procedures go to [Use the StorSimple Manager service to manage backup policies](storsimple-manage-backup-policies.md).
+- **ローカル ボリュームを復元しているときに、バックアップを実行できます** - 具体的な手順については、「[StorSimple Manager サービスを使用してバックアップ ポリシーを管理する](storsimple-manage-backup-policies.md)」を参照してください。
 
-- **You can cancel a restore operation** – If you cancel the restore job, then the volume will be rolled back to the state that it was in before you initiated the restore operation. For procedures, go to [Cancel a job](storsimple-manage-jobs-u2.md#cancel-a-job).
+- **復元操作は取り消すことができます** - 復元ジョブを取り消すと、ボリュームは復元操作を開始する前の状態にロールバックされます。具体的な手順については、「[ジョブを取り消す](storsimple-manage-jobs-u2.md#cancel-a-job)」を参照してください。
 
-## <a name="how-to-use-the-backup-catalog"></a>How to use the backup catalog
+## バックアップ カタログの使用方法
 
-The **Backup Catalog** page provides a query that helps you to narrow your backup set selection. You can filter the backup sets that are retrieved based on the following parameters:
+**[バックアップ カタログ]** ページには、バックアップ セットの選択を絞り込むことができるクエリが用意されています。次のパラメーターに基づいて、取得するバックアップ セットをフィルター選択できます。
 
-- **Device** – The device on which the backup set was created.
-- **Backup policy** or **volume** – The backup policy or volume associated with this backup set.
-- **From** and **To** – The date and time range when the backup set was created.
+- **[デバイス]** - バックアップ セットが作成されたデバイス。
+- **[バックアップ ポリシー]** または **[ボリューム]** - このバックアップ セットに関連付けられているバックアップ ポリシーまたはボリューム。
+- **[開始日時]** と **[終了日時]** - バックアップ セットが作成された日付と時刻の範囲。
 
-The filtered backup sets are then tabulated based on the following attributes:
+フィルター選択されたバックアップ セットは、次の属性に基づいて表形式で表示されます。
 
-- **Name** – The name of the backup policy or volume associated with the backup set.
-- **Size** – The actual size of the backup set.
-- **Created on** – The date and time when the backups were created. 
-- **Type** – Backup sets can be local snapshots or cloud snapshots. A local snapshot is a backup of all your volume data stored locally on the device, whereas a cloud snapshot refers to the backup of volume data residing in the cloud. Local snapshots provide faster access, whereas cloud snapshots are chosen for data resiliency.
-- **Initiated by** – The backups can be initiated automatically according to a schedule or manually by a user. (You can use a backup policy to schedule backups. Alternatively, you can use the **Take backup** option to take an interactive backup.)
+- **[名前]** - バックアップ セットに関連付けられているバックアップ ポリシーまたはボリュームの名前。
+- **[サイズ]** - バックアップ セットの実際のサイズ。
+- **[作成日時]** – バックアップが作成された日付と時刻。 
+- **[種類]** - バックアップ セットの種類には、ローカル スナップショットとクラウド スナップショットがあります。ローカル スナップショットは、デバイスにローカルに格納されているすべてのボリューム データのバックアップです。クラウド スナップショットは、クラウドに存在するボリューム データのバックアップを表します。ローカル スナップショットは、より高速なアクセスを実現します。クラウド スナップショットは、データの回復力を実現するために選択されます。
+- **[開始方法]** - バックアップは、スケジュールに従って自動的に開始することも、ユーザーが手動で開始することもできます (バックアップ ポリシーを使用してバックアップのスケジュールを設定できます。また、**[バックアップの実行]** オプションを使用して対話型バックアップを実行することもできます)。
 
-## <a name="how-to-restore-your-storsimple-volume-from-a-backup"></a>How to restore your StorSimple volume from a backup
+## StorSimple ボリュームをバックアップから復元する方法
 
-You can use the **Backup Catalog** page to restore your StorSimple volume from a specific backup. Keep in mind, however, that restoring a volume will revert the volume to the state it was in when the backup was taken. Any data that was added after the backup operation will be lost.
+**[バックアップ カタログ]** ページを使用すると、特定のバックアップから StorSimple ボリュームを復元できます。ただし、ボリュームを復元するとボリュームはバックアップが作成された時点の状態に戻ることに注意してください。バックアップ操作の後に追加されたすべてのデータは失われます。
 
-> [AZURE.WARNING] Restoring from a backup will replace the existing volumes from the backup. This may cause the loss of any data that was written after the backup was taken.
+> [AZURE.WARNING] バックアップから復元すると、既存のボリュームはバックアップで置き換えられます。その結果、バックアップが作成された時点以降に書き込まれたすべてのデータが失われます。
 
-### <a name="to-restore-your-volume"></a>To restore your volume
+### ボリュームを復元するには
 
-1. On the StorSimple Manager service page, click the **Backup catalog** tab.
+1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックします。
 
-    ![Backup catalog](./media/storsimple-restore-from-backup-set-u2/restore.png)
+    ![バックアップ カタログ](./media/storsimple-restore-from-backup-set-u2/restore.png)
 
-2. Select a backup set as follows:
-  1. Select the appropriate device.
-  2. In the drop-down list, choose the volume or backup policy for the backup that you wish to select.
-  3. Specify the time range.
-  4. Click the check icon ![check icon](./media/storsimple-restore-from-backup-set-u2/HCS_CheckIcon.png) to execute this query.
+2. 次の手順に従って、バックアップ セットを選択します。
+  1. 適切なデバイスを選択します。
+  2. ボックスの一覧で、選択するバックアップのボリュームまたはバックアップのポリシーを選択します。
+  3. 時間範囲を指定します。
+  4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-restore-from-backup-set-u2/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
  
-    The backups associated with the selected volume or backup policy should appear in the list of backup sets.
+    選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
-3. Expand the backup set to view the associated volumes. These volumes must be taken offline on the host and device before you can restore them. Access the volumes on the **Volume Containers** page, and then follow the steps in [Take a volume offline](storsimple-manage-volumes-u2.md#take-a-volume-offline) to take them offline.
+3. バックアップ セットを展開して、関連付けられているボリュームを表示します。これらのボリュームは、復元する前にホストおよびデバイス上でオフラインにする必要があります。ボリュームをオフラインにするには、**[ボリューム コンテナー]** ページでボリュームにアクセスし、「[ボリュームをオフラインにする](storsimple-manage-volumes-u2.md#take-a-volume-offline)」の手順を実行します。
 
-    > [AZURE.IMPORTANT] Make sure that you have taken the volumes offline on the host first, before you take the volumes offline on the device. If you do not take the volumes offline on the host, it could potentially lead to data corruption.
+    > [AZURE.IMPORTANT] 最初にホスト上のボリュームをオフラインにしてから、デバイス上のボリュームをオフラインにします。ホスト上でボリュームをオフラインにしない場合、データの破損を招く可能性があります。
 
-4. Navigate back to the **Backup Catalog** tab and select a backup set.
+4. **[バックアップ カタログ]** タブに戻り、バックアップ セットを選択します。
 
-5. Click **Restore** at the bottom of the page.
+5. ページの下部にある **[復元]** をクリックします。
 
-6. You will be prompted for confirmation. Review the restore information, and then select the confirmation check box.
+6. 確認を求められます。復元情報を確認し、確認のチェック ボックスをオンにします。
 
-    ![Confirmation page](./media/storsimple-restore-from-backup-set-u2/ConfirmRestore.png)
+    ![確認ページ](./media/storsimple-restore-from-backup-set-u2/ConfirmRestore.png)
 
-7. Click the check icon ![check icon](./media/storsimple-restore-from-backup-set-u2/HCS_CheckIcon.png). This will initiate a restore job that you can view by accessing the **Jobs** page. 
+7. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-restore-from-backup-set-u2/HCS_CheckIcon.png) をクリックします。復元ジョブが開始されます。このジョブは、**[ジョブ]** ページに表示されます。
 
-8. After the restore is complete, you can verify that the contents of your volumes are replaced by volumes from the backup.
+8. 復元操作が完了した後、ボリュームの内容がバックアップからのボリュームで置き換えられていることを確認できます。
 
-![Video available](./media/storsimple-restore-from-backup-set-u2/Video_icon.png) **Video available**
+![ビデオ](./media/storsimple-restore-from-backup-set-u2/Video_icon.png) **ビデオ**
 
-To watch a video that demonstrates how you can use the clone and restore features in StorSimple to recover deleted files, click [here](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/).
+StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
 
-## <a name="if-the-restore-fails"></a>If the restore fails
+## 復元に失敗した場合
 
-You will receive an alert if the restore operation fails for any reason. If this occurs, refresh the backup list to verify that the backup is still valid. If the backup is valid and you are restoring from the cloud, then connectivity issues might be causing the problem. 
+何らかの理由で復元操作に失敗した場合は、アラートが表示されます。この場合、バックアップの一覧を更新してバックアップが引き続き有効であることを確認してください。バックアップが有効であり、クラウドから復元を行っている場合、接続の問題が原因となっている可能性があります。
 
-To complete the restore operation, take the volume offline on the host and retry the restore operation. Note that any modifications to the volume data that were performed during the restore process will be lost.
+復元操作を完了するには、ホスト上でボリュームをオフラインにし、復元操作を再試行します。復元の処理中に行われたボリューム データへの変更は失われることに注意してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [Manage StorSimple volumes](storsimple-manage-volumes-u2.md).
+- [StorSimple ボリュームを管理する](storsimple-manage-volumes-u2.md)方法について説明します。
 
-- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0504_2016-->

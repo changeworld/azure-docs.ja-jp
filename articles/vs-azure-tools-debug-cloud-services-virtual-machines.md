@@ -1,199 +1,193 @@
 <properties 
-    pageTitle="Debugging an Azure cloud service or virtual machine in Visual Studio | Microsoft Azure"
-    description="Debugging a Cloud Service or Virtual Machine in Visual Studio"
-    services="visual-studio-online"
-    documentationCenter="na"
-    authors="TomArcher"
-    manager="douge"
-    editor="" />
+	pageTitle="Visual Studio での Azure クラウド サービスまたは仮想マシンのデバッグ | Microsoft Azure"
+	description="Visual Studio でのクラウド サービスまたは仮想マシンのデバッグ"
+	services="visual-studio-online"
+	documentationCenter="na"
+	authors="TomArcher"
+	manager="douge"
+	editor="" />
 <tags 
-    ms.service="visual-studio-online"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="08/15/2016"
-    ms.author="tarcher" />
+	ms.service="visual-studio-online"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="08/15/2016"
+	ms.author="tarcher" />
+
+# Visual Studio での Azure クラウド サービスまたは仮想マシンのデバッグ
+
+Visual Studio には、Azure クラウド サービスと仮想マシンのデバッグに役立つさまざまなオプションがあります。
 
 
-# <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Debugging an Azure cloud service or virtual machine in Visual Studio
 
-Visual Studio gives you different options for debugging Azure cloud services and virtual machines.
+## ローカル コンピューターでクラウド サービスをデバッグする
 
+Azure コンピューティング エミュレーターを使用してローカル コンピューターでクラウド サービスをデバッグすれば、時間とコストの節約になります。サービスをデプロイする前にローカルでデバッグすると、コンピューティング時間の料金を支払うことなく、信頼性とパフォーマンスを改善できます。ただし、一部には Azure でクラウド サービスを実行した場合にのみ発生するエラーもあります。サービスを発行し、デバッガーをロール インスタンスにアタッチするときに、リモート デバッグを有効にすると、このようなエラーをデバッグできます。
 
+エミュレーターは、Azure コンピューティング サービスをシミュレートし、ローカル環境で動作するので、クラウド サービスのテストとデバッグを行ってからデプロイすることができます。エミュレーターでは、ロール インスタンスのライフサイクルが処理され、ローカル ストレージなどのシミュレートされるリソースにアクセスできます。Visual Studio でサービスをデバッグまたは実行すると、エミュレーターがバックグラウンド アプリケーションとして自動的に起動され、サービスがエミュレーターにデプロイされます。エミュレーターを使用すると、ローカル環境で実行されているサービスを表示できます。完全バージョンまたは Express バージョンのエミュレーターを実行できます(Azure 2.3 以降は、Express バージョンのエミュレーターが既定です)。 「[Emulator Express を使用したローカルでのクラウド サービス実行とデバッグ](https://msdn.microsoft.com/library/dn339018.aspx)」を参照してください。
 
-## <a name="debug-your-cloud-service-on-your-local-computer"></a>Debug your cloud service on your local computer
+### ローカル コンピューターでクラウド サービスをデバッグするには
 
-You can save time and money by using the Azure compute emulator to debug your cloud service on a local machine. By debugging a service locally before you deploy it, you can improve reliability and performance without paying for compute time. However, some errors might occur only when you run a cloud service in Azure itself. You can debug these errors if you enable remote debugging when you publish your service and then attach the debugger to a role instance.
-
-The emulator simulates the Azure Compute service and runs in your local environment so that you can test and debug your cloud service before you deploy it. The emulator handles the lifecycle of your role instances and provides access to simulated resources, such as local storage. When you debug or run your service from Visual Studio, it automatically starts the emulator as a background application and then deploys your service to the emulator. You can use the emulator to view your service when it runs in the local environment. You can run the full version or the express version of the emulator. (Starting with Azure 2.3, the express version of the emulator is the default.) See [Using Emulator Express to Run and Debug a Cloud Service Locally](https://msdn.microsoft.com/library/dn339018.aspx).
-
-### <a name="to-debug-your-cloud-service-on-your-local-computer"></a>To debug your cloud service on your local computer
-
-1. On the menu bar, choose **Debug**, **Start Debugging** to run your Azure cloud service project. As an alternative, you can press F5. You’ll see a message that the Compute Emulator is starting. When the emulator starts, the system tray icon confirms it.
+1. メニュー バーで、**[デバッグ]**、**[デバッグの開始]** の順に選択し、Azure クラウド サービス プロジェクトを実行します。または、F5 キーを押します。コンピューティング エミュレーターが起動することを示すメッセージが表示されます。エミュレーターが起動すると、システム トレイ アイコンでそのことを確認できます。
 
     ![Azure emulator in the system tray](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC783828.png)
 
-1. Display the user interface for the compute emulator by opening the shortcut menu for the Azure icon in the notification area, and then select **Show Compute Emulator UI**.
+1. 通知領域にある Azure アイコンのショートカット メニューを開いて **[コンピューティング エミュレーターの UI を表示]** を選択し、コンピューティング エミュレーターのユーザー インターフェイスを表示します。
 
-    The left pane of the UI shows the services that are currently deployed to the compute emulator and the role instances that each service is running. You can choose the service or roles to display lifecycle, logging, and diagnostic information in the right pane. If you put the focus in the top margin of an included window, it expands to fill the right pane.
+    UI の左側にあるウィンドウには、現在コンピューティング エミュレーターにデプロイされているサービスと各サービスが実行しているロール インスタンスが表示されます。サービスまたはロールを選択すると、右ペインにライフサイクル情報、ログ情報、および診断情報を表示できます。含まれているウィンドウの上部余白にフォーカスを置くと、ウィンドウが右ペイン全体に拡大します。
 
-1. Step through the application by selecting commands on the **Debug** menu and setting breakpoints in your code. As you step through the application in the debugger, the panes are updated with the current status of the application. When you stop debugging, the application deployment is deleted.If your application includes a web role and you've set the Startup action property to start the web browser, Visual Studio starts your web application in the browser.If you change the number of instances of a role in the service configuration, you must stop your cloud service and then restart debugging so that you can debug these new instances of the role.
+1. **[デバッグ]** メニューのコマンドを選択し、コードにブレークポイントを設定して、アプリケーションをステップ実行します。デバッガーでのアプリケーションのステップ実行に合わせてウィンドウが更新され、アプリケーションの現在の状態が表示されます。デバッグを停止すると、アプリケーション デプロイは削除されます。アプリケーションに Web ロールが含まれており、Web ブラウザーを起動するようにスタートアップ アクションのプロパティが設定されている場合、Visual Studio によって Web アプリケーションがブラウザーで起動されます。サービス構成でロールのインスタンスの数を変更した場合、クラウド サービスを停止し、デバッグを再開して、これらの新しいロール インスタンスをデバッグできるようにする必要があります。
 
-    **Note:** When you stop running or debugging your service, the local compute emulator and storage emulator aren't stopped. You must stop them explicitly from the notification area.
+    **注:** サービスの実行またはデバッグを停止しても、ローカルのコンピューティング エミュレーターとストレージ エミュレーターは停止しません。これらは、通知領域から明示的に停止する必要があります。
 
 
-## <a name="debug-a-cloud-service-in-azure"></a>Debug a cloud service in Azure
+## Azure でクラウド サービスをデバッグする
 
-To debug a cloud service from a remote machine, you must enable that functionality explicitly when you deploy your cloud service so that required services (msvsmon.exe, for example) are installed on the virtual machines that run your role instances. If you didn't enable remote debugging when you published the service, you have to republish the service with remote debugging enabled.
+リモート コンピューターからクラウド サービスをデバッグするには、ロール インスタンスを実行する仮想マシンに必要なサービス (msvsmon.exe など) をインストールするために、クラウド サービスのデプロイ時にデバッグ機能を明示的に有効にする必要があります。サービスを発行するときにリモート デバッグを有効にしなかった場合、リモート デバッグを有効にしてサービスを再発行する必要があります。
 
-If you enable remote debugging for a cloud service, it doesn't exhibit degraded performance or incur additional charges. You shouldn't use remote debugging on a production service, because clients who use the service might be adversely affected.
+クラウド サービスのリモート デバッグを有効にしても、パフォーマンスが低下したり、追加料金が発生したりすることはありません。運用サービスでは、サービスを利用すクライアントに悪影響が生じる可能性があるため、リモート デバッグを使用しないでください。
 
->[AZURE.NOTE] When you publish a cloud service from Visual Studio, you can enable **IntelliTrace** for any roles in that service that target the .NET Framework 4 or the .NET Framework 4.5. By using **IntelliTrace**, you can examine events that occurred in a role instance in the past and reproduce the context from that time. See [Debugging a published cloud service with IntelliTrace and Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016) and [Using IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx).
+>[AZURE.NOTE] Visual Studio からクラウド サービスを発行する場合、.NET Framework 4 または .NET Framework 4.5 を対象とするサービスのどのロールに対しても **IntelliTrace** を有効にできます。**IntelliTrace** を使用すると、過去にロール インスタンスで発生したイベントを調べ、そのときのコンテキストを再現できます。[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](http://go.microsoft.com/fwlink/?LinkID=623016)に関するページ、および「[IntelliTrace の使用](https://msdn.microsoft.com/library/dd264915.aspx)」を参照してください。
 
-### <a name="to-enable-remote-debugging-for-a-cloud-service"></a>To enable remote debugging for a cloud service
+### クラウド サービスのリモート デバッグを有効にするには
 
-1. Open the shortcut menu for the Azure project, and then select **Publish**.
+1. Azure プロジェクトのショートカット メニューを開き、**[発行]** を選択します。
 
-1. Select the **Staging** environment and the **Debug** configuration.
+1. **[ステージング]** 環境と **[デバッグ]** 構成を選択します。
 
-    This is only a guideline. You can opt to run your test environments in a Production environment. However, you may adversely affect users if you enable remote debugging on the Production environment. You can choose the Release configuration, but the Debug configuration makes debugging easier.
+    これは、単なるガイドラインです。運用環境でテスト環境を実行することもできます。ただし、運用環境でリモート デバッグを有効にすると、ユーザーに悪影響が生じる可能性があります。リリース構成も選択できますが、デバッグ構成の方がデバッグは簡単です。
 
     ![Choose the Debug configuration](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746717.gif)
 
-1. Follow the usual steps, but select the **Enable Remote Debugger for all roles** check box on the **Advanced Settings** tab.
+1. 通常の手順に従います。ただし、**[詳細設定]** タブの **[すべてのロールのリモート デバッガーを有効にする]** チェック ボックスをオンにします。
 
     ![Debug Configuration](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746718.gif)
 
-### <a name="to-attach-the-debugger-to-a-cloud-service-in-azure"></a>To attach the debugger to a cloud service in Azure
+### Azure でクラウド サービスにデバッガーをアタッチするには
 
-1. In Server Explorer, expand the node for your cloud service.
+1. サーバー エクスプ ローラーで、クラウド サービスのノードを展開します。
 
-1. Open the shortcut menu for the role or role instance to which you want to attach, and then select **Attach Debugger**.
+1. アタッチ先のロールまたはロール インスタンスのショートカット メニューを開き、**[デバッガーのアタッチ]** を選択します。
 
-    If you debug a role, the Visual Studio debugger attaches to each instance of that role. The debugger will break on a breakpoint for the first role instance that runs that line of code and meets any conditions of that breakpoint. If you debug an instance, the debugger attaches to only that instance and breaks on a breakpoint only when that specific instance runs that line of code and meets the breakpoint's conditions.
+    ロールをデバッグすると、Visual Studio デバッガーによって、そのロールの各インスタンスにアタッチされます。デバッガーは、コード行を実行し、ブレーク ポイントのいずれかの条件を満たす最初のロール インスタンスのブレーク ポイントで停止します。インスタンスをデバッグすると、その特定のインスタンスがコード行を実行してブレーク ポイントの条件を満たす場合にのみ、デバッガーがそのインスタンスにのみアタッチし、ブレーク ポイントで停止します。
 
     ![Attach Debugger](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746719.gif)
 
-1. After the debugger attaches to an instance, debug as usual.The debugger automatically attaches to the appropriate host process for your role. Depending on what the role is, the debugger attaches to w3wp.exe, WaWorkerHost.exe, or WaIISHost.exe. To verify the process to which the debugger is attached, expand the instance node in Server Explorer. See [Azure Role Architecture](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) for more information about Azure processes.
+1. デバッガーがインスタンスにアタッチした後は、通常どおりにデバッグします。デバッガーは、ロールに適したホスト プロセスに自動的にアタッチします。ロール応じて、w3wp.exe、WaWorkerHost.exe、または WaIISHost.exe にアタッチします。デバッガーがアタッチされるプロセスを検証するには、サーバー エクスプローラーでインスタンス ノードを展開します。Azure プロセスの詳細については、[Azure ロールのアーキテクチャ](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx)に関するページを参照してください。
 
     ![Select code type dialog box](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-1. To identify the processes to which the debugger is attached, open the Processes dialog box by, on the menu bar, choosing Debug, Windows, Processes. (Keyboard: Ctrl+Alt+Z)To detach a specific process, open its shortcut menu, and then select **Detach Process**. Or, locate the instance node in Server Explorer, find the process, open its shortcut menu, and then select **Detach Process**.
+1. デバッガーがアタッチされているプロセスを確認するには、メニュー バーの [デバッグ]、[Windows]、[プロセス] を選択して、[プロセス] ダイアログ ボックスを開きます(キーボード: Ctrl + Alt + Z)。特定のプロセスをデタッチするには、ショートカット メニューを開き、**[プロセスのデタッチ]** を選択します。または、サーバー エクスプローラーでインスタンス ノードを特定し、プロセスを検索し、ショートカット メニューを開き、**[プロセスのデタッチ]** を選択します。
 
     ![Debug Processes](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC690787.gif)
 
->[AZURE.WARNING] Avoid long stops at breakpoints when remote debugging. Azure treats a process that's stopped for longer than a few minutes as unresponsive and stops sending traffic to that instance. If you stop for too long, msvsmon.exe detaches from the process.
+>[AZURE.WARNING] リモート デバッグ時、ブレークポイントで長時間停止させることは避けてください。Azure では、プロセスの停止時間が数分を超えるとプロセスを応答不能と見なし、そのインスタンスへのトラフィック送信を停止します。停止時間が長くなると、msvsmon.exe はプロセスからデタッチされます。
 
-To detach the debugger from all processes in your instance or role, open the shortcut menu for the role or instance that you're debugging, and then select **Detach Debugger**.
+インスタンスまたはロールのすべてのプロセスからデバッガーをデタッチするには、デバッグ対象のロールまたはインスタンスのショートカット メニューを開き、**[デバッガーのデタッチ]** を選択します。
 
-## <a name="limitations-of-remote-debugging-in-azure"></a>Limitations of remote debugging in Azure
+## Azure でのリモート デバッグの制限
 
-From Azure SDK 2.3, remote debugging has the following limitations.
+Azure SDK 2.3 以降、リモート デバッグには次の制限があります。
 
-- With remote debugging enabled, you can't publish a cloud service in which any role has more than 25 instances.
+- リモート デバッグを有効にすると、インスタンス数が 25 を超えるロールではクラウド サービスを発行できません。
 
-- The debugger uses ports 30400 to 30424, 31400 to 31424 and 32400 to 32424. If you try to use any of these ports, you won't be able to publish your service, and one of the following error messages will appear in the activity log for Azure: 
+- デバッガーで使用されるポートは、30400 ～ 30424、31400 ～ 31424、および 32400 ～ 32424 です。これらのポートを使用しようとすると、サービスの発行はできず、次のいずれかのエラー メッセージが Azure のアクティビティ ログに出力されます。
 
-    - Error validating the .cscfg file against the .csdef file. 
-    The reserved port range 'range' for endpoint Microsoft.WindowsAzure.Plugins.RemoteDebugger.Connector of role 'role' overlaps with an already defined port or range.
-    - Allocation failed. Please retry later, try reducing the VM size or number of role instances, or try deploying to a different region.
+    - .csdef ファイルに対して .cscfg ファイルを検証しているときにエラーが発生しました。ロール 'ロール' エンドポイント Microsoft.WindowsAzure.Plugins.RemoteDebugger.Connector の予約されたポート範囲 '範囲' は、定義済みのポートまたは範囲と重複しています。
+    - 割り当てに失敗しました。後で再試行するか、VM のサイズまたはロール インスタンスの数を減らすか、別のリージョンにデプロイしてみてください。
 
 
-## <a name="debugging-azure-virtual-machines"></a>Debugging Azure virtual machines
+## Azure 仮想マシンをデバッグする
 
-You can debug programs that run on Azure virtual machines by using Server Explorer in Visual Studio. When you enable remote debugging on an Azure virtual machine, Azure installs the remote debugging extension on the virtual machine. Then, you can attach to processes on the virtual machine and debug as you normally would.
+Azure 仮想マシンで実行されているプログラムをデバッグするには、Visual Studio のサーバー エクスプローラーを使用します。Azure 仮想マシンでリモート デバッグを有効にすると、仮想マシンにリモート デバッグ拡張機能がインストールされます。インストール後は、仮想マシンのプロセスにアタッチし、通常どおりデバッグすることができます。
 
->[AZURE.NOTE] Virtual machines created through the Azure resource manager stack can be remotely debugged by using Cloud Explorer in Visual Studio 2015. For more information, see [Managing Azure Resources with Cloud Explorer](http://go.microsoft.com/fwlink/?LinkId=623031).
+>[AZURE.NOTE] Azure リソース マネージャー スタックを通して作成した仮想マシンについては、Visual Studio 2015 のクラウド エクスプローラーを使用して、リモートでデバッグできます。詳細については、[クラウド エクスプローラーを使用した Azure リソースの管理](http://go.microsoft.com/fwlink/?LinkId=623031)に関するページを参照してください。
 
-### <a name="to-debug-an-azure-virtual-machine"></a>To debug an Azure virtual machine
+### Azure 仮想マシンをデバッグするには
 
-1. In Server Explorer, expand the Virtual Machines node and select the node of the virtual machine that you want to debug.
+1. サーバー エクスプローラーで、Virtual Machines ノードを展開し、デバッグする仮想マシンのノードを選択します。
 
-1. Open the context menu and select **Enable Debugging**. When asked if you're sure if you want to enable debugging on the virtual machine, select **Yes**.
+1. コンテキスト メニューを開き、**[デバッグを有効にする]** を選択します。仮想マシンでデバッグを有効にすることを確認するメッセージが表示されたら、**[はい]** を選択します。
 
-    Azure installs the remote debugging extension on the virtual machine to enable debugging.
+    仮想マシンにリモート デバッグ拡張機能がインストールされ、デバッグが有効になります。
 
     ![Virtual machine enable debugging command](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
 
     ![Azure activity log](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
 
-1. After the remote debugging extension finishes installing, open the virtual machine's context menu and select **Attach Debugger...**
+1. リモート デバッグ拡張機能のインストールが完了したら、仮想マシンのコンテキスト メニューを開き、**[デバッガーのアタッチ...]** を選択します。
 
-    Azure gets a list of the processes on the virtual machine and shows them in the Attach to Process dialog box.
+    Azure は、仮想マシンのプロセスの一覧を取得し、[プロセスにアタッチ] ダイアログ ボックスに表示します。
 
     ![Attach debugger command](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-1. In the **Attach to Process** dialog box, select **Select** to limit the results list to show only the types of code you want to debug. You can debug 32- or 64-bit managed code, native code, or both.
+1. **[プロセスにアタッチ]** ダイアログ ボックスで、**[選択]** を選択し、デバッグするコードの種類のみが表示されるように結果リストを制限します。32 ビットまたは 64 ビット マネージ コードとネイティブ コードのいずれかまたは両方をデバッグできます。
 
     ![Select code type dialog box](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-1. Select the processes you want to debug on the virtual machine and then select **Attach**. For example, you might choose the w3wp.exe process if you wanted to debug a web app on the virtual machine. See [Debug One or More Processes in Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) and [Azure Role Architecture](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx) for more information.
+1. 仮想マシンでデバッグするプロセスを選択し、**[アタッチ]** を選択します。たとえば、仮想マシンで Web アプリをデバッグする場合は、w3wp.exe プロセスを選択できます。詳細については、「[Visual Studio での 1 つ以上のプロセスのデバッグ](https://msdn.microsoft.com/library/jj919165.aspx)」および [Azure ロールのアーキテクチャ](http://blogs.msdn.com/b/kwill/archive/2011/05/05/windows-azure-role-architecture.aspx)に関するページを参照してください。
 
-## <a name="create-a-web-project-and-a-virtual-machine-for-debugging"></a>Create a web project and a virtual machine for debugging
+## デバッグ用の Web プロジェクトと仮想マシンを作成する
 
-Before publishing your Azure project, you might find it useful to test it in a contained environment that supports debugging and testing scenarios, and where you can install testing and monitoring programs. One way to do this is to remotely debug your app on a virtual machine.
+Azure プロジェクトを発行する前に、デバッグとテストのシナリオをサポートし、テストおよびモニタリング プログラムをインストールできる環境でテストすることをお勧めします。実行方法の 1 つは、仮想マシンでアプリケーションをリモート デバッグすることです。
 
-Visual Studio ASP.NET projects offer an option to create a handy virtual machine that you can use for app testing. The virtual machine includes commonly-needed endpoints such as PowerShell, remote desktop, and WebDeploy.
+Visual Studio ASP.NET プロジェクトでは、アプリケーションのテストに使用できる便利な仮想マシンを作成するオプションを用意しています。仮想マシンには、一般的な必要なエンドポイント (PowerShell、リモート デスクトップ、WebDeploy など) が含まれています。
 
-### <a name="to-create-a-web-project-and-a-virtual-machine-for-debugging"></a>To create a web project and a virtual machine for debugging
+### デバッグ用の Web プロジェクトと仮想マシンを作成するには
 
-1. In Visual Studio, create a new ASP.NET Web Application.
+1. Visual Studio で、新しい ASP.NET Web アプリケーションを作成します。
 
-1. In the New ASP.NET Project dialog, in the Azure section, choose **Virtual Machine** in the dropdown list box. Leave the **Create remote resources** check box selected. Select **OK** to proceed.
+1. [新しい ASP.NET プロジェクト] ダイアログの [Azure] セクションのドロップダウン リスト ボックスで、**[仮想マシン]** を選択します。**[リモート リソースを作成する]** チェック ボックスはオンのままにします。**OK** を選択して続行します。
 
-    The **Create virtual machine on Azure** dialog box appears.
+    **[Azure での仮想マシンの作成]** ダイアログ ボックスが表示されます。
 
 
     ![Create ASP.NET web project dialog box](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746723.png)
 
-    **Note:** You'll be asked to sign in to your Azure account if you're not already signed in.
+    **注:** まだ Azure アカウントにサインインしていない場合は、サインインするように求められます。
 
-1. Select the various settings for the virtual machine and then select **OK**. See [Virtual Machines]( http://go.microsoft.com/fwlink/?LinkId=623033) for more information.
+1. 仮想マシンのさまざまな設定を選択し、**[OK]** を選択します。詳細については、「[Virtual Machines](http://go.microsoft.com/fwlink/?LinkId=623033)」を参照してください。
 
-    The name you enter for DNS name will be the name of the virtual machine. 
+    DNS 名として入力した名前は、仮想マシンの名前になります。
 
     ![Create virtual machine on Azure dialog box](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746724.png)
 
-    Azure creates the virtual machine and then provisions and configures the endpoints, such as Remote Desktop and Web Deploy
+    Azure によって仮想マシンが作成され、エンドポイント (リモート デスクトップや Web 配置など) のプロビジョニングと構成が行われます。
 
 
 
-1. After the virtual machine is fully configured, select the virtual machine’s node in Server Explorer.
+1. 仮想マシンの構成が完了したら、サーバー エクスプローラーで仮想マシンのノードを選択します。
 
-1. Open the context menu and select **Enable Debugging**. When asked if you're sure if you want to enable debugging on the virtual machine, select **Yes**. 
+1. コンテキスト メニューを開き、**[デバッグを有効にする]** を選択します。仮想マシンでデバッグを有効にすることを確認するメッセージが表示されたら、**[はい]** を選択します。
 
-    Azure installs the remote debugging extension to the virtual machine to enable debugging.
+    仮想マシンにリモート デバッグ拡張機能がインストールされ、デバッグが有効になります。
 
     ![Virtual machine enable debugging command](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746720.png)
 
     ![Azure activity log](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746721.png)
 
-1. Publish your project as outlined in [How to: Deploy a Web Project Using One-Click Publish in Visual Studio](https://msdn.microsoft.com/library/dd465337.aspx). Because you want to debug on the virtual machine, on the **Settings** page of the **Publish Web** wizard, select **Debug** as the configuration. This makes sure that code symbols are available while debugging.
+1. [Visual Studio でワンクリック発行を使用して Web プロジェクトをデプロイする方法](https://msdn.microsoft.com/library/dd465337.aspx)に関するページの説明に従って、プロジェクトを発行します。ここでは、仮想マシンでデバッグするため、**Web の発行**ウィザードの **[設定]** ページで、構成として **[デバッグ]** を選択します。このように設定することで、デバッグ中もコードのシンボルを使用できます。
 
     ![Publish settings](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718349.png)
 
-1. In the **File Publish Options**, select **Remove additional files at destination** if the project was already deployed at an earlier time.
+1. プロジェクトが既にデプロイされている場合は、**[ファイルの発行オプション]** で **[転送先で追加のファイルを削除します。]** をオンにします。
 
-1. After the project publishes, on the virtual machine's context menu in Server Explorer, select **Attach Debugger...**
+1. プロジェクトを発行したら、サーバー エクスプローラーで仮想マシンのコンテキスト メニューを開き、**[デバッガーのアタッチ...]** を選択します。
 
-    Azure gets a list of the processes on the virtual machine and shows them in the Attach to Process dialog box.
+    Azure は、仮想マシンのプロセスの一覧を取得し、[プロセスにアタッチ] ダイアログ ボックスに表示します。
 
     ![Attach debugger command](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC746722.png)
 
-1. In the **Attach to Process** dialog box, select **Select** to limit the results list to show only the types of code you want to debug. You can debug 32- or 64-bit managed code, native code, or both.
+1. **[プロセスにアタッチ]** ダイアログ ボックスで、**[選択]** を選択し、デバッグするコードの種類のみが表示されるように結果リストを制限します。32 ビットまたは 64 ビット マネージ コードとネイティブ コードのいずれかまたは両方をデバッグできます。
 
     ![Select code type dialog box](./media/vs-azure-tools-debug-cloud-services-virtual-machines/IC718346.png)
 
-1. Select the processes you want to debug on the virtual machine and then select **Attach**. For example, you might choose the w3wp.exe process if you wanted to debug a web app on the virtual machine. See [Debug One or More Processes in Visual Studio](https://msdn.microsoft.com/library/jj919165.aspx) for more information.
+1. 仮想マシンでデバッグするプロセスを選択し、**[アタッチ]** を選択します。たとえば、仮想マシンで Web アプリをデバッグする場合は、w3wp.exe プロセスを選択できます。詳細については、「[Visual Studio での 1 つ以上のプロセスのデバッグ](https://msdn.microsoft.com/library/jj919165.aspx)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Use **Intellitrace** to collect a log of calls and events from a release server. See [Debugging a Published Cloud Service with IntelliTrace and Visual Studio](http://go.microsoft.com/fwlink/?LinkID=623016).
-- Use **Azure Diagnostics** to log detailed information from code running within roles, whether the roles are running in the development environment or in Azure. See [Collecting logging data by using Azure Diagnostics](http://go.microsoft.com/fwlink/p/?LinkId=400450).
+- **Intellitrace** を使用して、リリース サーバーから呼び出しおよびイベントのログを収集します。[IntelliTrace および Visual Studio を使用した発行済みのクラウド サービスのデバッグ](http://go.microsoft.com/fwlink/?LinkID=623016)に関するページを参照してください。
+- **Azure 診断**を使用して、ロールが開発環境と Azure のどちらで実行されているかにかかわらず、ロール内で実行されているコードの詳細な情報をログに記録します。「[Azure 診断を使用したログ データの収集](http://go.microsoft.com/fwlink/p/?LinkId=400450)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

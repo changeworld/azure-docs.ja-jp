@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Analyze data with Azure Machine Learning | Microsoft Azure"
-   description="Use Azure Machine Learning to build a predictive machine learning model based on data stored in Azure SQL Data Warehouse."
+   pageTitle="Azure Machine Learning を使用したデータの分析 | Microsoft Azure"
+   description="Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="kevinvngo"
@@ -16,34 +16,33 @@
    ms.date="09/14/2016"
    ms.author="kevin;barbkess;sonyama"/>
 
-
-# <a name="analyze-data-with-azure-machine-learning"></a>Analyze data with Azure Machine Learning
+# Azure Machine Learning を使用したデータの分析
 
 > [AZURE.SELECTOR]
 - [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 - [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 - [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md) 
+- [sqlcmd](sql-data-warehouse-get-started-connect-sqlcmd.md)
 
-This tutorial uses Azure Machine Learning to build a predictive machine learning model based on data stored in Azure SQL Data Warehouse. Specifically, this builds a targeted marketing campaign for Adventure Works, the bike shop, by predicting if a customer is likely to buy a bike or not.
+このチュートリアルでは、Azure Machine Learning を使用し、Azure SQL Data Warehouse で保存されたデータに基づいて予測機械学習モデルを構築します。具体的には、顧客が自転車を購入する可能性があるかどうかを予測することで、Adventure Works (自転車店) のターゲット マーケティング キャンペーンを作成します。
 
 > [AZURE.VIDEO integrating-azure-machine-learning-with-azure-sql-data-warehouse]
 
 
-## <a name="prerequisites"></a>Prerequisites
-To step through this tutorial, you need:
+## 前提条件
+このチュートリアルを進めるには、次が必要です。
 
-- A SQL Data Warehouse pre-loaded with AdventureWorksDW sample data. To provision this, see [Create a SQL Data Warehouse][] and choose to load the sample data. If you already have a data warehouse but do not have sample data, you can [load sample data manually][].
+- AdventureWorksDW サンプル データが事前に読み込まれた SQL Data Warehouse。これをプロビジョニングするには、[SQL Data Warehouse の作成][]に関するページを参照し、サンプル データの読み込みを選択してください。データ ウェアハウスは既にあってもサンプル データがない場合は、[サンプル データを手動で読み込む][]ことができます。
 
-## <a name="1.-get-data"></a>1. Get data
-The data is in the dbo.vTargetMail view in the AdventureWorksDW database. To read this data:
+## 1\.データを取得する
+このデータは、AdventureWorksDW データベースの dbo.vTargetMail ビューにあります。このデータを読み取るには、次の手順を実行します。
 
-1. Sign into [Azure Machine Learning studio][] and click on my experiments.
-2. Click **+NEW** and select **Blank Experiment**.
-3. Enter a name for your experiment: Targeted Marketing.
-4. Drag the **Reader** module from the modules pane into the canvas.
-5. Specify the details of your SQL Data Warehouse database in the Properties pane.
-6. Specify the database **query** to read the data of interest.
+1. [Azure Machine Learning Studio][] にサインインし、[実験] をクリックします。
+2. **[+ 新規]** をクリックし、**[空の実験]** を選択します。
+3. 実験の名前として「対象を絞ったマーケティング」と入力します。
+4. [モジュール] ウィンドウから **[リーダー]** モジュールをキャンバスにドラッグします。
+5. [プロパティ] ウィンドウで、SQL Data Warehouse データベースの詳細を指定します。
+6. 目的のデータを読み取るためのデータベース **クエリ**を指定します。
 
 ```sql
 SELECT [CustomerKey]
@@ -65,66 +64,55 @@ SELECT [CustomerKey]
 FROM [dbo].[vTargetMail]
 ```
 
-Run the experiment by clicking **Run** under the experiment canvas.
-![Run the experiment][1]
+実験キャンバスの下にある **[実行]** をクリックして、実験を実行します。![実験を実行する][1]
 
 
-After the experiment finishes running successfully, click the output port at the bottom of the Reader module and select **Visualize** to see the imported data.
-![View imported data][3]
+実験の実行が正常に終了したら、[リーダー] モジュールの下部にある出力ポートをクリックし、**[視覚化]** を選択して、インポートしたデータを表示します。![インポート済みデータを表示する][3]
 
 
-## <a name="2.-clean-the-data"></a>2. Clean the data
-To clean the data, drop some columns that are not relevant for the model. To do this:
+## 2\.データを整理する
+データを整理するには、モデルとの関連性が低い列をいくつか削除します。これを行うには、次の手順を実行します。
 
-1. Drag the **Project Columns** module into the canvas.
-2. Click **Launch column selector** in the Properties pane to specify which columns you wish to drop.
-![Project Columns][4]
+1. **[プロジェクト列]** モジュールをキャンバスにドラッグします。
+2. [プロパティ] ウィンドウの **[列セレクターの起動]** をクリックし、削除する列を指定します。![プロジェクト列][4]
 
-3. Exclude two columns: CustomerAlternateKey and GeographyKey.
-![Remove unnecessary columns][5]
+3. CustomerAlternateKey と GeographyKey の 2 つの列を除外します。![不要な列を削除する][5]
 
 
-## <a name="3.-build-the-model"></a>3. Build the model
-We will split the data 80-20: 80% to train a machine learning model and 20% to test the model. We will make use of the “Two-Class” algorithms for this binary classification problem.
+## 手順 3.モデルを構築する
+データを 80 対 20 に分割し、80% を機械学習モデルのトレーニングに、20% をモデルのテストに使用します。今回の二項分類の問題には "2 クラス" アルゴリズムを使用します。
 
-1. Drag the **Split** module into the canvas.
-2. Enter 0.8 for Fraction of rows in the first output dataset in the Properties pane.
-![Split data into training and test set][6]
-3. Drag the **Two-Class Boosted Decision Tree** module into the canvas.
-4. Drag the **Train Model** module into the canvas and specify the inputs. Then, click **Launch column selector** in the Properties pane.
-      - First input: ML algorithm.
-      - Second input: Data to train the algorithm on.
-![Connect the Train Model module][7]
-5. Select the **BikeBuyer** column as the column to predict.
-![Select Column to predict][8]
+1. **[分割]** モジュールをキャンバスにドラッグします。
+2. [プロパティ] ウィンドウの [Fraction of rows in the first output dataset (最初の出力データセットにおける列の割合)] に「0.8」と入力します。![データをトレーニング セットとテスト セットに分割する][6]
+3. **[2 クラス ブースト デシジョン ツリー]** モジュールをキャンバスにドラッグします。
+4. **[モデルのトレーニング]** モジュールをキャンバスにドラッグし、入力内容を指定します。次に、[プロパティ] ウィンドウで **[Launch column selector (列セレクターの起動)]** をクリックします。
+      - 1 つ目の入力: ML アルゴリズム。
+      - 2 つ目の入力: アルゴリズムをトレーニングするためのデータ。![[モデルのトレーニング] モジュールを接続する][7]
+5. 予測する列として **[BikeBuyer]** 列を選択します。![予測する列を選択する][8]
 
 
-## <a name="4.-score-the-model"></a>4. Score the model
-Now, we will test how the model performs on test data. We will compare the algorithm of our choice with a different algorithm to see which performs better.
+## 4\.モデルにスコアを付ける
+ここでは、テスト データに対するモデルのパフォーマンスをテストします。選択したアルゴリズムを別のアルゴリズムと比較し、どちらのパフォーマンスが優れているかを評価します。
 
-1. Drag **Score Model** module into the canvas.
-    First input: Trained model Second input: Test data ![Score the model][9]
-2. Drag the **Two-Class Bayes Point Machine** into the experiment canvas. We will compare how this algorithm performs in comparison to the Two-Class Boosted Decision Tree.
-3. Copy and Paste the modules Train Model and Score Model in the canvas.
-4. Drag the **Evaluate Model** module into the canvas to compare the two algorithms.
-5. **Run** the experiment.
-![Run the experiment][10]
-6. Click the output port at the bottom of the Evaluate Model module and click Visualize.
-![Visualize evaluation results][11]
+1. **[モデルのスコア付け]** モジュールをキャンバスにドラッグします。1 つ目の入力: トレーニング済みのモデル、2 つ目の入力: テスト データ。![モデルにスコアを付ける][9]
+2. **[2 クラスのベイズ ポイント マシン]** を実験キャンバスにドラッグします。このアルゴリズムのパフォーマンスを 2 クラスのブースト デシジョン ツリーのパフォーマンスと比較します。
+3. [モデルのトレーニング] モジュールと [モデルのスコア付け] モジュールをコピーしてキャンバスに貼り付けます。
+4. **[モデルの評価]** モジュールをキャンバスにドラッグし、2 つのアルゴリズムを比較します。
+5. 実験を**実行**します。![実験を実行する][10]
+6. [Evaluate Model (モデルの評価)] モジュールの下部にある出力ポートをクリックし、[Visualize (視覚化)] をクリックします。![評価結果を視覚化する][11]
 
-The metrics provided are the ROC curve, precision-recall diagram and lift curve. Looking at these metrics, we can see that the first model performed better than the second one. To look at the what the first model predicted, click on output port of the Score Model and click Visualize.
-![Visualize score results][12]
+指定されているメトリックは、ROC 曲線、精度/再現率図、およびリフト曲線です。これらのメトリックを見ると、最初に実行されたモデルの方が 2 つ目のモデルよりもパフォーマンスが優れていることがわかります。1 つ目のモデルが予測した内容を確認するには、[Score Model (モデルのスコア付け)] の出力ポートをクリックし、[Visualize (視覚化)] をクリックします。![スコア結果を視覚化する][12]
 
-You will see two more columns added to your test dataset.
+テスト データセットに追加された 2 つの列が表示されます。
 
-- Scored Probabilities: the likelihood that a customer is a bike buyer.
-- Scored Labels: the classification done by the model – bike buyer (1) or not (0). This probability threshold for labeling is set to 50% and can be adjusted.
+- スコア付け確率: 顧客が自転車を購入する可能性
+- スコア付けラベル: モデルによって行われた分類 - 自転車を購入する顧客 (1) か、購入しない顧客 (0)このラベル付けの確率のしきい値は 50% に設定されており、調整できます。
 
-Comparing the column BikeBuyer (actual) with the Scored Labels (prediction), you can see how well the model has performed. As next steps, you can use this model to make predictions for new customers and publish this model as a web service or write results back to SQL Data Warehouse.
+[BikeBuyer] 列 (実際) をスコア付けラベル (予測) と比較すると、モデルのパフォーマンスがどの程度優れていたかを評価できます。次のステップとして、このモデルを使用して新規顧客の予測を行い、Web サービスとしてこのモデルを発行したり、SQL Data Warehouse に結果を書き戻したりできます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn more about building predictive machine learning models, refer to [Introduction to Machine Learning on Azure][].
+予測機械学習モデルの構築の詳細については、[Azure での機械学習の概要][]に関するページを参照してください。
 
 <!--Image references-->
 [1]: media/sql-data-warehouse-get-started-analyze-with-azure-machine-learning/img1_reader.png
@@ -142,13 +130,9 @@ To learn more about building predictive machine learning models, refer to [Intro
 
 
 <!--Article references-->
-[Azure Machine Learning studio]:https://studio.azureml.net/
-[Introduction to Machine Learning on Azure]:https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
-[load sample data manually]: sql-data-warehouse-load-sample-databases.md
-[Create a SQL Data Warehouse]: sql-data-warehouse-get-started-provision.md
+[Azure Machine Learning studio]: https://studio.azureml.net/
+[Azure での機械学習の概要]: https://azure.microsoft.com/documentation/articles/machine-learning-what-is-machine-learning/
+[サンプル データを手動で読み込む]: sql-data-warehouse-load-sample-databases.md
+[SQL Data Warehouse の作成]: sql-data-warehouse-get-started-provision.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

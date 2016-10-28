@@ -1,129 +1,122 @@
 <properties
-    pageTitle="Install a replica Active Directory domain controller in Azure  | Microsoft Azure"
-    description="A tutorial that explains how to install a domain controller from an on-premises Active Directory forest on an Azure virtual machine."
-    services="virtual-network"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure でのレプリカ Active Directory ドメイン コントローラーのインストール | Microsoft Azure"
+	description="このチュートリアルでは、Azure の仮想マシンにオンプレミス Active Directory フォレストからドメイン コントローラーをインストールする方法について説明します。"
+	services="virtual-network"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="virtual-network"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/30/2016"
-    ms.author="curtand"/>
+	ms.service="virtual-network"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/23/2016"
+	ms.author="curtand"/>
 
 
+# Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
 
-# <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Install a replica Active Directory domain controller in an Azure virtual network
+このトピックでは、Azure の仮想ネットワークの Azure 仮想マシン (VM) 上に、内部設置型 Active Directory ドメインの追加のドメイン コントローラー (レプリカ DC とも呼ばれます) をインストールする方法を説明します。
 
-This topic shows how to install additional domain controllers (also known as replica DCs) for an on-premises Active Directory domain on Azure virtual machines (VMs) in an Azure virtual network.
+必要に応じて次の関連するトピックもご覧ください。
 
-You might also be interested in these related topics:
-
--  You can optionally install a new Active Directory forest on an Azure virtual network. For those steps, see [Install a new Active Directory forest on an Azure virtual network](../active-directory/active-directory-new-forest-virtual-machine.md).
--  For conceptual guidance about installing Active Directory Domain Services (AD DS) on an Azure virtual network, see [Guidelines for Deploying Windows Server Active Directory on Azure Virtual Machines](https://msdn.microsoft.com/library/azure/jj156090.aspx).
-
-
-## <a name="scenario-diagram"></a>Scenario diagram
-
-In this scenario, external users need to access applications that run on domain-joined servers. The VMs that run the application servers and the replica DCs are installed in an Azure virtual network. The virtual network can be connected to the on-premises network by a [site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) connection, as shown in the following diagram, or you can use [ExpressRoute](../expressroute/expressroute-locations-providers.md) for a faster connection.
-
-The application servers and the DCs are deployed within separate cloud services to distribute compute processing and within [availability sets](../virtual-machines/virtual-machines-windows-manage-availability.md) for improved fault tolerance.
-The DCs replicate with each other and with on-premises DCs by using Active Directory replication. No synchronization tools are needed.
-
-![Diagram pf replica Active Directory domain controller an Azure vnet][1]
-
-## <a name="create-an-active-directory-site-for-the-azure-virtual-network"></a>Create an Active Directory site for the Azure virtual network
-
-It’s a good idea to create a site in Active Directory that represents the network region corresponding to the virtual network. That helps optimize authentication, replication, and other DC location operations. The following steps explain how to create a site, and for more background, see [Adding a New Site](https://technet.microsoft.com/library/cc781496.aspx).
-
-1. Open Active Directory Sites and Services: **Server Manager** > **Tools** > **Active Directory Sites and Services**.
-2. Create a site to represent the region where you created an Azure virtual network: click **Sites** > **Action** > **New site** > type the name of the new site, such as Azure US West > select a site link > **OK**.
-3. Create a subnet and associate with the new site: double-click **Sites** > right-click **Subnets** > **New subnet** > type the IP address range of the virtual network (such as 10.1.0.0/16 in the scenario diagram) > select the new Azure site > **OK**.
-
-## <a name="create-an-azure-virtual-network"></a>Create an Azure virtual network
-
-1. In the [Azure classic portal](https://manage.windowsazure.com), click **New** > **Network Services** > **Virtual Network** > **Custom Create** and use the following values to complete the wizard.
-
-    On this wizard page…  | Specify these values
-    ------------- | -------------
-    **Virtual Network Details**  | <p>Name: Type a name for the virtual network, such as WestUSVNet.</p><p>Region: Choose the closest region.</p>
-    **DNS and VPN connectivity**  | <p>DNS Servers: Specify the name and IP address of one or more on-premises DNS servers.</p><p>Connectivity: Select **Configure a site-to-site VPN**.</p><p>Local network: Specify a new local network.</p><p>If you are using ExpressRoute instead of a VPN, see [Configure an ExpressRoute Connection through an Exchange Provider](../expressroute/expressroute-locations-providers.md).</p>
-    **Site-to-site connectivity**  | <p>Name: Type a name for the on-premises network.</p><p>VPN Device IP address: Specify the public IP address of the device that will connect to the virtual network. The VPN device cannot be located behind a NAT.</p><p>Address: Specify the address ranges for your on-premises network (such as 192.168.0.0/16 in the scenario diagram).</p>
-    **Virtual network address spaces**  | <p>Address Space: Specify the IP address range for VMs that you want to run in the Azure virtual network (such as 10.1.0.0/16 in the scenario diagram). This address range cannot overlap with the address ranges of the on-premises network.</p><p>Subnets: Specify a name and address for a subnet for the application servers (such as Frontend, 10.1.1.0/24) and for the DCs (such as Backend, 10.1.2.0/24).</p><p>Click **add gateway subnet**.</p>
-
-2. Next, you'll configure the virtual network gateway to create a secure site-to-site VPN connection. See [Configure a Virtual Network Gateway](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md) for the instructions.
-3. Create the site-to-site VPN connection between the new virtual network and an on-premises VPN device. See [Configure a Virtual Network Gateway](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md) for the instructions.
+-  オプションで、Azure の仮想ネットワーク上に新しい Active Directory フォレストをインストールすることもできます。これらの手順については、「[Azure の仮想ネットワークでの Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)」をご覧ください。
+-  Azure の仮想ネットワークに Active Directory ドメイン サービス (AD DS) をインストールする方法に関する概念的なガイダンスについては、「[Azure Virtual Machines での Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
 
 
-## <a name="create-azure-vms-for-the-dc-roles"></a>Create Azure VMs for the DC roles
+## シナリオ図
 
-Repeat the following steps to create VMs to host the DC role as needed. You should deploy at least two virtual DCs to provide fault tolerance and redundancy. If the Azure virtual network includes at least two DCs that are similarly configured (that is, they are both GCs, run DNS server, and neither holds any FSMO role, and so on) then place the VMs that run those DCs in an availability set for improved fault tolerance.
-To create the VMs by using Windows PowerShell instead of the UI, see [Use Azure PowerShell to create and preconfigure Windows-based Virtual Machines](../virtual-machines/virtual-machines-windows-classic-create-powershell.md).
+このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。アプリケーション サーバーとレプリカ DC を実行する VM は、Azure の仮想ネットワーク内にインストールされています。次の図に示すように、仮想ネットワークは[サイト間 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) 接続で、オンプレミス ネットワークに接続できます。また、接続を高速化するために、[ExpressRoute](../../services/expressroute/) を使用することもできます。
 
-1. In the [Azure classic portal](https://manage.windowsazure.com), click **New** > **Compute** > **Virtual Machine** > **From Gallery**. Use the following values to complete the wizard. Accept the default value for a setting unless another value is suggested or required.
+アプリケーション サーバーと DC は、コンピューティング処理を分散するために別々のクラウド サービス内にデプロイされます。また、フォールト トレランスを強化するために[可用性セット](../virtual-machines/virtual-machines-windows-manage-availability.md)内にデプロイされます。DC は、Active Directory レプリケーションを使用して、DC 同士で相互にレプリケートします。また、オンプレミス DC でレプリケートされます。同期ツールは必要ありません。
 
-    On this wizard page…  | Specify these values
-    ------------- | -------------
-    **Choose an Image**  | Windows Server 2012 R2 Datacenter
-    **Virtual Machine Configuration**  | <p>Virtual Machine Name: Type a single label name (such as AzureDC1).</p><p>New User Name: Type the name of a user. This user will be a member of the local Administrators group on the VM. You will need this name to sign in to the VM for the first time. The built-in account named Administrator will not work.</p><p>New Password/Confirm: Type a password</p>
-    **Virtual Machine Configuration**  | <p>Cloud Service: Choose <b>Create a new cloud service</b> for the first VM and select that same cloud service name when you create more VMs that will host the DC role.</p><p>Cloud Service DNS Name: Specify a globally unique name</p><p>Region/Affinity Group/Virtual Network: Specify the virtual network name (such as WestUSVNet).</p><p>Storage Account: Choose <b>Use an automatically generated storage account</b> for the first VM and then select that same storage account name when you create more VMs that will host the DC role.</p><p>Availability Set: Choose <b>Create an availability set</b>.</p><p>Availability set name: Type a name for the availability set when you create the first VM and then select that same name when you create more VMs.</p>
-    **Virtual Machine Configuration**  | <p>Select <b>Install the VM Agent</b> and any other extensions you need.</p>
-2. Attach a disk to each VM that will run the DC server role. The additional disk is needed to store the AD database, logs, and SYSVOL. Specify a size for the disk (such as 10 GB) and leave the **Host Cache Preference** set to **None**. For the steps, see [How to Attach a Data Disk to a Windows Virtual Machine](../virtual-machines/virtual-machines-windows-classic-attach-disk.md).
-3. After you first sign in to the VM, open **Server Manager** > **File and Storage Services** to create a volume on this disk using NTFS.
-4. Reserve a static IP address for VMs that will run the DC role. To reserve a static IP address, download the Microsoft Web Platform Installer and [install Azure PowerShell](../powershell-install-configure.md) and run the Set-AzureStaticVNetIP cmdlet. For example:
+![Azure vnet におけるレプリカ Active Directory ドメイン コントローラーの図][1]
+
+## Azure の仮想ネットワークの Active Directory サイトを作成する
+
+仮想ネットワークに対応するネットワーク地域の Active Directory にサイトを作成することをお勧めします。認証、レプリケーション、他の DC の検出オペレーションが最適化されます。次の手順では、サイトの作成方法を説明しています。背景情報については、「[Adding a New Site (新しいサイトの追加)](https://technet.microsoft.com/library/cc781496.aspx)」をご覧ください。
+
+1. **[サーバー マネージャー]**、**[ツール]**、**[Active Directory サイトとサービス]** の順に選択して、Active Directory サイトとサービスを開きます。
+2. Azure Virtual Network を作成したリージョンを表すサイトを作成します。**[サイト]**、**[アクション]**、**[新しいサイト]** の順にクリックし、「Azure US West」などの新しいサイトの名前を入力して、サイト リンクを選択し、**[OK]** をクリックします。
+3. サブネットを作成し、新しいサイトに関連付けます。**[サイト]** をダブルクリックして、**[サブネット]** を右クリックし、**[新しいサブネット]** をクリックして、仮想ネットワークの IP アドレスの範囲 (例: シナリオ図の 10.1.0.0/16) を入力し、新しい Azure サイトを選択して、**[OK]** をクリックします。
+
+## Azure の仮想ネットワークを作成する
+
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規]**、**[Network Services]**、**[Virtual Network]**、**[カスタム作成]** の順にクリックし、次の値を使用して、ウィザードを完了します。
+
+    ウィザードのページ | 指定する値
+	------------- | -------------
+	**仮想ネットワークの詳細** | <p>名前: 「WestUSVNet」などの仮想ネットワークの名前を入力します。</p><p>リージョン: 最寄りのリージョンを選択します。</p>
+	**DNS と VPN 接続** | <p>DNS サーバー: 1 つまたは複数の内部設置型 DNS サーバーの名前と IP アドレスを指定します。</p><p>接続: **[サイト間 VPN の構成]** を選択します。</p><p>ローカル ネットワーク: 新しいローカル ネットワークを指定します。</p><p>VPN ではなく ExpressRoute を使用している場合は、「[Exchange プロバイダーを通じて ExpressRoute 接続を構成する](../expressroute/expressroute-configuring-exps.md)」をご覧ください。</p>
+	**サイト間接続** | <p>名前: オンプレミス ネットワークの名前を入力します。</p><p>VPN デバイスの IP アドレス: 仮想ネットワークに接続するデバイスのパブリック IP アドレスを指定します。VPN デバイスは NAT の内側に配置することはできません。</p><p>アドレス: 内部設置型ネットワークのアドレスの範囲 (例: シナリオ図の 192.168.0.0/16) を指定します。</p>
+	**仮想ネットワーク アドレス空間** | <p>アドレス空間: Azure の仮想ネットワークで実行する VM のIP アドレスの範囲 (例: シナリオ図の 10.1.0.0/16) を指定します。このアドレス範囲を、内部設置型ネットワークのアドレスの範囲と重複させることはできません。</p><p>サブネット: アプリケーション サーバーのサブネットの名前とアドレス (例: Frontend、10.1.1.0/24) と、DC のサブネットの名前とアドレス (例: Backend、10.1.2.0/24) を指定します。</p><p>**[ゲートウェイ サブネットの追加]** をクリックします。</p>
+
+2. 次に、仮想ネットワーク ゲートウェイを構成して、セキュリティで保護されたサイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)」をご覧ください。
+3. 新しい仮想ネットワークと内部設置型 VPN デバイスの間に、サイト間 VPN 接続を作成します。方法については、「[管理ポータルでの仮想ネットワーク ゲートウェイの構成](../vpn-gateway/vpn-gateway-configure-vpn-gateway-mp.md)」をご覧ください。
+
+
+## DC ロールの Azure VM を作成する
+
+次の手順を繰り返して、必要に応じて、DC ロールをホストする VM を作成します。フォールト トレランスと冗長性を確保するには 2 つ以上の仮想 DC をデプロイする必要があります。Azure の仮想ネットワークに、類似した構成の DC (いずれも GCで、DNS サーバーを実行し、FSMO ロールを保持していないなど) が 2 つ以上あると、それらの DC を実行する仮想マシンを可用性セットに置くとフォールト トレランスが向上します。UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの Virtual Machines を作成し事前構成する](../virtual-machines/virtual-machines-windows-classic-create-powershell.md)」を参照してください。
+
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、**[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。次の値を使用して、ウィザードを完了します。別の値が推奨されたり、要求される場合を除いては、既定の設定値を受け入れます。
+
+    ウィザードのページ | 指定する値
+	------------- | -------------
+	**イメージの選択** | Windows Server 2012 R2 Datacenter
+	**仮想マシンの構成** | <p>仮想マシン名: 単一ラベル名を入力します (AzureDC1 など)。</p><p>新しいユーザー名: ユーザーの名前を入力します。このユーザーは、VM 上のローカルの Administrators グループのメンバーになります。最初に VM にサインインするときは、この名前でサインインする必要があります。Administrator という名前の組み込みのアカウントは機能しません。</p><p>。新しいパスワード/確認入力: パスワードを入力します。</p>
+	**仮想マシンの構成** | <p>クラウド サービス: 1 台目の VM の作成時には <b>[新しいクラウド サービスの作成]</b> を選択します。DC ロールをホストする VM の追加作成時には、1 台目の VM と同じクラウド サービス名を選択します。</p><p>クラウド サービス DNS 名: グローバルに一意の名前を指定します。</p><p>リージョン/アフィニティ グループ/仮想ネットワーク: 仮想ネットワーク名 (例: WestUSVNet) を指定します。</p><p>ストレージ アカウント: 1 台目の VM の作成時には <b>[自動的に生成されたストレージ アカウントを使用]</b> を選択します。DC ロールをホストする VM の追加作成時には、1 台目の VM と同じストレージ アカウント名を選択します。</p><p>可用性セット: <b>[可用性セットの作成]</b> を選択します。</p><p>可用性セット名: 1 台目の VM の作成時に、可用性セットの名前を入力します。その後、VM を追加で作成するときには、1 台目の VM と同じ可用性セット名を選択します。</p>
+	**仮想マシンの構成** | <p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p>
+2. DC サーバーのロールを実行する各 VM にディスクを接続します。AD データベース、ログ、SYSVOL を格納するには、追加のディスクが必要です。ディスクのサイズを指定して (10 GB など)、**[ホスト キャッシュ設定]** は **[None]** のままにします。手順については、「[データ ディスクを Windows 仮想マシンに追加する方法](../virtual-machines/virtual-machines-windows-classic-attach-disk.md)」を参照してください。
+3. 初めて VM にサインインした後、**[サーバー マネージャー]**、**[ファイル サービスとストレージ サービス]** の順に開いて、NTFS を使用してこのディスクにボリュームを作成します。
+4. DC ロールを実行する VM の静的 IP アドレスを予約します。静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、[Azure PowerShell をインストール](../powershell-install-configure.md)し、Set-AzureStaticVNetIP コマンドレットを実行します。次に例を示します。
 
     'Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
 
-For more information about setting a static IP address, see [Configure a Static Internal IP Address for a VM](../virtual-network/virtual-networks-reserved-private-ip.md).
+静的 IP アドレスを設定する方法の詳細については、「[VM 用の静的内部 IP アドレスを構成する](../virtual-network/virtual-networks-reserved-private-ip.md)」をご覧ください。
 
-## <a name="install-ad-ds-on-azure-vms"></a>Install AD DS on Azure VMs
+## Azure VM に AD DS をインストールする
 
-Sign in to a VM and verify that you have connectivity across the site-to-site VPN or ExpressRoute connection to resources on your on-premises network. Then install AD DS on the Azure VMs. You can use same process that you use to install an additional DC on your on-premises network (UI, Windows PowerShell, or an answer file). As you install AD DS, make sure you specify the new volume for the location of the AD database, logs and SYSVOL. If you need a refresher on AD DS installation, see  [Install Active Directory Domain Services (Level 100)](https://technet.microsoft.com/library/hh472162.aspx) or [Install a Replica Windows Server 2012 Domain Controller in an Existing Domain (Level 200)](https://technet.microsoft.com/library/jj574134.aspx).
+VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続で、オンプレミス ネットワーク上のリソースに接続できることを確認します。次に、Azure VM に AD DS をインストールします。オンプレミス ネットワーク上に追加の DC をインストールするために使用するのと同じプロセス (UI、Windows PowerShell、応答ファイル) を使用できます。AD DS をインストールするときには、AD データベース、ログ、SYSVOL の場所の新しいボリュームを必ず指定します。AD DS のインストール方法がわからない場合は、「[Active Directory ドメイン サービスをインストールする (レベル 100)](https://technet.microsoft.com/library/hh472162.aspx)」、または、「[Windows Server 2012 のレプリカ ドメイン コントローラーを既存のドメインにインストールする (レベル 200)](https://technet.microsoft.com/library/jj574134.aspx)」をご覧ください。
 
-## <a name="reconfigure-dns-server-for-the-virtual-network"></a>Reconfigure DNS server for the virtual network
+## 仮想ネットワークの DNS サーバーを再構成する
 
-1. In the [Azure classic portal](https://manage.windowsazure.com), click the name of the virtual network, and then click the **Configure** tab to [reconfigure the DNS server IP addresses for your virtual network](../virtual-network/virtual-networks-manage-dns-in-vnet.md) to use the static IP addresses assigned to the replica DCs instead of the IP addresses of an on-premises DNS servers.
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、仮想ネットワークの名前をクリックし、次に **[構成]** タブをクリックして、[仮想ネットワークの DNS サーバーの IP アドレスを再構成](../virtual-network/virtual-networks-manage-dns-in-vnet.md)し、オンプレミス DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用します。
 
-2. To ensure that all the replica DC VMs on the virtual network are configured with to use DNS servers on the virtual network, click **Virtual Machines**, click the status column for each VM, and then click **Restart**. Wait until the VM shows **Running** state before you try to sign into it.
+2. 仮想ネットワークのすべてのレプリカ DC VM が仮想ネットワーク上の DNS サーバーを使用するように構成されていることを確認には、**[仮想マシン]** クリックし、VM ごとの [状態] 列をクリックして、**[再起動]** をクリックします。サインインする前に、VM で**実行**状態が表示されるまで待機します。
 
-## <a name="create-vms-for-application-servers"></a>Create VMs for application servers
+## アプリケーション サーバー用の VM を作成する
 
-1. Repeat the following steps to create VMs to run as application servers. Accept the default value for a setting unless another value is suggested or required.
+1. 次の手順を繰り返して、アプリケーション サーバーとして実行するように VM を設定します。別の値が推奨されたり、要求される場合を除いては、既定の設定値を受け入れます。
 
-    On this wizard page…  | Specify these values
-    ------------- | -------------
-    **Choose an Image**  | Windows Server 2012 R2 Datacenter
-    **Virtual Machine Configuration**  | <p>Virtual Machine Name: Type a single label name (such as  AppServer1).</p><p>New User Name: Type the name of a user. This user will be a member of the local Administrators group on the VM. You will need this name to sign in to the VM for the first time. The built-in account named Administrator will not work.</p><p>New Password/Confirm: Type a password</p>
-    **Virtual Machine Configuration**  | <p>Cloud Service: Choose **Create a new cloud service** for the first VM and select that same cloud service name when you create more VMs that will host the application.</p><p>Cloud Service DNS Name: Specify a globally unique name</p><p>Region/Affinity Group/Virtual Network: Specify the virtual network name (such as WestUSVNet).</p><p>Storage Account: Choose **Use an automatically generated storage account** for the first VM and then select that same storage account name when you create more VMs that will host the application.</p><p>Availability Set: Choose **Create an availability set**.</p><p>Availability set name: Type a name for the availability set when you create the first VM and then select that same name when you create more VMs.</p>
-    **Virtual Machine Configuration**  | <p>Select <b>Install the VM Agent</b> and any other extensions you need.</p>
+	ウィザードのページ | 指定する値
+	------------- | -------------
+	**イメージの選択** | Windows Server 2012 R2 Datacenter
+	**仮想マシンの構成** | <p>仮想マシン名: 単一ラベルの名前 (例: AppServer1) を入力します。</p><p>新しいユーザー名: ユーザーの名前を入力します。このユーザーは、VM 上のローカルの Administrators グループのメンバーになります。最初に VM にサインインするときは、この名前でサインインする必要があります。Administrator という名前の組み込みのアカウントは機能しません。</p><p>。新しいパスワード/確認入力: パスワードを入力します。</p>
+	**仮想マシンの構成** | <p>クラウド サービス: 1 台目の VM の作成時には **[新しいクラウド サービスの作成]** を選択します。アプリケーションをホストする VM の追加作成時には、1 台目の VM と同じクラウド サービス名を選択します。</p><p>クラウド サービス DNS 名: グローバルに一意の名前を指定します。</p><p>リージョン/アフィニティ グループ/Virtual Network: 仮想ネットワーク名 (例: WestUSVNet) を指定します。</p><p>ストレージ アカウント: 1 台目の VM の作成時には **[自動的に生成されたストレージ アカウントを使用]** を選択します。アプリケーションをホストする VM の追加作成時には、1 台目の VM と同じストレージ アカウント名を選択します。</p><p>可用性セット: **[可用性セットの作成]** を選択します。</p><p>可用性セット名: 1 台目の VM の作成時に、可用性セットの名前を入力します。その後、VM を追加で作成するときには、1 台目の VM と同じ可用性セット名を選択します。</p>
+	**仮想マシンの構成** | <p><b>[VM エージェントのインストール]</b> と、必要な他の拡張機能を選択します。</p>
 
-2. After each VM is provisioned, sign in and join it to the domain. In **Server Manager**, click **Local Server** > **WORKGROUP** > **Change…** and then select **Domain** and type the name of your on-premises domain. Provide credentials of a domain user, and then restart the VM to complete the domain join.
+2. 各 VM がプロビジョニングされたら、サインインし、ドメインに参加させます。**サーバー マネージャー**で、**[ローカル サーバー]**、**[ワークグループ]**、**[変更…]** の順にクリックし、**[ドメイン]** を選択して、オンプレミス ドメインの名前を入力します。ドメイン ユーザーの資格情報を入力し、VM を再起動して、ドメインへの参加を完了します。
 
-To create the VMs by using Windows PowerShell instead of the UI, see [Use Azure PowerShell to create and preconfigure Windows-based Virtual Machines](../virtual-machines/virtual-machines-windows-classic-create-powershell.md).
+UI ではなく Windows PowerShell を使用して VM を作成する方法については、「[UAzure PowerShell を使用して Windows ベースの Virtual Machines を作成し事前構成する](../virtual-machines/virtual-machines-windows-classic-create-powershell.md)」を参照してください。
 
-For more information about using Windows PowerShell, see [Get Started with Azure Cmdlets](https://msdn.microsoft.com/library/azure/jj554332.aspx) and [Azure Cmdlet Reference](https://msdn.microsoft.com/library/azure/jj554330.aspx).
+Windows PowerShell の使い方の詳細については、「[Azure コマンドレットの概要](https://msdn.microsoft.com/library/azure/jj554332.aspx)」と「[Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)」をご覧ください。
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
--  [Guidelines for Deploying Windows Server Active Directory on Azure Virtual Machines](https://msdn.microsoft.com/library/azure/jj156090.aspx)
--  [How to upload existing on-premises Hyper-V domain controllers to Azure by using Azure PowerShell](http://support.microsoft.com/kb/2904015)
--  [Install a new Active Directory forest on an Azure virtual network](../active-directory/active-directory-new-forest-virtual-machine.md)
+-  [Azure Virtual Machines での Windows Server Active Directory の展開ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)
+-  [Azure PowerShell を使用して既存のオンプレミス ハイパー-V のドメイン コント ローラーを Azure にアップロードする方法](http://support.microsoft.com/kb/2904015)
+-  [Azure の仮想ネットワークでの Active Directory フォレストのインストール](../active-directory/active-directory-new-forest-virtual-machine.md)
 -  [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)
--  [Microsoft Azure IT Pro IaaS: (01) Virtual Machine Fundamentals](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
--  [Microsoft Azure IT Pro IaaS: (05) Creating Virtual Networks and Cross-Premises Connectivity](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
+-  [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
+-  [Microsoft Azure IT Pro IaaS: (05) 仮想ネットワークとクロスプレミス接続の作成](http://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
 -  [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
--  [Azure Management Cmdlets](https://msdn.microsoft.com/library/azure/jj152841)
+-  [Azure の管理コマンドレット](https://msdn.microsoft.com/library/azure/jj152841)
 
 <!--Image references-->
 [1]: ./media/active-directory-install-replica-active-directory-domain-controller/ReplicaDCsOnAzureVNet.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

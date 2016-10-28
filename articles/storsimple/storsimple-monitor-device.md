@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Monitor your StorSimple device | Microsoft Azure"
-   description="Describes how to use the StorSimple Manager service to monitor I/O performance, capacity utilization, network throughput, and device performance."
+   pageTitle="StorSimple デバイスを監視する | Microsoft Azure"
+   description="StorSimple Manager サービスを使用して I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンスを監視する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,126 +15,121 @@
    ms.date="08/16/2016"
    ms.author="alkohli" />
 
+# StorSimple Manager サービスを使用した StorSimple デバイスの監視 
 
-# <a name="use-the-storsimple-manager-service-to-monitor-your-storsimple-device"></a>Use the StorSimple Manager service to monitor your StorSimple device 
+## Overview
 
-## <a name="overview"></a>Overview
+StorSimple Manager サービスを使用して、StorSimple ソリューション内にある特定の StorSimple デバイスを監視できます。I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいて、カスタム グラフを作成できます。
 
-You can use the StorSimple Manager service to monitor specific devices within your StorSimple solution. You can create custom charts based on I/O performance, capacity utilization, network throughput, and device performance metrics. 
+特定のデバイスの監視情報を表示するには、Azure クラシック ポータルで、StorSimple Manager サービスを選択します。**[監視]** タブをクリックして、デバイスの一覧から選択します。**[監視]** ページには、次の情報が表示されます。
 
-To view the monitoring information for a specific device, in the Azure classic portal, select the StorSimple Manager service. Click the **Monitor** tab, and then select from the list of devices. The **Monitor** page contains the following information.
+## I/O パフォーマンス 
 
-## <a name="i/o-performance"></a>I/O performance 
+**I/O パフォーマンス**は、ホスト サーバーの iSCSI イニシエーター インターフェイスとデバイスとの間またはデバイスとクラウドとの間の読み取り操作と書き込み操作の数に関連するメトリックを追跡します。このパフォーマンスは、特定のボリューム、特定のボリューム コンテナー、またはすべてのボリューム コンテナーについて測定できます。
 
-**I/O performance** tracks metrics related to the number of read and write operations between either the iSCSI initiator interfaces on the host server and the device or the device and the cloud. This performance can be measured for a specific volume, a specific volume container, or all volume containers.
+次の図では、運用環境のデバイスの全ボリュームに対する、デバイスへのイニシエーター用 I/O を示しています。プロットされたメトリックは、1 秒あたりの読み取りと書き込みバイト数、1 秒あたりの読み取りと書き込み IO 操作、読み取りと書き込み待機時間です。
 
-The chart below shows the I/O for the initiator to your device for all the volumes for a production device. The metrics plotted are read and write bytes per second, read and write IO operations per second, and read and write latencies.
+![イニシエーターからデバイスへの IO パフォーマンス](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_InitiatorTODevice_For_AllVolumesM.png)
 
-![IO performance from initiator to device](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_InitiatorTODevice_For_AllVolumesM.png)
+同じデバイスの場合、すべてのボリューム コンテナーに対して、デバイスからクラウドのデータについて I/O 操作がプロットされます。このデバイスでは、データはリニア層のみなので、クラウドには何も書き込まれません。デバイスからクラウドへの読み取りと書き込み操作は実行されません。そのため、グラフのピークは 5 分間隔で発生し、デバイスとサービス間でハートビートが確認される頻度に対応します。
 
-For the same device, the I/O operations are plotted for the data from the device to the cloud for all the volume containers. On this device, the data is only in the linear tier and nothing has spilled to the cloud. There are no read-write operations occurring from device to the cloud. Therefore, the peaks in the chart are at an interval of 5 minutes that corresponds to the frequency at which the heartbeat is checked between the device and the service. 
-
-![IO performance from device to cloud](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_DeviceTOCloud_For_AllVolumeContainersM.png)
-
-
-For the same device, a cloud snapshot was taken for volume data starting at 2:00 pm. This resulted in data flowing from the device to the cloud. Reads-writes were served to the cloud in this duration. The IO chart shows a peak in the various metrics corresponding to the time when the snapshot was taken. 
-
-![IO performance for device to cloud after cloud snapshot](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_DeviceTOCloud_For_AllVolumeContainers2M.png)
+![デバイスからクラウドへの IO パフォーマンス](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_DeviceTOCloud_For_AllVolumeContainersM.png)
 
 
-## <a name="capacity-utilization"></a>Capacity utilization 
+同じデバイスで、午後 2 時 00 分から開始してクラウド スナップショットがボリューム データに作成されています。これにより、デバイスからクラウドへのデータ フローが発生します。読み取りと書き込みはこの期間にクラウドで行われます。IO グラフは、スナップショット作成時に対応するさまざまなメトリックでのピークを示しています。
 
-**Capacity utilization** tracks metrics related to the amount of data storage space that is used by the volumes, volume containers, or device. You can create reports based on the capacity utilization of your primary storage, your cloud storage, or your device storage. Capacity utilization can be measured on a specific volume, a specific volume container, or all volume containers.
+![クラウド スナップショット後のデバイスからクラウドへの IO パフォーマンス](./media/storsimple-monitor-device/StorSimple_IO_Performance_For_DeviceTOCloud_For_AllVolumeContainers2M.png)
 
 
-The primary, cloud, and device storage capacity can be described as follows:
+## 容量使用率 
 
-###<a name="primary-storage-capacity-utilization"></a>Primary storage capacity utilization
+**容量使用率**は、ボリューム、ボリューム コンテナー、デバイスで使用されるデータ ストレージ領域の容量に関連するメトリックを追跡します。プライマリ ストレージ、クラウド ストレージ、またはデバイス ストレージの容量の使用率に基づいて、レポートを作成できます。容量使用率は、特定のボリューム、特定のボリューム コンテナー、またはすべてのボリューム コンテナーについて測定できます。
+
+
+プライマリ、クラウド、デバイス ストレージ容量は次のように説明できます。
+
+###プライマリ ストレージの容量使用率
  
-These charts show the amount of data written to StorSimple volumes before the data is deduplicated and compressed. You can view the primary storage utilization by all volumes or for a single volume.
+これらのグラフは、StorSimple ボリュームに書き込まれたデータが重複除去されて圧縮される前のデータ量を示しています。すべてのボリュームまたは 1 つのボリュームでのプライマリ ストレージの使用率を確認できます。
 
-When you view the primary storage volume capacity utilization charts for all volumes versus each of the individual volumes and sum up the primary data in both these cases, there may be a mismatch between the two numbers. The total primary data on all volumes may not add up to the sum total of the primary data of the individual volumes. This may be due to one of the following:
+すべてのボリュームに対するプライマリ ストレージ ボリュームの容量使用率のグラフと、個々のボリュームに対する同グラフを表示し、両方のケースについてプライマリ データの合計を確認した場合、2 つの数値は一致しない可能性があります。すべてのボリュームのプライマリ データの合計は、個々のボリュームのプライマリ データの総計と同じにならない場合があります。次のいずれかの理由が考えられます。
 
-- **Snapshot data included for all volumes**: This behavior is seen only if you are running version earlier than Update 3. The primary data shown for all the volumes is the sum of the primary data for each volume and the snapshot data. The primary data shown for a given volume corresponds to only the amount of data allocated on the volume (and does not include the corresponding volume snapshot data).
+- **すべてのボリュームではスナップショット データが含まれる**: Update 3 より前のバージョンを実行している場合にのみ、このように動作します。すべてのボリュームに対して表示されるプライマリ データは、各ボリュームのプライマリ データとスナップショット データの合計です。特定のボリュームに対して表示されるプライマリのデータは、ボリュームに割り当てられたデータ量のみとなります (対応するボリューム スナップショット データは含まれません)。
 
-    This can also be explained by the following equation:
+	これは、次の式でも説明できます。
 
-    *Primary data (All volumes) = Sum of (Primary data (volume i) + Size of snapshot data (volume i))*
+	"*プライマリ データ (すべてのボリューム) = (プライマリ データ (ボリューム i) + スナップショット データ (ボリューム i) のサイズ) の合計*"
+	
+	*ここで、プライマリ データ (ボリューム i) = ボリューム i に割り当てられたプライマリ データのサイズ*
+ 
+	サービスによってスナップショットが削除される場合、その削除はバック グラウンドで非同期に実行されます。スナップショットの削除後、ボリューム データのサイズが更新されるまで時間のかかる場合があります。
+
+    Update 3 以降を実行する場合、スナップショット データはボリューム データに含まれません。プライマリの使用率は次のように計算されます。
+
+    * プライマリ データ (すべてのボリューム) = (プライマリ データ (ボリューム i) の合計
     
-    *where, Primary data (volume i) = Size of primary data allocated to volume i*
+    *ここで、プライマリ データ (ボリューム i) = ボリューム i に割り当てられたプライマリ データのサイズ*
  
-    If the snapshots are deleted through the service, the deletion is done asynchronously in the background. It may take some time for the volume data size to be updated following the snapshot deletion. 
-
-    If running Update 3 or later, then the snapshot data is not included in the volume data. And the primary utilization is calculated as follows:
-
-    *Primary data (All volumes) = Sum of (Primary data (volume i)
-    
-    *where, Primary data (volume i) = Size of primary data allocated to volume i*
+- **すべてのボリュームには監視が無効になっているボリュームが含まれる**: 監視がオフになっているデバイス上にボリュームがある場合、このような個々のボリュームの監視データはグラフに表示されません。ただし、グラフ内のすべてのボリュームのデータには、監視がオフになっているボリュームが含まれます。
  
-- **Volumes with monitoring disabled included in all volumes**: If you have volumes on your device for which monitoring is turned off, the monitoring data for these individual volumes will not be available in the charts. However, the data for all volumes in the chart includes the volumes for which monitoring is turned off. 
- 
-- **Deleted volumes with live associated backups included for all volumes**: If volumes containing snapshot data are deleted but the associated snapshots still exist, then you may see a mismatch.
+- **すべてのボリュームでは、ライブで関連付けられているバックアップが存在する、削除されたボリュームは含まれる**: スナップショット データを含むボリュームを削除したが、関連付けられたスナップショットがまだ存在する場合は、不一致が生じることがあります。
 
-- **Deleted volumes included for all volumes**: In some instances, old volumes may exist even though these were deleted. The effect of deletion is not seen and the device may show lower available capacity. You need to contact Microsoft Support to remove these volumes.
+- **すべてのボリュームの場合、削除されたボリュームが含まれる**: 場合によっては、削除されたにもかかわらず、古いボリュームが存在する場合があります。削除の結果は表示されません。このためデバイスが示す使用可能な容量は実際より少ない場合があります。これらのボリュームを削除するには、Microsoft サポートに問い合わせる必要があります。
 
-The following charts show the primary storage capacity utilization of a StorSimple device before and after a cloud snapshot was taken. As this is just volume data, a cloud snapshot should not change the primary storage. As you can see, the chart shows no difference in the primary capacity utilization as a result of taking a cloud snapshot. The cloud snapshot started at around 2:00 pm on that device.
+次のグラフは、クラウド スナップショットが作成された前後における、StorSimple デバイスのプライマリ ストレージの容量使用率を示します。これは単なるボリューム データであるため、クラウド スナップショットによってプライマリ ストレージは変更されません。グラフに示すとおり、クラウド スナップショットを作成したことによるプライマリの容量使用率に違いは見られません。クラウド スナップショットは、そのデバイスで午後 2 時頃に開始されました。
 
-![Primary capacity utilization before cloud snapshot](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes2M.png)
+![クラウド スナップショット前のプライマリの容量使用率](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes2M.png)
 
-![Primary capacity utilization after cloud snapshot](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes1M.png)
+![クラウド スナップショット後のプライマリの容量使用率](./media/storsimple-monitor-device/StorSimple_PrimaryCapacityUtil_For_AllVolumes1M.png)
 
-If you are running Update 2 or higher, you can break down the primary storage capacity utilization by an individual volume, all volumes, all tiered volumes, and all locally pinned volumes as shown below. Breaking down by all locally pinned volumes will allow you to quickly ascertain how much of the local tier is used up.
+Update 2 以降を使用している場合は、次に示すように、プライマリ ストレージ容量の使用率を個別ボリューム別、全ボリューム、全階層化ボリューム、全ローカル固定ボリュームの単位で表示できます。全ローカル固定ボリュームで表示すると、使用されているローカル階層の量を簡単に把握できます。
 
-![Primary capacity utilization for all locally pinned volumes](./media/storsimple-monitor-device/localvolumes.png)
+![全ローカル固定ボリュームのプライマリの容量使用率](./media/storsimple-monitor-device/localvolumes.png)
 
 
-###<a name="cloud-storage-capacity-utilization"></a>Cloud storage capacity utilization
+###クラウド ストレージの容量使用率
 
-These charts show the amount of cloud storage used. This data is deduplicated and compressed. This amount includes cloud snapshots which might contain data that isn't reflected in any primary volume and is kept for legacy or required retention purposes. You can compare the primary and cloud storage consumption figures to get an idea of the data reduction rate, although the number will not be exact. The following charts show the cloud storage capacity utilization of a StorSimple device before and after a cloud snapshot was taken. The cloud snapshot started at around 2:00 pm on that device and you can see the cloud capacity utilization shot up at the same time, increasing from 5.73 MB to 4.04 GB.
+これらのグラフは、クラウド ストレージの使用量を示します。このデータは、重複除去されて圧縮されています。この容量に含まれるクラウド スナップショットには、過去の目的や必須の保有期間のために保持されており、どのプライマリ ボリュームにも反映されていないデータが含まれている可能性があります。プライマリ ストレージとクラウド ストレージの消費量の数値を比較して、データの削減率を把握できます。ただし、この数値は正確なものではありません。次のグラフは、クラウド スナップショットが作成された前後における、StorSimple デバイスのクラウド ストレージの容量使用率を示します。午後 2 時 00 分頃にクラウド スナップショットがそのデバイス上で開始され、同時にクラウドの容量使用率が 5.73 MB から 4.04 GB に急上昇したことがわかります。
 
-![Cloud capacity utilization before cloud snapshot](./media/storsimple-monitor-device/StorSimple_CloudCapacityUtil_For_AllVolumeContainers2M.png)
+![クラウド スナップショット前のクラウドの容量使用率](./media/storsimple-monitor-device/StorSimple_CloudCapacityUtil_For_AllVolumeContainers2M.png)
 
-![Cloud capacity utilization after cloud snapshot](./media/storsimple-monitor-device/StorSimple_CloudCapacityUtil_For_AllVolumeContainers1M.png)
-
-
-###<a name="device-storage-capacity-utilization"></a>Device storage capacity utilization
-
-These charts show the total utilization for the device, which will be more than primary storage utilization because it includes the SSD linear tier. This tier contains an amount of data that also exists on the device's other tiers. The capacity in the SSD linear tier is cycled so that when new data comes in, the old data is moved to the HDD tier (at which time it is deduplicated and compressed) and subsequently to the cloud.
-
-Over time, primary capacity utilization and device capacity utilization will most likely increase together until the data begins to be tiered to the cloud. At that point, the device capacity utilization will probably begin to plateau, but the primary capacity utilization will increase as more data is written.
-
-The following charts show the primary storage capacity utilization of a StorSimple device before and after a cloud snapshot was taken. The cloud snapshot started at 2:00 pm and the device capacity utilization started decreasing at that time. The device storage capacity utilization went down from 11.58 GB to 7.48 GB. This indicates that most likely the uncompressed data in the linear SSD tier was deduplicated, compressed, and moved into the HDD tier. Note that if the device already has a large amount of data in both the SSD and HDD tiers, you may not see this decrease. In this example, the device has a small amount of data.
-
-![Device capacity utilization before cloud snapshot](./media/storsimple-monitor-device/StorSimple_DeviceCapacityUtil2M.png)
-
-![Device capacity utilization after cloud snapshot](./media/storsimple-monitor-device/StorSimple_DeviceCapacityUtil1M.png)
+![クラウド スナップショット後のクラウドの容量使用率](./media/storsimple-monitor-device/StorSimple_CloudCapacityUtil_For_AllVolumeContainers1M.png)
 
 
-## <a name="network-throughput"></a>Network throughput
+###デバイス ストレージの容量使用率
 
-**Network throughput** tracks metrics related to the amount of data transferred from the iSCSI initiator network interfaces on the host server and the device and between the device and the cloud. You can monitor this metric for each of the iSCSI network interfaces on your device.
+これらのグラフは、デバイスの使用率の合計を示しています。これには SSD リニア層が含まれているため、プライマリ ストレージの使用率よりも大きくなります。この層には、デバイスの他の層にあるデータの容量も含まれています。SSD リニア層の容量は、新しいデータが入ってくると古いデータが HDD 層に、その後クラウドに移動されて循環します (このときデータは重複除去されて圧縮されます)。
 
-The following charts show the network throughput for the Data 0 and Data 4, both 1 GbE network interfaces on your device. In this instance, Data 0 was cloud-enabled whereas Data 4 was iSCSI-enabled. You can see both the inbound and the outbound traffic for your StorSimple device. The flat line in the chart starting from 3:24 pm is owing to the fact that we gather data only every 5 minutes and should be ignored. 
+時間が経つにつれて、プライマリの容量使用率とデバイスの容量使用率は、ほとんどの場合、共に増加していき、やがてデータがクラウドに積み上がり始めます。そうなると、デバイスの容量使用率が安定し始めることもありますが、さらに多くのデータが書き込まれると、プライマリの容量使用率が増大します。
 
-![Network throughput for Data4](./media/storsimple-monitor-device/StorSimple_NetworkThroughput_Data0M.png)
+次のグラフは、クラウド スナップショットが作成された前後における、StorSimple デバイスのプライマリ ストレージの容量使用率を示します。クラウド スナップショットは午後 2 時 00 分に開始され、デバイスの容量使用率は、その時点から減少し始めます。デバイスの容量使用率は 11.58 GB から 7.48 GB まで減少します。ほとんどの場合、これは SSD リニア層の圧縮されていないデータが重複除去されて、圧縮され、HDD 層に移動したことを示しています。デバイスの SSD 層と HDD 層の両方に既に大量のデータがあると、この減少が発生しない場合があることにご注意ください。この例では、デバイスに少量のデータがあります。
 
-![Network throughput for Data4](./media/storsimple-monitor-device/StorSimple_NetworkThroughput_Data4M.png)
+![クラウド スナップショット前のデバイスの容量使用率](./media/storsimple-monitor-device/StorSimple_DeviceCapacityUtil2M.png)
 
-
-## <a name="device-performance"></a>Device performance 
-
-**Device performance** tracks metrics related to the performance of your device. The following chart shows the CPU utilization stats for a device in production.
-
-![CPU utilization for device](./media/storsimple-monitor-device/StorSimple_DeviceMonitor_DevicePerformance1M.png)
-
-## <a name="next-steps"></a>Next steps
-
-- Learn how to [use the StorSimple Manager service device dashboard](storsimple-device-dashboard.md).
-
-- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+![クラウド スナップショット後のデバイスの容量使用率](./media/storsimple-monitor-device/StorSimple_DeviceCapacityUtil1M.png)
 
 
+## ネットワーク スループット
 
-<!--HONumber=Oct16_HO2-->
+**ネットワーク スループット**は、ホスト サーバーの iSCSI イニシエーター ネットワーク インターフェイスからデバイス、デバイスとクラウドとの間で転送されたデータ量に関連するメトリックを追跡します。デバイス上の iSCSI ネットワーク インターフェイスごとに、このメトリックを監視できます。
+
+次のグラフは、Data 0 と Data 4 のネットワーク スループットを示しており、どちらもデバイス上の 1 GbE ネットワーク インターフェイスです。この場合、Data 0 がクラウド対応データで、Data 4 は iSCSI 対応です。StorSimple デバイスの受信と送信トラフィックの両方を確認できます。午後 3 時 24 分から開始する平坦な線は、5 分間隔でのみデータを収集したことが原因であり、無視する必要があります。
+
+![Data4 のネットワーク スループット](./media/storsimple-monitor-device/StorSimple_NetworkThroughput_Data0M.png)
+
+![Data4 のネットワーク スループット](./media/storsimple-monitor-device/StorSimple_NetworkThroughput_Data4M.png)
 
 
+## デバイスのパフォーマンス 
+
+**デバイスのパフォーマンス**は、デバイスのパフォーマンスに関連するメトリックを追跡します。次のグラフは、運用環境のデバイスに対する CPU 使用率の統計値を示しています。
+
+![デバイスの CPU 使用率](./media/storsimple-monitor-device/StorSimple_DeviceMonitor_DevicePerformance1M.png)
+
+## 次のステップ
+
+- [StorSimple Manager サービスのデバイス ダッシュボードを使用する方法](storsimple-device-dashboard.md)。
+
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
+
+<!---HONumber=AcomDC_0914_2016-->

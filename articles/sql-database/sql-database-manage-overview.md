@@ -1,55 +1,49 @@
 <properties
-    pageTitle="Overview: management tools for SQL Database"
-    description="Compares tools and options for managing Azure SQL Database"
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="概要: SQL Database の管理ツール"
+	description="Azure SQL Database を管理するためのツールとオプションを比較します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/19/2016"
-    ms.author="sstein"/>
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/19/2016"
+	ms.author="sstein"/>
 
+# 概要: SQL Database の管理ツール
 
-# <a name="overview:-management-tools-for-sql-database"></a>Overview: management tools for SQL Database
+このトピックでは、仕事や分野、ユーザーに合ったツールを選択できるように、Azure SQL データベースを管理するためのツールとオプションを紹介し、比較します。適切なツールを選択するには、管理対象のデータベースの数、タスク、タスクの実行頻度を考慮します。
 
-This topic explores and compares tools and options for managing Azure SQL databases so you can pick the right tool for the job, your business, and you. Choosing the right tool depends on how many databases you manage, the task, and how often a task is performed.
+## Azure ポータル
 
-## <a name="azure-portal"></a>Azure portal
+[Azure ポータル](https://portal.azure.com)は、データベースや論理サーバーを作成、更新、削除したり、データベース アクティビティを監視したりできる、Web ベースのアプリケーションです。このツールは、Azure を使い始めたばかりの場合、管理対象のデータベースの数が少ない場合、すばやく作業を行う必要がある場合に便利です。
 
-The [Azure portal](https://portal.azure.com) is a web-based application where you can create, update, and delete databases and logical servers and monitor database activity. This tool is great if you're just getting started with Azure, managing a few databases, or need to do something quickly.
+ポータルの使用法の詳細については、「[Azure クラシック ポータルを使用した SQL データベースの管理](sql-database-manage-portal.md)」を参照してください。
 
-For more information about using the portal, see [Manage SQL Databases using the Azure portal](sql-database-manage-portal.md).
+## SQL Server Management Studio と Visual Studio の SQL Server Data Tools
 
-## <a name="sql-server-management-studio-and-sql-server-data-tools-in-visual-studio"></a>SQL Server Management Studio and SQL Server Data Tools in Visual Studio
+SQL Server Management Studio (SSMS) と Visual Studio の SQL Server Data Tools (SSDT) は、クラウドのデータベースに接続し、管理や開発を行うための、コンピューター上で実行するクライアント ツールです。Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、[Visual Studio の SSDT の使用をお勧めします](https://msdn.microsoft.com/library/mt204009.aspx)。多くのデータベース管理者は、Azure SQL データベースで使用できる SSMS に精通しています。[SSMS の最新バージョンをダウンロード](https://msdn.microsoft.com/library/mt238290)し、Azure SQL Database で作業する場合は常に最新のリリースを使用してください。SSMS を使用して Azure SQL データベースを管理する方法の詳細については、「[SSMS を使用した SQL データベースの管理](sql-database-manage-azure-ssms.md)」を参照してください。
 
-SQL Server Management Studio (SSMS) and SQL Server Data Tools (SSDT) are client tools that run on your computer for managing, and developing your database in the cloud. If you're an application developer familiar with Visual Studio or other integrated development environments (IDEs), [try using SSDT in Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx). Many database administrators are familiar with SSMS, which can be used with Azure SQL databases. [Download the latest version of SSMS](https://msdn.microsoft.com/library/mt238290) and always use the latest release when working with Azure SQL Database. For more information on managing your Azure SQL Databases with SSMS, see [Manage SQL Databases using SSMS](sql-database-manage-azure-ssms.md).
+> [AZURE.IMPORTANT] 最新バージョンの SQL Server Management Studio と SQL Server Data Tools for Visual Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持する必要があります。こうしたツールのバージョンが古い場合、SQL Database と適切に連携しません。
 
-> [AZURE.IMPORTANT] Always use the latest version of SQL Server Management Studio and SQL Server Data Tools to remain synchronized with updates to Microsoft Azure and SQL Database.
+## コマンド ライン ツール
 
+PowerShell などのコマンド ライン ツールを使って、データベースやエラスティック データベース プールを管理したり、Azure のリソースのデプロイを自動化したりできます。Microsoft は、多数のデータベースを管理する場合や運用環境でリソースの変更およびデプロイを自動化する場合にこのツールをお勧めします。
 
-## <a name="powershell"></a>PowerShell
+コマンド ライン ツールを使った Azure SQL Database の管理の詳細については、「[PowerShell を使用した SQL Database の管理](sql-database-command-line-tools.md)」を参照してください。
 
-You can use PowerShell to manage databases and elastic database pools, and to automate Azure resource deployments. Microsoft recommends this tool for managing a large number of databases and automating deployment and resource changes in a production environment.
+## Elastic Database ツール
+エラスティック データベース ツールを使用して、次の操作を行います。
 
-For more information, see [Manage SQL Database with PowerShell](sql-database-manage-powershell.md)
-
-## <a name="elastic-database-tools"></a>Elastic Database tools
-Use the elastic database tools to perform actions such as 
-
-* Executing a T-SQL script against a set of databases using an [elastic job](sql-database-elastic-jobs-overview.md)
-* Moving multi-tenant model databases to a single-tenant model with the [split-merge tool](sql-database-elastic-scale-overview-split-and-merge.md)
-* Managing databases in a single-tenant model or a multi-tenant model using the [elastic scale client library](sql-database-elastic-database-client-library.md).
+* [エラスティック ジョブ](sql-database-elastic-jobs-overview.md)を使用して、一連のデータベースに対して T-SQL スクリプトを実行する
+* [split-merge ツール](sql-database-elastic-scale-overview-split-and-merge.md)で、マルチテナント モデル データベースをシングルテナント モデルに移動する
+* [エラスティック スケール クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して、シングルテナント モデルまたはマルチテナント モデルでデータベースを管理する。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

@@ -1,19 +1,16 @@
-### <a name="prerequisites"></a>Prerequisites
+### 前提条件
 
-- An [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) account  
-
-
-Before you can use your SFTP account in a logic app, you must authorize the logic app to connect to your SFTP account. Fortunately, you can do this easily from within your logic app on the Azure Portal.  
-
-Here are the steps to authorize your logic app to connect to your SFTP account:  
-1. To create a connection to SFTP, in the logic app designer, select **Show Microsoft managed APIs** in the drop down list then enter *SFTP* in the search box. Select the **SFTP - When a file is added or modified** trigger:  
-![SFTP online connection image 1](./media/connectors-create-api-sftp/sftp-1.png)  
-2. If you haven't created any connections to SFTP before, you'll get prompted to provide your SFTP credentials. These credentials will be used to authorize your logic app to connect to, and access your SFTP account's data:  
-![SFTP online connection image 2](./media/connectors-create-api-sftp/sftp-2.png)  
-3. Notice the connection has been created and you are now free to proceed with the other steps in your logic app:   
- ![SFTP online connection image 3](./media/connectors-create-api-sftp/sftp-3.png) 
+- [SFTP](https://en.wikipedia.org/wiki/SSH_File_Transfer_Protocol) アカウント
 
 
-<!--HONumber=Oct16_HO2-->
+ロジック アプリで SFTP アカウントを使用するには、SFTP アカウントに接続するロジック アプリを承認する必要があります。これは、Azure ポータルのロジック アプリ内から簡単に実行できます。
 
+SFTP アカウントに接続するロジック アプリを承認する手順を次に示します。  
+1. SFTP への接続を作成するには、Logic Apps デザイナーのドロップダウン リストから **[Show Microsoft managed APIs (Microsoft Managed API を表示)]** を選択し、検索ボックスに「*SFTP*」と入力します。**[SFTP - When a file is added or modified (SFTP - ファイルを追加または変更する)]** トリガーを選択します。  
+![SFTP オンライン接続イメージ 1](./media/connectors-create-api-sftp/sftp-1.png)  
+2. これまでに SFTP への接続を作成したことがない場合は、SFTP の資格情報の入力を求められます。この資格情報を使用して、接続するロジック アプリの承認と、SFTP アカウントのデータへのアクセスが行われます。  
+![SFTP オンライン接続イメージ 2](./media/connectors-create-api-sftp/sftp-2.png)  
+3. 接続が作成されたら、ロジック アプリで他の手順を自由に実行できるようになります。  
+![SFTP オンライン接続イメージ 3](./media/connectors-create-api-sftp/sftp-3.png)  
 
+<!---HONumber=AcomDC_0727_2016-->

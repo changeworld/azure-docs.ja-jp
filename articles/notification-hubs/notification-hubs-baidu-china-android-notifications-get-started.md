@@ -1,234 +1,233 @@
 <properties
-    pageTitle="Get started with Azure Notification Hubs using Baidu | Microsoft Azure"
-    description="In this tutorial, you learn how to use Azure Notification Hubs to push notifications to Android devices using Baidu."
-    services="notification-hubs"
-    documentationCenter="android"
-    authors="wesmc7777"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="Baidu での Azure Notification Hubs の使用 | Microsoft Azure"
+	description="このチュートリアルでは、Baidu で Azure Notification Hubs を使用して、Android デバイスにプッシュ通知を送信する方法について学習します。"
+	services="notification-hubs"
+	documentationCenter="android"
+	authors="wesmc7777"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="notification-hubs"
-    ms.devlang="java"
-    ms.topic="hero-article"
-    ms.tgt_pltfrm="mobile-baidu"
-    ms.workload="mobile"
-    ms.date="08/19/2016"
-    ms.author="wesmc"/>
+	ms.service="notification-hubs"
+	ms.devlang="java"
+	ms.topic="hero-article"
+	ms.tgt_pltfrm="mobile-baidu"
+	ms.workload="mobile"
+	ms.date="08/19/2016"
+	ms.author="wesmc"/>
 
-
-# <a name="get-started-with-notification-hubs-using-baidu"></a>Get started with Notification Hubs using Baidu
+# Baidu での Notification Hubs の使用
 
 [AZURE.INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-##<a name="overview"></a>Overview
+##Overview
 
-Baidu cloud push is a Chinese cloud service that you can use to send push notifications to mobile devices. This service is particularly useful in China, where delivering push notifications to Android is complex because of the presence of different app stores and push services, in addition to the availability of Android devices that are not typically connected to GCM (Google Cloud Messaging).
+Baidu クラウド プッシュは、プッシュ通知をモバイル デバイスに送信するために使用することのできる中国のクラウド サービスです。このサービスは、さまざまなアプリケーション ストアやプッシュ サービスの存在に加え、GCM (Google Cloud Messaging) に接続されていることが少ない Android デバイスの可用性にも差があるために Android へのプッシュ通知の送信方法が複雑な中国では特に便利です。
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
-This tutorial requires the following:
+このチュートリアルには、次のものが必要です。
 
-+ Android SDK (we assume that you will use Eclipse), which you can download from the <a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android site</a>
++ Android SDK (Eclipse を使用することが前提)。<a href="http://go.microsoft.com/fwlink/?LinkId=389797">Android サイト</a>からダウンロードできます。
 + [Mobile Services Android SDK]
 + [Baidu Push Android SDK]
 
->[AZURE.NOTE] To complete this tutorial, you must have an active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F).
+>[AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fnotification-hubs-baidu-get-started%2F)を参照してください。
 
 
-##<a name="create-a-baidu-account"></a>Create a Baidu account
+##Baidu アカウントを作成する
 
-To use Baidu, you must have a Baidu account. If you already have one, log in to the [Baidu portal] and skip to the next step. Otherwise, see the instructions below on how to create a Baidu account.  
+Baidu を使用するには、Baidu アカウントが必要です。既にアカウントを持っている場合は、[Baidu ポータル]にログインし、次の手順にスキップします。アカウントを持っていない場合は、Baidu アカウントの作成方法に関する次の手順を参照してください。
 
-1. Go to the [Baidu portal] and click the **登录** (**Login**) link. Click **立即注册** to start the account registration process.
+1. [Baidu ポータル]で **[登录]** (**ログイン**) のリンクをクリックします。**[立即注册]** をクリックしてアカウントの登録プロセスを開始します。
 
-    ![][1]
+   	![][1]
 
-2. Enter the required details—phone/email address, password, and verification code—and click **Signup**.
+2. 電話番号/電子メール アドレス、パスワード、認証コードなどの必要情報を入力し、**[Signup]** をクリックします。
 
-    ![][2]
+   	![][2]
 
-3. You will be sent an email to the email address that you entered with a link to activate your Baidu account.
+3. 入力した電子メール アドレスに、Baidu アカウントをアクティブ化するリンクが記載された電子メールが届きます。
 
-    ![][3]
+   	![][3]
 
-4. Log in to your email account, open the Baidu activation mail, and click the activation link to activate your Baidu account.
+4. 電子メール アカウントにログインし、Baidu のアクティブ化メールを開き、リンクをクリックして Baidu アカウントをアクティブ化します。
 
-    ![][4]
+   	![][4]
 
-Once you have an activated Baidu account, log in to the [Baidu portal].
+アクティブ化した Baidu アカウントを取得したら、[Baidu ポータル]にログインします。
 
-##<a name="register-as-a-baidu-developer"></a>Register as a Baidu developer
+##Baidu 開発者として登録する
 
-1. Once you have logged in to the [Baidu portal], click **更多>>** (**more**).
+1. [Baidu ポータル]にログインしたら、**[更多>>]** (**詳細**) をクリックします。
 
-    ![][5]
+  	![][5]
 
-2. Scroll down in the **站长与开发者服务 (Webmaster and Developer Services)** section and click **百度开放云平台** (**Baidu open cloud platform**).
+2. **[站长与开发者服务]** (Web 管理者および開発者向けサービス) セクションを下にスクロールし、**[百度开放云平台]** (**Baidu オープン クラウド プラットフォーム**) をクリックします。
 
-    ![][6]
+  	![][6]
 
-3. On the next page, click **开发者服务** (**Developer Services**) on the top-right corner.
+3. 次のページで、右上にある **[开发者服务]** (**開発者向けサービス**) をクリックします。
 
-    ![][7]
+  	![][7]
 
-4. On the next page, click **注册开发者** (**Registered Developers**) from the menu on the top-right corner.
+4. 次のページで、右上のメニューから **[注册开发者]** (**登録済み開発者**) をクリックします。
 
-    ![][8]
+  	![][8]
 
-5. Enter your name, a description, and a mobile phone number for receiving a verification text message, and then click **送验证码** (**Send Verification Code**). Note that for international phone numbers, you need to enclose the country code in parentheses. For example, for a United States number, it will be **(1)1234567890**.
+5. 確認用のテキスト メッセージを受信するために名前、説明、および携帯電話の番号を入力し、**[送验证码]** (**確認コードを送信する**) をクリックします。国際電話番号の場合は、国コードをかっこで囲む必要があります。たとえば、米国の電話番号の場合は、**(1)1234567890** になります。
 
-    ![][9]
+  	![][9]
 
-6. You should then receive a text message with a verification number, as shown in the following example:
+6. その後、次の例に示すような、認証番号を含むテキスト メッセージが届きます。
 
-    ![][10]
+  	![][10]
 
-7. Enter the verification number from the message in **验证码** (**Confirmation code**).
+7. メッセージに含まれている確認番号を **[验证码]** (**確認コード**) に入力します。
 
-8. Finally, complete the developer registration by accepting the Baidu agreement and clicking **提交** (**Submit**). You will see the following page on successful completion of registration:
+8. 最後に、Baidu 契約書に同意して **[提交]** (**送信**) をクリックし、開発者の登録を完了します。登録が正常に終了すると、次のページが表示されます。
 
-    ![][11]
+  	![][11]
 
-##<a name="create-a-baidu-cloud-push-project"></a>Create a Baidu cloud push project
+##Baidu クラウド プッシュ プロジェクトを作成する
 
-When you create a Baidu cloud push project, you receive your app ID, API key, and secret key.
+Baidu クラウド プッシュ プロジェクトを作成すると、アプリケーション ID、API キー、およびシークレット キーが届きます。
 
-1. Once you have logged in to the [Baidu portal], click **更多>>** (**more**).
+1. [Baidu ポータル]にログインしたら、**[更多>>]** (**詳細**) をクリックします。
 
-    ![][5]
+  	![][5]
 
-2. Scroll down in the **站长与开发者服务** (**Webmaster and Developer Services**) section and click **百度开放云平台** (**Baidu open cloud platform**).
+2. **[站长与开发者服务]** (**Web 管理者および開発者向けサービス**) セクションを下にスクロールし、**[百度开放云平台]** (**Baidu オープン クラウド プラットフォーム**) をクリックします。
 
-    ![][6]
+  	![][6]
 
-3. On the next page, click **开发者服务** (**Developer Services**) on the top-right corner.
+3. 次のページで、右上にある **[开发者服务]** (**開発者向けサービス**) をクリックします。
 
-    ![][7]
+  	![][7]
 
-4. On the next page, click **云推送** (**Cloud Push**) from the **云服务** (**Cloud Services**) section.
+4. 次のページで、**[云服务]** (**クラウド サービス**) セクションから **[云推送]** (**クラウド プッシュ**) をクリックします。
 
-    ![][12]
+  	![][12]
 
-5. Once you are a registered developer, you will see **管理控制台** (**Management Console**) at the top menu. Click **开发者服务管理** (**Developers Service Management**).
+5. 登録済み開発者の場合は、上部メニューに **[管理控制台]** (**管理コンソール**) が表示されます。**[开发者服务管理]** (**開発者サービスの管理**) をクリックします。
 
-    ![][13]
+  	![][13]
 
-6. On the next page, click **创建工程** (**Create Project**).
+6. 次のページで **[创建工程]** (**プロジェクトの作成**) をクリックします。
 
-    ![][14]
+  	![][14]
 
-7. Enter an application name and click **创建** (**Create**).
+7. アプリケーション名を入力し、**[创建]** (**作成**) をクリックします。
 
-    ![][15]
+  	![][15]
 
-8. Upon successful creation of a Baidu cloud push project, you will see a page with **AppID**, **API Key**, and **Secret Key**. Make a note of the API key and secret key, which we will use later.
+8. Baidu クラウド プッシュ プロジェクトが正常に作成されると、**AppID**、**API キー**、**シークレット キー**を含むページが表示されます。API キーとシークレット キーは後で使用するので書き留めておきます。
 
-    ![][16]
+  	![][16]
 
-9. Configure the project for push notifications by clicking **云推送** (**Cloud Push**) on the left pane.
+9. 左側のウィンドウで **[云推送]** (**クラウド プッシュ**) をクリックし、プッシュ通知用のプロジェクトを構成します。
 
-    ![][31]
+  	![][31]
 
-10. On the next page, click the **推送设置** (**Push settings**) button.
+10. 次のページで、**[推送设置]** (**プッシュの設定**) ボタンをクリックします。
 
-    ![][32]  
+	![][32]
 
-11. On the configuration page, add the package name that you will be using in your Android project in the **应用包名** (**Application package**) field, and then click **保存设置** (**Save**).  
+11. 構成ページで、Android プロジェクトで使用するパッケージ名を **[应用包名]** **(アプリケーション パッケージ)** フィールドに入力し、**[保存设置]** **(保存)** をクリックします。
 
-    ![][33]
+	![][33]
 
-You will see the **保存成功！** (**Successfully saved!**) message.
+**"保存成功！"** (**正常に保存されました**) というメッセージが表示されます。
 
-##<a name="configure-your-notification-hub"></a>Configure your notification hub
+##通知ハブを構成する
 
-1. Sign in to the [Azure Classic Portal], and then click **+NEW** at the bottom of the screen.
+1. [Azure クラシック ポータル]にサインインし、画面の下部にある **[+新規]** をクリックします。
 
-2. Click **App Services**, click **Service Bus**, click **Notification Hub**, and then click **Quick Create**.
+2. **[App Services]**、**[Service Bus]**、**[通知ハブ]** の順にクリックし、**[簡易作成]** をクリックします。
 
-3. Provide a name for your **Notification Hub**, select the **Region** and the **Namespace** where this notification hub will be created, and then click **Create a New Notification Hub**.  
+3. **[通知ハブ]** の名前を指定し、この通知ハブが作成される **[リージョン]** と **[名前空間]** を選択して、**[新しい通知ハブを作成する]** をクリックします。
 
-    ![][17]
+  	![][17]
 
-4. Click the namespace in which you created your notification hub, and then click **Notification Hubs** at the top.
+4. 通知ハブを作成した名前空間をクリックし、上部にある **[通知ハブ]** をクリックします。
 
-    ![][18]
+  	![][18]
 
-5. Select the notification hub that you created, and then click **Configure** from the top menu.
+5. 作成した通知ハブを選択し、上部のメニューから **[構成]** をクリックします。
 
-    ![][19]
+  	![][19]
 
-6. Scroll down to the **baidu notification settings** section and enter the API key and secret key that you obtained from the Baidu console previously for your Baidu cloud push project. Click **Save**.
+6. **[Baidu の通知設定]** セクションまで下へスクロールし、Baidu クラウド プッシュ プロジェクトのために Baidu コンソールから取得した API キーとシークレット キーを入力します。**[保存]** をクリックします。
 
-    ![][20]
+  	![][20]
 
-7. Click the **Dashboard** tab at the top for the notification hub, and then click **View Connection String**.
+7. 通知ハブの上部にある **[ダッシュボード]** タブをクリックし、**[接続文字列の表示]** をクリックします。
 
-    ![][21]
+  	![][21]
 
-8. Make a note of the **DefaultListenSharedAccessSignature** and **DefaultFullSharedAccessSignature** from the **Access connection information** window.
+8. **[接続情報へのアクセス]** ウィンドウに表示される **DefaultListenSharedAccessSignature** と **DefaultFullSharedAccessSignature** をメモしておきます。
 
     ![][22]
 
-##<a name="connect-your-app-to-the-notification-hub"></a>Connect your app to the notification hub
+##通知ハブにアプリケーションを接続する
 
-1. In Eclipse ADT, create a new Android project (**File** > **New** > **Android Application Project**).
+1. Eclipse ADT で、新しい Android プロジェクトを作成します (**[ファイル]**、**[新規]**、**[Android アプリケーション プロジェクト]** の順に選択します)。
 
     ![][23]
 
-2. Enter an **Application Name** and ensure that the **Minimum Required SDK** version is set to **API 16: Android 4.1**.
+2. **[アプリケーション名]** に名前を入力し、**[最小必須 SDK]** のバージョンが **API 16: Android 4.1** に設定されていることを確認します。
 
     ![][24]
 
-3. Click **Next** and continue following the wizard until the **Create Activity** window appears. Make sure that **Blank Activity** is selected, and finally select **Finish** to create a new Android Application.
+3. **[次へ]** をクリックし、**[アクティビティの作成]** ウィンドウが表示されるまでウィザードに従います。**[空のアクティビティ]** が選択されていることを確認し、最後に **[完了]** を選択して新しい Android アプリケーションを作成します。
 
     ![][25]
 
-4. Make sure that the **Project Build Target** is set correctly.
+4. **[プロジェクト ビルド ターゲット]** が正しく設定されていることを確認します。
 
     ![][26]
 
-5. Download the notification-hubs-0.4.jar file from the **Files** tab of the [Notification-Hubs-Android-SDK on Bintray](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4). Add the file to the **libs** folder of your Eclipse project, and refresh the *libs* folder.
+5. [Bintray の Notification-Hubs-Android-SDK](https://bintray.com/microsoftazuremobile/SDK/Notification-Hubs-Android-SDK/0.4) にある **[Files]** タブから notification-hubs-0.4.jar ファイルをダウンロードします。このファイルを Eclipse プロジェクトの **libs** フォルダーに追加し、*libs* フォルダーを最新の情報に更新します。
 
-6. Download and unzip the [Baidu Push Android SDK], open the **libs** folder, and then copy the **pushservice-x.y.z** jar file and the **armeabi** & **mips** folders in the **libs** folder of your Android application.
+6. [Baidu Push Android SDK] をダウンロードし、解凍します。**libs** フォルダーを開き、**pushservice-x.y.z** jar ファイル と **armeabi** および **mips** フォルダーを Android アプリケーションの **libs** フォルダーに コピーします。
 
-7. Open the **AndroidManifest.xml** file of your Android project and add the permissions that are required by the Baidu SDK.
+7. Android プロジェクトの **AndroidManifest.xml** ファイルを開き、Baidu SDK に必要なアクセス許可を追加します。
 
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-        <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-        <uses-permission android:name="android.permission.VIBRATE" />
-        <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-        <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-        <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-        <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
-        <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+	    <uses-permission android:name="android.permission.INTERNET" />
+	    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	    <uses-permission android:name="android.permission.VIBRATE" />
+	    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+	    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+	    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
-8. Add the **android:name** property to your **application** element in **AndroidManifest.xml**, replacing *yourprojectname* (e.g., **com.example.BaiduTest**). Make sure that this project name matches the one that you configured in the Baidu console.
+8. **android:name** プロパティを **AndroidManifest.xml** の **application** 要素に追加し、*yourprojectname* を置き換えます (例: **com.example.BaiduTest**)。このプロジェクト名が、Baidu コンソールで構成したプロジェクト名と一致していることを確認します。
 
-        <application android:name="yourprojectname.DemoApplication"
+		<application android:name="yourprojectname.DemoApplication"
 
-9. Add the following configuration within the application element after the **.MainActivity** activity element, replacing *yourprojectname* (e.g., **com.example.BaiduTest**):
+9. application 要素内で、**.MainActivity** アクティビティ要素の後に次の構成を追加し、*yourprojectname* を置き換えます (例: **com.example.BaiduTest**)。
 
-        <receiver android:name="yourprojectname.MyPushMessageReceiver">
-            <intent-filter>
-                <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
-                <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
-                <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
-            </intent-filter>
-        </receiver>
+		<receiver android:name="yourprojectname.MyPushMessageReceiver">
+		    <intent-filter>
+		        <action android:name="com.baidu.android.pushservice.action.MESSAGE" />
+		        <action android:name="com.baidu.android.pushservice.action.RECEIVE" />
+		        <action android:name="com.baidu.android.pushservice.action.notification.CLICK" />
+		    </intent-filter>
+		</receiver>
 
-        <receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
-            android:process=":bdservice_v1">
-            <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED" />
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-                <action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
-            </intent-filter>
-        </receiver>
+		<receiver android:name="com.baidu.android.pushservice.PushServiceReceiver"
+		    android:process=":bdservice_v1">
+		    <intent-filter>
+		        <action android:name="android.intent.action.BOOT_COMPLETED" />
+		        <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+				<action android:name="com.baidu.android.pushservice.action.notification.SHOW" />
+		    </intent-filter>
+		</receiver>
 
         <receiver android:name="com.baidu.android.pushservice.RegistrationReceiver"
             android:process=":bdservice_v1">
@@ -251,216 +250,216 @@ You will see the **保存成功！** (**Successfully saved!**) message.
             </intent-filter>
         </service>
 
-9. Add a new class called **ConfigurationSettings.java** to the project.
+9. プロジェクトに **ConfigurationSettings.java** という名前の新しいクラスを追加します。
 
     ![][28]
 
     ![][29]
 
-10. Add the following code to it:
+10. このクラスに次のコードを追加します。
 
-        public class ConfigurationSettings {
-                public static String API_KEY = "...";
-                public static String NotificationHubName = "...";
-                public static String NotificationHubConnectionString = "...";
-            }
+		public class ConfigurationSettings {
+		        public static String API_KEY = "...";
+				public static String NotificationHubName = "...";
+				public static String NotificationHubConnectionString = "...";
+			}
 
-    Set the value of **API_KEY** with what you retrieved from the Baidu cloud project earlier, **NotificationHubName** with your notification hub name from the Azure Classic Portal and **NotificationHubConnectionString** with DefaultListenSharedAccessSignature from the Azure Classic Portal.
+	**API\_KEY** には前もって Baidu クラウド プロジェクトから取得した値、**NotificationHubName** には Azure クラシック ポータルの通知ハブ名、**NotificationHubConnectionString** には Azure クラシック ポータルの DefaultListenSharedAccessSignature をそれぞれ設定します。
 
-11. Add a new class called **DemoApplication.java**, and add the following code to it:
+11. **DemoApplication.java** という名前の新しいクラスを追加し、それに次のコードを追加します。
 
-        import com.baidu.frontia.FrontiaApplication;
+		import com.baidu.frontia.FrontiaApplication;
 
-        public class DemoApplication extends FrontiaApplication {
-            @Override
-            public void onCreate() {
-                super.onCreate();
-            }
-        }
+		public class DemoApplication extends FrontiaApplication {
+		    @Override
+		    public void onCreate() {
+		        super.onCreate();
+		    }
+		}
 
-12. Add another new class called **MyPushMessageReceiver.java**, and add the code below to it. This is the class that handles the push notifications that are received from the Baidu push server.
+12. **MyPushMessageReceiver.java** という名前の別の新しいクラスを追加し、それに次のコードを追加します。これは、Baidu プッシュ サーバーから受信したプッシュ通知を処理するクラスです。
 
-        import java.util.List;
-        import android.content.Context;
-        import android.os.AsyncTask;
-        import android.util.Log;
-        import com.baidu.frontia.api.FrontiaPushMessageReceiver;
-        import com.microsoft.windowsazure.messaging.NotificationHub;
+		import java.util.List;
+		import android.content.Context;
+		import android.os.AsyncTask;
+		import android.util.Log;
+		import com.baidu.frontia.api.FrontiaPushMessageReceiver;
+		import com.microsoft.windowsazure.messaging.NotificationHub;
 
-        public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
-            /** TAG to Log */
-            public static NotificationHub hub = null;
-            public static String mChannelId, mUserId;
-            public static final String TAG = MyPushMessageReceiver.class
-                    .getSimpleName();
+		public class MyPushMessageReceiver extends FrontiaPushMessageReceiver {
+		    /** TAG to Log */
+			public static NotificationHub hub = null;
+			public static String mChannelId, mUserId;
+		    public static final String TAG = MyPushMessageReceiver.class
+		            .getSimpleName();
 
-            @Override
-            public void onBind(Context context, int errorCode, String appid,
-                    String userId, String channelId, String requestId) {
-                String responseString = "onBind errorCode=" + errorCode + " appid="
-                        + appid + " userId=" + userId + " channelId=" + channelId
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-                mChannelId = channelId;
-                mUserId = userId;
+			@Override
+		    public void onBind(Context context, int errorCode, String appid,
+		            String userId, String channelId, String requestId) {
+		        String responseString = "onBind errorCode=" + errorCode + " appid="
+		                + appid + " userId=" + userId + " channelId=" + channelId
+		                + " requestId=" + requestId;
+		        Log.d(TAG, responseString);
+		        mChannelId = channelId;
+		        mUserId = userId;
 
-                try {
-                 if (hub == null) {
-                        hub = new NotificationHub(
-                                ConfigurationSettings.NotificationHubName,
-                                ConfigurationSettings.NotificationHubConnectionString,
-                                context);
-                        Log.i(TAG, "Notification hub initialized");
-                    }
-                } catch (Exception e) {
-                   Log.e(TAG, e.getMessage());
-                }
+		        try {
+		       	 if (hub == null) {
+		                hub = new NotificationHub(
+		                		ConfigurationSettings.NotificationHubName,
+		                		ConfigurationSettings.NotificationHubConnectionString,
+		                		context);
+		                Log.i(TAG, "Notification hub initialized");
+		            }
+		        } catch (Exception e) {
+		           Log.e(TAG, e.getMessage());
+		        }
 
-                registerWithNotificationHubs();
-            }
+		        registerWithNotificationHubs();
+			}
 
-            private void registerWithNotificationHubs() {
-               new AsyncTask<Void, Void, Void>() {
-                  @Override
-                  protected Void doInBackground(Void... params) {
-                     try {
-                         hub.registerBaidu(mUserId, mChannelId);
-                         Log.i(TAG, "Registered with Notification Hub - '"
-                                + ConfigurationSettings.NotificationHubName + "'"
-                                + " with UserId - '"
-                                + mUserId + "' and Channel Id - '"
-                                + mChannelId + "'");
-                     } catch (Exception e) {
-                         Log.e(TAG, e.getMessage());
-                     }
-                     return null;
-                 }
-               }.execute(null, null, null);
-            }
+		    private void registerWithNotificationHubs() {
+		       new AsyncTask<Void, Void, Void>() {
+		          @Override
+		          protected Void doInBackground(Void... params) {
+		             try {
+		            	 hub.registerBaidu(mUserId, mChannelId);
+		            	 Log.i(TAG, "Registered with Notification Hub - '"
+		     	    			+ ConfigurationSettings.NotificationHubName + "'"
+		     	    			+ " with UserId - '"
+		     	    			+ mUserId + "' and Channel Id - '"
+		     	    			+ mChannelId + "'");
+		             } catch (Exception e) {
+		            	 Log.e(TAG, e.getMessage());
+		             }
+		             return null;
+		         }
+		       }.execute(null, null, null);
+		    }
 
-            @Override
-            public void onSetTags(Context context, int errorCode,
-                    List<String> sucessTags, List<String> failTags, String requestId) {
-                String responseString = "onSetTags errorCode=" + errorCode
-                        + " sucessTags=" + sucessTags + " failTags=" + failTags
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-            }
+		    @Override
+		    public void onSetTags(Context context, int errorCode,
+		            List<String> sucessTags, List<String> failTags, String requestId) {
+		        String responseString = "onSetTags errorCode=" + errorCode
+		                + " sucessTags=" + sucessTags + " failTags=" + failTags
+		                + " requestId=" + requestId;
+		        Log.d(TAG, responseString);
+		    }
 
-            @Override
-            public void onDelTags(Context context, int errorCode,
-                    List<String> sucessTags, List<String> failTags, String requestId) {
-                String responseString = "onDelTags errorCode=" + errorCode
-                        + " sucessTags=" + sucessTags + " failTags=" + failTags
-                        + " requestId=" + requestId;
-                Log.d(TAG, responseString);
-            }
+		    @Override
+		    public void onDelTags(Context context, int errorCode,
+		            List<String> sucessTags, List<String> failTags, String requestId) {
+		        String responseString = "onDelTags errorCode=" + errorCode
+		                + " sucessTags=" + sucessTags + " failTags=" + failTags
+		                + " requestId=" + requestId;
+		        Log.d(TAG, responseString);
+		    }
 
-            @Override
-            public void onListTags(Context context, int errorCode, List<String> tags,
-                    String requestId) {
-                String responseString = "onListTags errorCode=" + errorCode + " tags="
-                        + tags;
-                Log.d(TAG, responseString);
-            }
+		    @Override
+		    public void onListTags(Context context, int errorCode, List<String> tags,
+		            String requestId) {
+		        String responseString = "onListTags errorCode=" + errorCode + " tags="
+		                + tags;
+		        Log.d(TAG, responseString);
+		    }
 
-            @Override
-            public void onUnbind(Context context, int errorCode, String requestId) {
-                String responseString = "onUnbind errorCode=" + errorCode
-                        + " requestId = " + requestId;
-                Log.d(TAG, responseString);
-            }
+		    @Override
+		    public void onUnbind(Context context, int errorCode, String requestId) {
+		        String responseString = "onUnbind errorCode=" + errorCode
+		                + " requestId = " + requestId;
+		        Log.d(TAG, responseString);
+		    }
 
-            @Override
-            public void onNotificationClicked(Context context, String title,
-                    String description, String customContentString) {
-                String notifyString = "title=\"" + title + "\" description=\""
-                        + description + "\" customContent=" + customContentString;
-                Log.d(TAG, notifyString);
-            }
+		    @Override
+		    public void onNotificationClicked(Context context, String title,
+		            String description, String customContentString) {
+		        String notifyString = "title="" + title + "" description=""
+		                + description + "" customContent=" + customContentString;
+		        Log.d(TAG, notifyString);
+		    }
 
-            @Override
-            public void onMessage(Context context, String message,
-                    String customContentString) {
-                String messageString = "message=\"" + message + "\" customContentString=" + customContentString;
-                Log.d(TAG, messageString);
-            }
-        }
+		    @Override
+		    public void onMessage(Context context, String message,
+		            String customContentString) {
+		        String messageString = "message="" + message + "" customContentString=" + customContentString;
+		        Log.d(TAG, messageString);
+		    }
+		}
 
-13. Open **MainActivity.java**, and add the following to the **onCreate** method:
+13. **MainActivity.java** を開き、**onCreate** メソッドに次のコードを追加します。
 
-            PushManager.startWork(getApplicationContext(),
-                    PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
+	        PushManager.startWork(getApplicationContext(),
+	                PushConstants.LOGIN_TYPE_API_KEY, ConfigurationSettings.API_KEY);
 
-14. Open the following import statements at the top:
+14. 先頭に、次の import ステートメントを追加します。
 
-            import com.baidu.android.pushservice.PushConstants;
-            import com.baidu.android.pushservice.PushManager;
+			import com.baidu.android.pushservice.PushConstants;
+			import com.baidu.android.pushservice.PushManager;
 
-##<a name="send-notifications-to-your-app"></a>Send notifications to your app
+##アプリケーションに通知を送信する
 
 
-You can quickly test receiving notifications in your app by sending notifications in the [Azure Portal](https://portal.azure.com/) using the **Test Send** button on the notification hub, as shown in the screen below.
+以下の画面に示すように、通知ハブの **[テスト送信]** ボタンを使用して、[Azure ポータル](https://portal.azure.com/)で通知を送信し、アプリケーションで通知の受信テストをすばやく行うことができます。
 
 ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 
-Push notifications are normally sent in a back-end service like Mobile Services or ASP.NET using a compatible library. You can also use the REST API directly to send notification messages if a library is not available for your back-end.
+プッシュ通知は通常、互換性のあるライブラリを使用して Mobile Services などのバックエンド サービスや ASP.NET に送信されます。ライブラリがバックエンドで利用できない場合、REST API を直接使用して通知メッセージを送信できます。
 
-In this tutorial, we will keep it simple and just demonstrate testing your client app by sending notifications using the .NET SDK for notification hubs in a console application instead of a backend service. We recommend the [Use Notification Hubs to push notifications to users](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md) tutorial as the next step for sending notifications from an ASP.NET backend. However, the following approaches can be used for sending notifications:
+このチュートリアルでは、バックエンド サービスではなく、コンソール アプリケーションの通知ハブに .NET SDK を使用して通知を送信することで例を単純にして、クライアント アプリのテスト手順のみを説明します。ASP.NET バックエンドから通知を送信するには、次のステップとして「[Notification Hubs を使用したユーザーへのプッシュ通知](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md)」を参照することをお勧めします。ただし、通知の送信には、次の方法も使用できます。
 
-* **REST Interface**:  You can support notification on any backend platform using  the [REST interface](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx).
+* **REST インターフェイス**: [REST インターフェイス](http://msdn.microsoft.com/library/windowsazure/dn223264.aspx)を使用すると、任意のバックエンド プラットフォームの通知をサポートできます。
 
-* **Microsoft Azure Notification Hubs .NET SDK**: In the Nuget Package Manager for Visual Studio, run [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/).
+* **Microsoft Azure Notification Hubs .NET SDK**: Nuget Package Manager for Visual Studio で、[Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) を実行します。
 
-* **Node.js** : [How to use Notification Hubs from Node.js](notification-hubs-nodejs-push-notification-tutorial.md).
+* **Node.js** : [Node.js から Notification Hubs を使用する方法](notification-hubs-nodejs-push-notification-tutorial.md)。
 
-* **Azure Mobile Services**: For an example of how to send notifications from an Azure Mobile Services backend that's integrated with Notification Hubs, see [Add push notifications to your Mobile Services app](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md).
+* **Azure Mobile Services**: Notification Hubs に統合されている Azure Mobile Services バックエンドから通知を送信する方法の例については、「[Mobile Services アプリへのプッシュ通知の追加](../mobile-services/mobile-services-javascript-backend-windows-universal-dotnet-get-started-push.md)」を参照してください。
 
-* **Java / PHP**: For an example of how to send notifications by using the REST APIs, see "How to use Notification Hubs from Java/PHP" ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
+* **Java / PHP**: REST API を使用した通知の送信方法の例については、「Java/PHP から Notification Hubs を使用する方法」([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)) を参照してください。
 
-##<a name="(optional)-send-notifications-from-a-.net-console-app."></a>(Optional) Send notifications from a .NET console app.
+##(省略可能) .NET コンソール アプリケーションから通知を送信する
 
-In this section, we show sending a notification using a .NET console app.
+このセクションでは、.NET コンソール アプリケーションを使用した通知の送信方法について説明します。
 
-1. Create a new Visual C# console application:
+1. Visual C# の新しいコンソール アプリケーションを作成します。
 
-    ![][30]
+	![][30]
 
-2. In the Package Manager Console window, set the **Default project** to your new console application project, and then in the console window, execute the following command:
+2. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
 
         Install-Package Microsoft.Azure.NotificationHubs
 
-    This adds a reference to the Azure Notification Hubs SDK using the <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet package</a>.
+	これにより <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.Notification Hubs NuGet パッケージ</a>を利用して Azure Notification Hubs SDK に参照が追加されます。
 
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
+	![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
-3. Open the file **Program.cs** and add the following using statement:
+3. **Program.cs** ファイルを開き、次の using ステートメントを追加します。
 
         using Microsoft.Azure.NotificationHubs;
 
-4. In your `Program` class, add the following method and replace *DefaultFullSharedAccessSignatureSASConnectionString* and *NotificationHubName* with the values that you have.
+4. `Program` クラスで、次のメソッドを追加し、*DefaultFullSharedAccessSignatureSASConnectionString* と *NotificationHubName* を実際の値に置き換えます。
 
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString", "NotificationHubName");
-            string message = "{\"title\":\"((Notification title))\",\"description\":\"Hello from Azure\"}";
-            var result = await hub.SendBaiduNativeNotificationAsync(message);
-        }
+		private static async void SendNotificationAsync()
+		{
+			NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("DefaultFullSharedAccessSignatureSASConnectionString", "NotificationHubName");
+			string message = "{"title":"((Notification title))","description":"Hello from Azure"}";
+			var result = await hub.SendBaiduNativeNotificationAsync(message);
+		}
 
-5. Add the following lines in your **Main** method:
+5. **Main** メソッド内に次の行を追加します。
 
          SendNotificationAsync();
-         Console.ReadLine();
+		 Console.ReadLine();
 
-##<a name="test-your-app"></a>Test your app
+##アプリケーションをテストする
 
-To test this app with an actual phone, just connect the phone to your computer by using a USB cable. This loads your app onto the attached phone.
+実際の電話でこのアプリケーションをテストする場合は、USB ケーブルを使用してコンピューターに電話を接続するだけです。これで、接続した電話にアプリケーションが読み込まれます。
 
-To test this app with the emulator, on the Eclipse top toolbar, click **Run**, and then select your app. This starts the emulator, and then loads and runs the app.
+エミュレーターでこのアプリケーションをテストするには、上部の Eclipse ツール バーで **[実行]** をクリックし、アプリケーションを選択します。これによりエミュレーターが起動し、アプリケーションが読み込まれて実行されます。
 
-The app retrieves the 'userId' and 'channelId' from the Baidu Push notification service and registers with the notification hub.
+アプリケーションが Baidu プッシュ通知サービスから 'userId' と 'channelId' を取得し、通知ハブに登録します。
 
-To send a test notification you can use the debug tab of the Azure Classic Portal. If you built the .NET console application for Visual Studio, just press the F5 key in Visual Studio to run the application. The application will send a notification that will appear in the top notification area of your device or emulator.
+テスト通知は、Azure クラシック ポータルの [デバッグ] タブを使用して送信できます。Visual Studio で .Net コンソール アプリケーションを作成する場合、Visual Studio で F5 キーを押してアプリケーションを実行します。アプリケーションから通知が送信され、デバイスまたはエミュレーターの上部の通知領域に表示されます。
 
 
 <!-- Images. -->
@@ -501,11 +500,7 @@ To send a test notification you can use the debug tab of the Azure Classic Porta
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
 [Baidu Push Android SDK]: http://developer.baidu.com/wiki/index.php?title=docs/cplat/push/sdk/clientsdk
-[Azure Classic Portal]: https://manage.windowsazure.com/
-[Baidu portal]: http://www.baidu.com/
+[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Baidu ポータル]: http://www.baidu.com/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Deploy an ASP.NET Core Linux Docker container to a remote Docker host | Microsoft Azure"
-   description="Learn how to use Visual Studio Tools for Docker to deploy an ASP.NET Core web app to a Docker container running on an Azure Docker Host Linux VM"   
+   pageTitle="リモート Docker ホストへの ASP.NET Core Linux Docker コンテナーのデプロイ | Microsoft Azure"
+   description="Visual Studio Tools for Docker を使用して、Azure Docker ホストの Linux VM で実行されている Docker コンテナーに ASP.NET Core Web アプリをデプロイする方法を説明します。"   
    services="azure-container-service"
    documentationCenter=".net"
    authors="mlearned"
@@ -16,39 +16,37 @@
    ms.date="06/08/2016"
    ms.author="mlearned"/>
 
+# リモート Docker ホストへの ASP.NET コンテナーのデプロイ
 
-# <a name="deploy-an-asp.net-container-to-a-remote-docker-host"></a>Deploy an ASP.NET container to a remote Docker host
+## Overview
+Docker は軽量のコンテナー エンジンで、アプリケーションとサービスをホストするために使用できる仮想マシンにいくつかの点で似ています。このチュートリアルでは、[Visual Studio 2015 Tools for Docker](http://aka.ms/DockerToolsForVS) 拡張機能を使用して、Azure 上の Docker ホストに PowerShell で ASP.NET Core アプリをデプロイする手順について説明します。
 
-## <a name="overview"></a>Overview
-Docker is a lightweight container engine, similar in some ways to a virtual machine, which you can use to host applications and services.
-This tutorial walks you through using the [Visual Studio 2015 Tools for Docker](http://aka.ms/DockerToolsForVS) extension to deploy an ASP.NET Core app to a Docker host on Azure using PowerShell.
+## 前提条件
+このチュートリアルを完了するには、以下が必要です。
 
-## <a name="prerequisites"></a>Prerequisites
-The following is needed to complete this tutorial:
-
-- Create an Azure Docker Host VM as described in [How to use docker-machine with Azure](./virtual-machines/virtual-machines-linux-docker-machine.md)
-- Install [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129)
+- 「[Azure で docker マシンを使用する方法](./virtual-machines/virtual-machines-linux-docker-machine.md)」の説明に従って、Azure Docker ホスト VM を作成する
+- [Visual Studio 2015 Update 3](https://go.microsoft.com/fwlink/?LinkId=691129) をインストールする
 - [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
-- Install [Visual Studio 2015 Tools for Docker - Preview](http://aka.ms/DockerToolsForVS)
+- [Visual Studio 2015 Tools for Docker - Preview](http://aka.ms/DockerToolsForVS) のインストール
 
-## <a name="1.-create-an-asp.net-core-web-app"></a>1. Create an ASP.NET Core web app
-The following steps will guide you through creating a basic ASP.NET Core app that will be used in this tutorial.
+## 1\.ASP.NET Core Web アプリケーションの作成
+次の手順では、このチュートリアルで使用する基本的な ASP.NET Core アプリの作成について説明します。
 
 [AZURE.INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## <a name="2.-add-docker-support"></a>2. Add Docker support
+## 手順 2.Docker サポートの追加
 
 [AZURE.INCLUDE [create-aspnet5-app](../includes/vs-azure-tools-docker-add-docker-support.md)]
 
-## <a name="3.-use-the-dockertask.ps1-powershell-script"></a>3. Use the DockerTask.ps1 PowerShell Script 
+## 3\.DockerTask.ps1 PowerShell スクリプトの使用 
 
-1.  Open a PowerShell prompt to the root directory of your project. 
+1.  PowerShell プロンプトからプロジェクトのルート ディレクトリに移動します。
 
     ```
     PS C:\Src\WebApplication1>
     ```
 
-1.  Validate the remote host is running. You should see state = Running 
+1.  リモート ホストが実行中であることを確認します。State が "Running" と表示されている必要があります。
 
     ```
     docker-machine ls
@@ -56,44 +54,40 @@ The following steps will guide you through creating a basic ASP.NET Core app tha
     MyDockerHost -        azure    Running   tcp://xxx.xxx.xxx.xxx:2376         v1.10.3
     ```
 
-    > [AZURE.NOTE] If you're using the Docker Beta, your host won't be listed here.
+    > [AZURE.NOTE] Docker Beta を使用している場合、ここにホストは表示されません。
 
-1.  Build the app using the -Build parameter
+1.  -Build パラメーターを使用してアプリをビルドします。
 
     ```
     PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release -Machine mydockerhost
     ```  
 
-    > [AZURE.NOTE] If you're using the Docker Beta, omit the -Machine argument
+    > [AZURE.NOTE] Docker Beta を使用している場合、-Machine 引数は省略してください。
     > 
     > ```
     > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Build -Environment Release 
     > ```  
 
 
-1.  Run the app, using the -Run parameter
+1.  -Run パラメーターを使用してアプリを実行します。
 
     ```
     PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release -Machine mydockerhost
     ```
 
-    > [AZURE.NOTE] If you're using the Docker Beta, omit the -Machine argument
+    > [AZURE.NOTE] Docker Beta を使用している場合、-Machine 引数は省略してください。
     > 
     > ```
     > PS C:\Src\WebApplication1> .\Docker\DockerTask.ps1 -Run -Environment Release 
     > ```
 
-    Once docker completes, you should see results similar to the following:
+	Docker が完了すると、次のような結果が表示されます。
 
-    ![View your app][3]
+    ![アプリを表示する][3]
 
-[0]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/docker-props-in-solution-explorer.png
-[1]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/change-docker-machine-name.png
-[2]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
-[3]:./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
+[0]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/docker-props-in-solution-explorer.png
+[1]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/change-docker-machine-name.png
+[2]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/launch-application.png
+[3]: ./media/vs-azure-tools-docker-hosting-web-apps-in-docker/view-application.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

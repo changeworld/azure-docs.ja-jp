@@ -1,28 +1,25 @@
-### <a name="create-a-tcp-endpoint-for-the-virtual-machine"></a>Create a TCP endpoint for the virtual machine
+### 仮想マシン用の TCP エンドポイントを作成する
 
-In order to access SQL Server from the internet, the virtual machine must have an endpoint to listen for incoming TCP communication. This Azure configuration step, directs incoming TCP port traffic to a TCP port that is accessible to the virtual machine.
+インターネットから SQL Server にアクセスするには、仮想マシンに、着信する TCP 通信をリッスンするエンドポイントが必要です。この Azure 構成手順により、仮想マシンからアクセスできる TCP ポートに、着信する TCP ポート トラフィックが送信されます。
 
->[AZURE.NOTE] If you are connecting within the same cloud service or virtual network, you do not have to create a publically accessible endpoint. In that case, you could continue to the next step. For more information, see [Connection Scenarios](../articles/virtual-machines/virtual-machines-windows-classic-sql-connect.md#connection-scenarios).
+>[AZURE.NOTE] 同じクラウド サービスまたは仮想ネットワーク内で接続する場合は、公開されたエンドポイントを作成する必要はありません。その場合は、次のステップに進むことができます。詳細については、[Connection Scenarios (接続のシナリオ)](../articles/virtual-machines/virtual-machines-windows-classic-sql-connect.md#connection-scenarios) を参照してください。
 
-1. On the Azure Portal, select **Virtual machines (classic)**.
+1. Azure ポータルで、**[仮想マシン (クラシック)]** を選択します。
 
-2. Then select you SQL Server virtual machine.
+2. SQL Server 仮想マシンを選択します。
 
-3. Select **Endpoints**, and then click the **Add** button at the top of the Endpoints blade.
+3. **[エンドポイント]** を選択し、[エンドポイント] ブレードの上部にある **[追加]** ボタンをクリックします。
 
-    ![Portal Steps for Endpoint Creation](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
+	![ポータルでのエンドポイント作成手順](./media/virtual-machines-sql-server-connection-steps/portal-endpoint-creation.png)
 
-4. On the **Add Endpoint** blade, provide a **Name** such as SQLEndpoint.
+4. **[エンドポイントの追加]** ブレードで、SQLEndpoint などの**名前**を入力します。
 
-5. Select **TCP** for the **Protocol**.
+5. **[プロトコル]** で **[TCP]** を選択します。
 
-6. For **Public port**, specify a port number such as **57500**.
+6. **[パブリック ポート]** で、**57500** などのポート番号を指定します。
 
-7. For **Private port**, specify SQL Server's listening port, which defaults to **1433**.
+7. **[プライベート ポート]** で、SQL Server のリスニング ポートを指定します。既定値は **1433** です。
 
-6. Click **Ok** to create the endpoint.
+6. **[OK]** をクリックしてエンドポイントを作成します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

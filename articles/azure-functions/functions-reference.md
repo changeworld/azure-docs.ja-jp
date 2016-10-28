@@ -1,36 +1,35 @@
 <properties
-    pageTitle="Azure Functions developer reference | Microsoft Azure"
-    description="Understand Azure Functions concepts and components that are common to all languages and bindings."
-    services="functions"
-    documentationCenter="na"
-    authors="christopheranderson"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
+	pageTitle="Azure Functions 開発者向けリファレンス | Microsoft Azure"
+	description="すべての言語とバインドに共通する Azure Functions の概念とコンポーネントについて説明します。"
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
 
 <tags
-    ms.service="functions"
-    ms.devlang="multiple"
-    ms.topic="reference"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="05/13/2016"
-    ms.author="chrande"/>
+	ms.service="functions"
+	ms.devlang="multiple"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="05/13/2016"
+	ms.author="chrande"/>
+
+# Azure Functions developer reference (Azure Functions 開発者向けリファレンス)
+
+Azure Functions は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。
+
+この記事は、「[Azure Functions の概要](functions-overview.md)」を既に読んでいて、[トリガー、バインド、JobHost ランタイムなどの WebJobs SDK の概念](../app-service-web/websites-dotnet-webjobs-sdk.md)を熟知していることを前提として書かれています。Azure Functions は WebJobs SDK が基になっています。
 
 
-# <a name="azure-functions-developer-reference"></a>Azure Functions developer reference
+## 関数のコード
 
-Azure Functions share a few core technical concepts and components, regardless of the language or binding you use. Before you jump into learning details specific to a given language or binding, be sure to read through this overview that applies to all of them.
+*関数* は Azure Functions の主要な概念です。好みの言語を選択して関数のコードを記述し、コード ファイルと構成ファイルを同じフォルダーに保存します。構成には JSON を使用し、ファイルの名前は `function.json` です。さまざまな言語がサポートされていて、各言語はその言語での作業に最適化された少しずつ異なるエクスペリエンスを備えています。
 
-This article assumes that you've already read the [Azure Functions overview](functions-overview.md) and are familiar with [WebJobs SDK concepts such as triggers, bindings, and the JobHost runtime](../app-service-web/websites-dotnet-webjobs-sdk.md). Azure Functions is based on the WebJobs SDK. 
-
-
-## <a name="function-code"></a>Function code
-
-A *function* is the primary concept in Azure Functions. You write code for a function in a language of your choice and save the code file(s) and a configuration file in the same folder. Configuration is in JSON, and the file is named `function.json`. A variety of languages are supported, and each one has a slightly different experience optimized to work best for that language. 
-
-The `function.json` file contains configuration specific to a function, including its bindings. The runtime reads this file to determine which events to trigger off of, which data to include when calling the function, and where to send data passed along from the function itself. 
+`function.json` ファイルには、バインドなど、関数に固有の構成が含まれています。ランタイムはこのファイルを読み取って、トリガーするイベント、関数を呼び出すときに含めるデータ、関数自体から渡されるデータの送信先を決定します。
 
 ```json
 {
@@ -47,117 +46,108 @@ The `function.json` file contains configuration specific to a function, includin
 }
 ```
 
-You can prevent the runtime from running the function by setting the `disabled` property to `true`.
+`disabled` プロパティを `true` に設定することにより、ランタイムが関数を実行しないようにすることができます。
 
-The `bindings` property is where you configure both triggers and bindings. Each binding shares a few common settings and some settings which are specific to a particular type of binding. Every binding requires the following settings:
+`bindings` プロパティで、トリガーとバインドの両方を構成します。各バインドは、いくつかの一般的な設定と、バインドの特定の種類に固有の設定を共有します。すべてのバインドには次の設定が必要です。
 
-|Property|Values/Types|Comments|
+|プロパティ|値/型|説明|
 |---|-----|------|
-|`type`|string|Binding type. For example, `queueTrigger`.
-|`direction`|'in', 'out'| Indicates whether the binding is for receiving data into the function or sending data from the function.
-| `name` | string | The name that will be used for the bound data in the function. For C# this will be an argument name; for JavaScript it will be the key in a key/value list.
+|`type`|string|バインドの種類。たとえば、「`queueTrigger`」のように入力します。
+|`direction`|"in"、"'out"| バインドが関数への受信データか、関数からの送信データかを示します。
+| `name` | string | 関数のバインドされたデータに使用される名前。C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。
 
-## <a name="function-app"></a>Function app
+## 関数アプリ
 
-A function app is comprised of one or more individual functions that are managed together by Azure App Service. All of the functions in a function app share the same pricing plan, continuous deployment and runtime version. Functions written in multiple languages can all share the same function app. Think of a function app as a way to organize and collectively manage your functions. 
+関数アプリは、Azure App Service でまとめて管理される 1 つまたは複数の個々の関数で構成されます。関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。複数の言語で記述された関数は、同じ関数アプリをすべて共有できます。関数を整理し、まとめて管理する方法として関数アプリを考えてください。
 
-## <a name="runtime-(script-host-and-web-host)"></a>Runtime (script host and web host)
+## ランタイム (スクリプト ホストおよび Web ホスト)
 
-The runtime, or script host, is the underlying WebJobs SDK host which listens for events, gathers and sends data, and ultimately runs your code. 
+ランタイムまたはスクリプト ホストは基になる WebJobs SDK ホストであり、イベントをリッスンし、データを収集して送信し、最終的にはコードを実行します。
 
-To facilitate HTTP triggers, there is also a web host which is designed to sit in front of the script host in production scenarios. This helps to isolate the script host from the front end traffic managed by the web host.
+HTTP トリガーを容易にするため、運用環境シナリオでスクリプト ホストの前に配置されるように設計されている Web ホストもあります。これにより、Web ホストによって管理されるフロントエンド トラフィックからスクリプト ホストが分離されます。
 
-## <a name="folder-structure"></a>Folder Structure
+## フォルダー構造
 
 [AZURE.INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-When setting-up a project for deploying functions to a function app in Azure App Service, you can treat this folder structure as your site code. You can use existing tools like continuous integration and deployment, or custom deployment scripts for doing deploy time package installation or code transpilation.
+Azure App Service で関数アプリに関数をデプロイするためにプロジェクトをセットアップするときは、このフォルダー構造をサイト コードとして扱うことができます。継続的インテグレーションやデプロイなどの既存のツール、またはカスタム デプロイ スクリプトを使用して、デプロイ時のパッケージのインストールまたはコードの変換を行うことができます。
 
-## <a name="<a-id="fileupdate"></a>-how-to-update-function-app-files"></a><a id="fileupdate"></a> How to update function app files
+## <a id="fileupdate"></a> 関数アプリ ファイルを更新する方法
 
-The function editor built into the Azure portal lets you update the *function.json* file and the code file for a function. To upload or update other files such as *package.json* or *project.json* or dependencies, you have to use other deployment methods.
+Azure ポータルに組み込まれている関数エディターでは、*function.json* ファイルと関数のコード ファイルを更新できます。*package.json* や *project.json* などのその他のファイルや依存関係をアップロードまたは更新するには、その他のデプロイ方法を使用する必要があります。
 
-Function apps are built on App Service, so all of the [deployment options available to standard web apps](../app-service-web/web-sites-deploy.md) are available for function apps as well. Here are some methods you can use to upload or update function app files. 
+関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service-web/web-sites-deploy.md)はすべて、関数アプリでも利用できます。ここでは、関数アプリ ファイルをアップロードまたは更新するための方法をいくつか紹介します。
 
-#### <a name="to-use-app-service-editor"></a>To use App Service Editor
+#### App Service Editor を使用するには
 
-1. In the Azure Functions portal, click **Function app settings**.
+1. Azure Functions ポータルで、**[関数アプリの設定]** をクリックします。
 
-2. In the **Advanced Settings** section, click **Go to App Service Settings**.
+2. **[詳細設定]** セクションで、**[App Service の設定に移動]** をクリックします。
 
-3. Click **App Service Editor** in App Menu Nav under **DEVELOPMENT TOOLS**.
+3. **[開発ツール]** の App Menu ナビゲーション バーの **[App Service Editor]** をクリックします。
 
-4.  click **Go**.
+4.  **[移動]** をクリックします。
 
-    After App Service Editor loads, you'll see the *host.json* file and function folders under *wwwroot*. 
+	App Service Editor の読み込み後、*host.json* ファイルと関数フォルダーが *wwwroot* の下に表示されます。
 
-5. Open files to edit them, or drag and drop from your development machine to upload files.
+5. ファイルを開いて編集するか、開発コンピューターからドラッグアンドドロップしてファイルをアップロードします。
 
-#### <a name="to-use-the-function-app's-scm-(kudu)-endpoint"></a>To use the function app's SCM (Kudu) endpoint
+#### 関数アプリの SCM (Kudu) エンドポイントを使用するには
 
-1. Navigate to: `https://<function_app_name>.scm.azurewebsites.net`.
+1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
 
-2. Click **Debug Console > CMD**.
+2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
 
-3. Navigate to `D:\home\site\wwwroot\` to update *host.json* or `D:\home\site\wwwroot\<function_name>` to update a function's files.
+3. `D:\home\site\wwwroot` に移動し、*host.json* または `D:\home\site\wwwroot<function_name>` を更新し、関数のファイルを更新します。
 
-4. Drag-and-drop a file you want to upload into the appropriate folder in the file grid. There are two areas in the file grid where you can drop a file. For *.zip* files, a box appears with the label "Drag here to upload and unzip." For other file types, drop in the file grid but outside the "unzip" box.
+4. アップロードするファイルをファイル グリッドのフォルダーにドラッグアンドドロップします。ファイルをドロップできるファイル グリッドには 2 つの領域があります。*.zip* ファイルの場合は、[Drag here to upload and unzip (アップロードして解凍するにはここにドラッグしてください)] というラベルの付いたボックスが表示されます。 他の種類のファイルの場合は、ファイル グリッド内の [unzip (ファイルの解凍)] ボックスの外側にドロップします。
 
-#### <a name="to-use-ftp"></a>To use FTP
+#### FTP を使用するには
 
-1. Follow the instructions [here](../app-service-web/web-sites-deploy.md#ftp) to get FTP configured.
+1. [こちら](../app-service-web/web-sites-deploy.md#ftp)の指示に従って、FTP を構成します。
 
-2. When you're connected to the function app site, copy an updated *host.json* file to `/site/wwwroot` or copy function files to `/site/wwwroot/<function_name>`.
+2. 関数アプリのサイトに接続されたら、更新された *host.json* ファイルを `/site/wwwroot` にコピーするか、関数ファイルを `/site/wwwroot/<function_name>` にコピーします。
 
-#### <a name="to-use-continuous-deployment"></a>To use continuous deployment
+#### 継続的なデプロイを使用するには
 
-Follow the instructions in the topic [Continuous deployment for Azure Functions](functions-continuous-deployment.md).
+「[Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)」のトピックの手順に従ってください。
 
-## <a name="parallel-execution"></a>Parallel execution
+## 並列実行
 
-When multiple triggering events occur faster than a single-threaded function runtime can process them, the runtime may invoke the function multiple times in parallel.  If a function app is using the [Dynamic Service Plan](functions-scale.md#dynamic-service-plan), the function app could scale out automatically.  Each instance of the function app, whether the app runs on the Dynamic Service Plan or a regular [App Service Plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md), might process concurrent function invocations in parallel using multiple threads.  The maximum number of concurrent function invocations in each function app instance varies based on the memory size of the function app. 
+シングル スレッドの関数ランタイムが処理できるより速く複数のトリガー イベントが発生する場合、ランタイムは関数を並列で複数回呼び出す場合があります。関数アプリが[動的サービス プラン](functions-scale.md#dynamic-service-plan)を使用している場合、関数アプリは自動的にスケールアウトできます。アプリが動的サービス プランと標準の [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)のどちらで実行されていても、関数アプリの各インスタンスは、複数の同時関数呼び出しを、複数のスレッドを使用して並列に処理できます。各関数アプリ インスタンスでの同時関数呼び出しの最大数は、関数アプリのメモリ サイズによって異なります。
 
-## <a name="azure-functions-pulse"></a>Azure Functions Pulse  
+## Azure Functions パルス  
 
-Pulse is a live event stream which shows how often your function runs, as well as successes and failures. You can also monitor your average execution time. We’ll be adding more features and customization to it over time. You can access the **Pulse** page from the **Monitoring** tab.
+パルスは、関数の実行頻度と成功または失敗を示すライブ イベント ストリームです。また、平均実行時間を監視することができます。今後、さらに機能とカスタマイズが追加される予定です。**[パルス]** ページには **[監視]** タブからアクセスできます。
 
-## <a name="repositories"></a>Repositories
+## リポジトリ
 
-The code for Azure Functions is open source and stored in GitHub repositories:
+Azure Functions のコードはオープン ソースであり、GitHub リポジトリに保存されています。
 
-* [Azure Functions runtime](https://github.com/Azure/azure-webjobs-sdk-script/)
-* [Azure Functions portal](https://github.com/projectkudu/AzureFunctionsPortal)
-* [Azure Functions templates](https://github.com/Azure/azure-webjobs-sdk-templates/)
+* [Azure Functions ランタイム](https://github.com/Azure/azure-webjobs-sdk-script/)
+* [Azure Functions ポータル](https://github.com/projectkudu/AzureFunctionsPortal)
+* [Azure Functions テンプレート](https://github.com/Azure/azure-webjobs-sdk-templates/)
 * [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/)
-* [Azure WebJobs SDK Extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/)
+* [Azure WebJobs SDK 拡張機能](https://github.com/Azure/azure-webjobs-sdk-extensions/)
 
-## <a name="bindings"></a>Bindings
+## バインド
 
-Here is a table of all supported bindings.
+サポートされるすべてのバインドを次の表に示します。
 
-[AZURE.INCLUDE [dynamic compute](../../includes/functions-bindings.md)]
+[AZURE.INCLUDE [動的コンピューティング](../../includes/functions-bindings.md)]
 
-## <a name="reporting-issues"></a>Reporting Issues
+## 問題の報告
 
-[AZURE.INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)] 
+[AZURE.INCLUDE [問題の報告](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For more information, see the following resources:
+詳細については、次のリソースを参照してください。
 
-* [Azure Functions C# developer reference](functions-reference-csharp.md)
-* [Azure Functions F# developer reference](functions-reference-fsharp.md)
-* [Azure Functions NodeJS developer reference](functions-reference-node.md)
-* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
-* [Azure Functions: The Journey](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/) on the Azure App Service team blog. A history of how Azure Functions was developed.
+* [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
+* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
+* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
+* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+* Azure App Service チーム ブログの「[Azure Functions: The Journey (Azure Functions への道のり)](https://blogs.msdn.microsoft.com/appserviceteam/2016/04/27/azure-functions-the-journey/)」。Azure Functions の開発の歴史。
 
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

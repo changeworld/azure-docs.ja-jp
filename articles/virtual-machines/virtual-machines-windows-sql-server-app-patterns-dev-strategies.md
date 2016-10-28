@@ -1,334 +1,329 @@
 <properties
-    pageTitle="SQL Server Application Patterns on VMs | Microsoft Azure"
-    description="This article covers application patterns for SQL Server on Azure VMs. It provides solution architects and developers a foundation for good application architecture and design."
-    services="virtual-machines-windows"
-    documentationCenter="na"
-    authors="luisherring"
-    manager="jhubbard"
-    editor=""
-    tags="azure-service-management,azure-resource-manager" />
+	pageTitle="VM での SQL Server アプリケーション パターン |Microsoft Azure"
+	description="この記事では、Azure VM での SQL Server のアプリケーション パターンについて説明します。ソリューション設計者および開発者向けに、優れたアプリケーション アーキテクチャと設計の基礎について説明しています。"
+	services="virtual-machines-windows"
+	documentationCenter="na"
+	authors="luisherring"
+	manager="jhubbard"
+	editor=""
+	tags="azure-service-management,azure-resource-manager" />
 <tags
-    ms.service="virtual-machines-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="vm-windows-sql-server"
-    ms.workload="infrastructure-services"
-    ms.date="08/19/2016"
-    ms.author="lvargas" />
+	ms.service="virtual-machines-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="08/19/2016"
+	ms.author="lvargas" />
 
-
-# <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Application Patterns and Development Strategies for SQL Server in Azure Virtual Machines
+# Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-## <a name="summary:"></a>Summary:
-Determining which application pattern or patterns to use for your SQL-Server-based applications in Azure environment is an important design decision and it requires a solid understanding of how SQL Server and each infrastructure component of Azure work together. With SQL Server in Azure Infrastructure Services, you can easily migrate, maintain, and monitor your existing SQL Server applications built-on Windows Server to virtual machines in Azure.
+## 概要:
+Azure 環境で SQL Server ベースのアプリケーションに使用するアプリケーション パターンを決めることは、設計上の重要な決断です。そのためには、SQL Server と Azure の各インフラストラクチャ コンポーネントを連携させる方法を確実に把握している必要があります。Azure インフラストラクチャ サービスの SQL Server を使用すると、Windows Server 上に構築された既存の SQL Server アプリケーションを Azure の仮想マシンに簡単に移行し、管理および監視できます。
 
-The goal of this article is to provide solution architects and developers a foundation for good application architecture and design, which they can follow when migrating existing applications to Azure as well as developing new applications in Azure.
+この記事の目的は、ソリューション設計者および開発者に、既存のアプリケーションを Azure に移行する際や Azure で新しいアプリケーションを開発する際に利用できる優れたアプリケーション アーキテクチャと設計の基礎を理解してもらうことです。
 
-For each application pattern, you will find an on-premises scenario, its respective cloud-enabled solution, and the related technical recommendations. In addition, the article discusses Azure-specific development strategies so that you can design your applications correctly. Due to the many possible application patterns, it’s recommended that architects and developers should choose the most appropriate pattern for their applications and users.
+アプリケーション パターンごとに、オンプレミスのシナリオ、それぞれのクラウド対応ソリューション、および関連する技術的な推奨事項が示されています。また、アプリケーションを正しく設計できるように、Azure 固有の開発計画についても説明します。考えられるアプリケーション パターンはたくさんありますが、設計者および開発者には、アプリケーションやユーザーに最も適したパターンを選択することをお勧めします。
 
-**Technical Contributors:** Luis Carlos Vargas Herring, Madhan Arumugam Ramakrishnan
+**技術寄稿者:** Luis Carlos Vargas Herring、Madhan Arumugam Ramakrishnan
 
-**Technical Reviewers:** Corey Sanders, Drew McDaniel, Narayan Annamalai, Nir Mashkowski, Sanjay Mishra, Silvano Coriani, Stefan Schackow, Tim Hickey, Tim Wieman, Xin Jin
+**技術校閲者:** Corey Sanders、Drew McDaniel、Narayan Annamalai、Nir Mashkowski、Sanjay Mishra、Silvano Coriani、Stefan Schackow、Tim Hickey、Tim Wieman、Xin Jin
 
-## <a name="introduction"></a>Introduction
+## はじめに
 
-You can develop many types of n-tier applications by separating the components of the different application layers on different machines as well as in separate components. For example, you can place the client application and business rules components in one machine, front-end web tier and data access tier components in another machine, and a back-end database tier in another machine. This kind of structuring helps isolate each tier from each other. If you change where data comes from, you don’t need to change the client or web application but only the data access tier components.
+さまざまなアプリケーション レイヤーのコンポーネントを異なるコンピューターや個々のコンポーネントに分離することで、さまざまな種類の n 層アプリケーションを開発できます。たとえば、クライアント アプリケーションとビジネス ルールのコンポーネントを 1 台のコンピューターに、フロントエンド Web 層とデータ アクセス層のコンポーネントを別のコンピューターに、バックエンド データベース層をまた別のコンピューターに配置することができます。この種の構成により、各層を互いに分離することができます。データ ソースを変更する際に、クライアントや Web アプリケーションを変更する必要はなく、変更はデータ アクセス層のコンポーネントのみで済みます。
 
-A typical *n-tier* application includes the presentation tier, the business tier, and the data tier:
+一般的な *n 層*アプリケーションには、プレゼンテーション層、ビジネス層、データ層があります。
 
 
-| Tier              | Description                                                                                                                                                                     |
+| レベル | Description |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Presentation** | The *presentation tier* (web tier, front-end tier) is the layer in which users interact with an application.                                                                      |
-| **Business**     | The *business tier* (middle tier) is the layer that the presentation tier and the data tier use to communicate with each other and includes the core functionality of the system. |
-| **Data**         | The *data tier* is basically the server that stores an application's data (for example, a server running SQL Server).                                                             |
+| **プレゼンテーション** | *プレゼンテーション層* (Web 層、フロントエンド層) は、ユーザーがアプリケーションとやり取りするレイヤーです。 |
+| **勤務先** | *ビジネス層* (中間層) は、プレゼンテーション層とデータ層が相互に通信するために使用するレイヤーです。システムのコア機能が含まれています。 |
+| **データ** | *データ層*は、基本的に、アプリケーションのデータを格納するサーバー (たとえば、SQL Server を実行するサーバー) です。 |
 
-Application layers describe the logical groupings of the functionality and components in an application; whereas tiers describe the physical distribution of the functionality and components on separate physical servers, computers, networks, or remote locations. The layers of an application may reside on the same physical computer (the same tier) or may be distributed over separate computers (n-tier), and the components in each layer communicate with components in other layers through well-defined interfaces. You can think of the term tier as referring to physical distribution patterns such as two-tier, three-tier, and n-tier. A **2-tier application pattern** contains two application tiers: application server and database server. The direct communication happens between the application server and the database server. The application server contains both web-tier and business-tier components. In **3-tier application pattern**, there are three application tiers: web server, application server, which contains the business logic tier and/or business tier data access components, and the database server. The communication between the web server and the database server happens over the application server. For detailed information on application layers and tiers, see [Microsoft Application Architecture Guide](https://msdn.microsoft.com/library/ff650706.aspx).
+アプリケーションのレイヤーは、アプリケーションの機能とコンポーネントの論理的なグループを表します。一方、層は、個々の物理サーバー、コンピューター、ネットワーク、またはリモートの場所にある機能とコンポーネントの物理的な分散を表します。アプリケーションのレイヤーは、同じ物理コンピューター (同じ層) に配置することや、別々のコンピューター (n 層) に分散させることができます。各レイヤー内のコンポーネントは、適切に定義されたインターフェイスを介して他のレイヤーのコンポーネントと通信します。層という用語は、2 層、3 層、n 層など、物理的な分散パターンを指していると考えることができます。**2 層アプリケーション パターン**には、アプリケーション サーバーとデータベース サーバーという 2 つのアプリケーション層があります。アプリケーション サーバーとデータベース サーバー間の通信は、直接行われます。アプリケーション サーバーには、Web 層とビジネス層の両方のコンポーネントが含まれています。**3 層アプリケーション パターン**には、Web サーバー、アプリケーション サーバー (ビジネス ロジック層やビジネス層のデータ アクセス コンポーネントが含まれる)、およびデータベース サーバーという 3 つのアプリケーション層があります。Web サーバーとデータベース サーバー間の通信は、アプリケーション サーバーを介して行われます。アプリケーションのレイヤーと層の詳細については、[Microsoft アプリケーション アーキテクチャ ガイド](https://msdn.microsoft.com/library/ff650706.aspx)を参照してください。
 
-Before you start reading this article, you should have knowledge on the fundamental concepts of SQL Server and Azure. For information, see [SQL Server Books Online](https://msdn.microsoft.com/library/bb545450.aspx), [SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md) and [Azure.com](https://azure.microsoft.com/).
+この記事を読む前に、SQL Server と Azure の基本的な概念に関する知識が必要です。詳細については、[SQL Server オンライン ブック](https://msdn.microsoft.com/library/bb545450.aspx)、[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に関するページ、および [Azure.com](https://azure.microsoft.com/) を参照してください。
 
-This article describes several application patterns that can be suitable for your simple applications as well as the highly complex enterprise applications. Before detailing each pattern, we recommend that you should familiarize yourself with the available data storage services in Azure, such as [Azure Storage](../storage/storage-introduction.md), [Azure SQL Database](../sql-database/sql-database-technical-overview.md), and [SQL Server in an Azure Virtual Machine](virtual-machines-windows-sql-server-iaas-overview.md). To make the best design decisions for your applications, understand when to use which data storage service clearly.
+この記事では、単純なアプリケーションおよび非常に複雑なエンタープライズ アプリケーションに適したいくつかのアプリケーション パターンについて説明します。各パターンの詳細を読む前に、[Azure Storage](../storage/storage-introduction.md)、[Azure SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) など、Azure で利用可能なデータ ストレージ サービスについて理解しておくことをお勧めします。アプリケーションの設計に関して最適な決断を下すには、いつ、どのデータ ストレージ サービスを使用するかを明確に把握する必要があります。
 
-### <a name="choose-sql-server-in-an-azure-virtual-machine,-when:"></a>Choose SQL Server in an Azure Virtual Machine, when:
+### 次の場合に、Azure の仮想マシン内の SQL Server を選択します。
 
-- You need control on SQL Server and Windows. For example, this might include the SQL Server version, special hotfixes, performance configuration, etc.
+- SQL Server および Windows を制御する必要がある。たとえば、制御対象には、SQL Server バージョン、特別な修正プログラム、パフォーマンスの構成などがあります。
 
-- You need a full compatibility with SQL Server on-premises and want to move existing applications to Azure as-is.
+- オンプレミスの SQL Server と完全な互換性が必要で、既存のアプリケーションをそのまま Azure に移行する。
 
-- You want to leverage the capabilities of the Azure environment but Azure SQL Database does not support all the features that your application requires. This could include the following areas:
+- Azure 環境の機能を活用したいが、Azure SQL Database ではアプリケーションに必要なすべての機能をサポートしていない。これには、次のような点が関係します。
 
-    - **Database size**: At the time this article was updated, SQL Database supports a database of up to 1 TB of data. If your application requires more than 1 TB of data and you don’t want to implement custom sharding solutions, it’s recommended that you use SQL Server in an Azure Virtual Machine. For the latest information, see [Scaling Out Azure SQL Databases](https://msdn.microsoft.com/library/azure/dn495641.aspx) and [Azure SQL Database Service Tiers and Performance Levels](../sql-database/sql-database-service-tiers.md).
-    - **HIPAA compliance**: Healthcare customers and Independent Software Vendors (ISVs) might choose [SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md) instead of [Azure SQL Database](../sql-database/sql-database-technical-overview.md) because SQL Server in an Azure Virtual Machine is covered by HIPAA Business Associate Agreement (BAA). For information on compliance, see [Microsoft Azure Trust Center: Compliance](https://azure.microsoft.com/support/trust-center/compliance/).
-    - **Instance-level features**: At this time, SQL Database doesn’t support features that live outside of the database (such as Linked Servers, Agent jobs, FileStream, Service Broker, etc.). For more information, see [Azure SQL Database Guidelines and Limitations](https://msdn.microsoft.com/library/azure/ff394102.aspx).
+	- **データベースのサイズ**: この記事の更新時点では、SQL Database は最大で 1 TB のデータのデータベースをサポートしています。アプリケーションで 1 TB を超すデータが必要で、カスタム シャーディング ソリューションを実装したくない場合は、Azure の仮想マシン内の SQL Server を使用することをお勧めします。最新情報については、「[Azure SQL データベースのスケール アウト](https://msdn.microsoft.com/library/azure/dn495641.aspx)」および [Azure SQL Database のサービス階層とパフォーマンス レベル](../sql-database/sql-database-service-tiers.md)に関するページを参照してください。
+	- **HIPAA のコンプライアンス**: Azure の Virtual Machines 内の SQL Server は HIPAA Business Associate Agreement (BAA) の対象になっているため、医療関係のお客様や独立系ソフトウェア ベンダー (ISV) は、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) の代わりに、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) を選択できます。コンプライアンスについては、「[Microsoft Azure セキュリティ センター: コンプライアンス](https://azure.microsoft.com/support/trust-center/compliance/)」を参照してください。
+	- **インスタンス レベルの機能**: 現時点で、SQL Database では、データベース外部の機能 (リンク サーバー、エージェント ジョブ、FileStream、Service Broker など) をサポートしていません。詳細については、「[Azure SQL Database のガイドラインと制限事項](https://msdn.microsoft.com/library/azure/ff394102.aspx)」を参照してください。
 
-## <a name="1-tier-(simple):-single-virtual-machine"></a>1-tier (simple): single virtual machine
+## 1 層 (単純): 単一の仮想マシン
 
-In this application pattern, you deploy your SQL Server application and database to a standalone virtual machine in Azure. The same virtual machine contains your client/web application, business components, data access layer, and the database server. The presentation, business, and data access code are logically separated but are physically located in a single-server machine. Most customers start with this application pattern and then, they scale out by adding more web roles or virtual machines to their system.
+このアプリケーション パターンでは、SQL Server アプリケーションとデータベースを Azure のスタンドアロンの仮想マシンにデプロイします。同じ仮想マシンに、クライアントや Web アプリケーション、ビジネス コンポーネント、データ アクセス レイヤー、およびデータベース サーバーが含まれます。プレゼンテーション、ビジネス、データ アクセス コードは、論理的に分離されますが、1 台のサーバー コンピューターに物理的に配置されます。ほとんどのお客様は、このアプリケーション パターンから開始し、その後、システムに Web ロールや仮想マシンを追加することでスケールアウトします。
 
-This application pattern is useful when:
+このアプリケーション パターンは、次のような場合に便利です。
 
-- You want to perform a simple migration to Azure platform to evaluate whether the platform answers your application’s requirements or not.
+- Azure プラットフォームがアプリケーションの要件に対応しているかどうかを評価するために、プラットフォームへの簡単な移行を実行する。
 
-- You want to keep all the application tiers hosted in the same virtual machine in the same Azure data center to reduce the latency between tiers.
+- 層の間の待機時間を減らすために、同じ仮想マシンでホストされているすべてのアプリケーション層を同じ Azure データ センターに保持する。
 
-- You want to quickly provision development and test environments for short periods of time.
+- 開発をすばやくプロビジョニングし、短期間の環境テストを実施する。
 
-- You want to perform stress testing for varying workload levels but at the same time you do not want to own and maintain many physical machines all the time.
+- さまざまなワークロード レベルのストレス テストを実行したいが、多数の物理コンピューターをずっと所有して管理したくない。
 
-The following diagram demonstrates a simple on-premises scenario and how you can deploy its cloud enabled solution in a single virtual machine in Azure.
+次の図には、単純なオンプレミスのシナリオと、そのクラウド対応ソリューションを Azure の単一の仮想マシンにデプロイする方法を示します。
 
-![1-tier application pattern](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728008.png)
+![1 層アプリケーション パターン](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728008.png)
 
-Deploying the business layer (business logic and data access components) on the same physical tier as the presentation layer can maximize application performance, unless you must use a separate tier due to scalability or security concerns.
+スケーラビリティやセキュリティ上の理由から個別の層を使用する必要がない限り、プレゼンテーション レイヤーと同じ物理層にビジネス レイヤー (ビジネス ロジックおよびデータ アクセス コンポーネント) をデプロイすると、アプリケーションのパフォーマンスを最大限に引き出すことができます。
 
-Since this is a very common pattern to start with, you might find the following article on migration useful for moving your data to your SQL Server VM: [Migrating a Database to SQL Server on an Azure VM](virtual-machines-windows-migrate-sql.md).
+これは出発点として非常に一般的なパターンです。データを SQL Server VM に移行する際は、移行に関する記事 (「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)」) が役に立ちます。
 
-## <a name="3-tier-(simple):-multiple-virtual-machines"></a>3-tier (simple): multiple virtual machines
+## 3 層 (単純): 複数の仮想マシン
 
-In this application pattern, you deploy a 3-tier application in Azure by placing each application tier in a different virtual machine. This provides a flexible environment for an easy scale-up and scale-out scenarios. When one virtual machine contains your client/web application, the other one hosts your business components, and the other one hosts the database server.
+このアプリケーション パターンでは、各アプリケーション層を別々の仮想マシンに配置して、3 層アプリケーションを Azure にデプロイします。こうすると、簡単にスケールアップおよびスケールアウトできる柔軟な環境が実現します。1 台の仮想マシンにクライアントや Web アプリケーションを配置し、別の 1 台でビジネス コンポーネントをホストして、また別の 1 台でデータベース サーバーをホストします。
 
-This application pattern is useful when:
+このアプリケーション パターンは、次のような場合に便利です。
 
-- You want to perform a migration of complex database applications to Azure Virtual Machines.
+- 複雑なデータベース アプリケーションを Azure Virtual Machines に移行する。
 
-- You want different application tiers to be hosted in different regions. For example, you might have shared databases that are deployed to multiple regions for reporting purposes.
+- 異なるアプリケーション層を別々のリージョンでホストする。たとえば、レポート目的で共有データベースを複数のリージョンにデプロイできます。
 
-- You want to move enterprise applications from on-premises virtualized platforms to Azure Virtual Machines. For a detailed discussion on enterprise applications, see [What is an Enterprise Application](https://msdn.microsoft.com/library/aa267045.aspx).
+- エンタープライズ アプリケーションをオンプレミスの仮想化プラットフォームから Azure Virtual Machines に移行する。エンタープライズ アプリケーションの詳細については、[エンタープライズ アプリケーションの概要](https://msdn.microsoft.com/library/aa267045.aspx)に関するページを参照してください。
 
-- You want to quickly provision development and test environments for short periods of time.
+- 開発をすばやくプロビジョニングし、短期間の環境テストを実施する。
 
-- You want to perform stress testing for varying workload levels but at the same time you do not want to own and maintain many physical machines all the time.
+- さまざまなワークロード レベルのストレス テストを実行したいが、多数の物理コンピューターをずっと所有して管理したくない。
 
-The following diagram demonstrates how you can place a simple 3-tier application in Azure by placing each application tier in a different virtual machine.
+次の図には、各アプリケーション層を別々の仮想マシンに配置して、単純な 3 層アプリケーションを Azure に配置する方法を示します。
 
-![3-tier application pattern](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728009.png)
+![3 層アプリケーション パターン](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728009.png)
 
-In this application pattern, there is only one virtual machine (VM) in each tier. If you have multiple VMs in Azure, we recommend that you set up a virtual network. [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) creates a trusted security boundary and also allows VMs to communicate among themselves over the private IP address. In addition, always make sure that all Internet connections only go to the presentation tier. When following this application pattern, manage the network security group rules to control access. For more information, see [Allow external access to your VM using the Azure portal](virtual-machines-windows-nsg-quickstart-portal.md).
+このアプリケーション パターンでは、層ごとに 1 台だけ仮想マシン (VM) があります。Azure に複数の VM がある場合は、仮想ネットワークをセットアップすることをお勧めします。[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) は、信頼できるセキュリティ境界を作成し、VM 間でプライベート IP アドレスを使用して通信できるようにします。さらに、必ず、すべてのインターネット接続がプレゼンテーション層にのみ転送されるようにします。このアプリケーション パターンに従う場合は、ネットワーク セキュリティ グループのルールを管理してアクセスを制御します。詳細については、「[Azure ポータルを使用して VM への外部アクセスを許可する](virtual-machines-windows-nsg-quickstart-portal.md)」を参照してください。
 
-In the diagram, Internet Protocols can be TCP, UDP, HTTP, or HTTPS.
+この図では、インターネット プロトコルには、TCP、UDP、HTTP、または HTTPS を使用できます。
 
->[AZURE.NOTE] Setting up a virtual network in Azure is free of charge. However, you are charged for the VPN gateway that connects to on-premises. This charge is based on the amount of time that connection is provisioned and available.
+>[AZURE.NOTE] Azure の仮想ネットワークは無料でセットアップできます。ただし、オンプレミスに接続する VPN ゲートウェイについては料金が発生します。この料金は、接続がプロビジョニングされて使用可能になっている時間に基づいて課金されます。
 
-## <a name="2-tier-and-3-tier-with-presentation-tier-scale-out"></a>2-tier and 3-tier with presentation tier scale-out
+## 2 層および 3 層 (プレゼンテーション層のスケールアウト)
 
-In this application pattern, you deploy 2-tier or 3-tier database application to Azure Virtual Machines by placing each application tier in a different virtual machine. In addition, you scale out the presentation tier due to increased volume of incoming client requests.
+このアプリケーション パターンでは、各アプリケーション層を別々の仮想マシンに配置して、2 層または 3 層データベース アプリケーションを Azure Virtual Machines にデプロイします。さらに、着信クライアント要求の量の増加に伴い、プレゼンテーション層をスケールアウトします。
 
-This application pattern is useful when:
+このアプリケーション パターンは、次のような場合に便利です。
 
-- You want to move enterprise applications from on-premises virtualized platforms to Azure Virtual Machines.
+- エンタープライズ アプリケーションをオンプレミスの仮想化プラットフォームから Azure Virtual Machines に移行する。
 
-- You want to scale out the presentation tier due to increased volume of incoming client requests.
+- 着信クライアント要求の量の増加に伴い、プレゼンテーション層をスケールアウトする。
 
-- You want to quickly provision development and test environments for short periods of time.
+- 開発をすばやくプロビジョニングし、短期間の環境テストを実施する。
 
-- You want to perform stress testing for varying workload levels but at the same time you do not want to own and maintain many physical machines all the time.
+- さまざまなワークロード レベルのストレス テストを実行したいが、多数の物理コンピューターをずっと所有して管理したくない。
 
-- You want to own an infrastructure environment that can scale up and down on demand.
+- 必要に応じてスケールアップおよびスケールダウンできるインフラストラクチャ環境を所有したい。
 
-The following diagram demonstrates how you can place the application tiers in multiple virtual machines in Azure by scaling out the presentation tier due to increased volume of incoming client requests. As seen in the diagram, Azure Load Balancer is responsible for distributing traffic across multiple virtual machines and also determining which web server to connect to. Having multiple instances of the web servers behind a load balancer ensures the high availability of the presentation tier.
+次の図には、着信クライアント要求の量の増加に伴い、プレゼンテーション層をスケールアウトして、アプリケーション層を Azure の複数の仮想マシンに配置する方法を示します。この図に示すように、Azure Load Balancer が複数の仮想マシンにトラフィックを分散し、さらに、接続する Web サーバーを決定します。ロード バランサーの背後に Web サーバーのインスタンスを複数配置すると、プレゼンテーション層の高可用性が確保されます。
 
-![Application pattern - presentation tier scale out](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728010.png)
+![アプリケーション パターン - プレゼンテーション層のスケールアウト](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728010.png)
 
-### <a name="best-practices-for-2-tier,-3-tier,-or-n-tier-patterns-that-have-multiple-vms-in-one-tier"></a>Best practices for 2-tier, 3-tier, or n-tier patterns that have multiple VMs in one tier
+### 1 つの層に複数の VM を配置する 2 層、3 層、または n 層パターンのベスト プラクティス
 
-It’s recommended that you place the virtual machines that belong to the same tier in the same cloud service and in the same the availability set. For example, place a set of web servers in **CloudService1** and **AvailabilitySet1** and a set of database servers in **CloudService2** and **AvailabilitySet2**. An availability set in Azure enables you to place the high availability nodes into separate fault domains and upgrade domains.
+同じ層に属する仮想マシンを同じクラウド サービスおよび同じ可用性セットに配置することをお勧めします。たとえば、一連の Web サーバーを **CloudService1** と **AvailabilitySet1** に配置し、一連のデータベース サーバーを **CloudService2** と **AvailabilitySet2** に配置します。Azure の可用性セットを使用すると、高可用性ノードを別個の障害ドメインとアップグレード ドメインに配置できるようになります。
 
-To leverage multiple VM instances of a tier, you need to configure Azure Load Balancer between application tiers. To configure Load Balancer in each tier, create a load-balanced endpoint on each tier’s VMs separately. For a specific tier, first create VMs in the same cloud service. This ensures that they have the same public Virtual IP address. Next, create an endpoint on one of the virtual machines on that tier. Then, assign the same endpoint to the other virtual machines on that tier for load balancing. By creating a load-balanced set, you distribute traffic across multiple virtual machines and also allow the Load Balancer to determine which node to connect when a backend VM node fails. For example, having multiple instances of the web servers behind a load balancer ensures the high availability of the presentation tier.
+1 つの層の複数の VM インスタンスを活用するには、アプリケーション層の間に Azure Load Balancer を構成する必要があります。各層で Load Balancer を構成するには、各層の VM に個別に負荷分散エンドポイントを作成します。まず特定の層の VM を同じクラウド サービスに作成します。これにより、すべての VM で同じパブリック仮想 IP アドレスを使用するようになります。次に、その層の仮想マシンの 1 つにエンドポイントを作成します。その後、負荷分散のために同じエンドポイントをその層の他の仮想マシンに割り当てます。負荷分散セットを作成すると、複数の仮想マシンにトラフィックが分散され、バックエンド VM ノードに障害が発生したときに接続するノードを Load Balancer が決定できるようになります。たとえば、ロード バランサーの背後に Web サーバーのインスタンスを複数配置すると、プレゼンテーション層の高可用性が確保されます。
 
-As a best practice, always make sure that all internet connections first go to the presentation tier. The presentation layer accesses the business tier, and then the business tier accesses the data tier. For more information on how to allow access to the presentation layer, see [Allow external access to your VM using the Azure portal](virtual-machines-windows-nsg-quickstart-portal.md).
+ベスト プラクティスとして、必ず、すべてのインターネット接続がプレゼンテーション層にのみ転送されるようにします。プレゼンテーション レイヤーがビジネス層にアクセスし、ビジネス層がデータ層にアクセスします。プレゼンテーション層へのアクセスを許可する方法の詳細については、「[Azure ポータルを使用して VM への外部アクセスを許可する](virtual-machines-windows-nsg-quickstart-portal.md)」を参照してください。
 
-Note that the Load Balancer in Azure works similar to load balancers in an on-premises environment. For more information, see [Load balancing for Azure infrastructure services](virtual-machines-windows-load-balance.md).
+Azure Load Balancer はオンプレミスの環境のロード バランサーと同じような動作をします。詳細については、「[Azure インフラストラクチャ サービスの負荷分散](virtual-machines-windows-load-balance.md)」を参照してください。
 
-In addition, we recommend that you set up a private network for your virtual machines by using Azure Virtual Network. This allows them to communicate among themselves over the private IP address. For more information, see [Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
+また、Azure Virtual Network を使用して、仮想マシン用のプライベート ネットワークをセットアップすることもお勧めします。これにより、仮想マシン間でプライベート IP アドレスを使用して通信できるようになります。詳細については、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) に関するページを参照してください。
 
-## <a name="2-tier-and-3-tier-with-business-tier-scale-out"></a>2-tier and 3-tier with business tier scale-out
+## 2 層および 3 層 (ビジネス層のスケールアウト)
 
-In this application pattern, you deploy 2-tier or 3-tier database application to Azure Virtual Machines by placing each application tier in a different virtual machine. In addition, you might want to distribute the application server components to multiple virtual machines due to the complexity of your application.
+このアプリケーション パターンでは、各アプリケーション層を別々の仮想マシンに配置して、2 層または 3 層データベース アプリケーションを Azure Virtual Machines にデプロイします。また、アプリケーションの複雑さに伴い、アプリケーション サーバー コンポーネントを複数の仮想マシンに分散することもできます。
 
-This application pattern is useful when:
+このアプリケーション パターンは、次のような場合に便利です。
 
-- You want to move enterprise applications from on-premises virtualized platforms to Azure Virtual Machines.
+- エンタープライズ アプリケーションをオンプレミスの仮想化プラットフォームから Azure Virtual Machines に移行する。
 
-- You want to distribute the application server components to multiple virtual machines due to the complexity of your application.
+- アプリケーションの複雑さに伴い、アプリケーション サーバー コンポーネントを複数の仮想マシンに分散する。
 
-- You want to move business logic heavy on-premises LOB (line-of-business) applications to Azure Virtual Machines. LOB applications are a set of critical computer applications that are vital to running an enterprise, such as accounting, human resources (HR), payroll, supply chain management, and resource planning applications.
+- ビジネス ロジックの負荷が高いオンプレミスの LOB (基幹業務) アプリケーションを Azure Virtual Machines に移行する。LOB アプリケーションとは、アカウンティング、人事 (HR)、給与処理、サプライ チェーン管理、リソース計画アプリケーションなど、企業の運営に欠かせない一連の重要なコンピューター アプリケーションです。
 
-- You want to quickly provision development and test environments for short periods of time.
+- 開発をすばやくプロビジョニングし、短期間の環境テストを実施する。
 
-- You want to perform stress testing for varying workload levels but at the same time you do not want to own and maintain many physical machines all the time.
+- さまざまなワークロード レベルのストレス テストを実行したいが、多数の物理コンピューターをずっと所有して管理したくない。
 
-- You want to own an infrastructure environment that can scale up and down on demand.
+- 必要に応じてスケールアップおよびスケールダウンできるインフラストラクチャ環境を所有したい。
 
-The following diagram demonstrates an on-premises scenario and its cloud enabled solution. In this scenario, you place the application tiers in multiple virtual machines in Azure by scaling out the business tier, which contains the business logic tier and data access components. As seen in the diagram, Azure Load Balancer is responsible for distributing traffic across multiple virtual machines and also determining which web server to connect to. Having multiple instances of the application servers behind a load balancer ensures the high availability of the business tier. For more information, see [Best practices for 2-tier, 3-tier, or n-tier application patterns that have multiple virtual machines in one tier](#best-practices-for-2-tier-3-tier-or-n-tier-patterns-that-have-multiple-vms-in-one-tier).
+次の図には、オンプレミスのシナリオとそのクラウド対応ソリューションを示します。このシナリオでは、ビジネス ロジック層とデータ アクセス コンポーネントを含むビジネス層をスケールアウトして、アプリケーション層を Azure の複数の仮想マシンに配置します。この図に示すように、Azure Load Balancer が複数の仮想マシンにトラフィックを分散し、さらに、接続する Web サーバーを決定します。ロード バランサーの背後にアプリケーション サーバーのインスタンスを複数配置すると、ビジネス層の高可用性が確保されます。詳細については、「[1 つの層に複数の VM を配置する 2 層、3 層、または n 層パターンのベスト プラクティス](#best-practices-for-2-tier-3-tier-or-n-tier-patterns-that-have-multiple-vms-in-one-tier)」を参照してください。
 
-![Application pattern with business tier scale out](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728011.png)
+![アプリケーション パターン (ビジネス層のスケールアウト)](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728011.png)
 
-## <a name="2-tier-and-3-tier-with-presentation-and-business-tiers-scale-out-and-hadr"></a>2-tier and 3-tier with presentation and business tiers scale-out and HADR
+## 2 層および 3 層 (プレゼンテーション層とビジネス層のスケールアウトおよび HADR)
 
-In this application pattern, you deploy 2-tier or 3-tier database application to Azure Virtual Machines by distributing the presentation tier (web server) and the business tier (application server) components to multiple virtual machines. In addition, you implement high-availability and disaster recovery solutions for your databases in Azure virtual machines.
+このアプリケーション パターンでは、プレゼンテーション層 (Web サーバー) とビジネス層 (アプリケーション サーバー) のコンポーネントを複数の仮想マシンに分散して、2 層または 3 層データベース アプリケーションを Azure Virtual Machines にデプロイします。また、Azure の仮想マシンにデータベースの High Availability and Disaster Recovery ソリューションを実装します。
 
-This application pattern is useful when:
+このアプリケーション パターンは、次のような場合に便利です。
 
-- You want to move enterprise applications from virtualized platforms on-premises to Azure by implementing SQL Server high availability and disaster recovery capabilities.
+- SQL Server の High Availability and Disaster Recovery 機能を実装することで、エンタープライズ アプリケーションをオンプレミスの仮想化プラットフォームから Azure に移行する。
 
-- You want to scale out the presentation tier and the business tier due to increased volume of incoming client requests and the complexity of your application.
+- 着信クライアント要求の量の増加とアプリケーションの複雑さに伴い、プレゼンテーション層とビジネス層をスケールアウトする。
 
-- You want to quickly provision development and test environments for short periods of time.
+- 開発をすばやくプロビジョニングし、短期間の環境テストを実施する。
 
-- You want to perform stress testing for varying workload levels but at the same time you do not want to own and maintain many physical machines all the time.
+- さまざまなワークロード レベルのストレス テストを実行したいが、多数の物理コンピューターをずっと所有して管理したくない。
 
-- You want to own an infrastructure environment that can scale up and down on demand.
+- 必要に応じてスケールアップおよびスケールダウンできるインフラストラクチャ環境を所有したい。
 
-The following diagram demonstrates an on-premises scenario and its cloud enabled solution. In this scenario, you scale out the presentation tier and the business tier components in multiple virtual machines in Azure. In addition, you implement high availability and disaster recovery (HADR) techniques for SQL Server databases in Azure.
+次の図には、オンプレミスのシナリオとそのクラウド対応ソリューションを示します。このシナリオでは、プレゼンテーション層とビジネス層のコンポーネントを Azure の複数の仮想マシンにスケールアウトします。また、Azure に SQL Server データベースの High Availability and Disaster Recovery (HADR) 手法を実装します。
 
-Running multiple copies of an application in different VMs make sure that you are load balancing requests across them. When you have multiple virtual machines, you need to make sure that all your VMs are accessible and running at one point in time. If you configure load balancing, Azure Load Balancer tracks the health of VMs and directs incoming calls to the healthy functioning VM nodes properly. For information on how to set up load balancing of the virtual machines, see [Load balancing for Azure infrastructure services](virtual-machines-windows-load-balance.md). Having multiple instances of web and application servers behind a load balancer ensures the high availability of the presentation and business tiers.
+アプリケーションの複数のコピーを別々の VM で実行すると、VM 間で要求が負荷分散されます。複数の仮想マシンがある場合は、単一時点ですべての VM が稼働し、アクセスできるようにする必要があります。負荷分散を構成すると、Azure Load Balancer は VM の正常性を追跡し、着信呼び出しを、正常に機能している VM ノードに適切に転送します。仮想マシンの負荷分散を設定する方法の詳細については、「[Azure インフラストラクチャ サービスの負荷分散](virtual-machines-windows-load-balance.md)」を参照してください。ロード バランサーの背後に Web サーバーとアプリケーション サーバーのインスタンスを複数配置すると、プレゼンテーション層とビジネス層の高可用性が確保されます。
 
-![Scale-out and high availability](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728012.png)
+![スケールアウトと高可用性](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728012.png)
 
-### <a name="best-practices-for-application-patterns-requiring-sql-hadr"></a>Best practices for application patterns requiring SQL HADR
+### SQL HADR を必要とするアプリケーション パターンのベスト プラクティス
 
-When you set up SQL Server high availability and disaster recovery solutions in Azure Virtual Machines, setting up a virtual network for your virtual machines using [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) is mandatory.  Virtual machines within a Virtual Network will have a stable private IP address even after a service downtime, thus you can avoid the update time required for DNS name resolution. In addition, the virtual network allows you to extend your on-premises network to Azure and creates a trusted security boundary. For example, if your application has corporate domain restrictions (such as, Windows authentication, Active Directory), setting up [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) is necessary.
+Azure Virtual Machines で SQL Server の High Availability and Disaster Recovery ソリューションをセットアップする場合は、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を使用して、仮想マシン用の仮想ネットワークをセットアップする必要があります。Virtual Network 内の仮想マシンにはサービスのダウンタイム後でも安定したプライベート IP アドレスが割り当てられるため、DNS 名前解決に必要な更新時間を回避できます。また、仮想ネットワークを使用すると、オンプレミスのネットワークを Azure に拡張でき、信頼できるセキュリティ境界が作成されます。たとえば、アプリケーションに企業ドメイン制約 (Windows 認証、Active Directory など) が設定されている場合は、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) をセットアップする必要があります。
 
-Most of customers, who are running production code on Azure, are keeping both primary and secondary replicas in Azure.
+Azure で運用コードを実行しているお客様のほとんどは Azure にプライマリとセカンダリの両方のレプリカを保持しています。
 
-For comprehensive information and tutorials on high availability and disaster recovery techniques, see [High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md).
+High Availability and Disaster Recovery 手法に関する包括的な情報とチュートリアルについては、「[Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
-## <a name="2-tier-and-3-tier-using-azure-vms-and-cloud-services"></a>2-tier and 3-tier using Azure VMs and Cloud Services
+## 2 層および 3 層 (Azure VM と Cloud Services の使用)
 
-In this application pattern, you deploy 2-tier or 3-tier application to Azure by using both [Azure Cloud Services](../cloud-services/cloud-services-choose-me.md#tellmecs) (web and worker roles - Platform as a Service (PaaS)) and [Azure Virtual Machines](virtual-machines-windows-about.md) (Infrastructure as a Service (IaaS)). Using [Azure Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) for the presentation tier/business tier and SQL Server in [Azure Virtual Machines](virtual-machines-windows-about.md) for the data tier is beneficial for most applications running on Azure. The reason is that having a compute instance running on Cloud Services provides an easy management, deployment, monitoring, and scale-out.
+このアプリケーション パターンでは、[Azure Cloud Services](../cloud-services/cloud-services-choose-me.md#tellmecs) (Web ロールと worker ロール - サービスとしてのプラットフォーム (PaaS)) と [Azure Virtual Machines](virtual-machines-windows-about.md) (サービスとしてのインフラストラクチャ (IaaS)) の両方を使用して、2 層または 3 層アプリケーションを Azure にデプロイします。プレゼンテーション層とビジネス層に [Azure Cloud Services](https://azure.microsoft.com/documentation/services/cloud-services/) を使用し、データ層に [Azure Virtual Machines](virtual-machines-windows-about.md) 内の SQL Server を使用すると、Azure で実行されるほとんどのアプリケーションにとってメリットがあります。その理由は、Cloud Services で実行されるコンピューティング インスタンスにより、管理、デプロイ、監視、およびスケールアウトが簡単になるためです。
 
-With Cloud Services, Azure maintains the infrastructure for you, performs routine maintenance, patches the operating systems, and attempts to recover from service and hardware failures. When your application needs scale-out, automatic, and manual scale-out options are available for your cloud service project by increasing or decreasing the number of instances or virtual machines that are used by your application. In addition, you can use on-premises Visual Studio to deploy your application to a cloud service project in Azure.
+Cloud Services を使用すると、Azure がユーザーに代わってインフラストラクチャの保守と日常的な保守を行い、オペレーティング システムにパッチを適用し、サービスとハードウェアの障害時には回復を図ります。アプリケーションでスケールアウトが必要な場合、クラウド サービス プロジェクトでは、アプリケーションで使用するインスタンスまたは仮想マシンの数を増減させることで、自動および手動のスケールアウト オプションを使用できます。また、オンプレミスの Visual Studio を使用して、アプリケーションを Azure のクラウド サービス プロジェクトにデプロイすることもできます。
 
-In summary, if you don’t want to own extensive administrative tasks for the presentation/business tier and your application does not require any complex configuration of software or the operating system, use Azure Cloud Services. If Azure SQL Database does not support all the features you are looking for, use SQL Server in an Azure Virtual Machine for the data tier. Running an application on Azure Cloud Services and storing data in Azure Virtual Machines combines the benefits of both services. For a detailed comparison, see the section in this topic on [Comparing development strategies in Azure](#comparing-web-development-strategies-in-azure).
+まとめると、アプリケーションでソフトウェアやオペレーティング システムの複雑な構成が必要なく、プレゼンテーション層やビジネス層に対する広範な管理タスクを負わないようにしたい場合は、Azure Cloud Services を使用します。必要なすべての機能を Azure SQL Database がサポートしていない場合は、データ層に Azure の仮想マシン内の SQL Server を使用します。Azure Cloud Services でアプリケーションを実行し、Azure Virtual Machines にデータを格納すると、両方のサービスのメリットが得られます。詳細な比較については、このトピックの [Azure の開発計画の比較](#comparing-web-development-strategies-in-azure)に関するセクションを参照してください。
 
-In this application pattern, the presentation tier includes a web role, which is a Cloud Services component running in the Azure execution environment and it is customized for web application programming as supported by IIS and ASP.NET. The business or backend tier includes a worker role, which is a Cloud Services component running in the Azure execution environment and it is useful for generalized development, and may perform background processing for a web role. The database tier resides in a SQL Server virtual machine in Azure. The communication between the presentation tier and the database tier happens directly or over the business tier – worker role components.
+このアプリケーション パターンでは、プレゼンテーション層に Web ロールが含まれています。このロールは、Azure 実行環境で実行される Cloud Services コンポーネントで、IIS および ASP.NET でサポートされている Web アプリケーション プログラミング用にカスタマイズされています。ビジネス層またはバックエンド層には、worker ロールが含まれています。このロールは、Azure 実行環境で実行される Cloud Services コンポーネントで、一般的な開発に役立ち、Web ロールのバックグラウンド処理を実行できます。データベース層は、Azure の SQL Server 仮想マシンに配置されています。プレゼンテーション層とデータベース層の間の通信は、直接またはビジネス層 (worker ロール コンポーネント) を介して行われます。
 
-This application pattern is useful when:
+このアプリケーション パターンは、次のような場合に便利です。
 
-- You want to move enterprise applications from virtualized platforms on-premises to Azure by implementing SQL Server high availability and disaster recovery capabilities.
+- SQL Server の High Availability and Disaster Recovery 機能を実装することで、エンタープライズ アプリケーションをオンプレミスの仮想化プラットフォームから Azure に移行する。
 
-- You want to own an infrastructure environment that can scale up and down on demand.
+- 必要に応じてスケールアップおよびスケールダウンできるインフラストラクチャ環境を所有したい。
 
-- Azure SQL Database does not support all the features that your application or database needs.
+- アプリケーションまたはデータベースに必要なすべての機能を Azure SQL Database がサポートしていない。
 
-- You want to perform stress testing for varying workload levels but at the same time you do not want to own and maintain many physical machines all the time.
+- さまざまなワークロード レベルのストレス テストを実行したいが、多数の物理コンピューターをずっと所有して管理したくない。
 
-The following diagram demonstrates an on-premises scenario and its cloud enabled solution. In this scenario, you place the presentation tier in web roles, the business tier in worker roles but the data tier in virtual machines in Azure. Running multiple copies of the presentation tier in different web roles ensures to load balance requests across them. When you combine Azure Cloud Services with Azure Virtual Machines, we recommend that you set up [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) as well. With [Azure Virtual Network](../virtual-network/virtual-networks-overview.md), you can have stable and persistent private IP addresses within the same cloud service in the cloud. Once you define a virtual network for your virtual machines and cloud services, they can start communicating among themselves over the private IP address. In addition, having virtual machines and Azure web/worker roles in the same [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) provides low latency and more secure connectivity. For more information, see [What is a cloud service](../cloud-services/cloud-services-choose-me.md).
+次の図には、オンプレミスのシナリオとそのクラウド対応ソリューションを示します。このシナリオでは、プレゼンテーション層を Web ロールに、ビジネス層を worker ロールに配置していますが、データ層は Azure の仮想マシンに配置しています。プレゼンテーション層の複数のコピーを別々の Web ロールで実行すると、Web ロール間で要求が負荷分散されます。Azure Cloud Services と Azure Virtual Machines を組み合わせる場合は、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) もセットアップすることをお勧めします。[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を使用すると、クラウドの同じクラウド サービス内で安定した永続的なプライベート IP アドレスを利用できます。仮想マシンとクラウド サービス用の仮想ネットワークを定義すると、プライベート IP アドレスで通信を開始できるようになります。さらに、仮想マシンと Azure の web/worker ロールを同じ [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) に配置すると、待機時間が短くなり、接続の安全性が向上します。詳細については、「[クラウド サービスとは](../cloud-services/cloud-services-choose-me.md)」を参照してください。
 
-As seen in the diagram, Azure Load Balancer distributes traffic across multiple virtual machines and also determines which web server or application server to connect to. Having multiple instances of the web and application servers behind a load balancer ensures the high availability of the presentation tier and the business tier. For more information, see [Best practices for application patterns requiring SQL HADR](#best-practices-for-application-patterns-requiring-sql-hadr).
+この図に示すように、Azure Load Balancer が複数の仮想マシンにトラフィックを分散し、さらに、接続するアプリケーション サーバーを決定します。ロード バランサーの背後に Web サーバーとアプリケーション サーバーのインスタンスを複数配置すると、プレゼンテーション層とビジネス層の高可用性が確保されます。詳細については、「[SQL HADR を必要とするアプリケーション パターンのベスト プラクティス](#best-practices-for-application-patterns-requiring-sql-hadr)」を参照してください。
 
-![Application patterns with Cloud Services](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728013.png)
+![アプリケーション パターン (Cloud Services)](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728013.png)
 
-Another approach to implement this application pattern is to use a consolidated web role that contains both presentation tier and business tier components as shown in the following diagram. This application pattern is useful for applications that require stateful design. Since Azure provides stateless compute nodes on web and worker roles, we recommend that you implement a logic to store session state using one of the following technologies: [Azure Caching](https://azure.microsoft.com/documentation/services/redis-cache/), [Azure Table Storage](../storage/storage-dotnet-how-to-use-tables.md) or [Azure SQL Database](../sql-database/sql-database-technical-overview.md).
+このアプリケーション パターンを実装する別の方法としては、次の図に示すように、プレゼンテーション層とビジネス層の両方のコンポーネントを含む統合 Web ロールを使用します。このアプリケーション パターンは、ステートフルな設計を必要とするアプリケーションに有効です。Azure では Web ロールと worker ロールでステートレスなコンピューティング ノードが提供されるため、[Azure Caching](https://azure.microsoft.com/documentation/services/redis-cache/)、[Azure Table Storage](../storage/storage-dotnet-how-to-use-tables.md)、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) のいずれかのテクノロジを使用して、セッション状態を格納するロジックを実装することをお勧めします。
 
-![Application patterns with Cloud Services](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728014.png)
+![アプリケーション パターン (Cloud Services)](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728014.png)
 
-## <a name="pattern-with-azure-vms,-azure-sql-database,-and-azure-app-service-(web-apps)"></a>Pattern with Azure VMs, Azure SQL Database, and Azure App Service (Web Apps)
+## Azure VM、Azure SQL Database、および Azure App Service を使用したパターン (Web Apps)
 
-The primary goal of this application pattern is to show you how to combine Azure infrastructure as a service (IaaS) components with Azure platform-as-a-service components (PaaS) in your solution. This pattern is focused on Azure SQL Database for relational data storage. It does not include SQL Server in an Azure virtual machine, which is part of the Azure infrastructure as a service offering.
+このアプリケーション パターンの主な目的は、ソリューション内で Azure のサービスとしてのインフラストラクチャ (IaaS) コンポーネントと Azure のサービスとしてのプラットフォーム (PaaS) コンポーネントを組み合わせる方法を示すことです。このパターンは、リレーショナル データ ストレージ向けの Azure SQL Database に焦点を当てています。Azure の仮想マシン内の SQL Server は含まれません。これは、Azure のサービスとしてのインフラストラクチャ プランで提供されます。
 
-In this application pattern, you deploy a database application to Azure by placing the presentation and business tiers in the same virtual machine and accessing a database in Azure SQL Database (SQL Database) servers. You can implement the presentation tier by using traditional IIS-based web solutions. Or, you can implement a combined presentation and business tier by using [Azure Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/).
+このアプリケーション パターンでは、プレゼンテーション層とビジネス層を同じ仮想マシンに配置し、Azure SQL Database (SQL Database) サーバーのデータベースにアクセスして、データベース アプリケーションを Azure にデプロイします。従来の IIS ベースの Web ソリューションを使用して、プレゼンテーション層を実装できます。または、[Azure Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/) を使用して、プレゼンテーション層とビジネス層を結合して実装することもできます。
 
-This application pattern is useful when:
+このアプリケーション パターンは、次のような場合に便利です。
 
-- You already have an existing SQL Database server configured in Azure and you want to test your application quickly.
+- Azure で構成されている既存の SQL Database サーバーが既にあり、アプリケーションをすばやくテストする。
 
-- You want to test the capabilities of Azure environment.
+- Azure 環境の機能をテストする。
 
-- You want to quickly provision development and test environments for short periods of time.
+- 開発をすばやくプロビジョニングし、短期間の環境テストを実施する。
 
-- Your business logic and data access components can be self-contained within a web application.
+- ビジネス ロジックとデータ アクセス コンポーネントを Web アプリケーション内で自己完結型にすることができる。
 
-The following diagram demonstrates an on-premises scenario and its cloud enabled solution. In this scenario, you place the application tiers in a single virtual machine in Azure and access data in Azure SQL Database.
+次の図には、オンプレミスのシナリオとそのクラウド対応ソリューションを示します。このシナリオでは、アプリケーション層を Azure の単一の仮想マシンに配置し、Azure SQL Database 内のデータにアクセスします。
 
-![Mixed application pattern](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728015.png)
+![混合アプリケーション パターン](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728015.png)
 
-If you choose to implement a combined web and application tier by using Azure Web Apps, we recommend that you keep the middle-tier or application tier as dynamic-link libraries (DLLs) in the context of a web application.
+Azure Web Apps を使用して Web 層とアプリケーション層を結合して実装する場合は、Web アプリケーションのコンテキストで中間層またはアプリケーション層をダイナミック リンク ライブラリ (DLL) として保持することをお勧めします。
 
-In addition, review the recommendations given in the [Comparing web development strategies in Azure](#comparing-web-development-strategies-in-azure) section at the end of this article to learn more about programming techniques.
+また、プログラミング方法の詳細については、この記事の末尾にある「[Azure の開発計画の比較](#comparing-web-development-strategies-in-azure)」に記載されている推奨事項を参照してください。
 
-## <a name="n-tier-hybrid-application-pattern"></a>N-tier hybrid application pattern
+## n 層ハイブリッド アプリケーション パターン
 
-In n-tier hybrid application pattern, you implement your application in multiple tiers distributed between on-premises and Azure. Therefore, you create a flexible and reusable hybrid system, which you can modify or add a specific tier without changing the other tiers. To extend your corporate network to the cloud, you use [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) service.
+n 層ハイブリッド アプリケーション パターンでは、オンプレミスと Azure に分散した複数の層にアプリケーションを実装します。そのため、柔軟で再利用可能なハイブリッド システムが構築され、他の層を変更することなく特定の層を変更または追加できます。企業ネットワークをクラウドに拡張するには、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) サービスを使用します。
 
-This hybrid application pattern is useful when:
+このハイブリッド アプリケーション パターンは、次のような場合に便利です。
 
-- You want to build applications that run partly in the cloud and partly on-premises.
+- 構築したアプリケーションの一部をクラウドで、一部をオンプレミスで実行する。
 
-- You want to migrate some or all elements of an existing on-premises application to the cloud.
+- 既存のオンプレミスのアプリケーションの一部またはすべての要素をクラウドに移行する。
 
-- You want to move enterprise applications from on-premises virtualized platforms to Azure.
+- エンタープライズ アプリケーションをオンプレミスの仮想化プラットフォームから Azure に移行する。
 
-- You want to own an infrastructure environment that can scale up and down on demand.
+- 必要に応じてスケールアップおよびスケールダウンできるインフラストラクチャ環境を所有したい。
 
-- You want to quickly provision development and test environments for short periods of time.
+- 開発をすばやくプロビジョニングし、短期間の環境テストを実施する。
 
-- You want a cost effective way to take backups for enterprise database applications.
+- エンタープライズ データベース アプリケーションのバックアップを実行するコスト効率に優れた方法を必要としている。
 
-The following diagram demonstrates an n-tier hybrid application pattern that spans across on-premises and Azure. As shown in the diagram, on-premises infrastructure includes [Active Directory Domain Services](https://technet.microsoft.com/library/hh831484.aspx) domain controller to support user authentication and authorization. Note that the diagram demonstrates a scenario, where some parts of the data tier live in an on-premises data center whereas some parts of the data tier live in Azure. Depending on your application’s needs, you can implement several other hybrid scenarios. For example, you might keep the presentation tier and the business tier in an on-premises environment but the data tier in Azure.
+次の図には、オンプレミスと Azure に分散した n 層ハイブリッド アプリケーション パターンを示します。図に示すように、オンプレミスのインフラストラクチャには、ユーザーの認証と承認をサポートするために、[Active Directory ドメイン サービス](https://technet.microsoft.com/library/hh831484.aspx) ドメイン コントローラーが含まれています。図に示すシナリオでは、データ層の一部がオンプレミスのデータ センターに、一部が Azure に存在していることに注意してください。アプリケーションのニーズに応じて、他のさまざまなハイブリッド シナリオを実装できます。たとえば、プレゼンテーション層とビジネス層をオンプレミスの環境に保持したまま、データ層を Azure に配置できます。
 
-![N-tier application pattern](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728016.png)
+![N 層アプリケーション パターン](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728016.png)
 
-In Azure, you can use Active Directory as a standalone cloud directory for your organization, or you can also integrate existing on-premises Active Directory with [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/). As seen in the diagram, the business tier components can access to multiple data sources, such as to [SQL Server in Azure](virtual-machines-windows-sql-server-iaas-overview.md) via a private internal IP address, to on-premises SQL Server via [Azure Virtual Network](../virtual-network/virtual-networks-overview.md), or to [SQL Database](../sql-database/sql-database-technical-overview.md) using the .NET Framework data provider technologies. In this diagram, Azure SQL Database is an optional data storage service.
+Azure では、Active Directory を組織のスタンドアロン クラウド ディレクトリとして使用することや、既存のオンプレミスの Active Directory を [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) と統合することもできます。図に示すように、ビジネス層のコンポーネントは、複数のデータ ソースにアクセスできます。たとえば、プライベート内部 IP アドレスを使用して [Azure の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に、[Azure Virtual Network](../virtual-network/virtual-networks-overview.md) を使用してオンプレミスの SQL Server に、.NET Framework データ プロバイダー テクノロジを使用して [SQL Database](../sql-database/sql-database-technical-overview.md) にアクセスすることができます。この図では、Azure SQL Database はオプションのデータ ストレージ サービスです。
 
-In n-tier hybrid application pattern, you can implement the following workflow in the order specified:
+n 層ハイブリッド アプリケーション パターンでは、指定の順序で次のワークフローを実装できます。
 
-1. Identify enterprise database applications that need to be moved up to cloud by using the [Microsoft Assessment and Planning (MAP) Toolkit](http://microsoft.com/map). The MAP Toolkit gathers inventory and performance data from computers you are considering for virtualization and provides recommendations on capacity and assessment planning.
+1. [Microsoft Assessment and Planning (MAP) Toolkit](http://microsoft.com/map) を使用して、クラウドに移行する必要があるエンタープライズ データベース アプリケーションを特定します。MAP Toolkit では、仮想化を検討しているコンピューターからインベントリとパフォーマンス データを収集し、容量と評価の計画に関する推奨事項を提示します。
 
-1. Plan the resources and configuration needed in the Azure platform, such as storage accounts and virtual machines.
+1. ストレージ アカウントや仮想マシンなど、Azure プラットフォームで必要なリソースと構成を計画します。
 
-1. Set up network connectivity between the corporate network on-premises and [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). To set up the connection between the corporate network on-premises and a virtual machine in Azure, use one of the following two methods:
+1. オンプレミスの企業ネットワークと [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 間のネットワーク接続をセットアップします。オンプレミスの企業ネットワークと Azure の仮想マシン間の接続をセットアップするには、次の 2 つの方法のどちらかを使用します。
 
-    1. Establish a connection between on-premises and Azure via public end points on a virtual machine in Azure. This method provides an easy setup and enables you to use SQL Server authentication in your virtual machine. In addition, set up your network security group rules to control public traffic to the VM. For more information, see [Allow external access to your VM using the Azure portal](virtual-machines-windows-nsg-quickstart-portal.md).
+	1. Azure の仮想マシンのパブリック エンドポイントを介して、オンプレミスと Azure 間の接続を確立する。この方法はセットアップが簡単で、仮想マシンで SQL Server 認証を使用することができます。また、ネットワーク セキュリティ グループのルールをセットアップして、VM へのパブリック トラフィックを制御します。詳細については、「[Azure ポータルを使用して VM への外部アクセスを許可する](virtual-machines-windows-nsg-quickstart-portal.md)」を参照してください。
 
-    1. Establish a connection between on-premises and Azure via Azure Virtual Private network (VPN) tunnel. This method allows you to extend domain policies to a virtual machine in Azure. In addition, you can set up firewall rules and use Windows authentication in your virtual machine. Currently, Azure supports secure site-to-site VPN and point-to-site VPN connections:
+	1. Azure 仮想プライベート ネットワーク (VPN) トンネルを介して、オンプレミスと Azure 間の接続を確立する。この方法を使用すると、ドメイン ポリシーを Azure の仮想マシンに拡張できます。また、ファイアウォール規則を設定し、仮想マシンで Windows 認証を使用することもできます。現時点では、Azure はセキュリティで保護されたサイト間 VPN 接続とポイント対サイト VPN 接続をサポートしています。
 
-        - With secure site-to-site connection, you can establish network connectivity between your on-premises network and your virtual network in Azure. It is recommended for connecting your on-premises data center environment to Azure.
+		- セキュリティで保護されたサイト間接続を使用すると、オンプレミスのネットワークと Azure の仮想ネットワーク間のネットワーク接続を確立できます。オンプレミスのデータ センター環境を Azure に接続することをお勧めします。
 
-        - With secure point-to-site connection, you can establish network connectivity between your virtual network in Azure and your individual computers running anywhere. It is mostly recommended for development and test purposes.
+		- セキュリティで保護されたポイント対サイト接続を使用すると、Azure の仮想ネットワークと場所を問わず稼働している個々のコンピューター間のネットワーク接続を確立できます。この接続は、ほとんどの場合、開発およびテスト目的で使用することをお勧めします。
 
-    For information on how to connect to SQL Server in Azure, see [Connect to a SQL Server Virtual Machine on Azure](virtual-machines-windows-classic-sql-connect.md).
+	Azure の SQL Server に接続する方法の詳細については、「[Azure での SQL Server 仮想マシンへの接続](virtual-machines-windows-classic-sql-connect.md)」を参照してください。
 
-1. Set up scheduled jobs and alerts that back up on-premises data in a virtual machine disk in Azure. For more information, see [SQL Server Backup and Restore with Azure Blob Storage Service](https://msdn.microsoft.com/library/jj919148.aspx) and [Backup and Restore for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-backup-recovery.md).
+1. オンプレミスのデータを Azure の仮想マシン ディスクにバックアップするようにスケジュールされたジョブとアラートを設定します。詳細については、[Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148.aspx)に関するページおよび「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」を参照してください。
 
-1. Depending on your application’s needs, you can implement one of the following three common scenarios:
+1. アプリケーションのニーズに応じて、次の 3 つの一般的なシナリオのいずれかを実装できます。
 
-    1. You can keep your web server, application server, and insensitive data in a database server in Azure whereas you keep the sensitive data on-premises.
+	1. Web サーバー、アプリケーション サーバー、およびデータベース サーバー内の非機密データを Azure に保持し、機密データをオンプレミスに保持する。
 
-    1. You can keep your web server and application server on-premises whereas the database server in a virtual machine in Azure.
+	1. Web サーバーとアプリケーション サーバーをオンプレミスに保持し、データベース サーバーを Azure の仮想マシンに保持する。
 
-    1. You can keep your database server, web server, and application server on-premises whereas you keep the database replicas in virtual machines in Azure. This setting allows the on-premises web servers or reporting applications to access the database replicas in Azure. Therefore, you can achieve to lower the workload in an on-premises database. We recommend that you implement this scenario for heavy read workloads and developmental purposes. For information on creating database replicas in Azure, see AlwaysOn Availability Groups at [High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md).
+	1. データベース サーバー、Web サーバー、およびアプリケーション サーバーをオンプレミスに保持し、データベース レプリカを Azure の仮想マシンに保持する。この設定では、オンプレミスの Web サーバーまたはレポート アプリケーションが Azure のデータベース レプリカにアクセスできます。そのため、オンプレミスのデータベース内のワークロードの削減を実現することができます。このシナリオは読み取り負荷の高いワークロードおよび開発目的で実装することをお勧めします。Azure でデータベース レプリカを作成する方法の詳細については、「[Azure Virtual Machines における SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」の AlwaysOn 可用性グループに関する説明を参照してください。
 
-## <a name="comparing-web-development-strategies-in-azure"></a>Comparing web development strategies in Azure
+## Azure の Web 開発計画の比較
 
-To implement and deploy a multi-tier SQL Server-based application in Azure, you can use one of the following two programming methods:
+SQL Server ベースの多層アプリケーションを Azure に実装およびデプロイする場合は、次の 2 つのプログラミング方法のどちらかを使用できます。
 
-- Set up a traditional web server (IIS - Internet Information Services) in Azure and access databases in SQL Server in Azure Virtual Machines.
+- Azure で従来の Web サーバー (IIS - インターネット インフォメーション サービス) をセットアップし、Azure Virtual Machines 内の SQL Server データベースにアクセスする。
 
-- Implement and deploy a cloud service to Azure. Then, make sure that this cloud service can access databases in SQL Server in Azure Virtual machines. A cloud service can include multiple web and worker roles.
+- Azure にクラウド サービスを実装およびデプロイする。その後、このクラウド サービスが Azure の仮想マシン内の SQL Server データベースにアクセスできることを確認してください。クラウド サービスには、複数の Web ロールおよび worker ロールを含めることができます。
 
-The following table provides a comparison of traditional web development with Azure Cloud Services and Azure Web Apps with respect to SQL Server in Azure Virtual Machines. The table includes Azure Web Apps as it is possible to use SQL Server in Azure VM as a data source for Azure Web Apps via its public virtual IP address or DNS name.
+次の表では、Azure Virtual Machines 内の SQL Server について、従来の Web 開発、Azure Cloud Services、および Azure Web Apps を比較しています。この表に Azure Web Apps が含まれているのは、Azure Web Apps では、パブリック仮想 IP アドレスまたは DNS 名を使用して Azure VM 内の SQL Server を Azure Web Apps のデータ ソースとして利用できるためです。
 
-||Traditional web development in Azure Virtual Machines|Cloud Services in Azure|Web Hosting with Azure Web Apps|
+||Azure Virtual Machines での従来の Web 開発|Azure の Cloud Services|Azure Web Apps での Web ホスティング|
 |---|---|---|---|
-|**Application Migration from on-premises**|Existing applications as-is.|Applications need web and worker roles.|Existing applications as-is but suited for self-contained web applications and web services that require quick scalability.|
-|**Development and Deployment**|Visual Studio, WebMatrix, Visual Web Developer, WebDeploy, FTP, TFS, IIS Manager, PowerShell.|Visual Studio, Azure SDK, TFS, PowerShell. Each cloud service has two environments to which you can deploy your service package and configuration: staging and production. You can deploy a cloud service to the staging environment to test it before you promote it to production.|Visual Studio, WebMatrix, Visual Web Developer, FTP, GIT, BitBucket, CodePlex, DropBox, GitHub, Mercurial, TFS, Web Deploy, PowerShell.|
-|**Administration and Setup**|You are responsible for administrative tasks on the application, data, firewall rules, virtual network, and operating system.|You are responsible for administrative tasks on the application, data, firewall rules, and virtual network.|You are responsible for administrative tasks on the application and data only.|
-|**High Availability and Disaster Recovery (HADR)**|We recommend that you place virtual machines in the same availability set and in the same cloud service. Keeping your VMs in the same availability set allows Azure to place the high availability nodes into separate fault domains and upgrade domains. Similarly, keeping your VMs in the same cloud service enables load balancing and VMs can communicate directly with one another over the local network within an Azure data center.<br/><br/>You are responsible for implementing a high availability and disaster recovery solution for SQL Server in Azure Virtual Machines to avoid any downtime. For supported HADR technologies, see [High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md).<br/><br/>You are responsible for backing up your own data and application.<br/><br/>Azure can move your virtual machines if the host machine in the data center fails due to hardware issues. In addition, there could be planned downtime of your VM when the host machine is updated for security or software updates. Therefore, we recommend that you maintain at least two VMs in each application tier to ensure the continuous availability. Azure does not provide SLA for a single virtual machine. For more information, see [Azure resiliency technical guidance](../resiliency/resiliency-technical-guidance.md).|Azure manages the failures resulting from the underlying hardware or operating system software. We recommend that you implement multiple instances of a web or worker role to ensure the high availability of your application. For information, see [Cloud Services, Virtual Machines, and Virtual Network Service Level Agreement](http://www.microsoft.com/download/details.aspx?id=38427) and [Disaster recovery and high availability for Azure applications](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)<br/><br/>You are responsible for backing up your own data and application.<br/><br/>For databases residing in a SQL Server database in an Azure VM, you are responsible for implementing a high availability and disaster recovery solution to avoid any downtime. For supported HDAR technologies, see High Availability and Disaster Recovery for SQL Server in Azure Virtual Machines.<br/><br/>**SQL Server Database Mirroring**: Use with Azure Cloud Services (web/worker roles). SQL Server VMs and a cloud service project can be in the same Azure Virtual Network. If SQL Server VM is not in the same Virtual Network, you need to create a SQL Server Alias to route communication to the instance of SQL Server. In addition, the alias name must match the SQL Server name.|High Availability is inherited from Azure worker roles, Azure blob storage, and Azure SQL Database. For example, Azure Storage maintains three replicas of all blob, table, and queue data. At any one time, Azure SQL Database keeps three replicas of data running—one primary replica and two secondary replicas. For more information, see [Azure Storage](https://azure.microsoft.com/documentation/services/storage/) and [Azure SQL Database](../sql-database/sql-database-technical-overview.md).<br/><br/>When using SQL Server in Azure VM as a data source for Azure Web Apps, keep in mind that Azure Web Apps does not support Azure Virtual Network. In other words, all connections from Azure Web Apps to SQL Server VMs in Azure must go through public end points of virtual machines. This might cause some limitations for high availability and disaster recovery scenarios. For example, the client application on Azure Web Apps connecting to SQL Server VM with database mirroring would not be able to connect to the new primary server as database mirroring requires that you set up Azure Virtual Network between SQL Server host VMs in Azure. Therefore, using **SQL Server Database Mirroring** with Azure Web Apps is not supported currently.<br/><br/>**SQL Server AlwaysOn Availability Groups**: You can set up AlwaysOn Availability Groups when using Azure Web Apps with SQL Server VMs in Azure. But you need to configure AlwaysOn Availability Group Listener to route the communication to the primary replica via public load-balanced endpoints.|
-|**Cross-premise Connectivity**|You can use Azure Virtual Network to connect to on-premises.|You can use Azure Virtual Network to connect to on-premises.|Azure Virtual Network is supported. For more information, see [Web Apps Virtual Network Integration](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/).|
-|**Scalability**|Scale-up is available by increasing the virtual machine sizes or adding more disks. For more information about virtual machine sizes, see [Virtual Machine Sizes for Azure](virtual-machines-windows-sizes.md).<br/><br/>**For Database Server**: Scale-out is available via database partitioning techniques and SQL Server AlwaysOn Availability groups.<br/><br/>For heavy read workloads, you can use [AlwaysOn Availability Groups](https://msdn.microsoft.com/library/hh510230.aspx) on multiple secondary nodes as well as SQL Server Replication.<br/><br/>For heavy write workloads, you can implement horizontal partitioning data across multiple physical servers to provide application scale-out.<br/><br/>In addition, you can implement a scale-out by using [SQL Server with Data Dependent Routing](https://technet.microsoft.com/library/cc966448.aspx). With Data Dependent Routing (DDR), you need to implement the partitioning mechanism in the client application, typically in the business tier layer, to route the database requests to multiple SQL Server nodes. The business tier contains mappings to how the data is partitioned and which node contains the data.<br/><br/>You can scale applications that are running virtual machines. For more information, see [How to Scale an Application](../cloud-services/cloud-services-how-to-scale.md).<br/><br/>**Important Note**: The **AutoScale** feature in Azure allows you to automatically increase or decrease the Virtual Machines that are used by your application. This feature guarantees that the end-user experience is not affected negatively during peak periods, and VMs are shut down when the demand is low. It’s recommended that you do not set the AutoScale option for your cloud service if it includes SQL Server VMs. The reason is that the AutoScale feature lets Azure to turn on a virtual machine when the CPU usage in that VM is higher than some threshold, and to turn off a virtual machine when the CPU usage goes lower than it. The AutoScale feature is useful for stateless applications, such as web servers, where any VM can manage the workload without any references to any previous state. However, the AutoScale feature is not useful for stateful applications, such as SQL Server, where only one instance allows writing to the database.|Scale-up is available by using multiple web and worker roles. For more information about virtual machine sizes for web roles and worker roles, see [Configure Sizes for Cloud Services](../cloud-services/cloud-services-sizes-specs.md).<br/><br/>When using **Cloud Services**, you can define multiple roles to distribute processing and also achieve flexible scaling of your application. Each cloud service includes one or more web roles and/or worker roles, each with its own application files and configuration. You can scale-up a cloud service by increasing the number of role instances (virtual machines) deployed for a role and scale-down a cloud service by decreasing the number of role instances. For detailed information, see [Azure Execution Models](../cloud-services/cloud-services-choose-me.md).<br/><br/>Scale-out is available via built-in Azure high availability support through [Cloud Services, Virtual Machines, and Virtual Network Service Level Agreement](http://www.microsoft.com/download/details.aspx?id=38427) and Load Balancer.<br/><br/>For a multi-tier application, we recommend that you connect web/worker roles application to database server VMs via Azure Virtual Network. In addition, Azure provides load balancing for VMs in the same cloud service, spreading user requests across them. Virtual machines connected in this way can communicate directly with one another over the local network within an Azure data center.<br/><br/>You can set up **AutoScale** on the Azure classic portal as well as the schedule times. For more information, see [How to Scale an Application](../cloud-services/cloud-services-how-to-scale.md).|**Scale up and down**: You can increase/decrease the size of the instance (VM) reserved for your web site.<br/><br/>Scale out: You can add more reserved instances (VMs) for your web site.<br/><br/>You can set up **AutoScale** on the portal as well as the schedule times. For more information, see [How to Scale Web Apps](../app-service-web/web-sites-scale.md).|
+|**オンプレミスからのアプリケーションの移行**|既存のアプリケーションはそのまま。|アプリケーションには Web ロールと worker ロールが必要です。|既存のアプリケーションはそのままですが、迅速な拡張性を必要とする自己完結型の Web アプリケーションと Web サービスが適しています。|
+|**開発とデプロイ**|Visual Studio、WebMatrix、Visual Web Developer、WebDeploy、FTP、TFS、IIS マネージャー、PowerShell。|Visual Studio、Azure SDK、TFS、PowerShell。各クラウド サービスには、ステージング環境と運用環境という、サービス パッケージと構成をデプロイできる環境が 2 つ用意されています。クラウド サービスは、まずステージング環境にデプロイしてテストした後、運用環境に昇格させることができます。|Visual Studio、WebMatrix、Visual Web Developer、FTP、GIT、BitBucket、CodePlex、DropBox、GitHub、Mercurial、TFS、Web Deploy、PowerShell。|
+|**管理とセットアップ**|アプリケーション、データ、ファイアウォール規則、仮想ネットワーク、およびオペレーティング システムに対する管理作業を行う必要があります。|アプリケーション、データ、ファイアウォール規則、および仮想ネットワークに対する管理作業を行う必要があります。|アプリケーションとデータのみに対する管理作業を行う必要があります。|
+|**高可用性と障害復旧 (HADR)**|仮想マシンを同じ可用性セットと同じクラウド サービス内に配置することをお勧めします。VM を同じ可用性セットに保持すると、Azure で高可用性ノードを別個の障害ドメインとアップグレード ドメインに配置できるようになります。一方、VM を同じクラウド サービスに保持すると、負荷分散できるようになり、VM が Azure データ センター内でローカル ネットワークを介して相互に直接通信できるようになります。<br/><br/>ユーザーは、ダウンタイムを回避するために、Azure Virtual Machines に SQL Server の High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「[Azure Virtual Machines内 の SQL Server の高可用性と障害復旧](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>Azure では、ハードウェアの問題によってデータ センター内のホスト コンピューターに障害が発生した場合に、仮想マシンを移動できます。また、セキュリティやソフトウェアの更新のためにホスト コンピューターを更新するときなど、VM の計画的なダウンタイムが発生する場合があります。そのため、継続的な可用性を確保するために、アプリケーション層ごとに少なくとも 2 台の VM を保持することをお勧めします。Azure では、単一の仮想マシンに対する SLA は提供していません。詳細については、「[Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)」を参照してください。|基になるハードウェアやオペレーティング システム ソフトウェアに起因するエラーは Azure で管理されます。アプリケーションの高可用性を確保するために、Web ロールまたは worker ロールの複数のインスタンスを実装することをお勧めします。詳細については、[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および[Azure アプリケーションの災害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)に関するページを参照してください。<br/><br/>ユーザーは、自身のデータとアプリケーションのバックアップを行う必要があります。<br/><br/>データベースが Azure VM 内の SQL Server データベースに存在する場合は、ユーザーは、ダウンタイムを回避するために、High Availability and Disaster Recovery ソリューションを実装する必要があります。サポートされる HADR テクノロジについては、「Azure 仮想マシンにおける SQL Server の高可用性と障害復旧」を参照してください。<br/><br/>**SQL Server データベース ミラーリング**: Azure Cloud Services (web/worker ロール) で使用します。SQL Server VM とクラウド サービス プロジェクトは、同じ Azure Virtual Network 内に配置できます。SQL Server VM が同じ Virtual Network 内にない場合は、SQL Server のインスタンスに通信をルーティングするために、SQL Server エイリアスを作成する必要があります。さらに、エイリアス名は SQL Server 名と一致する必要もあります。|高可用性は、Azure worker ロール、Azure Blob Storage、および Azure SQL Database から継承されます。たとえば、Azure Storage では、すべての BLOB、テーブル、およびキューのデータの 3 つのレプリカを保持します。Azure SQL Database では、常に、実行中のデータの 3 つのレプリカ (1 つのプライマリ レプリカと 2 つのセカンダリ レプリカ) を保持します。詳細については、[Azure Storage](https://azure.microsoft.com/documentation/services/storage/) に関するページおよび [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に関するページを参照してください。<br/><br/>Azure Web Apps のデータ ソースとして Azure VM 内の SQL Server を使用する場合は、Azure Web Apps では Azure Virtual Network がサポートされないことに注意してください。つまり、Azure Web Apps から Azure の SQL Server VM への接続はすべて仮想マシンのパブリック エンドポイントを介して行う必要があります。そのため、高可用性と障害復旧のシナリオが一部制限される可能性があります。たとえば、データベース ミラーリングでは Azure の SQL Server ホスト VM 間に Azure Virtual Network をセットアップする必要があるため、データベース ミラーリングを使用している SQL Server VM に接続している Azure Web Apps のクライアント アプリケーションでは、新しいプライマリ サーバーに接続することができません。そのため、Azure Web Apps では現在、**SQL Server データベース ミラーリング**の使用はサポートされていません。<br/><br/>**SQL Server AlwaysOn 可用性グループ**: Azure Web Apps と Azure の SQL Server VM を使用する場合は、AlwaysOn 可用性グループをセットアップできます。ただし、負荷分散されたパブリック エンドポイントを介してプライマリ レプリカに通信をルーティングするように AlwaysOn 可用性グループ リスナーを構成する必要があります。|
+|**クロスプレミス接続**|Azure Virtual Network を使用して、オンプレミスに接続できます。|Azure Virtual Network を使用して、オンプレミスに接続できます。|Azure Virtual Network がサポートされています。詳細については、[Web Apps Virtual Network 統合](https://azure.microsoft.com/blog/2014/09/15/azure-websites-virtual-network-integration/)に関する記事を参照してください。|
+|**拡張性**|スケールアップは、仮想マシンのサイズを大きくするか、ディスクを追加することで実現できます。仮想マシンのサイズの詳細については、「[Azure の仮想マシンのサイズ](virtual-machines-windows-sizes.md)」を参照してください。<br/><br/>**データベース サーバー**: データベースのパーティション分割手法と SQL Server AlwaysOn 可用性グループを使用してスケールアウトできます。<br/><br/>読み取り負荷の高いワークロードについては、複数のセカンダリ ノードの [AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)と SQL Server レプリケーションを使用できます。<br/><br/>書き込み負荷の高いワークロードについては、複数の物理サーバーにまたがるデータの行方向のパーティション分割を実装することで、アプリケーションのスケールアウトを実現できます。<br/><br/>また、[SQL Server とデータ依存型ルーティングを使用して](https://technet.microsoft.com/library/cc966448.aspx)、スケールアウトを実装することもできます。データ依存型ルーティング (DDR) を使用する場合は、クライアント アプリケーション (通常は、ビジネス層レイヤー) にパーティション分割メカニズムを実装して、データベース要求を複数の SQL Server ノードにルーティングする必要があります。ビジネス層には、データのパーティション分割方法とデータが含まれているノードのマッピングが含まれています。<br/><br/>仮想マシンを実行しているアプリケーションのスケールを設定できます。詳細については、[アプリケーションの規模の設定方法](../cloud-services/cloud-services-how-to-scale.md)に関するページを参照してください。<br/><br/>**重要**: Azure の**自動スケール**機能を使用すると、アプリケーションで使用する Virtual Machines の規模を自動的に拡張または縮小できます。この機能は、ピーク時にエンド ユーザー エクスペリエンスに悪影響が出ないようにし、要求が少ないときには VM をシャットダウンします。クラウド サービスに SQL Server VM が含まれている場合は、自動スケール オプションを設定しないことをお勧めします。これは、自動スケール機能を使用すると、Azure が、仮想マシンの CPU 使用率がしきい値を超えるとその VM をオンにし、CPU 使用率がしきい値を下回ると仮想マシンをオフにできるようになるためです。自動スケール機能は、VM が以前の状態を参照せずにワークロードを管理できる、Web サーバーなどのステートレスなアプリケーションに役立ちます。ただし、1 つのインスタンスだけがデータベースに書き込むことができる、SQL Server などのステートフルなアプリケーションには適していません。|スケールアップは、複数の Web ロールおよび worker ロールを使用することで実現できます。Web ロールと worker ロールの仮想マシンのサイズの詳細については、[クラウド サービスのサイズの構成](../cloud-services/cloud-services-sizes-specs.md)に関するページを参照してください。<br/><br/>**Cloud Services** を使用すると、複数のロールを定義して処理を分散させることや、アプリケーションの柔軟なスケーリングを実現することができます。各クラウド サービスには 1 つ以上の Web ロールまたは worker ロールが含まれており、各ロールにそれぞれ専用のアプリケーション ファイルと構成が関連付けられます。ロールにデプロイされているロール インスタンス (仮想マシン) の数を増やすことでクラウド サービスをスケールアップし、ロール インスタンスの数を減らすことでクラウド サービスをスケールダウンできます。詳細については、[Azure の実行モデル](../cloud-services/cloud-services-choose-me.md)に関するページを参照してください。<br/><br/>[Cloud Services、Virtual Machines、および Virtual Network のサービス レベル アグリーメント](http://www.microsoft.com/download/details.aspx?id=38427)および Load Balancer による組み込みの Azure 高可用性サポートを利用して、スケールアウトできます。<br/><br/>多層アプリケーションについては、Azure Virtual Network を介して Web/worker ロール アプリケーションをデータベース サーバー VM に接続することをお勧めします。また、Azure は同じクラウド サービス内の VM に負荷分散を提供して、VM 間でユーザー要求を分散します。この方法で接続された仮想マシンは、Azure データ センター内でローカル ネットワークを介して相互に直接通信できます。<br/><br/>Azure クラシック ポータルで**自動スケール**を設定することや、スケジュール時間を設定することができます。詳細については、[アプリケーションの規模の設定方法](../cloud-services/cloud-services-how-to-scale.md)に関する記事を参照してください。|**スケールアップとスケールダウン**: Web サイト用に予約されているインスタンス (VM) のサイズを増減できます。<br/><br/>スケールアウト: Web サイト用に予約されているインスタンス (VM) を追加できます。<br/><br/>ポータルで**自動スケール**を設定するだけでなく、スケジュール時間を設定することもできます。詳細については、[Web Apps のスケールの設定方法](../app-service-web/web-sites-scale.md)に関するページを参照してください。|
 
-For more information on choosing between these programming methods, see [Azure Web Apps, Cloud Services, and VMs: When to use which](../app-service-web/choose-web-site-cloud-service-vm.md).
+これらのプログラミング方法の選択に関する詳細については、[Azure Web Apps、Cloud Services、および VM の選択方法と使用時期](../app-service-web/choose-web-site-cloud-service-vm.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-For more information on running SQL Server in Azure Virtual machines, see [SQL Server on Azure Virtual Machines Overview](virtual-machines-windows-sql-server-iaas-overview.md).
+Azure の仮想マシンで SQL Server を実行する方法の詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

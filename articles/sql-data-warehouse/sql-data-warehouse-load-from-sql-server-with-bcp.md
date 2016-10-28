@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Load data from SQL Server into Azure SQL Data Warehouse (bcp) | Microsoft Azure"
-   description="For a small data size, uses bcp to export data from SQL Server to flat files and import the data directly into Azure SQL Data Warehouse."
+   pageTitle="SQL Server から Azure SQL Data Warehouse へのデータの読み込み (bcp) | Microsoft Azure"
+   description="データのサイズが小さい場合は、bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、そのデータを Azure SQL Data Warehouse に直接読み込むことができます。"
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="lodipalm"
@@ -10,55 +10,54 @@
 <tags
    ms.service="sql-data-warehouse"
    ms.devlang="NA"
-   ms.topic="article"
+   ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
    ms.date="06/30/2016"
    ms.author="lodipalm;barbkess;sonyama"/>
 
 
-
-# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-(flat-files)"></a>Load data from SQL Server into Azure SQL Data Warehouse (flat files)
+# SQL Server から Azure SQL Data Warehouse へのデータの読み込み (フラット ファイル)
 
 > [AZURE.SELECTOR]
 - [SSIS](sql-data-warehouse-load-from-sql-server-with-integration-services.md)
 - [PolyBase](sql-data-warehouse-load-from-sql-server-with-polybase.md)
 - [bcp](sql-data-warehouse-load-from-sql-server-with-bcp.md)
 
-For small data sets, you can use the bcp command-line utility to export data from SQL Server and then load it directly to Azure SQL Data Warehouse.
+データ セットが小さい場合は、bcp コマンド ライン ユーティリティを使用して SQL Server からデータをエクスポートした後、そのデータを Azure SQL Data Warehouse に直接読み込むことができます。
 
-In this tutorial, you will use bcp to:
+このチュートリアルでは、bcp を使用して次の操作を行います。
 
-- Export a table from from SQL Server by using the bcp out command (or create a simple sample file)
-- Import the table from a flat file to SQL Data Warehouse.
-- Create statistics on the loaded data.
+- bcp の out コマンドを使用して SQL Server からテーブルをエクスポートする (または単純なサンプル ファイルを作成する)。
+- テーブルをフラット ファイルから SQL Data Warehouse にインポートする。
+- 読み込んだデータの統計を作成する。
 
 >[AZURE.VIDEO loading-data-into-azure-sql-data-warehouse-with-bcp]
 
-## <a name="before-you-begin"></a>Before you begin
+## 開始する前に
 
-### <a name="prerequisites"></a>Prerequisites
+### 前提条件
 
-To step through this tutorial, you need:
+このチュートリアルを進めるには、次が必要です。
 
-- A SQL Data Warehouse database
-- The bcp command-line utility installed
-- The sqlcmd command-line utility installed
+- SQL Data Warehouse データベース
+- インストールされた bcp コマンド ライン ユーティリティ
+- インストールされた sqlcmd コマンド ライン ユーティリティ
 
-You can download the bcp and sqlcmd utilities from the [Microsoft Download Center][].
+bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
 
-### <a name="data-in-ascii-or-utf-16-format"></a>Data in ASCII or UTF-16 format
+### ASCII または UTF-16 形式のデータ
 
-If you are trying this tutorial with your own data, your data needs to use the ASCII or UTF-16 encoding since bcp does not support UTF-8. 
+自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。
 
-PolyBase supports UTF-8 but doesn't yet support UTF-16. Note that if you want to combine bcp with PolyBase you will need to transform the data to UTF-8 after it is exported from SQL Server. 
+PolyBase では UTF-8 がサポートされていますが、UTF-16 はまだサポートされていません。bcp と PolyBase を組み合わせて使用する場合は、SQL Server からエクスポートしたデータを UTF-8 に変換する必要があります。
 
 
-## <a name="1.-create-a-destination-table"></a>1. Create a destination table
+## 1\.ターゲット テーブルを作成する
 
-Define a table in SQL Data Warehouse that will be the destination table for the load. The columns in the table must correspond to the data in each row of your data file.
+読み込み操作のターゲット テーブルとなるテーブルを SQL Data Warehouse 内に定義します。テーブル内の各列は、データ ファイルの各行のデータに対応する必要があります。
 
-To create a table, open a command prompt and use sqlcmd.exe to run the following command:
+テーブルを作成するには、コマンド プロンプトを開き、sqlcmd.exe を使用して次のコマンドを実行します。
 
 
 ```sql
@@ -78,9 +77,9 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2.-create-a-source-data-file"></a>2. Create a source data file
+## 2\.ソース データ ファイルを作成する
 
-Open Notepad and copy the following lines of data into a new text file and then save this file to your local temp directory, C:\Temp\DimDate2.txt. This data is in ASCII format.
+メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\\Temp\\DimDate2.txt)。このデータは ASCII 形式です。
 
 ```
 20150301,1,3
@@ -97,7 +96,7 @@ Open Notepad and copy the following lines of data into a new text file and then 
 20150101,1,3
 ```
 
-(Optional) To export your own data from a SQL Server database, open a command prompt and run the following command. Replace TableName, ServerName, DatabaseName, Username, and Password with your own information.
+(オプション) 自身のデータを SQL Server データベースからエクスポートするには、コマンド プロンプトを開き、次のコマンドを実行します。TableName、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えてください。
 
 ```sql
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t ','
@@ -105,20 +104,20 @@ bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName
 
 
 
-## <a name="3.-load-the-data"></a>3. Load the data
-To load the data, open a command prompt and run the following command, replacing the values for Server Name, Database name, Username, and Password with your own information.
+## 3\.データを読み込む
+データを読み込むには、コマンド プロンプトを開き、次のコマンドを実行します。ここでは、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えます。
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <password> -q -c -t  ','
 ```
 
-Use this command to verify the data was loaded properly
+次のコマンドを使用して、データが正しく読み込まれたことを確認します。
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-The results should look like this:
+結果は次のようになります。
 
 DateId |CalendarQuarter |FiscalQuarter
 ----------- |--------------- |-------------
@@ -135,11 +134,11 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-## <a name="4.-create-statistics"></a>4. Create statistics
+## 4\.統計を作成する
 
-SQL Data Warehouse does not yet support auto-create or auto-update statistics. To get the best query performance, it's important to create statistics on all columns of all tables after the first load or after any substantial changes occur in the data. For a detailed explanation of statistics, see [Statistics][]. 
+SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。最適なクエリ パフォーマンスを得るには、最初に読み込んだ後またはデータに大きな変更が加えられた後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、[統計][]に関する記事を参照してください。
 
-Run the following command to create statistics on your newly loaded table.
+次のコマンドを実行して、新しく読み込んだテーブルの統計を作成します。
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -149,19 +148,19 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-## <a name="5.-export-data-from-sql-data-warehouse"></a>5. Export data from SQL Data Warehouse
-For fun, you can export the data that you just loaded back out of SQL Data Warehouse.  The command to export is exactly the same as exporting from SQL Server.
+## 5\.SQL Data Warehouse からのデータのエクスポート
+前の手順で読み込んだデータは、SQL Data Warehouse からエクスポートすることができます。エクスポートするためのコマンドは、SQL Server からエクスポートするときとまったく同じです。
 
-However, there is a difference in the results. Since the data is stored in distributed locations within SQL Data Warehouse, when you export data each Compute node writes it data to the output file. The order of the data in the output file is likely to be different than the order of the data in the input file.
+ただし、結果に違いがあります。データは SQL Data Warehouse 内の分散した場所に格納されているため、データをエクスポートすると、各コンピューティング ノードがそのデータを出力ファイルに書き込みます。出力ファイル内でのデータの順序は、入力ファイル内のデータの順序と異なる可能性が高くなります。
 
-### <a name="export-a-table-and-compare-exported-results"></a>Export a table and compare exported results
+### テーブルをエクスポートしてその結果を比較する
 
-To see the exported data, open a command prompt and run this command using your own parameters. ServerName is the name of your Azure logical SQL Server.
+エクスポートされたデータを表示するには、コマンド プロンプトを開き、次のコマンドを実行します。このとき、パラメーターを適切な情報に置き換えてください。ServerName は、Azure の論理 SQL Server の名前です。
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-You can verify the data was exported correctly by opening the new file. The data in the file should match the text below, but will likely be sorted in a different order:
+新しいファイルを開き、データが正しくエクスポートされたことを確認できます。ファイル内のデータは次のテキストに一致していても、別の順序で並べ替えられている可能性があります。
 
 ```
 20150301,1,3
@@ -178,33 +177,27 @@ You can verify the data was exported correctly by opening the new file. The data
 20150101,1,3
 ```
 
-### <a name="export-the-results-of-a-query"></a>Export the results of a query
+### クエリの結果をエクスポートする
 
-You can use the **queryout** function of bcp to export the results of a query instead of exporting the entire table. 
+bcp の **queryout** 関数を使用すると、テーブル全体をエクスポートする代わりに、クエリの結果をエクスポートすることができます。
 
-## <a name="next-steps"></a>Next steps
-For an overview of loading, see [Load data into SQL Data Warehouse][].
-For more development tips, see [SQL Data Warehouse development overview][].
-See [Table Overview][] or [CREATE TABLE syntax][] for more information about creating a table on SQL Data Warehouse.
+## 次のステップ
+読み込みの概要については、「[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)][]」を参照してください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。SQL Data Warehouse でのテーブルの作成の詳細については、[テーブルの概要][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-[Table Overview]: ./sql-data-warehouse-tables-overview.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
+[テーブルの概要]: ./sql-data-warehouse-tables-overview.md
+[統計]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE 構文]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

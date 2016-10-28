@@ -1,6 +1,6 @@
-## <a name="parameter-file"></a>Parameter file
+## パラメーター ファイル
 
-If you use a parameter file to pass parameter values during deployment, you need to create a JSON file with a format similar to the following example.
+デプロイ中にパラメーター ファイルを使用してパラメーター値を渡す場合は、次の例に示すような形式の JSON ファイルを作成する必要があります。
 
     {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
@@ -26,11 +26,8 @@ If you use a parameter file to pass parameter values during deployment, you need
        }
     }
 
-If you need to provide a sensitive value for a parameter (such as a password), add that value to a key vault. Retrieve the key vault during deployment as shown in the previous example. For more information, see [Pass secure values during deployment](../articles/resource-manager-keyvault-parameter.md). 
+パラメーターに機密性の高い値(パスワードなど) を提供する必要がある場合は、その値を Key Vault に追加します。前の例で示したように、デプロイ中に Key Vault を取得します。詳細については、「[デプロイメント時にセキュリティで保護された値を渡す](../articles/resource-manager-keyvault-parameter.md)」を参照してください。
 
-The size of the parameter file cannot be more than 64 KB.
+パラメーター ファイルのサイズは、64 KB 以下である必要があります。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

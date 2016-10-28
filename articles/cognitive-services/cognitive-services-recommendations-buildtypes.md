@@ -1,45 +1,44 @@
 <properties
-    pageTitle="Quick start guide: Machine Learning Recommendations API | Microsoft Azure"
-    description="Azure Machine Learning Recommendations--quick start guide"
-    services="cognitive-services"
-    documentationCenter=""
-    authors="luiscabrer"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="クイック スタート ガイド: Machine Learning Recommendations API | Microsoft Azure"
+	description="Azure Machine Learning Recommendations - クイック スタート ガイド"
+	services="cognitive-services"
+	documentationCenter=""
+	authors="luiscabrer"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="cognitive-services"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/20/2016"
-    ms.author="luisca"/>
+	ms.service="cognitive-services"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/20/2016"
+	ms.author="luisca"/>
 
-
-#  <a name="build-types-and-model-quality"></a>Build types and model quality #
+#  ビルドの種類とモデルの品質 #
 
 <a name="TypeofBuilds"></a>
-## <a name="supported-build-types"></a>Supported build types ##
+## サポートされているビルドの種類 ##
 
-The Recommendations API currently supports two build types: *recommendation* and *FBT*. Each is built using different algorithms, and each has different strengths. This document describes each of these builds and techniques for comparing the quality of the models generated.
+Recommendations API は、現在 *recommendation* と *FBT* の 2 種類のビルドをサポートしています。これらはそれぞれ異なるアルゴリズムを使用してビルドされます。また、互いに異なる長所を備えています。このドキュメントでは、こうしたビルドと、生成されるモデルの品質を比較するための手法について説明します。
 
-If you have not done so already, we recommend that you complete the [quick start guide](cognitive-services-recommendations-quick-start.md).
+[クイック スタート ガイド](cognitive-services-recommendations-quick-start.md)をまだ完了していない場合は、完了しておくことをお勧めします。
 
 <a name="RecommendationBuild"></a>
-### <a name="recommendation-build-type"></a>Recommendation build type ###
+### Recommendation ビルド タイプ ###
 
-The recommendation build type uses matrix factorization to provide recommendations. It generates [latent feature](https://en.wikipedia.org/wiki/Latent_variable) vectors based on your transactions to describe each item, and then uses those latent vectors to compare items that are similar.
+recommendation ビルド タイプでは、行列因子分解を使用して推奨を提供します。各項目を説明するトランザクションに基づいて[潜在的な特徴](https://en.wikipedia.org/wiki/Latent_variable)ベクトルを生成します。これらの潜在的なベクトルを使って類似した項目を比較します。
 
-If you train the model based on purchases made in your electronics store and provide a Lumia 650 phone as the input to the model, the model will return a set of items that tend to be purchased by people who are likely to purchase a Lumia 650 phone. The items may not be complementary. In this example, it is possible that the model will return other phones because people who like the Lumia 650 may like other phones.
+ある電子機器ストアでの購入に基づいてモデルをトレーニングし、Lumia 650 フォンを入力としてモデルに付与すると、モデルは Lumia 650 フォンを購入する可能性が高い人によって購入される傾向のある一連の項目を返します。これらの項目は相補的でないことがあります。この例では、Lumia 650 を好きな人が他のスマートフォンを好きな可能性もあるため、モデルが他のスマートフォンを返すことがあります。
 
-The recommendation build has two capabilities that make it attractive:
+Recommendation ビルドには魅力的な機能が 2 つあります。
 
-**The recommendation build supports *cold item* placement**
+**recommendation ビルドでは*コールド項目*の配置がサポートされています。**
 
-Items that do not have significant usage are called cold items. For instance, if you receive a shipment of a phone you have never sold before, the system cannot infer recommendations for this product on transactions alone. This means that the system should learn from information about the product itself.
+使用頻度の高くない項目は、コールド項目と呼ばれます。たとえば、これまで販売実績がないスマートフォンが入荷された場合は、システムは、トランザクションのみに基づいてこの製品の推奨を提示することができません。これは、システムが製品自体の情報から学習する必要があることを意味します。
 
-If you want to use cold item placement, you need to provide features information for each of your items in the catalog. Following is what the first few lines of your catalog may look like (note the key=value format for the features).
+コールド項目の配置を使用する場合は、カタログの各項目の特徴情報を提供する必要があります。カタログの最初の数行は次のようになります (特徴の key=value の形式に注目してくだい)。
 
 >6CX-00001,Surface Pro2, Surface,, Type=Hardware, Storage=128 GB, Memory=4G, Manufacturer=Microsoft
 
@@ -47,147 +46,143 @@ If you want to use cold item placement, you need to provide features information
 
 >WAH-0F05,Minecraft Xbox 360,Gaming,, * Type=Software, Language=Spanish, Rating=Youth
 
-You also need to set the following build parameters:
+また、次のビルド パラメーターも設定する必要があります。
 
-| Build parameter         | Notes
+| ビルド パラメーター | メモ
 |------------------     |-----------
-|*useFeaturesInModel*     | Set to **true**.  Indicates if features can be used to enhance the recommendation model.
-|*allowColdItemPlacement*   | Set to **true**. Indicates if the recommendation should also push cold items via feature similarity.
-| *modelingFeatureList*   | Comma-separated list of feature names to be used in the recommendation build to enhance the recommendation. For instance, “Language,Storage” for the preceding example.
+|*useFeaturesInModel* | **true** に設定します。推奨モデルを強化するために特徴を使用するかどうかを示します。
+|*allowColdItemPlacement* | **true** に設定します。推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。
+| *modelingFeatureList* | 推奨事項を強化するために recommendation ビルドに使用される、特徴名のコンマ区切りの一覧。たとえば上記の例では "Language,Storage" です。
 
-**The recommendation build supports user recommendations**
+**recommendation ビルドはユーザー推奨をサポート**
 
-A recommendation build supports [user recommendations](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd). This means that it can provide personalized recommendations for users based on their transaction histories. For user recommendations, you might provide the user ID or the recent history of transactions for that user.
+ｒecommendation ビルドでは、[ユーザー推奨](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/56f30d77eda5650db055a3dd)がサポートされています。つまり、ユーザーのトランザクション履歴に基づいて、そのユーザー個人用に設定した推奨を提供できます。ユーザー推奨を行うために、ユーザー ID やそのユーザーの最近のトランザクション履歴を指定できます。
 
-One classic example of where you might want to apply user recommendations is at sign-in on the welcome page. There you can promote content that applies to the specific user.
+ユーザー推奨の適用が望ましい典型的な例の 1 つは、[ようこそ] ページへのサインイン時です。ここで、特定のユーザーを対象とするコンテンツを宣伝できます。
 
-You might also want to apply a recommendations build type when the user is about to check out. At that point, you have the list of items the user is about to purchase, and you can provide recommendations based on the current market basket.
+また、ユーザーによる支払いの際に recommendation ビルド タイプを利用したい場合もあります。この時点では、ユーザーが購入しようとしている項目の一覧があるため、その時点での買い物かごに基づいた推奨を提供することができます。
 
-#### <a name="recommendations-build-parameters"></a>Recommendations build parameters
+#### 推奨ビルドのパラメーター
 
-| Name  |   Description |    Type, <br>  valid values, <br> (default value)
+| 名前 | 	Description |	 型、<br>有効な値 <br> (既定値)
 |-------|-------------------|------------------
-| *NumberOfModelIterations* |   The number of iterations the model performs is reflected by the overall compute time and the model accuracy. The higher the number, the more accurate the model, but the compute time takes longer.  |   Integer, <br>  10 to 50 <br>(40)
-| *NumberOfModelDimensions* |   The number of dimensions relates to the number of features the model will try to find within your data. Increasing the number of dimensions will allow better fine-tuning of the results into smaller clusters. However, too many dimensions will prevent the model from finding correlations between items. |  Integer, <br> 10 to 40 <br>(20) |
-| *ItemCutOffLowerBound* |  Defines the minimum number of usage points an item should be in for it to be considered part of the model. |        Integer, <br> 2 or more <br> (2) |
-| *ItemCutOffUpperBound* |  Defines the maximum number of usage points an item should be in for it to be considered part of the model. |  Integer, <br>2 or more<br> (2147483647) |
-|*UserCutOffLowerBound* |   Defines the minimum number of transactions a user must have performed to be considered part of the model. | Integer, <br> 2 or more <br> (2)
-| *UserCutOffUpperBound* |  Defines the maximum number of transactions a user must have performed to be considered part of the model. | Integer, <br>2 or more <br> (2147483647)|
-| *UseFeaturesInModel* |    Indicates if features can be used to enhance the recommendation model. |     Boolean<br> Default: True
-|*ModelingFeatureList* |    Comma-separated list of feature names to be used in the recommendation build to enhance the recommendation. It depends on the features that are important. |    String, up to 512 chars
-| *AllowColdItemPlacement* |    Indicates if the recommendation should also push cold items via feature similarity. | Boolean <br> Default: False
-| *EnableFeatureCorrelation*    | Indicates if features can be used in reasoning. | Boolean <br> Default: False
-| *ReasoningFeatureList* |  Comma-separated list of feature names to be used for reasoning sentences, such as recommendation explanations. It depends on the features that are important to customers. | String, up to 512 chars
-| *EnableU2I* | Enable personalized recommendations, also called user to item (U2I) recommendations. | Boolean <br>Default: True
-|*EnableModelingInsights* | Defines whether offline evaluation should be performed to gather modeling insights (that is, precision and diversity metrics). If set to true, a subset of the data will not be used for training because it will need to be reserved for testing of the model. Read more about [offline evaluations](#OfflineEvaluation). | Boolean <br> Default: False
-| *SplitterStrategy* | If enable modeling insights is set to *true*, this is how data should be split for evaluation purposes.  | String, *RandomSplitter* or *LastEventSplitter* <br>Default:  RandomSplitter
+| *NumberOfModelIterations* |	モデルが実行するイテレーションの数は、全体的なコンピューティング時間とモデルの精度に反映されます。大きな値にするとモデルがより正確になりますが、コンピューティング時間がかかります。 |	 整数、<br>10 ～ 50 <br>(40)
+| *NumberOfModelDimensions* |	ディメンションの数は、データ内でモデルが検索しようとする特徴の数に関連しています。ディメンションの数を増やすと、結果をより詳細に微調整して、小さいクラスターにすることができます。ただし、ディメンションが多すぎると、モデルが項目間の相関関係を検出できなくなります。 |	整数、<br>10 ～ 40 <br>(20) |
+| *ItemCutOffLowerBound* |	特定の項目がモデルで考慮されるために存在する必要のある使用状況ポイントの最小数を定義します。 |		整数、<br>2 以上<br>(2) |
+| *ItemCutOffUpperBound* | 	特定の項目がモデルで考慮されるために存在する必要のある使用状況ポイントの最大数を定義します。 | 整数、<br>2 以上<br>(2147483647) |
+|*UserCutOffLowerBound* |	特定のユーザーがモデルで考慮されるために実行すべきトランザクションの最小数を定義します。 |	整数、<br>2 以上<br>(2)
+| *UserCutOffUpperBound* |	特定のユーザーがモデルで考慮されるために実行すべきトランザクションの最大数を定義します。 |	整数、<br> 2 以上<br>(2147483647)|
+| *UseFeaturesInModel* |	推奨モデルを強化するために特徴を使用するかどうかを示します。 | 	 ブール<br> 既定: True
+|*ModelingFeatureList* |	推奨事項を強化するために recommendation ビルドに使用される、特徴名のコンマ区切りの一覧。重要となる特徴に依存します。 |	文字列、最大 512 文字
+| *AllowColdItemPlacement* |	推奨事項が特徴の類似性を使用してコールド項目もプッシュするかどうかを示します。 | ブール<br>既定: False
+| *EnableFeatureCorrelation* | 理由で特徴を使用するかどうかを示します。 |	ブール<br>既定: False
+| *ReasoningFeatureList* |	理由の文 (推奨事項の説明など) に使用される特徴名のコンマ区切りの一覧。カスタマーにとって重要となる特徴に依存します。 | 文字列、最大 512 文字
+| *EnableU2I* |	ユーザーから項目 (U2I) の推奨事項とも呼ばれる、個人に合わせた推奨を有効にします。 | ブール<br> 既定: True
+|*EnableModelingInsights* |	モデル化についての洞察 (精度、多様性のメトリックなど) を収集するためにオフライン評価を実行するかどうかを定義します。true に設定した場合、データの一部は、モデルのテスト用に予約する必要があるため、トレーニングに使用されません。詳細については、「[オフライン評価](#OfflineEvaluation)」を参照してください。 | ブール<br>既定: False
+| *SplitterStrategy* | EnableModelingInsights を *true* に設定した場合、評価目的でのデータの分割方法を指定します。 | 文字列、*RandomSplitter* または *LastEventSplitter*<br>既定: RandomSplitter
 
 
 <a name="FBTBuild"></a>
-### <a name="fbt-build-type"></a>FBT build type ###
+### FBT ビルド タイプ ###
 
-The frequently bought together (FBT) build does an analysis that counts the number of times two or three different products co-occur together. It then sorts the sets based on a similarity function (**co-occurrences**, **Jaccard**, **lift**).
+よく一緒に購入されている品目 (FBT: Frequently Bought Together) ビルドでは、2 つまたは 3 つの異なる製品が同時に購入された回数をカウントする分析を実行します。続いて、類似性関数 (**co-occurrences**、**Jaccard**、**lift**) に基づいてこのセットを並べ替えます。
 
-Think of **Jaccard** and **lift** as ways to normalize the co-occurrences.  This means that the items will be returned only if they where purchased together with the seed item.
+**Jaccard** と **lift** は共起を正規化する方法だと考えてください。これは、項目はシード項目と一緒に購入された場合にのみ返されることを意味します。
 
-In our Lumia 650 phone example, phone X will be returned only if phone X was purchased in the same session as the Lumia 650 phone. Because this may be unlikely, we would expect items complementary to the Lumia 650 to be returned; for instance, a screen protector, or a power adapter for the Lumia 650.
+Lumia 650 フォンの例では、スマートフォン X は、それが Lumia 650 フォンと同じセッションで購入された場合にのみ返されます。このようなケースは可能性が低いため、Lumia 650 用の画面保護シートや電源アダプターなど、Lumia 650 に対し補完的な項目が返されることが予想されます。
 
-Currently, two items are assumed to be purchased in the same session if they occur in a transaction with the same user ID and timestamp.
+現在、ユーザー ID とタイムスタンプが同じであるトランザクションで 2 つの項目が発生した場合に、これらは同じセッションで購入されたと想定されます。
 
-FBT builds do not support cold items, because by definition they expect two items to be purchased in the same transaction. While FBT builds can return sets of items (triplets), they do not support personalized recommendations because they accept a single seed item as the input.
+FBT ビルドでは、コールド項目はサポートされていません。同じトランザクション内で 2 つの項目が購入されることを想定しているためです。FBT ビルドでは項目のセット (トリプレット) を返すことができますが、入力として単一のシード項目を受け取るため、個人に合わせた推奨はサポートされていません。
 
 
-#### <a name="fbt-build-parameters"></a>FBT build parameters
+#### FBT ビルド パラメーター
 
-| Name  |   Description |       Type,  <br> valid values, <br> (default value)
+| 名前 | 	Description |		型、<br>有効な値 <br>(既定値)
 |-------|---------------|-----------------------
-| *FbtSupportThreshold* | How conservative the model is. Number of co-occurrences of items to be considered for modeling. |  Integer, <br> 3-50 <br> (6)
-| *FbtMaxItemSetSize* | Bounds the number of items in a frequent set.| Integer  <br> 2-3 <br> (2)
-| *FbtMinimalScore* | Minimal score that a frequent set should have to be included in the returned results. The higher the better. | Double <br> 0 and above <br> (0)
-| *FbtSimilarityFunction* | Defines the similarity function to be used by the build. **Lift** favors serendipity, **co-occurrence** favors predictability, and **Jaccard** is a compromise between the two. | String,  <br>  <i>cooccurrence, lift, jaccard</i><br> Default: <i>jaccard</i>
+| *FbtSupportThreshold* | モデルがどの程度控えめか。モデル化で考慮すべき項目の同時発生の数。 | 整数、<br>3 ～ 50 <br>(6)
+| *FbtMaxItemSetSize* | 頻度のセット内のアイテム数の限度を定めます。| 整数、<br>2 ～ 3 <br>(2)
+| *FbtMinimalScore* | 返される結果に含めるために頻度のセットが持つべきスコアの最小値。大きいほど良好です。 | 倍精度浮動小数点型<br>0 以上<br>(0)
+| *FbtSimilarityFunction* | ビルドで使用する類似関数を定義します。**lift **ではセレンディピティが、**co-occurrence** では予測可能性が、2 項間では **Jaccard** が適しています。 | 文字列、<br><i>cooccurrence、lift、jaccard</i><br>既定: <i>jaccard</i>
 
 <a name="SelectBuild"></a>
-## <a name="build-evaluation-and-selection"></a>Build evaluation and selection ##
+## ビルドの評価および選択 ##
 
-This guidance might help you determine whether you should use a recommendations build or an FBT build, but it does not provide a definitive answer in cases where you could use either of them. Also, even if you know that you want to use an FBT build type, you might still want to choose **Jaccard** or **lift** as the similarity function.
+上記のガイダンスは、recommendation ビルドと FBT ビルドのどちらを使用すべきかを判断するうえで参考になりますが、どちらのビルドも使用できる場合には、確かな答えは得られません。また、FBT ビルド タイプを使用する必要があるとわかっている場合でも、類似関数として **Jaccard** か **lift** を選択したい場合があります。
 
-The best way to select between two different builds is to test them in the real world (online evaluation) and track a conversion rate for the different builds. The conversion rate could be measured based on recommendation clicks, the number actual purchases from recommendations shown, or even on the actual purchase amounts when the different recommendations were shown. You may select your conversion rate metric based on your business objective.
+2 つの異なるビルドのどちらかを選択する最善の方法は、現実の世界でテスト (オンライン評価) して、それぞれのビルドのコンバージョン率を追跡することです。コンバージョン率は、推奨のクリックまたは推奨の提示からの実際の購入数に基づいて測定できます。また、これらのさまざまな推奨が提示された場合の実際の売上額に基づいて測定することもできます。コンバージョン率のメトリックは、ビジネス目標に応じて選択できます。
 
-In some cases, you may want to evaluate the model offline before you put it in production. While offline evaluation is not a replacement for online evaluation, it can serve as a metric.
+場合によっては、運用環境で実行する前にモデルをオフラインで評価する必要があります。オフライン評価はオンライン評価の代わりにはなりませんが、メトリックとして役に立ちます。
 
 <a name="OfflineEvaluation"></a>
-## <a name="offline-evaluation"></a>Offline evaluation  ##
+## オフライン評価  ##
 
-The goal of an offline evaluation is to predict precision (the number of users that will purchase one of the recommended items) and the diversity of recommendations (the number of items that are recommended).
-As part of the precision and diversity metrics evaluation, the system finds a sample of users and splits  the transactions for those users into two groups: the training dataset and the test dataset.
+オフライン評価の目的は、推奨の精度 (推奨される項目のいずれかを購入するユーザーの数) と推奨の多様性 (推奨される項目の数) を予測することです。精度と多様性のメトリック評価の一環として、システムはユーザーのサンプルを探し、これらのユーザーのトランザクションをトレーニング データセットとテスト データセットの 2 つのグループに分割します。
 
-> [AZURE.NOTE] To use offline metrics, you must have timestamps in your usage data.
-> Time data is required to split usage correctly between training and test datasets.
+> [AZURE.NOTE] オフライン メトリックを使用するには、使用状況データにタイムスタンプが含まれている必要があります。時刻のデータは、トレーニング データセットとテスト データセットの間で正確に使用状況を分割するために必要です。
 
-> Also, offline evaluation may not yield results for small usage files. For the evaluation to be thorough, there should be a minimum of 1,000 usage points in the test dataset.
+> なお、オフライン評価では、使用状況ファイルが小さい場合は結果が生成されないことがあります。完全な評価を行うためには、テスト データセットに最低でも 1,000 の使用状況ポイントが必要です。
 
 <a name="Precision"></a>
-### <a name="precision-at-k"></a>Precision-at-k ###
-The following table represents the output of the precision-at-k offline evaluation.
+### K の精度 ###
+次の表は、K の精度によるオフライン評価の出力を表しています。
 
-| K | 1 | 2 | 3 |   4 |     5
+| K | 1 | 2 | 3 | 	4 | 	5
 |---|---|---|---|---|---|
-|Percentage |   13.75 | 18.04   | 21 |  24.31 | 26.61
-|Users in test |    10,000 |    10,000 |    10,000 |    10,000 |    10,000
-|Users considered | 10,000 |    10,000 |    10,000 |    10,000 |    10,000
-|Users not considered | 0 | 0 | 0 | 0 | 0
+|割合 |	13\.75 |	18\.04 | 21 |	24\.31 |	26\.61
+|テスト中のユーザー |	10,000 |	10,000 |	10,000 |	10,000 |	10,000
+|考慮されるユーザー |	10,000 |	10,000 |	10,000 |	10,000 |	10,000
+|考慮されないユーザー |	0 |	0 |	0 |	0 |	0
 
-#### <a name="k"></a>K
-In the preceding table, *k* represents the number of recommendations shown to the customer. The table reads as follows: “If during the test period, only one recommendation was shown to the customers, only 13.75 of the users would have purchased that recommendation.” This statement is based on the assumption that the model was trained with purchase data. Another way to say this is that the precision at 1 is 13.75.
+#### K
+上記の表では、*k* は顧客に提示された推奨の数を表しています。この表から、"テスト期間中に顧客に提示された推奨が 1 つだけの場合、その推奨を購入したのはユーザーの 13.75% のみである" と解釈できます。 この解釈は、モデルが購入データでトレーニングされているという前提に基づいています。これは、1 の精度 は 13.75 であると言い換えることもできます。
 
-You will notice that as more items are shown to the customer, the likelihood of the customer purchasing a recommended item goes up. For the preceding experiment, the probability almost doubles to 26.61 percent when 5 items are recommended.
+顧客に提示される項目が多いほど、顧客が推奨された項目を購入する確率も高くなっていることがわかります。上の実験では、この確率は推奨される項目が 5 つの場合に 26.61% であり、ほぼ 2 倍になっています。
 
-#### <a name="percentage"></a>Percentage
-The percentage of users that interacted with at least one of the *k* recommendations is shown. The percentage is calculated by dividing the number of users that interacted with at least one recommendation by the total number of users considered. See Users considered for more information.
+#### 割合
+*k* 個の推奨のうち少なくとも 1 つの推奨を操作したユーザーの割合を示します。この割合は、少なくとも 1 つの推奨を操作したユーザーの数を、考慮されるユーザーの合計で割ることによって計算します。詳細については「考慮されるユーザー」を参照してください。
 
-#### <a name="users-in-test"></a>Users in test
-Data in this row represents the total number of users in the test dataset.
+#### テスト中のユーザー
+この行のデータは、テスト データセット中のユーザーの合計数を表します。
 
-#### <a name="users-considered"></a>Users considered
-A user is only considered if the system recommended at least *k* items based on the model generated using the training dataset.
+#### 考慮されるユーザー
+ユーザーは、トレーニング データセットを使用して生成されたモデルに基づいて、システムが少なくとも *k* 個の項目を推奨した場合にのみ考慮されます。
 
-#### <a name="users-not-considered"></a>Users not considered
-Data in this row represents any users not considered. The users that did not receive at least *k* recommended items.
+#### 考慮されないユーザー
+この行のデータは、考慮されないすべてのユーザーを表します。これは、推奨された項目を *k* 個以上受け取らなかったユーザーです。
 
-User not considered = users in test – users considered
+考慮されないユーザー = テスト中のユーザー – 考慮されるユーザー
 
 <a name="Diversity"></a>
-### <a name="diversity"></a>Diversity ###
-Diversity metrics measure the type of items recommended. The following table represents the output of the diversity offline evaluation.
+### 多様性 ###
+多様性のメトリックでは、推奨された項目の種類を測定できます。次の表は、多様性によるオフライン評価の出力を表しています。
 
-|Percentile bucket |    0-90|  90-99| 99-100
+|百分位のバケット |	0 ～ 90| 90 ～ 99| 99 ～ 100
 |------------------|--------|-------|---------
-|Percentage        | 34.258 | 55.127| 10.615
+|割合 | 34\.258 | 55\.127| 10\.615
 
 
-Total items recommended: 100,000
+推奨された項目の合計: 100,000
 
-Unique items recommended: 954
+推奨された一意の項目: 954
 
-#### <a name="percentile-buckets"></a>Percentile buckets
-Each percentile bucket is represented by a span (minimum and maximum values that range between 0 and 100). The items close to 100 are the most popular items, and the items close to 0 are the least popular. For instance, if the percentage value for the 99-100 percentile bucket is 10.6, it means that 10.6 percent of the recommendations returned only the top one percent most popular items. The percentile bucket minimum value is inclusive, and the maximum value is exclusive, except for 100.
-#### <a name="unique-items-recommended"></a>Unique items recommended
-The unique items recommended metric shows the number of distinct items that were returned for evaluation.
-#### <a name="total-items-recommended"></a>Total items recommended
-The total items recommended metric shows the number of items recommended. Some may be duplicates.
+#### 百分位のバケット
+百分位のバケットはそれぞれ、範囲によって表されます (最小値 0 と最大値 100 の間)。値が 100 に近い項目は最も人気のある項目であり、値が 0 に近い項目は最も人気のない項目です。たとえば、百分位のバケットが 99 ～ 100 の場合、割合の値は 10.6 です。これは、推奨の 10.6% が上位 1% の最も人気のある項目を返したことを意味します。百分位のバケットでは、最小値は範囲に含まれており、100 を除いて最大値は範囲に含まれていません。
+#### 推奨された一意の項目
+推奨された一意の項目メトリックは、評価の結果として返された別個の項目の数を示します。
+#### 推奨された項目の合計
+推奨された項目の合計メトリックは、推奨された項目の数を示します。一部が重複していることがあります。
 
 <a name="ImplementingEvaluation"></a>
-### <a name="offline-evaluation-metrics"></a>Offline evaluation metrics ###
-The precision and diversity offline metrics may be useful when you select which build to use. At build time, as part of the respective FBT or recommendation build parameters:
+### オフライン評価メトリック ###
+精度と多様性のオフライン メトリックは、どちらのビルドを使用するかを選択するときに役に立つ場合があります。ビルド時に FBT ビルド パラメーターまたは recommendation ビルド パラメーターをそれぞれ設定する際に、
 
--   Set the *enableModelingInsights* build parameter to **true**.
--   Optionally, select the *splitterStrategy* (Either *RandomSplitter* or *LastEventSplitter*).
-*RandomSplitter* splits the usage data in train and test sets based on the given *randomSplitterParameters* test percent and random seed values.
-*LastEventSplitter* splits the usage data in train and test sets based on the last transaction for each user.
+-	*enableModelingInsights* ビルド パラメーターを **true** に設定します。
+-	必要に応じて *splitterStrategy* (*RandomSplitter* または *LastEventSplitter*) を選択します。*RandomSplitter* は、特定の *randomSplitterParameters* テスト パーセントとランダム シード値に基づいて、使用状況データをトレーニング セットとテスト セットに分割します。*LastEventSplitter* は、各ユーザーの最後のトランザクションに基づいて、使用状況データをトレーニング セットとテスト セットに分割します。
 
-This will trigger a build that uses only a subset of the data for training and uses the rest of the data to compute evaluation metrics.  After the build is completed, to get the output of the evaluation, you need to call the [Get build metrics API](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/577eaa75eda565095421666f), passing the respective *modelId* and *buildId*.
+これにより、トレーニング用のデータのサブセットのみを使用したビルドがトリガーされ、残りのデータは評価メトリックを計算するために使用されます。ビルドの完了後に評価の出力を取得するには、[Get build metrics API](https://westus.dev.cognitive.microsoft.com/docs/services/Recommendations.V4.0/operations/577eaa75eda565095421666f) を呼び出し、それぞれの *modelId* と *buildId* を渡す必要があります。
 
- Following is the JSON output for the sample evaluation.
+ 以下は、サンプル評価の JSON 出力です。
 
 
     {
@@ -268,8 +263,4 @@ This will trigger a build that uses only a subset of the data for training and u
     "IsFaulted": false
     }
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

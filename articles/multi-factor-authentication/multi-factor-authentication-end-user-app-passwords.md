@@ -1,159 +1,132 @@
 <properties
-    pageTitle="What are App Passwords in Azure MFA?"
-    description="This page will help users understand what app passwords are and what they are used for with regard to Azure MFA."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtland"/>
+	pageTitle="Azure MFA のアプリ パスワードとは"
+	description="このページは、アプリ パスワードの詳細と、Azure MFA に関連した用途を理解するのに役立ちます。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtland"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
 
 
+# Azure Multi-Factor Authentication のアプリ パスワードとは
 
-# <a name="what-are-app-passwords-in-azure-multi-factor-authentication?"></a>What are App Passwords in Azure Multi-Factor Authentication?
+現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。多要素認証はユーザーごとに有効にします。これは、ユーザーで多要素認証が有効になると、非ブラウザー アプリを使用しようとしても、操作を実行できないことを意味します。アプリ パスワードによってこれが発生します。
 
-Certain non-browser apps, such as the Apple native email client that uses Exchange Active Sync, currently do not support multi-factor authentication. Multi-factor authentication is enabled per user. This means that if a user has been enabled for multi-factor authentication and they are attempting to use non-browser apps, they will be unable to do so. An app password allows this to occur.
-
->[AZURE.NOTE] Modern Authentication for the Office 2013 Clients
+>[AZURE.NOTE] Office 2013 クライアントのための最新の認証
 >
-> Office 2013 clients (including Outlook) now support new Authentication Protocols and can be enabled to support Multi-Factor Authentication.  This means that once enabled, app passwords are not required for use with Office 2013 clients.  For more information see [Office 2013 modern authentication public preview announced](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+> Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートするようになり、Multi-Factor Authentication をサポートするように有効化できます。つまり、Multi-Factor Authentication を有効にすると、Office 2013 クライアントでアプリ パスワードは不要になります。詳しくは、「[発表された Office 2013 の最新の認証のパブリック プレビュー](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」をご覧ください。
 
-## <a name="how-to-use-app-passwords"></a>How to use app passwords
+## アプリ パスワードを使用する方法
 
-The following are some things to remember on how to use app passwords.
+アプリ パスワードの使用方法の注意点を次に示します。
 
-- The actual password is automatically generated and is not supplied by the user. This is because the automatically generated password, is harder for an attacker to guess and is more secure.
-- Currently there is a limit of 40 passwords per user. If you attempt to create one after you have reached the limit, you will be prompted to delete one of your existing app passwords in order to create a new one.
-- It is recommended that app passwords be created per device and not per application. For example, you can create one app password for your laptop and use that app password for all of your applications on that laptop.
-- You are given an app password the first time you sign-in.  If you need additional ones, you can create them.
+- 実際のパスワードは自動的に生成され、ユーザーが指定するわけではありません。これは、自動的に生成されたパスワードのほうが攻撃者から推測されづらく、より安全なためです。
+- 現在、ユーザーあたりのパスワード数の制限は 40 個です。制限に達した後に作成しようとした場合、新しいものを作成できるよう既存のアプリ パスワードのいずれかを削除するよう求められます。
+- アプリ パスワードは、アプリケーションごとではなく、デバイスごとに作成することをお勧めします。たとえば、ノート PC 用に 1 つのアプリ パスワードを作成し、そのアプリ パスワードをノート PC 上のすべてのアプリケーションで使用します。
+- 最初にサインインするときにアプリ パスワードが提供されます。追加のアプリ パスワードが必要な場合は、作成できます。
 
-![Setup](./media/multi-factor-authentication-end-user-app-passwords/app.png)
+![セットアップ](./media/multi-factor-authentication-end-user-app-passwords/app.png)
 
-Once you have an app password, you use this in place of your original password with these non-browser apps.  So for instance, if you are using multi-factor authentication and the Apple native email client on your phone.  Use the app password so that it can bypass multi-factor authentication and continue to work.
+アプリ パスワードが取得できたら、これらの非ブラウザー アプリに対して、元のパスワードの代わりに使用します。たとえば、電話で多要素認証と Apple ネイティブ電子メール クライアントを使用している場合は、多要素認証をバイパスし、作業を続行できるようにアプリ パスワードを使用します。
 
-## <a name="creating-and-deleting-app-passwords"></a>Creating and deleting app passwords
-During your initial sign-in you are given an app password that you can use.  Additionally you can also create and delete app passwords later on.  How you do this depends on how you use multi-factor authentication.  Choose the one that most applies to you.
+## アプリ パスワードの作成と削除
+最初のサインイン時に、使用可能なアプリ パスワードが提供されます。さらに、後でアプリ パスワードを作成したり、削除したりすることもできます。そうする方法は、多要素認証を使用する方法によって異なります。最も適切な方法を選択します。
 
-How you use multi-factor authentiation|Description
+多要素認証の使用方法|Description
 :------------- | :------------- |
-[I use it with Office 365](#creating-and-deleting-app-passwords-with-office-365)|  This means that you will want to create app passwords through the Office 365 portal.
-[I don't know](#creating-and-deleting-app-passwords-with-myapps-portal)|This means you will want create app passwords through [https://myapps.microsoft.com](https://myapps.microsoft.com)
-[I use it with Microsoft Azure](#create-app-passwords-in-the-azure-portal)| This means that you will want create app passwords through the Azure portal.
+[Office 365 で使用する](#creating-and-deleting-app-passwords-with-office-365)| これは、Office 365 ポータルでアプリ パスワードを作成することを意味します。
+[わからない](#creating-and-deleting-app-passwords-with-myapps-portal)|これは、[https://myapps.microsoft.com](https://myapps.microsoft.com) でアプリ パスワードを作成することを意味します。
+[Microsoft Azure で使用する](#create-app-passwords-in-the-azure-portal)| これは、Azure ポータルでアプリ パスワードを作成することを意味します。
 
-## <a name="creating-and-deleting-app-passwords-with-office-365"></a>Creating and deleting app passwords with Office 365
+## Office 365 でのアプリ パスワードの作成と削除
 
-If you use multi-factor authentication with Office 365 you will want to create and delete app passwords through the Office 365 portal.
+Office 365 で多要素認証を使用している場合は、Office 365 ポータルでアプリ パスワードを作成し、削除します。
 
-### <a name="to-create-app-passwords-in-the-office-365-portal"></a>To create app passwords in the Office 365 portal
+### Office 365 ポータルでアプリ パスワードを作成するには
 --------------------------------------------------------------------------------
 
-1. Log on to the [Office 365 portal](https://login.microsoftonline.com/).
-2. In the top right corner select the widget and choose Office 365 Settings.
-3. Click on Additional security verification.
-4. On the right, click the link that says **Update my phone numbers used for account security.**
-![Setup](./media/multi-factor-authentication-end-user-manage/o365a.png)
-5. This will take you to the page that will allow you to change your settings.
-![Cloud](./media/multi-factor-authentication-end-user-manage/o365b.png)
-6. At the top, next to additional security verification, click on **app passwords.**
-7. Click **Create**.
-![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-o365/apppass.png)
-8. Enter a name for the app password and click **Next**.
-![Create an app password](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
-9. Copy the app password to the clipboard and paste it into your app.
-![Create an app password](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+1. [Office 365 ポータル](https://login.microsoftonline.com/)にログオンします
+2. 右上隅でウィジェットを選択し、Office 365 設定を選択します。
+3. [追加のセキュリティ確認] をクリックします。
+4. 右側の **[アカウントのセキュリティのために使用する電話番号を更新]** というリンクをクリックします。![セットアップ](./media/multi-factor-authentication-end-user-manage/o365a.png)
+5. 設定を変更できるページに移動します。![クラウド](./media/multi-factor-authentication-end-user-manage/o365b.png)
+6. 上部で、追加のセキュリティ検証の隣にある **[アプリ パスワード]** をクリックします。
+7. **[作成]** をクリックします。![クラウド](./media/multi-factor-authentication-end-user-app-passwords-create-o365/apppass.png)
+8. アプリ パスワードの名前を入力し、**[次へ]** をクリックします。![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
+9. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
 
-### <a name="to-delete-app-passwords-using-the-office-365-portal"></a>To delete app passwords using the Office 365 portal
+### Office 365 ポータルでアプリ パスワードを削除するには
 --------------------------------------------------------------------------------
 
 
-1. Log on to the [Office 365 portal](https://login.microsoftonline.com/).
-2. In the top right corner select the widget and choose Office 365 Settings.
-3. Click on Additional security verification.
-4. On the right, click the link that says **Update my phone numbers used for account security.**
-![Setup](./media/multi-factor-authentication-end-user-manage/o365a.png)
-5. This will take you to the page that will allow you to change your settings.
-![Cloud](./media/multi-factor-authentication-end-user-manage/o365b.png)
-6. At the top, next to additional security verification, click on **app passwords.**
-7. Next to the app password you want to delete, click **Delete**.
-![Delete an app password](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-8. Confirm the deletion by clicking **yes**.
-![Confirm the delete](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
-9. Once the app password is deleted you can click **close**.
-![Close](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
+1. [Office 365 ポータル](https://login.microsoftonline.com/)にログオンします
+2. 右上隅でウィジェットを選択し、Office 365 設定を選択します。
+3. [追加のセキュリティ確認] をクリックします。
+4. 右側の **[アカウントのセキュリティのために使用する電話番号を更新]** というリンクをクリックします。![セットアップ](./media/multi-factor-authentication-end-user-manage/o365a.png)
+5. 設定を変更できるページに移動します。![クラウド](./media/multi-factor-authentication-end-user-manage/o365b.png)
+6. 上部で、追加のセキュリティ検証の隣にある **[アプリ パスワード]** をクリックします。
+7. 削除するアプリ パスワードの横にある **[削除]** をクリックします。![アプリケーション パスワードの削除](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+8. **[はい]** をクリックし、削除を確定します。![削除の確定](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
+9. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-## <a name="creating-and-deleting-app-passwords-with-myapps-portal."></a>Creating and deleting app passwords with Myapps portal.
-If you are not sure how you use multi-factor authentication, then you can always create adn delete app passwords through the myapps portal.
+## Myapps ポータルでのアプリ パスワードの作成と削除
+多要素認証を使用する方法がわからない場合、いつでも Myapps ポータルでアプリ パスワードを作成し、削除できます。
 
-### <a name="to-create-an-app-password-using-the-myapps-portal"></a>To create an app password using the Myapps portal
+### Myapps ポータルでアプリ パスワードを作成するには
 
-1. Sign-in to [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. At the top, select profile.
-3. Select Additional Security Verification.
-![Cloud](./media/multi-factor-authentication-end-user-manage/myapps1.png)
-4. This will take you to the page that will allow you to change your settings.
-![Setup](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
-5. At the top, next to additional security verification, click on **app passwords.**
-6. Click **Create**.
-![Create an app password](./media/multi-factor-authentication-end-user-app-passwords/create3.png)
-7. Enter a name for the app password and click **Next**.
-![Create an app password](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
-8. Copy the app password to the clipboard and paste it into your app.
-![Create an app password](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
+2. 上部にある [プロファイル] を選択します。
+3. [追加のセキュリティ確認] を選択します。![クラウド](./media/multi-factor-authentication-end-user-manage/myapps1.png)
+4. 設定を変更できるページに移動します。![セットアップ](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
+5. 上部で、追加のセキュリティ検証の隣にある **[アプリ パスワード]** をクリックします。
+6. **[作成]** をクリックします。![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create3.png)
+7. アプリ パスワードの名前を入力し、**[次へ]** をクリックします。![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create1.png)
+8. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。![アプリケーション パスワードの作成](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 
-### <a name="to-delete-an-app-password-using-the-myapps-portal"></a>To delete an app password using the Myapps portal
+### Myapps ポータルでアプリ パスワードを削除するには
 
-1. Sign-in to [https://myapps.microsoft.com](https://myapps.microsoft.com)
-2. At the top, select profile.
-3. Select Additional Security Verification.
-![Cloud](./media/multi-factor-authentication-end-user-manage/myapps1.png)
-4. This will take you to the page that will allow you to change your settings.
-![Setup](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
-5. At the top, next to additional security verification, click on **app passwords.**
-6. Next to the app password you want to delete, click **Delete**.
-![Delete an app password](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
-7. Confirm the deletion by clicking **yes**.
-![Confirm the delete](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
-8. Once the app password is deleted you can click **close**.
-![Close](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
+1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
+2. 上部にある [プロファイル] を選択します。
+3. [追加のセキュリティ確認] を選択します。![クラウド](./media/multi-factor-authentication-end-user-manage/myapps1.png)
+4. 設定を変更できるページに移動します。![セットアップ](./media/multi-factor-authentication-end-user-manage-myapps/proofup.png)
+5. 上部で、追加のセキュリティ検証の隣にある **[アプリ パスワード]** をクリックします。
+6. 削除するアプリ パスワードの横にある **[削除]** をクリックします。![アプリケーション パスワードの削除](./media/multi-factor-authentication-end-user-app-passwords/delete1.png)
+7. **[はい]** をクリックし、削除を確定します。![削除の確定](./media/multi-factor-authentication-end-user-app-passwords/delete2.png)
+8. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
 
-## <a name="create-app-passwords-in-the-azure-portal"></a>Create app passwords in the Azure portal
+## Azure ポータルでアプリ パスワードを作成する
 
-If you use multi-factor authentication with Azure you will want to create app passwords through the Azure portal.
+Azure で多要素認証を使用している場合は、Azure ポータルでアプリ パスワードを作成します。
 
-### <a name="to-create-app-passwords-in-the-azure-portal"></a>To create app passwords in the Azure portal
+### Azure ポータルでアプリ パスワードを作成するには
 
-1. Sign-in to the Azure Management portal.
-2. At the top, right-click on your user name and select Additional Security Verification.
-3. On the proofup page, at the top, select app passwords
-4. Click **Create**.
-5. Enter a name for the app password and click **Next**
-6. Copy the app password to the clipboard and paste it into your app.
-![Cloud](./media/multi-factor-authentication-end-user-app-passwords-create-azure/app2.png)
+1. Microsoft Azure 管理ポータルにサインインします。
+2. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
+3. 確認ページの上部の [アプリ パスワード] を選択します。
+4. **[作成]** をクリックします。
+5. アプリ パスワードの名前を入力し、**[次へ]** をクリックします。
+6. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。![クラウド](./media/multi-factor-authentication-end-user-app-passwords-create-azure/app2.png)
 
-### <a name="to-delete-app-passwords-in-the-azure-portal"></a>To delete app passwords in the Azure portal
+### Azure ポータルでアプリ パスワードを削除するには
 
-1. Sign-in to the Azure Management portal.
-2. At the top, right-click on your user name and select Additional Security Verification.
-3. At the top, next to additional security verification, click on **app passwords.**
-4. Next to the app password you want to delete, click **Delete**.
-5. Confirm the deletion by clicking **yes**.
-6. Once the app password is deleted you can click **close**.
-![Close](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
+1. Microsoft Azure 管理ポータルにサインインします。
+2. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
+3. 上部で、追加のセキュリティ検証の隣にある **[アプリ パスワード]** をクリックします。
+4. 削除するアプリ パスワードの横にある **[削除]** をクリックします。
+5. **[はい]** をクリックし、削除を確定します。
+6. アプリ パスワードを削除したら、**[閉じる]** をクリックできます。![閉じる](./media/multi-factor-authentication-end-user-app-passwords/delete3.png)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

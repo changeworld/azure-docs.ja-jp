@@ -1,6 +1,6 @@
 <properties
- pageTitle="Create an HPC Pack head node in an Azure VM | Microsoft Azure"
- description="Learn how to use the Azure portal and the Resource Manager deployment model to create a Microsoft HPC Pack head node in an Azure VM."
+ pageTitle="Azure VM で HPC Pack ヘッド ノードを作成する | Microsoft Azure"
+ description="Azure ポータルとリソース マネージャーを利用し、Azure VM で Microsoft HPC Pack ヘッド ノードを作成する方法について説明します。"
  services="virtual-machines-windows"
  documentationCenter=""
  authors="dlepow"
@@ -16,81 +16,76 @@ ms.service="virtual-machines-windows"
  ms.date="08/17/2016"
  ms.author="danlep"/>
 
-
-# <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Create the head node of an HPC Pack cluster in an Azure VM with a Marketplace image
-
-
-Use a [Microsoft HPC Pack virtual machine image](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) from the Azure Marketplace and the Azure portal to create the head node of an HPC cluster. This HPC Pack VM image is based on Windows Server 2012 R2 Datacenter with HPC Pack 2012 R2 Update 3 pre-installed. Use this head node for a proof of concept deployment of HPC Pack in Azure. You can then add compute nodes to the cluster to run HPC workloads.
+# Marketplace イメージを利用し、Azure VM で HPC Pack クラスターのヘッド ノードを作成する
 
 
+Azure Marketplace の [Microsoft HPC Pack 仮想マシン イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)と Azure ポータルを使用して、HPC クラスターのヘッド ノードを作成します。この HPC Pack VM イメージは、HPC Pack 2012 R2 更新プログラム 3 を事前インストールした Windows Server 2012 R2 Datacenter に基づいています。このヘッド ノードを Azure の HPC Pack の概念実証デプロイとして利用し、クラスターにコンピューティング ノードを追加して HPC ワークロードを実行できます。
 
->[AZURE.TIP]To deploy a complete HPC Pack cluster in Azure that includes the head node and compute nodes, we recommend that you use an automated method. Options include the [HPC Pack IaaS deployment script](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md) and the [HPC Pack cluster for Windows workloads](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/) Resource Manager template. See [HPC Pack cluster options in Azure](virtual-machines-windows-hpcpack-cluster-options.md) for additional templates. 
 
 
-## <a name="planning-considerations"></a>Planning considerations
+>[AZURE.TIP]ヘッド ノードと計算ノードが含まれる完全な HPC Pack クラスターを Azure にデプロイする場合には、自動化手法を利用することをお勧めします。[HPC Pack IaaS デプロイメント スクリプト](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md)や [Windows ワークロードの HPC Pack クラスター](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterwindowscn/)の Resource Manager テンプレートを使用できます。その他のテンプレートについては、[Azure の HPC Pack クラスター オプション](virtual-machines-windows-hpcpack-cluster-options.md)に関する記事をご覧ください。
 
-As shown in the following figure, you deploy the HPC Pack head node in an Active Directory domain in an Azure virtual network.
 
-![HPC Pack head node][headnode]
+## 計画に関する考慮事項
 
-* **Active Directory domain** - The HPC Pack head node must be joined to an Active Directory domain in Azure before you start the HPC services on the VM. As shown in this article, for a proof of concept deployment, you can promote the VM you create for the head node as a domain controller before starting the HPC services. Another option is to deploy a separate domain controller and forest in Azure to which you join the head node VM.
+次の図に示すように、Azure 仮想ネットワークの Active Directory ドメインに HPC Pack ヘッド ノードをデプロイします。
 
-* **Azure virtual network** - When you use the Resource Manager deployment model to deploy the head node, you specify or create an Azure virtual network. You use the virtual network if you need to join the head node to an existing Active Directory domain. You also need it later to add compute node VMs to the cluster.
+![HPC Pack ヘッド ノート][headnode]
+
+* **Active Directory ドメイン** - VM 上で HPC サービスを開始する前に、HPC Pack ヘッド ノードを Azure の Active Directory ドメインに参加させる必要があります。この記事で示すように、概念実証デプロイとして、HPC サービスを開始する前に、ヘッド ノードに作成した VM をドメイン コントローラーとして昇格できます。もう 1 つの選択肢としては、別個のドメイン コントローラー/フォレストを Azure にデプロイし、それにヘッド ノード VM を参加させます。
+
+* **Azure 仮想ネットワーク** - Resource Manager デプロイメント モデルを使用してヘッド ノードをデプロイする場合は、Azure 仮想ネットワークを指定するか作成します。この仮想ネットワークは、ヘッド ノードを既存の Active Directory ドメインに参加させる場合に使用します。また、後から計算ノード VM をクラスターに追加する場合にも必要になります。
 
     
-## <a name="steps-to-create-the-head-node"></a>Steps to create the head node
+## ヘッド ノードの作成手順
 
-Following are high-level steps to use the Azure portal to create an Azure VM for the HPC Pack head node by using the Resource Manager deployment model. 
+ここでは、Azure ポータルで Resource Manager デプロイメント モデルを使用して、HPC Pack ヘッド ノード用の Azure VM を作成する手順の概要を示します。
 
 
-1. If you want to create a new Active Directory forest in Azure with separate domain controller VMs, one option is to use a [Resource Manager template](https://azure.microsoft.com/documentation/templates/active-directory-new-domain-ha-2-dc/). For a simple proof of concept deployment, it's fine to omit this step and configure the head node VM itself as a domain controller. This option is described later in this article.
+1. Azure で別のドメイン コントローラー VM を持つ新しい Active Directory フォレストを作成する場合は、[Resource Manager テンプレート](https://azure.microsoft.com/documentation/templates/active-directory-new-domain-ha-2-dc/)を使用する方法があります。単純な概念実証のデプロイの場合、この手順を省略して、ヘッド ノード VM 自体をドメイン コントローラーとして構成してもかまいません。このオプションは、この記事の後半で説明します。
     
-2. On the [HPC Pack 2012 R2 on Windows Server 2012 R2 page](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) in the Azure Marketplace, click **Create Virtual Machine**. 
+2. Azure Marketplace の [HPC Pack 2012 R2 on Windows Server 2012 R2R2 のページ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)で、**[仮想マシンの作成]** をクリックします。
 
-3. In the portal, on the **HPC Pack 2012 R2 on Windows Server 2012 R2** page, select the **Resource Manager** deployment model and then click **Create**.
+3. ポータルの **HPC Pack 2012 R2 on Windows Server 2012 R2** のページで **Resource Manager** デプロイメント モデルを選択し、**[作成]** をクリックします。
 
-    ![HPC Pack image][marketplace]
+    ![HPC Pack イメージ][marketplace]
 
-4. Use the portal to configure the settings and create the VM. If you're new to Azure, follow the tutorial [Create a Windows virtual machine in the Azure portal](virtual-machines-windows-hero-tutorial.md). For a proof of concept deployment, you can usually accept the default or recommended settings.
+4. ポータルを使用して設定を構成し、VM を作成します。Azure を初めて利用する場合は、[Azure ポータルでの Windows 仮想マシンの作成](virtual-machines-windows-hero-tutorial.md)に関するチュートリアルをご覧ください。概念実証デプロイの場合は、既定値または推奨設定を選択することをお勧めします。
 
-    >[AZURE.NOTE]If you want to join the head node to an existing Active Directory domain in Azure, make sure you specify the virtual network for that domain when creating the VM.
+    >[AZURE.NOTE]ヘッド ノードを Azure の既存の Active Directory ドメインに参加させる場合は、VM を作成するときに、必ずそのドメイン内の仮想ネットワークを指定します。
        
-4. After you create the VM and the VM is running, [connect to the VM](virtual-machines-windows-connect-logon.md) by Remote Desktop. 
+4. VM を作成して実行したら、リモート デスクトップで[その VM に接続](virtual-machines-windows-connect-logon.md)します。
 
-5. Join the VM to an existing domain forest, or create a domain forest on the VM itself.
+5. VM を既存のドメイン フォレストに参加させるか、VM 自体にドメイン フォレストを作成します。
 
-    * If you created the VM in an Azure virtual network with an existing domain forest, join the VM to the forest by using standard Server Manager or Windows PowerShell tools. Then restart.
+    * 既存のドメイン フォレストを持つ Azure 仮想ネットワークで VM を作成した場合は、標準のサーバー マネージャーまたは Windows PowerShell ツールを使用して、その VM をフォレストに参加させます。それから再起動します。
 
-    * If you created the VM in a new virtual network (without an existing domain forest), then promote the VM as a domain controller. Use standard steps to install and configure the Active Directory Domain Services role on the head node. For detailed steps, see [Install a New Windows Server 2012 Active Directory Forest](https://technet.microsoft.com/library/jj574166.aspx).
+    * (既存のドメイン フォレストのない) 新しい仮想ネットワークで VM を作成した場合は、VM をドメイン コントローラーとして昇格させます。Active Directory ドメイン サービスのロールをヘッド ノードにインストールして構成するための標準的な手順を使用します。詳細については、「[新しい Windows Server 2012 Active Directory フォレストのインストール](https://technet.microsoft.com/library/jj574166.aspx)」を参照してください。
 
-5. After the VM is running and is joined to an Active Directory forest, start the HPC Pack services as follows:
+5. VM が実行され、Active Directory フォレストに参加したら、次のように HPC Pack サービスを開始します。
 
-    a. Connect to the head node VM using a domain account that is a member of the local Administrators group. For example, use the administrator account you set up when you created the head node VM.
+    a.ローカル管理者グループに属するドメイン アカウントを利用し、ヘッド ノード VM に接続します。たとえば、ヘッド ノード VM を作成したときに設定した管理者アカウントを使用します。
 
-    b. For a default head node configuration, start Windows PowerShell as an administrator and type the following:
+    b.既定のヘッド ノード構成の場合、Windows PowerShell を管理者として起動し、次を入力します。
 
     ```
     & $env:CCP_HOME\bin\HPCHNPrepare.ps1 –DBServerInstance ".\ComputeCluster"
     ```
 
-    It can take several minutes for the HPC Pack services to start.
+    HPC Pack サービスが開始するまでに数分かかることがあります。
 
-    For additional head node configuration options, type `get-help HPCHNPrepare.ps1`.
+    追加のヘッド ノード構成オプションについては、「`get-help HPCHNPrepare.ps1`」を入力します。
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-* You can now work with the head node of your HPC Pack cluster. For example, start HPC Cluster Manager, and complete the [Deployment To-do List](https://technet.microsoft.com/library/jj884141.aspx).
-* If you want to increase the cluster compute capacity on-demand, add [Azure burst nodes](virtual-machines-windows-classic-hpcpack-cluster-node-burst.md) in a cloud service. 
+* これで、HPC Pack クラスターのヘッド ノードを操作できます。たとえば、HPC クラスター マネージャーを起動し、[デプロイ作業一覧](https://technet.microsoft.com/library/jj884141.aspx)の作業を完了します。
+* オンデマンドでクラスター コンピューティング能力を向上させる場合には、クラウド サービスに [Azure バースト ノード](virtual-machines-windows-classic-hpcpack-cluster-node-burst.md)を追加します。
 
-* Try running a test workload on the cluster. For an example, see the HPC Pack [getting started guide](https://technet.microsoft.com/library/jj884144).
+* クラスターでテスト ワークロードを実行してみます。たとえば、HPC Pack [ファースト ステップ ガイド](https://technet.microsoft.com/library/jj884144)を参照してください。
 
 <!--Image references-->
 [headnode]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/headnode.png
 [marketplace]: ./media/virtual-machines-windows-hpcpack-cluster-headnode/marketplace.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

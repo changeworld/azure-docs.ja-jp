@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Deploy the StorSimple Manager service | Microsoft Azure"
-   description="Explains how to create and delete the StorSimple Manager service in the Azure classic portal, and describes how to manage the service registration key."
+   pageTitle="StorSimple Manager サービスをデプロイする | Microsoft Azure"
+   description="Azure クラシック ポータルで StorSimple Manager サービスを作成および削除する方法、さらにサービス登録キーを管理する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="SharS"
@@ -15,109 +15,104 @@
    ms.date="05/24/2016"
    ms.author="v-sharos" />
 
+# StorSimple Manager サービスをデプロイする
 
-# <a name="deploy-the-storsimple-manager-service"></a>Deploy the StorSimple Manager service
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Manager サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。サービスを作成したら、それを使用して、ブラウザーで実行される Microsoft Azure クラシック ポータルでデバイスを管理できます。このポータルを使用すると、StorSimple Manager サービスに接続されているすべてのデバイスを 1 か所から集中的に監視できるので、管理の負荷を最小限に抑えることができます。
 
-The StorSimple Manager service runs in Microsoft Azure and connects to multiple StorSimple devices. After you create the service, you can use it to manage the devices from the Microsoft Azure classic portal running in a browser. This allows you to monitor all the devices that are connected to the StorSimple Manager service from a single, central location, thereby minimizing administrative burden.
+StorSimple Manager のランディング ページには、StorSimple ストレージ デバイスの管理に使用できるすべての StorSimple Manager サービスの一覧が示されています。各 StorSimple Manager について、以下の情報が [StorSimple Manager] ページに表示されます。
 
-The StorSimple Manager landing page lists all the StorSimple Manager services that you can use to manage your StorSimple storage devices. For each StorSimple Manager service, the following information is presented on the StorSimple Manager page:
+- **[名前]** – StorSimple Manager サービスの作成時に付けられた名前。サービス名は、サービスの作成後に変更することはできません。
 
-- **Name** – The name that was assigned to your StorSimple Manager service when it was created. The service name cannot be changed after the service is created.
+- **[状態]** – サービスの状態。**アクティブ**、**作成中**、または**オンライン**のいずれか。
 
-- **Status** – The status of the service, which can be **Active**, **Creating**, or **Online**.
+- **[場所]** – StorSimple デバイスがデプロイされる地理的な場所。
 
-- **Location** – The geographical location in which the StorSimple device will be deployed.
+- **[サブスクリプション]** – サービスに関連付けられている課金サブスクリプション。
 
-- **Subscription** – The billing subscription that is associated with your service.
+[StorSimple Manager] ページで実行できる一般的なタスクは以下のとおりです。
 
-The common tasks that can be performed through the StorSimple Manager page are:
+- サービスの作成
+- サービスの削除
+- サービス登録キーを取得する
+- サービス登録キーを再生成する
 
-- Create a service
-- Delete a service
-- Get the service registration key
-- Regenerate the service registration key
+このチュートリアルでは、これらの各タスクの実行方法を説明します。
 
-This tutorial describes how to perform each of these tasks.
+## サービスの作成
 
-## <a name="create-a-service"></a>Create a service
+StorSimple デバイスをデプロイする場合は、**[簡易作成]** オプションを使用して、StorSimple Manager サービスを作成します。サービスを作成する上で必要なものは次のとおりです。
 
-Use the **Quick Create** option to create a StorSimple Manager service if you want to deploy your StorSimple device. To create a service, you need to have:
+- エンタープライズ契約によるサブスクリプション
+- アクティブな Microsoft Azure ストレージ アカウント
+- アクセス管理で使用する課金情報
 
-- A subscription with an Enterprise Agreement
-- An active Microsoft Azure storage account
-- The billing information that is used for access management
+サービスの作成時に既定のストレージ アカウントを生成することもできます。
 
-You can also choose to generate a default storage account when you create the service.
+単一のサービスで複数のデバイスを管理できます。ただし、1 つのデバイスを複数のサービスに割り当てることはできません。大企業は、そのようなサービス インスタンスを複数持つことで、さまざまなサブスクリプション、組織、デプロイの場所に対応することができます。StorSimple 8000 シリーズ デバイスと StorSimple Virtual Array の管理には、StorSimple Manager サービスの個別のインスタンスが必要であることに注意してください。
 
-A single service can manage multiple devices. However, a device cannot span multiple services. A large enterprise can have multiple service instances to work with different subscriptions, organizations, or even deployment locations. Please note that you need separate instances of StorSimple Manager service to manage StorSimple 8000 series devices and StorSimple Virtual Arrays.
-
-Perform the following steps to create a service.
+サービスを作成するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-create-new-service](../../includes/storsimple-create-new-service.md)]
 
-## <a name="delete-a-service"></a>Delete a service
+## サービスの削除
 
-Before you delete a service, make sure that no connected devices are using it. If the service is in use, deactivate the connected devices. The deactivate operation will sever the connection between the device and the service, but preserve the device data in the cloud. 
+サービスを削除する際は、接続されているデバイスでそのサービスが使用されていないことを先に確認します。サービスが使用されている場合は、該当するデバイスを非アクティブにします。非アクティブ化操作によってデバイスとサービス間の接続は切断されますが、クラウド内のデバイスのデータは保持されます。
 
-[AZURE.IMPORTANT] After a service is deleted, the operation cannot be reversed. Any device that was using the service will need to be factory reset before it can be used with another service. In this scenario, the local data on the device, as well as the configuration, will be lost.
+[AZURE.IMPORTANT] いったんサービスを削除すると、その操作を元に戻すことはできません。このサービスを利用していたデバイスを別のサービスで使用するには、デバイスを出荷時の状態にリセットする必要があります。このとき、デバイス上のローカル データや構成は失われます。
 
-Perform the following steps to delete a service.
+サービスを削除するには次の手順を実行します。
 
-### <a name="to-delete-a-service"></a>To delete a service
+### サービスを削除するには
 
-1. On the **StorSimple Manager service** page, select the service that you wish to delete.
+1. **[StorSimple Manager サービス]** ページで、削除するサービスをクリックします。
 
-1. Click **Delete** at the bottom of the page.
+1. ページの下部にある **[削除]** をクリックします。
 
-1. Click **Yes** in the confirmation notification. It may take a few minutes for the service to be deleted.
+1. 確認通知が表示されたら、**[はい]** をクリックします。サービスが削除されるまで数分かかる場合があります。
 
-## <a name="get-the-service-registration-key"></a>Get the service registration key
+## サービス登録キーを取得する
 
-After you have successfully created a service, you will need to register your StorSimple device with the service. To register your first StorSimple device, you will need the service registration key. To register additional devices with an existing StorSimple service, you will need both the registration key and the service data encryption key (which is generated on the first device during registration). For more information about the service data encryption key, see [StorSimple security](storsimple-security.md). You can get the registration key by accessing **Registration Key** on the **Services** page.
+正常にサービスを作成した後、そのサービスに StorSimple デバイスを登録します。初めて StorSimple デバイスを登録する場合は、サービス登録キーが必要です。既存の StorSimple サービスに追加のデバイスを登録するには、登録キーとサービス データ暗号化キー (最初のデバイスの登録中に生成される) の両方が必要です。サービス データ暗号化キーの詳細については、「[StorSimple セキュリティ](storsimple-security.md)」をご覧ください。登録キーは、**[サービス]** ページの **[登録キー]** にアクセスすることで取得できます。
 
-Perform the following steps to get the service registration key.
+次の手順を実行して、サービス登録キーを取得します。
 
 [AZURE.INCLUDE [storsimple-get-service-registration-key](../../includes/storsimple-get-service-registration-key.md)]
 
-Keep the service registration key in a safe location. You will need this key, as well as the service data encryption key, to register additional devices with this service. After obtaining the service registration key, you will need to configure your device through the Windows PowerShell for StorSimple interface.
+サービス登録キーは、安全な場所に保管してください。このキーは、サービスに追加のデバイスを登録するときにサービス データ暗号化キーと共に必要です。サービス登録キーを取得したら、StorSimple 用 Windows PowerShell インターフェイスを介してデバイスを構成する必要があります。
 
-For details on how to use this registration key, see [Step 3: Configure and register the device through Windows PowerShell for StorSimple](storsimple-deployment-walkthrough.md#step-2-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+登録キーの使用方法の詳細については、「[手順 3: StorSimple 用 Windows PowerShell インターフェイスを使用したデバイスの構成と登録](storsimple-deployment-walkthrough.md#step-2-configure-and-register-the-device-through-windows-powershell-for-storsimple)」を参照してください。
 
-## <a name="regenerate-the-service-registration-key"></a>Regenerate the service registration key
+## サービス登録キーを再生成する
 
-You will need to regenerate a service registration key if you are required to perform key rotation or if the list of service administrators has changed. When you regenerate the key, the new key is used only for registering subsequent devices. The devices that were already registered are unaffected by this process.
+キー ローテーションを実行する必要があるとき、またはサービス管理者の一覧が変更されたときは、サービス登録キーを再生成する必要があります。キーを再生成した場合、新しいキーはその後のデバイスの登録に対してのみ使用されます。既に登録されているデバイスは、再生成の影響を受けません
 
-Perform the following steps to regenerate a service registration key.
+次の手順を実行して、サービス登録キーを再生成します。
 
-### <a name="to-regenerate-the-service-registration-key"></a>To regenerate the service registration key
+### サービス登録キーを再生成するには
 
-1. On the **StorSimple Manager service** page, click **Registration Key**.
+1. **[StorSimple Manager サービス]** ページで、**[登録キー]** をクリックします。
 
-1. In the **Service Registration Key** dialog box, click **Regenerate**.
+1. **[サービス登録キー]** ダイアログ ボックスで、**[再生成]** をクリックします。
 
-1. You will see a confirmation message. Click **OK** to continue with the regeneration.
+1. 確認メッセージが表示されます。**[OK]** をクリックして、再生成を続行します。
 
-1. A new service registration key will appear.
+1. 新しいサービス登録キーが表示されます。
 
-1. Copy this key and save it for registering any new devices with this service.
+1. このキーをコピーし、このサービスに新しいデバイスを登録するときのために保存します。
 
-1. Click the check icon ![Check icon](./media/storsimple-manage-service/HCS_CheckIcon.png) to close this dialog box.
+1. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-service/HCS_CheckIcon.png) をクリックして、このダイアログ ボックスを閉じます。
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn more about the [StorSimple deployment process](storsimple-deployment-walkthrough.md).
+- [StorSimple デプロイのプロセスの詳細](storsimple-deployment-walkthrough.md)
 
-- Learn more about [managing your StorSimple storage account](storsimple-manage-storage-accounts.md).
+- [StorSimple ストレージ アカウントの管理の詳細](storsimple-manage-storage-accounts.md)
 
-- Learn more about how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0525_2016-->

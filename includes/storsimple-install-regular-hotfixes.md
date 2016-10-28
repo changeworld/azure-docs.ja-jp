@@ -1,25 +1,22 @@
 <!--author=SharS last changed: 9/17/15-->
 
-#### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>To install regular hotfixes via Windows PowerShell for StorSimple
+#### StorSimple 用 Windows PowerShell を使用して通常の修正プログラムをインストールするには
 
-1. Connect to the device serial console. For more information, see [Step 1: Connect to the serial console](storsimple-update-device.md#step1).
+1. デバイスのシリアル コンソールに接続します。詳細については、「[手順 1: シリアル コンソールに接続する](storsimple-update-device.md#step1)」を参照してください。
 
-2. In the serial console menu, select option 1, **Log in with full access**. Type the password. The default password is **Password1**.
+2. シリアル コンソール メニューで、オプション 1 の **[フル アクセスによるログイン]** を選択します。パスワードを入力します。既定のパスワードは **Password1** です。
 
-3. At the command prompt, type:
+3. コマンド プロンプトに、次のコマンドを入力します。
 
     `Start-HcsHotfix`
 
        >[AZURE.IMPORTANT]
        >
-       >- This command applies only to regular hotfixes. You run this command on only one controller, but both controllers will be updated.
-       >- You may notice a controller failover during the update process; however, the failover will not affect system availability or operation.
+       >- このコマンドは通常の修正プログラムのみに適用されます。このコマンドは 1 つのコントローラーでのみ実行しますが、両方のコントローラーが更新されます。
+       >- 更新プロセス中にコントローラーのフェールオーバーが行われても、システムの可用性または処理には影響しません。
 
-4. When prompted, supply the path to the network shared folder that contains the hotfix files.
+4. メッセージが表示されたら、修正プログラムのファイルが含まれているネットワーク共有フォルダーへのパスを入力します。
 
-5. You will be prompted for confirmation. Type **Y** to proceed with the hotfix installation.
+5. 確認を求められます。「**Y**」と入力して修正プログラムのインストールを続行します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

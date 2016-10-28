@@ -1,12 +1,9 @@
-## <a name="<a-name="setupdevenv"></a>set-up-the-development-environment"></a><a name="setupdevenv"></a>Set up the development environment
+## <a name="setupdevenv"></a>開発環境の設定
 
-To start, set up your development environment by installing the [Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003) or the [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkID=324322).
+最初に、[Azure SDK for Visual Studio 2015](http://go.microsoft.com/fwlink/?linkid=518003) または [Azure SDK for Visual Studio 2013](http://go.microsoft.com/fwlink/?LinkID=324322) をインストールして、開発環境を設定します。
 
-If you don't have Visual Studio installed, use the link for Visual Studio 2015, and Visual Studio will be installed along with the SDK.
+Visual Studio がインストールされていない場合は、Visual Studio 2015 へのリンクを使用すると、SDK と共に Visual Studio がインストールされます。
 
->[AZURE.NOTE] Depending on how many of the SDK dependencies you already have on your machine, installing the SDK could take a long time, from several minutes to a half hour or more.
+>[AZURE.NOTE]マシンに既にある SDK の依存関係の数に応じて、SDK のインストールには長時間 (数分から 30 分以上) かかる場合があります。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

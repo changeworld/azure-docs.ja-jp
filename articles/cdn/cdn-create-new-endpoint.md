@@ -1,105 +1,100 @@
 <properties
-     pageTitle="Using Azure CDN | Microsoft Azure"
-     description="This topic shows how to enable the Content Delivery Network (CDN) for Azure. The tutorial walks through the creation of a new CDN profile and endpoint."
-     services="cdn"
-     documentationCenter=""
-     authors="camsoper"
-     manager="erikre"
-     editor=""/>
+	 pageTitle="Azure CDN の使用 | Microsoft Azure"
+	 description="このトピックでは、Azure の Content Delivery Network (CDN) を有効にする方法を説明します。このチュートリアルでは、新しい CDN プロファイルとエンドポイントの作成手順について説明します。"
+	 services="cdn"
+	 documentationCenter=""
+	 authors="camsoper"
+	 manager="erikre"
+	 editor=""/>
 <tags
-     ms.service="cdn"
-     ms.workload="media"
-     ms.tgt_pltfrm="na"
-     ms.devlang="na"
-     ms.topic="get-started-article"
-     ms.date="07/28/2016" 
-     ms.author="casoper"/>
+	 ms.service="cdn"
+	 ms.workload="media"
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="get-started-article"
+	 ms.date="07/28/2016" 
+	 ms.author="casoper"/>
 
+# Azure CDN の使用  
 
-# <a name="using-azure-cdn"></a>Using Azure CDN  
+このトピックでは、CDN プロファイルと CDN エンドポイントを新しく作成することによって Azure CDN を有効にする手順を紹介しています。
 
-This topic walks through enabling Azure CDN by creating a new CDN profile and endpoint.
+>[AZURE.IMPORTANT] CDN の機能の概要と、機能の一覧については、「[CDN の概要](./cdn-overview.md)」を参照してください。
 
->[AZURE.IMPORTANT] For an introduction to how CDN works, as well as a list of features, see the [CDN Overview](./cdn-overview.md).
+## 新しい CDN プロファイルを作成する
 
-## <a name="create-a-new-cdn-profile"></a>Create a new CDN profile
+CDN プロファイルは、CDN エンドポイントのコレクションです。各プロファイルには、1 つ以上の CDN エンドポイントが含まれます。複数のプロファイルを使って、インターネット ドメイン、Web アプリケーション、またはその他の一部の基準別に CDN エンドポイントを整理する必要が生じる場合があります。
 
-A CDN profile is a collection of CDN endpoints.  Each profile contains one or more CDN endpoints.  You may wish to use multiple profiles to organize your CDN endpoints by internet domain, web application, or some other criteria.
-
-> [AZURE.NOTE] By default, a single Azure subscription is limited to eight CDN profiles. Each CDN profile is limited to ten CDN endpoints.
+> [AZURE.NOTE] 既定では、1 つの Azure サブスクリプションは 8 つの CDN プロファイルに限定されます。各 CDN プロファイルは 10 個の CDN エンドポイントに制限されます。
 >
-> CDN pricing is applied at the CDN profile level. If you wish to use a mix of Azure CDN pricing tiers, you will need multiple CDN profiles.
+> CDN の価格は、CDN プロファイル レベルで適用されます。Azure CDN の価格レベルを組み合わせて使用する場合は、複数の CDN プロファイルが必要になります。
 
 [AZURE.INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
-## <a name="create-a-new-cdn-endpoint"></a>Create a new CDN endpoint
+## 新しい CDN エンドポイントを作成する
 
-**To create a new CDN endpoint**
+**新しい CDN エンドポイントを作成するには**
 
-1. In the [Azure Portal](https://portal.azure.com), navigate to your CDN profile.  You may have pinned it to the dashboard in the previous step.  If you not, you can find it by clicking **Browse**, then **CDN profiles**, and clicking on the profile you plan to add your endpoint to.
+1. [Azure ポータル](https://portal.azure.com)で、CDN プロファイルに移動します。これは、前の手順でダッシュボードにピン留めしている可能性があります。ピン留めしていない場合は、**[参照]**、**[CDN プロファイル]** の順にクリックし、エンドポイントの追加先のプロファイルをクリックします。
 
-    The CDN profile blade appears.
+    CDN プロファイル ブレードが表示されます。
 
-    ![CDN profile][cdn-profile-settings]
+    ![CDN プロファイル][cdn-profile-settings]
 
-2. Click the **Add Endpoint** button.
+2. **[エンドポイントの追加]** ボタンをクリックします。
 
-    ![Add endpoint button][cdn-new-endpoint-button]
+    ![[エンドポイントの追加] ボタン][cdn-new-endpoint-button]
 
-    The **Add an endpoint** blade appears.
+    **[エンドポイントの追加]** ブレードが表示されます。
 
-    ![Add endpoint blade][cdn-add-endpoint]
+    ![[エンドポイントの追加] ブレード][cdn-add-endpoint]
 
-3. Enter a **Name** for this CDN endpoint.  This name will be used to access your cached resources at the domain `<endpointname>.azureedge.net`.
+3. この CDN エンドポイントの**名前**を入力します。この名前は、ドメイン `<endpointname>.azureedge.net` でキャッシュされたリソースにアクセスする際に使用します。
 
-4. In the **Origin type** dropdown, select your origin type.  Select **Storage** for an Azure Storage account, **Cloud service** for an Azure Cloud Service, **Web App** for an Azure Web App, or **Custom origin** for any other publicly accessible web server origin (hosted in Azure or elsewhere).
+4. **[配信元の種類]** ドロップダウンで、配信元の種類を選択します。Azure ストレージ アカウントの場合は **[ストレージ]** を、Azure クラウド サービスの場合は **[クラウド サービス]** を、Azure Web アプリの場合は **[Web アプリ]** を選択します。それ以外の、Azure または他の場所にホストされたパブリックにアクセス可能な Web サーバーが配信元である場合は、**[カスタムの配信元]** を選択します。
 
-    ![CDN origin type](./media/cdn-create-new-endpoint/cdn-origin-type.png)
-        
-5. In the **Origin hostname** dropdown, select or type your origin domain.  The dropdown will list all available origins of the type you specified in step 4.  If you selected *Custom origin* as your **Origin type**, you will type in the domain of your custom origin.
+	![CDN 配信元の種類](./media/cdn-create-new-endpoint/cdn-origin-type.png)
+		
+5. **[配信元ホスト名]** ドロップダウンで、配信元のドメインを選択または入力します。ドロップダウンに、手順 4 で指定した種類の利用可能な配信元がすべて一覧表示されます。**[配信元の種類]** として *[カスタムの配信元]* を選択した場合は、カスタムの配信元のドメインを入力します。
 
-6. In the **Origin path** text box, enter the path to the resources you want to cache, or leave blank to allow cache any resource at the domain you specified in step 5.
+6. **[元のパス]** ボックスに、キャッシュするリソースへのパスを入力するか、空のままにして、手順 5 で指定したドメインでのリソースをキャッシュするようにします。
 
-7. In the **Origin host header**, enter the host header you want the CDN to send with each request, or leave the default.
+7. **[配信元のホスト ヘッダー]** で、CDN の各要求で送信するホスト ヘッダーを入力するか、既定値をそのまま使用します。
 
-    > [AZURE.WARNING] Some types of origins, such as Azure Storage and Web Apps, require the host header to match the domain of the origin. Unless you have an origin that requires a host header different from its domain, you should leave the default value.
+	> [AZURE.WARNING] Azure Storage や Web Apps など、配信元の種類によっては、ホスト ヘッダーを配信元のドメインに合わせる必要があります。ホスト ヘッダーがそのドメインと異なっていることをご利用の配信元で要求される場合以外は、既定値をそのまま使用してください。
 
-8. For **Protocol** and **Origin port**, specify the protocols and ports used to access your resources at the origin.  At least one protocol (HTTP or HTTPS) must be selected.
-    
-    > [AZURE.NOTE] The **Origin port** only affects what port the endpoint uses to retrieve information from the origin.  The endpoint itself will only be available to end clients on the default HTTP and HTTPS ports (80 and 443), regardless of the **Origin port**.  
-    >
-    > **Azure CDN from Akamai** endpoints do not allow the full TCP port range for origins.  For a list of origin ports that are not allowed, see [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx).  
-    >
-    > Accessing CDN content using HTTPS has the following constraints:
-    > 
-    > - You must use the SSL certificate provided by the CDN. Third party certificates are not supported.
-    > - You must use the CDN-provided domain (`<endpointname>.azureedge.net`) to access HTTPS content. HTTPS support is not available for custom domain names (CNAMEs) since the CDN does not support custom certificates at this time.
+8. **[プロトコル]** と **[配信元ポート]** に、配信元のリソースへのアクセスに使用するプロトコルとポートを指定します。少なくとも 1 つのプロトコル (HTTP または HTTPS) を選択する必要があります。
+	
+	> [AZURE.NOTE] **[配信元ポート]** は、エンドポイントが配信元から情報を取得するときに使用されるポートにのみ影響します。エンドポイントそのものは、**配信元ポート**に関係なく、エンド クライアントが既定の HTTP ポートと HTTPS ポート (80 と 443) を介してのみ利用できます。
+	>
+	> **Azure CDN from Akamai** エンドポイントでは、配信元の TCP ポート範囲全体が許可されません。使用できない配信元ポートの一覧については、「[Azure CDN from Akamai Allowed Origin Ports (Azure CDN from Akamai で使用できる配信元ポート)](https://msdn.microsoft.com/library/mt757337.aspx)」を参照してください。
+	>
+	> HTTPS を使用して CDN コンテンツにアクセスする場合、次の制約があります。
+	> 
+	> - CDN によって提供される SSL 証明書を使用する必要があります。サード パーティの証明書はサポートされません。
+	> - CDN から提供されたドメイン (`<endpointname>.azureedge.net`) を使用して、HTTPS コンテンツにアクセスする必要があります。現時点では CDN がカスタム証明書をサポートしていないために、HTTPS サポートではカスタム ドメイン名 (CNAME) を使用できません。
 
-9. Click the **Add** button to create the new endpoint.
+9. **[追加]** ボタンをクリックして、新しいエンドポイントを作成します。
 
-10. Once the endpoint is created, it appears in a list of endpoints for the profile. The list view shows the URL to use to access cached content, as well as the origin domain.
+10. エンドポイントが作成されると、プロファイルのエンドポイントの一覧に表示されます。一覧には、キャッシュされたコンテンツへのアクセスに使用する URL と元のドメインが表示されます。
 
-    ![CDN endpoint][cdn-endpoint-success]
+    ![CDN エンドポイント][cdn-endpoint-success]
 
-    > [AZURE.IMPORTANT] The endpoint will not immediately be available for use, as it takes time for the registration to propagate through the CDN.  For <b>Azure CDN from Akamai</b> profiles, propagation will usually complete within one minute.  For <b>Azure CDN from Verizon</b> profiles, propagation will usually complete within 90 minutes, but in some cases can take longer.
-    >    
-    > Users who try to use the CDN domain name before the endpoint configuration has propagated to the POPs will receive HTTP 404 response codes.  If it's been several hours since you created your endpoint and you're still receiving 404 responses, please see [Troubleshooting CDN endpoints returning 404 statuses](cdn-troubleshoot-endpoint.md).
+    > [AZURE.IMPORTANT] 登録内容が CDN に反映されるまでに時間がかかるため、エンドポイントは、すぐには利用できません。<b>Azure CDN from Akamai</b> プロファイルの場合、通常、反映は 1 分以内で完了します。<b>Azure CDN from Verizon</b> プロファイルの場合、通常、反映は 90 分以内に完了しますが、もっと時間がかかる場合もあります。
+	>	 
+	> エンドポイントの構成が POP に反映される前に CDN のドメイン名を利用しようとすると、HTTP 404 応答コードがユーザーに表示されます。エンドポイントを作成してから数時間が経過しても、404 が応答として返される場合は、「[404 状態を返す CDN エンドポイントのトラブルシューティング](cdn-troubleshoot-endpoint.md)」を参照してください。
 
 
-##<a name="see-also"></a>See Also
-- [Controlling caching behavior of requests with query strings](cdn-query-string.md)
-- [How to Map CDN Content to a Custom Domain](cdn-map-content-to-custom-domain.md)
-- [Pre-load assets on an Azure CDN endpoint](cdn-preload-endpoint.md)
-- [Purge an Azure CDN Endpoint](cdn-purge-endpoint.md)
-- [Troubleshooting CDN endpoints returning 404 statuses](cdn-troubleshoot-endpoint.md)
+##関連項目
+- [クエリ文字列による要求のキャッシュ動作の制御](cdn-query-string.md)
+- [CDN コンテンツをカスタム ドメインにマッピングする方法](cdn-map-content-to-custom-domain.md)
+- [Azure CDN エンドポイント上のアセットを事前に読み込む](cdn-preload-endpoint.md)
+- [Azure CDN エンドポイントの消去](cdn-purge-endpoint.md)
+- [404 状態を返す CDN エンドポイントのトラブルシューティング](cdn-troubleshoot-endpoint.md)
 
 [cdn-profile-settings]: ./media/cdn-create-new-endpoint/cdn-profile-settings.png
 [cdn-new-endpoint-button]: ./media/cdn-create-new-endpoint/cdn-new-endpoint-button.png
 [cdn-add-endpoint]: ./media/cdn-create-new-endpoint/cdn-add-endpoint.png
 [cdn-endpoint-success]: ./media/cdn-create-new-endpoint/cdn-endpoint-success.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

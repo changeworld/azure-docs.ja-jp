@@ -1,6 +1,6 @@
 <properties
-pageTitle="Azure Search indexer field mappings bridge the differences between data sources and search indexes"
-description="Configure Azure Search indexer field mappings to account for differences in field names and data representations"
+pageTitle="データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング"
+description="フィールド名とデータ表現の間の違いを調整するよう Azure Search インデクサー フィールド マッピングを構成する"
 services="search"
 documentationCenter=""
 authors="chaosrealm"
@@ -16,35 +16,34 @@ ms.tgt_pltfrm="na"
 ms.date="04/30/2016"
 ms.author="eugenesh" />
 
+# データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング
 
-# <a name="azure-search-indexer-field-mappings-bridge-the-differences-between-data-sources-and-search-indexes"></a>Azure Search indexer field mappings bridge the differences between data sources and search indexes
+Azure Search インデクサーを使用する際、入力データがターゲット インデックスのスキーマと大きく異なっているのに気づく場合があります。このような場合に、**フィールド マッピング**を使用してデータを必要な形式に変換できます。
 
-When using Azure Search indexers, you can occasionally find yourself in situations where your input data doesn't quite match the schema of your target index. In those cases, you can use **field mappings** to transform your data into the desired shape. 
-
-Some situations where field mappings are useful:
+フィールド マッピングが役立つシナリオは次のとおりです。
  
-- Your data source has a field `_id`, but Azure Search doesn't allow field names starting with an underscore. A field mapping allows you to "rename" a field. 
-- You want to populate several fields in the index with the same data source data, for example because you want to apply different analyzers to those fields. Field mappings let you "fork" a data source field.
-- You need to Base64 encode or decode your data. Field mappings support several **mapping functions**, including functions for Base64 encoding and decoding.   
+- データ ソースにフィールド `_id` があるが、Azure Search でフィールド名をアンダースコアで開始できない場合。フィールド マッピングにより、フィールドの "名前を変更" できます。 
+- インデックスのいくつかのフィールドに同じデータ ソースのデータを設定する必要がある場合。それらのフィールドに個別のアナライザーを適用する必要がある場合など。フィールド マッピングにより、データ ソース フィールドを "フォーク" できます。
+- Base64 エンコードまたはデータのデコードが必要な場合。フィールド マッピングは、いくつかの**マッピング関数**をサポートしています。これには、Base64 エンコードおよびデコードの関数などがあります。   
 
 
-> [AZURE.IMPORTANT] Currently, field mappings functionality is in preview. It is available only in the REST API using version **2015-02-28-Preview**. Please remember, preview APIs are intended for testing and evaluation, and should not be used in production environments.
+> [AZURE.IMPORTANT] 現在、フィールド マッピング機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 
-## <a name="setting-up-field-mappings"></a>Setting up field mappings
+## フィールド マッピングの設定
 
-You can add field mappings when creating a new indexer using the [Create Indexer](search-api-indexers-2015-02-28-preview.md#create-indexer) API. You can manage field mappings on an indexing indexer using the [Update Indexer](search-api-indexers-2015-02-28-preview.md#update-indexer) API. 
+フィールド マッピングは、[インデクサーの作成](search-api-indexers-2015-02-28-preview.md#create-indexer) API を使用して新しいインデクサーを作成するときに追加できます。フィールド マッピングは、[インデクサーの更新](search-api-indexers-2015-02-28-preview.md#update-indexer) API を使用してインデックス作成インデクサーで管理できます。
 
-A field mapping consists of 3 parts: 
+フィールド マッピングは、次の 3 つの部分で構成されます。
 
-1. A `sourceFieldName`, which represents a field in your data source. This property is required. 
+1. `sourceFieldName`。データ ソース内のフィールドを表します。このプロパティは必須です。 
 
-2. An optional `targetFieldName`, which represents a field in your search index. If omitted, the same name as in the data source is used. 
+2. `targetFieldName` (省略可能)。検索インデックス内のフィールドを表します。省略すると、データ ソースと同じ名前が使用されます。
 
-3. An optional `mappingFunction`, which can transform your data using one of several predefined functions. The full list of functions is [below](#mappingFunctions).
+3. `mappingFunction` (省略可能)。定義済みのいずれかの関数を使用してデータを変換できます。関数の完全な一覧については、[以下](#mappingFunctions)をご覧ください。
 
-Fields mappings are added to the `fieldMappings` array on the indexer definition. 
+フィールド マッピングは、インデクサー定義の `fieldMappings` 配列に追加されます。
 
-For example, here's how you can accommodate differences in field names: 
+たとえば、フィールド名間の違いを調整する方法は以下のとおりです。
 
 ```JSON
 
@@ -58,22 +57,22 @@ api-key: [admin key]
 } 
 ```
 
-An indexer can have multiple field mappings. For example, here's how you can "fork" a field:
+インデクサーは、複数のフィールド マッピングを持つことができます。たとえば、フィールドを "フォーク" する方法を以下に示します。
 
 ```JSON
 
 "fieldMappings" : [ 
-    { "sourceFieldName" : "text", "targetFieldName" : "textStandardEnglishAnalyzer" },
-    { "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" }, 
+	{ "sourceFieldName" : "text", "targetFieldName" : "textStandardEnglishAnalyzer" },
+	{ "sourceFieldName" : "text", "targetFieldName" : "textSoundexAnalyzer" }, 
 ] 
 ```
 
-> [AZURE.NOTE] Azure Search uses case-insensitive comparison to resolve the field and function names in field mappings. This is convenient (you don't have to get all the casing right), but it means that your data source or index cannot have fields that differ only by case.  
+> [AZURE.NOTE] Azure Search は、大文字と小文字は区別されない比較を使用してフィールド マッピングのフィールドと関数名を解決します。これは便利ですが (大文字と小文字を区別する必要がないため)、同時に、データ ソースまたはインデックスが、大文字と小文字のみが異なるフィールドを持つことができないことを意味します。
 
 <a name="mappingFunctions"></a>
-## <a name="field-mapping-functions"></a>Field mapping functions
+## フィールド マッピング関数
 
-These functions are currently supported: 
+現在サポートされている関数は次のとおりです。
 
 - [base64Encode](#base64EncodeFunction)
 - [base64Decode](#base64DecodeFunction)
@@ -81,15 +80,15 @@ These functions are currently supported:
 - [jsonArrayToStringCollection](#jsonArrayToStringCollectionFunction)
 
 <a name="base64EncodeFunction"></a>
-### <a name="base64encode"></a>base64Encode 
+### base64Encode 
 
-Performs *URL-safe* Base64 encoding of the input string. Assumes that the input is UTF-8 encoded. 
+入力文字列の *URL の安全な* Base64 エンコードを実行します。入力は UTF-8 でエンコードされていることを前提としています。
 
-#### <a name="sample-use-case"></a>Sample use case 
+#### サンプル ユース ケース 
 
-Only URL-safe characters can appear in an Azure Search document key (because customers must be able to address the document using the Lookup API, for example). If your data contains URL-unsafe characters and you want to use it to populate a key field in your search index, use this function.   
+URL の安全な文字を Azure Search ドキュメント キーにのみ表示できます (お客様が参照 API を使用してドキュメントに対処する必要がある場合など)。データに URL の安全でない文字が含まれ、それを使用して検索インデックスにキー フィールドを設定する場合に、この関数を使用します。
 
-#### <a name="example"></a>Example 
+#### 例 
 
 ```JSON
 
@@ -102,15 +101,15 @@ Only URL-safe characters can appear in an Azure Search document key (because cus
 ```
 
 <a name="base64DecodeFunction"></a>
-### <a name="base64decode"></a>base64Decode
+### base64Decode
 
-Performs Base64 decoding of the input string. The input is assumed to a *URL-safe* Base64-encoded string. 
+入力文字列の Base64 デコードを実行します。入力値は *URL の安全な* Base64 でエンコードされた文字列と想定されます。
 
-#### <a name="sample-use-case"></a>Sample use case 
+#### サンプル ユース ケース 
 
-Blob custom metadata values must be ASCII-encoded. You can use Base64 encoding to represent arbitrary Unicode strings in blob custom metadata. However, to make search meaningful, you can use this function to turn the encoded data back into "regular" strings when populating your search index.  
+BLOB カスタム メタデータ値を、ASCII でエンコードする必要がある場合。Base64 エンコードを使用して、BLOB のカスタム メタデータ内の任意の Unicode 文字列を表すことができます。ただし、意味のある検索を行うために、検索インデックスを設定する際に、エンコードされたデータを "通常の" 文字列に戻すときにこの関数を使用できます。
 
-#### <a name="example"></a>Example 
+#### 例 
 
 ```JSON
 
@@ -123,22 +122,22 @@ Blob custom metadata values must be ASCII-encoded. You can use Base64 encoding t
 ```
 
 <a name="extractTokenAtPositionFunction"></a>
-### <a name="extracttokenatposition"></a>extractTokenAtPosition
+### extractTokenAtPosition
 
-Splits a string field using the specified delimiter, and picks the token at the specified position in the resulting split.
+指定された区切り記号を使用して文字列フィールドを分割し、結果として得られる分割の指定位置でトークンを取得します。
 
-For example, if the input is `Jane Doe`, the `delimiter` is `" "`(space) and the `position` is 0, the result is `Jane`; if the `position` is 1, the result is `Doe`. If the position refers to a token that doesn't exist, an error will be returned.
+たとえば、入力が `Jane Doe`、`delimiter` が `" "` (空白)、`position` が 0 の場合、結果は `Jane` になり、`position` が 1 の場合、結果は `Doe` になります。位置が、存在しないトークンを参照する場合、エラーが返されます。
 
-#### <a name="sample-use-case"></a>Sample use case 
+#### サンプル ユース ケース 
 
-Your data source contains a `PersonName` field, and you want to index it as two separate `FirstName` and `LastName` fields. You can use this function to split the input using the space character as the delimiter.
+データ ソースに `PersonName` フィールドが含まれ、それを 2 つの別々の `FirstName` および `LastName` フィールドとしてインデックスする必要がある場合。この関数を使用して、空白文字を区切り記号として使って入力を分割できます。
 
-#### <a name="parameters"></a>Parameters
+#### パラメーター
 
-- `delimiter`: a string to use as the separator when splitting the input string.
-- `position`: an integer zero-based position of the token to pick after the input string is split.    
+- `delimiter`: 入力文字列を分割するときに区切り記号として使用する文字列。
+- `position`: 入力文字列の分割後に取得するトークンの整数の 0 から始まる位置。    
 
-#### <a name="example"></a>Example
+#### 例
 
 ```JSON 
 
@@ -156,17 +155,17 @@ Your data source contains a `PersonName` field, and you want to index it as two 
 ```
 
 <a name="jsonArrayToStringCollectionFunction"></a>
-### <a name="jsonarraytostringcollection"></a>jsonArrayToStringCollection
+### jsonArrayToStringCollection
 
-Transforms a string formatted as a JSON array of strings into a string array that can be used to populate a `Collection(Edm.String)` field in the index. 
+文字列の JSON 配列として書式設定された文字列を、インデックス内の `Collection(Edm.String)` フィールドの入力に使用できる文字列配列に変換します。
 
-For example, if the input string is `["red", "white", "blue"]`, then the target field of type `Collection(Edm.String)` will be populated with the three values `red`, `white` and `blue`. For input values that cannot be parsed as JSON string arrays, an error will be returned. 
+たとえば、入力文字列が `["red", "white", "blue"]` の場合、`Collection(Edm.String)` 型のターゲット フィールドに `red`、`white`、`blue` の 3 つの値が入力されます。JSON 文字列配列として解析できない入力値では、エラーが返されます。
 
-#### <a name="sample-use-case"></a>Sample use case
+#### サンプル ユース ケース
 
-Azure SQL database doesn't have a built-in data type that naturally maps to `Collection(Edm.String)` fields in Azure Search. To populate string collection fields, format your source data as a JSON string array and use this function. 
+Azure SQL データベースには、Azure Search の `Collection(Edm.String)` のフィールドに自然にマップされる組み込みのデータ型がありません。文字列コレクション フィールドに値を入力するには、ソース データを JSON 文字列配列とし書式設定して、この関数を使用します。
 
-#### <a name="example"></a>Example 
+#### 例 
 
 ```JSON
 
@@ -175,11 +174,8 @@ Azure SQL database doesn't have a built-in data type that naturally maps to `Col
 ] 
 ```
 
-## <a name="help-us-make-azure-search-better"></a>Help us make Azure Search better
+## Azure Search の品質向上にご協力ください
 
-If you have feature requests or ideas for improvements, please reach out to us on our [UserVoice site](https://feedback.azure.com/forums/263029-azure-search/).
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0504_2016-->

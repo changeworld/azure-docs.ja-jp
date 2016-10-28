@@ -1,48 +1,42 @@
 <properties
-    pageTitle="About Windows Virtual Machines | Microsoft Azure"
-    description="Learn about the basics of Windows virtual machines in Azure using both deployment models."
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor="tysonn"
-    tags="azure-resource-manager,azure-service-management"/>
+	pageTitle="Windows 仮想マシンについて |Microsoft Azure"
+	description="両方のデプロイ モデルを使用した Azure の Windows 仮想マシンの基本について説明します。"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="cynthn"
+	manager="timlt"
+	editor="tysonn"
+	tags="azure-resource-manager,azure-service-management"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/27/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/27/2016"
+	ms.author="cynthn"/>
 
-
-#<a name="about-windows-virtual-machines-in-azure"></a>About Windows virtual machines in Azure
+#Azure の Windows 仮想マシンについて
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
 
-Azure Virtual Machines is one of several types of on-demand, scalable computing resources that Azure offers. Typically, you'll choose a virtual machine if you need more control over the computing environment than the other choices offer.
+Azure Virtual Machines は、Azure が提供するオンデマンドでスケーラブルなコンピューティング リソースのひとつです。通常、コンピューティング環境のよりよい管理を必要とする場合には、仮想マシンを選択します。
 
-An Azure virtual machine gives you the flexibility of virtualization without having to buy and maintain the physical hardware that runs the virtual machine. However, you still need to maintain the virtual machine -- configuring, patching, and maintaining the software that runs on the virtual machine. You can also learn [about Linux virtual machines in Azure](virtual-machines-linux-about.md).
+Azure Virtual Machine は、仮想マシンを実行する物理的なハードウェアを購入して維持する手間を省き、仮想化がもたらす柔軟性を提供します。ただし仮想マシンのメンテナンス、つまり仮想マシン上で動作するソフトウェアの構成、修正プログラムの適用、保守は必要です。[Azure の Linux 仮想マシンについて](virtual-machines-linux-about.md)も学習できます。
 
-This table helps you compare the choices offered by Azure.
+この表では、Azureが提供するさまざまなオプションを比較することができます。
 
 [AZURE.INCLUDE [compute-table](../../includes/compute-options-table.md)]
 
 [AZURE.INCLUDE [virtual-machines-choose-me-content](../../includes/virtual-machines-choose-me-content.md)]
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Try out a virtual machine by creating a simple virtual machine quickly. For instructions, see [Create a virtual machine running Windows in the Azure portal](virtual-machines-windows-hero-tutorial.md).
+単純な仮想マシンをすばやく作成して、仮想マシンを試してみてください。手順については、「[Azure ポータルで Windows 仮想マシンを作成する](virtual-machines-windows-hero-tutorial.md)」を参照してください。
 
-Because the tutorial helps you create a virtual machine quickly, it only shows you one way to do it instead of describing the various tools you can use to create virtual machines. For a summary of these tools and links to instructions, see [Different ways to create a Windows virtual machine](virtual-machines-windows-creation-choices.md).
+これらのチュートリアルには、仮想マシンをすばやく作成できるよう、仮想マシンを作成する際に使用できる多くのツールを取り上げるのではなく、仮想マシン作成の方法をひとつだけ重点的に紹介しています。これらのツールの概要と手順へのリンクについては、「[リソース マネージャーで Windows 仮想マシンを作成するさまざまな方法](virtual-machines-windows-creation-choices.md)」を参照してください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

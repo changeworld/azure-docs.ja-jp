@@ -1,117 +1,112 @@
 <properties
-    pageTitle="Azure Active Directory B2C: Limitations and restrictions | Microsoft Azure"
-    description="A list of limitations and restrictions with Azure Active Directory B2C"
-    services="active-directory-b2c"
-    documentationCenter=""
-    authors="swkrish"
-    manager="mbaldwin"
-    editor="bryanla"/>
+	pageTitle="Azure Active Directory B2C: 制限事項および制約事項 | Microsoft Azure"
+	description="Azure Active Directory B2C に関する制限事項と制約事項のリスト"
+	services="active-directory-b2c"
+	documentationCenter=""
+	authors="swkrish"
+	manager="msmbaldwin"
+	editor="bryanla"/>
 
 <tags
-    ms.service="active-directory-b2c"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/24/2016"
-    ms.author="swkrish"/>
+	ms.service="active-directory-b2c"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/24/2016"
+	ms.author="swkrish"/>
 
+# Azure Active Directory B2C: 制限事項および制約事項
 
-# <a name="azure-active-directory-b2c:-limitations-and-restrictions"></a>Azure Active Directory B2C: Limitations and restrictions
+Azure Active Directory (Azure AD) B2C には、まだサポートされていない機能があります。これらの既知の問題や制限事項の多くは、今後解決される予定ですが、Azure AD B2C を使用して消費者向けアプリケーションを作成する場合は注意が必要です。
 
-There are several features and functionalities of Azure Active Directory (Azure AD) B2C that are not yet supported. Many of these known issues & limitations will be addressed going forward, but you should be aware of them if you are building consumer-facing applications using Azure AD B2C.
+## Azure AD B2C テナントの作成中の問題
 
-## <a name="issues-during-the-creation-of-azure-ad-b2c-tenants"></a>Issues during the creation of Azure AD B2C tenants
+[Azure AD B2C テナントの作成](active-directory-b2c-get-started.md)中に問題が発生した場合は、「[Azure AD テナントまたは Azure AD B2C テナントの作成 - 問題と解決策](active-directory-b2c-support-create-directory.md)」を参照してください。
 
-If you encounter issues during the [creation of an Azure AD B2C tenant](active-directory-b2c-get-started.md), see [Create an Azure AD tenant or an Azure AD B2C tenant--issues and resolutions](active-directory-b2c-support-create-directory.md) for guidance.
+既存の B2C テナントを削除し、同じドメイン名でそれを再作成する場合に、既知の問題があることに注意してください。B2C テナントは異なるドメイン名で作成する必要があります。
 
-Note that there are known issues when you delete an existing B2C tenant and re-create it with the same domain name. You have to create a B2C tenant with a different domain name.
+## B2C テナントのクォータに関する注意事項
 
-## <a name="note-about-b2c-tenant-quotas"></a>Note about B2C tenant quotas
+B2C テナントのユーザー数は、既定で 50,000 ユーザーに制限されています。B2C テナントのクォータを引き上げる必要がある場合は、サポートにお問い合わせください。
 
-By default, the number of users in a B2C tenant is limited to 50,000 users. If you need to raise the quota of your B2C tenant, you should contact Support.
+## 確認メールのブランドの問題
 
-## <a name="branding-issues-on-verification-email"></a>Branding issues on verification email
+既定の確認メールには、Microsoft ブランドが含まれています。これは将来削除される予定です。現時点では、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用して削除できます。
 
-The default verification email contains Microsoft branding. We will remove it in the future. For now, you can remove it by using the [company branding feature](../active-directory/active-directory-add-company-branding.md).
+## アプリケーションに関する制限事項
 
-## <a name="restrictions-on-applications"></a>Restrictions on applications
+Azure AD B2C では現在、次のタイプのアプリケーションはサポートされていません。サポートされているアプリケーションのタイプについては、「[Azure Active Directory B2C: アプリケーションの種類](active-directory-b2c-apps.md)」を参照してください。
 
-The following types of applications are not currently supported in Azure AD B2C. For a description of the supported types of applications, refer to [Azure AD B2C: Types of applications](active-directory-b2c-apps.md).
+### シングル ページ アプリケーション (JavaScript)
 
-### <a name="single-page-applications-(javascript)"></a>Single Page Applications (JavaScript)
+最近多く見かけるようになったシングル ページ アプリケーション (SPA) のフロントエンドは、主に JavaScript で作成されています。AngularJS、Ember.js、Durandal などの SPA フレームワークが使われることも少なくありません。このフローは、Azure AD B2C ではまだ使用できません。
 
-Many modern applications have a Single Page Application (SPA) front-end that is written primarily in JavaScript and often uses an SPA framework such as AngularJS, Ember.js, Durandal, etc. This flow is not yet available in Azure AD B2C.
+### デーモン/サーバー側のアプリケーション
 
-### <a name="daemons-/-server-side-applications"></a>Daemons / server-side applications
+長時間実行されるプロセスを含んだアプリケーションや、ユーザーの介入なしで動作するアプリケーションも、セキュリティで保護されたリソース (Web API など) にアクセスする必要があります。これらのアプリケーションは、[OAuth 2.0 クライアント資格情報フロー](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow)を使用することで、(お客様の委任 ID ではなく) アプリケーションの ID を使って認証を行い、トークンを取得することができます。このフローは Azure AD B2C ではまだ使用できないので、現時点では、アプリケーションは対話的なコンシューマー サインイン フローが発生した後にのみ、トークンを取得できます。
 
-Applications that contain long-running processes or that operate without the presence of a user also need a way to access secured resources, such as Web APIs. These applications can authenticate and get tokens by using the application's identity (rather than a consumer's delegated identity) in the [OAuth 2.0 client credentials flow](active-directory-b2c-reference-protocols.md#oauth2-client-credentials-grant-flow). This flow is not yet available in Azure AD B2C, so for now, applications can get tokens only after an interactive consumer sign-in flow has occurred.
+### スタンドアロン Web API
 
-### <a name="standalone-web-apis"></a>Standalone Web APIs
+Azure AD B2C では、[OAuth 2.0 トークンを使用して保護された Web API を作成](active-directory-b2c-apps.md#web-apis)することができます。ただし、その Web API は、同じアプリケーション ID を共有するクライアントからしかトークンを受け取ることができません。複数の異なるクライアントからアクセスされる Web API を構築することはできません。
 
-In the Azure AD B2C, you have the ability to [build a Web API that is secured by using OAuth 2.0 tokens](active-directory-b2c-apps.md#web-apis). However, that Web API will only be able to receive tokens from a client that shares the same Application ID. Building a Web API that is accessed from several different clients is not supported.
+### Web API チェーン (On-Behalf-Of)
 
-### <a name="web-api-chains-(on-behalf-of)"></a>Web API chains (On-Behalf-Of)
+Azure AD B2C によって保護された Web API から、同様に保護されたダウンストリームの別の Web API を呼び出す手法は、多くのアーキテクチャで使用されています。このシナリオは、バックエンドの Web API から Microsoft オンライン サービス (Azure AD Graph API など) を呼び出すネイティブ クライアントでよく見られます。
 
-Many architectures include a Web API that needs to call another downstream Web API, both secured by Azure AD B2C. This scenario is common in native clients that have a Web API back end, which in turn calls a Microsoft online service such as the Azure AD Graph API.
+このように Web API を連鎖的に呼び出すシナリオは、OAuth 2.0 Jwt Bearer Credential Grant (On-Behalf-Of フロー) を使用してサポートできます。ただし、現時点では、Azure AD B2C に On-Behalf-Of フローは実装されていません。
 
-This chained Web API scenario can be supported by using the OAuth 2.0 Jwt Bearer Credential grant, otherwise known as the On-Behalf-Of flow. However, the On-Behalf-Of flow is not currently implemented in the Azure AD B2C.
+## ライブラリと SDK に関する制限事項
 
-## <a name="restriction-on-libraries-and-sdks"></a>Restriction on libraries and SDKs
+Azure AD B2C への対応を Microsoft が表明しているライブラリは、現時点ではごく一部に限られています。.NET ベースの Web アプリと Web サービス、NodeJS の Web アプリと Web サービスはサポートされています。また Windows や .NET アプリから、プレビュー版の .NET クライアント ライブラリ (MSAL) を介して Azure AD B2C を使用することもできます。
 
-The set of Microsoft supported libraries that work Azure AD B2C is very limited at this time. We have support for .NET based web apps and services, as well as NodeJS web apps and services.  We also have a preview .NET client library known as MSAL that can be used with Azure AD B2C in Windows & other .NET apps.
+それ以外の言語やプラットフォーム (iOS、Android を含む) に対応したライブラリは現時点では存在しません。上記とは異なるプラットフォームを使用する場合は、オープンソース SDK の使用をお勧めします。必要に応じて [OAuth 2.0 と OpenID Connect プロトコル リファレンス](active-directory-b2c-reference-protocols.md)を参照してください。Azure AD B2C には、OAuth と OpenID Connect が実装されているため、汎用的な OAuth ライブラリや OpenID Connect ライブラリを使った連携が可能となっています。
 
-We do not currently have library support any other languages or platforms, including iOS & Android.  If you wish to build on a different platform than those mentioned above, we recommend using an open-source SDK, referring to our [OAuth 2.0 and OpenID Connect Protocol Reference](active-directory-b2c-reference-protocols.md) as necessary.  Azure AD B2C implements OAuth & OpenID Connect, which makes it possible to use a generic OAuth or OpenID Connect library for integration.
+iOS と Android に関するクイック スタート チュートリアルでは、Azure AD B2C との互換性が確認されたオープン ソースのライブラリを使用しています。「[作業開始](active-directory-b2c-overview.md#getting-started)」セクションで、全クイック スタート チュートリアルをご覧いただけます。
 
-Our iOS & Android quick start tutorials use open-source libraries that we have tested for compatibility with Azure AD B2C.  All of our quick-start tutorials are available in our [Getting started](active-directory-b2c-overview.md#getting-started) section.
+## プロトコルに関する制限事項
 
-## <a name="restriction-on-protocols"></a>Restriction on protocols
+Azure AD B2C では、OpenID Connect と OAuth 2.0 がサポートされています。ただし、各プロトコルの一部の機能はまだ実装されていません。Azure AD B2C でサポートされているプロトコル機能の範囲について理解を深めるには、[OpenID Connect と OAuth 2.0 のプロトコル リファレンス](active-directory-b2c-reference-protocols.md)をご覧ください。SAML および WS-Fed プロトコルのサポートは提供されていません。
 
-Azure AD B2C supports OpenID Connect and OAuth 2.0. However, not all features and capabilities of each protocol have been implemented. To better understand the scope of supported protocol functionality in Azure AD B2C, read through our [OpenID Connect and OAuth 2.0 protocol reference](active-directory-b2c-reference-protocols.md). SAML and WS-Fed protocol support is not available.
+## トークンに関する制限事項
 
-## <a name="restriction-on-tokens"></a>Restriction on tokens
+Azure AD B2C によって発行されるトークンの多くは、JSON Web トークン (JWT) として実装されます。ただし、JWT に含まれているすべての情報 ("要求" と呼ばれる) で十分というわけではなく、欠落しているものもあります。たとえば、"sub" 要求や "preferred\_username" 要求などです。要求の値や形式、意味は時間の経過に伴って変化するものであるため、既にあるポリシーのトークンは影響を受けません。運用環境のアプリから、それらの値に依存することができます。値が変化したときは、ポリシーごとにそれらの変更を構成する機会を設ける予定です。Azure AD B2C サービスによって現在発行されているトークンについて理解を深めるには、[トークン リファレンス](active-directory-b2c-reference-tokens.md)をご覧ください。
 
-Many of the tokens issued by Azure AD B2C are implemented as JSON Web Tokens, or JWTs. However, not all information contained in JWTs (known as "claims") is quite as it should be or is missing. Some examples include the "sub" and the "preferred_username" claims.  As the values, format, or meaning of claims change over time, tokens for your existing policies will remain unaffected - you can rely on their values in production apps.  As values change, we will give you the opportunity to configure those changes for each of your policies.  To better understand the tokens emitted currently by the Azure AD B2C service, read through our [token reference](active-directory-b2c-reference-tokens.md).
+## グループの入れ子に関する制限
 
-## <a name="restriction-on-nested-groups"></a>Restriction on nested groups
+Azure AD B2C テナントでは、グループのメンバーシップを入れ子にすることはできません。この機能を追加する予定はありません。
 
-Nested group memberships aren't supported in Azure AD B2C tenants. We don't plan to add this capability.
+## Azure AD Graph API の差分クエリ機能に関する制限
 
-## <a name="restriction-on-differential-query-feature-on-azure-ad-graph-api"></a>Restriction on differential query feature on Azure AD Graph API
+Azure AD B2C のテナントでは、[Azure AD Graph API の差分クエリ機能](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-differential-query)がサポートされません。長期的にはサポートされる予定となっています。
 
-The [differential query feature on Azure AD Graph API](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-differential-query) isn't supported in Azure AD B2C tenants. This is on our long-term roadmap.
+## Azure クラシック ポータルでのユーザー管理に関する問題
 
-## <a name="issues-with-user-management-on-the-azure-classic-portal"></a>Issues with user management on the Azure classic portal
+B2C 機能には、Azure ポータルからアクセスできます。ただし、Azure クラシック ポータルを使用して、ユーザー管理などの他のテナント機能にアクセスできます。現在、Azure クラシック ポータルには、ユーザー管理 (**[ユーザー]** タブ) に関する既知の問題がいくつかあります。
 
-B2C features are accessible on the Azure portal. However, you can use the Azure classic portal to access other tenant features, including user management. Currently there are a couple of known issues with user management (the **Users** tab) on the Azure classic portal:
+- ローカル アカウント ユーザー (電子メール アドレスとパスワード、またはユーザー名とパスワードを使用してサインアップするコンシューマー) の場合、**[ユーザー名]** フィールドはサインアップ中に使用されるサインイン ID (電子メール アドレスまたはユーザー名) に対応していません。これは、Azure クラシック ポータルに表示されるフィールドが、実際には B2C シナリオでは使用されないユーザー プリンシパル名 (UPN) であるためです。ローカル アカウントのサインイン ID を確認するには、[Graph Explorer](https://graphexplorer.cloudapp.net/) でユーザー オブジェクトを見つけます。ソーシャル アカウント ユーザー (Facebook、Google+ などを使用してサインアップするコンシューマー) についても同じ問題がありますが、その場合、特にサインイン ID はありません。
 
-- For a local account user (i.e., a consumer who signs up with an email address and password, or a username and password), the **User Name** field doesn't correspond to the sign-in identifier (email address or username) that was used during sign-up. This is because the field displayed on the Azure classic portal is actually the User Principal Name (UPN), which is not used in B2C scenarios. To view the sign-in identifier of the local account, find the user object in [Graph Explorer](https://graphexplorer.cloudapp.net/). You will find the same issue with a social account user (i.e., a consumer who signs up with Facebook, Google+, etc.), but in that case, there is no sign-in identifier to speak of.
+    ![ローカル アカウントの UPN](./media/active-directory-b2c-limitations/limitations-user-mgmt.png)
 
-    ![Local account - UPN](./media/active-directory-b2c-limitations/limitations-user-mgmt.png)
+- ローカル アカウント ユーザーの場合、**[プロファイル]** タブでフィールドを編集したり、変更を保存したりすることはできません。
 
-- For a local account user, you will not able to edit any of the fields and save changes on the **Profile** tab.
+## Azure クラシック ポータルでの管理者によるパスワードのリセットに関する問題
 
-## <a name="issues-with-admin-initiated-password-reset-on-the-azure-classic-portal"></a>Issues with admin-initiated password reset on the Azure classic portal
+管理者が Azure クラシック ポータルでローカル アカウント ベースのコンシューマーのパスワードをリセットすると (**[ユーザー]** タブの **[パスワードのリセット]** コマンド)、サインアップ ポリシーまたはサインイン ポリシーを使用している場合に、そのコンシューマーは次回サインイン時に自分のパスワードを変更できなくなり、アプリケーションからロックアウトされます。この問題を回避するには、[Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) を使用してコンシューマーのパスワードを (パスワードの有効期限なしで) リセットするか、"サインアップまたはサインイン" ポリシーではなく "サインイン" ポリシーを使用します。
 
-If you reset the password for a local account-based consumer on the Azure classic portal (the **Reset Password** command on the **Users** tab), that consumer will not be able to change his or her password on the next sign in, if you use a Sign up or Sign in policy, and will be locked out of your applications. As a workaround, use the [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md) to reset the consumer's password (without password expiration) or use a Sign in policy instead of a Sign up or Sign in policy.
+## カスタム属性の作成に関する問題
 
-## <a name="issues-with-creating-a-custom-attribute"></a>Issues with creating a custom attribute
+[Azure Portal に追加されたカスタム属性](active-directory-b2c-reference-custom-attr.md)は、すぐには B2C テナントに作成されません。カスタム属性を B2C テナントに作成して Graph API から利用できる状態にするためには、あらかじめ少なくとも 1 つのポリシーの中でそのカスタム属性を使用する必要があります。
 
-A [custom attribute added on the Azure portal](active-directory-b2c-reference-custom-attr.md) is not immediately created in your B2C tenant. You'll have to use the custom attribute in at least one of your policies for it to get created in your B2C tenant and to become available via Graph API.
+## Azure クラシック ポータルでのドメインの確認に関する問題
 
-## <a name="issues-with-verifying-a-domain-on-the-azure-classic-portal"></a>Issues with verifying a domain on the Azure classic portal
+現在、[Azure クラシック ポータル](https://manage.windowsazure.com/)でドメインを正常に確認することはできません。
 
-Currently you can't verify a domain successfully on the [Azure classic portal](https://manage.windowsazure.com/).
+## Safari ブラウザーでの MFA ポリシーを使用したサインインに関する問題
 
-## <a name="issues-with-sign-in-with-mfa-policy-on-safari-browsers"></a>Issues with Sign-in with MFA policy on Safari browsers
+Safari ブラウザーで、サインイン ポリシーに対する (MFA をオンにした) 要求が、HTTP 400 (正しくない要求) エラーで断続的に失敗します。これは、Safari の Cookie サイズ制限の値が低いためです。この問題にはいくつかの回避策があります。
 
-Requests to sign-in policies (with MFA turned ON) fail intermittently on Safari browsers with HTTP 400 (Bad Request) errors. This is due Safari's low cookie size limits. There are a couple of workarounds for this issue:
+- "サインイン ポリシー" ではなく "サインアップまたはサインイン ポリシー" を使用します。
+- ポリシーで要求されている**アプリケーション要求**の数を減らします。
 
-- Use the "Sign-up or sign-in policy" instead of the "sign-in policy".
-- Reduce the number of **Application claims** being requested in your policy.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

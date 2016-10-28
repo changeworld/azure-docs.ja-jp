@@ -1,6 +1,6 @@
 <properties
- pageTitle="HPC Pack cluster for Excel and SOA | Microsoft Azure"
- description="Get started running large-scale Excel and SOA workloads on an HPC Pack cluster in Azure"
+ pageTitle="Excel と SOA 用の HPC Pack クラスター | Microsoft Azure"
+ description="Azure の HPC Pack クラスターで大規模な Excel と SOA ワークロードを実行する"
  services="virtual-machines-windows"
  documentationCenter=""
  authors="dlepow"
@@ -17,85 +17,84 @@
  ms.date="08/25/2016"
  ms.author="danlep"/>
 
+# Azure の HPC Pack クラスターで Excel と SOA ワークロードを実行する
 
-# <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Get started running Excel and SOA workloads on an HPC Pack cluster in Azure
-
-This article shows you how to deploy a Microsoft HPC Pack cluster on Azure virtual machines by using an Azure quickstart template, or optionally an Azure PowerShell deployment script. The cluster uses Azure Marketplace VM images designed to run Microsoft Excel or service-oriented architecture (SOA) workloads with HPC Pack. You can use the cluster to run simple Excel HPC and SOA services from an on-premises client computer. The Excel HPC services include Excel workbook offloading and Excel user-defined functions, or UDFs.
+この記事では、Azure クイックスタート テンプレートまたは必要に応じて Azure PowerShell デプロイ スクリプトを使用して、Azure Virtual Machines に Microsoft HPC Pack クラスターをデプロイする方法を示します。クラスターは、HPC Pack で Microsoft Excel またはサービス指向アーキテクチャ (SOA) のワークロードを実行するように設計されている Azure Marketplace VM イメージを使用します。クラスターを使用して、オンプレミスのクライアント コンピューターから簡単な Excel HPC サービスおよび SOA サービスを実行できます。Excel の HPC サービスには、Excel ブックのオフロードと Excel ユーザー定義関数、または UDF が含まれます。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-At a high level, the following diagram shows the HPC Pack cluster you create.
+これから作成する HPC Pack クラスターの概要は次の図のようになります。
 
-![HPC cluster with nodes running Excel workloads][scenario]
+![Excel ワークロードを実行するノードを含む HPC クラスター][scenario]
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-*   **Client computer** - You need a Windows-based client computer to submit sample Excel and SOA jobs to the cluster. You also need a Windows computer to run the Azure PowerShell cluster deployment script (if you choose that deployment method) and
+*   **クライアント コンピューター** - Excel および SOA のサンプル ジョブをクラスターに送信するには、Windows ベースのクライアント コンピューターが必要です。また、Azure PowerShell のクラスター デプロイ スクリプト (このデプロイ方法を選択する場合) を実行するには、Windows コンピューターが必要です。
 
-*   **Azure subscription** - If you don't have an Azure subscription, you can create a [free account](https://azure.microsoft.com/pricing/free-trial/) in just a couple of minutes.
+*   **Azure サブスクリプション** - Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)を数分で作成することができます。
 
-*   **Cores quota** - You might need to increase the quota of cores, especially if you deploy several cluster nodes with multicore VM sizes. If you are using an Azure quickstart template, the cores quota in Resource Manager is per Azure region. In that case, you might need to increase the quota in a specific region. See [Azure subscription limits, quotas, and constraints](../azure-subscription-service-limits.md). To increase a quota, [open an online customer support request](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) at no charge.
+*   **コア クォータ** - 場合によっては、コアのクォータを増やす必要があります。特に、マルチコア VM サイズのクラスター ノードをいくつかデプロイする場合に必要になる可能性があります。Azure クイックスタート テンプレートを使用する場合、Resource Manager のコア クォータは Azure リージョンごとになります。その場合は、特定のリージョンのクォータを増やす必要がある可能性があります。「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。クォータを増やすには、[オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
 
-*   **Microsoft Office license** - If you deploy compute nodes using a Marketplace HPC Pack VM image with Microsoft Excel, a 30-day evaluation version of Microsoft Excel Professional Plus 2013 is installed. After the evaluation period, you need to provide a valid Microsoft Office license to activate Excel to continue to run workloads. See [Excel activation](#excel-activation) later in this article. 
-
-
-## <a name="step-1.-set-up-an-hpc-pack-cluster-in-azure"></a>Step 1. Set up an HPC Pack cluster in Azure
-
-We show two options to set up the cluster: first, using an Azure quickstart template and the Azure portal; and second, using an Azure PowerShell deployment script.
+*   **Microsoft Office ライセンス** - Microsoft Excel を含む Marketplace HPC Pack VM イメージを使用してコンピューティング ノードをデプロイすると、30 日間の評価バージョンの Microsoft Excel Professional Plus 2013 がインストールされます。評価期間の後もワークロードを引き続き実行するには、有効な Microsoft Office ライセンスを使用して Excel をアクティブ化する必要があります。この記事で後述する [Excel のアクティブ化](#excel-activation)を参照してください。
 
 
-### <a name="option-1.-use-a-quickstart-template"></a>Option 1. Use a quickstart template
-Use an Azure quickstart template to quickly and easily deploy an HPC Pack cluster in the Azure portal. When you open the template in the portal, you get a simple UI where you enter the settings for your cluster. Here are the steps. 
+## 手順 1.Azure で HPC Pack クラスターをセットアップする
 
->[AZURE.TIP]If you want, use an [Azure Marketplace template](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn) that creates a similar cluster specifically for Excel workloads. The steps differ slightly from the following.
+クラスターをセットアップする 2 つの方法を説明します。1 つめは Azure クイックスタート テンプレートと Azure ポータルを使用する方法で、2 つめは Azure PowerShell デプロイ スクリプトを使用する方法です。
 
-1.  Visit the [Create HPC Cluster template page on GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster). If you want, review information about the template and the source code.
 
-2.  Click **Deploy to Azure** to start a deployment with the template in the Azure portal.
+### 方法 1.クイックスタート テンプレートを使用する
+Azure クイックスタート テンプレートを使用すると、Azure ポータルで HPC Pack クラスターをすばやく簡単にデプロイできます。ポータルでテンプレートを開くと表示される簡単な UI で、クラスターの設定を入力します。手順は次のようになります。
 
-    ![Deploy template to Azure][github]
+>[AZURE.TIP]必要に応じて、Excel ワークロード専用と類似したクラスターを作成できる [Azure Marketplace テンプレート](https://portal.azure.com/?feature.relex=*%2CHubsExtension#create/microsofthpc.newclusterexcelcn)を使用します。この場合、以下の手順とは一部異なります。
 
-3.  In the portal, follow these steps to enter the parameters for the HPC cluster template.
+1.  [GitHub の HPC クラスター テンプレートの作成に関するページ](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster)を参照します。必要な場合は、テンプレートとソース コードに関する情報を確認します。
 
-    a. On the **Parameters** page, enter or modify values for the template parameters. (Click the icon next to each setting for help information.) Sample values are shown in the following screen. This example creates a cluster named *hpc01* in the *hpc.local* domain consisting of a head node and 2 compute nodes. The compute nodes are created from an HPC Pack VM image that includes Microsoft Excel.
+2.  Azure ポータルで **[Azure にデプロイ]** をクリックして、テンプレートによるデプロイを開始します。
 
-    ![Enter parameters][parameters]
+    ![テンプレートを Azure にデプロイする][github]
 
-    >[AZURE.NOTE]The head node VM is created automatically from the [latest Marketplace image](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) of HPC Pack 2012 R2 on Windows Server 2012 R2. Currently the image is based on HPC Pack 2012 R2 Update 3.
+3.  ポータルで以下の手順に従って、HPC クラスター テンプレートのパラメーターを入力します。
+
+    a.**[パラメーター]** ページで、テンプレート パラメーターの値を入力または変更します (各設定の隣のアイコンをクリックするとヘルプ情報が表示されます)。 次の画面に示されているのはサンプルの値です。この例では、1 つのヘッド ノードと 2 つのコンピューティング ノードで構成される *hpc01* という名前のクラスターが、*hpc.local* ドメインに作成されます。コンピューティング ノードは、Microsoft Excel を含む HPC Pack VM イメージから作成されます。
+
+    ![パラメーターを入力する][parameters]
+
+    >[AZURE.NOTE]ヘッド ノードの VM は、Windows Server 2012 R2 上の HPC Pack 2012 R2 の[最新の Marketplace イメージ](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/)から自動的に作成されます。現時点では、イメージは HPC Pack 2012 R2 Update 3 に基づいています。
     >
-    >Compute node VMs are created from the latest image of the selected compute node family. Select the **ComputeNodeWithExcel** option for the latest HPC Pack compute node image that includes an evaluation version of Microsoft Excel Professional Plus 2013. To deploy a cluster for general SOA sessions or for Excel UDF offloading, choose the **ComputeNode** option (without Excel installed).
+    >計算ノードの VM は、選択した計算ノード ファミリの最新のイメージから作成されます。Microsoft Excel Professional Plus 2013 の評価版を含む最新の HPC Pack 計算ノード イメージの **ComputeNodeWithExcel** オプションを選択します。一般的な SOA セッション用または Excel UDF オフロード用にクラスターをデプロイするには、**ComputeNode** オプションを選択します (Excel はインストールされません)。
 
-    b. Choose the subscription.
+    b.サブスクリプションを選択します。
 
-    c. Create a resource group for the cluster, such as *hpc01RG*.
+    c.クラスターのリソース グループを作成します (*hpc01RG* など)。
 
-    d. Choose a location for the resource group, such as Central US.
+    d.リソース グループの場所を選択します (米国中部など)。
 
-    e. On the **Legal terms** page, review the terms. If you agree, click **Purchase**. Then, when you are finished setting the values for the template, click **Create**.
+    e.**[法律条項]** ページで、条項を確認します。同意する場合は、**[購入]** をクリックします。テンプレートの値の設定が完了したら、**[作成]** をクリックします。
 
-4.  When the deployment completes (it typically takes around 30 minutes), export the cluster certificate file from the cluster head node. In a later step, you import this public certificate on the client computer to provide the server-side authentication for secure HTTP binding.
+4.  デプロイが完了したら (通常約 30 分かかります)、クラスターのヘッド ノードからクラスターの証明書ファイルをエクスポートします。後の手順でこのパブリック証明書をクライアント コンピューターにインポートし、セキュリティで保護された HTTP バインディングのサーバー側認証を提供します。
 
-    a. Connect to the head node by Remote Desktop from the Azure portal.
+    a.Azure ポータルからリモート デスクトップでヘッド ノードに接続します。
 
-     ![Connect to the head node][connect]
+     ![ヘッド ノードに接続する][connect]
 
-    b. Use standard procedures in Certificate Manager to export the head node certificate (located under Cert:\LocalMachine\My) without the private key. In this example, export *CN = hpc01.eastus.cloudapp.azure.com*.
+    b.標準的な手順で証明書マネージャーを使用して、秘密キーを含まないヘッド ノード証明書 (Cert:\\LocalMachine\\My の下にあります) をエクスポートします。この例では、*CN = hpc01.eastus.cloudapp.azure.com* をエクスポートします。
 
-    ![Export the certificate][cert]
+    ![証明書をエクスポートする][cert]
 
-### <a name="option-2.-use-the-hpc-pack-iaas-deployment-script"></a>Option 2. Use the HPC Pack IaaS Deployment script
+### 方法 2.HPC Pack IaaS デプロイ スクリプトを使用する
 
-The HPC Pack IaaS deployment script provides another versatile way to deploy an HPC Pack cluster. It creates a cluster in the classic deployment model, whereas the template uses the Azure Resource Manager deployment model. Also, the script is compatible with a subscription in either the Azure Global or Azure China service.
+HPC Pack IaaS デプロイ スクリプトは、HPC Pack クラスターをデプロイするためのもう 1 つの汎用性の高い方法です。クラシック デプロイ モデルでクラスターを作成しながら、テンプレートに Azure リソース マネージャー デプロイ モデルを使用します。また、スクリプトは Azure Global サービスまたは Azure China サービスのサブスクリプションと互換性があります。
 
-**Additional prerequisites**
+**追加の前提条件**
 
-* **Azure PowerShell** - [Install and configure Azure PowerShell](../powershell-install-configure.md) (version 0.8.10 or later) on your client computer.
+* **Azure PowerShell** - クライアント コンピューターに [Azure PowerShell をインストールして構成します](../powershell-install-configure.md) (バージョン 0.8.10 以降)。
 
-* **HPC Pack IaaS deployment script** - Download and unpack the latest version of the script from the [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Check the version of the script by running `New-HPCIaaSCluster.ps1 –Version`. This article is based on version 4.5.0 or later of the script.
+* **HPC Pack IaaS デプロイ スクリプト** - [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949) から最新版のスクリプトをダウンロードし、解凍します。`New-HPCIaaSCluster.ps1 –Version` を実行して、スクリプトのバージョンを確認します。この記事はバージョン 4.5.0 以降のスクリプトに基づきます。
 
-**Create the configuration file**
+**構成ファイルを作成する**
 
- The HPC Pack IaaS deployment script uses an XML configuration file as input that describes the infrastructure of the HPC cluster. To deploy a cluster consisting of a head node and 18 compute nodes created from the compute node image that includes Microsoft Excel, substitute values for your environment into the following sample configuration file. For more information about the configuration file, see the Manual.rtf file in the script folder and [Create an HPC cluster with the HPC Pack IaaS deployment script](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md).
+ HPC Pack IaaS デプロイ スクリプトは HPC クラスターのインフラストラクチャについて記載された XML 構成ファイルを入力として使用します。Microsoft Excel を含むコンピューティング ノード イメージから作成された 1 個のヘッド ノードと 18 個のコンピューティング ノードで構成されるクラスターをデプロイするには、次のサンプル構成ファイルを実際の環境の値に置き換えます。構成ファイルの詳細については、スクリプト フォルダーにある Manual.rtf ファイルおよび「[Create an HPC cluster with the HPC Pack IaaS deployment script (HPC Pack IaaS デプロイ スクリプトを使用した HPC クラスターの作成)](virtual-machines-windows-classic-hpcpack-cluster-powershell-script.md)」参照してください。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -139,13 +138,13 @@ The HPC Pack IaaS deployment script provides another versatile way to deploy an 
 </IaaSClusterConfig>
 ```
 
-**Notes about the configuration file**
+**構成ファイルに関する注意事項**
 
-* The **VMName** of the head node **MUST** be the same as the **ServiceName**, or SOA jobs fail to run.
+* ヘッド ノードの **VMName** は、**ServiceName** と**一致している必要があります**。一致していないと、SOA ジョブの実行に失敗します。
 
-* Make sure you specify **EnableWebPortal** so that the head node certificate is generated and exported.
+* ヘッド ノード証明書が生成されてエクスポートされるように、**EnableWebPortal** を必ず指定してください。
 
-* The file specifies a post-configuration PowerShell script PostConfig.ps1 that runs on the head node. THe following sample script configures the Azure storage connection string, removes the compute node role from the head node, and brings all nodes online when they are deployed. 
+* ヘッド ノードで実行する構成後 PowerShell スクリプト PostConfig.ps1 をファイルに指定します。Azure ストレージ接続文字列の構成、ヘッド ノードからのコンピューティング ノード ロールの削除、デプロイ後の全ノードのオンライン化などのスクリプトのサンプルを次に示します。
 
 ```
     # add the HPC Pack powershell cmdlets
@@ -175,52 +174,52 @@ The HPC Pack IaaS deployment script provides another versatile way to deploy an 
         }
 ```
 
-**Run the script**
+**スクリプトを実行する**
 
-1.  Open the PowerShell console on the client computer as an administrator.
+1.  管理者としてクライアント コンピューターで PowerShell を開きます。
 
-2.  Change directory to the script folder (E:\IaaSClusterScript in this example).
+2.  ディレクトリをスクリプト フォルダー (この例では、E:\\IaaSClusterScript) に変更します。
 
     ```
     cd E:\IaaSClusterScript
     ```
     
-3.  To deploy the HPC Pack cluster, run the following command. This example assumes that the configuration file is located in E:\HPCDemoConfig.xml.
+3.  HPC Pack クラスターをデプロイするには、次のコマンドを実行します。この例では、構成ファイルは E:\\HPCDemoConfig.xml にあるものと想定しています。
 
     ```
     .\New-HpcIaaSCluster.ps1 –ConfigFile E:\HPCDemoConfig.xml –AdminUserName MyAdminName
     ```
 
-The HPC Pack deployment script runs for some time. One thing the script does is to export and download the cluster certificate and save it in the current user’s Documents folder on the client computer. The script generates a message similar to the following. In a following step, you import the certificate in the appropriate certificate store.    
+HPC Pack デプロイ スクリプトの実行には少し時間がかかります。スクリプトでの処理の 1 つとして、クラスター証明書がエクスポートされてダウンロードされ、クライアント コンピューター上の現在のユーザーの Documents フォルダーに保存されます。スクリプトでは、次のようなメッセージが生成されます。次の手順では、適切な証明書ストアに証明書をインポートします。
     
     You have enabled REST API or web portal on HPC Pack head node. Please import the following certificate in the Trusted Root Certification Authorities certificate store on the computer where you are submitting job or accessing the HPC web portal:
     C:\Users\hpcuser\Documents\HPCWebComponent_HPCExcelHN004_20150707162011.cer
 
-## <a name="step-2.-offload-excel-workbooks-and-run-udfs-from-an-on-premises-client"></a>Step 2. Offload Excel workbooks and run UDFs from an on-premises client
+## 手順 2.Excel ブックをオフロードし、オンプレミスのクライアントから UDF を実行する
 
-### <a name="excel-activation"></a>Excel activation
+### Excel のアクティブ化
 
-When using the ComputeNodeWithExcel VM image for production workloads, you need to provide a valid Microsoft Office license key to activate Excel on the compute nodes. Otherwise, the evaluation version of Excel expires after 30 days, and running Excel workbooks will fail with the COMException (0x800AC472). 
+運用ワークロードに ComputeNodeWithExcel VM イメージを使用する場合、有効な Microsoft Office ライセンス キーを使用して計算ノードの Excel をアクティブ化する必要があります。アクティブ化しないと、評価版の Excel は 30 日後に期限が切れ、実行中の Excel ブックは COMException (0x800AC472) で失敗するようになります。
 
-You can rearm Excel for another 30 days of evaluation time: Log on to the head node and clusrun `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` on all Excel compute nodes via HPC Cluster Manager. You can rearm a maximum of two times. After that, you must provide a valid Office license key.
+Excel の評価期間を 30 日間延長できます。ヘッド ノードにログオンし、HPC Cluster Manager を使用してすべての Excel コンピューティング ノードで clusrun `%ProgramFiles(x86)%\Microsoft Office\Office15\OSPPREARM.exe` を実行します。この処理は最大 2 回実行できます。その後は、有効な Office ライセンス キーを入力する必要があります。
 
-The Office Professional Plus 2013 installed on the VM image is a volume edition with a Generic Volume License Key (GVLK). You can activate it via Key Management Service (KMS)/Active Directory-Based Activation (AD-BA) or Multiple Activation Key (MAK). 
+VM イメージにインストールされる Office Professional Plus 2013 は、汎用ボリューム ライセンス キー (GVLK) を使用したボリューム エディションです。アクティブ化には、キー管理サービス (KMS)/Active Directory ベースのアクティブ化 (AD-BA) またはマルチ ライセンス認証キー (MAK) を使用できます。
 
     * To use KMS/AD-BA, use an existing KMS server or set up a new one by using the Microsoft Office 2013 Volume License Pack. (If you want to, set up the server on the head node.) Then, activate the KMS host key via the Internet or telephone. Then clusrun `ospp.vbs` to set the KMS server and port and activate Office on all the Excel compute nodes. 
     
     * To use MAK, first clusrun `ospp.vbs` to input the key and then activate all the Excel compute nodes via the Internet or telephone. 
 
->[AZURE.NOTE]Retail product keys for Office Professional Plus 2013 cannot be used with this VM image. If you have valid keys and installation media for Office or Excel editions other than this Office Professional Plus 2013 volume edition, you can use them instead. First uninstall this volume edition and install the edition that you have. The reinstalled Excel compute node can be captured as a customized VM image to use in a deployment at scale.
+>[AZURE.NOTE]この VM イメージには、Office Professional Plus 2013 の市販のプロダクト キーを使用できません。この Office Professional Plus 2013 ボリューム エディション以外の Office または Excel エディションの有効なキーとインストール メディアがある場合、代わりにそれらを使用できます。このボリューム エディションをアンインストールしてから、所有しているエディションをインストールします。再インストールした Excel コンピューティング ノードは、カスタマイズされた VM イメージとしてキャプチャされ、大規模なデプロイで使用されます。
 
-### <a name="offload-excel-workbooks"></a>Offload Excel workbooks
+### Excel ブックをオフロードする
 
-Follow these steps to offload an Excel workbook so that it runs on the HPC Pack cluster in Azure. To do this, you must have Excel 2010 or 2013 already installed on the client computer.
+以下の手順に従って、Azure の HPC Pack クラスターで実行するように Excel ブックをオフロードします。そのためには、Excel 2010 または 2013 がクライアント コンピューターに既にインストールされている必要があります。
 
-1. Use one of the options in Step 1 to deploy an HPC Pack cluster with the Excel compute node image. Obtain the cluster certificate file (.cer) and cluster username and password.
+1. 手順 1 のいずれかの方法を使用して、Excel コンピューティング ノード イメージを含む HPC Pack クラスターをデプロイします。クラスター証明書ファイル (.cer) およびクラスターのユーザー名とパスワードを取得します。
 
-2. On the client computer, import the cluster certificate under Cert:\CurrentUser\Root.
+2. クライアント コンピューターで、クラスター証明書を Cert:\\CurrentUser\\Root にインポートします。
 
-3. Make sure Excel is installed. Create an Excel.exe.config file with the following contents in the same folder as Excel.exe on the client computer. This step ensures that the HPC Pack 2012 R2 Excel COM add-in loads successfully.
+3. Excel がインストールされていることを確認します。次のような内容の Excel.exe.config ファイルを作成し、クライアント コンピューター上の Excel.exe と同じフォルダーに保存します。この手順により、HPC Pack 2012 R2 の Excel COM アドインが正常に読み込まれます。
 
     ```
     <?xml version="1.0"?>
@@ -231,19 +230,19 @@ Follow these steps to offload an Excel workbook so that it runs on the HPC Pack 
     </configuration>
     ```
     
-4.  Set up the client to submit jobs to the HPC Pack cluster. One option is to download the full [HPC Pack 2012 R2 Update 3 installation](http://www.microsoft.com/download/details.aspx?id=49922) and install the HPC Pack client. Alternatively, download and install the [HPC Pack 2012 R2 Update 3 client utilities](https://www.microsoft.com/download/details.aspx?id=49923) and the appropriate Visual C++ 2010 redistributable for your computer ([x64](http://www.microsoft.com/download/details.aspx?id=14632), [x86](https://www.microsoft.com/download/details.aspx?id=5555)).
+4.	クライアントをセットアップし、HPC Pack クラスターにジョブを送信します。1 つの方法としては、[HPC Pack 2012 R2 Update 3 インストール](http://www.microsoft.com/download/details.aspx?id=49922)の完全版をダウンロードして HPC Pack クライアントをインストールします。別の方法としては、[HPC Pack 2012 R2 Update 3 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49923)とコンピューターに適した Visual C++ 2010 再頒布可能パッケージをダウンロードしてインストールします ([x64](http://www.microsoft.com/download/details.aspx?id=14632)、[x86](https://www.microsoft.com/download/details.aspx?id=5555))。
 
-5.  In this example, we use a sample Excel workbook named ConvertiblePricing_Complete.xlsb. You can download it [here](https://www.microsoft.com/en-us/download/details.aspx?id=2939).
+5.	この例では、ConvertiblePricing\_Complete.xlsb という名前のサンプル Excel ブックを使用します。[こちら](https://www.microsoft.com/ja-JP/download/details.aspx?id=2939)からダウンロードできます。
 
-6.  Copy the Excel workbook to a working folder such as D:\Excel\Run.
+6.	Excel ブックを D:\\Excel\\Run などの作業フォルダーにコピーします。
 
-7.  Open the Excel workbook. On the **Develop** ribbon, click **COM Add-Ins** and confirm that the HPC Pack Excel COM add-in is loaded successfully.
+7.	Excel ブックを開きます。**[開発]** リボンで **[COM アドイン]** をクリックし、HPC Pack Excel COM アドインが正常に読み込まれていることを確認します。
 
-    ![Excel add-in for HPC Pack][addin]
+    ![HPC Pack 用の Excel アドイン][addin]
 
-8.  Edit the VBA macro HPCControlMacros in Excel by changing the commented lines as shown in the following script. Substitute appropriate values for your environment.
+8.	VBA マクロ HPCControlMacros を Excel で編集し、次のスクリプトで示されているようにコメント行を変更します。実際の環境に合わせて適切な値に置き換えます。
 
-    ![Excel macro for HPC Pack][macro]
+    ![HPC Pack 用の Excel マクロ][macro]
 
     ```
     'Private Const HPC_ClusterScheduler = "HEADNODE_NAME"
@@ -262,49 +261,49 @@ Follow these steps to offload an Excel workbook so that it runs on the HPC Pack 
     HPCExcelClient.OpenSession headNode:=HPC_ClusterScheduler, remoteWorkbookPath:=HPCWorkbookPath, UserName:="hpc\azureuser", Password:="<YourPassword>"
 ```
 
-9.  Copy the Excel workbook to an upload directory such as D:\Excel\Upload. This directory is specified in the HPC_DependsFiles constant in the VBA macro.
+9.	D:\\Excel\\Upload などのアップロード ディレクトリに、Excel ブックをコピーします。このディレクトリは、VBA マクロの HPC\_DependsFiles 定数で指定されます。
 
-10. To run the workbook on the cluster in Azure, click the **Cluster** button on the worksheet.
+10.	Azure のクラスターでブックを実行するには、ワークシートの **[クラスター]** ボタンをクリックします。
 
-### <a name="run-excel-udfs"></a>Run Excel UDFs
+### Excel UDF を実行する
 
-To run Excel UDFs, follow the preceding steps 1 – 3 to set up the client computer. For Excel UDFs, you don't need to have the Excel application installed on compute nodes. So, when creating your cluster compute nodes, you could choose a normal compute node image instead of the compute node image with Excel.
+Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクライアント コンピューターを設定します。Excel UDF の場合、Excel アプリケーションがコンピューティング ノードにインストールされている必要はありません。そのため、クラスターのコンピューティング ノードを作成する場合は、Excel を含むコンピューティング ノード イメージではなく、通常のコンピューティング ノード イメージを選択できます。
 
->[AZURE.NOTE] There is a 34 character limit in the Excel 2010 and 2013 cluster connector dialog box. You use this dialog box to specify the cluster that runs the UDFs. If the full cluster name is longer (for example, hpcexcelhn01.southeastasia.cloudapp.azure.com), it does not fit in the dialog box. The workaround is to set a machine-wide variable such as *CCP_IAASHN* with the value of the long cluster name. Then, enter *%CCP_IAASHN%* in the dialog box as the cluster head node name. 
+>[AZURE.NOTE] Excel 2010 および 2013 クラスター コネクタのダイアログ ボックスには 34 文字の制限があります。このダイアログ ボックスを使用して、UDF を実行するクラスターを指定します。完全なクラスター名が長い場合は (例: hpcexcelhn01.southeastasia.cloudapp.azure.com)、ダイアログ ボックスに収まりません。回避策は、長いクラスター名の値に *CCP\_IAASHN* などのマシン全体の変数を設定します。次に、*%CCP\_IAASHN%* をダイアログ ボックスにクラスター ヘッドのノード名として入力します。
 
-After the cluster is successfully deployed, continue with the following steps to run a sample built-in Excel UDF. For customized Excel UDFs, see these [resources](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) to build the XLLs and deploy them on the IaaS cluster.
+クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。Excel UDF をカスタマイズした場合は、[リソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
 
-1.  Open a new Excel workbook. On the **Develop** ribbon, click **Add-Ins**. Then, in the dialog box, click **Browse**, navigate to the %CCP_HOME%Bin\XLL32 folder, and select the sample ClusterUDF32.xll. If the ClusterUDF32 doesn't exist on the client machine, copy it from the %CCP_HOME%Bin\XLL32 folder on the head node.
+1.	新しい Excel ブックを開きます。**[開発]** リボンで **[アドイン]** をクリックします。次に、ダイアログ ボックスで **[参照]** をクリックし、%CCP\_HOME%Bin\\XLL32 フォルダーに移動して、サンプルの ClusterUDF32.xll を選択します。ClusterUDF32 がクライアント コンピューターに存在しない場合は、ヘッド ノードの %CCP\_HOME%Bin\\XLL32 フォルダーからコピーします。
 
-    ![Select the UDF][udf]
+    ![UDF を選択する][udf]
 
-2.  Click **File** > **Options** > **Advanced**. Under **Formulas**, check **Allow user-defined XLL functions to run a compute cluster**. Then click **Options** and enter the full cluster name in **Cluster head node name**. (As noted previously this input box is limited to 34 characters, so a long cluster name may not fit. You may use a machine-wide variable here for a long cluster name.)
+2.	**[ファイル]**、**[オプション]**、**[詳細]** の順にクリックします。**[数式]** の **[コンピューティング クラスターでユーザー定義の XLL 関数を実行できるようにする]** をオンにします。**[オプション]** をクリックし、**[クラスター ヘッド ノード名]** に完全なクラスター名を入力します (説明したように、この入力ボックスには 34 文字の制限があり、長いクラスター名が入らない可能性があります。ここでは、長いクラスター名にマシン全体の変数を使用できます)。
 
-    ![Configure the UDF][options]
+    ![UDF を構成する][options]
 
-3.  To run the UDF calculation on the cluster, click the cell with value =XllGetComputerNameC() and press Enter. The function simply retrieves the name of the compute node on which the UDF runs. For the first run, a credentials dialog box prompts for the username and password to connect to the IaaS cluster.
+3.	クラスターで UDF の計算を実行するには、値が =XllGetComputerNameC() であるセルをクリックして Enter キーを押します。この関数は、UDF が実行しているコンピューティング ノードの名前を取得するだけです。初めて実行したときは、IaaS クラスターに接続するためのユーザー名とパスワードの入力を求める資格情報ダイアログ ボックスが表示されます。
 
-    ![Run UDF][run]
+    ![UDF を実行する][run]
 
-    When there are many cells to calculate, press Alt-Shift-Ctrl + F9 to run the calculation on all cells.
+    計算するセルが多い場合は、Alt + Shift + Ctrl + F9 キーを押してすべてのセルに対して計算を実行します。
 
-## <a name="step-3.-run-a-soa-workload-from-an-on-premises-client"></a>Step 3. Run a SOA workload from an on-premises client
+## 手順 3.オンプレミスのクライアントから SOA ワークロードを実行する
 
-To run general SOA applications on the HPC Pack IaaS cluster, first use one of the methods in Step 1 to deploy the cluster. Specify a generic compute node image in this case, because you do not need Excel on the compute nodes. Then follow these steps.
+一般的な SOA アプリケーションを HPC Pack IaaS クラスターで実行するには、まず、手順 1 のいずれかの方法に従い、クラスターをデプロイします。この場合、コンピューティング ノードでは Excel が必要ないため、汎用コンピューティング ノード イメージを指定します。次に、以下の手順に従います。
 
-1. After retrieving the cluster certificate, import it on the client computer under Cert:\CurrentUser\Root.
+1. クラスター証明書を取得した後、クライアント コンピューターで Cert:\\CurrentUser\\Root にインポートします。
 
-2. Install the [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) and [HPC Pack 2012 R2 Update 3 client utilities](https://www.microsoft.com/download/details.aspx?id=49923). These tools enable you to develop and run SOA client applications.
+2. [HPC Pack 2012 R2 Update 3 SDK](http://www.microsoft.com/download/details.aspx?id=49921) および [HPC Pack 2012 R2 Update 3 クライアント ユーティリティ](https://www.microsoft.com/download/details.aspx?id=49923)をインストールします。これらのツールを使用すると、SOA クライアント アプリケーションをデプロイして実行できます。
 
-3. Download the HelloWorldR2 [sample code](https://www.microsoft.com/download/details.aspx?id=41633). Open the HelloWorldR2.sln in Visual Studio 2010 or 2012.
+3. HelloWorldR2 [サンプル コード](https://www.microsoft.com/download/details.aspx?id=41633)をダウンロードします。Visual Studio 2010 または 2012 で HelloWorldR2.sln を開きます。
 
-4. Build the EchoService project first. Then, deploy the service to the IaaS cluster in the same way you deploy to an on-premises cluster. For detailed steps, see the Readme.doc in HelloWordR2. Modify and build the HellWorldR2 and other projects as described in the following section to generate the SOA client applications that run on an Azure IaaS cluster.
+4. 最初に EchoService プロジェクトをビルドします。次に、オンプレミスのクラスターにデプロイするのと同じ方法で、IaaS クラスターにサービスをデプロイします。詳細な手順については、HelloWordR2 の Readme.doc を参照してください。次のセクションで説明するように HellWorldR2 および他のプロジェクトを変更してビルドし、Azure IaaS クラスター上で実行する SOA クライアント アプリケーションを生成します。
 
-### <a name="use-http-binding-with-azure-storage-queue"></a>Use Http binding with Azure storage queue
+### Azure ストレージ キューありで Http バインディングを使用する
 
-To use Http binding with an Azure storage queue, make a few changes to the sample code.
+Azure ストレージ キューで Http バインディングを使用するには、サンプル コードにいくつかの変更を加えます。
 
-* Update the cluster name.
+* クラスター名を更新します。
 
     ```
 // Before
@@ -315,13 +314,13 @@ or
 const string headnode = "hpc01.cloudapp.net";
 ```
 
-* Optionally, use the default TransportScheme in SessionStartInfo or explicitly set it to Http.
+* 必要に応じて、SessionStartInfo の既定の TransportScheme を使用するか、または Http に明示的に設定します。
 
 ```
     info.TransportScheme = TransportScheme.Http;
 ```
 
-* Use default binding for the BrokerClient.
+* BrokerClient に既定のバインディングを使用します。
 
     ```
 // Before
@@ -330,47 +329,47 @@ using (BrokerClient<IService1> client = new BrokerClient<IService1>(session, bin
 using (BrokerClient<IService1> client = new BrokerClient<IService1>(session))
 ```
 
-    Or set explicitly using the basicHttpBinding.
+    または、basicHttpBinding の使用を明示的に設定します。
 
     ```
 BasicHttpBinding binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
 binding.Security.Message.ClientCredentialType = BasicHttpMessageCredentialType.UserName;    binding.Security.Transport.ClientCredentialType = HttpClientCredentialType.None;
 ```
 
-* Optionally, set the UseAzureQueue flag to true in SessionStartInfo. If not set, it will be set to true by default when the cluster name has Azure domain suffixes and the TransportScheme is Http.
+* 必要に応じて、SessionStartInfo で UseAzureQueue フラグを true に設定します。これを設定しないと、クラスター名に Azure ドメイン サフィックスが含まれ、TransportScheme が Http の場合は、既定で true に設定されます。
 
     ```
     info.UseAzureQueue = true;
 ```
 
-###<a name="use-http-binding-without-azure-storage-queue"></a>Use Http binding without Azure storage queue
+###Azure ストレージ キューなしで Http バインディングを使用する
 
-To use Http binding without an Azure storage queue, explicitly set the UseAzureQueue flag to false in the SessionStartInfo.
+Azure ストレージ キューなしで Http バインディングを使用するには、SessionStartInfo で UseAzureQueue フラグを明示的に false に設定します。
 
 ```
     info.UseAzureQueue = false;
 ```
 
-### <a name="use-nettcp-binding"></a>Use NetTcp binding
+### NetTcp バインディングを使用する
 
-To use NetTcp binding, the configuration is similar to connecting to an on-premises cluster. You need to open a few endpoints on the head node VM. If you used the HPC Pack IaaS deployment script to create the cluster, for example, set the endpoints in the Azure classic portal as follows.
+NetTcp バインディングを使用するための構成は、オンプレミスのクラスターに接続する場合と似ています。ヘッド ノード VM でいくつかのエンドポイントを開く必要があります。クラスターを作成する HPC Pack IaaS デプロイ スクリプトを使用した場合、Azure クラシック ポータルで次の手順を実行して、エンドポイントを設定します。
 
 
-1. Stop the VM.
+1. VM を停止します。
 
-2. Add the TCP ports 9090, 9087, 9091, 9094 for the Session, Broker, Broker worker, and Data services, respectively
+2. セッション用、ブローカー用、ブローカー ワーカー用、Data Services 用に、それぞれ TCP ポート 9090、9087、9091、9094 を追加します。
 
-    ![Configure endpoints][endpoint]
+    ![エンドポイントを構成する][endpoint]
 
-3. Start the VM.
+3. VM を起動します。
 
-The SOA client application requires no changes except altering the head name to the IaaS cluster full name.
+SOA クライアント アプリケーションでは、IaaS クラスターの完全な名前にヘッド名を変更する以外の変更は不要です。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-* See [these resources](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) for more information about running Excel workloads with HPC Pack.
+* HPC Pack での Excel ワークロードの実行に関する詳細については、[これらのリソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx)を参照してください。
 
-* See [Managing SOA Services in Microsoft HPC Pack](https://technet.microsoft.com/library/ff919412.aspx) for more about deploying and managing SOA services with HPC Pack.
+* HPC Pack での SOA サービスのデプロイと管理について詳しくは、「[サービス](https://technet.microsoft.com/library/ff919412.aspx)」を参照してください。
 
 <!--Image references-->
 [scenario]: ./media/virtual-machines-windows-excel-cluster-hpcpack/scenario.png
@@ -387,8 +386,4 @@ The SOA client application requires no changes except altering the head name to 
 [endpoint]: ./media/virtual-machines-windows-excel-cluster-hpcpack/endpoint.png
 [udf]: ./media/virtual-machines-windows-excel-cluster-hpcpack/udf.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

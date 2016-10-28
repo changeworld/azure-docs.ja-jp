@@ -1,58 +1,56 @@
 <properties
-    pageTitle="Azure Resource Manager Policy | Microsoft Azure"
-    description="Describes how to use Azure Resource Manager Policy to prevent violations at different scopes like subscription, resource groups or individual resources."
-    services="azure-resource-manager"
-    documentationCenter="na"
-    authors="ravbhatnagar"
-    manager="ryjones"
-    editor="tysonn"/>
+	pageTitle="Azure リソース マネージャーのポリシー | Microsoft Azure"
+	description="Azure リソース マネージャーのポリシーを使用し、サブスクリプション、リソース グループまたは個々のリソースなどのさまざまなスコープの違反を防ぐ方法について説明します。"
+	services="azure-resource-manager"
+	documentationCenter="na"
+	authors="ravbhatnagar"
+	manager="ryjones"
+	editor="tysonn"/>
 
 <tags
-    ms.service="azure-resource-manager"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="07/12/2016"
-    ms.author="gauravbh;tomfitz"/>
+	ms.service="azure-resource-manager"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="07/12/2016"
+	ms.author="gauravbh;tomfitz"/>
 
+# ポリシーを使用したリソース管理とアクセス制御
 
-# <a name="use-policy-to-manage-resources-and-control-access"></a>Use Policy to manage resources and control access
+Azure リソース マネージャーで、カスタム ポリシーを使用してアクセスを制御できるようになりました。ポリシーを使用すれば、組織のリソースを管理するために必要な規則に組織内のユーザーが違反するのを防ぐことができます。
 
-Azure Resource Manager now allows you to control access through custom policies. With policies, you can prevent users in your organization from breaking conventions that are needed to manage your organization's resources. 
+ポリシー定義を作成し、行為やリソースを具体的に否認します。サブスクリプション、リソース グループ、個別リソースなど、任意の範囲でポリシー定義を割り当てます。
 
-You create policy definitions that describe the actions or resources that are specifically denied. You assign those policy definitions at the desired scope, such as the subscription, resource group, or an individual resource. 
+この記事では、ポリシーの作成で使用する、ポリシー定義言語の基本構造について説明します。その後、これらのポリシーをさまざまなスコープに適用する方法と、最後に REST API を使用してこれを実現する方法の例をいくつか紹介します。
 
-In this article, we will explain the basic structure of the policy definition language that you can use to create policies. Then we will describe how you can apply these policies at different scopes and finally we will show some examples of how you can achieve this through REST API.
+## RBAC との違いは何か。
 
-## <a name="how-is-it-different-from-rbac?"></a>How is it different from RBAC?
+ポリシーとロールベースのアクセス制御には大きな違いがいくつかありますが、最初に理解するべきことは、ポリシーと RBAC は連動するということです。ポリシーを使用するには、RBAC でユーザーを認証する必要があります。RBAC とは異なり、ポリシーは既定で許可し、明示的に否認するシステムです。
 
-There are a few key differences between policy and role-based access control, but the first thing to understand is that policies and RBAC work together. To be able to use policy, the user must be authenticated through RBAC. Unlike RBAC, policy is a default allow and explicit deny system. 
+RBAC は、**ユーザー**がさまざまな範囲で実行できるアクションにフォーカスしています。たとえば、任意の範囲で、あるリソース グループの共同作成者ロールに特定のユーザーを追加すると、そのユーザーはそのリソース グループを変更できます。
 
-RBAC focuses on the actions a **user** can perform at different scopes. For example, a particular user is added to the contributor role for a resource group at the desired scope, so the user can make changes to that resource group. 
+ポリシーは、さまざまな範囲の**リソース** アクションにフォーカスしています。たとえば、ポリシーを介して、プロビジョニング可能なリソースの種類を制御したり、リソースをプロビジョニングできる場所を制限したりできます。
 
-Policy focuses on **resource** actions at various scopes. For example, through policies, you can control the types of resources that can be provisioned or restrict the locations in which the resources can be provisioned.
+## 一般的なシナリオ
 
-## <a name="common-scenarios"></a>Common Scenarios
+よくあるシナリオの 1 つは、配賦目的で部門別のタグが必要性な場合です。適切なコスト センターが関連付けられている場合にのみ、組織で操作を許可し、それ以外の場合は要求を拒否したい場合があります。これにより、実行された操作を適切なコスト センターから請求できるようになります。
 
-One common scenario is to require departmental tags for chargeback purpose. An organization might want to allow operations only when the appropriate cost center is associated; otherwise, they will deny the request.
-This would help them charge the appropriate cost center for the operations performed.
+別のよくあるシナリオに、組織が、リソースの作成場所を制御したい場合があります。または、特定の種類のリソースのみのプロビジョニングを許可することによって、リソースへのアクセスを制御したい場合があります。
 
-Another common scenario is that the organization might want to control the locations where resources are created. Or they might want to control access to the resources by allowing only certain types of resources to be provisioned.
+同様に、組織がサービス カタログを制御したい場合や、リソースに希望の名前付け規則を適用したい場合があります。
 
-Similarly, an organization can control the service catalog or enforce the desired naming conventions for the resources.
+これらのシナリオは、ポリシーを使用して次に示すように簡単に実現できます。
 
-Using policies, these scenarios can easily be achieved as described below.
+## ポリシー定義の構造
 
-## <a name="policy-definition-structure"></a>Policy Definition structure
+ポリシー定義は JSON を使用して作成します。これは、条件が満たされた場合に何が発生するかを伝えるアクションおよび効果を定義する 1 つ以上の条件および論理演算子で構成されます。[http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でスキーマが公開されています。
 
-Policy definition is created using JSON. It consists of one or more conditions/logical operators which define the actions and an effect which tells what happens when the conditions are fulfilled. The schema is published at [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json). 
+ポリシーには、基本的に次が含まれます。
 
-Basically, a policy contains the following:
+**条件および論理演算子:** 一連の論理演算子を使用して操作できる条件のセットが含まれています。
 
-**Condition/Logical operators:** It contains a set of conditions which can be manipulated through a set of logical operators.
-
-**Effect:** This describes what the effect will be when the condition is satisfied – either deny or audit. An audit effect will emit a warning event service log. For example, an administrator can create a policy which causes an audit if anyone creates a large VM, then review the logs later.
+**効果:** これには条件が満たされた場合の拒否または監査のいずれかの効果を示します。監査の効果は、警告イベント サービス ログを出力します。たとえば、管理者は、誰かがサイズの大きな VM を作成した場合に監査を実行するポリシーを作成し、後でログを確認することができます。
 
     {
       "if" : {
@@ -63,104 +61,104 @@ Basically, a policy contains the following:
       }
     }
     
-## <a name="policy-evaluation"></a>Policy Evaluation
+## ポリシーの評価
 
-Policy will be evaluated when resource creation or template deployment happens using HTTP PUT. In case of template deployment, policy will be evaluated during the creation of each resource in the template. 
+HTTP PUT を使用してリソースの作成やテンプレートのデプロイメントが行われると、ポリシーが評価されます。テンプレートのデプロイメントの場合、ポリシーはテンプレート内の各リソースの作成時に評価されます。
 
-> [AZURE.NOTE] Currently, policy does not evaluate resource types that do not support tags, kind, and location, such as the Microsoft.Resources/deployments resource type. This support will be added at a future time. To avoid backward compatibility issues, you should explicitly specify type when authoring policies. For example, a tag policy that does not specify types will be applied for all types. In that case, a template deployment may fail in the future if there is a nested resource that don't support tag, and the deployment resource type has been added to policy evaluation. 
+> [AZURE.NOTE] 現時点では、タグ、種類、場所をサポートしていない、Microsoft.Resources/deployments のようなリソースの種類は、ポリシーによる評価の対象となりません。このサポートは、今後追加される予定です。下位互換性の問題を回避するためには、ポリシーの作成時に種類を明示的に指定する必要があります。たとえば、種類が指定されていないタグ ポリシーは、すべての種類に適用されます。そのような場合、タグをサポートしていない入れ子になったリソースがあり、デプロイ リソースの種類がポリシーの評価に追加されていると、今後テンプレートのデプロイに失敗する可能性があります。
 
-## <a name="logical-operators"></a>Logical Operators
+## 論理演算子
 
-The supported logical operators along with the syntax are listed below:
+サポートされている論理演算子とその構文を次に示します。
 
-| Operator Name     | Syntax         |
+| 演算子名 | 構文 |
 | :------------- | :------------- |
-| Not            | "not" : {&lt;condition  or operator &gt;}             |
-| And           | "allOf" : [ {&lt;condition  or operator &gt;},{&lt;condition  or operator &gt;}] |
-| Or                         | "anyOf" : [ {&lt;condition  or operator &gt;},{&lt;condition  or operator &gt;}] |
+| Not | "not" : {&lt;condition or operator &gt;} |
+| 論理積 | "allOf" : [ {&lt;condition or operator &gt;},{&lt;condition or operator &gt;}] |
+| または | "anyOf" : [ {&lt;condition or operator &gt;},{&lt;condition or operator &gt;}] |
 
-Resource Manager enables you to specify complex logic in your policy through nested operators. For example, you can deny resource creation in a particular location for a specified resource type. An example of nested operators is shown below.
+リソース マネージャーでは、入れ子になった演算子を使用して複雑なロジックをポリシーに指定できます。たとえば、指定したリソースの種類の特定の場所でのリソースの作成を拒否できます。入れ子になった演算子の例を次に示します。
 
-## <a name="conditions"></a>Conditions
+## 条件
 
-A condition evaluates whether a **field** or **source** meets certain criteria. The supported condition names and syntax are listed below:
+条件は、**フィールド**または**ソース**が特定の基準を満たすかどうかを評価します。サポートされている条件名と構文を次に示します。
 
-| Condition Name | Syntax                |
+| 条件名 | 構文 |
 | :------------- | :------------- |
-| Equals             | "equals" : "&lt;value&gt;"               |
-| Like                  | "like" : "&lt;value&gt;"                   |
-| Contains          | "contains" : "&lt;value&gt;"|
-| In                        | "in" : [ "&lt;value1&gt;","&lt;value2&gt;" ]|
-| ContainsKey    | "containsKey" : "&lt;keyName&gt;" |
-| Exists     | "exists" : "&lt;bool&gt;" |
+| 等しい | "equals" : "&lt;value&gt;" |
+| LIKE | "like" : "&lt;value&gt;" |
+| 指定値を含む | "contains" : "&lt;value&gt;"|
+| [ | "in" : [ "&lt;value1&gt;","&lt;value2&gt;" ]|
+| ContainsKey | "containsKey" : "&lt;keyName&gt;" |
+| Exists | "exists" : "&lt;bool&gt;" |
 
-### <a name="fields"></a>Fields
+### フィールド
 
-Conditions are formed through the use of fields and sources. A field represents properties in the resource request payload that is used to describe the state of the resource. A source represents characteristics of the request itself. 
+条件は、フィールドおよびソースを使用して構成します。フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。ソースは、要求自体の特性を表します。
 
-The following fields and sources are supported:
+次のフィールドおよびソースがサポートされています。
 
-Fields: **name**, **kind**, **type**, **location**, **tags**, **tags.***, and **property alias**. 
+フィールド: **name**、**kind**、**type**、**location**、**tags**、**tags.***、および**property alias**。
 
-### <a name="property-aliases"></a>Property aliases 
-Property alias is a name that can be used in a policy definition to access the resource type specific properties, such as settings, and skus. It works across all API versions where the property exists. Aliases can be retrieved by using the REST API shown below (Powershell support will be added in the future):
+### プロパティのエイリアス 
+プロパティのエイリアスは、設定や SKU など、リソースの種類固有のプロパティにアクセスするためにポリシー定義で使用できる名前です。プロパティが存在するすべての API バージョンで機能します。エイリアスは、次の REST API を使用して取得できます (今後、Powershell のサポートが追加される予定です)。
 
     GET /subscriptions/{id}/providers?$expand=resourceTypes/aliases&api-version=2015-11-01
-    
-The definition of an alias is shown below. As you can see, an alias defines paths in different API versions, even when there is a property name change. 
+	
+エイリアスの定義を次に示します。ご覧のように、プロパティ名が変更された場合も、エイリアスはさまざまな API バージョンでのパスを定義します。
 
-    "aliases": [
-        {
-          "name": "Microsoft.Storage/storageAccounts/sku.name",
-          "paths": [
-            {
-              "path": "properties.accountType",
-              "apiVersions": [
-                "2015-06-15",
-                "2015-05-01-preview"
-              ]
-            },
-            {
-              "path": "sku.name",
-              "apiVersions": [
-                "2016-01-01"
-              ]
-            }
-          ]
-        }
-    ]
+	"aliases": [
+	    {
+	      "name": "Microsoft.Storage/storageAccounts/sku.name",
+	      "paths": [
+	        {
+	          "path": "properties.accountType",
+	          "apiVersions": [
+	            "2015-06-15",
+	            "2015-05-01-preview"
+	          ]
+	        },
+	        {
+	          "path": "sku.name",
+	          "apiVersions": [
+	            "2016-01-01"
+	          ]
+	        }
+	      ]
+	    }
+	]
 
-Currently, the supported aliases are:
+現在サポートされているエイリアスは次のとおりです。
 
-| Alias name | Description |
+| エイリアス名 | Description |
 | ---------- | ----------- |
-| {resourceType}/sku.name | Supported resource types are: Microsoft.Compute/virtualMachines,<br />Microsoft.Storage/storageAccounts,<br />Microsoft.Web/serverFarms,<br /> Microsoft.Scheduler/jobcollections,<br />Microsoft.DocumentDB/databaseAccounts,<br />Microsoft.Cache/Redis,<br />Microsoft.CDN/profiles |
-| {resourceType}/sku.family | Supported resource type is Microsoft.Cache/Redis |
-| {resourceType}/sku.capacity | Supported resource type is Microsoft.Cache/Redis |
-| Microsoft.Compute/virtualMachines/imagePublisher |  |
-| Microsoft.Compute/virtualMachines/imageOffer  |  |
-| Microsoft.Compute/virtualMachines/imageSku  |  |
-| Microsoft.Compute/virtualMachines/imageVersion  |  |
-| Microsoft.Cache/Redis/enableNonSslPort |  |
-| Microsoft.Cache/Redis/shardCount |  |
-| Microsoft.SQL/servers/version |  |
-| Microsoft.SQL/servers/databases/requestedServiceObjectiveId |  |
-| Microsoft.SQL/servers/databases/requestedServiceObjectiveName |  |
-| Microsoft.SQL/servers/databases/edition |  |
-| Microsoft.SQL/servers/databases/elasticPoolName |  |
-| Microsoft.SQL/servers/elasticPools/dtu |  |
-| Microsoft.SQL/servers/elasticPools/edition |  |
+| {resourceType}/sku.name | サポートされているリソースの種類: Microsoft.Compute/virtualMachines、<br />Microsoft.Storage/storageAccounts、<br />Microsoft.Web/serverFarms、<br />Microsoft.Scheduler/jobcollections、<br />Microsoft.DocumentDB/databaseAccounts、<br />Microsoft.Cache/Redis、<br />Microsoft.CDN/profiles |
+| {resourceType}/sku.family | サポートされているリソースの種類: Microsoft.Cache/Redis |
+| {resourceType}/sku.capacity | サポートされているリソースの種類: Microsoft.Cache/Redis |
+| Microsoft.Compute/virtualMachines/imagePublisher | |
+| Microsoft.Compute/virtualMachines/imageOffer | |
+| Microsoft.Compute/virtualMachines/imageSku | |
+| Microsoft.Compute/virtualMachines/imageVersion | |
+| Microsoft.Cache/Redis/enableNonSslPort | |
+| Microsoft.Cache/Redis/shardCount | |
+| Microsoft.SQL/servers/version | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveId | |
+| Microsoft.SQL/servers/databases/requestedServiceObjectiveName | |
+| Microsoft.SQL/servers/databases/edition | |
+| Microsoft.SQL/servers/databases/elasticPoolName | |
+| Microsoft.SQL/servers/elasticPools/dtu | |
+| Microsoft.SQL/servers/elasticPools/edition | |
 
-Currently, policy only works on PUT requests. 
+現時点では、ポリシーは、PUT 要求でのみ機能します。
 
-## <a name="effect"></a>Effect
-Policy supports three types of effect - **deny**, **audit**, and **append**. 
+## 効果
+ポリシーでは、**deny**、**audit**、**append** の 3 種類の効果がサポートされています。
 
-- Deny generates an event in the audit log and fails the request
-- Audit generates an event in audit log but does not fail the request
-- Append adds the defined set of fields to the request 
+- deny は監査ログでイベントを生成し、要求は失敗します
+- audit は監査ログでイベントを生成しますが、要求は失敗しません
+- append は定義済みのフィールド セットを要求に追加します
 
-For **append**, you must provide the details as shown below:
+**append** の場合、次のように詳細を指定する必要があります。
 
     ....
     "effect": "append",
@@ -171,15 +169,15 @@ For **append**, you must provide the details as shown below:
       }
     ]
 
-The value can be either a string or a JSON format object. 
+値には文字列または JSON 形式オブジェクトを指定できます。
 
-## <a name="policy-definition-examples"></a>Policy Definition Examples
+## ポリシー定義の例
 
-Now let's take a look at how we will define the policy to achieve the scenarios listed above.
+ここでは、上で挙げたシナリオを実現するポリシーを定義する方法を見てをみましょう。
 
-### <a name="chargeback:-require-departmental-tags"></a>Chargeback: Require departmental tags
+### 配賦: 部門別のタグが必要
 
-The below policy denies all requests which don’t have a tag containing "costCenter" key.
+次のポリシーは、"costCenter" キーを含むタグがないすべての要求を拒否します。
 
     {
       "if": {
@@ -193,55 +191,55 @@ The below policy denies all requests which don’t have a tag containing "costCe
       }
     }
 
-The below policy appends costCenter tag with a predefined value if no tags are present. 
+次のポリシーは、タグが存在しない場合に定義済みの値を持つ costCenter タグを追加します。
 
-    {
-      "if": {
-        "field": "tags",
-        "exists": "false"
-      },
-      "then": {
-        "effect": "append",
-        "details": [
-          {
-            "field": "tags",
-            "value": {"costCenter":"myDepartment" }
-          }
-        ]
-      }
-    }
-    
-The below policy appends costCenter tag with a predefined value if other tags are present. 
+	{
+	  "if": {
+	    "field": "tags",
+	    "exists": "false"
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags",
+	        "value": {"costCenter":"myDepartment" }
+	      }
+	    ]
+	  }
+	}
+	
+次のポリシーは、他のタグが存在する場合に定義済みの値を持つ costCenter タグを追加します。
 
-    {
-      "if": {
-        "allOf": [
-          {
-            "field": "tags",
-            "exists": "true"
-          },
-          {
-            "field": "tags.costCenter",
-            "exists": "false"
-          }
-        ]
-    
-      },
-      "then": {
-        "effect": "append",
-        "details": [
-          {
-            "field": "tags.costCenter",
-            "value": "myDepartment"
-          }
-        ]
-      }
-    }
+	{
+	  "if": {
+	    "allOf": [
+	      {
+	        "field": "tags",
+	        "exists": "true"
+	      },
+	      {
+	        "field": "tags.costCenter",
+	        "exists": "false"
+	      }
+	    ]
+	
+	  },
+	  "then": {
+	    "effect": "append",
+	    "details": [
+	      {
+	        "field": "tags.costCenter",
+	        "value": "myDepartment"
+	      }
+	    ]
+	  }
+	}
 
 
-### <a name="geo-compliance:-ensure-resource-locations"></a>Geo Compliance: Ensure resource locations
+### 地理的準拠: リソースの場所を確認
 
-The below example shows a policy which will deny all requests where location is not North Europe or West Europe.
+次では、場所が北ヨーロッパや西ヨーロッパでない、すべての要求を拒否するポリシーの例を示しています。
 
     {
       "if" : {
@@ -255,9 +253,9 @@ The below example shows a policy which will deny all requests where location is 
       }
     }
 
-### <a name="service-curation:-select-the-service-catalog"></a>Service Curation: Select the service catalog
+### サービスのキュレーション: サービス カタログを選択
 
-The below example shows the use of source. It shows that actions only on the services of type Microsoft.Resources/\*, Microsoft.Compute/\*, Microsoft.Storage/\*, Microsoft.Network/\* are allowed. Anything else will be denied.
+次では、ソースの使用例を示しています。種類が Microsoft.Resources/*、Microsoft.Compute/*、Microsoft.Storage/*、Microsoft.Network/* のサービスのアクションのみが許可されることを示しています。その他は拒否されます。
 
     {
       "if" : {
@@ -287,9 +285,9 @@ The below example shows the use of source. It shows that actions only on the ser
       }
     }
 
-### <a name="use-approved-skus"></a>Use Approved SKUs
+### 承認された SKU の使用
 
-The below example shows the use of property alias to restrict SKUs. In the example below, only Standard_LRS and Standard_GRS is approved to use for storage accounts.
+次の例は、プロパティのエイリアスを使用して SKU を制限する方法を示しています。この例では、Standard\_LRS と Standard\_GRS のみ、ストレージ アカウントで使用することが認められます。
 
     {
       "if": {
@@ -316,9 +314,9 @@ The below example shows the use of property alias to restrict SKUs. In the examp
     }
     
 
-### <a name="naming-convention"></a>Naming Convention
+### 命名規則
 
-The below example shows the use of wildcard which is supported by the condition "like". The condition states that if the name does match the mentioned pattern (namePrefix\*nameSuffix) then deny the request.
+次では、"like" の条件でサポートされているワイルドカードの使用例を示しています。この条件は、名前が示しているパターンと一致する場合 (namePrefix*nameSuffix)、要求を拒否するよう示しています。
 
     {
       "if" : {
@@ -332,9 +330,9 @@ The below example shows the use of wildcard which is supported by the condition 
       }
     }
     
-### <a name="tag-requirement-just-for-storage-resources"></a>Tag requirement just for Storage resources
+### ストレージ リソースのみに対するタグ要件
 
-The below example shows how to nest logical operators to require an application tag for only Storage resources.
+次の例は、論理演算子を入れ子にして、ストレージ リソースのみにアプリケーション タグを要求する方法を示しています。
 
     {
         "if": {
@@ -356,23 +354,23 @@ The below example shows how to nest logical operators to require an application 
         }
     }
 
-## <a name="policy-assignment"></a>Policy Assignment
+## ポリシーの割り当て
 
-Policies can be applied at different scopes like subscription, resource groups and individual resources. Policies are inherited by all child resources. So if a policy is applied to a resource group, it will be applicable to all the resources in that resource group.
+ポリシーは、サブスクリプション、リソース グループおよび個々のリソースなどのさまざまなスコープを適用できます。ポリシーは、すべての子リソースが継承します。したがって、リソース グループに適用されたポリシーは、そのリソース グループのすべてのリソースに適用されます。
 
-## <a name="creating-a-policy"></a>Creating a Policy
+## ポリシーの作成
 
-This section provides detail on how a policy can be created using REST API.
+ここでは、REST API を使用して、ポリシーを作成する方法を詳細に説明します。
 
-### <a name="create-policy-definition-with-rest-api"></a>Create Policy Definition with REST API
+### REST API を使用したポリシー定義の作成
 
-You can create a policy with the [REST API for Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx). The REST API enables you to create and delete policy definitions, and get information about existing definitions.
+[ポリシー定義用の REST API](https://msdn.microsoft.com/library/azure/mt588471.aspx) を使用して、ポリシーを作成できます。REST API を使用すると、ポリシー定義の作成と削除、既存の定義に関する情報の取得を実行できます。
 
-To create a new policy, run:
+新しいポリシーを作成するには、次を実行します。
 
     PUT https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
 
-With a request body similar to the following:
+要求の本文は次のようになります。
 
     {
       "properties":{
@@ -394,39 +392,38 @@ With a request body similar to the following:
     }
 
 
-The policy-definition can be defined as one of the examples shown above.
-For api-version use *2016-04-01*. For examples and more details, see [REST API for Policy Definitions](https://msdn.microsoft.com/library/azure/mt588471.aspx).
+ポリシー定義は、前述の例のいずれかとして定義できます。api-version には、*2016-04-01* を使用します。例と詳細については、[ポリシー定義用 REST API](https://msdn.microsoft.com/library/azure/mt588471.aspx) のページを参照してください。
 
-### <a name="create-policy-definition-using-powershell"></a>Create Policy Definition using PowerShell
+### PowerShell を使用したポリシー定義の作成
 
-You can create a new policy definition using the New-AzureRmPolicyDefinition cmdlet as shown below. The below examples creates a policy for allowing resources only in North Europe and West Europe.
+以下に示されているように、New-AzureRmPolicyDefinition コマンドレットを使用して新しいポリシー定義を作成できます。以下の例では、リソースを北ヨーロッパと西ヨーロッパに限定できるポリシーを作成します。
 
-    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{  
+    $policy = New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain regions" -Policy '{	
       "if" : {
         "not" : {
           "field" : "location",
           "in" : ["northeurope" , "westeurope"]
-        }
+    	}
       },
       "then" : {
         "effect" : "deny"
       }
-    }'          
+    }'    		
 
-The output of execution is stored in $policy object, and can used later during policy assignment. For the policy parameter, the path to a .json file containing the policy can also be provided instead of specifying the policy inline as shown below.
+実行時の出力は $policy オブジェクトに保存され、後でポリシーを割り当てるときに使用できます。ポリシー パラメーターの場合、以下に示されているように、ポリシー インラインを指定するのではなく、ポリシーが含まれている .json ファイルへのパスを提供することもできます。
 
-    New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain    regions" -Policy "path-to-policy-json-on-disk"
+    New-AzureRmPolicyDefinition -Name regionPolicyDefinition -Description "Policy to allow resource creation only in certain 	regions" -Policy "path-to-policy-json-on-disk"
 
-### <a name="create-policy-definition-using-azure-cli"></a>Create Policy Definition using Azure CLI
+### Azure CLI を使用したポリシー定義の作成
 
-You can create a new policy definition using the azure CLI with the policy definition command as shown below. The below examples creates a policy for allowing resources only in North Europe and West Europe.
+以下に示すように、Azure CLI でポリシー定義コマンドを使用して、新しいポリシー定義を作成できます。以下の例では、リソースを北ヨーロッパと西ヨーロッパに限定できるポリシーを作成します。
 
-    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{   
+    azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy-string '{	
       "if" : {
         "not" : {
           "field" : "location",
           "in" : ["northeurope" , "westeurope"]
-        }
+    	}
       },
       "then" : {
         "effect" : "deny"
@@ -434,25 +431,24 @@ You can create a new policy definition using the azure CLI with the policy defin
     }'    
     
 
-It is possible to specify the path to a .json file containing the policy instead of specifying the policy inline as shown below.
+以下に示すように、ポリシー インラインではなく、ポリシーが含まれている .json ファイルへのパスを指定することもできます。
 
     azure policy definition create --name regionPolicyDefinition --description "Policy to allow resource creation only in certain regions" --policy "path-to-policy-json-on-disk"
 
 
-## <a name="applying-a-policy"></a>Applying a Policy
+## ポリシーの適用
 
-### <a name="policy-assignment-with-rest-api"></a>Policy Assignment with REST API
+### REST API を使用したポリシーの割り当て
 
-You can apply the policy definition at the desired scope through the [REST API for policy assignments](https://msdn.microsoft.com/library/azure/mt588466.aspx).
-The REST API enables you to create and delete policy assignments, and get information about existing assignments.
+[ポリシーの割り当て用 REST API](https://msdn.microsoft.com/library/azure/mt588466.aspx) で、目的のスコープに対してポリシー定義を適用します。REST API を使用すると、ポリシー割り当ての作成と削除、既存の割り当てに関する情報の取得を実行できます。
 
-To create a new policy assignment, run:
+新しいポリシー割り当てを作成するには、次を実行します。
 
     PUT https://management.azure.com /subscriptions/{subscription-id}/providers/Microsoft.authorization/policyassignments/{policyAssignmentName}?api-version={api-version}
 
-The {policy-assignment} is the name of the policy assignment. For api-version use *2016-04-01*. 
+ポリシー割り当ての名前は、{policy-assignment} です。api-version には、*2016-04-01* を使用します。
 
-With a request body similar to the following:
+要求の本文は次のようになります。
 
     {
       "properties":{
@@ -463,68 +459,64 @@ With a request body similar to the following:
       "name":"VMPolicyAssignment"
     }
 
-For examples and more details, see [REST API for Policy Assignments](https://msdn.microsoft.com/library/azure/mt588466.aspx).
+例と詳細については、[ポリシー割り当て用 REST API](https://msdn.microsoft.com/library/azure/mt588466.aspx) のページをご覧ください。
 
-### <a name="policy-assignment-using-powershell"></a>Policy Assignment using PowerShell
+### PowerShell を使用したポリシーの割り当て
 
-You can apply the policy created above through PowerShell to the desired scope by using the New-AzureRmPolicyAssignment cmdlet as shown below:
+以下に示されているように、New-AzureRmPolicyAssignment コマンドレットを使用して、上記で作成したポリシーを PowerShell を介して目的のスコープに適用できます。
 
     New-AzureRmPolicyAssignment -Name regionPolicyAssignment -PolicyDefinition $policy -Scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
         
-Here $policy is the policy object that was returned as a result of executing the New-AzureRmPolicyDefinition cmdlet as shown above. The scope here is the name of the resource group you specify.
+ここで、$policy は上記のように New-AzureRmPolicyDefinition コマンドレットを実行した結果として返されたポリシー オブジェクトです。ここでのスコープは、指定するリソース グループの名前です。
 
-If you want to remove the above policy assignment, you can do it as follows:
+上記のポリシー割り当てを削除するには、次のようにします。
 
     Remove-AzureRmPolicyAssignment -Name regionPolicyAssignment -Scope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
 
-You can get, change or remove policy definitions through Get-AzureRmPolicyDefinition, Set-AzureRmPolicyDefinition and Remove-AzureRmPolicyDefinition cmdlets respectively.
+Get-AzureRmPolicyDefinition、Set-AzureRmPolicyDefinition、および Remove-AzureRmPolicyDefinition コマンドレットをそれぞれ使用して、ポリシー定義を取得、変更、または削除できます。
 
-Similarly, you can get, change or remove policy assignments through the Get-AzureRmPolicyAssignment, Set-AzureRmPolicyAssignment and Remove-AzureRmPolicyAssignment cmdlets respectively.
+同様に、Get-AzureRmPolicyAssignment、Set-AzureRmPolicyAssignment、および Remove-AzureRmPolicyAssignment コマンドレットをそれぞれ使用して、ポリシーの割り当てを取得、変更、または削除することもできます。
 
-### <a name="policy-assignment-using-azure-cli"></a>Policy Assignment using Azure CLI
+### Azure CLI を使用したポリシーの割り当て
 
-You can apply the policy created above through Azure CLI to the desired scope by using the policy assignment command as shown below:
+以下に示すように、ポリシーの割り当てコマンドを使用して、上記で作成したポリシーを Auzre CLI を介して目的のスコープに適用できます。
 
     azure policy assignment create --name regionPolicyAssignment --policy-definition-id /subscriptions/########-####-####-####-############/providers/Microsoft.Authorization/policyDefinitions/<policy-name> --scope    /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
         
-The scope here is the name of the resource group you specify. If the value of the parameter policy-definition-id is unknown, it is possible to obtain it through the Azure CLI as shown below: 
+ここでのスコープは、指定するリソース グループの名前です。policy-definition-id パラメーターの値が不明な場合は、次に示すように、Azure CLI を介して取得できます。
 
     azure policy definition show <policy-name>
 
-If you want to remove the above policy assignment, you can do it as follows:
+上記のポリシー割り当てを削除するには、次のようにします。
 
-    azure policy assignment delete --name regionPolicyAssignment --scope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
+    azure policy assignment remove --name regionPolicyAssignment --ccope /subscriptions/########-####-####-####-############/resourceGroups/<resource-group-name>
 
-You can get, change or remove policy definitions through policy definition show, set and delete commands respectively.
+ポシリー定義の表示、設定、削除コマンドをそれぞれ使用して、ポリシー定義を取得、変更、または削除できます。
 
-Similarly, you can get, change or remove policy assignments through the policy assignment show and delete commands respectively.
+同様に、ポシリー割り当ての表示および削除コマンドをそれぞれ使用して、ポリシー割り当てを取得、変更、または削除できます。
 
-##<a name="policy-audit-events"></a>Policy Audit Events
+##ポリシー監査イベント
 
-After you have applied your policy, you will begin to see policy-related events. You can either go to portal, use PowerShell or the Azure CLI to get this data. 
+ポリシーを適用した後、ポリシー関連イベントの表示を開始します。このデータを取得するには、ポータルに移動するか、PowerShell または Azure CLI を使用します。
 
-### <a name="policy-audit-events-using-powershell"></a>Policy Audit Events using PowerShell
+### PowerShell を使用したポリシー監査イベント
 
-To view all events that related to deny effect, you can use the following PowerShell command. 
+拒否効果に関連するすべてのイベントを表示するには、次の PowerShell コマンドを使用できます。
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/deny/action"} 
 
-To view all events related to audit effect, you can use the following command. 
+監査効果に関連するすべてのイベントを表示するには、次のコマンドを使用できます。
 
     Get-AzureRmLog | where {$_.OperationName -eq "Microsoft.Authorization/policies/audit/action"} 
 
-### <a name="policy-audit-events-using-azure-cli"></a>Policy Audit Events using Azure CLI
+### Azure CLI を使用したポリシー監査イベント
 
-To view all events from a resource group that related to deny effect, you can use the following CLI command. 
+拒否効果に関連するリソース グループのイベントをすべて表示するには、次の CLI コマンドを使用できます。
 
-    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == \"Microsoft.Authorization/policies/deny/action\")"
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/deny/action")"
 
-To view all events related to audit effect, you can use the following CLI command. 
+監査効果に関連するすべてのイベントを表示するには、次の CLI コマンドを使用できます。
 
-    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == \"Microsoft.Authorization/policies/audit/action\")"
+    azure group log show ExampleGroup --json | jq ".[] | select(.operationName.value == "Microsoft.Authorization/policies/audit/action")"
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

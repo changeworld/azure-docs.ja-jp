@@ -1,58 +1,52 @@
 <properties 
-    pageTitle="Windows Authentication and Azure Multi-Factor Authentication Server"
-    description="This is the Azure Multi-factor authentication page that will assist in deploying Windows Authentication and Azure Multi-Factor Authentication Server."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtand"/>
+	pageTitle="Windows 認証と Azure Multi-Factor Authentication Server"
+	description="これは、Windows 認証と Azure Multi-Factor Authentication Server をデプロイする際に役立つ Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtand"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
+# Windows 認証と Azure Multi-Factor Authentication Server
 
-# <a name="windows-authentication-and-azure-multi-factor-authentication-server"></a>Windows Authentication and Azure Multi-Factor Authentication Server
+Windows 認証セクションでは、管理者が 1 つ以上のアプリケーションで Windows 認証を有効にして構成できます。Windows 認証を設定する前に考慮する必要がある点の一覧を次に示します。
 
-The Windows Authentication section allows the administrator to enable and configure Windows authentication for one or more applications.  The following is a list of things to keep in mind prior to setting up Windows Authentication.
-
--  reboot is needed before the Azure Multi-Factor Authentication for Terminal Services will be in effect.
--  If ‘Require Azure Multi-Factor Authentication user match’ is checked and you are not in the user list, you will not be able to log into the machine after reboot.
--  Trusted IPs is dependent on whether the application can provide the client IP with the authentication. Currently only Terminal Services is supported.  
-
-
+-  ターミナル サービスで Azure Multi-Factor Authentication を有効にするには再起動が必要です。
+-  [Multi-Factor Authentication のユーザー照合が必要] ボックスがオンになっており、ユーザーがユーザー一覧にいない場合、再起動後にマシンにログインできません。
+-  信頼できる IP は、アプリケーションが認証付きのクライアント IP を提供できるかどうかに依存します。現在はターミナル サービスのみがサポートされます。
 
 
 
 
 
->[AZURE.NOTE]This feature is not supported to secure Terminal Services on Windows Server 2012 R2.
+
+
+>[AZURE.NOTE]この機能は Windows Server 2012 R2 上のターミナル サービスのセキュリティを保護しません。
 
 
 
 
-## <a name="to-secure-an-application-with-windows-authentication,-use-the-following-procedure."></a>To secure an application with Windows Authentication, use the following procedure.
+## Windows 認証を使用してアプリケーションを保護するには、次の手順に従います。
 
-1. In the Azure Multi-Factor Authentication Server click the Windows Authentication icon.
-![Windows Authentication](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png)
-2. Check the Enable Windows authentication checkbox. By default, this box is unchecked.
-3. The Applications tab allows the administrator to configure one or more applications for Windows Authentication.
-4. Select a server or application – specify whether the server/application is enabled. Click OK.
-5. Click Add… button.
-6. The Trusted IPs tab allows you to skip Azure Multi-Factor Authentication for Windows sessions originating from specific IPs. For example, if employees use the application from the office and from home, you may decide you don't want their phones ringing for Azure Multi-Factor Authentication while at the office. For this, you would specify the office subnet as Trusted IPs entry.
-7. Click Add… button.
-8. Select Single IP if you would like to skip a single IP address.
-9. Select IP Range if you would like to skip an entire IP range. Example 10.63.193.1-10.63.193.100.
-10. Select Subnet if you would like to specify a range of IPs using subnet notation. Enter the subnet's starting IP and pick the appropriate netmask from the drop-down list.
-11. Click the OK button.
+1. Azure Multi-Factor Authentication Server で、[Windows 認証] アイコン ![Windows 認証](./media/multi-factor-authentication-get-started-server-windows/windowsauth.png) をクリックします。
+2. [Windows 認証を有効にする] チェック ボックスをオンにします。既定では、このボックスはオフになっています。
+3. [アプリケーション] タブでは、管理者が Windows 認証を使用する 1 つ以上のアプリケーションを構成できます。
+4. サーバーまたはアプリケーションを選択し、サーバーまたはアプリケーションが有効になっているかどうかを指定します。[OK] をクリックします。
+5. [追加…] ボタンをクリックします。
+6. [信頼される IP] タブでは、特定の IP から送信された Windows セッションの Azure Multi-Factor Authentication をスキップすることができます。たとえば、従業員がオフィスと自宅の両方でアプリケーションを使用する場合、オフィスにいる間は Azure Multi-Factor Authentication の電話を鳴らさないように設定できます。それには、社内のサブネットを信頼される IP エントリとして指定します。
+7. [追加…] ボタンをクリックします。
+8. 単一の IP アドレスをスキップする場合は、[単一 IP を追加する] を選択します。
+9. IP 範囲全体をスキップする場合は、[IP 範囲を指定して追加する] を選択します (例: 10.63.193.1-10.63.193.100)。
+10. サブネット表記を使用して IP の範囲を指定する場合は、[サブネット] を選択します。サブネットの開始 IP を入力し、ドロップダウン リストから適切なネットマスクを選択します。
+11. [OK] ボタンをクリックします。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

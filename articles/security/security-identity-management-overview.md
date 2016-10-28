@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure identity management security overview | Microsoft Azure"
-   description=" Microsoft identity and access management solutions help IT protect access to applications and resources across the corporate datacenter and into the cloud, enabling additional levels of validation such as multi-factor authentication and conditional access policies. This article provides an overview of the core Azure security features that help with identity management. "
+   pageTitle="Azure ID 管理のセキュリティの概要 | Microsoft Azure"
+   description=" Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。この記事は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明します。"
    services="security"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,150 +16,145 @@
    ms.date="08/09/2016"
    ms.author="terrylan"/>
 
+# Azure ID 管理のセキュリティの概要
 
-# <a name="azure-identity-management-security-overview"></a>Azure identity management security overview
+Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。[Azure Active Directory Premium](../active-directory/active-directory-editions.md) は、何千ものクラウドへのシングル サインオン (SaaS) アプリケーション、およびオンプレミスで実行する Web アプリケーションへのアクセスを提供します。
 
-Microsoft identity and access management solutions help IT protect access to applications and resources across the corporate datacenter and into the cloud, enabling additional levels of validation such as multi-factor authentication and conditional access policies. Monitoring suspicious activity through advanced security reporting, auditing and alerting helps mitigate potential security issues. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) provides single sign-on to thousands of cloud (SaaS) apps and access to web apps you run on-premises.
+Azure Active Directory (AD) のセキュリティ上の利点は次のとおりです。
 
-Security benefits of Azure Active Directory (AD) include the ability to:
+- ハイブリッドのエンタープライズ全体の各ユーザーに個別の ID を作成して管理し、ユーザー、グループ、およびデバイスが同期された状態を維持する
+- 何千もの事前統合された SaaS アプリを含むアプリケーションにシングル サインオン アクセスを提供します。
+- ルール ベースの多要素認証をオンプレミスおよびクラウド アプリケーションの両方に適用することによって、アプリケーション アクセスのセキュリティを有効にする
+- Azure AD アプリケーション プロキシを通じてオンプレミス Web アプリケーションへの安全なリモート アクセスをプロビジョニングする
 
-- Create and manage a single identity for each user across your hybrid enterprise, keeping users, groups and devices in sync
-- Provide single sign-on access to your applications including thousands of pre-integrated SaaS apps
-- Enable application access security by enforcing rules-based Multi-Factor Authentication for both on-premises and cloud applications
-- Provision secure remote access to on-premises web applications through Azure AD Application Proxy
+この記事の目的は、ID 管理に役立つ Azure のコア セキュリティ機能の概要を説明することです。それぞれの詳細について説明する記事へのリンクも用意されているため、さらに詳しく学習できます。
 
-The goal of this article is to provide an overview of the core Azure security features that help with identity management. We also provide links to articles that will give details of each feature so you can learn more.  
+この記事は、次の Azure ID 管理のコア機能の説明に重点を置いています。
 
-The article focuses on the following core Azure Identity management capabilities:
+- シングル サインオン
+- リバース プロキシ
+- 多要素認証
+- セキュリティの監視、アラート、および機械学習ベースのレポート
+- コンシューマーの ID とアクセスの管理
+- デバイス登録
+- Privileged Identity Management
+- Identity Protection
+- ハイブリッド ID 管理
 
-- Single sign-on
-- Reverse proxy
-- Multi-factor authentication
-- Security monitoring, alerts, and machine learning-based reports
-- Consumer identity and access management
-- Device registration
-- Privileged identity management
-- Identity protection
-- Hybrid identity management
+## シングル サインオン
 
-## <a name="single-sign-on"></a>Single sign-on
+シングル サインオン (SSO) とは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
 
-Single sign-on (SSO) means being able to access all of the applications and resources that you need to do business, by signing in only once using a single user account. Once signed in, you can access all of the applications you need without being required to authenticate (e.g. type a password) a second time.
+多くの組織では、エンド ユーザーの生産性向上のため、Office 365、Box、Salesforce などのサービスとしてのソフトウェア (SaaS) アプリケーションに依存しています。従来は、IT スタッフが各 SaaS アプリケーションのユーザー アカウントを個別に作成し、更新する必要がありました。さらに、ユーザーは、各 SaaS アプリケーションのパスワードを覚える必要がありました。
 
-Many organizations rely upon software as a service (SaaS) applications such as Office 365, Box and Salesforce for end user productivity. Historically, IT staff needed to individually create and update user accounts in each SaaS application, and users had to remember a password for each SaaS application.
+Azure AD は、オンプレミスの Active Directory をクラウドに拡張して、ユーザーがプライマリ組織アカウントを使用してドメイン参加デバイスおよび会社のリソースにサインインするだけでなく、それぞれの業務に必要なすべての Web アプリケーションおよび SaaS アプリケーションにもサインインできるようにします。
 
-Azure AD extends on-premises Active Directory into the cloud, enabling users to use their primary organizational account to not only sign in to their domain-joined devices and company resources, but also all of the web and SaaS applications needed for their job.
+これにより、ユーザーが複数のユーザー名とパスワードのセットを管理する必要がなくなるだけでなく、組織のグループや従業員としての地位に基づいてアプリケーションのアクセスを自動的にプロビジョニングまたはプロビジョニング解除することが可能になります。Azure AD には、SaaS アプリケーション間でユーザー アクセスを一元的に管理するためのセキュリティおよびアクセス管理コントロールが導入されています。
 
-Not only do users not have to manage multiple sets of usernames and passwords, application access can be automatically provisioned or de-provisioned based on organizational groups and their status as an employee. Azure AD introduces security and access governance controls that enable you to centrally manage users' access across SaaS applications.
+詳細情報:
 
-Learn more:
+- [シングル サインオンの概要](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
+- [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../active-directory/active-directory-appssoaccess-whatis.md)
+- [SaaS アプリと Azure Active Directory シングル サインオンを統合する](../active-directory/active-directory-sso-integrate-saas-apps.md)
 
-- [Overview of Single Sign-On](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
-- [What is application access and single sign-on with Azure Active Directory?](../active-directory/active-directory-appssoaccess-whatis.md)
-- [Integrate Azure Active Directory single sign-on with SaaS apps](../active-directory/active-directory-sso-integrate-saas-apps.md)
+## リバース プロキシ
 
-## <a name="reverse-proxy"></a>Reverse proxy
+Azure AD アプリケーション プロキシを使用すると、[SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=ja-JP&rs=ja-JP&ad=US) サイト、[Outlook Web アプリ](https://technet.microsoft.com/library/jj657718.aspx)、[IIS](http://www.iis.net/) ベースのアプリなどのオンプレミス アプリケーションをプライベート ネットワーク内で発行し、ネットワーク外部のユーザーにセキュリティで保護されたアクセスを提供できます。アプリケーション プロキシ では、多くの種類のオンプレミス Web アプリケーションに対応するリモート アクセスとシングル サインオン (SSO) を、Azure AD がサポートする数千もの SaaS アプリケーションとともに利用できます。従業員は、自宅から自分のデバイスでアプリケーションにログインし、このクラウド ベースのプロキシを使用して認証を行うことができます。
 
-Azure AD Application Proxy lets you publish on-premises applications, such as [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US) sites, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx), and [IIS](http://www.iis.net/)-based apps inside your private network and provides secure access to users outside your network. Application Proxy provides remote access and single sign-on (SSO) for many types of on-premises web applications with the thousands of SaaS applications that Azure AD supports. Employees can log into your apps from home on their own devices and authenticate through this cloud-based proxy.
+詳細情報:
 
-Learn more:
+- [Azure AD アプリケーション プロキシの有効化](../active-directory/active-directory-application-proxy-enable.md)
+- [Azure AD アプリケーション プロキシを使用してアプリケーションを発行する](../active-directory/active-directory-application-proxy-publish.md)
+- [アプリケーション プロキシを使用したシングル サインオン](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
+- [条件付きアクセスの使用](../active-directory/active-directory-application-proxy-conditional-access.md)
 
-- [Enabling Azure AD Application Proxy](../active-directory/active-directory-application-proxy-enable.md)
-- [Publish applications using Azure AD Application Proxy](../active-directory/active-directory-application-proxy-publish.md)
-- [Single-sign-on with Application Proxy](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
-- [Working with conditional access](../active-directory/active-directory-application-proxy-conditional-access.md)
+## 多要素認証
+Azure Multi-Factor Authentication (MFA) は、複数の確認方法の使用を要求することで、ユーザーのサインインとトランザクションに重要な 2 つ目のセキュリティ レイヤーを追加する認証方法です。MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。電話やテキスト メッセージ、モバイル アプリによる通知のほか、確認コードやサード パーティの OAuth トークンなど、一連の照合方法を通じて確実な認証を行うことができます。
 
-## <a name="multi-factor-authentication"></a>Multi-factor authentication
-Azure Multi-factor authentication (MFA) is a method of authentication that requires the use of more than one verification method and adds a critical second layer of security to user sign-ins and transactions. MFA helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It delivers strong authentication via a range of verification options—phone call, text message, or mobile app notification or verification code and 3rd party OAuth tokens.
+詳細情報:
 
-Learn more:
+- [多要素認証](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
+- [Azure Multi-Factor Authentication とは](../multi-factor-authentication/multi-factor-authentication.md)
+- [Azure Multi-Factor Authentication のしくみ](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
 
-- [Multi-factor authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-- [What is Azure Multi-Factor Authentication?](../multi-factor-authentication/multi-factor-authentication.md)
-- [How Azure Multi-Factor Authentication works](../multi-factor-authentication/multi-factor-authentication-how-it-works.md)
+## セキュリティの監視、アラート、および機械学習ベースのレポート
 
-## <a name="security-monitoring,-alerts,-and-machine-learning-based-reports"></a>Security monitoring, alerts, and machine learning-based reports
+セキュリティの監視とアラートや、整合性のないアクセス パターンを識別する機械学習ベースのレポートを使用して、ビジネスを保護できます。Azure Active Directory のアクセスおよび使用状況レポートを使用すると、組織のディレクトリの整合性とセキュリティを表示できます。ディレクトリ管理者は、この情報を使用して、リスクを軽減するために適切に計画できるように、セキュリティ上のリスクがある箇所をより適切に確認できます。
 
-Security monitoring and alerts and machine learning-based reports that identify inconsistent access patterns can help you protect your business. You can use Azure Active Directory's access and usage reports to gain visibility into the integrity and security of your organization’s directory. With this information, a directory admin can better determine where possible security risks may lie so that they can adequately plan to mitigate those risks.
+レポートは、Azure クラシック ポータルで、次の方法で分類されます。
 
-In the Azure classic portal, reports are categorized in the following ways:
+- 異常レポート: 異常と考えられるサインイン イベントが含まれます。この目的は、このようなアクティビティを認識し、イベントが不審であるかどうかを判断できるようにすることです。
+- 統合アプリケーション レポート – 組織内のクラウド アプリケーションの使用状況を明らかにします。Azure Active Directory は、何千ものクラウド アプリケーションとの統合を提供します。
+- エラー レポート – 外部アプリケーションにアカウントをプロビジョニングするときに発生することがあるエラーを示します。
+- ユーザー固有レポート – 特定のユーザーのデバイス/サインイン アクティビティ データを示します。
+- アクティビティ ログ – 過去 24 時間、過去 7 日間、または過去 30 日間のすべての監査イベントの記録、グループのアクティビティの変更、およびパスワードのリセットと登録のアクティビティが含まれます。
 
-- Anomaly reports – contain sign in events that we found to be anomalous. Our goal is to make you aware of such activity and enable you to be able to make a determination about whether an event is suspicious.
-- Integrated Application reports – provide insights into how cloud applications are being used in your organization. Azure Active Directory offers integration with thousands of cloud applications.
-- Error reports – indicate errors that may occur when provisioning accounts to external applications.
-- User-specific reports – display device/sign in activity data for a specific user.
-- Activity logs – contain a record of all audited events within the last 24 hours, last 7 days, or last 30 days, as well as group activity changes, and password reset and registration activity.
+詳細情報:
 
-Learn more:
+- [アクセスおよび使用状況レポートの表示](../active-directory/active-directory-view-access-usage-reports.md)
+- [Azure Active Directory レポートの使用の開始](../active-directory/active-directory-reporting-getting-started.md)
+- [Azure Active Directory レポート ガイド](../active-directory/active-directory-reporting-guide.md)
 
-- [View your access and usage reports](../active-directory/active-directory-view-access-usage-reports.md)
-- [Getting started with Azure Active Directory Reporting](../active-directory/active-directory-reporting-getting-started.md)
-- [Azure Active Directory Reporting Guide](../active-directory/active-directory-reporting-guide.md)
+## コンシューマーの ID とアクセスの管理
 
-## <a name="consumer-identity-and-access-management"></a>Consumer identity and access management
+Azure Active Directory B2C は、数億個の ID を扱うコンシューマー向けアプリケーション用の高可用性グローバル ID 管理サービスです。モバイルと Web の両方のプラットフォームにわたる統合を実現できます。コンシューマーは、既に持っているソーシャル アカウントを使用するか、新たな資格情報を作成して、すべてのアプリケーションにログオンできます。その際のエクスペリエンスは、カスタマイズすることができます。
 
-Azure Active Directory B2C is a highly available, global, identity management service for consumer-facing applications that scales to hundreds of millions of identities. It can be integrated across mobile and web platforms. Your consumers can log on to all your applications through customizable experiences by using their existing social accounts or by creating new credentials.
+これまで、開発したアプリケーションにコンシューマーがサインアップおよびサインインすることを望むアプリケーション開発者は、独自のコードを記述していました。開発者は、オンプレミスのデータベースまたはシステムを使用して、ユーザー名とパスワードを保存していました。Azure Active Directory B2C では、セキュリティ保護された標準ベースのプラットフォームと機能豊富で拡張可能なポリシーのセットを使用して、より簡単にコンシューマーの ID 管理をアプリケーションに統合できます。
 
-In the past, application developers who wanted to sign up and sign in consumers into their applications would have written their own code. And they would have used on-premises databases or systems to store usernames and passwords. Azure Active Directory B2C offers your organization a better way to integrate consumer identity management into applications with the help of a secure, standards-based platform and a large set of extensible policies.
+Azure Active Directory B2C を使用すると、コンシューマーは、既存のソーシャル アカウント (Facebook、Google、Amazon、LinkedIn) を使用するか、または新しい資格情報 (電子メール アドレスとパスワードまたはユーザー名とパスワード) を作成することによって、アプリケーションにサインアップできます。
 
-When you use Azure Active Directory B2C, your consumers can sign up for your applications by using their existing social accounts (Facebook, Google, Amazon, LinkedIn) or by creating new credentials (email address and password, or username and password).
+詳細情報:
 
-Learn more:
+- [Azure Active Directory B2C とは](https://azure.microsoft.com/services/active-directory-b2c/)
+- [Azure Active Directory B2C プレビュー: アプリケーションにコンシューマーをサインアップおよびサインインする](../active-directory-b2c/active-directory-b2c-overview.md)
+- [Azure Active Directory B2C プレビュー: アプリケーションの種類](../active-directory-b2c/active-directory-b2c-apps.md)
 
-- [What is Azure Active Directory B2C?](https://azure.microsoft.com/services/active-directory-b2c/)
-- [Azure Active Directory B2C preview: Sign up and sign in consumers in your applications](../active-directory-b2c/active-directory-b2c-overview.md)
-- [Azure Active Directory B2C Preview: Types of Applications](../active-directory-b2c/active-directory-b2c-apps.md)
+## デバイス登録
 
-## <a name="device-registration"></a>Device registration
+Azure AD Device Registration は、デバイスに基づいて[条件付きでアクセスを許可する](../active-directory/active-directory-conditional-access-on-premises-setup.md)というシナリオの基礎となる機能です。デバイスが登録されると、Azure Active Directory Device Registration によってそのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
-Azure AD Device Registration is the foundation for device-based [conditional access](../active-directory/active-directory-conditional-access-on-premises-setup.md) scenarios. When a device is registered, Azure Active Directory Device Registration provides the device with an identity which is used to authenticate the device when the user signs in. The authenticated device, and the attributes of the device, can then be used to enforce conditional access policies for applications that are hosted in the cloud and on-premises.
+Intune などのモバイル デバイス管理 (MDM) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。
 
-When combined with a mobile device management (MDM) solution such as Intune, the device attributes in Azure Active Directory are updated with additional information about the device. This allows you to create conditional access rules that enforce access from devices to meet your standards for security and compliance.
+詳細情報:
 
-Learn more:
+- [Azure Active Directory Device Registration の基本](../active-directory/active-directory-conditional-access-device-registration-overview.md)
+- [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory/active-directory-conditional-access-on-premises-setup.md)
+- [Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](../active-directory/active-directory-conditional-access-automatic-device-registration.md)
 
-- [Get started with Azure Active Directory Device Registration](../active-directory/active-directory-conditional-access-device-registration-overview.md)
-- [Setting up on-premises conditional access using Azure Active Directory Device Registration](../active-directory/active-directory-conditional-access-on-premises-setup.md)
-- [Automatic device registration with Azure Active Directory for Windows domain-joined devices](../active-directory/active-directory-conditional-access-automatic-device-registration.md)
+## Privileged Identity Management
+Azure Active Directory (AD) Privileged Identity Management (PIM) を使用すると、特権 ID と、Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへのアクセスを管理、制御、監視できます。
 
-## <a name="privileged-identity-management"></a>Privileged identity management
-Azure Active Directory (AD) Privileged Identity Management lets you manage, control, and monitor your privileged identities and access to resources in Azure AD as well as other Microsoft online services like Office 365 or Microsoft Intune.
+ユーザーは、Azure や Office 365 のリソース、または他の SaaS アプリで、特権操作を実行することが必要になる場合があります。通常は、組織がユーザーに Azure AD で永続的な特権アクセスを付与する必要があります。しかし、この措置では、ユーザーが管理者特権を使用して実行している内容を組織が十分に監視できないため、クラウドでホストされているリソースのセキュリティ リスクが増大します。また、特権アクセスを持つユーザー アカウントが侵害された場合に、その 1 つの侵害がクラウド セキュリティ全体に影響を与える可能性もあります。Azure AD Privileged Identity Management はこのリスクの解決に役立ちます。
 
-Sometimes users need to carry out privileged operations in Azure or Office 365 resources, or other SaaS apps. This often means organizations have to give them permanent privileged access in Azure AD. This is a growing security risk for cloud-hosted resources because organizations can't sufficiently monitor what those users are doing with their admin privileges. Additionally, if a user account with privileged access is compromised, that one breach could impact their overall cloud security. Azure AD Privileged Identity Management helps to resolve this risk.
+Azure AD Privileged Identity Management では、次のことが可能です。
 
-Azure AD Privileged Identity Management lets you:
+- Azure AD の管理者であるユーザーを特定する
+- Office 365 や Intune などの Microsoft Online Services へのオンデマンドの "ジャスト イン タイム" な管理アクセスを可能にする
+- 管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する
+- 特権ロールへのアクセスに関するアラートを受け取る
 
-- See which users are Azure AD admins
-- Enable on-demand, "just in time" administrative access to Microsoft Online Services like Office 365 and Intune
-- Get reports about administrator access history and changes in administrator assignments
-- Get alerts about access to a privileged role
-
-Learn more:
+詳細情報:
 
 - [Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-configure.md)
-- [Roles in Azure AD Privileged Identity Management](../active-directory/active-directory-privileged-identity-management-roles.md)
-- [Azure AD Privileged Identity Management: How to add or remove a user role](../active-directory/active-directory-privileged-identity-management-how-to-add-role-to-user.md)
+- [Azure AD Privileged Identity Management におけるロール](../active-directory/active-directory-privileged-identity-management-roles.md)
+- [Azure AD Privileged Identity Management: ユーザー ロールを追加または削除する方法](../active-directory/active-directory-privileged-identity-management-how-to-add-role-to-user.md)
 
-## <a name="identity-protection"></a>Identity protection
-Azure AD Identity Protection is a security service that provides a consolidated view into risk events and potential vulnerabilities affecting your organization’s identities. Identity Protection leverages existing Azure Active Directory’s anomaly detection capabilities (available through Azure AD’s Anomalous Activity Reports), and introduces new risk event types that can detect anomalies in real-time.
+## Identity Protection
+Azure AD Identity Protection は、リスク イベントや組織の ID に影響する潜在的な脆弱性に関する統合ビューを提供するセキュリティ サービスです。Identity Protection は、既存の Azure Active Directory 異常検出機能 (Azure AD の異常アクティビティ レポートで利用可能) を利用し、リアルタイムで異常を検出できる新しいリスク イベントの種類が導入されています。
 
-Learn more:
+詳細情報:
 
 - [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
-- [Channel 9: Azure AD and Identity Show: Identity Protection Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+- [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD および Identity ショー: Identity Protection プレビュー)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-## <a name="hybrid-identity-management"></a>Hybrid identity management
+## ハイブリッド ID 管理
 
-Microsoft’s approach to identity spans on-premises and the cloud, creating a single user identity for authentication and authorization to all resources, regardless of location.
+Microsoft の ID 管理はオンプレミスとクラウドにまたがり、場所に関係なく、すべてのリソースの認証と権限付与を 1 つのユーザー ID で行います。
 
-Learn more:
+詳細情報:
 
-- [Hybrid identity white paper](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
+- [ハイブリッド ID ホワイト ペーパー](http://download.microsoft.com/download/D/B/A/DBA9E313-B833-48EE-998A-240AA799A8AB/Hybrid_Identity_White_Paper.pdf)
 - [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
-- [Active Directory Team Blog](https://blogs.technet.microsoft.com/ad/)
+- [Active Directory チームのブログ](https://blogs.technet.microsoft.com/ad/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Scales on the Fly"
-   description="Learn how SQL Database scales on the fly"
+   pageTitle="Azure SQL Database の即時スケール"
+   description="Azure SQL Database の即時スケールについて説明します"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -14,50 +14,44 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="10/13/2016"
+   ms.date="07/19/2016"
    ms.author="carlrab"/>
 
+# Azure SQL Database の即時スケール
 
-# <a name="azure-sql-database-scales-on-the-fly"></a>Azure SQL Database Scales on the fly
+## アプリの顧客が少数から多数に増加した場合、Azure SQL Database はアプリのダウンタイムを最小限に抑えながら即時にスケールできます
 
-## <a name="when-your-app-grows-from-a-small-number-of-customers-to-just-about-everyone,-azure-sql-database-can-scale-on-the-fly-with-minimal-app-downtime"></a>When your app grows from a small number of customers to just about everyone, Azure SQL Database can scale on the fly with minimal app downtime
-
-One of the advantages of running SQL Database on Microsoft Azure is being able to scale performance up or down, and on the fly to quickly adapt to changing workload demands. SQL Database offers a broad spectrum of performance levels to meet the specific needs of your application. And each level guarantees performance, so your app users have a predictable performance experience.
+Microsoft Azure で SQL Database を実行する利点の 1 つは、パフォーマンスをスケールアップまたはスケールダウンし、変化するワークロードの需要にすばやく対応できることです。SQL Database は、アプリケーションの特定のニーズに合わせて多様なパフォーマンス レベルを用意しています。各レベルはパフォーマンスを保証しているので、アプリ ユーザーはパフォーマンスの感覚を予測できます。
 
 ![scale-on-the-fly](./media/sql-database-scale-on-the-fly/sql-database-scale-on-the-fly.png)
 
-## <a name="when-your-app-is-an-overnight-success"></a>When your app is an overnight success
-SQL Database makes it easy to scale at a moment's notice. So if your app becomes an overnight success, it's just one click to accommodate the new performance needs. Plus, with minimal downtime, you won't have to worry about your app taking a hit when the time comes to scale up or down.
+## アプリの成功が一夜で終わった場合
+SQL Database は、直ちに簡単にスケールできます。そのため、アプリの成功が一夜で終わった場合、1 回のクリックだけで、新しいパフォーマンスのニーズに合わせて調整できます。さらに、ダウンタイムを最小限に抑えられるため、スケールアップまたはスケールダウン時のアプリへの打撃を心配する必要がありません。
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787569)
+[ドキュメントを参照する](http://go.microsoft.com/fwlink/?LinkID=787569)
 
-## <a name="within-your-budget"></a>Within your budget  
+## 予算の範囲内  
 
-The last thing you should think about when you're trying to create an app is how much your database is going to cost you. That's why SQL Database has a pay-what-you-need plan. With Basic, Standard, and Premium performance options, you can decide which performance option will fit your budget. And, if your app takes off, you can scale up at anytime.
+アプリを作成するときに最後に考慮する点は、データベースのコストがいくらになるか、ということです。そのため、SQL Database には従量課金制プランが用意されています。Basic、Standard、および Premium のパフォーマンス オプションがあるので、予算に最適なパフォーマンス オプションを判断できます。また、アプリの公開後でも、いつでもスケールアップできます。
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787570)
+[ドキュメントを参照する](http://go.microsoft.com/fwlink/?LinkID=787570)
 
-## <a name="get-the-fastest-performance"></a>Get the fastest performance
+## パフォーマンスを最大限に高める
 
-SQL Database includes cutting edge in-memory technology to execute extremely fast transactions and perform real-time analytical queries at the same time. Built-in advisors help developers migrate to in-memory tables, indexes, or store procedures. As a result, end users can experience up to 30x faster transaction processing and 100x faster query processing.  
+SQL Database には、最先端のメモリ内テクノロジが使用されているため、トランザクションとリアルタイムの分析クエリが同時に、非常に高速で実行されます。開発者は組み込みのアドバイザーを使用して、メモリ内のテーブル、インデックス、またはストアド プロシージャに移行できます。その結果、エンド ユーザーのトランザクション処理は最大 30 倍、クエリ処理は 100 倍高速になる可能性があります。
 
-[Read the documentation](http://go.microsoft.com/fwlink/?LinkID=787580)
+[ドキュメントを参照する](http://go.microsoft.com/fwlink/?LinkID=787580)
 
-Go to the homepage to see what else SQL Database has to offer.
-[Check it out](https://azure.microsoft.com/services/sql-database/) 
+SQL Database の他の機能についてはホーム ページを[ぜひご確認ください。](https://azure.microsoft.com/services/sql-database/)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Get a [free Azure subscription](https://azure.microsoft.com/get-started/) and [create your first Azure SQL Database](sql-database-get-started.md).
+[無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
  
-Review the [technical overview of SQL Database](sql-database-technical-overview.md).
+[SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

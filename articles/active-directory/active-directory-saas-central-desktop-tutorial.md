@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Central Desktop | Microsoft Azure" 
-    description="Learn how to use Central Desktop with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Central Desktop の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Central Desktop を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,165 +11,158 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
+#チュートリアル: Azure Active Directory と Central Desktop の統合
 
-#<a name="tutorial:-azure-active-directory-integration-with-central-desktop"></a>Tutorial: Azure Active Directory integration with Central Desktop
+このチュートリアルでは、Azure と Central Desktop の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-The objective of this tutorial is to show the integration of Azure and Central Desktop. The scenario outlined in this tutorial assumes that you already have the following items:
+-   有効な Azure サブスクリプション
+-   Central Desktop でのシングル サインオンが有効なサブスクリプション/Central Desktop テナント
 
--   A valid Azure subscription
--   A Central desktop single sign on enabled subscription / Central desktop tenant
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+1.  Central Desktop のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-1.  Enabling the application integration for Central Desktop
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+![シナリオ](./media/active-directory-saas-central-desktop-tutorial/IC769558.png "シナリオ")
+##Central Desktop のアプリケーション統合の有効化
 
-![Scenario](./media/active-directory-saas-central-desktop-tutorial/IC769558.png "Scenario")
-##<a name="enabling-the-application-integration-for-central-desktop"></a>Enabling the application integration for Central Desktop
+このセクションでは、Central Desktop のアプリケーション統合を有効にする方法を説明します。
 
-The objective of this section is to outline how to enable the application integration for Central Desktop.
+###Central Desktop のアプリケーション統合を有効にするには、次の手順を実行します。
 
-###<a name="to-enable-the-application-integration-for-central-desktop,-perform-the-following-steps:"></a>To enable the application integration for Central Desktop, perform the following steps:
-
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-central-desktop-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-central-desktop-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-central-desktop-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-central-desktop-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-central-desktop-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-central-desktop-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-central-desktop-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **Central Desktop**.
+6.  **検索ボックス**に、「**Central Desktop**」と入力します。
 
-    ![Application gallery](./media/active-directory-saas-central-desktop-tutorial/IC769559.png "Application gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-central-desktop-tutorial/IC769559.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **Central Desktop**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[Central Desktop]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Central Desktop](./media/active-directory-saas-central-desktop-tutorial/IC769560.png "Central Desktop")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
 
-The objective of this section is to outline how to enable users to authenticate to Central Desktop with their account in Azure AD using federation based on the SAML protocol.  
-As part of this procedure, you are required to upload a base-64 encoded certificate to your Central Desktop tenant.  
-If you are not familiar with this procedure, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o).
+このセクションでは、SAML プロトコルに基づくフェデレーションを使用して、ユーザーが Azure AD のアカウントで Central Desktop に対する認証を行えるようにする方法を説明します。この手順の途中で、Base-64 でエンコードされた証明書を Central Desktop テナントにアップロードする必要があります。この手順に慣れていない場合は、「[How to convert a binary certificate into a text file (バイナリ証明書をテキスト ファイルに変換する方法)](http://youtu.be/PlgrzUZ-Y1o)」をご覧ください。
 
 
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Central Desktop** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Central Desktop** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC749323.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to Central Desktop** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Central Desktop へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC777628.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, perform the following steps, and then click **Next**: 
+3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    -   In the **Central Desktop Sign In URL** textbox, type the URL of your Central Desktop tenant (e.g.: *http://contoso.centraldesktop.com*).
-    -   In the Central  Desktop Reply URL textbox, type your Central Desktop AssertionConsumerService URL (e.g.:  https://contoso.centraldesktop.com/saml2-assertion.php).
+    -   **[Central Desktop サインイン URL]** ボックスに、Central Desktop テナント の URL を入力します (例: *http://contoso.centraldesktop.com*)。
+    -   [Central Desktop 応答 URL] ボックスに、Central Desktop AssertionConsumerService URL を入力します (例: https://contoso.centraldesktop.com/saml2-assertion.php)。
 
-    >[AZURE.NOTE] You can get the value from the central desktop metadata (e.g.: *http://contoso.centraldesktop.com*).
+    >[AZURE.NOTE] この値は、Central Desktop のメタデータから取得できます (例: *http://contoso.centraldesktop.com*)。
 
-    ![Configure app URL](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "Configure app URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-central-desktop-tutorial/IC769561.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at Central Desktop** page, to download your certificate, click **Download certificate**, and then save the certificate file on your computer.
+4.  **[Central Desktop でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC769562.png "Configure single sign-on")
 
-5.  Log in to your **Central Desktop** tenant.
+5.  **Central Desktop** テナントにログインします。
 
-6.  Go to **Settings**, click **Advanced**, and then click **Single Sign On**.
+6.  **[Settings]** に移動し、**[Advanced]** をクリックして、**[Single Sign On]** をクリックします。
 
-    ![Setup - Advanced](./media/active-directory-saas-central-desktop-tutorial/IC769563.png "Setup - Advanced")
+    ![設定 - 詳細設定](./media/active-directory-saas-central-desktop-tutorial/IC769563.png "設定 - 詳細設定")
 
-7.  On the **Single Sign On Settings** page, perform the following steps:
+7.  **[Single Sign On Settings]** ページで、次の手順を実行します。
 
-    ![Single Sign On Settings](./media/active-directory-saas-central-desktop-tutorial/IC769564.png "Single Sign On Settings")
+    ![シングル サインオン設定](./media/active-directory-saas-central-desktop-tutorial/IC769564.png "シングル サインオン設定")
 
-    1.  Select **Enable SAML v2 Single Sign On**.
-    2.  In the Azure classic portal, on the **Configure single sign-on at Central Desktop** page, copy the **Issuer URL** value, and then paste it into the **SSO URL** textbox.
-    3.  In the Azure classic portal, on the **Configure single sign-on at Central Desktop** page, copy the **Remote Login URL** value, and then paste it into the **SSO Login URL** textbox.
-    4.  In the Azure classic portal, on the **Configure single sign-on at Central Desktop** page, copy the **Single Sign-Out Service URL** value, and then paste it into the **SSO Logout URL** textbox.
+    1.  **[Enable SAML v2 Single Sign On]** チェック ボックスをオンにします。
+    2.  Azure クラシック ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[発行者の URL]** の値をコピーし、**[SSO URL]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[リモート ログイン URL]** の値をコピーし、**[SSO Login URL]** ボックスに貼り付けます。
+    4.  Azure クラシック ポータルの **[Central Desktop でのシングル サインオンの構成]** ページにある **[シングル サインアウト サービス URL]** の値をコピーし、**[SSO Logout URL]** ボックスに貼り付けます。
 
-8.  In the **Message Signature Verification Method** section, perform the following steps:
+8.  **[Message Signature Verification Method]** セクションで、次の手順を実行します。
 
-    ![Message Signature Verification Method](./media/active-directory-saas-central-desktop-tutorial/IC769565.png "Message Signature Verification Method")
+    ![メッセージの署名の確認方法](./media/active-directory-saas-central-desktop-tutorial/IC769565.png "メッセージの署名の確認方法")
 
-    1.  Select **Certificate**.
-    2.  From the **SSO Certificate** list, select **RSH SHA256**.
-    3.  Create a text file from the downloaded certificate, copy the content of the text file, and then paste it into the **SSO Certificate** field.  
+    1.  **[Certificate]** を選択します。
+    2.  **[SSO Certificate]** ボックスの一覧で、**[RSH SHA256]** を選択します。
+    3.  ダウンロードした証明書からテキスト ファイルを作成し、そのテキスト ファイルの内容をコピーして **[SSO Certificate]** フィールドに貼り付けます。
 
-        >[AZURE.TIP] For more details, see [How to convert a binary certificate into a text file](http://youtu.be/PlgrzUZ-Y1o)
+        >[AZURE.TIP] 詳細については、[バイナリ証明書をテキスト ファイルに変換する方法](http://youtu.be/PlgrzUZ-Y1o)に関するページを参照してください。
 
-    4.  Select **Display a link to your SAMLv2 login page**.
+    4.  **[Display a link to your SAMLv2 login page]** チェック ボックスをオンにします。
 
-9.  Click **Update**.
+9.  **[Update]** をクリックします。
 
-10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-central-desktop-tutorial/IC769566.png "Configure single sign-on")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
 
-For AAD users to be able to sign in, they must be provisioned to the Central Desktop application. This section describes how to create AAD user accounts in Central Desktop.
+AAD ユーザーがサインインできるようにするには、ユーザーを Central Desktop アプリケーションにプロビジョニングする必要があります。このセクションでは、Central Desktop で AAD ユーザー アカウントを作成する方法について説明します。
 
-###<a name="to-provision-user-accounts-to-central-desktop:"></a>To provision user accounts to Central Desktop:
+###Central Desktop にユーザー アカウントをプロビジョニングするには:
 
-1.  Log in to your Central Desktop tenant.
+1.  Central Desktop テナントにログインします。
 
-2.  Go to **People \> Internal Members**.
+2.  **[People]、[Internal Members]** の順にクリックします。
 
-3.  Click **Add Internal Members**.
+3.  **[Add Internal Members]** をクリックします。
 
     ![People](./media/active-directory-saas-central-desktop-tutorial/IC781051.png "People")
 
-4.  In the **Email Address of New Members** textbox, type an AAD account you want to provision, and then click **Next**.
+4.  **[Email Address of New Members]** ボックスに、プロビジョニングする AAD アカウントを入力し、**[Next]** をクリックします。
 
-    ![Email Addresses of New Members](./media/active-directory-saas-central-desktop-tutorial/IC781052.png "Email Addresses of New Members")
+    ![新しいメンバーの電子メール アドレス](./media/active-directory-saas-central-desktop-tutorial/IC781052.png "新しいメンバーの電子メール アドレス")
 
-5.  Click **Add Internal member(s)**.
+5.  **[Add Internal member(s)]** をクリックします。
 
-    ![Add Internal Member](./media/active-directory-saas-central-desktop-tutorial/IC781053.png "Add Internal Member")
+    ![内部メンバーの追加](./media/active-directory-saas-central-desktop-tutorial/IC781053.png "内部メンバーの追加")
 
-    >[AZURE.NOTE] The users you have added will receive an email that includes a confirmation link they need to click to activate the account.
+    >[AZURE.NOTE] 追加したユーザーには、アカウントをアクティブ化するためにクリックする必要がある確認リンクが含まれた電子メールが送信されます。
 
->[AZURE.NOTE] You can use any other Central Desktop user account creation tools or APIs provided by Central Desktop to provision AAD user accounts
+>[AZURE.NOTE] Central Desktop から提供されている他の Central Desktop ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-central-desktop,-perform-the-following-steps:"></a>To assign users to Central Desktop, perform the following steps:
+###ユーザーを Central Desktop に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Central Desktop** application integration page, click **Assign users**.
+2.  **Central Desktop** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign users](./media/active-directory-saas-central-desktop-tutorial/IC769567.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-central-desktop-tutorial/IC769567.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-central-desktop-tutorial/IC767830.png "Yes")
 
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

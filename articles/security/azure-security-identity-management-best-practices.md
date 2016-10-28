@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Identity Management and Access Control Security Best Practices | Microsoft Azure"
-   description="This article provides a set of best practices for identity management and access control using built in Azure capabilities."
+   pageTitle="Azure の ID 管理と Access Control セキュリティのベスト プラクティス | Microsoft Azure"
+   description="この記事では、Azure の組み込み機能を利用した ID 管理とアクセス制御に関する一連のベスト プラクティスについて説明します。"
    services="security"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,128 +16,122 @@
    ms.date="08/16/2016"
    ms.author="yurid"/>
 
+# Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
-# <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure Identity Management and access control security best practices
+ID はセキュリティの新しい境界レイヤーであり、従来のネットワーク中心の観点からその役割を引き継ぐものであると一般に考えられています。セキュリティに関する注目と投資の主軸のこのような変化は、ネットワーク境界の侵入がますます容易になり、[BYOD](http://aka.ms/byodcg) デバイスとクラウド アプリケーションが爆発的に増加する前と比べて境界防御の有効性が低下しているという事実によるものです。
 
-Many consider identity to be the new boundary layer for security, taking over that role from the traditional network-centric perspective. This evolution of the primary pivot for security attention and investments come from the fact that network perimeters have become increasingly porous and that perimeter defense cannot be as effective as they once were prior to the explosion of [BYOD](http://aka.ms/byodcg) devices and cloud applications.
+この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。このベスト プラクティスは、[Azure AD](../active-directory/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
-In this article we will discuss a collection of Azure identity management and access control security best practices. These best practices are derived from our experience with [Azure AD](../active-directory/active-directory-whatis.md) and the experiences of customers like yourself.
+それぞれのベスト プラクティスについて、次の点を説明します。
 
-For each best practice, we’ll explain:
+- ベスト プラクティスの内容
+- そのベスト プラクティスをお勧めする理由
+- そのベスト プラクティスを実践しなかった場合に発生する可能性がある事態
+- そのベスト プラクティスに代わる対処法
+- そのベスト プラクティスを実践する方法
 
-- What the best practice is
-- Why you want to enable that best practice
-- What might be the result if you fail to enable the best practice
-- Possible alternatives to the best practice
-- How you can learn to enable the best practice
+この Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスの記事は、この記事の執筆時点における共通認識と、Azure プラットフォームの機能および機能セットに基づいています。共通認識とテクノロジは時間が経つにつれて変化するため、そのような変化に対応するために、この記事は定期的に更新されます。
 
-This Azure identity management and access control security best practices article is based on a consensus opinion and Azure platform capabilities and feature sets, as they exist at the time this article was written. Opinions and technologies change over time and this article will be updated on a regular basis to reflect those changes.
+この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスの次のような点について説明します。
 
-Azure identity management and access control security best practices discussed in this article include:
+- ID 管理を一元化する
+- シングル サインオン (SSO) を有効にする
+- パスワード管理をデプロイする
+- 多要素認証 (MFA) をユーザーに適用する
+- ロールベースのアクセス制御 (RBAC) を使用する
+- リソース マネージャーを使用してリソースが作成される場所を制御する
+- SaaS アプリの ID 機能を利用するよう開発者に指示する
+- 疑わしいアクティビティを能動的に監視する
 
-- Centralize your identity management
-- Enable Single Sign-On (SSO)
-- Deploy password management
-- Enforce multi-factor authentication (MFA) for users
-- Use role based access control (RBAC)
-- Control locations where resources are created using resource manager
-- Guide developers to leverage identity capabilities for SaaS apps
-- Actively monitor for suspicious activities
+## ID 管理を一元化する
 
-## <a name="centralize-your-identity-management"></a>Centralize your identity management
+ID のセキュリティ保護に向けた重要なステップの 1 つは、アカウントが作成された場所に関係なく、1 つの場所からアカウントを管理できるようにすることです。大半の企業の IT 組織では主要なアカウント ディレクトリがオンプレミスにありますが、ハイブリッド クラウドのデプロイが増えており、オンプレミスのディレクトリとクラウドのディレクトリを統合して、シームレスなエクスペリエンスをエンド ユーザーに提供する方法を理解しておくことが重要です。
 
-One important step towards securing your identity is to ensure that IT can manage accounts from one single location regarding where this account was created. While the majority of the enterprises IT organizations will have their primary account directory on-premises, hybrid cloud deployments are on the rise and it is important that you understand how to integrate on-premises and cloud directories and provide a seamless experience to the end user.
+この[ハイブリッド ID](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) シナリオを実現するには、2 つのオプションをお勧めします。
 
-To accomplish this [hybrid identity](../active-directory/active-directory-hybrid-identity-design-considerations-overview.md) scenario we recommend two options:
+- Azure AD Connect を使用して、オンプレミスのディレクトリとクラウドのディレクトリを同期する
+- [Active Directory フェデレーション サービス](https://msdn.microsoft.com/library/bb897402.aspx) (AD FS) を使用して、オンプレミスの ID とクラウドのディレクトリを統合する
 
-- Synchronize your on-premises directory with your cloud directory using Azure AD Connect
-- Federate your on-premises identity with your cloud directory using [Active Directory Federation Services](https://msdn.microsoft.com/library/bb897402.aspx) (AD FS)
+オンプレミスの ID とクラウドの ID を統合しないと、アカウント管理のオーバーヘッドが増加し、間違いやセキュリティ違反が発生する可能性が高くなります。
 
-Organizations that fail to integrate their on-premises identity with their cloud identity will experience increased administrative overhead in managing accounts, which increases the likelihood of mistakes and security breaches.
+Azure AD 同期の詳細については、「[オンプレミス ID と Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」をご覧ください。
 
-For more information on Azure AD synchronization, please read the article [Integrating your on-premises identities with Azure Active Directory](../active-directory/active-directory-aadconnect.md).
+## シングル サインオン (SSO) を有効にする
 
-## <a name="enable-single-sign-on-(sso)"></a>Enable Single Sign-On (SSO)
+管理対象のディレクトリが複数あると、IT 部門にとって管理上の問題となるだけでなく、複数のパスワードを覚えておく必要があるエンド ユーザーにとっても問題です。[SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) を使用することにより、ユーザーは、必要なリソースがオンプレミスまたはクラウドのどちらにあっても、同じ資格情報セットを使用してリソースにサインインしてアクセスできます。
 
-When you have multiple directories to manage, this becomes an administrative problem not only for IT, but also for end users that will have to remember multiple passwords. By using [SSO](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/) you will provide your users the ability of use the same set of credentials to sign-in and access the resources that they need, regardless where this resource is located on-premises or in the cloud.
+SSO を使用すると、ユーザーは Azure AD 内の組織アカウントに基づいて [SaaS アプリケーション](../active-directory/active-directory-appssoaccess-whatis.md)にアクセスできます。これは、Microsoft SaaS アプリだけでなく、[Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) や [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md) などの他のアプリにも当てはまります。[SAML ベースの ID](../active-directory/fundamentals-identity.md) プロバイダーとして Azure AD を使用するように、アプリケーションを構成できます。セキュリティ コントロールの目的で、Azure AD では、ユーザーに Azure AD を使用するアクセス権が付与されない限り、アプリケーションへのサインインを許可するトークンは発行されません。ユーザーに対してアクセスを直接許可することも、ユーザーがメンバーであるグループを介して許可することもできます。
 
-Use SSO to enable users to access their [SaaS applications](../active-directory/active-directory-appssoaccess-whatis.md) based on their organizational account in Azure AD. This is applicable not only for Microsoft SaaS apps, but also other apps, such as [Google Apps](../active-directory/active-directory-saas-google-apps-tutorial.md) and [Salesforce](../active-directory/active-directory-saas-salesforce-tutorial.md). Your application can be configured to use Azure AD as a [SAML-based identity](../active-directory/fundamentals-identity.md) provider. As a security control, Azure AD will not issue a token allowing them to sign into the application unless they have been granted access using Azure AD. You may grant access directly, or through a group that they are a member of.
+> [AZURE.NOTE] SSO を使用するかどうかにより、オンプレミスのディレクトリとクラウド ディレクトリの統合方法に影響があります。SSO が必要な場合、ディレクトリ同期は[同じサインオン エクスペリエンス](../active-directory/active-directory-aadconnect.md)だけを提供するので、フェデレーションを使用する必要があります。
 
-> [AZURE.NOTE] the decision to use SSO will impact how you integrate your on-premises directory with your cloud directory. If you want SSO, you will need to use federation, because directory synchronization will only provide [same sign-on experience](../active-directory/active-directory-aadconnect.md).
+ユーザーとアプリケーションに SSO を適用しないと、ユーザーは複数のパスワードを使用するようになり、パスワードを再利用したり、脆弱なパスワードを使用したりする可能性が高くなります。
 
-Organizations that do not enforce SSO for their users and applications are more exposed to scenarios where users will have multiple passwords which directly increases the likelihood of users reusing passwords or using weak passwords.
+Azure AD の SSO の詳細については、「[Azure AD Connect を使用した AD FS の管理とカスタマイズ](../active-directory/active-directory-aadconnect-federation-management.md)」をご覧ください。
 
-You can learn more about Azure AD SSO by reading the article [AD FS management and customizaton with Azure AD Connect](../active-directory/active-directory-aadconnect-federation-management.md).
+## パスワード管理をデプロイする
 
-## <a name="deploy-password-management"></a>Deploy password management
+複数のテナントがある場合、またはユーザーが[自分のパスワードをリセット](../active-directory/active-directory-passwords-update-your-own-password.md)できるようにする場合は、適切なセキュリティ ポリシーを使用して不適切な使用を防止することが重要です。Azure では、セルフ サービスのパスワード リセット機能を利用し、ビジネス ニーズに合わせてセキュリティ オプションをカスタマイズすることができます。
 
-In scenarios where you have multiple tenants or you want to enable users to [reset their own password](../active-directory/active-directory-passwords-update-your-own-password.md), it is important that you use appropriate security policies to prevent abuse. In Azure you can leverage the self-service password reset capability and customize the security options to meet your business requirements.
+ユーザーからフィードバックを収集し、これらの手順を実行したときの経験から学ぶことが特に重要です。ユーザーの経験を基にして、大きなグループへのデプロイで発生する可能性がある問題を軽減する詳細な計画を作成します。また、[パスワード リセット登録アクティビティ レポート](../active-directory/active-directory-passwords-get-insights.md)を使用して登録しているユーザーを監視することもお勧めします。
 
-It is particularly important to obtain feedback from these users and learn from their experiences as they try to perform these steps. Based on these experiences, elaborate a plan to mitigate potential issues that may occur during the deployment for a larger group. It is also recommended that you use the [Password Reset Registration Activity report](../active-directory/active-directory-passwords-get-insights.md) to monitor the users that are registering.
+サポートへのパスワード変更依頼をなくそうとしても、ユーザーが自分でパスワードをリセットできるようにすると、パスワードに関する問題のためのサービス デスクへの問い合わせ件数が増加する可能性があります。複数のテナントがある組織では、この種の機能を実装して、セキュリティ ポリシーで確立されたセキュリティ境界内でユーザーがパスワードをリセットできるようにする必要があります。
 
-Organizations that want to avoid password change support calls but do enable users to reset their own passwords are more susceptible to a higher call volume to the service desk due to password issues. In organizations that have multiple tenants, it is imperative that you implement this type of capability and enable users to perform password reset within security boundaries that were established in the security policy.
+パスワード リセットの詳細については、「[Password Management のデプロイとユーザー トレーニング](../active-directory/active-directory-passwords-best-practices.md)」をご覧ください。
 
-You can learn more about password reset by reading the article [Deploying Password Management and training users to use it](../active-directory/active-directory-passwords-best-practices.md).
+## 多要素認証 (MFA) をユーザーに適用する
 
-## <a name="enforce-multi-factor-authentication-(mfa)-for-users"></a>Enforce multi-factor authentication (MFA) for users
+[PCI DSS バージョン 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32) などの業界標準に準拠する必要がある組織では、多要素認証がユーザー認証のために必須の機能です。MFA を使用してユーザーを認証すると、業界標準に準拠するだけでなく、[Pass-the-Hash (PtH)](http://aka.ms/PtHPaper) などの資格情報盗難型の攻撃の緩和にも役立ちます。
 
-For organizations that need to be compliant with industry standards, such as [PCI DSS version 3.2](http://blog.pcisecuritystandards.org/preparing-for-pci-dss-32), multi-factor authentication is a must have capability for authenticate users. Beyond being compliant with industry standards, enforcing MFA to authenticate users can also help organizations to mitigate credential theft type of attack, such as [Pass-the-Hash (PtH)](http://aka.ms/PtHPaper).
+ユーザーに対する Azure MFA を有効にすると、ユーザーのサインインとトランザクションに新しいセキュリティ層が追加されます。この場合、ファイル サーバーまたは SharePoint Online 上にあるドキュメントにアクセスするトランザクションが発生する可能性があります。また、Azure MFA は不正に取得された資格情報によって組織データにアクセスされる危険を減らすためにも役立ちます。
 
-By enabling Azure MFA for your users, you are adding a second layer of security to user sign-ins and transactions. In this case, a transaction might be accessing a document located in a file server or in your SharePoint Online. Azure MFA also helps IT to reduce the likelihood that a compromised credential will have access to organization’s data.
+たとえば、ユーザーに Azure MFA を適用し、検証手段として電話またはテキスト メッセージを使用するように MFA を構成します。ユーザーの資格情報が侵害された場合でも、攻撃者はユーザーの電話にアクセスできないので、リソースにアクセスすることはできません。新しい ID 保護層を追加しない場合、資格情報盗用攻撃を受けやすくなり、データの侵害につながる可能性があります。
 
-For example: you enforce Azure MFA for your users and configure it to use a phone call or text message as verification. If the user’s credentials are compromised, the attacker won’t be able to access any resource since he will not have access to user’s phone. Organizations that do not add extra layers of identity protection are more susceptible for credential theft attack, which may lead to data compromise.
+認証全体をオンプレミスで管理する必要がある場合は、代わりに [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) (MFA オンプレミスとも呼ばれます) を利用できます。この手法を利用すると、オンプレミスに MFA サーバーを置いていても、多要素認証を適用することができます。
 
-One alternative for organizations that want to keep the entire authentication control on-premises is to use [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), also called MFA on-premises. By using this method you will still be able to enforce multi-factor authentication, while keeping the MFA server on-premises.
+Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」をご覧ください。
 
-For more information on Azure MFA, please read the article [Getting started with Azure Multi-Factor Authentication in the cloud](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+## ロールベースのアクセス制御 (RBAC) を使用する
 
-## <a name="use-role-based-access-control-(rbac)"></a>Use role based access control (RBAC)
+データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。Azure のロールベースのアクセス制御 (RBAC) を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。
 
-Restricting access based on the [need to know](https://en.wikipedia.org/wiki/Need_to_know) and [least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) security principles is imperative for organizations that want to enforce security policies for data access. Azure Role-Based Access Control (RBAC) can be used to assign permissions to users, groups, and applications at a certain scope. The scope of a role assignment can be a subscription, a resource group, or a single resource.
+Azure の[組み込み RBAC ロール](../active-directory/role-based-access-built-in-roles.md)を利用してユーザーに権限を割り当てることができます。クラウド事業者は、ストレージ アカウントを管理する必要がある場合は*ストレージ アカウント作成協力者*ロール、従来のストレージ アカウントを管理する場合は*従来のストレージ アカウント作成協力者*ロールの使用を検討してください。VM とストレージ アカウントを管理する必要があるクラウド事業者は、それを*仮想マシン作成協力者*ロールに追加することを検討してください。
 
-You can leverage [built in RBAC](../active-directory/role-based-access-built-in-roles.md) roles in Azure to assign privileges to users. Consider using *Storage Account Contributor* for cloud operators that need to manage storage accounts and *Classic Storage Account Contributor* role to manage classic storage accounts. For cloud operators that needs to manage VMs and storage account, consider adding them to *Virtual Machine Contributor* role.
+RBAC などの機能を利用したデータ アクセス制御を適用しない場合、ユーザーに必要以上の権限が付与される可能性があります。これにより、ユーザーがアクセスする必要のない種類のデータ (ビジネスへの影響が高いものなど) にアクセスできるようになり、データのセキュリティ侵害につながる恐れがあります。
 
-Organizations that do not enforce data access control by leveraging capabilities such as RBAC may be giving more privileges than necessary to their users. This can lead to data compromise by allow users access to certain types of types of data (e.g., high business impact) that they shouldn’t have in the first place.
+Azure RBAC の詳細については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」をご覧ください。
 
-You can learn more about Azure RBAC by reading the article [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md).
+## リソース マネージャーを使用してリソースが作成される場所を制御する
 
-## <a name="control-locations-where-resources-are-created-using-resource-manager"></a>Control locations where resources are created using resource manager
+クラウド事業者がタスクを実行できるようにする一方で、組織のリソースの管理に必要な規則に違反しないようにすることが、非常に重要です。リソースが作成される場所を制御する必要のある組織では、これらの場所をハード コードする必要があります。
 
-Enabling cloud operators to perform tasks while preventing them from breaking conventions that are needed to manage your organization's resources is very important. Organizations that want to control the locations where resources are created should hard code these locations.
+そのためには、明示的に拒否されるアクションまたはリソースが記述されている定義を含むセキュリティ ポリシーを作成できます。サブスクリプション、リソース グループ、個別リソースなど、任意の範囲でポリシー定義を割り当てます。
 
-To achieve this, organizations can create security policies that have definitions that describe the actions or resources that are specifically denied. You assign those policy definitions at the desired scope, such as the subscription, resource group, or an individual resource.
+> [AZURE.NOTE] これは RBAC と同じことではなく、実際には RBAC を利用して、リソースを作成する権限を持つユーザーを認証します。
 
-> [AZURE.NOTE] this is not the same as RBAC, it actually leverages RBAC to authenticate the users that have privilege to create those resources.
+適切なコスト センターが関連付けられている場合にだけ操作を許可し、それ以外の要求は拒否する場合も、[Azure Resource Manager](../resource-group-overview.md) を利用してカスタム ポリシーを作成します。
 
-Leverage [Azure Resource Manager](../resource-group-overview.md) to create custom policies also for scenarios where the organization wants to allow operations only when the appropriate cost center is associated; otherwise, they will deny the request.
+リソースの作成方法を制御しないと、ユーザーは必要量より多くのリソースを作成することによってサービスを不正使用する可能性が高くなります。リソースの作成プロセスを強化することは、マルチ テナントのシナリオをセキュリティ保護するための重要な手順です。
 
-Organizations that are not controlling how resources are created are more susceptible to users that may abuse the service by creating more resources than they need. Hardening the resource creation process is an important step to secure a multi-tenant scenario.
+Azure Resource Manager でのポリシー作成の詳細については、「[ポリシーを使用したリソース管理とアクセス制御](../resource-manager-policy.md)」をご覧ください。
 
-You can learn more about creating policies with Azure Resource Manager by reading the article [Use Policy to manage resources and control access](../resource-manager-policy.md).
+## SaaS アプリの ID 機能を利用するよう開発者に指示する
 
-## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>Guide developers to leverage identity capabilities for SaaS apps
+ユーザー ID は、オンプレミスのディレクトリまたはクラウド ディレクトリと統合できる [SaaS アプリ](https://azure.microsoft.com/marketplace/active-directory/all/)にユーザーがアクセスする多くのシナリオで利用されます。何よりもまず、開発者には、[Microsoft セキュリティ開発ライフサイクル (SDL)](https://www.microsoft.com/sdl/default.aspx) などの安全な方法を使用してアプリを開発することをお勧めします。Azure AD は、[OAuth 2.0](http://oauth.net/2/) や [OpenID Connect](http://openid.net/connect/) などの業界標準プロトコルをサポートする Identity as a Service と、さまざまなプラットフォーム向けのオープン ソース ライブラリを提供することで、開発者のために認証を簡素化します。
 
-User identity will be leveraged in many scenarios when users access [SaaS apps](https://azure.microsoft.com/marketplace/active-directory/all/) that can be integrated with on-premises or cloud directory. First and foremost, we recommend that developers use a secure methodology to develop these apps, such as [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Azure AD simplifies authentication for developers by providing identity as a service, with support for industry-standard protocols such as [OAuth 2.0](http://oauth.net/2/) and [OpenID Connect](http://openid.net/connect/), as well as open source libraries for different platforms.
+Azure AD に認証を委託するすべてのアプリケーションを登録してください。これは必須の手順です。なぜなら、サインオン (SSO) を処理するとき、またはトークンを交換するときに、Azure AD はアプリケーションとの通信を調整する必要があるためです。Azure AD によって発行されたトークンの有効期間が終了すると、ユーザーのセッションの有効期限が切れます。アプリケーションでこの時間を使用する必要があるか、またはこの時間を短縮できるかを、常に評価する必要があります。有効期間の短縮は、非アクティブな時間に基づいてユーザーを強制的にサインアウトさせるセキュリティ手段として利用できます。
 
-Make sure to register any application that outsources authentication to Azure AD, this is a mandatory procedure. The reason behind this is because Azure AD needs to coordinate the communication with the application when handling sign-on (SSO) or exchanging tokens. The user’s session expires when the lifetime of the token issued by Azure AD expires. Always evaluate if your application should use this time or if you can reduce this time. Reducing the lifetime can act as a security measure that will force users to sign out based on a period of inactivity.
+アプリへのアクセスに対して ID 管理を適用せず、アプリと ID 管理システムを安全に統合する方法を開発者に示さないと、[Open Web Application Security Project (OWASP) の上位 10 項目で説明されている弱い認証とセッション管理](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet)のような資格情報盗難型の攻撃を受けやすくなる可能性があります。
 
-Organizations that do not enforce identity control to access apps and do not guide their developers on how to securely integrate apps with their identity management system may be more susceptible to credential theft type of attack, such as [weak authentication and session management described in Open Web Application Security Project (OWASP) Top 10](https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet).
+SaaS アプリの認証シナリオの詳細については、「[Azure AD の認証シナリオ](../active-directory/active-directory-authentication-scenarios.md)」をご覧ください。
 
-You can learn more about authentication scenarios for SaaS apps by reading [Authentication Scenarios for Azure AD](../active-directory/active-directory-authentication-scenarios.md).
+## 疑わしいアクティビティを能動的に監視する
 
-## <a name="actively-monitor-for-suspicious-activities"></a>Actively monitor for suspicious activities
+[Verizon の 2016 データ侵害レポート](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/)によると、資格情報の侵害はまだ増加しており、サイバー犯罪者が最も利益を得やすいビジネスの 1 つになっています。そのため、疑わしい活動をすばやく検出して詳しい調査のためのアラートをトリガーできる能動的な ID 監視システムを設けることが重要です。Azure AD には ID の監視に役立つ 2 つの主要な機能があります。Azure AD Premium の[異常レポート](../active-directory/active-directory-view-access-usage-reports.md)と、Azure AD [Identity Protection](../active-directory/active-directory-identityprotection.md) 機能です。
 
-According to [Verizon 2016 Data Breach report](http://www.verizonenterprise.com/verizon-insights-lab/dbir/2016/), credential compromise is still in the rise and becoming one of the most profitable businesses for cyber criminals. For this reason is important to have an active identity monitor system in place that can quickly detect suspicious behavior activity and trigger an alert for further investigation. Azure AD has two major capabilities that can help organizations monitor their identities: Azure AD Premium [anomaly reports](../active-directory/active-directory-view-access-usage-reports.md) and Azure AD [identity protection](../active-directory/active-directory-identityprotection.md) capability.
+異常レポートを使用して、[追跡されない](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md)サインインの試行、特定のアカウントに対する[ブルート フォース](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md)攻撃、複数の場所からのサインインの試行、[感染したデバイス](../active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices.md)からのサインイン、疑わしい IP アドレスを、検出する必要があります。これらはレポートであることに注意してください。つまり、IT 管理者がこれらのレポートを毎日または必要に応じて (通常はインシデント対応シナリオ) 実行するためのプロセスと手順を設ける必要があります。
 
-Make sure to use the anomaly reports to identify attempts to sign in [without being traced](../active-directory/active-directory-reporting-sign-ins-from-unknown-sources.md), [brute force](../active-directory/active-directory-reporting-sign-ins-after-multiple-failures.md) attacks against a particular account, attempts to sign in from multiple locations, sign in from [infected devices](../active-directory/active-directory-reporting-sign-ins-from-possibly-infected-devices.md) and suspicious IP addresses. Keep in mind that these are reports. In other words, you must have processes and procedures in place for IT admins to run these reports on the daily basis or on demand (usually in an incident response scenario).
+一方、Azure AD Identity Protection は能動的な監視システムであり、独自のダッシュボードに現在のリスクが表示されます。さらに、毎日電子メールで概要の通知も送られます。ビジネス ニーズに合わせて、リスク レベルを調整することをお勧めします。リスク イベントのリスク レベルは、リスク イベントの重大度 (高、中、低) を示します。リスク レベルは、Identity Protection のユーザーが組織に対するリスクの軽減に必要なアクションの優先順位を決定するときの参考になります。
 
-In contrast, Azure AD identity protection is an active monitoring system and it will flag the current risks on its own dashboard. Besides that, you will also receive daily summary notifications via email. We recommend that you adjust the risk level according to your business requirements. The risk level for a risk event is an indication (High, Medium, or Low) of the severity of the risk event. The risk level helps Identity Protection users prioritize the actions they must take to reduce the risk to their organization.
+ID システムを能動的に監視しないと、ユーザーの資格情報が侵害されるリスクがあります。侵害された資格情報を用いた疑わしい活動が行われていることを把握しないと、この種の脅威を緩和することはできません。Azure Identity Protection の詳細については、「[Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)」をご覧ください。
 
-Organizations that do not actively monitor their identity systems are at risk of having user credentials compromised. Without knowledge that suspicious activities are taking place using these credentials, organizations won’t be able to mitigate this type of threat.
-You can learn more about Azure Identity protection by reading [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

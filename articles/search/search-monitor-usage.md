@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Monitor usage and statistics in an Azure Search service | Microsoft Azure | Hosted cloud search service" 
-   description="Track resource consumption and index size for Azure Search, a hosted cloud search service on Microsoft Azure." 
+   pageTitle="Azure Search サービスでの使用状況と統計の監視 | Microsoft Azure | ホスト型クラウド検索サービス" 
+   description="Microsoft Azure のホスト型クラウド検索サービスである Azure Search のリソース使用量とインデックス サイズを追跡記録します。" 
    services="search" 
    documentationCenter="" 
    authors="HeidiSteen" 
@@ -17,40 +17,39 @@
    ms.date="05/17/2016"
    ms.author="heidist"/>
 
+# Azure Search サービスでの使用状況と統計の監視
 
-# <a name="monitor-usage-and-statistics-in-an-azure-search-service"></a>Monitor usage and statistics in an Azure Search service
+インデックスとドキュメントのサイズの増加率を追跡することで、サービスに設定した上限に達する前に、容量を事前に調整することができます。
 
-Tracking the growth of indexes and document size can help you proactively adjust capacity before hitting the upper limit you've established for your service. 
+リソースの使用状況を監視するために、サービスの数値と統計を [Azure ポータル](https://portal.azure.com)で簡単に表示できます。カスタム サービス管理ツールを作成すれば、情報をプログラムから取得することもできます。この記事では、この両方の手法について手順を説明します。
 
-To monitor resource usage, counts and statistics for your service are easily viewed in the [Azure Portal](https://portal.azure.com), but you can also obtain the information programmatically if you are building a custom service administration tool. This article covers the steps for both techniques.
+新しい検索トラフィック分析機能を使用して、インデックス レベルでアクティビティの詳細を把握することもできます。詳細については、「[Azure Search の検索トラフィックの分析](search-traffic-analytics.md)」を参照してください。
 
-You can also use the new search traffic analytics feature for insights into activity at the index level. Visit [Search Traffic Analytics for Azure Search](search-traffic-analytics.md) to get started.
+##ポータルでの数値とメトリックの表示 
 
-##<a name="view-counts-and-metrics-in-the-portal"></a>View counts and metrics in the portal 
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-1. Sign in to the [Azure Portal](https://portal.azure.com). 
+2. Azure Search サービスのサービス ダッシュボードを開きます。[ホーム] ページに、サービスのタイルが表示されます。またはジャンプ バーの [参照] で、サービスを参照することもできます。詳細な手順については、「[Create an Azure Search service in the portal](search-create-service-portal.md)」を参照してください。
 
-2. Open the service dashboard of your Azure Search service. Tiles for the service can be found on the Home page, or you can browse to the service from Browse on the JumpBar. See [Create a service](search-create-service-portal.md) for step-by-step instructions.
-
-The Usage section includes a meter that tells you what portion of available resources are currently in use.
+[使用] セクションには、使用可能なリソースのうち、現在使用中の割合を示すメーターがあります。
 
   ![][1]
 
-Recall that the shared service has a maximum of one replica and partition each. Additionally, it can only support 10,000 documents in total or 50 MB of data, whichever comes first.
+共有サービスのレプリカとパーティションは、それぞれ最大で 1 つであることに注意してください。また、サポート可能であるのは、合計 10,000 のドキュメントまたは 50 MB のデータまで (いずれかの先に達した方まで) です。
 
-##<a name="get-index-statistics-using-the-rest-api"></a>Get index statistics using the REST API
+##REST API を使用したインデックス統計情報の取得
 
-Both the Azure Search REST API and the .NET SDK provide programmatic access to service metrics.  If you are using [indexers](https://msdn.microsoft.com/library/azure/dn946891.aspx) to load an index from Azure SQL Database or DocumentDB, an additional API is available to get the numbers you require. 
+Azure Search REST API または .NET SDK を使用することにより、プログラムからサービス メトリックにアクセスできます。[インデクサー](https://msdn.microsoft.com/library/azure/dn946891.aspx)を使用して Azure SQL Database または DocumentDB からのインデックスの読み込む際には、必要な数値を取得するために追加されている API を使用できます。
 
-  + [Get Index Statistics](https://msdn.microsoft.com/library/azure/dn798942.aspx)
-  + [Count Documents](https://msdn.microsoft.com/library/azure/dn798924.aspx)
-  + [Get Indexer Status](https://msdn.microsoft.com/library/azure/dn946884.aspx)
+  + [インデックス統計の取得](https://msdn.microsoft.com/library/azure/dn798942.aspx)
+  + [ドキュメントの数](https://msdn.microsoft.com/library/azure/dn798924.aspx)
+  + [インデクサーの状態の取得](https://msdn.microsoft.com/library/azure/dn946884.aspx)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Review [Limits and capacity](search-limits-quotas-capacity.md) to determine the combination of partitions and replicas you'll need if existing capacity is insufficient. 
+「[制限および制約](search-limits-quotas-capacity.md)」を参照して、既存の容量が不十分である場合は、必要とされるパーティションとレプリカの組み合わせについて判断します。
 
-Visit [Manage your Search service on Microsoft Azure](search-manage.md) for more information on service administration.
+サービス管理の詳細については、「[Microsoft Azure で検索サービスを管理する](search-manage.md)」を参照してください。
 
 <!--Image references-->
 [1]: ./media/search-monitor-usage/AzureSearch-Monitor1.PNG
@@ -60,8 +59,4 @@ Visit [Manage your Search service on Microsoft Azure](search-manage.md) for more
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

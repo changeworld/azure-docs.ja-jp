@@ -1,11 +1,9 @@
-- **PolicyBased:** PolicyBased VPNs were previously called static routing gateways in the classic deployment model. Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies configured with the combinations of address prefixes between your on-premises network and the Azure VNet. The policy (or traffic selector) is usually defined as an access list in the VPN device configuration. The value for a PolicyBased VPN type is *PolicyBased*. When using a PolicyBased VPN, keep in mind the following limitations:
+- **PolicyBased:** PolicyBased VPN は、以前は (クラシック デプロイ モデルでは) 静的ルーティング ゲートウェイと呼ばれていました。PolicyBased VPN では、パケットを暗号化し、オンプレミス ネットワークと Azure VNet の間でアドレスのプレフィックスの組み合わせで構成された IPsec ポリシーに基づいて、IPsec トンネル経由でそのパケットを送信します。ポリシー (またはトラフィック セレクター) は、通常、VPN デバイスの構成でアクセス リストとして定義されます。PolicyBased VPN の種類の値は *PolicyBased* です。PolicyBased VPN を使用する場合は、次の制限事項に留意してください。
 
-    - PolicyBased VPNs can **only** be used on the Basic gateway SKU. This VPN type is not compatible with other gateway SKUs.
-    - You can have only 1 tunnel when using a PolicyBased VPN.
-    - You can only use PolicyBased VPNs for S2S connections, and only for certain configurations. Most VPN Gateway configurations require a RouteBased VPN.
+	- PolicyBased VPN は、Basic ゲートウェイ SKU **でのみ**使用できます。この種類の VPN には、その他のゲートウェイの SKU との互換性はありません。
+	- PolicyBased VPN を使用する場合、設定できるトンネルは 1 つ だけです。
+	- PolicyBased VPN は S2S 接続でのみ使用でき、また使用できる構成も特定のものに限られています。ほとんどの VPN Gateway 構成では、RouteBased VPN が必要です。
 
-- **RouteBased**: RouteBased VPNs were previously called dynamic routing gateways in the classic deployment model. RouteBased VPNs use "routes" in the IP forwarding or routing table to direct packets into their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy (or traffic selector) for RouteBased VPNs are configured as any-to-any (or wild cards). The value for a RouteBased VPN type is *RouteBased*.
+- **RouteBased**: RouteBased VPN は、以前は (クラシック デプロイ モデルでは) 動的ルーティング ゲートウェイと呼ばれていました。RouteBased VPN は、IP 転送やルーティング テーブルの "ルート" を使用して、対応するトンネル インターフェイスにパケットを直接送信します。その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。RouteBased VPN のポリシーまたはトラフィック セレクターは、任意の環境間 (またはワイルドカード) として構成できます。RouteBased VPN の種類の値は *RouteBased* です。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,391 +1,384 @@
 <properties
-    pageTitle="Replicate Hyper-V virtual machines in VMM clouds to Azure | Microsoft Azure"
-    description="This article describes how to replicate Hyper-V virtual machines on Hyper-V hosts located in System Center VMM clouds to Azure."
-    services="site-recovery"
-    documentationCenter=""
-    authors="rayne-wiselman"
-    manager="jwhit"
-    editor=""/>
+	pageTitle="VMM クラウド内の Hyper-V 仮想マシンを Azure にレプリケートする | Microsoft Azure"
+	description="この記事では、System Center VMM クラウドに置かれている Hyper-V ホストの Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。"
+	services="site-recovery"
+	documentationCenter=""
+	authors="rayne-wiselman"
+	manager="jwhit"
+	editor=""/>
 
 <tags
-    ms.service="site-recovery"
-    ms.workload="backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.date="05/06/2016"
-    ms.author="raynew"/>
+	ms.service="site-recovery"
+	ms.workload="backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="hero-article"
+	ms.date="05/06/2016"
+	ms.author="raynew"/>
 
-
-#  <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure"></a>Replicate Hyper-V virtual machines in VMM clouds to Azure
+#  VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
 
 > [AZURE.SELECTOR]
-- [Azure Portal](site-recovery-vmm-to-azure.md)
+- [Azure ポータル](site-recovery-vmm-to-azure.md)
 - [PowerShell - ARM](site-recovery-vmm-to-azure-powershell-resource-manager.md)
-- [Classic Portal](site-recovery-vmm-to-azure-classic.md)
-- [PowerShell - Classic](site-recovery-deploy-with-powershell.md)
+- [クラシック ポータル](site-recovery-vmm-to-azure-classic.md)
+- [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
 
 
 
-The Azure Site Recovery service contributes to your business continuity and disaster recovery (BCDR) strategy by orchestrating replication, failover and recovery of virtual machines and physical servers. Machines can be replicated to Azure, or to a secondary on-premises data center. For a quick overview read [What is Azure Site Recovery?](site-recovery-overview.md).
+Azure Site Recovery サービスは、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、復旧を調整してビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。コンピューターを Azure に、またはオンプレミスのセカンダリ データ センターにレプリケートできます。簡単な概要については、「[Azure Site Recovery とは](site-recovery-overview.md)」を参照してください。
 
-## <a name="overview"></a>Overview
+## 概要
 
-This article describes how to deploy Site Recovery to replicate Hyper-V virtual machines on Hyper-V host servers that are located in VMM private clouds to Azure.
+この記事では、Site Recovery をデプロイすることで、VMM プライベート クラウドに配置されている Hyper-V ホスト サーバーの Hyper-V 仮想マシンを Azure にレプリケートする方法について説明します。
 
-The article includes prerequisites for the scenario and shows you how to set up a Site Recovery vault, get the Azure Site Recovery Provider installed on the source VMM server, register the server in the vault, add an Azure storage account, install the Azure Recovery Services agent on Hyper-V host servers, configure protection settings for VMM clouds that will be applied to all protected virtual machines, and then enable protection for those virtual machines. Finish up by testing the failover to make sure everything's working as expected.
+この記事には、シナリオの前提条件が含まれています。また、Site Recovery コンテナーを設定する方法、ソース VMM サーバーに Azure Site Recovery プロバイダーをインストールする方法、このコンテナーにサーバーを登録する方法、Azure ストレージ アカウントを追加する方法、Hyper-V ホスト サーバーに Azure Recovery Services エージェントをインストールする方法、保護されるすべての仮想マシンに適用される VMM クラウドの保護設定を構成する方法、およびこれらの仮想マシンの保護を有効にする方法についても説明しています。すべてが正しく動作していることを確認するために、最後にフェールオーバーをテストします。
 
-Post any comments or questions at the bottom of this article, or on the [Azure Recovery Services Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr).
+コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
 
-## <a name="architecture"></a>Architecture
+## アーキテクチャ
 
-![Architecture](./media/site-recovery-vmm-to-azure-classic/topology.png)
+![アーキテクチャ](./media/site-recovery-vmm-to-azure-classic/topology.png)
 
-- The Azure Site Recovery Provider is installed on the VMM during Site Recovery deployment and the VMM server is registered in the Site Recovery vault. The Provider communicates with Site Recovery to handle replication orchestration.
-- The Azure Recovery Services agent is installed on Hyper-V host servers during Site Recovery deployment. It handles data replication to Azure storage.
+- Azure Site Recovery プロバイダーは Site Recovery のデプロイ中に VMM にインストールされます。VMM サーバーは Site Recovery コンテナーに登録されます。このプロバイダーは、Site Recovery と通信してレプリケーションのオーケストレーションを処理します。
+- Azure Recovery Services エージェントは Site Recovery のデプロイ中に Hyper-V ホスト サーバーにインストールされます。Azure ストレージへのデータ レプリケーションを処理します。
 
 
-## <a name="azure-prerequisites"></a>Azure prerequisites
+## Azure の前提条件
 
-Here's what you'll need in Azure.
+Azure で必要なものを次に示します。
 
-**Prerequisite** | **Details**
+**前提条件** | **詳細**
 --- | ---
-**Azure account**| You'll need a [Microsoft Azure](https://azure.microsoft.com/) account. You can start with a [free trial](https://azure.microsoft.com/pricing/free-trial/). [Learn more](https://azure.microsoft.com/pricing/details/site-recovery/) about Site Recovery pricing.
-**Azure storage** | You'll need an Azure storage account to store replicated data. Replicated data is stored in Azure storage and Azure VMs are spun up when failover occurs. <br/><br/>You need a [standard geo-redundant storage account](../storage/storage-redundancy.md#geo-redundant-storage). The account must in the same region as the Site Recovery service, and be associated with the same subscription. Note that replication to premium storage accounts isn't currently supported and shouldn't be used.<br/><br/>[Read about](../storage/storage-introduction.md) Azure storage.
-**Azure network** | You'll need an Azure virtual network that Azure VMs will connect to when failover occurs. The Azure virtual network must be in the same region as the Site Recovery vault.
+**Azure アカウント**| [Microsoft Azure](https://azure.microsoft.com/) のアカウントが必要です。アカウントがなくても、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)を使用できます。Site Recovery の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/site-recovery/)をご覧ください。
+**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要になります。レプリケートされたデータは Azure Storage に格納され、フェールオーバーが発生すると、Azure VM はスピンアップされます。<br/><br/>[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要になります。アカウントは Site Recovery サービスと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。Premium Storage アカウントへのレプリケーションは現在サポートされていないため、使用しないでください。<br/><br/>Azure Storage については[こちら](../storage/storage-introduction.md)を参照してください。
+**Azure ネットワーク** | フェールオーバーが発生した場合に Azure VM が接続する Azure 仮想ネットワークが必要です。Azure の仮想ネットワークは、Site Recovery コンテナーと同じリージョンに置かれている必要があります。
 
-## <a name="on-premises-prerequisites"></a>On-premises prerequisites
+## オンプレミスの前提条件
 
-Here's what you'll need on-premises.
+オンプレミスで必要なものを次に示します。
 
-**Prerequisite** | **Details**
+**前提条件** | **詳細**
 --- | ---
-**VMM** | You'll need at least one VMM server deployed as a physical or virtual standalone server, or as a virtual cluster. <br/><br/>The VMM server should be running System Center 2012 R2 with the latest cumulative updates.<br/><br/>You'll need at least one cloud configured on the VMM server.<br/><br/>The source cloud that you want to protect must contain one or more VMM host groups.<br/><br/>Learn more about setting up VMM clouds in [Walkthrough: Creating private clouds with System Center 2012 SP1 VMM](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx) on Keith Mayer's blog.
-**Hyper-V** | You'll need one or more Hyper-V host servers or clusters in the VMM cloud. The host server should have and one or more VMs. <br/><br/>The Hyper-V server must be running on at least Windows Server 2012 R2 with the Hyper-V role and have the latest updates installed.<br/><br/>Any Hyper-V server containing VMs you want to protect must be located in a VMM cloud.<br/><br/>If you're running Hyper-V in a cluster note that cluster broker isn't created automatically if you have a static IP address-based cluster. You'll need to configure the cluster broker manually. [Learn more](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters) in Aidan Finn's blog entry.
-**Protected machines** | VMs you want to protect should comply with [Azure requirements](site-recovery-best-practices.md#azure-virtual-machine-requirements).
+**VMM** | 少なくとも 1 台の VMM サーバーを、物理または仮想スタンドアロン サーバーとして、または仮想クラスターとしてデプロイする必要があります。<br/><br/>VMM サーバーでは最新の累積的な更新プログラムが適用された System Center 2012 R2 を実行する必要があります。<br/><br/>VMM サーバー上で構成されたクラウドが少なくとも 1 つ必要になります。<br/><br/>保護するソース クラウドには 1 つ以上の VMM ホスト グループを含める必要があります。<br/><br/>VMM クラウドのセットアップ方法の詳細については、Keith Mayer のブログにある「[Walkthrough: Creating private clouds with System Center 2012 SP1 VMM (チュートリアル: System Center 2012 SP1 VMM でプライベート クラウドを作成する)](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)」を参照してください。
+**Hyper-V** | VMM クラウド内に 1 つ以上の Hyper-V ホスト サーバーまたはクラスターが必要です。ホスト サーバーは 1 つ以上の VM を備えている必要があります。<br/><br/>Hyper-V サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 R2 以降が実行されている必要があります。<br/><br/>保護する VM を含む Hyper-V サーバーは VMM クラウドに配置されている必要があります。<br/><br/>Hyper-V をクラスターで実行する場合、静的 IP アドレス ベースのクラスターがあると、クラスター ブローカーは自動的に作成されないことに注意してください。クラスター ブローカーを手動で構成する必要があります。詳細については、[Aidan Finn のブログ記事](https://www.petri.com/use-hyper-v-replica-broker-prepare-host-clusters)を参照してください。
+**保護されたマシン** | 保護する VM は [Azure の要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)を満たしている必要があります。
 
 
-## <a name="network-mapping-prerequisites"></a>Network mapping prerequisites
-When you protect virtual machines in Azure network mapping maps between VM networks on the source VMM server and target Azure networks to enable the following:
+## ネットワーク マッピングの前提条件
+仮想マシンを Azure ネットワーク マッピングで保護する場合、ソース VMM サーバー上の VM ネットワークとターゲットの Azure ネットワークをマップして以下を実現します。
 
-- All machines which failover on the same network can connect to each other, irrespective of which recovery plan they are in.
-- If a network gateway is setup on the target Azure network, virtual machines can connect to other on-premises virtual machines.
-- If you don’t configure network mapping only virtual machines that fail over in the same recovery plan will be able to connect to each other after failover to Azure.
+- 同じネットワーク上でフェールオーバーするすべてのマシンは、どの復旧計画に含まれていても、相互に接続できる。
+- ターゲットの Azure ネットワークでネットワーク ゲートウェイをセットアップすると、仮想マシンを他のオンプレミスの仮想マシンに接続できる。
+- ネットワーク マッピングを構成しない場合、Azure へのフェールオーバー後、同じ復旧計画でフェールオーバーする仮想マシンのみ相互に接続できる。
 
-If you want to deploy network mapping you'll need the following:
+ネットワーク マッピングをデプロイする場合は、以下のことが必要になります。
 
-- The virtual machines you want to protect on the source VMM server should be connected to a VM network. That network should be linked to a logical network that is associated with the cloud.
-- An Azure network to which replicated virtual machines can connect after failover. You'll select this network at the time of failover. The network should be in the same region as your Azure Site Recovery subscription.
+- ソース VMM サーバー上の保護する仮想マシンが VM ネットワークに接続している。そのネットワークは、クラウドに関連付けられた論理ネットワークにリンクされている必要があります。
+- レプリケートされた仮想マシンがフェールオーバー後に接続できる Azure ネットワーク。フェールオーバー時にこのネットワークを選択します。ネットワークは Azure Site Recovery サブスクリプションと同じリージョンにある必要があります。
 
-Prepare for network mapping as follows:
+次の手順に従ってネットワーク マッピングの準備をします。
 
-1. [Read about](site-recovery-network-mapping.md) network mapping requirements.
-2. Prepare VM networks in VMM:
+1. ネットワーク マッピングの要件については、[こちらの記事](site-recovery-network-mapping.md)を参照してください。
+2. VMM で VM ネットワークを準備します。
 
-    - [Set up logical networks](https://technet.microsoft.com/library/jj721568.aspx).
-    - [Set up VM networks](https://technet.microsoft.com/library/jj721575.aspx).
+	- [論理ネットワークを設定](https://technet.microsoft.com/library/jj721568.aspx)します。
+	- [VM ネットワークを設定](https://technet.microsoft.com/library/jj721575.aspx)します。
 
 
-## <a name="step-1:-create-a-site-recovery-vault"></a>Step 1: Create a Site Recovery vault
+## ステップ 1: Site Recovery コンテナーを作成する
 
-1. Sign in to the [Management Portal](https://portal.azure.com) from the VMM server you want to register.
-2. Click **Data Services** > **Recovery Services** > **Site Recovery Vault**.
-3. Click **Create New** > **Quick Create**.
-4. In **Name**, enter a friendly name to identify the vault.
-5. In **Region**, select the geographic region for the vault. To check supported regions see Geographic Availability in [Azure Site Recovery Pricing Details](https://azure.microsoft.com/pricing/details/site-recovery/).
-6. Click **Create vault**.
+1. 登録する VMM サーバーから[管理ポータル](https://portal.azure.com)にサインインします。
+2. **[Data Services]**、**[Recovery Services]** の順に展開し、**[Site Recovery コンテナー]** をクリックします。
+3. **[新規作成]**、**[簡易作成]** の順にクリックします。
+4. **[名前]** ボックスに、コンテナーを識別する表示名を入力します。
+5. **[リージョン]** ボックスで、コンテナーのリージョンを選択します。サポートされているリージョンを確認するには、「[Azure Site Recovery Pricing Details (Azure Site Recovery の料金の詳細)](https://azure.microsoft.com/pricing/details/site-recovery/)」で利用可能地域をご覧ください。
+6. **[コンテナーの作成]** をクリックします。
 
-    ![New Vault](./media/site-recovery-vmm-to-azure-classic/create-vault.png)
+	![新しいコンテナー](./media/site-recovery-vmm-to-azure-classic/create-vault.png)
 
-Check the status bar to confirm that the vault was successfully created. The vault will be listed as **Active** on the main Recovery Services page.
+ステータス バーを確認して、コンテナーが正常に作成されたことを確かめます。メイン [復旧サービス] ページで、コンテナーは **[アクティブ]** と表示されています。
 
-## <a name="step-2:-generate-a-vault-registration-key"></a>Step 2: Generate a vault registration key
+## ステップ 2: コンテナー登録キーを生成する
 
-Generate a registration key in the vault. After you download the Azure Site Recovery Provider and install it on the VMM server, you'll use this key to register the VMM server in the vault.
+コンテナーの登録キーを生成します。Azure Site Recovery プロバイダーをダウンロードして VMM サーバーにインストールした後で、このキーを使用して、VMM サーバーをコンテナーに登録します。
 
-1. In the **Recovery Services** page, click the vault to open the Quick Start page. Quick Start can also be opened at any time using the icon.
+1. **[復旧サービス]** ページで、コンテナーをクリックして [クイック スタート] ページを開きます。[クイック スタート] は、アイコンを使っていつでも開くことができます。
 
-    ![Quick Start Icon](./media/site-recovery-vmm-to-azure-classic/qs-icon.png)
+	![[クイック スタート] アイコン](./media/site-recovery-vmm-to-azure-classic/qs-icon.png)
 
-2. In the dropdown list, select **Between an on-premises VMM site and Microsoft Azure**.
-3. In **Prepare VMM Servers**, click **Generate registration key** file. The key file is generated automatically and is valid for 5 days after it's generated. If you're not accessing the Azure portal from the VMM server you'll need to copy this file to the server.
+2. ドロップダウン リストで、**[オンプレミスの VMM サイトと Microsoft Azure 間]** を選択します。
+3. **[VMM サーバーの準備]** で、**[登録キーの生成]** ファイルをクリックします。キー ファイルは自動的に生成され、生成後 5 日間有効です。VMM サーバーから Azure ポータルにアクセスしていない場合は、このファイルをサーバーにコピーする必要があります。
 
-    ![Registration key](./media/site-recovery-vmm-to-azure-classic/register-key.png)
+	![登録キー](./media/site-recovery-vmm-to-azure-classic/register-key.png)
 
-## <a name="step-3:-install-the-azure-site-recovery-provider"></a>Step 3: Install the Azure Site Recovery Provider
+## ステップ 3: Azure Site Recovery プロバイダーをインストールする
 
-1. In **Quick Start** > **Prepare VMM servers**, click **Download Microsoft Azure Site Recovery Provider for installation on VMM servers** to obtain the latest version of the Provider installation file.
-2. Run this file on the source VMM server.
+1. **[クイック スタート]** の **[VMM サーバーの準備]** で、**[VMM サーバーにインストールする Microsoft Azure Site Recovery プロバイダーのダウンロード]** をクリックして、最新バージョンのプロバイダー インストール ファイルを取得します。
+2. ソース VMM サーバーでこのファイルを実行します。
 
-    >[AZURE.NOTE] If VMM is deployed in a cluster and you're installing the Provider for the first time install it on an active node and finish the installation to register the VMM server in the vault. Then install the Provider on the other nodes. Note that if you're upgrading the Provider you'll need to upgrade on all nodes because they should all be running the same Provider version.
-    
-3. The Installer does a prerequirements check and requests permission to stop the VMM service to begin Provider setup. The VMM Service will be restarted automatically when setup finishes. If you're installing on a VMM cluster you'll be prompted to stop the Cluster role.
+	>[AZURE.NOTE] プロバイダーを初めてインストールするときに、VMM がクラスターにデプロイされている場合は、プロバイダーをアクティブなノードにインストールします。インストールが終了したら、VMM サーバーをコンテナーに登録します。次に、プロバイダーを他のノードにインストールします。プロバイダーをアップグレードする場合は、すべてのノードでアップグレードする必要があります。これは、すべてのノードで同じバージョンのプロバイダーを実行する必要があるためです。
+	
+3. インストーラーによって前提条件チェックが実行され、プロバイダーのセットアップを開始するために VMM サービスを停止するアクセス許可が要求されます。セットアップが完了すると、VMM サービスは自動的に再起動されます。VMM クラスターにインストールしている場合は、クラスター ロールを停止するよう求められます。
 
-4. In **Microsoft Update** you can opt in for updates. With this setting enabled Provider updates will be installed according to your Microsoft Update policy.
+4. **[Microsoft Update]** で、アップデートの内容を設定できます。この設定を行うことで、設定した Microsoft Update のポリシーに従って、プロバイダーの有効な更新がインストールされます。
 
-    ![Microsoft Updates](./media/site-recovery-vmm-to-azure-classic/updates.png)
+	![Microsoft 更新プログラム](./media/site-recovery-vmm-to-azure-classic/updates.png)
 
 
-5.  The install location for the Provider is set to **<SystemDrive>\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin**. Click **Install**.
+5.  プロバイダーのインストール場所は、**<SystemDrive>\\Program Files\\Microsoft System Center 2012 R2\\Virtual Machine Manager\\bin** に設定されています。**[インストール]** をクリックします。
 
-    ![InstallLocation](./media/site-recovery-vmm-to-azure-classic/install-location.png)
+	![InstallLocation](./media/site-recovery-vmm-to-azure-classic/install-location.png)
 
-6. After the Provider is installed click **Register** to register the server in the vault.
+6. プロバイダーがインストールされたら、**[登録]** をクリックしてサーバーをコンテナーに登録します。
 
-    ![InstallComplete](./media/site-recovery-vmm-to-azure-classic/install-complete.png)
+	![InstallComplete](./media/site-recovery-vmm-to-azure-classic/install-complete.png)
 
-9. In **Vault name**, verify the name of the vault in which the server will be registered. Click *Next*.
+9. **[コンテナー名]** で、サーバーが登録されるコンテナーの名前を確認します。*[次へ]* をクリックします。
 
-    ![Server registration](./media/site-recovery-vmm-to-azure-classic/vaultcred.PNG)
+	![サーバー登録](./media/site-recovery-vmm-to-azure-classic/vaultcred.PNG)
 
-7. In **Internet Connection** specify how the Provider running on the VMM server connects to the Internet. Select **Connect with existing proxy settings** to use the default Internet connection settings configured on the server.
+7. **[インターネット接続]** で、VMM サーバーで実行中のプロバイダーがインターネットに接続する方法を指定します。**[Connect with existing proxy settings (既存のプロキシ設定を使用して接続する)]** を選択して、サーバー上に構成されている既定のインターネット接続設定を使用します。
 
-    ![Internet Settings](./media/site-recovery-vmm-to-azure-classic/proxydetails.PNG)
+	![インターネット設定](./media/site-recovery-vmm-to-azure-classic/proxydetails.PNG)
 
-    - If you want to use a custom proxy you should set it up before you install the Provider. When you configure custom proxy settings a test will run to check the proxy connection.
-    - If you do use a custom proxy, or your default proxy requires authentication you'll need to enter the proxy details, including the proxy address and port.
-    - Following urls should be accessible from the VMM Server and the Hyper-v hosts
-        - *.hypervrecoverymanager.windowsazure.com
-        - *.accesscontrol.windows.net
-        - *.backup.windowsazure.com
-        - *.blob.core.windows.net
-        - *.store.core.windows.net
-    - Allow the IP addresses described in [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) and HTTPS (443) protocol. You would have to white-list IP ranges of the Azure region that you plan to use and that of West US.
-    - If you use a custom proxy a VMM RunAs account (DRAProxyAccount) will be created automatically using the specified proxy credentials. Configure the proxy server so that this account can authenticate successfully. The VMM RunAs account settings can be modified in the VMM console. To do this, open the **Settings** workspace, expand **Security**, click **Run As Accounts**, and then modify the password for DRAProxyAccount. You’ll need to restart the VMM service so that this setting takes effect.
+	- カスタム プロキシを使用する場合は、プロバイダーをインストールする前に設定する必要があります。カスタム プロキシ設定を構成すると、プロキシの接続を確認するためのテストが実施されます。
+	- カスタム プロキシを使用する場合、または既定のプロキシで認証が必要な場合、プロキシのアドレスやポートなどの詳細を入力する必要があります。
+	- VMM サーバーと Hyper-V ホストから次の URL にアクセスできる必要があります。
+		- *.hypervrecoverymanager.windowsazure.com
+		- *.accesscontrol.windows.net
+		- *.backup.windowsazure.com
+		- *.blob.core.windows.net
+		- *.store.core.windows.net
+	- 「[Azure Datacenter の IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)」に記載されている IP アドレスと HTTPS (443) プロトコルを許可します。使用を計画している Azure リージョンの IP の範囲と米国西部の IP の範囲をホワイトリストに登録する必要があります。
+	- カスタム プロキシを使用する場合、指定されたプロキシの資格情報を使用して VMM RunAs アカウント (DRAProxyAccount) が自動的に作成されます。このアカウントが正しく認証されるようにプロキシ サーバーを構成します。VMM RunAs アカウントの設定は VMM コンソールで変更できます。変更するには、**[設定]** ワークスペースを開いて **[セキュリティ]** を展開し、**[実行アカウント]** をクリックします。その後、DRAProxyAccount のパスワードを変更します。新しい設定を有効にするには、VMM サービスを再起動する必要があります。
 
 
-8. In **Registration Key**, select the key that you downloaded from Azure Site Recovery and copied to the VMM server.
+8. **[登録キー]** で、Azure Site Recovery からダウンロードして VMM サーバーにコピーした登録キーを選択します。
 
 
-10.  The encryption setting is only used when you're replicating Hyper-V VMs in VMM clouds to Azure. If you're replicating to a secondary site it's not used.
+10.  暗号化設定は、VMM クラウド内の Hyper-V VM を Azure にレプリケートする場合のみ使用されます。セカンダリ サイトにレプリケートする場合は使用されません。
 
-11.  In **Server name**, specify a friendly name to identify the VMM server in the vault. In a cluster configuration specify the VMM cluster role name.
-12.  In **Synchronize cloud metadata** select whether you want to synchronize metadata for all clouds on the VMM server with the vault. This action only needs to happen once on each server. If you don't want to synchronize all clouds, you can leave this setting unchecked and synchronize each cloud individually in the cloud properties in the VMM console.
+11.  **[サーバー名]** に、コンテナーで VMM サーバーを識別する表示名を入力します。クラスター構成で、VMM クラスターのロール名を指定します。
+12.  **[クラウド メタデータの同期]** で、VMM サーバー上のすべてのクラウドのメタデータをコンテナーと同期するかどうかを選択します。この操作は、各サーバーで 1 回のみ実行する必要があります。すべてのクラウドを同期したくない場合は、この設定をオフのままにして、VMM コンソールのクラウドのプロパティで各クラウドを個別に同期できます。
 
-13.  Click **Next** to complete the process. After registration, metadata from the VMM server is retrieved by Azure Site Recovery. The server is displayed on the  **VMM Servers** tab on the **Servers** page in the vault.
-    
-    ![Lastpage](./media/site-recovery-vmm-to-azure-classic/provider13.PNG)
+13.  **[次へ]** をクリックしてプロセスを完了します。登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの **[VMM サーバー]** タブに表示されます。
+ 	
+	![Lastpage](./media/site-recovery-vmm-to-azure-classic/provider13.PNG)
 
-After registration, metadata from the VMM server is retrieved by Azure Site Recovery. The server is displayed on the **VMM Servers** tab on the **Servers** page in the vault.
+登録後に、VMM サーバーからのメタデータが、Azure Site Recovery によって取得されます。サーバーは、コンテナーの **[サーバー]** ページの **[VMM サーバー]** タブに表示されます。
 
-### <a name="command-line-installation"></a>Command line installation
+### コマンド ラインを使用したインストール
 
-The Azure Site Recovery Provider can also be installed using the following command line. This method can be used to install the provider on a Server Core for Windows Server 2012 R2.
+Azure Site Recovery プロバイダーは、次のコマンド ラインを使用してインストールすることもできます。このメソッドを使用すると、Windows Server 2012 R2 の Server Core にプロバイダーをインストールできます。
 
-1. Download the Provider installation file and registration key to a folder. For example: C:\ASR.
-2. Stop the System Center Virtual Machine Manager service
-3. From an elevated command prompt, extract the Provider installer with these commands:
+1. プロバイダーのインストール ファイルと登録キーをフォルダーにダウンロードします。たとえば、C:\\ASR です。
+2. System Center Virtual Machine Manager サービスを停止します。
+3. 管理者特権のコマンド プロンプトから、以下のコマンドでプロバイダーのインストーラーを抽出します。
 
-        C:\Windows\System32> CD C:\ASR
-        C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
+    	C:\Windows\System32> CD C:\ASR
+    	C:\ASR> AzureSiteRecoveryProvider.exe /x:. /q
 
-4. Install the provider as follows:
+4. 次のようにプロバイダーをインストールします。
 
-        C:\ASR> setupdr.exe /i
+		C:\ASR> setupdr.exe /i
 
-5. Register the Provider as follows:
+5. 次のようにプロバイダーを登録します。
 
-        CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
-        C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin\> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>       
+    	CD C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin
+    	C:\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin> DRConfigurator.exe /r  /Friendlyname <friendly name of the server> /Credentials <path of the credentials file> /EncryptionEnabled <full file name to save the encryption certificate>       
 
-Where parameters are as follows:
+ここで、パラメーターは次のとおりです。
 
- - **/Credentials** : Mandatory parameter that specifies the location in which the registration key file is located  
- - **/FriendlyName** : Mandatory parameter for the name of the Hyper-V host server that appears in the Azure Site Recovery portal.
- - **/EncryptionEnabled** : Optional parameter to specify if you want to encryption your virtual machines in Azure (at rest encryption). The file name should have a **.pfx** extension.
- - **/proxyAddress** : Optional parameter that specifies the address of the proxy server.
- - **/proxyport** : Optional parameter that specifies the port of the proxy server.
- - **/proxyUsername** : Optional parameter that specifies the proxy user name.
- - **/proxyPassword** :Optional parameter that specifies the proxy password.  
+ - **/Credentials**: 登録キー ファイルが配置されている場所を指定する必須パラメーターです。
+ - **/Friendlyname**: Azure Site Recovery ポータルに表示される、Hyper-V ホスト サーバーの名前を表す必須パラメーターです。
+ - **/EncryptionEnabled**: 省略可能。Azure で仮想マシンを暗号化 (保存暗号化) する場合に指定します。ファイル名には **.pfx** 拡張子が必要です。
+ - **/proxyAddress**: 省略可能。プロキシ サーバーのアドレスを指定します。
+ - **/proxyport**: 省略可能。プロキシ サーバーのポートを指定します。
+ - **/proxyUsername**: 省略可能。プロキシのユーザー名を指定します。
+ - **/proxyPassword**: 省略可能。プロキシ パスワードを指定します。
 
 
-## <a name="step-4:-create-an-azure-storage-account"></a>Step 4: Create an Azure storage account
+## ステップ 4: Azure のストレージ アカウントを作成する
 
-1. If you don't have an Azure storage account click **Add an Azure Storage Account** to create an account.
-2. Create an account with geo-replication enabled. It must in the same region as the Azure Site Recovery service, and be associated with the same subscription.
+1. Azure ストレージ アカウントがない場合は、**[Azure ストレージ アカウントの追加]** をクリックしてアカウントを作成します。
+2. geo レプリケーションを有効にしてアカウントを作成します。アカウントは Azure Site Recovery サービスと同じリージョンにあり、同じサブスクリプションに関連付けられている必要があります。
 
-    ![Storage account](./media/site-recovery-vmm-to-azure-classic/storage.png)
+	![ストレージ アカウント](./media/site-recovery-vmm-to-azure-classic/storage.png)
 
-> [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md) across resource groups within the same subscription or across subscriptions is not supported for storage accounts used for deploying Site Recovery.
+> [AZURE.NOTE] [Migration of storage accounts](../resource-group-move-resources.md)を同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で行うことは、Site Recovery のデプロイ用のストレージ アカウントではサポートされていません。
 
-## <a name="step-5:-install-the-azure-recovery-services-agent"></a>Step 5: Install the Azure Recovery Services Agent
+## ステップ 5: Azure Recovery Services エージェントをインストールする
 
-Install the Azure Recovery Services agent on each Hyper-V host server in the VMM cloud.
+VMM クラウド内の各 Hyper-V ホスト サーバーに Azure Recovery Services エージェントをインストールします。
 
-1. Click **Quick Start** > **Download Azure Site Recovery Services Agent and install on hosts** to obtain the latest version of the agent installation file.
+1. **[クイック スタート]**、**[Download Azure Site Recovery Services Agent and install on hosts (Azure Site Recovery Services エージェントをダウンロードしてホストにインストールする)]** の順にクリックして、最新バージョンのエージェントのインストール ファイルを取得します。
 
-    ![Install Recovery Services Agent](./media/site-recovery-vmm-to-azure-classic/install-agent.png)
+	![Recovery Services エージェントのインストール](./media/site-recovery-vmm-to-azure-classic/install-agent.png)
 
-2. Run the installation file on each Hyper-V host server.
-3. On the **Prerequisites Check** page click **Next**. Any missing prerequisites will be automatically installed.
+2. 各 Hyper-V ホスト サーバーでインストール ファイルを実行します。
+3. **[前提条件のチェック]** ページで **[次へ]** をクリックします。不足している前提条件があると自動的にインストールされます。
 
-    ![Prerequisites Recovery Services Agent](./media/site-recovery-vmm-to-azure-classic/agent-prereqs.png)
+	![Recovery Services エージェントの前提条件](./media/site-recovery-vmm-to-azure-classic/agent-prereqs.png)
 
-4. On the **Installation Settings** page, specify where you want to install the agent and select the cache location in which backup metadata will be installed. Then click **Install**.
-5. After installation finishes click **Close** to complete the wizard.
+4. **[Installation Settings (インストールの設定)]** ページで、エージェントのインストール先を指定し、バックアップのメタデータがインストールされるキャッシュの場所を選択します。その後、**[インストール]** をクリックします。
+5. インストールが完了したら、**[閉じる]** をクリックしてウィザードを完了します。
 
-    ![Register MARS Agent](./media/site-recovery-vmm-to-azure-classic/agent-register.png)
+	![Register MARS Agent](./media/site-recovery-vmm-to-azure-classic/agent-register.png)
 
-### <a name="command-line-installation"></a>Command line installation
+### コマンド ラインを使用したインストール
 
-You can also install the Microsoft Azure Recovery Services Agent from the command line using this command:
+Microsoft Azure Recovery Services エージェントは、コマンド ラインで次のコマンドを使用してインストールすることもできます。
 
     marsagentinstaller.exe /q /nu
 
-## <a name="step-6:-configure-cloud-protection-settings"></a>Step 6: Configure cloud protection settings
+## ステップ 6: クラウドの保護設定を構成する
 
-After the VMM server is registered, you can configure cloud protection settings. You enabled the option **Synchronize cloud data with the vault** when you installed the Provider so all clouds on the VMM server will appear in the <b>Protected Items</b> tab in the vault.
+VMM サーバーが登録されると、クラウドの保護設定を構成することができます。プロバイダーのインストール時に **[コンテナーとのクラウド データの同期]** を有効にしたので、VMM サーバー上のすべてのクラウドが、資格情報コンテナーの <b>[保護された項目]</b> タブに表示されます。
 
-![Published Cloud](./media/site-recovery-vmm-to-azure-classic/clouds-list.png)
+![発行済みのクラウド](./media/site-recovery-vmm-to-azure-classic/clouds-list.png)
 
-1. On the Quick Start page, click **Set up protection for VMM clouds**.
-2. On the **Protected Items** tab, click on the cloud you want to configure and go to the **Configuration** tab.
-3. In **Target** select **Azure**.
-4. In **Storage Account** select the Azure storage account you use for replication.
-5. Set **Encrypt stored data** to **Off**. This setting specifies that data should be encrypted replicated between the on-premises site and Azure.
-6. In **Copy frequency** leave the default setting. This value specifies how frequently data should be synchronized between source and target locations.
-7. In **Retain recovery points for**, leave the default setting. With a default value of zero, only the latest recovery point for a primary virtual machine is stored on a replica host server.
-8. In **Frequency of application-consistent snapshots**, leave the default setting. This value specifies how often to create snapshots. Snapshots use Volume Shadow Copy Service (VSS) to ensure that applications are in a consistent state when the snapshot is taken.  If you do set a value, make sure it's less than the number of additional recovery points you configure.
-9. In **Replication start time**, specify when initial replication of data to Azure should start. The timezone on the Hyper-V host server will be used. We recommend that you schedule the initial replication during off-peak hours.
+1. [クイック スタート] ページで、**[VMM クラウドの保護の設定]** をクリックします。
+2. **[保護された項目]** タブで、構成するクラウドをクリックし、**[構成]** タブに移動します。
+3. **[ターゲット]** で、**[Azure]** を選択します。
+4. **[ストレージ アカウント]** で、レプリケーションに使用する Azure ストレージ アカウントを選択します。
+5. **[格納データの暗号化]** を **[オフ]** に設定します。この設定は、内部設置型サイトと Azure 間のレプリケートでデータを暗号化する必要があることを指定します。
+6. **[コピーの頻度]** では、既定の設定をそのまま使用します。この値は、ソースとターゲットの場所の間でデータが同期される頻度を指定します。
+7. **[保持する復旧ポイント]** で、既定の設定をそのまま使用します。既定値である 0 を使用する場合は、プライマリ仮想マシンに対応する最新の復旧ポイントのみが、レプリカのホスト サーバーに格納されます。
+8. **[アプリケーションの整合性スナップショットの頻度]** では、既定の設定をそのまま使用します。この値は、スナップショットを作成する頻度を指定します。スナップショットは、ボリューム シャドウ コピー サービス (VSS) を使用して、スナップショットを作成するときにアプリケーションを一貫性のある状態に保ちます。値を設定する場合は、構成する追加の復旧ポイント数よりも少ない値にしてください。
+9. **[レプリケーションの開始時刻]** で、Azure へのデータの初期レプリケーションを開始する時刻を指定します。Hyper-V ホスト サーバーのタイムゾーンが使用されます。初期レプリケーションはピーク時以外にスケジュールすることをお勧めします。
 
-    ![Cloud replication settings](./media/site-recovery-vmm-to-azure-classic/cloud-settings.png)
+	![クラウドのレプリケーション設定](./media/site-recovery-vmm-to-azure-classic/cloud-settings.png)
 
-After you save the settings a job will be created and can be monitored on the **Jobs** tab. All Hyper-V host servers in the VMM source cloud will be configured for replication.
+この設定を保存すると、ジョブが作成され、これを **[ジョブ]** タブで監視できます。VMM ソース クラウド内のすべての Hyper-V ホスト サーバーは、レプリケーション用に構成されます。
 
-After saving, cloud settings can be modified on the **Configure** tab. To modify the target location or target storage account you'll need to remove the cloud configuration, and then reconfigure the cloud. Note that if you change the storage account the change is only applied for virtual machines that are enabled for protection after the storage account has been modified. Existing virtual machines are not migrated to the new storage account.
+保存後は、クラウド設定は **[構成]** タブで変更できます。ターゲットの場所またはターゲットのストレージ アカウントを変更するには、クラウド構成を削除してから、クラウドを再構成する必要があります。ストレージ アカウントを変更する場合は、ストレージ アカウントの修正後に保護を有効にした仮想マシンにのみ、その変更が適用されることに注意してください。既存の仮想マシンは新しいストレージ アカウントに移行されません。
 
-## <a name="step-7:-configure-network-mapping"></a>Step 7: Configure network mapping
-Before you begin network mapping verify that virtual machines on the source VMM server are connected to a VM network. In addition create one or more Azure virtual networks. Note that multiple VM networks can be mapped to a single Azure network.
+## ステップ 7: ネットワーク マッピングを構成する
+ネットワーク マッピングを開始する前に、ソース VMM サーバー上の仮想マシンが VM ネットワークに接続されていることを確認してください。さらに、1 つまたは複数の Azure Virtual Network を作成します。複数の VM ネットワークを 1 つの Azure ネットワークにマップできることに注意してください。
 
-1. On the Quick Start page, click **Map networks**.
-2. On the **Networks** tab, in **Source location**, select the source VMM server. In **Target location** select Azure.
-3. In **Source** networks a list of VM networks associated with the VMM server are displayed. In **Target** networks the Azure networks associated with the subscription are displayed.
-4. Select the source VM network and click **Map**.
-5. On the **Select a Target Network** page, select the target Azure network you want to use.
-6. Click the check mark to complete the mapping process.
+1. [クイック スタート] ページで、**[ネットワークのマップ]** をクリックします。
+2. **[ネットワーク]** タブの **[ソースの場所]** で、ソース VMM サーバーを選択します。**[ターゲットの場所]** で、Azure を選択します。
+3. **ソース** ネットワークには、VMM サーバーに関連付けられている VM ネットワークの一覧が表示されます。**ターゲット** ネットワークには、サブスクリプションに関連付けられている Azure ネットワークが表示されます。
+4. ソースの VM ネットワークを選択して、**[マップ]** をクリックします。
+5. **[ターゲット ネットワークの選択]** ページで、ターゲットとして使用する Azure ネットワークを選択します。
+6. チェック マークをクリックして、マッピング処理を完了します。
 
-    ![Cloud replication settings](./media/site-recovery-vmm-to-azure-classic/map-networks.png)
+	![クラウドのレプリケーション設定](./media/site-recovery-vmm-to-azure-classic/map-networks.png)
 
-After you save the settings a job starts to track the mapping progress and it can be monitored on the Jobs tab. Any existing replica virtual machines that correspond to the source VM network will be connected to the target Azure networks. New virtual machines that are connected to the source VM network will be connected to the mapped Azure network after replication. If you modify an existing mapping with a new network, replica virtual machines will be connected using the new settings.
+設定を保存すると、マッピングの進行状況を追跡するジョブが起動します。進行状況は [ジョブ] タブで監視することができます。ソースの VM ネットワークに対応する既存のレプリカの全仮想マシンが、ターゲットの Azure ネットワークに接続します。ソースの VM ネットワークに接続する新しい仮想マシンは、レプリケーション後、マップされた Azure ネットワークに接続します。既存のマッピングを新しいネットワークで変更すると、レプリカの仮想マシンは新しい設定で接続されます。
 
-Note that if the target network has multiple subnets and one of those subnets has the same name as subnet on which the source virtual machine is located, then the replica virtual machine will be connected to that target subnet after failover. If there’s no target subnet with a matching name, the virtual machine will be connected to the first subnet in the network.
+ターゲット ネットワークに複数のサブネットがあり、そのサブネットのいずれかが、ソースの仮想マシンが配置されているサブネットと同じ名前である場合、フェールオーバー後、レプリカの仮想マシンはそのターゲット サブネットに接続することに注意してください。ターゲットのサブネットで名前が一致するものがなければ、仮想マシンはネットワークの最初のサブネットに接続されます。
 
-> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md) across resource groups within the same subscription or across subscriptions is not supported for networks used for deploying Site Recovery.
+> [AZURE.NOTE] [Migration of networks](../resource-group-move-resources.md)を同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で行うことは、Site Recovery のデプロイ用のネットワークではサポートされていません。
 
-## <a name="step-8:-enable-protection-for-virtual-machines"></a>Step 8: Enable protection for virtual machines
+## ステップ 8: 仮想マシンの保護を有効化する
 
-After servers, clouds, and networks are configured correctly, you can enable protection for virtual machines in the cloud. Note the following:
+サーバー、クラウド、およびネットワークを正しく構成した後で、クラウド内の仮想マシンの保護を有効にすることができます。以下の点に注意してください。
 
-- Virtual machines must meet [Azure requirements](site-recovery-best-practices.md#azure-virtual-machine-requirements).
-- To enable protection the operating system and operating system disk properties must be set for the virtual machine. When you create a virtual machine in VMM using a virtual machine template you can set the property. You can also set these properties for existing virtual machines on the **General** and **Hardware Configuration** tabs of the virtual machine properties. If you don't set these properties in VMM you'll be able to configure them in the Azure Site Recovery portal.
+- 仮想マシンは [Azure 要件](site-recovery-best-practices.md#azure-virtual-machine-requirements)を満たしている必要があります。
+- オペレーティング システムとオペレーティング システム ディスクの保護を有効にするには、仮想マシンにプロパティを設定する必要があります。仮想マシン テンプレートを使用して VMM 内で仮想マシンを作成する際に、プロパティを設定できます。また、仮想マシンのプロパティの **[全般]** タブと **[ハードウェア構成]** タブで既存の仮想マシンに対してこれらのプロパティを設定することもできます。VMM でこれらのプロパティを設定していない場合は、Azure Site Recovery ポータルで構成できます。
 
-    ![Create virtual machine](./media/site-recovery-vmm-to-azure-classic/enable-new.png)
+	![仮想マシンの作成](./media/site-recovery-vmm-to-azure-classic/enable-new.png)
 
-    ![Modify virtual machine properties](./media/site-recovery-vmm-to-azure-classic/enable-existing.png)
+	![仮想マシンのプロパティの変更](./media/site-recovery-vmm-to-azure-classic/enable-existing.png)
 
 
-1. To enable protection, on the **Virtual Machines** tab in the cloud in which the virtual machine is located, click **Enable protection** > **Add virtual machines**.
-2. From the list of virtual machines in the cloud, select the one you want to protect.
+1. 保護を有効にするには、仮想マシンが配置されているクラウドの **[仮想マシン]** タブで、**[保護を有効にする]** をクリックしてから **[仮想マシンの追加]** を選択します。
+2. クラウド内の仮想マシンのリストから、保護する仮想マシンを選択します。
 
-    ![Enable virtual machine protection](./media/site-recovery-vmm-to-azure-classic/select-vm.png)
+	![仮想マシンの保護の有効化](./media/site-recovery-vmm-to-azure-classic/select-vm.png)
 
-    Track progress of the **Enable Protection** action in the **Jobs** tab, including the initial replication. After the **Finalize Protection** job runs the virtual machine is ready for failover. After protection is enabled and virtual machines are replicated, you’ll be able to view them in Azure.
+	**[ジョブ]** タブで、**[保護を有効にする]** アクション (初期レプリケーションなど) の進捗状況を確認します。保護の**最終処理**のジョブが実行されると、仮想マシンは、フェールオーバーを実行できる状態になります。保護が有効され仮想マシンが複製されると、Azure でそれらの状態を表示できます。
 
 
-    ![Virtual machine protection job](./media/site-recovery-vmm-to-azure-classic/vm-jobs.png)
+	![仮想マシン保護ジョブ](./media/site-recovery-vmm-to-azure-classic/vm-jobs.png)
 
-3. Verify the virtual machine properties and modify as required.
+3. 仮想マシンのプロパティを確認し、必要に応じて変更します。
 
-    ![Verify virtual machines](./media/site-recovery-vmm-to-azure-classic/vm-properties.png)
+	![仮想マシンの確認](./media/site-recovery-vmm-to-azure-classic/vm-properties.png)
 
 
-4. On the **Configure** tab of the virtual machine properties following network properties can be modified.
+4. 仮想マシンのプロパティの **[構成]** タブでは、次のネットワークのプロパティを変更できます。
 
 
 
 
 
-- **Number of network adapters on the target virtual machine** - The number of network adapters is dictated by the size you specify for the target virtual machine. Check [virtual machine size specs](../virtual-machines/virtual-machines-linux-sizes.md#size-tables) for the number of adapters supported by the virtual machine size. When you modify the size for a virtual machine and save the settings, the number of network adapter will change when you open **Configure** page the next time. The number of network adapters of target virtual machines is the minimum number of network adapters on source virtual machine and the maximum number of network adapters supported by the size of the virtual machine chosen, as follows:
+- **ターゲット仮想マシンのネットワーク アダプターの数** - ネットワーク アダプターの数は、ターゲット仮想マシンに指定したサイズによって異なります。仮想マシンのサイズ別のサポートされているアダプターの数については、[仮想マシン サイズの仕様](../virtual-machines/virtual-machines-linux-sizes.md#size-tables)に関するページを参照してください。仮想マシンのサイズを変更し、設定を保存すると、次回 **[構成]** ページを開くときに、ネットワーク アダプターの数が変更されます。ターゲット仮想マシンのネットワーク アダプターの数は、ソース仮想マシン上のネットワーク アダプターの最小数と、選択した仮想マシンのサイズでサポートされているネットワーク アダプターの最大数です。
 
-    - If the number of network adapters on the source machine is less than or equal to the number of adapters allowed for the target machine size, then the target will have the same number of adapters as the source.
-    - If the number of adapters for the source virtual machine exceeds the number allowed for the target size then the target size maximum will be used.
-    - For example, if a source machine has two network adapters and the target machine size supports four, the target machine will have two adapters. If the source machine has two adapters but the supported target size only supports one then the target machine will have only one adapter.    
+	- ソース マシン上のネットワーク アダプターの数が、ターゲット マシンのサイズに許可されているアダプターの数以下の場合、ターゲットのアダプターの数は、ソースと同じになります。
+	- ソース仮想マシン用のアダプターの数が、ターゲットのサイズに許可されている数を超える場合は、ターゲットの最大サイズが使用されます。
+	- たとえば、ソース マシンに 2 つのネットワーク アダプターがあり、ターゲット マシンのサイズが 4 つをサポートしている場合は、ターゲット マシンのアダプターの数は、2 つになります。ソース マシンに 2 つのアダプターがあるが、サポートされているターゲット サイズで 1 つしかサポートしていない場合、ターゲット マシンのアダプターの数は 1 つだけになります。
 
-- **Network of the target virtual machine** - The network to which the virtual machine connects to is determined by network mapping of the network of source virtual machine. If the source virtual machine has more than one network adapter and source networks are mapped to different networks on target, then you'll need to choose between one of the target networks.
-- **Subnet of each network adapter** - For each network adapter you can select the subnet to which the failed over virtual machine would connect to.
-- **Target IP address** - If the network adapter of source virtual machine is configured to use a static IP address then you can provide the IP address for the target virtual machine. Use this feature retain the IP address of a source virtual machine after a failover. If no IP address is provided then any available IP address is given to the network adapter at the time of failover. If the target IP address is specified but is already used by another virtual machine running in Azure then failover will fail.  
+- **ターゲット仮想マシンのネットワーク** - 仮想マシンの接続先となるネットワークは、ソース仮想マシンのネットワークのネットワーク マッピングによって決まります。ソース仮想マシンに 1 つ以上のネットワーク アダプターが含まれており、ソース ネットワークがターゲットの別のネットワークにマップされている場合、ターゲット ネットワークのいずれかを選択する必要があります。
+- **各ネットワーク アダプターのサブネット** - ネットワーク アダプターごとに、フェールオーバーされた仮想マシンが接続するサブネットを選択できます。
+- **ターゲット IP アドレス** - ソース仮想マシンのネットワーク アダプターが静的 IP アドレスを使用するように構成されている場合、ターゲット仮想マシンの IP アドレスを指定できます。フェールオーバー後、この機能を使用してソース仮想マシンの IP アドレスを保持します。IP アドレスが指定されていない場合は、フェールオーバー時に使用可能な IP アドレスがネットワーク アダプターに指定されます。ターゲット IP アドレスを指定しても、Azure で稼働している別の仮想マシンで既に使用されている場合、フェールオーバーは失敗します。
 
-    ![Modify network properties](./media/site-recovery-vmm-to-azure-classic/multi-nic.png)
+	![ネットワークのプロパティの変更](./media/site-recovery-vmm-to-azure-classic/multi-nic.png)
 
->[AZURE.NOTE] Linux virtual machines with static IP address aren't supported.
+>[AZURE.NOTE] 静的 IP アドレスの Linux 仮想マシンはサポートされていません。
 
-## <a name="test-the-deployment"></a>Test the deployment
+## 展開をテスト
 
-To test your deployment you can run a test failover for a single virtual machine, or create a recovery plan consisting of multiple virtual machines, and run a test failover for the plan.  
+デプロイをテストするために、1 台の仮想マシンに対するテスト フェールオーバーを実行することや、複数の仮想マシンで構成される復旧計画を作成して、その計画のテスト フェールオーバーを実行することができます。
 
-Test failover simulates your failover and recovery mechanism in an isolated network. Note that:
+テスト フェールオーバーは、孤立したネットワークでフェールオーバーと復旧のシミュレーションを実行します。以下の点に注意してください。
 
-- If you want to connect to the virtual machine in Azure using Remote Desktop after the failover, enable Remote Desktop Connection on the virtual machine before you run the test failover.
-- After failover you'll use a public IP address to connect to the virtual machine in Azure using Remote Desktop. If you want to do this, ensure you don't have any domain policies that prevent you from connecting to a virtual machine using a public address.
+- フェールオーバー後に Azure でリモート デスクトップを使用して仮想マシンに接続する場合は、テストのフェールオーバーを実行する前に、仮想マシンのリモート デスクトップ接続を有効にします。
+- フェールオーバー後、パブリック IP アドレスを使用して、Azure の仮想マシンにリモート デスクトップで接続します。この接続では、パブリック アドレスを使用する仮想マシンの接続を妨げるドメイン ポリシーを使用していないことを確認してください。
 
->[AZURE.NOTE] To get the best performance when you do a failover to Azure, ensure that you have installed the Azure Agent in the protected machine. This helps in booting faster and also helps in diagnosis in case of issues. Linux agent can be found [here](https://github.com/Azure/WALinuxAgent) - and Windows agent can be found [here](http://go.microsoft.com/fwlink/?LinkID=394789)
+>[AZURE.NOTE] Azure へのフェールオーバーを実行するときに最適なパフォーマンスを得るには、保護されたマシンに Azure エージェントをインストールしておきます。これは、ブートの速度を上げ、問題が発生した場合の診断にも役立ちます。Linux エージェントは[こちら](https://github.com/Azure/WALinuxAgent)から、Windows エージェントは[こちら](http://go.microsoft.com/fwlink/?LinkID=394789)から入手できます。
 
-### <a name="create-a-recovery-plan"></a>Create a recovery plan
+### 復旧計画の作成
 
-1. On the **Recovery Plans** tab, add a new plan. Specify a name, **VMM** in **Source type**, and the source VMM server in **Source**, The target will be Azure.
+1. **[復旧計画]** タブで、新しい計画を追加します。名前を指定し、**[ソースの種類]** として **[VMM]**、 **[ソース]** としてソースの VMM サーバーを指定します。ターゲットは Azure になります。
 
-    ![Create recovery plan](./media/site-recovery-vmm-to-azure-classic/recovery-plan1.png)
+	![復旧計画の作成](./media/site-recovery-vmm-to-azure-classic/recovery-plan1.png)
 
-2. In the **Select Virtual Machines** page, select virtual machines to add to the recovery plan. These virtual machines are added to the recovery plan default group—Group 1. A maximum of 100 virtual machines in a single recovery plan have been tested.
+2. **[Virtual Machines の選択]** ページで、復旧計画に追加する仮想マシンを選択します。これらの仮想マシンは、復旧計画の既定のグループ "グループ 1" に追加されます。最大 100 台の仮想マシンを 1 つの復旧計画でテストしています。
 
-- If you want to verify the virtual machine properties before adding them to the plan, click the virtual machine on the properties page of the cloud in which it’s located. You can also configure the virtual machine properties in the VMM console.
-- All of the virtual machines that are displayed have been enabled for protection. The list includes both virtual machines that are enabled for protection and initial replication has completed, and those that are enabled for protection with initial replication pending. Only virtual machines with initial replication completed can fail over as part of a recovery plan.
+- 仮想マシンを計画に追加する前に、仮想マシンのプロパティを検証する場合は、仮想マシンが配置されているクラウドの [プロパティ] ページで仮想マシンをクリックします。仮想マシンのプロパティは VMM コンソールでも構成できます。
+- 表示されるすべての仮想マシンは、保護が有効になっています。一覧には、保護が有効で、初期レプリケーションが完了している仮想マシンと、保護が有効だが、初期レプリケーションが保留中の仮想マシンの両方が含まれています。初期レプリケーションが完了したマシンのみ、復旧計画の一環としてフェールオーバーできます。
 
-    ![Create recovery plan](./media/site-recovery-vmm-to-azure-classic/select-rp.png)
+	![復旧計画の作成](./media/site-recovery-vmm-to-azure-classic/select-rp.png)
 
-After a recovery plan has been created it appears in the **Recovery Plans** tab. You can also add [Azure automation runbooks](site-recovery-runbook-automation.md) to the recovery plan to automate actions during failover.
+復旧計画が作成されると、 **[復旧計画]** タブにその計画が表示されます。[Azure Automation Runbook](site-recovery-runbook-automation.md) を復旧計画に追加して、フェールオーバー中のアクションを自動化することもできます。
 
-### <a name="run-a-test-failover"></a>Run a test failover
+### テスト フェールオーバーの実行
 
-There are two ways to run a test failover to Azure.
+Azure へのテスト フェールオーバーを実行する方法は 2 つあります。
 
-- **Test failover without an Azure network**—This type of test failover checks that the virtual machine comes up correctly in Azure. The virtual machine won’t be connected to any Azure network after failover.
-- **Test failover with an Azure network**—This type of failover checks that the entire replication environment comes up as expected and that failed over the virtual machines will be connected to the specified target Azure network. For subnet handling, for test failover the subnet of the test virtual machine will be figured out based on the subnet of the replica virtual machine. This is different to regular replication when the subnet of a replica virtual machine is based on the subnet of the source virtual machine.
+- **Azure ネットワークを使用しないテスト フェールオーバー** — この種のテスト フェールオーバーでは、仮想マシンが Azure で正しく動作することを確認します。フェールオーバー後、仮想マシンはどの Azure ネットワークにも接続しません。
+- **Azure ネットワークを使用するテスト フェールオーバー** - この種のフェールオーバーでは、レプリケーション環境全体が正しく動作することと、フェールオーバーされた仮想マシンが指定したターゲットの Azure ネットワークに接続されることを確認します。サブネットの処理については、テスト フェールオーバーでは、テストの仮想マシンのサブネットはレプリカの仮想マシンのサブネットに基づいて決定されます。これは、レプリカの仮想マシンのサブネットが、ソースの仮想マシンのサブネットに基づいている通常のレプリケーションとは異なります。
 
-If you want to run a test failover for a virtual machine enabled for protection to Azure without specifying an Azure target network you don’t need to prepare anything. To run a test failover with a target Azure network you’ll need to create a new Azure network that’s isolated from your Azure production network (default behavior when you create a new network in Azure). Look at how to [run a test failover](site-recovery-failover.md#run-a-test-failover) for more details.
+Azure ターゲット ネットワークを指定せずに、保護が有効になっている仮想マシンの Azure へのテスト フェールオーバーを実行する場合は、特に準備は必要ありません。ターゲット Azure ネットワークを指定してテスト フェールオーバーを実行するには、Azure 運用ネットワークから独立した新しい Azure ネットワークを作成する必要があります (Azure で新しいネットワークを作成する場合の既定の動作)。詳細については、[テスト フェールオーバーの実行](site-recovery-failover.md#run-a-test-failover)方法に関するページを参照してください。
 
 
-You'll also need to set up the infrastructure for the replicated virtual machine to work as expected. For example, a virtual machine with Domain Controller and DNS can be replicated to Azure using Azure Site Recovery and can be created in the test network using Test Failover. Look at [test failover considerations for active directory](site-recovery-active-directory.md#considerations-for-test-failover) section for more details.
+また、レプリケートされた仮想マシンのインフラストラクチャを正常に動作するように設定する必要があります。たとえば、ドメイン コントローラーと DNS を含む仮想マシンは、Azure Site Recovery を使用して Azure にレプリケート可能で、テスト フェールオーバーを使用して、テスト ネットワーク内に作成できます。詳細については、[Active Directory 用のテスト フェールオーバーの考慮事項](site-recovery-active-directory.md#considerations-for-test-failover)を参照してください。
 
-To run a test failover do the following:
+テスト フェールオーバーを実行するには、次の手順に従います。
 
-1. On the **Recovery Plans** tab, select the plan and click **Test Failover**.
-2. On the **Confirm Test Failover** page select **None** or a specific Azure network.  Note that if you select None the test failover will check that the virtual machine replicated correctly to Azure but doesn't check your replication network configuration.
+1. **[復旧計画]** タブで、計画を選択し、**[テスト フェールオーバー]** をクリックします。
+2. **[テスト フェールオーバーの確認]** ページで、**[なし]** または特定の Azure ネットワークを選択します。[なし] を選択した場合、テスト フェールオーバーでは、仮想マシンが Azure に正しくレプリケートされたかどうかは確認されますが、レプリケーションのネットワーク構成は確認されないことに注意してください。
 
-    ![No network](./media/site-recovery-vmm-to-azure-classic/test-no-network.png)
+	![ネットワークなし](./media/site-recovery-vmm-to-azure-classic/test-no-network.png)
 
-3. If data encryption is enabled for the cloud, in **Encryption Key** select the certificate that was issued during installation of the Provider on the VMM server, when you turned on the option to enable data encryption for a cloud.
-4. On the **Jobs** tab you can track failover progress. You should also be able to see the virtual machine test replica in the Azure portal. If you’re set up to access virtual machines from your on-premises network you can initiate a Remote Desktop connection to the virtual machine.
-5. When the failover reaches the **Complete testing** phase , click **Complete Test** to finish up the test failover. You can drill down to the **Job** tab to track failover progress and status, and to perform any actions that are needed.
-6. After  failover you'll be able to see the virtual machine test replica in the Azure portal. If you’re set up to access virtual machines from your on-premises network you can initiate a Remote Desktop connection to the virtual machine. Do the following:
+3. クラウドのデータ暗号化が有効になっていて、クラウドのデータ暗号化を有効にするオプションをオンにした場合、**[暗号化キー]** で、VMM サーバーにプロバイダーをインストールしたときに発行された証明書を選択します。
+4. **[ジョブ]** タブで、フェールオーバーの進行状況を追跡できます。仮想マシンのテスト レプリカも Azure ポータルで確認できます。オンプレミスのネットワークから、仮想マシンへのアクセスをセットアップすると、仮想マシンへのリモート デスクトップ接続を開始できます。
+5. フェールオーバーが **[テストの完了]** フェーズに達したら、**[テストの完了]** をクリックして、テスト フェールオーバーを終了します。**[ジョブ]** タブまでドリルダウンし、フェールオーバーの進行状況と状態を追跡して、必要な操作を実行します。
+6. フェールオーバー後、Azure ポータルで仮想マシンのテスト レプリカを確認できます。オンプレミスのネットワークから、仮想マシンへのアクセスをセットアップすると、仮想マシンへのリモート デスクトップ接続を開始できます。以下の手順を実行します。
 
-    1. Verify that the virtual machines start successfully.
-    2. If you want to connect to the virtual machine in Azure using Remote Desktop after the failover, enable Remote Desktop Connection on the virtual machine before you run the test failover. You'll  also need to add an RDP endpoint on the virtual machine. You can leverage an [Azure Automation Runbooks](site-recovery-runbook-automation.md) to do that.
-    3. After failover if you use a public IP address to connect to the virtual machine in Azure using Remote Desktop, ensure you don't have any domain policies that prevent you from connecting to a virtual machine using a public address.
+    1. 仮想マシンが正常に起動することを確認します。
+    2. フェールオーバー後に Azure でリモート デスクトップを使用して仮想マシンに接続する場合は、テストのフェールオーバーを実行する前に、仮想マシンのリモート デスクトップ接続を有効にします。また、仮想マシンに RDP エンドポイントを追加する必要もあります。[Azure Automation Runbook](site-recovery-runbook-automation.md) を活用して、このことを行うことができます。
+    3. フェールオーバー後、リモート デスクトップでパブリック IP アドレスを使用して Azure の仮想マシンに接続する場合、パブリック アドレスを使用して仮想マシンに接続することを妨げるドメイン ポリシーがないことを確認します。
 
-7.  After the testing is complete do the following:
-    - Click **The test failover is complete**. Clean up the test environment to automatically power off and delete the test virtual machines.
-    - Click **Notes** to record and save any observations associated with the test failover.
+7.  テストが完了したら、以下の手順を実行します。
+	- **[テスト フェールオーバーが完了しました]** をクリックします。テスト環境をクリーンアップして、自動的に電源をオフにし、テスト仮想マシンを削除します。
+	- **[メモ]** をクリックして、テスト フェールオーバーに関連する監察結果をすべて記録し、保存します。
 
->
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+[復旧計画の作成](site-recovery-create-recovery-plans.md)と[フェールオーバー](site-recovery-failover.md)について学習します。
 
-Learn about [setting up recovery plans](site-recovery-create-recovery-plans.md) and [failover](site-recovery-failover.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

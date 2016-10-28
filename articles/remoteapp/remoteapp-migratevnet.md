@@ -1,8 +1,8 @@
 <properties
-    pageTitle="How to migrate from a RemoteApp VNET to an Azure VNET | Microsoft Azure"
-    description="Learn how to migrate from a RemoteApp VNET to an Azure VNET"
+    pageTitle="RemoteApp VNET から Azure VNET に移行する方法の詳細 | Microsoft Azure"
+    description="RemoteApp VNET から Azure VNET に移行する方法の詳細"
     services="remoteapp"
-    documentationCenter=""
+	documentationCenter=""
     authors="lizap"
     manager="mbaldwin" />
 
@@ -17,44 +17,39 @@
 
 
 
-
-# <a name="how-to-migrate-a-hybrid-collection-from-a-remoteapp-vnet-to-an-azure-vnet"></a>How to migrate a hybrid collection from a RemoteApp VNET to an Azure VNET
+# RemoteApp VNET から Azure VNET にハイブリッド コレクションを移行する方法
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Good news! We have enabled you to deploy hybrid RemoteApp collections directly into your existing Azure virtual networks (VNETs) instead of creating RemoteApp-specific VNETs. This lets you take advantage of the latest VNET features (like ExpressRoute) and give your hybrid collections direct network access to other Azure services and virtual machines deployed to that VNET.  (This gets you better performance and easier setup than VNET-to-VNET configurations).
-
-
-Let’s say that you’ve already created a hybrid RemoteApp collection called *OriginalCollection* with a RemoteApp VNET called *RemoteAppVNET*. Here are the steps to migrate it to a new Azure VNET called *AzureVNET*.
-
-1.  On the **Networks** tab in the [management portal](http://manage.windowsazure.com/), create a VNET called *AzureVNET*, using the same location, DNS configuration, and address space (for at least one of the *AzureVNET* subnets) as you used for *RemoteAppVNET*.
-2.  Configure *AzureVNET* to either host or have network connectivity to the Active Directory deployment that *OriginalCollection* is domain joined to.
-3.  On the **RemoteApps** tab, create a new RemoteApp collection called *New Collection*. (Use the **Create with VNET** option, not **Quick Create**.)
-3.  Configure *NewCollection* to be deployed to a subnet in *AzureVNET*.
-4.  Configure *NewCollection* to use the same image and domain join information as you used for *OriginalCollection*.
-5.  After a few hours, *NewCollection* will show up in your collection list with an Active state.
-
-Now, if you DON’T need to migrate any user information from the original collection to the new collection, do these steps next:
-
-6.  Delete *OriginalCollection*.
-7.  Delete *RemoteAppVNET*.
-
-And, you’re done!
-
-Alternately, if you DO need to migrate user information from the original collection to the new collection, do these steps next:
-
-6.  Send an email to [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20user%20information%20migration) with your Azure subscription ID, the name of your original collection, and the name of your new collection, and ask them to migrate your user information.
-7.  Within 2 business days the RemoteApp team will move the user access list and all user documents and user settings from the original collection to the new collection.
-8.  Delete *OriginalCollection*.
-9.  Delete *RemoteAppVNET*.
-
-And now, you’re done!
-
-If you have any questions or need special assistance, please email [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help).
+うれしいことに、 RemoteApp 固有の Vnet を作成せずに、ハイブリッド RemoteApp コレクションを直接既存の Azure 仮想ネットワーク (Vnet) にデプロイすることが可能になりました。これにより、VNET の最新機能 (ExpressRoute など) を活用し、VNET にデプロイされている他の Azure サービスおよび仮想マシンにハイブリッド コレクションが直接ネットワーク アクセスできます。(パフォーマンスが向上し、VNET-to-VNET 構成よりもセットアップが容易になります。)
 
 
+*RemoteAppVNET* という名前の RemoteApp VNET を持つ *OriginalCollection* という名前のハイブリッド RemoteApp コレクションを既に作成してあるとしましょう。このコレクションを *AzureVNET* という名前の新しい Azure VNET に移行するには、次の手順を実行します。
 
-<!--HONumber=Oct16_HO2-->
+1.	[[管理ポータル]](http://manage.windowsazure.com/) の **[Networks]** タブで、*RemoteAppVNET* に使用しているのと同じ場所、DNS 構成、およびアドレス空間を使用して (*AzureVNET* サブネット用に少なくとも 1 つ)、*AzureVNET* という名前の VNET を作成します。
+2.	*AzureVNET* を構成し、*OriginalCollection* の参加先ドメインになっている Active Directory デプロイメントをホストするか、これにネットワーク接続するようにします。
+3.	**[Remoteapp]** タブで、*New Collection* という名前の RemoteApp コレクションを新規に作成します。(**[VNet で作成]** オプションを使用し、**[簡易作成]** オプションは使用しないでください。)
+3.	*NewCollection* が *AzureVNET* のサブネットにデプロイされるように構成します。
+4.	*NewCollection* が *OriginalCollection* に使用したのと同じイメージとドメイン参加情報を使用するように構成します。
+5.	数時間後にはアクティブな状態の *NewCollection* がコレクション リストに表示されます。
 
+元のコレクションのユーザー情報を新しいコレクションに全く移行する必要がない場合は、次の手順を実行します。
 
+6.	*OriginalCollection* を削除します。
+7.	*RemoteAppVNET* を削除します。
+
+これで完了です。
+
+一方、元のコレクションのユーザー情報を新しいコレクションに移行する必要がある場合は、次の手順を実行します。
+
+6.	Azure サブスクリプション ID、元のコレクションの名前、新しいコレクションの名前を明記した電子メールを [remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20user%20information%20migration) 宛に送信して、ユーザー情報を移行するように依頼してください。
+7.	RemoteApp チームにより、2 営業日以内に、ユーザー アクセス リスト、すべてのユーザー ドキュメント、およびユーザー設定が元のコレクションから新しいコレクションに移されます。
+8.	*OriginalCollection* を削除します。
+9.	*RemoteAppVNET* を削除します。
+
+これで完了です。
+
+ご質問がある場合、または特別なサポートが必要な場合は、[remoteappforum@microsoft.com](mailto:remoteappforum@microsoft.com?subject=Azure%20RemoteApp%20VNET%20migration%20help) に電子メールをお送りください。
+
+<!---HONumber=AcomDC_0817_2016-->

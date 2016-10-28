@@ -1,160 +1,159 @@
 <properties 
-    pageTitle="How to configure Redis clustering for a Premium Azure Redis Cache | Microsoft Azure" 
-    description="Learn how to create and manage Redis clustering for your Premium tier Azure Redis Cache instances" 
-    services="redis-cache" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="douge" 
-    editor=""/>
+	pageTitle="Premium Azure Redis Cache の Redis クラスタリングの構成方法 | Microsoft Azure" 
+	description="Premium レベルの Azure Redis Cache インスタンス用に Redis を作成して管理する方法について説明します" 
+	services="redis-cache" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="douge" 
+	editor=""/>
 
 <tags 
-    ms.service="cache" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="cache-redis" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="09/15/2016" 
-    ms.author="sdanie"/>
+	ms.service="cache" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="cache-redis" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="09/15/2016" 
+	ms.author="sdanie"/>
 
+# Premium Azure Redis Cache の Redis クラスタリングの構成方法
+Azure Redis Cache には、新しい Premium レベルなど、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。
 
-# <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>How to configure Redis clustering for a Premium Azure Redis Cache
-Azure Redis Cache has different cache offerings, which provide flexibility in the choice of cache size and features, including the new Premium tier.
+Azure Redis Cache の Premium レベルには、クラスタリング、永続化、仮想ネットワークのサポートなどの機能が含まれています。この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
 
-The Azure Redis Cache premium tier includes features such as clustering, persistence, and virtual network support. This article describes how to configure clustering in a premium Azure Redis Cache instance.
+Premium キャッシュのその他の機能の詳細については、「[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)」を参照してください。
 
-For information on other premium cache features, see [Introduction to the Azure Redis Cache Premium tier](cache-premium-tier-intro.md).
+## Redis クラスターとは
+Azure Redis Cache では、[Redis での実装](http://redis.io/topics/cluster-tutorial)と同じように Redis クラスターが提供されます。Redis クラスターには次の利点があります。
 
-## <a name="what-is-redis-cluster?"></a>What is Redis Cluster?
-Azure Redis Cache offers Redis cluster as [implemented in Redis](http://redis.io/topics/cluster-tutorial). With Redis Cluster, you get the following benefits. 
+-	データセットを複数のノードに自動的に分割する機能。
+-	ノードのサブセットで障害が発生したとき、またはクラスターの他の部分と通信できないときに、操作を続行する機能。
+-	より多くのスループット: シャードの数を増やすと、スループットは比例して増加します。
+-	より多くのメモリ サイズ: シャードの数を増やすと比例的に増加します。
 
--   The ability to automatically split your dataset among multiple nodes. 
--   The ability to continue operations when a subset of the nodes is experiencing failures or are unable to communicate with the rest of the cluster. 
--   More throughput: Throughput increases linearly as you increase the number of shards. 
--   More memory size: Increases linearly as you increase the number of shards.  
+Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Azure Redis Cache の FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
 
-See the [Azure Redis Cache FAQ](cache-faq.md#what-redis-cache-offering-and-size-should-i-use) for more details about size, throughput, and bandwidth with premium caches. 
+Azure では、Redis クラスターは、各シャードがプライマリ/レプリカ ペアを持つプライマリ/レプリカ モデルとして提供され、レプリケーションは Azure Redis Cache Service によって管理されます。
 
-In Azure, Redis cluster is offered as a primary/replica model where each shard has a primary/replica pair with replication where the replication is managed by Azure Redis Cache service. 
-
-## <a name="clustering"></a>Clustering
-Clustering is enabled on the **New Redis Cache** blade during cache creation. 
+## クラスタリング
+クラスタリングは、キャッシュの作成中に **[Redis Cache の新規作成]** ブレードで有効化されます。
 
 [AZURE.INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Clustering is configured on the **Redis Cluster** blade.
+クラスタリングは **[Redis クラスター]** ブレードで構成します。
 
-![Clustering][redis-cache-clustering]
+![クラスタリング][redis-cache-clustering]
 
-You can have up to 10 shards in the cluster. Click **Enabled** and slide the slider or type a number between 1 and 10 for **Shard count** and click **OK**.
+クラスター内に最大 10 個のシャードを作成できます。**[有効]** をクリックし、クスライダーを操作するか 1 ～ 10 の値を入力して **[シャード数]** を設定し、**[OK]** をクリックします。
 
-Each shard is a primary/replica cache pair managed by Azure, and the total size of the cache is calculated by multiplying the number of shards by the cache size selected in the pricing tier. 
+各シャードは Azure によって管理されるプライマリ/レプリカ キャッシュ ペアであり、キャッシュの合計サイズはシャードの数に価格レベルで選択したキャッシュ サイズを掛けることによって計算されます。
 
-![Clustering][redis-cache-clustering-selected]
+![クラスタリング][redis-cache-clustering-selected]
 
-Once the cache is created you connect to it and use it just like a non-clustered cache, and Redis will distribute the data throughout the Cache shards. If diagnostics is [enabled](cache-how-to-monitor.md#enable-cache-diagnostics), metrics are captured separately for each shard and can be [viewed](cache-how-to-monitor.md) in the Redis Cache blade. 
+キャッシュを作成した後は、クラスター化されていないキャッシュと同じようにアクセスして使用でき、Redis はキャッシュのシャード全体にデータを分配します。診断が[有効](cache-how-to-monitor.md#enable-cache-diagnostics)になっている場合は、シャードごとにメトリックが個別にキャプチャされ、Redis Cache ブレードに[表示](cache-how-to-monitor.md)できます。
 
-For sample code on working with clustering with the StackExchange.Redis client, see the [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) portion of the [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) sample.
+StackExchange.Redis クライアントを使用したクラスタリングの操作でのサンプル コードについては、[Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分を参照してください。
 
 <a name="cluster-size"></a>
-## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>Change the cluster size on a running premium cache
+## 実行中の Premium キャッシュのクラスター サイズを変更する
 
-To change the cluster size on a running premium cache with clustering enabled, click **(PREVIEW) Redis Cluster Size** from the **Settings** blade.
+クラスタリングが有効になっている実行中の Premium キャッシュのクラスター サイズを変更するには、**[設定]** ブレードから **[(プレビュー) Redis クラスター サイズ]** をクリックします。
 
->[AZURE.NOTE] Note that while the Azure Redis Cache Premium tier has been released to General Availability, the Redis Cluster Size feature is currently in preview.
+>[AZURE.NOTE] Azure Redis Cache の Premium レベルは一般公開されていますが、Redis クラスター サイズ機能は現在プレビュー段階であることに注意してください。
 
-![Redis cluster size][redis-cache-redis-cluster-size]
+![Redis クラスター サイズ][redis-cache-redis-cluster-size]
 
-To change the cluster size, use the slider or type a number between 1 and 10 in the **Shard count** text box and click **OK** to save.
+クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
 
-## <a name="clustering-faq"></a>Clustering FAQ
+## クラスタリングの FAQ
 
-The following list contains answers to commonly asked questions about Azure Redis Cache clustering.
+次の一覧は、Azure Redis Cache のクラスタリングに関するよく寄せられる質問への回答です。
 
--   [Do I need to make any changes to my client application to use clustering?](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
--   [How are keys distributed in a cluster?](#how-are-keys-distributed-in-a-cluster)
--   [What is the largest cache size I can create?](#what-is-the-largest-cache-size-i-can-create)
--   [Do all Redis clients support clustering?](#do-all-redis-clients-support-clustering)
--   [How do I connect to my cache when clustering is enabled?](#how-do-i-connect-to-my-cache-when-clustering-is-enabled)
--   [Can I directly connect to the individual shards of my cache?](#can-i-directly-connect-to-the-individual-shards-of-my-cache)
--   [Can I configure clustering for a previously created cache?](#can-i-configure-clustering-for-a-previously-created-cache)
--   [Can I configure clustering for a basic or standard cache?](#can-i-configure-clustering-for-a-basic-or-standard-cache)
--   [Can I use clustering with the Redis ASP.NET Session State and Output Caching providers?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
--   [I am getting MOVE exceptions when using StackExchange.Redis and clustering, what should I do?](#i-am-getting-move-exceptions-when-using-stackexchangeredis-and-clustering-what-should-i-do)
+-	[クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか](#do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering)
+-	[クラスターにはキーはどのように配布されるのですか](#how-are-keys-distributed-in-a-cluster)
+-	[作成できる最大キャッシュ サイズはどれくらいですか](#what-is-the-largest-cache-size-i-can-create)
+-	[すべての Redis クライアントがクラスタリングをサポートしますか](#do-all-redis-clients-support-clustering)
+-	[クラスタリングが有効になっているとき、キャッシュに接続するにはどうすればよいですか](#how-do-i-connect-to-my-cache-when-clustering-is-enabled)
+-	[キャッシュの個々のシャードに直接接続できますか](#can-i-directly-connect-to-the-individual-shards-of-my-cache)
+-	[以前に作成したキャッシュのクラスタリングを構成できますか。](#can-i-configure-clustering-for-a-previously-created-cache)
+-	[Basic または Standard キャッシュのクラスタリングを構成できますか。](#can-i-configure-clustering-for-a-basic-or-standard-cache)
+-	[Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
+-	[StackExchange.Redis とクラスタリングを使用すると、MOVE 例外が発生します。どうすればよいですか。](#i-am-getting-move-exceptions-whja-JPing-stackexchangeredis-and-clustering-what-should-i-do)
 
-### <a name="do-i-need-to-make-any-changes-to-my-client-application-to-use-clustering?"></a>Do I need to make any changes to my client application to use clustering?
+### クラスタリングを使用するためにクライアント アプリケーションを変更する必要がありますか
 
--   When clustering is enabled, only database 0 is available. If your client application uses multiple databases and it tries to read or write to a database other than 0, the following exception is thrown. `Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
+-	クラスタリングが有効になっている場合は、データベース 0 のみを使用できます。クライアント アプリケーションで複数のデータベースを使用している状態で、0 以外のデータベースに対して読み取りまたは書き込みを試みると、次の例外がスローされます。`Unhandled Exception: StackExchange.Redis.RedisConnectionException: ProtocolFailure on GET --->` `StackExchange.Redis.RedisCommandException: Multiple databases are not supported on this server; cannot switch to database: 6`
 
-    For more information, see [Redis Cluster Specification - Implemented subset](http://redis.io/topics/cluster-spec#implemented-subset).
+    詳細については、「[Redis Cluster Specification - Implemented subset (Redis クラスターの仕様 - 実装済みのサブセット)](http://redis.io/topics/cluster-spec#implemented-subset)」を参照してください。
 
--   If you are using [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/), you must use 1.0.481 or later. You connect to the cache using the same [endpoints, ports, and keys](cache-configure.md#properties) that you use when connecting to a cache that does not have clustering enabled. The only difference is that all reads and writes must be done to database 0.
-    -   Other clients may have different requirements. See [Do all Redis clients support clustering?](#do-all-redis-clients-support-clustering)
--   If your application uses multiple key operations batched into a single command, all keys must be located in the same shard. To accomplish this, see [How are keys distributed in a cluster?](#how-are-keys-distributed-in-a-cluster)
--   If you are using Redis ASP.NET Session State provider you must use 2.0.1 or higher. See [Can I use clustering with the Redis ASP.NET Session State and Output Caching providers?](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)
+-	[StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) を使用する場合は、1.0.481 以降を使用する必要があります。クラスタリングが有効になっていないキャッシュに接続するときに使用するものと同じ[エンドポイント、ポート、キー](cache-configure.md#properties)を使用して、キャッシュに接続します。唯一の違いは、すべての読み取りと書き込みをデータベース 0 に対して実行する必要があることです。
+	-	他のクライアントの要件は異なる場合があります。「[すべての Redis クライアントがクラスタリングをサポートしますか](#do-all-redis-clients-support-clustering)」を参照してください。
+-	アプリケーションで 1 つのコマンドにバッチ処理された複数のキー操作を使用する場合は、すべてのキーを同じシャードに配置する必要があります。このようにする場合は、「[クラスターにはキーはどのように配布されるのですか](#how-are-keys-distributed-in-a-cluster)」を参照してください。
+-	Redis ASP.NET セッション状態プロバイダーを使用する場合は、2.0.1 以降を使用する必要があります。「[Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか](#can-i-use-clustering-with-the-redis-aspnet-session-state-and-output-caching-providers)」を参照してください。
 
-### <a name="how-are-keys-distributed-in-a-cluster?"></a>How are keys distributed in a cluster?
+### クラスターにはキーはどのように配布されるのですか
 
-Per the Redis [Keys distribution model](http://redis.io/topics/cluster-spec#keys-distribution-model) documentation: The key space is split into 16384 slots. Each key is hashed and assigned to one of these slots, which are distributed across the nodes of the cluster. You can configure which part of the key is hashed to ensure that multiple keys are located in the same shard using hash tags.
+Redis の[キー配布モデル](http://redis.io/topics/cluster-spec#keys-distribution-model)に関するドキュメントによると、キー スペースは 16384 スロットに分割されます。各キーはハッシュされ、クラスターのノード全体に配布される、これらのスロットのいずれかに割り当てられます。ハッシュ タグを使用して同じシャードに複数のキーが配置されていることを確認するために、キーのどの部分をハッシュするかを構成することができます。
 
--   Keys with a hash tag - if any part of the key is enclosed in `{` and `}`, only that part of the key is hashed for the purposes of determining the hash slot of a key. For example, the following 3 keys would be located in the same shard: `{key}1`, `{key}2`, and `{key}3` since only the `key` part of the name is hashed. For a complete list of keys hash tag specifications, see [Keys hash tags](http://redis.io/topics/cluster-spec#keys-hash-tags).
--   Keys without a hash tag - the entire key name is used for hashing. This results in a statistically even distribution across the shards of the cache.
+-	ハッシュ タグのあるキー - キーの任意の部分を `{` と `}` で囲むと、キーのその部分のみが、キーのハッシュ スロットを決定するためにハッシュされます。たとえば、`{key}1`、`{key}2`、`{key}3` という 3 つのキーは、名前の `key` 部分のみがハッシュされるため、同じシャードに配置されます。キーのハッシュ タグ仕様に関する完全なリストについては、「[キーのハッシュ タグ](http://redis.io/topics/cluster-spec#keys-hash-tags)」を参照してください。
+-	ハッシュ タグのないキー - キー名全体がハッシュに使用されます。そのため、キャッシュのシャード全体で統計的に均等に配布されます。
 
-For best performance and throughput, we recommend distributing the keys evenly. If you are using keys with a hash tag it is the application's responsibility to ensure the keys are distributed evenly.
+最高のパフォーマンスとスループットを得るために、キーを均等に配布することをお勧めします。ハッシュ タグのあるキーを使用する場合、キーが均等に配布されていることを確認するのはアプリケーションの責任です。
 
-For more information, see [Keys distribution model](http://redis.io/topics/cluster-spec#keys-distribution-model), [Redis Cluster data sharding](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding), and [Keys hash tags](http://redis.io/topics/cluster-spec#keys-hash-tags).
+詳細については、「[キー配布モデル](http://redis.io/topics/cluster-spec#keys-distribution-model)」、「[Redis クラスターのデータ シャーディング](http://redis.io/topics/cluster-tutorial#redis-cluster-data-sharding)」および「[キーのハッシュ タグ](http://redis.io/topics/cluster-spec#keys-hash-tags)」を参照してください。
 
-For sample code on working with clustering and locating keys in the same shard with the StackExchange.Redis client, see the [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) portion of the [Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) sample.
+StackExchange.Redis クライアントを使用した同じシャードでのクラスタリングおよびキーの検索の操作におけるサンプル コードについては、[Hello World](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルの [clustering.cs](https://github.com/rustd/RedisSamples/blob/master/HelloWorld/Clustering.cs) 部分を参照してください。
 
-### <a name="what-is-the-largest-cache-size-i-can-create?"></a>What is the largest cache size I can create?
+### 作成できる最大キャッシュ サイズはどれくらいですか
 
-The largest premium cache size is 53 GB. You can create up to 10 shards giving you a maximum size of 530 GB. If you need a larger size you can [request more](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase). For more information, see [Azure Redis Cache Pricing](https://azure.microsoft.com/pricing/details/cache/).
+Premium の最大キャッシュ サイズは、53 GB です。最大 10 個のシャードを作成できるので、最大サイズは 530 GB です。さらに大きいサイズが必要な場合は、[追加を要求](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)できます。詳細については、「[Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
 
-### <a name="do-all-redis-clients-support-clustering?"></a>Do all Redis clients support clustering?
+### すべての Redis クライアントがクラスタリングをサポートしますか
 
-At the present time not all clients support Redis clustering. StackExchange.Redis is one that does support for it. For more information on other clients, see the [Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) section of the [Redis cluster tutorial](http://redis.io/topics/cluster-tutorial).
+現時点では、すべてのクライアントが Redis クラスタリングをサポートしているわけではありません。StackExchange.Redis はサポートしているものの 1 つです。他のクライアントの詳細については、[Redis クラスター チュートリアル](http://redis.io/topics/cluster-tutorial)の「[クラスターの使用](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
 
->[AZURE.NOTE] If you are using StackExchange.Redis as your client, ensure you are using the latest version of [StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 or later for clustering to work correctly. If you have any issues with move exceptions, see [move exceptions](#move-exceptions) for more information.
+>[AZURE.NOTE] StackExchange.Redis をクライアントとして使用する場合は、クラスタリングが正常に動作するように、[StackExchange.Redis](https://www.nuget.org/packages/StackExchange.Redis/) 1.0.481 以降の最新バージョンを使用してください。move 例外について問題がある場合は、[move 例外](#move-exceptions)の詳細をご覧ください。
 
-### <a name="how-do-i-connect-to-my-cache-when-clustering-is-enabled?"></a>How do I connect to my cache when clustering is enabled?
+### クラスタリングが有効になっているとき、キャッシュに接続するにはどうすればよいですか
 
-You can connect to your cache using the same [endpoints, ports, and keys](cache-configure.md#properties) that you use when connecting to a cache that does not have clustering enabled. Redis manages the clustering on the backend so you don't have to manage it from your client.
+クラスタリングが有効になっていないキャッシュに接続するときに使用するものと同じ[エンドポイント、ポート、キー](cache-configure.md#properties)を使用して、キャッシュに接続できます。Redis がバックエンドのクラスタリングを管理するので、クライアントから管理する必要はありません。
 
-### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache?"></a>Can I directly connect to the individual shards of my cache?
+### キャッシュの個々のシャードに直接接続できますか
 
-This is not officially supported. With that said, each shard consists of a primary/replica cache pair that are collectively known as a cache instance. You can connect to these cache instances using the redis-cli utility in the [unstable](http://redis.io/download) branch of the Redis repository at GitHub. This version implements basic support when started with the `-c` switch. For more information see [Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster) on [http://redis.io](http://redis.io) in the [Redis cluster tutorial](http://redis.io/topics/cluster-tutorial).
+これは公式にはサポートされていません。つまり、各シャードはキャッシュ インスタンスと総称して呼ばれるプライマリ/レプリカ キャッシュ ペアで構成されます。GitHub で Redis リポジトリの[不安定な](http://redis.io/download)ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。このバージョンは、`-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。詳細については、[http://redis.io](http://redis.io) の [Redis クラスター チュートリアル](http://redis.io/topics/cluster-tutorial)で「[クラスターの使用](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
 
-For non-ssl, use the following commands.
+SSL 以外の場合は、次のコマンドを使用します。
 
-    Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
-    Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
-    Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
-    ...
-    Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
+	Redis-cli.exe –h <<cachename>> -p 13000 (to connect to instance 0)
+	Redis-cli.exe –h <<cachename>> -p 13001 (to connect to instance 1)
+	Redis-cli.exe –h <<cachename>> -p 13002 (to connect to instance 2)
+	...
+	Redis-cli.exe –h <<cachename>> -p 1300N (to connect to instance N)
 
-For ssl, replace `1300N` with `1500N`.
+SSL の場合は、`1300N` を `1500N` に置き換えます。
 
-### <a name="can-i-configure-clustering-for-a-previously-created-cache?"></a>Can I configure clustering for a previously created cache?
+### 以前に作成したキャッシュのクラスタリングを構成できますか。
 
-Currently you can only enable clustering when you create a cache. You can change the cluster size after the cache is created, but you can't add clustering to a premium cache or remove clustering from a premium cache after the cache is created. A premium cache with clustering enabled and only one shard is different than a premium cache of the same size with no clustering.
+現在、クラスタリングを有効にできるのは、キャッシュを作成するときだけです。キャッシュの作成後は、クラスター サイズを変更することはできますが、Premium キャッシュに対するクラスタリングの追加または削除は実行できません。クラスタリングが有効になっている Premium キャッシュと、クラスタリングがない同じサイズの Premium キャッシュでシャードが 1 つだけ異なるものが可能です。
 
-### <a name="can-i-configure-clustering-for-a-basic-or-standard-cache?"></a>Can I configure clustering for a basic or standard cache?
+### Basic または Standard キャッシュのクラスタリングを構成できますか。
 
-Clustering is only available for premium caches.
+クラスタリングは、Premium キャッシュでのみ使用できます。
 
-### <a name="can-i-use-clustering-with-the-redis-asp.net-session-state-and-output-caching-providers?"></a>Can I use clustering with the Redis ASP.NET Session State and Output Caching providers?
+### Redis ASP.NET セッション状態および出力キャッシュ プロバイダーでクラスタリングを使用できますか
 
--   **Redis Output Cache provider** - no changes required.
--   **Redis Session State provider** - to use clustering, you must use [RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 or higher or an exception is thrown. This is a breaking change; for more information see [v2.0.0 Breaking Change Details](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details).
+-	**Redis 出力キャッシュ プロバイダー** - 変更する必要はありません。
+-	**Redis セッション状態プロバイダー** - クラスタリングを使用するには、[RedisSessionStateProvider](https://www.nuget.org/packages/Microsoft.Web.RedisSessionStateProvider) 2.0.1 以降を使用する必要があります。そうしないと、例外がスローされます。これは重大な変更です。詳細については、「[v2.0.0 の重大な変更の詳細](https://github.com/Azure/aspnet-redis-providers/wiki/v2.0.0-Breaking-Change-Details)」を参照してください。
 
 <a name="move-exceptions"></a>
-### <a name="i-am-getting-move-exceptions-when-using-stackexchange.redis-and-clustering,-what-should-i-do?"></a>I am getting MOVE exceptions when using StackExchange.Redis and clustering, what should I do?
+### StackExchange.Redis とクラスタリングを使用すると、MOVE 例外が発生します。どうすればよいですか。
 
-If you are using StackExchange.Redis and receive `MOVE` exceptions when using clustering, ensure that you are using [StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) or later. For instructions on configuring your .NET applications to use StackExchange.Redis, see [Configure the cache clients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+クラスタリングを使用しているときに StackExchange.Redis を使うと、`MOVE` 例外が発生することがあります。この場合は、[StackExchange.Redis 1.1.603](https://www.nuget.org/packages/StackExchange.Redis/) 以降を使用しているかどうかを確認してください。StackExchange.Redis を使用するための .NET アプリケーションの構成手順については、「[キャッシュ クライアントの構成](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
-Learn how to use more premium cache features.
+## 次のステップ
+Premium キャッシュ機能をさらに使用する方法を学習します。
 
--   [Introduction to the Azure Redis Cache Premium tier](cache-premium-tier-intro.md)
+-	[Azure Redis Cache Premium レベルの概要](cache-premium-tier-intro.md)
   
 <!-- IMAGES -->
 
@@ -164,15 +163,4 @@ Learn how to use more premium cache features.
 
 [redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png
 
-
-
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

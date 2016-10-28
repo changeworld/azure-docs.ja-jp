@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Configure Authentication with Amazon Web Services  | Microsoft Azure"
-   description="This article describes how to create and validate an AWS credential for runbooks in Azure Automation managing AWS resources."
+   pageTitle="アマゾン ウェブ サービスで認証を構成する | Microsoft Azure"
+   description="この記事では、AWS リソースを管理する Azure Automation の Runbook 用に AWS 資格情報を作成し検証する方法について説明します。"
    services="automation"
    documentationCenter=""
    authors="mgoedtel"
    manager="jwhit"
    editor="tysonn"
-   keywords="aws authentication, configure aws"/>
+   keywords="AWS の認証, AWS の構成"/>
 <tags
    ms.service="automation"
    ms.workload="tbd"
@@ -16,29 +16,24 @@
    ms.date="09/12/2016"
    ms.author="magoedte"/>
 
+# アマゾン ウェブ サービスによる Runbook の認証
+アマゾン ウェブ サービス (AWS) のリソースに関する一般的なタスクを自動化する処理は、Azure の Automation Runbook で実現することができます。Automation Runbook を使用すれば、Azure のリソースの場合と同様に、AWS でも多くのタスクを自動化することができます。必要となるのは次の 2 点だけです。
 
-# <a name="authenticate-runbooks-with-amazon-web-services"></a>Authenticate Runbooks with Amazon Web Services
-Automating common tasks with resources in Amazon Web Services (AWS) can be accomplished with Automation runbooks in Azure.  You can automate many tasks in AWS using Automation runbooks just like you can with resources in Azure.  All that is required are two things:
+* AWS サブスクリプションと一連の資格情報。具体的には、AWS アクセス キーと秘密キーです。詳細については、記事「[Using AWS Credentials (AWS 資格情報の使用)](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)」を参照してください。
+* Azure サブスクリプションと Automation アカウント。Azure Automation アカウントのセットアップの詳細については、[Azure 実行アカウントの構成](../automation/automation-sec-configure-azure-runas-account.md)に関する記事を参照してください。
 
-* An AWS subscription and a set of credentials.  Specifically your AWS Access Key and Secret Key.  For more information, please review the article [Using AWS Credentials](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html).
-* An Azure subscription and Automation account.  For more information on setting up an Azure Automation account, please review the article [Configure Azure Run As Account](../automation/automation-sec-configure-azure-runas-account.md).  
+AWS で認証するには、一連の AWS 資格情報を指定して、Azure Automation から実行される Runbook を認証する必要があります。Automation アカウントが作成済みで、それを AWS による認証に使用する場合は、次のセクションの手順に従ってください。アカウントを、AWS リソースをターゲットとする Runbook 専用に使用する場合は、最初に新しい [Automation 実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)を作成してから (サービス プリンシパルを作成するオプションは省略)、次の手順に従います。
 
-To authenticate with AWS, you must specify a set of AWS credentials to authenticate your runbooks running from Azure Automation. If you already have an Automation account created and you want to use that to authenticate with AWS, you can follow the steps in the following section.  If you want to dedicated an account for runbooks targetting AWS resources, you should first create a new [Automation Run As account](../automation/automation-sec-configure-azure-runas-account.md) (skip the option to create a service principal) and then follow the steps below.
+## Automation アカウントの構成
+Azure Automation が AWS と通信する場合は、まず、AWS 資格情報を取得し、それを資産として Azure Automation に格納する必要があります。AWS ドキュメント「[Managing Access Keys for your AWS Account (AWS アカウントのアクセス キーを管理する)](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html)」に記載の以下の手順を実行して、アクセス キーを作成し、**アクセス キー ID** と**シークレット アクセス キー**をコピーします (必要に応じて、キー ファイルをダウンロードし、どこか安全な場所に保存します)。
 
-## <a name="configure-automation-account"></a>Configure Automation account
-For Azure Automation to communicate with AWS, you will first need to retrieve your AWS credentials and store them as assets in Azure Automation.  Perform the following steps documented in the AWS document [Managing Access Keys for your AWS Account](http://docs.aws.amazon.com/general/latest/gr/managing-aws-access-keys.html) to create an Access Key and copy the **Access Key ID** and **Secret Access Key** (optionally download your key file to store it somewhere safe).
+AWS セキュリティ キーを作成し、コピーしたら、Azure Automation アカウントで資格情報資産を作成し、それらを安全に格納し、Runbook で参照する必要があります。記事「[Azure Automation での資格情報資産](../automation/automation-certificates.md/###To create a new credential with the Azure portal)」のセクション「**To create a new credential (新しい資格情報を作成するには)**」に記載の手順に従い、次の情報を入力します。
 
-After you have created and copied your AWS security keys, you will need to create a Credential asset with an Azure Automation account to securely store them and reference them with your runbooks.  Follow the steps in the section **To create a new credential** in the [Credential assets in Azure Automation](../automation/automation-certificates.md/###To create a new credential with the Azure portal) article and enter the following information:
+1. **[名前]** ボックスに「**AWScred**」と入力するか、または、命名規則に従って適切な値を入力します。
+2. **[ユーザー名]** ボックスに**アクセス ID** を入力し、**[パスワード]** および **[パスワードの確認]** ボックスに**シークレット アクセス キー**を入力します。
 
-1. In the **Name** box, enter **AWScred** or an appropriate value following your naming standards.  
-2. In the **User name** box type your **Access ID** and your **Secret Access Key** in the **Password** and **Confirm password** box.   
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+- AWS のタスクを自動化する Runbook を作成する方法については、記事「[Automating deployment of a VM in Amazon Web Services (Amazon Web Services での VM のデプロイを自動化する)](../automation/automation-scenario-aws-deployment.md)」を参照してください。
 
-- Reivew the solution article [Automating deployment of a VM in Amazon Web Services](../automation/automation-scenario-aws-deployment.md) to learn how to create runbooks to automate tasks in AWS.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

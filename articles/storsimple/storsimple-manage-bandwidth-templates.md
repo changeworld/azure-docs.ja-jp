@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Manage your StorSimple bandwidth templates | Microsoft Azure"
-   description="Describes how to manage StorSimple bandwidth templates, which allow you to control bandwidth consumption."
+   pageTitle="StorSimple 帯域幅テンプレートを管理する | Microsoft Azure"
+   description="帯域幅の消費量を制御するのに使用できる StorSimple 帯域幅テンプレートを管理する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,166 +15,161 @@
    ms.date="08/16/2016"
    ms.author="alkohli" />
 
+# StorSimple Manager サービスを使用して StorSimple 帯域幅テンプレートを管理する
 
-# <a name="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates"></a>Use the StorSimple Manager service to manage StorSimple bandwidth templates
+## Overview
 
-## <a name="overview"></a>Overview
+帯域幅テンプレートを使用すると、StorSimple デバイスからクラウドへのデータを階層化する複数の時刻スケジュールにわたって、ネットワーク帯域幅の使用量を構成することができます。
 
-Bandwidth templates allow you to configure network bandwidth usage across multiple time-of-day schedules to tier the data from the StorSimple device to the cloud.
+帯域幅調整スケジュールを使用すると、次のことができます。
 
-With bandwidth throttling schedules you can:
+- ワークロードのネットワーク使用量に応じて、カスタマイズした帯域幅スケジュールを指定します。
 
-- Specify customized bandwidth schedules depending on the workload network usages.
+- 簡単でシームレスな方法で、集中管理し、複数のデバイスでスケジュールを再利用します。
 
-- Centralize management and reuse the schedules across multiple devices in an easy and seamless manner.
+> [AZURE.NOTE] この機能は、StorSimple 物理デバイスに対してのみ使用でき、仮想デバイスでは使用できません。
 
-> [AZURE.NOTE] This feature is available only for StorSimple physical devices and not for virtual devices.
+サービスの帯域幅テンプレートはすべて、表形式で表示され、次の情報が含まれています。
 
-All the bandwidth templates for your service are displayed in a tabular format, and contain the following information:
+- **[名前]** - 作成時に帯域幅テンプレートに割り当てられた一意の名前。
 
-- **Name** – A unique name assigned to the bandwidth template when it was created.
+- **[スケジュール]** - 特定の帯域幅テンプレートに含まれるスケジュールの数。
 
-- **Schedule** – The number of schedules contained in a given bandwidth template.
+- **[使用元]** - 帯域幅テンプレートを使用しているボリュームの数。
 
-- **Used by** – The number of volumes using the bandwidth templates.
+帯域幅テンプレートを管理するには、Azure クラシック ポータルで StorSimple Manager サービスの **[構成]** ページを使用します。
 
-You use the StorSimple Manager service **Configure** page in the Azure classic portal to manage bandwidth templates.
+帯域幅テンプレートの構成に役立つ追加情報も見つけられます。
 
-You can also find additional information to help configure bandwidth templates in:
+- 帯域幅テンプレートに関する質問と回答
+- 帯域幅テンプレートのベスト プラクティス
 
-- Questions and answers about bandwidth templates
-- Best practices for bandwidth templates
+## 帯域幅テンプレートを追加する
 
-## <a name="add-a-bandwidth-template"></a>Add a bandwidth template
+新しい帯域幅テンプレートを作成するには、次の手順を実行します。
 
-Perform the following steps to create a new bandwidth template.
+#### 帯域幅テンプレートを追加するには
 
-#### <a name="to-add-a-bandwidth-template"></a>To add a bandwidth template
+1. StorSimple Manager サービスの **[構成]** ページで、**[帯域幅テンプレートの追加/編集]** をクリックします。
 
-1. On the StorSimple Manager service **Configure** page, click **add/edit bandwidth template**.
+2. **[帯域幅テンプレートの追加/編集]** ダイアログ ボックスで次の操作を行います。
 
-2. In the **Add/Edit Bandwidth Template** dialog box:
+   1. **[テンプレート]** ドロップダウン リストで **[新規作成]** を選択して新しい帯域幅テンプレートを追加します。
+   2. 帯域幅テンプレートの一意の名前を指定します。
 
-   1. From the **Template** drop-down list, select **Create new** to add a new bandwidth template.
-   2. Specify a unique name for your bandwidth template.
+3. **[帯域幅のスケジュール]** を定義します。スケジュールを作成するには
 
-3. Define a **Bandwidth Schedule**. To create a schedule:
+   1. ドロップダウン リストから、スケジュールを構成する曜日を選択します。一覧のそれぞれの曜日の前にあるチェック ボックスを選択して、複数の曜日を選択できます。
+   2. スケジュールをその日全体に適用する場合は、**[一日中]** オプションを選択します。このオプションをオンにすると、**[開始時刻]** または **[終了時刻]** は指定できなくなります。スケジュールは 0 時 00 分から 23 時 59分まで実行されます。
+   3. ドロップダウン リストから、**[開始時刻]** を選択します。これはスケジュールが開始する時刻です。
+   4. ドロップダウン リストから、**[終了時刻]** を選択します。これはスケジュールが停止する時刻です。
+   
+         > [AZURE.NOTE] スケジュールの重複は許可されません。開始および終了時刻が重なると、エラー メッセージが表示されます。
 
-   1. From the drop-down list, choose the days of the week the schedule is configured for. You can select multiple days by selecting the check boxes located before the respective days in the list.
-   2. Select the **All Day** option if the schedule is enforced for the entire day. When this option is checked, you can no longer specify a **Start Time** or an **End Time**. The schedule runs from 12:00 AM to 11:59 PM.
-   3. From the drop-down list, select a **Start Time**. This is when the schedule will begin.
-   4. From the drop-down list, select an **End Time**. This is when the schedule will stop.
+   5. **[帯域幅レート]** を指定します。これは、クラウドに関連する操作 (アップロードとダウンロード) で StorSimple デバイスが使用する帯域幅 (メガビット/秒 (Mbps)) です。1 ～ 1,000 の値をこのフィールドで指定します。
 
-         > [AZURE.NOTE] Overlapping schedules are not allowed. If the start and end times will result in an overlapping schedule, you will see an error message to that effect.
+   6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png) をクリックします。作成したテンプレートは、サービスの **[構成]** ページの帯域幅テンプレートの一覧に追加されます。
 
-   5. Specify the **Bandwidth Rate**. This is the bandwidth in Megabits per second (Mbps) used by your StorSimple device in operations involving the cloud (both uploads and downloads). Supply a number between 1 and 1,000 for this field.
+    ![新しい帯域幅テンプレートを作成する](./media/storsimple-manage-bandwidth-templates/HCS_CreateNewBT1.png)
 
-   6. Click the check icon ![Check icon](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). The template that you have created will be added to the list of bandwidth templates on the service **Configure** page.
+4. ページ下部の **[保存]** をクリックし、確認プロンプトに **[はい]** をクリックします。これにより、構成の変更内容が保存されます。
 
-    ![Create new bandwidth template](./media/storsimple-manage-bandwidth-templates/HCS_CreateNewBT1.png)
+## 帯域幅テンプレートを編集する
 
-4. Click **Save** at the bottom of the page and then click **Yes** when prompted for confirmation. This will save the configuration changes that you have made.
+帯域幅テンプレートを編集するには、次の手順を実行します。
 
-## <a name="edit-a-bandwidth-template"></a>Edit a bandwidth template
+### 帯域幅テンプレートを編集するには
 
-Perform the following steps to edit a bandwidth template.
+1. **[帯域幅テンプレートの追加/編集]** をクリックします。
 
-### <a name="to-edit-a-bandwidth-template"></a>To edit a bandwidth template
+2. **[帯域幅テンプレートの追加/編集]** ダイアログ ボックスで次の操作を行います。
 
-1. Click **add/edit bandwidth template**.
+   1. **[テンプレート]** ドロップダウン リストで、変更する既存の帯域幅テンプレートを選択します。
+   2. 変更を完了します(既存の設定はいずれも変更できます)。
+   3. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png) をクリックします。サービスの [構成] ページの帯域幅テンプレートの一覧に変更したテンプレートが表示されます。
 
-2. In the **Add/Edit Bandwidth Template** dialog box:
+3. 変更内容を保存するには、ページの下部にある **[保存]** をクリックします。確認を求められたら、**[はい]** をクリックします。
 
-   1. From the **Template** drop-down list, choose an existing bandwidth template that you want to modify.
-   2. Complete your changes. (You can modify any of the existing settings.)
-   3. Click the check icon ![Check icon](./media/storsimple-manage-bandwidth-templates/HCS_CheckIcon.png). You will see the modified template in the list of bandwidth templates on the service Configure page.
+> [AZURE.NOTE] 編集したスケジュールが変更中の帯域幅テンプレートの既存のスケジュールと重なる場合、変更を保存することはできません。
 
-3. To save your changes, click **Save** at the bottom of the page. Click **Yes** when prompted for confirmation.
+## 帯域幅テンプレートを削除する
 
-> [AZURE.NOTE] You will not be allowed to save your changes if the edited schedule overlaps with an existing schedule in the bandwidth template that you are modifying.
+帯域幅テンプレートを削除するには、次の手順を実行します。
 
-## <a name="delete-a-bandwidth-template"></a>Delete a bandwidth template
+#### 帯域幅テンプレートを削除するには
 
-Perform the following steps to delete a bandwidth template.
+1. サービスの帯域幅テンプレートの表形式のリストで、削除するテンプレートを選択します。削除アイコン (**[x]**) が選択したテンプレートの右端に表示されます。**[x]** アイコンをクリックしてテンプレートを削除します。
 
-#### <a name="to-delete-a-bandwidth-template"></a>To delete a bandwidth template
+2. 確認を求められます。**[OK]** をクリックして続行します。
 
-1. In the tabular list of the bandwidth templates for your service, select the template that you wish to delete. A delete icon (**x**) will appear to the extreme right of the selected template. Click the **x** icon to delete the template.
+テンプレートがいずれかのボリュームによって使用されている場合は、削除できません。テンプレートが使用中であることを示すエラー メッセージが表示されます。テンプレートに対するすべての参照を削除する必要があることをユーザーに忠告するエラー メッセージ ダイアログが表示されます。
 
-2. You will be prompted for confirmation. Click **OK** to proceed.
+このテンプレートに対するすべての参照を削除するには、**[ボリューム コンテナー]** ページにアクセスし、このテンプレートを使用しているボリューム コンテナーを変更して、別のテンプレートを使用するか、カスタムまたは無制限の帯域幅を使用するように設定します。すべての参照を削除すると、テンプレートを削除できます。
 
-If the template is in use by any volume(s), you will not be allowed to delete it. You will see an error message indicating that the template is in use. An error message dialog box will appear advising you that all the references to the template should be removed.
+## 既定の帯域幅テンプレートを使用する
 
-You can delete all the references to the template by accessing the **Volume Containers** page and modifying the volume containers that use this template so that they use another template or use a custom or unlimited bandwidth setting. When all the references have been removed, you can delete the template.
+既定の帯域幅テンプレートが提供され、既定でボリューム コンテナーによって使用されて、クラウドにアクセスするときに帯域幅の制御が適用されます。また、既定のテンプレートは、ユーザーが独自のテンプレートを作成するときの参照用にもなります。この既定のテンプレートの詳細は、次のとおりです。
 
-## <a name="use-a-default-bandwidth-template"></a>Use a default bandwidth template
+- **[名前]** – 夜間と週末は無制限
 
-A default bandwidth template is provided and is used by volume containers by default to enforce bandwidth controls when accessing the cloud. The default template also serves as a ready reference for users who create their own templates. The details of this default template are:
+- **[スケジュール]** – 月曜日から金曜日の午前 8 時 ～ 午後 5 時のデバイス時間に 1 Mbps の帯域幅の割合を適用する単一のスケジュール帯域幅は、週の残りの部分については [無制限] に設定されています。
 
-- **Name** – Unlimited nights and weekends
+既定のテンプレートは編集することができます。このテンプレート (編集済みのバージョンを含む) の使用状況は追跡されます。
 
-- **Schedule** – A single schedule from Monday to Friday that applies a bandwidth rate of 1 Mbps between 8 AM and 5 PM device time. The bandwidth is set to Unlimited for the remainder of the week.
+## 指定した時刻に開始する終日帯域幅テンプレートを作成する
 
-The default template can be edited. The usage of this template (including edited versions) is tracked.
+指定した時刻に開始して 1 日実行するスケジュールを作成には、この手順を使用します。たとえば、スケジュールは午前 9 時に開始し、翌日の午前 9 時まで実行されます。特定のスケジュールの開始および終了時刻は両方とも、同じ 24 時間スケジュールに含める必要があり、複数の日にまたがってはならないので注意してください。複数の日にまたがる帯域幅テンプレートが必要な場合は、複数のスケジュールを使用して設定する必要があります (例を参照)。
 
-## <a name="create-an-all-day-bandwidth-template-that-starts-at-a-specified-time"></a>Create an all-day bandwidth template that starts at a specified time
+#### 終日の帯域幅テンプレートを作成するには
 
-Follow this procedure to create a schedule that starts at a specified time and runs all day. In the example, the schedule starts at 9 AM in the morning and runs until 9 AM the next morning. It's important to note that the start and end times for a given schedule must both be contained on the same 24 hour schedule and cannot span multiple days. If you need to set up bandwidth templates that span multiple days, you will need to use multiple schedules (as shown in the example).
+1. 午前 9 時に開始して午前 0 時まで実行するスケジュールを作成します。
 
-#### <a name="to-create-an-all-day-bandwidth-template"></a>To create an all-day bandwidth template
+2. 別のスケジュールを追加します。2 番目のスケジュールは、午前 0 時から午前 9 時まで実行するように構成します。
 
-1. Create a schedule that starts at 9 AM in the morning and runs until midnight.
+3. 帯域幅テンプレートを保存します。
 
-2. Add another schedule. Configure the second schedule to run from midnight until 9 AM in the morning.
+複合スケジュールは指定した時刻に開始して、終日実行します。
 
-3. Save the bandwidth template.
+## 帯域幅テンプレートに関する質問と回答
 
-The composite schedule will then start at a time of your choosing and run all-day.
+**Q**.スケジュールとスケジュールの合間では帯域幅の制御をどうなりますか (1 つのスケジュールが終了し、別のスケジュールがまだ開始していないときです)。
 
-## <a name="questions-and-answers-about-bandwidth-templates"></a>Questions and answers about bandwidth templates
+**A**.そのような場合、帯域幅コントロールは行われません。つまり、クラウドへのデータを階層化するとき、デバイスは帯域幅を無制限に使用できます。
 
-**Q**. What happens to bandwidth controls when you are in between the schedules? (A schedule has ended and another one has not started yet.)
+**Q**.オフライン デバイスで帯域幅テンプレートを変更できますか。
 
-**A**. In such cases, no bandwidth controls will be employed. This means that the device can use unlimited bandwidth when tiering data to the cloud.
+**A**.対応するデバイスがオフラインの場合、ボリューム コンテナーで帯域幅テンプレートを変更することはできません。
 
-**Q**. Can you modify bandwidth templates on an offline device?
+**Q**.関連付けられているボリュームがオフラインのとき、ユーザーはボリューム コンテナーに関連付けられている帯域幅テンプレートを編集できますか。
 
-**A**. You will not be able to modify bandwidth templates on volumes containers if the corresponding device is offline.
+**A**.ボリュームがオフラインになっているボリューム コンテナーに関連付けられている帯域幅テンプレートを変更できます。ボリュームがオフラインのときは、デバイスからクラウドへのデータは階層化されないことに注意してください。
 
-**Q**. Can you edit a bandwidth template associated with a volume container when the associated volumes are offline?
+**Q**.既定のテンプレートを削除することはできますか。
 
-**A**. You can modify a bandwidth template associated with a volume container whose volumes are offline. Note that when volumes are offline, no data will be tiered from the device to the cloud.
+**A**.既定のテンプレートは削除できますが、削除しないことをお勧めします。既定のテンプレート (編集済みのバージョンを含む) の使用状況は追跡されます。追跡データは分析され、時間と共に、既定のテンプレートの改善に使用されます。
 
-**Q**. Can you delete a default template?
+**Q**.帯域幅テンプレートの変更が必要なことは、どのようにして判断しますか。
 
-**A**. Although you can delete a default template, it is not a good idea to do so. The usage of a default template, including edited versions, is tracked. The tracking data is analyzed and over the course of time, is used to improve the default template.
+**A**.帯域幅テンプレートの変更が必要であることの兆候の 1 つは、1 日に何度もネットワークの速度が低下したり反応しなくなったりする場合です。そのような場合は、I/O パフォーマンスおよびネットワーク スループットのグラフを表示して、ストレージとネットワークの使用状況を監視します。
 
-**Q**. How do you determine that your bandwidth templates need to be modified?
+ネットワーク スループットのデータから、ネットワークのボトルネックが発生している特定の時刻およびボリューム コンテナーを識別します。クラウドへのデータが階層化されているときに発生している場合 (この情報は、クラウドへのデバイスのすべてのボリューム コンテナーの I/O パフォーマンスから取得します)、ボリューム コンテナーに関連付けられている帯域幅テンプレートを変更する必要があります。
 
-**A**. One of the signs that you need to modify the bandwidth templates is when you start seeing the network slow down or choke multiple times in a day. If this happens, monitor the storage and usage network by looking at the I/O Performance and Network Throughput charts.
+修正したテンプレートを使用した後、ネットワークで大幅な遅延が発生しないか再び監視する必要があります。大幅な遅延がまだ存在する場合は、帯域幅テンプレートをもう一度修正する必要があります。
 
-From the network throughput data, identify the time of day and the volume containers in which the network bottleneck occurs. If this happens when data is being tiered to the cloud (get this information from I/O performance for all volume containers for device to cloud), then you will need to modify the bandwidth templates associated with your volume containers.
+**Q**.デバイスに複数のボリューム コンテナーがあり、それらのスケジュールは重なっているが適用される制限が異なります。このような場合はどうなりますか。
 
-After the modified templates are in use, you will need to monitor the network again for significant latencies. If these still exist, then you will need to revisit your bandwidth templates.
+**A**.デバイスに 3 つのボリューム コンテナーがあると仮定します。これらのコンテナーに関連付けられているスケジュールが完全に重なっています。これらのコンテナーの帯域幅制限は、それぞれ 5、10、15 Mbps です。これらのコンテナーのすべてで I/O が同時に発生した場合は、3 つの帯域幅制限の最小値が適用されます。この場合は、これらの送信 I/O 要求が同一のキューを共有するので、5 Mbps となります。
 
-**Q**. What happens if multiple volume containers on my device have schedules that overlap but different limits apply to each?
+## 帯域幅テンプレートのベスト プラクティス
 
-**A**. Let's assume that you have a device with 3 volume containers. The schedules associated with these containers completely overlap. For each of these containers, the bandwidth limits used are 5, 10, and 15 Mbps respectively. When I/Os are occurring on all of these containers at the same time, the minimum of the 3 bandwidth limits may be applied: in this case, 5 Mbps as these outgoing I/O requests share the same queue.
+StorSimple デバイスに関する次のベスト プラクティスに従ってください。
 
-## <a name="best-practices-for-bandwidth-templates"></a>Best practices for bandwidth templates
+- デバイスに帯域幅テンプレートを構成し、1 日の異なる時間にデバイスごとにネットワーク スループットを可変調整できるようにします。これらの帯域幅テンプレートをバックアップ スケジュールと併用すると、オフピーク時間帯のクラウド運用に追加ネットワーク帯域幅を効果的に利用できます。
 
-Follow these best practices for your StorSimple device:
+- デプロイのサイズおよび必要な目標復旧時間 (RTO) に基づいて、特定のデプロイメントに必要な実際の帯域幅を計算します。
 
-- Configure bandwidth templates on your device to enable variable throttling of the network throughput by the device at different times of the day. These bandwidth templates when used with backup schedules can effectively leverage additional network bandwidth for cloud operations during off-peak hours.
+## 次のステップ
 
-- Calculate the actual bandwidth required for a particular deployment based on the size of the deployment and the required recovery time objective (RTO).
+[StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-## <a name="next-steps"></a>Next steps
-
-Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

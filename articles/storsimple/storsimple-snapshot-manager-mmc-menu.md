@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple Snapshot Manager MMC menu actions | Microsoft Azure"
-   description="Describes how to use the standard Microsoft Management Console (MMC) menu actions in StorSimple Snapshot Manager."
+   pageTitle="StorSimple Snapshot Manager の MMC メニュー操作 | Microsoft Azure"
+   description="StorSimple Snapshot Manager で、Microsoft 管理コンソール (MMC) の標準のメニュー操作を使用する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,120 +15,115 @@
    ms.date="04/25/2016"
    ms.author="v-sharos" />
 
+# StorSimple Snapshot Manager での MMC メニュー操作の使用
 
-# <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Use the MMC menu actions in StorSimple Snapshot Manager
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Snapshot Manager では、すべての操作メニューと **[操作]** ウィンドウのすべてのバリエーションに次の操作が表示されます。
 
-In StorSimple Snapshot Manager, you will see the following actions listed on all action menus and all variations of the **Actions** pane. 
+- 表示
+- ここから新しいウィンドウ 
+- 更新 
+- リストのエクスポート 
+- ヘルプ 
 
-- View
-- New Window from Here 
-- Refresh 
-- Export List 
-- Help 
+これらの操作は Microsoft 管理コンソール (MMC) の機能であり、StorSimple Snapshot Manager に固有のものではありません。このチュートリアルでは、これらの操作について説明し、StorSimple Snapshot Manager での各操作の使用方法を示します。
 
-These actions are part of the Microsoft Management Console (MMC) and are not specific to StorSimple Snapshot Manager. This tutorial describes these actions and explains how to use each of them in StorSimple Snapshot Manager.
+## 表示
 
-## <a name="view"></a>View
+**[表示]** オプションを使用して、**結果**ウィンドウの表示と、コンソール ウィンドウの表示を変更できます。
 
-You can use the **View** option to change the **Results** pane view and to change the console window view. 
+#### 結果ウィンドウの表示を変更するには
 
-#### <a name="to-change-the-results-pane-view"></a>To change the Results pane view
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. **スコープ** ウィンドウで任意のノードを右クリックするか、またはノードを展開して **結果**ウィンドウの項目を右クリックし、**[表示]** オプションをクリックします。
 
-2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click the **View** option. 
+3. **結果**ウィンドウに表示される列を追加または削除するには、**[列の追加と削除]** をクリックします。**[列の追加と削除]** ダイアログ ボックスが表示されます。
 
-3. To add or remove the columns that appear in the **Results** pane, click **Add/Remove Columns**. The **Add/Remove Columns** dialog box appears.
+    ![結果ウィンドウの列の追加または削除](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png)
 
-    ![Add or remove columns from Results pane](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
+4. 次のようにフォームの操作を実行します。
 
-4. Complete the form as follows:
+    - **[利用可能な列]** の一覧で項目を選択し、**[追加]** をクリックして **[表示される列]** の一覧に追加します。 
 
-    - Select items from the **Available** columns list and click **Add** to add them to the **Displayed columns** list. 
+    - **[表示される列]** の一覧で項目をクリックし、**[削除]** をクリックして一覧から削除します。
 
-    - Click items in the **Displayed columns** list, and click **Remove** to remove them from the list. 
+    - **[表示される列]** の一覧で項目を選択し、**[上へ移動]** または **[下へ移動]** をクリックして、一覧内で項目を上下に移動します。
 
-    - Select an item in the **Displayed** columns list and click **Move Up** or **Move Down** to move the item up or down in the list. 
+    - **結果**ウィンドウの既定の構成に戻すには、**[既定値に戻す]** をクリックします。
 
-    - Click **Restore Defaults** to return to the default **Results** pane configuration. 
+5. 項目の選択が完了したら、**[OK]** をクリックします。
 
-5. When you are finished with your selections, click **OK**. 
+#### コンソール ウィンドウの表示を変更するには
 
-#### <a name="to-change-the-console-window-view"></a>To change the console window view
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. **スコープ** ウィンドウで任意のノードを右クリックし、**[表示]** をクリックして、**[カスタマイズ]** をクリックします。**[表示のカスタマイズ]** ダイアログ ボックスが表示されます。
 
-2. In the **Scope** pane, right-click any node, click **View**, and then click **Customize**. The **Customize** dialog box appears.
+    ![コンソール ウィンドウのカスタマイズ](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png)
 
-    ![Customize the console window](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
+3. チェック ボックスをオンまたはオフにして、コンソール ウィンドウの項目の表示/非表示を切り替えます。項目の選択が完了したら、**[OK]** をクリックします。
 
-3. Select or clear the check boxes to show or hide items in the console window. When you are finished with your selections, click **OK**.
+## ここから新しいウィンドウ
 
-## <a name="new-window-from-here"></a>New Window from Here
+**[ここから新しいウィンドウ]** オプションを使用すると、新しいコンソール ウィンドウを開くことができます。
 
-You can use the **New Window from Here** option to open a new console window.
+#### 新しいコンソール ウィンドウを開くには
 
-#### <a name="to-open-a-new-console-window"></a>To open a new console window
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+2. **スコープ** ウィンドウで任意のノードを右クリックし、**[ここから新しいウィンドウ]** をクリックします。
 
-2. In the **Scope** pane, right-click any node, and then click **New Window from Here**. 
+    新しいウィンドウが開き、選択したスコープだけが表示されます。たとえば、**[バックアップ ポリシー]** ノードを右クリックした場合、新しいウィンドウでは、**スコープ** ウィンドウに **[バックアップ ポリシー]** ノードだけが表示され、**結果**ウィンドウに定義済みのバックアップ ポリシーのリストが表示されます。次の例を参照してください。
 
-    A new window appears, showing only the scope that you selected. For example, if you right-click the **Backup Policies** node, the new window will show only the **Backup Policies** node in the **Scope** pane and a list of defined backup policies in the **Results** pane. See the following example.
-
-    ![New Window from Here](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
+    ![ここから新しいウィンドウ](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png)
  
-## <a name="refresh"></a>Refresh
+## 更新
 
-You can use the **Refresh** action to update the console window.
+**[更新]** 操作を使用して、コンソール ウィンドウを更新できます。
 
-#### <a name="to-update-the-console-window"></a>To update the console window
+#### コンソール ウィンドウを更新するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click **Refresh**. 
+2. **スコープ** ウィンドウで任意のノードを右クリックするか、またはノードを展開して **結果**ウィンドウの項目を右クリックし、**[更新]** をクリックします。
 
-## <a name="export-list"></a>Export List
+## リストのエクスポート
 
-You can use the **Export List** action to save a list in a comma-separated value (CSV) file. For example, you can export the list of backup policies or the backup catalog. You can then import the CSV file into a spreadsheet application for analysis.
+**[リストのエクスポート]** 操作を使用して、リストをコンマ区切り値 (CSV) ファイルに保存できます。たとえば、バックアップ ポリシーのリストやバックアップ カタログをエクスポートできます。その後、CSV ファイルをスプレッドシート アプリケーションにインポートして分析することができます。
 
-#### <a name="to-save-a-list-in-a-comma-separated-value-(csv)-file"></a>To save a list in a comma-separated value (CSV) file
+#### リストをコンマ区切り値 (CSV) ファイルに保存するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager. 
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。 
 
-2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click **Export List**. 
+2. **スコープ** ウィンドウで任意のノードを右クリックするか、またはノードを展開して **結果**ウィンドウの項目を右クリックし、**[リストのエクスポート]** をクリックします。
 
-3. The **Export List** dialog box appears. Complete the form as follows: 
+3. **[リストのエクスポート]** ダイアログ ボックスが表示されます。次のようにフォームの操作を実行します。
 
-    1. In the **File name** box, type a name for the CSV file or click the arrow to select from the drop-down list.
+    1. **[ファイル名]** ボックスで、CSV ファイルの名前を入力するか、矢印をクリックしてドロップダウン リストから選択します。
 
-    2. In the **Save as type** box, click the arrow and select a file type from the drop-down list.
+    2. **[保存の種類]** ボックスで、矢印をクリックし、ドロップダウン リストからファイルの種類を選択します。
 
-    3. To save only selected items, select the rows and then click the **Save Only Selected Rows** check box. To save all exported lists, clear the **Save Only Selected Rows** check box.
+    3. 選択した項目だけを保存するには、行を選択し、**[選択した行のみ保存]** チェック ボックスをオンにします。エクスポートされたすべてのリストを保存するには、**[選択した行のみ保存]** チェック ボックスをオフにします。
 
-    4. Click **Save**.
+    4. **[保存]** をクリックします。
 
-    ![Export list as a comma-separated value file](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
+    ![リストをコンマ区切り値ファイルとしてエクスポート](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png)
  
-## <a name="help"></a>Help
+## ヘルプ
 
-You can use the **Help** menu to view available online help for StorSimple Snapshot Manager and the MMC.
+**[ヘルプ]** メニューを使用して、StorSimple Snapshot Manager と MMC で利用可能なオンライン ヘルプを表示できます。
 
-#### <a name="to-view-available-online-help"></a>To view available online help
+#### 利用可能なオンライン ヘルプを表示するには
 
-1. Click the desktop icon to start StorSimple Snapshot Manager.
+1. デスクトップ アイコンをクリックして、StorSimple Snapshot Manager を起動します。
 
-2. In the **Scope** pane, right-click any node or expand the node and right-click an item in the **Results** pane, and then click **Help**. 
+2. **スコープ** ウィンドウで任意のノードを右クリックするか、またはノードを展開して **結果**ウィンドウの項目を右クリックし、**[ヘルプ]** をクリックします。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn more about the [StorSimple Snapshot Manager user interface](storsimple-use-snapshot-manager.md).
-- Learn more about [using StorSimple Snapshot Manager to administer your StorSimple solution](storsimple-snapshot-manager-admin.md).
+- [StorSimple Snapshot Manager のユーザー インターフェイスの詳細](storsimple-use-snapshot-manager.md)
+- [StorSimple Snapshot Manager を使用した StorSimple ソリューションの管理の詳細](storsimple-snapshot-manager-admin.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0427_2016-->

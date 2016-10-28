@@ -1,37 +1,36 @@
 <properties 
-    pageTitle="Streaming logs and console" 
-    description="Streaming logs and console overview" 
-    authors="btardif" 
-    manager="wpickett" 
-    editor="" 
-    services="app-service\web" 
-    documentationCenter=""/>
+	pageTitle="ストリーミング ログとコンソール" 
+	description="ストリーミング ログとコンソールの概要" 
+	authors="btardif" 
+	manager="wpickett" 
+	editor="" 
+	services="app-service\web" 
+	documentationCenter=""/>
 
 <tags 
-    ms.service="app-service-web" 
-    ms.workload="web" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="multiple" 
-    ms.topic="article" 
-    ms.date="10/12/2016" 
-    ms.author="byvinyal"/>
+	ms.service="app-service-web" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="multiple" 
+	ms.topic="article" 
+	ms.date="07/26/2016" 
+	ms.author="byvinyal"/>
 
+#ストリーミング ログとコンソール
 
-# <a name="streaming-logs-and-the-console"></a>Streaming Logs and the Console
+### ストリーミング ログ ###
 
-## <a name="streaming-logs"></a>Streaming Logs
+Microsoft Azure ポータルには、統合されたストリーミング ログ ビューアーが用意されており、App Service アプリのトレース イベントをリアルタイムで表示できます。
 
-The **Azure portal** provides an integrated streaming log viewer that lets you view tracing events from your **App Service** apps in real time.  
+この設定には、次のいくつかの簡単な手順が必要です。
 
-Setting up this feature requires a few simple steps:
+- コードにトレースを記述する
+- Azure ポータル内からアプリケーション診断を有効にする
+- Web アプリ ブレードの [ストリーミング ログ] パーツをクリックする
 
-- Write traces in your code
-- Enable Application **Diagnostic Logs** for your app
-- View the stream from the built-in **Streaming Logs** UI in the **Azure portal**.
+### 方法: コードにトレースを記述する ###
 
-### <a name="how-to-write-traces-in-your-code"></a>How to write traces in your code ###
-
-Writing traces in your code is easy.  In C# it's as easy as writing the following code:
+コードにトレースを記述するのは簡単です。C# では、次のコードを記述するだけです。
 
 `````````````````````````
 Trace.TraceInformation("My trace statement");
@@ -45,31 +44,35 @@ Trace.TraceWarning("My warning statement");
 Trace.TraceError("My error statement");
 `````````````````````````
 
-The Trace class lives in the System.Diagnostics namespace.
+Trace クラスは System.Diagnostics 名前空間にあります。
 
-In a node.js app you can write this code to achieve the same result:
+node.js アプリケーションでは、次のコードを記述すると同じ結果を得られます。
 
 `````````````````````````
 console.log("My trace statement").
 `````````````````````````
 
-### <a name="how-to-enable-and-view-the-streaming-logs"></a>How to enable and view the streaming logs
-![][BrowseSitesScreenshot] Diagnostics are enabled on a per app basis. Start by browsing to the site you would like to enable this feature on.  
+### 方法: ストリーミング ログを有効にして表示する ###
+![][BrowseSitesScreenshot] 
+診断は Web アプリごとに有効になります。[ポータル](https://portal.azure.com)内から、この機能を有効にするサイトを参照します。
   
-![][DiagnosticsLogs] From settings menu, scroll down to the **Monitoring** section and click on **(1) Diagnostic Logs**. Then **(2) enable** **Application Logging (Filesystem)** or **Application Logging (blob)** The **Level** option lets you change the severity level of traces to capture. If you're just trying to get familiar with the feature, set the level to **Verbose** to ensure all of your trace statements are collected.
+![][DiagnosticsLogs]
+ 次に、**(1) \[設定]**、**(2) \[診断ログ]** の順にクリックし、**[アプリケーション ログ (ファイル システム)]** または **[アプリケーション ログ (BLOB)]** を **(3) [オン]** にします。**[レベル]** オプションでは、取り込むトレースの重要度レベルを変更できます。**[詳細]** はこの機能に詳しくなっておこうとする場合に設定してください。この設定では、トレース ステートメントのすべてがログに記録されるためです。
 
-Click **SAVE** at the top of the blade and you're ready to view logs.
+ブレードの上部にある **[保存]** をクリックします。これで、ログを表示できる状態になりました。
 
->[AZURE.NOTE] The higher the **severity level** the more resources are consumed to log and the more traces are produced. Make sure **severity level** is configured to the correct verbosity for a production or high traffic site. 
+**注:** **重大度レベル**を高くすると、ログを記録するために消費されるリソースが増大し、取得できるトレースが増えます。トラフィックの多いサイトや運用サイトでこの機能を使用する場合は、適切なレベルに設定されていることを確認してください。
 
-![][StreamingLogsScreenshot] To view the **streaming logs** from within the Azure portal, click on **(1) Log Stream** also in the **Monitoring** section of the settings menu. If your app is actively writing trace statements, then you should see them in the **(2) streaming logs UI** in near real time.
+![][StreamingLogsScreenshot]
+ポータル内からストリーミング ログを表示するには、**(1) [ツール]**、**(2) [ログ ストリーム]** の順にクリックします。アプリによってトレース ステートメントがアクティブに書き込まれている場合は、**(3)** 結果ウィンドウにそれらのステートメントがほぼリアルタイムで表示されます。
 
-## <a name="console"></a>Console
-The **Azure portal** provides console access to your app. You can explore your app's file system and run powershell/cmd scripts. You are bound by the same permissions set as your running app code when executing console commands. Access to protected directories or running scripts that require elevated permissions is blocked.  
+## コンソール ##
+Azure ポータルには、Web アプリ環境にアクセスするためのコンソールが用意されています。コンソールでは、Web アプリのファイル システムを操作したり、powershell/cmd スクリプトを実行したりできます。コンソールのコマンドを実行するときは、実行中の Web アプリのコードに設定された同じアクセス許可が適用されます。保護されたディレクトリにアクセスしたり、より高いレベルのアクセス許可が必要なスクリプトを実行したりすることはできません。
 
-![][ConsoleScreenshot] From settings menu, scroll down to **Development Tools** section and click on **(1) Console** and the **(2) console** UI opens to the right.
+![][ConsoleScreenshot]
+コンソールにアクセスするには、前のセクションで説明しているように Web アプリを参照します。**(1) \[ツール]**、**(2) \[コンソール]** の順にクリックすると、**(3)** コンソールが開きます。
 
-To get familiar with the **console**, try basic commands like:
+コンソールに詳しくなるには、次のような基本的なコマンドを試してください。
 
 `````````````````````````
 dir
@@ -85,8 +88,4 @@ cd
 [StreamingLogsScreenshot]: ./media/web-sites-streaming-logs-and-console/streaming-logs.png
 [ConsoleScreenshot]: ./media/web-sites-streaming-logs-and-console/console.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

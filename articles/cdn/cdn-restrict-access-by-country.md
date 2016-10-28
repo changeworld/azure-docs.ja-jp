@@ -1,75 +1,70 @@
 <properties
-    pageTitle="Restrict access to your Azure CDN content by country | Microsoft Azure"
-    description="Learn how to restrict access to your Azure CDN content using the Country Filtering feature."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="国に応じて Azure CDN コンテンツへのアクセスを制限する | Microsoft Azure"
+	description="国のフィルタリング機能を使用して Azure CDN コンテンツへのアクセスを制限する方法について説明します。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/28/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/28/2016"
+	ms.author="casoper"/>
 
-
-#<a name="restrict-access-to-your-content-by-country"></a>Restrict access to your content by country
+#国に応じてコンテンツへのアクセスを制限する
 
 [AZURE.INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-When a user requests your content, by default, the content is served regardless of where the user made this request from. In some cases, you may want to restrict access to your content by country. This topic explains how to use the **Country Filtering** feature in order to configure the service to allow or block access by country.
+ユーザーがコンテンツを要求した場合、既定では、ユーザーが要求を行った場所に関係なく、コンテンツは提供されます。場合によっては、国によってコンテンツへのアクセスを制限することがあります。このトピックでは、**国のフィルタリング**機能を使用して、国別にアクセスを許可またはブロックするようにサービスを構成する方法について説明します。
 
->[AZURE.NOTE] Once the configuration is set up, it will apply to all **Azure CDN from Verizon** endpoints in this Azure CDN profile.
+>[AZURE.NOTE] 構成を設定した後は、この Azure CDN プロファイルのすべての **Azure CDN from Verizon** エンドポイントに対して構成が適用されます。
 
-For information about considerations that apply to configuring this type of restriction, see the [Considerations](cdn-restrict-access-by-country.md#considerations) section at the end of the topic.  
+このような制限を構成する際に考慮する事項については、トピックの最後にある「[考慮事項](cdn-restrict-access-by-country.md#considerations)」セクションを参照してください。
 
-![Country filtering](./media/cdn-filtering/cdn-country-filtering.png)
-
-
-##<a name="step-1:-define-the-directory-path"></a>Step 1: Define the directory path
-
-When configuring a country filter, you must specify the relative path to the location to which users will be allowed or denied access. You can apply country filtering for all your files with "/" or selected folders by specifying directory paths.
-
-Example directory path filter:
-
-    /                                 
-    /Photos/
-    /Photos/Strasbourg
-
-##<a name="step-2:-define-the-action:-block-or-allow"></a>Step 2: Define the action: block or allow
-
-**Block:** Users from the specified countries will be denied access to assets requested from that recursive path. If no other country filtering options have been configured for that location, then all other users will be allowed access.
-
-**Allow:** Only users from the specified countries will be allowed access to assets requested from that recursive path.
-
-##<a name="step-3:-define-the-countries"></a>Step 3: Define the countries
-
-Select the countries that you want to block or allow for the path. For more information, see [Azure CDN from Verizon Country Codes](https://msdn.microsoft.com/library/mt761717.aspx).
-
-For example, the rule of blocking /Photos/Strasbourg/ will filter files including:
-
-    http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg
-    http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
+![国のフィルタリング](./media/cdn-filtering/cdn-country-filtering.png)
 
 
-##<a name="country-codes"></a>Country codes
+##手順 1: ディレクトリのパスを定義する
 
-The **Country Filtering** feature uses country codes to define the countries from which a request will be allowed or blocked for a secured directory. You will find the country codes in [Azure CDN from Verizon Country Codes](https://msdn.microsoft.com/library/mt761717.aspx). If you specify “EU” (Europe) or "AP" (Asia/Pacific), a subset of IP addresses that originate from any country in that regions will be blocked or allowed.
+国フィルターを構成するときは、ユーザーのアクセスを許可または拒否する場所への相対パスを指定する必要があります。"/" を指定してすべてのファイルに国フィルターを適用することも、ディレクトリ パスを指定して選択したフォルダーに適用することもできます。
+
+ディレクトリ パスのフィルターの例:
+
+	/                                 
+	/Photos/
+	/Photos/Strasbourg
+
+##手順 2: ブロックまたは許可アクションを定義する
+
+**ブロック**: 指定した国のユーザーは、その再帰パスから要求された資産へのアクセスを拒否されます。その場所に対して他の国フィルター オプションが構成されていない場合、他のすべてのユーザーはアクセスを許可されます。
+
+**許可**: 指定した国のユーザーだけが、その再帰パスから要求された資産へのアクセスを許可されます。
+
+##手順 3: 国を定義する
+
+パスに対してブロックまたは許可する国を選択します。詳細については、「[Azure CDN from Verizon Country Codes (Azure CDN from Verizon の国コード)](https://msdn.microsoft.com/library/mt761717.aspx)」を参照してください。
+
+たとえば、/Photos/Strasbourg/ をブロックするルールは、次のようなファイルをフィルターします。
+
+	http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg
+	http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg
 
 
-##<a name="<a-id="considerations"></a>considerations"></a><a id="considerations"></a>Considerations
+##国コード
 
-- It may take up to 90 minutes for changes to your country filtering configuration to take effect.
-- This feature does not support wildcard characters (for example, ‘*’).
-- The country filtering configuration associated with the relative path will be applied recursively to that path.
-- Only one rule can be applied to the same relative path (you cannot create multiple country filters that point to the same relative path. However, a folder may have multiple country filters. This is due to the recursive nature of country filters. In other words, a subfolder of a previously configured folder can be assigned a different country filter.
+**国のフィルタリング**機能では、国コードを使用して保護されたディレクトリに対して許可またはブロックする要求の国を定義します。国コードは、「[Azure CDN from Verizon Country Codes (Azure CDN from Verizon の国コード)](https://msdn.microsoft.com/library/mt761717.aspx)」に記載されています。"EU" (ヨーロッパ) または "AP" (アジア/太平洋) を指定した場合、その地域の国から発信される IP アドレスのサブセットがブロックまたは許可されます。
 
 
+##<a id="considerations"></a>考慮事項
 
-<!--HONumber=Oct16_HO2-->
+- 国フィルタリング構成の変更が有効になるまでには、最大で 90 分かかることがあります。
+- この機能では、ワイルドカード文字 (例: *) はサポートされていません。
+- 相対パスに関連付けられている国フィルタリング構成は、そのパスに再帰的に適用されます。
+- 同じ相対パスに適用できるルールは 1 つだけです (同じ相対パスを参照する複数の国フィルターを作成することはできません)。ただし、フォルダーには複数の国フィルターを適用できます。これは、国フィルターの再帰的な性質のためです。つまり、以前に構成されているフォルダーのサブフォルダーに、別の国フィルターを割り当てることができます。
 
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,6 +1,6 @@
 <properties
-    pageTitle="What's coming in Azure RemoteApp | Microsoft Azure"
-    description="Learn when new features for Azure RemoteApp will be available"
+    pageTitle="Azure RemoteApp で予定される新機能 | Microsoft Azure"
+    description="Azure RemoteApp の新機能が使用可能となる時期を説明します。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -15,43 +15,39 @@
     ms.date="09/19/2016"
     ms.author="elizapo" />
 
-
-# <a name="what's-coming-in-azure-remoteapp"></a>What's coming in Azure RemoteApp
+# Azure RemoteApp で予定される新機能
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-**All preview and roadmap items have been Canceled and ended due to the announced retirement of Azure RemoteApp.**
+**発表どおり Azure RemoteApp の提供が終了したため、プレビューとロードマップのすべての項目が取り消され、終了しました。**
 
-|Feature|Status|
+|機能|状態|
 |-----------|-------|-------|
-|Azure Remote App available in both the [Azure classic portal](http://manage.windowsazure.com) and [Azure portal](https://portal.azure.com) - Private preview|**Canceled**|
-|Ability to publish individual applications to specific users - Private preview ([feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))|**Canceled**|
-|Windows client redistributable MSI package ([feedback](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/)) - Private preview|**Canceled**|
-|Azure Resource Manager (ARM) support|**Canceled**|
-|Azure v2 resource support|**Canceled**|
+|[Azure クラシック ポータル](http://manage.windowsazure.com)と [Azure ポータル](https://portal.azure.com) - プライベート プレビューの両方で Azure Remote App が利用可能|**Canceled**|
+|個々のアプリケーションを特定のユーザーに発行する機能 - プライベート プレビュー ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6067043-allow-the-ability-to-publish-specific-apps-to-spec/))|**Canceled**|
+|Windows クライアントの再配布可能 MSI パッケージ ([フィードバック](https://feedback.azure.com/forums/247748-azure-remoteapp/suggestions/6627191-client-deployment-provide-an-msi-package-to-allo/)) - プライベート プレビュー|**Canceled**|
+|Azure リソース マネージャー (ARM) のサポート|**Canceled**|
+|Azure v2 リソースのサポート|**Canceled**|
 |Cloud Solution Provider (CSP)|**Canceled**|
-|Availability in India region|**Canceled**|
-|Availability in UK region|**Canceled**|
+|インド リージョンでの可用性|**Canceled**|
+|英国リージョンでの可用性|**Canceled**|
 
 
-Other improvements added earlier this year:
+今年、これまでに追加されたその他の機能強化
 
-- HTML5-based client for Azure RemoteApp
-- Windows 10 Universal Application with Continuum for Azure RemoteApp - Preview
-- Deploy to a VNET without joining a domain (cloud collection connection to the Azure VMs)
-- Re-use an existing virtual network for RemoteApp hybrid collection (also enables ExpressRoute)
+- Azure RemoteApp の HTML5 ベースのクライアント
+- Azure RemoteApp 用 Windows 10 Universal Application with Continuum - プレビュー
+- ドメインの参加 (Azure 仮想マシンに対するクラウド コレクションの接続) を必要としない VNET へのデプロイ
+- RemoteApp ハイブリッド コレクションに対する既存の仮想ネットワークの再利用 (および ExpressRoute の使用)
 - ExpressRoute
-- RemoteApp PowerShell cmdlets and SDK for deployment and management
-- Create and upload an image from an Azure VM
-- Upload line-of-business (LOB) applications to a cloud collection, as well as in a hybrid collection
-- Support for Windows Phone
-- Usage metrics dashboard
-- Provision a large number of users by using a CSV file
-- Availability in Australian data centers
+- デプロイおよび管理用 RemoteApp PowerShell コマンドレットおよび SDK
+- Azure VM からのイメージの作成およびアップロード
+- ハイブリッド コレクション内に加えて、クラウド コレクションへの基幹業務 (LOB) アプリケーションのアップロード
+- Windows Phone のサポート
+- 使用状況メトリック ダッシュボード
+- CSV ファイルの使用による多数のユーザーのプロビジョニング
+- オーストラリア データ センターでの可用性
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

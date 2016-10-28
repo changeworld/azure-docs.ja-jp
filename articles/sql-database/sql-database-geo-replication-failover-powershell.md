@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Initiate a planned or unplanned failover for Azure SQL Database with PowerShell | Microsoft Azure" 
-    description="Initiate a planned or unplanned failover for Azure SQL Database using PowerShell" 
+    pageTitle="PowerShell を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始 | Microsoft Azure" 
+    description="PowerShell を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始" 
     services="sql-database" 
     documentationCenter="" 
     authors="stevestein" 
@@ -16,63 +16,62 @@
     ms.date="08/29/2016"
     ms.author="sstein"/>
 
-
-# <a name="initiate-a-planned-or-unplanned-failover-for-azure-sql-database-with-powershell"></a>Initiate a planned or unplanned failover for Azure SQL Database with PowerShell
+# PowerShell を使用した Azure SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーの開始
 
 
 
 > [AZURE.SELECTOR]
-- [Azure portal](sql-database-geo-replication-failover-portal.md)
+- [Azure ポータル](sql-database-geo-replication-failover-portal.md)
 - [PowerShell](sql-database-geo-replication-failover-powershell.md)
 - [T-SQL](sql-database-geo-replication-failover-transact-sql.md)
 
 
-This article shows you how to Initiate a planned or unplanned failover for SQL Database with PowerShell. To configure Geo-Replication, see [Configure Geo-Replication for Azure SQL Database](sql-database-geo-replication-powershell.md).
+この記事では、PowerShell を使用して、SQL Database の計画されたフェールオーバーまたは計画されていないフェールオーバーを開始する方法について説明します。geo レプリケーションを構成する場合は、[Azure SQL Database の geo レプリケーションの構成](sql-database-geo-replication-powershell.md)に関するページをご覧ください。
 
 
 
-## <a name="initiate-a-planned-failover"></a>Initiate a planned failover
+## 計画されたフェールオーバーの開始
 
-Use the **Set-AzureRmSqlDatabaseSecondary** cmdlet with the **-Failover** parameter to promote a secondary database to become the new primary database, demoting the existing primary to become a secondary. This functionality is designed for a planned failover, such as during disaster recovery drills, and requires that the primary database be available.
+セカンダリ データベースを昇格させて新しいプライマリ データベースとし、既存のプライマリ データベースを降格させてセカンダリ データベースにするには、**Set-AzureRmSqlDatabaseSecondary** コマンドレットと **-Failover** パラメーターを組み合わせて使用します。　　　この機能は、障害復旧の訓練時など、計画されたフェールオーバー用に設計されたものであり、プライマリ データベースを使用できることが必要条件となります。
 
-The command performs the following workflow:
+コマンドによって、次のワークフローが実行されます。
 
-1. Temporarily switch replication to synchronous mode. This will cause all outstanding transactions to be flushed to the secondary.
+1. 一時的にレプリケーションを同期モードに切り替えます。これにより、すべての未完了のトランザクションがセカンダリ データベースにフラッシュされます。
 
-2. Switch the roles of the two databases in the Geo-Replication partnership.  
+2. geo レプリケーション パートナーシップで 2 つのデータベースのロールを切り替えます。
 
-This sequence guarantees that the two databases are synchronized before the roles switch and therefore no data loss will occur. There is a short period during which both databases are unavailable (on the order of 0 to 25 seconds) while the roles are switched. The entire operation should take less than a minute to complete under normal circumstances. For more information, see [Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx).
-
-
+このシーケンスにより、ロールの切り替えの前に 2 つのデータベースが同期されることが保証されるため、データ損失は発生しません。ロールの切り替え中に、わずかですが両方のデータベースが使用できなくなる期間 (0 ～ 25 秒程度) が生じます。通常の状況では、操作全体が完了するのに 1 分かかりません。詳細については、「[Set-AzureRmSqlDatabaseSecondary](https://msdn.microsoft.com/library/mt619393.aspx)」を参照してください。
 
 
-This cmdlet will return when the process of switching the secondary database to primary is completed.
 
-The following command switches the roles of the database named "mydb” on the server "srv2” under the resource group "rg2” to primary. The original primary to which "db2” was connected to will switch to secondary after the two databases are fully synchronized.
+
+このコマンドレットは、セカンダリ データベースをプライマリに切り替えるプロセスが完了すると、戻ります。
+
+次のコマンドでは、リソース グループ "rg2" に属するサーバー "srv2" 上の "mydb" という名前のデータベースのロールをプライマリに切り替えます。"db2" の接続先である元のプライマリは、2 つのデータベースが完全に同期すると、セカンダリに切り替わります。
 
     $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary -Failover
 
 
-> [AZURE.NOTE] In rare cases it is possible that the operation cannot complete and may appear unresponsive. In this case the user can call the force failover command (unplanned failover) and accept data loss.
+> [AZURE.NOTE] まれに、操作を完了できず、応答していないように見える場合があります。この場合、ユーザーは強制フェールオーバー コマンド (計画されていないフェールオーバー) を呼び出すことができますが、データは失われることを容認する必要があります。
 
 
-## <a name="initiate-an-unplanned-failover-from-the-primary-database-to-the-secondary-database"></a>Initiate an unplanned failover from the primary database to the secondary database
+## プライマリ データベースからセカンダリ データベースへの計画されていないフェールオーバーを開始します。
 
 
-You can use the **Set-AzureRmSqlDatabaseSecondary** cmdlet with **–Failover** and **-AllowDataLoss** parameters to promote a secondary database to become the new primary database in an unplanned fashion, forcing the demotion of the existing primary to become a secondary at a time when the primary database is no longer available.
+計画外のフェールオーバーとして、既存のプライマリ データベースが使用できなくなった時点でセカンダリ データベースを昇格させて新しいプライマリ データベースとし、既存のプライマリ データベースを降格させてセカンダリ データベースにするには、**Set-AzureRmSqlDatabaseSecondary** コマンドレットを **–Failover** および **-AllowDataLoss** パラメーターと組み合わせて使用します。
 
-This functionality is designed for disaster recovery when restoring availability of the database is critical and some data loss is acceptable. When forced failover is invoked, the specified secondary database immediately becomes the primary database and begins accepting write transactions. As soon as the original primary database is able to reconnect with this new primary database after the forced failover operation, an incremental backup is taken on the original primary database and the old primary database is made into a secondary database for the new primary database; subsequently, it is merely a replica of the new primary.
+この機能は、データベースの可用性を復元することが重要で、多少のデータ損失は許容されるような障害復旧を目的として設計されています。強制フェールオーバーが呼び出されると、指定したセカンダリ データベースはすぐにプライマリ データベースになり、書き込みトランザクションの受け入れを開始します。強制フェールオーバー操作の後、元のプライマリ データベースとこの新しいプライマリ データベースとの再接続が可能になるとすぐに、元のプライマリ データベース上で増分バックアップが行われます。古いプライマリ データベースは新しいプライマリ データベースのセカンダリ データベースとされ、以後、新しいプライマリ データベースの単なるレプリカとなります。
 
-But because Point In Time Restore is not supported on secondary databases, if you wish to recovery data committed to the old primary database which had not been replicated to the new primary database, you should engage CSS to restore a database to the known log backup.
+ただし、セカンダリ データベース上でポイントインタイム リストアはサポートされていないので、古いプライマリ データベースにコミットされているデータのうち、新しいプライマリ データベースにレプリケートされていないものを復旧する場合は、CSS を有効にして既知のログ バックアップにデータベースを復元する必要があります。
 
-> [AZURE.NOTE] If the command is issued when the both primary and secondary are online the old primary will become the new secondary immediately without data synchronization. If the primary is committing transactions when the command is issued some data loss may occur.
-
-
-If the primary database has multiple secondaries the command will partially succeed. The secondary on which the command was executed will become primary. The old primary however will remain primary, i.e. the two primaries will end up in inconsistent state and connected by a suspended replication link. The user will have to manually repair this configuration using a “remove secondary” API on either of these primary databases.
+> [AZURE.NOTE] プライマリとセカンダリの両方がオンラインのときにコマンドを発行すると、データが同期されずに、古いプライマリがすぐに新しいセカンダリになります。コマンドが発行されたときにプライマリがトランザクションをコミット中の場合、一部のデータが失われる可能性があります。
 
 
-The following command switches the roles of the database named "mydb” to primary when the primary is unavailable. The original primary to which "mydb” was connected to will switch to secondary after it is back online. At that point the synchronization may result in data loss.
+プライマリ データベースに複数のセカンダリ データベースがある場合、コマンドは部分的に成功します。コマンドが実行されたセカンダリ データベースがプライマリ データベースになります。ただし、古いプライマリ データベースはプライマリ データベースのままです。すなわち、2 つのプライマリ データベースは不整合の状態になり、中断されたレプリケーション リンクによって接続されます。ユーザーは、この 2 つのプライマリ データベースのいずれかで “remove secondary” API を使用して、この構成を手動で修復する必要があります。
+
+
+次のコマンドでは、プライマリが利用できない場合に、"mydb" という名前のデータベースのロールをプライマリに切り替えます。"mydb" の接続先であった元のプライマリ データベースは、それがオンラインに戻ると、セカンダリ データベースに切り替わります。その時点で、同期化によってデータが失われる可能性があります。
 
     $database = Get-AzureRmSqlDatabase –DatabaseName "mydb" –ResourceGroupName "rg2” –ServerName "srv2”
     $database | Set-AzureRmSqlDatabaseSecondary –Failover -AllowDataLoss
@@ -80,17 +79,13 @@ The following command switches the roles of the database named "mydb” to prima
 
 
 
-## <a name="next-steps"></a>Next steps   
+## 次のステップ   
 
-- After failover, ensure the authentication requirements for your server and database are configured on the new primary. For details, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
-- To learn recovering after a disaster using Active Geo-Replication, including pre and post recovery steps and performing a disaster recovery drill, see [Disaster Recovery Drills](sql-database-disaster-recovery.md)
-- For a Sasha Nosov blog post about Active Geo-Replication, see [Spotlight on new Geo-Replication capabilities](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)
-- For information about designing cloud applications to use Active Geo-Replication, see [Designing cloud applications for business continuity using Geo-Replication](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- For information about using Active Geo-Replication with elastic database pools, see [Elastic Pool disaster recovery strategies](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
-- For an overview of business continurity, see [Business Continuity Overview](sql-database-business-continuity.md)
+- フェールオーバー後は、サーバーおよびデータベースの認証要件が新しいプライマリで構成されていることを確認してください。詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページを参照してください。
+- 復旧前後の手順や障害復旧訓練の実施など、アクティブ geo レプリケーションを使用した障害後の復旧については、[障害復旧の訓練](sql-database-disaster-recovery.md)に関するページをご覧ください。
+- アクティブ geo レプリケーションについては、Sasha Nosov の [geo レプリケーションの新機能](https://azure.microsoft.com/blog/spotlight-on-new-capabilities-of-azure-sql-database-geo-replication/)に関するブログ記事をご覧ください。
+- アクティブ geo レプリケーションを使用したクラウド アプリケーションの設計については、[geo レプリケーションを使用したビジネス継続性のためのクラウド アプリケーション設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。
+- エラスティック データベース プールでのアクティブ geo レプリケーションの使用については、[エラスティック プールの障害復旧戦略](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)に関するページをご覧ください。
+- ビジネス継続性の概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページをご覧ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="How to retain a constant virtual IP address for a cloud service | Microsoft Azure"
-   description="Learn how to ensure that the virtual IP address (VIP) of your Azure cloud service doesn't change."
+   pageTitle="クラウド サービスの固定仮想 IP アドレスを保持する方法 | Microsoft Azure"
+   description="Azure クラウド サービスの仮想 IP アドレス (VIP) が変化しないようにする方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,39 +15,34 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# クラウド サービスの固定仮想 IP アドレスを保持する方法
 
-# <a name="how-to-retain-a-constant-virtual-ip-address-for-a-cloud-service"></a>How to retain a constant virtual IP address for a cloud service
+Azure でホストされているクラウド サービスを更新するとき、サービスの仮想 IP アドレス (VIP) が変更されないようにしなければならない場合があります。ドメイン管理サービスの多くは、ドメイン ネーム システム (DNS) を使用してドメイン名の登録を行います。DNS が正しく機能するためには、VIP が不変であることが必要です。Azure ツールの**公開ウィザード**を使用すると、クラウド サービスを更新するときに、その VIP が変更されないようにすることができます。クラウド サービスで DNS ドメイン管理を使用する方法の詳細については、「[Azure クラウド サービスのカスタム ドメイン名の構成](./cloud-services/cloud-services-custom-domain-name.md)」を参照してください。
 
-When you update a cloud service that's hosted in Azure, you might need to ensure that the virtual IP address (VIP) of the service doesn't change. Many domain management services use the Domain Name System (DNS) for registering domain names. DNS works only if the VIP remains the same. You can use the **Publish Wizard** in Azure Tools to ensure that the VIP of your cloud service doesn’t change when you update it. For more information about how to use DNS domain management for cloud services, see [Configuring a custom domain name for an Azure cloud service](./cloud-services/cloud-services-custom-domain-name.md).
+## VIP を変更せずにクラウド サービスを発行する
 
-## <a name="publishing-a-cloud-service-without-changing-its-vip"></a>Publishing a cloud service without changing its VIP
+運用環境など特定の環境で初めてクラウド サービスを Azure にデプロイするとき、クラウド サービスの VIP が割り当てられます。その VIP は、デプロイを明示的に削除するか、またはデプロイの更新プロセスによって暗黙的にデプロイが削除されない限り変化しません。VIP を維持するには、自らデプロイを削除しないようにすると共に、Visual Studio によって自動的にデプロイが削除されないようにする必要があります。その動作は、**公開ウィザード**に用意されている各種オプションで、デプロイの設定を指定することによって制御できます。指定できるデプロイとして新規と更新があります。更新デプロイには、増分更新と同時更新とがあり、どちらも VIP が維持されます。各種デプロイの定義については、[Azure アプリケーションの公開ウィザード](vs-azure-tools-publish-azure-application-wizard.md)に関するページを参照してください。さらに、エラーが発生した場合に、それまでのクラウド サービスのデプロイを削除するかどうかを制御できます。そのオプションが正しく設定されていない場合、VIP が予期せず変化する可能性があります。
 
-The VIP of a cloud service is allocated when you first deploy it to Azure in a particular environment, such as the Production environment. The VIP doesn’t change unless you delete the deployment explicitly or it is implicitly deleted by the deployment update process. To retain the VIP, you must not delete your deployment, and you must also make sure that Visual Studio doesn’t delete your deployment automatically. You can control the behavior by specifying deployment settings in the **Publish Wizard**, which supports several deployment options. You can specify a fresh deployment or an update deployment, which can be incremental or simultaneous, and both kinds of update deployments retain the VIP. For definitions of these different types of deployment, see [Publish Azure Application Wizard](vs-azure-tools-publish-azure-application-wizard.md).  In addition, you can control whether the previous deployment of a cloud service is deleted if an error occurs. The VIP might unexpectedly change if you don't set that option correctly.
+### VIP を変更せずにクラウド サービスを更新するには
 
-### <a name="to-update-a-cloud-service-without-changing-its-vip"></a>To update a cloud service without changing its VIP
+1. 少なくとも 1 回、クラウド サービスをデプロイした後、Azure プロジェクトのノードのショートカット メニューを開き、**[公開]** をクリックします。**Azure アプリケーションの公開**ウィザードが表示されます。
 
-1. After you deploy your cloud service at least once, open the shortcut menu for the node for your Azure project, and then choose **Publish**. The **Publish Azure Application** wizard appears.
+1. サブスクリプションの一覧で、デプロイ対象を選択し、**[次へ]** をクリックします。ウィザードの **[設定]** ページが表示されます。
 
-1. In the list of subscriptions, choose the one to which you want to deploy, and then choose the **Next** button. The **Settings** page of the wizard appears.
+1. **[共通設定]** タブで、デプロイするクラウド サービスの名前、**[環境]**、**[ビルド構成]**、**[サービス構成]** がすべて正しいことを確認します。
 
-1. On the **Common Settings** tab, verify that the name of the cloud service to which you’re deploying, the **Environment**, the **Build Configuration**, and the **Service Configuration** are all correct.
+1. **[詳細設定]** タブで、ストレージ アカウントとデプロイ ラベルが正しことと、**[失敗時に配置を削除]** チェック ボックスがオフで、**[配置の更新]** チェック ボックスがオンになっていることを確認します。**[配置の更新]** チェック ボックスをオンにして、アプリケーションを再発行するときに、デプロイが削除されず、VIP が失われないようにします。**[失敗時に配置を削除]** チェック ボックスをオフにして、デプロイ中にエラーが発生した場合に、VIP が失われないようにします。
 
-1. On the **Advanced Settings** tab, verify that the storage account and the deployment label are correct, that the **Delete deployment on failure** check box is cleared, and that the **Deployment** update check box is selected. By selecting the **Deployment** update check box, you ensure that your deployment won't be deleted and your VIP won't be lost when you republish your application. By clearing the **Delete deployment on failure check box**, you ensure that your VIP won't be lost if an error occurs during deployment.
+1. ロールの更新方法をさらに詳しく指定するには、**[配置の更新]** ボックスの横にある **[設定]** リンクを選択し、**[配置の更新設定]** ダイアログ ボックスで増分更新または同時更新のオプションを選択します。増分更新を選択した場合は、インスタンスが 1 つずつ更新されるので、アプリケーションは常時利用できる状態となります。同時更新を選択した場合は、すべてのインスタンスが同時に更新されます。同時更新の方が高速ですが、更新処理中はサービスが利用できない可能性があります。
 
-1. To further specify how you want the roles to be updated, choose the  **Settings** link next to the **Deployment update** box, and then choose either the incremental update or simultaneous update option in the **Deployment update** settings dialog box. If you choose incremental update, each instance is updated one after another, so that the application is always available. If you choose simultaneous update, all instances are updated at the same time. Simultaneous updating is faster, but your service might not be available during the update process.
+1. 設定が終了したら、**[次へ]** をクリックします。
 
-1. When you’re satisfied with your settings, choose the **Next** button.
+1. ウィザードの **[概要]** ページで設定を確認し、**[公開]** をクリックします。
 
-1. On the **Summary** page of the wizard, verify your settings, and then choose the **Publish** button.
+  >[AZURE.WARNING] デプロイが失敗した場合は、クラウド サービスを異常な状態のまま放置せず、その理由を明らかにして速やかに再デプロイしてください。
 
-  >[AZURE.WARNING] If the deployment fails, you should address why it failed and redeploy promptly, to avoid leaving your cloud service in a corrupted state.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+Visual Studio から Azure への発行の詳細については、[Azure アプリケーションの公開ウィザード](vs-azure-tools-publish-azure-application-wizard.md)に関するページをご覧ください。
 
-To learn about publishing to Azure from Visual Studio, see [Publish Azure application wizard](vs-azure-tools-publish-azure-application-wizard.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

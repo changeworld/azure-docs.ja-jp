@@ -1,13 +1,13 @@
 <properties
-   pageTitle="Testing Azure Functions | Microsoft Azure"
-   description="Test your Azure Functions using Postman, cURL, and Node.js."
+   pageTitle="Azure Functions のテスト |Microsoft Azure"
+   description="Postman、cURL、Node.js を使用して Azure Functions をテストします。"
    services="functions"
    documentationCenter="na"
    authors="wesmc7777"
    manager="erikre"
    editor=""
    tags=""
-   keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture, testing"/>
+   keywords="Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, テスト"/>
 
 <tags
    ms.service="functions"
@@ -18,371 +18,370 @@
    ms.date="08/19/2016"
    ms.author="wesmc"/>
 
+# Azure Functions のテスト
 
-# <a name="testing-azure-functions"></a>Testing Azure Functions
+## Overview
 
-## <a name="overview"></a>Overview
+このチュートリアルでは、関数をテストするさまざまな方法について説明します。この記事では、クエリ文字列パラメーターまたは要求本文を通じて入力を受け取る HTTP トリガー関数を定義します。既定の **HttpTrigger Node.js 関数**テンプレート コードでは、`name` クエリ文字列パラメーターがサポートされています。このパラメーターを、要求本文内のユーザーの `address` 情報と共にサポートするコードも追加します。
 
-In this tutorial, we will walk through different approaches to testing functions. We will define a http trigger function that accepts input through a query string parameter, or the request body. The default **HttpTrigger Node.js Function** template code supports a `name` query string parameter. We will also add code to support that parameter along with `address` information for the user in the request body.
+## テスト用の関数を作成する
 
-## <a name="create-a-function-for-testing"></a>Create a function for testing
+このチュートリアルの大部分で、**HttpTrigger Nodejs 関数**テンプレートに少し変更を加えたバージョンを使用します。このテンプレートは、新しい関数を作成する際に入手できます。新しい関数の作成に関する詳細については、チュートリアル「[Create your first Azure Function(初めての Azure 関数の作成)](functions-create-first-azure-function.md)」を参照してください。[Azure ポータル]でテスト関数を作成する際に、**HttpTrigger Nodejs 関数**テンプレートをクリックするだけで入手できます。
 
-For most of this tutorial, we will use a slightly modified version of the **HttpTrigger Nodejs Function** template that is available when creating a new function.  You can review the [Create your first Azure Function tutorial](functions-create-first-azure-function.md) if you need help creating a new function.  Just choose the **HttpTrigger Nodejs Function** template when creating the test function in the [Azure Portal].
+この既定の関数テンプレートは、本質的には hello world 関数であり、要求本文またはクエリ文字列パラメーター `name=<your name>` から名前を取得して返します。記事では、要求本文で JSON コンテンツとして名前と住所を指定できるようにするためのコードの更新も行います。これにより、関数は、これらが取得可能であれば、クライアントに返すようになります。
 
-The default function template is basically a hello world function that echoes back the name from the request body or query string parameter, `name=<your name>`.  We will update the code to also allow you to provide the name and an address as JSON content in the request body. Then the function will echo these back to the client when available.   
+テストに使用する次のコードで関数を更新します。
 
-Update the function with the following code which we will use for testing:
-
-    module.exports = function(context, req) {
-        context.log("Node.js HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
-        context.log("Request Headers = " + JSON.stringify(req.headers));    
-    
-        if (req.query.name || (req.body && req.body.name)) {
-            if (typeof req.query.name != "undefined") {
-                context.log("Name was provided as a query string param..."); 
-                ProcessNewUserInformation(context, req.query.name);
-            }
-            else {
-                context.log("Processing user info from request body..."); 
-                ProcessNewUserInformation(context, req.body.name, req.body.address);
-            }
-        }
-        else {
-            context.res = {
-                status: 400,
-                body: "Please pass a name on the query string or in the request body"
-            };
-        }
-        context.done();
-    };
-    
-    function ProcessNewUserInformation(context, name, address)
-    {    
-        context.log("Processing User Information...");            
-        context.log("name = " + name);            
-        echoString = "Hello " + name;
-        
-        if (typeof address != "undefined")
-        {
-            echoString += "\n" + "The address you provided is " + address;
-            context.log("address = " + address);            
-        }
-        
-        context.res = {
-                // status: 200, /* Defaults to 200 */
-                body: echoString
-            };
-    }
+	module.exports = function(context, req) {
+	    context.log("Node.js HTTP trigger function processed a request. RequestUri=%s", req.originalUrl);
+	    context.log("Request Headers = " + JSON.stringify(req.headers));    
+	
+	    if (req.query.name || (req.body && req.body.name)) {
+	        if (typeof req.query.name != "undefined") {
+	            context.log("Name was provided as a query string param..."); 
+	            ProcessNewUserInformation(context, req.query.name);
+	        }
+	        else {
+	            context.log("Processing user info from request body..."); 
+	            ProcessNewUserInformation(context, req.body.name, req.body.address);
+	        }
+	    }
+	    else {
+	        context.res = {
+	            status: 400,
+	            body: "Please pass a name on the query string or in the request body"
+	        };
+	    }
+	    context.done();
+	};
+	
+	function ProcessNewUserInformation(context, name, address)
+	{    
+	    context.log("Processing User Information...");            
+	    context.log("name = " + name);            
+	    echoString = "Hello " + name;
+	    
+	    if (typeof address != "undefined")
+	    {
+	        echoString += "\n" + "The address you provided is " + address;
+	        context.log("address = " + address);            
+	    }
+	    
+	    context.res = {
+	            // status: 200, /* Defaults to 200 */
+	            body: echoString
+	        };
+	}
 
 
-## <a name="test-a-function-with-tools"></a>Test a function with Tools
+## ツールを使用した関数のテスト
 
-### <a name="test-with-curl"></a>Test with cURL
+### cURL を使用してテストする
 
-Often when testing software, it's not necessary to look any further than the command-line to help debug your application, this is no different with functions.
+ソフトウェアのテストでは、アプリケーションをデバッグする際にコマンド ライン以外の詳しい調査が必要になることはめったにありませんが、これは関数の場合も同じです。
 
-To test the function above, copy the **Function Url** from the portal. It will have the following form: 
+上記の関数をテストするには、ポータルから**関数の URL** をコピーします。関数の URL の形式は次のとおりです。
 
     https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
     
-This is the Url for triggering your function, we can test this by using the cURL command on the command-line to make a Get (`-G` or `--get`) request against our function:
+これは、関数をトリガーするための URL です。関数をテストするには、次のように、コマンド ラインで cURL コマンドを使用して、関数に対して Get (`-G` または `--get`) 要求を実行します。
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
     
-This particular example above requires a query string parameter which can be passed as Data (`-d`) in the cURL command:
+上記の例の場合は、次のように、cURL コマンドでデータ (`-d`) として渡すことができるクエリ文字列パラメーターが必要です。
 
     curl -G https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code> -d name=<Enter a name here>
     
-Hit enter and you will see the output of the function on the command-line.
+Enter キーを押すと、コマンド ラインに関数の出力が表示されます。
 
 ![](./media/functions-test-a-function/curl-test.png)
 
-In the portal **Logs** window, output similar to the following is logged while executing the function:
+関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
 
     2016-04-05T21:55:09  Welcome, you are now connected to log-streaming service.
     2016-04-05T21:55:30.738 Function started (Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
     2016-04-05T21:55:30.738 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/HttpTriggerNodeJS1?code=XXXXXXX&name=Azure Functions
     2016-04-05T21:55:30.738 Function completed (Success, Id=ae6955da-29db-401a-b706-482fcd1b8f7a)
 
-### <a name="test-with-a-browser"></a>Test with a browser
+### ブラウザーを使用してテストする
 
-Functions that do not require parameters, or only need query string parameters, can be tested using a browser.
+パラメーターを必要としない関数、またはクエリ文字列パラメーターのみを必要とする関数は、ブラウザーを使用してテストできます。
 
-To test the function we defined above, copy the **Function Url** from the portal. It will have the following form:
+上で定義した関数をテストするには、ポータルから**関数の URL** をコピーします。関数の URL の形式は次のとおりです。
 
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
+	https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>
 
-Append the `name` query string parameter as follows, using an actual name for the `<Enter a name here>` placeholder.
+次のように `name` クエリ文字列パラメーターを追加します。`<Enter a name here>` プレースホルダーには実際の名前を使用します。
 
-    https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
+	https://<Your Function App>.azurewebsites.net/api/<Your Function Name>?code=<your access code>&name=<Enter a name here>
 
-Paste the URL into your browser and you should get a response similar to the following.
+ブラウザーに URL を貼り付けると、次のような応答が取得されます。
 
 ![](./media/functions-test-a-function/browser-test.png)
 
-In the portal **Logs** window, output similar to the following is logged while executing the function:
+関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
 
-    2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
-    2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
-    2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Wes from a browser
-    2016-03-23T07:35:10.338 Request Headers = {"cache-control":"max-age=0","connection":"Keep-Alive","accept":"text/html","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T07:35:10.338 Name was provided as a query string param.
-    2016-03-23T07:35:10.338 Processing User Information...
-    2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
+	2016-03-23T07:34:59  Welcome, you are now connected to log-streaming service.
+	2016-03-23T07:35:09.195 Function started (Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
+	2016-03-23T07:35:10.338 Node.js HTTP trigger function processed a request. RequestUri=https://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==&name=Wes from a browser
+	2016-03-23T07:35:10.338 Request Headers = {"cache-control":"max-age=0","connection":"Keep-Alive","accept":"text/html","accept-encoding":"gzip","accept-language":"ja-JP"}
+	2016-03-23T07:35:10.338 Name was provided as a query string param.
+	2016-03-23T07:35:10.338 Processing User Information...
+	2016-03-23T07:35:10.369 Function completed (Success, Id=61a8c5a9-5e44-4da0-909d-91d293f20445)
 
-### <a name="test-with-postman"></a>Test with Postman
+### Postman を使用してテストする
 
-The recommended tool to test most of your functions is Postman. To install Postman, see [Get Postman](https://www.getpostman.com/). Postman provides control over many more attributes of an HTTP request.
+Postman は、ほとんどの関数でテスト用に推奨されるツールです。Postman をインストールする方法については、[Postman の取得](https://www.getpostman.com/)に関するサイトを参照してください。Postman を使用すると、HTTP 要求の多くの属性を制御できます。
 
-> [AZURE.TIP] Use the REST Client in which you are comfortable. Here are some alternatives to Postman:  
+> [AZURE.TIP] 使い慣れた REST クライアントを使用できます。次のクライアントが Postman の代わりに使用できます。
 > 
-> * [Fiddler](http://www.telerik.com/fiddler)  
-> * [Paw](https://luckymarmot.com/paw)  
+> * [Fiddler](http://www.telerik.com/fiddler)
+> * [Paw](https://luckymarmot.com/paw)
 
-To test the function with a request body in Postman: 
+Postman で要求本文を使用して関数をテストするには、次の手順に従います。
 
-1. Launch Postman from the **Apps** button in the upper left of corner of a Chrome browser window.
-2. Copy your **Function Url** and paste it into Postman. It includes the access code query string parameter.
-3. Change the HTTP method to **POST**.
-4. Click **Body** > **raw** and add JSON request body similar to the following:
+1. Chrome ブラウザー ウィンドウの左上隅にある **[アプリ]** ボタンをクリックして、Postman を起動します。
+2. **関数の URL** をコピーして Postman に貼り付けます。URL には、アクセス コード クエリ文字列パラメーターが含まれています。
+3. HTTP メソッドを **POST** に変更します。
+4. **[Body]** (本文)、**[raw]** (未加工) の順にクリックし、次のような JSON 要求本文を追加します。
 
-        {
-            "name" : "Wes testing with Postman",
-            "address" : "Seattle, W.A. 98101"
-        }
+		{
+		    "name" : "Wes testing with Postman",
+		    "address" : "Seattle, W.A. 98101"
+		}
 
-5. Click **Send**.
+5. [**送信**] をクリックします。
 
-The following image shows testing the simple echo function example in this tutorial. 
+次の図は、このチュートリアルの単純なサンプル echo 関数のテストを示しています。
 
 ![](./media/functions-test-a-function/postman-test.png)
 
-In the portal **Logs** window, output similar to the following is logged while executing the function:
+関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
 
-    2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
-    2016-03-23T08:04:57.763 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
-    2016-03-23T08:04:57.763 Request Headers = {"cache-control":"no-cache","connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T08:04:57.763 Processing user info from request body...
-    2016-03-23T08:04:57.763 Processing User Information...
-    2016-03-23T08:04:57.763 name = Wes testing with Postman
-    2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
-    2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
+	2016-03-23T08:04:51  Welcome, you are now connected to log-streaming service.
+	2016-03-23T08:04:57.107 Function started (Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
+	2016-03-23T08:04:57.763 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/WesmcHttpTriggerNodeJS1?code=XXXXXXXXXX==
+	2016-03-23T08:04:57.763 Request Headers = {"cache-control":"no-cache","connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"ja-JP"}
+	2016-03-23T08:04:57.763 Processing user info from request body...
+	2016-03-23T08:04:57.763 Processing User Information...
+	2016-03-23T08:04:57.763 name = Wes testing with Postman
+	2016-03-23T08:04:57.763 address = Seattle, W.A. 98101
+	2016-03-23T08:04:57.795 Function completed (Success, Id=dc5db8b1-6f1c-4117-b5c4-f6b602d538f7)
     
-### <a name="test-a-blob-trigger-using-storage-explorer"></a>Test a blob trigger using Storage Explorer
+### ストレージ エクスプローラーを使用して BLOB トリガーをテストする
 
-You can test a blob trigger function using [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)を使用して BLOB トリガー関数をテストできます。
 
-1. In the [Azure Portal] for your Functions app, create a new C#, F# or Node blob trigger function. Set the path to monitor to the name of your blob container. For example:
+1. 関数アプリの [Azure Portal] で、C#、F#、または Node の BLOB トリガー関数を新規作成します。監視するパスを BLOB コンテナーの名前に設定します。次に例を示します。
 
-        files
+		files
 
-2. Click the **+** button to select or create the storage account you want to use. Then click **Create**.
+2. **[+]** ボタンをクリックし、使用するストレージ アカウントを選択または作成します。**[Create]** をクリックします。
 
-3. Create a text file with the following text and save it:
+3. 次のテキストが含まれたテキスト ファイルを作成して保存します。
 
-        A text file for blob trigger function testing.
+		A text file for blob trigger function testing.
 
-4. Run [Microsoft Azure Storage Explorer](http://storageexplorer.com/) and connect to the blob container in the storage account being monitored.
+4. [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)を実行し、監視対象のストレージ アカウントの BLOB コンテナーに接続します。
 
-5. Click the **Upload** button and upload the text file.
+5. **[アップロード]** ボタンをクリックし、テキスト ファイルをアップロードします。
 
-    ![](./media/functions-test-a-function/azure-storage-explorer-test.png)
-
-
-    The default blob trigger function code will report the processing of the blob in the logs:
-
-        2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
-        2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
-        2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
-        2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
-
-## <a name="test-a-function-within-functions"></a>Test a function within functions
-
-### <a name="test-with-the-functions-portal-run-button"></a>Test with the functions portal run button
-
-The portal provides a **Run** button which will allow you to do some limited testing. You can provide a request body using the run button but, you can't provide query string parameters or update request headers.
-
-Test the HTTP trigger function we created earlier by adding a JSON string similar to the following in the **Request body** field then click the **Run** button.
-
-    {
-        "name" : "Wes testing Run button",
-        "address" : "USA"
-    } 
-
-In the portal **Logs** window, output similar to the following is logged while executing the function:
-
-    2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
-    2016-03-23T08:03:18.697 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
-    2016-03-23T08:03:18.697 Request Headers = {"connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"en-US"}
-    2016-03-23T08:03:18.697 Processing user info from request body...
-    2016-03-23T08:03:18.697 Processing User Information...
-    2016-03-23T08:03:18.697 name = Wes testing Run button
-    2016-03-23T08:03:18.697 address = USA
-    2016-03-23T08:03:18.744 Function completed (Success, Id=753a01b0-45a8-4125-a030-3ad543a89409)
+	![](./media/functions-test-a-function/azure-storage-explorer-test.png)
 
 
-### <a name="test-with-a-timer-trigger"></a>Test with a timer trigger
+	既定の BLOB トリガー関数コードによって、ログに BLOB の処理がレポートされます。
 
-Some functions, can't be truly tested with the tools mentioned previously. For example, a queue trigger function which runs when a message is dropped into [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md). You could always write code to drop a message into your queue and an example of this in a console project is provided below. However, there is another approach you can use to test with functions directly.  
+		2016-03-24T11:30:10  Welcome, you are now connected to log-streaming service.
+		2016-03-24T11:30:34.472 Function started (Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
+		2016-03-24T11:30:34.472 C# Blob trigger function processed: A text file for blob trigger function testing.
+		2016-03-24T11:30:34.472 Function completed (Success, Id=739ebc07-ff9e-4ec4-a444-e479cec2e460)
 
-You could use a timer trigger configured with a queue output binding. That timer trigger code could then write the test messages to the queue. This section will walk through through an example. 
+## 関数内での関数のテスト
 
-For more in-depth information on using bindings with Azure Functions, see the [Azure Functions developer reference](functions-reference.md). 
+### 関数ポータルの実行ボタンを使用してテストする
 
+ポータルにある **[実行]** ボタンをクリックすると、限定的なテストを実施できます。[実行] ボタンを使用する場合、要求本文は指定できますが、クエリ文字列パラメーターを指定したり、要求ヘッダーを更新したりすることはできません。
 
-#### <a name="create-queue-trigger-for-testing"></a>Create queue trigger for testing
+前に作成した HTTP トリガー関数をテストするには、次のような JSON 文字列を **[要求本文]** フィールドに追加し、**[実行]** ボタンをクリックします。
 
-To demonstrate this approach, we will first create a queue trigger function that we want to test for a queue named `queue-newusers`. This function will process name and address information for a new user dropped into Azure queue storage. 
+	{
+		"name" : "Wes testing Run button",
+		"address" : "USA"
+	} 
 
-> [AZURE.NOTE] If you use a different queue name, make sure the name you use conforms to the [Naming Queues and MetaData](https://msdn.microsoft.com/library/dd179349.aspx) rules.  Otherwise, you will get a HTTP Status code 400 : Bad Request. 
+関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
 
-1. In the [Azure Portal] for your Functions app, click **New Function** > **QueueTrigger - C#**.
-2. Enter the queue name to be monitored by the queue function 
-
-        queue-newusers 
-
-3. Click the **+** (add) button to select or create the storage account you want to use. Then click **Create**.
-4. Leave this portal browser window opened so you can monitor the log entries for the default queue function template code.
-
-
-#### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Create a timer trigger to drop a message in the queue
-
-1. Open the [Azure Portal] in a new browser window and navigate to your Function app.
-2. Click **New Function** > **TimerTrigger - C#**. Enter a cron expression to set how often the timer code will execute testing your queue function. Then click **Create**. If you want the test to run every 30 seconds you can use the following [CRON expression](https://wikipedia.org/wiki/Cron#CRON_expression):
-
-        */30 * * * * *
+	2016-03-23T08:03:12  Welcome, you are now connected to log-streaming service.
+	2016-03-23T08:03:17.357 Function started (Id=753a01b0-45a8-4125-a030-3ad543a89409)
+	2016-03-23T08:03:18.697 Node.js HTTP trigger function processed a request. RequestUri=https://functions841def78.azurewebsites.net/api/wesmchttptriggernodejs1
+	2016-03-23T08:03:18.697 Request Headers = {"connection":"Keep-Alive","accept":"*/*","accept-encoding":"gzip","accept-language":"ja-JP"}
+	2016-03-23T08:03:18.697 Processing user info from request body...
+	2016-03-23T08:03:18.697 Processing User Information...
+	2016-03-23T08:03:18.697 name = Wes testing Run button
+	2016-03-23T08:03:18.697 address = USA
+	2016-03-23T08:03:18.744 Function completed (Success, Id=753a01b0-45a8-4125-a030-3ad543a89409)
 
 
-2. Click the **Integrate** tab for your new timer trigger.
-3. Under **Output**, click the **+ New Output** button. Then click **queue** and the **Select** button.
-4. Note the name you use for the **queue message object** you will use this in the timer function code.
+### タイマー トリガーを使用してテストする
 
-        myQueue
+機能の中には、ここまでに説明したツールでは十分にテストできないものがあります。たとえば、メッセージが [Azure Queue Storage ](../storage/storage-dotnet-how-to-use-queues.md)にドロップされたときに実行されるキュー トリガー関数などがこれにあたります。キューにメッセージをドロップするコードはいつでも記述することができます。コンソール プロジェクトにおけるこの例を下に示します。ただし、関数で直接テストするための別の方法もあります。
 
-4. Enter the queue name where the message will be sent: 
+キュー出力バインドを用いて構成されたタイマー トリガーを使用できます。このタイマー トリガー コードで、テスト メッセージをキューに書き込むことができます。このセクションでは、例を用いて説明します。
 
-        queue-newusers 
+Azure Functions でのバインドの使用に関する詳細については、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を参照してください。
 
-3. Click the **+** (add) button to select the storage account you used previously with the queue trigger. Then click **Save**.
-4. Click the **Develop** tab for your timer trigger.
-5. You can use the following code for the C# timer function as long as you used the same queue message object name shown above. Then click **Save**
 
-        using System;
-        
-        public static void Run(TimerInfo myTimer, out String myQueue, TraceWriter log)
-        {
-            String newUser = 
-            "{\"name\":\"User testing from C# timer function\",\"address\":\"XYZ\"}";
-        
-            log.Verbose($"C# Timer trigger function executed at: {DateTime.Now}");   
-            log.Verbose($"{newUser}");   
-            
-            myQueue = newUser;
-        }
+#### テスト用のキュー トリガーの作成
 
-At this point C# timer function will execute every 30 seconds if you used the example cron expression. The logs for the timer function will report each execution:
+この方法を実演するために、まず、`queue-newusers` という名前のキューに対してテストするキュー トリガー関数を作成します。この関数は、Azure Queue Storage にドロップされた新しいユーザーの名前と住所の情報を処理します。
 
-    2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
-    2016-03-24T10:27:30.004 C# Timer trigger function executed at: 3/24/2016 10:27:30 AM
-    2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
-    2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
+> [AZURE.NOTE] 別のキュー名を使用する場合は、必ず、[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)の規則に準拠した名前を使用してください。準拠していない場合、"HTTP 状態コード 400: 正しくない要求" が表示されます。
 
-In the browser window for the queue function, you will see the each message being processed:
+1. 関数アプリの [Azure ポータル]で、**[New Function]** (新しい関数)、**[QueueTrigger - c#]** (QueueTrigger - C#) の順にクリックします。
+2. キュー関数で監視するキューの名前を入力します。
 
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-    2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
-    2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
+		queue-newusers 
+
+3. **[+]** (追加) ボタンをクリックし、使用するストレージ アカウントを選択または作成します。**[Create]** をクリックします。
+4. 既定のキュー関数テンプレート コードのログ エントリを監視できるように、このポータルのブラウザー ウィンドウを開いたままにします。
+
+
+#### キューにメッセージをドロップするタイマー トリガーの作成
+
+1. 新しいブラウザー ウィンドウで [Azure ポータル]を開き、関数アプリに移動します。
+2. **[New Function]** (新しい関数)、**[TimerTrigger - C#]** (TimerTrigger - C#) の順にクリックします。タイマー コードがキュー関数のテストを実行する頻度を設定する CRON 式を入力します。**[Create]** をクリックします。テストを 30 秒ごとに実行する場合は、次の [CRON 式](https://wikipedia.org/wiki/Cron#CRON_expression)を使用できます。
+
+		*/30 * * * * *
+
+
+2. 新しいタイマー トリガーの **[統合]** タブをクリックします。
+3. **[出力]** にある **[+ 新規出力]** ボタンをクリックします。**[キュー]**、**[選択]** ボタンの順にクリックします。
+4. **キュー メッセージ オブジェクト**に使用している名前をメモします。この名前は、タイマー関数コードで使用します。
+
+		myQueue
+
+4. メッセージの送信先キューの名前を入力します。
+
+		queue-newusers 
+
+3. **[+]** (追加) ボタンをクリックし、前にキュー トリガーで使用したストレージ アカウントを選択します。その後、**[保存]** をクリックします。
+4. タイマー トリガーの **[開発]** タブをクリックします。
+5. 上に示したのと同じキュー メッセージ オブジェクト名を使用している場合は、C# タイマー関数に次のコードを使用できます。その後、**[保存]** をクリックします。
+
+		using System;
+		
+		public static void Run(TimerInfo myTimer, out String myQueue, TraceWriter log)
+		{
+		    String newUser = 
+		    "{"name":"User testing from C# timer function","address":"XYZ"}";
+		
+		    log.Verbose($"C# Timer trigger function executed at: {DateTime.Now}");   
+		    log.Verbose($"{newUser}");   
+		    
+		    myQueue = newUser;
+		}
+
+これで、上の CRON 式の例を使用している場合は、C# タイマー関数が 30 秒ごとに実行されるようになります。タイマー関数のログに、各実行がレポートされます。
+
+	2016-03-24T10:27:02  Welcome, you are now connected to log-streaming service.
+	2016-03-24T10:27:30.004 Function started (Id=04061790-974f-4043-b851-48bd4ac424d1)
+	2016-03-24T10:27:30.004 C# Timer trigger function executed at: 3/24/2016 10:27:30 AM
+	2016-03-24T10:27:30.004 {"name":"User testing from C# timer function","address":"XYZ"}
+	2016-03-24T10:27:30.004 Function completed (Success, Id=04061790-974f-4043-b851-48bd4ac424d1)
+
+キュー関数のブラウザー ウィンドウに、処理されている各メッセージが表示されます。
+
+	2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
+	2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
+	2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"User testing from C# timer function","address":"XYZ"}
+	2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
+	
+## コードを使用した関数のテスト
+
+### コードを使用して HTTP トリガー関数をテストする: Node.js
+
+Node.js コードを使用して、Azure Functions をテストする HTTP 要求を実行できます。
+
+次のように設定します。
+
+- 要求オプションの `host` を関数アプリのホストに設定する。
+- `path` に関数の名前を設定する。
+- `path` にアクセス コード (`<your code>`) を設定する。
+
+コード例:
+
+	var http = require("http");
+	
+	var nameQueryString = "name=Wes%20Query%20String%20Test%20From%20Node.js";
+	
+	var nameBodyJSON = {
+	    name : "Wes testing with Node.JS code",
+	    address : "Dallas, T.X. 75201"
+	};
+	
+	var bodyString = JSON.stringify(nameBodyJSON);
+	
+	var options = {
+	  host: "functions841def78.azurewebsites.net",
+	  //path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9&" + nameQueryString,
+	  path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9",
+	  method: "POST",
+	  headers : {
+	      "Content-Type":"application/json",
+	      "Content-Length": Buffer.byteLength(bodyString)
+	    }    
+	};
+	
+	callback = function(response) {
+	  var str = ""
+	  response.on("data", function (chunk) {
+	    str += chunk;
+	  });
+	
+	  response.on("end", function () {
+	    console.log(str);
+	  });
+	}
+	
+	var req = http.request(options, callback);
+	console.log("*** Sending name and address in body ***");
+	console.log(bodyString);
+	req.end(bodyString);
+
+
+
+出力:
+
+	C:\Users\Wesley\testing\Node.js>node testHttpTriggerExample.js
+	*** Sending name and address in body ***
+	{"name" : "Wes testing with Node.JS code","address" : "Dallas, T.X. 75201"}
+	Hello Wes testing with Node.JS code
+	The address you provided is Dallas, T.X. 75201
+		
+関数を実行すると、ポータルの **[ログ]** ウィンドウに、次のような出力が記録されます。
+
+	2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
+	2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
+	2016-03-23T08:09:01.153 Node.js HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
+	2016-03-23T08:09:01.153 Request Headers = {"connection":"Keep-Alive","host":"functionsExample.azurewebsites.net"}
+	2016-03-23T08:09:01.153 Name not provided as query string param. Checking body...
+	2016-03-23T08:09:01.153 Request Body Type = object
+	2016-03-23T08:09:01.153 Request Body = [object Object]
+	2016-03-23T08:09:01.153 Processing User Information...
+	2016-03-23T08:09:01.215 Function completed (Success, Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
     
-## <a name="test-a-function-with-code"></a>Test a function with Code
 
-### <a name="test-a-http-trigger-function-with-code:-node.js"></a>Test a HTTP trigger function with Code: Node.js
+### コードを使用してキュー トリガー関数をテストする: C# #
 
-You can use Node.js code to execute a http request to test your Azure Function. 
+キューにメッセージをドロップするコードを使用してキュー トリガーをテストできることは既に説明しました。次のコード例は、[Azure Queue Storage の概要](../storage/storage-dotnet-how-to-use-queues.md)に関するチュートリアルに記載されている C# コードをベースにしています。他の言語のコードも、こちらのリンク先から入手できます。
 
-Make sure to set:
+コンソール アプリでこのコードをテストするには、次の手順を実行する必要があります。
 
-- The `host` in the request options to your function app host
-- Your function name in the `path`.
-- Your access code (`<your code>`) in the `path`.
-
-Code Example:
-
-    var http = require("http");
-    
-    var nameQueryString = "name=Wes%20Query%20String%20Test%20From%20Node.js";
-    
-    var nameBodyJSON = {
-        name : "Wes testing with Node.JS code",
-        address : "Dallas, T.X. 75201"
-    };
-    
-    var bodyString = JSON.stringify(nameBodyJSON);
-    
-    var options = {
-      host: "functions841def78.azurewebsites.net",
-      //path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9&" + nameQueryString,
-      path: "/api/HttpTriggerNodeJS2?code=sc1wt62opn7k9buhrm8jpds4ikxvvj42m5ojdt0p91lz5jnhfr2c74ipoujyq26wab3wk5gkfbt9",
-      method: "POST",
-      headers : {
-          "Content-Type":"application/json",
-          "Content-Length": Buffer.byteLength(bodyString)
-        }    
-    };
-    
-    callback = function(response) {
-      var str = ""
-      response.on("data", function (chunk) {
-        str += chunk;
-      });
-    
-      response.on("end", function () {
-        console.log(str);
-      });
-    }
-    
-    var req = http.request(options, callback);
-    console.log("*** Sending name and address in body ***");
-    console.log(bodyString);
-    req.end(bodyString);
+- [app.config ファイルにストレージ接続文字列を構成します](../storage/storage-dotnet-how-to-use-queues.md#setup-a-storage-connection-string)。
+- このコードは、実行時に新しいユーザーの名前と住所をコマンド ライン引数として受け取ります。`name` と `address` をパラメーターとしてアプリに渡します。たとえば、`C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"` のように指定します。
 
 
-
-Output:
-
-    C:\Users\Wesley\testing\Node.js>node testHttpTriggerExample.js
-    *** Sending name and address in body ***
-    {"name" : "Wes testing with Node.JS code","address" : "Dallas, T.X. 75201"}
-    Hello Wes testing with Node.JS code
-    The address you provided is Dallas, T.X. 75201
-        
-In the portal **Logs** window, output similar to the following is logged while executing the function:
-
-    2016-03-23T08:08:55  Welcome, you are now connected to log-streaming service.
-    2016-03-23T08:08:59.736 Function started (Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-    2016-03-23T08:09:01.153 Node.js HTTP trigger function processed a request. RequestUri=http://functionsExample.azurewebsites.net/api/WesmcHttpTriggerNodeJS1/?code=XXXXXXXXXX==
-    2016-03-23T08:09:01.153 Request Headers = {"connection":"Keep-Alive","host":"functionsExample.azurewebsites.net"}
-    2016-03-23T08:09:01.153 Name not provided as query string param. Checking body...
-    2016-03-23T08:09:01.153 Request Body Type = object
-    2016-03-23T08:09:01.153 Request Body = [object Object]
-    2016-03-23T08:09:01.153 Processing User Information...
-    2016-03-23T08:09:01.215 Function completed (Success, Id=607b891c-08a1-427f-910c-af64ae4f7f9c)
-    
-
-### <a name="test-a-queue-trigger-function-with-code:-c#"></a>Test a queue trigger function with Code: C# #
-
-We mentioned earlier that you could test a queue trigger by using code to drop a message in your queue. The following example code is based off the C# code presented in the [Getting started with Azure Queue storage](../storage/storage-dotnet-how-to-use-queues.md) tutorial. Code for other languages is also available from that link.
-
-To test this code in a console app you must:
-
-- [Configure your storage connection string in the app.config file](../storage/storage-dotnet-how-to-use-queues.md#setup-a-storage-connection-string).
-- This code accepts the name and address for a new user as command-line arguments during runtime. Pass a `name` and `address` as parameters to the app. For example, `C:\myQueueConsoleApp\test.exe "Wes testing queues" "in a console app"`
-
-
-Example C# code:
+C# のコード例:
 
     static void Main(string[] args)
     {
@@ -416,9 +415,9 @@ Example C# code:
         if (name != null)
         {
             if (address != null)
-                JSON = String.Format("{{\"name\":\"{0}\",\"address\":\"{1}\"}}", name, address);
+                JSON = String.Format("{{"name":"{0}","address":"{1}"}}", name, address);
             else
-                JSON = String.Format("{{\"name\":\"{0}\"}}", name);
+                JSON = String.Format("{{"name":"{0}"}}", name);
         }
 
         Console.WriteLine("Adding message to " + queueName + "...");
@@ -428,20 +427,17 @@ Example C# code:
         queue.AddMessage(message);
     }
 
-In the browser window for the queue function, you will see the each message being processed:
+キュー関数のブラウザー ウィンドウに、処理されている各メッセージが表示されます。
 
-    2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
-    2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
-    2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"Wes testing queues","address":"in a console app"}
-    2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
+	2016-03-24T10:27:06  Welcome, you are now connected to log-streaming service.
+	2016-03-24T10:27:30.607 Function started (Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
+	2016-03-24T10:27:30.607 C# Queue trigger function processed: {"name":"Wes testing queues","address":"in a console app"}
+	2016-03-24T10:27:30.607 Function completed (Success, Id=e304450c-ff48-44dc-ba2e-1df7209a9d22)
 
 
 <!-- URLs. -->
 
 [Azure Portal]: https://portal.azure.com
+[Azure ポータル]: https://portal.azure.com
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

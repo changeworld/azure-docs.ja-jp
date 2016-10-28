@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Set security policies in Azure Security Center | Microsoft Azure"
-   description="This document helps you to configure security policies in Azure Security Center."
+   pageTitle="Azure Security Center でのセキュリティ ポリシーの設定 | Microsoft Azure"
+   description="このドキュメントは、Azure セキュリティ センターでのセキュリティ ポリシーを構成する場合に役立ちます。"
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,100 +16,95 @@
    ms.date="09/22/2016"
    ms.author="yurid"/>
 
+# Azure Security Center でのセキュリティ ポリシーの設定
+このドキュメントでは、Security Center でセキュリティ ポリシーを構成するうえで必要な手順について詳しく説明します。
 
-# <a name="set-security-policies-in-azure-security-center"></a>Set security policies in Azure Security Center
-This document helps you to configure security policies in Security Center by guiding you through the necessary steps to perform this task.
+## セキュリティ ポリシーとは
+セキュリティ ポリシーは、指定されたサブスクリプションまたはリソース グループ内のリソースに推奨されるコントロールのセットを定義します。Security Center では、セキュリティに関する会社のニーズ、および各サブスクリプションでのアプリケーションの種類やデータの機密度に合わせて、Azure サブスクリプションまたはリソース グループのポリシーを定義できます。
 
-## <a name="what-are-security-policies?"></a>What are security policies?
-A security policy defines the set of controls, which are recommended for resources within the specified subscription or resource group. In Security Center, you define policies for your Azure subscriptions or resource group according to your company security needs and the type of applications or sensitivity of the data in each subscription.
+たとえば、開発やテストに使用されるリソースは、運用アプリケーションで使用されるリソースとは異なるセキュリティ要件を持つ場合があります。同様に、個人情報のような規制されたデータが使用されるアプリケーションには、より高いレベルのセキュリティが必要です。Azure Security Center で有効化されているセキュリティ ポリシーは、セキュリティに関する推奨事項と監視を促進して、潜在的な脆弱性を識別し、脅威を軽減します。使用に適しているオプションを判断する方法の詳細については、「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」を参照してください。
 
-For example, resources that are used for development or test might have different security requirements from resources that are used for production applications. Likewise, applications that use regulated data like personally identifiable information might require a higher level of security. Security policies that are enabled in Azure Security Center drive security recommendations and monitoring to help you identify potential vulnerabilities and mitigate threats. Read [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) for more information about how to determine the option that is appropriate for you.
+## サブスクリプションのセキュリティ ポリシーの設定
 
-## <a name="set-security-policies-for-subscriptions"></a>Set security policies for subscriptions
+セキュリティ ポリシーは、サブスクリプションまたはリソース グループごとに構成できます。セキュリティ ポリシーを変更するには、そのサブスクリプションの所有者または共同作業者である必要があります。Azure Portal にサインインし、次の手順に従って Security Center でセキュリティ ポリシーを構成します。
 
-You can configure security policies for each subscription or resource group. To modify a security policy, you must be an owner or contributor of that subscription. Sign in to the Azure portal and follow the succeeding steps to configure security polices in Security Center:
+1. Security Center のダッシュボードで **[ポリシー]** タイルをクリックします。
 
-1. Click the **Policy** tile in the Security Center dashboard.
-
-2. In the **Security Policy - Define policy per subscription or resource group** blade that opens, select the subscription on which you want to enable the security policy. If you prefer to enable the security policy for a resource group instead of the entire subscription, scroll down to the next section that talks about how to set up security policies for resource groups.
+2. **[セキュリティ ポリシー - サブスクリプションまたはリソース グループごとにポリシーを定義する]** ブレードが開いたら、セキュリティ ポリシーを有効にするサブスクリプションを選択します。サブスクリプション全体ではなく、リソース グループのセキュリティ ポリシーを有効にする場合は、リソース グループのセキュリティ ポリシーを設定する方法について説明する次のセクションまで下へスクロールしてください。
 
     ![Defining policy](./media/security-center-policies/security-center-policies-fig1-ga.png)
 
-3. The **Security policy** blade for the selected subscription opens with a set of options like the options in the following screenshot:
+3. 選択したサブスクリプションの **[セキュリティ ポリシー]** ブレードが開き、次のスクリーンショットにあるようなオプションのセットが表示されます。
 
-    ![Enabling data collection](./media/security-center-policies/security-center-policies-fig2-ga.png)
+    ![データ収集の有効化](./media/security-center-policies/security-center-policies-fig2-ga.png)
 
-    The available options in this blade are:
-    - **Prevention policy**: Use this option to configure policies per subscription or resource group.  
-    - **Email notification**: Use this option to configure an email notification that's sent on the first daily occurrence of an alert and for high severity alerts. Email preferences can be configured only for subscription policies. Read [Provide security contact details in Azure Security Center](security-center-provide-security-contact-details.md) for more information about how to configure an email notification.
-    - **Pricing tier**: Use this option to upgrade the pricing tier selection. See [Security Center page](https://azure.microsoft.com/pricing/details/security-center/) to learn more about pricing options.
+	このブレードで使用できるオプションは次のとおりです。
+	- **防止ポリシー**: このオプションは、サブスクリプションまたはリソース グループごとにポリシーを構成するために使用します。
+	- **電子メールの通知**: このオプションは、最初に警告が発生したとき、および重大度が高い警告に対して送信される電子メール通知を構成するために使用します。また、電子メールの設定は、サブスクリプション ポリシーに対してのみ構成できます。電子メールの通知を構成する方法の詳細については、「[Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md)」を参照してください。
+	- **価格レベル**: このオプションは、価格レベルの選択をアップグレードするために使用します。価格オプションの詳細については、[Security Center のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
 
 
-4.  Make sure that **Collect data from virtual machines** options is **On**. This option enables automatic log collection for existing and new resources.
+4.  **[仮想マシンからデータを収集する]** オプションが **[オン]** になっていることを確認します。このオプションは、既存および新規のリソースに対する自動ログ収集を有効化します。
 
-    >[AZURE.NOTE] We recommend that you turn on data collection for each of your subscriptions to ensure that security monitoring is available for all existing and new VMs. Enabling data collection installs the monitoring agent. If you don't want to turn on data collection now from this location, you can do it later from the **Health** and **Recommendations** views. You can also enable data collection for only the subscription or for select VMs. Refer to the [Azure Security Center FAQ](security-center-faq.md) to know more about the supported VMs.
+    >[AZURE.NOTE] サブスクリプションごとにデータ収集を有効にすることをお勧めします。これにより、既存および新規のすべての VM でセキュリティの監視を利用できるようになります。データ収集を有効にすると、監視エージェントがインストールされます。この場所からのデータ収集を今すぐ有効にしない場合は、後で **[正常性]** ビューと **[推奨事項]** ビューから有効にすることができます。また、特定のサブスクリプションのみ、または選択した VM でデータ収集を有効にすることもできます。サポートされる VM に関する詳細は、「[Azure セキュリティ センターに関する FAQ](security-center-faq.md)」を参照してください。
 
-5. If your storage account is not configured yet, you might see a warning like the one in the following screenshot when you open **Security Policy**:
+5. ストレージ アカウントをまだ構成していない場合は、**[セキュリティ ポリシー]** を開いたときに、次のスクリーンショットに示すような警告が表示されることがあります。
 
-    ![Storage selection](./media/security-center-policies/security-center-policies-fig2.png)
+    ![Storage の選択](./media/security-center-policies/security-center-policies-fig2.png)
 
-6. If you see this warning, click this option and select the region as shown in the following screenshot:
+6. この警告が表示された場合は、このオプションをクリックして、次のスクリーンショットに示すようにリージョンを選択します。
 
-    ![Storage selection](./media/security-center-policies/security-center-policies-fig3-ga.png)
+    ![Storage の選択](./media/security-center-policies/security-center-policies-fig3-ga.png)
 
-7. For each region in which you have running virtual machines, choose the storage account where data that's collected from those virtual machines is stored. This makes it easy to keep data in the same geographic area for privacy and data sovereignty purposes. After you decide the region that you will use, select the region, and then select the storage account.
+7. 仮想マシンが実行されている各リージョンに対し、これらの仮想マシンから収集されたデータが格納されるストレージ アカウントを選択します。これにより、プライバシーとデータ主権の目的で、同じ地域にデータを保持することが容易になります。使用するリージョンを決めた後、そのリージョンを選択し、ストレージ アカウントを選択します。
 
-8. In the **Choose storage accounts** blade, click **OK**.
+8. **[ストレージ アカウントを選ぶ]** ブレードで **[OK]** をクリックします。
 
-    > [AZURE.NOTE] If you prefer, you can aggregate data in one central storage account for virtual machines that are in various regions. Refer to the [Azure Security Center FAQ](security-center-faq.md) for more information.
+    > [AZURE.NOTE] 必要に応じて、さまざまなリージョンにある仮想マシンについて、データを 1 つの中央のストレージ アカウントに集約することができます。詳細については、「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」を参照してください。
 
-9. In the **Security Policy** blade, click **On** to enable the security recommendations that you want to use on this subscription. Click **Prevention policy** to see options like those in the following screenshot:
+9. **[セキュリティ ポリシー]** ブレードで **[オン]** をクリックして、このサブスクリプションで使用するセキュリティの推奨事項を有効にします。**[防止ポリシー]** をクリックして、次のスクリーンショットにあるようなオプションを表示します。
 
-    ![Selecting the security policies](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
+	![Selecting the security policies](./media/security-center-policies/security-center-policies-fig4-ga-new.png)
 
-Use the following table as a reference to understand each option:
+次の表を参照して、各オプションについて確認してください。
 
-| Policy | When state is on |
+| ポリシー | 状態がオンの場合 |
 |----- |-----|
-| System updates | Retrieves a daily list of available security and critical updates from Windows Update or Windows Server Update Services. The retrieved list depends on the service that's configured for that virtual machine and recommends that the missing updates be applied. For Linux systems, the policy uses the distro-provided package management system to determine packages that have available updates. It also checks for security and critical updates from [Azure Cloud Services](./cloud-services/cloud-services-how-to-configure.md) virtual machines. |
-| OS vulnerabilities | Analyzes operating system configurations daily to determine issues that could make the virtual machine vulnerable to attack. The policy also recommends configuration changes to address these vulnerabilities. See the [list of recommended baselines](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335) for more information about the specific configurations that are being monitored. |
-| Endpoint protection | Recommends endpoint protection to be provisioned for all Windows virtual machines to help identify and remove viruses, spyware, and other malicious software.|
-| Disk encryption | Recommends enabling disk encryption in all virtual machines to enhance data protection at rest.
-| Network security groups | Recommends that [network security groups](../virtual-network/virtual-networks-nsg.md) be configured to control inbound and outbound traffic to VMs that have public endpoints. Network security groups that are configured for a subnet will be inherited by all virtual machine network interfaces unless otherwise specified. In addition to checking that a network security group has been configured, this policy assesses inbound security rules to identify rules that allow incoming traffic. |
-| Web application firewall | Recommends that a web application firewall be provisioned on virtual machines when either of the following is true:</br></br>[Instance-level public IP](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) is used and the inbound security rules for the associated network security group are configured to allow access to port 80/443.</br></br>Load-balanced IP is used and the associated load balancing and inbound network address translation (NAT) rules are configured to allow access to port 80/443. (For more information, see [Azure Resource Manager support for Load Balancer](../load-balancer/load-balancer-arm.md). |
-| Next generation firewall | Extends network protections beyond network security groups, which are built into Azure. Security Center will discover deployments for which a next generation firewall is recommended and enable you to provision a virtual appliance. |
-| SQL auditing & Threat detection | Recommends that auditing of access to Azure Database be enabled for compliance and also advanced threat detection, for investigation purposes. |
-| SQL transparent data encryption | Recommends that encryption at rest be enabled for your Azure SQL Database, associated backups, and transaction log files. Even if your data is breached, it will not be readable. |
-| Vulnerability assessment | Recommends that you install a vulnerability assessment solution on your VM. |
+| システムの更新プログラム | Windows Update または Windows Server Update Services から、利用できる毎日のセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。取得される一覧は、その仮想マシンで構成されているサービスによって異なります。この一覧によって、不足している更新プログラムを適用するよう推奨されます。Linux システムの場合、ポリシーはディストリビューション提供のパッケージ管理システムを利用し、使用できる更新プログラムが含まれているパッケージを特定します。また、[Azure Cloud Services](./cloud-services/cloud-services-how-to-configure.md) 仮想マシンのセキュリティ更新プログラムと重要な更新プログラムについても確認します。 |
+| OS の脆弱性 | オペレーティング システム構成を毎日分析し、攻撃に対する仮想マシンの脆弱性を引き起こすおそれのある問題を特定します。また、このポリシーによって、これらの脆弱性に対応するための構成の変更が推奨されます。監視対象のこの特定の構成に関する詳細は、[推奨される基準の一覧](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)を参照してください。 |
+| エンドポイント保護 | ウイルス、スパイウェア、およびその他の悪意のあるソフトウェアを特定して削除するため、すべての Windows 仮想マシンにエンドポイント保護をプロビジョニングすることをお勧めします。|
+| ディスクの暗号化 | 静止データの保護を強化するために、ディスク暗号化はすべての仮想マシンで有効にすることをお勧めします。
+| ネットワーク セキュリティ グループ | パブリック エンドポイントがある VM への受信トラフィックと送信トラフィックを制御するように、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を構成することを推奨します。サブネットで構成されたネットワーク セキュリティ グループは、他に指定しない限り、すべての仮想マシンのネットワーク インターフェイスによって継承されます。このポリシーは、ネットワーク セキュリティ グループが構成されていることをチェックするほか、受信セキュリティ規則を評価して、受信トラフィックを許可する規則を特定します。 |
+| Web アプリケーション ファイアウォール | 次のいずれかに該当する場合に、仮想マシンに Web アプリケーション ファイアウォールをプロビジョニングすることを推奨します。</br></br>[インスタンスレベル パブリック IP](../virtual-network/virtual-networks-instance-level-public-ip.md) (ILPIP) が使用されており、関連付けられたネットワーク セキュリティ グループの受信セキュリティ規則が、ポート 80/443 へのアクセスを許可するように構成されている。</br></br>負荷分散された IP が使用されており、関連付けられた負荷分散と受信ネットワーク アドレス変換 (NAT) の規則が、ポート 80/443 へのアクセスを許可するように構成されている。詳細については、「[Azure Resource Manager によるロード バランサーのサポート](../load-balancer/load-balancer-arm.md)」を参照してください。 |
+| 次世代のファイアウォール | Azure に組み込まれているネットワーク セキュリティ グループの適用範囲外までネットワーク保護を拡張します。次世代ファイアウォールの利用が推奨されるデプロイが Security Center によって検出されると、仮想アプライアンスをプロビジョニングできるようになります。 |
+| SQL 監査と脅威検出 | コンプライアンスのために、また高度な脅威検出の調査のために、Azure データベースへのアクセスの監査を有効にすることを推奨します。 |
+| SQL Transparent Data Encryption | Azure SQL データベース、関連付けられたバックアップ、トランザクション ログ ファイルに対し、REST での暗号化を有効にすることを推奨します。セキュリティ侵害を受けた場合でも、データが読み取られることはありません。 |
+| 脆弱性評価 | VM に脆弱性評価ソリューションをインストールすることをお勧めします。 |
 
-After you configure all options, click **OK** in the **Security Policy** blade that has the recommendations, and then click **Save** in the **Security Policy** blade that  has the initial settings.
+すべてのオプションの構成が完了したら、推奨事項が表示されている **[セキュリティ ポリシー]** ブレードで **[OK]** をクリックし、初期設定が表示されている **[セキュリティ ポリシー]** ブレードで **[保存]** をクリックします。
 
-## <a name="set-security-policies-for-resource-groups"></a>Set security policies for resource groups
+## リソース グループのセキュリティ ポリシーの設定
 
-If you prefer to configure your security policies per resource group, the steps are like those that you use to set up security policies for subscriptions. The main difference is that you will need to expand the subscription name and select the resource group for which you want to configure the unique security policy:
+リソース グループごとにセキュリティ ポリシーを構成する場合、その手順は、サブスクリプションのセキュリティ ポリシーを設定する際に使用するものと似ています。主な違いは、サブスクリプション名を展開し、一意のセキュリティ ポリシーを構成するリソース グループを選択する必要があることです。
 
 ![Resource group selection](./media/security-center-policies/security-center-policies-fig5-ga.png)
 
-After you select the resource group, the **Security policy** blade opens. By default, the **Inheritance** option is enabled. This means that all security policies for this resource group are inherited from the subscription level. You can change this configuration in case you want a custom security policy for a resource group. If that's the case, you need to select **Unique** and make the changes under the **Prevention policy** option.
+リソース グループを選択すると、**[セキュリティ ポリシー]** ブレードが開きます。既定では、**[継承]** オプションが有効になっています。これは、このリソース グループに対するすべてのセキュリティ ポリシーがサブスクリプション レベルから継承されることを意味します。リソース グループのカスタム セキュリティ ポリシーを設定する場合は、この構成を変更できます。その場合は、**[一意]** を選択し、**[防止ポリシー]** オプションの下で変更を加える必要があります。
 
 ![Security policy per resource group](./media/security-center-policies/security-center-policies-fig6-ga.png)
 
-> [AZURE.NOTE] In case of a conflict between subscription-level policy and resource group-level policy, the resource group-level policy takes precedence.
+> [AZURE.NOTE] サブスクリプション レベルのポリシーとリソース グループ レベルのポリシーが競合する場合は、リソース グループ レベルのポリシーが優先されます。
 
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-In this document, you learned how to configure security policies in Azure Security Center. To learn more about Azure Security Center, see the following:
+このドキュメントでは、Azure セキュリティ センターでのセキュリティ ポリシーの構成方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
 
-- [Azure Security Center planning and operations guide](security-center-planning-and-operations-guide.md). Learn how to plan and understand the design considerations to adopt Azure Security Center.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md). Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md). Learn how to manage and respond to security alerts.
-- [Monitoring partner solutions with Azure Security Center](security-center-partner-solutions.md). Learn how to monitor the health status of your partner solutions.
-- [Azure Security Center FAQ](security-center-faq.md). Find frequently asked questions about using the service.
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/). Find blog posts about Azure security and compliance.
+- [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)。Azure Security Center を導入するための設計上の考慮事項を計画し、理解する方法について説明しています。
+- [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)。Azure リソースの正常性を監視する方法について説明しています。
+- [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)。セキュリティの警告の管理と対応の方法について説明しています。
+- [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)。パートナー ソリューションの正常性状態を監視する方法について説明しています。
+- [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)。このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)。Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

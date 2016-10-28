@@ -1,6 +1,6 @@
 <properties
- pageTitle="IoT Hub operations monitoring"
- description="An overview of Azure IoT Hub operations monitoring, enabling you to monitor the status of operations on your IoT hub in real time"
+ pageTitle="IoT Hub 操作の監視"
+ description="Azure IoT Hub の操作の監視に関する概要 (IoT Hub に対する操作の状態をリアルタイムで監視できる)"
  services="iot-hub"
  documentationCenter=""
  authors="nberdy"
@@ -16,38 +16,37 @@
  ms.date="08/11/2016"
  ms.author="nberdy"/>
 
+# 操作の監視の概要
 
-# <a name="introduction-to-operations-monitoring"></a>Introduction to operations monitoring
+IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。IoT Hub では複数のカテゴリの操作にわたってイベントを追跡するので、処理のために IoT Hub のエンドポイントに送信された 1 つまたは複数のカテゴリのイベントの使用を有効にすることがでます。データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
 
-IoT Hub operations monitoring enables you to monitor the status of operations on your IoT hub in real time. IoT Hub tracks events across several categories of operations, and you can opt into sending events from one or more categories to an endpoint of your IoT hub for processing. You can monitor the data for errors or set up more complex processing based on data patterns.
+IoT Hub では、次の 5 つのカテゴリのイベントを監視します。
 
-IoT Hub monitors five categories of events:
+- デバイス ID の操作
+- デバイス テレメトリ
+- クラウドからデバイスへのコマンド
+- 接続
+- ファイルのアップロード
 
-- Device identity operations
-- Device telemetry
-- Cloud-to-device commands
-- Connections
-- File uploads
+## 操作の監視を有効にする方法
 
-## <a name="how-to-enable-operations-monitoring"></a>How to enable operations monitoring
+1. IoT Hub を作成します。IoT Hub の作成方法の手順については、[使用開始][lnk-get-started]に関するガイドをご覧ください。
 
-1. Create an IoT hub. You can find instructions on how to create an IoT hub in the [Get Started][lnk-get-started] guide.
-
-2. Open the blade of your IoT hub. From there, click **Operations monitoring**.
+2. IoT Hub のブレードを開きます。このブレードで、**[操作の監視]** をクリックします。
 
     ![][1]
 
-3. Select the monitoring categories you wish you monitor, and then click **Save**. The events are available for reading from the Event Hub-compatible endpoint listed in **Monitoring settings**. The IoT Hub endpoint is called `messages/operationsmonitoringevents`.
+3. 監視する監視カテゴリを選択し、**[保存]** をクリックします。イベントは、**[監視の設定]** に一覧表示された Event Hub 対応のエンドポイントから読み取ることができます。IoT Hub エンドポイントの名前は `messages/operationsmonitoringevents` です。
 
     ![][2]
 
-## <a name="event-categories-and-how-to-use-them"></a>Event categories and how to use them
+## イベント カテゴリとその使用方法
 
-Each operations monitoring category tracks a different type of interaction with IoT Hub, and each monitoring category has a schema that defines how events in that category are structured.
+操作監視の各カテゴリでは、IoT Hub との各種のやり取りを追跡します。各監視カテゴリは、カテゴリ内のイベントの構成方法を定義するスキーマを備えています。
 
-### <a name="device-identity-operations"></a>Device identity operations
+### デバイス ID の操作
 
-The device identity operations category tracks errors that occur when you attempt to create, update, or delete an entry in your IoT hub's identity registry. Tracking this category is useful for provisioning scenarios.
+デバイス ID の操作のカテゴリでは、IoT Hub の ID レジストリ内でエントリの作成、更新、または削除を試みたときに発生するエラーを追跡します。このカテゴリの追跡は、プロビジョニングのシナリオで便利です。
 
     {
         "time": "UTC timestamp",
@@ -62,15 +61,15 @@ The device identity operations category tracks errors that occur when you attemp
          "sharedAccessPolicy": "accessPolicy"
     }
 
-### <a name="device-telemetry"></a>Device telemetry
+### デバイス テレメトリ
 
-The device telemetry category tracks errors that occur at the IoT hub and are related to the telemetry pipeline. This category includes errors that occur when sending telemetry events (such as throttling) and receiving telemetry events (such as unauthorized reader). Note that this category cannot catch errors caused by code running on the device itself.
+デバイス テレメトリのカテゴリでは、IoT Hub で発生し、かつテレメトリ パイプラインに関連しているエラーを追跡します。このカテゴリーには、テレメトリ イベントの送信時に発生したエラー (スロットルなど) やテレメトリ イベントの受信時に発生したエラー (許可されていないリーダーなど) が含まれます。このカテゴリでは、デバイス自体で実行されているコードに起因するエラーをキャッチできないので注意してください。
 
     {
          "messageSizeInBytes": 1234,
          "batching": 0,
          "protocol": "Amqp",
-         "authType": "{\"scope\":\"device\",\"type\":\"sas\",\"issuer\":\"iothub\"}",
+         "authType": "{"scope":"device","type":"sas","issuer":"iothub"}",
          "time": "UTC timestamp",
          "operationName": "ingress",
          "category": "DeviceTelemetry",
@@ -84,13 +83,13 @@ The device telemetry category tracks errors that occur at the IoT hub and are re
          "EventEnqueuedUtcTime": "UTC timestamp"
     }
 
-### <a name="cloud-to-device-commands"></a>Cloud-to-device commands
+### クラウドからデバイスへのコマンド
 
-The cloud-to-device commands category tracks errors that occur at the IoT hub and are related to the device command pipeline. This category includes errors that occur when sending commands (such as unauthorized sender), receiving commands (such as delivery count exceeded), and receiving command feedback (such as feedback expired). This category does not catch errors from a device that improperly handles a command if the command was delivered successfully.
+C2D コマンド カテゴリでは、IoT Hub で発生し、かつデバイスのコマンド パイプラインに関連しているエラーを追跡します。このカテゴリーには、コマンドの送信時のエラー (許可されていない送信者など)、コマンドの受信時のエラー (配信数が上限を超えているなど)、コマンド フィードバックの受信時のエラー (フィードバックの有効期限切れなど) が含まれます。このカテゴリでは、コマンドが正常に配信されてもコマンドを適切に処理しないデバイスのエラーはキャッチしません。
 
     {
          "messageSizeInBytes": 1234,
-         "authType": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\"}",
+         "authType": "{"scope":"hub","type":"sas","issuer":"iothub"}",
          "deliveryAcknowledgement": 0,
          "protocol": "Amqp",
          "time": " UTC timestamp",
@@ -106,13 +105,13 @@ The cloud-to-device commands category tracks errors that occur at the IoT hub an
          "EventEnqueuedUtcTime": “UTC timestamp"
     }
 
-### <a name="connections"></a>Connections
+### 接続
 
-The connections category tracks errors that occur when devices connect or disconnect from an IoT hub. Tracking this category is useful for identifying unauthorized connection attempts and for tracking when a connection is lost for devices in areas of poor connectivity.
+接続のカテゴリでは、デバイスが IoT Hub に接続したときに発生する、または IoT Hub から切断したときのエラーを追跡します。このカテゴリの追跡は、許可されていない接続の試行を識別する場合、および接続状態が悪い領域内で接続が失われたタイミングを突き止める場合に便利です
 
     {
          "durationMs": 1234,
-         "authType": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\"}",
+         "authType": "{"scope":"hub","type":"sas","issuer":"iothub"}",
          "protocol": "Amqp",
          "time": " UTC timestamp",
          "operationName": "deviceConnect",
@@ -124,12 +123,12 @@ The connections category tracks errors that occur when devices connect or discon
          "deviceId": "device-ID"
     }
 
-### <a name="file-uploads"></a>File uploads
+### ファイルのアップロード
 
-The file upload category tracks errors that occur at the IoT hub and are related to file upload functionality. This category includes errors that occur with the SAS URI (such as when it expires before a device notifies the hub of a completed upload), failed uploads reported by the device, and when a file is not found in storage during IoT Hub notification message creation. Note that this category cannot catch errors that directly occur while the device is uploading a file to storage.
+ファイルのアップロード カテゴリでは、IoT Hub で発生し、かつファイルのアップロード機能に関連しているエラーを追跡します。このカテゴリーには、SAS URI で発生したエラー (デバイスがアップロード完了をハブに通知する前に期限切れになった、など)、デバイスによって報告されたアップロード エラー、IoT Hub 通知メッセージの作成中、ストレージでファイルが見つからない、などのエラーが含まれます。デバイスがファイルをストレージにアップロードしているときに直接発生したエラーについては、このカテゴリではキャッチできないことに注意してください。
 
     {
-         "authType": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\"}",
+         "authType": "{"scope":"hub","type":"sas","issuer":"iothub"}",
          "protocol": "HTTP",
          "time": " UTC timestamp",
          "operationName": "ingress",
@@ -143,12 +142,16 @@ The file upload category tracks errors that occur at the IoT hub and are related
          "durationMs": 1234
     }
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To further explore the capabilities of IoT Hub, see:
+操作の監視の概要については以上です。IoT Hub の管理に関する詳細については、[IoT Hub へのアクセス管理][lnk-itpro]をご覧ください。
 
-- [Developer guide][lnk-devguide]
-- [Simulating a device with the Gateway SDK][lnk-gateway]
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+
+- [ソリューションの設計][lnk-design]
+- [開発者ガイド][lnk-devguide]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
 
 <!-- Links and images -->
 [1]: media/iot-hub-operations-monitoring/enable-OM-1.png
@@ -159,10 +162,11 @@ To further explore the capabilities of IoT Hub, see:
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-dr]: iot-hub-ha-dr.md
 
+[lnk-itpro]: iot-hub-itpro-info.md
+
+[lnk-design]: iot-hub-guidance.md
 [lnk-devguide]: iot-hub-devguide.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,6 +1,6 @@
 <properties
-pageTitle="Indexing JSON blobs with Azure Search blob indexer"
-description="Indexing JSON blobs with Azure Search blob indexer"
+pageTitle="Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成"
+description="Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成"
 services="search"
 documentationCenter=""
 authors="chaosrealm"
@@ -15,153 +15,149 @@ ms.tgt_pltfrm="na"
 ms.date="07/26/2016"
 ms.author="eugenesh" />
 
+# Azure Search BLOB インデクサーを使用した JSON BLOB のインデックス作成 
 
-# <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexing JSON blobs with Azure Search blob indexer 
+この記事では、JSON を格納している BLOB から構造化コンテンツを抽出するために Azure Search BLOB インデクサーを構成する方法を説明します。
 
-This article shows how to configure Azure Search blob indexer to extract structured content from blobs that contain JSON.
+## シナリオ
 
-## <a name="scenarios"></a>Scenarios
+[Azure Search BLOB インデクサー](search-howto-indexing-azure-blob-storage.md)は、既定では JSON BLOB を 1 つのテキスト チャンクとして解析します。多くの場合、JSON ドキュメントの構造はそのままに維持する必要があります。たとえば、次のような JSON ドキュメントについて考えてみましょう。
 
-By default, [Azure Search blob indexer](search-howto-indexing-azure-blob-storage.md) parses JSON blobs as a single chunk of text. Often, you want preserve the structure of your JSON documents. For example, given the JSON document 
+	{ 
+		"article" : {
+	 		"text" : "A hopefully useful article explaining how to parse JSON blobs",
+	        "datePublished" : "2016-04-13" 
+			"tags" : [ "search", "storage", "howto" ]    
+	    }
+	}
+
+この場合は、JSON ドキュメントを "text"、"datePublished"、"tags" の各フィールドを持つ Azure Search ドキュメントに解析できます。
+
+また、BLOB に **JSON オブジェクトの配列**が含まれる場合は、配列の各要素を個別の Azure Search ドキュメントにすることができます。たとえば、次の JSON を含む BLOB を考えてみます。
+
+	[
+		{ "id" : "1", "text" : "example 1" },
+		{ "id" : "2", "text" : "example 2" },
+		{ "id" : "3", "text" : "example 3" }
+	]
+
+それぞれ "id" と "text" のフィールドを持つ 3 つの独立したドキュメントを Azure Search インデックスに設定できます。
+
+> [AZURE.IMPORTANT] 現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
+
+## JSON インデックス作成の設定
+
+JSON BLOB のインデックスを作成するには、`parsingMode` 構成パラメーターを `json` (1 つのドキュメントとして各 BLOB にインデックスを作成する場合) または `jsonArray` (BLOB に JSON 配列が含まれる場合) に設定します。
+
+	{
+	  "name" : "my-json-indexer",
+	  ... other indexer properties
+	  "parameters" : { "configuration" : { "parsingMode" : "json" | "jsonArray" } }
+	}
+
+必要に応じて**フィールド マッピング**を使用し、ターゲットの検索インデックスへの設定に使用するソース JSON ドキュメントのプロパティを選択します。これについては、以下で詳しく説明します。
+
+> [AZURE.IMPORTANT] `json` または `jsonArray` 解析モードを使用すると、Azure Search ではデータ ソース内のすべての BLOB が JSON になると見なされます。JSON BLOB と JSON 以外の BLOB が混在するデータ ソースをサポートする必要がある場合は、[UserVoice のサイト](https://feedback.azure.com/forums/263029-azure-search)でお知らせください。
+
+## フィールド マッピングを使用して検索ドキュメントを作成する 
+
+現在、Azure Search ではプリミティブ データ型、文字列配列、GeoJSON ポイントのみをサポートしているため、任意の JSON ドキュメントに対して直接インデックス作成を行うことはできません。ただし、**フィールド マッピング**を使用すると、JSON ドキュメントの一部を選択して、それを検索ドキュメントの最上位レベルのフィールドに "引き上げる" ことができます。フィールド マッピングの基本については、「[データ ソースと検索インデックスの橋渡し役としての Azure Search インデクサー フィールド マッピング](search-indexer-field-mappings.md)」をご覧ください。
+
+JSON ドキュメントの例に戻りましょう。
 
     { 
-        "article" : {
-            "text" : "A hopefully useful article explaining how to parse JSON blobs",
-            "datePublished" : "2016-04-13" 
-            "tags" : [ "search", "storage", "howto" ]    
-        }
-    }
+		"article" : {
+	 		"text" : "A hopefully useful article explaining how to parse JSON blobs",
+	        "datePublished" : "2016-04-13" 
+			"tags" : [ "search", "storage", "howto" ]    
+	    }
+	}
 
-you might want to parse it into an Azure Search document with "text", "datePublished", and "tags" fields.
+Edm.String 型の `text` フィールド、Edm.DateTimeOffset 型の `date` フィールド、コレクション (Edm.String) 型の `tags` フィールドを持つ検索インデックスがあるとします。JSON を必要な形式にマッピングするには、次のフィールド マッピングを使用します。
 
-Alternatively, when your blobs contain an **array of JSON objects**, you may want each element of the array to become a separate Azure Search document. For example, given a blob with this JSON:  
-
-    [
-        { "id" : "1", "text" : "example 1" },
-        { "id" : "2", "text" : "example 2" },
-        { "id" : "3", "text" : "example 3" }
-    ]
-
-you can populate your Azure Search index with 3 separate documents, each with "id" and "text" fields. 
-
-> [AZURE.IMPORTANT] This functionality is currently in preview. It is available only in the REST API using version **2015-02-28-Preview**. Please remember, preview APIs are intended for testing and evaluation, and should not be used in production environments. 
-
-## <a name="setting-up-json-indexing"></a>Setting up JSON indexing
-
-To index JSON blobs, set the `parsingMode` configuration parameter to `json` (to index each blob as a single document) or `jsonArray` (if your blobs contain a JSON array): 
-
-    {
-      "name" : "my-json-indexer",
-      ... other indexer properties
-      "parameters" : { "configuration" : { "parsingMode" : "json" | "jsonArray" } }
-    }
-
-If needed, use **field mappings** to pick the properties of the source JSON document used to populate your target search index.  This is described in detail below. 
-
-> [AZURE.IMPORTANT] When you use `json` or `jsonArray` parsing mode, Azure Search assumes that all blobs in your data source will be JSON. If you need to support a mix of JSON and non-JSON blobs in the same data source, please let us know on [our UserVoice site](https://feedback.azure.com/forums/263029-azure-search).
-
-## <a name="using-field-mappings-to-build-search-documents"></a>Using field mappings to build search documents 
-
-Currently, Azure Search cannot index arbitrary JSON documents directly, because it supports only primitive data types, string arrays, and GeoJSON points. However, you can use **field mappings** to pick parts of your JSON document and "lift" them into top-level fields of the search document. To learn about field mappings basics, see [Azure Search indexer field mappings bridge the differences between data sources and search indexes](search-indexer-field-mappings.md).
-
-Coming back to our example JSON document: 
-
-    { 
-        "article" : {
-            "text" : "A hopefully useful article explaining how to parse JSON blobs",
-            "datePublished" : "2016-04-13" 
-            "tags" : [ "search", "storage", "howto" ]    
-        }
-    }
-
-Let's say you have a search index with the following fields: `text` of type Edm.String, `date` of type Edm.DateTimeOffset, and `tags` of type Collection(Edm.String). To map your JSON into the desired shape, use the following field mappings: 
-
-    "fieldMappings" : [ 
+	"fieldMappings" : [ 
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
         { "sourceFieldName" : "/article/datePublished", "targetFieldName" : "date" },
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
-    ]
+  	]
 
-The source field names in the mappings are specified using the [JSON Pointer](http://tools.ietf.org/html/rfc6901) notation. You start with a forward slash to refer to the root of your JSON document, then drill into the desired property (at arbitrary level of nesting) by using forward slash-separated path. 
+マッピング内のソース フィールド名は、[JSON ポインター](http://tools.ietf.org/html/rfc6901)の表記を使用して指定されています。スラッシュから開始して JSON ドキュメントのルートを参照し、その後はスラッシュ区切りのパスで目的のプロパティ (任意の入れ子レベル) まで指定します。
 
-You can also refer to individual array elements by using a zero-based index. For example, to pick the first element of the "tags" array from the above example, use a field mapping like this:
+0 から始まるインデックスを使用して個々の配列要素を参照することもできます。たとえば、上の例から "tags" 配列の最初の要素を選択するには、次のようなフィールド マッピングを使用します。
 
-    { "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
+	{ "sourceFieldName" : "/article/tags/0", "targetFieldName" : "firstTag" }
 
-> [AZURE.NOTE] If a source field name in a field mapping path refers to a property that doesn't exist in JSON, that mapping is skipped without an error. This is done so that we can support documents with a different schema (which is a common use case). Because there is no validation, you need to take care to avoid typos in your field mapping specification. 
+> [AZURE.NOTE] フィールド マッピングのパス内のソース フィールド名が、JSON に存在しないプロパティを参照している場合、そのマッピングはエラーなしでスキップされます。これは、異なるスキーマを使用したドキュメントをサポートできるようにするためです (一般的なユース ケースです)。検証機能がないため、フィールド マッピングの仕様を入力するときは、入力ミスをしないように注意する必要があります。
 
-If your JSON documents only contain simple top-level properties, you may not need field mappings at all. For example, if your JSON looks like this, the top-level properties "text", "datePublished" and "tags" will directly map to the corresponding fields in the search index: 
+JSON ドキュメントに単純な最上位レベルのプロパティのみが含まれる場合、フィールド マッピングは必要ありません。たとえば、次のような JSON の場合、最上位レベルのプロパティ "text"、"datePublished"、"tags" は検索インデックス内の対応する各フィールドに直接マッピングされます。
  
-    { 
-       "text" : "A hopefully useful article explaining how to parse JSON blobs",
-       "datePublished" : "2016-04-13" 
+	{ 
+	   "text" : "A hopefully useful article explaining how to parse JSON blobs",
+	   "datePublished" : "2016-04-13" 
        "tags" : [ "search", "storage", "howto" ]    
-    }
+ 	}
 
-## <a name="indexing-nested-json-arrays"></a>Indexing nested JSON arrays
+## 入れ子になった JSON 配列のインデックス作成
 
-What if you wish to index an array of JSON objects, but that array is nested somewhere within the document? You can pick which property contains the array using the `documentRoot` configuration property. For example, if your blobs look like this: 
+JSON オブジェクトの配列にインデックスを作成するときに、そのドキュメント内のどこかで配列が入れ子になっていたらどうすればよいでしょうか。 `documentRoot` 構成プロパティを使用して、入れ子になった配列が格納されているプロパティを選択できます。たとえば、次のような BLOB があるとします。
 
-    { 
-        "level1" : {
-            "level2" : [
-                { "id" : "1", "text" : "Use the documentRoot property" }, 
-                { "id" : "2", "text" : "to pluck the array you want to index" },
-                { "id" : "3", "text" : "even if it's nested inside the document" }  
-            ]
-        }
-    } 
+	{ 
+		"level1" : {
+			"level2" : [
+				{ "id" : "1", "text" : "Use the documentRoot property" }, 
+				{ "id" : "2", "text" : "to pluck the array you want to index" },
+				{ "id" : "3", "text" : "even if it's nested inside the document" }  
+			]
+		}
+	} 
 
-use this configuration to index the array contained in the "level2" property: 
+次の構成を使用して、"level2" プロパティに格納されている配列のインデックスを作成します。
 
-    {
-        "name" : "my-json-array-indexer",
-        ... other indexer properties
-        "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
-    }
+	{
+		"name" : "my-json-array-indexer",
+		... other indexer properties
+		"parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
+	}
 
 
-## <a name="request-examples"></a>Request examples
+## 要求例
 
-Putting this all together, here are the complete payloads examples. 
+すべてをまとめた完全なペイロード例を次に示します。
 
-Datasource: 
+データソース:
 
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-        "name" : "my-blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "optional, my-folder" }
-    }   
+	{
+	    "name" : "my-blob-datasource",
+	    "type" : "azureblob",
+	    "credentials" : { "connectionString" : "<my storage connection string>" },
+	    "container" : { "name" : "my-container", "query" : "optional, my-folder" }
+	}   
 
-Indexer:
+インデクサー:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-      "name" : "my-json-indexer",
-      "dataSourceName" : "my-blob-datasource",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" },
+	{
+	  "name" : "my-json-indexer",
+	  "dataSourceName" : "my-blob-datasource",
+	  "targetIndexName" : "my-target-index",
+	  "schedule" : { "interval" : "PT2H" },
       "parameters" : { "configuration" : { "useJsonParser" : true } }, 
       "fieldMappings" : [ 
         { "sourceFieldName" : "/article/text", "targetFieldName" : "text" },
         { "sourceFieldName" : "/article/datePublished", "targetFieldName" : "date" },
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
-      ]
-    }
+  	  ]
+	}
 
-## <a name="help-us-make-azure-search-better"></a>Help us make Azure Search better
+## Azure Search の品質向上にご協力ください
 
-If you have feature requests or ideas for improvements, please reach out to us on our [UserVoice site](https://feedback.azure.com/forums/263029-azure-search/).
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

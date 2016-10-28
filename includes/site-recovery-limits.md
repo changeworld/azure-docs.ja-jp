@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Site Recovery limits table"
-   description="Describes system limits for Site Recovery."
+   pageTitle="Site Recovery に関する制限の表"
+   description="Site Recovery に関するシステムの制限について説明します。"
    services="site recovery"
    documentationCenter="NA"
    authors="csilauraa"
@@ -16,21 +16,16 @@
    ms.author="lauraa" />
 
 
+次の制限は、Azure Site Recovery に適用されます。
 
-The following limits apply to Azure Site Recovery:
 
-
-|LIMIT IDENTIFIER|DEFAULT LIMIT|
+|制限の種類|既定の制限|
 |---|---|---|---|
-|Number of vaults per subscription|25|
-|Number of servers per Azure vault|250|
-|Number of protection groups per Azure vault|No limit|
-|Number of recovery plans per Azure vault|No limit|
-|Number of servers per protection group|No limit|
-|Number of servers per recovery plan|50|
+|サブスクリプションあたりの資格情報コンテナーの数|25|
+|Azure 資格情報コンテナーあたりのサーバーの数|250|
+|Azure 資格情報コンテナーあたりの保護グループの数|制限なし|
+|Azure 資格情報コンテナーあたりの復旧計画の数|制限なし|
+|保護グループあたりのサーバーの数|制限なし|
+|復旧計画あたりのサーバーの数|50|
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

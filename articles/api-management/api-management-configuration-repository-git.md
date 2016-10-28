@@ -1,286 +1,285 @@
 <properties 
-    pageTitle="How to save and configure your API Management service configuration using Git" 
-    description="Learn how to save and configure your API Management service configuration using Git." 
-    services="api-management" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="erikre" 
-    editor=""/>
+	pageTitle="Git を使用して API Management サービス構成を保存および構成する方法" 
+	description="Git を使用して API Management サービス構成を保存、構成する方法について説明します。" 
+	services="api-management" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="erikre" 
+	editor=""/>
 
 <tags 
-    ms.service="api-management" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/25/2016" 
-    ms.author="sdanie"/>
+	ms.service="api-management" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/09/2016" 
+	ms.author="sdanie"/>
 
 
+# Git を使用して API Management サービス構成を保存および構成する方法
 
-# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>How to save and configure your API Management service configuration using Git
+>[AZURE.IMPORTANT] API Management の Git の構成は現在プレビューの段階です。機能的には完了していますが、この機能に関するフィードバックを積極的に求めているため、プレビュー段階です。お客様からのフィードバックに応じて重大な変更を加える可能性があるため、機能によっては実稼動環境での使用はお勧めしません。フィードバックや質問がある場合は、`apimgmt@microsoft.com` にご連絡ください。
 
->[AZURE.IMPORTANT] Git configuration for API Management is currently in preview. It is functionally complete, but is in preview because we are actively seeking feedback on this feature. It is possible that we may make a breaking change in response to customer feedback, so we recommend not depending on the feature for use in production environments. If you have any feedback or questions, please let us know at `apimgmt@microsoft.com`.
+各 API Management サービス インスタンスは、サービス インスタンスの構成とメタデータに関する情報が格納されている構成データベースを保持します。サービス インスタンスへの変更は、発行者ポータルの設定変更、PowerShell コマンドレットの使用、または REST API 呼び出しによって行うことができます。これらの方法のほか、Git を使用してサービス インスタンスの構成を管理することもできます。Git を使用すると、次のようなサービス管理のシナリオが可能になります。
 
-Each API Management service instance maintains a configuration database that contains information about the configuration and metadata for the service instance. Changes can be made to the service instance by changing a setting in the publisher portal, using a PowerShell cmdlet, or making a REST API call. In addition to these methods, you can also manage your service instance configuration using Git, enabling service management scenarios such as:
+-	構成のバージョン管理 - サービス構成のさまざまなバージョンをダウンロードして保存する
+-	構成の一括変更 - ローカル リポジトリ内のサービス構成の複数の部分を変更し、1 回の操作で変更をサーバーに返して統合する
+-	慣れ親しんだ Git のツールチェーンとワークフロー - 既に使い慣れた Git ツールとワークフローを使用する
 
--   Configuration versioning - download and store different versions of your service configuration
--   Bulk configuration changes - make changes to multiple parts of your service configuration in your local repository and integrate the changes back to the server with a single operation
--   Familiar Git toolchain and workflow - use the Git tooling and workflows that you are already familiar with
-
-The following diagram shows an overview of the different ways to configure your API Management service instance.
+次の図は、API Management サービス インスタンスを構成するためのさまざまな方法の概要を示しています。
 
 ![Git configure][api-management-git-configure]
 
-When you make changes to your service using the publisher portal, PowerShell cmdlets, or the REST API, you are managing your service configuration database using the `https://{name}.management.azure-api.net` endpoint, as shown on the right side of the diagram. The left side of the diagram illustrates how you can manage your service configuration using Git and Git repository for your service located at `https://{name}.scm.azure-api.net`.
+発行者ポータル、PowerShell コマンドレット、または REST API を使用してサービスに変更を加える場合は、図の右側に示されているように、サービス構成データベースの管理に `https://{name}.management.azure-api.net` エンドポイントを使用します。図の左側では、Git を使用してサービス構成を管理する方法を示しています。この場合、`https://{name}.scm.azure-api.net` にあるご利用のサービスの Git リポジトリを使用します。
 
-The following steps provide an overview of managing your API Management service instance using Git.
+Git を使用して API Management サービス インスタンスを管理する手順の概要は次のとおりです。
 
-1.  Enable Git access in your service
-2.  Save your service configuration database to your Git repository
-3.  Clone the Git repo to your local machine
-4.  Pull the latest repo down to your local machine, and commit and push changes back to your repo
-5.  Deploy the changes from your repo into your service configuration database
+1.	サービスの Git アクセスを有効にする
+2.	サービス構成データベースを Git リポジトリに保存する
+3.	Git リポジトリをローカル コンピューターに複製する
+4.	最新のリポジトリをローカル コンピューターにプルし、変更をコミットしてリポジトリにプッシュする
+5.	リポジトリからサービス構成データベースに変更をデプロイする
 
-This article describes how to enable and use Git to manage your service configuration and provides a reference for the files and folders in the Git repository.
+この記事では、Git を有効にして使用し、サービス構成を管理する方法について説明します。また、Git リポジトリ内のファイルとフォルダーに関するリファレンス情報も提供します。
 
-## <a name="to-enable-git-access"></a>To enable Git access
+## Git アクセスを有効にするには
 
-You can quickly view the status of your Git configuration by viewing the Git icon in the upper-right corner of the publisher portal. In this example, Git access has not yet been enabled.
+発行者ポータルの右上隅にある Git アイコンを表示して、Git 構成の状態をすばやく表示することができます。この例では、Git アクセスがまだ有効になっていません。
 
-![Git status][api-management-git-icon-enable]
+![Git の状態][api-management-git-icon-enable]
 
-To view and configure your Git configuration settings, you can either click the Git icon, or click the **Security** menu and navigate to the **Configuration repository** tab.
+Git 構成設定を表示して構成する場合は、Git アイコンをクリックするか、**[セキュリティ]** メニューをクリックして **[構成リポジトリ]** タブに移動することができます。
 
 ![Enable GIT][api-management-enable-git]
 
-To enable Git access, check the **Enable Git access** checkbox.
+Git アクセスを有効にするには、**[Git アクセスを有効にする]** チェック ボックスをオンにします。
 
-After a moment the change is saved and a confirmation message is displayed. Note that Git icon has changed to color to indicate that Git access is enabled and the status message now indicates that there are unsaved changes to the repository. This is because the API Management service configuration database has not yet been saved to the repository.
+しばらくすると変更が保存され、確認メッセージが表示されます。Git アイコンの色が変わり、Git アクセスが有効になったことが示され、ステータス メッセージはリポジトリに保存されていない変更があることを示していることに注意してください。これは、API Management サービス構成データベースがまだリポジトリに保存されていないためです。
 
 ![Git enabled][api-management-git-enabled]
 
->[AZURE.IMPORTANT] Any secrets that are not defined as properties will be stored in the repository and will remain in its history until you disable and re-enable Git access. Properties provide a secure place to manage constant string values, including secrets, across all API configuration and policies, so you don't have to store them directly in your policy statements. For more information, see [How to use properties in Azure API Management policies](api-management-howto-properties.md).
+>[AZURE.IMPORTANT] プロパティとして定義されていないシークレットはすべて、リポジトリに格納され、Git アクセスを無効にしてから再度有効にするまで履歴に残ります。プロパティは、すべての API 構成とポリシーの定数文字列値 (シークレットなど) を管理するための安全な場所を提供します。そのため、定数文字列値をポリシー ステートメントに直接格納する必要はありません。詳細については、「[Azure API Management ポリシーのプロパティの利用方法](api-management-howto-properties.md)」を参照してください。
 
-For information on enabling or disabling Git access using the REST API, see [Enable or disable Git access using the REST API](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
+REST API を使用して Git アクセスを有効または無効にする方法については、「[Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit)」を参照してください。
 
-## <a name="to-save-the-service-configuration-to-the-git-repository"></a>To save the service configuration to the Git repository
+## サービス構成を Git リポジトリに保存するには
 
-The first step before cloning the repository is to save the current state of the service configuration to the repository. Click **Save configuration to repository**.
+まず、リポジトリを複製する前に、サービス構成の現在の状態をリポジトリに保存します。**[構成をリポジトリに保存する]** をクリックします。
 
 ![Save configuration][api-management-save-configuration]
 
-Make any desired changes on the confirmation screen and click **Ok** to save.
+必要に応じて確認画面で変更を行い、**[OK]** をクリックして保存します。
 
 ![Save configuration][api-management-save-configuration-confirm]
 
-After a few moments the configuration is saved, and the configuration status of the repository is displayed, including the date and time of the last configuration change and the last synchronization between the service configuration and the repository.
+しばらくすると構成が保存されます。また、最後に構成を変更した日時、サービス構成とリポジトリの間で最後に行われた同期の日時など、リポジトリの構成状態が表示されます。
 
 ![Configuration status][api-management-configuration-status]
 
-Once the configuration is saved to the repository, it can be cloned.
+構成がリポジトリに保存されたら、そのリポジトリを複製できます。
 
-For information on performing this operation using the REST API, see [Commit configuration snapshot using the REST API](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
+REST API を使用してこの操作を実行する方法については、「[Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot)」を参照してください。
 
-## <a name="to-clone-the-repository-to-your-local-machine"></a>To clone the repository to your local machine
+## ローカル コンピューターにリポジトリを複製するには
 
-To clone a repository, you need the URL to your repository, a user name, and a password. The user name and URL are displayed near the top of the **Configuration repository** tab.
+リポジトリを複製するには、リポジトリの URL、ユーザー名、パスワードが必要です。ユーザー名と URL は、**[構成リポジトリ]** タブの上部近くに表示されます。
 
 ![Git clone][api-management-configuration-git-clone]
 
-The password is generated at the bottom of the **Configuration repository** tab.
+パスワードは、**[構成リポジトリ]** タブの下部で生成されます。
 
 ![Generate password][api-management-generate-password]
 
-To generate a password, first ensure that the **Expiry** is set to the desired expiration date and time, and then click **Generate Token**.
+パスワードを生成するには、希望する有効期限の日時を **[有効期限]** に設定してから、**[トークンの生成]** をクリックします。
 
-![Password][api-management-password]
+![パスワード][api-management-password]
 
->[AZURE.IMPORTANT] Make a note of this password. Once you leave this page the password will not be displayed again.
+>[AZURE.IMPORTANT] このパスワードを書き留めておいてください。このページから移動すると、パスワードが再度表示されることはありません。
 
-The following examples use the Git Bash tool from [Git for Windows](http://www.git-scm.com/downloads) but you can use any Git tool that you are familiar with.
+次の例では [Git for Windows](http://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
 
-Open your Git tool in the desired folder and run the following command to clone the git repository to your local machine, using the command provided by the publisher portal.
+Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル コンピューターに複製します (コマンドは発行者ポータルで入手できます)。
 
-    git clone https://bugbashdev4.scm.azure-api.net/ 
+	git clone https://bugbashdev4.scm.azure-api.net/ 
 
-Provide the user name and password when prompted.
+入力を求められたら、ユーザー名とパスワードを入力します。
 
-If you receive any errors, try modifying your `git clone` command to include the user name and password, as shown in the following example.
+エラーが発生する場合は、次の例のように、`git clone` コマンドを変更してユーザー名とパスワードを含めてみてください。
 
-    git clone https://username:password@bugbashdev4.scm.azure-api.net/
+	git clone https://username:password@bugbashdev4.scm.azure-api.net/
 
-If this provides an error, try URL encoding the password portion of the command. One quick way to do this is to open Visual Studio, and issue the following command in the **Immediate Window**. To open the **Immediate Window**, open any solution or project in Visual Studio (or create a new empty console application), and choose **Windows**, **Immediate** from the **Debug** menu.
+それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。これを簡単に行う 1 つの方法では、Visual Studio を開き、**[イミディエイト ウィンドウ]** で次のコマンドを発行します。**[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
 
-    ?System.NetWebUtility.UrlEncode("password from publisher portal")
+	?System.NetWebUtility.UrlEncode("password from publisher portal")
 
-Use the encoded password along with your user name and repository location to construct the git command.
+エンコードされたパスワードをユーザー名とリポジトリの場所と共に使用して Git コマンドを作成します。
 
-    git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+	git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 
-Once the repository is cloned you can view and work with it in your local file system. For more information, see [File and folder structure reference of local Git repository](#file-and-folder-structure-reference-of-local-git-repository).
+リポジトリの複製が完了したら、ローカル ファイル システムのリポジトリを表示して操作できます。詳細については、「[ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス](#file-and-folder-structure-reference-of-local-git-repository)」を参照してください。
 
-## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>To update your local repository with the most current service instance configuration
+## 最新のサービス インスタンス構成を使用してローカル リポジトリを更新するには
 
-If you make changes to your API Management service instance in the publisher portal or using the REST API, you must save these changes to the repository before you can update your local repository with the latest changes. To do this, click **Save configuration to repository** on the **Configuration repository** tab in the publisher portal, and then issue the following command in your local repository.
+発行者ポータルまたは REST API で API Management サービス インスタンスに変更を加える場合、これらの変更をリポジトリに保存しておく必要があります。その後、最新の変更を使用してローカル リポジトリを更新できます。これを行うには、発行者ポータルの **[構成リポジトリ]** タブで **[構成をリポジトリに保存する]** をクリックし、ローカル リポジトリで次のコマンドを発行します。
 
-    git pull
+	git pull
 
-Before running `git pull` ensure that you are in the folder for your local repository. If you have just completed the `git clone` command, then you must change the directory to your repo by running a command like the following.
+`git pull` を実行する前に、ローカル リポジトリのフォルダーに移動してください。`git clone` コマンドを完了した直後に、次のようなコマンドを使用して、ディレクトリをリポジトリに変更する必要があります。
 
-    cd bugbashdev4.scm.azure-api.net/
+	cd bugbashdev4.scm.azure-api.net/
 
-## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>To push changes from your local repo to the server repo
+## ローカル リポジトリからサーバー リポジトリに変更をプッシュするには
 
-To push changes from your local repository to the server repository, you must commit your changes and then push them to the server repository. To commit your changes, open your Git command tool, switch to the directory of your local repository, and issue the following commands.
+ローカル リポジトリからサーバー リポジトリに変更をプッシュするには、変更をコミットした後、サーバー リポジトリにプッシュする必要があります。変更をコミットするには、Git コマンド ツールを開き、ローカル リポジトリのディレクトリに切り替えて、次のコマンドを発行します。
 
-    git add --all
-    git commit -m "Description of your changes"
+	git add --all
+	git commit -m "Description of your changes"
 
-To push all of the commits to the server, run the following command.
+コミットをすべてサーバーにプッシュするには、次のコマンドを実行します。
 
-    git push
+	git push
 
-## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>To deploy any service configuration changes to the API Management service instance
+## API Management サービス インスタンスにサービス構成の変更をデプロイするには
 
-Once your local changes are committed and pushed to the server repository, you can deploy them to your API Management service instance.
+ローカルの変更をコミットし、サーバー リポジトリにプッシュしたら、これらの変更を API Management サービス インスタンスにデプロイできます。
 
-![Deploy][api-management-configuration-deploy]
+![デプロイ][api-management-configuration-deploy]
 
-For information on performing this operation using the REST API, see [Deploy Git changes to configuration database using the REST API](https://msdn.microsoft.com/library/dn781420.aspx#DeployChanges).
+REST API を使用してこの操作を実行する方法については、「[Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://msdn.microsoft.com/library/dn781420.aspx#DeployChanges)」を参照してください。
 
-## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>File and folder structure reference of local Git repository
+## ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス
 
-The files and folders in the local git repository contain the configuration information about the service instance.
+ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。
 
-| Item                       | Description                                                                                |
+| 項目 | Description |
 |-------------------------   |--------------------------------------------------------------------------------------------|
-| root api-management folder | Contains top-level configuration for the service instance                                  |
-| apis folder                | Contains the configuration for the apis in the service instance                            |
-| groups folder              | Contains the configuration for the groups in the service instance                          |
-| policies folder            | Contains the policies in the service instance                                              |
-| portalStyles folder        | Contains the configuration for the developer portal customizations in the service instance |
-| products folder            | Contains the configuration for the products in the service instance                        |
-| templates folder           | Contains the configuration for the email templates in the service instance                 |
+| api-management ルート フォルダー | サービス インスタンスの最上位の構成が含まれています |
+| apis フォルダー | サービス インスタンス内の API の構成が含まれています |
+| groups フォルダー | サービス インスタンス内のグループの構成が含まれています |
+| policies フォルダー | サービス インスタンス内のポリシーが含まれています |
+| portalStyles フォルダー | サービス インスタンス内の開発者ポータルのカスタマイズに関する構成が含まれています |
+| products フォルダー | サービス インスタンス内の製品の構成が含まれています |
+| templates フォルダー | サービス インスタンス内の電子メール テンプレートの構成が含まれています |
 
-Each folder can contain one or more files, and in some cases one or more folders, for example a folder for each API, product, or group. The files within each folder are specific for the entity type described by the folder name.
+各フォルダーには 1 つ以上のファイルを含めることができ、場合によっては 1 つ以上のフォルダーも含めることができます。たとえば、各 API、製品、またはグループに 1 つのフォルダーを含めることができます。各フォルダー内のファイルは、フォルダー名で示されるエンティティの種類に固有です。
 
-| File type | Purpose                                                                |
+| ファイルの種類 | 目的 |
 |-----------|------------------------------------------------------------------------|
-| json      | Configuration information about the respective entity                  |
-| html      | Descriptions about the entity, often displayed in the developer portal |
-| xml       | Policy statements                                                      |
-| css       | Style sheets for developer portal customization                        |
+| json | 各エンティティの構成情報 |
+| html | エンティティについての説明 (多くの場合、開発者ポータルに表示されます) |
+| xml | ポリシー ステートメント |
+| css | 開発者ポータルのカスタマイズのスタイル シート |
 
-These files can be created, deleted, edited, and managed on your local file system, and the changes deployed back to the your API Management service instance.
+これらのファイルは、ローカル ファイル システム上で作成、削除、編集、管理できます。また、変更は API Management サービス インスタンスにデプロイして戻すことができます。
 
->[AZURE.NOTE] The following entities are not contained in the Git repository and cannot be configured using Git.
+>[AZURE.NOTE] 次のエンティティは、Git リポジトリに含まれないため、Git を使用して構成することはできません。
 >
 >-    Users
->-    Subscriptions
->-    Properties
->-    Developer portal entities other than styles
+>-    サブスクリプション
+>-    プロパティ
+>-    スタイル以外の開発者ポータルのエンティティ
 
-### <a name="root-api-management-folder"></a>Root api-management folder
+### api-management ルート フォルダー
 
-The root `api-management` folder contains a `configuration.json` file that contains top-level information about the service instance in the following format.
+`api-management` ルート フォルダーには、`configuration.json` ファイルがあります。このファイルには、サービス インスタンスに関する最上位の情報が次の形式で含まれています。
 
-    {
-      "settings": {
-        "RegistrationEnabled": "True",
-        "UserRegistrationTerms": null,
-        "UserRegistrationTermsEnabled": "False",
-        "UserRegistrationTermsConsentRequired": "False",
-        "DelegationEnabled": "False",
-        "DelegationUrl": "",
-        "DelegatedSubscriptionEnabled": "False",
-        "DelegationValidationKey": ""
-      },
-      "$ref-policy": "api-management/policies/global.xml"
-    }
+	{
+	  "settings": {
+	    "RegistrationEnabled": "True",
+	    "UserRegistrationTerms": null,
+	    "UserRegistrationTermsEnabled": "False",
+	    "UserRegistrationTermsConsentRequired": "False",
+	    "DelegationEnabled": "False",
+	    "DelegationUrl": "",
+	    "DelegatedSubscriptionEnabled": "False",
+	    "DelegationValidationKey": ""
+	  },
+	  "$ref-policy": "api-management/policies/global.xml"
+	}
 
-The first four settings (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled`, and `UserRegistrationTermsConsentRequired`) map to the following settings on the **Identities** tab in the **Security** section.
+最初の 4 つの設定 (`RegistrationEnabled`、`UserRegistrationTerms`、`UserRegistrationTermsEnabled`、`UserRegistrationTermsConsentRequired`) は、**[セキュリティ]** セクションの **[ID]** タブにある次の設定に対応します。
 
-| Identity setting                     | Maps to                                               |
+| ID の設定 | 対応する設定 |
 |--------------------------------------|-------------------------------------------------------|
-| RegistrationEnabled                  | **Redirect anonymous users to sign-in page** checkbox |
-| UserRegistrationTerms                | **Terms of use on user signup** textbox               |
-| UserRegistrationTermsEnabled         | **Show terms of use on signup page** checkbox         |
-| UserRegistrationTermsConsentRequired | **Require consent** checkbox                          |
+| RegistrationEnabled | **[匿名ユーザーをサインイン ページにリダイレクトする]** チェック ボックス |
+| UserRegistrationTerms | **[ユーザー サインアップの使用条件]** ボックス |
+| UserRegistrationTermsEnabled | **[サインアップ ページに使用条件を表示する]** チェック ボックス |
+| UserRegistrationTermsConsentRequired | **[同意を要求する]** チェック ボックス |
 
 ![Identity settings][api-management-identity-settings]
 
-The next four settings (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`, and `DelegationValidationKey`) map to the following settings on the **Delegation** tab in the **Security** section.
+その次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
 
-| Delegation setting           | Maps to                                    |
+| 委任の設定 | 対応する設定 |
 |------------------------------|--------------------------------------------|
-| DelegationEnabled            | **Delegate sign-in & sign-up** checkbox    |
-| DelegationUrl                | **Delegation endpoint URL** textbox        |
-| DelegatedSubscriptionEnabled | **Delegate product subscription** checkbox |
-| DelegationValidationKey      | **Delegate Validation Key** textbox        |
+| DelegationEnabled | **[サインインとサインアップを委任する]** チェック ボックス |
+| DelegationUrl | **[委任エンドポイント URL]** ボックス |
+| DelegatedSubscriptionEnabled | **[製品のサブスクリプションを委任する]** チェック ボックス |
+| DelegationValidationKey | **[検証キーを委任する]** ボックス |
 
 ![Delegation settings][api-management-delegation-settings]
 
-The final setting, `$ref-policy`, maps to the global policy statements file for the service instance.
+最後の設定 `$ref-policy` は、サービス インスタンスのグローバル ポリシー ステートメントのファイルに対応します。
 
-### <a name="apis-folder"></a>apis folder
+### apis フォルダー
 
-The `apis` folder contains a folder for each API in the service instance which contains the following items.
+`apis` フォルダーには、サービス インスタンス内の各 API のフォルダーがあります。API のフォルダーには次の項目が含まれます。
 
--   `apis\<api name>\configuration.json` - this is the configuration for the API and contains information about the backend service URL and the operations. This is the same information that would be returned if you were to call [Get a specific API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) with `export=true` in `application/json` format.
--   `apis\<api name>\api.description.html` - this is the description of the API and corresponds to the `description` property of the [API entity](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties).
--   `apis\<api name>\operations\` - this folder contains `<operation name>.description.html` files that map to the operations in the API. Each file contains the description of a single operation in the API which maps to the `description` property of the [operation entity](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties) in the REST API.
+-	`apis<api name>\configuration.json` - これは API の構成で、バックエンド サービス URL と操作に関する情報が含まれています。この情報は、[特定の API の取得](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI)を `application/json` 形式で `export=true` を指定して呼び出した場合に返される情報と同じです。
+-	`apis<api name>\api.description.html` - これは API の説明で、[API エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties)の `description` プロパティに対応します。
+-	`apis<api name>\operations` - このフォルダーには、API での操作に対応する `<operation name>.description.html` ファイルが含まれています。各ファイルには、API での 1 つの操作の説明が含まれています。この操作は、REST API の[操作エンティティ](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties)の `description` プロパティに対応します。
 
-### <a name="groups-folder"></a>groups folder
+### groups フォルダー
 
-The `groups` folder contains a folder for each group defined in the service instance.
+`groups` フォルダーには、サービス インスタンスで定義された各グループのフォルダーが含まれています。
 
--   `groups\<group name>\configuration.json` - this is the configuration for the group. This is the same information that would be returned if you were to call the [Get a specific group](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operation.
--   `groups\<group name>\description.html` - this is the description of the group and corresponds to the `description` property of the [group entity](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
+-	`groups<group name>\configuration.json` - これはグループの構成です。[特定のグループの取得](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup)操作を呼び出した場合に返される情報と同じです。
+-	`groups<group name>\description.html` - これはグループの説明で、[グループ エンティティ](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties)の `description` プロパティに対応します。
 
-### <a name="policies-folder"></a>policies folder
+### policies フォルダー
 
-The `policies` folder contains the policy statements for your service instance.
+`policies` フォルダーには、サービス インスタンスのポリシー ステートメントが含まれています。
 
--   `policies\global.xml` - contains policies defined at global scope for your service instance.
--   `policies\apis\<api name>\` - if you have any policies defined at API scope, they are contained in this folder.
--   `policies\apis\<api name>\<operation name>\` folder - if you have any policies defined at operation scope, they are contained in this folder in `<operation name>.xml` files that map to the policy statements for each operation.
--   `policies\products\` - if you have any policies defined at product scope, they are contained in this folder, which contains `<product name>.xml` files that map to the policy statements for each product.
+-	`policies\global.xml` - サービス インスタンスのグローバル スコープで定義されたポリシーが含まれています。
+-	`policies\apis<api name>` - API スコープで定義されたポリシーがある場合は、このフォルダーに含まれます。
+-	`policies\apis<api name><operation name>` フォルダー - 操作スコープで定義されたポリシーがある場合は、このフォルダー内の `<operation name>.xml` ファイルに含まれます。これらのファイルは、各操作のポリシー ステートメントに対応します。
+-	`policies\products` - 製品スコープで定義されたポリシーがある場合は、このフォルダーに含まれます。このフォルダーには、各製品のポリシー ステートメントに対応する `<product name>.xml` ファイルが含まれています。
 
-### <a name="portalstyles-folder"></a>portalStyles folder
+### portalStyles フォルダー
 
-The `portalStyles` folder contains configuration and style sheets for developer portal customizations for the service instance.
+`portalStyles` フォルダーには、開発者ポータルでのサービス インスタンスのカスタマイズに関する構成とスタイル シートが含まれています。
 
--   `portalStyles\configuration.json` - contains the names of the style sheets used by the developer portal
--   `portalStyles\<style name>.css` - each `<style name>.css` file contains styles for the developer portal (`Preview.css` and `Production.css` by default).
+-	`portalStyles\configuration.json` - 開発者ポータルで使用されるスタイル シートの名前が含まれています。
+-	`portalStyles<style name>.css` - 各 `<style name>.css` ファイルには、開発者ポータル用のスタイルが含まれています (既定では `Preview.css` と `Production.css`)。
 
-### <a name="products-folder"></a>products folder
+### products フォルダー
 
-The `products` folder contains a folder for each product defined in the service instance.
+`products` フォルダーには、サービス インスタンスで定義された各製品のフォルダーが含まれています。
 
--   `products\<product name>\configuration.json` - this is the configuration for the product. This is the same information that would be returned if you were to call the [Get a specific product](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operation.
--   `products\<product name>\product.description.html` - this is the description of the product and corresponds to the `description` property of the [product entity](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) in the REST API.
+-	`products<product name>\configuration.json` - これは製品の構成です。[特定の製品の取得](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct)操作を呼び出した場合に返される情報と同じです。
+-	`products<product name>\product.description.html` - これは製品の説明で、REST API の[製品エンティティ](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product)の `description` プロパティに対応します。
 
-### <a name="templates"></a>templates
+### テンプレート
 
-The `templates` folder contains configuration for the [email templates](api-management-howto-configure-notifications.md) of the service instance.
+`templates` フォルダーには、サービス インスタンスの[電子メール テンプレート](api-management-howto-configure-notifications.md)の構成が含まれています。
 
--   `<template name>\configuration.json` - this is the configuration for the email template.
--   `<template name>\body.html` - this is the body of the email template.
+-	`<template name>\configuration.json` - これは電子メール テンプレートの構成です。
+-	`<template name>\body.html` - これは電子メール テンプレートの本文です。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For information on other ways to manage your service instance, see:
+サービス インスタンスの他の管理方法については、以下を参照してください。
 
--   Manage your service instance using the following PowerShell cmdlets
-    -   [Service deployment PowerShell cmdlet reference](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-    -   [Service management PowerShell cmdlet reference](https://msdn.microsoft.com/library/azure/mt613507.aspx)
--   Manage your service instance in the publisher portal
-    -   [Manage your first API](api-management-get-started.md)
--   Manage your service instance using the REST API
-    -   [API Management REST API reference](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+-	次の PowerShell コマンドレットを使用したサービス インスタンスの管理
+	-	[Azure API Management Deployment Cmdlets (Azure API Management のデプロイ コマンドレット)](https://msdn.microsoft.com/library/azure/mt619282.aspx)
+	-	[Azure API Management Service Management Cmdlets (Azure API Management のサービス管理コマンドレット)](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+-	発行者ポータルでのサービス インスタンスの管理
+	-	[Azure API Management での最初の API の管理](api-management-get-started.md)
+-	REST API を使用したサービス インスタンスの管理
+	-	[API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
-## <a name="watch-a-video-overview"></a>Watch a video overview
+## ビデオの概要を見る
 
 > [AZURE.VIDEO configuration-over-git]
 
@@ -298,12 +297,4 @@ For information on other ways to manage your service instance, see:
 [api-management-delegation-settings]: ./media/api-management-configuration-repository-git/api-management-delegation-settings.png
 [api-management-git-icon-enable]: ./media/api-management-configuration-repository-git/api-management-git-icon-enable.png
 
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

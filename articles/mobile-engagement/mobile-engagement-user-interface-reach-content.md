@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Azure Mobile Engagement User Interface - Reach Content" 
-   description="Learn how to manage the unique content of the different types of push notification campaigns in Azure Mobile Engagement" 
+   pageTitle="Azure Mobile Engagement ユーザー インターフェイス - リーチ コンテンツ" 
+   description="Azure Mobile Engagement でさまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法について説明します" 
    services="mobile-engagement" 
    documentationCenter="" 
    authors="piyushjo" 
@@ -16,133 +16,127 @@
    ms.date="08/19/2016"
    ms.author="piyushjo"/>
 
-
-# <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>How to manage the unique content of the different types of push notification campaigns
+# さまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法
  
-You can use the Content section of a new reach campaign to modify the content of your Announcements, Polls, Data Pushes, and Tiles (Windows Phone only). The content setting of Push campaigns is specific to the type of campaign. 
+新しいキャンペーンの [Contents (コンテンツ)] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル (Windows Phone のみ) のコンテンツを修正できます。プッシュ キャンペーンの [Contents (コンテンツ)] 設定は、キャンペーンの種類に固有です。
  
-### <a name="content-types:"></a>Content types:
-- Announcements
-- Polls
-- Data pushes
-- Tiles (Windows Phone Only)
+### コンテンツの種類：
+- アナウンス
+- アンケート
+- データ プッシュ
+- タイル (Windows Phone のみ)
  
-## <a name="content-of-announcements"></a>Content of Announcements
- ![Reach-Content1][30] 
+## アナウンスのコンテンツ
+ ![リーチ - コンテンツ 1][30]
 
-### <a name="choose-the-type-of-your-announcement:"></a>Choose the type of your announcement:
--    Notification only: It is a simple standard notification. Meaning that if a user clicks on it, no additional view will appear, but only the action associated to it will occur.
--    Text announcement: It is a notification that engages the user to have a look at a text view.
--    Web announcement: It is a notification that engages the user to have a look at a web view.
+### アナウンスの種類を選択します:
+-    通知のみ: シンプルな標準的な通知です。ユーザーがクリックすると、他のビューが表示されず、操作に関連付けられた内容のみが発生します。
+-    テキストのアナウンス: ユーザーにテキスト ビューを閲覧するよう促す通知です。
+-    Web のアナウンス: ユーザーに Web ビューを閲覧するよう促す通知です。
 
-### <a name="see-also"></a>See also
-- [Reach - How Tos - Announcements][Link 3] 
+### 関連項目
+- [リーチ - 方法 - アナウンス][Link 3]
 
-### <a name="about-web-view-announcements:"></a>About Web View Announcements:
-Occurrences of the pattern "{deviceid}" in the HTML code or JavaScript code you provide here will be automatically replaced by the identifier of the device displaying the announcement. This is an easy way to retrieve Azure Mobile Engagement device identifiers in an external web service hosted on your back office.
-If you want to create a full screen web view (without the default Action and Exit buttons we provide) you can use the following functions from your web view announcement's JavaScript code: 
+### Web ビューのアナウンスについて:
+ここで指定する HTML コードや JavaScript コードの発生パターン "{deviceid}" は、アナウンスを表示するデバイスの識別子に自動的に置き換えられます。この方法では、Azure Mobile Engagement デバイスの識別子を、バック オフィスでホストする 外部 Web サービスで簡単に取得できます。全画面表示の Web ビューを作成する場合は (既定の [Action (アクション)] と [Exit (終了) ボタンなし)、Web ビューのアナウンスの JavaScript コードから次の関数を使用できます:
 
--    perform the announcement action: ReachContent.actionContent()
--    exit from the announcement: ReachContent.exitContent()
+-    アナウンスの操作を実行する: ReachContent.actionContent()
+-    アナウンスを終了する: ReachContent.actionContent()
  
-### <a name="choose-your-action:"></a>Choose your Action:
+### アクションを選択する:
 
-### <a name="about-action-urls:"></a>About Action URLs:
-Any URL that can be interpreted by a targeted device's operating system can be used as an action URL.
-Any dedicated URL that your application might support (e.g. to make users jump to a particular screen) can also be used as an action URL.
-Each occurrence of the {deviceid} pattern is automatically replaced by the identifier of the device performing the action. This can be used to easily retrieve Azure Mobile Engagement device identifiers via an external web service hosted on your back office.
+### アクションの URL について:
+対象デバイスのオペレーティング システムで解釈できる URL はすべて、アクション URL として使用できます。アプリケーションがサポートする専用の URL (ユーザーを特定の画面にジャンプさせるなど) をアクション URL として使用することも可能です。発生する {deviceid} パターンはすべて、アクションを実行するデバイスの識別子に自動的に置き換えられます。これを使用して、Azure Mobile Engagement のデバイス識別子を、バック オフィスでホストする外部 Web サービス経由で簡単に取得できます。
 
-- **Android + iOS actions**
-    - Open a web page
-    - http://\[web-site-domain\] 
-    - Example:http://www.azure.com
-    - Send an e-mail
-    - mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
-    - Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
-    - Send a SMS
-    - sms:\[phone-number\] 
-    - Example:sms:2125551212
-    - Dial a phone number
-    - tel:\[phone-number\] 
-    - Example:tel:2125551212
-- **Android only actions**
-    - Download an application on the Play Store
-    - market://details?id=\[app package\] 
-    - Example:market://details?id=com.microsoft.office.word
-    - Start a geo-localized search
-    - geo:0,0?q=\[search query\] 
-    - Example:geo:0,0?q=starbucks,paris
-- **iOS only actions**
-    - Download an application on the App Store
-    - http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
-    - Example:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
-    - Windows Actions
-    - Open a web page
-    - http://\[web-site-domain\] 
-    - Example:http://www.azure.com
-    - Send an e-mail
-    - mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
-    - Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
-    - Send a SMS (Skype Store App required)
-    - sms:\[phone-number\] 
-    - Example:sms:2125551212
-    - Dial a phone number (Skype Store App required)
-    - tel:\[phone-number\] 
-    - Example:tel:2125551212
-    - Download an application on the Play Store
-    - ms-windows-store:PDP?PFN=\[app package ID\] 
-    - Example:ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
-    - Start a bingmaps search
-    - bingmaps:?q=\[search query\] 
-    - Example:bingmaps:?q=starbucks,paris
-    - Use a custom scheme
-    - \[custom scheme\]://\[custom scheme params\] 
-    - Example:myCustomProtocol://myCustomParams
-    - Use a package data (Store App for extension read required)
-    - \[folder\]\[data\].\[extension\] 
-    - Example:myfolderdata.txt
+- **Android + iOS のアクション**
+    - Web ページを開く
+    - http://[web-site-domain\]
+    - 例:http://www.azure.com
+    - メールを送信する
+    - mailto:[メール宛先]?subject=[件名]&body=[メッセージ]
+    - 例: mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+    - SMS を送信する
+    - sms: [電話番号]
+    - 例: sms:2125551212
+    - 電話をかける
+    - tel: [電話番号]
+    - 例: tel:2125551212
+- **Android のみのアクション**
+    - Play ストアでアプリケーションをダウンロードする
+    - market://details?id=[appパッケージ]
+    - 例:market://details?id=com.microsoft.office.word
+    - 地理的にローカライズされた検索を開始する
+    - geo:0、0? q = [検索クエリ]
+    - 例: geo:0,0?q=starbucks,paris
+- **iOS のみのアクション**
+    - App ストアでアプリケーションをダウンロードする
+    - http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8
+    - 例:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+    - Windows のアクション
+    - Web ページを開く
+    - http://[web-site-domain\]
+    - 例:http://www.azure.com
+    - メールを送信する
+    - mailto:[メール宛先]?subject=[件名]&body=[メッセージ]
+    - 例: mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
+    - SMS を送信する (Skype ストア アプリが必要)
+    - sms: [電話番号]
+    - 例: sms:2125551212
+    - 電話をかける (Skype ストア アプリが必要)
+    - tel: [電話番号]
+    - 例: tel:2125551212
+    - Play ストアでアプリケーションをダウンロードする
+    - ms-windows-store:PDP?PFN=app package ID
+    - 例: ms-windows-store:PDP?PFN=4d91298a-07cb-40fb-aecc-4cb5615d53c1
+    - Bingmaps 検索を開始する
+    - bingmaps:? q = search query]
+    - 例: bingmaps:?q=starbucks,paris
+    - カスタムのスキームを使用する
+    - [custom scheme]://[custom scheme params]
+    - 例:myCustomProtocol://myCustomParams
+    - パッケージ データを使用する (拡張機能読み取りのためのストア アプリ が必要)
+    - [folder][data].[extension]
+    - 例: myfolderdata.txt
  
-### <a name="build-a-tracking-url:"></a>Build a Tracking URL:
--    See the “Settings” section of the <UI Documentation> for instruction on building a tracking URL that will allow users to download one of your other applications.
+### 追跡用 URL を構築する:
+-    「UI ドキュメント」の「設定」セクションで、ユーザーが他のアプリケーションをダウンロードできるようにする追跡 URL を構築する方法をご覧ください。
  
-### <a name="define-the-texts-of-your-announcement"></a>Define the texts of your announcement
-Fill in the title, content, and button texts of your announcement. You can target an audience of a future campaign based on the reach feedback of how users responded to this campaign. Audience targeting can be based on the feedback of whether this campaign was just pushed, replied, actioned, or exited.
+### アナウンスのテキストを定義する
+アナウンスの件名、コンテンツ、ボタンのテキストを入力します。このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかといったフィードバックに基づいて行うことができます。
 
-### <a name="see-also"></a>See also
-- [UI Documentation - Reach - New Push Criterion][Link 28]
+### 関連項目
+- [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
 
-## <a name="content-of-polls"></a>Content of Polls
-![Reach-Content2][31] Fill in the title, description, and button texts of your announcement. Then, add questions and choices for the answers to your questions.
-You can target an audience of a future campaign based on the reach feedback of how users responded to this campaign. Audience targeting can be based on whether this campaign was just pushed, replied, actioned, or exited. Audience targeting can also be based on Poll answer feedback, where the question and answer choice are used as criteria.
+## アンケートのコンテンツ
+![リーチ - コンテンツ 2][31]アナウンスの件名、説明、ボタンのテキストを入力します。次に、質問と質問への回答の選択肢を追加します。このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。また、質問への回答の選択内容を条件として使用して、アンケートの回答フィードバックに基づいて対象ユーザーを設定することも可能です。
 
-### <a name="see-also"></a>See also
-- [UI Documentation - Reach - New Push Criterion][Link 28]
+### 関連項目
+- [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
  
-## <a name="content-of-data-pushes"></a>Content of Data Pushes
-![Reach-Content3][32] 
+## データ プッシュのコンテンツ
+![リーチ - コンテンツ 3][32]
 
-### <a name="choose-the-type-of-your-data:"></a>Choose the type of your data:
-- Text
-- Binary data
-- Base64 data
+### データの種類を選択します：
+- テキスト
+- バイナリ データ
+- Base64 データ
 
-### <a name="define-the-content-of-your-data"></a>Define the content of your data
-- If you selected to push text data, copy and paste the text into the "content" box.
-- If you selected to push either binary or base64 data, use the "upload your file" button to upload your file.
-- You can target an audience of a future campaign based on the reach feedback of how users responded to this campaign. Audience targeting can be based on whether this campaign was just pushed, replied, actioned, or exited.
+### データのコンテンツを定義します
+- テキスト データのプッシュを選択した場合は、[Contents (コンテンツ)] ボックスにテキストをコピーして貼り付けます。
+- バイナリ データや base64 データのプッシュを選択した場合は、[upload your file (ファイルをアップロード)] ボタンを使用してファイルをアップロードします。
+- このキャンペーンに対するユーザーの反応のリーチ フィードバックに基づいて、今後のキャンペーンの対象ユーザーを決めることができます。対象ユーザーの設定は、このキャンペーンはプッシュされただけか、応答があったか、アクションはあったか、終了されたかに基づいて行うことができます。
 
-### <a name="see-also"></a>See also
-- [UI Documentation - Reach - New Push Criterion][Link 28]
+### 関連項目
+- [UI ドキュメント - Reach - 新しいプッシュの条件][Link 28]
 
-## <a name="content-of-tiles-(windows-phone-only)"></a>Content of Tiles (Windows Phone only)
-![Reach-Content4][33]
+## タイルのコンテンツ (Windows Phone のみ)
+![リーチ - コンテンツ 4][33]
 
-### <a name="define-the-content-of-your-tile"></a>Define the content of your tile
-The tile payload is the text to be displayed in the tile of your app on Windows Phone devices.
-A tile push is the Microsoft Push Notification Service (MPNS) version of a native push for Windows Phone. The tile push type is the only push type that does not have a response and so the audience of future campaigns can't be built on the results of a tile push campaign. 
+### タイルのコンテンツを定義します
+タイルのペイロードは、Windows Phone デバイスでアプリのタイルに表示されるテキストです。タイルのプッシュは、Windows Phone のネイティブ プッシュの Microsoft Push Notification Service (MPNS) バージョンです。タイル プッシュの種類は唯一、応答のない種類であるため、タイル プッシュ キャンペーンの結果に基づいて今後のキャンペーンの対象ユーザーは設定できません。
 
-### <a name="see-also"></a>See also
-- [API Documentation - Reach API - Native Push][Link 4]
+### 関連項目
+- [API ドキュメント - Reach API - ネイティブ プッシュ][Link 4]
 
 <!--Image references-->
 [1]: ./media/mobile-engagement-user-interface-navigation/navigation1.png
@@ -236,8 +230,4 @@ A tile push is the Microsoft Push Notification Service (MPNS) version of a nativ
 [Link 29]: mobile-engagement-user-interface-reach-content.md
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,7 +1,3 @@
-To use this feature and other new Azure capabilities, sign up for the [free preview](https://account.windowsazure.com/PreviewFeatures).
+この機能をはじめとした Azure の新機能を使用するには、[無料のプレビュー](https://account.windowsazure.com/PreviewFeatures)にサインアップしてください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

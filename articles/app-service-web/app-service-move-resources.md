@@ -1,34 +1,29 @@
 <properties
-    pageTitle="Move Web App Resources to another Resource Group"
-    description="Describes the scenarios where you can move Web Apps and App Services from one Resource Group to another."
-    services="app-service"
-    documentationCenter=""
-    authors="ZainRizvi"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Web アプリ リソースを他のリソース グループに移動する"
+	description="Web アプリおよびアプリ サービスを一つのリソース グループから他のリソース グループに移動するシナリオについて記述しています。"
+	services="app-service"
+	documentationCenter=""
+	authors="ZainRizvi"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="01/04/2016"
-    ms.author="zarizvi"/>
-    
+	ms.service="app-service"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="01/04/2016"
+	ms.author="zarizvi"/>
+	
+# サポートされている移動の構成
 
-# <a name="supported-move-configurations"></a>Supported Move Configurations
+Azure Web アプリ リソースを [ARM Move Resources Api](../resource-group-move-resources.md) を使用して移動できます。
 
-You can move Azure Web App resources using the [ARM Move Resources Api](../resource-group-move-resources.md).
+現在、Azure の Web アプリでは次の移動のシナリオがサポートされています。
 
-Azure Web Apps currently supports the following move scenarios:
+* リソース グループ (Web アプリ、アプリのサービス プラン、および証明書) の内容全体を別のリソース グループに移動します。 
+	* 注: このシナリオでは、変換先のリソース グループにすべてのMicrosoft.Web リソースを含めることはできません。
+* 個々の Web アプリをそれぞれの異なるリソース グループに移動しますが、この時 Web アプリはまだ現行のアプリのサービス プランでホストされています (アプリのサービス プランは古いリソース グループにとどまっています)。
 
-* Moving the entire contents of a resource group (web apps, app service plans, and certificates) to another resource group 
-    * Note: The destination resource group can not contain any Microsoft.Web resources in this scenario
-* Moving individual web apps to a different resource group, while still hosting them in their current app service plan (the app service plan stays in the old resource group)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0107_2016-->

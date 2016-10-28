@@ -1,30 +1,27 @@
 <!--author=alkohli last changed: 9/16/15-->
 
-#### <a name="to-cable-for-power"></a>To cable for power
+#### 電源ケーブル接続を行うには
 
-1. Make sure that the power switches on each of the Power and Cooling Modules (PCMs) are in the OFF position.
+1. 各 PCM (電源および冷却モジュール) の電源スイッチが OFF の位置になっていることを確認します。
 
-2. Connect the power cords to each of the PCMs in the primary enclosure.
+2. 主エンクロージャの各 PCM に電源コードを接続します。
 
-3. Attach the power cords to the rack power distribution units (PDUs) as shown in the following image. Make sure that the two PCMs use separate power sources.
+3. 次の図に示すように、ラックの配電ユニット (PDU) に電源コードを接続します。2 つの PCM が別の電源を使用していることを確認します。
 
-    >[AZURE.IMPORTANT] To ensure high availability for your system, we recommend that you strictly adhere to the power cabling scheme shown in the following diagram. 
+    >[AZURE.IMPORTANT]システムの高可用性を確保するために、以下の図に示されている電源ケーブル接続構成に厳密に従うことをお勧めします。
 
-    ![Cable your 2U device for power](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
+    ![2U デバイスの電源ケーブル接続](./media/storsimple-cable-8100-for-power/HCSCableYour2UDeviceforPower.png)
 
-    **Power cabling on an 8100 device**
+    **8100 デバイスの電源ケーブル接続**
 
-    |Label|Description|
+    |ラベル|説明|
     |:----|:----------|
     |1|PCM 0|
-    |2|Controller 1|
-    |3|Controller 0|
+    |2|コントローラー 1|
+    |3|コントローラー 0|
     |4|PCM 1|
-    |5|PDUs|
+    |5|PDU|
 
-4. To turn on the system, flip the power switches on both PCMs to the ON position.
+4. システムの電源を入れるには、両方の PCM の電源スイッチを ON の位置に切り替えます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

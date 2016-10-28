@@ -1,288 +1,281 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with QuickHelp | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and QuickHelp."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と QuickHelp の統合 | Microsoft Azure"
+	description="Azure Active Directory と QuickHelp の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/16/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/16/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と QuickHelp の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-quickhelp"></a>Tutorial: Azure Active Directory integration with QuickHelp
+このチュートリアルの目的は、QuickHelp と Azure Active Directory (Azure AD) を統合する方法を説明することです。QuickHelp と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate QuickHelp with Azure Active Directory (Azure AD).  
-Integrating QuickHelp with Azure AD provides you with the following benefits: 
+- QuickHelp にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に QuickHelp にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to QuickHelp 
-- You can enable your users to automatically get signed-on to QuickHelp (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件 
 
-## <a name="prerequisites"></a>Prerequisites 
+QuickHelp と Azure AD の統合を構成するには、次のものが必要です。
 
-To configure Azure AD integration with QuickHelp, you need the following items:
-
-- An Azure AD subscription
-- A QuickHelp single-sign on enabled subscription
+- Azure AD サブスクリプション
+- QuickHelp でのシングル サインオンが有効なサブスクリプション
 
 
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-To test the steps in this tutorial, you should follow these recommendations:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/). 
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
  
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. Adding QuickHelp from the gallery 
-2. Configuring and testing Azure AD single sign-on
-
-
-## <a name="adding-quickhelp-from-the-gallery"></a>Adding QuickHelp from the gallery
-To configure the integration of QuickHelp into Azure AD, you need to add QuickHelp from the gallery to your list of managed SaaS apps.
-
-**To add QuickHelp from the gallery, perform the following steps:**
-
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
-
-    ![Active Directory][1]
-
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Applications][2]
-
-4. Click **Add** at the bottom of the page.
-
-    ![Applications][3]
-
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
-
-    ![Applications][4]
-
-6. In the search box, type **QuickHelp**.
-
-    ![Applications][5]
-
-7. In the results pane, select **QuickHelp**, and then click **Complete** to add the application.
-
-    ![Applications][500]
+1. ギャラリーからの QuickHelp の追加
+2. Azure AD シングル サインオンの構成とテスト
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with QuickHelp based on a test user called "Britta Simon".
+## ギャラリーからの QuickHelp の追加
+Azure AD への QuickHelp の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に QuickHelp を追加する必要があります。
+
+**ギャラリーから QuickHelp を追加するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Active Directory][1]
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![アプリケーション][2]
+
+4. ページの下部にある **[追加]** をクリックします。
+
+	![アプリケーション][3]
+
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+	![アプリケーション][4]
+
+6. 検索ボックスに、「**QuickHelp**」と入力します。
+
+	![アプリケーション][5]
+
+7. 結果ウィンドウで **[QuickHelp]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+	![アプリケーション][500]
 
 
-To configure and test Azure AD single sign-on with QuickHelp, you need to complete the following building blocks:
-
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a QuickHelp test user](#creating-a-quickhelp-test-user)** - to have a counterpart of Britta Simon in QuickHelp that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
-
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
-
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your QuickHelp application.
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、QuickHelp で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
 
-**To configure Azure AD single sign-on with QuickHelp, perform the following steps:**
+QuickHelp で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. In the Azure classic portal, on the **QuickHelp** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[ QuickHelp のテスト ユーザーの作成](#creating-a-quickhelp-test-user)** - QuickHelp で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-    ![Configure Single Sign-On][6] 
+### Azure AD シングル サインオンの構成
 
-2. On the **How would you like users to sign on to QuickHelp** page, select **Azure AD Single Sign-On**, and then click **Next**.
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、QuickHelp アプリケーションでシングル サインオンを構成することです。
 
-    ![Azure AD Single Sign-On][7] 
 
-3. On the **Configure App Settings** dialog page, perform the following steps:
+**QuickHelp で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-    ![Configure App Settings][8] 
+1. Azure クラシック ポータルの **QuickHelp** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
+
+	![Configure Single Sign-On][6]
+
+2. **[ユーザーの QuickHelp へのアクセスを設定してください]** ページで、**[Microsoft Azure AD シングル サインオン]** を選択し、**[次へ]** をクリックします。
+
+	![Azure AD Single Sign-On][7]
+
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
+
+	![Configure App Settings][8]
  
-     a. In the **Sign On URL** textbox, type the URL used by your users to sign-on to your QuickHelp site (e.g.:* https://quickhelp.com/bsiazure/*).
+     a.**[サインオン URL]** ボックスに、ユーザーが QuickHelp サイトへのサインオンに使用する URL を入力します (例: *https://quickhelp.com/bsiazure/*)。
 
-     > [AZURE.NOTE] Please contact your QuickHelp support team if you don't know the value of the Sign On URL.
+     > [AZURE.NOTE] サインオン URL の値がわからない場合は、QuickHelp サポート チームに問い合わせてください。
 
-     b. Click **Next**.
+     b.**[次へ]** をクリックします。
 
  
-4. On the **Configure single sign-on at QuickHelp** page, perform the following steps:click **Download metadata**, and then save the metadata file locally on your computer.
+4. **[QuickHelp でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
 
-    ![What is Azure AD Connect][9] 
-
-
-
-1. Sign-on to your QuickHelp company site as administrator.
-
-2. In the menu on the top, click **Admin**.
-
-    ![Configure Single Sign-On][21]
+	![Azure AD Connect の概要][9]
 
 
-1. In the **QuickHelp Admin** menu, click **Settings**.
 
-    ![Configure Single Sign-On][22]
+1. QuickHelp 企業サイトに管理者としてサインオンします。
 
-1. Click **Authentication Settings**.
+2. 上部のメニューで **[管理者]** をクリックします。
 
-1. On the **Authentication Settings** page, perform the following steps
-
-    ![Configure Single Sign-On][23]
-
-    a. As **SSO Type**, select **WSFederation**.
-
-    b. To upload your downloaded Azure metadata file, click **Browse**, navigate to the file, end then click **Upload Metadata**.
-
-    c. In the **Email** textbox, type **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**.
-
-    d. In the **First Name** textbox, **type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**.
-
-    e. In the **Last Name** textbox, **type http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**
-
-    f. In the **Action Bar**, click **Save**.
+	![Configure Single Sign-On][21]
 
 
+1. **[QuickHelp の管理者]** メニューの **[設定]** をクリックします。
+
+	![Configure Single Sign-On][22]
+
+1. **[認証設定]** をクリックします。
+
+1. **[認証設定]** ページで、次の手順を実行します。
+
+	![Configure Single Sign-On][23]
+
+    a.**SSO 型** として **WSFederation** を選びます。
+
+    b.ダウンロードした Azure メタデータ ファイルをアップロードするには、**[参照]** をクリックし、目的のファイルに移動し、**[メタデータのアップロード]** をクリックします。
+
+    c.**[Email]** テキスト ボックスに「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**」と入力します。
+
+    d.**[名]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname**」と入力します。
+
+    e.**[姓]** テキスト ボックスに、「**http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname**」と入力します。
+
+    f.**[ 操作バー ]** で、**[保存]** をクリックします。
 
 
 
 
 
-6. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**. 
-
-    ![What is Azure AD Connect][10]
-
-7. On the **Single sign-on confirmation** page, click **Complete**.  
-
-    ![What is Azure AD Connect][11]
 
 
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+
+	![Azure AD Connect とは][10]
+
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+
+	![Azure AD Connect とは][11]
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
-In the Users list, select **Britta Simon**.
 
-![Create Azure AD User][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。ユーザーの一覧で **[Britta Simon]** を選択します。
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
+![Azure AD ユーザーの作成][20]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_02.png) 
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-3. To display the list of users, in the menu on the top, click **Users**.
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_02.png)
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_03.png) 
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_03.png)
  
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**. 
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps: 
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
  
-    ![Creating an Azure AD test user](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_05.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps: 
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_06.png)
  
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
-    e. Click **Next**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-![Creating an Azure AD test user](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_07.png) 
+![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_07.png)
  
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-quickhelp-tutorial/create_aaduser_08.png)
   
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
+    b.**[完了]** をクリックします。
 
   
  
-### <a name="creating-a-quickhelp-test-user"></a>Creating a QuickHelp test user
+### QuickHelp テスト ユーザーの作成
 
-The objective of this section is to create a user called Britta Simon in QuickHelp.
-For single sign-on to work, Azure AD needs to know what the counterpart user in QuickHelp to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in QuickHelp needs to be established.
+このセクションの目的は、QuickHelp で Britta Simon というユーザーを作成することです。シングル サインオンを機能させるには、Azure AD ユーザーに対応する QuickHelp ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと QuickHelp の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-QuickHelp supports just-in-time provisioning. This means, if required, a user account is automatically created in QuickHelp and the account is linked to the Azure AD account.
+QuickHelp では、ジャストインタイム プロビジョニングがサポートされています。つまり、必要に応じて、ユーザー アカウントは、QuickHelp で自動的に作成され、Azure AD アカウントにリンクされます。
 
-There is no action item for you in this section.
-
-
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to QuickHelp.
-
-![Assign User][200] 
-
-**To assign Britta Simon to QuickHelp, perform the following steps:**
-
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Assign User][201] 
-
-2. In the applications list, select **QuickHelp**.
-
-    ![Assign User][202] 
-
-1. In the menu on the top, click **Users**.
-
-    ![Assign User][203] 
-
-1. In the Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-
-    ![Assign User][205]
+このセクションでは、ユーザー側で必要な操作はありません。
 
 
+### Azure AD テスト ユーザーの割り当て
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+このセクションの目的は、Britta Simon に QuickHelp へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the QuickHelp tile in the Access Panel, you should get automatically signed-on to your QuickHelp application.
+![ユーザーの割り当て][200]
+
+**QuickHelp に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![ユーザーの割り当て][201]
+
+2. アプリケーションの一覧で **[QuickHelp]** を選択します。
+
+	![ユーザーの割り当て][202]
+
+1. 上部のメニューで **[ユーザー]** をクリックします。
+
+	![ユーザーの割り当て][203]
+
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
+
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+	![ユーザーの割り当て][205]
 
 
-## <a name="additional-resources"></a>Additional Resources
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [QuickHelp] タイルをクリックすると、自動的に QuickHelp アプリケーションにサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -323,12 +316,4 @@ When you click the QuickHelp tile in the Access Panel, you should get automatica
 [401]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_401.png
 [402]: ./media/active-directory-saas-QuickHelp-tutorial/tutorial_QuickHelp_402.png
 
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

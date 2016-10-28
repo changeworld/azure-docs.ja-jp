@@ -1,123 +1,117 @@
 <properties
-    pageTitle="Manage Azure DevTest Labs custom images to create VMs | Microsoft Azure"
-    description="Learn how to create a custom image from a VHD file, or from an existing VM in Azure DevTest Labs"
-    services="devtest-lab,virtual-machines"
-    documentationCenter="na"
-    authors="tomarcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="VM を作成するための Azure DevTest Labs のカスタム イメージの管理 | Microsoft Azure"
+	description="VHD ファイルまたは Azure DevTest Labs 内の既存の VM からカスタム イメージを作成する方法について説明します。"
+	services="devtest-lab,virtual-machines"
+	documentationCenter="na"
+	authors="tomarcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="devtest-lab"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/07/2016"
-    ms.author="tarcher"/>
+	ms.service="devtest-lab"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/07/2016"
+	ms.author="tarcher"/>
+
+# VM を作成するための Azure DevTest Labs のカスタム イメージの管理
+
+Azure DevTest Labs では、カスタム イメージを使用すると、対象のコンピューターに必要なすべてのソフトウェアのインストールを待たずに、すぐに VM を作成できます。カスタム イメージを使用すると、事前に VHD ファイルに必要なすべてのソフトウェアをインストール後、VHD ファイルを使用して VM を作成できます。既にソフトウェアがインストールされているため、VM の作成時間が大幅に短縮されます。さらに、VM からカスタム イメージを作成後、そのカスタム イメージから VM を作成することで、カスタム イメージが VM の複製に使用されます。
+
+この記事では、次のことについて説明します:
+
+- 後でカスタム イメージから VM を作成できるように、[VHD ファイルからカスタム イメージを作成します](#create-a-custom-image-from-a-vhd-file)。
+- 迅速に VM を複製できるように、[VM からのカスタム イメージの作成します](#create-a-custom-image-from-a-vm)。
+
+## VHD ファイルからカスタム イメージを作成する
+
+このセクションでは、VHD ファイルからカスタム イメージを作成する方法を説明します。なお、このセクションのすべての手順を実行するには、有効な VHD ファイルへのアクセス権が必要です。
 
 
-# <a name="manage-azure-devtest-labs-custom-images-to-create-vms"></a>Manage Azure DevTest Labs custom images to create VMs
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-In Azure DevTest Labs, custom images enable you to create VMs quickly without waiting for all the required software to be installed on the target machine. Custom images allow you to pre-install all the software that you need in a VHD file, and then use the VHD file to create a VM. Because the software is already installed, the VM creation time is much quicker. In addition, custom images are used to clone VMs by creating a custom image from a VM, and then creating VMs from that custom image.
+1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
-In this article, you learn how to:
+1. ラボの一覧で目的のラボを選択します。
 
-- [Create a custom image from a VHD file](#create-a-custom-image-from-a-vhd-file) so that you can then create a VM from that custom image. 
-- [Create a custom image from a VM](#create-a-custom-image-from-a-vm) for rapid VM cloning.
+1. ラボのブレードで、**[構成]** を選択します。
 
-## <a name="create-a-custom-image-from-a-vhd-file"></a>Create a custom image from a VHD file
+1. ラボの **[構成]** ブレードで、**[カスタム イメージ]** を選択します。
 
-In this section, you see how to create a custom image from a VHD file.
-You need access to a valid VHD file to perform all the steps in this section.   
+1. **[カスタム イメージ]** ブレードで、**[+ カスタム イメージ]** を選択します。
 
+    ![カスタム イメージの追加](./media/devtest-lab-create-template/add-custom-image.png)
 
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. カスタム イメージの名前を入力します。この名前は、VM を作成するときにベース イメージの一覧に表示されます。
 
-1. Select **More services**, and then select **DevTest Labs** from the list.
+1. カスタム イメージの説明を入力します。この説明は、VM を作成するときにベース イメージの一覧に表示されます。
 
-1. From the list of labs, select the desired lab.  
+1. **[VHD ファイル]** を選択します。
 
-1. On the lab's blade, select **Configuration**. 
+1. 一覧表示されていない VHD ファイルにアクセスする場合は、「[VHD ファイルのアップロード](#upload-a-vhd-file)」セクションの手順に従って VHD ファイルを追加し、完了したら、ここに戻ります。
 
-1. On the lab **Configuration** blade, select **Custom images**.
+1. 目的の VHD ファイルを選択します。
 
-1. On the **Custom images** blade, select **+ Custom image**.
+1. **[OK]** を選択して、**[VHD ファイル]** ブレードを閉じます。
 
-    ![Add Custom image](./media/devtest-lab-create-template/add-custom-image.png)
+1. **[OS 構成]** を選択します。
 
-1. Enter the name of the custom image. This name is displayed in the list of base images when creating a VM.
+1. **[OS 構成]** タブで、**[Windows]** または **[Linux]** を選択します。
 
-1. Enter the description of the custom image. This description is displayed in the list of base images when creating a VM.
+1. **[Windows]** を選択した場合は、チェック ボックスを使用して、コンピューターで *Sysprep* が実行されたかどうかを指定します。
 
-1. Select **VHD File**.
+1. **[OK]** を選択して、**[OS 構成]** ブレードを閉じます。
 
-1. If you have access to a VHD file that is not listed, add it by following the instructions in the [Upload a VHD file](#upload-a-vhd-file) section, and return here when finished.
+1. **[OK]** を選択して、カスタム イメージを作成します。
 
-1. Select the desired VHD file.
+1. 「[次のステップ](#next-steps)」セクションを参照してください。
 
-1. Select **OK** to close the **VHD File** blade.
+###VHD ファイルのアップロード
 
-1. Select **OS Configuration**.
+カスタム イメージを追加するには、VHD ファイルにアクセスする必要があります。
 
-1. On the **OS Configuration** tab, select either **Windows** or **Linux**.
+1. **[VHD ファイル]** ブレードで、**[Upload a VHD file using PowerShell (PowerShell を使用して VHD ファイルをアップロード)]** を選択します。
 
-1. If **Windows** is selected, specify via the checkbox whether *Sysprep* has been run on the machine.
+    ![イメージのアップロード](./media/devtest-lab-create-template/upload-image-using-psh.png)
 
-1. Select **OK** to close the **OS Configuration** blade.
+1. 次のブレードには、VHD ファイルを Azure サブスクリプションにアップロードする PowerShell スクリプトの変更と実行の手順が表示されます。**注:** VHD ファイルのサイズと接続速度によっては、このプロセスに時間がかかる可能性があります。
 
-1. Select **OK** to create the custom image.
+## VM からのカスタム イメージの作成
+既に構成されている VM がある場合は、その VM からカスタム イメージを作成し、後でそのカスタム イメージを使用して、他と同じ VM を作成することができます。次の手順では、VM からカスタム イメージを作成する方法を説明します。
 
-1. Go to the [Next Steps](#next-steps) section.
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-###<a name="upload-a-vhd-file"></a>Upload a VHD file
+1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
-To add a custom image, you need to have access to a VHD file.
+1. ラボの一覧で目的のラボを選択します。
 
-1. On the **VHD File** blade, select **Upload a VHD file using PowerShell**.
-
-    ![Upload image](./media/devtest-lab-create-template/upload-image-using-psh.png)
-
-1. The next blade will display instructions for modifying and running a PowerShell script that uploads to your Azure subscription a VHD file. 
-**Note:** This process can be lengthy depending on the size of the VHD file and your connection speed.
-
-## <a name="create-a-custom-image-from-a-vm"></a>Create a custom image from a VM
-If you have a VM that is already configured, you can create a custom image from that VM, and afterwards use that custom image to create other identical VMs. The following steps illustrate how to create a custom image from a VM:
-
-1. Sign in to the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
-
-1. Select **More services**, and then select **DevTest Labs** from the list.
-
-1. From the list of labs, select the desired lab.  
-
-1. On the lab's blade, select **My virtual machines**.
+1. ラボのブレードで、**[仮想マシン]** を選択します。
  
-1. On the **My virtual machines** blade, select the VM from which you want to create the custom image.
+1. **[仮想マシン]** ブレードで、カスタム イメージを作成する VM を選択します。
 
-1. On the VM's blade, select **Create custom image (VHD)**.
+1. VM のブレードで、**[Create custom image (VHD) (カスタム イメージ を作成する (VHD))]** を選択します。
 
-    ![Create custom image menu item](./media/devtest-lab-create-template/create-custom-image.png)
+	![カスタム イメージのメニュー項目の作成](./media/devtest-lab-create-template/create-custom-image.png)
 
-1. On the **Create image** blade, enter a name and description for your custom image. This information is displayed in the list of bases when you create a VM.
+1. **[Create image (イメージの作成)]** ブレードで、カスタム イメージの名前と説明を入力します。この情報は、VM を作成する際にベースの一覧に表示されます。
 
-    ![Create custom image blade](./media/devtest-lab-create-template/create-custom-image-blade.png)
+	![カスタム イメージの作成ブレード](./media/devtest-lab-create-template/create-custom-image-blade.png)
 
-1. Select whether sysprep was run on the VM. If the sysprep was not run on the VM, specify whether you want sysprep run when a VM is created from this custom image.
+1. sysprep を VM で実行したかどうかを選択します。sysprep を VM で実行していない場合は、カスタム イメージから VM を作成するときに sysprep を実行するかどうかを指定します。
 
-1. Select **OK** when finished to create the custom image.
+1. 完了したら **[OK]** を選択して、カスタム イメージを作成します。
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="related-blog-posts"></a>Related blog posts
+## 関連するブログ記事
 
-- [Custom images or formulas?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Copying Custom Images between Azure DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Custom images or formulas? (カスタム イメージか数式か?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
+- [Copying Custom Images between Azure DevTest Labs (Azure DevTest Labs 間でのカスタム イメージのコピー)](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-Once you have added a custom image for use when creating a VM, the next step is to [add a VM to your lab](./devtest-lab-add-vm-with-artifacts.md).
+VM を作成するときに使用するカスタム イメージを追加したら、次は [VM をラボに追加](./devtest-lab-add-vm-with-artifacts.md)します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

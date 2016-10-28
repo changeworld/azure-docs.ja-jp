@@ -1,19 +1,17 @@
-In this step, you test the availability group listener using a client application running on the same network.
+この手順では、同じネットワーク上で実行されているクライアント アプリケーションを使用して、可用性グループ リスナーをテストします。
 
-For client connectivity, please note the following requirements:
+クライアント接続については、次の要件に注意してください。
 
-- Client connections to the listener must come from machines that reside in a different cloud service than the one that hosts the AlwaysOn Availability replicas.
+- リスナーへのクライアント接続は、AlwaysOn 可用性レプリカをホストするクラウド サービスとは異なるクラウド サービス内に存在するマシンから接続する必要があります。
 
-- If the AlwaysOn replicas are in different subnets, clients must specify "MultisubnetFailover=True" in the connection string. This results in parallel connection attempts to replicas in the different subnets. Note that this scenario includes a cross-region AlwaysOn Availability Group deployment.
+- AlwaysOn レプリカが異なるサブネットにある場合、クライアントは接続文字列で "MultisubnetFailover=True" を指定する必要があります。これにより、別のサブネット内のレプリカへのパラレル接続が試行されます。このシナリオには、AlwaysOn 可用性グループのリージョンを超えたデプロイメントが含まれていることに注意してください。
 
-One example would be to connect to the listener from one of the VMs in the same Azure VNet (but not one that hosts a replica). An easy way to complete this test is to try to connect SSMS to the availability group listener. Another simple method is to run [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx) as follows:
+1 つの例が、同じ Azure VNet (ただしレプリカをホストしていない) 内のいずれかの VM から、リスナーに接続する場合です。このテストを完了する簡単な方法は、SSMS を可用性グループ リスナーに接続してみることです。もう 1 つの簡単な方法は、次のように [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx) を実行することです。
 
-    sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
+	sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
 
-> [AZURE.NOTE] If the EndpointPort value is 1433, it is not required to specify it in the call. The previous call also assumes that the client machine is joined to the same domain and that the caller has been granted permissions on the database using windows authentication.
+> [AZURE.NOTE]EndpointPort 値が 1433 の場合、呼び出しでこれを指定する必要はありません。前の呼び出しでも、クライアント コンピューターが同じドメインに参加していて、Windows 認証を使用したデータベースへのアクセス許可が呼び出し元に与えられていることを想定しています。
 
-When testing the listener, be sure to fail over the availability group to make sure that clients can connect to the listener across failovers.
+リスナーをテストする場合は、クライアントがフェールオーバー間でリスナーに接続できるように、可用性グループがフェールオーバーすることを確認します。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

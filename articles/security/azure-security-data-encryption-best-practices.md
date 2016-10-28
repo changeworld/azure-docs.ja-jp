@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Data Security and Encryption Best Practices | Microsoft Azure"
-   description="This article provides a set of best practices for data security and encryption using built in Azure capabilities."
+   pageTitle="データ セキュリティと暗号化のベスト プラクティス | Microsoft Azure"
+   description="この記事では、 Azure の組み込み機能を利用した、データ セキュリティと暗号化に関する一連のベスト プラクティスについて説明します。"
    services="security"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,156 +16,151 @@
    ms.date="08/16/2016"
    ms.author="yuridio"/>
 
+#Azure のデータ セキュリティと暗号化のベスト プラクティス
 
-#<a name="azure-data-security-and-encryption-best-practices"></a>Azure Data Security and Encryption Best Practices
+クラウドにおけるデータ保護で重要なポイントの 1 つは、データが置かれうる状態と、その状態でどのような制御を使用できるのかを把握することです。Azure のデータ セキュリティと暗号化のベスト プラクティスでは、次のデータの状態に関する推奨事項が定められています。
 
-One of the keys to data protection in the cloud is accounting for the possible states in which your data may occur, and what controls are available for that state. For the purpose of Azure data security and encryption best practices the recommendations will be around the following data’s states:
+- 保存: ストレージ オブジェクト、コンテナー、データ型など、物理メディア (磁気ディスクまたは光学ディスク) に静的な状態で存在しているすべての情報が該当します。
 
-- At-rest: This includes all information storage objects, containers, and types that exist statically on physical media, be it magnetic or optical disk.
+- 転送中: ネットワークやサービス バスなどを経由して、コンポーネント間、場所間、プログラム間でデータが転送されているとき (オンプレミスとクラウド間の転送、ExpressRoute などのハイブリッド接続を含む)、または入出力処理の間、データが転送中であると見なされます。
 
-- In-Transit: When data is being transferred between components, locations or programs, such as over the network, across a service bus (from on-premises to cloud and vice-versa, including hybrid connections such as ExpressRoute), or during an input/output process, it is thought of as being in-motion.
+この記事では、Azure のデータ セキュリティと暗号化に関する一連のベスト プラクティスについて説明します。このベスト プラクティスは、Azure のデータ セキュリティと暗号化に関してマイクロソフトが蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
-In this article we will discuss a collection of Azure data security and encryption best practices. These best practices are derived from our experience with Azure data security and encryption and the experiences of customers like yourself.
+それぞれのベスト プラクティスについて、次の点を説明します。
 
-For each best practice, we’ll explain:
+- ベスト プラクティスの内容
+- そのベスト プラクティスをお勧めする理由
+- そのベスト プラクティスを実践しなかった場合に発生する可能性がある事態
+- そのベスト プラクティスに代わる対処法
+- そのベスト プラクティスを実践する方法
 
-- What the best practice is
-- Why you want to enable that best practice
-- What might be the result if you fail to enable the best practice
-- Possible alternatives to the best practice
-- How you can learn to enable the best practice
+この「Azure のデータ セキュリティと暗号化のベスト プラクティス」の記事は、この記事の執筆時点における共通認識と、Azure プラットフォームの機能および機能セットに基づいています。共通認識とテクノロジは時間が経つにつれて変化するため、そのような変化に対応するために、この記事は定期的に更新されます。
 
-This Azure Data Security and Encryption Best Practices article is based on a consensus opinion, and Azure platform capabilities and feature sets, as they exist at the time this article was written. Opinions and technologies change over time and this article will be updated on a regular basis to reflect those changes.
+この記事で説明する Azure のデータ セキュリティと暗号化に関するベスト プラクティスは、次のとおりです。
 
-Azure data security and encryption best practices discussed in this article include:
+- 多要素認証を適用する
+- ロールベースのアクセス制御 (RBAC) を使用する
+- Azure 仮想マシンを暗号化する
+- ハードウェア セキュリティ モデルを使用する
+- セキュリティ保護されたワークステーションを利用して管理する
+- SQL データの暗号化を有効にする
+- 転送中のデータを保護する
+- ファイル レベルのデータ暗号化を適用する
 
-- Enforce multi-factor authentication
-- Use role based access control (RBAC)
-- Encrypt Azure virtual machines
-- Use hardware security models
-- Manage with Secure Workstations
-- Enable SQL data encryption
-- Protect data in transit
-- Enforce file level data encryption
 
+## 多要素認証を適用する
 
-## <a name="enforce-multi-factor-authentication"></a>Enforce Multi-factor Authentication
+Microsoft Azure におけるデータ アクセスとデータ制御で最初に行われるのが、ユーザーの認証です。[Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) とは、ユーザー名とパスワード以外の手段も使ってユーザーを認証する方法です。この認証方法を利用することで、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。
 
-The first step in data access and control in Microsoft Azure is to authenticate the user. [Azure Multi-Factor Authentication (MFA)](../multi-factor-authentication/multi-factor-authentication.md) is a method of verifying user’s identity by using another method than just a username and password. This authentication method helps safeguard access to data and applications while meeting user demand for a simple sign-in process.
+ユーザーに対する Azure MFA を有効にすると、ユーザーのサインインとトランザクションに新しいセキュリティ層が追加されます。この場合、ファイル サーバーまたは SharePoint Online 上にあるドキュメントにアクセスするトランザクションが発生する可能性があります。また、Azure MFA は不正に取得された資格情報によって組織データにアクセスされる危険を減らすためにも役立ちます。
 
-By enabling Azure MFA for your users, you are adding a second layer of security to user sign-ins and transactions. In this case, a transaction might be accessing a document located in a file server or in your SharePoint Online. Azure MFA also helps IT to reduce the likelihood that a compromised credential will have access to organization’s data.
+たとえば、ユーザーに Azure MFA を適用し、電話やテキスト メッセージを使用して認証するように構成していたとします。攻撃者がユーザーの資格情報を不正に入手したとしても、ユーザーの携帯電話がなければ、リソースにアクセスすることはできません。この新しい ID 保護層を追加しない場合、資格情報盗用攻撃を受けやすくなり、データの侵害につながる可能性があります。
 
-For example: if you enforce Azure MFA for your users and configure it to use a phone call or text message as verification, if the user’s credential is compromised, the attacker won’t be able to access any resource since he will not have access to user’s phone. Organizations that do not add this extra layer of identity protection are more susceptible for credential theft attack, which may lead to data compromise.
+認証をオンプレミスで管理する必要がある場合は、代わりに [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) (MFA オンプレミスとも呼ばれます) を利用できます。この手法を利用すると、オンプレミスに MFA サーバーを置いていても、多要素認証を適用することができます。
 
-One alternative for organizations that want to keep the authentication control on-premises is to use [Azure Multi-Factor Authentication Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md), also called MFA on-premises. By using this method you will still be able to enforce multi-factor authentication, while keeping the MFA server on-premises.
+Azure MFA の詳細については、「[クラウドでの Azure Multi-Factor Authentication Server の概要](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」をご覧ください。
 
-For more information on Azure MFA, please read the article [Getting started with Azure Multi-Factor Authentication in the cloud](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+## ロールベースのアクセス制御 (RBAC) を使用する
+[知る必要性](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)という 2 つのセキュリティ原則に基づいて、アクセスを制限します。これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。Azure のロールベースのアクセス制御 (RBAC) を使用して、特定のスコープ内のユーザー、グループ、アプリケーションにアクセス許可を割り当てることができます。ロール割り当てのスコープには、サブスクリプション、リソース グループ、または単独のリソースを指定できます。
 
-## <a name="use-role-based-access-control-(rbac)"></a>Use Role Based Access Control (RBAC)
-Restrict access based on the [need to know](https://en.wikipedia.org/wiki/Need_to_know) and [least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) security principles. This is imperative for organizations that want to enforce security policies for data access. Azure Role-Based Access Control (RBAC) can be used to assign permissions to users, groups, and applications at a certain scope. The scope of a role assignment can be a subscription, a resource group, or a single resource.
+Azure の[組み込み RBAC ロール](../active-directory/role-based-access-built-in-roles.md)を利用して、ユーザーに権限を割り当てることができます。クラウド事業者は、ストレージ アカウントを管理する必要がある場合は*ストレージ アカウント作成協力者*ロール、従来のストレージ アカウントを管理する場合は*従来のストレージ アカウント作成協力者*ロールの使用を検討してください。VM とストレージ アカウントを管理する必要があるクラウド事業者は、それを*仮想マシン作成協力者*ロールに追加することを検討してください。
 
-You can leverage [built-in RBAC roles](../active-directory/role-based-access-built-in-roles.md) in Azure to assign privileges to users. Consider using *Storage Account Contributor* for cloud operators that need to manage storage accounts and *Classic Storage Account Contributor* role to manage classic storage accounts. For cloud operators that needs to manage VMs and storage account, consider adding them to *Virtual Machine Contributor* role.
+RBAC などの機能を利用したデータ アクセス制御を適用しない場合、ユーザーに必要以上の権限が付与される可能性があります。これにより、一部のユーザーがアクセスする必要がないデータにアクセスできるようになり、データのセキュリティ侵害につながる恐れがあります。
 
-Organizations that do not enforce data access control by leveraging capabilities such as RBAC may be giving more privileges than necessary for their users. This can lead to data compromise by having some users having access to data that they shouldn’t have in the first place.
+Azure RBAC の詳細については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」をご覧ください。
 
-You can learn more about Azure RBAC by reading the article [Azure Role-Based Access Control](../active-directory/role-based-access-control-configure.md).
+## Azure 仮想マシンを暗号化する
+多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで[保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/)は欠かせません。Azure Disk Encryption を利用して、Windows および Linux の IaaS 仮想マシン (VM) ディスクを暗号化できます。Azure Disk Encryption では、業界標準である Windows の BitLocker 機能と Linux の DM-Crypt 機能を利用して、OS およびデータ ディスクのボリュームの暗号化を提供します。
 
-## <a name="encrypt-azure-virtual-machines"></a>Encrypt Azure Virtual Machines
-For many organizations, [data encryption at rest](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) is a mandatory step towards data privacy, compliance and data sovereignty. Azure Disk Encryption enables IT administrators to encrypt Windows and Linux IaaS Virtual Machine (VM) disks. Azure Disk Encryption leverages the industry standard BitLocker feature of Windows and the DM-Crypt feature of Linux to provide volume encryption for the OS and the data disks.
+Azure Disk Encryption を利用してデータを保護し、組織のセキュリティ要件とコンプライアンス要件を達成することができます。暗号化を使用して、不正なデータ アクセスに関連するリスクを減らすことも検討してください。また、機密データをドライブに書き込む前にドライブを暗号化することもお勧めします。
 
-You can leverage Azure Disk Encryption to help protect and safeguard your data to meet your organizational security and compliance requirements. Organizations should also consider using encryption to help mitigate risks related to unauthorized data access. It is also recommended that you encrypt drives prior to writing sensitive data to them.
+Azure ストレージ アカウントの保存データを保護するために、VM のデータ ボリュームとブート ボリュームを必ず暗号化してください。暗号化キーとシークレットは、[Azure Key Vault](../key-vault/key-vault-whatis.md) を利用して保護します。
 
-Make sure to encrypt your VM’s data volumes and boot volume in order to protect data at rest in your Azure storage account. Safeguard the encryption keys and secrets by leveraging [Azure Key Vault](../key-vault/key-vault-whatis.md).
+オンプレミスの Windows サーバーについては、次の暗号化のベスト プラクティスを検討してください。
 
-For your on-premises Windows Servers, consider the following encryption best practices:
+- データの暗号化に [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) を使用する
+- 復旧情報を AD DS に格納する
+- BitLocker キーのセキュリティ侵害が発生しているという懸念がある場合、ドライブをフォーマットしてドライブ内の BitLocker メタデータ インスタンスをすべて削除するか、ドライブ全体の暗号化を解除し、もう一度暗号化することをお勧めします。
 
-- Use [BitLocker](https://technet.microsoft.com/library/dn306081.aspx) for data encryption
-- Store recovery information in AD DS.
-- If there is any concern that BitLocker keys have been compromised, we recommend that you either format the drive to remove all instances of the BitLocker metadata from the drive or that you decrypt and encrypt the entire drive again.
+データを暗号化しない組織は、悪意のあるユーザーや犯罪者にデータを盗まれたり、アカウントを乗っ取られて暗号化されていないデータに不正にアクセスされたりするなど、データの保全性に関する問題にさらされる可能性が高くなります。このようなリスクに加えて、業界の規制を遵守する必要がある企業は、適切なセキュリティ制御を使用してデータのセキュリティ強化に努めていることを証明する必要があります。
 
-Organizations that do not enforce data encryption are more likely to be exposed to data integrity issues, such as malicious or rogue users stealing data and compromised accounts gaining unauthorized access to data in clear format. Besides these risks, companies that have to comply with industry regulations, must prove that they are diligent and are using the correct security controls to enhance data security.
+Azure Disk Encryption の詳細については、「[Windows および Linux IaaS VM の Azure ディスク暗号化](azure-security-disk-encryption.md)」をご覧ください。
 
-You can learn more about Azure Disk Encryption by reading the article [Azure Disk Encryption for Windows and Linux IaaS VMs](azure-security-disk-encryption.md).
+## ハードウェア セキュリティ モジュールを使用する
 
-## <a name="use-hardware-security-modules"></a>Use Hardware Security Modules
+業界標準の暗号化ソリューションでは、秘密キーを使ってデータを暗号化します。そのため、このようなキーを安全に格納することが非常に重要です。データの暗号化に使用される秘密キーはキー管理機能によって保存されるため、キー管理はデータ保護に欠かせない機能です。
 
-Industry encryption solutions use secret keys to encrypt data. Therefore, it is critical that these keys are safely stored. Key management becomes an integral part of data protection, since it will be leveraged to store secret keys that are used to encrypt data.
+Azure Disk Encryption では [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) を利用してディスク暗号化キーとシークレットを Key Vault サブスクリプションで制御および管理でき、Azure Storage に保存されている仮想マシン ディスク内のすべてのデータを確実に暗号化できます。Azure Key Vault を使用して、キーとポリシーの使用状況を監査する必要があります。
 
-Azure disk encryption uses [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) to help you control and manage disk encryption keys and secrets in your key vault subscription, while ensuring that all data in the virtual machine disks are encrypted at rest in your Azure storage. You should use Azure Key Vault to audit keys and policy usage.
+適切なセキュリティ制御を実施して、データの暗号化に使用された秘密キーを保護しなければ、さまざまなリスクが生じます。攻撃者が秘密キーを手に入れた場合、データの暗号化を解除して機密情報にアクセスできるようになります。
 
-There are many inherent risks related to not having appropriate security controls in place to protect the secret keys that were used to encrypt your data. If attackers have access to the secret keys, they will be able to decrypt the data and potentially have access to confidential information.
+Azure における証明書管理に関する一般的な推奨事項については、「[Certificate Management in Azure: Do’s and Don’ts (Azure の証明書管理に関する注意事項)](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/)」をご覧ください。
 
-You can learn more about general recommendations for certificate management in Azure by reading the article [Certificate Management in Azure: Do’s and Don’ts](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/).
+Azure Key Vault の詳細については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
 
-For more information about Azure Key Vault, read [Get started with Azure Key Vault](../key-vault/key-vault-get-started.md).
+## セキュリティ保護されたワークステーションを利用して管理する
 
-## <a name="manage-with-secure-workstations"></a>Manage with Secure Workstations
+ほとんどの攻撃はエンド ユーザーを標的としているため、エンドポイントが主要な攻撃目標の 1 つとなっています。攻撃者はエンドポイントをセキュリティ侵害することで、ユーザーの資格情報を悪用して組織のデータにアクセスできるようになります。ほとんどのエンドポイント攻撃は、エンドユーザーがローカル ワークステーションの管理者であるという状況を利用して行われます。
 
-Since the vast majority of the attacks target the end user, the endpoint becomes one of the primary points of attack. If an attacker compromises the endpoint, he can leverage the user’s credentials to gain access to organization’s data. Most endpoint attacks are able to take advantage of the fact that end users are administrators in their local workstations.
+セキュリティで保護された管理ワークステーションを利用することで、このようなリスクを軽減できます。ワークステーションの攻撃対象領域を減らすために、[Privileged Access Workstations (PAW)](https://technet.microsoft.com/library/mt634654.aspx) の利用をお勧めします。このようなセキュリティで保護された管理ワークステーションを使用することで、攻撃を受ける可能性を減らし、データの安全性を高めることができます。PAW を利用して、ワークステーションのセキュリティを強固にしましょう。これは、機密性が求められるアカウント、タスク、データの保護に必要な高度なセキュリティを保証するために重要な手順です。
 
-You can reduce these risks by using a secure management workstation. We recommend that you use a [Privileged Access Workstations (PAW)](https://technet.microsoft.com/library/mt634654.aspx) to reduce the attack surface in workstations. These secure management workstations can help you mitigate some of these attacks help ensure your data is safer. Make sure to use PAW to harden and lock down your workstation. This is an important step to provide high security assurances for sensitive accounts, tasks and data protection.
+エンドポイントを保護しなければデータがリスクにさらされる危険性があるため、データの保存先 (クラウドまたはオンプレミス) に関わらず、そのデータを利用するすべてのデバイスにセキュリティ ポリシーを必ず適用してください。
 
-Lack of endpoint protection may put your data at risk, make sure to enforce security policies across all devices that are used to consume data, regardless of the data location (cloud or on-premises).
+Privileged Access Workstations の詳細については、「[Securing Privileged Access (特権アクセスのセキュリティ保護)](https://technet.microsoft.com/library/mt631194.aspx)」をご覧ください。
 
-You can learn more about privileged access workstation by reading the article [Securing Privileged Access](https://technet.microsoft.com/library/mt631194.aspx).
+## SQL データの暗号化を有効にする
 
-## <a name="enable-sql-data-encryption"></a>Enable SQL data encryption
+[Azure SQL Database Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/dn948096.aspx) を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。
 
-[Azure SQL Database transparent data encryption](https://msdn.microsoft.com/library/dn948096.aspx) (TDE) helps protect against the threat of malicious activity by performing real-time encryption and decryption of the database, associated backups, and transaction log files at rest without requiring changes to the application.  TDE encrypts the storage of an entire database by using a symmetric key called the database encryption key.
+ストレージ全体を暗号化している場合でも、データベース自体を暗号化することは非常に重要です。これは、多層防御型のデータ保護手法の 1 つです。[Azure SQL Database](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) を使用している場合、クレジット カードや社会保障番号などの機密情報を保護する必要があるときには、さまざまな業界標準 (HIPAA、PCI など) の要件を満たす FIPS 140-2 検証済み 256 ビット AES 暗号化を使ってデータベースを暗号化できます。
 
-Even when the entire storage is encrypted, it is very important to also encrypt your database itself. This is an implementation of the defense in depth approach for data protection. If you are using [Azure SQL Database](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) and wish to protect sensitive data such as credit card or social security numbers, you can encrypt databases with FIPS 140-2 validated 256 bit AES encryption which meets the requirements of many industry standards (e.g., HIPAA, PCI).
+データベースを TDE で暗号化する場合、[バッファー プール拡張](https://msdn.microsoft.com/library/dn133176.aspx) (BPE) に関連するファイルは暗号化されないことを理解しておく必要があります。BPE 関連ファイルについては、BitLocker や[暗号化ファイル システム](https://technet.microsoft.com/library/cc700811.aspx) (EFS) などのファイル システム レベルの暗号化ツールを使用する必要があります。
 
-It’s important to understand that files related to [buffer pool extension](https://msdn.microsoft.com/library/dn133176.aspx) (BPE) are not encrypted when a database is encrypted using TDE. You must use file system level encryption tools like BitLocker or the [Encrypting File System](https://technet.microsoft.com/library/cc700811.aspx) (EFS) for BPE related files.
+セキュリティ管理者やデータベース管理者などの特権を持つユーザーは、TDE で暗号化されたデータベースのデータにもアクセスできるため、次の推奨事項にも従う必要があります。
 
-Since an authorized user such as a security administrator or a database administrator can access the data even if the database is encrypted with TDE, you should also follow the recommendations below:
+- データベース レベルでの SQL 認証
+- RBAC ロールを使用した Azure AD 認証
+- ユーザーとアプリケーションは、別々のアカウントを使って認証する必要があります。そうすることで、ユーザーとアプリケーションに付与されるアクセス許可を制限し、悪意のあるアクティビティのリスクを減らすことができます。
+- 固定データベース ロール (db\_datareader、db\_datawriter など) を使用してデータベース レベルのセキュリティを実装しますが、アプリケーション用のカスタム ロールを作成して、選択したデータベース オブジェクトに明示的なアクセス許可を付与することもできます。
 
-- SQL authentication at the database level
-- Azure AD authentication using RBAC roles
-- Users and applications should use separate accounts to authenticate. This way you can limit the permissions granted to users and applications and reduce the risks of malicious activity
-- Implement database-level security by using fixed database roles (such as db_datareader or db_datawriter), or you can create custom roles for your application to grant explicit permissions to selected database objects
+データベース レベルの暗号化を使用しない場合、SQL データベース内にあるデータを損なうような攻撃を受けやすくなる可能性があります。
 
-Organizations that are not using database level encryption may be more susceptible for attacks that may compromise data located in SQL databases.
+SQL TDE 暗号化の詳細については、「[Azure SQL Database の Transparent Data Encryption](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx)」をご覧ください。
 
-You can learn more about SQL TDE encryption by reading the article [Transparent Data Encryption with Azure SQL Database](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx).
+## 転送中のデータを保護する
 
-## <a name="protect-data-in-transit"></a>Protect data in transit
+転送中のデータの保護は、データ保護戦略に欠かせない要素です。データはさまざまな場所を経由して転送されるため、一般的には常時 SSL/TLS プロトコルを使用してデータをやり取りすることが推奨されています。状況によっては、オンプレミスとクラウド インフラストラクチャ間の通信チャネル全体を、仮想プライベート ネットワーク (VPN) を使用して隔離する必要があります。
 
-Protecting data in transit should be essential part of your data protection strategy. Since data will be moving back and forth from many locations, the general recommendation is that you always use SSL/TLS protocols to exchange data across different locations. In some circumstances, you may want to isolate the entire communication channel between your on-premises and cloud infrastructure by using a virtual private network (VPN).
+オンプレミス インフラストラクチャと Azure 間のデータ移動については、HTTPS や VPN などの適切なセキュリティ対策を検討してください。
 
-For data moving between your on-premises infrastructure and Azure, you should consider appropriate safeguards such as HTTPS or VPN.
+オンプレミスにある複数のワークステーションから Azure へのアクセスをセキュリティ保護する必要がある場合には、[Azure のサイト間 VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) を使用します。
 
-For organizations that need to secure access from multiple workstations located on-premises to Azure, use [Azure site-to-site VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md).
+オンプレミスにある 1 個のワークステーションから Azure へのアクセスをセキュリティ保護する必要がある場合には、[ポイント対サイト VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) を使用します。
 
-For organizations that need to secure access from one workstation located on-premises to Azure, use [Point-to-Site VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md).
+大規模なデータ セットは、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) などの専用高速 WAN リンクを利用して移動できます。ExpressRoute を使用する場合、[SSL/TLS](https://support.microsoft.com/kb/257591) などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらにセキュリティを強化できます。
 
-Larger data sets can be moved over a dedicated high-speed WAN link such as [ExpressRoute](https://azure.microsoft.com/services/expressroute/). If you choose to use ExpressRoute, you can also encrypt the data at the application-level using [SSL/TLS](https://support.microsoft.com/kb/257591) or other protocols for added protection.
+Azure ポータルで Azure Storage を操作する場合、すべてのトランザクションは HTTPS 経由で行われます。HTTPS 経由の [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) も、[Azure Storage](https://azure.microsoft.com/services/storage/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) の操作に使用できます。
 
-If you are interacting with Azure Storage through the Azure Portal, all transactions occur via HTTPS. [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) over HTTPS can also be used to interact with [Azure Storage](https://azure.microsoft.com/services/storage/) and [Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
+転送中のデータを保護しない場合、[man-in-the-middle 攻撃](https://technet.microsoft.com/library/gg195821.aspx)、[盗聴](https://technet.microsoft.com/library/gg195641.aspx)、セッション ハイジャックに対して脆弱になります。このような攻撃は、機密データへのアクセスを取得するための最初の手順として実行される場合があります。
 
-Organizations that fail to protect data in transit are more susceptible for [man-in-the-middle attacks](https://technet.microsoft.com/library/gg195821.aspx), [eavesdropping](https://technet.microsoft.com/library/gg195641.aspx) and session hijacking. These attacks can be the first step in gaining access to confidential data.
+Azure VPN オプションの詳細については、「[VPN ゲートウェイの計画と設計](../vpn-gateway/vpn-gateway-plan-design.md)」をご覧ください。
 
-You can learn more about Azure VPN option by reading the article [Planning and design for VPN Gateway](../vpn-gateway/vpn-gateway-plan-design.md).
+## ファイル レベルのデータ暗号化を適用する
 
-## <a name="enforce-file-level-data-encryption"></a>Enforce file level data encryption
+データのセキュリティ レベルをさらに高めるには、ファイルの場所に関係なくファイル自体を暗号化します。
 
-Another layer of protection that can increase the level of security for your data is encrypting the file itself, regardless of the file location.
+[Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) は、暗号化、ID、承認ポリシーを使用してファイルとメールを保護します。Azure RMS は組織内と組織外の両方でデータを保護できるため、携帯電話、タブレット、PC などの複数のデバイスに適用できます。これが可能なのは、データが組織外に出たとしても Azure RMS による保護がデータに残るためです。
 
-[Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) uses encryption, identity, and authorization policies to help secure your files and email. Azure RMS works across multiple devices — phones, tablets, and PCs by protecting both within your organization and outside your organization. This capability is possible because Azure RMS adds a level of protection that remains with the data, even when it leaves your organization’s boundaries.
+Azure RMS を使用してファイルを保護する場合、[FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html) を完全にサポートする業界標準の暗号化技術が適用されます。データ保護に Azure RMS を利用すると、クラウド ストレージ サービスのような IT 部門の管轄外のストレージにファイルがコピーされたとしても、ファイルを確実に保護できます。メールでファイルを共有する場合も同じです。メール メッセージの添付ファイルとしてファイルを保護し、保護された添付ファイルを開く方法をメール本文に記載しておきます。
 
-When you use Azure RMS to protect your files, you are using industry-standard cryptography with full support of [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html). When you leverage Azure RMS for data protection, you have the assurance that the protection stays with the file, even if it is copied to storage that is not under the control of IT, such as a cloud storage service. The same occurs for files shared via e-mail, the file is protected as an attachment to an email message, with instructions how to open the protected attachment.
+Azure RMS の導入を計画するときは、次の準備を行うことをお勧めします。
 
-When planning for Azure RMS adoption we recommend the following:
+- [RMS 共有アプリ](https://technet.microsoft.com/library/dn339006.aspx)をインストールします。Office アドインをインストールすることによって、このアプリが Office アプリケーションと統合され、ユーザーが直接簡単にファイルを保護できるようになります。
+- Azure RMS をサポートするようにアプリケーションとサービスを構成します。
+- ビジネス要件を反映した[カスタム テンプレート](https://technet.microsoft.com/library/dn642472.aspx)を作成します。たとえば、すべての極秘メールに適用する、極秘データ用テンプレートを作成します。
 
-- Install the [RMS sharing app](https://technet.microsoft.com/library/dn339006.aspx). This app integrates with Office applications by installing an Office add-in so that users can easily protect files directly.
-- Configure applications and services to support Azure RMS
-- Create [custom templates](https://technet.microsoft.com/library/dn642472.aspx) that reflect your business requirements. For example: a template for top secret data that should be applied in all top secret related emails.
+[データ分類](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf)やデータ保護が不十分な組織は、データ漏洩のリスクが高くなる可能性があります。ファイルを適切に保護しなければ、ビジネスを分析し、不正使用を監視し、ファイルへの悪意のあるアクセスを防ぐことはできません。
 
-Organizations that are weak on [data classification](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) and file protection may be more susceptible to data leakage. Without proper file protection, organizations won’t be able to obtain business insights, monitor for abuse and prevent malicious access to files.
+Azure RMS の詳細については、「[Azure Rights Management の概要](https://technet.microsoft.com/library/jj585016.aspx)」をご覧ください。
 
-You can learn more about Azure RMS by reading the article [Getting Started with Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

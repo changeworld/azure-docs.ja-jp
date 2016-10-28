@@ -1,61 +1,58 @@
-## <a name="setting-up-powershell-for-resource-manager-templates"></a>Setting up PowerShell for Resource Manager templates
+## リソース マネージャー テンプレート向けの PowerShell の設定
 
-Before you can use Azure PowerShell with Resource Manager, you will need to have the right Windows PowerShell and Azure PowerShell versions.
+リソース マネージャーで Azure PowerShell を使用する前に、適切なバージョンの Windows PowerShell と Azure PowerShell を用意する必要があります。
 
-### <a name="verify-powershell-versions"></a>Verify PowerShell versions
+### PowerShell のバージョンを確認する
 
-Verify you have Windows PowerShell version 3.0 or 4.0. To find the version of Windows PowerShell, type this command at a Windows PowerShell command prompt.
+Windows PowerShell Version 3.0 または 4.0 があることを確認します。Windows PowerShell のバージョンを確認するには、Windows PowerShell コマンド プロンプトで次のコマンドを入力します。
 
-    $PSVersionTable
+	$PSVersionTable
 
-You will receive the following type of information:
+次の種類の情報が表示されます。
 
-    Name                           Value
-    ----                           -----
-    PSVersion                      3.0
-    WSManStackVersion              3.0
-    SerializationVersion           1.1.0.1
-    CLRVersion                     4.0.30319.18444
-    BuildVersion                   6.2.9200.16481
-    PSCompatibleVersions           {1.0, 2.0, 3.0}
-    PSRemotingProtocolVersion      2.2
-
-
-Verify that the value of **PSVersion** is 3.0 or 4.0. If not, see [Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) or [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855).
-
-### <a name="set-your-azure-account-and-subscription"></a>Set your Azure account and subscription
-
-If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) or sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
-
-Open an Azure PowerShell command prompt and log on to Azure with this command.
-
-    Login-AzureRmAccount
-
-If you have multiple Azure subscriptions, you can list your Azure subscriptions with this command.
-
-    Get-AzureRmSubscription
-
-You will receive the following type of information:
-
-    SubscriptionId            : fd22919d-eaca-4f2b-841a-e4ac6770g92e
-    SubscriptionName          : Visual Studio Ultimate with MSDN
-    Environment               : AzureCloud
-    SupportedModes            : AzureServiceManagement,AzureResourceManager
-    DefaultAccount            : johndoe@contoso.com
-    Accounts                  : {johndoe@contoso.com}
-    IsDefault                 : True
-    IsCurrent                 : True
-    CurrentStorageAccountName :
-    TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
-
-You can set the current Azure subscription by running these commands at the Azure PowerShell command prompt. Replace everything within the quotes, including the < and > characters, with the correct name.
-
-    $subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
-    Select-AzureRmSubscription -SubscriptionName $subscr -Current
-
-For more information about Azure subscriptions and accounts, see [How to: Connect to your subscription](powershell-install-configure.md#Connect).
+	Name                           Value
+	----                           -----
+	PSVersion                      3.0
+	WSManStackVersion              3.0
+	SerializationVersion           1.1.0.1
+	CLRVersion                     4.0.30319.18444
+	BuildVersion                   6.2.9200.16481
+	PSCompatibleVersions           {1.0, 2.0, 3.0}
+	PSRemotingProtocolVersion      2.2
 
 
-<!--HONumber=Oct16_HO2-->
+**PSVersion** の値が 3.0 または 4.0 であることを確認します。3.0 または 4.0 でない場合は、[Windows Management Framework 3.0](http://www.microsoft.com/download/details.aspx?id=34595) または [Windows Management Framework 4.0](http://www.microsoft.com/download/details.aspx?id=40855) のダウンロード ページを参照してください。
 
+### Azure アカウントとサブスクリプションを設定する
 
+Azure サブスクリプションを持っていない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
+
+Azure PowerShell コマンド プロンプトを開き、次のコマンドで Azure にログオンします。
+
+	Login-AzureRmAccount
+
+Azure サブスクリプションが複数ある場合は、次のコマンドで、Azure サブスクリプションの一覧を表示できます。
+
+	Get-AzureRmSubscription
+
+次の種類の情報が表示されます。
+
+	SubscriptionId            : fd22919d-eaca-4f2b-841a-e4ac6770g92e
+	SubscriptionName          : Visual Studio Ultimate with MSDN
+	Environment               : AzureCloud
+	SupportedModes            : AzureServiceManagement,AzureResourceManager
+	DefaultAccount            : johndoe@contoso.com
+	Accounts                  : {johndoe@contoso.com}
+	IsDefault                 : True
+	IsCurrent                 : True
+	CurrentStorageAccountName :
+	TenantId                  : 32fa88b4-86f1-419f-93ab-2d7ce016dba7
+
+Azure PowerShell コマンド プロンプトで次のコマンドを実行して、現在の Azure サブスクリプションを設定します。引用符内のすべての文字 (< and > を含む) を、適切な名前に置き換えてください。
+
+	$subscr="<SubscriptionName from the display of Get-AzureRmSubscription>"
+	Select-AzureRmSubscription -SubscriptionName $subscr -Current
+
+Azure サブスクリプションとアカウントの詳細については、[サブスクリプションへの接続方法](powershell-install-configure.md#Connect)に関するトピックを参照してください。
+
+<!---HONumber=AcomDC_0128_2016-->

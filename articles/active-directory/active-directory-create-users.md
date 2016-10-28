@@ -1,85 +1,84 @@
 <properties
-    pageTitle="Add new users to Azure Active Directory | Microsoft Azure"
-    description="Explains how to add new users or change user information in Azure Active Directory."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory に新しいユーザーを追加する | Microsoft Azure"
+	description="Azure Active Directory で新しいユーザーを追加する方法やユーザー情報を変更する方法を説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/22/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/22/2016"
+	ms.author="curtand"/>
 
+# 新しいユーザーまたは Microsoft アカウントを持つユーザーを Azure Active Directory に追加する
 
-# <a name="add-new-users-or-users-with-microsoft-accounts-to-azure-active-directory"></a>Add new users  or users with Microsoft accounts to Azure Active Directory
+ディレクトリに格納するユーザーを追加します。この記事では、組織内の新しいユーザーを追加する方法と、Microsoft アカウントを持つユーザーを追加する方法について説明します。Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法の詳細については、「[Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)」を参照してください。既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
-Add users to populate your directory. This article explains how to add new users in your organization, and how to add users who have Microsoft accounts. For more information about adding users from other directories in Azure Active Directory or adding users from partner companies, see [Add users from other directories or partner companies in Azure Active Directory](active-directory-create-users-external.md). Added users don't have administrator permissions by default, but you can assign roles to them at any time.
+## ユーザーの追加
 
-## <a name="add-a-user"></a>Add a user
+1. ディレクトリのグローバル管理者となっているアカウントで [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
+2. **[Active Directory]** を選択し、組織のディレクトリの名前を選択します。
+3. **[ユーザー]** タブを選択し、コマンド バーの **[ユーザーの追加]** をクリックします。
+4. **[このユーザーに関する情報の入力]** ページの **[ユーザーの種類]** から次のいずれかを選択します。
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) with an account that's a global admin for the directory.
-2. Select **Active Directory**, and then select the name of your organization directory.
-3. Select the **Users** tab, and then, in the command bar, select **Add User**.
-4. On the **Tell us about this user** page, under **Type of user**, select either:
+	- **[組織内の新しいユーザー]** - ディレクトリに新しいユーザー アカウントを追加します。
+	- **[既存の Microsoft アカウントを持つユーザー]** - ディレクトリに既存の Microsoft コンシューマー アカウント (Outlook アカウントなど) を追加します。
 
-    - **New user in your organization** – adds a new user account in your directory.
-    - **User with an existing Microsoft account** – adds an existing Microsoft consumer account to your directory (for example, an Outlook account)
+5. **[ユーザーの種類]** に応じて、ユーザー名 (新しいユーザーの場合) または電子メール アドレス (Microsoft アカウントを持つユーザーの場合) を入力します。
+6. ユーザーの **[プロファイル]** ページで、姓と名、わかりやすい名前を入力し、**[ロール]** ボックスの一覧からユーザー ロールを選択します。ユーザーおよび管理者のロールの詳細については、「[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。ユーザーの **Multi-Factor Authentication を有効にする**かどうかを指定します。
+7. **[一時パスワードの取得]** ページで、**[作成]** を選択します。
 
-5. Depending on **Type of user**, enter a user name (for new user) or an email address (for a user with a Microsoft account).
-6. On the user **Profile** page, provide a first and last name, a user-friendly name, and a user role from the **Roles** list. For more information about user and administrator roles, see [Assigning administrator roles in Azure AD](active-directory-assign-admin-roles.md). Specify whether to **Enable Multi-Factor Authentication** for the user.
-7. On the **Get temporary password** page, select **Create**.
-
-> [AZURE.IMPORTANT] If your organization uses more than one domain, you should know about the following issues when you add a user account:
+> [AZURE.IMPORTANT] 組織が複数のドメインを使用している場合は、ユーザー アカウントを追加するときに起きる、次の問題について理解しておく必要があります。
 >
-> - TO add user accounts with the same user principal name (UPN) across domains, **first** add, for example, geoffgrisso@contoso.onmicrosoft.com, **followed by** geoffgrisso@contoso.com.
-> - **Don't** add geoffgrisso@contoso.com before you add geoffgrisso@contoso.onmicrosoft.com. This order is important, and can be cumbersome to undo.
+> - 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば**最初に** geoffgrisso@contoso.onmicrosoft.com を追加し、**それに続けて** geoffgrisso@contoso.com を追加します。
+> - geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。この順序は重要であり、なかなか元に戻すことができない場合があります。
 
-## <a name="change-user-information"></a>Change user information
+## ユーザー情報を変更する
 
-You can change any user attribute except for the object ID.
+ユーザーの属性は、オブジェクト ID を除いてすべて変更できます。
 
-1. Open your directory.
-2. Select the **Users** tab, and then select the display name of the user you want to change.
-3. Complete your changes, and then click **Save**.
+1. ディレクトリを開きます。
+2. **[ユーザー]** タブをクリックし、変更するユーザーの表示名を選択します。
+3. 変更が完了したら、**[保存]** をクリックします。
 
-If the user that you're changing is synchronized with your on-premises Active Directory service, you can't change the user information using this procedure. To change the user, use your on-premises Active Directory management tools.
+編集しようとしているユーザーがオンプレミスの Active Directory サービスと同期している場合、この手順を使用してユーザー情報を編集することはできません。このユーザーを編集するには、オンプレミスの Active Directory 管理ツールを使用します。
 
-## <a name="guest-user-management-and-limitations"></a>Guest user management and limitations
+## ゲスト ユーザーの管理と制限事項
 
-Guest accounts are users from other directories who were invited to your directory to access SharePoint documents, applications, or other Azure resources. A guest account in your directory has its underlying UserType attribute set to "Guest." Regular users (specifically, members of your directory) have the UserType attribute "Member."
+ゲスト アカウントは、SharePoint ドキュメントやアプリケーションなどの Azure リソースにアクセスするためにディレクトリに招待された、他のディレクトリのユーザーを表します。ゲスト アカウントとは、その基になる UserType 属性が "Guest" に設定されている、ディレクトリ内のユーザー アカウントです。 通常のユーザー (具体的には、ディレクトリのメンバー) は、UserType 属性が "Member" となります。
 
-Guests have a limited set of rights in the directory. These rights limit the ability for Guests to discover information about other users in the directory. However, guest users can still interact with the users and groups associated with the resources they're working on. Guest users can:
+ゲストは、ディレクトリ内で限定された権限のセットを持ちます。これらの権限では、ディレクトリ内の他のユーザーに関する情報を検出するゲストの能力は制限されます。ただし、作業するリソースに関連付けられているユーザーやグループと対話することはできます。ゲスト ユーザーは次のことができます。
 
-- See other users and groups associated with an Azure subscription to which they're assigned
-- See the members of groups to which they belong
-- Look up other users in the directory, if they know the full email address of the user
-- See only a limited set of attributes of the users they look up--limited to display name, email address, user principal name (UPN), and thumbnail photo
-- Get a list of verified domains in the directory
-- Consent to applications, granting them the same access that Members have in your directory
+- ゲスト ユーザーが割り当てられている Azure サブスクリプションに関連付けられたその他のユーザーとグループを表示する
+- 自分が所属しているグループのメンバーを表示する
+- ユーザーの完全なメール アドレスを知っている場合にディレクトリ内の他のユーザーを検索する
+- 検索したユーザーの限定された属性のみを表示する。表示名、電子メール アドレス、ユーザー プリンシパル名 (UPN)、およびサムネイル写真に限定されます
+- ディレクトリの確認済みドメインの一覧を取得する
+- アプリケーションに同意し、ディレクトリ内のメンバーと同一のアクセス権をゲストに付与する。
 
-## <a name="set-guest-user-access-policies"></a>Set guest user access policies
+## ゲスト ユーザー アクセス ポリシーの設定
 
-The **Configure** tab of a directory includes options to control access for guest users. These options can be changed only in Azure classic portal by a directory global administrator. Currently, there's no PowerShell or API method.
+ディレクトリの **[構成]** タブには、ゲスト ユーザーのアクセスを制御するオプションが含まれています。これらのオプションの変更は、ディレクトリのグローバル管理者が Azure クラシック ポータルから行う必要があります。現時点では、PowerShell や API では変更できません。
 
-To open the **Configure** tab in the Azure classic portal, select **Active Directory**, and then select the name of the directory.
+Azure クラシック ポータルで **[構成]** タブを開くには、**[Active Directory]** を選択し、ディレクトリの名前を選択します。
 
-![Configure tab in Azure Active Directory][1]
+![Azure Active Directory の [構成] タブ][1]
 
-Then you can edit the options to control access for guest users.
+その後、ゲスト ユーザーのアクセスを制御するオプションを編集できます。
 
 ![access control options for guest users][2]
 
 
-## <a name="what's-next"></a>What's next
+## 参照トピック
 
-- [Add users from other directories or partner companies in Azure Active Directory](active-directory-create-users-external.md)
-- [Administering Azure AD](active-directory-administer.md)
+- [Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する](active-directory-create-users-external.md)
+- [Administer your Azure AD directory](active-directory-administer.md)
 - [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 - [Manage groups in Azure AD](active-directory-manage-groups.md)
 
@@ -87,8 +86,4 @@ Then you can edit the options to control access for guest users.
 [1]: ./media/active-directory-create-users/RBACDirConfigTab.png
 [2]: ./media/active-directory-create-users/RBACGuestAccessControls.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

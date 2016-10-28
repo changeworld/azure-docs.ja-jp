@@ -1,32 +1,31 @@
 <properties
-    pageTitle="Custom settings for App Service Environments"
-    description="Custom configuration settings for App Service Environments"
-    services="app-service"
-    documentationCenter=""
-    authors="stefsch"
-    manager="nirma"
-    editor=""/>
+	pageTitle="App Service Environment のカスタム設定"
+	description="App Service Environment のカスタム構成設定"
+	services="app-service"
+	documentationCenter=""
+	authors="stefsch"
+	manager="nirma"
+	editor=""/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/22/2016"
-    ms.author="stefsch"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="stefsch"/>
 
+# App Service Environment のカスタム構成設定
 
-# <a name="custom-configuration-settings-for-app-service-environments"></a>Custom configuration settings for App Service Environments
+## Overview ##
+App Service Environment は単一の顧客に分離されるため、App Service Environment にのみ適用できる特定の構成設定があります。この記事では、App Service Environment で使用可能な、固有の各種カスタマイズについて説明します。
 
-## <a name="overview"></a>Overview ##
-Because App Service Environments are isolated to a single customer, there are certain configuration settings that can be applied exclusively to App Service Environments. This article documents the various specific customizations that are available for App Service Environments.
+App Service 環境がない場合は、[App Service 環境の作成方法](app-service-web-how-to-create-an-app-service-environment.md)に関するページを参照してください。
 
-If you do not have an App Service Environment, see [How to Create an App Service Environment](app-service-web-how-to-create-an-app-service-environment.md).
+App Service Environment のカスタマイズは、新しい **clusterSettings** 属性の配列を使って保存できます。この属性は、Azure Resource Manager の *hostingEnvironments* エンティティの "Properties" ディクショナリにあります。
 
-You can store App Service Environment customizations by using an array in the new **clusterSettings** attribute. This attribute is found in the "Properties" dictionary of the *hostingEnvironments* Azure Resource Manager entity.
-
-The following abbreviated Resource Manager template snippet shows the **clusterSettings** attribute:
+次の簡略化された Resource Manager テンプレートのスニペットに、その **clusterSettings** 属性が示されています。
 
 
     "resources": [
@@ -47,30 +46,29 @@ The following abbreviated Resource Manager template snippet shows the **clusterS
        }
     }
 
-The **clusterSettings** attribute can be included in a Resource Manager template to update the App Service Environment.
+Resource Manager テンプレートに **clusterSettings** 属性を含めて、App Service Environment を更新することができます。
 
-## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Use Azure Resource Explorer to update an App Service Environment
-Alternatively, you can update the App Service Environment by using [Azure Resource Explorer](https://resources.azure.com).  
+## Azure リソース エクスプローラーを使った App Service Environment の更新
+App Service Environment は、[Azure リソース エクスプローラー](https://resources.azure.com)を使って更新することもできます。
 
-1. In Resource Explorer, go to the node for the App Service Environment (**subscriptions** > **resourceGroups** > **providers** > **Micrososft.Web** > **hostingEnvironments**). Then click the specific App Service Environment that you want to update.
+1. リソース エクスプローラーで、App Service Environment のノードに移動します (**subscriptions**、**resourceGroups**、**providers**、**Micrososft.Web**、**hostingEnvironments** の順に移動)。次に、更新する App Service Environment をクリックします。
 
-2. In the right pane, click **Read/Write** in the upper toolbar to allow interactive editing in Resource Explorer.  
+2. 右側のペインで、上部のツールバーの **[読み取り/書き込み]** をクリックし、リソース エクスプローラーでの対話型の編集を許可します。
 
-3. Click the blue **Edit** button to make the Resource Manager template editable.
+3. 青色の **[編集]** ボタンをクリックし、Resource Manager テンプレートを編集可能にします。
 
-4. Scroll to the bottom of the right pane. The **clusterSettings** attribute is at the very bottom, where you can enter or update its value.
+4. 右側のペインの一番下までスクロールします。**clusterSettings** 属性は一番下にあります。ここで、値の入力または更新ができます。
 
-5. Type (or copy and paste) the array of configuration values you want in the **clusterSettings** attribute.  
+5. **clusterSettings** 属性に、必要な構成値の配列を入力します (またはコピーして貼り付けます)。
 
-6. Click the green **PUT** button that's located at the top of the right pane to commit the change to the App Service Environment.
+6. 右側のペインの上部にある緑色の **[PUT]** ボタンをクリックし、App Service Environment に変更をコミットします。
 
-However you submit the change, it takes roughly 30 minutes multiplied by the number of front ends in the App Service Environment for the change to take effect.
-For example, if an App Service Environment has four front ends, it will take roughly two hours for the configuration update to finish. While the configuration change is being rolled out, no other scaling operations or configuration change operations can take place in the App Service Environment.
+ただし、変更を送信してから反映されるまでに、App Service Environment 内のフロント エンドの数に 30 分をかけた程度の時間がかかります。たとえば、App Service Environment に 4 つのフロント エンドがある場合、構成の更新が完了するまでに約 2 時間かかります。構成の変更がロールアウトされている間は、App Service Environment で他のスケーリング操作や構成の変更操作は実行できません。
 
-## <a name="disable-tls-1.0"></a>Disable TLS 1.0 ##
-A recurring question from customers, especially customers who are dealing with PCI compliance audits, is how to explicitly disable TLS 1.0 for their apps.
+## TLS 1.0 の無効化 ##
+お客様 (特に PCI 準拠の監査に対応しているお客様) から繰り返したずねられるのは、アプリで TLS 1.0 を明示的に無効にする方法についてです。
 
-TLS 1.0 can be disabled through the following **clusterSettings** entry:
+TLS 1.0 は、次の **clusterSettings** エントリで無効にすることができます。
 
         "clusterSettings": [
             {
@@ -79,8 +77,8 @@ TLS 1.0 can be disabled through the following **clusterSettings** entry:
             }
         ],
 
-## <a name="change-tls-cipher-suite-order"></a>Change TLS cipher suite order ##
-Another question from customers is if they can modify the list of ciphers negotiated by their server and this can be achieved by modifying the **clusterSettings** as shown below. The list of cipher suites available can be retrieved from [this MSDN article](https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85\).aspx).
+## TLS 暗号スイートの順序変更 ##
+お客様から寄せられるもう 1 つの質問は、サーバーによってネゴシエートされた暗号のリストを変更できるかどうかということです。これは、以下に示したように **clusterSettings** を変更することで実行できます。利用できる暗号スイートのリストは、[こちらの MSDN 記事](https://msdn.microsoft.com/library/windows/desktop/aa374757(v=vs.85).aspx)) で確認できます。
 
         "clusterSettings": [
             {
@@ -89,18 +87,14 @@ Another question from customers is if they can modify the list of ciphers negoti
             }
         ],
 
-> [AZURE.WARNING]  If incorrect values are set for the cipher suite that SChannel cannot understand, all TLS communication to your server might stop functioning. In such a case, you will need to remove the *FrontEndSSLCipherSuiteOrder* entry from **clusterSettings** and submit the updated Resource Manager template to revert back to the default cipher suite settings.  Please use this functionality with caution.
+> [AZURE.WARNING]  SChannel が認識できない間違った値を暗号スイートに設定すると、ご利用のサーバーに対するすべての TLS 通信が機能しなくなります。この場合は、**clusterSettings** から *FrontEndSSLCipherSuiteOrder* エントリを削除し、更新された Resource Manager テンプレートを送信して、既定の暗号スイート設定に戻す必要があります。この機能は慎重に使用してください。
 
-## <a name="get-started"></a>Get started
-The Azure Quickstart Resource Manager template site includes a template with the base definition for [creating an App Service Environment](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/).
+## 作業開始
+Azure クイック スタート Resource Manager テンプレートのサイトには、[App Service Environment を作成](https://azure.microsoft.com/documentation/templates/201-web-app-ase-create/)するための基本定義を含むテンプレートが用意されています。
 
 
 <!-- LINKS -->
 
 <!-- IMAGES -->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

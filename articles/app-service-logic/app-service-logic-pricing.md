@@ -1,68 +1,65 @@
 <properties 
-    pageTitle="Logic Apps pricing model | Microsoft Azure" 
-    description="Details about how pricing works in Logic Apps" 
-    authors="kevinlam1" 
-    manager="dwrede" 
-    editor="" 
-    services="logic-apps" 
-    documentationCenter=""/>
+	pageTitle="Logic Apps の料金モデル | Microsoft Azure" 
+	description="Logic Apps の料金体系について詳しく取り上げます。" 
+	authors="kevinlam1" 
+	manager="dwrede" 
+	editor="" 
+	services="logic-apps" 
+	documentationCenter=""/>
 
 <tags
-    ms.service="logic-apps"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article" 
-    ms.date="10/12/2016"
-    ms.author="klam"/>
+	ms.service="logic-apps"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article" 
+	ms.date="07/27/2016"
+	ms.author="klam"/>
 
+# Logic Apps の料金モデル
 
-# <a name="logic-apps-pricing-model"></a>Logic Apps pricing model
+Azure Logic Apps を使用すると、クラウドにおける統合ワークフローをスケーリングして実行することができます。以下、Logic Apps の課金と料金プランについて詳しく取り上げます。
 
-Azure Logic Apps allows you to scale and execute integration workflows in the cloud.  Below are details on the billing and pricing plans for Logic Apps.
+## 従量課金
 
-## <a name="consumption-pricing"></a>Consumption pricing
+新しく作成された Logic Apps には、従量制の料金プランが使用されます。Logic Apps の従量課金モデルでは、お客様が使用した分のみが課金の対象となります。従量制の料金プランを使用している Logic Apps はスロットルされません。ロジック アプリのインスタンス実行中に行われたすべてのアクションが課金の対象となります。
 
-Newly created Logic Apps use a consumption plan. With the Logic Apps consumption pricing model, you only pay for what you use.  Logic Apps are not throttled when using a consumption plan.
-All actions executed in a run of a logic app instance are metered.
+### アクションの実行とは
 
-### <a name="what-are-action-executions?"></a>What are action executions?
+ロジック アプリの定義に含まれる個々のステップがアクションです。たとえばトリガーや制御フローのステップ (条件、スコープ、for each ループ、do until ループなど)、コネクタの呼び出し、ネイティブ アクションの呼び出しが該当します。トリガーは、特定のイベントが発生したときにロジック アプリの新しいインスタンスを作成する特殊なアクションと考えることができます。トリガーにはさまざまな動作が存在し、それによってロジック アプリの課金方法が変わる場合があります。
 
-Every step in a logic app definition is an action.  This includes triggers, control flow steps like conditions, scopes, for each loops, do until loops, calls to connectors and calls to native actions.
-Triggers are just special actions that are designed to instantiate a new instance of a logic app when a particular event occurs.  There are a number of different behaviors for triggers which could affect how the logic app is metered.
+-	**ポーリング トリガー** – ロジック アプリの新しいインスタンスを作成するうえでの基準を満たしたメッセージを受け取るまで絶えずエンドポイントをポーリングするトリガーです。ポーリング間隔は、Logic Apps デザイナーでトリガーの設定を変えることで調整できます。ロジック アプリの新しいインスタンスが作成されたかどうかに関係なく、個々のポーリング要求がアクションの実行としてカウントされます。
 
--   **Polling trigger** – this trigger continually polls an endpoint until it receives a message that satisfies the criteria for creating a new instance of a logic app.  The polling interval can be configured in the trigger in the Logic Apps designer.  Each polling request, even if it doesn’t create a new instance of a logic app, will count as an action execution.
+-	**Webhook トリガー** – クライアントから送信される要求を特定のエンドポイントで待機するトリガーです。Webhook のエンドポイントに送信された個々の要求がアクションの実行としてカウントされます。Request と HTTP Webhook トリガーはどちらも Webhook トリガーです。
 
--   **Webhook trigger** – this trigger waits for a client to send it a request on a particular endpoint.  Each request sent to the webhook endpoint counts as an action execution. The Request and the HTTP Webhook trigger are both webhook triggers.
+-	**定期実行のトリガー** – トリガーに対して構成された繰り返しの間隔に基づいてロジック アプリの新しいインスタンスを作成するトリガーです。たとえば、3 日に 1 回や 1 分間に 1 回の頻度で実行するように定期実行のトリガーを構成することができます。
 
--   **Recurrence trigger** – this trigger will create a new instance of the logic app based on the recurrence interval configured in the trigger.  For example, a recurrence trigger can be configured to run every 3 days or even every minute.
+トリガーの実行は、Logic Apps のリソース ブレードの [トリガーの履歴] 領域で確認できます。
 
-Trigger executions can be seen in the Logic Apps resource blade in the Trigger History part.
+実行されたすべてのアクションは、成功か失敗かに関係なく、アクションの実行として課金されます。条件が満たされなかったためにスキップされたアクションや、ロジック アプリが完了前に強制終了されたために実行されなかったアクションは、アクションの実行としてカウントされません。
 
-All actions that were executed, whether they were successful or failed are metered as an action execution.  Actions that were skipped due to a condition not being met or actions that didn’t execute because the logic app terminated before completion are not counted as action executions.
+ループ内で実行されたアクションは、その繰り返しごとにカウントされます。たとえば、10 個の要素から成るリストを反復処理する for each ループに 1 つのアクションがあるとします。この場合、アクションの実行数は、リストの要素数 (10) にループ内のアクション数 (1) を掛け、ループの開始分に相当する 1 を足した値として計算されます。この例では (10 * 1) + 1 = 11 がアクションの実行数となります。
 
-Actions executed within loops are counted per iteration of the loop.  For example, a single action in a for each loop iterating through a list of 10 items will be counted as the count of items in the list (10) multiplied by the number of actions in the loop (1) plus one for the initiation of the loop which, in this example, would be (10 * 1) + 1 = 11 action executions.
+無効にされた Logic Apps は、新しいインスタンスを作成できないため、無効にされている間は、課金の対象になりません。ロジック アプリを無効化した後、そのインスタンスが休止状態となって完全に無効になるまでには、少し時間がかかるので注意してください。
 
-Logic Apps that are disabled cannot have new instances instantiated and therefore during the time that they are disabled will not get charged.  Be mindful that after disabling a logic app it may take a little time for the instances to quiesce before being completely disabled.
+## App Service プラン
 
-## <a name="app-service-plans"></a>App Service plans
+ロジック アプリを作成するうえで App Service プランは不要になりました。既存のロジック アプリで App Service プランを参照することもできます。過去に App Service プランで作成したロジック アプリは、引き続き以前と同様に動作します。選択したプランによっては、1 日あたりの実行数が超過した時点でスロットルされます。この場合、アクションの実行数に基づく課金は適用されません。
 
-App Service Plans are no longer required to create a Logic App.  You can also reference an App Service Plan with an existing logic app.  Logic apps previously created with an App Service Plan will continue to behave as before where, depending on the plan chosen, will get throttled after a number of daily executions are exceeded and will not be billed using the action execution meter.
+App Service プランと 1 日に許可されているアクションの実行数:
 
-App Service Plans and their daily allowed action executions:
-
-| |Free/Shared/Basic|Standard|Premium|
+| |Free/Shared/Basic|標準|プレミアム|
 |---|---|---|---|
-|Action executions per day| 200|10,000|50,000|
+|1 日あたりのアクションの実行数| 200|10,000|50,000|
 
-### <a name="convert-from-consumption-to-app-service-plan-pricing"></a>Convert from Consumption to App Service Plan pricing
+### 従量課金から App Service プランへの変換
 
-To reference an App Service Plan for a consumption Logic App, you can simply [run the below PowerShell script](https://github.com/logicappsio/ConsumptionToAppServicePlan).  Make sure you first have the [Azure PowerShell tools](https://github.com/Azure/azure-powershell) installed.
+従量課金の Logic Apps の App Service プランを参照するには、[以下の PowerShell スクリプト](https://github.com/logicappsio/ConsumptionToAppServicePlan)を実行します。最初に [Azure PowerShell ツール](https://github.com/Azure/azure-powershell)がインストールされていることを確認します。
 
 ``` powershell
 Param(
     [string] $AppService_RG = '<app-service-resource-group>',
-    [string] $AppService_Name = '<app-service-name>',
+	[string] $AppService_Name = '<app-service-name>',
     [string] $LogicApp_RG = '<logic-app-resource-group>',
     [string] $LogicApp_Name = '<logic-app-name>',
     [string] $subscriptionId = '<azure-subscription-id>'
@@ -87,28 +84,23 @@ $updatedProperties = $logicapp.Properties | Add-Member @{sku = $sku;} -PassThru
 $updatedLA = Set-AzureRmResource -ResourceId $logicapp.ResourceId -Properties $updatedProperties -ApiVersion 2015-08-01-preview
 ```
 
-### <a name="convert-from-app-service-plan-pricing-to-consumption"></a>Convert from App Service Plan pricing to Consumption
+### App Service プランから従量課金への変換
 
-To change a Logic App that has an App Service Plan associated with it to a consumption model remove the reference to the App Service Plan in the Logic App definition.  This can be done with a call to a PowerShell cmdlet:
+App Service プランが関連付けられているロジック アプリを従量制の課金モデルに変更するには、ロジック アプリの定義から App Service プランの参照を削除します。これは PowerShell コマンドレットで実行できます。次のコマンドレットを呼び出してください。
 
 `Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`
 
-## <a name="pricing"></a>Pricing
+## 価格
 
-For pricing details please see [Logic Apps Pricing](https://azure.microsoft.com/pricing/details/logic-apps/).
+料金の詳細については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps/)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [An overview of Logic Apps][whatis]
-- [Create your first logic app][create]
+- [Logic Apps の概要][whatis]
+- [初めてのロジック アプリの作成][create]
 
 [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/
 [whatis]: app-service-logic-what-are-logic-apps.md
 [create]: app-service-logic-create-a-logic-app.md
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

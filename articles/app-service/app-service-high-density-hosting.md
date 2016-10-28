@@ -1,44 +1,43 @@
 <properties
-    pageTitle="High-density hosting on Azure App Service | Microsoft Azure"
-    description="High-density hosting on Azure App Service"
-    authors="btardif"
-    manager="wpickett"
-    editor=""
-    services="app-service\web"
-    documentationCenter=""/>
+	pageTitle="Azure App Service での高密度ホスティング | Microsoft Azure"
+	description="Azure App Service での高密度ホスティング"
+	authors="btardif"
+	manager="wpickett"
+	editor=""
+	services="app-service\web"
+	documentationCenter=""/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.date="08/07/2016"
-    ms.author="byvinyal"/>
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="08/07/2016"
+	ms.author="byvinyal"/>
 
+# Azure App Service での高密度ホスティング#
 
-# <a name="high-density-hosting-on-azure-app-service#"></a>High-density hosting on Azure App Service#
+App Service を使用するとき、アプリケーションは 2 つの概念によって割り当てられた容量から切り離されます。
 
-When using App Service, your application will be decoupled from the capacity allocated to it by 2 concepts:
+- **アプリケーション:** アプリとその実行時構成を表します。たとえば、ランタイムで読み込む必要のある .NET のバージョンや、アプリの設定が該当します。
 
-- **The Application:** Represents the app and its runtime configuration. For example, it includes the version of .NET that the runtime should load, the app settings, etc.
+- **App Service プラン:** 容量、使用可能な機能セット、アプリケーションの局所性の特性を定義します。たとえば、米国東部に存在する L サイズ (4 コア) マシン 4 インスタンスのプレミアム機能といった特性が考えられます。
 
-- **The App Service Plan:** Defines the characteristics of the capacity, available feature set, and locality of the application. For example, characteristics might be large (four cores) machine, four instances, Premium features in East US.
+アプリは常に App Service プランにリンクされていますが、App Service プランは 1 つまたは複数のアプリに容量を提供できます。
 
-An app is always linked to an App Service plan, but an App Service plan can provide capacity to one or more apps.
+つまり、プラットフォームは柔軟に、1 つのアプリを分離したり、App Service プランを共有して複数のアプリでリソースを共有したりできます。
 
-This means that the platform provides the flexibility to isolate a single app or have multiple apps share resources by sharing an App Service plan.
+ただし、複数のアプリが 1 つの App Service プランを共有するときは、その App Service プランの各インスタンス上でそのアプリのインスタンスが実行されます。
 
-However, when multiple apps share an App Service plan, an instance of that app runs on every instance of that App Service plan.
+## アプリごとのスケーリング##
+"*アプリごとのスケーリング*" は、App Service プラン レベルで有効にしてアプリケーションごとに利用できる機能です。
 
-## <a name="per-app-scaling##"></a>Per app scaling##
-*Per app scaling* is a feature that can be enabled at the App Service plan level and then used per application.
+アプリごとのスケーリングでは、アプリがそのホストとなる App Service プランとは無関係にスケーリングされます。これにより、10 個のインスタンスを提供するように App Service プランを構成しながら、アプリはそのうちの 5 個だけにスケーリングするように設定する、といったことができます。
 
-Per app scaling scales an app independently from the App Service plan that hosts it. This way, an App Service plan can be configured to provide 10 instances, but an app can be set to scale to only 5 of them.
+以下の Azure Resource Manager テンプレートでは、10 インスタンスのスケールアウトに対応した App Service プランと、アプリごとのスケーリングによって規模の調整に使用できるインスタンスを 5 つまでとして構成されたアプリが作成されます。
 
-The following Azure Resource Manager template will create an App Service plan that's scaled out to 10 instances and an app that's configured to use per app scaling and scale to only 5 instances.
-
-To do this, the App Service plan is setting the **per-site scaling** property to true ( `"perSiteScaling": true`), and the app is setting the **number of workers** to use to 1 (`"properties": { "numberOfWorkers": "1" }`).
+そのために、App Service プランは**サイトごとのスケーリング** プロパティを true に設定し (`"perSiteScaling": true`)、アプリは使用する **worker の数**を 1 に設定しています (`"properties": { "numberOfWorkers": "1" }`)。
 
     {
         "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -86,24 +85,20 @@ To do this, the App Service plan is setting the **per-site scaling** property to
     }
 
 
-## <a name="recommended-configuration-for-high-density-hosting"></a>Recommended configuration for high-density hosting
+## 高密度ホスティングの推奨される構成
 
-Per app scaling is a feature that is enabled in both public Azure regions and App Service Environments. However, the recommended strategy is to use App Service Environments to take advantage of their advanced features and the larger pools of capacity.  
+アプリごとのスケーリングは、パブリック Azure リージョンと App Service Environment のどちらでも有効にすることができます。ただし推奨されるのは App Service Environment です。App Service Environment を使用した方が、その高度な機能と大きなプール容量を利用できます。
 
-Follow these steps to configure high-density hosting for your apps:
+アプリに対して高密度ホスティングを構成するには、次の手順に従います。
 
-1. Configure the App Service Environment and choose a worker pool that will be dedicated to the high-density hosting scenario.
+1. App Service Environment を構成し、高密度ホスティング シナリオ専用のワーカー プールを選択します。
 
-1. Create a single App Service plan, and scale it to use all the available capacity on the worker pool.
+1. 1 つの App Service プランを作成し、ワーカー プールの全使用可能容量を使用するようにスケーリングします。
 
-1. Set the per-site scaling flag to true on the App Service plan.
+1. App Service プランでサイトごとのスケーリング フラグを true に設定します。
 
-1. New sites are created and assigned to that App Service plan with the **numberOfWorkers** property set to **1**. This will yield the highest density possible on this worker pool.
+1. 新しいサイトが作成されて、その App Service プランに **1** に設定された **numberOfWorkers** プロパティが割り当てられます。これにより、このワーカー プールで可能な最高の密度になります。
 
-1. The number of workers can be configured independently per site to grant additional resources as needed. For example, a high-use site might set **numberOfWorkers** to **3** to have more processing capacity for that app, while low-use sites would set **numberOfWorkers** to **1**.
+1. worker の数はサイトごとに個別に構成でき、必要に応じて追加リソースを許可できます。たとえば、使用率が高いサイトでは **numberOfWorkers** を **3** に設定してそのアプリの処理能力を上げることができ、使用率の低いサイトでは **numberOfWorkers** を **1** に設定できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

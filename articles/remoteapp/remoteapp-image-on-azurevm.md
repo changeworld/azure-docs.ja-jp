@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Create an Azure RemoteApp image based on an Azure VM | Microsoft Azure"
-    description="Learn how to create an image for Azure RemoteApp by starting with an Azure virtual machine."
+    pageTitle="Azure VM に基づく Azure RemoteApp イメージの作成 | Microsoft Azure"
+    description="Azure 仮想マシンを使用することで Azure RemoteApp のイメージを作成する方法について説明します。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -17,53 +17,48 @@
 
 
 
-
-# <a name="create-a-azure-remoteapp-image-based-on-an-azure-virtual-machine"></a>Create a Azure RemoteApp image based on an Azure virtual machine
+# Azure 仮想マシンに基づく Azure RemoteApp イメージの作成
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-You can create Azure RemoteApp images (which hold the apps you share in your collection) from an Azure virtual machine. You could also choose to use a virtual machine image we added to the Azure VM image gallery that meets all the Azure RemoteApp image requirements - you can use that VM image as a starting point for your own VM, if you want. Just look for the "Windows Server Remote Desktop Session Host" image in the library.
+Azure 仮想マシンから (コレクションで共有するアプリを保持する) Azure RemoteApp のイメージを作成できます。また、Azure VM イメージ ギャラリーに追加された、Azure RemoteApp イメージのすべての要件を満たす仮想マシン イメージを使用することもできます。必要に応じて、この VM イメージを独自の VM の開始点として使用することができます。ライブラリにある "Windows Server Remote Desktop Session Host" イメージを探してみましょう。
 
-There are two steps to create your own image based on an Azure VM - create the image and then upload it from the Azure VM library to Azure RemoteApp.
+Azure VM に基づく独自のイメージを作成するには、イメージの作成と、Azure VM ライブラリから Azure RemoteApp へのイメージのアップロードという 2 つの手順があります。
 
-## <a name="create-a-custom-image-based-on-an-azure-vm"></a>Create a custom image based on an Azure VM
+## Azure VM に基づくカスタム イメージの作成
 
-Use these steps to create an image based on an Azure VM.
+次の手順を使用して、Azure VM に基づくイメージを作成します。
 
-1. Create an Azure virtual machine. You can use the “Windows Server Remote Desktop Session Host” or the "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" image from the Azure virtual machine image gallery. This image meets all the Azure RemoteApp template image requirements.
+1. Azure 仮想マシンを作成します。Azure 仮想マシン イメージ ギャラリーの “Windows Server Remote Desktop Session Host” イメージまたは "Windows Server Remote Desktop Session Host with Microsoft Office 365 ProPlus" イメージを使用できます。このイメージは、Azure RemoteApp テンプレート イメージのすべての要件を満たしています。
 
-    For details, see [Create a VM running Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md).
+	詳細については、[Windows を実行する VM の作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md)に関するページを参照してください。
 
-2. Connect to the VM and install and configure the apps that you want to share through RemoteApp. Make sure to perform any additional Windows configurations required by your apps.
+2. VM に接続し、RemoteApp を使用して共有するアプリをインストールして構成します。アプリに必要な追加の Windows の構成も実行してください。
 
-    For details, see [How to Log on to a Virtual Machine Running Windows Server](../virtual-machines/virtual-machines-windows-classic-connect-logon.md).
+	詳細については、「[Windows Server が実行されている仮想マシンにログオンする方法](../virtual-machines/virtual-machines-windows-classic-connect-logon.md)」を参照してください。
 
-3. If you are using one of the Windows Server Remote Desktop Session Host images, there is an included validation script that will ensure your VM meets the RemoteApp pre-reqs. To run script, double-click **ValidateRemoteAppImage** on the desktop. Ensure that all errors reported by the script are fixed before proceeding to the next step.
+3. いずれかの Windows Server リモート デスクトップ セッション ホストのイメージを使用している場合は、VM が RemoteApp の前提条件を満たしていることを確認するための検証スクリプトが含まれています。スクリプトを実行するには、デスクトップ上にある **ValidateRemoteAppImage** をダブルクリックします。次の手順に進む前に、スクリプトによって報告されたエラーはすべて修正します。
 
-4. SYSPREP generalize and capture the image. See [How to Capture a Windows Virtual Machine to Use as a Template](../virtual-machines/virtual-machines-windows-classic-capture-image.md) for instructions.
-
-
-
-## <a name="import-the-image-into-the-azure-remoteapp-image-library"></a>Import the image into the Azure RemoteApp image library
-
-Use these steps to import the new image into Azure RemoteApp:
-
-1. In the **Template Images** tab:
-    - If you have no existing images, click **Upload or Import a Template Image**.
-    - If you have at least one image already, click **+** to add a new image.
-
-2. Select **Import an image from your Virtual Machines** library, and then click **Next**.
-
-3. On the next page, select your custom image from the list and confirm that you followed the steps listed when you created your image. Click **Next**.
-4. Enter a name for the new RemoteApp image and pick the location, then click the checkmark to start the import process.
-
-> [AZURE.NOTE] You can import images from any Azure location supported by Azure Virtual Machines to any Azure location supported by Azure RemoteApp. Depending on the locations the import can take up to 25 minutes.
-
-Now you are ready to create your new collection, either a [cloud](remoteapp-create-cloud-deployment.md) collection or [hybrid](remoteapp-create-hybrid-deployment.md), depending on your needs.
+4. SYSPREP は、イメージを一般化してキャプチャします。手順については、[テンプレートとして使用する Windows 仮想マシンのキャプチャ方法](../virtual-machines/virtual-machines-windows-classic-capture-image.md)に関するページを参照してください。
 
 
 
-<!--HONumber=Oct16_HO2-->
+## Azure RemoteApp イメージ ライブラリへのイメージのインポート
 
+次の手順を使用して、新しいイメージを Azure RemoteApp にインポートします。
 
+1. **[テンプレート イメージ]** タブで次の操作を実行します。
+	- 既存のイメージがない場合は、**[テンプレート イメージのアップロードまたはインポート]** をクリックします。
+	- 既に 1 つ以上のイメージがある場合は、**[+]** をクリックして新しいイメージを追加します。
+
+2. **[Virtual Machines ライブラリからイメージをインポートします]** を選択し、**[次へ]** をクリックします。
+
+3. 次のページで、一覧からカスタム イメージを選択し、イメージを作成したときに表示された手順に従っていることを確認します。**[次へ]** をクリックします。
+4. 新しい RemoteApp イメージの名前を入力して場所を選択したら、インポート プロセスを開始するチェックマークをクリックします。
+
+> [AZURE.NOTE] Azure Virtual Machines でサポートされている Azure の任意の場所から、Azure RemoteApp でサポートされている Azure の任意の場所に、イメージをインポートできます。インポート時間は場所によって異なり、最大 25 分かかります。
+
+これで、ニーズに応じて新しいコレクション ([クラウド](remoteapp-create-cloud-deployment.md) コレクションか[ハイブリッド](remoteapp-create-hybrid-deployment.md) コレクションのいずれか) を作成する準備ができました。
+
+<!---HONumber=AcomDC_0817_2016-->

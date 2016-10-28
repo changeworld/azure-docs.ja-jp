@@ -1,45 +1,41 @@
-## <a name="configure-your-application-to-access-azure-storage"></a>Configure your application to access Azure Storage
+## Azure Storage にアクセスするようにアプリケーションを構成する
 
-There are two ways to authenticate your application to access Storage services:
+Storage サービスにアクセスできるようにアプリケーションを認証するには、次の 2 つの方法があります。
 
-- Shared Key: Use Shared Key for testing purposes only
-- Shared Access Signature (SAS): Use SAS for production applications
+- 共有キー: テスト目的のみに共有キーを使用します
+- Shared Access Signature (SAS): 運用アプリケーション用に SAS を使用します
 
-### <a name="shared-key"></a>Shared Key
-Shared Key authentication means that your application will use your account name and account key to access Storage services. For the purposes of quickly showing how to use this library, we will be using Shared Key authentication in this getting started.
+### 共有キー
+共有キー認証の場合、アプリケーションは Storage サービスへのアクセスにアカウント名とアカウント キーを使用します。このライブラリを使用する方法を簡単に説明するため、ここでは共有キー認証を使用します。
 
-> [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ] Your account name and account key, which give full read/write access to the associated Storage account, will be distributed to every person that downloads your app. This is **not** a good practice as you risk having your key compromised by untrusted clients.
+> [AZURE.WARNING (Only use Shared Key authentication for testing purposes!) ] アカウント名とアカウント キーは、関連付けられているストレージ アカウントへの完全な読み取りおよび書き込みアクセスが付与されており、アプリをダウンロードするすべてのユーザーに配布されます。これは信頼できないクライアントによってキーが侵害される危険があるため、**お勧めしません**。
 
-When using Shared Key authentication, you will create a [connection string](../articles/storage/storage-configure-connection-string.md). The connection string is comprised of:  
+共有キー認証を使用する場合は、[接続文字列](../articles/storage/storage-configure-connection-string.md)を作成します。接続文字列の構成要素は次のとおりです。
 
-- The **DefaultEndpointsProtocol** - you can choose HTTP or HTTPS. However, using HTTPS is highly recommended.
-- The **Account Name** - the name of your storage account
-- The **Account Key** - On the [Azure Portal](https://portal.azure.com), navigate to your storage account and click the **Keys** icon to find this information.
-- (Optional) **EndpointSuffix** - This is used for storage services in regions with different endpoint suffixes, such as Azure China or Azure Governance.
+- **DefaultEndpointsProtocol** - HTTP または HTTPS を選択できますが、HTTPS の使用を強くお勧めします。
+- **Account Name** - ストレージ アカウントの名前
+- **Account Key** - この情報を確認するには、[Azure Portal](https://portal.azure.com) でお使いのストレージ アカウントに移動し、**[キー]** アイコンをクリックします。
+- (省略可能) **EndpointSuffix** - Azure China、Azure Governance など、別のエンドポイント サフィックスを持つリージョンのストレージ サービスに対して使用されます。
 
-Here is an example of connection string using Shared Key authentication:
+共有キー認証を使用する接続文字列の例を次に示します。
 
 `"DefaultEndpointsProtocol=https;AccountName=your_account_name_here;AccountKey=your_account_key_here"`
 
-### <a name="shared-access-signatures-(sas)"></a>Shared Access Signatures (SAS)
-For a mobile application, the recommended method for authenticating a request by a client against the Azure Storage service is by using a Shared Access Signature (SAS). SAS allows you to grant a client access to a resource for a specified period of time, with a specified set of permissions.
-As the storage account owner, you'll need to generate a SAS for your mobile clients to consume. To generate the SAS, you'll probably want to write a separate service that generates the SAS to be distributed to your clients. For testing purposes, you can use the [Microsoft Azure Storage Explorer](http://storageexplorer.com) or the [Azure Portal](https://portal.azure.com) to generate a SAS. When you create the SAS, you can specify the time interval over which the SAS is valid, and the permissions that the SAS grants to the client.
+### Shared Access Signatures (SAS)
+モバイル アプリケーションの場合、Azure Storage サービスに対するクライアントからの要求を認証する際には、Shared Access Signature (SAS) を使用することをお勧めします。SAS を使用すると、期間およびアクセス許可セットを指定して、リソースへのクライアント アクセスを許可することができます。ストレージ アカウント所有者は、モバイル クライアントが使用する SAS を生成する必要があります。SAS を生成するには、クライアントに配布する SAS を生成する別のサービスを記述することが必要になります。テスト目的で、[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)または [Azure Portal](https://portal.azure.com) を使用して SAS を生成することができます。SAS の作成時には、SAS の有効期間と、SAS がクライアントに付与するアクセス許可を指定できます。
 
-The following example shows how to use the Microsoft Azure Storage Explorer to generate a SAS.
+次に示すのは、Microsoft Azure ストレージ エクスプローラーを使用して SAS を生成する方法の例です。
 
-1. If you haven't already, [Install the Microsoft Azure Storage Explorer](http://storageexplorer.com)
+1. まだインストールしていない場合は、[Microsoft Azure ストレージ エクスプローラーをインストール](http://storageexplorer.com)します
 
-2. Connect to your subscription.
+2. サブスクリプションに接続します。
 
-3. Click on your Storage account and click on the "Actions" tab at the bottom left. Click "Get Shared Access Signature" to generate a "connection string" for your SAS.
+3. ストレージ アカウントをクリックし、左下の [アクション] タブをクリックします。[Get Shared Access Signature]\(Shared Access Signature の取得) をクリックすると、SAS の "接続文字列" が生成されます。
 
-4. Here is an example of a SAS connection string that grants read and write permissions at the service, container and object level for the blob service of the Storage account.
+4. 次に示すのは、ストレージ アカウントの BLOB サービスに対するサービス、コンテナー、およびオブジェクト レベルの読み取りおよび書き込みのアクセス許可を付与する SAS 接続文字列の例です。
 
   `"SharedAccessSignature=sv=2015-04-05&ss=b&srt=sco&sp=rw&se=2016-07-21T18%3A00%3A00Z&sig=3ABdLOJZosCp0o491T%2BqZGKIhafF1nlM3MzESDDD3Gg%3D;BlobEndpoint=https://youraccount.blob.core.windows.net"`
 
-As you can see, when using a SAS, you’re not exposing your account key in your application. You can learn more about SAS and best practices for using SAS by checking out [Shared Access Signatures: Understanding the SAS model](../articles/storage/storage-dotnet-shared-access-signature-part-1.md).
+ご覧のように、SAS を使用する場合、アプリケーションでアカウント キーを公開することはありません。SAS の詳細および SAS 使用のベスト プラクティスについては、[Shared Access Signature: SAS モデルの説明](../articles/storage/storage-dotnet-shared-access-signature-part-1.md)に関するページをご覧ください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

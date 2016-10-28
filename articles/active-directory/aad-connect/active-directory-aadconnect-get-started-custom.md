@@ -1,272 +1,261 @@
 <properties
-    pageTitle="Azure AD Connect: Custom installation | Microsoft Azure"
-    description="This document details the custom installation options for Azure AD Connect. Use these instructions to install Active Directory through Azure AD Connect."
-    services="active-directory"
-    keywords="what is Azure AD Connect, install Active Directory, required components for Azure AD"
-    documentationCenter=""
-    authors="andkjell"
-    manager="femila"
-    editor="curtand"/>
+	pageTitle="Azure AD Connect: カスタム インストール | Microsoft Azure"
+	description="このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。この手順を使用すると、Azure AD Connect から Active Directory をインストールできます。"
+	services="active-directory"
+    keywords="Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント"
+	documentationCenter=""
+	authors="andkjell"
+	manager="femila"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory"  
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/13/2016"
-    ms.author="billmath"/>
+	ms.service="active-directory"  
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/13/2016"
+	ms.author="billmath;andkjell"/>
 
+# Azure AD Connect のカスタム インストール
+Azure AD Connect **カスタム設定**は、より多くのインストール オプションが必要な場合に使用します。この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。[**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
 
-# <a name="custom-installation-of-azure-ad-connect"></a>Custom installation of Azure AD Connect
-Azure AD Connect **Custom settings** is used when you want more options for the installation. It is used if you have multiple forests or if you want to configure optional features not covered in the express installation. It is used in all cases where the [**express installation**](active-directory-aadconnect-get-started-express.md) option does not satisfy your deployment or topology.
+Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](../active-directory-aadconnect-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。また、「[Azure AD Connect: アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md)」で説明されているとおりに必要なアカウントが利用できることを確認してください。
 
-Before you start installing Azure AD Connect, make sure to [download Azure AD Connect](http://go.microsoft.com/fwlink/?LinkId=615771) and complete the pre-requisite steps in [Azure AD Connect: Hardware and prerequisites](../active-directory-aadconnect-prerequisites.md). Also make sure you have required accounts available as described in [Azure AD Connect accounts and permissions](active-directory-aadconnect-accounts-permissions.md).
+カスタマイズした設定が対象のトポロジに適さない場合は (DirSync をアップグレードする場合など)、「[関連ドキュメント](#related-documentation)」でその他のシナリオを確認してください。
 
-If customized settings does not match your topology, for example to upgrade DirSync, see [related documentation](#related-documentation) for other scenarios.
+## Azure AD Connect のカスタム設定を使用したインストール
 
-## <a name="custom-settings-installation-of-azure-ad-connect"></a>Custom settings installation of Azure AD Connect
+### 簡単設定
+このページで **[カスタマイズ]** をクリックして、カスタム設定を使用したインストールを開始します。
 
-### <a name="express-settings"></a>Express Settings
-On this page, click **Customize** to start a customized settings installation.
+### 必須コンポーネントのインストール
+同期サービスをインストールするとき、オプションの構成セクションをオフのままにすると、Azure AD Connect によってすべてが自動的に設定されます。これにより、SQL Server 2012 Express LocalDB インスタンスの設定、適切なグループの作成、アクセス許可の割り当てが行われます。既定値を変更する場合は、次の表を利用すると、任意で使用できる構成オプションについて把握することができます。
 
-### <a name="install-required-components"></a>Install required components
-When you install the synchronization services, you can leave the optional configuration section unchecked and Azure AD Connect sets up everything automatically. It sets up a SQL Server 2012 Express LocalDB instance, create the appropriate groups, and assign permissions. If you wish to change the defaults, you can use the following table to understand the optional configuration options that are available.
+![必須コンポーネント](./media/active-directory-aadconnect-get-started-custom/requiredcomponents.png)
 
-![Required Components](./media/active-directory-aadconnect-get-started-custom/requiredcomponents.png)
-
-Optional Configuration  | Description
+オプションの構成 | Description
 ------------- | -------------
-Use an existing SQL Server | Allows you to specify the SQL Server name and the instance name. Choose this option if you already have a database server that you would like to use. Enter the instance name followed by a comma and port number in **Instance Name** if your SQL Server does not have browsing enabled.
-Use an existing service account | By default Azure AD Connect creates a local service account for the synchronization services to use. The password is generated automatically and unknown to the person installing Azure AD Connect. If you use a remote SQL server or use a proxy that requires authentication, you need a service account in the domain and know the password. In those cases, enter the service account to use. Make sure the user running the installation is an SA in SQL so a login for the service account can be created. See [Azure AD Connect accounts and permissions](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation)
-Specify custom sync groups | By default Azure AD Connect creates four groups local to the server when the synchronization services are installed. These groups are: Administrators group, Operators group, Browse group, and the Password Reset Group. You can specify your own groups here. The groups must be local on the server and cannot be located in the domain.
+既存の SQL Server を使用する | SQL Server 名とインスタンス名を指定することができます。使用するデータベース サーバーが既にある場合は、このオプションを選択します。SQL Server で参照が有効になっていない場合は、**[インスタンス名]** に、インスタンス名、コンマ、ポート番号の順に入力してください。
+既存のサービス アカウントを使用する | 既定では、同期サービスで使用するローカル サービス アカウントが Azure AD Connect によって作成されます。パスワードは自動的に生成され、Azure AD Connect をインストールしているユーザーには不明です。リモート SQL サーバーを使用する場合、または認証が必要なプロキシを使用する場合は、ドメイン内のサービス アカウントとパスワードが必要です。このような場合は、使用するサービス アカウントを入力します。サービス アカウントのログインを作成するには、SQL の SA がインストールを実行してください。「[Azure AD Connect アカウントとアクセス許可](active-directory-aadconnect-accounts-permissions.md#custom-settings-installation)」を参照してください
+カスタム同期グループを指定する | 既定では、同期サービスのインストール時に、Azure AD Connect によってサーバーに対してローカルな 4 つのグループが作成されます。これらのグループは。管理者グループ、オペレーター グループ、参照グループ、およびパスワード再設定グループです。ここでは独自のグループを指定できます。グループは、サーバー上にローカルに存在する必要があり、ドメイン内に置くことはできません。
 
-### <a name="user-sign-in"></a>User sign-in
-After installing the required components, you are asked to select your users single sign-on method. The following table provides a brief description of the available options. For a full description of the sign-in methods, see [User sign-in](../active-directory-aadconnect-user-signin.md).
+### ユーザーのサインイン
+必要なコンポーネントがインストールされると、ユーザーによるシングル サインオンの方法を選択するように求められます。次の表に、指定できるオプションの簡単な説明を示します。サインイン方法の詳細については、「[ユーザーのサインイン](../active-directory-aadconnect-user-signin.md)」を参照してください。
 
 ![User Sign in](./media/active-directory-aadconnect-get-started-custom/usersignin.png)
 
-Single Sign On option | Description
+シングル サインオン オプション | Description
 ------------- | -------------
-Password Sync | Users are able to sign in to Microsoft cloud services, such as Office 365, using the same password they use in their on-premises network. The users passwords are synchronized to Azure AD as a password hash and authentication occurs in the cloud. See [Password synchronization](../active-directory-aadconnectsync-implement-password-synchronization.md) for more information.
-Federation with AD FS | Users are able to sign in to Microsoft cloud services, such as Office 365, using the same password they use in their on-premises network.  The users are redirected to their on-premises AD FS instance to sign in and authentication occurs on-premises.
-Do not configure | Neither feature is installed and configured. Choose this option if you already have a 3rd party federation server or another existing solution in place.
+パスワードの同期 | ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。詳細については、「[パスワードの同期](../active-directory-aadconnectsync-implement-password-synchronization.md)」を参照してください。
+AD FS とのフェデレーション | ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。
+構成しない | どちらの機能もインストールおよび構成されません。サード パーティのフェデレーション サーバーまたは別の既存のソリューションが既に設置されている場合は、このオプションを選択します。
 
-### <a name="connect-to-azure-ad"></a>Connect to Azure AD
-On the Connect to Azure AD screen, enter a global admin account and password. If you selected **Federation with AD FS** on the previous page, do not sign in with an account in a domain you plan to enable for federation. A recommendation is to use an account in the default **onmicrosoft.com** domain, which comes with your Azure AD directory.
+### Azure への接続
+[Azure AD に接続] 画面で、グローバル管理者のアカウントとパスワードを入力します。前のページで **[AD FS とのフェデレーション]** を選択した場合、フェデレーション用に有効にする予定があるドメイン内のアカウントでサインインしないようにしてください。Azure AD ディレクトリに付属する既定の **onmicrosoft.com** ドメイン内のアカウントを使用することをお勧めします。
 
-This account is only used to create a service account in Azure AD and is not used after the wizard has completed.  
-![User Sign in](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
+このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。 ![User Sign in](./media/active-directory-aadconnect-get-started-custom/connectaad.png)
 
-If your global admin account has MFA enabled, then you need to provide the password again in the sign-in popup and complete the MFA challenge. The challenge could be a providing a verification code or a phone call.  
-![User Sign in MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
+グローバル管理者アカウントで MFA が有効にされている場合は、サインイン ポップアップに再度パスワードを入力し、MFA チャレンジを完了する必要があります。チャレンジは確認コードの入力か音声通話によって行うことができます。 ![User Sign in MFA](./media/active-directory-aadconnect-get-started-custom/connectaadmfa.png)
 
-The global admin account can also have [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md) enabled.
+グローバル管理者アカウントは [Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md) も有効になっている可能性があります。
 
-If you receive an error and have problems with connectivity, then see [Troubleshoot connectivity problems](../active-directory-aadconnect-troubleshoot-connectivity.md).
+接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](../active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 
-## <a name="pages-under-the-section-sync"></a>Pages under the section Sync
+## [同期] セクションのページ
 
-### <a name="connect-your-directories"></a>Connect your directories
-To connect to your Active Directory Domain Service, Azure AD Connect needs the credentials of an account with sufficient permissions. You can enter the domain part in either NetBios or FQDN format, that is, FABRIKAM\syncuser or fabrikam.com\syncuser. This account can be a regular user account because it only needs the default read permissions. However, depending on your scenario, you may need more permissions. For more information, see [Azure AD Connect Accounts and permissions](../active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)
+### ディレクトリの接続
+Azure AD Connect では、Active Directory ドメイン サービスに接続するには、十分なアクセス許可を持つアカウントの資格情報が必要です。ドメインの部分は NetBios または FQDN の形式で入力できます (FABRIKAM\\syncuser または fabrikam.com\\syncuser)。このアカウントには既定の読み取りアクセス許可が必要なだけなので、通常のユーザー アカウントを指定できます。ただし、シナリオによっては、アクセス許可がさらに必要になることがあります。詳細については、「[Azure AD Connect: アカウントとアクセス許可](../active-directory-aadconnect-accounts-permissions.md#create-the-ad-ds-account)」を参照してください。
 
-![Connect Directory](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
+![ディレクトリの接続](./media/active-directory-aadconnect-get-started-custom/connectdir.png)
 
-### <a name="azure-ad-sign-in-configuration"></a>Azure AD sign-in configuration
-This page allows you to review the UPN domains present in on-premises AD DS and which have been verified in Azure AD. This page also allows you to configure the attribute to use for the userPrincipalName.
+### Azure AD サインインの構成
+このページでは、オンプレミスの AD DS に存在し、Azure AD で検証された UPN ドメインを確認できます。また、userPrincipalName に使用する属性を構成できます。
 
-![Unverified domains](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png)  
-Review every domain marked **Not Added** and **Not Verified**. Make sure those domains you use have been verified in Azure AD. Click the Refresh symbol when you have verified your domains. For more information, see [add and verify the domain](../active-directory-add-domain.md)
+![Unverified domains](./media/active-directory-aadconnect-get-started-custom/aadsigninconfig.png) **[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。使用するドメインを Azure AD で検証済みにしてください。対象のドメインを検証済みにしたら、更新シンボルをクリックします。詳細については、[ドメインの追加と検証](../active-directory-add-domain.md)に関するページを参照してください。
 
-**UserPrincipalName** - The attribute userPrincipalName is the attribute users use when they sign in to Azure AD and Office 365. The domains used, also known as the UPN-suffix, should be verified in Azure AD before the users are synchronized. Microsoft recommends to keep the default attribute userPrincipalName. If this attribute is non-routable and cannot be verified, then it is possible to select another attribute. You can for example select email as the attribute holding the sign-in ID. Using another attribute than userPrincipalName is known as **Alternate ID**. The Alternate ID attribute value must follow the RFC822 standard. An Alternate ID can be used with both password sync and federation.
+**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。既定の userPrincipalName 属性のままにしておくことをお勧めします。この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。たとえば、サインイン ID を保持する属性として電子メールを選択することができます。userPrincipalName 以外の属性を使用する方法は、**代替 ID** と呼ばれます。代替 ID の属性値は、RFC822 標準に従う必要があります。代替 ID は、パスワード同期とフェデレーションの両方で使用できます。
 
 >[AZURE.WARNING]
-Using an Alternate ID is not compatible with all Office 365 workloads. For more information, refer to [Configuring Alternate Login ID](https://technet.microsoft.com/library/dn659436.aspx).
+代替 ID の使用は、すべての Office 365 ワークロードと互換性があるわけではありません。詳細については、「[Configuring Alternate Login ID (代替ログイン ID の構成)](https://technet.microsoft.com/library/dn659436.aspx)」を参照してください。
 
-### <a name="domain-and-ou-filtering"></a>Domain and OU filtering
-By default all domains and OUs are synchronized. If there are some domains or OUs you do not want to synchronize to Azure AD, you can unselect these domains and OUs.  
-![DomainOU filtering](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) This page in the wizard is configuring domain-based filtering. For more information, see [domain-based filtering](../active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering).
+### ドメインと OU のフィルター処理
+既定では、すべてのドメインと OU が同期されます。Azure AD に同期させたくないドメインまたは OU がある場合は、これらのドメインと OU を選択解除できます。![DomainOU フィルター処理](./media/active-directory-aadconnect-get-started-custom/domainoufiltering.png) ウィザード内のこのページでは、ドメイン ベースのフィルター処理を構成します。詳細については、「[ドメイン ベースのフィルター処理](../active-directory-aadconnectsync-configure-filtering.md#domain-based-filtering)」を参照してください。
 
-It is also possible that some domains are not reachable due to firewall restrictions. These domains are unselected by default and have a warning.  
-![Unreachable domains](./media/active-directory-aadconnect-get-started-custom/unreachable.png)  
-If you see this warning, make sure that these domains are indeed unreachable and the warning is expected.
+さらに、一部のドメインは、ファイアウォールの制限のために到達できないこともあります。このようなドメインは既定で選択が解除されており、警告が表示されます。![到達不能ドメイン](./media/active-directory-aadconnect-get-started-custom/unreachable.png) この警告が表示される場合は、これらのドメインが実際に到達不能であり、警告の表示が予想されるものであることを確認してください。
 
-### <a name="uniquely-identifying-your-users"></a>Uniquely identifying your users
-The Matching across forests feature allows you to define how users from your AD DS forests are represented in Azure AD. A user might either be represented only once across all forests or have a combination of enabled and disabled accounts. The user might also be represented as a contact in some forests.
+### ユーザーを一意に識別
+[フォレスト全体で一致] 機能を使用すると、AD DS フォレストのユーザーを Azure AD でどう表すかを定義することができます。ユーザーは、すべてのフォレストで 1 回だけ表すか、有効アカウントと無効アカウントを組み合わせることができます。一部のフォレストでは、ユーザーを連絡先として表すこともできます。
 
-![Unique](./media/active-directory-aadconnect-get-started-custom/unique.png)
+![一意](./media/active-directory-aadconnect-get-started-custom/unique.png)
 
 Setting | Description
 ------------- | -------------
-[Users are only represented once across all forests](../active-directory-aadconnect-topologies.md#multiple-forests-separate-topologies) | All users are created as individual objects in Azure AD. The objects are not joined in the metaverse.
-[Mail attribute](../active-directory-aadconnect-topologies.md#multiple-forests-full-mesh-with-optional-galsync) | This option joins users and contacts if the mail attribute has the same value in different forests. Use this option when your contacts have been created using GALSync.
-[ObjectSID and msExchangeMasterAccountSID/ msRTCSIP-OriginatorSid](../active-directory-aadconnect-topologies.md#multiple-forests-account-resource-forest) | This option joins an enabled user in an account forest with a disabled user in a resource forest. In Exchange, this configuration is known as a linked mailbox. This option can also be used if you only use Lync and Exchange is not present in the resource forest.
-sAMAccountName and MailNickName | This option joins on attributes where it is expected the sign-in ID for the user can be found.
-A specific attribute | This option allows you to select your own attribute. **Limitation:** Make sure to pick an attribute that already can be found in the metaverse. If you pick a custom attribute (not in the metaverse), the wizard cannot complete.
+[ユーザーはフォレスト全体で 1 回だけ表されます](../active-directory-aadconnect-topologies.md#multiple-forests-separate-topologies) | すべてのユーザーは、Azure AD の個々のオブジェクトとして作成されます。オブジェクトは、メタバースに結合されません。
+[メール属性](../active-directory-aadconnect-topologies.md#multiple-forests-full-mesh-with-optional-galsync) | このオプションは、異なるフォレスト間でメール属性が同じ値である場合に、ユーザーと連絡先を結合します。連絡先が GALSync を使用して作成されている場合に、このオプションを使用してください。
+[ObjectSID および msExchangeMasterAccountSID/msRTCSIP-OriginatorSid](../active-directory-aadconnect-topologies.md#multiple-forests-account-resource-forest) | このオプションでは、アカウント フォレスト内の有効なユーザーと、リソース フォレスト内の無効なユーザーが結合されます。Exchange では、この構成はリンクされたメールボックスと呼ばれています。このオプションは、Lync のみを使用し、Exchange がリソース フォレスト内にない場合にも使用できます。
+sAMAccountName および MailNickName | このオプションは、ユーザーのサインイン ID を見つけるために必要な属性同士を結合します。
+特有の属性 | このオプションでは、独自の属性を選択することができます。**制限:** 必ずメタバース内に既に存在する属性を選択するようにしてください。カスタム属性 (メタバースにない属性) を選択すると、ウィザードが完了できません。
 
-**Source Anchor** - The attribute sourceAnchor is an attribute that is immutable during the lifetime of a user object. It is the primary key linking the on-premises user with the user in Azure AD. Since the attribute cannot be changed, you must plan for a good attribute to use. A good candidate is objectGUID. This attribute is not changed, unless the user account is moved between forests/domains. In a multi-forest environment where you move accounts between forests, another attribute must be used, such as an attribute with the employeeID. Avoid attributes that would change when a person marries or change assignments. You cannot use attributes with an @-sign, so email and userPrincipalName cannot be used. The attribute is also case-sensitive so when you move an object between forests, make sure to preserve the upper/lower case. Binary attributes are base64-encoded, but other attribute types remain in its unencoded state. In federation scenarios and some Azure AD interfaces, this attribute is also known as immutableID. More information about the source anchor can be found in the [design concepts](../active-directory-aadconnect-design-concepts.md#sourceAnchor).
+**ソース アンカー** - sourceAnchor 属性はユーザー オブジェクトの有効期間中に変更できない属性です。オンプレミスのユーザーと Azure AD のユーザーをリンクするプライマリ キーです。この属性は変更できないため、適切な属性を使用するように計画する必要があります。適切な属性として考えられるのは objectGUID です。この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。フォレスト間でアカウントを移動するマルチ フォレスト環境では、employeeID を持つ属性など、別の属性を使用する必要があります。ユーザーが結婚したり割り当てが変更されたりした場合に変化する可能性のある属性は、使用しないようにしてください。@ 記号が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。属性では大文字と小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字をそのままの状態に維持するようにしてください。バイナリ属性は base64 でエンコードされますが、他の種類の属性はエンコードされない状態のままになります。フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。ソース アンカーの詳細については、「[設計概念](../active-directory-aadconnect-design-concepts.md#sourceAnchor)」を参照してください。
 
-### <a name="sync-filtering-based-on-groups"></a>Sync filtering based on groups
-The filtering on groups feature allows you to sync only a small subset of objects for a pilot. To use this feature, create a group for this purpose in your on-premises Active Directory. Then add users and groups that should be synchronized to Azure AD as direct members. You can later add and remove users to this group to maintain the list of objects that should be present in Azure AD. All objects you want to synchronize must be a direct member of the group. Users, groups, contacts, and computers/devices must all be direct members. Nested group membership is not resolved. When you add a group as a member, only the group itself is added and not its members.
+### グループに基づく同期フィルタリング
+グループに基づくフィルタリング機能では、パイロット用にごく一部のオブジェクトのみを同期することができます。この機能を使用するには、対象とするグループをオンプレミスの Active Directory に作成します。次に、直接のメンバーとして Azure AD に同期するユーザーとグループを追加します。このグループには後でユーザーを追加したりユーザーを削除したりして、Azure AD に表示するオブジェクトの一覧を管理することができます。同期するオブジェクトはすべて、グループの直接のメンバーである必要があります。ユーザー、グループ、連絡先、およびコンピューター/デバイスは、すべて直接のメンバーにする必要があります。入れ子になったグループのメンバーシップは解決されません。グループをメンバーとして追加すると、グループ自体は追加されますが、そのグループのメンバーは追加されません。
 
-![Sync Filtering](./media/active-directory-aadconnect-get-started-custom/filter2.png)
-
->[AZURE.WARNING]
-This feature is only intended to support a pilot deployment. Do not use it in a full-blown production deployment.
-
-In a full-blown production deployment, it is going to be hard to maintain a single group with all objects to synchronize. Instead you should use one of the methods in [Configure filtering](../active-directory-aadconnectsync-configure-filtering.md).
-
-### <a name="optional-features"></a>Optional Features
-This screen allows you to select the optional features for your specific scenarios.
-
-![Optional features](./media/active-directory-aadconnect-get-started-custom/optional.png)
+![フィルターの同期](./media/active-directory-aadconnect-get-started-custom/filter2.png)
 
 >[AZURE.WARNING]
-If you currently have DirSync or Azure AD Sync active, do not activate any of the writeback features in Azure AD Connect.
+この機能は、パイロット デプロイのサポートのみを目的としています。本格的な運用環境のデプロイでは使用しないでください。
 
-Optional Features | Description
+本格的な運用環境のデプロイでは、単一のグループを維持しながらすべてのオブジェクトを同期することは困難になります。代わりに、[フィルター処理の構成](../active-directory-aadconnectsync-configure-filtering.md)に関するページで説明されている手法のいずれかを使用してください。
+
+### オプション機能
+この画面では、特定のシナリオのためにオプション機能を選択することができます。
+
+![オプション機能](./media/active-directory-aadconnect-get-started-custom/optional.png)
+
+>[AZURE.WARNING]
+現時点で DirSync または Azure AD Sync がアクティブになっている場合は、Azure AD Connect の書き戻し機能をアクティブにしないでください。
+
+オプション機能 | Description
 ------------------- | -------------
-Exchange Hybrid Deployment | The Exchange Hybrid Deployment feature allows for the co-existence of Exchange mailboxes both on-premises and in Office 365. Azure AD Connect is synchronizing a specific set of [attributes](../active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback) from Azure AD back into your on-premises directory.
-Azure AD app and attribute filtering | By enabling Azure AD app and attribute filtering, the set of synchronized attributes can be tailored. This option adds two more configuration pages to the wizard. For more information, see [Azure AD app and attribute filtering](#azure-ad-app-and-attribute-filtering).
-Password synchronization | If you selected federation as the sign-in solution, then you can enable this option. Password synchronization can then be used as a backup option. For additional information, see [Password synchronization](../active-directory-aadconnectsync-implement-password-synchronization.md).
-Password writeback | By enabling password writeback, password changes that originate in Azure AD is written back to your on-premises directory. For more information, see [Getting started with password management](../active-directory-passwords-getting-started.md).
-Group writeback | If you use the **Office 365 Groups** feature, then you can have these groups represented in your on-premises Active Directory. This option is only available if you have Exchange present in your on-premises Active Directory. For more information, see [Group writeback](../active-directory-aadconnect-feature-preview.md#group-writeback).
-Device writeback | Allows you to writeback device objects in Azure AD to your on-premises Active Directory for conditional access scenarios. For more information, see [Enabling device writeback in Azure AD Connect](../active-directory-aadconnect-feature-device-writeback.md).
-Directory extension attribute sync | By enabling directory extensions attribute sync, attributes specified are synced to Azure AD. For more information, see [Directory extensions](../active-directory-aadconnectsync-feature-directory-extensions.md).
+Exchange ハイブリッドのデプロイ | Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。Azure AD Connect により、Azure AD の特定の[属性](../active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)セットがオンプレミスのディレクトリに同期されます。
+Azure AD アプリと属性フィルター | Azure AD アプリと属性フィルターを有効にすると、同期される属性セットをカスタマイズできます。このオプションにより、2 つの構成ページがウィザードに追加されます。詳細については、「[Azure AD アプリと属性フィルター](#azure-ad-app-and-attribute-filtering)」を参照してください。
+パスワードの同期 | サインイン ソリューションとしてフェデレーションを選択した場合は、このオプションを有効にすることができます。バックアップ オプションとして、パスワード同期を使用できます。詳細については、[パスワードの同期](../active-directory-aadconnectsync-implement-password-synchronization.md)に関するページを参照してください。
+パスワードの書き戻し | パスワード ライトバックを有効にすると、Azure AD で行われたパスワードの変更が、オンプレミスのディレクトリに書き戻されます。詳細については、「[パスワード管理の概要](../active-directory-passwords-getting-started.md)」を参照してください。
+グループの書き戻し | **Office 365 グループ**機能を使用すると、そのグループをオンプレミスの Active Directory 内に表示することができます。このオプションが使用できるのは、オンプレミスの Active Directory 内に Exchange が置かれている場合に限られます。詳細については、「[グループの書き戻し](../active-directory-aadconnect-feature-preview.md#group-writeback)」を参照してください。
+デバイスの書き戻し | 条件付きアクセスのシナリオの場合は、Azure AD 内のデバイス オブジェクトをオンプレミスの Active Directory に書き戻すことができます。詳細については、[Azure AD Connect でのデバイスの書き戻しの有効化](../active-directory-aadconnect-feature-device-writeback.md)に関するページを参照してください。
+ディレクトリ拡張属性の同期 | ディレクトリ拡張機能の属性の同期を有効にすると、指定した属性が Azure AD に同期されます。詳細については、[ディレクトリ拡張機能](../active-directory-aadconnectsync-feature-directory-extensions.md)に関するページを参照してください。
 
-### <a name="azure-ad-app-and-attribute-filtering"></a>Azure AD app and attribute filtering
-If you want to limit which attributes to synchronize to Azure AD, then start by selecting which services you are using. If you make configuration changes on this page, a new service has to be selected explicitly by rerunning the installation wizard.
+### Azure AD アプリと属性フィルター
+Azure AD に同期する属性を制限する場合、まずは使用しているサービスを選択します。このページの構成に変更を加える場合は、インストール ウィザードを再度実行して新しいサービスを明示的に選択する必要があります。
 
 ![Optional features Apps](./media/active-directory-aadconnect-get-started-custom/azureadapps2.png)
 
-Based on the services selected in the previous step, this page shows all attributes that are synchronized. This list is a combination of all object types being synchronized. If there are some particular attributes you need to not synchronize, you can unselect those attributes.
+前の手順で選択したサービスに基づいて、次のページに、同期対象となるすべての属性が表示されます。この一覧は、同期されるすべてのオブジェクトの種類の組み合わせです。特定の属性を同期しないように設定する必要がある場合は、該当する属性の選択を解除します。
 
 ![Optional features Attributes](./media/active-directory-aadconnect-get-started-custom/azureadattributes2.png)
 
 >[AZURE.WARNING]
-Removing attributes can impact functionality. For best practices and recommendations, see [attributes synchronized](../active-directory-aadconnectsync-attributes-synchronized.md#attributes-to-synchronize).
+属性の選択を解除すると、機能に影響が生じる場合があります。ベスト プラクティスと推奨事項については、[同期する属性](../active-directory-aadconnectsync-attributes-synchronized.md#attributes-to-synchronize)に関するページを参照してください。
 
-### <a name="directory-extension-attribute-sync"></a>Directory Extension attribute sync
-You can extend the schema in Azure AD with custom attributes added by your organization or other attributes in Active Directory. To use this feature, select **Directory Extension attribute sync** on the **Optional Features** page. You can select more attributes to sync on this page.
+### ディレクトリ拡張機能の属性の同期
+Azure AD のスキーマは、組織によって追加されたカスタム属性や Active Directory 内のその他の属性を使用して拡張することができます。この機能を使用するには、**[オプション機能]** ページの **[ディレクトリ拡張機能の属性の同期]** を選択します。このページで、同期する属性をさらに選択できます。
 
-![Directory extensions](./media/active-directory-aadconnect-get-started-custom/extension2.png)
+![ディレクトリ拡張機能](./media/active-directory-aadconnect-get-started-custom/extension2.png)
 
-For more information, see [Directory extensions](../active-directory-aadconnectsync-feature-directory-extensions.md).
+詳細については、[ディレクトリ拡張機能](../active-directory-aadconnectsync-feature-directory-extensions.md)に関するページを参照してください。
 
-## <a name="configuring-federation-with-ad-fs"></a>Configuring federation with AD FS
-Configuring AD FS with Azure AD Connect is simple with just a few clicks. The following is required before the configuration.
+## AD FS とのフェデレーションの構成
+Azure AD Connect との AD FS の構成は、わずか数クリックで簡単です。構成の前に、以下のものを用意する必要があります。
 
-- A Windows Server 2012 R2 server for the federation server with remote management enabled
-- A Windows Server 2012 R2 server for the Web Application Proxy server with remote management enabled
-- An SSL certificate for the federation service name you intend to use (for example sts.contoso.com)
+- フェデレーション サーバー用の Windows Server 2012 R2 サーバー (リモート管理を有効に設定)
+- Web アプリケーション プロキシ サーバー用の Windows Server 2012 R2 サーバー (リモート管理を有効に設定)
+- 使用する予定のフェデレーション サービス名の SSL 証明書 (sts.contoso.com など)
 
-### <a name="ad-fs-configuration-pre-requisites"></a>AD FS configuration pre-requisites
-To configure your AD FS farm using Azure AD Connect, ensure WinRM is enabled on the remote servers. In addition, go through the ports requirement listed in [Table 3 - Azure AD Connect and Federation Servers/WAP](../active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-federation-serverswap).
+### AD FS の構成の前提条件
+Azure AD Connect を使用して AD FS ファームを構成するには、リモート サーバー上で WinRM が有効になっている必要があります。加えて、「[表 3 - Azure AD Connect とフェデレーション サーバー/WAP](../active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-federation-serverswap)」に記載されているポート要件も確認してください。
 
-### <a name="create-a-new-ad-fs-farm-or-use-an-existing-ad-fs-farm"></a>Create a new AD FS farm or use an existing AD FS farm
-You can use an existing AD FS farm or you can choose to create a new AD FS farm. If you choose to create a new one, you are required to provide the SSL certificate. If the SSL certificate is protected by a password, you are prompted for the password.
+### 新しい AD FS ファームの作成または既存の AD FS ファームの使用
+既存の AD FS ファームを使用することも、新しい AD FS ファームを作成することもできます。新しく作成する場合は、SSL 証明書を提供する必要があります。SSL 証明書がパスワードで保護されている場合は、パスワードを入力するように求められます。
 
-![AD FS Farm](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
+![AD FS ファーム](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
-If you choose to use an existing AD FS farm, you are taken directly to the configuring the trust relationship between AD FS and Azure AD screen.
+既存の AD FS ファームを使用する場合は、AD FS と Azure AD の間の信頼関係を構成する画面に直接移動します。
 
-### <a name="specify-the-ad-fs-servers"></a>Specify the AD FS servers
-Enter the servers that you want to install AD FS on. You can add one or more servers based on your capacity planning needs. Join all servers to Active Directory before you perform this configuration. Microsoft recommends installing a single AD FS server for test and pilot deployments. Then add and deploy more servers to meet your scaling needs by running Azure AD Connect again after initial configuration.
-
->[AZURE.NOTE]
-Ensure that all your servers are joined to an AD domain before you do this configuration.
-
-![AD FS Servers](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
-
-### <a name="specify-the-web-application-proxy-servers"></a>Specify the Web Application Proxy servers
-Enter the servers that you want as your Web Application proxy servers. The web application proxy server is deployed in your DMZ (extranet facing) and supports authentication requests from the extranet. You can add one or more servers based on your capacity planning needs. Microsoft recommends installing a single Web application proxy server for test and pilot deployments. Then add and deploy more servers to meet your scaling needs by running Azure AD Connect again after initial configuration. We recommend having an equivalent number of proxy servers to satisfy authentication from the intranet.
+### AD FS サーバーの指定
+AD FS をインストールするサーバーを入力します。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。この構成を実行する前に、すべてのサーバーを Active Directory に参加させてください。テスト デプロイとパイロット デプロイ用に単一の AD FS サーバーをインストールすることをお勧めします。初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。
 
 >[AZURE.NOTE]
-<li> If the account you use is not a local admin on the AD FS servers, then you are prompted for admin credentials.</li>
-<li> Ensure that there is HTTP/HTTPS connectivity between the Azure AD Connect server and the Web Application Proxy server before you run this step.</li>
-<li> Ensure that there is HTTP/HTTPS connectivity between the Web Application Server and the AD FS server to allow authentication requests to flow through.</li>
+この構成を実行する前に、すべてのサーバーが 1 つの AD ドメインに参加していることを確認してください。
 
-![Web App](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
+![AD FS サーバー](./media/active-directory-aadconnect-get-started-custom/adfs2.png)
 
-You are prompted to enter credentials so that the web application server can establish a secure connection to the AD FS server. These credentials need to be a local administrator on the AD FS server.
-
-![Proxy](./media/active-directory-aadconnect-get-started-custom/adfs4.png)
-
-### <a name="specify-the-service-account-for-the-ad-fs-service"></a>Specify the service account for the AD FS service
-The AD FS service requires a domain service account to authenticate users and lookup user information in Active Directory. It can support two types of service accounts:
-
-- **Group Managed Service Account** - Introduced in Active Directory Domain Services with Windows Server 2012. This type of account provides services, such as AD FS, a single account without needing to update the account password regularly. Use this option if you already have Windows Server 2012 domain controllers in the domain that your AD FS servers belong to.
-- **Domain User Account** - This type of account requires you to provide a password and regularly update the password when the password changes or expires. Use this option only when you do not have Windows Server 2012 domain controllers in the domain that your AD FS servers belong to.
-
-If you selected Group Managed Service Account and this feature has never been used in Active Directory, you are prompted for Enterprise Admin credentials. These credentials are used to initiate the key store and enable the feature in Active Directory.
-
-![AD FS Service Account](./media/active-directory-aadconnect-get-started-custom/adfs5.png)
-
-### <a name="select-the-azure-ad-domain-that-you-wish-to-federate"></a>Select the Azure AD domain that you wish to federate
-This configuration is used to setup the federation relationship between AD FS and Azure AD. It configures AD FS to issue security tokens to Azure AD and configures Azure AD to trust the tokens from this specific AD FS instance. This page only allows you to configure a single domain in the initial installation. You can configure more domains later by running Azure AD Connect again.
-
-![Azure AD Domain](./media/active-directory-aadconnect-get-started-custom/adfs6.png)
-
-### <a name="verify-the-azure-ad-domain-selected-for-federation"></a>Verify the Azure AD domain selected for federation
-When you select the domain to be federated, Azure AD Connect provides you with necessary information to verify an unverified domain. See [Add and verify the domain](../active-directory-add-domain.md) for how to use this information.
-
-![Azure AD Domain](./media/active-directory-aadconnect-get-started-custom/verifyfeddomain.png)
+### Web アプリケーション プロキシ サーバーの指定
+Web アプリケーション プロキシ サーバーとするサーバーを入力します。Web アプリケーション プロキシ サーバーは DMZ (エクストラネット接続) にデプロイされ、エクストラネットからの認証要求をサポートします。容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。テスト デプロイとパイロット デプロイ用に単一の Web アプリケーション プロキシ サーバーをインストールすることをお勧めします。初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。イントラネットからの認証を処理するために同数のプロキシ サーバーを設定することをお勧めします。
 
 >[AZURE.NOTE]
-AD Connect tries to verify the domain during the configure stage. If you continue to configure without adding the necessary DNS records, the wizard is not able to complete the configuration.
+<li> 使用しているアカウントが AD FS サーバーのローカル管理者ではない場合、管理者の資格情報を入力するように求められます。</li>
+<li> この手順を実行する前に、Azure AD Connect サーバーと Web アプリケーション プロキシ サーバーの間に HTTP/HTTPS 接続が確立されていることを確認してください。</li>
+<li> 認証要求の通信ができるように、Web アプリケーション サーバーと AD FS サーバーの間に HTTP/HTTPS 接続が確立されていることを確認してください。</li>
 
-## <a name="configure-and-verify-pages"></a>Configure and verify pages
-The configuration happens on this page.
+![Web アプリ](./media/active-directory-aadconnect-get-started-custom/adfs3.png)
+
+Web アプリケーション サーバーが AD FS サーバーとの間にセキュリティで保護された接続を確立できるように、資格情報を入力するよう求められます。これらの資格情報は、AD FS サーバーのローカル管理者である必要があります。
+
+![プロキシ](./media/active-directory-aadconnect-get-started-custom/adfs4.png)
+
+### AD FS サービスのサービス アカウントを指定します。
+AD FS サービスには、ユーザーを認証し Active Directory のユーザー情報を参照するドメイン サービス アカウントが必要です。次の 2 種類のサービス アカウントがサポートされます。
+
+- **グループ管理サービス アカウント** - Windows Server 2012 と共に Active Directory ドメイン サービスに導入されました。この種類のアカウントは、AD FS のようなサービスに、パスワードを定期的に更新する必要のない単一のアカウントを提供します。AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
+- **ドメイン ユーザー アカウント** - この種類のアカウントではパスワードの入力が求められ、パスワードの変更や期限切れの際に、定期的に更新する必要があります。このオプションは、AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーがない場合にのみ使用してください。
+
+グループ管理サービス アカウントを選択した場合、Active Directory でこの機能を使用したことがないと、エンタープライズ管理者の資格情報の入力を求められます。入力した資格情報は、キー ストアを開始し、Active Directory でこの機能を有効にするために使用されます。
+
+![AD FS サービス アカウント](./media/active-directory-aadconnect-get-started-custom/adfs5.png)
+
+### フェデレーションする Azure AD ドメインの選択
+この構成を使用して、AD FS と Azure AD のフェデレーション関係をセットアップします。Azure AD にセキュリティ トークンを発行するように AD FS を構成し、この特定の AD FS インスタンスからのトークンを信頼するように Azure AD を構成します。初期インストールでは、このページで 1 つのドメインしか構成できません。後で Azure AD Connect をもう一度実行すると、追加のドメインを構成できます。
+
+![Azure AD ドメイン](./media/active-directory-aadconnect-get-started-custom/adfs6.png)
+
+### フェデレーション用に選択された Azure AD ドメインの検証
+フェデレーション対象のドメインを選択すると、Azure AD Connect によって、検証されていないドメインを検証するために必要な情報が提供されます。この情報を使用する方法については、[ドメインの追加と検証](../active-directory-add-domain.md)に関するページを参照してください。
+
+![Azure AD ドメイン](./media/active-directory-aadconnect-get-started-custom/verifyfeddomain.png)
 
 >[AZURE.NOTE]
-Before you continue installation and if you configured federation, make sure that you have configured [Name resolution for federation servers](../active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers).
+AD Connect では、構成段階でドメインの検証を試みます。必要な DNS レコードを追加せずに構成を続行すると、ウィザードで構成を完了することができません。
 
-![Ready to configure](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
+## ページの構成および確認
+構成は次のページで行われます。
 
-### <a name="staging-mode"></a>Staging mode
-It is possible to setup a new sync server in parallel with staging mode. It is only supported to have one sync server exporting to one directory in the cloud. But if you want to move from another server, for example one running DirSync, then you can enable Azure AD Connect in staging mode. When enabled, the sync engine import and synchronize data as normal, but it does not export anything to Azure AD or AD. The features password sync and password writeback are disabled while in staging mode.
+>[AZURE.NOTE]
+フェデレーションを構成している場合は、インストールを続行する前に、[フェデレーション サーバーの名前解決](../active-directory-aadconnect-prerequisites.md#name-resolution-for-federation-servers)を構成済みであることを確認してください。
 
-![Staging mode](./media/active-directory-aadconnect-get-started-custom/stagingmode.png)
+![構成の準備完了](./media/active-directory-aadconnect-get-started-custom/readytoconfigure2.png)
 
-While in staging mode, it is possible to make required changes to the sync engine and review what is about to be exported. When the configuration looks good, run the installation wizard again and disable staging mode. Data is now exported to Azure AD from this server. Make sure to disable the other server at the same time so only one server is actively exporting.
+### ステージング モード
+ステージング モードと並行して新しい同期サーバーをセットアップすることができます。クラウド内で 1 つのディレクトリにエクスポートする 1 台の同期サーバーの設置のみがサポートされます。ただし、別のサーバー (DirSync を実行するサーバーなど) から移動する場合は、ステージング モードで Azure AD Connect を有効にすることができます。有効にすると、同期エンジンは通常どおりにデータをインポートおよび同期しますが、Azure AD または AD には何もエクスポートしません。ステージング モード中は、パスワード同期機能とパスワード ライトバック機能が無効になります。
 
-For more information, see [Staging mode](../active-directory-aadconnectsync-operations.md#staging-mode).
+![ステージング モード](./media/active-directory-aadconnect-get-started-custom/stagingmode.png)
 
-### <a name="verify-your-federation-configuration"></a>Verify your federation configuration
-Azure AD Connect verifies the DNS settings for you when you click the Verify button.
+ステージング モード中は、同期エンジンに必要な変更を加え、エクスポートされる内容を確認することができます。構成が適切な状態になったら、インストール ウィザードをもう一度実行し、ステージング モードを無効にします。これで、データはこのサーバーから Azure AD にエクスポートされます。1 つのサーバーのみをアクティブにしてエクスポートするために、このとき他のサーバーは無効にしてください。
 
-![Complete](./media/active-directory-aadconnect-get-started-custom/completed.png)
+詳細については、「[ステージング モード](../active-directory-aadconnectsync-operations.md#staging-mode)」を参照してください。
 
-![Verify](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
+### フェデレーション構成の確認
+[検証] をクリックすると、Azure AD Connect によって DNS 設定が検証されます。
 
-In addition, perform the following verification steps:
+![完了](./media/active-directory-aadconnect-get-started-custom/completed.png)
 
-- Validate that you can sign in from a browser from a domain joined machine on the intranet: Connect to https://myapps.microsoft.com and verify the sign-in with your logged in account. The built-in AD DS administrator account is not synchronized and cannot be used for verification.
-- Validate that you can sign in from a device from the extranet. On a home machine or a mobile device, connect to https://myapps.microsoft.com and supply your credentials.
-- Validate rich client sign-in. Connect to https://testconnectivity.microsoft.com, choose the **Office 365** tab and chose the **Office 365 Single Sign-On Test**.
+![確認](./media/active-directory-aadconnect-get-started-custom/adfs7.png)
 
-## <a name="next-steps"></a>Next steps
-After the installation has completed, sign out and sign in again to Windows before you use Synchronization Service Manager or Synchronization Rule Editor.
+さらに、次の検証手順を実行します。
 
-Now that you have Azure AD Connect installed you can [verify the installation and assign licenses](../active-directory-aadconnect-whats-next.md).
+- イントラネット上のドメイン参加済みコンピューターのブラウザーからサインインできることを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
+- エクストラネット上のデバイスからサインインできることを検証する。自宅にあるコンピューターまたはモバイル デバイスで https://myapps.microsoft.com に接続し、資格情報を入力します。
+- リッチ クライアントのサインインを検証する。https://testconnectivity.microsoft.com に接続し、**[Office 365]** タブ、**[Office 365 シングル サインオン テスト]** の順に選択します。
 
-Learn more about these features, which were enabled with the installation: [Prevent accidental deletes](../active-directory-aadconnectsync-feature-prevent-accidental-deletes.md) and [Azure AD Connect Health](../active-directory-aadconnect-health-sync.md).
+## 次のステップ
+インストールが完了した後、 Synchronization Service Manager または同期規則エディターを使用する前に、サインアウトし、もう一度 Windows にサインインします。
 
-Learn more about these common topics: [scheduler and how to trigger sync](../active-directory-aadconnectsync-feature-scheduler.md).
+Azure AD Connect がインストールされたので、[インストールを確認し、ライセンスを割り当てる](../active-directory-aadconnect-whats-next.md)ことができます。
 
-Learn more about [Integrating your on-premises identities with Azure Active Directory](../active-directory-aadconnect.md).
+インストールの結果有効になった機能については、[誤った削除操作を防止する機能](../active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](../active-directory-aadconnect-health-sync.md) に関する各ページを参照してください。
 
-## <a name="related-documentation"></a>Related documentation
+一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](../active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
 
-Topic |  
+「[オンプレミスの ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。
+
+## 関連ドキュメント
+
+トピック |  
 --------- | ---------
-Azure AD Connect overview | [Integrating your on-premises identities with Azure Active Directory](../active-directory-aadconnect.md)
-Install using Express settings | [Express installation of Azure AD Connect](active-directory-aadconnect-get-started-express.md)
-Upgrade from DirSync | [Upgrade from Azure AD sync tool (DirSync)](active-directory-aadconnect-dirsync-upgrade-get-started.md)
-Accounts used for installation | [More about Azure AD Connect accounts and permissions](active-directory-aadconnect-accounts-permissions.md)
+Azure AD Connect の概要 | [オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)
+簡単設定を使用したインストール | [Azure AD Connect の高速インストール](active-directory-aadconnect-get-started-express.md)
+DirSync からのアップグレード | [Azure AD 同期ツール (DirSync) からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
+インストールで使用するアカウント | [Azure AD Connect アカウントとアクセス許可の詳細](active-directory-aadconnect-accounts-permissions.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

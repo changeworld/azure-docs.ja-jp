@@ -1,9 +1,9 @@
 <properties
-   pageTitle="Troubleshooting: 'Active Directory' item is missing or not available | Microsoft Azure "
-   description="What to do when Active Directory menu item doesn't appear in the Azure Management Portal."
+   pageTitle="トラブルシューティング: Active Directory 項目が不足しているか使用できない | Microsoft Azure "
+   description="Microsoft Azure 管理ポータルに Active Directory メニュー項目が表示されないときの対処方法。"
    services="active-directory"
    documentationCenter="na"
-   authors="bryanla"
+   authors="msmbaldwin"
    manager="mbaldwin"
    editor=""/>
 
@@ -16,47 +16,42 @@
    ms.date="09/16/2016"
    ms.author="mbaldwin"/>
 
+# トラブルシューティング: Active Directory 項目が不足しているか使用できない
 
-# <a name="troubleshooting:-'active-directory'-item-is-missing-or-not-available"></a>Troubleshooting: 'Active Directory' item is missing or not available
+Azure Active Directory の機能とサービスを使用するための手順の多くが、「Microsoft Azure 管理ポータルに移動し、**Active Directory** をクリックしてください。」という指示で始まります。 Active Directory 拡張機能またはメニュー項目が表示されない、または **[使用不可]** とマークされている場合はどうすればよいのでしょうか。 このトピックを役立ててください。**Active Directory** が表示されない状況と使用できない状況について説明し、どのように対応するかについて説明しています。
 
-Many of the instructions for using Azure Active Directory features and services begin with "Go to the Azure Management Portal and click **Active Directory**." But what do you do if the Active Directory extension or menu item does not appear or if it is marked **Not Available**? This topic is designed to help. It describes the conditions under which **Active Directory** does not appear or is unavailable and explains how to proceed.
+## Active Directory が見つからない
 
-## <a name="active-directory-is-missing"></a>Active Directory is missing
+通常、**Active Directory** 項目は、左側のナビゲーション メニューの中に表示されます。Azure Active Directory に関する手順は、この項目が表示されていることを前提とします。
 
-Typically, an **Active Directory** item appears in the left navigation menu. The instructions in Azure Active Directory procedures assume that this item is in your view.
+![画面ショット: Azure 内の Active Directory](./media/active-directory-troubleshooting/typical-view.png)
 
-![Screen shot: Active Directory in Azure](./media/active-directory-troubleshooting/typical-view.png)
+Active Directory 項目は、次のいずれかの条件が満たされている場合に左側のナビゲーション メニューの中に表示されます。条件に該当しない場合、項目は表示されません。
 
-The Active Directory item appears in the left navigation menu when any of the following conditions is true. Otherwise, the item does not appear.
+* 現在のユーザーが Microsoft アカウント (旧 Windows Live ID) でサインインした。
 
-* The current user signed on with a Microsoft account (formerly known as a Windows Live ID).
+    または
 
-    OR
+* Azure テナントがディレクトリを持っており、現在のアカウントがディレクトリ管理者である。
 
-* The Azure tenant has a directory and the current account is a directory administrator.
+    または
 
-    OR
+* Azure テナントが少なくとも 1 つの Azure AD Access Control (ACS) 名前空間を持っている。詳細については、「[Access Control 名前空間](https://msdn.microsoft.com/library/azure/gg185908.aspx)」を参照してください。
 
-* The Azure tenant has at least one Azure AD Access Control (ACS) namespace. For more information, see [Access Control Namespace](https://msdn.microsoft.com/library/azure/gg185908.aspx).
+    または
 
-    OR
+* Azure テナントが少なくとも 1 つの Azure Multi-factor Authentication プロバイダーを持っている。詳細については、「[Administering Azure Multi-Factor Authentication Providers (Azure Multi-Factor Authentication プロバイダーの管理)](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
 
-* The Azure tenant has at least one Azure Multi-Factor Authentication provider. For more information, see [Administering Azure Multi-Factor Authentication Providers](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
+Access Control 名前空間または Multi-factor Authentication プロバイダーを作成するには、**[新規]**、**[App Services]**、**[Active Directory]** の順にクリックします。
 
-To create an Access Control namespace or a Multi-Factor Authentication provider, click **+New** > **App Services** > **Active Directory**.
+ディレクトリに対する管理権限を取得するには、使用中のアカウントに管理者ロールを割り当てるように管理者に依頼してください。詳細については、「[管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
 
-To get administrative rights to a directory, have an administrator assign an administrator role to your account. For details, see [Assigning administrator roles](active-directory-assign-admin-roles.md).
+## Active Directory を使用できない
 
-## <a name="active-directory-is-not-available"></a>Active Directory is not available
+**[新規]**、**[App Services]** の順にクリックすると、**Active Directory** 項目が表示されます。具体的に言うと、Active Directory 項目は、現在のユーザーがディレクトリ、Access Control、多要素認証プロバイダーなどの Active Directory の機能のいずれかを利用できる場合に表示されます。
 
-When you click **+New** > **App Services**, an **Active Directory** item appears. Specifically, the Active Directory item appears when any of the Active Directory features, such as Directory, Access Control, or Multi-Factor Auth Provider, are available to the current user.
+ただし、ページの読み込み中は、項目は淡色表示され、**[使用不可]** とマークされます。これは一時的な状態です。数秒待てば、項目は使用可能になります。待ち時間が長いときは、Web ページを更新すれば、多くの場合、問題が解決します。
 
-However, while the page is loading, the item is dimmed and is marked **Not Available**. This is a temporary state. If you wait a few seconds, the item becomes available. If the delay is prolonged, refreshing the web page often resolves the problem.
+![画面ショット: Active Directory を使用できない](./media/active-directory-troubleshooting/not-available.png)
 
-![Screen shot: Active Directory is not available](./media/active-directory-troubleshooting/not-available.png)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

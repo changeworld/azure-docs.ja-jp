@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Using U-SQL window functions for Azure Data Lake Aanlytics jobs | Azure" 
-   description="Learn how to use U-SQL window functions. " 
+   pageTitle="Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する | Azure" 
+   description="U SQL ウィンドウ関数の使用方法について説明します。" 
    services="data-lake-analytics" 
    documentationCenter="" 
    authors="edmacauley" 
@@ -17,43 +17,42 @@
    ms.author="edmaca"/>
 
 
+# Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する  
 
-# <a name="using-u-sql-window-functions-for-azure-data-lake-analytics-jobs"></a>Using U-SQL window functions for Azure Data Lake Analytics jobs  
+ウィンドウ関数は、2003 年に ISO/ANSI SQL 標準に導入されました。U-SQL では、ANSI SQL 標準で定義されたウィンドウ関数のサブセットが採用されています。
 
-Window functions were introduced to the ISO/ANSI SQL Standard in 2003. U-SQL adopts a subset of window functions as defined by the ANSI SQL Standard.
+ウィンドウ関数は、*ウィンドウ*と呼ばれる行セット内で計算処理を実行するために使用されます。ウィンドウは OVER 句で定義されます。ウィンドウ関数は、いくつかの重要なシナリオを非常に効率的な方法で解決します。
 
-Window functions are used to do computation within sets of rows called *windows*. Windows are defined by the  OVER clause. Window functions solve some key scenarios in a highly efficient manner.
+この学習ガイドでは、2 つのサンプル データセットを使用して、ウィンドウ関数を適用できるサンプル シナリオについて説明します。詳細については、「[U-SQL 言語リファレンス](http://go.microsoft.com/fwlink/p/?LinkId=691348)」をご覧ください。
 
-This learning guide uses two sample datasets to walk you through some sample scenario where you can apply window functions. For more information, see [U-SQL reference](http://go.microsoft.com/fwlink/p/?LinkId=691348).
+ウィンドウ関数は次のカテゴリに分類されます。
 
-The window functions are categorized into: 
+- [レポート集計関数](#reporting-aggregation-functions) (SUM や AVG など)
+- [順位付け関数](#ranking-functions) (DENSE\_RANK、ROW\_NUMBER、NTILE、RANK など)
+- [分析関数](#analytic-functions) (累積分布、百分位、同じ結果セット内の前の行のデータへの自己結合を使用しないアクセスなど)
 
-- [Reporting aggregation functions](#reporting-aggregation-functions), such as SUM or AVG
-- [Ranking functions](#ranking-functions), such as DENSE_RANK, ROW_NUMBER, NTILE, and RANK
-- [Analytic functions](#analytic-functions),  such as cumulative distribution, percentiles, or accesses data from a previous row in the same result set without the use of a self-join
+**前提条件:**
 
-**Prerequisites:**
+- 次の 2 つのチュートリアルを完了します。
 
-- Go through the following two tutorials:
+    - [Azure Data Lake Tools for Visual Studio を使ってみる](data-lake-analytics-data-lake-tools-get-started.md)
+    - [Azure Data Lake Analytics ジョブに U-SQL を使ってみる](data-lake-analytics-u-sql-get-started.md)
+- [Azure Data Lake Tools for Visual Studio の使用](data-lake-analytics-data-lake-tools-get-started.md)に関するページの説明に従って、Data Lake Analytic アカウントを作成します。
+- [Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページの説明に従って、Visual Studio U-SQL プロジェクトを作成します。
 
-    - [Get started using Azure Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-    - [Get started using U-SQL for Azure Data Lake Analytics jobs](data-lake-analytics-u-sql-get-started.md).
-- Create a Data Lake Analytic account as instructed in [Get started using Azure Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md).
-- Create a Visual Studio U-SQL project as instructed in [Get started using U-SQL for Azure Data Lake Analytics jobs](data-lake-analytics-u-sql-get-started.md).
+## サンプル データセット
 
-## <a name="sample-datasets"></a>Sample datasets
+このチュートリアルでは、2 つのデータセットを使用します。
 
-This tutorial uses two datasets:
+- QueryLog
 
-- QueryLog 
-
-    QueryLog represents a list of what people searched for in search engine. Each query log includes:
+    QueryLog は、検索エンジンで検索された内容の一覧を表します。各クエリ ログの内容は次のとおりです。
     
         - Query - What the user was searching for.
         - Latency - How fast the query came back to the user in milliseconds.
         - Vertical - What kind of content the user was interested in (Web links, Images, Videos).
     
-    Copy and paste the following scrip into your U-SQL project for constructing the QueryLog rowset:
+    QueryLog 行セットを作成するには、次のスクリプトをコピーして U-SQL プロジェクトに貼り付けます。
     
         @querylog = 
             SELECT * FROM ( VALUES
@@ -68,7 +67,7 @@ This tutorial uses two datasets:
                 ("Durian"  , 500, "Web"   ) )
             AS T(Query,Latency,Vertical);
     
-    In practice, the data is most likely stored in a data file. You would access that data inside of a tab-delimited file using the following code: 
+    実際には、データはデータ ファイルに格納される可能性が最も高くなります。タブ区切りファイル内のデータにアクセスするには、次のコードを使用します。
     
         @querylog = 
         EXTRACT 
@@ -80,7 +79,7 @@ This tutorial uses two datasets:
 
 - Employees
 
-    The Employee dataset includes the following fields:
+    Employee データセットには、次のフィールドが含まれます。
    
         - EmpID - Employee ID.
         - EmpName  Employee name.
@@ -88,7 +87,7 @@ This tutorial uses two datasets:
         - DeptID - Deparment ID.
         - Salary - Employee salary.
 
-    Copy and paste the following script into your U-SQL project for construcint the Employees rowset:
+    Employees 行セットを作成するには、次のスクリプトをコピーして U-SQL プロジェクトに貼り付けます。
 
         @employees = 
             SELECT * FROM ( VALUES
@@ -103,7 +102,7 @@ This tutorial uses two datasets:
                 (9, "Ethan",  "Marketing",   400, 10000) )
             AS T(EmpID, EmpName, DeptName, DeptID, Salary);
     
-    The following statement demonstrates creating the rowset by extracting it from a data file.
+    次のステートメントでは、データ ファイルからデータを抽出して行セットを作成します。
     
         @employees = 
         EXTRACT 
@@ -115,46 +114,46 @@ This tutorial uses two datasets:
         FROM "/Samples/Employees.tsv"
         USING Extractors.Tsv();
 
-When you test the samples in tutorial, you must include the rowset definitions. U-SQL requires you to define only the rowsets that are used. Some samples only need one rowset.
+チュートリアル内のサンプルをテストする場合は、行セットの定義を含める必要があります。U-SQL では、使用する行セットのみを定義する必要があります。サンプルによっては、必要な行セットは 1 つだけです。
 
-You must also add the following statement to output the result rowset to a data file:
+また、結果行セットをデータ ファイルに出力するには、次のステートメントも追加する必要があります。
 
     OUTPUT @result TO "/wfresult.csv" 
         USING Outputters.Csv();
  
- Most of the samples use the variable called **@result** for the results.
+ ほとんどのサンプルでは、結果に **@result** という変数を使用します。
 
-## <a name="compare-window-functions-to-grouping"></a>Compare window functions to Grouping
+## ウィンドウ関数とグループ化の比較
 
-Windowing and Grouping are conceptually related by also different. It is helpful to understand this relationship.
+ウィンドウ化とグループ化は概念的に関連していますが、異なる部分もあります。この関係を理解することは役に立ちます。
 
-### <a name="use-aggregation-and-grouping"></a>Use aggregation and Grouping
+### 集計とグループ化の使用
 
-The following query uses an aggregation to calculate the total salary for all employees:
+次のクエリでは、集計を使用して、全従業員の給与の総額を計算します。
 
     @result = 
         SELECT 
             SUM(Salary) AS TotalSalary
         FROM @employees;
     
->[AZURE.NOTE] For instructions for testing and checking the output, see [Get started using U-SQL for Azure Data Lake Analytics jobs](data-lake-analytics-u-sql-get-started.md).
+>[AZURE.NOTE] 出力のテストとチェックの手順については、[Azure Data Lake Analytics ジョブでの U-SQL の使用](data-lake-analytics-u-sql-get-started.md)に関するページを参照してください。
 
-The result is a single row with a single column. The $165000 is the sum of of the Salary value from the whole table. 
+結果は 1 行 1 列で示されます。$165000 は、テーブル全体の Salary 値の合計です。
 
 |TotalSalary
 |-----------
 |165000
 
->[AZURE.NOTE] If you are new to windows functions, it is helpful to remember the numbers in the outputs.  
+>[AZURE.NOTE] ウィンドウ関数に慣れていない場合は、出力内の数値を覚えておくと役立ちます。
 
-The following statement use the GROUP BY clause to calculate the total salery for each department:
+次のステートメントでは、GROUP BY 句を使用して、部門ごとに給与の総額を計算します。
 
     @result=
         SELECT DeptName, SUM(Salary) AS SalaryByDept
         FROM @employees
         GROUP BY DeptName;
 
-The results are :
+結果は次のようになります。
 
 |DeptName|SalaryByDept
 |--------|------------
@@ -163,18 +162,18 @@ The results are :
 |Executive|50000
 |Marketing|25000
 
-The sum of the SalaryByDept column is $165000, which matches the amount in the last script.
+SalaryByDept 列の合計は $165000 です。これは、前のスクリプトの金額と一致します。
  
-In both these cases the number of there are fewer output rows than input rows:
+次のいずれの場合も、出力行数は入力行数より少なくなります。
  
-- Without GROUP BY, the aggregation collapses all the rows into a single row. 
-- With GROUP BY,  there are N output rows where N is the number of distinct values that appear in the data, In this case, you will get 4 rows in the output.
+- GROUP BY を使用しない場合は、集計により、すべての行が 1 行にまとめられます。
+- GROUP BY を使用する場合は、N 行が出力されます (N はデータ内で重複しない値の数です)。この場合、出力されるのは 4 行です。
 
-###  <a name="use-a-window-function"></a>Use a window function
+###  ウィンドウ関数の使用
 
-The OVER clause in the following sample is empty. This defines the "window" to include all rows. The SUM in this example is applied to the OVER clause that it precedes.
+次のサンプルの OVER 句は空です。これにより、"ウィンドウ" にはすべての行を含めることが定義されます。この例の SUM は、その直後にある OVER 句に適用されます。
 
-You could read this query as: “The sum of Salary over a window of all rows”.
+このクエリは、"すべての行から成るウィンドウでの給与の総額" として捉えることができます。
 
     @result=
         SELECT
@@ -182,7 +181,7 @@ You could read this query as: “The sum of Salary over a window of all rows”.
             SUM(Salary) OVER( ) AS SalaryAllDepts
         FROM @employees;
 
-Unlike GROUP BY, there are as many output rows as input rows: 
+GROUP BY とは異なり、出力行数は入力行数と同じです。
 
 |EmpName|TotalAllDepts
 |-------|--------------------
@@ -197,9 +196,9 @@ Unlike GROUP BY, there are as many output rows as input rows:
 |Ethan|165000
 
 
-The value of 165000 (the total of all salaries) is placed in each output row. That total comes from the "window" of all rows, so it includes all the salaries. 
+165000 という値 (すべての給与の総額) が各出力行に示されています。この総額は、すべての行から成る "ウィンドウ" から出力されたものであるため、すべての給与を含んでいます。
 
-The next example demonstrates how to refine the "window" to list all the employees, the department, and the total salary for the department. PARTITION BY is added to the OVER clause.
+次の例では、"ウィンドウ" を調整して、従業員、部門、部門の給与総額すべてを一覧に表示する方法を示しています。OVER 句には PARTITION BY が追加されています。
 
     @result=
     SELECT
@@ -207,7 +206,7 @@ The next example demonstrates how to refine the "window" to list all the employe
         SUM(Salary) OVER( PARTITION BY DeptName ) AS SalaryByDept
     FROM @employees;
 
-The results are:
+結果は次のようになります。
 
 |EmpName|DeptName|SalaryByDep
 |-------|--------|-------------------
@@ -221,35 +220,35 @@ The results are:
 |Ava|Marketing|25000
 |Ethan|Marketing|25000
 
-Again, there are the same number of input rows as output rows. However each row has a total salary for the corresponding department.
+ここでも、入力行数と出力行数は同じです。ただし、各行には、対応する部門の給与総額が示されています。
 
 
 
 
-## <a name="reporting-aggregation-functions"></a>Reporting aggregation functions
+## レポート集計関数
 
-Window functions also support the following aggregates:
+ウィンドウ関数では、次の集計もサポートされています。
 
 - COUNT
 - SUM
-- MIN
-- MAX
-- AVG
+- 最小
+- 最大
+- 平均
 - STDEV
 - VAR
 
-The syntax:
+構文は次のとおりです。
 
     <AggregateFunction>( [DISTINCT] <expression>) [<OVER_clause>]
 
-Note: 
+注:
 
-- By default, aggregate functions, except COUNT, ignore null values.
-- When aggregate functions are specified along with the OVER clause, the ORDER BY clause is not allowed in the OVER clause.
+- 既定では、集計関数 (COUNT を除く) は null 値を無視します。
+- 集計関数を OVER 句と共に指定する場合、OVER 句では ORDER BY 句を使用できません。
 
-### <a name="use-sum"></a>Use SUM
+### SUM の使用
 
-The following example adds a total salary by department to each input row:
+次の例では、部門別の給与総額を各入力行に追加します。
  
     @result=
         SELECT 
@@ -257,7 +256,7 @@ The following example adds a total salary by department to each input row:
             SUM(Salary) OVER( PARTITION BY DeptName ) AS TotalByDept
         FROM @employees;
 
-Here is the output:
+出力内容は次のとおりです。
 
 |EmpID|EmpName|DeptName|DeptID|Salary|TotalByDept
 |-----|-------|--------|------|------|-----------
@@ -271,16 +270,16 @@ Here is the output:
 |8|Ava|Marketing|400|15000|25000
 |9|Ethan|Marketing|400|10000|25000
 
-### <a name="use-count"></a>Use COUNT
+### COUNT の使用
 
-The following example adds an extra field to each row to show the total number employees in each department.
+次の例では、各行にフィールドを追加し、各部門の従業員の合計数を示します。
 
     @result =
         SELECT *, 
             COUNT(*) OVER(PARTITION BY DeptName) AS CountByDept 
         FROM @employees;
 
-The result:
+結果は次のようになります。
 
 |EmpID|EmpName|DeptName|DeptID|Salary|CountByDept
 |-----|-------|--------|------|------|-----------
@@ -295,9 +294,9 @@ The result:
 |9|Ethan|Marketing|400|10000|2
 
 
-### <a name="use-min-and-max"></a>Use MIN and MAX
+### MIN と MAX の使用
 
-The following example adds an extra field to each row to show the lowest salary of each department:
+次の例では、各行にフィールドを追加し、各部門の最低給与額を示します。
 
     @result =
         SELECT 
@@ -305,7 +304,7 @@ The following example adds an extra field to each row to show the lowest salary 
             MIN(Salary) OVER( PARTITION BY DeptName ) AS MinSalary
         FROM @employees;
 
-The results:
+結果は次のようになります。
 
 |EmpID|EmpName|DeptName|DeptID|Salary|MinSalary
 |-----|-------|--------|------|-------------|----------------
@@ -319,34 +318,34 @@ The results:
 |8|Ava|Marketing|400|15000|10000
 |9|Ethan|Marketing|400|10000|10000
 
-Replace MIN with MAX and then give it a try.
+MIN を MAX に置き換えて試してみてください。
 
 
-## <a name="ranking-functions"></a>Ranking Functions
+## 順位付け関数
 
-Ranking functions return a ranking value (a long) for each row in each partition as defined by the PARTITION BY and OVER clauses. The ordering of the rank is controlled by the ORDER BY in the OVER clause.
+順位付け関数では、PARTITION BY 句と OVER 句で定義されたとおり、各パーティション内の行ごとに順位付け値 (long) を返します。順位付けは、OVER 句の ORDER BY によって制御されます。
 
-The following are supported ranking functions:
+サポートされる順位付け関数は次のとおりです。
 
 - RANK
-- DENSE_RANK 
+- DENSE\_RANK
 - NTILE
-- ROW_NUMBER
+- ROW\_NUMBER
 
-**Syntax:**
+**構文:**
 
-    [ RANK() | DENSE_RANK() | ROW_NUMBER() | NTILE(<numgroups>) ]
-        OVER (
-            [PARTITION BY <identifier, > …[n]]
-            [ORDER BY <identifier, > …[n] [ASC|DESC]] 
-    ) AS <alias>
+	[ RANK() | DENSE_RANK() | ROW_NUMBER() | NTILE(<numgroups>) ]
+	    OVER (
+	        [PARTITION BY <identifier, > …[n]]
+	        [ORDER BY <identifier, > …[n] [ASC|DESC]] 
+	) AS <alias>
 
-- The ORDER BY clause is optional for ranking functions. If ORDER BY is specified then it determines the order of the ranking. If ORDER BY is not specified then U-SQL assigns values based on the order it reads record. Thus resulting into non deterministic value of row number, rank or dense rank in the case were order by clause is not specified.
-- NTILE requires an expression that evaluates to a positive integer. This number specifies the number of groups into which each partition must be divided. This identifier is used only with the NTILE ranking function. 
+- ORDER BY 句は、順位付け関数では省略可能です。指定した場合は、順位付けが決定されます。ORDER BY を指定しなかった場合は、U-SQL がレコードを読み取る順番に基づいて値を割り当てます。したがって、ORDER BY 句が指定されていない場合、行番号、順位、密度の高い順位は非確定的な値になります。
+- NTILE には、正の整数に評価される式が必要です。この数値は、各パーティションをいくつのグループに分割する必要があるかを示します。この識別子は、NTILE 順位付け関数でのみ使用されます。
 
-For more details on the OVER clause, see [U-SQL reference]().
+OVER 句の詳細については、[U-SQL リファレンス]()を参照してください。
 
-ROW_NUMBER, RANK, and DENSE_RANK all assign numbers to rows in a window. Rather than cover them separately, it’s more intuitive to see how They respond to the same input.
+ROW\_NUMBER、RANK、DENSE\_RANK はすべて、ウィンドウ内の行に番号を割り当てます。これらの関数を個別に説明することはしませんが、より直観的に理解できるように、同じ入力に対する応答を紹介します。
 
     @result =
     SELECT 
@@ -356,13 +355,13 @@ ROW_NUMBER, RANK, and DENSE_RANK all assign numbers to rows in a window. Rather 
         DENSE_RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS DenseRank 
     FROM @querylog;
         
-Note the OVER clauses are identical. The result:
+OVER 句が同じであることに注意してください。結果は次のようになります。
 
-|Query|Latency:int|Vertical|RowNumber|Rank|DenseRank
+|クエリ|Latency:int|Vertical|RowNumber|Rank|DenseRank
 |-----|-----------|--------|--------------|---------|--------------
-|Banana|300|Image|1|1|1
-|Cherry|300|Image|2|1|1
-|Durian|500|Image|3|3|2
+|Banana|300|イメージ|1|1|1
+|Cherry|300|イメージ|2|1|1
+|Durian|500|イメージ|3|3|2
 |Apple|100|Web|1|1|1
 |Fig|200|Web|2|2|2
 |Papaya|200|Web|3|2|2
@@ -370,59 +369,59 @@ Note the OVER clauses are identical. The result:
 |Cherry|400|Web|5|5|4
 |Durian|500|Web|6|6|5
 
-### <a name="row_number"></a>ROW_NUMBER
+### ROW\_NUMBER
 
-Within each Window (Vertical,either Image or Web), the row number increases by 1 ordered by Latency.  
+各ウィンドウ (Vertical が Image または Web) 内で、Latency で並べ替えられ、行番号が 1 ずつ増加します。
 
-![U-SQL window function ROW_NUMBER](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-row-number-result.png)
+![U-SQL window function ROW\_NUMBER](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-row-number-result.png)
 
-### <a name="rank"></a>RANK
+### RANK
 
-Different from ROW_NUMBER(), RANK() takes into account the value of the Latency which is specified in the ORDER BY clause for the window.
+RANK() では、ROW\_NUMBER() とは異なり、ウィンドウに ORDER BY 句で指定された Latency の値が考慮されます。
 
-RANK starts with (1,1,3) because the first two values for Latency are the same. Then the next value is 3 because the Latency value has moved on to 500. The key point being that even though duplicate values are given the same rank, the RANK number will “skip” to the next ROW_NUMBER value. You can see this pattern repeat with the sequence (2,2,4) in the Web vertical.
+Latency の最初の 2 つの値が同じであるため、RANK 列は (1,1,3) で始まります。その次の値は、Latency 値が 500 に変わったため、3 になります。重要な点は、重複する値に同じ順位が指定された場合でも、RANK の数値は次の ROW\_NUMBER 値に "スキップ" することです。このパターンは、Web バーティカルのシーケンス (2,2,4) で繰り返されていることがわかります。
 
-![U-SQL window function RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
+![U-SQL ウィンドウ関数 RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-rank-result.png)
 
-### <a name="dense_rank"></a>DENSE_RANK
-    
-DENSE_RANK is just like RANK except it doesn’t “skip” to the next ROW_NUMBER, instead it goes to the next number in the sequence. Notice the sequences (1,1,2) and (2,2,3) in the sample.
+### DENSE\_RANK
+	
+DENSE\_RANK は RANK と似ていますが、次の ROW\_NUMBER に "スキップ" せずに、順番に次の番号に進む点が異なります。サンプルでは (1,1,2) および (2,2,3) というシーケンスに注目してください。
 
-![U-SQL window function DENSE_RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-dense-rank-result.png)
+![U-SQL window function DENSE\_RANK](./media/data-lake-analytics-use-windowing-functions/u-sql-windowing-function-dense-rank-result.png)
 
-### <a name="remarks"></a>Remarks
+### 解説
 
-- If ORDER BY is not specified than ranking function will be applied to rowset without any ordering. This will result into non deterministic behavior on how ranking function is applied
-- There is no guarantee that the rows returned by a query using ROW_NUMBER will be ordered exactly the same with each execution unless the following conditions are true.
+- ORDER BY が指定されていない場合、順位付け関数は、順序付けなしで行セットに適用されます。その結果、順位付け関数の適用に関して非決定的動作が発生します。
+- 次の条件に当てはまる場合を除き、ROW\_NUMBER を使用してクエリによって返される行は、実行するたびに同じように並べ替えられます。
 
-    - Values of the partitioned column are unique.
-    - Values of the ORDER BY columns are unique.
-    - Combinations of values of the partition column and ORDER BY columns are unique.
+	- パーティション分割された列の値が一意である。
+	- ORDER BY 列の値が一意である。
+	- パーティション列の値と ORDER BY 列の値の組み合わせが一意である。
 
-### <a name="ntile"></a>NTILE
+### NTILE
 
-NTILE distributes the rows in an ordered partition into a specified number of groups. The groups are numbered, starting at one. 
+NTILE により、順序付けされたパーティション内の行は、指定された数のグループに分散されます。グループには 1 から始まる番号が付けられます。
 
 
-The following example splits the set of rows in each partition (vertical) into 4 groups in the order of the query latency, and returns the group number for each row. 
+次の例では、各パーティション (バーティカル) 内の行セットをクエリの待機時間の順番で 4 つのグループに分割し、行ごとにグループ番号を返します。
 
-The Image vertical has 3 rows, thus it has 3 groups. 
+Image バーティカルには 3 行が含まれるため、3 グループになります。
 
-The Web vertical has 6 rows, the two extra rows are distributed to the first two groups. That's why there are 2 rows in group 1 and group 2, and only 1 row in group 3 and group 4.  
+Web バーティカルには 6 行が含まれます。追加の 2 行は最初の 2 グループに配分されます。そのため、グループ 1 とグループ 2 には 2 行ありますが、グループ 3 とグループ 4 には 1 行しかありません。
 
     @result =
         SELECT 
             *,
             NTILE(4) OVER(PARTITION BY Vertical ORDER BY Latency) AS Quartile   
         FROM @querylog;
-        
-The results:
+		
+結果は次のようになります。
 
-|Query|Latency|Vertical|Quartile
+|クエリ|待機時間|Vertical|Quartile
 |-----|-----------|--------|-------------
-|Banana|300|Image|1
-|Cherry|300|Image|2
-|Durian|500|Image|3
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|2
+|Durian|500|イメージ|3
 |Apple|100|Web|1
 |Fig|200|Web|1
 |Papaya|200|Web|2
@@ -430,22 +429,22 @@ The results:
 |Cherry|400|Web|3
 |Durian|500|Web|4
 
-NTILE takes a parameter ("numgroups"). Numgroups is a positive int or long constant expression that specifies the number of groups into which each partition must be divided. 
+NTILE では、パラメーター ("numgroups") を使用します。numgroups は、各パーティションが分割されるグループ数を指定する、正の int または long 定数式です。
 
-- If the number of rows in the partition is evenly divisible by numgroups then the groups will have equal size. 
-- If the number of rows in a partition is not divisible by numgroups, this will cause groups of two sizes that differ by one member. Larger groups come before smaller groups in the order specified by the OVER clause. 
+- パーティション内の行数を numgroups で均等に割り切れる場合、グループのサイズは均一です。
+- パーティション内の行数を numgroups で割り切れない場合、1 つのメンバーが異なる 2 つのサイズのグループが作成されます。OVER 句で指定された順序では、大きいグループが小さいグループの前に位置します。
 
 For example:
 
-- 100 rows divided into 4 groups: [ 25, 25, 25, 25 ]
-- 102 rows devided into 4 groups: [ 26, 26, 25, 25 ]
+- 100 行が 4 グループに分割された場合: [ 25, 25, 25, 25 ]
+- 102 行が 4 グループに分割された場合: [ 26, 26, 25, 25 ]
 
 
-### <a name="top-n-records-per-partition-via-rank,-dense_rank-or-row_number"></a>Top N Records per Partition via RANK, DENSE_RANK or ROW_NUMBER
+### RANK、DENSE\_RANK、ROW\_NUMBER によるパーティションごとの上位 N レコード
 
-Many users want to select only TOP n rows per group. This is not possible with the traditional GROUP BY. 
+多くのユーザーは、グループごとに上位 n 行のみを選択したいと考えています。これは、従来の GROUP BY では不可能です。
 
-You have seen the following example at the beginning of the Ranking functions section. It doesn't show top N records for each partition:
+次の例は、「順位付け関数」セクションの冒頭で示しました。この例では、各パーティションの上位 N レコードは示されません。
 
     @result =
     SELECT 
@@ -455,13 +454,13 @@ You have seen the following example at the beginning of the Ranking functions se
         DENSE_RANK() OVER (PARTITION BY Vertical ORDER BY Latency) AS DenseRank
     FROM @querylog;
 
-The results:
+結果は次のようになります。
 
-|Query|Latency|Vertical|Rank|DenseRank|RowNumber
+|クエリ|待機時間|Vertical|Rank|DenseRank|RowNumber
 |-----|-----------|--------|---------|--------------|--------------
-|Banana|300|Image|1|1|1
-|Cherry|300|Image|1|1|2
-|Durian|500|Image|3|2|3
+|Banana|300|イメージ|1|1|1
+|Cherry|300|イメージ|1|1|2
+|Durian|500|イメージ|3|2|3
 |Apple|100|Web|1|1|1
 |Fig|200|Web|2|2|2
 |Papaya|200|Web|2|2|3
@@ -469,9 +468,9 @@ The results:
 |Cherry|400|Web|5|4|5
 |Durian|500|Web|6|5|6
 
-### <a name="top-n-with-dense-rank"></a>TOP N with DENSE RANK
+### DENSE RANK による上位 N
 
-The following example returns the top 3 records from each group with no gaps in the sequential rank numbering of rows in each windowing partition.
+次の例では、各グループから上位 3 件のレコードが返されます。各ウィンドウ パーティションでは、行に連続した一連の順位番号が付けられます。
 
     @result =
     SELECT 
@@ -484,19 +483,19 @@ The following example returns the top 3 records from each group with no gaps in 
         FROM @result
         WHERE DenseRank <= 3;
 
-The results:
+結果は次のようになります。
 
-|Query|Latency|Vertical|DenseRank
+|クエリ|待機時間|Vertical|DenseRank
 |-----|-----------|--------|--------------
-|Banana|300|Image|1
-|Cherry|300|Image|1
-|Durian|500|Image|2
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|1
+|Durian|500|イメージ|2
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|2
 |Fig|300|Web|3
 
-### <a name="top-n-with-rank"></a>TOP N with RANK
+### RANK による上位 N
 
     @result =
         SELECT 
@@ -509,19 +508,19 @@ The results:
         FROM @result
         WHERE Rank <= 3;
 
-The results:    
+結果は次のようになります。
 
-|Query|Latency|Vertical|Rank
+|クエリ|待機時間|Vertical|Rank
 |-----|-----------|--------|---------
-|Banana|300|Image|1
-|Cherry|300|Image|1
-|Durian|500|Image|3
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|1
+|Durian|500|イメージ|3
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|2
 
 
-### <a name="top-n-with-row_number"></a>TOP N with ROW_NUMBER
+### ROW\_NUMBER による上位 N
 
     @result =
         SELECT 
@@ -534,20 +533,20 @@ The results:
         FROM @result
         WHERE RowNumber <= 3;
 
-The results:   
+結果は次のようになります。
     
-|Query|Latency|Vertical|RowNumber
+|クエリ|待機時間|Vertical|RowNumber
 |-----|-----------|--------|--------------
-|Banana|300|Image|1
-|Cherry|300|Image|2
-|Durian|500|Image|3
+|Banana|300|イメージ|1
+|Cherry|300|イメージ|2
+|Durian|500|イメージ|3
 |Apple|100|Web|1
 |Fig|200|Web|2
 |Papaya|200|Web|3
 
-### <a name="assign-globally-unique-row-number"></a>Assign Globally Unique Row Number
+### グローバルに一意の行番号を割り当てる
 
-It’s often useful to assign a globally unique number to each row. This is easy (and more efficient than using a reducer) with the ranking functions.
+多くの場合、グローバルに一意の番号を各行に割り当てると便利です。これは、順位付け関数を使用すると簡単です (さらに、reducer を使用するよりも効率的です)。
 
     @result =
         SELECT 
@@ -556,22 +555,22 @@ It’s often useful to assign a globally unique number to each row. This is easy
         FROM @querylog;
 
 <!-- ################################################### -->
-## <a name="analytic-functions"></a>Analytic functions
+## 分析関数
 
-Analytic functions are used to understand the distributions of values in windows. The most common scenario for using analytic functions is the computation of percentiles.
+分析関数は、ウィンドウ内の値の分布を把握するために使用します。分析関数の使用に関する最も一般的なシナリオは、百分位数の計算です。
 
-**Supported analytic window functions**
+**サポートされている分析ウィンドウ関数**
 
-- CUME_DIST 
-- PERCENT_RANK
-- PERCENTILE_CONT
-- PERCENTILE_DISC
+- CUME\_DIST
+- PERCENT\_RANK
+- PERCENTILE\_CONT
+- PERCENTILE\_DISC
 
-### <a name="cume_dist"></a>CUME_DIST  
+### CUME\_DIST  
 
-CUME_DIST computes the relative position of a specified value in a group of values. It calculates the percent of queries that have a latency less than or equal to the current query latency in the same vertical. For a row R, assuming ascending ordering, the CUME_DIST of R is the number of rows with values lower than or equal to the value of R, divided by the number of rows evaluated in the partition or query result set. CUME_DIST returns numbers in the range 0 < x <= 1.
+CUME\_DIST は、値のグループにおける指定された値の相対位置を算出します。同じバーティカルで、現在のクエリの待機時間以下のクエリの割合が計算されます。行 R の場合、昇順での順序付けを想定すると、R の CUME\_DIST は、R の値以下の値を含む行の数を、パーティションまたはクエリ結果セットで評価された行の数で割った値になります。CUME\_DIST で返される数値の範囲は、0 より大きく 1 以下になります。
 
-** Syntax**
+**構文**
 
     CUME_DIST() 
         OVER (
@@ -579,7 +578,7 @@ CUME_DIST computes the relative position of a specified value in a group of valu
             ORDER BY <identifier, > …[n] [ASC|DESC] 
     ) AS <alias>
 
-The following example uses the CUME_DIST function to compute the latency percentile for each query within a vertical. 
+次の例では、CUME\_DIST 関数を使用して、バーティカル内のクエリごとに待機時間の百分位数を計算します。
 
     @result=
         SELECT 
@@ -587,44 +586,44 @@ The following example uses the CUME_DIST function to compute the latency percent
             CUME_DIST() OVER(PARTITION BY Vertical ORDER BY Latency) AS CumeDist
         FROM @querylog;
 
-The results:
+結果は次のようになります。
     
-|Query|Latency|Vertical|CumeDist
+|クエリ|待機時間|Vertical|CumeDist
 |-----|-----------|--------|---------------
 |Durian|500|Image|1
-|Banana|300|Image|0.666666666666667
-|Cherry|300|Image|0.666666666666667
+|Banana|300|イメージ|0\.666666666666667
+|Cherry|300|イメージ|0\.666666666666667
 |Durian|500|Web|1
-|Cherry|400|Web|0.833333333333333
-|Fig|300|Web|0.666666666666667
-|Fig|200|Web|0.5
-|Papaya|200|Web|0.5
-|Apple|100|Web|0.166666666666667
+|Cherry|400|Web|0\.833333333333333
+|Fig|300|Web|0\.666666666666667
+|Fig|200|Web|0\.5
+|Papaya|200|Web|0\.5
+|Apple|100|Web|0\.166666666666667
 
-There are 6 rows in the partition where partition key is “Web” (4th row and down):
+パーティション キーが "Web" であるパーティションには 6 行含まれています (4 行目以降)。
 
-- There are 6 rows with the value equal or lower than 500, so the CUME_DIST equals to 6/6=1
-- There are 5 rows with the value equal or lower than 400, so the CUME_DIST equals to 5/6=0.83
-- There are 4 rows with the value equal or lower than 300, so the CUME_DIST equals to 4/6=0.66
-- There are 3 rows with the value equal or lower than 200, so the CUME_DIST equals to 3/6=0.5. There are two rows with the same latency value.
-- There is 1 row with the value equal or lower than 100, so the CUME_DIST equals to 1/6=0.16. 
-
-
-**Usage notes:**
-
-- Tie values always evaluate to the same cumulative distribution value.
-- NULL values are treated as the lowest possible values.
-- You must specify the ORDER BY clause to calculate CUME_DIST.
-- CUME_DIST is similar to the PERCENT_RANK function
-
-Note: The ORDER BY clause is not allowed if the SELECT statement is not followed by OUTPUT. Thus ORDER BY clause in the OUTPUT statement determines the display order of the resultant rowset.
+- 値が 500 以下の行は 6 行あるため、CUME\_DIST は 6/6=1 となります。
+- 値が 400 以下の行は 5 行あるため、CUME\_DIST は 5/6=0.83 となります。
+- E値が 300 以下の行は 4 行あるため、CUME\_DIST は 4/6=0.66 となります。
+- 値が 200 以下の行は 3 行あるため、CUME\_DIST は 3/6=0.5 となります。待機時間の値が同じ行が 2 行あります。
+- 値が 100 以下の行は 1 行あるため、CUME\_DIST は 1/6=0.16 となります。
 
 
-### <a name="percent_rank"></a>PERCENT_RANK
+**使用上の注意:**
 
-PERCENT_RANK calculates the relative rank of a row within a group of rows. PERCENT_RANK is used to evaluate the relative standing of a value within a rowset or partition. The range of values returned by PERCENT_RANK is greater than 0 and less than or equal to 1. Unlike CUME_DIST, PERCENT_RANK is always 0 for the first row.
-    
-** Syntax**
+- 同順位の値は、常に、同じ累積分布の値に評価されます。
+- NULL 値は、有効な最小値として扱われます。
+- CUME\_DIST を計算するには、ORDER BY 句を指定する必要があります。
+- CUME\_DIST は PERCENT\_RANK 関数に似ています。
+
+注: SELECT ステートメントの後に OUTPUT がない場合は、ORDER BY 句を使用できません。したがって、OUTPUT ステートメント内の ORDER BY 句により、結果行セットの表示順が決定します。
+
+
+### PERCENT\_RANK
+
+PERCENT\_RANK は、行グループ内の行の相対的な順位を計算します。PERCENT\_RANK を使用すると、行セットまたはパーティション内で値の相対的な位置を評価できます。PERCENT\_RANK によって返される値の範囲は、0 より大きく 1 以下になります。CUME\_DIST とは異なり、最初の行では、PERCENT\_RANK は常に 0 になります。
+	
+**構文**
 
     PERCENT_RANK() 
         OVER (
@@ -632,19 +631,19 @@ PERCENT_RANK calculates the relative rank of a row within a group of rows. PERCE
             ORDER BY <identifier, > …[n] [ASC|DESC] 
         ) AS <alias>
 
-**Notes**
+**メモ**
 
-- The first row in any set has a PERCENT_RANK of 0.
-- NULL values are treated as the lowest possible values.
-- You must specify the ORDER BY clause to calculate PERCENT_RANK.
-- CUME_DIST is similar to the PERCENT_RANK function 
+- どのセットでも、最初の行では PERCENT\_RANK は 0 になります。
+- NULL 値は、有効な最小値として扱われます。
+- PERCENT\_RANK を計算するには、ORDER BY 句を指定する必要があります。
+- CUME\_DIST は PERCENT\_RANK 関数に似ています。
 
 
-The following example uses the PERCENT_RANK function to compute the latency percentile for each query within a vertical. 
+次の例では、PERCENT\_RANK 関数を使用して、バーティカル内のクエリごとに待機時間の百分位数を計算します。
 
-The PARTITION BY clause is specified to partition the rows in the result set by the vertical. The ORDER BY clause in the OVER clause orders the rows in each partition. 
+結果セット内の行をバーティカルでパーティションに分割するには、PARTITION BY 句を指定します。OVER 句内の ORDER BY 句により、各パーティション内の行に順序が付けられます。
 
-The value returned by the PERCENT_RANK function represents the rank of the queries’ latency within a vertical as a percentage. 
+PERCENT\_RANK 関数で返された値は、バーティカル内のクエリの待機時間の順位をパーセンテージで表しています。
 
 
     @result=
@@ -653,42 +652,41 @@ The value returned by the PERCENT_RANK function represents the rank of the queri
             PERCENT_RANK() OVER(PARTITION BY Vertical ORDER BY Latency) AS PercentRank
         FROM @querylog;
 
-The results:
+結果は次のようになります。
 
-|Query|Latency:int|Vertical|PercentRank
+|クエリ|Latency:int|Vertical|PercentRank
 |-----|-----------|--------|------------------
-|Banana|300|Image|0
-|Cherry|300|Image|0
+|Banana|300|イメージ|0
+|Cherry|300|イメージ|0
 |Durian|500|Image|1
 |Apple|100|Web|0
-|Fig|200|Web|0.2
-|Papaya|200|Web|0.2
-|Fig|300|Web|0.6
-|Cherry|400|Web|0.8
+|Fig|200|Web|0\.2
+|Papaya|200|Web|0\.2
+|Fig|300|Web|0\.6
+|Cherry|400|Web|0\.8
 |Durian|500|Web|1
 
-### <a name="percentile_cont-&-percentile_disc"></a>PERCENTILE_CONT & PERCENTILE_DISC
+### PERCENTILE\_CONT と PERCENTILE\_DISC
 
-These two functions calculates a percentile based on a continuous or discrete distribution of the column values.
+これら 2 つの関数では、列値の連続型分布または離散型分布に基づいて百分位数を計算します。
 
-**Syntax**
+**構文**
 
-    [PERCENTILE_CONT | PERCENTILE_DISC] ( numeric_literal ) 
+    [PERCENTILE_CONT | PERCENTILE_DISC] \( numeric_literal ) 
         WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ] )
         OVER ( [ PARTITION BY <identifier,>…[n] ] ) AS <alias>
 
-**numeric_literal** - The percentile to compute. The value must range between 0.0 and 1.0.
+**numeric\_literal** - 計算する百分位数です。値は 0.0 ～ 1.0 の範囲で指定してください。
 
-WITHIN GROUP ( ORDER BY <identifier> [ ASC | DESC ]) - Specifies a list of numeric values to sort and compute the percentile over. Only one column identifier is allowed. The expression must evaluate to a numeric type. Other data types are not allowed. The default sort order is ascending.
+WITHIN GROUP ( ORDER BY <識別子> [ ASC | DESC ]) - 並べ替える数値の一覧を指定し、百分位数を計算します。許可される列識別子は 1 つだけです。式は、数値型に評価される必要があります。その他のデータ型は許可されていません。既定の並べ替え順は昇順です。
 
-OVER ([ PARTITION BY <identifier,>…[n] ] ) - Divides the input rowset into partitions as per the partition key to which the percentile function is applied. For more information, see RANKING section of this document.
-Note: Any nulls in the data set are ignored.
+OVER ([ PARTITION BY <識別子>…[n] ] ) - パーティション キーごとに入力行セットをパーティションに分割します。パーティションには百分位関数が適用されます。詳細については、このドキュメントの順位付けに関するセクションを参照してください。注: データ セット内の null はすべて無視されます。
 
-**PERCENTILE_CONT** calculates a percentile based on a continuous distribution of the column value. The result is interpolated and might not be equal to any of the specific values in the column. 
+**PERCENTILE\_CONT** は、列値の連続型分布に基づいて百分位数を計算します。結果には値が補間され、列内の特定の値と一致しない可能性があります。
 
-**PERCENTILE_DISC** calculates the percentile based on a discrete distribution of the column values. The result is equal to a specific value in the column. In other words, PERCENTILE_DISC, in contrast to PERCENTILE_CONT, always returns an actual (original input) value.
+**PERCENTILE\_DISC** は、列値の離散型分布に基づいて百分位数を計算します。結果は、列内の特定の値と等しくなります。つまり、PERCENTILE\_CONT とは異なり、PERCENTILE\_DISC では、常に実際の値 (元の入力値) が返されます。
 
-You can see how both work in the example below which tries to find the median (percentile=0.50) value for Latency within each Vertical
+次の例では、この 2 つの関数の動作を確認できます。ここでは、各バーティカル内で待機時間の中央値 (百分位数 = 0.50) を検索します。
 
     @result = 
         SELECT 
@@ -703,13 +701,13 @@ You can see how both work in the example below which tries to find the median (p
         
         FROM @querylog;
 
-The results:
+結果は次のようになります。
 
-|Query|Latency:int|Vertical|PercentileCont50|PercentilDisc50
+|クエリ|Latency:int|Vertical|PercentileCont50|PercentilDisc50
 |-----|-----------|--------|-------------------|----------------
-|Banana|300|Image|300|300
-|Cherry|300|Image|300|300
-|Durian|500|Image|300|300
+|Banana|300|イメージ|300|300
+|Cherry|300|イメージ|300|300
+|Durian|500|イメージ|300|300
 |Apple|100|Web|250|200
 |Fig|200|Web|250|200
 |Papaya|200|Web|250|200
@@ -718,11 +716,9 @@ The results:
 |Durian|500|Web|250|200
 
 
-For PERCENTILE_CONT because values can be interpolated, the median for web is 250 even though no query in the web vertical had a latency of 250. 
+PERCENTILE\_CONT では、値を補間できるため、Web バーティカルに待機時間が 250 のクエリがない場合でも、Web の中央値は 250 になります。
 
-PERCENTILE_DISC does not interpolate values, so the median for Web is 200 - which is an actual value found in the input rows.
-
-
+PERCENTILE\_DISC では値が補間されないため、Web の中央値は 200 になります。これは、入力行で見つかる実際の値です。
 
 
 
@@ -732,21 +728,19 @@ PERCENTILE_DISC does not interpolate values, so the median for Web is 200 - whic
 
 
 
-## <a name="see-also"></a>See also
-
-- [Overview of Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-- [Get started with Data Lake Analytics using Azure Portal](data-lake-analytics-get-started-portal.md)
-- [Get started with Data Lake Analytics using Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-- [Develop U-SQL scripts using Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
-- [Use Azure Data Lake Analytics interactive tutorials](data-lake-analytics-use-interactive-tutorials.md)
-- [Analyze Website logs using Azure Data Lake Analytics](data-lake-analytics-analyze-weblogs.md)
-- [Get started with Azure Data Lake Analytics U-SQL language](data-lake-analytics-u-sql-get-started.md)
-- [Manage Azure Data Lake Analytics using Azure Portal](data-lake-analytics-manage-use-portal.md)
-- [Manage Azure Data Lake Analytics using Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
-- [Monitor and troubleshoot Azure Data Lake Analytics jobs using Azure Portal](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
 
+## 関連項目
 
-<!--HONumber=Oct16_HO2-->
+- [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
+- [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
+- [Azure PowerShell で Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-powershell.md)
+- [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+- [Azure Data Lake Analytics の対話型チュートリアルの使用](data-lake-analytics-use-interactive-tutorials.md)
+- [Azure Data Lake Analytics を使用する Web サイト ログの分析](data-lake-analytics-analyze-weblogs.md)
+- [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
+- [Azure PowerShell を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-powershell.md)
+- [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
 
-
+<!---HONumber=AcomDC_0914_2016-->

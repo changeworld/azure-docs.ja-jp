@@ -1,66 +1,65 @@
 <properties
-    pageTitle="Add Application Insights SDK to monitor your Node.js app | Microsoft Azure"
-    description="Analyze usage, availability and performance of your on-premises or Microsoft Azure web application with Application Insights."
-    services="application-insights"
+	pageTitle="Application Insights SDK を追加して Node.js アプリを監視する | Microsoft Azure"
+	description="オンプレミスまたは Microsoft Azure Web アプリケーションの使用状況、可用性、パフォーマンスを Application Insights で分析します。"
+	services="application-insights"
     documentationCenter=""
-    authors="alancameronwills"
-    manager="douge"/>
+	authors="alancameronwills"
+	manager="douge"/>
 
 <tags
-    ms.service="application-insights"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="ibiza"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/30/2016"
-    ms.author="awills"/>
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/30/2016"
+	ms.author="awills"/>
+
+
+# Application Insights SDK を追加して Node.js アプリを監視する
+
+*Application Insights はプレビュー段階です。*
+
+[Visual Studio Application Insights](app-insights-overview.md) は、実行中のアプリケーションを監視し、[パフォーマンスの問題や例外の検出と診断](app-insights-detect-triage-diagnose.md)、[アプリの使用方法の把握](app-insights-overview-usage.md)に役立ちます。Azure Web Apps に加えて、独自のオンプレミス IIS サーバーや Azure の仮想マシンでホストされているアプリに対しても機能します。
 
 
 
-# <a name="add-application-insights-sdk-to-monitor-your-node.js-app"></a>Add Application Insights SDK to monitor your Node.js app
+SDK では、受信 HTTP 要求レートと応答、パフォーマンス カウンター (CPU、メモリ、RPS)、ハンドルされない例外の自動収集機能が提供されます。さらに、カスタム呼び出しを追加して、依存関係、メトリック、またはその他のイベントを追跡することができます。
 
-*Application Insights is in preview.*
-
-[Visual Studio Application Insights](app-insights-overview.md) monitors your live application to help you [detect and diagnose performance issues and exceptions](app-insights-detect-triage-diagnose.md), and [discover how your app is used](app-insights-overview-usage.md). It works for apps that are hosted on your own on-premises IIS servers or on Azure VMs, as well as Azure web apps.
+![Example performance monitoring charts](./media/app-insights-windows-services/10-perf.png)
 
 
+#### 開始する前に
 
-The SDK provides automatic collection of incoming HTTP request rates and responses, performance counters (CPU, memory, RPS), and unhandled exceptions. In addition, you can add custom calls to track dependencies, metrics, or other events.
+必要なもの:
 
-![Example performance monitoring charts](./media/app-insights-nodejs/10-perf.png)
+* Visual Studio 2013 以降より新しいバージョンが適しています。
+* [Microsoft Azure](http://azure.com) のサブスクリプションチームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
 
+## <a name="add"></a>Application Insights リソースの作成
 
-#### <a name="before-you-start"></a>Before you start
+[Azure ポータル][portal]にサインインし、Application Insights の新しいリソースを作成します。Azure の[リソース][roles]は、サービスのインスタンスです。このリソースでは、アプリのテレメトリが分析されて画面に表示されます。
 
-You need:
+![[新規]、[Application Insights] の順にクリックする](./media/app-insights-windows-services/01-new-asp.png)
 
-* Visual Studio 2013 or later. Later is better.
-* A subscription to [Microsoft Azure](http://azure.com). If your team or organization has an Azure subscription, the owner can add you to it, using your [Microsoft account](http://live.com).
+アプリケーションの種類として [その他] を選択します。アプリケーションの種類を選択すると、[リソース] ブレードの既定のコンテンツと[メトリックス エクスプローラー][metrics]に表示されるプロパティが設定されます。
 
-## <a name="<a-name="add"></a>create-an-application-insights-resource"></a><a name="add"></a>Create an Application Insights resource
+#### インストルメンテーション キーのコピー
 
-Sign in to the [Azure portal][portal], and create a new Application Insights resource. A [resource][roles] in Azure is an instance of a service. This resource is where telemetry from your app will be analyzed and presented to you.
+これはリソースを識別するキーです。データをリソースに送信するために SDK の後の手順でインストールします。
 
-![Click New, Application Insights](./media/app-insights-nodejs/01-new-asp.png)
-
-Choose Other as the application type. The choice of application type sets the default content of the resource blades and the properties visible in [Metrics Explorer][metrics].
-
-#### <a name="copy-the-instrumentation-key"></a>Copy the Instrumentation Key
-
-The key identifies the resource, and you'll install it soon in the SDK to direct data to the resource.
-
-![Click Properties, select the key, and press ctrl+C](./media/app-insights-nodejs/02-props-asp.png)
+![[プロパティ] をクリックし、キーを選択して、Ctrl キーを押しながら C キーを押す](./media/app-insights-windows-services/02-props-asp.png)
 
 
-## <a name="<a-name="sdk"></a>-install-the-sdk-in-your-application"></a><a name="sdk"></a> Install the SDK in your application
+## <a name="sdk"></a>アプリケーションに SDK をインストールする
 
 ```
 npm install applicationinsights --save
 ```
 
-## <a name="usage"></a>Usage
+## 使用法
 
-This will enable request monitoring, unhandled exception tracking, and system performance monitoring (CPU/Memory/RPS).
+これにより、要求の監視、ハンドルされない例外の追跡、システム パフォーマンスの監視 (CPU/Memory/RPS) が有効になります。
 
 ```javascript
 
@@ -68,56 +67,56 @@ var appInsights = require("applicationinsights");
 appInsights.setup("<instrumentation_key>").start();
 ```
 
-The instrumentation key can also be set in the environment variable APPINSIGHTS_INSTRUMENTATIONKEY. If this is done, no argument is required when calling `appInsights.setup()` or `appInsights.getClient()`.
+インストルメンテーション キーは、APPINSIGHTS\_INSTRUMENTATIONKEY 環境変数でも設定できます。この設定が済むと、`appInsights.setup()` または `appInsights.getClient()` を呼び出すときに引数が不要になります。
 
-You can try the SDK without sending telemetry: set the instrumentation key to a non-empty string.
-
-
-## <a name="<a-name="run"></a>-run-your-project"></a><a name="run"></a> Run your project
-
-Run your application and try it out: open different pages to generate some telemetry.
+インストルメンテーション キーを空でない文字列に設定することで、テレメトリを送信せずに SDK を試してみることができます。
 
 
-## <a name="<a-name="monitor"></a>-view-your-telemetry"></a><a name="monitor"></a> View your telemetry
+## <a name="run"></a> プロジェクトの実行
 
-Return to the [Azure portal](https://portal.azure.com) and browse to your Application Insights resource.
-
-
-Look for data in the Overview page. At first, you'll just see one or two points. For example:
-
-![Click through to more data](./media/app-insights-nodejs/12-first-perf.png)
-
-Click through any chart to see more detailed metrics. [Learn more about metrics.][perf]
-
-#### <a name="no-data?"></a>No data?
-
-* Use the application, opening different pages so that it generates some telemetry.
-* Open the [Search](app-insights-diagnostic-search.md) tile, to see individual events. Sometimes it takes events a little while longer to get through the metrics pipeline.
-* Wait a few seconds and click **Refresh**. Charts refresh themselves periodically, but you can refresh manually if you're waiting for some data to show up.
-* See [Troubleshooting][qna].
-
-## <a name="publish-your-app"></a>Publish your app
-
-Now deploy your application to IIS or to Azure and watch the data accumulate.
+アプリケーションを実行して動作を確認します。さまざまなページを開き、テレメトリをいくつか生成します。
 
 
-#### <a name="no-data-after-you-publish-to-your-server?"></a>No data after you publish to your server?
+## <a name="monitor"></a> 利用統計情報を表示する
 
-Open these ports for outgoing traffic in your server's firewall:
+[Azure ポータル](https://portal.azure.com)に戻り、Application Insights のリソースを参照します。
+
+
+[概要] ページでデータを探します。最初、1 つまたは 2 つのポイントだけが表示されます。For example:
+
+![クリックしてより多くのデータを表示する](./media/app-insights-windows-services/12-first-perf.png)
+
+任意のグラフをクリックして、より詳細なメトリックを表示します。[メトリックの詳細についてはこちらをご覧ください。][perf]
+
+#### データが表示されない場合
+
+* アプリケーションを使用して、テレメトリがいくつか生成されるようにさまざまなページを開きます。
+* [[検索]](app-insights-diagnostic-search.md) タイルを開き、個々のイベントを表示します。メトリック パイプラインを経由すると、イベントの取得に少し時間がかかる場合があります。
+* 数秒待機してから **[最新の情報に更新]** をクリックします。グラフは周期的に自動で更新されますが、データの表示を待機している場合、手動で更新することもできます。
+* [トラブルシューティング][qna]に関するページを参照します。
+
+## アプリケーションの発行
+
+ここで、アプリケーションを IIS または Azure にデプロイし、データ累積を確認します。
+
+
+#### サーバーに発行した後でデータはありませんか。
+
+サーバーのファイアウォールで発信トラフィック用のこれらのポートを開きます。
 
 + `dc.services.visualstudio.com:443`
 + `f5.services.visualstudio.com:443`
 
 
-#### <a name="trouble-on-your-build-server?"></a>Trouble on your build server?
+#### ビルド サーバーで問題が発生した場合
 
-Please see [this Troubleshooting item](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild).
+[このトラブルシューティング項目](app-insights-asp-net-troubleshoot-no-data.md#NuGetBuild)を参照してください。
 
 
 
-## <a name="customized-usage"></a>Customized Usage 
+## カスタマイズした使用状況 
 
-### <a name="disabling-auto-collection"></a>Disabling auto-collection
+### 自動収集の無効化
 
 ```javascript
 import appInsights = require("applicationinsights");
@@ -129,7 +128,7 @@ appInsights.setup("<instrumentation_key>")
     .start();
 ```
 
-### <a name="custom-monitoring"></a>Custom monitoring
+### カスタム監視
 
 ```javascript
 import appInsights = require("applicationinsights");
@@ -141,9 +140,9 @@ client.trackMetric("custom metric", 3);
 client.trackTrace("trace message");
 ```
 
-[Learn more about the telemetry API](app-insights-api-custom-events-metrics.md).
+[テレメトリ API の詳細については、こちらを参照してください](app-insights-api-custom-events-metrics.md)。
 
-### <a name="using-multiple-instrumentation-keys"></a>Using multiple instrumentation keys
+### 複数のインストルメンテーション キーの使用
 
 ```javascript
 import appInsights = require("applicationinsights");
@@ -156,9 +155,9 @@ var otherClient = appInsights.getClient("<other_instrumentation_key>");
 otherClient.trackEvent("custom event");
 ```
 
-## <a name="examples"></a>Examples
+## 例
 
-### <a name="tracking-dependency"></a>Tracking dependency
+### 依存関係の追跡
 
 ```javascript
 import appInsights = require("applicationinsights");
@@ -175,7 +174,7 @@ client.trackDependency("dependency name", "command name", elapsedTime, success);
 
 
 
-### <a name="manual-request-tracking-of-all-"get"-requests"></a>Manual request tracking of all "GET" requests
+### すべての "GET" 要求の手動要求トラッキング
 
 ```javascript
 var http = require("http");
@@ -213,10 +212,10 @@ server.on("listening", () => {
 });
 ```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-* [Monitor your telemetry in the portal](app-insights-dashboards.md)
-* [Write Analytics queries over your telemetry](app-insights-analytics-tour.md)
+* [ポータル内でテレメトリを監視する](app-insights-dashboards.md)
+* [テレメトリに関する分析クエリを記述する](app-insights-analytics-tour.md)
 
 
 
@@ -229,8 +228,4 @@ server.on("listening", () => {
 [qna]: app-insights-troubleshoot-faq.md
 [roles]: app-insights-resources-roles-access-control.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

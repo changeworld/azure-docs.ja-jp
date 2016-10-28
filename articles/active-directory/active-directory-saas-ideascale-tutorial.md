@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with IdeaScale | Microsoft Azure" 
-    description="Learn how to use IdeaScale with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と IdeaScale の統合 | Microsoft Azure" 
+    description="Azure Active Directory で IdeaScale を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,158 +11,150 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/09/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory integration with IdeaScale
+#チュートリアル: Azure Active Directory と IdeaScale の統合
   
-The objective of this tutorial is to show the integration of Azure and IdeaScale.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルでは、Azure と IdeaScale の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   A IdeaScale single sign-on enabled subscription
+-   有効な Azure サブスクリプション
+-   IdeaScale でのシングル サインオンが有効なサブスクリプション
   
-After completing this tutorial, the Azure AD users you have assigned to IdeaScale will be able to single sign into the application using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルを完了すると、IdeaScale に割り当てた Azure AD ユーザーは、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を使用して、アプリケーションにシングル サインオンできるようになります。
   
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Enabling the application integration for IdeaScale
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  IdeaScale のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-![Scenario](./media/active-directory-saas-ideascale-tutorial/IC790838.png "Scenario")
-##<a name="enabling-the-application-integration-for-ideascale"></a>Enabling the application integration for IdeaScale
+![シナリオ](./media/active-directory-saas-ideascale-tutorial/IC790838.png "シナリオ")
+##IdeaScale のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for IdeaScale.
+このセクションでは、IdeaScale のアプリケーション統合を有効にする方法を説明します。
 
-###<a name="to-enable-the-application-integration-for-ideascale,-perform-the-following-steps:"></a>To enable the application integration for IdeaScale, perform the following steps:
+###IdeaScale のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-ideascale-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-ideascale-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-ideascale-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-ideascale-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-ideascale-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-ideascale-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-ideascale-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **IdeaScale**.
+6.  **検索ボックス**に「**IdeaScale**」と入力します。
 
-    ![Application Gallery](./media/active-directory-saas-ideascale-tutorial/IC790841.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-ideascale-tutorial/IC790841.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **IdeaScale**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[IdeaScale]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![IdeaScale](./media/active-directory-saas-ideascale-tutorial/IC790842.png "IdeaScale")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
   
-The objective of this section is to outline how to enable users to authenticate to IdeaScale with their account in Azure AD using federation based on the SAML protocol.  
-Configuring single sign-on for IdeaScale requires you to retrieve a thumbprint value from a certificate.  
-If you are not familiar with this procedure, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI).
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで IdeaScale に対する認証を行うことができるようにする方法を説明します。IdeaScale のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」をご覧ください。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **IdeaScale** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **[IdeaScale]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790843.png "Configure Single Sign-On")
 
-2.  On the **How would you like users to sign on to IdeaScale** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの IdeaScale へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790844.png "Configure Single Sign-On")
 
-3.  On the **Configure App URL** page, in the **IdeaScale Sign On URL** textbox, type the URL used by your users to sign on to your IdeaScale application (e.g.: "*https://company.IdeaScale.com*"), and then click **Next**.
+3.  **[アプリケーション URL の構成]** ページの **[IdeaScale のサインオン URL]** テキストボックスに、ユーザーが IdeaScale アプリケーションにサインオンするときに使用する URL (例: "*https://company.IdeaScale.com*") を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-ideascale-tutorial/IC790845.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-ideascale-tutorial/IC790845.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at IdeaScale** page, to download your metadata, click **Download metadata**, and then save the metadata file locally on your computer.
+4.  **[IdeaScale でのシングル サインオンの構成]** ページで、メタデータをダウンロードするために、**[メタデータのダウンロード]** をクリックし、コンピューターでメタデータ ファイルをローカルに保存します。
 
     ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790846.png "Configure Single Sign-On")
 
-5.  In a different web browser window, log into your IdeaScale company site as an administrator.
+5.  別の Web ブラウザーのウィンドウで、IdeaScale 企業サイトに管理者としてログインします。
 
-6.  Go to **Community Settings**.
+6.  **[コミュニティの設定]** に移動します。
 
-    ![Community Settings](./media/active-directory-saas-ideascale-tutorial/IC790847.png "Community Settings")
+    ![コミュニティの設定](./media/active-directory-saas-ideascale-tutorial/IC790847.png "コミュニティの設定")
 
-7.  Go to **Security \> Single Signon Settings**.
+7.  **[セキュリティ]、[シングル サインオン設定]** の順にクリックします。
 
-    ![Single Signon Settings](./media/active-directory-saas-ideascale-tutorial/IC790848.png "Single Signon Settings")
+    ![シングル サインオンの設定](./media/active-directory-saas-ideascale-tutorial/IC790848.png "シングル サインオンの設定")
 
-8.  As **Single-Signon Type**, select **SAML 2.0**.
+8.  **[シングル サインオンのタイプ]** で **[SAML 2.0]** を選択します。
 
-    ![Single Signon Type](./media/active-directory-saas-ideascale-tutorial/IC790849.png "Single Signon Type")
+    ![シングル サインオンのタイプ](./media/active-directory-saas-ideascale-tutorial/IC790849.png "シングル サインオンのタイプ")
 
-9.  On the **Single Signon Settings** dialog, perform the following steps:
+9.  **[シングル サインオンの設定]** ダイアログで、次の手順を実行します。
 
-    ![Single Signon Settings](./media/active-directory-saas-ideascale-tutorial/IC790850.png "Single Signon Settings")
+    ![シングル サインオンの設定](./media/active-directory-saas-ideascale-tutorial/IC790850.png "シングル サインオンの設定")
 
-    1.  In the Azure classic portal, on the **Configure single sign-on at IdeaScale** dialog page, copy the **Entity ID** value, and then paste it into the **SAML IdP Entity ID** textbox.
-    2.  Copy the content of your downloaded metadata file, and then paste it into the **SAML IdP Metadata** textbox.
-    3.  In the Azure classic portal, on the **Configure single sign-on at IdeaScale** dialog page, copy the **Remote Logout URL** value, and then paste it into the **Logout Success URL** textbox.
-    4.  Click **Save Changes**.
+    1.  Azure クラシック ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[エンティティ ID]** の値をコピーし、**[SAML IdP エンティティ ID]** テキストボックスに貼り付けます。
+    2.  ダウンロードしたメタデータ ファイルの内容をコピーし、**[SAML IdP メタデータ]** テキストボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[IdeaScale でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[ログアウト成功 URL]** テキストボックスに貼り付けます。
+    4.  **[変更を保存]** をクリックします。
 
-10. On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+10. Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure Single Sign-On](./media/active-directory-saas-ideascale-tutorial/IC790851.png "Configure Single Sign-On")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-In order to enable Azure AD users to log into IdeaScale, they must be provisioned into IdeaScale.  
-In the case of IdeaScale, provisioning is a manual task.
+Azure AD ユーザーが IdeaScale にログインできるようにするには、そのユーザーを IdeaScale にプロビジョニングする必要があります。IdeaScale の場合、プロビジョニングは手動で行います。
 
-###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  Log in to your **IdeaScale** company site as administrator.
+1.  **IdeaScale** 企業サイトに管理者としてログインします。
 
-2.  Go to **Community Settings**.
+2.  **[コミュニティの設定]** に移動します。
 
-    ![Community Settings](./media/active-directory-saas-ideascale-tutorial/IC790847.png "Community Settings")
+    ![コミュニティの設定](./media/active-directory-saas-ideascale-tutorial/IC790847.png "コミュニティの設定")
 
-3.  Go to **Basic Settings \> Member Management**.
+3.  **[基本設定]、[メンバ管理]** の順にクリックします。
 
-4.  Click **Add Member**.
+4.  **[メンバーの追加]** をクリックします。
 
-    ![Member Management](./media/active-directory-saas-ideascale-tutorial/IC790852.png "Member Management")
+    ![メンバ管理](./media/active-directory-saas-ideascale-tutorial/IC790852.png "メンバ管理")
 
-5.  In the Add New Member section, perform the following steps:
+5.  [新しいメンバーの追加] セクションで、次の手順を実行します。
 
-    ![Add New Member](./media/active-directory-saas-ideascale-tutorial/IC790853.png "Add New Member")
+    ![新しいメンバーの追加](./media/active-directory-saas-ideascale-tutorial/IC790853.png "新しいメンバーの追加")
 
-    1.  In the **Email Addresses** textbox, type the email address of a valid AAD account you want to provision.
-    2.  Click **Save Changes**.
+    1.  **[電子メール アドレス]** テキストボックスに、プロビジョニングする有効な AAD アカウントの電子メール アドレスを入力します。
+    2.  **[変更を保存]** をクリックします。
 
-    >[AZURE.NOTE] The Azure Active Directory account holder will get an email with a link to confirm the account before it becomes active.
+    >[AZURE.NOTE] Azure Active Directory のアカウント所有者には、そのアカウントがアクティブになる前に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE] You can use any other IdeaScale user account creation tools or APIs provided by IdeaScale to provision AAD user accounts.
+>[AZURE.NOTE] IdeaScale から提供されている他の IdeaScale ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-ideascale,-perform-the-following-steps:"></a>To assign users to IdeaScale, perform the following steps:
+###ユーザーを IdeaScale に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **IdeaScale **application integration page, click **Assign users**.
+2.  **IdeaScale** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-ideascale-tutorial/IC790854.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-ideascale-tutorial/IC790854.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-ideascale-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」をご覧ください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

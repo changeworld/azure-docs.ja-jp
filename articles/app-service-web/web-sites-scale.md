@@ -1,128 +1,124 @@
 <properties
-    pageTitle="Scale up an app in Azure | Microsoft Azure"
-    description="Learn how to scale up an app in Azure App Service to add capacity and features."
-    services="app-service"
-    documentationCenter=""
-    authors="cephalin"
-    manager="wpickett"
-    editor="mollybos"/>
+	pageTitle="Azure でのアプリのスケールアップ | Microsoft Azure"
+	description="Azure App Service のアプリをスケールアップして容量と機能を追加する方法について説明します。"
+	services="app-service"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor="mollybos"/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/05/2016"
-    ms.author="cephalin"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/05/2016"
+	ms.author="cephalin"/>
 
+# Azure でのアプリのスケールアップ #
 
-# <a name="scale-up-an-app-in-azure"></a>Scale up an app in Azure #
+この記事では、Azure App Service でアプリのスケールを変更する方法について説明します。スケーリングには、スケールアップとスケールアウトという 2 つのワークフローがあり、この記事ではスケールアップ ワークフローについて説明します。
 
-This article shows you how to scale your app in Azure App Service. There are two workflows for scaling, scale up and scale out, and this article explains the scale up workflow.
+- [スケールアップ](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): CPU、メモリ、ディスク領域を増やしたり、専用の仮想マシン (VM)、カスタム ドメインと証明書、ステージング スロット、自動スケールのような拡張機能を追加したりします。スケールアップするには、アプリが属している App Service プランの価格レベルを変更します。
+- [スケールアウト](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): アプリを実行する VM インスタンスの数を増やします。価格レベルに応じて、20 個までのインスタンスにスケールアウトすることができます。**Premium** レベルの [App Service Environment](../app-service/app-service-app-service-environments-readme.md) では、スケールアウト カウントが 50 インスタンスに増えます。スケールアウトの詳細については、「[手動または自動によるインスタンス数のスケール変更](../azure-portal/insights-how-to-scale.md)」を参照してください。あらかじめ定義されている規則とスケジュールに基づいてインスタンス数を自動的に変更する自動スケールの使い方が説明されています。
 
-- [Scale up](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Get more CPU, memory, disk space, and extra features like dedicated virtual machines (VMs), custom domains and certificates, staging slots, autoscaling, and more. You scale up by changing the pricing tier of the App Service plan that your app belongs to.
-- [Scale out](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Increase the number of VM instances that run your app.
-You can scale out to as many as 20 instances, depending on your pricing tier. [App Service Environments](../app-service/app-service-app-service-environments-readme.md) in **Premium** tier will further increase your scale-out count to 50 instances. For more information about scaling out, see [Scale instance count manually or automatically](../azure-portal/insights-how-to-scale.md). There you will find out how to use autoscaling, which is to scale instance count automatically based on predefined rules and schedules.
+スケール設定は適用に数秒を要するのみで、[App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)に含まれるすべてのアプリに反映されます。コードを変更したりアプリケーションを再デプロイしたりする必要はありません。
 
-The scale settings take only seconds to apply and affect all apps in your [App Service plan](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-They do not require you to change your code or redeploy your application.
+App Service の個々のプランの価格と機能の詳細については、[App Service の価格の詳細](/pricing/details/web-sites/)に関するページを参照してください。
 
-For information about the pricing and features of individual App Service plans, see [App Service Pricing Details](/pricing/details/web-sites/).  
+> [AZURE.NOTE] App Service プランを **Free** レベルから切り替える前にまず、ご利用の Azure サブスクリプションに設定されている[使用制限](/pricing/spending-limits/)を削除する必要があります。Microsoft Azure App Service サブスクリプションのオプションを表示または変更するには、「[Microsoft Azure サブスクリプション][azuresubscriptions]」を参照してください。
 
-> [AZURE.NOTE] Before you switch an App Service plan from the **Free** tier, you must first remove the [spending limits](/pricing/spending-limits/) in place for your Azure subscription. To view or change options for your Microsoft Azure App Service subscription, see [Microsoft Azure Subscriptions][azuresubscriptions].
+<a name="scalingsharedorbasic"></a> <a name="scalingstandard"></a>
 
-<a name="scalingsharedorbasic"></a>
-<a name="scalingstandard"></a>
+## 価格レベルのスケールアップ
 
-## <a name="scale-up-your-pricing-tier"></a>Scale up your pricing tier
+1. ブラウザーで [Azure ポータル][portal]を開きます。
 
-1. In your browser, open the [Azure portal][portal].
+2. ご使用のアプリのブレードで、**[すべての設定]**、**[スケールアップ]** の順にクリックします。
 
-2. In your app's blade, click **All settings**, and then click **Scale Up**.
+	![Navigate to scale up your Azure app.][ChooseWHP]
 
-    ![Navigate to scale up your Azure app.][ChooseWHP]
+4. レベルを選び、**[選択]** をクリックします。
 
-4. Choose your tier, and then click **Select**.
-
-    The **Notifications** tab will flash a green **SUCCESS** after the operation is complete.
+	操作が完了すると、**[通知]** タブに緑色で "**成功**" が点滅します。
 
 <a name="ScalingSQLServer"></a>
-## <a name="scale-related-resources"></a>Scale related resources
-If your app depends on other services, such as Azure SQL Database or Azure Storage, you can also scale up those resources based on your needs. These resources are not scaled with the App Service plan and must be scaled separately.
+## スケール関連リソース
+Azure SQL Database や Azure Storage などの他のサービスにアプリが依存している場合は、これらのリソースもニーズに合わせてスケールアップできます。これらのリソースのスケールは、App Service プランでは変更されません。個別に変更する必要があります。
 
-1. In **Essentials**, click the **Resource group** link.
+1. **[要点]** で、**[リソース グループ]** リンクをクリックします。
 
-    ![Scale up your Azure app's related resources](./media/web-sites-scale/RGEssentialsLink.png)
+	![Scale up your Azure app's related resources](./media/web-sites-scale/RGEssentialsLink.png)
 
-2. In the **Summary** part of the **Resource group** blade, click a resource that you want to scale. The following screenshot shows a SQL Database resource and an Azure Storage resource.
+2. **[リソース グループ]** ブレードの **[概要]** 部分で、スケールするリソースをクリックします。以下のスクリーンショットは、SQL Database リソースと Azure Storage リソースを示しています。
 
-    ![Navigate to resource group blade to scale up your Azure app](./media/web-sites-scale/ResourceGroup.png)
+	![Navigate to resource group blade to scale up your Azure app](./media/web-sites-scale/ResourceGroup.png)
 
-3. For a SQL Database resource, click **Settings** > **Pricing tier** to scale the pricing tier.
+3. SQL Database リソースの場合は、**[設定]**、**[価格レベル]** の順にクリックして価格レベルをスケールします。
 
-    ![Scale up the SQL Database backend for your Azure app](./media/web-sites-scale/ScaleDatabase.png)
+	![Scale up the SQL Database backend for your Azure app](./media/web-sites-scale/ScaleDatabase.png)
 
-    You can also turn on [geo-replication](../sql-database/sql-database-geo-replication-overview.md) for your SQL Database instance.
+	SQL Database インスタンス用に、[[geo レプリケーション]](../sql-database/sql-database-geo-replication-overview.md) を有効にすることもできます。
 
-    For an Azure Storage resource, click **Settings** > **Configuration** to scale up your storage options.
+    Azure Storage リソースの場合は、**[設定]**、**[構成]** の順にクリックしてストレージ オプションをスケールアップします。
 
     ![Scale up the Azure Storage account used by your Azure app](./media/web-sites-scale/ScaleStorage.png)
 
 <a name="devfeatures"></a>
-## <a name="learn-about-developer-features"></a>Learn about developer features
-Depending on the pricing tier, the following developer-oriented features are available:
+## 開発者向け機能について
+価格レベルに応じて、次の開発者向け機能を使用できます。
 
-### <a name="bitness"></a>Bitness ###
+### ビット ###
 
-- The **Basic**, **Standard**, and **Premium** tiers support 64-bit and 32-bit applications.
-- The **Free** and **Shared** plan tiers support 32-bit applications only.
+- **Basic**、**Standard**、および **Premium** レベルでは、64 ビットおよび 32 ビットのアプリケーションがサポートされます。
+- **Free** プラン レベルと **Shared** プラン レベルでは、32 ビットのアプリケーションのみがサポートされます。
 
-### <a name="debugger-support"></a>Debugger support ###
+### デバッガー サポート ###
 
-- Debugger support is available for the **Free**, **Shared**, and **Basic** modes at one connection per App Service plan.
-- Debugger support is available for the **Standard** and **Premium** modes at five concurrent connections per App Service plan.
+- **Free**、**Shared**、および **Basic** モードでデバッガー サポートを利用する場合、App Service プランあたりの接続数は 1 です。
+- **Standard** および **Premium** モードでデバッガー サポートを利用する場合、App Service プランあたりの同時接続数は 5 です。
 
 <a name="OtherFeatures"></a>
-## <a name="learn-about-other-features"></a>Learn about other features
+## その他の機能について
 
-- For detailed information about all of the remaining features in the App Service plans, including pricing and features of interest to all users (including developers), see [App Service Pricing Details](/pricing/details/web-sites/).
+- すべてのユーザー (開発者を含む) が関心を持つ料金や機能など、App Service プランのその他すべての機能の詳細については、[App Service の料金の詳細](/pricing/details/web-sites/)に関するページを参照してください。
 
->[AZURE.NOTE] If you want to get started with Azure App Service before you sign up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751) where you can immediately create a short-lived starter web app in App Service. No credit cards are required and there are no commitments.
+>[AZURE.NOTE] Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページにアクセスすると、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。試用にあたり、クレジット カードや契約は必要ありません。
 
 <a name="Next Steps"></a>
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- To get started with Azure, see [Microsoft Azure Free Trial](/pricing/free-trial/).
-- For information about pricing, support, and SLA, visit the following links.
+- Azure を利用し始めるには、「[Microsoft Azure の無料評価版サイト](/pricing/free-trial/)」を参照してください。
+- 価格、サポート、および SLA については、次のリンクを参照してください。
 
-    [Data Transfers Pricing Details](/pricing/details/data-transfers/)
+	[データ転送の料金詳細](/pricing/details/data-transfers/)
 
-    [Microsoft Azure Support Plans](/support/plans/)
+	[Microsoft Azure サポート プラン](/support/plans/)
 
-    [Service Level Agreements](/support/legal/sla/)
+	[サービス レベル アグリーメント](/support/legal/sla/)
 
-    [SQL Database Pricing Details](/pricing/details/sql-database/)
+	[SQL Database の料金詳細](/pricing/details/sql-database/)
 
-    [Virtual Machine and Cloud Service Sizes for Microsoft Azure][vmsizes]
+	[Microsoft Azure の仮想マシンおよびクラウド サービスのサイズ][vmsizes]
 
-    [App Service Pricing Details](/pricing/details/app-service/)
+	[App Service の料金の詳細](/pricing/details/app-service/)
 
-    [App Service Pricing Details - SSL Connections](/pricing/details/web-sites/#ssl-connections)
+	[App Service の料金の詳細 - SSL 接続](/pricing/details/web-sites/#ssl-connections)
 
-- For information about Azure App Service best practices, including building a scalable and resilient architecture, see [Best Practices: Azure App Service Web Apps](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx).
+- スケーラブルで回復力に優れたアーキテクチャの構築など、Azure App Service のベスト プラクティスについては、[Azure App Service Web Apps のベスト プラクティス](http://blogs.msdn.com/b/windowsazure/archive/2014/02/10/best-practices-windows-azure-websites-waws.aspx)に関するページを参照してください。
 
-- For videos about scaling App Service apps, see the following resources:
+- App Service アプリのスケーリングに関するビデオについては、以下のリソースを参照してください。
 
-    - [When to Scale Azure Websites - with Stefan Schackow](/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
-    - [Auto Scaling Azure Websites, CPU or Scheduled - with Stefan Schackow](/documentation/videos/auto-scaling-azure-web-sites/)
-    - [How Azure Websites Scale - with Stefan Schackow](/documentation/videos/how-azure-web-sites-scale/)
+	- [Azure Websites のスケールを設定するタイミング - Stefan Schackow 共演](/documentation/videos/azure-web-sites-free-vs-standard-scaling/)
+	- [Azure Websites、CPU、またはスケジュールの自動スケール - Stefan Schackow 共演](/documentation/videos/auto-scaling-azure-web-sites/)
+	- [Azure Websites のスケールを設定する方法 - Stefan Schackow 共演](/documentation/videos/how-azure-web-sites-scale/)
 
 
 <!-- LINKS -->
-[vmsizes]:/pricing/details/app-service/
-[SQLaccountsbilling]:http://go.microsoft.com/fwlink/?LinkId=234930
-[azuresubscriptions]:http://go.microsoft.com/fwlink/?LinkID=235288
+[vmsizes]: /pricing/details/app-service/
+[SQLaccountsbilling]: http://go.microsoft.com/fwlink/?LinkId=234930
+[azuresubscriptions]: http://go.microsoft.com/fwlink/?LinkID=235288
 [portal]: https://portal.azure.com/
 
 <!-- IMAGES -->
@@ -141,8 +137,4 @@ Depending on the pricing tier, the following developer-oriented features are ava
 [ScaleDatabase]: ./media/web-sites-scale/scale11SQLScale.png
 [GeoReplication]: ./media/web-sites-scale/scale12SQLGeoReplication.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

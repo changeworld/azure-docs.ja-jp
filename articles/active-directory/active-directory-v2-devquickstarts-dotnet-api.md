@@ -1,60 +1,59 @@
 <properties
-    pageTitle="Azure AD v2.0 .NET Web API| Microsoft Azure"
-    description="How to build a .NET MVC Web Api that accepts tokens from both personal Microsoft Account and work or school accounts."
-    services="active-directory"
-    documentationCenter=".net"
-    authors="dstrockis"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure AD v2.0 .NET Web API | Microsoft Azure"
+	description="個人の Microsoft アカウントと職場/学校アカウントの両方からトークンを受け付ける .NET MVC Web API を構築する方法を説明します。"
+	services="active-directory"
+	documentationCenter=".net"
+	authors="dstrockis"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="09/16/2016"
-    ms.author="dastrock"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="09/16/2016"
+	ms.author="dastrock"/>
 
+# MVC Web API をセキュリティで保護する
 
-# <a name="secure-an-mvc-web-api"></a>Secure an MVC web API
-
-With Azure Active Directory the v2.0 endpoint, you can protect a Web API using [OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) access tokens, enabling users with both personal Microsoft account and work or school accounts to securely access your Web API.
+Azure Active Directory v2.0 エンドポイントでは、[OAuth 2.0](active-directory-v2-protocols.md#oauth2-authorization-code-flow) アクセス トークンを使用して Web API を保護でき、ユーザーが個人または職場/学校の Microsoft アカウントの両方を使って Web API に安全にアクセスできるようにすることができます。
 
 > [AZURE.NOTE]
-    Not all Azure Active Directory scenarios & features are supported by the v2.0 endpoint.  To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
-In ASP.NET web APIs, you can accomplish this using Microsoft’s OWIN middleware included in .NET Framework 4.5.  Here we’ll use OWIN to build a "To Do List" MVC Web API that allows clients to create and read tasks from a user's To-Do list.  The web API will validate that incoming requests contain a valid access token and reject any requests that do not pass validation on a protected route.
+ASP.NET Web API では、.NET Framework 4.5 に含まれる Microsoft の OWIN ミドルウェアを使用することにより、これを達成できます。ここでは、OWIN を使用して、クライアントがユーザーの To-Do list からタスクを作成、読み取りできるようにする機能を持つ "To Do List" MVC Web API を構築します。この Web API は、保護されているルートで、受信要求が有効なアクセス トークンを含んでいるかどうかを検証し、検証にパスしなかった要求をすべて拒否します。
 
-## <a name="download"></a>Download
-The code for this tutorial is maintained [on GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet).  To follow along, you can [download the app's skeleton as a .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip) or clone the skeleton:
+## ダウンロード
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
-The skeleton app includes all the boilerplate code for a simple API, but is missing all of the identity-related pieces. If you don't want to follow along, you can instead clone or [download the completed sample](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip).
+スケルトン アプリには、簡単な API 用の定型コードがすべて含まれますが、ID 関連の部分はまったく含まれません。代わりに、完全なサンプルを複製または[ダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/skeleton.zip)することもできます。
 
 ```
 git clone https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git
 ```
 
-## <a name="register-an-app"></a>Register an app
-Create a new app at [apps.dev.microsoft.com](https://apps.dev.microsoft.com), or follow these [detailed steps](active-directory-v2-app-registration.md).  Make sure to:
+## アプリを登録します
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
-- Copy down the **Application Id** assigned to your app, you'll need it soon.
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
 
-This visual studio solution also contains a "TodoListClient", which is a simple WPF app.  The TodoListClient is used to demonstrate how a user signs-in and how a client can issue requests to your Web API.  In this case, both the TodoListClient and the TodoListService are represented by the same app.  To configure the TodoListClient, you should also:
+この Visual Studio ソリューションには、単純な WPF アプリである "TodoListClient" も含まれています。TodoListClient は、ユーザーがどのようにサインインし、クライアントが Web API にどのように要求を発行するかを示すために使用されます。ここでは、TodoListClient と TodoListService の両方に同じアプリが使用されています。TodoListClient を構成するために、以下のことも行う必要があります。
 
-- Add the **Mobile** platform for your app.
-- Copy down the **Redirect URI** from the portal. You must use the default value of `urn:ietf:wg:oauth:2.0:oob`.
+- アプリ用の**モバイル** プラットフォームを追加します。
+- ポータルから**リダイレクト URI** をメモしておきます。既定値の `urn:ietf:wg:oauth:2.0:oob`を使用する必要があります。
 
 
-## <a name="install-owin"></a>Install OWIN
+## OWIN をインストールする
 
-Now that you’ve registered an app, you need to set up your app to communicate with the v2.0 endpoint in order to validate incoming requests & tokens.
+アプリの登録が完了したら、受け取った要求やトークンを検証するために、v2.0 エンドポイントと通信するようアプリを設定する必要があります。
 
-- To begin, open the solution and add the OWIN middleware NuGet packages to the TodoListService project using the Package Manager Console.
+- まず、ソリューションを開き、パッケージ マネージャー コンソールを使用して、OWIN ミドルウェア NuGet パッケージを TodoListService プロジェクトに追加する必要があります。
 
 ```
 PM> Install-Package Microsoft.Owin.Security.OAuth -ProjectName TodoListService
@@ -62,10 +61,10 @@ PM> Install-Package Microsoft.Owin.Security.Jwt -ProjectName TodoListService
 PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoListService
 ```
 
-## <a name="configure-oauth-authentication"></a>Configure OAuth authentication
+## OAuth 認証を構成する
 
-- Add an OWIN Startup class to the TodoListService project called `Startup.cs`.  Right click on the project --> **Add** --> **New Item** --> Search for “OWIN”.  The OWIN middleware will invoke the `Configuration(…)` method when your app starts.
-- Change the class declaration to `public partial class Startup` - we’ve already implemented part of this class for you in another file.  In the `Configuration(…)` method, make a call to ConfgureAuth(…) to set up authentication for your web app.
+- OWIN Startup クラスを TodoListService プロジェクト (`Startup.cs`) に追加します。プロジェクトを右クリックし、**[追加]**、**[新しいアイテム]** の順にクリックして、"OWIN" を検索します。アプリが起動すると、OWIN ミドルウェアは `Configuration(…)` メソッドを呼び出します。
+- クラス宣言を `public partial class Startup` に変更します。このクラスの一部を別のファイルで既に実装しています。`Configuration(…)` メソッドで、ConfgureAuth(…) を呼び出して、Web アプリ用の認証をセットアップします。
 
 ```C#
 public partial class Startup
@@ -77,44 +76,44 @@ public partial class Startup
 }
 ```
 
-- Open the file `App_Start\Startup.Auth.cs` and implement the `ConfigureAuth(…)` method, which will set up the Web API to accept tokens from the v2.0 endpoint.
+- ファイル `App_Start\Startup.Auth.cs` を開き、`ConfigureAuth(…)` メソッドを実装します。これにより Web API を v2.0 エンドポイントからのトークンを受け入れるように設定できます。
 
 ```C#
 public void ConfigureAuth(IAppBuilder app)
 {
-        var tvps = new TokenValidationParameters
-        {
-                // In this app, the TodoListClient and TodoListService
-                // are represented using the same Application Id - we use
-                // the Application Id to represent the audience, or the
-                // intended recipient of tokens.
+		var tvps = new TokenValidationParameters
+		{
+				// In this app, the TodoListClient and TodoListService
+				// are represented using the same Application Id - we use
+				// the Application Id to represent the audience, or the
+				// intended recipient of tokens.
 
-                ValidAudience = clientId,
+				ValidAudience = clientId,
 
-                // In a real applicaiton, you might use issuer validation to
-                // verify that the user's organization (if applicable) has
-                // signed up for the app.  Here, we'll just turn it off.
+				// In a real applicaiton, you might use issuer validation to
+				// verify that the user's organization (if applicable) has
+				// signed up for the app.  Here, we'll just turn it off.
 
-                ValidateIssuer = false,
-        };
+				ValidateIssuer = false,
+		};
 
-        // Set up the OWIN pipeline to use OAuth 2.0 Bearer authentication.
-        // The options provided here tell the middleware about the type of tokens
-        // that will be recieved, which are JWTs for the v2.0 endpoint.
+		// Set up the OWIN pipeline to use OAuth 2.0 Bearer authentication.
+		// The options provided here tell the middleware about the type of tokens
+		// that will be recieved, which are JWTs for the v2.0 endpoint.
 
-        // NOTE: The usual WindowsAzureActiveDirectoryBearerAuthenticaitonMiddleware uses a
-        // metadata endpoint which is not supported by the v2.0 endpoint.  Instead, this
-        // OpenIdConenctCachingSecurityTokenProvider can be used to fetch & use the OpenIdConnect
-        // metadata document.
+		// NOTE: The usual WindowsAzureActiveDirectoryBearerAuthenticaitonMiddleware uses a
+		// metadata endpoint which is not supported by the v2.0 endpoint.  Instead, this
+		// OpenIdConenctCachingSecurityTokenProvider can be used to fetch & use the OpenIdConnect
+		// metadata document.
 
-        app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
-        {
-                AccessTokenFormat = new Microsoft.Owin.Security.Jwt.JwtFormat(tvps, new OpenIdConnectCachingSecurityTokenProvider("https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration")),
-        });
+		app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions
+		{
+				AccessTokenFormat = new Microsoft.Owin.Security.Jwt.JwtFormat(tvps, new OpenIdConnectCachingSecurityTokenProvider("https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration")),
+		});
 }
 ```
 
-- Now you can use `[Authorize]` attributes to protect your controllers and actions with OAuth 2.0 bearer authentication.  Decorate the `Controllers\TodoListController.cs` class with an authorize tag.  This will force the user to sign in before accessing that page.
+- 次に、`[Authorize]` 属性と OAuth 2.0 ベアラー認証を使用して、コントローラーとアクションを保護します。認証タグを使用して、`Controllers\TodoListController.cs` クラスを修飾します。これにより、ユーザーはそのページにアクセスする前に、サインインが必要になります。
 
 ```C#
 [Authorize]
@@ -122,7 +121,7 @@ public class TodoListController : ApiController
 {
 ```
 
-- When an authorized caller successfully invokes one of the `TodoListController` APIs, the action might need access to information about the caller.  OWIN provides access to the claims inside the bearer token via the `ClaimsPrincpal` object.  
+- 承認呼び出し元が `TodoListController` API の 1 つを正常に呼び出すときに、呼び出し元についての情報にアクセスするアクションが必要な場合があります。OWIN は `ClaimsPrincpal` オブジェクトを通して、ベアラー トークン内のクレームにアクセスできるようにします。
 
 ```C#
 public IEnumerable<TodoItem> Get()
@@ -139,37 +138,33 @@ public IEnumerable<TodoItem> Get()
 }
 ```
 
--   Finally, open the `web.config` file in the root of the TodoListService project, and enter your configuration values in the `<appSettings>` section.
-  - Your `ida:Audience` is the **Application Id** of the app that you entered in the portal.
+-	最後に、TodoListService プロジェクトのルートにある `web.config` ファイルを開いて、構成値を `<appSettings>` セクションで入力します。
+  -	`ida:Audience` は、ポータルで入力したアプリの**アプリケーション ID** です。
 
-## <a name="configure-the-client-app"></a>Configure the client app
-Before you can see the Todo List Service in action, you need to configure the Todo List Client so it can get tokens from the v2.0 endpoint and make calls to the service.
+## クライアント アプリを構成する
+Todo List Service の動作を確認できるようにするには、Todo List Client を構成して、Todo List Client が v2.0 エンドポイントからトークンを取得し、サービスを呼び出せるようにする必要があります。
 
-- In the TodoListClient project, open `App.config` and enter your configuration values in the `<appSettings>` section.
-  - Your `ida:ClientId` Application Id you copied from the portal.
-    - The `ida:RedirectUri` is the **Redirect Uri** from the portal.
+- TodoListClient プロジェクトで `App.config` を開いて、`<appSettings>` セクションに構成値を入力します。
+  -	`ida:ClientId` は、ポータルからコピーしたアプリケーション ID です。
+	- `ida:RedirectUri` は、ポータルの**リダイレクト URI** です。
 
-Finally, clean, build and run each project!  You now have a .NET MVC Web API that accepts tokens from both personal Microsoft accounts and work or school accounts.  Sign into the TodoListClient, and call your web api to add tasks to the user's To-Do list.
+最後に、各プロジェクトをクリーンアップし、ビルドして、実行します。 これで、.NET MVC Web API で個人の Microsoft アカウントと職場/学校アカウントの両方からトークンが受け付けられるようになりました。TodoListClient にサインインし、Web API を呼び出して、タスクをユーザーの To-Do リストに追加します。
 
-For reference, the completed sample (without your configuration values) [is provided as a .zip here](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip), or you can clone it from GitHub:
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebAPI-DotNet.git```
 
-## <a name="next-steps"></a>Next steps
-You can now move onto additional topics.  You may want to try:
+## 次のステップ
+ここからは、さらなるトピックに進むことができます。次のチュートリアルを試してみてください。
 
-[Calling a Web API from a Web App >>](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
+[Web アプリから Web API を呼び出す >>](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)
 
-For additional resources, check out:
-- [The v2.0 developer guide >>](active-directory-appmodel-v2-overview.md)
-- [StackOverflow "azure-active-directory" tag >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+その他のリソースについては、以下を参照してください。
+- [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
+- [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="get-security-updates-for-our-products"></a>Get security updates for our products
+## Microsoft 製品のセキュリティ更新プログラムの取得
 
-We encourage you to get notifications of when security incidents occur by visiting [this page](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

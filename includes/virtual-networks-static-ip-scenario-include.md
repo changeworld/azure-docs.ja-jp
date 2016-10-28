@@ -1,13 +1,11 @@
-## <a name="scenario"></a>Scenario
+## シナリオ
 
-To better illustrate how to configure a static IP address for a VM, this document will use the scenario below.
+VM の静的 IP アドレスの構成方法をわかりやすく説明するために、このドキュメントでは次のシナリオを使用します。
 
-![VNet scenario](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
+![VNet のシナリオ](./media/virtual-networks-static-ip-scenario-include/static-ip-scenario.png)
 
-In this scenario you will create a VM named **DNS01** in the **FrontEnd** subnet, and set it to use a static IP address of **192.168.1.101**.
+このシナリオでは、**FrontEnd** サブネットで **DNS01** という名前の VM を作成し、それを静的 IP アドレス **192.168.1.101** を使用するように設定します。
 
  
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

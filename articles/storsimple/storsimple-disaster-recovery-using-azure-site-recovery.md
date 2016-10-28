@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Automate DR for file shares on StorSimple using Azure Site Recovery| Microsoft Azure"
-   description="Describes the steps and best practices for creating a disaster recovery solution for file shares hosted on StorSimple storage."
+   pageTitle="StorSimple 上のファイル共有向けの Azure Site Recovery を使用した自動障害復旧 | Microsoft Azure"
+   description="StorSimple ストレージでホストされているファイル共有の障害復旧ソリューションを作成するためのベスト プラクティスと手順について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="vidarmsft"
@@ -15,397 +15,392 @@
    ms.date="05/16/2016"
    ms.author="vidarmsft" />
 
+# StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動障害復旧ソリューション
 
-# <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automated Disaster Recovery solution using Azure Site Recovery for file shares hosted on StorSimple
+## 概要
 
-## <a name="overview"></a>Overview
+Microsoft Azure StorSimple は、ファイル共有でよく使用される複雑な非構造データに対応できるハイブリッド クラウド ストレージ ソリューションです。StorSimple では、クラウド ストレージがオンプレミス ソリューションの拡張機能として使用され、オンプレミス ストレージとクラウド ストレージをまたがってデータが自動的に階層化されます。ローカル スナップショットおよびクラウド スナップショットを使用した統合型データ保護により、ストレージ インフラストラクチャを拡大する必要がなくなります。
 
-Microsoft Azure StorSimple is a hybrid cloud storage solution that addresses the complexities of unstructured data commonly associated with file shares. StorSimple uses cloud storage as an extension of the on-premises solution and automatically tiers data across on-premises storage and cloud storage. Integrated data protection, with local and cloud snapshots, eliminates the need for a sprawling storage infrastructure.
+[Azure Site Recovery](../site-recovery/site-recovery-overview.md) は、仮想マシンのレプリケーション、フェールオーバー、復旧を調整するといった障害復旧 (DR) 機能を提供する Azure ベースのサービスです。Azure Site Recovery は、仮想マシンとアプリケーションの一貫したレプリケート、保護、およびプライベート/パブリック クラウドまたはホスト側のクラウドへのシームレスなフェールオーバーを実行するために、多くのレプリケーション テクノロジをサポートしています。
 
-[Azure Site Recovery](../site-recovery/site-recovery-overview.md) is an Azure-based service that provides disaster recovery (DR) capabilities by orchestrating replication, failover, and recovery of virtual machines. Azure Site Recovery supports a number of replication technologies to consistently replicate, protect, and seamlessly fail over virtual machines and applications to private/public or hosted clouds.
+Azure Site Recovery、仮想マシンのレプリケーション、および StorSimple クラウド スナップショットの機能を使用することで、ファイル サーバー環境全体を保護することができます。障害が発生した場合は、ワンクリックするだけで、数分以内に Azure 内でオンラインでファイル共有ができるようになります。
 
-Using Azure Site Recovery, virtual machine replication, and StorSimple cloud snapshot capabilities, you can protect the complete file server environment. In the event of a disruption, you can use a single click to bring your file shares online in Azure in just a few minutes.
+このドキュメントでは、StorSimple ストレージでホストされているファイル共有の障害復旧ソリューションの作成方法と、ワンクリック復旧計画を使用している計画済み、計画外、テスト フェールオーバーの実行方法を詳しく説明します。つまり、障害発生時に StorSimple のフェールオーバーが有効になるように、Azure Site Recovery コンテナーで復旧計画を変更する方法を説明します。さらに、サポートされている構成と前提条件についても説明します。このドキュメントは、Azure Site Recovery と StorSimple のアーキテクチャの基礎知識をお持ちの方を対象としています。
 
-This document explains in detail how you can create a disaster recovery solution for your file shares hosted on StorSimple storage, and perform planned, unplanned, and test failovers using a one-click recovery plan. In essence, it shows how you can modify the Recovery Plan in your Azure Site Recovery vault to enable StorSimple failovers during disaster scenarios. In addition, it describes supported configurations and prerequisites. This document assumes that you are familiar with the basics of Azure Site Recovery and StorSimple architectures.
+## サポートされている Azure Site Recovery のデプロイ オプション
 
-## <a name="supported-azure-site-recovery-deployment-options"></a>Supported Azure Site Recovery deployment options
+まず Hyper-V または VMware 上で実行される物理サーバーあるいは仮想マシン (VM) としてファイル サーバーをデプロイしてから、StorSimple ストレージの分割されたボリュームでファイル共有を作成できます。Azure Site Recovery を使用すると、物理および仮想のデプロイをセカンダリ サイトまたは Azure のいずれかで保護できます。このドキュメントでは、Azure を Hyper-V でホストされるファイル サーバー VM の復旧サイトとして使用し、StorSimple ストレージでファイル共有をしている場合の障害復旧ソリューションを詳しく説明します。ファイル サーバー が VMware VM または物理マシン上にある場合の他のシナリオでも、障害復旧ソリューションを同様に実装できます。
 
-Customers can deploy file servers as physical servers or virtual machines (VMs) running on Hyper-V or VMware, and then create file shares from volumes carved out of StorSimple storage. Azure Site Recovery can protect both physical and virtual deployments to either a secondary site or to Azure. This document covers details of a DR solution with Azure as the recovery site for a file server VM hosted on Hyper-V and with file shares on StorSimple storage. Other scenarios in which the file server VM is on a VMware VM or a physical machine can be implemented similarly.
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+StorSimple ストレージでホストされているファイル共有向けに Azure Site Recovery を使用するワンクリック障害復旧ソリューションを実装する場合、前提条件は次のとおりです。
 
-Implementing a one-click disaster recovery solution that uses Azure Site Recovery for file shares hosted on StorSimple storage has the following prerequisites:
+-   Hyper-V、VMware、または物理マシンでホストされているオンプレミスの Windows Server 2012 R2 ファイル サーバー VM
 
--   On-premises Windows Server 2012 R2 File server VM hosted on Hyper-V or VMware or a physical machine
+-   Azure StorSimple Manager に登録されたオンプレミスの StorSimple ストレージ デバイス
 
--   StorSimple storage device on-premises registered with Azure StorSimple manager
+-   Azure StorSimple Manager で作成した StorSimple Cloud Appliance (シャットダウン状態でも保持されます)
 
--   StorSimple Cloud Appliance created in the Azure StorSimple manager (this can be kept in shut down state)
+-   StorSimple ストレージ デバイスで構成されたボリュームでホストされているファイル共有
 
--   File shares hosted on the volumes configured on the StorSimple storage device
+-   Microsoft Azure サブスクリプションで作成された [Azure Site Recovery Services コンテナー](../site-recovery/site-recovery-vmm-to-vmm.md)
 
--   [Azure Site Recovery services vault](../site-recovery/site-recovery-vmm-to-vmm.md) created in a Microsoft Azure subscription
+さらに、Azure が復旧サイトに設定されている場合は、[Azure Virtual Machines 準備状況評価ツール](http://azure.microsoft.com/downloads/vm-readiness-assessment/)を VM で実行し、Azure VM および Azure Site Recovery サービスと互換性があることを確認してください。
 
-In addition, if Azure is your recovery site, run the [Azure Virtual Machine Readiness Assessment tool](http://azure.microsoft.com/downloads/vm-readiness-assessment/) on VMs to ensure that they are compatible with Azure VMs and Azure Site Recovery services.
+(コストを引き上げる可能性のある) 待機時間が発生しないようにするには、StorSimple Cloud Appliance、オートメーション アカウント、およびストレージ アカウントを同じリージョンに作成してください。
 
-To avoid latency issues (which might result in higher costs), make sure that you create your StorSimple Cloud Appliance, automation account, and storage account(s) in the same region.
+## StorSimple ファイル共有における障害復旧を有効にする方法  
 
-## <a name="enable-dr-for-storsimple-file-shares"></a>Enable DR for StorSimple file shares  
+完全なレプリケーションと復旧を有効にするには、オンプレミス環境内の各コンポーネントを保護する必要があります。このセクションでは以下の手順を説明します。
 
-Each component of the on-premises environment needs to be protected to enable complete replication and recovery. This section describes how to:
+-   Active Directory と DNS レプリケーションの設定方法 (オプション)
 
--   Set up Active Directory and DNS replication (optional)
+-   Azure Site Recovery を使用してファイル サーバー VM の保護を有効にする方法
 
--   Use Azure Site Recovery to enable protection of the file server VM
+-   StorSimple ボリュームの保護を有効にする方法
 
--   Enable protection of StorSimple volumes
+-   ネットワークの構成方法
 
--   Configure the network
+### Active Directory と DNS レプリケーションの設定方法 (オプション)
 
-### <a name="set-up-active-directory-and-dns-replication-(optional)"></a>Set up Active Directory and DNS replication (optional)
+Active Directory と DNS を実行するコンピューターを保護して障害復旧サイトで使用できるようにするには、これらのコンピューターを明示的に保護する必要があります (フェールオーバー後に、ファイル サーバーへの認証によるアクセスを可能にするためです)。2 つの方法をお勧めしますので、お客様のオンプレミス環境の複雑さに応じて選択してください。
 
-If you want to protect the machines running Active Directory and DNS so that they are available on the DR site, you need to explicitly protect them (so that the file servers are accessible after fail over with authentication). There are two recommended options based on the complexity of the customer’s on-premises environment.
+#### 方法 1
 
-#### <a name="option-1"></a>Option 1
+お客様のアプリケーションの数が少ない場合は、オンプレミスのサイト全体に 1 つのドメイン コントローラーを使用して、サイト全体をフェールオーバーしてから、Azure Site Recovery レプリケーションを使用してドメイン コントローラー マシンをセカンダリ サイトにレプリケートすることをお勧めします (この方法は、サイト間、サイトと Azure 間の両方に適用できます)。
 
-If the customer has a small number of applications, a single domain controller for the entire on-premises site, and will be failing over the entire site, then we recommend using Azure Site Recovery replication to replicate the domain controller machine to a secondary site (this is applicable for both site-to-site and site-to-Azure).
+#### 方法 2
 
-#### <a name="option-2"></a>Option 2
+お客様のアプリケーションの数が多く、Active Directory フォレストを実行している場合は、一度に複数のアプリケーションをフェールオーバーしてから、障害復旧サイトで追加のドメイン コントローラーを (セカンダリ サイトまたは Azure のいずれかにおいて) 設定することをお勧めします。
 
-If the customer has a large number of applications, is running an Active Directory forest, and will be failing over a few applications at a time, then we recommend setting up an additional domain controller on the DR site (either a secondary site or in Azure).
+障害復旧サイト上でドメイン コントローラーを使用できるようにする手順については、「[Azure Site Recovery で Active Directory と DNS を保護する](../site-recovery/site-recovery-active-directory.md)」を参照してください。これ以降のドキュメントでは、ドメイン コントローラーが 障害復旧サイトで使用可能になっていることを前提とします。
 
-Please refer to [Automated DR solution for Active Directory and DNS using Azure Site Recovery](../site-recovery/site-recovery-active-directory.md) for instructions when making a domain controller available on the DR site. For the remainder of this document, we will assume a domain controller is available on the DR site.
+### Azure Site Recovery を使用してファイル サーバー VM の保護を有効にする方法
 
-### <a name="use-azure-site-recovery-to-enable-protection-of-the-file-server-vm"></a>Use Azure Site Recovery to enable protection of the file server VM
+この手順では、オンプレミスのファイル サーバー環境を準備し、Azure Site Recovery コンテナーを作成および準備してから、VM のファイル保護を有効にする必要があります。
 
-This step requires that you prepare the on-premises file server environment, create and prepare an Azure Site Recovery vault, and enable file protection of the VM.
+#### オンプレミスのファイル サーバー環境を準備するには
 
-#### <a name="to-prepare-the-on-premises-file-server-environment"></a>To prepare the on-premises file server environment
+1.  **[ユーザー アカウント制御]** を **[通知しない]** に設定します。この設定が必要なのは、Azure Site Recovery によってフェールオーバーされた後に、Azure オートメーション スクリプトを使用して iSCSI ターゲットに接続するためです。
 
-1.  Set the **User Account Control** to **Never Notify**. This is required so that you can use Azure automation scripts to connect the iSCSI targets after fail over by Azure Site Recovery.
+    1.  Windows キー + Q キーを押して、**UAC**を検索します。
 
-    1.  Press the Windows key +Q and search for **UAC**.
+    2.  **[ユーザー アカウント制御設定の変更]** の設定を選択します。
 
-    2.  Select **Change User Account Control settings**.
+    3.  バーを下にドラッグして **[通知しない]** に設定します。
 
-    3.  Drag the bar to the bottom towards **Never Notify**.
+    4.  **[OK]** をクリックして、入力を求められたら **[はい]** を選択します。
 
-    4.  Click **OK** and then select **Yes** when prompted.
+		![](./media/storsimple-dr-using-asr/image1.png)
 
-        ![](./media/storsimple-dr-using-asr/image1.png)
+1.  各ファイル サーバー VM に VM エージェントをインストールします。このインストールは、フェールオーバーされた VM で Azure オートメーション スクリプトを実行するために必要です。
 
-1.  Install the VM Agent on each of the file server VMs. This is required so that you can run Azure automation scripts on the failed over VMs.
+    1.  `C:\\Users\<username>\\Downloads` に[エージェントをダウンロード](http://aka.ms/vmagentwin)します。
 
-    1.  [Download the agent](http://aka.ms/vmagentwin) to `C:\\Users\\<username>\\Downloads`.
+    2.  管理者モード (管理者として実行) で Windows PowerShell を開き、次のコマンドを入力してダウンロード先に移動します。
 
-    2.  Open Windows PowerShell in Administrator mode (Run as Administrator), and then enter the following command to navigate to the download location:
+		`cd C:\\Users\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
 
-        `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
+		> [AZURE.NOTE] バージョンによって、ファイル名が異なる場合があります。
 
-        > [AZURE.NOTE] The file name may change depending on the version.
+1.  **[次へ]** をクリックします。
 
-1.  Click **Next**.
+2.  **[契約の条項]** をクリックして、**[次へ]** をクリックします。
 
-2.  Accept the **Terms of Agreement** and then click **Next**.
+3.  **[完了]** をクリックします。
 
-3.  Click **Finish**.
 
+1.  StorSimple ストレージで分割されたボリュームを使用して、ファイル共有を作成します。詳細については、「[StorSimple Manager サービスを使用してボリュームを管理する](storsimple-manage-volumes.md)」を参照してください。
 
-1.  Create file shares using volumes carved out of StorSimple storage. For more information, see [Use the StorSimple Manager service to manage volumes](storsimple-manage-volumes.md).
+    1.  オンプレミスの VM で、Windows キー + Q キーを押して **iSCSI** を検索します。
 
-    1.  On your on-premises VMs, press the Windows key +Q and search for **iSCSI**.
+    2.  **[iSCSI イニシエーター]** を選択 します。
 
-    2.  Select **iSCSI initiator**.
+    3.  **[構成]** タブを選択 し、イニシエーターの名前をコピーします。
 
-    3.  Select the **Configuration** tab and copy the initiator name.
+    4.  [Azure クラシック ポータル](https://manage.windowsazure.com/)にログインします。
 
-    4.  Log in to the [Azure classic portal](https://manage.windowsazure.com/).
+    5.  **[StorSimple]** タブを選択してから、物理デバイスを含む StorSimple Manager Service を選択します。
 
-    5.  Select the **StorSimple** tab and then select the StorSimple Manager Service that contains the physical device.
+    6.  ボリューム コンテナーを作成してから、ボリュームを作成します (これらのボリュームは、ファイル サーバー VM でのファイル共有に使用します)。イニシエーター名をコピーし、ボリューム作成時にアクセス制御レコードに適切な名前を付けます。
 
-    6.  Create volume container(s) and then create volume(s). (These volumes are for the file share(s) on the file server VMs). Copy the initiator name and give an appropriate name for the Access Control Records when you create the volumes.
+    7.  **[構成]** タブを選択し、デバイスの IP アドレスを書き留めます。
 
-    7.  Select the **Configure** tab and note down the IP address of the device.
+    8.  使用しているオンプレミスの VM で **[iSCSI イニシエーター]** に再び移動し、[クイック接続] セクションに IP アドレスを入力します。**[クイック接続]** をクリックします (デバイスが接続されます)。
 
-    8.  On your on-premises VMs, go to the **iSCSI initiator** again and enter the IP in the Quick Connect section. Click **Quick Connect** (the device should now be connected).
+    9.  Azure 管理ポータルを開き、**[ボリュームとデバイス]** タブを選択します。**[自動構成]** をクリックします。先ほど作成したボリュームが表示されます。
 
-    9.  Open the Azure Management Portal and select the **Volumes and Devices** tab. Click **Auto Configure**. The volume that you just created should appear.
+    10. ポータルで **[デバイス]** タブを選択してから、**[Create a New Virtual Device (新しい仮想デバイスの作成)]** を選択します (フェールオーバーが発生した場合にこの仮想デバイスが使用されます)。この新しい仮想デバイスはオフラインで維持できるため、余分なコストがかかりません。仮想デバイスをオフラインにするには、ポータルの **[Virtual Machines]** セクションでデバイスをシャットダウンします。
 
-    10. In the portal, select the **Devices** tab and then select **Create a New Virtual Device.** (This virtual device will be used if a failover occurs). This new virtual device can be kept in an offline state to avoid extra costs. To take the virtual device offline, go to the **Virtual Machines** section on the Portal and shut it down.
+    11. オンプレミスの VM に戻って [ディスクの管理] を開きます (Windows キー + X キーを押してから、**[ディスクの管理]**を 選択します)。
 
-    11. Go back to the on-premises VMs and open Disk Management (press the Windows key + X and select **Disk Management**).
+    12. 余分なディスクが表示される場合があります (作成したボリュームの数によって異なります)。1 つ目のディスクを右クリックして **[ディスクの初期化]** を選択し、**[OK]** をクリックします。**[未割り当て]** セクションを右クリックして **[新しいシンプル ボリューム]** を選択し、ドライブ文字を割り当ててからウィザードを終了します。
 
-    12. You will notice some extra disks (depending on the number of volumes you have created). Right-click the first one, select **Initialize Disk**, and select **OK**. Right-click the **Unallocated** section, select **New Simple Volume**, assign it a drive letter, and finish the wizard.
+    13. すべてのディスクに対して手順 l を繰り返します。これで、エクスプ ローラーの **[PC]** にすべてのディスクが表示されます。
 
-    13. Repeat step l for all the disks. You can now see all the disks on **This PC** in the Windows Explorer.
+    14. ファイル サービスおよびストレージ サービス ロールを使用して、これらのボリュームでファイル共有を作成します。
 
-    14. Use the File and Storage Services role to create file shares on these volumes.
+#### Azure Site Recovery コンテナーを作成および準備するには
 
-#### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>To create and prepare an Azure Site Recovery vault
+ファイル サーバー VM を保護する前に Azure Site Recovery で作業を開始するには、「[Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する](../site-recovery/site-recovery-hyper-v-site-to-azure.md)」を参照してください。
 
-Refer to the [Azure Site Recovery documentation](../site-recovery/site-recovery-hyper-v-site-to-azure.md) to get started with Azure Site Recovery before protecting the file server VM.
+#### 保護を有効にするには
 
-#### <a name="to-enable-protection"></a>To enable protection
+1.  Azure Site Recovery を使用して保護したいオンプレミスの VM から iSCSI ターゲットを切断します。
 
-1.  Disconnect the iSCSI target(s) from the on-premises VMs that you want to protect through Azure Site Recovery:
+    1.  Windows キー + Q キーを押して、**iSCSI** を検索します。
 
-    1.  Press Windows key + Q and search for **iSCSI**.
+    2.  **[iSCSI イニシエーターのセットアップ]** を選択します。
 
-    2.  Select **Set up iSCSI initiator**.
+    3.  既に接続されていた StorSimple デバイスを切断します。保護を有効にするとき、デバイスを切断する代わりに、ファイル サーバーの電源を数分間オフにすることもできます。
 
-    3.  Disconnect the StorSimple device that you connected previously. Alternatively, you can switch off the file server for a few minutes when enabling protection.
+	> [AZURE.NOTE] この場合、ファイル共有が一時的に使用できなくなります。
 
-    > [AZURE.NOTE] This will cause the file shares to be temporarily unavailable
+1.  Azure Site Recovery ポータルから、ファイル サーバー VM の[仮想マシンの保護を有効にします](../site-recovery/site-recovery-hyper-v-site-to-azure.md##step-6-enable-replication)。
 
-1.  [Enable virtual machine protection](../site-recovery/site-recovery-hyper-v-site-to-azure.md##step-6-enable-replication) of the file server VM from the Azure Site Recovery portal.
+2.  最初の同期の開始時に、ターゲットに再接続できます。iSCSI イニシエーターに移動して StorSimple デバイスを選択し、**[接続]** をクリックします。
 
-2.  When the initial synchronization begins, you can reconnect the target again. Go to the iSCSI initiator, select the StorSimple device, and click **Connect**.
+3.  同期の完了後に VM のステータスが **[保護済み]** になっていれば、その VM を選択してから **[構成]** タブをクリックし、設定に合わせて VM のネットワークを更新します (これはフェールオーバーされた VM を含むネットワークです)。ネットワークが表示されないときは、同期が実行中ということです。
 
-3.  When the synchronization is complete and the status of the VM is **Protected**, select the VM, select the **Configure** tab, and update the network of the VM accordingly (this is the network that the failed over VM(s) will be a part of). If the network doesn’t show up, it means that the sync is still going on.
+### StorSimple ボリュームの保護を有効にする方法
 
-### <a name="enable-protection-of-storsimple-volumes"></a>Enable protection of StorSimple volumes
+StorSimple ボリュームの **[このボリュームの既定のバックアップの有効化]** オプションを選択していない場合は、StorSimple Manager サービスの **[バックアップ ポリシー]** に移動して、すべてのボリュームに適切なバックアップ ポリシーを作成します。バックアップ頻度を、アプリケーションで実行したい回復ポイントの目標 (RPO) に設定することをお勧めします。
 
-If you have not selected the **Enable a default backup for this volume** option for the StorSimple volumes, go to **Backup Policies** in the StorSimple Manager service, and create a suitable backup policy for all the volumes. We recommend that you set the frequency of backups to the recovery point objective (RPO) that you would like to see for the application.
+### ネットワークの構成方法
 
-### <a name="configure-the-network"></a>Configure the network
+ファイル サーバー VM の場合、フェールオーバー後に VM ネットワークが適切な障害復旧ネットワークに接続されるように Azure Site Recovery でネットワーク設定を構成します。
 
-For the file server VM, configure network settings in Azure Site Recovery so that the VM networks are attached to the correct DR network after failover.
-
-You can select the VM in the **VMM Cloud** or the **Protection Group** to configure the network settings, as shown in the following illustration.
+ネットワーク設定を構成するには、次の図に示すように **[VMM クラウド]** または **[保護グループ]** で VM を選択します。
 
 ![](./media/storsimple-dr-using-asr/image2.png)
 
-## <a name="create-a-recovery-plan"></a>Create a recovery plan
+## 復旧計画の作成
 
-You can create a recovery plan in ASR to automate the failover process of the file shares. If a disruption occurs, you can bring the file shares up in a few minutes with just a single click. To enable this automation, you will need an Azure automation account.
+ASR で復旧計画を作成し、ファイル共有のフェールオーバー プロセスを自動化することができます。障害が発生した場合は、ワンクリックするだけで数分以内にファイル共有を稼働できます。この自動化を有効にするには、Azure オートメーション アカウントが必要です。
 
-#### <a name="to-create-the-account"></a>To create the account
+#### アカウントを作成するには
 
-1.  Go to the Azure classic portal and go to the **Automation** section.
+1.  Azure クラシック ポータルにアクセスして、**[Automation]** セクションに移動します。
 
-1.  Create a new automation account. Keep it in the same geo/region in which the StorSimple Cloud Appliance and storage accounts were created.
+2.  新しいオートメーション アカウントを作成します。アカウントは、StorSimple Cloud Appliance とストレージ アカウントが作成されたのと同じ geo/リージョンに設定してください。
 
-2.  Click **New** &gt; **App Services** &gt; **Automation** &gt; **Runbook** &gt; **From Gallery** to import all the required runbooks into the automation account.
+3.  **[新規]** > **[App Services]** > **[Automation]** > **[Runbook]** > **[ギャラリーから]** をクリックして、必要なすべての Runbook をオートメーション アカウントにインポートします。
 
-    ![](./media/storsimple-dr-using-asr/image3.png)
+	![](./media/storsimple-dr-using-asr/image3.png)
 
-1.  Add the following runbooks from the **Disaster Recovery** pane in the gallery:
+4.  ギャラリーの **[障害復旧]** ウィンドウで、次の Runbook を追加します。
 
-    -   Fail over StorSimple volume containers
+	-   StorSimple ボリューム コンテナーのフェールオーバー
 
-    -   Clean up of StorSimple volumes after Test Failover (TFO)
+	-   テスト フェールオーバー (TFO) 後の StorSimple ボリュームのクリーンアップ
 
-    -   Mount volumes on StorSimple device after failover
+	-   フェールオーバー後の StorSimple デバイスでのボリューム マウント
 
-    -   Start StorSimple Virtual Appliance
+	-   StorSimple Virtual Appliance の開始
 
-    -   Uninstall custom script extension in Azure VM
+	-   Azure VM でのカスタム スクリプト拡張機能のアンインストール
 
-        ![](./media/storsimple-dr-using-asr/image4.png)
+		![](./media/storsimple-dr-using-asr/image4.png)
 
 
-1.  Publish all the scripts by selecting the runbook in the automation account and going to **Author** tab. After this step, the **Runbooks** tab will appear as follows:
+1.  オートメーション アカウントの Runbook を選択して **[作成者]** タブをクリックして、すべてのスクリプトを発行します。この手順の後、**[Runbook]** タブは次のように表示されます。
 
-     ![](./media/storsimple-dr-using-asr/image5.png)
+	 ![](./media/storsimple-dr-using-asr/image5.png)
 
-1.  In the automation account go to the **Assets** tab, click **Add Setting** &gt; **Add Credential**, and add your Azure credentials – name the asset AzureCredential.
+1.  オートメーション アカウントで、**[資産]** タブの **[設定の追加]** > **[資格情報の追加]** をクリックしてから Azure の資格情報を追加し、その資産に AzureCredential という名前を付けます。
 
-    Use the Windows PowerShell Credential. This should be a credential that contains an Org ID user name and password with access to this Azure subscription and with multi-factor authentication disabled. This is required to authenticate on behalf of the user during the failovers and to bring up the file server volumes on the DR site.
+	Windows PowerShell の資格情報を使用します。資格情報は、組織 ID ユーザー名とパスワードを含み、この Azure サブスクリプションにアクセスでき、多要素認証が無効にされている必要があります。資格情報は、フェールオーバー時にユーザーに代わって認証し、障害復旧サイトでファイル サーバー ボリュームを稼働するために必要です。
 
-1.  In the automation account, select the **Assets** tab and then click **Add Setting** &gt; **Add variable** and add the following variables. You can choose to encrypt these assets. These variables are recovery plan–specific. If your recovery plan (which you will create in the next step) name is TestPlan, then your variables should be TestPlan-StorSimRegKey, TestPlan-AzureSubscriptionName, and so on.
+1.  オートメーション アカウントで、**[資産]** タブを選択してから **[設定の追加]** > **[変数の追加]** を選択し、次の変数を追加します。これらの資産を暗号化することもできます。これらの変数は、復旧計画によって異なります。(次の手順で作成する) 復旧計画の名前が TestPlan の場合、変数は TestPlan StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
-    -   *RecoveryPlanName***-StorSimRegKey**: The registration key for the StorSimple Manager service.
+	-   *RecoveryPlanName***-StorSimRegKey**: StorSimple Manager サービス登録キー。
 
-    -   *RecoveryPlanName***-AzureSubscriptionName**: The name of the Azure subscription.
+	-   *RecoveryPlanName***-AzureSubscriptionName**: Azure サブスクリプションの名前。
 
-    -   *RecoveryPlanName***-ResourceName**: The name of the StorSimple resource that has the StorSimple device.
+	-   *RecoveryPlanName***-ResourceName**: StorSimple デバイスを含む StorSimple リソースの名前。
 
-    -   *RecoveryPlanName***-DeviceName**: The device that has to be failed over.
+	-   *RecoveryPlanName***-DeviceName**: フェールオーバーする必要のあるデバイス。
 
-    -   *RecoveryPlanName***-TargetDeviceName**: The StorSimple Cloud Appliance on which the containers are to be failed over.
+	-   *RecoveryPlanName***-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
 
-    -   *RecoveryPlanName***-VolumeContainers**: A comma-separated string of volume containers present on the device that need to be failed over; for example, volcon1,volcon2, volcon3.
+	-   *RecoveryPlanName***-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列。(例: volcon1、volcon2、volcon3。)
 
-    -   RecoveryPlanName**-TargetDeviceDnsName**: The service name of the target device (this can be found in the **Virtual Machine** section: the service name is the same as the DNS name).
+	-   RecoveryPlanName**-TargetDeviceDnsName**: ターゲット デバイスのサービス名 (これは **[仮想マシン]** セクションに表示されます: サービス名は DNS 名と同じです)。
 
-    -   *RecoveryPlanName***-StorageAccountName**: The storage account name in which the script (which has to run on the failed over VM) will be stored. This can be any storage account that has some space to store the script temporarily.
+	-   *RecoveryPlanName***-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
 
-    -   *RecoveryPlanName***-StorageAccountKey**: The access key for the above storage account.
+	-   *RecoveryPlanName***-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
 
-    -   *RecoveryPlanName***-ScriptContainer**: The name of the container in which the script will be stored in the cloud. If the container doesn’t exist, it will be created.
+	-   *RecoveryPlanName***-ScriptContainer**: スクリプトが格納されるクラウドのコンテナー名。コンテナーが存在しない場合に作成されます。
 
-    -   *RecoveryPlanName***-VMGUIDS**: Upon protecting a VM, Azure Site Recovery assigns every VM a unique ID that gives the details of the failed over VM. To obtain the VMGUID, select the **Recovery Services** tab and then click **Protected Item** &gt; **Protection Groups** &gt; **Machines** &gt; **Properties**. If you have multiple VMs, then add the GUIDs as a comma-separated string.
+	-   *RecoveryPlanName***-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[Protected Item (保護された項目)]** > **[保護グループ]** > **[マシン]** > **[プロパティ]** をクリックします。VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
 
-    -   *RecoveryPlanName***-AutomationAccountName** – The name of the automation account in which you have added the runbooks and the assets.
+	-   *RecoveryPlanName***-AutomationAccountName**: Runbook と資産を追加したオートメーション アカウントの名前。
 
-    For example, if the name of the recovery plan is fileServerpredayRP, then your **Assets** tab should appear as follows after you add all the assets.
+	たとえば、復旧計画の名前が、fileServerpredayRP であった場合、すべての資産を追加し終えたら **[資産]** タブは次のように表示されます。
 
-    ![](./media/storsimple-dr-using-asr/image6.png)
+	![](./media/storsimple-dr-using-asr/image6.png)
 
 
-1.  Go to the **Recovery Services** section and select the Azure Site Recovery vault that you created earlier.
+1.  **[Recovery Services]** セクションに移動して、先ほど作成した Azure Site Recovery コンテナーを選択します。
 
-2.  Select the **Recovery Plans** tab and create a new recovery plan as follows:
+2.  **[復旧計画]** タブを選択し、次のように新しい復旧計画を作成します。
 
-    a.  Specify a name and select the appropriate **Protection Group**.
+	a.名前を指定して、適切な **[保護グループ]** を選択します。
 
-    b.  Select the VMs from the protection group that you want to include in the recovery plan.
+	b.復旧計画に追加したい VM を保護グループから選択します。
 
-    c.  After the recovery plan is created, select it to open the Recovery plan customization view.
+	c.復旧計画の作成後に、その計画を選択してカスタマイズ ビューを開きます。
 
-    d.  Select **All groups shutdown**, click **Script**, and choose **Add a primary side script before all Group shutdown**.
+	d.**[すべてのグループのシャットダウン]** を選択して **[スクリプト]** をクリックし、**[すべてのグループのシャット ダウンの前にプライマリ側スクリプトを追加]** を選択します。
 
-    e.  Select the automation account (in which you added the runbooks) and then select the **Fail over-StorSimple-Volume-Containers** runbook.
+	e.オートメーション アカウント (Runbook の追加先) を選択してから、**[Fail over-StorSimple-Volume-Containers]** の Runbook を選択します。
 
-    f.  Click **Group 1: Start**, choose **Virtual Machines**, and add the VMs that are to be protected in the recovery plan.
+	f.**[グループ 1: 開始]** をクリックして **[Virtual Machines]** を選択してから、復旧計画で保護する VM を追加します。
 
-    g.  Click **Group 1: Start**, choose **Script**, and add all the following scripts in order as **After Group 1** steps.
+    g.**[グループ 1: 開始]** をクリックして **[スクリプト]** を選択してから、**[After Group 1 (グループ 1 の後)]** と同じ順序で次のスクリプトをすべて追加します。
 
-    - Start-StorSimple-Virtual-Appliance runbook
-    - Fail over-StorSimple-volume-containers runbook
-    - Mount-volumes-after-failover runbook
-    - Uninstall-custom-script-extension runbook
+	- Start-StorSimple-Virtual-Appliance runbook
+	- Fail over-StorSimple-volume-containers runbook
+	- Mount-volumes-after-failover runbook
+	- Uninstall-custom-script-extension runbook
 
-1.  Add a manual action after the above 4 scripts in the same **Group 1: Post-steps** section. This action is the point at which you can verify that everything is working correctly. This action needs to be added only as a part of test failover (so only select the **Test Failover** checkbox).
+1.  同じ **[グループ 1: 後の手順]** セクションで、上記の 4 つのスクリプトの後に手動アクションを追加します。このアクションを追加するポイントでは、すべてが正しく動作していることを確認できます。このアクションは、テスト フェールオーバーの一環として追加する必要があります (そのため **[テスト フェールオーバー]** チェック ボックスのみをオンにします)。
 
-2.  After the manual action, add the Cleanup script using the same procedure that you used for the other runbooks. Save the recovery plan.
+2.  手動アクションの後に、他の Runbook に使用した手順と同様にクリーンアップ スクリプトを追加します。復旧計画を保存します。
 
-    > [AZURE.NOTE] When running a test failover, you should verify everything at the manual action step because the StorSimple volumes that had been cloned on the target device will be deleted as a part of the cleanup after the manual action is completed.
+	> [AZURE.NOTE] テスト フェールオーバーの実行中、手動アクションを実行するときにすべてを検証してください。これは手動アクションの完了後に、ターゲット デバイスに複製された StorSimple ボリュームがクリーンアップの一環として削除されてしまうのを防ぐためです。
 
-    ![](./media/storsimple-dr-using-asr/image7.png)
+	![](./media/storsimple-dr-using-asr/image7.png)
 
-## <a name="perform-a-test-failover"></a>Perform a test failover
+## テスト フェールオーバーの実行
 
-Refer to the [Active Directory DR Solution](../site-recovery/site-recovery-active-directory.md) companion guide for considerations specific to Active Directory during the test failover. The on-premises setup is not disturbed at all when the test failover occurs. The StorSimple volumes that were attached to the on-premises VM are cloned to the StorSimple Cloud Appliance on Azure. A VM for test purposes is brought up in Azure and the cloned volumes are attached to the VM.
+テスト フェールオーバー実行中の Active Directory に関する注意事項については、「[Azure Site Recovery で Active Directory と DNS を保護する](../site-recovery/site-recovery-active-directory.md)」を参照してください。テスト フェールオーバーの実行時に、オンプレミスの設定はまったく影響を受けません。オンプレミスの VM に接続された StorSimple ボリュームは、Azure の StorSimple Cloud Appliance に複製されます。Azure ではテスト用の VM が立ち上がり、複製されたボリュームが VM に接続されます。
 
-#### <a name="to-perform-the-test-failover"></a>To perform the test failover
+#### テスト フェールオーバーを実行するには
 
-1.  In the Azure classic portal, select your site recovery vault.
+1.  Azure クラシック ポータルで、Site Recovery コンテナーを選択します。
 
-1.  Click the recovery plan created for the file server VM.
+1.  ファイル サーバー VM 用に作成された復旧計画をクリックします。
 
-2.  Click **Test Failover**.
+2.  **[テスト フェールオーバー]** クリックします。
 
-3.  Select the virtual network to start the test failover process.
+3.  テスト フェールオーバー プロセスを開始する仮想ネットワークを選択します。
 
-    ![](./media/storsimple-dr-using-asr/image8.png)
+	![](./media/storsimple-dr-using-asr/image8.png)
 
-1.  When the secondary environment is up, you can perform your validations.
+1.  セカンダリ環境が立ち上がったら、検証を行うことができます。
 
-2.  After the validations are complete, click **Validations Complete**. The test failover environment will be cleaned, and the TFO operation will be completed.
+2.  検証が完了したら、**[Validations Complete (検証完了)]** をクリックします。テスト フェールオーバー環境がクリーニングされ、TFO 操作が完了します。
 
-## <a name="perform-an-unplanned-failover"></a>Perform an unplanned failover
+## 計画されていないフェールオーバーの実行
 
-During an unplanned failover, the StorSimple volumes are failed over to the virtual device, a replica VM will be brought up on Azure, and the volumes are attached to the VM.
+計画されていないフェールオーバーでは、StorSimple ボリュームが仮想デバイスにフェールオーバーされ、レプリカ VM が Azure で稼働した後に、これらのボリュームが VM に接続されます。
 
-#### <a name="to-perform-an-unplanned-failover"></a>To perform an unplanned failover
+#### 計画されていないフェールオーバーを実行するには
 
-1.  In the Azure classic portal, select your site recovery vault.
+1.  Azure クラシック ポータルで、Site Recovery コンテナーを選択します。
 
-1.  Click the recovery plan created for file server VM.
+1.  ファイル サーバー VM 用に作成された復旧計画をクリックします。
 
-2.  Click **Failover** and then select **Unplanned Failover**.
+2.  **[フェールオーバー]** をクリック してから、**[計画されていないフェールオーバー]** を選択します。
 
-    ![](./media/storsimple-dr-using-asr/image9.png)
+	![](./media/storsimple-dr-using-asr/image9.png)
 
-1.  Select the target network and then click the check icon ✓ to start the failover process.
+1.  ターゲット ネットワークを選択し、チェック マーク アイコン (✓) をクリックしてフェールオーバー プロセスを開始します。
 
-## <a name="perform-a-planned-failover"></a>Perform a planned failover
+## 計画されたフェールオーバーの実行
 
-During a planned failover, the on-premises file server VM is shut down gracefully and a cloud backup snapshot of the volumes on StorSimple device is taken. The StorSimple volumes are failed over to the virtual device, a replica VM is brought up on Azure, and the volumes are attached to the VM.
+計画されたフェールオーバーでは、オンプレミスのファイル サーバー VM が正常にシャットダウンされ、StorSimple デバイス上のボリュームのクラウド バックアップ スナップショットが取得されます。StorSimple ボリュームが仮想デバイスにフェールオーバーされ、Azure でレプリカ VM が稼働した後に、これらのボリュームが VM に接続されます。
 
-#### <a name="to-perform-a-planned-failover"></a>To perform a planned failover
+#### 計画されたフェールオーバーを実行するには
 
-1.  In the Azure classic portal, select your site recovery vault.
+1.  Azure クラシック ポータルで、Site Recovery コンテナーを選択します。
 
-1.  Click the recovery plan created for the file server VM.
+1.  ファイル サーバー VM 用に作成された復旧計画をクリックします。
 
-2.  Click **Failover** and then select **Planned Failover**.
+2.  **[フェールオーバー]** をクリックしてから、**[計画されたフェールオーバー]** を選択します。
 
-3.  Select the target network and then click the check icon ✓ to start the failover process.
+3.  ターゲット ネットワークを選択し、チェック マーク アイコン (✓) をクリックしてフェールオーバー プロセスを開始します。
 
-## <a name="perform-a-failback"></a>Perform a failback
+## フェールバックの実行
 
-During a failback, StorSimple volume containers are failed over back to the physical device after a backup is taken.
+フェールバックでは、バックアップの作成後に、StorSimple ボリューム コンテナーが元の物理デバイスにフェールオーバーされます。
 
-#### <a name="to-perform-a-failback"></a>To perform a failback
+#### フェールバックを実行するには
 
-1.  In the Azure classic portal, select your site recovery vault.
+1.  Azure クラシック ポータルで、Site Recovery コンテナーを選択します。
 
-1.  Click the recovery plan created for the file server VM.
+1.  ファイル サーバー VM 用に作成された復旧計画をクリックします。
 
-2.  Click **Failover** and select **Planned failover** or **Unplanned failover**.
+2.  **[フェールオーバー]** をクリックしてから、**[計画されたフェールオーバー]** または **[計画されていないフェールオーバー]** を選択します。
 
-3.  Click **Change Direction**.
+3.  **[方向の変更]** クリックしします。
 
-4.  Select the appropriate data synchronization and VM creation options.
+4.  適切なデータ同期と VM 作成のオプションを選択します。
 
-5.  Click the check icon ✓ to start the failback process.
+5.  チェック マーク アイコン (✓) をクリックして、フェールバック プロセスを開始します。
 
-    ![](./media/storsimple-dr-using-asr/image10.png)
+	![](./media/storsimple-dr-using-asr/image10.png)
 
-## <a name="best-practices"></a>Best Practices
+## ベスト プラクティス
 
-### <a name="capacity-planning-and-readiness-assessment"></a>Capacity planning and readiness assessment
+### キャパシティ プランニングと準備状態評価
 
 
-#### <a name="hyper-v-site"></a>Hyper-V site
+#### Hyper-V サイト
 
-Use the [User Capacity planner tool](http://www.microsoft.com/download/details.aspx?id=39057) to design the server, storage, and network infrastructure for your Hyper-V replica environment.
+[ユーザー向け容量計画ツール](http://www.microsoft.com/download/details.aspx?id=39057)を使用すると、Hyper-V レプリカ環境のデプロイに必要なサーバー、ストレージ、およびネットワーク インフラストラクチャを設計できます。
 
-#### <a name="azure"></a>Azure
+#### Azure
 
-You can run the [Azure Virtual Machine Readiness Assessment tool](http://azure.microsoft.com/downloads/vm-readiness-assessment/) on VMs to ensure that they are compatible with Azure VMs and Azure Site Recovery Services. The Readiness Assessment Tool checks VM configurations and warns when configurations are incompatible with Azure. For example, it issues a warning if a C: drive is larger than 127 GB.
+[Azure Virtual Machine 準備状態評価ツール](http://azure.microsoft.com/downloads/vm-readiness-assessment/)を VM で実行すると、VM が Azure VM および Azure Site Recovery Services と互換性があることを確認できます。準備状態評価ツールを使用すると、VM の構成が確認され、構成と Azure に互換性がないと警告が表示されます。たとえば、C: ドライブが 127 GB を超える場合は警告が表示されます。
 
 
-Capacity planning is made up of at least two important processes:
+キャパシティ プランニングは、少なくとも 2 つの重要なプロセスで構成されます。
 
--   Mapping on-premises Hyper-V VMs to Azure VM sizes (such as A6, A7, A8, and A9).
+-   オンプレミスの Hyper-V VM を Azure VM のサイズ (A6、A7、A8、A9 など) にマッピングする
 
--   Determining the required Internet bandwidth.
+-   必要なインターネット帯域幅を決定する
 
-## <a name="limitations"></a>Limitations
+## 制限事項
 
-- Currently, only 1 StorSimple device can be failed over (to a single StorSimple Cloud Appliance). The scenario of a file server that spans several StorSimple devices is not yet supported.
+- 現時点では、(1 つの StorSimple Cloud Appliance に) フェールオーバーできるのは 1 つの StorSimple デバイスのみです。1 つのファイル サーバーが複数の StorSimple デバイスにまたがる場合は、現在サポートされていません。
 
-- If you get an error while enabling protection for a VM, make sure that you have disconnected the iSCSI targets.
+- VM の保護を有効にするときにエラーが発生した場合は、iSCSI ターゲットが切断されていることを確認してください。
 
-- All the volume containers that have been grouped together because of backup policies spanning across volume containers will be failed over together.
+- 複数ボリューム コンテナーにまたがったバックアップ ポリシーに従ってグループ化されたすべてのボリューム コンテナーは、一緒にフェールオーバーされます。
 
-- All the volumes in the volume containers you have chosen will be failed over.
+- 選択したボリューム コンテナー内のすべてのボリュームはフェールオーバーされます。
 
-- Volumes that add up to more than 64 TB can’t be failed over because the maximum capacity of a single StorSimple Cloud Appliance is 64 TB.
+- 1 つの StorSimple Cloud Appliance の最大容量が 64 TB であるため、合計 64 TB を超えるボリュームはフェール オーバーすることができません。
 
-- If the planned/unplanned failover fails and the VMs are created in Azure, then do not clean up the VMs. Instead, do a failback. If you delete the VMs then the on-premises VMs cannot be turned on again.
+- 計画/計画されていないフェールオーバーが失敗し、VM が Azure で作成された場合は、その VM をクリーンアップしないでください。代わりに、フェールバックを実行します。VM を削除してしまうと、オンプレミスの VM を再び立ち上げることができなくなります。
 
-- After a failover, if you are not able to see the volumes, go to the VMs, open Disk Management, rescan the disks, and then bring them online.
+- フェールオーバー後にボリュームが表示されない場合、VM に移動して、[ディスクの管理] を開き、ディスクを再スキャンしてからオンラインにします。
 
-- In some instances, the drive letters in the DR site might be different than the letters on-premises. If this occurs, you will need to manually correct the problem after the failover is finished.
+- 障害復旧サイトのドライブ文字がオンプレミスのドライブ文字と異なる場合があります。このような場合は、フェールオーバーが完了したら、手動で問題を修正する必要があります。
 
-- Multi-factor authentication should be disabled for the Azure credential that is entered in the automation account as an asset. If this authentication is not disabled, scripts will not be allowed to run automatically and the recovery plan will fail.
+- オートメーション アカウントに資産として入力する Azure の資格情報では、多要素認証を無効にする必要があります。この認証が無効になっていないと、スクリプトは自動的に実行されないため、復旧計画が失敗します。
 
-- Failover job timeout: The StorSimple script will time out if the failover of volume containers takes more time than the Azure Site Recovery limit per script (currently 120 minutes).
+- フェールオーバー ジョブのタイムアウト: ボリューム コンテナーのフェールオーバーにかかる時間が、Azure Site Recovery でスクリプトあたりの制限されている時間 (現在は 120 分) を超えると、StorSimple のスクリプトはタイムアウトになります。
 
-- Backup job timeout: The StorSimple script times out if the backup of volumes takes more time than the Azure Site Recovery limit per script (currently 120 minutes).
+- バックアップ ジョブのタイムアウト: ボリュームのバックアップにかかる時間が、Azure Site Recovery でスクリプトあたりの制限されている時間 (現在は 120 分) を超えると、StorSimple のスクリプトはタイムアウトになります。
  
-    > [AZURE.IMPORTANT] Run the backup manually from the Azure portal and then run the recovery plan again.
+	> [AZURE.IMPORTANT] Azure ポータルから手動でバックアップを実行し、復旧計画をもう一度実行してください。
 
-- Clone job timeout: The StorSimple script times out if the cloning of volumes takes more time than the Azure Site Recovery limit per script (currently 120 minutes).
+- 複製ジョブのタイムアウト: ボリュームの複製にかかる時間が、Azure Site Recovery でスクリプトあたりの制限されている時間 (現在は 120 分) を超えると、StorSimple のスクリプトがタイムアウトになります。
 
-- Time synchronization error: The StorSimple scripts errors out saying that the backups were unsuccessful even though the backup is successful in the portal. A possible cause for this might be that the StorSimple appliance’s time might be out of sync with the current time in the time zone.
+- 時間同期のエラー: ポータルでバックアップが正常に作成された場合でも、バックアップが失敗したというエラーが StorSimple スクリプトで表示されることがあります。このエラーの原因として、StorSimple アプライアンスの時間がタイム ゾーンの現在の時間と同期されていないことが考えられます。
  
-    > [AZURE.IMPORTANT] Sync the appliance time with the current time in the time zone.
+	> [AZURE.IMPORTANT] アプライアンスの時間とタイム ゾーンの現在の時間を同期してください。
 
-- Appliance failover error: The StorSimple script might fail if there is an appliance failover when the recovery plan is running.
-    
-    > [AZURE.IMPORTANT] Rerun the recovery plan after the appliance failover is complete.
+- アプライアンス フェールオーバーのエラー: 復旧計画の実行中にアプライアンスのフェールオーバーが実行されると、StorSimple スクリプトが失敗する場合があります。
+	
+	> [AZURE.IMPORTANT] アプライアンスのフェールオーバーが完了してから、復旧計画を再実行してください。
 
-## <a name="summary"></a>Summary
+## 概要
 
-Using Azure Site Recovery, you can create a complete automated disaster recovery plan for a file server VM having file shares hosted on StorSimple storage. You can initiate the failover within seconds from anywhere in the event of a disruption and get the application up and running in a few minutes.
+Azure Site Recovery を使用すると、StorSimple ストレージでホストされているファイル共有を含むファイル サーバー VM に対して、自動障害復旧計画を作成できます。障害発生時に、任意の場所から数秒以内にフェールオーバーを開始し、数分以内にアプリケーションを稼働させることができます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0518_2016-->

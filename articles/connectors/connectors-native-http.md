@@ -1,12 +1,12 @@
 <properties
-    pageTitle="Add the HTTP action in logic apps | Microsoft Azure"
-    description="Overview of the HTTP action with properties"
-    services=""
-    documentationCenter=""
-    authors="jeffhollan"
-    manager="erikre"
-    editor=""
-    tags="connectors"/>
+	pageTitle="ロジック アプリに HTTP アクションを追加する | Microsoft Azure"
+	description="HTTP アクションとプロパティの概要"
+	services=""
+	documentationCenter=""
+	authors="jeffhollan"
+	manager="erikre"
+	editor=""
+	tags="connectors"/>
 
 <tags
    ms.service="logic-apps"
@@ -17,205 +17,198 @@
    ms.date="07/15/2016"
    ms.author="jehollan"/>
 
+# HTTP アクションの概要
 
-# <a name="get-started-with-the-http-action"></a>Get started with the HTTP action
+HTTP アクションを使用すると、組織のワークフローを拡張し、HTTP 経由で任意のエンドポイントと通信することができます。
 
-With the HTTP action, you can extend workflows for your organization and communicate to any endpoint over HTTP.
+そのための方法は次のとおりです。
 
-You can:
+- 管理対象の Web サイトがダウンしたときにアクティブ化する (トリガーする) ロジック アプリ ワークフローを作成します。
+- HTTP 経由で任意のエンドポイントと通信して、ワークフローを他のサービスに拡張します。
 
-- Create logic app workflows that activate (trigger) when a website that you manage goes down.
-- Communicate to any endpoint over HTTP to extend your workflows into other services.
+ロジック アプリで HTTP アクションの使用を開始する方法については、[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-To get started using the HTTP action in a logic app, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## HTTP トリガーの使用
 
-## <a name="use-the-http-trigger"></a>Use the HTTP trigger
+トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。[トリガーの詳細についてはこちらを参照してください](connectors-overview.md)。
 
-A trigger is an event that can be used to start the workflow that is defined in a logic app. [Learn more about triggers](connectors-overview.md).
+ロジック アプリ デザイナーで HTTP トリガーをセットアップする方法の例を次に示します。
 
-Here’s an example sequence of how to set up the HTTP trigger in the Logic App Designer.
-
-1. Add the HTTP trigger in your logic app.
-2. Fill in the parameters for the HTTP endpoint that you want to poll.
-3. Modify the recurrence interval on how frequently it should poll.
-4. The logic app now fires with any content that is returned during each check.
+1. ロジック アプリに HTTP トリガーを追加します。
+2. ポーリングする HTTP エンドポイントのパラメーターを入力します。
+3. ポーリングする頻度の繰り返し間隔を変更します。
+4. これで、ロジック アプリを起動すると各チェック時に内容が返されるようになりました。
 
 ![HTTP trigger](./media/connectors-native-http/using-trigger.png)
 
-### <a name="how-the-http-trigger-works"></a>How the HTTP trigger works
+### HTTP トリガーのしくみ
 
-The HTTP trigger makes a call to an HTTP endpoint on a recurring interval. By default, any HTTP response code less than 300 results in a logic app run. You can add a condition in code view that will evaluate after the HTTP call to determine if the logic app should fire. Here's an example of an HTTP trigger that fires whenever the status code returned is greater than or equal to `400`.
+HTTP トリガーは、定期的な間隔で HTTP エンドポイントを呼び出します。既定では、HTTP 応答コードが 300 より小さい場合にロジック アプリが実行されます。HTTP 呼び出しの後に、ロジック アプリを起動するかどうかを判断するための評価条件をコード ビューに追加できます。返された状態コードが `400` 以上の場合に常に起動する HTTP トリガーの例を次に示します。
 
 ```javascript
 "Http":
 {
-    "conditions": [
-        {
-            "expression": "@greaterOrEquals(triggerOutputs()['statusCode'], 400)"
-        }
-    ],
-    "inputs": {
-        "method": "GET",
-        "uri": "https://blogs.msdn.microsoft.com/logicapps/",
-        "headers": {
-            "accept-language": "en"
-        }
-    },
-    "recurrence": {
-        "frequency": "Second",
-        "interval": 15
-    },
-    "type": "Http"
+	"conditions": [
+		{
+			"expression": "@greaterOrEquals(triggerOutputs()['statusCode'], 400)"
+		}
+	],
+	"inputs": {
+		"method": "GET",
+		"uri": "https://blogs.msdn.microsoft.com/logicapps/",
+		"headers": {
+			"accept-language": "en"
+		}
+	},
+	"recurrence": {
+		"frequency": "Second",
+		"interval": 15
+	},
+	"type": "Http"
 }
 ```
 
-Full details about the HTTP trigger parameters are available on [MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger).
+HTTP トリガーのパラメーターの詳細については、[MSDN](https://msdn.microsoft.com/library/azure/mt643939.aspx#HTTP-trigger) を参照してください。
 
-## <a name="use-the-http-action"></a>Use the HTTP action
+## HTTP アクションの使用
 
-An action is an operation that is carried out by the workflow that is defined in a logic app. [Learn more about actions](connectors-overview.md).
+アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。[アクションの詳細についてはこちらを参照してください](connectors-overview.md)。
 
-1. Select the **New Step** button.
-2. Choose **Add an action**.
-3. In the action search box, type **http** to list the HTTP action.
+1. **[新しいステップ]** をクリックします。
+2. **[アクションの追加]** を選択します。
+3. アクションの検索ボックスに「**HTTP**」と入力して、HTTP アクションの一覧を表示します。
 
-    ![Select the HTTP action](./media/connectors-native-http/using-action-1.png)
+	![Select the HTTP action](./media/connectors-native-http/using-action-1.png)
 
-4. Add in any parameters that are required for the HTTP call.
+4. HTTP 呼び出しに必要なすべてのパラメーターを追加します。
 
-    ![Complete the HTTP action](./media/connectors-native-http/using-action-2.png)
+	![Complete the HTTP action](./media/connectors-native-http/using-action-2.png)
 
-5. Click the top left corner of the toolbar to save. Your logic app will both save and publish (activate).
+5. ツール バーの左上隅をクリックして、保存します。ロジック アプリが保存されて発行 (アクティブ化) されます。
 
-## <a name="http-trigger"></a>HTTP trigger
+## HTTP トリガー
 
-Here are the details for the trigger that this connector supports. The HTTP connector has one trigger.
+ここでは、このコネクタでサポートされているトリガーの詳細について説明します。HTTP コネクタにはトリガーが 1 つあります。
 
-|Trigger|Description|
+|トリガー|Description|
 |---|---|
-|HTTP|Makes an HTTP call and returns the response content.|
+|HTTP|HTTP 呼び出しを実行し、応答コンテンツを返します。|
 
-## <a name="http-action"></a>HTTP action
+## HTTP アクション
 
-Here are the details for the action that this connector supports. The HTTP connector has one possible action.
+ここでは、このコネクタでサポートされているアクションの詳細について説明します。HTTP コネクタには、使用可能なアクションが 1 つあります。
 
-|Action|Description|
+|アクション|Description|
 |---|---|
-|HTTP|Makes an HTTP call and returns the response content.|
+|HTTP|HTTP 呼び出しを実行し、応答コンテンツを返します。|
 
-## <a name="http-details"></a>HTTP details
+## HTTP の詳細
 
-The following tables describe the required and optional input fields for the action and the corresponding output details that are associated with using the action.
+次の表に、アクションの必須および省略可能な入力フィールドと、各アクションの使用に伴う出力の詳細を示します。
 
 
-#### <a name="http-request"></a>HTTP request
-The following are input fields for the action, which makes an HTTP outbound request.
-A * means that it is a required field.
+#### HTTP 要求
+HTTP 送信要求を実行するアクションの入力フィールドを次に示します。* は、必須フィールドであることを示しています。
 
-|Display name|Property name|Description|
+|表示名|プロパティ名|Description|
 |---|---|---|
-|Method*|method|The HTTP verb to use|
-|URI*|uri|The URI for the HTTP request|
-|Headers|headers|A JSON object of HTTP headers to include|
-|Body|body|The HTTP request body|
-|Authentication|authentication|Details in the [Authentication](#authentication) section|
+|メソッド*|静的メソッド|使用する HTTP 動詞|
+|URI*|uri|HTTP 要求の URI|
+|ヘッダー|headers|含める HTTP ヘッダーの JSON オブジェクト|
+|本文|body|HTTP 要求の本文|
+|認証|authentication|詳細については「[認証](#authentication)」セクションを参照|
 <br>
 
-#### <a name="output-details"></a>Output details
+#### 出力の詳細
 
-The following are output details for the HTTP response.
+HTTP 応答の出力の詳細を次に示します。
 
-|Property name|Data type|Description|
+|プロパティ名|データ型|Description|
 |---|---|---|
-|Headers|object|Response headers|
-|Body|object|Response object|
-|Status Code|int|HTTP status code|
+|ヘッダー|オブジェクト|応答ヘッダー|
+|本文|オブジェクト|応答オブジェクト|
+|状態コード|int|HTTP 状態コード|
 
-## <a name="authentication"></a>Authentication
+## 認証
 
-The Logic Apps feature of Azure App Service allows you to use different types of authentication against HTTP endpoints. You can use this authentication with the **HTTP**, **[HTTP + Swagger](./connectors-native-http-swagger.md)**, and **[HTTP Webhook](./connectors-native-webhook.md)** connectors. The following types of authentication are configurable:
+Azure App Service の Logic Apps 機能では、HTTP エンドポイントに対してさまざまな種類の認証を使用できます。この認証は、**HTTP**、**[HTTP + Swagger](./connectors-native-http-swagger.md)**、**[HTTP Webhook](./connectors-native-webhook.md)** の各コネクタで使用できます。次の種類の認証を構成できます。
 
-* [Basic authentication](#basic-authentication)
-* [Client certificate authentication](#client-certificate-authentication)
-* [Azure Active Directory (Azure AD) OAuth authentication](#azure-active-directory-oauth-authentication)
+* [基本認証](#basic-authentication)
+* [クライアント証明書認証](#client-certificate-authentication)
+* [Azure Active Directory (Azure AD) OAuth 認証](#azure-active-directory-oauth-authentication)
 
-#### <a name="basic-authentication"></a>Basic authentication
+#### 基本認証
 
-The following authentication object is needed for basic authentication.
-A * means that it is a required field.
+基本認証には、次の認証オブジェクトが必要です。* は、必須フィールドであることを示しています。
 
-|Property name|Data type|Description|
+|プロパティ名|データ型|Description|
 |---|---|---|
-|Type*|type|Type of authentication (must be `Basic` for basic authentication)|
-|Username*|username|User name to authenticate|
-|Password*|password|Password to authenticate|
+|Type*|type|認証の種類 (基本認証の場合は `Basic` を指定する必要があります)|
+|Username*|username|認証するユーザー名|
+|Password*|パスワード|認証するパスワード。|
 
->[AZURE.TIP] If you want to use a password that cannot be retrieved from the definition, use a `securestring` parameter and the `@parameters()` [workflow definition function](http://aka.ms/logicappdocs).
+>[AZURE.TIP] 定義から取得できないパスワードを使用する場合は、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
 
-So you would create an object like this in the authentication field:
+認証フィールドで次のようなオブジェクトを作成します。
 
 ```javascript
 {
-    "type": "Basic",
-    "username": "user",
-    "password": "test"
+	"type": "Basic",
+	"username": "user",
+	"password": "test"
 }
 ```
 
-#### <a name="client-certificate-authentication"></a>Client certificate authentication
+#### クライアント証明書認証
 
-The following authentication object is needed for client certificate authentication. A * means that it is a required field.
+クライアント証明書認証には、次の認証オブジェクトが必要です。* は、必須フィールドであることを示しています。
 
-|Property name|Data type|Description|
+|プロパティ名|データ型|Description|
 |---|---|---|
-|Type*|type|The type of authentication (must be `ClientCertificate` for SSL client certificates)|
-|PFX*|pfx|The Base64-encoded contents of the Personal Information Exchange (PFX) file|
-|Password*|password|The password to access the PFX file|
+|Type*|type|認証の種類 (SSL クライアント証明書の場合は、`ClientCertificate` を指定する必要があります)|
+|PFX*|pfx|Base64 でエンコードされた Personal Information Exchange (PFX) ファイルのコンテンツ|
+|Password*|パスワード|PFX ファイルにアクセスするためのパスワード|
 
->[AZURE.TIP] You can use a `securestring` parameter and the `@parameters()` [workflow definition function](http://aka.ms/logicappdocs) to use a parameter that won't be readable in the definition after saving the logic app.
+>[AZURE.TIP] ロジック アプリの保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
+
+次に例を示します。
+
+```javascript
+{
+	"type": "ClientCertificate",
+	"pfx": "aGVsbG8g...d29ybGQ=",
+	"password": "@parameters('myPassword')"
+}
+```
+
+#### Azure AD OAuth 認証
+
+Azure AD OAuth 認証には、次の認証オブジェクトが必要です。* は、必須フィールドであることを示しています。
+
+|プロパティ名|データ型|Description|
+|---|---|---|
+|Type*|type|認証の種類 (Azure AD OAuth 認証の場合は `ActiveDirectoryOAuth` を指定する必要があります)|
+|Tenant*|テナント|Azure AD テナントのテナント識別子。|
+|Audience*|対象となる読者|`https://management.core.windows.net/` に設定します。|
+|Client ID*|clientId|Azure AD アプリケーションのクライアント識別子|
+|Secret*|secret|トークンを要求しているクライアントのシークレット|
+
+>[AZURE.TIP] 保存後に定義内で読み取ることができなくなるパラメーターを使用するには、`securestring` パラメーターと `@parameters()` [ワークフロー定義関数](http://aka.ms/logicappdocs)を使用します。
 
 For example:
 
 ```javascript
 {
-    "type": "ClientCertificate",
-    "pfx": "aGVsbG8g...d29ybGQ=",
-    "password": "@parameters('myPassword')"
+	"type": "ActiveDirectoryOAuth",
+	"tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+	"audience": "https://management.core.windows.net/",
+	"clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
+	"secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
 }
 ```
 
-#### <a name="azure-ad-oauth-authentication"></a>Azure AD OAuth authentication
+## 次のステップ
 
-The following authentication object is needed for Azure AD OAuth authentication. A * means that it is a required field.
+プラットフォームを試用し、[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)してください。[API リスト](apis-list.md)を参照すると、Logic Apps で使用可能な他のコネクタについて確認できます。
 
-|Property name|Data type|Description|
-|---|---|---|
-|Type*|type|The type of authentication (must be `ActiveDirectoryOAuth` for Azure AD OAuth)|
-|Tenant*|tenant|The tenant identifier for the Azure AD tenant|
-|Audience*|audience|Set to `https://management.core.windows.net/`|
-|Client ID*|clientId|The client identifier for the Azure AD application|
-|Secret*|secret|The secret of the client that is requesting the token|
-
->[AZURE.TIP] You can use a `securestring` parameter and the `@parameters()` [workflow definition function](http://aka.ms/logicappdocs) to use a parameter that won't be readable in the definition after saving.
-
-For example:
-
-```javascript
-{
-    "type": "ActiveDirectoryOAuth",
-    "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "audience": "https://management.core.windows.net/",
-    "clientId": "34750e0b-72d1-4e4f-bbbe-664f6d04d411",
-    "secret": "hcqgkYc9ebgNLA5c+GDg7xl9ZJMD88TmTJiJBgZ8dFo="
-}
-```
-
-## <a name="next-steps"></a>Next steps
-
-Now, try out the platform and [create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md). You can explore the other available connectors in Logic Apps by looking at our [APIs list](apis-list.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

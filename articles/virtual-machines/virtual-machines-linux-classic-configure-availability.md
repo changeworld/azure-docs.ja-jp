@@ -1,35 +1,31 @@
 <properties
-    pageTitle="Availability sets for classic Linux VMs | Microsoft Azure"
-    description="Configure an availability set for a new or existing Linux virtual machine in the classic deployment model using the Azure portal and Azure PowerShell."
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor=""
-    tags="azure-service-management"/>
+	pageTitle="クラシック Linux VM の可用性セット | Microsoft Azure"
+	description="Azure ポータルと Azure PowerShell を使用して新規または既存の Linux 仮想マシンに対する可用性セットをクラシック デプロイメント モデルで構成します。"
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="cynthn"
+	manager="timlt"
+	editor=""
+	tags="azure-service-management"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/12/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
+	ms.author="cynthn"/>
 
+# クラシック デプロイメント モデルに Linux 仮想マシンの可用性セットを構成する方法
 
-# <a name="how-to-configure-an-availability-set-for-linux-virtual-machines-in-the-classic-deployment-model"></a>How to configure an availability set for Linux virtual machines in the classic deployment model
-
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. You can also [configure availability sets](azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets) in Resource Manager deployments.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]. Resource Manager デプロイで[可用性セットを構成](azure-cli-arm-commands.md#azure-availset-commands-to-manage-your-availability-sets)することもできます。
 
 [AZURE.INCLUDE [virtual-machines-common-classic-configure-availability](../../includes/virtual-machines-common-classic-configure-availability.md)]
 
 
-## <a name="next-steps"></a>Next steps 
+## 次のステップ 
 
-For additonal articles about classic deployments, see [Linux and open-source computing on Azure](virtual-machines-linux-opensource-links.md).
+クラシック デプロイに関するその他の記事については、「[Azure での Linux とオープン ソース コンピューティング](virtual-machines-linux-opensource-links.md)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=AcomDC_0713_2016-->

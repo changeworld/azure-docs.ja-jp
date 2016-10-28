@@ -1,92 +1,87 @@
 <properties
-    pageTitle="Access Hadoop YARN application logs programmatically | Microsoft Azure"
-    description="Access application logs programmatically on a Hadoop cluster in HDInsight."
-    services="hdinsight"
-    documentationCenter=""
-    tags="azure-portal"
-    authors="mumian" 
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="プログラムで Hadoop YARN アプリケーション ログにアクセスする| Microsoft Azure"
+	description="HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。"
+	services="hdinsight"
+	documentationCenter=""
+	tags="azure-portal"
+	authors="mumian" 
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/19/2016"
-    ms.author="jgao"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/25/2016"
+	ms.author="jgao"/>
+
+# Windows ベースの HDInsight での YARN アプリケーション ログへのアクセス
+
+このトピックでは、Azure HDInsight の Hadoop クラスターで完了した YARN (Yet Another Resource Negotiator) アプリケーションのログにアクセスする方法について説明します。
+
+> [AZURE.NOTE] このドキュメントの情報は、Windows ベースの HDInsight クラスターに固有のものです。Linux ベースの HDInsight クラスター上の YARN ログへのアクセスの詳細については、「[Access YARN application logs on Linux-based Hadoop on HDInsight (HDInsight の Linux ベースの Hadoop 上の YARN アプリケーション ログにアクセスする)](hdinsight-hadoop-access-yarn-app-logs-linux.md)」を参照してください。
+
+### 前提条件
+
+- Windows ベースの HDInsight クラスター。「[HDInsight での Windows ベースの Hadoop クラスターの作成](hdinsight-provision-clusters.md)」を参照してください。
 
 
-# <a name="access-yarn-application-logs-on-windows-based-hdinsight"></a>Access YARN application logs on Windows-based HDInsight
+## YARN タイムライン サーバー
 
-This topic explains how to access the logs for YARN (Yet Another Resource Negotiator) applications that have finished on a Hadoop cluster in Azure HDInsight
+<a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN タイムライン サーバー</a>は完了したアプリケーションに関する汎用的な情報のほか、2 つの異なるインターフェイスを通じてフレームワーク固有のアプリケーション情報を提供します。具体的には次の処理が行われます。
 
-> [AZURE.NOTE] The information in this document applies only to Windows-based HDInsight clusters. For information on accessing YARN logs on Linux-based HDInsight clusters, see [Access YARN application logs on Linux-based Hadoop on HDInsight](hdinsight-hadoop-access-yarn-app-logs-linux.md)
-
-### <a name="prerequisites"></a>Prerequisites
-
-- A Windows-based HDInsight cluster.  See [Create Windows-based Hadoop clusters in HDInsight](hdinsight-provision-clusters.md).
+* HDInsight クラスター上での汎用アプリケーション情報の格納と取得はバージョン 3.1.1.374 以降で有効になります。
+* タイムライン サーバーのフレームワーク固有のアプリケーション情報コンポーネントは、現在 HDInsight クラスターで使用できません。
 
 
-## <a name="yarn-timeline-server"></a>YARN Timeline Server
+アプリケーションの汎用情報には次のようなデータが含まれています。
 
-The <a href="http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html" target="_blank">YARN Timeline Server</a> provides generic information on completed applications as well as framework-specific application information through two different interfaces. Specifically:
+* アプリケーション ID (アプリケーションの一意の識別子)
+* アプリケーションを開始したユーザー
+* アプリケーションを完了するために実行された試みに関する情報
+* 特定のアプリケーションの試行で使用されたコンテナー
 
-* Storage and retrieval of generic application information on HDInsight clusters has been enabled with version 3.1.1.374 or higher.
-* The framework-specific application information component of the Timeline Server is not currently available on HDInsight clusters.
-
-
-Generic information on applications includes the following sorts of data:
-
-* The application ID, a unique identifier of an application
-* The user who started the application
-* Information on attempts made to complete the application
-* The containers used by any given application attempt
-
-On your HDInsight clusters, this information will be stored by Azure Resource Manager to a history store in the default container of your default Azure Storage account. This generic data on completed applications can be retrieved through a REST API:
+HDInsight クラスターで、この情報は Azure リソース マネージャーにより、既定の Azure ストレージ アカウントの既定のコンテナーにある履歴ストアに格納されます。完了したアプリケーションに関するこの汎用データは、REST API を介して取得できます。
 
     GET on https://<cluster-dns-name>.azurehdinsight.net/ws/v1/applicationhistory/apps
 
 
-## <a name="yarn-applications-and-logs"></a>YARN applications and logs
+## YARN アプリケーションとログ
 
-YARN supports multiple programming models (MapReduce being one of them) by decoupling resource management from application scheduling/monitoring. This is done through a global *ResourceManager* (RM), per-worker-node *NodeManagers* (NMs), and per-application *ApplicationMasters* (AMs). The per-application AM negotiates resources (CPU, memory, disk, network) for running your application with the RM. The RM works with NMs to grant these resources, which are granted as *containers*. The AM is responsible for tracking the progress of the containers assigned to it by the RM. An application may require many containers depending on the nature of the application.
+YARN はアプリケーションのスケジュール設定/監視からリソース管理を切り離すことで、複数のプログラミング モデル (MapReduce はそのうちの 1 つ) をサポートします。これは、グローバルな *リソース マネージャー* (RM)、ワーカー ノードごとの*ノード マネージャー* (NM)、アプリケーションごとの*アプリケーション マスター* (AM) によって実現されます。アプリケーションごとの AM は、アプリケーションを実行するためのリソース (CPU、メモリ、ディスク、ネットワーク) を RM と調整します。RM は NM と連携して、これらのリソースに*コンテナー*としての許可を付与します。AM は、RM によって自身に割り当てられたコンテナーの進行状況を追跡します。アプリケーションはその性質によって、多くのコンテナーを必要とする場合があります。
 
-Furthermore, each application may consist of multiple *application attempts* in order to finish in the presence of crashes or due to the loss of communication between an AM and an RM. Hence, containers are granted to a specific attempt of an application. In a sense, a container provides the context for basic unit of work performed by a YARN application, and all work that is done within the context of a container is performed on the single worker node on which the container was allocated. See [YARN Concepts][YARN-concepts] for further reference.
+さらに、クラッシュが発生した場合または AM と RM の間で通信が失われた場合、アプリケーションを完了するために、各アプリケーションで複数の*アプリケーション試行*が行われる場合があります。そのため、アプリケーションの特定の試行にコンテナーが付与されます。コンテナーは YARN アプリケーションによって実行される作業の基本単位のコンテキストを提供します。そのコンテキストの中で行われるすべての作業は、コンテナーが割り当てられた 1 つのワーカー ノードで実行されます。詳細については、「[YARN の概念][YARN-concepts]」に関するページをご覧ください。
 
-Application logs (and the associated container logs) are critical in debugging problematic Hadoop applications. YARN provides a nice framework for collecting, aggregating, and storing application logs with the [Log Aggregation][log-aggregation] feature. The Log Aggregation feature makes accessing application logs more deterministic, as it aggregates logs across all containers on a worker node and stores them as one aggregated log file per worker node on the default file system after an application finishes. Your application may use hundreds or thousands of containers, but logs for all containers run on a single worker node will always be aggregated to a single file, resulting in one log file per worker node used by your application. Log Aggregation is enabled by default on HDInsight clusters (version 3.0 and above), and aggregated logs can be found in the default container of your cluster at the following location:
+アプリケーションのログ (および関連するコンテナーのログ) は、問題のある Hadoop アプリケーションのデバッグに重要です。YARN は、[ログの集計][log-aggregation]機能により、アプリケーションのログを収集、集計、格納するための便利なフレームワークを提供します。ログの集計機能により、アプリケーションのログへのアクセスはより確実になります。この機能は、ワーカー ノード上のすべてのコンテナーでログを集計し、アプリケーションが終了した後でワーカー ノードごとに 1 つの集計されたログ ファイルとして既定のファイル システムに保存します。アプリケーションは数百または数千のコンテナーを使用することがありますが、1 つのワーカー ノードで実行されるすべてのコンテナーのログは常に 1 つのファイルに集計されます。つまりアプリケーションで使用するワーカー ノードごとに 1 つのログ ファイルが生成されます。ログの集計は、HDInsight クラスターでは既定で有効になっており (バージョン 3.0 以上)、集計されたログは、クラスターの既定のコンテナーの次の場所にあります。
 
-    wasbs:///app-logs/<user>/logs/<applicationId>
+	wasbs:///app-logs/<user>/logs/<applicationId>
 
-In that location, *user* is the name of the user who started the application, and *applicationId* is the unique identifier of an application as assigned by the YARN RM.
+ここで、*user* はアプリケーションを開始したユーザーの名前であり、*applicationId* は YARN リソース マネージャーにより割り当てられたアプリケーションの一意の識別子です。
 
-The aggregated logs are not directly readable, as they are written in a [TFile][T-file], [binary format][binary-format] indexed by container. YARN provides CLI tools to dump these logs as plain text for applications or containers of interest. You can view these logs as plain text by running one of the following YARN commands directly on the cluster nodes (after connecting to it through RDP):
+集計されたログは、コンテナーでインデックスが作成され、[TFile][T-file] に[バイナリ形式][binary-format]で書かれているので、直接読み取ることはできません。YARN は、アプリケーションまたは関連するコンテナーに対して、これらのログをプレーン テキストとしてダンプする CLI ツールを提供します。次の YARN コマンドをクラスター ノード上で直接実行することで (RDP による接続後)、これらのログをプレーン テキストとして表示できます。
 
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
-    yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
-
-
-## <a name="yarn-resourcemanager-ui"></a>YARN ResourceManager UI
-
-The YARN ResourceManager UI runs on the cluster headnode, and can be accessed through the Azure portal dashboard: 
-
-1. Sign in to [Azure portal](https://portal.azure.com/). 
-2. On the left menu, click **Browse**, click **HDInsight Clusters**, click a Windows-based cluster that you want to access the YARN application logs.
-3. On the top menu, click **Dashboard**. You will see a page opened on a new browser tab called **HDInsight Query Console**.
-4. From **HDInsight Query Console**, click **Yarn UI**.
+	yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
+	yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application> -containerId <containerId> -nodeAddress <worker-node-address>
 
 
+## YARN ResourceManager UI
 
+YARN ResourceManager UI は、クラスターのヘッドノード上で実行され、Azure ポータル ダッシュボードからアクセスできます。
 
-[YARN-timeline-server]:http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
-[log-aggregation]:http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
-[T-file]:https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
-[binary-format]:https://issues.apache.org/jira/browse/HADOOP-3315
-[YARN-concepts]:http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+2. 左側のメニューで、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックし、YARN アプリケーション ログにアクセスする Windows ベースのクラスターをクリックします。
+3. 上部のメニューで **[ダッシュボード]** をクリックします。**[HDInsight クエリ コンソール]** という名前の新しいブラウザー タブにページが開かれます。
+4. **[HDInsight クエリ コンソール]** で、**[Yarn UI]** をクリックします。
 
 
 
-<!--HONumber=Oct16_HO2-->
 
+[YARN-timeline-server]: http://hadoop.apache.org/docs/r2.4.0/hadoop-yarn/hadoop-yarn-site/TimelineServer.html
+[log-aggregation]: http://hortonworks.com/blog/simplifying-user-logs-management-and-access-in-yarn/
+[T-file]: https://issues.apache.org/jira/secure/attachment/12396286/TFile%20Specification%2020081217.pdf
+[binary-format]: https://issues.apache.org/jira/browse/HADOOP-3315
+[YARN-concepts]: http://hortonworks.com/blog/apache-hadoop-yarn-concepts-and-applications/
 
+<!---HONumber=AcomDC_0914_2016-->

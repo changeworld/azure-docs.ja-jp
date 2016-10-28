@@ -1,52 +1,51 @@
 <properties
-    pageTitle="Setting up WinRM access for Virtual Machines in Azure Resource Manager | Microsoft Azure"
-    description="How to setup WinRM access for use with an Azure Resource Manager virtual machine"
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="singhkays"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Azure Resource Manager の仮想マシンに WinRM アクセスを設定する | Microsoft Azure"
+	description="Azure Resource Manager の仮想マシンと共に使用するために WinRM アクセスを設定する方法"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="singhkays"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/16/2016"
-    ms.author="singhkay"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/16/2016"
+	ms.author="singhkay"/>
 
+# Azure Resource Manager の仮想マシンの WinRM アクセスを設定する
 
-# <a name="setting-up-winrm-access-for-virtual-machines-in-azure-resource-manager"></a>Setting up WinRM access for Virtual Machines in Azure Resource Manager
+## Azure サービス管理の WinRM と Azure Resource Manager
 
-## <a name="winrm-in-azure-service-management-vs-azure-resource-manager"></a>WinRM in Azure Service Management vs Azure Resource Manager
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイ モデル
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model
+* Azure Resource Manager の概要については、こちらの[記事](../resource-group-overview.md)を参照してください。
+* Azure サービス管理と Azure Resource Manager の違いについては、こちらの[記事](../resource-manager-deployment-model.md)を参照してください。
 
-* For an overview of the Azure Resource Manager, please see this [article](../resource-group-overview.md)
-* For differences between Azure Service Management and Azure Resource Manager, please see this [article](../resource-manager-deployment-model.md)
+2 つのスタックで WinRM 構成を設定する場合の主な違いは、VM に証明書をインストールする方法です。Azure Resource Manager スタックでは、Key Vault リソース プロバイダーが管理するリソースとして証明書がモデル化されます。そのため、ユーザーは自分の証明書を VM で使用する前に、Key Vault にアップロードする必要があります。
 
-The key difference in setting up WinRM configuration between the two stacks is how the certificate gets installed on the VM. In the Azure Resource Manager stack, the certificates are modeled as resources managed by the Key Vault Resource Provider. Therefore, the user needs to provide their own certificate and upload it to a Key Vault before using it in a VM.
+ここでは WinRM 接続を備えた VM のセットアップに必要な手順を説明します。
 
-Here are the steps you need to take to set up a VM with WinRM connectivity
+1. Key Vault の作成
+2. 自己署名証明書の作成
+3. 自己署名証明書を Key Vault にアップロードする
+4. Key Vault の自己署名証明書の URL を取得する
+5. VM を作成するときに、自己署名証明書の URL を参照する
 
-1. Create a Key Vault
-2. Create a self-signed certificate
-3. Upload your self-signed certificate to Key Vault
-4. Get the URL for your self-signed certificate in the Key Vault
-5. Reference your self-signed certificates URL while creating a VM
+## 手順 1: Key Vault を作成する
 
-## <a name="step-1:-create-a-key-vault"></a>Step 1: Create a Key Vault
-
-You can use the below command to create the Key Vault
+次のコマンドを使用して、Key Vault を作成します
 
 ```
 New-AzureRmKeyVault -VaultName "<vault-name>" -ResourceGroupName "<rg-name>" -Location "<vault-location>" -EnabledForDeployment -EnabledForTemplateDeployment
 ```
 
-## <a name="step-2:-create-a-self-signed-certificate"></a>Step 2: Create a self-signed certificate
-You can create a self-signed certificate using this PowerShell script
+## 手順 2: 自己署名証明書を作成する
+この PowerShell スクリプトを使用して、自己署名証明書を作成します
 
 ```
 $certificateName = "somename"
@@ -60,9 +59,9 @@ $password = Read-Host -Prompt "Please enter the certificate password." -AsSecure
 Export-PfxCertificate -Cert $cert -FilePath ".\$certificateName.pfx" -Password $password
 ```
 
-## <a name="step-3:-upload-your-self-signed-certificate-to-the-key-vault"></a>Step 3: Upload your self-signed certificate to the Key Vault
+## 手順 3: Key Vault に自己署名証明書をアップロードする
 
-Before uploading the certificate to the Key Vault created in step 1, it needs to converted into a format the Microsoft.Compute resource provider will understand. The below PowerShell script will allow you do that
+手順 1 で作成した Key Vault に証明書をアップロードする前に、Microsoft.Compute リソース プロバイダーが理解する形式への変換が必要です。次の PowerShell スクリプトにより、実行が許可されます
 
 ```
 $fileName = "<Path to the .pfx file>"
@@ -84,32 +83,32 @@ $secret = ConvertTo-SecureString -String $jsonEncoded -AsPlainText –Force
 Set-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>" -SecretValue $secret
 ```
 
-## <a name="step-4:-get-the-url-for-your-self-signed-certificate-in-the-key-vault"></a>Step 4: Get the URL for your self-signed certificate in the Key Vault
+## 手順 4: Key Vault の自己署名証明書の URL を取得する
 
-The Microsoft.Compute resource provider needs a URL to the secret inside the Key Vault while provisioning the VM. This enables the Microsoft.Compute resource provider to download the secret and create the equivalent certificate on the VM.
+VM をプロビジョニングするときに、Microsoft.Compute リソース プロバイダーには Key Vault 内部のシークレットへの URL が必要です。これにより、Microsoft.Compute リソース プロバイダーがシークレットをダウンロードして、VM 上に同様の証明書を作成することができます。
 
->[AZURE.NOTE]The URL of the secret needs to include the version as well. An example URL looks like below https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
+>[AZURE.NOTE]シークレットの URL には、バージョンも含める必要があります。URL の例を次に示します https://contosovault.vault.azure.net:443/secrets/contososecret/01h9db0df2cd4300a20ence585a6s7ve
 
 
-#### <a name="templates"></a>Templates
+#### テンプレート
 
-You can get the link to the URL in the template using the below code
+次のコードを使用して、テンプレートの URL へのリンクを取得する事ができます
 
     "certificateUrl": "[reference(resourceId(resourceGroup().name, 'Microsoft.KeyVault/vaults/secrets', '<vault-name>', '<secret-name>'), '2015-06-01').secretUriWithVersion]"
 
-#### <a name="powershell"></a>PowerShell
+#### PowerShell
 
-You can get this URL using the below PowerShell command
+次の PowerShell コマンドを使用して、この URL を取得することができます
 
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+	$secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
 
-## <a name="step-5:-reference-your-self-signed-certificates-url-while-creating-a-vm"></a>Step 5: Reference your self-signed certificates URL while creating a VM
+## 手順 5: VM を作成するときに、自己署名証明書の URL を参照する
 
-#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager Templates
+#### Azure Resource Manager のテンプレート
 
-While creating a VM through templates, the certificate gets referenced in the secrets section and the winRM section as below:
+テンプレートを使用して VM を作成する場合、"secrets" セクションと "WinRM" セクションで証明書を次のように参照します。
 
-    "osProfile": {
+	"osProfile": {
           ...
           "secrets": [
             {
@@ -141,32 +140,29 @@ While creating a VM through templates, the certificate gets referenced in the se
           }
         },
 
-A sample template for the above can be found here at [201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows)
+上記のサンプル テンプレートは、[201-vm-winrm-keyvault-windows](https://azure.microsoft.com/documentation/templates/201-vm-winrm-keyvault-windows) にあります。
 
-Source code for this template can be found on [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows)
+このテンプレートのソース コードは [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-winrm-keyvault-windows) にあります。
 
-#### <a name="powershell"></a>PowerShell
+#### PowerShell
 
-    $vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
-    $credential = Get-Credential
-    $secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
-    $vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
-    $sourceVaultId = (Get-AzureRmKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
-    $CertificateStore = "My"
-    $vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
+	$vm = New-AzureRmVMConfig -VMName "<VM name>" -VMSize "<VM Size>"
+	$credential = Get-Credential
+	$secretURL = (Get-AzureKeyVaultSecret -VaultName "<vault name>" -Name "<secret name>").Id
+	$vm = Set-AzureRmVMOperatingSystem -VM $vm -Windows -ComputerName "<Computer Name>" -Credential $credential -WinRMHttp -WinRMHttps -WinRMCertificateUrl $secretURL
+	$sourceVaultId = (Get-AzureRmKeyVault -ResourceGroupName "<Resource Group name>" -VaultName "<Vault Name>").ResourceId
+	$CertificateStore = "My"
+	$vm = Add-AzureRmVMSecret -VM $vm -SourceVaultId $sourceVaultId -CertificateStore $CertificateStore -CertificateUrl $secretURL
 
-## <a name="step-6:-connecting-to-the-vm"></a>Step 6: Connecting to the VM
-Before you can connect to the VM you'll need to make sure your machine is configured for WinRM remote management. Start PowerShell as an administrator and execute the below command to make sure you're set up.
+## 手順 6 - VM に接続する
+VM に接続する前に、WinRM リモート管理のためにコンピューターが構成されていることを確認する必要があります。管理者として PowerShell を開始し、次のコマンドを実行して設定を確認します。
 
     Enable-PSRemoting -Force
 
->[AZURE.NOTE] You might need to make sure the WinRM service is running if the above does not work. You can do that using `Get-Service WinRM`
+>[AZURE.NOTE] 上記が動作しない場合は、WinRM サービスが実行されていることを確認する必要があります。`Get-Service WinRM` を使用して、確認することができます。
 
-Once the setup is done, you can connect to the VM using the below command
+設定が完了すると、次のコマンドを使用して VM に接続することができます。
 
     Enter-PSSession -ConnectionUri https://<public-ip-dns-of-the-vm>:5986 -Credential $cred -SessionOption (New-PSSessionOption -SkipCACheck -SkipCNCheck -SkipRevocationCheck) -Authentication Negotiate
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

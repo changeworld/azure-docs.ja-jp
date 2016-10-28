@@ -1,108 +1,106 @@
 <properties
-    pageTitle="Flighting deployment (beta testing) in Azure App Service"
-    description="Learn how to flight new features in your app or beta test your updates in this end-to-end tutorial. It brings together App Service features like continuous publishing, slots, traffic routing, and Application Insights integration."
-    services="app-service\web"
-    documentationCenter=""
-    authors="cephalin"
-    manager="wpickett"
-    editor=""/>
+	pageTitle="Azure App Service でのフライト デプロイ (ベータ テスト)"
+	description="アプリの新機能を運用環境下でテストしたり更新のベータ テストを実施したりする方法について説明したエンド ツー エンドのチュートリアルです。継続的パブリッシング、スロット、トラフィック ルーティング、Application Insights との統合など、App Service の各種機能を組み合わせて実現しています。"
+	services="app-service\web"
+	documentationCenter=""
+	authors="cephalin"
+	manager="wpickett"
+	editor=""/>
 
 <tags
-    ms.service="app-service-web"
-    ms.workload="web"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="02/02/2016"
-    ms.author="cephalin"/>
+	ms.service="app-service-web"
+	ms.workload="web"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="02/02/2016"
+	ms.author="cephalin"/>
+# Azure App Service でのフライト デプロイ (ベータ テスト)
 
-# <a name="flighting-deployment-(beta-testing)-in-azure-app-service"></a>Flighting deployment (beta testing) in Azure App Service
+このチュートリアルでは、[Azure Application Insights](/services/application-insights/) と [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の各種機能を統合することによって*フライト デプロイ*を行う方法について説明します。
 
-This tutorial shows you how to do *flighting deployments* by integrating the various capabilities of [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) and [Azure Application Insights](/services/application-insights/). 
+*フライト*は、運用環境で行われる主要なテストの一つとして、利用者数を実際よりも少ない状態で新機能や変更を検証するデプロイ プロセスです。ベータ テストと酷似しており、"Controlled Test Flight (制御された環境で行われるテスト フライト)" と呼ばれることもあります。Web プレゼンスを確立している多くの大企業が、[アジャイル開発](https://en.wikipedia.org/wiki/Agile_software_development)の一工程として、アプリを更新したときにまずこの手法を用いて検証を行っています。同じ DevOps シナリオは、Azure App Service を使用して、運用環境におけるテスト、継続的パブリッシング、Application Insights を統合することによって実現できます。この手法には次のような利点があります。
 
-*Flighting* is a deployment process that validates a new feature or change with a limited number of real customers, and is a major testing in production scenario. It is akin to beta testing and is sometimes known as "controlled test flight". Many large enterprises with a web presence use this approach to get early validation on their app updates in their practice of [agile development](https://en.wikipedia.org/wiki/Agile_software_development). Azure App Service enables you to integrate test in production with continous publishing and Application Insights to implement the same DevOps scenario. Benefits of this approach include:
+- **更新されたアプリを運用環境にリリースする_前に_リアルなフィードバックを得る** - フィードバックを得るタイミングとして、リリース直後に勝るものがあるとすれば、リリース前しかありません。製品ライフ サイクルの中でいつでも自由に、実際のユーザーのトラフィックと振る舞いに基づいて更新版をテストすることができます。
+- **[CTDD (Continuous Test-Driven Development: 継続的テスト駆動開発)](https://en.wikipedia.org/wiki/Continuous_test-driven_development) が強化される** - 運用環境におけるテストに、Application Insights を使った継続的統合とインストルメンテーションを組み合わせることで、製品ライフ サイクルの初期段階で自動的にユーザーによる検証を実施することができます。テストを手動で実施するよりも短時間で済みます。
+- **テストのワークフローを最適化する** - 継続的に監視するインストルメント (計器) を実装し、運用環境におけるテストを自動化することで、[統合](https://en.wikipedia.org/wiki/Integration_testing)、[回帰](https://en.wikipedia.org/wiki/Regression_testing)、[ユーザビリティ](https://en.wikipedia.org/wiki/Usability_testing)、アクセシビリティ、ローカリゼーション、[パフォーマンス](https://en.wikipedia.org/wiki/Software_performance_testing)、[セキュリティ](https://en.wikipedia.org/wiki/Security_testing)、[受け入れ](https://en.wikipedia.org/wiki/Acceptance_testing)など、さまざまな種類のテストを 1 つのプロセスで実行することができます。
 
-- **Gain real feedback _before_ updates are released to production** - The only thing better than gaining feedback as soon as you release is gaining feedback before you release. You can test updates with real user traffic and behaviors as early as you desire in the product life cycle.
-- **Enhance [continuous test-driven development (CTDD)](https://en.wikipedia.org/wiki/Continuous_test-driven_development)** - By integrating test in production with continuous integration and instrumentation with Application Insights, user validation happens early and automatically in your product life cycle. This helps reduce time investments in manual test execution.
-- **Optimize test workflow** - By automating test in production with continuous monitoring instrumentation, you can potentially accomplish the goals of various kinds of tests in a single process, such as [integration](https://en.wikipedia.org/wiki/Integration_testing), [regression](https://en.wikipedia.org/wiki/Regression_testing), [usability](https://en.wikipedia.org/wiki/Usability_testing), accessibility, localization, [performance](https://en.wikipedia.org/wiki/Software_performance_testing), [security](https://en.wikipedia.org/wiki/Security_testing), and [acceptance](https://en.wikipedia.org/wiki/Acceptance_testing).
+フライト デプロイの目的は単にライブ トラフィックをルーティングすることではありません。この環境が目指しているのは、予期しないバグやパフォーマンスの低下、ユーザー エクスペリエンスの課題など、あらゆる問題の本質を短時間で捉えることです。注目すべき点は、実際の利用者を対象にテストが実施されることです。そのため次の段階でしかるべき情報に基づく判断を行うために必要なデータをすべて収集するようにフライト デプロイをセットアップする必要があります。このチュートリアルでは、Application Insights でデータを収集する方法を紹介していますが、実際のシナリオに合わせて New Relic などのテクノロジを使用することもできます。
 
-A flighting deployment is not just about routing live traffic. In such a deployment you want to gain insight as quickly as possible, whether it be an unexpected bug, performance degradation, user experience issues. Remember, you are dealing with real customers. So to do it right, you must make sure that you have set up your flighting deployment to gather all the data you need in order to make an informed decision for your next step. This tutorial shows you how to collect data with Application Insights, but you can use New Relic or other technologies that suits your scenario. 
+## 学習内容
 
-## <a name="what-you-will-do"></a>What you will do
+このチュートリアルでは、次のシナリオを組み合わせながら、運用環境の App Service アプリをテストする方法について説明します。
 
-In this tutorial, you will learn how to bring the following scenarios together to test your App Service app in production:
+- ベータ アプリに[運用環境のトラフィックをルーティング](app-service-web-test-in-production-get-start.md)する
+- 効果的なメトリックを得るための[インストルメントをアプリ](../application-insights/app-insights-web-track-usage.md)に実装する
+- ベータ版のアプリを継続的にデプロイし、実際のアプリのメトリックを追跡する
+- 運用環境のアプリとベータ版のアプリとでメトリックを比較し、コードに加えた変更の結果を確認する
 
-- [Route production traffic](app-service-web-test-in-production-get-start.md) to your beta app
-- [Instrument your app](../application-insights/app-insights-web-track-usage.md) to obtain useful metrics
-- Continuously deploy your beta app and track live app metrics
-- Compare metrics between the production app and the beta app to see how code changes translate to results
+## 前提条件
 
-## <a name="what-you-will-need"></a>What you will need
+-	Azure アカウント
+-	[GitHub](https://github.com/) アカウント
+- Visual Studio 2015 ([Community Edition](https://www.visualstudio.com/ja-JP/products/visual-studio-express-vs.aspx) をダウンロード可能)
+-	Git Shell ([GitHub for Windows](https://windows.github.com/) とともにインストールされます) - これにより、同じセッション内で Git コマンドと PowerShell コマンドの両方を実行できます。
+-	最新の [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi) ビット
+-	以下の事柄の基礎知識:
+	-	[Azure リソース マネージャー ](../resource-group-overview.md) テンプレートのデプロイ(「[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)」を参照してください)
+	-	[Git](http://git-scm.com/documentation)
+	-	[PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
 
--   An Azure account
--   A [GitHub](https://github.com/) account
-- Visual Studio 2015 - you can download the [Community edition](https://www.visualstudio.com/en-us/products/visual-studio-express-vs.aspx).
--   Git Shell (installed with [GitHub for Windows](https://windows.github.com/)) - this enables you to run both the Git and PowerShell commands in the same session
--   Latest [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/download/v0.9.8-September2015/azure-powershell.0.9.8.msi) bits
--   Basic understanding of the following:
-    -   [Azure Resource Manager](../resource-group-overview.md) template deployment (see [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md))
-    -   [Git](http://git-scm.com/documentation)
-    -   [PowerShell](https://technet.microsoft.com/library/bb978526.aspx)
-
-> [AZURE.NOTE] You need an Azure account to complete this tutorial:
-> + You can [open an Azure account for free](/pricing/free-trial/) - You get credits you can use to try out paid Azure services, and even after they're used up you can keep the account and use free Azure services, such as Web Apps.
-> + You can [activate Visual Studio subscriber benefits](/pricing/member-offers/msdn-benefits-details/) - Your Visual Studio subscription gives you credits every month that you can use for paid Azure services.
+> [AZURE.NOTE] このチュートリアルを完了するには、Azure アカウントが必要です。
+> + [無料で Azure アカウントを開く](/pricing/free-trial/)ことができます - Azure の有料サービスを試用できるクレジットが提供されます。このクレジットを使い切ってもアカウントは維持されるため、Web アプリなど無料の Azure サービスをご利用になれます。
+> + [Visual Studio サブスクライバーの特典を有効にする](/pricing/member-offers/msdn-benefits-details/)こともできます - Visual Studio サブスクリプションにより、有料の Azure サービスで使用できるクレジットが毎月提供されます。
 >
-> If you want to get started with Azure App Service before signing up for an Azure account, go to [Try App Service](http://go.microsoft.com/fwlink/?LinkId=523751), where you can immediately create a short-lived starter web app in App Service. No credit cards required; no commitments.
+> Azure アカウントにサインアップする前に Azure App Service の使用を開始する場合は、[App Service の試用](http://go.microsoft.com/fwlink/?LinkId=523751)に関するページを参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 
-## <a name="set-up-your-production-web-app"></a>Set up your production web app
+## 運用 Web アプリをセットアップする
 
->[AZURE.NOTE] The script used in this tutorial will automatically configure continuous publishing from your GitHub repository. This requires that your GitHub credentials are already stored in Azure, otherwise the scripted deployment will fail when attempting to configure source control settings for the web apps.
+>[AZURE.NOTE] このチュートリアルで使用するスクリプトは、GitHub リポジトリからの継続的パブリッシングを自動的に構成します。これを行うには、GitHub 資格情報が既に Azure に保存されている必要があります。保存されていない場合、スクリプト化されたデプロイは、Web アプリに対するソース管理設定を構成しようとした時点で失敗します。
 >
->To store your GitHub credentials in Azure, create a web app in the [Azure Portal](https://portal.azure.com/) and [configure GitHub deployment](app-service-continuous-deployment.md#Step7). You only need to do this once.
+>GitHub 資格情報を Azure に保存するには、Web アプリを [Azure ポータル](https://portal.azure.com/)で作成し、[GitHub のデプロイを構成](app-service-continuous-deployment.md#Step7)します。この操作を行うのは 1 回だけです。
 
-In a typical DevOps scenario, you have an application that’s running live in Azure, and you want to make changes to it through continuous publishing. In this scenario, you will deploy to production a template that you have developed and tested.
+一般的な DevOps シナリオでは、Azure でライブ実行されているアプリケーションがあり、継続的パブリッシングを通してそれを変更します。このシナリオでは、開発とテストの済んだテンプレートを運用環境にデプロイします。
 
-1.  Create your own fork of the [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) repository. For information on creating your fork, see [Fork a Repo](https://help.github.com/articles/fork-a-repo/). Once your fork is created, you can see it in your browser.
+1.	[ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) リポジトリの自分専用のフォークを作成します。フォークの作成の詳細については、「[リポジトリをフォークする](https://help.github.com/articles/fork-a-repo/)」を参照してください。フォークが作成されたら、ブラウザーでそれを確認できます。
 
-    ![](./media/app-service-agile-software-development/production-1-private-repo.png)
+	![](./media/app-service-agile-software-development/production-1-private-repo.png)
 
-2.  Open a Git Shell session. If you don't have Git Shell yet, install [GitHub for Windows](https://windows.github.com/) now.
-3.  Create a local clone of your fork by executing the following command:
+2.	Git Shell セッションを開きます。Git Shell をまだ持っていない場合は、この時点で [GitHub for Windows](https://windows.github.com/) をインストールします。
+3.	次のコマンドを実行して、フォークのローカル クローンを作成します。
 
         git clone https://github.com/<your_fork>/ToDoApp.git
 
-4.  Once you have your local clone, navigate to *&lt;repository_root>*\ARMTemplates, and run the deploy.ps1 script with a unique suffix, as shown below:
+4.	ローカル クローンを作成したら、*&lt;repository\_root>*\\ARMTemplates に移動し、次のように一意のサフィックスで deploy.ps1 スクリプトを実行します。
 
         .\deploy.ps1 –RepoUrl https://github.com/<your_fork>/todoapp.git -ResourceGroupSuffix <your_suffix>
 
-4.  When prompted, type in the desired username and password for database access. Remember your database credentials because you will need to specify them again when updating the resource group.
+4.	メッセージが表示されたら、データベースにアクセスするためのユーザー名とパスワードを入力します。データベースの資格情報は、リソース グループを更新するときにもう一度指定する必要があるため、忘れないように注意してください。
 
-    You should see the provisioning progress of various Azure resources. When deployment completes, the script will launch the application in the browser and give you a friendly beep.
-    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.1-app-in-browser.png)
+	Azure のさまざまなリソースのプロビジョニングの進行状況が表示されます。デプロイが完了すると、スクリプトによってアプリケーションがブラウザー内に起動し、わかりやすいビープ音が鳴ります。![](./media/app-service-web-test-in-production-controlled-test-flight/00.1-app-in-browser.png)
 
-6.  Back in your Git Shell session, run:
+6.	Git Shell セッションに戻り、次を実行します。
 
         .\swap –Name ToDoApp<your_suffix>
 
-    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.2-swap-to-production.png)
+	![](./media/app-service-web-test-in-production-controlled-test-flight/00.2-swap-to-production.png)
 
-7.  When the script finishes, go back to browse to the frontend’s address (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/) to see the application running in production.
-5.  Log into the [Azure Portal](https://portal.azure.com/) and take a look at what’s created.
+7.	スクリプトが終了したら、フロントエンドのアドレス (http://ToDoApp*&lt;your_suffix>*.azurewebsites.net/) を参照して、アプリケーションが運用環境で実行されていることを確認します。
+5.	[Azure ポータル](https://portal.azure.com/)にログインして、何が作成されたかを調べます。
 
-    You should be able to see two web apps in the same resource group, one with the `Api` suffix in the name. If you look at the resource group view, you will also see the SQL Database and server, the App Service plan, and the staging slots for the web apps. Browse through the different resources and compare them with *&lt;repository_root>*\ARMTemplates\ProdAndStage.json to see how they are configured in the template.
+	同じリソース グループ内に 2 つの Web アプリがあり、1 つは名前に `Api`サフィックスが付いていることを確認できます。リソース グループ ビューを表示している場合は、SQL Database とサーバー、App Service プラン、および Web アプリのステージング スロットも表示されます。さまざまなリソースを参照し、それらを *&lt;repository\_root>*\\ARMTemplates\\ProdAndStage.json と比較して、テンプレート内にどのように構成されているかを確認します。
 
-    ![](./media/app-service-web-test-in-production-controlled-test-flight/00.3-resource-group-view.png)
+	![](./media/app-service-web-test-in-production-controlled-test-flight/00.3-resource-group-view.png)
 
-You have set up the production app.  Now, let's imagine that you receive feedback that usability is poor for the app. So you decide to investigate. You're going to instrument your app to give you feedback.
+運用アプリケーションのセットアップは以上で完了です。ここで、アプリのユーザビリティが低いというフィードバックが寄せられ、調査することになったとしましょう。フィードバックを得るためのインストルメントをアプリに実装します。
 
-## <a name="investigate:-instrument-your-client-app-for-monitoring/metrics"></a>Investigate: Instrument your client app for monitoring/metrics
+## 調査: 監視とメトリックに必要なインストルメントをクライアント アプリに実装する
 
-5. Open *&lt;repository_root>*\src\MultiChannelToDo.sln in Visual Studio.
-6. Restore all Nuget packages by right-clicking solution > **Manage NuGet Packages for Solution** > **Restore**.
-6. Right-click **MultiChannelToDo.Web** > **Add Application Insights Telemetry** > **Configure Settings** > Change resource group to ToDoApp*&lt;your_suffix>* > **Add Application Insights to Project**.
-7. In the Azure Portal, open the blade for the **MultiChannelToDo.Web** Application Insight resource. Then in the **Application health** part, click **Learn how to collect browser page load data** > copy code.
-7. Add the copied JS instrumentation code to *&lt;repository_root>*\src\MultiChannelToDo.Web\app\Index.cshtml, just before the closing `<heading>` tag. It should contain the unique instrumentation key of your Application Insight resource.
+5. Visual Studio で *&lt;repository\_root>*\\src\\MultiChannelToDo.sln を開きます。
+6. ソリューションを右クリックし、**[ソリューションの NuGet パッケージの管理]**、**[復元]** の順に選択して、すべての Nuget パッケージを復元します。
+6. **[MultiChannelToDo.Web]** を右クリックして、**[Application Insights テレメトリの追加]**、**[設定を構成する]**、[リソース グループを ToDoApp*&lt;your\_suffix>* に変更]、**[Application Insights をプロジェクトに追加]** の順に選択します。
+7. Azure ポータルで、**MultiChannelToDo.Web** Application Insight リソースのブレードを開きます。次に、**[アプリケーションの使用状況]** 領域で、**[ブラウザーのページ読み込みデータを収集する方法を説明します]**、[コードのコピー] の順にクリックします。
+7. コピーした JS インストルメンテーション コードを *&lt;repository\_root>*\\src\\MultiChannelToDo.Web\\app\\Index.cshtml の終了 `<heading>` タグの直前に追加します。Application Insights リソースの一意のインストルメンテーション キーが格納されています。
 
         <script type="text/javascript">
         var appInsights=window.appInsights||function(config){
@@ -115,7 +113,7 @@ You have set up the production app.  Now, let's imagine that you receive feedbac
         appInsights.trackPageView();
         </script>
 
-11. Send custom events to Application Insights for mouse clicks by adding the following code to the bottom of body:
+11. 本体の一番下に次のコードを追加し、マウス クリックのカスタム イベントを Application Insights に送信します。
 
         <script>
             $(document.body).find("*").click(function(event) {
@@ -124,63 +122,63 @@ You have set up the production app.  Now, let's imagine that you receive feedbac
             });
         </script>
 
-    This JavaScript snippet sends a custom event to Application Insights every time a user clicks anywhere in the web app.
+    ユーザーが Web アプリ内の任意の位置でクリックするとそのたびに、この JavaScript スニペットによって、カスタム イベントが Application Insights に送信されます。
 
-12. In Git Shell, commit and push your changes to your fork in GitHub. Then, wait for clients to refresh browser.
+12. Git Shell で、必要な変更を GitHub のフォークにコミットしてプッシュします。しばらくすると、クライアントによってブラウザーが最新の情報に更新されます。
 
         git add -A :/
         git commit -m "add AI configuration for client app"
         git push origin master
 
-6.  Swap the deployed app changes to production:
+6.	デプロイしたアプリの変更を運用環境にスワップします。
 
         .\swap –Name ToDoApp<your_suffix>
 
-13. Browse to the Application Insights resource that you configured. Click Custom events.
+13. 構成した Application Insights リソースにアクセスします。[カスタム イベント] をクリックします。
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/01-custom-events.png)
 
-    If you don't see metrics for custom events, wait a few minutes and click **Refresh**.
+    カスタム イベントのメトリックが表示されない場合は、数分待って **[最新の情報に更新]** をクリックしてください。
 
-Suppose you see a chart like below:
+以下のようなグラフが表示されたとします。
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/02-custom-events-chart-view.png)
 
-And the event grid below it:
+その下には、次のようなイベント グリッドが表示されます。
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/03-custom-event-grid-view.png)
 
-According to your ToDoApp application code, the **BUTTON** event corresponds to the submit button, and the **INPUT** event corresponds to the textbox. So far, things make sense. However, it looks like there's a good amount of clicks and very few clicks on the to-do items (the **LI** events).
+ToDoApp アプリケーションのコードによれば **BUTTON** イベントは送信ボタンに、**INPUT** イベントはテキスト ボックスに対応しています。ここまでは問題ありません。しかし、かなりの回数クリックされている割には、to-do 項目に対するクリックの回数 (**LI** イベント) が少ないように思えます。
 
-Based on this, you form your hypothesis that some users are confused which part of the UI is clickable and it is because the cursor is styled for text selection when it hovers on the list items and their icons.
+このことから現行のフォームでは、UI 上でクリックできる領域が一部のユーザーに伝わっていない可能性が疑われます。また、その原因は、リスト項目とそのアイコンにユーザーがポインタを重ねたときのカーソルの形状がテキスト選択スタイルになっていること、という仮説を立てることができます。
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/04-to-do-list-item-ui.png)
 
-This might be a contrived example. Nevertheless, you're going to make an improvement to your app, and then perform a flighting deployment to get usability feedback from live customers.
+これは極端な例ですが、それでも、アプリに改良を加えてフライト デプロイを実施し、ユーザビリティに関するフィードバックを実際の利用者から得ることは可能です。
 
-### <a name="instrument-your-server-app-for-monitoring/metrics"></a>Instrument your server app for monitoring/metrics
-This is a tangent since the scenario demonstrated in this tutorial only deals with the client app. However, for completeness you will set up the server-side app.
+### 監視とメトリックに必要なインストルメントをサーバー アプリに実装する
+ここで少し脱線します。このチュートリアルのシナリオで取り上げているのは、クライアント アプリのみですが、片手落ちにならないようサーバー側のアプリもセットアップしましょう。
 
-6. Right-click **MultiChannelToDo** > **Add Application Insights Telemetry** > **Configure Settings** > Change resource group to ToDoApp*&lt;your_suffix>* > **Add Application Insights to Project**.
-12. In Git Shell, commit and push your changes to your fork in GitHub. Then, wait for clients to refresh browser.
+6. **[MultiChannelToDo]** を右クリックして、**[Application Insights テレメトリの追加]**、**[設定を構成する]**、[リソース グループを ToDoApp*&lt;your\_suffix>* に変更]、**[Application Insights をプロジェクトに追加]** の順に選択します。
+12. Git Shell で、必要な変更を GitHub のフォークにコミットしてプッシュします。しばらくすると、クライアントによってブラウザーが最新の情報に更新されます。
 
         git add -A :/
         git commit -m "add AI configuration for server app"
         git push origin master
 
-6.  Swap the deployed app changes to production:
+6.	デプロイしたアプリの変更を運用環境にスワップします。
 
         .\swap –Name ToDoApp<your_suffix>
 
-That's it!
+これで完了です。
 
-## <a name="investigate:-add-slot-specific-tags-to-your-client-app-metrics"></a>Investigate: Add slot-specific tags to your client app metrics
+## 調査: スロット固有のタグをクライアント アプリのメトリックに追加する
 
-In this section, you will configure the different deployment slots to send slot-specific telemetry to the same Application Insights resource. This way, you can compare telemetry data between traffic from different slots (deployment environments) to easily see the effect of your app changes. At the same time, you can separate the production traffic from the rest so you can continue to monitor your production app as needed.
+このセクションでは、複数のデプロイ スロットを構成し、スロット固有のテレメトリを同じ Application Insights リソースに送信します。こうすることで、異なるスロット (デプロイ環境) からのトラフィック間でテレメトリ データを比較できるので、アプリに対する変更の効果が見やすくなります。同時に、運用アプリについては必要に応じて監視を継続できるよう、運用環境のトラフィックを他のトラフィックから分離することができます。
 
-Since you're gathering data on client behavior, you will [add a telemetry initializer to your JavaScript code](../application-insights/app-insights-api-custom-events-metrics.md#js-initializer) in index.cshtml. If you want to test server-side performance, for example, you can also do similarly in your server code (see [Application Insights API for custom events and metrics](../application-insights/app-insights-api-custom-events-metrics.md).
+ここでの収集の対象となるのはクライアントの動作に関するデータであるため、index.cshtml の [JavaScript コードにテレメトリ初期化子を追加](../application-insights/app-insights-api-custom-events-metrics.md#js-initializer)します。サーバー側のパフォーマンスをテストする場合は、同様の作業をサーバー側のコードに対しても行ってください ([カスタムのイベントとメトリックのための Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md) に関するページを参照)。
 
-1. First, add the code bewteen the two `//` comments below in the JavaScript block that you added to the `<heading>` tag earlier.
+1. まず、先ほど `<heading>` タグに追加した JavaScript ブロックに、以下の 2 つの `//` コメントに挟まれたコードを追加します。
 
         window.appInsights = appInsights;
 
@@ -196,128 +194,128 @@ Since you're gathering data on client behavior, you will [add a telemetry initia
 
         appInsights.trackPageView();
 
-    This initializer code causes the `appInsights` object to add the a custom property called `Environment` to every piece of telemetry it sends.
+    `appInsights` オブジェクトから送信されるすべてのテレメトリには、この初期化子コードによって、`Environment` というカスタム プロパティが追加されます。
 
-2. Next, add this custom property as a [slot setting](web-sites-staged-publishing.md#AboutConfiguration) for your web app in Azure. To do this, run the following commands in your Git Shell session.
+2. 次に、Azure の Web アプリに使用する[スロット設定](web-sites-staged-publishing.md#AboutConfiguration)としてこのカスタム プロパティを追加します。そのためには、Git Shell セッションで次のコマンドを実行します。
 
         $app = Get-AzureWebsite -Name todoapp<your_suffix> -Slot production
         $app.AppSettings.Add("environment", "Production")
         $app.SlotStickyAppSettingNames.Add("environment")
         $app | Set-AzureWebsite -Name todoapp<your_suffix> -Slot production
 
-    The Web.config in your project already defines the `environment` app setting. With this setting, when you test the app locally, your metrics will be tagged with `VS Debugger`. However, when you push your changes to Azure, Azure will find and use the `environment` app setting in the web app's configuration instead, and your metrics will be tagged with `Production`.
+    プロジェクトに含まれている Web.config には最初から `environment` アプリケーション設定が定義されています。この設定を用いアプリをローカルでテストしたときは、目的とするメトリックが `VS Debugger` でタグ付けされます。ただし、開発者がその変更を Azure にプッシュするときには、Web アプリの構成に含まれている方の `environment` アプリケーション設定が検出されて使用されます。また、目的のメトリックには、`Production` でタグ付けされます。
 
-3. Commit and push your code changes to your fork on GitHub, and then wait for your users to use the new app (need to refresh the browser). It takes about 15 minutes for the new property to show up in your Application Insights `MultiChannelToDo.Web` resource.
+3. コードの変更を GitHub のフォークにコミットしてプッシュし、新しいアプリをユーザーが使うまで待ちます (ブラウザーを最新の情報に更新する必要があります)。新しいプロパティが Application Insights `MultiChannelToDo.Web` リソースに反映されるまでに約 15 分かかります。
 
         git add -A :/
         git commit -m "add environment property to AI events for client app"
         git push origin master
 
-4. Now, go to the **Custom events** blade again and filter the metrics on `Environment=Production`. You should now be able to see all the new custom events in the production slot with this filter.
+4. 今度は、もう一度 **[カスタム イベント]** ブレードに移動し、`Environment=Production` でメトリックをフィルタリングします。このフィルターによって、運用スロットにおける新しいカスタム イベントをすべて表示できます。
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/05-filter-on-production-environment.png)
 
-5. Click the **Favorites** button to save the current Metrics Explorer settings to something like **Custom events: Production**. You can easily switch between this view and a deployment slot view later.
+5. **[お気に入り]** ボタンをクリックして、現在のメトリックス エクスプローラーの設定を **"Custom events: Production"** などとして保存します。後でデプロイ スロット ビューとの間で簡単に切り替えることができます。
 
-    > [AZURE.TIP] For even more powerful analytics, consider [integrating your Application Insights resource with Power BI](../application-insights/app-insights-export-power-bi.md).
+    > [AZURE.TIP] さらに高度な分析が必要な場合は、[Application Insights リソースを Power BI と統合](../application-insights/app-insights-export-power-bi.md)することを検討してください。
 
-### <a name="add-slot-specific-tags-to-your-server-app-metrics"></a>Add slot-specific tags to your server app metrics
-Again, for completeness you will set up the server-side app. Unlike the client app which is instrumented in JavaScript, slot-specific tags for the server app is instrumented with .NET code.
+### スロット固有のタグをサーバー アプリのメトリックに追加する
+こちらも片手落ちにならないようサーバー側のアプリもセットアップしましょう。ただし、JavaScript でインストルメントを実装したクライアント アプリとは異なり、サーバー アプリのスロット固有タグは .NET コードで実装します。
 
-1. Open *&lt;repository_root>*\src\MultiChannelToDo\Global.asax.cs. Add the code block below, just before the closing namespace curly brace.
+1. *&lt;repository\_root>*\\src\\MultiChannelToDo\\Global.asax.cs を開きます。以下のコード ブロックを名前空間の右中かっこの直前に追加します。
 
-        namespace MultiChannelToDo
-        {
-                ...
+		namespace MultiChannelToDo
+		{
+				...
 
-                // Begin new code
-            public class ConfigInitializer
-            : ITelemetryInitializer
-            {
-                void ITelemetryInitializer.Initialize(ITelemetry telemetry)
-                {
-                    telemetry.Context.Properties["Environment"] = System.Configuration.ConfigurationManager.AppSettings["environment"];
-                }
-            }
-                // End new code
-        }
+				// Begin new code
+		    public class ConfigInitializer
+		    : ITelemetryInitializer
+		    {
+		        void ITelemetryInitializer.Initialize(ITelemetry telemetry)
+		        {
+		            telemetry.Context.Properties["Environment"] = System.Configuration.ConfigurationManager.AppSettings["environment"];
+		        }
+		    }
+				// End new code
+		}
 
-2. Correct the name resolution errors by adding the `using` statements below to the beginning of the file:
+2. 以下の `using` ステートメントをファイルの冒頭に追加して名前解決のエラーを修正します。
 
-        using Microsoft.ApplicationInsights.Channel;
-        using Microsoft.ApplicationInsights.Extensibility;
+		using Microsoft.ApplicationInsights.Channel;
+		using Microsoft.ApplicationInsights.Extensibility;
 
-3. Add the code below to the beginning of the `Application_Start()` method:
+3. `Application_Start()` メソッドの先頭に以下のコードを追加します。
 
-        TelemetryConfiguration.Active.TelemetryInitializers.Add(new ConfigInitializer());
+		TelemetryConfiguration.Active.TelemetryInitializers.Add(new ConfigInitializer());
 
-3. Commit and push your code changes to your fork on GitHub, and then wait for your users to use the new app (need to refresh the browser). It takes about 15 minutes for the new property to show up in your Application Insights `MultiChannelToDo` resource.
+3. コードの変更を GitHub のフォークにコミットしてプッシュし、新しいアプリをユーザーが使うまで待ちます (ブラウザーを最新の情報に更新する必要があります)。新しいプロパティが Application Insights `MultiChannelToDo` リソースに反映されるまでに約 15 分かかります。
 
         git add -A :/
         git commit -m "add environment property to AI events for server app"
         git push origin master
 
-## <a name="update:-set-up-your-beta-branch"></a>Update: Set up your beta branch
+## 更新: ベータ ブランチを設定する
 
-2. Open *&lt;repository_root>*\ARMTemplates\ProdAndStagetest.json and find the `appsettings` resources (search for `"name": "appsettings"`). There are 4 of them, one for each slot. 
+2. *&lt;repository\_root>*\\ARMTemplates\\ProdAndStagetest.json を開いて `appsettings` リソースを探します (`"name": "appsettings"` を検索)。全部で 4 つ存在します (スロットごとに 1 つ)。
 
-2. For each `appsettings` resource, add an  `"environment": "[parameters('slotName')]"` app setting to the end of the `properties` array. Don't forget to end the previous line with a comma.
+2. 各 `appsettings` リソースについて、`properties` 配列の最後に `"environment": "[parameters('slotName')]"` アプリ設定を追加します。前の行の最後に必ずコンマを付けてください。
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/06-arm-app-setting-with-slot-name.png)
     
-    You have just added the `environment` app setting to all the slots in the template.
+    テンプレートのすべてのスロットに `environment` アプリ設定を追加しました。
     
-2. In the same file, find the `slotconfignames` resources (search for `"name": "slotconfignames"`). There are 2 of them, one for each app.
+2. 同じファイルで、`slotconfignames` リソースを探します (`"name": "slotconfignames"` を検索)。全部で 2 つ存在します (アプリごとに 1 つ)。
 
-2. For each `slotconfignames` resource, add `"environment"` to the end of the `appSettingNames` array. Don't forget to end the previous line with a comma.
+2. 各 `slotconfignames` リソースについて、`appSettingNames` 配列の最後に `"environment"` を追加します。前の行の最後に必ずコンマを付けてください。
 
-    You have just made the `environment` app setting stick to its respective deployment slot for both apps.  
+    これで両方のアプリの各デプロイ スロットに `environment` アプリケーション設定が適用されます。
 
-3. In your Git Shell session, run the following commands with the same resource group suffix that you used before.
+3. Git Shell セッションから、先ほどと同じリソース グループ サフィックスで次のコマンドを実行します。
 
         git checkout -b beta
         git push origin beta
         .\deploy.ps1 -RepoUrl https://github.com/<your_fork>/ToDoApp.git -ResourceGroupSuffix <your_suffix> -SlotName beta -Branch beta
 
-4. When prompted, specify the same SQL database credentials as before. Then, when asked to update the resource group, type `Y`, then `ENTER`.
+4. 確認のメッセージが表示されたら、先ほどと同じ SQL Database の資格情報を指定してください。次に、リソース グループを更新するよう求められたら、「`Y`」と入力し、`ENTER` キーを押します。
 
-    Once the script finishes, all your resources in the original resource group are retained, but a new slot named "beta" is created in it with the same configuration as the "Staging" slot that was created in the beginning.
+    スクリプトの完了後、元のリソース グループに含まれていたリソースをすべて維持したうえで、最初に作成した "Staging" スロットと同じ構成を持った "beta" という名前のスロットが新たに作成されます。
 
-    >[AZURE.NOTE] This method of creating different deployment environments is different from the method in [Agile software development with Azure App Service](app-service-agile-software-development.md). Here, you create deployment environments with deployment slots, where as there you create deployment environments with resource groups. Managing deployment environments with resource groups enables you to keep the production environment off-limits to developers, but it's not easy to do testing in production, which you can do easily with slots.
+    >[AZURE.NOTE] ここで紹介した各種デプロイ環境の作成手法は、[Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)で用いられているものとは異なります。ここで作成しているのはデプロイ スロットを含んだデプロイ環境です。リソース グループを含んだデプロイ環境ではありません。リソース グループによるデプロイ環境を利用した場合、運用環境を開発者から遠ざけることができますが、運用環境でのテストは困難となります。運用環境でのテストは、スロットから成るデプロイ環境の方が簡単です。
 
-If you wish, you can also create an alpha app by running
+必要であれば、次の方法でアルファ版のアプリを作成することもできます。
 
     git checkout -b alpha
     git push origin alpha
     .\deploy.ps1 -RepoUrl https://github.com/<your_fork>/ToDoApp.git -ResourceGroupSuffix <your_suffix> -SlotName beta -Branch alpha
 
-For this tutorial, you will just keep using your beta app.
+このチュートリアルでは、このままベータ版アプリを使用することにします。
 
-## <a name="update:-push-your-updates-to-the-beta-app"></a>Update: Push your updates to the beta app
+## 更新: 更新をベータ版アプリにプッシュする
 
-Back to your app that you want to improve.
+改良の対象となるアプリに戻ります。
 
-1. Make sure you're now in your beta branch
+1. 現在位置がベータ ブランチであることを確認します。
 
         git checkout beta
 
-2. In *&lt;repository_root>*\src\MultiChannelToDo.Web\app\Index.cshtml, find the `<li>` tag and add the `style="cursor:pointer"` attribute, as shown below.
+2. *&lt;repository\_root>*\\src\\MultiChannelToDo.Web\\app\\Index.cshtml で `<li>` タグを探し、以下のように `style="cursor:pointer"` 属性を追加します。
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/07-change-cursor-style-on-li.png)
 
-3. commit and push to Azure.
+3. Azure にコミットしてプッシュします。
 
-4. Verify that the change is now reflected in the beta slot by navigating to http://todoapp*&lt;your_suffix>*-beta.azurewebsites.net/. If you don't see the change yet, refresh your browser to get the new javascript code.
+4. http://todoapp*&lt;your_suffix>*-beta.azurewebsites.net/ に移動して、変更内容がベータ スロットに反映されていることを確認します。まだ変更が反映されていない場合は、ブラウザーを最新の情報に更新して新しい JavaScript コードを取得してください。
 
     ![](./media/app-service-web-test-in-production-controlled-test-flight/08-verify-change-in-beta-site.png)
 
-Now that you have your change running in the beta slot, you are ready to perform a flighting deployment.
+変更内容がベータ スロットで実行されていることを確認できたら、フライト デプロイを実行することができます。
 
-## <a name="validate:-route-traffic-to-the-beta-app"></a>Validate: Route traffic to the beta app
+## 検証: ベータ版アプリにトラフィックをルーティングする
 
-In this section, you will route traffic to the beta app. For sake of clarity of demonstration, you're going to route a significant portion of the user traffic to it. In reality, the amount of traffic you want to route will depend on your specific situation. For example, if your site is at the scale of microsoft.com, then you may need less than one percent of your total traffic in order to gain useful data.
+このセクションでは、ベータ版のアプリにトラフィックをルーティングします。デモンストレーションを単純化するために、ここではユーザー トラフィックの大部分をベータ版アプリにルーティングします。実際には、ルーティングするトラフィックの量は、具体的な条件によって異なります。たとえば、microsoft.com と同等の規模があるサイトでは、トラフィック全体の 1% 未満でも、有益なデータを集めることが可能です。
 
-1. In your Git Shell session, run the following commands to route half of the production traffic to the beta slot:
+1. 運用環境のトラフィックをベータ スロットにルーティングするには、Git Shell セッションから次のコマンドを実行します。
 
         $siteName = "ToDoApp<your suffix>"
         $rule = New-Object Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.RampUpRule
@@ -326,61 +324,57 @@ In this section, you will route traffic to the beta app. For sake of clarity of 
         $rule.Name = "beta"
         Set-AzureWebsite $siteName -Slot Production -RoutingRules $rule
 
-  The `ReroutePercentage=50` property specifies that 50% of the production traffic will be routed to the beta app's URL (specified by the `ActionHostName` property).
+  運用環境のトラフィックの 50% をベータ版アプリの URL (`ActionHostName` プロパティで指定) にルーティングするよう `ReroutePercentage=50` プロパティで指定しています。
 
-2. Now navigate to http://ToDoApp*&lt;your_suffix>*.azurewebsites.net. 50% of the traffic should now be redirected to the beta slot.
+2. では、http://ToDoApp*&lt;your_suffix>*.azurewebsites.net に移動してみましょう。50% のトラフィックがベータ スロットにリダイレクトされているはずです。
 
-3. In your Application Insights resource, filter the metrics by environment="beta".
+3. Application Insights リソースで、environment="beta" としてメトリックをフィルタリングします。
 
-    > [AZURE.NOTE] If you save this filtered view as another favorite, then you can easily flip the metric explorer views between production and beta views.
+    > [AZURE.NOTE] フィルタリングしたビューを別のお気に入りとして保存しておくと、メトリック エクスプローラーの表示を運用環境とベータ環境とで簡単に切り替えることができます。
 
-Suppose in Application Insights you see something similar to the following:
+Application Insights で、次のような画面が表示されているとします。
 
 ![](./media/app-service-web-test-in-production-controlled-test-flight/09-test-beta-site-in-production.png)
 
-Not only is this showing that there are many more clicks on the `<li>` tags, but there seems to be a surge of clicks on `<li>` tags. You can then conclude that people have discovered the new `<li>` tags are clickable and are now clearing all their previously-completed tasks in the app.
+`<li>` タグは他のタグに比べてクリック数が多いだけでなく、先ほどと比べても、`<li>` タグのクリック数は大幅に増えていることがわかります。このことから、`<li>` タグを更新したことで、クリック可能なタグであることにユーザーが気付き、既に完了したタスクをアプリから消去し始めた、と考えられます。
 
-Based on the data of your flighting deployment, you decide that your new UI is ready for production.
+フライト デプロイのデータから、新しい UI は運用環境での利用に耐えると判断することができます。
 
-## <a name="go-live:-move-your-new-code-into-production"></a>Go live: Move your new code into production
+## 本番稼働: 新しいコードを運用環境に移す
 
-You're now ready to move your update to production. What's great is that now you know that your update has already been validated _before_ it is pushed to production. So now you can confidently deploy it. Since you made an update to the AngularJS client app, you only validated the client-side code. If you were to make changes to the back-end Web API app, you could validate your changes similarly and easily.
+以上で、更新したコードを運用環境に移動する準備は整いました。これまでの作業の最大の恩恵は、運用環境にプッシュする_前_に更新内容の有効性が検証済みであることです。不安を抱えずにデプロイすることができます。更新の対象が AngularJS クライアント アプリであったため、今回検証したのはクライアント側のコードだけです。仮にバックエンドの Web API アプリに変更を加えた場合、同じようにして簡単に変更内容を検証することができます。
 
-1. In Git Shell, remove the traffic routing rule by running the following command:
+1. Git Shell から次のコマンドを実行してトラフィック ルーティング ルールを削除します。
 
         Set-AzureWebsite $siteName -Slot Production -RoutingRules @()
 
-2. Run the Git commands:
+2. 次の Git コマンドを実行します。
 
         git checkout master
         git pull origin master
         git merge beta
         git push origin master
 
-2. Wait for a few minutes for the new code to be deployed to the staging slot, then launch http://ToDoApp*&lt;your_suffix>*-staging.azurewebsites.net to verify that the new update is warmed up in the staging slot. Remember that the your fork's master branch is linked to the staging slot of your app.
+2. 数分後ステージング スロットに新しいコードがデプロイされたら、http://ToDoApp*&lt;your_suffix>*-staging.azurewebsites.net を起動し、ステージング スロットで新しいコードが使用できる状態になっていることを確認します。フォークの master ブランチはアプリのステージング スロットにリンクされていることに注意してください。
 
-3. Now, swap the staging slot into production
+3. ここで、ステージング スロットを運用スロットにスワップします。
 
         cd <ROOT>\ToDoApp\ARMTemplates
         .\swap.ps1 -Name todoapp<your_suffix>
 
-## <a name="summary"></a>Summary ##
+## 概要 ##
 
-Azure App Service makes it easy for small- to medium-sized businesses to test their customer-facing apps in production, something that has been traditionally done in big enterprises. Hopefully, this tutorial has given you the knowledge you need to bring together App Service and Application Insights to make possible flighting deployment, and even other test-in-production scenarios, in your DevOps world. 
+Azure App Service を使用すると、中小規模の企業が顧客向けのアプリを運用環境で簡単にテストすることができます。従来そのようなテストを実施できるのは大企業だけでした。このチュートリアルでは、App Service と Application Insights との統合によるフライト デプロイを中心に、DevOps 手法で運用環境下のテストを実現するために必要な情報を紹介しました。この情報が皆様のお役に立てればさいわいです。
 
-## <a name="more-resources"></a>More resources ##
+## その他のリソース ##
 
--   [Agile software development with Azure App Service](app-service-agile-software-development.md)
--   [Set up staging environments for web apps in Azure App Service](web-sites-staged-publishing.md)
--   [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md)
--   [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md)
--   [JSONLint - The JSON Validator](http://jsonlint.com/)
--   [Git Branching – Basic Branching and Merging](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
--   [Azure PowerShell](../powershell-install-configure.md)
--   [Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
+-   [Azure App Service を使用したアジャイル ソフトウェア開発](app-service-agile-software-development.md)
+-   [Azure App Service の Web アプリのステージング環境を設定する](web-sites-staged-publishing.md)
+-	[Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)
+-	[Azure リソース マネージャーのテンプレートの作成](../resource-group-authoring-templates.md)
+-	[JSONLint - JSON Validator に関するページ](http://jsonlint.com/)
+-	[Git のブランチ機能 - 基本的なブランチとマージに関するページ](http://www.git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+-	[Azure PowerShell](../powershell-install-configure.md)
+-	[Project Kudu Wiki](https://github.com/projectkudu/kudu/wiki)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

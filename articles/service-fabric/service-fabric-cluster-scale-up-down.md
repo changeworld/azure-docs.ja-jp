@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Scale a Service Fabric cluster in or out | Microsoft Azure"
-   description="Scale a Service Fabric cluster in or out to match demand by setting auto-scale rules for each node type/VM scale set. Add or remove nodes to a Service Fabric cluster"
+   pageTitle="Service Fabric クラスターのスケールインとスケールアウト | Microsoft Azure"
+   description="ノードの種類/VM スケール セットごとに自動スケール ルールを設定し、Service Fabric クラスターを需要に合わせてスケールインまたはスケールアウトします。Service Fabric クラスターのノードの追加または削除"
    services="service-fabric"
    documentationCenter=".net"
    authors="ChackDan"
@@ -17,18 +17,17 @@
    ms.author="chackdan"/>
 
 
+# 自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト
 
-# <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Scale a Service Fabric cluster in or out using auto-scale rules
+仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。Service Fabric クラスターで定義されているすべてのノードの種類は、個別の VM スケール セットとしてセットアップされます。各ノードの種類は、個別にスケールインまたはスケールアウトでき、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。詳細については、[Service Fabric のノードの種類](service-fabric-cluster-nodetypes.md)に関するドキュメントを参照してください。クラスター内の Service Fabric のノードの種類はバックエンドの VM スケール セットで構成されるため、ノードの種類/VM スケール セットごとに自動スケール ルールを設定する必要があります。
 
-Virtual machine scale sets are an Azure compute resource that you can use to deploy and manage a collection of virtual machines as a set. Every node type that is defined in a Service Fabric cluster is set up as a separate VM scale set. Each node type can then be scaled in or out independently, have different sets of ports open, and can have different capacity metrics. Read more about it in the [Service Fabric nodetypes](service-fabric-cluster-nodetypes.md) document. Since the Service Fabric node types in your cluster are made of VM scale sets at the backend, you need to set up auto-scale rules for each node type/VM scale set.
+>[AZURE.NOTE] サブスクリプションに、このクラスターを構成する新しい VM を追加できるだけのコア数が割り当てられている必要があります。現時点ではモデルの検証はないため、いずれかのクォータの制限に達した場合、デプロイ時のエラーが表示されます。
 
->[AZURE.NOTE] Your subscription must have enough cores to add the new VMs that make up this cluster. There is no model validation currently, so you get a deployment time failure, if any of the quota limits are hit.
+## スケールするノードの種類/VM スケール セットの選択
 
-## <a name="choose-the-node-type/vm-scale-set-to-scale"></a>Choose the node type/VM scale set to scale
+現在、ポータルを使用して VM スケール セットの自動スケール ルールを指定することはできないため、Azure PowerShell (1.0 以降) を使用して、ノードの種類を一覧表示し、それらに自動スケール ルールを追加します。
 
-Currently, you are not able to specify the auto-scale rules for VM scale sets using the portal, so let us use Azure PowerShell (1.0+) to list the node types and then add auto-scale rules to them.
-
-To get the list of VM scale set that make up your cluster, run the following cmdlets:
+クラスターを構成する VM スケール セットの一覧を取得するには、次のコマンドレットを実行します。
 
 ```powershell
 Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
@@ -36,82 +35,77 @@ Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/
 Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <VM Scale Set name>
 ```
 
-## <a name="set-auto-scale-rules-for-the-node-type/vm-scale-set"></a>Set auto-scale rules for the node type/VM scale set
+## ノードの種類/VM スケール セットの自動スケール ルールの設定
 
-If your cluster has multiple node types, then repeat this for each node types/VM scale sets that you want to scale (in or out). Take into account the number of nodes that you must have before you set up auto-scaling. The minimum number of nodes that you must have for the primary node type is driven by the reliability level you have chosen. Read more about [reliability levels](service-fabric-cluster-capacity.md).
+クラスターに複数のノードの種類がある場合は、スケール (インまたはアウト) するノードの種類/VM スケール セットごとにこれを繰り返します。自動スケールを設定する前に、必要なノードの数を考慮します。ノードの種類がプライマリである場合に必要なノードの最小数は、選択した信頼性のレベルによって決まります。信頼性のレベルの詳細については、[こちら](service-fabric-cluster-capacity.md)を参照してください。
 
->[AZURE.NOTE]  Scaling down the primary node type to less than the minimum number make the cluster unstable or bring it down. This could result in data loss for your applications and for the system services.
+>[AZURE.NOTE]  ノードの種類がプライマリである場合に前述の最小数未満にスケールダウンすると、クラスターが不安定になるか、停止します。これにより、アプリケーションおよびシステム サービスのデータが失われる可能性があります。
 
-Currently the auto-scale feature is not driven by the loads that your applications may be reporting to Service Fabric. So at this time the auto-scale you get is purely driven by the performance counters that are emitted by each of the VM scale set instances.  
+現在、自動スケール機能は、アプリケーションによって Service Fabric に報告されている場合がある負荷では駆動されません。したがって現時点では、取得する自動スケールは、各 VM スケール セット インスタンスによって出力されるパフォーマンス カウンターのみで駆動されます。
 
-Follow these instructions [to set up auto-scale for each VM scale set](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md).
+VM スケール セットごとに自動スケールを設定するには、[この手順](../virtual-machine-scale-sets/virtual-machine-scale-sets-autoscale-overview.md)に従います。
 
->[AZURE.NOTE] In a scale down scenario, unless your node type has a durability level of Gold or Silver you need to call the [Remove-ServiceFabricNodeState cmdlet](https://msdn.microsoft.com/library/azure/mt125993.aspx) with the appropriate node name.
+>[AZURE.NOTE] スケールダウン シナリオでは、ノードの種類に Gold または Silver の耐久性レベルがない限り、適切なノードの名前を指定して、[Remove-ServiceFabricNodeState cmdlet](https://msdn.microsoft.com/library/azure/mt125993.aspx) を呼び出す必要があります。
 
-## <a name="manually-add-vms-to-a-node-type/vm-scale-set"></a>Manually add VMs to a node type/VM scale set
+## ノードの種類/VM スケール セットに VM を手動で追加
 
-Follow the sample/instructions in the [quick start template gallery](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) to change the number of VMs in each Nodetype. 
+[クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)のサンプル/手順に従って、各 Nodetype の VM 数を変更します。
 
->[AZURE.NOTE] Adding of VMs takes time, so do not expect the additions to be instantaneous. So plan to add capacity well in time, to allow for over 10 minutes before the VM capacity is available for the replicas/ service instances to get placed.
+>[AZURE.NOTE] VM の追加には時間がかかるため、すぐに追加されることを想定しないでください。容量の追加には十分な時間を確保するように計画します。つまり、レプリカ/サービス インスタンスを配置する VM 容量が使用可能になるまでの時間として、10 分以上を考慮してください。
 
-## <a name="manually-remove-vms-from-the-primary-node-type/vm-scale-set"></a>Manually remove VMs from the primary node type/VM scale set
+## プライマリ ノードの種類/VM スケール セットから VM を手動で削除
 
->[AZURE.NOTE] The service fabric system services run in the Primary node type in your cluster. So should never shut down or scale down the number of instances in that node types less than what the reliability tier warrants. Refer to [the details on reliability tiers here](service-fabric-cluster-capacity.md). 
+>[AZURE.NOTE] Service Fabric システム サービスは、クラスター内のプライマリ ノードの種類で実行されます。したがって、このサービスをシャットダウンしたり、そのノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしたりしないでください。[こちらの信頼性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください。
 
-You need to execute the following steps one VM instance at a time. This allows for the system services (and your stateful services) to be shut down gracefully on the VM instance you are removing and new replicas created on other nodes.
+一度に 1 つの VM インスタンスに対して、次の手順を実行します。これにより、削除する VM インスタンス上でシステム サービス (およびステートフル サービス) を正規の手順でシャットダウンし、新しいレプリカを別のノードに作成できます。
 
-1. Run [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) with intent ‘RemoveNode’ to disable the node you’re going to remove (the highest instance in that node type).
+1. [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) を、インテント "RemoveNode" を指定して実行し、削除するノードを無効にします (そのノードの種類の最上位インスタンス)。
 
-2. Run [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) to make sure that the node has indeed transitioned to disabled. If not, wait until the node is disabled. You cannot hurry this step.
+2. [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) を実行して、ノードが無効になったことを確認します。無効になっていない場合は、無効になるまで待ちます。この手順を高速化することはできません。
 
-2. Follow the sample/instructions in the [quick start template gallery](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) to change the number of VMs by one in that Nodetype. The instance removed is the highest VM instance. 
+2. [クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)のサンプル/手順に従って、その Nodetype の VM 数を 1 だけ変更します。削除されたインスタンスは、最上位の VM インスタンスです。
 
-3. Repeat steps 1 through 3 as needed, but never scale down the number of instances in the primary node types less than what the reliability tier warrants. Refer to [the details on reliability tiers here](service-fabric-cluster-capacity.md). 
+3. 必要に応じて手順 1. ～ 3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしないでください。[こちらの信頼性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください。
 
-## <a name="manually-remove-vms-from-the-non-primary-node-type/vm-scale-set"></a>Manually remove VMs from the non-primary node type/VM scale set
+## 非プライマリ ノードの種類/VM スケール セットから VM を手動で削除
 
->[AZURE.NOTE] For a stateful service, you need a certain number of nodes to be always up to maintain availability and preserve state of your service. At the very minimum, you need the number of nodes equal to the target replica set count of the partition/service. 
+>[AZURE.NOTE] ステートフル サービスについては、可用性を維持し、サービスの状態を保持するために、所定の数のノードが常に稼働している必要があります。少なくとも、パーティション/サービスのターゲット レプリカ セットと同じ数のノードが必要です。
 
-You need the execute the following steps one VM instance at a time. This allows for the system services (and your stateful services) to be shut down gracefully on the VM instance you are removing and new replicas created else where.
+一度に 1 つの VM インスタンスに対して、次の手順を実行します。これにより、削除する VM インスタンス上でシステム サービス (およびステートフル サービス) を正規の手順でシャットダウンし、新しいレプリカを他の場所に作成できます。
 
-1. Run [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) with intent ‘RemoveNode’ to disable the node you’re going to remove (the highest instance in that node type).
+1. [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) を、インテント "RemoveNode" を指定して実行し、削除するノードを無効にします (そのノードの種類の最上位インスタンス)。
 
-2. Run [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) to make sure that the node has indeed transitioned to disabled. If not wait till the node is disabled. You cannot hurry this step.
+2. [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) を実行して、ノードが無効になったことを確認します。無効になっていない場合は、無効になるまで待ちます。この手順を高速化することはできません。
 
-2. Follow the sample/instructions in the [quick start template gallery](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing) to change the number of VMs by one in that Nodetype. This will now remove the highest VM instance. 
+2. [クイック スタート テンプレート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)のサンプル/手順に従って、その Nodetype の VM 数を 1 だけ変更します。これにより、最上位の VM インスタンスが削除されます。
 
-3. Repeat steps 1 through 3 as needed, but never scale down the number of instances in the primary node types less than what the reliability tier warrants. Refer to [the details on reliability tiers here](service-fabric-cluster-capacity.md).
+3. 必要に応じて手順 1. ～ 3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしないでください。[こちらの信頼性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください。
 
-## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Behaviors you may observe in Service Fabric Explorer
+## Service Fabric Explorer で確認できる動作
 
-When you scale up a cluster the Service Fabric Explorer will reflect the number of nodes (VM scale set instances) that are part of the cluster.  However, when you scale a cluster down you will see the removed node/VM instance displayed in an unhealthy state unless you call [Remove-ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) with the appropriate node name.   
+クラスターをスケールアップすると、Service Fabric Explorer に、クラスターの一部であるノード (VM スケール セット インスタンス) の数が反映されます。ただし、クラスターをスケールダウンすると、適切なノードの名前を指定して [Remove-ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) を呼び出さない限り、削除されたノード/VM インスタンスが異常状態を示したまま表示されます。
 
-Here is the explanation for this behavior.
+この動作についての説明を次に示します。
 
-The nodes listed in Service Fabric Explorer are a reflection of what the Service Fabric system services (FM specifically) knows about the number of nodes the cluster had/has. When you scale the VM scale set down, the VM was deleted but FM system service still thinks that the node (that was mapped to the VM that was deleted) will come back. So Service Fabric Explorer continues to display that node (though the health state may be error or unknown).
+Service Fabric Explorer で示されているノードは、現在/過去におけるクラスターのノード数について、Service Fabric システム サービス (具体的には FM) が認識している内容が反映されたものです。VM スケール セットをスケールダウンした場合、VM が削除された一方で、FM システム サービスはノード (削除された VM にマップされていたもの) が復元されると認識したままとなります。そのため、(正常性状態がエラーまたは不明になる場合でも) Service Fabric Explorer はそのノードを表示し続けます。
 
-In order to make sure that a node is removed when a VM is removed, you have two options:
+VM が削除されたときに、ノードが削除されるようにするには、2 つのオプションを使用できます。
 
-1) Choose a durability level of Gold or Silver (available soon) for the node types in your cluster, which gives you the infrastructure integration. Which will then automatically remove the nodes from our system services (FM) state when you scale down.
-Refer to [the details on durability levels here](service-fabric-cluster-capacity.md)
+1) クラスターのノードの種類に Gold または Silver (近日利用開始予定) の耐久性レベルを選択します。これにより、インフラストラクチャの統合が提供されます。これによって、スケールダウンしたときに、システム サービス (FM) の状態から自動的にノードが削除されます。[耐久性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください
 
-2) Once the VM instance has been scaled down, you need to call the [Remove-ServiceFabricNodeState cmdlet](https://msdn.microsoft.com/library/mt125993.aspx).
+2) VM インスタンスがスケールダウンされたら、[Remove-ServiceFabricNodeState コマンドレット](https://msdn.microsoft.com/library/mt125993.aspx)を呼び出す必要があります。
 
->[AZURE.NOTE] Service Fabric clusters require a certain number of nodes to be up at all the time in order to maintain availability and preserve state - referred to as "maintaining quorum." So, it is typically unsafe to shut down all the machines in the cluster unless you have first performed a [full backup of your state](service-fabric-reliable-services-backup-restore.md).
+>[AZURE.NOTE] Service Fabric クラスターが可用性を維持し、状態を保持するには、一定数のノードが常にアップしている必要があります。これは、"維持クォーラム" と呼ばれます。 そのため、先に[状態の完全バックアップ](service-fabric-reliable-services-backup-restore.md)を実行していた場合を除き、クラスター内のすべてのコンピューターをシャットダウンするのは一般に安全ではありません。
 
-## <a name="next-steps"></a>Next steps
-Read the following to also learn about planning cluster capacity, upgrading a cluster, and partitioning services:
+## 次のステップ
+次を確認して、クラスター容量の計画、クラスターのアップグレード、およびサービスのパーティション分割についても学習してください。
 
-- [Plan your cluster capacity](service-fabric-cluster-capacity.md)
-- [Cluster upgrades](service-fabric-cluster-upgrade.md)
-- [Partition stateful services for maximum scale](service-fabric-concepts-partitioning.md)
+- [クラスター容量の計画](service-fabric-cluster-capacity.md)
+- [クラスターのアップグレード](service-fabric-cluster-upgrade.md)
+- [最大のスケールに対応するためのパーティションのステートフル サービス](service-fabric-concepts-partitioning.md)
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png
 [ClusterResources]: ./media/service-fabric-cluster-scale-up-down/ClusterResources.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

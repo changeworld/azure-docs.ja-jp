@@ -1,40 +1,35 @@
 <properties
-    pageTitle="Supported browsers and devices"
-    description="Describes the browsers and devices on which the Azure portal will work." 
-    services=""
-    documentationCenter=""
-    authors="flanakin"
-    writer="flanakin"
-    manager="lwelicki"
-    editor=""/>
+	pageTitle="サポートされているブラウザーとデバイス"
+	description="Azure ポータルを利用できるブラウザーとデバイスについて説明します。" 
+	services=""
+	documentationCenter=""
+	authors="flanakin"
+	writer="flanakin"
+	manager="lwelicki"
+	editor=""/>
 
 <tags
-    ms.service="multiple"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="ibiza"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/23/2015"
-    ms.author="micflan"/>
+	ms.service="multiple"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/23/2015"
+	ms.author="micflan"/>
 
+#サポートされているブラウザーとデバイス
+Microsoft Azure ポータルは、最新の主要なデスクトップ デバイスとタブレット デバイス、および最新の主要なブラウザーで動作します。
 
-#<a name="supported-browsers-and-devices"></a>Supported browsers and devices
-The Microsoft Azure portal runs on all modern desktop and tablet devices and browsers.
+### サポートされているデバイス
+ポータルは、最新の PC、Mac、およびタブレットで快適に動作します。携帯電話は現時点でサポートされていません。
 
-### <a name="supported-devices"></a>Supported devices
-The portal will run great on modern PCs, Macs, and tablets. Mobile phones are not currently supported.
+### サポートされているブラウザー
+次のブラウザーの最新バージョンがサポートされています。
 
-### <a name="supported-browsers"></a>Supported browsers
-The latest versions of the following browsers are supported:
-
-- Edge (latest)
+- Edge (最新バージョン)
 - Internet Explorer 11
-- Safari (latest, Mac only)
-- Chrome (latest)
-- Firefox (latest)
+- Safari (最新バージョン、Mac のみ)
+- Chrome (最新バージョン)
+- Firefox (最新バージョン)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0420_2016-->

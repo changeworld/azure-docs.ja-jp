@@ -1,19 +1,17 @@
-1. In the Settings blade for the resource, resource group, or subscription that you wish to lock, select **Locks**.
+1. ロックを適用するリソース、リソース グループ、またはサブスクリプションの [設定] ブレードで、**[ロック]** を選択します。
 
-      ![select lock](./media/resource-manager-lock-resources/select-lock.png)
+      ![ロックを選択する](./media/resource-manager-lock-resources/select-lock.png)
 
-2. To add a lock, select **Add**. If you want to create a lock at a parent level, select the parent. The currently selected resource inherits the lock from the parent. For example, you could lock the resource group to apply a lock to all its resources.
+2. ロックを追加するには、**[追加]** を選択します。親レベルでロックを作成する場合は、親を選択します。現在選択されているリソースは、ロックを親から継承します。たとえば、リソース グループをロックすることで、グループのリソースすべてにロックを適用することができます。
 
-      ![add lock](./media/resource-manager-lock-resources/add-lock.png) 
+      ![ロックを追加する](./media/resource-manager-lock-resources/add-lock.png)
 
-3. Give the lock a name and lock level. Optionally, you can add notes that describe the lock.
+3. ロックに名前とロック レベルを指定します。必要に応じて、ロックについて説明したメモを追加することができます。
 
-      ![set lock](./media/resource-manager-lock-resources/set-lock.png) 
+      ![ロックを設定する](./media/resource-manager-lock-resources/set-lock.png)
 
-4. To delete the lock, select the ellipsis and **Delete** from the available options.
+4. ロックを削除するには、省略記号 (...) を選択し、表示されるオプションから **[削除]** を選択します。
 
-      ![delete lock](./media/resource-manager-lock-resources/delete-lock.png) 
+      ![ロックを削除する](./media/resource-manager-lock-resources/delete-lock.png)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

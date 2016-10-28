@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get insights from Azure Security Center data with Power BI| Microsoft Azure"
-   description="The Azure Security Center Power BI content pack makes it easy to find  security alerts, recommendations, attacked resources and trends, based on a dataset that has been created for your reporting."
+   pageTitle="Power BI で Azure Security Center のデータから洞察を得る | Microsoft Azure"
+   description="Azure Security Center の Power BI コンテンツ パックを使用すると、レポート用に作成されたデータセットに基づいて、セキュリティ アラート、推奨事項、攻撃されたリソース、および傾向を簡単に見つけることができます。"
    services="security-center"
    documentationCenter="na"
    authors="YuriDio"
@@ -16,108 +16,103 @@
    ms.date="09/22/2016"
    ms.author="yurid"/>
 
+# Power BI で Azure Security Center のデータから洞察を得る
+Azure Security Center の [Power BI ダッシュボード](http://aka.ms/azure-security-center-power-bi)を使用すると、モバイル デバイスなどの任意の場所から推奨事項とセキュリティ アラートの視覚化、分析、およびフィルター処理を行うことができます。傾向や攻撃パターンを表示し、リソースまたは発信元 IP アドレスごとのセキュリティ アラートや、リソースまたは時間ごとの未対応のセキュリティ リスクを確認できます。
 
-# <a name="get-insights-from-azure-security-center-data-with-power-bi"></a>Get insights from Azure Security Center data with Power BI
-The [Power BI Dashboard](http://aka.ms/azure-security-center-power-bi) for Azure Security Center enables you to visualize, analyze, and filter recommendations and security alerts from anywhere, including your mobile device. Use the Power BI dashboard to reveal trends and attack patterns - view security alerts by resource or source IP address and unaddressed security risks by resource or age. 
+また、Security Center の推奨事項とセキュリティ アラートを、興味深い形で他のデータ ([Azure 監査ログ](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/)や [Azure SQL Database 監査](https://powerbi.microsoft.com/blog/monitor-your-azure-sql-database-auditing-activity-with-power-bi/)から入手したデータなど) と組み合わせることもできます。どちらのデータも Power BI ダッシュボードで表示できます。さらに、このデータを Excel にエクスポートして、クラウド リソースのセキュリティ状態に関するレポートを簡単に作成できます。
 
-You can also mash up Security Center recommendations and security alerts with other data in interesting ways, for example using data from [Azure Audit Logs](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) and [Azure SQL Database Auditing](https://powerbi.microsoft.com/blog/monitor-your-azure-sql-database-auditing-activity-with-power-bi/). Both offer Power BI Dashboards, and you can also export this data to Excel for easy reporting on the security state of your cloud resources.
+##Azure Security Center ダッシュボードを使用して Power BI にアクセスする
+Azure Security Center ダッシュボードを使用して、Power BI レポートにアクセスすることもできます。このタスクを実行するには、次の手順に従います。
 
-##<a name="using-azure-security-center-dashboard-to-access-power-bi"></a>Using Azure Security Center dashboard to access Power BI
-You can also use the Azure Security Center dashboard to access Power BI reports. Follow the steps to perform this task: 
+1. **Azure Security Center** ダッシュボードで **[Power BI で探索する]** ボタンをクリックします。
 
-1. In the **Azure Security Center** dashboard, click **Explore in Power BI** button.
+	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png)
 
-    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new10.png) 
+2. 次の画面に示すように、**[Power BI で探索する]** ブレードが右側に表示されます。
 
-2. The **Explore in Power BI** blade opens on the right side as shown in the following screen:
+	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
 
-    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new2.png)
+3. Power BI ダッシュボードを初めて作成する場合は、**[Power BI で探索する]** ブレードで次のいずれかのオプションを選択できます。
 
-3. If you are creating the Power BI dashboard for the first time, you can choose one of the following options in the **Explore in Power BI** blade: 
+	- **[セキュリティの詳細情報のダッシュボード]**: セキュリティの状態、スレッド、検出を含むダッシュボードを作成する場合は、このオプションを選択します。これは、サブスクリプション全体の保護の状態と検出されたアラートを分析する DevOps ロール向けの一般的なオプションです。
+	- **[ポリシー管理のダッシュボード]**: 管理と適用ポリシーを確認する場合は、このオプションを選択します。これは、ガバナンスに取り組む中央 IT 向けの一般的なオプションです。このダッシュボードを使用すると、組織全体でのセキュリティ ポリシーの遵守について視覚的に確認し、詳細情報を入手できます。
+	- Power BI ダッシュボードが既にある場合は、**[現在の Power BI ダッシュボードに移動する]** をクリックします。
 
-    - **Security insights dashboard**: choose this option if you want to create a dashboard that includes security status, threads, and detections. This option is a more common for DevOps role that is responsible for analyzing their protection status and detected alerts across subscriptions.
-    - **Policy management dashboard**: choose this option if you want to explore management and enforcement policy.  This option is a more common for Central IT who are more focused on governance. They can use this dashboard to gain visibility and insights on security policy adherence across their organization.
-    - If you already have a Power BI dashboard, click **Go to your current Power BI dashboard**.
+4. この例では、**[セキュリティの詳細情報のダッシュボード]** オプションをクリックします。今回初めて Security Center で Power BI ダッシュボードを作成する場合、コンテンツ パックをインストールするよう求められます。次の画面に示す **[Content packs for Power BI (Power BI 用コンテンツ パック)]** ウィンドウの **[取得]** ボタンをクリックします。
 
-4. For this example, click **Security insights dashboard** option. If this is the first time, you are creating a Power BI dashboard for Security Center you are prompted to install the content pack. Click **Get** button in the **Content packs for Power BI** window as shown in the following screen:
+	![Azure Security Center Security Insights dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new3.png)
 
-    ![Azure Security Center Security Insights dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new3.png)
+5. **[Connect to Azure Security Center Security Insights (Azure Security Center Security Insights への接続)]** ウィンドウが表示されます。次のように **[認証方法]** ボックスの一覧の **[oAuth2]** を選択し、**[サインイン]** をクリックします。
+	
+	![認証](./media/security-center-powerbi/security-center-powerbi-fig1-new4.png)
 
-5. The **Connect to Azure Security Center Security Insights** window appear. Make sure the **Authentication** method is **oAuth2** as shown below and click **Sign in** button.
-    
-    ![Authentication](./media/security-center-powerbi/security-center-powerbi-fig1-new4.png)
+6. Azure の資格情報を使って再度認証を行うように求められる場合があります。認証後、ダッシュボードが作成されます。ダッシュボードが作成されると、次の画面のような形式のレポートが表示されます。
 
-6. You may be asked to authenticate again with your Azure credentials. After authenticating your dashboard will be created. Once the dashboard is created you see a report with the similar structure as shown in the following screen:
-
-    ![Power BI Dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new5.png)
+	![Power BI ダッシュボード](./media/security-center-powerbi/security-center-powerbi-fig1-new5.png)
 
 
-> [AZURE.NOTE] A refresh of the report is scheduled to take place on a daily basis. In case you experience a failure on this refresh, read [Potential Refresh Issues with the Azure Security Center Power BI](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/07/azure-security-center-power-bi-refresh-fails/), for more information on how to troubleshoot.
+> [AZURE.NOTE] レポートの更新は、1 日単位で行われるようにスケジュールされています。この更新で問題が発生した場合は、「[Potential Refresh Issues with the Azure Security Center Power BI (Azure Security Center の Power BI の潜在的な更新の問題)](https://blogs.msdn.microsoft.com/azuresecurity/2016/04/07/azure-security-center-power-bi-refresh-fails/)」でトラブルシューティングの方法について確認してください。
 
-Here you can see the number of security alerts and recommendations, as well as the number of VMs, Azure SQL databases, and network resources being monitored by Azure Security Center.
+セキュリティ アラートと推奨事項の数や、Azure Security Center によって監視されている VM、Azure SQL データベース、ネットワーク リソースの数を確認できます。
 
-A link to Azure Security Center redirects you to the Azure portal. The charts make it easy to visualize information about security recommendations and alerts, including:
+Azure Security Center へのリンクをクリックすると、Azure ポータルにリダイレクトされます。グラフでは、セキュリティに関する推奨事項やアラートなど、次のような情報を簡単に視覚化できます。
 
-- Resource Security State
-- Pending Recommendations
-- VM Recommendations
-- Alerts over Time
-- Attacked Resources
-- Attacked IPs
+- リソースのセキュリティ状態
+- 保留中の推奨事項
+- VM 推奨事項
+- アラートの累積
+- 攻撃されたリソース
+- 攻撃された IP
 
-Behind each chart, there are additional insights. Select a tile to see more information. For example, the **Resource Security State** tile shows you additional details about pending recommendations by resources as shown in the following screen:
+各グラフからは、さらに洞察を得ることができます。タイルを選択すると、詳細が表示されます。たとえば、**[Resource Security State (リソースのセキュリティ状態)]** タイルには、次の画面に示すように、リソースごとの保留中の推奨事項に関する追加情報が表示されます。
 
-![Recommendations](./media/security-center-powerbi/security-center-powerbi-fig1-new6.png)
+![推奨事項](./media/security-center-powerbi/security-center-powerbi-fig1-new6.png)
 
-If you click on any line of this graph, the others are going to gray out and you focus only on the one you selected. To return to the dashboard, click **Azure Security Center** under the **Dashboards** option on the left pane of this page.
+このグラフのいずれかの項目をクリックすると、他の項目は淡色表示になり、選択した 1 つの項目だけに注目できます。ダッシュボードに戻るには、このページの左側のウィンドウで **[ダッシュボード]** オプションの下にある **[Azure Security Center]** をクリックします。
 
-> [AZURE.NOTE] If you’d like to customize your reports by adding additional fields or changing existing visuals, you can edit the report. Read [Interact with a report in Editing View in Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-interact-with-a-report-in-editing-view/) for more information.
+> [AZURE.NOTE] フィールドを追加したり既存のビジュアルを変更したりしてレポートをカスタマイズする場合は、レポートを編集できます。詳細については、「[Power BI の編集ビューでレポートと対話する](https://powerbi.microsoft.com/documentation/powerbi-service-interact-with-a-report-in-editing-view/)」を参照してください。
 
-The **Alerts over Time, Attacked Resources** and **Attacker IPs** tiles will have the similar output when you click on each one of it. This happens because the report aggregates information regarding all those three variables and calls it **Resources under Attack** as shown in the following screen:
+**[Alerts over Time (アラートの累積)]、[Attacked Resources (攻撃されたリソース)]**、**[Attacker IPs (攻撃者 IP)]** タイルは、クリックすると同じような情報が出力されます。これは、これら 3 つの変数すべてに関する情報がレポートで集計されるためです。これは次の画面に示すように **[Resources under Attack (攻撃を受けているリソース)]** と呼ばれます。
 
 ![Resources under attack](./media/security-center-powerbi/security-center-powerbi-fig1-new7.png)
 
-At this point you can also save a copy of this report, print it or publish it on the web by using the options available in the **File** menu.
+この時点で、**[ファイル]** メニューのオプションを使用して、このレポートのコピーの保存、印刷、Web への発行を行うこともできます。
 
-![File menu](./media/security-center-powerbi/security-center-powerbi-fig8.png)
+![[ファイル] メニュー](./media/security-center-powerbi/security-center-powerbi-fig8.png)
 
-## <a name="exploring-your-azure-security-center-data-with-power-bi-services"></a>Exploring your Azure Security Center data with Power BI services
+## Power BI サービスで Azure Security Center のデータを調べる
 
-Connect to the [Power BI Content Pack Services](https://msit.powerbi.com/groups/me/getdata/services) in Power BI and execute the following steps:
+Power BI で [Power BI のコンテンツ パック サービス](https://msit.powerbi.com/groups/me/getdata/services)に接続し、次の手順を実行します。
 
-1. In the **Content Pack for Power BI** window you will see two options as shown below.
+1. 次に示すように、**[Content Pack for Power BI (Power BI 用コンテンツ パック)]** ウィンドウには 2 つのオプションが表示されます。
 
-    ![Content pack for Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new.png)
+	![Content pack for Power BI](./media/security-center-powerbi/security-center-powerbi-fig1-new.png)
 
-    >[AZURE.NOTE] If already executed the first part of this article you will see only one option, which is Azure Security Center Policy Management.
+	>[AZURE.NOTE] この記事の最初の部分が実行済みである場合、表示されるオプションは [Azure Security Center Policy Management (Azure Security Center のポリシー管理)] の 1 つだけです。
 
-2. For the purpose of this example, click **Get** in the **Azure Security Center Policy Management** tile.
+2. この例では、**[Azure Security Center Policy Management (Azure Security Center のポリシー管理)]** タイルの **[取得]** をクリックします。
 
-3. In the **Connect to Azure Security Center Policy Management** window, make sure to select **oAuth2** under **Authentication Method** drop down as shown below and click **Sign in** button.
+3. **[Connect to Azure Security Center Policy Management (Azure Security Center のポリシー管理への接続)]** ウィンドウで、次に示すように **[認証方法]** ボックスの一覧の **[oAuth2]** を必ず選択し、**[サインイン]** をクリックします。
 
-    ![Policy Management window](./media/security-center-powerbi/security-center-powerbi-fig1-new8.png)
+	![Policy Management window](./media/security-center-powerbi/security-center-powerbi-fig1-new8.png)
 
-4. You will be redirected to an authentication page where you should type the credentials that you are using to connect to Azure Security Center. After the authentication process is complete, Power BI will start importing data to build your reports. During this time you may see the following message on the right corner of your browser:
+4. 認証ページにリダイレクトされるので、Azure Security Center への接続に使用している資格情報を入力します。認証プロセスが完了すると、Power BI がレポートを作成するためのデータのインポートを開始します。この処理中は、ブラウザーの右上隅に、次のメッセージが表示されます。
 
-    ![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig4.png)
+	![Connect to Azure Security Center using Power BI](./media/security-center-powerbi/security-center-powerbi-fig4.png)
 
-    >[AZURE.NOTE] when the dashboard is being created for the first time it can take longer than usual, mainly for scenarios where you have multiple subscriptions. 
+	>[AZURE.NOTE] ダッシュボードの作成が初めての場合は (主に、サブスクリプションが複数ある場合に)、通常より時間がかかることがあります。
 
-5. Once the process is finished, your Azure Security Center Power BI dashboard will load with the **Policy Management** report similar to the one shown below:
+5. 処理が完了すると、Azure Security Center の Power BI ダッシュボードに、次のような**ポリシー管理**レポートが読み込まれます。
 
-    ![Policy Management dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new9.png)
+	![Policy Management dashboard](./media/security-center-powerbi/security-center-powerbi-fig1-new9.png)
 
-## <a name="see-also"></a>See also
-In this document, you learned how to use Power BI in Azure Security Center. To learn more about Azure Security Center, see the following:
+## 関連項目
+このドキュメントでは、Azure Security Center での Power BI の使用方法について説明しました。Azure セキュリティ センターの詳細については、次を参照してください。
 
-- [Azure Security Center Planning and Operations Guide](security-center-planning-and-operations-guide.md) — Learn how to plan Azure Security Center adoption.
-- [Setting security policies in Azure Security Center](security-center-policies.md) — Learn how to configure security settings in Azure Security Center
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) — Learn how to manage and respond to security alerts
-- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service
-- [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) — Find blog posts about Azure security and compliance
+- 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 -- Azure Security Center の導入を計画する方法について説明します。
+- 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」 -- Azure Security Center でセキュリティ設定を構成する方法について説明します。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています。
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Use SSH keys with Hadoop on Linux-based clusters from Windows | Microsoft Azure"
-   description="Learn how to create and use SSH keys to authenticate to Linux-based HDInsight clusters. Connect clusters from Windows-based clients by using the PuTTY SSH client."
+   pageTitle="Windows と Linux ベースのクラスターの Hadoop の間で SSH キーを使用する | Microsoft Azure"
+   description="SSH キーを作成して、Linux ベースの HDInsight クラスターに対する認証に使用する方法について説明します。PuTTY SSH クライアントを使用して Windows ベースのクライアントからクラスターに接続します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
    manager="jhubbard"
    editor="cgronlun"
-    tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -17,229 +17,224 @@
    ms.date="08/30/2016"
    ms.author="larryfr"/>
 
-
-#<a name="use-ssh-with-linux-based-hadoop-on-hdinsight-from-windows"></a>Use SSH with Linux-based Hadoop on HDInsight from Windows
+#HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する
 
 > [AZURE.SELECTOR]
 - [Windows](hdinsight-hadoop-linux-use-ssh-windows.md)
-- [Linux, Unix, OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
+- [Linux、Unix、OS X](hdinsight-hadoop-linux-use-ssh-unix.md)
 
-[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) allows you to remotely perform operations on your Linux-based HDInsight clusters using a command-line interface. This document provides information on connecting to HDInsight from Windows-based clients by using the PuTTY SSH client.
+[Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) では、コマンドライン インターフェイスを利用し、Linux ベース HDInsight クラスターで操作をリモート実行できます。このドキュメントでは、PuTTY SSH クライアントを使用した Windows ベースのクライアントからの HDInsight への接続について説明します。
 
-> [AZURE.NOTE] The steps in this article assume you are using a Windows-based client. If you are using a Linux, Unix, or OS X client, see [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+> [AZURE.NOTE] この記事の手順では、Windows ベースのクライアントを使用していることを前提としています。Linux、Unix、OS X クライアントを使用する場合は、[「Linux、Unix、OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する」](hdinsight-hadoop-linux-use-ssh-unix.md)をご覧ください。
 >
-> If you have Windows 10 and are using [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about), then you can use the steps in the [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md) document.
+> Windows 10 で [Bash on Ubuntu on Windows](https://msdn.microsoft.com/commandline/wsl/about) を使用している場合は、[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)方法に関するドキュメントの手順に従ってください。
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
-* **PuTTY** and **PuTTYGen** for Windows-based clients. These utilities are available from [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+* **PuTTY** と **PuTTYGen** (Windows クライアント)。これらのユーティリティは [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から入手できます。
 
-* A modern web browser that supports HTML5.
+* HTML5 をサポートする最新の Web ブラウザー
 
-OR
+または
 
-* [Azure CLI](../xplat-cli-install.md).
+* [Azure CLI](../xplat-cli-install.md)。
 
-    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)] 
+    [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-##<a name="what-is-ssh?"></a>What is SSH?
+##SSH とは
 
-SSH is a utility for logging in to, and remotely executing, commands on a remote server. With Linux-based HDInsight, SSH establishes an encrypted connection to the cluster head node and provides a command line that you use to type in commands. Commands are then executed directly on the server.
+SSH は、リモート サーバーにログインしたり、リモート サーバーでコマンドをリモート実行したりするためのユーティリティです。Linux ベースの HDInsight では、SSH によりクラスター ヘッド ノードへの暗号化された接続が確立され、コマンドの入力に使用するコマンド ラインが提供されます。コマンドは、直接サーバーで実行されます。
 
-###<a name="ssh-user-name"></a>SSH user name
+###SSH ユーザー名
 
-An SSH user name is the name you use to authenticate to the HDInsight cluster. When you specify an SSH user name during cluster creation, this user is created on all nodes in the cluster. Once the cluster is created, you can use this user name to connect to the HDInsight cluster head nodes. From the head nodes, you can then connect to the individual worker nodes.
+SSH ユーザー名は HDInsight クラスターの認証に使用する名前です。クラスター作成中に SSH ユーザー名を指定するとき、このユーザーがクラスターのすべてのノードで作成されます。クラスターを作成したら、このユーザー名を使用し、HDInsight クラスター ヘッド ノードに接続できます。ヘッド ノードから、個々のワーカー ノードに接続できます。
 
-###<a name="ssh-password-or-public-key"></a>SSH password or Public key
+###SSH パスワードまたは公開キー
 
-An SSH user can use either a password or public key for authentication. A password is just a string of text you make up, while a public key is part of a cryptographic key pair generated to uniquely identify you.
+SSH ユーザーはパスワードと公開キーのいずれかを認証に利用できます。パスワードはユーザーが考えたテキスト文字列です。公開キーはユーザーを一意に識別するために生成された暗号化キー ペアの片割れです。
 
-A key is more secure than a password, however it requires additional steps to generate the key and you must maintain the files containing the key in a secure location. If anyone gains access to the key files, they gain access to your account. Or if you lose the key files, you will not be able to login to your account.
+キーはパスワードより安全ですが、追加の手順でキーを生成する必要があり、キーが入っているファイルを安全な場所に保管しなければなりません。そのキー ファイルにアクセスされると、アカウントにもアクセスされます。また、キー ファイルをなくした場合、アカウントにログインできなくなります。
 
-A key pair consists of a public key (which is sent to the HDInsight server,) and a private key (which is kept on your client machine.) When you connect to the HDInsight server using SSH, the SSH client will use the private key on your machine to authenticate with the server.
+キー ペアは公開キー (HDInsight サーバーに送信されます) と秘密キー (クライアント コンピューターで保存されます) から構成されます。 SSH を利用して HDInsight に接続すると、SSH はコンピューターに保存されている秘密キーを利用し、サーバーで認証します。
 
-##<a name="create-an-ssh-key"></a>Create an SSH key
+##SSH キーの作成
 
-Use the following information if you plan on using SSH keys with your cluster. If you plan on using a password, you can skip this section.
+クラスターで SSH キーを使用する場合は、次の手順を実行します。パスワードを使用する場合、このセクションを省略できます。
 
-1. Open PuTTYGen.
+1. PuTTYGen を開きます。
 
-2. For **Type of key to generate**, select **SSH-2 RSA**, and then click **Generate**.
+2. **[生成するキーの種類]** に **[SSH-2 RSA]** を選択し、**[生成]** をクリックします。
 
-    ![PuTTYGen interface](./media/hdinsight-hadoop-linux-use-ssh-windows/puttygen.png)
+	![PuTTYGen インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/puttygen.png)
 
-3. Move the mouse around in the area below the progress bar, until the bar fills. Moving the mouse generates random data that is used to generate the key.
+3. 進行状況バーが塗りつぶされるまで、バーの下の領域にマウスを移動します。マウスを移動すると、キーの生成に使用するランダム データが生成されます。
 
-    ![moving the mouse around](./media/hdinsight-hadoop-linux-use-ssh-windows/movingmouse.png)
+	![マウスの移動](./media/hdinsight-hadoop-linux-use-ssh-windows/movingmouse.png)
 
-    Once the key has been generated, the public key will be displayed.
+	キーが生成されると、パブリック キーが表示されます。
 
-4. For added security, you can enter a passphrase in the **Key passphrase** field, and then type the same value in the **Confirm passphrase** field.
+4. セキュリティを強化するために、**[キーのパスフレーズ]** フィールドにパスフレーズを入力し、**[パスフレーズの確認]** フィールドに同じ値を入力します。
 
-    ![passphrase](./media/hdinsight-hadoop-linux-use-ssh-windows/key.png)
+	![パスフレーズ](./media/hdinsight-hadoop-linux-use-ssh-windows/key.png)
 
-    > [AZURE.NOTE] We strongly recommend that you use a secure passphrase for the key. However, if you forget the passphrase, there is no way to recover it.
+	> [AZURE.NOTE] キーにセキュリティで保護されたパスフレーズを使用することを強くお勧めします。ただし、パスフレーズを忘れた場合、それを回復する方法はありません。
 
-5. Click **Save private key** to save the key to a **.ppk** file. This key will be used to authenticate to your Linux-based HDInsight cluster.
+5. **[プライベート キーの保存]** をクリックして、キーを **.ppk** ファイルに保存します。このキーは、Linux ベースの HDInsight クラスターへの認証に使用されます。
 
-    > [AZURE.NOTE] You should store this key in a secure location, as it can be used to access your Linux-based HDInsight cluster.
+	> [AZURE.NOTE] こキーは Linux ベースの HDInsight クラスターへのアクセスに使用できるため、セキュリティ保護された場所に保存する必要があります。
 
-6. Click **Save public key** to save the key as a **.txt** file. This allows you to reuse the public key in the future when you create additional Linux-based HDInsight clusters.
+6. **[パブリック キーの保存]** をクリックして、キーを **.txt** ファイルとして保存します。これにより、Linux ベースの HDInsight クラスターを今後追加で作成するときにパブリック キーを再利用できます。
 
-    > [AZURE.NOTE] The public key is also displayed at the top of PuTTYGen. You can right-click this field, copy the value, and then paste it into a form when creating a cluster using the Azure Portal.
+	> [AZURE.NOTE] また、パブリック キーは PuTTYGen の上部に表示されます。Azure ポータルを使用してクラスターを作成するときに、このフィールドを右クリックし、値をコピーして、フォームに貼り付けることができます。
 
-##<a name="create-a-linux-based-hdinsight-cluster"></a>Create a Linux-based HDInsight cluster
+##Linux ベースの HDInsight クラスターの作成
 
-When creating a Linux-based HDInsight cluster, you must provide the public key created previously. From Windows-based clients, there are two ways to create a Linux-based HDInsight cluster:
+Linux ベースの HDInsight クラスターを作成するときには、以前に作成した公開キーを指定する必要があります。Windows ベースのクライアントから、次の 2 つの方法で、Linux ベースの HDInsight クラスターを作成できます。
 
-* **Azure Portal** - Uses a web-based portal to create the cluster.
+* **Azure ポータル** - Web ベースのポータルを使用してクラスターを作成します。
 
-* **Azure CLI for Mac, Linux and Windows** - Uses command-line commands to create the cluster.
+* **Mac、Linux、Windows 用の Azure CLI** - コマンドラインでコマンドを使用してクラスターを作成します。
 
-Each of these methods will require the public key. For complete information on creating a Linux-based HDInsight cluster, see [Provision Linux-based HDInsight clusters](hdinsight-hadoop-provision-linux-clusters.md).
+これらの各メソッドにはパブリック キーが必要です。Linux ベースの HDInsight クラスターを作成する方法の詳細については、[HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)に関するページを参照してください。
 
-###<a name="azure-portal"></a>Azure Portal
+###Azure ポータル
 
-When using the [Azure Portal][preview-portal] to create a Linux-based HDInsight cluster, you must enter an **SSH Username**, and select to enter a **PASSWORD** or **SSH PUBLIC KEY**.
+[Azure ポータル][preview-portal]を使用して Linux ベースの HDInsight クラスターを作成する場合は、**SSH ユーザー名**を入力して、**パスワード**と **SSH 公開キー**のどちらを入力するかを選択する必要があります。
 
-If you select **SSH PUBLIC KEY**, you can either paste the public key (displayed in the __Public key for pasting into OpenSSH authorized\_keys file__ field in PuttyGen,) into the __SSH PublicKey__ field, or select __Select a file__ to browse and select the file that contains the public key.
+**[SSH 公開キー]** を選択した場合は、公開キー(PuttyGen の __OpenSSH authorized\_keys ファイル__ フィールドに貼り付けるための公開キーに表示されている) を [__SSH 公開キー]__ フィールドに貼り付けるか、__[ファイルの選択]__ を選択し、公開キーを含むファイルを参照して選択できます。
 
-![Image of form asking for public key](./media/hdinsight-hadoop-linux-use-ssh-windows/ssh-key.png)
+![公開キーの入力を求めるフォームの画像](./media/hdinsight-hadoop-linux-use-ssh-windows/ssh-key.png)
 
-This creates a login for the specified user, and enables either password authentication or SSH key authentication.
+これにより、指定したユーザーのログインが作成され、パスワード認証または SSH キー認証のいずれかが有効になります。
 
-###<a name="azure-command-line-interface-for-mac,-linux,-and-windows"></a>Azure Command-Line Interface for Mac, Linux, and Windows
+###Mac、Linux、Windows の Azure コマンド ライン インターフェイス
 
-You can use the [Azure CLI for Mac, Linux and Windows](../xplat-cli-install.md) to create a new cluster by using the `azure hdinsight cluster create` command.
+[Mac、Linux、Windows の Azure CLI](../xplat-cli-install.md) では、`azure hdinsight cluster create` コマンドを使用して新しいクラスターを作成できます。
 
-For more information on using this command, see [Provision Hadoop Linux clusters in HDInsight using custom options](hdinsight-hadoop-provision-linux-clusters.md).
+このコマンドの使用方法の詳細については、「[カスタム オプションを使用した HDInsight での Hadoop Linux クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-##<a name="connect-to-a-linux-based-hdinsight-cluster"></a>Connect to a Linux-based HDInsight cluster
+##Linux ベースの HDInsight クラスターへの接続
 
-1. Open PuTTY.
+1. PuTTY を開きます。
 
-    ![putty interface](./media/hdinsight-hadoop-linux-use-ssh-windows/putty.png)
+	![putty インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/putty.png)
 
-2. If you provided an SSH key when you created your user account, you must perform the following step to select the private key to use when authenticating to the cluster:
+2. ユーザー アカウントの作成時に SSH キーを指定した場合は、次の手順に従って、クラスターへの認証に使用するプライベート キーを選択する必要があります。
 
-    In **Category**, expand **Connection**, expand **SSH**, and select **Auth**. Finally, click **Browse** and select the .ppk file that contains your private key.
+	**[カテゴリ]** で **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。最後に、**[参照]** をクリックし、プライベート キーが含まれた .ppk ファイルを選択します。
 
-    ![putty interface, select private key](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
+	![putty インターフェイス、秘密キーの選択](./media/hdinsight-hadoop-linux-use-ssh-windows/puttykey.png)
 
-3. In **Category**, select **Session**. From the **Basic options for your PuTTY session** screen, enter the SSH address of your HDInsight server in the **Host name (or IP address)** field. There are two possible SSH addresses you may use when connecting to a cluster:
+3. **[カテゴリ]** で **[セッション]** を選択します。**[PuTTY セッションの基本設定]** 画面で、**[ホスト名 (または IP アドレス)]** フィールドに HDInsight サーバーの SSH アドレスを入力します。クラスターに接続する際に使う可能性がある SSH アドレスは 2 つあります。
 
-    * __Head node address__: To connect to the head node of the cluster, use your cluster name, then **-ssh.azurehdinsight.net**. For example, **mycluster-ssh.azurehdinsight.net**.
+    * __ヘッド ノード アドレス__: クラスターのヘッド ノードに接続する場合は、クラスター名に続けて「**-ssh.azurehdinsight.net**」と入力します (**mycluster-ssh.azurehdinsight.net** など)。
     
-    * __Edge node address__: If you are connecting to an R Server on HDInsight cluster, you can connect to the R Server edge node using the address __RServer.CLUSTERNAME.ssh.azurehdinsight.net__, where CLUSTERNAME is the name of your cluster. For example, __RServer.mycluster.ssh.azurehdinsight.net__.
+    * __エッジ ノード アドレス__: HDInsight クラスター上の R Server に接続する場合は、アドレス __RServer.CLUSTERNAME.ssh.azurehdinsight.net__ を使用して R Server のエッジ ノードに接続できます (CLUSTERNAME は実際のクラスターの名前です)。たとえば、__RServer.mycluster.ssh.azurehdinsight.net__ になります。
 
-    ![putty interface with ssh address entered](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
+	![ssh アドレスを入力した putty インターフェイス](./media/hdinsight-hadoop-linux-use-ssh-windows/puttyaddress.png)
 
-4. To save the connection information for future use, enter a name for this connection under **Saved Sessions**, and then click **Save**. The connection will be added to the list of saved sessions.
+4. 後で使用するために接続情報を保存するには、**[保存されたセッション]** にこの接続の名前を入力し、**[保存]** をクリックします。接続が、保存済みセッションの一覧に追加されます。
 
-5. Click **Open** to connect to the cluster.
+5. **[開く]** をクリックして、クラスターに接続します。
 
-    > [AZURE.NOTE] If this is the first time you have connected to the cluster, you will receive a security alert. This is normal. Select **Yes** to cache the server's RSA2 key to continue.
+	> [AZURE.NOTE] クラスターに初めて接続する場合は、セキュリティ の警告が返されます。問題はありません。**[はい]** を選択し、サーバーの RSA2 キーをキャッシュして続行します。
 
-6. When prompted, enter the user that you entered when you created the cluster. If you provided a password for the user, you will be prompted to enter it also.
+6. プロンプトが表示されたら、クラスターの作成時に入力したユーザーを入力します。ユーザーにパスワードを指定している場合は、その入力も求められます。
 
-> [AZURE.NOTE] The above steps assume you are using port 22, which will connect to the primary headnode on the HDInsight cluster. If you use port 23, you will connect to the secondary. For more information on the head nodes, see [Availability and reliability of Hadoop clusters in HDInsight](hdinsight-high-availability-linux.md).
+> [AZURE.NOTE] 上記の手順ではポート 22 を使用していると仮定しています。このポートは、HDInsight クラスターのプライマリ ヘッド ノードに接続します。ポート 23 を使用すると、セカンダリに接続されます。ヘッド ノードの詳細については、「[HDInsight における Hadoop クラスターの可用性と信頼性](hdinsight-high-availability-linux.md)」を参照してください。
 
-###<a name="connect-to-worker-nodes"></a>Connect to worker nodes
+###ワーカー ノードへの接続
 
-The worker nodes are not directly accessible from outside the Azure datacenter, but they can be accessed from the cluster head node via SSH.
+ワーカー ノードは、Azure データセンターの外部からは直接アクセスできませんが、SSH を使用してクラスター ヘッド ノードからアクセスできます。
 
-If you provided an SSH key when you created your user account, you must perform the following steps to use the private key when authenticating to the cluster if you want to connect to the worker nodes.
+ユーザー アカウントの作成時に SSH キーを指定した場合は、ワーカー ノードに接続するクラスターを認証するときに、次の手順に従ってプライベート キーを使用する必要があります。
 
-1. Install Pageant from [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). This utility is used to cache SSH keys for PuTTY.
+1. [http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) から Pageant をインストールします。このユーティリティを使用して、PuTTY の SSH キーをキャッシュします。
 
-2. Run Pageant. It will minimize to an icon in the status tray. Right-click the icon and select **Add Key**.
+2. Pageant を実行します。ステータス トレイにアイコンが表示されます。アイコンを右クリックし **[キーの追加]** を選択します。
 
-    ![adding key](./media/hdinsight-hadoop-linux-use-ssh-windows/addkey.png)
+    ![キーの追加](./media/hdinsight-hadoop-linux-use-ssh-windows/addkey.png)
 
-3. When the browse dialog appears, select the .ppk file that contains the key, and then click **Open**. This adds the key to Pageant, which will provide it to PuTTY when connecting to the cluster.
+3. [参照] ダイアログ ボックスが表示されたら、キーを含む .ppk ファイルを選択し、**[開く]** をクリックします。キーは Pageant に追加され、クラスターに接続すると PuTTY に渡されます。
 
-    > [AZURE.IMPORTANT] If you used an SSH key to secure your account, you must complete the previous steps before you will be able to connect to worker nodes.
+    > [AZURE.IMPORTANT] SSH キーを使用してアカウントのセキュリティを保護する場合は、前の手順を完了してからワーカー ノードに接続する必要があります。
 
-4. Open PuTTY.
+4. PuTTY を開きます。
 
-5. If you use an SSH key to authenticate, in the **Category** section, expand **Connection**, expand **SSH**, and then select **Auth**.
+5. SSH キーを使用して認証する場合は、**[カテゴリ]** セクションで **[接続]**、**[SSH]** の順に展開し、**[認証]** を選択します。
 
-    In the **Authentication parameters** section, enable **Allow agent forwarding**. This allows PuTTY to automatically pass the certificate authentication through the connection to the cluster head node when connecting to worker nodes.
+    **[認証パラメーター]** セクションで、**[Allow agent forwarding]** を有効にします。これにより、PuTTY はワーカー ノードに接続するときに、自動的にクラスター ヘッド ノードに接続して証明書認証を渡すことができます。
 
-    ![allow agent forwarding](./media/hdinsight-hadoop-linux-use-ssh-windows/allowforwarding.png)
+    ![エージェント転送の許可](./media/hdinsight-hadoop-linux-use-ssh-windows/allowforwarding.png)
 
-6. Connect to the cluster as documented earlier. If you use an SSH key for authentication, you do not need to select the key - the SSH key added to Pageant will be used to authenticate to the cluster.
+6. 上記の説明と同様に、クラスターに接続します。認証に SSH キーを使用する場合は、キーを選択する必要はありません。Pageant に追加された SSH キーがクラスターの認証に使用されます。
 
-7. After the connection has been established, use the following to retrieve a list of the nodes in your cluster. Replace *ADMINPASSWORD* with the password for your cluster admin account. Replace *CLUSTERNAME* with the name of your cluster.
+7. 接続が確立されたら、次のコマンドを使用してクラスター内のノードの一覧を取得します。*ADMINPASSWORD* をクラスターの管理者アカウントのパスワードに置き換えます。*CLUSTERNAME* をクラスターの名前に置き換えます。
 
         curl --user admin:ADMINPASSWORD https://CLUSTERNAME.azurehdinsight.net/api/v1/hosts
 
-    This will return information in JSON format for the nodes in the cluster, including `host_name`, which contains the fully qualified domain name (FQDN) for each node. The following is an example of a `host_name` entry returned by the **curl** command:
+    クラスター内のノードの `host_name` などの情報が JSON 形式で返されます。これには、各ノードの完全修飾ドメイン名 (FQDN) が含まれています。次は、**curl** コマンドによって返された `host_name` エントリの例です。
 
         "host_name" : "workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net"
 
-8. Once you have a list of the worker nodes you want to connect to, use the following command from the PuTTY session to open a connection to a worker node:
+8. 接続するワーカー ノードの一覧を取得したら、PuTTY セッションから次のコマンドを使用して、ワーカー ノードへの接続を開きます。
 
         ssh USERNAME@FQDN
 
-    Replace *USERNAME* with your SSH user name and *FQDN* with the FQDN for the worker node. For example, `workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net`.
+    *USERNAME* を SSH ユーザー名、*FQDN* をワーカー ノードの FQDN に置き換えます (例: `workernode0.workernode-0-e2f35e63355b4f15a31c460b6d4e1230.j1.internal.cloudapp.net`)。
 
-    > [AZURE.NOTE] If you use a password to authentication your SSH session, you will be prompted to enter the password again. If you use an SSH key, the connection should finish without any prompts.
+    > [AZURE.NOTE] SSH セッションの認証にパスワードを使用する場合は、もう一度パスワードを入力するように求めるメッセージ表示されます。SSH キーを使用する場合は、何も表示されずに接続が完了します。
 
-9. Once the session has been established, the prompt for your PuTTY session will change from `username@hn#-clustername` to `username@wn#-clustername` to indicate that you are connected to the worker node. Any commands you run at this point will run on the worker node.
+9. セッションが確立されると、PuTTY セッションのプロンプトが `username@hn#-clustername` から `username@wn#-clustername` に変わり、ワーカー ノードに接続したことを示します。この時点で実行するすべてのコマンドは、ワーカー ノードで実行されます。
 
-10. Once you have finished performing actions on the worker node, use the `exit` command to close the session to the worker node. This will return you to the `username@hn#-clustername` prompt.
+10. ワーカー ノードでの操作が終了したら、`exit` コマンドを使用してワーカー ノードのセッションを閉じます。これにより、`username@hn#-clustername` プロンプトが表示されます。
 
-##<a name="add-more-accounts"></a>Add more accounts
+##複数のアカウントの追加
 
-If you need to add more accounts to your cluster, perform the following steps:
+クラスターに複数のアカウントを追加する必要がある場合は、次の手順を実行します。
 
-1. Generate a new public key and private key for the new user account as described previously.
+1. 前述の説明に従って、新しいユーザー アカウントの新しいパブリック キーとプライベート キーを生成します。
 
-2. From an SSH session to the cluster, add the new user with the following command:
+2. クラスターへの SSH セッションから、次のコマンドを使用して新しいユーザーを追加します。
 
-        sudo adduser --disabled-password <username>
+		sudo adduser --disabled-password <username>
 
-    This will create a new user account, but will disable password authentication.
+	これにより、新しいユーザー アカウントが作成されますが、パスワード認証は無効になります。
 
-3. Create the directory and files to hold the key by using the following commands:
+3. 次のコマンドを使用して、キーを格納するディレクトリとファイルを作成します。
 
         sudo mkdir -p /home/<username>/.ssh
         sudo touch /home/<username>/.ssh/authorized_keys
         sudo nano /home/<username>/.ssh/authorized_keys
 
-4. When the nano editor opens, copy and paste in the contents of the public key for the new user account. Finally, use **Ctrl-X** to save the file and exit the editor.
+4. ナノ エディターが開いたら、新しいユーザー アカウントのパブリック キーの内容をコピーして貼り付けます。最後に、**Ctrl + X** キーを使用してファイルを保存し、エディターを終了します。
 
-    ![image of nano editor with example key](./media/hdinsight-hadoop-linux-use-ssh-windows/nano.png)
+	![サンプル キーとナノ エディターの画像](./media/hdinsight-hadoop-linux-use-ssh-windows/nano.png)
 
-5. Use the following command to change ownership of the .ssh folder and contents to the new user account:
+5. 次のコマンドを使用して、新しいユーザー アカウントに対する .ssh フォルダーの所有権をとコンテンツを変更します。
 
-        sudo chown -hR <username>:<username> /home/<username>/.ssh
+		sudo chown -hR <username>:<username> /home/<username>/.ssh
 
-6. You should now be able to authenticate to the server with the new user account and private key.
+6. これで、新しいユーザー アカウントおよびプライベート キーを使用してサーバーへの認証を行えるようになります。
 
-##<a name="<a-id="tunnel"></a>ssh-tunneling"></a><a id="tunnel"></a>SSH tunneling
+##<a id="tunnel"></a>SSH トンネリング
 
-SSH can be used to tunnel local requests, such as web requests, to the HDInsight cluster. The request will then be routed to the requested resource as if it had originated on the HDInsight cluster head node.
+SSH を使用して、Web 要求などのローカルの要求を HDInsight クラスターにトンネリングできます。ここでは、最初から HDInsight クラスター ヘッド ノード上にあったかのように、要求が要求済みリソースにルーティングされます。
 
-> [AZURE.IMPORTANT] An SSH tunnel is a requirement for accessing the web UI for some Hadoop services. For example, both the Job History UI or Resource Manager UI can only be accessed using an SSH tunnel.
+> [AZURE.IMPORTANT] SSH トンネルは、Hadoop サービス用の Web UI にアクセスするための要件です。たとえば、ジョブ履歴 UI とリソース マネージャー UI は、両方とも SSH トンネルでのみアクセスできます。
 
-For more information on creating and using an SSH tunnel, see [Use SSH Tunneling to access Ambari web UI, ResourceManager, JobHistory, NameNode, Oozie, and other web UI's](hdinsight-linux-ambari-ssh-tunnel.md).
+SSH トンネルの作成と使用の詳細については、[SSH トンネリングを使用して Ambari Web UI、ResourceManager、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする](hdinsight-linux-ambari-ssh-tunnel.md)方法に関するページを参照してください。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-Now that you understand how to authenticate by using an SSH key, learn how to use MapReduce with Hadoop on HDInsight.
+これで、SSH キーを使用して認証する方法、また、HDInsight 上の Hadoop で MapReduce を使用する方法についてご理解いただけたと思います。
 
-* [Use Hive with HDInsight](hdinsight-use-hive.md)
+* [HDInsight での Hive の使用](hdinsight-use-hive.md)
 
-* [Use Pig with HDInsight](hdinsight-use-pig.md)
+* [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 
-* [Use MapReduce jobs with HDInsight](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

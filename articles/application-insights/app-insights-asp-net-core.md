@@ -1,70 +1,63 @@
 <properties 
-    pageTitle="Application Insights for ASP.NET Core" 
-    description="Monitor web applications for availability, performance and usage." 
-    services="application-insights" 
+	pageTitle="Application Insights for ASP.NET Core" 
+	description="Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。" 
+	services="application-insights" 
     documentationCenter=".net"
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/30/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/30/2016" 
+	ms.author="awills"/>
+
+# Application Insights for ASP.NET Core
+
+[Visual Studio Application Insights](app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。アプリのパフォーマンスと効果に関するフィードバックが得られたら、各開発ライフサイクルにおける設計の方向性について、情報に基づいて選択できます。
+
+![例](./media/app-insights-asp-net-core/sample.png)
+
+[Microsoft Azure](http://azure.com) のサブスクリプションが必要になります。Windows、XBox Live、またはその他の Microsoft クラウド サービスに与えられる Microsoft アカウントでサインインします。所属するチームが組織の Azure サブスクリプションを所有している場合は、自分の Microsoft アカウントを使用してサブスクリプションに自身を追加してもらうよう所有者に依頼してください。
 
 
-# <a name="application-insights-for-asp.net-core"></a>Application Insights for ASP.NET Core
+## 使用の開始
 
-[Visual Studio Application Insights](app-insights-overview.md) lets you monitor your web application for availability, performance and usage. With the feedback you get about the performance and effectiveness of your app in the wild, you can make informed choices about the direction of the design in each development lifecycle.
+[ファースト ステップ ガイド](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started)に従ってください。
 
-![Example](./media/app-insights-asp-net-core/sample.png)
+## Application Insights の使用
 
-You'll need a subscription with [Microsoft Azure](http://azure.com). Sign in with a Microsoft account, which you might have for Windows, XBox Live, or other Microsoft cloud services. Your team might have an organizational subscription to Azure: ask the owner to add you to it using your Microsoft account.
+[Microsoft Azure ポータル](https://portal.azure.com)にサインインし、アプリを監視するために作成したリソースを参照します。
 
+別のブラウザー ウィンドウで、しばらくの間、アプリを使用します。Application Insights グラフにデータが表示されます ([更新] のクリックが必要な場合があります)。 開発中は少量のデータのみが表示されますが、これらのグラフは、アプリを発行して多数のユーザーが使用したときに真に有用になります。
 
-## <a name="getting-started"></a>Getting started
+[概要] ページには、サーバーの応答時間、ページの読み込み時間、および失敗した要求の数を示す、最も関心が高い可能性があるパフォーマンス グラフが表示されます。グラフの詳細とデータを表示するには、グラフをクリックします。
 
-Please follow the [Getting Started guide](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Getting-Started).
+ポータルのビューは、次の 2 つの主なカテゴリに分類されます。
 
-## <a name="using-application-insights"></a>Using Application Insights
+* [メトリックス エクスプローラー](app-insights-metrics-explorer.md): 応答時間、障害発生率、[API](app-insights-api-custom-events-metrics.md) を使用して作成したメトリックスなどのメトリックスと数値のグラフとテーブルを表示します。アプリとそのユーザーの理解を深めるには、プロパティ値によってデータをフィルター処理してセグメント化します。
+* [検索エクスプローラー](app-insights-diagnostic-search.md): 特定の要求、例外、ログ トレース、[API](app-insights-api-custom-events-metrics.md) を使用して作成したイベントなどの個々のイベントを一覧表示します。イベントのフィルター処理と検索、問題を調査するための関連イベント間の移動を行います。
+* [Analytics](app-insights-analytics.md): テレメトリに対して SQL に似たクエリを実行できる、強力な分析および診断ツールです。
 
-Sign into the [Microsoft Azure portal](https://portal.azure.com) and browse to the resource you created to monitor your app.
+## Alerts
 
-In a separate browser window, use your app for a while. You'll see data appearing in the Application Insights charts. (You might have to click Refresh.) There will be only a small amount of data while you're developing, but these charts really come alive when you publish your app and have many users. 
+* 要求が失敗する割合の異常な変化について知らせる[アダプティブ アラート](app-insights-nrt-proactive-diagnostics.md)が、自動的に表示されます。
+* 世界中の場所で Web サイトを継続的にテストして、テストが失敗したときにすぐに電子メールを送信するように[可用性テスト](app-insights-monitor-web-app-availability.md)を設定します。
+* 応答時間や例外発生率などのメトリックスが許容される限界を超えた場合に、それがわかるように[メトリックス アラート](app-insights-monitor-web-app-availability.md)を設定します。
 
-The overview page shows the performance charts you're most likely to be interested in: server response time,  page load time, and counts of failed requests. Click any chart to see more charts and data.
+## さらに多くのテレメトリを取得する
 
-Views in the portal fall into two main categories:
-
-* [Metrics Explorer](app-insights-metrics-explorer.md) shows graphs and tables of metrics and counts, such as response times, failure rates, or metrics you create yourself with the [API](app-insights-api-custom-events-metrics.md). Filter and segment the data by property values to get a better understanding of your app and its users.
-* [Search Explorer](app-insights-diagnostic-search.md) lists individual events, such as specific requests, exceptions, log traces, or events you created yourself with the [API](app-insights-api-custom-events-metrics.md). Filter and search in the events, and navigate among related events to investigate issues.
-* [Analytics](app-insights-analytics.md) lets you run SQL-like queries over your telemetry, and is a powerful analytical and diagnostic tool.
-
-## <a name="alerts"></a>Alerts
-
-* You'll automatically get [adaptive alerts](app-insights-nrt-proactive-diagnostics.md) that will tell you about anomalous changes in the rate of failed requests.
-* Set up [availability tests](app-insights-monitor-web-app-availability.md) to test your website continually from locations worldwide, and get emails as soon as any test fails.
-* Set up [metric alerts](app-insights-monitor-web-app-availability.md) to know if metrics such as response times or exception rates go outside acceptable limits.
-
-## <a name="get-more-telemetry"></a>Get more telemetry
-
-* [Add telemetry to your web pages](app-insights-javascript.md) to monitor page usage and performance.
-* [Monitor dependencies](app-insights-dependencies.md) to see if REST, SQL or other external resources are slowing you down.
-* [Use the API](app-insights-api-custom-events-metrics.md) to send your own events and metrics for a more detailed view of your app's performance and usage.
-* [Availability tests](app-insights-monitor-web-app-availability.md) check your app constantly from around the world. 
+* [Web ページへのテレメトリの追加](app-insights-javascript.md): ページの使用状況やパフォーマンスを監視します。
+* [依存関係の監視](app-insights-dependencies.md): REST、SQL、その他の外部リソースによる低下が発生しているかどうかを確認します。
+* [API の使用](app-insights-api-custom-events-metrics.md): アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
+* [可用性テスト](app-insights-monitor-web-app-availability.md): 世界中からアプリを常にチェックします。
 
 
-## <a name="open-source"></a>Open source
+## オープン ソース
 
-[Read and contribute to the code](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
+[コードを読んで協力してください。](https://github.com/Microsoft/ApplicationInsights-aspnetcore#recent-updates)
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

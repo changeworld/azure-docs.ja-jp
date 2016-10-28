@@ -1,6 +1,3 @@
->[AZURE.IMPORTANT]Before you work with Azure resources, it's important to understand that Azure currently has two deployment models: Azure Resource Manager and classic. Make sure you understand [deployment models and tools](../articles/azure-classic-rm.md) before you work with any Azure resource. You can view the documentation for different tools by clicking the tabs at the top of this article.
-
-
-<!--HONumber=Oct16_HO2-->
-
+<!---HONumber=AcomDC_0914_2016-->
+>[AZURE.IMPORTANT]Azure リソースを使用する前に、Azure は現在、Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルの 2 種類を備えていることを理解しておくことが重要です。Azure リソースを使用する前に、必ず[デプロイ モデルとツール](../articles/azure-classic-rm.md)について知識をつけておいてください。この記事の上部にあるタブをクリックすると、さまざまなツールについてのドキュメントを参照できます。
 

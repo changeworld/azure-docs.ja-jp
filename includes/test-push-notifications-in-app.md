@@ -1,13 +1,10 @@
 
-* In Xcode, press **Run** and start the app on an iOS device (not the simulator.) Click **OK** to accept push notifications; this request occurs the first time the app runs.
+* Xcode で **[Run]** をクリックし、(シミュレーターではなく) iOS デバイスでアプリを起動します。 **[OK]** をクリックしてプッシュ通知を受け入れます。この要求は、アプリの初回実行時に発生します。
 
-* In the app, add a new item and click **+**.
+* アプリで新しい項目を追加し、**[+]** をクリックします。
 
-* Verify that a notification is received, then click **OK** to dismiss the notification. You have now successfully completed this tutorial.
+* 通知が受信されたことを確認し、**[OK]** をクリックして通知を破棄します。これで、このチュートリアルは終了です。
 
-    ![](../articles/media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png)
+  	![](../articles/media/mobile-services-ios-get-started-push/mobile-quickstart-push3-ios.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

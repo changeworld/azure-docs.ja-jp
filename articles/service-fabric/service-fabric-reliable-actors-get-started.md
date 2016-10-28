@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Get started with Service Fabric Reliable Actors | Microsoft Azure"
-   description="This tutorial walks you through the steps of creating, debugging, and deploying a simple actor-based service using Service Fabric Reliable Actors."
+   pageTitle="Service Fabric Reliable Actors の使用 | Microsoft Azure"
+   description="このチュートリアルでは、Service Fabric Reliable Actors を使用して簡単なアクターベースのサービスを作成、デバッグ、デプロイする手順について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,64 +13,54 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="09/25/2016"
+   ms.date="07/06/2016"
    ms.author="vturecek"/>
 
+# Reliable Actors の使用
+ここでは、Azure Service Fabric Reliable Actors の基本と、Visual Studio で簡単な Reliable Actors アプリケーションを作成、デバッグ、デプロイする手順について説明します。
 
-# <a name="getting-started-with-reliable-actors"></a>Getting started with Reliable Actors
+## インストールとセットアップ
+開始する前に、マシン上に Service Fabric 開発環境がセットアップされていることを確認します。セットアップする必要がある場合は、[開発環境のセットアップ方法](service-fabric-get-started.md)に関する詳細な手順を参照してください。
 
-> [AZURE.SELECTOR]
-- [C# on Windows](service-fabric-reliable-actors-get-started.md)
-- [Java on Linux](service-fabric-reliable-actors-get-started-java.md)
+## 基本的な概念
+Reliable Actors の使用を開始するには、4 つの基本的な概念を理解する必要があります。
 
-This article explains the basics of Azure Service Fabric Reliable Actors and walks you through creating, debugging, and deploying a simple Reliable Actor application in Visual Studio.
+* **アクター サービス**。Reliable Actors は、Service Fabric インフラストラクチャにデプロイできる Reliable Services にパッケージ化されます。サービスは、1 つまたは複数のアクターをホストできます。サービスごとの単一のアクターと複数のアクターのトレードオフについては、後で詳細に説明します。ここでは、1 つのアクターのみを実装する必要があると仮定します。
+* **アクター インターフェイス**。アクター インターフェイスは、アクターの厳密に型指定されたパブリック インターフェイスを定義するために使用されます。Reliable Actor モデルの用語では、アクター インターフェイスに、アクターが理解し、処理できるメッセージの種類が定義されています。アクター インターフェイスは、他のアクターとクライアント アプリケーションがメッセージをアクターに (非同期に) "送信" するために使用されます。Reliable Actors は複数のインターフェイスを実装できます。後述のように、HelloWorld アクターは IHelloWorld インターフェイスを実装できますが、異なるメッセージや機能を定義する ILogging インターフェイスも実装できます。
+* **アクター登録**。Reliable Actors サービスでは、アクターの種類を登録する必要があります。登録すると、Service Fabric は新しい種類を認識し、新しいアクターの作成に使用できるようになります。
+* **ActorProxy クラス**。ActorProxy クラスは、インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。ActorProxy クラスは、次の 2 つの重要な機能を提供します。
+	* 名を解決します。クラスター内のアクターを特定できます (ホストされているクラスターのノードを検索できます)。
+	* エラーを処理します。たとえば、アクターをクラスター内の別のノードに再配置する必要がある障害が発生した後に、メソッドの呼び出しを再試行し、アクターの場所を改めて特定することができます。
 
-## <a name="installation-and-setup"></a>Installation and setup
-Before you start, ensure that you have the Service Fabric development environment set up on your machine.
-If you need to set it up, see detailed instructions on [how to set up the development environment](service-fabric-get-started.md).
+アクター インターフェイスに関する次の規則に注意する必要があります。
 
-## <a name="basic-concepts"></a>Basic concepts
-To get started with Reliable Actors, you only need to understand a few basic concepts:
+- アクター インターフェイス メソッドはオーバー ロードできません。
+- アクター インターフェイス メソッドには、out、ref、optional パラメーターを使用できません。
+- ジェネリック インターフェイスはサポートされません。
 
- * **Actor service**. Reliable Actors are packaged in Reliable Services that can be deployed in the Service Fabric infrastructure. Actor instances are activated in a named service instance.
- 
- * **Actor registration**. As with Reliable Services, a Reliable Actor service needs to be registered with the Service Fabric runtime. In addition, the actor type needs to be registered with the Actor runtime.
- 
- * **Actor interface**. The actor interface is used to define a strongly typed public interface of an actor. In the Reliable Actor model terminology, the actor interface defines the types of messages that the actor can understand and process. The actor interface is used by other actors and client applications to "send" (asynchronously) messages to the actor. Reliable Actors can implement multiple interfaces.
- 
- * **ActorProxy class**. The ActorProxy class is used by client applications to invoke the methods exposed through the actor interface. The ActorProxy class provides two important functionalities:
-    * Name resolution: It is able to locate the actor in the cluster (find the node of the cluster where it is hosted).
-    * Failure handling: It can retry method invocations and re-resolve the actor location after, for example, a failure that requires the actor to be relocated to another node in the cluster.
-
-The following rules that pertain to actor interfaces are worth mentioning:
-
-- Actor interface methods cannot be overloaded.
-- Actor interface methods must not have out, ref, or optional parameters.
-- Generic interfaces are not supported.
-
-## <a name="create-a-new-project-in-visual-studio"></a>Create a new project in Visual Studio
-After you have installed the Service Fabric tools for Visual Studio, you can create new project types. The new project types are under the **Cloud** category of the **New Project** dialog box.
+## Visual Studio での新しいプロジェクトの作成
+Visual Studio 用の Service Fabric ツールをインストールした後、新しいプロジェクトの種類を作成できます。新しいプロジェクトの種類は、**[新しいプロジェクト]** ダイアログ ボックスの **[クラウド]** カテゴリにあります。
 
 
-![Service Fabric tools for Visual Studio - new project][1]
+![Visual Studio 用の Service Fabric ツール - 新しいプロジェクト][1]
 
-In the next dialog box, you can choose the type of project that you want to create.
+次のダイアログ ボックスで、作成するプロジェクトの種類を選択できます。
 
-![Service Fabric project templates][5]
+![Service Fabric プロジェクトのテンプレート][5]
 
-For the HelloWorld project, let's use the Service Fabric Reliable Actors service.
+HelloWorld プロジェクトで、Service Fabric Reliable Actors サービスを使用してみましょう。
 
-After you have created the solution, you should see the following structure:
+ソリューションの作成後は、次の構造を確認します。
 
-![Service Fabric project structure][2]
+![Service Fabric プロジェクトの構造][2]
 
-## <a name="reliable-actors-basic-building-blocks"></a>Reliable Actors basic building blocks
+## Reliable Actors の基本的な構成要素
 
-A typical Reliable Actors solution is composed of three projects:
+通常の Reliable Actors ソリューションは、次の 3 つのプロジェクトで構成されます。
 
-* **The application project (MyActorApplication)**. This is the project that packages all of the services together for deployment. It contains the *ApplicationManifest.xml* and PowerShell scripts for managing the application.
+* **アプリケーション プロジェクト (MyActorApplication)**。デプロイメントのためにすべてのサービスを一緒にパッケージ化するプロジェクトです。アプリケーションを管理するための *ApplicationManifest.xml* と PowerShell スクリプトが含まれています。
 
-* **The interface project (MyActor.Interfaces)**. This is the project that contains the interface definition for the actor. In the MyActor.Interfaces project, you can define the interfaces that will be used by the actors in the solution. Your actor interfaces can be defined in any project with any name, however the interface defines the actor contract that is shared by the actor implementation and the clients calling the actor, so it typically makes sense to define it in an assembly that is separate from the actor implementation and can be shared by multiple other projects.
+* **インターフェイス プロジェクト (MyActor.Interfaces)**。アクターのインターフェイス定義が含まれているプロジェクトです。MyActor.Interfaces プロジェクトでは、ソリューションでアクターによって使用されるインターフェイスを定義できます。アクター インターフェイスは、任意の名前でどのプロジェクトでも定義できます。ただし、このインターフェイスは、アクター実装とアクターを呼び出すクライアントが共有するアクター コントラクトを定義するため、通常は、他の複数のプロジェクトで共有できる、アクター実装とは別のアセンブリで定義します。
 
 ```csharp
 public interface IMyActor : IActor
@@ -79,7 +69,7 @@ public interface IMyActor : IActor
 }
 ```
 
-* **The actor service project (MyActor)**. This is the project used to define the Service Fabric service that is going to host the actor. It contains the implementation of the actor. An actor implementation is a class that derives from the base type `Actor` and implements the interface(s) that are defined in the MyActor.Interfaces project.
+* **アクター サービス プロジェクト (MyActor)**。アクターをホストする Service Fabric サービスの定義に使用されるプロジェクトです。アクターの実装が含まれています。アクター実装は、基本型 `Actor` から派生し、MyActor.Interfaces プロジェクトで定義されたインターフェイスを実装するクラスです。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
@@ -92,7 +82,7 @@ internal class MyActor : Actor, IMyActor
 }
 ```
 
-The actor service must be registered with a service type in the Service Fabric runtime. In order for the Actor Service to run your actor instances, your actor type must also be registered with the Actor Service. The `ActorRuntime` registration method performs this work for actors.
+アクター サービスは、Service Fabric ランタイムのサービスの種類に登録する必要があります。アクター サービスでアクター インスタンスを実行するには、アクター型もアクター サービスに登録する必要があります。`ActorRuntime` 登録メソッドは、アクターに対してこの処理を実行します。
 
 ```csharp
 internal static class Program
@@ -116,31 +106,31 @@ internal static class Program
 
 ```
 
-If you start from a new project in Visual Studio and you have only one actor definition, the registration is included by default in the code that Visual Studio generates. If you define other actors in the service, you need to add the actor registration by using:
+Visual Studio で新しいプロジェクトから開始する場合に、アクター定義が 1 つだけであれば、Visual Studio によって生成されるコードには既定で登録が含まれます。サービスで他のアクターを定義する場合は、次のコードを使用してアクター登録を追加する必要があります。
 
 ```csharp
  ActorRuntime.RegisterActorAsync<MyOtherActor>();
 
 ```
 
-> [AZURE.TIP] The Service Fabric Actors runtime emits some [events and performance counters related to actor methods](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters). They are useful in diagnostics and performance monitoring.
+> [AZURE.TIP] Service Fabric Actors ランタイムは、[アクター メソッドに関連する一部のイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)を出力します。これらは、診断やパフォーマンスの監視に役立ちます。
 
 
-## <a name="debugging"></a>Debugging
+## デバッグ
 
-The Service Fabric tools for Visual Studio support debugging on your local machine. You can start a debugging session by hitting the F5 key. Visual Studio builds (if necessary) packages. It also deploys the application on the local Service Fabric cluster and attaches the debugger.
+Visual Studio 用の Service Fabric ツールは、ローカル マシンでのデバッグをサポートします。デバッグ セッションを開始するには、F5 キーを押します。(必要に応じて) Visual Studio でパッケージをビルドします。また、ローカルの Service Fabric クラスターにアプリケーションをデプロイし、デバッガーをアタッチします。
 
-During the deployment process, you can see the progress in the **Output** window.
+デプロイ プロセス中は、**[出力]** ウィンドウで進行状況を確認できます。
 
-![Service Fabric debugging output window][3]
+![Service Fabric デバッグ出力ウィンドウ][3]
 
 
-## <a name="next-steps"></a>Next steps
- - [How Reliable Actors use the Service Fabric platform](service-fabric-reliable-actors-platform.md)
- - [Actor state management](service-fabric-reliable-actors-state-management.md)
- - [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md)
- - [Actor API reference documentation](https://msdn.microsoft.com/library/azure/dn971626.aspx)
- - [Sample code](https://github.com/Azure/servicefabric-samples)
+## 次のステップ
+ - [Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)
+ - [アクターの状態管理](service-fabric-reliable-actors-state-management.md)
+ - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
+ - [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
+ - [コード サンプル](https://github.com/Azure/servicefabric-samples)
 
 
 <!--Image references-->
@@ -150,8 +140,4 @@ During the deployment process, you can see the progress in the **Output** window
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

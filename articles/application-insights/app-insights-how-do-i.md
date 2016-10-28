@@ -1,120 +1,119 @@
 <properties 
-    pageTitle="How do I ... in Application Insights" 
-    description="FAQ in Application Insights." 
-    services="application-insights" 
+	pageTitle="Application Insights での作業" 
+	description="Application Insights での FAQ。" 
+	services="application-insights" 
     documentationCenter=""
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="02/05/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="02/05/2016" 
+	ms.author="awills"/>
 
+# Application Insights での作業
 
-# <a name="how-do-i-...-in-application-insights?"></a>How do I ... in Application Insights?
+## 電子メールの受信
 
-## <a name="get-an-email-when-..."></a>Get an email when ...
+### サイトがダウンした場合の電子メール
 
-### <a name="email-if-my-site-goes-down"></a>Email if my site goes down
+[可用性 Web テスト](app-insights-monitor-web-app-availability.md)を設定します。
 
-Set an [availability web test](app-insights-monitor-web-app-availability.md).
+### サイトが過負荷になっている場合の電子メール
 
-### <a name="email-if-my-site-is-overloaded"></a>Email if my site is overloaded
-
-Set an [alert](app-insights-alerts.md) on **Server response time**. A threshold between 1 and 2 seconds should work.
+**サーバー応答時間**の[アラート](app-insights-alerts.md)を設定します。1 ～ 2 秒の間のしきい値で機能する必要があります。
 
 ![](./media/app-insights-how-do-i/030-server.png)
 
-Your app might also show signs of strain by returning failure codes. Set an alert on **Failed requests**.
+アプリがエラー コードを返すことによって負荷の兆候を示す場合もあります。**[失敗した要求]** でアラートを設定します。
 
-If you want to set an alert on **Server exceptions**, you might have to do [some additional setup](app-insights-asp-net-exceptions.md) in order to see data.
+**[サーバーの例外]** でアラートを設定する場合は、データを表示するために[追加セットアップ](app-insights-asp-net-exceptions.md)が必要になる場合があります。
 
-### <a name="email-on-exceptions"></a>Email on exceptions
+### 例外での電子メール
 
-1. [Set up exception monitoring](app-insights-asp-net-exceptions.md)
-2. [Set an alert](app-insights-alerts.md) on the Exception count metric
+1. [例外の監視を設定します](app-insights-asp-net-exceptions.md)
+2. 例外数メトリックに[アラートを設定](app-insights-alerts.md)します
 
 
-### <a name="email-on-an-event-in-my-app"></a>Email on an event in my app
+### アプリのイベントでの電子メール
 
-Let's suppose you'd like to get an email when a specific event occurs. Application Insights doesn't provide this facility directly, but it can [send an alert when a metric crosses a threshold](app-insights-alerts.md). 
+特定のイベントが発生したときに電子メールを受け取りたいものとします。Application Insights は直接この機能を提供しませんが、[メトリックがしきい値を超えたときにアラートを送信](app-insights-alerts.md)できます。
 
-Alerts can be set on [custom metrics](app-insights-api-custom-events-metrics.md#track-metric), though not custom events. Write some code to increase a metric when the event occurs:
+アラートは[カスタム メトリック](app-insights-api-custom-events-metrics.md#track-metric)には設定できますが、カスタム イベントには設定できません。イベントが発生したときにメトリックを増やすコードを記述します。
 
     telemetry.TrackMetric("Alarm", 10);
 
-or:
+または:
 
     var measurements = new Dictionary<string,double>();
     measurements ["Alarm"] = 10;
     telemetry.TrackEvent("status", null, measurements);
 
-Because alerts have two states, you have to send a low value when you consider the alert to have ended:
+アラートには 2 つの状態があるため、アラートを終了するときは低い値を送信する必要があります。
 
     telemetry.TrackMetric("Alarm", 0.5);
 
-Create a chart in [metric explorer](app-insights-metrics-explorer.md) to see your alarm:
+アラームを表示するには[メトリック エクスプローラー](app-insights-metrics-explorer.md)でグラフを作成します。
 
 ![](./media/app-insights-how-do-i/010-alarm.png)
 
-Now set an alert to fire when the metric goes above a mid value for a short period:
+メトリックが短時間中間値を超えたら発生するようにアラートを設定します。
 
 
 ![](./media/app-insights-how-do-i/020-threshold.png)
 
-Set the averaging period to the minimum. 
+平均計算期間を最小に設定します。
 
-You'll get emails both when the metric goes above and below the threshold.
+メトリックがしきい値を上回ったときと下回ったときの両方で、電子メールを受け取ります。
 
-Some points to consider:
+考慮すべき点:
 
-* An alert has two states ("alert" and "healthy"). The state is evaluated only when a metric is received.
-* An email is sent only when the state changes. This is why you have to send both high and low-value metrics. 
-* To evaluate the alert, the average is taken of the received values over the preceding period. This occurs every time a metric is received, so emails can be sent more frequently than the period you set.
-* Since emails are sent both on "alert" and "healthy", you might want to consider re-thinking your one-shot event as a two-state condition. For example, instead of a "job completed" event, have a "job in progress" condition, where you get emails at the start and end of a job.
+* アラートには、"警告" と "正常" の 2 つの状態があります。状態はメトリックを受信した場合にのみ評価されます。
+* 電子メールは状態が変化したときにのみ送信されます。これは、高い値と低い値の両方のメトリックを送信する必要がある理由です。 
+* アラートを評価するため、前の期間に受け取った値の平均が計算されます。これはメトリックを受信するたびに行われるので、設定した期間より頻繁に電子メールが送信される可能性があります。
+* 電子メールは "警告" と "正常" の両方で送信されるので、1 回限りのイベントを 2 つの状態として考え直すことができます。たとえば、"ジョブ完了" イベントの代わりに、"ジョブ進行中" という状態を考え、その場合はジョブの開始時と終了時に電子メールを受け取ります。
 
-### <a name="set-up-alerts-automatically"></a>Set up alerts automatically
+### アラートの自動設定
 
-[Use PowerShell to create new alerts](app-insights-alerts.md#set-alerts-by-using-powershell)
+[Use PowerShell to create new alerts (PowerShell を使用した新しいアラートの作成)](app-insights-alerts.md#set-alerts-by-using-powershell)
 
-## <a name="use-powershell-to-manage-application-insights"></a>Use PowerShell to Manage Application Insights
+## PowerShell を使用した Application Insights の管理
 
-* [Create new resources](app-insights-powershell-script-create-resource.md)
-* [Create new alerts](app-insights-alerts.md#set-alerts-by-using-powershell)
+* [新しいリソースの作成に関するページ](app-insights-powershell-script-create-resource.md)
+* [新しいアラートの作成に関するページ](app-insights-alerts.md#set-alerts-by-using-powershell)
 
-## <a name="application-versions-and-stamps"></a>Application versions and stamps
+## アプリケーションのバージョンとスタンプ
 
-### <a name="separate-the-results-from-dev,-test-and-prod"></a>Separate the results from dev, test and prod
+### 開発、テスト、および運用環境の結果を区分する
 
-* For different environmnents, set up different ikeys
-* For different stamps (dev, test, prod) tag the telemetry with different property values
+* さまざまな環境に、個別の iKey を設定します。
+* さまざまなスタンプ (開発、テスト、運用) のタグに、個別のプロパティ値を持つテレメトリを設定します。
 
-[Learn more](app-insights-separate-resources.md)
+[詳細情報](app-insights-separate-resources.md)
  
 
-### <a name="filter-on-build-number"></a>Filter on build number
+### ビルド番号でのフィルター処理
 
-When you publish a new version of your app, you'll want to be able to separate the telemetry from different builds.
+新しいバージョンのアプリを発行するときは、異なるビルドのテレメトリを区別する必要があります。
 
-You can set the Application Version property so that you can filter [search](app-insights-diagnostic-search.md) and [metric explorer](app-insights-metrics-explorer.md) results. 
+アプリケーション バージョン プロパティを設定することで、[検索](app-insights-diagnostic-search.md)および[メトリック エクスプローラー](app-insights-metrics-explorer.md)の結果をフィルター処理できます。
 
 
 ![](./media/app-insights-how-do-i/050-filter.png)
 
-There are several different methods of setting the Application Version property.
+アプリケーション バージョン プロパティを設定するには複数の方法があります。
 
-* Set directly:
+* 直接設定します。
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
 
-* Wrap that line in a [telemetry initializer](app-insights-api-custom-events-metrics.md#telemetry-initializers) to ensure that all TelemetryClient instances are set consistently.
+* その行を[テレメトリ初期化子](app-insights-api-custom-events-metrics.md#telemetry-initializers)にラップして、すべての TelemetryClient インスタンスが一貫して設定されるようにします。
 
-* [ASP.NET] Set the version in `BuildInfo.config`. The web module will pick up the version from the BuildLabel node. Include this file in your project and remember to set the Copy Always property in Solution Explorer.
+* [ASP.NET] `BuildInfo.config` でバージョンを設定します。Web モジュールは BuildLabel ノードからバージョンを取得します。このファイルをプロジェクトに追加し、ソリューション エクスプローラーで [常にコピーする] プロパティを設定します。
 
     ```XML
 
@@ -129,7 +128,7 @@ There are several different methods of setting the Application Version property.
     </DeploymentEvent>
 
     ```
-* [ASP.NET] Generate BuildInfo.config automatically in MSBuild. To do this, add a few lines to your .csproj file:
+* [ASP.NET] MSBuild で自動的に BuildInfo.config を生成します。そのためには、.csproj ファイルに数行を追加します。
 
     ```XML
 
@@ -138,79 +137,79 @@ There are several different methods of setting the Application Version property.
     </PropertyGroup> 
     ```
 
-    This generates a file called *yourProjectName*.BuildInfo.config. The Publish process renames it to BuildInfo.config.
+    これにより、*プロジェクト名*.BuildInfo.config という名前のファイルが生成されます。これは発行プロセスで BuildInfo.config という名前に変更されます。
 
-    The build label contains a placeholder (AutoGen_...) when you build with Visual Studio. But when built with MSBuild, it is populated with the correct version number.
+    Visual Studio でビルドすると、ビルド ラベルにはプレースホルダー (AutoGen\_...) が含まれます。一方、MSBuild でビルドすると、適切なバージョン番号が設定されます。
 
-    To allow MSBuild to generate version numbers, set the version like `1.0.*` in AssemblyReference.cs
+    MSBuild がバージョン番号を生成できるようにするには、AssemblyReference.cs で `1.0.*` のようなバージョンを設定します。
 
-## <a name="monitor-backend-servers-and-desktop-apps"></a>Monitor backend servers and desktop apps
+## バックエンド サーバーとデスクトップ アプリを監視する
 
-[Use the Windows Server SDK module](app-insights-windows-desktop.md).
+[Windows Server SDK モジュールを使用する](app-insights-windows-desktop.md)。
 
 
-## <a name="visualize-data"></a>Visualize data
+## データの視覚化
 
-#### <a name="dashboard-with-metrics-from-multiple-apps"></a>Dashboard with metrics from multiple apps
+#### 複数のアプリケーションのメトリックを使用したダッシュボード
 
-* In [Metric Explorer](app-insights-metrics-explorer.md), customize your chart and save it as a favorite. Pin it to the Azure dashboard.
+* [Metric エクスプローラー](app-insights-metrics-explorer.md)でグラフをカスタマイズし、お気に入りとして保存します。Azure ダッシュボードにピン留めします。
 * 
 
-#### <a name="dashboard-with-data-from-other-sources-and-application-insights"></a>Dashboard with data from other sources and Application Insights
+#### 他のソースや Application Insights からのデータのあるダッシュボード
 
-* [Export telemetry to Power BI](app-insights-export-power-bi.md). 
+* [テレメトリを Power BI にエクスポートします](app-insights-export-power-bi.md)。 
 
-Or
+または
 
-* Use SharePoint as your dashboard, displaying data in SharePoint web parts. [Use continuous export and Stream Analytics to export to SQL](app-insights-code-sample-export-sql-stream-analytics.md).  Use PowerView to examine the database, and create a SharePoint web part for PowerView.
+* SharePoint をダッシュボードとして使用して、SharePoint Web パーツにデータを表示します。[連続エクスポートと Stream Analytics を使用して SQL にエクスポートします](app-insights-code-sample-export-sql-stream-analytics.md)。PowerView を使用してデータベースを確認し、PowerView の SharePoint Web パーツを作成します。
 
 
-### <a name="complex-filtering,-segmentation-and-joins"></a>Complex filtering, segmentation and joins
+### 複雑なフィルター処理、セグメント化、結合
 
-* [Use continuous export and Stream Analytics to export to SQL](app-insights-code-sample-export-sql-stream-analytics.md).  Use PowerView to examine the database.
+* [連続エクスポートと Stream Analytics を使用して SQL にエクスポートします](app-insights-code-sample-export-sql-stream-analytics.md)。PowerView を使用してデータベースを確認します。
 
 <a name="search-specific-users"></a>
-### <a name="filter-out-anonymous-or-authenticated-users"></a>Filter out anonymous or authenticated users
+### 匿名ユーザーまたは認証済みユーザーのフィルター処理
 
-If your users sign in, you can set the [authenticated user id](app-insights-api-custom-events-metrics.md#authenticated-users). (It doesn't happen automatically.) 
+ユーザーがサインインしたら、[認証されたユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を設定できます。(自動的には設定されません。)
 
-You can then:
+次に以下のことを行えます。
 
-* Search on specific user ids
+* 特定のユーザー ID で検索
 
 ![](./media/app-insights-how-do-i/110-search.png)
 
-* Filter metrics to either anonymous or authenticated users
+* 匿名ユーザーまたは認証済みユーザーに対するメトリックのフィルター処理
 
 ![](./media/app-insights-how-do-i/115-metrics.png)
 
-## <a name="modify-property-names-or-values"></a>Modify property names or values
+## プロパティ名または値を変更する
 
-Create a [filter](app-insights-api-filtering-sampling.md#filtering). This lets you modify or filter telemetry before it is sent from your app to Application Insights.
+[フィルター](app-insights-api-filtering-sampling.md#filtering)を作成します。これにより、アプリから Application Insights にテレメトリが送信される前に、テレメトリの変更またはフィルター処理ができるようになります。
 
-## <a name="list-specific-users-and-their-usage"></a>List specific users and their usage
+## 特定のユーザーとその使用状況を一覧表示する
 
-If you just want to [search for specific users](#search-specific-users), you can set the [authenticated user id](app-insights-api-custom-events-metrics.md#authenticated-users).
+[特定のユーザーのみを検索](#search-specific-users)するために、[認証されたユーザー ID](app-insights-api-custom-events-metrics.md#authenticated-users) を設定できます。
 
-If you want a list of users with data such as what pages they look at or how often they log in, you have two options:
+ユーザーが表示するページやログインの頻度についてユーザーを一覧表示するには、2 つのオプションがあります。
 
-* [Set authenticated user id](app-insights-api-custom-events-metrics.md#authenticated-users), [export to a database](app-insights-code-sample-export-sql-stream-analytics.md) and use suitable tools to analyze your user data there.
-* If you have only a small number of users, send custom events or metrics, using the data of interest as the metric value or event name, and setting the user id as a property. To analyze page views, replace the standard JavaScript trackPageView call. To analyze server-side telemetry, use a telemetry initializer to add the user id to all server telemetry. You can then filter and segment metrics and searches on the user id.
-
-
-## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Reduce traffic from my app to Application Insights
-
-* In [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md), disable any modules you don't need, such the performance counter collector.
-* Use [Sampling and filtering](app-insights-api-filtering-sampling.md) at the SDK.
-* In your web pages, Limit the number of Ajax calls reported for every page view. In the script snippet after `instrumentationKey:...` , insert: `,maxAjaxCallsPerView:3` (or a suitable number).
-* If you're using [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric), compute the aggregate of batches of metric values before sending the result. There's an overload of TrackMetric() that provides for that.
+* [認証されたユーザー ID を設定](app-insights-api-custom-events-metrics.md#authenticated-users)し、[データベースにエクスポート](app-insights-code-sample-export-sql-stream-analytics.md)し、適切なツールを使用してユーザー データを分析します。
+* ユーザー数が少ない場合は、メトリック値またはイベント名として関心のあるデータを使用し、ユーザー ID をプロパティとして設定して、カスタム イベントまたはメトリックを送信します。ページ ビューを分析するには、標準の JavaScript trackPageView 呼び出しを置き換えます。サーバー側のテレメトリを分析するには、テレメトリ初期化子を使用して、ユーザー ID をすべてのサーバー テレメトリに追加します。次に、ユーザー ID を基に、メトリックや検索結果をフィルター処理および細分化します。
 
 
-Learn more about [pricing and quotas](app-insights-pricing.md).
+## アプリから Application Insights へのトラフィックの削減
 
-## <a name="disable-telemetry"></a>Disable telemetry
+* [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) で不要なモジュール (パフォーマンス カウンター コレクターなど) を無効にします。
+* SDK で、[サンプリングとフィルター処理](app-insights-api-filtering-sampling.md)を使用します。
+* Web ページで、各ページ ビューで報告される AJAX 呼び出しの数を制限します。`instrumentationKey:...` の後のスクリプト スニペットに、`,maxAjaxCallsPerView:3` (または適切な数値) を挿入します。
+* [TrackMetric](app-insights-api-custom-events-metrics.md#track-metric) を使用する場合は、結果を送信する前にメトリック値のバッチの集計を計算します。これに対して提供される TrackMetric() のオーバーロードを考慮します。
 
-To **dynamically stop and start** the collection and transmission of telemetry from the server:
+
+詳細については、[価格とクォータ](app-insights-pricing.md)に関するページを参照してください。
+
+## 遠隔測定を無効にする
+
+サーバーからテレメトリの収集と送信を**動的に停止および開始**するには:
 
 ```
 
@@ -221,31 +220,25 @@ To **dynamically stop and start** the collection and transmission of telemetry f
 
 
 
-To **disable selected standard collectors** - for example, performance counters, HTTP requests, or dependencies - delete or comment out the relevant lines in [ApplicationInsights.config](app-insights-api-custom-events-metrics.md). You could do this, for example, if you want to send your own TrackRequest data.
+**選択されている標準のコレクターを無効にする**には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](app-insights-api-custom-events-metrics.md) 内の該当する行を削除するか、またはコメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
 
 
-## <a name="view-system-performance-counters"></a>View system performance counters
+## システム パフォーマンス カウンターの表示
 
-Among the metrics you can show in metrics explorer are a set of system performance counters. There's a predefined blade titled **Servers** that displays several of them.
+メトリックス エクスプローラーに表示できるメトリックには、一連のシステム パフォーマンス カウンターがあります。事前定義された**サーバー**というブレードに、それらのいくつかが表示されます。
 
-![Open your Application Insights resource and click Servers](./media/app-insights-how-do-i/121-servers.png)
+![Application Insights リソースを開いて、[サーバー] をクリック](./media/app-insights-how-do-i/121-servers.png)
 
-### <a name="if-you-see-no-performance-counter-data"></a>If you see no performance counter data
+### パフォーマンス カウンターのデータが表示されない場合
 
-* **IIS server** on your own machine or on a VM. [Install Status Monitor](app-insights-monitor-performance-live-website-now.md). 
-* **Azure web site** - we don't support performance counters yet. There are several metrics you can get as a standard part of the Azure web site control panel.
-* **Unix server** - [Install collectd](app-insights-java-collectd.md)
+* 自身のコンピューターまたは VM の**IIS サーバー**の場合。[Status Monitor をインストール](app-insights-monitor-performance-live-website-now.md)します。 
+* **Azure の Web サイト**の場合。パフォーマンス カウンターにまだ対応していません。Azure Web サイトのコントロール パネルの標準パーツとして取得できるメトリックがいくつか用意されています。
+* **Unix サーバー**の場合。[collectd をインストールします](app-insights-java-collectd.md)。
 
-### <a name="to-display-more-performance-counters"></a>To display more performance counters
+### 表示するパフォーマンス カウンターの数を増やすには
 
-* First, [add a new chart](app-insights-metrics-explorer.md) and see if the counter is in the basic set that we offer.
-* If not, [add the counter to the set collected by the performance counter module](app-insights-web-monitor-performance.md#system-performance-counters).
+* 最初に、[新しいグラフを追加](app-insights-metrics-explorer.md)し、提供されている基本的なセットにカウンターが含まれているかどうかを確認します。
+* 含まれていない場合は、[パフォーマンス カウンター モジュールによって収集されたセットにカウンターを追加](app-insights-web-monitor-performance.md#system-performance-counters)します。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0504_2016-->

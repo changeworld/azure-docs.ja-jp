@@ -1,74 +1,67 @@
 <properties
-    pageTitle="Create a Logic App | Microsoft Azure"
-    description="Learn how to create a Logic App connecting SaaS services"
-    authors="jeffhollan"
-    manager="dwrede"
-    editor=""
-    services="logic-apps"
-    documentationCenter=""/>
+	pageTitle="ロジック アプリを作成する | Microsoft Azure"
+	description="SaaS サービスを接続するロジック アプリの作成方法について説明します。"
+	authors="jeffhollan"
+	manager="dwrede"
+	editor=""
+	services="logic-apps"
+	documentationCenter=""/>
 
 <tags
-    ms.service="logic-apps"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="10/18/2016"
-    ms.author="jehollan"/>
+	ms.service="logic-apps"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="07/16/2016"
+	ms.author="jehollan"/>
 
+# SaaS サービスを接続する新しいロジック アプリを作成します。
 
-# <a name="create-a-new-logic-app-connecting-saas-services"></a>Create a new logic app connecting SaaS services
+このトピックでは、初めての方に向けて [Azure Logic Apps](app-service-logic-what-are-logic-apps.md) の使い方を簡単に説明します。電子メール アドレス宛てに興味深いツイートを送信できる簡単なワークフローを紹介します。
 
-This topic demonstrates how, in just a few minutes, you can get started with [Azure Logic Apps](app-service-logic-what-are-logic-apps.md). We'll walk through a simple workflow that lets you send interesting tweets to your email.
+このシナリオを使用するには、以下が必要です。
 
-To use this scenario, you need:
+- Azure サブスクリプション
+- Twitter アカウント
+- Outlook.com またはホストされている Office 365 のメールボックス
 
-- An Azure subscription
-- A Twitter account
-- A Outlook.com or hosted Office 365 mailbox
+## ツイートを電子メールで送信する新しいロジック アプリを作成する
 
-## <a name="create-a-new-logic-app-to-email-you-tweets"></a>Create a new logic app to email you tweets
+1. [Azure ポータルのダッシュボード](https://portal.azure.com)で、**[新規]** を選択します。
+2. 検索バーで "logic app" を検索し、**[Logic App]** を選択します。**[新規]**、**[Web + モバイル]**、**[Logic App]** を順に選択してもかまいません。
+3. ロジック アプリの名前を入力し、場所とリソース グループを選択して、**[作成]** を選択します。**[ダッシュボードにピン留めする]** を選択した場合、ロジック アプリがデプロイ後に自動的に開きます。
+4. ロジック アプリを初めて開いたときは、どのテンプレートから開始するかを選択できます。ここでは、**[Blank Logic App (空のロジック アプリ)]** をクリックして最初から作成します。
+1. 最初に作成する必要があるアイテムは、トリガーです。これはロジック アプリを起動するイベントです。トリガー検索ボックスで "**twitter**" を検索して選択します。
+7. ここでは、トリガーに設定する検索語句を入力します。**[頻度]** と **[間隔]** によってロジック アプリで新しいツイートを確認する頻度が決まります (その期間中のすべてのツイートが返されます)。![Twitter の検索](./media/app-service-logic-create-a-logic-app/twittersearch.png)
 
-1. On the [Azure portal dashboard](https://portal.azure.com), select **New**. 
-2. In the search bar, search for 'logic app', and then select **Logic App**. You can also select **New**, **Web + Mobile**, and select **Logic App**. 
-3. Enter a name for your logic app, select a location, resource group, and select **Create**.  If you select **Pin to Dashboard** the logic app will automatically open once deployed.  
-4. After opening your logic app for the first time you can select from a template to start.  For now click **Blank Logic App** to build this from scratch. 
-1. The first item you need to create is the trigger.  This is the event that will start your logic app.  Search for **twitter** in the trigger search box, and select it.
-7. Now you'll type in a search term to trigger on.  The **Frequency** and **Interval** will determine how often your logic app will check for new tweets (and return all tweets during that time span).
-    ![Twitter search](./media/app-service-logic-create-a-logic-app/twittersearch.png)
+5. **[新しいステップ]** を選択して、**[アクションの追加]** または **[条件の追加]** を選択します。
+6. **[アクションの追加]** を選択すると、[利用可能なコネクタ](../connectors/apis-list.md)から検索してアクションを選択することができます。たとえば、**[Outlook.com - Send Email (Outlook.com - 電子メールの送信)]** を選択すると、outlook.com のアドレスから電子メールを送信できます。![アクション](./media/app-service-logic-create-a-logic-app/actions.png)
 
-5. Select the **New step** button, and then choose **Add an action** or **Add a condition**
-6. When you select **Add an Action**, you can search from the [available connectors](../connectors/apis-list.md) to choose an action. For example, you can select **Outlook.com - Send Email** to send mail from an outlook.com address:  
-    ![Actions](./media/app-service-logic-create-a-logic-app/actions.png)
+7. 次は、電子メールに使用するパラメーターを入力する必要があります。![パラメーター](./media/app-service-logic-create-a-logic-app/parameters.png)
 
-7. Now you have to fill out the parameters for the email you want:  ![Parameters](./media/app-service-logic-create-a-logic-app/parameters.png)
+8. 最後に **[保存]** を選択すると、ロジック アプリがライブ状態となります。
 
-8. Finally, you can select **Save** to make your logic app live.
+## 作成後にロジック アプリを管理する
 
-## <a name="manage-your-logic-app-after-creation"></a>Manage your logic app after creation
+ここまでの手順で、ロジック アプリが実行できるようになりました。このロジック アプリは、入力した検索語句を含むツイートを定期的に確認します。検索語句に一致するツイートが検出されると、電子メールを送信します。ここでは、最後にアプリを無効にしたり、動作内容を確認したりする方法を見ていきます。
 
-Now your logic app is up and running. It will periodically check for tweets with the search term entered. When it finds a matching tweet, it will send you an email. Finally, you'll see how to disable the app, or see how it’s doing.
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 
-1. Go to the [Azure Portal](https://portal.azure.com)
+1. 画面左側の **[参照]** をクリックし、**[Logic Apps]** を選択します。
 
-1. Click **Browse** on the left side of the screen and select **Logic Apps**.
+2. 新たに作成したロジック アプリをクリックすると、現在の状態や全般的な情報を確認できます。
 
-2. Click the new logic app that you just created to see current status and general information.
+3. 新しいロジック アプリを編集するには、**[編集]** をクリックします。
 
-3. To edit your new logic app, click **Edit**.
+5. アプリを無効にするには、コマンド バーで **[無効化]** をクリックします。
 
-5. To turn off the app, click **Disable** in the command bar.
+1. ロジック アプリがいつ実行されているかを監視するには、実行とトリガーの履歴を表示します。**[更新]** をクリックすると、最新のデータを表示できます。
 
-1. View run and trigger histories to monitor when your logic app is running.  You can click **Refresh** to see the latest data.
-
-In less than 5 minutes you were able to set up a simple logic app running in the cloud. To learn more about using Logic Apps features, see [Use logic app features]. To learn about the Logic App definitions themselves, see [author Logic App definitions](app-service-logic-author-definitions.md).
+クラウド上で実行できる簡単なロジック アプリを 5 分もしないうちに作成できました。Logic Apps の機能の使用について詳しくは、「[ロジック アプリの機能を使用する]」をご覧ください。ロジック アプリの定義自体の詳細については、「[ロジック アプリの定義を作成する](app-service-logic-author-definitions.md)」を参照してください。
 
 <!-- Shared links -->
 [Azure portal]: https://portal.azure.com
-[Use logic app features]: app-service-logic-create-a-logic-app.md
+[ロジック アプリの機能を使用する]: app-service-logic-create-a-logic-app.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

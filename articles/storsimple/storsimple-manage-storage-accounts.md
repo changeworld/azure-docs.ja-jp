@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Manage your StorSimple storage account | Microsoft Azure"
-   description="Explains how you can use the StorSimple Manager Configure page to add, edit, delete, or rotate the security keys for a storage account."
+   pageTitle="StorSimple ストレージ アカウントの管理 | Microsoft Azure"
+   description="StorSimple Manager の [構成] ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,148 +15,143 @@
    ms.date="04/29/2016"
    ms.author="v-sharos" />
 
+# StorSimple Manager サービスを使用してストレージ アカウントを管理する
 
-# <a name="use-the-storsimple-manager-service-to-manage-your-storage-account"></a>Use the StorSimple Manager service to manage your storage account
+## 概要
 
-## <a name="overview"></a>Overview
+**[構成]** ページには、StorSimple Manager サービスで作成できるすべてのグローバル サービス パラメーターが表示されます。これらのパラメーターはこのサービスに接続されているすべてのデバイスに適用でき、次のものが含まれます。
 
-The **Configure** page presents all the global service parameters that can be created in the StorSimple Manager service. These parameters can be applied to all the devices connected to the service, and include:
+- ストレージ アカウント 
+- 帯域幅テンプレート 
+- アクセス制御レコード 
 
-- Storage accounts 
-- Bandwidth templates 
-- Access control records 
+このチュートリアルでは、**[構成]** ページを使用してストレージ アカウントを追加、編集、または削除する方法や、ストレージ アカウントのセキュリティ キーのローテーションを行う方法について説明します。
 
-This tutorial explains how you can use the **Configure** page to add, edit, or delete storage accounts, or rotate the security keys for a storage account.
+ ![[構成] ページ](./media/storsimple-manage-storage-accounts/HCS_ConfigureService.png)
 
- ![Configure page](./media/storsimple-manage-storage-accounts/HCS_ConfigureService.png)  
+ストレージ アカウントには、クラウド サービス プロバイダーを使用してストレージ アカウントにアクセスするためにデバイスで使用される資格情報が含まれます。Microsoft Azure ストレージ アカウントの場合、これらはアカウント名やプライマリ アクセス キーなどの資格情報です。
 
-Storage accounts contain the credentials that the device uses to access your storage account with your cloud service provider. For Microsoft Azure storage accounts, these are credentials such as the account name and the primary access key. 
+**[構成]** ページには、課金サブスクリプションに対して作成されるすべてのストレージ アカウントが、次の情報を含む表形式で表示されます。
 
-On the **Configure** page, all storage accounts that are created for the billing subscription are displayed in a tabular format containing the following information:
+- **[名前]** - アカウントの作成時に割り当てられた一意の名前。
+- **[SSL が有効]** - SSL が有効で、デバイスとクラウドの間の通信がセキュア チャネル経由かどうか。
+- **[使用元]** - ストレージ アカウントを使用しているボリュームの数。
 
-- **Name** – The unique name assigned to the account when it was created.
-- **SSL enabled** – Whether the SSL is enabled and device-to-cloud communication is over the secure channel.
-- **Used by** – The number of volumes using the storage account.
+**[構成]** ページで実行できるストレージ アカウント関連の最も一般的なタスクは、次のとおりです。
 
-The most common tasks related to storage accounts that can be performed on the **Configure** page are:
+- ストレージ アカウントの追加 
+- ストレージ アカウントの編集 
+- ストレージ アカウントの削除 
+- ストレージ アカウントのキー ローテーション 
 
-- Add a storage account 
-- Edit a storage account 
-- Delete a storage account 
-- Key rotation of storage accounts 
+## ストレージ アカウントの種類
 
-## <a name="types-of-storage-accounts"></a>Types of storage accounts
+StorSimple デバイスで使用できるストレージ アカウントには、次の 3 つの種類があります。
 
-There are three types of storage accounts that can be used with your StorSimple device.
+- **自動生成されたストレージ アカウント** - 名前のとおり、このストレージ アカウントは、サービスが最初に作成されるときに自動的に生成されます。このストレージ アカウントの作成方法の詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」の「[手順 1. 新しいサービスを作成する](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service)」をご覧ください。 
+- **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。このストレージ アカウントの作成方法の詳細については、[Azure ストレージ アカウント](../storage/storage-create-storage-account.md)に関するページを参照してください。 
+- **サービス サブスクリプションの外部のストレージ アカウント** - これらは、サービスに関連付けられていない、サービスが作成される前に存在していた可能性のある Azure ストレージ アカウントです。
 
-- **Auto-generated storage accounts** – As the name suggests, this type of storage account is automatically generated when the service is first created. To learn more about how this storage account is created, see [Step 1: Create a new service](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service) in [Deploy your on-premises StorSimple device](storsimple-deployment-walkthrough.md). 
-- **Storage accounts in the service subscription** – These are the Azure storage accounts that are associated with the same subscription as that of the service. To learn more about how these storage accounts are created, see [About Azure Storage Accounts](../storage/storage-create-storage-account.md). 
-- **Storage accounts outside of the service subscription** – These are the Azure storage accounts that are not associated with your service and likely existed before the service was created.
+## ストレージ アカウントの追加
 
-## <a name="add-a-storage-account"></a>Add a storage account
+ストレージ アカウントを追加するには、一意の表示名と、(指定されたクラウド サービス プロバイダーによって) ストレージ アカウントにリンクされているアクセス資格情報を指定します。SSL (Secure Sockets Layer) モードを有効にして、デバイスとクラウド間のネットワーク通信用にセキュリティで保護されたチャネルを作成することもできます。
 
-You can add a storage account by providing a unique friendly name and access credentials that are linked to the storage account (with the specified cloud service provider). You also have the option of enabling the secure sockets layer (SSL) mode to create a secure channel for network communication between your device and the cloud.
+特定のクラウド サービス プロバイダーに対して複数のアカウントを作成できます。ただし、ストレージ アカウントを作成した後はクラウド サービス プロバイダーを変更できないことに注意してください。
 
-You can create multiple accounts for a given cloud service provider. Be aware, however, that after a storage account is created, you cannot change the cloud service provider.
+ストレージ アカウントの保存中、サービスは、クラウド サービス プロバイダーとの通信を試みます。この時点で、資格情報と指定したアクセス マテリアルが認証されます。ストレージ アカウントは、認証が成功した場合にのみ作成されます。認証に失敗した場合は、適切なエラー メッセージが表示されます。
 
-While the storage account is being saved, the service attempts to communicate with your cloud service provider. The credentials and the access material that you supplied will be authenticated at this time. A storage account is created only if the authentication succeeds. If the authentication fails, then an appropriate error message will be displayed.
+Azure ポータルで作成された Resource Manager のストレージ アカウントは StorSimple でもサポートされます。ボリューム コンテナーを作成する際、Resource Manager のストレージ アカウントは、ドロップダウン リストに選択対象として表示されません。Azure クラシック ポータルで作成されたストレージ アカウントだけが表示されます。次に説明するストレージ アカウントの追加手順に従って、Resource Manager のストレージ アカウントを追加する必要があります。
 
-Resource Manager storage accounts created in Azure portal are also supported with StorSimple. The Resource Manager storage accounts will not show up in the drop-down list for selection when trying to create a volume container, only the storage accounts created in the Azure classic portal will be displayed. Resource Manager storage accounts will need to be added using the procedure to add a storage account described below.
-
-> [AZURE.NOTE] The procedure for adding a storage account differs based on the StorSimple software version you are using. Be sure to follow the correct procedure for your StorSimple version.
+> [AZURE.NOTE] ストレージ アカウントを追加する手順は、使用する StorSimple ソフトウェアのバージョンによって異なります。使用する StorSimple のバージョンの手順に必ず従ってください。
 
 
 [AZURE.INCLUDE [add-a-storage-account-update1](../../includes/storsimple-configure-new-storage-account-u1.md)]
 
 [AZURE.INCLUDE [add-a-storage-account](../../includes/storsimple-configure-new-storage-account.md)]
 
-## <a name="edit-a-storage-account"></a>Edit a storage account
+## ストレージ アカウントの編集
 
-You can edit a storage account that is used by a volume container. If you edit a storage account that is currently in use, the only field available to modify is the access key for the storage account. You can supply the new storage access key and save the updated settings.
+ボリューム コンテナーで使用されるストレージ アカウントを編集できます。現在使用中のストレージ アカウントを編集する場合、変更できるフィールドは、ストレージ アカウントのアクセス キーに限られます。新しいストレージ アクセス キーを指定し、更新された設定を保存できます。
 
-#### <a name="to-edit-a-storage-account"></a>To edit a storage account
+#### ストレージ アカウントを編集するには
 
-1. On the service landing page, select your service, double-click the service name, and then click **Configure**.
+1. サービスのランディング ページでサービスを選択し、サービス名をダブルクリックします。**[構成]** をクリックします。
 
-2. Click **Add/Edit Storage Accounts**.
+2. **[ストレージ アカウントの追加/編集]** をクリックします。
 
-3. In the **Add/Edit Storage Accounts** dialog box:
+3. **[ストレージ アカウントの追加/編集]** ダイアログ ボックスで、次の操作を行います。
 
-  1. In the drop-down list of **Storage Accounts**, choose an existing account that you would like to modify. This could also include the storage accounts that were automatically generated when the service was first created.
-  2. If necessary, you can modify the **Enable SSL Mode** selection.
-  3. You can choose to rotate your storage account access keys. See [Key rotation of storage accounts](#key-rotation-of-storage-accounts) for more information about how to perform key rotation.
-  4. Click the check icon ![check icon](./media/storsimple-manage-storage-accounts/HCS_CheckIcon.png) to save the settings. The settings will be updated on the **Configure** page. Click **Save** to save the newly updated settings.
+  1. **[ストレージ アカウント]** ボックスの一覧で、変更する既存のアカウントを選択します。これには、サービスを最初に作成したときに自動的に生成されたストレージ アカウントも含まれます。
+  2. 必要に応じて、**[SSL モードを有効にする]** の設定を変更できます。
+  3. ストレージ アカウント アクセス キーのローテーションを行うことを選択できます。キーのローテーションを行う方法の詳細については、「[ストレージ アカウントのキー ローテーション](#key-rotation-of-storage-accounts)」を参照してください。
+  4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-storage-accounts/HCS_CheckIcon.png) をクリックして、設定を保存します。**[構成]** ページの設定が更新されます。**[保存]** をクリックして、新しく更新された設定を保存します。
 
-     ![Edit a storage account](./media/storsimple-manage-storage-accounts/HCs_AddEditStorageAccount.png)
+     ![ストレージ アカウントの編集](./media/storsimple-manage-storage-accounts/HCs_AddEditStorageAccount.png)
   
-## <a name="delete-a-storage-account"></a>Delete a storage account
+## ストレージ アカウントの削除
 
-> [AZURE.IMPORTANT] You can delete a storage account only if it is not used by a volume container. If a storage account is being used by a volume container, first delete the volume container and then delete the associated storage account.
+> [AZURE.IMPORTANT] ストレージ アカウントは、ボリューム コンテナーで使用されていない場合にのみ削除できます。ストレージ アカウントがボリューム コンテナーで使用されている場合は、最初にボリューム コンテナーを削除し、次に関連するストレージ アカウントを削除します。
 
-#### <a name="to-delete-a-storage-account"></a>To delete a storage account
+#### ストレージ アカウントを削除するには
 
-1. On the StorSimple Manager service landing page, select your service, double-click the service name, and then click **Configure**.
+1. StorSimple Manager サービスのランディング ページでサービスを選択し、サービス名をダブルクリックします。**[構成]** をクリックします。
 
-2. In the tabular list of storage accounts, hover over the account that you wish to delete.
+2. ストレージ アカウントの表形式のリストで、削除するアカウントにマウス ポインターを合わせます。
 
-3. A delete icon (**x**) will appear in the extreme right column for that storage account. Click the **x** icon to delete the credentials.
+3. そのストレージ アカウントの右端の列に削除アイコン (**[x]**) が表示されます。資格情報を削除するために、**[x]** アイコンをクリックします。
 
-4. When prompted for confirmation, click **Yes** to continue with the deletion. The tabular listing will be updated to reflect the changes.
+4. 確認を求めるメッセージが表示されたら、**[はい]** をクリックして削除操作を続行します。表形式のリストが更新され、変更が反映されます。
 
-## <a name="key-rotation-of-storage-accounts"></a>Key rotation of storage accounts
+## ストレージ アカウントのキー ローテーション
 
-For security reasons, key rotation is often a requirement in data centers. 
+セキュリティ上の理由から、データ センターではキー ローテーションが必要になることがよくあります。
 
-> [AZURE.NOTE] The following key rotation information and the rotation procedure apply to Microsoft Azure storage accounts only. If you are using another cloud service provider, you can manage storage account keys through that provider's dashboard.
+> [AZURE.NOTE] 次のキー ローテーション情報と交代手順は、Microsoft Azure ストレージ アカウントのみに適用されます。別のクラウド サービス プロバイダーを使用している場合は、そのプロバイダーのダッシュ ボードからストレージ アカウント キーを管理できます。
  
-Each Microsoft Azure subscription can have one or more associated storage accounts. The access to these accounts is controlled by the subscription and access keys for each storage account. 
+ストレージ アカウントは、各 Microsoft Azure サブスクリプションにつき 1 つまたは複数作成できます。これらのアカウントへのアクセスは、各ストレージ アカウントのサブスクリプションとアクセス キーによって制御されます。
 
-When you create a storage account, Microsoft Azure generates two 512-bit storage access keys that are used for authentication when the storage account is accessed. Having two storage access keys allows you to regenerate the keys with no interruption to your storage service or access to that service. The key that is currently in use is the *primary* key and the backup key is referred to as the *secondary* key. One of these two keys must be supplied when your Microsoft Azure StorSimple device accesses your cloud storage service provider.
+ストレージ アカウントを作成するときに、Microsoft Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。2 つのストレージ アクセス キーがあると、ストレージ サービスまたはそのサービスへのアクセスを中断することなくキーを再生成できます。現在使用されているキーは *プライマリ* キーと呼ばれ、バックアップ キーは*セカンダリ* キーと呼ばれます。Microsoft Azure StorSimple デバイスがクラウド ストレージ サービス プロバイダーにアクセスするときは、これら 2 つのキーのどちらかを指定する必要があります。
 
-## <a name="what-is-key-rotation?"></a>What is key rotation?
+## キーのローテーションとは
 
-Typically, applications use only one of the keys to access your data. After a certain period of time, you can have your applications switch over to using the second key. After you have switched your applications to the secondary key, you can retire the first key and then generate a new key. Using the two keys this way allows your applications access to the data without incurring any downtime.
+通常、アプリケーションは、キーの 1 つだけを使用してデータにアクセスします。一定の期間が経過した後、アプリケーションで使用するキーを 2 番目のキーに切り替えることができます。アプリケーションを 2 番目のキーに切り替えた後、最初のキーを廃棄して新しいキーを生成できます。2 つのキーをこの方法で使用することにより、アプリケーションはダウンタイムなしでデータにアクセスできます。
 
-The storage account keys are always stored in the service in an encrypted form. However, these can be reset via the StorSimple Manager service. The service can get the primary key and secondary key for all the storage accounts in the same subscription, including accounts created in the Storage service as well as the default storage accounts generated when the StorSimple Manager service service was first created. The StorSimple Manager service service will always get these keys from the Azure classic portal and then store them in an encrypted manner.
+ストレージ アカウント キーは、常に、暗号化された形式でサービスに格納されます。ただし、これらは、StorSimple Manager サービスを使用してリセットできます。このサービスは、Storage サービスで作成されたアカウントや、StorSimple Manager サービスが最初に作成されたときに生成された既定のストレージ アカウントなど、同じサブスクリプション内のすべてのストレージ アカウントに対してプライマリ キーとセカンダリ キーを取得できます。StorSimple Manager サービスは常に、Azure クラシック ポータルからこれらのキーを取得し、暗号化して格納します。
 
-## <a name="rotation-workflow"></a>Rotation workflow
+## ローテーションのワークフロー
 
-A Microsoft Azure administrator can regenerate or change the primary or secondary key by directly accessing the storage account (via the Microsoft Azure Storage service). The StorSimple Manager service does not see this change automatically.
+Microsoft Azure 管理者は、(Microsoft Azure Storage サービス経由で) ストレージ アカウントに直接アクセスすることによって、プライマリ キーまたはセカンダリ キーを再生成または変更できます。StorSimple Manager サービスは、この変更を自動的に認識しません。
 
-To inform the StorSimple Manager service of the change, you will need to access the StorSimple Manager service, access the storage account, and then synchronize the primary or secondary key (depending on which one was changed). The service then gets the latest key, encrypts the keys, and sends the encrypted key to the device.
+StorSimple Manager サービスにこの変更を認識させるには、StorSimple Manager サービスにアクセスし、ストレージ アカウントにアクセスし、(変更されたキーに応じて) プライマリ キーまたはセカンダリ キーを同期する必要があります。その後、サービスは最新のキーを取得し、キーを暗号化して、デバイスに送信します。
 
-#### <a name="to-synchronize-keys-for-storage-accounts-in-the-same-subscription-as-the-service-(azure-only)"></a>To synchronize keys for storage accounts in the same subscription as the service (Azure only)
+#### サービスと同じサブスクリプション内のストレージ アカウントのキーを同期するには (Azure のみ)
 
-1. On the **Services** page, click the **Configure** tab.
+1. **[サービス]** ページで、**[構成]** タブをクリックします。
 
-2. Click **Add/Edit Storage Accounts**.
+2. **[ストレージ アカウントの追加/編集]** をクリックします。
 
-3. In the dialog box, do the following:
+3. ダイアログ ボックスで、次の操作を行います。
 
-  1. Select the storage account with the key that you want to synchronize. The storage account keys are encrypted when they are displayed.
-  2. In the StorSimple Manager service, you need to update the key that was previously changed in the Microsoft Azure Storage service. If the primary access key was changed (regenerated), click **synchronize primary key**. If the secondary key was changed, click **synchronize secondary key**.
+  1. キーを同期するストレージ アカウントを選択します。ストレージ アカウント キーは表示されるときに暗号化されます。
+  2. StorSimple Manager サービスで、Microsoft Azure Storage サービスで以前に変更されたキーを更新する必要があります。プライマリ アクセス キーが変更 (再生成) されている場合は、**[プライマリ キーの同期]** をクリックします。セカンダリ キーが変更されている場合は、**[セカンダリ キーの同期]** をクリックします。
 
-    ![synchronize keys](./media/storsimple-manage-storage-accounts/HCS_KeyRotationStorageAccountSameSubscriptionAsService.png)
+    ![キーの同期](./media/storsimple-manage-storage-accounts/HCS_KeyRotationStorageAccountSameSubscriptionAsService.png)
 
-#### <a name="to-synchronize-keys-for-storage-accounts-outside-of-the-service-subscription"></a>To synchronize keys for storage accounts outside of the service subscription
+#### サービス サブスクリプションの外部のストレージ アカウントのキーを同期するには
 
-1. On the **Services** page, click the **Configure** tab.
+1. **[サービス]** ページで、**[構成]** タブをクリックします。
 
-2. Click **Add/Edit Storage Accounts**.
+2. **[ストレージ アカウントの追加/編集]** をクリックします。
 
-3. In the dialog box, do the following:
+3. ダイアログ ボックスで、次の操作を行います。
 
-  1. Select the storage account with the access key that you want to update.
-  2. You will need to update the storage access key in the StorSimple Manager service. In this case, you can see the storage access key. Enter the new key in the **Storage Account Access Key**y box. 
-  3. Save your changes. Your storage account access key should now be updated.
+  1. アクセス キーを更新するストレージ アカウントを選択します。
+  2. ストレージ アクセス キーは、StorSimple Manager サービスで更新する必要があります。この場合は、ストレージ アクセス キーを見ることができます。**[ストレージ アカウント アクセス キー]** ボックスに新しいキーを入力します。 
+  3. 変更を保存します。ストレージ アカウント アクセス キーが更新されます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn more about [StorSimple security](storsimple-security.md).
-- Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple のセキュリティの詳細](storsimple-security.md)
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0518_2016-->

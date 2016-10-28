@@ -2,7 +2,4 @@
 - [Linux cluster](../articles/hdinsight/hdinsight-hadoop-run-samples-linux.md)
 - [Windows cluster](../articles/hdinsight/hdinsight-run-samples.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

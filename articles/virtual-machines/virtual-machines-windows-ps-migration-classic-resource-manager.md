@@ -1,203 +1,198 @@
 <properties
-    pageTitle="Migrate to Resource Manager with PowerShell | Microsoft Azure"
-    description="This article walks through the platform-supported migration of IaaS resources from classic to Azure Resource Manager by using Azure PowerShell commands"
-    services="virtual-machines-windows"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="PowerShell を使用した Resource Manager への移行 |Microsoft Azure"
+	description="この記事では、Azure PowerShell コマンドを使用して、プラットフォームでサポートされているクラシックから Azure Resource Manager へ IaaS リソースを移行する方法について説明します"
+	services="virtual-machines-windows"
+	documentationCenter=""
+	authors="dlepow"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/16/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/16/2016"
+	ms.author="danlep"/>
 
+# Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrate IaaS resources from classic to Azure Resource Manager by using Azure PowerShell
+以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。以下の手順では、空欄に記入する手法でカスタム環境を移行します。コマンドを利用し、環境に合わせた値を変数 ("$" で始まる行) に入力します。
 
-These steps show you how to use Azure PowerShell commands to migrate infrastructure as a service (IaaS) resources from the classic deployment model to the Azure Resource Manager deployment model. These steps follow a fill-in-the-blanks approach for migrating your custom environment. Take the commands and substitute your own values for the variables (the lines that begin with "$").
+必要に応じて、[Azure コマンド ライン インターフェイス (Azure CLI)](virtual-machines-linux-cli-migration-classic-resource-manager.md) を使用してリソースを移行することもできます。
 
-If you want, you can also migrate resources by using the [Azure Command Line Interface (Azure CLI)](virtual-machines-linux-cli-migration-classic-resource-manager.md).
+サポートされる移行シナリオの背景については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)」を参照してください。詳細なガイダンスと移行のチュートリアルについては、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)」を参照してください。
 
-For background on supported migration scenarios, see [Platform-supported migration of IaaS resources from classic to Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md). For detailed guidance and a migration walkthrough, see [Technical deep dive on platform-supported migration from classic to Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md).
+## 手順 1: 移行を計画する
 
-## <a name="step-1:-plan-for-migration"></a>Step 1: Plan for migration
+ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。
 
-Here are a few best practices that we recommend as you evaluate migrating IaaS resources from classic to Resource Manager:
+- [機能と構成のうちでサポートされるものとサポートされないもの](virtual-machines-windows-migration-classic-resource-manager.md)に関するページをご覧ください。サポートされていない構成または機能を使用する仮想マシンがある場合、構成または機能のサポートが発表されるまで待つことをお勧めします。または、必要に応じて、その機能を削除するか、その構成を外して、移行を有効にします。
+-	インフラストラクチャとアプリケーションをデプロイする自動化スクリプトを今お持ちの場合は、これらのスクリプトを移行に使用して、同様のテスト設定を作成してみてください。または、Azure ポータルを使用してサンプル環境をセットアップすることもできます。
 
-- Read through the [supported and unsupported features and configurations](virtual-machines-windows-migration-classic-resource-manager.md). If you have virtual machines that use unsupported configurations or features, we recommend that you wait for the configuration/feature support to be announced. Alternatively, if it suits your needs, remove that feature or move out of that configuration to enable migration.
--   If you have automated scripts that deploy your infrastructure and applications today, try to create a similar test setup by using those scripts for migration. Alternatively, you can set up sample environments by using the Azure portal.
+>[AZURE.IMPORTANT]現在、仮想ネットワーク ゲートウェイ (サイト間、Azure ExpressRoute 、アプリケーション ゲートウェイ、ポイント対サイト) は、クラシックから Resource Manager への移行には対応していません。ゲートウェイが設定された従来の仮想ネットワークを移行するには、コミット操作を実行してネットワークを移動する前に、まずそのゲートウェイを削除する必要があります(準備手順はゲートウェイを削除しなくても実行できます)。 その後、移行が完了してから Azure Resource Manager のゲートウェイに再接続します。
 
->[AZURE.IMPORTANT]Virtual network gateways (site-to-site, Azure ExpressRoute, application gateway, point-to-site) are not currently supported for migration from classic to Resource Manager. To migrate a classic virtual network with a gateway, first remove the gateway before running a Commit operation to move the network. (You can run a Prepare step without deleting the gateway.) Then, after you complete the migration, reconnect the gateway in Azure Resource Manager.
+## 手順 2: Azure PowerShell の最新バージョンをインストールする
 
-## <a name="step-2:-install-the-latest-version-of-azure-powershell"></a>Step 2: Install the latest version of Azure PowerShell
+Azure PowerShell のインストールには、[PowerShell ギャラリー](https://www.powershellgallery.com/profiles/azure-sdk/)と [Web Platform Installer (WebPI)](http://aka.ms/webpi-azps) という 2 つの主なオプションがあります。WebPI は月次の更新プログラムを受け取ります。PowerShell ギャラリーは、継続的に更新プログラムを受け取ります。この記事は、Azure PowerShell バージョン 2.1.0 に基づいています。
 
-There are two main options to install Azure PowerShell: [PowerShell Gallery](https://www.powershellgallery.com/profiles/azure-sdk/) and [Web Platform Installer (WebPI)](http://aka.ms/webpi-azps). WebPI receives monthly updates. PowerShell Gallery receives updates on a continuous basis. This article is based on Azure PowerShell version 2.1.0.
+インストール指示については、「[Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)」を参照してください。
 
-For installation instructions, see [How to install and configure Azure PowerShell](../powershell-install-configure.md).
+## 手順 3: サブスクリプションを設定し、移行にサインアップする
 
-## <a name="step-3:-set-your-subscription-and-sign-up-for-migration"></a>Step 3: Set your subscription and sign up for migration
+まず PowerShell プロンプトを開始します。移行のシナリオの場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。
 
-First, start a PowerShell prompt. For migration scenarios, you need to set up your environment for both classic and Resource Manager.
+Resource Manager モデルの自分のアカウントにサインインします。
 
-Sign in to your account for the Resource Manager model.
+	Login-AzureRmAccount
 
-    Login-AzureRmAccount
+次のコマンドを使用して、利用可能なサブスクリプションを取得します。
 
-Get the available subscriptions by using the following command:
+	Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
 
-    Get-AzureRMSubscription | Sort SubscriptionName | Select SubscriptionName
+現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
-Set your Azure subscription for the current session. Replace everything within the quotes, including the < and > characters, with the correct name.
+	Select-AzureRmSubscription –SubscriptionName "<subscription name>"
 
-    Select-AzureRmSubscription –SubscriptionName "<subscription name>"
+>[AZURE.NOTE] 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。登録を行わないと、次のエラー メッセージが表示されます。
 
->[AZURE.NOTE] Registration is a one-time step, but you must do it once before attempting migration. Without registering, you see the following error message: 
+>	*BadRequest : Subscription is not registered for migration.* 
 
->   *BadRequest : Subscription is not registered for migration.* 
+次のコマンドを使用して、移行リソース プロバイダーに登録します。
+	
+	Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 
-Register with the migration resource provider by using the following command:
-    
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+登録が完了するまで 5 分間お待ちください。承認の状態は、次のコマンドで確認できます。
 
-Please wait five minutes for the registration to finish. You can check the status of the approval by using the following command:
+	Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 
-    Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+RegistrationState が `Registered` であることを確認してから続行してください。
 
-Make sure that RegistrationState is `Registered` before you proceed. 
+ここで、クラシック モデルの自分のアカウントにサインインします。
 
-Now sign in to your account for the classic model.
+	Add-AzureAccount
 
-    Add-AzureAccount
+次のコマンドを使用して、利用可能なサブスクリプションを取得します。
 
-Get the available subscriptions by using the following command:
+	Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
 
-    Get-AzureSubscription | Sort SubscriptionName | Select SubscriptionName
+現在のセッション用の Azure サブスクリプションを設定します。引用符内のすべての文字 (< および > を含む) を、正しい名前に置き換えます。
 
-Set your Azure subscription for the current session. Replace everything within the quotes, including the < and > characters, with the correct name.
+	Select-AzureSubscription –SubscriptionName "<subscription name>"
 
-    Select-AzureSubscription –SubscriptionName "<subscription name>"
+## 手順 4: 現在のデプロイメントまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンのコア数が十分にあることを確認する
 
-## <a name="step-4:-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Step 4: Make sure you have enough Azure Resource Manager Virtual Machine cores in the Azure region of your current deployment or VNET
-
-You can use the following PowerShell command to check the current number of cores you have in Azure Resource Manager. To learn more about core quotas, see [Limits and the Azure Resource Manager](../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager).
+Azure Resource Manager での現在のコア数は、次の PowerShell コマンドを使用して確認できます。コア クォータの詳細については、「[制限と Azure Resource Manager](../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)」をご覧ください。
 
 ```
 Get-AzureRmVMUsage -Location "<Your VNET or Deployment's Azure region"
 ```
 
-## <a name="step-5:-run-commands-to-migrate-your-iaas-resources"></a>Step 5: Run commands to migrate your IaaS resources
+## 手順 5: IaaS リソースを移行するコマンドを実行する
 
->[AZURE.NOTE] All the operations described here are idempotent. If you have a problem other than an unsupported feature or a configuration error, we recommend that you retry the prepare, abort, or commit operation. The platform then tries the action again.
+>[AZURE.NOTE] ここで説明するすべての操作がべき等です。サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。これによりプラットフォームでアクションが再試行されます。
 
-### <a name="migrate-virtual-machines-in-a-cloud-service-(not-in-a-virtual-network)"></a>Migrate virtual machines in a cloud service (not in a virtual network)
+### クラウド サービス内 (仮想ネットワーク外) で仮想マシンを移行する
 
-Get the list of cloud services by using the following command, and then pick the cloud service that you want to migrate. If the VMs in the cloud service are in a virtual network or if they have web or worker roles, the command returns an error message.
+次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。クラウド サービスの VM が仮想ネットワーク内にある場合、または Web ロールか worker ロールを持つ場合は、コマンドではエラー メッセージが返されます。
 
-    Get-AzureService | ft Servicename
+	Get-AzureService | ft Servicename
 
-Get the deployment name for the cloud service by using the following commands:
+次のコマンドを使用して、クラウド サービスのデプロイ名を取得します。
 
-    $serviceName = "<service name>"
-    $deployment = Get-AzureDeployment -ServiceName $serviceName
-    $deploymentName = $deployment.DeploymentName
+	$serviceName = "<service name>"
+	$deployment = Get-AzureDeployment -ServiceName $serviceName
+	$deploymentName = $deployment.DeploymentName
 
-Prepare the virtual machines in the cloud service for migration. You have two options to choose from.
+移行に合わせてクラウド サービスの仮想マシンを準備します。2 つのオプションから選択できます。
 
-* **Option 1. Migrate the VMs to a platform-created virtual network**
+* **オプション 1: プラットフォームで作成した仮想ネットワークに VM を移行する**
 
-    First, validate if you can migrate the cloud service using the following commands:
+	最初に、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
 
-        $validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
-        $validate.ValidationMessages
+		$validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+		$validate.ValidationMessages
 
-    The preceding command displays any warnings and errors that block migration. If validation is successful, then you can proceed with the following Prepare step:
+	このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備手順に進むことができます。
 
-        Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
+		Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -CreateNewVirtualNetwork
 
-* **Option 2. Migrate to an existing virtual network in the Resource Manager deployment model**
+* **オプション 2: Resource Manager デプロイメント モデルの既存の仮想ネットワークに移行する**
 
-        $existingVnetRGName = "<Existing VNET's Resource Group Name>"
-        $vnetName = "<Virtual Network Name>"
-        $subnetName = "<Subnet name>"
+		$existingVnetRGName = "<Existing VNET's Resource Group Name>"
+		$vnetName = "<Virtual Network Name>"
+		$subnetName = "<Subnet name>"
 
-    First, validate if you can migrate the cloud service using the following command:
+	最初に、次のコマンドを使用して、クラウド サービスを移行できるかどうかを検証します。
 
-        $validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
-        $validate.ValidationMessages
+		$validate = Move-AzureService -Validate -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
+		$validate.ValidationMessages
 
-    The preceding command displays any warnings and errors that block migration. If validation is successful, then you can proceed with the following Prepare step:
+	このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備手順に進むことができます。
 
-        Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
+		Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName -UseExistingVirtualNetwork -VirtualNetworkResourceGroupName $existingVnetRGName -VirtualNetworkName $vnetName -SubnetName $subnetName
 
-After the Prepare operation succeeds with either of the preceding options, query the migration state of the VMs. Ensure that they are in the `Prepared` state.
+上記のいずれかのオプションで Prepare 操作が完了したら、VM の移行状態を照会します。VM の状態が `Prepared` であることを確認してください。
 
-    $vmName = "<vm-name>"
-    $vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
-    $migrationState = $vm.VM.MigrationState
+	$vmName = "<vm-name>"
+	$vm = Get-AzureVM -ServiceName $serviceName -Name $vmName
+	$migrationState = $vm.VM.MigrationState
 
-Check the configuration for the prepared resources by using either PowerShell or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command:
+PowerShell または Azure ポータルを使用して、準備したリソースの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
 
-    Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName
+	Move-AzureService -Abort -ServiceName $serviceName -DeploymentName $deploymentName
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+準備した構成が正しい場合は、次に進み、以下のコマンドを使用してリソースをコミットできます。
 
-    Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
+	Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 
-### <a name="migrate-virtual-machines-in-a-virtual-network"></a>Migrate virtual machines in a virtual network
+### 仮想ネットワークの仮想マシンを移行する
 
-To migrate virtual machines in a virtual network, you migrate the network. The virtual machines automatically migrate with the network. Pick the virtual network that you want to migrate.  
+仮想ネットワーク内の仮想マシンを移行するには、その仮想ネットワークを移行します。仮想マシンは、ネットワークとともに自動的に移行されます。移行する仮想ネットワークを選択します。
 
-    $vnetName = "<Virtual Network Name>"
+	$vnetName = "<Virtual Network Name>"
 
->[AZURE.NOTE] If the virtual network contains web or worker roles, or VMs with unsupported configurations, you get a validation error message.
+>[AZURE.NOTE] 仮想ネットワークに Web ロールか worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
 
-First, validate if you can migrate the virtual network by using the following command:
+最初に、次のコマンドを使用して、仮想ネットワークを移行できるかどうかを検証します。
 
-    Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
+	Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 
-The preceding command displays any warnings and errors that block migration. If validation is successful, then you can proceed with the following Prepare step:
-    
-    Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
+このコマンドによって、移行をブロックするすべての警告とエラーが表示されます。検証が成功した場合は、次の準備手順に進むことができます。
+	
+	Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
 
-Check the configuration for the prepared virtual machines by using either Azure PowerShell or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command:
+Azure PowerShell または Azure Portal のどちらかを使用して、準備した仮想マシンの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
 
-    Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName
+	Move-AzureVirtualNetwork -Abort -VirtualNetworkName $vnetName
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+準備した構成が正しい場合は、次に進み、以下のコマンドを使用してリソースをコミットできます。
 
-    Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
+	Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 
-### <a name="migrate-a-storage-account"></a>Migrate a storage account
+### ストレージ アカウントを移行する
 
-Once you're done migrating the virtual machines, we recommend you migrate the storage accounts.
+仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
 
-Prepare each storage account for migration by using the following command:
+次のコマンドを使用して、各ストレージ アカウントの移行の準備をします。
 
-    $storageAccountName = "<storage account name>"
-    Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
+	$storageAccountName = "<storage account name>"
+	Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
 
-Check the configuration for the prepared storage account by using either Azure PowerShell or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command:
+Azure PowerShell または Azure Portal のどちらかを使用して、準備したストレージ アカウントの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
 
-    Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
+	Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command:
+準備した構成が正しい場合は、次に進み、以下のコマンドを使用してリソースをコミットできます。
 
-    Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
+	Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- For more information about migration, see [Platform-supported migration of IaaS resources from classic to Azure Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md).
-- To migrate additional network resources to Resource Manager using Azure PowerShell, use similar steps with **Move-AzureNetworkSecurityGroup**, **Move-AzureReservedIP**, and **Move-AzureRouteTable**.
-- For open-source scripts you can use to migrate Azure resources from classic to Resource Manager, see [Community tools for migration to Azure Resource Manager migration](virtual-machines-windows-migration-scripts.md)
+- 移行の詳細については、「[プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)」を参照してください。
+- Azure PowerShell を使用してさらにネットワーク リソースを Resource Manager に移行する場合は、**Move-AzureNetworkSecurityGroup**、**Move-AzureReservedIP**、**Move-AzureRouteTable** を使用して同様の手順を行います。
+- クラシックから Resource Manager への Azure リソースの移行で使用できるオープンソース スクリプトについては、[Azure Resource Manager への移行用コミュニティ ツール](virtual-machines-windows-migration-scripts.md)に関するページを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

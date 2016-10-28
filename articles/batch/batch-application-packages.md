@@ -1,193 +1,192 @@
 <properties
-    pageTitle="Easy application installation and management in Azure Batch | Microsoft Azure"
-    description="Use the application packages feature of Azure Batch to easily manage multiple applications and versions for installation on Batch compute nodes."
-    services="batch"
-    documentationCenter=".net"
-    authors="mmacy"
-    manager="timlt"
-    editor="" />
+	pageTitle="Azure Batch | Microsoft Azure でのアプリケーションの手軽なインストールと管理"
+	description="Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。"
+	services="batch"
+	documentationCenter=".net"
+	authors="mmacy"
+	manager="timlt"
+	editor="" />
 
 <tags
-    ms.service="batch"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.tgt_pltfrm="vm-windows"
-    ms.workload="big-compute"
-    ms.date="08/25/2016"
-    ms.author="marsma" />
+	ms.service="batch"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows"
+	ms.workload="big-compute"
+	ms.date="08/25/2016"
+	ms.author="marsma" />
 
+# Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ
 
-# <a name="application-deployment-with-azure-batch-application-packages"></a>Application deployment with Azure Batch application packages
+Azure Batch のアプリケーション パッケージ機能を使用すると、タスク アプリケーションの管理と、プール内のコンピューティング ノードへのそのアプリケーションのデプロイが簡単になります。アプリケーション パッケージを使用すると、タスクで実行される複数のバージョンのアプリケーション (そのサポート ファイルを含む) をアップロードして管理できます。また、アップロードしたアプリケーションのうち 1 つ以上をプール内のコンピューティング ノードに自動的にデプロイできます。
 
-The application packages feature of Azure Batch provides easy management of task applications and their deployment to the compute nodes in your pool. With application packages, you can upload and manage multiple versions of the applications your tasks run, including their supporting files. You can then automatically deploy one or more of these applications to the compute nodes in your pool.
+この記事では、Azure Portal でアプリケーション パッケージをアップロードおよび管理する方法を学習します。その後、[Batch .NET][api_net] ライブラリを使用して、プールのコンピューティング ノードにそれらをインストールする方法を学習します。
 
-In this article, you will learn how to upload and manage application packages in the Azure portal. You will then learn how to install them on a pool's compute nodes with the [Batch .NET][api_net] library.
+> [AZURE.NOTE] ここで説明されているアプリケーション パッケージの機能は、以前のバージョンのサービスで利用できる "Batch Apps" 機能に優先します。
 
-> [AZURE.NOTE] The application packages feature described here supersedes the "Batch Apps" feature available in previous versions of the service.
+## アプリケーション パッケージの要件
 
-## <a name="application-package-requirements"></a>Application package requirements
+アプリケーション パッケージを使用するには、お使いの Batch アカウントに [Azure ストレージ アカウントをリンクする](#link-a-storage-account)必要があります。
 
-You must [link an Azure Storage account](#link-a-storage-account) to your Batch account to use application packages.
+この記事で取り上げるアプリケーション パッケージ機能は、2016 年 3 月 10 日以降に作成された Batch プールと "*のみ*" 互換性があります。アプリケーション パッケージは、この日付以前に作成されたプール内のコンピューティング ノードにはデプロイされません。
 
-The application packages feature discussed in this article is compatible *only* with Batch pools that were created after 10 March 2016. Application packages will not be deployed to compute nodes in pools created before this date.
+この機能は、[Batch REST API][api_rest] バージョン 2015-12-01.2.2、および対応する [Batch .NET][api_net] ライブラリ バージョン 3.1.0 で導入されました。Batch の運用には、常に最新の API バージョンを使用することをお勧めします。
 
-This feature was introduced in [Batch REST API][api_rest] version 2015-12-01.2.2 and the corresponding [Batch .NET][api_net] library version 3.1.0. We recommend that you always use the latest API version when working with Batch.
+> [AZURE.IMPORTANT] 現時点では、*CloudServiceConfiguration* プールだけがアプリケーション パッケージをサポートしています。VirtualMachineConfiguration イメージを使用して作成されたプールではアプリケーション パッケージを使用できません。2 つの異なる構成の詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」の「[仮想マシンの構成](batch-linux-nodes.md#virtual-machine-configuration)」セクションを参照してください。
 
-> [AZURE.IMPORTANT] Currently, only *CloudServiceConfiguration* pools support application packages. You cannot use Application packages in pools created by using VirtualMachineConfiguration images. See the [Virtual machine configuration](batch-linux-nodes.md#virtual-machine-configuration) section of [Provision Linux compute nodes in Azure Batch pools](batch-linux-nodes.md) for more information about the two different configurations.
+## アプリケーションとアプリケーション パッケージについて
 
-## <a name="about-applications-and-application-packages"></a>About applications and application packages
-
-Within Azure Batch, an *application* refers to a set of versioned binaries that can be automatically downloaded to the compute nodes in your pool. An *application package* refers to a *specific set* of those binaries and represents a given *version* of the application.
+Azure Batch では、"*アプリケーション*" という用語は、プール内のコンピューティング ノードに自動でダウンロード可能なバージョン付きバイナリのセットを指します。また、"*アプリケーション パッケージ*" という用語は、そうしたバイナリの "*特定のセット*" を指し、アプリケーションの特定の "*バージョン*" を表します。
 
 ![High-level diagram of applications and application packages][1]
 
-### <a name="applications"></a>Applications
+### アプリケーション
 
-An application in Batch contains one or more application packages and specifies configuration options for the application. For example, an application can specify the default application package version to install on compute nodes and whether its packages can be updated or deleted.
+Batch 内のアプリケーションは、1 つ以上のアプリケーション パッケージを含んでおり、アプリケーションの構成オプションを指定します。たとえば、アプリケーションは、コンピューティング ノードにインストールする既定のアプリケーション パッケージのバージョンや、そのパッケージを更新または削除できるかどうかを指定します。
 
-### <a name="application-packages"></a>Application packages
+### アプリケーション パッケージ
 
-An application package is a .zip file that contains the application binaries and supporting files that are required for execution by your tasks. Each application package represents a specific version of the application.
+アプリケーション パッケージは、タスクで実行するために必要なアプリケーション バイナリとサポート ファイルを含む .zip ファイルです。各アプリケーション パッケージは特定のバージョンのアプリケーションを表します。
 
-You can specify application packages at the pool and task level. You can specify one or more of these packages and (optionally) a version when you create a pool or task.
+アプリケーション パッケージはプール レベルおよびタスク レベルで指定できます。プールまたはタスクを作成するときに、これらのパッケージの 1 つ以上と、必要に応じてバージョンを指定できます。
 
-* **Pool application packages** are deployed to *every* node in the pool. Applications are deployed when a node joins a pool, and when it is rebooted or reimaged.
+* **プールのアプリケーション パッケージ**は、プール内の "*すべて*" のノードにデプロイされます。アプリケーションがデプロイされるのは、ノードがプールに参加するときと、ノードが再起動または再イメージ化されるときです。
 
-    Pool application packages are appropriate when all nodes in a pool execute a job's tasks. You can specify one or more application packages when you create a pool, and you can add or update an existing pool's packages. If you update an existing pool's application packages, you must restart its nodes to install the new package.
+    プールのアプリケーション パッケージは、プール内のすべてのノードがジョブのタスクを実行するときに適しています。プールの作成時に 1 つ以上のアプリケーション パッケージを指定することも、既存のプールのパッケージを追加または更新することもできます。既存のプールのアプリケーション パッケージを更新する場合は、新しいパッケージをインストールするために、そのノードを再起動する必要があります。
 
-* **Task application packages** are deployed only to a compute node scheduled to run a task, just before running the task's command line. If the specified application package and version is already on the node, it is not redeployed and the existing package is used.
+* **タスクのアプリケーション パッケージ**は、タスクのコマンド ラインを実行する直前に、そのタスクを実行するようにスケジュールされたコンピューティング ノードのみにデプロイされます。指定されたアプリケーション パッケージとバージョンが既にノードにある場合、それは再デプロイされず、既存のパッケージが使用されます。
 
-    Task application packages are useful in shared-pool environments, where different jobs are run on one pool, and the pool is not deleted when a job is completed. If your job has less tasks than nodes in the pool, task application packages can minimize data transfer since your application is deployed only to the nodes that run tasks.
+    タスクのアプリケーション パッケージは、共有プール環境では便利です。この環境では、さまざまなジョブが 1 つのプールで実行され、ジョブが完了してもプールは削除されません。ジョブ内のタスクがプール内のノードよりも少ない場合は、タスクのアプリケーション パッケージによりデータ転送を最小限に抑えることができます。アプリケーションはタスクが実行されるノードにのみデプロイされるためです。
 
-    Other scenarios that can benefit from task application packages are jobs that use a particularly large application, but for only a small number of tasks. For example, a pre-processing stage or a merge task, where the pre-processing or merge application is heavyweight.
+    タスクのアプリケーション パッケージによるメリットがあるその他のシナリオとして、ごく少数のタスクを別にすると、特に大規模なアプリケーションを使用するジョブが挙げられます。たとえば、前処理段階またはマージ タスクがあります。この場合、前処理またはマージ アプリケーションは大規模です。
 
-> [AZURE.IMPORTANT] There are restrictions on the number of applications and application packages within a Batch account, as well as the maximum application package size. See [Quotas and limits for the Azure Batch service](batch-quota-limit.md) for details about these limits.
+> [AZURE.IMPORTANT] Batch アカウント内のアプリケーションとアプリケーション パッケージの数には、最大アプリケーション パッケージ サイズと同様に制限があります。これらの制限の詳細については、「[Azure Batch サービスのクォータと制限](batch-quota-limit.md)」を参照してください。
 
-### <a name="benefits-of-application-packages"></a>Benefits of application packages
+### アプリケーション パッケージの利点
 
-Application packages can simplify the code in your Batch solution and lower the overhead required to manage the applications that your tasks run.
+アプリケーション パッケージは、Batch ソリューションのコードを簡略化すると共に、タスクが実行されるアプリケーションの管理に必要なオーバーヘッドを軽減します。
 
-Your pool's start task doesn't have to specify a long list of individual resource files to install on the nodes. You don't have to manually manage multiple versions of your application files in Azure Storage, or on your nodes. And, you don't need to worry about generating [SAS URLs](../storage/storage-dotnet-shared-access-signature-part-1.md) to provide access to the files in your Storage account. Batch works in the background with Azure Storage to store application packages and deploy them to compute nodes.
+プールの開始タスクでは、ノードにインストールする多数のリソース ファイルを指定する必要がありません。Azure Storage やノードで、アプリケーション ファイルの複数のバージョンを手動で管理する必要もありません。さらに、ストレージ アカウント内のファイルへのアクセスを提供する [SAS URL](../storage/storage-dotnet-shared-access-signature-part-1.md) の生成に苦労することもありません。Batch は、バックグラウンドで Azure Storage と連携して、アプリケーション パッケージを保存し、コンピューティング ノードにデプロイします。
 
-## <a name="upload-and-manage-applications"></a>Upload and manage applications
+## アプリケーションのアップロードと管理
 
-You can use the [Azure portal][portal] or the [Batch Management .NET](batch-management-dotnet.md) library to manage the application packages in your Batch account. In the next few sections, we first link a Storage account, then discuss adding applications and packages and managing them with the portal.
+[Azure Portal][portal] または [Batch Management .NET](batch-management-dotnet.md) ライブラリを使用して、Batch アカウントのアプリケーション パッケージを管理できます。次のいくつかのセクションでは、最初にストレージ アカウントをリンクしてから、アプリケーションとパッケージの追加とポータルを使用した管理を行います。
 
-### <a name="link-a-storage-account"></a>Link a Storage account
+### ストレージ アカウントのリンク
 
-To use application packages, you must first link an Azure Storage account to your Batch account. If you have not yet configured a Storage account for your Batch account, the Azure portal will display a warning the first time you click the **Applications** tile in the **Batch account** blade.
+アプリケーション パッケージを使用するには、最初に Azure ストレージ アカウントを Batch アカウントにリンクする必要があります。Batch アカウントに対してストレージ アカウントを構成していない場合は、**[Batch アカウント]** ブレードで初めて **[アプリケーション]** タイルをクリックしたときに、Azure Portal に警告が表示されます。
 
-> [AZURE.IMPORTANT] Batch currently supports *only* the **General purpose** storage account type as described in step 5, [Create a storage account](../storage/storage-create-storage-account.md#create-a-storage-account), in [About Azure storage accounts](../storage/storage-create-storage-account.md). When you link an Azure Storage account to your Batch account, link *only* a **General purpose** storage account.
+> [AZURE.IMPORTANT] 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類 "*のみ*" がサポートされています。Azure ストレージ アカウントを Batch アカウントにリンクする場合は、**汎用**のストレージ アカウント "*のみ*" をリンクしてください。
 
 ![No storage account configured warning in Azure portal][9]
 
-The Batch service uses the associated Storage account for the storage and retrieval of application packages. After you've linked the two accounts, Batch can automatically deploy the packages stored in the linked Storage account to your compute nodes. Click **Storage account settings** on the **Warning** blade, and then click **Storage Account** on the **Storage Account** blade to link a storage account to your Batch account.
+Batch サービスは関連付けられたストレージ アカウントを使用して、アプリケーション パッケージのストレージと取得を行います。2 つのアカウントをリンクした後、Batch は、リンクされたストレージ アカウントに保存されているパッケージをコンピューティング ノードに自動的にデプロイできるようになります。**[警告]** ブレードで **[ストレージ アカウントの設定]** をクリックした後、**[ストレージ アカウント]** ブレードの **[ストレージ アカウント]** をクリックして、ストレージ アカウントを Batch アカウントにリンクします。
 
 ![Choose storage account blade in Azure portal][10]
 
-We recommend that you create a storage account *specifically* for use with your Batch account, and select it here. For details about how to create a storage account, see "Create a storage account" in [About Azure storage accounts](../storage/storage-create-storage-account.md). After you've created a Storage account, you can then link it to your Batch account by using the **Storage Account** blade.
+Batch アカウントで使用するストレージ アカウントは "*専用*" のものを作成することをお勧めします。ここでは、そのようにします。ストレージ アカウントの作成方法の詳細については、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。ストレージ アカウントを作成したら、**[ストレージ アカウント]** ブレードを使用して Batch アカウントにリンクすることができます。
 
-> [AZURE.WARNING] Because Batch uses Azure Storage to store your application packages, you are [charged as normal][storage_pricing] for the block blob data. Be sure to consider the size and number of your application packages, and periodically remove deprecated packages to minimize cost.
+> [AZURE.WARNING] Batch は Azure Storage を使用してアプリケーション パッケージを保存するため、ブロック BLOB データの[通常料金][storage_pricing]が課金されます。アプリケーション パッケージのサイズと数に気を配り、使用していないパッケージを定期的に削除して、コストを最小限に抑えてください。
 
-### <a name="view-current-applications"></a>View current applications
+### 現在のアプリケーションの表示
 
-To view the applications in your Batch account, click the **Applications** tile in the **Batch account** blade.
+Batch アカウントに含まれているアプリケーションを表示するには、**[Batch アカウント]** ブレードで **[アプリケーション]** タイルをクリックします。
 
 ![Applications tile][2]
 
-This opens the **Applications** blade:
+次のように **[アプリケーション]** ブレードが開きます。
 
 ![List applications][3]
 
-The **Applications** blade displays the ID of each application in your account and the following properties:
+**[アプリケーション]** ブレードには、アカウント内に存在する各アプリケーションの ID と以下のプロパティが表示されます。
 
-* **Packages**--The number of versions associated with this application.
-* **Default version**--The version that will be installed if you do not specify a version when you set the application for a pool. This setting is optional.
-* **Allow updates**--The value that specifies whether package updates, deletions, and additions are allowed. If this is set to **No**, package updates and deletions are disabled for the application. Only new application package versions can be added. The default is **Yes**.
+* **[パッケージ]** -- このアプリケーションに関連するバージョン数。
+* **[既定のバージョン]** -- プールにアプリケーションを設定する際にバージョンを指定しない場合にインストールされるバージョン。この設定はオプションです。
+* **[更新を許可する]** -- パケージの更新、削除、および追加を許可するかどうかを指定する値。**[いいえ]** に設定されている場合は、アプリケーションのパッケージの更新と削除が無効になります。新しいアプリケーション パッケージ バージョンの追加のみが可能です。既定値は **[はい]** です。
 
-### <a name="view-application-details"></a>View application details
+### アプリケーションの詳細の表示
 
-Click an application in the **Applications** blade to open the blade that includes the details for that application.
+**[アプリケーション]** ブレードでアプリケーションをクリックすると、そのアプリケーションの詳細を含むブレードが表示されます。
 
 ![Application details][4]
 
-In the application details blade, you can configure the following settings for your application.
+このアプリケーションの詳細ブレードでは、アプリケーションに関する以下の設定を構成することができます。
 
-* **Allow updates**--Specify whether its application packages can be updated or deleted. See "Update or Delete an application package" later in this article.
-* **Default version**--Specify a default application package to deploy to compute nodes.
-* **Display name**--Specify a "friendly" name that your Batch solution can use when it displays information about the application, such as in the UI of a service that you provide your customers through Batch.
+* **[更新を許可する]** -- アプリケーション パッケージを更新または削除できるかどうかを指定します。この記事の後半にある「アプリケーション パッケージの更新または削除」を参照してください。
+* **[既定のバージョン]** -- コンピューティング ノードにデプロイする既定のアプリケーション パッケージを指定します。
+* **[表示名]** -- Batch を介して顧客に提供するサービスの UI など、アプリケーションの情報を表示するときに Batch ソリューションが使用できる "わかりやすい" 名前を指定します。
 
-### <a name="add-a-new-application"></a>Add a new application
+### 新しいアプリケーションの追加
 
-To create a new application, add an application package and specify a new, unique application ID. The first application package that you add with the new application ID will also create the new application.
+新しいアプリケーションを作成するには、アプリケーション パッケージを追加し、新しい一意のアプリケーション ID を指定します。新しいアプリケーション ID を使用して最初のアプリケーション パッケージを追加すると、新しいアプリケーションも作成されます。
 
-Click **Add** on the **Applications** blade to open the **New application** blade.
+**[アプリケーション]** ブレードで **[追加]** をクリックし、**[新しいアプリケーション]** ブレードを開きます。
 
 ![New application blade in Azure portal][5]
 
-The **New application** blade provides the following fields to specify the settings of your new application and application package.
+**[新しいアプリケーション]** ブレードには、新しいアプリケーションとアプリケーション パッケージの設定を指定するための次のフィールドがあります。
 
-**Application id**
+**[アプリケーション ID]**
 
-This field specifies the ID of your new application, which is subject to the standard Azure Batch ID validation rules:
+このフィールドでは、以下に挙げる標準の Azure Batch ID 検証ルールに従って、新しいアプリケーションの ID を指定します。
 
-* Can contain any combination of alphanumeric characters, including hyphens and underscores.
-* Cannot contain more than 64 characters.
-* Must be unique within the Batch account.
-* Is case preserving and case insensitive.
+* 英数字の組み合わせを使用し、ハイフンとアンダースコアを含めてもよい。
+* 64 文字以内にする必要がある。
+* Batch アカウント内で一意にする必要がある。
+* 大文字小文字は保持されるが、区別されない。
 
-**Version**
+**バージョン**
 
-Specifies the version of the application package you are uploading. Version strings are subject to the following validation rules:
+アップロードするアプリケーション パッケージのバージョンを指定します。バージョン文字列は以下の検証ルールに従うようにします。
 
-* Can contain any combination of alphanumeric characters, including hyphens, underscores, and periods.
-* Cannot contain more than 64 characters.
-* Must be unique within the application.
-* Case preserving, and case insensitive.
+* 英数字の組み合わせを使用し、ハイフン、アンダースコア、ピリオドを含めてもよい。
+* 64 文字以内にする必要がある。
+* アプリケーション内で一意にする必要がある。
+* 大文字小文字は保持されるが、区別されない。
 
-**Application package**
+**[Application package (アプリケーション パッケージ)]**
 
-This field specifies the .zip file that contains the application binaries and supporting files that are required to execute the application. Click the **Select a file** box or the folder icon to browse to and select a .zip file that contains your application's files.
+このフィールドは、アプリケーションの実行に必要なアプリケーション バイナリとサポート ファイルを含む .zip ファイルを指定します。**[ファイルの選択]** ボックスかフォルダー アイコンをクリックして、アプリケーションのファイルが格納されている .zip ファイルを参照して選択します。
 
-After you've selected a file, click **OK** to begin the upload to Azure Storage. When the upload operation is complete, you will be notified and the blade will close. Depending on the size of the file that you are uploading and the speed of your network connection, this operation may take some time.
+ファイルを選択したら、**[OK]** をクリックして Azure Storage へのアップロードを開始します。アップロードが完了すると、通知が表示され、ブレードが閉じられます。アップロードするファイルのサイズやネットワーク接続の速度によっては、アップロードに時間がかかることもあります。
 
-> [AZURE.WARNING] Do not close the **New application** blade before the upload operation is complete. Doing so will stop the upload process.
+> [AZURE.WARNING] アップロード操作が完了するまで、**[新しいアプリケーション]** ブレードを閉じないでください。途中で閉じると、アップロード プロセスが停止します。
 
-### <a name="add-a-new-application-package"></a>Add a new application package
+### 新しいアプリケーション パッケージの追加
 
-To add a new application package version for an existing application, select an application in the **Applications** blade, click **Packages**, then click **Add** to open the **Add package** blade.
+既存のアプリケーションに対して、新しいアプリケーション パッケージ バージョンを追加するには、**[アプリケーション]** ブレードでアプリケーションを選択し、**[パッケージ]**、**[追加]** の順にクリックして、**[パッケージの追加]** ブレードを開きます。
 
 ![Add application package blade in Azure portal][8]
 
-As you can see, the fields match those of the **New application** blade, but the **Application id** box is disabled. As you did for the new application, specify the **Version** for your new package, browse to your **Application package** .zip file, then click **OK** to upload the package.
+上の図のように、**[新しいアプリケーション]** ブレードの場合とフィールドは同じですが、**[アプリケーション ID]** ボックスは使用できなくなっています。新しいアプリケーションの場合と同様に、新しいパッケージの**バージョン**を指定して、**アプリケーション パッケージ**の .zip ファイルを参照し、**[OK]** をクリックしてパッケージをアップロードします。
 
-### <a name="update-or-delete-an-application-package"></a>Update or delete an application package
+### アプリケーション パッケージの更新または削除
 
-To update or delete an existing application package, open the details blade for the application, click **Packages** to open the **Packages** blade, click the **ellipsis** in the row of the application package that you want to modify, and select the action that you want to perform.
+既存のアプリケーション パッケージを更新または削除するには、対象アプリケーションの詳細ブレードを開き、**[パッケージ]** をクリックして **[パッケージ]** ブレードを開きます。次に、変更するアプリケーション パッケージの行の**省略記号**をクリックして、実行する操作を選択します。
 
 ![Update or delete package in Azure portal][7]
 
-**Update**
+**更新**
 
-When you click **Update**, the *Update package* blade is displayed. This blade is similar to the *New application package* blade, however only the package selection field is enabled, allowing you to specify a new ZIP file to upload.
+**[更新]** をクリックすると、*[パッケージの更新]* ブレードが表示されます。このブレードは *[New application package (新しいアプリケーション パッケージ)]* ブレードと似ていますが、パッケージ選択フィールドのみが有効になっていて、アップロードする新しい ZIP ファイルを指定できます。
 
 ![Update package blade in Azure portal][11]
 
-**Delete**
+**削除**
 
-When you click **Delete**, you are asked to confirm the deletion of the package version, and Batch deletes the package from Azure Storage. If you delete the default version of an application, the **Default version** setting is removed for the application.
+**[削除]** をクリックすると、当該パッケージ バージョンを削除するかどうかを確認するメッセージが表示され、承諾すると Batch がそのパッケージを Azure Storage から削除します。アプリケーションの既定のバージョンを削除すると、そのアプリケーションの**既定のバージョン**の設定も削除されます。
 
-![Delete application ][12]
+![Delete application][12]
 
-## <a name="install-applications-on-compute-nodes"></a>Install applications on compute nodes
+## コンピューティング ノードへのアプリケーションのインストール
 
-Now that you've seen how to manage application packages with the Azure portal, we can discuss how to deploy them to compute nodes and run them with Batch tasks.
+Azure Portal でアプリケーション パッケージを管理する方法を確認したので、これらのパッケージをコンピューティング ノードにデプロイし、Batch タスクを使って実行する方法を説明します。
 
-### <a name="install-pool-application-packages"></a>Install pool application packages
+### プールのアプリケーション パッケージのインストール
 
-To install an application package on all compute nodes in a pool, specify one or more application package *references* for the pool. The application packages that you specify for a pool are installed on each compute node when that node joins the pool, and when the node is rebooted or reimaged.
+プール内のすべてのコンピューティング ノードにアプリケーション パッケージをインストールするには、対象のプールに対してアプリケーション パッケージへの "*参照*" を 1 つ以上指定します。プールに指定したアプリケーション パッケージは、コンピューティング ノードがプールに参加したときや再起動されたとき、再イメージ化されたときに各ノードにインストールされます。
 
-In Batch .NET, specify one or more [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] when you create a new pool, or for an existing pool. The [ApplicationPackageReference][net_pkgref] class specifies an application ID and version to install on a pool's compute nodes.
+Batch .NET では、プールの作成時に、または既存のプールに対して、1 つ以上の [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] を追加します。[ApplicationPackageReference][net_pkgref] クラスは、プールのコンピューティング ノードにインストールするアプリケーション ID とバージョンを指定します。
 
 ```csharp
 // Create the unbound CloudPool
@@ -211,13 +210,13 @@ myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await myCloudPool.CommitAsync();
 ```
 
->[AZURE.IMPORTANT] If an application package deployment fails for any reason, the Batch service marks the node [unusable][net_nodestate], and no tasks will be scheduled for execution on that node. In this case, you should **restart** the node to reinitiate the package deployment. Restarting the node will also enable task scheduling again on the node.
+>[AZURE.IMPORTANT] アプリケーション パッケージのデプロイがなんらかの理由で失敗した場合、そのノードは、Batch サービスによって[使用不可][net_nodestate]としてマークされます。そのノードに対しては、タスクの実行がスケジュールされません。この場合、パッケージのデプロイを再開するには、ノードを**再起動**する必要があります。ノードを再起動すると、そのノードでのタスクのスケジュールももう一度有効になります。
 
-### <a name="install-task-application-packages"></a>Install task application packages
+### タスクのアプリケーション パッケージのインストール
 
-Similar to a pool, you specify application package *references* for a task. When a task is scheduled to run on a node, the package is downloaded and extracted just before the task's command line is executed. If a specified package and version is already installed on the node, the package is not downloaded and the existing package is used.
+プールと同様、アプリケーション パッケージへの "*参照*" を指定します。タスクがノード上で実行するようにスケジュールされると、タスクのコマンド ラインが実行される直前に、パッケージがダウンロードされ、展開されます。指定したパッケージとバージョンが既にノードにインストールされている場合は、パッケージがダウンロードされず、既存のパッケージが使用されます。
 
-To install a task application package, configure the task's [CloudTask][net_cloudtask].[ApplicationPackageReferences][net_cloudtask_pkgref] property:
+タスクのアプリケーション パッケージをインストールするには、タスクの [CloudTask][net_cloudtask].[ApplicationPackageReferences][net_cloudtask_pkgref] プロパティを構成します。
 
 ```csharp
 CloudTask task =
@@ -235,21 +234,21 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 };
 ```
 
-## <a name="execute-the-installed-applications"></a>Execute the installed applications
+## インストールしたアプリケーションの実行
 
-The packages that you've specified for a pool or task are downloaded and extracted to a named directory within the `AZ_BATCH_ROOT_DIR` of the node. Batch also creates an environment variable that contains the path to the named directory. Your task command lines use this environment variable when referencing the application on the node. The variable is in the following format:
+プールまたはタスクに指定したパッケージがダウンロードされ、ノードの `AZ_BATCH_ROOT_DIR` 内にある名前付きディレクトリに展開されます。Batch により、その名前付きディレクトリへのパスを含む環境変数も作成されます。タスクのコマンド ラインは、ノード上のアプリケーションを参照するときにこの環境変数を使用します。この変数の形式は次のとおりです。
 
 `AZ_BATCH_APP_PACKAGE_APPLICATIONID#version`
 
-`APPLICATIONID` and `version` are values that correspond to the application and package version you've specified for deployment. For example, if you specifed that version 2.7 of application *blender* should be installed, your task command lines would use this environment variable to access its files:
+`APPLICATIONID` と `version` は、デプロイに指定したアプリケーションとパッケージ バージョンに対応する値です。たとえば、アプリケーション *blender* のバージョン 2.7 がインストールされるように指定した場合、タスクのコマンド ラインでは、次の環境変数を使用してそのファイルにアクセスします。
 
 `AZ_BATCH_APP_PACKAGE_BLENDER#2.7`
 
-If you specify a default version for an application, you can omit the version suffix. For example, if you set "2.7" as the default version for application *blender*, your tasks can reference the following environment variable and they will execute version 2.7:
+アプリケーションの既定のバージョンを指定する場合は、バージョンのサフィックスを省略できます。たとえば、*blender* アプリケーションの既定バージョンとして 2.7 を設定した場合、タスクは次の環境変数を参照できるため、バージョン 2.7 を実行します。
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-The following code snippet shows an example task command line that launches the default version of the *blender* application:
+次のコード スニペットは、*blender* アプリケーションの既定のバージョンを起動する、タスクのコマンド ラインの例を示します。
 
 ```csharp
 string taskId = "blendertask01";
@@ -258,17 +257,17 @@ string commandLine =
 CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
-> [AZURE.TIP] See [Environment settings for tasks](batch-api-basics.md#environment-settings-for-tasks) in the [Batch feature overview](batch-api-basics.md) for more information about compute node environment settings.
+> [AZURE.TIP] コンピューティング ノードの環境設定の詳細については、[Batch 機能の概要](batch-api-basics.md)に関するページの「[タスクの環境設定](batch-api-basics.md#environment-settings-for-tasks)」を参照してください。
 
-## <a name="update-a-pool's-application-packages"></a>Update a pool's application packages
+## プールに含まれるアプリケーション パッケージの更新
 
-If an existing pool has already been configured with an application package, you can specify a new package for the pool. If you specify a new package reference for a pool, the following apply:
+アプリケーション パッケージで構成済みの既存プールに対して、新しいパッケージを指定することができます。プールに対して新しいパッケージ参照を指定すると、次のようになります。
 
-* All new nodes that join the pool and any existing node that is rebooted or reimaged will install the newly specified package.
-* Compute nodes that are already in the pool when you update the package references do not automatically install the new application package. These compute nodes must be rebooted or reimaged to receive the new package.
-* When a new package is deployed, the created environment variables reflect the new application package references.
+* プールに参加する新しいノードすべてと、再起動または再イメージ化される既存のノードにより、新しく指定されたパッケージがインストールされます。
+* パッケージへの参照を更新したときに、既にプールに参加していたコンピューティング ノードに対し、新しいアプリケーション パッケージが自動でインストールされることはありません。新しいパッケージを受け取るには、これらのコンピューティング ノードを再起動または再イメージ化する必要があります。
+* 新しいパッケージがデプロイされると、作成された環境変数に新しいアプリケーション パッケージ参照が反映されます。
 
-In this example, the existing pool has version 2.7 of the *blender* application configured as one of its [CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref]. To update the pool's nodes with version 2.76b, specify a new [ApplicationPackageReference][net_pkgref] with the new version, and commit the change.
+この例では、既存のプールに、[CloudPool][net_cloudpool].[ApplicationPackageReferences][net_cloudpool_pkgref] の 1 つとして *blender* アプリケーションのバージョン 2.7 が構成されています。プールのノードをバージョン 2.76b で更新するには、新しいバージョンで新しい [ApplicationPackageReference][net_pkgref] を指定し、変更をコミットします。
 
 ```csharp
 string newVersion = "2.76b";
@@ -282,11 +281,11 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-Now that the new version has been configured, any *new* node that joins the pool will have version 2.76b deployed to it. To install 2.76b on the nodes that are *already* in the pool, reboot or reimage them. Note that rebooted nodes will retain the files from previous package deployments.
+新しいバージョンを構成したので、プールに参加する "*新しい*" ノードでは、バージョン 2.76b がデプロイされます。プール内の "*既存*" のノードに 2.76b をインストールするには、ノードを再起動または再イメージ化します。再起動されたノードは、以前のパッケージ デプロイのファイルを保持することに注意してください。
 
-## <a name="list-the-applications-in-a-batch-account"></a>List the applications in a Batch account
+## Batch アカウント内のアプリケーションの一覧表示
 
-You can list the applications and their packages in a Batch account by using the [ApplicationOperations][net_appops].[ListApplicationSummaries][net_appops_listappsummaries] method.
+[ApplicationOperations][net_appops].[ListApplicationSummaries][net_appops_listappsummaries] メソッドを使用して、Batch アカウント内のアプリケーションとパッケージを一覧表示することができます。
 
 ```csharp
 // List the applications and their application packages in the Batch account.
@@ -302,15 +301,15 @@ foreach (ApplicationSummary app in applications)
 }
 ```
 
-## <a name="wrap-up"></a>Wrap up
+## まとめ
 
-With application packages, you can help your customers select the applications for their jobs and specify the exact version to use when processing jobs with your Batch-enabled service. You might also provide the ability for your customers to upload and track their own applications in your service.
+アプリケーション パッケージを使用すると、顧客がジョブ用のアプリケーションを選択するのを支援したり、Batch を有効にしたサービスでジョブを処理する場合の正確なバージョン指定を行ったりすることができます。さらに、顧客がサービスに自前のアプリケーションをアップロードし、トラッキングするための環境も用意できます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-* The [Batch REST API][api_rest] also provides support to work with application packages. For example, see the [applicationPackageReferences][rest_add_pool_with_packages] element in [Add a pool to an account][rest_add_pool] for information about how to specify packages to install by using the REST API. See [Applications][rest_applications] for details about how to obtain application information by using the Batch REST API.
+* [Batch REST API][api_rest] も、アプリケーション パッケージの運用をサポートしています。たとえば、REST API を使用したインストール パッケージの指定方法については、「[Add a pool to an account (アカウントへのプールの追加)][rest_add_pool]」の [applicationPackageReferences][rest_add_pool_with_packages] 要素を参照してください。Batch REST API を使用したアプリケーション情報の取得方法の詳細については、「[Applications (アプリケーション)][rest_applications]」を参照してください。
 
-* Learn how to programmatically [manage Azure Batch accounts and quotas with Batch Management .NET](batch-management-dotnet.md). The [Batch Management .NET][api_net_mgmt] library can enable account creation and deletion features for your Batch application or service.
+* [Batch Management .NET でプログラムを使用して Azure Batch アカウントとクォータを管理する](batch-management-dotnet.md)方法を学習してください。[Batch Management .NET][api_net_mgmt] ライブラリで、Batch アプリケーションまたはサービス用のアカウント作成機能と削除機能を有効にすることができます。
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
@@ -343,8 +342,4 @@ With application packages, you can help your customers select the applications f
 [11]: ./media/batch-application-packages/app_pkg_11.png "Update package blade in Azure portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Delete package confirmation dialog in Azure portal"
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

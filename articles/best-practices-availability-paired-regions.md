@@ -1,11 +1,11 @@
 <properties
-    pageTitle="Business continuity and disaster recovery (BCDR): Azure Paired Regions | Microsoft Azure"
-    description="Azure regional pairs ensure that applications are resilient during data center failures."
-    services="site-recovery"
-    documentationCenter=""
-    authors="rayne-wiselman"
-    manager="jwhit"
-    editor=""/>
+	pageTitle="ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン | Microsoft Azure"
+	description="Azure のリージョン ペアは、データセンターでの障害発生時にアプリケーションの耐障害性を確保します。"
+	services="site-recovery"
+	documentationCenter=""
+	authors="rayne-wiselman"
+	manager="jwhit"
+	editor=""/>
 
 <tags
     ms.service="site-recovery"
@@ -16,87 +16,76 @@
     ms.date="08/23/2016"
     ms.author="raynew"/>
 
+# ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン
 
-# <a name="business-continuity-and-disaster-recovery-(bcdr):-azure-paired-regions"></a>Business continuity and disaster recovery (BCDR): Azure Paired Regions
+## ペアになっているリージョンとは
 
-## <a name="what-are-paired-regions?"></a>What are paired regions?
+Azure は、世界中の複数の geo で動作します。Azure の geo とは、少なくとも 1 つの Azure リージョンを含む、世界の定義済みの地域です。Azure リージョンは、geo に含まれる領域で、1 つ以上のデータセンターが含まれます。
 
-Azure operates in multiple geographies around the world. An Azure geography is a defined area of the world that contains at least one Azure Region. An Azure region is an area within a geography containing one or more datacenters.
-
-Each Azure region is paired with another region within the same geography, together making a regional pair. The exception is Brazil South which is paired with a region outside its geography.
+各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。例外はブラジル南部で、geo の外部のリージョンとペアになっています。
 
 
 ![AzureGeography](./media/best-practices-availability-paired-regions/GeoRegionDataCenter.png)
 
-Figure 1 – Azure regional pair diagram
+図 1 – Azure リージョン ペアの図
 
 
 
-| Geography     |  Paired regions  |                     |
+| [地理的な場所] | ペアになっているリージョン | |
 | :-------------| :-------------   | :-------------      |
-| North America | North Central US | South Central US    |
-| North America | East US          | West US             |
-| North America | US East 2        | US Central          |
-| North America | West US 2        | West Central US     |
-| Europe        | North Europe     | West Europe         |
-| Asia          | South East Asia  | East Asia           |
-| China         | East China       | North China         |
-| Japan         | Japan East       | Japan West          |
-| Brazil        | Brazil South (1) | South Central US    |
-| Australia     | Australia East   | Australia Southeast |
-| US Government | US Gov Iowa      | US Gov Virginia     |
-| India         | Central India    | South India         |
-| Canada        | Canada Central   | Canada East         |
-| UK            | UK West          | UK South            |
-
-Table 1 - Mapping of azure regional pairs
-
-> (1) Brazil South is unique because it is paired with a region outside of its own geography. Brazil South’s secondary region is South Central US but South Central US’s secondary region is not Brazil South.
-
-We recommend that you replicate workloads across regional pairs to benefit from Azure’s isolation and availability policies. For example, planned Azure system updates are deployed sequentially (not at the same time) across paired regions. That means that even in the rare event of a faulty update, both regions will not be affected simultaneously. Furthermore, in the unlikely event of a broad outage, recovery of at least one region out of every pair is prioritized.
-
-## <a name="an-example-of-paired-regions"></a>An example of paired regions
-Figure 2 below shows a hypothetical application which uses the regional pair for disaster recovery. The green numbers highlight the cross-region activities of three Azure services (Azure Compute, Storage, and Database) and how they are configured to replicate across regions. The unique benefits of deploying across paired regions are highlighted by the orange numbers.
+| 北米 | 米国中北部 | 米国中南部 |
+| 北米 | 米国東部 | 米国西部 |
+| 北米 | 米国東部 2 | 米国中部 |
+|北米 | 米国西部 2 | 米国中西部 |
+| ヨーロッパ | 北ヨーロッパ | 西ヨーロッパ |
+| アジア | 東南アジア | 東アジア |
+| 中国 | 中国東部 | 中国北部 |
+| 日本 | 東日本 | 西日本 |
+| ブラジル | ブラジル南部 (1) | 米国中南部 |
+| オーストラリア | オーストラリア東部 | オーストラリア南東部 |
+| 米国政府 | 米国政府アイオワ州 | 米国政府バージニア州 |
+| インド | インド中部 | インド南部 |
+| カナダ | カナダ中部 | カナダ東部 |
 
 
-![Overview of Paired Region Benefits](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
+表 1 - Azure リージョン ペアの組み合わせ
 
-Figure 2 – Hypothetical Azure regional pair
+> (1) ブラジル南部は、自身の geo 外のリージョンとペアになっているため特殊です。ブラジル南部のセカンダリ リージョンは米国中南部ですが、米国中南部のセカンダリ リージョンはブラジル南部ではありません。
 
-## <a name="cross-region-activities"></a>Cross-region activities
-As referred to in figure 2.
+リージョン ペアの間でワークロードをレプリケートして、Azure の分離と可用性のポリシーを活用することをお勧めします。たとえば、計画的な Azure システムの更新プログラムは、ペア リージョンに (同時にではなく) 順番にデプロイされます。つまり、更新プログラムに不具合があっても (めったにありませんが)、両方のリージョンが同時に影響を受けることはありません。さらに、万一、広範囲にわたって障害が発生した場合は、すべてのペアにおいて、少なくとも一方のリージョンの復旧が優先されます。
 
-![1Green](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – You must provision additional compute resources in advance to ensure resources are available in another region during a disaster. For more information, see [Azure resiliency technical guidance](./resiliency/resiliency-technical-guidance.md).
-
-![2Green](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Geo-Redundant storage (GRS) is configured by default when an Azure Storage account is created. With GRS, your data is automatically replicated three times within the primary region, and three times in the paired region. For more information, see [Azure Storage Redundancy Options](storage/storage-redundancy.md).
+## ペアになっているリージョンの例
+以下の図 2 は、一対のリージョンを使って障害復旧を行う架空のアプリケーションです。緑色の番号は、3 つの Azure サービス (Azure Compute、Storage、およびデータベース) のリージョン間アクティビティと、そのアクティビティが、リージョン間でのレプリケートのためにどのように構成されているかを示しています。リージョン ペアにデプロイするメリットは、オレンジ色の番号で示されています。
 
 
-![3Green](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Databases** – With Azure SQL Standard Geo-Replication, you can configure asynchronous replication of transactions to a paired region. With Premium Geo-replication, you can configure replication to any region in the world; however, we recommend you deploy these resources in a paired region for most disaster recovery scenarios. For more information, see [Geo-Replication in Azure SQL Database](./sql-database/sql-database-geo-replication-overview.md).
+![ペア リージョンのメリットの概要](./media/best-practices-availability-paired-regions/PairedRegionsOverview2.png)
 
-![4Green](./media/best-practices-availability-paired-regions/4Green.png) **Azure Resource Manager (ARM)** - ARM inherently provides logical isolation of service management components across regions. This means logical failures in one region are less likely to impact another.
+図 2 – Azure リージョン ペアの例
 
-## <a name="benefits-of-paired-regions"></a>Benefits of paired regions
-As referred to in figure 2.  
+## リージョン間アクティビティ
+図 2 を参照してください。
 
-![5Orange](./media/best-practices-availability-paired-regions/5Orange.png)
-**Physical isolation** – When possible, Azure prefers at least 300 miles of separation between datacenters in a regional pair, although this isn't practical or possible in all geographies. Physical datacenter separation reduces the likelihood of natural disasters, civil unrest, power outages, or physical network outages affecting both regions at once. Isolation is subject to the constraints within the geography (geography size, power/network infrastructure availability, regulations, etc.).  
+![1Green](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – 障害発生時に他のリージョンでリソースを確実に使用できるように、追加の計算リソースを事前にプロビジョニングする必要があります。詳細については、「[Azure の回復性技術ガイダンス](./resiliency/resiliency-technical-guidance.md)」を参照してください。
 
-![6Orange](./media/best-practices-availability-paired-regions/6Orange.png)
-**Platform-provided replication** - Some services such as Geo-Redundant Storage provide automatic replication to the paired region.
-
-![7Orange](./media/best-practices-availability-paired-regions/7Orange.png)
-**Region recovery order** – In the event of a broad outage, recovery of one region is prioritized out of every pair. Applications that are deployed across paired regions are guaranteed to have one of the regions recovered with priority. If an application is deployed across regions that are not paired, recovery may be delayed – in the worst case the chosen regions may be the last two to be recovered.
-
-![8Orange](./media/best-practices-availability-paired-regions/8Orange.png)
-**Sequential updates** – Planned Azure system updates are rolled out to paired regions sequentially (not at the same time) to minimize downtime, the effect of bugs, and logical failures in the rare event of a bad update.
+![2Green](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。詳細については、「[Azure Storage 冗長オプション](storage/storage-redundancy.md)」をご覧ください。
 
 
-![9Orange](./media/best-practices-availability-paired-regions/9Orange.png)
-**Data residency** – A region resides within the same geography as its pair (with the exception of Brazil South) in order to meet data residency requirements for tax and law enforcement jurisdiction purposes.
+![3Green](./media/best-practices-availability-paired-regions/3Green.png) **Azure SQL Database** – Azure SQL Standard geo レプリケーションを使用すると、対になっているリージョンへのトランザクションの非同期レプリケーションを構成できます。Premium geo レプリケーションを使用すると、世界中のすべてのリージョンへのレプリケーションを構成できますが、通常の障害復旧では、これらのリソースをペア リージョンにデプロイすることをお勧めします。詳細については、「[Azure SQL Database の geo レプリケーション](./sql-database/sql-database-geo-replication-overview.md)」を参照してください。
+
+![4Green](./media/best-practices-availability-paired-regions/4Green.png) **Azure リソース マネージャー (ARM)** - ARM では本質的に、リージョン全体のサービス管理コンポーネントが論理的に切り離されています。つまり、1 つのリージョンで論理的な障害が発生しても、他のリージョンが影響を受ける可能性はそれほど高くありません。
+
+## ペアになっているリージョンのメリット
+図 2 を参照してください。
+
+![5Orange](./media/best-practices-availability-paired-regions/5Orange.png) **物理的な分離** – Azure が推奨するリージョン内の各データセンター間の距離は 300 マイル (480 km) ですが、これは一部の地域では現実的ではなく、実現できないこともあります。物理データセンターを切り離すことで、自然災害、社会不安、停電、および物理ネットワーク障害が両方のリージョンにすぐに影響を及ぼす可能性が少なくなります。分離は、geo 内の制約 (広さ、電源/ネットワーク インフラストラクチャの可用性、規制など) に左右されます。
+
+![6Orange](./media/best-practices-availability-paired-regions/6Orange.png) **プラットフォームに備わっているレプリケーション** - geo 冗長ストレージなど一部のサービスには、ペア リージョンへの自動レプリケーション機能が用意されています。
+
+![7Orange](./media/best-practices-availability-paired-regions/7Orange.png) **リージョン復旧順序** – 広範囲にわたって障害が発生した場合は、すべてのペアで一方のリージョンの復旧が優先されます。ペア リージョンにまたがってデプロイされているアプリケーションについては、そのアプリケーションのリージョンのどちらかが必ず優先的に復旧します。ペアになっていない複数のリージョンにアプリケーションがデプロイされていると、復旧が遅れる可能性があり、最悪の場合は、回復されてない最後の 2 つになってしまうことがあります。
+
+![8Orange](./media/best-practices-availability-paired-regions/8Orange.png) **順次更新** – 計画的な Azure システム更新プログラムは、ダウンタイム、バグの影響、および更新プログラムの不具合 (まれではありますが) による論理的な障害を最小限に抑えるために、ペア リージョンに (同時にではなく) 順番に展開されます。
 
 
+![9Orange](./media/best-practices-availability-paired-regions/9Orange.png) **データ常駐** – リージョンは、税および法の執行を目的としたデータ常駐要件を満たすために、ペアとして同じ geo に常駐しています (ブラジル南部を除く)。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

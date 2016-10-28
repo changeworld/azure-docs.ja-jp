@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Service Fabric disaster recovery | Microsoft Azure"
-   description="Azure Service Fabric offers the capabilities necessary to deal with all types of disasters. This article describes the types of disasters that can occur and how to deal with them."
+   pageTitle="Azure Service Fabric の障害復旧 | Microsoft Azure"
+   description="Azure Service Fabric では、あらゆる種類の障害に対処するために必要な機能が提供されています。この記事では、発生する可能性がある障害の種類とそれらに対処する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="seanmck"
@@ -16,66 +16,65 @@
    ms.date="08/10/2016"
    ms.author="seanmck"/>
 
+# Azure Service Fabric での障害復旧
 
-# <a name="disaster-recovery-in-azure-service-fabric"></a>Disaster recovery in Azure Service Fabric
+高可用性クラウド アプリケーションの提供において重要な部分は、管理者がどうすることもできないものも含めて、あらゆる種類の障害を切り抜けられるようにすることです。この記事では、潜在的障害のコンテキストでの Azure Service Fabric クラスターの物理レイアウト、およびダウンタイムやデータ損失のリスクを制限または排除するためにそのような障害に対処する方法のガイダンスについて説明します。
 
-A critical part of delivering a high-availability cloud application is ensuring that it can survive all different types of failures, including those that are outside of your control. This article describes the physical layout of an Azure Service Fabric cluster in the context of potential disasters and provides guidance on how to deal with such disasters to limit or eliminate the risk of downtime or data loss.
+## Azure での Service Fabric クラスターの物理的レイアウト
 
-## <a name="physical-layout-of-service-fabric-clusters-in-azure"></a>Physical layout of Service Fabric clusters in Azure
+さまざまな種類の障害によってもたらされるリスクを理解するには、Azure でのクラスターの物理的レイアウトを知っておくと役に立ちます。
 
-To understand the risk posed by different types of failures, it is useful to know how clusters are physically laid out in Azure.
+Azure で Service Fabric クラスターを作成するときは、クラスターがホストされるリージョンを選択する必要があります。Azure インフラストラクチャはそのリージョン内にクラスターのリソースをプロビジョニングします。特に重要なのは、要求された数の仮想マシン (VM) です。これらの VM がプロビジョニングされる方法と場所を詳しく見ていくことにしましょう。
 
-When you create a Service Fabric cluster in Azure, you are required to choose a region where it will be hosted. The Azure infrastructure then provisions the resources for that cluster within the region, most notably the number of virtual machines (VMs) requested. Let's look more closely at how and where those VMs are provisioned.
+### 障害ドメイン
 
-### <a name="fault-domains"></a>Fault domains
+既定では、クラスター内の VM は障害ドメイン (FD) と呼ばれる複数の論理グループに均等に分散されます。FD は、ホスト ハードウェアにおける障害の可能性に基づいてマシンを分割します。具体的には、2 つの VM が異なる 2 つの FD に存在する場合、それらが同じ電源またはネットワーク スイッチを共有しないようにすることができます。その結果、一方の VM に影響するローカル ネットワークまたは電源の障害が発生しても他方に影響はなく、Service Fabric はクラスター内の応答しないコンピューターの作業負荷を再調整できます。
 
-By default, the VMs in the cluster are evenly spread across logical groups known as fault domains (FDs), which segment the machines based on potential failures in the host hardware. Specifically, if two VMs reside in two distinct FDs, you can be sure that they do not share the same power source or network switch. As a result, a local network or power failure affecting one VM will not affect the other, allowing Service Fabric to rebalance the work load of the unresponsive machine within the cluster.
+[Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) で提供されるクラスター マップを使用して、障害ドメイン間のクラスターのレイアウトを視覚化できます。
 
-You can visualize the layout of your cluster across fault domains using the cluster map provided in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md):
+![Service Fabric Explorer での障害ドメインに分散されたノードの表示][sfx-cluster-map]
 
-![Nodes spread across fault domains in Service Fabric Explorer][sfx-cluster-map]
+>[AZURE.NOTE] クラスター マップにもう 1 つの軸には、アップグレード ドメインが表示されます。これは、計画的なメンテナンス アクティビティに基づいてノードを論理的にグループ化するものです。Azure の Service Fabric クラスターは常に、5 つのアップグレード ドメインにレイアウトされます。
 
->[AZURE.NOTE] The other axis in the cluster map shows upgrade domains, which logically group nodes based on planned maintenance activities. Service Fabric clusters in Azure are always laid out across five upgrade domains.
+### 地理的な分散
 
-### <a name="geographic-distribution"></a>Geographic distribution
+現在、[世界中に 26 の Azure リージョンがあり][azure-regions]、さらに追加のリージョンが発表されています。個々のリージョンは、さまざまな要因の中でも特に需要と適切な場所の可用性に応じて、1 つまたは複数の物理的データ センターを持つことができます。ただし、複数の物理データ センターを持つリージョンであっても、クラスターの VM がこれらの物理的な場所に均等に分散されるという保証はありません。実際、現時点では、特定のクラスターのすべての VM は 1 つの物理サイトにプロビジョニングされます。
 
-There are currently [26 Azure regions throughout the world][azure-regions], with several more announced. An individual region can contain one or more physical data centers depending on demand and the availability of suitable locations, among other factors. Note, however, that even in regions that contain multiple physical data centers, there is no guarantee that your cluster's VMs will be evenly spread across those physical locations. Indeed, currently, all VMs for a given cluster are provisioned within a single physical site.
+## 障害への対処
 
-## <a name="dealing-with-failures"></a>Dealing with failures
+クラスターに影響を与える可能性のある障害には複数の種類があり、それぞれに固有の対応策があります。それらを発生する可能性の高い順に見ていきます。
 
-There are several types of failures that can impact your cluster, each with its own mitigation. We will look at them in order of likelihood to occur.
+### 個々のマシンの障害
 
-### <a name="individual-machine-failures"></a>Individual machine failures
+前述のように、個々のマシンの障害は、それが VM、ハードウェア、または障害ドメインでそれをホストするソフトウェアのどこで発生したものであっても、それ自体ではリスクはありません。通常、Service Fabric は数秒で障害を検出し、クラスターの状態に基づいて適切に対応します。たとえば、ノードがパーティションのプライマリ レプリカをホストしていた場合は、パーティションのセカンダリ レプリカから新しいプライマリが選択されます。障害が発生したマシンは、Azure によって回復されると、自動的にクラスターに再び参加し、ワークロードを分担します。
 
-As mentioned, individual machine failures, either within the VM or in the hardware or software hosting it within a fault domain, pose no risk on their own. Service Fabric will typically detect the failure within seconds and respond accordingly based on the state of the cluster. For instance, if the node was hosting the primary replicas for a partition, a new primary is elected from the partition's secondary replicas. When Azure brings the failed machine back up, it will rejoin the cluster automatically and once again take on its share of the workload.
+### 複数のマシンの同時障害
 
-### <a name="multiple-concurrent-machine-failures"></a>Multiple concurrent machine failures
+障害ドメインによりマシンの同時障害のリスクは大幅に低下しますが、複数のランダムな障害によってクラスター内の複数のマシンが同時にダウンする可能性は常にあります。
 
-While fault domains significantly reduce the risk of concurrent machine failures, there is always the potential for multiple random failures to bring down several machines in a cluster simultaneously.
+一般に、ノードの過半数が利用可能な限り、ステートフルなレプリカが小さいマシン セットにパックされ、負荷分散に使用できるステートレス インスタンスが少なくなるため能力は低下するものの、クラスターは動作し続けます。
 
-In general, as long as a majority of the nodes remain available, the cluster will continue to operate, albeit at lower capacity as stateful replicas get packed into a smaller set of machines and fewer stateless instances are available to spread load.
+#### クォーラムの損失
 
-#### <a name="quorum-loss"></a>Quorum loss
+ステートフル サービスのパーティションのレプリカの過半数がダウンした場合、そのパーティションは "クォーラム損失" と呼ばれる状態になります。 この時点で、Service Fabric はそのパーティションへの書き込み許可を停止し、パーティションの一貫性と信頼性が保たれるようにします。実際には、クライアントのデータが本当は保存されていないのに保存されたものとしてクライアントに通知されないよう、使用不可能な期間を受け入れるようになっています。管理者がそのステートフル サービスのセカンダリ レプリカからの読み取りを許可している場合、この状態の間も読み取り操作の実行を続けられることに注意してください。十分な数のレプリカが復旧するまで、またはクラスターの管理者が [Repair-ServiceFabricPartition API][repair-partition-ps].を使って強制的にシステムを使用できるようにするまで、パーティションはクォーラム損失状態のままになります。
 
-If a majority of the replicas for a stateful service's partition go down, that partition enters a state known as "quorum loss." At this point, Service Fabric stops allowing writes to that partition to ensure that its state remains consistent and reliable. In effect, we are choosing to accept a period of unavailability to ensure that clients are not told that their data was saved when in fact it was not. Note that if you have opted in to allowing reads from secondary replicas for that stateful service, you can continue to perform those read operations while in this state. A partition remains in quorum loss until a sufficient number of replicas come back or until the cluster administrator forces the system to move on using the [Repair-ServiceFabricPartition API][repair-partition-ps].
+>[AZURE.WARNING] プライマリ レプリカがダウンしたときに修復アクションを実行すると、データの損失が発生します。
 
->[AZURE.WARNING] Performing a repair action while the primary replica is down will result in data loss.
+システム サービスでもクォーラム損失が発生する可能性があり、その影響は問題のあるサービスに固有です。たとえば、ネーム サービスでクォーラム損失が発生すると名前の解決に影響があり、フェールオーバー マネージャー サービスの場合は新しいサービスの作成とフェールオーバーがブロックされます。ユーザー独自のサービスとは異なり、システム サービスは "*修復しない*" ことをお勧めします。代わりに、単にダウンしたレプリカが復旧するまで待つことをお勧めします。
 
-System services can also suffer quorum loss, with the impact being specific to the service in question. For instance, quorum loss in the naming service will impact name resolution, whereas quorum loss in the failover manager service will block new service creation and failovers. Note that unlike for your own services, attempting to repair system services is *not* recommended. Instead, it is preferable to simply wait until the down replicas return.
+#### クォーラム損失のリスクを最小限に抑える
 
-#### <a name="minimizing-the-risk-of-quorum-loss"></a>Minimizing the risk of quorum loss
+サービスのターゲット レプリカ セットのサイズを大きくすることで、クォーラム損失のリスクを最小限に抑えることができます。他のノードは書き込みに使用できるものとして、同時にいくつのノードが使用できなくなっても許容できるかという観点から、必要なレプリカの数を考えることをお勧めします。アプリケーションまたはクラスターのアップグレードを行うと、ハードウェア障害に加えて、ノードが一時的に使用できなくなることに注意してください。
 
-You can minimize your risk of quorum loss by increasing the target replica set size for your service. It is helpful to think of the number of replicas you need in terms of the number of unavailable nodes you can tolerate at once while remaining available for writes, keeping in mind that application or cluster upgrades can make nodes temporarily unavailable, in addition to hardware failures.
+運用サービスに推奨されるレプリカの最小数である MinReplicaSetSize を 3 にしてサービスが構成されているものとして、次の例を検討してください。TargetReplicaSetSize が 3 では (プライマリが 1、セカンダリが 2)、アップグレードの間にハードウェア障害が発生すると (2 つのレプリカがダウン)、クォーラム損失状態になり、サービスは読み取り専用になります。レプリカを 5 つにすると、アップグレードの間に 2 つのレプリカで障害が発生しても (3 つのレプリカがダウン)、残りの 2 つのレプリカが最小のレプリカ セット内のクォーラムを形成するので耐えられます。
 
-Consider the following examples assuming that you've configured your services to have a MinReplicaSetSize of three, the smallest number recommended for production services. With a TargetReplicaSetSize of three (one primary and two secondaries), a hardware failure during an upgrade (two replicas down) will result in quorum loss and your service will become read-only. Alternatively, if you have five replicas, you would be able to withstand two failures during upgrade (three replicas down) as the remaining two replicas can still form a quorum within the minimum replica set.
+### データ センターの停止または破壊
 
-### <a name="data-center-outages-or-destruction"></a>Data center outages or destruction
+まれに、停電やネットワーク切断のために、物理的なデータ センターが一時的に使用できなくなることがあります。このような場合は、Service Fabric クラスターとアプリケーションも同様に使用できなくなりますが、データは保存されます。Azure で実行されているクラスターの場合、[Azure ステータス ページ][azure-status-dashboard]で停止時の更新を確認できます。
 
-In rare cases, physical data centers can become temporarily unavailable due to loss of power or network connectivity. In these cases, your Service Fabric clusters and applications will likewise be unavailable but your data will be preserved. For clusters running in Azure, you can view updates on outages on the [Azure status page][azure-status-dashboard].
+極めてまれなことですが、データ センター全体が物理的に破棄された場合、そこでホストされている Service Fabric クラスターはその状態と共に失われます。
 
-In the highly unlikely event that an entire physical data center is destroyed, any Service Fabric clusters hosted there will be lost, along with their state.
-
-To protect against this possibility, it is critically important to periodically [backup your state](service-fabric-reliable-services-backup-restore.md) to a geo-redundant store and ensure that you have validated the ability to restore it. How often you perform a backup will be dependent on your recovery point objective (RPO). Even if you have not fully implemented backup and restore yet, you should implement a handler for the `OnDataLoss` event so that you can log when it occurs as follows:
+このような可能性を防ぐため、地理的に異なる場所のストアに定期的に[状態をバックアップ](service-fabric-reliable-services-backup-restore.md)し、復元できるようにしておくことが非常に重要です。バックアップを実行する頻度は、目標復旧時点 (RPO) によって決まります。バックアップと復元をまだ完全に実装していない場合でも、次のようにして `OnDataLoss` イベント用のハンドラーを実装し、イベントが発生したときにログを取得できるようにしておく必要があります。
 
 ```c#
 protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
@@ -86,23 +85,23 @@ protected virtual Task<bool> OnDataLoss(CancellationToken cancellationToken)
 ```
 
 
-### <a name="software-failures-and-other-sources-of-data-loss"></a>Software failures and other sources of data loss
+### ソフトウェア障害およびデータ損失の他の原因
 
-As a cause of data loss, code defects in services, human operational errors, and security breaches are more common than widespread data center failures. However, in all cases, the recovery strategy is the same: take regular backups of all stateful services and exercise your ability to restore that state.
+データ損失の原因としては、サービスのコードの欠陥、人為的な操作エラー、およびセキュリティ侵害の方が、広範囲にわたるデータ センターの障害より一般的です。ただし、どのような場合でも、復旧方法は同じです。すべてのステートフル サービスの定期的なバックアップを実行し、その状態を復元する方法を練習しておきます。
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-- Learn how to simulate various failures using the [testability framework](service-fabric-testability-overview.md)
-- Read other disaster-recovery and high-availability resources. Microsoft has published a large amount of guidance on these topics. While some of these documents refer to specific techniques for use in other products, they contain many general best practices you can apply in the Service Fabric context as well:
- - [Availability checklist](../best-practices-availability-checklist.md)
- - [Performing a disaster recovery drill](../sql-database/sql-database-disaster-recovery-drills.md)
- - [Disaster recovery and high availability for Azure applications][dr-ha-guide]
+- [Testability フレームワーク](service-fabric-testability-overview.md)を使用してさまざまな障害をシミュレートする方法を学習します。
+- 障害復旧と高可用性に関する他のリソースを読みます。Microsoft は、これらのトピックに関して多数のガイダンスを公開しています。これらのドキュメントの一部は他の製品で使用するための具体的な方法に関するものですが、Service Fabric にも適用できる多くの一般的なベスト プラクティスが含まれます。
+ - [可用性のチェックリスト](../best-practices-availability-checklist.md)
+ - [障害復旧訓練の実行](../sql-database/sql-database-disaster-recovery-drills.md)
+ - [Azure アプリケーションの障害復旧と高可用性][dr-ha-guide]
 
 
 <!-- External links -->
 
 [repair-partition-ps]: https://msdn.microsoft.com/library/mt163522.aspx
-[azure-status-dashboard]:https://azure.microsoft.com/status/
+[azure-status-dashboard]: https://azure.microsoft.com/status/
 [azure-regions]: https://azure.microsoft.com/regions/
 [dr-ha-guide]: https://msdn.microsoft.com/library/azure/dn251004.aspx
 
@@ -111,8 +110,4 @@ As a cause of data loss, code defects in services, human operational errors, and
 
 [sfx-cluster-map]: ./media/service-fabric-disaster-recovery/sfx-clustermap.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,84 +1,78 @@
 <properties
-    pageTitle="Troubleshoot autoscale with Virtual Machine Scale Sets | Microsoft Azure"
-    description="Troubleshoot autoscale with Virtual Machine Scale Sets. Understand typical problems encountered and how to resolve them."
-    services="virtual-machine-scale-sets"
-    documentationCenter=""
-    authors="gbowerman"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="仮想マシン スケール セットの自動スケールに関するトラブルシューティング | Microsoft Azure"
+	description="仮想マシン スケール セットの自動スケールに関するトラブルシューティングを行います。よくある問題とその解決方法について説明します。"
+	services="virtual-machine-scale-sets"
+	documentationCenter=""
+	authors="gbowerman"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machine-scale-sets"
-    ms.workload="na"
-    ms.tgt_pltfrm="windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="03/28/2016"
-    ms.author="guybo"/>
+	ms.service="virtual-machine-scale-sets"
+	ms.workload="na"
+	ms.tgt_pltfrm="windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/28/2016"
+	ms.author="guybo"/>
     
+# 仮想マシン スケール セットの自動スケールに関するトラブルシューティング
 
-# <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Troubleshooting autoscale with Virtual Machine Scale Sets
+**問題** – Azure Resource Manager で仮想マシン スケール セットを使用して自動スケール インフラストラクチャを作成しました。このとき、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
 
-**Problem** – you’ve created an autoscaling infrastructure in Azure Resource Manager using VM Scale Sets –  for example by deploying a template like this: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale  – you have your scale rules defined and it works great, except that no matter how much load you put on the VMs, it won’t autoscale.
+## トラブルシューティングの手順
 
-## <a name="troubleshooting-steps"></a>Troubleshooting steps
+次のような点を検討します。
 
-Some things to consider include:
+- 各 VM のコア数はいくつですか。すべてのコアを読み込んでいますか。 上の例の Azure Quickstart テンプレートには do\_work.php スクリプトが含まれ、1 つのコアが読み込まれます。Standard\_A1 よりも大きい VM を使用する場合、これを複数回読み込む必要があります。VM のコア数を確認する方法については、「[Azure の Windows 仮想マシンのサイズ](../virtual-machines/virtual-machines-windows-sizes.md)」をご覧ください。
 
-- How many cores does each VM have, and are you loading each core?
- The example Azure Quickstart template above has a do_work.php script, which loads a single core. If you’re using a VM bigger than Standard_A1 then you’d need to run this load multiple times. Check how many cores your VMs by reviewing [Sizes for Windows virtual machines in Azure](../virtual-machines/virtual-machines-windows-sizes.md)
+- VM スケール セット内の VM 数はいくつですか。VM ごとに設定を行っていませんか。
 
-- How many VMs in the VM Scale Set, are you doing work on each one?
+    自動スケール規則で定義された時間内に、スケール セット内の**すべての** VM における平均 CPU 使用率がしきい値を超えた場合にのみ、スケールアウト イベントが発生します。
 
-    A scale out event will only take place when the average CPU across **all** the VMs in a scale set exceeds the threshold value, over the time internal defined in the autoscale rules.
+- スケール イベントを見逃していませんか。
 
-- Did you miss any scale events?
+    Azure ポータルで監査ログを確認し、スケール イベントを探してください。スケールアップやスケールダウンを見逃している可能性があります。"Scale" でフィルター処理できます。
 
-    Check the audit logs in the Azure portal for scale events. Maybe there was a scale up and a scale down which was missed. You can filter by “Scale”..
+	![Audit Logs][audit]
 
-    ![Audit Logs][audit]
+- スケールインとスケールアウトのしきい値の間に十分な差を確保していますか。
 
-- Are your scale-in and scale-out thresholds sufficiently different?
+    たとえば、平均 CPU 使用率が 5 分間にわたって 50% を超えた場合にスケールアウトし、平均 CPU 使用率が 50% を割り込んだときにスケールインする規則を設定したとします。CPU 使用率がこのしきい値に近付くと、スケール アクションによってセットのサイズが絶え間なく増減されるという "フラッピング" 問題が発生します。自動スケール サービスはこの "フラッピング" を防止しようとするため、自動スケールが実行されなくなる場合があります。そのため、スケールアウトとスケールインのしきい値の間に十分な差を付けて、自動スケーリングが実行される余裕を確保する必要があります。
 
-    Suppose you set a rule to scale out when average CPU is greater than 50% over 5 minutes, and to scale in when average CPU is less than 50%. This would cause a “flapping” problem when CPU usage is close to this threshold, with scale actions constantly increasing and decreasing the size of the set. Because of this, the autoscale service tries to prevent “flapping”, which can manifest as not scaling. Therefore make sure your scale-out and scale-in thresholds are sufficiently different to allow some space in between scaling.
+- 独自の JSON テンプレートを作成しましたか。
 
-- Did you write your own JSON template?
+    JSON テンプレートは間違いが起きやすいため、最初のうちは上の例のような確実に機能するテンプレートを基にして、少しずつ変更を加えるようにしてください。JSON テンプレートでは、診断拡張機能のストレージ アカウント、スケール セット、Microsoft.Insights リソースを関連付け、パフォーマンス データ メトリックの名前を正しく参照する必要があります。この名前は、Windows と Linux で異なります。
 
-    It is easy to make mistakes, so start with a template like the one above which is proven to work, and make small incremental changes. The template needs to correlate a Diagnostics extension storage account, the scale set, and the Microsoft.Insights resource, and correctly reference the performance data metric name, which differs between Windows and Linux.
+- 手動でスケールインまたはスケールアウトできますか。
 
-- Can you manually scale in or out?
+    "capacity" 設定を変えた VM スケール セット リソースを再デプロイして、VM 数を手動で変更してみてください。そのためのテンプレートの例については、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing を参照してください。必要に応じてテンプレートを編集して、スケール セットで使用されている仮想マシン サイズと同じにしてください。VM 数を手動で変更できた場合、問題の原因が自動スケールに限定されます。
 
-    Try redeploying the VM Scale Set resource with a different “capacity” setting to change the number of VMs manually. An example template to do this is here: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – you may need to edit the template to make sure it has the same machine size as your Scale Set is using. If you can successfully change the number of VMs manually, then you know the problem is isolated to autoscale.
+- Microsoft.Compute/virtualMachineScaleSet を確認してください。また、[Azure リソース エクスプローラー](https://resources.azure.com/)で Microsoft.Insights リソースを確認してください。
 
-- Check your Microsoft.Compute/virtualMachineScaleSet, and Microsoft.Insights resources in the [Azure Resource Explorer](https://resources.azure.com/) 
+    このツールは Azure Resource Manager リソースの状態を表示できるため、トラブルシューティングには欠かせません。サブスクリプションをクリックし、トラブルシューティングを行うリソース グループを表示します。Compute リソースプロバイダーの下で、作成した VM スケール セットを探し、インスタンス ビューでデプロイの状態を確認します。また、VM スケール セット内の VM のインスタンス ビューも確認します。次に Microsoft.Insights リソースプロバイダーに移動し、自動スケール規則が適切かどうかを確認します。
 
-    This is an indispensable troubleshooting tool which shows you the state of your Azure Resource Manager resources. Click on your subscription and look at the Resource Group you are troubleshooting. Under the Compute resource provider look at the VM Scale Set you created and check the Instance View, which shows you the state of a deployment. Also check the instance view of VMs in the VM Scale Set. Then go into the Microsoft.Insights resource provider and check the autoscale rules look good.
-
-- Is the Diagnostic extension working and emitting performance data?
+- 診断拡張機能が動作し、パフォーマンス データを出力していますか。
  
-    Autoscale in Azure Resource Manager works by means of a VM extension called the Diagnostics Extension (divided into Linux Diagnostics extension and Windows). It emits performance data to a storage account you define in the template. This data is then aggregated by the Azure Insights service.
+    Azure Resource Manager の自動スケールは、診断拡張機能と呼ばれる VM 拡張機能によって動作します (Linux 診断拡張機能と Windows 診断拡張機能に分かれています)。テンプレートで定義されているストレージ アカウントにパフォーマンス データが出力されます。その後、このデータは Azure Insights サービスによって集計されます。
 
-    If the Insights service can’t read data from the VMs, it is supposed to send you an email – for example if the VMs were down, so check your email (the one you specified when creating the Azure account).
+    VM がダウンした場合など、Insights サービスが VM からデータを読み取れない場合には、Insights サービスからメールが送信されます。メールが届いていないかどうか確認してください (Azure アカウントの作成時に指定したメール アドレスです)。
 
-    You can also go and look at the data yourself. Look at the Azure storage account using a cloud explorer. For example using the [Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2), log in and pick the Azure subscription you’re using, and the Diagnostics storage account name referenced in the Diagnostics extension definition in your deployment template..
+    自分でデータを確認することもできます。Cloud Explorer を使用して Azure ストレージ アカウントを確認します。たとえば、[Visual Studio Cloud Explorer](https://visualstudiogallery.msdn.microsoft.com/aaef6e67-4d99-40bc-aacf-662237db85a2) を使用して、現在利用中の Azure サブスクリプションにログインし、デプロイ テンプレートの診断拡張機能の定義で参照されている診断ストレージ アカウントの名前を選択します。
 
-    ![Cloud Explorer][explorer]
+	![Cloud Explorer][explorer]
 
-    Here you will see a bunch of tables where the data from each VM is being stored. Taking Linux and the CPU metric as an example, look at the most recent rows. The Visual Studio cloud explorer supports a query language so you can run a query like “Timestamp gt datetime’2016-02-02T21:20:00Z’” to make sure you get the most recent events (assume time is in UTC). Does the data you see in there correspond to the scale rules you set up? In the example below, the CPU for machine 20 started increasing to 100% over the last 5 minutes..
+    ここでは、各 VM のデータが格納される一連のテーブルが表示されています。例として、Linux と CPU のメトリックで最新の行を見てみましょう。Visual Studio Cloud Explorer ではクエリ言語がサポートされるため、「Timestamp gt datetime’2016-02-02T21:20:00Z’」のようなクエリを実行することで最新のイベントを確実に取得できます (時刻が UTC の場合)。ここに表示されるデータは、設定したスケール規則に対応しているでしょうか。 次の例では、仮想マシン 20 の CPU 使用率がこの 5 分間で 100% に上昇しています。
 
-    ![Storage Tables][tables]
+	![Storage Tables][tables]
 
-    If the data is not there, then it implies the problem is with the diagnostic extension running in the VMs. If the data is there, it implies there is either a problem with your scale rules, or with the Insights service. Check [Azure Status](https://azure.microsoft.com/status/).
+    データがない場合、VM で実行されている診断拡張機能に問題があることがわかります。データが存在する場合は、スケール規則と Insights サービスのどちらかに問題があることがわかります。[Azure の状態](https://azure.microsoft.com/status/)を確認してください。
 
-    Once you’ve been through these steps, you could try the forums on [MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp), or [Stack overflow](http://stackoverflow.com/questions/tagged/azure), or log a support call. Be prepared to share the template and a view of the performance data.
+    これまでの手順を終えても問題が解決しない場合は、[MSDN](https://social.msdn.microsoft.com/forums/azure/home?category=windowsazureplatform%2Cazuremarketplace%2Cwindowsazureplatformctp) または [Stack Overflow](http://stackoverflow.com/questions/tagged/azure) のフォーラムをご利用になるか、サポートまでお問い合わせください。テンプレートと、パフォーマンス データのビューを共有できるように準備しておいてください。
 
 [audit]: ./media/virtual-machine-scale-sets-troubleshoot/image3.png
 [explorer]: ./media/virtual-machine-scale-sets-troubleshoot/image1.png
 [tables]: ./media/virtual-machine-scale-sets-troubleshoot/image4.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0427_2016-->

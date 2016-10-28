@@ -1,6 +1,6 @@
 <properties
-pageTitle="Customize your sign-in page in the Azure Active Directory preview | Microsoft Azure"
-description="Learn how to add a company branding to the Azure sign-in page"
+pageTitle="Azure Active Directory プレビューでサインイン ページをカスタマイズする | Microsoft Azure"
+description="Azure サインイン ページに会社のブランドを追加する方法について説明します。"
 services="active-directory"
 documentationCenter=""
 authors="curtand"
@@ -13,83 +13,61 @@ ms.workload="identity"
 ms.tgt_pltfrm="na"
 ms.devlang="na"
 ms.topic="article"
-ms.date="09/30/2016"
+ms.date="09/12/2016"
 ms.author="curtand"/>
 
+# Azure Active Directory プレビューでサインイン ページに会社のブランドを追加する
 
-# <a name="add-company-branding-to-your-sign-in-page-in-the-azure-active-directory-preview"></a>Add company branding to your sign-in page in the Azure Active Directory preview
+多くの企業は、管理下にある Web サイトとサービスに関して利用者が戸惑わないよう、そのすべての外観に統一感を持たせたいと考えています。Azure Active Directory プレビューでは、会社のロゴや独自の配色でサインイン ページの外観をカスタマイズできるようにすることでこれを実現します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。 サインイン ページは、Office 365 など、Azure AD を ID プロバイダーとして使用する Web ベースのアプリケーションにサインインするときに表示されるページです。このページを使用して資格情報を入力します。
 
-To avoid confusion, many companies want to apply a consistent look and feel across all the websites and services they manage. Azure Active Directory preview provides this capability by allowing you to customize the appearance of the sign-in page with your company logo and custom color schemes. [What's in the preview?](active-directory-preview-explainer.md) The sign-in page is the page that appears when you sign in to Office 365 or other web-based applications that are using Azure AD as your identity provider. You interact with this page to enter your credentials.
+このページに会社のブランド、色、およびその他のカスタマイズ可能な要素を表示する場合は、次の画像を参照して、2 つのエクスペリエンスの違いを理解してください。
 
-If you want to show your company brand, colors and other customizable elements on this page, see the following images to understand the difference between the two experiences.
-
-The following screenshot shows and example for the Office 365 sign-in page on a desktop computer **before** a customization:
+次のスクリーンショットは、デスクトップ コンピューターに表示された、カスタマイズ**前**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page before customization](./media/active-directory-branding-custom-signon-azure-portal/sign-in-page-before-customization.png)
 
-The following screenshot shows and example for the Office 365 sign-in page on a desktop computer **after** a customization:
+次のスクリーンショットは、デスクトップ コンピューターに表示された、カスタマイズ**後**の Office 365 サインイン ページの例を示しています。
 
 ![Office 365 sign-in page after customization](./media/active-directory-branding-custom-signon-azure-portal/sign-in-page-after-customization.png)
 
 
-## <a name="customizing-the-sign-in-page"></a>Customizing the sign-in page
+## サインイン ページのカスタマイズ
 
-Typically, if you need browser-based access to your cloud apps and services that your organization subscribes to, you use the sign-in page.
+クラウド アプリやクラウド サービスを勤務先の会社がサブスクライブしているとき、それらがブラウザーでアクセスする仕様になっている場合、通常、サインイン ページが使用されます。
 
-If you have applied changes to your sign-in page, it can take up to an hour for the changes to appear.
+サインイン ページに変更を適用した場合、変更が反映されるまでに最大 1 時間かかる場合があります。
 
-A branded sign-in page only appears when you visit a service with a tenant-specific URL such as https://outlook.com/**contoso**.com, or https://mail.**contoso**.com.
+ブランド化されたサインイン ページが表示されるのは、テナント固有の URL (https://outlook.com/**contoso**.com や https://mail.**contoso**.com など) でサービスにアクセスしたときだけです。
 
-When you visit a service with non-tenant specific URLs (e.g.: https://mail.office365.com), a non-branded sign-in page appears. in this case, your branding appears once you have entered your user ID or you have selected a user tile.
+テナント固有ではない URL (https://mail.office365.com など) でサービスにアクセスした場合、ブランド化されていないサインイン ページが表示されます。この場合、ユーザー ID を入力するか、ユーザー タイルを選択すると、ブランドが表示されます。
 
 > [AZURE.NOTE]
 >
-- Your domain name must appear as “Active" in the **Domains** portion of the Azure portal in which you have configured branding. For more information, see [Add custom domain names](active-directory-domains-add-azure-portal.md).
-- Sign-in page branding doesn’t carry over to the consumer sign in page of Microsoft. If you sign in with a Microsoft account, you may see a branded list of user tiles rendered by Azure AD, but the branding of your organization does not apply to the Microsoft account sign-in page.
+- ドメイン名は、ブランドを構成した Azure ポータルの **[ドメイン]** 部分に "アクティブ" として表示される必要があります。詳細については、[カスタム ドメイン名の追加](active-directory-domains-add-azure-portal.md)に関する記事をご覧ください。
+- サインイン ページのブランド化は、Microsoft のコンシューマー向けサインイン ページには継承されません。Microsoft アカウントでサインインすると、Azure AD によってレンダリングされるユーザー タイルのブランド化された一覧が表示されることがありますが、組織のブランドは Microsoft アカウントのサインイン ページには適用されません。
 
-On your sign-in page, the **Keep me signed in** checkbox allows a user to remain signed in when they close and re-open their browser. 
+**ディレクトリに会社のブランドを追加するには**
 
-   ![Keep me signed-in](./media/active-directory-branding-custom-signon-azure-portal/01.png)
+1.  ディレクトリの全体管理者であるアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-It does not effect session lifetime. You can hide the checkbox on the Azure Active Directory sign-in page.
-Whether the checkbox is displayed depends on the setting of **Keep me signed in disabled**.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-   ![Keep me signed-in](./media/active-directory-branding-custom-signon-azure-portal/02.png)
+    ![ユーザー管理を開く](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
 
+3. **[ユーザーとグループ]** ブレードで、**[Company branding (会社のブランド)]** を選択します。
 
-To hide the checkbox, configure this setting to **Yes**. 
+4. **[Users and groups - Company branding (ユーザーとグループ - 会社のブランド)]** ブレードで、**[編集]** をクリックします。
 
-> [AZURE.NOTE] Some features of SharePoint Online and Office 2010 depend on users being able to check this box. If you configure this setting to hidden, your users may see additional and unexpected prompts to sign-in.
+    ![カスタム ブランドを編集する](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
 
+5. カスタマイズする要素に変更を加えます。すべての要素は省略できます。
 
+6. [**Save**] をクリックします。
 
+サインイン ページのブランドに加えた変更が表示されるまでに、最大 1 時間かかる場合があります。
 
-**To add company branding to your directory:**
+## 次のステップ
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+[言語固有の会社のブランドを追加する](active-directory-branding-localize-azure-portal.md)
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
-
-    ![Opening user management](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
-
-3. On the **Users and groups** blade, select **Company branding**.
-
-4. On the **Users and groups - Company branding** blade, select the **Edit** command.
-
-    ![Edit custom branding](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
-
-5. Modify the elements you want to customize. All elements are optional.
-
-6. Click **Save**.
-
-It can take up to an hour for any changes you made to the sign-in page branding to appear.
-
-## <a name="next-steps"></a>Next steps
-
-[Add language-specific company branding](active-directory-branding-localize-azure-portal.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

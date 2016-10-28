@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Load test your application by using Visual Studio Team Services | Microsoft Azure"
-    description="Learn how to stress test your Azure Service Fabric applications by using Visual Studio Team Services."
+    pageTitle="Visual Studio Team Services を使用してアプリケーションのロード テストを実行する | Microsoft Azure"
+    description="Visual Studio Team Services を使用して Azure Service Fabric アプリケーションのストレス テストを実行する方法について説明します。"
     services="service-fabric"
     documentationCenter="na"
     authors="cawams"
@@ -16,120 +16,120 @@
     ms.date="07/29/2016"
     ms.author="cawa" />
 
+# Visual Studio Team Services を使用してアプリケーションのロード テストを実行する
 
-# <a name="load-test-your-application-by-using-visual-studio-team-services"></a>Load test your application by using Visual Studio Team Services
+この記事では、Microsoft Visual Studio ロード テスト機能を使用して、アプリケーションのストレス テストを実行する方法について説明します。この機能では、Azure Service Fabric のステートフル サービス バックエンドとステートレス サービス Web フロントエンドが使用されます。この記事で使用するサンプル アプリケーションは、飛行機の位置特定シミュレーターです。ユーザーが飛行機の ID、出発時刻、および目的地を指定すると、アプリケーションのバックエンドによって要求が処理され、フロントエンドによって条件に一致する飛行機がマップに表示されます。
 
-This article shows how to use Microsoft Visual Studio load test features to stress test an application. It uses an Azure Service Fabric stateful service back end and a stateless service web front end. The example application used here is an airplane location simulator. You provide an airplane ID, departure time, and destination. The application’s back end processes the requests, and the front end displays on a map the airplane that matches the criteria.
+次の図は、テストする Service Fabric アプリケーションを示しています。
 
-The following diagram illustrates the Service Fabric application that you'll be testing.
+![航空機の位置を特定するサンプル アプリケーションの図][0]
 
-![Diagram of the example airplane location application][0]
+## 前提条件
+始める前に、次の手順を実行する必要があります。
 
-## <a name="prerequisites"></a>Prerequisites
-Before getting started, you need to do the following:
+- Visual Studio Team Services アカウントを取得する。[Visual Studio Team Services](https://www.visualstudio.com) で無料で取得できます。
+- Visual Studio 2013 または Visual Studio 2015 を取得してインストールする。この記事では、Visual Studio 2015 Enterprise エディションを使用しますが、Visual Studio 2013 など他のエディションも同様に機能します。
+- ステージング環境にアプリケーションをデプロイする。詳細については、[Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする方法](service-fabric-publish-app-remote-cluster.md)を参照してください。
+- アプリケーションの使用パターンを理解する。この情報は、ロード パターンをシミュレートするために使用されます。
+- ロード テストの目標を理解する。これは、ロード テストの結果の解釈と分析に役立ちます。
 
-- Get a Visual Studio Team Services account. You can get one for free at [Visual Studio Team Services](https://www.visualstudio.com).
-- Get and install Visual Studio 2013 or Visual Studio 2015. This article uses Visual Studio 2015 Enterprise edition, but Visual Studio 2013 and other editions should work similarly.
-- Deploy your application to a staging environment. See [How to deploy applications to a remote cluster using Visual Studio](service-fabric-publish-app-remote-cluster.md) for information about this.
-- Understand your application’s usage pattern. This information is used to simulate the load pattern.
-- Understand the goal for your load testing. This helps you interpret and analyze the load test results.
+## Web パフォーマンスとロード テストのプロジェクトの作成と実行
 
-## <a name="create-and-run-the-web-performance-and-load-test-project"></a>Create and run the Web Performance and Load Test project
+### Web パフォーマンスとロード テストのプロジェクトを作成する
 
-### <a name="create-a-web-performance-and-load-test-project"></a>Create a Web Performance and Load Test project
+1. Visual Studio 2015 を開きます。メニュー バーで、**[ファイル]**、**[新規作成]**、**[プロジェクト]** の順に選択し、**[新しいプロジェクト]** ダイアログ ボックスを開きます。
 
-1. Open Visual Studio 2015. Choose **File** > **New** > **Project** on the menu bar to open the **New Project** dialog box.
+2. **Visual C#** ノードを展開し、**[テスト]**、**[Web パフォーマンスとロード テストのプロジェクト]** を選択します。プロジェクトの名前を入力し、**[OK]** をクリックします。
 
-2. Expand the **Visual C#** node and choose **Test** > **Web Performance and Load Test project**. Give the project a name and then choose the **OK** button.
+    ![[新しいプロジェクト] ダイアログ ボックスのスクリーン ショット][1]
 
-    ![Screen shot of the New Project dialog box][1]
+    新しい Web パフォーマンスとロード テストのプロジェクトがソリューション エクスプローラーに表示されます。
 
-    You should see a new Web Performance and Load Test project in Solution Explorer.
+    ![新しいプロジェクトを表示したソリューション エクスプ ローラーのスクリーン ショット][2]
 
-    ![Screen shot of Solution Explorer showing the new project][2]
+### Web パフォーマンス テストを記録する
 
-### <a name="record-a-web-performance-test"></a>Record a web performance test
+1. .webtest プロジェクトを開きます。
 
-1. Open the .webtest project.
+2. **[記録の追加]** アイコンを選択して、ブラウザーで記録セッションを開始します。
 
-2. Choose the **Add Recording** icon to start a recording session in your browser.
+    ![ブラウザーの [記録の追加] アイコンのスクリーン ショット][3]
 
-    ![Screen shot of the Add Recording icon in a browser][3]
+    ![ブラウザーの [記録] ボタンのスクリーン ショット][4]
 
-    ![Screen shot of the Record button in a browser][4]
+3. Service Fabric アプリケーションを参照します。記録パネルに Web 要求が表示されます。
 
-3. Browse to the Service Fabric application. The recording panel should show the web requests.
+    ![記録パネルの Web 要求のスクリーン ショット][5]
 
-    ![Screen shot of web requests in the recording panel][5]
+4. ユーザーが実行すると予想される一連のアクションを実行します。これらのアクションは、負荷を生成するパターンとして使用されます。
 
-4. Perform a sequence of actions that you expect the users to perform. These actions are used as a pattern to generate the load.
+5. 完了したら、**[停止]** をクリックして記録を停止します。
 
-5. When you're done, choose the **Stop** button to stop recording.
+    ![[停止] ボタンのスクリーン ショット][6]
 
-    ![Screen shot of the Stop button][6]
+    Visual Studio の .webtest プロジェクトで一連の要求がキャプチャされます。動的パラメーターが自動的に置き換えられます。この時点で、テスト シナリオに含まれていない余分な依存関係要求の繰り返しを削除できます。
 
-    The .webtest project in Visual Studio should have captured a series of requests. Dynamic parameters are replaced automatically. At this point, you can delete any extra, repeated dependency requests that are not part of your test scenario.
+6. プロジェクトを保存し、**[テストの実行]** を選択して Web パフォーマンス テストをローカルで実行し、すべてが正常に機能していることを確認します。
 
-6. Save the project and then choose the **Run Test** command to run the web performance test locally and make sure everything works correctly.
+    ![[テストの実行] コマンドのスクリーン ショット][7]
 
-    ![Screen shot of the Run Test command][7]
+### Web パフォーマンス テストをパラメーター化する
 
-### <a name="parameterize-the-web-performance-test"></a>Parameterize the web performance test
+Web パフォーマンス テストをパラメーター化するには、コード化された Web パフォーマンス テストに変換し、そのコードを編集します。または、テストでデータが反復処理されるように、データの一覧に Web パフォーマンス テストをバインドすることもできます。Web パフォーマンス テストをコード化されたテストに変換する方法の詳細については、「[コード化された Web パフォーマンス テストの生成と実行](https://msdn.microsoft.com/library/ms182552.aspx)」を参照してください。Web パフォーマンス テストにデータをバインドする方法については、「[Web パフォーマンス テストへのデータ ソースの追加](https://msdn.microsoft.com/library/ms243142.aspx)」を参照してください。
 
-You can parameterize the web performance test by converting it to a coded web performance test and then editing the code. As an alternative, you can bind the web performance test to a data list so that the test iterates through the data. See [Generate and run a coded web performance test](https://msdn.microsoft.com/library/ms182552.aspx) for details about how to convert the web performance test to a coded test. See [Add a data source to a web performance test](https://msdn.microsoft.com/library/ms243142.aspx) for information about how to bind data to a web performance test.
+この例では、GUID を生成して飛行機 ID と置き換え、フライトを複数の場所に送信するための要求を追加できるように、Web パフォーマンス テストをコード化されたテストに変換します。
 
-For this example, we'll convert the web performance test to a coded test so you can replace the airplane ID with a generated GUID and add more requests to send flights to different locations.
+### ロード テスト プロジェクトを作成する
 
-### <a name="create-a-load-test-project"></a>Create a load test project
+ロード テスト プロジェクトは、Web パフォーマンス テストと単体テストで記述されている 1 つ以上のシナリオと、指定された追加のロード テスト設定で構成されます。次の手順は、ロード テスト プロジェクトを作成する方法を示しています。
 
-A load test project is composed of one or more scenarios described by the web performance test and unit test, along with additional specified load test settings. The following steps show how to create a load test project:
+1. Web パフォーマンスとロード テストのプロジェクトのショートカット メニューで、**[追加]**、**[ロード テスト]** の順に選択します。**ロード テスト** ウィザードで、**[次へ]** をクリックし、テストの設定を構成します。
 
-1. On the shortcut menu of your Web Performance and Load Test project, choose **Add** > **Load Test**. In the **Load Test** wizard, choose the **Next** button to configure the test settings.
+2. **[ロード パターン]** セクションで、持続ユーザー ロードとステップ ロードのどちらかを選択します。ステップ ロードは、少数のユーザーから開始して、徐々にユーザーを増やします。
 
-2. In the **Load Pattern** section, choose whether you want a constant user load or a step load, which starts with a few users and increases the users over time.
+    ユーザー負荷の量について正確な見積もりがあり、システムの現在のパフォーマンスを確認したい場合は、**[持続ロード]** を選択します。さまざまな量の負荷がある状況でシステムのパフォーマンスが一貫しているかどうかを把握したい場合は、**[ステップ ロード]** を選択します。
 
-    If you have a good estimate of the amount of user load and want to see how the current system performs, choose **Constant Load**. If your goal is to learn whether the system performs consistently under various loads, choose **Step Load**.
+3. **[テスト ミックス]** セクションで、**[追加]** をクリックし、ロード テストに含めるテストを選択します。**[配分]** 列で、合計テスト実行に対する各テストの割合を指定します。
 
-3. In the **Test Mix** section, choose the **Add** button and then select the test that you want to include in the load test. You can use the **Distribution** column to specify the percentage of total tests run for each test.
+4. **[実行設定]** セクションで、ロード テストの時間を指定します。
 
-4. In the **Run Settings** section, specify the load test duration.
+    >[AZURE.NOTE] **[テスト イテレーション]** オプションは、Visual Studio を使用してローカルでロード テストを実行する場合にのみ使用できます。
 
-    >[AZURE.NOTE] The **Test Iterations** option is available only when you run a load test locally using Visual Studio.
 
-5. In the **Location** section of **Run Settings**, specify the location where load test requests are generated. The wizard may prompt you to log in to your Team Services account. Log in and then choose a geographic location. When you're done, choose the **Finish** button.
+5. **[実行設定]** の **[場所]** で、ロード テストの要求が生成される場所を指定します。ウィザードで、Team Services アカウントにログインするよう要求される場合があります。地理的な場所を選択してログインします。完了したら、**[完了]** をクリックします。
 
-6. After the load test is created, open the .loadtest project and choose the current run setting, such as **Run Settings** > **Run Settings1 [Active]**. This opens the run settings in the **Properties** window.
+6. ロード テストを作成したら、.loadtest プロジェクトを開き、**[実行設定]** の **[Run Settings1 [Active]]** など、現在の実行設定を選択します。**[プロパティ]** ウィンドウの実行設定が開きます。
 
-7. In the **Results** section of the **Run Settings** properties window, the **Timing Details Storage** setting should have **None** as its default value. Change this value to **All Individual Details** to get more information on the load test results. See [Load Testing](https://www.visualstudio.com/load-testing.aspx) for more information on how to connect to Visual Studio Team Services and run a load test.
+7. **[実行設定]** プロパティ ウィンドウの **[結果]** セクションで、**[タイミングの詳細ストレージ**] 設定の既定値が **[なし]** に設定されています。ロード テスト結果の詳細情報を取得するために、この値を **[すべての個別詳細]** に変更します。Visual Studio Team Services に接続し、ロード テストを実行する方法の詳細については、[ロード テスト](https://www.visualstudio.com/load-testing.aspx)に関するページを参照してください。
 
-### <a name="run-the-load-test-by-using-visual-studio-team-services"></a>Run the load test by using Visual Studio Team Services
+### Visual Studio Team Services を使用してロード テストを実行する
 
-Choose the **Run Load Test** command to start the test run.
+**[ロード テストの実行]** を選択して、テストの実行を開始します。
 
-![Screen shot of the Run Load Test command][8]
+![[ロード テストの実行] コマンドのスクリーン ショット][8]
 
-## <a name="view-and-analyze-the-load-test-results"></a>View and analyze the load test results
+## ロード テスト結果の表示と分析
 
-As the load test progresses, the performance information is graphed. You should see something similar to the following graph.
+ロード テストの進行に合わせて、パフォーマンス情報がグラフ化されます。次のようなグラフが表示されます。
 
-![Screen shot of performance graph for load test results][9]
+![ロード テスト結果のパフォーマンス グラフのスクリーン ショット][9]
 
-1. Choose the **Download report** link near the top of the page. After the report is downloaded, choose the **View report** button.
+1. ページの上部にある **[レポートのダウンロード]** リンクを選択します。レポートをダウンロードしたら、**[レポートの表示]** をクリックします。
 
-    On the **Graph** tab you can see graphs for various performance counters. On the **Summary** tab, the overall test results appear. The **Tables** tab shows the total number of passed and failed load tests.
+    **[グラフ]** タブで、さまざまなパフォーマンス カウンターに対応したグラフを確認できます。**[概要]** タブに、全体的なテスト結果が表示されます。**[テーブル]** タブには、成功および失敗したロード テストの合計数が表示されます。
 
-2. Choose the number links on the **Test** > **Failed** and the **Errors** > **Count** columns to see error details.
+2. **[テスト]** の **[失敗]** 列と **[エラー]** の **[エラー数]** 列で数字のリンクを選択すると、エラーの詳細が表示されます。
 
-    The **Detail** tab shows virtual user and test scenario information for failed requests. This data can be useful if the load test includes multiple scenarios.
+    **[詳細]** タブには、失敗した要求の仮想ユーザーとテスト シナリオの情報が表示されます。このデータは、ロード テストに複数のシナリオが含まれている場合に役立ちます。
 
-See [Analyzing Load Test Results in the Graphs View of the Load Test Analyzer](https://www.visualstudio.com/load-testing.aspx) for more information on viewing load test results.
+ロード テストの結果を表示する方法の詳細については、[ロード テスト アナライザーのグラフ ビューでのロード テスト結果の分析](https://www.visualstudio.com/load-testing.aspx)に関するページを参照してください。
 
-## <a name="automate-your-load-test"></a>Automate your load test
+## ロード テストの自動化
 
-Visual Studio Team Services Load Test provides APIs to help you manage load tests and analyze results in a Team Services account. See [Cloud Load Testing Rest APIs](http://blogs.msdn.com/b/visualstudioalm/archive/2014/11/03/cloud-load-testing-rest-apis-are-here.aspx) for more information.
+Visual Studio Team Services のロード テストで提供されている API を使用して、Team Services アカウントでロード テストを管理し、結果を分析できます。詳細については、[クラウドのロード テスト用 Rest API](http://blogs.msdn.com/b/visualstudioalm/archive/2014/11/03/cloud-load-testing-rest-apis-are-here.aspx) に関するページを参照してください。
 
-## <a name="next-steps"></a>Next steps
-- [Monitoring and diagnosing services in a local machine development setup](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+## 次のステップ
+- [ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [0]: ./media/service-fabric-vso-load-test/OverviewDiagram.png
 [1]: ./media/service-fabric-vso-load-test/NewProjectDialog.png
@@ -142,8 +142,4 @@ Visual Studio Team Services Load Test provides APIs to help you manage load test
 [8]: ./media/service-fabric-vso-load-test/RunTest2.png
 [9]: ./media/service-fabric-vso-load-test/Graph.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

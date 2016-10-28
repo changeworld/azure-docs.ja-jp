@@ -1,75 +1,70 @@
 <properties
-    pageTitle="SQL Database Develop Overview | Microsoft Azure"
-    description="Learn about available connectivity libraries and best practices for applications connecting to SQL Database."
-    services="sql-database"
-    documentationCenter=""
-    authors="annemill"
-    manager="jhubbard"
-    editor="genemi"/>
+	pageTitle="SQL Database の開発の概要 | Microsoft Azure"
+	description="SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。"
+	services="sql-database"
+	documentationCenter=""
+	authors="annemill"
+	manager="jhubbard"
+	editor="genemi"/>
 
 
 <tags
-    ms.service="sql-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/17/2016"
-    ms.author="annemill"/>
+	ms.service="sql-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/17/2016"
+	ms.author="annemill"/>
 
+# SQL Database の開発: 概要
+この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
 
-# <a name="sql-database-development-overview"></a>SQL Database Development Overview
-This article walks through the basic considerations that a developer should be aware of when writing code to connect to Azure SQL Database.
+## 言語とプラットフォーム
+さまざまなプログラミング言語とプラットフォームで利用できるコード サンプルがあります。コード サンプルについては、次のリンクをご覧ください。
 
-## <a name="language-and-platform"></a>Language and platform
-There are code samples available for various programming languages and platforms. You can find links to the code samples at: 
+* 詳細: [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 
-* More Information: [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md)
+## リソースの制限事項
+Azure SQL Database では、リソース ガバナンスと制限の適用という 2 つの異なるメカニズムを使用して、データベースで使用できるリソースを管理します。
 
-## <a name="resource-limitations"></a>Resource limitations
-Azure SQL Database manages the resources available to a database using two different mechanisms: Resources Governance and Enforcement of Limits.
+* 詳細: [Azure SQL Database のリソース制限](sql-database-resource-limits.md)
 
-* More Information: [Azure SQL Database resource limits](sql-database-resource-limits.md)
+## セキュリティ
+Azure SQL Database には、SQL Database に対するアクセスの制限、データの保護、およびアクティビティの監視を行うためのリソースが用意されています。
 
-## <a name="security"></a>Security
-Azure SQL Database provides resources for limiting access, protecting data, and monitoring activities on a SQL Database.
+* 詳細: [SQL Database の保護](sql-database-security.md)
 
-* More Information: [Securing your SQL Database](sql-database-security.md)
+## 認証
+* Azure SQL Database では、SQL Server 認証のユーザーとログインの両方と、[Azure Active Directory 認証](sql-database-aad-authentication.md)ユーザーとログインがサポートされています。
+* 既定の*マスター* データベースではなく、特定のデータベースを明示的に指定する必要があります。
+* Transact-SQL の **USE myDatabaseName;** ステートメントを SQL Database に対して使用して別のデータベースに切り替えることはできません。
+* 詳細: [SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)
 
-## <a name="authentication"></a>Authentication
-* Azure SQL Database supports both SQL Server authentication users and logins, as well as [Azure Active Directory authentication](sql-database-aad-authentication.md) users and logins.
-* You need to specify a particular database, instead of defaulting to the *master* database.
-* You cannot use the Transact-SQL **USE myDatabaseName;** statement on SQL Database to switch to another database.
-* More information: [SQL Database security: Manage database access and login security](sql-database-manage-logins.md)
+## 回復性
+SQL Database への接続中に一時エラーが発生した場合は、コードで呼び出しを再試行する必要があります。再試行ロジックでは、複数のクライアントが同時に再試行することで SQL Database に過大な負荷がかかるのを防ぐために、バックオフ ロジックを使用することをお勧めします。
 
-## <a name="resiliency"></a>Resiliency
-When a transient error occurs while connecting to SQL Database, your code should retry the call.  We recommend that retry logic use backoff logic, so that it does not overwhelm the SQL Database with multiple clients retrying simultaneously.
+* コード サンプル: 再試行ロジックを示すコード サンプルについては、次の記事で好みの言語用のサンプルを参照してください: [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
+* 詳細: [SQL Database クライアント プログラムのエラー メッセージ](sql-database-develop-error-messages.md)
 
-* Code samples:  For code samples that illustrate retry logic, see samples for the language of your choice at: [Connection libraries for SQL Database and SQL Server](sql-database-libraries.md)
-* More information: [Error messages for SQL Database client programs](sql-database-develop-error-messages.md)
+## 接続の管理
+* クライアント接続ロジックの中で、タイムアウトが 30 秒になるように既定値をオーバーライドします。既定では 15 秒ですが、インターネットに依存する接続の場合、それでは短すぎます。
+* [接続プール](http://msdn.microsoft.com/library/8xx3tyca.aspx)を使用している場合は、プログラムで接続をアクティブに使用しておらず、再使用の準備をしていない時間は、接続を必ず閉じてください。
 
-## <a name="managing-connections"></a>Managing Connections
-* In your client connection logic, override the default timeout to be 30 seconds.  The default of 15 seconds is too short for connections that depend on the internet.
-* If you are using a [connection pool](http://msdn.microsoft.com/library/8xx3tyca.aspx), be sure to close the connection the instant your program is not actively using it, and is not preparing to reuse it.
+## ネットワークに関する考慮事項
+* クライアント プログラムをホストするコンピューターのファイアウォールで、ポート 1433 での発信 TCP が許可されていることを確認します。詳細: [ Azure ポータルを使用して Azure SQL Database ファイアウォールを構成する](sql-database-configure-firewall-settings.md)
+* クライアントが Azure 仮想マシン (VM) で実行されているときに、クライアント プログラムが SQL Database V12 に接続する場合、VM で特定のポートの範囲を開く必要があります。詳細: [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
+* Azure SQL Database V12 へのクライアント接続はプロキシを使用せずに、データベースに直接やり取りする場合があります。1433 以外のポートが重要になります。詳細: [ADO.NET 4.5 および SQL Database V12 における 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)
 
-## <a name="network-considerations"></a>Network Considerations
-* On the computer that hosts your client program, ensure the firewall allows outgoing TCP communication on port 1433.  More information: [Configure an Azure SQL Database firewall](sql-database-configure-firewall-settings.md)
-* If your client program connects to SQL Database V12 while your client runs on an Azure virtual machine (VM), you must open certain port ranges on the VM. More information: [Ports beyond 1433 for ADO.NET 4.5 and SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)
-* Client connections to Azure SQL Database V12 sometimes bypass the proxy and interact directly with the database. Ports other than 1433 become important. More information:  [Ports beyond 1433 for ADO.NET 4.5 and SQL Database V12](sql-database-develop-direct-route-ports-adonet-v12.md)
+## Elastic Scale によるデータ シャーディング
+Elastic Scale は、スケール アウト (およびスケール イン) のプロセスを簡略化します。
 
-## <a name="data-sharding-with-elastic-scale"></a>Data Sharding with Elastic Scale
-Elastic Scale simplifies the process of scaling out (and in). 
+* [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)
+* [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)
+* [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)
 
-* [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md)
-* [Data dependent routing](sql-database-elastic-scale-data-dependent-routing.md)
-* [Get Started with Azure SQL Database Elastic Scale Preview](sql-database-elastic-scale-get-started.md)
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+[SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
 
-Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

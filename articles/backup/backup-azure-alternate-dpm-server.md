@@ -1,111 +1,106 @@
 <properties
-    pageTitle="Recovering data from another DPM server in the backup vault | Microsoft Azure"
-    description="Recover the data you've protected to an Azure Backup vault from any DPM server registered to that vault."
-    services="backup"
-    documentationCenter=""
-    authors="nkolli1"
-    manager="shreeshd"
-    editor=""/>
+	pageTitle="バックアップ コンテナーで別の DPM サーバーからデータを復元する | Microsoft Azure"
+	description="コンテナーに登録されている DPM サーバーから、Azure Backup コンテナーに保護しているデータを復元します。"
+	services="backup"
+	documentationCenter=""
+	authors="nkolli1"
+	manager="shreeshd"
+	editor=""/>
 
 <tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/08/2016"
-    ms.author="giridham;jimpark;trinadhk;markgal"/>
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/08/2016"
+	ms.author="giridham;jimpark;trinadhk;markgal"/>
 
+# バックアップ コンテナーで別の DPM サーバーからデータを復元する
+コンテナーに登録されている DPM サーバーから、Azure Backup コンテナーに保護しているデータを復元できるようになりました。この復元プロセスは DPM 管理コンソールに完全統合されており、その他の復元ワークフローと似ています。
 
-# <a name="recovering-data-from-another-dpm-server-in-the-backup-vault"></a>Recovering data from another DPM server in the backup vault
-You can now recover the data you've protected to an Azure Backup vault from any DPM server registered to that vault. The process for doing so is completely integrated into the DPM management console and is similar to the other recovery workflows.
+バックアップ コンテナーで別の DPM サーバーからデータを復元するには、[System Center Data Protection Manager UR7](https://support.microsoft.com/ja-JP/kb/3065246) と[最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)が必要です。
 
-To recover data from another DPM server inthe backup vault you'll need [System Center Data Protection Manager UR7](https://support.microsoft.com/en-us/kb/3065246) and the [latest Azure Backup agent](http://aka.ms/azurebackup_agent).
+## 別の DPM サーバーからデータを復元する
+別の DPM サーバーからデータを復元するには:
 
-## <a name="recover-data-from-another-dpm-server"></a>Recover data from another DPM Server
-To recover data from another DPM server:
+1. DPM 管理コンソールの **[復元]** タブで、(画面の左上にある) **[外部 DPM の追加]** をクリックします。
 
-1. From the **Recovery** tab of the DPM management console, click **'Add External DPM'** (at the top left of the screen).
+    ![外部 DPM の追加](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
 
-    ![Ad External DPM](./media/backup-azure-alternate-dpm-server/add-external-dpm.png)
+2. データを復元する **DPM サーバー**に関連付けられているコンテナーから新しい**コンテナー資格情報**をダウンロードし、バックアップ コンテナーに登録されている DPM サーバーの一覧から DPM サーバーを選択し、データを復元する DPM サーバーに関連付けられている**暗号化パスフレーズ**を指定します。
 
-2. Download new **vault credentials** from the vault associated with the **DPM server** where the data is being recovered, choose the DPM server from the list of DPM servers registered with the backup vault, and provide the **encryption passphrase** associated with the DPM server whose data is being recovered.
+    ![外部 DPM の資格情報](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
 
-    ![External DPM Credentials](./media/backup-azure-alternate-dpm-server/external-dpm-credentials.png)
+    >[AZURE.NOTE] 同じ登録コンテナーに関連付けられている DPM サーバーのみ互いのデータを復元できます。
 
-    >[AZURE.NOTE] Only DPM servers associated with the same registration vault can recover each other’s data.
+    外部 DPM サーバーが追加されたら、**[回復]** タブから外部 DPM サーバーとローカル DPM サーバーのデータを閲覧できます。
 
-    Once the External DPM server is successfully added, you can browse the data of external DPM server and local DPM server from the **Recovery** tab.
+3. 外部 DPM サーバーで保護されている本稼働サーバーの一覧を閲覧し、該当するデータ ソースを選択します。
 
-3. Browse the available list of production servers protected by the external DPM server and select the appropriate data source.
+    ![外部 DPM サーバーの参照](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
 
-    ![Browse External DPM Server](./media/backup-azure-alternate-dpm-server/browse-external-dpm.png)
+4. **[回復ポイント]** ドロップダウンから **[月/年]** を選択し、回復ポイントが作成された **[回復日]** を選択し、**[回復時刻]** を選択します。
 
-4. Select **the month and year** from the **Recovery points** drop down, select the required **Recovery date** for when the recovery point was created, and select the **Recovery time**.
+    ファイルとフォルダーの一覧が下のページに表示されるので、閲覧し、任意の場所に復元できます。
 
-    A list of files and folders will appear in the bottom pane which can be browsed and recovered to any location.
+    ![外部 DPM サーバーの回復ポイント](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
 
-    ![External DPM Server Recovery Points](./media/backup-azure-alternate-dpm-server/external-dpm-recoverypoint.png)
+5. 該当する項目を右クリックし、**[回復]** をクリックします。
 
-5. Right click the appropriate item and click **Recover**.
+    ![外部 DPM 回復](./media/backup-azure-alternate-dpm-server/recover.png)
 
-    ![External DPM recovery](./media/backup-azure-alternate-dpm-server/recover.png)
+6. **[回復の選択]** を確認します。回復するバックアップ コピーの日時とバックアップ コピーの作成元を確認します。選択が間違っている場合、**[キャンセル]** をクリックして [回復] タブに戻り、適切な回復ポイントを選択します。選択が正しければ、**[次へ]** をクリックします。
 
-6. Review the **Recover Selection**. Verify the data and time of the backup copy being recovered, as well as the source from which the backup copy was created. If the selection is incorrect, click **Cancel** to navigate back to recovery tab to select appropriate recovery point. If the selection is correct, click **Next**.
+    ![外部 DPM 回復の概要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
 
-    ![External DPM recovery summary](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-summary.png)
+7. **[別の場所に回復する]** を選択します。**[参照]** で適切な回復場所を開きます。
 
-7. Select **Recover to an alternate location**. **Browse** to the correct location for the recovery.
+    ![外部の DPM 回復の別場所](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
 
-    ![External DPM recovery alternate location](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-alternate-location.png)
+8. **[コピーの作成]**、**[スキップ]**、**[上書き]** に関連付けられているオプションを選択します。
+    - **[コピーの作成]** は、名前の競合がある場合、ファイルのコピーを作成します。
+    - **[スキップ]** は、名前の競合がある場合、ファイルの復元を省略します。
+    - **[上書き]** は、名前の競合がある場合、指定された場所に既存のコピーを上書きします。
 
-8. Choose the option related to **create copy**, **Skip**, or **Overwrite**.
-    - **Create copy** will create a copy of the file in the event there is a name collision.
-    - **Skip** will skip recovering the file in the event there is a name collision.
-    - **Overwrite** will overwrite the existing copying in the location specified in the event of a name collision.
+    **[セキュリティの復元]** のオプションを選択します。データを復元する復元先コンピューターのセキュリティ設定または回復ポイントが作成された時点で生成物に適用されたセキュリティを適用できます。
 
-    Choose the appropriate option to **Restore security**. You can apply the security settings of the destination computer where the data is being recovered or the security settings that were applicable to product at the time the recovery point was created.
+    回復が完了したら、**通知**を送信するかどうかを確認します。
 
-    Identify whether a **Notification** will be sent once the recovery completes successfully.
+    ![外部の DPM 回復の通知](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
 
-    ![External DPM Recovery Notifications](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-notifications.png)
+9. **概要**画面には、これまでに選択したオプションが一覧表示します。**[回復]** をクリックすると、該当するオンプレミスの場所にデータが復元されます。
 
-9. The **Summary** screen lists the options chosen so far. Once you click **‘Recover’**, the data will be recovered to the appropriate on-premises location.
+    ![外部 DPM 回復のオプション概要](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
 
-    ![External DPM Recovery Options Summary](./media/backup-azure-alternate-dpm-server/external-dpm-recovery-options-summary.png)
+    >[AZURE.NOTE] DPM サーバーの **[監視]** タブで回復ジョブを監視できます。
 
-    >[AZURE.NOTE] The recovery job can be monitored in the **Monitoring** tab of the DPM server.
+    ![回復の監視](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
 
-    ![Monitoring Recovery](./media/backup-azure-alternate-dpm-server/monitoring-recovery.png)
+10. DPM サーバーの **[回復]** タブの **[外部 DPM の消去]** をクリックし、外部 DPM サーバーのビューを削除できます。
 
-10. You can click **Clear External DPM** on the **Recovery** tab of the DPM server to remove the view of the external DPM server.
+    ![外部 DPM の消去](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
 
-    ![Clear External DPM](./media/backup-azure-alternate-dpm-server/clear-external-dpm.png)
-
-## <a name="troubleshooting-error-messages"></a>Troubleshooting Error Messages
-|No. |  Error Message | Troubleshooting steps |
+## エラー メッセージのトラブルシューティング
+|いいえ。 |	エラー メッセージ |	トラブルシューティングの手順 |
 | :-------------: |:-------------| :-----|
-|1.|        This server is not registered to the vault specified by the vault credential.|  **Cause:** This error appears when the vault credential file selected does not belong to the backup vault associated with DPM server on which the recovery is attempted. <br> **Resolution:** Download the vault credential file from the backup vault to which the DPM server is registered.|
-|2.|        Either the recoverable data is not available or the selected server is not a DPM server.|   **Cause:** There are no other DPM servers with DPM 2012 R2 UR7 registered to the backup vault, or the DPM servers with DPM 2012 R2 UR7 have not yet uploaded the metadata, or the selected server is not DPM server (aka Windows Server or Windows Client). <br> **Resolution:** If there are other DPM servers registered to the backup vault, ensure SCDPM 2012 R2 UR7 and latest Azure Backup agent are installed. <br>If there are other DPM servers registered to the backup vault with DPM 2012 R2 UR7, wait for a day after installation of UR7 to start the recovery process. The nightly job will upload the metadata for all the previously protected backups to cloud. The data will be available for recovery.|
-|3.|        No other DPM server is registered to this vault.|   **Cause:** There are no other DPM servers with DPM 2012 R2 UR7 or above that are registered to the vault from which the recovery is being attempted.<br>**Resolution:** If there are other DPM servers registered to the backup vault, ensure SCDPM 2012 R2 UR7 and latest Azure Backup agent are installed.<br>If there are other DPM servers registered to the backup vault with DPM 2012 R2 UR7, wait for a day after installation of UR7 to start the recovery process. The nightly job will upload the metadata for all the previously protected backups to cloud. The data will be available for recovery.|
-|4.|        The encryption passphrase provided does not match with passphrase associated with the following server: **<server name>**|  **Cause:** The encryption passphrase used in the process of encrypting the data from the DPM server’s data that is being recovered does not match the encryption passphrase provided. The agent is unable to decrypt the data. Hence the recovery fails.<br>**Resolution:** Please provide the exact same encryption passphrase associated with the DPM server whose data is being recovered.|
+|1\.|		このサーバーは資格情報コンテナーが指定するコンテナーに登録されていません。|	**原因:** 選択した資格情報コンテナー ファイルが回復対象の DPM サーバーに関連付けられているバックアップ コンテナーに属さないとき、このエラーが表示されます。<br> **解決策:** DPM サーバーが登録されているバックアップ コンテナーから資格情報コンテナー ファイルをダウンロードします。|
+|2\.|		回復可能なデータがないか、選択したサーバーが DPM サーバーではありません。|	**原因:** DPM 2012 R2 UR7 の DPM サーバーが他にバックアップ コンテナーに登録されていないか、DPM 2012 R2 UR7 の DPM サーバーでメタデータがまだアップロードされていないか、選択したサーバーが DPM サーバー (別名、Windows Server または Windows Client)ではありません。<br> **解決策:** 他の DPM サーバーがバックアップ コンテナーに登録されている場合、SCDPM 2012 R2 UR7 と最新の Azure Backup エージェントがインストールされていることを確認します。<br>他の DPM サーバーが DPM 2012 R2 UR7 のバックアップ コンテナーに登録されている場合、UR7 のインストール後、1 日待ってから回復プロセスを開始します。以前にクラウドに保護されたすべてのバックアップのメタデータを夜間ジョブがアップロードします。このデータを回復に利用できます。|
+|3\.|		このコンテナーには他の DPM サーバーが登録されていません。|	**原因:** DPM 2012 R2 UR7 以降がインストールされた他の DPM サーバーが回復元のコンテナーに登録されていません。<br>**解決策:** 他の DPM サーバーがバックアップ コンテナーに登録されている場合、SCDPM 2012 R2 UR7 と最新の Azure Backup エージェントがインストールされていることを確認します。<br>DPM 2012 R2 UR7 がインストールされているバックアップ コンテナーに他の DPM サーバーが登録されている場合、UR7 のインストール後、1 日待ってから回復プロセスを開始します。以前にクラウドに保護されたすべてのバックアップのメタデータを夜間ジョブがアップロードします。このデータを回復に利用できます。|
+|4\.|		指定した暗号化パスフレーズが次のサーバーに関連付けられているパスフレーズと一致しません。**<サーバー名>**|	**原因:** 回復対象の DPM サーバーのデータからデータを暗号化する過程で使用された暗号化パスフレーズが指定した暗号化パスフレーズに一致しません。エージェントはデータを復号できません。そのため、回復に失敗します。<br>**解決策:** データを回復する DPM サーバーに関連付けられている暗号化パスフレーズとまったく同じものを指定してください。|
 
-## <a name="frequently-asked-questions:"></a>Frequently asked questions:
-1. **Why can’t I add an external DPM server from another DPM server after installing the UR7 and latest Azure Backup agent?**
+## よく寄せられる質問:
+1. **UR7 と最新の Azure Backup エージェントをインストールしましたが、別の DPM サーバーから外部 DPM サーバーを追加できません。なぜですか。**
 
-    A) For the existing DPM servers with data sources that are protected to the cloud (by using an update rollup earlier than Update Rollup 7), you have to wait at least one day after installing the UR7 and latest Azure Backup agent to start *Add External DPM server*. This is needed to upload the metadata of the DPM protection groups to Azure. This occurs the first time through a nightly job.
+    A) (更新プログラムのロールアップ 7 以前の更新プログラムのロールアップを利用し) データ ソースがクラウドに保護されている既存の DPM サーバーの場合、UR7 と最新の Azure Backup エージェントをインストールした後、1 日待ってから*外部 DPM サーバーの追加*を開始する必要があります。これは DPM 保護グループのメタデータを Azure にアップロードするために必要です。最初にこれは夜間ジョブで行われます。
 
-2. **What is the minimum version of Azure Backup agent needed?**
+2. **Azure Backup エージェントのバージョンの最小要件は何ですか。**
 
-    A) The Azure Backup agent minimum version to enable this feature is 2.0.8719.0.  Azure Backup agent version can be verified by navigating to Control Panel **>** All Control Panel items **>** Programs and features **>** Microsoft Azure Recovery Services Agent. If the version is less than 2.0.8719.0, download the [latest Azure Backup agent](https://go.microsoft.com/fwLink/?LinkID=288905) and install.
+    A) この機能を有効にするには 2.0.8719.0 以降の Azure Backup エージェントが必要です。[コントロール パネル] **>** [すべてのコントロール パネル項目] **>** [プログラムと機能] **>** [Microsoft Azure Recovery Services Agent] の順に進むと、Azure Backup エージェントのバージョンを確認できます。バージョンが 2.0.8719.0 以前の場合、[最新の Azure Backup エージェント](https://go.microsoft.com/fwLink/?LinkID=288905)をダウンロードし、インストールしてください。
 
-    ![Clear External DPM](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
+    ![外部 DPM の消去](./media/backup-azure-alternate-dpm-server/external-dpm-azurebackupagentversion.png)
 
-## <a name="next-steps:"></a>Next Steps:
-•   [Azure Backup FAQ](backup-azure-backup-faq.md)
+## 次のステップ:
+• [Azure Backup FAQ](backup-azure-backup-faq.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

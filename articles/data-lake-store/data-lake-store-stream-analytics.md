@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Stream data from Stream Analytics into Data Lake Store | Azure"
-   description="Use Azure Stream Analytics to stream data into Azure Data Lake Store"
+   pageTitle="Stream Analytics から Data Lake Store へのデータのストリーム| Azure"
+   description="Azure Stream Analytics を使用した Azure Data Lake Store へのデータのストリーム"
    services="data-lake-store,stream-analytics" 
    documentationCenter=""
    authors="nitinme"
@@ -16,122 +16,117 @@
    ms.date="07/07/2016"
    ms.author="nitinme"/>
 
+# Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
 
-# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Stream data from Azure Storage Blob into Data Lake Store using Azure Stream Analytics
+この記事では、Azure Data Lake Store を Azure Stream Analytics ジョブの出力として使用する方法について説明します。ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Data Lake Store (出力) に書き込む簡単なシナリオを紹介します。
 
-In this article you will learn how to use Azure Data Lake Store as an output for an Azure Stream Analytics job. This article demonstrates a simple scenario that reads data from an Azure Storage blob (input) and writes the data to Data Lake Store (output).
+>[AZURE.NOTE] 現時点では、Stream Analytics 向けの Data Lake Store 出力の作成と構成は [Azure クラシック ポータル](https://manage.windowsazure.com)でのみサポートされています。そのため、このチュートリアルの一部は、Azure クラシック ポータルを使用します。
 
->[AZURE.NOTE] At this time, creation and configuration of Data Lake Store outputs for Stream Analytics is supported only in the [Azure Classic Portal](https://manage.windowsazure.com). Hence, some parts of this tutorial will use the Azure Classic Portal.
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-Before you begin this tutorial, you must have the following:
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/pricing/free-trial/).
+- Data Lake Store パブリック プレビューに対して、**Azure サブスクリプションを有効にする**。[手順](data-lake-store-get-started-portal.md#signup)を参照してください。
 
-- **Enable your Azure subscription** for Data Lake Store Public Preview. See [instructions](data-lake-store-get-started-portal.md#signup).
+- **Azure Storage アカウント**。このアカウントから BLOB コンテナーを使用して、Stream Analytics ジョブ向けのデータを入力します。このチュートリアルでは、「**datalakestoreasa**」という名前のストレージ アカウントを作成して、そのアカウント内に「**datalakestoreasacontainer**」という名前のコンテナーを作成します。コンテナーを作成したら、サンプル データ ファイルをアップロードします。サンプル データ ファイルは [Azure Data Lake Git リポジトリ](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)で取得できます。[Azure Storage Explorer](http://storageexplorer.com/) など各種クライアントを使用して、BLOB コンテナーにデータをアップロードします。
 
-- **Azure Storage account**. You will use a blob container from this account to input data for a Stream Analytics job. For this tutorial, assume you create a storage account called **datalakestoreasa** and a container within the account called **datalakestoreasacontainer**. Once you have created the container, upload a sample data file to it. You can get a sample data file from the [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). You can use various clients, such as [Azure Storage Explorer](http://storageexplorer.com/), to upload data to a blob container.
+	>[AZURE.NOTE] Azure ポータルからアカウントを作成する場合は、**クラシック** デプロイ モデルで作成するようにします。これにより、ストレージ アカウントが Azure クラシック ポータルからアクセスできるようになります。これは Azure クラシック ポータルを使用して、Stream Analytics ジョブを作成するためです。クラシック デプロイで Azure ポータルからストレージ アカウントを作成する方法については、「[Create an Azure Storage account (Azure Storage アカウントの作成)](../storage/storage-create-storage-account/#create-a-storage-account)」を参照してください。
+	>
+	> または、Azure クラシック ポータルからストレージ アカウントを作成することもできます。
 
-    >[AZURE.NOTE] If you create the account from the Azure Portal, make sure you create it with the **Classic** deployment model. This ensures that the storage account can be accessed from the Azure Classic Portal, because that is what we use to create a Stream Analytics job. For instructions on how to create a storage account from the Azure Portal using the Classic deployment, see [Create an Azure Storage account](../storage/storage-create-storage-account/#create-a-storage-account).
-    >
-    > Or, you could create a storage account from the Azure Classic Portal.
-
-- **Azure Data Lake Store account**. Follow the instructions at [Get started with Azure Data Lake Store using the Azure Portal](data-lake-store-get-started-portal.md).  
+- **Azure Data Lake Store アカウント**。「[Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 
 
-## <a name="create-a-stream-analytics-job"></a>Create a Stream Analytics Job
+## Stream Analytics のジョブの作成
 
-You start by creating a Stream Analytics job that includes an input source and an output destination. For this tutorial, the source is an Azure blob container and the destination is Data Lake Store.
+まず、入力ソースと出力先を含む Stream Analytics ジョブを作成します。このチュートリアルでは、ソースは Azure BLOB コンテナー、出力先は Data Lake Store です。
 
-1. Sign on to the [Azure Classic Portal](https://manage.windowsazure.com).
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)にサインオンします。
 
-2. From the bottom-left of the screen, click **New**, **Data Services**, **Stream Analytics**, **Quick Create**. Provide the values as shown below and then click **Create Stream Analytics Job**.
+2. 画面左下の **[新規]**、 **[データ サービス]**、**[Stream Analytics]**、**[簡易作成]** をクリックします。次の値を入力してから、**[Stream Analytics ジョブの作成]**をクリックします。
 
-    ![Create a Stream Analytics Job](./media/data-lake-store-stream-analytics/create.job.png "Create a Stream Analytics job")
+	![Stream Analytics のジョブの作成](./media/data-lake-store-stream-analytics/create.job.png "Stream Analytics のジョブの作成")
 
-## <a name="create-a-blob-input-for-the-job"></a>Create a Blob input for the job
+## ジョブに BLOB 入力を作成
 
-1. Open the page for the Stream Analytics job, click the **Inputs** tab, and then click **Add an Input** to launch a wizard.
+1. Stream Analytics ジョブのページを開き、**[入力]** タブをクリックしてから **[入力の追加]** をクリックし、 ウィザードを起動します。
 
-2. On the **Add an input to your job** page, select **Data stream**, and then click the forward arrow.
+2. **[入力をジョブに追加します]** ページで **[データ ストリーム]** を選択し、右向きの矢印をクリックします。
 
-    ![Add an input to your job](./media/data-lake-store-stream-analytics/create.input.1.png "Add an input to your job")
+	![入力をジョブに追加](./media/data-lake-store-stream-analytics/create.input.1.png "入力をジョブに追加")
 
-3. On the **Add a data stream to your job** page, select **Blob storage**, and then click the forward arrow.
+3. **[データ ストリームをジョブに追加します]** ページで **[Blob ストレージ]** を選択し、右向きの矢印をクリックします。
 
-    ![Add a data stream to the job](./media/data-lake-store-stream-analytics/create.input.2.png "Add a data stream to the job")
+	![データ ストリームをジョブに追加](./media/data-lake-store-stream-analytics/create.input.2.png "データ ストリームをジョブに追加")
 
-4. On the **Blob storage settings** page, provide details for the blob storage that you will use as the input data source.
+4. **[BLOB ストレージの設定]** ページで、入力データソースとして使用する BLOB ストレージの詳細情報を入力します。
 
-    ![Provide the blob storage settings](./media/data-lake-store-stream-analytics/create.input.3.png "Provide the blob storage settings")
+	![BLOB ストレージの設定を入力](./media/data-lake-store-stream-analytics/create.input.3.png "BLOB ストレージの設定を入力")
 
-    * **Enter an input alias**. This is a unique name you provide for the job input.
-    * **Select a storage account**. Make sure the storage account is in the same region as the Stream Analytics job or you will incur additional cost of moving data between regions.
-    * **Provide a storage container**. You can choose to create a new container or select an existing container.
+	* **入力のエイリアスを入力します**。これは、ジョブの入力に付ける一意の名前です。
+	* **ストレージ アカウントを選択します**。ストレージ アカウントは Stream Analytics ジョブと同じリージョンに配置し、リージョン間でのデータ転送が有料にならないようにします。
+	* **ストレージ コンテナーを指定します**。新しいコンテナーを作成することも、既存のコンテナーを選択することもできます。
 
-    Click the forward arrow.
+	右向きの矢印をクリックします。
 
-5. On the **Serialization settings** page, set the serialization format as **CSV**, delimiter as **tab**, encoding as **UTF8**, and then click the checkmark.
+5. **[シリアル化の設定]** ページでシリアル化形式を **CSV**、区切り記号を**タブ**、エンコードを **UTF8** と設定し、チェック マークをクリックします。
 
-    ![Provide the serialization settings](./media/data-lake-store-stream-analytics/create.input.4.png "Provide the serialization settings")
+	![データ シリアル化の設定を入力](./media/data-lake-store-stream-analytics/create.input.4.png "データ シリアル化の設定を入力")
 
-6. Once you are done with the wizard, the blob input will be added under the **Inputs** tab and the **Diagnosis** column should show **OK**. You can also explicitly test the connection to the input by using the **Test Connection** button at the bottom.
+6. ウィザードが完了すると BLOB の入力が **[入力]** タブの下に追加され、**[診断]** 列に **[OK]** と表示されます。下部の **[テスト接続]** ボタンで、入力への接続を明示的にテストすることもできます。
 
-## <a name="create-a-data-lake-store-output-for-the-job"></a>Create a Data Lake Store output for the job
+## ジョブに Data Lake Store 出力を作成
 
-1. Open the page for the Stream Analytics job, click the **Outputs** tab, and then click **Add an Output** to launch a wizard.
+1. Stream Analytics ジョブのページを開き、**[出力]** タブをクリックしてから **[出力の追加]** をクリックし、ウィザードを起動します。
 
-2. On the **Add an output to your job** page, select **Data Lake Store**, and then click the forward arrow.
+2. **[出力をジョブに追加します]** ページで **[Data Lake Store]** を選択し、右向きの矢印をクリックします。
 
-    ![Add an output to your job](./media/data-lake-store-stream-analytics/create.output.1.png "Add an output to your job")
+	![出力をジョブに追加](./media/data-lake-store-stream-analytics/create.output.1.png "出力をジョブに追加")
 
-3. On the **Authorize connection** page, if you have already created a Data Lake Store account, click **Authorize Now**. Otherwise, click **Sign up now** to create a new account. For this tutorial, let us assume that you already have a Data Lake Store account created (as mentioned in the prerequisite). You will be automatically authorized using the credentials with which you signed into the Azure Classic Portal.
+3. **[接続の承認]** ページでは、Data Lake Store アカウントを作成済みの場合は **[今すぐ承認]** をクリックします。アカウントがない場合は **[今すぐサインアップしてください。]** をクリックして、新しいアカウントを作成します。このチュートリアルでは、「前提条件」に記載したように、Data Lake Store アカウントがすでに作成済みの場合について説明しています。Azure クラシック ポータルへのサインインに使用する資格情報で、自動的に承認されます。
 
-    ![Authorize Data Lake Store](./media/data-lake-store-stream-analytics/create.output.2.png "Authorize Data Lake Store")
+	![Data Lake Store の承認](./media/data-lake-store-stream-analytics/create.output.2.png "Data Lake Store の承認")
 
-4. On the **Data Lake Store Settings** page, enter the information as shown in the screen capture below.
+4. **[Data Lake Store 設定]** ページで、次の画面キャプチャに示すように情報を入力します。
 
-    ![Specify Data Lake Store settings](./media/data-lake-store-stream-analytics/create.output.3.png "Specify Data Lake Store settings")
+	![Data Lake Store の設定を指定](./media/data-lake-store-stream-analytics/create.output.3.png "Data Lake Store の設定を指定")
 
-    * **Enter an output alias**. This is a unique name you provide for the job output.
-    * **Specify a Data Lake Store account**. You should have already created this, as mentioned in the prerequisite.
-    * **Specify a path prefix pattern**. This is required to identify the output files that are written to Data Lake Store by the Stream Analytics job. Because the titles of outputs written by the job are in a GUID format, including a prefix will help identify the written output. If you want to include a date and time stamp as part of the prefix make sure you include `{date}/{time}` in the prefix pattern. If you include this, the **Date Format **and **Time Format** fields are enabled and you can select the format of choice.
+	* **出力のエイリアスを入力します**。これは、ジョブの出力に付ける一意の名前です。
+	* **Data Lake Storeアカウントを指定します**。「前提条件」に記載したように、これはすでに作成済みとします。
+	* **パスのプレフィックス パターンを指定します**。これは Stream Analytics ジョブによって Data Lake Store に書き込まれる出力ファイルの識別に必要です。ジョブによって書き込まれる出力のタイトルはGUID 形式であるため、プレフィックスを含めると書き込まれた出力の識別に役立ちます。日時スタンプをプレフィックスの一部に含める場合は、プレフィックス パターンに `{date}/{time}` を含めるようにします。これを含めることで **[日付形式]** と **[時刻形式]** フィールドが有効になり、好みの形式を選択できます。
 
-    Click the forward arrow.
+	右向きの矢印をクリックします。
 
-5. On the **Serialization settings** page, set the serialization format as **CSV**, delimiter as **tab**, encoding as **UTF8**, and then click the check mark.
+5. **[シリアル化の設定]** ページでシリアル化形式を **CSV**、区切り記号を**タブ**、エンコードを **UTF8** と設定し、チェック マークをクリックします。
 
-    ![Specify the output format](./media/data-lake-store-stream-analytics/create.output.4.png "Specify the output format")
+	![出力形式の指定](./media/data-lake-store-stream-analytics/create.output.4.png "出力形式の指定")
 
-6. Once you are done with the wizard, the Data Lake Store output will be added under the **Outputs** tab and the **Diagnosis** column should show **OK**. You can also explicitly test the connection to the output by using the **Test Connection** button at the bottom.
+6. ウィザードが完了すると Data Lake Store の出力が **[出力]** タブの下に追加され、**[診断]** 列に **[OK]** と表示されます。下の **[テスト接続]** ボタンで、出力への接続を明示的にテストすることもできます。
 
-## <a name="run-the-stream-analytics-job"></a>Run the Stream Analytics job
+## Stream Analytics ジョブの実行
 
-To run a Stream Analytics job, you must run a query from the Query tab. For this tutorial, you can run the sample query by replacing the placeholders with the job input and output aliases, as shown in the screen capture below.
+Stream Analytics ジョブを実行するには、[クエリ] タブからクエリを実行する必要があります。このチュートリアルでは、次の画面キャプチャに示すように、プレースホルダーをジョブの入力および出力エイリアスで置き換えて、サンプル クエリを実行することができます。
 
 ![Run query](./media/data-lake-store-stream-analytics/run.query.png "Run query")
 
-Click **Save** from the bottom of the screen, and then click **Start**. From the dialog box, select **Custom Time**, and then select a date from the past, such as **1/1/2016**. Click the check mark to start the job. It can take up to a couple minutes to start the job.
+画面下部の **[保存]** をクリックしてから、**[開始]** をクリックします。ダイアログ ボックスで **[ユーザー設定時刻]** を選択し、過去の日付を **1/1/2016** のように選択します。チェック マークをクリックしてジョブを開始します。ジョブが開始されるまでに数分かかる場合があります。
 
-![Set job time](./media/data-lake-store-stream-analytics/run.query.2.png "Set job time")
+![ジョブの時刻の設定](./media/data-lake-store-stream-analytics/run.query.2.png "ジョブの時刻の設定")
 
-After the job starts, click the **Monitor** tab to see how the data was processed.
+ジョブが開始したら **[監視]** タブをクリックして、データの処理状況を確認します。
 
-![Monitor job](./media/data-lake-store-stream-analytics/run.query.3.png "Monitor job")
+![ジョブの監視](./media/data-lake-store-stream-analytics/run.query.3.png "ジョブの監視")
 
-Finally, you can use the [Azure Portal](https://portal.azure.com) to open your Data Lake Store account and verify whether the data was successfully written to the account.
+最後に、[Azure ポータル](https://portal.azure.com)を使用して Data Lake Store アカウントを開き、データがアカウントに正常に書き込まれたかどうかを確認できます。
 
-![Verify output](./media/data-lake-store-stream-analytics/run.query.4.png "Verify output")
+![出力の確認](./media/data-lake-store-stream-analytics/run.query.4.png "出力の確認")
 
-In the Data Explorer pane, notice that the output is written to a folder as specified in the Data Lake Store output settings (`streamanalytics/job/output/{date}/{time}`).  
+[データ エクスプローラー] ウィンドウで、Data Lake Store 出力設定 (`streamanalytics/job/output/{date}/{time}`) で指定したとおりにフォルダーに出力が書き込まれていることがわかります。
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-* [Create an HDInsight cluster to use Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

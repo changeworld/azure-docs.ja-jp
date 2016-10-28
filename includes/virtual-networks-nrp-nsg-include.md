@@ -1,81 +1,79 @@
-## <a name="network-security-group"></a>Network Security Group
-An NSG resource enables the creation of security boundary for workloads, by implementing allow and deny rules. Such rules can be applied to a VM, a NIC, or a subnet.
+## ネットワーク セキュリティ グループ
+NSG リソースを使用すると、許可または拒否の規則を実装することで、ワークロードのセキュリティ境界を作成できます。そのような規則は、VM、NIC、またはサブネットに適用できます。
 
-|Property|Description|Sample values|
+|プロパティ|説明|サンプルの値|
 |---|---|---|
-|**subnets**|List of subnet ids the NSG is applied to.|/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd|
-|**securityRules**|List of security rules that make up the NSG|See [Security rule](#Security-rule) below|
-|**defaultSecurityRules**|List of default security rules present in every NSG|See [Default security rules](#Default-security-rules) below|
+|**サブネット**|NSG が適用されるサブネット ID のリスト。|/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd|
+|**securityRules**|NSG を構成するセキュリティ規則の一覧|以下の[セキュリティ規則](#Security-rule)をご覧ください。|
+|**defaultSecurityRules**|すべての NSG にある既定セキュリティ規則のリスト|以下の[既定セキュリティ規則](#Default-security-rules)をご覧ください。|
 
-- **Security rule** - An NSG can have multiple security rules defined. Each rule can allow or deny different types of traffic.
+- **セキュリティ規則** – NSG には複数のセキュリティ規則を定義できます。各規則で、各種のトラフィックを許可または拒否できます。
 
-### <a name="security-rule"></a>Security rule
-A security rule is a child resource of an NSG containing the properties below.
+### セキュリティ規則
+セキュリティ規則は、次のプロパティを含む、NSG の子リソースです。
 
-|Property|Description|Sample values|
+|プロパティ|説明|サンプルの値|
 |---|---|---|
-|**description**|Description for the rule|Allow inbound traffic for all VMs in subnet X|
-|**protocol**|Protocol to match for the rule|TCP, UDP, or *|
-|**sourcePortRange**|Source port range to match for the rule|80, 100-200, *|
-|**destinationPortRange**|Destination port range to match for the rule|80, 100-200, *|
-|**sourceAddressPrefix**|Source address prefix to match for the rule|10.10.10.1, 10.10.10.0/24, VirtualNetwork|
-|**destinationAddressPrefix**|Destination address prefix to match for the rule|10.10.10.1, 10.10.10.0/24, VirtualNetwork|
-|**direction**|Direction of traffic to match for the rule|inbound or outbound|
-|**priority**|Priority for the rule. Rules are checked int he order of priority, once a rule applies, no more rules are tested for matching.|10, 100, 65000|
-|**access**|Type of access to apply if the rule matches|allow or deny|
+|**description**|規則の説明|サブネット X 内のすべての VM に対して受信トラフィックを許可します|
+|**protocol**|規則に関して一致するプロトコル|TCP、UDP、または *|
+|**sourcePortRange**|規則に関して一致するソース ポート範囲|80、100 ～ 200、*|
+|**destinationPortRange**|規則に関して一致する宛先ポート範囲|80、100 ～ 200、*|
+|**sourceAddressPrefix**|規則に関して一致するソース アドレスのプレフィックス|10\.10.10.1, 10.10.10.0/24、VirtualNetwork|
+|**destinationAddressPrefix**|規則に関して一致する宛先アドレスのプレフィックス|10\.10.10.1, 10.10.10.0/24、VirtualNetwork|
+|**direction**|規則に関して一致するトラフィックの方向|受信または送信|
+|**priority**|規則の優先度です。規則は優先度の順序でチェックされ、規則が適用されると、規則の一致テストは行われなくなります。|10, 100, 65000|
+|**access**|規則が一致した場合に適用されるアクセスの種類|許可または拒否|
 
-Sample NSG in JSON format:
+JSON 形式の NSG のサンプル
 
-    {
-        "name": "NSG-BackEnd",
-        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd",
-        "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
-        "type": "Microsoft.Network/networkSecurityGroups",
-        "location": "westus",
-        "tags": {
-            "displayName": "NSG - Front End"
-        },
-        "properties": {
-            "provisioningState": "Succeeded",
-            "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            "securityRules": [
-                {
-                    "name": "rdp-rule",
-                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd/securityRules/rdp-rule",
-                    "etag": "W/\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\"",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "description": "Allow RDP",
-                        "protocol": "Tcp",
-                        "sourcePortRange": "*",
-                        "destinationPortRange": "3389",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "access": "Allow",
-                        "priority": 100,
-                        "direction": "Inbound"
-                    }
-                }
-            ],
-            "defaultSecurityRules": [
-                { [...],
-            "subnets": [
-                {
-                    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
-                }
-            ]
-        }
-    }
+	{
+	    "name": "NSG-BackEnd",
+	    "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd",
+	    "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+	    "type": "Microsoft.Network/networkSecurityGroups",
+	    "location": "westus",
+	    "tags": {
+	        "displayName": "NSG - Front End"
+	    },
+	    "properties": {
+	        "provisioningState": "Succeeded",
+	        "resourceGuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+	        "securityRules": [
+	            {
+	                "name": "rdp-rule",
+	                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/networkSecurityGroups/NSG-BackEnd/securityRules/rdp-rule",
+	                "etag": "W/"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"",
+	                "properties": {
+	                    "provisioningState": "Succeeded",
+	                    "description": "Allow RDP",
+	                    "protocol": "Tcp",
+	                    "sourcePortRange": "*",
+	                    "destinationPortRange": "3389",
+	                    "sourceAddressPrefix": "Internet",
+	                    "destinationAddressPrefix": "*",
+	                    "access": "Allow",
+	                    "priority": 100,
+	                    "direction": "Inbound"
+	                }
+	            }
+	        ],
+	        "defaultSecurityRules": [
+	            { [...],
+	        "subnets": [
+	            {
+	                "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVNet/subnets/FrontEnd"
+	            }
+	        ]
+	    }
+	}
 
-### <a name="default-security-rules"></a>Default security rules
-Default security rules have the same properties available in security rules. They exist to provide basic connectivity between resources that have NSGs applied to them. Make sure you know which [default security rules](../articles/virtual-network/virtual-networks-nsg.md#Default-Rules) exist. 
+### 既定のセキュリティ サポート
+既定のセキュリティ規則には、セキュリティ規則で使用できるものと同じプロパティがあります。これらは、NSG を適用するリソース間の基本的な接続を提供するために存在します。どの[既定セキュリティ規則](../articles/virtual-network/virtual-networks-nsg.md#Default-Rules)が存在するのかを把握してください。
 
-### <a name="additional-resources"></a>Additional resources
+### その他のリソース
 
-- Get more information about [NSGs](../articles/virtual-network/virtual-networks-nsg.md).
-- Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163615.aspx) for NSGs.
-- Read the [REST API reference documentation](https://msdn.microsoft.com/library/azure/mt163580.aspx) for security rules.
+- [NSG](../articles/virtual-network/virtual-networks-nsg.md) の詳細を確認します。
+- NSG については、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163615.aspx)を確認してください。
+- セキュリティ規則については、[REST API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt163580.aspx)を確認してください。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0323_2016-->

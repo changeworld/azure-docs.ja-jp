@@ -1,396 +1,388 @@
 <properties
-    pageTitle="Add Push Notifications to Apache Cordova App with Azure Mobile Apps | Azure App Service"
-    description="Learn how to use Azure Mobile Apps to send push notifications to your Apache Cordova app."
-    services="app-service\mobile"
-    documentationCenter="javascript"
-    manager="erikre"
-    editor=""
-    authors="adrianhall"/>
+	pageTitle="Azure Mobile Apps を使用した Apache Cordova アプリへのプッシュ通知の追加 |Azure App Service"
+	description="Azure Mobile Apps を使用して Apache Cordova アプリにプッシュ通知を送信する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="javascript"
+	manager="ggailey777"
+	editor=""
+	authors="adrianhall"/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-html"
-    ms.devlang="javascript"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="adrianha"/>
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-html"
+	ms.devlang="javascript"
+	ms.topic="article"
+	ms.date="08/11/2016"
+	ms.author="glenga"/>
 
-
-# <a name="add-push-notifications-to-your-apache-cordova-app"></a>Add push notifications to your Apache Cordova app
+# Apache Cordova アプリへのプッシュ通知の追加
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Overview
+## Overview
 
-In this tutorial, you add push notifications to the [Apache Cordova quick start] project so that every time a record is inserted, a push notification is sent. This tutorial is based on the [Apache Cordova quick start] tutorial, which you must complete first. If you have an ASP.NET backend and do not use the downloaded quick start server project, you must add the push notification extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps].
+このチュートリアルでは、[Apache Cordova クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている [Apache Cordova クイック スタート] チュートリアルを完了しておく必要があります。ASP.NET バックエンドがあり、ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)]」を参照してください。
 
-##<a name="<a-name="prerequisites"></a>prerequisites"></a><a name="prerequisites"></a>Prerequisites
+##<a name="prerequisites"></a>前提条件
 
-This tutorial covers an Apache Cordova application being developed within Visual Studio 2015 and being run on the Google Android Emulator, an Android device, a Windows device, and an iOS device.
+このチュートリアルでは、Visual Studio 2015 内で開発し、Google Android エミュレーター、Android デバイス、Windows デバイス、iOS デバイスで実行される Apache Cordova アプリケーションについて説明します。
 
-To complete this tutorial, you need the following:
+このチュートリアルを完了するには、以下が必要です。
 
-* A PC with [Visual Studio Community 2015] or newer.
-* [Visual Studio Tools for Apache Cordova].
-* An [active Azure account](https://azure.microsoft.com/pricing/free-trial/).
-* A completed [Apache Cordova quick start] project.  Completing other tutorials (like [authentication]) can happen first, but is not required.
-* (Android) A [Google account] with a verified email address and an Android device.
-* (iOS) An Apple Developer Program membership and an iOS device (iOS Simulator does not support push)
-* (Windows) A Windows Store Developer Account and a Windows 10 device
+* [Visual Studio Community 2015] 以降のバージョンがインストールされた PC
+* [Apache Cordova の Visual Studio ツール]
+* [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
+* 完成した [Apache Cordova クイック スタート] プロジェクト他のチュートリアル ([認証]など) を先に完了することもできますが、必須ではありません
+* (Android) 検証済みの電子メール アドレスがある [Google アカウント]と Android デバイス
+* (iOS) Apple Developer Program メンバーシップと iOS デバイス (iOS シミュレーターはプッシュ通知をサポートしていません)
+* (Windows) Windows ストア開発者アカウントと Windows 10 デバイス
 
-Although push notifications are supported on Android Emulators, we have found them to be unstable and do not recommend that you test push notifications on emulators.
+プッシュ通知は Android エミュレーターでサポートされていますが、動作が安定していないため、エミュレーターでプッシュ通知をテストすることはお勧めしません。
 
-##<a name="<a-name="create-hub"></a>create-a-notification-hub"></a><a name="create-hub"></a>Create a notification hub
+##<a name="create-hub"></a>通知ハブを作成する
 
 [AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
-[Watch a video showing similar steps](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-3-Create-azure-notification-hub)
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-3-Create-azure-notification-hub)
 
-##<a name="update-the-server-project-to-send-push-notifications"></a>Update the server project to send push notifications
+##プッシュ通知を送信するようにサーバー プロジェクトを更新する
 
 [AZURE.INCLUDE [app-service-mobile-update-server-project-for-push-template](../../includes/app-service-mobile-update-server-project-for-push-template.md)]
 
-##<a name="<a-name="add-push-to-app"></a>modify-your-cordova-app-to-receive-push-notifications"></a><a name="add-push-to-app"></a>Modify your Cordova app to receive push notifications
+##<a name="add-push-to-app"></a>Cordova アプリを変更してプッシュ通知を受信する
 
-You must make sure that your Apache Cordova app project is ready to handle push notifications. You must install the Cordova push plugin, plus any platform-specific push services.
+Apache Cordova アプリ プロジェクトでプッシュ通知を処理する準備が整っていることを確認する必要があります。Cordova のプッシュ プラグインと、プラットフォーム固有のプッシュ サービスをインストールする必要があります。
 
-#### <a name="update-the-cordova-version-in-your-project."></a>Update the Cordova version in your project.
+#### プロジェクトで Cordova のバージョンを更新する
 
-We recommended that you update the client project to Cordova 6.1.1 if your project is configured using an older version. To update the project, right-click config.xml to open the configuration designer. Select the Platforms tab and choose 6.1.1 in the **Cordova CLI** text box.
+プロジェクトが以前のバージョンの Cordova で構成されている場合、クライアント プロジェクトを Cordova 6.1.1 に更新することをお勧めします。プロジェクトを更新するには、config.xml を右クリックして構成デザイナーを開きます。[プラットフォーム] タブをクリックし、**[Cordova CLI]** ボックスで 6.1.1 を選択します。
 
-Choose **Build**, then **Build Solution** to update the project.
+**[ビルド]**、**[ソリューションのビルド]** の順に選択してプロジェクトを更新します。
 
-#### <a name="install-the-push-plugin"></a>Install the push plugin
+#### プッシュ プラグインをインストールする
 
-Apache Cordova applications do not natively handle device or network capabilities.  These capabilities are provided by plugins that are published either on [npm](https://www.npmjs.com/) or on GitHub.  The `phonegap-plugin-push` plugin is used to handle network push notifications.
+Apache Cordova アプリケーションでは、デバイスやネットワークの機能をネイティブで処理しません。これらの機能は、[npm](https://www.npmjs.com/) または GitHub で公開されているプラグインによって提供されます。ネットワーク プッシュ通知の処理には、`phonegap-plugin-push` プラグインを使用します。
 
-You can install the push plugin in one of these ways:
+次のいずれかの方法でプッシュ プラグインをインストールできます。
 
-**From the command-prompt:**
+**コマンド プロンプトから:**
 
-Execute the following command:
+次のコマンドを実行します。
 
     cordova plugin add phonegap-plugin-push
 
-**From within Visual Studio:**
+**Visual Studio 内から:**
 
-1.  In Solution Explorer, open the `config.xml` file click **Plugins** > **Custom**, select **Git** as the installation source, then enter `https://github.com/phonegap/phonegap-plugin-push` as the source.
+1.  ソリューション エクスプローラーで `config.xml` ファイルを開き、**[プラグイン]**、**[カスタム]** の順にクリックします。次に、**[Git]** をインストール元として選択し、「`https://github.com/phonegap/phonegap-plugin-push`」をソースとして入力します。
 
-    ![](./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png)
+	![](./media/app-service-mobile-cordova-get-started-push/add-push-plugin.png)
 
-2.  Click on the arrow next to the installation source.
+2.  インストール元の横にある矢印をクリックします。
 
-3. In **SENDER_ID**, if you already have a numeric project ID for the Google Developer Console project, you can add it here. Otherwise, enter a placeholder value, like 777777, and if you are targeting Android you can update this value in config.xml later.
+3. Google デベロッパー コンソール プロジェクト用のプロジェクト ID (数値) を既に所有している場合は、**SENDER\_ID** のボックスに追加できます。それ以外の場合は、777777 などのプレース ホルダーの値を入力します。Android を対象としている場合は、後でこの値を config.xml で更新することができます。
 
-4. Click **Add**.
+4. **[追加]** をクリックします。
 
-The push plugin is now installed.
+これでプッシュ プラグインがインストールされました。
 
-####<a name="install-the-device-plugin"></a>Install the device plugin
+####デバイス プラグインをインストールする
 
-Follow the same procedure you used to install the push plugin, but you will find the Device plugin in the Core plugins list (click **Plugins** > **Core** to find it). You need this plugin to obtain the platform name (`device.platform`).
+プッシュ プラグインのインストールと同じ手順に従います。ただし、デバイス プラグインはコア プラグインの一覧の中に表示されます (**[プラグイン]**、**[コア]** の順にクリックして表示します)。このプラグインはプラットフォーム名 (`device.platform`) の取得に必要です。
 
-#### <a name="register-your-device-for-push-on-start-up"></a>Register your device for push on start-up
+#### スタートアップ時のプッシュにデバイスを登録する
 
-Initially, we will include some minimal code for Android. Later, we will make some small modifications to run on iOS or Windows 10.
+最初に、最小限の Android コードを追加します。後で、iOS または Windows 10 での実行に必要な少々の変更を行います。
 
-1. Add a call to **registerForPushNotifications** during the callback for the login process, or at the bottom of the **onDeviceReady** method:
+1. ログイン プロセスのコールバック時、つまり **onDeviceReady** メソッドの一番下に **registerForPushNotifications** の呼び出しを追加します。
 
-        // Login to the service.
-        client.login('google')
-            .then(function () {
-                // Create a table reference
-                todoItemTable = client.getTable('todoitem');
+		// Login to the service.
+		client.login('google')
+		    .then(function () {
+		        // Create a table reference
+		        todoItemTable = client.getTable('todoitem');
 
-                // Refresh the todoItems
-                refreshDisplay();
+		        // Refresh the todoItems
+		        refreshDisplay();
 
-                // Wire up the UI Event Handler for the Add Item
-                $('#add-item').submit(addItemHandler);
-                $('#refresh').on('click', refreshDisplay);
+		        // Wire up the UI Event Handler for the Add Item
+		        $('#add-item').submit(addItemHandler);
+		        $('#refresh').on('click', refreshDisplay);
 
-                    // Added to register for push notifications.
-                registerForPushNotifications();
+				    // Added to register for push notifications.
+		        registerForPushNotifications();
 
-            }, handleError);
+		    }, handleError);
 
-    This example shows calling **registerForPushNotifications** after authentication succeeds, which is recommended when using both push notifications and authentication in your app.
+	この例では、認証が成功した後の **registerForPushNotifications** の呼び出しを表しています。これはアプリでプッシュ通知と認証の両方を使用する場合にお勧めします。
 
-2. Add the new **registerForPushNotifications** method as follows:
+2. 新しい **registerForPushNotifications** メソッドを次のように追加します。
 
-        // Register for Push Notifications. Requires that phonegap-plugin-push be installed.
-        var pushRegistration = null;
-        function registerForPushNotifications() {
-          pushRegistration = PushNotification.init({
-              android: { senderID: 'Your_Project_ID' },
-              ios: { alert: 'true', badge: 'true', sound: 'true' },
-              wns: {}
-          });
+		// Register for Push Notifications. Requires that phonegap-plugin-push be installed.
+		var pushRegistration = null;
+		function registerForPushNotifications() {
+		  pushRegistration = PushNotification.init({
+		      android: { senderID: 'Your_Project_ID' },
+		      ios: { alert: 'true', badge: 'true', sound: 'true' },
+		      wns: {}
+		  });
 
-        // Handle the registration event.
-        pushRegistration.on('registration', function (data) {
-          // Get the native platform of the device.
-          var platform = device.platform;
-          // Get the handle returned during registration.
-          var handle = data.registrationId;
-          // Set the device-specific message template.
-          if (platform == 'android' || platform == 'Android') {
-              // Register for GCM notifications.
-              client.push.register('gcm', handle, {
-                  mytemplate: { body: { data: { message: "{$(messageParam)}" } } }
-              });
-          } else if (device.platform === 'iOS') {
-              // Register for notifications.            
-              client.push.register('apns', handle, {
-                  mytemplate: { body: { aps: { alert: "{$(messageParam)}" } } }
-              });
-          } else if (device.platform === 'windows') {
-              // Register for WNS notifications.
-              client.push.register('wns', handle, {
-                  myTemplate: {
-                      body: '<toast><visual><binding template="ToastText01"><text id="1">$(messageParam)</text></binding></visual></toast>',
-                      headers: { 'X-WNS-Type': 'wns/toast' } }
-              });
-          }
-        });
+		// Handle the registration event.
+		pushRegistration.on('registration', function (data) {
+		  // Get the native platform of the device.
+		  var platform = device.platform;
+		  // Get the handle returned during registration.
+		  var handle = data.registrationId;
+		  // Set the device-specific message template.
+		  if (platform == 'android' || platform == 'Android') {
+		      // Register for GCM notifications.
+		      client.push.register('gcm', handle, {
+		          mytemplate: { body: { data: { message: "{$(messageParam)}" } } }
+		      });
+		  } else if (device.platform === 'iOS') {
+		      // Register for notifications.            
+		      client.push.register('apns', handle, {
+		          mytemplate: { body: { aps: { alert: "{$(messageParam)}" } } }
+		      });
+		  } else if (device.platform === 'windows') {
+		      // Register for WNS notifications.
+		      client.push.register('wns', handle, {
+		          myTemplate: {
+		              body: '<toast><visual><binding template="ToastText01"><text id="1">$(messageParam)</text></binding></visual></toast>',
+		              headers: { 'X-WNS-Type': 'wns/toast' } }
+		      });
+		  }
+		});
 
-        pushRegistration.on('notification', function (data, d2) {
-          alert('Push Received: ' + data.message);
-        });
+		pushRegistration.on('notification', function (data, d2) {
+		  alert('Push Received: ' + data.message);
+		});
 
-        pushRegistration.on('error', handleError);
-        }
+		pushRegistration.on('error', handleError);
+		}
 
-3. (Android) In the above code, replace `Your_Project_ID` with the numeric project ID for your app from the [Google Developer Console].
+3. (Android) 上記のコードで、`Your_Project_ID` を、[Google デベロッパー コンソール]から入手したアプリのプロジェクト ID (数値) に置き換えます。
 
-## <a name="(optional)-configure-and-run-the-app-on-android"></a>(Optional) Configure and run the app on Android
+## (省略可能) Android でアプリを構成して実行する
 
-Complete this section to enable push notifications for Android.
+このセクションを完了すると、Android 用のプッシュ通知を有効にすることができます。
 
-####<a name="<a-name="enable-gcm"></a>enable-google-cloud-messaging"></a><a name="enable-gcm"></a>Enable Google Cloud Messaging
+####<a name="enable-gcm"></a>Google Cloud Messaging を有効にする
 
-Since we are targeting the Google Android platform initially, you must enable Google Cloud Messaging.  Similarly, if you were targeting Microsoft Windows devices, you would enable WNS support.
+初期状態で Google Android プラットフォームをターゲットとしているため、Google Cloud Messaging を有効にする必要があります。また、Microsoft Windows デバイスをターゲットとする場合は、WNS のサポートを有効にします。
 
 [AZURE.INCLUDE [mobile-services-enable-google-cloud-messaging](../../includes/mobile-services-enable-google-cloud-messaging.md)]
 
-[Watch a video showing similar steps](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-4-Set-up-gcm-for-push)
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-4-Set-up-gcm-for-push)
 
-####<a name="<a-name="configure-backend"></a>configure-the-mobile-app-backend-to-send-push-requests-using-gcm"></a><a name="configure-backend"></a>Configure the Mobile App backend to send push requests using GCM
+####<a name="configure-backend"></a>GCM を使用してプッシュ要求を送信するようにモバイル アプリ バックエンドを構成する
 
 [AZURE.INCLUDE [app-service-mobile-android-configure-push](../../includes/app-service-mobile-android-configure-push.md)]
 
-####<a name="configure-your-cordova-app-for-android"></a>Configure your Cordova app for Android
+####Android 用に Cordova アプリを構成する
 
-In your Cordova app, open config.xml and replace `Your_Project_ID` with the numeric project ID for your app from the [Google Developer Console].
+Cordova アプリで config.xml を開き、`Your_Project_ID` を [Google デベロッパー コンソール]から入手したアプリのプロジェクト ID (数値) に置き換えます。
 
-        <plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
-            <variable name="SENDER_ID" value="Your_Project_ID" />
-        </plugin>
+		<plugin name="phonegap-plugin-push" version="1.7.1" src="https://github.com/phonegap/phonegap-plugin-push.git">
+			<variable name="SENDER_ID" value="Your_Project_ID" />
+		</plugin>
 
-Open index.js and update the code to use your numeric project ID.
+index.js を開き、コードを更新して、プロジェクト ID (数値) を使用できるようにします。
 
-        pushRegistration = PushNotification.init({
-            android: { senderID: 'Your_Project_ID' },
-            ios: { alert: 'true', badge: 'true', sound: 'true' },
-            wns: {}
-        });
+		pushRegistration = PushNotification.init({
+			android: { senderID: 'Your_Project_ID' },
+			ios: { alert: 'true', badge: 'true', sound: 'true' },
+			wns: {}
+		});
 
-####<a name="<a-name="configure-device"></a>configure-your-android-device-for-usb-debugging"></a><a name="configure-device"></a>Configure your Android device for USB debugging
+####<a name="configure-device"></a>USB デバッグ用に Android デバイスを構成する
 
-Before you can deploy your application to your Android Device, you need to enable USB Debugging.  Perform the following steps on your Android phone:
+アプリケーションを Android デバイスにデプロイする前に、USB デバッグを有効にする必要があります。Android フォンで次の手順を実行します。
 
-1. Go to **Settings** > **About phone**, then tap the **Build number** until developer mode is enabled (about 7 times).
+1. **[設定]**、**[端末情報]** の順に移動して、デベロッパー モードが有効になるまで (約 7 回) **[ビルド番号]** をタップします。
 
-2. Back in **Settings** > **Developer Options** enable **USB debugging**, then connect your Android phone to your development PC with a USB Cable.
+2. **[設定]**、**[開発者向けオプション]** の順に戻り、**[USB デバッグ]** を有効にしてから、Android フォンを USB ケーブルで開発用 PC に接続します。
 
-We tested this using a Google Nexus 5X device running Android 6.0 (Marshmallow).  However, the techniques are common across any modern Android release.
+このチュートリアルのテストでは、Android 6.0 (Marshmallow) を実行している Google Nexus 5X を使用しました。ただし、その手法は最新のどの Android リリースでも共通です。
 
-#### <a name="install-google-play-services"></a>Install Google Play Services
+#### Google Play Services をインストールする
 
-The push plugin relies on Android Google Play Services for push notifications.  
+プッシュ プラグインでは、プッシュ通知に Android Google Play Services を利用します。
 
-1.  In **Visual Studio**,  click **Tools** > **Android** > **Android SDK Manager**, expand the **Extras** folder and check the box to make sure that each of the following SDKs is installed.    
-    * Android Support Repository version 20 or greater
-    * Google Play Services version 27 or greater
-    * Google Repository version 22 or greater
+1.  **Visual Studio** で **[ツール]**、**[Android]**、**[Android SDK Manager (Android SDK マネージャー)]** の順にクリックし、**Extras** フォルダーを展開して、次の SDK がインストールされていれば、それらのチェック ボックスをオンにして確定します。
+    * Android Support Repository バージョン 20 以上
+    * Google Play Services バージョン 27 以上
+    * Google Repository バージョン 22 以上
 
-2.  Click on **Install Packages** and wait for the installation to complete.
+2.  **[Install Packages (パッケージのインストール)]** をクリックして、インストールが完了するのを待ちます。
 
-The current required libraries are listed in the [phonegap-plugin-push installation documentation].
+最新の必要なライブラリは、[phonegap-plugin-push のインストール ドキュメント]に記載されています。
 
-#### <a name="test-push-notifications-in-the-app-on-android"></a>Test push notifications in the app on Android
+#### Android 上のアプリでプッシュ通知をテストする
 
-You can now test push notifications by running the app and inserting items in the TodoItem table. You can do this from the same device or from a second device, as long as you are using the same backend. Test your Cordova app on the Android platform in one of the following ways:
+ここで、アプリを実行して TodoItem テーブルにアイテムを挿入することにより、プッシュ通知をテストできます。同じバックエンドを使用している限り、同じデバイスまたは 2 番目のデバイスからテストを実行できます。次のいずれかの方法により、Android プラットフォームで Cordova アプリをテストします。
 
-- **On a physical device:**  
-Attach your Android device to your development computer with a USB cable.  Instead of **Google Android Emulator**, select **Device**. Visual Studio will deploy the application to the device and run it.  You can then interact with the application on the device.  
-Improve your development experience.  Screen sharing applications such as [Mobizen] can assist you in developing an Android application by projecting your Android screen on to a web browser on your PC.
+- **物理デバイス上:** Android デバイスを USB ケーブルで開発用コンピューターに接続します。**Google Android エミュレーター**の代わりに、**[デバイス]** を選択します。Visual Studio によってデバイスにアプリケーションがデプロイされ実行されます。デバイスでアプリケーションを操作できるようになります。開発環境を強化しましょう。[Mobizen] などの画面共有アプリケーションは、PC の Web ブラウザーに Android の画面を表示できるため、Android アプリケーションの開発に役立ちます。
 
-- **On an an Android emulator:**  
-There are additional configuration steps required when running on an emulator.
+- **Android エミュレーター上:** エミュレーターで実行するときに必要な追加の構成手順があります。
 
-    Make sure that you are deploying to or debugging on a virtual device that has Google APIs set as the target, as shown below in the Android Virtual Device (AVD) manager.
+	次に示すように Android Virtual Device (AVD) Manager で Google API がターゲットとして設定された仮想デバイスに対してデプロイまたはデバッグする必要があります。
 
-    ![](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
+	![](./media/app-service-mobile-cordova-get-started-push/google-apis-avd-settings.png)
 
-    If you want to use a faster x86 emulator, you [install the the HAXM driver](https://taco.visualstudio.com/en-us/docs/run-app-apache/#HAXM) and configure the emulator use it.
+	より高速な x86 エミュレーターを使用する場合は、[HAXM ドライバーをインストール](https://taco.visualstudio.com/ja-JP/docs/run-app-apache/#HAXM)した後、これを使用できるようにエミュレーターを構成します。
 
-    Add a Google account to the Android device by clicking **Apps** > **Settings** > **Add account**, then follow the prompts to add an existing Google account to the device (we recommend using an existing account rather than creating a new one).
+	**[Apps (アプリケーション)]**、**[Settings (設定)]**、**[Add account (アカウントの追加)]** の順にクリックして、Google アカウントを Android デバイスに追加し、プロンプトに従って既存の Google アカウントをデバイスに追加します (新規のアカウントを作成せずに、既存のアカウントを使用することをお勧めします)。
 
-    ![](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
+	![](./media/app-service-mobile-cordova-get-started-push/add-google-account.png)
 
-    Run the todolist app as before and insert a new todo item. This time, a notification icon is displayed in the notification area. You can open the notification drawer to view the full text of the notification.
+	これまでと同様に ToDoList アプリを実行し、新しい ToDo 項目を挿入します。今回は、通知領域に通知アイコンが表示されます。通知ドロアーを開いて、通知の全文を表示できます。
 
-    ![](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
+	![](./media/app-service-mobile-cordova-get-started-push/android-notifications.png)
 
-##<a name="(optional)-configure-and-run-on-ios"></a>(Optional) Configure and run on iOS
+##(省略可能) iOS で構成して実行する
 
-This section is for running the Cordova project on iOS devices. You can skip this section if you are not working with iOS devices.
+このセクションでは、iOS デバイス上で Cordova プロジェクトを実行します。iOS デバイスを使用していない場合は、このセクションを省略できます。
 
-####<a name="install-and-run-the-ios-remotebuild-agent-on-a-mac-or-cloud-service"></a>Install and run the iOS remotebuild agent on a Mac or cloud service
+####iOS remotebuild エージェントを Mac またはクラウド サービスにインストールして実行する
 
-Before you can run a Cordova app on iOS using Visual Studio, go through the steps in the [iOS Setup Guide](http://taco.visualstudio.com/en-us/docs/ios-guide/) to install and run the remotebuild agent.
+Visual Studio を使用して iOS で Cordova アプリを実行する前に、[iOS セットアップ ガイド](http://taco.visualstudio.com/ja-JP/docs/ios-guide/)の手順に従って remotebuild エージェントのインストールと実行を行います。
 
-Make sure you can build the app for iOS. The steps in the setup guide are required to build for iOS from Visual Studio. If you do not have a Mac, you can build for iOS using the remotebuild agent on a service like MacInCloud. For more info, see [Run your iOS app in the cloud](http://taco.visualstudio.com/en-us/docs/build_ios_cloud/).
+iOS 用アプリのビルドが可能であることを確認します。Visual Studio で iOS 用にビルドするには、セットアップ ガイドの手順の実施が必要です。Mac を所持していない場合は、MacInCloud などのサービスで remotebuild エージェントを使用すれば、iOS 用にビルドが可能です。詳細については、[クラウドでの iOS アプリの実行](http://taco.visualstudio.com/ja-JP/docs/build_ios_cloud/)に関するページを参照してください。
 
->[AZURE.NOTE] XCode 7 or greater is required to use the push plugin on iOS.
+>[AZURE.NOTE] iOS でプッシュ プラグインを使用するには XCode 7 以上が必要です。
 
-####<a name="find-the-id-to-use-as-your-app-id"></a>Find the ID to use as your App ID
+####アプリ ID として使用する ID を探す
 
-Before you register your app for push notifications, open config.xml in your Cordova app, find the `id` attribute value in the widget element, and copy it for later use. In the following XML, the ID is `io.cordova.myapp7777777`.
+アプリをプッシュ通知に登録する前に、Cordova アプリで config.xml を開き、ウィジェット要素内の `id` 属性の値を特定して、後で使用できるようにコピーしておきます。次の XML では、ID は `io.cordova.myapp7777777` です。
 
-        <widget defaultlocale="en-US" id="io.cordova.myapp7777777"
-        version="1.0.0" windows-packageVersion="1.1.0.0" xmlns="http://www.w3.org/ns/widgets"
-            xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
+		<widget defaultlocale="ja-JP" id="io.cordova.myapp7777777"
+  		version="1.0.0" windows-packageVersion="1.1.0.0" xmlns="http://www.w3.org/ns/widgets"
+			xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:vs="http://schemas.microsoft.com/appx/2014/htmlapps">
 
-Later, use this identifier when you create an App ID on Apple's developer portal. (If you create a different App ID on the developer portal and want to use that, you will need to take a few extra steps later in this tutorial to change this ID in config.xml. The ID in the widget element must match the App ID on the developer portal.)
+後で Apple の開発者ポータルでアプリ ID を作成するときに、この識別子を使用します (開発者ポータルで別のアプリ ID を作成して使用する場合は、このチュートリアルの後の方で示すいくつかの追加手順を実施して、この ID を config.xml 内で変更する必要があります。ウィジェット要素の ID は、開発者ポータルのアプリ ID と一致している必要があります)。
 
-####<a name="register-the-app-for-push-notifications-on-apple's-developer-portal"></a>Register the app for push notifications on Apple's developer portal
+####Apple の開発者ポータルにプッシュ通知のアプリを登録する
 
-[AZURE.INCLUDE [Notification Hubs Xamarin Enable Apple Push Notifications](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Notification Hubs Xamarin で Apple プッシュ通知を有効にする](../../includes/notification-hubs-xamarin-enable-apple-push-notifications.md)]
 
-[Watch a video showing similar steps](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-5-Set-up-apns-for-push)
 
-####<a name="configure-azure-to-send-push-notifications"></a>Configure Azure to send push notifications
+####プッシュ通知を送信するように Azure を構成する
 
-1. Log into the [Azure portal](https://portal.azure.com/). Click **Browse** > **Mobile Apps** > your Mobile App > **Settings** > **Push** > **Apple (APNS)** > **Upload Certificate**. Upload the .p12 push certificate file you exported earlier.  Make sure to select **Sandbox** if you created a development push certificate for development and testing.  Otherwise, choose **Production**. Your service is now configured to work with push notifications for iOS.
+1. [Azure ポータル](https://portal.azure.com/)にログインします。**[参照]**、**[Mobile Apps]**、作成したモバイル アプリ、**[設定]**、**[プッシュ]**、**[Apple (APNS)]**、**[証明書のアップロード]** の順にクリックします。以前にエクスポートした .p12 プッシュ証明書ファイルをアップロードします。開発とテスト用に開発プッシュ証明書を作成した場合は、**[サンドボックス]** を選択します。それ以外の場合は、**[運用]** を選択します。これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
 
-    ![](./media/app-service-mobile-cordova-get-started-push/mobile-app-upload-apns-cert.png)
+	![](./media/app-service-mobile-cordova-get-started-push/mobile-app-upload-apns-cert.png)
 
-####<a name="verify-that-your-app-id-matches-your-cordova-app"></a>Verify that your App ID matches your Cordova app
+####アプリ ID がCordova アプリと一致することを確認する
 
-If the App ID you created in your Apple Developer Account already matches the ID of the widget element in config.xml, you can skip this step. However, if the IDs don't match, take the following steps:
+Apple の開発者アカウントで作成したアプリ ID が既に config.xml のウィジェット要素の ID と一致している場合、この手順は省略可能です。ただし、ID が一致しない場合は、以下の手順を実行します。
 
-1. Delete the platforms folder from your project.
+1. platforms フォルダーをプロジェクトから削除します。
 
-2. Delete the plugins folder from your project.
+2. plugins フォルダーをプロジェクトから削除します。
 
-3. Delete the node_modules folder from your project.
+3. node\_modules フォルダーをプロジェクトから削除します。
 
-4. Update the id attribute of the widget element in config.xml to use the App ID that you created in your Apple Developer Account.
+4. config.xml のウィジェット要素の ID 属性を更新して、Apple の開発者アカウントで作成したアプリ ID を使用できるようにします。
 
-5. Rebuild your project.
+5. プロジェクトをリビルドします。
 
-#####<a name="test-push-notifications-in-your-ios-app"></a>Test push notifications in your iOS app
+#####iOS アプリでプッシュ通知をテストする
 
-1. In Visual Studio, make sure that **iOS** is selected as the deployment target, and then choose **Device** to run on your connected iOS device.
+1. Visual Studio で、**iOS** がデプロイ ターゲットとして選択されていることを確認してから、**[デバイス]** を選択して、接続した iOS デバイス上で実行します。
 
-    You can run on an iOS device connected to your PC using iTunes. The iOS Simulator does not support push notifications.
+	iTunes を使用中の PC に接続した iOS デバイス上で実行することができます。iOS シミュレーターでは、プッシュ通知はサポートされていません。
 
-2. Press the **Run** button or **F5** in Visual Studio to build the project and start the app in an iOS device, then click **OK** to accept push notifications.
+2. Visual Studio で **[実行]** または **F5** キーを押してプロジェクトをビルドし、iOS デバイスでアプリを起動します。次に、**[OK]** をクリックして、プッシュ通知を受け入れます。
 
-    >[AZURE.NOTE] You must explicitly accept push notifications from your app. This request only occurs the first time that the app runs.
+	>[AZURE.NOTE] アプリケーションからのプッシュ通知を明示的に受け入れる必要があります。これが必要であるのは、初めてアプリケーションを実行するときだけです。
 
-3. In the app, type a task, and then click the plus (+) icon.
+3. アプリケーションで、タスクを入力し、プラス (+) アイコンをクリックします。
 
-4. Verify that a notification is received, then click OK to dismiss the notification.
+4. 通知が受信されたことを確認し、[OK] をクリックして通知を破棄します。
 
-##<a name="(optional)-configure-and-run-on-windows"></a>(Optional) Configure and run on Windows
+##(省略可能) Windows で構成して実行する
 
-This section is for running the Apache Cordova app project on Windows 10 devices (the PhoneGap push plugin is supported on Windows 10). You can skip this section if you are not working with Windows devices.
+このセクションでは、Windows 10 デバイス上で Apache Cordova アプリ プロジェクトを実行します (Windows 10 では PhoneGap プッシュ プラグインがサポートされています)。Windows デバイスを使用していない場合は、このセクションを省略できます。
 
-####<a name="register-your-windows-app-for-push-notifications-with-wns"></a>Register your Windows app for push notifications with WNS
+####WNS を使用して Windows アプリをプッシュ通知に登録する
 
-To use the Store options in Visual Studio, select a Windows target from the Solution Platforms list, like **Windows-x64** or **Windows-x86** (avoid **Windows-AnyCPU** for push notifications).
+Visual Studio でストアのオプションを使用するには、ソリューション プラットフォームの一覧から **Windows x64** や **Windows x86** などの Windows ターゲットを選択します (プッシュ通知を行う場合、**Windows-AnyCPU** は選択しないでください)。
 
 [AZURE.INCLUDE [app-service-mobile-register-wns](../../includes/app-service-mobile-register-wns.md)]
 
-[Watch a video showing similar steps](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-6-Set-up-wns-for-push)
+[同様の手順を説明するビデオを見る](https://channel9.msdn.com/series/Azure-connected-services-with-Cordova/Azure-connected-services-task-6-Set-up-wns-for-push)
 
-####<a name="configure-the-notification-hub-for-wns"></a>Configure the notification hub for WNS
+####WNS 用に通知ハブを構成する
 
 [AZURE.INCLUDE [app-service-mobile-configure-wns](../../includes/app-service-mobile-configure-wns.md)]
 
-####<a name="configure-your-cordova-app-to-support-windows-push-notifications"></a>Configure your Cordova app to support Windows push notifications
+####Cordova アプリを構成して Windows プッシュ通知をサポートする
 
-Open the configuration designer (right-click on config.xml and select **View Designer**), select the **Windows** tab, and choose **Windows 10** under **Windows Target Version**.
+構成デザイナーを開き (config.xml を右クリックして **[ビュー デザイナー]** を選択)、**[Windows]** タブを選択し、**[Windows 対象バージョン]** で **[Windows 10]** を選択します。
 
->[AZURE.NOTE] If you are using a Cordova version prior to Cordova 5.1.1 (6.1.1 recommended), you must also set the Toast Capable flag to true in config.xml.
+>[AZURE.NOTE] Cordova 5.1.1 より前のバージョンの Cordova (推奨バージョンは 6.1.1 ) を使用する場合は、config.xml で Toast Capable フラグを true に設定する必要もあります。
 
-To support push notifications in your default (debug) builds, open build.json file. Copy the "release" configuration to your debug configuration.
+既定の (デバッグ) ビルドでプッシュ通知をサポートするには、build.json ファイルを開きます。"release" 構成をデバッグ構成にコピーします。
 
-        "windows": {
-            "release": {
-                "packageCertificateKeyFile": "res\\native\\windows\\CordovaApp.pfx",
-                "publisherId": "CN=yourpublisherID"
-            }
-        }
+		"windows": {
+			"release": {
+				"packageCertificateKeyFile": "res\\native\\windows\\CordovaApp.pfx",
+				"publisherId": "CN=yourpublisherID"
+			}
+		}
 
-After the update, the preceding code should look like this.
+更新した後、上記のコードは次のようになります。
 
-    "windows": {
-        "release": {
-            "packageCertificateKeyFile": "res\\native\\windows\\CordovaApp.pfx",
-            "publisherId": "CN=yourpublisherID"
-            },
-        "debug": {
-            "packageCertificateKeyFile": "res\\native\\windows\\CordovaApp.pfx",
-            "publisherId": "CN=yourpublisherID"
-            }
-        }
+	"windows": {
+		"release": {
+			"packageCertificateKeyFile": "res\\native\\windows\\CordovaApp.pfx",
+			"publisherId": "CN=yourpublisherID"
+			},
+		"debug": {
+			"packageCertificateKeyFile": "res\\native\\windows\\CordovaApp.pfx",
+			"publisherId": "CN=yourpublisherID"
+			}
+		}
 
-Build the app and verify that you have no errors. You client app should now register for the notifications from the Mobile App backend. Repeat this section for every Windows project in your solution.
+アプリをビルドし、エラーがないことを確認します。これで、クライアント アプリが、モバイル アプリ バックエンドから送信される通知に登録されました。ソリューションのすべての Windows プロジェクトについて、このセクションを繰り返します。
 
-####<a name="test-push-notifications-in-your-windows-app"></a>Test push notifications in your Windows app
+####Windows アプリでプッシュ通知をテストする
 
-In Visual Studio, make sure that a Windows platform is selected as the deployment target, such as **Windows-x64** or **Windows-x86**. To run the app on a Windows 10 PC hosting Visual Studio, choose **Local Machine**.
+Visual Studio で、**Windows-x64** や **Windows-x86** などの Windows プラットフォームがデプロイ ターゲットとして選択されていることを確認します。Visual Studio をホストしている Windows 10 PC でアプリを実行するには、**[ローカル コンピューター]** を選択します。
 
-Press the Run button to build the project and start the app.
+[実行] ボタンを押してプロジェクトをビルドし、アプリケーションを開始します。
 
-In the app, type a name for a new todoitem, and then click the plus (+) icon to add it.
+アプリで新しい todoitem の名前を入力し、プラス (+) アイコンをクリックして追加します。
 
-Verify that a notification is received when the item is added.
+項目が追加されたときに、通知が受信されていることを確認します。
 
-##<a name="<a-name="next-steps"></a>next-steps"></a><a name="next-steps"></a>Next Steps
+##<a name="next-steps"></a>次のステップ
 
-* Read about [Notification Hubs] to learn about push notifications.
-* If you have not already done so, continue the tutorial by [Adding Authentication] to your Apache Cordova app.
+* プッシュ通知の詳細については、[Notification Hubs] に関する記事を参照してください。
+* まだ認証を追加していない場合は、チュートリアルの続きとして、Apache Cordova アプリに[認証を追加]してください。
 
-Learn how to use the SDKs.
+SDK の使用方法を確認してください。
 
 * [Apache Cordova SDK]
-* [ASP.NET Server SDK]
-* [Node.js Server SDK]
+* [ASP.NET サーバー SDK]
+* [Node.js サーバー SDK]
 
 <!-- URLs -->
-[Adding Authentication]: app-service-mobile-cordova-get-started-users.md
-[Apache Cordova quick start]: app-service-mobile-cordova-get-started.md
-[authentication]: app-service-mobile-cordova-get-started-users.md
-[Work with the .NET backend server SDK for Azure Mobile Apps]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Google account]: http://go.microsoft.com/fwlink/p/?LinkId=268302
-[Google Developer Console]: https://console.developers.google.com/home/dashboard
-[phonegap-plugin-push installation documentation]: https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md
+[認証を追加]: app-service-mobile-cordova-get-started-users.md
+[Apache Cordova クイック スタート]: app-service-mobile-cordova-get-started.md
+[認証]: app-service-mobile-cordova-get-started-users.md
+[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Google アカウント]: http://go.microsoft.com/fwlink/p/?LinkId=268302
+[Google デベロッパー コンソール]: https://console.developers.google.com/home/dashboard
+[phonegap-plugin-push のインストール ドキュメント]: https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md
 [Mobizen]: https://www.mobizen.com/
 [Visual Studio Community 2015]: http://www.visualstudio.com/
-[Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/ja-JP/features/cordova-vs.aspx
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
 [Apache Cordova SDK]: app-service-mobile-cordova-how-to-use-client-library.md
-[ASP.NET Server SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-[Node.js Server SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
+[ASP.NET サーバー SDK]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+[Node.js サーバー SDK]: app-service-mobile-node-backend-how-to-use-server-sdk.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

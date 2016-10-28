@@ -1,6 +1,6 @@
 <properties
-    pageTitle="What is in the Azure RemoteApp template images? | Microsoft Azure"
-    description="Learn about the template images included with Azure RemoteApp."
+    pageTitle="Azure RemoteApp テンプレート イメージの内容 | Microsoft Azure"
+    description="Azure RemoteApp に含まれるテンプレート イメージについて説明します。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -15,39 +15,38 @@
     ms.date="08/15/2016"
     ms.author="elizapo" />
 
-
-# <a name="what-is-in-the-azure-remoteapp-template-images?"></a>What is in the Azure RemoteApp template images?
+# Azure RemoteApp テンプレート イメージの内容
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-Your Azure RemoteApp subscription includes three template images:
+Azure RemoteApp サブスクリプションには、次の 3 つのテンプレート イメージが含まれています。
 
 
 - Windows Server 2012
-- Microsoft Office 365 ProPlus (Office 365 subscription required)
-- Microsoft Office 2013 Professional Plus (trial only)
+- Microsoft Office 365 ProPlus (Office 365 サブスクリプションが必要)
+- Microsoft Office 2013 Professional Plus (評価版のみ)
 
-> [AZURE.IMPORTANT]Your Azure RemoteApp subscription grants you access to the software in the images, with the exception of Office 365 ProPlus, which requires a separate subscription, and Office 2013, which cannot be used in production. This means that you can share the programs or apps on the template images with your users. For example, if you create a collection that uses the Windows Server 2012 R2 image, you can publish System Center Endpoint Protection for users to access through RemoteApp.
+> [AZURE.IMPORTANT]Azure RemoteApp サブスクリプションを取得すると、イメージ内のソフトウェアへのアクセス権が付与されます。ただし、別途サブスクリプションが必要な Office 365 ProPlus と、運用環境では使用できない Office 2013 を除きます。つまり、テンプレート イメージ上のプログラムまたはアプリをユーザーと共有できます。たとえば、Windows Server 2012 R2 のイメージを使用するコレクションを作成する場合、ユーザーが RemoteApp でアクセスできる System Center Endpoint Protection を発行できます。
 >
-> Check out the [RemoteApp licensing details](remoteapp-licensing.md) for more information. And [Using Office with Azure RemoteApp](remoteapp-o365.md) for the Office licensing info.
+> 詳細については、「[How does licensing work in Azure RemoteApp?](remoteapp-licensing.md)」を参照してください。また、Office のライセンス情報については、「[Azure RemoteApp で Office を使用する](remoteapp-o365.md)」を参照してください。
 
-Read on for details on what each image contains.
+各イメージが含んでいるものについては、詳細を参照してください。
 
-## <a name="windows-server-2012-r2-("the-vanilla-image")"></a>Windows Server 2012 R2  ("the vanilla image")
-This image is based on Microsoft Windows Server 2012 R2 Datacenter operating system and has the following roles and features installed to meet the requirements for Azure RemoteApp template images:
+## Windows Server 2012 R2 ("バニラ イメージ")
+このイメージは Microsoft Windows Server 2012 R2 Datacenter オペレーティング システムに基づいており、Azure RemoteApp テンプレート イメージの要件を満たすために、次のようなロールと機能がインストールされています。
 
 
-- .NET Framework 4.5, 3.5.1, 3.5
-- Desktop Experience
-- Ink and Handwriting Services
-- Media Foundation
-- Remote Desktop Session Host
+- .NET Framework 4.5、3.5.1、3.5
+- デスクトップ エクスペリエンス
+- インクと手書きサービス
+- メディア ファンデーション
+- リモート デスクトップ セッション ホスト
 - Windows PowerShell 4.0
 - Windows PowerShell ISE
-- WoW64 Support
+- WoW64 サポート
 
-This image also has the following applications installed:
+このイメージには次のようなアプリケーションがインストールされています。
 
 - Adobe Flash Player
 - Microsoft Silverlight
@@ -55,50 +54,50 @@ This image also has the following applications installed:
 - Microsoft Windows Media Player
 
 
-## <a name="microsoft-office-365-proplus-(subscription-required)"></a>Microsoft Office 365 ProPlus (subscription required)
-Office 365 is the most requested application, so we created a "custom" image for you to work with.
+## Microsoft Office 365 ProPlus (サブスクリプションが必要)
+Office 365 は最もリクエストの多いアプリケーションなので、連携する "カスタム" イメージを作成しました。
 
-This image is an extension of the vanilla image and has the following components of Microsoft Office 365 ProPlus installed in addition to the components described in the Windows Server 2012 R2 image:
+このイメージは、バニラ イメージの拡張機能であり、Windows Server 2012 R2 のイメージで説明するコンポーネントに加え、次の Microsoft Office 365 ProPlus を含んでいます。
 
 
 - Access
 - Excel
 - Lync
 - OneNote
-- OneDrive for Business (note that the sync agent is not supported for use with Azure RemoteApp)
+- OneDrive for Business (同期エージェントを Azure RemoteApp で使用することはサポートされていません)
 - Outlook
 - PowerPoint
 - Word
 - Microsoft Office Proofing Tools
 
-The image also includes Visio Pro and Project Pro.
+また、イメージにも Visio Pro と Project Pro が含まれています。
 
-And the following applications, as well:
+次のアプリケーションも同様にインストールされます。
 
-- SQL Native client
-- ODBC Driver
-- SQL Server Data Mining client
-- MasterDataServices client
+- SQL Native Client
+- ODBC ドライバー
+- SQL Server データ マイニング クライアント
+- MasterDataServices クライアント
 - Microsoft Publisher
-- PowerQuery
-- PowerMap
+- Power Query
+- Power Map
 
 
-Full functionality of Office 365 ProPlus apps is available only for users who have an Office 365 ProPlus plan. For more details on the Office 365 subscription plans see [Office 365 service plans](http://technet.microsoft.com/library/office-365-plan-options.aspx). Still have questions? Check out the [Office 365 + RemoteApp](remoteapp-o365.md) information. Also check out the new article, [How to use your Office 365 subscription with Azure RemoteApp](remoteapp-officesubscription.md).
+Office 365 ProPlus のアプリのすべての機能は、Office 365 ProPlus のプランを持つユーザーのみが使用できます。Office 365 のサブスクリプション プランについては、[Office 365 のサービス プラン](http://technet.microsoft.com/library/office-365-plan-options.aspx)に関するページを参照してください。まだ不明な点がある場合は、 [Office 365 と RemoteApp の連携](remoteapp-o365.md)に関する情報を参照してください。また、新しい記事「[Azure RemoteApp で Office 365 サブスクリプションを使用する方法](remoteapp-officesubscription.md)」もご確認ください。
 
-Note that you need to license Office 365 ProPlus, Visio Pro, and Project Pro separately - they each have their own license.
+Office 365 ProPlus、Visio Pro、Project Pro のライセンスは個別に取得する必要があります (それぞれ独自のライセンスを持ちます)。
 
-## <a name="microsoft-office-2013-professional-plus-(trial-only)"></a>Microsoft Office 2013 Professional Plus (trial only)
-During the free trial period, you can test the service with the Office 2013 image.
+## Microsoft Office 2013 Professional Plus (評価版のみ)
+無料試用期間中には、Office 2013 のイメージを使用してサービスをテストすることができます。
 
-This image is an extension of the vanilla image and has the following components of Microsoft Office 2013 Professional Plus installed in addition to the components described in the Windows Server 2012 R2 image:
+このイメージは、バニラ イメージの拡張機能であり、Windows Server 2012 R2 のイメージで説明するコンポーネントに加え、インストールされている次の Microsoft Office 2013 Professional Plus のコンポーネントを含んでいます。
 
 
-- Access
+- Access (アクセス)
 - Excel
 - Lync
 - OneNote
-- OneDrive for Business (note that the sync agent is not supported for use with Azure RemoteApp)
+- OneDrive for Business (同期エージェントを Azure RemoteApp で使用することはサポートされていません)
 - Outlook
 - PowerPoint
 - Project
@@ -106,10 +105,6 @@ This image is an extension of the vanilla image and has the following components
 - Word
 - Microsoft Office Proofing Tools
 
-> [AZURE.IMPORTANT]**Legal information:** This image does not include a Microsoft Office license and *cannot be used for production*. The Office 2013 Professional Plus image is intended for trial use only. If you want to use Office apps in Azure RemoteApp for production, you need to use the Office 365 ProPlus image. For more details on licensing Office, see [Using Office 365 with Azure RemoteApp](remoteapp-o365.md)
+> [AZURE.IMPORTANT]**法的情報:** このイメージには、Microsoft Office のライセンスは含まれていないため、"*運用環境では使用できません*"。Office 2013 Professional Plus イメージは評価版を使用する目的でのみ提供されます。運用環境で Azure RemoteApp の Office アプリケーションを使用する場合は、Office 365 ProPlus のイメージを使用する必要があります。Office のライセンスの詳細については、[Azure RemoteApp での Office 365 の使用](remoteapp-o365.md)に関すページを参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

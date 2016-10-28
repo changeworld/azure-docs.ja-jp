@@ -1,144 +1,136 @@
 <properties 
-    pageTitle="Troubleshooting Analytics - the powerful search tool of Application Insights | Microsoft Azure" 
-    description="Problems with Application Insights analytics? Start here. " 
-    services="application-insights" 
+	pageTitle="Analytics のトラブルシューティング - Application Insights の強力な検索ツール | Microsoft Azure" 
+	description="Application Insights Analyticsで問題が発生しましたか? ここから開始します。" 
+	services="application-insights" 
     documentationCenter=""
-    authors="alancameronwills" 
-    manager="douge"/>
+	authors="alancameronwills" 
+	manager="douge"/>
 
 <tags 
-    ms.service="application-insights" 
-    ms.workload="tbd" 
-    ms.tgt_pltfrm="ibiza" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/11/2016" 
-    ms.author="awills"/>
+	ms.service="application-insights" 
+	ms.workload="tbd" 
+	ms.tgt_pltfrm="ibiza" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/11/2016" 
+	ms.author="awills"/>
+
+
+# Application Insights の Analytics のトラブルシューティング
+
+
+[Application Insights Analytics](app-insights-analytics.md)で問題が発生しましたか? ここから開始します。Analytics は、Visual Studio Application Insights の強力な検索ツールです。
 
 
 
-# <a name="troubleshoot-analytics-in-application-insights"></a>Troubleshoot Analytics in Application Insights
+## 制限
+
+* 現時点では、クエリの結果は過去 1 週間のデータだけに制限されます。
+* テストを実施したブラウザーは、Chrome、Microsoft Edge、および Internet Explorer の最新のエディションです。
 
 
-Problems with [Application Insights Analytics](app-insights-analytics.md)? Start here. Analytics is the powerful search tool of Visual Studio Application Insights.
-
-
-
-## <a name="limits"></a>Limits
-
-* At present, query results are limited to just over a week of past data.
-* Browsers we test on: latest editions of Chrome, Edge, and Internet Explorer.
-
-
-## <a name="known-incompatible-browser-extensions"></a>Known incompatible browser extensions
+## 既知の互換性のないブラウザーの拡張機能
 
 * Ghostery
 
-Disable the extension or use a different browser.
+拡張機能を無効にするか、別のブラウザーを使用します。
 
 
-##<a name="<a-name="e-a"></a>-"unexpected-error""></a><a name="e-a"></a> "Unexpected error"
+##<a name="e-a"></a>「予期しないエラー」
 
-![Unexpected error screen](./media/app-insights-analytics-troubleshooting/010.png)
+![予期しないエラーの画面](./media/app-insights-analytics-troubleshooting/010.png)
 
-Internal error occurred during portal runtime – unhandled exception.
+ポータルの実行時に内部エラー (未処理の例外) が発生しました。
 
-* Clean the browser's cache. 
+* ブラウザーのキャッシュを削除します。
 
-## <a name="<a-name="e-b"></a>403-...-please-try-to-reload"></a><a name="e-b"></a>403 ... please try to reload
+## <a name="e-b"></a>403 ... 再読み込みしてください
 
-![403 ... please try to reload](./media/app-insights-analytics-troubleshooting/020.png)
+![403 \... 再読み込みしてください](./media/app-insights-analytics-troubleshooting/020.png)
 
-An authentication related error occurred (during authentication or during access token generation). The portal may have no way to  recover without changing browser settings.
+認証に関連するエラーが (認証中またはアクセス トークンの生成中に) 発生しました。ポータルでは、ブラウザーの設定を変更しないと回復できない可能性があります。
 
-* Verify [third party cookies are enabled](#cookies) in the browser. 
-
-
-## <a name="<a-name="authentication"></a>403-...-verify-security-zone"></a><a name="authentication"></a>403 ... verify security zone
-
-![403 ...verify security zone](./media/app-insights-analytics-troubleshooting/030.png)
-
-An authentication related error occurred (during authentication or during access token generation). The portal may have no way to  recover without changing browser settings.
-
-1. Verify [third party cookies are enabled](#cookies) in the browser. 
-
-2. Did you use a favorite, bookmark or saved link to open the Analytics portal? Are you signed in with different credentials than you used when you saved the link?
-
-2. Try using an in-private/incognito browser window (after closing all such windows). You'll have to provide your credentials. 
-
-2. Open another (ordinary) browser window and go to [Azure](https://portal.azure.com). Sign out. Then open your link and sign in with the correct credentials.
-
-2. Edge and Internet Explorer users can also get this error when trusted zone settings are not supported.
-
-    Verify both [Analytics portal](https://analytics.applicationinsights.io) and [Azure Active Directory portal](https://portal.azure.com) are in the same security zone:
-
- * In Internet Explorer, open **Internet Options**, **Security**, **Trusted sites**, **Sites**:
-
-    ![Internet Options dialog, adding a site to Trusted Sites](./media/app-insights-analytics-troubleshooting/033.png)
-
-    In the Websites list, if any of the following URLs are included, make sure that the others are included also:
-
-    https://analytics.applicationinsights.io<br/>
-    https://login.microsoftonline.com<br/>
-    https://login.windows.net
+* ブラウザーで[サード パーティの Cookie が有効](#cookies)になっていることを確認します。
 
 
-## <a name="<a-name="e-d"></a>404-...-resource-not-found"></a><a name="e-d"></a>404 ... Resource not found
+## <a name="authentication"></a>403 ... セキュリティ ゾーンを確認します
 
-![404 ... resource not found](./media/app-insights-analytics-troubleshooting/040.png)
+![403 \... セキュリティ ゾーンを確認します](./media/app-insights-analytics-troubleshooting/030.png)
 
-Application resource was deleted from Application Insights and isn’t available anymore. This can happen if you saved the URL to the Analytics page.
+認証に関連するエラーが (認証中またはアクセス トークンの生成中に) 発生しました。ポータルでは、ブラウザーの設定を変更しないと回復できない可能性があります。
 
+1. ブラウザーで[サード パーティの Cookie が有効](#cookies)になっていることを確認します。
 
-## <a name="<a-name="e-e"></a>403-...-no-authorization"></a><a name="e-e"></a>403 ... No authorization
+2. お気に入り、ブックマーク、または保存したリンクを使用して Analytics ポータルを開きましたか? リンクを保存したときに使用した資格情報とは異なる資格情報でサインインしていますか?
 
-![403 ... not authorized](./media/app-insights-analytics-troubleshooting/050.png)
+2. (このようなウィンドウをすべて閉じてから) InPrivate または Incognito のブラウザー ウィンドウを使用してみてください。資格情報を指定する必要があります。
 
-You don't have permission to open this application in Analytics.
+2. 別の (通常の) ブラウザー ウィンドウを開いて [Azure](https://portal.azure.com) に移動します。サインアウトします。次に、リンクを開き、適切な資格情報を使用してサインインします。
 
-* Did you get the link from someone else? Ask them to make sure you are in the [readers or contributors for this resource group](app-insights-resources-roles-access-control.md).
-* Did you save the link using different credentials? Open the [Azure portal](https://portal.azure.com), sign out, and then try this link again, providing the correct credentials.
+2. Microsoft Edge および Internet Explorerのユーザーも、信頼済みゾーンの設定がサポートされていないと、このエラーが表示される場合があります。
 
-## <a name="<a-name="html-storage"></a>403-...-html5-storage"></a><a name="html-storage"></a>403 ... HTML5 Storage
+	[Analytics ポータル](https://analytics.applicationinsights.io)と [Azure Active Directory ポータル](https://portal.azure.com)の両方が同じセキュリティ ゾーン内にあることを確認します。
 
-Our portal uses HTML5 localStorage and sessionStorage.
+ * Internet Explorer で、**[インターネット オプション]**、**[セキュリティ]**、**[信頼済みサイト]**、**[サイト]** の順に開きます。
 
-* Chrome: Settings, privacy, content settings.
-* Internet Explorer: Internet Options, Advanced tab, Security, Enable DOM Storage
+    ![信頼済みサイトにサイトを追加するときの [インターネット オプション] ダイアログ](./media/app-insights-analytics-troubleshooting/033.png)
 
+    Web サイトの一覧で、次の URL のいずれかが含まれている場合、他の URL も追加します。
 
-![403 ... try to enable HTML5 storage](./media/app-insights-analytics-troubleshooting/060.png)
-
-## <a name="<a-name="e-g"></a>404-...-subscription-not-found"></a><a name="e-g"></a>404 ... Subscription not found
+    https://analytics.applicationinsights.io<br/> https://login.microsoftonline.com<br/> https://login.windows.net
 
 
-![404 ... Subscription not found](./media/app-insights-analytics-troubleshooting/070.png)
+## <a name="e-d"></a>404 ...リソースが見つかりません
 
-The URL is invalid. 
+![404 \... リソースが見つかりません](./media/app-insights-analytics-troubleshooting/040.png)
 
-* Open the app resource in [Application Insights portal](https://portal.azure.com). Then use the Analytics button.
+アプリケーションのリソースが Application Insights から削除されており、使用できません。これは、Analytics ページへの URL を保存していると発生する場合があります。
 
-## <a name="<a-name="e-h"></a>404-...-page-doesn't-exist"></a><a name="e-h"></a>404 ... page doesn't exist
 
-![404 ... Page does not exist](./media/app-insights-analytics-troubleshooting/080.png)
+## <a name="e-e"></a>403 ...アクセス権限がありません
 
-The URL is invalid.
+![403 \... アクセス権限がありません](./media/app-insights-analytics-troubleshooting/050.png)
 
-* Open the app resource in [Application Insights portal](https://portal.azure.com). Then use the Analytics button.
+Analytics でこのアプリケーションを開くためのアクセス許可がありません。
 
-## <a name="<a-name="cookies"></a>enable-third-party-cookies"></a><a name="cookies"></a>Enable third-party cookies
+* 他のユーザーからリンクを取得しましたか? 自分が[このリソース グループの閲覧者または投稿者](app-insights-resources-roles-access-control.md)に入っていることを確認するようにそのユーザーに依頼してください。
+* 別の資格情報を使用してリンクを保存しましたか? [Azure ポータル](https://portal.azure.com)を開いてサインアウトしてから、適切な資格情報を指定して、もう一度このリンクを試してください。
 
-  See [how to disable third party cookies](http://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers), but notice we need to **enable** them.
+## <a name="html-storage"></a>403 ...HTML5 のストレージ
 
-## <a name="<a-name="e-x"></a>if-all-else-fails"></a><a name="e-x"></a>If all else fails    
+当社のポータルは、HTML5 localStorage および sessionStorage を使用します。
 
-[Contact us](app-insights-get-dev-support.md).
+* Chrome: 設定、プライバシー、コンテンツの設定
+* Internet Explorer: インターネット オプション、詳細設定タブ、セキュリティ、DOM ストレージを有効にする
+
+
+![403 \... HTML5 のストレージを有効にしてください](./media/app-insights-analytics-troubleshooting/060.png)
+
+## <a name="e-g"></a>404 ...サブスクリプションが見つかりません
+
+
+![404 \...サブスクリプションが見つかりません](./media/app-insights-analytics-troubleshooting/070.png)
+
+URL が無効です。
+
+* [Application Insights ポータル](https://portal.azure.com)でアプリのリソースを開きます。次に、[分析] ボタンを使用します。
+
+## <a name="e-h"></a>404 ... ページが存在しません
+
+![404 \...ページが存在しません](./media/app-insights-analytics-troubleshooting/080.png)
+
+URL が無効です。
+
+* [Application Insights ポータル](https://portal.azure.com)でアプリのリソースを開きます。次に、[分析] ボタンを使用します。
+
+## <a name="cookies"></a>サード パーティの Cookie の有効化
+
+  「[How to disable third party cookies](http://www.digitalcitizen.life/how-disable-third-party-cookies-all-major-browsers)」 (サード パーティの Cookie を無効にする方法) を参照し、サード パーティの Cookie を**有効**にする必要があります。
+
+## <a name="e-x"></a>すべてうまくいかなかった場合    
+
+[お問い合わせください](app-insights-get-dev-support.md)。
  
 [AZURE.INCLUDE [app-insights-analytics-footer](../../includes/app-insights-analytics-footer.md)]
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

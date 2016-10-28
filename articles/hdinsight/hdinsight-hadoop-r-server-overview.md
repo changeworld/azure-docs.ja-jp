@@ -1,11 +1,11 @@
 <properties
-    pageTitle="What is R on HDInsight? Introduction to R Server on HDInsight (preview) | Microsoft Azure"
-    description="What is R Server on HDInsight (preview) and how to use R Server for creating applications for big data analysis."
-    services="hdinsight"
-    documentationCenter=""
-    authors="jeffstokes72"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="HDInsight での R とは何ですか? HDInsight の R Server (プレビュー) の概要 | Microsoft Azure"
+	description="HDInsight の R Server (プレビュー) の概要と、R Server を使用してビッグ データ分析用のアプリケーションを作成する方法について説明します。"
+	services="hdinsight"
+	documentationCenter=""
+	authors="jeffstokes72"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
    ms.service="hdinsight"
@@ -17,116 +17,111 @@
    ms.author="jeffstok"/>
 
 
+# HDInsight の R Server (プレビュー) の概要
 
-# <a name="overview-of-r-server-on-hdinsight-\(preview\)"></a>Overview of R Server on HDInsight \(preview\)
+Microsoft Azure HDInsight Premium では、Azure で HDInsight クラスターを作成する際に、オプションとして Microsoft R Server を使用できるようになりました。この新しい機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
 
-With Microsoft Azure HDInsight Premium, Microsoft R Server is now available as an option when you create HDInsight clusters in Azure. This new capability provides data scientists, statisticians, and R programmers with on-demand access to scalable, distributed methods of analytics on HDInsight.
+クラスターは、現在のプロジェクトやタスクに合わせてサイズを設定し、不要になったら破棄できます。クラスターは Azure HDInsight の一部であるため、エンタープライズ レベルの 24 時間 365 日のサポートと稼働時間 99.9% の SLA が提供され、Azure エコシステムの他のコンポーネントとも柔軟に統合できます。
 
-Clusters can be sized to the projects and tasks at hand and torn down when they're no longer needed. Since they're part of Azure HDInsight, these clusters come with enterprise-level 24/7 support, an SLA of 99.9% uptime, and the flexibility to integrate with other components in the Azure ecosystem.
+>[AZURE.NOTE] R Server は HDInsight Premium でのみ使用できます。現在のところ、HDInsight Premium は Hadoop クラスターと Spark クラスターでのみ使用できます。そのため、R Server は現在、HDInsight の Hadoop クラスターと Spark クラスターのみで使用できます。詳細については、[HDInsight で利用可能なさまざまなサービス レベルと Hadoop コンポーネント](hdinsight-component-versioning.md)に関する記事をご覧ください。
 
->[AZURE.NOTE] R Server is available only with HDInsight Premium. Currently, HDInsight Premium is only available for Hadoop and Spark clusters. So, currently you can use R Server only with Hadoop and Spark clusters on HDInsight. For more information, see [What are the different service levels and Hadoop components available with HDInsight?](hdinsight-component-versioning.md).
+HDInsight の R Server は、Azure BLOB ストレージに読み込まれた大規模なデータセットで R ベースの分析を行うための最新の機能を備えています。R Server はオープン ソースの R を基盤としているため、自社で構築する R ベースのアプリケーションでは、8000 以上のオープン ソース R パッケージと、R Server に付属する Microsoft のビッグ データ分析パッケージである ScaleR のルーチンを活用できます。
 
-R Server on HDInsight provides the latest capabilities for R-based analytics on large datasets that are loaded to Azure Blob storage. Since R Server is built on open source R, the R-based applications you build can leverage any of the 8000+ open source R packages, as well as the routines in ScaleR, Microsoft’s big data analytics package that's included with R Server.
+Premium クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
-The edge node of Premium clusters provides a convenient place to connect to the cluster and to run your R scripts. With an edge node, you have the option of running ScaleR’s parallelized distributed functions across the cores of the edge node server. You also have the option to run them across the nodes of the cluster by using ScaleR’s Hadoop Map Reduce or Spark compute contexts.
+分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。また、[Azure Machine Learning Studio](http://studio.azureml.net) [Web サービス](../machine-learning/machine-learning-publish-a-machine-learning-web-service.md)などを使用して、Azure の別の場所で運用化することもできます。
 
-The models or predictions that result from analyses can be downloaded for use on-premises. They can also be operationalized elsewhere in Azure, such as through an [Azure Machine Learning Studio](http://studio.azureml.net) [web service](../machine-learning/machine-learning-publish-a-machine-learning-web-service.md).
+## HDInsight での R の使用
 
-## <a name="get-started-with-r-on-hdinsight"></a>Get started with R on HDInsight
+HDInsight クラスターに R Server を組み込むには、Azure ポータルを使用してクラスターを作成する際に、Premium オプションを使用して Hadoop クラスターまたは Spark クラスターを作成する必要があります。どちらのクラスターの種類でも、クラスターのデータ ノード上の R Server と、R Server ベースの分析のランディング ゾーンとしてのエッジ ノードが含まれた同じ構成を使用します。クラスター作成の詳細な手順については、[HDInsight での R Server の使用](hdinsight-hadoop-r-server-get-started.md)に関する記事をご覧ください。
 
-To include R Server in an HDInsight cluster, you must create either a Hadoop or Spark cluster with the Premium option when you create a cluster by using the Azure portal. Both cluster types use the same configuration, which includes R Server on the data nodes of a cluster, and an edge node as a landing zone for R Server-based analytics. See [Getting Started with R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md) for an in-depth walk-through on creating a cluster.
+## データ ストレージ オプションについて
 
-## <a name="learn-about-data-storage-options"></a>Learn about data storage options
+HDInsight クラスターの既定のストレージは、HDFS ファイル システムが BLOB コンテナーにマップされている BLOB Storage です。これにより、クラスター ストレージにアップロードされるデータや分析中にクラスター ストレージに書き込まれるデータがどのようなものであっても、確実に永続化されます。[AzCopy](../storage/storage-use-azcopy.md) ユーティリティを使用すると、BLOB との間でデータをコピーできます。
 
-Default storage for HDInsight clusters is Blob storage with the HDFS file system mapped to a blob container. This ensures that whatever data is uploaded to the cluster storage, or written to cluster storage during the course of analysis, is made persistent. You can use the [AzCopy](../storage/storage-use-azcopy.md) utility to copy data to and from the blob.
+Blob Storage を使用するだけでなく、クラスターで [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) を使用することもできます。Data Lake を使用すると、BLOB Storage と HDFS 用 Data Lake ストレージの両方を使用できます。
 
-In addition to using Blob storage, you have the option of using [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) with your cluster. If you use Data Lake, then you can use both Blob storage and Data Lake for HDFS storage.
+エッジ ノードで使用するストレージ オプションとして、[Azure Files](../storage/storage-how-to-use-files-linux.md) を使用することもできます。Azure Files では、Azure Storage で作成されたファイル共有を Linux ファイル システムにマウントできます。HDInsight クラスターの R Server 用データ ストレージ オプションの詳細については、[HDInsight クラスターの R Server 用ストレージ オプション](hdinsight-hadoop-r-server-storage.md)に関する記事をご覧ください。
 
-You can also use [Azure Files](../storage/storage-how-to-use-files-linux.md) as a storage option for use on the edge node. Azure Files enables you to mount a file share that was created in Azure Storage to the Linux file system. For more information about data storage options for R Server on HDInsight cluster, see [Storage options for R Server on HDInsight clusters](hdinsight-hadoop-r-server-storage.md).
+## クラスターでの R Server へのアクセス
 
-## <a name="access-r-server-on-the-cluster"></a>Access R Server on the cluster
+R Server を含むクラスターを作成したら、SSH/PuTTY を使用してクラスターのエッジ ノードの R コンソールに接続できます。また、オプションの RStudio Server IDE をエッジ ノードにインストールすると、ブラウザーを介して接続することもできます。RStudio Server のインストールの詳細については、[HDInsight クラスターへの RStudio Server のインストール](hdinsight-hadoop-r-server-install-r-studio.md)に関する記事をご覧ください。
 
-After you've created a cluster with R Server, you can connect to the R console on the edge node of the cluster through SSH/PuTTY. You can also connect through a browser if you choose to install the optional RStudio Server IDE on the edge node. For more information about installing RStudio Server, see [Installing RStudio Server on HDInsight clusters](hdinsight-hadoop-r-server-install-r-studio.md).   
+## R スクリプトの開発と実行
 
-## <a name="develop-and-run-r-scripts"></a>Develop and run R scripts
+ユーザーが作成して実行する R スクリプトでは、ScaleR ライブラリの並列化された分散ルーチンに加え、8000 以上のオープン ソース R パッケージを使用できます。一般に、エッジ ノードの R Server で実行されるスクリプトは、そのノードの R インタープリター内で実行されます。コンピューティング コンテキストが Hadoop Map Reduce (RxHadoopMR) または Spark (RxSpark) に設定された ScaleR 関数を呼び出すステップは例外です。
 
-The R scripts you create and run can use any of the 8000+ open source R packages in addition to the parallelized and distributed routines in the ScaleR library. In general, script that's run in R Server on the edge node runs within the R interpreter on that node. The exception is those steps that call a ScaleR function with a compute context that's set to Hadoop Map Reduce (RxHadoopMR) or Spark (RxSpark).
+この場合、関数は参照先データに関連付けられたクラスターのデータ (タスク) ノード間に分散した形で実行されます。各種コンピューティング コンテキスト オプションの詳細については、[HDInsight Premium の R Server のコンピューティング コンテキスト オプション](hdinsight-hadoop-r-server-compute-contexts.md)に関する記事をご覧ください。
 
-In those cases, the function runs in a distributed fashion across those data (task) nodes of the cluster that are associated with the referenced data. For more information about the different compute context options, see [Compute context options for R Server on HDInsight Premium](hdinsight-hadoop-r-server-compute-contexts.md).
+## モデルの運用化
 
-## <a name="operationalize-a-model"></a>Operationalize a model
+データ モデリングが完了したら、モデルを運用化して、Azure とオンプレミスの両方で新しいデータについての予測を行うことができます。このプロセスはスコア付けと呼ばれます。次に例をいくつか示します。
 
-When your data modeling is complete, you can operationalize the model to make predictions for new data both in Azure and on-premises. This process is known as scoring. Here are a few examples.
+### HDInsight でのスコア付け
 
-### <a name="score-in-hdinsight"></a>Score in HDInsight
+HDInsight でスコア付けを行うには、モデルを呼び出して、ストレージ アカウントに読み込んだ新しいデータ ファイルについて予測を行う R 関数を作成します。その後、予測をストレージ アカウントに保存します。このルーチンは、クラスターのエッジ ノードでオンデマンドで実行することも、スケジュールされたジョブを使用して実行することもできます。
 
-To score in HDInsight, write an R function that calls your model to make predictions for a new data file that you've loaded to your storage account. Then save the predictions back to the storage account. You can run the routine on-demand on the edge node of your cluster or by using a scheduled job.  
+### Azure Machine Learning でのスコア付け
 
-### <a name="score-in-azure-machine-learning"></a>Score in Azure Machine Learning
+Azure Machine Learning Web サービスを使用してスコア付けを行うには、[AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) と呼ばれるオープン ソースの Azure Machine Learning R パッケージを使用して、モデルを Azure Web サービスとして発行します。便宜上、このパッケージはエッジ ノードにあらかじめインストールされています。次に、Machine Learning の機能を使用して Web サービスのユーザー インターフェイスを作成し、スコア付けが必要なときに Web サービスを呼び出します。
 
-To score by using an Azure Machine Learning web service, use the open source Azure Machine Learning R package known as [AzureML](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html) to publish your model as an Azure web service. For convenience, this package is pre-installed on the edge node. Next, use the facilities in Machine Learning to create a user interface for the web service, and then call the web service as needed for scoring.
-
-If you choose this option, you’ll need to convert any ScaleR model objects to equivalent open-source model objects for use with the web service. This can be done through the use of ScaleR coercion functions, such as `as.randomForest()` for ensemble-based models.
-
-
-### <a name="score-on-premises"></a>Score on-premises
-
-To score on-premises after creating your model, you can serialize the model in R, download it, de-serialize it, and then use it for scoring new data. You can score new data by using the approach described earlier in [Scoring in HDInsight](#scoring-in-hdinsight) or by using [DeployR](https://deployr.revolutionanalytics.com/).
-
-## <a name="maintain-the-cluster"></a>Maintain the cluster
-
-### <a name="install-and-maintain-r-packages"></a>Install and maintain R packages
-
-Most of the R packages that you use will be required on the edge node since most of your R scripts will run there. To install additional R packages on the edge node, you can use the usual `install.packages()` method in R.
-
-In most cases, you don't need to install additional R packages on the data nodes if you are just using routines from the ScaleR library across the cluster. However, you might need additional packages to support use of **rxExec** or **RxDataStep** execution on the data nodes.
-
-In these cases, the additional packages must be specified through use of a script action after you create the cluster. For more information, see [Creating an HDInsight cluster with R Server](hdinsight-hadoop-r-server-get-started.md).   
-
-### <a name="change-hadoop-map-reduce-memory-settings"></a>Change Hadoop Map Reduce memory settings
-
-A cluster can be modified to change the amount of memory that's available to R Server when it's running a Map Reduce job. To modify a cluster, use the Apache Ambari UI that's available through the Azure portal blade for your cluster. For instructions about how to access the Ambari UI for your cluster, see [Manage HDInsight clusters using the Ambari Web UI](hdinsight-hadoop-manage-ambari.md).
-
-It's also possible to change the amount of memory that's available to R Server by using Hadoop switches in the call to **RxHadoopMR** as follows:
-
-    hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
-
-### <a name="scale-your-cluster"></a>Scale your cluster
-
-An existing cluster can be scaled up or down through the portal. By scaling, you can gain the additional capacity that you might need for larger processing tasks, or you can scale back a cluster when it is idle. For instructions about how to scale a cluster, see [Manage HDInsight clusters](hdinsight-administer-use-portal-linux.md).
-
-### <a name="maintain-the-system"></a>Maintain the system
-
-Maintenance is performed on the underlying Linux VMs in an HDInsight cluster during off-hours to apply OS patches and other updates. Typically, maintenance is done at 3:30 AM (based on the local time for the VM) every Monday and Thursday. Updates are performed in such a way that they don't impact more than a quarter of the cluster at a time.  
-
-Since the head nodes are redundant and not all data nodes are impacted, any jobs that are running during this time might slow down. They should still run to completion, however. Any custom software or local data that you have is preserved across these maintenance events unless a catastrophic failure occurs that requires a cluster rebuild.
-
-## <a name="learn-about-ide-options-for-r-server-on-an-hdinsight-cluster"></a>Learn about IDE options for R Server on an HDInsight cluster
-
-The Linux edge node of an HDInsight Premium cluster is the landing zone for R-based analysis. After connecting to the cluster, you can launch the console interface to R Server by typing **R** at the Linux command prompt. Use of the console interface is enhanced if you run a text editor for R script development in another window, and cut and paste sections of your script into the R console as needed.
-
-A more sophisticated tool for the development of your R script is the  R-based IDE for use on the desktop, such as Microsoft’s recently announced [R Tools for Visual Studio](https://www.visualstudio.com/en-us/features/rtvs-vs.aspx) (RTVS). This is a family of desktop and server tools from [RStudio](https://www.rstudio.com/products/rstudio-server/). You can also use Walware’s Eclipse-based [StatET](http://www.walware.de/goto/statet).
-
-Another option is to install an IDE on the Linux edge node itself.  A popular choice is [RStudio Server](https://www.rstudio.com/products/rstudio-server/), which provides a browser-based IDE for use by remote clients. Installing RStudio Server on the edge node of an HDInsight Premium cluster provides a full IDE experience for the development and execution of R scripts with R Server on the cluster. It can be considerably more productive than the R console.  If you want to use RStudio Server, see [Installing RStudio Server on HDInsight clusters](hdinsight-hadoop-r-server-install-r-studio.md).
-
-## <a name="learn-about-pricing"></a>Learn about pricing
-
-The fees that are associated with an HDInsight Premium cluster with R Server are structured similarly to the fees for the standard HDInsight clusters. They are based on the sizing of the underlying VMs across the name, data, and edge nodes, with the addition of a core-hour uplift for Premium. For more information about HDInsight Premium pricing, including pricing during Public Preview, and the availability of a 30-day free trial, see [HDInsight pricing](https://azure.microsoft.com/pricing/details/hdinsight/).
-
-## <a name="next-steps"></a>Next steps
-
-Follow the links below to read more about how to use R Server with HDInsight clusters.
-
-- [Getting started with R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md)
-
-- [Add RStudio Server to HDInsight Premium](hdinsight-hadoop-r-server-install-r-studio.md)
-
-- [Compute context options for R Server on HDInsight (preview)](hdinsight-hadoop-r-server-compute-contexts.md)
-
-- [Azure Storage options for R Server on HDInsight Premium](hdinsight-hadoop-r-server-storage.md)
+この方法を選択した場合、ScaleR モデル オブジェクトを、Web サービスで使用する同等のオープン ソース モデル オブジェクトに変換する必要があります。この変換は、ScaleR 強制型変換関数 (アンサンブルベースのモデルの `as.randomForest()` など) を使用して実行できます。
 
 
+### オンプレミスのスコア付け
 
-<!--HONumber=Oct16_HO2-->
+モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、モデルをダウンロードして逆シリアル化してから、新しいデータのスコア付けに使用します。新しいデータのスコア付けは、「[HDInsight でのスコア付け](#scoring-in-hdinsight)」で前述した方法を使用するか、[DeployR](https://deployr.revolutionanalytics.com/) を使用して実行できます。
 
+## クラスターの管理
 
+### R パッケージのインストールと管理
+
+使用する R パッケージのほとんどは、R スクリプトの大半が実行されるエッジ ノードに配置する必要があります。エッジ ノードに追加の R パッケージをインストールするには、R の通常の `install.packages()` メソッドを使用します。
+
+ほとんどの場合、クラスターで ScaleR ライブラリのルーチンを使用するだけであれば、データ ノードに追加の R パッケージをインストールする必要はありません。ただし、データ ノードで **rxExec** または **RxDataStep** 実行の使用をサポートするために、追加のパッケージが必要になる場合があります。
+
+このような場合、クラスターの作成後にスクリプト アクションを使用して追加のパッケージを指定する必要があります。詳細については、[R Server を含む HDInsight クラスターの作成](hdinsight-hadoop-r-server-get-started.md)に関する記事をご覧ください。
+
+### Hadoop Map Reduce のメモリ設定の変更
+
+クラスターに変更を加えることで、Map Reduce ジョブの実行時に R Server で使用可能なメモリ容量を変更できます。クラスターを変更するには、クラスターの Azure ポータル ブレードで使用できる Apache Ambari UI を使用します。クラスターの Ambari UI にアクセスする手順については、「[Ambari Web UI を使用した HDInsight クラスターの管理](hdinsight-hadoop-manage-ambari.md)」をご覧ください。
+
+次のように、**RxHadoopMR** の呼び出しで Hadoop スイッチを使用して、R Server で使用可能なメモリ容量を変更することもできます。
+
+	hadoopSwitches = "-libjars /etc/hadoop/conf -Dmapred.job.map.memory.mb=6656"  
+
+### クラスターのスケーリング
+
+既存のクラスターは、ポータルを使用してスケールアップまたはスケールダウンできます。スケーリングにより、大規模な処理タスクに必要な追加容量が得られます。また、クラスターがアイドル状態のときに、クラスターを縮小することもできます。クラスターのスケーリングの手順については、[HDInsight クラスターの管理](hdinsight-administer-use-portal-linux.md)に関する記事をご覧ください。
+
+### システムのメンテナンス
+
+OS 修正プログラムや他の更新プログラムを適用するために、HDInsight クラスターの基になる Linux VM で時間外にメンテナンスが実施されます。通常、メンテナンスは毎週月曜日と木曜日の午前 3 時 30 分 (VM のローカル時刻に基づく) に実施されます。更新は、4 分の 1 以上のクラスターに同時に影響を与えないような方法で実行されます。
+
+ヘッド ノードが冗長化されており、すべてのデータ ノードが影響を受けるわけではないため、この期間に実行中のジョブは速度が低下する場合がありますが、完了するまで引き続き実行されます。クラスターの再構築を必要とする致命的な障害が発生しない限り、カスタム ソフトウェアやローカル データはメンテナンス イベントで保持されます。
+
+## HDInsight クラスターの R Server の IDE オプションについて
+
+HDInsight Premium クラスターの Linux エッジ ノードは、R ベースの分析のランディング ゾーンです。クラスターへの接続後、Linux コマンド プロンプトで「**R**」と入力して、R Server へのコンソール インターフェイスを起動できます。別のウィンドウで R スクリプト開発用のテキスト エディターを実行し、必要に応じてスクリプトのセクションを切り取って R コンソールに貼り付けると、コンソール インターフェイスの操作を改善できます。
+
+R スクリプト開発用のより高度なツールとして、Microsoft が最近発表した [R Tools for Visual Studio](https://www.visualstudio.com/ja-JP/features/rtvs-vs.aspx) (RTVS) など、デスクトップで使用する R ベースの IDE があります。これは、[RStudio](https://www.rstudio.com/products/rstudio-server/) のデスクトップおよびサーバー ツール ファミリーです。また、Walware の Eclipse ベースの [StatET](http://www.walware.de/goto/statet) を使用することもできます。
+
+Linux のエッジ ノード自体に IDE をインストールすることもできます。よく使用されている [RStudio Server](https://www.rstudio.com/products/rstudio-server/) は、リモート クライアント向けにブラウザー ベースの IDE を提供します。HDInsight Premium クラスターのエッジ ノードに RStudio Server をインストールすると、クラスターの R Server を使用した R スクリプトの開発と実行に IDE の機能をフルに活用できるようになり、R コンソールよりも生産性を大幅に向上させることができます。RStudio Server を使用する場合は、[HDInsight クラスターへの RStudio Server のインストール](hdinsight-hadoop-r-server-install-r-studio.md)に関する記事をご覧ください。
+
+## 価格について
+
+R Server を含む HDInsight Premium クラスターに関する料金は、Standard HDInsight クラスターの料金と同様に体系化されています。料金は、ネーム、データ、エッジの各ノードの基になる VM のサイズに基づきますが、Premium 向けのコア時間の割増分が加算されます。パブリック プレビュー中の価格や 30 日間無料試用版の提供状況など、HDInsight Premium の価格の詳細については、「[HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」をご覧ください。
+
+## 次のステップ
+
+HDInsight クラスターで R Server を使用する方法の詳細については、以下のリンクをご覧ください。
+
+- [HDInsight での R Server の使用](hdinsight-hadoop-r-server-get-started.md)
+
+- [HDInsight Premium への RStudio Server の追加に関する記事](hdinsight-hadoop-r-server-install-r-studio.md)
+
+- [HDInsight の R Server (プレビュー) の計算コンテキストのオプション](hdinsight-hadoop-r-server-compute-contexts.md)
+
+- [Azure Storage options for R Server on HDInsight Premium (HDInsight Premium での R Server の Azure Storage オプション)](hdinsight-hadoop-r-server-storage.md)
+
+<!---HONumber=AcomDC_0914_2016-->

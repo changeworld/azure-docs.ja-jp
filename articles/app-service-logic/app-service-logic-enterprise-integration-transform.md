@@ -1,86 +1,77 @@
 <properties 
-    pageTitle="Overview of Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-    description="Use the features of Enterprise Integration Pack to enable business process and integration scenarios using Microsoft Azure App service" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="msftman" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
+	description="Enterprise Integration Pack の機能を使用することにより、Microsoft Azure App Service を使ってビジネス プロセスと統合シナリオを実現できます。" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/08/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/08/2016" 
+	ms.author="deonhe"/>
+
+# XML 変換での Enterprise Integration
+
+## 概要
+Enterprise Integration Transform コネクタは、データをある形式から別の形式に変換します。たとえば、受信メッセージに YearMonthDay 形式で現在の日付が含まれていたとします。この日付を、変換を使用して MonthDayYear 形式に変更できます。
+
+## 変換でできること
+変換 (マップともいう) は、送信元 XML スキーマ (入力) と送信先 XML スキーマ (出力) で構成されます。さまざまな組み込み関数を使用すると、文字列操作、条件付き割り当て、算術式、日時の書式設定や、ループ構造の操作などで、データを操作および制御できます。
+
+## 変換を作成する方法
+Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas) を使用して、変換/マップを作成できます。変換の作成とテストが終了したら、変換を統合アカウントにアップロードします。
+
+## 変換を使用する方法
+変換を統合アカウントにアップロードしたら、それを使ってロジック アプリを作成できます。ロジック アプリは、ロジック アプリがトリガーされたとき (かつ変換が必要な入力コンテンツがあるとき) に変換を実行します。
+
+**変換を使用する手順は次のとおりです**。
+
+### 前提条件 
+プレビューでは、次のことを行う必要があります。
+
+-  [Azure Functions コンテナーを作成する](https://ms.portal.azure.com/#create/Microsoft.FunctionApp "Azure Functions コンテナーを作成する")
+-  [Azure Functions コンテナーに関数を追加する](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-transform-function%2Fazuredeploy.json "このテンプレートは、webhook ベースの C# Azure 関数を作成します。これは、ロジック アプリの統合シナリオで使用する変換機能を備えています。")
+-  統合アカウントを作成してマップを追加する
+
+>[AZURE.TIP] Azure Functions コンテナーと Azure 関数の名前をメモしておいてください。次の手順で必要になります。
+
+前提条件が整ったら、ロジック アプリの作成を開始します。
+
+1. ロジック アプリを作成し、マップを含む[統合アカウントにリンクします](./app-service-logic-enterprise-integration-accounts.md "ロジック アプリへの統合アカウントの関連付けについての詳細情報")。
+2. ロジック アプリに **[Request - When an HTTP request is received (要求 - HTTP 要求を受信したとき)]** トリガーを追加します。![](./media/app-service-logic-enterprise-integration-transforms/transform-1.png)
+3. まず **[アクションの追加]** を選択し、**[Transform XML (XML 変換)]** アクションを追加します。![](./media/app-service-logic-enterprise-integration-transforms/transform-2.png)
+4. 検索ボックスに「*transform*」と入力し、すべてのアクションから使用するアクションだけをフィルター処理します。![](./media/app-service-logic-enterprise-integration-transforms/transform-3.png)
+5. **[Transform XML (XML 変換)]** アクションを選択します。![](./media/app-service-logic-enterprise-integration-transforms/transform-4.png)
+6. 使用する関数を含む**関数コンテナー**を選択します。これは前の手順で作成した Azure Functions コンテナーの名前です。
+7. 使用する**関数**を選択します。これは前の手順で作成した Azure 関数の名前です。
+8. 変換する XML **コンテンツ**を追加します。HTTP 要求で受信する XML データは、すべて**コンテンツ**として使用することができます。この例では、ロジック アプリをトリガーした HTTP 要求の本文を選択します。
+9. 変換を実行するのに使用する**マップ**の名前を選択します。マップが既に統合アカウント内に存在している必要があります。前の手順で、既にロジック アプリには、マップが含まれる統合アカウントへのアクセス権が付与されています。
+10. 作業内容を保存します。![](./media/app-service-logic-enterprise-integration-transforms/transform-5.png)
+
+この時点で、マップの設定が終了します。実際のアプリケーションでは、変換されたデータを SalesForce などの LOB アプリケーション内に格納する必要がある場合があります。変換の出力は、アクションとして Salesforce に簡単に送信することができます。
+
+これで、HTTP エンドポイントに要求を送信して、変換をテストすることができます。
+
+## 機能とユース ケース
+
+- マップで作成される変換は、あるドキュメントから別のドキュメントに名前と住所をコピーするなど、単純な内容になります。または、設定不要なマップ操作を使用して、より複雑な変換を作成することができます。
+- 文字列、日時の関数などの複合的なマップ操作や関数をすぐに使用できます。
+- スキーマ間でデータを直接コピーできます。SDK に含まれるマッパーを使用すれば、この操作は送信元スキーマ内の要素から送信先スキーマの対応する部分に線を引くくらい簡単です。
+- マップを作成するときには、作成したすべてのリレーションシップやリンクを示すマップがグラフィカルに表示されます。
+- [マップのテスト] 機能を使用してサンプル XML メッセージを追加します。クリックするだけで、作成したマップをテストして、生成された出力を参照できます。
+- 既存のマップをアップロードできます。
+- XML 形式のサポートが含まれます。
 
 
-# <a name="enterprise-integration-with-xml-transforms"></a>Enterprise integration with XML transforms
-
-## <a name="overview"></a>Overview
-The Enterprise integration Transform connector converts data from one format to another format. For example, you may have an incoming message that contains the current date in the YearMonthDay format. You can use a transform to reformat the date to be in the MonthDayYear format.
-
-## <a name="what-does-a-transform-do?"></a>What does a transform do?
-A Transform, which is also known as a map, consists of a Source XML schema (the input) and a Target XML schema (the output). You can use different built-in functions to help manipulate or control the data, including string manipulations, conditional assignments, arithmetic expressions, date time formatters, and even looping constructs.
-
-## <a name="how-to-create-a-transform?"></a>How to create a transform?
-You can create a transform/map by using the Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas). When you are finished creating and testing the transform, you upload the transform into your integration account. 
-
-## <a name="how-to-use-a-transform"></a>How to use a transform
-After you upload the transform into your integration account, you can use it to create a Logic app. The Logic app will then run your transformations whenever the Logic app is triggered (and there is input content that needs to be transformed).
-
-**Here are the steps to use a transform**:
-
-### <a name="prerequisites"></a>Prerequisites 
-In the preview, you will need to:  
-
--  [Create an Azure Functions container](https://ms.portal.azure.com/#create/Microsoft.FunctionApp "Create an Azure Functions container")  
--  [Add a function to the Azure Functions container](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-logic-app-transform-function%2Fazuredeploy.json "This template creates a webhook based C# azure function with transform capabilities to use in logic apps integration scenarios")    
--  Create an integration account and add a map to it  
-
->[AZURE.TIP] Make a note of the the name of the Azure Functions container and the Azure function, you will need them in the next step.  
-
-Now that you've taken care of the prerequisites, it's time to create your Logic app:  
-
-1. Create a Logic app and [link it to your integration account](./app-service-logic-enterprise-integration-accounts.md "Learn to link an integration account to a Logic app") that contains the map.
-2. Add a **Request - When an HTTP request is received** trigger to your Logic app  
-![](./media/app-service-logic-enterprise-integration-transforms/transform-1.png)    
-3. Add the **Transform XML** action by first selecting **Add an action**   
-![](./media/app-service-logic-enterprise-integration-transforms/transform-2.png)   
-4. Enter the word *transform* in the search box in order to filter all the actions to the one that you want to use  
-![](./media/app-service-logic-enterprise-integration-transforms/transform-3.png)  
-5. Select the **Transform XML** action   
-![](./media/app-service-logic-enterprise-integration-transforms/transform-4.png)  
-6. Select the **FUNCTION CONTAINER** that contains the function you will use. This is the name of the Azure Functions container you created earlier in these steps.
-7. Select the **FUNCTION** you want to use. This is the name of the Azure Function you created earlier.
-8. Add the XML **CONTENT** that you will transform. Note that you can use any XML data you receive in the HTTP request as the **CONTENT**. In this example, select the body of the HTTP request that triggered the Logic app.
-9. Select the name of the **MAP** that you want to use to perform the transformation. The map must already be in your integration account. In an earlier step, you already gave your Logic app access to your integration account that contains your map.
-10. Save your work  
-![](./media/app-service-logic-enterprise-integration-transforms/transform-5.png) 
-
-At this point, you are finished setting up your map. In a real world application, you may want to store the transformed data in an LOB application such as SalesForce. You can easily as an action to send the output of the transform to Salesforce. 
-
-You can now test your transform by making a request to the HTTP endpoint.  
-
-## <a name="features-and-use-cases"></a>Features and use cases
-
-- The transformation created in a map can be simple, such as copying a name and address from one document to another. Or, you can create more complex transformations using the out-of-the-box map operations.  
-- Multiple map operations or functions are readily available, including strings, date time functions, and so on.  
-- You can do a direct data copy between the schemas. In the Mapper included in the SDK, this is as simple as drawing a line that connects the elements in the source schema with their counterparts in the destination schema.  
-- When creating a map, you view a graphical representation of the map, which show all the relationships and links you create.
-- Use the Test Map feature to add a sample XML message. With a simple click, you can test the map you created, and see the generated output.  
-- Upload existing maps  
-- Includes support for the XML format.
-
-
-## <a name="learn-more"></a>Learn more
-- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")  
-- [Learn more about maps](./app-service-logic-enterprise-integration-maps.md "Learn about enterprise integration maps")  
+## 詳細情報
+- [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
+- [マップについての詳細情報](./app-service-logic-enterprise-integration-maps.md "Enterprise Integration のマップについての詳細情報")
  
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

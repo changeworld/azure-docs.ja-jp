@@ -1,25 +1,23 @@
-- The virtual networks can be in the same or different Azure regions (locations).
+- 仮想ネットワークが属している Azure リージョン (場所) は異なっていてもかまいません。
 
-- A cloud service or a load balancing endpoint CANNOT span across virtual networks, even if they are connected together.
+- クラウド サービスや負荷分散エンドポイントは、仮にそれらが相互に接続されていたとしても、仮想ネットワークの境界を越えることはできません。
 
-- Connecting multiple Azure virtual networks together doesn't require any on-premises VPN gateways unless cross-premises connectivity is required.
+- 複数の Azure Virtual Network を接続するときに、オンプレミスの VPN ゲートウェイは必要ありません (クロスプレミス接続が必要な場合を除く)。
 
-- VNet-to-VNet supports connecting virtual networks. It does not support connecting virtual machines or cloud services NOT in a virtual network.
+- VNet 間接続によって仮想ネットワークを接続できます。仮想ネットワーク内に存在しない仮想マシンやクラウド サービスを接続することはできません。
 
-- VNet-to-VNet requires Azure VPN gateways with RouteBased (previously called Dynamic Routing) VPN types. 
+- VNet 間接続には、RouteBased VPN タイプの Azure VPN ゲートウェイが必要です (以前は「動的ルーティング」と呼ばれていました) 。
 
-- Virtual network connectivity can be used simultaneously with multi-site VPNs, with a maximum of 10 (Default/Standard Gateways) or 30 (High Performance Gateways) VPN tunnels for a virtual network VPN gateway connecting to either other virtual networks or on-premises sites.
+- 仮想ネットワーク接続は、マルチサイト VPN と同時に使用することができます。1 つの仮想ネットワーク VPN ゲートウェイに最大 10 本 (既定/標準のゲートウェイ) または 30 本 (高性能ゲートウェイ) の VPN トンネルを確立し、他の仮想ネットワークまたはオンプレミス サイトに接続することが可能です。
 
-- The address spaces of the virtual networks and on-premises local network sites must not overlap. Overlapping address spaces will cause the creation of VNet-to-VNet connections to fail.
+- 仮想ネットワークのアドレス空間とオンプレミスのローカル ネットワーク サイトのアドレス空間とが重複しないようにする必要があります。アドレス空間が重複していると、VNet 間接続の作成は失敗します。
 
-- Redundant tunnels between a pair of virtual networks are not supported.
+- 一対の仮想ネットワーク間に冗長トンネルを確立することはできません。
 
-- All VPN tunnels of the virtual network share the available bandwidth on the Azure VPN gateway and the same VPN gateway uptime SLA in Azure.
+- 仮想ネットワークのすべての VPN トンネルは、Azure VPN ゲートウェイ上の使用可能な帯域幅を共有し、Azure 内の同じ VPN ゲートウェイ アップタイム SLA を共有します。
 
-- VNet-to-VNet traffic travels across the Microsoft Network, not the Internet.
+- VNet 間のトラフィックは、インターネットではなく、Microsoft ネットワークで送信されます。
 
-- VNet-to-VNet traffic within the same region is free for both directions; cross region VNet-to-VNet egress traffic is charged with the outbound inter-VNet data transfer rates based on the source regions. Please refer to the [pricing page](https://azure.microsoft.com/pricing/details/vpn-gateway/) for details.
+- 同じリージョン内の VNet 間トラフィックは双方向で無料です。リージョンを超えて送信される VNet 間トラフィックには、ソース リージョンに基づき、送信 VNet 内データ転送料金が課せられます。詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/vpn-gateway/)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

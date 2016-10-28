@@ -1,45 +1,44 @@
 <!--author=SharS last changed: 03/17/2016-->
 
-#### <a name="to-download-hotfixes"></a>To download hotfixes
+#### 修正プログラムをダウンロードするには
 
-Perform the following steps to download the software update.
+次の手順を実行して、ソフトウェア更新プログラムをダウンロードします。
 
-1. Start Internet Explorer and navigate to [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Internet Explorer を起動し、[http://catalog.update.microsoft.com](http://catalog.update.microsoft.com) に移動します。
 
-2. If this is your first time using the Microsoft Update Catalog on this computer, click **Install** when prompted to install the Microsoft Update Catalog add-on.
-    ![Install catalog](./media/storsimple-install-update-option-1/HCS_InstallCatalog-include.png)
+2. このコンピューターで Microsoft Update カタログを初めて使用する場合は、Microsoft Update カタログ アドオンのインストールを求められたら、**[インストール]** をクリックします。 ![カタログのインストール](./media/storsimple-install-update-option-1/HCS_InstallCatalog-include.png)
 
-3. In the search box of the Microsoft Update Catalog, enter the Knowledge Base (KB) number of the hotfix you want to download, for example **3063418**, and then click **Search**.
+3. Microsoft Update カタログの検索ボックスに、ダウンロードする修正プログラムのサポート技術情報 (KB) 番号 (**3063418** など) を入力して、**[検索]** をクリックします。
 
-4. You will see the **StorSimple Update 1.2 Appliance Update** bundle. Click **Add**. The update will be added to the basket.
+4. **StorSimple Update 1.2 Appliance Update** bundle が表示されます。**[追加]** をクリックします。更新プログラムがバスケットに追加されます。
 
-5. Search for any additional hotfixes listed in the table above (**3043005** and **3063416**), and add each the basket.
+5. 上の表で示されている他の修正プログラム (**3043005** および **3063416**) を検索し、バスケットに追加します。
 
-5. Click **View Basket**.
+5. **[バスケットの表示]** をクリックします。
 
-    ![View basket](./media/storsimple-install-update-option-1/HCS_InstallBasket-include.png)
+    ![バスケットの表示](./media/storsimple-install-update-option-1/HCS_InstallBasket-include.png)
 
-6. Click **Download**. Specify or **Browse** to a local location where you want the downloads to appear. The updates are downloaded to the specified location and placed in a subfolder with the same name as the update. The folder can also be copied to a network share that is reachable from the device.
+6. **[Download]** をクリックします。ダウンロード先となるローカルの場所を指定または**参照**します。更新プログラムが指定した場所にダウンロードされて、更新プログラムと同じ名前のサブフォルダーに配置されます。デバイスからアクセスできるネットワーク共有に、このフォルダーをコピーすることもできます。
 
 >   [AZURE.NOTE]
-The hotfixes must be accessible from both controllers to detect any potential error messages from the peer controller.
+修正プログラムは、ピア コントローラーから潜在的なエラー メッセージをすべて検出するために両方のコントローラーからアクセス可能である必要があります。
 
-#### <a name="to-install-and-verify-regular-mode-hotfixes"></a>To install and verify regular mode hotfixes
-Perform the following steps to install and verify the regular-mode hotfixes. If you already installed them using the Azure Portal, skip ahead to [install and verify maintenance mode hotfixes](#to-install-and-verify-maintenance-mode-hotfixes).
+#### 通常モードの修正プログラムをインストールして確認するには
+通常モードの修正プログラムをインストールして確認するには、次の手順を実行します。Azure ポータルを使用して既にインストールしてある場合は、[メンテナンス モードの修正プログラムのインストールと確認](#to-install-and-verify-maintenance-mode-hotfixes)に進みます。
 
-1. To install the software update, access the Windows PowerShell interface on your StorSimple device serial console. Follow the detailed instructions in [Use PuTTy to connect to the serial console](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console). At the command prompt, press **Enter**.
+1. ソフトウェア更新プログラムをインストールするには、StorSimple デバイスのシリアル コンソールで Windows PowerShell インターフェイスにアクセスします。詳細については、[PuTTY を使用してシリアル コンソールに接続する方法](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)に関するセクションを参照してください。コマンド プロンプトで **Enter** キーを押します。
 
-4. Select **Option 1** to log on to the device with full access.
+4. **[オプション 1]** を選択して、フル アクセスでデバイスにログオンします。
 
-5. To install the update package, at the command prompt, type:
+5. 更新プログラム パッケージをインストールするには、コマンド プロンプトで次のように入力します。
 
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
 
-    Use IP rather than DNS in share path in the above command. The credential parameter is used only if you are accessing an authenticated share.
+    上記のコマンドの共有パスでは、DNS ではなく IP を使用します。Credential パラメーターは、認証済みの共有にアクセスする場合にのみ使用されます。
 
-    We recommend that you use the credential parameter to access shares. Even shares that are open to “everyone” are typically not open to unauthenticated users.
+	共有にアクセスする場合は、Credential パラメーターを使用することをお勧めします。"すべてのユーザー" に解放されている共有であっても、通常は、非認証ユーザーには解放されません。
 
-    A sample output is shown below.
+    サンプル出力を次に示します。
 
         ````
         Controller0>Start-HcsHotfix -Path \\10.100.100.100\share
@@ -54,11 +53,11 @@ Perform the following steps to install and verify the regular-mode hotfixes. If 
 
         ````
 
-6. Type **Y** when prompted to confirm the hotfix installation.
+6. 修正プログラムのインストールの確認を求められたら、「**Y**」と入力します。
 
-7. Monitor the update by using the `Get-HcsUpdateStatus` cmdlet.
+7. `Get-HcsUpdateStatus` コマンドレットを使用して、更新プログラムを監視します。
 
-    The following sample output shows the update in progress. The `RunInprogress` will be `True` when the update is in progress.
+    次のサンプル出力は、インストール中の更新プログラムを示しています。更新が進行中の場合、`RunInprogress` は `True` になります。
 
         ````
         Controller0>Get-HcsUpdateStatus
@@ -69,7 +68,7 @@ Perform the following steps to install and verify the regular-mode hotfixes. If 
         Controller1Events   :
         ````
 
-     The following sample output indicates that the update is finished. The `RunInProgress` will be `False` when the update has completed.
+     次のサンプル出力は、更新が完了したことを示しています。更新が完了した場合、`RunInProgress` は `False` になります。
 
         ````
         Controller1>Get-HcsUpdateStatus
@@ -82,87 +81,84 @@ Perform the following steps to install and verify the regular-mode hotfixes. If 
 
         ````
 
-    > [AZURE.NOTE] Occasionally, the cmdlet reports `False` when the update is still in progress. To ensure that the hotfix is complete, wait for a few minutes, rerun this command and verify that the `RunInProgress` is `False`. If it is, then the hotfix has completed.
+	> [AZURE.NOTE] 場合によっては、更新がまだ進行中であっても、コマンドレットは `False` とレポートします。修正プログラムが完了したことを確認するには、数分待ってから、このコマンドを再実行し、`RunInProgress` が `False` になっていることを確認します。False の場合、修正プログラムは完了しています。
 
-8. After the software update is complete, verify the system software versions. Type the following command:
+8. ソフトウェアの更新が完了したら、システムのソフトウェア バージョンを確認します。次のコマンドを入力します。
 
     `Get-HcsSystem`
 
-    You should see the following versions:
+    次のバージョンが表示されます。
 
     - HcsSoftwareVersion: 6.3.9600.17584
     - CisAgentVersion: 1.0.9049.0
     - MdsAgentVersion: 26.0.4696.1433
 
-    If the version numbers do not change after applying the update, it indicates that the hotfix has failed to apply. Should you see this, please contact [Microsoft Support](storsimple-contact-microsoft-support.md) for further assistance.
+	更新プログラムの適用後にバージョン番号が変わらない場合は、修正プログラムの適用に失敗したことを示します。そのような場合は、[Microsoft サポート](storsimple-contact-microsoft-support.md)に連絡して、さらに支援を受けてください。
 
-9. Repeat steps 3-5 to install the remaining regular-mode hotfix (KB3043005).
+9. 手順 3 ～ 5 を繰り返して、残りの通常モード修正プログラム (KB3043005) をインストールします。
 
-#### <a name="to-install-and-verify-maintenance-mode-hotfixes"></a>To install and verify maintenance mode hotfixes
+#### メンテナンス モードの修正プログラムをインストールして確認するには
 
-Use KB3063416 to install disk firmware updates. These are disruptive updates and take around 30-45 minutes to complete. You can choose to install these in a planned maintenance window by connecting to the device serial console.
+KB3063416 を使用して、ディスク ファームウェアの更新プログラムをインストールします。これらは中断を伴う更新プログラムであり、完了まで約 30 ～ 45 分かかります。デバイスのシリアル コンソールに接続することで、計画されたメンテナンス期間にこれらをインストールするよう選択できます。
 
-To install the disk firmware updates, follow the instructions below.
+ディスク ファームウェアの更新プログラムをインストールするには、次の指示に従います。
 
-1. Place the device in Maintenance mode. Note that you should not use Windows PowerShell remoting when connecting to a device in Maintenance mode. You will need to run this cmdlet on the device controller when connected through the device serial console. Type:
+1. デバイスをメンテナンス モードにします。デバイスにメンテナンス モードで接続するときは、Windows PowerShell リモート処理を使用しないでください。このコマンドレットは、デバイスのシリアル コンソールを通して接続したときにデバイス コントローラーで実行する必要があります。次のコマンドを入力します。
 
     `Enter-HcsMaintenanceMode`
 
-    A sample output is shown below.
+	サンプル出力を次に示します。
 
-        Controller0>Enter-HcsMaintenanceMode
-        Checking device state...
+		Controller0>Enter-HcsMaintenanceMode
+		Checking device state...
 
-        In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
-        [Y] Yes [N] No (Default is "Y"): Y
+		In maintenance mode, your device will not service IOs and will be disconnected from the Microsoft Azure StorSimple Manager service. Entering maintenance mode will end the current session and reboot both controllers, which takes a few minutes to complete. Are you sure you want to enter maintenance mode?
+		[Y] Yes [N] No (Default is "Y"): Y
 
-        -----------------------MAINTENANCE MODE------------------------
-        Microsoft Azure StorSimple Appliance Model 8100
-        Name: Update1-8100-SHG0997879L76YD
-        Software Version: 6.3.9600.17584
-        Copyright (C) 2014 Microsoft Corporation. All rights reserved.
-        You are connected to Controller0 - Passive
-        ---------------------------------------------------------------
-        Serial Console Menu
-        [1] Log in with full access
-        [2] Log into peer controller with full access
-        [3] Connect with limited access
-        [4] Change language
-        Please enter your choice>
+		-----------------------MAINTENANCE MODE------------------------
+		Microsoft Azure StorSimple Appliance Model 8100
+		Name: Update1-8100-SHG0997879L76YD
+		Software Version: 6.3.9600.17584
+		Copyright (C) 2014 Microsoft Corporation. All rights reserved.
+		You are connected to Controller0 - Passive
+		---------------------------------------------------------------
+		Serial Console Menu
+		[1] Log in with full access
+		[2] Log into peer controller with full access
+		[3] Connect with limited access
+		[4] Change language
+		Please enter your choice>
 
-    Both the controllers then restart into Maintenance mode.
+	両方のコントローラーがメンテナンス モードで再起動します。
 
-3. To install the disk firmware update, type:
+3. ディスク ファームウェアの更新プログラムをインストールするには、次のように入力します。
 
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
 
-    A sample output is shown below.
+    サンプル出力を次に示します。
 
         Controller1>Start-HcsHotfix -Path \\10.100.100.100\share\DiskFirmwarePackage.exe -Credential contoso\john
-        Enter Password:
-        WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
-        Confirm
-        This operation starts a hotfix installation and could reboot one or both of the controllers. Are you sure you want to continue?
-        [Y] Yes [N] No (Default is "Y"): Y
-        WARNING: Installation is currently in progress. This operation can take several minutes to complete.
+    	Enter Password:
+    	WARNING: In maintenance mode, hotfixes should be installed on each controller sequentially. After the hotfix is installed on this controller, install it on the peer controller.
+    	Confirm
+    	This operation starts a hotfix installation and could reboot one or both of the controllers. Are you sure you want to continue?
+    	[Y] Yes [N] No (Default is "Y"): Y
+    	WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 
-1.  Monitor the install progress using `Get-HcsUpdateStatus` command. The update is complete when the `RunInProgress` changes to `False`.
+1.  `Get-HcsUpdateStatus` コマンドを使用して、インストールの進行状況を監視します。更新が完了すると、`RunInProgress` が `False` に変わります。
 
-2.  After the installation is complete, the controller on which the maintenance mode hotfix was installed will be rebooted. Log in as option 1 with full access and verify the disk firmware version. Type:
+2.  インストールが完了すると、メンテナンス モードの修正プログラムがインストールされたコントローラーが再起動されます。フル アクセスを持つオプション 1 としてログインし、ディスク ファームウェアのバージョンを確認します。次のコマンドを入力します。
 
-    `Get-HcsFirmwareVersion`
+	`Get-HcsFirmwareVersion`
 
-    The expected disk firmware versions are:
+    予想されるディスク ファームウェアのバージョンは次のとおりです。
 
     `XMGG, XGEE, KZ50, F6C2, VR08`
 
-    Run the `Get-HcsFirmwareVersion` command on the second controller to verify that the software version has been updated. You can then exit the maintenance mode. Type the following command for each device controller:
+    2 番目のコントローラーで `Get-HcsFirmwareVersion` コマンドを実行して、ソフトウェアのバージョンが更新されたことを確認します。この後、メンテナンス モードを終了できます。各デバイス コントローラーに対して次のコマンドを入力します。
 
     `Exit-HcsMaintenanceMode`
 
-1. The controllers restart when you exit Maintenance mode. After the disk firmware updates are successfully applied and the device has exited maintenance mode, return to the Azure classic portal. Note that the portal might not show that you installed the Maintenance mode updates for 24 hours.
+1. メンテナンス モードを終了すると、コントローラーが再起動します。ディスク ファームウェアの更新プログラムが正常に適用され、デバイスがメンテナンス モードを終了したら、Azure クラシック ポータルに戻ります。メンテナンス モードの更新プログラムがインストールされたことがポータルに 24 時間表示されない可能性があることに注意してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0323_2016-->

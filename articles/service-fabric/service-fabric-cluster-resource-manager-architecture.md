@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager Architecture | Microsoft Azure"
-   description="An architectural overview of Service Fabric Cluster Resource Manager."
+   pageTitle="リソース マネージャー アーキテクチャ | Microsoft Azure"
+   description="Service Fabric クラスター リソース マネージャーのアーキテクチャの概要。"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,32 +16,27 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
+# クラスター リソース マネージャーのアーキテクチャの概要
+Service Fabric クラスター リソース マネージャーには、クラスター内のリソースを管理するための情報がいくつか必要です。現在存在しているサービスと、これらのサービスが現在 (または既定で) 消費しているリソースの量を把握している必要があります。クラスター内のノードの実際の容量、つまり、使用可能なリソースがクラスター全体でどれくらいあるか、および特定のノードでどれくらいリソースが残っているかの両方を把握している必要があります。特定のサービスのリソースの消費は時間の経過と共に変わり、またサービスは実際に複数のリソースを使用します。異なる多数のサービスには、メモリーやディスク消費などのメトリックとして測定、報告される実際の物理リソースと、(より一般的な) 論理メトリック (WorkQueueDepth、TotalRequests など) の両方があります。論理および物理メトリックはいずれも、さまざまな種類の数多くのサービスで使用できる場合もあれば、少数のサービスでしか使用できない場合もあります。
 
-# <a name="cluster-resource-manager-architecture-overview"></a>Cluster resource manager architecture overview
-In order to manage the resources in your cluster, the Service Fabric Cluster Resource Manager must have several pieces of information. It has to know which services currently exist and the current (or default) amount of resources that those services are consuming. It has to know the actual capacity of the nodes in the cluster, and thus the amount of resources available both in the cluster as a whole and remaining on a particular node. The resource consumption of a given service can change over time, as well as the fact that services, in reality, usually care about more than one resource. Across many different services there may be both real physical resources being measured and reported as metrics like memory and disk consumption, as well as (and actually more commonly) logical metrics - things like "WorkQueueDepth" or "TotalRequests". Both logical and physical metrics may be used across many different types of services or maybe specific to only a couple services.
+## その他の考慮事項
+クラスターの所有者やオペレーターがサービス作成者と違うことや、少なくとも同じ人物がいくつかの職務を掛け持ちしていることもあります。たとえば、サービスを開発しているときは、リソース要件およびさまざまなコンポーネントの最適なデプロイの方法についてはわずかな知識しかありませんが、運用環境のサービスで稼働中のサイトのインシデントを処理するときには、職務は別になるため、別のツールを使用する必要があります。また、クラスターもサービス自体も静的には構成されません。クラスターのノード数が増減したり、さまざまなサイズのノードが追加、削除されたり、サービスが作成、削除されたり、またサービスによって、必要なリソースの割り当てがその場で変更されたりする場合があります。アップグレードやその他の管理操作がクラスター全体に適用される場合があり、また障害もいつ発生するかわかりません。
 
-## <a name="other-considerations"></a>Other considerations
-The owners and operators of the cluster are occasionally different from the service authors, or at a minimum are the same people wearing different hats; for example when developing your service you know a few things about what it requires in terms of resources and how the different components should ideally be deployed, but as the person handling a live-site incident for that service in production you have a different job to do, and require different tools. In addition, neither the cluster nor the services themselves are a statically configured: the number of nodes in the cluster can grow and shrink, nodes of different sizes can come and go, and services can be created, removed, and change their desired resource allocations on the fly. Upgrades or other management operations can roll through the cluster, and of course things can fail at any time.
+## クラスター リソース マネージャーのコンポーネントとデータ フロー
+クラスター リソース マネージャーは、各サービス、そしてこれを構成するステートレスなインスタンスやステートフルなレプリカの要件と同様に、クラスター全体に関する多数の知識が必要です。Service Fabric には、これを実現する、個々のノード上で実行される、ローカルのリソース消費情報を集計するクラスター リソース マネージャーのエージェントと、サービスとクラスターのすべての情報を集め、現在の構成に基づいて対応する、一元的なフォールト トレランス機能を備えたクラスター リソース マネージャー サービスの 2 つがあります。クラスター リソース マネージャー サービス (およびその他のすべてのシステム サービス) のフォールト トレランスは、お使いのサービスに使用されているのと完全に同じ (サービスの状態をクラスター内のいくつかのレプリカ (通常は 7 つ) にレプリケーションする) メカニズムにより実現されます。
 
-## <a name="cluster-resource-manager-components-and-data-flow"></a>Cluster resource manager components and data flow
-The Cluster Resource Manager will have to know many things about the overall cluster, as well as the requirements of individual services and the stateless instances or stateful replicas that make it up. To accomplish this, we have agents of the Cluster Resource Manager that run on individual nodes in order to aggregate local resource consumption information, and a centralized, fault-tolerant Cluster Resource Manager service that aggregates all of the information about the services and the cluster and reacts based on its current configuration. The fault tolerance for the Cluster Resource Manager service (and all other system services) is achieved via exactly the same mechanisms that we use for your services, namely replication of the service’s state to quorums of some number of replicas in the cluster (usually 7).
+![リソース バランサーのアーキテクチャ][Image1]
 
-![Resource Balancer Architecture][Image1]
+例として上の図を見てみましょう。実行時には、たくさんの変更がある場合があります。たとえば、サービスのリソース消費量が変わったり、サービスで障害が発生したり、クラスターにノードの追加や削除がある場合があります。特定のノードのすべての変更は、集計されて、クラスター リソース マネージャー サービスに定期的に送信 (1、2) されます。ここでは再度集計、分析、および格納が行われます。サービスは数秒ごとにすべての変更を確認し、何らかのアクションをとる必要があるか判断します (3)。たとえば、クラスターにノードが追加され、それが空であることを検出し、それらのノードにサービスを追加することを決定するなどです。また、特定のノードに過剰の負荷がかかっていること、または特定のサービスで障害が発生したり (削除されたり)、他のノードでリソースが開放されたことを検出する場合があります。
 
-Let’s take a look at this diagram above as an example. During runtime there are a whole bunch of changes which could happen: For example, let’s say there are some changes in the amount of resources services consume, some service failures, some nodes join and leave the cluster, etc. All the changes on a specific node are aggregated and periodically sent to the Cluster Resource Manager service (1,2) where they are aggregated again, analyzed, and stored. Every few seconds that service looks at all of the changes, and determines if there are any actions necessary (3). For example, it could notice that nodes have been added to the cluster and are empty, and decide to move some services to those nodes. It could also notice that a particular node is overloaded, or that certain services have failed (or been deleted), freeing up resources on other nodes.
+以下の図を見て、次に何が起こるか見てみましょう。たとえば、変更が必要であるとクラスター リソース マネージャーが判断するとします。その他のシステム サービス (具体的には Failover Manager) と調整を行い、必要な変更を行います。次いで変更要求を適切なノードに送信します (4)。この場合、リソース マネージャーがノード 5 に過剰な負荷がかかっていることに気付き、サービス B を N5 から N4 に移動することに決定したとします。再構成後 (5)、クラスターは次のようになります。
 
-Let’s take a look at the following diagram and see what happens next. Let’s say that the Cluster Resource Manager determines that changes are necessary. It coordinates with other system services (in particular the Failover Manager) to make the necessary changes. Then the change requests are sent to the appropriate nodes (4). In this case, we presume that the Resource Manager noticed that Node 5 was overloaded, and so decided to move service B from N5 to N4. At the end of the reconfiguration (5), the cluster looks like this:
+![リソース バランサーのアーキテクチャ][Image2]
 
-![Resource Balancer Architecture][Image2]
+## 次のステップ
+- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>Next steps
-- The Cluster Resource Manager has a lot of options for describing the cluster. To find out more about them check out this article on [describing a Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md)
+[Image1]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
+[Image2]: ./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png
 
-[Image1]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-1.png
-[Image2]:./media/service-fabric-cluster-resource-manager-architecture/Service-Fabric-Resource-Manager-Architecture-Activity-2.png
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

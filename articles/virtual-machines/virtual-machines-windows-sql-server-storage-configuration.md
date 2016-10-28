@@ -1,145 +1,140 @@
 <properties
-    pageTitle="Storage configuration for SQL Server VMs | Microsoft Azure"
-    description="This topic describes how Azure configures storage for SQL Server VMs during provisioning (Resource Manager deployment model). It also explains how you can configure storage for your existing SQL Server VMs."
-    services="virtual-machines-windows"
-    documentationCenter="na"
-    authors="ninarn"
-    manager="jhubbard"    
-    tags="azure-resource-manager"/>
+	pageTitle="SQL Server VM のストレージの構成 | Microsoft Azure"
+	description="このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるかを説明します (Resource Manager デプロイメント モデル)。また、既存の SQL Server VM のストレージを構成する方法についても説明します。"
+	services="virtual-machines-windows"
+	documentationCenter="na"
+	authors="ninarn"
+	manager="jhubbard"    
+	tags="azure-resource-manager"/>
 <tags
-    ms.service="virtual-machines-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="vm-windows-sql-server"
-    ms.workload="infrastructure-services"
-    ms.date="08/04/2016"
-    ms.author="ninarn" />
+	ms.service="virtual-machines-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows-sql-server"
+	ms.workload="infrastructure-services"
+	ms.date="08/04/2016"
+	ms.author="ninarn" />
 
+# SQL Server VM のストレージの構成
 
-# <a name="storage-configuration-for-sql-server-vms"></a>Storage configuration for SQL Server VMs
+Azure で SQL Server 仮想マシン イメージを構成するとき、ポータルを使用して、ストレージ構成を自動化すると便利です。これには、ストレージを VM に接続する、そのストレージが SQL Server にアクセスできるようにする、特定のパフォーマンス要件を最適化するためにストレージを構成する、などの作業が含まれます。
 
-When you configure a SQL Server virtual machine image in Azure, the Portal helps to automate your storage configuration. This includes attaching storage to the VM, making that storage accessible to SQL Server, and configuring it to optimize for your specific performance requirements.
+このトピックでは、プロビジョニング中に SQL Server VM のストレージが Azure によってどのように構成されるか、また、既存の VM のストレージがどのように構成されるかを説明します。この構成は、SQL Server が実行されている Azure VM の[パフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)に基づいています。
 
-This topic explains how Azure configures storage for your SQL Server VMs both during provisioning and for existing VMs. This configuration is based on the [performance best practices](virtual-machines-windows-sql-performance.md) for Azure VMs running SQL Server.
+[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] クラシック デプロイメント モデル。
 
-[AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)] classic deployment model.
+## 前提条件
+自動化されたストレージ構成設定を使用するには、仮想マシンには次の特性が必要です。
 
-## <a name="prerequisites"></a>Prerequisites
-To use the automated storage configuration settings, your virtual machine requires the following characteristics:
+- [SQL Server ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#option-1-deploy-a-sql-vm-per-minute-licensing)でプロビジョニングされている。
+- [Resource Manager デプロイメント モデル](../resource-manager-deployment-model.md)を使用している。
+- [Premium Storage](../storage/storage-premium-storage.md) を使用している。
 
-- Provisioned with a [SQL Server gallery image](virtual-machines-windows-sql-server-iaas-overview.md#option-1-deploy-a-sql-vm-per-minute-licensing).
-- Uses the [Resource Manager deployment model](../resource-manager-deployment-model.md).
-- Uses [Premium Storage](../storage/storage-premium-storage.md).
+## 新しい VM
+次のセクションでは、新しい SQL Server 仮想マシンのストレージを構成する方法について説明します。
 
-## <a name="new-vms"></a>New VMs
-The following sections describe how to configure storage for new SQL Server virtual machines.
+### Azure ポータル
+SQL Server ギャラリー イメージを使用して Azure VM をプロビジョニングするとき、新しい VM のストレージを自動的に構成することを選択できます。自動構成では、ストレージ サイズ、パフォーマンスの制限、およびワークロードの種類を指定します。次のスクリーンショットは、SQL VM のプロビジョニング中に使用する [ストレージ構成] ブレードです。
 
-### <a name="azure-portal"></a>Azure Portal
-When provisioning an Azure VM using a SQL Server gallery image, you can choose to automatically configure the storage for your new VM. You specify the storage size, performance limits, and workload type. The following screenshot shows the Storage configuration blade used during SQL VM provisioning.
+![プロビジョニング中の SQL Server VM ストレージの構成](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
-![SQL Server VM Storage Configuration During Provisioning](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-provisioning.png)
+VM が作成されたら、ここで選択した内容に基づいて、次のストレージ構成タスクが実行されます。
 
-Based on your choices, Azure performs the following storage configuration tasks after creating the VM:
+- Premium Storage データ ディスクを作成し、仮想マシンに接続する。
+- SQL Server にアクセスできるようにデータ ディスクを構成する。
+- 指定したサイズとパフォーマンス (IOPS とスループット) 要件に基づいて、データ ディスクを記憶域プールにまとめる。
+- 仮想マシンで記憶域プールを新しいドライブに関連付ける。
+- 指定したワークロードの種類 (データ ウェアハウス、トランザクション処理、または一般) に基づいて、新しいドライブを最適化する。
 
-- Creates and attaches premium storage data disks to the virtual machine.
-- Configures the data disks to be accessible to SQL Server.
-- Configures the data disks into a storage pool based on the specified size and performance (IOPS and throughput) requirements.
-- Associates the storage pool with a new drive on the virtual machine.
-- Optimizes this new drive based on your specified workload type (Data warehousing, Transactional processing, or General).
+Azure によるストレージ設定の構成方法の詳細については、「[ストレージの構成](#storage-configuration)」を参照してください。Azure ポータルで SQL Server VM を作成する詳しい手順については、[プロビジョニング チュートリアル](virtual-machines-windows-portal-sql-server-provision.md)をご覧ください。
 
-For further details on how Azure configures storage settings, see the [Storage configuration section](#storage-configuration). For a full walkthrough of how to create a SQL Server VM in the Azure Portal, see [the provisioning tutorial](virtual-machines-windows-portal-sql-server-provision.md).
+### Resource Manager テンプレート
+次の Resource Manager テンプレートを使用する場合、既定では、2 つ Premium データ ディスクが記憶域プール構成なしで接続されます。ただし、仮想マシンに接続される Premium データ ディスクの数は、次のテンプレートをカスタマイズすることで変更できます。
 
-### <a name="resource-manage-templates"></a>Resource Manage templates
-If you use the following Resource Manager templates, two premium data disks are attached by default, with no storage pool configuration. However, you can customize these templates to change the number of premium data disks that are attached to the virtual machine.
+- [自動バックアップを備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autobackup)
+- [自動修正を備えた VM の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
+- [AKV 統合を備えた VM の作成](https://github.com\Azure\azure-quickstart-templates\tree\master\201-vm-sql-full-keyvault)
 
-- [Create VM with Automated Backup](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autobackup)
-- [Create VM with Automated Patching](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-sql-full-autopatching)
-- [Create VM with AKV Integration](https://github.com\Azure\azure-quickstart-templates\tree\master\201-vm-sql-full-keyvault)
+## 既存の VM
+既存の SQL Server VM については、Azure ポータルで一部のストレージ設定を変更できます。VM を選択し、[設定] 領域に移動して、[SQL Server の構成] を選択します。[SQL Server の構成] ブレードに、VM の現在のストレージ使用量が表示されます。このグラフには、VM 上のすべてのドライブが示されており、ドライブごとに、次の 4 つのセクションの記憶域スペースが表示されます。
 
-## <a name="existing-vms"></a>Existing VMs
-For existing SQL Server VMs, you can modify some storage settings in the Azure portal. Select your VM, go to the Settings area, and then select SQL Server Configuration. The SQL Server Configuration blade shows the current storage usage of your VM. All drives that exist on your VM are displayed in this chart. For each drive, the storage space displays in four sections:
+- SQL データ
+- SQL ログ
+- その他 (非 SQL ストレージ)
+- 使用可能
 
-- SQL data
-- SQL log
-- Other (non-SQL storage)
-- Available
+![既存の SQL Server VM 用のストレージを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
 
-![Configure Storage for Existing SQL Server VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-existing.png)
+新しいドライブを追加するか、既存のドライブを拡張するようにストレージを構成するには、グラフの上の [編集] をクリックします。
 
-To configure the storage to add a new drive or extend an existing drive, click the Edit link above the chart.
+表示される構成オプションは、この機能を前に使用したことがあるかどうかによって異なります。初めて使用する場合は、新しいドライブのストレージ要件を指定できます。この機能をドライブを作成したことがある場合は、そのドライブのストレージを拡張することを選択できます。
 
-The configuration options that you see varies depending on whether you have used this feature before. When using for the first time, you can specify your storage requirements for a new drive. If you previously used this feature to create a drive, you can choose to extend that drive’s storage.
+### 初めて使用する
+この機能を初めて使用する場合は、新しいドライブのストレージ サイズとパフォーマンス制限を指定できます。これは、プロビジョニングするときの操作に似ています。主な違いは、ワークロードの種類を指定できない点です。この制限により、仮想マシン上の既存の SQL Server 構成が利用できなくなるのを防ぎます。
 
-### <a name="use-for-the-first-time"></a>Use for the first time
-If it is your first time using this feature, you can specify the storage size and performance limits for a new drive. This experience is similar to what you would see at provisioning time. The main difference is that you are not permitted to specify the workload type. This restriction prevents disrupting any existing SQL Server configurations on the virtual machine.
+![SQL Server ストレージ スライダーを構成する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
 
-![Configure SQL Server Storage Sliders](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-usage-sliders.png)
+Azure では、仕様に基いて新しいドライブが作成されます。このシナリオでは、次のストレージ構成タスクが実行されます。
 
-Azure creates a new drive based on your specifications. In this scenario, Azure performs the following storage configuration tasks:
+- Premium Storage データ ディスクを作成し、仮想マシンに接続する。
+- SQL Server にアクセスできるようにデータ ディスクを構成する。
+- 指定したサイズとパフォーマンス (IOPS とスループット) 要件に基づいて、データ ディスクを記憶域プールにまとめる。
+- 仮想マシンで記憶域プールを新しいドライブに関連付ける。
 
-- Creates and attaches premium storage data disks to the virtual machine.
-- Configures the data disks to be accessible to SQL Server.
-- Configures the data disks into a storage pool based on the specified size and performance (IOPS and throughput) requirements.
-- Associates the storage pool with a new drive on the virtual machine.
+Azure によるストレージ設定の構成方法の詳細については、「[ストレージの構成](#storage-configuration)」を参照してください。
 
-For further details on how Azure configures storage settings, see the [Storage configuration section](#storage-configuration).
+### 新しいドライブの追加
+SQL Server VM に既にストレージを構成してある場合は、そのストレージを拡張すると、新しいオプションが 2 つ表示されます。1 つ目は新しいドライブを追加するオプションで、VM のパフォーマンス レベルを向上させることができます。
 
-### <a name="add-a-new-drive"></a>Add a new drive
-If you have already configured storage on your SQL Server VM, expanding storage brings up two new options. The first option is to add a new drive, which can increase the performance level of your VM.
+![新しいドライブを SQL VM に追加する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
 
-![Add a new drive to a SQL VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-configuration-add-new-drive.png)
+ただし、パフォーマンス向上を実現するには、ドライブを追加した後、手動で構成しなければならない部分がいくつか出てきます。
 
-However, after adding the drive, you must perform some extra manual configuration to achieve the performance increase.
+### ドライブの拡張
+もう 1 つはストレージ拡張オプションで、既存のドライブを拡張します。このオプションでは、ドライブの利用可能なストレージは増えますが、パフォーマンスは向上しません。記憶域プールを使用している場合、記憶域プールの作成後に、列数を変更することはできません。データ ディスクにわたってストライピングできる、並列書き込み数は、この列数によって決まります。したがって、データ ディスクを追加しても、パフォーマンスを高めることはできません。データが書き込まれるストレージが増えるだけです。また、この制限は、ドライブを拡張するとき、列数によって、追加できるデータ ディスクの最小数が決まることを意味します。データ ディスクが 4 つ含まれる記憶域プールを作成した場合は、列数も 4 になります。ストレージを拡張する場合は必ず、少なくとも 4 つのデータ ディスクを追加する必要があります。
 
-### <a name="extend-the-drive"></a>Extend the drive
-The other option for expanding storage is to extend the existing drive. This option increases the available storage for your drive, but it does not increase performance. With storage pools, you cannot alter the number of columns after the storage pool is created. The number of columns determines the number of parallel writes, which can be striped across the data disks. Therefore, any added data disks cannot increase performance. They can only provide more storage for the data being written. This limitation also means that, when extending the drive, the number of columns determines the minimum number of data disks that you can add. So if you create a storage pool with four data disks, the number of columns is also four. Any time you extend the storage, you must add at least four data disks.
+![SQL VM のドライブを拡張する](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
 
-![Extend a drive for a SQL VM](./media/virtual-machines-windows-sql-storage-configuration/sql-vm-storage-extend-a-drive.png)
+## ストレージの構成
+このセクションでは、Azure ポータルでの SQL VM のプロビジョニングまたは構成時に自動的に行われる、ストレージ構成の変更に関するリファレンス情報を提供します。
 
-## <a name="storage-configuration"></a>Storage configuration
-This section provides a reference for the storage configuration changes that Azure automatically performs during SQL VM provisioning or configuration in the Azure Portal.
+- VM に対して 2 TB 未満のストレージを選択した場合、記憶域プールは作成されません。
+- VM に対して 2 TB 以上のストレージを選択した場合、記憶域プールが構成されます。このトピックの次のセクションでは、記憶域プールの構成について詳しく説明します。
+- 自動ストレージ構成では、必ず [Premium Storage](../storage/storage-premium-storage.md) P30 データ ディスクが使用されます。結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
 
-- If you have selected fewer than two TBs of storage for your VM, Azure does not create a storage pool.
-- If you have selected at least two TBs of storage for your VM, Azure configures a storage pool. The next section of this topic provides the details of the storage pool configuration.
-- Automatic storage configuration always uses [premium storage](../storage/storage-premium-storage.md) P30 data disks. Consequently, there is a 1:1 mapping between your selected number of Terabytes and the number of data disks attached to your VM.
+料金情報については、[Storage 料金](https://azure.microsoft.com/pricing/details/storage)ページの「**Disk Storage**」タブを参照してください。
 
-For pricing information, see the [Storage pricing](https://azure.microsoft.com/pricing/details/storage) page on the **Disk Storage** tab.
+### 記憶域プールの作成
+Azure では、次の設定を使用して、SQL Server VM で記憶域プールを作成します。
 
-### <a name="creation-of-the-storage-pool"></a>Creation of the storage pool
-Azure uses the following settings to create the storage pool on SQL Server VMs.
-
-| Setting | Value |
+| Setting | 値 |
 |-----|-----|
-| Stripe size  | 256 KB (Data warehousing); 64 KB (Transactional) |
-| Disk sizes | 1 TB each |
-| Cache | Read |
-| Allocation size | 64 KB NTFS allocation unit size |
-| Instant file initialization | Enabled |
-| Lock pages in memory | Enabled |
-| Recovery | Simple recovery (no resiliency) |
-| Number of columns | Number of data disks<sup>1</sup> |
-| TempDB location | Stored on data disks<sup>2</sup> |
+| ストライプ サイズ | 256 KB (データ ウェアハウス)、64 KB (トランザクション) |
+| ディスク サイズ | 各 1 TB |
+| キャッシュ | 読み取り |
+| アロケーション サイズ | 64 KB NTFS アロケーション ユニット サイズ |
+| ファイルの瞬時初期化 | 有効 |
+| メモリ内のページのロック | 有効 |
+| 復旧 | シンプルな復元 (回復性なし) |
+| 列数の合計 | データ ディスクの数<sup>1</sup> |
+| TempDB の場所 | データ ディスクに格納<sup>2</sup> |
 
-<sup>1</sup> After the storage pool is created, you cannot alter the number of columns in the storage pool.
+<sup>1</sup> 記憶域プールの作成後、その記憶域プールの列数を変更することはできません。
 
-<sup>2</sup> This setting only applies to the first drive you create using the storage configuration feature.
+<sup>2</sup> この設定は、ストレージ構成機能を使用して作成した最初のドライブにのみ適用されます。
 
-## <a name="workload-optimization-settings"></a>Workload optimization settings
-The following table describes the three workload type options available and their corresponding optimizations:
+## ワークロード最適化の設定
+次の表では、使用可能な 3 つのワークロードの種類のオプションと、対応する最適化について説明します。
 
-| Workload type | Description | Optimizations |
+| ワークロードの種類 | Description | 最適化 |
 |-----|-----|-----|
-| **General** | Default setting that supports most workloads | None |
-| **Transactional processing** | Optimizes the storage for traditional database OLTP workloads | Trace Flag 1117<br/>Trace Flag 1118 |
-| **Data warehousing** | Optimizes the storage for analytic and reporting workloads | Trace Flag 610<br/>Trace Flag 1117 |
+| **全般** | ほとんどのワークロードをサポートする既定の設定 | なし |
+| **トランザクション処理** | 従来のデータベース OLTP ワークロード用にストレージを最適化します | トレース フラグ 1117<br/>トレース フラグ 1118 |
+| **データ ウェアハウス** | 分析とレポートのワークロード用にストレージを最適化します | トレース フラグ 610<br/>トレース フラグ 1117 |
 
->[AZURE.NOTE] You can only specify the workload type when you provision a SQL virtual machine by selecting it in the storage configuration step.
+>[AZURE.NOTE] ワークロードの種類を指定するには、SQL 仮想マシンをプロビジョニングしているときに、ストレージの構成手順でそのワークロードの種類を選択します。
 
-## <a name="next-steps"></a>Next steps
-For other topics related to running SQL Server in Azure VMs, see [SQL Server on Azure Virtual Machines](virtual-machines-windows-sql-server-iaas-overview.md).
+## 次のステップ
+Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

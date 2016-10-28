@@ -1,74 +1,69 @@
 <properties
-    pageTitle="Identify databases and tables for Stretch Database by running Stretch Database Advisor | Microsoft Azure"
-    description="Learn how to identify databases and tables that are candidates for Stretch Database."
-    services="sql-server-stretch-database"
-    documentationCenter=""
-    authors="douglaslMS"
-    manager=""
-    editor=""/>
+	pageTitle="Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する | Microsoft Azure "
+	description="Stretch Database の候補となるデータベースとテーブルを特定する方法について説明します。"
+	services="sql-server-stretch-database"
+	documentationCenter=""
+	authors="douglaslMS"
+	manager=""
+	editor=""/>
 
 <tags
-    ms.service="sql-server-stretch-database"
-    ms.workload="data-management"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/14/2016"
-    ms.author="douglasl"/>
+	ms.service="sql-server-stretch-database"
+	ms.workload="data-management"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/14/2016"
+	ms.author="douglasl"/>
 
+# Stretch Database Advisor を実行して Stretch Database のデータベースとテーブルを特定する
 
-# <a name="identify-databases-and-tables-for-stretch-database-by-running-stretch-database-advisor"></a>Identify databases and tables for Stretch Database by running Stretch Database Advisor
+Stretch Database の候補となるデータベースとテーブルを特定するには、SQL Server 2016 Upgrade Advisor をダウンロードし、Stretch Database Advisor を実行します。Stretch Database Advisor はブロック問題も特定します。
 
-To identify databases and tables that are candidates for Stretch Database, download SQL Server 2016 Upgrade Advisor, and run the Stretch Database Advisor. Stretch Database Advisor also identifies blocking issues.
+## Upgrade Advisor のダウンロードとインストール
+Upgrade Advisor を[ここ](http://go.microsoft.com/fwlink/?LinkID=613421)からダウンロードし、インストールします。このツールは、SQL Server インストール メディアには含まれていません。
 
-## <a name="download-and-install-upgrade-advisor"></a>Download and install Upgrade Advisor
-Download and install Upgrade Advisor from [here](http://go.microsoft.com/fwlink/?LinkID=613421). This tool is not included on the SQL Server installation media.
+## Stretch Database Advisor の実行
 
-## <a name="run-the-stretch-database-advisor"></a>Run the Stretch Database Advisor
+1.  Upgrade Advisor を実行します。
 
-1.  Run Upgrade Advisor.
+2.  **[シナリオ]** を選択してから、**[STRETCH DATABASE ADVISOR の実行]** を選択します。
 
-2.  Select **Scenarios**, and then select **RUN STRETCH DATABASE ADVISOR**.
+3.  **[Stretch Database Advisor の実行]** ブレードで、**[分析するデータベースの選択]** をクリック します。
 
-3.  On the **Run Stretch Database Advisor** blade, click **SELECT DATABASES TO ANALYZE**.
+4.  **[データベースの選択]** ブレードで、サーバー名と認証情報を入力または選択します。**[接続]** をクリックします。
 
-4.  On the **Select databases** blade, enter or select the server name and the authentication info. Click **Connect**.
+5.  選択したサーバー上のデータベースの一覧が表示されます。分析するデータベースを選択します。**[選択]** をクリックします。
 
-5.  A list of databases on the selected server appears. Select the databases that you want to analyze. Click **Select**.
+6.  **[Stretch Database Advisor の実行]** ブレードで、**[実行]** をクリック します。分析が実行されます。
 
-6.  On the **Run Stretch Database Advisor** blade, click **Run**.  The analysis runs.
+## 結果の確認
 
-## <a name="review-the-results"></a>Review the results
+1.  分析が完了したら、**[分析済みデータベース]** ブレードで、分析したデータベースのいずれかを選択し、**[分析結果]** ブレードを表示します。
 
-1.  When the analysis is finished, on the **Analyzed databases** blade, select one of the databases that you analyzed to display the **Analysis results** blade.
+    **[分析結果]** ブレードには、既定の推奨基準に適合する、選択されたデータベースの推奨テーブルが一覧表示されます。
 
-    The **Analysis results** blade lists recommended tables in the selected database that match the default recommendation criteria.
+2.  **[分析結果]** ブレード上のテーブルの一覧で、推奨テーブルのいずれかを選択し、**[テーブル結果]** ブレードを表示します。
 
-2.  In the list of tables on the **Analysis results** blade, select one of the recommended tables to display the **Table results** blade.
+    ブロック問題が存在する場合は、選択されたテーブルのブロック問題が **[テーブル結果]** ブレードに一覧表示されます。Stretch Database Advisor によって検出されるブロック問題については、「[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)」をご覧ください。
 
-    If there are blocking issues, the **Table results** blade lists the blocking issues for the selected table. For information about blocking issues detected by Stretch Database Advisor, see [Limitations for Stretch Database](sql-server-stretch-database-limitations.md).
+3.  **[テーブル結果]** ブレード上のブロックの問題の一覧でいずれかの問題を選択すると、その詳細な情報が表示されて、軽減手順が提案されます。選択したテーブルを Stretch Database 用に構成する場合は、推奨される軽減手順を実行します。
 
-3.  In the list of blocking issues on the **Table results** blade, select one of the issues to display more info about the selected issue and proposes mitigation steps. Implement the suggested mitigation steps if you want to configure the selected table for Stretch Database.
+## 次のステップ
+Stretch Database を有効にします。
 
-## <a name="next-step"></a>Next step
-Enable Stretch Database.
+-   **データベース**の Stretch Database を有効にするには、「[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)」をご覧ください。
 
--   To enable Stretch Database on a **database**, see [Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md).
+-   Stretch が データベースで既に有効な場合に、別の**テーブル**の Stretch Database を有効にするには、「[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)」をご覧ください。
 
--   To enable Stretch Database on another **table**, when Stretch is already enabled on the database, see [Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md).
+## 関連項目
 
-## <a name="see-also"></a>See also
+[Stretch Database の制限事項](sql-server-stretch-database-limitations.md)
 
-[Limitations for Stretch Database](sql-server-stretch-database-limitations.md)
+[データベースの Stretch Database を有効にする](sql-server-stretch-database-enable-database.md)
 
-[Enable Stretch Database for a database](sql-server-stretch-database-enable-database.md)
+[テーブルの Stretch Database を有効にする](sql-server-stretch-database-enable-table.md)
 
-[Enable Stretch Database for a table](sql-server-stretch-database-enable-table.md)
+[Azure SQL Server Stretch Database サービスに関するすべてのトピック](sql-server-stretch-database-index-all-articles.md)
 
-[All topics for Azure SQL Server Stretch Database service](sql-server-stretch-database-index-all-articles.md)
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

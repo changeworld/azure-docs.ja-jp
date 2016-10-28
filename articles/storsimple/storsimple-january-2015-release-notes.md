@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="StorSimple 8000 Update 0.2 release notes | Microsoft Azure"
-   description="Describes the new features and fixes, open issues, and available workarounds for the January 2015 Microsoft Azure StorSimple release (Update 0.2)."
+   pageTitle="StorSimple 8000 Update 0.2 リリース ノート | Microsoft Azure"
+   description="Microsoft Azure StorSimple の 2015 年 1 月リリース (Update 0.2) における新機能と修正点、未解決の問題、利用可能な回避策について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -16,71 +16,66 @@
    ms.author="v-sharos" />
 
 
+# StorSimple 8000 シリーズ Update 0.2 リリース ノート - 2015 年 1 月
 
-# <a name="storsimple-8000-series-update-0.2-release-notes---january-2015"></a>StorSimple 8000 Series Update 0.2 release notes - January 2015
+## 概要
 
-## <a name="overview"></a>Overview
-
-The following release notes identify the critical open issues for the January 2015 release of Microsoft Azure StorSimple. They also contain a list of the StorSimple software and firmware updates included in this release. This is the second release after the StorSimple 8000 Series Release version was made generally available in July 2014.
+このリリース ノートには、Microsoft Azure StorSimple の 2015 年 1 月リリースに関する未解決の重大な問題が示されています。また、このリリースに含まれる StorSimple のソフトウェアおよびファームウェアの更新プログラムの一覧も含まれています。これは、StorSimple 8000 シリーズのリリース バージョンが 2014 年 7 月に一般提供された後の、2 番目のリリースです。
   
-This update does not change the physical device software version from the October update. It continues to be version 6.3.9600.17312. The image used by the virtual device image has changed in this release. Therefore, all the new virtual devices created after 1/20/2015 will show the version as 6.3.9600.17361.  
+この更新プログラムでは、10 月の更新プログラムから、物理デバイスのソフトウェアのバージョンは変更されません。バージョンは引き続き 6.3.9600.17312 です。このリリースでは、仮想デバイスのイメージで使用されるイメージが変更されました。そのため、2015 年 1 月 20 日以降に作成されたすべての新しい仮想デバイスには、バージョンが 6.3.9600.17361 と表示されます。
 
-Please review the following information contained in the release notes for the January 2015 update.
+2015 年 1 月の更新プログラムのリリース ノートに含まれている次の情報を確認してください。
 
 > [AZURE.IMPORTANT]  
 >
->- This update is not available through Windows Update and cannot be installed like other updates. Your device will not receive this update even if you have applied the updates by using the Azure classic portal. This update will only apply to virtual devices created after January 20, 2015. 
+>- この更新プログラムは Windows Update からは入手できず、他の更新プログラムと同様にインストールすることはできません。Azure クラシック ポータルを使用して更新プログラムを適用した場合でも、デバイスはこの更新プログラムを受信しません。この更新プログラムは、2015 年 1 月 20 日以降に作成された仮想デバイスにのみ適用されます。 
 > 
->- The January release of StorSimple does not contain any updates to the StorSimple physical device. You can still apply any available Windows updates to the virtual device, including recent security fixes, but you will not see a change in version for the StorSimple physical device.
+>- StorSimple の 1 月リリースには、StorSimple 物理デバイスの更新プログラムは含まれていません。仮想デバイスには、最新のセキュリティ修正プログラムをはじめとする利用可能な Windows 更新プログラムを適用できますが、StorSimple 物理デバイスのバージョンは変更されません。
 
-## <a name="what's-new-in-the-january-release"></a>What's new in the January release
+## 1 月のリリースの新機能
 
-This update contains a fix related to the volumes going offline on the virtual device. (See [Issues fixed in this release](#issues-fixed-in-the-january-release).)  
+この更新プログラムには、仮想デバイスでオフラインになるボリュームに関係する修正プログラムが含まれています (「[このリリースで修正された問題](#issues-fixed-in-the-january-release)」を参照してください)。
 
-The update does not contain new features or functionality.  
+この更新プログラムには、新しい機能は含まれません。
 
-## <a name="issues-fixed-in-the-january-release"></a>Issues fixed in the January release
+## 1 月のリリースで修正された問題
 
-The following table describes the issue that was fixed in this update.
+次の表に、この更新プログラムで修正された問題を示します。
 
-|No.|Feature|Issue|Applies to physical device|Applies to virtual device 
+|番号|機能|問題|物理デバイスへの適用|仮想デバイスへの適用 
 |---|-------|-----|--------------------------|-------------------------
-|1|Volumes going offline|When high cloud latencies persist for several minutes, the StorSimple virtual device volumes go offline on the hosts. This fix increases the threshold for cloud latencies, thereby minimizing the situations that would cause the volumes to go offline on hosts.|No|Yes  
+|1|ボリュームがオフラインになる|クラウドの待機時間が数分間続いたとき、StorSimple 仮想デバイス ボリュームがホストでオフラインになります。この修正プログラムは、クラウドの待機時間のしきい値を引き上げて、ホストでボリュームがオフラインになる状況を最小限に抑えます。|いいえ|あり  
 
-## <a name="known-issues-in-the-january-release"></a>Known issues in the January release
+## 1 月のリリースの既知の問題
 
-The following table provides a summary of known issues in this release.
+次の表に、このリリースでの既知の問題の概要を示します。
  
-|No.|Feature|Issue|Comments/workaround|Applies to physical device|Applies to virtual device 
+|番号|機能|問題|コメント/回避策|物理デバイスへの適用|仮想デバイスへの適用 
 |---|-------|-----|-------------------|--------------------------|-------------------------
-|1| Factory reset|  In some instances, when you perform a factory reset, the StorSimple device may be stuck and display this message: **Reset to factory is in progress (phase 8).** This happens if you press CTRL+C while the cmdlet is in progress.| Do not press CTRL+C after initiating a factory reset. If you are already in this state, please contact Microsoft Support for next steps.|Yes|No|
-|2|Disk quorum| In rare instances, if the majority of disks in the EBOD enclosure of an 8600 device are disconnected resulting in no disk quorum, then the storage pool will be offline. It will stay offline even if the disks are reconnected.|You will need to reboot the device. If the issue persists, please contact Microsoft Support for next steps.|Yes |No
-|3|Cloud snapshot failures|In rare instances, a cloud snapshot may fail with the error **Maximum backup limit reached**. This occurs if you exceed 255 online clones on the same device, from the same original volume which has been deleted.||Yes|Yes
-|4|Incorrect controller ID|When a controller replacement is performed, controller 0 may show up as controller 1. During controller replacement, when the image is loaded from the peer node, the controller ID can show up initially as the peer controller’s ID.  In rare instances, this behavior may also be seen after a system reboot.|No user action is required. This situation will resolve itself after the controller replacement is complete.|Yes|No 
-|5| Device monitoring charts|In the StorSimple Manager service, the device monitoring charts do not work when Basic or NTLM authentication is enabled in the proxy server configuration for the device.|Modify the web proxy configuration for the device registered with your StorSimple Manager service so that authentication is set to NONE. To do this, run the the Windows PowerShell for StorSimple Set-HcsWebProxy cmdlet.|Yes|Yes
-|6| Storage accounts|Using the Storage service to delete the storage account is an unsupported scenario. This will lead to a situation in which user data cannot be retrieved.|| Yes |  Yes
-|7|Device failover| Multiple failovers of a volume container from the same source device to different target devices is not supported.| Failover from a single dead device to multiple devices will make the volume containers on the first failed over device lose data ownership. After such a failover, these volume containers will appear or behave differently when you view them in the Azure classic portal.|Yes|No
-|8| Installation|During StorSimple Adapter for SharePoint installation, you need to provide a device IP in order for the install to finish successfully.||Yes|No
-|9| Web proxy|If your web proxy configuration has HTTPS as the specified protocol, then your device-to-service communication will be affected and the device will go offline. Support packages will also be generated in the process, consuming significant resources on your device.|Make sure that the web proxy URL has HTTP as the specified protocol. See more information on how to [Configure web proxy for your device](storsimple-configure-web-proxy.md).|Yes |No
-|10|Web proxy|  If you configure and enable web proxy on a registered device, then you will need to restart the active controller on your device.|| Yes |No
-|11|High cloud latency and high I/O workload|When your StorSimple device encounters a combination of very high cloud latencies (order of seconds) and high I/O workload, the device volumes go into a degraded state and the I/Os may fail with a "device not ready" error.|You will need to manually reboot the device controllers or perform a device failover to recover from this situation.|Yes|No
+|1|	出荷時の設定へのリセット|	出荷時の設定にリセットする際、StorSimple デバイスがスタックし、"**出荷時の設定にリセットしています (フェーズ 8)**" というメッセージが表示される場合があります。 これは、コマンドレットの実行中に Ctrl キーを押しながら C キーを押すと発生します。|	出荷時の設定へのリセットを開始した後で、Ctrl キーを押しながら C キーを押さないでください。既にこの症状が発生している場合は、Microsoft サポートに対処法をお問い合わせください。|あり|いいえ|
+|2|ディスク クォーラム|	まれに、8600 デバイスの EBOD エンクロージャに搭載されているディスクの大半が切断され、ディスク クォーラムが存在しない状況になり、記憶域プールがオフラインになるケースがあります。ディスクを再接続してもオフラインの状態は変わりません。|ユーザーは、デバイスを再起動する必要があります。問題が解消しない場合は、Microsoft サポートに対処法をお問い合わせください。|あり |いいえ
+|3|クラウド スナップショットの失敗|まれに、クラウド スナップショットが **"バックアップの上限に達しました"** というエラーで失敗することがあります。これは、同じボリュームから作成されたオンラインの複製の数が同じデバイス上で 255 個を超えたときに、複製元ボリュームが既に削除されていると発生します。||あり|あり
+|4|不正確なコントローラー ID|コントローラーの交換を実施すると、コントローラー 0 がコントローラー 1 として表示されることがあります。コントローラーの交換中、ピア ノードからイメージが読み込まれるときに、コントローラー ID が最初、ピア コントローラーの ID として表示される場合があります。まれなケースですが、この動作がシステムの再起動後に生じることもあります。|ユーザーによる対処は不要です。この状況は、コントローラーの交換が完了すると自然に解決します。|あり|いいえ 
+|5|	デバイス監視チャート|StorSimple Manager サービスのデバイス監視チャートは、デバイスのプロキシ サーバーの構成で基本認証または NTLM 認証が有効になっていると正しく機能しません。|StorSimple Manager サービスに登録されているデバイスの Web プロキシ構成を変更し、認証を [なし] に設定してください。そのためには、StorSimple 用 Windows PowerShell の Set-HcsWebProxy コマンドレットを実行します。|あり|あり
+|6|	ストレージ アカウント|Storage サービスを使用したストレージ アカウントの削除は、サポートされていないシナリオです。これにより、ユーザー データを取得できなくなります。|| あり |	あり
+|7|デバイスのフェールオーバー|	同じソース デバイスのボリューム コンテナーについて、複数のフェールオーバーを異なるターゲット デバイスに対して実行することはサポートされません。|	1 つの障害発生デバイスから複数のデバイスにフェールオーバーすると、フェールオーバーされた最初のデバイス上のボリューム コンテナーがデータの所有権を失います。このようなフェールオーバーが発生した後、これらのボリューム コンテナーを Azure クラシック ポータルで表示するとその表示や動作が変わります。|あり|いいえ
+|8|	インストール|SharePoint 用 StorSimple アダプターのインストール中にインストールを正常に完了するためには、デバイスの IP を指定する必要があります。||あり|いいえ
+|9|	Web プロキシ|Web プロキシ構成で指定プロトコルとして HTTPS を使用している場合、デバイスとサービス間の通信が影響を受け、デバイスがオフラインになります。プロセスでサポート パッケージも生成され、デバイスで大量のリソースが使用されます。|Web プロキシ URL で指定プロトコルとして HTTP を使用していることを確認してください。詳細については、「[デバイスの Web プロキシを構成する](storsimple-configure-web-proxy.md)」を参照してください。|あり |いいえ
+|10|Web プロキシ|	登録されたデバイスで Web プロキシを構成して有効にする場合は、デバイス上でアクティブなコントローラーを再起動する必要があります。||	あり |いいえ
+|11|クラウドの長い待機時間と高い I/O ワークロード|StorSimple デバイスで、非常に長いクラウドの待機時間 (秒単位) や高い I/O ワークロードの組み合わせが発生した場合、デバイス ボリュームはパフォーマンスが低下した状態になり、I/O は "デバイスの準備未完了" エラーで失敗します。|デバイス コントローラーを手動で再起動するか、デバイスのフェールオーバーを実行して、この状況から復旧する必要があります。|あり|いいえ
 
-## <a name="physical-device-updates-in-the-january-release"></a>Physical device updates in the January release
+## 1 月のリリースでの物理デバイスの更新プログラム
 
-This update does not contain any other changes to the StorSimple device.
+この更新プログラムには、StorSimple デバイスに対する他の変更は含まれていません。
 
-## <a name="serial-attached-scsi-(sas)-controller-and-firmware-updates-in-the-january-release"></a>Serial-attached SCSI (SAS) controller and firmware updates in the January release
+## 1 月のリリースでのシリアル接続 SCSI (SAS) コントローラーおよびファームウェアの更新プログラム
 
-This release does not contain any updates to the serial-attached SCSI (SAS) controller or the firmware. The driver update was in the October, 2014 release. 
+このリリースには、シリアル接続 SCSI (SAS) コントローラーまたはファームウェアの更新は含まれていません。ドライバーの更新は 2014 年 10 月リリースで行われました。
 
-## <a name="virtual-device-updates-in-the-january-release"></a>Virtual device updates in the January release
+## 1 月のリリースでの仮想デバイスの更新プログラム
 
-This release contains an updated image for the virtual device. All the virtual devices created after January 20, 2015 will show the software version as 6.3.9600.17361.
+このリリースには、仮想デバイスの更新されたイメージが含まれています。2015 年 1 月 20 日以降に作成されたすべての仮想デバイスには、ソフトウェア バージョンが 6.3.9600.17361 と表示されます。
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0518_2016-->

@@ -1,199 +1,191 @@
 <properties
-    pageTitle="Deep diagnostics for web apps and services with Application Insights | Microsoft Azure"
-    description="How Application Insights fits into the devOps cycle"
-    services="application-insights"
+	pageTitle="Application Insights を使用した Web アプリおよびサービスの詳細な診断"
+	description="開発運用サイクルへの Application Insights の組み込み"
+	services="application-insights"
     documentationCenter=""
-    authors="alancameronwills"
-    manager="douge"/>
+	authors="alancameronwills"
+	manager="douge"/>
 
 <tags
-    ms.service="application-insights"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="ibiza"
-    ms.devlang="multiple"
-    ms.topic="article" 
-    ms.date="08/26/2016"
-    ms.author="awills"/>
+	ms.service="application-insights"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="multiple"
+	ms.topic="article" 
+	ms.date="08/26/2016"
+	ms.author="awills"/>
 
+# Application Insights を使用した Web アプリおよびサービスの詳細な診断
 
-# <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Deep diagnostics for web apps and services with Application Insights
+## Application Insights が必要な理由
 
-## <a name="why-do-i-need-application-insights?"></a>Why do I need Application Insights?
-
-Application Insights monitors your running web app. It tells you about failures and performance issues, and helps you analyze how customers use your app. It works for apps running on many platforms (ASP.NET, J2EE, Node.js, ...) and is hosted either in the Cloud or on-premises. 
+Application Insights は、実行中の Web アプリを監視します。これを使用することでエラーやパフォーマンスの問題が通知され、顧客がどのようにアプリを使用しているかを分析するのに役立ちます。多くのプラットフォーム (ASP.NET、J2EE、Node.js など) で実行されるアプリで動作し、クラウドまたはオンプレミスのいずれかで提供されます。
 
 ![Aspects of the complexity of delivering web apps](./media/app-insights-devops/010.png)
 
-It's essential to monitor a modern application while it is running. Most importantly, you want to detect failures before most of your customers do. You also want to discover and fix performance issues that, while not catastrophic, perhaps slow things down or cause some inconvenience to your users. And when the system is performing to your satisfaction, you want to know what the users are doing with it: Are they using the latest feature? Are they succeeding with it?
+最新のアプリケーションでは、実行中の監視が不可欠です。最も重要なのは、ほとんどの顧客よりも早くエラーを検出することです。致命的なものでなくても、速度の低下を招いたり、ユーザーに不都合をもたらしたりする可能性のあるパフォーマンスの問題を検出して修正することも必要です。また、システムが期待どおりに動作している場合は、ユーザーがシステムを使用して何をしているのか、つまり、最新機能を使用しているか、 うまく使用できているか、などを知りたいと思うでしょう。
 
-Modern web applications are developed in a cycle of continuous delivery: release a new feature or improvement; observe how well it works for the users; plan the next increment of development based on that knowledge. A key part of this cycle is the observation phase. Application Insights provides the tools to monitor a web application for performance and usage.
+最新の Web アプリケーションは、新機能または機能強化をリリースし、それがユーザー環境でどの程度正常に動作しているかを確認して、その知識に基づいて次の開発の強化を計画するという、継続的な提供サイクルの中で開発されます。このサイクルで重要なのは観察のフェーズです。Application Insights は、Web アプリケーションのパフォーマンスと使用状況を監視するためのツールを提供します。
 
-The most important aspect of this process is diagnostics and diagnosis. If the application fails, then business is being lost. The prime role of a monitoring framework is therefore to detect failures reliably, notify you immediately, and to present you with the information needed to diagnose the problem. This is exactly what Application Insights does.
+このプロセスで最も重要なのは診断です。アプリケーションがうまく動かないと、ビジネスの損失が発生します。したがって、監視フレームワークの最も重要な役割は、エラーを確実に検出してすぐに通知し、問題を診断するために必要な情報を提供することです。これこそが Application Insights の機能です。
 
-### <a name="where-do-bugs-come-from?"></a>Where do bugs come from?
+### バグはどこから発生するのか
 
-Failures in web systems typically arise from configuration issues or bad interactions between their many components. The first task when tackling a live site incident is therefore to identify the locus of the problem: which component or relationship is the cause?
+通常、Web システムでのエラーは、構成の問題や、多くのコンポーネント間の不適切な相互作用に起因します。したがって、ライブ サイトのインシデントに取り組む際の最初のタスクは、問題の場所を特定することになります。原因となっているコンポーネントまたはリレーションシップは何か、ということです。
 
-Some of us, those with gray hair, can remember a simpler era in which a computer program ran in one computer. The developers would test it thoroughly before shipping it; and having shipped it, would rarely see or think about it again. The users would have to put up with the residual bugs for many years. 
+1 つのコンピューター プログラムが 1 台のコンピューターで実行されるという、より単純だった頃を覚えている方もいるでしょう。開発者は、出荷する前にコンピューター プログラムを徹底的にテストしますが、出荷してしまえば、プログラムを確認したり、それについて考えたりすることはめったにありませんでした。ユーザーは何年もの間、未解決のバグに我慢しなければなりませんでした。
 
-Things are so very different now. Your app has a plethora of different devices to run on, and it can be difficult to guarantee the exact same behavior on each one. Hosting apps in the cloud means bugs can be fixed fast, but it also means continuous competition and the expectation of new features at frequent intervals. 
+しかし、今はまったく違います。アプリが実行されるデバイスは多種多様で、それぞれのデバイスでまったく同じ動作を保証することは困難である場合があります。クラウドでアプリを提供するということは、すばやくバグを修正できることを意味しますが、絶え間ない競争と頻繁な新機能の提供への期待も伴います。
 
-In these conditions, the only way to keep a firm control on the bug count is automated unit testing. It would be impossible to manually re-test everything on every delivery. Unit test is now a commonplace part of the build process. Tools such as the Xamarin Test Cloud help by providing automated UI testing on multiple browser versions. These testing regimes allow us to hope that the rate of bugs found inside an app can be kept to a minimum.
+このような状況で、バグの数を確実に管理する唯一の方法は、自動化された単体テストです。出荷のたびにすべてを手動で再テストすることは不可能でしょう。現在では、単体テストはビルド プロセスの一部として普及しています。複数のブラウザー バージョンでの UI テストの自動化を提供する Xamarin Test Cloud などのツールが役立ちます。このようなテスト方法を活用することで、私たちはアプリで見つかるバグの割合を最小限に抑えることを期待できます。
 
-Typical web applications have many live components. In addition to the client (in a browser or device app) and the web server, there's likely to be substantial backend processing. Perhaps the backend is a pipeline of components, or a looser collection of collaborating pieces. And many of them won't be in your control - they're external services on which you depend.
+一般的な Web アプリケーションには多くのライブ コンポーネントがあります。クライアント (ブラウザーやデバイス アプリ) と Web サーバーに加え、相当量のバックエンド処理もあるでしょう。そのバックエンドはおそらく、コンポーネントのパイプラインや、連携する構成要素の厳密ではない集合体です。それらの多くは管理できません。なぜなら、外部に依存しているサービスだからです。
 
-In configurations like these, it can be difficult and uneconomical to test for, or foresee, every possible failure mode, other than in the live system itself. 
+このような構成では、ライブ システム自体以外の、考えられるすべての障害の状態をテスト、あるいは予測することは困難かつ非経済的である場合があります。
 
-### <a name="questions-..."></a>Questions ...
+### 疑問 ...
 
-Some questions we ask when we're developing a web system:
+私たちは Web システムを開発しているとき、次のような疑問を抱きます。
 
-* Is my app crashing? 
-* What exactly happened? - If it failed a request, I want to know how it got there. We need a trace of events...
-* Is my app fast enough? How long does it take to respond to typical requests?
-* Can the server handle the load? When the rate of requests rises, does the response time hold steady?
-* How responsive are my dependencies - the REST APIs, databases and other components that my app calls. In particular, if the system is slow, is it my component, or am I getting slow responses from someone else?
-* Is my app Up or Down? Can it be seen from around the world? Let me know if it stops....
-* What is the root cause? Was the failure in my component or a dependency? Is it a communication issue?
-* How many users are impacted? If I have more than one issue to tackle, which is the most important?
+* アプリはクラッシュしていますか。
+* 正確には何が起こりましたか。要求に失敗した場合、そうなった経緯を把握したいと考えます。イベントのトレースが必要です。
+* アプリの速度は十分ですか。 一般的な要求への応答時間はどのくらいですか。
+* サーバーは負荷を処理できますか。 要求率が増加した時の応答時間は安定していますか。
+* 依存するコンポーネント (アプリが呼び出す REST API、データベースなど) の応答速度はどのくらいですか。具体的には、そのシステムが低速の場合、それは自分のコンポーネントですか。または、他のユーザーから低速な応答を受け取っていますか。
+* アプリは起動していますか、停止していますか。 世界各地から閲覧できますか。 アプリが停止したら知らせてほしい…
+* 根本的な原因は何ですか。 コンポーネントまたは依存関係の障害でしたか。 通信に関する問題ですか。
+* 影響を受けるユーザーの数はどのくらいですか。 対処すべき問題が複数ある場合は、最も重要なのはどれですか。
 
 
 
-## <a name="what-is-application-insights?"></a>What is Application Insights?
+## Application Insights とは何か?
 
 
 ![Basic workflow of Application Insights](./media/app-insights-devops/020.png)
 
 
-1. Application Insights instruments your app and sends telemetry about it while the app is running. Either you can build the Application Insights SDK into the app, or you can apply instrumentation at runtime. The former method is more flexible, as you can add your own telemetry to the regular modules.
-2. The telemetry is sent to the Application Insights portal, where it is stored and processed. (Although Application Insights is hosted in Microsoft Azure, it can monitor any web apps - not just Azure apps.)
-3. The telemetry is presented to you in the form of charts and tables of events.
+1. Application Insights では、アプリをインストルメント化し、アプリの実行時に、アプリに関するテレメトリを送信します。Application Insights SDK をアプリに組み込むか、実行時にインストルメンテーションを適用することができます。前者の方法は、標準のモジュールに独自のテレメトリを追加するできるため、より柔軟です。
+2. テレメトリは、テレメトリが保管および処理される Application Insights ポータルに送信されます(Application Insights が Microsoft Azure で提供されている場合でも、Azure アプリだけでなく、任意の Web アプリを監視することができます)。
+3. テレメトリは、イベントのグラフとテーブルの形式で表示されます。
 
-There are two main types of telemetry: aggregated and raw instances. 
+テレメトリには 2 つの主な種類があります。 集計インスタンスと生のインスタンスです。
 
-* Instance data includes, for example, a report of a request that has been received by your web app. You can find for and inspect the details of a request using the Search tool in the Application Insights portal. The instance would include data such as how long your app took to respond to the request, as well as the requested URL, approximate location of the client, and other data.
-* Aggregated data includes counts of events per unit time, so that you can compare the rate of requests with the response times. It also includes averages of metrics such as request response times.
+* インスタンス データには、たとえば Web アプリが受信した要求のレポートが含まれています。Application Insights ポータルの検索ツールを使用して、要求の詳細を検索して検査できます。インスタンスには、アプリが要求に応答するために要した時間、要求された URL、クライアントのおおよその場所などのデータが含まれています。
+* 集計データには、要求の割合を応答時間と比較できるように、単位時間あたりのイベントの数が含まれています。要求の応答時間などのメトリックの平均値も含まれています。
 
-The main categories of data are:
+データの主なカテゴリは次のとおりです。
 
-* Requests to your app (usually HTTP requests), with data on URL, response time, and success or failure.
-* Dependencies - REST and SQL calls made by your app, also with URI, response times and success
-* Exceptions, including stack traces.
-* Page view data, which come from the users' browsers.
-* Metrics such as performance counters, as well as metrics you write yourself. 
-* Custom events that you can use to track business events
-* Log traces used for debugging.
+* URL、応答時間、成功または失敗に関するデータを含む、アプリへの要求 (通常は HTTP 要求)。
+* 依存関係 - URI、応答時間、および成功を含む、アプリケーションによって行われる REST および SQL の呼び出し。
+* スタック トレースを含む例外。
+* ユーザーのブラウザーから取得するページ ビュー データ。
+* パフォーマンス カウンターなどのメトリックおよび自分で作成したメトリック。
+* ビジネス イベントを追跡するために使用できるカスタム イベント。
+* デバッグに使用するログ トレース。
 
 
-## <a name="case-study:-real-madrid-f.c."></a>Case Study: Real Madrid F.C.
+## ケース スタディ: レアル・マドリード F.C.
 
-The web service of [Real Madrid Football Club](http://www.realmadrid.com/) serves about 450 million fans around the world. Fans access it both through web browsers and the Club's mobile apps. Fans can not only book tickets, but also access information and video clips on results, players and upcoming games. They can search with filters such as numbers of goals scored. There are also links to social media. The user experience is highly personalized, and is designed as a two-way communication to engage fans.
+[レアル・マドリード フットボール クラブ](http://www.realmadrid.com/)の Web サービスは、世界各地の約 4 億 5,000 万人のファンにサービスを提供しています。ファンは、Web ブラウザーとクラブのモバイル アプリの両方からここにアクセスします。ファンはチケットを予約できるだけでなく、試合結果、選手、今後の試合に関する情報やビデオ クリップにもアクセスできます。フィルターを使用して、得点数などを検索できます。ソーシャル メディアへのリンクもあります。ユーザー エクスペリエンスは高度にパーソナライズされており、ファンとの交流のための双方向コミュニケーションとして設計されています。
 
-The solution [is a system of services and applications on Microsoft Azure](https://www.microsoft.com/en-us/enterprise/microsoftcloud/realmadrid.aspx). Scalability is a key requirement: traffic is variable and can reach very high volumes during and around matches.
+このソリューションは、[Microsoft Azure でのサービスとアプリケーションのシステム](https://www.microsoft.com/ja-JP/enterprise/microsoftcloud/realmadrid.aspx)です。スケーラビリティは重要な要件です。これは、トラフィックが変わりやすく、試合の前後と試合中は、トラフィック量が大幅に増える場合があるためです。
 
-For Real Madrid, it's vital to monitor the system's performance. Visual Studio Application Insights provides a comprehensive view across the system, ensuring a reliable and high level of service. 
+レアル・マドリードでは、システムのパフォーマンスを監視することが不可欠です。Visual Studio Application Insights は、システム全体の包括的なビューを提供し、信頼性の高い、高いサービス レベルを確保できます。
 
-The Club also gets in-depth understanding of its fans: where they are (only 3% are in Spain), what interest they have in players, historical results, and upcoming games, and how they respond to match outcomes.
+クラブは、ファンに関する詳細な情報も取得します。この情報には、ファンの場所 (スペインはたった 3% です)、ファンが関心を持っている選手、過去の試合結果、今後の試合、および試合結果に対する反応が含まれます。
 
-Most of this telemetry data is automatically collected with no added code, which  simplified the solution and reduced operational complexity.  For Real Madrid, Application Insights deals with 3.8 billion telemetry points each month.
+このテレメトリ データの大部分は、コードの追加なしで自動的に収集されます。これにより、ソリューションが単純化され、運用上の複雑さが軽減されます。レアル・マドリードの場合、Application Insights は 1 か月あたり 38 億人のテレメトリ ポイントを処理します。
 
-Real Madrid uses the Power BI module to view their telemetry.
+レアル・マドリードは Power BI モジュールを使用してテレメトリを表示します。
 
 
 ![Power BI view of Application Insights telemetry](./media/app-insights-devops/080.png)
 
-## <a name="smart-detection"></a>Smart detection
+## スマート検出
 
-[Proactive diagnostics](app-insights-nrt-proactive-diagnostics.md) is a recent feature. Without any special configuration by you, Application Insights automatically detects and alerts you about unusual rises in failure rates in your app. It's smart enough to ignore a background of occasional failures, and also rises that are simply proportionate to a rise in requests. So for example, if there's a failure in one of the services you depend on, or if the new build you just deployed isn't working so well, then you'll know about it as soon as you look at your email. (And there are webhooks so that you can trigger other apps.)
+[プロアクティブ診断](app-insights-nrt-proactive-diagnostics.md)は最新の機能です。特別な構成なしで、Application Insights はアプリの障害発生率の異常な増加を自動的に検出してアラートを生成します。この機能は、偶発的なエラーの背景と、要求の数に比例して単純に増加したエラーを無視できるほどスマートです。そのため、たとえば、依存するサービスのいずれかで障害が発生した場合や、デプロイしたばかりの新しいビルドがうまく動作していない場合、電子メールを確認してすぐにそれを把握できます(他のアプリをトリガーできるように webhook も用意されています)。
 
-Another aspect of this feature performs a daily in-depth analysis of your telemetry, looking for unusual patterns of performance that are hard to discover. For example, it can find slow performance associated with a particular geographical area, or with a particular browser version.
+テレメトリの詳細な分析を毎日実行し、検出が困難なパフォーマンスの異常なパターンを検出するのが、この機能のもう 1 つの側面です。たとえば、特定の地理的領域または特定のブラウザーのバージョンに関連付けられたパフォーマンスの低下を検出できます。
 
-In both cases, the alert not only tells you the symptoms it's discovered, but also gives you data you need to help diagnose the problem, such as relevant exception reports.
+どちらの場合も、アラートは検出した現象を通知するだけでなく、関連する例外レポートなど、問題の診断に必要なデータも提供します。
 
 ![Email from proactive diagnostics](./media/app-insights-devops/030.png)
 
-Customer Samtec said: "During a recent feature cutover, we found an under-scaled database that was hitting its resource limits and causing timeouts. Proactive detection alerts came through literally as we were triaging the issue, very near real time as advertised. This alert coupled with the Azure platform alerts helped us almost instantly fix the issue. Total downtime < 10 minutes."
+お客様である Samtec は次のように語っています。「私たちは、先日の機能のカット オーバーの際、リソースの限界に達し、タイムアウトを発生させている小規模なデータベースに気づきました。私たちが問題をトリアージしているとき、広告のとおり、まさにほぼリアルタイムでプロアクティブな検出アラートが生成されました。このアラートと Azure プラットフォームのアラートによって、ほぼ瞬時に問題を修正することができました。ダウンタイムは合計で 10 分未満でした。」
 
-## <a name="live-metrics-stream"></a>Live Metrics Stream
+## ライブ メトリック ストリーム
 
-Deploying the latest build can be an anxious experience. If there are any problems, you want to know about them right away, so that you can back out if necessary. Live Metrics Stream gives you key metrics with a latency of about one second.
+最新のビルドを展開することは、気がかりな体験となる場合があります。何らかの問題がある場合、必要に応じて取り消すことができるように、すぐに問題を把握する必要があります。ライブ メトリック ストリームを使用すると、約 1 秒の待機時間で重要なメトリックが提供されます。
 
 ![Live metrics](./media/app-insights-devops/040.png)
 
-## <a name="application-map"></a>Application Map
+## アプリケーション マップ
 
-Application Map automatically discovers your application topology, laying the performance information on top of it, to let you easily identify performance bottlenecks and problematic flows across your distributed environment. It allows you to discover application dependencies on Azure Services. You can triage the problem by understanding if it is code-related or dependency related and from a single place drill into related diagnostics experience. For example, your application may be failing due to performance degradation in SQL tier. With application map, you can see it immediately and drill into the SQL Index Advisor or Query Insights experience.
+アプリケーション マップは、アプリケーション トポロジを自動的に検出して、その上にパフォーマンス情報を配置し、分散環境全体のパフォーマンスのボトルネックと問題のあるフローを簡単に識別できるようにします。Azure サービスのアプリケーションの依存関係を検出できます。問題がコードに関連するか依存関係に関連するかを把握し、関連する診断操作を 1 か所から行うことで、問題をトリアージできます。たとえば、アプリケーションは SQL 層のパフォーマンスの低下が原因で失敗している可能性があります。アプリケーション マップを使用すると、問題をすぐに確認し、SQL Index Advisor やクエリの洞察の操作をドリルダウンすることができます。
 
-![Application Map](./media/app-insights-devops/050.png)
+![アプリケーション マップ](./media/app-insights-devops/050.png)
 
-## <a name="application-insights-analytics"></a>Application Insights Analytics
+## Application Insights Analytics
 
-With [Analytics](app-insights-analytics.md), you can write arbitrary queries in a powerful SQL-like language.  Diagnosing across the entire app stack becomes easy as various perspectives get connected and you can ask the right questions to correlate Service Performance with Business Metrics and Customer Experience. 
+[Analytics](app-insights-analytics.md) を使用すれば、強力な SQL に似た言語で任意のクエリを記述することができます。さまざまなパースペクティブが接続されるため、アプリ スタック全体を診断するのが簡単で、ビジネス メトリックおよび顧客満足度とサービスのパフォーマンスを関連付ける適切な質問をすることができます。
 
-You can query all your telemetry instance and metric raw data stored in the portal. The language includes filter, join, aggregation, and other operations. You can calculate fields and perform statistical analysis. There are both tabular and graphical visualizations.
+ポータルに格納されているすべてのテレメトリ インスタンスとメトリックの生データを照会できます。言語には、フィルター、結合、集計などの操作が含まれています。フィールドを計算し、統計的な分析を実行できます。テーブルとグラフ両方の視覚エフェクトがあります。
 
 ![Analytics query and results chart](./media/app-insights-devops/025.png)
 
-For example, it's easy to:
+たとえば、次のことを簡単に行うことができます。
 
-* Segment your application’s request performance data by customer tiers to understand their experience.
-* Search for specific error codes or custom event names during live site investigations.
-* Drill down into the app usage of specific customers to understand how features are acquired and adopted.
-* Track sessions and response times for specific users to enable support and operations teams to provide instant customer support.
-* Determine frequently used app features to answer feature prioritization questions.
+* アプリケーションの要求のパフォーマンス データを顧客層ごとに分割し、顧客満足度を把握します。
+* ライブ サイトの調査中に特定のエラー コードまたはカスタム イベント名を検索します。
+* 特定の顧客のアプリの使用状況をドリルダウンし、機能がどのように入手および導入されているかを把握します。
+* 特定のユーザーのセッションと応答時間を追跡し、サポートおよび運用チームがすぐに顧客サポートを提供できるようにします。
+* 頻繁に使用されるアプリ機能を判別し、機能の優先順位付けに関する質問に回答します。
 
-Customer DNN said: "Application Insights has provided us with the missing part of the equation for being able to combine, sort, query, and filter data as needed. Allowing our team to use their own ingenuity and experience to find data with a powerful query language has allowed us to find insights and solve problems we didn't even know we had. A lot of interesting answers come from the questions starting with *'I wonder if...'.*"
+お客様である DNN は次のように語っています。「Application Insights は、必要に応じてデータの結合、並べ替え、クエリ、およびフィルター処理を実現するための均衡の欠落部分を補ってくれました。当社のチームが独自のアイデアと経験を活用し、強力なクエリ言語でデータを検索できることで、当社は洞察を検索して、今まで知りもしなかった問題を解決することができます。*「...だろうか」*で始まる質問からは、多くの興味深い回答が生まれます。」
 
-## <a name="development-tools-integration"></a>Development tools integration 
+## 開発ツールの統合 
 
-### <a name="configuring-application-insights"></a>Configuring Application Insights
+### Application Insights の構成
 
-Visual Studio and Eclipse have tools to configure the correct SDK packages for the project you are developing. There's a menu command to add Application Insights.
+Visual Studio および Eclipse には、開発しているプロジェクトの正しい SDK パッケージを構成するためのツールが用意されています。Application Insights を追加するメニュー コマンドがあります。
 
-If you happen to be using a trace logging framework such as Log4N, NLog, or System.Diagnostics.Trace, then you get the option to send the logs to Application Insights along with the other telemetry, so that you can easily correlate the traces with requests, dependency calls, and exceptions.
+Log4N、NLog、System.Diagnostics.Trace などのトレース ログ記録フレームワークを使用している場合は、そのログを他のテレメトリと共に Application Insights に送信し、要求、依存関係の呼び出し、例外とそのトレースを簡単に関連付けることができます。
 
-### <a name="search-telemetry-in-visual-studio"></a>Search telemetry in Visual Studio
+### Visual Studio でのテレメトリの検索
 
-While developing and debugging a feature, you can view and search the telemetry directly in Visual Studio, using the same search facilities as in the web portal.
+機能を開発およびデバッグしているとき、Web ポータルと同じ検索機能を使用して、Visual Studio で直接テレメトリを表示および検索することができます。
 
-And when Application Insights logs an exception, you can view the data point in Visual Studio and jump straight to the relevant code.
+また、Application Insights で例外が記録されると、Visual Studio でそのデータ ポイントを確認し、関連するコードに直接移動できます。
 
 ![Visual Studio search](./media/app-insights-devops/060.png)
 
-During debugging, you have the option to keep the telemetry in your development machine, viewing it in Visual Studio but without sending it to the portal. This local option avoids mixing debugging with production telemetry.
+デバッグ中は、開発用コンピューターにテレメトリを保存し、ポータルに送信することなく Visual Studio でそれを表示するオプションが用意されています。このローカル オプションにより、デバッグと運用環境のテレメトリの混合を回避できます。
 
-### <a name="build-annotations"></a>Build annotations
+### 注釈の作成
 
-If you use Visual Studio Team Services to build and deploy your app, deployment annotations show up on charts in the portal. If your latest release had any effect on the metrics, it becomes obvious.
+Visual Studio Team Services を使用してアプリのビルドとデプロイを行う場合、デプロイの注釈がポータルのグラフに表示されます。お使いの最新のリリースがメトリックに影響を与える場合、これは明白になります。
 
-![Build annotations](./media/app-insights-devops/070.png)
+![注釈の作成](./media/app-insights-devops/070.png)
 
-### <a name="work-items"></a>Work items 
+### 作業項目 
 
-When an alert is raised, Application Insights can automatically create a work item in your work tracking system (Visual Studio Team Services only at present).
-
-
-## <a name="but-what-about...?"></a>But what about...?
-
-* [Privacy and storage](app-insights-data-retention-privacy.md) - Your telemetry is kept on Azure secure servers.
-* Performance - the impact is very low. Telemetry is batched.
-* [Support](app-insights-get-dev-support.md) - You can take advantage of the Azure support program. There are lively forums where you can get answers from our developers. And in the last resort, we can give you individual help.
-* [Pricing](app-insights-pricing.md) - You can get started for free, and that continues while you're in low volume.
+Application Insights では、アラートが発生したときに、作業項目追跡システム (現時点では Visual Studio Team Services のみ) に自動的に作業項目を作成できます。
 
 
-## <a name="next-steps"></a>Next steps
+## 詳細について
 
-Getting started with Application Insights is easy. The main options are:
-
-* Instrument an already-running web app. This gives you all the built-in performance telemetry. It's available for [Java](app-insights-java-live.md) and [IIS servers](app-insights-monitor-performance-live-website-now.md), and also for [Azure web apps](app-insights-azure.md).
-* Instrument your project during development. You can do this for [ASP.NET](app-insights-asp-net.md) or [Java](app-insights-java-get-started.md) apps, as well as [Node.js](app-insights-nodejs.md) and a host of [other types](app-insights-platforms.md). 
-* Instrument [any web page](app-insights-javascript.md) by adding a short code snippet.
-
+* [プライバシーと記憶域](app-insights-data-retention-privacy.md) - テレメトリは Azure のセキュリティで保護されたサーバー上に保持されます。
+* パフォーマンス - 影響は非常に低いです。テレメトリはバッチ処理されます。
+* [サポート](app-insights-get-dev-support.md) - Azure サポート プログラムを活用できます。活気のあるフォーラムでは、当社の開発者から回答を得ることができます。最終手段として、個別のサポートも提供できます。
+* [価格](app-insights-pricing.md) - 無料で開始することができ、容量が少ない間は無料期間を継続できます。
 
 
+## 次のステップ
 
+Application Insights の操作は簡単です。主なオプションは次のとおりです。
 
+* 既に実行中の Web アプリをインストルメント化します。これにより、すべての組み込みのパフォーマンス テレメトリが提供されます。[Java](app-insights-java-live.md)、[IIS サーバー](app-insights-monitor-performance-live-website-now.md)のほか、[Azure Web Apps](app-insights-azure.md) でも使用できます。
+* 開発中のプロジェクトをインストルメント化します。これは、[ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md) アプリだけでなく、[Node.js](app-insights-nodejs.md) や[その他の種類](app-insights-platforms.md)のホストでも実行できます。
+* 短いコード スニペットを追加して、[任意の Web ページ](app-insights-javascript.md)をインストルメント化します。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Active Directory reporting - preview | Microsoft Azure"
-   description="Lists the various available reports for Azure Active Directory preview"
+   pageTitle="Azure Active Directory レポート - プレビュー | Microsoft Azure"
+   description="Azure Active Directory プレビューで使用可能なさまざまなレポートの一覧を示します。"
    services="active-directory"
    documentationCenter=""
    authors="markusvi"
@@ -16,214 +16,208 @@
    ms.date="09/30/2016"
    ms.author="markvi"/>
 
-
-# <a name="azure-active-directory-reporting---preview"></a>Azure Active Directory reporting - preview
+# Azure Active Directory レポート - プレビュー
 
 > [AZURE.SELECTOR]
-- [Azure portal](active-directory-reporting-azure-portal.md)
-- [Azure classic portal](active-directory-reporting-guide.md)
+- [Azure ポータル](active-directory-reporting-azure-portal.md)
+- [Azure クラシック ポータル](active-directory-reporting-guide.md)
 
-*This documentation is part of the [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).*
+*このドキュメントは、[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)の一部です*。
 
-With reporting in the Azure Active Directory preview, you get all the information you need to determine how your environment is doing. [What's in the preview?](active-directory-preview-explainer.md)
+Azure Active Directory プレビューのレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。[プレビューにはどのような機能があるのでしょうか。](active-directory-preview-explainer.md)
 
-There are two main areas of reporting:
+レポートには、次の 2 つの主要な領域があります。
 
-- **Sign-in activities** – Information about the usage of managed applications and user sign-in activities
+- **サインイン アクティビティ** – マネージ アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
 
-- **Audit logs** - System activity information about users and group management, your managed applications and directory activities
+- **監査ログ** - ユーザーとグループの管理や、マネージ アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報
 
-Depending on the scope of the data you are looking for, you can access these reports either by clicking **Users and groups** or **Enterprise applications** in the services list in the [Azure portal](https://portal.azure.com).
+必要なデータのスコープに応じて、[Azure Portal](https://portal.azure.com) のサービス一覧で **[ユーザーとグループ]** または **[エンタープライズ アプリケーション]** をクリックし、これらのレポートにアクセスすることができます。
 
-## <a name="sign-in-activities"></a>Sign-in activities
+## サインイン アクティビティ
 
-### <a name="user-sign-in-activities"></a>User sign-in activities
+### ユーザー サインイン アクティビティ
 
-With the information provided by the user sign-in report, you find answers to questions such as:
+ユーザー サインイン レポートによって提供される情報を使用すると、次のような疑問への答えを得ることができます。
 
-- What is the sign-in pattern of a user?
-- How many users have users signed in over a week?
-- What’s the status of these sign-ins?
+- ユーザーのサインインにどのようなパターンがあるか。
+- 1 週間で何人のユーザーがユーザー サインインを行ったか。
+- これらのサインインはどのような状態か。
 
-Your entry point to this data is the user sign-in graph in the **Overview** section under **Users and groups**.
+このデータへのエントリ ポイントは、**[ユーザーとグループ]** の **[概要]** セクションにあるユーザー サインイン グラフです。
 
- ![Reporting](./media/active-directory-reporting-azure-portal/05.png "Reporting")
+ ![レポート](./media/active-directory-reporting-azure-portal/05.png "レポート")
 
-The user sign-in graph shows weekly aggregations of sign ins for all users in a given time period. The default for the time period is 30 days.
+ユーザー サインイン グラフは、特定期間内のすべてのユーザーのサインインについて、週単位の集計を示します。期間の既定値は 30 日です。
 
-![Reporting](./media/active-directory-reporting-azure-portal/02.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/02.png "レポート")
 
-When you click on a day in the sign-in graph, you get a detailed list of the sign-in activities.
+サインイン グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
 
-![Reporting](./media/active-directory-reporting-azure-portal/03.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/03.png "レポート")
 
-Each row in the sign-in activities list gives you the detailed information about the selected sign-in such as:
+サインイン アクティビティの一覧内の各行には、選択したサインインに関する次のような詳細情報が表示されます。
 
-- Who has signed in?
+- サインインしたのはだれか。
 
-- What was the related UPN?
+- 関連する UPN は何だったか。
 
-- What application was the target of the sign-in?
+- サインインの対象となったのはどのアプリケーションか。
 
-- What is the IP address of the sign-in?
+- サインインの IP アドレスは何か。
 
-- What was the status of the sign-in?
+- サインインはどのような状態だったか。
 
-### <a name="usage-of-managed-applications"></a>Usage of managed applications
+### マネージ アプリケーションの使用状況
 
-With an application-centric view of your sign-in data, you can answer questions such as:
+アプリケーションを中心にしてサインイン データを表示すると、次のような疑問に答えることができます。
 
-- Who is using my applications?
+- アプリケーションをだれが使用しているか。
 
-- What are the top 3 applications in your organization?
+- 組織内の上位 3 つのアプリケーションはどれか。
 
-- I have recently rolled out an application. How is it doing?
+- 最近ロールアウトしたアプリケーションは、どのような状況か。
 
 
-Your entry point to this data is the top 3 applications in your organization within the last 30 days report in the **Overview** section under **Enterprise applications**.
+このデータへのエントリ ポイントは、**[エンタープライズ アプリケーション]** の **[概要]** セクションにある過去 30 日間のレポートに示される、組織内の上位 3 つのアプリケーションです。
 
- ![Reporting](./media/active-directory-reporting-azure-portal/06.png "Reporting")
+ ![レポート](./media/active-directory-reporting-azure-portal/06.png "レポート")
 
 
-The app usage graph weekly aggregations of sign ins for your top 3 applications in a given time period. The default for the time period is 30 days.
+アプリ使用状況グラフは、特定の期間の上位 3 つのアプリへのサインインを週ごとに集計します。期間の既定値は 30 日です。
 
-![Reporting](./media/active-directory-reporting-azure-portal/78.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/78.png "レポート")
 
-If you want to, you can set the focus on a specific application.
+必要に応じて、特定のアプリケーションにフォーカスを設定できます。
 
-![Reporting](./media/active-directory-reporting-azure-portal/single_spp_usage_graph.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/single_spp_usage_graph.png "レポート")
 
 
-When you click on a day in the app usage graph, you get a detailed list of the sign-in activities.
+アプリ使用状況グラフ内の日付をクリックすると、サインイン アクティビティの詳細な一覧が表示されます。
 
 
-![Reporting](./media/active-directory-reporting-azure-portal/top_app_sign_ins.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/top_app_sign_ins.png "レポート")
 
 
 
-The **Sign-ins** option gives you a complete overview of all sign-in events to your applications.
+**[サインイン]** オプションを使用すると、アプリケーションへのすべてのサインイン イベントの完全な概要を表示できます。
 
-![Reporting](./media/active-directory-reporting-azure-portal/85.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/85.png "レポート")
 
-By using the column chooser, you can select the data fields you want to display.
+列選択機能を使用すると、表示するデータ フィールドを選択できます。
 
-![Reporting](./media/active-directory-reporting-azure-portal/column_chooser.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/column_chooser.png "レポート")
 
 
 
-### <a name="filtering-sign-ins"></a>Filtering sign-ins
+### サインインのフィルター処理
 
-You can filter sign-ins by a time interval to limit the amount of displayed data.
+表示されるデータの量を制限するために、サインインを期間でフィルター処理できます。
 
-![Reporting](./media/active-directory-reporting-azure-portal/927.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/927.png "レポート")
 
 
-Another method to filter the entries of the sign-in activities is to search for specific entries.
-The search method enables you to scope your sign-ins around specific **users**, **groups** or **applications**.
+サインイン アクティビティのエントリをフィルター処理するためのもう 1 つの方法は、特定のエントリを検索することです。検索機能を使用すると、表示するサインインを特定の**ユーザー**、**グループ**、または**アプリケーション**に限定できます。
 
 
-![Reporting](./media/active-directory-reporting-azure-portal/84.png "Reporting")
+![レポート](./media/active-directory-reporting-azure-portal/84.png "レポート")
 
-## <a name="audit-logs"></a>Audit logs
+## 監査ログ
 
-The auditing logs in Azure Active Directory provide records of system activities for compliance.
+Azure Active Directory の監査ログは、コンプライアンスのためにシステム アクティビティのレコードを提供します。
 
-There are three main categories for auditing related activities in the Azure portal:
+Azure Portal には、監査関連のアクティビティとして、次の 3 つの主要カテゴリがあります。
 
-- Users and groups   
+- ユーザーとグループ
 
-- Applications
+- アプリケーション
 
-- Directory   
+- Directory
 
 
-For a complete list of audit report activities, see the [list of audit report events](active-directory-reporting-audit-events.md#list-of-audit-report-events).
+監査レポート アクティビティの完全な一覧については、[監査レポートのイベントの一覧](active-directory-reporting-audit-events.md#list-of-audit-report-events)を参照してください。
 
 
-Your entry point to all auditing data is **Audit logs** in the **Activity** section of **Azure Active Directory**.
+すべての監査データへのエントリ ポイントは、**[Azure Active Directory]** の **[アクティビティ]** セクションの **[監査ログ]** です。
 
 
-![Auditing](./media/active-directory-reporting-azure-portal/61.png "Auditing")
+![監査](./media/active-directory-reporting-azure-portal/61.png "監査")
 
 
-An audit log has a list view that shows the actors (who), the activities (what) and the targets.
+監査ログには、アクター (だれが)、アクティビティ (どうした)、および対象を示すリスト ビューがあります。
 
 
-![Auditing](./media/active-directory-reporting-azure-portal/345.png "Auditing")
+![監査](./media/active-directory-reporting-azure-portal/345.png "監査")
 
 
-By clicking an item in the list view, you can get more details about it.
+リスト ビュー内の項目をクリックすると、その詳細が表示されます。
 
-![Auditing](./media/active-directory-reporting-azure-portal/873.png "Auditing")
+![監査](./media/active-directory-reporting-azure-portal/873.png "監査")
 
 
 
 
-### <a name="users-and-groups-audit-logs"></a>Users and groups audit logs
+### ユーザーとグループの監査ログ
 
 
-With user and group-based audit reports, you can get answers to questions such as:
+ユーザーとグループ ベースの監査レポートを使用すると、次のような疑問に対する答えを得ることができます。
 
-- What types of updates have been applied the users?
+- どの種類の更新プログラムがユーザーによって適用されているか。
 
-- How many users were changed?
+- 何人のユーザーが変更されたか。
 
-- How many passwords were changed?
+- 何個のパスワードが変更されたか。
 
-- What has an administrator done in a directory?
+- 管理者がディレクトリで何を行ったか。
 
-- What are the groups that have been added?
+- 追加されたのはどのグループか。
 
-- Are there groups with membership changes?
+- メンバーシップが変更されたグループはあるか。
 
-- Have the owners of group been changed?
+- グループの所有者は変更されたか。
 
-- What licenses have been assigned to a group or a user?
+- グループまたはユーザーにどのライセンスが割り当てられているか。
 
 
-If you just want to review auditing data that is related to users and groups, you can find a filtered view under **Audit logs** in the **Activity** section of **Users and Groups**.
+ユーザーとグループに関連する監査データだけを確認したい場合は、**[ユーザーとグループ]** の **[アクティビティ]** セクションで、**[監査ログ]** の下にフィルター処理されたビューがあります。
 
 
-![Auditing](./media/active-directory-reporting-azure-portal/93.png "Auditing")
+![監査](./media/active-directory-reporting-azure-portal/93.png "監査")
 
 
-### <a name="application-audit-logs"></a>Application audit logs
+### アプリケーションの監査ログ
 
-With application-based audit reports, you can get answers to questions such as:
+アプリケーション ベースの監査レポートを使用すると、次のような疑問に対する答えを得ることができます。
 
-- What are the applications that have been added or updated?
+- 追加または更新されたのはどのアプリケーションか。
 
-- What are the applications that have been removed?
+- 削除されたのはどのアプリケーションか。
 
-- Has a service principle for an application changed?
+- アプリケーションのサービス プリンシパルは変更されたか。
 
-- Have the names of applications been changed?
+- アプリケーションの名前は変更されたか。
 
-- Who gave consent to an application?
+- アプリケーションに同意したのはだれか。
 
 
-If you just want to review auditing data that is related to applications, you can find a filtered view under **Audit logs** in the **Activity** section of **Enterprise applications**.
+アプリケーションに関連する監査データだけを確認したい場合は、**[エンタープライズ アプリケーション]** の **[アクティビティ]** セクションで、**[監査ログ]** の下にフィルター処理されたビューがあります。
 
 
-![Auditing](./media/active-directory-reporting-azure-portal/134.png "Auditing")
+![監査](./media/active-directory-reporting-azure-portal/134.png "監査")
 
 
-### <a name="filtering-audit-logs"></a>Filtering audit logs
+### 監査ログのフィルター処理
 
-You can filter an audit report by a time interval to limit the amount of displayed data.
+表示されるデータの量を制限するために、監査レポートを期間でフィルター処理できます。
 
-![Auditing](./media/active-directory-reporting-azure-portal/324.png "Auditing")
+![監査](./media/active-directory-reporting-azure-portal/324.png "監査")
 
-Another method to filter the entries of a audit log is to search for specific entries.
+監査ログのエントリをフィルター処理するためのもう 1 つの方法は、特定のエントリを検索することです。
 
-![Auditing](./media/active-directory-reporting-azure-portal/237.png "Auditing")
+![監査](./media/active-directory-reporting-azure-portal/237.png "監査")
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-See the [Azure Active Directory Reporting Guide](active-directory-reporting-guide.md).
+「[Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

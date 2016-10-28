@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Design patterns for multitenant SaaS applications and Azure SQL Database | Microsoft Azure"
-   description="This article discusses the requirements and common data architecture patterns of multitenant database applications running in a cloud environment need to consider and the various tradeoffs associated with these patterns. It also explains how Azure SQL Database, with its elastic pools and elastic tools, help address these requirements in a no-compromise fashion."
+   pageTitle="マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン | Microsoft Azure"
+   description="この記事では、クラウド環境で実行されるマルチテナント データベース アプリケーションで考慮する必要がある要件と一般的なデータ アーキテクチャ パターン、およびこれらのパターンに関連するさまざまなトレードオフについて説明します。また、エラスティック プールとエラスティック ツールを備えた Azure SQL Database を使用して、妥協のない方法でこれらの要件に対応する方法についても説明します。"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -17,157 +17,151 @@
    ms.date="08/24/2016"
    ms.author="carlrab"/>
 
+# マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン
 
-# <a name="design-patterns-for-multitenant-saas-applications-and-azure-sql-database"></a>Design patterns for multitenant SaaS applications and Azure SQL Database
+この記事では、クラウド環境で実行されるマルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの要件と一般的なデータ アーキテクチャ パターンについて説明します。また、考慮する必要がある要素と、さまざまな設計パターンのトレードオフについても説明します。Azure SQL Database のエラスティック プールとエラスティック ツールを使用すると、他の目的を損なうことなく、特定の要件を満たすことができます。
 
-In this article, you can learn about the requirements and common data architecture patterns of multitenant software as a service (SaaS) database applications that run in a cloud environment. It also explains the factors you need to consider and the trade-offs of different design patterns. Elastic pools and elastic tools in Azure SQL Database can help you meet your specific requirements without compromising other objectives.
+開発者は、マルチテナント アプリケーションのデータ層のテナント モデルを設計するときに、長期的な最善の利益に反する選択を行う場合があります。少なくとも初期の段階では、開発者はテナントの分離やアプリケーションのスケーラビリティよりも、開発の容易さとクラウド サービス プロバイダーのコストの削減の方が重要であると考えます。この選択は顧客満足度の問題の原因となり、後でコストのかかる軌道修正が発生する可能性もあります。
 
-Developers sometimes make choices that work against their long-term best interests when they design tenancy models for the data tiers of multitenant applications. Initially, at least, a developer might perceive ease of development and lower cloud service provider costs as more important than tenant isolation or the scalability of an application. This choice can lead to customer satisfaction concerns and a costly course-correction later.
+マルチテナント アプリケーションとは、クラウド環境でホストされ、相互のデータを共有したり表示したりすることのない数百または数千のテナントにサービスの同じセットを提供するアプリケーションです。一例として、クラウド ホスト環境でテナントにサービスを提供する SaaS アプリケーションがあります。
 
-A multitenant application is an application hosted in a cloud environment and that provides the same set of services to hundreds or thousands of tenants who do not share or see each other’s data. An example is an SaaS application that provides services to tenants in a cloud-hosted environment.
+## マルチテナント アプリケーション
 
-## <a name="multitenant-applications"></a>Multitenant applications
+マルチ テナント アプリケーションでは、データとワークロードを簡単にパーティション分割できます。ほとんどの要求はテナントの境界内で行われるため、たとえば、テナント境界に沿ってデータとワークロードをパーティション分割できます。この特性はデータとワークロードに固有であり、この記事で説明するアプリケーション パターンが優先されます。
 
-In multitenant applications, data and workload can be easily partitioned. You can partition data and workload, for example, along tenant boundaries, because most requests occur within the confines of a tenant. That property is inherent in the data and the workload, and it favors the application patterns discussed in this article.
+開発者は、次のようなクラウド ベースのアプリケーションの全領域でこの種のアプリケーションを使用します。
 
-Developers use this type of application across the whole spectrum of cloud-based applications, including:
+- SaaS アプリケーションとしてクラウドに移行されるパートナーのデータベース アプリケーション
+- クラウド向けに一から構築された SaaS アプリケーション
+- 直接的な顧客向けアプリケーション
+- 従業員向けエンタープライズ アプリケーション
 
-- Partner database applications that are being transitioned to the cloud as SaaS applications
-- SaaS applications built for the cloud from the ground up
-- Direct, customer-facing applications
-- Employee-facing enterprise applications
+クラウド向けに設計された SaaS アプリケーションと、本来はパートナーのデータベース アプリケーションである SaaS アプリケーションは、通常、マルチテナント アプリケーションになります。これらの SaaS アプリケーションは、特化されたソフトウェア アプリケーションをサービスとしてテナントに提供します。テナントはアプリケーション サービスにアクセスでき、アプリケーションの一部として保存される関連データの完全な所有権を持ちます。ただし、SaaS の利点を活用するには、テナントが各自のデータの制御をある程度委ねる必要があります。テナントは、SaaS サービス プロバイダーを信頼してデータの保護と他のテナントのデータからの分離を任せます。この種のマルチテナント SaaS アプリケーションの例として、MYOB、SnelStart、Salesforce.com などがあります。これらの各アプリケーションはテナント境界に沿ってパーティション分割することができ、この記事で説明するアプリケーション設計パターンをサポートします。
 
-SaaS applications that are designed for the cloud and those with roots as partner database applications typically are multitenant applications. These SaaS applications deliver a specialized software application as a service to their tenants. Tenants can access the application service and have full ownership of associated data stored as part of the application. But to take advantage of the benefits of SaaS, tenants must surrender some control over their own data. They trust the SaaS service provider to keep their data safe and isolated from other tenants’ data. Examples of this kind of multitenant SaaS application are MYOB, SnelStart, and Salesforce.com. Each of these applications can be partitioned along tenant boundaries and support the application design patterns we discuss in this article.
+顧客または組織内の従業員 (多くの場合、テナントではなくユーザーと呼ばれます) に直接サービスを提供するアプリケーションは、マルチテナント アプリケーション領域の別のカテゴリです。顧客はサービスにサブスクライブし、サービス プロバイダーが収集して保存しているデータを所有するわけではありません。サービス プロバイダーが顧客のデータを相互に分離された状態に維持するための要件は、政府によって義務付けられたプライバシー規制ほど厳しいものではありません。この種の顧客向けマルチテナント アプリケーションの例として、Netflix、Spotify、Xbox LIVE などのメディア コンテンツ プロバイダーがあります。簡単にパーティション分割できるアプリケーションのその他の例として、顧客向けのインターネット規模のアプリケーションや IoT (モノのインターネット) アプリケーションがあります。これらのアプリケーションでは、それぞれの顧客またはデバイスがパーティションの役割を果たします。パーティション境界によってユーザーやデバイスを分離できます。
 
-Applications that provide a direct service to customers or to employees within an organization (often referred to as users, rather than tenants) are another category on the multitenant application spectrum. Customers subscribe to the service and do not own the data that the service provider collects and stores. Service providers have less stringent requirements to keep their customers’ data isolated from each other beyond government-mandated privacy regulations. Examples of this kind of customer-facing multitenant application are media content providers like Netflix, Spotify, and Xbox LIVE. Other examples of easily partitionable applications are customer-facing, Internet-scale applications, or Internet of Things (IoT) applications in which each customer or device can serve as a partition. Partition boundaries can separate users and devices.
+すべてのアプリケーションが、テナント、顧客、ユーザー、デバイスなどの 1 つの特性に沿って簡単にパーティション分割されるわけではありません。たとえば、複雑な ERP (エンタープライズ リソース プランニング) アプリケーションには、製品、注文、顧客が含まれます。通常、ERP アプリケーションには、高度に相互接続された数千のテーブルを使用する複雑なスキーマがあります。
 
-Not all applications partition easily along a single property such as tenant, customer, user, or device. A complex enterprise resource planning (ERP) application, for example, has products, orders, and customers. It usually has a complex schema with thousands of highly interconnected tables.
+すべてのテーブルに適用することができ、アプリケーションのワークロード全体にわたって機能する単一のパーティション分割戦略はありません。この記事では、データとワークロードを簡単にパーティション分割できるマルチテナント アプリケーションに重点を置いています。
 
-No single partition strategy can apply to all tables and work across an application's workload. This article focuses on multitenant applications that have easily partitionable data and workloads.
+## マルチテナント アプリケーションの設計上のトレードオフ
 
-## <a name="multitenant-application-design-trade-offs"></a>Multitenant application design trade-offs
+通常、マルチテナント アプリケーション開発者が選択する設計パターンは、次の要素の検討に基づいています。
 
-The design pattern that a multitenant application developer chooses typically is based on a consideration of the following factors:
+-	**テナントの分離**: 開発者は、テナントが他のテナントのデータに望ましくないアクセスを行わないことを保証する必要があります。この分離要件は、ノイジー ネイバーからの保護、テナントのデータを復元する機能、テナント固有のカスタマイズの実装など、他の特性にも適用されます。
+-	**クラウド リソースのコスト**SaaS アプリケーションにはコスト競争力が必要です。マルチテナント アプリケーション開発者は、クラウド リソースの使用コスト (ストレージ コストやコンピューティング コストなど) を削減するために最適化を行うことができます。
+-	**DevOps の容易さ**: マルチテナント アプリケーション開発者は、分離保護を組み込み、アプリケーションとデータベース スキーマの正常性を管理、監視し、テナントの問題のトラブルシューティングを行う必要があります。アプリケーションの開発と運用の複雑さは、コストの増加とテナントの満足度の課題に直結します。
+-	**スケーラビリティ**: SaaS の運用を成功させるには、テナントとテナントが必要とする容量を徐々に追加できることが不可欠となります。
 
--   **Tenant isolation**. The developer needs to ensure that no tenant has unwanted access to other tenants’ data. The isolation requirement extends to other properties, such as providing protection from noisy neighbors, being able to restore a tenant’s data, and implementing tenant-specific customizations.
--   **Cloud resource cost**. An SaaS application needs to be cost-competitive. A multitenant application developer might choose to optimize for lower cost in the use of cloud resources, such as storage and compute costs.
--   **Ease of DevOps**. A multitenant application developer needs to incorporate isolation protection, maintain, and monitor the health of their application and database schema, and troubleshoot tenant issues. Complexity in application development and operation translates directly to increased cost and challenges with tenant satisfaction.
--   **Scalability**. The ability to incrementally add more tenants and capacity for tenants who require it is imperative to a successful SaaS operation.
+これらの要素には、それぞれ別の要素とのトレードオフがあります。最も低コストのクラウド サービスが最も使い勝手のよい開発環境を提供するわけではありません。開発者は、アプリケーション設計プロセスで、これらの選択肢とそのトレードオフについて、情報に基づく選択を行うことが重要です。
 
-Each of these factors has trade-offs compared to another. The lowest-cost cloud offering might not offer the most convenient development experience. It’s important for a developer to make informed choices about these options and their trade-offs during the application design process.
+一般的な開発パターンは、複数のテナントを 1 つまたは少数のデータベースにまとめることです。このアプローチのメリットは、支払が発生するデータベースの数が少ないため、低コストであることと、データベースの数が限られているので作業が比較的単純化されることです。しかし、時間が経つにつれて、SaaS マルチテナント アプリケーション開発者は、この選択にはテナントの分離とスケーラビリティの点で大きな欠点があることに気付きます。テナントの分離が重要になった場合、共有ストレージ内のテナント データを未承認のアクセスやノイジー ネイバーから保護するために追加作業が必要になります。この追加の作業により、開発作業と分離のメンテナンス コストが大幅に増加します。同様に、テナントを追加する必要がある場合、この設計パターンでは、データベース間でテナント データを再度分散させて、アプリケーションのデータ層を適切にスケーリングするための専門知識が通常は必要になります。
 
-A popular development pattern is to pack multiple tenants into one or a few databases. The benefits of this approach are a lower cost because you pay for a few databases, and the relative simplicity of working with a limited number of databases. But over time, a SaaS multitenant application developer will realize that this choice has substantial downsides in tenant isolation and scalability. If tenant isolation becomes important, additional effort is required to protect tenant data in shared storage from unauthorized access or noisy neighbors. This additional effort might significantly boost development efforts and isolation maintenance costs. Similarly, if adding tenants is required, this design pattern typically requires expertise to redistribute tenant data across databases to properly scale the data tier of an application.  
+企業や組織に提供される SaaS マルチテナント アプリケーションでは、多くの場合、テナントの分離は基本要件です。開発者は、テナントの分離とスケーラビリティよりも、単純さとコスト面での認識されているメリットに惑わされることがあります。サービスが成長し、テナント分離要件の重要性が高まり、アプリケーション層で対処するようになったときに、このトレードオフは複雑でコストがかかるということが判明する可能性があります。ただし、直接的な顧客向けサービスを顧客に提供するマルチテナント アプリケーションでは、テナントの分離はクラウド リソースのコストの最適化よりも優先度が低くなります。
 
-Tenant isolation often is a fundamental requirement in SaaS multitenant applications that cater to businesses and organizations. A developer might be tempted by perceived advantages in simplicity and cost over tenant isolation and scalability. This trade-off can prove complex and expensive as the service grows and tenant isolation requirements become more important and managed at the application layer. However, in multitenant applications that provide a direct, consumer-facing service to customers, tenant isolation might be a lower priority than optimizing for cloud resource cost.
+## マルチテナント データ モデル
 
-## <a name="multitenant-data-models"></a>Multitenant data models
-
-Common design practices for placing tenant data follow three distinct models, shown in Figure 1.
+テナント データを配置するための一般的な設計手法は、図 1 に示す 3 つの異なるモデルに従います。
 
 
-  ![Multitenant application data models](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-multi-tenant-data-models.png)
-    Figure 1: Common design practices for multitenant data models
+  ![マルチテナント アプリケーション データ モデル](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-multi-tenant-data-models.png)図 1: マルチテナント データ モデルの一般的な設計手法
 
--   **Database-per-tenant**. Each tenant has its own database. All tenant-specific data is confined to the tenant’s database and isolated from other tenants and their data.
--   **Shared database-sharded**. Multiple tenants share one of multiple databases. A distinct set of tenants is assigned to each database by using a partitioning strategy such as hash, range, or list partitioning. This data distribution strategy often is referred to as sharding.
--   **Shared database-single**. A single, sometimes large, database contains data for all tenants, which are disambiguated in a tenant ID column.
+-	**テナント単位のデータベース**: 各テナントが独自のデータベースを使用します。テナント固有のすべてのデータがそのテナントのデータベースに配置され、他のテナントとそのデータから分離されます。
+-	**共有データベース (シャード)**: 複数のテナントが複数のデータベースのいずれかを共有します。ハッシュ、範囲、リストなどのパーティション分割戦略を使用して、個々のテナント セットが各データベースに割り当てられます。多くの場合、このデータ分散戦略はシャーディングと呼ばれます。
+-	**共有データベース (単一)**: 場合によっては大規模な単一のデータベースにすべてのテナントのデータが格納されます。テナントは、テナント ID 列で区別されます。
 
-> [AZURE.NOTE] An application developer might choose to place different tenants in different database schemas, and then use the schema name to disambiguate the different tenants. We do not recommend this approach because it usually requires the use of dynamic SQL, and it can’t be effective in plan caching. In the remainder of this article, we focus on the shared table approach for this category of multitenant application.
+> [AZURE.NOTE] アプリケーション開発者は、テナントをそれぞれ異なるデータベース スキーマに配置し、スキーマ名を使用してテナントを区別することもできます。通常、このアプローチでは動的 SQL を使用する必要があり、プランのキャッシュの効果が得られないため、お勧めできません。この記事の残りの部分では、マルチテナント アプリケーションのこのカテゴリの共有テーブル アプローチを中心に説明します。
 
-## <a name="popular-multitenant-data-models"></a>Popular multitenant data models
+## 一般的なマルチテナント データ モデル
 
-It’s important to evaluate the different types of multitenant data models in terms of the application design trade-offs we’ve already identified. These factors help characterize the three most common multitenant data models described earlier and their database usage as shown in Figure 2.
+既に確認したアプリケーションの設計上のトレードオフの観点で、各種マルチテナント データ モデルを評価することが重要です。図 2 に示すように、次の要素によって、前述の最も一般的な 3 つのマルチテナント データ モデルとデータベースの使用方法を特徴付けることができます。
 
--   **Isolation**. The degree of isolation between tenants can be a measure of how much tenant isolation a data model achieves.
--   **Cloud resource cost**. The amount of resource sharing between tenants can optimize cloud resource cost. A resource can be defined as the compute and storage cost.
--   **DevOps cost**. The ease of application development, deployment, and manageability reduces overall SaaS operation cost.  
+-	**分離**: テナント間の分離の度合いは、データ モデルが実現するテナントの分離がどの程度であるかを示す尺度となります。
+-	**クラウド リソースのコスト**: テナント間でのリスースの共有の量により、クラウド リソースのコストを最適化できます。リソースは、コンピューティングと記憶域のコストと定義できます。
+-	**DevOps コスト**: アプリケーションの開発、デプロイ、管理の容易さによって、SaaS の全体的な運用コストが削減されます。
 
-In Figure 2, the Y axis shows the level of tenant isolation. The X axis shows the level of resource sharing. The gray, diagonal arrow in the middle indicates the direction of DevOps costs, tending to increase or decrease.
+図 2 では、Y 軸はテナントの分離レベルを示し、X 軸はリソースの共有レベルを示しています。中央にある灰色の斜めの矢印は、DevOps コストの方向 (増加傾向または減少傾向) を示しています。
 
-![Popular multitenant application design patterns](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-popular-application-patterns.png) Figure 2: Popular multitenant data models
+![一般的なマルチテナント アプリケーション設計パターン](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-popular-application-patterns.png)図 2: 一般的なマルチテナント データ モデル
 
-The lower-right quadrant in Figure 2 shows an application pattern that uses a potentially large, shared single database, and the shared table (or separate schema) approach. It's good for resource sharing because all tenants use the same database resources (CPU, memory, input/output) in a single database. But tenant isolation is limited. You might need to take additional steps to protect tenants from each other at the application layer. These additional steps can significantly increase the DevOps cost of developing and managing the application. Scalability is limited by the scale of the hardware that hosts the database.
+図 2 の右下のクアドラントは、大規模である可能性がある単一の共有データベースと、共有テーブル (または個別のスキーマ) アプローチを使用するアプリケーション パターンを示しています。このパターンは、すべてのテナントが単一のデータベースで同じデータベース リソース (CPU、メモリ、入出力) を使用するため、リソースの共有に適しています。ただし、テナントの分離は限られます。アプリケーション層で、テナントを相互から保護するための追加手順を実行する必要があります。この追加の手順により、アプリケーションの開発と管理の DevOps コストが大幅に増加する可能性があります。スケーラビリティは、データベースをホストするハードウェアのスケールによって制限されます。
 
-The lower-left quadrant in Figure 2 illustrates multiple tenants sharded across multiple databases (typically, different hardware scale units). Each database hosts a subset of tenants, which addresses the scalability concern of other patterns. If more capacity is required for more tenants, you can easily place the tenants on new databases allocated to new hardware scale units. However, the amount of resource sharing is reduced. Only tenants placed on the same scale units share resources. This approach provides little improvement to tenant isolation because many tenants are still collocated without being automatically protected from each other’s actions. Application complexity remains high.
+図 2 の左下のクアドラントは、(通常はハードウェア スケール ユニットが異なる) 複数のデータベースにシャーディングされた複数のテナントを示しています。各データベースがテナントのサブセットをホストし、他のパターンのスケーラビリティの問題に対処します。より多くのテナントに対応するためにさらに多くの容量が必要になった場合は、新しいハードウェア スケール ユニットに割り当てられた新しいデータベースにテナントを簡単に配置できます。ただし、リソースの共有の量は減少します。同じスケール ユニットに配置されたテナントだけがリソースを共有します。このアプローチでは、多数のテナントが相互の操作から自動的には保護されずに引き続き併置されるため、テナントの分離はほとんど向上しません。アプリケーションの複雑性が高いままです。
 
-The upper-left quadrant in Figure 2 is the third approach. It places each tenant’s data in its own database. This approach has good tenant-isolation properties but limits resource sharing when each database has its own dedicated resources. This approach is good if all tenants have predictable workloads. If tenant workloads become less predictable, the provider cannot optimize resource sharing. Unpredictability is common for SaaS applications. The provider must either over-provision to meet demands or lower resources. Either action results in either higher costs or lower tenant satisfaction. A higher degree of resource sharing across tenants becomes desirable to make the solution more cost-effective. Increasing the number of databases also increases DevOps cost to deploy and maintain the application. Despite these concerns, this method provides the best and easiest isolation for tenants.
+図 2 の左上のクアドラントは､3 番目のアプローチを示しています。このアプローチでは、各テナントのデータがテナント独自のデータベースに配置されます。このアプローチのテナント分離特性は優れていますが、各データベースが専用リソースを使用する場合、リソースの共有が限られます。すべてのテナントのワークロードを予測できる場合には、これは優れたアプローチです。テナントのワークロードを予測しにくくなった場合には、プロバイダーはリソースの共有を最適化できません。予測の困難さは、SaaS アプリケーションではよくあることです。プロバイダーは需要を満たすために過剰なプロビジョニングを行うか、リソースを減らす必要があります。どちらの場合も、コストが増加するか、テナントの満足度が低下します。ソリューションのコスト効率を高めるために、テナント間でのリソースの共有の度合いを高めることが望ましくなります。データベースの数の増加も、アプリケーションをデプロイして管理する際の DevOps コストを増加させます。こうした問題はありますが、これがテナントを最適かつ最も簡単に分離できる方法です。
 
-These factors also influence the design pattern a customer chooses:
+選択する設計パターンには、次の要素も影響します。
 
--   **Ownership of tenant data**. An application in which tenants retain ownership of their own data favors the pattern of a single database per tenant.
--   **Scale**. An application that targets hundreds of thousands or millions of tenants favors database sharing approaches such as sharding. Isolation requirements still can pose challenges.
--   **Value and business model**. If an application’s per-tenant revenue if small (less than a dollar), isolation requirements become less critical and a shared database makes sense. If per-tenant revenue is a few dollars or more, a database-per-tenant model is more feasible. It might help reduce development costs.
+-	**テナント データの所有権**: テナントが各自のデータの所有権を保持するアプリケーションでは、テナントごとに 1 つのデータベースを使用するパターンが優先されます。
+-	**スケール**。数十万または数百万のテナントを対象とするアプリケーションでは、シャーディングなどのデータベース共有アプローチが優先されます。分離要件が引き続き課題をもたらす可能性があります。
+-	**価値およびビジネス モデル**: アプリケーションのテナントあたりの収益が少ない (1 ドル未満) 場合、分離要件はそれほど重要ではなくなり、共有データベースが理にかなっています。テナントあたりの収益が数ドル以上の場合は、テナント単位のデータベース モデルの方が適しています。このモデルでは、開発コストを削減できる可能性があります。
 
-Given the design trade-offs shown in Figure 2, an ideal multitenant model needs to incorporate good tenant isolation properties with optimal resource sharing among tenants. This model fits in the category described in the upper-right quadrant of Figure 2.
+図 2 に示す設計上のトレードオフを考えると、理想的なマルチテナント モデルでは、優れたテナント分離特性とテナント間での最適なリソースの共有を組み込む必要があります。このモデルは、図 2 の右上のクアドラントに示すカテゴリに適合します。
 
-## <a name="multitenancy-support-in-azure-sql-database"></a>Multitenancy support in Azure SQL Database
+## Azure SQL Database でのマルチテナント機能のサポート
 
-Azure SQL Database supports all multitenant application patterns outlined in Figure 2. With elastic pools, it also supports an application pattern that combines good resource sharing and the isolation benefits of the database-per-tenant approach (see the upper-right quadrant in Figure 3). Elastic database tools and capabilities in SQL Database help reduce the cost to develop and operate an application that has many databases (shown in the shaded area in Figure 3). These tools can help you build and manage applications that use any of the multi-database patterns.
+Azure SQL Database は、図 2 で概説したマルチテナント アプリケーション パターンをすべてサポートします。また、エラスティック プールを使用することで、優れたリソース共有とテナント単位のデータベース アプローチの分離のメリットを組み合わせたアプリケーション パターンもサポートされるようになりました (図 3 の右上のクアドラントを参照)。SQL Database のエラスティック データベース ツールとエラスティック データベース機能により、多数のデータベースを使用するアプリケーションの開発と運用のコスト (図 3 の網かけされた領域) を削減できます。これらのツールは、複数のデータベースのパターンを使用するアプリケーションの構築と管理に役立ちます。
 
-![Patterns in Azure SQL Database](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-patterns-sqldb.png) Figure 3: Multitenant application patterns in Azure SQL Database
+![Azure SQL Database におけるパターン](./media/sql-database-design-patterns-multi-tenancy-saas-applications/sql-database-patterns-sqldb.png)図 3: Azure SQL Database におけるマルチテナント アプリケーション パターン
 
-## <a name="database-per-tenant-model-with-elastic-pools-and-tools"></a>Database-per-tenant model with elastic pools and tools
+## エラスティック プールとツールを使用するテナント単位のデータベース モデル
 
-Elastic pools in SQL Database combine tenant isolation with resource sharing among tenant databases to better support the database-per-tenant approach. SQL Database is a data tier solution for SaaS providers who build multitenant applications. The burden of resource sharing among tenants shifts from the application layer to the database service layer. The complexity of managing and querying at scale across databases is simplified with elastic jobs, elastic query, elastic transactions, and the elastic database client library.
+SQL Database のエラスティック プールは、テナントの分離とテナント データベース間でのリソースの共有を組み合わせることで、テナント単位のデータベース アプローチのサポートを強化します。SQL Database は、マルチテナント アプリケーションを構築する SaaS プロバイダー向けのデータ層ソリューションです。テナント間で共有するリソースの負担は、アプリケーション層からデータベース サービス層へと移動します。複数のデータベースにわたる大規模な管理とクエリの複雑さは、エラスティック ジョブ、エラスティック クエリ、エラスティック トランザクション、エラスティック データベース クライアント ライブラリによって単純化されます。
 
-| Application requirements | SQL database capabilities |
+| アプリケーションの要件 | SQL Database の機能 |
 | ------------------------ | ------------------------- |
-| Tenant isolation and resource sharing | [Elastic pools](sql-database-elastic-pool.md): Allocate a pool of SQL Database resources and share the resources across various databases. Also, individual databases can draw as much resources from the pool as needed to accommodate capacity demand spikes due to changes in tenant workloads. The elastic pool itself can be scaled up or down as needed. Elastic pools also provide ease of manageability and monitoring and troubleshooting at the pool level. |
-| Ease of DevOps across databases | [Elastic pools](sql-database-elastic-pool.md): As noted earlier.|
-||[Elastic query](sql-database-elastic-query-horizontal-partitioning.md): Query across databases for reporting or cross-tenant analysis.|
-||[Elastic jobs](sql-database-elastic-jobs-overview.md): Package and reliably deploy database maintenance operations or database schema changes to multiple databases.|
-||[Elastic transactions](sql-database-elastic-transactions-overview.md): Process changes to several databases in an atomic and isolated way. Elastic transactions are needed when applications need “all or nothing” guarantees over several database operations. |
-||[Elastic database client library](sql-database-elastic-database-client-library.md): Manage data distributions and map tenants to databases. |
+| テナントの分離とリソースの共有 | [エラスティック プール](sql-database-elastic-pool.md): SQL Database リソースのプールを割り当て、複数のデータベース間でリソースを共有します。また、個々のデータベースは、テナントのワークロードの変化による容量の需要の急増に対応するために、プールからリソースを必要なだけ取得できます。必要に応じて、エラスティック プール自体をスケールアップまたはスケールダウンできます。エラスティック プールにより、プール レベルでの管理、監視、トラブルシューティングも簡単に行うことができます。 |
+| データベース間での開発運用の容易さ | [エラスティック プール](sql-database-elastic-pool.md): 前述のとおりです。|
+||[エラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md): レポート作成やクロステナント分析を行うために複数のデータベースにわたってクエリを実行します。|
+||[エラスティック ジョブ](sql-database-elastic-jobs-overview.md): 複数のデータベースに対するデータベース メンテナンス操作やデータベース スキーマの変更をパッケージ化し、確実にデプロイします。|
+||[エラスティック トランザクション](sql-database-elastic-transactions-overview.md): 複数のデータベースに対する変更を、アトミックな分離された方法で処理します。エラスティック トランザクションは、アプリケーションがいくつかのデータベース操作を "全部かゼロか" で保証する必要がある場合に必要です。 |
+||[エラスティック クライアント ライブラリ](sql-database-elastic-database-client-library.md): データの分散を管理し、テナントをデータベースにマップします。 |
 
-## <a name="shared-models"></a>Shared models
+## 共有モデル
 
-As described earlier, for most SaaS providers, a shared model approach might pose problems with tenant isolation issues and complexities with application development and maintenance. However, for multitenant applications that provide a service directly to consumers, tenant isolation requirements may not be as high a priority as minimizing cost. They might be able to pack tenants in one or more databases at a high density to reduce costs. Shared-database models using a single database or multiple sharded databases might result in additional efficiencies in resource sharing and overall cost. Azure SQL Database provides some features that help customers build isolation for improved security and management at scale in the data tier.
+前述のように、ほとんどの SaaS プロバイダーで、共有モデル アプローチは、テナントの分離の問題とアプリケーションの開発およびメンテナンスの複雑さに関する問題を引き起こすと考えられます。ただし、顧客に直接サービスを提供するマルチテナント アプリケーションでは、テナント分離要件は、コストを最小限に抑えることほど優先度が高くない場合があります。これらのアプリケーションでは、テナントを 1 つ以上のデータベースに高密度でまとめることで、コストを削減できます。単一のデータベースまたは複数のシャード データベースを使用する共有データベース モデルでは、リソースの共有がさらに効率化され、全体的なコストが削減されます。Azure SQL Database には、データ層でのセキュリティと大規模な管理を強化するための分離の構築に役立つ機能が用意されています。
 
-| Application requirements | SQL database capabilities |
+| アプリケーションの要件 | SQL Database の機能 |
 | ------------------------ | ------------------------- |
-| Security isolation features | [Row-level security](https://msdn.microsoft.com/library/dn765131.aspx) |
-|| [Database schema](https://msdn.microsoft.com/library/dd207005.aspx) |
-| Ease of DevOps across databases | [Elastic query](sql-database-elastic-query-horizontal-partitioning.md) |
-|| [Elastic jobs](sql-database-elastic-jobs-overview.md) |
-|| [Elastic transactions](sql-database-elastic-transactions-overview.md) |
-|| [Elastic database client library](sql-database-elastic-database-client-library.md) |
-|| [Elastic database split and merge](sql-database-elastic-scale-overview-split-and-merge.md) |
+| セキュリティ分離機能 | [行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131.aspx) |
+|| [データベース スキーマ](https://msdn.microsoft.com/library/dd207005.aspx) |
+| データベース間での開発運用の容易さ | [エラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md) |
+|| [エラスティック ジョブ](sql-database-elastic-jobs-overview.md) |
+|| [エラスティック トランザクション](sql-database-elastic-transactions-overview.md) |
+|| [エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md) |
+|| [エラスティック データベースの分割と結合](sql-database-elastic-scale-overview-split-and-merge.md) |
 
-## <a name="summary"></a>Summary
+## 概要
 
-Tenant isolation requirements are important for most SaaS multitenant applications. The best option to provide isolation leans heavily toward the database-per-tenant approach. The other two approaches require investments in complex application layers that require skilled development staff to provide isolation, which significantly increases cost and risk. If isolation requirements are not accounted for early in the service development, retrofitting them can be even more costly in the first two models. The main drawbacks associated with the database-per-tenant model are related to increased cloud resource costs due to reduced sharing, and maintaining and managing many databases. SaaS application developers often struggle when they make these trade-offs.
+テナント分離要件は、ほとんどの SaaS マルチテナント アプリケーションにとって重要です。分離を実現する最適な方法は、テナント単位のデータベース アプローチに大きく依存します。他の 2 つのアプローチでは、分離を実現するために熟練した開発スタッフを必要とする複雑なアプリケーション層への投資が必要ですが、それによりコストとリスクが大幅に増加します。サービス開発の早い段階で分離要件に対応しなかった場合、最初の 2 つのモデルでは、さらに改良コストがかかる可能性があります。テナント単位のデータベース モデルに関する主な欠点は、共有の減少と多数のデータベースを管理することによるクラウド リソースのコストの増加と関連しています。SaaS アプリケーション開発者は、これらのトレードオフを行うときに苦労することも少なくありません。
 
-Although trade-offs might be major barriers with most cloud database service providers, Azure SQL Database eliminates the barriers with its elastic pool and elastic database capabilities. SaaS developers can combine the isolation characteristics of a database-per-tenant model and optimize resource sharing and the manageability improvements of many databases by using elastic pools and associated tools.
+これらのトレードオフは、ほとんどのクラウド データベース サービス プロバイダーにとって大きな障壁となりますが、Azure SQL Database では、エラスティック プールとエラスティック データベース機能によってこれらの障壁を排除します。SaaS 開発者は、テナント単位のデータベース モデルの分離特性を組み合わせ、リソースの共有を最適化し、エラスティック プールや関連ツールを使用して多くのデータベースの管理を向上させることができます。
 
-Multitenant application providers who have no tenant isolation requirements and who can pack tenants in a database at a high density might find that shared data models result in additional efficiency in resource sharing and reduce overall cost. Azure SQL Database elastic database tools, sharding libraries, and security features help SaaS providers build and manage multitenant applications.
+マルチテナント アプリケーション プロバイダーにテナント分離要件がない場合や、テナントを高密度で 1 つのデータベースにまとめることができる場合は、共有データ モデルによって、リソースの共有をさらに効率化し、全体的なコストを削減できます。Azure SQL Database のエラスティック データベース ツール、シャーディング ライブラリ、セキュリティ機能は、SaaS プロバイダーがマルチテナント アプリケーションを構築し、管理できるよう支援します。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[Get started with elastic database tools](sql-database-elastic-scale-get-started.md) with a sample app that demonstrates the client library.
+クライアント ライブラリの使い方を示すサンプル アプリケーションで、[エラスティック データベース ツール](sql-database-elastic-scale-get-started.md)を使ってみます。
 
-Create an [elastic pool custom dashboard for SaaS](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard) with a sample app that uses elastic pools for a cost-effective, scalable database solution.
+エラスティック プールを使用して、コスト効率に優れたスケーラブルなデータベース ソリューションを実現するサンプル アプリケーションで、[Saas のエラスティック プール カスタム ダッシュボード](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard)を作成します。
 
-Use the Azure SQL Database tools to [migrate existing databases to scale out](sql-database-elastic-convert-to-use-elastic-tools.md).
+Azure SQL Database ツールを使用して、[既存のデータベースを移行し、スケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)します。
 
-View our tutorial on how to [create an elastic pool](sql-database-elastic-pool-create-portal.md).  
+[エラスティック プールの作成](sql-database-elastic-pool-create-portal.md)方法に関するチュートリアルを確認します。
 
-Learn how to [monitor and manage an elastic pool](sql-database-elastic-pool-manage-portal.md).
+[エラスティック プールを監視および管理する](sql-database-elastic-pool-manage-portal.md)方法を確認します。
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-- [What is an Azure elastic pool?](sql-database-elastic-pool.md)
-- [Scaling out with Azure SQL Database](sql-database-elastic-scale-introduction.md)
-- [Multitenant applications with elastic database tools and row-level security](sql-database-elastic-tools-multi-tenant-row-level-security.md)
-- [Authentication in multitenant apps by using Azure Active Directory and OpenID Connect](../guidance/guidance-multitenant-identity-authenticate.md)
-- [Tailspin Surveys application](../guidance/guidance-multitenant-identity-tailspin.md)
-- [Solution quick starts](sql-database-solution-quick-starts.md)
+- [Azure エラスティック プールの概要](sql-database-elastic-pool.md)
+- [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
+- [エラスティック データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション](sql-database-elastic-tools-multi-tenant-row-level-security.md)
+- [Azure Active Directory と OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)
+- [Tailspin Surveys アプリケーション](../guidance/guidance-multitenant-identity-tailspin.md)
+- [ソリューション クイック スタート](sql-database-solution-quick-starts.md)
 
-## <a name="questions-and-feature-requests"></a>Questions and feature requests
+## 質問と機能に関する要望
 
-For questions, find us in the [SQL Database forum](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). Add a feature request in the [SQL Database feedback forum](https://feedback.azure.com/forums/217321-sql-database/).
+ご質問がある場合は、[SQL Database フォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database フィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)までお寄せください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

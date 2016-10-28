@@ -1,62 +1,57 @@
 <properties
-    pageTitle="Manage the settings for a group in Azure Active Directory preview | Microsoft Azure"
-    description="How to edit the properties and other configuration settings for a group in Azure Active Directory"
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory プレビューでグループのメンバーを管理する | Microsoft Azure"
+	description="Azure Active Directory でグループのプロパティとその他の構成設定を編集する方法"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/12/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/12/2016"
+	ms.author="curtand"/>
 
 
+# Azure Active Directory プレビューでグループのメンバーを管理する
 
-# <a name="manage-the-settings-for-a-group-in-azure-active-directory-preview"></a>Manage the settings for a group in Azure Active Directory preview
+この記事では、Azure Active Directory (Azure AD) プレビューでグループの設定を管理する方法について説明します。プレビューの機能については、[こちらの記事](active-directory-preview-explainer.md)をご覧ください。
 
-This article explains how to change the settings for a group in Azure Active Directory (Azure AD) preview. [What's in the preview?](active-directory-preview-explainer.md)
+## 設定を探して変更する方法
 
-## <a name="how-do-i-find-and-change-the-settings?"></a>How do I find and change the settings?
+1.  ディレクトリのグローバル管理者のアカウントで [Azure ポータル](https://portal.azure.com)にサインインします。
 
-1.  Sign in to the [Azure portal](https://portal.azure.com) with an account that's a global admin for the directory.
+2.  **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-2.  Select **More services**, enter **Users and groups** in the text box, and then select **Enter**.
+  ![ユーザー管理を開く](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
 
-  ![Opening user management](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
+3.  **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
 
-3.  On the **Users and groups** blade, select **All groups**.
+  ![グループ ブレードを開く](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 
-  ![Opening the groups blade](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
+4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
 
-4. On the **Users and groups - All groups** blade, select a group.
+5. **[グループ - <*グループ名*>]** ブレードで、**[プロパティ]** を選択します。
 
-5. On the **Group - *groupname*** blade, select **Properties**.
+  ![[プロパティ] ブレードを開く](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
 
-  ![Opening the Properties blade](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
+6. グループのプロパティの変更が完了したら、**[保存]** をクリックします。
 
-6. When you finish changing properties for the group, select **Save**.    
-
-  ![Saving properties changes](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
-
-
-## <a name="additional-information"></a>Additional information
-
-These articles provide additional information on Azure Active Directory.
-
-* [See existing groups](active-directory-groups-view-azure-portal.md)
-* [Create a new group and adding members](active-directory-groups-create-azure-portal.md)
-* [Manage members of a group](active-directory-groups-members-azure-portal.md)
-* [Manage memberships of a group](active-directory-groups-membership-azure-portal.md)
-* [Manage dynamic rules for users in a group](active-directory-groups-dynamic-membership-azure-portal.md)
+  ![プロパティの変更を保存する](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
 
 
+## 追加情報
 
-<!--HONumber=Oct16_HO2-->
+次の記事は、Azure Active Directory に関する追加情報を示します。
 
+* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
+* [新しいグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)
+* [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
+* [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
+* [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
 
+<!---HONumber=AcomDC_0914_2016-->

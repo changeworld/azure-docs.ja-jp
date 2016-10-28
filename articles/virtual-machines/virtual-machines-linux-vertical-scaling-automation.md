@@ -1,95 +1,91 @@
 <properties
-    pageTitle="Vertically scale Azure virtual machine with Azure Automation | Microsoft Azure"
-    description="How to vertically scale a Linux Virtual Machine in response to monitoring alerts with Azure Automation"
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="singhkays"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする | Microsoft Azure"
+	description="Azure Automation で監視アラートに応じて Linux 仮想マシンを垂直方向にスケーリングする方法"
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="singhkays"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="03/29/2016"
-    ms.author="singhkay"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/29/2016"
+	ms.author="singhkay"/>
 
+# Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする
 
-# <a name="vertically-scale-azure-virtual-machine-with-azure-automation"></a>Vertically scale Azure virtual machine with Azure Automation
+垂直方向のスケーリングは、ワークロードに応じてコンピューターのリソースを増減するプロセスです。Azure では、仮想マシンのサイズを変更することで実行できます。これは、次のようなシナリオで役立ちます。
 
-Vertical scaling is the process of increasing or decreasing the resources of a machine in response to the workload. In Azure this can be accomplished by changing the size of the Virtual Machine. This can help in the following scenarios
+- 仮想マシンが頻繁に使用されていない場合、より小さなサイズに変更して、毎月のコストを削減することができます
+- 仮想マシンでピーク時の負荷が表れている場合、より大きなサイズに変更して、容量を増やすことができます
 
-- If the Virtual Machine is not being used frequently, you can resize it down to a smaller size to reduce your monthly costs
-- If the Virtual Machine is seeing a peak load, it can be resized to a larger size to increase its capacity
+これを実現するための手順の概要を、以下に示します
 
-The outline for the steps to accomplish this is as below
+1. Azure Automation をセットアップして、Virtual Machines にアクセスする
+2. サブスクリプションに Azure Automation の垂直スケールの Runbook をインポートする
+3. Webhook を Runbook に追加する
+4. 仮想マシンにアラートを追加する
 
-1. Setup Azure Automation to access your Virtual Machines
-2. Import the Azure Automation Vertical Scale runbooks into your subscription
-3. Add a webhook to your runbook
-4. Add an alert to your Virtual Machine
+> [AZURE.NOTE] 最初の仮想マシンのサイズによっては、スケーリングできるサイズが制限される場合があります。これは、その仮想マシンがデプロイされているクラスターの空き容量によるものです。この記事で使用される公開済みの Automation Runbook では、このケースのみを扱い、VM のサイズ ペアを超えない範囲でのみスケーリングします。つまり、Standard\_D1v2 仮想マシンが急に Standard\_G5 にスケールアップしたり、Basic\_A0 にスケールダウンしたりすることはありません。
 
-> [AZURE.NOTE] Because of the size of the first Virtual Machine, the sizes it can be scaled to, may be limited due to the availability of the other sizes in the cluster current Virtual Machine is deployed in. In the published automation runbooks used in this article we take care of this case and only scale within the below VM size pairs. This means that a Standard_D1v2 Virtual Machine will not suddenly be scaled up to Standard_G5 or scaled down to Basic_A0.
-
->| VM sizes scaling pair |   |
+>| VM サイズのスケーリングのペア | |
 |---|---|
-|  Basic_A0 |  Basic_A4 |
-|  Standard_A0 | Standard_A4 |
-|  Standard_A5 | Standard_A7  |
-|  Standard_A8 | Standard_A9  |
-|  Standard_A10 |  Standard_A11 |
-|  Standard_D1 |  Standard_D4 |
-|  Standard_D11 | Standard_D14  |
-|  Standard_DS1 |  Standard_DS4 |
-|  Standard_DS11 | Standard_DS14  |
-|  Standard_D1v2 |  Standard_D5v2 |
-|  Standard_D11v2 |  Standard_D14v2 |
-|  Standard_G1 |  Standard_G5 |
-|  Standard_GS1 |  Standard_GS5 |
+| Basic\_A0 | Basic\_A4 |
+| Standard\_A0 | Standard\_A4 |
+| Standard\_A5 | Standard\_A7 |
+| Standard\_A8 | Standard\_A9 |
+| Standard\_A10 | Standard\_A11 |
+| Standard\_D1 | Standard\_D4 |
+| Standard\_D11 | Standard\_D14 |
+| Standard\_DS1 | Standard\_DS4 |
+| Standard\_DS11 | Standard\_DS14 |
+| Standard\_D1v2 | Standard\_D5v2 |
+| Standard\_D11v2 | Standard\_D14v2 |
+| Standard\_G1 | Standard\_G5 |
+| Standard\_GS1 | Standard\_GS5 |
 
-## <a name="setup-azure-automation-to-access-your-virtual-machines"></a>Setup Azure Automation to access your Virtual Machines
+## Azure Automation をセットアップして、Virtual Machines にアクセスする
 
-The first thing you need to do is create an Azure Automation account that will host the runbooks used to scale the VM Scale Set instances. Recently the Automation service introduced the "Run As account" feature which makes setting up the Service Principal for automatically running the runbooks on the user's behalf very easy. You can read more about this in the article below:
+最初に、VM スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。最近、Automation サービスでは、ユーザーの代わりに非常に簡単に Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。詳しくは、次の記事を参照してください。
 
-* [Authenticate Runbooks with Azure Run As account](../automation/automation-sec-configure-azure-runas-account.md)
+* [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
 
-## <a name="import-the-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>Import the Azure Automation Vertical Scale runbooks into your subscription
+## サブスクリプションに Azure Automation の垂直スケールの Runbook をインポートする
 
-The runbooks that are needed for Vertically Scaling your Virtual Machine are already published in the Azure Automation Runbook Gallery. You will need to import them into your subscription. You can learn how to import runbooks by reading the following article.
+垂直方向へのスケーリングに必要な Runbook は、Azure Automation Runbook ギャラリーに既に公開されています。これを、サブスクリプションにインポートする必要があります。Runbook をインポートする方法は、次の記事を参照してください。
 
-* [Runbook and module galleries for Azure Automation](../automation/automation-runbook-gallery.md)
+* [Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](../automation/automation-runbook-gallery.md)
 
-The runbooks that need to be imported are shown in the image below
+インポートする必要がある Runbook を次の図に示します
 
-![Import runbooks](./media/virtual-machines-vertical-scaling-automation/scale-runbooks.png)
+![Runbook のインポート](./media/virtual-machines-vertical-scaling-automation/scale-runbooks.png)
 
-## <a name="add-a-webhook-to-your-runbook"></a>Add a webhook to your runbook
+## Webhook を Runbook に追加する
 
-Once you've imported the runbooks you'll need to add a webhook to the runbook so it can be triggered by an alert from a Virtual Machine. The details of creating a webhook for your Runbook can be read here
+Runbook をインポートしたら、仮想マシンからのアラートによって Webhook がトリガーされるように、Runbook に追加する必要があります。Runbook で Webhook を作成する方法の詳細は、次の記事を参照してください。
 
-* [Azure Automation webhooks](../automation/automation-webhooks.md)
+* [Azure Automation Webhook](../automation/automation-webhooks.md)
 
-Make sure you copy the webhook before closing the webhook dialog as you will need this in the next section.
+Webhook のダイアログを閉じる前に、Webhook をコピーしてください。これは次のセクションで必要になります。
 
-## <a name="add-an-alert-to-your-virtual-machine"></a>Add an alert to your Virtual Machine
+## 仮想マシンにアラートを追加する
 
-1. Select Virtual Machine settings
-2. Select "Alert rules"
-3. Select "Add alert"
-4. Select a metric to fire the alert on
-5. Select a condition, which when fulfilled will cause the alert to fire
-6. Select a threshold for the condition in Step 5. to be fulfilled
-7. Select a period over which the monitoring service will check for the condition and threshold in Steps 5 & 6
-8. Paste in the webhook you copied from the previous section.
+1. 仮想マシンの設定を選択する
+2. "アラート ルール" を作成する
+3. "アラートの追加" を選択する
+4. アラートを発生させるメトリックを選択する
+5. アラートを発生させるための条件を選択する
+6. 手順 5 の条件で満たす必要があるしきい値を選択する
+7. 手順 5 と 6 で選択した条件としきい値を監視サービスが確認する期間を選択する
+8. 前のセクションからコピーした Webhook を貼り付ける
 
-![Add Alert to Virtual Machine 1](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
+![アラートを仮想マシン 1 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-1.png)
 
-![Add Alert to Virtual Machine 2](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
+![アラートを仮想マシン 2 に追加](./media/virtual-machines-vertical-scaling-automation/add-alert-webhook-2.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

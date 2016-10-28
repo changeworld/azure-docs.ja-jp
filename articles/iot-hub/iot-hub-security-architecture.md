@@ -1,6 +1,6 @@
 <properties
- pageTitle="IoT Security Architecture | Microsoft Azure"
- description="IoT security architecture guidelines and considerations"
+ pageTitle="IoT のセキュリティ アーキテクチャ | Microsoft Azure"
+ description="IoT のセキュリティ アーキテクチャのガイドラインと考慮事項"
  services="iot-hub"
  documentationCenter=""
  authors="YuriDio"
@@ -16,24 +16,25 @@
  ms.date="08/02/2016"
  ms.author="yurid"/>
  
-
 [AZURE.INCLUDE [iot-security-architecture](../../includes/iot-security-architecture.md)]
 
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn more about securing your IoT solution see, [Secure your IoT deployment][lnk-security-deployment]
+IoT ソリューションのセキュリティ保護の詳細については、[IoT デプロイのセキュリティ保護][lnk-security-deployment]に関するページをご覧ください。
 
-To further explore the capabilities of IoT Hub, see:
+IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [Simulating a device with the Gateway SDK][lnk-gateway]
+- [ソリューションの設計][lnk-design]
+- [サンプル UI を使用したデバイス管理の探求][lnk-dmui]
+- [Gateway SDK を使用したデバイスのシミュレーション][lnk-gateway]
+- [Azure ポータルを使用した IoT Hub の管理][lnk-portal]
 
 [lnk-security-deployment]: iot-hub-security-deployment.md
 
+[lnk-design]: iot-hub-guidance.md
+[lnk-dmui]: iot-hub-device-management-ui-sample.md
 [lnk-gateway]: iot-hub-linux-gateway-sdk-simulated-device.md
+[lnk-portal]: iot-hub-manage-through-portal.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

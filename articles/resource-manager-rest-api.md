@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Resource Manager REST APIs| Microsoft Azure"
-   description="An overview of the Resource Manager REST APIs authentication and usage examples"
+   pageTitle="Resource Manager REST API| Microsoft Azure"
+   description="Resource Manager REST API の認証の概要と使用例"
    services="azure-resource-manager"
    documentationCenter="na"
    authors="navalev"
@@ -16,33 +16,31 @@
    ms.date="06/23/2016"
    ms.author="navale;tomfitz;"/>
    
-
-# <a name="resource-manager-rest-apis"></a>Resource Manager REST APIs
+# Resource Manager REST API
 
 > [AZURE.SELECTOR]
 - [Azure PowerShell](powershell-azure-resource-manager.md)
 - [Azure CLI](xplat-cli-azure-resource-manager.md)
-- [Portal](./azure-portal/resource-group-portal.md) 
+- [ポータル](./azure-portal/resource-group-portal.md)
 - [REST API](resource-manager-rest-api.md)
 
-Behind every call to Azure Resource Manager, behind every deployed template, behind every configured storage account there is one or several calls to the Azure Resource Manager’s RESTful API. This topic is devoted to those APIs and how you can call them without using any SDK at all. This can be very useful if you want full control of all requests to Azure or if the SDK for your preferred language is not available or doesn’t support the operations you want to perform.
+Azure Resource Manager、デプロイ済みのテンプレート、構成済みのストレージ アカウントを呼び出す裏では、必ず Azure Resource Manager の RESTful API が 1 回以上呼び出されます。このトピックでは、これらの API と、SDK を一切使わずにこれらの API を呼び出す方法について説明します。これは、Azure へのすべての要求を完全に制御したい場合や、優先言語の SDK が利用できないか、実行したい操作がその SDK でサポートされていない場合に、非常に役に立つ可能性があります。
 
-This article will not go through every API that is exposed in Azure, but will rather use some as an example how you go ahead and connect to them. If you understand the basics you can then go ahead and read the [Azure Resource Manager REST API Reference](https://msdn.microsoft.com/library/azure/dn790568.aspx) to find detailed information on how to use the rest of the APIs.
+この記事では Azure で公開されているすべての API については説明しませんが、その一部を例として取り上げ、先に進んだり、掘り下げたりできるようにします。基本を理解できたら、次に進み、「[Azure Resource Manager REST API Reference (Azure Resource Manager REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn790568.aspx)」で残りの API の使い方を調べることができます。
 
-## <a name="authentication"></a>Authentication
-Authentication for ARM is handled by Azure Active Directory (AD). In order to connect to any API you first need to authenticate with Azure AD to receive an authentication token that you can pass on to every request. As we are describing a pure call directly to the REST APIs, we will also assume that you don’t want to authenticate with a normal username password where a pop-up-screen might prompt you for username and password and perhaps even other authentication mechanisms used in two factor authentication scenarios. Therefore, we will create what is called an Azure AD Application and a Service Principal that will be used to login with. But remember that Azure AD support several authentication procedures and all of them could be used to retrieve that authentication token that we need for subsequent API requests.
-Follow [Create Azure AD Application and Service Principle](./resource-group-create-service-principal-portal.md) for step by step instructions.
+## 認証
+ARM の認証は、Azure Active Directory (AD) によって処理されます。任意の API に接続するには、最初に Azure AD で認証を行って認証トークンを受信する必要があります。この認証トークンは、すべての要求に対して渡すことができます。ここでは REST API の直接的で純粋な呼び出しについて説明しますが、読者が通常のユーザー名とパスワードを使用した認証 (ポップアップ画面でユーザー名とパスワードの入力が求められるような認証) や、2 要素認証のシナリオで利用される他の認証メカニズムによる認証を望んでいないということも想定しています。したがって、Azure AD アプリケーションと、ログインに使用するサービス プリンシパルを作成します。ただし、Azure AD は複数の認証手順をサポートしており、そのどれを使っても、後続の API 要求に必要な認証トークンを取得できることに注意してください。詳しい手順については、[Azure AD のアプリケーションとサービス プリンシパルの作成](./resource-group-create-service-principal-portal.md)に関するページを参照してください。
 
-### <a name="generating-an-access-token"></a>Generating an Access Token 
-Authentication against Azure AD is done by calling out to Azure AD, located at login.microsoftonline.com. In order to authenticate you need to have the following information:
+### アクセス トークンの生成 
+Azure AD に対する認証は、login.microsoftonline.com にある Azure AD を呼び出すことで行われます。認証のためには次の情報が必要です。
 
-* Azure AD Tenant ID (the name of that Azure AD you are using to login, often the same as your company but not necessary)
-* Application ID (taken during the Azure AD application creation step)
-* Password (that you selected while creating the Azure AD Application)
+* Azure AD テナント ID (ログインに使用している Azure AD の名前。会社名と同じである場合が多いものの、必ずしもそうとは限りません)
+* アプリケーション ID (Azure AD アプリケーションの作成中に取得したもの)
+* パスワード (Azure AD アプリケーションの作成中に選択したもの)
 
-In the below HTTP request make sure to replace "Azure AD Tenant ID", "Application ID" and "Password" with the correct values.
+以下の HTTP 要求で、"Azure AD Tenant ID"、"Application ID"、"Password" を適切な値に置き換えてください。
 
-**Generic HTTP Request:**
+**一般的な HTTP 要求:**
 
 ```HTTP
 POST /<Azure AD Tenant ID>/oauth2/token?api-version=1.0 HTTP/1.1 HTTP/1.1
@@ -53,7 +51,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=client_credentials&resource=https%3A%2F%2Fmanagement.core.windows.net%2F&client_id=<Application ID>&client_secret=<Password>
 ```
 
-... will (if authentication succeeds) result in a similar response to this:
+この要求により、(認証に成功した場合は) 次のような応答が返されます。
 
 ```json
 {
@@ -65,35 +63,34 @@ grant_type=client_credentials&resource=https%3A%2F%2Fmanagement.core.windows.net
   "access_token": "eyJ0eXAiOiJKV1QiLCJhb...86U3JI_0InPUk_lZqWvKiEWsayA"
 }
 ```
-(The access_token in the above response have been shortened to increase readability)
+(読みやすくするために、上記の応答の access\_token は短縮されています)
 
-**Generating access token using Bash:**
+**Bash を使ったアクセス トークンの生成:**
 
 ```console
 curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials&resource=https://management.core.windows.net&client_id=<application id>&client_secret=<password you selected for authentication>" https://login.microsoftonline.com/<Azure AD Tenant ID>/oauth2/token?api-version=1.0
 ```
 
-**Generating access token using PowerShell:**
+**PowerShell を使ったアクセス トークンの生成:**
 
 ```powershell
 Invoke-RestMethod -Uri https://login.microsoftonline.com/<Azure AD Tenant ID>/oauth2/token?api-version=1.0 -Method Post
  -Body @{"grant_type" = "client_credentials"; "resource" = "https://management.core.windows.net/"; "client_id" = "<application id>"; "client_secret" = "<password you selected for authentication>" }
 ```
 
-The response contains an Access Token, information about how long that token is valid and information about what resource you can use that token for.
-The access token you received in the previous HTTP call must be passed in for all request to the ARM API as a header named "Authorization" with the value "Bearer YOUR_ACCESS_TOKEN". Notice the space between "Bearer" and your Access Token.
+応答には、アクセス トークン、そのトークンの有効期限に関する情報、そのトークンを使えるリソースに関する情報が含まれます。前の HTTP 呼び出しで受信したアクセス トークンは、ARM API に対するすべての要求で、"Bearer YOUR\_ACCESS\_TOKEN" 値を含む "Authorization" というヘッダーとして渡す必要があります。"Bearer" とアクセス トークンの間のスペースに注意してください。
 
-As you can see from the above HTTP Result, the token is valid for a specific period of time during which you should cache and re-use that same token. Even if it is possible to authenticate against Azure AD for each API call, it would be highly inefficient.
+上記の HTTP の結果からわかるとおり、トークンは特定の期間、有効です。その期間中は、トークンをキャッシュし、同じトークンを再利用する必要があります。API 呼び出しごとに Azure AD に対して認証を行うことができたとしても、著しく非効率です。
 
-## <a name="calling-arm-rest-apis"></a>Calling ARM REST APIs
+## ARM REST API の呼び出し
 
-[Azure Resource Manager REST APIs are documented here](https://msdn.microsoft.com/library/azure/dn790568.aspx) and it's out of scope for this tutorial to document the usage of each and every. This documentation will only use a few APIs to explain the basic usage of the APIs and after that we refer you to the official documentation.
+[Azure Resource Manager REST API については、こちらをご覧ください](https://msdn.microsoft.com/library/azure/dn790568.aspx)。このチュートリアルでは、Azure Resource Manager REST API の使い方を個別に取り上げたり、網羅的に説明したりしません。このドキュメントでは、一部の API のみを使って API の基本的な使い方を説明します。その後で、公式のドキュメントを紹介します。
 
-### <a name="list-all-subscriptions"></a>List all subscriptions
+### すべてのサブスクリプションの一覧表示
 
-One of the simplest operations you can do is to list the available subscriptions that you can access. In the below request you can see how the Access Token is passed in as a header.
+実行できる最も簡単な操作の 1 つに、アクセスできる利用可能なサブスクリプションの一覧表示があります。以下の要求には、アクセス トークンをヘッダーとして渡す方法が示されています。
 
-(Replace YOUR_ACCESS_TOKEN with your actual Access Token.)
+(YOUR\_ACCESS\_TOKEN を実際のアクセス トークンに置き換えてください)
 
 ```HTTP
 GET /subscriptions?api-version=2015-01-01 HTTP/1.1
@@ -102,9 +99,9 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 ```
 
-... and as a result, you'll get a list of subscriptions that this Service Principal is allowed to access
+この要求の結果、このサービス プリンシパルでアクセスできるサブスクリプションの一覧が返されます。
 
-(Subscription IDs below have been shortened for readability)
+(次のサブスクリプション ID は読みやすいように短縮されています)
 
 ```json
 {
@@ -123,11 +120,11 @@ Content-Type: application/json
 }
 ```
 
-### <a name="list-all-resource-groups-in-a-specific-subscription"></a>List all resource groups in a specific subscription
+### 特定のサブスクリプションに含まれる全リソース グループの一覧表示
 
-All resources available with the ARM APIs are nested inside a Resource Group. We are going to query ARM for existing Resource Groups in our subscription using the below HTTP GET Request. Notice how the Subscription ID is passed in as part of the URL this time.
+ARM API で使用できるリソースは、いずれもリソース グループの入れ子になっています。以下の HTTP GET 要求を使って、サブスクリプションに含まれる既存のリソース グループを ARM に対して照会します。ここではどのような形でサブスクリプション ID が URL の一部として渡されているか、注目してください。
 
-(Replace YOUR_ACCESS_TOKEN and SUBSCRIPTION_ID with your actual Access Token and Subscription ID)
+(YOUR\_ACCESS\_TOKEN と SUBSCRIPTION\_ID を実際のアクセス トークンとサブスクリプション ID に置き換えてください)
 
 ```HTTP
 GET /subscriptions/SUBSCRIPTION_ID/resourcegroups?api-version=2015-01-01 HTTP/1.1
@@ -136,9 +133,9 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 ```
 
-The response you get will depend whether you have any resource groups defined and if so, how many.
+返される応答は、定義済みのリソース グループの有無によって変わります。定義済みのリソース グループがある場合は、その数が返されます。
 
-(Subscription IDs below have been shortened for readability)
+(次のサブスクリプション ID は読みやすいように短縮されています)
 
 ```json
 {
@@ -166,11 +163,11 @@ The response you get will depend whether you have any resource groups defined an
 }
 ```
 
-### <a name="create-a-resource-group"></a>Create a resource group
+### リソース グループの作成
 
-So far we've only been querying the ARM APIs for information, it's time we create some resources instead and let's start by the simplest of them all, a resource group. The following HTTP request creates a new Resource Group in a region/location of your choice and adds one or more tags to it (the sample below actually only adds one tag).
+ここまでは、ARM API に対して情報を照会するのみでしたが、ここからは、いくつかリソースを作成してみます。その中でも最もシンプルな、リソース グループから始めましょう。次の HTTP 要求は新しいリソース グループを指定したリージョン/場所に作成し、それに 1 つ以上のタグを追加します (以下のサンプルでは、タグを 1 つだけ追加しています)。
 
-(Replace YOUR_ACCESS_TOKEN, SUBSCRIPTION_ID, RESOURCE_GROUP_NAME with your actual Access Token, Subscription ID and name of the Resource Group you want to create)
+(YOUR\_ACCESS\_TOKEN、SUBSCRIPTION\_ID、RESOURCE\_GROUP\_NAME を実際のアクセス トークン、サブスクリプション ID、作成するリソース グループの名前に置き換えてください)
 
 ```HTTP
 PUT /subscriptions/SUBSCRIPTION_ID/resourcegroups/RESOURCE_GROUP_NAME?api-version=2015-01-01 HTTP/1.1
@@ -186,7 +183,7 @@ Content-Type: application/json
 }
 ```
 
-If successful, you'll get a similar response to this
+要求に成功した場合は、次のような応答が返されます。
 
 ```json
 {
@@ -202,17 +199,17 @@ If successful, you'll get a similar response to this
 }
 ```
 
-You've successfully created a Resource Group in Azure. Congratulations!
+これでリソース グループを Azure で正常に作成できました。ご利用ありがとうございます。
 
-### <a name="deploy-resources-to-a-resource-group-using-an-arm-template"></a>Deploy resources to a Resource Group using an ARM Template
+### ARM テンプレートを使ってリソース グループにリソースをデプロイする
 
-With ARM, you can deploy your resources using ARM Templates. An ARM Template defines several resources and their dependencies. For this section we will just assume you are familiar with ARM Templates and we will just show you how to make the API call to start deployment of one. A detailed documentation of ARM Templates can be found here.
+ARM では、ARM テンプレートを使ってリソースをデプロイできます。ARM テンプレートには、いくつかのリソースとその依存関係が定義されます。このセクションは ARM テンプレートに精通している読者を想定しているため、API 呼び出しによりそのデプロイを始める方法のみを紹介します。ARM テンプレートに関する詳細なドキュメントはこちらにあります。
 
-Deployment of an ARM template doesn't differ much to how you call other APIs. One important aspect is that deployment of a template can take quite a long time, depending on what's inside of the template, and the API call will just return and it's up to you as developer to query for status of the deployment in order to find out when the deployment is done.
+ARM テンプレートのデプロイは、他の API を呼び出す方法とそれほど違いはありません。重要な点は、テンプレートのデプロイには、その内容に応じてかなりの時間がかかる可能性があるという点です。API の呼び出しは単に戻るだけなので、開発者がデプロイが完了したタイミングを把握するためには、デプロイの状態を照会する必要があります。
 
-For this example, we'll use a publicly exposed ARM Template available on [GitHub](https://github.com/Azure/azure-quickstart-templates). The template we are going to use will deploy a Linux VM to the West US region. Even though this template will have the template available in a public repository like GitHub, you can also select to pass the full template as part of the request. Note that we provide parameter values as part of the request that will be used inside the used template.
+この例では、[GitHub](https://github.com/Azure/azure-quickstart-templates) で一般公開されている ARM テンプレートを使います。このテンプレートを使うと、Linux VM が米国西部リージョンにデプロイされます。このテンプレートが GitHun などのパブリック リポジトリで公開されても、要求の一部で完全なテンプレートを渡すこともできます。使用するテンプレート内で使用される要求の一部として、パラメーター値を指定します。
 
-(Replace SUBSCRIPTION_ID, RESOURCE_GROUP_NAME, DEPLOYMENT_NAME, YOUR_ACCESS_TOKEN, GLOBALY_UNIQUE_STORAGE_ACCOUNT_NAME, ADMIN_USER_NAME,ADMIN_PASSWORD and DNS_NAME_FOR_PUBLIC_IP to values appropriate for your request)
+(SUBSCRIPTION\_ID、RESOURCE\_GROUP\_NAME、DEPLOYMENT\_NAME、YOUR\_ACCESS\_TOKEN、GLOBALY\_UNIQUE\_STORAGE\_ACCOUNT\_NAME、ADMIN\_USER\_NAME、ADMIN\_PASSWORD、DNS\_NAME\_FOR\_PUBLIC\_IP を独自の要求に適した値に置き換えてください)
 
 ```HTTP
 PUT /subscriptions/SUBSCRIPTION_ID/resourcegroups/RESOURCE_GROUP_NAME/providers/microsoft.resources/deployments/DEPLOYMENT_NAME?api-version=2015-01-01 HTTP/1.1
@@ -248,11 +245,6 @@ Content-Type: application/json
 }
 ```
 
-The quite long JSON response for this request have been omitted in order to improve readability of this documentation. The response will contain information about the templated deployment that you just created.
+このドキュメントを読みやすくするために、この要求に対する非常に長い JSON の応答は省略されています。応答には、先ほど作成したテンプレート化されたデプロイに関する情報が含まれます。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

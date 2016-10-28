@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Select Linux VM images with the Azure  CLI | Microsoft Azure"
-   description="Learn how to determine the publisher, offer, and SKU for images when creating a Linux virtual machine with the Resource Manager deployment model."
+   pageTitle="Azure CLI を使用した Linux VM イメージの選択 |Microsoft Azure"
+   description="リソース マネージャー デプロイ モデルで Linux 仮想マシンを作成するときに、イメージの発行元、プラン、および SKU を決定する方法について説明します。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="squillace"
@@ -18,29 +18,24 @@
    ms.date="08/23/2016"
    ms.author="rasquill"/>
 
+# Azure CLI を使用した Linux VM イメージの選択
 
-# <a name="select-linux-vm-images-with-the-azure-cli"></a>Select Linux VM images with the Azure CLI
+このトピックでは、デプロイする可能性のある場所ごとに、発行元、プラン、SKU、およびバージョンを検索する方法について説明します。たとえば、次のような Linux VM イメージが一般的に使用されます。
 
-This topic describes how to find publishers, offers, skus, and versions for each location into which you might deploy. To give an example, some commonly used Linux VM images are:
-
-**Table of commonly used Linux images**
+**一般的に使用される Linux イメージの表**
 
 
-| PublisherName                        | Offer                                 | Sku                         |
+| 発行元 | プラン | SKU |
 |:---------------------------------|:-------------------------------------------|:---------------------------------|:--------------------|
-| RedHat                           | RHEL                                       | 7.2                              |
-| credativ                         | Debian                                     | 8                                | 
-| SUSE                             | openSUSE                                   | 13.2                             |
-| SUSE                             | SLES                                       | 12-SP1                           |
-| OpenLogic                        | CentOS                                     | 7.1                              |
-| Canonical                        | UbuntuServer                               | 14.04.4-LTS                      |
-| CoreOS                           | CoreOS                                     | Stable                           |
+| RedHat | RHEL | 7\.2 |
+| credativ | Debian | 8 | 
+| SUSE | openSUSE | 13\.2 |
+| SUSE | SLES | 12-SP1 |
+| OpenLogic | CentOS | 7\.1 |
+| Canonical | UbuntuServer | 14\.04.4-LTS |
+| CoreOS | CoreOS | 安定版 |
 
 
 [AZURE.INCLUDE [virtual-machines-common-cli-ps-findimage](../../includes/virtual-machines-common-cli-ps-findimage.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

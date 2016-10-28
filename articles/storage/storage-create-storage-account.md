@@ -1,167 +1,162 @@
 <properties
-    pageTitle="How to create, manage, or delete a storage account in the Azure Portal | Microsoft Azure"
-    description="Create a new storage account, manage your account access keys, or delete a storage account in the Azure Portal. Learn about standard and premium storage accounts."
-    services="storage"
-    documentationCenter=""
-    authors="robinsh"
-    manager="carmonm"
-    editor="tysonn"/>
+	pageTitle="Azure ポータルでストレージ アカウントを作成、管理、削除する方法 | Microsoft Azure"
+	description="Azure ポータルで、新しいストレージ アカウントの作成、アカウント アクセス キーの管理、ストレージ アカウントの削除を実行します。Standard および Premium ストレージ アカウントについて説明します。"
+	services="storage"
+	documentationCenter=""
+	authors="robinsh"
+	manager="carmonm"
+	editor="tysonn"/>
 
 <tags
-    ms.service="storage"
-    ms.workload="storage"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="07/26/2016"
-    ms.author="micurd;robinsh"/>
+	ms.service="storage"
+	ms.workload="storage"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="07/26/2016"
+	ms.author="micurd;robinsh"/>
 
 
-
-# <a name="about-azure-storage-accounts"></a>About Azure storage accounts
+# Azure ストレージ アカウントについて
 
 [AZURE.INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
 <br/>
 [AZURE.INCLUDE [storage-try-azure-tools](../../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Overview
+## Overview
 
-An Azure storage account provides a unique namespace to store and access your Azure Storage data objects. All objects in a storage account are billed together as a group. By default, the data in your account is available only to you, the account owner.
+Azure ストレージ アカウントは、Azure Storage データ オブジェクトの格納およびアクセスのための一意の名前空間を提供します。ストレージ アカウント内のすべてのオブジェクトは、グループとしてまとめて課金されます。既定では、アカウントのデータはアカウント所有者だけが使用できます。
 
 [AZURE.INCLUDE [storage-account-types-include](../../includes/storage-account-types-include.md)]
 
-## <a name="storage-account-billing"></a>Storage account billing
+## ストレージ アカウントの課金
 
 [AZURE.INCLUDE [storage-account-billing-include](../../includes/storage-account-billing-include.md)]
 
-> [AZURE.NOTE] When you create an Azure virtual machine, a storage account is created for you automatically in the deployment location if you do not already have a storage account in that location. So it's not necessary to follow the steps below to create a storage account for your virtual machine disks. The storage account name will be based on the virtual machine name. See the [Azure Virtual Machines documentation](https://azure.microsoft.com/documentation/services/virtual-machines/) for more details.
+> [AZURE.NOTE] Azure の仮想マシンを作成する場合、デプロイ場所にまだストレージ アカウントがない状況では、その場所に自動的にストレージ アカウントが作成されます。このため、使用する仮想マシンのディスク用にストレージ アカウントを作成する場合、必ずしも以下の手順に従う必要はありません。ストレージ アカウント名は仮想マシン名を基にして付けられます。詳細については、[Azure Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
-## <a name="storage-account-endpoints"></a>Storage account endpoints
+## ストレージ アカウント エンドポイント
 
-Every object that you store in Azure Storage has a unique URL address. The storage account name forms the subdomain of that address. The combination of subdomain and domain name, which is specific to each service, forms an *endpoint* for your storage account.
+Azure Storage に格納するすべてのオブジェクトには一意の URL アドレスが設定されています。ストレージ アカウント名は、そのアドレスのサブドメインになります。サブドメインとドメイン名の組み合わせは、各サービスに固有であり、ストレージ アカウントの *エンドポイント* になります。
 
-For example, if your storage account is named *mystorageaccount*, then the default endpoints for your storage account are:
+たとえば、ストレージ アカウントの名前が "mystorageaccount" の場合、ストレージ アカウントの既定のエンドポイントは次のようになります。
 
-- Blob service: http://*mystorageaccount*.blob.core.windows.net
+- BLOB サービス: http://*mystorageaccount*.blob.core.windows.net
 
-- Table service: http://*mystorageaccount*.table.core.windows.net
+- Table サービス: http://*mystorageaccount*.table.core.windows.net
 
-- Queue service: http://*mystorageaccount*.queue.core.windows.net
+- Queue サービス: http://*mystorageaccount*.queue.core.windows.net
 
-- File service: http://*mystorageaccount*.file.core.windows.net
+- File サービス: http://*mystorageaccount*.file.core.windows.net
 
-> [AZURE.NOTE] A Blob storage account only exposes the Blob service endpoint.
+> [AZURE.NOTE] BLOB ストレージ アカウントは、BLOB サービス エンドポイントのみを公開します。
 
-The URL for accessing an object in a storage account is built by appending the object's location in the storage account to the endpoint. For example, a blob address might have this format: http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*.
+ストレージ アカウント内のオブジェクトにアクセスするための URL は、ストレージ アカウント内のオブジェクトの場所をエンドポイントに追加して作成します。たとえば、BLOB アドレスは次の形式になります。http://*mystorageaccount*.blob.core.windows.net/*mycontainer*/*myblob*
 
-You can also configure a custom domain name to use with your storage account. For classic storage accounts, see [Configure a custom domain Name for your Blob Storage Endpoint](storage-custom-domain-name.md) for details. For Resource Manager storage accounts, this capability has not been added to the [Azure portal](https://portal.azure.com) yet, but you can configure it with PowerShell. For more information, see the [Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx) cmdlet.  
+また、カスタム ドメイン名もストレージ アカウントを使用するように構成することができます。従来のストレージ アカウントの詳細については、「[Blob Storage エンドポイントのカスタム ドメイン名の構成](storage-custom-domain-name.md)」を参照してください。Resource Manager ストレージ アカウントの場合、この機能は [Azure ポータル](https://portal.azure.com)でサポートされていませんが、PowerShell で構成することができます。詳細については、「[Set-AzureRmStorageAccount](https://msdn.microsoft.com/library/mt607146.aspx)」を参照してください。
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## ストレージ アカウントの作成
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
-2. On the Hub menu, select **New** -> **Data + Storage** -> **Storage account**.
+2. ハブ メニューで、**[新規]**、**[データ + ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
 
-3. Enter a name for your storage account. See [Storage account endpoints](#storage-account-endpoints) for details about how the storage account name will be used to address your objects in Azure Storage.
+3. ストレージ アカウントの名前を入力します。Azure Storage 内のオブジェクトを指すためにストレージ アカウント名がどのように使用されるかについては、「[ストレージ アカウント エンドポイント](#storage-account-endpoints)」を参照してください。
 
-    > [AZURE.NOTE] Storage account names must be between 3 and 24 characters in length and may contain numbers and lowercase letters only.
-    >  
-    > Your storage account name must be unique within Azure. The Azure portal will indicate if the storage account name you select is already in use.
+	> [AZURE.NOTE] ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
+	>  
+	> ストレージ アカウント名は Azure 内で一意である必要があります。選択したストレージ アカウント名が既に使用されているかどうかが、Azure ポータルによって示されます。
 
-4. Specify the deployment model to be used: **Resource Manager** or **Classic**. **Resource Manager** is the recommended deployment model. For more information, see [Understanding Resource Manager deployment and classic deployment](../resource-manager-deployment-model.md).
+4. 使用するデプロイメント モデル (**[Resource Manager]** または **[クラシック]**) を指定します。**[リソース マネージャー]** が、推奨されるデプロイ モデルです。詳細については、「[リソース マネージャー デプロイと従来のデプロイを理解する](../resource-manager-deployment-model.md)」を参照してください。
 
-    > [AZURE.NOTE] Blob storage accounts can only be created using the Resource Manager deployment model.
+	> [AZURE.NOTE] BLOB ストレージ アカウントを作成するには、Resource Manager デプロイ モデルを使用する必要があります。
 
-5. Select the type of storage account: **General purpose** or **Blob storage**. **General purpose** is the default.
+5. ストレージ アカウントの種類として、**[汎用]** または **[BLOB ストレージ]** を選択します。既定は **[汎用]** です。
 
-    If **General purpose** was selected, then specify the performance tier: **Standard** or **Premium**. The default is **Standard**. For more details on standard and premium storage accounts, see [Introduction to Microsoft Azure Storage](storage-introduction.md) and [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](storage-premium-storage.md).
+	**[汎用]** を選択した場合は、パフォーマンス レベルとして **[Standard]** または **[Premium]** を指定します。既定値は **[Standard]** です。Standard Storage アカウントと Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」と「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」を参照してください。
 
-    If **Blob Storage** was selected, then specify the access tier: **Hot** or **Cool**. The default is **Hot**. See [Azure Blob Storage: Cool and Hot tiers](storage-blob-storage-tiers.md) for more details.
+	**[BLOB ストレージ]** を選択した場合は、アクセス層として **[ホット]** または **[クール]** を指定します。既定値は **[ホット]** です。詳細については、「[Azure Blob Storage: クール層とホット層](storage-blob-storage-tiers.md)」を参照してください。
 
-6. Select the replication option for the storage account: **LRS**, **GRS**, **RA-GRS**, or **ZRS**. The default is **RA-GRS**. For more details on Azure Storage replication options, see [Azure Storage replication](storage-redundancy.md).
+6. ストレージ アカウントのレプリケーション オプション (**[LRS]**、**[GRS]**、**[RA-GRS]**、または **[ZRS]**) を選択します。既定値は **[RA-GRS]** です。Azure Storage のレプリケーション オプションの詳細については、[Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。
 
-7. Select the subscription in which you want to create the new storage account.
+7. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 
-8. Specify a new resource group or select an existing resource group. For more information on resource groups, see [Azure Resource Manager overview](../resource-group-overview.md).
+8. 新しいリソース グループを指定するか、既定のリソース グループを選択します。リソース グループの詳細については、「[Azure Resource Manager の概要](../resource-group-overview.md)」をご覧ください。
 
-9. Select the geographic location for your storage account. See [Azure Regions](https://azure.microsoft.com/regions/#services) for more information about what services are available in which region.
+9. ストレージ アカウントの地理的な場所を選択します。どのリージョンでどのサービスを使用できるかについては、「[Azure のリージョン](https://azure.microsoft.com/regions/#services)」を参照してください。
 
-10. Click **Create** to create the storage account.
+10. **[作成]** をクリックしてストレージ アカウントを作成します。
 
-## <a name="manage-your-storage-account"></a>Manage your storage account
+## ストレージ アカウントの管理
 
-### <a name="change-your-account-configuration"></a>Change your account configuration
+### アカウント構成の変更
 
-After you create your storage account, you can modify its configuration, such as changing the replication option used for the account or changing the access tier for a Blob storage account. In the [Azure portal](https://portal.azure.com), navigate to your storage account, click **All settings** and then click **Configuration** to view and/or change the account configuration.
+ストレージ アカウントの作成後、アカウントで使用するレプリケーション オプションの変更や、BLOB ストレージ アカウントのアクセス層の変更など、そのアカウント構成を変更できます。[Azure ポータル](https://portal.azure.com)でお使いのストレージ アカウントに移動し、**[すべての設定]**、**[構成]** の順にクリックすると、アカウント構成を表示したり変更したりできます。
 
-> [AZURE.NOTE] Depending on the performance tier you chose when creating the storage account, some replication options may not be available.
+> [AZURE.NOTE] ストレージ アカウントの作成時に選択したパフォーマンス レベルによっては、一部のレプリケーション オプションが使用できない場合があります。
 
-Changing the replication option will change your pricing. For more details, see [Azure Storage Pricing](https://azure.microsoft.com/pricing/details/storage/) page.
+レプリケーション オプションを変更すると価格が変更されます。詳細については、「[Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
 
-For Blob storage accounts, changing the access tier may incur charges for the change in addition to changing your pricing. Please see the [Blob storage accounts - Pricing and Billing](storage-blob-storage-tiers.md#pricing-and-billing) for more details.
+BLOB ストレージ アカウントでは、アクセス層を変更すると、料金の変更の他に、変更に対する課金が発生することがあります。詳細については、[BLOB ストレージ アカウントの価格と課金](storage-blob-storage-tiers.md#pricing-and-billing)に関するセクションを参照してください。
 
-### <a name="manage-your-storage-access-keys"></a>Manage your storage access keys
+### ストレージ アクセス キーの管理
 
-When you create a storage account, Azure generates two 512-bit storage access keys, which are used for authentication when the storage account is accessed. By providing two storage access keys, Azure enables you to regenerate the keys with no interruption to your storage service or access to that service.
+ストレージ アカウントを作成するときに、Azure によって 2 つの 512 ビット ストレージ アクセス キーが生成されます。これらは、ストレージ アカウントにアクセスするときに認証の目的で使用されます。Azure によって 2 つのストレージ アクセス キーが提供される結果、ストレージ サービスやサービスへのアクセスを中断することなく、これらのキーを再生成できます。
 
-> [AZURE.NOTE] We recommend that you avoid sharing your storage access keys with anyone else. To permit access to storage resources without giving out your access keys, you can use a *shared access signature*. A shared access signature provides access to a resource in your account for an interval that you define and with the permissions that you specify. See [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) for more information.
+> [AZURE.NOTE]ストレージ アクセス キーは、他の人と共有しないことをお勧めします。アクセス キーを入力しないでストレージ リソースにアクセスする場合は、 *共有アクセス署名* が利用できます。共有アクセス署名を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。詳細については、「[共有アクセス署名、第 1 部: SAS モデルについて](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-#### <a name="view-and-copy-storage-access-keys"></a>View and copy storage access keys
+#### ストレージ アクセス キーの表示とコピー
 
-In the [Azure portal](https://portal.azure.com), navigate to your storage account, click **All settings** and then click **Access keys** to view, copy, and regenerate your account access keys. The **Access Keys** blade also includes pre-configured connection strings using your primary and secondary keys that you can copy to use in your applications.
+[Azure ポータル](https://portal.azure.com)で、お使いのストレージ アカウントに移動し、**[すべての設定]**、**[アクセス キー]** の順にクリックすると、アカウントのアクセス キーを表示、コピー、再生成できます。また、**[アクセス キー]** ブレードには、コピーしてアプリケーションで使用できるプライマリ キーとセカンダリ キーを使用してあらかじめ構成された接続文字列も含まれています。
 
-#### <a name="regenerate-storage-access-keys"></a>Regenerate storage access keys
+#### ストレージ アクセス キーの再生成
 
-We recommend that you change the access keys to your storage account periodically to help keep your storage connections secure. Two access keys are assigned so that you can maintain connections to the storage account by using one access key while you regenerate the other access key.
+ストレージ接続のセキュリティを維持するために、ストレージ アカウントのアクセス キーを定期的に変更することをお勧めします。アクセス キーは 2 つ割り当てられるため、一方のアクセス キーでストレージ アカウントに接続したまま、もう一方のアクセス キーを再生成できます。
 
-> [AZURE.WARNING] Regenerating your access keys can affect services in Azure as well as your own applications that are dependent on the storage account. All clients that use the access key to access the storage account must be updated to use the new key.
+> [AZURE.WARNING] アクセス キーを再生成すると、そのストレージ アカウントに依存する Azure のサービスと独自のアプリケーションに影響する場合があります。アクセス キーを使用してストレージ アカウントにアクセスするすべてのクライアントを更新し、新しいキーが使用されるようにする必要があります。
 
-**Media services** - If you have media services that are dependent on your storage account, you must re-sync the access keys with your media service after you regenerate the keys.
+**メディア サービス** - ストレージ アカウントに依存するメディア サービスがある場合は、アクセス キーを再生成した後で、そのキーをメディア サービスと再同期する必要があります。
 
-**Applications** - If you have web applications or cloud services that use the storage account, you will lose the connections if you regenerate keys, unless you roll your keys.
+**アプリケーション** - ストレージ アカウントを使用する Web アプリケーションまたはクラウド サービスがある場合は、キーを切り替えない限り、キーを再生成すると接続が失われます。
 
-**Storage Explorers** - If you are using any [storage explorer applications](storage-explorers.md), you will probably need to update the storage key used by those applications.
+**ストレージ エクスプローラー** - いずれかの[ストレージ エクスプローラー アプリケーション](storage-explorers.md)を使用している場合は、通常、それらのアプリケーションで使用されるストレージ キーを更新する必要があります。
 
-Here is the process for rotating your storage access keys:
+次に、ストレージ アクセス キーの交換プロセスを示します。
 
-1. Update the connection strings in your application code to reference the secondary access key of the storage account.
+1. ストレージ アカウントのセカンダリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 
-2. Regenerate the primary access key for your storage account. On the **Access Keys** blade, click **Regenerate Key1**, and then click **Yes** to confirm that you want to generate a new key.
+2. ストレージ アカウントのプライマリ アクセス キーを再生成します。**[アクセス キー]** ブレードで、**[Key1 の再生成]** をクリックし、確認画面で **[はい]** をクリックして新しいキーを生成します。
 
-3. Update the connection strings in your code to reference the new primary access key.
+3. 新しいプライマリ アクセス キーを参照するようにアプリケーション コードの接続文字列を更新します。
 
-4. Regenerate the secondary access key in the same manner.
+4. 同様に、セカンダリ アクセス キーを再生成します。
 
-## <a name="delete-a-storage-account"></a>Delete a storage account
+## ストレージ アカウントの削除
 
-To remove a storage account that you are no longer using, navigate to the storage account in the [Azure portal](https://portal.azure.com), and click **Delete**. Deleting a storage account deletes the entire account, including all data in the account.
+使わなくなったストレージ アカウントを削除するには、[Azure ポータル](https://portal.azure.com)でストレージ アカウントに移動し、**[削除]** をクリックします。ストレージ アカウントを削除すると、アカウント内のすべてのデータを含む、アカウント全体が削除されます。
 
-> [AZURE.WARNING] It's not possible to restore a deleted storage account or retrieve any of the content that it contained before deletion. Be sure to back up anything you want to save before you delete the account. This also holds true for any resources in the account—once you delete a blob, table, queue, or file, it is permanently deleted.
+> [AZURE.WARNING] 削除したストレージ アカウントを復元することも、削除前にアカウントに含まれていたコンテンツを取得することもできません。アカウントを削除する前に、保存する必要のあるデータを必ずバックアップしてください。これはアカウントのどのリソースにも当てはまります。BLOB、テーブル、キュー、またはファイルを削除すると、完全に削除されます。
 
-To delete a storage account that is associated with an Azure virtual machine, you must first ensure that any virtual machine disks have been deleted. If you do not first delete your virtual machine disks, then when you attempt to delete your storage account, you will see an error message similar to:
+Azure 仮想マシンに関連付けられているストレージ アカウントを削除するには、最初にすべての仮想マシン ディスクが削除されていることを確認する必要があります。最初に仮想マシン ディスクを削除しないと、ストレージ アカウントを削除しようとしたときに、次のようなエラー メッセージが表示されます。
 
     Failed to delete storage account <vm-storage-account-name>. Unable to delete storage account <vm-storage-account-name>: 'Storage account <vm-storage-account-name> has some active image(s) and/or disk(s). Ensure these image(s) and/or disk(s) are removed before deleting this storage account.'.
 
-If the storage account uses the Classic deployment model, you can remove the virtual machine disk by following these steps in the [Azure portal](https://manage.windowsazure.com):
+ストレージ アカウントでクラシック デプロイメント モデルが使用されている場合は、[Azure ポータル](https://manage.windowsazure.com)で以下の手順を実行して、仮想マシン ディスクを削除することができます。
 
-1. Navigate to the [classic Azure portal](https://manage.windowsazure.com).
-2. Navigate to the Virtual Machines tab.
-3. Click the Disks tab.
-4. Select your data disk, then click Delete Disk.
-5. To delete disk images, navigate to the Images tab and delete any images that are stored in the account.
+1. [クラシック Azure ポータル](https://manage.windowsazure.com)に移動します。
+2. [Virtual Machines] タブに移動します。
+3. [ディスク] タブをクリックします。
+4. データ ディスクを選択し、[ディスクの削除] をクリックします。
+5. ディスク イメージを削除するには、[イメージ] タブに移動し、アカウントに保存されているイメージを削除します。
 
-For more information, see the [Azure Virtual Machine documentation](http://azure.microsoft.com/documentation/services/virtual-machines/).
+詳細については、[Azure Virtual Machines のドキュメント](http://azure.microsoft.com/documentation/services/virtual-machines/)を参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Azure Blob Storage: Cool and Hot tiers](storage-blob-storage-tiers.md)
-- [Azure Storage replication](storage-redundancy.md)
-- [Configure Azure Storage Connection Strings](storage-configure-connection-string.md)
-- [Transfer data with the AzCopy Command-Line Utility](storage-use-azcopy.md)
-- Visit the [Azure Storage Team Blog](http://blogs.msdn.com/b/windowsazurestorage/).
+- [Azure Blob Storage: クール層とホット層](storage-blob-storage-tiers.md)
+- [Azure Storage のレプリケーション](storage-redundancy.md)
+- [Azure Storage の接続文字列を構成する](storage-configure-connection-string.md)
+- [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
+- [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

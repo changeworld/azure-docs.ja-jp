@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Accessing publisher support for the Azure Marketplace | Microsoft Azure"
-   description="How to access and submit publisher support requests for the Azure Marketplace"
+   pageTitle="Azure Marketplace の発行元サポートへのアクセス | Microsoft Azure"
+   description="Azure Marketplace に対する発行元サポート要求へのアクセス方法と送信方法"
    services="marketplace-publishing"
    documentationCenter="na"
    authors="v-jeana"
@@ -17,76 +17,75 @@
    ms.author="v-jeana; hascipio"/>
 
 
+# Azure Marketplace の発行元サポートへのアクセス
 
-# <a name="accessing-publisher-support-for-the-azure-marketplace"></a>Accessing publisher support for the Azure Marketplace
+マイクロソフトでは、さまざまな製品やサービスについてサポートを提供します。適切でタイムリーな回答を得るには、お問い合わせを送る正しいサポート チームを見つけることが重要です。次のシナリオを検討して、お問い合わせを適切なチームに送るのに役立ててください。
 
-Microsoft provides support for a wide variety of products and services. Ensuring that your query finds the right support team is important to ensure an appropriate and timely response. Please consider the following scenarios, which should help you route your query to the appropriate team:
+- Azure Marketplace の発行元であり、まだ VM の開発中である場合は、Microsoft のオンボード チームまたはコンピューティング チームに連絡する必要があります。
 
-- If you are a publisher in the Azure Marketplace and are still developing your VM, you should engage with your Microsoft onboarding or compute teams.
+- Marketplace の発行元であり、お客様から質問を受けた場合は、お客様に https://portal.azure.com/ のサポート リンクからサポートを依頼するように伝えてください。
 
-- If you are a publisher in the Marketplace and have a question from a customer, please tell your customer to request support via the support links at https://portal.azure.com/.
+- Marketplace の発行元であり、アプリケーションまたはサービスに関する質問がある場合は、以下を参照してください。
 
-- If you are a publisher in the Marketplace and have a question relating to your app or service, continue reading below.
+この記事では、次の操作方法について説明します。
 
-This article will show you how to:
+- Microsoft アカウントにサインインする。
+- 発行元のサポート ページに案内する。
+- 問題の種類とカテゴリを選択する。
+- サポートを依頼する。
+- 連絡先情報を提供する。
+- 問題について説明する。
 
-- Sign in to your Microsoft account.
-- Navigate to the publisher support pages.
-- Select the problem type and category.
-- Request support.
-- Provide contact information.
-- Describe the problem.
+## 1\.Microsoft アカウントへのサインイン
 
-## <a name="1.-sign-in-to-your-microsoft-account"></a>1. Sign in to your Microsoft account
+https://publish.windowsazure.com/ に移動し、Microsoft アカウントの資格情報でサインインします。
 
-Navigate to https://publish.windowsazure.com/ and sign in with your Microsoft account credentials.
+  ![サインイン画面][1]
 
-  ![Sign-in screen][1]
+## 2\.発行元のサポート ページへの案内
 
-## <a name="2.-navigate-to-the-publisher-support-pages"></a>2. Navigate to the publisher support pages
+右上のメニューから、**[サポートの要求]** を選択します。
 
-From the upper-right menu, select **Get Support**.
+  ![サポートを受ける][2]
 
-  ![Get support][2]
+## 3\.問題の種類とカテゴリの選択
 
-## <a name="3.-select-the-problem-type-and-category"></a>3. Select the problem type and category
+![問題の種類のカテゴリ][3]
 
-![Problem type & category][3]
+次の問題の種類を選択できます。
 
-Available problem types are as follows:
+  - **アカウント管理**
+  - **レポートおよびインサイト**
+  - **VM イメージの認定**
+  - **顧客の管理**
+  - **プランの管理**
+  - **支払**
+  - **デベロッパー センター**
+  - **その他**
 
-  - **Account Management**
-  - **Reports and Insights**
-  - **VM Image Certification**
-  - **Managing Customers**
-  - **Managing Offers**
-  - **Payouts**
-  - **Developer Center**
-  - **Other**
+## 4\.サポートの要求
 
-## <a name="4.-request-support"></a>4. Request support
+問題の種類とカテゴリを選択したら、**[要求の開始]** ボタンをクリックします。
 
-After you select the problem type and category, click the **Start request** button.
+![サポートの開始][4]
 
-![Start support][4]
+## 5\.連絡先情報の提供と問題の説明
 
-## <a name="5.-provide-contact-information-and-describe-the-problem"></a>5. Provide contact information and describe the problem
+問題についてできる限り詳細に説明し、問題の解決に役立つ可能性のあるすべてのファイル (スクリーン ショット、ネットワークのトレースなど) を提供します。
 
-Describe the problem as fully as you can, and provide any files (screenshots, network traces, etc.) that may be helpful in solving your issue.
+![問題の説明][5]
 
-![Describe problem][5]
+## 6\.送信の確認
 
-## <a name="6.-submission-confirmation"></a>6. Submission confirmation
+送信した問題は 24 時間以内に受信確認が行われ、問題に優先順位と重大度が割り当てられます。サービス レベル アグリーメントの応答時間に従って、サポート エンジニアの専門チームが解決を支援します。
 
-Once you have submitted your issue, we will acknowledge receipt within 24 hours and assign your issue a priority and severity. Our dedicated team of support engineers will assist with its resolution according to our Service Level Agreement response times.
+![確認][6]
++ 問題についてチームに確認することがある場合は、すべてのやり取りに確認番号を使用してください。
++ また、問題に関する進捗はいつでも確認できます。
 
-![Confirmation][6]
-+ If you need to talk to us about your issue, use the confirmation number in all correspondence.
-+ You can view progress on your issue at any time.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
-
-To learn how to resolve specific support issues, see [Troubleshooting common issues on the Azure Marketplace](marketplace-publishing-support-common-issues.md).
+サポートを必要とする個々の問題を解決する方法を確認するには、「[Troubleshooting common issues on the Azure Marketplace (Azure Marketplace での一般的な問題のトラブルシューティング)](marketplace-publishing-support-common-issues.md)」を参照してください。
 
 [1]: ./media/marketplace-publishing-get-publisher-support/step1.png
 [2]: ./media/marketplace-publishing-get-publisher-support/step2.png
@@ -95,8 +94,4 @@ To learn how to resolve specific support issues, see [Troubleshooting common iss
 [5]: ./media/marketplace-publishing-get-publisher-support/step5.png
 [6]: ./media/marketplace-publishing-get-publisher-support/step6.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

@@ -1,12 +1,9 @@
-An Azure load balancer is a Layer-4 (TCP, UDP) load balancer. The load balancer provides high availability by distributing incoming traffic among healthy service instances in cloud services or virtual machines in a load balancer set. Azure Load Balancer can also present those services on multiple ports, multiple IP addresses, or both.
+Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
-You can configure a load balancer to:
+ロード バランサーは次の目的で構成できます。
 
-* Load balance incoming Internet traffic to virtual machines (VMs). We refer to a load balancer in this scenario as an [Internet-facing load balancer](../articles/load-balancer/load-balancer-internet-overview.md).
-* Load balance traffic between VMs in a virtual network (VNet), between VMs in cloud services, or between on-premises computers and VMs in a cross-premises virtual network. We refer to a load balancer in this scenario as an [internal load balancer (ILB)](../articles/load-balancer/load-balancer-internal-overview.md).
-* Forward external traffic to a specific VM instance.
+* 仮想マシン (VM) への着信インターネット トラフィックを負荷分散します。このシナリオのロード バランサーを、[インターネット接続ロード バランサー](../articles/load-balancer/load-balancer-internet-overview.md)と呼びます。
+* 仮想ネットワーク (VNet) 内の VM 間、クラウド サービス内の VM 間、またはクロスプレミスの仮想ネットワーク内のオンプレミス コンピューターと VM 間でトラフィックを負荷分散します。このシナリオのロード バランサーを、[内部ロード バランサー (ILB)](../articles/load-balancer/load-balancer-internal-overview.md) と呼びます。
+* 外部トラフィックを特定の VM インスタンスに転送します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

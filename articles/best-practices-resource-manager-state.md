@@ -1,36 +1,35 @@
 <properties
-    pageTitle="Handling State in Resource Manager Templates | Microsoft Azure"
-    description="Shows recommended approaches for using complex objects to share state data with Azure Resource Manager templates and linked templates"
-    services="azure-resource-manager"
-    documentationCenter=""
-    authors="tfitzmac"
-    manager="timlt"
-    editor="tysonn"/>
+	pageTitle="Resource Manager テンプレートでの状態の処理 | Microsoft Azure"
+	description="複合オブジェクトを使用して Azure リソース マネージャー テンプレートやリンクされたテンプレートと状態データを共有する推奨方法を示します。"
+	services="azure-resource-manager"
+	documentationCenter=""
+	authors="tfitzmac"
+	manager="timlt"
+	editor="tysonn"/>
 
 <tags
-    ms.service="azure-resource-manager"
-    ms.workload="multiple"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/12/2016"
-    ms.author="tomfitz"/>
+	ms.service="azure-resource-manager"
+	ms.workload="multiple"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
+	ms.author="tomfitz"/>
+
+# Azure リソース マネージャーのテンプレートでの状態の共有
+
+このトピックでは、テンプレート内で状態を管理して共有するためのベスト プラクティスを説明します。このトピックで使用するパラメーターと変数は、デプロイ要件を適切に整理するために定義できる種類のオブジェクトの例を示しています。これらの例から、使用環境で意味のあるプロパティ値を使用する独自のオブジェクトを実装できます。
+
+このトピックは大型のホワイト ペーパーの一部です。ペーパーの完全版を参照するには、[World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf) をダウンロードしてください。
 
 
-# <a name="sharing-state-in-azure-resource-manager-templates"></a>Sharing state in Azure Resource Manager templates
+## 標準の構成設定を指定する
 
-This topic shows best practices for managing and sharing state within templates. The parameters and variables shown in this topic are examples of the type of objects you can define to conveniently organize your deployment requirements. From these examples, you can implement your own objects with property values that make sense for your environment.
+高い柔軟性と多様性に対応したテンプレートというのは、決して一般的ではありません。一般的なパターンはむしろ既製の構成を選べるようにすることであり、事実、T シャツのような標準的なサイズ区分 (サンドボックス、S、M、L など) が多く使われています。コミュニティ エディション、エンタープライズ エディションなど製品の提供形態も、T シャツのサイズと同様の区分といえます。また、MapReduce、NoSQL など、テクノロジのワークロードに基づく構成で大中小を決める場合もあります。
 
-This topic is part of a larger whitepaper. To read the full paper, download [World Class ARM Templates Considerations and Proven Practices](http://download.microsoft.com/download/8/E/1/8E1DBEFA-CECE-4DC9-A813-93520A5D7CFE/World Class ARM Templates - Considerations and Proven Practices.pdf).
+複合オブジェクトを使用すると、データのコレクションを格納する変数 ("プロパティ バッグ" と呼ばれます) を作成し、そのデータを使用して、テンプレートでのリソースの宣言をしやすくすることができます。このアプローチの特徴は、さまざまなサイズの構成を顧客向けにあらかじめ用意しておき、良質な既製の構成を提供できることです。既製の構成が用意されていなければ、エンド カスタマー自身がクラスターの規模を決め、プラットフォーム リソースの制約を加味しながら、ストレージ アカウントや各種リソースの分割サイズを計算しなければなりません (クラスター サイズとリソースの制約のため)。顧客の利便性を高めることとは別に、既製の構成の数は少ない方がサポートしやすく、密集度も高めやすくなります。
 
-
-## <a name="provide-standard-configuration-settings"></a>Provide standard configuration settings
-
-Rather than offer a template that provides total flexibility and countless variations, a common pattern is to provide the ability to select known configurations — in effect, standard t-shirt sizes such as sandbox, small, medium, and large. Other examples of t-shirt sizes are product offerings, such as community edition or enterprise edition. In other cases, it may be workload specific configurations of a technology – such as map reduce or no sql.
-
-With complex objects, you can create variables that contain collections of data, sometimes known as "property bags" and use that data to drive the resource declaration in your template. This approach provides good, known configurations of varying sizes that are preconfigured for customers. Without known configurations, end customers must determine cluster sizing on their own, factor in platform resource constraints, and do math to identify the resulting partitioning of storage accounts and other resources (due to cluster size and resource constraints). In addition to making a better experience for the customer, a small number of known configurations is easier to support and can help you deliver a higher level of density.
-
-The following example shows how to define variables that contain complex objects for representing collections of data. The collections define values that are used for virtual machine size, network settings, operating system settings and availability settings.
+次の例は、データのコレクションを表す複合オブジェクトを含む変数を定義する方法を示します。コレクションは、仮想マシンのサイズ、ネットワークの設定、オペレーティング システムの設定、および可用性の設定に使用される値を定義します。
 
     "variables": {
       "tshirtSize": "[variables(concat('tshirtSize', parameters('tshirtSize')))]",
@@ -109,9 +108,9 @@ The following example shows how to define variables that contain complex objects
       }
     }
 
-Notice that the **tshirtSize** variable concatenates the t-shirt size you provided through a parameter (**Small**, **Medium**, **Large**) to the text **tshirtSize**. You will use this variable to retrieve the associated complex object variable for that t-shirt size.
+**tshirtSize** 変数は、パラメーター (**Small**、**Medium**、**Large**) で指定した T シャツのサイズを **tshirtSize** のテキストに連結することに注意してください。この変数を使用して、その T シャツ サイズの関連する複合オブジェクト変数を取得します。
 
-You can then reference these variables later in the template. The ability to reference named-variables and their properties simplifies the template syntax, and makes it easy to understand context. The following example defines a resource to deploy by using the objects shown above to set values. For example, note that the VM size is set by retrieving the value for `variables('tshirtSize').vmSize` while the value for the disk size is retrieved from `variables('tshirtSize').diskSize`. In addition, the URI for a linked template is set with the value for `variables('tshirtSize').vmTemplate`.
+テンプレートで、後でこれらの変数を参照できます。名前付きの変数とそのプロパティを参照できると、テンプレートの構文を簡略化し、コンテキストがわかりやすくなります。次の例では、上記のオブジェクトを使用して値を設定することで、デプロイするリソースを定義します。たとえば、VM のサイズを設定するために `variables('tshirtSize').vmSize` の値を取得する一方、ディスクのサイズの値を `variables('tshirtSize').diskSize` から取得しています。さらに、リンクされたテンプレートの URI を `variables('tshirtSize').vmTemplate` の値と共に設定しています。
 
     "name": "master-node",
     "type": "Microsoft.Resources/deployments",
@@ -166,24 +165,24 @@ You can then reference these variables later in the template. The ability to ref
       }
     }
 
-## <a name="pass-state-to-a-template"></a>Pass state to a template
+## 状態をテンプレートに渡す
 
-You share state into a template through parameters that you provide directly during deployment.
+デプロイ中に直接指定するパラメーターを使用して、状態をテンプレートに共有します。
 
-The following table lists commonly-used parameters in templates.
+次の表では、テンプレートで一般的に使用されるパラメーターを一覧にしています。
 
-Name | Value | Description
+名前 | 値 | 説明
 ---- | ----- | -----------
-location    | String from a constrained list of Azure regions   | The location where the resources will be deployed.
-storageAccountNamePrefix    | String    | Unique DNS name for the Storage Account where the VM's disks will be placed
-domainName  | String    | Domain name of the publicly accessible jumpbox VM in the format: **{domainName}.{location}.cloudapp.com** For example: **mydomainname.westus.cloudapp.azure.com**
-adminUsername   | String    | Username for the VMs
-adminPassword   | String    | Password for the VMs
-tshirtSize  | String from a constrained list of offered t-shirt sizes   | The named scale unit size to provision. For example, "Small", "Medium", "Large"
-virtualNetworkName  | String    | Name of the virtual network that the consumer wants to use.
-enableJumpbox   | String from a constrained list (enabled/disabled) | Parameter that identifies whether to enable a jumpbox for the environment. Values: "enabled", "disabled"
+location | Azure リージョンの制約付き一覧の文字列 | リソースがデプロイされる場所です。
+storageAccountNamePrefix | String | VM のディスクが配置されるストレージ アカウントの一意の DNS 名
+domainName | String | パブリックにアクセスできる jumpbox VM のドメイン名。形式は次のとおりです。**{domainName}.{location}.cloudapp.com**。例: **mydomainname.westus.cloudapp.azure.com**
+adminUsername | String | VM のユーザー名
+adminPassword | String | VM のパスワード
+tshirtSize | 提供される T シャツ サイズの制約付き一覧の文字列 | プロビジョニングする名前付きのスケール ユニットのサイズ。たとえば、"Small"、"Medium"、"Large"
+virtualNetworkName | String | コンシューマーが使用する仮想ネットワークの名前。
+enableJumpbox | 制約付き一覧の文字列 (enabled/disabled) | 環境の jumpbox を有効にするかどうかを識別するパラメーター。値: "enabled"、"disabled"
 
-The **tshirtSize** parameter used in the previous section is defined as:
+前のセクションで使用した **tshirtSize** パラメータは、次のように定義されます。
 
     "parameters": {
       "tshirtSize": {
@@ -201,17 +200,17 @@ The **tshirtSize** parameter used in the previous section is defined as:
     }
 
 
-## <a name="pass-state-to-linked-templates"></a>Pass state to linked templates
+## リンクされたテンプレートに状態を渡す
 
-When connecting to linked templates, you will often use a mix of static and generated variables.
+リンクされたテンプレートへの接続時には、多くの場合、静的変数と生成された変数を組み合わせて使用します。
 
-### <a name="static-variables"></a>Static variables
+### 静的変数
 
-Static variables are often used to provide base values, such as URLs, that are used throughout a template.
+静的変数は、URL など、基本の値を指定するためによく使用されます。このような基本の値は、テンプレート全体で使用されます。
 
-In the template excerpt below, `templateBaseUrl` specifies the root location for the template in GitHub. The next line builds a new variable `sharedTemplateUrl` that concatenates the base URL with the known name of the shared resources template. Below that, a complex object variable is used to store a t-shirt size, where the base URL is concatenated to the known configuration template location and stored in the `vmTemplate` property.
+次のテンプレートの抜粋では、`templateBaseUrl` により、GitHub におけるテンプレートのルートの場所を指定します。その次の行では、基本 URL と共有リソース テンプレートの既知の名前を連結する新しい変数 `sharedTemplateUrl` を作成します。その下では、複合オブジェクト変数を使用して、T シャツ サイズを格納します。ここで、基本 URL が `vmTemplate` プロパティに格納されている既知の構成テンプレートの場所に連結されます。
 
-The benefit of this approach is that if the template location changes, you only need to change the static variable in one place which passes it throughout the linked templates.
+この方法の利点は、テンプレートの場所が変わった場合でも、1 か所で静的変数を変更するだけで済むという点です。その場所から、リンクされたテンプレート全体に静的変数が渡されます。
 
     "variables": {
       "templateBaseUrl": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/postgresql-on-ubuntu/",
@@ -232,19 +231,19 @@ The benefit of this approach is that if the template location changes, you only 
       }
     }
 
-### <a name="generated-variables"></a>Generated variables
+### 生成された変数
 
-In addition to static variables, a number of variables are generated dynamically. This section identifies some of the common types of generated variables.
+静的変数に加えて、いくつかの変数が動的に生成されます。このセクションでは、生成された変数の一般的な種類を明確にします。
 
-#### <a name="tshirtsize"></a>tshirtSize
+#### tshirtSize
 
-You are familiar with this generated variable from the examples above.
+上記の例で、生成されたこの変数について説明しています。
 
-#### <a name="networksettings"></a>networkSettings
+#### networkSettings
 
-In a capacity, capability, or end-to-end scoped solution template, the linked templates typically create resources that exist on a network. One straightforward approach is to use a complex object to store network settings and pass them to linked templates.
+容量、機能、またはエンド ツー エンドのスコープを持つソリューション テンプレートでは、リンクされたテンプレートは通常、ネットワーク上に存在するリソースを作成します。わかりやすい方法の 1 つとして、複合オブジェクトを使用して、ネットワークの設定を格納し、リンクされたテンプレートに渡すことが挙げられます。
 
-An example of communicating network settings can be seen below.
+以下にネットワーク設定をやり取りする例を示します。
 
     "networkSettings": {
       "vnetName": "[parameters('virtualNetworkName')]",
@@ -263,9 +262,9 @@ An example of communicating network settings can be seen below.
       }
     }
 
-#### <a name="availabilitysettings"></a>availabilitySettings
+#### availabilitySettings
 
-Resources created in linked templates are often placed in an availability set. In the following example, the availability set name is specified and also the fault domain and update domain count to use.
+リンクされたテンプレートで作成されたリソースは、多くの場合、可用性セットに配置されます。次の例では、可用性セット名と共に、使用する障害ドメインと更新ドメインの数も指定しています。
 
     "availabilitySetSettings": {
       "name": "pgsqlAvailabilitySet",
@@ -273,11 +272,11 @@ Resources created in linked templates are often placed in an availability set. I
       "udCount": 5
     }
 
-If you need multiple availability sets (for example, one for master nodes and another for data nodes), you can use a name as a prefix, specify multiple availability sets, or follow the model shown earlier for creating a variable for a specific t-shirt size.
+複数の可用性セット (たとえば、あるセットをマスター ノード用に、別のセットをデータ ノード用に使用) が必要な場合、名前をプレフィックスとして使用して、複数の可用性セットを指定するか、前に示した、特定の T シャツ サイズの変数を作成するモデルに従います。
 
-#### <a name="storagesettings"></a>storageSettings
+#### storageSettings
 
-Storage details are often shared with linked templates. In the example below, a *storageSettings* object provides details about the storage account and container names.
+多くの場合、ストレージの詳細は、リンクされたテンプレートと共有されます。次の例では、*storageSettings* オブジェクトは、ストレージ アカウント名とコンテナー名の詳細を提供します。
 
     "storageSettings": {
         "vhdStorageAccountName": "[parameters('storageAccountName')]",
@@ -285,11 +284,11 @@ Storage details are often shared with linked templates. In the example below, a 
         "destinationVhdsContainer": "[concat('https://', parameters('storageAccountName'), variables('vmStorageAccountDomain'), '/', variables('vmStorageAccountContainerName'), '/')]"
     }
 
-#### <a name="ossettings"></a>osSettings
+#### osSettings
 
-With linked templates, you may need to pass operating system settings to various nodes types across different known configuration types. A complex object is an easy way to store and share operating system information and also makes it easier to support multiple operating system choices for deployment.
+リンクされたテンプレートを使用すると、場合によっては、異なる既知の構成の種類における、さまざまなノードの種類に対して、オペレーティング システムの設定を渡す必要があります。複合オブジェクトを使用すると、オペレーティング システムの情報を簡単に格納し、共有できます。また、複数のオペレーティング システムを選択してデプロイすることも容易になります。
 
-The following example shows an object for *osSettings*:
+次の例では、*osSettings* のオブジェクトを示しています。
 
     "osSettings": {
       "imageReference": {
@@ -300,9 +299,9 @@ The following example shows an object for *osSettings*:
       }
     }
 
-#### <a name="machinesettings"></a>machineSettings
+#### machineSettings
 
-A generated variable, *machineSettings* is a complex object containing a mix of core variables for creating a new VM: administrator user name and password, a prefix for the VM names, and an operating system image reference as shown below:
+生成された変数である *machineSettings* は、新しい VM を作成するための中核となる変数を組み合わせた複合オブジェクトです。以下のように、管理者のユーザー名とパスワード、VM 名のプレフィックス、オペレーティング システム イメージの参照が含まれています。
 
     "machineSettings": {
         "adminUsername": "[parameters('adminUsername')]",
@@ -316,19 +315,19 @@ A generated variable, *machineSettings* is a complex object containing a mix of 
         }
     },
 
-Note that *osImageReference* retrieves the values from the *osSettings* variable defined in the main template. That means you can easily change the operating system for a VM—entirely or based on the preference of a template consumer.
+*osImageReference* が、メイン テンプレートで定義された *osSettings* 変数から値を取得することに注意してください。つまり、VM のオペレーティング システムを簡単に変更できます。全体的に、またはテンプレートのコンシューマーの設定に基づいて変更できます。
 
-#### <a name="vmscripts"></a>vmScripts
+#### vmScripts
 
-The *vmScripts* object contains details about the scripts to download and execute on a VM instance, including outside and inside references. Outside references include the infrastructure. Inside references include the installed software installed and configuration.
+*vmScripts* オブジェクトには、VM インスタンスでダウンロードして実行するスクリプトの詳細が含まれています。これには、外部の参照や内部の参照などが含まれています。外部の参照には、インフラストラクチャが含まれます。内部の参照には、インストールされているソフトウェアと構成が含まれます。
 
-You use the *scriptsToDownload* property to list the scripts to download to the VM.
+*scriptsToDownload* プロパティを使用して、VM にダウンロードするスクリプトを一覧表示します。
 
-As the example below shows, this object also contains references to command-line arguments for different types of actions. These actions include executing the default installation for each individual node, an installation that runs after all nodes are deployed, and any additional scripts that may be specific to a given template.
+次の例に示すように、このオブジェクトには、さまざまな種類のアクションで使用するコマンドライン引数への参照も含まれます。これらのアクションには、個別のノードに対する既定のインストールの実行、すべてのノードのデプロイ後に実行されるインストール、指定のテンプレートに固有のその他のスクリプトなどがあります。
 
-This example is from a template used to deploy MongoDB, which requires an arbiter to deliver high availability. The *arbiterNodeInstallCommand* has been added to *vmScripts* to install the arbiter.
+この例は、MongoDB をデプロイするのに使用するテンプレートの一部です。この MongoDB には、高可用性を実現するためにアービターが必要です。アービターをインストールするために、*arbiterNodeInstallCommand* が *vmScripts* に追加されています。
 
-The variables section is where you’ll find the variables that define the specific text to execute the script with the proper values.
+変数のセクションには特定のテキストを定義する変数があり、適切な値を指定してスクリプトを実行します。
 
     "vmScripts": {
         "scriptsToDownload": [
@@ -341,11 +340,11 @@ The variables section is where you’ll find the variables that define the speci
     },
 
 
-## <a name="return-state-from-a-template"></a>Return state from a template
+## テンプレートから状態を返す
 
-Not only can you pass data into a template, you can also share data back to the calling template. In the **outputs** section of a linked template, you can provide key/value pairs that can be consumed by the source template.
+テンプレートにデータを渡すだけでなく、呼び出し元のテンプレートにデータを返して共有することもできます。リンクされているテンプレートの **outputs** セクションで、ソース テンプレートで使用可能なキー/値ペアを指定できます。
 
-The following example shows how to pass the private IP address generated in a linked template.
+次の例は、リンクされているテンプレートで生成されたプライベート IP アドレスを渡す方法を示します。
 
     "outputs": {
         "masterip": {
@@ -354,11 +353,11 @@ The following example shows how to pass the private IP address generated in a li
          }
     }
 
-Within the main template, you can use that data with the following syntax:
+メイン テンプレート内では、次の構文でこのデータを使用できます。
 
     "[reference('master-node').outputs.masterip.value]"
 
-You can use this expression in either the outputs section or the resources section of the main template. You cannot use the expression in the variables section because it relies on the runtime state. To return this value from the main template, use:
+この式は、出力のセクションまたはメイン テンプレートの resources セクションで使用することができます。この式は実行時の状態に依存するため、変数のセクションでは使用できません。メイン テンプレートからこの値を返すには、次のように使用します。
 
     "outputs": { 
       "masterIpAddress": {
@@ -366,11 +365,11 @@ You can use this expression in either the outputs section or the resources secti
         "type": "string"
       }
      
-For an example of using the outputs section of a linked template to return data disks for a virtual machine, see [Creating multiple data disks for a Virtual Machine](resource-group-create-multiple.md#creating-multiple-data-disks-for-a-virtual-machine).
+リンクされたテンプレートの出力のセクションを使用して仮想マシンのデータ ディスクを取得する例については、「[仮想マシン用の複数のデータ ディスクの作成](resource-group-create-multiple.md#creating-multiple-data-disks-for-a-virtual-machine)」を参照してください。
 
-## <a name="define-authentication-settings-for-virtual-machine"></a>Define authentication settings for virtual machine
+## 仮想マシンの認証設定を定義する
 
-You can use the same pattern shown above for configuration settings to specify the authentication settings for a virtual machine. You create a parameter for passing in the type of authentication.
+上記の構成設定と同様のパターンで、仮想マシンの認証設定を指定することができます。認証の種類を渡すためのパラメーターを作成します。
 
     "parameters": {
       "authenticationType": {
@@ -386,7 +385,7 @@ You can use the same pattern shown above for configuration settings to specify t
       }
     }
 
-You add variables for the different authentication types, and a variable to store which type is used for this deployment based on the value of the parameter.
+さまざまな認証の種類の変数と、パラメーターの値に基づいてこのデプロイメントで使用する種類を格納するための変数を追加します。
 
     "variables": {
       "osProfile": "[variables(concat('osProfile', parameters('authenticationType')))]",
@@ -414,7 +413,7 @@ You add variables for the different authentication types, and a variable to stor
       }
     }
 
-When defining the virtual machine, you set the **osProfile** to the variable you created.
+仮想マシンを定義する場合、作成した変数に **osProfile** を設定します。
 
     {
       "type": "Microsoft.Compute/virtualMachines",
@@ -423,13 +422,8 @@ When defining the virtual machine, you set the **osProfile** to the variable you
     }
 
 
-## <a name="next-steps"></a>Next steps
-- To learn about the sections of the template, see [Authoring Azure Resource Manager Templates](resource-group-authoring-templates.md)
-- To see the functions that are available within a template, see [Azure Resource Manager Template Functions](resource-group-template-functions.md)
+## 次のステップ
+- テンプレートのセクションについては、「[Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
+- テンプレートで使用できる関数については、「[Azure Resource Manager のテンプレートの関数](resource-group-template-functions.md)」を参照してください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

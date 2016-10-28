@@ -1,34 +1,32 @@
 <!--author=alkohli last changed: 9/17/15-->
 
-### <a name="to-take-a-backup"></a>To take a backup
+### バックアップを作成するには
 
-1. On the device **Quick Start** page, click **Add a backup policy**. This will start the Add Backup Policy wizard. 
+1. デバイスの **[クイック スタート]** ページで、**[バックアップ ポリシーの追加]** をクリックします。バックアップ ポリシーの追加ウィザードが開きます。 
 
-2. On the **Define your backup policy** page:
-  1. Supply a name that contains between 3 and 150 characters for your backup policy.
-  2. Select the volumes to be backed up. If you select more than one volume, these volumes will be grouped together to create a crash-consistent backup.
-  3. Click the arrow icon ![arrow-icon](./media/storsimple-take-backup/HCS_ArrowIcon-include.png). 
+2. **[バックアップ ポリシーの定義]** ページで次の操作を行います。
+  1. バックアップ ポリシーに 3 ～ 150 文字の名前を指定します。
+  2. バックアップするボリュームを選択します。複数のボリュームを選択した場合、ボリュームはグループ化され、クラッシュ整合バックアップが作成されます。
+  3. 矢印アイコン ![矢印アイコン](./media/storsimple-take-backup/HCS_ArrowIcon-include.png) をクリックします。 
   
-    ![Add-backup-policy](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard1M-include.png)
+    ![バックアップ ポリシーの追加](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard1M-include.png)
 
-3. On the **Define a schedule** page:
-  1. Select the type of backup from the drop-down list. For faster restores, select **Local Snapshot**. For data resiliency, select **Cloud Snapshot**.
-  2. Specify the backup frequency in minutes, hours, days, or weeks.
-  3. Select a retention time. The retention choices depend on the backup frequency. For example, for a daily policy, the retention can be specified in weeks, whereas retention for a monthly policy is in months.
-  4. Select the starting time and date for the backup policy.
-  5. Select the **Enable** check box to enable the backup policy. 
-  6. Click the check icon ![check-icon](./media/storsimple-take-backup/HCS_CheckIcon-include.png) to save the policy.
+3. **[スケジュールの定義]** ページで次の操作を行います。
+  1. ドロップダウン リストからバックアップの種類を選択します。短時間で復元するには、**[ローカル スナップショット]** を選択します。データの回復性を求める場合は、**[クラウド スナップショット]** を選択します。
+  2. バックアップの頻度を分、時間、日、または週で指定します。
+  3. 保存期間を選択します。保存期間の選択肢はバックアップの頻度によって異なります。たとえば、日次のポリシーでは保存期間を日単位で指定できるのに対して、月次のポリシーでは保存期間は月単位で指定します。
+  4. バックアップ ポリシーの開始日時を選択します。
+  5. **[有効化]** チェック ボックスをオンにして、バックアップ ポリシーを有効にします。 
+  6. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-take-backup/HCS_CheckIcon-include.png) をクリックして、ポリシーを保存します。
 
-    ![Add-backup-policy](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard2M-include.png)
+    ![バックアップ ポリシーの追加](./media/storsimple-take-backup/HCS_AddBackupPolicyWizard2M-include.png)
  
-     You now have a backup policy that will create scheduled backups of your volume data.
+     これで、スケジュールに従ってボリューム データをバックアップするバックアップ ポリシーが作成されました。
 
-You have completed the device configuration. 
+デバイスの構成が完了しました。
 
-![Video available](./media/storsimple-take-backup/Video_icon.png) **Video available**
+![ビデオ](./media/storsimple-take-backup/Video_icon.png) **ビデオ**
 
-To watch a video that demonstrates how to take a StorSimple backup, click [here](https://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/).
+StorSimple のバックアップ方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/take-a-storsimple-backup/)を参照してください。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0128_2016-->

@@ -1,10 +1,10 @@
 <properties
- pageTitle="Scheduler High-Availability and Reliability"
- description="Scheduler High-Availability and Reliability"
+ pageTitle="Scheduler の高可用性と信頼性"
+ description="Scheduler の高可用性と信頼性"
  services="scheduler"
  documentationCenter=".NET"
- authors="derek1ee"
- manager="kevinlam1"
+ authors="krisragh"
+ manager="dwrede"
  editor=""/>
 <tags
  ms.service="scheduler"
@@ -13,81 +13,76 @@
  ms.devlang="dotnet"
  ms.topic="article"
  ms.date="08/16/2016"
- ms.author="deli"/>
+ ms.author="krisragh"/>
 
 
+# Scheduler の高可用性と信頼性
 
-# <a name="scheduler-high-availability-and-reliability"></a>Scheduler High-Availability and Reliability
+## Azure Scheduler の高可用性
 
-## <a name="azure-scheduler-high-availability"></a>Azure Scheduler High-Availability
+Azure プラットフォーム サービスのコアである Azure Scheduler は、高可用性に加え、geo 冗長サービスのデプロイと geo リージョン ジョブ レプリケーションの両方の機能を提供します。
 
-As a core Azure platform service, Azure Scheduler is highly available and features both geo-redundant service deployment and geo-regional job replication.
+### geo 冗長サービスのデプロイ
 
-### <a name="geo-redundant-service-deployment"></a>Geo-redundant service deployment
+Azure Scheduler は、現在 Azure が対応しているほとんどすべての geo リージョンで UI を介して利用できます。Azure Scheduler を使用できるリージョンの一覧については、[このページ](https://azure.microsoft.com/regions/#services)を参照してください。ホストされているリージョン内のデータ センターが使用不可と表示されている場合、Azure Scheduler のフェールオーバー機能により、他のデータ センターからそのサービスを利用できます。
 
-Azure Scheduler is available via the UI in almost every geo region that's in Azure today. The list of regions that Azure Scheduler is available in is [listed here](https://azure.microsoft.com/regions/#services). If a data center in a hosted region is rendered unavailable, the failover capabilities of Azure Scheduler are such that the service is available from another data center.
+### geo リージョンのジョブ レプリケーション
 
-### <a name="geo-regional-job-replication"></a>Geo-regional job replication
+Azure Scheduler のフロント エンドを管理要求のために利用できるほか、ジョブが geo レプリケートされます。1 つのリージョンに障害が発生すると、Azure Scheduler によってフェールオーバーが行われ、ペアの地理的リージョン内の別のデータ センターでジョブが確実に実行されます。
 
-Not only is the Azure Scheduler front-end available for management requests, but your own job is also geo-replicated. When there’s an outage in one region, Azure Scheduler fails over and ensures that the job is run from another data center in the paired geographic region.
-
-For example, if you’ve created a job in South Central US, Azure Scheduler automatically replicates that job in North Central US. When there’s a failure in South Central US, Azure Scheduler ensures that the job is run from North Central US. 
+たとえば、米国中南部でジョブを作成した場合は、Azure Scheduler は、このジョブを自動的に米国中北部にレプリケートします。Azure Scheduler では、米国中南部で障害が発生した場合、米国中北部でジョブが確実に実行されます。
 
 ![][1]
 
-As a result, Azure Scheduler ensures that your data stays within the same broader geographic region in case of an Azure failure. As a result, you need not duplicate your job just to add high availability – Azure Scheduler automatically provides high-availability capabilities for your jobs.
+このように、Azure に障害が発生した場合でも、Azure Scheduler により、データは同じより広域の地理的リージョン内に保持されます。そのため、高可用性を追加するためだけにジョブを複製する必要がなくなります。Azure Scheduler は、ジョブの高可用性機能を自動的に提供します。
 
-## <a name="azure-scheduler-reliability"></a>Azure Scheduler Reliability
+## Azure Scheduler の信頼性
 
-Azure Scheduler guarantees its own high-availability and takes a different approach to user-created jobs. For example, your job may invoke an HTTP endpoint that’s unavailable. Azure Scheduler nonetheless tries to execute your job successfully, by giving you alternative options to deal with failure. Azure Scheduler does this in two ways:
+Azure Scheduler では、独自の高可用性を保証し、ユーザーが作成したジョブに対して別のアプローチを採用しています。たとえば、使用できない HTTP エンドポイントをジョブが呼び出したとします。この場合、Azure Scheduler は、エラーを処理する別のオプションを提供して、ジョブを正常に実行しようと試みます。Azure Scheduler は、これを次の 2 つの方法で行います。
 
-### <a name="configurable-retry-policy-via-“retrypolicy”"></a>Configurable Retry Policy via “retryPolicy”
+### "retryPolicy" を使用する構成可能な再試行ポリシー
 
-Azure Scheduler allows you to configure a retry policy. By default, if a job fails, Scheduler tries the job again four more times, at 30-second intervals. You may re-configure this retry policy to be more aggressive (for example, ten times, at 30-second intervals) or looser (for example, two times, at daily intervals.)
+Azure Scheduler では、再試行ポリシーを構成することができます。ジョブが失敗した場合、Scheduler は、既定で 30 秒間隔でさらに 4 回ジョブの実行を試みます。この再試行ポリシーの構成を変更して、より積極的な設定 (たとえば、30 秒間隔で 10 回) にすることも、より緩い設定 (たとえば、1 日に 1 回ずつ 2 回) にすることもできます。
 
-As an example of when this may help, you may create a job that runs once a week and invokes an HTTP endpoint. If the HTTP endpoint is down for a few hours when your job runs, you may not want to wait one more week for the job to run again since even the default retry policy will fail. In such cases, you may reconfigure the standard retry policy to retry every three hours (for example) instead of every 30 seconds.
+この構成が役に立つ状況の例として、週に 1 回実行されて HTTP エンドポイントを呼び出すジョブを作成したとします。HTTP エンドポイントが数時間にわたってダウンしているときにこのジョブを実行したとします。既定の再試行ポリシーも失敗するこの状況で、ジョブをもう一度実行するためにさらに 1 週間待つことは避けたいでしょう。このような場合は、30 秒ごとではなく (たとえば) 3 時間ごとに再試行するように、標準の再試行ポリシーを再構成します。
 
-To learn how to configure a retry policy, refer to [retryPolicy](scheduler-concepts-terms.md#retrypolicy).
+再試行ポリシーを構成する方法については、「[retryPolicy](scheduler-concepts-terms.md#retrypolicy)」を参照してください。
 
-### <a name="alternate-endpoint-configurability-via-“erroraction”"></a>Alternate Endpoint Configurability via “errorAction”
+### "errorAction" を使用する別のエンドポイントの構成可能性
 
-If the target endpoint for your Azure Scheduler job remains unreachable, Azure Scheduler falls back to the alternate error-handling endpoint after following its retry policy. If an alternate error-handling endpoint is configured, Azure Scheduler invokes it. With an alternate endpoint, your own jobs are highly available in the face of failure.
+Azure Scheduler ジョブの対象のエンドポイントにアクセスできない状態が続く場合、Azure Scheduler は、再試行ポリシーに従った処理を行った後、代替エラー処理エンドポイントにフォールバックします。代替エラー処理エンドポイントが構成されている場合、Azure Scheduler はその代替エンドポイントを呼び出します。代替エンドポイントを用意することで、エラーが発生した場合でもジョブの高可用性が確保されます。
 
-As an example, in the diagram below, Azure Scheduler follows its retry policy to hit a New York web service. After the retries fail, it checks if there's an alternate. It then goes ahead and starts making requests to the alternate with the same retry policy.
+たとえば、次の図において、Azure Scheduler は、再試行ポリシーに従ってニューヨークの Web サービスにアクセスします。再試行が失敗した後、Azure Scheduler は、代替アクションがあるかどうかを確認します。代替アクションがあることを確認した Azure Scheduler は、同じ再試行ポリシーに基づいて代替サービスに対して要求の送信を開始します。
 
 ![][2]
 
-Note that the same retry policy applies to both the original action and the alternate error action. It’s also possible to have the alternate error action’s action type be different from the main action’s action type. For example, while the main action may be invoking an HTTP endpoint, the error action may instead be a storage queue, service bus queue, or service bus topic action that does error-logging.
+ここで、元のアクションと代替エラー アクションの両方に同じ再試行ポリシーが適用されることに注意してください。代替エラー アクションをメイン アクションとは異なる種類に設定することもできます。たとえば、メイン アクションで HTTP エンドポイントを呼び出す一方、エラー アクションでエラーのログ記録を行うストレージ キュー、サービス バス キュー、またはサービス バス トピック アクションを実行できます。
 
-To learn how to configure an alternate endpoint, refer to [errorAction](scheduler-concepts-terms.md#action-and-erroraction).
+代替エンドポイントを構成する方法については、「[errorAction](scheduler-concepts-terms.md#action-and-erroraction)」を参照してください。
 
-## <a name="see-also"></a>See Also
+## 関連項目
 
- [What is Scheduler?](scheduler-intro.md)
+ [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
 
- [Azure Scheduler concepts, terminology, and entity hierarchy](scheduler-concepts-terms.md)
+ [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
 
- [Get started using Scheduler in the Azure portal](scheduler-get-started-portal.md)
+ [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
 
- [Plans and billing in Azure Scheduler](scheduler-plans-billing.md)
+ [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
 
- [How to build complex schedules and advanced recurrence with Azure Scheduler](scheduler-advanced-complexity.md)
+ [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
 
- [Azure Scheduler REST API reference](https://msdn.microsoft.com/library/mt629143)
+ [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
 
- [Azure Scheduler PowerShell cmdlets reference](scheduler-powershell-reference.md)
+ [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
 
- [Azure Scheduler limits, defaults, and error codes](scheduler-limits-defaults-errors.md)
+ [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
 
- [Azure Scheduler outbound authentication](scheduler-outbound-authentication.md)
+ [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
 
 
 [1]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image1.png
 
 [2]: ./media/scheduler-high-availability-reliability/scheduler-high-availability-reliability-image2.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

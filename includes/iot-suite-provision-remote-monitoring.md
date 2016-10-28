@@ -1,34 +1,32 @@
-## <a name="provision-the-solution"></a>Provision the solution
+## ソリューションのプロビジョニング
 
-1.  Log on to [azureiotsuite.com][lnk-azureiotsuite] using your Azure account credentials, and click **+** to create a new solution.
+1.  Azure アカウント資格情報を使用して [azureiotsuite.com][lnk-azureiotsuite] にログオンし、**[+]** をクリックして新しいソリューションを作成します。
 
-2.  Click **Select** on the **Remote monitoring** tile.
+2.  **[リモート監視]** タイルで **[選択]** タイルを選択します。
 
-3.  Enter a **Solution name** for your remote monitoring preconfigured solution.
+3.  リモート監視の事前構成済みソリューションの **[ソリューション名]** を入力します。
 
-4.  Select the **Region** and **Subscription** you want to use to provision the solution.
+4.  このソリューションをプロビジョニングするために使用する **[リージョン]** と **[サブスクリプション]** を選択します。
 
-5.  Click **Create Solution** to begin the provisioning process. This typically takes several minutes to run.
+5.  **[ソリューションの作成]** をクリックして、プロビジョニング プロセスを開始します。通常、プロセスの実行までに数分かかります。
 
-### <a name="wait-for-the-provisioning-process-to-complete"></a>Wait for the provisioning process to complete
+### プロビジョニング プロセスが完了するまで待機します。
 
-1. Click on the tile for your solution with **Provisioning** status.
+1. **プロビジョニング**の状態を表示する、目的のソリューションのタイルをクリックします。
  
-2. Notice the **Provisioning states** as Azure services are deployed in your Azure subscription.
+2. Azure サービスが Azure サブスクリプションにデプロイされたら、**プロビジョニングの状態**を確認します。
 
-3. Once provisioning completes, the status changes to **Ready**.
+3. プロビジョニングが完了すると、状態が **[準備完了]** に変わります。
 
-4. Click on the tile and you'll see the details of your solution in the right-hand pane.
+4. タイルをクリックし、右側のウィンドウでソリューションの詳細を確認します。
 
-> [AZURE.NOTE] If you are encountering issues deploying the pre-configured solution, take a look at [Permissions on the azureiotsuite.com site][lnk-permissions] and the [FAQ][lnk-faq]. If the issues persist, please create a service ticket on the [portal][lnk-portal].
+> [AZURE.NOTE] 構成済みソリューションのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と [FAQ][lnk-faq] を参照してください。それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
 
-Are there details you'd expect to see that aren't listed for your solution? Give us feature suggestions on [User Voice](https://feedback.azure.com/forums/321918-azure-iot).
+ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)のページで機能に関する提案をお寄せください。
 
 [lnk-azureiotsuite]: https://www.azureiotsuite.com
 [lnk-permissions]: ../articles/iot-suite/iot-suite-permissions.md
 [lnk-portal]: http://portal.azure.com/
 [lnk-faq]: ../articles/iot-suite/iot-suite-faq.md
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

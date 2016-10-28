@@ -1,6 +1,6 @@
 <properties
-   pageTitle="MATLAB clusters on virtual machines | Microsoft Azure"
-   description="Use Microsoft Azure virtual machines to create MATLAB Distributed Computing Server clusters to run your compute-intensive parallel MATLAB workloads"
+   pageTitle="仮想マシン上の MATLAB クラスター |Microsoft Azure"
+   description="コンピューティング集中型の並列 MATLAB ワークロードを実行する MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="mscurrell"
@@ -16,79 +16,74 @@
    ms.date="05/09/2016"
    ms.author="markscu"/>
 
+# Azure VM での MATLAB Distributed Computing Server クラスターの作成 
 
-# <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Create MATLAB Distributed Computing Server clusters on Azure VMs 
+コンピューティング集中型の並列 MATLAB ワークロードを実行する 1 つ以上の MATLAB Distributed Computing Server クラスターを作成するには、Microsoft Azure Virtual Machines を使用します。VM に MATLAB Distributed Computing Server ソフトウェアをインストールして基本イメージとして使用し、Azure のクイック スタート テンプレートまたは Azure PowerShell スクリプト ([GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) から入手可能) を使用してクラスターをデプロイおよび管理します。デプロイ後には、クラスターに接続してワークロードを実行します。
 
-Use Microsoft Azure virtual machines to create one or more MATLAB Distributed Computing Server clusters to run your compute-intensive parallel MATLAB workloads. Install your MATLAB Distributed Computing Server software on a VM to use as a base image and use an Azure quickstart template or Azure PowerShell script (available on [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)) to deploy and manage the cluster. After deployment, connect to the cluster to run your workloads. 
+## MATLAB および MATLAB Distributed Computing Server について 
 
-## <a name="about-matlab-and-matlab-distributed-computing-server"></a>About MATLAB and MATLAB Distributed Computing Server 
-
-The [MATLAB](http://www.mathworks.com/products/matlab/) platform is optimized for solving engineering and scientific problems. MATLAB users with large-scale simulations and data processing tasks can use MathWorks parallel computing products to speed up their compute-intensive workloads by taking advantage of compute clusters and grid services. [Parallel Computing Toolbox](http://www.mathworks.com/products/parallel-computing/) lets MATLAB users parallelize applications and take advantage of multi-core processors, GPUs, and compute clusters. [MATLAB Distributed Computing Server](http://www.mathworks.com/products/distriben/) enables MATLAB users to utilize many computers in a compute cluster. 
-
-
-By using Azure virtual machines, you can create MATLAB Distributed Computing Server clusters that have all the same mechanisms available to submit parallel work as on-premises clusters, such as interactive jobs, batch jobs, independent tasks, and communicating tasks. Using Azure in conjunction with the MATLAB platform has many benefits compared to provisioning and using traditional on-premises hardware: a range of virtual machine sizes, creation of clusters on-demand so you pay only for the compute resources you use, and the ability to test models at scale.  
-
-## <a name="prerequisites"></a>Prerequisites
-
-* **Client computer** - You'll need a Windows-based client computer to communicate with Azure and the MATLAB Distributed Computing Server cluster after deployment. 
-
-* **Azure PowerShell** - See [How to install and configure Azure PowerShell](../powershell-install-configure.md) to install it on your client computer. 
-
-* **Azure subscription** - If you don't have a subscription, you can create a [free account](https://azure.microsoft.com/free/) in just a couple of minutes. For larger clusters, consider a pay-as-you-go subscription or other purchase options. 
-
-* **Cores quota** - You might need to increase the core quota to deploy a large cluster or more than one MATLAB Distributed Computing Server cluster. To increase a quota, [open an online customer support request](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) at no charge. 
-
-* **MATLAB, Parallel Computing Toolbox, and MATLAB Distributed Computing Server licenses** - The scripts assume that the [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) is used for all licenses.  
-
-* **MATLAB Distributed Computing Server software** - Will be installed on a VM that will be used as the base VM image for the cluster VMs. 
+[MATLAB](http://www.mathworks.com/products/matlab/) プラットフォームは、エンジニアリングおよび科学的な問題を解決するために最適化されています。大規模なシミュレーションおよびデータ処理タスクを実行する MATLAB ユーザーは、MathWorks の並列コンピューティング製品のコンピューティング クラスターおよびグリッド サービスを利用して、コンピューティング集中型のワークロードを高速化できます。MATLAB ユーザーは、[Parallel Computing Toolbox](http://www.mathworks.com/products/parallel-computing/) を使用し、アプリケーションを並列化し、マルチコア プロセッサ、GPU およびコンピューティング クラスターを利用できます。MATLAB ユーザーは、[MATLAB Distributed Computing Server](http://www.mathworks.com/products/distriben/) を使用し、コンピューティング クラスター内の多数のコンピューターを使用できます。
 
 
-## <a name="high-level-steps"></a>High level steps
+Azure の仮想マシンを使用すると、対話型のジョブ、バッチ ジョブ、独立したタスクおよび通信タスクなどの並列作業を送信するために使用できる、すべてが同じメカニズムを持つ MATLAB Distributed Computing Server クラスターをオンプレミス クラスターとして作成できます。Azure と MATLAB プラットフォームを組み合わせて使用した場合、従来のオンプレミス ハードウェアをプロビジョニングおよび使用する場合と比較して、さまざまな範囲の仮想マシン サイズ、使用するコンピューティング リソースの支払いのみを行うクラスターのオンデマンドでの作成、および大規模にモデルをテストする機能を利用できるなど多くの利点があります。
 
-To use Azure virtual machines for your MATLAB Distributed Computing Server clusters, the following high-level steps are required. Detailed instructions are in the documentation accompanying the quickstart template and scripts on [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster).
+## 前提条件
 
-1. **Create a base VM image**  
-    * Download and install MATLAB Distributed Computing Server software onto this VM. 
+* **クライアント コンピューター**: デプロイ後の Azure と MATLAB Distributed Computing Server クラスターとの通信に、Windows ベースのクライアント コンピューターが必要です。
 
-    >[AZURE.NOTE]This process can take a couple of hours, but you only have to do it once for each version of MATLAB you use.   
+* **Azure PowerShell**: クライアント コンピューターにインストールする方法については、「[Azure PowerShell のインストールおよび構成方法](../powershell-install-configure.md)」を参照してください。
+
+* **Azure サブスクリプション** - サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成することができます。大規模なクラスターでは、従量課金制のサブスクリプションまたはその他の購入オプションを検討してください。
+
+* **コア クォータ**: 大規模なクラスターまたは複数の MATLAB Distributed Computing Server クラスターをデプロイするには、コア クォータを増やす必要があります。クォータを増やすには、[オンライン カスタマー サポートに申請](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) (無料) してください。
+
+* **MATLAB の Parallel Computing Toolbox および MATLAB Distributed Computing Server ライセンス**: このスクリプトでは、すべてのライセンスで [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) が使用されていることを想定しています。
+
+* **MATLAB Distributed Computing Server ソフトウェア**: クラスター VM の基本 VM イメージとして使用される VM にインストールされます。
+
+
+## 手順の概要
+
+MATLAB Distributed Computing Server クラスターに Azure の仮想マシンを使用するには、大まかに次の手順を実行する必要があります。詳細な手順については、[GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) のクイック スタート テンプレートおよびスクリプトに付随するドキュメントを参照してください。
+
+1. **基本 VM イメージを作成する**
+    * この VM に MATLAB Distributed Computing Server ソフトウェアをダウンロードおよびインストールします。
+
+    >[AZURE.NOTE]この処理には数時間かかりますが、使用する MATLAB のバージョンごとに一度しか行う必要がありません。
     
-2. **Create one or more clusters**  
-    * Use the supplied PowerShell script or use the quickstart template to create a cluster from the base VM image.   
-    * Manage the clusters using the supplied PowerShell script which allows you to list, pause, resume, and delete clusters. 
+2. **1 つ以上のクラスターを作成する**
+    * 提供されている PowerShell スクリプトまたは、クイック スタート テンプレートを使用し、基本 VM イメージからクラスターを作成します。
+    * 提供されている PowerShell スクリプトを使用すると、クラスターの一覧表示、一時停止、再開および削除のクラスターの管理ができます。
  
-## <a name="cluster-configurations"></a>Cluster configurations 
+## クラスター構成 
 
-Currently, the cluster creation script and template enable you to create a single MATLAB Distributed Computing Server topology. If you want, create one or more additional clusters, with each cluster having a different number of worker VMs, using different VM sizes, and so on. 
+現時点では、クラスターの作成スクリプトとテンプレートでは、1 つの MATLAB Distributed Computing Server トポロジが作成されます。必要に応じて、各クラスターの worker VM 数を変えたり、VM のサイズを変えたりして、クラスターを 1 つ以上追加作成できます。
 
-### <a name="matlab-client-and-cluster-in-azure"></a>MATLAB client and cluster in Azure 
+### Azure の MATLAB のクライアントとクラスター 
 
-The MATLAB client node, MATLAB Job Scheduler node, and MATLAB Distributed Computing Server "worker" nodes are all configured as Azure VMs in a virtual network, as shown in the following figure. 
+MATLAB のクライアント ノード、MATLAB のジョブ スケジューラ ノード、および MATLAB Distributed Computing Server の "worker" ノードは、次の図に示すようにすべて仮想ネットワークで Azure VM として構成されます。
 
-![Cluster topology](./media/virtual-machines-windows-matlab-mdcs-cluster/mdcs_cluster.png)
+![クラスター トポロジ](./media/virtual-machines-windows-matlab-mdcs-cluster/mdcs_cluster.png)
 
-* To use the cluster, connect by Remote Desktop to the client node. The client node runs the MATLAB client. 
+* クラスターを使用するには、クライアント ノードにリモート デスクトップで接続します。クライアント ノードで、MATLAB のクライアントが実行されます。
 
-* The client node has a file share that can be accessed by all workers.
+* クライアント ノードには、すべての worker がアクセスできるファイル共有があります。
 
-* MathWorks Hosted License Manager is used for the license checks for all MATLAB software. 
+* MathWorks Hosted License Manager は、すべての MATLAB ソフトウェアのライセンスのチェックに使用されます。
 
-* By default, one MATLAB Distributed Computing Server worker per core is created on the worker VMs, but you can specify any number. 
-
-
-## <a name="use-an-azure-based-cluster"></a>Use an Azure-based Cluster 
-
-As with other types of MATLAB Distributed Computing Server clusters, you need to use the Cluster Profile Manager in the MATLAB client (on the client VM) to create a MATLAB Job Scheduler cluster profile.
-
-![Cluster Profile Manager](./media/virtual-machines-windows-matlab-mdcs-cluster/cluster_profile_manager.png)
-
-## <a name="next-steps"></a>Next steps
-
-* For detailed instructions to deploy and manage MATLAB Distributed Computing Server clusters in Azure, see the [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) repository containing the templates and scripts. 
-
-* Go to the [MathWorks site](http://www.mathworks.com/) for detailed documentation for MATLAB and MATLAB Distributed Computing Server.
+* 既定では、worker VM には、コアあたり 1 つの MATLAB Distributed Computing Server が作成されますが、これには任意の数を指定することができます。
 
 
+## Azure ベースのクラスターの使用 
 
-<!--HONumber=Oct16_HO2-->
+MATLAB Job Scheduler クラスター プロファイルを作成するには、他の種類の MATLAB Distributed Computing Server クラスターと同様に、(クライアント VM 上の) MATLAB クライアントで Cluster Profile Manager を使用します。
 
+![クラスター プロファイル マネージャー](./media/virtual-machines-windows-matlab-mdcs-cluster/cluster_profile_manager.png)
 
+## 次のステップ
+
+* Azure に MATLAB Distributed Computing Server クラスターをデプロイおよび管理する方法の詳細については、テンプレートとスクリプトを含む [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster) リポジトリを参照してください。
+
+* MATLAB および MATLAB Distributed Computing Server の詳細な説明については、[MathWorks サイト](http://www.mathworks.com/)を参照してください。
+
+<!---HONumber=AcomDC_0824_2016-->

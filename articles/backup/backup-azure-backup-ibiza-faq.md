@@ -1,51 +1,46 @@
 <properties
-   pageTitle="Recovery Services vault FAQ | Microsoft Azure"
-   description="This version of the FAQ supports the Public Preview release of the Azure Backup service. Answers to frequently asked questions about the backup agent, backup and retention, recovery, security and other common questions about the Azure Backup solution."
+   pageTitle="Recovery Services コンテナーに関する FAQ | Microsoft Azure"
+   description="このバージョンの FAQ は、Azure Backup サービスのパブリック プレビュー リリースをサポートしています。バックアップ エージェント、バックアップと保持、復元、セキュリティと Azure Backup ソリューションに関する一般的な質問に対する回答。"
    services="backup"
    documentationCenter=""
    authors="markgalioto"
    manager="jwhit"
    editor=""
-   keywords="backup solution; backup service"/>
+   keywords="バックアップ ソリューション、バックアップ サービス"/>
 
 <tags
    ms.service="backup"
    ms.workload="storage-backup-recovery"
-     ms.tgt_pltfrm="na"
-     ms.devlang="na"
-     ms.topic="get-started-article"
-     ms.date="08/21/2016"
-     ms.author="trinadhk; markgal; jimpark;"/>
+	 ms.tgt_pltfrm="na"
+	 ms.devlang="na"
+	 ms.topic="get-started-article"
+	 ms.date="08/21/2016"
+	 ms.author="trinadhk; markgal; jimpark;"/>
 
-
-# <a name="recovery-services-vault---faq"></a>Recovery Services vault - FAQ
+# Recovery Services コンテナー - FAQ
 
 > [AZURE.SELECTOR]
-- [Backup FAQ for classic mode](backup-azure-backup-faq.md)
-- [Backup FAQ for Resource Manager mode](backup-azure-backup-ibiza-faq.md)
+- [クラシック モードでの Backup に関する FAQ](backup-azure-backup-faq.md)
+- [Resource Manager モードでの Backup に関する FAQ](backup-azure-backup-ibiza-faq.md)
 
-This article provides information specific to Recovery Services vault and it supplements the [Azure Backup FAQ](backup-azure-backup-faq.md). The Azure Backup FAQ provides the full set of questions and answers about the Azure Backup service.  
+この記事では、Recovery Services コンテナーに固有の情報を提供すると共に、[Azure Backup に関する FAQ](backup-azure-backup-faq.md) を補足します。Azure Backup FAQ は、Azure Backup サービスに関する質問と回答の完全なセットを提供します。
 
-You can ask questions about Azure Backup in the Disqus section of this article or a related article. You can also post questions about the Azure Backup service in the [discussion forum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+この記事や関連の記事の「DISQUS」セクションでも Azure Backup について質問できます。また、[ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
 
-## <a name="recovery-services-vaults-are-resource-manager-based.-are-backup-vaults-(classic-mode)-still-supported?-<br/>"></a>Recovery Services vaults are Resource Manager based. Are Backup vaults (classic mode) still supported? <br/>
-Yes, Backup vaults are still supported. Create Backup vaults in the [Classic portal](https://manage.windowsazure.com). Create Recovery Services vaults in the [Azure portal](https://portal.azure.com). However we strongly recommend you to create recovery services vault as all future enhancements will be available only in Recovery Services vault. 
+## Recovery Services コンテナーは Resource Manager に基づいています。Backup コンテナー (クラシック モード) はまだサポートされていますか。<br/>
+はい。Backup コンテナーは引き続きサポートされます。Backup コンテナーは[クラシック ポータル](https://manage.windowsazure.com)で作成しますが、Recovery Services コンテナーは [Azure ポータル](https://portal.azure.com)で作成します。ただし、Recovery Services コンテナーを作成することを強くお勧めします。今後強化される機能は Recovery Services コンテナーでしか利用できないためです。
 
-## <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault?-<br/>"></a>Can I migrate a Backup vault to a Recovery Services vault? <br/>
-Unfortunately no, at this time you can't migrate the contents of a Backup vault to a Recovery Services vault. We are working on adding this functionality, but it is not available as part of Public Preview.
+## Backup コンテナーを Recovery Services コンテナーに移行することはできますか。<br/>
+残念ながら、現時点では、Backup コンテナーの内容を Recovery Services コンテナーに移行できません。この機能の追加に取り組んでいますが、パブリック プレビューの一部としては使用できません。
 
-## <a name="do-recovery-services-vaults-support-classic-vms-or-resource-manager-based-vms?-<br/>"></a>Do Recovery Services vaults support classic VMs or Resource Manager based VMs? <br/>
-Recovery Services vaults support both models.  You can back up a VM created in the Classic portal (which are classic mode VMs), or a VM created in the Azure portal (which are Resource Manager based) to a Recovery Services vault.
+## Recovery Services コンテナーでサポートされるのはクラシック VM と Resource Manager ベースの VM のどちらですか。<br/>
+Recovery Services コンテナーでは両方のモデルがサポートされています。クラシック ポータルで作成された VM (クラシック モード VM) も、Azure ポータルで作成された VM (Resource Manager ベースのもの) も、Recovery Services コンテナーにバックアップできます。
 
-## <a name="i-have-backed-up-my-classic-vms-in-backup-vault.-now-i-want-to-migrate-my-vms-from-classic-mode-to-resource-manager-mode.-how-can-i-backup-them-in-recovery-services-vault?"></a>I have backed up my classic VMs in backup vault. Now I want to migrate my VMs from classic mode to Resource Manager mode.  How Can I backup them in recovery services vault?
-Backups of classic VMs in backup vault won't migrate automatically to recovery services vault when you migrate the VMs from classic to Resource Manager mode. Please follow these steps for migration of VM backups:
+## 私はクラシック VM を Backup コンテナーにバックアップしてあります。VM をクラシック モードから Resource Manager モードに移行したいのですが、Recovery Services コンテナーにバックアップするにはどうすればよいですか。
+Backup コンテナー内のクラシック VM のバックアップは、VM をクラシックから Resource Manager モードに移行しても、Recovery Services コンテナーに自動的には移行されません。VM のバックアップを移行するには、次の手順に従ってください。
 
-1. In backup vault, go to **Protected Items** tab and select the VM. Click on [Stop Protection](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Leave *Delete associated backup data* option **unchecked**. 
-2. Migrate the virtual machine from classic mode to Resource Manager mode. Make sure that storage and network corresponding to virtual machine are also migrated to Resource Manager mode. 
-3. Create a recovery services vault and configure backup on the migrated virtual machine using **Backup** action on top of vault dashboard. Learn More on how to [enable backup in recovery services vault](backup-azure-vms-first-look-arm.md)
+1. Backup コンテナーで、**[保護された項目]** タブに移動し、VM を選択します。[[保護の停止]](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) をクリックします。*[関連付けられたバックアップ データを削除します]* オプションは**オフ**のままにしておきます。
+2. 仮想マシンをクラシック モードから Resource Manager モードに移行します。仮想マシンに対応するストレージとネットワークも Resource Manager モードに移行されることを確認してください。
+3. コンテナー ダッシュボードの上部にある **[バックアップ]** アクションを使用して、移行先の仮想マシンに Recovery Services コンテナーを作成し、バックアップを構成します。[Recovery Services コンテナーでバックアップを有効にする](backup-azure-vms-first-look-arm.md)方法について、さらに詳しくご確認ください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

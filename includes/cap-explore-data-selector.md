@@ -5,6 +5,4 @@
 - [Explore data in Hive tables](../articles/machine-learning/machine-learning-data-science-explore-data-hive-tables.md)
 - [Explore data in Azure Machine Learning Studio](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0128_2016-->

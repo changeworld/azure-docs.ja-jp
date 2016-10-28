@@ -1,6 +1,6 @@
 <properties
-pageTitle="Ports used by HDInsight | Azure"
-description="A list of ports used by Hadoop services running on HDInsight."
+pageTitle="HDInsight で使用されるポート | Azure"
+description="HDInsight で実行されている Hadoop サービスで使用されるポートの一覧。"
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
@@ -13,139 +13,134 @@ ms.devlang="na"
 ms.topic="article"
 ms.tgt_pltfrm="na"
 ms.workload="big-data"
-ms.date="10/03/2016"
+ms.date="09/13/2016"
 ms.author="larryfr"/>
 
+# HDInsight で使用されるポートと URI
 
-# <a name="ports-and-uris-used-by-hdinsight"></a>Ports and URIs used by HDInsight
+このドキュメントでは、Linux ベースの HDInsight クラスターで実行されている Hadoop サービスで使用されるポートの一覧を示します。また、SSH を使用したクラスターへの接続に使用されるポートの情報も提供します。
 
-This document provides a list of the ports used by Hadoop services running on Linux-based HDInsight clusters. It also provides information on ports used to connect to the cluster using SSH.
+## パブリック ポートと非パブリック ポート
 
-## <a name="public-ports-vs.-non-public-ports"></a>Public ports vs. non-public ports
+Linux ベースの HDInsight クラスターでは、22、23、443 の 3 つのポートだけがインターネット上で公開されます。これらのポートは、SSH を使用してクラスターに安全にアクセスし、セキュリティで保護された HTTPS プロトコルを介して公開されるサービスにアクセスする際に使用されます。
 
-Linux-based HDInsight clusters only exposes three ports publicly on the internet; 22, 23, and 443. These are used to securely access the cluster using SSH and services exposed over the secure HTTPS protocol.
+内部的には、HDInsight は Azure Virtual Network 上で実行される複数の Azure Virtual Network (クラスター内のノード) によって実装されます。仮想ネットワーク内から、インターネット経由で公開されていないポートにアクセスできます。たとえば、SSH を使用してヘッド ノードのいずれかに接続すると、そのヘッド ノードから、クラスター ノードで実行されているサービスに直接アクセスできます。
 
-Internally, HDInsight is implemented by several Azure Virtual Machines (the nodes within the cluster,) running on an Azure Virtual Network. From within the virtual network, you can access ports not exposed over the internet. For example, if you connect to one of the head nodes using SSH, from the head node you can then directly access services running on the cluster nodes.
+> [AZURE.IMPORTANT] HDInsight クラスターの作成時に、構成オプションとして Azure Virtual Network を指定しなかった場合、Azure Virtual Network が自動的に作成されます。ただし、この自動的に作成された仮想ネットワークには、他のマシン (他の Azure Virtual Machines やクライアント開発用コンピューターなど) を参加させることはできません。
 
-> [AZURE.IMPORTANT] When you create an HDInsight cluster, if you do not specify an Azure Virtual Network as a configuration option, one is created; however, you cannot join other machines (such as other Azure Virtual Machines or your client development machine,) to this automatically created virtual network. 
+仮想ネットワークに他のマシンを参加させるには、まず仮想ネットワークを作成し、HDInsight クラスターの作成時にその仮想ネットワークを指定する必要があります。詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」をご覧ください。
 
-To join additional machines to the virtual network, you must create the virtual network first, and then specify it when creating your HDInsight cluster. For more information, see [Extend HDInsight capabilities by using an Azure Virtual Network](hdinsight-extend-hadoop-virtual-network.md)
+## パブリック ポート
 
-## <a name="public-ports"></a>Public ports
+HDInsight クラスターのすべてのノードは Azure Virtual Network 内にあり、インターネットから直接アクセスすることはできません。パブリック ゲートウェイにより、すべての HDInsight クラスターの種類に共通する次のポートへのインターネット アクセスが提供されます。
 
-All the nodes in an HDInsight cluster are located in an Azure Virtual Network, and cannot be directly accessed from the internet. A public gateway provides internet access to the following ports, which are common across all HDInsight cluster types.
-
-| Service | Port | Protocol | Description |
+| サービス | ポート | プロトコル | Description |
 | ---- | ---------- | -------- | ----------- | ----------- |
-| sshd | 22 | SSH | Connects clients to sshd on the primary headnode. See [Use SSH with Linux-based HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) |
-| sshd | 22 | SSH | Connects clients to sshd on the edge node (HDInsight Premium only). See [Get started using R Server on HDInsight](hdinsight-hadoop-r-server-get-started.md) |
-| sshd | 23 | SSH | Connects clients to sshd on the secondary headnode. See [Use SSH with Linux-based HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) |
-| Ambari | 443 | HTTPS | Ambari web UI. See [Manage HDInsight using the Ambari Web UI](hdinsight-hadoop-manage-ambari.md) |
-| Ambari | 443 | HTTPS | Ambari REST API. See [Manage HDInsight using the Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) |
-| WebHCat | 443 | HTTPS | HCatalog REST API. See [Use Hive with Curl](hdinsight-hadoop-use-pig-curl.md), [Use Pig with Curl](hdinsight-hadoop-use-pig-curl.md), [Use MapReduce with Curl](hdinsight-hadoop-use-mapreduce-curl.md) |
-| HiveServer2 | 443 | ODBC | Connects to Hive using ODBC. See [Connect Excel to HDInsight with the Microsoft ODBC driver](hdinsight-connect-excel-hive-odbc-driver.md). |
-| HiveServer2 | 443 | JDBC | Connects to Hive using JDBC. See [Connect to Hive on HDInsight using the Hive JDBC driver](hdinsight-connect-hive-jdbc-driver.md) |
+| sshd | 22 | SSH | プライマリ ヘッドノードの sshd にクライアントを接続します。[Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関する記事をご覧ください。 |
+| sshd | 22 | SSH | エッジ ノードの sshd にクライアントを接続します (HDInsight Premium のみ)。[HDInsight の R Server の使用開始](hdinsight-hadoop-r-server-get-started.md)に関する記事をご覧ください。 |
+| sshd | 23 | SSH | セカンダリ ヘッドノードの sshd にクライアントを接続します。[Linux ベースの HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-windows.md)に関する記事をご覧ください。 |
+| Ambari | 443 | HTTPS | Ambari Web UI。[Ambari Web UI を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)に関する記事をご覧ください。 |
+| Ambari | 443 | HTTPS | Ambari REST API。[Ambari REST API を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari-rest-api.md)に関する記事をご覧ください。 |
+| WebHCat | 443 | HTTPS | HCatalog REST API。[Curl での Hive の使用](hdinsight-hadoop-use-Pig-curl.md)、[Curl での Pig の使用](hdinsight-hadoop-use-Pig-curl.md)、[Curl での MapReduce の使用](hdinsight-hadoop-use-mapreduce-curl.md)に関する記事をご覧ください。 |
+| HiveServer2 | 443 | ODBC | ODBC を使用して Hive に接続します。[Microsoft ODBC ドライバーを使用した Excel から HDInsight への接続](hdinsight-connect-excel-hive-odbc-driver.md)に関する記事をご覧ください。 |
+| HiveServer2 | 443 | JDBC | JDBC を使用して Hive に接続します。[Hive JDBC ドライバーを使用した HDInsight の Hive への接続](hdinsight-connect-hive-jdbc-driver.md)に関する記事をご覧ください。 |
 
-The following are available for specific cluster types:
+次のポートは、特定のクラスターの種類で使用できます。
 
-| Service | Port | Protocol |Cluster type | Description |
+| サービス | ポート | プロトコル |クラスターの種類 | Description |
 | ------------ | ---- |  ----------- | --- | ----------- |
-| Stargate | 443 | HTTPS | HBase | HBase REST API. See [Get started using HBase](hdinsight-hbase-tutorial-get-started-linux.md) |
-| Livy | 443 | HTTPS |  Spark | Spark REST API. See [Submit Spark jobs remotely using Livy](hdinsight-apache-spark-livy-rest-interface.md) |
-| Storm | 443 | HTTPS | Storm | Storm web UI. See [Deploy and manage Storm topologies on HDInsight](hdinsight-storm-deploy-monitor-topology-linux.md)
+| Stargate | 443 | HTTPS | HBase | HBase REST API。[HBase の使用開始](hdinsight-hbase-tutorial-get-started-linux.md)に関する記事をご覧ください。 |
+| Livy | 443 | HTTPS | Spark | Spark REST API。[Livy を使用した Spark ジョブのリモートでの送信](hdinsight-apache-spark-livy-rest-interface.md)に関する記事をご覧ください。 |
+| Storm | 443 | HTTPS | Storm | Storm Web UI。[HDInsight での Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md)に関する記事をご覧ください。
 
-### <a name="authentication"></a>Authentication
+### 認証
 
-All services publicly exposed on the internet must be authenticated:
+インターネット上で公開されるすべてのサービスを認証する必要があります。
 
-| Port | Credentials |
+| ポート | 資格情報 |
 | ---- | ----------- |
-| 22 or 23 | The SSH user credentials specified during cluster creation |
-| 443 | The login name (default: admin,) and password that were set during cluster creation |
+| 22 または 23 | クラスターの作成時に指定した SSH ユーザー資格情報 |
+| 443 | ログイン名 (既定値: admin) と、クラスターの作成時に設定したパスワード |
 
-## <a name="non-public-ports"></a>Non-public ports
+## 非パブリック ポート
 
-> [AZURE.NOTE] Some services are only available on specific cluster types. For example, HBase is only available on HBase cluster types.
+> [AZURE.NOTE] 一部のサービスは、特定のクラスターの種類でのみ利用できます。たとえば、HBase を利用できるのは、クラスターの種類が HBase の場合のみです。
 
-### <a name="hdfs-ports"></a>HDFS ports
+### HDFS ポート
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- | 
-| NameNode web UI | Head nodes | 30070 | HTTPS | Web UI to view current status |
-| NameNode metadata service | head nodes | 8020 | IPC | File system metadata 
-| DataNode | All worker nodes | 30075 | HTTPS | Web UI to view status, logs, etc. |
-| DataNode | All worker nodes | 30010 | &nbsp; | Data transfer |
-| DataNode | All worker nodes | 30020 | IPC | Metadata operations |
-| Secondary NameNode | Head nodes | 50090 | HTTP | Checkpoint for NameNode metadata |
+| NameNode Web UI | ヘッド ノード | 30070 | HTTPS | 現在の状態を表示する Web UI |
+| NameNode メタデータ サービス | ヘッド ノード | 8020 | IPC | ファイル システム メタデータ 
+| DataNode | すべての worker ノード | 30075 | HTTPS | 状態、ログなどを表示する Web UI |
+| DataNode | すべての worker ノード | 30010 | &nbsp; | データ転送 |
+| DataNode | すべての worker ノード | 30020 | IPC | メタデータ操作 |
+| セカンダリ NameNode | ヘッド ノード | 50090 | HTTP | NameNode メタデータのチェックポイント |
 
-### <a name="yarn-ports"></a>YARN ports
+### YARN ポート
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| Resource Manager web UI | Head nodes | 8088 | HTTP | Web UI for Resource Manager |
-| Resource Manager web UI | Head nodes | 8090 | HTTPS | Web UI for Resource Manager |
-| Resource Manager admin interface | head nodes | 8141 | IPC | For application submissions (Hive, Hive server, Pig, etc.) |
-| Resource Manager scheduler | head nodes | 8030 | HTTP | Administrative interface |
-| Resource Manager application interface | head nodes | 8050 | HTTP |Address of the applications manager interface |
-| NodeManager | All worker nodes | 30050 | &nbsp; | The address of the container manager |
-| NodeManager web UI | All worker nodes | 30060 | HTTP | Resource manager interface |
-| Timeline address | Head nodes | 10200 | RPC | The Timeline service RPC service. |
-| Timeline web UI | Head nodes | 8181 | HTTP | The Timeline service web UI |
+| Resource Manager Web UI | ヘッド ノード | 8088 | HTTP | Resource Manager の Web UI |
+| Resource Manager Web UI | ヘッド ノード | 8090 | HTTPS | Resource Manager の Web UI |
+| Resource Manager 管理インターフェイス | ヘッド ノード | 8141 | IPC | アプリケーション送信用 (Hive、Hive サーバー、Pig など) |
+| Resource Manager スケジューラ | ヘッド ノード | 8030 | HTTP | 管理インターフェイス |
+| Resource Manager アプリケーション インターフェイス | ヘッド ノード | 8050 | HTTP |アプリケーション マネージャー インターフェイスのアドレス |
+| NodeManager | すべての worker ノード | 30050 | &nbsp; | コンテナー マネージャーのアドレス |
+| NodeManager Web UI | すべての worker ノード | 30060 | HTTP | Resource Manager インターフェイス |
+| Timeline アドレス | ヘッド ノード | 10200 | RPC | Timeline サービスの RPC サービス |
+| Timeline Web UI | ヘッド ノード | 8181 | HTTP | Timeline サービス Web UI |
 
-### <a name="hive-ports"></a>Hive ports
+### Hive ポート
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| HiveServer2 | Head nodes | 10001 | Thrift | Service for programmatically connecting to Hive (Thrift/JDBC) |
-| HiveServer | Head nodes | 10000 | Thrift | Service for programmatically connecting to Hive (Thrift/JDBC) |
-| Hive Metastore | Head nodes | 9083 | Thrift | Service for programmatically connecting to Hive metadata (Thrift/JDBC) |
+| HiveServer2 | ヘッド ノード | 10001 | Thrift | プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
+| HiveServer | ヘッド ノード | 10000 | Thrift | プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
+| Hive メタストア | ヘッド ノード | 9083 | Thrift | プログラムによって Hive メタデータ (Thrift/JDBC) に接続するためのサービス |
 
-### <a name="webhcat-ports"></a>WebHCat ports
+### WebHCat ポート
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| WebHCat server | Head nodes | 30111 | HTTP | Web API on top of HCatalog and other Hadoop services |
+| WebHCat サーバー | ヘッド ノード | 30111 | HTTP | HCatalog および他の Hadoop サービス上の Web API |
 
-### <a name="mapreduce-ports"></a>MapReduce ports
+### MapReduce ポート
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| JobHistory | Head nodes | 19888 | HTTP | MapReduce JobHistory web UI |
-| JobHistory | Head nodes | 10020 | &nbsp; | MapReduce JobHistory server |
-| ShuffleHandler | &nbsp; | 13562 | &nbsp; | Transfers intermediate Map outputs to requesting Reducers |
+| JobHistory | ヘッド ノード | 19888 | HTTP | MapReduce JobHistory Web UI |
+| JobHistory | ヘッド ノード | 10020 | &nbsp; | MapReduce JobHistory サーバー |
+| ShuffleHandler | &nbsp; | 13562 | &nbsp; | 中間 Map 出力を要求元 Reducer に転送 |
 
-### <a name="oozie"></a>Oozie
+### Oozie
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| Oozie server | Head nodes | 11000 | HTTP | URL for Oozie service |
-| Oozie server | Head nodes | 11001 | HTTP | Port for Oozie admin |
+| Oozie サーバー | ヘッド ノード | 11000 | HTTP | Oozie サービスの URL |
+| Oozie サーバー | ヘッド ノード | 11001 | HTTP | Oozie 管理用ポート |
 
-### <a name="ambari-metrics"></a>Ambari Metrics
+### Ambari メトリック
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| TimeLine (Application history) | Head nodes | 6188 | HTTP | The TimeLine service web UI |
-| TimeLine (Application history) | Head nodes | 30200 | RPC | The TimeLine service web UI |
+| TimeLine (アプリケーション履歴) | ヘッド ノード | 6188 | HTTP | Timeline サービス Web UI |
+| TimeLine (アプリケーション履歴) | ヘッド ノード | 30200 | RPC | Timeline サービス Web UI |
 
-### <a name="hbase-ports"></a>HBase ports
+### HBase ポート
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| HMaster | Head nodes | 16000 | &nbsp; | &nbsp; |
-| HMaster info Web UI | Head nodes | 16010 | HTTP | The port for the HBase Master web UI |
-| Region server | All worker nodes | 16020 | &nbsp; | &nbsp; |
-| &nbsp; | &nbsp; | 2181 | &nbsp; | The port that clients use to connect to ZooKeeper |
+| HMaster | ヘッド ノード | 16000 | &nbsp; | &nbsp; |
+| HMaster 情報 Web UI | ヘッド ノード | 16010 | HTTP | HBase Master Web UI のポート |
+| リージョン サーバー | すべての worker ノード | 16020 | &nbsp; | &nbsp; |
+| &nbsp; | &nbsp; | 2181 | &nbsp; | クライアントが ZooKeeper への接続に使用するポート |
 
-### <a name="kafka-ports"></a>Kafka ports
+### Kafka ポート
 
-| Service | Node(s) | Port | Protocol | Description |
+| サービス | ノード | ポート | プロトコル | Description |
 | ------- | ------- | ---- | -------- | ----------- |
-| Broker  | Worker nodes | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | Used for client communication |
-| &nbsp; | Zookeeper nodes | 2181 | &nbsp; | The port that clients use to connect to Zookeeper |
+| ブローカー | ワーカー ノード | 9092 | [Kafka Wire Protocol](http://kafka.apache.org/protocol.html) | クライアント通信に使用 |
+| &nbsp; | Zookeeper ノード | 2181 | &nbsp; | クライアントが ZooKeeper への接続に使用するポート |
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

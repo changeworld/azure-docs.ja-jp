@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with 15Five | Microsoft Azure" 
-    description="Learn how to use 15Five with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と 15Five の統合 | Microsoft Azure" 
+    description="Azure Active Directory で 15Five を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -11,133 +11,127 @@
     ms.topic="article" 
     ms.tgt_pltfrm="na" 
     ms.workload="identity" 
-    ms.date="09/29/2016" 
+    ms.date="07/11/2016" 
     ms.author="jeedes" />
 
+#チュートリアル: Azure Active Directory と 15Five の統合
 
-#<a name="tutorial:-azure-active-directory-integration-with-15five"></a>Tutorial: Azure Active Directory integration with 15Five
+このチュートリアルの目的は、Azure と 15Five の統合を紹介することです。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
-The objective of this tutorial is to show the integration of Azure and 15Five. The scenario outlined in this tutorial assumes that you already have the following items:
+-   有効な Azure サブスクリプション
+-   15Five でのシングル サインオンが有効なサブスクリプション
 
--   A valid Azure subscription
--   A 15Five single sign-on enabled subscription
+このチュートリアルを完了すると、15Five に割り当てた Azure AD ユーザーは、15Five 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」に従って、アプリケーションにシングル サインオンできるようになります。
 
-After completing this tutorial, the Azure AD users you have assigned to 15Five will be able to single sign into the application at your 15Five company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The scenario outlined in this tutorial consists of the following building blocks:
+1.  15Five のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-1.  Enabling the application integration for 15Five
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+![シナリオ](./media/active-directory-saas-15five-tutorial/IC784667.png "シナリオ")
+##15Five のアプリケーション統合の有効化
 
-![Scenario](./media/active-directory-saas-15five-tutorial/IC784667.png "Scenario")
-##<a name="enabling-the-application-integration-for-15five"></a>Enabling the application integration for 15Five
+このセクションでは、15Five のアプリケーション統合を有効にする方法について説明します。
 
-The objective of this section is to outline how to enable the application integration for 15Five.
+###15Five のアプリケーション統合を有効にするには、次の手順に従います。
 
-###<a name="to-enable-the-application-integration-for-15five,-perform-the-following-steps:"></a>To enable the application integration for 15Five, perform the following steps:
-
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-15five-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-15five-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-15five-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-15five-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-15five-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-15five-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-15five-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **15Five**.
+6.  [**検索**] ボックスに、「**15Five**」と入力します。
 
-    ![Application Gallery](./media/active-directory-saas-15five-tutorial/IC784668.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-15five-tutorial/IC784668.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **15Five**, and then click **Complete** to add the application.
+7.  結果ウィンドウで [**15Five**] を選択し、[**完了**] をクリックしてアプリケーションを追加します。
 
     ![15Five](./media/active-directory-saas-15five-tutorial/IC784669.png "15Five")
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
 
-The objective of this section is to outline how to enable users to authenticate to 15Five with their account in Azure AD using federation based on the SAML protocol.
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで 15Five に対する認証を行えるようにする方法を説明します。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **15Five** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **15Five** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-15five-tutorial/IC784670.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to 15Five** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  [**ユーザーの 15Five へのアクセスを設定してください**] ページで、[**Microsoft Azure AD のシングル サインオン**] を選択し、[**次へ**] をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-15five-tutorial/IC784671.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, in the **15Five Sign In URL** textbox, type your URL using the following pattern "*https://company.15Five.com*", and then click **Next**.
+3.  **[アプリケーション URL の構成]** ページの **[15Five サインイン URL]** テキスト ボックスに、"*https://company.15Five.com*" というパターンの URL を入力し、**[次へ]* をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-15five-tutorial/IC784672.png "Configure App URL")
+    ![Configure App URL](./media/active-directory-saas-15five-tutorial/IC784672.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at 15Five** page, click **Download metadata**, and then forward the metadata file to the 15Five support team.
+4.  [**15Five でのシングルサインオンの構成**] ページで、[**メタデータのダウンロード**] をクリックし、メタ データファイルを 15Five サポート チームに転送します。
 
     ![Configure single sign-on](./media/active-directory-saas-15five-tutorial/IC784673.png "Configure single sign-on")
 
-    >[AZURE.NOTE] Single sign-on needs to be enabled by the 15Five support team.
+    >[AZURE.NOTE] 15Five サポート チームがシングル サインオンを有効にする必要があります。
 
-5.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+5.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-15five-tutorial/IC784674.png "Configure single sign-on")
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
 
-In order to enable Azure AD users to log into 15Five, they must be provisioned into 15Five.  
-In the case of 15Five, provisioning is a manual task.
+Azure AD ユーザーが 15Five にログインできるようにするには、そのユーザーを 15Five にプロビジョニングする必要があります。15Five の場合、プロビジョニングは手動で行います。
 
-###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  Log in to your **15Five** company site as administrator.
+1.  **15Five** 企業サイトに管理者としてログインします。
 
-2.  Go to **Manage Company**.
+2.  [**会社の管理**] に移動します。
 
-    ![Manage Company](./media/active-directory-saas-15five-tutorial/IC784675.png "Manage Company")
+    ![会社の管理](./media/active-directory-saas-15five-tutorial/IC784675.png "会社の管理")
 
-3.  Go to **People \> Add People**.
+3.  **[ユーザー] > [ユーザーを追加]** の順にクリックします。
 
     ![People](./media/active-directory-saas-15five-tutorial/IC784676.png "People")
 
-4.  In the Add New Person section, perform the following steps:
+4.  [新しいユーザーの追加] セクションで、次の手順に従います。
 
-    ![Add New Person](./media/active-directory-saas-15five-tutorial/IC784677.png "Add New Person")
+    ![新しいユーザーの追加](./media/active-directory-saas-15five-tutorial/IC784677.png "新しいユーザーの追加")
 
-    1.  Type the **First Name**, **Last Name**, **Title**, **Email address** of a valid Azure Active Directory account you want to provision into the related textboxes.
-    2.  Click **Done**.
+    1.  関連するテキスト ボックスに、プロビジョニングする有効な Azure Active Directory アカウントの**名**、**姓**、**役職**、**電子メール アドレス**を入力します。
+    2.  **[Done]** をクリックします。
 
-    >[AZURE.NOTE] The Azure AD account holder will receive an email including a link to confirm the account before it becomes active.
+    >[AZURE.NOTE] アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。
 
->[AZURE.NOTE] You can use any other 15Five user account creation tools or APIs provided by 15Five to provision AAD user accounts.
+>[AZURE.NOTE] 他の 15Five ユーザー アカウントの作成ツールまたは 15Five から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-15five,-perform-the-following-steps:"></a>To assign users to 15Five, perform the following steps:
+###ユーザーを 15Five に割り当てるには、次の手順に従います。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **15Five **application integration page, click **Assign users**.
+2.  **15Five** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign users](./media/active-directory-saas-15five-tutorial/IC784678.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-15five-tutorial/IC784678.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-15five-tutorial/IC767830.png "Yes")
 
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

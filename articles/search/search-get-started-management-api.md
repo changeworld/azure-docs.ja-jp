@@ -1,191 +1,189 @@
 <properties 
-    pageTitle="Get started with Azure Search Management REST API | Microsoft Azure | Hosted cloud search service" 
-    description="Administer your hosted cloud Azure Search service using a Management REST API" 
-    services="search" 
-    documentationCenter="" 
-    authors="HeidiSteen" 
-    manager="jhubbard" 
-    editor=""/>
+	pageTitle="Azure Search 管理 REST API の使用 | Microsoft Azure | ホスト型クラウド検索サービス" 
+	description="管理 REST API を利用し、ホスト型のクラウド検索サービスの Azure Search を管理する" 
+	services="search" 
+	documentationCenter="" 
+	authors="HeidiSteen" 
+	manager="jhubbard" 
+	editor=""/>
 
 <tags 
-    ms.service="search" 
-    ms.devlang="rest-api" 
-    ms.workload="search" 
-    ms.topic="article" 
-    ms.tgt_pltfrm="na" 
-    ms.date="08/08/2016" 
-    ms.author="heidist"/>
+	ms.service="search" 
+	ms.devlang="rest-api" 
+	ms.workload="search" 
+	ms.topic="article" 
+	ms.tgt_pltfrm="na" 
+	ms.date="08/08/2016" 
+	ms.author="heidist"/>
 
-
-# <a name="get-started-with-azure-search-management-rest-api"></a>Get started with Azure Search Management REST API
+# Azure Search 管理 REST API の使用
 > [AZURE.SELECTOR]
-- [Portal](search-manage.md)
+- [ポータル](search-manage.md)
 - [PowerShell](search-manage-powershell.md)
 - [REST API](search-get-started-management-api.md)
 
-The Azure Search REST management API is a programmatic alternative to performing administrative tasks in the portal. Service management operations include creating or deleting the service, scaling the service, and managing keys. This tutorial comes with a sample client application that demonstrates the service management API. It also includes configuration steps required to run the sample in your local development environment.
+Azure Search REST 管理 API は、ポータルでプログラムを使用して管理タスクを実行するものです。サービス管理操作には、サービスの作成または削除、サービスのスケーリング、およびキーの管理があります。このチュートリアルには、サービス管理 API を示すサンプル クライアント アプリケーションが用意されています。また、ローカル開発環境でサンプルを実行するのに必要な構成手順も含まれます。
 
-To complete this tutorial, you will need:
+このチュートリアルを完了するには、以下が必要です。
 
-- Visual Studio 2012 or 2013
-- the sample  client application download
+- Visual Studio 2012 または 2013
+- サンプル クライアント アプリケーションのダウンロード
 
-In the course of completing the tutorial, two services will be provisioned: Azure Search and Azure Active Directory (AD). Additionally, you will create an AD application that establishes trust between your client application and the resource manager endpoint in Azure.
+このチュートリアルを完了する過程で、Azure Search と Azure Active Directory (AD) の 2 つのサービスをプロビジョニングします。さらに、クライアント アプリケーションと Azure のリソース マネージャー エンドポイントとの間で信頼を確立する AD アプリケーションを作成します。
 
-You will need an Azure account to complete this tutorial.
-
-
-##<a name="download-the-sample-application"></a>Download the sample application
-
-This tutorial is based on a Windows console application written in C#, which you can edit and run in either Visual Studio 2012 or 2013
-
-You can find the client application on Github at [Azure Search .NET Management API Demo](https://github.com/Azure-Samples/search-dotnet-management-api/).
+このチュートリアルを完了するには、Azure アカウントが必要です。
 
 
-##<a name="configure-the-application"></a>Configure the application
+##サンプル アプリケーションのダウンロード
 
-Before you can run the sample application, you must enable authentication so that requests sent from the client application to the resource manager endpoint can be accepted. The authentication requirement originates with the [Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn790568.aspx), which is the basis for all portal-related operations requested via an API, including those related to Search service management. The service management API for Azure Search is simply an extension of the Azure Resource Manager, and thus inherits its dependencies.  
+このチュートリアルは C# で記述された Windows のコンソール アプリケーションを基にしていて、Visual Studio 2012 または 2013 で実行することができます。
 
-Azure Resource Manager requires Azure Active Directory service as its identity provider. 
+クライアント アプリケーションは、Github の「[Azure Search .NET Management API Demo (Azure Search .NET 管理 API デモ)](https://github.com/Azure-Samples/search-dotnet-management-api/)」にあります。
 
-To obtain an access token that will allow requests to reach the resource manager, the client application includes a code segment that calls Active Directory. The code segment, plus the prerequisite steps to using the code segment, were borrowed from this article: [Authenticating Azure Resource Manager requests](http://msdn.microsoft.com/library/azure/dn790557.aspx).
 
-You can follow the instructions in the above link, or use the steps in this document if you prefer to go through the tutorial step by step.
+##アプリケーションの構成
 
-In this section, you will perform the following tasks:
+サンプル アプリケーションを実行する前に、認証を有効にして、クライアント アプリケーションからリソース マネージャー エンドポイントに送信された要求が許可されるようにする必要があります。認証要件は、[Azure リソース マネージャー](https://msdn.microsoft.com/library/azure/dn790568.aspx)が基になり、Search サービス管理関連も含め、API を使用して要求されたすべてのポータル関連操作の基盤となります。Azure Search のサービス管理 API は、Azure リソース マネージャーの拡張機能であるため、その依存関係を継承しています。
 
-1. Create an AD service
-1. Create an AD application
-1. Configure the AD application by registering details about the sample client application you downloaded
-1. Load the sample client application with values it will use to gain authorization for its requests
+Azure リソース マネージャーには、ID プロバイダーとして Azure Active Directory サービスが必要です。
 
-> [AZURE.NOTE] These links provide background on using Azure Active Directory for authenticating client requests to the resource manager: [Azure Resource Manager](http://msdn.microsoft.com/library/azure/dn790568.aspx), [Authenticating Azure Resource Manager requests](http://msdn.microsoft.com/library/azure/dn790557.aspx), and [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx).
+リソース マネージャーへの要求を許可するアクセス トークンを取得するには、クライアント アプリケーションに Active Directory を呼び出すためのコード セグメントが必要です。このコード セグメントと、コード セグメントを使用する前提条件となる手順は、記事「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」から借用しています。
 
-###<a name="create-an-active-directory-service"></a>Create an Active Directory Service
+前述のリンクの指示に従うか、またはチュートリアルをひととおり実行する場合はこのドキュメントの手順に従ってください。
 
-1. Sign in to the [Azure Portal](https://manage.windowsazure.com).
+このセクションでは、次のタスクを実行します。
 
-2. Scroll down the left navigation pane and click **Active Directory**.
+1. AD サービスの作成
+1. AD アプリケーションの作成
+1. ダウンロードしたサンプル クライアント アプリケーションの詳細を登録することによる、AD アプリケーションの構成
+1. 要求の認証を取得するための値を使用したサンプル クライアント アプリケーションのロード
 
-4. Click **NEW** to open **App Services** | **Active Directory**. In this step, you are creating a new Active Directory service. This service will host the AD application that you'll define a few steps from now. Creating a new service helps isolate the tutorial from other applications you might already be hosting in Azure.
+> [AZURE.NOTE] [Azure リソース マネージャー](http://msdn.microsoft.com/library/azure/dn790568.aspx)に関するページ、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」、および [Azure Active Directory](http://msdn.microsoft.com/library/azure/jj673460.aspx) に関するページでは、Azure Active Directory を使用して、リソース マネージャーへのクライアント要求を認証するための背景知識を提供します。
 
-5. Click **Directory** | **Custom Create**.
+###Active Directory サービスの作成
 
-6. Enter a service name, domain, and  geo-location. The domain must be unique. Click the check mark to create the service.
+1. [Azure ポータル](https://manage.windowsazure.com)にサインインします。
+
+2. 左側のナビゲーション ウィンドウを下へスクロールし、**[Active Directory]** をクリックします。
+
+4. **[新規]** をクリックして、**[App Services]**、**[Active Directory]** の順に開きます。このステップでは、新しい Active Directory サービスを作成します。このサービスは、この後で定義する AD アプリケーションをホストします。新しいサービスを作成することで、Azure で既にホストしている他のアプリケーションからチュートリアルを切り離すことができます。
+
+5. **[ディレクトリ]**、**[カスタム作成]** の順にクリックします。
+
+6. サービス名、ドメイン、および地理的な位置を入力します。ドメインは一意である必要があります。チェック マークをクリックしてサービスを作成します。
 
      ![][5]
 
-###<a name="create-a-new-ad-application-for-this-service"></a>Create a new AD application for this service
+###このサービス用の新しい AD アプリケーションの作成
 
-1. Select the "SearchTutorial" Active Directory service you just created.
+1. 今作成した"SearchTutorial" Active Directory サービスを選択します。
 
-2. On the top menu, click **Applications**. 
+2. 上部のメニューで、**[アプリケーション]** をクリックします。
  
-3. Click **Add an Application**. An AD application stores information about the client applications that will be using it as an identity provider.  
+3. **[アプリケーションの追加]** をクリックします。AD アプリケーションは、それを ID プロバイダーとして使用するクライアント アプリケーションに関する情報を格納します。
  
-4. Choose **Add an application my organization is developing**. This option provides registration settings for applications that are not published to the application gallery. Since the client application is not part of the application gallery, this is the right choice for this tutorial.
+4. **[組織で開発中のアプリケーションを追加]** をクリックします。このオプションは、アプリケーション ギャラリーに発行されていないアプリケーションの登録を設定します。クライアント アプリケーションはアプリケーション ギャラリーに含まれていないため、このチュートリアルではこれが適切な選択です。
 
      ![][6]
  
-5. Enter a name, such as "Azure-Search-Manager".
+5. 「Azure-Search-Manager」などの名前を入力します。
 
-6. Choose **Native client application** for application type. This is correct for the sample application; it happens to be a Windows client (console) application, not a web application.
+6. アプリケーションの種類として、**[ネイティブ クライアント アプリケーション]** を選択します。Windows クライアント (コンソール) アプリケーションの場合、これがサンプル アプリケーションでは正しい手順です。Web アプリケーションの場合は異なります。
 
      ![][7]
  
-7. In Redirect URI, enter "http://localhost/Azure-Search-Manager-App". This a URI to which Azure Active Directory will redirect the user-agent in response to an OAuth 2.0 authorization request. The value does not need to be a physical endpoint, but must be a valid URI. 
+7. リダイレクト URI に、「http://localhost/Azure-Search-Manager-App」と入力します。Azure Active Directory では、OAuth 2.0 承認要求に対してユーザー エージェントがこの URI にリダイレクトされます。この値は、物理的なエンドポイントである必要はありませんが、有効な URI である必要があります。
 
-    For the purposes of this tutorial, the value can be anything, but whatever you enter becomes a required input for the administrative connection in the sample application. 
+    このチュートリアルの目的のためには任意の値を入力できますが、入力した値は、サンプル アプリケーションでの管理用の接続に必要な入力になります。
  
-7. Click the check mark to create the Active Directory application. You should see "Azure-Search-Manager-App" in the left navigation pane.
+7. チェック マークをクリックして、Active Directory アプリケーションを作成します。左側のナビゲーション ウィンドウには、"Azure-Search-Manager-App" が表示されます。
 
-###<a name="configure-the-ad-application"></a>Configure the AD application
+###AD アプリケーションの構成
  
-9. Click the AD application, "Azure-Search-Manager-App", that you just created. You should see it listed in the left navigation pane.
+9. 作成した AD アプリケーション "Azure-Search-Manager-App" をクリックします。左側のナビゲーション ウィンドウに一覧表示されています。
 
-10. Click **Configure** in the top menu.
+10. 上部のメニューで、**[構成]** をクリックします。
  
-11. Scroll down to Permissions and select **Azure Management API**. In this step, you specify the API (in this case, the Azure Resource Manager API) that the client application needs access to, along with the level of access it needs.
+11. アクセス許可まで下へスクロールし、**[Azure 管理 API]** を選択します。この手順で、クライアント アプリケーションがアクセスする必要がある API (ここでは、Azure リソース マネージャー API) および必要なアクセス レベルを指定します。
 
-12. In Delegated Permissions, click the drop down list and select **Access Azure Service Management (Preview**).
+12. [デリゲートされたアクセス許可] で、ドロップダウン リストをクリックし、**[Azure Service 管理へのアクセス (プレビュー)]** を選択します。
  
      ![][8]
  
-13. Save the changes. 
+13. 変更を保存します。
 
-Keep the application configuration page open. In the next step, you will copy values from this page and enter them into the sample application.
+アプリケーションの構成ページを開いたままにします。次の手順では、このページから値をコピーして、サンプル アプリケーションに入力します。
 
-###<a name="load-the-sample-application-program-with-registration-and-subscription-values"></a>Load the sample application program with registration and subscription values
+###登録とサブスクリプションの値を使用したサンプル アプリケーション プログラムのロード
 
-In this section, you'll edit the solution in Visual Studio, substituting valid values obtained from the portal.
-The values that you will be adding appear near the top of Program.cs:
+このセクションでは、ポータルから取得した有効な値を代入して、Visual Studio でソリューションを編集します。追加する値は、Program.cs の上部に表示されます。
 
         private const string TenantId = "<your tenant id>";
         private const string ClientId = "<your client id>";
         private const string SubscriptionId = "<your subscription id>";
         private static readonly Uri RedirectUrl = new Uri("<your redirect url>");
 
-If you have not yet [downloaded the sample application from Github](https://github.com/Azure-Samples/search-dotnet-management-api/), you will need it for this step.
+まだ [Github からサンプル アプリケーションをダウンロード](https://github.com/Azure-Samples/search-dotnet-management-api/)していない場合は、この手順が必要になります。
 
-1. Open the **ManagementAPI.sln** in Visual Studio.
+1. Visual Studio で、**ManagementAPI.sln** を開きます。
 
-2. Open Program.cs.
+2. Program.cs を開きます。
 
-3. Provide `ClientId`. From the AD application configuration page left open from the previous step, copy the Client ID from the AD application configuration page in the portal and paste it into Program.cs.
+3. `ClientId` を指定します。前の手順で開いたままにした AD アプリケーションの構成ページから、ポータルの AD アプリケーションの構成ページからクライアント ID をコピーして、Program.cs に貼り付けます。
 
-4. Provide `RedirectUrl`. Copy Redirect URI from the same portal page, and paste it into Program.cs.
+4. `RedirectUrl` を指定します。同じポータルのページからリダイレクト URI をコピーし、Program.cs に貼り付けます。
 
-    ![][9]
+	![][9]
 
-5. Provide `TenantID.` 
-    - Go back to Active Directory | SearchTutorial (service). 
-    - Click **Applications** from the top bar. 
-    - Click **View Endpoints** at the bottom of the page. 
-    - Copy the OAUTH 2.0 Authorization Endpoint at the bottom of the list. 
-    - Paste the endpoint into TenantID, trimming the value of all URI parameters except the tenant ID.
+5. `TenantID.` を指定します。
+	- [Active Directory]、[SearchTutorial (サービス)] に戻ります。
+	- 上部のバーで **[アプリケーション]** をクリックします。
+	- ページの下部にある **[エンドポイントの表示]** をクリックします。
+	- 一覧の最後の、OAUTH 2.0 承認エンドポイントをコピーします。
+	- TenantID にエンドポイントを貼り付けます。TenantID 以外のすべての URI パラメーターの値を除去します。
 
-    Given "https://login.windows.net/55e324c7-1656-4afe-8dc3-43efcd4ffa50/oauth2/authorize?api-version=1.0", delete everything except "55e324c7-1656-4afe-8dc3-43efcd4ffa50".
+    "https://login.windows.net/55e324c7-1656-4afe-8dc3-43efcd4ffa50/oauth2/authorize?api-version=1.0" の場合、"55e324c7-1656-4afe-8dc3-43efcd4ffa50" 以外すべてを削除します。
 
-    ![][10]
+	![][10]
 
-6. Provide `SubscriptionID`.
-    - Go to the main portal page.
-    - Click **Settings** at the bottom of the left navigation pane.
-    - From the Subscriptions tab, copy the subscription ID and paste it into Program.cs.
+6. `SubscriptionID` を指定します。
+	- メインのポータル ページに移動します。
+	- 左側のナビゲーション ウィンドウの下部にある **[設定]** をクリックします。
+	- [サブスクリプション] タブで、サブスクリプション ID をコピーし、Program.cs に貼り付けます。
 
-7. Save and then build the solution.
+7. 保存し、ソリューションを構築します。
 
 
-##<a name="explore-the-application"></a>Explore the application
+##アプリケーションの探索
 
-Add a breakpoint at the first method call so that you can step through the program. Press **F5** to run the application, and then press **F11** to step through the code.
+最初のメソッド呼び出しでブレークポイントを追加して、プログラムをステップ実行できるようにします。**F5** キーを押してアプリケーションを実行してから、**F11** キーを押してコードをステップ実行します。
 
-The sample application creates a free Azure Search service for an existing Azure subscription. If a free service already exists for your subscription, the sample application will fail. Only one free Search service per subscription is allowed.
+サンプル アプリケーションでは、既存の Azure サブスクリプションに対する無料 Azure Search サービスが作成されます。既に無料のサービスがサブスクリプションに存在する場合は、サンプル アプリケーションは失敗します。サブスクリプションごとに 1 つだけ無料 Search サービスが許可されます。
 
-1. Open Program.cs from the Solution Explorer and go to the Main(string[] void) function. 
+1. ソリューション エクスプローラーから Program.cs を開き、Main(stringvoid) 関数に移動します。
  
-3. Notice that **ExecuteArmRequest** is used to execute requests against the Azure Resource Manager endpoint, `https://management.azure.com/subscriptions` for a specified `subscriptionID`. This method is used throughout the program to perform operations using the Azure Resource Manager API or Search management API.
+3. 指定された `subscriptionID` に対して、Azure リソース マネージャーのエンドポイント `https://management.azure.com/subscriptions` に対する要求の実行に **ExecuteArmRequest** が使用されることに注意してください。このメソッドはプログラム全体で使用され、Azure リソース マネージャー API または Search 管理 API を使用して操作を実行します。
 
-3. Requests to Azure Resource Manager must be authenticated and authorized. This is accomplished using the **GetAuthorizationHeader** method, called by the **ExecuteArmRequest**  method, borrowed from [Authenticating Azure Resource Manager requests](http://msdn.microsoft.com/library/azure/dn790557.aspx). Notice that **GetAuthorizationHeader** calls `https://management.core.windows.net` to get an access token.
+3. Azure リソース マネージャーへの要求は認証および承認される必要があります。これには **GetAuthorizationHeader** メソッドを使用します。このメソッドは **ExecuteArmRequest** メソッドによって呼び出されます。これは、「[Azure リソース マネージャー要求の認証](http://msdn.microsoft.com/library/azure/dn790557.aspx)」から流用しています。**GetAuthorizationHeader** は `https://management.core.windows.net` を呼び出してアクセス トークンを取得することに注意してください。
 
-4. You are prompted to sign in with a user name and password that is valid for your subscription.
+4. サブスクリプションに対して有効なユーザー名とパスワードを使用してサインインすることが求められます。
 
-5. Next, a new Azure Search service is registered with the Azure Resource Manager provider. Again, this is the **ExecuteArmRequest** method, used this time to create the Search service on Azure for your subscription via `providers/Microsoft.Search/register`. 
+5. 次に、Azure リソース マネージャーのプロバイダーに新しい Azure Search サービスが登録されます。これも **ExecuteArmRequest** メソッドです。ここではこのメソッドを使用し、`providers/Microsoft.Search/register` を介して、サブスクリプションに Azure の Search サービスを作成します。
 
-6. The remainder of the program uses the [Azure Search Management REST API](http://msdn.microsoft.com/library/dn832684.aspx). Notice that the `api-version` for this API is different from the Azure Resource Manager api-version. For example, `/listAdminKeys?api-version=2014-07-31-Preview` shows the `api-version` of the Azure Search Management REST API.
+6. プログラムの残りの部分では、[Azure Search 管理 REST API](http://msdn.microsoft.com/library/dn832684.aspx) を使用します。この API の `api-version` は Azure リソース マネージャーの API バージョンとは異なることに注意してください。たとえば、`/listAdminKeys?api-version=2014-07-31-Preview` は、Azure Search Management REST API の `api-version` を示しています。
 
-    The next series of operations retrieve the service definition you just created, the admin api-keys, regenerates and retrieves keys, changes the replica and parition, and finally deletes the service.
+	次の一連の操作では、今作成したサービス定義および管理 API キーの取得、キーの再生成と取得、レプリカとパーティションの変更、最後にサービスの削除を行います。
 
-    When changing the service replica or partition count, it is expected that this action will fail if you are using the free edition. Only the standard edition can make use of additional partitions and replicas.
+	サービスのレプリカ、またはパーティションの数を変更する場合、無償のエディションを使用しているとこの操作は失敗すると想定されます。標準エディションだけがパーティションとレプリカを追加できます。
 
-    Deleting the service is the last operation.
+	最後の操作はサービスの削除です。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-After having completed this tutorial, you might want to learn more about service management or authentication with Active Directory service:
+このチュートリアルを完了した後は、次の記事によって Active Directory サービスでのサービスの管理または認証について詳しく知ることができます。
 
-- Learn more about integrating a client application with Active Directory. See [Integrating Applications in Azure Active Directory](http://msdn.microsoft.com/library/azure/dn151122.aspx).
-- Learn about other service management operations in Azure. See [Managing Your Services](http://msdn.microsoft.com/library/azure/dn578292.aspx).
+- クライアント アプリケーションと Active Directory との統合の詳細については、「[Azure Active Directory へのアプリケーションの登録](http://msdn.microsoft.com/library/azure/dn151122.aspx)」を参照してください。
+- Azure のその他のサービス管理操作の詳細については、「[サービスの管理](http://msdn.microsoft.com/library/azure/dn578292.aspx)」を参照してください。
 
 <!--Anchors-->
 [Download the sample application]: #Download
@@ -210,8 +208,4 @@ After having completed this tutorial, you might want to learn more about service
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

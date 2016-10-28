@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure SQL Database Works in Your Environment"
-   description="Learn how SQL Database helps, secures and protects"
+   pageTitle="ご利用の環境での Azure SQL Database の使用"
+   description="SQL Database でセキュリティと保護を支援する方法"
    keywords=""
    services="sql-database"
    documentationCenter=""
@@ -14,44 +14,39 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-management"
-   ms.date="10/13/2016"
+   ms.date="07/19/2016"
    ms.author="carlrab"/>
 
+# ご利用の環境での Azure SQL Database の使用
 
-# <a name="azure-sql-database-works-in-your-environment"></a>Azure SQL Database Works in your Environment
+## 使い慣れたもので接続する
 
-## <a name="connect-with-what-you-already-know"></a>Connect with what you already know
-
-The last thing you want to do is learn something new just to connect with a database. Azure SQL Database makes it easy with a variety of languages and platforms you’re used to working with.
+最も避けたいのは、データベースに接続するためだけに新しいことを覚えることです。Azure SQL Database は、既に使用しているさまざまな言語やプラットフォームで簡単に使用できます。
 
 ![works-in-your-environment](./media/sql-database-works-in-your-environment/sql-database-works-in-your-environment.png)
 
-When choosing a database, you shouldn't have to move to a new platform, or learn a new language. SQL Database has code samples to help you get started, wherever you are.  
+データベースを選択するときに、新しいプラットフォームに移行したり、新しい言語を学んだりする必要はないはずです。SQL Database には、どんな環境にあっても使い始める場合に役立つコード サンプルがあります。
 
-[Learn more about SQL Database Development](sql-database-develop-overview.md) 
+[SQL Database での開発の詳細についてご確認ください](sql-database-develop-overview.md)
 
-## <a name="the-right-tools-for-the-job"></a>The right tools for the job
+## ジョブに最適なツール
 
-You don't have to learn a whole new set of tools to get started with SQL Database. You can leverage open source tools like [cheetah](https://github.com/wunderlist/cheetah), [sql-cli](https://www.npmjs.com/package/sql-cli), [VS Code](https://code.visualstudio.com/). Additionally, Azure SQL Database works with Microsoft tools like [Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) and  [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  You can also use the Azure Management Portal, PowerShell, and REST APIs help you gain additional productivity.
+SQL Database を使い始めるために、まったく新しい一連のツールを学習する必要はありません。[cheetah](https://github.com/wunderlist/cheetah)、[sql-cli](https://www.npmjs.com/package/sql-cli)、[VS コード](https://code.visualstudio.com/)などのオープン ソース ツールを活用できます。さらに、Azure SQL Database は、[Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)、[SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) などの Microsoft ツールと連携しています。また、Microsoft Azure 管理ポータル、PowerShell、および REST API も使用でき、生産性向上に役立ちます。
 
-## <a name="get-started-quickly"></a>Get started quickly
+## すぐに使い始められる
 
-The right anwers to your SQL Database questions are never too far away, with tutorials on creating your first SQL Database, troubleshooting queries, and quick-start code samples.
+最初の SQL Database を作成するためのチュートリアル、クエリに関するトラブルシューティング、およびクイック スタート コード サンプルによって、SQL Database に関する質問への適切な回答をすぐに得ることができます。
 
-[Learn more about SQL Database](sql-database-technical-overview.md)
+[SQL Database の詳細についてご確認ください](sql-database-technical-overview.md)
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Get a [free Azure subscription](https://azure.microsoft.com/get-started/) and [create your first Azure SQL Database](sql-database-get-started.md).
+[無料の Azure サブスクリプション](https://azure.microsoft.com/get-started/)を入手し、[最初の Azure SQL Database を作成](sql-database-get-started.md)します。
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-* Explore all the [capabilities of SQL Database](https://azure.microsoft.com/services/sql-database/).
-* Review the [technical overview of SQL Database](sql-database-technical-overview.md).
-* [SQL Database Development Overview](sql-database-develop-overview.md)
+* [SQL Database の機能](https://azure.microsoft.com/services/sql-database/)すべてを確認します。
+* [SQL Database の技術概要](sql-database-technical-overview.md)を確認します。
+* [SQL Database の開発: 概要](sql-database-develop-overview.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric Cluster Resource Manager - Application Groups | Microsoft Azure"
-   description="Overview of the Application Group functionality in the Service Fabric Cluster Resource Manager"
+   pageTitle="Service Fabric クラスター リソース マネージャー - アプリケーション グループ | Microsoft Azure"
+   description="Service Fabric クラスター リソース マネージャーのアプリケーション グループ機能の概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,31 +16,30 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
+# アプリケーション グループの概要
+通常、Service Fabric のクラスター リソース マネージャーは、クラスター全体で (メトリックで表される) 負荷を均等に分散することによって、クラスター リソースを管理します。Service Fabric では、クラスター内のノードの容量、および容量の全体的な概念としてクラスターも管理されます。これは、非常に多くの種類のワークロードに適していますが、複数の Service Fabric アプリケーションのインスタンスを頻繁に使用するパターンの場合、追加の要件が生じることがあります。一般的な追加要件の例として、以下が挙げられます。
 
-# <a name="introduction-to-application-groups"></a>Introduction to Application Groups
-Service Fabric's Cluster Resource Manager typically manages cluster resources by spreading the load (represented via Metrics) evenly throughout the cluster. Service Fabric also manages the capacity of the nodes in the cluster and the cluster as a whole through the notion of capacity. This works great for a lot of different types of workloads, but patterns that make heavy use of different Service Fabric Application Instances sometimes bring in additional requirements. Some additional requirements are typically:
+- 多数のノード上でアプリケーション インスタンスのサービスの容量を予約する機能
+- アプリケーション内の指定された一連のサービスの実行が許可されているノードの合計数を制限する機能
+- アプリケーション インスタンス内のサービスの数または全体的なリソースの消費量を制限するための、アプリケーション インスタンス自体の容量の定義
 
-- Ability to reserve capacity for an Application Instance's services on some number of nodes
-- Ability to limit the total number of nodes that a given set of services within an application is allowed to run on
-- Defining capacities on the application instance itself in order to limit the number or total resource consumption of the services inside it
+これらの要件を満たすため、アプリケーション グループと呼ばれる機能を対象としたサポートを開発しました。
 
-In order to meet these requirements, we developed support for what we call Application Groups.
+## アプリケーション容量の管理
+アプリケーション容量を使用して、アプリケーションによって使用されるノードの数、および個々のノード上にあるアプリケーションのインスタンスの合計メトリック負荷を制限することができます。これを使用して、アプリケーションのクラスター内でリソースを予約することも使用できます。
 
-## <a name="managing-application-capacity"></a>Managing Application capacity
-Application capacity can be used to limit the number of nodes spanned by an application, as well as the total metric load of that the applications’ instances on individual nodes. It can also be used to reserve resources in the cluster for the application.
+アプリケーション容量は、新しいアプリケーションの作成時に、これらのアプリケーションに対して設定できます。アプリケーション容量を指定せずに作成された既存のアプリケーションに対しても新しく設定することができます。
 
-Application capacity can be set for new applications when they are created; it can also be updated for existing applications that were created without specifying Application capacity.
+### 最大ノード数の制限
+アプリケーション容量の最も簡単な使用例は、アプリケーションのインスタンス化を、特定の最大ノード数に制限する必要がある場合です。アプリケーション容量が指定されていない場合は、Service Fabric クラスター リソース マネージャーによって、通常の規則 (負荷分散または最適化) に従ってレプリカがインスタンス化されます。これは通常、サービスがクラスター内のすべての使用可能なノードに対して、または最適化が有効になっている場合には任意の少数のノードに対して分散されることを意味します。
 
-### <a name="limiting-the-maximum-number-of-nodes"></a>Limiting the maximum number of nodes
-The simplest use case for Application capacity is when an application instantiation needs to be limited to a certain maximum number of nodes. If no Application Capacity is specified, the Service Fabric Cluster Resource Manager will instantiate replicas according to normal rules (balancing or defragmentation), which usually means that its services will be spread across all of the available nodes in the cluster, or if defragmentation is turned on some arbitrary but smaller number of nodes.
+次の図は、最大ノード数が定義されていない状態でのアプリケーション インスタンスの配置と、最大ノード数が設定されている場合の同じアプリケーションの配置を示しています。どのサービスのどのレプリカまたはインスタンスが一緒に配置されるかについては保証されません。
 
-The following image shows the potential placement of an application instance without the maximum number of nodes defined and then same application with a maximum number of nodes set. Note that there is no guarantees made about which replicas or instances of which services will get placed together.
+![最大ノード数を定義したアプリケーション インスタンス][Image1]
 
-![Application Instance Defining Maximum Number of Nodes][Image1]
+左の例では、アプリケーションにはアプリケーション容量が設定されておらず、3 つのサービスが含まれます。CRM では、クラスター内の最適なバランスを実現するために、使用可能な 6 つのノードにすべてのレプリカを分散する論理意思決定が行われています。右側の例では、同じアプリケーションが 3 つのノードに限られており、Service Fabric CRM はアプリケーションのサービスのレプリカの最適なバランスを実現していることがわかります。
 
-In the left example, the application doesn’t have Application Capacity set, and it has three services. CRM has made a logical decision to spread out all replicas across six available nodes in order to achieve the best balance in the cluster. In the right example, we see the same application that is constrained on three nodes, and where Service Fabric CRM has achieved the best balance for the replicas of application’s services.
-
-The parameter that controls this behavior is called MaximumNodes. This parameter can be set during application creation, or updated for an application instance which was already running, in which case Service Fabric CRM will constrain the replicas of application’s services to the defined maximum number of nodes.
+この動作を制御するパラメーターは、MaximumNodes と呼ばれます。このパラメーターは、アプリケーションの作成時に設定するか、または既に実行中のアプリケーション インスタンスに対して新しく設定することができます。この場合、Serivice Fabric CRM は、アプリケーションのサービスのレプリカを定義された最大ノード数に制限します。
 
 Powershell
 
@@ -70,109 +69,103 @@ appMetric.TotalApplicationCapacity = 1000;
 adUpdate.Metrics.Add(appMetric);
 ```
 
-## <a name="application-metrics,-load,-and-capacity"></a>Application Metrics, Load, and Capacity
-Application Groups also allow you to define metrics associated with a given application instance, as well as the capacity of the application with regard to those metrics. So for example you could define that as many services as you want could be created in
+## アプリケーションのメトリック、負荷、および容量
+アプリケーション グループを使用して、特定のアプリケーション インスタンスに関連付けられたメトリックと、これらのメトリックに関してアプリケーション容量を定義することもできます。たとえば、作成する必要のある数だけサービスを定義できます。
 
-For each metric, there are 2 values that can be set to describe the capacity for that application instance:
+各メトリックについて、そのアプリケーション インスタンスの容量を指定する 2 つの値を設定できます。
 
--   Total Application Capacity – Represents the total capacity of the application for a particular metric. Service Fabric CRM will try to limit the sum of metric loads of this application’s services to the specified value; furthermore, if the application’s services are already consuming load up to this limit, Service Fabric Cluster Resource Manager will disallow the creation of any new services or partitions which would cause total load to go over this limit.
--   Maximum Node Capacity – Specifies the maximum total load for replicas of the applications’ services on a single node. If total load on the node goes over this capacity, Service Fabric CRM will attempt to move replicas to other nodes so that the capacity constraint is respected.
+-	アプリケーションの合計容量 - 特定のメトリックに対するアプリケーションの合計容量を表します。Service Fabric CRM では、このアプリケーションのサービスのメトリック負荷合計が指定した値に制限されます。さらに、アプリケーションのサービスが既にこの上限まで負荷を消費している場合、負荷合計がこの上限を超過しないように、新しいサービスやパーティションの作成が Service Fabric クラスター リソース マネージャーによって禁止されます。
+-	最大ノード容量 - 単一ノード上のアプリケーションのサービスのレプリカに対する最大負荷合計を指定します。ノードの負荷合計がこの容量を超過すると、Service Fabric CRM は、レプリカを他のノードに移動して容量の制約を順守しようとします。
 
-## <a name="reserving-capacity"></a>Reserving Capacity
-Another common use for application groups is to ensure that resources within the cluster are reserved for a given application instance, even if the application instance doesn't have the services within it yet, or even if they aren't consuming the resources yet. Let's take a look at how that would work.  
+## 容量の予約
+アプリケーション グループの別の一般的な用途として、クラスター内に特定のアプリケーション インスタンスのサービスがない場合、またはこのアプリケーション インスタンスがまだリソースを消費していない場合でも、クラスター内のリソースをこのアプリケーション インスタンス用に確保することが挙げられます。この確保を行う方法を以下で説明します。
 
-### <a name="specifying-a-minimum-number-of-nodes-and-resource-reservation"></a>Specifying a minimum number of nodes and resource reservation
-Reserving resources for an application instance requires specifying a couple additional parameters: *MinimumNodes* and *NodeReservationCapacity*
+### 最小ノード数とリソースの予約の指定
+アプリケーションのインスタンス用にリソースを予約するには、追加パラメーター *MinimumNodes* と *NodeReservationCapacity* を指定する必要があります。
 
-- MinimumNodes - Just like specifying a target maximum number of nodes that the services within an application can run on, you can also specify the minimum number of nodes that an application should run on. This setting effectively defines the number of nodes that the resources should be reserved on at a minimum, guaranteeing capacity within the cluster as a part of creating the application instance.
-- NodeReservationCapacity - The NodeReservationCapacity can be defined for each metric within the application. This defines the amount of metric load reserved for the application on any node where any of the replicas or instances of the services within it are placed.
+- MinimumNodes - アプリケーション内のサービスを実行できるターゲット最大ノード数を指定するのと同様に、アプリケーションを実行する必要のある最小ノード数も指定できます。この設定により、リソースが予約される必要のある最小ノード数が実質的に定義され、アプリケーション インスタンス作成の一部として、クラスター内の容量が確保されます。
+- NodeReservationCapacity - アプリケーション内の各メトリックに対して NodeReservationCapacity を定義することができます。これにより、アプリケーション内のサービスのレプリカやインスタンスが配置されているノード上で、そのアプリケーション用に予約されているメトリック負荷の量が定義されます。
 
-Let's take a look at an example of capacity reservation:
+容量の予約の例を以下に示します。
 
-![Application Instances Defining Reserved Capacity][Image2]
+![予約容量を定義したアプリケーション インスタンス][Image2]
 
-In the left example, applications do not have any Application Capacity defined. Service Fabric Cluster Resource Manager will balance the application’s child services replicas and instances along with those from other services (outside of the application) to ensure balance in the cluster.
+左の例では、アプリケーションにアプリケーション容量が定義されていません。Service Fabric クラスター リソース マネージャーは、アプリケーションの子サービスのレプリカとインスタンスの負荷を、このアプリケーション以外の他のサービスのレプリカとインスタンスと合わせて分散し、クラスター内でのバランスを保ちます。
 
-In the example on the right, let's say that the application was created with a MinimumNodes set to 2, MaximumNodes set to 3 and an application Metric defined with a reservation of 20, max capacity on a node of 50, and a total application capacity of 100, Service Fabric will reserve capacity on two nodes for the blue application, and will not allow other replicas in the cluster to consume that capacity. This reserved application capacity will be considered consumed and counted against the remaining cluster capacity.
+右の例では、アプリケーションは、MinimumNodes が 2、MaximumNodes が 3 に設定された状態で作成され、アプリケーションのメトリックについては予約が 20、ノードの最大容量が 50、合計アプリケーション容量が 100 で定義されています。Service Fablic は青のアプリケーションに対して 2 つのノードで容量を予約し、クラスター内の他のレプリカによるこの容量の消費を禁止します。この予約されたアプリケーション容量は、残りのクラスター容量に対して消費されたものとみなされてカウントされます。
 
-When an application is created with reservation, the Cluster Resource Manager will reserve capacity equal to MinimumNodes * NodeReservationCapacity in the cluster, but it will not reserve capacity on specific nodes until the replicas of the application’s services are created and placed. This allows for flexibility, since nodes are chosen for new replicas only when they are created. Capacity is reserved on a specific node when at least one replica is placed on it.
+アプリケーションが予約ありで作成されると、クラスター リソース マネージャーは MinimumNodes と NodeReservationCapacity の積と同等の容量をクラスター内で予約しますが、特定のノードの容量は、アプリケーションのサービスのレプリカが作成されて配置されるまで予約されません。これにより、ノードは、新しいレプリカが作成された場合にのみこれらのレプリカに対して選択されるため、柔軟性が向上します。特定のノードに 1 つ以上のレプリカが配置されると、そのノードの容量が予約されます。
 
-## <a name="obtaining-the-application-load-information"></a>Obtaining the application load information
-For each application that has Application Capacity defined you can obtain the information about the aggregate load reported by replicas of its services. Service Fabric provides PowerShell and Managed API queries for this purpose.
+## アプリケーションの負荷情報の取得
+アプリケーション容量が定義されている各アプリケーションについて、サービスのレプリカ別に報告される負荷の集計に関する情報を取得できます。Service Fabric では、このために PowerShell とマネージ API のクエリが用意されています。
 
-For example, load can be retrieved using the following PowerShell cmdlet:
+たとえば、負荷は次の PowerShell コマンドレットを使用して取得できます。
 
 ``` posh
 Get-ServiceFabricApplicationLoad –ApplicationName fabric:/MyApplication1
 
 ```
 
-The output of this query will contain the basic information about Application Capacity that was specified for the application, such as Minimum Nodes and Maximum Nodes. There will also be information about the number of nodes that the application is currently using. Thus, for each load metric there will be information about:
-- Metric Name: Name of the metric.
--   Reservation Capacity: Cluster Capacity that is reserved in the cluster for this Application.
--   Application Load: Total Load of this Application’s child replicas.
--   Application Capacity: Maximum permitted value of Application Load.
+このクエリの出力には、最小ノード数や最大ノード数など、アプリケーションで指定されたアプリケーション容量に関する基本情報が含まれています。アプリケーションが現在使用しているノードの数に関する情報も含まれます。そのため、負荷メトリックごとに次の情報があります。
+- Metric Name: メトリックの名前。
+-	Reservation Capacity: このアプリケーションで予約されているクラスター容量。
+-	Application Load: このアプリケーションの子レプリカの負荷合計。
+-	Application Capacity: アプリケーションの負荷の最大許容値。
 
-## <a name="removing-application-capacity"></a>Removing Application Capacity
-Once the Application Capacity parameters are set for an application, they can be removed using Update Application APIs or PowerShell cmdlets. For example:
+## アプリケーション容量の削除
+アプリケーション容量の各パラメーターは、アプリケーションに対して設定した後で、アプリケーション更新 API または PowerShell コマンドレットを使用して削除できます。次に例を示します。
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 –RemoveApplicationCapacity
 
 ```
 
-This command will remove all Application Capacity parameters from the application, and Service Fabric Cluster Resource Manager will start treating this application as any other application in the cluster that does not have these parameters defined. The effect of the command is immediate, and Cluster Resource Manager will delete all Application Capacity parameters for this application; specifying them again would require Update Application APIs to be called with the appropriate parameters.
+このコマンドにより、アプリケーションからすべてのアプリケーション容量パラメーターが削除されます。Service Fabric クラスター リソース マネージャーでのこのアプリケーションの処理は、クラスター内のこれらのパラメーターが定義されていない他のアプリケーションと同様になります。コマンドは即座に効果を発揮し、クラスター リソース マネージャーはこのアプリケーションのすべてのアプリケーション容量パラメーターを削除します。これらのパラメーターを再び指定するには、アプリケーション更新 API を適切なパラメーターで呼び出す必要があります。
 
-## <a name="restrictions-on-application-capacity"></a>Restrictions on Application Capacity
-There are several restrictions on Application Capacity parameters that must be respected. In case of validation errors, the creation or update of the application will be rejected with an error.
-All integer parameters must be non-negative numbers.
-Moreover, for individual parameters restrictions are as follows:
+## アプリケーション容量に関する制限事項
+アプリケーション容量パラメーターには、順守する必要があるいくつかの制限があります。検証エラーが発生した場合、アプリケーションの作成または更新は拒否され、エラーが表示されます。すべての整数パラメーターは、マイナスではない数字にする必要があります。さらに、個別のパラメーターに対する制限は以下のとおりです。
 
--   MinimumNodes must never be greater than MaximumNodes.
--   If capacities for a load metric are defined, then they must follow these rules:
-  - Node Reservation Capacity must not be greater than Maximum Node Capacity. For example, you cannot limit the capacity for metric “CPU” on the node to 2 units, and try to reserve 3 units on each node.
-  - If MaximumNodes is specified, then the product of MaximumNodes and Maximum Node Capacity must not be greater than Total Application Capacity. For example, if you set the Maximum Node Capacity for load metric “CPU” to 8 and you set the Maximum Nodes to 10, then Total Application Capacity must be greater than 80 for this load metric.
+-	MinimumNodes を MaximumNodes より大きくすることはできません。
+-	負荷メトリックの容量を定義する場合、これらの容量は以下の規則に従う必要があります。
+  - ノードの予約容量を最大ノード容量よりも大きくすることはできません。たとえば、ノードのメトリック "CPU" の容量を 2 ユニットに制限してから、各ノードで 3 ユニットを予約することはできません。
+  - MaximumNodes を指定する場合は、MaximumNodes と最大ノード容量の積はアプリケーションの合計容量を超えないようにする必要があります。たとえば、メトリック "CPU" の最大ノード容量を 8 に設定し、MaximumNodes を 10 に設定した場合、この負荷メトリックに対するアプリケーションの合計容量は 80 より大きくする必要があります。
 
-The restrictions are enforced both during application creation (on the client side), and during application update (on the server side). During creation, this is an example of a clear violation of the requirements since MaximumNodes < MinimumNodes, and the command will fail in the client before the request is even sent to Service Fabric cluster:
+この制限は、アプリケーションの作成時 (クライアント側) とアプリケーションの更新中 (サーバー側) の両方で適用されます。以下の作成時の例では、MaximumNodes より MinimumNodes が大きくなっているため明らかに要件違反であり、このコマンドは、要求が Service Fabric クラスターに送信される前にクライアントでエラーを生じます。
 
 ``` posh
 New-ServiceFabricApplication –Name fabric:/MyApplication1 –MinimumNodes 6 –MaximumNodes 2
 ```
 
-An example of invalid update is as follows. If we take an existing application and update maximum nodes to some value, the update will pass:
+無効な更新の例を以下に示します。次のように、既存のアプリケーションを指定して最大ノード数を一定の値に更新すると、更新は正常に行われます。
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 6 –MaximumNodes 2
 ```
 
-After that, we can attempt to update minimum nodes:
+その後、次のように最小ノード数の更新を試行したとします。
 
 ``` posh
 Update-ServiceFabricApplication –Name fabric:/MyApplication1 6 –MinimumNodes 6
 ```
 
-The client does not have enough context about the application so it will allow the update to pass to the Service Fabric cluster. However, in the cluster, Service Fabric will validate the new parameter together with the existing parameters and will fail the update operation because the value foe minimum nodes is greater than the value for maximum nodes. In this case, Application Capacity parameters will remain unchanged.
+クライアントにはアプリケーションに関する十分なコンテキストがないため、この更新の操作は Service Fabric クラスターに渡されます。しかし、Service Fabric はクラスター内で既存のパラメーターと共に新しいパラメーターを検証すると、最小ノード数の値が最大ノード数の値より大きいため、更新操作は失敗します。この場合、アプリケーション容量パラメーターは変更されないままとなります。
 
-These restrictions are put in place in order for Cluster Resource Manager to be able to provide the best placement for replicas of applications’ services.
+これらの制限は、クラスター リソース マネージャーがアプリケーションのサービスのレプリカを最適に配置できるように設けられています。
 
-## <a name="how-not-to-use-application-capacity"></a>How not to use Application Capacity
+## アプリケーション容量を使用すべきでない場合
 
--   Do not use the Application Capacity to constrain the application to a specific subset of nodes: Although Service Fabric will ensure that Maximum Nodes is respected for each application that has Application Capacity specified, users cannot decide which nodes it will be instantiated on. This can be achieved using placement constraints for services.
--   Do not use the Application Capacity to ensure that two services from the same application will always be placed alongside each other. This can be achieved by using affinity relationship between services, and affinity can be limited only to the services that should actually be placed together.
+-	アプリケーション容量は、アプリケーションを特定のノードのサブセットに制限するために使用しないでください。Service Fabric はアプリケーション容量が指定されているアプリケーションで最大ノード数が順守されるようにしますが、ユーザーはアプリケーションがインスタンス化されるノードを決定することができません。これは、サービスの配置の制約を使用して実現できます。
+-	アプリケーション容量は、同じアプリケーションの 2 つのサービスが常に並んで配置されるようにするために使用しないでください。これは、サービス間でのアフィニティの関係を使用して実現でき、アフィニティは一緒に配置する必要があるサービスのみに制限できます。
 
-## <a name="next-steps"></a>Next steps
-- For more information about the other options available for configuring services check out the topic on the other Cluster Resource Manager configurations available [Learn about configuring Services](service-fabric-cluster-resource-manager-configure-services.md)
-- To find out about how the Cluster Resource Manager manages and balances load in the cluster, check out the article on [balancing load](service-fabric-cluster-resource-manager-balancing.md)
-- Start from the beginning and [get an Introduction to the Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
-- For more information on how metrics work generally, read up on [Service Fabric Load Metrics](service-fabric-cluster-resource-manager-metrics.md)
-- The Cluster Resource Manager has a lot of options for describing the cluster. To find out more about them check out this article on [describing a Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md)
-
-
-[Image1]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
-[Image2]:./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
+## 次のステップ
+- サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
+- クラスター リソース マネージャーでクラスターの負荷を管理し、分散するしくみについては、[負荷分散](service-fabric-cluster-resource-manager-balancing.md)に関する記事を参照してください。
+- 最初から開始して、[Service Fabric クラスター リソース マネージャーの概要を確認するにはこちらを参照してください](service-fabric-cluster-resource-manager-introduction.md)。
+- メトリックの一般的な動作について詳しくは、[Service Fabric の負荷メトリック](service-fabric-cluster-resource-manager-metrics.md)に関する記事を参照してください。
+- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
 
 
+[Image1]: ./media/service-fabric-cluster-resource-manager-application-groups/application-groups-max-nodes.png
+[Image2]: ./media/service-fabric-cluster-resource-manager-application-groups/application-groups-reserved-capacity.png
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

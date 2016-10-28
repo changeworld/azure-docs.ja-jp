@@ -1,45 +1,44 @@
 <properties
-    pageTitle="Azure Functions triggers and bindings for Azure Storage | Microsoft Azure"
-    description="Understand how to use Azure Storage triggers and bindings in Azure Functions."
-    services="functions"
-    documentationCenter="na"
-    authors="christopheranderson"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="azure functions, functions, event processing, dynamic compute, serverless architecture"/>
+	pageTitle="Azure Functions における Azure Storage のトリガーとバインド | Microsoft Azure"
+	description="Azure Functions で Azure Storage のトリガーとバインドを使用する方法について説明します。"
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
 
 <tags
-    ms.service="functions"
-    ms.devlang="multiple"
-    ms.topic="reference"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="08/22/2016"
-    ms.author="chrande"/>
+	ms.service="functions"
+	ms.devlang="multiple"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="08/22/2016"
+	ms.author="chrande"/>
 
-
-# <a name="azure-functions-triggers-and-bindings-for-azure-storage"></a>Azure Functions triggers and bindings for Azure Storage
+# Azure Functions における Azure Storage のトリガーとバインド
 
 [AZURE.INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
-This article explains how to configure and code Azure Storage triggers and bindings in Azure Functions. 
+この記事では、Azure Functions で Azure Storage のトリガーとバインドを構成したりコーディングしたりする方法について説明します。
 
-[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)] 
+[AZURE.INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-## <a name="<a-id="storagequeuetrigger"></a>-azure-storage-queue-trigger"></a><a id="storagequeuetrigger"></a> Azure Storage queue trigger
+## <a id="storagequeuetrigger"></a> Azure Storage キュー トリガー
 
-#### <a name="function.json-for-storage-queue-trigger"></a>function.json for storage queue trigger
+#### ストレージ キュー トリガーの function.json
 
-The *function.json* file specifies the following properties.
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name` : The variable name used in function code for the queue or the queue message. 
-- `queueName` : The name of the queue to poll. For queue naming rules, see [Naming Queues and Metadata](https://msdn.microsoft.com/library/dd179349.aspx).
-- `connection` : The name of an app setting that contains a storage connection string. If you leave `connection` empty, the trigger will work with the default storage connection string for the function app, which is specified by the AzureWebJobsStorage app setting.
-- `type` : Must be set to *queueTrigger*.
-- `direction` : Must be set to *in*. 
+- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。
+- `queueName`: ポーリングするキューの名前。キューの名前付け規則については、「[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)」を参照してください。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
+- `type`: *queueTrigger* に設定する必要があります。
+- `direction`: *in* に設定する必要があります。
 
-Example *function.json* for a storage queue trigger:
+ストレージ キュー トリガーの *function.json* の例を次に示します。
 
 ```json
 {
@@ -56,18 +55,18 @@ Example *function.json* for a storage queue trigger:
 }
 ```
 
-#### <a name="queue-trigger-supported-types"></a>Queue trigger supported types
+#### キュー トリガーにサポートされた型
 
-The queue message can be deserialized to any of the following types:
+キュー メッセージを、次のいずれかの型に逆シリアル化できます。
 
-* Object (from JSON)
+* オブジェクト (JSON)
 * String
-* Byte array 
-* `CloudQueueMessage` (C#) 
+* Byte array
+* `CloudQueueMessage` (C#)
 
-#### <a name="queue-trigger-metadata"></a>Queue trigger metadata
+#### キュー トリガー メタデータ
 
-You can get queue metadata in your function by using these variable names:
+関数にキュー メタデータを取得するには、次の変数名を使用します。
 
 * expirationTime
 * insertionTime
@@ -75,9 +74,9 @@ You can get queue metadata in your function by using these variable names:
 * id
 * popReceipt
 * dequeueCount
-* queueTrigger (another way to retrieve the queue message text as a string)
+* queueTrigger (文字列としてキュー メッセージ テキストを取得する別の方法)
 
-This C# code example retrieves and logs queue metadata:
+この C# コードの例では、ログ キュー メタデータを取得し、記録します。
 
 ```csharp
 public static void Run(string myQueueItem, 
@@ -101,29 +100,29 @@ public static void Run(string myQueueItem,
 }
 ```
 
-#### <a name="handling-poison-queue-messages"></a>Handling poison queue messages
+#### 有害キュー メッセージの処理
 
-Messages whose content causes a function to fail are called *poison messages*. When the function fails, the queue message is not deleted and eventually is picked up again, causing the cycle to be repeated. The SDK can automatically interrupt the cycle after a limited number of iterations, or you can do it manually.
+関数の失敗を引き起こす内容を含むメッセージは*有害メッセージ*と呼ばれます。関数が失敗してもキュー メッセージは削除されず、最終的には回収されて、このサイクルを繰り返します。SDK では一定数繰り返し送信されると自動的にそのサイクルを中断します。また手動でも処理できます。
 
-The SDK will call a function up to 5 times to process a queue message. If the fifth try fails, the message is moved to a poison queue.
+SDKでは、キュー メッセージを処理する関数を最大 5 回呼び出します。5 回目が失敗すると、メッセージは有害メッセージ キューに移動します。
 
-The poison queue is named *{originalqueuename}*-poison. You can write a function to process messages from the poison queue by logging them or sending a notification that manual attention is needed. 
+有害キューには *{originalqueuename}*-poison という名前が付けられます。メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
-If you want to handle poison messages manually, you can get the number of times a message has been picked up for processing by checking `dequeueCount`.
+有害メッセージを手動で処理する場合は、処理のためにメッセージが取得された回数を、`dequeueCount` を確認して取得できます。
 
-## <a name="<a-id="storagequeueoutput"></a>-azure-storage-queue-output-binding"></a><a id="storagequeueoutput"></a> Azure Storage queue output binding
+## <a id="storagequeueoutput"></a>Azure Storage キュー出力バインド
 
-#### <a name="function.json-for-storage-queue-output-binding"></a>function.json for storage queue output binding
+#### ストレージ キュー出力バインドの function.json
 
-The *function.json* file specifies the following properties.
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name` : The variable name used in function code for the queue or the queue message. 
-- `queueName` : The name of the queue. For queue naming rules, see [Naming Queues and Metadata](https://msdn.microsoft.com/library/dd179349.aspx).
-- `connection` : The name of an app setting that contains a storage connection string. If you leave `connection` empty, the trigger will work with the default storage connection string for the function app, which is specified by the AzureWebJobsStorage app setting.
-- `type` : Must be set to *queue*.
-- `direction` : Must be set to *out*. 
+- `name`: キューまたはキュー メッセージの関数コードで使用される変数名。
+- `queueName`: キューの名前。キューの名前付け規則については、「[キューおよびメタデータの名前付け](https://msdn.microsoft.com/library/dd179349.aspx)」を参照してください。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
+- `type`: *queue* に設定する必要があります。
+- `direction`: *out* に設定する必要があります。
 
-Example *function.json* for a storage queue output binding that uses a queue trigger and writes a queue message:
+キュー トリガーを使用してキュー メッセージを書き込むストレージ キュー出力バインドの *function.json* の例を次に示します。
 
 ```json
 {
@@ -147,20 +146,20 @@ Example *function.json* for a storage queue output binding that uses a queue tri
 }
 ``` 
 
-#### <a name="queue-output-binding-supported-types"></a>Queue output binding supported types
+#### キュー出力バインドにサポートされた型
 
-The `queue` binding can serialize the following types to a queue message:
+`queue` バインドは、次の型をキュー メッセージにシリアル化できます。
 
-* Object (`out T` in C#, creates a message with a null object if the parameter is null when the function ends)
-* String (`out string` in C#, creates queue message if parameter value is non-null when the function ends)
-* Byte array (`out byte[]` in C#, works like string) 
-* `out CloudQueueMessage` (C#, works like string) 
+* Object (C# の `out T` で、関数が終了したときにパラメーターが null である場合は、null オブジェクトでメッセージを作成します)
+* String (C# の `out string` で、関数が終了したときにパラメーター値が null でない場合は、キュー メッセージを作成します)
+* Byte array (C# の `out byte[]` で、string と同様に動作)
+* `out CloudQueueMessage` (C#、string と同様に動作)
 
-In C# you can also bind to `ICollector<T>` or `IAsyncCollector<T>` where `T` is one of the supported types.
+また、C# では、`T` がいずれかのサポートされている型である場合、`ICollector<T>` または `IAsyncCollector<T>` にバインドすることもできます。
 
-#### <a name="queue-output-binding-code-examples"></a>Queue output binding code examples
+#### キュー出力バインドのコード例
 
-This C# code example writes a single output queue message for each input queue message.
+この C# コード例では、入力キュー メッセージごとに 1 つの出力キュー メッセージを書き込みます。
 
 ```csharp
 public static void Run(string myQueueItem, out string myOutputQueueItem, TraceWriter log)
@@ -169,7 +168,7 @@ public static void Run(string myQueueItem, out string myOutputQueueItem, TraceWr
 }
 ```
 
-This C# code example writes multiple messages by using  `ICollector<T>` (use `IAsyncCollector<T>` in an async function):
+次の C# コード例では、`ICollector<T>` を使用して複数のメッセージを書き込みます (非同期関数で `IAsyncCollector<T>` を使用)。
 
 ```csharp
 public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWriter log)
@@ -179,19 +178,19 @@ public static void Run(string myQueueItem, ICollector<string> myQueue, TraceWrit
 }
 ```
 
-## <a name="<a-id="storageblobtrigger"></a>-azure-storage-blob-trigger"></a><a id="storageblobtrigger"></a> Azure Storage blob trigger
+## <a id="storageblobtrigger"></a>Azure Storage BLOB トリガー
 
-#### <a name="function.json-for-storage-blob-trigger"></a>function.json for storage blob trigger
+#### ストレージ BLOB トリガーの function.json
 
-The *function.json* file specifies the following properties.
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name` : The variable name used in function code for the blob. 
-- `path` : A path that specifies the container to monitor, and optionally a blob name pattern.
-- `connection` : The name of an app setting that contains a storage connection string. If you leave `connection` empty, the trigger will work with the default storage connection string for the function app, which is specified by the AzureWebJobsStorage app setting.
-- `type` : Must be set to *blobTrigger*.
-- `direction` : Must be set to *in*.
+- `name`: BLOB の関数コードで使用される変数名。
+- `path`: 監視するコンテナーを指定するパスと、必要に応じて BLOB 名のパターンを指定します。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、トリガーは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
+- `type`: *blobTrigger* に設定する必要があります。
+- `direction`: *in* に設定する必要があります。
 
-Example *function.json* for a storage blob trigger that watches for blobs that are added to the samples-workitems container:
+samples-workitems コンテナーに追加される BLOB を監視するストレージ BLOB トリガーの *function.json* の例を次に示します。
 
 ```json
 {
@@ -208,14 +207,14 @@ Example *function.json* for a storage blob trigger that watches for blobs that a
 }
 ```
 
-#### <a name="blob-trigger-supported-types"></a>Blob trigger supported types
+#### BLOB トリガーにサポートされた型
 
-The blob can be deserialized to any of the following types in Node or C# functions:
+ノードまたは C# の関数では、BLOB は次の型のいずれかに逆シリアル化することができます。
 
-* Object (from JSON)
-* String
+* オブジェクト (JSON)
+* 文字列
 
-In C# functions you can also bind to any of the following types:
+C# 関数の場合は、次の型のいずれかにもバインドできます。
 
 * `TextReader`
 * `Stream`
@@ -226,11 +225,11 @@ In C# functions you can also bind to any of the following types:
 * `CloudBlobDirectory`
 * `IEnumerable<CloudBlockBlob>`
 * `IEnumerable<CloudPageBlob>`
-* Other types deserialized by [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) 
+* [ICloudBlobStreamBinder](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md#icbsb) によって逆シリアル化されるその他の種類
 
-#### <a name="blob-trigger-c#-code-example"></a>Blob trigger C# code example
+#### BLOB トリガーの C# コードの例
 
-This C# code example logs the contents of each blob that is added to the monitored container.
+この C# コード例では、監視対象のコンテナーに追加される各 BLOB の内容を記録します。
 
 ```csharp
 public static void Run(string myBlob, TraceWriter log)
@@ -239,79 +238,79 @@ public static void Run(string myBlob, TraceWriter log)
 }
 ```
 
-#### <a name="blob-trigger-name-patterns"></a>Blob trigger name patterns
+#### BLOB トリガー名のパターン
 
-You can specify a blob name pattern in the `path` property. For example:
+BLOB 名のパターンは、`path` プロパティで指定できます。次に例を示します。
 
 ```json
 "path": "input/original-{name}",
 ```
 
-This path would find a blob named *original-Blob1.txt* in the *input* container, and the value of the `name` variable in function code would be `Blob1`.
+このパスは、*input* コンテナーの *original-Blob1.txt* という名前の BLOB を探し、関数コード内の `name` 変数の値は `Blob1` になります。
 
-Another example:
+別の例:
 
 ```json
 "path": "input/{blobname}.{blobextension}",
 ```
 
-This path would also find a blob named *original-Blob1.txt*, and the value of the `blobname` and `blobextension` variables in function code would be *original-Blob1* and *txt*.
+このパスは、*original-Blob1.txt* という名前の BLOB を探し、関数コード内の `blobname` 変数および `blobextension` 変数の値は *original-Blob1* と *txt* になります。
 
-You can restrict the types of blobs that trigger the function by specifying a pattern with a fixed value for the file extension. If you set the `path` to  *samples/{name}.png*, only *.png* blobs in the *samples* container will trigger the function.
+関数をトリガーする BLOB の型を制限するには、ファイル拡張子の値が固定されたパターンを指定します。`path` を *samples/{name}.png* に設定した場合、*samples* コンテナー内の *.png* BLOB のみが関数をトリガーします。
 
-If you need to specify a name pattern for blob names that have curly braces in the name, double the curly braces. For example, if you want to find blobs in the *images* container that have names like this:
+名前に波括弧がある BLOB 名に新しいパターンを指定する必要がある場合は、波括弧を二重にします。たとえば、以下のような名前を持つ *イメージ*コンテナーに blob を見つける場合は、
 
-        {20140101}-soundfile.mp3
+		{20140101}-soundfile.mp3
 
-use this for the `path` property:
+`path` プロパティには以下を使用します。
 
-        images/{{20140101}}-{name}
+		images/{{20140101}}-{name}
 
-In the example, the `name` variable value would be *soundfile.mp3*. 
+この例では、`name` 変数の値は、*soundfile.mp3* になります。
 
-#### <a name="blob-receipts"></a>Blob receipts
+#### BLOB の配信確認メッセージ
 
-The Azure Functions runtime makes sure that no blob trigger function gets called more than once for the same new or updated blob. It does this by maintaining *blob receipts* in order to determine if a given blob version has been processed.
+Azure Functions ランタイムでは、BLOB トリガー関数は、同一の新規または更新された BLOB について 2 回以上呼び出されることはありません。これは*BLOB の配信確認メッセージ*を維持して、特定の BLOB バージョンが処理されているかどうかを判断するためです。
 
-Blob receipts are stored in a container named *azure-webjobs-hosts* in the Azure storage account specified by the AzureWebJobsStorage connection string. A blob receipt has the following  information:
+BLOB の配信確認メッセージは、AzureWebJobsStorage 接続文字列が指定した Azure ストレージ アカウントの *azure-webjobs-hosts* という名前のコンテナーに格納されています。BLOB の配信確認メッセージには次の情報が含まれています。
 
-* The function that was called for the blob ("*{function app name}*.Functions.*{function name}*", for example: "functionsf74b96f7.Functions.CopyBlob")
-* The container name
-* The blob type ("BlockBlob" or "PageBlob")
-* The blob name
-* The ETag (a blob version identifier, for example: "0x8D1DC6E70A277EF")
+* BLOB に対して呼び出された関数 ("*{Function App 名}*.Functions.*{関数名}*"。たとえば、"functionsf74b96f7.Functions.CopyBlob")
+* コンテナーの名前
+* BLOB の種類 ("BlockBlob" か "PageBlob")
+* BLOB の名前
+* ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 
-If you want to force reprocessing of a blob, you can manually delete the blob receipt for that blob from the *azure-webjobs-hosts* container.
+BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテナーからその BLOB の配信確認メッセージを手動で削除します。
 
-#### <a name="handling-poison-blobs"></a>Handling poison blobs
+#### 有害 BLOB の処理
 
-When a blob trigger function fails, the SDK calls it again, in case the failure was caused by a transient error. If the failure is caused by the content of the blob, the function fails every time it tries to process the blob. By default, the SDK calls a function up to 5 times for a given blob. If the fifth try fails, the SDK adds a message to a queue named *webjobs-blobtrigger-poison*.
+BLOB トリガー関数が失敗した場合、失敗が一時的なエラーによって発生した場合は、SDK は再度関数を呼び出します。失敗が BLOB のコンテンツによって発生した場合は、BLOB の処理を試みるたびに関数は失敗します。既定では、SDK は特定の BLOB に対して最大 5 回、関数を呼び出します。5 回目が失敗すると、SDK はメッセージは、 *webjobs-blobtrigger-poison* という名前のキューにメッセージを追加します。
 
-The queue message for poison blobs is a JSON object that contains the following properties:
+有害な BLOB のキュー メッセージは次のプロパティを持つ JSON オブジェクトです。
 
-* FunctionId (in the format *{function app name}*.Functions.*{function name}*)
-* BlobType ("BlockBlob" or "PageBlob")
-* ContainerName
+* FunctionId (形式: *{Function App 名}*.Functions.*{関数名}*)
+* BLOB の種類 ("BlockBlob" か "PageBlob")
+* コンテナー名
 * BlobName
-* ETag (a blob version identifier, for example: "0x8D1DC6E70A277EF")
+* ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 
-#### <a name="blob-polling-for-large-containers"></a>Blob polling for large containers
+#### 大規模なコンテナーをポーリングする BLOB
 
-If the blob container that the trigger is monitoring contains more than 10,000 blobs, the Functions runtime scans log files to watch for new or changed blobs. This process is not real-time; a function might not get triggered until several minutes or longer after the blob is created. In addition, [storage logs are created on a "best efforts"](https://msdn.microsoft.com/library/azure/hh343262.aspx) basis; there is no guarantee that all events will be captured. Under some conditions, logs might be missed. If the speed and reliability limitations of blob triggers for large containers are not acceptable for your application, the recommended method is to create a queue message when you create the blob, and use a queue trigger instead of a blob trigger to process the blob.
+トリガーが監視する BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新しいまたは変更された BLOB が監視されます。このプロセスはリアルタイムではありません。関数は、BLOB が作成されてから数分またはそれ以上経過しないとトリガーされない可能性があります。また、[ストレージ ログの作成は "ベスト エフォート"](https://msdn.microsoft.com/library/azure/hh343262.aspx) ベースで行われます。そのため、すべてのイベントがキャプチャされる保証はありません。ある条件下では、ログが欠落する可能性があります。大規模なコンテナーで BLOB トリガーの速度と信頼性の制限がアプリケーションで許容されない場合は、BLOB を作成するときにキュー メッセージを作成し、BLOB トリガーではなくキュー トリガーを使って BLOB を処理することをお勧めします。
  
-## <a name="<a-id="storageblobbindings"></a>-azure-storage-blob-input-and-output-bindings"></a><a id="storageblobbindings"></a> Azure Storage blob input and output bindings
+## <a id="storageblobbindings"></a>Azure Storage BLOB の入力バインドと出力バインド
 
-#### <a name="function.json-for-a-storage-blob-input-or-output-binding"></a>function.json for a storage blob input or output binding
+#### ストレージ BLOB 入力または出力バインドの function.json
 
-The *function.json* file specifies the following properties.
+*function.json* ファイルでは、次のプロパティを指定します。
 
-- `name` : The variable name used in function code for the blob . 
-- `path` : A path that specifies the container to read the blob from or write the blob to, and optionally a blob name pattern.
-- `connection` : The name of an app setting that contains a storage connection string. If you leave `connection` empty, the binding will work with the default storage connection string for the function app, which is specified by the AzureWebJobsStorage app setting.
-- `type` : Must be set to *blob*.
-- `direction` : Set to *in* or *out*. 
+- `name`: BLOB の関数コードで使用される変数名。
+- `path`: BLOB を読み込むまたは BLOB を書き込むコンテナーを指定するパスと、必要に応じて BLOB 名のパターンを指定します。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
+- `type`: *blob* に設定する必要があります。
+- `direction`: *in* または *out* に設定します。
 
-Example *function.json* for a storage blob input or output binding, using a queue trigger to copy a blob:
+キュー トリガーを使用して BLOB をコピーするストレージ BLOB の入力バインドと出力バインドの *function.json* の例を次に示します。
 
 ```json
 {
@@ -342,26 +341,26 @@ Example *function.json* for a storage blob input or output binding, using a queu
 }
 ``` 
 
-#### <a name="blob-input-and-output-supported-types"></a>Blob input and output supported types
+#### BLOB の入力および出力がサポートする型
 
-The `blob` binding can serialize or deserialize the following types in Node.js or C# functions:
+`blob` バインドは、Node.js または C# 関数で次の型をシリアル化または逆シリアル化できます。
 
-* Object (`out T` in C# for output blob: creates a blob as null object if parameter value is null when the function ends)
-* String (`out string` in C# for output blob: creates a blob only if the string parameter is non-null when the function returns)
+* Object (出力 BLOB の場合は C# の `out T`: 関数が終了したときに、パラメーター値が null の場合に null オブジェクトとして BLOB を作成します)
+* String (出力 BLOB の場合は、C# の `out string`: 関数を返されたときに、文字列パラメーターが null 以外の場合にのみ BLOB を作成します)
 
-In C# functions, you can also bind to the following types:
+C# 関数の場合は、次の型にもバインドできます。
 
-* `TextReader` (input only)
-* `TextWriter` (output only)
+* `TextReader` (入力のみ)
+* `TextWriter` (出力のみ)
 * `Stream`
-* `CloudBlobStream` (output only)
+* `CloudBlobStream` (出力のみ)
 * `ICloudBlob`
-* `CloudBlockBlob` 
-* `CloudPageBlob` 
+* `CloudBlockBlob`
+* `CloudPageBlob`
 
-#### <a name="blob-output-c#-code-example"></a>Blob output C# code example
+#### BLOB 出力の C# コードの例
 
-This C# code example copies a blob whose name is received in a queue message.
+この C# コード例では、名前をキュー メッセージで受信した BLOB をコピーします。
 
 ```csharp
 public static void Run(string myQueueItem, string myInputBlob, out string myOutputBlob, TraceWriter log)
@@ -371,22 +370,22 @@ public static void Run(string myQueueItem, string myInputBlob, out string myOutp
 }
 ```
 
-## <a name="<a-id="storagetablesbindings"></a>-azure-storage-tables-input-and-output-bindings"></a><a id="storagetablesbindings"></a> Azure Storage tables input and output bindings
+## <a id="storagetablesbindings"></a>Azure Storage テーブルの入力バインドと出力バインド
 
-#### <a name="function.json-for-storage-tables"></a>function.json for storage tables
+#### ストレージ テーブルの function.json
 
-The *function.json* specifies the following properties.
+*function.json* では、次のプロパティを指定します。
 
-- `name` : The variable name used in function code for the table binding. 
-- `tableName` : The name of the table.
-- `partitionKey` and `rowKey` : Used together to read a single entity in a C# or Node function, or to write a single entity in a Node function.
-- `take` : The maximum number of rows to read for table input in a Node function.
-- `filter` : OData filter expression for table input in a Node function.
-- `connection` : The name of an app setting that contains a storage connection string. If you leave `connection` empty, the binding will work with the default storage connection string for the function app, which is specified by the AzureWebJobsStorage app setting.
-- `type` : Must be set to *table*.
-- `direction` : Set to *in* or *out*. 
+- `name`: テーブル バインドの関数コードで使用される変数名。
+- `tableName`: テーブルの名前。
+- `partitionKey` および `rowKey`: 一緒に使用して、C# またはノード関数の単一エンティティを読み取るか、ノード関数の単一のエンティティを書き込みます。
+- `take`: ノード関数でのテーブル入力のために読み取る行の最大数。
+- `filter`: ノード関数のテーブル入力の OData フィルター式。
+- `connection`: ストレージ接続文字列を含むアプリ設定の名前。`connection` を空のままにすると、バインドは、AzureWebJobsStorage アプリ設定で指定される Function App の既定のストレージ接続文字列で動作します。
+- `type`: *table* に設定する必要があります。
+- `direction`: *in* または *out* に設定します。
 
-The following example *function.json* uses a queue trigger to read a single table row. The JSON provides a hard-coded partition key value and specifies that the row key comes from the queue message.
+次の例の *function.json* では、キュー トリガーを使用して 1 つのテーブル行を読み取ります。この JSON は、ハードコーディングされたパーティション キー値を提供すると共に、キュー メッセージから行キーを取得するように指定しています。
 
 ```json
 {
@@ -412,40 +411,40 @@ The following example *function.json* uses a queue trigger to read a single tabl
 }
 ```
 
-#### <a name="storage-tables-input-and-output-supported-types"></a>Storage tables input and output supported types
+#### ストレージ テーブルの入力および出力にサポートされた型
 
-The `table` binding can serialize or deserialize objects in Node.js or C# functions. The objects will have RowKey and PartitionKey properties. 
+`table` バインドは、Node.js または C# 関数でオブジェクトをシリアル化または逆シリアル化できます。オブジェクトには、RowKey と PartitionKey プロパティがあります。
 
-In C# functions, you can also bind to the following types:
+C# 関数の場合は、次の型にもバインドできます。
 
-* `T` where `T` implements `ITableEntity`
-* `IQueryable<T>` (input only)
-* `ICollector<T>` (output only)
-* `IAsyncCollector<T>` (output only)
+* `T` が `ITableEntity` を実装する場合の `T`
+* `IQueryable<T>` (入力のみ)
+* `ICollector<T>` (出力のみ)
+* `IAsyncCollector<T>` (出力のみ)
 
-#### <a name="storage-tables-binding-scenarios"></a>Storage tables binding scenarios
+#### ストレージ テーブル バインドのシナリオ
 
-The table binding supports the following scenarios:
+テーブル バインドは、次のシナリオをサポートしています。
 
-* Read a single row in a C# or Node function.
+* C# またはノード関数での単一行の読み取り。
 
-    Set `partitionKey` and `rowKey`. The `filter` and `take` properties are not used in this scenario.
+	`partitionKey` と `rowKey` を設定します。`filter` および `take` プロパティは、このシナリオでは使用しません。
 
-* Read multiple rows in a C# function.
+* C# 関数での複数行の読み取り。
 
-    The Functions runtime provides an `IQueryable<T>` object bound to the table. Type `T` must derive from `TableEntity` or implement `ITableEntity`. The `partitionKey`, `rowKey`, `filter`, and `take` properties are not used in this scenario; you can use the `IQueryable` object to do any filtering required. 
+	Functions ランタイムは、テーブルにバインドされている `IQueryable<T>` オブジェクトを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装する必要があります。`partitionKey`、`rowKey`、`filter`、および `take` の各プロパティは、このシナリオでは使用しません。必要なフィルター処理は、`IQueryable` オブジェクトを使用して実行できます。
 
-* Read multiple rows in a Node function.
+* ノード関数での複数行の読み取り。
 
-    Set the `filter` and `take` properties. Don't set `partitionKey` or `rowKey`.
+	`filter` と `take` プロパティを設定します。`partitionKey` と `rowKey` は設定しません。
 
-* Write one or more rows in a C# function.
+* C# 関数での 1 つまたは複数の行の書き込み。
 
-    The Functions runtime provides an `ICollector<T>` or `IAsyncCollector<T>` bound to the table, where `T` specifies the schema of the entities you want to add. Typically, type `T` derives from `TableEntity` or implements `ITableEntity`, but it doesn't have to. The `partitionKey`, `rowKey`, `filter`, and `take` properties are not used in this scenario.
+	Functions ランタイムは、テーブルにバインドされた `ICollector<T>` または `IAsyncCollector<T>` を指定します。ここで、`T` は追加するエンティティのスキーマを指定します。型 `T` は `TableEntity` から派生するか、`ITableEntity` を実装するのが一般的ですが、必須ではありません。`partitionKey`、`rowKey`、`filter`、`take` の各プロパティは、このシナリオでは使用しません。
 
-#### <a name="storage-tables-example:-read-a-single-table-entity-in-c#-or-node"></a>Storage tables example: Read a single table entity in C# or Node
+#### ストレージ テーブルの例: C# またはノードでの 1 つのテーブル エンティティの読み取り
 
-The following C# code example works with the preceding *function.json* file shown earlier to read a single table entity. The queue message has the row key value and the table entity is read into a type that is defined in the *run.csx* file. The type includes `PartitionKey` and `RowKey` properties and does not derive from `TableEntity`. 
+次の C# コード例では、既出の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。キュー メッセージには行キー値があり、テーブル エンティティは *run.csx* ファイルで定義された型に読み込まれます。型は `PartitionKey` と `RowKey` プロパティを含み、`TableEntity` から派生しません。
 
 ```csharp
 public static void Run(string myQueueItem, Person personEntity, TraceWriter log)
@@ -462,7 +461,7 @@ public class Person
 }
 ```
 
-The following F# code example also works with the preceding *function.json* file to read a single table entity.
+次の F# コード例でも、上記の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。
 
 ```fsharp
 [<CLIMutable>]
@@ -477,7 +476,7 @@ let Run(myQueueItem: string, personEntity: Person) =
     log.Info(sprintf "Name in Person entity: %s" personEntity.Name)
 ```
 
-The following Node code example also works with the preceding *function.json* file to read a single table entity.
+次のノード コード例でも、上記の *function.json* ファイルを使用して、単一のテーブル エンティティを読み取ります。
 
 ```javascript
 module.exports = function (context, myQueueItem) {
@@ -487,9 +486,9 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-#### <a name="storage-tables-example:-read-multiple-table-entities-in-c#"></a>Storage tables example: Read multiple table entities in C# 
+#### ストレージ テーブルの例: C での複数のテーブル エンティティの読み取り# 
 
-The following *function.json* and C# code example reads entities for a partition key that is specified in the queue message.
+次の *function.json* および C# コード例では、キュー メッセージに指定されたパーティション キーのエンティティを読み取ります。
 
 ```json
 {
@@ -513,7 +512,7 @@ The following *function.json* and C# code example reads entities for a partition
 }
 ```
 
-The C# code adds a reference to the Azure Storage SDK so that the entity type can derive from `TableEntity`.
+C# コードは、エンティティ型が `TableEntity` から派生できるように、Azure Storage SDK に参照を追加します。
 
 ```csharp
 #r "Microsoft.WindowsAzure.Storage"
@@ -534,9 +533,9 @@ public class Person : TableEntity
 }
 ``` 
 
-#### <a name="storage-tables-example:-create-table-entities-in-c#"></a>Storage tables example: Create table entities in C# 
+#### ストレージ テーブルの例: C でのテーブル エンティティの作成# 
 
-The following *function.json* and *run.csx* example shows how to write table entities in C#.
+次の例の *function.json* と *run.csx* では、C# でテーブル エンティティを書き込む方法を示します。
 
 ```json
 {
@@ -583,9 +582,9 @@ public class Person
 
 ```
 
-#### <a name="storage-tables-example:-create-table-entities-in-f#"></a>Storage tables example: Create table entities in F#
+#### ストレージ テーブルの例: F でのテーブル エンティティの作成#
 
-The following *function.json* and *run.fsx* example shows how to write table entities in F#.
+次の例の *function.json* と *run.fsx* では、F# でテーブル エンティティを書き込む方法を示します。
 
 ```json
 {
@@ -624,9 +623,9 @@ let Run(input: string, tableBinding: ICollector<Person>, log: TraceWriter) =
               Name = "Name" + i.ToString() })
 ```
 
-#### <a name="storage-tables-example:-create-a-table-entity-in-node"></a>Storage tables example: Create a table entity in Node
+#### ストレージ テーブルの例: ノードでのテーブル エンティティの作成
 
-The following *function.json* and *run.csx* example shows how to write a table entity in Node.
+次の例の *function.json* と *run.csx* では、ノードでテーブル エンティティを書き込む方法を示します。
 
 ```json
 {
@@ -660,12 +659,8 @@ module.exports = function (context, myQueueItem) {
 };
 ```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-[AZURE.INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)] 
+[AZURE.INCLUDE [次のステップ](../../includes/functions-bindings-next-steps.md)]
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

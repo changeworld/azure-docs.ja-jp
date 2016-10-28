@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory Integration with UserVoice | Microsoft Azure" 
-    description="Learn how to use UserVoice with Azure Active Directory to enable single sign-on, automated provisioning, and more!." 
+    pageTitle="チュートリアル: Azure Active Directory と UserVoice の統合 | Microsoft Azure" 
+    description="Azure Active Directory で UserVoice を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,160 +14,152 @@
     ms.date="09/11/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-uservoice"></a>Tutorial: Azure Active Directory Integration with UserVoice
+#チュートリアル: Azure Active Directory と UserVoice の統合
   
-The objective of this tutorial is to show the integration of Azure and UserVoice.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルでは、Azure と UserVoice の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   A UserVoice tenant
+-   有効な Azure サブスクリプション
+-   UserVoice のテナント
   
-After completing this tutorial, the Azure AD users you have assigned to UserVoice will be able to single sign into the application at your UserVoice company site (service provider initiated sign on), or using the [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+このチュートリアルを完了すると、UserVoice に割り当てた Azure AD ユーザーは、UserVoice 企業サイト (サービス プロバイダーが開始したサインオン) で、または「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」の説明に従って、アプリケーションにシングル サインオンできるようになります。
   
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Enabling the application integration for UserVoice
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  UserVoice のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-![Scenario](./media/active-directory-saas-uservoice-tutorial/IC777514.png "Scenario")
+![シナリオ](./media/active-directory-saas-uservoice-tutorial/IC777514.png "シナリオ")
 
-##<a name="enabling-the-application-integration-for-uservoice"></a>Enabling the application integration for UserVoice
+##UserVoice のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for UserVoice.
+このセクションでは、UserVoice のアプリケーション統合を有効にする方法を説明します。
 
-###<a name="to-enable-the-application-integration-for-uservoice,-perform-the-following-steps:"></a>To enable the application integration for UserVoice, perform the following steps:
+###UserVoice のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-uservoice-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-uservoice-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-uservoice-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-uservoice-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-uservoice-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-uservoice-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-uservoice-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **UserVoice**.
+6.  **検索ボックス**に「**UserVoice**」と入力します。
 
-    ![Application gallery](./media/active-directory-saas-uservoice-tutorial/IC777513.png "Application gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-uservoice-tutorial/IC777513.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **UserVoice**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[UserVoice]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![UserVoice](./media/active-directory-saas-uservoice-tutorial/IC777810.png "UserVoice")
 
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
   
-The objective of this section is to outline how to enable users to authenticate to UserVoice with their account in Azure AD using federation based on the SAML protocol.  
-Configuring single sign-on for UserVoice requires you to retrieve a thumbprint value from a certificate.  
-If you are not familiar with this procedure, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI).
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで UserVoice に対する認証を行うことができるようにする方法を説明します。UserVoice のシングル サインオンを構成するには、証明書からサムプリント値を取得する必要があります。この手順に慣れていない場合は、「[How to retrieve a certificate's thumbprint value (証明書の拇印の値を取得する方法)](http://youtu.be/YKQF266SAxI)」を参照してください。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **UserVoice** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **[UserVoice]** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-uservoice-tutorial/IC777515.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to UserVoice** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの UserVoice へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-uservoice-tutorial/IC777516.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, in the **UserVoice Sign In URL** textbox, type your URL using the following pattern "*https://\<tenant-name\>.UserVoice.com*", and then click **Next**.
+3.  **[アプリケーション URL の構成]** ページで、**[UserVoice サインイン URL]** ボックスに、"*https://\<テナント名>.UserVoice.com*" というパターンの URL を入力し、**[次へ]** をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-uservoice-tutorial/IC777517.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-uservoice-tutorial/IC777517.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at UserVoice** page, to download your certificate, click **Download certificate**, and then save the certificate file locally as **c:\\UserVoice.cer**.
+4.  **[UserVoice でのシングル サインオンの構成]** ページで、証明書をダウンロードするために、**[証明書のダウンロード]** をクリックし、証明書ファイルを **c:\\UserVoice.cer** としてローカルに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-uservoice-tutorial/IC777518.png "Configure single sign-on")
 
-5.  In a different web browser window, log into your UserVoice company site as an administrator.
+5.  別の Web ブラウザーのウィンドウで、UserVoice 企業サイトに管理者としてログインします。
 
-6.  In the toolbar on the top, click Settings, and then select Web portal from the menu.
+6.  上部のツール バーの [設定] をクリックし、[Web ポータル] を選択します。
 
     ![Settings](./media/active-directory-saas-uservoice-tutorial/IC777519.png "Settings")
 
-7.  On the **Web portal** tab, in the **User authentication** section, click **Edit** to open the **Edit User Authentication** dialog page
+7.  **[Web ポータル]** タブの **[ユーザー認証]** セクションで、**[編集]** をクリックして **[ユーザー認証の編集]** ダイアログ ページを開きます。
 
-    ![Web portal](./media/active-directory-saas-uservoice-tutorial/IC777520.png "Web portal")
+    ![Web ポータル](./media/active-directory-saas-uservoice-tutorial/IC777520.png "Web ポータル")
 
-8.  On the **Edit User Authentication** dialog page, perform the following steps:
+8.  **[ユーザー認証の編集]** ダイアログ ページで、次の手順に従います。
 
-    ![Edit user authentication](./media/active-directory-saas-uservoice-tutorial/IC777521.png "Edit user authentication")
+    ![ユーザー認証の編集](./media/active-directory-saas-uservoice-tutorial/IC777521.png "ユーザー認証の編集")
 
-    1.  Click **Single Sign-On (SSO)**.
-    2.  In the Azure classic portal, on the **Configure single sign-on at UserVoice** dialog page, copy the **Remote Login URL** value, and then paste it into the **SSO Remote Sign-In** textbox.
-    3.  In the Azure classic portal, on the **Configure single sign-on at UserVoice** dialog page, copy the **Remote Logout URL** value, and then paste it into the **SSO Remote Sign-Out textbox**.
-    4.  Copy the **Thumbprint** value from the exported certificate, and then paste it into the **Current certificate SHA1 fingerprint** textbox.  
+    1.  **[シングル サインオン]** をクリックします。
+    2.  Azure クラシック ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログイン URL]** の値をコピーし、**[SSO リモート サインイン]** ボックスに貼り付けます。
+    3.  Azure クラシック ポータルで、**[UserVoice でのシングル サインオンの構成]** ダイアログ ページの **[リモート ログアウト URL]** の値をコピーし、**[SSO リモート サインアウト]** ボックスに貼り付けます。
+    4.  エクスポートした証明書から **[サムプリント]** の値をコピーし、**[現在の証明書 SHA1 フィンガープリント]** ボックスに貼り付けます。
 
-        >[AZURE.TIP] For more details, see [How to retrieve a certificate's thumbprint value](http://youtu.be/YKQF266SAxI)
+        >[AZURE.TIP] 詳細については、「[How to retrieve a certificate's thumbprint value （証明書のサムプリント値を取得する方法）](http://youtu.be/YKQF266SAxI)」を参照してください。
 
-    5.  Click **Save authentication settings**.
+    5.  **[認証設定の保存]** をクリックします。
 
-9.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+9.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-uservoice-tutorial/IC777522.png "Configure single sign-on")
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-In order to enable Azure AD users to log into UserVoice, they must be provisioned into UserVoice.  
-In the case of UserVoice, provisioning is a manual task.
+Azure AD ユーザーが UserVoice にログインできるようにするには、そのユーザーを UserVoice にプロビジョニングする必要があります。UserVoice の場合、プロビジョニングは手動で行います。
 
-###<a name="to-provision-a-user-accounts,-perform-the-following-steps:"></a>To provision a user accounts, perform the following steps:
+###ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 
-1.  Log in to your **UserVoice** tenant.
+1.  **UserVoice** テナントにログインします。
 
-2.  Go to **Settings**.
+2.  **[設定]** に移動します。
 
     ![Settings](./media/active-directory-saas-uservoice-tutorial/IC777811.png "Settings")
 
-3.  Click **General**.
+3.  **[全般]** をクリックします。
 
-4.  Click **Agents and permissions**.
+4.  **[エージェントとアクセス許可]** をクリックします。
 
-    ![Agents and permissions](./media/active-directory-saas-uservoice-tutorial/IC777812.png "Agents and permissions")
+    ![エージェントとアクセス許可](./media/active-directory-saas-uservoice-tutorial/IC777812.png "エージェントとアクセス許可")
 
-5.  Click **Add admins**.
+5.  **[管理者の追加]** をクリックします。
 
-    ![Add admins](./media/active-directory-saas-uservoice-tutorial/IC777813.png "Add admins")
+    ![管理者の追加](./media/active-directory-saas-uservoice-tutorial/IC777813.png "管理者の追加")
 
-6.  On the **Invite admins** dialog, perform the following steps:
+6.  **[管理者の招待]** ダイアログで、次の手順を実行します。
 
-    ![Invite admins](./media/active-directory-saas-uservoice-tutorial/IC777814.png "Invite admins")
+    ![管理者の招待](./media/active-directory-saas-uservoice-tutorial/IC777814.png "管理者の招待")
 
-    1.  In the Emails texbox, type the email address of the account you want to provision, and then click **Add**.
-    2.  Click **Invite**.
+    1.  [電子メール] ボックスに、プロビジョニングするアカウントの電子メール アドレスを入力し、**[追加]** をクリックします。
+    2.  **[招待]** をクリックします。
 
->[AZURE.NOTE] You can use any other UserVoice user account creation tools or APIs provided by UserVoice to provision AAD user accounts.
+>[AZURE.NOTE] UserVoice から提供されている他の UserVoice ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-uservoice,-perform-the-following-steps:"></a>To assign users to UserVoice, perform the following steps:
+###ユーザーを UserVoice に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **UserVoice **application integration page, click **Assign users**.
+2.  **UserVoice** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign users](./media/active-directory-saas-uservoice-tutorial/IC777523.png "Assign users")
+    ![ユーザーの割り当て](./media/active-directory-saas-uservoice-tutorial/IC777523.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Yes](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
+    ![はい](./media/active-directory-saas-uservoice-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

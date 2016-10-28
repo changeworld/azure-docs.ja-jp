@@ -1,63 +1,62 @@
 <properties
-    pageTitle="Use Hadoop Sqoop in Linux-based HDInsight | Microsoft Azure"
-    description="Learn how to run Sqoop import and export between a Linux-based Hadoop on HDInsight cluster and an Azure SQL database."
-    editor="cgronlun"
-    manager="jhubbard"
-    services="hdinsight"
-    documentationCenter=""
-    authors="Blackmist"
-    tags="azure-portal"/>
+	pageTitle="Linux ベースの HDInsight での Hadoop Sqoop の使用 | Microsoft Azure"
+	description="Sqoop を使用して、HDInsight クラスター上の Linux ベースの Hadoop と Azure SQL データベース間でインポートおよびエクスポートする方法について説明します。"
+	editor="cgronlun"
+	manager="jhubbard"
+	services="hdinsight"
+	documentationCenter=""
+	authors="Blackmist"
+	tags="azure-portal"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="larryfr"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/25/2016"
+	ms.author="larryfr"/>
 
-
-#<a name="use-sqoop-with-hadoop-in-hdinsight-(ssh)"></a>Use Sqoop with Hadoop in HDInsight (SSH)
+#HDInsight の Hadoop での Sqoop の使用 (SSH)
 
 [AZURE.INCLUDE [sqoop-selector](../../includes/hdinsight-selector-use-sqoop.md)]
 
-Learn how to use Sqoop to import and export between a Linux-based HDInsight cluster and Azure SQL Database or SQL Server database.
+Linux ベースの HDInsight クラスターと Azure SQL Database または SQL Server データベースの間のインポートとエクスポートに Sqoop を使用する方法について説明します。
 
-> [AZURE.NOTE] The steps in this article use SSH to connect to a Linux-based HDInsight cluster. Windows clients can also use Azure PowerShell and HDInsight .NET SDK to work with Sqoop on Linux-based clusters. Use the tab selector to open those articles.
+> [AZURE.NOTE] この記事の手順では、Linux ベースの HDInsight クラスターへの接続に SSH を使用します。Windows クライアントでは、Azure PowerShell および HDInsight .NET SDK を使用して、Linux ベースのクラスターで Sqoop を使用することもできます。これらの記事を表示するには、タブ セレクターをクリックしてください。
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
-Before you begin this tutorial, you must have the following:
+このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-- **A Hadoop cluster in HDInsight** and an __Azure SQL Database__: The steps in this document are based on the cluster and database created using the [Create cluster and SQL database](hdinsight-use-sqoop.md#create-cluster-and-sql-database) document. If you already have an HDInsight cluster and SQL Database, you can substitute those for the values used in this document.
-- **Workstation**: A computer with an SSH client.
+- **HDInsight の Hadoop クラスター**と __Azure SQL Database__: このドキュメント内の手順は、[クラスターと SQL Database の作成](hdinsight-use-sqoop.md#create-cluster-and-sql-database)に関するドキュメントに沿って作成されたクラスターとデータベースを前提としています。既に HDInsight クラスターと SQL Database がある場合は、このドキュメントで使用されている値を適宜置き換えてください。
+- **ワークステーション**: SSH クライアントを使用しているコンピューター。
 
-##<a name="install-freetds"></a>Install FreeTDS
+##FreeTDS のインストール
 
-1. Use SSH to connect to the Linux-based HDInsight cluster. The address to use when connecting is `CLUSTERNAME-ssh.azurehdinsight.net` and the port is `22`.
+1. SSH を使用して、Linux ベースの HDInsight クラスターに接続します。接続するときに使用するアドレスは `CLUSTERNAME-ssh.azurehdinsight.net` で、ポートは `22` です。
 
-    For more information on using SSH to connect to HDInsight, see the following documents:
+	SSH を使用して HDInsight に接続する方法の詳細については、次のドキュメントを参照してください。
 
-    * **Linux, Unix or OS X clients**: See [Connect to a Linux-based HDInsight cluster from Linux, OS X or Unix](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)
+    * **Linux、Unix または OS X クライアント**: 「[Linux、OS X または Unix からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-unix.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
 
-    * **Windows clients**: See [Connect to a Linux-based HDInsight cluster from Windows](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)
+    * **Windows クライアント**: 「[Windows からの Linux ベースの HDInsight クラスターへの接続](hdinsight-hadoop-linux-use-ssh-windows.md#connect-to-a-linux-based-hdinsight-cluster)」を参照してください。
 
-3. Use the following command to install FreeTDS:
+3. 次のコマンドを使用して FreeTDS をインストールします。
 
         sudo apt-get --assume-yes install freetds-dev freetds-bin
 
-    FreeTDS will be used in several steps to connect to SQL Database.
+    FreeTDS は、SQL Database に接続する際のいくつかの手順で使用します。
 
-##<a name="create-the-table-in-sql-database"></a>Create the table in SQL Database
+##SQL Database へのテーブルの作成
 
-> [AZURE.IMPORTANT] If you are using an HDInsight cluster and SQL Database created using the steps in [Create cluster and SQL database](hdinsight-use-sqoop.md), ignore the steps in this section as the database and table were created as part of the steps in that document.
+> [AZURE.IMPORTANT] [クラスターと SQL Database の作成](hdinsight-use-sqoop.md)の手順に沿って作成した HDInsight クラスターと SQL Database を使用している場合、データベースとテーブルはそのドキュメントの手順の中で作成しているため、このセクションの手順は無視してください。
 
-1. From the SSH connection to HDInsight, use the following command to connect to the SQL Database server and crete the table that will be used in the remainder of these steps:
+1. HDInsight への SSH 接続から、次のコマンドを使用して SQL Database サーバーに接続し、以降の手順で使用するテーブルを作成します。
 
         TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
 
-    You will receive output similar to the following:
+    次のような出力が返されます。
 
         locale is "en_US.UTF-8"
         locale charset is "UTF-8"
@@ -65,7 +64,7 @@ Before you begin this tutorial, you must have the following:
         Default database being set to sqooptest
         1>
 
-5. At the `1>` prompt, enter the following lines:
+5. `1>` プロンプトで、以下の行を入力します。
 
         CREATE TABLE [dbo].[mobiledata](
         [clientid] [nvarchar](50),
@@ -83,78 +82,78 @@ Before you begin this tutorial, you must have the following:
         CREATE CLUSTERED INDEX mobiledata_clustered_index on mobiledata(clientid)
         GO
 
-    When the `GO` statement is entered, the previous statements will be evaluated. First, the **mobiledata** table is created, then a clustered index is added to it (required by SQL Database.)
+    `GO` ステートメントを入力すると、前のステートメントが評価されます。最初に、**mobiledata** テーブルが作成され、次にクラスター化インデックスがそのテーブルに追加されます (SQL Database が必要)。
 
-    Use the following to verify that the table has been created:
+    次を使用して、テーブルが作成されたことを確認します。
 
         SELECT * FROM information_schema.tables
         GO
 
-    You should see output similar to the following:
+    次のような出力が表示されます。
 
         TABLE_CATALOG   TABLE_SCHEMA    TABLE_NAME      TABLE_TYPE
         sqooptest       dbo     mobiledata      BASE TABLE
 
-8. Enter `exit` at the `1>` prompt to exit the tsql utility.
+8. `1>` プロンプトで「`exit`」と入力して、tsql ユーティリティを終了します。
 
-##<a name="sqoop-export"></a>Sqoop export
+##Sqoop のエクスポート
 
-3. From the SSH connection to HDInsight, se the following command to verify that Sqoop can see your SQL Database:
+3. HDInsight への SSH 接続から、次のコマンドを使用して、Sqoop が SQL Database を認識できることを確認します。
 
         sqoop list-databases --connect jdbc:sqlserver://<serverName>.database.windows.net:1433 --username <adminLogin> --password <adminPassword>
 
-    This should return a list of databases, including the **sqooptest** database that you created earlier.
+    これは、先ほど作成した **sqooptest** データベースを含むデータベースの一覧を返します。
 
-4. Use the following command to export data from **hivesampletable** to the **mobiledata** table:
+4. 次のコマンドを使用して、**hivesampletable** から **mobiledata** テーブルにデータをエクスポートします。
 
         sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
 
-    This instructs Sqoop to connect to SQL Database, to the **sqooptest** database, and export data from the **wasbs:///hive/warehouse/hivesampletable** (physical files for the *hivesampletable*,) to the **mobiledata** table.
+    これにより、SQL Database (**sqooptest** データベース) に接続して **wasbs:///hive/warehouse/hivesampletable**** (*hivesampletable* の物理ファイル) から mobiledata テーブルにデータをエクスポートするよう Sqoop に指示します。
 
-5. After the command completes, use the following to connect to the database using TSQL:
+5. コマンドが完了したら、次を使用して、TSQL によってデータベースに接続します。
 
         TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D sqooptest
 
-    Once connected, use the following statements to verify that the data was exported to the **mobiledata** table:
+    接続されたら、次のステートメントを使用して、データが **mobiledata** テーブルにエクスポートされたことを確認します。
 
         SELECT * FROM mobiledata
         GO
 
-    You should see a listing of data in the table. Type `exit` to exit the tsql utility.
+    テーブル内のデータの一覧が表示されます。「`exit`」と入力して、tsql ユーティリティを終了します。
 
-##<a name="sqoop-import"></a>Sqoop import
+##Sqoop のインポート
 
-1. Use the following to import data from the **mobiledata** table in SQL Database, to the **wasbs:///tutorials/usesqoop/importeddata** directory on HDInsight:
+1. 次を使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasbs:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
         sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 
-    The imported data will have fields that are separated by a tab character, and the lines will be terminated by a new-line character.
+    インポートされたデータには、タブ文字で区切られたフィールドと、改行文字で終了する行が含まれます。
 
-2. Once the import has completed, use the following command to list out the data in the new directory:
+2. インポートが完了したら、次のコマンドを使用して、新しいディレクトリのデータを列挙します。
 
         hadoop fs -text wasbs:///tutorials/usesqoop/importeddata/part-m-00000
 
-##<a name="using-sql-server"></a>Using SQL Server
+##SQL Server の使用
 
-You can also use Sqoop to import and export data from SQL Server, either in your data center or on a Virtual Machine hosted in Azure. The differences between using SQL Database and SQL Server are:
+Sqoop を使用すると、Azure でホストされているデータ センターまたは仮想マシンで、SQL Server からデータをインポートしたり、エクスポートしたりすることもできます。SQL Database と SQL Server の使用方法には、次の違いがあります。
 
-* Both HDInsight and the SQL Server must be on the same Azure Virtual Network
+* HDInsight と SQL Server の両方が、同じ Azure Virtual Network に存在する必要があります。
 
-    > [AZURE.NOTE] HDInsight supports only location-based virtual networks, and it does not currently work with affinity group-based virtual networks.
+    > [AZURE.NOTE] HDInsight は場所ベースの仮想ネットワークのみをサポートし、アフィニティ グループ ベースの仮想ネットワークは現在扱っていません。
 
-    When you are using SQL Server in your datacenter, you must configure the virtual network as *site-to-site* or *point-to-site*.
+    SQL Server をデータセンター内で使用している場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
 
-    > [AZURE.NOTE] For **point-to-site** virtual networks, SQL Server must be running the VPN client configuration application, which is available from the **Dashboard** of your Azure virtual network configuration.
+    > [AZURE.NOTE] **ポイント対サイト**仮想ネットワークの場合、SQL Server が VPN クライアント構成アプリケーションを実行している必要があります。このアプリケーションは、Azure 仮想ネットワーク構成の**ダッシュボード**から入手できます。
 
-    For more information Azure Virtual Network, see [Virtual Network Overview](../virtual-network/virtual-networks-overview.md).
+    仮想ネットワークの作成と構成方法の詳細については、「[仮想ネットワークの構成タスク](../services/virtual-machines/)」を参照してください。
 
-* SQL Server must be configured to allow SQL authentication. For more information, see [Choose an Authentication Mode](https://msdn.microsoft.com/ms144284.aspx)
+* SQL 認証を許可するよう、SQL Server を構成する必要があります。詳細については、「[認証モードの選択](https://msdn.microsoft.com/ms144284.aspx)」を参照してください。
 
-* You may have to configure SQL Server to accept remote connections. See [How to troubleshoot connecting to the SQL Server database engine](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx) for more information
+* リモート接続を許可するよう、SQL Server を構成する必要がある場合があります。詳細については、[SQL Server データベース エンジンへの接続に関するトラブルシューティングの方法](http://social.technet.microsoft.com/wiki/contents/articles/2102.how-to-troubleshoot-connecting-to-the-sql-server-database-engine.aspx)に関するページを参照してください。
 
-* You must create the **sqooptest** database in SQL Server using a utility such as **SQL Server Management Studio** or **tsql** - the steps for using the Azure CLI only work for Azure SQL Database
+* **SQL Server Management Studio** または **tsql** などのユーティリティを使用して SQL Server データベースに **sqooptest** テーブルを作成する必要があります。Azure CLI を使用する手順は、Azure SQL Database でのみ機能します。
 
-    The TSQL statements to create the **mobiledata** table are similar those used for SQL Database, with the exception of creating a clusterd index - this is not required for SQL Server:
+    **mobiledata** テーブルを作成する TSQL ステートメントは、SQL Database に使用する TSQL ステートメントに似ています。ただし、クラスター化インデックスの作成は例外です。SQL Server の場合、これは必要ありません。
 
         CREATE TABLE [dbo].[mobiledata](
         [clientid] [nvarchar](50),
@@ -169,27 +168,27 @@ You can also use Sqoop to import and export data from SQL Server, either in your
         [sessionid] [bigint],
         [sessionpagevieworder] [bigint])
 
-* When connecting to the SQL Server from HDInsight, you may have to use the IP address of the SQL Server unless you have configured a Domain Name System (DNS) to resolve names on the Azure Virtual Network. For example:
+* Azure Virtual Network で名前を解決するためにドメイン ネーム システム (DNS) を構成していないと、HDInsight から SQL Server に接続するときに、SQL Server の IP アドレスを使用する必要がある場合があります。For example:
 
         sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
 
-##<a name="limitations"></a>Limitations
+##制限事項
 
-* Bulk export - With Linux-based HDInsight, the Sqoop connector used to export data to Microsoft SQL Server or Azure SQL Database does not currently support bulk inserts.
+* 一括エクスポート - Linux ベースの HDInsight では、Microsoft SQL Server または Azure SQL Database にデータをエクスポートするために使用する Sqoop コネクタは、一括挿入を現在サポートしていません。
 
-* Batching - With Linux-based HDInsight, When using the `-batch` switch when performing inserts, Sqoop will perform multiple inserts instead of batching the insert operations.
+* バッチ処理 - Linux ベースの HDInsight で、挿入処理実行時に `-batch` スイッチを使用すると、Sqoop は挿入操作をバッチ処理するのではなく、複数の挿入処理を実行します。
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-Now you have learned how to use Sqoop. To learn more, see:
+ここでは Sqoop の使用方法を説明しました。詳細については、次を参照してください。
 
-- [Use Oozie with HDInsight][hdinsight-use-oozie]: Use Sqoop action in an Oozie workflow.
-- [Analyze flight delay data using HDInsight][hdinsight-analyze-flight-data]: Use Hive to analyze flight delay data, and then use Sqoop to export data to an Azure SQL database.
-- [Upload data to HDInsight][hdinsight-upload-data]: Find other methods for uploading data to HDInsight/Azure Blob storage.
+- [HDInsight での Oozie の使用][hdinsight-use-oozie]\: Oozie ワークフローで Sqoop アクションを使用します。
+- [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-data]\: Hive を使用してフライト遅延データを分析し、Sqoop を使用して Azure SQL データベースにデータをエクスポートします。
+- [HDInsight へのデータのアップロード][hdinsight-upload-data]\: HDInsight/Azure BLOB ストレージにデータをアップロードするその他の方法を説明します。
 
 
 
-[hdinsight-versions]:  hdinsight-component-versioning.md
+[hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-provision]: hdinsight-provision-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
 [hdinsight-storage]: ../hdinsight-hadoop-use-blob-storage.md
@@ -207,8 +206,4 @@ Now you have learned how to use Sqoop. To learn more, see:
 
 [sqoop-user-guide-1.4.4]: https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

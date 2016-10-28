@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Manage your StorSimple backup catalog | Microsoft Azure"
-   description="Explains how to use the StorSimple Manager service Backup Catalog page to list, select, and delete backup sets for a volume."
+   pageTitle="StorSimple バックアップ カタログの管理 | Microsoft Azure"
+   description="StorSimple Manager サービスの [バックアップ カタログ] ページを使用して、ボリュームのバックアップ セットを一覧表示、選択、および削除する方法を説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,111 +15,106 @@
    ms.date="04/28/2016"
    ms.author="v-sharos" />
 
+# StorSimple Manager サービスを使用してバックアップ カタログを管理する
 
-# <a name="use-the-storsimple-manager-service-to-manage-your-backup-catalog"></a>Use the StorSimple Manager service to manage your backup catalog
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたはスケジュールされたバックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
-The StorSimple Manager service **Backup Catalog** page displays all the backup sets that are created when manual or scheduled backups are taken. You can use this page to list all the backups for a backup policy or a volume, select or delete backups, or use a backup to restore or clone a volume.
+このチュートリアルでは、バックアップ セットを一覧表示、選択、削除する方法について説明します。バックアップからデバイスを復元する方法については、「[Restore your device from a backup set (バックアップ セットからデバイスを復元する)](storsimple-restore-from-backup-set.md)」をご覧ください。ボリュームを複製する方法については、「[StorSimple ボリュームの複製](storsimple-clone-volume.md)」をご覧ください。
 
-This tutorial explains how to list, select, and delete a backup set. To learn how to restore your device from backup, go to [Restore your device from a backup set](storsimple-restore-from-backup-set.md). To learn how to clone a volume, go to [Clone a StorSimple volume](storsimple-clone-volume.md).
+![バックアップ カタログ](./media/storsimple-manage-backup-catalog/backupcatalog.png)
 
-![Backup catalog](./media/storsimple-manage-backup-catalog/backupcatalog.png) 
+**[バックアップ カタログ]** ページには、バックアップ セットの選択を絞り込むことができるクエリが用意されています。次のパラメーターに基づいて、取得するバックアップ セットをフィルター選択できます。
 
-The **Backup Catalog** page provides a query to narrow your backup set selection. You can filter the backup sets that are retrieved, based on the following parameters:
+- **[デバイス]** - バックアップ セットが作成されたデバイス。
 
-- **Device** – The device on which the backup set was created.
+- **[バックアップ ポリシー] または [ボリューム]** - このバックアップ セットに関連付けられているバックアップ ポリシーやボリューム。
 
-- **Backup Policy or Volume** – The backup policy or volume associated with this backup set.
+- **[開始日時] と [終了日時]** - バックアップ セットが作成された日付と時刻の範囲。
 
-- **From and To** – The date and time range when the backup set was created.
+フィルター選択されたバックアップ セットは、次の属性に基づいて表形式で表示されます。
 
-The filtered backup sets are then tabulated based on the following attributes:
+- **[名前]** - バックアップ セットに関連付けられているバックアップ ポリシーまたはボリュームの名前。
 
-- **Name** – The name of the backup policy or volume associated with the backup set.
+- **[サイズ]** - バックアップ セットの実際のサイズ。
 
-- **Size** – The actual size of the backup set.
+- **[作成日時]** – バックアップが作成された日付と時刻。
 
-- **Created On** – The date and time when the backups were created. 
+- **[種類]** - バックアップ セットの種類には、ローカル スナップショットとクラウド スナップショットがあります。ローカル スナップショットは、デバイスにローカルに格納されているすべてのボリューム データのバックアップです。クラウド スナップショットは、クラウドに存在するボリューム データのバックアップを表します。ローカル スナップショットは、より高速なアクセスを実現します。クラウド スナップショットは、データの回復力を実現するために選択されます。
 
-- **Type** – Backup sets can be local snapshots or cloud snapshots. A local snapshot is a backup of all your volume data stored locally on the device, whereas a cloud snapshot refers to the backup of volume data residing in the cloud. Local snapshots provide faster access, whereas cloud snapshots are chosen for data resiliency.
+- **[開始方法]** - バックアップは、スケジュールにより自動的に開始することも、ユーザーが手動で開始することもできます。バックアップ ポリシーを使用してバックアップのスケジュールを設定できます。また、**[バックアップの実行]** オプションを使用して手動バックアップを実行することもできます。
 
-- **Initiated By** – The backups can be initiated automatically by a schedule or manually by a user. You can use a backup policy to schedule backups. Alternatively, you can use the **Take backup** option to take a manual backup.
-
-## <a name="list-backup-sets-for-a-volume"></a>List backup sets for a volume
+## ボリュームのバックアップ セットを一覧表示する
  
-Complete the following steps to list all the backups for a volume.
+次の手順に従って、ボリュームのバックアップをすべて一覧表示します。
 
-#### <a name="to-list-backup-sets"></a>To list backup sets
+#### バックアップ セットを一覧表示するには
 
-1. On the StorSimple Manager service page, click the **Backup catalog** tab.
+1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックします。
 
-2. Filter the selections as follows:
+2. 次のように、選択内容をフィルター処理します。
 
-    1. Select the appropriate device.
+    1. 適切なデバイスを選択します。
 
-    2. In the drop-down list, choose a volume to view the corresponding the backups.
+    2. ドロップダウン リストで、ボリュームを選択し、相当するバックアップを表示します。
 
-    3. Specify the time range.
+    3. 時間範囲を指定します。
 
-    4. Click the check icon ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) to execute this query.
+    4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
  
-    The backups associated with the selected volume should appear in the list of backup sets.
+    選択したボリュームに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
-## <a name="select-a-backup-set"></a>Select a backup set
+## バックアップ セットの選択
 
-Complete the following steps to select a backup set for a volume or backup policy.
+次の手順に従って、ボリュームやバックアップ ポリシー用のバックアップ セットを選択します。
 
-#### <a name="to-select-a-backup-set"></a>To select a backup set
+#### バックアップ セットを選択するには
 
-1. On the StorSimple Manager service page, click the **Backup catalog** tab.
+1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックします。
 
-2. Filter the selections as follows:
+2. 次のように、選択内容をフィルター処理します。
 
-    1. Select the appropriate device.
+    1. 適切なデバイスを選択します。
 
-    2. In the drop-down list, choose the volume or backup policy for the backup that you wish to select.
+    2. ボックスの一覧で、選択するバックアップのボリュームまたはバックアップのポリシーを選択します。
 
-    3. Specify the time range.
+    3. 時間範囲を指定します。
 
-    4. Click the check icon ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) to execute this query.
+    4. チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
 
-    The backups associated with the selected volume or backup policy should appear in the list of backup sets.
+    選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
-3. Select and expand a backup set. The **Restore** and **Delete** options are displayed at the bottom of the page. You can perform either of these actions on the backup set that you selected.
+3. バックアップ セットを選択して展開します。ページの下に **[復元]** および **[削除]** オプションが表示されます。選択したバックアップ セットには、これらのアクションのいずれかを実行できます。
 
-## <a name="delete-a-backup-set"></a>Delete a backup set
+## バックアップ セットの削除
 
-Delete a backup when you no longer wish to retain the data associated with it. Perform the following steps to delete a backup set.
+関連付けられているデータを保持する必要がない場合は、バックアップを削除します。バックアップ セットを削除するには次の手順を実行します。
 
-#### <a name="to-delete-a-backup-set"></a>To delete a backup set
+#### バックアップ セットを削除するには
 
-1. On the StorSimple Manager service page, click the **Backup Catalog tab**.
+1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックします。
 
-2. Filter the selections as follows:
+2. 次のように、選択内容をフィルター処理します。
 
-    1. Select the appropriate device.
+    1. 適切なデバイスを選択します。
 
-    2. In the drop-down list, choose the volume or backup policy for the backup that you wish to select.
+    2. ボックスの一覧で、選択するバックアップのボリュームまたはバックアップのポリシーを選択します。
 
-    3. Specify the time range.
+    3. 時間範囲を指定します。
 
-    4. Click the check icon ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) to execute this query.
+    4. チェック マーク アイコン ![Check icon](./media/storsimple-manage-backup-catalog/HCS_CheckIcon.png) をクリックしてこのクエリを実行します。
 
-    The backups associated with the selected volume or backup policy should appear in the list of backup sets.
+    選択したボリュームまたはバックアップ ポリシーに関連付けられているバックアップが、バックアップ セットの一覧に表示されます。
 
-3. Select and expand a backup set. The **Restore** and **Delete** options are displayed at the bottom of the page. Click **Delete**.
+3. バックアップ セットを選択して展開します。ページの下に **[復元]** および **[削除]** オプションが表示されます。[**削除**] をクリックします。
 
-4. You will be notified when the deletion is in progress and when it has successfully finished. After the deletion is done, refresh the query on this page. The deleted backup set will no longer appear in the list of backup sets.
+4. 削除する場合、実行時と正常に終了した後に通知されます。削除が完了したら、このページでクエリを更新します。削除したバックアップ セットは、バックアップ セットの一覧には表示されません。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn how to [use the backup catalog to restore your device from a backup set](storsimple-restore-from-backup-set.md).
+- [[バックアップ カタログ] ページを使用してバックアップ セットからデバイスを復元する方法](storsimple-restore-from-backup-set.md)。
 
-- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0504_2016-->

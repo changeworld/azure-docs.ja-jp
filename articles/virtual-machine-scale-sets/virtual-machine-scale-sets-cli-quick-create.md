@@ -1,37 +1,31 @@
 <properties
-    pageTitle="Scale sets CLI quick create | Microsoft Azure"
-    description="Deploy scale sets using CLI quick create."
-    keywords="virtual machine scale sets" 
-    services="virtual-machine-scale-sets"
-    documentationCenter=""
-    authors="gatneil"
-    manager="madhana"
-    editor="tysonn"
-    tags="azure-resource-manager" />
+	pageTitle="スケールセットの CLI による簡単作成 | Microsoft Azure"
+	description="CLI 簡単作成を利用し、スケール セットをデプロイします。"
+	keywords="仮想マシン スケール セット" 
+	services="virtual-machine-scale-sets"
+	documentationCenter=""
+	authors="gatneil"
+	manager="madhana"
+	editor="tysonn"
+	tags="azure-resource-manager" />
 
 <tags
-    ms.service="virtual-machine-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="03/31/2016"
-    ms.author="gatneil"/>
+	ms.service="virtual-machine-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="03/31/2016"
+	ms.author="gatneil"/>
 
-
-# <a name="quickly-create-a-scale-set-using-the-azure-cli"></a>Quickly create a scale set using the Azure CLI
+# Azure CLI を使用してスケール セットを簡単に作成する
 
 [AZURE.INCLUDE [cli-vmss-quick-create](../../includes/virtual-machines-linux-cli-vmss-quick-create-include.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For example Resource Manager templates using scale sets, search for "vmss" in the [Azure Quickstart Templates github repo](https://github.com/Azure/azure-quickstart-templates).
+スケール セットを使用した Resource Manager テンプレートの例については、[Azure クイックスタート テンプレートの GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で "vmss" を検索してください。
 
-For general information, check out the [main landing page for scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/).
+全般的な情報については、[VM スケール セットのメイン ランディング ページ](https://azure.microsoft.com/services/virtual-machine-scale-sets/)をご覧ください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0427_2016-->

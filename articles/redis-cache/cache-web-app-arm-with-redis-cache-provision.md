@@ -1,50 +1,49 @@
 <properties 
-    pageTitle="Provision Web App with Redis Cache" 
-    description="Use Azure Resource Manager template to deploy web app with Redis Cache." 
-    services="app-service" 
-    documentationCenter="" 
-    authors="steved0x" 
-    manager="erickson-doug" 
-    editor=""/>
+	pageTitle="Web アプリと Redis Cache にプロビジョニングする" 
+	description="Azure リソース マネージャー テンプレートを使用し、Web アプリと Redis Cache を展開します。" 
+	services="app-service" 
+	documentationCenter="" 
+	authors="steved0x" 
+	manager="erickson-doug" 
+	editor=""/>
 
 <tags 
-    ms.service="app-service" 
-    ms.workload="web" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="10/25/2016" 
-    ms.author="sdanie"/>
+	ms.service="app-service" 
+	ms.workload="web" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/09/2016" 
+	ms.author="sdanie"/>
 
+# テンプレートを使用し、Web アプリと Redis Cache を作成する
 
-# <a name="create-a-web-app-plus-redis-cache-using-a-template"></a>Create a Web App plus Redis Cache using a template
+このトピックでは、Azure Web アプリと Redis Cache をデプロイする Azure リソース マネージャーのテンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-In this topic, you will learn how to create an Azure Resource Manager template that deploys an Azure Web App with Redis cache. You will learn how to define which resources are deployed and how to define parameters that are specified when the deployment is executed. You can use this template for your own deployments, or customize it to meet your requirements.
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
-For more information about creating templates, see [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md).
+完全なテンプレートについては、「[Web アプリと Redis Cache のテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)」を参照してください。
 
-For the complete template, see [Web App with Redis Cache template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+## デプロイ対象
 
-## <a name="what-you-will-deploy"></a>What you will deploy
+このテンプレートでは、以下をデプロイします。
 
-In this template, you will deploy:
+- Azure Web アプリ
+- Azure Redis Cache。
 
-- Azure Web App
-- Azure Redis Cache.
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
-To run the deployment automatically, click the following button:
+[![Azure へのデプロイ](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
 
-[![Deploy to Azure](./media/cache-web-app-arm-with-redis-cache-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-with-redis-cache%2Fazuredeploy.json)
-
-## <a name="parameters-to-specify"></a>Parameters to specify
+## 指定するパラメーター
 
 [AZURE.INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
 [AZURE.INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
-## <a name="variables-for-names"></a>Variables for names
+## 名前用の変数
 
-This template uses variables to construct names for the resources. It uses the [uniqueString](../resource-group-template-functions.md#uniquestring) function to construct a value based on the resource group id.
+このテンプレートでは、リソースの名前を作成する変数を使用します。[uniqueString](../resource-group-template-functions.md#uniquestring) 関数を使用し、リソース グループの ID に基づく値を構築します。
 
     "variables": {
       "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -53,15 +52,15 @@ This template uses variables to construct names for the resources. It uses the [
     },
 
 
-## <a name="resources-to-deploy"></a>Resources to deploy
+## デプロイ対象のリソース
 
 [AZURE.INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
-### <a name="redis-cache"></a>Redis Cache
+### Redis Cache
 
-Creates the Azure Redis Cache that is used with the web app. The name of the cache is specified in the **cacheName** variable.
+Web アプリで使用される Azure Redis Cache を作成します。キャッシュの名前は **cacheName** 変数で指定されます。
 
-The template creates the cache in the same location as the resource group. 
+テンプレートによって、リソース グループと同じ場所にキャッシュが作成されます。
 
     {
       "name": "[variables('cacheName')]",
@@ -82,11 +81,11 @@ The template creates the cache in the same location as the resource group.
     }
 
 
-### <a name="web-app"></a>Web app
+### Web アプリ
 
-Creates the web app with name specified in the **webSiteName** variable.
+**webSiteName** 変数で指定された名前で Web アプリを作成します。
 
-Notice that the web app is configured with app setting properties that enable it to work with the Redis Cache. This app settings are dynamically created based on values provided during deployment.
+Redis Cache との連動を可能にするアプリ設定プロパティで Web アプリが構成されることに注意してください。このアプリ設定は展開時に指定された値に基づいて動的に作成されます。
         
     {
       "apiVersion": "2015-08-01",
@@ -121,22 +120,16 @@ Notice that the web app is configured with app setting properties that enable it
       ]
     }
 
-## <a name="commands-to-run-deployment"></a>Commands to run deployment
+## デプロイを実行するコマンド
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### <a name="powershell"></a>PowerShell
+### PowerShell
 
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup
 
-### <a name="azure-cli"></a>Azure CLI
+### Azure CLI
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-with-redis-cache/azuredeploy.json -g ExampleDeployGroup
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

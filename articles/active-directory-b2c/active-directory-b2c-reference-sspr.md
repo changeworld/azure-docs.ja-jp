@@ -1,49 +1,44 @@
 <properties
-    pageTitle="Azure Active Directory B2C: Self-service password reset | Microsoft Azure"
-    description="A topic demonstrating how to set up self-service password reset for your consumers in Azure Active Directory B2C"
-    services="active-directory-b2c"
-    documentationCenter=""
-    authors="swkrish"
-    manager="mbaldwin"
-    editor="curtand"/>
+	pageTitle="Azure Active Directory B2C: セルフサービスによるパスワードのリセット | Microsoft Azure"
+	description="Azure Active Directory B2C でコンシューマー向けにセルフサービスによるパスワードのリセットをセットアップする方法を示すトピック"
+	services="active-directory-b2c"
+	documentationCenter=""
+	authors="swkrish"
+	manager="msmbaldwin"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory-b2c"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/24/2016"
-    ms.author="swkrish"/>
+	ms.service="active-directory-b2c"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/24/2016"
+	ms.author="swkrish"/>
 
 
+# Azure Active Directory B2C: コンシューマー向けにセルフサービスによるパスワードのリセットをセットアップする
 
-# <a name="azure-active-directory-b2c:-set-up-self-service-password-reset-for-your-consumers"></a>Azure Active Directory B2C: Set up self-service password reset for your consumers
-
-With the self-service password reset feature, your consumers (who have signed up for local accounts) can reset their passwords on their own. This significantly reduces the burden on your support staff, especially if your application has millions of consumers using it on a regular basis. Currently, we only support using a verified email address as a recovery method. We will add additional recovery methods (verified phone number, security questions, etc.) in the future.
-
-> [AZURE.NOTE]
-This article applies to self-service password reset used in the context of a sign-in policy. If you need fully customizable password reset policies invoked from your app, see [this article](./active-directory-b2c-reference-policies.md#create-a-password-reset-policy).
-
-By default, your directory will not have self-service password reset turned on. Use the following steps to turn it on:
-
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com/) as the Subscription Administrator. This is the same work or school account or the same Microsoft account that you used to create your directory.
-2. Navigate to the Active Directory extension on the navigation bar on the left side.
-3. Find your directory under the **Directory** tab and click it.
-4. Click the **Configure** tab.
-5. Scroll down to the **User password reset policy** section and toggle the **Users enabled for password reset** option to **YES**. Notice that the **Alternate Email Address** option is checked; leave it as it is.
-
-    ![Self-service password reset](./media/active-directory-b2c-reference-sspr/sspr.png)
-
-6. Click **Save** at the bottom of the page. You're done!
-
-To test, use the "Run now" feature on any sign-in policy that has local accounts as an identity provider. On the local account sign-in page (where you enter an email address and password, or a username and password), click **Can't access your account?** to verify the consumer experience.
+セルフサービスのパスワード リセット機能を使用すると、コンシューマー (ローカル アカウントにサインアップしたユーザー) はパスワードを自分でリセットできます。これによりサポート スタッフの負担を大幅に軽減でき、アプリケーションを定期的に使用するコンシューマーが何百万人もいるような場合に特に効果的です。現在、回復の手段としては検証済みの電子メール アドレスのみがサポートされています。将来的には、他の回復方法 (検証済みの電話番号、セキュリティの質問など) が追加される予定です。
 
 > [AZURE.NOTE]
-The self-service password reset pages can be customized by using the [company branding feature](../active-directory/active-directory-add-company-branding.md).
+この記事は、サインイン ポリシーのコンテキストで使用されるセルフ サービスのパスワード リセットに適用されます。アプリケーションから呼び出される完全にカスタマイズ可能なパスワードのリセット ポリシーが必要な場合は、[この記事](./active-directory-b2c-reference-policies.md#create-a-password-reset-policy)を参照してください。
 
+既定のディレクトリでは、セルフサービスによるパスワードのリセットは無効になっています。この機能を有効にするには次のようにします。
 
+1. サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします。これは、ディレクトリを作成するときに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントです。
+2. 左側のナビゲーション バーで Active Directory 拡張機能に移動します。
+3. **[ディレクトリ]** タブで、作成したディレクトリをクリックします。
+4. [**構成**] タブをクリックします。
+5. 下にスクロールして **[ユーザー パスワードのリセット ポリシー]** セクションに移動し、**[パスワードのリセットが有効になっているユーザー]** オプションを **[はい]** に変更します。**[連絡用電子メール アドレス]** オプションがオンになっていることに注意してください (そのままにします)。
 
-<!--HONumber=Oct16_HO2-->
+    ![セルフサービスのパスワード リセット](./media/active-directory-b2c-reference-sspr/sspr.png)
 
+6. ページの下部にある **[保存]** をクリックします。以上で終わりです。
 
+テストするには、任意のサインイン ポリシー (ID プロバイダーがローカル アカウントのもの) で [今すぐ実行] 機能を使用します。ローカル アカウントのサインイン ページ (電子メール アドレスとパスワードまたはユーザー名とパスワードを入力する場所) で、**[アカウントにアクセスできない場合]** をクリックしてコンシューマー エクスペリエンスを確認します。
+
+> [AZURE.NOTE]
+[セルフサービスによるパスワードのリセット] ページは、[会社のブランド機能](../active-directory/active-directory-add-company-branding.md)を使用してカスタマイズできます。
+
+<!---HONumber=AcomDC_0727_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Clone your StorSimple volume | Microsoft Azure"
-   description="Describes the different clone types and when to use them, and explains how you can use a backup set to clone an individual volume."
+   pageTitle="StorSimple ボリュームの複製 | Microsoft Azure"
+   description="異なる複製の種類と、それらをどのような場合に使用するかについて説明します。また、バックアップ セットを使用して個々のボリュームを複製する方法についても説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="alkohli"
@@ -15,90 +15,86 @@
    ms.date="08/17/2016"
    ms.author="alkohli" />
 
-
-# <a name="use-the-storsimple-manager-service-to-clone-a-volume"></a>Use the StorSimple Manager service to clone a volume
+# StorSimple Manager サービスを使用してボリュームを複製する
 
 [AZURE.INCLUDE [storsimple-version-selector-clone-volume](../../includes/storsimple-version-selector-clone-volume.md)]
 
-## <a name="overview"></a>Overview
+## Overview
 
-The StorSimple Manager service **Backup Catalog** page displays all the backup sets that are created when manual or automated backups are taken. You can use this page to list all the backups for a backup policy or a volume, select or delete backups, or use a backup to restore or clone a volume.
+StorSimple Manager サービスの **[バックアップ カタログ]** ページには、手動バックアップまたは自動バックアップを実行したときに作成されたすべてのバックアップ セットが表示されます。このページを使用すると、バックアップ ポリシーまたはボリュームのすべてのバックアップを一覧表示したり、バックアップを選択または削除したりできます。また、バックアップを使用してボリュームを復元または複製することもできます。
 
-![Backup catalog page](./media/storsimple-clone-volume/HCS_BackupCatalog.png)  
+  ![[バックアップ カタログ] ページ](./media/storsimple-clone-volume/HCS_BackupCatalog.png)
 
-This tutorial describes how you can use a backup set to clone an individual volume. It also explains the difference between *transient* and *permanent* clones. 
+このチュートリアルでは、バックアップ セットを使用して個々のボリュームを複製する方法について説明します。また、*一時的な*複製と*永続的な*複製の違いについても説明します。
 
-## <a name="create-a-clone-of-a-volume"></a>Create a clone of a volume
+## ボリュームの複製を作成する
 
-You can create a clone on the same device, another device, or even a virtual machine by using a local or a cloud snapshot.
+複製は、ローカル スナップショットまたはクラウド スナップショットを使用して、同じデバイスや別のデバイスに作成できるほか、仮想マシンに作成することもできます。
 
-#### <a name="to-clone-a-volume"></a>To clone a volume
+#### ボリュームを複製するには
 
-1. On the StorSimple Manager service page, click the **Backup catalog** tab and select a backup set.
+1. StorSimple Manager サービスのページで、**[バックアップ カタログ]** タブをクリックし、バックアップ セットを選択します。
 
-2. Expand the backup set to view the associated volumes. Click and select a volume from the backup set.
+2. バックアップ セットを展開して、関連付けられているボリュームを表示します。バックアップ セットからボリュームをクリックして選択します。
 
-     ![Clone a volume](./media/storsimple-clone-volume/HCS_Clone.png) 
+     ![ボリュームを複製する](./media/storsimple-clone-volume/HCS_Clone.png)
 
-3. Click **Clone** to begin cloning the selected volume.
+3. **[複製]** をクリックして、選択したボリュームの複製を開始します。
 
-4. In the Clone Volume wizard, under **Specify name and location**:
+4. ボリュームの複製ウィザードの **[名前と場所の指定]** で、次の手順を実行します。
 
-  1. Identify a target device. This is the location where the clone will be created. You can choose the same device or specify another device. If you choose a volume associated with other cloud service providers (not Azure), the drop-down list for the target device will only show physical devices. You cannot clone a volume associated with other cloud service providers on a virtual device.
+  1. ターゲット デバイスを指定します。これは、複製が作成される場所です。同じデバイスを選択することも、別のデバイスを指定することもできます。別のクラウド サービス プロバイダー (Azure 以外) に関連付けられたボリュームを選択する場合、ターゲット デバイスのドロップダウン リストには物理デバイスのみが表示されます。別のクラウド サービスのプロバイダーに関連付けられたボリュームを仮想デバイス上に複製することはできません。
 
-        >  [AZURE.NOTE] Make sure that the capacity required for the clone is lower than the capacity available on the target device.
-  2. Specify a unique volume name for your clone. The name must contain between 3 and 127 characters.
-  3. Click the arrow icon ![arrow-icon](./media/storsimple-clone-volume/HCS_ArrowIcon.png) to proceed to the next page.
+        >  [AZURE.NOTE] 複製に必要な容量がターゲット デバイスで使用可能な容量を下回っていることを確認してください。
 
-5. Under **Specify hosts that can use this volume**:
+  2. 複製の一意の [ボリューム名] を指定します。名前は 3 文字以上 127 文字以下にする必要があります。
+  3. 矢印アイコン ![矢印アイコン](./media/storsimple-clone-volume/HCS_ArrowIcon.png) をクリックして、次のページに進みます。
 
-  1. Specify an access control record (ACR) for the clone. You can add a new ACR or choose from the existing list.
-  2. Click the check icon ![check-icon](./media/storsimple-clone-volume/HCS_CheckIcon.png)to complete the operation.
+5. **[このボリュームを使用できるホストの指定]** で、次の手順を実行します。
 
-6. A clone job will be initiated and you will be notified when the clone is successfully created. Click **View Job** to monitor the clone job on the **Jobs** page.
+  1. 複製のアクセス制御レコード (ACR) を指定します。新しい ACR を追加することも、既存の一覧から選択することもできます。
+  2. 操作を完了するには、チェック マーク アイコン ![チェック マーク アイコン](./media/storsimple-clone-volume/HCS_CheckIcon.png) をクリックします。
 
-7. After the clone job is completed:
+6. 複製ジョブが開始され、ジョブが正常に作成されると通知が表示されます。**[ジョブの表示]** をクリックすると **[ジョブ]** ページで複製ジョブを監視できます。
 
-  1. Go to the **Devices** page, and select the **Volume Containers** tab. 
-  2. Select the volume container that is associated with the source volume that you cloned. In the list of volumes, you should see the clone that was just created.
+7. 複製ジョブが完了したら、次の手順を実行します。
 
->[AZURE.NOTE] Monitoring and default backup are automatically disabled on a cloned volume.
+  1. **[デバイス]** ページに移動し、**[ボリューム コンテナー]** タブを選択します。
+  2. 複製元のボリュームに関連付けられているボリューム コンテナーを選択します。ボリュームの一覧に、先ほど作成した複製が表示されます。
 
-A clone that is created this way is a transient clone. For more information about clone types, see [Transient vs. permanent clones](#transient-vs.-permanent-clones).
+>[AZURE.NOTE] 複製されたボリュームの監視と既定のバックアップは自動的に無効になっています。
 
-This clone is now a regular volume, and any operation that is possible on a volume will be available for the clone. You will need to configure this volume for any backups.
+このように作成された複製は一時的な複製です。複製の種類の詳細については、「[一時的な複製と永続的な複製](#transient-vs.-permanent-clones)」を参照してください。
 
-## <a name="transient-vs.-permanent-clones"></a>Transient vs. permanent clones
+この複製はこれで通常のボリュームとなり、ボリュームに対して実行できるすべての操作を利用できます。バックアップを行う場合は、このボリュームを構成する必要があります。
 
-Transient and permanent clones are created only when you are cloning on to a different device. You can clone a specific volume from a backup set to a different device. A clone created in this way is a *transient* clone. The transient clone will have references to the original volume and will use that volume to read while writing locally. 
+## 一時的な複製と永続的な複製
 
-After you take a cloud snapshot of a transient clone, the resulting clone will be a *permanent* clone. The permanent clone is independent and doesn’t have any references to the original volume that it was cloned from.  
+一時的な複製と永続的な複製は、別のデバイスに複製する場合にのみ作成されます。バックアップ セットの特定のボリュームを別のデバイスに複製できます。このように作成された複製は*一時的な*複製です。一時的な複製は元のボリュームを参照し、そのボリュームを使用して読み取りを行いますが、書き込みはローカルで行います。
 
-## <a name="scenarios-for-transient-and-permanent-clones"></a>Scenarios for transient and permanent clones
+一時的な複製のクラウド スナップショットを作成すると、その複製は*永続的な*複製になります。永続的な複製は独立していて、複製元のボリュームを参照することはありません。
 
-The following sections describe example situations in which transient and permanent clones can be used.
+## 一時的な複製と永続的な複製のシナリオ
 
-### <a name="item-level-recovery-with-a-transient-clone"></a>Item-level recovery with a transient clone
+ここでは、一時的な複製と永続的な複製が使用される状況の例について説明します。
 
-You need to recover a one-year-old Microsoft PowerPoint presentation file. Your IT administrator identifies the specific backup from that time frame, and then filters the volume. The administrator then clones the volume, locates the file that you are looking for, and provides it to you. In this scenario, a transient clone is used. 
+### 一時的な複製による項目レベルの回復
+
+1 年前の PowerPoint プレゼンテーション ファイルを回復する場合を考えます。IT 管理者はその期間の特定のバックアップを識別し、ボリュームをフィルター処理します。次に管理者はボリュームを複製し、ユーザーが探している特定のファイルを見つけ、ユーザーに提供します。このシナリオでは、一時的な複製を使用します。
  
-![Video available](./media/storsimple-clone-volume/Video_icon.png) **Video available**
+![ビデオ](./media/storsimple-clone-volume/Video_icon.png) **ビデオ**
 
-To watch a video that demonstrates how you can use the clone and restore features in StorSimple to recover deleted files, click [here](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/).
+StorSimple の複製機能と復元機能を使用して、削除されたファイルを回復する方法を説明したビデオについては、[こちら](https://azure.microsoft.com/documentation/videos/storsimple-recover-deleted-files-with-storsimple/)を参照してください。
 
-### <a name="testing-in-the-production-environment-with-a-permanent-clone"></a>Testing in the production environment with a permanent clone
+### 永続的な複製による運用環境でのテスト
 
-You need to verify a testing bug in the production environment. You create a clone of the volume in the production environment by taking a cloud snapshot of this clone. The cloned volume is now independent. In this scenario, a permanent clone is used.
+運用環境でテストのバグを確認する場合を考えます。この複製のクラウド スナップショットを作成して、運用環境でボリュームの複製を作成します。複製されたボリュームは独立しています。このシナリオでは、永続的な複製を使用します。
 
-## <a name="next-steps"></a>Next steps
-- Learn how to [restore a StorSimple volume from a backup set](storsimple-restore-from-backup-set.md).
+## 次のステップ
+- [バックアップ セットからの StorSimple ボリュームの復元方法](storsimple-restore-from-backup-set.md)
 
-- Learn how to [use the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

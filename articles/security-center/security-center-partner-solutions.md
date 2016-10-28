@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Managing partner solutions in Azure Security Center | Microsoft Azure"
-   description="This document walks you through how Azure Security Center lets you monitor at a glance the health status of your partner solutions integrated with your Azure subscription."
+   pageTitle="Azure Security Center でのパートナー ソリューションの管理 | Microsoft Azure"
+   description="このドキュメントでは、Azure サブスクリプションに統合されたパートナー ソリューションの正常性状態を、Azure セキュリティ センターでひと目で監視する方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,51 +16,45 @@
    ms.date="07/21/2016"
    ms.author="terrylan"/>
 
+# Azure Security Center を使用したパートナー ソリューションの監視
 
-# <a name="monitoring-partner-solutions-with-azure-security-center"></a>Monitoring partner solutions with Azure Security Center
+このドキュメントでは、Azure Security Center でパートナー ソリューションの正常性状態を監視する方法について説明します。
 
-This document walks you through how to monitor the health status of your partner solutions in Azure Security Center.
+> [AZURE.NOTE] このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。ステップ バイ ステップ ガイドではありません。
 
-> [AZURE.NOTE] This document introduces the service by using an example deployment. This is not a step-by-step guide.
+## パートナー ソリューションの監視
 
-## <a name="monitoring-partner-solutions"></a>Monitoring partner solutions
+**[セキュリティ センター]** ブレードの **[パートナー ソリューション]** タイルでは、Azure サブスクリプションと統合されたパートナー ソリューションの正常性状態をひと目で監視できます。![Partner solutions tile][1]
 
-The **Partner solutions** tile on the **Security Center** blade lets you monitor at a glance the health status of your partner solutions integrated with your Azure subscription.
-![Partner solutions tile][1]
+**[パートナー ソリューション]** タイルには、パートナー ソリューションの数と、それらのソリューションの状態の概要が表示されます。
 
-The **Partner solutions** tile displays the number of partner solutions and a status summary for those solutions.
+パートナー ソリューションの **[状態]** は次のいずれかになります。
 
-The **STATUS** of a partner solution can be:
+- 保護済み (緑) - 正常性の問題はありません。
+- 異常 (赤) - 早急に処置が必要な正常性の問題があります。
+- レポート停止 (オレンジ) - ソリューションが正常性の報告を停止しています。
+- 不明な保護状態 (オレンジ) - 新しいリソースを既存のソリューションに追加するプロセスが失敗したため、この時点のソリューションの正常性が不明です。
+- レポートなし (灰色) - ソリューションがまだ何も報告していません。接続されたばかりでデプロイ中の場合、ソリューションの状態は報告されていない可能性があります。
 
-- Protected (green) - there is no health issue.
-- Unhealthy (red) - there is a health issue that requires immediate attention.
-- Stopped reporting (orange) - the solution has stopped reporting its health.
-- Unknown protection status (orange) - the health of the solution is unknown at this time due to a failed process of adding a new resource to the existing solution.
-- Not reported (gray) - the solution has not reported anything yet, a solution's status may be unreported if it has just been connected and is still deploying.
+サブスクリプションに統合されたソリューションがない場合、ソリューションが存在しないことがタイルに表示されます。**[パートナー ソリューション]** タイルを選択すると、**[推奨事項]** ブレードが開き、パートナー セキュリティ ソリューションをデプロイできます。![No partner solutions][2]
 
-If there are no solutions integrated with your subscription the tile will state that there are no solutions. Selecting the **Partner solutions** tile will enable you to open the **Recommendations** blade to deploy partner security solutions.
-![No partner solutions][2]
+パートナー ソリューションの正常性を確認するには、次の手順を実行します。
 
-To view the health of your partner solutions:
+1. **[パートナー ソリューション]** タイルを選択します。Security Center に接続されているパートナー ソリューションの一覧が表示されたブレードが開きます。![パートナー ソリューション][3]
 
-1. Select the **Partner solutions** tile. A blade opens displaying a list of your partner solutions connected to Security Center.
-![Partner solutions][3]
+2. パートナー ソリューションを選択します。この例では、**[F5-WAF2]** ソリューションを選択します。パートナー ソリューションの状態およびソリューションの関連付けられたリソースを示すブレードが開きます。**[ソリューション コンソール]** を選択して、このソリューションのパートナー管理エクスペリエンスを開きます。![パートナー ソリューションの詳細][4]
 
-2. Select a partner solution. In this example, lets select the **F5-WAF2** solution.  A blade opens showing you the status of the partner solution and the solution's associated resources. Select **Solution console** to open the partner management experience for this solution.
-![Partner solution detail][4]
+3. **[F5-WAF2]** ブレードに戻り、**[アプリをリンク]** を選択します。**[アプリケーションのリンク]** ブレードが開きます。ここで、パートナー ソリューションにリソースを接続できます。![Link resources to partner solution][5]
 
-3. Go back to the **F5-WAF2** blade and select **Link app**. The **Link Applications** blade opens. Here you can connect resources to the partner solution.
-![Link resources to partner solution][5]
+## 関連項目
+このドキュメントでは、Security Center の **[パートナー ソリューション]** タイルについて説明しました。セキュリティ センターの詳細については、次を参照してください。
 
-## <a name="see-also"></a>See also
-In this document, you were introduced to the **Partner Solutions** tile in Security Center. To learn more about Security Center, see the following:
-
-- [Setting security policies in Azure Security Center](security-center-policies.md) — Learn how to configure security policies for your Azure subscriptions and resource groups.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) — Learn how recommendations help you protect your Azure resources.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md) — Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) — Learn how to manage and respond to security alerts.
-- [Azure Security Center FAQ](security-center-faq.md) — Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) — Get the latest Azure security news and information.
+- [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明しています。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理と対応の方法について説明しています
+- 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+- [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 <!--Image references-->
 [1]: ./media/security-center-partner-solutions/partner-solutions-tile.png
@@ -69,8 +63,4 @@ In this document, you were introduced to the **Partner Solutions** tile in Secur
 [4]: ./media/security-center-partner-solutions/partner-solutions-detail.png
 [5]: ./media/security-center-partner-solutions/link-applications.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

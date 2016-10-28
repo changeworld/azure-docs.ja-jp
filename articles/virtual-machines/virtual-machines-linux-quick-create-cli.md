@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a Linux VM on Azure by using the CLI | Microsoft Azure"
-   description="Create a Linux VM on Azure by using the CLI."
+   pageTitle="CLI を使用した Azure での Linux VM の作成 | Microsoft Azure"
+   description="CLI を使用して Azure で Linux VM を作成します。"
    services="virtual-machines-linux"
    documentationCenter=""
    authors="vlivech"
@@ -17,55 +17,54 @@
    ms.author="v-livech"/>
 
 
+# CLI を使用した Azure での Linux VM の作成
 
-# <a name="create-a-linux-vm-on-azure-by-using-the-cli"></a>Create a Linux VM on Azure by using the CLI
+この記事では、Azure コマンド ライン インターフェイス (CLI) で `azure vm quick-create` コマンドを使用して、Azure に Linux 仮想マシン (VM) をすばやくデプロイする方法を説明します。`quick-create` コマンドは、プロトタイプの作成や概念のテストを迅速に行うことができる、セキュリティで保護された基本的なインフラストラクチャ内に VM をデプロイします。この記事では以下が必要です。
 
-This article shows how to quickly deploy a Linux virtual machine (VM) on Azure by using the `azure vm quick-create` command in the Azure command-line interface (CLI). The `quick-create` command deploys a VM inside a basic, secure infrastructure that you can use to prototype or test a concept rapidly. The article requires:
+- Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
 
-- an Azure account ([get a free trial](https://azure.microsoft.com/pricing/free-trial/)).
+- `azure login` を使用した [Azure CLI](../xplat-cli-install.md) へのログイン。
 
-- the [Azure CLI](../xplat-cli-install.md) logged in with `azure login`
+- Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である_必要があります_。
 
-- the Azure CLI _must be in_ Azure Resource Manager mode `azure config mode arm`
+[Azure ポータル](virtual-machines-linux-quick-create-portal.md)を使用して、Linux VM をすばやくデプロイすることもできます。
 
-You can also quickly deploy a Linux VM by using the [Azure portal](virtual-machines-linux-quick-create-portal.md).
+## クイック コマンド
 
-## <a name="quick-commands"></a>Quick commands
-
-The following example shows how to deploy a CoreOS VM and attach your Secure Shell (SSH) key (your arguments might be different):
+次の例は、CoreOS VM をデプロイし、Secure Shell (SSH) キーを添付する方法を示しています (引数は異なる場合があります)。
 
 ```bash
 azure vm quick-create -M ~/.ssh/azure_id_rsa.pub -Q CoreOS
 ```
 
-The following sections explain the command and its requirements using Ubuntu Server 14.04 LTS as the Linux distribution.  
+以下のセクションでは、このコマンドと、Linux ディストリビューションとして Ubuntu Server 14.04 LTS を使用する際の要件について説明します。
 
-## <a name="vm-quick-create-aliases"></a>VM quick-create aliases
+## VM の quick-create エイリアス
 
-A quick way to choose a distribution is to use the Azure CLI aliases mapped to the most common OS distributions. The following table lists the aliases (as of Azure CLI version 0.10). All deployments that use `quick-create` default to VMs that are backed by solid-state drive (SSD) storage, which offers faster provisioning and high-performance disk access. (These aliases represent a tiny portion of the available distributions on Azure. Find more images in the Azure Marketplace by [searching for an image](virtual-machines-linux-cli-ps-findimage.md), or [upload your own custom image](virtual-machines-linux-create-upload-generic.md).)
+ディストリビューションを簡単に選択するには、最も一般的な OS ディストリビューションにマップされた Azure CLI のエイリアスを使用します。次の表にエイリアスを示します (Azure CLI バージョン 0.10 の時点)。`quick-create` を使用したすべてのデプロイの既定の VM では、プロビジョニングの高速化と高パフォーマンスのディスク アクセスを実現するソリッドステート ドライブ (SSD) ストレージを利用します (これらのエイリアスは、Azure で利用可能なディストリビューションのごく一部を表しています。Azure Marketplace で[イメージを検索](virtual-machines-linux-cli-ps-findimage.md)してさらに多くのイメージを見つけることも、[独自のカスタム イメージをアップロード](virtual-machines-linux-create-upload-generic.md)することもできます)。
 
-| Alias     | Publisher | Offer        | SKU         | Version |
+| エイリアス | 発行元 | プラン | SKU | バージョン |
 |:----------|:----------|:-------------|:------------|:--------|
-| CentOS    | OpenLogic | CentOS       | 7.2         | latest  |
-| CoreOS    | CoreOS    | CoreOS       | Stable      | latest  |
-| Debian    | credativ  | Debian       | 8           | latest  |
-| openSUSE  | SUSE      | openSUSE     | 13.2        | latest  |
-| RHEL      | Red Hat    | RHEL         | 7.2         | latest  |
-| UbuntuLTS | Canonical | Ubuntu Server | 14.04.4-LTS | latest  |
+| CentOS | OpenLogic | CentOS | 7\.2 | 最新 |
+| CoreOS | CoreOS | CoreOS | 安定版 | 最新 |
+| Debian | credativ | Debian | 8 | 最新 |
+| openSUSE | SUSE | openSUSE | 13\.2 | 最新 |
+| RHEL | Red Hat | RHEL | 7\.2 | 最新 |
+| UbuntuLTS | Canonical | Ubuntu Server | 14\.04.4-LTS | 最新 |
 
-The following sections use the `UbuntuLTS` alias for the **ImageURN** option (`-Q`) to deploy an Ubuntu 14.04.4 LTS Server.
+以下のセクションでは、**ImageURN** オプション (`-Q`) に `UbuntuLTS` エイリアスを使用して、Ubuntu 14.04.4 LTS Server をデプロイします。
 
-## <a name="detailed-walkthrough"></a>Detailed walkthrough
+## 詳細なチュートリアル
 
-The previous `quick-create` example only called out the `-M` flag to identify the SSH public key to upload while disabling SSH passwords, so you are prompted for the following arguments:
+前の `quick-create` の例では、アップロードする SSH 公開キーを識別する `-M` フラグだけを指定し、SSH パスワードを無効にしているので、以下の引数を入力するよう求められます。
 
-- resource group name (any string is typically fine for your first Azure resource group)
-- VM name
-- location (`westus` or `westeurope` are good defaults)
-- linux (to let Azure know which OS you want)
+- リソース グループ名 (最初の Azure リソース グループでは、任意の文字列で通常は問題ありません)。
+- VM 名
+- 場所 (`westus`、`westeurope` など)
+- linux (必要な OS を Azure に通知します)。
 - username
 
-The following example specifies all the values so that no further prompting is required. So long as you have an `~/.ssh/id_rsa.pub` as a ssh-rsa format public key file, it works as is:
+次の例では、さらに入力を要求しなくて済むように、すべての値を指定しています。`~/.ssh/id_rsa.pub` が ssh-rsa 形式の公開キー ファイルであれば、これは現状のまま機能します。
 
 ```bash
 azure vm quick-create \
@@ -78,7 +77,7 @@ azure vm quick-create \
 -Q UbuntuLTS
 ```
 
-The output should look like the following output block:
+出力は次のような出力ブロックになります。
 
 ```bash
 info:    Executing command vm quick-create
@@ -156,13 +155,13 @@ data:      Diagnostics Instance View:
 info:    vm quick-create command OK
 ```
 
-Log in to your VM by using the public IP address listed in the output. You can also use the fully qualified domain name (FQDN) that's listed:
+この出力に示されているパブリック IP アドレスを使用して、VM にログインします。ここで示されている完全修飾ドメイン名 (FQDN) を使用することもできます。
 
 ```bash
 ssh -i ~/.ssh/id_rsa.pub exampleAdminUser@138.91.247.29
 ```
 
-The login process should look something like the following output block:
+ログイン プロセスは次の出力ブロックのようになります。
 
 ```bash
 Warning: Permanently added '138.91.247.29' (ECDSA) to the list of known hosts.
@@ -196,18 +195,14 @@ applicable law.
 exampleAdminUser@exampleVMName:~$
 ```
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-The `azure vm quick-create` command is the way to quickly deploy a VM so you can log in to a bash shell and get working. However, using `vm quick-create` does not give you extensive control nor does it enable you to create a more complex environment.  To deploy a Linux VM that's customized for your infrastructure, you can follow any of these articles:
+`azure vm quick-create` を使用すると、bash シェルにログインして作業できるように、VM をすばやくデプロイできます。ただし、`vm quick-create` を使用した場合、広範な制御を行ったり、より複雑な環境を作成したりすることはできません。インフラストラクチャに合わせてカスタマイズした Linux VM をデプロイする方法については、次の記事を参照してください。
 
-- [Use an Azure Resource Manager template to create a specific deployment](virtual-machines-linux-cli-deploy-templates.md)
-- [Create your own custom environment for a Linux VM using Azure CLI commands directly](virtual-machines-linux-create-cli-complete.md)
-- [Create an SSH Secured Linux VM on Azure using templates](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
+- [Azure Resource Manager テンプレートを使用して特定のデプロイを作成する](virtual-machines-linux-cli-deploy-templates.md)
+- [Azure CLI コマンドを直接使用して Linux VM 用の独自のカスタム環境を作成する](virtual-machines-linux-create-cli-complete.md)
+- [テンプレートを使用して、SSH で保護された Linux VM を Azure で作成する](virtual-machines-linux-create-ssh-secured-vm-from-template.md)
 
-You can also [use the `docker-machine` Azure driver with various commands to quickly create a Linux VM as a docker host](virtual-machines-linux-docker-machine.md).
+[さまざまなコマンドで `docker-machine` Azure ドライバーを使用すると、Linux VM を Docker ホストとしてもすばやく作成](virtual-machines-linux-docker-machine.md)できます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1005_2016-->

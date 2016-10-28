@@ -1,12 +1,9 @@
-#### <a name="to-shut-down-a-virtual-device"></a>To shut down a virtual device
+#### 仮想デバイスをシャット ダウンするには
 
-1. Sign in to the Management Portal.
+1. 管理ポータルにサインインします。
 
-2. Click **Virtual Machines**, and then select the virtual device.
+2. **[Virtual Machines]** をクリックし、仮想デバイスを選択します。
 
-3. Click **Shutdown**.
+3. **[シャットダウン]** をクリックします。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1217_2015-->

@@ -1,274 +1,269 @@
 <properties 
-    pageTitle="Windows Phone Silverlight Reach SDK Integration" 
-    description="How to Integrate Azure Mobile Engagement Reach with Windows Phone Silverlight Apps"                    
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo" 
-    manager="dwrede" 
-    editor="" />
+	pageTitle="Windows Phone Silverlight Reach SDK 統合" 
+	description="Windows Phone Silverlight アプリと Azure モバイル エンゲージメント Reach を統合する方法" 					
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo" 
+	manager="dwrede" 
+	editor="" />
 
 <tags 
-    ms.service="mobile-engagement" 
-    ms.workload="mobile" 
-    ms.tgt_pltfrm="mobile-windows-phone" 
-    ms.devlang="na" 
-    ms.topic="article"
-    ms.date="08/19/2016" 
-    ms.author="piyushjo" />
+	ms.service="mobile-engagement" 
+	ms.workload="mobile" 
+	ms.tgt_pltfrm="mobile-windows-phone" 
+	ms.devlang="na" 
+	ms.topic="article"
+	ms.date="08/19/2016" 
+	ms.author="piyushjo" />
 
+#Windows Phone Silverlight Reach SDK 統合
 
-#<a name="windows-phone-silverlight-reach-sdk-integration"></a>Windows Phone Silverlight Reach SDK Integration
+このガイドの手順を実行する前に、「[Windows Phone Silverlight Engagement SDK 統合](mobile-engagement-windows-phone-integrate-engagement.md)」の統合手順を実行する必要があります。
 
-You must follow the integration procedure described in the [Windows Phone Silverlight Engagement SDK Integration](mobile-engagement-windows-phone-integrate-engagement.md) before following this guide.
+##エンゲージメント リーチ SDK を Windows Phone Silverlight プロジェクトに埋め込む
 
-##<a name="embed-the-engagement-reach-sdk-into-your-windows-phone-silverlight-project"></a>Embed the Engagement Reach SDK into your Windows Phone Silverlight project
+追加するものは何もありません。`EngagementReach` のリファレンスとリソースは、既にプロジェクト内に存在します。
 
-You do not have anything to add. `EngagementReach` references and resources are already in your project.
+> [AZURE.TIP]  プロジェクトの `Resources` フォルダーにあるイメージをカスタマイズできます (特に、既定のエンゲージメント アイコンであるブランド アイコン)。
 
-> [AZURE.TIP]  You can customize images located in the `Resources` folder of your project, especially the brand icon (that default to the Engagement icon).
+##機能を追加する
 
-##<a name="add-the-capabilities"></a>Add the capabilities
+エンゲージメント Reach SDK には、いくつかの追加機能が必要になります。
 
-The Engagement Reach SDK needs some additional capabilities.
-
-Open your `WMAppManifest.xml` file and be sure that the following capabilities are declared:
+`WMAppManifest.xml` ファイルを開き、次の機能が宣言されていることを確認します。
 
 -   `ID_CAP_PUSH_NOTIFICATION`
 -   `ID_CAP_WEBBROWSERCOMPONENT`
 
-The first one is used by the MPNS service to allow the display of toast notification. The second one is used to embed a browser task into the SDK.
+1 つ目はトースト通知の表示を許可するために MPNS サービスによって使用されます。2 つ目は SDK にブラウザーのタスクを埋め込むために使用されます。
 
-Edit the `WMAppManifest.xml` file and add inside the `<Capabilities />` tag :
+`WMAppManifest.xml` ファイルを編集し、`<Capabilities />` タグ内に追加します。
 
-    <Capability Name="ID_CAP_PUSH_NOTIFICATION" />
-    <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+	<Capability Name="ID_CAP_PUSH_NOTIFICATION" />
+	<Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
 
-##<a name="enable-the-microsoft-push-notification-service"></a>Enable the Microsoft Push Notification Service
+##Microsoft プッシュ通知サービスを有効にする
 
-In order to use the **Microsoft Push Notification Service** (referred as MPNS) your `WMAppManifest.xml` file must have an `<App />` tag with a `Publisher` attribute set to the name of your project.
+**Microsoft プッシュ通知サービス** (MPNS と呼ばれます) を使用するには、`WMAppManifest.xml` ファイルに、プロジェクトの名前に `Publisher` 属性が設定された `<App />` タグが必要です。
 
-##<a name="initialize-the-engagement-reach-sdk"></a>Initialize the Engagement Reach SDK
+##エンゲージメント Reach SDK を初期化する
 
-### <a name="engagement-configuration"></a>Engagement configuration
+### Engagement の構成
 
-The Engagement configuration is centralized in the `Resources\EngagementConfiguration.xml` file of your project.
+Engagement の構成は、プロジェクトの `Resources\EngagementConfiguration.xml` ファイルで集中管理されます。
 
-Edit this file to specify reach configuration :
+このファイルを編集して、リーチの構成を指定します:
 
--   *Optional*, indicate whether the native push (MPNS) is activated or not between `<enableNativePush>` and `</enableNativePush>` tags, (`true` by default).
--   *Optional*, indicate the name of the push channel between `<channelName>` and `</channelName>` tags, provide the same that your application may currently use or leave it empty.
+-   *オプション*、ネイティブのプッシュ (MPNS) が、`<enableNativePush>` タグと `</enableNativePush>` タグの間でアクティブになっているかどうかを示します (既定は `true`)。
+-   *オプション*、`<channelName>` タグと `</channelName>` タグの間のプッシュ チャネルの名前を示します。アプリケーションが現在使用しているものの名前を指定するか、または空のままにします。
 
-If you want to specify it at runtime instead, you can call the following method before the Engagement agent initialization :
+代わりに指定を実行時に行う場合は、エンゲージメント エージェントを初期化する前に、次のメソッドを呼び出すことができます。
 
-    /* Engagement configuration. */
-    EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
-    
-    engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
-    
-    engagementConfiguration.Reach.EnableNativePush = true;                  
-    /* [Optional] whether the native push (MPNS) is activated or not. */
-    
-    engagementConfiguration.Reach.ChannelName = "YOUR_PUSH_CHANNEL_NAME";   
-    /* [Optional] Provide the same channel name that your application may currently use. */
-    
-    /* Initialize Engagement agent with above configuration. */
-    EngagementAgent.Instance.Init(engagementConfiguration);
+	/* Engagement configuration. */
+	EngagementConfiguration engagementConfiguration = new EngagementConfiguration();
+	
+	engagementConfiguration.Agent.ConnectionString = "Endpoint={appCollection}.{domain};AppId={appId};SdkKey={sdkKey}";
+	
+	engagementConfiguration.Reach.EnableNativePush = true;                  
+	/* [Optional] whether the native push (MPNS) is activated or not. */
+	
+	engagementConfiguration.Reach.ChannelName = "YOUR_PUSH_CHANNEL_NAME";   
+	/* [Optional] Provide the same channel name that your application may currently use. */
+	
+	/* Initialize Engagement agent with above configuration. */
+	EngagementAgent.Instance.Init(engagementConfiguration);
 
-> [AZURE.TIP] You can specify the name of the MPNS push channel of your application. By default, Engagement creates a name based on the appId. You have no need to specify the name yourself, except if you plan to use the push channel outside of Engagement.
+> [AZURE.TIP] アプリケーションの MPNS プッシュ チャネルの名前を指定できます。既定では、Engagement はアプリ ID に基づいて、名前を作成します。エンゲージメントの外部でプッシュ チャネルを使用する計画がある場合を除いて、自分で名前を指定する必要はありません。
 
-### <a name="engagement-initialization"></a>Engagement initialization
+### Engagement の初期化
 
-Modify the `App.xaml.cs`:
+`App.xaml.cs` を変更します。
 
--   Add to your `using` statements :
+-   次の内容を `using` ステートメントに追加します。
 
-        using Microsoft.Azure.Engagement;
+		using Microsoft.Azure.Engagement;
 
--   Insert `EngagementReach.Instance.Init` just after `EngagementAgent.Instance.Init` in `Application_Launching` :
+-   `Application_Launching` の `EngagementAgent.Instance.Init` の直後に `EngagementReach.Instance.Init` を挿入します。
 
-        private void Application_Launching(object sender, LaunchingEventArgs e)
-        {
-           EngagementAgent.Instance.Init();
-           EngagementReach.Instance.Init();
-        }
+		private void Application_Launching(object sender, LaunchingEventArgs e)
+		{
+		   EngagementAgent.Instance.Init();
+		   EngagementReach.Instance.Init();
+		}
 
--   Insert `EngagementReach.Instance.OnActivated` in the `Application_Activated` method :
+-   `EngagementReach.Instance.OnActivated` を `Application_Activated` メソッドに挿入します。
 
-        private void Application_Activated(object sender, ActivatedEventArgs e)
-        {
-           EngagementAgent.Instance.OnActivated(e);
-           EngagementReach.Instance.OnActivated(e);
-        }
+		private void Application_Activated(object sender, ActivatedEventArgs e)
+		{
+		   EngagementAgent.Instance.OnActivated(e);
+		   EngagementReach.Instance.OnActivated(e);
+		}
 
-> [AZURE.IMPORTANT] The `EngagementReach.Instance.Init` runs in a dedicated thread. You do not have to do it yourself.
+> [AZURE.IMPORTANT] `EngagementReach.Instance.Init` は専用のスレッドで稼働します。自分で実行する必要はありません。
 
-##<a name="app-store-submission-considerations"></a>App store submission considerations
+##アプリ ストアの送信に関する考慮事項
 
-Microsoft imposes some rules when using the push notifications:
+Microsoft はプッシュ通知を使用する場合のルールを設定しています。
 
-From the Microsoft [Application Policies] documentation, section 2.9:
+Microsoft [アプリケーション ポリシー] ドキュメント、セクション 2.9:
 
-1) You must ask the user to accept to receive push notifications. Then, in your settings, add a way to disable the push notifications.
+1) ユーザーにプッシュ通知を受信することに同意するように依頼する必要があります。次に、設定で、プッシュ通知を無効にする方法を追加します。
 
-The EngagementReach object provides two methods to manage the opt-in/opt-out, `EnableNativePush()` and `DisableNativePush()`. You could, for example, create an option in the settings with a toggle to disable or enable MPNS.
+EngagementReach オブジェクトは、オプトイン / オプトアウト、`EnableNativePush()` と `DisableNativePush()` を管理する 2 つの方法を提供します。たとえば、設定でMPNS を有効または無効に切り替えるオプションを作成ができます。
 
-You can also decide to deactivate MPNS through the Engagement configuration\<windows-phone-sdk-reach-configuration\>.
+エンゲージメントの設定 <windows-phone-sdk-reach-configuration> で MPNS を非アクティブ化することもできます。
 
-> 2.9.1) The application must first describe the notifications to be provided and **obtain the user’s express permission (opt-in)**, and **must provide a mechanism through which the user can opt out of receiving push notifications**. All notifications provided using the Microsoft Push Notification Service must be consistent with the description provided to the user and must comply with all applicable [Application Policies] [Content Policies] and [Additional Requirements for Specific Application Types].
+> 2\.9.1) アプリケーションは、最初に提供される通知について説明し、**ユーザーの明確な許可 (オプトイン)を取得し**、また、**ユーザーがプッシュ通知をオプトアウトできるメカニズムを提供する必要があります**。Microsoft プッシュ通知サービスを使用して提供されるすべての通知は、ユーザーに提供される説明に従っている必要があり、適用可能なすべての[アプリケーション ポリシー][Content Policies]と[特定のアプリケーションの種類の追加要件]に準拠している必要があります。
 
-2) You should not use too many push notifications. Engagement will handle notifications for you.
+2) プッシュ通知を使用しすぎないようにします。エンゲージメントが代わりに通知を処理します。
 
-> 2.9.2) The application and its use of the Microsoft Push Notification Service must not excessively use network capacity or bandwidth of the Microsoft Push Notification Service, or otherwise unduly burden a Windows Phone or other Microsoft device or service with excessive push notifications, as determined by Microsoft in its reasonable discretion, and must not harm or interfere with any Microsoft networks or servers or any third party servers or networks connected to the Microsoft Push Notification Service.
+> 2\.9.2) アプリケーションと Microsoft プッシュ通知サービスのアプリケーションの使用量は、Microsoft が合理的な裁量によって決定した、Microsoft プッシュ通知サービスのネットワーク容量または帯域幅を超えてはいけません。さもないと、過剰なプッシュ通知により、Windows Phone または、その他の Microsoft デバイスまたはサービスに過剰に負担がかかります。また Microsoft のネットワークまたはサーバーまたは Microsoft プッシュ通知サービスに接続されるサード パーティ製のサーバーまたはネットワークに損害を与えたり、干渉したりしてはいけません。
 
-3) Do not rely on MPNS to send criticals information. Engagement uses MPNS, so this rule also applies for the campaigns created inside the Engagement front-end.
+3) 重要な情報の送信では MPNS に依存しないでください。エンゲージメントは MPNS を使用するため, このルールはエンゲージメントのフロントエンド内で作成されるキャンペーンにも適用されます。
 
-> 2.9.3) The Microsoft Push Notification Service may not be used to send notifications that are mission critical or otherwise could affect matters of life or death, including without limitation critical notifications related to a medical device or condition. MICROSOFT EXPRESSLY DISCLAIMS ANY WARRANTIES THAT THE USE OF THE MICROSOFT PUSH NOTIFICATION SERVICE OR DELIVERY OF MICROSOFT PUSH NOTIFICATION SERVICE NOTIFICATIONS WILL BE UNINTERRUPTED, ERROR FREE, OR OTHERWISE GUARANTEED TO OCCUR ON A REAL-TIME BASIS.
+> 2\.9.3) Microsoft プッシュ通知サービスは、ミッション クリティカルな通知、それ以外の生死にかかわる問題に影響を与える通知、医療機器または条件に関連するクリティカルな通知を含みますが、これらに限定することなく、これらの送信には使用できません。MICROSOFT は、Microsoft プッシュ通知サービスの使用またはMicrosoft プッシュ通知サービスの通知の配信が、中断やエラーがなく実行されること、また、リアルタイムで配信されることについての保証を一切いたしません。
 
-**We cannot guarantee that your application will pass the validation process if you do not respect these recommendations.**
+**これらの推奨事項を順守しない場合は、アプリケーションが検証プロセスに合格することを保証できません。**
 
-##<a name="handle-data-push-(optional)"></a>Handle data push (optional)
+##データ プッシュを操作する (オプション)
 
-If you want your application to be able to receive Reach data pushes, you have to implement two events of the EngagementReach class:
+アプリケーションが Reach データのプッシュを受信できるようにするには、EngagementReach クラスの 2 つのイベントを実装する必要があります。
 
-    EngagementReach.Instance.DataPushStringReceived += (body) =>
-    {
-       Debug.WriteLine("String data push message received: " + body);
-       return true;
-    };
-    
-    EngagementReach.Instance.DataPushBase64Received += (decodedBody, encodedBody) =>
-    {
-       Debug.WriteLine("Base64 data push message received: " + encodedBody);
-       // Do something useful with decodedBody like updating an image view
-       return true;
-    };
+	EngagementReach.Instance.DataPushStringReceived += (body) =>
+	{
+	   Debug.WriteLine("String data push message received: " + body);
+	   return true;
+	};
+	
+	EngagementReach.Instance.DataPushBase64Received += (decodedBody, encodedBody) =>
+	{
+	   Debug.WriteLine("Base64 data push message received: " + encodedBody);
+	   // Do something useful with decodedBody like updating an image view
+	   return true;
+	};
 
-You can see that the callback of each method returns a boolean. Engagement sends a feedback to its back-end after dispatching the data push. If the callback returns false, the `exit` feedback will be send. Otherwise, it will be `action`. If no callback is set for the events, the `drop` feedback will be returned to Engagement.
+各メソッドのコールバックがブール値を返すことを確認できます。データのプッシュをディスパッチした後、Engagement はバックエンドにフィードバックを送信します。コールバックが false を返した場合、`exit` フィードバックが送信されます。それ以外の場合は、`action` になります。イベントにコールバックが設定されていない場合は、`drop` フィードバックがエンゲージメントに返されます。
 
-> [AZURE.WARNING] Engagement is not able to receive multiples feedbacks for a data push. If you plan to set several handlers on an event, be aware that the feedback will correspond to the last one sent. In this case, we recommend to always returns the same value to avoid having confusing feedback on the front-end.
+> [AZURE.WARNING] Engagement は、データのプッシュのフィードバックを複数受信することができません。複数のハンドラーをイベントに設定する計画がある場合は、最後に送信されたものがフィードバックに相当することに注意してください。この場合、フロントエンドでフィードバックが混同されるのを避けるために、常に同じ値を返すことをお勧めします。
 
-##<a name="customize-ui-(optional)"></a>Customize UI (optional)
+##UI をカスタマイズする (オプション)
 
-### <a name="first-step"></a>First step
+### 最初の手順
 
-We allow you to customize the reach UI.
+Reach UI をカスタマイズできるようにします。
 
-To do so, you have to create a subclass of the `EngagementReachHandler` class.
+そのためには、`EngagementReachHandler` クラスのサブクラスを作成する必要があります。
 
-**Sample Code :**
+**サンプル コード:**
 
-    using Microsoft.Azure.Engagement;
-    
-    namespace Example
-    {
-       internal class ExampleReachHandler : EngagementReachHandler
-       {
-          // Override EngagementReachHandler methods depending on your needs
-       }
-    }
+	using Microsoft.Azure.Engagement;
+	
+	namespace Example
+	{
+	   internal class ExampleReachHandler : EngagementReachHandler
+	   {
+	      // Override EngagementReachHandler methods depending on your needs
+	   }
+	}
 
-Then, set the content of the `EngagementReach.Instance.Handler` field with your custom object in your `App.xaml.cs` class within the `Application_Launching` method.
+次に、`Application_Launching` メソッドに含まれる `App.xaml.cs` クラスのカスタム オブジェクトを使用して、`EngagementReach.Instance.Handler` フィールドの内容を設定します。
 
-**Sample Code :**
+**サンプル コード:**
 
-    private void Application_Launching(object sender, LaunchingEventArgs e)
-    {
-       // your app initialization 
-       EngagementReach.Instance.Handler = new ExampleReachHandler();
-       // Engagement Agent and Reach initialization
-    }
+	private void Application_Launching(object sender, LaunchingEventArgs e)
+	{
+	   // your app initialization 
+	   EngagementReach.Instance.Handler = new ExampleReachHandler();
+	   // Engagement Agent and Reach initialization
+	}
 
-> [AZURE.NOTE] By default, Engagement uses its own implementation of `EngagementReachHandler`. You don't have to create your own, and if you do so, you don't have to override every method. The default behavior is to select the Engagement base object.
+> [AZURE.NOTE] 既定では、エンゲージメントは `EngagementReachHandler` の独自の実装を使用します。自分用の実装を作成する必要はなく、そうする場合でも、すべてのメソッドをオーバーライドする必要はありません。既定の動作では、エンゲージメントの基本オブジェクトを選択します。
 
-### <a name="layouts"></a>Layouts
+### レイアウト
 
-By default, Reach will use the embedded resources of the DLL to display the notifications and pages.
+既定では、Reach は DLL に組み込まれたリソースを使用して、通知とページを表示します。
 
-However, you can decide to use your own resources to reflect your brand in these components.
+ただし、これらのコンポーネントにブランドを反映するように独自のリソースを使用ができます。
 
-You can override `EngagementReachHandler` methods in your subclass to tell Engagement to use your layouts :
+サブクラスに `EngagementReachHandler` メソッドをオーバーライドして、エンゲージメントにレイアウトを使用させることができます。
 
-**Sample Code :**
+**サンプル コード:**
 
-    // In your subclass of EngagementReachHandler
-    
-    public override string GetTextViewAnnouncementUri()
-    {
-       // return the path of your own xaml
-    }
-    
-    public override string GetWebViewAnnouncementUri()
-    {
-       // return the path of your own xaml
-    }
-    
-    public override string GetPollUri()
-    {
-       // return the path of your own xaml
-    }
-    
-    public override EngagementNotificationView CreateNotification(EngagementNotificationViewModel viewModel)
-    {
-       // return a new instance of your own notification
-    }
+	// In your subclass of EngagementReachHandler
+	
+	public override string GetTextViewAnnouncementUri()
+	{
+	   // return the path of your own xaml
+	}
+	
+	public override string GetWebViewAnnouncementUri()
+	{
+	   // return the path of your own xaml
+	}
+	
+	public override string GetPollUri()
+	{
+	   // return the path of your own xaml
+	}
+	
+	public override EngagementNotificationView CreateNotification(EngagementNotificationViewModel viewModel)
+	{
+	   // return a new instance of your own notification
+	}
 
-> [AZURE.TIP] The `CreateNotification` method can return null. The notification won't be displayed and the reach campaign will be dropped.
+> [AZURE.TIP] `CreateNotification` メソッドは null を返すことができます。通知は表示されず、リーチ キャンペーンは削除されます。
 
-To simplify your layout implementation, we also provide our own xaml which can serve as a basis for your code. They are located in the Engagement SDK archive (/src/reach/).
+レイアウトの実装を簡素化するために、コードの基礎として機能する独自の xaml を提供します。それらはエンゲージメント SDK アーカイブに配置されています (/src/reach/)。
 
-> [AZURE.WARNING] The sources that we provide are the exact same ones that we use. So if you want to modify them directly, don't forget to change the namespace and the name.
+> [AZURE.WARNING] 提供するソースは、使用されているものと全く同じものです。それゆえ、直接変更する場合は、名前空間と名前を忘れずに変更します。
 
-### <a name="notification-position"></a>Notification position
+### 通知の位置
 
-By default, an in-app notification is displayed at the bottom left side of the application. You can change this behavior by overriding the `GetNotificationPosition` method of the `EngagementReachHandler` object.
+既定では、アプリ内通知はアプリケーションの下部左側に表示されます。`GetNotificationPosition` オブジェクトの `EngagementReachHandler` メソッドをオーバーライドして、この動作を変更できます。
 
-    // In your subclass of EngagementReachHandler
-    
-    public override EngagementReachHandler.NotificationPosition GetNotificationPosition(EngagementNotificationViewModel viewModel)
-    {
-       // return a value of the EngagementReachHandler.NotificationPosition enum (TOP or BOTTOM)
-    }
+	// In your subclass of EngagementReachHandler
+	
+	public override EngagementReachHandler.NotificationPosition GetNotificationPosition(EngagementNotificationViewModel viewModel)
+	{
+	   // return a value of the EngagementReachHandler.NotificationPosition enum (TOP or BOTTOM)
+	}
 
-Currently, you can choose between the `BOTTOM` (default) and `TOP` positions.
+現在、`BOTTOM` (既定) と `TOP` の間で選択できます。
 
-### <a name="launch-message"></a>Launch message
+### メッセージを起動する
 
-When a user clicks on a system notification (a toast), Engagement launches the app, load the content of the push messages, and display the page for the corresponding campaign.
+ユーザーがシステム通知 (トースト) をクリックすると、エンゲージメントはアプリを起動し、プッシュ メッセージの内容を読み込んで、対応するキャンペーンのページを表示します。
 
-There is a delay between the launch of the application and the display of the page (depending on the speed of your network).
+アプリケーションが起動されてからページが表示されるまでの間に、(ネットワークの速度に応じて) 遅延が発生します。
 
-To indicate to the user that something is loading, you should provide a visual information, like a progress bar or a progress indicator. Engagement cannot handle that itself, but provides a few handlers for you.
+読み込み中であることをユーザーに示すには、進行状況バーや進行状況インジケーターなどの視覚的な情報を提供する必要があります。Engagement 自身では、それに対応することはできませんが、いくつかのハンドラーを提供します。
 
-To implement the callback, do:
+コールバックを実装するには次のことを実行します:
 
-    /* The application has launched and the content is loading.
-     * You should display an indicator here.
-     */
-    EngagementReach.Instance.RetrieveLaunchMessageStarted += () => { [...] };
-    
-    /* The application has finished loading the content and the page
-     * is about to be displayed.
-     * You should hide the indicator here.
-     */
-    EngagementReach.Instance.RetrieveLaunchMessageCompleted += () => { [...] };
-    
-    /* The content has been loaded, but an error has occurred.
-     * You can provide an information to the user.
-     * You should hide the indicator here.
-     */
-    EngagementReach.Instance.RetrieveLaunchMessageFailed += () => { [...] };
+	/* The application has launched and the content is loading.
+	 * You should display an indicator here.
+	 */
+	EngagementReach.Instance.RetrieveLaunchMessageStarted += () => { [...] };
+	
+	/* The application has finished loading the content and the page
+	 * is about to be displayed.
+	 * You should hide the indicator here.
+	 */
+	EngagementReach.Instance.RetrieveLaunchMessageCompleted += () => { [...] };
+	
+	/* The content has been loaded, but an error has occurred.
+	 * You can provide an information to the user.
+	 * You should hide the indicator here.
+	 */
+	EngagementReach.Instance.RetrieveLaunchMessageFailed += () => { [...] };
 
-You can set the callback in your `Application_Launching` method of your `App.xaml.cs` file, preferably before the `EngagementReach.Instance.Init()` call.
+`Application_Launching` ファイルの `App.xaml.cs` メソッドにコールバックを設定できます。`EngagementReach.Instance.Init()` コールの前が最適です。
 
-> [AZURE.TIP] Each handler is called by the UI Thread. You do not have to worry when using a MessageBox or something UI-related.
+> [AZURE.TIP] 各ハンドラーは、UI スレッドにより呼び出されます。メッセージボックスや UI 関連のものは、安心して使用できます。
 
-[Application Policies]:http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
-[Content Policies]:http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
-[Additional Requirements for Specific Application Types]:http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
+[アプリケーション ポリシー]: http://msdn.microsoft.com/library/windows/apps/hh184841(v=vs.105).aspx
+[Content Policies]: http://msdn.microsoft.com/library/windows/apps/hh184842(v=vs.105).aspx
+[特定のアプリケーションの種類の追加要件]: http://msdn.microsoft.com/library/windows/apps/hh184838(v=vs.105).aspx
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

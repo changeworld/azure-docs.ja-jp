@@ -1,126 +1,121 @@
 <properties
-    pageTitle="Azure Active Directory Domain Services: Administer DNS on managed domains | Microsoft Azure"
-    description="Administer DNS on Azure Active Directory Domain Services managed domains"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理対象ドメインの DNS を管理する | Microsoft Azure"
+	description="Azure Active Directory ドメイン サービスを使用して管理対象ドメインの DNS を管理する"
+	services="active-directory-ds"
+	documentationCenter=""
+	authors="mahesh-unnikrishnan"
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/03/2016"
-    ms.author="maheshu"/>
+	ms.service="active-directory-ds"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/31/2016"
+	ms.author="maheshu"/>
+
+# Azure AD ドメイン サービスで管理されているドメイン上の DNS の管理
+Azure Active Directory ドメイン サービスには、管理対象ドメインの DNS 解決を提供する DNS (ドメイン名解決) サーバーが含まれています。場合によっては、管理対象ドメインの DNS を構成する必要があります。ドメインに参加していないコンピューターの DNS レコードを作成したり、ロード バランサーの仮想 IP アドレスを構成したり、外部 DNS フォワーダーを設定したりすることが必要になる場合があります。このため、AAD DC 管理者グループに属するユーザーは、管理対象ドメインの DNS 管理者権限が付与されます。
 
 
-# <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Administer DNS on an Azure AD Domain Services managed domain
-Azure Active Directory Domain Services includes a DNS (Domain Name Resolution) server that provides DNS resolution for the managed domain. Occasionally, you may need to configure DNS on the managed domain. You may need to create DNS records for machines that are not joined to the domain, configure virtual IP addresses for load-balancers or setup external DNS forwarders. For this reason, users who belong to the 'AAD DC Administrators' group are granted DNS administration privileges on the managed domain.
+## 開始する前に
+この記事に記載されているタスクを実行するには、次が必要です。
 
+1. 有効な **Azure サブスクリプション**。
 
-## <a name="before-you-begin"></a>Before you begin
-To perform the tasks listed in this article, you need:
+2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ**。
 
-1. A valid **Azure subscription**.
+3. **Azure AD ドメイン サービス**が Azure AD ディレクトリに対して有効である必要があります。有効になっていない場合は、[作業の開始に関するガイド](./active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
 
-2. An **Azure AD directory** - either synchronized with an on-premises directory or a cloud-only directory.
+4. Azure AD Domain Services の管理対象ドメインの管理に使用する、**ドメインに参加している仮想マシン**。そのような仮想マシンがない場合は、「[Windows Server 仮想マシンの管理対象ドメインへの参加](./active-directory-ds-admin-guide-join-windows-vm.md)」で概要が示されているすべてのタスクに従います。
 
-3. **Azure AD Domain Services** must be enabled for the Azure AD directory. If you haven't done so, follow all the tasks outlined in the [Getting Started guide](./active-directory-ds-getting-started.md).
-
-4. A **domain-joined virtual machine** from which you administer the Azure AD Domain Services managed domain. If you don't have such a virtual machine, follow all the tasks outlined in the article titled [Join a Windows virtual machine to a managed domain](./active-directory-ds-admin-guide-join-windows-vm.md).
-
-5. You need the credentials of a **user account belonging to the 'AAD DC Administrators' group** in your directory, to administer DNS for your managed domain.
+5. 管理対象ドメインの DNS を管理するには、ディレクトリの **"AAD DC Administrators" グループに属するユーザー アカウント**の資格情報が必要です。
 
 <br>
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>Task 1 - Provision a domain-joined virtual machine to remotely administer DNS for the managed domain
-Azure AD Domain Services managed domains can be managed remotely using familiar Active Directory administrative tools such as the Active Directory Administrative Center (ADAC) or AD PowerShell. Similarly, DNS for the managed domain can be administered remotely using the DNS Server administration tools.
+## タスク 1 - ドメインに参加している仮想マシンをプロビジョニングして、管理対象ドメインの DNS をリモートで管理する
+Azure AD ドメイン サービスの管理対象ドメインは、Active Directory 管理センター (ADAC) や AD PowerShell などの使い慣れた Active Directory 管理ツールでリモート管理することができます。同様に、管理対象ドメインの DNS は、DNS サーバーの管理ツールを使用してリモートで管理できます。
 
-Administrators in your Azure AD directory do not have privileges to connect to domain controllers on the managed domain via Remote Desktop. Members of the 'AAD DC Administrators' group can administer DNS for managed domains remotely using DNS Server tools from a Windows Server/client computer that is joined to the managed domain. DNS Server tools can be installed as part of the Remote Server Administration Tools (RSAT) optional feature on Windows Server and client machines joined to the managed domain.
+Azure AD ディレクトリの管理者には、管理対象ドメイン上のドメイン コントローラーにリモート デスクトップで接続する権限はありません。"AAD DC Administrators" グループのメンバーは、管理対象ドメインに参加している Windows Server とクライアント コンピューターから、DNS サーバー ツールを使用して、リモートで管理対象ドメインの DNS を管理できます。DNS サーバー ツールは、管理対象ドメインに参加している Windows Server とクライアント コンピューターで、リモート サーバー管理ツール (RSAT) のオプション機能の一部としてインストールできます。
 
-The first task is to provision a Windows Server virtual machine that is joined to the managed domain. For instructions, refer to the article titled [join a Windows Server virtual machine to an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-join-windows-vm.md).
-
-
-## <a name="task-2---install-dns-server-tools-on-the-virtual-machine"></a>Task 2 - Install DNS Server tools on the virtual machine
-Perform the following steps to install the DNS Administration tools on the domain joined virtual machine. For more information on [installing and using Remote Server Administration Tools](https://technet.microsoft.com/library/hh831501.aspx), see Technet.
-
-1. Navigate to **Virtual Machines** node in the Azure classic portal. Select the virtual machine you created in Task 1 and click **Connect** on the command bar at the bottom of the window.
-
-    ![Connect to Windows virtual machine](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-
-2. The classic portal prompts you to open or save a file with a '.rdp' extension, which is used to connect to the virtual machine. Click the file when it has finished downloading.
-
-3. At the login prompt, use the credentials of a user belonging to the 'AAD DC Administrators' group. For example, we use 'bob@domainservicespreview.onmicrosoft.com' in our case.
-
-4. From the Start screen, open **Server Manager**. Click **Add Roles and Features** in the central pane of the Server Manager window.
-
-    ![Launch Server Manager on virtual machine](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
-
-5. On the **Before You Begin** page of the **Add Roles and Features Wizard**, click **Next**.
-
-    ![Before You Begin page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
-
-6. On the **Installation Type** page, leave the **Role-based or feature-based installation** option checked and click **Next**.
-
-    ![Installation Type page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
-
-7. On the **Server Selection** page, select the current virtual machine from the server pool, and click **Next**.
-
-    ![Server Selection page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-
-8. On the **Server Roles** page, click **Next**. We skip this page since we are not installing any roles on the server.
-
-9. On the **Features** page, click to expand the **Remote Server Administration Tools** node and then click to expand the **Role Administration Tools** node. Select **DNS Server Tools** feature from the list of role administration tools.
-
-    ![Features page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
-
-10. On the **Confirmation** page, click **Install** to install the DNS Server tools feature on the virtual machine. When feature installation completes successfully, click **Close** to exit the **Add Roles and Features** wizard.
-
-    ![Confirmation page](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
+最初のタスクでは、管理対象ドメインに参加している Windows Server 仮想マシンをプロビジョニングします。手順については、[Azure AD Domain Services の管理対象ドメインへの Windows Server 仮想マシンの参加](active-directory-ds-admin-guide-join-windows-vm.md)に関するページを参照してください。
 
 
-## <a name="task-3---launch-the-dns-management-console-to-administer-dns"></a>Task 3 - Launch the DNS management console to administer DNS
-Now that the DNS Server Tools feature is installed on the domain joined virtual machine, we can use the DNS tools to administer DNS on the managed domain.
+## タスク 2 - 仮想マシンに DNS サーバー ツールをインストールする
+ドメインに参加している仮想マシンに DNS 管理ツールをインストールするには、次の手順を実行します。[リモート サーバー管理ツールのインストールおよび使用](https://technet.microsoft.com/library/hh831501.aspx)の詳細については、TechNet を参照してください。
 
-> [AZURE.NOTE] You need to be a member of the 'AAD DC Administrators' group, to administer DNS on the managed domain.
+1. Azure クラシック ポータルの **[Virtual Machines]** ノードに移動します。タスク 1 で作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで **[接続]** をクリックします。
 
-1. From the Start screen, click **Administrative Tools**. You should see the **DNS** console installed on the virtual machine.
+    ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
-    ![Administrative tools - DNS Console](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
+2. クラシック ポータルでは、仮想マシンへの接続に使用される .rdp ファイルを開くか保存するように求められます。ダウンロードが完了したら、.rdp ファイルをクリックします。
 
-2. Click **DNS** to launch the DNS Management console.
+3. ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。この例では "bob@domainservicespreview.onmicrosoft.com" を使用します。
 
-3. In the **Connect to DNS Server** dialog, click the option titled **The following computer**, and enter the DNS domain name of the managed domain (for example, 'contoso100.com').
+4. スタート画面で、**[サーバー マネージャー]** を開きます。[サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
 
-    ![DNS Console - connect to domain](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
+    ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
 
-4. The DNS Console connects to the managed domain.
+5. **[役割と機能の追加]** ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
 
-    ![DNS Console - administer domain](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
+    ![ページを開始する前に](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-begin.png)
 
-5. You can now use the DNS console to add DNS entries for computers within the virtual network in which you've enabled AAD Domain Services.
+6. **[インストールの種類]** ページで、**[役割ベースまたは機能ベースのインストール]** オプションが選択された状態にして **[次へ]** をクリックします。
 
-> [AZURE.WARNING] Be careful when administering DNS for the managed domain using DNS administration tools. Ensure that you **do not delete or modify the built-in DNS records that are used by Domain Services in the domain**. Built-in DNS records include domain DNS records, name server records, and other records used for DC location. If you modify these records, domain services are disrupted on the virtual network.
+	![インストールの種類のページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-type.png)
 
+7. **[サーバーの選択]** ページで、サーバー プールから現在の仮想マシンを選択して **[次へ]** をクリックします。
 
-See the [DNS tools article on Technet](https://technet.microsoft.com/library/cc753579.aspx) for more information about managing DNS.
+	![サーバー選択ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
 
+8. **[サーバーの役割]** ページで、**[次へ]** をクリックします。サーバーに役割をインストールしないため、このページはスキップします。
 
-## <a name="related-content"></a>Related Content
+9. **[機能]** ページで、**[リモート サーバー管理ツール]** ノードをクリックして展開し、次に **[役割管理ツール]** ノードをクリックして展開します。役割管理ツールの一覧から、次のように **[DNS サーバー ツール]** 機能を選択します。
 
-- [Azure AD Domain Services - Getting Started guide](./active-directory-ds-getting-started.md)
+	![機能ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
 
-- [Join a Windows Server virtual machine to an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-join-windows-vm.md)
+10. **[確認]** ページで、**[インストール]** をクリックして仮想マシンに DNS サーバー ツールの機能をインストールします。機能のインストールが正常に完了したら、**[閉じる]** をクリックして **[役割と機能の追加]** ウィザードを終了します。
 
-- [Administer an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-administer-domain.md)
-
-- [DNS administration tools](https://technet.microsoft.com/library/cc753579.aspx)
-
-
-
-<!--HONumber=Oct16_HO2-->
+	![確認ページ](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
 
 
+## タスク 3 - DNS 管理コンソールを起動して DNS を管理する
+ドメインに参加している仮想マシンに DNS サーバー ツール機能がインストールされると、DNS ツールを使用して管理対象ドメインの DNS を管理できるようになります。
+
+> [AZURE.NOTE] 管理対象ドメインの DNS を管理するには、"AAD DC Administrators" グループのメンバーである必要があります。
+
+1. スタート画面で **[管理ツール]** をクリックします。仮想マシンにインストールされた **DNS** コンソールが表示されます。
+
+	![管理ツール： DNS コンソール](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
+
+2. **[DNS]** をクリックして、DNS 管理コンソールを起動します。
+
+3. **[DNS サーバーに接続]** ダイアログ ボックスで、**[次のコンピューター]** オプションをクリックし、管理対象ドメインの DNS ドメイン名 (例: "contoso100.com") を入力します。
+
+    ![DNS コンソール: ドメインへの接続](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
+
+4. DNS コンソールが管理対象ドメインに接続されます。次のようなビューが表示されます。
+
+    ![DNS コンソール: ドメインの管理](./media/active-directory-domain-services-admin-guide/dns-console-managed-domain.png)
+
+5. この DNS コンソールを使用して、AAD ドメイン サービスを有効にしている仮想ネットワーク内で、コンピューターに DNS エントリを追加できます。
+
+> [AZURE.WARNING] DNS 管理ツールを使用して管理対象ドメインの DNS を管理する際は、特に注意してください。**ドメイン内のドメイン サービスで使用される組み込みの DNS レコードを削除または変更**しないでください。組み込みの DNS レコードには、ドメインの DNS レコード、ネーム サーバー レコード、および DC の検出に使用されるその他のレコードが含まれます。これらのレコードを変更すると、仮想ネットワークのドメイン サービスが中断されます。
+
+
+DNS の管理の詳細については、[Technet の DNS ツールの記事](https://technet.microsoft.com/library/cc753579.aspx)を参照してください。
+
+
+## 関連コンテンツ
+
+- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+
+- [DNS 管理ツール](https://technet.microsoft.com/library/cc753579.aspx)
+
+<!---HONumber=AcomDC_0907_2016-->

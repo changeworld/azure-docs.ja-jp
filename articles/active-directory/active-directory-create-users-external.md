@@ -1,96 +1,91 @@
 <properties
-    pageTitle="Add users from other directories or partner companies in Azure Active Directory | Microsoft Azure"
-    description="Explains how to add users or change user information in Azure Active Directory, including external and guest users."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する | Microsoft Azure"
+	description="Azure Active Directory で、外部ユーザーとゲスト ユーザーを含む、ユーザーの追加方法またはユーザー情報の変更方法を説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/22/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/22/2016"
+	ms.author="curtand"/>
 
-
-# <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Add users from other directories or partner companies in Azure Active Directory
+# Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する
 
 > [AZURE.SELECTOR]
-- [Azure portal](active-directory-users-create-external-azure-portal.md)
-- [Azure classic portal](active-directory-create-users-external.md)
+- [Azure ポータル](active-directory-users-create-external-azure-portal.md)
+- [Azure クラシック ポータル](active-directory-create-users-external.md)
 
-This article explains how to add users from other directories in Azure Active Directory or add users from partner companies. For information about adding new users in your organization, and adding users who have Microsoft accounts, see [Add new users to Azure Active Directory](active-directory-create-users.md). Added users don't have administrator permissions by default, but you can assign roles to them at any time.
+この記事では、Azure Active Directory の他のディレクトリからユーザーを追加する方法、またはパートナー会社からユーザーを追加する方法について説明します。組織内の新しいユーザーの追加、および Microsoft アカウントを持つユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-create-users.md)に関するページを参照してください。既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
-## <a name="add-a-user"></a>Add a user
+## ユーザーの追加
 
-1. Sign in to the [Azure classic portal](https://manage.windowsazure.com) with an account that's a global admin for the directory.
+1. ディレクトリのグローバル管理者となっているアカウントで [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインします。
 
-2. Select **Active Directory**, and then open your directory.
+2. **[Active Directory]** を選択し、ディレクトリを開きます。
 
-3. Select the **Users** tab, and then, in the command bar, select **Add User**.
+3. **[ユーザー]** タブを選択し、コマンド バーの **[ユーザーの追加]** をクリックします。
 
-4. On the **Tell us about this user** page, under **Type of user**, select either:
+4. **[このユーザーに関する情報の入力]** ページの **[ユーザーの種類]** から次のいずれかを選択します。
 
-    - **User in another Azure AD directory** – adds a user account to your directory that's sourced from another Azure AD directory. You can select a user in another directory only if you're also a member of that directory.
-    - **Users in partner companies** - to invite and authorize partner company users to your directory (See [Azure Active Directory B2B collaboration](active-directory-b2b-what-is-azure-ad-b2b.md)). You'll need to [upload a CSV file specifying email addresses](active-directory-b2b-references-csv-file-format.md).
+	- **[別の Microsoft Azure AD ディレクトリのユーザー]** - 別の Azure AD ディレクトリに属しているユーザー アカウントを対象のディレクトリに追加します。別のディレクトリでユーザーを選択できるのは、そのディレクトリでもメンバーになっている場合のみです。
+	- **[パートナー会社のユーザー]** - ディレクトリにパートナー会社のユーザーを招待して承認します ([Azure Active Directory B2B コラボレーション](active-directory-b2b-what-is-azure-ad-b2b.md)に関するページを参照)。[電子メール アドレスを指定して CSV ファイルをアップロードすること](active-directory-b2b-references-csv-file-format.md)が必要になります。
 
-6. On the user **Profile** page, provide a first and last name, a user-friendly name, and a user role from the **Roles** list. For more information about user and administrator roles, see [Assigning administrator roles in Azure AD](active-directory-assign-admin-roles.md). Specify whether to **Enable Multi-Factor Authentication** for the user.
+6. ユーザーの **[プロファイル]** ページで、姓と名、わかりやすい名前を入力し、**[ロール]** ボックスの一覧からユーザー ロールを選択します。ユーザーおよび管理者のロールの詳細については、「[Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。ユーザーの **Multi-Factor Authentication を有効にする**かどうかを指定します。
 
-7. On the **Get temporary password** page, select **Create**.
+7. **[一時パスワードの取得]** ページで、**[作成]** を選択します。
 
-> [AZURE.IMPORTANT] If your organization uses more than one domain, you should know about the following issues when you add a user account:
+> [AZURE.IMPORTANT] 組織が複数のドメインを使用している場合は、ユーザー アカウントを追加するときに起きる、次の問題について理解しておく必要があります。
 >
-> - TO add user accounts with the same user principal name (UPN) across domains, **first** add, for example, geoffgrisso@contoso.onmicrosoft.com, **followed by** geoffgrisso@contoso.com.
-> - **Don't** add geoffgrisso@contoso.com before you add geoffgrisso@contoso.onmicrosoft.com. This order is important, and can be cumbersome to undo.
+> - 複数のドメインで同じユーザー プリンシパル名 (UPN) を持つユーザー アカウントを追加するには、たとえば**最初に** geoffgrisso@contoso.onmicrosoft.com を追加し、**それに続けて** geoffgrisso@contoso.com を追加します。
+> - geoffgrisso@contoso.onmicrosoft.com を追加する前に geoffgrisso@contoso.com を追加**しないでください**。この順序は重要であり、なかなか元に戻すことができない場合があります。
 
-If you change information for a user whose identity is synchronized with your on-premises Active Directory service, you can't change the user information in the Azure classic portal. To change the user information, use your on-premises Active Directory management tools.
+オンプレミスの Active Directory サービスに ID が同期されているユーザーの情報を変更する場合、Azure クラシック ポータルでユーザー情報を変更することはできません。このユーザー情報を変更するには、オンプレミスの Active Directory 管理ツールを使用してください。
 
-## <a name="add-external-users"></a>Add external users
+## 外部ユーザーの追加
 
-You can also add users from another Azure AD directory to which you belong, or from partner companies by uploading a CSV file. To add an external user, for **Type of User**, specify **User in another Microsoft Azure AD directory** or **Users in partner companies**.
+自分が属している別の Azure AD ディレクトリからユーザーを追加することや、CSV ファイルをアップロードしてパートナー会社からユーザーを追加することもできます。外部ユーザーを追加するには、**[ユーザーの種類]** で **[別の Microsoft Azure AD ディレクトリのユーザー]** または **[パートナー会社のユーザー]** を指定します。
 
-Users of either type are sourced from another directory and are added as **external users**. External users can collaborate with other users in a directory without any requirement to add new accounts and credentials. External users authenticate with their home directory when they sign in, and that authentication works for any other directories to which they have been added.
+どちらの種類のユーザーも別のディレクトリに所属しており、**外部ユーザー**として追加されます。外部ユーザーは、ディレクトリ内の他のユーザーと共同作業できます。新しいアカウントや資格情報を追加する必要はありません。外部ユーザーは、サインイン時に自分のホーム ディレクトリで認証されます。この認証は、外部ユーザーが追加された他のすべてのディレクトリで有効になります。
 
-## <a name="external-user-management-and-limitations"></a>External user management and limitations
+## 外部ユーザーの管理と制限事項
 
-When you add a user from another directory to your directory, that user is an external user in your directory. The display name and user name are copied from their home directory and used for the external user in your directory. From then on, properties of the external user account are entirely independent. If property changes are made to the user in their home directory, those changes aren't propagated to the external user account in your directory.
+ディレクトリに別のディレクトリのユーザーを追加すると、そのユーザーは追加先のディレクトリでは外部ユーザーとなります。表示名とユーザー名がユーザーのホーム ディレクトリからコピーされ、追加先のディレクトリ内の外部ユーザーに使用されます。それ以降、外部ユーザー アカウントのプロパティは完全に独立します。ユーザーのホーム ディレクトリでプロパティを変更しても、その変更は追加先のディレクトリ内の外部ユーザー アカウントに反映されません。
 
-The only linkage between the two accounts is that the user always authenticates against their home directory or with their Microsoft account. That's why you don't see an option to reset the password or enable multi-factor authentication for an external user. Currently, the authentication policy of the home directory or Microsoft account is the only one that's evaluated when the user signs in.
+2 つのアカウント間の関連は、ユーザーが常に自分のホーム ディレクトリにより、または Microsoft アカウントを使って認証されるということのみとなります。このため、パスワードをリセットするオプション、または外部ユーザーの多要素認証を有効にするオプションは表示されません。現時点で、ホーム ディレクトリまたは Microsoft アカウントの認証ポリシーは、ユーザーがサインインする際に評価される唯一のポリシーとなっています。
 
 > [AZURE.NOTE]
-> You can still disable the external user in the directory, which blocks access to your directory.
+ディレクトリ内の外部ユーザーを無効にすることもできます。無効にすると、ディレクトリへのアクセスはブロックされます。
 
-If a user is deleted in their home directory or they cancel their Microsoft account, the external user still exists in your directory. However, the user in your directory can't access resources because they can't authenticate with a home directory or Microsoft account.
+ユーザーがホーム ディレクトリ内で削除されたか、または Microsoft アカウントが取り消されたとしても、外部ユーザーは追加先のディレクトリ内に引き続き残ります。ただし、ディレクトリ内のユーザーはホーム ディレクトリでの認証や Microsoft アカウントを使った認証ができないため、リソースにアクセスできません。
 
-### <a name="services-that-currently-support-access-by-azure-ad-external-users"></a>Services that currently support access by Azure AD external users
+### 現時点で Azure AD の外部ユーザーによるアクセスをサポートしているサービス
 
-- **Azure classic portal**: allows an external user who's an administrator of multiple directories to manage each of those directories.
-- **SharePoint Online**: if external sharing is enabled, allows an external user to access SharePoint Online authorized resources.
-- **Dynamics CRM**: if the user is licensed via PowerShell, allows an external user to access authorized resources in Dynamics CRM.
-- **Dynamics AX**: if the user is licensed via PowerShell, allows an external user to access authorized resources in Dynamics AX. The limitations for [Azure AD external users](#known-limitations-of-azure-ad-external-users) apply to external users in Dynamics AX as well.
+- **Azure クラシック ポータル**: 複数のディレクトリの管理者である外部ユーザーは、その各ディレクトリを管理できます。
+- **SharePoint Online**: 外部共有が有効になっている場合、外部ユーザーは SharePoint Online で承認されたリソースにアクセスできます。
+- **Dynamics CRM**: 外部ユーザーは、PowerShell によってライセンスが付与された場合、Dynamics CRM の承認されたリソースにアクセスできます。
+- **Dynamics AX**: 外部ユーザーは、PowerShell によってライセンスが付与された場合、Dynamics AX の承認されたリソースにアクセスできます。[Azure AD 外部ユーザー](#known-limitations-of-azure-ad-external-users)の制限事項は、Dynamics AX の外部ユーザーにも適用されます。
 
-### <a name="known-limitations-of-azure-ad-external-users"></a>Known limitations of Azure AD external users
+### Azure AD 外部ユーザーの既知の制限事項
 
-- External users who are admins can't add users from partner companies to directories (B2B collaboration) outside their home directory
-- External users can't consent to multi-tenant applications in directories outside of their home directory
-- PowerBI doesn't currently support access by external users
-- Office Portal doesn't support licensing external users
-- With respect to Azure AD PowerShell, external users are logged into their home directory and cannot manage directories in which they are external users
+- 外部ユーザーが管理者である場合は、パートナー会社のユーザーを、自分のホーム ディレクトリ以外のディレクトリ (B2B コラボレーション) に追加することはできません。
+- 外部ユーザーは、自分のホーム ディレクトリ以外のディレクトリ内のマルチテナント アプリケーションに同意できません。
+- PowerBI では、現在、外部ユーザーによるアクセスはサポートされていません。
+- Office ポータルでは、外部ユーザーへのライセンス付与をサポートしていません。
+- Azure AD PowerShell では、外部ユーザーは自分のホーム ディレクトリにログインした状態であり、自分が外部ユーザーであるディレクトリを管理できません。
 
 
-## <a name="what's-next"></a>What's next
+## 参照トピック
 
-- [Add new users to Azure Active Directory](active-directory-create-users.md)
-- [Administering Azure AD](active-directory-administer.md)
+- [Azure Active Directory に新しいユーザーを追加する](active-directory-create-users.md)
+- [Administer your Azure AD directory](active-directory-administer.md)
 - [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 - [Manage groups in Azure AD](active-directory-manage-groups.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

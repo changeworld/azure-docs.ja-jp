@@ -1,56 +1,51 @@
 <properties
-    pageTitle="Change signature hash algorithm for Office 365 replying party trust | Microsoft Azure"
-    description="This page provides guidelines for changing SHA algorithm for federation trust with Office 365"
-    keywords="SHA1,SHA256,O365,federation,aadconnect,adfs,ad fs,change sha,federation trust,relying party trust"
-    services="active-directory"
-    documentationCenter=""
-    authors="anandyadavmsft"
-    manager="samueld"
-    editor=""/>
+	pageTitle="Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する | Microsoft Azure"
+	description="このページでは、Office 365 でフェデレーション信頼の SHA アルゴリズムを変更するガイドラインについて説明します。"
+    keywords="SHA1、SHA256、O365、フェデレーション、aadconnect、adfs、ad fs、sha の変更、フェデレーション信頼、証明書利用者信頼"
+	services="active-directory"
+	documentationCenter=""
+	authors="anandyadavmsft"
+	manager="samueld"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/01/2016"
-    ms.author="anandy"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/01/2016"
+	ms.author="anandy"/>
 
+# Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する
 
-# <a name="change-signature-hash-algorithm-for-office-365-replying-party-trust"></a>Change signature hash algorithm for Office 365 replying party trust
+## Overview
 
-## <a name="overview"></a>Overview
+Azure Active Directory フェデレーション サービス (AD FS) から Microsoft Azure Active Directory に対して発行されるトークンには、改ざんを防ぐために署名が施されます。この署名には、SHA1 または SHA256 を使用できます。Azure Active Directory は SHA256 アルゴリズムで署名されたトークンをサポートするようになり、最上位レベルのセキュリティ確保のためトークン署名アルゴリズムを SHA256 に設定することを推奨します。この記事では、トークン署名アルゴリズムをより安全性の高い SHA 256 レベルに設定するために必要なステップについて説明します。
 
-Azure Active Directory Federation Services (AD FS) signs its tokens to Microsoft Azure Active Directory to ensure that they cannot be tampered with. This signature can be based on SHA1 or SHA256. Azure Active Directory now supports tokens signed with an SHA256 algorithm, and we recommend setting the token-signing algorithm to SHA256 for the highest level of security. This article describes the steps needed to set the token-signing algorithm to the more secure SHA256 level.
+## トークン署名アルゴリズムの変更
 
-## <a name="change-the-token-signing-algorithm"></a>Change the token-signing algorithm
+以下に示したいずれかの手順で署名アルゴリズムが設定されると、Office 365 の証明書利用者信頼用のトークンに対し、AD FS が SHA256 で署名するようになります。特別な構成変更は必要ありません。変更したとしても、Office 365 をはじめとする Azure AD アプリケーションへのアクセス権には一切影響しません。
 
-After you have set the signature algorithm with one of the two processes below, AD FS signs the tokens for Office 365 relying party trust with SHA256. You don't need to make any extra configuration changes, and this change has no impact on your ability to access Office 365 or other Azure AD applications.
+### AD FS 管理コンソール
 
-### <a name="ad-fs-management-console"></a>AD FS management console
+1. プライマリ AD FS サーバーで AD FS 管理コンソールを開きます。
+2. AD FS ノードを展開し、**[証明書利用者信頼]** をクリックします。
+3. Office 365/Azure 証明書利用者信頼を右クリックし、**[プロパティ]** を選択します。
+4. **[詳細設定]** タブを選択し、セキュア ハッシュ アルゴリズムとして SHA 256 を選択します。
+5. **[OK]** をクリックします。
 
-1. Open the AD FS management console on the primary AD FS server.
-2. Expand the AD FS node and click **Relying Party Trusts**.
-3. Right-click your Office 365/Azure relying party trust and select **Properties**.
-4. Select the **Advanced** tab and select the secure hash algorithm SHA256.
-5. Click **OK**.
+![SHA256 署名アルゴリズム - MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
 
-![SHA256 signing algorithm--MMC](./media/active-directory-aadconnectfed-sha256guidance/mmc.png)
+### AD FS PowerShell コマンドレット
 
-### <a name="ad-fs-powershell-cmdlets"></a>AD FS PowerShell cmdlets
-
-1. On any AD FS server, open PowerShell under administrator privileges.
-2. Set the secure hash algorithm by using the **Set-AdfsRelyingPartyTrust** cmdlet.
+1. 任意の AD FS サーバーから管理者特権で PowerShell を開きます。
+2. **Set-AdfsRelyingPartyTrust** コマンドレットを使用してセキュア ハッシュ アルゴリズムを設定します。
 
  <code>Set-AdfsRelyingPartyTrust -TargetName 'Microsoft Office 365 Identity Platform' -SignatureAlgorithm 'http://www.w3.org/2001/04/xmldsig-more#rsa-sha256'</code>
 
-## <a name="also-read"></a>Also read
+## 追加情報
 
-* [Repair Office 365 trust with Azure AD Connect](./active-directory-aadconnect-federation-management.md#repairing-the-trust)
+* [Azure AD Connect を使用して Office 365 信頼を修復する](./active-directory-aadconnect-federation-management.md#repairing-the-trust)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

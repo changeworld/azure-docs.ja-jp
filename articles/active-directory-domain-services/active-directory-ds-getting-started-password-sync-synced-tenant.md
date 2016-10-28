@@ -1,54 +1,53 @@
 <properties
-    pageTitle="Azure AD Domain Services: Enable password synchronization | Microsoft Azure"
-    description="Getting started with Azure Active Directory Domain Services"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+	pageTitle="Azure AD ドメイン サービス: パスワード同期を有効にする | Microsoft Azure"
+	description="Azure Active Directory ドメイン サービスの概要"
+	services="active-directory-ds"
+	documentationCenter=""
+	authors="mahesh-unnikrishnan"
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="09/20/2016"
-    ms.author="maheshu"/>
+	ms.service="active-directory-ds"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/20/2016"
+	ms.author="maheshu"/>
 
+# Azure AD Domain Services とのパスワード同期を有効にする
+ここまでの作業では、自分の Azure AD テナントの Azure AD Domain Services を有効にしました。次に、Azure AD Domain Services とのパスワードの同期を有効にします。資格情報の同期が設定されると、ユーザーは企業の資格情報を使用して、管理対象ドメインにサインインできます。
 
-# <a name="enable-password-synchronization-to-azure-ad-domain-services"></a>Enable password synchronization to Azure AD Domain Services
-In preceding tasks, you enabled Azure AD Domain Services for your Azure AD tenant. The next task is to enable synchronization of passwords to Azure AD Domain Services. Once credential synchronization is set up, users can sign in to the managed domain using their corporate credentials.
-
-The steps involved are different based on whether your organization has a cloud-only Azure AD tenant or is set to synchronize with your on-premises directory using Azure AD Connect.
+実行する手順は、組織がクラウド専用 Azure AD テナントであるか、Azure AD Connect を使用してオンプレミスのディレクトリに同期するように設定されているかによって異なります。
 
 <br>
 
 > [AZURE.SELECTOR]
-- [Cloud-only Azure AD tenant](active-directory-ds-getting-started-password-sync.md)
-- [Synced Azure AD tenant](active-directory-ds-getting-started-password-sync-synced-tenant.md)
+- [クラウド専用 Azure AD テナント](active-directory-ds-getting-started-password-sync.md)
+- [同期された Azure AD テナント](active-directory-ds-getting-started-password-sync-synced-tenant.md)
 
 <br>
 
 
-## <a name="task-5:-enable-password-synchronization-to-aad-domain-services-for-a-synced-azure-ad-tenant"></a>Task 5: Enable password synchronization to AAD Domain Services for a synced Azure AD tenant
-A synced Azure AD tenant is set to synchronize with your organization's on-premises directory using Azure AD Connect. Azure AD Connect does not synchronize NTLM and Kerberos credential hashes to Azure AD by default. To use Azure AD Domain Services, you need to configure Azure AD Connect to synchronize credential hashes required for NTLM and Kerberos authentication. The following steps enable synchronization of the required credential hashes to your Azure AD tenant.
+## タスク 5: AAD ドメイン サービスとのパスワード同期を有効にする (同期された Azure AD テナントの場合)
+同期対象の Azure AD テナントは、Azure AD Connect を使用して組織のオンプレミス ディレクトリと同期するように設定されます。Azure AD Connect は、既定では NTLM および Kerberos 資格情報ハッシュを Azure AD と同期しません。Azure AD Domain Services を使用するには、NTLM および Kerberos 認証に必要な資格情報ハッシュを同期するように Azure AD Connect を構成する必要があります。以下の手順では、必要な資格情報ハッシュの Azure AD テナントとの同期を有効にします。
 
 
-### <a name="install-or-update-azure-ad-connect"></a>Install or update Azure AD Connect
-Install the latest recommended release of Azure AD Connect on a domain joined computer. If you have an existing instance of Azure AD Connect setup, you need to update it to use the latest version of Azure AD Connect. To avoid known issues/bugs that may have already been fixed, ensure you always use the latest version of Azure AD Connect.
+### Azure AD Connect のインストールまたは更新
+Azure AD Connect の最新の推奨リリースをドメイン参加コンピューターにインストールします。Azure AD Connect の既存のインスタンスが設定されている場合は、Azure AD Connect の最新バージョンを使用するように更新する必要があります。既に修正されている既知の問題/バグを回避するために、常に最新バージョンの Azure AD Connect を使用してください。
 
-**[Download Azure AD Connect](http://www.microsoft.com/download/details.aspx?id=47594)**
+**[Azure AD Connect のダウンロード](http://www.microsoft.com/download/details.aspx?id=47594)**
 
-Recommended version: **1.1.281.0** - published on September 7, 2016.
+推奨バージョン: **1.1.281.0** - 2016 年 9 月 7 日公開
 
-  > [AZURE.WARNING] You MUST install the latest recommended release of Azure AD Connect to enable the legacy password credentials (required for NTLM and Kerberos authentication) to synchronize to your Azure AD tenant. This functionality is not available in prior releases of Azure AD Connect or with the legacy DirSync tool.
+  > [AZURE.WARNING] 従来のパスワードの資格情報 (NTLM/Kerberos 認証で必要) で Azure AD テナントとの同期を有効にするには、Azure AD Connect の最新の推奨リリースをインストールする必要があります。この機能は、旧リリースの Azure AD Connect または従来の DirSync ツールでは使用できません。
 
-Installation instructions for Azure AD Connect are available in the following article - [Getting started with Azure AD Connect](../active-directory/active-directory-aadconnect.md)
+Azure AD Connect のインストール手順については、次の記事を参照してください。 - [ の概要](../active-directory/active-directory-aadconnect.md)
 
 
-### <a name="enable-synchronization-of-ntlm-and-kerberos-credential-hashes-to-azure-ad"></a>Enable synchronization of NTLM and Kerberos credential hashes to Azure AD
-Execute the following PowerShell script on each AD forest, to force full password synchronization, and enable all on-premises users’ credential hashes to sync to your Azure AD tenant. This script enables the credential hashes required for NTLM/Kerberos authentication to be synchronized to your Azure AD tenant.
+### NTLM と Kerberos の資格情報ハッシュの Azure AD との同期を有効にする
+各 AD フォレストで以下の PowerShell スクリプトを実行して、完全パスワード同期を強制的に適用し、すべてのオンプレミス ユーザーの資格情報ハッシュが Azure AD テナントと同期できるようにします。このスクリプトは、NTLM/Kerberos 認証に必要な資格情報ハッシュが Azure AD テナントと同期されるようにします。
 
 ```
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"  
@@ -64,23 +63,19 @@ Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConn
 Set-ADSyncAADPasswordSyncConfiguration -SourceConnector $adConnector -TargetConnector $azureadConnector -Enable $true  
 ```
 
-Depending on the size of your directory (number of users, groups etc.), synchronization of credential hashes to Azure AD takes time. The passwords will be usable on the Azure AD Domain Services managed domain shortly after the credential hashes have synchronized to Azure AD.
+ディレクトリのサイズ (ユーザーやグループの数など) によっては、資格情報ハッシュが Azure AD と同期されるまでに時間がかかります。資格情報ハッシュが Azure AD と同期されるとすぐに、Azure AD ドメイン サービスでパスワードを使用できるようになります。
 
 
 <br>
 
-## <a name="related-content"></a>Related Content
+## 関連コンテンツ
 
-- [Enable password synchronization to AAD Domain Services for a cloud-only Azure AD directory](active-directory-ds-getting-started-password-sync.md)
+- [AAD ドメイン サービスとのパスワード同期を有効にする (クラウド専用 Azure AD ディレクトリの場合)](active-directory-ds-getting-started-password-sync.md)
 
-- [Administer an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-administer-domain.md)
+- [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 
-- [Join a Windows virtual machine to an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-join-windows-vm.md)
+- [Azure AD ドメイン サービスで管理されているドメインに Windows 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 
-- [Join a Red Hat Enterprise Linux virtual machine to an Azure AD Domain Services managed domain](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+- [Azure AD ドメイン サービスで管理されているドメインに Red Hat Enterprise Linux 仮想マシンを参加させる](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

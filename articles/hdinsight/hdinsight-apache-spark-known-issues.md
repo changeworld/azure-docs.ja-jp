@@ -1,154 +1,149 @@
 <properties 
-    pageTitle="Known issues of Apache Spark in HDInsight | Microsoft Azure" 
-    description="Known issues of Apache Spark in HDInsight." 
-    services="hdinsight" 
-    documentationCenter="" 
-    authors="mumian" 
-    manager="jhubbard" 
-    editor="cgronlun"
-    tags="azure-portal"/>
+	pageTitle="HDInsight の Apache Spark の既知の問題 | Microsoft Azure" 
+	description="HDInsight の Apache Spark の既知の問題" 
+	services="hdinsight" 
+	documentationCenter="" 
+	authors="mumian" 
+	manager="jhubbard" 
+	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags 
-    ms.service="hdinsight" 
-    ms.workload="big-data" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="08/25/2016" 
-    ms.author="nitinme"/>
+	ms.service="hdinsight" 
+	ms.workload="big-data" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="08/25/2016" 
+	ms.author="nitinme"/>
 
+# HDInsight Linux の Apache Spark クラスターの既知の問題
 
-# <a name="known-issues-for-apache-spark-cluster-on-hdinsight-linux"></a>Known issues for Apache Spark cluster on HDInsight Linux
+このドキュメントでは、HDInsight Spark パブリック プレビューのすべての既知の問題を追跡します。
 
-This document keeps track of all the known issues for the HDInsight Spark public preview.  
-
-##<a name="livy-leaks-interactive-session"></a>Livy leaks interactive session
+##Livy が対話型セッションをリークする
  
-When Livy is restarted with an interactive session (from Ambari or due to headnode 0 virtual machine reboot) still alive, an interactive job session will be leaked. Because of this, new jobs can stuck in the Accepted state, and cannot be started.
+対話型セッションがまだ有効な状態で Livy が再起動されると (Ambari から、またはヘッドノード 0 仮想マシンの再起動のため)、対話型ジョブ セッションがリークされます。このため、新しいジョブは受け付け済み状態のままになり、起動できません。
 
-**Mitigation:**
+**対応策:**
 
-Use the following procedure to workaround the issue:
+この問題を回避するには、以下の手順を実行します。
 
-1. Ssh into headnode. 
-2. Run the following command to find the application IDs of the interactive jobs started through Livy. 
+1. ヘッドノードに Ssh します。
+2. 次のコマンドを実行して、Livy を通じて開始された対話型ジョブのアプリケーション ID を調べます。
 
         yarn application –list
 
-    The default job names will be Livy if the jobs were started with a Livy interactive session with no explicit names specified, For the Livy session started by Jupyter notebook, the job name will start with remotesparkmagics_*. 
+    明示的に名前を指定せずに、Livy 対話型セッションによってジョブが開始された場合、既定のジョブ名は Livy です。Jupyter Notebook によって開始された Livy セッションでは、ジョブ名は remotesparkmagics\_* で始まります。
 
-3. Run the following command to kill those jobs. 
+3. 次のコマンドを実行して、これらのジョブを強制終了します。
 
         yarn application –kill <Application ID>
 
-New jobs will start running. 
+新しいジョブの実行が開始されます。
 
-##<a name="spark-history-server-not-started"></a>Spark History Server not started 
+##Spark History Server が開始されない 
 
-Spark History Server is not started automatically after a cluster is created.  
+クラスターの作成後、Spark History Server は自動的には開始されません。
 
-**Mitigation:** 
+**対応策:**
 
-Manually start the history server from Ambari.
+Ambari から履歴サーバーを手動で開始します。
 
-## <a name="permission-issue-in-spark-log-directory"></a>Permission issue in Spark log directory 
+## Spark ログ ディレクトリでアクセス許可の問題が発生する 
 
-When hdiuser submits a job with spark-submit, there is an error java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permission denied) and the driver log is not written. 
+hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundException: /var/log/spark/sparkdriver\_hdiuser.log (アクセス許可が拒否されました) というエラーになり、ドライバー ログは書き込まれません。
 
-**Mitigation:**
+**対応策:**
  
-1. Add hdiuser to the Hadoop group. 
-2. Provide 777 permissions on /var/log/spark after cluster creation. 
-3. Update the spark log location using Ambari to be a directory with 777 permissions.  
-4. Run spark-submit as sudo.  
+1. hdiuser を Hadoop グループに追加します。
+2. クラスターの作成後、/var/log/spark に 777 アクセス許可を指定します。
+3. Ambari を使用して、Spark ログの場所を、777 アクセス許可を持つディレクトリに変更します。
+4. sudo として spark-submit を実行します。
 
-## <a name="issues-related-to-jupyter-notebooks"></a>Issues related to Jupyter notebooks
+## Jupyter Notebook に関連する問題
 
-Following are some known issues related to Jupyter notebooks.
+Jupyter Notebook に関連する既知の問題を以下に示します。
 
 
-### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>Notebooks with non-ASCII characters in filenames
+### ファイル名での非 ASCII 文字の使用
 
-Jupyter notebooks that can be used in Spark HDInsight clusters should not have non-ASCII characters in filenames. If you try to upload a file through the Jupyter UI which has a non-ASCII filename, it will fail silently (that is, Jupyter won’t let you upload the file, but it won’t throw a visible error either). 
+Spark HDInsight クラスターで使用できる Jupyter Notebook では、ファイル名に非 ASCII 文字を使用することはできません。Jupyter UI を使用して、ファイル名に非 ASCII 文字が含まれたファイルをアップロードしようとすると、通知されずに失敗します (つまり、Jupyter でファイルのアップロード操作ができないわけではありませんが、明確なエラーがスローされるわけでもありません)。
 
-### <a name="error-while-loading-notebooks-of-larger-sizes"></a>Error while loading notebooks of larger sizes
+### 大きなサイズの Notebook の読み込み中のエラー
 
-You might see an error **`Error loading notebook`** when you load notebooks that are larger in size.  
+大きなサイズの Notebook の読み込み中にエラー **`Error loading notebook`** が発生する場合があります。
 
-**Mitigation:**
+**対応策:**
 
-If you get this error, it does not mean your data is corrupt or lost.  Your notebooks are still on disk in `/var/lib/jupyter`, and you can SSH into the cluster to access them. You can copy your notebooks from your cluster to your local machine (using SCP or WinSCP) as a backup to prevent the loss of any important data in the notebook. You can then SSH tunnel into your headnode at port 8001 to access Jupyter without going through the gateway.  From there, you can clear the output of your notebook and re-save it to minimize the notebook’s size.
+このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。Notebook はディスク上の `/var/lib/jupyter` に残っているため、クラスターに SSH 接続し、Notebook にアクセスすることができます。バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
 
-To prevent this error from happening in the future, you must follow some best practices:
+今後このエラーが発生しないようにするには、次のベスト プラクティスを実行する必要があります。
 
-* It is important to keep the notebook size small. Any output from your Spark jobs that is sent back to Jupyter is persisted in the notebook.  It is a best practice with Jupyter in general to avoid running `.collect()` on large RDD’s or dataframes; instead, if you want to peek at an RDD’s contents, consider running `.take()` or `.sample()` so that your output doesn’t get too big.
-* Also, when you save a notebook, clear all output cells to reduce the size.
+* Notebook のサイズを小さく保つことが重要です。Jupyter に返送される、Spark ジョブからの出力は Notebook に保持されます。Jupyter でのベスト プラクティスは一般に次のとおりです。大規模な RDD またはデータフレームに対して `.collect()` を実行することは避けます。RDD の内容を参照する場合は、出力が大きくなり過ぎないように `.take()` または `.sample()` の実行を検討します。
+* また、Notebook を保存する場合は、出力セルをすべてクリアしてサイズを縮小します。
 
-### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Notebook initial startup takes longer than expected 
+### Notebook の初期スタートアップに予想より時間がかかる 
 
-First code statement in Jupyter notebook using Spark magic could take more than a minute.  
+Spark マジックを使用した Jupyter Notebook の最初のコード ステートメントには、1 分以上かかる場合があります。
 
-**Explanation:**
+**説明:**
  
-This happens because when the first code cell is run. In the background this initiates session configuration and Spark, SQL, and Hive contexts are set. After these contexts are set, the first statement is run and this gives the impression that the statement took a long time to complete.
+これは、最初のコード セルが実行されるタイミングのために発生します。バック グラウンドで、これにより、セッション構成が開始され、Spark、SQL、および Hive コンテキストが設定されます。これらのコンテキストが設定された後に、最初のステートメントが実行されるので、ステートメントの完了までに時間がかかるような印象を受けます。
 
-### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter notebook timeout in creating the session
+### Jupyter Notebook がセッションの作成中にタイムアウトする
 
-When Spark cluster is out of resources, the Spark and Pyspark kernels in the Jupyter notebook will timeout trying to create the session. 
+Spark クラスターがリソース不足になると、Jupyter Notebook の Spark カーネルと Pyspark カーネルは、セッションを作成する試行をタイムアウトにします。
 
-**Mitigations:** 
+**対応策:**
 
-1. Free up some resources in your Spark cluster by:
+1. 以下の方法で、Spark クラスターのリソースを解放します。
 
-    - Stopping other Spark notebooks by going to the Close and Halt menu or clicking Shutdown in the notebook explorer.
-    - Stopping other Spark applications from YARN.
+    - [閉じて停止] メニューに移動するか、Notebook エクスプローラーで [シャットダウン] をクリックして、他の Spark Notebook を停止する。
+    - YARN から他の Spark アプリケーションを停止する。
 
-2. Restart the notebook you were trying to start up. Enough resources should be available for you to create a session now.
+2. スタートアップしようとしていた Notebook を再起動します。今度は、セッションを作成するために十分なリソースが使用可能になっている必要があります。
 
-##<a name="see-also"></a>See also
+##関連項目
 
-* [Overview: Apache Spark on Azure HDInsight](hdinsight-apache-spark-overview.md)
+* [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
-### <a name="scenarios"></a>Scenarios
+### シナリオ
 
-* [Spark with BI: Perform interactive data analysis using Spark in HDInsight with BI tools](hdinsight-apache-spark-use-bi-tools.md)
+* [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
 
-* [Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 
-* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
 
-* [Spark Streaming: Use Spark in HDInsight for building real-time streaming applications](hdinsight-apache-spark-eventhub-streaming.md)
+* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](hdinsight-apache-spark-eventhub-streaming.md)
 
-* [Website log analysis using Spark in HDInsight](hdinsight-apache-spark-custom-library-website-log-analysis.md)
+* [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
-### <a name="create-and-run-applications"></a>Create and run applications
+### アプリケーションの作成と実行
 
-* [Create a standalone application using Scala](hdinsight-apache-spark-create-standalone-application.md)
+* [Scala を使用してスタンドアロン アプリケーションを作成する](hdinsight-apache-spark-create-standalone-application.md)
 
-* [Run jobs remotely on a Spark cluster using Livy](hdinsight-apache-spark-livy-rest-interface.md)
+* [Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
 
-### <a name="tools-and-extensions"></a>Tools and extensions
+### ツールと拡張機能
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons](hdinsight-apache-spark-intellij-tool-plugin.md)
+* [Use HDInsight Tools Plugin for IntelliJ IDEA to create and submit Spark Scala applicatons (Linux)](hdinsight-apache-spark-intellij-tool-plugin.md)
 
-* [Use HDInsight Tools Plugin for IntelliJ IDEA to debug Spark applications remotely](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [IntelliJ IDEA 用の HDInsight Tools プラグインを使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 
-* [Use Zeppelin notebooks with a Spark cluster on HDInsight](hdinsight-apache-spark-use-zeppelin-notebook.md)
+* [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-use-zeppelin-notebook.md)
 
-* [Kernels available for Jupyter notebook in Spark cluster for HDInsight](hdinsight-apache-spark-jupyter-notebook-kernels.md)
+* [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 
-* [Use external packages with Jupyter notebooks](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
+* [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 
-* [Install Jupyter on your computer and connect to an HDInsight Spark cluster](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
+* [Jupyter をコンピューターにインストールして HDInsight Spark クラスターに接続する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 
-### <a name="manage-resources"></a>Manage resources
+### リソースの管理
 
-* [Manage resources for the Apache Spark cluster in Azure HDInsight](hdinsight-apache-spark-resource-manager.md)
+* [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight](hdinsight-apache-spark-job-debugging.md)
+* [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

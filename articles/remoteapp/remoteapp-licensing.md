@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Azure RemoteApp licensing | Microsoft Azure"
-    description="Learn how licensing works in Azure RemoteApp."
+    pageTitle="Azure RemoteApp ライセンス | Microsoft Azure"
+    description="Azure RemoteApp のライセンスの仕組みについて説明します。"
     services="remoteapp"
     documentationCenter=""
     authors="lizap"
@@ -16,30 +16,25 @@
     ms.author="elizapo" />
 
 
-
-# <a name="how-does-licensing-work-in-azure-remoteapp?"></a>How does licensing work in Azure RemoteApp?
+# RemoteApp のライセンスはどのような仕組みになっていますか。
 
 > [AZURE.IMPORTANT]
-> Azure RemoteApp is being discontinued. Read the [announcement](https://go.microsoft.com/fwlink/?linkid=821148) for details.
+Azure RemoteApp の提供は終了しました。詳細については、[お知らせ](https://go.microsoft.com/fwlink/?linkid=821148)をご覧ください。
 
-So you've set up your Azure RemoteApp service, created your templates, and are ready to publish apps to your users. But there's still one last thing to figure out: licensing. Just how does licensing work for RemoteApp and for the apps you share through RemoteApp?
+Azure RemoteApp サービスを設定し、テンプレートを作成したので、ユーザーにアプリケーションを発行する準備ができました。最後にもうひとつ解決することがあります: ライセンスです。RemoteApp のライセンスはどのような仕組みになっていますか。また、RemoteApp を通して共有するアプリケーションについてはどうですか。
 
-RemoteApp does not require any Windows licenses or Remote Desktop CALs. Your subscription takes care of the RemoteApp side itself. (Check out the details of the [pricing plans](https://azure.microsoft.com/pricing/details/remoteapp).)
+RemoteApp は、Windows ライセンスもリモート デスクトップ CAL も必要としません。サブスクリプションにより、RemoteApp 側自体のライセンス処理が行われます (詳細については、「[Azure の料金体系について](https://azure.microsoft.com/pricing/details/remoteapp)」を参照してください)。
 
-If you use one of the images that is included in your subscription, you can share any of the apps installed on that image without needing a separate license. For example, if you use the Windows Server 2012 R2 template image to build your collection, you can share System Center Endpoint Protection with your users. The only exceptions to this rule are Office 365 ProPlus, which requires a separate subscription, and Office 2013, which cannot be shared in a production collection.
+サブスクリプションに含まれているイメージのいずれかを使用する場合、そのイメージにインストールされたアプリはすべて共有できます。その際、個別のライセンスは必要ありません。たとえば、Windows Server 2012 R2 テンプレート イメージを使用してコレクションを作成すると、System Center Endpoint Protection をユーザーと共有できます。このルールの例外として、個別のサブスクリプションを必要とする Office 365 ProPlus と、実稼働コレクションでは共有できない Office 2013 があります。
 
-If you want to use the Office 365 template image that comes with RemoteApp, you must have an *existing* Office 365 ProPlus plan. The same is true for any Office 365 app that you publish using a custom template. You need to activate the apps with your own subscription. This is true for both trial and paid subscriptions. If you want to use the Office 365 template image during the trial, *and you don't already have a subscription*, go to the Office 365 page to [sign up](https://go.microsoft.com/fwlink/p/?LinkID=403802) for a trial subscription. See [How do RemoteApp and Office work together?](remoteapp-o365.md) for more information.
+RemoteApp に同梱される Office 365 テンプレート イメージを使用する場合は、*既に* Office 365 ProPlus プランを所有している必要があります。カスタム テンプレートを使用して発行する Office 365 アプリも同様です。自分のサブスクリプションでアプリを有効化する必要があります。これは試用版でも有料サブスクリプションでも同様です。試用期間中に Office 365 テンプレート イメージを使用する必要があり、"*サブスクリプションをまだ所有していない*" 場合は、Office 365 ページにアクセスして、試用版サブスクリプションに[サインアップ](https://go.microsoft.com/fwlink/p/?LinkID=403802)する必要があります。詳細については、「[Using Office 365 with Azure RemoteApp](remoteapp-o365.md)」を参照してください。
 
-If, during the trial period, you don't want to get an Office 365 trial subscription, use the Office 2013 Professional Plus template image that comes with RemoteApp. This template image can only be used for 30 days and cannot be converted into a paid collection.
+試用期間中に、Office 365 試用版のサブスクリプションが必要ない場合は、RemoteApp に付属の Office 2013 Professional Plus テンプレート イメージを使用します。このテンプレート イメージは 30 日間のみ使用でき、有料のコレクションに変換することはできません。
 
-For other apps, you need to make sure that you have the license to share the app.
+その他のアプリケーションについては、そのアプリケーションを共有するためのライセンスを所有していることを確認します。
 
-That makes sense, right? You can publish any app that you are legally entitled to share. And you need to make sure you really are entitled to share your programs.
+ご理解いただけたでしょうか。 法的に共有が可能なすべてのアプリを発行することができます。またプログラムを共有する資格を確認する必要があります。
 
-Please note that you cannot use a CAL or Volume License agreement in a cloud collection. You *can* use a Volume License agreement to activate applications in your hybrid collection (except for Office). You just need to install them on your template image from the Volume License media. Follow the information from the application vendor to install licenses in a Remote Desktop environment.
+クラウド コレクションでは CAL またはボリューム ライセンス契約を使用できないことに注意してください。ボリューム ライセンス契約を使用して、ハイブリッド コレクションのアプリケーションをライセンス認証することが*できます* (Office を除く)。ボリューム ライセンス メディアから、テンプレート イメージにインストールする必要があります。アプリケーションのベンダの情報に従ってリモート デスクトップ環境にライセンスをインストールしてください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

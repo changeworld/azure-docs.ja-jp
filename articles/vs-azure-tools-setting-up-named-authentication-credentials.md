@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Setting Up Named Authentication Credentials | Microsoft Azure"
-   description="Learn how to to provide credentials that Visual Studio can use to authenticate requests to Azure to publish an application to Azure from Visual Studio or to monitor an existing cloud service.. "
+   pageTitle="名前付き認証資格情報の設定 | Microsoft Azure"
+   description="Visual Studio から Azure にアプリケーションを発行したり、既存のクラウド サービスを監視したりする際に、送信する要求の本人性を Visual Studio が Azure に証明するための資格情報を指定する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,65 +15,60 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# 名前付き認証資格情報の設定
 
-# <a name="setting-up-named-authentication-credentials"></a>Setting Up Named Authentication Credentials
+Visual Studio から Azure にアプリケーションを発行したり、既存のクラウド サービスを監視するには、Azure への要求を認証するために使用できる資格情報を指定する必要があります。Visual Studio には、こうした資格情報を指定するためのサインインのインターフェイスがいくつか設けられています。たとえば、サーバー エクスプローラーから **Azure** ノードのショートカット メニューを開いて **[Azure への接続]** を選択できます。サインインすると、Azure のアカウントに関連付けられたサブスクリプション情報が Visual Studio で利用できるようになるため、それ以上の設定は不要です。
 
-To publish an application to Azure from Visual Studio or to monitor an existing cloud service, you must provide credentials that Visual Studio can use to authenticate requests to Azure. There are several places in Visual Studio where you can sign in to provide these credentials. For example, from the Server Explorer, you can open the shortcut menu for the **Azure** node and choose **Connect to Azure**. When you sign in, the subscription information associated with your Azure account is available in Visual Studio, and there is nothing more you need to do.
+Azure Tools では、サブスクリプション ファイル (.publishsettings ファイル) を使用して資格情報を指定する従来の方法もサポートされます。このトピックでは、Azure SDK 2.2 で現在もサポートされているこの方法について説明します。
 
-Azure Tools also supports an older way of providing credentials, using the subscription file (.publishsettings file). This topic describes this method, which is still supported in Azure SDK 2.2.
+Azure に対する認証には、次の項目が必要です。
 
-The following items are required for authentication to Azure.
+- サブスクリプション ID
 
-- Your subscription ID
+- 有効な X.509 v3 証明書
 
-- A valid X.509 v3 certificate
+>[AZURE.NOTE] X.509 v3 証明書のキーの長さは 2,048 ビット以上にする必要があります。この要件を満たさない証明書や無効な証明書は、Azure によってすべて拒否されます。
 
->[AZURE.NOTE] The length of the X.509 v3 certificate's key must be at least 2048 bits. Azure will reject any certificate that doesn’t meet this requirement or that isn’t valid.
+Visual Studio では、サブスクリプション ID が証明書データと共に資格情報として使用されます。該当する資格情報はサブスクリプション ファイル (.publishsettings ファイル) 内で参照され、このファイルに証明書の公開キーが格納されます。サブスクリプション ファイルには、複数のサブスクリプションの資格情報を含めることができます。
 
-Visual Studio uses your subscription ID together with the certificate data as credentials. The appropriate credentials are referenced in the subscription file (.publishsettings file), which contains a public key for the certificate. The subscription file can contain credentials for more than one subscription.
+サブスクリプション情報は、**[新しいサブスクリプション/サブスクリプションの編集]** ダイアログ ボックスから編集することができます。この点については、このトピックの中で説明しています。
 
-You can edit the subscription information from the **New/Edit Subscription** dialog box, as explained later in this topic.
+証明書を自分で作成する場合は、[Azure の管理証明書の作成とアップロード](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx)に関する記事に記載された手順を参照し、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)に証明書を手動でアップロードします。
 
-If you want to create a certificate yourself, you can refer to the instructions in [Create and Upload a Management Certificate for Azure](https://msdn.microsoft.com/library/windowsazure/gg551722.aspx) and then manually upload the certificate to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
+>[AZURE.NOTE] これらは、ユーザーのクラウド サービスを管理するために Visual Studio が必要とする資格情報であり、Azure ストレージ サービスに対する要求を認証するために必要な資格情報とは異なります。
 
->[AZURE.NOTE] These credentials that Visual Studio requires to manage your cloud services aren’t the same credentials that are required to authenticate a request against the Azure storage services.
+## Visual Studio の認証資格情報の変更またはエクスポート
 
-## <a name="modify-or-export-authentication-credentials-in-visual-studio"></a>Modify or Export Authentication Credentials in Visual Studio
+認証資格情報の設定、変更、エクスポートは、**[新しいサブスクリプション]** ダイアログ ボックスで行うこともできます。次のいずれかの操作を行った場合にこのダイアログ ボックスが表示されます。
 
-You can also set up, modify, or export your authentication credentials in the **New Subscription** dialog box, which appears if you perform either of the following actions:
+- **サーバー エクスプローラー**で **Azure** ノードのショートカット メニューを開き、**[サブスクリプションの管理]**、**[証明書]** タブの順に選択し、**[新規]** または **[編集]** をクリックします。
 
-- In **Server Explorer**, open the shortcut menu for the **Azure** node, choose **Manage Subscriptions**, choose the **Certificates** tab, and choose the **New** or **Edit** button.
+- **Azure アプリケーションの公開**ウィザードから Azure クラウド サービスを発行する場合、**[サブスクリプションの選択]** の一覧から **[管理]** を選択し、[証明書] タブを選択してから、**[新規]** または **[編集]** をクリックします。
 
-- When you publish an Azure cloud service from the **Publish Azure Application** wizard, choose **Manage** in the **Choose your Subscription** list, then choose the Certificates tab, and then choose the **New** or **Edit** button.
+次の手順は、**[新しいサブスクリプション]** ダイアログ ボックスが開いていることを前提にしています。
 
-The following procedure assumes that the **New Subscription** dialog box is open.
+### Visual Studio で認証資格情報を設定するには
 
-### <a name="to-set-up-authentication-credentials-in-visual-studio"></a>To set up authentication credentials in Visual Studio
+1. **[認証用の既存の証明書を選択します]** の一覧で証明書を選択します。
 
-1. In the **Select an existing certificate** for authentication list, choose a certificate.
+1. **[完全パスのコピー]** をクリックします。証明書 (.cer ファイル) のパスがクリップボードにコピーされます。
 
-1. Choose the **Copy the full path** button.The path for the certificate (.cer file) is copied to the Clipboard.
+    >[AZURE.IMPORTANT] Visual Studio から Azure アプリケーションを発行するには、この証明書を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードする必要があります。
 
-    >[AZURE.IMPORTANT] To publish your Azure application from Visual Studio, you must upload this certificate to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885).
+1. 証明書を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にアップロードするには、次の手順に従います。
 
-1. To upload the certificate to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885):
+    1. [Azure ポータル] リンクを選択します。
 
-    1. Choose the Azure Portal link.
+         [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)が開きます。
 
-         The [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885) opens.
+    1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)にサインインし、**[Cloud Services]** ボタンをクリックします。
 
-    1. Sign in to the [Azure classic portal](http://go.microsoft.com/fwlink/?LinkID=213885), and then choose the **Cloud Services** button.
+    1. 必要なクラウド サービスを選択します。
 
-    1. Choose the cloud service that interests you.
+        そのサービスのページが表示されます。
 
-        The page for the service opens.
+    1. **[証明書]** タブで **[アップロード]** をクリックします。
 
-    1. On the **Certificates** tab, choose the **Upload** button.
+    1. 作成した .cer ファイルのフル パスを貼り付け、指定したパスワードを入力します。
 
-    1. Paste the full path of the .cer file that you just created, and then enter the password that you specified.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

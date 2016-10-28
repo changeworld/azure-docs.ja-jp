@@ -1,153 +1,144 @@
 <properties
-    pageTitle="Azure Active Directory Domain Services: Join a Windows Server VM to a managed domain | Microsoft Azure"
-    description="Join a Windows Server virtual machine to Azure AD Domain Services"
-    services="active-directory-ds"
-    documentationCenter=""
-    authors="mahesh-unnikrishnan"
-    manager="stevenpo"
-    editor="curtand"/>
+	pageTitle="Azure Active Directory ドメイン サービス プレビュー: 管理ガイド | Microsoft Azure"
+	description="Windows Server 仮想マシンの Azure AD ドメイン サービスへの参加"
+	services="active-directory-ds"
+	documentationCenter=""
+	authors="mahesh-unnikrishnan"
+	manager="stevenpo"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory-ds"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/02/2016"
-    ms.author="maheshu"/>
+	ms.service="active-directory-ds"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/31/2016"
+	ms.author="maheshu"/>
 
-
-# <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Join a Windows Server virtual machine to a managed domain
+# Windows Server 仮想マシンの管理対象ドメインへの参加
 
 > [AZURE.SELECTOR]
-- [Azure classic portal - Windows](active-directory-ds-admin-guide-join-windows-vm.md)
+- [Azure クラシック ポータル - Windows](active-directory-ds-admin-guide-join-windows-vm.md)
 - [PowerShell - Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 
 <br>
 
-This article shows you how to join a virtual machine running Windows Server 2012 R2 to an Azure AD Domain Services managed domain, using the Azure classic portal.
+この記事では、Azure クラシック ポータルを使用して、Windows Server 2012 R2 を実行する仮想マシンを、Azure AD ドメイン サービスによって管理されているドメインに参加させる方法を示します。
 
 
-## <a name="step-1:-create-the-windows-server-virtual-machine"></a>Step 1: Create the Windows Server virtual machine
-Follow the instructions outlined in the [Create a virtual machine running Windows in the Azure classic portal](../virtual-machines/virtual-machines-windows-classic-tutorial.md) tutorial. It is important to ensure that this newly created virtual machine is joined to the same virtual network in which you enabled Azure AD Domain Services. The 'Quick Create' option does not enable you to join the virtual machine to a virtual network. Therefore, you need to use the 'From Gallery' option to create the virtual machine.
+## ステップ 1: Windows Server 仮想マシンを作成する
+「[Windows を実行する仮想マシンを Azure クラシック ポータルで作成する](../virtual-machines/virtual-machines-windows-classic-tutorial.md)」チュートリアルで説明されている手順に従います。新しく作成した仮想マシンが、Azure AD Domain Services を有効にしたのと同じ仮想ネットワークに確実に参加していることが重要です。[簡易作成] オプションを使用すると、仮想マシンを仮想ネットワークに参加させることができません。そのため、[ギャラリーから] オプションを使用して仮想マシンを作成する必要があります。
 
-Perform the following steps to create a Windows virtual machine joined to the virtual network in which you've enabled Azure AD Domain Services.
+Azure AD Domain Services を有効にした仮想ネットワークに参加する Windows 仮想マシンを作成するには、次の手順を実行します。
 
-1. In the Azure classic portal, on the command bar at the bottom of the window, click **New**.
+1. Azure クラシック ポータルのウィンドウの下部にあるコマンド バーで、**[新規]** をクリックします。
 
-2. Under **Compute**, click **Virtual Machine**, then click **From Gallery**.
+2. **[Compute]** で、**[仮想マシン]**、**[ギャラリーから]** の順にクリックします。
 
-3. The first screen lets you **Choose an Image** for your virtual machine from the list of available images. Pick the appropriate image.
+3. 最初の画面の **[イメージの選択]** で、利用できるイメージの一覧から仮想マシンのイメージを選択できます。適切なイメージを選択します。
 
-    ![Select image](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-image.png)
+    ![イメージの選択](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-image.png)
 
-4. The second screen lets you pick a computer name, size, and administrative user name and password. Use the tier and size required to run your app or workload. The user name you pick here is a local administrator user on the machine. Do not enter a domain user account's credentials here.
+4. 2 番目の画面では、コンピューターの名前、サイズ、管理ユーザーの名前とパスワードを選択します。アプリやワークロードの実行に必要な階層とサイズを選択してください。ここでは選択するユーザー名は、マシンのローカル管理者のユーザーです。ここではドメイン ユーザー アカウントの資格情報を入力しないでください。
 
-    ![Configure virtual machine](./media/active-directory-domain-services-admin-guide/create-windows-vm-config.png)
+    ![仮想マシンの構成](./media/active-directory-domain-services-admin-guide/create-windows-vm-config.png)
 
-5. The third screen lets you configure resources for networking, storage, and availability. Ensure you select the virtual network in which you enabled Azure AD Domain Services from the **Region/Affinity Group/Virtual Network** dropdown. Specify a **Cloud Service DNS Name** as appropriate for the virtual machine.
+5. 3 番目の画面では、リソースのネットワーク、ストレージ、可用性を構成できます。**[リージョン/アフィニティ グループ/仮想ネットワーク]** ボックスで、Azure AD ドメイン サービスを有効にした仮想ネットワークを選択していることを確認します。仮想マシンに対して適切な **[クラウド サービス DNS 名]** を指定します。
 
-    ![Select virtual network for virtual machine](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-vnet.png)
+    ![仮想マシンの仮想ネットワークの選択](./media/active-directory-domain-services-admin-guide/create-windows-vm-select-vnet.png)
 
     > [AZURE.WARNING]
-    Ensure that you join the virtual machine to the same virtual network in which you've enabled Azure AD Domain Services. As a result, the virtual machine can 'see' the domain and perform tasks such as joining the domain. If you choose to create the virtual machine in a different virtual network, connect that virtual network to the virtual network in which you've enabled Azure AD Domain Services.
+    作成した仮想マシンを、Azure AD ドメイン サービスを有効にしたのと同じ仮想ネットワークに参加させていることを確認します。その結果、仮想マシンがドメインを "参照" し、ドメイン参加などのタスクを実行できるようになります。別の仮想ネットワークの仮想マシンを作成する場合は、仮想ネットワークが、Azure AD ドメイン サービスを有効にした仮想ネットワークに接続されていることを確認します。
 
-6. The fourth screen lets you install the VM Agent and configure some of the available extensions.
+6. 4 番目の画面では、VM エージェントをインストールし、使用可能な一部の拡張機能を構成できます。
 
-    ![Done](./media/active-directory-domain-services-admin-guide/create-windows-vm-done.png)
+    ![完了](./media/active-directory-domain-services-admin-guide/create-windows-vm-done.png)
 
-7. After the virtual machine is created, the classic portal lists the new virtual machine under the **Virtual Machines** node. Both the virtual machine and cloud service are started automatically and their status is listed as **Running**.
+7. 仮想マシンが作成されると、クラシック ポータルの **[Virtual Machines]** ノードに新しい仮想マシンが一覧表示されます。仮想マシンとクラウド サービスが自動的に起動し、その状態がいずれも "**実行中**" として表示されます。
 
-    ![Virtual machine is up and running](./media/active-directory-domain-services-admin-guide/create-windows-vm-running.png)
-
-
-## <a name="step-2:-connect-to-the-windows-server-virtual-machine-using-the-local-administrator-account"></a>Step 2: Connect to the Windows Server virtual machine using the local administrator account
-Now, we connect to the newly created Windows Server virtual machine, to join it to the domain. Use the local administrator credentials you specified when creating the virtual machine, to connect to it.
-
-Perform the following steps to connect to the virtual machine.
-
-1. Navigate to **Virtual Machines** node in the classic portal. Select the virtual machine you created in Step 1 and click **Connect** on the command bar at the bottom of the window.
-
-    ![Connect to Windows virtual machine](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-
-2. The classic portal prompts you to open or save a file with a '.rdp' extension, which is used to connect to the virtual machine. Click to open the file when it has finished downloading.
-
-3. At the login prompt, enter your **local administrator credentials**, which you specified while creating the virtual machine. For example, we've used 'localhost\mahesh' in this example.
-
-At this point, you should be logged in to the newly created Windows virtual machine using local Administrator credentials. The next step is to join the virtual machine to the domain.
+    ![稼働している仮想マシン](./media/active-directory-domain-services-admin-guide/create-windows-vm-running.png)
 
 
-## <a name="step-3:-join-the-windows-server-virtual-machine-to-the-aad-ds-managed-domain"></a>Step 3: Join the Windows Server virtual machine to the AAD-DS managed domain
-Perform the following steps to join the Windows Server virtual machine to the AAD-DS managed domain.
+## ステップ 2: ローカル管理者アカウントを使用して Windows Server 仮想マシンに接続する
+次に、新たに作成された Windows Server 仮想マシンをドメインに参加させるため、その仮想マシンに接続します。仮想マシンに接続するには、仮想マシンの作成時に指定したローカル管理者の資格情報を使用します。
 
-1. Connect to the Windows Server as shown in Step 2. From the Start screen, open **Server Manager**.
+仮想マシンに接続するには、次の手順を実行します。
 
-2. Click **Local Server** in the left pane of the Server Manager window.
+1. クラシック ポータルの **[Virtual Machines]** ノードに移動します。手順 1. で作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで **[接続]** をクリックします。
 
-    ![Launch Server Manager on virtual machine](./media/active-directory-domain-services-admin-guide/join-domain-server-manager.png)
+    ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
-3. Click **WORKGROUP** under the **PROPERTIES** section. In the **System Properties** property page, click **Change** to join the domain.
+2. クラシック ポータルでは、仮想マシンへの接続に使用される ".rdp" という拡張子のファイルを開くか保存するように求められます。ダウンロードが完了したら、ファイルをクリックして開きます。
 
-    ![System Properties page](./media/active-directory-domain-services-admin-guide/join-domain-system-properties.png)
+3. ログイン プロンプトで、仮想マシンの作成時に指定した**ローカル管理者の資格情報**を入力します。たとえば、この例では "localhost\\mahesh" を使用しています。
 
-4. Specify the domain name of your Azure AD Domain Services managed domain in the **Domain** textbox and click **OK**.
-
-    ![Specify the domain to be joined](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
-
-5. You are prompted to enter your credentials to join the domain. Ensure that you **specify the credentials for a user belonging to the AAD DC Administrators** group. Only members of this group have privileges to join machines to the managed domain.
-
-    ![Specify credentials for domain join](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
-
-6. You can specify credentials in either of the following ways:
-
-    - UPN format: Specify the UPN suffix for the user account, as configured in Azure AD. In this example, the UPN suffix of the user 'bob' is 'bob@domainservicespreview.onmicrosoft.com'.
-
-    - SAMAccountName format: You can specify the account name in the SAMAccountName format. In this example, the user 'bob' would need to enter 'CONTOSO100\bob'.
-
-        > [AZURE.NOTE] **We recommend using the UPN format to specify credentials.** The SAMAccountName may be auto-generated if a user's UPN prefix is overly long (for example, 'joereallylongnameuser'). If multiple users have the same UPN prefix (for example, 'bob') in your Azure AD tenant, their SAMAccountName format may be auto-generated by the service. In these cases, the UPN format can be used reliably to log in to the domain.
-
-7. After domain join is successful, you see the following message welcoming you to the domain. Restart the virtual machine for the domain join operation to complete.
-
-    ![Welcome to the domain](./media/active-directory-domain-services-admin-guide/join-domain-done.png)
+この時点で、ローカル管理者の資格情報を使用して、新しく作成した Windows 仮想マシンにログインしている必要があります。次のステップでは、仮想マシンをドメインに参加させます。
 
 
-## <a name="troubleshooting-domain-join"></a>Troubleshooting domain join
-### <a name="connectivity-issues"></a>Connectivity issues
-If the virtual machine is unable to find the domain, refer to the following troubleshooting steps:
+## ステップ 3: Windows Server 仮想マシンを AAD-DS 管理対象ドメインに参加させる
+Windows Server 仮想マシンを AAD DS の管理対象ドメインに参加させるには、次の手順を実行します。
 
-- Ensure that the virtual machine is connected to the same virtual network as that you've enabled Domain Services in. If not, the virtual machine is unable to connect to the domain and therefore is unable to join the domain.
+1. 手順 2. で示したように、Windows Server に接続します。スタート画面で、**[サーバー マネージャー]** を開きます。
 
-- If the virtual machine is connected to another virtual network, ensure that this virtual network is connected to the virtual network in which you've enabled Domain Services.
+2. [サーバー マネージャー] ウィンドウの左側のウィンドウで **[ローカル サーバー]** をクリックします。
 
-- Try to ping the domain using the domain name of the managed domain (for example, 'ping contoso100.com'). If you're unable to do so, try to ping the IP addresses for the domain displayed on the page where you enabled Azure AD Domain Services (for example, 'ping 10.0.0.4'). If you're able to ping the IP address but not the domain, DNS may be incorrectly configured. You may not have configured the IP addresses of the domain as DNS servers for the virtual network.
+    ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/join-domain-server-manager.png)
 
-- Try flushing the DNS resolver cache on the virtual machine ('ipconfig /flushdns').
+3. **[プロパティ]** セクションで **[ワークグループ]** をクリックします。**[システムのプロパティ]** プロパティ ページが開きます。ドメインに参加するには、**[変更]** をクリックします。
 
-If you get to the dialog box that asks for credentials to join the domain, you do not have connectivity issues.
+    ![システムのプロパティ ページ](./media/active-directory-domain-services-admin-guide/join-domain-system-properties.png)
 
+4. **[ドメイン]** テキスト ボックスで、Azure AD ドメイン サービス管理対象ドメインのドメイン名を指定し、**[OK]** をクリックします。
 
-### <a name="credentials-related-issues"></a>Credentials-related issues
-Refer to the following steps if you're having trouble with credentials and are unable to join the domain.
+    ![参加するドメインの指定](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
 
-- Try using the UPN format to specify credentials. The SAMAccountName for your account may be auto-generated if there are multiple users with the same UPN prefix in your tenant or if your UPN prefix is overly long. Therefore, the SAMAccountName format for your account may be different from what you expect or use in your on-premises domain.
+5. ドメインに参加するために、資格情報を入力するように求められます。**AAD DC 管理者グループに属しているユーザーの資格情報を指定**します。このグループのメンバーだけが、マシンを管理対象のドメインに参加させる権限を有します。
 
-- Try to use the credentials of a user account that belongs to the 'AAD DC Administrators' group to join machines to the managed domain.
+    ![ドメインへの参加の資格情報を指定する](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 
-- Ensure that you have [enabled password synchronization](active-directory-ds-getting-started-password-sync.md) in accordance with the steps outlined in the Getting Started guide.
+6. 次のいずれかの方法で、資格情報を指定できます。
 
-- Ensure that you use the UPN of the user as configured in Azure AD (for example, 'bob@domainservicespreview.onmicrosoft.com') to sign in.
+    - UPN 形式: Azure AD で構成されたユーザー アカウントの UPN サフィックスです。この例では、ユーザー 'bob' の UPN サフィックスは、'bob@domainservicespreview.onmicrosoft.com' です。
 
-- Ensure that you have waited long enough for password synchronization to complete as specified in the Getting Started guide.
+    - SAMAccountName 形式: SAMAccountName 形式でアカウント名を指定することができます。この例では、ユーザー 'bob' は、「CONTOSO100\\bob」を入力する必要があります。複数のユーザーが Azure AD テナントで同じ UPN プレフィックス (例: "bob") を使用している場合は、SAMAccountName 形式を使用してドメインにログインする際に問題が発生することに注意してください。このような場合は、UPN 形式を使用するとドメインに確実にログインすることができます。
 
+7. ドメイン参加が成功すると、ドメインへの歓迎を通知する次のメッセージが表示されます。ドメイン参加操作を完了するには、仮想マシンを再起動します。
 
-## <a name="related-content"></a>Related Content
-
-- [Azure AD Domain Services - Getting Started guide](./active-directory-ds-getting-started.md)
-
-- [Administer an Azure AD Domain Services managed domain](./active-directory-ds-admin-guide-administer-domain.md)
+    ![ドメインへようこそ](./media/active-directory-domain-services-admin-guide/join-domain-done.png)
 
 
+## ドメイン参加のトラブルシューティング
+### 接続に関する問題
+仮想マシンでドメインを検索できない場合は、次のトラブルシューティング手順を参照してください。
 
-<!--HONumber=Oct16_HO2-->
+- ドメイン サービスを有効にしているのと同じ仮想ネットワークに仮想マシンが接続されていることを確認します。そうでない場合、仮想マシンがドメインに接続できず、そのため、ドメインに参加することできません。
+
+- 仮想マシンが別の仮想ネットワークに接続されている場合は、この仮想ネットワークが、ドメイン サービスを有効にした仮想ネットワークに接続されていることを確認します。
+
+- 管理対象ドメインのドメイン名を使用して、ドメインの ping を試行してください (例: "ping contoso100.com")。これを実行できない場合は、Azure AD Domain Services を有効にしたページに表示されているドメインの IP アドレスに対して ping を試行してください (例: "ping 10.0.0.4")。ドメインではなく IP アドレスを ping できた場合は、DNS が正しく構成されていない場合があります。ドメインの IP アドレスを仮想ネットワークの DNS サーバーとして構成していない可能性があります。
+
+- 仮想マシンのDNS リゾルバー キャッシュのフラッシュを試行します ('ipconfig/flushdns')。
+
+ドメインに参加するために資格情報の入力を求めるダイアログ ボックスが表示される場合、接続の問題はありません。
 
 
+### 資格情報に関連した問題
+資格情報で問題があり、ドメインに参加することができない場合は、次の手順を参照してください。
+
+- 'AAD DC 管理者' グループに属しているユーザー アカウントの資格情報を使用していることを確認します。このグループに属していないユーザーは、マシンを管理対象のドメインに参加させることはできません。
+
+- ファースト ステップ ガイドで説明されている手順に従って[パスワード同期が有効になっている](active-directory-ds-getting-started-password-sync.md)ことを確認します。
+
+- サインインするためには、Azure AD で構成されているユーザーの UPN (例: "bob@domainservicespreview.onmicrosoft.com") を使用します。
+
+- ファースト ステップ ガイドで指定されているとおり、パスワード同期が完了するまで十分な時間待機します。
+
+
+## 関連コンテンツ
+
+- [Azure AD ドメイン サービス - 作業開始ガイド](./active-directory-ds-getting-started.md)
+
+- [Azure AD ドメイン サービスで管理されているドメインの管理](./active-directory-ds-admin-guide-administer-domain.md)
+
+<!---HONumber=AcomDC_0907_2016-->

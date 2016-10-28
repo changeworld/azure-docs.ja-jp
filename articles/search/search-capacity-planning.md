@@ -1,127 +1,121 @@
 <properties
-    pageTitle="Scale resource levels for query and indexing workloads in Azure Search | Microsoft Azure"
-    description="Capacity planning in Azure Search is based on combinations of partition and replica computer resources, where each resource is priced in billable search units."
-    services="search"
-    documentationCenter=""
-    authors="HeidiSteen"
-    manager="jhubbard"
-    editor=""
+	pageTitle="Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする |Microsoft Azure"
+	description="Azure Search の容量計画は、パーティションとレプリカのコンピューティング リソースの組み合わせに基づいており、各リソースは課金対象の検索単位で価格設定されます。"
+	services="search"
+	documentationCenter=""
+	authors="HeidiSteen"
+	manager="jhubbard"
+	editor=""
     tags="azure-portal"/>
 
 <tags
-    ms.service="search"
-    ms.devlang="NA"
-    ms.workload="search"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.date="08/29/2016"
-    ms.author="heidist"/>
+	ms.service="search"
+	ms.devlang="NA"
+	ms.workload="search"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.date="08/29/2016"
+	ms.author="heidist"/>
 
+# Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする
 
-# <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Scale resource levels for query and indexing workloads in Azure Search
+[SKU を選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)した後は、必要に応じて、サービス リソースを構成します。
 
-After you [choose a SKU](search-sku-tier.md) and [provision a search service](search-create-service-portal.md), the next step is to optionally configure service resources.
+Azure Search では最初に、1 つのパーティションと 1 つのレプリカで構成される最小限のリソースがサービスに割り当てられます。該当するレベルでサポートされている場合は、コンピューティング リソースを段階的に調整できます。より多くのストレージや IO が必要な場合には、パーティションを増やします。また、より多くのクエリを実行したり、パフォーマンスを向上させたりするには、レプリカを増やします。1 つのサービスに、すべてのワークロード (インデックスおよびクエリ) を処理するための十分なリソースが必要です。複数のサービス間でワークロードを分割することはできません。
 
-In Azure Search, a service is initially allocated a minimal level of resources consisting of one partition and one replica. For tiers that support it, you can incrementally adjust computational resources by increasing partitions if you need more storage and IO, or replicas for larger query volumes or better performance. A single service must have sufficient resources to handle all workloads (indexing and queries). You cannot subdivide workloads among multiple services.
+スケール設定は、[Basic レベル](http://aka.ms/azuresearchbasic)または [Standard レベル](search-limits-quotas-capacity.md)のいずれかで課金対象サービスをプロビジョニングするときに使用できます。課金対象の SKU では、容量は*検索単位* (SU) ごとに購入します。各パーティションとレプリカは 1 SU としてカウントします。上限に達しなければ、使用する SKU 数は少なくなり、課金される金額もそれに応じて減少します。課金は、サービスがプロビジョニングされている間、有効になっています。サービスを一時的に使用しない場合、課金を回避する唯一の方法は、サービスを削除し、後で必要なときに再作成することです。
 
-Scale settings are available when you provision a billable service at either the [Basic tier](http://aka.ms/azuresearchbasic) or one of the [Standard tiers](search-limits-quotas-capacity.md). For billable SKUs, capacity is purchased in increments of *search units* (SU) where each partition and replica counts as one SU apiece. Staying below the maximum limits uses fewer SUs, with a proportionally lower bill. Billing is in effect for as long as the service is provisioned. If you are temporarily not using a service, the only way to avoid billing is by deleting the service, and then recreating it later when you need it.
+レプリカやパーティションの割り当てを増やしたり変更したりする場合は、ポータルの使用をお勧めします。ポータルによって、上限に達しないようにするための利用可能な組み合わせに対して制限が適用されます。
 
-To increase or change the allocation of replicas and partitions, we recommend using the portal. The portal will enforce limits on allowable combinations that stay below maximum limits:
+1. [Azure ポータル](https://portal.azure.com/)にサインインし、Search サービスを選択します。
+2. [設定] で [スケール] ブレードを開き、スライダーを使用して、パーティションとレプリカの数を増減します。
 
-1. Sign in to the [Azure Portal](https://portal.azure.com/) and select the search service.
-2. In Settings, open the Scale blade and use the sliders to increase or decrease the number of partitions and replicas.
+一般的な規則として、検索アプリケーションでは、パーティションよりもレプリカの方が多く必要となります。特に、サービス操作でクエリ ワークロードの比重が高い場合は、その傾向が強まります。その理由については、[高可用性](#HA)に関するセクションで説明します。
 
-As a general rule, search applications need more replicas than partitions, particularly when the service operations are biased towards query workloads. The section on [high availability](#HA) explains why.
+> [AZURE.NOTE] サービスをいったんプロビジョニングした後は、上位の SKU にインプレースでアップグレードすることはできません。新しいレベルで新しい Search サービスを作成し、インデックスを再読み込みする必要があります。サービス プロビジョニングについては、「[ポータルでの Azure Search サービスの作成](search-create-service-portal.md)」を参照してください。
 
-> [AZURE.NOTE] Once a service is provisioned, it cannot be upgraded in place to a higher SKU. You will need to create a new search service at the new tier and reload your indexes. See [Create an Azure Search service in the portal](search-create-service-portal.md) for help with service provisioning.
+## 用語: パーティションとレプリカ
 
-## <a name="terminology:-partitions-and-replicas"></a>Terminology: partitions and replicas
+パーティションとレプリカは、Search サービスを支える主要なリソースです。
 
-Partitions and replicas are the primary resources that back a search service.
+**パーティション**は、読み取り/書き込み操作 (たとえば、インデックスを再構築または更新する場合など) のためにインデックスのストレージと IO を提供します。
 
-**Partitions** provide index storage and IO for read-write operations (for example when rebuilding or refreshing an index).
+**レプリカ**は、主にクエリ操作の負荷分散に使用される Search サービスのインスタンスです。各レプリカが常にインデックスの 1 つのコピーをホストします。12 個のレプリカがある場合は、サービスに各インデックスのコピーが 12 個ずつ読み込まれます。
 
-**Replicas** are instances of the search service, used primarily to load balance query operations. Each replica always hosts one copy of an index. If you have 12 replicas, you will have 12 copies of every index loaded on the service. 
-
-> [AZURE.NOTE] There is no way to directly manipulate or manage which indexes run on a replica. One copy of each index on every replica is part of the service architecture.
+> [AZURE.NOTE] レプリカでどのインデックスが実行されるかを直接操作または管理する方法はありません。すべてのレプリカにある各インデックスの 1 つずつのコピーが、サービスのアーキテクチャを構成します。
 
 <a id="HA"></a>
-## <a name="high-availability"></a>High availability
+## 高可用性
 
-Because it's easy and relatively fast to scale up, we generally recommend that you start with one partition and one or two replicas, and then scale up as query volumes build, up to the maximum replicas and partitions supported by the SKU. For many services at the Basic or S1 tiers, one partition provides sufficient storage and IO (at 15 million documents per partition).
+通常、簡単かつ比較的速くスケールアップできるため、1 個のパーティションと 1 ～ 2 個のレプリカで開始し、クエリ数の増加に合わせてスケールアップすることをお勧めします。SKU によってサポートされるレプリカとパーティションの最大数までそれぞれスケールアップできます。Basic または S1 レベルの多くのサービスについては、1 個のパーティションで十分なストレージと IO が提供されます (パーティションあたり 1,500 万個のドキュメント)。
 
-Query workloads execute primarily on replicas. You most likely require additional replicas if you need more throughput or high availability.
+クエリのワークロードは主にレプリカ上で実行されます。多くの場合は、より高いスループットまたは高可用性のために、レプリカの追加が必要となります。
 
-General recommendations for high availability are:
+高可用性のための一般的な推奨事項は次のとおりです。
 
-- 2 replicas for high availability of read-only workloads (queries)
-- 3 or more replicas for high availability of read-write workloads (queries plus indexing as individual documents are added, updated, or deleted)
+- 読み取り専用ワークロード (クエリ) の高可用性を実現するには 2 つのレプリカ
+- 読み取り/書き込みワークロード (クエリに加え、個々のドキュメントを追加、更新、または削除するときのインデックス作成) の高可用性を実現するには 3 つ以上のレプリカ
 
-Service Level Agreements (SLA) for Azure Search are targeted at query operations and at index updates that consist of adding, updating, or deleting documents.
+Azure Search のサービス レベル アグリーメント (SLA) は、クエリ操作と、ドキュメントの追加、更新、削除から成るインデックスの更新とを対象としています。
 
-**Index availability during a rebuild**
+**再構築中のインデックスの可用性**
 
-High availability for Azure Search pertains to queries and index updates that don't involve rebuilding an index. If the index requires a rebuild, for example if you add or deleting a field, change a data type, or rename a field, you would need to rebuild the index by doing the following: delete the index, recreate the index, and reload the data. 
+Azure Search の高可用性は、クエリのほか、インデックスの再構築を伴わないインデックスの更新に関連しています。フィールドを追加または削除したり、データの種類を変更したり、フィールドの名前を変更したりした場合には、インデックスの再構築が必要になります。そのためには、いったんインデックスを削除した後、インデックスを再作成し、データを再読み込みします。
 
-To maintain index availability during a rebuild, you must have a second copy of the index already in production on the same service (with a different name) or a same-named index on a different service, and then provide redirection or fail over logic in your code.
+再構築中にインデックスの可用性を維持するには、インデックスの第 2 のコピーが (別の名前の) 同じサービスで既に実稼働中であるか、または別のサービスに同じ名前のインデックスを用意したうえで、コードにリダイレクトまたはフェールオーバーのロジックを記述する必要があります。
 
-## <a name="disaster-recovery"></a>Disaster recovery
+## 障害復旧
 
-Currently, there is no built-in mechanism for disaster recovery. Adding partitions or replicas would be the wrong strategy for meeting disaster recovery objectives. The most common approach is to add redundancy at the service level by provisioning a second search service in another region. As with availability during an index rebuild, the redirection or failover logic must come from your code.
+現時点では、障害復旧のための組み込みのメカニズムはありません。追加のパーティションまたはレプリカは、障害復旧の目標を達成する手段として適切ではありません。最も一般的なアプローチでは、別のリージョンにもう 1 つの検索サービスをプロビジョニングすることで、そのサービス レベルに冗長性を追加します。インデックスの再構築中の可用性の場合と同様に、リダイレクトまたはフェールオーバーのロジックをコードに用意する必要があります。
 
-## <a name="increase-query-performance-with-replicas"></a>Increase query performance with replicas
+## レプリカでクエリ パフォーマンスを向上させる
 
-Query latency is an indicator that additional replicas are needed. Generally, a first step towards improving query performance is to add more of this resource. As you add replicas, additional copies of the index are brought online to support bigger query workloads and to load balance the requests over the multiple replicas. 
+クエリの遅延は、追加のレプリカが必要かどうかの指標となります。通常、クエリ パフォーマンスを向上させるには、まずレプリカを追加します。レプリカを追加すると、インデックスの追加のコピーがオンラインになって、より多くのクエリ ワークロードに対応し、複数のレプリカ全体の要求を負荷分散できるようになります。
 
-Note that we cannot provide hard estimates on queries per second (QPS): query performance depends on the complexity of the query and competing workloads. On average, a replica at Basic or S1 SKUs can service about 15 QPS, but your throughput will be somewhat higher or lower depending on query complexity (faceted queries are more complex) and network latency. Also, it's important to recognize that while adding replicas will definitely add scale and performance, the end result is not strictly linear: adding 3 replicas does not guarantee triple throughput. 
+クエリ パフォーマンスは、クエリの複雑さや競合するワークロードに左右されるため、1 秒あたりのクエリ数 (QPS) を正確に提示できません。平均して、Basic または S1 SKU のレプリカでは約 15 QPS を実現できますが、クエリの複雑さ (ファセット クエリはさらに複雑です) やネットワーク待機時間によってはスループットがこれよりいくぶん多く、または少なくなります。また、レプリカを追加するとスケールとパフォーマンスは間違いなく拡張されますが、最終的な結果は厳密に直線的な拡張にはなりません。3 つのレプリカを追加しても、スループットが 3 倍になるとは限りません。
 
-To learn about QPS, including approaches for estimating QPS for your workloads, see [Manage your Search service](search-manage.md).
+ワークロードの QPS を見積もる方法などの、QPS の詳細については、[Search サービスの管理](search-manage.md)に関する記事を参照してください。
 
-## <a name="increase-indexing-performance-with-partitions"></a>Increase indexing performance with partitions
+## パーティションでインデックス作成のパフォーマンスを向上させる
 
-Search applications that require near real-time data refresh will need proportionally more partitions than replicas. Adding partitions spreads read-write operations across a larger number of compute resources. It also gives you more disk space for storing additional indexes and documents.
+ほぼリアルタイムのデータ更新を要求する検索アプリケーションでは、レプリカよりも多くのパーティションが比例して必要になります。パーティションを追加すると、読み取り/書き込み操作がより多くのコンピューティング リソースに分散されます。また、追加のインデックスとドキュメントを格納するためのディスク領域も増加します。
 
-Larger indexes take longer to query. As such, you might find that every incremental increase in partitions requires a smaller but proportional increase in replicas. As noted earlier, the complexity of your queries and query volume will factor into how quickly query execution is turned around.
+インデックスが大きくなると、クエリの実行に時間がかかります。そのため、パーティションで段階的な増加が発生するたびに、レプリカでは小規模であるが比例的な増加が必要となる場合があります。前述のように、クエリの複雑さとボリュームは、クエリの実行が完了するまでの速度の要因となります。
 
-## <a name="basic-tier:-partition-and-replica-combinations"></a>Basic tier: Partition and replica combinations
+## Basic レベル: パーティションとレプリカの組み合わせ
 
-A Basic service can have exactly 1 partition and up to 3 replicas, for a maximum limit of 3 SUs. The only adjustable resource is replicas. As noted earlier, you need a minimum of 2 replicas for high availability on queries.
+Basic サービスは、3 SU の上限に対して厳密に 1 個のパーティションと最大 3 個のレプリカを持つことができます。調整可能なリソースはレプリカだけです。前述のように、クエリの高可用性のためには、少なくとも 2 個のレプリカが必要です。
 
 <a id="chart"></a>
-## <a name="standard-tiers:-partition-and-replica-combinations"></a>Standard tiers: Partition and replica combinations
+## Standard レベル: パーティションとレプリカの組み合わせ
 
-This table shows the search units required to support combinations of replicas and partitions, subject to the 36 search unit (SU) limit (excludes Basic and S3 HD tiers). 
+次の表は、36 検索単位 (SU) の制限のもとで、レプリカとパーティションの組み合わせをサポートするために必要な検索単位を示しています (Basic および S3 HD レベルを除く)。
 
 - |- |- |- |- |- |- |
 ---|----|---|---|---|---|---|
-**12 replicas**|12 SU|24 SU|36 SU|N/A|N/A|N/A|
-**6 replicas**|6 SU|12 SU|18 SU|24 SU|36 SU|N/A|
-**5 replicas**|5 SU|10 SU|15 SU|20 SU|30 SU|N/A|
-**4 replicas**|4 SU|8 SU<|12 SU|16 SU|24 SU|N/|
-**3 replicas**|3 SU|6 SU|9 SU|12 SU|18 SU|36 SU|
-**2 replicas**|2 SU|4 SU|6 SU|8 SU|12 SU|24 SU|
-**1 replica**|1 SU|2 SU|3 SU|4 SU|6 SU|12 SU|
-N/A|**1 Partition**|**2 Partitions**|**3 Partitions**<|**4 Partitions**|**6 Partitions**|**12 Partitions**|
+**12 レプリカ**|12 SU|24 SU|36 SU|該当なし|該当なし|該当なし|
+**6 つのレプリカ**|6 SU|12 SU|18 SU|24 SU|36 SU|該当なし|
+**5 つのレプリカ**|5 SU|10 SU|15 SU|20 SU|30 SU|該当なし|
+**4 つのレプリカ**|4 SU|8 SU<|12 SU|16 SU|24 SU|N/|
+**3 つのレプリカ**|3 SU|6 SU|9 SU|12 SU|18 SU|36 SU|
+**2 つのレプリカ**|2 SU|4 SU|6 SU|8 SU|12 SU|24 SU|
+**1 つのレプリカ**|1 SU|2 SU|3 SU|4 SU|6 SU|12 SU|
+該当なし|**1 個のパーティション**|**2 個のパーティション**|**3 個のパーティション**<|**4 個のパーティション**|**6 個のパーティション**|**12 個のパーティション**|
 
-Search units, pricing, and capacity are explained in detail on the Azure web site. See [Pricing Details](https://azure.microsoft.com/pricing/details/search/) for more information.
+検索単位、価格、および容量の詳細については、Azure Web サイトをご覧ください。詳細については、「[料金の詳細」](https://azure.microsoft.com/pricing/details/search/)をご覧ください。
 
-> [AZURE.NOTE] The number of replicas and partitions must evenly divide into 12 (specifically, 1, 2, 3, 4, 6, 12). This is because Azure Search pre-divides each index into 12 shards so that it can be spread in equal portions across all partitions. For example, if your service has three partitions and you create a new index, each partition will contain 4 shards of the index. How Azure Search shards an index is an implementation detail, subject to change in future release. Although the number is 12 today, you shouldn't expect that number to always be 12 in the future.
+> [AZURE.NOTE] レプリカとパーティションの数は、均等に 12 分割される必要があります (具体的には、1、2、3、4、6、12)。これは、Azure Search では各インデックスがすべてのパーティションに均等に分散されるように 12 のシャードに事前に分割されるためです。たとえば、サービスに 3 つのパーティションがあり、新しいインデックスを作成する場合、各パーティションにはインデックスの 4 つのシャードを含めます。Azure Search でインデックスがどのようにシャードされるかは実装の問題であり、今後のリリースで変更される場合があります。今日 12 個であっても、今後も必ず 12 個になるとは限りません。
 
-## <a name="s3-high-density:-partition-and-replica-combinations"></a>S3 High Density: Partition and replica combinations
+## S3 High Density: パーティションとレプリカの組み合わせ
 
-S3 HD has 1 partition and up to 12 replicas, for a maximum limit of 12 SUs. The only adjustable resource is replicas.
+S3 HD では、12 SU の上限に対して 1 個のパーティションと最大 12 個のレプリカを持つことができます。調整可能なリソースはレプリカだけです。
 
-## <a name="calculate-search-units-for-specific-resourcing-combinations:-r-x-p-=-su"></a>Calculate Search Units for Specific Resourcing Combinations: R X P = SU
+## 特定のリソース割り当ての組み合わせに対応する検索単位数を R X P = SU により計算する
 
-The formula for calculating how many SUs you need is replicas multiplied by partitions. For example, 3 replicas multiplied by 3 partitions is billed as 9 search units.
+必要な SU 数の計算式は、レプリカの数にパーティションの数を掛けたものです。たとえば、3 個のレプリカに 3 個のパーティションを掛けた値は 9 つの検索単位として課金されます。
 
-Both tiers start with one replica and one partition, counted as one search unit (SU). This is the only instance where both a replica and a partition count as one search unit. Each additional  resource, whether it is a replica or a partition, is counted as its own SU.
+両方のレベルは、1 つの検索単位 (SU) としてカウントされる、1 つのレプリカと 1 個のパーティションから始まります。これは、レプリカとパーティションの両方が 1 つの検索単位としてカウントされる唯一の事例です。リソースを追加するごとに、レプリカまたはパーティションのいずれであっても、独自の SU としてカウントされます。
 
-Cost per SU is determined by the tier. Cost per SU is lower for the Basic tier than it is for Standard. Rates for each tier can be found on [Pricing Details](https://azure.microsoft.com/pricing/details/search/).
+SU あたりのコストはレベルによって決定されます。SU あたりのコストは、Standard レベルより Basic レベルの方が安価です。各レベルの価格は、「[Search の価格](https://azure.microsoft.com/pricing/details/search/)」を参照してください。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

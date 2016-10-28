@@ -1,90 +1,89 @@
 <properties 
-    pageTitle="Provision a web app that uses a SQL Database" 
-    description="Use an Azure Resource Manager template to deploy a web app that includes a SQL Database." 
-    services="app-service" 
-    documentationCenter="" 
-    authors="cephalin" 
-    manager="wpickett" 
-    editor=""/>
+	pageTitle="SQL Database を使用する Web アプリをプロビジョニングする" 
+	description="SQL Database を含む Web アプリをデプロイするには、Azure リソース マネージャー テンプレートを使用します。" 
+	services="app-service" 
+	documentationCenter="" 
+	authors="cephalin" 
+	manager="wpickett" 
+	editor=""/>
 
 <tags 
-    ms.service="app-service" 
-    ms.workload="na" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="04/27/2016" 
-    ms.author="cephalin"/>
+	ms.service="app-service" 
+	ms.workload="na" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="04/27/2016" 
+	ms.author="cephalin"/>
 
+# Web アプリと SQL Database をプロビジョニングする
 
-# <a name="provision-a-web-app-with-a-sql-database"></a>Provision a web app with a SQL Database
+このトピックでは、Web アプリと SQL Database をデプロイする Azure リソース マネージャー テンプレートを作成する方法について説明します。さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法について説明します。このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
-In this topic, you will learn how to create an Azure Resource Manager template that deploys a web app and SQL Database. You will learn how to define which resources are deployed and how to define parameters that are specified when the deployment is executed. You can use this template for your own deployments, or customize it to meet your requirements.
+テンプレートの作成の詳細については、「[Authoring Azure Resource Manager Templates (Azure リソース マネージャー テンプレートのオーサリング)](../resource-group-authoring-templates.md)」を参照してください。
 
-For more information about creating templates, see [Authoring Azure Resource Manager Templates](../resource-group-authoring-templates.md).
+アプリのデプロイの詳細については、「[Deploy a complex application predictably in Azure (Azure で複雑なアプリケーションを予測どおりにデプロイする)](app-service-deploy-complex-application-predictably.md)」を参照してください。
 
-For more information about deploying apps, see [Deploy a complex application predictably in Azure](app-service-deploy-complex-application-predictably.md).
+完全なテンプレートについては、「[Web App With SQL Database template (SQL Database を使用する Web アプリ用のテンプレート)](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json)」を参照してください。
 
-For the complete template, see [Web App With SQL Database template](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-sql-database/azuredeploy.json).
+[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
-[AZURE.INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)] 
+## デプロイ対象
 
-## <a name="what-you-will-deploy"></a>What you will deploy
+このテンプレートでは、以下をデプロイします。
 
-In this template, you will deploy:
-
-- a web app
-- SQL Database server
+- Web アプリ
+- SQL Database サーバー
 - SQL Database
-- AutoScale settings
-- Alert rules
+- AutoScale 設定
+- アラート ルール
 - App Insights
 
-To run the deployment automatically, click the following button:
+デプロイメントを自動的に実行するには、次のボタンをクリックします。
 
-[![Deploy to Azure](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
+[![Azure へのデプロイ](./media/app-service-web-arm-with-sql-database-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-sql-database%2Fazuredeploy.json)
 
-## <a name="parameters-to-specify"></a>Parameters to specify
+## 指定するパラメーター
 
 [AZURE.INCLUDE [app-service-web-deploy-web-parameters](../../includes/app-service-web-deploy-web-parameters.md)]
 
-### <a name="administratorlogin"></a>administratorLogin
+### administratorLogin
 
-The account name to use for the database server administrator.
+データベース サーバー管理者で使用するアカウントの名前。
 
     "administratorLogin": {
       "type": "string"
     }
 
-### <a name="administratorloginpassword"></a>administratorLoginPassword
+### administratorLoginPassword
 
-The password to use for the database server administrator.
+データベース サーバー管理者で使用するパスワード。
 
     "administratorLoginPassword": {
       "type": "securestring"
     }
 
-### <a name="databasename"></a>databaseName
+### databaseName
 
-The name of the new database to create.
+作成する新しいデータベースの名前。
 
     "databaseName": {
       "type": "string",
       "defaultValue": "sampledb"
     }
 
-### <a name="collation"></a>collation
+### collation
 
-The database collation to use for governing the proper use of characters.
+文字の適切な使用を制御するために使用するデータベース照合。
 
     "collation": {
       "type": "string",
       "defaultValue": "SQL_Latin1_General_CP1_CI_AS"
     }
 
-### <a name="edition"></a>edition
+### edition
 
-The type of database to create.
+作成するデータベースの種類。
 
     "edition": {
       "type": "string",
@@ -99,18 +98,18 @@ The type of database to create.
       }
     }
 
-### <a name="maxsizebytes"></a>maxSizeBytes
+### maxSizeBytes
 
-The maximum size, in bytes, for the database.
+データベースの最大サイズ (バイト単位)。
 
     "maxSizeBytes": {
       "type": "string",
       "defaultValue": "1073741824"
     }
 
-### <a name="requestedserviceobjectivename"></a>requestedServiceObjectiveName
+### requestedServiceObjectiveName
 
-The name corresponding to the performance level for edition. 
+エディションのパフォーマンス レベルに対応する名前。
 
     "requestedServiceObjectiveName": {
       "type": "string",
@@ -129,9 +128,9 @@ The name corresponding to the performance level for edition.
       }
     }
 
-## <a name="variables-for-names"></a>Variables for names
+## 名前用の変数
 
-This template includes variables that construct names used in the template. The variable values use the **uniqueString** function to generate a name from the resource group id.
+このテンプレートには、テンプレートで使用される名前を作成する変数が含まれています。この変数値は、**uniqueString** 関数を使用してリソース グループ ID から名前を生成します。
 
     "variables": {
         "hostingPlanName": "[concat('hostingplan', uniqueString(resourceGroup().id))]",
@@ -140,11 +139,11 @@ This template includes variables that construct names used in the template. The 
     },
 
 
-## <a name="resources-to-deploy"></a>Resources to deploy
+## デプロイ対象のリソース
 
-### <a name="sql-server-and-database"></a>SQL Server and Database
+### SQL Server と Database
 
-Creates a new SQL Server and database. The name of the server is specified in the **serverName** parameter and the location specified in the **serverLocation** parameter. When creating the new server, you must provide a login name and password for the database server administrator. 
+新しい SQL Server とデータベースを作成します。サーバーの名前を **serverName** パラメーターに、場所を **serverLocation** パラメーターに指定します。新しいサーバーを作成するときは、データベース サーバー管理者のログイン名とパスワードを指定する必要があります。
 
     {
       "name": "[variables('sqlserverName')]",
@@ -196,7 +195,7 @@ Creates a new SQL Server and database. The name of the server is specified in th
 [AZURE.INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 
-### <a name="web-app"></a>Web app
+### Web アプリ
 
     {
       "apiVersion": "2015-08-01",
@@ -233,7 +232,7 @@ Creates a new SQL Server and database. The name of the server is specified in th
     },
 
 
-### <a name="autoscale"></a>AutoScale
+### Autoscale
 
     {
       "apiVersion": "2014-04-01",
@@ -303,7 +302,7 @@ Creates a new SQL Server and database. The name of the server is specified in th
     },
 
 
-### <a name="alert-rules-for-status-codes-403-and-500's,-high-cpu,-and-http-queue-length"></a>Alert rules for status codes 403 and 500's, High CPU, and HTTP Queue Length 
+### ステータス コード 403 と 500 用のアラート ルール、高い CPU 使用率、および HTTP キューの長さ 
 
     {
       "apiVersion": "2014-04-01",
@@ -442,7 +441,7 @@ Creates a new SQL Server and database. The name of the server is specified in th
       }
     },
     
-### <a name="app-insights"></a>App Insights
+### App Insights
 
     {
       "apiVersion": "2014-04-01",
@@ -461,23 +460,19 @@ Creates a new SQL Server and database. The name of the server is specified in th
       }
     }
 
-## <a name="commands-to-run-deployment"></a>Commands to run deployment
+## デプロイを実行するコマンド
 
 [AZURE.INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
-### <a name="powershell"></a>PowerShell
+### PowerShell
 
     New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
-### <a name="azure-cli"></a>Azure CLI
+### Azure CLI
 
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-web-app-sql-database/azuredeploy.json
 
 
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

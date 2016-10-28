@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Overview of Highly Available configurations with Azure VPN Gateways | Microsoft Azure"
-   description="This article provides an overview of highly available configuration options using Azure VPN Gateways."
+   pageTitle="Azure VPN Gateway を使用した高可用性構成の概要 |Microsoft Azure"
+   description="この記事では、Azure VPN Gateway を使用した高可用性構成オプションの概要を説明します。"
    services="vpn-gateway"
    documentationCenter="na"
    authors="yushwang"
@@ -17,86 +17,81 @@
    ms.date="09/24/2016"
    ms.author="yushwang"/>
 
+# 高可用性のクロスプレミス接続および VNet 間接続
 
-# <a name="highly-available-cross-premises-and-vnet-to-vnet-connectivity"></a>Highly Available Cross-Premises and VNet-to-VNet Connectivity
+この記事では、Azure VPN Gateway を使用したクロスプレミス接続と VNet 間接続の高可用性構成オプションの概要を説明します。
 
-This article provides an overview of Highly Available configuration options for your cross-premises and VNet-to-VNet connectivity using Azure VPN gateways.
+## <a name = "activestandby"></a>Azure VPN Gateway の冗長性について
 
-## <a name="<a-name-=-"activestandby"></a>about-azure-vpn-gateway-redundancy"></a><a name = "activestandby"></a>About Azure VPN gateway redundancy
-
-Every Azure VPN gateway consists of two instances in an active-standby configuration. For any planned maintenance or unplanned disruption that happens to the active instance, the standby instance would take over (failover) automatically, and resume the S2S VPN or VNet-to-VNet connections. The switch over will cause a brief interruption. For planned maintenance, the connectivity should be restored within 10 to 15 seconds. For unplanned issues, the connection recovery will be longer, about 1 minute to 1 and a half minutes in the worst case. For P2S VPN client connections to the gateway, the P2S connections will be disconnected and the users will need to reconnect from the client machines.
+すべての Azure VPN Gateway は、アクティブ/スタンバイ構成の 2 つのインスタンスから成ります。アクティブなインスタンスに対して計画的なメンテナンスまたは計画外の中断が発生すると、スタンバイ インスタンスが自動的に引き継ぎ (フェールオーバーし)、S2S VPN または VNet 間接続が再開されます。切り替わる際に、短い中断が発生します。計画的なメンテナンスの場合は、10 ～ 15 秒以内に接続が復元されます。予期しない問題の場合は、接続の復旧にかかる時間は長くなり、約 1 分から最悪の場合は 1 分 30 秒かかります。ゲートウェイへの P2S VPN クライアント接続の場合、P2S 接続が切断されるため、ユーザーがクライアント コンピューターから再接続する必要があります。
 
 ![Active-Standby](./media/vpn-gateway-highlyavailable/active-standby.png)
 
-## <a name="highly-available-cross-premises-connectivity"></a>Highly Available Cross-Premises Connectivity
+## 高可用性のクロスプレミス接続
 
-To provide better availability for your cross premises connections, there are a couple of options available:
+クロスプレミス接続の可用性を向上させるには、いくつかのオプションがあります。
 
-- Multiple on-premises VPN devices
-- Active-active Azure VPN gateway
-- Combination of both
+- 複数のオンプレミスの VPN デバイス
+- アクティブ/アクティブの Azure VPN Gateway
+- 両方の組み合わせ
 
-### <a name="<a-name-=-"activeactiveonprem"></a>multiple-on-premises-vpn-devices"></a><a name = "activeactiveonprem"></a>Multiple on-premises VPN devices
+### <a name = "activeactiveonprem"></a>複数のオンプレミスの VPN デバイス
 
-You can use multiple VPN devices from your on-premises network to connect to your Azure VPN gateway, as shown in the following diagram:
+次の図に示すように、オンプレミス ネットワークの複数の VPN デバイスを使用して、Azure VPN Gateway に接続できます。
 
 ![Multiple On-Premises VPN](./media/vpn-gateway-highlyavailable/multiple-onprem-vpns.png)
 
-This configuration provides multiple active tunnels from the same Azure VPN gateway to your on-premises devices in the same location. There are some requirements and constraints:
+この構成では、同じ Azure VPN Gateway から同じ場所にあるオンプレミスのデバイスへの複数のアクティブなトンネルが提供されます。いくつかの要件と制約があります。
 
-1. You need to create multiple S2S VPN connections from your VPN devices to Azure. When you connect multiple VPN devices from the same on-premises network to Azure, you need to create one local network gateway for each VPN device, and one connection from your Azure VPN gateway to the local network gateway.
+1. VPN デバイスから Azure への S2S VPN 接続を複数作成する必要があります。同じオンプレミス ネットワークから Azure に複数の VPN デバイスを接続する場合、VPN デバイスごとに 1 つのローカル ネットワーク ゲートウェイを作成し、Azure VPN Gateway からローカル ネットワーク ゲートウェイへの接続を 1 つ作成する必要があります。
 
-2. The local network gateways corresponding to your VPN devices must have unique public IP addresses in the "GatewayIpAddress" property.
+2. VPN デバイスに対応するローカル ネットワーク ゲートウェイには、"GatewayIpAddress" プロパティに一意のパブリック IP アドレスが指定されている必要があります。
 
-3. BGP is required for this configuration. Each local network gateway representing a VPN device must have a unique BGP peer IP address specified in the "BgpPeerIpAddress" property.
+3. この構成には BGP が必要です。VPN デバイスを表す各ローカル ネットワーク ゲートウェイには、"BgpPeerIpAddress" プロパティに BGP ピアの一意の IP アドレスが指定されている必要があります。
 
-4. The AddressPrefix property field in each local network gateway must not overlap. You should specify the "BgpPeerIpAddress" in /32 CIDR format in the AddressPrefix field, for example, 10.200.200.254/32.
+4. 各ローカル ネットワーク ゲートウェイの AddressPrefix プロパティ フィールドが重複しないようにする必要があります。AddressPrefix フィールドには、/32 CIDR 形式で "BgpPeerIpAddress" を指定する必要があります (例: 10.200.200.254/32)。
 
-5. You should use BGP to advertise the same prefixes of the same on-premises network prefixes to your Azure VPN gateway, and the traffic will be forwarded through these tunnels simultaneously.
+5. BGP を使用して、同じオンプレミス ネットワーク プレフィックスの同じプレフィックスを Azure VPN Gateway にアドバタイズする必要があります。トラフィックは、同時にこれらのトンネルを介して転送されます。
 
-6. Each connection is counted against the maximum number of tunnels for your Azure VPN gateway, 10 for Basic and Standard SKUs, and 30 for HighPerformance SKU. 
+6. 各接続は、Azure VPN Gateway のトンネルの最大数 (Basic と Standard SKU では 10、HighPerformance SKU では 30) にカウントされます。
 
-In this configuration, the Azure VPN gateway is still in active-standby mode, so the same failover behavior and brief interruption will still happen as described [above](#activestandby). But this setup guards against failures or interruptions on your on-premises network and VPN devices.
+この構成では、Azure VPN Gateway はアクティブ/スタンバイ モードのままです。そのため、[上](#activestandby)で説明したのと同じフェールオーバー動作と短い中断が発生します。ただし、この設定により、オンプレミス ネットワークと VPN デバイスの障害や中断から保護されます。
  
-### <a name="active-active-azure-vpn-gateway"></a>Active-active Azure VPN gateway
+### アクティブ/アクティブの Azure VPN Gateway
 
-You can now create an Azure VPN gateway in an active-active configuration, where both instances of the gateway VMs will establish S2S VPN tunnels to your on-premises VPN device, as shown the following diagram:
+次の図に示すように、ゲートウェイ VM の両方のインスタンスでオンプレミスの VPN デバイスへの S2S VPN トンネルを確立するアクティブ/アクティブ構成の Azure VPN Gateway を作成できます。
 
-![Active-Active](./media/vpn-gateway-highlyavailable/active-active.png)
+![アクティブ/アクティブ](./media/vpn-gateway-highlyavailable/active-active.png)
 
-In this configuration, each Azure gateway instance will have a unique public IP address, and each will establish an IPsec/IKE S2S VPN tunnel to your on-premises VPN device specified in your local network gateway and connection. Note that both VPN tunnels are actually part of the same connection. You will still need to configure your on-premises VPN device to accept or establish two S2S VPN tunnels to those two Azure VPN gateway public IP addresses.
+この構成では、各 Azure ゲートウェイ インスタンスが一意のパブリック IP アドレスを持ち、ローカル ネットワーク ゲートウェイと接続で指定されたオンプレミスの VPN デバイスへの IPsec/IKE S2S VPN トンネルを確立します。両方の VPN トンネルは実際には同じ接続の一部であることに注意してください。この構成でも、これら 2 つの Azure VPN Gateway のパブリック IP アドレスへの 2 つの S2S VPN トンネルを受け入れるか確立するようにオンプレミスの VPN デバイスを構成する必要があります。
 
-Because the Azure gateway instances are in active-active configuration, the traffic from your Azure virtual network to your on-premises network will be routed through both tunnels simultaneously, even if your on-premises VPN device may favor one tunnel over the other. Note though the same TCP or UDP flow will always traverse the same tunnel or path, unless a maintenance event happens on one of the instances.
+Azure ゲートウェイ インスタンスがアクティブ/アクティブ構成であるため、オンプレミスの VPN デバイスで一方のトンネルを優先している場合でも、Azure Virtual Network からオンプレミス ネットワークへのトラフィックは同時に両方のトンネルを介してルーティングされます。いずれかのインスタンスでメンテナンス イベントが発生しない限り、同じ TCP または UDP フローは常に同じトンネルまたはパスを経由することに注意してください。
 
-When a planned maintenance or unplanned event happens to one gateway instance, the IPsec tunnel from that instance to your on-premises VPN device will be disconnected. The corresponding routes on your VPN devices should be removed or withdrawn automatically so that the traffic will be switched over to the other active IPsec tunnel. On the Azure side, the switch over will happen automatically from the affected instance to the active instance.
+1 つのゲートウェイ インスタンスに対して計画的なメンテナンスまたは計画外のイベントが発生すると、そのインスタンスからオンプレミスの VPN デバイスへの IPsec トンネルが切断されます。VPN デバイスの対応するルートは自動的に削除または無効にされ、トラフィックはもう一方のアクティブな IPsec トンネルに切り替えられます。Azure 側では、影響を受けるインスタンスからアクティブ インスタンスに自動的に切り替わります。
 
-### <a name="dual-redundancy:-active-active-vpn-gateways-for-both-azure-and-on-premises-networks"></a>Dual-redundancy: active-active VPN gateways for both Azure and on-premises networks
+### デュアル冗長性: Azure とオンプレミスの両方のネットワークのアクティブ/アクティブ VPN Gateway
 
-The most reliable option is to combine the active-active gateways on both your network and Azure, as shown in the diagram below.
+最も信頼性の高いオプションは、次の図に示すように、ネットワークと Azure の両方でアクティブ/アクティブ ゲートウェイを組み合わせることです。
 
 ![Dual Redundancy](./media/vpn-gateway-highlyavailable/dual-redundancy.png)
 
-Here you create and setup the Azure VPN gateway in an active-active configuration, and create two local network gateways and two connections for your two on-premises VPN devices as described above. The result is a full mesh connectivity of 4 IPsec tunnels between your Azure virtual network and your on-premises network.
+ここでは、アクティブ/アクティブ構成の Azure VPN Gateway を作成および設定し、上に示したように 2 つのオンプレミスの VPN デバイスに対して 2 つのローカル ネットワーク ゲートウェイと 2 つの接続を作成します。その結果、Azure Virtual Network とオンプレミス ネットワークの間に 4 つの IPsec トンネルが存在するフル メッシュ接続になります。
 
-All gateways and tunnels are active from the Azure side, so the traffic will be spread among all 4 tunnels simultaneously, although each TCP or UDP flow will again follow the same tunnel or path from the Azure side. Even though by spreading the traffic, you may see slightly better throughput over the IPsec tunnels, the primary goal of this configuration is for high availability. And due to the statistical nature of the spreading, it is difficult to provide the measurement on how different application traffic conditions will affect the aggregate throughput.
+すべてのゲートウェイとトンネルは、Azure 側からはアクティブです。そのため、トラフィックは 4 つすべてのトンネルで同時に分散されます。ただし、この場合も、各 TCP または UDP フローは Azure 側からは同じトンネルまたはパスを経由します。トラフィックを分散させることで IPsec トンネルよりもわずかにスループットが向上する場合がありますが、この構成の主な目的は高可用性を実現することです。分散の統計的性質により、さまざまなアプリケーションのトラフィック状況による全体のスループットへの影響を測定することが困難になります。
 
-This topology will require two local network gateways and two connections to support the pair of on-premises VPN devices, and BGP is required to allow the two connections to the same on-premises network. These requirements are the same as the [above](#activeactiveonprem). 
+このトポロジでは、オンプレミスの VPN デバイスのペアをサポートするために 2 つのローカル ネットワーク ゲートウェイと 2 つの接続が必要です。また、同じオンプレミス ネットワークへの接続を 2 つ確立するために、BGP が必要です。これらの要件は、[上記](#activeactiveonprem)と同じです。
 
-## <a name="highly-available-vnet-to-vnet-connectivity-through-azure-vpn-gateways"></a>Highly Available VNet-to-VNet Connectivity through Azure VPN Gateways
+## Azure VPN Gateway を介した高可用性の VNet 間接続
 
-The same active-active configuration can also apply to Azure VNet-to-VNet connections. You can create active-active VPN gateways for both virtual networks, and connect them together to form the same full mesh connectivity of 4 tunnels between the two VNets, as shown in the diagram below:
+同じアクティブ/アクティブ構成を Azure VNet 間接続にも適用できます。両方の仮想ネットワークにアクティブ/アクティブ VPN ゲートウェイを作成し、両方を接続して、次の図に示すように、2 つの VNet 間に 4 つのトンネルが存在する同じフル メッシュ接続を構成できます。
 
-![VNet-to-VNet](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
+![VNet 間](./media/vpn-gateway-highlyavailable/vnet-to-vnet.png)
 
-This ensures there are always a pair of tunnels between the two virtual networks for any planned maintenance events, providing even better availability. Even though the same topology for cross-premises connectivity requires two connections, the VNet-to-VNet topology shown above will need only one connection for each gateway. Additionally, BGP is optional unless transit routing over the VNet-to-VNet connection is required.
-
-
-## <a name="next-steps"></a>Next steps
-
-See [Configuring Active-Active VPN Gateways for Cross-Premises and VNet-to-VNet Connections](http://go.microsoft.com/fwlink/?LinkId=828726) for steps to configure active-active cross-premises and VNet-to-VNet connections.
+これにより、すべての計画的なメンテナンス イベントに備えて 2 つの仮想ネットワーク間にトンネルのペアが常に存在し、より高い可用性が実現されます。クロスプレミス接続の同じトポロジには 2 つの接続が必要ですが、前に示した VNet 間トポロジではゲートウェイごとに必要な接続は 1 つだけです。さらに、VNet 間接続経由のトランジット ルーティングが必要でない限り、BGP はオプションです。
 
 
+## 次のステップ
 
-<!--HONumber=Oct16_HO2-->
+アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する手順については、[クロスプレミス接続と VNet 間接続のアクティブ/アクティブ VPN Gateway の構成](http://go.microsoft.com/fwlink/?LinkId=828726)に関するページを参照してください。
 
-
+<!---HONumber=AcomDC_0928_2016-->

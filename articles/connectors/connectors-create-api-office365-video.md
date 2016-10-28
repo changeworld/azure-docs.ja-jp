@@ -1,6 +1,6 @@
 <properties
-pageTitle="Use the Office 365 Video connector in your Logic apps | Microsoft Azure"
-description="Get started using the Office 365 Video connector in your Microsoft Azure App service Logic apps"
+pageTitle="ロジック アプリで Office 365 Video コネクタを使用する | Microsoft Azure"
+description="Microsoft Azure App Service Logic Apps で Office 365 Video コネクタを使用する方法の概要について説明します"
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,218 +17,207 @@ ms.workload="na"
 ms.date="05/18/2016"
 ms.author="deonhe"/>
 
+# Office 365 Video コネクタの使用
+Office 365 ビデオに関する情報の取得、ビデオの一覧の取得などを行うには、Office 365 ビデオに接続します。Office 365 Video コネクタは、次のツールから使用できます。
 
-# <a name="get-started-with-the-office365-video-connector"></a>Get started with the Office365 Video connector
-Connect to Office 365 Video to get information about an Office 365 video, get a list of videos, and more. The Office 365 Video connector can be used from:
+- Logic Apps 
 
-- Logic apps 
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。このコネクタは、以前のスキーマ バージョンではサポートされていません。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. This connector is not supported on any previous schema versions.
+Office 365 ビデオは、次のことを行えます。
 
-With Office 365 Video, you can:
+- Office 365 ビデオから取得したデータに基づいてビジネス フローを構築できます。 
+- ビデオ ポータルの状態の確認、チャネル内にあるすべてのビデオの一覧の取得などのアクションを使用できます。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、Bing Search コネクタを使用して Office 365 ビデオを検索でき、Office 365 Video コネクタを使用してそのビデオに関する情報を取得できます。ビデオが要件を満たしている場合は、Facebook にこのビデオを投稿できます。 
 
-- Build your business flow based on the data you get from Office 365 Video. 
-- Use actions that check the video portal status, get a list of all video in a channel, and more. These actions get a response, and then make the output available for other actions. For example, you can use the Bing Search connector to search for Office 365 videos, and then use the Office 365 video connector to get information about that video. If the video meets your requirements, you can post this video on Facebook. 
+ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
-To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+Office 365 Video コネクタでは、次のアクションを使用できます。トリガーはありません。
 
-The Office 365 Video connector has the following actions available. There are no triggers.
-
-| Triggers | Actions|
+| トリガー | アクション|
 | --- | --- |
-| None | <ul><li>Checks video portal status</li><li>Get all viewable Channels</li><li>Get playback url of the Azure Media Services manifest for a video</li><li>Get the bearer token to get access to decrypt the video</li><li>Gets information about a particular office365 video</li><li>Lists all the office365 videos present in a channel</li></ul>
+| なし | <ul><li>ビデオ ポータルの状態を確認します</li><li>表示可能なすべてのチャネルを取得します</li><li>ビデオの Azure Media Services マニフェストの再生の URL を取得します</li><li>ベアラー トークンを取得して、ビデオを復号化するアクセス権を得ます</li><li>特定の Office 365 ビデオを取得します</li><li>チャネル内にあるすべての Office 365 ビデオを一覧表示します</li></ul>
 
-All connectors support data in JSON and XML formats. 
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-## <a name="create-a-connection-to-office365-video-connector"></a>Create a connection to Office365 Video connector
-When you add this connector to your logic apps, you must sign-in to your Office 365 Video account and allow logic apps to connect to your account.
+## Office 365 Video コネクタへの接続を作成する
+このコネクタをロジック アプリに追加する場合は、Office 365 Video アカウントにサインインして、ロジック アプリでアカウントに接続できるようにする必要があります。
 
->[AZURE.INCLUDE [Steps to create a connection to Office 365 Video](../../includes/connectors-create-api-office365video.md)]
+>[AZURE.INCLUDE [Office 365 Video への接続を作成する手順](../../includes/connectors-create-api-office365video.md)]
 
-After you create the connection, you enter the Office 365 video properties, like the tenant name or channel ID. The **REST API reference** in this topic describes these properties.
+接続を作成したら、テナント名またはチャネル ID など、Office 365 ビデオ プロパティを入力します。これらのプロパティについては、このトピックの **REST API リファレンス**を参照してください。
 
->[AZURE.TIP] You can use this same Office 365 Video connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでも、前述の Office 365 ビデオ接続を使用できます。
 
-## <a name="swagger-rest-api-reference"></a>Swagger REST API reference
-Applies to version: 1.0.
+## Swagger REST API リファレンス
+適用されるバージョン: 1.0。
 
-### <a name="checks-video-portal-status"></a>Checks video portal status 
-Checks the video portal status to see if video services are enabled.  
-```GET: /{tenant}/IsEnabled``` 
+### ビデオ ポータルの状態を確認します 
+ビデオ ポータルの状態で、ビデオ サービスが有効かどうかを確認します。```GET: /{tenant}/IsEnabled```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|tenant|string|yes|path|none|The tenant name for the directory the user is part of|
+|テナント|string|○|path|なし|ユーザーが属するディレクトリのテナント名|
 
 
-#### <a name="response"></a>Response
+#### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|404|Not Found|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|404|見つかりません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
 
-### <a name="get-all-viewable-channels"></a>Get all viewable Channels 
-Gets all the channels the user has viewing access to.  
-```GET: /{tenant}/Channels``` 
+### 表示可能なすべてのチャネルを取得します 
+ユーザーが表示アクセス権を持っているすべてのチャネルを取得します。```GET: /{tenant}/Channels```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|tenant|string|yes|path|none|The tenant name for the directory the user is part of|
+|テナント|string|○|path|なし|ユーザーが属するディレクトリのテナント名|
 
 
-#### <a name="response"></a>Response
+#### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|404|Not Found|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|404|見つかりません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
 
 
-### <a name="lists-all-the-office365-videos-present-in-a-channel"></a>Lists all the office365 videos present in a channel 
-Lists all the office365 videos present in a channel.  
-```GET: /{tenant}/Channels/{channelId}/Videos``` 
+### チャネル内にあるすべての Office 365 ビデオを一覧表示します 
+チャネル内にあるすべての Office 365 ビデオを一覧表示します。```GET: /{tenant}/Channels/{channelId}/Videos```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|tenant|string|yes|path|none|The tenant name for the directory the user is part of|
-|channelId|string|yes|path|none|The channel id from which videos need to be fetched|
+|テナント|string|○|path|なし|ユーザーが属するディレクトリのテナント名|
+|channelId|string|○|path|なし|ビデオを取得するチャネルの ID|
 
 
-#### <a name="response"></a>Response
+#### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|404|Not Found|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|404|見つかりません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
 
 
-### <a name="gets-information-about-a-particular-office365-video"></a>Gets information about a particular office365 video 
-Gets information about a particular office365 video.  
-```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}``` 
+### 特定の Office 365 ビデオの情報を取得します 
+特定の Office 365 ビデオの情報を取得します。```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|tenant|string|yes|path|none|The tenant name for the directory the user is part of|
-|channelId|string|yes|path|none|The channel id|
-|videoId|string|yes|path|none|The video id|
+|テナント|string|○|path|なし|ユーザーが属するディレクトリのテナント名|
+|channelId|string|○|path|なし|チャネル ID|
+|videoId|string|○|path|なし|ビデオ ID|
 
 
-#### <a name="response"></a>Response
+#### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|404|Not Found|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|404|見つかりません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
 
 
-### <a name="get-playback-url-of-the-azure-media-services-manifest-for-a-video"></a>Get playback url of the Azure Media Services manifest for a video 
-Get playback url of the Azure Media Services manifest for a video.  
-```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}/playbackurl``` 
+### ビデオの Azure Media Services マニフェストの再生 URL を取得します 
+ビデオの Azure Media Services マニフェストの再生 URL を取得します。```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}/playbackurl```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|tenant|string|yes|path|none|The tenant name for the directory the user is part of|
-|channelId|string|yes|path|none|The channel id|
-|videoId|string|yes|path|none|The video id|
-|streamingFormatType|string|yes|query|none|Streaming format type. 1 - Smooth Streaming or MPEG-DASH. 0 - HLS Streaming|
+|テナント|string|○|path|なし|ユーザーが属するディレクトリのテナント名|
+|channelId|string|○|path|なし|チャネル ID|
+|videoId|string|○|path|なし|ビデオ ID|
+|streamingFormatType|string|○|query|なし|ストリーミング形式の種類。1 - Smooth Streaming または MPEG-DASH。0 - HLS Streaming|
 
 
-#### <a name="response"></a>Response
+#### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|404|Not Found|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|404|見つかりません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
 
 
-### <a name="get-the-bearer-token-to-get-access-to-decrypt-the-video"></a>Get the bearer token to get access to decrypt the video 
-Get the bearer token to get access to decrypt the video.  
-```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}/token```
+### ベアラー トークンを取得して、ビデオを復号化するアクセス権を得ます 
+ベアラー トークンを取得して、ビデオを復号化するアクセス権を得ます。```GET: /{tenant}/Channels/{channelId}/Videos/{videoId}/token```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|tenant|string|yes|path|none|The tenant name for the directory the user is part of|
-|channelId|string|yes|path|none|The channel id|
-|videoId|string|yes|path|none|The video id|
+|テナント|string|○|path|なし|ユーザーが属するディレクトリのテナント名|
+|channelId|string|○|path|なし|チャネル ID|
+|videoId|string|○|path|なし|ビデオ ID|
 
 
-#### <a name="response"></a>Response
+#### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|200|Operation was successful|
+|200|操作に成功しました|
 |400|BadRequest|
-|401|Unauthorized|
-|404|Not Found|
-|500|Internal Server Error|
-|default|Operation Failed.|
+|401|権限がありません|
+|404|見つかりません|
+|500|内部サーバー エラー|
+|default|操作に失敗しました。|
 
 
-## <a name="object-definitions"></a>Object definitions
+## オブジェクト定義
 
-#### <a name="channel:-channel-class"></a>Channel: Channel class
+#### チャネル: チャネル クラス
 
-| Name | Data Type | Required|
+| 名前 | データ型 | 必須|
 |---|---|---|
-|Id|string|no|
-|Title|string|no|
-|Description|string|no|
+|ID|string|×|
+|タイトル|string|×|
+|説明|string|×|
 
 
-#### <a name="video"></a>Video 
+#### ビデオ 
 
-| Name | Data Type |Required|
+| 名前 | データ型 |必須|
 |---|---|---|
-|Id|string|no|
-|Title|string|no|
-|Description|string|no|
-|CreationDate|string|no|
-|Owner|string|no|
-|ThumbnailUrl|string|no|
-|VideoUrl|string|no|
-|VideoDuration|integer|no|
-|VideoProcessingStatus|integer|no|
-|ViewCount|integer|no|
+|ID|string|×|
+|タイトル|string|×|
+|説明|string|×|
+|CreationDate|string|×|
+|所有者|string|×|
+|ThumbnailUrl|string|×|
+|VideoUrl|string|×|
+|VideoDuration|整数|×|
+|VideoProcessingStatus|整数|×|
+|ViewCount|整数|×|
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0525_2016-->

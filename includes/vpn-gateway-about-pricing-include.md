@@ -1,13 +1,11 @@
-You pay for two things: the hourly compute costs for the virtual network gateway, and the egress data transfer from the virtual network gateway. Pricing information can be found on the [Pricing](https://azure.microsoft.com/pricing/details/vpn-gateway) page.
+料金は 2 つの要素に対して課金されます。1 つは仮想ネットワーク ゲートウェイに対する時間単位のコンピューティング コスト、もう 1 つは仮想ネットワーク ゲートウェイからのエグレス (送信) データ転送のコストです。料金情報については、[価格](https://azure.microsoft.com/pricing/details/vpn-gateway)に関するページをご覧ください。
 
-**Virtual network gateway compute costs**<br>Each virtual network gateway has an hourly compute cost. The price is based on the gateway SKU that you specify when you create a virtual network gateway. The cost is for the gateway itself and is in addition to the data transfer that flows through the gateway.
+**仮想ネットワーク ゲートウェイのコンピューティング コスト**<br>仮想ネットワーク ゲートウェイごとに時間単位のコンピューティング コストが課金されます。料金は、仮想ネットワーク ゲートウェイを作成する際に指定するゲートウェイ SKU に基づいて決定されます。コストは、ゲートウェイ自体にかかる料金と、ゲートウェイを通過するデータ転送にかかる料金を足した額になります。
 
-**Data transfer costs**<br>Data transfer costs are calculated based on egress traffic from the source virtual network gateway.
+**データ転送のコスト**<br>データ転送のコストは、ソース仮想ネットワーク ゲートウェイからのエグレス トラフィックに基づいて計算されます。
 
-- If you are sending traffic to your on-premises VPN device, it will be charged with the Internet egress data transfer rate.
-- If you are sending traffic between virtual networks in different regions, the pricing is based the region.
-- If you are sending traffic only between virtual networks that are in the same region, there are no data costs. Traffic between VNets in the same region is free.
+- オンプレミスの VPN デバイスにトラフィックを送信する場合は、インターネット エグレス データ転送率を使用して課金されます。
+- 異なるリージョンに属する仮想ネットワーク間でトラフィックを送信する場合は、リージョンごとの価格に基づいて課金されます。
+- 同じリージョンに属する仮想ネットワーク間でトラフィックを送信する場合は、データ コストはかかりません。同じリージョン内にある VNet 間のトラフィックは無料です。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

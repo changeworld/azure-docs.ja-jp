@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Cloud business continuity - Restore a deleted database - SQL Database | Microsoft Azure"
-   description="Learn about Point-in-Time Restore, that enables you to roll back an Azure SQL Database to a previous point in time (up to 35 days)."
+   pageTitle="クラウドのビジネス継続性 - 削除済みデータベースの復元 - SQL Database | Microsoft Azure"
+   description="Azure SQL Database を特定の時点 (最長 35 日間) にロール バックすることができる、ポイントインタイム リストアについて説明します。"
    services="sql-database"
    documentationCenter=""
    authors="stevestein"
@@ -16,115 +16,110 @@
    ms.date="08/01/2016"
    ms.author="sstein"/>
 
+# データベースの自動バックアップを使用した Azure SQL Database の復旧
 
-# <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Recover an Azure SQL database using automated database backups
+SQL Database は、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用したデータベース復旧の 3 つのオプションを提供します。サービス主導のバックアップから、[保有期間](sql-database-service-tiers.md)内に次の場所にデータベースを復元できます。
 
-SQL Database provides three options for database recovery using [SQL Database automated backups](sql-database-automated-backups.md). You can restore a database from the service-initiated backups during their [retention period](sql-database-service-tiers.md) to:
+- 保有期間内の特定の時点に復旧された、同じ論理サーバー上の新しいデータベース。
+- 削除済みデータベースの削除時に復旧された、同じ論理サーバー上のデータベース。
+- geo レプリケートされている BLOB ストレージ (RA-GRS) の最新の日次バックアップに復旧された、任意のリージョンの論理サーバー上の新しいデータベース。
 
-- A new database on the same logical server recovered to a specified point in time within the retention period. 
-- A database on the same logical server recovered to the deletion time for a deleted database.
-- A new database on any logical server in any region recovered to the most recent daily backups in geo-replicated blob storage (RA-GRS).
+また、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、現在の SQL Database とトランザクション上の一貫性がある、任意のリージョンの論理サーバー上に[データベースのコピー](sql-database-copy.md)を作成することもできます。データベースのコピー、および [BACPAC ファイルへのエクスポート](sql-database-export.md)を使用して、トランザクション上の一貫性があるデータベースのコピーを保有期間を超えた長期間のストレージ用にアーカイブしたり、データベースのコピーをオンプレミスまたは SQL Server の Azure VM インスタンスに転送できます。
 
-You can also use [SQL Database automated backups](sql-database-automated-backups.md) to create a [database copy](sql-database-copy.md) on any logical server in any region that is transactionally consistent with the current SQL Database. You can use database copy and [export to a BACPAC](sql-database-export.md) to archive a transactionally consistent copy of a database for long-term storage beyond your retention period, or to transfer a copy of your database to an on-premises or Azure VM instance of SQL Server.
+## 復旧時間
 
-## <a name="recovery-time"></a>Recovery time
-
-The recovery time to restore a database using automated database backups is impacted by a number of factors: 
- - The size of the database
- - The performance level of the database
- - The number of transaction logs involved
- - The amount of activity that needs to be replayed to recover to the restore point
- - The network bandwidth if the restore is to a different region 
- - The number of concurrent restore requests being processed in the target region. 
+データベースの自動バックアップを使用してデータベースを復元する復旧時間は、さまざまな要因によって影響を受けます。
+ - データベースのサイズ
+ - データベースのパフォーマンス レベル
+ - 関連するトランザクション ログ数
+ - 復元時点に復旧するために再生の必要があるアクティビティ量
+ - 別のリージョンへの復元の場合は、ネットワーク帯域幅
+ - ターゲット リージョンで処理される、同時実行される復元要求の数
  
- For a very large and/or active database the restore may take several hours. If there is prolonged outage in a region, it is possible that there will be large numbers of Geo-Restore requests being processed by other regions. If there are a large number of requests this may increase the recovery time for databases in that region. The majority of database restores complete within 12 hours.
+ 大規模なデータベースや、アクティビティ数が多いデータベースの場合、復元に数時間かかることがあります。あるリージョンでの停止が長引いた場合、多数の geo リストア要求が他のリージョンによって処理されることがあります。多数の要求がある場合、そのリージョンでのデータベースの復旧時間が長くなる可能性があります。データベースの復元のほとんどは、12 時間以内に完了します。
 
- There is no built-in functionality to do bulk restore. The [Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) script is an example of one way of accomplishing this task.
+ 一括復元を実行する機能は組み込まれていません。このタスクを達成する 1 つの方法として、たとえば、[Azure SQL Database: Full Server Recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) スクリプトがあります。
 
-> [AZURE.IMPORTANT] To recover using automated backups, you must be a member of the SQL Server Contributor role in the subscription or be the subscription owner. You can recover using the Azure portal, PowerShell or the REST API. You cannot use Transact-SQL. 
+> [AZURE.IMPORTANT] 自動バックアップを使って復旧するには、サブスクリプションにおける SQL Server の共同作成者ロールのメンバーまたはサブスクリプション所有者である必要があります。復旧には、Azure ポータル、PowerShell、または REST API を使用できます。Transact-SQL は使用できません。
 
-## <a name="point-in-time-restore"></a>Point-In-Time Restore
+## ポイントインタイム リストア
 
-Point-In-Time Restore allows you to restore an existing database as a new database to an earlier point in time on the same logical server using [SQL Database automated backups](sql-database-automated-backups.md). You cannot overwrite the existing database. You can restore to an earlier point in time using the [Azure portal](sql-database-point-in-time-restore-portal.md), [PowerShell](sql-database-point-in-time-restore-powershell.md) or the [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx).
-
-> [AZURE.SELECTOR]
-- [Point-In-Time Restore: Azure portal](sql-database-point-in-time-restore-portal.md)
-- [Point-In-Time Restore: PowerShell](sql-database-point-in-time-restore-powershell.md)
-
-The database can be restored to any performance level or elastic pool. You need to ensure you have a sufficient DTU quota on the logical server or elastic pool. Keep in mind that the restore creates a new database and that the service tier and performance level of the restored database may be different than the current state of the live database. Once complete, the restored database is a normal fully accessible online database charged at normal rates based on its service tier and performance level. You do not incur charges until the database restore is complete.
-
-You generally restore a database to an earler point for recovery purposes. When doing so, you can treat the restored database as a replacement for the original database or use it to retrieve data from and then update the original database. 
-
-- ***Database replacement:*** If the restored database is intended as a replacement for the original database, you should verify the performance level and/or service tier are appropriate and scale the database if necessary. You can rename the original database and then give the restored database the original name using the ALTER DATABASE command in T-SQL. 
-- ***Data recovery:*** If you plan to retrieve data from the restored database to recover from a user or application error, you will separately need to write and execute whatever data recovery scripts you need to extract data from the restored database to the original database. Although the restore operation may take a long time to complete, the restoring database will be visible in the database list throughout. If you delete the database during the restore, it will cancel the operation and you will not be charged for the database that did not complete the restore. 
-
-For detailed information about using Point-in-Time Restore to recover from user and application errors, see [Point-in-Time Restore](sql-database-recovery-using-backups.md#point-in-time-restore)
-
-## <a name="deleted-database-restore"></a>Deleted database restore
-
-Deleted database restore allows you to restore a deleted database to the deletion time for a deleted database on the same logical server using [SQL Database automated backups](sql-database-automated-backups.md). 
-
-> [AZURE.IMPORTANT] If you delete an Azure SQL Database server instance, all of its databases are also deleted and cannot be recovered. There is no support for restoring a deleted server at this time.
-
-You can use the same or a new database name for the restored database. You can use the [Azure portal](sql-database-restore-deleted-database-portal.md), [PowerShell](sql-database-restore-deleted-database-powershell.md) or the [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx). 
+ポイントインタイム リストアでは、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用し、既存のデータベースを、以前の時点の内容で同じ論理サーバー上に新しいデータベースとして復元できます。既存のデータベースを上書きすることはできません。以前の時点への復元には、[Azure ポータル](sql-database-point-in-time-restore-portal.md)、[PowerShell](sql-database-point-in-time-restore-powershell.md)、または [REST API](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用できます。
 
 > [AZURE.SELECTOR]
-- [Deleted database restore: Azure portal](sql-database-restore-deleted-database-portal.md)
-- [Deleted database restore: PowerShell](sql-database-restore-deleted-database-powershell.md)
+- [ポイントインタイム リストア: Azure ポータル](sql-database-point-in-time-restore-portal.md)
+- [ポイントインタイム リストア: PowerShell](sql-database-point-in-time-restore-powershell.md)
 
-## <a name="geo-restore"></a>Geo-Restore
+データベースは、任意のパフォーマンス レベルまたはエラスティック プールに復元できます。論理サーバーまたはエラスティック プールに、十分な DTU クォータがあることを確認する必要があります。復元によって新しいデータベースが作成される点や、復元されるデータベースのサービス レベルとパフォーマンス レベルが、現在実行中のデータベースの状態とは異なる点を考慮してください。復元が完了すると、復元されたデータベースは、通常の完全にアクセス可能なオンライン データベースになり、サービス レベルとパフォーマンス レベルに基づいて通常料金が発生します。データベースの復元が完了するまで、料金は発生しません。
 
-Geo-Restore allows you to restore a SQL database on any server in any Azure region from the most recent geo-replicated [automated daily backup](sql-database-automated-backups.md). Geo-Restore uses a geo-redundant backup as its source and can be used to recover a database even if the database or datacenter is inaccessible due to an outage. You can use the [Azure portal](sql-database-geo-restore-portal.md), [PowerShell](sql-database-geo-restore-powershell.md), or the [REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) 
+通常、以前の時点へのデータベースの復元は、復旧の目的で行います。その場合、復元されたデータベースを元のデータベースの代わりとして扱うか、データを取得して元のデータベースの更新に使用できます。
+
+- ***"データベースの置換":*** 復元されたデータベースを元のデータベースの代わりに使用する場合は、パフォーマンス レベルやサービス レベルが適切であることを確認し、必要に応じてデータベースをスケールしてください。T-SQL の ALTER DATABASE コマンドを使用して、元のデータベース名を変更し、復元したデータベースに元の名前を付けます。
+- ***"データの復旧":*** ユーザー エラーまたはアプリケーション エラーからの復旧のために、復元されたデータベースからデータを取得する場合は、復元されたデータベースから元のデータベースにデータを抽出するのに必要なデータ復旧のスクリプトを、個別に書き込み、実行する必要があります。復元操作が完了するまでに時間がかかる可能性がありますが、データベース一覧全体で復元しているデータベースが表示されるようになります。復元中にデータベースを削除すると、操作は取り消され、復元が完了していないデータベースの料金はかかりません。
+
+ユーザー エラーおよびアプリケーション エラーからの復旧にポイントインタイム リストアを使用する詳細については、「[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)」を参照してください。
+
+## 削除されたデータベースの復元
+
+削除されたデータベースの復元では、[SQL Database 自動バックアップ](sql-database-automated-backups.md)を使用して、削除済みデータベースを、削除された時点の内容で同じ論理サーバー上に復元できます。
+
+> [AZURE.IMPORTANT] Azure SQL Database サーバー インスタンスを削除すると、そのデータベースもすべて削除されます。これを回復することはできません。現時点では、削除されたサーバーを復元するためのサポートはありません。
+
+復元されたデータベースには、同じ名前または新しいデータベース名を使用できます。[Azure ポータル](sql-database-restore-deleted-database-portal.md)、[PowerShell](sql-database-restore-deleted-database-powershell.md)、または [REST (createMode=Restore)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することができます。
 
 > [AZURE.SELECTOR]
-- [Geo-Restore: Azure portal](sql-database-geo-restore-portal.md)
-- [Geo-Restore: PowerShell](sql-database-geo-restore-powershell.md)
+- [削除されたデータベースの復元: Azure ポータル](sql-database-restore-deleted-database-portal.md)
+- [削除されたデータベースの復元: PowerShell](sql-database-restore-deleted-database-powershell.md)
 
-Geo-Restore is the default recovery option when your database is unavailable because of an incident in the region where the database is hosted. If a large scale incident in a region results in unavailability of your database application, you can use Geo-Restore to restore a database from the most recent backup to a server in any other region. All backups are geo-replicated and can have a delay between when the backup is taken and geo-replicated to the Azure blob in a different region. This delay can be up to an hour so in the event of a disaster there can be up to 1 hour data loss, i.e., RPO of up to 1 hour. The following shows restore of the database from the last daily backup.
+## 地理リストア
 
-![geo-restore](./media/sql-database-geo-restore/geo-restore-2.png)
+geo リストアでは、geo レプリケートされた最新の[毎日の自動バックアップ](sql-database-automated-backups.md)から任意の Azure リージョン内の任意のサーバーで SQL データベースを復元することができます。geo リストアではソースとして geo 冗長バックアップが使用され、障害によってデータベースまたはデータセンターにアクセスできない場合でも、geo リストアを使用してデータベースを復旧できます。[Azure ポータル](sql-database-geo-restore-portal.md)、[PowerShell](sql-database-geo-restore-powershell.md)、または [REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx) を使用することができます。
 
-For detailed information about using Geo-Restore to recover from an outage, see [Recover from an outage](sql-database-disaster-recovery.md)
+> [AZURE.SELECTOR]
+- [geo リストア: Azure ポータル](sql-database-geo-restore-portal.md)
+- [geo リストア: PowerShell](sql-database-geo-restore-powershell.md)
 
-> [AZURE.IMPORTANT] While Geo-Restore is available with all service tiers, it is the most basic of the disaster recovery solutions available in SQL Database with the longest RPO and Estimate Recovery Time (ERT). For Basic databases with maximum size of 2 GB Geo-Restore provides a reasonable DR solution with an ERT of 12 hours. For larger Standard or Premium databases, if significantly shorter recovery times are desired, or to reduce the likelihood of data loss you should consider using Active Geo-Replication. Active Geo-Replication offers a much lower RPO and ERT as it only requires you initiate a failover to a continuously replicated secondary. For details, see [Active Geo-Replication](sql-database-geo-replication-overview.md).
+geo リストアは、データベースがホストされているリージョンでのインシデントが原因でデータベースが利用できない場合の既定の復旧オプションです。リージョン内の大規模なインシデントにより、データベース アプリケーションが使用できなくなった場合、geo リストアを使用して、最新のバックアップから他の任意のリージョン内のサーバーにデータベースを復元できます。すべてのバックアップは geo レプリケートされ、バックアップが作成されてから異なるリージョンの Azure BLOB に geo レプリケートされるまでの間には、遅延がある場合があります。この遅延は最大 1 時間なので、障害発生時には、最大 1 時間分のデータが損失する可能性があります。つまり、RPO は最大 1 時間です。次に示すのは、最後の日次バックアップからのデータベースの復元です。
 
-## <a name="programmatically-performing-recovery-using-automated-backups"></a>Programmatically performing recovery using automated backups
+![geo リストア](./media/sql-database-geo-restore/geo-restore-2.png)
 
-As discussed above, in addiition to the Azure portal, database recovery can be performed programmically using Azure PowerShell and the REST API. The tables below describe the set of commands available.
+geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](sql-database-disaster-recovery.md)に関する記事を参照してください。
 
-### <a name="powershell"></a>PowerShell
+> [AZURE.IMPORTANT] geo リストアはすべてのサービス階層で使用できますが、RPO と推定復旧時間 (ERT) が最も長い SQL Database で使用できる障害復旧ソリューションが最も基本です。最大サイズが 2 GB の Basic データベースでは、geo リストアは ERT が 12 時間である妥当な障害復旧ソリューションを提供します。さらに大きい Standard または Premium データベースでは、大幅に短い復旧間隔が必要な場合、またはデータ損失の可能性を下げる場合は、アクティブ geo レプリケーションの使用を検討する必要があります。アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。詳細については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
 
-|Cmdlet|Description|
+## 自動バックアップを使用したプログラム実行の復旧
+
+前に説明したように、データベースの復旧は、Azure ポータルのほかに、Azure PowerShell および REST API を使用してプログラムで実行できます。以下の表では、使用できるコマンド セットについて説明します。
+
+### PowerShell
+
+|コマンドレット|説明|
 |------|-----------|
-|[Get-AzureRmSqlDatabase](https://msdn.microsoft.com/en-us/library/azure/mt603648.aspx)|Gets one or more databases.|
-|[Get-AzureRMSqlDeletedDatabaseBackup](https://msdn.microsoft.com/en-us/library/azure/mt693387.aspx)|Gets a deleted database that you can restore.|
-|[Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx)|Gets a geo-redundant backup of a database.|
-|[Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx)|Restores a SQL database.|
+|[Get-AzureRmSqlDatabase](https://msdn.microsoft.com/ja-JP/library/azure/mt603648.aspx)|1 つまたは複数のデータベースを取得します。|
+|[Get-AzureRMSqlDeletedDatabaseBackup](https://msdn.microsoft.com/ja-JP/library/azure/mt693387.aspx)|復元する削除済みデータベースを取得します。|
+|[Get-AzureRmSqlDatabaseGeoBackup](https://msdn.microsoft.com/library/azure/mt693388.aspx)|データベースの geo 冗長バックアップを取得します。|
+|[Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx)|SQL Database を復元します。|
 ||||
 
-### <a name="rest-api"></a>REST API
+### REST API
 
-|API|Description|
+|API|説明|
 |---|-----------|
-|[REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|Restores a database|
-|[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|Returns the status during a restore operation|
+|[REST (createMode=Recovery)](https://msdn.microsoft.com/library/azure/mt163685.aspx)|データベースを復元します|
+|[Get Create or Update Database Status](https://msdn.microsoft.com/library/azure/mt643934.aspx)|復元操作中にステータスを返します|
 ||||
 
 
 
-## <a name="summary"></a>Summary
+## 概要
 
-Automatic backups protect your databases from user and application errors, accidental database deletion, and prolonged outages. This zero-cost zero-admin solution is available with all SQL databases. 
+自動バックアップは、ユーザー エラーやアプリケーション エラー、偶発的なデータベースの削除、および長期間にわたる障害からデータベースを保護します。このゼロ コスト、管理作業ゼロのソリューションは、すべての SQL Database で使用できます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
-- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
-- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
-- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md)
+- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

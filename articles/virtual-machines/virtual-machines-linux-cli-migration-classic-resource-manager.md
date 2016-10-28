@@ -1,166 +1,161 @@
 <properties
-    pageTitle="Migrate IaaS resources from classic to Azure Resource Manager by using Azure CLI | Microsoft Azure"
-    description="This article walks through the platform-supported migration of resources from classic to Azure Resource Manager by using Azure CLI"
-    services="virtual-machines-linux"
-    documentationCenter=""
-    authors="cynthn"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する | Microsoft Azure"
+	description="この記事では、Azure CLI を使用した、プラットフォームでサポートされているクラシックから Azure Resource Manager へのリソースの移行について説明します。"
+	services="virtual-machines-linux"
+	documentationCenter=""
+	authors="cynthn"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-linux"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-linux"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/19/2016"
-    ms.author="cynthn"/>
+	ms.service="virtual-machines-linux"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-linux"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/19/2016"
+	ms.author="cynthn"/>
 
+# Azure CLI を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 
-# <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-cli"></a>Migrate IaaS resources from classic to Azure Resource Manager by using Azure CLI
+以下の手順では、Azure コマンド ライン インターフェイス (CLI) コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。この記事では、[Azure CLI](../xplat-cli-install.md) が必要です。
 
-These steps show you how to use Azure command-line interface (CLI) commands to migrate infrastructure as a service (IaaS) resources from the classic deployment model to the Azure Resource Manager deployment model. The article requires the [Azure CLI](../xplat-cli-install.md).
+>[AZURE.NOTE] ここで説明するすべての操作がべき等です。サポートされていない機能や構成エラー以外の問題が発生した場合は、準備、中止、またはコミット操作を再試行することをお勧めします。これによりプラットフォームでアクションが再試行されます。
 
->[AZURE.NOTE] All the operations described here are idempotent. If you have a problem other than an unsupported feature or a configuration error, we recommend that you retry the prepare, abort, or commit operation. The platform will then try the action again.
+## 手順 1. 移行を準備する
 
-## <a name="step-1:-prepare-for-migration"></a>Step 1: Prepare for migration
+ここでは、クラシックから Resource Manager への IaaS リソースの移行を評価するときに推奨できるベスト プラクティスをいくつか紹介します。
 
-Here are a few best practices that we recommend as you evaluate migrating IaaS resources from classic to Resource Manager:
+- [サポートされていない構成または機能の一覧](virtual-machines-windows-migration-classic-resource-manager.md)をご確認ください。サポートされていない構成または機能を使用する仮想マシンがある場合、機能または構成のサポートが発表されるまで待つことをお勧めします。または、必要に応じて、その機能を削除するか、その構成を外して、移行を可能にすることもできます。
+-	インフラストラクチャとアプリケーションをデプロイする自動化スクリプトを今お持ちの場合は、これらのスクリプトを移行に使用して、同様のテスト設定を作成してみてください。または、Azure ポータルを使用してサンプル環境をセットアップすることもできます。
 
-- Read through the [list of unsupported configurations or features](virtual-machines-windows-migration-classic-resource-manager.md). If you have virtual machines that use unsupported configurations or features, we recommend that you wait for the feature/configuration support to be announced. Alternatively, you can remove that feature or move out of that configuration to enable migration if it suits your needs.
--   If you have automated scripts that deploy your infrastructure and applications today, try to create a similar test setup by using those scripts for migration. Alternatively, you can set up sample environments by using the Azure portal.
+## 手順 2. サブスクリプションを設定し、プロバイダーを登録する
 
-## <a name="step-2:-set-your-subscription-and-register-the-provider"></a>Step 2: Set your subscription and register the provider
+移行のシナリオの場合、クラシックと Resource Manager の両方に合わせて環境をセットアップする必要があります。[Azure CLI をインストール](../xplat-cli-install.md)し、[サブスクリプションを選択](../xplat-cli-connect.md)します。
 
-For migration scenarios, you need to set up your environment for both classic and Resource Manager. [Install Azure CLI](../xplat-cli-install.md) and [select your subscription](../xplat-cli-connect.md).
+アカウントにサインインします。
+	
+	azure login
 
-Sign-in to your account.
-    
-    azure login
+次のコマンドを使用して Azure サブスクリプションを選択します。
 
-Select the Azure subscription by using the following command.
+	azure account set "<azure-subscription-name>"
 
-    azure account set "<azure-subscription-name>"
+>[AZURE.NOTE] 登録は 1 回限りの手順ですが、移行を試みる前に実行する必要があります。登録を行わないと、次のエラー メッセージが表示されます
 
->[AZURE.NOTE] Registration is a one time step but it needs to be done once before attempting migration. Without registering you'll see the following error message 
+>	*BadRequest : Subscription is not registered for migration.* 
 
->   *BadRequest : Subscription is not registered for migration.* 
+移行リソース プロバイダーに登録するには、次のコマンドを使用します。次のコマンドは、場合によってはタイムアウトになるため注意してください。ただし、登録は成功します。
 
-Register with the migration resource provider by using the following command. Note that in some cases, this command times out. However, the registration will be successful.
+	azure provider register Microsoft.ClassicInfrastructureMigrate
 
-    azure provider register Microsoft.ClassicInfrastructureMigrate
+登録が完了するまで 5 分間お待ちください。承認の状態を確認するには、次のコマンドを使用します。RegistrationState が `Registered` であることを確認してから続行してください。
 
-Please wait five minutes for the registration to finish. You can check the status of the approval by using the following command. Make sure that RegistrationState is `Registered` before you proceed.
+	azure provider show Microsoft.ClassicInfrastructureMigrate
 
-    azure provider show Microsoft.ClassicInfrastructureMigrate
+次に、CLI を `asm` モードに切り替えます。
 
-Now switch CLI to the `asm` mode.
+	azure config mode asm
 
-    azure config mode asm
+## 手順 3. 現在のデプロイメントまたは VNET の Azure リージョンで Azure Resource Manager 仮想マシンのコア数が十分にあることを確認する
 
-## <a name="step-3:-make-sure-you-have-enough-azure-resource-manager-virtual-machine-cores-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Step 3: Make sure you have enough Azure Resource Manager Virtual Machine cores in the Azure region of your current deployment or VNET
-
-For this step you'll need to switch to `arm` mode. Do this with the following command.
+この手順では、`arm` モードに切り替える必要があります。これを行うには、次のコマンドを使用します。
 
 ```
 azure config mode arm
 ```
 
-You can use the following CLI command to check the current amount of cores you have in Azure Resource Manager. To learn more about core quotas, see [Limits and the Azure Resource Manager](../articles/azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)
+次の CLI コマンドを使用すると、Azure Resource Manager での現在のコア数を確認できます。コア クォータの詳細については、「[制限と Azure Resource Manager](../articles/azure-subscription-service-limits.md#limits-and-the-azure-resource-manager)」をご覧ください。
 
 ```
 azure vm list-usage -l "<Your VNET or Deployment's Azure region"
 ```
 
-Once you're done verifying this step, you can switch back to `asm` mode.
+確認が終わったら、`asm` モードに切り替えることができます。
 
-    azure config mode asm
-
-
-## <a name="step-4:-option-1---migrate-virtual-machines-in-a-cloud-service"></a>Step 4: Option 1 - Migrate virtual machines in a cloud service 
-
-Get the list of cloud services by using the following command, and then pick the cloud service that you want to migrate. Note that if the VMs in the cloud service are in a virtual network or if they have web/worker roles, you will get an error message.
-
-    azure service list
-
-Run the following command to get the deployment name for the cloud service from the verbose output. In most cases, the deployment name is the same as the cloud service name.
-
-    azure service show <serviceName> -vv
-
-Prepare the virtual machines in the cloud service for migration. You have two options to choose from.
-
-If you want to migrate the VMs to a platform-created virtual network, use the following command.
-
-    azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
-
-If you want to migrate to an existing virtual network in the Resource Manager deployment model, use the following command.
-
-    azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> subnetName <vnetName>
-
-After the prepare operation is successful, you can look through the verbose output to get the migration state of the VMs and ensure that they are in the `Prepared` state.
-
-    azure vm show <vmName> -vv
-
-Check the configuration for the prepared resources by using either CLI or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command.
-
-    azure service deployment abort-migration <serviceName> <deploymentName>
-
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command.
-
-    azure service deployment commit-migration <serviceName> <deploymentName>
+	azure config mode asm
 
 
-    
-## <a name="step-4:-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Step 4: Option 2 -  Migrate virtual machines in a virtual network
+## 手順 4. オプション 1 - クラウド サービスの仮想マシンを移行する 
 
-Pick the virtual network that you want to migrate. Note that if the virtual network contains web/worker roles or VMs with unsupported configurations, you will get a validation error message.
+次のコマンドを使用してクラウド サービスの一覧を取得し、移行するクラウド サービスを選択します。クラウド サービスの VM が仮想ネットワーク内にある場合、または Web/worker ロールを持つ場合は、エラー メッセージが返されます。
 
-Get all the virtual networks in the subscription by using the following command.
+	azure service list
 
-    azure network vnet list
-    
-The output will look something like this:
+次のコマンドを実行して、詳細出力からクラウド サービスのデプロイ名を取得します。ほとんどの場合、デプロイ名はクラウド サービス名と同じです。
 
-![Screenshot of the command line with the entire virtual network name highlighted.](./media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
+	azure service show <serviceName> -vv
 
-In the above example, the **virtualNetworkName** is the entire name **"Group classicubuntu16 classicubuntu16"**.
+移行に合わせてクラウド サービスの仮想マシンを準備します。2 つのオプションから選択できます。
 
-Prepare the virtual network of your choice for migration by using the following command.
+プラットフォームで作成した仮想ネットワークに VM を移行する場合は、次のコマンドを使用します。
 
-    azure network vnet prepare-migration <virtualNetworkName>
+	azure service deployment prepare-migration <serviceName> <deploymentName> new "" "" ""
 
-Check the configuration for the prepared virtual machines by using either CLI or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command.
+Resource Manager デプロイメント モデルの既存の仮想ネットワークに移行する場合は、次のコマンドを使用します。
 
-    azure network vnet abort-migration <virtualNetworkName>
+	azure service deployment prepare-migration <serviceName> <deploymentName> existing <destinationVNETResourceGroupName> subnetName <vnetName>
 
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command.
+準備操作が正常に完了したら、詳細出力で VM の移行状態を調べ、VM が `Prepared` 状態であることを確認します。
 
-    azure network vnet commit-migration <virtualNetworkName>
+	azure vm show <vmName> -vv
 
-## <a name="step-5:-migrate-a-storage-account"></a>Step 5: Migrate a storage account
+CLI または Azure ポータルを使用して、準備したリソースの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
 
-Once you're done migrating the virtual machines, we recommend you migrate the storage account.
+	azure service deployment abort-migration <serviceName> <deploymentName>
 
-Prepare the storage account for migration by using the following command
+準備した構成が正しい場合は、次に進み、次のコマンドを使用してリソースをコミットできます。
 
-    azure storage account prepare-migration <storageAccountName>
-
-Check the configuration for the prepared storage account by using either CLI or the Azure portal. If you are not ready for migration and you want to go back to the old state, use the following command.
-
-    azure storage account abort-migration <storageAccountName>
-
-If the prepared configuration looks good, you can move forward and commit the resources by using the following command.
-
-    azure storage account commit-migration <storageAccountName>
-
-## <a name="next-steps"></a>Next steps
-
-- [Platform-supported migration of IaaS resources from classic to Resource Manager](virtual-machines-windows-migration-classic-resource-manager.md)
-- [Technical deep dive on platform-supported migration from classic to Resource Manager](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+	azure service deployment commit-migration <serviceName> <deploymentName>
 
 
+	
+## 手順 4. オプション 2 - 仮想ネットワーク内の仮想マシンを移行する
 
-<!--HONumber=Oct16_HO2-->
+移行する仮想ネットワークを選択します。仮想ネットワークに Web/worker ロールが含まれる場合、またはサポートされない構成の VM が含まれる場合は、検証エラー メッセージが返されます。
 
+次のコマンドを使用して、サブスクリプションのすべての仮想ネットワークを取得します。
 
+	azure network vnet list
+	
+出力は次のようになります。
+
+![仮想ネットワークの名前全体が強調表示されているコマンド ラインのスクリーン ショット。](./media/virtual-machines-linux-cli-migration-classic-resource-manager/vnet.png)
+
+上の例では、**"Group classicubuntu16 classicubuntu16"** 全体が **virtualNetworkName** です。
+
+次のコマンドを使用して、移行対象の仮想ネットワークを準備します。
+
+	azure network vnet prepare-migration <virtualNetworkName>
+
+CLI または Azure ポータルを使用して、準備した仮想マシンの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
+
+	azure network vnet abort-migration <virtualNetworkName>
+
+準備した構成が正しい場合は、次に進み、次のコマンドを使用してリソースをコミットできます。
+
+	azure network vnet commit-migration <virtualNetworkName>
+
+## 手順 5. ストレージ アカウントを移行する
+
+仮想マシンの移行が完了したら、ストレージ アカウントを移行することをお勧めします。
+
+次のコマンドを使用して、移行対象のストレージ アカウントを準備します
+
+	azure storage account prepare-migration <storageAccountName>
+
+CLI または Azure ポータルを使用して、準備したストレージ アカウントの構成を確認します。移行の準備ができていない場合に以前の状態に戻すには、次のコマンドを使用します。
+
+	azure storage account abort-migration <storageAccountName>
+
+準備した構成が正しい場合は、次に進み、次のコマンドを使用してリソースをコミットできます。
+
+	azure storage account commit-migration <storageAccountName>
+
+## 次のステップ
+
+- [プラットフォームでサポートされているクラシックから Resource Manager への IaaS リソースの移行](virtual-machines-windows-migration-classic-resource-manager.md)
+- [プラットフォームでサポートされているクラシックから Resource Manager への移行に関する技術的な詳細](virtual-machines-windows-migration-classic-resource-manager-deep-dive.md)
+
+<!---HONumber=AcomDC_0907_2016-->

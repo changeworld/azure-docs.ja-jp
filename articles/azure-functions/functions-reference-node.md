@@ -1,38 +1,37 @@
 <properties
-    pageTitle="Azure Functions NodeJS developer reference | Microsoft Azure"
-    description="Understand how to develop Azure Functions using NodeJS."
-    services="functions"
-    documentationCenter="na"
-    authors="christopheranderson"
-    manager="erikre"
-    editor=""
-    tags=""
-    keywords="azure functions, functions, event processing, webhooks, dynamic compute, serverless architecture"/>
+	pageTitle="Azure Functions NodeJS 開発者向けリファレンス | Microsoft Azure"
+	description="NodeJS を使用して Azure Functions を開発する方法について説明します。"
+	services="functions"
+	documentationCenter="na"
+	authors="christopheranderson"
+	manager="erikre"
+	editor=""
+	tags=""
+	keywords="Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"/>
 
 <tags
-    ms.service="functions"
-    ms.devlang="nodejs"
-    ms.topic="reference"
-    ms.tgt_pltfrm="multiple"
-    ms.workload="na"
-    ms.date="05/13/2016"
-    ms.author="chrande"/>
+	ms.service="functions"
+	ms.devlang="nodejs"
+	ms.topic="reference"
+	ms.tgt_pltfrm="multiple"
+	ms.workload="na"
+	ms.date="05/13/2016"
+	ms.author="chrande"/>
 
-
-# <a name="azure-functions-nodejs-developer-reference"></a>Azure Functions NodeJS developer reference
+# Azure Functions NodeJS 開発者向けリファレンス
 
 > [AZURE.SELECTOR]
-- [C# script](../articles/azure-functions/functions-reference-csharp.md)
-- [F# script](../articles/azure-functions/functions-reference-fsharp.md)
-- [Node.js](../articles/azure-functions/functions-reference-node.md)
+- [C# スクリプト](../articles/azure-functions/functions-reference-csharp.md)
+- [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md)
+- [Node.JS](../articles/azure-functions/functions-reference-node.md)
 
-The Node/JavaScript experience for Azure Functions makes it easy to export a function which is passed a `context` object for communicating with the runtime, and for receiving and sending data via bindings.
+Azure Functions の Node/JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインドを介してデータの送受信を行ったりする場合に `context` オブジェクトが渡される関数を簡単にエクスポートできます。
 
-This article assumes that you've already read the [Azure Functions developer reference](functions-reference.md).
+この記事では、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)」を既に読んでいることを前提としています。
 
-## <a name="exporting-a-function"></a>Exporting a function
+## 関数のエクスポート
 
-All JavaScript functions must export a single `function` via `module.exports` for the runtime to find the function and run it. This function must always include a `context` object.
+すべての JavaScript 関数では、ランタイムが関数を見つけて実行するために、`module.exports` を使用して `function` を 1 つエクスポートする必要があります。この関数には、常に `context` オブジェクトを含める必要があります。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -48,17 +47,17 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 };
 ```
 
-Bindings of `direction === "in"` are passed along as function arguments, meaning you can use [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) to dynamically handle new inputs (for example, by using `arguments.length` to iterate over all your inputs). This functionality is very convenient if you only have a trigger with no additional inputs, as you can predictably access your trigger data without referencing your `context` object.
+`direction === "in"` のバインドが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。この機能は、トリガーのみがあり、追加の入力がない場合に非常に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
 
-The arguments are always passed along to the function in the order they occur in *function.json*, even if you don't specify them in your exports statement. For example, if you have `function(context, a, b)` and change it to `function(context, a)`, you can still get the value of `b` in function code by referring to `arguments[3]`.
+引数は、exports ステートメントで順序を指定していなくても、*function.json* に出現する順序で常に関数に渡されます。たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[3]` を参照することで、関数コードの `b` の値を取得できます。
 
-All bindings, regardless of direction, are also passed along on the `context` object (see below). 
+すべてのバインドも、方向に関係なく、`context` オブジェクトと一緒に渡されます (以下を参照)。
 
-## <a name="context-object"></a>context object
+## context オブジェクト
 
-The runtime uses a `context` object to pass data to and from your function and to let you communicate with the runtime.
+ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。
 
-The context object is always the first parameter to a function and should always be included because it has methods such as `context.done` and `context.log` which are required to correctly use the runtime. You can name the object whatever you like (i.e. `ctx` or `c`).
+context オブジェクトは、常に関数の最初のパラメーターで、必ず含める必要があります。context オブジェクトには、ランタイムを適切に使用するために必要な `context.done` や `context.log` などのメソッドが用意されているためです。オブジェクトには、任意の名前 (`ctx` や `c` など) を付けることができます。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -67,9 +66,9 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="context.bindings"></a>context.bindings
+## context.bindings
 
-The `context.bindings` object collects all your input and output data. The data is added onto the `context.bindings` object via the `name` property of the binding. For instance, given the following binding definition in *function.json*, you can access the contents of the queue via `context.bindings.myInput`. 
+`context.bindings` オブジェクトは、すべての入出力データを収集します。データは、バインドの `name` プロパティを介して `context.bindings` オブジェクトに追加されます。たとえば、*function.json* に次のバインド定義が含まれている場合は、`context.bindings.myInput` でキューの内容にアクセスできます。
 
 ```json
     {
@@ -91,9 +90,9 @@ context.bindings.myOutput = {
 
 ## `context.done([err],[propertyBag])`
 
-The `context.done` function tells the runtime that you're done running. This is important to call when you're done with the function; if you don't, the runtime will still never know that your function completed. 
+`context.done` 関数は、実行が完了したことをランタイムに通知します。この関数は、関数が完了したときに呼び出す必要があります。そうしないと、ランタイムは関数が完了したことを認識しません。
 
-The `context.done` function allows you to pass back a user-defined error to the runtime, as well as a property bag of properties which will overwrite the properties on the `context.bindings` object.
+`context.done` 関数を使用すると、ユーザー定義のエラーに加えて、`context.bindings` オブジェクトのプロパティを上書きするプロパティのプロパティ バッグをランタイムに渡すことができます。
 
 ```javascript
 // Even though we set myOutput to have:
@@ -105,9 +104,9 @@ context.done(null, { myOutput: { text: 'hello there, world', noNumber: true }});
 //  -> text: hello there, world, noNumber: true
 ```
 
-## <a name="context.log(message)"></a>context.log(message)
+## context.log(message)
 
-The `context.log` method allows you to output log statements that are correlated together for logging purposes. If you use `console.log`, your messages will only show for process level logging, which isn't as useful.
+`context.log` メソッドでは、ログ記録の目的で、相互に関連付けられているログ ステートメントを出力できます。`console.log` を使用した場合、指定したメッセージはプロセス レベルのログのみに対して表示されますが、これはあまり便利ではありません。
 
 ```javascript
 /* You can use context.log to log output specific to this 
@@ -115,23 +114,23 @@ function. You can access your bindings via context.bindings */
 context.log({hello: 'world'}); // logs: { 'hello': 'world' } 
 ```
 
-The `context.log` method supports the same parameter format that the Node [util.format method](https://nodejs.org/api/util.html#util_util_format_format) supports. So, for example, code like this:
+`context.log` メソッドでは、Node の [util.format メソッド](https://nodejs.org/api/util.html#util_util_format_format)でサポートしているのと同じパラメーター形式をサポートしています。たとえば、次のようなコードがあるとします。
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=' + req.originalUrl);
 context.log('Request Headers = ' + JSON.stringify(req.headers));
 ```
 
-can be written like this:
+このコードは、次のように記述できます。
 
 ```javascript
 context.log('Node.js HTTP trigger function processed a request. RequestUri=%s', req.originalUrl);
 context.log('Request Headers = ', JSON.stringify(req.headers));
 ```
 
-## <a name="http-triggers:-context.req-and-context.res"></a>HTTP triggers: context.req and context.res
+## HTTP トリガー: context.req と context.res
 
-In the case of HTTP Triggers, because it is such a common pattern to use `req` and `res` for the HTTP request and response objects, we decided to make it easy to access those on the context object, instead of forcing you to use the full `context.bindings.name` pattern.
+HTTP トリガーでは、HTTP の要求オブジェクトと応答オブジェクトに `req` と `res` を使用するパターンをよく見かけるため、完全な `context.bindings.name` パターンを使用しなくても、context オブジェクトで簡単にアクセスできるようにしました。
 
 ```javascript
 // You can access your http request off of the context ...
@@ -140,23 +139,23 @@ if(context.req.body.emoji === ':pizza:') context.log('Yay!');
 context.res = { status: 202, body: 'You successfully ordered more coffee!' };   
 ```
 
-## <a name="node-version-&-package-management"></a>Node Version & Package Management
+## Node のバージョンとパッケージの管理
 
-The node version is currently locked at `5.9.1`. We're investigating adding support for more versions and making it configurable.
+Node のバージョンは、現在、`5.9.1` にロックされています。現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
 
-You can include packages in your function by uploading a *package.json* file to your function's folder in the function app's file system. For file upload instructions, see the **How to update function app files** section of the [Azure Functions developer reference topic](functions-reference.md#fileupdate). 
+関数アプリのファイル システムの関数のフォルダーに *package.json* ファイルをアップロードすることで関数にパッケージを追加できます。ファイルをアップロードする方法については、「[Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md#fileupdate)」の「**関数アプリ ファイルを更新する方法**」セクションを参照してください。
 
-You can also use `npm install` in the function app's SCM (Kudu) command line interface:
+関数アプリの SCM (Kudu) コマンド ライン インターフェイスで `npm install` を使用することもできます。
 
-1. Navigate to: `https://<function_app_name>.scm.azurewebsites.net`.
+1. `https://<function_app_name>.scm.azurewebsites.net` に移動します。
 
-2. Click **Debug Console > CMD**.
+2. **[デバッグ コンソール]、[CMD]** の順にクリックします。
 
-3. Navigate to `D:\home\site\wwwroot\<function_name>`.
+3. `D:\home\site\wwwroot<function_name>` に移動します。
 
-4. Run `npm install`.
+4. `npm install` を実行します。
 
-Once the packages you need are installed, you import them to your function in the usual ways (i.e. via `require('packagename')`)
+必要なパッケージがインストールされたら、普段の方法でそれを関数にインポートします。たとえば、`require('packagename')` を利用します。
 
 ```javascript
 // Import the underscore.js library
@@ -169,9 +168,9 @@ module.exports = function(context) {
         .where(context.bindings.myInput.names, {first: 'Carla'});
 ```
 
-## <a name="environment-variables"></a>Environment variables
+## 環境変数
 
-To get an environment variable or an app setting value, use `process.env`, as shown in the following code example:
+環境変数またはアプリ設定値を取得するには、次のコード例のように、`process.env` を使用します。
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -190,21 +189,17 @@ function GetEnvironmentVariable(name)
 }
 ```
 
-## <a name="typescript/coffeescript-support"></a>TypeScript/CoffeeScript support
+## TypeScript/CoffeeScript のサポート
 
-There isn't, yet, any direct support for auto-compiling TypeScript/CoffeeScript via the runtime, so that would all need to be handled outside the runtime, at deployment time. 
+ランタイムによる TypeScript/CoffeeScript の自動コンパイルはまだ直接サポートされていません。そのため、デプロイ時にランタイムの外部ですべて処理する必要があります。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-For more information, see the following resources:
+詳細については、次のリソースを参照してください。
 
-* [Azure Functions developer reference](functions-reference.md)
-* [Azure Functions C# developer reference](functions-reference-csharp.md)
-* [Azure Functions F# developer reference](functions-reference-fsharp.md)
-* [Azure Functions triggers and bindings](functions-triggers-bindings.md)
+* [Azure Functions developer reference (Azure Functions 開発者向けリファレンス)](functions-reference.md)
+* [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
+* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
+* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

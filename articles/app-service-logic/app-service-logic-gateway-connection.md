@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Logic Apps on-premises data gateway connection | Microsoft Azure"
-   description="Information on how to create a connection to the on-premises data gateway from a logic app."
+   pageTitle="Logic Apps のオンプレミス データ ゲートウェイ接続 | Microsoft Azure"
+   description="ロジック アプリからオンプレミス データ ゲートウェイへの接続の作成に関する情報。"
    services="logic-apps"
    documentationCenter=".net,nodejs,java"
    authors="jeffhollan"
@@ -16,62 +16,58 @@
    ms.date="07/05/2016"
    ms.author="jehollan"/>
 
+# Logic Apps 用のオンプレミス データ ゲートウェイへの接続
 
-# <a name="connect-to-the-on-premises-data-gateway-for-logic-apps"></a>Connect to the on-premises data gateway for Logic Apps
+サポートされているロジック アプリのコネクタを使用すると、オンプレミス データ ゲートウェイ経由でオンプレミスのデータにアクセスする接続を構成できます。次の手順では、オンプレミス データ ゲートウェイをインストールし、ロジック アプリで使用できるように構成する方法を説明します。
 
-Supported logic apps connectors allow you to configure your connection to access on-premises data via the on-premises data gateway.  The following steps will walk you through how to install and configure the on-premises data gateway to work with a logic app.
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+* オンプレミス データ ゲートウェイをアカウント (Azure Active Directory ベースのアカウント) に関連付けるために、職場または学校の電子メール アドレスを使用している必要があります。
+    * Microsoft アカウント (@outlook.com、@live.com など) を使用している場合は、[こちらの手順に従って](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)、Azure アカウントを使用して職場または学校の電子メール アドレスを作成できます。
 
-* Must be using a work or school email address in Azure to associate the on-premises data gateway with your account (Azure Active Directory based account)
-    * If you are using a Microsoft Account (e.g. @outlook.com, @live.com) you can use your Azure account to create a work or school email address by [following the steps here](../virtual-machines/virtual-machines-windows-create-aad-work-id.md#locate-your-default-directory-in-the-azure-classic-portal)
+> [AZURE.WARNING] Power BI に登録済みのアカウントを使用したときにしかオンプレミス ゲートウェイのインストールが完了しないという制限が現時点では存在します。当面、インストールを正常完了するために、任意のアカウントを "Power BI Free" に登録してください。
 
-> [AZURE.WARNING] There is a limitation currently that on-premises gateway install will only complete when using an account that has been registered with Power BI.  In the meantime please register any account with "Power BI Free" to complete the installation successfully.
+* オンプレミス データ ゲートウェイが[ローカル コンピューターにインストールされている](app-service-logic-gateway-install.md)必要があります。
+* ゲートウェイが別の Azure オンプレミス データ ゲートウェイによって要求されていないことが必要です ([要求は、以下の手順 2. での作成時に行われます](#2-create-an-azure-on-premises-data-gateway-resource))。1 つのインストールは 1 つのゲートウェイ リソースのみに関連付けることができます。
 
-* Must have the on-premises data gateway [installed on a local machine](app-service-logic-gateway-install.md).
-* Gateway must not have been claimed by another Azure on-premises data gateway ([claim happens with creation of step 2 below](#2-create-an-azure-on-premises-data-gateway-resource)) - an installation can only be associated to one gateway resource.
+## 接続のインストールと構成
 
-## <a name="installing-and-configuring-the-connection"></a>Installing and configuring the connection
+### 1\.オンプレミス データ ゲートウェイのインストール
 
-### <a name="1.-install-the-on-premises-data-gateway"></a>1. Install the on-premises data gateway
+オンプレミス データ ゲートウェイのインストールについては、[この記事](app-service-logic-gateway-install.md)を参照してください。残りの手順を続行する前に、オンプレミス コンピューターにゲートウェイをインストールする必要があります。
 
-Information on installing the on-premises data gateway can be found [in this article](app-service-logic-gateway-install.md).  The gateway must be installed on an on-premises machine before you can continue with the rest of the steps.
+### 2\.Azure オンプレミス データ ゲートウェイ リソースの作成
 
-### <a name="2.-create-an-azure-on-premises-data-gateway-resource"></a>2. Create an Azure on-premises data gateway resource
+インストール後、オンプレミス データ ゲートウェイに Azure サブスクリプションを関連付ける必要があります。
 
-Once installed, you must associate your Azure subscription with the on-premises data gateway.
+1. ゲートウェイのインストールで使用したのと同じ職場または学校の電子メール アドレスを使用して、Azure にログインします。
+1. **[新規]** リソースのボタンをクリックします。
+1. **オンプレミス データ ゲートウェイ**を検索し、選択します。
+1. ゲートウェイをアカウントに関連付けるための情報を入力します (適切な**インストール名**を選択するなど)。
 
-1. Login to Azure using the same work or school email address that was used during installation of the gateway
-1. Click **New** resource button
-1. Search and select the **On-premises data gateway**
-1. Complete the information to associate the gateway with your account - including selecting the appropriate **Installation Name**
+    ![オンプレミス データ ゲートウェイ接続][1]
+1. **[作成]** ボタンをクリックしてリソースを作成します。
 
-    ![On-Premises Data Gateway Connection][1]
-1. Click the **Create** button to create the resource
+### 3\.デザイナーでのロジック アプリ接続の作成
 
-### <a name="3.-create-a-logic-app-connection-in-the-designer"></a>3. Create a logic app connection in the designer
+Azure サブスクリプションをオンプレミス データ ゲートウェイのインスタンスと関連付けたので、次はロジック アプリ内からゲートウェイへの接続を作成できます。
 
-Now that your Azure subscription is associated with an instance of the on-premises data gateway, you can create a connection to it from within a logic app.
+1. ロジック アプリを開き、オンプレミス接続をサポートするコネクタを選択します (この記事の執筆時点では SQL Server)。
+1. **[Connect via on-premises data gateway (オンプレミス データ ゲートウェイ経由で接続する)]** チェック ボックスをオンにします。
 
-1. Open a logic app and choose a connector that supports on-premises connectivity (as of this writing, SQL Server)
-1. Select the checkbox for **Connect via on-premises data gateway**
+    ![ロジック アプリ デザイナー ゲートウェイの作成][2]
+1. 接続する **[ゲートウェイ]** を選択し、必要なその他の接続情報を指定します。
+1. **[作成]** をクリックして接続を作成します。
 
-    ![Logic App Designer Gateway Creation][2]
-1. Select the **Gateway** to connect to and complete any other connection information required
-1. Click **Create** to create the connection
+以上で、ロジック アプリで使用するための接続が正しく構成されました。
 
-The connection should now be successfully configured for use in your logic app.  
-
-## <a name="next-steps"></a>Next Steps
-- [Common examples and scenarios for logic apps](app-service-logic-examples-and-scenarios.md)
-- [Enterprise integration features](app-service-logic-enterprise-integration-overview.md)
+## 次のステップ
+- [ロジック アプリの接続の例とシナリオ](app-service-logic-examples-and-scenarios.md)
+- [エンタープライズ統合機能](app-service-logic-enterprise-integration-overview.md)
 
 <!-- Image references -->
 [1]: ./media/app-service-logic-gateway-connection/createblade.PNG
 [2]: ./media/app-service-logic-gateway-connection/blankconnection.PNG
 [3]: ./media/app-service-logic-gateway-connection/checkbox.PNG
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

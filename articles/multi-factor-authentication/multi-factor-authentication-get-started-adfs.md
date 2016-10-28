@@ -1,54 +1,49 @@
 <properties
-    pageTitle="Getting started with Azure Multi-Factor Authentication and Active Directory Federation Services"
-    description="This is the Azure Multi-Factor authentication page that describes how to get started with Azure MFA and AD FS."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtland"/>
+	pageTitle="Azure Multi-Factor Authentication と Active Directory フェデレーション サービスの概要"
+	description="Azure MFA および AD FS を開始する方法について説明する Azure Multi-Factor Authentication のページです。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtland"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na" ms.topic="get-started-article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na" ms.topic="get-started-article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
 
-
-# <a name="getting-started-with-azure-multi-factor-authentication-and-active-directory-federation-services"></a>Getting started with Azure Multi-Factor Authentication and Active Directory Federation Services
+# Azure Multi-Factor Authentication と Active Directory フェデレーション サービスの概要
 
 
 
 <center>![Cloud](./media/multi-factor-authentication-get-started-adfs/adfs.png)</center>
 
-If your organization has federated your on-premises Active Directory with Azure Active Directory using AD FS, the following 2 options for using Azure Multi-Factor Authentication are available.
+組織がオンプレミスの Active Directory と Azure Active Directory を AD FS を使ってフェデレーションする場合、Azure Multi-Factor Authentication を使用する次の 2 つのオプションを使用できます。
 
-- Secure cloud resources using Azure Multi-Factor Authentication or Active Directory Federation Services
-- Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server
+- Azure Multi-Factor Authentication または Active Directory フェデレーション サービスを使用したクラウド リソースのセキュリティ保護
+- Azure Multi-Factor Authentication Server を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護
 
-The following table summarizes the authentication experience between securing resources with Azure Multi-Factor Authentication and AD FS
+Azure Multi-Factor Authentication と AD FS を使用したリソースのセキュリティ保護の認証エクスペリエンスを次の表に要約します。
 
-|Authentication Experience - Browser based Apps|Authentication Experience - Non-Browser based Apps
+|認証エクスペリエンス - ブラウザー ベースのアプリ|認証エクスペリエンス - 非ブラウザー ベースのアプリ
 :------------- | :------------- | :------------- |
-Securing Azure AD resources using Azure Multi-Factor Authentication |<li>The 1st factor of authentication is performed on-premises using AD FS.</li> <li>The 2nd factor is a phone based method carried out using cloud authentication.</li>|End users can use app passwords to sign-in.
-Securing Azure AD resources using Active Directory Federation Services |<li>The 1st factor of authentication is performed on-premises using AD FS.</li><li>The 2nd factor is performed on-premises by honoring the claim.</li>|End users can use app passwords to sign-in.
+Azure Multi-Factor Authentication を使用した Azure AD リソースのセキュリティ保護 |<li>認証の第 1 要素は AD FS を使用してオンプレミスで実行されます。</li> <li>第 2 要素は、クラウド認証を使用して実行される電話ベースの方式です。</li>|エンドユーザーはアプリ パスワードを使用して、サインインすることができます。
+Active Directory フェデレーション サービスを使用した Azure AD リソースのセキュリティ保護 |<li>認証の第 1 要素は、AD FS を使用してオンプレミスで実行されます。</li><li>第 2 要素は、要求を受け入れることによりオンプレミスで実行されます。</li>|エンドユーザーはアプリ パスワードを使用して、サインインすることができます。
 
-Caveats with app passwords for federated users:
+フェデレーション ユーザーに対するアプリ パスワードに関する注意事項があります。
 
-- App Password is verified using cloud authentication and hence bypasses federations. Federation is only actively used when setting up App Password.
-- On-premises Client Access Control settings are not honored by App Password.
-- You lose on-premises auth logging capability for App Password.
-- Account disable/deletion may take up to 3 hours for dirsync, delaying disable/deletion of app password in the cloud identity.
+- アプリ パスワードはクラウド認証を使用して検証されるため、フェデレーションはバイパスします。フェデレーションは、アプリ パスワードを設定するときにのみアクティブに使用されます。
+- オンプレミスのクライアント アクセス制御の設定は、アプリ パスワードでは受け入れられません。
+- アプリ パスワードでは、オンプレミスの認証ログ機能が失われます。
+- dirsync のアカウントの無効化/削除には 3 時間かかり、クラウド ID のアプリのパスワードの無効化/削除も遅延します。
 
-For information on setting up either Azure Multi-Factor Authentication or the Azure Multi-Factor Authentication Server with AD FS see the following:
+AD FS を使用した Azure Multi-Factor Authentication または Azure Multi-Factor Authentication Server の設定の詳細については、次を参照してください。
 
-- [Secure cloud resources using Azure Multi-Factor Authentication and AD FS](multi-factor-authentication-get-started-adfs-cloud.md)
-- [Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server with Windows Server 2012 R2 AD FS](multi-factor-authentication-get-started-adfs-w2k12.md)
-- [Secure cloud and on-premises resources using Azure Multi-Factor Authentication Server with AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md)
+- [Azure Multi-Factor Authentication および AD FS を使用したクラウド リソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-cloud.md)
+- [Azure Multi-Factor Authentication Server と Windows Server 2012 R2 AD FS を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-w2k12.md)
+- [Azure Multi-Factor Authentication Server と AD FS 2.0 を使用したクラウドおよびオンプレミスのリソースのセキュリティ保護](multi-factor-authentication-get-started-adfs-adfs2.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,114 +1,110 @@
 <properties
-    pageTitle="Networking Infrastructure Guidelines | Microsoft Azure"
-    description="Learn about the key design and implementation guidelines for deploying virtual networking in Azure infrastructure services."
-    documentationCenter=""
-    services="virtual-machines-windows"
-    authors="iainfoulds"
-    manager="timlt"
-    editor=""
-    tags="azure-resource-manager"/>
+	pageTitle="ネットワーク インフラストラクチャのガイドライン | Microsoft Azure"
+	description="Azure インフラストラクチャ サービスでの 仮想ネットワークのデプロイに関する主要な設計と実装のガイドラインについて説明します。"
+	documentationCenter=""
+	services="virtual-machines-windows"
+	authors="iainfoulds"
+	manager="timlt"
+	editor=""
+	tags="azure-resource-manager"/>
 
 <tags
-    ms.service="virtual-machines-windows"
-    ms.workload="infrastructure-services"
-    ms.tgt_pltfrm="vm-windows"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/08/2016"
-    ms.author="iainfou"/>
+	ms.service="virtual-machines-windows"
+	ms.workload="infrastructure-services"
+	ms.tgt_pltfrm="vm-windows"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/08/2016"
+	ms.author="iainfou"/>
+
+# ネットワーク インフラストラクチャのガイドライン
+
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
+
+この記事は、Azure 内の仮想ネットワークと、既存のオンプレミス環境間の接続に必要な計画について説明します。
 
 
-# <a name="networking-infrastructure-guidelines"></a>Networking infrastructure guidelines
+## 仮想ネットワークに関する実装ガイドライン
 
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)] 
+決めること:
 
-This article focuses on understanding the required planning steps for virtual networking within Azure and connectivity between existing on-prem environments.
+- IT ワークロードまたはインフラストラクチャをホストするために必要な仮想ネットワークの種類は (クラウドのみまたはクロスプレミス)。
+- クロスプレミス仮想ネットワークの場合、現在のサブネットと VM をホストし、将来の妥当な拡張のために必要なアドレス空間の大きさ。
+- 一元的な仮想ネットワークを作成するのか、あるいは各リソース グループに対し個別の仮想ネットワークを作成するのか。
 
+タスク:
 
-## <a name="implementation-guidelines-for-virtual-networks"></a>Implementation guidelines for virtual networks
-
-Decisions:
-
-- What type of virtual network do you need to host your IT workload or infrastructure (cloud-only or cross-premises)?
-- For cross-premises virtual networks, how much address space do you need to host the subnets and VMs now and for reasonable expansion in the future?
-- Are you going to create centralized virtual networks or create individual virtual networks for each resource group?
-
-Tasks:
-
-- Define the address space for the virtual networks to be created.
-- Define the set of subnets and the address space for each.
-- For cross-premises virtual networks, define the set of local network address spaces for the on-premises locations that the VMs in the virtual network need to reach.
-- Work with on-premises networking team to ensure the appropriate routing is configured when creating cross-premises virtual networks.
-- Create the virtual network using your naming convention.
+- 作成する仮想ネットワークのアドレス空間を定義します。
+- サブネットのセットおよびそれぞれに対するアドレス空間を定義します。
+- クロスプレミス仮想ネットワークの場合、仮想ネットワーク内の VM が到達する必要のあるオンプレミスの場所に対するローカル ネットワーク アドレス空間のセットを定義します。
+- クロスプレミス接続用の仮想ネットワークを作成する際は、オンプレミスのネットワーク チームと協力して最適なルーティングの構成を確保します。
+- 名前付け規則を使用して仮想ネットワークを作成します。
 
 
-## <a name="virtual-networks"></a>Virtual networks
+## 仮想ネットワーク
 
-Virtual networks are necessary to support communications between virtual machines (VMs). You can define subnets, custom IP address, DNS settings, security filtering, and load balancing, as with physical networks. By using a [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) or [Express Route circuit](../expressroute/expressroute-introduction.md), you can connect Azure virtual networks to your on-premises networks. You can read more about [virtual networks and their components](../virtual-network/virtual-networks-overview.md).
+仮想ネットワークは、仮想マシン (VM) 間の通信をサポートするために必要です。物理ネットワークと同じように、サブネット、カスタム IP アドレス、DNS 設定、セキュリティ フィルター処理、負荷分散を定義できます。[サイト間 VPN](../vpn-gateway/vpn-gateway-topology.md) または [Express Route 回線](../expressroute/expressroute-introduction.md)を使用して、Azure 仮想ネットワークをオンプレミスのネットワークに接続できます。詳細については、[仮想ネットワークとそのコンポーネント](../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
-By using Resource Groups, you have flexibility in how you design your virtual networking components. VMs can connect to virtual networks outside of their own resource group. A common design approach would be to create centralized resource groups that contain your core networking infrastructure that can be managed by a common team, and then VMs and their applications deployed to separate resource groups. This approach allows application owners access to the resource group that contains their VMs without opening up access to the configuration of the wider virtual networking resources.
+リソース グループを使用することにより、仮想ネットワークのコンポーネント設計を柔軟に行うことができます。VM は自身が属するリソース グループの外の仮想ネットワークに接続できます。一般的な設計の手法は、共通のチームで管理可能な、コア ネットワーク インフラストラクチャを含む一元的なリソース グループを作成し、それから別々のリソース グループにデプロイする VM とそのアプリケーションを作成することです。これによりアプリケーション所有者は、幅広い仮想ネットワーク リソースの構成へのアクセスを開かなくても、VM を含むリソース グループにアクセスできます。
 
-## <a name="site-connectivity"></a>Site connectivity
+## サイトの接続
 
-### <a name="cloud-only-virtual-networks"></a>Cloud-only virtual networks
-If on-premises users and computers do not require ongoing connectivity to VMs in an Azure virtual network, your virtual network design is straight forward:
+### クラウド専用仮想ネットワーク
+オンプレミスのユーザーとコンピューターが、Azure Virtual Network 内の仮想マシンへの常時接続を必要としない場合、仮想ネットワーク設計はとても簡単です。
 
-![Basic cloud-only virtual network diagram](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
+![基本的なクラウド専用仮想ネットワークの図](./media/virtual-machines-common-infrastructure-service-guidelines/vnet01.png)
 
-This approach is typically for Internet-facing workloads, such as an Internet-based web server. You can manage these VMs using RDP or point-to-site VPN connections.
+これは通常、インターネット ベースの Web サーバーなど、インターネットに接続されたワークロード用です。RDP またはポイント対サイト VPN 接続を使って VM を管理できます。
 
-Because they do not connect to your on-premises network, Azure-only virtual networks can use any portion of the private IP address space, even if the same private space is in use on-premises.
+オンプレミス ネットワークに接続しないので、Azure 専用仮想ネットワークではプライベート IP アドレス空間の任意の部分を、同じプライベート空間がオンプレミスで使われていた場合でも、使用できます。
 
 
-### <a name="cross-premises-virtual-networks"></a>Cross-premises virtual networks
-If on-premises users and computers require ongoing connectivity to VMs in an Azure virtual network, create a cross-premises virtual network.  Connect it to your on-premises network with an ExpressRoute or site-to-site VPN connection.
+### クロスプレミス接続用の仮想ネットワーク
+オンプレミスのユーザーとコンピューターが、Azure Virtual Network 内の VM への常時接続を必要とする場合は、クロスプレミス接続用の仮想ネットワークを作成します。これを、ExpressRoute またはサイト間 VPN 接続を使用してオンプレミス ネットワークに接続します。
 
-![Cross-premises virtual network diagram](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
+![クロスプレミス仮想ネットワークの図](./media/virtual-machines-common-infrastructure-service-guidelines/vnet02.png)
 
-In this configuration, the Azure virtual network is essentially a cloud-based extension of your on-premises network.
+この構成では、Azure Virtual Network は基本的に、オンプレミス ネットワークのクラウド ベースの拡張機能です。
 
-Because they connect to your on-premises network, cross-premises virtual networks must use a portion of the address space used by your organization that is unique. In the same way that different corporate locations are assigned a specific IP subnet, Azure becomes another location as you extend out your network.
+オンプレミス ネットワークに接続するため、クロスプレミス仮想ネットワークは、組織によって使用されるアドレス空間の一意な一部分を使用する必要があります。企業内の異なる場所に特定の IP サブネットが割り当てられるのと同様に、ネットワークを拡張すると、Azure を別の場所として扱うことができます。
 
-To allow packets to travel from your cross-premises virtual network to your on-premises network, you must configure the set of relevant on-premises address prefixes as part of the local network definition for the virtual network. Depending on the address space of the virtual network and the set of relevant on-premises locations, there can be many address prefixes in the local network.
+クロスプレミス仮想ネットワークからオンプレミス ネットワークにパケットが移動できるようにするには、仮想ネットワークのローカル ネットワークの定義の一部として、一連の関連するオンプレミス アドレスのプレフィックスを構成する必要があります。仮想ネットワークのアドレス空間および関連するオンプレミスの場所によっては、ローカル ネットワークに多数のアドレス プレフィックスがあってもかまいません。
 
-You can convert a cloud-only virtual network to a cross-premises virtual network, but it most likely requires you to re-IP your virtual network address space and Azure resources. Therefore, carefully consider if a virtual network needs to be connected to your on-premises network when you assign an IP subnet.
+クラウド専用仮想ネットワークをクロスプレミス仮想ネットワークに変換できますが、通常は、仮想ネットワーク アドレス空間と Azure リソースの IP アドレスを再設定する必要があります。そのため、IP サブネットを割り当てるときは、仮想ネットワークがオンプレミス ネットワークに接続する必要があるかどうかを慎重に検討します。
 
-## <a name="subnets"></a>Subnets
-Subnets allow you to organize resources that are related, either logically (for example, one subnet for VMs associated to the same application), or physically (for example, one subnet per resource group). You can also employ subnet isolation techniques for added security.
+## サブネット
+サブネットを使用すると、関連するリソースを論理的に (たとえば、同じアプリケーションに関連する VM 用に 1 つのサブネット)、または物理的に (たとえば、リソース グループごとに 1 つのサブネット) まとめることができます。また、サブネット分離手法を使用してセキュリティを強化することもできます。
 
-For cross-premises virtual networks, you should design subnets with the same conventions that you use for on-premises resources. **Azure always uses the first three IP addresses of the address space for each subnet**. To determine the number of addresses needed for the subnet, start by counting the number of VMs that you need now. Estimate for future growth, and then use the following table to determine the size of the subnet.
+クロスプレミス仮想ネットワークでは、オンプレミス リソースで使用する場合と同じ規則を使用してサブネットを設計する必要があります。**Azure は常に、各サブネットのアドレス空間の最初の 3 つの IP アドレスを使用します**。サブネットに必要なアドレスの数を判断するには、まずは今必要な VM の数をカウントすることから始めます。将来の成長を予測し、次の表を使用してサブネットのサイズを決定します。
 
-Number of VMs needed | Number of host bits needed | Size of the subnet
+必要な VM の数 | 必要なホスト ビットの数 | サブネットのサイズ
 --- | --- | ---
-1–3 | 3 | /29
-4–11     | 4 | /28
-12–27 | 5 | /27
-28–59 | 6 | /26
-60–123 | 7 | /25
+1 ～ 3 | 3 | /29
+4 ～ 11 | 4 | /28
+12 ～ 27 | 5 | /27
+28 ～ 59 | 6 | /26
+60 ～ 123 | 7 | /25
 
-> [AZURE.NOTE] For normal on-premises subnets, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> – 2. For an Azure subnet, the maximum number of host addresses for a subnet with n host bits is 2<sup>n</sup> – 5 (2 plus 3 for the addresses that Azure uses on each subnet).
+> [AZURE.NOTE] 通常のオンプレミス サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 2 です。Azure サブネットの場合、ホスト ビット数 n のサブネットに対するホスト アドレスの最大数は 2<sup>n</sup> – 5 (2 に加えて、Azure が各サブネットに使用するアドレス数の 3)。
 
-If you choose a subnet size that is too small, you have to re-IP and redeploy the VMs in the subnet.
-
-
-## <a name="network-security-groups"></a>Network Security Groups
-You can apply filtering rules to the traffic that flows through your virtual networks by using Network Security Groups. You can build granular filtering rules to secure your virtual networking environment, controlling inbound and outbound traffic, source and destination IP ranges, allowed ports, etc. Network Security Groups can be applied to subnets within a virtual network or directly to a given virtual network interface. It is recommended to have some level of Network Security Group filtering traffic on your virtual networks. You can read more about [Network Security Groups](../virtual-network/virtual-networks-nsg.md).
+選択したサブネットのサイズが小さすぎる場合、サブネット内の VM の IP アドレスを再設定して再デプロイする必要があります。
 
 
-## <a name="additional-network-components"></a>Additional network components
-As with an on-premises physical networking infrastructure, Azure virtual networking can contain more than subnets and IP addressing. As you design your application infrastructure, you may want to incorporate some of these additional components:
-
-- [VPN gateways](../vpn-gateway/vpn-gateway-about-vpngateways.md) - connect Azure virtual networks to other Azure virtual networks, or connect to on-premises networks through a Site-to-Site VPN connection. Implement Express Route connections for dedicated, secure connections. You can also provide users direct access with Point-to-Site VPN connections.
-- [Load balancer](../load-balancer/load-balancer-overview.md) - provides load balancing of traffic for both external and internal traffic as desired.
-- [Application Gateway](../application-gateway/application-gateway-introduction.md) - HTTP load-balancing at the application layer, providing some additional benefits for web applications rather than deploying the Azure load balancer.
-- [Traffic Manager](../traffic-manager/traffic-manager-overview.md) - DNS-based traffic distribution to direct end-users to the closest available application endpoint, allowing you to host your application out of Azure datacenters in different regions.
+## ネットワーク セキュリティ グループ
+ネットワーク セキュリティ グループを使用して、仮想ネットワークを流れるトラフィックにフィルタ リング規則を適用することができます。詳細なフィルタリング規則を構築して仮想ネットワーク環境を保護し、受信トラフィックと送信トラフィック、ソースと宛先の IP 範囲、許可されたポートなどを制御できます。ネットワーク セキュリティ グループは、仮想ネットワーク内のサブネット、または直接指定された仮想ネットワーク インターフェイスに適用できます。ネットワーク セキュリティ グループによるフィルター処理を、仮想ネットワーク上トラフィックに対してある程度設定することをお勧めします。ネットワーク セキュリティ グループの詳細については、[こちら](../virtual-network/virtual-networks-nsg.md)を参照してください。
 
 
-## <a name="next-steps"></a>Next steps
+## その他のネットワーク コンポーネント
+オンプレミスの物理ネットワーク インフラストラクチャと同様に、Azure の仮想ネットワークはサブネットと IP アドレス指定以外のものも使用可能です。アプリケーション インフラストラクチャを設計する際に、これらの追加コンポーネントの一部を組み込むことができます。
 
-[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)] 
+- [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) - Azure の仮想ネットワークを他の Azure 仮想ネットワークに接続するか、サイト間 VPN 接続を経由してオンプレミス ネットワークに接続します。セキュリティで保護された専用の接続を使用する場合は、Express Route 接続を実装します。また、ポイント対サイト VPN 接続を使用して、ユーザーに直接アクセスを提供することもできます。
+- [ロード バランサー](../load-balancer/load-balancer-overview.md) - 必要に応じて、外部および内部のトラフィックの負荷分散を提供します。
+- [Application Gateway](../application-gateway/application-gateway-introduction.md) - アプリケーション層の HTTP 負荷分散で、Azure のロード バランサーをデプロイするよりも Web アプリケーションにとって利点があります。
+- [Traffic Manager](../traffic-manager/traffic-manager-overview.md) - DNS ベースのトラフィック分散で、エンドユーザーを使用可能な最も近いアプリケーション エンドポイントにルーティングすることで、異なるリージョンの Azure データセンターからアプリケーションをホストできます。
 
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
 
+[AZURE.INCLUDE [virtual-machines-windows-infrastructure-guidelines-next-steps](../../includes/virtual-machines-windows-infrastructure-guidelines-next-steps.md)]
 
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,10 +1,10 @@
 <properties
 pageTitle="OneDrive for Business | Microsoft Azure"
-description="Create Logic apps with Azure App service. Connect to OneDrive for Business to manage your files. You can perform various actions such as upload, update, get, and delete on files."
-services="logic-apps"   
-documentationCenter=".net,nodejs,java"  
-authors="msftman"   
-manager="erikre"    
+description="Azure App Service を使用してロジック アプリを作成します。OneDrive for Business に接続してファイルを管理します。ファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。"
+services="logic-apps"	
+documentationCenter=".net,nodejs,java" 	
+authors="msftman"	
+manager="erikre"	
 editor=""
 tags="connectors" />
 
@@ -17,351 +17,347 @@ ms.workload="integration"
 ms.date="08/18/2016"
 ms.author="deonhe"/>
 
+# OneDrive for Business コネクタの使用
 
-# <a name="get-started-with-the-onedrive-for-business-connector"></a>Get started with the OneDrive for Business connector
+OneDrive for Business に接続してファイルを管理します。ファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
 
-Connect to OneDrive for Business to manage your files. You can perform various actions such as upload, update, get, and delete on files.
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version. 
+まず、ロジック アプリを作成します。[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)に関する記事をご覧ください。
 
-You can get started by creating a Logic app now, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
 
-## <a name="triggers-and-actions"></a>Triggers and actions
+OneDrive for Business コネクタは、アクションとして使用できます。OneDrive for Business コネクタにはトリガーがあります。すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-The OneDrive for Business connector can be used as an action; it has trigger(s). All connectors support data in JSON and XML formats. 
+ OneDrive for Business コネクタでは、次のアクションやトリガーを使用できます。
 
- The OneDrive for Business connector has the following action(s) and/or trigger(s) available:
+### OneDrive for Business のアクション
+実行できるアクションは以下のとおりです。
 
-### <a name="onedrive-for-business-actions"></a>OneDrive for Business actions
-You can take these action(s):
-
-|Action|Description|
+|アクション|Description|
 |--- | ---|
-|[GetFileMetadata](connectors-create-api-onedriveforbusiness.md#getfilemetadata)|Retrieves metadata of a file in OneDrive for Business using id|
-|[UpdateFile](connectors-create-api-onedriveforbusiness.md#updatefile)|Updates a file in OneDrive for Business|
-|[DeleteFile](connectors-create-api-onedriveforbusiness.md#deletefile)|Deletes a file from OneDrive for Business|
-|[GetFileMetadataByPath](connectors-create-api-onedriveforbusiness.md#getfilemetadatabypath)|Retrieves metadata of a file in OneDrive for Business using path|
-|[GetFileContentByPath](connectors-create-api-onedriveforbusiness.md#getfilecontentbypath)|Retrieves contents of a file in OneDrive for Business using path|
-|[GetFileContent](connectors-create-api-onedriveforbusiness.md#getfilecontent)|Retrieves contents of a file in OneDrive for Business using id|
-|[CreateFile](connectors-create-api-onedriveforbusiness.md#createfile)|Uploads a file to OneDrive for Business|
-|[CopyFile](connectors-create-api-onedriveforbusiness.md#copyfile)|Copies a file to OneDrive for Business|
-|[ListFolder](connectors-create-api-onedriveforbusiness.md#listfolder)|Lists files in a OneDrive for Business folder|
-|[ListRootFolder](connectors-create-api-onedriveforbusiness.md#listrootfolder)|Lists files in the OneDrive for Business root folder|
-|[ExtractFolderV2](connectors-create-api-onedriveforbusiness.md#extractfolderv2)|Extracts a folder to OneDrive for Business|
-### <a name="onedrive-for-business-triggers"></a>OneDrive for Business triggers
-You can listen for these event(s):
+|[GetFileMetadata](connectors-create-api-onedriveforbusiness.md#getfilemetadata)|ID を使用して、OneDrive for Business のファイルのメタデータを取得します|
+|[UpdateFile](connectors-create-api-onedriveforbusiness.md#updatefile)|OneDrive for Business のファイルを更新します|
+|[DeleteFile](connectors-create-api-onedriveforbusiness.md#deletefile)|OneDrive for Business からファイルを削除します|
+|[GetFileMetadataByPath](connectors-create-api-onedriveforbusiness.md#getfilemetadatabypath)|パスを使用して、OneDrive for Business のファイルのメタデータを取得します|
+|[GetFileContentByPath](connectors-create-api-onedriveforbusiness.md#getfilecontentbypath)|パスを使用して、OneDrive for Business のファイルの内容を取得します|
+|[GetFileContent](connectors-create-api-onedriveforbusiness.md#getfilecontent)|ID を使用して、OneDrive for Business のファイルの内容を取得します|
+|[CreateFile](connectors-create-api-onedriveforbusiness.md#createfile)|OneDrive for Business にファイルをアップロードします|
+|[CopyFile](connectors-create-api-onedriveforbusiness.md#copyfile)|OneDrive for Business にファイルをコピーします|
+|[ListFolder](connectors-create-api-onedriveforbusiness.md#listfolder)|OneDrive for Business フォルダーのファイルを一覧表示します|
+|[ListRootFolder](connectors-create-api-onedriveforbusiness.md#listrootfolder)|OneDrive for Business ルート フォルダーのファイルを一覧表示します|
+|[ExtractFolderV2](connectors-create-api-onedriveforbusiness.md#extractfolderv2)|OneDrive for Business にフォルダーを抽出します|
+### OneDrive for Business のトリガー
+次のイベントをリッスンできます。
 
-|Trigger | Description|
+|トリガー | Description|
 |--- | ---|
-|When a file is created|Triggers a flow when a new file is created in a OneDrive for Business folder|
-|When a file is modified|Triggers a flow when a file is modified in a OneDrive for Business folder|
+|ファイルの作成時|OneDrive for Business フォルダーに新しいファイルが作成されたときにフローをトリガーします|
+|ファイルの変更時|OneDrive for Business フォルダー内のファイルが変更されたときにフローをトリガーします|
 
 
-## <a name="create-a-connection-to-onedrive-for-business"></a>Create a connection to OneDrive for Business
-To create Logic apps with OneDrive for Business, you must first create a **connection** then provide the details for the following properties: 
+## OneDrive for Business への接続の作成
+OneDrive for Business を使用してロジック アプリを作成するには、まず**接続**を作成してから、次のプロパティの詳細を指定する必要があります。
 
-|Property| Required|Description|
+|プロパティ| 必須|Description|
 | ---|---|---|
-|Token|Yes|Provide OneDrive for Business Credentials|
-After you create the connection, you can use it to execute the actions and listen for the triggers described in this article. 
+|トークン|はい|OneDrive for Business の資格情報を提供します|
+接続を作成したら、その接続を使用してアクションを実行し、この記事で説明するトリガーをリッスンできます。
 
->[AZURE.INCLUDE [Steps to create a connection to OneDrive for Business](../../includes/connectors-create-api-onedriveforbusiness.md)]
+>[AZURE.INCLUDE [OneDrive for Business への接続を作成する手順](../../includes/connectors-create-api-onedriveforbusiness.md)]
 
->[AZURE.TIP] You can use this connection in other logic apps.
+>[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
-## <a name="reference-for-onedrive-for-business"></a>Reference for OneDrive for Business
-Applies to version: 1.0
+## OneDrive for Business のリファレンス
+適用されるバージョン: 1.0
 
-## <a name="getfilemetadata"></a>GetFileMetadata
-Get file metadata using id: Retrieves metadata of a file in OneDrive for Business using id 
+## GetFileMetadata
+ID を使用してファイルのメタデータを取得: ID を使用して、OneDrive for Business のファイルのメタデータを取得します
 
-```GET: /datasets/default/files/{id}``` 
+```GET: /datasets/default/files/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|yes|path|none|Specify the file|
+|id|string|○|path|なし|ファイルを指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="updatefile"></a>UpdateFile
-Update file: Updates a file in OneDrive for Business 
+## UpdateFile
+ファイルの更新: OneDrive for Business のファイルを更新します
 
-```PUT: /datasets/default/files/{id}``` 
+```PUT: /datasets/default/files/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|yes|path|none|Specify the file to update|
-|body| |yes|body|none|Content of the file to update in OneDrive for Business|
+|id|string|○|path|なし|更新するファイルを指定します|
+|body| |○|body|なし|OneDrive for Business 内の更新するファイルの内容|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="deletefile"></a>DeleteFile
-Delete file: Deletes a file from OneDrive for Business 
+## DeleteFile
+ファイルの削除: OneDrive for Business からファイルを削除します
 
-```DELETE: /datasets/default/files/{id}``` 
+```DELETE: /datasets/default/files/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|yes|path|none|Specify the file to delete|
+|id|string|○|path|なし|削除するファイルを指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="getfilemetadatabypath"></a>GetFileMetadataByPath
-Get file metadata using path: Retrieves metadata of a file in OneDrive for Business using path 
+## GetFileMetadataByPath
+パスを使用してファイルのメタデータを取得: パスを使用して、OneDrive for Business のファイルのメタデータを取得します
 
-```GET: /datasets/default/GetFileByPath``` 
+```GET: /datasets/default/GetFileByPath```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|path|string|yes|query|none|Unique path to the file in OneDrive for Business|
+|path|string|○|query|なし|OneDrive for Business 内のファイルへの一意のパス|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="getfilecontentbypath"></a>GetFileContentByPath
-Get file content using path: Retrieves contents of a file in OneDrive for Business using path 
+## GetFileContentByPath
+パスを使用してファイルの内容を取得: パスを使用して、OneDrive for Business のファイルの内容を取得します
 
-```GET: /datasets/default/GetFileContentByPath``` 
+```GET: /datasets/default/GetFileContentByPath```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|path|string|yes|query|none|Unique path to the file in OneDrive for Business|
+|path|string|○|query|なし|OneDrive for Business 内のファイルへの一意のパス|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="getfilecontent"></a>GetFileContent
-Get file content using id: Retrieves contents of a file in OneDrive for Business using id 
+## GetFileContent
+ID を使用してファイルの内容を取得: ID を使用して、OneDrive for Business のファイルの内容を取得します
 
-```GET: /datasets/default/files/{id}/content``` 
+```GET: /datasets/default/files/{id}/content```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|yes|path|none|Specify the file|
+|id|string|○|path|なし|ファイルを指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="createfile"></a>CreateFile
-Create file: Uploads a file to OneDrive for Business 
+## CreateFile
+ファイルの作成: OneDrive for Business にファイルをアップロードします
 
-```POST: /datasets/default/files``` 
+```POST: /datasets/default/files```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderPath|string|yes|query|none|Folder path to upload the file to OneDrive for Business|
-|name|string|yes|query|none|Name of the file to create in OneDrive for Business|
-|body| |yes|body|none|Content of the file to upload to OneDrive for Business|
+|folderPath|string|○|query|なし|ファイルを OneDrive for Business にアップロードするフォルダーのパス|
+|name|string|○|query|なし|OneDrive for Business で作成するファイルの名前|
+|body| |○|body|なし|OneDrive for Business にアップロードするファイルの内容|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="copyfile"></a>CopyFile
-Copy file: Copies a file to OneDrive for Business 
+## CopyFile
+ファイルのコピー: OneDrive for Business にファイルをコピーします
 
-```POST: /datasets/default/copyFile``` 
+```POST: /datasets/default/copyFile```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|source|string|yes|query|none|Url to source file|
-|destination|string|yes|query|none|Destination file path in OneDrive for Business, including target filename|
-|overwrite|boolean|no|query|false|Overwrites the destination file if set to 'true'|
+|source|string|○|query|なし|ソース ファイルの URL|
+|destination|string|○|query|なし|対象ファイル名を含む OneDrive for Business の宛先ファイル パス|
+|overwrite|boolean|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="onnewfile"></a>OnNewFile
-When a file is created: Triggers a flow when a new file is created in a OneDrive for Business folder 
+## OnNewFile
+ファイルの作成時: OneDrive for Business フォルダーに新しいファイルが作成されたときにフローをトリガーします
 
-```GET: /datasets/default/triggers/onnewfile``` 
+```GET: /datasets/default/triggers/onnewfile```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderId|string|yes|query|none|Specify a folder|
+|folderId|string|○|query|なし|フォルダーを指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="onupdatedfile"></a>OnUpdatedFile
-When a file is modified: Triggers a flow when a file is modified in a OneDrive for Business folder 
+## OnUpdatedFile
+ファイルの変更時: OneDrive for Business フォルダー内のファイルが変更されたときにフローをトリガーします
 
-```GET: /datasets/default/triggers/onupdatedfile``` 
+```GET: /datasets/default/triggers/onupdatedfile```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|folderId|string|yes|query|none|Specify a folder|
+|folderId|string|○|query|なし|フォルダーを指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="listfolder"></a>ListFolder
-List files in folder: Lists files in a OneDrive for Business folder 
+## ListFolder
+フォルダー内のファイルの一覧表示: OneDrive for Business フォルダーのファイルを一覧表示します
 
-```GET: /datasets/default/folders/{id}``` 
+```GET: /datasets/default/folders/{id}```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|id|string|yes|path|none|Specify the folder|
+|id|string|○|path|なし|フォルダーを指定します|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="listrootfolder"></a>ListRootFolder
-List root folder: Lists files in the OneDrive for Business root folder 
+## ListRootFolder
+ルート フォルダーの一覧表示: OneDrive for Business ルート フォルダーのファイルを一覧表示します
 
-```GET: /datasets/default/folders``` 
+```GET: /datasets/default/folders```
 
-There are no parameters for this call
-#### <a name="response"></a>Response
+この呼び出しには、パラメーターはありません
+#### 応答
 
-|Name|Description|
+|Name|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="extractfolderv2"></a>ExtractFolderV2
-Extract folder: Extracts a folder to OneDrive for Business 
+## ExtractFolderV2
+フォルダーの抽出: OneDrive for Business にフォルダーを抽出します
 
-```POST: /datasets/default/extractFolderV2``` 
+```POST: /datasets/default/extractFolderV2```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| Name| データ型|必須|場所|既定値|Description|
 | ---|---|---|---|---|---|
-|source|string|yes|query|none|Path to the archive file|
-|destination|string|yes|query|none|Path in OneDrive for Business to extract the archive contents|
-|overwrite|boolean|no|query|false|Overwrites the destination files if set to 'true'|
+|source|string|○|query|なし|アーカイブ ファイルのパス|
+|destination|string|○|query|なし|アーカイブの内容を抽出する OneDrive for Business のパス|
+|overwrite|boolean|×|query|false|’true’ に設定すると、宛先ファイルが上書きされます|
 
-#### <a name="response"></a>Response
+#### 応答
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|default|Operation Failed.|
+|default|操作に失敗しました。|
 
 
-## <a name="object-definitions"></a>Object definitions 
+## オブジェクト定義 
 
-### <a name="datasetsmetadata"></a>DataSetsMetadata
+### DataSetsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|tabular|not defined|No |
-|blob|not defined|No |
+|tabular|未定義|なし |
+|BLOB|未定義|なし |
 
 
 
-### <a name="tabulardatasetsmetadata"></a>TabularDataSetsMetadata
+### TabularDataSetsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|source|string|No |
-|displayName|string|No |
-|urlEncoding|string|No |
-|tableDisplayName|string|No |
-|tablePluralName|string|No |
+|source|string|なし |
+|displayName|string|なし |
+|urlEncoding|string|なし |
+|tableDisplayName|string|なし |
+|tablePluralName|string|なし |
 
 
 
-### <a name="blobdatasetsmetadata"></a>BlobDataSetsMetadata
+### BlobDataSetsMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|source|string|No |
-|displayName|string|No |
-|urlEncoding|string|No |
+|source|string|なし |
+|displayName|string|なし |
+|urlEncoding|string|なし |
 
 
 
-### <a name="blobmetadata"></a>BlobMetadata
+### BlobMetadata
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
-|Id|string|No |
-|Name|string|No |
-|DisplayName|string|No |
-|Path|string|No |
-|LastModified|string|No |
-|Size|integer|No |
-|MediaType|string|No |
-|IsFolder|boolean|No |
-|ETag|string|No |
-|FileLocator|string|No |
+|ID|string|なし |
+|名前|string|なし |
+|DisplayName|string|なし |
+|パス|string|なし |
+|LastModified|string|なし |
+|サイズ|integer|なし |
+|MediaType|string|なし |
+|IsFolder|boolean|なし |
+|ETag|string|なし |
+|FileLocator|string|なし |
 
 
 
-### <a name="object"></a>Object
+### オブジェクト
 
 
-| Property Name | Data Type | Required |
+| プロパティ名 | データ型 | 必須 |
 |---|---|---|
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md)
+## 次のステップ
+[ロジック アプリを作成します](../app-service-logic/app-service-logic-create-a-logic-app.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Common causes of Cloud Service roles recycling | Microsoft Azure"
-   description="A cloud service role that suddenly recycles can cause significant downtime. Here are some common issues that cause roles to be recycled, which may help you reduce downtime."
+   pageTitle="クラウド サービス ロールがリサイクルされる一般的な原因 | Microsoft Azure"
+   description="クラウド サービス ロールが突然リサイクルされることで、重大なダウンタイムが生じることがあります。ロールのリサイクルを引き起こす一般的な問題とダウンタイムの改善策を取り上げました。"
    services="cloud-services"
    documentationCenter=""
    authors="simonxjx"
@@ -16,69 +16,63 @@
    ms.date="09/02/2016"
    ms.author="v-six" />
 
+# ロールのリサイクルを引き起こす一般的な問題
 
-# <a name="common-issues-that-cause-roles-to-recycle"></a>Common issues that cause roles to recycle
-
-This article discusses some of the common causes of deployment problems and provides troubleshooting tips to help you resolve these problems. An indication that a problem exists with an application is when the role instance fails to start, or it cycles between the initializing, busy, and stopping states.
+この記事では、デプロイメントに伴う問題の一般的な原因と問題解決に役立つトラブルシューティングのヒントを紹介します。アプリケーションに存在する問題の兆候として、ロール インスタンスが起動に失敗したり、初期化、ビジー、停止という状態を繰り返したりすることが挙げられます。
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-## <a name="missing-runtime-dependencies"></a>Missing runtime dependencies
+## ランタイムの依存コンポーネントの不足
 
-If a role in your application relies on any assembly that is not part of the .NET Framework or the Azure managed library, you must explicitly include that assembly in the application package. Keep in mind that other Microsoft frameworks are not available on Azure by default. If your role relies on such a framework, you must add those assemblies to the application package.
+アプリケーションのロールに必要なアセンブリが .NET Framework や Azure マネージ ライブラリに含まれていない場合、そのアセンブリをアプリケーション パッケージに明示的にインクルードする必要があります。それ以外の Microsoft フレームワークは、明示的に指定しない限り、Azure では利用できないのでご注意ください。そのようなフレームワークにロールが依存している場合、対象となるアセンブリをアプリケーション パッケージに追加する必要があります。
 
-Before you build and package your application, verify the following:
+アプリケーションをビルドしてパッケージ化する前に、次のことを確認します。
 
-- If using Visual studio, make sure the **Copy Local** property is set to **True** for each referenced assembly in your project that is not part of the Azure SDK or the .NET Framework.
+- Visual studio を使用している場合、Azure SDK や .NET Framework に含まれていない、プロジェクトのすべての参照アセンブリの **[ローカル コピー]** プロパティが **[True]** に設定されていること。
 
-- Make sure the web.config file does not reference any unused assemblies in the compilation element.
+- web.config ファイルの compilation 要素が、未使用のアセンブリを参照していないこと。
 
-- The **Build Action** of every .cshtml file is set to **Content**. This ensures that the files will appear correctly in the package and enables other referenced files to appear in the package.
+- すべての .cshtml ファイルの **[ビルド アクション]** が **[コンテンツ]** に設定されていること。この設定によって当該ファイルが正しくパッケージに追加され、他の参照ファイルをパッケージに追加することができます。
 
-## <a name="assembly-targets-wrong-platform"></a>Assembly targets wrong platform
+## アセンブリのターゲット プラットフォームの間違い
 
-Azure is a 64-bit environment. Therefore, .NET assemblies compiled for a 32-bit target won't work on Azure.
+Azure は 64 ビット環境です。そのため、32 ビット ターゲット用にコンパイルされた .NET アセンブリは Azure では動作しません。
 
-## <a name="role-throws-unhandled-exceptions-while-initializing-or-stopping"></a>Role throws unhandled exceptions while initializing or stopping
+## 初期化中または停止中ハンドルされない例外をロールがスローする
 
-Any exceptions that are thrown by the methods of the [RoleEntryPoint] class, which includes the [OnStart], [OnStop], and [Run] methods, are unhandled exceptions. If an unhandled exception occurs in one of these methods, the role will recycle. If the role is recycling repeatedly, it may be throwing an unhandled exception each time it tries to start.
+[RoleEntryPoint] クラスのメソッド ([OnStart]、[OnStop]、[Run] を含む) によってスローされる例外はすべて、ハンドルされない例外となります。そのいずれかのメソッドでハンドルされない例外が発生した場合、ロールはリサイクルされます。ロールが何度もリサイクルされる場合、起動の途中でハンドルされない例外がスローされている可能性があります。
 
-## <a name="role-returns-from-run-method"></a>Role returns from Run method
+## Run メソッドが終了している
 
-The [Run] method is intended to run indefinitely. If your code overrides the [Run] method, it should sleep indefinitely. If the [Run] method returns, the role recycles.
+[Run] メソッドは無限に実行するように設計されています。[Run] メソッドをオーバーライドする場合は、無期限にスリープ状態となるようにコードを記述する必要があります。[Run] メソッドから制御が戻った場合、ロールはリサイクルされます。
 
-## <a name="incorrect-diagnosticsconnectionstring-setting"></a>Incorrect DiagnosticsConnectionString setting
+## DiagnosticsConnectionString の設定に誤りがある
 
-If application uses Azure Diagnostics, your service configuration file must specify the `DiagnosticsConnectionString` configuration setting. This setting should specify an HTTPS connection to your storage account in Azure.
+アプリケーションで Azure 診断を使用している場合、サービス構成ファイルで `DiagnosticsConnectionString` 構成設定を指定する必要があります。この設定で、Azure にある該当ストレージ アカウントへの HTTPS 接続を指定します。
 
-To ensure that your `DiagnosticsConnectionString` setting is correct before you deploy your application package to Azure, verify the following:  
+アプリケーション パッケージを Azure にデプロイする前に `DiagnosticsConnectionString` が正しく設定されていることを確かめるために、次の点を確認してください。
 
-- The `DiagnosticsConnectionString` setting points to a valid storage account in Azure.  
-  By default, this setting points to the emulated storage account, so you must explicitly change this setting before you deploy your application package. If you do not change this setting, an exception is thrown when the role instance attempts to start the diagnostic monitor. This may cause the role instance to recycle indefinitely.
+- Azure 内の有効なストレージ アカウントが `DiagnosticsConnectionString` の設定に指定されていること。既定では、エミュレートされたストレージ アカウントが指定されているため、アプリケーション パッケージをデプロイする前に、この設定を明示的に変更する必要があります。この設定を変更しなかった場合、ロール インスタンスが診断モニターを起動しようとしたときに例外がスローされます。ロール インスタンスが無限にリサイクルされる原因となる場合があります。
 
-- The connection string is specified in the following [format](../storage/storage-configure-connection-string.md). (The protocol must be specified as HTTPS.) Replace *MyAccountName* with the name of your storage account, and *MyAccountKey* with your access key:    
+- 接続文字列は次の[形式](../storage/storage-configure-connection-string.md)で指定します。(プロトコルには HTTPS を指定する必要があります。) *MyAccountName* には該当するストレージ アカウントの名前を、*MyAccountKey* には該当するアクセス キーを指定してください。
 
         DefaultEndpointsProtocol=https;AccountName=MyAccountName;AccountKey=MyAccountKey
 
-  If you are developing your application by using Azure Tools for Microsoft Visual Studio, you can use the [property pages](https://msdn.microsoft.com/library/ee405486) to set this value.
+  Azure Tools for Microsoft Visual Studio をアプリケーションの開発に使用している場合、この値は、[プロパティ ページ](https://msdn.microsoft.com/library/ee405486)を使用して設定できます。
 
-## <a name="exported-certificate-does-not-include-private-key"></a>Exported certificate does not include private key
+## エクスポートした証明書に秘密キーが含まれていない
 
-To run a web role under SSL, you must ensure that your exported management certificate includes the private key. If you use the *Windows Certificate Manager* to export the certificate, be sure to select **Yes** for the **Export the private key** option. The certificate must be exported in the PFX format, which is the only format currently supported.
+Web ロールを SSL で実行する場合は、エクスポートした管理証明書に秘密キーが含まれていることを確認してください。*Windows 証明書マネージャー*を使用して証明書をエクスポートする場合は必ず、**[Export the private key (秘密キーをエクスポートします)]** オプションに **[はい]** を選択してください。証明書は PFX 形式でエクスポートする必要があります。現在サポートされている形式はこれだけです。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-View more [troubleshooting articles](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) for cloud services.
+クラウド サービスの他の[トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services)を参照します。
 
-View more role recycling scenarios at [Kevin Williamson's blog series](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx).
+他のロール リサイクル シナリオを確認するには、[Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
 
 [RoleEntryPoint]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.aspx
 [OnStart]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstart.aspx
 [OnStop]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.onstop.aspx
 [Run]: https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleentrypoint.run.aspx
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

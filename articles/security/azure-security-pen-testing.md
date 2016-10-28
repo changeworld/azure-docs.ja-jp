@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Pen Testing | Microsoft Azure"
-   description="The article provides an overview of the penetration testing (pentest) process and how perform pentest against your apps running in Azure infrastructure."
+   pageTitle="侵入テスト | Microsoft Azure"
+   description="この記事では、侵入テスト プロセスの概要と、Azure インフラストラクチャで実行されているアプリに対して侵入テストを行う方法について提供します。"
    services="security"
    documentationCenter="na"
    authors="YuriDio"
@@ -13,37 +13,31 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="na"
-   ms.date="10/25/2016"
+   ms.date="08/09/2016"
    ms.author="yurid"/>
 
+# 侵入テスト
 
-# <a name="pen-testing"></a>Pen Testing
+アプリケーションのテストとデプロイに Microsoft Azure を使用することの優れた点の 1 つは、アプリケーションを開発、テストおよびデプロイするために、オンプレミスのインフラストラクチャをまとめる必要がないことです。すべてのインフラストラクチャが、Microsoft Azure Platform サービスで処理されます。オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。
 
-One of the great things about using Microsoft Azure for application testing and deployment is that you don’t need to put together an on-premises infrastructure to develop, test and deploy your applications. All the infrastructure is taken care of by the Microsoft Azure platform services. You don’t have to worry about requisitioning, acquiring, and “racking and stacking” your own on-premises hardware.
+これは非常に良いことですが、通常のセキュリティで適切な注意を払う必要はあります。実行する必要のある操作の 1 つは、Azure にデプロイするアプリケーションに対する侵入テストです。
 
-This is great – but you still need to make sure you perform your normal security due diligence. One of the things you need to do is penetration test the applications you deploy in Azure.
+Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e)を実行していることは、既にご存知かもしれません。これは、セキュリティ コントロールの向上、新しいセキュリティ コントロールの導入、セキュリティ プロセスの向上という観点から、プラットフォームを向上し、アクションをガイドするために役立ちます。
 
-You might already know that Microsoft performs [penetration testing of our Azure environment](https://gallery.technet.microsoft.com/Cloud-Red-Teaming-b837392e). This helps us improve our platform and guides our actions in terms of improving security controls, introducing new security controls, and improving our security processes.
+お客様のためにアプリケーションの侵入テストを行うことはありませんが、お客様のアプリケーションに侵入テストを実行する必要があることは理解しています。お客様のアプリケーションのセキュリティを強化するときに、Azure エコシステム全体のセキュリティ保護を高めることができるため、これは良いことです。
 
-We don’t pen test your application for you, but we do understand that you will want and need to perform pen testing on your own applications. That’s a good thing, because when you enhance the security of your applications, you help make the entire Azure ecosystem more secure.
+お客様がアプリケーションの侵入テストを行うと、Microsoft に対して攻撃しているように見える可能性があります。攻撃パターンを[継続的に監視し](http://blogs.msdn.com/b/azuresecurity/archive/2015/07/05/best-practices-to-protect-your-azure-deployment-against-cloud-drive-by-attacks.aspx)、必要に応じて、インシデントへの対応プロセスを開始することになります。お客様が適切な注意を払っている侵入テストが原因で、インシデントへの対応プロセスをトリガーした場合、お客様の役に立つことはなく、Microsoft の役にも立ちません。
 
-When you pen test your applications, it might look like an attack to us. We [continuously monitor](http://blogs.msdn.com/b/azuresecurity/archive/2015/07/05/best-practices-to-protect-your-azure-deployment-against-cloud-drive-by-attacks.aspx) for attack patterns and will initiate an incident response process if we need to. It doesn’t help you and it doesn’t help us if we trigger an incident response due to your own due diligence pen testing.
+どうすればよいでしょうか。
 
-What to do?
+Azure でホストされるアプリケーションの侵入テストを行う準備ができたら、Microsoft に連絡する必要があります。お客様が特定のテストを実行する予定であることを把握すると、テストが Azure 侵入テストの契約条件に適合している限り、不注意でシャットダウンすることはありません (テストを実行している IP アドレスをブロックするなど)。実行できる標準テストは、次のとおりです。
 
-When you’re ready to pen test your Azure-hosted applications, you need to let us know. Once we know that you’re going to be performing specific tests, we won’t inadvertently shut you down (such as blocking the IP address that you’re testing from), as long as your tests conform to the Azure pen testing terms and conditions.
-Standard tests you can perform include:
+- [Open Web Application Security Project (OWASP) の上位 10 の脆弱性](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)を明らかにするエンドポイントでのテスト
+- エンドポイントの[ファジー テスト](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/)
+- エンドポイントの[ポートのスキャン](https://en.wikipedia.org/wiki/Port_scanner)
 
-- Tests on your endpoints to uncover the [Open Web Application Security Project (OWASP) top 10 vulnerabilities](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project)
-- [Fuzz testing](https://blogs.microsoft.com/cybertrust/2007/09/20/fuzz-testing-at-microsoft-and-the-triage-process/) of your endpoints
-- [Port scanning](https://en.wikipedia.org/wiki/Port_scanner) of your endpoints
+実行できないテストの種類の 1 つは、[サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。これには、Dos 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
-One type of test that you can’t perform is any kind of [Denial of Service (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) attack. This includes initiating a DoS attack itself, or performing related tests that might determine, demonstrate or simulate any type of DoS attack.
+Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「[侵入テストの概要](https://security-forms.azure.com/penetration-testing/terms)」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。また、侵入テストの契約条件の詳細と、Azure やその他の Microsoft サービスに関連するセキュリティの不備を報告する方法に関する役立つリンクを見つけることもできます。
 
-Are you ready to get started with pen testing your applications hosted in Microsoft Azure? If so, then head on over to the [Penetration Test Overview](https://security-forms.azure.com/penetration-testing/terms) page (and click the Create a Testing Request button at the bottom of the page. You’ll also find more information on the pen testing terms and conditions and helpful links on how you can report security flaws related to Azure or any other Microsoft service.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

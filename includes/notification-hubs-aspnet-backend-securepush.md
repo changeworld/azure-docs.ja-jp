@@ -1,50 +1,50 @@
-## <a name="webapi-project"></a>WebAPI Project
+## Web API プロジェクト
 
-1. In Visual Studio, open the **AppBackend** project that you created in the **Notify Users** tutorial.
-2. In Notifications.cs, replace the whole **Notifications** class with the following code. Be sure to replace the placeholders with your connection string (with full access) for your notification hub, and the hub name. You can obtain these values from the [Azure Classic Portal](http://manage.windowsazure.com). This module now represents the different secure notifications that will be sent. In a complete implementation, the notifications will be stored in a database; for simplicity, in this case we store them in memory.
+1. Visual Studio で、**ユーザーへの通知**チュートリアルで作成した **AppBackend** プロジェクトを開きます。
+2. Notifications.cs の **Notifications** クラス全体を次のコードで置き換えます。必ず、プレースホルダーを通知ハブの (フル アクセスを持つ) 接続文字列とハブの名前に置き換えます。これらの値は [Azure クラシック ポータル](http://manage.windowsazure.com)から取得できます。ここで、このモジュールは、送信される、セキュリティで保護された別の通知を表します。完全な実装では、通知はデータベースに格納されますが、ここでは、操作を簡単にするために、メモリに格納します。
 
-        public class Notification
-        {
-            public int Id { get; set; }
-            public string Payload { get; set; }
-            public bool Read { get; set; }
-        }
+		public class Notification
+	    {
+	        public int Id { get; set; }
+	        public string Payload { get; set; }
+	        public bool Read { get; set; }
+	    }
     
     
-        public class Notifications
-        {
-            public static Notifications Instance = new Notifications();
-            
-            private List<Notification> notifications = new List<Notification>();
-    
-            public NotificationHubClient Hub { get; set; }
-    
-            private Notifications() {
-                Hub = NotificationHubClient.CreateClientFromConnectionString("{conn string with full access}",  "{hub name}");
-            }
+	    public class Notifications
+	    {
+	        public static Notifications Instance = new Notifications();
+	        
+	        private List<Notification> notifications = new List<Notification>();
+	
+	        public NotificationHubClient Hub { get; set; }
+	
+	        private Notifications() {
+	            Hub = NotificationHubClient.CreateClientFromConnectionString("{conn string with full access}", 	"{hub name}");
+	        }
 
-            public Notification CreateNotification(string payload)
-            {
-                var notification = new Notification() {
+	        public Notification CreateNotification(string payload)
+	        {
+	            var notification = new Notification() {
                 Id = notifications.Count,
                 Payload = payload,
                 Read = false
-                };
+            	};
 
-                notifications.Add(notification);
+            	notifications.Add(notification);
 
-                return notification;
-            }
+            	return notification;
+	        }
 
-            public Notification ReadNotification(int id)
-            {
-                return notifications.ElementAt(id);
-            }
-        }
+	        public Notification ReadNotification(int id)
+	        {
+	            return notifications.ElementAt(id);
+	        }
+	    }
 
-20. In NotificationsController.cs, replace the code inside the **NotificationsController** class definition with the following code. This component implements a way for the device to retrieve the notification securely, and also provides a way (for the purposes of this tutorial) to trigger a secure push to your devices. Note that when sending the notification to the notification hub, we only send a raw notification with the ID of the notification (and no actual message):
+20. NotificationsController.cs の **NotificationsController** クラス定義内のコードを次のコードで置き換えます。このコンポーネントは、デバイスが安全に通知を取得する方法を実装します。また、(このチュートリアルでは) 自分のデバイスへの安全なプッシュをトリガーする方法も提供します。通知ハブに通知を送信するときに、通知の ID のみを含む (実際のメッセージは含まない) 直接通知を送信することに注意してください。
 
-        public NotificationsController()
+		public NotificationsController()
         {
             Notifications.Instance.CreateNotification("This is a secure notification!");
         }
@@ -68,22 +68,20 @@
             await Notifications.Instance.Hub.SendNotificationAsync(rawNotificationToBeSent, usernameTag);
 
             // apns
-            await Notifications.Instance.Hub.SendAppleNativeNotificationAsync("{\"aps\": {\"content-available\": 1}, \"secureId\": \"" + secureNotificationInTheBackend.Id.ToString() + "\"}", usernameTag);
+            await Notifications.Instance.Hub.SendAppleNativeNotificationAsync("{"aps": {"content-available": 1}, "secureId": "" + secureNotificationInTheBackend.Id.ToString() + ""}", usernameTag);
 
             // gcm
-            await Notifications.Instance.Hub.SendGcmNativeNotificationAsync("{\"data\": {\"secureId\": \"" + secureNotificationInTheBackend.Id.ToString() + "\"}}", usernameTag);
+            await Notifications.Instance.Hub.SendGcmNativeNotificationAsync("{"data": {"secureId": "" + secureNotificationInTheBackend.Id.ToString() + ""}}", usernameTag);
 
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
 
-Note that the `Post` method now does not send a toast notification. It sends a raw notification that contains only the notification ID, and not any sensitive content. Also, make sure to comment the send operation for the platforms for which you do not have credentials configured on your notification hub, as they will result in errors.
+`Post` メソッドは、トースト通知を送信しません。通知 ID のみを含み、慎重な扱いを要するコンテンツは含まない直接通知を送信します。また、通知ハブで資格情報を構成していないプラットフォームの送信操作は必ずコメント アウトしてください。そうしないと、エラーになります。
 
-21. Now we will re-deploy this app to an Azure Website in order to make it accessible from all devices. Right-click on the **AppBackend** project and select **Publish**.
+21. 次に、このアプリを Azure の Web サイトにもう一度デプロイして、すべてのデバイスからアクセスできるようにします。**AppBackend** プロジェクトを右クリックして **[発行]** を選択します。
 
-24. Select Azure Website as your publish target. Log in with your Azure account and select an existing or new Website, and make a note of the **destination URL** property in the **Connection** tab. We will refer to this URL as your *backend endpoint* later in this tutorial. Click **Publish**.
+24. 発行先として Azure の Web サイトを選択します。Azure アカウントでログインし、既存または新規の Web サイトを選択します。**[接続]** タブの **[宛先 URL]** プロパティをメモしておきます。後で、この URL を*バックエンド エンドポイント*として参照します。**[発行]** をクリックします。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1210_2015-->

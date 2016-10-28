@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Active Directory Reporting: Getting started | Microsoft Azure"
-   description="Lists the various available reports in Azure Active Directory reporting"
+   pageTitle="Azure Active Directory レポート: 使用の開始 | Microsoft Azure"
+   description="Azure Active Directory レポートで使用可能なさまざまなレポートが一覧表示します。"
    services="active-directory"
    documentationCenter=""
    authors="dhanyahk"
@@ -16,149 +16,144 @@
    ms.date="03/07/2016"
    ms.author="dhanyahk"/>
 
+# Azure Active Directory レポートの使用の開始
 
-# <a name="getting-started-with-azure-active-directory-reporting"></a>Getting started with Azure Active Directory Reporting
+## 説明
 
-## <a name="what-it-is"></a>What it is
+Azure Active Directory (Azure AD) には、ディレクトリに関するセキュリティ レポート、アクティビティ レポート、および監査レポートが含まれています。含まれているレポートの一覧を次に示します。
 
-Azure Active Directory (Azure AD) includes security, activity, and audit reports for your directory. Here's a list of the reports included:
+### セキュリティ レポート
 
-### <a name="security-reports"></a>Security reports
+- 不明なソースからのサインイン
+- 複数のエラー後のサインイン
+- 複数の地域からのサインイン
+- 不審なアクティビティのある IP アドレスからのサインイン
+- 不規則なサインイン アクティビティ
+- 感染している可能性があるデバイスからのサインイン
+- 異常なサインイン アクティビティがあるユーザー
 
-- Sign-ins from unknown sources
-- Sign-ins after multiple failures
-- Sign-ins from multiple geographies
-- Sign-ins from IP addresses with suspicious activity
-- Irregular sign-in activity
-- Sign-ins from possibly infected devices
-- Users with anomalous sign-in activity
+### アクティビティ レポート
 
-### <a name="activity-reports"></a>Activity reports
+- アプリケーションの使用状況: 概要
+- アプリケーションの使用状況: 詳細
+- アプリケーション ダッシュボード
+- アカウント プロビジョニング エラー
+- 個々のユーザー デバイス
+- 個々のユーザー アクティビティ
+- グループのアクティビティ レポート
+- パスワード リセット登録アクティビティ レポート
+- パスワード リセット アクティビティ
 
-- Application usage: summary
-- Application usage: detailed
-- Application dashboard
-- Account provisioning errors
-- Individual user devices
-- Individual user Activity
-- Groups activity report
-- Password Reset Registration Activity Report
-- Password reset activity
+### 監査レポート
 
-### <a name="audit-reports"></a>Audit reports
+- ディレクトリ監査レポート
 
-- Directory audit report
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-> [AZURE.TIP] For more documentation on Azure AD Reporting, check out [View your access and usage reports](active-directory-view-access-usage-reports.md).
 
 
+## 動作のしくみ
 
-## <a name="how-it-works"></a>How it works
 
+### レポート パイプライン
 
-### <a name="reporting-pipeline"></a>Reporting pipeline
+レポート パイプラインは、次の 3 つの主要な手順で構成されます。ユーザーがサインインするたびに、または認証が行われるたびに、次の処理が実行されます。
 
-The reporting pipeline consists of three main steps. Every time a user signs in, or an authentication is made, the following happens:
+- 最初に、ユーザーの認証が行われ、その結果 (成功または失敗) が Azure Active Directory サービスのデータベースに格納されます。
+- 定期的に、最新のすべてのサインインが処理されます。この時点で、Microsoft のセキュリティおよび異常アクティビティ アルゴリズムにより、最新のすべてのサインインについて疑わしいアクティビティが検索されます。
+- 処理が終わると、レポートが生成され、キャッシュに格納され、Azure クラシック ポータルで提供されます。
 
-- First, the user is authenticated (successfully or unsuccessfully), and the result is stored in the Azure Active Directory service databases.
-- At regular intervals, all recent sign ins are processed. At this point, our security and anomalous activity algorithms are searching all recent sign ins for suspicious activity.
-- After processing, the reports are written, cached, and served in the Azure classic portal.
+### レポートの生成時間
 
-### <a name="report-generation-times"></a>Report generation times
+Azure AD プラットフォームによって処理される認証およびサインインは膨大な量になるため、平均で 1 時間前のサインインが最新の処理済みサインインとして示されます。まれに、最新のサインインを処理するのに最大で 8 時間かかる場合があります。
 
-Due to the large volume of authentications and sign ins processed by the Azure AD platform, the most recent sign-ins processed are, on average, one hour old. In rare cases, it may take up to 8 hours to process the most recent sign-ins.
+各レポートの最上部のヘルプ テキストを調べることで、最新の処理済みサインインを確認できます。
 
-You can find the most recent processed sign-in by examining the help text at the top of each report.
+![各レポートの上部のヘルプ テキスト](./media/active-directory-reporting-getting-started/reportingWatermark.PNG)
 
-![Help text at the top of each report](./media/active-directory-reporting-getting-started/reportingWatermark.PNG)
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-> [AZURE.TIP] For more documentation on Azure AD Reporting, check out [View your access and usage reports](active-directory-view-access-usage-reports.md).
 
 
+## 使用の開始
 
-## <a name="getting-started"></a>Getting started
 
+### Azure クラシック ポータルにサインインする
 
-### <a name="sign-into-the-azure-classic-portal"></a>Sign into the Azure classic portal
+最初に、グローバル管理者またはコンプライアンス管理者として [Azure クラシック ポータル](https://manage.windowsazure.com)にサインインする必要があります。このとき、Azure サブスクリプションのサービス管理者または共同管理者であるか、"Azure AD へのアクセス" Azure サブスクリプションを使用している必要があります。
 
-First, you'll need to sign into the [Azure classic portal](https://manage.windowsazure.com)  as a global or compliance administrator. You must also be an Azure subscription service administrator or co-administrator, or be using the "Access to Azure AD" Azure subscription.
+### レポートに移動する
 
-### <a name="navigate-to-reports"></a>Navigate to Reports
+レポートを表示するには、ディレクトリの上部の [レポート] タブに移動します。
 
-To view Reports, navigate to the Reports tab at the top of your directory.
+今回初めてレポートを表示する場合、レポートを表示する前に、ダイアログ ボックスに示される条件に同意する必要があります。これは、一部の国において個人情報と見なされる可能性のあるこのデータを組織の管理者が表示することが許容されることを確認するためです。
 
-If this is your first time viewing the reports, you'll need to agree to a dialog box before you can view the reports. This is to ensure that it's acceptable for admins in your organization to view this data, which may be considered private information in some countries.
+![ダイアログ ボックス](./media/active-directory-reporting-getting-started/dialogBox.png)
 
-![Dialog box](./media/active-directory-reporting-getting-started/dialogBox.png)
+### 各レポートを表示する
 
-### <a name="explore-each-report"></a>Explore each report
+各レポートに移動して、収集されているデータおよび処理済みのサインインを表示します。[すべてのレポートの一覧をここで](active-directory-reporting-guide.md)確認できます。
 
-Navigate into each report to see the data being collected and the sign-ins processed. You can find a [list of all the reports here](active-directory-reporting-guide.md).
+![すべてのレポート](./media/active-directory-reporting-getting-started/reportsMain.png)
 
-![All reports](./media/active-directory-reporting-getting-started/reportsMain.png)
+### レポートを CSV としてダウンロードする
 
-### <a name="download-the-reports-as-csv"></a>Download the reports as CSV
+各レポートは、CSV (コンマ区切り値) ファイルとしてダウンロードすることができます。これらのファイルを Excel、PowerBI、またはサードパーティの分析プログラムで使用して、さらにデータを分析することができます。
 
-Each report can be downloaded as a CSV (comma-separated value) file. You can use these files in Excel, PowerBI or third-party analysis programs to further analyze your data.
+任意のレポートを CSV としてダウンロードするには、レポートに移動し、下部にある [ダウンロード] をクリックします。
 
-To download any report as a CSV, navigate to the report and click "Download" at the bottom.
+![[ダウンロード] ボタン](./media/active-directory-reporting-getting-started/downloadButton.png)
 
-![Download button](./media/active-directory-reporting-getting-started/downloadButton.png)
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-> [AZURE.TIP] For more documentation on Azure AD Reporting, check out [View your access and usage reports](active-directory-view-access-usage-reports.md).
 
 
 
 
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+### 異常なサインイン アクティビティのアラートをカスタマイズする
 
-### <a name="customize-alerts-for-anomalous-sign-in-activity"></a>Customize alerts for anomalous sign in activity
+ディレクトリの [構成] タブに移動します。
 
-Navigate to the "Configure" tab of your directory.
+[通知] セクションまでスクロールします。
 
-Scroll to the "Notifications" section.
+[異常なサインインの電子メール通知] を有効または無効にします。
 
-Enable or disable the "Email Notifications of Anomalous sign-ins" section.
+![[通知] セクション](./media/active-directory-reporting-getting-started/notificationsSection.png)
 
-![The Notifications section](./media/active-directory-reporting-getting-started/notificationsSection.png)
+### Azure AD Reporting API と統合する
 
-### <a name="integrate-with-the-azure-ad-reporting-api"></a>Integrate with the Azure AD Reporting API
+[Reporting API の概要](active-directory-reporting-api-getting-started.md)に関するページを参照してください。
 
-See [Getting started with the Reporting API](active-directory-reporting-api-getting-started.md).
+### ユーザーに Multi-Factor Authentication を適用する
 
-### <a name="engage-multi-factor-authentication-on-users"></a>Engage Multi-Factor Authentication on users
+レポート内のユーザーを選択します。
 
-Select a user in a report.
+画面の下部の [MFA を有効にする] をクリックします。
 
-Click the "Enable MFA" button at the bottom of the screen.
+![画面下部の[多要素認証] ボタン](./media/active-directory-reporting-getting-started/mfaButton.png)
 
-![The Multi-Factor Authentication button at the bottom of the screen](./media/active-directory-reporting-getting-started/mfaButton.png)
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-> [AZURE.TIP] For more documentation on Azure AD Reporting, check out [View your access and usage reports](active-directory-view-access-usage-reports.md).
 
 
 
+## 詳細情報
 
-## <a name="learn-more"></a>Learn more
 
+### イベントを監査する
 
-### <a name="audit-events"></a>Audit events
+ディレクトリで監査対象となるイベントについては、[Azure Active Directory レポートの監査イベント](active-directory-reporting-audit-events.md)に関するページを参照してください。
 
-Learn about what events are audited in the directory in [Azure Active Directory Reporting Audit Events](active-directory-reporting-audit-events.md).
+### API の統合
 
-### <a name="api-integration"></a>API Integration
+[Reporting API の概要](active-directory-reporting-api-getting-started.md)に関するページおよび [API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/mt126081.aspx)を参照してください。
 
-See [Getting started with the Reporting API](active-directory-reporting-api-getting-started.md) and the [API reference documentation](https://msdn.microsoft.com/library/azure/mt126081.aspx).
+### お問い合わせ
 
-### <a name="get-in-touch"></a>Get in touch
+ご意見ご感想、サポート、またはご質問については、[aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) までメールをお送りください。
 
-Email [aadreportinghelp@microsoft.com](mailto:aadreportinghelp@microsoft.com) for feedback, help, or any questions you might have.
+> [AZURE.TIP] Azure AD レポートの詳細については、「[アクセスおよび使用状況レポートの表示](active-directory-view-access-usage-reports.md)」を参照してください。
 
-> [AZURE.TIP] For more documentation on Azure AD Reporting, check out [View your access and usage reports](active-directory-view-access-usage-reports.md).
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

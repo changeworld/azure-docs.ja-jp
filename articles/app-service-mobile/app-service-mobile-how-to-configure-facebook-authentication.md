@@ -1,69 +1,68 @@
 <properties
-    pageTitle="How to configure Facebook authentication for your App Services application"
-    description="Learn how to configure Facebook authentication for your App Services application."
-    services="app-service"
-    documentationCenter=""
-    authors="mattchenderson"
-    manager="erikre"
-    editor=""/>
+	pageTitle="App Services アプリケーションに Facebook 認証を構成する方法"
+	description="App Services アプリケーションに Facebook 認証を構成する方法について説明します。"
+	services="app-service"
+	documentationCenter=""
+	authors="mattchenderson"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="na"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="mahender"/>
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="na"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.date="08/22/2016"
+	ms.author="mahender"/>
 
-
-# <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>How to configure your App Service application to use Facebook login
+# App Service アプリケーションを Facebook ログインを使用するように構成する方法
 
 [AZURE.INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-This topic shows you how to configure Azure App Service to use Facebook as an authentication provider.
+このトピックでは、認証プロバイダーとして Facebook を使用するように Azure App Service を構成する方法を示します。
 
-To complete the procedure in this topic, you must have a Facebook account that has a verified email address and a mobile phone number. To create a new Facebook account, go to [facebook.com].
+このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Facebook アカウントと携帯電話番号が必要になります。新しい Facebook アカウントを作成するには、[facebook.com] にアクセスしてください。
 
-## <a name="<a-name="register">-</a>register-your-application-with-facebook"></a><a name="register"> </a>Register your application with Facebook
+## <a name="register"> </a>Facebook にアプリケーションを登録する
 
-1. Log on to the [Azure portal], and navigate to your application. Copy your **URL**. You will use this to configure your Facebook app.
+1. [Azure ポータル]にログオンし、目的のアプリケーションに移動します。**[URL]** をコピーします。この URL は、Facebook アプリの構成で使用します。
 
-2. In another browser window, navigate to the [Facebook Developers] website and sign-in with your Facebook account credentials.
+2. 他のブラウザー ウィンドウで、[Facebook Developers] の Web サイトに移動し、Facebook アカウントの資格情報でサインインします。
 
-3. (Optional) If you have not already registered, click **Apps** > **Register as a Developer**, then accept the policy and follow the registration steps.
+3. (省略可能) まだ登録していない場合は、**[Apps]**、**[Register as a Developer]** の順にクリックし、ポリシーに同意して、登録手順に従います。
 
-4. Click **My Apps** > **Add a New App** > **Website** > **Skip and Create App ID**. 
+4. **[My Apps]**、**[Add a New App]**、**[Website]**、**[Skip and Create App ID]** の順にクリックします。
 
-5. In **Display Name**, type a unique name for your app, type your **Contact Email**, choose a **Category** for your app, then click **Create App ID** and complete the security check. This takes you to the developer dashboard for your new Facebook app.
+5. **[Display Name]** にアプリの一意の名前を入力し、**[Contact Email]** を入力して、**[Category]** でアプリのカテゴリを選択します。次に、**[Create App ID]** をクリックし、セキュリティ チェックを完了します。これで、新しい Facebook アプリケーションの開発者向けダッシュボードに移動します。
 
-6. Under "Facebook Login," click **Get Started**. Add your application's **Redirect URI** to **Valid OAuth redirect URIs**, then click **Save Changes**. 
+6. "Facebook ログイン" で **[Get Started]** をクリックします。**[Valid OAuth redirect URIs]** にアプリケーションの**リダイレクト URI** を追加して、**[Save Changes]** をクリックします。
 
-    > [AZURE.NOTE] Your redirect URI is the URL of your application appended with the path, _/.auth/login/facebook/callback_. For example, `https://contoso.azurewebsites.net/.auth/login/facebook/callback`. Make sure that you are using the HTTPS scheme.
+	> [AZURE.NOTE] リダイレクト URI は、アプリケーションの URL にパス _/.auth/login/facebook/callback_ を追加したものです。たとえば、「`https://contoso.azurewebsites.net/.auth/login/facebook/callback`」のように入力します。HTTPS スキームを使用していることを確認します。
 
-6. In the left-hand navigation, click **Settings**. On the **App Secret** field, click **Show**, provide your password if requested, then make a note of the values of **App ID** and **App Secret**. You use these later to configure your application in Azure.
+6. 左側のナビゲーションで、クリックして **[Settings]** をクリックします。**[App Secret]** フィールドで **[Show]** をクリックし、要求された場合はパスワードを入力して、**[App ID]** と **[App Secret]** の値をメモしておきます。後でアプリケーションを Azure で構成するときにこれらの値を使用します。
 
-    > [AZURE.IMPORTANT] The app secret is an important security credential. Do not share this secret with anyone or distribute it within a client application.
+	> [AZURE.IMPORTANT] アプリケーション シークレットは、重要なセキュリティ資格情報です。このシークレットを他のユーザーと共有したり、クライアント アプリケーション内で配信したりしないでください。
 
-7. The Facebook account which was used to register the application is an administrator of the app. At this point, only administrators can sign into this application. To authenticate other Facebook accounts, click **App Review** and enable **Make <your-app-name> public** to enable general public access using Facebook authentication.
+7. アプリケーションの登録に使用した Facebook アカウントがアプリケーションの管理者になります。この時点では、管理者のみがこのアプリケーションにサインインできます。他の Facebook アカウントを認証するには、**[App Review]** をクリックし、**[Make <アプリケーション名> public]** を有効にして、Facebook 認証を使用した汎用パブリック アクセスを有効にします。
 
-## <a name="<a-name="secrets">-</a>add-facebook-information-to-your-application"></a><a name="secrets"> </a>Add Facebook information to your application
+## <a name="secrets"> </a>Facebook の情報をアプリケーションに追加する
 
-1. Back in the [Azure portal], navigate to your application. Click **Settings** > **Authentication / Authorization**, and make sure that **App Service Authentication** is **On**.
+1. [Azure ポータル]に戻り、アプリケーションに移動します。**[設定]**、**[認証/承認]** の順にクリックし、**[App Service 認証]** が **[オン]** になっていることを確認します。
 
-2. Click **Facebook**, paste in the App ID and App Secret values which you obtained previously, optionally enable any scopes needed by your application, then click **OK**.
+2. **[Facebook]** をクリックし、前の手順で取得した App ID と App Secret の値を貼り付けます。必要に応じて、アプリケーションで必要なスコープを有効にし、**[OK]** をクリックします。
 
     ![][0]
 
-    By default, App Service provides authentication but does not restrict authorized access to your site content and APIs. You must authorize users in your app code.
+	App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。アプリケーション コードでユーザーを承認する必要があります。
 
-3. (Optional) To restrict access to your site to only users authenticated by Facebook, set **Action to take when request is not authenticated** to **Facebook**. This requires that all requests be authenticated, and all unauthenticated requests are redirected to Facebook for authentication.
+3. (省略可能) Facebook によって認証されたユーザーしかサイトにアクセスできないように制限するには、**[要求が認証されていないときに実行するアクション]** を **[Facebook]** に設定します。この場合、要求はすべて認証される必要があり、認証されていない要求はすべて認証のために Facebook にリダイレクトされます。
 
-4. When done configuring authentication, click **Save**.
+4. 認証の構成が終了したら、**[保存]** をクリックします。
 
-You are now ready to use Facebook for authentication in your app.
+これで、アプリケーションで認証に Facebook を使用する準備ができました。
 
-## <a name="<a-name="related-content">-</a>related-content"></a><a name="related-content"> </a>Related Content
+## <a name="related-content"> </a>関連コンテンツ
 
 [AZURE.INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -73,11 +72,7 @@ You are now ready to use Facebook for authentication in your app.
 <!-- URLs. -->
 [Facebook Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: http://go.microsoft.com/fwlink/p/?LinkId=268285
-[Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure portal]: https://portal.azure.com/
+[Get started with authentication]: /ja-JP/develop/mobile/tutorials/get-started-with-users-dotnet/
+[Azure ポータル]: https://portal.azure.com/
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

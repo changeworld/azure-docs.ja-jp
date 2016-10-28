@@ -1,18 +1,16 @@
 
-####<a name="to-configure-remote-management-on-the-device"></a>To configure remote management on the device
+####デバイスのリモート管理を構成するには
 
-1. On your virtual device, go to **Devices > Configure**.
+1. 仮想デバイスの **[デバイス] > [構成]** に移動します。
 
-2. Scroll down to the **Remote Management** section.
+2. 下へスクロールして **[リモート管理]** セクションに移動します。
 
-3. Set **Enable Remote Management** to **Yes**.
+3. **[リモート管理を有効にする]** を **[はい]** に設定します。
 
-4. You can now choose to connect using HTTP. The default is to connect over HTTPS. Connecting over HTTP is acceptable only on trusted networks.
+4. これで、HTTP を使用した接続を選択できるようになります。既定では HTTPS 経由で接続します。HTTP 経由での接続は、信頼のおけるネットワークでのみ許容されます。
 
-5. Click **Download Remote Management Certificate** to download a remote management certificate. You will specify a location in which to save this file. This certificate then needs to be installed on the client or host machine that you will use to connect to the virtual device.
+5. リモート管理証明書をダウンロードするには、**[リモート管理証明書のダウンロード]** をクリックします。ファイルの保存先を指定してください。この証明書は、さらに、仮想デバイスへの接続に使用するクライアントまたはホスト コンピューターにインストールする必要があります。
 
-6. Click **Save** at the bottom of the page.
+6. ページの下部にある **[保存]** をクリックします。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1217_2015-->

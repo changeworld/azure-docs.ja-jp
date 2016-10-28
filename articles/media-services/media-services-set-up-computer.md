@@ -1,62 +1,55 @@
 <properties
-    pageTitle="Set up your environment | Microsoft Azure"
-    description="Set up your environment for developing with Azure Media Services."
-    services="media-services"
-    documentationCenter=""
-    authors="Juliako"
-    manager="erikre"
-    editor=""/>
+	pageTitle="環境をセットアップする | Microsoft Azure"
+	description="Azure Media Services を使用した開発用に環境をセットアップします。"
+	services="media-services"
+	documentationCenter=""
+	authors="Juliako"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="media-services"
-    ms.workload="media"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="10/12/2016"
-    ms.author="juliako"/>
+	ms.service="media-services"
+	ms.workload="media"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="09/26/2016"
+	ms.author="juliako"/>
 
-
-# <a name="set-up-your-environment"></a>Set up your environment
+# 環境をセットアップする
 
 > [AZURE.SELECTOR]
-- [Portal](media-services-portal-create-account.md)
+- [ポータル](media-services-create-account.md)
 - [PowerShell](media-services-manage-with-powershell.md)
-- [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx)
-<a id="create_account"></a>
+- [REST](https://msdn.microsoft.com/library/azure/dn167014.aspx) <a id="create_account"></a>
 
-The following steps describe prerequisites required for developing with Azure Media Services.
+以下の手順は、Azure Media Services で開発を行うために必要な前提条件を説明したものです。
 
-## <a name="create-a-media-services-account"></a>Create a Media Services account
+## Media Services アカウントを作成する
 
-Use the Azure portal, the .NET SDK, or the REST API to create an Azure Media Services account.
+Azure Media Services アカウントを作成するには、Azure クラシック ポータル、.NET SDK、または REST API を使用します。
 
 <a id="setup_dev_env"></a>
-## <a name="set-up-the-development-environment"></a>Set up the development environment  
+## 開発環境を設定する  
 
-Choose .NET or the REST API for your development environment.
+開発環境に関して .NET または REST API を選択します。
 
 [AZURE.INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
 
 <a id="connect"></a>
-## <a name="connect-programmatically"></a>Connect programmatically
+## プログラムによる接続
 
-Choose .NET or the REST API to programmatically connect to Azure Media Services.
+プログラムを使用して Azure Media Services に接続するため、.NET または REST API を選択します。
 
 [AZURE.INCLUDE [media-services-selector-connect](../../includes/media-services-selector-connect.md)]
 
 
-##<a name="next-steps:-azure-media-services-learning-paths"></a>Next steps: Azure Media Services learning paths
+##次のステップ: Azure Media Services のラーニング パス
 
 [AZURE.INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-##<a name="provide-feedback"></a>Provide feedback
+##フィードバックの提供
 
 [AZURE.INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0928_2016-->

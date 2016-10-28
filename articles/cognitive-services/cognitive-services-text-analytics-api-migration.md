@@ -1,43 +1,42 @@
 <properties
-    pageTitle="Upgrading to Version 2 of the Text Analytics API | Microsoft Azure"
-    description="Azure Machine Learning Text Analytics - Upgrade to Version 2"
-    services="cognitive-services"
-    documentationCenter=""
-    authors="onewth"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="Text Analytics API のバージョン 2 へのアップグレード | Microsoft Azure"
+	description="Azure Machine Learning Text Analytics - バージョン 2 へのアップグレード"
+	services="cognitive-services"
+	documentationCenter=""
+	authors="onewth"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="cognitive-services"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/04/2016"
-    ms.author="onewth"/>
+	ms.service="cognitive-services"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/05/2016"
+	ms.author="onewth"/>
 
+# Text Analytics API のバージョン 2 へのアップグレード #
 
-# <a name="upgrading-to-version-2-of-the-text-analytics-api"></a>Upgrading to Version 2 of the Text Analytics API #
+このガイドでは、コードをアップグレードし、[この API の最初のバージョン](../machine-learning/machine-learning-apps-text-analytics.md)ではなくバージョン 2 が使われるようにする手順について説明します。
 
-This guide will take you through the process of upgrading your code from using the [first version of the API](../machine-learning/machine-learning-apps-text-analytics.md) to using the second version. 
+この API の使用経験がない場合は、**[この API に関するページ](//go.microsoft.com/fwlink/?LinkID=759711)**や**[クイック スタート ガイド](//go.microsoft.com/fwlink/?LinkID=760860)**を参照して、詳しい情報を入手できます。テクニカル リファレンスについては、**[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)**を参照してください。
 
-If you have not used the API and would like to learn more, you can **[learn more about the API here](//go.microsoft.com/fwlink/?LinkID=759711)** or **[follow the Quick Start Guide](//go.microsoft.com/fwlink/?LinkID=760860)**. For technical reference, refer to the **[API Definition](//go.microsoft.com/fwlink/?LinkID=759346)**.
+### パート 1.新しいキーを取得する ###
 
-### <a name="part-1.-get-a-new-key"></a>Part 1. Get a new key ###
+最初に、新しい API キーを **Azure ポータル**から取得する必要があります。
 
-First, you will need to get a new API key from the **Azure Portal**:
+1. [Cortana Analytics ギャラリー](//gallery.cortanaintelligence.com/MachineLearningAPI/Text-Analytics-2)から Text Analytics サービスに移動します。ここには、ドキュメントやコード サンプルへのリンクも用意されています。
 
-1. Navigate to the Text Analytics service through the [Cortana Intelligence Gallery](//gallery.cortanaintelligence.com/MachineLearningAPI/Text-Analytics-2). Here, you will also find links to the documentation and code samples.
+1. **[サインアップ]** をクリックします。Azure 管理ポータルに移動し、サービスにサインアップできます。
 
-1. Click **Sign Up**. This link will take you to the Azure management portal, where you can sign up for the service.
+1. プランを選択します。1 か月あたり 5,000 トランザクションの **Free レベル**を選択してもかまいません。無料プランと同様に、サービスの使用に対しては課金されません。Azure サブスクリプションにログインする必要があります。
 
-1. Select a plan. You may select the **free tier for 5,000 transactions/month**. As is a free plan, you will not be charged for using the service. You will need to login to your Azure subscription. 
+1. Text Analytics にサインアップすると、**API キー**が提供されます。API サービスを使用するときに必要になるため、このキーをメモしておきます。
 
-1. After you sign up for Text Analytics, you'll be given an **API Key**. Copy this key, as you'll need it when using the API services.
+### パート 2.ヘッダーを更新する ###
 
-### <a name="part-2.-update-the-headers"></a>Part 2. Update the headers ###
-
-Update the submitted header values as shown below. Note that the account key is no longer encoded.
+送信されたヘッダー値を次のように更新します。アカウント キーはもうエンコードされないことに注意してください。
 
 **Version 1**
 
@@ -51,7 +50,7 @@ Update the submitted header values as shown below. Note that the account key is 
     Ocp-Apim-Subscription-Key: <your Azure Portal account key>
 
 
-### <a name="part-3.-update-the-base-url"></a>Part 3. Update the base URL ###
+### パート 3.ベース URL を更新する ###
 
 **Version 1**
 
@@ -61,24 +60,24 @@ Update the submitted header values as shown below. Note that the account key is 
 
     https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/
 
-### <a name="part-4a.-update-the-formats-for-sentiment,-key-phrases-and-languages"></a>Part 4a. Update the formats for sentiment, key phrases and languages ###
+### パート 4a.センチメント、キー フレーズ、および言語の形式を更新する ###
 
-#### <a name="endpoints"></a>Endpoints ####
+#### エンドポイント ####
 
-GET endpoints have now been deprecated, so all input should be submitted as a POST request. Update the endpoints to the ones shown below.
+GET エンドポイントは廃止されました。したがって、すべての入力を POST 要求として送信する必要があります。エンドポイントを次に示すエンドポイントに更新します。
 
-| |Version 1 single endpoint|Version 1 batch endpoint|Version 2 endpoint|
+| |バージョン 1 の単一エンドポイント|バージョン 1 のバッチ エンドポイント|バージョン 2 のエンドポイント|
 |---|---|---|---|
-|Call type|GET|POST|POST|
-|Sentiment|```GetSentiment```|```GetSentimentBatch```|```sentiment```|
-|Key phrases|```GetKeyPhrases```|```GetKeyPhrasesBatch```|```keyPhrases```|
-|Languages|```GetLanguage```|```GetLanguageBatch```|```languages```|
+|呼び出しの種類|GET|POST|POST|
+|センチメント|```GetSentiment```|```GetSentimentBatch```|```sentiment```|
+|キー フレーズ|```GetKeyPhrases```|```GetKeyPhrasesBatch```|```keyPhrases```|
+|言語|```GetLanguage```|```GetLanguageBatch```|```languages```|
 
-#### <a name="input-formats"></a>Input formats ####
+#### 入力形式 ####
 
-Note that only POST format is now accepted, so you should reformat any input which previously used the single document endpoints accordingly. Inputs are not case sensitive.
+使用できる形式が POST 形式のみになったため、以前に単一ドキュメント エンドポイントを使用していた入力の形式を変更する必要があります。入力の大文字と小文字は区別されません。
 
-**Version 1 (batch)**
+**バージョン 1 (バッチ)**
 
     {
       "Inputs": [
@@ -100,7 +99,7 @@ Note that only POST format is now accepted, so you should reformat any input whi
       ]
     }
 
-#### <a name="output-from-sentiment"></a>Output from sentiment ####
+#### センチメントからの出力 ####
 
 **Version 1**
 
@@ -128,7 +127,7 @@ Note that only POST format is now accepted, so you should reformat any input whi
       }]
     }
 
-#### <a name="output-from-key-phrases"></a>Output from key phrases ####
+#### キー フレーズからの出力 ####
 
 **Version 1**
 
@@ -156,7 +155,7 @@ Note that only POST format is now accepted, so you should reformat any input whi
       }]
     }
 
-#### <a name="output-from-languages"></a>Output from languages ####
+#### 言語からの出力 ####
 
 
 **Version 1**
@@ -194,16 +193,16 @@ Note that only POST format is now accepted, so you should reformat any input whi
     }
 
 
-### <a name="part-4b.-update-the-formats-for-topics"></a>Part 4b. Update the formats for topics ###
+### パート 4b.トピックの形式を更新する ###
 
-#### <a name="endpoints"></a>Endpoints ####
+#### エンドポイント ####
 
-| |Version 1 endpoint | Version 2 endpoint|
+| |バージョン 1 のエンドポイント | バージョン 2 のエンドポイント|
 |---|---|---|
-|Submit for topic detection (POST)|```StartTopicDetection```|```topics```|
-|Fetch topic results (GET)|```GetTopicDetectionResult?JobId=<jobId>```|```operations/<operationId>```|
+|トピックの検出用に送信する (POST)|```StartTopicDetection```|```topics```|
+|トピックの結果を取得する (GET)|```GetTopicDetectionResult?JobId=<jobId>```|```operations/<operationId>```|
 
-#### <a name="input-formats"></a>Input formats ####
+#### 入力形式 ####
 
 **Version 1**
 
@@ -239,26 +238,26 @@ Note that only POST format is now accepted, so you should reformat any input whi
       ]
     }
 
-#### <a name="submission-results"></a>Submission results ####
+#### 送信結果 ####
 
-**Version 1 (POST)**
+**バージョン 1 (POST)**
 
-Previously, when the job finished, you would receive the following JSON output, where the jobId would be appended to a URL to fetch the output.
+以前は、ジョブが完了すると、次の JSON 出力が返されていました。出力を取得できるように、jobId が URL に付加されています。
 
     {
         "odata.metadata":"<url>",
         "JobId":"<JobId>"
     }
 
-**Version 2 (POST)**
+**バージョン 2 (POST)**
 
-The response will now include a header value as follows, where `operation-location` is used as the endpoint to poll for the results:
+応答に、次のようにヘッダー値が含まれるようになりました。ここで、`operation-location` は、結果のポーリング用のエンドポイントとして使用されます。
 
     'operation-location': 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/operations/<operationId>'
 
-#### <a name="operation-results"></a>Operation results ####
+#### 操作の結果 ####
 
-**Version 1 (GET)**
+**バージョン 1 (GET)**
 
     {
       "TopicInfo" : [{
@@ -277,11 +276,11 @@ The response will now include a header value as follows, where `operation-locati
       }]
     }
 
-**Version 2 (GET)**
+**バージョン 2 (GET)**
 
-As before, **periodically poll the output** (the suggested period is every minute) until the output is returned. 
+以前と同様に、出力が返されるまで、**定期的に出力がポーリングされます** (推奨される間隔は 1 分ごとです)。
 
-When the topics API has finished, a status reading `succeeded` will be returned. This will then include the output results in the format shown below:
+トピックの API が完了すると、ステータス `succeeded` が返されます。これには、次に示す形式の出力結果が含まれます。
 
     {
         "status": "succeeded",
@@ -305,12 +304,8 @@ When the topics API has finished, a status reading `succeeded` will be returned.
         }
     }
 
-### <a name="part-5.-test-it!"></a>Part 5. Test it! ###
+### パート 5.テストする ###
 
-You should now be good to go! Test your code with a small sample to ensure that you can successfully process your data.
+これで準備ができました。 小さなサンプルでコードをテストして、データを正常に処理できることを確認します。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

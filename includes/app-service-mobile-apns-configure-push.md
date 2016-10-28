@@ -1,20 +1,17 @@
 
 
-1.  On your Mac, launch **Keychain Access**. Open **Category** > **My Certificates**. Find the SSL certificate to export (that you downloaded earlier) and disclose its contents. Select only the certificate without selecting the private key, and [export it](https://support.apple.com/kb/PH20122?locale=en_US).
+1.  お使いの Mac で、**Keychain Access** を起動します。**[分類]** の **[自分の証明書]** を開きます。エクスポートする SSL 証明書 (事前にダウンロードしたもの) を探して、その内容を開示します。秘密鍵を選択せずに証明書のみを選択し、それを[書き出し](https://support.apple.com/kb/PH20122?locale=en_US)ます。
 
-2. In the Azure portal, click **Browse All** > **App Services** > your Mobile App backend > **Settings** > **Mobile** > **Push** > **Configure required settings** > **+ Notification Hub**, and provide a name and namespace for your notification hub, and then click the **OK** button.
+2. Azure ポータルで、**[すべて参照]**、**[App Services]**、モバイル アプリ バックエンド、**[設定]**、**[モバイル]**、**[プッシュ]**、**[必要な設定の構成]**、**[+ 通知ハブ]** の順にクリックし、通知ハブの名前と名前空間を指定してから、**[OK]** をクリックします。
 
-    ![][1]
+  	![][1]
 
-3. In the **Create Notification Hub** blade, click the **Create** button.
+3. **[通知ハブの作成]** ブレードで、**[作成]** をクリックします。
      
-    Before you proceed to the next step, click **Notifications**, to ensure that your notification hub setup is complete. 
+    次の手順に進む前に、**[通知]** をクリックし、通知ハブのセットアップが完了していることを確認します。
 
-4. In the Azure portal, click **Browse All** > **App Services** > your Mobile App backend > **Settings** > **Mobile** > **Push** > **Apple Push Notification Services** > **Upload Certificate**. Upload the .p12 file, selecting the correct **Mode** (corresponding to whether the client SSL certificate you generated earlier was Development or Distribution.) Your service is now configured to work with push notifications on iOS!
+4. Azure ポータルで、**[すべて参照]**、**[App Services]**、モバイル アプリ バックエンド、**[設定]**、**[モバイル]**、**[プッシュ]**、**[Apple プッシュ通知サービス]**、**[証明書のアップロード]** の順にクリックします。(生成したクライアント SSL 証明書が開発用か配布用かに応じて) 適切な **[モード]** を選択し、.p12 ファイルをアップロードします。 これで、iOS のプッシュ通知と連携するようにサービスが構成されました。
 
 [1]: ./media/app-service-mobile-apns-configure-push/mobile-push-notification-hub.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1203_2015-->

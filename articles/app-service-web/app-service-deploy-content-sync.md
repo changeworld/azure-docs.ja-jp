@@ -1,52 +1,44 @@
 <properties
-    pageTitle="Sync content from a cloud folder to Azure App Service"
-    description="Learn how to deploy your app to Azure App Service via content sync from a cloud folder."
-    services="app-service"
-    documentationCenter=""
-    authors="dariagrigoriu"
-    manager="wpickett"
-    editor="mollybos"/>
+	pageTitle="クラウド フォルダーから Azure App Service へのコンテンツの同期"
+	description="コンテンツ同期を使用してクラウド フォルダーから Azure App Service にアプリをデプロイする方法を説明します。"
+	services="app-service"
+	documentationCenter=""
+	authors="dariagrigoriu"
+	manager="wpickett"
+	editor="mollybos"/>
 
 <tags
-    ms.service="app-service"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="06/13/2016"
-    ms.author="dariagrigoriu"/>
+	ms.service="app-service"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="06/13/2016"
+	ms.author="dariagrigoriu"/>
     
+# クラウド フォルダーから Azure App Service へのコンテンツの同期
 
-# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Sync content from a cloud folder to Azure App Service
+このチュートリアルでは、Dropbox や OneDrive などの一般的なクラウド ストレージ サービスからコンテンツを同期することによって [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) をデプロイする方法について説明します。
 
-This tutorial shows you how to deploy to [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) by syncing your content from popular cloud storage services like Dropbox and OneDrive. 
+## <a name="overview"></a>コンテンツ同期デプロイの概要
 
-## <a name="<a-name="overview"></a>overview-of-content-sync-deployment"></a><a name="overview"></a>Overview of content sync deployment
-
-The on-demand content sync deployment is powered by the [Kudu deployment engine](https://github.com/projectkudu/kudu/wiki) integrated with App Service. In the [Azure Portal](https://portal.azure.com), you can designate a folder in your cloud storage, work with your app code and content in that folder, and sync to App Service with the click of a button. Content sync utilizes the Kudu process for build and deployment. 
+オンデマンド コンテンツ同期デプロイでは、App Service と統合された [Kudu デプロイ エンジン](https://github.com/projectkudu/kudu/wiki)を使用しています。[Azure ポータル](https://portal.azure.com)では、クラウド ストレージのフォルダーを指定して、そのフォルダー内でアプリのコードとコンテンツの作業を行い、ボタンをクリックするだけで App Service に同期できます。コンテンツ同期では、ビルドとデプロイに Kudu プロセスを使用します。
     
-## <a name="<a-name="contentsync"></a>how-to-enable-content-sync-deployment"></a><a name="contentsync"></a>How to enable content sync deployment
-To enable content sync from the [Azure Portal](https://portal.azure.com), follow these steps:
+## <a name="contentsync"></a>コンテンツ同期デプロイを有効化する方法
+[Azure ポータル](https://portal.azure.com)からのコンテンツ同期を有効化するには、次の手順を実行します。
 
-1. In your app's blade in the Azure Portal, click **Settings** > **Deployment Source**. Click **Choose Source**, then select **OneDrive** or **Dropbox** as the source for deployment. 
+1. **Azure ポータル**の対象アプリのブレードで、**[設定]、[デプロイ ソース]** の順にクリックします。**[ソースの選択]** をクリックし、デプロイのソースとして **[OneDrive]** または **[Dropbox]** を選択します。 
 
-    ![Content Sync](./media/app-service-deploy-content-sync/deployment_source.png)
+    ![コンテンツ同期](./media/app-service-deploy-content-sync/deployment_source.png)
 
-2. Complete the authorization workflow to enable App Service to access a specific pre-defined designated path for OneDrive or Dropbox where all of your App Service content will be stored.  
-    After authorization the App Service platform will give you the option to create a content folder under the designated content path, or to choose an existing content folder under this designated content path. The designated content paths under your cloud storage accounts used for App Service sync are the following:  
+2. OneDrive または Dropbox の専用の事前定義された指定パスに App Service がアクセスできるようにする、認証ワークフローを完了します。このパスが、App Service のコンテンツの保存先となります。認証が完了すると、App Service プラットフォームで、指定のコンテンツ パスの下にコンテンツ フォルダーを作成するか、または指定のコンテンツ パスにある既存のコンテンツ フォルダーを選択できるようになります。App Service 同期に使用するクラウド ストレージ アカウントの指定コンテンツ パスは次のとおりです。
     * **OneDrive**: `Apps\Azure Web Apps` 
     * **Dropbox**: `Dropbox\Apps\Azure`
 
-3. After the initial content sync the content sync can be initiated on demand from the Azure portal. Deployment history is available with the **Deployments** blade.
+3. コンテンツ同期は、初回以降は Azure ポータルからオンデマンドで開始できます。デプロイ履歴は **[デプロイ]** ブレードで確認できます。
 
-    ![Deployment History](./media/app-service-deploy-content-sync/onedrive_sync.png)
+    ![デプロイ履歴](./media/app-service-deploy-content-sync/onedrive_sync.png)
  
-More information for Dropbox deployment is available under [Deploy from Dropbox](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx). 
+Dropbox デプロイの詳細については、[Dropbox からのデプロイ](http://blogs.msdn.com/b/windowsazure/archive/2013/03/19/new-deploy-to-windows-azure-web-sites-from-dropbox.aspx)に関する記事を参照してください。
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

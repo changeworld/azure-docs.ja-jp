@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Use SQL Server Management Studio to Determine SQL Database compatibility before migration to Azure SQL Database | Microsoft Azure"
-   description="Microsoft Azure SQL Database, database migration, SQL Database compatibility, Export Data Tier Application Wizard"
+   pageTitle="Azure SQL Database へ移行する前にSQL Server Management Studio を使用して SQL Database の互換性を判定する | Microsoft Azure"
+   description="Microsoft Azure SQL Database、データベースの移行、SQL Database の互換性、[データ層アプリケーションのエクスポート] ウィザード"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -16,8 +16,7 @@
    ms.date="08/29/2016"
    ms.author="carlrab"/>
 
-
-# <a name="use-sql-server-management-studio-to-determine-sql-database-compatibility-before-migration-to-azure-sql-database"></a>Use SQL Server Management Studio to Determine SQL Database compatibility before migration to Azure SQL Database
+# Azure SQL Database へ移行する前にSQL Server Management Studio を使用して SQL Database の互換性を判定する
 
 > [AZURE.SELECTOR]
 - [SSDT](sql-database-cloud-migrate-fix-compatibility-issues-ssdt.md)
@@ -26,51 +25,46 @@
 - [Upgrade Advisor](http://www.microsoft.com/download/details.aspx?id=48119)
 - [SAMW](sql-database-cloud-migrate-fix-compatibility-issues.md)
  
-In this article you learn to determine if a SQL Server database is compatible to migrate to SQL Database using the Export Data Tier Application Wizard in SQL Server Management Studio.
+この記事では、SQL Server Management Studio の [データ層アプリケーションのエクスポート] ウィザードを使用して、SQL Server データベースを SQL Database に移行するための互換性のあるかどうかを判定します。
 
-## <a name="using-sql-server-management-studio"></a>Using SQL Server Management Studio
+## SQL Server Management Studio を使用する
 
-1. Verify that you have the latest version of SQL Server Management Studio. New versions of Management Studio are updated monthly to remain in sync with updates to the Azure portal.
+1. 最新バージョンの SQL Server Management Studio があることを確認します。Management Studio は毎月新しいバージョンに更新されて、Azure ポータルの更新との同期が維持されます。
 
-     > [AZURE.IMPORTANT] It is recommended that you always use the latest version of Management Studio to remain synchronized with updates to Microsoft Azure and SQL Database. [Update SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
+ 	 > [AZURE.IMPORTANT] 常に最新バージョンの Management Studio を使用して、Microsoft Azure と SQL Database の更新プログラムとの同期を維持することをお勧めします。[SQL Server Management Studio を更新します](https://msdn.microsoft.com/library/mt238290.aspx)。
 
-2. Open Management Studio and connect to your source database in Object Explorer.
-3. Right-click the source database in the Object Explorer, point to **Tasks**, and click **Export Data-Tier Application…**
+2. Management Studio を開き、オブジェクト エクスプローラーで移行元データベースに接続します。
+3. オブジェクト エクスプローラーで移行元データベースを右クリックし、**[タスク]** をポイントして **[データ層アプリケーションのエクスポート...]** をクリックします。
 
-    ![Export a data-tier application from the Tasks menu](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS01.png)
+	![[タスク] メニューの [データ層アプリケーションのエクスポート]](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS01.png)
 
-4. In the export wizard, click **Next**, and then on the **Settings** tab, configure the export to save the BACPAC file to either a local disk location or to an Azure blob. A BACPAC file is saved if you have no database compatibility issues. If there are compatibility issues, they are be displayed on the console.
+4. エクスポート ウィザードで **[次へ]** をクリックし、**[設定]** タブで、BACPAC ファイルがローカル ディスクまたは Azure BLOB に保存されるようにエクスポートを構成します。BACPAC ファイルは、データベースの互換性に問題がない場合にのみ保存されます。互換性の問題がある場合は、コンソールに表示されます。
 
-    ![Export settings](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS02.png)
+	![設定のエクスポート](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS02.png)
 
-5. To skip exporting data, click the **Advanced tab** and clear the **Select All** checkbox. Our goal at this point is only to test for compatibility.
+5. データのエクスポートをスキップするために、**[詳細設定]** タブをクリックして **[すべて選択]** チェック ボックスをオフにします。ここでの目的は、互換性をテストすることだけです。
 
-    ![Export settings](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS03.png)
+	![設定のエクスポート](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS03.png)
 
-6. Click **Next** and then click **Finish**. Database compatibility issues, if any, appear after the wizard validates the schema.
+6. **[次へ]** をクリックし、**[完了]** をクリックします。データベースの互換性に問題がある場合は、ウィザードによるスキーマの検証後に表示されます。
 
-    ![Export settings](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS04.png)
+	![設定のエクスポート](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS04.png)
 
-7. If no errors appear, your database is compatible and you are ready to migrate. If you have errors, you need to fix them. To see the errors, click **Error** for **Validating schema**. 
-    ![Export settings](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS05.png)
+7. エラーが表示されない場合は、データベースは互換性があり、移行できる状態です。エラーがある場合は、修正する必要があります。エラーを表示するには、**[スキーマの検証]** の **[エラー]** をクリックします。![設定のエクスポート](./media/sql-database-cloud-migrate/TestForCompatibilityUsingSSMS05.png)
 
-8.  If the *.BACPAC file is successfully generated, then your database is compatible with SQL Database, and you are ready to migrate.
+8.	*.BACPAC ファイルが生成されたら、お使いのデータベースは SQL Database と互換性があるので移行できます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Newest version of SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
-- [Newest version of SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
-- [Fix database migration compatibility issues](sql-database-cloud-migrate.md#fix-database-migration-compatibility-issues)
-- [Migrate a compatible SQL Server database to SQL Database](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
+- [最新バージョンの SSDT](https://msdn.microsoft.com/library/mt204009.aspx)
+- [最新バージョンの SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx)
+- [データベース移行に関する互換性の問題の修正](sql-database-cloud-migrate.md#fix-database-migration-compatibility-issues)
+- [互換性のある SQL Server データベースの SQL Database への移行](sql-database-cloud-migrate.md#migrate-a-compatible-sql-server-database-to-sql-database)
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
 - [SQL Database V12](sql-database-v12-whats-new.md)
-- [Transact-SQL partially or unsupported functions](sql-database-transact-sql-information.md)
-- [Migrate non-SQL Server databases using SQL Server Migration Assistant](http://blogs.msdn.com/b/ssma/)
+- [Transact-SQL の部分的にサポートされる機能またはまったくサポートされていない機能](sql-database-transact-sql-information.md)
+- [SQL Server Migration Assistant を使用した SQL Server 以外のデータベースの移行](http://blogs.msdn.com/b/ssma/)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

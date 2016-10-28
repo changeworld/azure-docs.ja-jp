@@ -1,6 +1,6 @@
 <properties
-pageTitle="How to delete an HDInsight cluster | Azure"
-description="Information on the various ways that you can delete an HDInsight cluster."
+pageTitle="HDInsight クラスターを削除する方法 | Azure"
+description="HDInsight クラスターの各種削除方法について説明します。"
 services="hdinsight"
 documentationCenter=""
 authors="Blackmist"
@@ -16,41 +16,36 @@ ms.workload="big-data"
 ms.date="08/09/2016"
 ms.author="larryfr"/>
 
+#HDInsight クラスターを削除する方法
 
-#<a name="how-to-delete-an-hdinsight-cluster"></a>How to delete an HDInsight cluster
+HDInsight クラスターは、クラスターが作成されたときに開始され、クラスターが削除されたときに停止し、分単位で課金されます。そのため、使用しなくなる場合は、常にクラスターを削除する必要がありあす。このドキュメントでは、Azure ポータル、Azure PowerShell、および Azure CLI を使用してクラスターを削除する方法について説明します。
 
-HDInsight cluster billing starts once a cluster is created and stops when the cluster is deleted and is pro-rated per minute, so you should always delete your cluster when it is no longer in use. In this document, you will learn how to delete a cluster using the Azure Portal, Azure PowerShell, and the Azure CLI.
+> [AZURE.IMPORTANT] HDInsight クラスターを削除しても、そのクラスターに関連付けられている Azure Storage アカウントは削除されません。このため、クラスターに格納されているすべてのデータを保持し、再利用することができます。
 
-> [AZURE.IMPORTANT] Deleting an HDInsight cluster does not delete the Azure Storage account(s) associated with the cluster. This allows you to preserve and reuse any data stored by the cluster.
+##Azure ポータル
 
-##<a name="azure-portal"></a>Azure Portal
+1. [Azure ポータル](https://portal.azure.com)にログインして、HDInsight クラスターを選択します。HDInsight クラスターがダッシュボードにピン留めされていない場合は、ナビゲーション バーの右側にある検索フィールド (虫眼鏡アイコン) で名前を指定して検索することができます。
 
-1. Login to the [Azure portal](https://portal.azure.com) and select your HDInsight cluster. If your HDInsight cluster is not pinned to the dashboard, you can search for it by name using the search field (magnifying glass icon,) on the right side of the navigation bar.
+    ![ポータルの検索](./media/hdinsight-delete-cluster/navbar.png)
 
-    ![portal search](./media/hdinsight-delete-cluster/navbar.png)
+2. ブレードでクラスターが表示されたら、__[削除]__ アイコンを選択します。メッセージが表示されたら、__[はい]__ を選択してクラスターを削除します。
 
-2. Once the blade opens for the cluster, select the __Delete__ icon. When prompted, select __Yes__ to delete the cluster.
+    ![削除アイコン](./media/hdinsight-delete-cluster/deletecluster.png)
 
-    ![delete icon](./media/hdinsight-delete-cluster/deletecluster.png)
+##Azure PowerShell
 
-##<a name="azure-powershell"></a>Azure PowerShell
-
-From a PowerShell prompt, use the following command to delete the cluster:
+クラスターを削除するには、PowerShell プロンプトで次のコマンドを実行します。
 
     Remove-AzureRmHDInsightCluster -ClusterName CLUSTERNAME
 
-Replace __CLUSTERNAME__ with the name of your HDInsight cluster.
+__CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
 
-##<a name="azure-cli"></a>Azure CLI
+##Azure CLI
 
-From a prompt, use the following to delete the cluster:
+クラスターを削除するには、プロンプトで次のコマンドを実行します。
 
     azure hdinsight cluster delete CLUSTERNAME
     
-Replace __CLUSTERNAME__ with the name of your HDInsight cluster.
+__CLUSTERNAME__ を、使用する HDInsight クラスターの名前に置き換えます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

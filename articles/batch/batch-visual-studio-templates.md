@@ -1,149 +1,148 @@
 <properties
-    pageTitle="Visual Studio templates for Azure Batch | Microsoft Azure"
-    description="Learn how these Visual Studio project templates can help you implement and run your compute-intensive workloads on Azure Batch"
-    services="batch"
-    documentationCenter=".net"
-    authors="fayora"
-    manager="timlt"
-    editor="" />
+	pageTitle="Azure Batch 用の Visual Studio テンプレート | Microsoft Azure"
+	description="Visual Studio プロジェクト テンプレートを使用して、多くのコンピューティング処理を要するワークロードを Azure Batch 上に実装し、実行する方法について説明します。"
+	services="batch"
+	documentationCenter=".net"
+	authors="fayora"
+	manager="timlt"
+	editor="" />
 
 <tags
-    ms.service="batch"
-    ms.devlang="multiple"
-    ms.topic="article"
-    ms.tgt_pltfrm="vm-windows"
-    ms.workload="big-compute"
-    ms.date="09/07/2016"
-    ms.author="marsma" />
+	ms.service="batch"
+	ms.devlang="multiple"
+	ms.topic="article"
+	ms.tgt_pltfrm="vm-windows"
+	ms.workload="big-compute"
+	ms.date="09/07/2016"
+	ms.author="marsma" />
 
+# Azure Batch 用の Visual Studio プロジェクト テンプレート
 
-# <a name="visual-studio-project-templates-for-azure-batch"></a>Visual Studio project templates for Azure Batch
+Batch 用の Visual Studio テンプレート (**ジョブ マネージャー**と**タスク プロセッサ**) に用意されているコードを使用すると、多くのコンピューティング処理を要するワークロードを最小限の手間で Batch 上に実装し、実行することができます。このドキュメントでは、これらのテンプレートについて説明すると共に、その使用方法についての指針を示しています。
 
-The **Job Manager** and **Task Processor Visual Studio templates** for Batch provide code to help you to implement and run your compute-intensive workloads on Batch with the least amount of effort. This document describes these templates and provides guidance for how to use them.
+>[AZURE.IMPORTANT] この記事の内容は、あくまで上記 2 つのテンプレートについて記述したものであり、Batch サービスとその主要概念 (プール、コンピューティング ノード、ジョブ/タスク、ジョブ マネージャー タスク、環境変数などの関連する情報) に精通した読者を想定しています。さらに詳しい情報については、「[Azure Batch の基礎](batch-technical-overview.md)」、「[開発者向け Batch 機能の概要](batch-api-basics.md)」、「[.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」を参照してください。
 
->[AZURE.IMPORTANT] This article discusses only information applicable to these two templates, and assumes that you are familiar with the Batch service and key concepts related to it: pools, compute nodes, jobs and tasks, job manager tasks, environment variables, and other relevant information. You can find more information in [Basics of Azure Batch](batch-technical-overview.md), [Batch feature overview for developers](batch-api-basics.md), and [Get started with the Azure Batch library for .NET](batch-dotnet-get-started.md).
+## 概要
 
-## <a name="high-level-overview"></a>High-level overview
+ジョブ マネージャー テンプレートとタスク プロセッサ テンプレートを使用すると、次に示した 2 つの実用的なコンポーネントを作成することができます。
 
-The Job Manager and Task Processor templates can be used to create two useful components:
+* ジョブ スプリッターを実装するジョブ マネージャー タスク。ジョブ スプリッターは、並列実行可能な独立した複数のタスクにジョブを分割します。
 
-* A job manager task that implements a job splitter that can break a job down into multiple tasks that can run independently, in parallel.
+* アプリケーション コマンド ラインの前処理と後処理を実行するためのタスク プロセッサ。
 
-* A task processor that can be used to perform pre-processing and post-processing around an application command line.
+たとえばムービーをレンダリングする状況を考えてみましょう。この場合、ジョブ スプリッターによって 1 つのムービー ジョブが、各フレームを個別に処理する数百から数千の独立したタスクに分割されます。同様に、レンダリング アプリケーションとさまざまな依存プロセス (それぞれのフレームをレンダリングするために必要なプロセス)、その他必要な操作 (レンダリング済みのフレームをストレージにコピーするなど) が、タスク プロセッサによって呼び出されます。
 
-For example, in a movie rendering scenario, the job splitter would turn a single movie job into hundreds or thousands of separate tasks that would process individual frames separately. Correspondingly, the task processor would invoke the rendering application and all dependent processes that are needed to render each frame, as well as perform any additional actions (for example, copying the rendered frame to a storage location).
+>[AZURE.NOTE] ジョブ マネージャー テンプレートとタスク プロセッサ テンプレートは互いに独立しているので、両方を使用するか、どちらか一方のみを使用するかは、コンピューティング ジョブの要件と各自の事情によって自由に選ぶことができます。
 
->[AZURE.NOTE] The Job Manager and Task Processor templates are independent of each other, so you can choose to use both, or only one of them, depending on the requirements of your compute job and on your preferences.
+以下の図に示したように、これらのテンプレートを使用するコンピューティング ジョブには、次の 3 つの段階があります。
 
-As shown in the diagram below, a compute job that uses these templates will go through three stages:
+1. クライアント コード (アプリケーション、Web サービスなど) が、Azure 上の Batch サービスにジョブを送信します。このとき、そのジョブ マネージャー タスクとしてジョブ マネージャー プログラムが指定されます。
 
-1. The client code (e.g., application, web service, etc.) submits a job to the Batch service on Azure, specifying as its job manager task the job manager program.
+2. Batch サービスが、コンピューティング ノード上でジョブ マネージャー タスクを実行します。ジョブ スプリッターは、そのコードが受け取ったパラメーターと指定に基づき、必要に応じた数のコンピューティング ノード上で、指定された数のタスク プロセッサ タスクを開始します。
 
-2. The Batch service runs the job manager task on a compute node and the job splitter launches the specified number of task processor tasks, on as many compute nodes as required, based on the parameters and specifications in the job splitter code.
-
-3. The task processor tasks run independently, in parallel, to process the input data and generate the output data.
+3. 個々のタスク プロセッサ タスクが並列実行され、入力データが処理されて、出力データが生成されます。
 
 ![Diagram showing how client code interacts with the Batch service][diagram01]
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-To use the Batch templates, you will need the following:
+これらの Batch テンプレートを使用するための前提条件は次のとおりです。
 
-* A computer with Visual Studio 2015, or newer, already installed on it.
+* Visual Studio 2015 以降がインストールされているコンピューター。
 
-* The Batch templates, which are available from the [Visual Studio Gallery][vs_gallery] as Visual Studio extensions. There are two ways to get the templates:
+* Batch テンプレート。[Visual Studio ギャラリー][vs_gallery]から Visual Studio の拡張機能として入手できます。これらのテンプレートは、次の 2 とおりの方法で入手できます。
 
-  * Install the templates using the **Extensions and Updates** dialog box in Visual Studio (for more information, see [Finding and Using Visual Studio Extensions][vs_find_use_ext]). In the **Extensions and Updates** dialog box, search and download the following two extensions:
+  * Visual Studio の **[拡張機能と更新プログラム]** ダイアログ ボックスを使用してテンプレートをインストールする (「[Visual Studio 拡張機能の検索と使用][vs_find_use_ext]」を参照)。**[拡張機能と更新プログラム]** ダイアログ ボックスで、次の 2 つの拡張機能を検索してダウンロードします。
 
-    * Azure Batch Job Manager with Job Splitter
-    * Azure Batch Task Processor
+    * Azure Batch Job Manager with Job Splitter (Azure Batch ジョブ マネージャーとジョブ スプリッター)
+    * Azure Batch Task Processor (Azure Batch タスク プロセッサ)
 
-  * Download the templates from the online gallery for Visual Studio: [Microsoft Azure Batch Project Templates][vs_gallery_templates]
+  * Visual Studio のオンライン ギャラリーから [Microsoft Azure Batch プロジェクト テンプレート][vs_gallery_templates]をダウンロードする。
 
-* If you plan to use the [Application Packages](batch-application-packages.md) feature to deploy the job manager and task processor to the Batch compute nodes, you need to link a storage account to your Batch account.
+* [アプリケーション パッケージ](batch-application-packages.md)機能を使用してジョブ マネージャーとタスク プロセッサを Batch コンピューティング ノードにデプロイする予定がある場合は、ご利用の Batch アカウントにストレージ アカウントを関連付ける必要があります。
 
-## <a name="preparation"></a>Preparation
+## 準備
 
-We recommend creating a solution that can contain your job manager as well as your task processor, because this can make it easier to share code between your job manager and task processor programs. To create this solution, follow these steps:
+ソリューションを 1 つ作成してそこにジョブ マネージャーとタスク プロセッサを含めることをお勧めします。そうすることで、ジョブ マネージャーとタスク プロセッサのプログラム間でコードを共有しやすくなります。このソリューションの作成手順は次のとおりです。
 
-1. Open Visual Studio 2015 and select **File** > **New** > **Project**.
+1. Visual Studio 2015 を開き、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。
 
-2. Under **Templates**, expand **Other Project Types**, click **Visual Studio Solutions**, and then select **Blank Solution**.
+2. **[テンプレート]** の **[その他のプロジェクトの種類]** を展開し、**[Visual Studio ソリューション]** をクリックして **[空のソリューション]** を選択します。
 
-3. Type a name that describes your application and the purpose of this solution (e.g., "LitwareBatchTaskPrograms").
+3. アプリケーションの内容とこのソリューションの目的とを表す名前を入力します (例: "LitwareBatchTaskPrograms")。
 
-4. To create the new solution, click **OK**.
+4. 新しいソリューションを作成する場合は **[OK]** をクリックします。
 
-## <a name="job-manager-template"></a>Job Manager template
+## ジョブ マネージャー テンプレート
 
-The Job Manager template helps you to implement a job manager task that can perform the following actions:
+ジョブ マネージャー テンプレートを通じて実装されるジョブ マネージャー タスクによって、次の操作を実行できます。
 
-* Split a job into multiple tasks.
-* Submit those tasks to run on Batch.
+* ジョブを複数のタスクに分割する。
+* 分割されたタスクを送信して Batch 上で実行する。
 
->[AZURE.NOTE] For more information about job manager tasks, see [Batch feature overview for developers](batch-api-basics.md#job-manager-task).
+>[AZURE.NOTE] ジョブ マネージャー タスクについて詳しくは、「[開発者向け Batch 機能の概要](batch-api-basics.md#job-manager-task)」をご覧ください。
 
-### <a name="create-a-job-manager-using-the-template"></a>Create a Job Manager using the template
+### テンプレートによるジョブ マネージャーの作成
 
-To add a job manager to the solution that you created earlier, follow these steps:
+先ほど作成したソリューションにジョブ マネージャーを追加するには、次の手順を実行します。
 
-1. Open your existing solution in Visual Studio 2015.
+1. 既にあるソリューションを Visual Studio 2015 で開きます。
 
-2. In Solution Explorer, right-click the solution, click **Add** > **New Project**.
+2. ソリューション エクスプローラーでソリューションを右クリックし、**[追加]**、**[新しいプロジェクト]** をクリックします。
 
-3. Under **Visual C#**, click **Cloud**, and then click **Azure Batch Job Manager with Job Splitter**.
+3. **[Visual C#]** の **[クラウド]** をクリックし、**[Azure Batch Job Manager with Job Splitter (Azure Batch ジョブ マネージャーとジョブ スプリッター)]** をクリックします。
 
-4. Type a name that describes your application and identifies this project as the job manager (e.g. "LitwareJobManager").
+4. アプリケーションを表す名前を入力し、このプロジェクトをジョブ マネージャーとして指定します (例: "LitwareJobManager")。
 
-5. To create the project, click **OK**.
+5. プロジェクトを作成する場合は **[OK]** をクリックします。
 
-6. Finally, build the project to force Visual Studio to load all referenced NuGet packages and to verify that the project is valid before you start modifying it.
+6. 最後に、プロジェクトをビルドします。プロジェクトの編集を開始する前に、参照設定されているすべての NuGet パッケージを Visual Studio で強制的に読み込んで、プロジェクトが有効であることを確認してください。
 
-### <a name="job-manager-template-files-and-their-purpose"></a>Job Manager template files and their purpose
+### ジョブ マネージャー テンプレート ファイルとその目的
 
-When you create a project using the Job Manager template, it generates three groups of code files:
+ジョブ マネージャー テンプレートを使用してプロジェクトを作成すると、次の 3 種類のコード ファイルが生成されます。
 
-* The main program file (Program.cs). This contains the program entry point and top-level exception handling. You shouldn't normally need to modify this.
+* メイン プログラム ファイル (Program.cs)。このファイルには、プログラムのエントリ ポイントと最上位の例外処理が含まれています。通常、このファイルへの変更は必要ありません。
 
-* The Framework directory. This contains the files responsible for the 'boilerplate' work done by the job manager program – unpacking parameters, adding tasks to the Batch job, etc. You shouldn't normally need to modify these files.
+* Framework ディレクトリ。ジョブ マネージャー プログラムによって実行される "定型的" な処理 (パラメーターのアンパック、Batch ジョブへのタスクの追加など) を担うファイルが格納されます。通常、これらのファイルへの変更は必要ありません。
 
-* The job splitter file (JobSplitter.cs). This is where you will put your application-specific logic for splitting a job into tasks.
+* ジョブ スプリッター ファイル (JobSplitter.cs)。ジョブをタスクに分割するためのアプリケーション固有のロジックは、このファイルに記述します。
 
-Of course you can add additional files as required to support your job splitter code, depending on the complexity of the job splitting logic.
+実際のジョブ スプリッター コードに関連して必要なファイルは当然、ジョブの分割ロジックの複雑さに応じて適宜追加できます。
 
-The template also generates standard .NET project files such as a .csproj file, app.config, packages.config, etc.
+このテンプレートからは他にも、.NET の標準的なプロジェクト ファイルが生成されます (.csproj ファイル、app.config、packages.config など)。
 
-The rest of this section describes the different files and their code structure, and explains what each class does.
+このセクションの残りの部分では、各種のファイルとそのコード構造、各クラスの役割について説明します。
 
 ![Visual Studio Solution Explorer showing the Job Manager template solution][solution_explorer01]
 
-**Framework files**
+**Framework ディレクトリ内のファイル**
 
-* `Configuration.cs`: Encapsulates the loading of job configuration data such as Batch account details, linked storage account credentials, job and task information, and job parameters. It also provides access to Batch-defined environment variables (see Environment settings for tasks, in the Batch documentation) via the Configuration.EnvironmentVariable class.
+* `Configuration.cs`: ジョブの構成データ (Batch アカウントの詳細、リンクされたストレージ アカウントの資格情報、ジョブ/タスク情報、ジョブのパラメーターなど) の読み込みがカプセル化されています。また、Batch で定義されている環境変数には、このファイルの Configuration.EnvironmentVariable クラスを通じてアクセスすることができます (Batch のドキュメントでタスクの環境設定に関するページを参照)。
 
-* `IConfiguration.cs`: Abstracts the implementation of the Configuration class, so that you can unit test your job splitter using a fake or mock configuration object.
+* `IConfiguration.cs`: Configuration クラスの実装を抽象化します。ダミーの構成オブジェクトを使用して、実際のジョブ スプリッターの単体テストを実行することができます。
 
-* `JobManager.cs`: Orchestrates the components of the job manager program. It is responsible for the initializing the job splitter, invoking the job splitter, and dispatching the tasks returned by the job splitter to the task submitter.
+* `JobManager.cs`: ジョブ マネージャー プログラムのコンポーネントを指揮します。ジョブ スプリッターの初期化と呼び出しのほか、ジョブ スプリッターから返されたタスクを TaskSubmitter にディスパッチする役割を果たします。
 
-* `JobManagerException.cs`: Represents an error that requires the job manager to terminate. JobManagerException is used to wrap 'expected' errors where specific diagnostic information can be provided as part of termination.
+* `JobManagerException.cs`: ジョブ マネージャーの強制終了につながるエラーを表します。JobManagerException は、強制終了の過程で具体的な診断情報を出力する "予期" されたエラーをラップするために使用されます。
 
-* `TaskSubmitter.cs`: This class is responsible to adding tasks returned by the job splitter to the Batch job. The JobManager class aggregates the sequence of tasks into batches for efficient but timely addition to the job, then calls TaskSubmitter.SubmitTasks on a background thread for each batch.
+* `TaskSubmitter.cs`: このクラスは、ジョブ スプリッターから返されたタスクを Batch ジョブに追加する役割を果たします。JobManager クラスは、タスクを効率的かつタイミングよくジョブに追加できるように、一連のタスクをバッチ単位に集約し、そのバッチごとに、バックグラウンド スレッドで TaskSubmitter.SubmitTasks を呼び出します。
 
-**Job Splitter**
+**ジョブ スプリッター**
 
-`JobSplitter.cs`: This class contains application-specific logic for splitting the job into tasks. The framework invokes the JobSplitter.Split method to obtain a sequence of tasks, which it adds to the job as the method returns them. This is the class where you will inject the logic of your job. Implement the Split method to return a sequence of CloudTask instances representing the tasks into which you want to partition the job.
+`JobSplitter.cs`: このクラスには、ジョブをタスクに分割するためのアプリケーション固有のロジックが記述されています。ジョブ マネージャー フレームワークは JobSplitter.Split メソッドを呼び出して一連のタスクを取得します。Batch ジョブにはそれらのタスクが、メソッドから返されるタイミングで追加されます。実際のジョブのロジックは、このクラスに追加することになります。ジョブの分割後のタスクを表す一連の CloudTask インスタンスを返すように Split メソッドを実装してください。
 
-**Standard .NET command line project files**
+**.NET の標準的なコマンド ライン プロジェクト ファイル**
 
-* `App.config`: Standard .NET application configuration file.
+* `App.config`: .NET の標準的なアプリケーション構成ファイル。
 
-* `Packages.config`: Standard NuGet package dependency file.
+* `Packages.config`: NuGet パッケージの標準的な依存関係ファイル。
 
-* `Program.cs`: Contains the program entry point and top-level exception handling.
+* `Program.cs`: プログラムのエントリ ポイントと最上位の例外処理が含まれています。
 
-### <a name="implementing-the-job-splitter"></a>Implementing the job splitter
+### ジョブ スプリッターの実装
 
-When you open the Job Manager template project, the project will have the JobSplitter.cs file open by default. You can implement the split logic for the tasks in your workload by using the Split() method show below:
+ジョブ マネージャー テンプレート プロジェクトを開いたとき、初期設定では JobSplitter.cs ファイルが表示されるようになっています。実際のワークロードのタスクに関する分割ロジックは、以下に示した Split() メソッドを使って実装できます。
 
 ```csharp
 /// <summary>
@@ -171,59 +170,59 @@ public IEnumerable<CloudTask> Split()
 }
 ```
 
->[AZURE.NOTE] The annotated section in the `Split()` method is the only section of the Job Manager template code that is intended for you to modify by adding the logic to split your jobs into different tasks. If you want to modify a different section of the template, please ensure you are familiarized with how Batch works, and try out a few of the [Batch code samples][github_samples].
+>[AZURE.NOTE] ジョブ マネージャー テンプレートのコードの中で利用者による編集が想定されているのは、`Split()` メソッド内のコメント化されたセクションだけです。ジョブを複数のタスクに分割するためのロジックをここに追加します。別のテンプレート セクションを編集する場合は、Batch の動作に関する十分な理解が必要です。[Batch 関連のコード サンプル][github_samples]をいくつか体験してみてください。
 
-Your Split() implementation has access to:
+Split() の実装コードからは次のデータにアクセスできます。
 
-* The job parameters, via the `_parameters` field.
-* The CloudJob object representing the job, via the `_job` field.
-* The CloudTask object representing the job manager task, via the `_jobManagerTask` field.
+* ジョブのパラメーター。`_parameters` フィールドを通じてアクセスします。
+* ジョブを表す CloudJob オブジェクト。`_job` フィールドを通じてアクセスします。
+* ジョブ マネージャー タスクを表す CloudTask オブジェクト。`_jobManagerTask` フィールドを通じてアクセスします。
 
-Your `Split()` implementation does not need to add tasks to the job directly. Instead, your code should return a sequence of CloudTask objects, and these will be added to the job automatically by the framework classes that invoke the job splitter. It's common to use C#'s iterator (`yield return`) feature to implement job splitters as this allows the tasks to start running as soon as possible rather than waiting for all tasks to be calculated.
+`Split()` の実装コードで直接ジョブにタスクを追加する必要はありません。実装コードの戻り値が一連の CloudTask オブジェクトになっていれば、ジョブ スプリッターを呼び出すジョブ マネージャー フレームワーク クラスによって、それらのオブジェクトがジョブに自動的に追加されます。ジョブ スプリッターは、C# の反復子 (`yield return`) 機能を使って実装するのが一般的です。この機能を使うことで、すべてのタスクの計算が終わるのを待たずにすぐタスクの実行を開始することができます。
 
-**Job splitter failure**
+**ジョブ スプリッターのエラー**
 
-If your job splitter encounters an error, it should either:
+ジョブ スプリッターでエラーが発生した場合、次のいずれかの措置が必要となります。
 
-* Terminate the sequence using the C# `yield break` statement, in which case the job manager will be treated as successful; or
+* C# の `yield break` ステートメントで反復処理を終了する。この場合、ジョブ マネージャーは実行に成功したものと見なされます。
 
-* Throw an exception, in which case the job manager will be treated as failed and may be retried depending on how the client has configured it).
+* 例外をスローする。この場合、ジョブ マネージャーは実行に失敗したものと見なされます (クライアントの構成によっては、再試行される場合もあります)。
 
-In both cases, any tasks already returned by the job splitter and added to the Batch job will be eligible to run. If you don't want this to happen, then you could:
+どちらの場合も、既にジョブ スプリッターから返されて Batch ジョブに追加されたタスクについては、実行の候補となります。そのようなタスクが実行されないようにしたい場合は、次の方法が考えられます。
 
-* Terminate the job before returning from the job splitter
+* ジョブ スプリッターからタスクが返される前にジョブを強制終了する。
 
-* Formulate the entire task collection before returning it (that is, return an `ICollection<CloudTask>` or `IList<CloudTask>` instead of implementing your job splitter using a C# iterator)
+* タスク コレクション全体を構築したうえで返す (つまり、C# の反復子を使ってジョブ スプリッターを実装するのではなく `ICollection<CloudTask>` または `IList<CloudTask>` を返す)。
 
-* Use task dependencies to make all tasks depend on the successful completion of the job manager
+* タスクの依存関係を使って、ジョブ マネージャーの正常完了をすべてのタスクの依存条件とする。
 
-**Job manager retries**
+**ジョブ マネージャーの再試行**
 
-If the job manager fails, it may be retried by the Batch service depending on the client retry settings. In general, this is safe, because when the framework adds tasks to the job, it ignores any tasks that already exist. However, if calculating tasks is expensive, you may not wish to incur the cost of recalculating tasks that have already been added to the job; conversely, if the re-run is not guaranteed to generate the same task IDs then the 'ignore duplicates' behavior will not kick in. In these cases you should design your job splitter to detect the work that has already been done and not repeat it, for example by performing a CloudJob.ListTasks before starting to yield tasks.
+ジョブ マネージャーは、エラーが発生した場合、クライアントの再試行設定によっては、Batch サービスによって再試行されます。ジョブ マネージャー フレームワークが Batch ジョブにタスクを追加する際、既に存在するタスクは無視されるので、それによって問題が生じることは通常はありません。しかし、タスクの計算負荷が大きい場合、既に Batch ジョブに追加されているタスクの再計算に伴うコストは避けたいと考えるのが普通でしょう。そもそも、再実行で同じタスク ID が生成される保証がなければ、"既存タスクを無視" する機能は働きません。このような場合は、タスクの生成を開始する前に CloudJob.ListTasks を実行するなどして、既に完了している作業を検出し、再実行されないようにジョブ スプリッターを設計することをお勧めします。
 
-### <a name="exit-codes-and-exceptions-in-the-job-manager-template"></a>Exit codes and exceptions in the Job Manager template
+### ジョブ マネージャー テンプレートの終了コードと例外
 
-Exit codes and exceptions provide a mechanism to determine the outcome of running a program, and they can help to identify any problems with the execution of the program. The Job Manager template implements the exit codes and exceptions described in this section.
+終了コードと例外は、プログラムの実行結果を判定する機構であり、プログラムの実行時に発生した問題の特定に役立てられます。ジョブ マネージャー テンプレートには、このセクションで説明されている終了コードと例外が実装されています。
 
-A job manager task that is implemented with the Job Manager template can return three possible exit codes:
+ジョブ マネージャー テンプレートによって実装されたジョブ マネージャー タスクから返される可能性がある終了コードは次の 3 つです。
 
-| Code | Description |
+| コード | Description |
 |------|-------------|
-| 0    | The job manager completed successfully. Your job splitter code ran to completion, and all tasks were added to the job. |
-| 1    | The job manager task failed with an exception in an 'expected' part of the program. The exception was translated to a JobManagerException with diagnostic information and, where possible, suggestions for resolving the failure. |
-| 2    | The job manager task failed with an 'unexpected' exception. The exception was logged to standard output, but the job manager was unable to add any additional diagnostic or remediation information. |
+| 0 | ジョブ マネージャーは正常終了しました。ジョブ スプリッター コードは最後まで実行され、すべてのタスクが Batch ジョブに追加されました。 |
+| 1 | "予期" されていた箇所のプログラム コードで例外が発生してジョブ マネージャー タスクが失敗しました。この例外は JobManagerException に変換されます。その際、診断情報のほか、可能であればエラーを解決するための推奨情報が出力されます。 |
+| 2 | ジョブ マネージャー タスクは、"予期しない" 例外で失敗しました。標準出力に例外が記録されましたが、診断や解決方法に関する情報をジョブ マネージャーは追加できませんでした。 |
 
-In the case of job manager task failure, some tasks may still have been added to the service before the error occurred. These tasks will run as normal. See "Job Splitter Failure" above for discussion of this code path.
+ジョブ マネージャー タスクが失敗しても、一部のタスクはエラーの発生前に既に追加されている可能性があります。これらのタスクは、通常どおり実行されます。このコード パスについて詳しくは、「ジョブ スプリッターのエラー」をご覧ください。
 
-All the information returned by exceptions is written into stdout.txt and stderr.txt files. For more information, see [Error Handling](batch-api-basics.md#error-handling).
+例外によって返されたすべての情報は、stdout.txt ファイルと stderr.txt ファイルに書き込まれます。詳しくは、「[エラー処理](batch-api-basics.md#error-handling)」をご覧ください。
 
-### <a name="client-considerations"></a>Client considerations
+### クライアントの考慮事項
 
-This section describes some client implementation requirements when invoking a job manager based on this template. See [How to pass parameters and environment variables from the client code](#pass-environment-settings) for details on passing parameters and environment settings.
+ここでは、クライアントの実装に関して、このテンプレートに基づいてジョブ マネージャーを呼び出す際のいくつかの要件について説明します。パラメーターと環境設定の受け渡しについて詳しくは、[クライアント コードからパラメーターと環境変数を渡す方法](#pass-environment-settings)をご覧ください。
 
-**Mandatory credentials**
+**必須の資格情報**
 
-In order to add tasks to the Azure Batch job, the job manager task requires your Azure Batch account URL and key. You must pass these in environment variables named YOUR_BATCH_URL and YOUR_BATCH_KEY. You can set these in the Job Manager task environment settings. For example, in a C# client:
+ジョブ マネージャー タスクで Azure Batch ジョブにタスクを追加するためには、ご使用の Azure Batch アカウントの URL とキーが必要となります。これらの情報は、YOUR\_BATCH\_URL と YOUR\_BATCH\_KEY という環境変数で渡す必要があります。これらの変数の設定は、ジョブ マネージャー タスクの環境設定で行うことができます。たとえば、C# クライアントで次のように記述します。
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -231,9 +230,9 @@ job.JobManagerTask.EnvironmentSettings = new [] {
     new EnvironmentSetting("YOUR_BATCH_KEY", "{your_base64_encoded_account_key}"),
 };
 ```
-**Storage credentials**
+**ストレージの資格情報**
 
-Typically, the client does not need to provide the linked storage account credentials to the job manager task because (a) most job managers do not need to explicitly access the linked storage account and (b) the linked storage account is often provided to all tasks as a common environment setting for the job. If you are not providing the linked storage account via the common environment settings, and the job manager requires access to linked storage, then you should supply the linked storage credentials as follows:
+通常、リンクされたストレージ アカウントの資格情報をクライアントからジョブ マネージャー タスクに渡す必要はありません。なぜなら、(a) ほとんどのジョブ マネージャーは、リンクされたストレージ アカウントに明示的にアクセスする必要がなく、(b) リンクされたストレージ アカウントは通常、ジョブの共通の環境設定としてすべてのタスクに提供されることが多いためです。リンクされたストレージ アカウントを共通の環境設定で指定しておらず、かつリンクされたストレージにジョブ マネージャーがアクセスしなければならない場合は、次のようにして、リンクされたストレージの資格情報を指定してください。
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -243,96 +242,96 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 };
 ```
 
-**Job manager task settings**
+**ジョブ マネージャー タスクの設定**
 
-The client should set the job manager *killJobOnCompletion* flag to **false**.
+ジョブ マネージャーの *killJobOnCompletion* フラグは、クライアントで **false** に設定する必要があります。
 
-It is usually safe for the client to set *runExclusive* to **false**.
+通常、*runExclusive* は、クライアントで **false** に設定することをお勧めします。
 
-The client should use the *resourceFiles* or *applicationPackageReferences* collection to have the job manager executable (and its required DLLs) deployed to the compute node.
+ジョブ マネージャーの実行可能ファイル (とその必須 DLL) は、クライアントが *resourceFiles* または *applicationPackageReferences* コレクションを使用してコンピューティング ノードにデプロイする必要があります。
 
-By default, the job manager will not be retried if it fails. Depending on your job manager logic, the client may want to enable retries via *constraints*/*maxTaskRetryCount*.
+ジョブ マネージャーでエラーが発生しても、既定では再試行されません。ジョブ マネージャーのロジックに応じて、*constraints*/*maxTaskRetryCount* を使ってクライアント側で再試行を有効にしてください。
 
-**Job settings**
+**ジョブの設定**
 
-If the job splitter emits tasks with dependencies, the client must set the job's usesTaskDependencies to true.
+依存関係を持ったタスクがジョブ スプリッターから出力された場合、クライアントでジョブの usesTaskDependencies を true に設定する必要があります。
 
-In the job splitter model, it is unusual for clients to wish to add tasks to jobs over and above what the job splitter creates. The client should therefore normally set the job's *onAllTasksComplete* to **terminatejob**.
+ジョブ スプリッター モデルでは、ジョブ スプリッターが作成したタスクに加えて別途、クライアント側でタスクをジョブに追加しなければならないような状況はまれです。そのため、ジョブの *onAllTasksComplete* は通常、クライアントで **terminatejob** に設定してください。
 
-## <a name="task-processor-template"></a>Task Processor template
+## タスク プロセッサ テンプレート
 
-A Task Processor template helps you to implement a task processor that can perform the following actions:
+タスク プロセッサ テンプレートでは、次の操作を実行するタスク プロセッサを実装できます。
 
-* Set up the information required by each Batch task to run.
-* Run all actions required by each Batch task.
-* Save task outputs to persistent storage.
+* 個々の Batch タスクの実行に必要な情報を設定する。
+* 個々の Batch タスクに必要なあらゆる操作を実行する。
+* 永続的ストレージにタスク出力を保存する。
 
-Although a task processor is not required to run tasks on Batch, the key advantage of using a task processor is that it provides a wrapper to implement all task execution actions in one location. For example, if you need to run several applications in the context of each task, or if you need to copy data to persistent storage after completing each task.
+Batch でタスクを実行するために必ずしもタスク プロセッサは必要ありません。タスク プロセッサを使用することの主な利点は、そのラッパーを通じて、タスクの実行に伴うあらゆる操作を一箇所で実装できることです。たとえば、必要に応じて、各タスクのコンテキストで複数のアプリケーションを実行したり、各タスクの完了後にデータを永続的ストレージにコピーしたりすることができます。
 
-The actions performed by the task processor can be as simple or complex, and as many or as few, as required by your workload. Additionally, by implementing all task actions into one task processor, you can readily update or add actions based on changes to applications or workload requirements. However, in some cases a task processor might not be the optimal solution for your implementation as it can add unnecessary complexity, for example when running jobs that can be quickly started from a simple command line.
+タスク プロセッサでは、実際のワークロードに応じて、単純な操作や複雑な操作をいくつでも実行することができます。加えて、タスクの全操作を 1 つのタスク プロセッサに実装しておけば、アプリケーションに対する変更やワークロード要件の変化に合わせて、操作を更新したり追加したりすることが容易にできます。ただし、実際の実装においては、タスク プロセッサが最適解とは言えないケースもあります。タスク プロセッサの使用が複雑さを不要に増す場合もあるからです (単純なコマンド ラインからすぐに開始できるジョブを実行するときなど)。
 
-### <a name="create-a-task-processor-using-the-template"></a>Create a Task Processor using the template
+### テンプレートを使用してタスク プロセッサを作成する
 
-To add a task processor to the solution that you created earlier, follow these steps:
+先ほど作成したソリューションにタスク プロセッサを追加するには、次の手順を実行します。
 
-1. Open your existing solution in Visual Studio 2015.
+1. 既にあるソリューションを Visual Studio 2015 で開きます。
 
-2. In Solution Explorer, right-click the solution, click **Add**, and then click **New Project**.
+2. ソリューション エクスプローラーで該当ソリューションを右クリックして **[追加]** をクリックし、**[新しいプロジェクト]** をクリックします。
 
-3. Under **Visual C#**, click **Cloud**, and then click **Azure Batch Task Processor**.
+3. **[Visual C#]** の **[クラウド]** をクリックし、**[Azure Batch Task Processor (Azure Batch タスク プロセッサ)]** をクリックします。
 
-4. Type a name that describes your application and identifies this project as the task processor (e.g. "LitwareTaskProcessor").
+4. アプリケーションを表す名前を入力し、このプロジェクトをタスク プロセッサとして指定します (例: "LitwareTaskProcessor")。
 
-5. To create the project, click **OK**.
+5. プロジェクトを作成する場合は **[OK]** をクリックします。
 
-6. Finally, build the project to force Visual Studio to load all referenced NuGet packages and to verify that the project is valid before you start modifying it.
+6. 最後に、プロジェクトをビルドします。プロジェクトの編集を開始する前に、参照設定されているすべての NuGet パッケージを Visual Studio で強制的に読み込んで、プロジェクトが有効であることを確認してください。
 
-### <a name="task-processor-template-files-and-their-purpose"></a>Task Processor template files and their purpose
+### タスク プロセッサ テンプレート ファイルとその目的
 
-When you create a project using the task processor template, it generates three groups of code files:
+タスク プロセッサ テンプレートを使用してプロジェクトを作成すると、次の 3 種類のコード ファイルが生成されます。
 
-* The main program file (Program.cs). This contains the program entry point and top-level exception handling. You shouldn't normally need to modify this.
+* メイン プログラム ファイル (Program.cs)。このファイルには、プログラムのエントリ ポイントと最上位の例外処理が含まれています。通常、このファイルへの変更は必要ありません。
 
-* The Framework directory. This contains the files responsible for the 'boilerplate' work done by the job manager program – unpacking parameters, adding tasks to the Batch job, etc. You shouldn't normally need to modify these files.
+* Framework ディレクトリ。ジョブ マネージャー プログラムによって実行される "定型的" な処理 (パラメーターのアンパック、Batch ジョブへのタスクの追加など) を担うファイルが格納されます。通常、これらのファイルへの変更は必要ありません。
 
-* The task processor file (TaskProcessor.cs). This is where you will put your application-specific logic for executing a task (typically by calling out to an existing executable). Pre- and post-processing code, such as downloading additional data or uploading result files, also goes here.
+* タスク プロセッサ ファイル (TaskProcessor.cs)。タスクを実行するためのアプリケーション固有のロジックは、このファイルに記述します (通常は、既存の実行可能ファイルを呼び出します)。前処理と後処理のコードもここに記述します (別途必要なデータのダウンロード、結果ファイルのアップロードなど)。
 
-Of course you can add additional files as required to support your task processor code, depending on the complexity of the job splitting logic.
+実際のタスク プロセッサ コードに関連して必要なファイルは当然、ジョブの分割ロジックの複雑さに応じて適宜追加できます。
 
-The template also generates standard .NET project files such as a .csproj file, app.config, packages.config, etc.
+このテンプレートからは他にも、.NET の標準的なプロジェクト ファイルが生成されます (.csproj ファイル、app.config、packages.config など)。
 
-The rest of this section describes the different files and their code structure, and explains what each class does.
+このセクションの残りの部分では、各種のファイルとそのコード構造、各クラスの役割について説明します。
 
 ![Visual Studio Solution Explorer showing the Task Processor template solution][solution_explorer02]
 
-**Framework files**
+**Framework ディレクトリ内のファイル**
 
-* `Configuration.cs`: Encapsulates the loading of job configuration data such as Batch account details, linked storage account credentials, job and task information, and job parameters. It also provides access to Batch-defined environment variables (see Environment settings for tasks, in the Batch documentation) via the Configuration.EnvironmentVariable class.
+* `Configuration.cs`: ジョブの構成データ (Batch アカウントの詳細、リンクされたストレージ アカウントの資格情報、ジョブ/タスク情報、ジョブのパラメーターなど) の読み込みがカプセル化されています。また、Batch で定義されている環境変数には、このファイルの Configuration.EnvironmentVariable クラスを通じてアクセスすることができます (Batch のドキュメントでタスクの環境設定に関するページを参照)。
 
-* `IConfiguration.cs`: Abstracts the implementation of the Configuration class, so that you can unit test your job splitter using a fake or mock configuration object.
+* `IConfiguration.cs`: Configuration クラスの実装を抽象化します。ダミーの構成オブジェクトを使用して、実際のジョブ スプリッターの単体テストを実行することができます。
 
-* `TaskProcessorException.cs`: Represents an error that requires the job manager to terminate. TaskProcessorException is used to wrap 'expected' errors where specific diagnostic information can be provided as part of termination.
+* `TaskProcessorException.cs`: ジョブ マネージャーの強制終了につながるエラーを表します。TaskProcessorException は、強制終了の過程で具体的な診断情報を出力する "予期" されたエラーをラップするために使用されます。
 
-**Task Processor**
+**タスク プロセッサ**
 
-* `TaskProcessor.cs`: Runs the task. The framework invokes the TaskProcessor.Run method. This is the class where you will inject the application-specific logic of your task. Implement the Run method to:
-  * Parse and validate any task parameters
-  * Compose the command line for any external program you want to invoke
-  * Log any diagnostic information you may require for debugging purposes
-  * Start a process using that command line
-  * Wait for the process to exit
-  * Capture the exit code of the process to determine if it succeeded or failed
-  * Save any output files you want to keep to persistent storage
+* `TaskProcessor.cs`: タスクを実行します。タスク プロセッサ フレームワークによって TaskProcessor.Run メソッドが呼び出されます。実際のタスクに対するアプリケーション固有のロジックは、このクラスに追加することになります。Run メソッドを実装して、次の処理を実行します。
+  * タスクのパラメーターを解析して検証する
+  * 呼び出す外部プログラムのコマンド ラインを作成する
+  * デバッグに必要となる診断情報をログに記録する
+  * コマンド ラインを使用してプロセスを開始する
+  * プロセスの終了を待機する
+  * プロセスの終了コードを捕捉して成功か失敗かを判断する
+  * 維持したい出力ファイルを永続的ストレージに保存する
 
-**Standard .NET command line project files**
+**.NET の標準的なコマンド ライン プロジェクト ファイル**
 
-* `App.config`: Standard .NET application configuration file.
-* `Packages.config`: Standard NuGet package dependency file.
-* `Program.cs`: Contains the program entry point and top-level exception handling.
+* `App.config`: .NET の標準的なアプリケーション構成ファイル。
+* `Packages.config`: NuGet パッケージの標準的な依存関係ファイル。
+* `Program.cs`: プログラムのエントリ ポイントと最上位の例外処理が含まれています。
 
-## <a name="implementing-the-task-processor"></a>Implementing the task processor
+## タスク プロセッサの実装
 
-When you open the Task Processor template project, the project will have the TaskProcessor.cs file open by default. You can implement the run logic for the tasks in your workload by using the Run() method shown below:
+タスク プロセッサ テンプレート プロジェクトを開いたとき、初期設定では TaskProcessor.cs ファイルが表示されるようになっています。実際のワークロードのタスクに関する実行ロジックは、以下に示した Run() メソッドを使って実装できます。
 
 ```csharp
 /// <summary>
@@ -377,41 +376,41 @@ public async Task<int> Run()
     }
 }
 ```
->[AZURE.NOTE] The annotated section in the Run() method is the only section of the Task Processor template code that is intended for you to modify by adding the run logic for the tasks in your workload. If you want to modify a different section of the template, please first familiarize yourself with how Batch works by reviewing the Batch documentation and trying out a few of the Batch code samples.
+>[AZURE.NOTE] タスク プロセッサ テンプレートのコードの中で利用者による編集が想定されているのは、Run() メソッド内のコメント化されたセクションだけです。実際のワークロードのタスクに関する実行ロジックをここに追加します。別のテンプレート セクションを編集する場合は、Batch の動作に関する十分な理解が必要です。まず Batch のドキュメントを読んで、Batch 関連のコード サンプルをいくつか体験してみてください。
 
-The Run() method is responsible for launching the command line, starting one or more processes, waiting for all process to complete, saving the results, and finally returning with an exit code. The Run() method is where you implement the processing logic for your tasks. The task processor framework invokes the Run() method for you; you do not need to call it yourself.
+コマンド ラインを起動してプロセスを開始し、すべてのプロセスの完了を待って結果を保存した後、最後に終了コードを返す、というのが Run() メソッドの役割です。実際のタスクの処理ロジックは、Run() メソッドに実装します。Run() メソッドは、タスク プロセッサ フレームワークによって自動的に呼び出されるので、明示的に呼び出す必要はありません。
 
-Your Run() implementation has access to:
+Run() の実装コードからは次のデータにアクセスできます。
 
-* The task parameters, via the `_parameters` field.
-* The job and task ids, via the `_jobId` and `_taskId` fields.
-* The task configuration, via the `_configuration` field.
+* タスクのパラメーター。`_parameters` フィールドを通じてアクセスします。
+* ジョブ ID とタスク ID。`_jobId` フィールドと `_taskId` フィールドを通じてアクセスします。
+* タスクの構成。`_configuration` フィールドを通じてアクセスします。
 
-**Task failure**
+**タスクの失敗**
 
-In case of failure, you can exit the Run() method by throwing an exception, but this leaves the top level exception handler in control of the task exit code. If you need to control the exit code so that you can distinguish different types of failure, for example for diagnostic purposes or because some failure modes should terminate the job and others should not, then you should exit the Run() method by returning a non-zero exit code. This becomes the task exit code.
+エラーが発生した場合、例外をスローして Run() メソッドを終了できますが、その場合、タスクの終了コードを管理している最上位の例外ハンドラーから抜けることになります。エラーの種類を区別できるようなかたちで終了コードを制御する必要がある場合、たとえば終了コードを使って診断を行うケースや、ジョブを強制終了すべきかどうかがエラーの種類によって異なるケースでは、Run() メソッドを終了するときに 0 以外の終了コードを返すようにしてください。それがタスクの終了コードになります。
 
-### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Exit codes and exceptions in the Task Processor template
+### タスク プロセッサ テンプレートの終了コードと例外
 
-Exit codes and exceptions provide a mechanism to determine the outcome of running a program, and they can help identify any problems with the execution of the program. The Task Processor template implements the exit codes and exceptions described in this section.
+終了コードと例外は、プログラムの実行結果を判定する機構であり、プログラムの実行時に発生した問題の特定に役立てられます。タスク プロセッサ テンプレートには、このセクションで説明されている終了コードと例外が実装されています。
 
-A task processor task that is implemented with the Task Processor template can return three possible exit codes:
+タスク プロセッサ テンプレートによって実装されたタスク プロセッサ タスクから返される可能性がある終了コードは次の 3 つです。
 
-| Code | Description |
+| コード | Description |
 |------|-------------|
-|  [Process.ExitCode][process_exitcode] | The task processor ran to completion. Note that this does not imply that the program you invoked was successful – only that the task processor invoked it successfully and performed any post-processing without exceptions. The meaning of the exit code depends on the invoked program – typically exit code 0 means the program succeeded and any other exit code means the program failed. |
-| 1    | The task processor failed with an exception in an 'expected' part of the program. The exception was translated to a `TaskProcessorException` with diagnostic information and, where possible, suggestions for resolving the failure. |
-| 2    | The task processor failed with an 'unexpected' exception. The exception was logged to standard output, but the task processor was unable to add any additional diagnostic or remediation information. |
+| [Process.ExitCode][process_exitcode] | タスク プロセッサは最後まで実行されました。これは呼び出したプログラムの成功を必ずしも意味しないので注意してください。単に、そのプログラムがタスク プロセッサによって正常に呼び出され、例外が発生することなく後処理が実行されたことを意味するものです。終了コードの意味は、呼び出したプログラムによって異なります。通常、終了コード 0 は、プログラムが正常に実行されたことを意味し、それ以外の終了コードはプログラムの実行に失敗したことを意味します。 |
+| 1 | "予期" されていた箇所のプログラム コードで例外が発生してタスク プロセッサが失敗しました。この例外は `TaskProcessorException` に変換されます。その際、診断情報のほか、可能であればエラーを解決するための推奨情報が出力されます。 |
+| 2 | タスク プロセッサは、"予期しない" 例外で失敗しました。標準出力に例外が記録されましたが、診断や解決方法に関する情報をタスク プロセッサは追加できませんでした。 |
 
->[AZURE.NOTE] If the program you invoke uses exit codes 1 and 2 to indicate specific failure modes, then using exit codes 1 and 2 for task processor errors is ambiguous. You can change these task processor error codes to distinctive exit codes by editing the exception cases in the Program.cs file.
+>[AZURE.NOTE] 呼び出すプログラムが特定のエラーの種類を示すための終了コードとして 1 と 2 を使用している場合、タスク プロセッサのエラーに終了コード 1 と 2 を使用すると意味が曖昧になります。このようなタスク プロセッサのエラー コードは、Program.cs ファイルで例外の case 条件を編集し、区別が付くような終了コードに変更してください。
 
-All the information returned by exceptions is written into stdout.txt and stderr.txt files. For more information, see Error Handling, in the Batch documentation.
+例外によって返されたすべての情報は、stdout.txt ファイルと stderr.txt ファイルに書き込まれます。詳しくは、Batch のドキュメントでエラー処理に関するページを参照してください。
 
-### <a name="client-considerations"></a>Client considerations
+### クライアントの考慮事項
 
-**Storage credentials**
+**ストレージの資格情報**
 
-If your task processor uses Azure blob storage to persist outputs, for example using the file conventions helper library, then it needs access to *either* the cloud storage account credentials *or* a blob container URL that includes a shared access signature (SAS). The template includes support for providing credentials via common environment variables. Your client can pass the storage credentials as follows:
+タスク プロセッサで Azure Blob Storage を使って (たとえばファイル変換ヘルパー ライブラリを使用して) 出力を永続化する場合、クラウド ストレージ アカウントの資格情報か、"*または*" Shared Access Signature (SAS) を含んだ BLOB コンテナーの URL の "*どちらか*" にアクセスする必要があります。このテンプレートは、共通の環境変数を通じて資格情報を指定できるようになっています。ストレージの資格情報は、クライアントから次のようにして渡すことができます。
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -420,57 +419,57 @@ job.CommonEnvironmentSettings = new [] {
 };
 ```
 
-The storage account is then available in the TaskProcessor class via the `_configuration.StorageAccount` property.
+その後は、TaskProcessor クラスから `_configuration.StorageAccount` プロパティを通じてストレージ アカウントにアクセスできます。
 
-If you prefer to use a container URL with SAS, you can also pass this via an job common environment setting, but the task processor template does not currently include built-in support for this.
+SAS を含んだコンテナーの URL を使用する場合は、ジョブの共通の環境設定を通じて渡すこともできます。ただし現時点では、タスク プロセッサ テンプレートにそのための機能は組み込まれていません。
 
-**Storage setup**
+**ストレージのセットアップ**
 
-It is recommended that the client or job manager task create any containers required by tasks before adding the tasks to the job. This is mandatory if you use a container URL with SAS, as such a URL does not include permission to create the container. It is recommended even if you pass storage account credentials, as it saves every task having to call CloudBlobContainer.CreateIfNotExistsAsync on the container.
+タスクに必要なコンテナーがあれば、そのタスクをジョブに追加する前に、クライアントまたはジョブ マネージャー タスクで作成することをお勧めします。SAS を含んだコンテナーの URL を使用する場合は、これが必須となります。そのような URL には、コンテナーを作成するためのアクセス許可が含まれていないためです。個々のタスクでコンテナーの CloudBlobContainer.CreateIfNotExistsAsync を呼び出さずに済むため、この推奨事項は、ストレージ アカウントの資格情報を渡す場合にも当てはまります。
 
-## <a name="pass-parameters-and-environment-variables"></a>Pass parameters and environment variables
+## パラメーターと環境変数の受け渡し
 
-### <a name="pass-environment-settings"></a>Pass environment settings
+### 環境設定の受け渡し
 
-A client can pass information to the job manager task in the form of environment settings. This information can then be used by the job manager task when generating the task processor tasks that will run as part of the compute job. Examples of the information that you can pass as environment settings are:
+ジョブ マネージャー タスクには、クライアントから環境設定の形式で情報を渡すことができます。ジョブ マネージャー タスクは、その受け取った情報を使用して、コンピューティング ジョブの一部として実行されるタスク プロセッサ タスクを生成できます。次に示したのは、環境設定として渡すことができる情報の例です。
 
-* Storage account name and account keys
-* Batch account URL
-* Batch account key
+* ストレージ アカウント名とアカウント キー
+* Batch アカウントの URL
+* Batch アカウントのキー
 
-The Batch service has a simple mechanism to pass environment settings to a job manager task by using the `EnvironmentSettings` property in [Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask].
+Batch サービスでは、[Microsoft.Azure.Batch.JobManagerTask][net_jobmanagertask] の `EnvironmentSettings` プロパティを使用したシンプルなメカニズムによって、ジョブ マネージャー タスクに環境設定を渡すことができます。
 
-For example, to get the `BatchClient` instance for a Batch account, you can pass as environment variables from the client code the URL and shared key credentials for the Batch account. Likewise, to access the storage account that is linked to the Batch account, you can pass the storage account name and the storage account key as environment variables.
+たとえば、Batch アカウントの `BatchClient` インスタンスを取得するには、クライアント コードから Batch アカウントの URL と共有キーの資格情報を環境変数として渡します。同様に、Batch アカウントにリンクされたストレージ アカウントにアクセスする場合は、そのストレージ アカウント名とストレージ アカウント キーを環境変数として渡します。
 
-### <a name="pass-parameters-to-the-job-manager-template"></a>Pass parameters to the Job Manager template
+### ジョブ マネージャー テンプレートへのパラメーターの受け渡し
 
-In many cases, it's useful to pass per-job parameters to the job manager task, either to control the job splitting process or to configure the tasks for the job. You can do this by uploading a JSON file named parameters.json as a resource file for the job manager task. The parameters can then become available in the `JobSplitter._parameters` field in the Job Manager template.
+ほとんどの場合、ジョブ単位のパラメーターは、ジョブ マネージャー タスクに渡すことをお勧めします。ジョブの分割プロセスを制御したり、ジョブのタスクを構成したりする目的で利用できます。そのためには、ジョブ マネージャー タスクのリソース ファイルとして parameters.json という JSON ファイルをアップロードします。これで必要なパラメーターが、ジョブ マネージャー テンプレートの `JobSplitter._parameters` フィールドを通じて利用できる状態になります。
 
->[AZURE.NOTE] The built-in parameter handler supports only string-to-string dictionaries. If you want to pass complex JSON values as parameter values, you will need to pass these as strings and parse them in the job splitter, or modify the framework's `Configuration.GetJobParameters` method.
+>[AZURE.NOTE] 組み込みのパラメーター ハンドラーがサポートしているのは、文字列対文字列のディクショナリのみです。複雑な JSON 値をパラメーターの値として渡す必要がある場合は、それらを文字列として渡して、ジョブ スプリッターで解析するか、またはジョブ マネージャー フレームワークの `Configuration.GetJobParameters` メソッドを変更する必要があります。
 
-### <a name="pass-parameters-to-the-task-processor-template"></a>Pass parameters to the Task Processor template
+### タスク プロセッサ テンプレートへのパラメーターの受け渡し
 
-You can also pass parameters to individual tasks implemented using the Task Processor template. Just as with the job manager template, the task processor template looks for a resource file named
+タスク プロセッサ テンプレートを使用して実装した個々のタスクにパラメーターを渡すこともできます。ジョブ マネージャー テンプレートと同様、タスク プロセッサ テンプレートも、
 
-parameters.json, and if found it loads it as the parameters dictionary. There are a couple of options for how to pass parameters to the task processor tasks:
+parameters.json というリソース ファイルを探し、見つかった場合は、それをパラメーター ディクショナリとして読み込みます。タスク プロセッサ タスクにパラメーターを渡す方法としては、以下の 2 つの選択肢があります。
 
-* Reuse the job parameters JSON. This works well if the only parameters are job-wide ones (for example, a render height and width). To do this, when creating a CloudTask in the job splitter, add a reference to the parameters.json resource file object from the job manager task's ResourceFiles (`JobSplitter._jobManagerTask.ResourceFiles`) to the CloudTask's ResourceFiles collection.
+* ジョブの parameters.json を再利用する。この方法は、ジョブ スコープのパラメーターのみである場合に利用できます (レンダリングの高さと幅など)。具体的には、ジョブ スプリッターで CloudTask を作成するときに、ジョブ マネージャー タスクの ResourceFiles (`JobSplitter._jobManagerTask.ResourceFiles`) から CloudTask の ResourceFiles コレクションに parameters.json リソース ファイル オブジェクトへの参照を追加します。
 
-* Generate and upload a task-specific parameters.json document as part of job splitter execution, and reference that blob in the task's resource files collection. This is necessary if different tasks have different parameters. An example might be a 3D rendering scenario where the frame index is passed to the task as a parameter.
+* ジョブ スプリッターの実行過程でタスク固有の parameters.json ドキュメントを生成、アップロードしておき、その BLOB をタスクのリソース ファイル コレクション内から参照する。タスクごとにパラメーターが異なる場合、この方法が必要になります。たとえば 3D レンダリングで、フレーム インデックスをタスクにパラメーターとして渡すような状況が該当します。
 
->[AZURE.NOTE] The built-in parameter handler supports only string-to-string dictionaries. If you want to pass complex JSON values as parameter values, you will need to pass these as strings and parse them in the task processor, or modify the framework's `Configuration.GetTaskParameters` method.
+>[AZURE.NOTE] 組み込みのパラメーター ハンドラーがサポートしているのは、文字列対文字列のディクショナリのみです。複雑な JSON 値をパラメーターの値として渡す必要がある場合は、それらを文字列として渡して、タスク プロセッサで解析するか、またはタスク プロセッサ フレームワークの `Configuration.GetTaskParameters` メソッドを変更する必要があります。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-### <a name="persist-job-and-task-output-to-azure-storage"></a>Persist job and task output to Azure Storage
+### ジョブやタスクからの出力を Azure Storage に保存する
 
-Another helpful tool in Batch solution development is [Azure Batch File Conventions][nuget_package]. Use this .NET class library (currently in preview) in your Batch .NET applications to easily store and retrieve task outputs to and from Azure Storage. [Persist Azure Batch job and task output](batch-task-output.md) contains a full discussion of the library and its usage.
+Batch ソリューション開発に有効活用できるもう 1 つのツールとして、[Azure Batch ファイル規則][nuget_package]があります。Batch .NET アプリケーションにこの .NET クラス ライブラリ (現在はプレビュー段階) を使用することで、タスクからの出力を Azure Storage との間で簡単に保存したり取り出したりすることができます。このライブラリと使用法について詳しくは、「[Azure Batch のジョブとタスクの出力の保持](batch-task-output.md)」をご覧ください。
 
-### <a name="batch-forum"></a>Batch Forum
+### Batch フォーラム
 
-The [Azure Batch Forum][forum] on MSDN is a great place to discuss Batch and ask questions about the service. Head on over for helpful "sticky" posts, and post your questions as they arise while you build your Batch solutions.
+MSDN の [Azure Batch フォーラム][forum]は、Batch のディスカッションやサービスに関する質問を行うことができる優れた場所です。役立つ "sticky" 投稿を参照したり、Batch ソリューションの構築中に湧いた質問を投稿したりできます。
 
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
+[forum]: https://social.msdn.microsoft.com/forums/azure/ja-JP/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files
@@ -483,8 +482,4 @@ The [Azure Batch Forum][forum] on MSDN is a great place to discuss Batch and ask
 [solution_explorer01]: ./media/batch-visual-studio-templates/solution_explorer01.png
 [solution_explorer02]: ./media/batch-visual-studio-templates/solution_explorer02.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

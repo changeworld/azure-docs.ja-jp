@@ -1,9 +1,9 @@
 <properties 
-   pageTitle="Learn about the latest Azure Guest OS Releases | Microsoft Azure" 
-   description="The latest release news and SDK compatibility for Azure Cloud Services Guest OS." 
+   pageTitle="最新の Azure ゲスト OS のリリースについて | Microsoft Azure" 
+   description="Azure Cloud Services のゲスト OS の最新のリリース情報と SDK との互換性について説明します。" 
    services="cloud-services" 
    documentationCenter="na" 
-   authors="raiye" 
+   authors="yuemlu" 
    manager="timlt" 
    editor=""/>
 
@@ -13,204 +13,200 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="tbd" 
-   ms.date="10/18/2016"
+   ms.date="07/13/2016"
    ms.author="raiye"/>
 
+# Azure ゲスト OS リリースと SDK の互換性対応表
+Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。ロールを構成して、「[Azure ゲスト OS の更新設定][]」に説明されているゲスト OS の*自動*更新を使用する場合、このページを読むことは必須ではありません。
 
-# <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure Guest OS releases and SDK compatibility matrix
-Provides you with up-to-date information about the latest Azure Guest OS releases for Cloud Services. This information will help you plan your upgrade path before a Guest OS is disabled. If you configure your roles to use *automatic* Guest OS updates as described in [Azure Guest OS Update Settings][], it is not vital that you read this page.
-
-> [AZURE.IMPORTANT] This page applies to Cloud Services web and worker roles, which run on top of a Guest OS. It does **not apply** to IaaS Virtual Machines. 
+> [AZURE.IMPORTANT] このページは、ゲスト OS 上で実行される Cloud Services Web ロールと worker ロールに適用されます。IaaS Virtual Machines には**適用されません**。
 
 <!-- -->
 
-> [AZURE.TIP] Subscribe to the [Guest OS Update RSS Feed][rss] to receive the most timely notification on all Guest OS changes.
+> [AZURE.TIP] [ゲスト OS 更新 RSS フィード][rss]をサブスクライブして、ゲスト OS のすべての変更に関する通知をタイムリーに受信してください。
 
-Unsure about what the Guest OS is or how the Guest OS releases work? Read [this](#how-it-works) section.
+ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
-## <a name="news-updates"></a>News updates
-###### <a name="**september-13-2016**"></a>**September 13 2016**
-September Guest OS rollout is starting September 13 2016, and projected to be released on October 13 2016.
+## 最新情報
+###### **2016 年 9 月 13 日**
+9 月のゲスト OS ロールアウトは、2016 年 9 月 13 日に開始し、2016 年 10 月 13 日にリリースされる予定です。
 
-###### <a name="**august-9-2016**"></a>**August 9 2016**
-August Guest OS rollout is starting August 9 2016, and projected to be released on September 8 2016. 
+###### **2016 年 8 月 9 日**
+8 月のゲスト OS ロールアウトは、2016 年 8 月 9 日に開始し、2016 年 9 月 8 日にリリースされる予定です。
 
-###### <a name="**july-13-2016**"></a>**July 13 2016**
-July Guest OS rollout is starting July 13 2016, and projected to be released on August 12 2016. 
+###### **2016 年 7 月 13 日**
+7 月のゲスト OS ロールアウトは、2016 年 7 月 13 日に開始し、2016 年 8 月 12 日にリリースされる予定です。
 
-###### <a name="**june-15-2016**"></a>**June 15 2016**
-June Guest OS rollout is starting June 15 2016, and projected to be released on July 14 2016. 
+###### **2016 年 6 月 15 日**
+6 月のゲスト OS ロールアウトは、2016 年 6 月 15 日に開始し、2016 年 7 月 14 日にリリースされる予定です。
 
-###### <a name="**may-17-2016**"></a>**May 17 2016**
-May Guest OS rollout is starting May 17 2016, and projected to be released on June 10 2016. 
+###### **2016 年 5 月 17 日**
+5 月のゲスト OS ロールアウトは、2016 年 5 月 17 日に開始され、2016 年 6 月 10 日にリリースされる予定です。
 
-###### <a name="**april-18-2016**"></a>**April 18 2016**
-April Guest OS rollout is starting April 18 2016, and projected to be released on May 12 2016. 
+###### **2016 年 4 月 18 日**
+4 月のゲスト OS ロールアウトは、2016 年 4 月 18 日に開始し、2016 年 5 月 12 日にリリースされる予定です。
 
-###### <a name="**march-14-2016**"></a>**March 14 2016**
-March Guest OS rollout is starting March 14 2016, and projected to be released on April 8 2016. 
+###### **2016 年 3 月 14 日**
+3 月のゲスト OS ロールアウトは、2016 年 3 月 14 日に開始し、2016 年 4 月 8 日にリリースされる予定です。
 
-###### <a name="**february-22-2016**"></a>**February 22 2016**
-February Guest OS rollout is starting February 22 2016, and projected to be released on March 9 2016.
+###### **2016 年 2 月 22 日**
+2 月のゲスト OS ロールアウトは、2016 年 2 月 22 日に開始し、2016 年 3 月 9 日にリリースされる予定です。
 
-###### <a name="**january-18-2016**"></a>**January 18 2016**
-January Guest OS rollout is starting January 18 2016, and projected to be released on February 12 2016.
+###### **2016 年 1 月 18 日**
+1 月のゲスト OS ロールアウトは、2016 年 1 月 18 日に開始し、2016 年 2 月 12 日にリリースされる予定です。
 
-###### <a name="**january-4-2016**"></a>**January 4 2016**
-November 201511-02 Guest OS was released on January 4, 2016 for deployment. This OS version is not set as the default OS for automatic update, so the provisioning time of Guest OS deployment to November 201511-02 OS version would be slightly longer. 
+###### **2016 年 1 月 4 日**
+2016 年 1 月 4 日に、11 月の 201511-02 ゲスト OS がデプロイ用にリリースされました。この OS バージョンは自動更新の既定 OS には設定されていないため、11 月の 201511-02 OS バージョンへのゲスト OS のデプロイのプロビジョニングには、若干時間がかかる可能性があります。
 
-## <a name="releases"></a>Releases
+## リリース
 
-## <a name="family-4-releases"></a>Family 4 releases
+## ファミリ 4 のリリース
 **Windows Server 2012 R2**
 
-Supports .NET 4.0, 4.5, 4.5.1, 4.5.2
+.NET 4.0、4.5、4.5.1、4.5.2 をサポートします
 
->[AZURE.NOTE] Dates with a * are subject to change
+>[AZURE.NOTE] * の付いた日付は変更されることがあります
 
-| Configuration String           | Release date    | Disable date  | Expired date |
+| 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ------------------------------ | --------------- | ------------- | ---- |
-| WA-GUEST-OS-4.36_201609-01     | Oct 13 2016     | Post 4.38     | TBD |
-| WA-GUEST-OS-4.35_201608-01     | Sept 13 2016    | Post 4.37     | TBD |
-| WA-GUEST-OS-4.34_201607-01     | Aug 8 2016      | Post 4.36     | TBD |
-| WA-GUEST-OS-4.33_201606-01     | July 13 2016    | Oct 13 2016   | TBD |
-| WA-GUEST-OS-4.32_201605-01     | June 10 2016    | Sept 8 2016   | TBD |
-| WA-GUEST-OS-4.31_201604-01     | May 2 2016      | Aug 13 2016   | TBD |
-| WA-GUEST-OS-4.30_201603-01     | April 7 2016    | July 10 2016  | TBD |
-| WA-GUEST-OS-4.29_201602-02     | March 12 2016   | June 2 2016   | TBD |
-| WA-GUEST-OS-4.28_201601-01     | Feb 12 2016     | May 7 2016    | TBD | 
-| WA-GUEST-OS-4.27_201512-01     | Jan 12 2016     | April 12 2016 | TBD |
-| ~~WA-GUEST-OS-4.26_201511-02~~ | Jan 4 2016      | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-4.26_201511-01~~ | Dec 10 2015     | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-4.25_201510-01~~ | Nov 6 2015      | Feb 12 2016   | TBD |
-| ~~WA-GUEST-OS-4.24_201509-01~~ | Oct 1 2015      | Jan 10 2016   | TBD |
-| ~~WA-GUEST-OS-4.23_201508-02~~ | Sep 9 2015      | Dec 6 2015    | TBD |
-| ~~WA-GUEST-OS-4.22_201507-02~~ | Aug 7 2015      | Nov 1 2015    | TBD |
-| ~~WA-GUEST-OS-4.21_201506-01~~ | July 9 2015     | Oct 9 2015    | TBD |
-| ~~WA-GUEST-OS-4.20_201505-02~~ | June 12 2015    | Sep 7 2015    | TBD |
-| ~~WA-GUEST-OS-4.19_201504-01~~ | April 17 2015   | Aug 9 2015    | TBD |
+| WA-GUEST-OS-4.36\_201609-01 | 2016 年 10 月 13 日 | 4\.38 のリリース後 | TBD |
+| WA-GUEST-OS-4.35\_201608-01 | 2016 年 9 月 13 日 | 4\.37 のリリース後 | TBD |
+| WA-GUEST-OS-4.34\_201607-01 | 2016 年 8 月 8 日 | 4\.36 のリリース後 | TBD |
+| WA-GUEST-OS-4.33\_201606-01 | 2016 年 7 月 13 日 | 2016 年 10 月 13 日 | TBD |
+| WA-GUEST-OS-4.32\_201605-01 | 2016 年 6 月 10 日 | 2016 年 9 月 8 日 | TBD |
+| WA-GUEST-OS-4.31\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
+| WA-GUEST-OS-4.30\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
+| WA-GUEST-OS-4.29\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
+| WA-GUEST-OS-4.28\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD | 
+| WA-GUEST-OS-4.27\_201512-01 | 2016 年 1 月 12 日 | 2016 年 4 月 12 日 | TBD |
+| ~~WA-GUEST-OS-4.26\_201511-02~~ | 2016 年 1 月 4 日 | 2016 年 3 月 12 日 | TBD |
+| ~~WA-GUEST-OS-4.26\_201511-01~~ | 2015 年 12 月 10 日 | 2016 年 3 月 12 日 | TBD |
+| ~~WA-GUEST-OS-4.25\_201510-01~~ | 2015 年 11 月 6 日 | 2016 年 2 月 12 日 | TBD |
+| ~~WA-GUEST-OS-4.24\_201509-01~~ | 2015 年 10 月 1 日 | 2016 年 1 月 10 日 | TBD |
+| ~~WA-GUEST-OS-4.23\_201508-02~~ | 2015 年 9 月 9 日 | 2015 年 12 月 6 日 | TBD |
+| ~~WA-GUEST-OS-4.22\_201507-02~~ | 2015 年 8 月 7 日 | 2015 年 11 月 1 日 | TBD |
+| ~~WA-GUEST-OS-4.21\_201506-01~~ | 2015 年 7 月 9 日 | 2015 年 10 月 9 日 | TBD |
+| ~~WA-GUEST-OS-4.20\_201505-02~~ | 2015 年 6 月 12 日 | 2015 年 9 月 7 日 | TBD |
+| ~~WA-GUEST-OS-4.19\_201504-01~~ | 2015 年 4 月 17 日 | 2015 年 8 月 9日 | TBD |
 
-## <a name="family-3-releases"></a>Family 3 releases
+## ファミリ 3 のリリース
 
 **Windows Server 2012**
 
-Supports .NET 4.0, 4.5, 4.5.1, 4.5.2
+.NET 4.0、4.5、4.5.1、4.5.2 をサポートします
 
->[AZURE.NOTE] Dates with a * are subject to change
+>[AZURE.NOTE] * の付いた日付は変更されることがあります
 
-| Configuration String           | Release date   | Disable date  | Expired date |
+| 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ------------------------------ | -------------- | ------------- | --- |
-| WA-GUEST-OS-3.43_201609-01     | Oct 13 2016    | Post 3.45     | TBD |
-| WA-GUEST-OS-3.42_201608-01     | Sept 13 2016   | Post 3.44     | TBD |
-| WA-GUEST-OS-3.41_201607-01     | Aug 8 2016     | Post 3.43     | TBD |
-| WA-GUEST-OS-3.40_201606-01     | July 13 2016   | Oct 13 2016   | TBD |
-| WA-GUEST-OS-3.39_201605-01     | June 10 2016   | Sept 8 2016   | TBD |
-| WA-GUEST-OS-3.38_201604-01     | May 2 2016     | Aug 13 2016   | TBD |
-| WA-GUEST-OS-3.37_201603-01     | April 7 2016   | July 10 2016  | TBD |
-| WA-GUEST-OS-3.36_201602-02     | March 12 2016  | June 2 2016   | TBD |
-| WA-GUEST-OS-3.35_201601-01     | Feb 12 2016    | May 7 2016    | TBD |
-| WA-GUEST-OS-3.34_201512-01     | Jan 12 2016    | April 12 2016 | TBD |
-| ~~WA-GUEST-OS-3.33_201511-02~~ | Jan 4 2016     | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-3.33_201511-01~~ | Dec 10 2015    | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-3.32_201510-01~~ | Nov 6 2015     | Feb 12 2016   | TBD |
-| ~~WA-GUEST-OS-3.31_201509-01~~ | Oct 1 2015     | Jan 10 2016   | TBD |
-| ~~WA-GUEST-OS-3.30_201508-02~~ | Sep 9 2015     | Dec 6 2015    | TBD |
-| ~~WA-GUEST-OS-3.29_201507-02~~ | Aug 7 2015     | Nov 1 2015    | TBD |
-| ~~WA-GUEST-OS-3.28_201506-01~~ | July 9 2015    | Oct 9 2015    | TBD |
-| ~~WA-GUEST-OS-3.27_201505-02~~ | June 12 2015   | Sep 7 2015    | TBD |
-| ~~WA-GUEST-OS-3.26_201504-01~~ | April 17 2015  | Aug 9 2015    | TBD |
+| WA-GUEST-OS-3.43\_201609-01 | 2016 年 10 月 13 日 | 3\.45 のリリース後 | TBD |
+| WA-GUEST-OS-3.42\_201608-01 | 2016 年 9 月 13 日 | 3\.44 のリリース後 | TBD |
+| WA-GUEST-OS-3.41\_201607-01 | 2016 年 8 月 8 日 | 3\.43 のリリース後 | TBD |
+| WA-GUEST-OS-3.40\_201606-01 | 2016 年 7 月 13 日 | 2016 年 10 月 13 日 | TBD |
+| WA-GUEST-OS-3.39\_201605-01 | 2016 年 6 月 10 日 | 2016 年 9 月 8 日 | TBD |
+| WA-GUEST-OS-3.38\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
+| WA-GUEST-OS-3.37\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
+| WA-GUEST-OS-3.36\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
+| WA-GUEST-OS-3.35\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD |
+| WA-GUEST-OS-3.34\_201512-01 | 2016 年 1 月 12 日 | 2016 年 4 月 12 日 | TBD |
+| ~~WA-GUEST-OS-3.33\_201511-02~~ | 2016 年 1 月 4 日 | 2016 年 3 月 12 日 | TBD |
+| ~~WA-GUEST-OS-3.33\_201511-01~~ | 2015 年 12 月 10 日 | 2016 年 3 月 12 日 | TBD |
+| ~~WA-GUEST-OS-3.32\_201510-01~~ | 2015 年 11 月 6 日 | 2016 年 2 月 12 日 | TBD |
+| ~~WA-GUEST-OS-3.31\_201509-01~~ | 2015 年 10 月 1 日 | 2016 年 1 月 10 日 | TBD |
+| ~~WA-GUEST-OS-3.30\_201508-02~~ | 2015 年 9 月 9 日 | 2015 年 12 月 6 日 | TBD |
+| ~~WA-GUEST-OS-3.29\_201507-02~~ | 2015 年 8 月 7 日 | 2015 年 11 月 1 日 | TBD |
+| ~~WA-GUEST-OS-3.28\_201506-01~~ | 2015 年 7 月 9 日 | 2015 年 10 月 9 日 | TBD |
+| ~~WA-GUEST-OS-3.27\_201505-02~~ | 2015 年 6 月 12 日 | 2015 年 9 月 7 日 | TBD |
+| ~~WA-GUEST-OS-3.26\_201504-01~~ | 2015 年 4 月 17 日 | 2015 年 8 月 9日 | TBD |
 
 
-## <a name="family-2-releases"></a>Family 2 releases
+## ファミリ 2 のリリース
 
 **Windows Server 2008 R2 SP1**
 
-Supports .NET 3.5, 4.0, 4.5, 4.5.1, 4.5.2
+.NET 3.5、4.0、4.5、4.5.1、4.5.2 をサポートします
 
->[AZURE.NOTE] Dates with a * are subject to change
+>[AZURE.NOTE] * の付いた日付は変更されることがあります
 
-| Configuration String           | Release date  | Disable date  | Expired date |
+| 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | ------------------------------ | ------------- | ------------  | --- |
-| WA-GUEST-OS-2.55_201609-01     | Oct 13 2016   | Post 2.57     | TBD |
-| WA-GUEST-OS-2.54_201608-01     | Sept 13 2016  | Post 2.56     | TBD |
-| WA-GUEST-OS-2.53_201607-01     | Aug 8 2016    | Post 2.55     | TBD |
-| WA-GUEST-OS-2.52_201606-01     | July 13 2016  | Oct 13 2016   | TBD |
-| WA-GUEST-OS-2.51_201605-01     | June 10 2016  | Sept 8 2016   | TBD |
-| WA-GUEST-OS-2.50_201604-01     | May 2 2016    | Aug 13 2016   | TBD |
-| WA-GUEST-OS-2.49_201603-01     | April 7 2016  | July 10 2016  | TBD |
-| WA-GUEST-OS-2.48_201602-02     | March 12 2016 | June 2 2016   | TBD |
-| WA-GUEST-OS-2.47_201601-01     | Feb 12 2016   | May 7 2016    | TBD |
-| WA-GUEST-OS-2.46_201512-01     | Jan 12 2016   | April 12 2016 | TBD |
-| ~~WA-GUEST-OS-2.45_201511-02~~ | Jan 4 2016    | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-2.45_201511-01~~ | Dec 10 2015   | March 12 2016 | TBD |
-| ~~WA-GUEST-OS-2.44_201510-01~~ | Nov 6 2015    | Feb 12 2016   | TBD |
-| ~~WA-GUEST-OS-2.43_201509-01~~ | Oct 1 2015    | Jan 10 2016   | TBD |
-| ~~WA-GUEST-OS-2.42_201508-02~~ | Sep 9 2015    | Dec 6 2015    | TBD |
-| ~~WA-GUEST-OS-2.41_201507-02~~ | Aug 7 2015    | Nov 1 2015    | TBD |
-| ~~WA-GUEST-OS-2.40_201506-01~~ | July 9 2015   | Oct 9 2015    | TBD |
-| ~~WA-GUEST-OS-2.39_201505-02~~ | June 12 2015  | Sep 7 2015    | TBD |
-| ~~WA-GUEST-OS-2.38_201504-01~~ | April 17 2015 | Aug 9 2015    | TBD |
+| WA-GUEST-OS-2.55\_201609-01 | 2016 年 10 月 13 日 | 2\.57 のリリース後 | TBD |
+| WA-GUEST-OS-2.54\_201608-01 | 2016 年 9 月 13 日 | 2\.56 のリリース後 | TBD |
+| WA-GUEST-OS-2.53\_201607-01 | 2016 年 8 月 8 日 | 2\.55 のリリース後 | TBD |
+| WA-GUEST-OS-2.52\_201606-01 | 2016 年 7 月 13 日 | 2016 年 10 月 13 日 | TBD |
+| WA-GUEST-OS-2.51\_201605-01 | 2016 年 6 月 10 日 | 2016 年 9 月 8 日 | TBD |
+| WA-GUEST-OS-2.50\_201604-01 | 2016 年 5 月 2 日 | 2016 年 8 月 13 日 | TBD |
+| WA-GUEST-OS-2.49\_201603-01 | 2016 年 4 月 7 日 | 2016 年 7 月 10 日 | TBD |
+| WA-GUEST-OS-2.48\_201602-02 | 2016 年 3 月 12 日 | 2016 年 6 月 2 日 | TBD |
+| WA-GUEST-OS-2.47\_201601-01 | 2016 年 2 月 12 日 | 2016 年 5 月 7 日 | TBD |
+| WA-GUEST-OS-2.46\_201512-01 | 2016 年 1 月 12 日 | 2016 年 4 月 12 日 | TBD |
+| ~~WA-GUEST-OS-2.45\_201511-02~~ | 2016 年 1 月 4 日 | 2016 年 3 月 12 日 | TBD |
+| ~~WA-GUEST-OS-2.45\_201511-01~~ | 2015 年 12 月 10 日 | 2016 年 3 月 12 日 | TBD |
+| ~~WA-GUEST-OS-2.44\_201510-01~~ | 2015 年 11 月 6 日 | 2016 年 2 月 12 日 | TBD |
+| ~~WA-GUEST-OS-2.43\_201509-01~~ | 2015 年 10 月 1 日 | 2016 年 1 月 10 日 | TBD |
+| ~~WA-GUEST-OS-2.42\_201508-02~~ | 2015 年 9 月 9 日 | 2015 年 12 月 6 日 | TBD |
+| ~~WA-GUEST-OS-2.41\_201507-02~~ | 2015 年 8 月 7 日 | 2015 年 11 月 1 日 | TBD |
+| ~~WA-GUEST-OS-2.40\_201506-01~~ | 2015 年 7 月 9 日 | 2015 年 10 月 9 日 | TBD |
+| ~~WA-GUEST-OS-2.39\_201505-02~~ | 2015 年 6 月 12 日 | 2015 年 9 月 7 日 | TBD |
+| ~~WA-GUEST-OS-2.38\_201504-01~~ | 2015 年 4 月 17 日 | 2015 年 8 月 9日 | TBD |
 
-## <a name="msrc-patch-updates"></a>MSRC patch updates
-The list of patches that are included with each monthly Guest OS release is available [here][patches].
+## MSRC 修正プログラム
+毎月のゲスト OS リリースに含まれる修正プログラムの一覧は、[こちら][patches]で入手できます。
 
-## <a name="sdk-support"></a>SDK support
+## SDK のサポート
 
-Even though the [retirement policy for the Azure SDK][retire policy sdk] indicates that only versions above 2.2 are supported, specific Guest OS families allow you to use earlier versions. You should always use the latest supported SDK. 
+[Azure SDK の提供終了ポリシー][retire policy sdk]には 2.2 以降のバージョンのみがサポートされると示されていますが、特定のゲスト OS ファミリではそれより前のバージョンも使用できます。常に、最新のサポートされている SDK を使用する必要があります。
 
-| Guest OS Family | Compatible SDK Versions |
+| ゲスト OS ファミリ | 互換性のある SDK のバージョン |
 | --------------- | ----------------------- |
-| 4               | Version 2.1+ |
-| 3               | Version 1.8+ |
-| 2               | Version 1.3+ |
-| 1               | Version 1.0+ |
+| 4 | バージョン 2.1 以上 |
+| 3 | バージョン 1.8 以上 |
+| 2 | バージョン 1.3 以上 |
+| 1 | バージョン 1.0 以上 |
 
-## <a name="guest-os-release-information"></a>Guest OS Release Information
-There are three dates that are important to Guest OS releases: **release** date, **disabled** date, and **expiration** date. A Guest OS is considered available when it is in the Portal and can be selected as the target Guest OS. When a Guest OS hits the **disabled** date it is removed from Azure. However, any Cloud Service targetting that Guest OS will still operate as normal. 
+## ゲスト OS のリリース情報
+ゲスト OS リリースに重要な 3 つの日付として、**リリース**日、**無効になる**日、**有効期限**があります。ゲスト OS は、それがポータルにあり、ターゲット ゲスト OS として選択できる場合に、使用可能と見なされます。ゲスト OS は、**無効になる**日に達すると Azure から削除されます。ただし、そのゲスト OS を対象とするクラウド サービスは引き続き通常どおりに動作します。
 
-The window between the **disabled** date and the **expiration** date provide you with a buffer to easily transition from one Guest OS to one newer. If you're using *automatic* as your Guest OS, you'll always be on the latest version and you don't have to worry about it expiring. 
+**無効になる**日から**有効期限**までの間に一定の期間を設けているため、新しいゲスト OS に簡単に切り替えることができます。ゲスト OS として "*自動*" バージョンを使用していると、常に最新バージョンに維持されるため、期限切れを心配する必要はありません。
 
-When the **expiration** date passes and any Cloud Service still using that Guest OS will be stopped, deleted, or forced to upgrade. You can read more about the retirement policy [here][retirepolicy].
+**有効期限**を過ぎると、そのゲスト OS を引き続き使用しているクラウド サービスが停止、削除、または強制的にアップグレードされます。提供終了ポリシーの詳細については、[こちら][retirepolicy]を参照してください。
 
-## <a name="guest-os-family-version-explanation"></a>Guest OS Family-Version Explanation
-The Guest OS families are based on released versions of Microsoft Windows Server. The Guest OS is the underlying operating system that Azure Cloud Services run on. Each Guest OS has a family, version and release number. 
+## ゲスト OS ファミリ、バージョンの説明
+ゲスト OS ファミリは Microsoft Windows Server のリリース バージョンに基づいています。ゲスト OS は、Azure Cloud Services が実行される、基になるオペレーティング システムです。各ゲスト OS には、ファミリ、バージョン、リリース番号があります。
 
-- **Guest OS family**  
-A Windows Server operating system release that a Guest OS is based on. For example, *family 3* is based on Windows Server 2012.
+- **ゲスト OS ファミリ** ゲスト OS の基盤となる Windows Server オペレーティング システムのリリース。たとえば、"*ファミリ 3*" は Windows Server 2012 を基にしています。
 
-- **Guest OS version**  
-Specific to a Guest OS family image plus relevant [Microsoft Security Response Center (MSRC)][msrc] patches that are available at the date the new Guest OS version is produced. Not all patches may be included. 
+- **ゲスト OS バージョン** ゲスト OS ファミリ イメージと、関連する [Microsoft セキュリティ レスポンス センター (MSRC)][msrc] 修正プログラム (新しいゲスト OS バージョンが作成された時点で利用可能になる) の組み合わせに固有のバージョン。すべての修正プログラムが含まれているわけではありません。
 
-    Numbers start at 0 and increment by 1 each time a new set of updates is added. Trailing zeros are only shown if important. That is, version 2.10 is a different, much later version than version 2.1.
+    番号は 0 から始まり、新しい更新プログラムのセットが追加されるたびに 1 ずつ増えます。末尾のゼロが表示されるのは、重要な場合のみです。つまり、バージョン 2.10 は、バージョン 2.1 よりかなり後の異なるバージョンです。
 
-- **Guest OS release**  
-A rerelease of a Guest OS version. A rerelease occurs if Microsoft finds issues during testing; requiring changes. The latest release always supersedes any previous releases, public or not. The Azure classic portal will only allow users to pick the latest release for a given version. Deployments running on a previous release are usually not force upgraded depending on the severity of the bug. 
+- **ゲスト OS リリース** ゲスト OS バージョンの再リリース。再リリースは、変更を必要とする問題がテスト中に見つかった場合に行われます。最新のリリースは、公開されているかどうかに関係なく、常に以前のリリースよりも優先されます。Azure クラシック ポータルでは、ユーザーは指定したバージョンの最新のリリースのみを取得できます。前のリリースで実行中のデプロイは、通常、バグの重大度に応じてアップグレードが強制されることはありません。
 
-In the example below, 2 is the family, 12 is the version and "rel2" is the release.
+次の例では、2 がファミリ、12 がバージョン、"rel2" がリリースです。
 
-**Guest OS release** - 2.12 rel2
+**ゲスト OS リリース** - 2.12 rel2
 
-**Configuration string for this release** - WA-GUEST-OS-2.12_201208-02
+**このリリースの構成文字列** -WA-GUEST-OS-2.12\_201208-02
 
-The configuration string for a Guest OS has this same information embedded in it, along with a date showing which MSRC patches were considered for that release. In this example, MSRC patches produced for Windows Server 2008 R2 up to and including August 2012 were considered for inclusion. Only patches specifically applying to that version of Windows Server are included. For example, if an MSRC patch applies to Microsoft Office, it will not be included because that product is not part of the Windows Server base image. 
+ゲスト OS の構成文字列には、組み込まれているのと同じ情報に加えて、そのリリースで考慮された MSRC 修正プログラムを示す日付が含まれます。この例では、2012 年 8 月までに Windows Server 2008 R2 用に作成された MSRC 修正プログラムが含まれることが想定されます。そのバージョンの Windows Server に特に適用される修正プログラムのみが含まれます。たとえば、Microsoft Office に適用される MSRC 修正プログラムは、製品が Windows Server 基本イメージに属さないため、ここに含まれません。
 
-## <a name="guest-os-system-update-process"></a>Guest OS System Update Process
-This page includes information on upcoming Guest OS Releases. Customers have indicated that they want to know when a release occurs because their cloud service roles will reboot if they are set to "Automatic" update. Guest OS releases typically occur at least 5 days after the MSRC update release that occurs on the second Tuesday of every month. New releases include all the relevant MSRC patches for each Guest OS family. 
+## ゲスト OS システムの更新プロセス
+このページには、今後予定されているゲスト OS のリリースに関する情報が含まれます。"自動" 更新に設定している場合はクラウド サービスのロールが再起動されるため、リリースのタイミングを把握する必要があるとお客様から指摘を受けています。ゲスト OS のリリースは、通常、毎月第 2 火曜日に発生する MSRC 更新プログラムのリリースから少なくとも 5 日以内に発生します。新しいリリースには、ゲスト OS ファミリごとに関連するすべての MSRC 修正プログラムが含まれます。
 
-Microsoft Azure is constantly releasing updates. The Guest OS is only one such update in the pipeline. A release can be affected by a number of factors too numerous to list here. In addition, Azure runs on literally hundreds of thousands of machines. This means that it's impossible to give an exact date and time when your role(s) will reboot. We will update the [Guest OS Update RSS Feed][rss] with the latest information we have, but consider that time an approximate window. We are aware that this is problematic for customers and working on a plan to limit or time reboots. 
+Microsoft Azure では、常に更新プログラムがリリースされています。ゲスト OS は、パイプラインにおいて唯一のこのような更新です。リリースは、ここに記載できないほどの多く要因の影響を受ける可能性があります。さらに、Azure は、実際には数十万台のコンピューターで実行されています。つまり、ロールが再起動される正確な日時を指定することはできません。[ゲスト OS の更新 RSS フィード][rss]は最新の情報で更新されていますが、その時刻はおおよその時間帯であると考えてください。これは問題視されているため、再起動の制限や時間の指定をできるように取り組んでいます。
 
-When a new release of the Guest OS is published, it can take time to fully propagate across Azure. As services are updated to the new Guest OS, they are rebooted honoring update domains. Services set to use "Automatic" updates will get a release first. After the update, you’ll see the new Guest OS version listed for your service in the Azure classic portal. Rereleases may occur during this period. Some versions may be deployed over longer periods of time and automatic upgrade reboots may not occur for many weeks after the official release date. Once a Guest OS is available, you can then explicitly choose that version from the portal or in your configuration file. 
+ゲスト OS の新しいリリースが公開されると、Azure 全体で完全に反映されるまでに時間がかかります。サービスが新しいゲスト OS に更新されると、更新ドメインに従って再起動されます。"自動" 更新プログラムを使用するように設定されているサービスで、まずリリースが取得されます。更新後、Azure クラシック ポータルでは、ご使用のサービスの新しいゲスト OS バージョンの一覧が表示されます。この期間に再リリースが発生する場合があります。一部のバージョンは長期間にわたってデプロイされることがあります。また、正式なリリース日以降何週間も自動アップグレードの再起動が行われないこともあります。ゲスト OS が使用可能になると、ポータルや構成ファイルから明示的にそのバージョンを選択できます。
 
-For a great deal of valuable information on restarts and pointers to more information technical details of Guest and Host OS updates, see the MSDN blog post titled [Role Instance Restarts Due to OS Upgrades][restarts].
+再起動の関する有益な情報と、ゲスト OS とホスト OS の更新プログラムの技術的な詳細のヒントについては、MSDN の[OS のアップグレードによるロール インスタンスの再起動][restarts]に関するブログ記事を参照してください。
 
-If you manually update your Guest OS, please read the [Guest OS retirement policy][retirepolicy].
+ゲスト OS を手動で更新する場合は、[ゲスト OS の提供終了のポリシー][retirepolicy]に関するページを参照してください。
 
 
-## <a name="guest-os-supportability-and-retirement-policy"></a>Guest OS Supportability and Retirement Policy
-The Guest OS supportability and retirement policy is explained [here][retirepolicy].
+## ゲスト OS のサポートと提供終了のポリシー
+ゲスト OS のサポートと提供終了のポリシーについては、[こちら][retirepolicy]で説明しています。
 
-[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
-[Azure Guest OS Update Settings]: cloud-services-how-to-configure.md
+[Install .NET on a Cloud Service Role]: https://azure.microsoft.com/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
+[Azure ゲスト OS の更新設定]: cloud-services-how-to-configure.md
 [rss]: http://sxp.microsoft.com/feeds/3.0/msdntn/WindowsAzureOSUpdates
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
 [Microsoft Security Advisory 3009008]: https://technet.microsoft.com/library/security/3009008.aspx
@@ -230,8 +226,4 @@ The Guest OS supportability and retirement policy is explained [here][retirepoli
 [fam1retire]: cloud-services-guestos-family1-retirement.md
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

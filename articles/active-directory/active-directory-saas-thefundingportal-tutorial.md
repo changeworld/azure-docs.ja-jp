@@ -1,265 +1,263 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with The Funding Portal | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and The Funding Portal."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と The Funding Portal の統合 | Microsoft Azure"
+	description="Azure Active Directory と The Funding Portal の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/02/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/02/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と The Funding Portal の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-the-funding-portal"></a>Tutorial: Azure Active Directory integration with The Funding Portal
+このチュートリアルでは、The Funding Portal と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-In this tutorial, you learn how to integrate The Funding Portal with Azure Active Directory (Azure AD).
+The Funding Portal と Azure AD の統合には、次の利点があります。
 
-Integrating The Funding Portal with Azure AD provides you with the following benefits:
+- The Funding Portal にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで The Funding Portal に自動的にサインオン (シングル サインオン) する機能を有効にすることができます。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-- You can control in Azure AD who has access to The Funding Portal
-- You can enable your users to automatically get signed-on to The Funding Portal (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Azure AD と The Funding Portal の統合を構成するには、次のアイテムが必要です。
 
-To configure Azure AD integration with The Funding Portal, you need the following items:
-
-- An Azure AD subscription
-- A **The Funding Portal** single-sign on enabled subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Azure AD サブスクリプション
+- **The Funding Portal** でのシングル サインオンが有効なサブスクリプション
 
 
-To test the steps in this tutorial, you should follow these recommendations:
-
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-## <a name="scenario-description"></a>Scenario description
-In this tutorial, you test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-1. Adding The Funding Portal from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-the-funding-portal-from-the-gallery"></a>Adding The Funding Portal from the gallery
-To configure the integration of The Funding Portal into Azure AD, you need to add The Funding Portal from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-**To add The Funding Portal from the gallery, perform the following steps:**
+1. ギャラリーからの The Funding Portal の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-    ![Active Directory][1]
+## ギャラリーからの The Funding Portal の追加
+Azure AD への The Funding Portal の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に The Funding Portal を追加する必要があります。
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+**ギャラリーから The Funding Portal を追加するには、次の手順を実行します。**
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Applications][2]
+	![Active Directory][1]
 
-4. Click **Add** at the bottom of the page.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-    ![Applications][3]
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+	![アプリケーション][2]
 
-    ![Applications][4]
+4. ページの下部にある **[追加]** をクリックします。
 
-6. In the search box, type **The Funding Portal**.
+	![アプリケーション][3]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_01.png)
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-7. In the results pane, select **The Funding Portal**, and then click **Complete** to add the application.
+	![アプリケーション][4]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_02.png)
+6. 検索ボックスに「**The Funding Portal**」と入力します。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-In this section, you configure and test Azure AD single sign-on with The Funding Portal based on a test user called "Britta Simon".
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_01.png)
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in The Funding Portal is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in The Funding Portal needs to be established.
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in The Funding Portal.
+7. 結果ウィンドウで **[The Funding Portal]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-To configure and test Azure AD single sign-on with The Funding Portal, you need to complete the following building blocks:
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_02.png)
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a The Funding Portal test user](#creating-a-the-funding-portal-test-user)** - to have a counterpart of Britta Simon in The Funding Portal that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+##  Azure AD シングル サインオンの構成とテスト
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、The Funding Portal で Azure AD のシングル サインオンを構成し、テストします。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する The Funding Portal ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと The Funding Portal の関連ユーザーの間で、リンク関係が確立されている必要があります。このリンク関係は、Azure AD の**ユーザー名**の値を、The Funding Portal の **[Username (ユーザー名)]** の値として割り当てることで確立されます。
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your The Funding Portal application.
+The Funding Portal で Azure AD のシングル サインオンを構成してテストするには、次の手順を完了する必要があります。
 
-The Funding Portal application expects the SAML assertions to contain an attribute named "externalId1". The value of "externalId1" should be a recognized studentID. Please configure the "externalId1" claim for this application. You can manage the values of these attributes from the **"Atrributes"** tab of the application. The following screenshot shows an example for this.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[The Funding Portal テスト ユーザーの作成](#creating-a-the-funding-portal-test-user)** - The Funding Portal で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_03.png) 
+### Azure AD シングル サインオンの構成
 
-**To configure Azure AD single sign-on with The Funding Portal, perform the following steps:**
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、The Funding Portal アプリケーションでシングル サインオンを構成することです。
 
-1. In the Azure classic portal, on the **The Funding Portal** application integration page, in the menu on the top, click **Attributes**.
+The Funding Portal アプリケーションでは、SAML アサーションに、"externalId1" という名前の属性を含めます。"externalId1" の値は、認識された StudentID です。このアプリケーションには、"externalId1" の要求を構成してください。この属性の値は、アプリケーションの **[属性]** タブから管理できます。次のスクリーンショットはその例です。
+
+![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_03.png)
+
+**The Funding Portal で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+
+1. Azure クラシック ポータルの **The Funding Portal** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
      
     ![Configure Single Sign-On][5]
 
-2. On the SAML token attributes dialog, add the "externalId1" attribute.
+2. [Saml トークン属性] ダイアログで、"externalId1" 属性を追加します。
 
-    a. Click **add user attribute** to open the **Add User Attribute** dialog. 
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_05.png)
+	a.**[ユーザー属性の追加]** をクリックして **[ユーザー属性の追加]** ダイアログを開きます。
+	
+	![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_05.png)
 
-    b. In the **Attribute Name** textbox, type the attribute name "externalId1".
+	b.**[属性名]** ボックスに、属性名 "externalId1" を入力します。
 
-    c. From the **Attribute Value** list, select the attribute you want to use for your implementation. For example, if you have stored the StudentID value in the ExtensionAttribute1, then select user.extensionattribute1.
+	c.**[属性値]** 一覧で、実装で使用する属性を選択します。たとえば、ExtensionAttribute1 に StudentID の値を格納した場合、user.extensionattribute1 を選択します。
 
-    d. Click **Complete**. Then, click **Apply Changes**.
+	d.**[完了]** をクリックします。その後、**[変更の適用]** をクリックします。
 
-1. In the menu on the top, click **Quick Start**.
+1. 上部のメニューで **[クイック スタート]** をクリックします。
 
-    ![Configure Single Sign-On][6]
+	![Configure Single Sign-On][6]
 
-2. In the classic portal, on the **The Funding Portal** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+2. クラシック ポータルの **The Funding Portal** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On][7] 
+	![Configure Single Sign-On][7]
 
-3. On the **How would you like users to sign on to The Funding Portal** page, select **Azure AD Single Sign-On**, and then click **Next**.
-    
-    ![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_06.png)
+3. **[ユーザーの The Funding Portal へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
+ 	
+	![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_06.png)
 
-4. On the **Configure App Settings** dialog page, perform the following steps: 
+4. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_07.png)
+	![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_07.png)
 
 
-    a. In the Sign On URL text box, type a URL using the following pattern: `https://<subdomain>.regenteducation.net/`.
+    a.[サインオン URL] ボックスに、`https://<subdomain>.regenteducation.net/` という形式で URL を入力します。
 
-    b. Click **Next**.
+	b.**[次へ]** をクリックします。
 
-5. On the **Configure single sign-on at The Funding Portal** page, Click **Download metadata**, and then save the file on your computer.
+5. **[The Funding Portal でのシングル サインオンの構成]** ページで、**[メタデータのダウンロード]** をクリックしてメタデータをダウンロードし、コンピューターにファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_08.png)
+	![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_08.png)
 
-6. To get SSO configured for your application, contact The Funding Portal support. They will assist with the proper channel to configure SSO. Please note that you have to send email and attach downloaded metadata file to info@regenteducation.com.
+6. アプリケーション用に構成された SSO を入手するために、The Funding Portal のサポートに問い合わせます。SSO を構成するための適切な手続きについてサポートを受けることができます。ダウンロードしたメタデータ ファイルをメールに添付して info@regenteducation.com 宛てに送信する必要があることに注意してください。
 
-7. In the classic portal, select the single sign-on configuration confirmation, and then click **Next**.
-    
-    ![Azure AD Single Sign-On][10]
+7. クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
+	
+	![Azure AD Single Sign-On][10]
 
-8. On the **Single sign-on confirmation** page, click **Complete**.  
-    
-    ![Azure AD Single Sign-On][11]
+8. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+  	
+	![Azure AD Single Sign-On][11]
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-In this section, you create a test user in the classic portal called Britta Simon.
+### Azure AD のテスト ユーザーの作成
+このセクションでは、クラシック ポータルで Britta Simon というテスト ユーザーを作成します。
 
-![Create Azure AD User][20]
+![Azure AD ユーザーの作成][20]
 
-**To create a test user in Azure AD, perform the following steps:**
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
-    
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_09.png) 
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+	
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_09.png)
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To display the list of users, in the menu on the top, click **Users**.
-    
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_03.png) 
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+	
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_03.png)
 
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_04.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_04.png)
 
-5. On the **Tell us about this user** dialog page, perform the following steps:
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
  
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_05.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_05.png)
 
-    a. As Type Of User, select New user in your organization.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    b. In the User Name **textbox**, type **BrittaSimon**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    c. Click **Next**.
+    c.**[次へ]** をクリックします。
 
-6.  On the **User Profile** dialog page, perform the following steps:
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_06.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_06.png)
 
-    a. In the **First Name** textbox, type **Britta**.  
+    a.**[名]** ボックスに「**Britta**」と入力します。
 
-    b. In the **Last Name** textbox, type, **Simon**.
+    b.**[姓]** ボックスに「**Simon**」と入力します。
 
-    c. In the **Display Name** textbox, type **Britta Simon**.
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
 
-    d. In the **Role** list, select **User**.
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
 
-    e. Click **Next**.
+    e.**[次へ]** をクリックします。
 
-7. On the **Get temporary password** dialog page, click **create**.
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_07.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_07.png)
 
-8. On the **Get temporary password** dialog page, perform the following steps:
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_08.png) 
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-thefundingportal-tutorial/create_aaduser_08.png)
 
-    a. Write down the value of the **New Password**.
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    b. Click **Complete**.   
-
-
-
-### <a name="creating-a-the-funding-portal-test-user"></a>Creating a The Funding Portal test user
-
-In this section, you create a user called Britta Simon in The Funding Portal. If you don't know how to add Britta Simon in The Funding Portal, please work with The Funding Portal support team to add the test user and enable SSO. Contact them at info@regenteducation.com.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-
-In this section, you enable Britta Simon to use Azure single sign-on by granting her access to The Funding Portal.
-
-![Assign User][200] 
-
-**To assign Britta Simon to The Funding Portal, perform the following steps:**
-
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Assign User][201] 
-
-2. In the applications list, select **The Funding Portal**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_09.png) 
-
-1. In the menu on the top, click **Users**.
-
-    ![Assign User][203] 
-
-1. In the All Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-
-    ![Assign User][205]
+    b.**[完了]** をクリックします。
 
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+### The Funding Portal テスト ユーザーの作成
 
-When you click the The Funding Portal tile in the Access Panel, you should get automatically signed-on to your The Funding Portal application.
+このセクションでは、The Funding Portal で Britta Simon というユーザーを作成します。The Funding Portal に Britta Simon を追加する方法がわからない場合は、The Funding Portal サポート チームと協力してテスト ユーザーを追加し、SSO を有効にしてください。連絡先は info@regenteducation.com です。
 
-## <a name="additional-resources"></a>Additional resources
+### Azure AD テスト ユーザーの割り当て
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+このセクションでは、Britta Simon に The Funding Portal へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+
+![ユーザーの割り当て][200]
+
+**The Funding Portal に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![ユーザーの割り当て][201]
+
+2. アプリケーションの一覧で **[The Funding Portal]** を選択します。
+
+	![Configure Single Sign-On](./media/active-directory-saas-thefundingportal-tutorial/tutorial_thefundingportal_09.png)
+
+1. 上部のメニューで **[ユーザー]** をクリックします。
+
+	![ユーザーの割り当て][203]
+
+1. [すべてのユーザー] の一覧で **[Britta Simon]** を選択します。
+
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+	![ユーザーの割り当て][205]
+
+
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
+
+アクセス パネルで The Funding Portal のタイルをクリックすると、The Funding Portal アプリケーションに自動的にサインオンします。
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 
@@ -273,7 +271,7 @@ When you click the The Funding Portal tile in the Access Panel, you should get a
 
 [5]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_05.png
 [6]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_06.png
-[7]:  ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_050.png
+[7]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_050.png
 [10]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_060.png
 [11]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_070.png
 [20]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_100.png
@@ -284,8 +282,4 @@ When you click the The Funding Portal tile in the Access Panel, you should get a
 [204]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-thefundingportal-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

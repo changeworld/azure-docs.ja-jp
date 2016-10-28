@@ -1,57 +1,54 @@
-# <a name="internet-of-things-security-best-practices"></a>Internet of Things security best practices
+# モノのインターネットのセキュリティのベスト プラクティス
 
-To secure an Internet of Things (IoT) infrastructure requires a rigorous security-in-depth strategy. This strategy requires you to secure data in the cloud, protect data integrity while in transit over the public internet, and securely provision devices. Each layer builds greater security assurance in the overall infrastructure.
+モノのインターネット (IoT) インフラストラクチャを保護するには、緻密なセキュリティ戦略が必要です。この戦略では、クラウドでのデータの保護、パブリック インターネット経由で転送しているときのデータの整合性の保護、およびデバイスの安全なプロビジョニングを実行する必要があります。各レイヤーのセキュリティがインフラストラクチャ全体のセキュリティを構築します。
 
-## <a name="secure-an-iot-infrastructure"></a>Secure an IoT infrastructure
+## IoT インフラストラクチャの保護
 
-This security-in-depth strategy can be developed and executed with active participation of various players involved with the manufacturing, development, and deployment of IoT devices and infrastructure. Following is a high-level description of these players.  
+このセキュリティ戦略は、IoT デバイスおよびインフラストラクチャの製造、開発、およびデプロイに関与するさまざまな従事者がアクティブに参加することで、開発し実行することができます。これらの従事者についての概要を次に示します。
 
-- **IoT hardware manufacturer/integrator**: Typically, these are the manufacturers of IoT hardware being deployed, integrators assembling hardware from various manufacturers, or suppliers providing hardware for an IoT deployment manufactured or integrated by other suppliers.
-- **IoT solution developer**: The development of an IoT solution is typically done by a solution developer. This developer may part of an in-house team or a system integrator (SI) specializing in this activity. The IoT solution developer can develop various components of the IoT solution from scratch, integrate various off-the-shelf or open-source components, or adopt preconfigured solutions with minor adaptation.
-- **IoT solution deployer**: After an IoT solution is developed, it needs to be deployed in the field. This involves deployment of hardware, interconnection of devices, and deployment of solutions in hardware devices or the cloud.
-- **IoT solution operator**: After the IoT solution is deployed, it requires long-term operations, monitoring, upgrades, and maintenance. This can be done by an in-house team that comprises information technology specialists, hardware operations and maintenance teams, and domain specialists who monitor the correct behavior of overall IoT infrastructure.
+- **IoT ハードウェアの製造元/インテグレーター**: 通常は、デプロイされる IoT ハードウェアの製造元、さまざまな製造元のハードウェアをアセンブルするインテグレーター、または他のサプライヤーによって製造または統合された IoT デプロイ用のハードウェアを提供するサプライヤーです。
+- **IoT ソリューション開発者**: 通常、IoT ソリューションの開発は、ソリューション開発者が行います。この開発者は、この活動を専門とする社内チームの一員であることも、システム インテグレーター (SI) であることもあります。IoT ソリューション開発者は、IoT ソリューションのさまざまなコンポーネントをゼロから開発したり、市販またはオープン ソースのさまざまなコンポーネントを統合したり、マイナー アダプテーションにより事前構成済みのソリューションを導入したりできます。
+- **IoT ソリューションのデプロイ担当者**: IoT ソリューションを開発したら、フィールドにデプロイする必要があります。これには、ハードウェアのデプロイ、デバイスの相互接続、およびハードウェア デバイスまたはクラウドへのソリューションのデプロイが含まれます。
+- **IoT ソリューションのオペレーター**: IoT ソリューションをデプロイしたら、長期間にわたる操作、監視、アップグレード、およびメンテナンスが必要となります。これは、情報テクノロジ スペシャリスト、ハードウェア操作およびメンテナンス チーム、および全体的な IoT インフラストラクチャの正常な動作を監視するドメイン スペシャリストから成る社内チームが実行できます。
 
-The sections that follow provide best practices for each of these players to help develop, deploy, and operate a secure IoT infrastructure.
+以下のセクションでは、セキュリティで保護された IoT インフラストラクチャをこれらの各従事者が開発、デプロイ、操作する際に役立つベスト プラクティスについて説明します。
 
-## <a name="iot-hardware-manufacturer/integrator"></a>IoT hardware manufacturer/integrator
+## IoT ハードウェアの製造元/インテグレーター
 
-The following are the best practices for IoT hardware manufacturers and hardware integrators.
+IoT ハードウェアの製造元およびハードウェア インテグレーター向けのベスト プラクティスを次に示します。
 
-- **Scope hardware to minimum requirements**: The hardware design should include the minimum features required for operation of the hardware, and nothing more. An example is to include USB ports only if necessary for the operation of the device. These additional features open the device for unwanted attack vectors that should be avoided.
-- **Make hardware tamper proof**: Build in mechanisms to detect physical tampering, such as opening of the device cover or removing a part of the device. These tamper signals may be part of the data stream uploaded to the cloud, which could alert operators of these events.
-- **Build around secure hardware**: If COGS permits, build security features such as secure and encrypted storage, or boot functionality based on Trusted Platform Module (TPM). These features make devices more secure and help protect the overall IoT infrastructure.
-- **Make upgrades secure**: Firmware upgrades during the lifetime of the device are inevitable. Building devices with secure paths for upgrades and cryptographic assurance of firmware versions will allow the device to be secure during and after upgrades.
+- **ハードウェアのスコープを最小要件に絞る**: ハードウェアの設計には、ハードウェアの操作に必要な最小限の機能を含める必要がありますが、それ以上の機能は含めません。例として、USB ポートはデバイスの操作に必要な場合にのみ含めます。これらの追加機能により、回避しなければならない不要な攻撃媒体にデバイスがさらされることになります。
+- **ハードウェアの改ざんへの耐性を備える**: デバイスのカバーを開ける、デバイスの部品を取り外すなど、物理的な改ざんを検出するメカニズムを構築します。これらの改ざん信号は、クラウドにアップロードされるデータ ストリームに含めることができ、これにより、このようなイベントをオペレーターに警告できます。
+- **セキュリティで保護されたハードウェアを中心に構築する**: COGS が許す限り、セキュリティで保護された暗号化ストレージやトラステッド プラットフォーム モジュール (TPM) ベースのブート機能など、セキュリティ機能を構築します。これらの機能により、デバイスのセキュリティが強化され、IoT インフラストラクチャ全体の保護に役立ちます。
+- **アップグレードをセキュリティで保護する**: デバイスのライフタイム中にファームウェアのアップグレードが発生することは避けられません。セキュリティで保護されたアップグレードのパス、およびファームウェア バージョンの暗号保証を備えたデバイスを構築することで、アップグレード中およびその後にデバイスをセキュリティで保護できます。
 
-## <a name="iot-solution-developer"></a>IoT solution developer
+## IoT ソリューション開発者
 
-The following are the best practices for IoT solution developers:
+IoT ソリューション開発者向けのベスト プラクティスを次に示します。
 
-- **Follow secure software development methodology**: Development of secure software requires ground-up thinking about security, from the inception of the project all the way to its implementation, testing, and deployment. The choices of platforms, languages, and tools are all influenced with this methodology. The Microsoft Security Development Lifecycle provides a step-by-step approach to building secure software.
-- **Choose open-source software with care**: Open-source software provides an opportunity to quickly develop solutions. When you're choosing open-source software, consider the activity level of the community for each open-source component. An active community ensures that software is supported and that issues are discovered and addressed. Alternatively, an obscure and inactive open-source software might not be supported and issues will probably not be discovered.
-- **Integrate with care**: Many software security flaws exist at the boundary of libraries and APIs. Functionality that may not be required for the current deployment might still be available via an API layer. To ensure overall security, make sure to check all interfaces of components being integrated for security flaws.      
+- **セキュリティで保護されたソフトウェアの開発方法に従う**: セキュリティで保護されたソフトウェアの開発には、プロジェクトの開始からその実装、テスト、およびデプロイに至るまで、セキュリティをゼロから考慮する必要があります。この方法により、プラットフォーム、言語、およびツールの選択のすべてが影響を受けます。Microsoft セキュリティ開発ライフサイクルは、セキュリティで保護されたソフトウェアを構築するためのステップ バイ ステップ アプローチを提供します。
+- **オープン ソース ソフトウェアを慎重に選択する**: オープン ソース ソフトウェアは、ソリューションを簡単に開発する機会を提供します。オープン ソース ソフトウェアを選択する際には、オープン ソース コンポーネントごとにコミュニティのアクティビティ レベルを考慮します。アクティブなコミュニティでは、確実にソフトウェアがサポートされ、問題が検出されて対処がなされます。一方、控えめで非アクティブなオープン ソース ソフトウェアはサポートされず、問題が検出されない可能性が高くなります。
+- **注意深く統合を行う**: ソフトウェア セキュリティの欠陥の多くは、ライブラリと API の境界に存在します。現在のデプロイに不要と思われる機能も、API レイヤーを介して使用できることがあります。全体のセキュリティを確保するために、統合するコンポーネントのすべてのインターフェイスにセキュリティ上の欠陥がないことを確認します。
 
-## <a name="iot-solution-deployer"></a>IoT solution deployer
+## IoT ソリューションのデプロイ担当者
 
-The following are best practices for IoT solution deployers:
+IoT ソリューションのデプロイ担当者向けのベスト プラクティスを次に示します。
 
-- **Deploy hardware securely**: IoT deployments may require hardware to be deployed in unsecure locations, such as in public spaces or unsupervised locales. In such situations, ensure that hardware deployment is tamper-proof to the maximum extent. If USB or other ports are available on the hardware, ensure that they are covered securely. Many attack vectors can use these as entry points.
-- **Keep authentication keys safe**: During deployment, each device requires device IDs and associated authentication keys generated by the cloud service. Keep these keys physically safe even after the deployment. Any compromised key can be used by a malicious device to masquerade as an existing device.
+- **ハードウェアを安全にデプロイする**: IoT デプロイでは、公共施設や監視されていないロケールなど、セキュリティで保護されていない場所にハードウェアをデプロイする必要が生じる場合があります。このような状況では、ハードウェアのデプロイが改ざんに対して最大限の耐性を備えるようにします。ハードウェアで USB またはその他のポートが利用可能な場合は、これらも確実にセキュリティで保護します。多くの攻撃媒体で、これらがエントリ ポイントとして使用される可能性があります。
+- **認証キーを安全に保管する**: デプロイ中、各デバイスはデバイス ID、およびクラウド サービスによって生成される関連する認証キーを必要とします。これらのキーは、デプロイ後にも物理的に安全に保管します。キーが盗まれると、悪意のあるデバイスが既存のデバイスになりすますために使用される可能性があります。
 
-## <a name="iot-solution-operator"></a>IoT solution operator
+## IoT ソリューションのオペレーター
 
-The following are the best practices for IoT solution operators:
+IoT ソリューションのオペレーター向けのベスト プラクティスを次に示します。
 
-- **Keep the system up to date**: Ensure that device operating systems and all device drivers are upgraded to the latest versions. If you turn on automatic updates in Windows 10 (IoT or other SKUs), Microsoft keeps it up to date, providing a secure operating system for IoT devices. Keeping other operating systems (such as Linux) up to date helps ensure that they are also protected against malicious attacks.
-- **Protect against malicious activity**: If the operating system permits, install the latest antivirus and antimalware capabilities on each device operating system. This can help mitigate most external threats. You can protect most modern operating systems against threats by taking appropriate steps.
-- **Audit frequently**: Auditing IoT infrastructure for security-related issues is key when responding to security incidents. Most operating systems provide built-in event logging that should be reviewed frequently to make sure no security breach has occurred. Audit information can be sent as a separate telemetry stream to the cloud service where it can be analyzed.
-- **Physically protect the IoT infrastructure**: The worst security attacks against IoT infrastructure are launched using physical access to devices. One important safety practice is to protect against malicious use of USB ports and other physical access. One key to uncovering breaches that might have occurred is logging of physical access, such as USB port use. Again, Windows 10 (IoT and other SKUs) enables detailed logging of these events.
-- **Protect cloud credentials**: Cloud authentication credentials used for configuring and operating an IoT deployment are possibly the easiest way to gain access and compromise an IoT system. Protect the credentials by changing the password frequently, and refrain from using these credentials on public machines.
+- **システムを常に最新の状態に保つ**: デバイスのオペレーティング システムおよびすべてのデバイス ドライバーが最新バージョンにアップグレードされることを確認します。Windows 10 (IoT またはその他の SKU) で自動更新をオンにした場合は、Microsoft によって最新の状態が保たれ、IoT デバイスに対してセキュリティで保護されたオペレーティング システムが提供されます。他のオペレーティング システム (Linux など) を最新の状態に保つことも、悪意のある攻撃からの保護を確保するために役立ちます。
+- **悪意のあるアクティビティから保護する**: オペレーティング システムで許可される場合は、各デバイスのオペレーティング システムに最新のウイルス対策およびマルウェア対策機能をインストールします。これにより、ほとんどの外部の脅威を軽減できます。適切な手順を実行することで、最新のオペレーティング システムを脅威から保護することができます。
+- **頻繁に監査を行う**: セキュリティ インシデントに対応するときには、セキュリティ関連の問題について IoT インフラストラクチャを監査することが重要です。ほとんどのオペレーティング システムは、組み込みのイベント ログを提供します。これらは頻繁に監査して、セキュリティ違反が発生していないかどうかを確認する必要があります。監査情報は、独立した製品利用統計情報ストリームとしてクラウド サービスに送信して分析することができます。
+- **IoT インフラストラクチャを物理的に保護する**: IoT インフラストラクチャに対する最悪のセキュリティ攻撃は、デバイスへの物理的なアクセスによって開始されます。安全性に関する重要なプラクティスの 1 つは、USB ポートおよびその他の物理的なアクセスの悪用を防止することです。発生した可能性があるすべての侵害を発見する鍵の 1 つは、物理的なアクセスのログ記録 (USB ポートの使用など) です。Windows 10 (IoT およびその他の SKU) では、これらのイベントの詳細なログ記録も可能です。
+- **クラウドの資格情報を保護する**: IoT デプロイの構成と操作に使用されるクラウド認証の資格情報は、IoT システムへのアクセスを取得して侵害するための最も簡単な手段となりえます。パスワードを頻繁に変更し、共有のコンピューターでこれらの資格情報の使用を控えることで、資格情報を保護します。
 
-Capabilities of different IoT devices vary. Some devices might be computers running common desktop operating systems, and some devices might be running very light-weight operating systems. The security best practices described previously might be applicable to these devices in varying degrees. If provided, additional security and deployment best practices from the manufacturers of these devices should be followed.
+IoT デバイスの機能はそれぞれ異なります。デバイスには、一般的なデスクトップ オペレーティング システムを実行するコンピューターであるデバイスも、非常に軽いオペレーティング システムを実行するデバイスも含まれます。これらのデバイスに適用される上記のセキュリティに関するベスト プラクティスは一様ではありません。これらのデバイスの製造元が提供するセキュリティおよびデプロイの追加のベスト プラクティスが指定されている場合は、それらに従う必要があります。
 
-Some legacy and constrained devices might not have been designed specifically for IoT deployment. These devices might lack the capability to encrypt data, connect with the Internet, or provide advanced auditing. In these cases, a modern and secure field gateway can aggregate data from legacy devices and provide the security required for connecting these devices over the Internet. Field gateways can provide secure authentication, negotiation of encrypted sessions, receipt of commands from the cloud, and many other security features.
+一部のレガシおよび制約のあるデバイスは、明確に IoT デプロイ向けに設計されていない場合があります。これらのデバイスには、データの暗号化、インターネットとの接続、高度な監査の提供などの機能が欠けていることがあります。このような場合は、セキュリティで保護された最新のフィールド ゲートウェイによってレガシ デバイスからデータを集計し、これらのデバイスをインターネット経由で接続するために必要なセキュリティを提供できます。フィールド ゲートウェイは、セキュリティで保護された認証、暗号化されたセッションのネゴシエーション、クラウドからのコマンドの受信など、多数のセキュリティ機能を提供します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

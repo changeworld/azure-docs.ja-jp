@@ -1,105 +1,100 @@
 <properties
-    pageTitle="Feature engineering in the Cortana Analytics Process | Microsoft Azure" 
-    description="Explains the purposes of feature engineering and provides examples of its role in the data enhancement process of machine learning."
-    services="machine-learning"
-    documentationCenter=""
-    authors="bradsev"
-    manager="jhubbard"
-    editor="cgronlun"/>
+	pageTitle="Cortana Analytics Process の特徴エンジニアリング | Microsoft Azure" 
+	description="特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。"
+	services="machine-learning"
+	documentationCenter=""
+	authors="bradsev"
+	manager="jhubbard"
+	editor="cgronlun"/>
 
 <tags
-    ms.service="machine-learning"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/19/2016"
-    ms.author="zhangya;bradsev" />
+	ms.service="machine-learning"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/19/2016"
+	ms.author="zhangya;bradsev" />
 
 
+# Cortana Analytics Process の特徴エンジニアリング 
 
-# <a name="feature-engineering-in-the-cortana-analytics-process"></a>Feature engineering in the Cortana Analytics Process 
-
-This topic explains the purposes of feature engineering and provides examples of its role in the data enhancement process of machine learning. The examples used to illustrate this process are drawn from Azure Machine Learning Studio. 
+このトピックでは、特徴エンジニアリングの目的について説明し、機械学習のデータ強化プロセスにおけるその役割の例を示します。このプロセスの説明に使用されている例は、Azure Machine Learning Studio から引用しています。
 
 [AZURE.INCLUDE [cap-create-features-data-selector](../../includes/cap-create-features-selector.md)]
 
-This **menu** links to topics that describe how to create features for data in various environments. This task is a step in the [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/).
+この**メニュー**は、多様な環境のデータの特徴を作成する方法が説明されたトピックにリンクされています。このタスクは、[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) の 1 ステップです。
 
-Feature engineering attempts to increase the predictive power of learning algorithms by creating features from raw data that help facilitate the learning process. The engineering and selection of features is one part of the TDSP outlined in the [What is the Team Data Science Process?](data-science-process-overview.md) Feature engineering and selection are parts of the **Develop features** step of the TDSP. 
+特徴エンジニアリングでは、学習プロセスの促進に役立つ生データから特徴を作成して、学習アルゴリズムの予測力を高めることを試みます。特徴のエンジニアリングと選択は TDSP の一部です。TDSP の概要については、「[What is the Team Data Science Process? (Team Data Science Process について)](data-science-process-overview.md)」を参照してください 特徴エンジニアリングと特徴選択は、TDSP の**特徴の開発**ステップの一部です。
 
-* **feature engineering**: This process attempts to create additional relevant features from the existing raw features in the data, and to increase the predictive power of the learning algorithm.
+* **特徴エンジニアリング**: このプロセスは、データ内の既存の生の特徴から、関連する特徴を作成し、学習アルゴリズムの予測力を高めようとします。
 
-* **feature selection**: This process selects the key subset of original data features in an attempt to reduce the dimensionality of the training problem.
+* **特徴選択**: このプロセスは、トレーニング問題の次元を削減するために、元のデータの特徴のキーのサブセットを選択します。
 
-Normally **feature engineering** is applied first to generate additional features, and then the **feature selection** step is performed to eliminate irrelevant, redundant, or highly correlated features.
+通常、**特徴エンジニアリング**は追加の特徴を生成するために最初に適用され、その後、無関係な特徴、重複した特徴、関連性の高い特徴を排除するために**特徴選択**の手順が実行されます。
 
-The training data used in machine learning can often be enhanced by extraction of features from the raw data collected. An example of an engineered feature in the context of learning how to classify the images of handwritten characters is creation of a bit density map constructed from the raw bit distribution data. This map can help locate the edges of the characters more efficiently than simply using the raw distribution directly.
+機械学習で使用されるトレーニング データは、多くの場合、収集された生データから特徴を抽出することで向上させることができます。手書き文字の画像の分類方法の学習において、エンジニアリングされた特徴の例は、生のビット分布データで構成されているビット密度マップの作成です。このマップは、生の分布を直接使用するよりも効率的に文字のエッジを検索できます。
 
 
 [AZURE.INCLUDE [machine-learning-free-trial](../../includes/machine-learning-free-trial.md)]
 
 
-## <a name="creating-features-from-your-data---feature-engineering"></a>Creating Features from Your Data - Feature Engineering
+## データから特徴を作成する - 特徴エンジニアリング
 
-The training data consists of a matrix composed of examples (records or observations stored in rows), each of which has a set of features (variables or fields stored in columns). The features specified in the experimental design are expected to characterize the patterns in the data. Although many of the raw data fields can be directly included in the selected feature set used to train a model, it is often the case that additional (engineered) features need to be constructed from the features in the raw data to generate an enhanced training dataset.
+トレーニング データは、例 (行に格納されているレコードや観測) からなるマトリックスで構成され、それぞれが特徴のセット (列に格納されている変数やフィールド) を持っています。実験計画で指定された特徴は、データ内のパターンを特徴付けることが期待されます。生のデータ フィールドの多くは、モデルのトレーニングに使用される、選択された特徴セットに直接含めることができますが、多くの場合、追加の (エンジニアリングされた) 特徴は、強化されたトレーニング データセットを生成するために生データの特徴から構築される必要があります。
 
-What kind of features should be created to enhance the dataset when training a model? Engineered features that enhance the training provide information that better differentiates the patterns in the data. We expect the new features to provide additional information that is not clearly captured or easily apparent in the original or existing feature set. But this process is something of an art. Sound and productive decisions often require some domain expertise.
+モデルをトレーニングする場合は、データセットを強化するためにどのような特徴を作成する必要がありますか。 トレーニングを強化するようにエンジニアリングされた特徴は、データ内のパターンをより適切に識別する情報を提供します。新しい特徴は、元の特徴セットや既存の特徴セットを明確に取り込んだり、簡単に表示したりしない追加情報を提供することが期待されます。ただし、このプロセスは芸術のようなものです。正当な生産性の高い意思決定は、多くの場合、専門知識が必要です。
 
-When starting with Azure Machine Learning, it is easiest to grasp this process concretely using samples provided in the Studio. Two examples are presented here:
+まず Azure Machine Learning から始めると、Studio で提供されているサンプルを使用して最も簡単にこのプロセスを具体的に把握できます。次に、2 つの例を示します。
 
-* A regression example [Prediction of the number of bike rentals](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in a supervised experiment where the target values are known
-* A text mining classification example using [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
+* ターゲット値が既知の場合の教師あり実験における、[レンタル自転車の数の予測](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4)の回帰の例
+* [特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)を使用したテキスト マイニングの分類例
 
-### <a name="example-1:-adding-temporal-features-for-regression-model"></a>Example 1: Adding Temporal Features for Regression Model ###
+### 例 1: 回帰モデルに時間的な特徴を追加する ###
 
-Let's use the experiment "Demand forecasting of bikes" in Azure Machine Learning Studio to demonstrate how to engineer features for a regression task. The objective of this experiment is to predict the demand for the bikes, that is, the number of bike rentals within a specific month/day/hour. The dataset "Bike Rental UCI dataset" is used as the raw input data. This dataset is based on real data from the Capital Bikeshare company that maintains a bike rental network in Washington DC in the United States. The dataset represents the number of bike rentals within a specific hour of a day in the years 2011 and year 2012 and contains 17379 rows and 17 columns. The raw feature set contains weather conditions (temperature/humidity/wind speed) and the type of the day (holiday/weekday). The field to predict is "cnt", a count which represents the bike rentals within a specific hour and which ranges ranges from 1 to 977.
+Azure Machine Learning Studio で ”自転車の需要予測” の実験を使用して、回帰タスクの特徴をエンジニアリングする方法を見てみましょう。この実験の目的は、自転車の需要、つまり特定の月 / 日 / 時間内でのレンタル自転車の数を予測することです。データセットの "Bike Rental UCI データセット" は、生の入力データとして使用します。このデータセットは、米国のワシントン D.C. で自転車のレンタル ネットワークを管理している Capital Bikeshare 社の実際のデータに基づいています。データセットは、2011 年と 2012 年の 1 日の特定の時間帯のレンタル自転車の数を表し、17379 行と 17 列が含まれています。生の特徴セットには、気象条件 (温度 / 湿度 / 風速) やその日の種類 (休日 / 平日) が含まれます。予測するフィールドは "cnt" です。これは、特定の時間帯のレンタル自転車数を 1 ～ 977 の範囲内で表しています。
 
-With the goal of constructing effective features in the training data, four regression models are built using the same algorithm but with four different training datasets. The four datasets represent the same raw input data, but with an increasing number of features set. These features are grouped into four categories:
+トレーニング データに効果的な特徴を構築することを目標として、4 つの回帰モデルは同じアルゴリズムを使用して構築されましたが、トレーニング データセットはそれぞれ異なります。次の 4 つのデータセットは同じ生の入力データを表しますが、特徴セットの数は増加しています。これらの特徴は、次の 4 つのカテゴリに分類されます。
 
-1. A = weather + holiday + weekday + weekend features for the predicted day
-2. B = number of bikes that were rented in each of the previous 12 hours
-3. C = number of bikes that were rented in each of the previous 12 days at the same hour
-4. D = number of bikes that were rented in each of the previous 12 weeks at the same hour and the same day
+1. A = 予測日の天候 + 休日 + 平日 + 週末の各特徴
+2. B = 過去 12 時間ごとにレンタルされた自転車の数
+3. C = 過去 12 日ごとにレンタルされた自転車の数 (同じ時間帯)
+4. D = 過去 12 週ごとにレンタルされた自転車の数 (同じ時間帯、同じ日)
 
-Besides feature set A, which already exist in the original raw data, the other three sets of features are created through the feature engineering process. Feature set B captures very recent demand for the bikes. Feature set C captures the demand for bikes at a particular hour. Feature set D captures demand for bikes at particular hour and particular day of the week. The four training datasets each includes feature set A, A+B, A+B+C, and A+B+C+D, respectively.
+元の生データに既に存在する特徴セット A の他に、他の 3 つの特徴セットが特徴エンジニアリング プロセスによって作成されます。特徴セット B では、直近の自転車の需要を収集します。特徴セット C では、特定の時間帯の自転車の需要を収集します。特徴セット D では、特定の曜日の特定の時間帯の自転車の需要を収集します。この 4 つのトレーニング データセットは、それぞれ A、A+B、A+B+C、A+B+C+D の特徴セットを含んでいます。
 
-In the Azure Machine Learning experiment, these four training datasets are formed via four branches from the pre-processed input dataset. Except the left most branch, each of these branches contains an [Execute R Script](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/) module, in which a set of derived features (feature set B, C, and D) are respectively constructed and appended to the imported dataset. The following figure demonstrates the R script used to create feature set B in the second left branch.
+Azure Machine Learning の実験では、これら 4 つのトレーニング データセットは、前処理された入力データセットからの 4 つの分岐を使用して形成されます。一番左の分岐を除いて、これらの各分岐には [R スクリプトの実行](https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/)モジュールが含まれており、生成された一連の特徴 (特徴セット B、C、D) は個別に構築され、インポートされたデータセットに追加されます。次の図は、左の 2 番目の分岐にある特徴セット B の作成に使用される R スクリプトを示します。
 
-![create features](./media/machine-learning-data-science-create-features/addFeature-Rscripts.png)
+![特徴を定義する](./media/machine-learning-data-science-create-features/addFeature-Rscripts.png)
 
-The comparison of the performance results of the four models are summarized in the following table. The best results are shown by features A+B+C. Note that the error rate decreases when additional feature set are included in the training data. It verifies our presumption that the feature set B, C provide additional relevant information for the regression task. But adding the D feature does not seem to provide any additional reduction in the error rate.
+4 つのモデルのパフォーマンス結果の比較を次の表にまとめています。特徴 A+B+C よって最適な結果が表示されます。トレーニング データに特徴セットを追加すると、エラー率が低下する点に注意してください。これにより、特徴セット B、C は、関連する追加情報を回帰タスクに提供するという推測が検証されます。ただし、D の特徴を追加しても、エラー率はそれ以上は低下しないようです。
 
-![result comparison](./media/machine-learning-data-science-create-features/result1.png)
+![結果の比較](./media/machine-learning-data-science-create-features/result1.png)
 
-### <a name="<a-name="example2"></a>-example-2:-creating-features-in-text-mining"></a><a name="example2"></a> Example 2: Creating Features in Text Mining  
+### <a name="example2"></a> 例 2: テキスト マイニングで特徴を作成する  
 
-Feature engineering is widely applied in tasks related to text mining, such as document classification and sentiment analysis. For example, when we want to classify documents into several categories, a typical assumption is that the word/phrases included in one doc category are less likely to occur in another doc category. In another words, the frequency of the words/phrases distribution is able to characterize different document categories. In text mining applications, because individual pieces of text-contents usually serve as the input data, the feature engineering process is needed to create the features involving word/phrase frequencies.
+特徴エンジニアリングは、ドキュメントの分類やセンチメント分析などのテキスト マイニングに関連するタスクに広く適用されています。たとえば、ドキュメントをいくつかのカテゴリに分類する場合は、通常、1 つのドキュメントのカテゴリに含まれる単語や語句が別のドキュメントのカテゴリに存在する可能性が低いことを前提とします。つまり、単語や語句の配布の頻度は異なるドキュメント カテゴリを特徴付けることができます。テキスト マイニング アプリケーションでは、通常、テキスト コンテンツの各部分が入力データとして機能するため、出現する単語や語句の頻度を含む特徴を作成するために特徴エンジニアリング プロセスが必要になります。
 
-To achieve this task, a technique called **feature hashing** is applied to efficiently turn arbitrary text features into indices. Instead of associating each text feature (words/phrases) to a particular index, this method functions by applying a hash function to the features and using their hash values as indices directly.
+このタスクを実現するには、**特徴ハッシュ**と呼ばれる手法を適用して、任意のテキストの特徴を効率的にインデックスに変えます。各テキストの特徴 (単語や語句) を特定のインデックスに関連付ける代わりに、ハッシュ関数を特徴に適用し、そのハッシュ値を直接インデックスとして使用することでこのメソッドが機能します。
 
-In Azure Machine Learning, there is a [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) module that creates these word/phrase features conveniently. Following figure shows an example of using this module. The input dataset contains two columns: the book rating ranging from 1 to 5, and the actual review content. The goal of this [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) module is to retrieve a bunch of new features that show the occurrence frequency of the corresponding word(s)/phrase(s) within the particular book review. To use this module, we need to complete the following steps:
+Azure Machine Learning には、これらの単語や語句の特徴を都合よく作成する、[特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) モジュールがあります。このモジュールを使用する例を次に示します。入力データセットには、1 ～ 5 の書籍の評価と実際のレビュー内容の 2 つ列が含まれています。この[特徴ハッシュ](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) モジュールの目的は、特定の書籍レビュー内の対応する単語や語句の出現頻度を示す一連の新しい特徴を取得することです。このモジュールを使用するには、次の手順を完了する必要があります。
 
-* First, select the column that contains the input text ("Col2" in this example).
-* Second, set the "Hashing bitsize" to 8, which means 2^8=256 features will be created. The word/phase in all the text will be hashed to 256 indices. The parameter "Hashing bitsize" ranges from 1 to 31. The word(s)/phrase(s) are less likely to be hashed into the same index if setting it to be a larger number.
-* Third, set the parameter "N-grams" to 2. This gets the occurrence frequency of unigrams (a feature for every single word) and bigrams (a feature for every pair of adjacent words) from the input text. The parameter "N-grams" ranges from 0 to 10, which indicates the maximum number of sequential words to be included in a feature.  
+* まず、入力テキストが含まれている列を選択します (この例では "Col2")。
+* 次に、"Hashing bitsize" を 8 に設定します。これにより、2 ^8 = 256 の特徴が作成されます。すべてのテキストの単語や語句は、256 のインデックスにハッシュされます。"Hashing bitsize" パラメーターの範囲は 1 ～ 31 です。単語や語句は、大きな数値を設定すれば、同じインデックスにハッシュされる可能性はほとんどありません。
+* 最後に、"N-grams" パラメーターを 2 に設定します。これは、入力テキストからユニグラム (単語ごとの特徴) とバイグラム (隣接する2 単語ごとの特徴) の出現頻度を取得します。"N-grams" パラメーターの範囲は 0 ～ 10 で、特徴に含まれる最大の連続単語数を示します。
 
-!["Feature Hashing" module](./media/machine-learning-data-science-create-features/feature-Hashing1.png)
+![”特徴ハッシュ” モジュール](./media/machine-learning-data-science-create-features/feature-Hashing1.png)
 
-The following figure shows what the these new feature look like.
+次の図は、これらの新しい特徴の外観を示しています。
 
-!["Feature Hashing" example](./media/machine-learning-data-science-create-features/feature-Hashing2.png)
+![”特徴ハッシュ” の例](./media/machine-learning-data-science-create-features/feature-Hashing2.png)
 
 
-## <a name="conclusion"></a>Conclusion
+## まとめ
 
-Engineered and selected features increase the efficiency of the training process which attempts to extract the key information contained in the data. They also improve the power of these models to classify the input data accurately and to predict outcomes of interest more robustly. Feature engineering and selection can also combine to make the learning more computationally tractable. It does so by enhancing and then reducing the number of features needed to calibrate or train a model. Mathematically speaking, the features selected to train the model are a minimal set of independent variables that explain the patterns in the data and then predict outcomes successfully.
+エンジニアリングされ、選択された特徴は、データに含まれるキー情報の抽出を試みるトレーニング プロセスの効率を高めます。また、入力データを正確に分類して、関心のある結果をより確実に予測するために、これらのモデルのパワーを向上させます。特徴エンジニアリングと特徴選択は、学習を計算的により扱いやすくするために組み合わせることもできます。これは、強化した後、モデルの調整やトレーニングに必要な特徴の数を減らすことによって行われます。数学的に言うと、モデルのトレーニングに選択される特徴は、データのパターンを説明し、正常に結果を予測する独立変数の最小セットです。
 
-Note that it is not always necessarily to perform feature engineering or feature selection. Whether it is needed or not depends on the data we have or collect, the algorithm we pick, and the objective of the experiment.
+必ずしも特徴エンジニアリングや特徴選択を実行する必要はありません。必要があるかどうかは、持っているデータや収集するデータ、選択するアルゴリズム、実験の目的によって異なります。
  
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

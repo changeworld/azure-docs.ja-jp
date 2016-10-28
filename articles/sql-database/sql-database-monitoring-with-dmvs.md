@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Monitoring Azure SQL Database Using Dynamic Management Views | Microsoft Azure"
-   description="Learn how to detect and diagnose common performance problems by using dynamic management views to monitor Microsoft Azure SQL Database."
+   pageTitle="動的管理ビューを使用した Azure SQL Database の監視 | Microsoft Azure"
+   description="動的管理ビューを使用して Microsoft Azure SQL Database を監視することで、一般的なパフォーマンスの問題を検出および診断する方法について説明します。"
    services="sql-database"
    documentationCenter=""
    authors="CarlRabeler"
@@ -17,40 +17,38 @@
    ms.date="09/20/2016"
    ms.author="carlrab"/>
 
+# 動的管理ビューを使用した Azure SQL Database の監視
 
-# <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>Monitoring Azure SQL Database using dynamic management views
+Microsoft Azure SQL Database では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。このトピックでは、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。
 
-Microsoft Azure SQL Database enables a subset of dynamic management views to diagnose performance problems, which might be caused by blocked or long-running queries, resource bottlenecks, poor query plans, and so on. This topic provides information on how to detect common performance problems by using dynamic management views.
+SQL Database は、次に示す 3 つの動的管理ビューを一部サポートしています。
 
-SQL Database partially supports three categories of dynamic management views:
+- データベース関連の動的管理ビュー。
+- 実行関連の動的管理ビュー。
+- トランザクション関連の動的管理ビュー。
 
-- Database-related dynamic management views.
-- Execution-related dynamic management views.
-- Transaction-related dynamic management views.
+動的管理ビューの詳細については、SQL Server オンライン ブックの「[動的管理ビューおよび関数 (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx)」を参照してください。
 
-For detailed information on dynamic management views, see [Dynamic Management Views and Functions (Transact-SQL)](https://msdn.microsoft.com/library/ms188754.aspx) in SQL Server Books Online.
+## アクセス許可
 
-## <a name="permissions"></a>Permissions
-
-In SQL Database, querying a dynamic management view requires **VIEW DATABASE STATE** permissions. The **VIEW DATABASE STATE** permission returns information about all objects within the current database.
-To grant the **VIEW DATABASE STATE** permission to a specific database user, run the following query:
+SQL Database で、動的管理ビューに対してクエリを実行するには、**VIEW DATABASE STATE** アクセス許可が必要です。**VIEW DATABASE STATE** アクセス許可は、現在のデータベース内のすべてのオブジェクトに関する情報を返します。**VIEW DATABASE STATE** アクセス許可を特定のデータベース ユーザーに付与するには、次のクエリを実行します。
 
 ```GRANT VIEW DATABASE STATE TO database_user; ```
 
-In an instance of on-premises SQL Server, dynamic management views return server state information. In SQL Database, they return information regarding your current logical database only.
+オンプレミスの SQL Server のインスタンスでは、動的管理ビューにサーバーの状態についての情報が表示されます。SQL Database では、動的管理ビューには現在の論理データベースに関する情報のみが表示されます。
 
-## <a name="calculating-database-size"></a>Calculating database size
+## データベースのサイズを計算しています
 
-The following query returns the size of your database (in megabytes):
+次のクエリは、データベースのサイズ (MB 単位) を返します。
 
 ```
--- Calculates the size of the database.
+-- データベースのサイズを計算します。 
 SELECT SUM(reserved_page_count)*8.0/1024
 FROM sys.dm_db_partition_stats;
 GO
 ```
 
-The following query returns the size of individual objects (in megabytes) in your database:
+次のクエリは、データベース内の個々のオブジェクトのサイズ (MB 単位) を返します。
 
 ```
 -- Calculates the size of individual database objects.
@@ -61,10 +59,9 @@ GROUP BY sys.objects.name;
 GO
 ```
 
-## <a name="monitoring-connections"></a>Monitoring connections
+## 接続の監視
 
-You can use the [sys.dm_exec_connections](https://msdn.microsoft.com/library/ms181509.aspx) view to retrieve information about the connections established to a specific Azure SQL Database server and the details of each connection. In addition, the [sys.dm_exec_sessions](https://msdn.microsoft.com/library/ms176013.aspx) view is helpful when retrieving information about all active user connections and internal tasks.
-The following query retrieves information on the current connection:
+[sys.dm\_exec\_connections](https://msdn.microsoft.com/library/ms181509.aspx) ビューを使用して、特定の Azure SQL Database サーバーに対して確立されている接続についての情報と、各接続の詳細を取得できます。また、[sys.dm\_exec\_sessions](https://msdn.microsoft.com/library/ms176013.aspx) ビューは、すべてのアクティブなユーザー接続と内部タスクについての情報を取得する場合に役立ちます。次のクエリは、現在の接続に関する情報を取得します。
 
 ```
 SELECT
@@ -79,15 +76,15 @@ JOIN sys.dm_exec_sessions AS s
 WHERE c.session_id = @@SPID;
 ```
 
-> [AZURE.NOTE] When executing the **sys.dm_exec_requests** and **sys.dm_exec_sessions views**, if you have **VIEW DATABASE STATE** permission on the database, you see all executing sessions on the database; otherwise, you see only the current session.
+> [AZURE.NOTE] **sys.dm\_exec\_requests** と **sys.dm\_exec\_sessions views** を実行するときに、データベースに対するアクセス許可 **VIEW DATABASE STATE** を持っていると、データベースで実行中のすべてのセッションが表示されます。アクセス許可を持っていない場合は、現在のセッションのみが表示されます。
 
-## <a name="monitoring-query-performance"></a>Monitoring query performance
+## クエリのパフォーマンスの監視
 
-Slow or long running queries can consume significant system resources. This section demonstrates how to use dynamic management views to detect a few common query performance problems. An older but still helpful reference for troubleshooting, is the [Troubleshooting Performance Problems in SQL Server 2008](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx) article on Microsoft TechNet.
+クエリが低速または実行時間が長いと、大量のシステム リソースが消費される可能性があります。ここでは、動的管理ビューを使用して、いくつかの一般的なクエリ パフォーマンスの問題を検出する方法について説明します。Microsoft TechNet の [SQL Server 2008 のパフォーマンスに関する問題のトラブルシューティング](http://download.microsoft.com/download/D/B/D/DBDE7972-1EB9-470A-BA18-58849DB3EB3B/TShootPerfProbs2008.docx)についての記事が、古いものの今でもトラブルシューティングに役立ちます。
 
-### <a name="finding-top-n-queries"></a>Finding top N queries
+### 上位 N 個のクエリの検索
 
-The following example returns information about the top five queries ranked by average CPU time. This example aggregates the queries according to their query hash, so that logically equivalent queries are grouped by their cumulative resource consumption.
+次の例では、平均 CPU 時間の上位 5 個のクエリに関する情報を返します。この例では、論理的に等価なクエリがリソースの累計消費量ごとにグループ化されるように、クエリ ハッシュに応じてクエリを集計します。
 
 ```
 SELECT TOP 5 query_stats.query_hash AS "Query Hash",
@@ -106,13 +103,13 @@ GROUP BY query_stats.query_hash
 ORDER BY 2 DESC;
 ```
 
-### <a name="monitoring-blocked-queries"></a>Monitoring blocked queries
+### クエリのブロックの監視
 
-Slow or long-running queries can contribute to excessive resource consumption and be the consequence of blocked queries. The cause of the blocking can be poor application design, bad query plans, the lack of useful indexes, and so on. You can use the sys.dm_tran_locks view to get information about the current locking activity in your Azure SQL Database. For example code, see [sys.dm_tran_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx) in SQL Server Books Online.
+クエリが低速または実行時間が長いと、大量のリソースが消費され、結果としてクエリがブロックされる可能性があります。ブロックの原因には、不適切なアプリケーション設計、不適切なクエリ プラン、有効なインデックスの欠如などがあります。sys.dm\_tran\_locks ビューを使用すると、Azure SQL Database で現在ロックされているアクティビティに関する情報を取得できます。コード例については、SQL Server オンライン ブックの「[sys.dm\_tran\_locks (Transact-SQL)](https://msdn.microsoft.com/library/ms190345.aspx)」を参照してください。
 
-### <a name="monitoring-query-plans"></a>Monitoring query plans
+### クエリ プランの監視
 
-An inefficient query plan also may increase CPU consumption. The following example uses the [sys.dm_exec_query_stats](https://msdn.microsoft.com/library/ms189741.aspx) view to determine which query uses the most cumulative CPU.
+クエリ プランの効率が悪いと、CPU の消費量が増える可能性があります。次の例では、[sys.dm\_exec\_query\_stats](https://msdn.microsoft.com/library/ms189741.aspx) ビューを使用して、累積 CPU 時間が最も多いクエリを特定します。
 
 ```
 SELECT
@@ -134,12 +131,8 @@ FROM
 ORDER BY highest_cpu_queries.total_worker_time DESC;
 ```
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-[Introduction to SQL Database](sql-database-technical-overview.md)
+[SQL Database の概要](sql-database-technical-overview.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

@@ -1,86 +1,80 @@
 <properties
-    pageTitle="DocumentDB Query Explorer: A SQL query editor | Microsoft Azure"
-    description="Learn about the DocumentDB Query Explorer, a SQL query editor in the Azure portal for writing SQL queries and running them against a NoSQL DocumentDB collection."
-    keywords="writing sql queries, sql query editor"
-    services="documentdb"
-    authors="kirillg"
-    manager="jhubbard"
-    editor="monicar"
-    documentationCenter=""/>
+	pageTitle="DocumentDB クエリ エクスプローラー: SQL クエリ エディター |Microsoft Azure"
+	description="DocumentDB クエリ エクスプローラーについて説明します。これは、SQL クエリを作成して NoSQL DocumentDB コレクションに対して実行するための、Azure ポータルの SQL クエリ エディターです。"
+	keywords="SQL クエリの記述, SQL クエリ エディター"
+	services="documentdb"
+	authors="AndrewHoh"
+	manager="jhubbard"
+	editor="monicar"
+	documentationCenter=""/>
 
 <tags
-    ms.service="documentdb"
-    ms.workload="data-services"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/30/2016"
-    ms.author="kirillg"/>
+	ms.service="documentdb"
+	ms.workload="data-services"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/30/2016"
+	ms.author="anhoh"/>
 
+# クエリ エクスプローラーを使用して DocumentDB に対する SQL クエリを作成、編集、実行する 
 
-# <a name="write,-edit,-and-run-sql-queries-for-documentdb-using-query-explorer"></a>Write, edit, and run SQL queries for DocumentDB using Query Explorer 
+この記事では、[Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) クエリ エクスプローラーの概要について説明します。これは、[DocumentDB コレクション](documentdb-create-collection.md)に対する SQL クエリを作成、編集、実行できる Azure ポータルのツールです。
 
-This article provides an overview of the [Microsoft Azure DocumentDB](https://azure.microsoft.com/services/documentdb/) Query Explorer, an Azure portal tool that enables you to write, edit, and run SQL queries against a [DocumentDB collection](documentdb-create-collection.md).
+1. Azure ポータルで、ジャンプバーの **[DocumentDB (NoSQL)]** をクリックします。**[DocumentDB (NoSQL)]** が表示されない場合は、**[More Services (その他のサービス)]** をクリックし、**[DocumentDB (NoSQL)]** をクリックします。
 
-1. In the Azure portal, in the Jumpbar, click **DocumentDB (NoSQL)**. If **DocumentDB (NoSQL)** is not visible, click **More Services** and then click **DocumentDB (NoSQL)**.
+2. リソース メニューの **[クエリ エクスプローラー]** をクリックします。
 
-2. In the resource menu, click **Query Explorer**. 
+	![Screenshot of the Azure portal with Query Explorer highlighted](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
 
-    ![Screenshot of the Azure portal with Query Explorer highlighted](./media/documentdb-query-collections-query-explorer/queryexplorercommand.png)
+3. **[クエリ エクスプローラー]** ブレードで、ドロップダウン リストから、クエリの対象となる**データベース**と**コレクション**を選択し、実行するクエリを入力します。
 
-3. In the **Query Explorer** blade, select the **Databases** and **Collections** to query from the drop down lists, and type the query to run. 
+    **[データベース]** と **[コレクション]** の各ドロップダウン リストには、クエリ エクスプローラーを起動したコンテキストに応じて値が設定されています。
 
-    The **Databases** and **Collections** drop-down lists are pre-populated depending on the context in which you launch Query Explorer. 
+    既定のクエリ `SELECT TOP 100 * FROM c` が表示されています。既定のクエリをそのまま使用することも、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)または [SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページで説明されている SQL クエリ言語を使用して独自のクエリを作成することもできます。
 
-    A default query of `SELECT TOP 100 * FROM c` is provided.  You can accept the default query or construct your own query using the SQL query language described in the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md) or the [SQL query and SQL syntax](documentdb-sql-query.md) article.
+    **[クエリの実行]** をクリックして、結果を表示します。
 
-    Click **Run query** to view the results.
+	![Screenshot of writing SQL queries in Query Explorer, a SQL query editor](./media/documentdb-query-collections-query-explorer/queryexplorerinitial.png)
 
-    ![Screenshot of writing SQL queries in Query Explorer, a SQL query editor](./media/documentdb-query-collections-query-explorer/queryexplorerinitial.png)
+4. **[結果]** ブレードには、クエリの出力が表示されます。
 
-4. The **Results** blade displays the output of the query. 
+	![Screenshot of results of writing SQL queries in Query Explorer](./media/documentdb-query-collections-query-explorer/queryresults1.png)
 
-    ![Screenshot of results of writing SQL queries in Query Explorer](./media/documentdb-query-collections-query-explorer/queryresults1.png)
+## 結果を操作する
 
-## <a name="work-with-results"></a>Work with results
+既定では、クエリ エクスプローラーは 100 個ずつ結果を返します。クエリの結果が 100 個を超える場合は、**[次のページ]** と **[前のページ]** のコマンドを使用して結果セット間を移動できます。
 
-By default, Query Explorer returns results in sets of 100.  If your query produces more than 100 results, simply use the **Next page** and **Previous page** commands to navigate through the result set.
+![クエリ エクスプローラーの改ページ位置の自動調整のサポート](./media/documentdb-query-collections-query-explorer/queryresultspagination.png)
 
-![Screenshot of Query Explorer pagination support](./media/documentdb-query-collections-query-explorer/queryresultspagination.png)
+クエリが成功すると、**[情報]** ウィンドウに、要求の課金、クエリによって生じるラウンド トリップの数、現在表示されている結果のセット、より多くの結果があるかどうか、などのメトリックが表示されます。これらには、先ほど説明したように、**[次のページ]** コマンドを使用してアクセスすることができます。
 
-For successful queries, the **Information** pane contains metrics such as the request charge,  the number of round trips the query made, the set of results currently being shown, and whether there are more results, which can then be accessed via the **Next page** command, as mentioned previously.
+![クエリ エクスプローラーのクエリ情報のスクリーンショット](./media/documentdb-query-collections-query-explorer/queryinformation.png)
 
-![Screenshot of Query Explorer query information](./media/documentdb-query-collections-query-explorer/queryinformation.png)
+## 複数のクエリを使用する
 
-## <a name="use-multiple-queries"></a>Use multiple queries
-
-If you're using multiple queries and want to quickly switch between them, you can enter all the queries in the query text box of the **Query Explorer** blade, then highlight the one you want to run, and then click **Run query** to view the results.
+複数のクエリを使用していて、それらをすばやく切り替えたい場合は、**[クエリ エクスプローラー]** ブレードのクエリ テキスト ボックスにすべてのクエリを入力します。その後、実行するクエリを強調表示して **[クエリの実行]** をクリックすると、結果が表示されます。
 
 ![Screenshot of writing multiple SQL queries in Query Explorer (a SQL query editor) and highlighting and running individual queries](./media/documentdb-query-collections-query-explorer/queryexplorerhighlightandrun.png)
 
-## <a name="add-queries-from-a-file-into-the-sql-query-editor"></a>Add queries from a file into the SQL query editor
+## ファイルから SQL クエリ エディターにクエリを追加する
 
-You can load the contents of an existing file using the **Load File** command.
+**[ファイルの読み込み]** コマンドを使用して、既存のファイルの内容を読み込むことができます。
 
 ![Screenshot showing how to load SQL queries from a file into Query Explorer using Load File](./media/documentdb-query-collections-query-explorer/loadqueryfile.png)
 
-## <a name="troubleshoot"></a>Troubleshoot
+## トラブルシューティング
 
-If a query completes with errors, Query Explorer displays a list of errors that can help with troubleshooting efforts.
+クエリがエラーになった場合には、トラブルシューティングに役立つようなエラーの一覧がクエリ エクスプローラーに表示されます。
 
-![Screenshot of Query Explorer query errors](./media/documentdb-query-collections-query-explorer/queryerror.png)
+![クエリ エクスプローラーのクエリ エラーのスクリーンショット](./media/documentdb-query-collections-query-explorer/queryerror.png)
 
-## <a name="run-documentdb-sql-queries-outside-the-portal"></a>Run DocumentDB SQL queries outside the portal
+## ポータル以外で DocumentDB SQL クエリを実行する
 
-The Query Explorer in the Azure portal is just one way to run SQL queries against DocumentDB. You can also run SQL queries using the [REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) or the [client SDKs](documentdb-sdk-dotnet.md). For more information about using these other methods, see [Executing SQL queries](documentdb-sql-query.md#executing-sql-queries)
+Azure ポータルのクエリ エクスプローラーは、DocumentDB に対して SQL クエリを実行するための 1 つの手段にすぎません。[REST API](https://msdn.microsoft.com/library/azure/dn781481.aspx) または[クライアント SDK](documentdb-sdk-dotnet.md) を使用して SQL クエリを実行することもできます。他の方法の詳細については、「[SQL クエリの実行](documentdb-sql-query.md#executing-sql-queries)」をご覧ください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-To learn more about the DocumentDB SQL grammar supported in Query Explorer, see the [SQL query and SQL syntax](documentdb-sql-query.md) article or print out the [SQL query cheat sheet](documentdb-sql-query-cheat-sheet.md).
-You may also enjoy experimenting with the [Query Playground](https://www.documentdb.com/sql/demo) where you can test out queries online using a sample dataset.
+クエリ エクスプローラーでサポートされている DocumentDB SQL 文法の詳細については、[SQL クエリと SQL 構文](documentdb-sql-query.md)に関するページを参照するか、[SQL クエリのチート シート](documentdb-sql-query-cheat-sheet.md)を印刷してください。また、[Query Playground](https://www.documentdb.com/sql/demo)で試してみることもできます。ここでは、サンプル データセットを使用して、オンラインでクエリをテストすることができます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

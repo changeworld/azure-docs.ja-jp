@@ -1,194 +1,181 @@
 <properties 
-    pageTitle="Enterprise integration with EDIFACT | Microsoft Azure" 
-    description="Learn how to use EDIFACT agreements to create Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="jeffhollan" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="EDIFACT でのエンタープライズ統合 | Microsoft Azure" 
+	description="EDIFACT 契約を使用してロジック アプリを作成する方法について説明しています。" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="jeffhollan" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="app-service-logic" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/26/2016" 
-    ms.author="jonfan"/>
+	ms.service="app-service-logic" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/26/2016" 
+	ms.author="jonfan"/>
+
+# EDIFACT でのエンタープライズ統合 
+
+> [AZURE.NOTE] このページでは、Logic Apps が備えている EDIFACT の機能について取り上げます。X12 については、[こちら](app-service-logic-enterprise-integration-x12.md)をクリックしてください。
+
+## EDIFACT 契約の作成 
+EDIFACT メッセージの交換を始める前に、EDIFACT 契約を作成し、統合アカウントで保管する必要があります。次の手順では、EDIFACT 契約を作成するプロセスについて説明します。
+
+### 開始する前に必要な項目
+- Azure サブスクリプションで定義されている[統合アカウント](./app-service-logic-enterprise-integration-accounts.md)
+- 統合アカウントで既に定義されている 2 つ以上の[パートナー](./app-service-logic-enterprise-integration-partners.md)
+
+>[AZURE.NOTE]契約を作成する際は、パートナーとの間で送受信するメッセージの内容と契約の種類とが一致している必要があります。
 
 
-# <a name="enterprise-integration-with-edifact"></a>Enterprise integration with EDIFACT 
+[統合アカウントを作成](./app-service-logic-enterprise-integration-accounts.md)し、[パートナーを追加](./app-service-logic-enterprise-integration-partners.md)した後に、EDIFACT 契約を作成するには、次の手順に従います。
 
-> [AZURE.NOTE] This page covers the EDIFACT features of Logic Apps. For information on X12 click [here](app-service-logic-enterprise-integration-x12.md).
+### Azure ポータルのホーム ページから
 
-## <a name="create-an-edifact-agreement"></a>Create an EDIFACT agreement 
-Before you can exchange EDIFACT messages, you need to create an EDIFACT agreement and store it in your integration account. The following steps will walk you through the process of creating an EDIFACT agreement.
+[Azure ポータル](http://portal.azure.com "Azure ポータル")にログインしたら、次の手順に従います。
+1. 左側のメニューの **[参照]** を選択します。
 
-### <a name="here's-what-you-need-before-you-get-started"></a>Here's what you need before you get started
-- An [integration account](./app-service-logic-enterprise-integration-accounts.md) defined in your Azure subscription  
-- At least two [partners](./app-service-logic-enterprise-integration-partners.md) already defined in your integration account  
+>[AZURE.TIP]**[参照]** リンクが表示されない場合は、最初にメニューを展開する必要があります。これを行うには、折りたたまれたメニューの左上にある **[メニューの表示]** リンクを選択します。
 
->[AZURE.NOTE]When creating an agreement, the content in the messages you will receive/send to and from the partner must match the agreement type.    
+![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-0.png)
+2. フィルター検索ボックスに「*integration*」と入力し、結果のリストから **[統合アカウント]** を選択します。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1-3.png)
+3. 表示された **[統合アカウント]** ブレードで、契約を作成する統合アカウントを選択します。統合アカウントがリストに表示されない場合は、[最初に統合アカウントを 1 つ作成](./app-service-logic-enterprise-integration-accounts.md "統合アカウントについて")します。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1-4.png)
+4.  **[契約]** タイルを選択します。契約タイルが表示されない場合は、最初に契約タイルを追加します。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1-5.png)
+5. 開かれた [契約] ブレードの **[追加]** ボタンを選択します。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-agreement-2.png)
+6. 開いた [契約] ブレードで、契約の**名前**を入力し、EDIFACT の**契約の種類**、**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、**ゲスト ID** を選択します。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1.png)
+7. 契約のプロパティを設定したら、**[受信設定]** を選択し、この契約を使用して受信されたメッセージを処理する方法を構成します。
+8. [受信設定] コントロールは、[識別子]、[受信確認]、[スキーマ]、[制御番号]、[検証]、[内部設定]、[バッチ処理] セクションに分かれています。メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。これらのコントロールのビューは次のようになります。この契約で受信メッセージをどのように特定して処理するかに基づいてコントロールを構成してください。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-2.png)
+9. **[OK]** ボタンを選択して設定を保存します。
 
+### 識別子
 
-After you've [created an integration account](./app-service-logic-enterprise-integration-accounts.md) and [added partners](./app-service-logic-enterprise-integration-partners.md), you can create an EDIFACT agreement by following these steps:  
-
-### <a name="from-the-azure-portal-home-page"></a>From the Azure portal home page
-
-After you log into the [Azure portal](http://portal.azure.com "Azure portal"):  
-1. Select **Browse** from the menu on the left.  
-
->[AZURE.TIP]If you don't see the **Browse** link, you may need to expand the menu first. Do this by selecting the **Show menu** link that's located at the top left of the collapsed menu.  
-
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-0.png)    
-2. Type *integration* into the filter search box then select **Integration Accounts** from the list of results.       
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1-3.png)    
-3. In the **Integration Accounts** blade that opens up, select the integration account in which you will create the agreement. If you don't see any integration accounts lists, [create one first](./app-service-logic-enterprise-integration-accounts.md "All about integration accounts").  
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1-4.png)  
-4.  Select the **Agreements** tile. If you don't see the agreements tile, add it first.   
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1-5.png)     
-5. Select the **Add** button in the Agreements blade that opens.  
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-agreement-2.png)  
-6. Enter a **Name** for your agreement then select the **Agreement type** for EDIFACT, **Host Partner**, **Host Identity**,  **Guest Partner**, **Guest Identity**, in the Agreements blade that opens.  
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-1.png)  
-7. After you have set the agreement properties, select **Receive Settings** to configure how messages received via this agreement are to be handled.  
-8. The Receive Settings control is divided into the following sections, including Identifiers, Acknowledgment, Schemas, Control Numbers, Validation, Internal Settings and Batch processing. Configure these properties based on your agreement with the partner you will be exchanging messages with. Here is a view of these controls, configure them based on how you want this agreement to identify and handle incoming messages:  
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-2.png)  
-9. Select the **OK** button to save your settings.  
-
-### <a name="identifiers"></a>Identifiers
-
-|Property|Description |
+|プロパティ|説明 |
 |---|---|
-|UNB6.1 (Recipient Reference Password)|Enter an alphanumeric value ranging between 1 and 14 characters.|
-|UNB6.2 (Recipient Reference Qualifier)|Enter an alphanumeric value with a minimum of one character and a maximum of two characters.|
+|UNB6.1 (受信者の参照パスワード)|1 ～ 14 文字の英数字を値として入力します。|
+|UNB6.2 (受信者の参照修飾子)|1 ～ 2 文字の英数字を入力します。|
 
-### <a name="acknowledgments"></a>Acknowledgments 
+### 謝辞 
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Receipt of Message (CONTRL)|Select this checkbox to return a technical (CONTRL) acknowledgment to the interchange sender. The acknowledgment is sent to the interchange sender based on the Send Settings for the agreement.|
-|Acknowledgement (CONTRL)|Select this checkbox to return a functional (CONTRL) acknowledgment to the interchange sender The acknowledgment is sent to the interchange sender based on the Send Settings for the agreement.|
+|メッセージの受信 (CONTRL)|インターチェンジの送信者に技術確認 (CONTRL) を返すには、このチェック ボックスをオンにします。これらの受信確認は、契約の送信設定に基づいてインターチェンジの送信者に送信されます。|
+|確認 (CONTRL)|機能確認 (CONTRL) をインターチェンジの送信者に返すには、このチェック ボックスをオンにします。この確認は、契約の送信設定に基づいてインターチェンジの送信者に送られます。|
 
-### <a name="schemas"></a>Schemas
+### スキーマ
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|UNH2.1 (TYPE)|Select a transaction set type.|
-|UNH2.2 (VERSION)|Enter the message version number. (Minimum, one character; maximum, three characters).|
-|UNH2.3 (RELEASE)|Enter the message release number. (Minimum, one character; maximum, three characters).|
-|UNH2.5 (ASSOCIATED ASSIGNED CODE)|Enter the assigned code. (Maximum, six characters. Must be alphanumeric).|
-|UNG2.1 (APP SENDER ID)|Enter an alphanumeric value with a minimum of one character and a maximum of 35 characters.|
-|UNG2.2 (APP SENDER CODE QUALIFIER)|Enter an alphanumeric value, with a maximum of four characters.|
-|SCHEMA|Select the previously uploaded schema you want to use from your associated Integration Account.|
+|UNH2.1 (種類)|トランザクション セットの種類を選択します。|
+|UNH2.2 (バージョン)|メッセージのバージョン番号を入力します (最低 1 文字、最大 3 文字)。|
+|UNH2.3 (リリース)|メッセージのリリース番号を入力します。(最低 1 文字、最大 3 文字)。|
+|UNH2.5 (関連付けられている割り当てコード)|割り当てられているコードを入力します。最大 6 文字の英数字を入力する必要があります。|
+|UNG2.1 (アプリ送信者 ID)|1 ～ 35 文字の英数字を入力します。|
+|UNG2.2 (APP 送信者コードの修飾子)|最大 4 文字の英数字を値として入力します。|
+|スキーマ|関連付けられている統合アカウントから、使用対象となる以前アップロードしたスキーマを選択します。|
 
-### <a name="control-numbers"></a>Control Numbers
+### 制御番号
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Disallow Interchange Control Number duplicates|Select this checkbox to block duplicate interchanges. If selected, the EDIFACT Decode Action checks that the interchange control number (UNB5) for the received interchange does not match a previously processed interchange control number. If a match is detected, then the the interchange is not processed.
-|Check for duplicate UNB5 every (days)|If you opted to disallow duplicate interchange control numbers, you can specify the number of days at which the check is performed by giving the appropriate value for **Check for duplicate UNB5 every (days)** option.|
-|Disallow Group control number duplicates|Select this checkbox to block interchanges with duplicate group control numbers (UNG5).|
-|Disallow Transaction set control number duplicates|Select this checkbox to block interchanges with duplicate transaction set control numbers (UNH1).|
-|EDIFACT Acknowledgement Control Number|To designate the transaction set reference numbers to be used in an acknowledgment, enter a value for the prefix, a range of reference numbers, and a suffix.|
+|Disallow Interchange control number duplicates (インターチェンジ制御番号の重複を許可しない)|インターチェンジの重複を防止するには、このチェック ボックスをオンにします。選択した場合、受信したインターチェンジのインターチェンジ制御番号 (UNB5) が、過去に処理されたインターチェンジ制御番号と一致しないことが、EDIFACT デコード アクションによって確認されます。一致が検出された場合、インターチェンジは処理されません。
+|重複する UNB5 をチェックする間隔 (日)|重複するインターチェンジ制御番号を許可しないように選択した場合は、**[重複する UNB5 をチェックする間隔 (日)]** オプションに適切な値を指定して、チェックを実行する間隔の日数を指定できます。|
+|Disallow Group control number duplicates (グループ制御番号の重複を許可しない)|グループ制御番号 (UNG5) が重複したインターチェンジを防止するには、このチェック ボックスをオンにします。|
+|Disallow Transaction set control number duplicates (トランザクション セット制御番号の重複を許可しない)|トランザクション セット制御番号 (UNH1) が重複したインターチェンジを防止するには、このチェック ボックスをオンにします。|
+|EDIFACT 確認制御番号|受信確認で使用するトランザクション セット参照番号を指定するには、プレフィックスの値と参照番号の範囲、サフィックスを指定します。|
 
-### <a name="validations"></a>Validations
+### Validations (検証)
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Message Type|Specify the message type. As each validation row is completed, another will be automatically added. If no rules are specified, then the row marked as default is used for validation.|
-|EDI Validation|Select this check box to perform EDI validation on data types as defined by the EDI properties of the schema, length restrictions, empty data elements, and trailing separators.|
-|Extended Validation|Select this check box to enable extended (XSD) validation of interchanges received from the interchange sender. This includes validation of field length, optionality, and repeat count in addition to XSD data type validation.|
-|Allow Leading/Trailing Zeroes|Select **Allow** to allow leading/trailing zeros; **NotAllowed** to not allow leading/trailing zeros, or **Trim** to trim the leading and trailing zeroes.|
-|Trim Leading/Trailing Zeroes|Select this check box to trim any leading or trailing zeroes|
-|Trailing Separator Policy|Select **Not Allowed** if you do not want to allow trailing delimiters and separators in an interchange received from the interchange sender. If the interchange contains trailing delimiters and separators, it is declared invalid. Select **Optional** to accept interchanges with or without trailing delimiters and separators. Select **Mandatory** if the received interchange must contain trailing delimiters and separators.|
+|メッセージの種類|メッセージの種類を指定します。検証対象の行が 1 つ完了するたびに別の行が自動的に追加されます。ルールが指定されていない場合は、既定として指定された行が検証に使用されます。|
+|EDI Validation (EDI の検証)|スキーマ、長さ制限、空のデータ要素、および末尾の区切り記号の EDI プロパティで定義されたデータ型で EDI 検証を実行する場合は、このチェック ボックスをオンにします。|
+|拡張された検証|インターチェンジ送信者から受信したインターチェンジの拡張された検証 (XSD) を有効にする場合は、このチェック ボックスをオンにします。これには、XSD データ型の検証に加えて、フィールド長、省略可能性、および繰り返し回数の検証が含まれます。|
+|Allow Leading/Trailing Zeroes (先頭および末尾のゼロを許可)|先頭および末尾のゼロを許可する場合は **[許可する]** を、許可しない場合は **[許可しない]** を選択します。また、先頭および末尾のゼロをトリミングするには、**[削除]** を選択します。|
+|先頭および末尾のゼロをトリミングする|先頭と末尾のゼロをトリミングする場合は、このチェック ボックスをオンにします。|
+|末尾の区切り記号のポリシー|インターチェンジ送信者から受信したインターチェンジに末尾の区切り記号や区切り文字を許可しない場合は、**[許可しない]** を選択します。インターチェンジに末尾の区切り記号や区切り文字が含まれている場合、無効と宣言されます。末尾の区切り記号や区切り文字の有無に関係なくインターチェンジを受け入れる場合は、**[オプション]** を選択します。受信したインターチェンジに末尾の区切り記号や区切り文字が含まれている必要がある場合は、**[必須]** を選択します。|
 
-### <a name="internal-settings"></a>Internal Settings
+### Internal Settings (内部設定)
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Create empty XML tags if trailing separators are allowed|Select this check box to have the interchange sender include empty XML tags for trailing separators.|
-|Inbound batching processing|Options include:</br></br>**Split Interchange as Transaction Sets - suspend Transaction Sets on Error**: Parses each transaction set in an interchange into a separate XML document by applying the appropriate envelope to the transaction set. With this option, if one or more transaction sets in the interchange fail validation, then only those transaction sets are suspended. Split Interchange as Transaction Sets - suspend Interchange on Error: Parses each transaction set in an interchange into a separate XML document by applying the appropriate envelope. With this option, if one or more transaction sets in the interchange fail validation, then the entire interchange will be suspended.</br></br>**Preserve Interchange - suspend Transaction Sets on Error**: Leaves the interchange intact, creating an XML document for the entire batched interchange. With this option, if one or more transaction sets in the interchange fail validation, then only those transaction sets are suspended, while all other transaction sets are processed.</br></br>**Preserve Interchange - suspend Interchange on Error**: Leaves the interchange intact, creating an XML document for the entire batched interchange. With this option, if one or more transaction sets in the interchange fail validation, then the entire interchange is suspended.|
+|末尾の区切り記号が許可されている場合は空の XML タグを作成する|インターチェンジの送信者が末尾の区切り記号に空の XML タグを含めるには、このチェック ボックスをオンにします。|
+|Inbound batching processing (受信バッチ処理)|次のオプションがあります。</br></br>**[インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断]**: トランザクション セットに適切なエンベロープを適用することで、インターチェンジの各トランザクション セットを個別の XML ドキュメントで解析します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合、失敗したトランザクション セットのみ中断されます。[インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断]: 適切なエンベロープを適用することで、インターチェンジの各トランザクション セットを個別の XML ドキュメントで解析します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合に、インターチェンジ全体が中断されます。</br></br>**[インターチェンジの保存 - エラー発生時にトランザクション セットを中断]**: インターチェンジをそのまま残し、バッチ インターチェンジ全体に対して XML ドキュメントを作成します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合に、失敗したトランザクション セットのみが中断され、その他のトランザクション セットは処理されます。</br></br>**[インターチェンジの保存 - エラー発生時にインターチェンジを中断]**: インターチェンジをそのまま残し、バッチ インターチェンジ全体に対して XML ドキュメントを作成します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合に、インターチェンジ全体が中断されます。|
 
-Your agreement is ready to handle incoming messages that conform to the settings you selected.
+これで選択した設定に準拠する受信メッセージを処理する準備ができました。
 
-To configure the settings that handle messages you send to partners:  
-10. Select **Send Settings** to configure how messages sent via this agreement are to be handled.  
+パートナーに送信するメッセージを処理する設定を構成するには:
+10. **[送信設定]** を選択し、この契約を使用して送信されたメッセージを処理する方法を構成します。
 
-The Send Settings control is divided into the following sections, including Identifiers, Acknowledgment, Schemas, Envelopes, Character Sets and Separators, Control Numbers and Validation. 
+[送信設定] コントロールは、[識別子]、[受信確認]、[スキーマ]、[エンベロープ]、[制御番号]、[文字セットと区切り記号]、[検証] のセクションに分かれています。
 
-Here is a view of these controls. Make the selections based on how you want to handle messages you send to partners via this agreement:   
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-3.png)    
-11. Select the **OK** button to save your settings.  
+これらのコントロールのビューは以下のとおりです。この契約でパートナーに送信するメッセージをどのように処理するかに基づいて選択してください。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-3.png)
+11. **[OK]** ボタンを選択して設定を保存します。
 
-### <a name="identifiers"></a>Identifiers
-|Property|Description |
+### 識別子
+|プロパティ|説明 |
 |----|----|
-|UNB1.2 (Syntax version)|Select a value between **1** and **4**.|
-|UNB2.3 (Sender Reverse Routing Address)|Enter an alphanumeric value with a minimum of one character and a maximum of 14 characters.|
-|UNB3.3 (Recipient Reverse Routing Address)|Enter an alphanumeric value with a minimum of one character and a maximum of 14 characters.|
-|UNB6.1 (Recipient Reference Password)|Enter an alphanumeric value with a minimum of one and a maximum of 14 characters.|
-|UNB6.2 (Recipient Reference Qualifier)|Enter an alphanumeric value with a minimum of one character and a maximum of two characters.|
-|UNB7 (Application Reference ID)|Enter an alphanumeric value with a minimum of one character and a maximum of 14 characters|
+|UNB1.2 (構文バージョン)|**1** ～ **4** の値を選択します。|
+|UNB2.3 (送信者の逆ルーティングのアドレス)|1 ～ 14 文字の英数字を入力します。|
+|UNB3.3 (受信者の逆ルーティングのアドレス)|1 ～ 14 文字の英数字を入力します。|
+|UNB6.1 (受信者の参照パスワード)|1 ～ 14 文字の英数字を入力します。|
+|UNB6.2 (受信者の参照修飾子)|1 ～ 2 文字の英数字を入力します。|
+|UNB7 (アプリケーション参照 ID)|1 ～ 14 文字の英数字を入力します。|
 
-### <a name="acknowledgment"></a>Acknowledgment
-|Property|Description |
+### Acknowledgement (受信確認)
+|プロパティ|説明 |
 |----|----|
-|Receipt of Message (CONTRL)|Select this checkbox if the hosted partner expects to receive to receive a technical (CONTRL) acknowledgment. This setting specifies that the hosted partner, who is sending the message, requests an acknowledgement from the guest partner.|
-|Acknowledgement (CONTRL)|Select this checkbox if the hosted partner expects to receive a functional (CONTRL) acknowledgment. This setting specifies that the hosted partner, who is sending the message, requests an acknowledgement from the guest partner.|
-|Generate SG1/SG4 loop for accepted transaction sets|If you chose to request a functional acknowledgement, select this checkbox to force generation of SG1/SG4 loops in functional CONTRL acknowledgments for accepted transaction sets.|
+|メッセージの受信 (CONTRL)|ホスト パートナーが技術確認 (CONTRL) の受け取りを想定している場合、このチェック ボックスをオンにします。この設定は、メッセージを送信しているホスト パートナーがゲスト パートナーからの受信確認を要求していることを指定します。|
+|確認 (CONTRL)|ホスト パートナーが機能確認 (CONTRL) の受け取りを想定している場合、このチェック ボックスをオンにします。この設定は、メッセージを送信しているホスト パートナーがゲスト パートナーからの受信確認を要求していることを指定します。|
+|受理されたトランザクション セットの SG1/SG4 ループを生成する|機能確認を要求するように選択した場合は、このチェック ボックスをオンにします。受理されたトランザクション セットの SG1/SG4 ループが、機能 CONTRL 確認に強制的に生成されます。|
 
-### <a name="schemas"></a>Schemas
-|Property|Description |
+### スキーマ
+|プロパティ|説明 |
 |----|----|
-|UNH2.1 (TYPE)|Select a transaction set type.|
-|UNH2.2 (VERSION)|Enter the message version number.|
-|UNH2.3 (RELEASE)|Enter the message release number.|
-|SCHEMA|Select the schema to use. Schemas are located in your integration account. To access your schemas, first link your integration account to your Logic app.|
+|UNH2.1 (種類)|トランザクション セットの種類を選択します。|
+|UNH2.2 (バージョン)|メッセージのバージョン番号を入力します|
+|UNH2.3 (リリース)|メッセージのリリース番号を入力します。|
+|スキーマ|使用するスキーマを選択します。スキーマは統合アカウント内にあります。スキーマにアクセスするには、まず統合アカウントをロジック アプリにリンクします。|
 
-### <a name="envelopes"></a>Envelopes
-|Property|Description |
+### エンベロープ
+|プロパティ|説明 |
 |----|----|
-|UNB8 (Processing Priority Code)|Enter an alphabetical value which is not more than one character long.|
-|UNB10 (Communication Agreement)|Enter an alphanumeric value with a minimum of one character and a maximum of 40 characters.|
-|UNB11 (Test Indicator)|Select this checkbox to indicate that the interchange generated is test data|
-|Apply UNA Segment (Service String Advice)|Select this checkbox to generate a UNA segment for the interchange to be sent.|
-|Apply UNG Segments (Function Group Header)|Select this checkbox to create grouping segments in the functional group header in the messages sent to the guest partner. The following values are used to create the UNG segments:</br></br>For **UNG1**, enter an alphanumeric value with a minimum of one character and a maximum of six characters.</br></br>For **UNG2.1**, enter an alphanumeric value with a minimum of one character and a maximum of 35 characters.</br></br>For **UNG2.2**, enter an alphanumeric value, with a maximum of four characters.</br></br>For **UNG3.1**, enter an alphanumeric value with a minimum of one character and a maximum of 35 characters.</br></br>For **UNG3.2**, enter an alphanumeric value, with a maximum of four characters.</br></br>For **UNG6**, enter an alphanumeric value with a minimum of one and a maximum of three characters.</br></br>For **UNG7.1**, enter an alphanumeric value with a minimum of one character and a maximum of three characters.</br></br>For **UNG7.2**, enter an alphanumeric value with a minimum of one character and a maximum of three characters.</br></br>For **UNG7.3**, enter an alphanumeric value with a minimum of 1 character and a maximum of 6 characters.</br></br>For **UNG8**, enter an alphanumeric value with a minimum of one character and a maximum of 14 characters.|
+|UNB8 (処理優先度コード)|最大 1 文字の値をアルファベットで入力します。|
+|UNB10 (通信アグリーメント)|1 ～ 40 文字の英数字を入力します。|
+|UNB11 (テスト インジケーター)|生成されたインターチェンジがテスト データであることを指定するには、このチェック ボックスをオンにします。|
+|UNA セグメントの適用 (サービスの文字列通知)|送信するインターチェンジの UNA セグメントを生成するには、このチェック ボックスをオンにします。|
+|UNG セグメントの適用 (機能グループ ヘッダー)|ゲスト パートナーに送信されるメッセージの機能グループ ヘッダーにグループ化セグメントを作成するには、このチェック ボックスをオンにします。UNG セグメントの作成には、次の値を使用します。</br></br>**UNG1** の場合、1 ～ 6 文字の英数字を値として入力します。</br></br>**UNG2.1** の場合、1 ～ 35 文字の英数字を値として入力します。</br></br>**UNG2.2** の場合、最大 4 文字の英数字を値として入力します。</br></br>**UNG3.1** の場合、1 ～ 35 文字の英数字を値として入力します。</br></br>**UNG3.2** の場合、最大 4 文字の英数字を値として入力します。</br></br>**UNG6** の場合、1 ～ 3 文字の英数字を値として入力します。</br></br>**UNG7.1** の場合、1 ～ 3 文字の英数字を値として入力します。</br></br>**UNG7.2** の場合、1 ～ 3 文字の英数字を値として入力します。</br></br>**UNG7.3** の場合、1 ～ 6 文字の英数字を値として入力します。</br></br>**UNG8** の場合、1 ～ 14 文字の英数字を値として入力します。|
 
-### <a name="character-sets-and-separators"></a>Character Sets and Separators
-Other than the character set, you can enter a different set of delimiters to be used for each message type. If a character set is not specified for a given message schema, then the default character set is used.
+### Character Sets and Separators (文字セットと区切り文字)
+各メッセージ タイプで使用する文字セットや、異なるセットの区切り文字を入力できます。特定のメッセージ スキーマで文字セットが指定されていない場合は、既定の文字セットが使用されます。
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|UNB1.1 (System Identifier)|Select the EDIFACT character set to be applied on the outgoing interchange.|
-|Schema|Select a schema from the drop-down list. As each row is completed a new row will be added. For the selected schema, select the separators set to be used:</br></br>**Component element separator** – Enter a single character to separate composite data elements.</br></br>**Data Element Separator** – Enter a single character to separate simple data elements within composite data elements.</br></br></br></br>**Replacement Character** – Select this check box if the payload data contains characters that are also used as data, segment, or component separators. You can then enter a replacement character. When generating the outbound EDIFACT message, all instances of separator characters in the payload data are replaced with the specified character.</br></br>**Segment Terminator** – Enter a single character to indicate the end of an EDI segment.</br></br>**Suffix** – Select the character that is used with the segment identifier. If you designate a suffix, then the segment terminator data element can be empty. If the segment terminator is left empty, then you must designate a suffix.|
+|UNB1.1 (システム識別子)|送信インターチェンジで適用する EDIFACT 文字セットを選択します。|
+|スキーマ|ドロップダウン リストから [スキーマ] を選択します。行が 1 つ完了するたびに新しい行が追加されます。選択したスキーマについて、使用する区切り記号のセットを選択します。</br></br>**[コンポーネント要素区切り記号]** - 複合データ要素を区切る単一の文字を入力します。</br></br>**[データ要素区切り記号]** - 複合データ要素内の単純データ要素を区切る単一の文字を入力します。</br></br></br></br>**[Replacement Character (置換文字)]** - ペイロード データにデータ、セグメント、またはコンポーネントの区切り記号としても使用される文字が含まれる場合は、このチェック ボックスをオンにします。その後置換文字を入力できます。EDIFACT 送信メッセージが生成されるときに、ペイロード データ内の区切り文字のすべてのインスタンスが指定した文字に置換されます。</br></br>**[セグメント終端記号]** - EDI セグメントの終端を示す単一の文字を入力します。</br></br>**[サフィックス]** - セグメント識別子と共に使用される文字を選択します。サフィックスを指定する場合は、セグメント終端記号のデータ要素が空でもかまいません。セグメント終端記号を空にする場合は、サフィックスを指定する必要があります。|
 
-### <a name="control-numbers"></a>Control Numbers
-|Property|Description |
+### 制御番号
+|プロパティ|説明 |
 |----|----|
-|UNB5 (Interchange Control Number)|Enter a prefix, a range of values for the interchange control number, and a suffix. These values are used to generate an outgoing interchange. The prefix and suffix are optional; the control number is required. The control number is incremented for each new message; the prefix and suffix remain the same.|
-|UNG5 (Group Control Number)|Enter a prefix, a range of values for the interchange control number, and a suffix. These values are used to generate the group control number. The prefix and suffix are optional; the control number is required. The control number is incremented for each new message until the maximum value is reached; the prefix and suffix remain the same.|
-|UNH1 (Message Header Reference Number)|Enter a prefix, a range of values for the interchange control number, and a suffix. These values are used to generate the message header reference number. The prefix and suffix are optional; the reference number is required. The reference number is incremented for each new message; the prefix and suffix remain the same.|
+|UNB5 (インターチェンジ制御番号)|プレフィックス、インターチェンジ制御番号の値、サフィックスを入力します。これらの値は、送信インターチェンジを生成する目的で使用されます。プレフィックスとサフィックスは省略可能です。制御番号は必須です。制御番号は、新しいメッセージごとにインクリメントされます。プレフィックスとサフィックスは変化しません。|
+|UNG5 (グループ制御番号)|プレフィックス、インターチェンジ制御番号の値、サフィックスを入力します。これらの値は、グループ制御番号を生成する目的で使用されます。プレフィックスとサフィックスは省略可能です。制御番号は必須です。制御番号は、最大値に達するまで新しいメッセージごとにインクリメントされます。プレフィックスとサフィックスは変化しません。|
+|UNH1 (メッセージ ヘッダーの参照番号)|プレフィックス、インターチェンジ制御番号の値、サフィックスを入力します。これらの値は、メッセージ ヘッダー参照番号を生成する目的で使用されます。プレフィックスとサフィックスは省略可能です。参照番号は必須です。参照番号は、新しいメッセージごとにインクリメントされます。プレフィックスとサフィックスは変化しません。|
 
-### <a name="validations"></a>Validations
-|Property|Description |
+### Validations (検証)
+|プロパティ|説明 |
 |----|----|
-|Message Type|Selecting this option enables validation on the interchange receiver. This validation performs EDI validation on transaction-set data elements, validating data types, length restrictions, and empty data elements and training separators.|
-|EDI Validation|Select this check box to perform EDI validation on data types as defined by the EDI properties of the schema, length restrictions, empty data elements, and trailing separators.|
-|Extended Validation|Selecting this option enables extended validation of interchanges received from the interchange sender. This includes validation of field length, optionality, and repeat count in addition to XSD data type validation. You can enable extension validation without enabling EDI validation, or vice versa.|
-|Allow leading/trailing zeroes|Selecting this option specifies that an EDI interchange received from the party does not fail validation if a data element in an EDI interchange does not conform to its length requirement because of or trailing spaces, but does conform to its length requirement when they are removed.|
-|Trim Leading/Trailing Zeroes|Selecting this option will trim the leading and trailing zeroes.|
-|Trailing separator|Selecting this option specifies an EDI interchange received from the party does not fail validation if a data element in an EDI interchange does not conform to its length requirement because of leading (or trailing) zeroes or trailing spaces, but does conform to its length requirement when they are removed.</br></br>Select **Not Allowed** if you do not want to allow trailing delimiters and separators in an interchange received from the interchange sender. If the interchange contains trailing delimiters and separators, it is declared invalid.</br></br>Select **Optional** to accept interchanges with or without trailing delimiters and separators.</br></br>Select **Mandatory** if the received interchange must contain trailing delimiters and separators.|
+|メッセージの種類|このオプションを選択すると、インターチェンジ受信者の検証を有効にします。この検証では、データ型、長さの制限、および空のデータ要素と末尾の区切り記号を検証することで、トランザクション セットのデータ要素に対して EDI の検証を実行します。|
+|EDI Validation (EDI の検証)|スキーマ、長さ制限、空のデータ要素、および末尾の区切り記号の EDI プロパティで定義されたデータ型で EDI 検証を実行する場合は、このチェック ボックスをオンにします。|
+|拡張された検証|このオプションを選択すると、インターチェンジ送信者から受信したインターチェンジの拡張された検証を有効にします。これには、XSD データ型の検証に加えて、フィールド長、省略可能性、および繰り返し回数の検証が含まれます。EDI の検証を有効にしなくても拡張された検証を有効にすることができます。また、その逆も可能です。|
+|先頭および末尾のゼロを許可する|このオプションを選択すると、当事者から受け取った EDI インターチェンジのデータ要素が末尾のスペースのために長さ要件に準拠しないが、そのスペースが削除されたときに長さ要件に準拠している場合に、EDI インターチェンジの検証が失敗とみなされません。|
+|先頭および末尾のゼロをトリミングする|このオプションを選択すると、先頭と末尾のゼロがトリミングされます。|
+|末尾の区切り記号|このオプションを選択すると、当事者から受け取った EDI インターチェンジのデータ要素が先頭の (または末尾の) ゼロや末尾のスペースのために長さ要件に準拠しないが、そのスペースが削除されたときに長さ要件に準拠している場合に、EDI インターチェンジの検証が失敗と見なされません。</br></br>インターチェンジ送信者から受信したインターチェンジで末尾の区切り記号を許可しない場合は、**[許可しない]** を選択します。インターチェンジに末尾の区切り記号が含まれている場合は無効と宣言されます。</br></br>末尾の区切り記号の有無に関係なくインターチェンジを受け入れる場合は、**[省略可能]** を選択します。</br></br>受信したインターチェンジで末尾の区切り記号を必須とする場合は、**[必須]** を選択します。|
 
-After you select **OK** on the open blade:  
-12. Select the **Agreements** tile on the Integration Account blade and you will see the newly added agreement listed.  
-![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-4.png)   
+開いているブレードで **[OK]** を選択した後は、次のようにします。
+12. [統合アカウント] ブレード上の**[契約]** タイルを選択すると、新しく追加された契約が表示されます。![](./media/app-service-logic-enterprise-integration-edifact/EDIFACT-4.png)
 
-## <a name="learn-more"></a>Learn more
-- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")  
+## 詳細情報
+- [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

@@ -1,105 +1,104 @@
 <properties
-    pageTitle="Batch service quotas and limits | Microsoft Azure"
-    description="Learn about default Azure Batch quotas, limits, and constraints, and how to request quota increases"
-    services="batch"
-    documentationCenter=""
-    authors="mmacy"
-    manager="timlt"
-    editor=""/>
+	pageTitle="Batch サービスのクォータと制限 | Microsoft Azure"
+	description="既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します"
+	services="batch"
+	documentationCenter=""
+	authors="mmacy"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="batch"
-    ms.workload="big-compute"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/10/2016"
-    ms.author="marsma"/>
+	ms.service="batch"
+	ms.workload="big-compute"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/10/2016"
+	ms.author="marsma"/>
 
+# Azure Batch サービスのクォータと制限
 
-# <a name="quotas-and-limits-for-the-azure-batch-service"></a>Quotas and limits for the Azure Batch service
+他の Azure サービスと同様に、Batch サービスに関連付けられている特定のリソースにも制限があります。これらの制限の多くは、Azure によって、サブスクリプションまたはアカウント レベルで適用される既定のクォータです。ここでは、これらの既定の設定と、クォータの引き上げを要求する方法について説明します。
 
-As with other Azure services, there are limits on certain resources associated with the Batch service. Many of these limits are default quotas applied by Azure at the subscription or account level. This article discusses those defaults, and how you can request quota increases.
+Batch で実稼働ワークロードを実行する予定がある場合は、1 つまたは複数のクォータについて既定値から増やすことが必要になる場合があります。クォータを増やすには、オンライン [カスタマー サポートに申請](#increase-a-quota) (無料) してください。
 
-If you plan to run production workloads in Batch, you may need to increase one or more of the quotas above the default. If you want to raise a quota, you can open an online [customer support request](#increase-a-quota) at no charge.
+>[AZURE.NOTE] クォータは、容量の保証ではなく、クレジット制限です。大規模な容量が必要な場合は、Azure サポートにお問い合わせください。
 
->[AZURE.NOTE] A quota is a credit limit, not a capacity guarantee. If you have large-scale capacity needs, please contact Azure support.
-
-## <a name="subscription-quotas"></a>Subscription quotas
-**Resource**|**Default Limit**|**Maximum Limit**
+## サブスクリプションのクォータ
+**リソース**|**既定の制限**|**上限**
 ---|---|---
-Batch accounts per region per subscription | 1 | 50
+サブスクリプションあたりのリージョンごとの Batch アカウント数 | 1 | 50
 
-## <a name="batch-account-quotas"></a>Batch account quotas
+## Batch アカウントのクォータ
 [AZURE.INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-## <a name="other-limits"></a>Other limits
-**Resource**|**Maximum Limit**
+## その他の制限
+**リソース**|**上限**
 ---|---
-[Concurrent tasks](batch-parallel-node-tasks.md) per compute node | 4 x number of node cores
-[Applications](batch-application-packages.md) per Batch account        | 20
-Application packages per application  | 40
-Application package size (each)       | Approx. 195GB<sup>1</sup>
+コンピューティング ノードあたりの[同時実行タスク数](batch-parallel-node-tasks.md) | ノードのコア数 x 4
+Batch アカウントあたりの[アプリケーション](batch-application-packages.md)数 | 20
+アプリケーションあたりのアプリケーション パッケージ数 | 40
+各アプリケーション パッケージのサイズ | 約 195 GB<sup>1</sup>
 
-<sup>1</sup> Azure Storage limit for maximum block blob size
+<sup>1</sup> 最大ブロック BLOB サイズに関する Azure Storage の制限
 
-## <a name="view-batch-quotas"></a>View Batch quotas
+## Batch クォータの確認
 
-View your Batch account quotas in the [Azure portal][portal].
+Batch アカウントのクォータは、[Azure ポータル][portal]で確認します。
 
-1. Select **Batch accounts** in the portal, then select the Batch account you're interested in.
+1. ポータルで **[Batch アカウント]** を選択し、目的の Batch アカウントを選択します。
 
-2. Select **Properties** on the Batch account's menu blade
+2. Batch アカウントのメニュー ブレードで **プロパティ** を選択します。
 
-3. The Properties blade displays the **quotas** currently applied to the Batch account
+3. **[プロパティ]** ブレードに、Batch アカウントに現在適用されているクォータが表示されます。
 
-    ![Batch account quotas][account_quotas]
+	![Batch アカウントのクォータ][account_quotas]
 
-## <a name="increase-a-quota"></a>Increase a quota
+## クォータを増やす
 
-Follow the steps below to request a quota increase using the [Azure portal][portal].
+[Azure ポータル][portal]を使用してクォータの引き上げを要求するには、次の手順に従います。
 
-1. Select the **Help + support** tile on your portal dashboard, or the question mark (**?**) in the upper-right corner of the portal.
+1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 (**[?]**) を選択します。
 
-2. Select **New support request** > **Basics**.
+2. **[新しいサポート要求]**、**[基本]** の順にクリックします。
 
-3. On the **Basics** blade:
+3. **[基本]** ブレードで、次の操作を行います。
 
-    a. **Issue Type** > **Quota**
+	a.**[Issue Type (案件の種類)]**、**[クォータ]** の順に選択します。
 
-    b. Select your subscription.
+	b.サブスクリプションを選択します。
 
-    c. **Quota type** > **Batch**
+	c.**[Quota type (クォータの種類)]**、**[Batch]** の順に選択します。
 
-    d. **Support plan** > **Quota support - Included**
+	d.**[サポート プラン]**、**[Quota support - Included (クォータのサポート - 含む)]** の順に選択します。
 
-    Click **Next**.
+	**[次へ]** をクリックします。
 
-4. On the **Problem** blade:
+4. **[Problem (問題)]** ブレードで、次の操作を行います。
 
-    a. Select a **Severity** according to your [business impact][support_sev].
+	a.[ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
 
-    b. In **Details**, specify each quota you want to change, the Batch account name, and the new limit.
+	b.**[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
 
-    Click **Next**.
+	**[次へ]** をクリックします。
 
-5. On the **Contact information** blade:
+5. **[連絡先情報]** ブレードで、次の操作を行います。
 
-    a. Select a **Preferred contact method**.
+	a.**希望連絡方法**を選択します。
 
-    b. Verify and enter the required contact details.
+	b.必要な連絡先情報を確認および入力します。
 
-    Click **Create** to submit the support request.
+	**[作成]** をクリックしてサポート要求を送信します。
 
-Once you've submitted your support request, Azure support will contact you. Note that completing the request can take up to 2 business days.
+サポート要求を送信した後は、Azure サポートからの連絡を待ちます。要求を完了するには最大で 2 営業日かかります。
 
-## <a name="related-topics"></a>Related topics
+## 関連トピック
 
-* [Create an Azure Batch account using the Azure portal](batch-account-create-portal.md)
+* [Azure Portal で Azure Batch アカウントを作成して管理する](batch-account-create-portal.md)
 
-* [Azure Batch feature overview](batch-api-basics.md)
+* [Azure Batch 機能の概要](batch-api-basics.md)
 
-* [Azure subscription and service limits, quotas, and constraints](../azure-subscription-service-limits.md)
+* [Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)
 
 [portal]: https://portal.azure.com
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
@@ -107,8 +106,4 @@ Once you've submitted your support request, Azure support will contact you. Note
 
 [account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

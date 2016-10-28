@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Defragmentation of Metrics in Azure Service Fabric | Microsoft Azure"
-   description="An overview of using defragmentation or packing as a strategy for metrics in Service Fabric"
+   pageTitle="Azure Service Fabric でのメトリックの最適化 |Microsoft Azure"
+   description="Service Fabric でのメトリック向け戦略としての最適化またはパッキングの使用の概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,33 +16,32 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
+# Service Fabric のメトリックと負荷の最適化
+Service Fabric クラスター リソース マネージャーは主に負荷分散の面で分散機能に関与します。クラスター内のすべてのノードが均等に活用されるようにします。どのような障害が発生しても指定されたワークロードのかなりの割合が失われることはないので、通常、これは障害対応の観点から最も安全で賢明なレイアウトです。Service Fabric クラスター リソース マネージャーは、最適化と呼ばれる別の戦略もサポートしています。最適化は一般に、クラスター全体にメトリックの使用を分散させようとするのではなく、実際にはその統合を試みる必要があることを意味します。これは通常の戦略の転換です – 特定のメトリックのメトリック負荷の平均標準偏差の最小化に基づいてクラスターを最適化する代わりに、偏差を大きくすることで最適化を始めます。しかし、なぜこのような戦略が必要なのでしょうか。
 
-# <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentation of metrics and load in Service Fabric
-The Service Fabric Cluster Resource Manager mainly is concerned with balancing in terms of distributing the load – making sure that all of the nodes in the cluster are equally utilized. This is usually the safest and smartest layout in terms of surviving failures since it makes sure that any given failure doesn’t take out the some large percentage of a given workload. The Service Fabric Cluster Resource Manager does support a different strategy as well, which is defragmentation. Defragmentation generally means that instead of trying to distribute the utilization of a metric across the cluster, we should actually try to consolidate it. This is a fortunate inversion of our normal strategy – instead of optimizing the cluster based on minimizing the average standard deviation of metric load for a given metric, we start optimizing for increases in deviation. But why would you want this strategy?
+クラスター内のノード間に負荷を均等に分散させた場合、ノードが提供する必要のあるリソースの一部がすべて消費されます。通常であればこれは問題になりませんが、非常に大きくてノードの大部分を消費するようなサービスを一部のワークロードが作成することがあります。たとえば、ノードのリソースの 75% ～ 95% が 1 つのサービス インスタンスまたはレプリカ専用になります。これは問題ではありません。クラスター リソース マネージャーはこの大きなワークロードのための領域を確保するためにクラスターの再構成が必要であることをサービス作成時に検出し、すぐに着手しますが、その間ワークロードはクラスター内にスケジュールされるのを待機する必要があります。
 
-Well, if you’ve spread the load out evenly among the nodes in the cluster then you’ve eaten up some of the resources that the nodes have to offer. Normally this isn’t a problem, but sometimes some workloads create services which are exceptionally large and consume the vast majority of a node – say 75% to 95% of a node’s resources would end up dedicated to a single service instance or replica. This isn’t a problem, the Cluster Resource Manager will detect at service creation time that it needs to reorganize the cluster in order to make room for this large workload and set about making it happen, but in the meantime that workload has to wait to be scheduled in the cluster.
+新しいワークロードのスケジュール設定は少なくとも少しは遅延時間の影響を受けやすいことが普通なので、何かのやり方を変えないと、移動するサービスと状態が多数ある場合、特にクラスターのワークロードが概して大きい場合 (従って、クラスターでの移動に比較的時間がかかる場合)、SLA に影響が出る可能性があります。実際に、実際のクラスター データに基づくシミュレーションでの作成時間の測定では、サービスが十分に大きく、クラスターを均等に利用した場合、大きいサービスの作成は遅くなり、最適化メトリックのポリシーを導入することによって改善できました。
 
-Given that the scheduling of new workloads is usually at least a little latency sensitive, if we don’t do anything differently we can sometimes blow right by those SLAs if there’s a lot of services and state to move around, particularly if workloads in the cluster are generally large (and hence taking longer to move around in the cluster). Indeed, when we measured creation times in simulations based on real cluster data, we saw that if services were large enough and the cluster was fairly utilized that the creation of those large services would be slowed down, and that we could improve this by introducing the policy of defragmentation metrics.
+コンピューターのハード ディスクが断片化しているとファイルの作成やアクセスが遅くなり、ドライブを最適化して、連続した大規模なブロックを使用できるようにすると速くなるのと同じように、最適化メトリックを構成して、クラスター リソース マネージャーが先手を打ってサービスの負荷を少数のノードに圧縮して (ほとんど) 常に大きいサービスのための余裕があるようにすると、サービスを速く作成できます。通常のサービスは小さく、領域を見つけるのは難しくないので、ほとんどの場合はこのようなことは必要ありませんが、大きいサービスがあり、すばやく作成する必要がある場合は (そして、障害の影響の増加や、一部のリソースがワークロードがスケジュールされるのを待機する間に使用されないままであることなど、他のトレードオフを許容できる場合)、最適化の戦略が役に立ちます。
 
-Just like file creation or access could get slowed down if a computer’s hard disk was fragmented and could be sped up by defragmenting the drive so that there were larger contiguous blocks available, you can configure defragmentation metrics to have the Cluster Resource Manager to proactively try to condense the load of the services into fewer nodes so that there is (almost) always room for even large services, enabling them to be created quickly. Most people won’t need this, because services should usually be small and hence it’s not hard to find room for them, but if you have large services and need them created quickly (and are willing to accept the other tradeoffs such as increased impactfulness of failures and some resources being left unutilized while they wait for workloads to be scheduled) then the defragmentation strategy is for you.
+次の図は、2 つの異なるクラスターの視覚的な表現を示しています。一方は最適化され、もう一方は最適化されていません。分散されている場合、即座にノード 4 または 5 に配置できる、最適化されたクラスターと比較して、新しいサービス オブジェクトを作成する場合、最も大きなサービス オブジェクトのうちいずれかを配置するのに必要な移動を検討してください。
 
-The diagram below gives a visual representation of two different clusters, one which is defragmented and one which is not. In the balanced case, consider the movements which would be necessary to place one of the largest service objects, if a new one were to be created, compared to the defragmented cluster, where it could be immediately placed on nodes 4 or 5.
+![分散および最適化されたクラスターの比較][Image1]
 
-![Comparing Balanced and Defragmented Clusters][Image1]
+## 最適化の長所と短所
+他の概念的トレードオフとはどのようなものでしょうか。 最適化メトリックを有効にする前に、ワークロードを詳細に測定することをお勧めします。次の表は考慮すべきことを簡単にまとめたものです。
 
-## <a name="defragmentation-pros-and-cons"></a>Defragmentation pros and cons
-So what are those other conceptual tradeoffs? We recommend thorough measurement of your workloads before turning on defragmentation metrics. Here’s a quick table of things to think about:
-
-| Defragmentation Pros  | Defragmentation Cons |
+| 最適化の長所 | 最適化の短所 |
 |----------------------|----------------------|
-|Allows faster creation of large services | Concentrates load onto fewer nodes, increasing contention
-|Enables lower data movement during creation    | Failures can impact more services and cause more churn
-|Allows rich description of requirements and reclamation of space | More complex overall Resource Management configuration
+|大きいサービスを短時間で作成できる |	少数のノードに負荷をまとめるので、競合が増える
+|作成の間のデータ移動が減る | 障害の影響を受けるサービスが増え、混乱が増す
+|要件の記述を増やし領域を再利用できる |	全体的なリソース管理構成が複雑になる
 
-You can mix defragmented and normal metrics in the same cluster and the Resource Manager will do it’s best to ensure that you get a layout that consolidates as much of the defragmentation metrics as it can while trying to spread out the rest. The exact results you’ll get will depend on the number of balancing metrics compared to the number of defragmentation metrics and their weights, current loads, etc.
+最適化されたメトリックと通常のメトリックを同じクラスター内に混在させることができ、リソース マネージャーはできる限り多くの最適化されたメトリックが統合されて残りが分散される最善のレイアウトの作成を試みます。正確な結果は、分散メトリックの数と最適化メトリックの数の比、それらの重み、現在の負荷などによって変わります。
 
-## <a name="configuring-defragmentation-metrics"></a>Configuring defragmentation metrics
-Configuring defragmentation metrics is a global decision in the cluster, and individual metrics can be selected for defragmentation:
+## 最適化メトリックを構成する
+最適化メトリックの構成はクラスターでのグローバルな決定であり、最適化対象としてメトリックを個別に選択できます。
 
 ClusterManifest.xml:
 
@@ -53,14 +52,10 @@ ClusterManifest.xml:
 </Section>
 ```
 
-## <a name="next-steps"></a>Next steps
-- The Cluster Resource Manager has a lot of options for describing the cluster. To find out more about them check out this article on [describing a Service Fabric cluster](service-fabric-cluster-resource-manager-cluster-description.md)
-- Metrics are how the Service Fabric Cluster Resource Manger manages consumption and capacity in the cluster. To learn more about them and how to configure them check out [this article](service-fabric-cluster-resource-manager-metrics.md)
+## 次のステップ
+- クラスター リソース マネージャーには、クラスターを記述するためのさまざまなオプションがあります。オプションの詳細については、[Service Fabric クラスターの記述](service-fabric-cluster-resource-manager-cluster-description.md)に関する記事を参照してください。
+- メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 
-[Image1]:./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png
+[Image1]: ./media/service-fabric-cluster-resource-manager-defragmentation-metrics/balancing-defrag-compared.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

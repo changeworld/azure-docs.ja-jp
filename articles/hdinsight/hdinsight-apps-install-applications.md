@@ -1,132 +1,126 @@
 <properties
-    pageTitle="Install Hadoop applications on HDInsight | Microsoft Azure"
-    description="Learn how to install HDInsight applications on HDInsight applications."
-    services="hdinsight"
-    documentationCenter=""
-    authors="mumian"
-    manager="jhubbard"
-    editor="cgronlun"
-    tags="azure-portal"/>
+   	pageTitle="HDInsight への Hadoop アプリケーションのインストール | Microsoft Azure"
+   	description="HDInsight アプリケーションに HDInsight アプリケーションをインストールする方法について説明します。"
+   	services="hdinsight"
+   	documentationCenter=""
+   	authors="mumian"
+   	manager="jhubbard"
+   	editor="cgronlun"
+	tags="azure-portal"/>
 
 <tags
-    ms.service="hdinsight"
-    ms.devlang="na"
-    ms.topic="hero-article"
-    ms.tgt_pltfrm="na"
-    ms.workload="big-data"
-    ms.date="09/14/2016"
-    ms.author="jgao"/>
+   	ms.service="hdinsight"
+   	ms.devlang="na"
+   	ms.topic="hero-article"
+   	ms.tgt_pltfrm="na"
+   	ms.workload="big-data"
+   	ms.date="09/14/2016"
+   	ms.author="jgao"/>
 
+# HDInsight アプリケーションのインストール
 
-# <a name="install-hdinsight-applications"></a>Install HDInsight applications
+HDInsight アプリケーションは、ユーザーが Linux ベースの HDInsight クラスターにインストールすることのできるアプリケーションです。マイクロソフトや独立系ソフトウェア ベンダー (ISV) によって作成されるほか、ユーザーが独自に作成することもできます。この記事では、発行済みアプリケーションのインストール方法について説明します。独自のアプリケーションのインストール方法については、「[カスタム HDInsight アプリケーションのインストール](hdinsight-apps-install-custom-applications.md)」を参照してください。
 
-An HDInsight application is an application that users can install on a Linux-based HDInsight cluster. These applications can be developed by Microsoft, independent software vendors (ISV) or by yourself. In this article, you will learn how to install a published application. For installing your own application, see [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md). 
+現在、発行済みのアプリケーションが 1 つあります。
 
-Currently there is one published application:
+- **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) を利用すると、アナリストはビッグ データ上の結果を対話形式で検索、分析、視覚化できるようになります。追加のデータ ソースを簡単に取り込んで新たな関係性を発見し、必要な答えをすぐに得られます。
 
-- **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) offers analysts an interactive way to discover, analyze, and visualize the results on Big Data. Pull in additional data sources easily to discover new relationships and get the answers you need quickly.
+>[AZURE.NOTE] Datameer は現在、Azure HDInsight バージョン 3.2 クラスターでのみサポートされています。
 
->[AZURE.NOTE] Datameer is currently only supported in Azure HDInsight version 3.2 clusters.
+この記事で説明する手順では、Azure Portal を使用します。また、ポータルから Azure Resource Manager テンプレートをエクスポートしたり、ベンダーから Resource Manager テンプレートのコピーを入手したりして、Azure PowerShell と Azure CLI を使ってテンプレートをデプロイできます。[Resource Manager テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)に関するページを参照してください。
 
-The instructions provided in this article use Azure portal. You can also export the Azure Resource Manager template from the portal or obtain a copy of the Resource Manager template from vendors, and use Azure PowerShell and Azure CLI to deploy the template.  See [Create Linux-based Hadoop clusters in HDInsight using Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+既存の HDInsight クラスターに HDInsight アプリケーションをインストールする場合は、対象となる HDInsight クラスターが必要です。新たに作成する場合は、「[クラスターの作成](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。HDInsight クラスターを作成するときに HDInsight アプリケーションをインストールすることもできます。
 
-If you want to install HDInsight applications on an existing HDInsight cluster, you must have an HDInsight cluster. To create one, see [Create clusters](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster). You can also install HDInsight applications when you create an HDInsight cluster.
+## 既存のクラスターへのアプリケーションのインストール
 
-## <a name="install-applications-to-existing-clusters"></a>Install applications to existing clusters
+次の手順では、既存の HDInsight クラスターに HDInsight アプリケーションをインストールする方法について説明します。
 
-The following procedure shows you how to install HDInsight applications to an existing HDInsight cluster.
+**HDInsight アプリケーションをインストールするには**
 
-**To install an HDInsight application**
-
-1. Sign in to the [Azure portal](https://portal.azure.com).
-2. Click **HDInsight Clusters** in the left menu.  If you don't see it, click **Browse**, and then click **HDInsight Clusters**.
-3. Click an HDInsight cluster.  If you don't have one, you must create one first.  see [Create clusters](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster).
-4. From the **Settings** blade, click **Applications** under the **General** category. The **Installed Apps** blade lists all the installed applications. 
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側のメニューの **[HDInsight クラスター]** をクリックします。表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
+3. HDInsight クラスターをクリックします。HDInsight クラスターがない場合は、最初に作成する必要があります。「[クラスターの作成](hdinsight-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。
+4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。**[インストール済みアプリ]** ブレードには、インストール済みのアプリケーションがすべて一覧表示されます。
 
     ![hdinsight applications portal menu](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
 
-5. Click **Add** from the blade menu. 
+5. ブレードのメニューで **[追加]** をクリックします。
 
     ![hdinsight applications installed apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps.png)
 
-    You shall see a list of existing HDInsight applications.
+	既存の HDInsight アプリケーションの一覧が表示されます。
 
-    ![hdinsight applications available applications](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
+	![hdinsight applications available applications](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
 
-6. Click one of the applications, accept the legal terms, and then click **Select**.
+6. いずれかのアプリケーションをクリックし、法律条項に同意した後、**[選択]** をクリックします。
 
-You can see the installation status from the portal notifications (click the bell icon on the top of the portal). After the application is installed, the application will appear on the Installed Apps blade.
+インストールの状態はポータル通知で確認できます (ポータル上部のベル アイコンをクリック)。アプリケーションのインストール後、[インストール済みアプリ] ブレードにアプリケーションが表示されます。
 
-## <a name="install-applications-during-cluster-creation"></a>Install applications during cluster creation
+## クラスター作成時のアプリケーションのインストール
 
-You have the option to install HDInsight applications when you create a cluster. During the process, HDInsight applications are installed after the cluster is created and is in the running state. The following procedure shows you how to install HDInsight applications when you create a cluster.
+クラスターの作成時に HDInsight アプリケーションをインストールすることもできます。このプロセスでは、クラスターが作成されて実行状態になった後に HDInsight アプリケーションがインストールされます。次の手順では、クラスターの作成時に HDInsight アプリケーションをインストールする方法について説明します。
 
-**To install an HDInsight application**
+**HDInsight アプリケーションをインストールするには**
 
-1. Sign in to the [Azure  portal](https://portal.azure.com).
-2. Click **NEW**, Click **Data + Analytics**, and then click **HDInsight**.
-3. Enter **Cluster Name**: This name must be globally unique.
-4. Click **Subscription** to select the Azure subscription that will be used for the cluster.
-5. Click **Select cluster Type**, and then select:
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. **[新規]**、**[データ + 分析]**、**[HDInsight]** の順にクリックします。
+3. **クラスター名**を入力します。この名前はグローバルに一意である必要があります。
+4. **[サブスクリプション]** をクリックして、このクラスターに使用する Azure サブスクリプションを選択します。
+5. **[クラスターの種類の選択]** をクリックし、以下を選択します。
 
-    - **Cluster Type**: If you don't know what to choose, select **Hadoop**. It is the most popular cluster type.
-    - **Operating System**: Select **Linux**.
-    - **Version**: Use the default version if you don't know what to choose. For more information, see [HDInsight cluster versions](hdinsight-component-versioning.md).
-    - **Cluster Tier**: Azure HDInsight provides the big data cloud offerings in two categories: Standard tier and Premium tier. For more information, see [Cluster tiers](hdinsight-hadoop-provision-linux-clusters.md#cluster-tiers).
-6. Click **Applications**, click one of the published applications, and then click **Select**.
-6. Click **Credentials** and then enter a password for the admin user. You must also enter an **SSH Username** and either a **PASSWORD** or **PUBLIC KEY**, which will be used to authenticate the SSH user. Using a public key is the recommended approach. Click **Select** at the bottom to save the credentials configuration.
-8. Click **Data Source**, select one of the existing storage account or create a new storage account to be used as the default storage account for the cluster.
-9. Click **Resource Group** to select an existing resource group, or click **New** to create a new resource group
+    - **[クラスターの種類]**: どれを選択すべきかわからない場合は、**[Hadoop]** を選択します。これが最も一般的なクラスターの種類です。
+    - **[オペレーティング システム]**: **[Linux]** を選択します。
+    - **[バージョン]**: どれを選択すべきかわからない場合は、既定のバージョンを使用します。詳細については、「[HDInsight クラスターのバージョン](hdinsight-component-versioning.md)」をご覧ください。
+    - **[クラスター レベル]**: Azure HDInsight では、Standard レベルと Premium レベルの 2 つのカテゴリでビッグ データのクラウド サービスを提供します。詳細については、「[クラスター レベル](hdinsight-hadoop-provision-linux-clusters.md#cluster-tiers)」をご覧ください。
+6. **[アプリケーション]** をクリックし、発行済みアプリケーションのいずれかをクリックした後、**[選択]** をクリックします。
+6. **[資格情報]** をクリックし、管理ユーザーのパスワードを入力します。さらに、SSH ユーザーを認証するために使用される **[SSH ユーザー名]** と、**[パスワード]** または **[公開キー]** のどちらかを入力する必要があります。公開キーを使用することをお勧めします。下部にある **[選択]** をクリックして資格情報の構成を保存します。
+8. **[データ ソース]** をクリックし、既存のストレージ アカウントのいずれかを選択するか、クラスターの既定のストレージ アカウントとして使用する新しいストレージ アカウントを作成します。
+9. **[リソース グループ]** をクリックして既存のリソース グループを選択するか、**[新規]** をクリックして新しいリソース グループを作成します。
 
-10. On the **New HDInsight Cluster** blade, ensure that **Pin to Startboard** is selected, and then click **Create**. 
+10. **[新しい HDInsight クラスター]** ブレードで、**[スタート画面にピン留めする]** が選択されていることを確認し、**[作成]** をクリックします。
 
-## <a name="list-installed-hdinsight-apps-and-properties"></a>List installed HDInsight apps and properties
+## インストール済み HDInsight アプリとプロパティの一覧表示
 
-The portal shows a list of the installed HDInsight applications for a cluster, and the properties of each installed application.
+ポータルには、クラスターのインストール済み HDInsight アプリケーションのほか、インストール済みの各アプリケーションのプロパティが一覧で表示されます。
 
-**To list HDInsight application and display properties**
+**HDInsight アプリケーションを一覧表示し、プロパティを表示するには**
 
-1. Sign in to the [Azure portal](https://portal.azure.com).
-2. Click **HDInsight Clusters** in the left menu.  If you don't see it, click **Browse**, and then click **HDInsight Clusters**.
-3. Click an HDInsight cluster.
-4. From the **Settings** blade, click **Applications** under the **General** category. The Installed Apps blade lists all the installed applications. 
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. 左側のメニューの **[HDInsight クラスター]** をクリックします。表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
+3. HDInsight クラスターをクリックします。
+4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。[インストール済みアプリ] ブレードには、インストール済みのアプリケーションがすべて一覧表示されます。
 
-    ![hdinsight applications installed apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
+	![hdinsight applications installed apps](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 
-5. Click one of the installed applications to show the property. The property blade lists:
+5. インストール済みのアプリケーションのいずれかをクリックし、プロパティを表示します。[プロパティ] ブレードには次の項目が一覧表示されます。
 
-    - App name: application name.
-    - Status: application status. 
-    - Webpage: The URL of the web application that you have deployed to the edge node if there is any. The credential is the same as the HTTP user credentials that you have configured for the cluster.
-    - HTTP endpoint: The credential is the same as the HTTP user credentials that you have configured for the cluster. 
-    - SSH endpoint: You can use [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) to connect to the edge node. The SSH credentials are the same as the SSH user credentials that you have configured for the cluster.
+    - [アプリケーション名]: アプリケーションの名前。
+    - [状態]: アプリケーションの状態。
+    - [Web ページ]: エッジ ノードにデプロイした Web アプリケーションの URL (存在する場合)。資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。
+    - [HTTP エンドポイント]: 資格情報は、クラスター向けに構成した HTTP ユーザーの資格情報と同じです。
+    - [SSH エンドポイント]: [SSH](hdinsight-hadoop-linux-use-ssh-unix.md) を使用してエッジ ノードに接続できます。SSH 資格情報は、クラスター向けに構成した SSH ユーザーの資格情報と同じです。
 
-6. To delete a application, right-click the application, and then click **Delete** from the context menu.
+6. アプリケーションを削除するには、アプリケーションを右クリックし、コンテキスト メニューの **[削除]** をクリックします。
 
-## <a name="connect-to-the-edge-node"></a>Connect to the edge node
+## エッジ ノードへの接続
 
-You can connect to the edge node using HTTP and SSH. The endpoint information can be found from the [portal](#list-installed-hdinsight-apps-and-properties). For more information on using SSH, see [Use SSH with Linux-based Hadoop on HDInsight from Linux, Unix, or OS X](hdinsight-hadoop-linux-use-ssh-unix.md). 
+HTTP と SSH を使用してエッジ ノードに接続できます。エンドポイント情報は[ポータル](#list-installed-hdinsight-apps-and-properties)から確認できます。SSH の使用の詳細については、「[Linux、Unix、または OS X から HDInsight 上の Linux ベースの Hadoop で SSH キーを使用する](hdinsight-hadoop-linux-use-ssh-unix.md)」をご覧ください。
 
-The HTTP endpoint credentials are the HTTP user credentials that you have configured for the HDInsight cluster; the SSH endpoint credentials are the SSH credentials that you have configured for the HDInsight cluster.
+HTTP エンドポイント資格情報は、HDInsight クラスター向けに構成した HTTP ユーザーの資格情報です。また、SSH エンドポイント資格情報は、HDInsight クラスター向けに構成した SSH 資格情報です。
 
-## <a name="troubleshoot"></a>Troubleshoot
+## トラブルシューティング
 
-See [Troubleshoot the installation](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation).
+「[インストールのトラブルシューティング](hdinsight-apps-install-custom-applications.md#troubleshoot-the-installation)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- [Install custom HDInsight applications](hdinsight-apps-install-custom-applications.md): learn how to deploy an un-published HDInsight application to HDInsight.
-- [Publish HDInsight applications](hdinsight-apps-publish-applications.md): Learn how to publish your custom HDInsight applications to Azure Marketplace.
-- [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx): Learn how to define HDInsight applications.
-- [Customize Linux-based HDInsight clusters using Script Action](hdinsight-hadoop-customize-cluster-linux.md): learn how to use Script Action to install additional applications.
-- [Create Linux-based Hadoop clusters in HDInsight using Resource Manager templates](hdinsight-hadoop-create-linux-clusters-arm-templates.md): learn how to call Resource Manager templates to create HDInsight clusters.
-- [Use empty edge nodes in HDInsight](hdinsight-apps-use-edge-node.md): learn how to use an empty edge node for accessing HDInsight cluster, testing HDInsight applications, and hosting HDInsight applications.
+- [カスタム HDInsight アプリケーションをインストールする](hdinsight-apps-install-custom-applications.md): 未発行の HDInsight アプリケーションを HDInsight にデプロイする方法について確認します。
+- [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
+- [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について確認します。
+- [スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md): スクリプト アクションを使用してアプリケーションを追加インストールする方法を確認します。
+- [Resource Manager テンプレートを使用して HDInsight で Linux ベースの Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md): Resource Manager テンプレートを呼び出して HDInsight クラスターを作成する方法を確認します。
+- [HDInsight で空のエッジ ノードを使用する](hdinsight-apps-use-edge-node.md): HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために空のエッジ ノードを使用する方法を確認します。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Apply disk encryption in Azure Security Center | Microsoft Azure"
-   description="This document shows you how to implement the Azure Security Center recommendation **Apply disk encryption**."
+   pageTitle="Azure Security Center で Disk Encryption を適用する | Microsoft Azure"
+   description="このドキュメントでは、**ディスク暗号化の適用**という Azure セキュリティ センターの推奨事項を実装する方法について説明します。"
    services="security-center"
    documentationCenter="na"
    authors="TerryLanfear"
@@ -16,60 +16,55 @@
    ms.date="07/29/2016"
    ms.author="terrylan"/>
 
+# Azure Security Center で Disk Encryption を適用する
 
-# <a name="apply-disk-encryption-in-azure-security-center"></a>Apply disk encryption in Azure Security Center
-
-Azure Security Center will recommend that you apply disk encryption if you have Windows or Linux VM disks that are not encrypted using Azure Disk Encryption. Disk Encryption lets you encrypt your Windows and Linux IaaS VM disks.  Encryption is recommended for both the OS and data volumes on your VM.
+お使いの Windows または Linux VM ディスクが Azure Disk Encryption を使用して暗号化されていない場合、Azure セキュリティ センターにより、ディスク暗号化を適用することが推奨されます。Disk Encryption を使用すると、Windows および Linux IaaS VM ディスクを暗号化できます。VM 上の OS とデータ ボリュームの両方を暗号化することをお勧めします。
 
 
-Disk Encryption leverages the industry standard [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) feature of Windows and the [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) feature of Linux to provide OS and data encryption to help protect and safeguard your data and meet your organizational security and compliance commitments. Disk Encryption is integrated with [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) to help you control and manage the disk encryption keys and secrets in your Key Vault subscription, while ensuring that all data in the VM disks are encrypted at rest in your [Azure Storage](https://azure.microsoft.com/documentation/services/storage/).
+Disk Encryption では、業界標準である Windows の [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) 機能と Linux の [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) 機能を利用して OS とデータの暗号化を実現します。この暗号化により、データを保護し、組織のセキュリティとコンプライアンスに関する義務を果たすことができます。Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されています。これは、Key Vault サブスクリプションでディスク暗号化キーとシークレットを制御および管理し、[Azure Storage](https://azure.microsoft.com/documentation/services/storage/) で保管している、VM ディスク内のすべてのデータを確実に暗号化する場合に役立ちます。
 
-> [AZURE.NOTE] Azure Disk Encryption is supported on the following Windows server operating systems - Windows Server 2008 R2, Windows Server 2012, and Windows Server 2012 R2. Disk encryption is supported on the following Linux server operating systems - Ubuntu, CentOS, SUSE and SUSE Linux Enterprise Server (SLES).
+> [AZURE.NOTE] Azure Disk Encryption は、Windows Server オペレーティング システム (Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2) でサポートされています。Disk Encryption は、Linux サーバー オペレーティング システム (Ubuntu、CentOS、SUSE、SUSE Linux Enterprise Server (SLES)) でサポートされています。
 
-## <a name="implement-the-recommendation"></a>Implement the recommendation
+## 推奨事項の実装
 
-1. In the **Recommendations** blade, select **Apply disk encryption**.
-2. In the **Apply disk encryption** blade, you will see a list of VMs for which Disk Encryption is recommended.
-3. Follow the instructions to apply encryption to these VMs.
+1. **[推奨事項]** ブレードで、**[ディスク暗号化の適用]** を選択します。
+2. **[ディスク暗号化の適用]** ブレードに、Disk Encryption が推奨される VM の一覧が表示されます。
+3. 手順に従って、これらの VM に暗号化を適用します。
 
 ![][1]
 
-To encrypt Azure Virtual Machines that have been identified by Security Center as needing encryption, we recommend the following steps:
+Security Center で暗号化が必要と識別された Azure Virtual Machines を暗号化するには、次の手順をお勧めします。
 
-- Install and configure Azure PowerShell. This will enable you to run the PowerShell commands required to set up the prerequisites required to encrypt Azure Virtual Machines.
-- Obtain and run the Azure Disk Encryption Prerequisites Azure PowerShell script.
-- Encrypt your virtual machines.
+- Azure PowerShell のインストールおよび構成。これにより、Azure 仮想マシンの暗号化に必要な必須コンポーネントを設定するための PowerShell コマンドを実行できるようになります。
+- Azure Disk Encryption の前提条件となる Azure PowerShell スクリプトの取得と実行。
+- 仮想マシンの暗号化。
 
-[Encrypt an Azure Virtual Machine](security-center-disk-encryption.md) will walk you through these steps.  This topic assumes you are using Windows 10 as the client machine from which you will configure disk encryption.
+[Azure Virtual Machines の暗号化](security-center-disk-encryption.md)では、次の手順を段階的に説明します。このトピックでは、ディスク暗号化を構成するクライアント コンピューターとして Windows 10 を使用していることを想定しています。
 
-There are many approaches that can be used to setup the prerequisites and to configure encryption for Azure Virtual Machines. If you are already well-versed in Azure PowerShell or Azure CLI, then you may prefer to use alternate approaches. To learn about these other approaches see [Azure disk encryption](../security/azure-security-disk-encryption.md).
+必須コンポーネントの設定と Azure 仮想マシンの暗号化の構成に使用できる方法は多数あります。既に Azure PowerShell または Azure CLI についてよく知っている方は、他の方法を好む場合もあります。こうした方法の詳細については、「[Azure Disk Encryption](../security/azure-security-disk-encryption.md)」を参照してください。
 
 
 
-## <a name="see-also"></a>See also
+## 関連項目
 
-This document showed you how to implement the Security Center recommendation "Apply disk encryption." To learn more about disk encryption, see the following:
+このドキュメントでは、"ディスク暗号化の適用" というセキュリティ センターの推奨事項を実装する方法について説明しました。 ディスク暗号化の詳細については、以下を参照してください。
 
-- [Encryption and key management with Azure Key Vault](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/) (video, 36 min 39 sec) -- Learn how to use disk encryption management for IaaS VMs and Azure Key Vault to help protect and safeguard your data.
-- [Encrypt an Azure Virtual Machine](security-center-disk-encryption.md) (document) -- Learn how to encrypt Azure Virtual Machines.
-- [Azure disk encryption](../security/azure-security-disk-encryption.md) (document) -- Learn how to enable disk encryption for Windows and Linux VMs.
+- 「[Encryption and key management with Azure Key Vault (Azure Key Vault を使用した暗号化とキー管理)](https://azure.microsoft.com/documentation/videos/azurecon-2015-encryption-and-key-management-with-azure-key-vault/)」(動画、36 分 39 秒) -- IaaS VM と Azure Key Vault のディスク暗号化管理を使用し、データを保護する方法について説明しています。
+- [Azure Virtual Machines の暗号化](security-center-disk-encryption.md) (ドキュメント) -- Azure Virtual Machines を暗号化する方法について説明します。
+- 「[Azure Disk Encryption](../security/azure-security-disk-encryption.md)」(ドキュメント) -- Windows と Linux VM のディスク暗号化を有効にする方法について説明しています。
 
-To learn more about Security Center, see the following:
+セキュリティ センターの詳細については、次を参照してください。
 
-- [Setting security policies in Azure Security Center](security-center-policies.md) -- Learn how to configure security policies.
-- [Security health monitoring in Azure Security Center](security-center-monitoring.md) -- Learn how to monitor the health of your Azure resources.
-- [Managing and responding to security alerts in Azure Security Center](security-center-managing-and-responding-alerts.md) -- Learn how to manage and respond to security alerts.
-- [Managing security recommendations in Azure Security Center](security-center-recommendations.md) -- Learn how recommendations help you protect your Azure resources.
-- [Azure Security Center FAQ](security-center-faq.md) -- Find frequently asked questions about using the service.
-- [Azure Security blog](http://blogs.msdn.com/b/azuresecurity/) -- Find blog posts about Azure security and compliance.
+- 「[Azure セキュリティ センターでのセキュリティ ポリシーの設定](security-center-policies.md)」 -- セキュリティ ポリシーの構成方法について説明しています。
+- 「[Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md)」 -- Azure リソースの正常性を監視する方法について説明します。
+- 「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」 -- セキュリティの警告の管理および応答の方法について説明します。
+- 「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」 -- 推奨事項に従って Azure リソースを保護する方法について説明します。
+- 「[Azure Security Center に関する FAQ](security-center-faq.md)」 -- このサービスの使用に関してよく寄せられる質問を見つけます。
+- 「[Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)」 -- Azure のセキュリティとコンプライアンスについてまとめたブログ記事を見つけます。
 
 
 
 <!--Image references-->
 [1]: ./media/security-center-apply-disk-encryption/apply-disk-encryption.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

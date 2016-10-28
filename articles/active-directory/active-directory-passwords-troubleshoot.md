@@ -1,690 +1,689 @@
 <properties
-    pageTitle="Troubleshooting: Azure AD Password Management | Microsoft Azure"
-    description="Common troubleshooting steps for Azure AD Password Management, including reset, change, writeback, registration, and what information to include when looking for help."
-    services="active-directory"
-    documentationCenter=""
-    authors="asteen"
-    manager="femila"
-    editor="curtand"/>
+	pageTitle="トラブルシューティング: Azure AD パスワード管理 | Microsoft Azure"
+	description="リセット、変更、ライトバック、登録、ヘルプを参照する際に含める情報を含む、Azure AD パスワード管理の一般的なトラブルシューティングの手順。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/12/2016"
-    ms.author="asteen"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/12/2016"
+	ms.author="asteen"/>
 
+# パスワード管理のトラブルシューティングの方法
 
-# <a name="how-to-troubleshoot-password-management"></a>How to troubleshoot Password Management
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
 
-> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+パスワード管理に関する問題が発生した場合は、このページが役立ちます。発生する可能性がある問題の多くは、簡単なトラブルシューティングの手順で解決できます。デプロイをトラブルシューティングする方法は以下をご覧ください。
 
-If you are having issues with Password Management, we're here to help. Most problems you may run into can be solved with a few simple troubleshooting steps which you can read about below to troubleshoot your deployment:
+* [**ヘルプが必要な場合に含める情報**](#information-to-include-when-you-need-help)
+* [**Microsoft Azure 管理ポータルでのパスワード管理の構成に関する問題**](#troubleshoot-password-reset-configuration-in-the-azure-management-portal)
+* [**Microsoft Azure 管理ポータルでのパスワード管理レポートに関する問題**](#troubleshoot-password-management-reports-in-the-azure-management-portal)
+* [**パスワード リセット登録ポータルに関する問題**](#troubleshoot-the-password-reset-registration-portal)
+* [**パスワード リセット ポータルに関する問題**](#troubleshoot-the-password-reset-portal)
+* [**パスワード ライトバックの問題**](#troubleshoot-password-writeback)
+  - [パスワード ライトバックのイベント ログのエラー コード](#password-writeback-event-log-error-codes)
+  - [パスワード ライトバックの接続に関する問題](#troubleshoot-password-writeback-connectivity)
 
-* [**Information to include when you need help**](#information-to-include-when-you-need-help)
-* [**Problems with Password Management configuration in the Azure Management Portal**](#troubleshoot-password-reset-configuration-in-the-azure-management-portal)
-* [**Problems with Password Managment reports in the Azure Management Portal**](#troubleshoot-password-management-reports-in-the-azure-management-portal)
-* [**Problems with the Password Reset Registration Portal**](#troubleshoot-the-password-reset-registration-portal)
-* [**Problems with the Password Reset Portal**](#troubleshoot-the-password-reset-portal)
-* [**Problems with Password Writeback**](#troubleshoot-password-writeback)
-  - [Password Writeback event log error codes](#password-writeback-event-log-error-codes)
-  - [Problems with Password Writeback connectivity](#troubleshoot-password-writeback-connectivity)
+以下のトラブルシューティングの手順を試みてもまだ問題が発生する場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD)に質問を投稿するか、サポートに問い合わせることで、問題が迅速に対応されます。
 
-If you've tried the troubleshooting steps below and are still running into problems, you can post a question on the [Azure AD Forums](https://social.msdn.microsoft.com/forums/azure/home?forum=WindowsAzureAD) or contact support and we'll take a look at your problem as soon as we can.
+## ヘルプが必要な場合に含める情報
 
-## <a name="information-to-include-when-you-need-help"></a>Information to include when you need help
+以下のガイダンスを使用しても問題を解決できない場合は、サポート エンジニアにお問い合わせください。お問い合わせの際は、次の情報を含めることをお勧めします。
 
-If you cannot solve your issue with the guidance below, you can contact our support engineers. When you contact them, it is recommended to include the following information:
-
- - **General description of the error** – what exact error message did the user see?  If there was no error message, describe the unexpected behavior you noticed, in detail.
- - **Page** – what page were you on when you saw the error (include the URL)?
- - **Date / Time / Timezone** – what was the precise date and time you saw the error (include the timezone)?
- - **Support Code** – what was the support code generated when the user saw the error (to find this, reproduce the error, then click the Support Code link at the bottom of the screen and send the support engineer the GUID that results).
-   - If you are on a page without a support code at the bottom, press F12 and search for SID and CID and send those two results to the support engineer.
+ - **、エラーの一般的な説明** – どのようなエラー メッセージが表示されましたか。 エラー メッセージが表示されなかった場合は、気が付いた予期しない動作について詳しく説明してください。
+ - **ページ** – エラーが表示されたときに、どのページを表示していましたか (URL を含む)。
+ - **日付 / 時刻 / タイム ゾーン** – エラーが表示された正確な日時を教えてください (タイム ゾーンを含む)。
+ - **サポート コード** – エラーが表示されたときに生成されたサポート コードを教えてください (これを見つけるには、エラーを再現して、画面の下部にあるサポート コードのリンクをクリックします。生成された GUID をサポート エンジニアに送信します)。
+   - ページの下部にサポート コードが表示されない場合は、F12 キーを押して SID と CID を検索し、この 2 つの結果をサポート エンジニアに送信します。
 
     ![][001]
 
- - **User ID** – what was the ID of the user who saw the error (e.g. user@contoso.com)?
- - **Information about the user** – was the user federated, password hash synced, cloud only?  Did the user have an AAD Premium or AAD Basic license assigned?
- - **Application Event Log** – if you are using Password Writeback and the error is in your on-premises infrastructure, please zip up a copy of your application event log from your Azure AD Connect server and send along with your request.
+ - **ユーザー ID** – エラーが表示されたユーザーの ID は何でしたか (例: user@contoso.com)。
+ - **ユーザーに関する情報** – そのユーザーはフェデレーション ユーザー、パスワード ハッシュ同期されたユーザー、クラウド ユーザーでしたか。 そのユーザーには、AAD Premium または AAD Basic のライセンスが割り当てられていましたか。
+ - **アプリケーション イベント ログ** – パスワード ライトバックの使用中にオンプレミスのインフラストラクチャでエラーが発生した場合は、Azure AD Connect サーバーからのアプリケーション イベント ログのコピーを zip 形式で圧縮し、要求と共に送信してください。
 
-Including this information will help us to solve your problem as quickly as possible.
+この情報を含めることで、迅速に問題を解決するのに役立ちます。
 
 
-## <a name="troubleshoot-password-reset-configuration-in-the-azure-management-portal"></a>Troubleshoot password reset configuration in the Azure Management Portal
-If you encounter an error when configuring password reset, you might be able to resolve it by following the troubleshooting steps below:
+## Microsoft Azure 管理ポータルでのパスワード リセット構成のトラブルシューティング
+パスワードのリセットを構成するときにエラーが発生した場合は、次のトラブルシューティング手順で解決できることがあります。
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>Error Case</strong>
+                <strong>エラー ケース</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>What error does a user see?</strong>
+                <strong>どのようなエラーが表示されますか</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Solution</strong>
+                <strong>ソリューション</strong>
               </p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>I don’t see the <strong>User Password Reset Policy </strong>section under the <strong>Configure</strong> tab in the Azure management portal</p>
+              <p>Microsoft Azure 管理ポータルの <strong>[構成]</strong> タブに、<strong>[ユーザー パスワードのリセット ポリシー]</strong> セクションが表示されません。</p>
             </td>
             <td>
-              <p>The <strong>User Password Reset Policy </strong>section is not visible on the <strong>Configure</strong> tab in the Azure Management Portal.</p>
+              <p><strong>[ユーザー パスワードのリセット ポリシー]</strong> セクションが、Microsoft Azure 管理ポータルの <strong>[構成]</strong> タブに表示されません。</p>
             </td>
             <td>
-              <p>This can occur if you do not have an AAD Premium or AAD Basic license assigned to the admin performing this operation. </p>
-              <p>To rectify this, assign an AAD Premium or AAD Basic license to the admin account in question by navigating to the <strong>Licenses</strong> tab and try again.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>I don’t see any of the configuration options under the <strong>User Password Reset Policy</strong> section that are described in the documentation.</p>
-            </td>
-            <td>
-              <p>The <strong>User Password Reset Policy </strong>section is visible, but the only flag that appears under it is the <strong>Users Enabled for Password Reset</strong> flag.</p>
-            </td>
-            <td>
-              <p>The rest of the UI will appear when you switch the <strong>Users Enabled for Password Reset</strong> flag to <strong>Yes.</strong></p>
+              <p>これは、この操作を実行する管理者に割り当てられる AAD Premium または AAD Basic のライセンスを持っていない場合に発生します。</p>
+              <p>この問題を解決するには、対象の管理者アカウントに AAD Premium または AAD Basic のライセンスを割り当て、<strong>[ライセンス]</strong> タブに移動して、やり直してください。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>I don’t see a particular configuration option.</p>
+              <p><strong>[ユーザー パスワードのリセット ポリシー]</strong> セクションに、ドキュメントに記載されている構成オプションが 1 つも表示されません。</p>
             </td>
             <td>
-              <p>For example, I do not see the <strong>Number of days before a user must confirm their contact data</strong> option when I scroll through the <strong>User Password Reset Policy</strong> section (or other examples of the same issue).</p>
+              <p><strong>[ユーザー パスワードのリセット ポリシー]</strong> セクションは表示されますが、その下に表示されるフラグは <strong>[パスワードのリセットが有効になっているユーザー]</strong> フラグのみです。</p>
             </td>
             <td>
-              <p>Many elements of UI are hidden until they are needed. Try enabling all the options on the page if you want to see.</p>
-              <p>See <a href="active-directory-passwords-customize.md#password-management-behavior">Password Management behavior</a> for more info about all of the controls that are available to you.</p>
+              <p><strong>[パスワードのリセットが有効になっているユーザー]</strong> フラグを <strong>[はい]</strong> に切り替えると、残りの UI が表示されます。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>I don’t see the <strong>Write Back Passwords to On-Premises</strong> configuration option</p>
+              <p>特定の構成オプションが表示されません。</p>
             </td>
             <td>
-              <p>The <strong>Write Back Passwords to On-Premises</strong> option is not visible under the <strong>Configure</strong> tab in the Azure Management Portal</p>
+              <p>たとえば、<strong>[ユーザー パスワードのリセット ポリシー]</strong> セクションをスクロールするときに、<strong>[ユーザーによる連絡先データの確認が必要になるまでの日数]</strong> オプションが表示されません (または他の例の同じ問題)。</p>
             </td>
             <td>
-              <p>This option is only visible if you have downloaded Azure AD Connect and configured Password Writeback. When you have done this, that option appears and allows you to enable or disable writeback from the cloud.</p>
-              <p>See <a href="active-directory-passwords-getting-started.md#step-2-enable-password-writeback-in-azure-ad-connect">Enable Password Writeback in Azure AD Connect</a> for more information on how to do this.</p>
+              <p>UI の多くの要素は、必要になるまで表示されません。表示する場合は、ページ上のすべてのオプションを有効にしてください。</p>
+              <p>使用可能なすべてのコントロールの詳細については、<a href="active-directory-passwords-customize.md#password-management-behavior">Password Management の動作</a>に関するページをご覧ください。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p><strong>[Write Back Passwords to On-Premises]</strong> 構成オプションが表示されません。</p>
+            </td>
+            <td>
+              <p><strong>[オンプレミスへのパスワードの書き戻し]</strong> オプションは、Microsoft Azure 管理ポータルの <strong>[構成]</strong> タブに表示されません。</p>
+            </td>
+            <td>
+              <p>このオプションは、Azure AD Connect をダウンロードし、パスワード を構成した場合のみ表示されます。このオプションは終了時に表示されますが、クラウドからライトバックを有効または無効にできます。</p>
+              <p>これを行う方法の詳細については、<a href="active-directory-passwords-getting-started.md#step-2-enable-password-writeback-in-azure-ad-connect">Azure AD Connect でのパスワード ライトバックの有効化</a>に関するページをご覧ください。</p>
             </td>
           </tr>
         </tbody></table>
 
-## <a name="troubleshoot-password-management-reports-in-the-azure-management-portal"></a>Troubleshoot password management reports in the Azure Management Portal
-If you encounter an error when using the password management reports, you might be able to resolve it by following the troubleshooting steps below:
+## Microsoft Azure 管理ポータルでのパスワード管理レポートのトラブルシューティング
+パスワード管理レポートを使用するときにエラーが発生した場合は、次のトラブルシューティング手順で解決できることがあります。
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>Error Case</strong>
+                <strong>エラー ケース</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>What error does a user see?</strong>
+                <strong>どのようなエラーが表示されますか</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Solution</strong>
+                <strong>ソリューション</strong>
               </p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>I don’t see any password management reports</p>
+              <p>パスワード管理レポートが表示されません</p>
             </td>
             <td>
-              <p>The <strong>Password reset activity</strong> and <strong>Password reset registration activity</strong> reports are not visible under the <strong>Activity Log</strong> reports in the <strong>Reports</strong> tab.</p>
+              <p><strong>［パスワード リセット アクティビティ]</strong> レポートと <strong>[パスワード リセット登録アクティビティ]</strong> レポートは、<strong>[レポート]</strong> タブの <strong>[アクティビティ ログ]</strong> レポートに表示されません。</p>
             </td>
             <td>
-              <p>This can occur if you do not have an AAD Premium or AAD Basic license assigned to the admin performing this operation. </p>
-              <p>To rectify this, assign an AAD Premium or AAD Basic license to the admin account in question by navigating to the <strong>Licenses</strong> tab and try again.</p>
+              <p>これは、この操作を実行する管理者に割り当てられる AAD Premium または AAD Basic のライセンスを持っていない場合に発生します。</p>
+              <p>この問題を解決するには、対象の管理者アカウントに AAD Premium または AAD Basic のライセンスを割り当て、<strong>[ライセンス]</strong> タブに移動して、やり直してください。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>User registrations show multiple times</p>
+              <p>ユーザー登録に複数の時刻が表示されます。</p>
             </td>
             <td>
-              <p>When a user registers alternate email, mobile phone, and security questions, they each show up as separate lines instead of a single line.</p>
+              <p>1 人のユーザーが連絡用電子メール、携帯電話、セキュリティの質問を登録する場合、これらは、1 つの行ではなく個別の行にそれぞれ表示されます。</p>
             </td>
             <td>
-              <p>Currently, when a user registers, we cannot assume that they will register everything present on the registration page. As a result, we currently log each individual piece of data that is registered as a separate event.</p>
-              <p>If you want to aggregate this data, you can download the report and open the data as a pivot table in excel to have more flexibility.</p>
+              <p>現時点では、ユーザーが登録する際に登録ページ上のすべてを登録することを想定していません。そのため、現時点では個別のイベントとして登録されている各データを記録しています。</p>
+              <p>このデータを集計する場合は、レポートをダウンロードし、Excel のピボット テーブルでデータを開くと、柔軟性が高まります。</p>
             </td>
           </tr>
         </tbody></table>
 
-## <a name="troubleshoot-the-password-reset-registration-portal"></a>Troubleshoot the password reset registration portal
-If you encounter an error when registering a user for password reset, you might be able to resolve it by following the troubleshooting steps below:
+## パスワード リセット登録ポータルのトラブルシューティング
+パスワードのリセットのためにユーザーを登録するときにエラーが発生した場合は、次のトラブルシューティング手順で解決できることがあります。
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>Error Case</strong>
+                <strong>エラー ケース</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>What error does a user see?</strong>
+                <strong>どのようなエラーが表示されますか</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Solution</strong>
+                <strong>ソリューション</strong>
               </p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Directory is not enabled for password reset</p>
+              <p>ディレクトリで、パスワードのリセットが有効になっていません</p>
             </td>
             <td>
-              <p>Your administrator has not enabled you to use this feature.</p>
+              <p>管理者はこの機能を使用できるようにしていません。</p>
             </td>
             <td>
-              <p>Switch the <strong>Users Enabled for Password Reset</strong> flag to <strong>Yes</strong> and hit <strong>Save</strong> in the Azure Management Portal directory configuration tab. You must have an Azure AD Premium or Basic License assigned to the admin performing this operation.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>User does not have an AAD Premium or AAD Basic license assigned</p>
-            </td>
-            <td>
-              <p>Your administrator has not enabled you to use this feature.</p>
-            </td>
-            <td>
-              <p>Assign an Azure AD Premium or Azure AD Basic license to the user under the <strong>Licenses</strong> tab in the Azure Management Portal. You must have an Azure AD Premium or Basic License assigned to the admin performing this operation.</p>
+              <p><strong>[パスワードのリセットが有効になっているユーザー]</strong> フラグを <strong>[はい]</strong> に切り替え、Microsoft Azure 管理ポータルのディレクトリの [構成] タブで <strong>[保存]</strong> をクリックします。この操作を実行する管理者に割り当てられる Azure AD Premium または Basic のライセンスを持っている必要があります。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Error processing request</p>
+              <p>ユーザーに AAD Premium または AAD Basic のライセンスが割り当てられていません</p>
             </td>
             <td>
-              <p>User sees an error that states:</p>
+              <p>管理者はこの機能を使用できるようにしていません。</p>
+            </td>
+            <td>
+              <p>Microsoft Azure 管理ポータルの <strong>[ライセンス]</strong> タブで、Azure AD Premium または Azure AD Basic のライセンスをユーザーに割り当てます。この操作を実行する管理者に割り当てられる Azure AD Premium または Basic のライセンスを持っている必要があります。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>要求の処理エラー</p>
+            </td>
+            <td>
+              <p>次のエラーが表示されます。</p>
               <p>
 
               </p>
-              <p>Error processing request </p>
-              <p>When attempting to reset a password.</p>
+              <p>要求の処理エラー </p>
+              <p>パスワードをリセット中にエラーが発生しました。</p>
             </td>
             <td>
-              <p>This can be caused by many issues, but generally this error is caused by either a service outage or configuration issue that cannot be resolved. </p>
-              <p>If you see this error and it is impacting your business, please contact support and we will assist you ASAP. See <a href="#information-to-include-when-you-need-help">Information to include when you need help</a> to see what you should provide to the support engineer to aid in a speedy resolution.</p>
+              <p>これは、多くの問題が原因で発生することがありますが、一般的にこのエラーはサービスの停止や構成の問題が原因で発生します。</p>
+              <p>このエラーが表示され、ビジネスに影響がある場合は、すぐにサポートにお問い合わせください。迅速な解決を支援するためにサポート エンジニアに何を提供する必要があるかを確認するには、<a href="#information-to-include-when-you-need-help">ヘルプが必要な場合に含める情報</a>をご覧ください。</p>
             </td>
           </tr>
         </tbody></table>
 
-## <a name="troubleshoot-the-password-reset-portal"></a>Troubleshoot the password reset portal
-If you encounter an error when resetting a password for a user, you might be able to resolve it by following the troubleshooting steps below:
+## パスワード リセット ポータルのトラブルシューティング
+ユーザーのパスワードをリセットするときにエラーが発生した場合は、次のトラブルシューティング手順で解決できることがあります。
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>Error Case</strong>
+                <strong>エラー ケース</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>What error does a user see?</strong>
+                <strong>どのようなエラーが表示されますか</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Solution</strong>
+                <strong>ソリューション</strong>
               </p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Directory is not enabled for password reset</p>
+              <p>ディレクトリで、パスワードのリセットが有効になっていません</p>
             </td>
             <td>
-              <p>Your account is not enabled for password reset</p>
-              <p>We're sorry, but your administrator has not set up your account for use with this service. </p>
-              <p>
-
-              </p>
-              <p>If you'd like, we can contact an administrator in your organization to reset your password for you.</p>
-            </td>
-            <td>
-              <p>Switch the <strong>Users Enabled for Password Reset</strong> flag to <strong>Yes</strong> and hit <strong>Save</strong> in the Azure Management Portal directory configuration tab. You must have an Azure AD Premium or Basic License assigned to the admin performing this operation.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>User does not have an AAD Premium or AAD Basic license assigned</p>
-            </td>
-            <td>
-              <p>While we cannot reset non-admin account passwords automatically, we can contact your organization's admin to do it for you.</p>
-            </td>
-            <td>
-              <p>Assign an Azure AD Premium or Azure AD Basic license to the user under the <strong>Licenses</strong> tab in the Azure Management Portal. You must have an Azure AD Premium or Basic License assigned to the admin performing this operation.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Directory is enabled for password reset, but user has missing or mal-formed authentication information</p>
-            </td>
-            <td>
-              <p>Your account is not enabled for password reset</p>
-              <p>We're sorry, but your administrator has not set up your account for use with this service. </p>
+              <p>このアカウントはパスワードのリセットが有効になっていません</p>
+              <p>申し訳ありませんが、管理者はこのサービスで使用できるアカウントを設定していません。</p>
               <p>
 
               </p>
-              <p>If you'd like, we can contact an administrator in your organization to reset your password for you.</p>
+              <p>ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。</p>
             </td>
             <td>
-              <p>Ensure that user has properly formed contact data on file in the directory before proceeding. See <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">What data is used by password reset</a> for information on how to configure authentication information in the directory so that users do not see this error.</p>
+              <p><strong>[パスワードのリセットが有効になっているユーザー]</strong> フラグを <strong>[はい]</strong> に切り替え、Microsoft Azure 管理ポータルのディレクトリの [構成] タブで <strong>[保存]</strong> をクリックします。この操作を実行する管理者に割り当てられる Azure AD Premium または Basic のライセンスを持っている必要があります。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Directory is enabled for password reset, but a user only has one piece of contact data on file when policy is set to require two verification steps</p>
+              <p>ユーザーに AAD Premium または AAD Basic のライセンスが割り当てられていません</p>
             </td>
             <td>
-              <p>Your account is not enabled for password reset</p>
-              <p>We're sorry, but your administrator has not set up your account for use with this service. </p>
+              <p>管理者以外のアカウントのパスワードを自動的にリセットすることはできませんが、こちらで組織の管理者に連絡してリセットしてもらうことはできます。</p>
+            </td>
+            <td>
+              <p>Microsoft Azure 管理ポータルの <strong>[ライセンス]</strong> タブで、Azure AD Premium または Azure AD Basic のライセンスをユーザーに割り当てます。この操作を実行する管理者に割り当てられる Azure AD Premium または Basic のライセンスを持っている必要があります。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>ディレクトリで、パスワードのリセットが有効になっていますが、ユーザーの認証情報が見つからないか、認証情報の形式が不正です</p>
+            </td>
+            <td>
+              <p>このアカウントはパスワードのリセットが有効になっていません</p>
+              <p>申し訳ありませんが、管理者はこのサービスで使用できるアカウントを設定していません。</p>
               <p>
 
               </p>
-              <p>If you'd like, we can contact an administrator in your organization to reset your password for you.</p>
+              <p>ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。</p>
             </td>
             <td>
-              <p>Ensure that user has at least two properly configured contact methods (e.g., both Mobile Phone and Office Phone) before proceeding. See <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">What data is used by password reset</a> for information on how to configure authentication information in the directory so that users do not see this error.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>Directory is enabled for password reset, and user is properly configured, but user is unable to be contacted </p>
-            </td>
-            <td>
-              <p>Oops!  We encountered an unexpected error while contacting you.</p>
-            </td>
-            <td>
-              <p>This could be the result of a temporary service error or misconfigured contact data that we could not properly detect. If the user waits 10 seconds, a try again and “contact your administrator” link appears. Clicking try again will re-dispatch the call, whereas clicking “contact your administrator” will send a form email to user, password, or global admins (in that precedence order) requesting a password reset to be performed for that user account.</p>
+              <p>続行する前に、ユーザーがディレクトリ内のファイルに正しい形式の連絡先データを指定していることを確認します。ユーザーにこのエラーが表示されないようにディレクトリの認証情報を構成する方法の詳細については、<a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">パスワードのリセットで使用されるデータ</a>をご覧ください。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>User never receives the password reset SMS or phone call</p>
+              <p>ディレクトリで、パスワードのリセットが有効になっていますが、ポリシーが 2 つの検証手順を要求するように設定されている場合に、ユーザーはファイルに 1 つの連絡先データしか指定していません。</p>
             </td>
             <td>
-              <p>User clicks “text me” or “call me” and then never receives anything.</p>
-            </td>
-            <td>
-              <p>This could be the result of a mal-formed phone number in the directory. Make sure the phone number is in the format “+ccc xxxyyyzzzzXeeee”. To learn more about formatting phone numbers for use with password reset see <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">What data is used by password reset</a>.</p>
-              <p>If you require an extension to be routed to the user in question, note that password reset does not support extensions, even if you specify one in the directory (they are stripped before the call is dispatched). Try using a number without an extension, or integrating the extension into the phone number in your PBX.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>User never receives password reset email</p>
-            </td>
-            <td>
-              <p>User clicks “email me” and then never receives anything.</p>
-            </td>
-            <td>
-              <p>The most common cause for this issue is that the message is rejected by a spam filter. Check your spam, junk, or deleted items folder for the email.</p>
-              <p>Also ensure that you are checking the right email for the message…lots of people have very similar email addresses and end up checking the wrong inbox for the message. If neither of these options work, it’s also possible that the email address in the directory is malformed, check to make sure the email address is the right one and try again. To learn more about formatting email addresses for use with password reset see <a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">What data is used by password reset</a>.</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>I have set a password reset policy, but when an admin account uses password reset, that policy is not applied</p>
-            </td>
-            <td>
-              <p>Admin accounts resetting their passwords see the same options enabled for password reset, email and mobile phone, no matter what policy is set under the <strong>User Password Reset Policy</strong> section of the <strong>Configure</strong> tab.</p>
-            </td>
-            <td>
-              <p>The options configured under the <strong>User Password Reset Policy</strong> section of the <strong>Configure</strong> tab only apply to end users in your organization.</p>
-              <p>Microsoft manages and controls the Admin password reset policy in order to ensure the highest level of security</p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p>User prevented from attempting password reset too many times in a day</p>
-            </td>
-            <td>
-              <p>User sees an error stating:</p>
+              <p>このアカウントはパスワードのリセットが有効になっていません</p>
+              <p>申し訳ありませんが、管理者はこのサービスで使用できるアカウントを設定していません。</p>
               <p>
 
               </p>
-              <p>Please use another option.</p>
-              <p>You've tried to verify your account too many times in the last 1 hour(s). For security reasons, you'll have to wait 24 hour(s) before you can try again. </p>
-              <p>If you'd like, we can contact an administrator in your organization to reset your password for you.</p>
+              <p>ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。</p>
             </td>
             <td>
-              <p>We implement an automatic throttling mechanism to block users from attempting to reset their passwords too many times in a short period of time. This occurs when:</p>
+              <p>続行する前に、ユーザーが少なくとも 2 つの連絡方法を正しく構成していることを確認します (例: 携帯電話と会社電話など)。ユーザーにこのエラーが表示されないようにディレクトリの認証情報を構成する方法の詳細については、<a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">パスワードのリセットで使用されるデータ</a>をご覧ください。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>ディレクトリでパスワードのリセットが有効になって、ユーザーが正しく構成されていますが、ユーザーに連絡できません </p>
+            </td>
+            <td>
+              <p>おっと。 連絡中に予期しないエラーが発生しました。</p>
+            </td>
+            <td>
+              <p>一時的なサービス エラーが発生したか、連絡先データが正しく構成されていない可能性があるため、正しく検出できませんでした。10 秒間待機して、やり直すと、[管理者に問い合わせてください] のリンクが表示されます。[再試行] をクリックすると、呼び出しを再度ディスパッチしますが、[管理者に問い合わせてください] をクリックすると、ユーザー、パスワード、グローバル管理者 (優先順) に、そのユーザー アカウントに対してパスワードのリセットを実行するように求めるメールが送信されます。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>ユーザーはパスワード リセットの SMS または電話を受け取っていません</p>
+            </td>
+            <td>
+              <p>ユーザーは [text me] または [call me] をクリックしても何も受け取りません。</p>
+            </td>
+            <td>
+              <p>ディレクトリ内の電話番号の形式が正しくない可能性があります。電話番号の形式が “+ccc xxxyyyzzzzXeeee” となっていることをご確認ください。パスワードのリセットで使用する電話番号の形式については、<a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">パスワードのリセットで使用されるデータ</a>をご覧ください。</p>
+              <p>対象のユーザーに内線番号を設定する必要がある場合は、ディレクトリ内の電話番号を指定した場合でも、パスワードのリセットは内線番号をサポートしていません (これらは呼び出しがディスパッチされる前に削除されます)。内線番号のない電話番号を使用するか、PBX で電話番号と内線番号を統合してください。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>ユーザーはパスワード リセットのメールを受信しません</p>
+            </td>
+            <td>
+              <p>ユーザーは [email me] をクリックしても何も受け取りません。</p>
+            </td>
+            <td>
+              <p>メッセージがスパム フィルターによって拒否された可能性があります。スパム、迷惑メール、削除済みアイテムのフォルダーをご確認ください。</p>
+              <p>また、正しいメールのメッセージを確認していることもご確認ください。多くの人がよく似たメール アドレスを持っているため間違った受信トレイのメッセージを確認することがあります。これらのオプションがどちらも動作しない場合は、ディレクトリ内のメール アドレスの形式が正しくない可能性があります。メール アドレスが正しいことを確認し、やり直してください。パスワードのリセットで使用するメール アドレスの形式については、<a href="active-directory-passwords-learn-more.md#what-data-is-used-by-password-reset">パスワードのリセットで使用されるデータ</a>をご覧ください。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>パスワードのリセット ポリシーを設定しましたが、管理者アカウントでパスワードのリセットを使用してもポリシーが適用されません。</p>
+            </td>
+            <td>
+              <p>管理者アカウントでパスワードをリセットする場合は、<strong>[構成]</strong> タブの<strong>[ユーザー パスワードのリセット ポリシー]</strong> セクションで設定されているポリシーに関係なく、パスワードのリセット、メール、携帯電話で有効になっている同じオプションが参照されます。</p>
+            </td>
+            <td>
+              <p><strong>[構成]</strong> タブの <strong>[ユーザー パスワードのリセット ポリシー]</strong> セクションで構成されているオプションは、組織内のエンド ユーザーにのみ適用されます。</p>
+              <p>マイクロソフトは、最高レベルのセキュリティを維持するために、管理者パスワード リセット ポリシーを管理、制御しています。</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p>ユーザーは 1 日に何回もパスワードのリセットを試みることができません</p>
+            </td>
+            <td>
+              <p>次のエラーが表示されます。</p>
+              <p>
+
+              </p>
+              <p>別のオプションを使用してください。</p>
+              <p>ここ 1 時間以内に何回もアカウントの確認を試みました。セキュリティ上の理由から、再試行するには 24 時間待機する必要があります。</p>
+              <p>ご希望の場合は、こちらで組織の管理者に連絡してパスワードをリセットできます。</p>
+            </td>
+            <td>
+              <p>ユーザーが短時間に何回もパスワードをリセットできないように、自動調整メカニズムが実装されています。これは次の場合に発生します。</p>
               <ol class="ordered">
                 <li>
-User attempts to validate a phone number 5 times in one hour.<br\><br\></li>
+										ユーザーが 1 時間に 5 回電話番号の検証を試みる場合。<br\><br\></li>
                 <li>
-User attempts to use the security questions gate 5 times in one hour.<br\><br\></li>
+										ユーザーが 1 時間に 5 回セキュリティの質問の使用を試みる場合。<br\><br\></li>
                 <li>
-User attempts to reset a password for the same user account 5 times in one hour.<br\><br\></li>
+										ユーザーが 1 時間に 5 回同じユーザー アカウントのパスワードのリセットを試みる場合。<br\><br\></li>
               </ol>
-              <p>To fix this, instruct the user to wait 24 hours after the last attempt, and the user will then be able to reset his or her password.</p>
+              <p>これを解決するには、最後に試行してから 24 時間待機するようにユーザーに指示します。その後、パスワードをリセットできるようになります。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>User sees an error when validating his or her phone number</p>
+              <p>ユーザーは自分の電話番号を検証するときにエラーが表示されます</p>
             </td>
             <td>
-              <p>When attempting to verify a phone to use as an authentication method, the user sees an error stating:</p>
+              <p>認証方法として使用するために電話番号を確認しようとすると、次のエラーが表示されます。</p>
               <p>
 
               </p>
-              <p>Incorrect phone number specified.</p>
+              <p>間違った電話番号が指定されています。</p>
             </td>
             <td>
-              <p>This error occurs when the phone number entered does not match the phone number on file.</p>
-              <p>Make sure the user is entering the complete phone number, including area and country code, when attempting to use a phone-based method for password reset.</p>
+              <p>このエラーは、入力した電話番号がファイルの電話番号と一致しない場合に発生します。</p>
+              <p>パスワードのリセットに電話ベースの方法を使用しようとする場合は、ユーザーが国コードと市外局番を含む完全な電話番号を入力していることを確認します。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Error processing request</p>
+              <p>要求の処理エラー</p>
             </td>
             <td>
-              <p>User sees an error that states:</p>
+              <p>次のエラーが表示されます。</p>
               <p>
 
               </p>
-              <p>Error processing request </p>
-              <p>When attempting to reset a password.</p>
+              <p>要求の処理エラー </p>
+              <p>パスワードをリセット中にエラーが発生しました。</p>
             </td>
             <td>
-              <p>This can be caused by many issues, but generally this error is caused by either a service outage or configuration issue that cannot be resolved. </p>
-              <p>If you see this error and it is impacting your business, please contact support and we will assist you ASAP. See <a href="#information-to-include-when-you-need-help">Information to include when you need help</a> to see what you should provide to the support engineer to aid in a speedy resolution.</p>
+              <p>これは、多くの問題が原因で発生することがありますが、一般的にこのエラーはサービスの停止や構成の問題が原因で発生します。</p>
+              <p>このエラーが表示され、ビジネスに影響がある場合は、すぐにサポートにお問い合わせください。迅速な解決を支援するためにサポート エンジニアに何を提供する必要があるかを確認するには、<a href="#information-to-include-when-you-need-help">ヘルプが必要な場合に含める情報</a>をご覧ください。</p>
             </td>
           </tr>
         </tbody></table>
 
-## <a name="troubleshoot-password-writeback"></a>Troubleshoot Password Writeback
-If you encounter an error when enabling, disabling, or using Password Writeback, you might be able to resolve it by following the troubleshooting steps below:
+## パスワード ライトバックのトラブルシューティング
+パスワード ライトバックを有効にする、無効にする、使用するときにエラーが発生した場合は、次のトラブルシューティング手順で解決できることがあります。
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>Error Case</strong>
+                <strong>エラー ケース</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>What error does a user see?</strong>
+                <strong>どのようなエラーが表示されますか</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Solution</strong>
+                <strong>ソリューション</strong>
               </p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>General onboarding and startup failures</p>
+              <p>一般的なオンボード時と起動時のエラー</p>
             </td>
             <td>
-              <p>Password reset service does not start on premises with error 6800 in the Azure AD Connect machine’s application event log.</p>
+              <p>パスワード リセット サービスは、Azure AD Connect コンピューターのアプリケーション イベント ログでエラー 6800 が記録されているオンプレミスでは開始されません。</p>
               <p>
 
               </p>
-              <p>After onboarding, federated or password hash synced users cannot reset their passwords.</p>
+              <p>オンボード後に、フェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは自分のパスワードをリセットできません。</p>
             </td>
             <td>
-              <p>When Password Writeback is enabled, the sync engine will call the writeback library to perform the configuration (onboarding) by talking to the cloud onboarding service. Any errors encountered during onboarding or while starting the WCF endpoint for Password Writeback will result in errors in the Event log in your Azure AD Connect machine’s event log.</p>
-              <p>During restart of ADSync service, if writeback was configured, the WCF endpoint will be started up. However, if the startup of the endpoint fails, we will simply log event 6800 and let the sync service startup. Presence of this event means that the Password Writeback endpoint was not started up. Event log details for this event (6800) along with event log entries generate by PasswordResetService component will indicate why the endpoint could not be started up. Review these event log errors and try to re-start the Azure AD Connect if Password Writeback still isn’t working. If the problem persists, try to disable and re-enable Password Writeback.</p>
-            </td>
-          </tr>
-                    <tr>
-            <td>
-              <p>When a user attempts to reset a password or unlock an account with password writeback enabled, the operation fails. In addition, you see an event in the Azure AD Connect event log containing: “Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long” after the unlock operation occurs.
-                            </p>
-            </td>
-            <td>
-              <p>This can occur if you had upgraded from older versions of Azure AD Connect or DirSync. Upgrading to older versions of Azure AD Connect set a 254 character password for the Azure AD Management Agent account (newer versions will set a 127 character length password). Such long passwords work for AD Connector Import and Export operations but they are not supported by the Unlock operation.
-                            </p>
-            </td>
-            <td>
-              <p>[Find the Active Directory account](active-directory-aadconnect-accounts-permissions.md#active-directory-account) for Azure AD Connect and reset the password to contain no more than 127 characters. Then open **Synchronization Service** from the Start menu. Navigate to **Connectors** and find the **Active Directory Connector**. Select it and click **Properties**. Navigate to the page **Credentials** and enter the new password. Select **OK** to close the page.
-                            </p>
+              <p>パスワード ライトバックを有効にすると、同期エンジンはライトバック ライブラリを呼び出し、クラウド オンボード サービスと通信して構成 (オンボード) を実行します。オンボード中またはパスワード ライトバックの WCF エンドポイントの起動中に発生したエラーは、Azure AD Connect コンピューターのイベント ログのエラーになります。</p>
+              <p>ADSync サービスの再起動時に、ライトバックが構成された場合は、WCF エンドポイントが起動します。ただし、エンドポイントの起動に失敗した場合は、単にイベント ログ 6800 を記録し、同期サービスを起動します。このイベントの存在は、パスワード ライトバックのエンドポイントが起動しなかったことを意味します。このイベント (6800) のイベント ログ詳細とPasswordResetService コンポーネントで生成されたイベント ログ エントリは、エンドポイントが起動できなかった理由を示します。パスワード ライトバックが機能していない場合は、これらのイベント ログのエラーを確認し、Azure AD Connect の再起動を試みてください。問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてください。</p>
             </td>
           </tr>
-                    <tr>
+					<tr>
             <td>
-              <p>Error configuring writeback during Azure AD Connect installation.</p>
+              <p>パスワード ライトバックを有効にした状態でユーザーがアカウントのロック解除またはパスワードのリセットを試みると操作に失敗します。また、Azure AD Connect のイベント ログを見ると、ロック解除操作の後に "Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long (同期エンジンから hr=800700CE エラーと、ファイル名または拡張子が長すぎるというメッセージが返されました)" というイベントが記録されています。
+							</p>
             </td>
             <td>
-              <p>At the last step of the Azure AD Connect installation process, you see an error indicating that Password Writeback could not be configured.</p>
+              <p>これは、以前のバージョンの Azure AD Connect または DirSync からアップグレードした場合に発生します。以前のバージョンの Azure AD Connect では、Azure AD 管理エージェント アカウントに対して 254 文字のパスワードが設定されます (新しいバージョンで設定されるパスワードの長さは 127 文字)。そのような長いパスワードは、AD Connector のインポート操作とエクスポート操作では正しく機能しますが、ロック解除操作ではサポートされません。
+							</p>
+            </td>
+            <td>
+              <p>Azure AD Connect の [Active Directory アカウントを検索](active-directory-aadconnect-accounts-permissions.md#active-directory-account)し、127 文字以下となるようにパスワードをリセットしてください。[スタート] メニューから **[同期サービス]** を開きます。**[コネクタ]** に移動し、**[Active Directory Connector]** を探します。それを選択し、**[プロパティ]** をクリックします。**[資格情報]** ページに移動して新しいパスワードを入力します。**[OK]** を選択してページを閉じます。
+							</p>
+            </td>
+          </tr>
+					<tr>
+            <td>
+              <p>Azure AD Connect インストール中のライトバックの構成エラーです。</p>
+            </td>
+            <td>
+              <p>Azure AD Connect インストール プロセスの最後の手順で、パスワード ライトバックを構成できなかったことを示すエラーが表示されます。</p>
               <p>
 
               </p>
-              <p>The Azure AD Connect Application event log contains error 32009 with text “Error getting auth token”.</p>
+              <p>Azure AD Connect アプリケーションのイベント ログには、エラー 32009 とテキスト "認証トークンの取得エラー" が含まれています。</p>
             </td>
             <td>
-              <p>This error occurs in the following two cases:</p>
+              <p>このエラーは、次の 2 つの場合に発生します。</p>
               <ul>
                 <li class="unordered">
-You have specified an incorrect password for the global administrator account specified at the beginning of the Azure AD Connect installation process.<br\><br\></li>
+										Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントに不正なパスワードを指定しています。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-You have attempted to use a federated user for the global administrator account specified at the beginning of the Azure AD Connect installation process.<br\><br\></li>
+										Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者アカウントにフェデレーション ユーザーを使用しようとしています。<br\><br\></li>
               </ul>
-              <p>To fix this error, please ensure that you are not using a federated account for the global administrator you specified at the beginning of the Azure AD Connect installation process, and that the password specified is correct.</p>
+              <p>このエラーを修正するには、Azure AD Connect インストール プロセスの開始時に指定されたグローバル管理者用のフェデレーション アカウントを使用していないことと、指定されたパスワードが正しいことをご確認ください。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Error configuring writeback during Azure AD Connect installation.</p>
+              <p>Azure AD Connect インストール中のライトバックの構成エラーです。</p>
             </td>
             <td>
-              <p>The Azure AD Connect machine event log contains error 32002 thrown by the PasswordResetService.</p>
+              <p>Azure AD Connect コンピューターのイベント ログには、PasswordResetService によってスローされたエラー 32002 が含まれています。</p>
               <p>
 
               </p>
-              <p>The error reads: “Error Connecting to ServiceBus, The token provider was unable to provide a security token…”</p>
+              <p>このエラーは、"ServiceBus への接続エラーです。トークン プロバイダーはセキュリティ トークンを提供できませんでした" です。</p>
               <p>
 
               </p>
             </td>
             <td>
-              <p>The root cause of this error is that the password reset service running in your on-premises environment is not able to connect to the service bus endpoint in the cloud. This error is normally normally caused by a firewall rule blocking an outbound connection to a particular port or web address.</p>
+              <p>このエラーの根本原因は、オンプレミスの環境で実行されているパスワード リセット サービスが、クラウド内の Service Bus のエンドポイントに接続できないことです。このエラーは、通常、特定のポートまたは Web のアドレスへの発信接続をブロックするファイアウォール規則が原因で発生します。</p>
               <p>
 
               </p>
-              <p>Make sure your firewall allows outbound connections for the following:</p>
+              <p>ファイアウォールが次の発信接続を許可していることを確認します。</p>
               <ul>
                 <li class="unordered">
-All traffic over TCP 443 (HTTPS)<br\><br\></li>
+										TCP 443 (HTTPS) 経由のすべてのトラフィック<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-Outbound connections to <br\><br\></li>
+										次への発信接続: <br\><br\></li>
               </ul>
               <p>
 
               </p>
-              <p>Once you have updated these rules, reboot the Azure AD Connect machine and Password Writeback should start working again.</p>
+              <p>これらのルールを更新した後、Azure AD Connect コンピューターを再起動し、パスワード ライトバックが再び動作を開始する必要があります。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Password Writeback endpoint on-prem not reachable</p>
+              <p>オンプレミスのパスワード ライトバックのエンドポイントに到達できません</p>
             </td>
             <td>
-              <p>After working for some time, federated or password hash synced users cannot reset their passwords.</p>
+              <p>しばらく動作した後、フェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは自分のパスワードをリセットできません。</p>
             </td>
             <td>
-              <p>In some rare cases, the Password Writeback service may fail to re-start when Azure AD Connect has re-started. In these cases, first, check whether Password Writeback appears to be enabled on-prem. This can be done using the Azure AD Connect wizard or powershell (See HowTos section above).If the feature appears to be enabled, try enabling or disabling the feature again either through the UI or PowerShell. See “Step 2: Enable Password Writeback on your Directory Sync computer &amp; configure firewall rules” in <a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">How to enable/disable Password Writeback</a> for more information on how to do this.</p>
+              <p>Azure AD Connect を再起動したときに、まれにパスワード ライトバック サービスの再起動に失敗することがあります。このような場合は、まずパスワード ライトバックがオンプレミスで有効になっていることが表示されるかどうかを確認します。これは、Azure AD Connect ウィザードまたは PowerShell を使用して行うことができます (前のセクションを参照してください)。機能が有効になっていると表示される場合は、UI または PowerShell を使用してもう一度機能を有効または無効にします。これを行う方法の詳細については、「<a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">パスワード ライトバックを有効または無効にする方法</a>」に関するページの「手順 2: ディレクトリ同期コンピューターのパスワード ライトバックを有効にし、ファイアウォール規則を構成する」をご覧ください。</p>
               <p>
 
               </p>
-              <p>If this doesn’t work, try completely uninstalling and re-installing Azure AD Connect.</p>
+              <p>これが機能しない場合は、Azure AD Connect を完全にアンインストールして再インストールしてください。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Permissions errors</p>
+              <p>アクセス許可エラー</p>
             </td>
             <td>
-              <p>Federated or password hash sync’d users who attempt to reset their passwords see an error after submitting the password indicating there was a service problem.</p>
+              <p>自分のパスワードのリセットを試みるフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは、パスワードを送信した後にサービスに問題があったことを示すエラーが表示されます。</p>
               <p>
 
               </p>
-              <p>In addition to this, during password reset operations, you may see an error regarding management agent was denied access in your on premises event logs.</p>
+              <p>さらに、パスワードのリセット操作中に、管理エージェントがオンプレミスのイベント ログでアクセスが拒否されたというエラーが表示されることがあります。</p>
             </td>
             <td>
-              <p>If you see these errors in your event log, confirm that the AD MA account (that was specified in the wizard at the time of configuration) has the necessary permissions for Password Writeback.</p>
+              <p>イベント ログにこのようなエラーが表示された場合は、AD MA アカウント (構成時にウィザードで指定された) がパスワード ライトバックに対して必要な権限を持っていることを確認します。</p>
               <p>
 
               </p>
-              <p>NOTE that once this permission is given it can take up to 1 hour for the permissions to trickle down via sdprop background task on the DC. </p>
-              <p>For password reset to work, the permission needs to be stamped on the security descriptor of the user object whose password is being reset. Until this permission shows up on the user object, password reset will continue to fail with access denied.</p>
+              <p>この権限が付与されたら、DC の sdprop バックグラウンド タスクを介して権限が適用されるのに最大 1 時間かかることがあります。</p>
+              <p>パスワードのリセットが機能するには、パスワードがリセットされるユーザー オブジェクトのセキュリティ記述子に権限を設定する必要があります。この権限がユーザー オブジェクトに表示されるまで、パスワードのリセットはアクセス拒否によって引き続き失敗します。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Error when configuring Password Writeback from the Azure AD Connect configuration wizard </p>
+              <p>Azure AD Connect 構成ウィザードからパスワード ライトバックを構成中にエラーが発生しました </p>
             </td>
             <td>
-              <p>“Unable to Locate MA” error in Wizard while enabling/disabling Password Writeback</p>
+              <p>パスワード ライトバックが有効または無効になっているときに、ウィザードで “MA が見つかりません” というエラーが発生しました</p>
             </td>
             <td>
-              <p>There is a known bug in the released version of Azure AD Connect which manifests in the following situation:</p>
+              <p>Azure AD Connect のリリース バージョンには、次のような状況で発生する既知のバグがあります。</p>
               <ol class="ordered">
                 <li>
-You configure Azure AD Connect for tenant abc.com (Verified domain) using creds . This results in AAD connector with name “abc.com – AAD” being created.<br\><br\></li>
+										資格情報を使用してテナント abc.com (確認済みドメイン) に Azure AD Connect を構成します。これにより、"abc.com – AAD" という名前の AAD コネクタが作成されます。<br\><br\></li>
                 <li>
-You then then change the AAD creds for the connector (using old sync UI) to  (note it’s the same tenant but different domain name). <br\><br\></li>
+										その後、このコネクタの AAD 資格情報を (以前の同期 UI を使用して) 変更します (テナントは同じですがドメイン名が異なります)。<br\><br\></li>
                 <li>
-Now you try to enable/disable Password Writeback. The wizard will construct the name of the connector using the creds, as “abc.onmicrosoft.com – AAD” and pass to the Password Writeback cmdlet. This will fail because there is no connector created with this name.<br\><br\></li>
+										ここで、パスワード ライトバックを有効または無効にします。ウィザードは資格情報を使用してコネクタの名前を作成し ("abc.onmicrosoft.com – AAD" など)、パスワード ライトバックのコマンドレットに渡します。これは、この名前で作成されたコネクタが存在しないため、失敗します。<br\><br\></li>
               </ol>
-              <p>This has been fixed in our latest builds. If you have an older build, the one workaround is to use the powershell cmdlet to enable/disable the feature. See “Step 2: Enable Password Writeback on your Directory Sync computer &amp; configure firewall rules” in <a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">How to enable/disable Password Writeback</a> for more information on how to do this.</p>
+              <p>これは、最新のビルドで修正されています。古いビルドを使用している場合の 1 つの回避策は、powershell コマンドレットを使用して機能を有効または無効にすることです。これを行う方法の詳細については、「<a href="active-directory-passwords-getting-started.md#enable-users-to-reset-or-change-their-ad-passwords">パスワード ライトバックを有効または無効にする方法</a>」に関するページの「手順 2: ディレクトリ同期コンピューターのパスワード ライトバックを有効にし、ファイアウォール規則を構成する」をご覧ください。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Unable to reset password for users in special groups such as Domain Admins / Enterprise Admins etc.</p>
+              <p>Domain Admins や Enterprise Admins などの特別なグループ内のユーザーのパスワードをリセットできません</p>
             </td>
             <td>
-              <p>Federated or password hash sync’d users who are part of protected groups and attempt to reset their passwords see an error after submitting the password indicating there was a service problem.</p>
+              <p>保護グループの一部の、自分のパスワードのリセットを試みるフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは、パスワードを送信した後にサービスに問題があったことを示すエラーが表示されます。</p>
             </td>
             <td>
-              <p>Privileged users in Active Directory are protected using AdminSDHolder. See <a href="https://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx">http://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx</a> for more details. </p>
+              <p>Active Directory の特権のあるユーザーは、AdminSDHolder を使用して保護されます。詳細については、「<a href="https://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx">http://technet.microsoft.com/magazine/2009.09.sdadminholder.aspx</a>」をご覧ください。</p>
               <p>
 
               </p>
-              <p>This means the security descriptors on these objects are periodically checked to match the one specified in AdminSDHolder and are reset if they are different. The additional permissions that are needed for Password Writeback therefore do not trickle to such users. This can result in Password Writeback not working for such users.As a result, we do not support managing passwords for users within these groups because it breaks the AD security model.</p>
+              <p>これは、これらのオブジェクトのセキュリティ記述子が AdminSDHolder で指定されたものと一致することが定期的に確認され、異なる場合はリセットされることを意味します。そのため、パスワード ライトバックに必要な追加の権限はこのようなユーザーには適用されません。これにより、パスワード ライトバックはこのようなユーザーに対して動作しません。その結果、AD セキュリティ モデルが破棄されるため、これらのグループ内のユーザーに対するパスワードの管理はサポートされません。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Reset operations fails with Object could not be found</p>
+              <p>オブジェクトでのリセット操作の失敗が見つかりませんでした</p>
             </td>
             <td>
-              <p>Federated or password hash sync’d users who attempt to reset their passwords see an error after submitting the password indicating there was a service problem.</p>
+              <p>自分のパスワードのリセットを試みるフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは、パスワードを送信した後にサービスに問題があったことを示すエラーが表示されます。</p>
               <p>
 
               </p>
-              <p>In addition to this, during password reset operations, you may see an error in your event logs from the Azure AD Connect service indicating an “Object could not be found” error.</p>
+              <p>さらに、パスワードのリセット操作中に、Azure AD Connect サービスのイベント ログに "オブジェクトが見つかりませんでした" というエラーが表示されることがあります。</p>
             </td>
             <td>
-              <p>This error usually indicates that the sync engine is unable to find either the user object in the AAD connector space or the linked MV or AD connector space object. </p>
+              <p>このエラーは通常、同期エンジンが、AAD コネクタ スペース オブジェクト、またはリンクされた MV または AD のコネクタ スペース オブジェクト内のいずれかのユーザー オブジェクトを検索できないことを示します。</p>
               <p>
 
               </p>
-              <p>To troubleshoot this, make sure that the user is indeed synced from on-prem to AAD via the current instance of Azure AD Connect and inspect the state of the objects in the connector spaces and MV. Confirm that the AD CS object is connector to the MV object via the “Microsoft.InfromADUserAccountEnabled.xxx” rule.</p>
+              <p>これをトラブルシューティングするには、Azure AD Connect の現在のインスタンスを介してオンプレミスから AAD にユーザーが実際に同期されていることを確認し、コネクタ スペースと MV 内のオブジェクトの状態を検査します。AD CS オブジェクトが "Microsoft.InfromADUserAccountEnabled.xxx" ルールによって MV オブジェクトへのコネクタであることを確認します。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Reset operations fails with Multiple matches found eror</p>
+              <p>リセット操作は複数の一致の検出エラーにより失敗します</p>
             </td>
             <td>
-              <p>Federated or password hash sync’d users who attempt to reset their passwords see an error after submitting the password indicating there was a service problem.</p>
+              <p>自分のパスワードのリセットを試みるフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーは、パスワードを送信した後にサービスに問題があったことを示すエラーが表示されます。</p>
               <p>
 
               </p>
-              <p>In addition to this, during password reset operations, you may see an error in your event logs from the Azure AD Connect service indicating a “Multiple maches found” error.</p>
+              <p>さらに、パスワードのリセット操作中に、Azure AD Connect サービスのイベント ログに "複数の一致が見つかりました" というエラーが表示されることがあります。</p>
             </td>
             <td>
-              <p>This indicates that the sync engine detected that the MV object is connected to more than one AD CS objects via the “Microsoft.InfromADUserAccountEnabled.xxx”. This means that the user has an enabled account in more than one forest. </p>
+              <p>これは、MV オブジェクトが "Microsoft.InfromADUserAccountEnabled.xxx" によって複数の AD CS オブジェクトに接続されていることを同期エンジンが検出したことを示します。これは、ユーザーが複数のフォレストに有効なアカウントを持っていることを意味します。</p>
               <p>
 
               </p>
-              <p>Currently this scenario is not supported for Password Writeback.</p>
+              <p>現在このシナリオは、パスワード ライトバックではサポートされていません。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Password operations fail with a configuration error.</p>
+              <p>パスワード操作は構成エラーにより失敗しました</p>
             </td>
             <td>
-              <p>Password operations fail with a configuration error. The application event log contains Azure AD Connect error 6329 with text: 0x8023061f (The operation failed because password synchronization is not enabled on this Management Agent.)</p>
+              <p>パスワード操作は構成エラーにより失敗しましたアプリケーション イベント ログには、Azure AD Connect エラー 6329 とテキスト: 0x8023061f (この管理エージェントではパスワード同期が無効になっているため操作に失敗しました) が含まれています。</p>
             </td>
             <td>
-              <p>This occurs if the Azure AD Connect configuration is changed to add&nbsp;a new AD forest (or to remove and re-add an existing forest) <strong>after</strong> the Password Writeback feature has already been enabled. Password operations for users in such newly added forests will fail. To fix the problem, disable and re-enable the Password Writeback feature after the forest configuration changes have been completed.</p>
+              <p>これは、パスワード ライトバック機能を有効にした<strong>後</strong>、Azure AD Connect の構成が新しい AD フォレストを追加する (または既存のフォレストを削除して再度追加する) ように変更された場合に発生します。このような新たに追加されたフォレスト内のユーザーのパスワード操作は失敗します。問題を解決するには、フォレスト構成の変更が完了した後に、パスワード ライトバック機能を無効にしてから再び有効にします。</p>
             </td>
           </tr>
           <tr>
             <td>
-              <p>Writing back passwords that have been reset by users works properly, but writing back passwords changed by a user or reset for a user by an administrator fails.</p>
+              <p>ユーザーがリセットしたパスワードを書き戻すと正しく動作しますが、ユーザーが変更したパスワードまたは管理者がユーザーのためにリセットしたパスワードを書き戻すと失敗します。</p>
             </td>
             <td>
-              <p>When attempting to reset a password on behalf of a user from the Azure Management Portal, you see a message stating: “The password reset service running in your on-premises environment does not support administrators resetting user passwords. Please upgrade to the latest version of Azure AD Connect to resolve this.”</p>
+              <p>Microsoft Azure 管理ポータルからユーザーの代わりにパスワードをリセットしようとすると、"オンプレミスの環境で実行されているパスワード リセット サービスは、ユーザーのパスワードをリセットする管理者をサポートしていません。これを解決するには、最新のバージョンの Azure AD Connect にアップグレードしてください" というメッセージが表示されます。</p>
             </td>
             <td>
-              <p>This occurs when the version of the synchronization engine does not support the particular Password Writeback operation that was used. Versions of Azure AD Connect later than 1.0.0419.0911 support all password management operations, including password reset writeback, password change writeback, and administrator-initiated password reset writeback from the Azure Management Portal.&nbsp; DirSync versions later than 1.0.6862 support password reset writeback only. To resolve this issue, we highly recommend that you install the latest version of Azure AD Connect or Azure Active Directory Connect (for more information, see <a href="active-directory-aadconnect">Directory Integration Tools</a>) to resolve this issue and to get the most out of Password Writeback in your organization.</p>
+              <p>これは、同期エンジンのバージョンが、使用した特定のパスワード ライトバック操作をサポートしていない場合に発生します。Azure AD Connect の 1.0.0419.0911 以降のバージョンでは、Microsoft Azure 管理ポータルからのすべてのパスワード管理操作 (パスワード リセットのライトバック、パスワード変更のライトバック、管理者によるパスワード リセットのライトバック) をサポートしています。&#160; DirSync の 1.0.6862 以降のバージョンでは、パスワード リセットのライトバックのみをサポートしています。この問題を解決するには、最新バージョンの Azure AD Connect または Azure Active Directory Connect をインストールし (詳細については、「<a href="active-directory-aadconnect">ディレクトリ統合ツール</a>」に関するページをご覧ください)、組織内でパスワード ライトバックを最大限に活用することを強くお勧めします。</p>
             </td>
           </tr>
         </tbody></table>
 
 
-## <a name="password-writeback-event-log-error-codes"></a>Password Writeback event log error codes
-A best practice when troubleshooting issues with Password Writeback is to inspect that Application Event Log on your Azure AD Connect machine. This event log will contain events from two sources of interest for Password Writeback. The PasswordResetService source will describe operations and issues related to the operation of Password Writeback. The ADSync source will describe operations and issues related to setting passwords in your AD environment.
+## パスワード ライトバックのイベント ログのエラー コード
+パスワード ライトバックに関する問題をトラブルシューティングする場合のベスト プラクティスは、Azure AD Connect コンピューターでそのアプリケーション イベント ログを検査することです。このイベント ログには、パスワード ライトバックの 2 つの対象ソースのイベントが格納されます。PasswordResetService ソースは、操作とパスワード ライトバックの操作に関連する問題について説明します。ADSync ソースは、操作と AD 環境でのパスワード設定に関連する問題について説明します。
 
 <table>
           <tbody><tr>
             <td>
               <p>
-                <strong>Code</strong>
+                <strong>コード</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Name / Message</strong>
+                <strong>名前 / メッセージ</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Source</strong>
+                <strong>ソース</strong>
               </p>
             </td>
             <td>
               <p>
-                <strong>Description</strong>
+                <strong>説明</strong>
               </p>
             </td>
           </tr>
@@ -693,28 +692,28 @@ A best practice when troubleshooting issues with Password Writeback is to inspec
               <p>6329</p>
             </td>
             <td>
-              <p>BAIL: MMS(4924) 0x80230619 – “A restriction prevents the password from being changed to the current one specified.”</p>
+              <p>BAIL: MMS(4924) 0x80230619 – "制限によりパスワードを現在指定されているパスワードに変更することはできません"</p>
             </td>
             <td>
               <p>ADSync</p>
             </td>
             <td>
-              <p>This event occurs when the Password Writeback service attempts to set a password on your local directory which does not meet the password age, history, complexity, or filtering requirements of the domain.</p>
+              <p>このイベントは、パスワード ライトバック サービスが、パスワードの有効期間、履歴、複雑さ、フィルタリングに関するドメインの要件を満たしていないローカル ディレクトリにパスワードを設定しようとすると発生します。</p>
               <ul>
                 <li class="unordered">
-If you have a minimum password age, and have recently changed the password within that window of time, you will not be able to change the password again until it reaches the specified age in your domain. For testing purposes, minimum age should be set to 0.<br\><br\></li>
+										パスワードの最小有効期間が残っていて、最近その期間内にパスワードを変更した場合は、そのドメインで指定された期限に達するまで、もう一度パスワードを変更することはできません。テストのために、最小有効期間は 0 に設定する必要があります。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-If you have password history requirements enabled, then you must select a password that has not been used in the last N times, where N is the password history setting. If you do select a password that has been used in the last N times, then you will see a failure in this case. For testing purposes, history should be set to 0.<br\><br\></li>
+										パスワードの履歴の要件が有効になっている場合は、最後の N 回で使用されていないパスワードを選択する必要があります。N はパスワードの履歴設定です。最後の N 回で使用されているパスワードを選択した場合は、エラーが表示されます。テストのために、履歴は 0 に設定する必要があります。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-If you have password complexity requirements, all of them will be enforced when the user attempts to change or reset a password.<br\><br\></li>
+										パスワードの複雑さの要件を指定する場合は、ユーザーがパスワードを変更またはリセットしようとすると、すべての要件が適用されます。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-If you have password filters enabled, and a user selects a password which does not meet the filtering criteria, then the reset or change operation will fail.<br\><br\></li>
+										パスワード フィルターが有効になっている場合に、ユーザーがフィルター条件を満たしていないパスワードを選択すると、リセットまたは変更の操作に失敗します。<br\><br\></li>
               </ul>
             </td>
           </tr>
@@ -723,15 +722,15 @@ If you have password filters enabled, and a user selects a password which does n
               <p>HR 8023042</p>
             </td>
             <td>
-              <p>Synchronization Engine returned an error hr=80230402, message=An attempt to get an object failed because there are duplicated entries with the same anchor</p>
+              <p>同期エンジンから、エラー hr=80230402, message=An attempt to get an object failed because there are duplicated entries with the same anchor が返されます</p>
             </td>
             <td>
               <p>ADSync</p>
             </td>
             <td>
-              <p>This event occurs when the same user id is enabled in multiple domains.  For example, if you are syncing Account/Resource forests, and have the same user id present and enabled in each, this error may occur.  </p>
-              <p>This error can also occur if you are using a non-unique anchor attribute (like alias or UPN) and two users share that same anchor attribute.</p>
-              <p>To resolve this issue, ensure that you do not have any duplicated users within your domains and that you are using a unique anchor attribute for each user.</p>
+              <p>このイベントは、複数のドメインで同じユーザー ID が有効にされたときに発生します。たとえば、アカウント/リソース フォレストを同期したときに、同じユーザー ID が存在し、どちらも有効な場合、このエラーが発生する可能性があります。 </p>
+              <p>また、一意ではないアンカー属性 (エイリアスや UPN) を使用し、2 人のユーザーがその同じアンカー属性を共有している場合にも、このエラーが発生します。</p>
+              <p>この問題を解決するには、ドメイン内に重複するユーザーがいないようにして、各ユーザーに一意のアンカー属性を使用します。</p>
             </td>
           </tr>
           <tr>
@@ -745,7 +744,7 @@ If you have password filters enabled, and a user selects a password which does n
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the on-premises service detected a password reset request for a federated or password hash sync’d user originating from the cloud. This event is the first event in every password reset writeback operation.</p>
+              <p>このイベントは、オンプレミスのサービスが、クラウドから送信されたフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーへのパスワード リセット要求を検出したことを示します。このイベントは、すべてのパスワード リセットのライトバック操作における最初のイベントです。</p>
             </td>
           </tr>
           <tr>
@@ -759,7 +758,7 @@ If you have password filters enabled, and a user selects a password which does n
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that a user selected a new password during a password reset operation, we determined that this password meets corporate password requirements, and that password has been successfully written back to the local AD environment.</p>
+              <p>このイベントは、ユーザーがパスワードのリセット操作中に新しいパスワードを選択したことを示します。このパスワードは企業のパスワード要件を満たし、ローカル AD 環境に正常に書き戻されたと判断されました。</p>
             </td>
           </tr>
           <tr>
@@ -773,20 +772,20 @@ If you have password filters enabled, and a user selects a password which does n
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that a user selected a password, and that password arrived successfully to the on-premises environment, but when we attempted to set the password in the local AD environment, a failure occurred. This can happen for several reasons:</p>
+              <p>このイベントは、ユーザーがパスワードを選択し、そのパスワードがオンプレミスの環境に正常に到着したが、ローカル AD 環境でパスワードを設定しようとするとエラーが発生したことを示します。これは、いくつかの理由で発生する場合があります。</p>
               <ul>
                 <li class="unordered">
-The user’s password does not meet the age, history, complexity, or filter requirements for the domain. Try a completely new password to resolve this.<br\><br\></li>
+										ユーザーのパスワードは、有効期間、履歴、複雑さ、ドメインのフィルター要件を満たしていません。この問題を解決するには、完全に新しいパスワードを試してください。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-The MA service account does not have the appropriate permissions to set the new password on the user account in question.<br\><br\></li>
+										MA サービス アカウントは、対象のユーザー アカウントに新しいパスワードを設定するための適切な権限を持っていません。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-The user’s account is in a protected group, such as domain or enterprise admins, which disallows password set operations.<br\><br\></li>
+										ユーザーのアカウントは、ドメイン管理者やエンタープライズ管理者などの保護グループ内にあるため、パスワードの設定操作が許可されていません。<br\><br\></li>
               </ul>
-              <p>See <a href="#troubleshoot-password-writeback">Troubleshoot Password Writeback</a> to learn more about what other situtions can cause this error.</p>
+              <p>このエラーが発生する可能性がある他の状況の詳細については、<a href="#troubleshoot-password-writeback">パスワード ライトバックのトラブルシューティング</a>をご覧ください。</p>
             </td>
           </tr>
           <tr>
@@ -800,7 +799,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event occurs if you enable Password Writeback with Azure AD Connect and indicates that we started onboarding your organization to the Password Writeback web service.</p>
+              <p>このイベントは、Azure AD Connect でパスワード ライトバックが有効になっている場合に発生し、組織がパスワード ライトバック Web サービスへのオンボードを開始したことを示します。</p>
             </td>
           </tr>
           <tr>
@@ -814,7 +813,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates the onboarding process was successful and that Password Writeback capability is ready to use.</p>
+              <p>このイベントは、オンボード プロセスに成功し、パスワード ライトバック機能を使用する準備が整ったことを示します。</p>
             </td>
           </tr>
           <tr>
@@ -828,7 +827,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the on-premises service detected a password change request for a federated or password hash sync’d user originating from the cloud. This event is the first event in every password change writeback operation.</p>
+              <p>このイベントは、オンプレミスのサービスが、クラウドから送信されたフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーへのパスワード変更要求を検出したことを示します。このイベントは、すべてのパスワード変更のライトバック操作における最初のイベントです。</p>
             </td>
           </tr>
           <tr>
@@ -842,7 +841,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that a user selected a new password during a password change operation, we determined that this password meets corporate password requirements, and that password has been successfully written back to the local AD environment.</p>
+              <p>このイベントは、ユーザーがパスワードの変更操作中に新しいパスワードを選択したことを示します。このパスワードは企業のパスワード要件を満たし、ローカル AD 環境に正常にライトバックされたと判断されました。</p>
             </td>
           </tr>
           <tr>
@@ -856,20 +855,20 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that a user selected a password, and that password arrived successfully to the on-premises environment, but when we attempted to set the password in the local AD environment, a failure occurred. This can happen for several reasons:</p>
+              <p>このイベントは、ユーザーがパスワードを選択し、そのパスワードがオンプレミスの環境に正常に到着したが、ローカル AD 環境でパスワードを設定しようとするとエラーが発生したことを示します。これは、いくつかの理由で発生する場合があります。</p>
               <ul>
                 <li class="unordered">
-The user’s password does not meet the age, history, complexity, or filter requirements for the domain. Try a completely new password to resolve this.<br\><br\></li>
+										ユーザーのパスワードは、有効期間、履歴、複雑さ、ドメインのフィルター要件を満たしていません。この問題を解決するには、完全に新しいパスワードを試してください。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-The MA service account does not have the appropriate permissions to set the new password on the user account in question.<br\><br\></li>
+										MA サービス アカウントは、対象のユーザー アカウントに新しいパスワードを設定するための適切な権限を持っていません。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-The user’s account is in a protected group, such as domain or enterprise admins, which disallows password set operations.<br\><br\></li>
+										ユーザーのアカウントは、ドメイン管理者やエンタープライズ管理者などの保護グループ内にあるため、パスワードの設定操作が許可されていません。<br\><br\></li>
               </ul>
-              <p>See <a href="#troubleshoot-password-writeback">Troubleshoot Password Writeback</a> to learn more about what other situations can cause this error.</p>
+              <p>このエラーが発生する可能性がある他の状況の詳細については、<a href="#troubleshoot-password-writeback">パスワード ライトバックのトラブルシューティング</a>をご覧ください。</p>
             </td>
           </tr>
           <tr>
@@ -883,7 +882,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>The on-premises service detected a password reset request for a federated or password hash sync’d user originating from the administrator on behalf of a user. This event is the first event in every admin-initiated password reset writeback operation.</p>
+              <p>オンプレミスのサービスは、ユーザーに代わって管理者から送信されたフェデレーション ユーザーまたはパスワード ハッシュ同期されたユーザーへのパスワード リセット要求を検出しました。このイベントは、すべての管理者によるパスワード リセットのライトバック操作における最初のイベントです。</p>
             </td>
           </tr>
           <tr>
@@ -897,7 +896,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>The admin selected a new password during an admin-initiated password reset operation, we determined that this password meets corporate password requirements, and that password has been successfully written back to the local AD environment.</p>
+              <p>管理者は、管理者によるパスワードのリセット操作中に新しいパスワードを選択しました。このパスワードは企業のパスワード要件を満たし、ローカル AD 環境に正常にライトバックされたと判断されました。</p>
             </td>
           </tr>
           <tr>
@@ -911,20 +910,20 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>The admin selected a password on behalf of a user, and that password arrived successfully to the on-premises environment, but when we attempted to set the password in the local AD environment, a failure occurred. This can happen for several reasons:</p>
+              <p>管理者は、ユーザーに代わってパスワードを選択し、そのパスワードはオンプレミスの環境に正常に到着しましたが、ローカル AD 環境でパスワードを設定しようとするとエラーが発生しました。これは、いくつかの理由で発生する場合があります。</p>
               <ul>
                 <li class="unordered">
-The user’s password does not meet the age, history, complexity, or filter requirements for the domain. Try a completely new password to resolve this.<br\><br\></li>
+										ユーザーのパスワードは、有効期間、履歴、複雑さ、ドメインのフィルター要件を満たしていません。この問題を解決するには、完全に新しいパスワードを試してください。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-The MA service account does not have the appropriate permissions to set the new password on the user account in question.<br\><br\></li>
+										MA サービス アカウントは、対象のユーザー アカウントに新しいパスワードを設定するための適切な権限を持っていません。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-The user’s account is in a protected group, such as domain or enterprise admins, which disallows password set operations.<br\><br\></li>
+										ユーザーのアカウントは、ドメイン管理者やエンタープライズ管理者などの保護グループ内にあるため、パスワードの設定操作が許可されていません。<br\><br\></li>
               </ul>
-              <p>See <a href="#troubleshoot-password-writeback">Troubleshoot Password Writeback</a> to learn more about what other situtions can cause this error.</p>
+              <p>このエラーが発生する可能性がある他の状況の詳細については、<a href="#troubleshoot-password-writeback">パスワード ライトバックのトラブルシューティング</a>をご覧ください。</p>
             </td>
           </tr>
           <tr>
@@ -938,7 +937,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event occurs if you disable Password Writeback with Azure AD Connect and indicates that we started offboarding your organization to the Password Writeback web service.</p>
+              <p>このイベントは、Azure AD Connect でパスワード ライトバックが無効になっている場合に発生し、組織がパスワード ライトバック Web サービスへのオフボードを開始したことを示します。</p>
             </td>
           </tr>
           <tr>
@@ -952,7 +951,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates the offboarding process was successful and that Password Writeback capability has been successfully disabled.</p>
+              <p>このイベントは、オフボード プロセスに成功し、パスワード ライトバック機能が正常に無効になっていることを示します。</p>
             </td>
           </tr>
           <tr>
@@ -966,7 +965,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates the offboarding process was not successful. This could be due to a permissions error on the cloud or on-premises administrator account specified during configuration, or because you are attempting to use a federated cloud global administrator when disabling Password Writeback. To fix this, check your administrative permissions and that you are not using any federated account while configuring the Password Writeback capability.</p>
+              <p>このイベントは、オフボード プロセスに失敗したことを示します。これは、構成中に指定されたクラウドまたはオンプレミスの管理者アカウントのアクセス許可エラーが原因か、パスワード ライトバックが無効になっている場合はフェデレーション クラウドのグローバル管理者を使用しようとしているためと考えられます。これを解決するには、管理者権限を確認し、パスワード ライトバック機能を構成する場合にフェデレーション アカウントを使用していないことを確認します。</p>
             </td>
           </tr>
           <tr>
@@ -980,7 +979,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the Password Writeback service has started successfully and is ready to accept password management requests from the cloud.</p>
+              <p>このイベントは、パスワード ライトバック サービスが正常に開始され、クラウドからのパスワード管理要求を受け入れる準備ができていることを示します。</p>
             </td>
           </tr>
           <tr>
@@ -994,7 +993,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the Password Writeback service has stopped and that any password management requests from the cloud will not be successful.</p>
+              <p>このイベントは、パスワード ライトバック サービスが停止していて、クラウドからのパスワード管理要求が正常に実行されないことを示します。</p>
             </td>
           </tr>
           <tr>
@@ -1008,7 +1007,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that we successfully retrieved an authorization token for the global admin specified during Azure AD Connect setup in order to start the offboarding or onboarding process.</p>
+              <p>このイベントは、オフボードまたはオンボード プロセスを開始するために、Azure AD Connect のセットアップ時に指定されたグローバル管理者の承認トークンを正常に取得したことを示します。</p>
             </td>
           </tr>
           <tr>
@@ -1022,7 +1021,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that we successfully created the password encryption key that will be used to encrypt passwords from the cloud to be sent to your on-premises environment.</p>
+              <p>このイベントは、クラウドからオンプレミスの環境に送信されるパスワードの暗号化に使用されるパスワード暗号化キーが正常に作成されたことを示します。</p>
             </td>
           </tr>
           <tr>
@@ -1036,7 +1035,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates an unknown error during a password management operation. Look at the exception text in the event for more details. If you are having problems, try disabling and re-enabling Password Writeback. If this does not help, include a copy of your event log along with the tracking id specified insider to your support engineer.</p>
+              <p>このイベントは、パスワード管理操作中の原因不明のエラーを示します。詳細については、イベントの例外の説明をご覧ください。問題が発生した場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。これで問題が解決しない場合は、イベント ログのコピーと内部の特定の追跡 ID をサポート エンジニアに送信します。</p>
             </td>
           </tr>
           <tr>
@@ -1050,7 +1049,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates there was an error connecting to the cloud password reset service, and generally occurs when the on-premises service was unable to connect to the password reset web service. </p>
+              <p>このイベントは、クラウド·パスワード·リセット·サービスへの接続中にエラーが発生したことを示し、通常、オンプレミスのサービスがパスワード リセット Web サービスに接続できなかった場合に発生します。</p>
             </td>
           </tr>
           <tr>
@@ -1064,7 +1063,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates there was an error connecting to your tenant’s service bus instance. This could happen because you are blocking outbound connections in your on-premises environment. Check your firewall to ensure you allow connections over TCP 443 and to <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>, and try again. If you are still having problems, try disabling and re-enabling Password Writeback.</p>
+              <p>このイベントは、テナントの Service Bus インスタンスへの接続中にエラーが発生したことを示します。これは、オンプレミスの環境で発信接続をブロックしているために発生する可能性があります。ファイアウォールが TCP 443 経由で <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a> に接続していることを確認し、やり直してください。それでも問題が解決しない場合は、パスワード ライトバックを無効にしてから再び有効にしてみてください。</p>
             </td>
           </tr>
           <tr>
@@ -1078,7 +1077,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the input passed to our web service API was invalid. Try the operation again.</p>
+              <p>このイベントは、Web サービス API に渡された入力が無効だったことを示します。操作をやり直してください。</p>
             </td>
           </tr>
           <tr>
@@ -1092,7 +1091,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that there was an error decrypting the password that arrived from the cloud. This could be because of a decryption key mismatch between the cloud service and your on-premises environment. In order to resolve this, disable and re-enable Password Writeback in your on-premises environment.</p>
+              <p>このイベントは、クラウドから受信したパスワードの解読中にエラーが発生したことを示します。これは、クラウド サービスとオンプレミスの環境との復号化キーの不一致が原因と考えられます。この問題を解決するには、オンプレミスの環境でパスワード ライトバックを無効にしてから再び有効にします。</p>
             </td>
           </tr>
           <tr>
@@ -1106,7 +1105,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>During onboarding, we save tenant-specific information in a configuration file in your on-premises environment. This event indicates there was an error saving this file or that when the service was started there was an error reading the file. To fix this issue, try disabling and re-enabling Password Writeback to force a re-write of this configuration file. </p>
+              <p>オンボード中に、オンプレミスの環境内の構成ファイルにテナント固有の情報を保存します。このイベントは、このファイルの保存中にエラーが発生した、またはサービスの開始時にファイルの読み取りエラーが発生したことを示します。この問題を解決するには、この構成ファイルの書き換えを強制するためにパスワード ライトバックを無効にしてから再び有効にしてみてください。</p>
             </td>
           </tr>
           <tr>
@@ -1120,7 +1119,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>DEPRECATED – This event is not present in Azure AD Connect, only very early builds of DirSync which supported writeback.</p>
+              <p>非推奨 – このイベントは、Azure AD Connect に存在しません。ライトバックがサポートされている DirSync のかなり初期のビルドにのみ存在します。</p>
             </td>
           </tr>
           <tr>
@@ -1134,7 +1133,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>During onboarding, we send data from the cloud to the on-premises password reset service. That data is then written to an in-memory file before being sent to the sync service to store this information securely on disk. This event indicates a problem with writing or updating that data in memory. To fix this issue, try disabling and re-enabling Password Writeback to force a re-write of this configuration.</p>
+              <p>オンボード中に、クラウドからオンプレミスのパスワード リセット サービスにデータを送信します。そのデータは、同期サービスに送信される前にメモリ内のファイルに書き込まれ、ディスク上に安全に保存されます。このイベントは、メモリ内でのそのデータの書き込みや更新に問題があることを示します。この問題を解決するには、この構成の書き換えを強制するためにパスワード ライトバックを無効にしてから再び有効にしてみてください。</p>
             </td>
           </tr>
           <tr>
@@ -1148,7 +1147,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates we received an invalid response from the password reset web service. To fix this issue, try disabling and re-enabling Password Writeback.</p>
+              <p>このイベントは、パスワード リセット Web サービスから無効な応答を受け取ったことを示します。この問題を解決するには、パスワード ライトバックを無効にしてから再び有効にしてみてください。</p>
             </td>
           </tr>
           <tr>
@@ -1162,7 +1161,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that we could not get an authorization token for the global administrator account specified during Azure AD Connect setup. This error can be caused by a bad username or password specified for the global admin account or because the global admin account specified is federated. To fix this issue, re-run configuration with the correct username and password and ensure the administrator is a managed (cloud-only or password-sync’d) account.</p>
+              <p>このイベントは、Azure AD Connect のセットアップ時に指定されたグローバル管理者アカウントの承認トークンを取得できなかったことを示します。このエラーは、グローバル管理者アカウントに指定された無効なユーザー名またはパスワードが原因か、指定されたグローバル管理者アカウントがフェデレーションされているために発生すると考えられます。この問題を解決するには、適切なユーザー名とパスワードを使用して構成を再実行し、管理者が管理 (クラウドのみまたはパスワード同期された) アカウントになっていることを確認します。</p>
             </td>
           </tr>
           <tr>
@@ -1176,7 +1175,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates there was an error when generating the password encryption key or decrypting a password that arrives from the cloud service. This error likely indicates an issue with your environment. Look at the details of your event log to learn more and resolve this issue. You may also try disabling and re-enabling the Password Writeback service to resolve this.</p>
+              <p>このイベントは、パスワード暗号化キーの生成中、またはクラウド サービスから受信するパスワードの暗号化解除中にエラーが発生したことを示します。このエラーは、使用している環境の問題を示している可能性があります。この問題を解決するには、イベント ログの詳細を確認します。また、パスワード ライトバック サービスを無効にしてから再び有効にすると解決できる場合もあります。</p>
             </td>
           </tr>
           <tr>
@@ -1190,7 +1189,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the on-premises service could not properly communicate with the password reset web service to initiate the onboarding process. This may be because of a firewall rule or problem getting an auth token for your tenant. To fix this, ensure that you are not blocking outbound connections over TCP 443 and TCP 9350-9354 or to <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>, and that the AAD admin account you are using to onboard is not federated. </p>
+              <p>このイベントは、オンプレミスのサービスが、オンボード プロセスを開始するためにパスワード リセット Web サービスと正しく通信できなかったことを示します。これは、ファイアウォール規則またはテナントの認証トークンを取得している間の問題が原因です。これを解決するには、TCP 443 と TCP 9350-9354 経由の発信接続または <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a> への接続がブロックされていないことと、オンボードに使用している AAD 管理者アカウントがフェデレーションされていないことを確認します。</p>
             </td>
           </tr>
           <tr>
@@ -1204,7 +1203,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>DEPRECATED – This event is not present in Azure AD Connect, only very early builds of DirSync which supported writeback.</p>
+              <p>非推奨 – このイベントは、Azure AD Connect に存在しません。ライトバックがサポートされている DirSync のかなり初期のビルドにのみ存在します。</p>
             </td>
           </tr>
           <tr>
@@ -1218,7 +1217,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the on-premises service could not properly communicate with the password reset web service to initiate the offboarding process. This may be because of a firewall rule or problem getting an authorization token for your tenant. To fix this, ensure that you are not blocking outbound connections over 443 or to <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a>, and that the AAD admin account you are using to offboard is not federated. </p>
+              <p>このイベントは、オンプレミスのサービスが、オフボード プロセスを開始するためにパスワード リセット Web サービスと正しく通信できなかったことを示します。これは、ファイアウォール規則またはテナントの認証トークンの取得中の問題が原因です。これを解決するには、TCP 443 経由の発信接続または <a href="https://ssprsbprodncu-sb.accesscontrol.windows.net/">https://ssprsbprodncu-sb.accesscontrol.windows.net/</a> への接続がブロックされていないことと、オフボードに使用している AAD 管理者アカウントがフェデレーションされていないことを確認します。</p>
             </td>
           </tr>
           <tr>
@@ -1232,7 +1231,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that we had to retry to connect to your tenant’s service bus instance. Under normal conditions, this should not be a concern, but if you see this event many times, consider checking your network connection to service bus, especially if it’s a high latency or low-bandwidth connection.</p>
+              <p>このイベントは、テナントの Service Bus インスタンスへの接続を再試行する必要があったことを示します。通常の状況では、これが問題になることはありませんが、このイベントが何度も表示される場合、特に、待機時間が長い接続や低帯域幅の接続の場合は、Service Bus へのネットワーク接続の確認を検討してください。</p>
             </td>
           </tr>
           <tr>
@@ -1246,7 +1245,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>In order to monitor the health of your Password Writeback service, we send heartbeat data to our password reset web service every 5 minutes. This event indicates that there was an error when sending this health information back to the cloud web service. This health information does not include an OII or PII data, and is purely a heartbeat and basic service statistics so that we can provide service status information in the cloud.</p>
+              <p>パスワード ライトバック サービスの正常性を監視するのには、パスワード リセット Web サービスに 5 分ごとにハートビート データを送信します。このイベントは、この正常性情報をクラウド Web サービスに送信するときにエラーが発生したことを示します。この正常性情報は、OII または PII データを含まない、純粋なハートビートと基本サービスの統計情報であるため、クラウド内のサービスの状態情報を提供できます。</p>
             </td>
           </tr>
           <tr>
@@ -1260,7 +1259,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that there was an unknown error returned by AD, check the Azure AD Connect server event log for events from the ADSync source for more information about this error.</p>
+              <p>このイベントは、AD によって返された原因不明のエラーが発生したことを示します。このエラーの詳細については、Azure AD Connect サーバーのイベント ログで ADSync ソースからのイベントを確認します。</p>
             </td>
           </tr>
           <tr>
@@ -1274,7 +1273,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the user who is trying to reset or change a password was not found in the on-premises directory. This could occur when the user has been deleted on-premises but not in the cloud, or if there is an issue with sync. Check your sync logs, as well as the last few sync run details for more information.</p>
+              <p>このイベントは、パスワードをリセットまたは変更しようとするユーザーがオンプレミスのディレクトリに見つからなかったことを示します。これは、ユーザーがクラウドではなくオンプレミスで削除された場合、または同期に問題がある場合に発生する可能性があります。同期ログだけでなく、最後にいくつか実行した同期についての詳細情報も確認します。</p>
             </td>
           </tr>
           <tr>
@@ -1288,7 +1287,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>When a password reset or change request originates from the cloud, we use the cloud anchor specified during the setup process of Azure AD Connect to determine how to link that request back to a user in your on-premises environment. This event indicates that we found two users in your on-premises directory with the same cloud anchor attribute. Check your sync logs, as well as the last few sync run details for more information.</p>
+              <p>パスワードのリセットまたは変更要求がクラウドから送信されると、Azure AD Connect のセットアップ プロセス中に指定されたクラウドのアンカーを使用して、その要求をオンプレミスの環境内のユーザーにリンクする方法を決定します。このイベントは、オンプレミスのディレクトリ内に同じクラウドのアンカー属性を持つユーザーが 2 人見つかったことを示します。同期ログだけでなく、最後にいくつか実行した同期についての詳細情報も確認します。</p>
             </td>
           </tr>
           <tr>
@@ -1302,7 +1301,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the Management Agent service account does not have the appropriate permissions on the account in question to set a new password. Ensure that the MA account in the user’s forest has Reset and Change password permissions on all objects in the forest.  For more information on how do to this, see <a href="active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions">Step 4: Set up the appropriate Active Directory permissions</a>.</p>
+              <p>このイベントは、管理エージェントのサービス アカウントが新しいパスワードを設定する対象のアカウントで適切な権限を持っていないことを示します。ユーザーのフォレストの MA アカウントが、フォレスト内のすべてのオブジェクトに対するパスワードのリセットと変更の権限があることを確認します。これに行う方法の詳細については、「<a href="active-directory-passwords-getting-started.md#step-4-set-up-the-appropriate-active-directory-permissions">手順 4: Active Directory の適切な権限を設定する</a>」をご覧ください。</p>
             </td>
           </tr>
           <tr>
@@ -1316,7 +1315,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that we attempted to reset or change a password for an account that was disabled on premises. Enable the account and try the operation again.</p>
+              <p>このイベントは、オンプレミスで無効になっていたアカウントのパスワードをリセットまたは変更しようとしたことを示します。アカウントを有効にして、操作をやり直してください。</p>
             </td>
           </tr>
           <tr>
@@ -1330,7 +1329,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>Event indicates that we attempted to reset or change a password for an account that was locked out on premises. Lockouts can occur when a user has tried a change or reset password operation too many times in a short period. Unlock the account and try the operation again.</p>
+              <p>このイベントは、オンプレミスでロックアウトされたアカウントのパスワードをリセットまたは変更しようとしたことを示します。ロックアウトは、ユーザーが短時間に何回もパスワードを変更またはリセットしようとした場合に発生します。アカウントのロックを解除して、操作をやり直してください。</p>
             </td>
           </tr>
           <tr>
@@ -1344,7 +1343,7 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates that the user specified an incorrect current password when performing a password change operation. Specify the correct current password and try again.</p>
+              <p>このイベントは、ユーザーがパスワードの変更操作を行うときに、現在のパスワードを正しく指定しなかったことを示します。現在の正しいパスワードを指定して、やり直してください。</p>
             </td>
           </tr>
           <tr>
@@ -1358,22 +1357,22 @@ The user’s account is in a protected group, such as domain or enterprise admin
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event occurs when the Password Writeback service attempts to set a password on your local directory which does not meet the password age, history, complexity, or filtering requirements of the domain.</p>
+              <p>このイベントは、パスワード ライトバック サービスが、パスワードの有効期間、履歴、複雑さ、フィルタリングに関するドメインの要件を満たしていないローカル ディレクトリにパスワードを設定しようとすると発生します。</p>
               <ul>
                 <li class="unordered">
-If you have a minimum password age, and have recently changed the password within that window of time, you will not be able to change the password again until it reaches the specified age in your domain. For testing purposes, minimum age should be set to 0.<br\><br\></li>
+										パスワードの最小有効期間が残っていて、最近その期間内にパスワードを変更した場合は、そのドメインで指定された期限に達するまで、もう一度パスワードを変更することはできません。テストのために、最小有効期間は 0 に設定する必要があります。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-If you have password history requirements enabled, then you must select a password that has not been used in the last N times, where N is the password history setting. If you do select a password that has been used in the last N times, then you will see a failure in this case. For testing purposes, history should be set to 0.<br\><br\></li>
+										パスワードの履歴の要件が有効になっている場合は、最後の N 回で使用されていないパスワードを選択する必要があります。N はパスワードの履歴設定です。最後の N 回で使用されているパスワードを選択した場合は、エラーが表示されます。テストのために、履歴は 0 に設定する必要があります。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-If you have password complexity requirements, all of them will be enforced when the user attempts to change or reset a password.<br\><br\></li>
+										パスワードの複雑さの要件を指定する場合は、ユーザーがパスワードを変更またはリセットしようとすると、すべての要件が適用されます。<br\><br\></li>
               </ul>
               <ul>
                 <li class="unordered">
-If you have password filters enabled, and a user selects a password which does not meet the filtering criteria, then the reset or change operation will fail.<br\><br\></li>
+										パスワード フィルターが有効になっている場合に、ユーザーがフィルター条件を満たしていないパスワードを選択すると、リセットまたは変更の操作に失敗します。<br\><br\></li>
               </ul>
             </td>
           </tr>
@@ -1388,7 +1387,7 @@ If you have password filters enabled, and a user selects a password which does n
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>This event indicates there was an issue writing a password back to your on-premises directory due to a configuration issue with Active Directory. Check the Azure AD Connect machine’s Application event log for messages from the ADSync service for more information on what error occurred. </p>
+              <p>このイベントは、Active Directory に構成の問題があるため、オンプレミスのディレクトリへのパスワード書き込みエラーが発生したことを示します。発生したエラーの詳細については、Azure AD Connect コンピューターのアプリケーション イベント ログで ADSync サービスからのメッセージを確認します。</p>
             </td>
           </tr>
           <tr>
@@ -1402,7 +1401,7 @@ If you have password filters enabled, and a user selects a password which does n
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>DEPRECATED – This event is not present in Azure AD Connect, only very early builds of DirSync which supported writeback.</p>
+              <p>非推奨 – このイベントは、Azure AD Connect に存在しません。ライトバックがサポートされている DirSync のかなり初期のビルドにのみ存在します。</p>
             </td>
           </tr>
           <tr>
@@ -1416,7 +1415,7 @@ If you have password filters enabled, and a user selects a password which does n
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>DEPRECATED – This event is not present in Azure AD Connect, only very early builds of DirSync which supported writeback.</p>
+              <p>非推奨 – このイベントは、Azure AD Connect に存在しません。ライトバックがサポートされている DirSync のかなり初期のビルドにのみ存在します。</p>
             </td>
           </tr>
           <tr>
@@ -1430,87 +1429,84 @@ If you have password filters enabled, and a user selects a password which does n
               <p>PasswordResetService</p>
             </td>
             <td>
-              <p>DEPRECATED – This event is not present in Azure AD Connect, only very early builds of DirSync which supported writeback.</p>
+              <p>非推奨 – このイベントは、Azure AD Connect に存在しません。ライトバックがサポートされている DirSync のかなり初期のビルドにのみ存在します。</p>
             </td>
           </tr>
         </tbody></table>
 
-## <a name="troubleshoot-password-writeback-connectivity"></a>Troubleshoot Password Writeback connectivity
+## パスワード ライトバックの接続のトラブルシューティング
 
-If you are experiencing service interruptions with the Password Writeback component of Azure AD Connect, here are some quick steps you can take to resolve this:
+Azure AD Connect のパスワード ライトバック コンポーネントでサービスの中断が発生した場合は、いくつかの簡単な手順を使用してこの問題を解決できます。
 
- - [Restart the Azure AD Connect Sync Service](#restart-the-azure-AD-Connect-sync-service)
- - [Disable and re-enable the Password Writeback feature](#disable-and-re-enable-the-password-writeback-feature)
- - [Install the latest Azure AD Connect release](#install-the-latest-azure-ad-connect-release)
- - [Troubleshoot Password Writeback](#troubleshoot-password-writeback)
+ - [Azure AD Connect 同期サービスを再起動する](#restart-the-azure-AD-Connect-sync-service)
+ - [パスワード ライトバック機能を無効にしてから再び有効にする](#disable-and-re-enable-the-password-writeback-feature)
+ - [最新の Azure AD Connect リリースをインストールする](#install-the-latest-azure-ad-connect-release)
+ - [パスワード ライトバックをトラブルシューティングする](#troubleshoot-password-writeback)
 
-In general, we recommend that you execute these steps in the order above in order to recover your service in the most rapid manner.
+通常、最も速い方法でサービスを復旧するには、上記の順序でこれらの手順を実行することをお勧めします。
 
-### <a name="restart-the-azure-ad-connect-sync-service"></a>Restart the Azure AD Connect Sync Service
-Restarting the Azure AD Connect Sync Service can help to resolve connectivity issues or other transient issues with the service.
+### Azure AD Connect 同期サービスを再起動する
+Azure AD Connect 同期サービスを再起動すると、サービスに関する接続の問題や他の一時的な問題を解決するのに役立ちます。
 
- 1. As an administrator, click **Start** on the server running **Azure AD Connect**.
- 2. Type **“services.msc”** in the search box and press **Enter**.
- 3. Look for the **Microsoft Azure AD Connect** entry.
- 4. Right-click on the service entry, click **Restart**, and wait for the operation to complete.
+ 1.	管理者は、**Azure AD Connect** を実行しているサーバーで **[開始]** をクリックします。
+ 2.	検索ボックスに「**services.msc**」と入力し、**Enter** キーを押します。
+ 3.	**[Microsoft Azure AD Connect]** エントリを検索します。
+ 4.	このサービス エントリを右クリックして **[再起動]** をクリックし、処理が完了するまで待機します。
 
     ![][002]
 
-These steps will re-establish your connection with the cloud service and resolve any interruptions you may be experiencing.  If restarting the Sync Service does not resolve your issue, we recommend that you try to disable and re-enable the Password Writeback feature as a next step.
+これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。同期サービスを再起動しても問題が解決しない場合は、次の手段としてパスワード ライトバック機能を無効にしてから再び有効にすることをお勧めします。
 
-### <a name="disable-and-re-enable-the-password-writeback-feature"></a>Disable and re-enable the Password Writeback feature
-Disabling and re-enabling the Password Writeback feature can help to resolve connectivity issues.
+### パスワード ライトバック機能を無効にしてから再び有効にする
+パスワード ライトバック機能を無効にしてから再び有効にすると、接続の問題を解決するのに役立ちます。
 
- 1. As an administrator, open the **Azure AD Connect configuration wizard**.
- 2. On the **Connect to Azure AD** dialog, enter your **Azure AD global admin credentials**
- 3. On the **Connect to AD DS** dialog, enter your **AD Domain Services admin credentials**.
- 4. On the **Uniquely identifying your users** dialog, click the **Next** button.
- 5. On the **Optional features** dialog, uncheck the **Password write-back** checkbox.
+ 1.	管理者として **[Azure AD Connect 構成ウィザード]** を開きます。
+ 2.	**[Azure AD に接続]** ダイアログ ボックスで、**Azure AD のグローバル管理者の資格情報**を入力します。
+ 3.	**[AD DS に接続]** ダイアログ ボックスで、**AD ドメイン サービスの管理者の資格情報**を入力します。
+ 4.	**[ユーザーを一意に識別]** ダイアログ ボックスで、**[次へ]** ボタンをクリックします。
+ 5.	**[オプション機能]** ダイアログ ボックスで、**[パスワード ライトバック]** チェックボックスをオフにします。
 
     ![][003]
 
- 6. Click **Next** through the remaining dialog pages without changing anything until you get to the **Ready to configure** page.
- 7. Ensure that the configure page shows the **Password write-back option as disabled** and then click the green **Configure** button to commit your changes.
- 8. On the **Finished** dialog, deselect the **Synchronize now** option, and then click **Finish** to close the wizard.
- 9. Re-open the **Azure AD Connect configuration wizard**.
- 10.    **Repeat steps 2-8**, except ensure you **check the Password write-back option** on the **Optional features** screen to re-enable the service.
+ 6.	他のダイアログ ページは何も変更せずに、**[構成の準備完了]** ページが表示されるまで **[次へ]** をクリックします。
+ 7.	構成ページで**パスワード ライトバック オプションが無効**になっていることを確認したら、緑色の **[構成]** ボタンをクリックして変更をコミットします。
+ 8.	**[完了]** ダイアログ ボックスで、**[今すぐ同期]** オプションを選択解除し、**[完了]** をクリックしてウィザードを閉じます。
+ 9.	**[Azure AD Connect 構成ウィザード]** をもう一度開きます。
+ 10.	**手順 2 ～ 8 を繰り返します**。ただし、サービスを再度有効にするために **[オプションの機能]** 画面で**パスワード ライトバックのオプションがオン**になっていることを確認します。
 
     ![][004]
 
-These steps will re-establish your connection with our cloud service and resolve any interruptions you may be experiencing.
+これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。
 
-If disabling and re-enabling the Password Writeback feature does not resolve your issue, we recommend that you try to re-install Azure AD Connect as a next step.
+パスワード ライトバック機能を無効にしてから再び有効にしても問題が解決しない場合は、次の手段として Azure AD Connect を再インストールすることをお勧めします。
 
-### <a name="install-the-latest-azure-ad-connect-release"></a>Install the latest Azure AD Connect release
-Re-installing the Azure AD Connect package will resolve any configuration issues which may be affecting your ability to either connect to our cloud services or to manage passwords in your local AD environment.
-We recommend, you perform this step only after attempting the first two steps described above.
+### 最新の Azure AD Connect リリースをインストールする
+Azure AD Connect パッケージを再インストールすると、クラウド サービスに接続する際やローカル AD 環境でパスワードを管理する際に影響を及ぼす可能性がある構成の問題を解決できます。上記の 2 つの手順を試した後に、この手順を実行することをお勧めします。
 
- 1. Download the latest version of Azure AD Connect [here](active-directory-aadconnect.md#install-azure-ad-connect).
- 2. Since you have already installed Azure AD Connect, you will only need to perform an in-place upgrade to update your Azure AD Connect installation to the latest version.
- 3. Execute the downloaded package and follow the on-screen instructions to update your Azure AD Connect machine.  No additional manual steps are required unless you have customized the out of box sync rules, in which case you should **back these up before proceeding with upgrade and manually re-deploy them after you are finished**.
+ 1.	[こちら](active-directory-aadconnect.md#install-azure-ad-connect)から Azure AD Connect の最新バージョンをダウンロードします。
+ 2.	Azure AD Connect が既にインストールされているので、インプレース アップグレードを実行するだけで Azure AD Connect のインストールが最新バージョンに更新されます。
+ 3.	ダウンロードしたパッケージを実行し、画面の指示に従って Azure AD Connect コンピューターを更新します。既定の同期ルールをカスタマイズしていない場合は、手動による追加の手順は必要ありませんが、カスタマイズしている場合は、**アップグレードを開始する前にこれらをバックアップし、終了後に手動で再デプロイする**必要があります。
 
-These steps will re-establish your connection with our cloud service and resolve any interruptions you may be experiencing.
+これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。
 
-If installing the latest version of the Azure AD Connect server does not resolve your issue, we recommend that you try disabling and re-enabling Password Writeback as a final step after installing the latest sync QFE.
+最新バージョンの Azure AD Connect サーバーをインストールしても問題が解決しない場合は、最終手段として、最新の同期の QFE をインストールした後、パスワード ライトバックを無効にしてから再び有効にすることをお勧めします。
 
-If that does not resolve your issue, then we recommend that you take a look at [Troubleshoot Password Writeback](#troubleshoot-password-writeback) and the [Azure AD password Management FAQ](active-directory-passwords-faq.md) to see if your issue may be discussed there.
+それでも問題が解決しない場合は、[パスワード ライトバックのトラブルシューティング](#troubleshoot-password-writeback)と「[Azure AD のパスワード管理に関する FAQ](active-directory-passwords-faq.md)」に目を通して、その問題が議論されているかどうかをご確認ください。
 
 
-<br/>
-<br/>
-<br/>
+<br/> <br/> <br/>
 
-## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
-Below are links to all of the Azure AD Password Reset documentation pages:
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
 
-* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
-* [**How it works**](active-directory-passwords-how-it-works.md) - learn about the six different components of the service and what each does
-* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
-* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
-* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
-* [**Get insights**](active-directory-passwords-get-insights.md) - learn about our integrated reporting capabilities
-* [**FAQ**](active-directory-passwords-faq.md) - get answers to frequently asked questions
-* [**Learn more**](active-directory-passwords-learn-more.md) - go deep into the technical details of how the service works
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**FAQ**](active-directory-passwords-faq.md) -よく寄せられる質問の回答を得ます。
+* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 
 
@@ -1519,8 +1515,4 @@ Below are links to all of the Azure AD Password Reset documentation pages:
 [003]: ./media/active-directory-passwords-troubleshoot/003.jpg "Image_003.jpg"
 [004]: ./media/active-directory-passwords-troubleshoot/004.jpg "Image_004.jpg"
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

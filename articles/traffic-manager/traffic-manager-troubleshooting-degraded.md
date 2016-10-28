@@ -1,103 +1,83 @@
 <properties
-    pageTitle="Troubleshooting degraded status on Azure Traffic Manager"
-    description="How to troubleshoot Traffic Manager profiles when it shows as degraded status."
-    services="traffic-manager"
-    documentationCenter=""
-    authors="sdwheeler"
-    manager="carmonm"
-    editor=""
-/>
-<tags
-    ms.service="traffic-manager"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="infrastructure-services"
-    ms.date="10/11/2016"
-    ms.author="sewhee"
-/>
+   pageTitle="Azure Traffic Manager での機能低下状態のトラブルシューティング"
+   description="Traffic Manager プロファイルが機能低下状態と示されるときのトラブルシューティング方法について説明します。"
+   services="traffic-manager"
+   documentationCenter=""
+   authors="sdwheeler"
+   manager="carmonm"
+   editor="joaoma" />
 
+<tags 
+   ms.service="traffic-manager"
+   ms.devlang="na"
+   ms.topic="article"
+   ms.tgt_pltfrm="na"
+   ms.workload="infrastructure-services"
+   ms.date="03/17/2016"
+   ms.author="sewhee" />
 
-# <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Troubleshooting degraded state on Azure Traffic Manager
+# Azure Traffic Manager での機能低下状態のトラブルシューティング
 
-This article describes how to troubleshoot an Azure Traffic Manager profile that is showing a degraded status. For this scenario, consider that you have configured a Traffic Manager profile pointing to some of your cloudapp.net hosted services. When you check the health of your traffic manager, you see that the Status is Degraded.
+ここでは、機能低下状態が示されている Azure Traffic Manager プロファイルをトラブルシューティングする方法、およびトラフィック マネージャーのプローブについて理解するための重要な点について説明します。
 
-![degraded state](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degraded.png)
+.cloudapp.net ホステッド サービスの一部を参照するようにTraffic Manager プロファイルを構成し、数秒後にステータスが機能低下を示したものとします。
 
-If you go into the Endpoints tab of that profile, you see one or more of the endpoints with an Offline status:
+![degradedstate](./media/traffic-manager-troubleshooting-degraded/traffic-manager-degraded.png)
+
+そのプロファイルの [エンドポイント] タブに移動すると、1 つまたは複数のエンドポイントがオフライン状態になっています。
 
 ![offline](./media/traffic-manager-troubleshooting-degraded/traffic-manager-offline.png)
 
-## <a name="understanding-traffic-manager-probes"></a>Understanding Traffic Manager probes
+## Traffic Manager のプローブに関する重要な注意事項
 
-- Traffic Manager considers an endpoint to be ONLINE only when the probe receives an HTTP 200 response back from the probe path. Any other non-200 response is a failure.
-- A 30x redirect fails, even if the redirected URL returns a 200.
-- For HTTPs probes, certificate errors are ignored.
-- The actual content of the probe path doesn't matter, as long as a 200 is returned. Probing a URL to some static content like "/favicon.ico" is a common technique. Dynamic content, like the ASP pages, may not always return 200, even when the application is healthy.
-- A best practice is to set the Probe path to something that has enough logic to determine that the site is up or down. In the previous example, by setting the path to "/favicon.ico", you are only testing that w3wp.exe is responding. This probe may not indicate that your web application is healthy. A better option would be to set a path to a something such as "/Probe.aspx" that has logic to determine the health of the site. For example, you could use performance counters to CPU utilization or measure the number of failed requests. Or you could attempt to access database resources or session state to make sure that the web application is working.
-- If all endpoints in a profile are degraded, then Traffic Manager treats all endpoints as healthy and routes traffic to all endpoints. This behavior ensures that problems with the probing mechanism do not result in a complete outage of your service.
+- Traffic Manager は、プローブがプローブ パスからステータス 200 を取得した場合にのみ、エンドポイントをオンラインとみなします。
+- 30x のリダイレクト (または他の 200 以外の応答すべて) は、リダイレクト先の URL が 200 を返した場合であってもエラーです。
 
-## <a name="troubleshooting"></a>Troubleshooting
+- HTTPs プローブの場合、証明書エラーは無視されます。
+ 
+- 200 が返される限り、プローブ パスの実際の内容は関係ありません。実際の Web サイトのコンテンツが 200 を返さない場合 (つまり、ASP ページが ACS ログイン ページまたは他の CNAME URL にリダイレクトする場合) の一般的な技法は、パスを “/favicon.ico” などに設定することです。
+ 
+- ベスト プラクティスとしては、サイトが稼動しているかどうかを判断するのに十分なロジックを持っているパスに、プローブ パスを設定します。パスを “/favicon.ico” に設定する上の例では、w3wp.exe が応答するかどうかだけをテストしており、Web サイトが正常かどうかはテストしていません。さらによい方法としては、“/Probe.aspx” などにパスを設定し、サイトが正常かどうかを判断するのに十分なロジックを Probe.aspx に含めます (つまり、パフォーマンス カウンターをチェックして CPU が 100% になっていないとか多数のエラー要求を受け取らないことを確認する、またはデータベースやセッション ステートなどのリソースにアクセスしてアプリケーションのロジックが動作していることを確認する、など)。
+ 
+- プロファイル内のすべてのエンドポイントが機能低下している場合、Traffic Manager はすべてのエンドポイントを正常として扱い、トラフィックをすべてのエンドポイントにルーティングします。これは、プローブ メカニズムの潜在的な問題のために、失敗したプローブによってサービスが完全に停止するのを防ぐためです。
 
-To troubleshoot a probe failure, you need a tool that shows the HTTP status code return from the probe URL. There are many tools available that show you the raw HTTP response.
+  
 
-* [Fiddler](http://www.telerik.com/fiddler)
-* [curl](https://curl.haxx.se/)
-* [wget](http://gnuwin32.sourceforge.net/packages/wget.htm)
+## トラブルシューティング
 
-Also, you can use the Network tab of the F12 Debugging Tools in Internet Explorer to view the HTTP responses.
+Traffic Manager のプローブのエラーをトラブルシューティングするためのツールの 1 つは wget です。バイナリと依存するもののパッケージを、[wget](http://gnuwin32.sourceforge.net/packages/wget.htm) から入手できます。wget の代わりに Fiddler や curl などの他のプログラムも使用できることに注意してください。基本的に、必要なものは未加工の HTTP 応答がわかるツールです。
 
-For this example we want to see the response from our probe URL: http://watestsdp2008r2.cloudapp.net:80/Probe. The following PowerShell example illustrates the problem.
+wget をインストールした後、コマンド プロンプトに移動し、URL に Traffic Manager で構成されているプローブ ポートとパスを付加したもので wget を実行します。この例では、http://watestsdp2008r2.cloudapp.net:80/Probe のようになります。
 
-```powershell
-    Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
-```
+![troubleshooting](./media/traffic-manager-troubleshooting-degraded/traffic-manager-troubleshooting.png)
 
-Example output:
+wget を使用します。
 
-```text
-    StatusCode StatusDescription
-    ---------- -----------------
-            301 Moved Permanently
-```
+![wget](./media/traffic-manager-troubleshooting-degraded/traffic-manager-wget.png)
 
-Notice that we received a redirect response. As stated previously, any StatusCode other than 200 is considered a failure. Traffic Manager changes the endpoint status to Offline. To resolve the problem, check the website configuration to ensure that the proper StatusCode can be returned from the probe path. Reconfigure the Traffic Manager probe to point to a path that returns a 200.
+ 
 
-If your probe is using the HTTPS protocol, you may need to disable certificate checking to avoid SSL/TLS errors during your test. The following PowerShell statements disable certificate validation for the current PowerShell session:
+wget で URL が http://watestsdp2008r2.cloudapp.net/Default.aspx に対して 301 リダイレクトを返したことが示されていることに注意してください。前の「Traffic Manager のプローブに関する重要な注意事項」セクションからわかるように、Traffic Manager プローブでは 30x リダイレクトはエラーとみなされ、プローブはオフラインを報告します。ここまでくれば、Web サイトの構成を調べて、/Probe パスから 200 が返されるようにするのは簡単です (または、Traffic Manager のプローブを再構成して、200 を返すパスを参照します)。
 
-```powershell
-    add-type @"
-    using System.Net;
-    using System.Security.Cryptography.X509Certificates;
-    public class TrustAllCertsPolicy : ICertificatePolicy {
-        public bool CheckValidationResult(
-        ServicePoint srvPoint, X509Certificate certificate,
-        WebRequest request, int certificateProblem) {
-        return true;
-        }
-    }
-    "@
-    [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
-```
+ 
 
-## <a name="next-steps"></a>Next Steps
+プローブが HTTPs プロトコルを使用している場合は、wget に “--no-check-certificate” パラメーターを追加して、cloudapp.net URL での証明書の不一致を無視することができます。
 
-[About Traffic Manager traffic routing methods](traffic-manager-routing-methods.md)
 
-[What is Traffic Manager](traffic-manager-overview.md)
+## 次のステップ
+
+
+[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
+
+[Traffic Manager について](traffic-manager-overview.md)
 
 [Cloud Services](http://go.microsoft.com/fwlink/?LinkId=314074)
 
-[Azure Web Apps](https://azure.microsoft.com/documentation/services/app-service/web/)
+[Websites](http://go.microsoft.com/fwlink/p/?LinkId=393327)
 
-[Operations on Traffic Manager (REST API Reference)](http://go.microsoft.com/fwlink/?LinkId=313584)
+[Traffic Manager の操作 (REST API リファレンス)](http://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure Traffic Manager Cmdlets][1]
+[Azure Traffic Manager コマンドレット](http://go.microsoft.com/fwlink/p/?LinkId=400769)
+ 
 
-[1]: https://msdn.microsoft.com/library/mt125941(v=azure.200).aspx
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

@@ -1,274 +1,268 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with ADP GlobalView | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and ADP GlobalView."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と ADP GlobalView の統合 | Microsoft Azure"
+	description="Azure Active Directory と ADP GlobalView の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="09/07/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="09/07/2016"
+	ms.author="jeedes"/>
 
 
+# チュートリアル: Azure Active Directory と ADP GlobalView の統合
 
-# <a name="tutorial:-azure-active-directory-integration-with-adp-globalview"></a>Tutorial: Azure Active Directory integration with ADP GlobalView
+このチュートリアルの目的は、ADP GlobalView と Azure Active Directory (Azure AD) を統合する方法を説明することです。ADP GlobalView と Azure AD の統合には、次の利点があります。
 
-The objective of this tutorial is to show you how to integrate ADP GlobalView with Azure Active Directory (Azure AD).  
-Integrating ADP GlobalView with Azure AD provides you with the following benefits:
-
-- You can control in Azure AD who has access to ADP GlobalView
-- You can enable your users to automatically get signed-on to ADP GlobalView (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+- ADP GlobalView にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に ADP GlobalView にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-To configure Azure AD integration with ADP GlobalView, you need the following items:
+Azure AD と ADP GlobalView の統合を構成するには、次のものが必要です。
 
-- An Azure AD subscription
-- A ADP GlobalView single-sign on enabled subscription
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- Azure AD サブスクリプション
+- ADP GlobalView でのシングル サインオンが有効なサブスクリプション
 
 
-To test the steps in this tutorial, you should follow these recommendations:
-
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-## <a name="scenario-description"></a>Scenario Description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.  
-The scenario outlined in this tutorial consists of two main building blocks:
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-1. Adding ADP GlobalView from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-adp-globalview-from-the-gallery"></a>Adding ADP GlobalView from the gallery
-To configure the integration of ADP GlobalView into Azure AD, you need to add ADP GlobalView from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-**To add ADP GlobalView from the gallery, perform the following steps:**
+1. ギャラリーからの ADP GlobalView の追加
+2. Azure AD シングル サインオンの構成とテスト
 
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**. 
 
-    ![Active Directory][1]
+## ギャラリーからの ADP GlobalView の追加
+Azure AD への ADP GlobalView の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ADP GlobalView を追加する必要があります。
 
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
+**ギャラリーから ADP GlobalView を追加するには、次の手順に従います。**
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Applications][2]
+	![Active Directory][1]
 
-4. Click **Add** at the bottom of the page.
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-    ![Applications][3]
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-5. On the **What do you want to do** dialog, click **Add an application from the gallery**.
+	![アプリケーション][2]
 
-    ![Applications][4]
+4. ページの下部にある **[追加]** をクリックします。
 
-6. In the search box, type **ADP GlobalView**.
+	![アプリケーション][3]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_01.png)
+5. **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-7. In the results pane, select **ADP GlobalView**, and then click **Complete** to add the application.
+	![アプリケーション][4]
 
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_06.png)
+6. 検索ボックスに、「**ADP GlobalView**」と入力します。
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with ADP GlobalView based on a test user called "Britta Simon".
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_01.png)
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in ADP GlobalView to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in ADP GlobalView needs to be established.  
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in ADP GlobalView.
+7. 結果ウィンドウで **[ADP GlobalView]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
-To configure and test Azure AD single sign-on with ADP GlobalView, you need to complete the following building blocks:
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_06.png)
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-4. **[Creating a ADP GlobalView test user](#creating-a-adp-globalview-test-user)** - to have a counterpart of Britta Simon in ADP GlobalView that is linked to the Azure AD representation of her.
-5. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、ADP GlobalView で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD Single Sign-On
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する ADP GlobalView ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと ADP GlobalView の関連ユーザーの間で、リンク関係を確立する必要があります。このリンク関係は、Azure AD の **[ユーザー名]** の値を、ADP GlobalView の **[Username]** の値として割り当てることで確立されます。
 
-The objective of this section is to enable Azure AD single sign-on in the Azure classic portal and to configure single sign-on in your ADP GlobalView application.
+ADP GlobalView で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-Your ADP GlobalView application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. The following screenshot shows an example for this. The claim name will always be **"PersonImmutableID"** and the value of which we have mapped to ExtensionAttribute2 which contains the EmployeeID of the user. Here the user mapping fron Azure AD to ADP GlobalView will be done on the EmployeeID but you can map this to a different value also based on your application settings. So please work with ADP GlobalView team first to use the correct identifier of a user and map that value with the **"PersonImmutableID"** claim. You can also map the Email and UserID claim as shown in the picture.
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+4. **[ADP GlobalView のテスト ユーザーの作成](#creating-a-adp-globalview-test-user)** - ADP GlobalView で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+5. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### Azure AD シングル サインオンの構成
+
+このセクションの目的は、Azure クラシック ポータルで Azure AD のシングル サインオンを有効にすることと、ADP GlobalView アプリケーションでシングル サインオンを構成することです。
+
+ADP GlobalView アプリケーションでは、特定の形式の SAML アサーションを使用するため、カスタム属性マッピングを SAML トークン属性の構成に追加する必要があります。次のスクリーンショットはその例です。要求の名前は常に **"PersonImmutableID"** であり、その値はユーザーの EmployeeID を含む ExtensionAttribute2 にマップされています。ここで、Azure AD から ADP GlobalView にマップしているユーザーは EmployeeID では完了となりますが、アプリケーションの設定に基づいて、別の値にマップできます。そのため、ユーザーの正しい ID を使用し、その値を **"PersonImmutableID"** 要求でマップするには、まず ADP GlobalView チームと協力してください。また、電子メールおよびユーザー ID の要求を図に示すようにマップすることができます。
  
-![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_02.png) 
+![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_02.png)
 
-Before you can configure the SAML assertion, you need to contact your ADP GlobalView support team and request the value of the unique identifier attribute for your tenant. You need this value to configure the custom claim for your application.
+SAML アサーションを構成する前に、ADP GlobalView サポート チームに連絡し、テナントの一意識別子属性の値を請求する必要があります。この値は、アプリケーションのカスタム要求を構成するのに必要です。
 
 
-**To configure Azure AD single sign-on with ADP GlobalView, perform the following steps:**
+**ADP GlobalView で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. In the Azure classic portal, on the **ADP GlobalView** application integration page, click **Configure single sign-on** to open the **Configure Single Sign-On**  dialog.
+1. Azure クラシック ポータルの **ADP GlobalView** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configure Single Sign-On][6] 
+	![Configure Single Sign-On][6]
 
-2. On the **How would you like users to sign on to ADP GlobalView** page, select **Azure AD Single Sign-On**, and then click **Next**.
+2. **[ユーザーの ADP GlobalView へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
  
-    ![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_03.png) 
+	![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_03.png)
 
-3. On the **Configure App Settings** dialog page, perform the following steps:
+3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_04.png) 
-
-
-    a. In the **Identifier** textbox, type the URL used to idenify ADP GlobalView application using one the following patterns: **“https://\<server name\>.globalview.adp.com/federate2”**, **“https://\<server name\>.globalview.adp.com/federate”** 
+	![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_04.png)
 
 
-    b. In the **Reply URL** textbox, type the URL used by Azure AD to post the response to the ADP GlobalView application, using one of the following patterns: **“https://\<server name\>.globalview.adp.com/federate2/sp/ACS.saml2”**, **“https://\<server name\>.globalview.adp.com/federate/sp/ACS.saml2”**
-
-    c. Click **Next**.
+    a.**[識別子]** ボックスに、ADP GlobalView アプリケーションの識別に使用する URL を、**"https://<サーバー名>.globalview.adp.com/federate2"** または **"https://<サーバー名>.globalview.adp.com/federate"** のいずれかの形式で入力します。
 
 
-4. On the **Configure single sign-on at ADP GlobalView** page, perform the following steps:
+    b.**[応答 URL]** ボックスに、ADP GlobalView アプリケーションに応答を投稿するために Azure AD が使用する URL を、**"https://<サーバー名>.globalview.adp.com/federate2/sp/ACS.saml2"** または **"https://<サーバー名>.globalview.adp.com/federate/sp/ACS.saml2"** のいずれかの形式で入力します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_05.png) 
-
-    a. Click **Download certificate**, and then save the file on your computer.
-
-    b. Click **Next**.
+    c.**[次へ]** をクリックします。
 
 
-5. To get SSO configured for your application, contact your ADP GlobalView support team and provide them with the following: 
+4. **[ADP GlobalView でのシングル サインオンの構成]** ページで、次の手順を実行します。
 
-    - The downloaded certificate file
-    - Entity ID
+	![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_05.png)
+
+    a.**[証明書のダウンロード]** をクリックし、コンピューターにファイルを保存します。
+
+    b.**[次へ]** をクリックします。
+
+
+5. アプリケーション用に構成された SSO を入手するには、ADP GlobalView サポート チームに連絡し、次のものを情報として提供してください。
+
+    - ダウンロードした証明書ファイル
+    - エンティティ ID
     - SAML SSO URL
-    - Single Sign-Out Service URL
+    - シングル サインアウト サービス URL
 
 
-    > [AZURE.NOTE] After **ADP GlobalView** team configure the instance, get the **RelayState** value from them and request to Azure AD to configure that for your application instance. You can send this value, your Azure AD tenanat id and application id to Azure AD team on [waadpartners@microsoft.com](mailTo:waadpartners@microsoft.com). After this configuring only you can test the integration and it will work. So please note that this is important configuration step for this application integration to work.
+    > [AZURE.NOTE] **ADP GlobalView** チームがインスタンスを構成したら、**RelayState** 値をチームから入手し、この値をアプリケーション インスタンス用に構成するよう Azure AD に要求します。この値、Azure AD テナント ID、およびアプリケーション ID を、Azure AD チーム ([waadpartners@microsoft.com](mailTo:waadpartners@microsoft.com)) に送信できます。この構成の後でのみ、統合をテストすることができ、統合が機能します。このアプリケーションの統合が機能するには、この構成のステップが重要であることに注意してください。
 
-6. In the Azure classic portal, select the single sign-on configuration confirmation, and then click **Next**.
+6. Azure クラシック ポータルで、シングル サインオンの構成確認を選択し、**[次へ]** をクリックします。
 
-    ![Azure AD Single Sign-On][10]
+	![Azure AD Single Sign-On][10]
 
-7. On the **Single sign-on confirmation** page, click **Complete**.  
+7. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
 
-    ![Azure AD Single Sign-On][11]
-
-
-
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the Azure classic portal called Britta Simon.  
-In the Users list, select **Britta Simon**.
-
-![Create Azure AD User][20]
-
-**To create a test user in Azure AD, perform the following steps:**
-
-1. In the **Azure classic portal**, on the left navigation pane, click **Active Directory**.
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_09.png) 
-
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-
-3. To display the list of users, in the menu on the top, click **Users**.
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_03.png) 
-
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_04.png) 
-
-5. On the **Tell us about this user** dialog page, perform the following steps:
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_05.png) 
-
-    a. As Type Of User, select New user in your organization.
-
-    b. In the User Name **textbox**, type **BrittaSimon**.
-
-    c. Click **Next**.
-
-6.  On the **User Profile** dialog page, perform the following steps:
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_06.png) 
-
-    a. In the **First Name** textbox, type **Britta**.  
-
-    b. In the **Last Name** textbox, type, **Simon**.
-
-    c. In the **Display Name** textbox, type **Britta Simon**.
-
-    d. In the **Role** list, select **User**.
-
-    e. Click **Next**.
-
-7. On the **Get temporary password** dialog page, click **create**.
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_07.png) 
-
-8. On the **Get temporary password** dialog page, perform the following steps:
-
-    ![Creating an Azure AD test user](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_08.png) 
-
-    a. Write down the value of the **New Password**.
-
-    b. Click **Complete**.   
+	![Azure AD Single Sign-On][11]
 
 
 
-### <a name="creating-a-adp-globalview-test-user"></a>Creating a ADP GlobalView test user
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、Azure クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。ユーザーの一覧で **[Britta Simon]** を選択します。
 
-The objective of this section is to create a user called Britta Simon in ADP GlobalView. Please work with ADP GlobalView support team to add the users in the ADP GlobalView account. 
+![Azure AD ユーザーの作成][20]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_09.png)
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_03.png)
+
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_04.png)
+
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_05.png)
+
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
+
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
+
+    c.**[次へ]** をクリックします。
+
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_06.png)
+
+    a.**[名]** ボックスに「**Britta**」と入力します。
+
+    b.**[姓]** ボックスに「**Simon**」と入力します。
+
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
+
+    e.**[次へ]** をクリックします。
+
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_07.png)
+
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
+
+	![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-adpglobalview-tutorial/create_aaduser_08.png)
+
+    a.**[新しいパスワード]** の値を書き留めます。
+
+    b.**[完了]** をクリックします。
 
 
-> [AZURE.NOTE] If you need to create an user manually, you need to contact the ADP GlobalView support team.
+
+### ADP GlobalView テスト ユーザーの作成
+
+このセクションの目的は、ADP GlobalView で Britta Simon というユーザーを作成することです。ADP GlobalView サポート チームと協力し、ADP GlobalView アカウントにユーザーを追加してください。
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
-
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to ADP GlobalView.
-
-![Assign User][200] 
-
-**To assign Britta Simon to ADP GlobalView, perform the following steps:**
-
-1. On the Azure classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Assign User][201] 
-
-2. In the applications list, select **ADP GlobalView**.
-
-    ![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_50.png) 
-
-1. In the menu on the top, click **Users**.
-
-    ![Assign User][203] 
-
-1. In the Users list, select **Britta Simon**.
-
-2. In the toolbar on the bottom, click **Assign**.
-
-    ![Assign User][205]
+> [AZURE.NOTE] ユーザーを手動で作成する必要がある場合は、ADP GlobalView のサポート チームにお問い合わせください。
 
 
+### Azure AD テスト ユーザーの割り当て
 
-### <a name="testing-single-sign-on"></a>Testing Single Sign-On
+このセクションの目的は、Britta Simon に ADP GlobalView へのアクセスを許可することにより、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.  
-When you click the ADP GlobalView tile in the Access Panel, you should get automatically signed-on to your ADP GlobalView application.
+![ユーザーの割り当て][200]
+
+**ADP GlobalView に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. Azure クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+	![ユーザーの割り当て][201]
+
+2. アプリケーションの一覧で **[ADP GlobalView]** を選択します。
+
+	![Configure Single Sign-On](./media/active-directory-saas-adpglobalview-tutorial/tutorial_adpglobalview_50.png)
+
+1. 上部のメニューで **[ユーザー]** をクリックします。
+
+	![ユーザーの割り当て][203]
+
+1. ユーザーの一覧で **[Britta Simon]** を選択します。
+
+2. 下部にあるツール バーで **[割り当て]** をクリックします。
+
+	![ユーザーの割り当て][205]
 
 
-## <a name="additional-resources"></a>Additional Resources
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+### シングル サインオンのテスト
+
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。アクセス パネルで [ADP GlobalView] タイルをクリックすると、自動的に ADP GlobalView アプリケーションにサインオンします。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -289,8 +283,4 @@ When you click the ADP GlobalView tile in the Access Panel, you should get autom
 [204]: ./media/active-directory-saas-adpglobalview-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-adpglobalview-tutorial/tutorial_general_205.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

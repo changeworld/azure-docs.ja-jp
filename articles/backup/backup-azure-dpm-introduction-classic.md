@@ -1,64 +1,63 @@
 <properties
-    pageTitle="Introduction to Azure DPM backup | Microsoft Azure"
-    description="An introduction to backing up DPM servers using the Azure Backup service"
-    services="backup"
-    documentationCenter=""
-    authors="Nkolli1"
-    manager="shreeshd"
-    editor=""
-    keywords="System Center Data Protection Manager, data protection manager, dpm backup"/>
+	pageTitle="Azure DPM バックアップの概要 | Microsoft Azure"
+	description="Azure Backup サービスを使用した DPM サーバーのバックアップの概要"
+	services="backup"
+	documentationCenter=""
+	authors="Nkolli1"
+	manager="shreeshd"
+	editor=""
+	keywords="System Center Data Protection Manager, Data Protection Manager, DPM バックアップ"/>
 
 <tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/21/2016"
-    ms.author="trinadhk;giridham;jimpark;markgal"/>
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/21/2016"
+	ms.author="trinadhk;giridham;jimpark;markgal"/>
 
-
-# <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Preparing to back up workloads to Azure with DPM
+# DPM を使用して Azure へのワークロードをバックアップするための準備
 
 > [AZURE.SELECTOR]
 - [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 - [SCDPM](backup-azure-dpm-introduction.md)
-- [Azure Backup Server (Classic)](backup-azure-microsoft-azure-backup-classic.md)
-- [SCDPM (Classic)](backup-azure-dpm-introduction-classic.md)
+- [Azure Backup Server (クラシック)](backup-azure-microsoft-azure-backup-classic.md)
+- [SCDPM (クラシック)](backup-azure-dpm-introduction-classic.md)
 
 
-This article provides an introduction to using Microsoft Azure Backup to protect your System Center Data Protection Manager (DPM) servers and workloads. By reading it, you’ll understand:
+この記事では、Microsoft Azure Backup を使用して System Center Data Protection Manager (DPM) サーバーとワークロードを保護する方法について概説します。この記事を読むと次のことが理解できます。
 
-- How Azure DPM server backup works
-- The prerequisites to achieve a smooth backup experience
-- The typical errors encountered and how to deal with them
-- Supported scenarios
+- Azure DPM サーバーのバックアップの仕組み
+- スムーズなバックアップ操作を実現するための前提条件
+- 一般的に発生するエラーとその対処法
+- サポートされるシナリオ
 
-System Center DPM backs up file and application data. Data backed up to DPM can be stored on tape, on disk, or backed up to Azure with Microsoft Azure Backup. DPM interacts with Azure Backup as follows:
+System Center DPM は、ファイルとアプリケーション データをバックアップします。DPM にバックアップされるデータは、テープやディスクに保存することも、Microsoft Azure Backup を使って Azure にバックアップすることもできます。DPM は、Azure Backup と次のように対話します。
 
-- **DPM deployed as a physical server or on-premises virtual machine** — If DPM is deployed as a physical server or as an on-premises Hyper-V virtual machine you can back up data to an Azure Backup vault in addition to disk and tape backup.
-- **DPM deployed as an Azure virtual machine** — From System Center 2012 R2 with Update 3, DPM can be deployed as an Azure virtual machine. If DPM is deployed as an Azure virtual machine you can back up data to Azure disks attached to the DPM Azure virtual machine, or you can offload the data storage by backing it up to an Azure Backup vault.
+- **物理サーバーまたはオンプレミス仮想マシンとしてデプロイされている DPM** — DPM が物理サーバーまたはオンプレミス Hyper-V 仮想マシンとしてデプロイされている場合、データはディスクやテープだけでなく、Azure Backup コンテナーにバックアップすることができます。
+- **Azure の仮想マシンとしてデプロイされている DPM** — System Center 2012 R2 Update 3 以降、DPM は Azure 仮想マシンとしてデプロイすることができます。DPM が Azure 仮想マシンとしてデプロイされている場合、DPM Azure 仮想マシンにアタッチされている Azure ディスクにデータをバックアップすることができます。またはデータを Azure Backup コンテナーにバックアップして、データ ストレージをオフロードすることができます。
 
-## <a name="why-backup-your-dpm-servers?"></a>Why backup your DPM servers?
+## DPM サーバーをバックアップする理由
 
-The business benefits of using Azure Backup for backing up DPM servers include:
+DPM サーバーのバックアップに Azure Backup を使用するビジネス上のメリットは、次のとおりです。
 
-- For on-premises DPM deployment, you can use Azure backup as an alternative to long-term deployment to tape.
-- For DPM deployments in Azure, Azure Backup allows you to offload storage from the Azure disk, allowing you to scale up by storing older data in Azure Backup and new data on disk.
+- オンプレミス DPM デプロイメントでは、Azure バックアップはテープへの長期的なデプロイの代替手段として使用できます。
+- Azure の DPM デプロイメントでは、Azure Backup を使用して Azure ディスクからストレージをオフロードし、Azure Backup に古いデータを、ディスクに新しいデータを格納してスケールアップすることができます。
 
-## <a name="how-does-dpm-server-backup-work?"></a>How does DPM server backup work?
-To back up a virtual machine, first a point-in-time snapshot of the data is needed. The Azure Backup service initiates the backup job at the scheduled time, and triggers the backup extension to take a snapshot. The backup extension coordinates with the in-guest VSS service to achieve consistency, and invokes the blob snapshot API of the Azure Storage service once consistency has been reached. This is done to get a consistent snapshot of the disks of the virtual machine, without having to shut it down.
+## DPM サーバーのバックアップ動作のしくみ
+仮想マシンをバックアップするには、まずデータの特定の時点のスナップショットが必要です。Azure Backup サービスは、スケジュールされた時刻にバックアップ ジョブを開始し、バックアップ拡張機能をトリガーしてスナップショットを作成します。バックアップ拡張機能は、インゲスト VSS サービスと連携して一貫性を実現し、一貫性に達すると、Azure ストレージ サービスの BLOB スナップショット API を呼び出します。これにより、仮想マシンをシャット ダウンすることなく、一貫性のあるディスクのスナップショットが作成されます。
 
-After the snapshot has been taken, the data is transferred by the Azure Backup service to the backup vault. The service takes care of identifying and transferring only the blocks that have changed from the last backup making the backups storage and network efficient. When the data transfer is completed, the snapshot is removed and a recovery point is created. This recovery point can be seen in the  Azure classic portal.
+スナップショットが作成されると、データは Azure Backup サービスによってバックアップ コンテナーに転送されます。このサービスは、最新のバックアップから変更されたブロックのみを識別して転送することで、バックアップ ストレージとネットワークの効率を高めます。データ転送が完了すると、スナップショットが削除され、回復ポイントが作成されます。この回復ポイントは、Azure クラシック ポータルで確認できます。
 
->[AZURE.NOTE] For Linux virtual machines, only file-consistent backup is possible.
+>[AZURE.NOTE] Linux 仮想マシンでは、ファイル整合性のバックアップのみが可能です。
 
-## <a name="prerequisites"></a>Prerequisites
-Prepare Azure Backup to back up DPM data as follows:
+## 前提条件
+DPM データをバックアップするために Azure Backup を準備するには、次のようにします。
 
-1. **Create a Backup vault** — Create a vault in the Azure Backup console.
-2. **Download vault credentials** — In Azure Backup, upload the management certificate you created to the vault.
-3. **Install the Azure Backup Agent and register the server** — From Azure Backup, install the agent on each DPM server and register the DPM server in the backup vault.
+1. **バックアップ コンテナーの作成** — Azure Backup コンソールでコンテナーを作成します。
+2. **コンテナー資格情報のダウンロード** — Azure Backup で、コンテナーに対して作成した管理証明書をダウンロードします。
+3. **Azure Backup エージェントのインストールおよびサーバーの登録** — Azure Backup から、各 DPM サーバーにエージェントをインストールし、バックアップ コンテナーに DPM サーバーを登録します。
 
 [AZURE.INCLUDE [backup-create-vault](../../includes/backup-create-vault.md)]
 
@@ -67,38 +66,34 @@ Prepare Azure Backup to back up DPM data as follows:
 [AZURE.INCLUDE [backup-install-agent](../../includes/backup-install-agent.md)]
 
 
-## <a name="requirements-(and-limitations)"></a>Requirements (and limitations)
+## 要件 (および制限)
 
-- DPM can be running as a physical server or a Hyper-V virtual machine installed on System Center 2012 SP1 or System Center 2012 R2. It can also be running as an Azure virtual machine running on System Center 2012 R2 with at least DPM 2012 R2 Update Rollup 3 or a Windows virtual machine in VMWare running on System Center 2012 R2 with at least Update Rollup 5.
-- If you’re running DPM with System Center 2012 SP1, you should install Update Rollup 2 for System Center Data Protection Manager SP1. This is required before you can install the Azure Backup Agent.
-- The DPM server should have Windows PowerShell and .Net Framework 4.5 installed.
-- DPM can back up most workloads to Azure Backup. For a full list of what’s supported see the Azure Backup support items below.
-- Data stored in Azure Backup can’t be recovered with the “copy to tape” option.
-- You’ll need an Azure account with the Azure Backup feature enabled. If you don't have an account, you can create a free trial account in just a couple of minutes. Read about [Azure Backup pricing](https://azure.microsoft.com/pricing/details/backup/).
-- Using Azure Backup requires the Azure Backup Agent to be installed on the servers you want to back up. Each server must have at least 10% of the size of the data that is being backed up, available as local free storage. For example, backing up 100 GB of data requires a minimum of 10 GB of free space in the scratch location. While the minimum is 10%, 15% of free local storage space to be used for the cache location is recommended.
-- Data will be stored in the Azure vault storage. There’s no limit to the amount of data you can back up to an Azure Backup vault but the size of a data source (for example a virtual machine or database) shouldn’t exceed 54,400 GB.
+- DPM は、物理サーバーとして、または System Center 2012 SP1 か System Center 2012 R2 にインストールされている Hyper-V 仮想マシンとして実行することができます。さらに、DPM は、System Center 2012 R2 (少なくとも DPM 2012 R2 更新プログラム ロールアップ 3 が適用されているもの) で実行する Azure 仮想マシンとして、または System Center 2012 R2 (少なくとも更新プログラム ロールアップ 5 が適用されているもの) で実行する VMWare の Windows 仮想マシンとして実行することもできます。
+- DPM を System Center 2012 SP1 で実行する場合は、System Center Data Protection Manager SP1 用の更新プログラム ロールアップ 2 をインストールする必要があります。この手順は、Azure Backup エージェントをインストールする前に実行する必要があります。
+- DPM サーバーには、Windows PowerShell および .Net Framework 4.5 がインストール済みである必要があります。
+- DPM は、ほとんどのワークロードを Azure Backup にバックアップできます。サポート対象の詳細な一覧については、次に示す Azure Backup サポートの項目を参照してください。
+- Azure Backup に格納されているデータは、"テープにコピー" オプションでは回復できません。
+- Azure Backup 機能が有効になっている Azure アカウントを使用する必要があります。アカウントがない場合は、無料試用アカウントを数分で作成することができます。[Azure Backup の料金](https://azure.microsoft.com/pricing/details/backup/)を参照してください。
+- Azure Backup を使用するには、バックアップ対象のサーバーに Azure Backup エージェントがインストールされていることが必要です。各サーバーをローカル ストレージとして使用するには、バックアップするデータのサイズの 10% 以上の空き領域が必要です。たとえば、100 GB のデータをバックアップするには、スクラッチ場所に少なくとも 10 GB の空き領域が必要です。最小要件は 10% ですが、キャッシュの場所には 15% のローカル ストレージ空き領域を使用することが推奨されます。
+- データは、Azure コンテナー ストレージに格納されます。Azure Backup コンテナーにバックアップできるデータ量に制限はありませんが、データ ソース (仮想マシンやデータベースなど) のサイズは 54,400 GB を超えないようにする必要があります。
 
-These file types are supported for back up to Azure:
+Azure へのバックアップがサポートされているファイルの種類は、次のとおりです。
 
-- Encrypted (Full backups only)
-- Compressed (Incremental backups supported)
-- Sparse (Incremental backups supported)
-- Compressed and sparse (Treated as Sparse)
+- 暗号化ファイル (完全バックアップのみ)
+- 圧縮ファイル (増分バックアップがサポートされる)
+- スパース ファイル (増分バックアップがサポートされる)
+- 圧縮されたスパース ファイル (スパースとして処理)
 
-And these are unsupported:
+次のものはサポートされていません。
 
-- Servers on case-sensitive file systems aren’t supported.
-- Hard links (Skipped)
-- Reparse points (Skipped)
-- Encrypted and compressed (Skipped)
-- Encrypted and sparse (Skipped)
-- Compressed stream
-- Sparse stream
+- 大文字と小文字を区別するファイル システムのサーバーはサポートされません。
+- ハード リンク (スキップされる)
+- 再解析ポイント (スキップされる)
+- 暗号化されている圧縮ファイル (スキップされる)
+- 暗号化されているスパース ファイル (スキップされる)
+- 圧縮ストリーム
+- スパース ストリーム
 
->[AZURE.NOTE] From in System Center 2012 DPM with SP1 onwards, you can backup up workloads protected by DPM to Azure using Microsoft Azure Backup.
+>[AZURE.NOTE] System Center 2012 DPM SP1 以降では、Microsoft Azure Backup を使用して、DPM で保護されているワークロードを Azure にバックアップすることができます。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

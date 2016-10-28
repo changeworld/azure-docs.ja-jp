@@ -1,12 +1,12 @@
 <properties
-   pageTitle="Use Hadoop Hive with Curl in HDInsight | Microsoft Azure"
-   description="Learn how to remotely submit Pig jobs to HDInsight using Curl."
+   pageTitle="HDInsight での Hadoop Hive と Curl の使用 | Microsoft Azure"
+   description="Curl を使用して Pig ジョブを HDInsight にリモートで送信する方法について説明します。"
    services="hdinsight"
    documentationCenter=""
    authors="Blackmist"
    manager="jhubbard"
    editor="cgronlun"
-    tags="azure-portal"/>
+	tags="azure-portal"/>
 
 <tags
    ms.service="hdinsight"
@@ -17,156 +17,155 @@
    ms.date="09/07/2016"
    ms.author="larryfr"/>
 
+#Curl を使用した HDInsight の Hadoop での Hive クエリの実行
 
-#<a name="run-hive-queries-with-hadoop-in-hdinsight-with-curl"></a>Run Hive queries with Hadoop in HDInsight with Curl
+[AZURE.INCLUDE [hive セレクター](../../includes/hdinsight-selector-use-hive.md)]
 
-[AZURE.INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
+このドキュメントでは、Curl を使用して Azure HDInsight クラスターの Hadoop で Hive クエリを実行する方法について説明します。
 
-In this document, you will learn how to use Curl to run Hive queries on a Hadoop on Azure HDInsight cluster.
+Curl は、未加工の HTTP 要求を使用して HDInsight を操作し、Hive クエリを実行、監視し、その結果を取得する方法を指定するために使用します。これは、HDInsight クラスターで提供される WebHCat REST API (旧称: Templeton) を使用することで機能します。
 
-Curl is used to demonstrate how you can interact with HDInsight by using raw HTTP requests to run, monitor, and retrieve the results of Hive queries. This works by using the WebHCat REST API (formerly known as Templeton) provided by your HDInsight cluster.
+> [AZURE.NOTE] Linux ベースの Hadoop サーバーは使い慣れているが HDInsight は初めてという場合は、「[Linux での HDInsight の使用方法](hdinsight-hadoop-linux-information.md)」を参照してください。
 
-> [AZURE.NOTE] If you are already familiar with using Linux-based Hadoop servers, but are new to HDInsight, see [What you need to know about Hadoop on Linux-based HDInsight](hdinsight-hadoop-linux-information.md).
+##<a id="prereq"></a>前提条件
 
-##<a name="<a-id="prereq"></a>prerequisites"></a><a id="prereq"></a>Prerequisites
+この記事の手順を完了するには、次のものが必要です。
 
-To complete the steps in this article, you will need the following:
-
-* A Hadoop on HDInsight cluster (Linux or Windows-based)
+* HDInsight クラスター (Linux または Windows ベース) の Hadoop
 
 * [Curl](http://curl.haxx.se/)
 
 * [jq](http://stedolan.github.io/jq/)
 
-##<a name="<a-id="curl"></a>run-hive-queries-by-using-curl"></a><a id="curl"></a>Run Hive queries by using Curl
+##<a id="curl"></a>Curl を使用した Hive クエリの実行
 
-> [AZURE.NOTE] When using Curl or any other REST communication with WebHCat, you must authenticate the requests by providing the user name and password for the HDInsight cluster administrator. You must also use the cluster name as part of the Uniform Resource Identifier (URI) used to send the requests to the server.
+> [AZURE.NOTE] Curl、または WebHCat を使用したその他の REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。また、サーバーへの要求の送信に使用する Uniform Resource Identifier (URI) にクラスター名を含める必要があります。
 >
-> For the commands in this section, replace **USERNAME** with the user to authenticate to the cluster, and replace **PASSWORD** with the password for the user account. Replace **CLUSTERNAME** with the name of your cluster.
+> このセクションのコマンドでは、**USERNAME** をクラスターを認証するユーザーの名前に、**PASSWORD** をユーザー アカウントのパスワードに置き換えてください。**CLUSTERNAME** はクラスターの名前に置き換えます。
 >
-> The REST API is secured via [basic authentication](http://en.wikipedia.org/wiki/Basic_access_authentication). You should always make requests by using Secure HTTP (HTTPS) to help ensure that your credentials are securely sent to the server.
+> REST API のセキュリティは、[基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
-1. From a command line, use the following command to verify that you can connect to your HDInsight cluster:
+1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
 
-    You should receive a response similar to the following:
+    次のような応答を受け取ります。
 
         {"status":"ok","version":"v1"}
 
-    The parameters used in this command are as follows:
+    このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-u** - The user name and password used to authenticate the request.
-    * **-G** - Indicates that this is a GET request.
+    * **-u**: 要求の認証に使用するユーザー名とパスワード
+    * **-G**: GET 要求であることを示します。
 
-    The beginning of the URL, **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, will be the same for all requests. The path, **/status**, indicates that the request is to return a status of WebHCat (also known as Templeton) for the server. You can also request the version of Hive by using the following command:
+    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。次のコマンドを使用して、Hive のバージョンを要求することもできます。
 
         curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
 
-    This should return a response similar to the following:
+    次のような応答が返されます。
 
         {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
 
-2. Use the following to create a new table named **log4jLogs**:
+2. 次のコマンドを使用して、**log4jLogs** という名前の新しいテーブルを作成します。
 
         curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'wasbs:///example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="wasbs:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
 
-    The parameters used in this command are as follows:
+    このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-    * **-d** - Since `-G` is not used, the request defaults to the POST method. `-d` specifies the data values that are sent with the request.
+    * **-d**: `-G` が使用されていないため、要求は既定で POST メソッドになります。`-d` は要求で送信されるデータ値を指定します。
 
-        * **user.name** - The user that is running the command.
+        * **user.name**: コマンドを実行するユーザー
 
-        * **execute** - The HiveQL statements to execute.
+        * **execute**: 実行する HiveQL ステートメント
 
-        * **statusdir** - The directory that the status for this job will be written to.
+        * **statusdir**: ジョブのステータスが書き込まれるディレクトリ
 
-    These statements perform the following actions:
+    これらのステートメントは次のアクションを実行します。
 
-    * **DROP TABLE** - Deletes the table and the data file, if the table already exists.
+    * **DROP TABLE**: テーブルが既存の場合にテーブルとデータ ファイルを削除します。
 
-    * **CREATE EXTERNAL TABLE** - Creates a new 'external' table in Hive. External tables store only the table definition in Hive. The data is left in the original location.
+    * **CREATE EXTERNAL TABLE**: Hive に新しく '外部' テーブルを作成します。外部テーブルは Hive にテーブル定義のみを格納します。データは元の場所に残されます。
 
-        > [AZURE.NOTE] External tables should be used when you expect the underlying data to be updated by an external source, such as an automated data upload process, or by another MapReduce operation, but always want Hive queries to use the latest data.
-        >
-        > Dropping an external table does **not** delete the data, only the table definition.
+		> [AZURE.NOTE] 基盤となるデータを外部ソースによって更新する (データの自動アップロード処理など) 場合や別の MapReduce 操作によって更新する場合に、Hive クエリで最新のデータを使用する場合は、外部テーブルを使用する必要があります。
+		>
+		> 外部テーブルを削除しても、データは削除**されません**。テーブル定義のみが削除されます。
 
-    * **ROW FORMAT** - Tells Hive how the data is formatted. In this case, the fields in each log are separated by a space.
+    * **ROW FORMAT** - Hive にデータの形式を示します。ここでは、各ログのフィールドは、スペースで区切られています。
 
-    * **STORED AS TEXTFILE LOCATION** - Tells Hive where the data is stored (the example/data directory), and that it is stored as text.
+    * **STORED AS TEXTFILE LOCATION** - Hive に、データの格納先 (example/data ディレクトリ) と、データはテキストとして格納されていることを示します。
 
-    * **SELECT** - Selects a count of all rows where column **t4** contains the value **[ERROR]**. This should return a value of **3** as there are three rows that contain this value.
+    * **SELECT** - **t4** 列の値が **[ERROR]** であるすべての行の数を指定します。ここでは、この値を含む行が 3 行あるため、**3** という値が返されています。
 
-    > [AZURE.NOTE] Notice that the spaces between HiveQL statements are replaced by the `+` character when used with Curl. Quoted values that contain a space, such as the delimiter, should not be replaced by `+`.
+    > [AZURE.NOTE] Curl を使用したとき、HiveQL ステートメントのスペースが `+` に置き換わることに注意してください。スペースを含む引用符で囲まれた値 (区切り記号など) は `+` に置き換わりません。
 
-    * **INPUT__FILE__NAME LIKE '%25.log'** - This limits the search to only use files ending in .log. If this is not present, Hive will attempt to search all files in this directory and its subdirectories, including files that do not match the column schema defined for this table.
+    * **INPUT\_\_FILE\_\_NAME LIKE '%25.log'** - 検索で .log で終わるファイルのみが使用されます。このファイルがない場合は、Hive により、このディレクトリとそのサブディレクトリ内のすべてのファイル (このテーブルに定義された列スキーマに一致しないファイルを含む) の検索が試行されます。
 
-    > [AZURE.NOTE] Note that %25 is the URL encoded form of %, so the actual condition is `like '%.log'`. The % has to be URL encoded, as it is treated as a special character in URLs.
+    > [AZURE.NOTE] %25 は % の URL エンコード形式であるため、実際の条件は `like '%.log'` になります。URL で特殊文字と見なされるため、% は URL エンコードである必要があります。
 
-    This command should return a job ID that can be used to check the status of the job.
+    このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
 
         {"id":"job_1415651640909_0026"}
 
-3. To check the status of the job, use the following command. Replace **JOBID** with the value returned in the previous step. For example, if the return value was `{"id":"job_1415651640909_0026"}`, then **JOBID** would be `job_1415651640909_0026`.
+3. ジョブのステータスを確認するには、次のコマンドを使用します。**JOBID** を前の手順で返された値に置き換えます。たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、**JOBID** は `job_1415651640909_0026` になります。
 
         curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
 
-    If the job has finished, the state will be **SUCCEEDED**.
+	ジョブが完了している場合、ステータスは **SUCCEEDED** になります。
 
-    > [AZURE.NOTE] This Curl request returns a JavaScript Object Notation (JSON) document with information about the job; jq is used to retrieve only the state value.
+    > [AZURE.NOTE] この Curl 要求では、ジョブに関する情報が記載された JavaScript Object Notation (JSON) ドキュメントが返されます。状態値のみを取得するには jq を使用します。
 
-4. Once the state of the job has changed to **SUCCEEDED**, you can retrieve the results of the job from Azure Blob storage. The `statusdir` parameter passed with the query contains the location of the output file; in this case, **wasbs:///example/curl**. This address stores the output of the job in the **example/curl** directory on the default storage container used by your HDInsight cluster.
+4. ジョブのステータスが **SUCCEEDED** に変わったら、Azure BLOB ストレージからジョブの結果を取得できます。クエリで渡される `statusdir` パラメーターには出力ファイルの場所が含まれます。この場合は、**wasbs:///example/curl** になります。このアドレスではジョブの出力は、HDInsight クラスターが使用する既定のストレージ コンテナーの **example/curl** ディレクトリに保存されます。
 
-    You can list and download these files by using the [Azure CLI](../xplat-cli-install.md). For example, to list files in **example/curl**, use the following command:
+    これらのファイルを一覧表示およびダウンロードするには [Azure CLI](../xplat-cli-install.md) を使用します。たとえば、**example/curl** 内のファイルを一覧表示するには、次のコマンドを使用します。
 
-        azure storage blob list <container-name> example/curl
+		azure storage blob list <container-name> example/curl
 
-    To download a file, use the following:
+	ファイルをダウンロードするには、次のコマンドを使用します。
 
-        azure storage blob download <container-name> <blob-name> <destination-file>
+		azure storage blob download <container-name> <blob-name> <destination-file>
 
-    > [AZURE.NOTE] You must either specify the storage account name that contains the blob by using the `-a` and `-k` parameters, or set the **AZURE\_STORAGE\_ACCOUNT** and **AZURE\_STORAGE\_ACCESS\_KEY** environment variables. See <a href="hdinsight-upload-data.md" target="_blank" for more information.
+	> [AZURE.NOTE] `-a` および `-k` パラメーターを使用して BLOB を含むストレージ アカウントの名前を指定するか、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS\_KEY** を設定する必要があります。詳細情報については、「<a href="hdinsight-upload-data.md" target="\_blank"」 をご覧ください。
 
-6. Use the following statements to create a new 'internal' table named **errorLogs**:
+6. 次のステートメントを使用して、**errorLogs** という名前の新しい "内部" テーブルを作成します。
 
         curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="wasbs:///example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
 
-    These statements perform the following actions:
+    これらのステートメントは次のアクションを実行します。
 
-    * **CREATE TABLE IF NOT EXISTS** - Creates a table, if it does not already exist. Since the **EXTERNAL** keyword is not used, this is an internal table, which is stored in the Hive data warehouse and is managed completely by Hive.
+    * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。**EXTERNAL** キーワードが使用されていないため、これは内部テーブルであり、Hive のデータ保管先に格納され、完全に Hive によって管理されます。
 
-        > [AZURE.NOTE] Unlike external tables, dropping an internal table will delete the underlying data as well.
+		> [AZURE.NOTE] 外部テーブルとは異なり、内部テーブルを削除すると、基盤となるデータも削除されます。
 
-    * **STORED AS ORC** - Stores the data in Optimized Row Columnar (ORC) format. This is a highly optimized and efficient format for storing Hive data.
-    * **INSERT OVERWRITE ... SELECT** - Selects rows from the **log4jLogs** table that contain **[ERROR]**, then inserts the data into the **errorLogs** table.
-    * **SELECT** - Selects all rows from the new **errorLogs** table.
+    * **STORED AS ORC** - Optimized Row Columnar (ORC) 形式でデータを格納します。この形式は、Hive にデータを格納するための、非常に効率的で適切な形式です。
+    * **INSERT OVERWRITE ...SELECT** - **[ERROR]** を含む **log4jLogs** テーブルの列を選択し、**errorLogs** テーブルにデータを挿入します。
+    * **SELECT**: 新しい **errorLogs** テーブルからすべての行を選択します。
 
-7. Use the job ID returned to check the status of the job. Once it has succeeded, use Azure CLI for Mac, Linux and Windows as described previously to download and view the results. The output should contain three lines, all of which contain **[ERROR]**.
+7. 返されたジョブ ID を使用して、ジョブのステータスを確認します。確認できたら、前述のように Mac、Linux、Windows 用 Azure CLI を使用して、結果をダウンロードし、表示します。出力には、それぞれに **[ERROR]** が含まれた 3 つの行が返されます。
 
 
-##<a name="<a-id="summary"></a>summary"></a><a id="summary"></a>Summary
+##<a id="summary"></a>概要
 
-As demonstrated in this document, you can use a raw HTTP request to run, monitor, and view the results of Hive jobs on your HDInsight cluster.
+このドキュメントを参照して、未加工の HTTP 要求を使用して、HDInsight クラスターで Hive ジョブを実行、監視し、その結果を表示できます。
 
-For more information on the REST interface used in this article, see the <a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat Reference</a>.
+この記事で使用されている REST インターフェイスの詳細については、「<a href="https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference" target="_blank">WebHCat リファレンス</a>」に関するページをご覧ください。
 
-##<a name="<a-id="nextsteps"></a>next-steps"></a><a id="nextsteps"></a>Next steps
+##<a id="nextsteps"></a>次のステップ
 
-For general information on Hive with HDInsight:
+HDInsight での Hive に関する全般的な情報
 
-* [Use Hive with Hadoop on HDInsight](hdinsight-use-hive.md)
+* [HDInsight での Hive と Hadoop の使用](hdinsight-use-hive.md)
 
-For information on other ways you can work with Hadoop on HDInsight:
+HDInsight での Hadoop のその他の使用方法に関する情報
 
-* [Use Pig with Hadoop on HDInsight](hdinsight-use-pig.md)
+* [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
 
-* [Use MapReduce with Hadoop on HDInsight](hdinsight-use-mapreduce.md)
+* [HDInsight での MapReduce と Hadoop の使用](hdinsight-use-mapreduce.md)
 
-If you are using Tez with Hive, see the following documents for debugging information:
+Hive で Tez を使用する場合、デバッグ情報については、次のドキュメントを参照してください。
 
-* [Use the Tez UI on Windows-based HDInsight](hdinsight-debug-tez-ui.md)
+* [Windows ベースの HDInsight で Tez UI を使用して Tez ジョブをデバッグする](hdinsight-debug-tez-ui.md)
 
-* [Use the Ambari Tez view on Linux-based HDInsight](hdinsight-debug-ambari-tez-view.md)
+* [HDInsight で Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)
 
 [hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
@@ -193,10 +192,4 @@ If you are using Tez with Hive, see the following documents for debugging inform
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
 
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

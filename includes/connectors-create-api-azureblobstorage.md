@@ -1,36 +1,33 @@
-### <a name="prerequisites"></a>Prerequisites
-- An Azure account; you can create a [free account](https://azure.microsoft.com/free)
-- An [Azure Blob Storage account](../articles/storage/storage-create-storage-account.md) including the storage account name, and its access key. This information is listed in the properties of the storage account in the Azure portal. Read more about [Azure Storage](../articles/storage/storage-introduction.md).
+### 前提条件
+- Azure アカウント。[無料アカウント](https://azure.microsoft.com/free)を作成できます。
+- [Azure BLOB ストレージ アカウント](../articles/storage/storage-create-storage-account.md)。ストレージ アカウント名とアクセス キーが含まれます。この情報は、Azure ポータルでストレージ アカウントのプロパティに表示されます。詳細については、[Azure Storage](../articles/storage/storage-introduction.md)をご覧ください。
 
-Before using your Azure Blob Storage account in a logic app, connect to your Azure Blob Storage account. You can do this easily within your logic app on the Azure  portal.  
+ロジック アプリで Azure Blob Storage アカウントを使用する前に、Azure Blob Storage アカウントに接続します。これは、Azure ポータルのロジック アプリ内で簡単に実行できます。
 
-Connect to your Azure Blob Storage account using the following steps:  
+次の手順に従って、Azure Blob Storage アカウントに接続します。
 
-1. Create a logic app. In the Logic Apps designer, add a trigger, and then add an action. Select **Show Microsoft managed APIs** in the drop down list, and then enter "blob" in the search box. Select one of the actions:  
+1. ロジック アプリを作成します。Logic Apps デザイナーで、トリガーを追加して、アクションを追加します。ドロップダウン リストから **[Show Microsoft managed APIs (Microsoft Managed API を表示)]** を選択し、検索ボックスに「blob」と入力します。いずれかの操作を選択します。
 
-    ![Azure Blob Storage connection creation step](./media/connectors-create-api-azureblobstorage/azureblobstorage-1.png)  
+	![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/azureblobstorage-1.png)
 
-2. If you haven't previously created any connections to Azure storage, you are prompted for the connection details:   
+2. これまで Azure Storage への接続を行っていない場合は、接続の詳細情報を求められます。
 
-    ![Azure Blob Storage connection creation step](./media/connectors-create-api-azureblobstorage/connection-details.png)  
+	![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/connection-details.png)
 
-3. Enter the storage account details. Properties with an asterisk are required.
+3. ストレージ アカウントの詳細を入力します。アスタリスクが付いているプロパティは必須です。
 
-    | Property | Details |
+	| プロパティ | 詳細 |
 |---|---|
-| Connection Name * | Enter any name for your connection. |
-| Azure Storage Account Name * | Enter the storage account name. The storage account name is displayed in the storage properties in the Azure portal. |
-| Azure Storage Account Access Key * | Enter the storage account key. The access keys are displayed in the storage properties in the Azure portal. |
+| 接続名 * | 接続の任意の名前を入力します。 |
+| Azure ストレージ アカウント名 * | ストレージ アカウント名を入力します。ストレージ アカウント名は、Azure ポータルのストレージのプロパティに表示されます。 |
+| Azure Storage Account Access Key (Azure ストレージ アカウント アクセス キー) * | ストレージ アカウント キーを入力します。アクセス キーは、Azure ポータルのストレージのプロパティに表示されます。 |
 
-    These credentials are used to authorize your logic app to connect, and access your data. 
+	これらの資格情報を使用して、接続するロジック アプリの承認と、データへのアクセスが行われます。
 
-4. Select **Create**.
+4. **[作成]** を選択します。
 
-5. Notice the connection has been created. Now, proceed with the other steps in your logic app: 
+5. 接続が作成されたことを確認します。これで、ロジック アプリで他の手順に進むことができます。
 
-    ![Azure Blob Storage connection creation step](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
+	![Azure BLOB ストレージの接続の作成手順](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

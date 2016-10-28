@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Reliable Actors notes on actor type serialization | Microsoft Azure"
-   description="Discusses basic requirements for defining serializable classes that can be used to define Service Fabric Reliable Actors states and interfaces"
+   pageTitle="Reliable Actors のアクター型のシリアル化に関する留意事項 | Microsoft Azure"
+   description="Service Fabric Reliable Actors の状態とインターフェイスを定義する場合に使用できるシリアル化可能なクラスを定義するための基本的な要件について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -13,18 +13,17 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/19/2016"
+   ms.date="07/06/2015"
    ms.author="vturecek"/>
 
+# Service Fabric Reliable Actors 型のシリアル化に関する留意事項
 
-# <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Notes on Service Fabric Reliable Actors type serialization
 
+すべてのメソッドの引数、アクター インターフェイスの各メソッドによって返されるタスクの結果の型、アクターの状態マネージャーに保存されるオブジェクトは、[シリアル化可能なデータ コントラクト](https://msdn.microsoft.com/library/ms731923.aspx)である必要があります。これは、[アクター イベント インターフェイス](service-fabric-reliable-actors-events.md#actor-events)で定義されているメソッドの引数にも当てはまります (アクター イベント インターフェイス メソッドは常に void を返します)。
 
-The arguments of all methods, result types of the tasks returned by each method in an actor interface, and objects stored in an actor's State Manager must be [Data Contract serializable](https://msdn.microsoft.com/library/ms731923.aspx).. This also applies to the arguments of the methods defined in [actor event interfaces](service-fabric-reliable-actors-events.md#actor-events). (Actor event interface methods always return void.)
+## カスタム データ型
 
-## <a name="custom-data-types"></a>Custom data types
-
-In this example, the following actor interface defines a method that returns a custom data type called `VoicemailBox`.
+次の例では、アクター インターフェイスで `VoicemailBox` というカスタム データ型を返すメソッドを定義しています。
 
 ```csharp
 public interface IVoiceMailBoxActor : IActor
@@ -33,17 +32,12 @@ public interface IVoiceMailBoxActor : IActor
 }
 ```
 
-The interface is impelemented by an actor, which uses the State Manager to store a `VoicemailBox` object:
+このインターフェイスは、状態マネージャーを使用して `VoicemailBox` オブジェクトを保存するアクターによって実装されます。
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
 public class VoiceMailBoxActor : Actor, IVoicemailBoxActor
 {
-    public VoiceMailBoxActor(ActorService actorService, ActorId actorId)
-        : base(actorService, actorId)
-    {
-    }
-
     public Task<VoicemailBox> GetMailboxAsync()
     {
         return this.StateManager.GetStateAsync<VoicemailBox>("Mailbox");
@@ -52,11 +46,11 @@ public class VoiceMailBoxActor : Actor, IVoicemailBoxActor
 
 ```
 
-In this example, the `VoicemailBox` object is serialized when:
- - The object is transmitted between an actor instance and a caller.
- - The object is saved in the State Manager where it is persisted to disk and replicated to other nodes.
+この例では、`VoicemailBox` オブジェクトは次の状況でシリアル化されます。
+ - オブジェクトがアクター インスタンスと呼び出し元の間で送信されるとき。
+ - オブジェクトが状態マネージャーに保存されるとき (状態マネージャーでオブジェクトがディスクに保存され、他のノードにレプリケートされます)。
  
-The Reliable Actor framework uses DataContract serialization. Therefore, the custom data objects and their members must be annotated with the **DataContract** and **DataMember** attributes, respectively
+Reliable Actors フレームワークでは、DataContract シリアル化を使用します。そのため、カスタム データ オブジェクトとそのメンバーに、それぞれ **DataContract** 属性と **DataMember** 属性を注釈として付ける必要があります。
 
 ```csharp
 [DataContract]
@@ -90,16 +84,12 @@ public class VoicemailBox
 }
 ```
 
-## <a name="next-steps"></a>Next steps
- - [Actor lifecycle and garbage collection](service-fabric-reliable-actors-lifecycle.md)
- - [Actor timers and reminders](service-fabric-reliable-actors-timers-reminders.md)
- - [Actor events](service-fabric-reliable-actors-events.md)
- - [Actor reentrancy](service-fabric-reliable-actors-reentrancy.md)
- - [Actor polymorphism and object-oriented design patterns](service-fabric-reliable-actors-polymorphism.md)
- - [Actor diagnostics and performance monitoring](service-fabric-reliable-actors-diagnostics.md)
+## 次のステップ
+ - [アクターのライフサイクルとガベージ コレクション](service-fabric-reliable-actors-lifecycle.md)
+ - [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
+ - [アクター イベント](service-fabric-reliable-actors-events.md)
+ - [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
+ - [アクターのポリモーフィズムとオブジェクト指向設計パターン](service-fabric-reliable-actors-polymorphism.md)
+ - [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

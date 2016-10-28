@@ -1,83 +1,79 @@
 <properties
-    pageTitle="DevTest Labs concepts | Microsoft Azure"
-    description="Learn the basic concepts of DevTest Labs, and how it can make it easy to create, manage, and monitor Azure virtual machines"
-    services="devtest-lab,virtual-machines"
-    documentationCenter="na"
-    authors="tomarcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="DevTest Labs のコンセプト | Microsoft Azure"
+	description="DevTest Labs の基本概念と、DevTest Labs を Azure Virtual Machines を簡単に作成、管理、監視するために使用する方法について説明します。"
+	services="devtest-lab,virtual-machines"
+	documentationCenter="na"
+	authors="tomarcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="devtest-lab"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/25/2016"
-    ms.author="tarcher"/>
+	ms.service="devtest-lab"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/25/2016"
+	ms.author="tarcher"/>
 
-
-#<a name="devtest-labs-concepts"></a>DevTest Labs concepts
+#DevTest ラボの概念
 
 > [AZURE.NOTE]
-> This article is part 3 of a 3 part series:
+この記事は、3 部構成のシリーズの第 3 部です。
 > 
-> 1. [What is DevTest Labs?](devtest-lab-overview.md)
-> 1. [Why DevTest Labs?](devtest-lab-why.md)
-> 1. **[DevTest Labs concepts](devtest-lab-concepts.md)**
+> 1. [DevTest ラボとは](devtest-lab-overview.md)
+> 1. [DevTest ラボを使用する理由](devtest-lab-why.md)
+> 1. **[DevTest Labs のコンセプト](devtest-lab-concepts.md)**
 
-##<a name="overview"></a>Overview
+##Overview
 
-The following list contains key DevTest Labs concepts and definitions:
+次の一覧には、DevTest ラボの主要な概念と定義が含まれています。
 
-##<a name="artifacts"></a>Artifacts
-Artifacts are used to deploy and configure your application after a VM is provisioned. Artifacts can be:
+##アーティファクト
+アーティファクトは、VM のプロビジョニング後にアプリケーションをデプロイして構成するために使用します。次に示すアーティファクトが対象です。
 
-- Tools that you want to install on the VM - such as agents, Fiddler, and Visual Studio.
-- Actions that you want to run on the VM - such as cloning a repo.
-- Applications that you want to test.
+- VM にインストールするツール (エージェント、Fiddler、Visual Studio など)。
+- VM 上で実行するアクション (リポジトリの複製など)。
+- テスト対象のアプリケーション。
 
-Artifacts are [Azure Resource Manager](../resource-group-overview.md) JSON files that contain instructions to perform deployment and apply configuration. 
+アーティファクトは、デプロイメントの実行と構成の適用の指示を含む [Azure Resource Manager](../resource-group-overview.md) の JSON ファイルです。
 
-##<a name="artifact-repositories"></a>Artifact repositories
-Artifact repositories are git repositories where artifacts are checked in. Same artifact repositories can be added to multiple labs in your organization enabling reuse and sharing.
+##アーティファクト リポジトリ
+アーティファクト リポジトリは、アーティファクトがチェックインされる git リポジトリです。同じアーティファクト リポジトリを組織内の複数のラボに追加することで、再利用と共有を有効にできます。
 
-## <a name="base-images"></a>Base images
-Base images are VM images with all the tools and settings preinstalled and configured to quickly create a VM. You can provision a VM by picking an existing base and adding an artifact to install your test agent. You can then save the provisioned VM as a base so that the base can be used without having to reinstall the test agent for each provisioning of the VM.
+## 基本イメージ
+基本イメージは、VM をすばやく作成するためのすべてのツールと設定がプレインストールされ、構成されている VM イメージです。既存のベースを選択し、テスト エージェントをインストールするためのアーティファクトを追加することで、VM をプロビジョニングできます。次に、プロビジョニング済みの VM をベースとして保存することで、テスト エージェントを VM の各プロビジョニングに再インストールすることなく、ベースを使用できます。
 
-##<a name="formulas"></a>Formulas 
-Formulas, in addition to base images, provide a mechanism for fast VM provisioning. A formula in DevTest Labs is a list of default property values used to create a lab VM. With formulas, VMs with the same set of properties - such as base image, VM size, virtual network, and artifacts - can be created without needing to specify those properties each time. When creating a VM from a formula, the default values can be used as-is or modified.
+##数式 
+数式は、基本イメージに加え、VM を短時間でプロビジョニングするための手法です。DevTestラボにおける数式とは、ラボ VM の作成に使用できる既定のプロパティ値の一覧です。数式を使用することで、ベース イメージ、VM サイズ、仮想ネットワーク、およびアーティファクトなど、同じ一連のプロパティで VM を作成できるため、作成するたびにプロパティを指定する必要がありません。数式から VM を作成する際に、この既定値をそのまま使用することも変更することもできます。
 
-##<a name="caps"></a>Caps
-Caps is a mechanism to minimize waste in your lab. For example, you can set a cap to restrict the number of VMs that can be created per user, or in a lab.
+##キャップ
+キャップは、ラボにおける無駄を最小限に抑えるメカニズムです。たとえば、ユーザーごと、またはラボで作成できるVM の数を制限するためのキャップを設定できます。
 
-##<a name="policies"></a>Policies
-Policies help in controlling cost in your lab. For example, you can create a policy to automatically shut down VMs based on a defined schedule.
+##ポリシー
+ポリシーは、ラボでのコスト管理をサポートします。たとえば、定義されたスケジュールに基づいて、VM を自動的にシャット ダウンするポリシーを作成できます。
 
-##<a name="security-levels"></a>Security levels
-Security access is determined by Azure Role-Based Access Control (RBAC). To understand how access works, it helps to understand the differences between a permission, a role, and a scope as defined by RBAC. 
+##セキュリティ レベル
+セキュリティ アクセスは、Azure のロール ベースのアクセス制御 (RBAC) によって決定されます。アクセスのしくみを理解するには、RBAC によって定義されているアクセス許可、ロール、およびスコープの違いを理解することが有用です。
 
-- Permission - A permission is a defined access to a specific action (e.g. read-access to all virtual machines). 
-- Role - A role is a set of permissions that can be grouped and assigned to a user. For example, the *subscription owner* role has access to all resources within a subscription. 
-- Scope - A scope is a level within the hierarchy of an Azure resource - such as a resource group, a single lab, or the entire subscription).
+- アクセス許可 - アクセス許可とは、特定のアクションへのアクセスを定義したもの (たとえば、すべての仮想マシンへの読み取りアクセス) です。
+- ロール - ロールとは、グループ化してユーザーに割り当てることができる一連のアクセス許可です。たとえば、"*サブスクリプション所有者*" ロールは、サブスクリプション内のすべてのリソースにアクセスできます。
+- スコープ - スコープは、Azure リソースの階層内のレベル (単一のリソース グループ、単一のラボ、サブスクリプション全体など) です。
  
-Within the scope of DevTest Labs, there are two types of roles to define user permissions: lab owner and lab user.
+DevTest Labs のスコープ内では、ユーザーのアクセス許可を定義する 2 種類のロールがあります。ラボ所有者とラボ ユーザーです。
 
-- Lab Owner - A lab owner has access to any resources within the lab. Therefore, a lab owner can modify policies, read and write any VMs, change the virtual network, and so on. 
-- Lab User - A lab user can view all lab resources, such as VMs, policies, and virtual networks, but cannot modify policies or any VMs created by other users. 
+- ラボ所有者 - ラボ所有者は、ラボ内のすべてのリソースにアクセスできます。そのため、ポリシーの変更、任意の VM の読み取りと書き込み、仮想ネットワークの変更などを行うことができます。
+- ラボ ユーザー: ラボ ユーザーは VM、ポリシー、仮想ネットワークなど、すべてのラボ リソースを表示できますが、他のユーザーが作成したポリシーまたは VM を変更することはできません。
 
 
-To see how to create custom roles in DevTest Labs, refer to the article, [Grant user permissions to specific lab policies](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
+DevTest Labs にカスタム ロールを作成する方法については、記事「[特定のラボ ポリシーに対するアクセス許可をユーザーに付与する](devtest-lab-grant-user-permissions-to-specific-lab-policies.md)」をご覧ください。
 
-Since scopes are hierarchical, when a user has permissions at a certain scope, they are automatically granted those permissions at every lower-level scope encompassed. For instance, if a user is assigned to the role of subscription owner, then they have access to all resources in a subscription, which include all virtual machines, all virtual networks, and all labs. Therefore, a subscription owner automatically inherits the role of lab owner. However, the opposite is not true. A lab owner has access to a lab, which is a lower scope than the subscription level. Therefore, a lab owner will not be able to see virtual machines or virtual networks or any resources that are outside of the lab.
+スコープは階層構造を持つため、ユーザーが特定のスコープのアクセス許可を持つ場合は、含まれているすべての下位のスコープでそのアクセス許可が自動的に付与されます。たとえば、ユーザーにサブスクリプション所有者のロールが割り当てられている場合、ユーザーはサブスクリプションのすべてのリソースにアクセスできます。これには、すべての仮想マシン、すべての仮想ネットワーク、およびすべてのラボが含まれます。このため、サブスクリプション所有者は、ラボ所有者のロールを自動的に継承します。ただし、その逆は真ではありません。ラボ所有者はラボにアクセスできます。これはサブスクリプション レベルよりも下位のスコープです。そのため、ラボ所有者はラボの外にある仮想マシン、仮想ネットワーク、またはいずれのリソースも表示できません。
 
 [AZURE.INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-##<a name="next-steps"></a>Next steps
+##次のステップ
 
-[Create a lab in DevTest Labs](devtest-lab-create-lab.md)
+[DevTest Labs でラボを作成します。](devtest-lab-create-lab.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

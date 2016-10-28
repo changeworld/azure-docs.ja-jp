@@ -1,51 +1,46 @@
 <properties
-    pageTitle="What is Azure Event Hubs? | Microsoft Azure"
-    description="Overview and description of Azure Event Hubs"
-    services="event-hubs"
-    documentationCenter=".net"
-    authors="sethmanheim"
-    manager="timlt"
-    editor=""/>
+	pageTitle="Azure Event Hubs とは | Microsoft Azure"
+	description="Azure Event Hubs の概要と説明"
+	services="event-hubs"
+	documentationCenter=".net"
+	authors="sethmanheim"
+	manager="timlt"
+	editor=""/>
 
 <tags
-    ms.service="event-hubs"
-    ms.workload="na"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="get-started-article"
-    ms.date="08/17/2016"
-    ms.author="sethm"/>
+	ms.service="event-hubs"
+	ms.workload="na"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="get-started-article"
+	ms.date="08/17/2016"
+	ms.author="sethm"/>
 
+# Azure Event Hubs とは
 
-# <a name="what-is-azure-event-hubs?"></a>What is Azure Event Hubs?
+Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる高度にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。Event Hubs はイベント パイプラインの "玄関" として機能し、Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。Event Hubs はイベント ストリームの生成とイベントの使用を分離し、イベント コンシューマーが独自のスケジュールでイベントにアクセスできるようにします。技術的な詳細などについては、「[Event Hubs の概要](event-hubs-overview.md)」を参照してください。
 
-Azure Event Hubs is a highly scalable data ingress service that can ingest millions of events per second so that you can process and analyze the massive amounts of data produced by your connected devices and applications. Event Hubs acts as the "front door" for an event pipeline, and once data is collected into an Event Hub, it can be transformed and stored using any real-time analytics provider or batching/storage adapters. Event Hubs decouples the production of a stream of events from the consumption of those events, so that event consumers can access the events on their own schedule. For more information and technical details, see the [Event Hubs overview](event-hubs-overview.md).
+## Event Hubs の機能
 
-## <a name="event-hubs-capabilities"></a>Event Hubs capabilities
+Event Hubs は、低遅延の動作と高い信頼性を確保しながら、膨大なイベントとテレメトリ処理を提供するイベント処理サービスです。このサービスは次のような場合に特に便利です。
 
-Event Hubs is an event processing service that provides event and telemetry processing at massive scale, with low latency and high reliability. This service is especially useful for:
+- アプリケーションのインストルメンテーション
+- ユーザー エクスペリエンスやワークフロー処理
+- モノのインターネット (IoT) のシナリオ
 
-- Application instrumentation
-- User experience or workflow processing
-- Internet of Things (IoT) scenarios
+Event Hubs の他の重要な機能としては、モバイル アプリでのビヘイビアー追跡、Web ファームからのトラフィック情報、コンソール ゲームにおけるゲーム中のイベント キャプチャ、産業機器またはコネクテッド カーから収集されたテレメトリなどがあります。
 
-Some other key Event Hubs capabilities include behavior tracking in mobile apps, traffic information from web farms, in-game event capture in console games, or telemetry collected from industrial machines or connected vehicles.
+## 次のステップ
 
-## <a name="next-steps"></a>Next steps
+Event Hubs の詳細については、次のトピックを参照してください。
 
-For detailed information about Event Hubs, see the following topics.
+- [Event Hubs の概要](event-hubs-overview.md)
+- [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
+- [イベント ハブの可用性とサポートに関する FAQ](event-hubs-availability-and-support-faq.md)
+- [Event Hubs の使用][]
+- [Event Hub を使用する完全なサンプル アプリケーション][]
 
-- [Event Hubs overview](event-hubs-overview.md)
-- [Event Hubs programming guide](event-hubs-programming-guide.md)
-- [Event Hubs availability and support FAQ](event-hubs-availability-and-support-faq.md)
-- Get started with an [Event Hubs tutorial][]
-- A complete [sample application that uses Event Hubs][]
+[Event Hubs の使用]: event-hubs-csharp-ephcs-getstarted.md
+[Event Hub を使用する完全なサンプル アプリケーション]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
 
-[Event Hubs tutorial]: event-hubs-csharp-ephcs-getstarted.md
-[sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0907_2016-->

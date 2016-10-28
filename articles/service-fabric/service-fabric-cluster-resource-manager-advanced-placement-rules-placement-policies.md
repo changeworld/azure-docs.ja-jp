@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric Cluster Resource Manager - Placement Policies | Microsoft Azure"
-   description="Overview of additional placement policies and rules for Service Fabric Services"
+   pageTitle="Service Fabric クラスター リソース マネージャー - 配置ポリシー | Microsoft Azure"
+   description="Service Fabric サービスの追加の配置ポリシーとルールの概要"
    services="service-fabric"
    documentationCenter=".net"
    authors="masnider"
@@ -16,16 +16,15 @@
    ms.date="08/19/2016"
    ms.author="masnider"/>
 
+# Service Fabric サービスの配置ポリシー
+Service Fabric のクラスターが複数のデータセンターや Azure のリージョンなど、地理的に離れた場所に広がっている場合や、環境が地政学的な管理の異なる領域に広がっている場合 (もしくは法的、政策的な境界について考慮しなければならない場合や、こうした距離がパフォーマンス/待機時間に実際に影響を与える場合) には、他にも最終的に考慮する必要のあるさまざまなルールがあります。こうしたルールの多くはノード プロパティおよび配置の制約によって構成できますが、なかには非常に複雑なものもあります。物事をシンプルにするために、次の追加のコマンドを用意しました。他の配置の制約と同様に、配置ポリシーを名前付きサービス インスタンスごとに構成できます。
 
-# <a name="placement-policies-for-service-fabric-services"></a>Placement policies for service fabric services
-There are many different additional rules that you may end up caring about if your Service Fabric cluster is spanned across a geographic distances, say multiple datacenters or Azure regions, or if your environment spans multiple areas of geopolitical control (or some other case where you have legal or policy boundaries you care about, or the distances involved have actual performance/latency impact). Most of these could be configured via node properties and placement constraints, but some are more complicated. To make things simpler we provide these additional commmands. Just like with other placement constraints, placement policies can be configured on a per-named service instance basis.
+## 無効なドメインを指定する
+invalidDomain 配置ポリシーでは、特定の障害ドメインがこのワークロードに対して無効になるように指定できます。地政学的または企業のポリシー上の理由などにより、特定の地域で特定のサービスが実行されないようにできます。無効なドメインは、別々のポリシーで複数指定できます。
 
-## <a name="specifying-invalid-domains"></a>Specifying invalid domains
-The InvalidDomain placement policy allows you to specify that a particular Fault Domain is invalid for this workload. This policy ensures that a particular service never runs in a particular area, for example for geopolitical or corporate policy reasons. Multiple invalid domains may be specified via separate policies.
+![無効なドメインの例][Image1]
 
-![Invalid Domain Example][Image1]
-
-Code:
+コード:
 
 ```csharp
 ServicePlacementInvalidDomainPolicyDescription invalidDomain = new ServicePlacementInvalidDomainPolicyDescription();
@@ -38,12 +37,12 @@ Powershell:
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
-## <a name="specifying-required-domains"></a>Specifying required domains
-The required domain placement policy requires that all of the stateful replicas or stateless service instances for the service be present in the specified domain. Multiple required domains can be specified via separate policies.
+## 必要なドメインを指定する
+required domain 配置ポリシーでは、指定したドメインにサービスのすべてのステートフル レプリカまたはステートレス サービス インスタンスが存在している必要があります。必要なドメインは、別々のポリシーで複数指定できます。
 
-![Required Domain Example][Image2]
+![必要なドメインの例][Image2]
 
-Code:
+コード:
 
 ```csharp
 ServicePlacementRequiredDomainPolicyDescription requiredDomain = new ServicePlacementRequiredDomainPolicyDescription();
@@ -57,10 +56,10 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
-## <a name="specifying-a-preferred-domain-for-the-primary-replicas"></a>Specifying a preferred domain for the primary replicas
-The Preferred Primary Domain is an interesting control, since it allows selection of the fault domain in which the primary should be placed if it is possible to do so. When everything is healthy the primary will end up in this domain. Should the domain or the primary replica fail or be shut down for some reason the Primary will be migrated to some other location. If this location isn't in the preferred domain, then when possible the Cluster Resource Manager will move it back to the preferred domain. Naturally this setting only makes sense for stateful services. This policy is most useful in clusters which are spanned across Azure regions or multiple datacenters. In these situations you're using all the locations for redundancy, but would prefer that the primary replicas be placed in a certain location in order to provide lower latency for operations which go to the primary (writes and also by default all reads are served by the primary).
+## プライマリ レプリカの優先ドメインを指定する
+優先プライマリ ドメインは変わったコントロールであり、プライマリが存在する必要がある障害ドメインの選択が許可されます (選択が可能な場合)。すべてが正常な場合、プライマリは最終的にこのドメインに配置されます。何らかの理由によりドメインまたはプライマリ レプリカで障害が発生した場合、またはシャットダウンした場合、プライマリは別の場所に移行します。この場所が優先ドメインではない場合、可能であれば、クラスター リソース マネージャーにより優先ドメインに戻されます。元来、この設定は、ステートフル サービスでのみ有効です。このポリシーは、Azure のリージョンまたは複数のデータセンターに分散しているクラスターに最適です。このような状況では、冗長性のためにすべての場所を使用するが、プライマリになる操作の待機時間を減らす目的で (プライマリは書き込みと、既定ではすべての読み込みにサービスを提供します) プライマリ レプリカを特定の場所に配置することが優先されます。
 
-![Preferred Primary Domains and Failover][Image3]
+![優先プライマリ ドメインとフェールオーバー][Image3]
 
 ```csharp
 ServicePlacementPreferPrimaryDomainPolicyDescription primaryDomain = new ServicePlacementPreferPrimaryDomainPolicyDescription();
@@ -74,14 +73,14 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
-## <a name="requiring-replicas-to-be-distributed-among-all-domains-and-disallowing-packing"></a>Requiring replicas to be distributed among all domains and disallowing packing
-Another policy you can specify is to require replicas to always be distributed among the available fault domains. This will happen by default in most cases where the cluster is healthy, however there are degenerate cases where replicas for a given partition may end up temporarily packed into a single fault or upgrade domain. For example, let's say that although the cluster has 9 nodes in 3 fault domains (0, 1, and 2), and your service has 3 replicas, the nodes that were being used for those replicas in Fault Domains 1 and 2 went down, and due to capacity issues none of the other nodes in those domains were valid. If Service Fabric were to build replacements for those replicas, the Cluster Resource Manager would have to put them in Fault Domain 0, but that creates a situation where the Fault Domain constraint is being violated. It also increases the chance that the whole replica set could be lost (if FD 0 were to be permananently lost). (For more information on constraints and constraint priorities generally, check out [this topic](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities) )
+## すべてのドメイン間で配信することとパッキングを許可しないことをレプリカに要求する
+指定できるもう 1 つのポリシーでは、利用可能な障害ドメイン間で常に配信されるようにレプリカに要求します。これは、クラスターが正常であるほとんどのケースで既定で実行されますが、特定のパーティションのレプリカが 1 つの障害またはアップグレード ドメインに一時的にパッキングされるという結果になる場合があります。たとえば、3 つの障害ドメイン (0、1、および 2) でクラスターに 9 個のノードが、サービスに 3 つのレプリカがあり、障害ドメイン 1 および 2 のこれらのレプリカに使用したノードが停止し、容量の問題でこれらのドメイン内の他のいずれのノードも有効にならなかったと仮定します。Service Fabric がこれらのレプリカの交換を構築した場合、クラスター リソース マネージャーはこれらを障害ドメイン 0 に配置する必要がありますが、これによって、障害ドメインの制約が違反される状況が発生します。また、レプリカ セット全体が失われる可能性も高まります (FD 0 が完全に失われた場合)。(制約と制約の優先順位の概要については、[このトピック](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities)をご覧ください)
 
-If you've ever seen a health warning like "The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain" you've hit this condition or something like it. Usually these situations are transient (the nodes don't stay down long, or if they do and we need to build replacements there are other nodes in the correct fault domains which are valid), but there are some workloads that would rather trade availability for the risk of losing all their replicas. We can do this by specifying the "RequireDomainDistribution" policy, which will guarantee that no two replicas from the same partition are ever allowed in the same fault or upgrade domain.
+"Load Balancer がこのレプリカに対して制約違反を検出しました:fabric:/<サービス名> セカンダリ パーティション <パーティション ID> が制約: FaultDomain に違反しています" のような正常性の警告を受け取ったことがある場合は、この状況、または似た状況が既に発生しています。通常、このような状況は一過性ですが (ノードが長時間停止しない、または停止した場合は有効な正しい障害ドメインに他のノードがある交換を構築する必要がある)、可用性と引き換えにこれらすべてのレプリカを失った方が良いワークロードもあります。これを行うには RequireDomainDistribution ポリシーを指定します。これにより、同じパーティションからの 2 つのレプリカを同じ障害またはアップグレード ドメインで許可しないことが保証されます。
 
-Some workloads would rather have the target number of replicas (copies of state) at all times (betting against total domain failures and knowing that they can usually recover local state), whereas others would rather take the downtime earlier than risk the correctness and dataloss concerns. Since most production workloads run with more than 3 replicas, the default is to not require domain distribution and let balancing and failover handle cases normally even if that means that temporarily a domain has multiple replicas packed into it.
+常に目標とする数のレプリカ (状態のコピー) を持つ必要のあるワークロードもあれば (ドメインのエラー合計数を信じて、通常、ローカルの状態を回復できるとわかっている)、正確性やデータ損失のリスク以前にダウンタイムを選んだ方が良いワークロードもあります。ほとんどの実稼働ワークロードは 3 つ以上のレプリカを使って実行されるため、既定ではドメイン配信が不要です。これにより一時的にドメインに複数のレプリカがパッキングされていても、負荷分散とフェールオーバーによってケースが対応されます。
 
-Code:
+コード:
 
 ```csharp
 ServicePlacementRequireDomainDistributionPolicyDescription distributeDomain = new ServicePlacementRequireDomainDistributionPolicyDescription();
@@ -94,17 +93,13 @@ Powershell:
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 2 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-Now, would it be possible to use these configurations for services in a cluster which was not geographically spanned? Sure you could! But there’s not a great reason too – especially the required, invalid, and preferred domain configurations should be avoided unless you’re actually running a geographically spanned cluster - it doesn't make any sense to try to force a given workload to run in a single rack, or to prefer some segment of your local cluster over another unless there's different types of hardware or workload segmentation going on, and those cases can be handled via normal placement constraints.
+では、これらの構成を地理的に分散していないクラスターのサービスに構成することはできるでしょうか。 もちろん、できます。 しかし、あまり利点はありません。特に、必要な、無効な、および優先ドメインの構成は、実際に地理的に分散しているクラスターを実行していない場合は、避ける必要があります。特定のワークロードを単一のラックで実行したり、ローカル クラスターのセグメントを他のものより優先することは、異なる種類のハードウェアまたはワークロード セグメンテーションを使用しているのでない限り意味がありません。また、これらのケースは通常の配置の制約が対処します。
 
-## <a name="next-steps"></a>Next steps
-- For more information about the other options available for configuring services check out the topic on the other Cluster Resource Manager configurations available [Learn about configuring Services](service-fabric-cluster-resource-manager-configure-services.md)
+## 次のステップ
+- サービスの構成に利用できるその他のオプションの詳細については、「[サービスの構成について学習する](service-fabric-cluster-resource-manager-configure-services.md)」にあるその他のクラスター リソース マネージャーに関するトピックを参照してください。
 
-[Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
-[Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
-[Image3]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
+[Image1]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
+[Image2]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png
+[Image3]: ./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-preferred-primary-domain.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

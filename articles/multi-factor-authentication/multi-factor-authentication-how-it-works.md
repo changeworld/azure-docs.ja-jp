@@ -1,106 +1,101 @@
 <properties 
-    pageTitle="Azure Multi-Factor Authentication - How it works"
-    description="Azure Multi-Factor Authentication helps safeguard access to data and applications while meeting user demand for a simple sign-in process. It provides additional security by requiring a second form of authentication and delivers strong authentication via a range of easy verification options."
-    services="multi-factor-authentication"
-    documentationCenter=""
-    authors="kgremban"
-    manager="femila"
-    editor="curtland"/>
+	pageTitle="Azure Multi-Factor Authentication - しくみ"
+	description="Azure Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。2 番目の形式の認証を要求することで追加のセキュリティを提供し、次の一連の容易な確認オプションによって強力な認証を提供します。"
+	services="multi-factor-authentication"
+	documentationCenter=""
+	authors="kgremban"
+	manager="femila"
+	editor="curtland"/>
 
 <tags
-    ms.service="multi-factor-authentication"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/04/2016"
-    ms.author="kgremban"/>
+	ms.service="multi-factor-authentication"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/04/2016"
+	ms.author="kgremban"/>
+
+#Azure Multi-Factor Authentication のしくみ
+
+多要素認証のセキュリティは、レイヤー アプローチによってもたらされます。攻撃者にとって、多要素認証を侵害することはかなり困難です。攻撃者にユーザーのパスワードを知られても、信頼できるデバイスを手に入れなければ役に立ちません。ユーザーがデバイスを紛失した場合、そのデバイスを見つけた人は、ユーザーのパスワードを知らなければデバイスを使用することができません。
+
+![追加のセキュリティ確認](./media/multi-factor-authentication-how-it-works/howitworks.png)
 
 
-#<a name="how-azure-multi-factor-authentication-works"></a>How Azure Multi-Factor Authentication works
 
-The security of multi-factor authentication lies in its layered approach. Compromising multiple authentication factors presents a significant challenge for attackers. Even if an attacker manages to learn the user's password, it is useless without also having possession of the trusted device. Should the user lose the device, the person who finds it won't be able to use it unless he or she also knows the user's password.
+Azure Multi-Factor Authentication を使えば、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することが可能です。2 番目の形式の認証を要求することで追加のセキュリティを提供し、次の一連の容易な確認オプションによって強力な認証を提供します。
 
-![Proofup](./media/multi-factor-authentication-how-it-works/howitworks.png)
+- 音声通話
+- テキスト メッセージ
+- モバイル アプリの通知 (ユーザーは希望の方法を選択できます)
+- モバイル アプリの検証コード
+- サード パーティの OATH トークン
 
-
-
-Azure Multi-Factor Authentication helps safeguard access to data and applications while meeting user demand for a simple sign-in process.  It provides additional security by requiring a second form of authentication and delivers strong authentication via a range of easy verification options:
-
-- phone call
-- text message
-- mobile app notification—allowing users to choose the method they prefer
-- mobile app verification code
-- 3rd party OATH tokens
-
-For additional information oh how it works see the following video.
+しくみの詳細については、次のビデオをご覧ください。
 
 >[AZURE.VIDEO multi-factor-authentication-deep-dive-securing-access-on-premises]
 
-##<a name="methods-available-for-multi-factor-authentication"></a>Methods available for multi-factor authentication
-When a user signs in, an additional verification is sent to the user.  The following are a list of methods that can be used for this second verification.
+##Multi-Factor Authentication で使用可能な方法
+ユーザーがサインインしようとすると、追加の確認がユーザーに対して行われます。この 2 番目の確認のために使用できる方法の一覧を次に示します。
 
-Verification Method  | Description
+確認方法 | Description
 ------------- | ------------- |
-Phone Call | A call is placed to a user’s smart phone asking them to verify that they are signing in by pressing the # sign.  This will complete the verification process.  This option is configurable and can be changed to a code that you specify.
-Text Message | A text message will be sent to a user’s smart phone with a 6 digit code.  Enter this code in to complete the verification process.
-Mobile App Notification | A verification request will be sent to a user’s smart phone asking them complete the verification by selecting Verify from the mobile app. This will occur if you selected app notification as your primary verification method.  If they receive this when they are not signing in, they can choose to report it as fraud.
-Verification code with Mobile App | A verification code will be sent to the mobile app that is running on a user’s smart phone.  This will occur if you selected a verification code as your primary verification method.
+電話 | ユーザーのスマートフォンが呼び出され、# 記号を押してサインインを確認するよう求めるメッセージが再生されます。これによって確認プロセスが完了します。このオプションは構成可能であり、指定するコードを変更することができます。
+テキスト メッセージ | 6 桁のコードを含むテキスト メッセージがユーザーのスマートフォンに送信されます。確認プロセスを完了するには、このコードを入力します。
+モバイル アプリの通知 | ユーザーのスマートフォンに、モバイル アプリで [確認] を選択して確認を完了するよう求める確認要求が送信されます。これは、プライマリの確認方法としてアプリの通知を選択した場合に発生します。サインインしようとしていないときにこの通知を受信した場合、ユーザーはそれを不正アクセスとして報告できます。
+モバイル アプリの検証コード | ユーザーのスマート フォンで実行されているモバイル アプリに確認コードが送信されます。これは、プライマリの確認方法として確認コードを選択した場合に発生します。
 
 
-##<a name="available-versions-of-azure-multi-factor-authentication"></a>Available versions of Azure Multi-Factor Authentication
-Azure Multi-Factor Authentication is available in three different versions.  The table below describes each of these in more detail.
+##Azure Multi-Factor Authentication の使用可能なバージョン
+Azure Multi-Factor Authentication は、次の 3 種類のバージョンが使用可能です。下の表では各バージョンについて詳細に説明しています。
 
-Version  | Description
+バージョン | Description
 ------------- | ------------- |
-Multi-Factor Authentication for Office 365 | This version works exclusively with Office 365 applications and is managed from the Office 365 portal. So administrators can now help secure their Office 365 resources by using multi-factor authentication.  This version comes with an Office 365 subscription.
-Multi-Factor Authentication for Azure Administrators | The same subset of Multi-Factor Authentication capabilities for Office 365 will be available at no cost to all Azure administrators. Every administrative account of a Azure subscription can now get additional protection by enabling this core multi-factor authentication functionality. So an administrator that wants to access Azure portal to create a VM, a web site, manage storage, mobile services or any other Azure Service can add multi-factor authentication to his administrator account.
-Azure Multi-Factor Authentication | Azure Multi-Factor Authentication offers the richest set of capabilities. <br><br>It provides additional configuration options via the Azure Management portal, advanced reporting, and support for a range of on-premises and cloud applications. Azure Multi-Factor Authentication can be purchased as a stand-alone license and is bundled within Azure Active Directory Premium and Enterprise Mobility Suite. <br><br>It can also be purchased on a consumption basis by creating an Azure Multi-Factor Authentication Provider in an Azure subscription.
-##<a name="feature-comparison-of-versions"></a>Feature comparison of versions
-The following table below provides a list of the features that are available in the various versions of Azure Multi-Factor Authentication.
+Office 365 の多要素認証 | このバージョンは、Office 365 アプリケーション専用に動作し、Office 365 ポータルから管理されます。これにより、管理者は多要素認証を使用して Office 365 リソースを保護できるようになります。このバージョンには、Office 365 サブスクリプションが付属しています。
+Azure 管理者用の多要素認証 | すべての Azure 管理者には、Office 365 向けと同じ多要素認証機能が追加費用なしでご利用いただけます。Azure サブスクリプションのすべての管理者アカウントは、この主要な多要素認証機能を有効にすることによって、追加の保護を実現できるようになりました。したがって、Azure ポータルにアクセスして、VM と Web サイトの作成、ストレージの管理、モバイル サービスの使用など、Azure のさまざまなサービスを利用する必要のある管理者は、各自の管理者アカウントに多要素認証を追加することができます。
+Azure Multi-Factor Authentication | Azure Multi-Factor Authentication は、豊富な機能を備えています。<br><br>Microsoft Azure 管理ポータルを介した追加の構成オプション、高度なレポート、および一連のオンプレミスおよびクラウド アプリケーションのサポートを提供します。Azure Multi-Factor Authentication は、スタンドアロン ライセンスとして購入することができ、Azure Active Directory Premium および Enterprise Mobility Suite にバンドルされています。<br><br>また、Azure サブスクリプションで Azure Multi-Factor Authentication プロバイダーを作成して使用量ベースで購入することもできます。
+##バージョンごとの機能の比較
+下の表は、さまざまなバージョンの Azure Multi-Factor Authentication で使用できる機能の一覧を提供しています。
 
 
-Feature  | Multi-Factor Authentication for Office 365 (included in Office 365 SKUs)|Multi-Factor Authentication for Azure Administrators (included with Azure subscription) | Azure Multi-Factor Authentication (included in Azure AD Premium and Enterprise Mobility Suite)
+機能 | Office 365 の多要素認証 (Office 365 SKU に付属)|Azure 管理者用の多要素認証 (Azure サブスクリプションに付属) | Azure Multi-Factor Authentication (Azure AD Premium および Enterprise Mobility Suite に付属)
 ------------- | :-------------: |:-------------: |:-------------: |
-Administrators can protect accounts with MFA| * | * (Available only for Azure Administrator accounts)|*
-Mobile app as a second factor|* | * | *
-Phone call as a second factor|* | * | *
-SMS as a second factor|* | * | *
-App passwords for clients that don't support MFA|* | * | *
-Admin control over authentication methods| *| *| *
-PIN mode| | | *
-Fraud alert| | | *
-MFA Reports| | | *
-One-Time Bypass| | | *
-Custom greetings for phone calls| | | *
-Customization of caller ID for phone calls| | | *
-Event Confirmation| | | *
-Trusted IPs| | | *
-Suspend MFA for remembered devices (Public Preview)| | | *
-MFA SDK| | | *
-MFA for on-premises applications using MFA server| | | *
+管理者は MFA によってアカウントを保護することができます。| * | * (Azure 管理者アカウントのみ使用可能)|*
+モバイル アプリを 2 番目の要素にする|* | * | *
+音声通話を 2 番目の要素にする|* | * | *
+SMS を 2 番目の要素にする|* | * | *
+MFA をサポートしていないクライアントのアプリ パスワード|* | * | *
+認証方法の管理制御| *| *| *
+PIN モード| | | *
+不正アクセスのアラート| | | *
+MFA レポート| | | *
+ワンタイム バイパス| | | *
+音声通話のカスタムあいさつ文| | | *
+音声通話の発信元 ID のカスタマイズ| | | *
+イベントの確認| | | *
+信頼できる IP| | | *
+記憶されたデバイスでの MFA の中断 (パブリック プレビュー)| | | *
+MFA の SDK| | | *
+MFA サーバーによる、オンプレミス アプリケーション用の MFA| | | *
 
 
-##<a name="how-to-get-azure-multi-factor-authentication"></a>How to get Azure Multi-Factor Authentication
+##Azure Multi-Factor Authentication の入手方法
 
-If you would like the full functionality offered by Azure Multi-Factor Authentication instead of just those provided for Office 365 users and Azure administrators, there are several options to get it:
+Office 365 ユーザーと Azure 管理者に提供される機能だけでなく、Azure Multi-Factor Authentication で提供されるすべての機能を利用するには、次のような方法があります。
 
-1.  Purchase Azure Multi-Factor Authentication licenses and assign them to your users.
-2.  Purchase licenses that have Azure Multi-Factor Authentication bundled within them such as Azure Active Directory Premium or Enterprise Mobility Suite and assign them to your users.
-3.  Create an Azure Multi-Factor Authentication Provider within an Azure subscription. If you don’t already have an Azure subscription, you can sign up for an Azure trial subscription. Trial subscriptions will need to be converted to regular subscriptions prior to trial expiration.
+1.	Azure Multi-Factor Authentication のライセンスを購入し、ユーザーに割り当てる。
+2.	Azure Active Directory Premium や Enterprise Mobility Suite など、Azure Multi-Factor Authentication がバンドルされたライセンスを購入し、ユーザーに割り当てる。
+3.	Azure サブスクリプション内で Azure Multi-Factor Authentication プロバイダーを作成する。Azure サブスクリプションがまだない場合は、Azure 試用版サブスクリプションにサインアップできます。試用版サブスクリプションは、試用版の有効期限が切れる前に、通常のサブスクリプションに変換する必要があります。
 
-When using an Azure Multi-Factor Authentication Provider there are two usage models available that are billed through your Azure subscription:
-
-
-- **Per User**. Generally for enterprises that want to enable multi-factor authentication for a fixed number of employees who regularly need authentication.
-- **Per Authentication**. Generally for enterprises that want to enable multi-factor authentication for a large group of external users who infrequently need authentication.
-
-For pricing details see [Azure MFA Pricing.](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)
-
-Choose the per-seat or consumption-based model that works best for your organization.   Then to get started see [Getting Started](multi-factor-authentication-get-started.md)
+Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用モデルがあり、どちらも Azure サブスクリプションを通じて請求されます。
 
 
+- **ユーザーごと**。通常は、定期的に認証が必要な固定数の従業員用に Multi-Factor Authentication を有効にすることを望む企業向けです。
+- **認証ごと**。通常は、認証を必要とする頻度が低い外部ユーザーの大規模グループ用に Multi-Factor Authentication を有効にすることを望む企業向けです。
 
-<!--HONumber=Oct16_HO2-->
+料金の詳細については、[「Azure MFA の料金」](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)を参照してください。
 
+組織に最適なシートごとまたは使用量ベースのモデルを選択してください。作業を開始するには、[「使用の開始」](multi-factor-authentication-get-started.md)を参照してください。
 
+<!---HONumber=AcomDC_0921_2016-->

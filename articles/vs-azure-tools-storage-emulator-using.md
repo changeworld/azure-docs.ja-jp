@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Configuring and using the Storage Emulator with Visual Studio | Microsoft Azure"
-   description="Configuring and using the Storage Emulator with Visual Studio"
+   pageTitle="Visual Studio を使用したストレージ エミュレーターの構成と使用 | Microsoft Azure"
+   description="Visual Studio を使用したストレージ エミュレーターの構成と使用"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,40 +15,35 @@
    ms.date="07/18/2016"
    ms.author="tarcher" />
 
-
-# <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Configuring and Using the Storage Emulator with Visual Studio
+# Visual Studio を使用したストレージ エミュレーターの構成と使用
 
 [AZURE.INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]
 
-## <a name="overview"></a>Overview
-The Azure SDK development environment includes the storage emulator, a utility that simulates the Blob, Queue, and Table storage services available in Azure on your local development machine. If you are building a cloud service that employs the Azure storage services, or writing any external application that calls the storage services, you can test your code locally against the storage emulator. The Azure Tools for Microsoft Visual Studio integrate management of the storage emulator into Visual Studio. The Azure Tools initialize the storage emulator database on first use, starts the storage emulator service when you run or debug your code from Visual Studio, and provides read-only access to the storage emulator data via the Azure Storage Explorer.
+## 概要
+Azure SDK 開発環境には、ローカル開発コンピューター上の Azure で使用可能な BLOB サービス、キュー サービス、テーブル サービスをシミュレートするユーティリティ、ストレージ エミュレーターが付属しています。Azure ストレージ サービスを使用するクラウド サービスを構築している場合、またはストレージ サービスを呼び出す外部アプリケーションを作成している場合、ストレージ エミュレーターに対してコードをローカルでテストできます。Azure Tools for Microsoft Visual Studio によって、ストレージ エミュレーターの管理が Visual Studio に統合されます。Azure Tools は、初回使用時にストレージ エミュレーター データベースを初期化します。Visual Studio からコードが実行またはデバッグされるとストレージ エミュレーター サービスを開始し、Azure ストレージ エクスプローラーを介して、ストレージ エミュレーター データへの読み取り専用アクセスを提供します。
 
-For detailed information on the storage emulator, including system requirements and custom configuration instructions, see [Use the Azure Storage Emulator for Development and Testing](./storage/storage-use-emulator.md).
+システム要件やカスタム構成の手順など、ストレージ エミュレーターの詳細については、「[開発とテストのための Azure のストレージ エミュレーター使用](./storage/storage-use-emulator.md)」を参照してください。
 
->[AZURE.NOTE] There are some differences in functionality between the storage emulator simulation and the Azure storage services. See [Differences Between the Storage Emulator and Azure Storage Services](./storage/storage-use-emulator.md) in the Azure SDK documentation for information on the specific differences.
+>[AZURE.NOTE] ストレージ エミュレーター シミュレーションと Azure ストレージ サービスの間には、機能上の違いがいくつかあります。具体的な違いの詳細については、Azure SDK ドキュメントの「[ストレージ エミュレーターと Azure ストレージ サービスとの違い](./storage/storage-use-emulator.md)」を参照してください。
 
-## <a name="configuring-a-connection-string-for-the-storage-emulator"></a>Configuring a connection string for the storage emulator
+## ストレージ エミュレーターの接続文字列の構成
 
-To access the storage emulator from code within a role, you will want to configure a connection string that points to the storage emulator and that can later be changed to point to an Azure storage account. A connection string is a configuration setting that your role can read at runtime to connect to a storage account. For more information about how to create connection strings, see [Configuring the Azure Application](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage).
+ロール内のコードからストレージ エミュレーターにアクセスするには、ストレージ エミュレーターを接続先とする接続文字列 (後で Azure ストレージ アカウントを接続先とするように変更可能) を構成します。接続文字列とは、ストレージ アカウントに接続する際、ロールから実行時に読み取ることができる構成設定です。接続文字列の作成方法の詳細については、[Azure アプリケーションの構成](https://msdn.microsoft.com/library/azure/2da5d6ce-f74d-45a9-bf6b-b3a60c5ef74e#BK_SettingsPage)に関するページを参照してください。
 
->[AZURE.NOTE] You can return a reference to the storage emulator account from your code by using the **DevelopmentStorageAccount** property. This approach works correctly if you want to access the storage emulator from your code, but if you plan to publish your application to Azure, you will need to create a connection string to access your Azure storage account and modify your code to use that connection string before you publish it. If you are switching between the storage emulator account and an Azure storage account frequently, a connection string will simplify this process.
+>[AZURE.NOTE] **DevelopmentStorageAccount** プロパティを使用して、コードからストレージ エミュレーター アカウントへの参照を返すことができます。このアプローチはコードからストレージ エミュレーターにアクセスする場合は問題ありませんが、アプリケーションを Azure に発行する計画がある場合は、発行する前に、Azure ストレージ アカウントにアクセスするための接続文字列を作成し、この接続文字列を使用するようにコードを変更する必要があります。ストレージ エミュレーター アカウントと Azure ストレージ アカウントとを頻繁に切り替える場合は、接続文字列によってこの作業が簡略化されます。
 
-## <a name="initializing-and-running-the-storage-emulator"></a>Initializing and running the storage emulator
+## ストレージ エミュレーターの初期化と実行
 
-You can specify that when you run or debug your service in Visual Studio, Visual Studio automatically launches the storage emulator. In Solution Explorer, open the shortcut menu for your **Azure** project and choose **Properties**. On the **Development** tab, in the **Start Azure Storage Emulator** list, choose **True** (if it isn't already set to that value).
+Visual Studio でサービスを実行またはデバッグしたときにストレージ エミュレーターが自動的に起動するように指定することができます。ソリューション エクスプローラーで、**Azure** プロジェクトのショートカット メニューを開き、**[プロパティ]** をクリックします。**[開発]** タブの **[Azure ストレージ エミュレーターの起動]** ボックスの一覧で、**[True]** を選択します (まだそのように設定されていない場合)。
 
-The first time you run or debug your service from Visual Studio, the storage emulator launches an initialization process. This process reserves local ports for the storage emulator and creates the storage emulator database. Once complete, this process does not need to run again unless the storage emulator database is deleted.
+Visual Studio で初めてサービスを実行またはデバッグすると、ストレージ エミュレーターは初期化プロセスを起動します。このプロセスによって、ストレージ エミュレーター用のローカル ポートが予約され、ストレージ エミュレーター データベースが作成されます。完了したら、ストレージ エミュレーター データベースを削除しない限り、このプロセスを再度実行する必要はありません。
 
->[AZURE.NOTE] Starting with the June 2012 release of the Azure Tools, the storage emulator runs, by default, in SQL Express LocalDB. In earlier releases of the Azure Tools, the storage emulator runs against a default instance of SQL Express 2005 or 2008, which you must install before you can install the Azure SDK. You can also run the storage emulator against a named instance of SQL Express or a named or default instance of Microsoft SQL Server. If you need to configure the storage emulator to run against an instance other than the default instance, see [Use the Azure Storage Emulator for Development and Testing](./storage/storage-use-emulator.md).
+>[AZURE.NOTE] Azure Tools 2012 年 6 月リリース以降では、ストレージ エミュレーターは既定では SQL Express LocalDB で実行されます。それより前にリリースされた Azure Tools では、ストレージ エミュレーターが SQL Express 2005 または SQL Express 2008 の既定のインスタンスに対して実行されます。この場合 Azure SDK をインストールするには、あらかじめ SQL Express をインストールしておく必要があります。ストレージ エミュレーターは、SQL Express の名前付きインスタンスのほか、Microsoft SQL Server の名前付きインスタンスまたは既定のインスタンスに対しても実行できます。既定のインスタンス以外のインスタンスに対して実行されるようにストレージ エミュレーターを構成する必要がある場合は、「[開発とテストのための Azure のストレージ エミュレーター使用](./storage/storage-use-emulator.md)」を参照してください。
 
-The storage emulator provides a user interface to view the status of the local storage services and to start, stop, and reset them. Once the storage emulator service has been started, you can display the user interface or start or stop the service by right-clicking the notification area icon for the Microsoft Azure Emulator in the Windows taskbar.
+ストレージ エミュレーターには、ローカル ストレージ サービスの状態の表示や、そのサービスの開始、停止、リセットを行うためのユーザー インターフェイスが用意されています。ストレージ エミュレーター サービスが開始されたら、Windows タスク バーにある [Microsoft Azure エミュレーター] の通知領域アイコンを右クリックすることで、ユーザー インターフェイスを表示したり、サービスを開始または停止したりできます。
 
-## <a name="viewing-storage-emulator-data-in-server-explorer"></a>Viewing storage emulator data in Server Explorer
+## サーバー エクスプローラーでのストレージ エミュレーター データの表示
 
-The Azure Storage node in Server Explorer enables you to view data and change settings for blob and table data in your storage accounts, including the storage emulator. See [Browsing and Managing Storage Resources with Server Explorer](https://msdn.microsoft.com/library/azure/ff683677.aspx) for more information.
+ストレージ エミュレーターをはじめとするストレージ アカウント内の BLOB とテーブルのデータについては、サーバー エクスプローラーの Azure の [ストレージ] ノードを使用してデータを表示したり設定を変更したりすることができます。詳細については、「[サーバー エクスプローラーを使用したストレージ リソースの参照と管理](https://msdn.microsoft.com/library/azure/ff683677.aspx)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

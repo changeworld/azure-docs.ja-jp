@@ -1,264 +1,262 @@
 <properties
-    pageTitle="Tutorial: Azure Active Directory integration with DocuSign | Microsoft Azure"
-    description="Learn how to configure single sign-on between Azure Active Directory and DocuSign."
-    services="active-directory"
-    documentationCenter=""
-    authors="jeevansd"
-    manager="femila"
-    editor=""/>
+	pageTitle="チュートリアル: Azure Active Directory と DocuSign の統合 | Microsoft Azure"
+	description="Azure Active Directory と DocuSign の間でシングル サインオンを構成する方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="jeevansd"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/16/2016"
-    ms.author="jeedes"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/16/2016"
+	ms.author="jeedes"/>
+
+
+# チュートリアル: Azure Active Directory と DocuSign の統合
+
+このチュートリアルでは、Azure と DocuSign の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
+
+- 有効な Azure サブスクリプション
+- DocuSign のテナント
 
 
 
-# <a name="tutorial:-azure-active-directory-integration-with-docusign"></a>Tutorial: Azure Active Directory integration with DocuSign
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-The objective of this tutorial is to show the integration of Azure and DocuSign.
-The scenario outlined in this tutorial assumes that you already have the following items:
-
-- A valid Azure subscription
-- A tenant in DocuSign
+1. [DocuSign のアプリケーション統合の有効化](#enabling-the-application-integration-for-docusign)
 
 
-
-The scenario outlined in this tutorial consists of the following building blocks:
-
-1. [Enabling the application integration for DocuSign](#enabling-the-application-integration-for-docusign) 
+2. [シングル サインオンの構成](#configuring-single-sign-on)
 
 
-2. [Configuring single sign-on](#configuring-single-sign-on) 
+3. [アカウント プロビジョニングの構成](#configuring-account-provisioning)
 
 
-3. [Configuring account provisioning](#configuring-account-provisioning) 
+4. [ユーザーの割り当て](#assigning-users)
 
-
-4. [Assigning users](#assigning-users) 
-
-    ![Configuring single sign-on][0]
+    ![シングル サインオンの構成][0]
  
 
-## <a name="enabling-the-application-integration-for-docusign"></a>Enabling the application integration for DocuSign
+## DocuSign のアプリケーション統合の有効化
 
-The objective of this section is to outline how to enable the application integration for DocuSign.
+このセクションでは、DocuSign のアプリケーション統合を有効にする方法について説明します。
 
-### <a name="to-enable-the-application-integration-for-docusign,-perform-the-following-steps:"></a>To enable the application integration for DocuSign, perform the following steps:
+### DocuSign のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1. In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1. Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-    ![Configuring single sign-on][1]
+	![シングル サインオンの構成][1]
 
-2. From the Directory list, select the directory for which you want to enable directory integration.
+2. [ディレクトリ] の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3. To open the applications view, in the directory view, click **Applications** in the top menu.
+3. アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Configuring single sign-on][2]
+	![シングル サインオンの構成][2]
 
-4. Click **Add** at the bottom of the page.
+4. ページの下部にある **[追加]** をクリックします。
 
-    ![Applications][3]
+	![アプリケーション][3]
 
-5. On the What do you want to do dialog, click **Add an application from the gallery**.
+5. [実行する内容] ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Configuring single sign-on][4]
-
-
-6. In the search box, type **DocuSign**.
-
-    ![Configuring single sign-on][5]
-
-7. In the results pane, select **DocuSign**, and then click **Complete** to add the application.
-
-    ![Configuring single sign-on][6]
+	![シングル サインオンの構成][4]
 
 
-## <a name="configuring-single-sign-on"></a>Configuring single sign-on
+6. 検索ボックスに、「**DocuSign**」と入力します。
 
-The objective of this section is to outline how to enable users to authenticate to DocuSign with their account in Azure AD using federation based on the SAML protocol.
+	![シングル サインオンの構成][5]
+
+7. 結果ウィンドウで **[DocuSign]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+	![シングル サインオンの構成][6]
 
 
-### <a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+## シングル サインオンの構成
 
-1. In the Azure classic portal, on the **DocuSign application integration** page, click **Configure single sign-on** to open the Configure Single Sign On dialog.
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD のユーザー アカウントで DocuSign に対する認証を行うことができるようにする方法を説明します。
 
-    ![Configuring single sign-on][7]
 
-2. On the **How would you like users to sign on to DocuSign** page, select **Microsoft Azure AD Single Sign-On**, and then click Next.
+### シングル サインオンを構成するには、次の手順に従います。
 
-    ![Configuring single sign-on][8]
+1. Azure クラシック ポータルの **DocuSign アプリケーション統合**ページで **[シングル サインオンの構成]** をクリックし、[シングル サインオンの構成] ダイアログを開きます。
 
-3. On the **Configure App Settings** page, perform the following steps:
+	![シングル サインオンの構成][7]
 
-    ![Configuring single sign-on][61]
+2. **[ユーザーの DocuSign へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択してから [次へ] をクリックします。
 
-    a. In the **Sign on URL** textbox, type `https://account.docusign.com/*`.  
+	![シングル サインオンの構成][8]
 
-    b. In the **Identifier** textbox, type `https://account.docusign.com/*`.  
+3. **[アプリケーション設定の構成]** ページで、次の手順を実行します。
+
+	![シングル サインオンの構成][61]
+
+	a.**[サインオン URL]** ボックスに、「`https://account.docusign.com/*`」と入力します。
+
+	b.**[識別子]** ボックスに、「`https://account.docusign.com/*`」と入力します。
    
-    c. Click **Next**. 
+	c.**[次へ]** をクリックします。
 
 
-    > [AZURE.TIP] The Sign On URL and the Identifier values are only placeholders. Instructions for how to retrieve the actual values for your environment are covered later in this topic.
+    > [AZURE.TIP] [サインオン URL] と [識別子] の値は、単なるプレースホルダーです。実際の環境の値を取得する方法については、このトピックの後半で説明します。
  
 
-4. On the **Configure single sign-on at DocuSign** page, click **Download certificate**, and then save the certificate file locally on your computer.
+4. **[DocuSign でのシングル サインオンの構成]** ページで、**[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターにローカルで保存します。
 
-    ![Configuring single sign-on][10]
-
-
-5. In a different web browser window, log into your **DocuSign admin portal** as an administrator.
+	![シングル サインオンの構成][10]
 
 
-6. In the navigation menu on the left, click **Domains**.
-
-    ![Configuring single sign-on][51]
-
-7. On the right pane, click **Claim Domain**.
-
-    ![Configuring single sign-on][52]
-
-8. On the **Claim a domain** dialog, in the **Domain Name** textbox, type your company domain, and then click **Claim**. Make sure that you verify the domain and the status is active.
-
-    ![Configuring single sign-on][53]
-
-9. In menu on the left side, click **Identity Providers**  
-
-    ![Configuring single sign-on][54]
-
-10. In the right pane, click **Add Identity Provider**. 
-    
-    ![Configuring single sign-on][55]
-
-11. On the **Identity Provider Settings** page, perform the following steps:
-
-    ![Configuring single sign-on][56]
+5. 別の Web ブラウザー ウィンドウで、**DocuSign 管理者ポータル**に管理者としてログインします。
 
 
-    a. In the **Name** textbox, type a unique name for your configuration. Please do not use spaces.
+6. 左側のナビゲーション メニューの **[Domains (ドメイン)]** をクリックします。
 
-    b. In the Azure classic portal, copy the Issuer URL, and then paste it into the **Identity Provider Issuer** textbox.
+	![シングル サインオンの構成][51]
 
-    c. In the Azure classic portal, copy the **Remote Login URL**, and then paste it into the **Identity Provider Login URL** textbox.
+7. 右側のウィンドウで、**[Claim Domain (ドメインを要求する)]** をクリックします。
 
-    d. In the Azure classic portal, copy the **Remote Logout URL**, and then paste it into the **Identity Provider Logout URL** textbox.
+	![シングル サインオンの構成][52]
 
-    e. Select **Sign AuthN Request**.
+8. **[Claim a domain (ドメインの要求)]** ダイアログの **[Domain Name (ドメイン名)]** ボックスに、所属する会社のドメインを入力してから、**[Claim (要求)]** をクリックします。ドメインを確認し、状態がアクティブであることを確かめてください。
 
-    f. As **Send AuthN request by**, select **POST**.
+	![シングル サインオンの構成][53]
 
-    g. As **Send logout request by**, select **POST**. 
+9. 左側のメニューで、**[Identity Providers (ID プロバイダー)]** をクリックします。
 
+	![シングル サインオンの構成][54]
 
-12. In the **Custom Attribute Mapping** section, choose the field you want to map with Azure AD Claim. In this example, the **emailaddress** claim is mapped with the value of **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**. This is the default claim name from Azure AD for email claim. 
+10. 右側のウィンドウで、**[Add Identity Provider (ID プロバイダーの追加)]** をクリックします。
+	
+	![シングル サインオンの構成][55]
 
-    > [AZURE.NOTE] Use the appropriate **User identifier** to map the user from Azure AD to Docusign user mapping. Select the proper Field and enter the appropriate value based on your organization settings.
+11. **[Identity Provider Settings (ID プロバイダーの設定)]** ページで、次の手順を実行します。
 
-    ![Configuring single sign-on][57]
-
-13. In the **Identity Provider Certificate** section, click **Add Certificate**, and then upload the certificate you have downloaded from Azure AD classic portal.   
-
-    ![Configuring single sign-on][58]
-
-14. Click **Save**.
-
-15. In the **Identity Providers** section, click **Actions**, and then click **Endpoints**.   
-
-    ![Configuring single sign-on][59]
+	![シングル サインオンの構成][56]
 
 
+	a.**[Name (名前)]** ボックスに、構成の一意の名前を入力します。スペースは使用しないようにしてください。
 
-10. On the Azure classic portal, go back to the **Configure App Settings** page. 
+	b.Azure クラシック ポータルで [発行者の URL] の値をコピーし、**[Identity Provider Issuer (ID プロバイダーの発行元)]** ボックスに貼り付けます。
 
-16. On **DocuSign admin portal**, in the **View SAML 2.0 Endpoints** section perform, the following steps:
+	c.Azure クラシック ポータルで **[リモート ログイン URL]** の値をコピーし、**[Identity Provider Login URL (ID プロバイダーのログイン URL)]** ボックスに貼り付けます。
 
-    ![Configuring single sign-on][60]
+	d.Azure クラシック ポータルで **[リモート ログアウト URL]** の値をコピーし、**[Identity Provider Logout URL (ID プロバイダーのログアウト URL)]** ボックスに貼り付けます。
 
-    a. Copy the **Service Provider Issuer URL**, and then paste it into the **Identifier** textbox on the Azure classic portal.
+	e.**[Sign AuthN Request (認証要求に署名する)]** を選択します。
 
-    b. Copy the **Service Provider Login URL**, and then paste into the **Sign On URL** textbox on the Azure classic portal.
+	f.**[Send AuthN request by (認証要求の送信方法)]** として、**[POST]** を選択します。
 
-    c.  Click **Close**  
-
-
-10. On the Azure classic portal, click **Next**. 
+	g.**[Send logout request by (ログアウト要求の送信方法)]** として、**[POST]** を選択します。
 
 
-15. On the Azure classic portal, select the **Single sign-on configuration confirmation**, and then click **Next**.
+12. **[Custom Attribute Mapping (カスタム属性マッピング)]** セクションで、Azure AD の要求とマッピングするフィールドを選択します。この例では、**emailaddress** 要求が **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** という値とマッピングされます。これは、Azure AD の電子メール要求の既定の要求名です。
 
-    ![Applications][14]
+	> [AZURE.NOTE] Azure AD のユーザーを DocuSign のユーザー マッピングにマッピングする際は、適切な**ユーザー識別子**を使用してください。適切なフィールドを選択し、組織の設定に基づく適切な値を入力してください。
 
-10. On the **Single sign-on confirmation** page, click **Complete**.
+	![シングル サインオンの構成][57]
 
-    ![Applications][15]
+13. **[Identity Provider Certificate (ID プロバイダー証明書)]** セクションで **[Add Certificate (証明書の追加)]** をクリックし、Azure AD クラシック ポータルからダウンロードした証明書をアップロードします。
+
+	![シングル サインオンの構成][58]
+
+14. [**Save**] をクリックします。
+
+15. **[Identity Providers (ID プロバイダー)]** セクションで、**[Actions (アクション)]** をクリックし、**[Endpoints (エンドポイント)]** をクリックします。
+
+	![シングル サインオンの構成][59]
+
+
+
+10. Azure クラシック ポータルの **[アプリケーション設定の構成]** ページに戻ります。
+
+16. **DocuSign 管理者ポータル**の **[View SAML 2.0 Endpoints (SAML 2.0 エンドポイントの表示)]** セクションで、次の手順を実行します。
+
+	![シングル サインオンの構成][60]
+
+	a.**[Service Provider Issuer URL (サービス プロバイダーの発行者 URL)]** の値をコピーし、Azure クラシック ポータルの **[識別子]** ボックスに貼り付けます。
+
+	b.**[Service Provider Login URL (サービス プロバイダーのログイン URL)]** の値をコピーし、Azure クラシック ポータルの **[サインオン URL]** ボックスに貼り付けます。
+
+	c.**[Close (閉じる)]** をクリックします。
+
+
+10. Azure クラシック ポータルで **[次へ]** をクリックします。
+
+
+15. Azure クラシック ポータルで、**シングル サインオンの構成確認**を選択し、**[次へ]** をクリックします。
+
+	![アプリケーション][14]
+
+10. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+
+	![アプリケーション][15]
  
 
-## <a name="configuring-account-provisioning"></a>Configuring account provisioning
+## アカウント プロビジョニングの構成
 
-The objective of this section is to outline how to enable user provisioning of Active Directory user accounts to DocuSign.
+このセクションでは、Active Directory のユーザー アカウントのプロビジョニングを DocuSign に対して有効にする方法を説明します。
 
-### <a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+### ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1. In the **Azure classic portal**, on the **DocuSign application integration** page, click **Configure account provisioning** to open the Configure User Provisioning dialog.
+1. **Azure クラシック ポータル**の **DocuSign アプリケーション統合**ページで、**[アカウント プロビジョニングの構成]** をクリックして [ユーザー プロビジョニングの構成] ダイアログを開きます。
 
-    ![Configuring account provisioning][30]
+	![アカウント プロビジョニングの構成][30]
 
-2. On the **Settings and admin credentials** page, to enable automatic user provisioning, provide the credentials of a DocuSign account with sufficient rights, and then click **Next**. 
+2. **[設定と管理者資格情報]** ページで自動ユーザー プロビジョニングを有効にするには、十分な権限が付与されている DocuSign アカウントの資格情報を入力してから **[次へ]** をクリックします。
 
-    ![Configuring account provisioning][31]
+	![アカウント プロビジョニングの構成][31]
 
-3. On the **Test connection** dialog, click **Start test**, and upon a successful test, click **Next**.
+3. **[テスト接続]** ダイアログで、**[テスト開始]** をクリックし、テストが正常に行われた場合は **[次へ]** をクリックします。
 
-    ![Configuring account provisioning][32]
+	![アカウント プロビジョニングの構成][32]
 
-3. On the **Confirmation** page, click **Complete**.
+3. **[確認]** ページで **[完了]** をクリックします。
 
-    ![Configuring account provisioning][33]
+	![アカウント プロビジョニングの構成][33]
  
 
-## <a name="assigning-users"></a>Assigning users
+## ユーザーを割り当てる
 
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-### <a name="to-assign-users-to-docusign,-perform-the-following-steps:"></a>To assign users to DocuSign, perform the following steps:
+### ユーザーを DocuSign に割り当てるには、次の手順を実行します。
 
-1. In the **Azure classic portal**, create a test account.
+1. **Azure クラシック ポータル**で、テスト アカウントを作成します。
 
-2. On the **DocuSign application integration** page, click **Assign users**.
+2. **DocuSign アプリケーション統合**ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assigning users][40]
+	![ユーザーの割り当て][40]
  
 
-3. Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3. テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
-    ![Assigning users][41]
-
-
-You should now wait for 10 minutes and verify that the account has been synchronized to DocuSign.
-
-As a first verification step, you can check the provisioning status, by clicking Dashboard in the D on the DocuSign application integration page on the Azure classic portal.
-
-![Assigning users][42]
-
-A successfully completed user provisioning cycle is indicated by a related status:
-
-![Assigning users][43]
+	![ユーザーの割り当て][41]
 
 
-If you want to test your single sign-on settings, open the Access Panel.
+ここで 10 分間待機し、アカウントが DocuSign に同期されたことを確認する必要があります。
 
-For more details about the Access Panel, see Introduction to the Access Panel.
+最初の検証手順として、Azure クラシック ポータルの DocuSign アプリケーション統合ページの D でダッシュボードをクリックして、プロビジョニングの状態を確認できます。
+
+![ユーザーの割り当て][42]
+
+正常に完了したユーザー プロビジョニング サイクルは、関連する状態で示されます。
+
+![ユーザーの割り当て][43]
 
 
-## <a name="additional-resources"></a>Additional Resources
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+アクセス パネルの詳細については、「アクセス パネルの概要」を参照してください。
+
+
+## その他のリソース
+
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
 
@@ -301,7 +299,4 @@ For more details about the Access Panel, see Introduction to the Access Panel.
 [60]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_28.png
 [61]: ./media/active-directory-saas-docusign-tutorial/tutorial_docusign_29.png
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

@@ -1,104 +1,91 @@
 <properties 
-pageTitle="Deploying SAP IDES EHP7 SP3 for SAP ERP 6.0 on Microsoft Azure | Microsoft Azure" 
-description="Deploying SAP IDES EHP7 SP3 for SAP ERP 6.0 on Microsoft Azure" 
+pageTitle="Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ | Microsoft Azure" 
+description="Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ" 
 services="virtual-machines-windows" 
 documentationCenter="" 
 authors="hermanndms" 
 manager="timlt" 
 editor="" 
 tags="azure-resource-manager" 
-keywords=""/> 
-<tags 
+keywords=""/>
+<tags  
 ms.service="virtual-machines-windows" 
 ms.devlang="na" 
 ms.topic="article" 
 ms.tgt_pltfrm="vm-windows" 
 ms.workload="infrastructure-services" 
 ms.date="09/16/2016" 
-ms.author="hermannd"/> 
+ms.author="hermannd"/>
 
 
+# Microsoft Azure での SAP ERP 6.0 向け SAP IDES EHP7 SP3 のデプロイ 
 
-# <a name="deploying-sap-ides-ehp7-sp3-for-sap-erp-6.0-on-microsoft-azure"></a>Deploying SAP IDES EHP7 SP3 for SAP ERP 6.0 on Microsoft Azure 
+この記事では、SAP Cloud Appliance Library 3.0 を使用して、SQL Server および Windows OS で実行される SAP IDES を Microsoft Azure にデプロイする方法について説明します。スクリーン ショットでは、その手順を示します。リストにある他のソリューションのデプロイも、同様のプロセスで行うことができます。必要なのは別のソリューションを選択することだけです。
 
-This article describes how to deploy SAP IDES running with SQL Server and Windows OS on Microsoft Azure via SAP Cloud Appliance Library 3.0. The screenshots show the process step by step. Deploying other solutions in the list works the same way from a process perspective. One just has to select a different solution.
-
-To start with SAP Cloud Appliance Library (SAP CAL) go [here](https://cal.sap.com/). There is a blog from SAP about the new [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+SAP Cloud Appliance Library (SAP CAL) の作業は[ここ](https://cal.sap.com/)から開始できます。新しい [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience) のブログもご覧ください。
 
 
-The following screenshots show step-by-step how to deploy SAP IDES on Microsoft Azure. The process works the same way for other solutions.
+次の各スクリーンショットで、Microsoft Azure に SAP IDES をデプロイする手順を順を追って示します。他のソリューションでもプロセスは同じです。
 
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic1.jpg)
 
-The first picture shows all solutions that are available on Microsoft Azure. The highlighted Windows-based SAP IDES solution that is only available on Azure was chosen to go through the process.
+最初の画像は、Microsoft Azure で利用できるすべてのソリューションを示しています。Azure で唯一利用可能な Windows ベースの SAP IDES ソリューション (赤枠で囲まれています) を選択して、プロセスを進めます。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic2.jpg)
 
-First a new SAP CAL account has to be created. There are currently two choices for Azure - standard Azure and Azure on China mainland that is operated by partner 21Vianet.
+最初に、新しい SAP CAL アカウントを作成する必要があります。Azure には現在 2 つの選択肢 (標準の Azure と、パートナー 21Vianet が運営する中国本土の Azure) が用意されています。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic3.jpg)
 
-Then one has to enter the Azure subscription ID that can be found on the Azure portal - also see further down how to get it. Afterwards an Azure management certificate needs to be downloaded.
+次に、Azure ポータルにある Azure サブスクリプション ID を入力します (入手方法はこのページの以降のセクションで確認できます)。その後、Azure 管理証明書をダウンロードする必要があります。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic6.jpg)
 
-In the new Azure portal one finds the item "Subscriptions" on the left side. Click it to show all active subscriptions for your user.
+新しい Azure ポータルの左側に "サブスクリプション" という項目が見つかります。クリックすると、ユーザーのすべてのアクティブなサブスクリプションが表示されます。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic7.jpg)
 
-Selecting one of the subscriptions and then choosing "Management Certificates" explains that there is a new concept using "service principals" for the new Azure Resource Manager model.
-SAP CAL isn't adapted yet for this new model and still requires the "classic" model and the former Azure portal to work with management certificates.
+サブスクリプションのいずれかを選択し、[管理証明書] を選択すると、新しい Azure Resource Manager モデルの "サービス プリンシパル" を使用する新しい概念の説明が表示されます。SAP CAL はこの新しいモデルにはまだ対応していないため、管理証明書を操作するには "クラシック" モデルと以前の Azure ポータルが必要です。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic4.jpg)
 
-Here one can see the former Azure portal. The upload of a management certificate gives SAP CAL the permissions to create virtual machines within a customer subscription. Under the "SUBSCRIPTIONS" tab one can find the subscription ID that has to be entered in the SAP CAL portal.
+これは、以前の Azure ポータルです。管理証明書をアップロードすると、顧客サブスクリプション内で仮想マシンを作成する権限が SAP CAL に付与されます。[サブスクリプション] タブの下に、SAP CAL ポータルで入力する必要のあるサブスクリプション ID が表示されます。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic5.jpg)
 
-On the second tab, it's then possible to upload the management certificate that was downloaded before from SAP CAL.
+2 番目のタブで、前に SAP CAL からダウンロードした管理証明書をアップロードできます。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic8.jpg)
 
-A little dialog pops up to select the downloaded certificate file.
+ダウンロードした証明書ファイルを選択するための小さなダイアログが表示されます。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic9.jpg)
 
-Once the certificate was uploaded the connection between SAP CAL and the customer Azure subscription can be tested within SAP CAl. A little message should pop up which tells that the connection is valid.
+証明書がアップロードされると、SAP CAl と顧客 Azure サブスクリプション間の接続を SAP CAl 内でテストできます。接続が有効であることを示す小さなポメッセージが表示されます。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic10.jpg)
 
-After the setup of an account one has to select a solution that should be deployed and create an instance.
-With "basic" mode, it's really trivial. Enter an instance name, choose an Azure region and define the master password for the solution.
+アカウントのセットアップが完了したら、デプロイするソリューションを選択し、インスタンスを 1 つ作成する必要があります。"基本" モードでは、簡単に作成できます。インスタンス名を入力し、Azure リージョンを選択して、ソリューションのマスター パスワードを定義します。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic11.jpg)
 
-After some time depending on the size and complexity of the solution (an estimation is given by SAP CAL) it's shown as "active" and ready for use. It is very simple.
+ソリューションのサイズと複雑さに応じた一定の時間が経過すると (推定時間が SAP CAL によって示されます)、"アクティブ" と表示され、使用する準備が整います。この操作は非常にシンプルです。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic12.jpg)
 
-Looking at some details of the solution one can see which kind of VMs were deployed. In this case there is one single Azure VM of size D12 that was created by SAP CAL.
+ソリューションの詳細を見てみると、どの種類の VM がデプロイされたかがわかります。この場合は、SAP CAL によりサイズ D12 の Azure VM が 1 つ作成されています。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic13.jpg)
 
-On the Azure portal, the virtual machine can be found starting with the same instance name that was given in SAP CAL.
+Azure Portal には、SAP CAL で指定したのと同じインスタンス名で始まる仮想マシンがあります。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic14.jpg)
 
-Now it's possible to connect to the solution via the connect button in the SAP CAL portal. The little dialog contains a link to a user guide that describes all the default credentials to work with the solution.
-[Here](https://caldocs.hana.ondemand.com/caldocs/help/Getting_Started_Guide_IDES607MSSQL.pdf) is the link to the guide for the IDES solution.
+これで、SAP CAL ポータルの接続ボタンを使用して、ソリューションに接続できるようになりました。ソリューションを処理するためのすべての既定の資格情報を説明するユーザー ガイドへのリンクが含まれた小さいダイアログが表示されます。IDES ソリューションのガイドへのリンクは[こちら](https://caldocs.hana.ondemand.com/caldocs/help/Getting_Started_Guide_IDES607MSSQL.pdf)にあります。
 
 ![](./media/virtual-machines-windows-sap-cal-ides-erp6-ehp7-sp3-sql/ides-pic15.jpg)
 
-Another option is to login to the Windows VM and start for example the pre-configured SAP GUI.
+別のオプションとして、Windows VM にログインして、事前構成された SAP GUI などを起動することもできます。
 
-
-
-
-
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

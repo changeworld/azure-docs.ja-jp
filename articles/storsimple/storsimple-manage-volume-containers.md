@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Manage your StorSimple volume containers | Microsoft Azure"
-   description="Explains how you can use the StorSimple Manager service volume containers page to add, modify, or delete a volume container."
+   pageTitle="StorSimple ボリューム コンテナーの管理 | Microsoft Azure"
+   description="StorSimple Manager サービスの [ボリューム コンテナー] ページを使用して、ボリューム コンテナーを追加、変更、または削除する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -15,60 +15,55 @@
    ms.date="05/24/2016"
    ms.author="v-sharos" />
 
+# StorSimple Manager サービスを使用して StorSimple ボリューム コンテナーを管理する
 
-# <a name="use-the-storsimple-manager-service-to-manage-storsimple-volume-containers"></a>Use the StorSimple Manager service to manage StorSimple volume containers
+## 概要
 
-## <a name="overview"></a>Overview
+このチュートリアルでは、StorSimple Manager サービスを使用して、StorSimple ボリューム コンテナーを作成、管理する方法について説明します。
 
-This tutorial explains how to use the StorSimple Manager service to create and manage StorSimple volume containers.
+Microsoft Azure StorSimple デバイスのボリューム コンテナーには、ストレージ アカウント、暗号化、および帯域幅の使用量の設定を共有する、1 つ以上のボリュームが含まれています。1 つのデバイスに、すべてのボリュームに対応する複数のボリューム コンテナーを含めることができます。
 
-A volume container in a Microsoft Azure StorSimple device contains one or more volumes that share storage account, encryption, and bandwidth consumption settings. A device can have multiple volume containers for all its volumes. 
+また、ボリューム コンテナーには次の属性があります。
 
-A volume container has the following attributes:
+- **ボリューム** – ボリューム コンテナー内に含まれる、階層化された、またはローカルに固定された StorSimple ボリューム。ボリューム コンテナーには、最大で 256 台の StorSimple ボリュームを含めることができます。
 
-- **Volumes** – The tiered or locally pinned StorSimple volumes that are contained within the volume container. A volume container may contain up to 256 StorSimple volumes.
+- **暗号化** – ボリューム コンテナーごとに定義できる暗号化キー。このキーは、StorSimple デバイスからクラウドに送信されるデータの暗号化に使用します。ミリタリーグレードの AES-256 ビット キーは、ユーザー入力のキーで使用します。データをセキュリティで保護するために、クラウド ストレージの暗号化を常に有効にすることをお勧めします。
 
-- **Encryption** – An encryption key that can be defined for each volume container. This key is used for encrypting the data that is sent from your StorSimple device to the cloud. A military-grade AES-256 bit key is used with the user-entered key. To secure your data, we recommend that you always enable cloud storage encryption.
+- **ストレージ アカウント** – クラウド ストレージのサービス プロバイダーにリンクされるストレージ アカウント。ボリューム コンテナーに存在するすべてのボリュームで、このストレージ アカウントが共有されます。ストレージ アカウントを既存の一覧から選択することもできますが、ボリューム コンテナーを作成した時点で新しいアカウントを作成し、後でそのアカウントのアクセス資格情報を指定することもできます。
 
-- **Storage account** – The storage account that is linked to your cloud storage service provider. All the volumes residing in a volume container share this storage account. You can choose a storage account from an existing list, or create a new account when you create the volume container and then specify the access credentials for that account.
+- **クラウドの帯域幅** – デバイスのデータがクラウドに送信されるときに、デバイスが使用する帯域幅。このコンテナーを定義するときに 1 ～ 1,000 Mbps の値を指定すると、帯域幅の制御を適用できます。デバイスで使用できる帯域幅をすべて使用する場合は、このフィールドを [無制限] に設定します。帯域幅テンプレートを作成、適用し、スケジュールに基づいて帯域幅を割り当てることもできます。
 
-- **Cloud bandwidth** – The bandwidth consumed by the device when the data from the device is being sent to the cloud. You can enforce a bandwidth control by specifying a value between 1 and 1000 Mbps when you define this container. If you want the device to consume all available bandwidth, set this field to Unlimited. You can also create and apply a bandwidth template to allocate bandwidth based on schedule.
+![[ボリューム コンテナー] ページ](./media/storsimple-manage-volume-containers/HCS_VolumeContainersPage.png)
 
-![Volume containers page](./media/storsimple-manage-volume-containers/HCS_VolumeContainersPage.png)
+次の手順は、StorSimple の **[ボリューム コンテナー]** ページを使用して、次の一般的な操作を完了する方法について説明するための手順です。
 
-This following procedures explain how to use the StorSimple **Volume containers** page to complete the following common operations:
+- ボリューム コンテナーを追加する 
+- ボリューム コンテナーを変更する 
+- ボリューム コンテナーを削除する 
 
-- Add a volume container 
-- Modify a volume container 
-- Delete a volume container 
+## ボリューム コンテナーを追加する
 
-## <a name="add-a-volume-container"></a>Add a volume container
-
-Perform the following steps to add a volume container.
+ボリューム コンテナーを追加するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-add-volume-container](../../includes/storsimple-add-volume-container.md)]
 
 
-## <a name="modify-a-volume-container"></a>Modify a volume container
+## ボリューム コンテナーを変更する
 
-Perform the following steps to modify a volume container.
+ボリューム コンテナーを変更するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-modify-volume-container](../../includes/storsimple-modify-volume-container.md)]
 
 
-## <a name="delete-a-volume-container"></a>Delete a volume container
+## ボリューム コンテナーを削除する
 
-A volume container has volumes within it. It can be deleted only if all the volumes contained in it are first deleted. Perform the following steps to delete a volume container.
+ボリューム コンテナーには複数のボリュームが含まれています。ボリューム コンテナーを削除する前に、ボリューム コンテナーに含まれるすべてのボリュームを削除する必要があります。ボリューム コンテナーを削除するには、次の手順を実行します。
 
 [AZURE.INCLUDE [storsimple-delete-volume-container](../../includes/storsimple-delete-volume-container.md)]
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- Learn more about [managing StorSimple volumes](storsimple-manage-volumes.md). 
-- Learn more about [using the StorSimple Manager service to administer your StorSimple device](storsimple-manager-service-administration.md).
+- [StorSimple ボリュームの管理の詳細](storsimple-manage-volumes.md) 
+- [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0525_2016-->

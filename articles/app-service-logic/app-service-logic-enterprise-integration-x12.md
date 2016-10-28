@@ -1,206 +1,192 @@
 <properties 
-    pageTitle="Overview of X12 and the Enterprise Integration Pack | Microsoft Azure App Service | Microsoft Azure" 
-    description="Learn how to use X12 agreements to create Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="msftman" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="X12 と Enterprise Integration Pack の概要 | Microsoft Azure App Service | Microsoft Azure" 
+	description="X12 契約を使用してロジック アプリを作成する方法について説明しています。" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="app-service-logic" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="07/08/2016" 
-    ms.author="deonhe"/>
+	ms.service="app-service-logic" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="07/08/2016" 
+	ms.author="deonhe"/>
+
+# X12 での Enterprise Integration 
+
+>[AZURE.NOTE]このページでは、Logic Apps が備えている X12 の機能について取り上げます。EDIFACT については、[こちら](app-service-logic-enterprise-integration-edifact.md)をクリックしてください。
+
+## X12 契約の作成 
+X12 メッセージの交換を始める前に、X12 契約を作成し、統合アカウントに格納する必要があります。次の手順では、X12 契約を作成するプロセスについて説明します。
+
+### 開始する前に必要な項目
+- Azure サブスクリプションで定義されている[統合アカウント](./app-service-logic-enterprise-integration-accounts.md)
+- 統合アカウントで既に定義されている 2 つ以上の[パートナー](./app-service-logic-enterprise-integration-partners.md)
+
+>[AZURE.NOTE]契約を作成する場合は、契約のファイルの内容が契約の種類と一致している必要があります。
 
 
-# <a name="enterprise-integration-with-x12"></a>Enterprise integration with X12 
+[統合アカウントを作成](./app-service-logic-enterprise-integration-accounts.md)し、[パートナーを追加](./app-service-logic-enterprise-integration-partners.md)した後に、X12 契約を作成するには、次の手順に従います。
 
->[AZURE.NOTE]This page covers the X12 features of Logic Apps. For information on EDIFACT click [here](app-service-logic-enterprise-integration-edifact.md).
+### Azure ポータルのホーム ページから
 
-## <a name="create-an-x12-agreement"></a>Create an X12 agreement 
-Before you can exchange X12 messages, you need to create an X12 agreement and store it in your integration account. The following steps will walk you through the process of creating an X12 agreement.
+[Azure ポータル](http://portal.azure.com "Azure ポータル")にログインしたら、次の手順に従います。
+1. 左側のメニューの **[参照]** を選択します。
 
-### <a name="here's-what-you-need-before-you-get-started"></a>Here's what you need before you get started
-- An [integration account](./app-service-logic-enterprise-integration-accounts.md) defined in your Azure subscription  
-- At least two [partners](./app-service-logic-enterprise-integration-partners.md) already defined in your integration account  
+>[AZURE.TIP]**[参照]** リンクが表示されない場合は、最初にメニューを展開する必要があります。これを行うには、折りたたまれたメニューの左上にある **[メニューの表示]** リンクを選択します。
 
->[AZURE.NOTE]When creating an agreement, the content in the agreement file must match the agreement type.    
+![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)
+2. フィルター検索ボックスに「*integration*」と入力し、結果のリストから **[統合アカウント]** を選択します。![](./media/app-service-logic-enterprise-integration-x12/x12-1-3.png)
+3. 表示された **[統合アカウント]** ブレードで、契約を作成する統合アカウントを選択します。統合アカウントがリストに表示されない場合は、[最初に統合アカウントを 1 つ作成](./app-service-logic-enterprise-integration-accounts.md "統合アカウントについて")します。![](./media/app-service-logic-enterprise-integration-x12/x12-1-4.png)
+4.  **[契約]** タイルを選択します。契約タイルが表示されない場合は、最初に契約タイルを追加します。![](./media/app-service-logic-enterprise-integration-x12/x12-1-5.png)
+5. 開かれた [契約] ブレードの **[追加]** ボタンを選択します。![](./media/app-service-logic-enterprise-integration-agreements/agreement-2.png)
+6. 開いた [契約] ブレードで、契約の**名前**を入力し、**契約の種類**、**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、**ゲスト ID** を選択します。![](./media/app-service-logic-enterprise-integration-x12/x12-1.png)
+7. 受信設定のプロパティを設定したら、**[OK]** ボタンを選択して続行します。
+8. **[受信設定]** を選択し、この契約を使用して受信されたメッセージを処理する方法を構成します。
+9. [Receive Settings (受信の設定)] コントロールは、[識別子]、[Acknowledgement (受信確認)]、[スキーマ]、[エンベロープ]、[制御番号]、[Validations (検証)]、[Internal Settings (内部設定)] セクションに分かれています。メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。これらのコントロールのビューは次のようになります。この契約で受信メッセージをどのように特定して処理するかに基づいてコントロールを構成してください。![](./media/app-service-logic-enterprise-integration-x12/x12-2.png)
 
+![](./media/app-service-logic-enterprise-integration-x12/x12-3.png)
+10. **[OK]** ボタンを選択して設定を保存します。
 
-After you've [created an integration account](./app-service-logic-enterprise-integration-accounts.md) and [added partners](./app-service-logic-enterprise-integration-partners.md), you can create an X12 agreement by following these steps:  
+### 識別子
 
-### <a name="from-the-azure-portal-home-page"></a>From the Azure portal home page
-
-After you log into the [Azure portal](http://portal.azure.com "Azure portal"):  
-1. Select **Browse** from the menu on the left.  
-
->[AZURE.TIP]If you don't see the **Browse** link, you may need to expand the menu first. Do this by selecting the **Show menu** link that's located at the top left of the collapsed menu.  
-
-![](./media/app-service-logic-enterprise-integration-overview/overview-1.png)    
-2. Type *integration* into the filter search box then select **Integration Accounts** from the list of results.       
-![](./media/app-service-logic-enterprise-integration-x12/x12-1-3.png)    
-3. In the **Integration Accounts** blade that opens up, select the integration account in which you will create the agreement. If you don't see any integration accounts lists, [create one first](./app-service-logic-enterprise-integration-accounts.md "All about integration accounts").  
-![](./media/app-service-logic-enterprise-integration-x12/x12-1-4.png)  
-4.  Select the **Agreements** tile. If you don't see the agreements tile, add it first.   
-![](./media/app-service-logic-enterprise-integration-x12/x12-1-5.png)     
-5. Select the **Add** button in the Agreements blade that opens.  
-![](./media/app-service-logic-enterprise-integration-agreements/agreement-2.png)  
-6. Enter a **Name** for your agreement then select the **Agreement type**, **Host Partner**, **Host Identity**,  **Guest Partner**, **Guest Identity**, in the Agreements blade that opens.  
-![](./media/app-service-logic-enterprise-integration-x12/x12-1.png)  
-7. After you have set the receive settings properties, select the **OK** button  
-Let's continue:  
-8. Select **Receive Settings** to configure how messages received via this agreement are to be handled.  
-9. The Receive Settings control is divided into the following sections, including Identifiers, Acknowledgment, Schemas, Envelopes, Control Numbers, Validations and Internal Settings. Configure these properties based on your agreement with the partner you will be exchanging messages with. Here is a view of these controls, configure them based on how you want this agreement to identify and handle incoming messages:  
-![](./media/app-service-logic-enterprise-integration-x12/x12-2.png)  
-
-![](./media/app-service-logic-enterprise-integration-x12/x12-3.png)  
-10. Select the **OK** button to save your settings.  
-
-### <a name="identifiers"></a>Identifiers
-
-|Property|Description |
+|プロパティ|説明 |
 |---|---|
-|ISA1 (Authorization Qualifier)|Select the Authorization qualifier value from the drop-down list.|
-|ISA2|Optional. Enter Authorization information value. If the value you entered for ISA1 is other than 00, enter a minimum of one alphanumeric character and a maximum of 10.|
-|ISA3 (Security Qualifier)|Select the Security qualifier value from the drop-down list.|
-|ISA4|Optional. Enter the Security information value. If the value you entered for ISA3 is other than 00, enter a minimum of one alphanumeric character and a maximum of 10.|
+|ISA1 (Authorization Qualifier) (ISA1 (認証修飾子))|ドロップダウン リストから認証修飾子値を選択します。|
+|ISA2|省略可能。認証情報値を入力します。ISA1 に入力された値が 00 以外の場合は、英数字を 1 文字以上最大 10 文字で入力します。|
+|ISA3 (Security Qualifier) (ISA3 (セキュリティ修飾子))|ドロップダウン リストからセキュリティ修飾子値を選択します。|
+|ISA4|省略可能。セキュリティ情報値を入力します。ISA3 に入力された値が 00 以外の場合は、英数字を 1 文字以上最大 10 文字で入力します。|
 
-### <a name="acknowledgments"></a>Acknowledgments 
+### 謝辞 
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|TA1 expected|Select this checkbox to return a technical (TA1) acknowledgment to the interchange sender. These acknowledgments are sent to the interchange sender based on the Send Settings for the agreement.|
-|FA expected|Select this checkbox to return a functional (FA) acknowledgment to the interchange sender. Then select whether you want the 997 or 999 acknowledgements, based on the schema versions you are working with. These acknowledgments are sent to the interchange sender based on the Send Settings for the agreement.|
-|Include AK2/IK2 Loop|Select this checkbox to enable generation of AK2 loops in functional acknowledgments for accepted transaction sets.Note: This checkbox is enabled only if you selected the FA expected checkbox.|
+|TA1 が必要|インターチェンジの送信者に技術確認 (TA1) を返す場合は、このチェックボックスをオンにします。これらの受信確認は、契約の送信設定に基づいてインターチェンジの送信者に送信されます。|
+|FA Expected (FA が必要)|インターチェンジの送信者に機能確認 (FA) を返す場合は、このチェックボックスをオンにします。次に、使用しているスキーマのバージョンに基づいて、997 または 999 の受信確認のいずれかを選択します。これらの受信確認は、契約の送信設定に基づいてインターチェンジの送信者に送信されます。|
+|Include AK2/IK2 Loop (AK2/IK2 ループを含める)|受理されたトランザクション セットの機能確認で AK2 ループの生成を有効にするには、このチェックボックスを選択します。注: このチェックボックスは [FA Expected (FA が必要)] チェックボックスを選択した場合にのみ有効です。|
 
-### <a name="schemas"></a>Schemas
+### スキーマ
 
-Choose a schema for each transaction type (ST1) and Sender Application (GS2). The receive pipeline disassembles the incoming message by matching the values for ST1 and GS2 in the incoming message with the values you set here, and the schema of the incoming message with the schema you set here.
+各トランザクション タイプ (ST1) および送信側アプリケーション (GS2) のスキーマを選択します。受信パイプラインは、受信メッセージの ST1 と GS2 の値とここで設定した値、および受信メッセージのスキーマとここで設定したスキーマと照合することで受信メッセージを逆アセンブルします。
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Version|Select the X12 version|
-|Transaction Type (ST01)|Select the transaction type|
-|Sender Application (GS02)|Select the sender application|
-|Schema|Select the schema file you want to us. Schema files are located in your integration account.|
+|バージョン|X12 のバージョンを選択します|
+|トランザクションの種類 (ST01)|トランザクションの種類を選択します|
+|Sender Application (GS02) (送信側アプリケーション (GS02))|送信側のアプリケーションを選択します|
+|スキーマ|使用するスキーマ ファイルを選択します。スキーマ ファイルは統合アカウント内にあります。|
 
-### <a name="envelopes"></a>Envelopes
+### エンベロープ
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|ISA11 Usage|Use this field to specify the separator in a transaction set:</br></br>Select the Standard identifier to use the decimal notation of “.” instead of the decimal notation of the incoming document in the EDI receive pipeline.</br></br>Select Repetition separator to specify the separator for repeated occurrences of a simple data element or a repeated data structure. For example, (^) is usually used as repetition separator. For HIPAA schemas, you can only use (^).|
+|ISA11 の使用法|このフィールドを使用して、トランザクション セットに区切り記号を指定します。</br></br>EDI 受信パイプラインの 10 進数表記の代わりに "." の 10 進数表記を使用する場合は、[標準識別子] を選択します。</br></br>繰り返し出現する単純なデータ要素または繰り返されるデータ構造体の区切り記号を指定するには、[繰り返し区切り記号] を選択します。たとえば、繰り返しの区切り記号としては通常、(^) が使用されます。HIPAA スキーマに対しては、(^) のみ使用できます。|
 
-### <a name="control-numbers"></a>Control Numbers
+### 制御番号
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Disallow Interchange Control Number duplicates|Check this option to block duplicate interchanges. If selected, the BizTalk Services Portal checks that the interchange control number (ISA13) for the received interchange does not match the interchange control number. If a match is detected, the receive pipeline does not process the interchange.<br/>If you opted to disallow duplicate interchange control numbers, then you can specify the number of days at which the check is performed by giving the appropriate value for Check for duplicate ISA13 every x days.|
-|Disallow Group control number duplicates|Check this option to block interchanges with duplicate group control numbers.|
-|Disallow Transaction set control number duplicates|Check this option to block interchanges with duplicate transaction set control numbers.|
+|Disallow Interchange control number duplicates (インターチェンジ制御番号の重複を許可しない)|インターチェンジの重複を防止するには、このオプションをオンにします。選択した場合、BizTalk Services ポータルは受信したインターチェンジのインターチェンジ制御番号 (ISA13) とインターチェンジ制御番号が一致しないことを確認します。一致が検出された場合、受信パイプラインはインターチェンジを処理しません。<br/>重複するインターチェンジ制御番号を許可しないように選択した場合は、[ISA13 の重複の確認間隔 (日単位)] に適切な値を指定して、チェックを実行する間隔の日数を指定できます。|
+|Disallow Group control number duplicates (グループ制御番号の重複を許可しない)|グループ制御番号が重複したインターチェンジを防止するには、このオプションをオンにします。|
+|Disallow Transaction set control number duplicates (トランザクション セット制御番号の重複を許可しない)|トランザクション セット制御番号が重複したインターチェンジを防止するには、このオプションをオンにします。|
 
-### <a name="validations"></a>Validations
+### Validations (検証)
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Message Type|EDI Message type, like 850-Purchase Order or 999-Implementation Acknowledgement.|
-|EDI Validation|Performs EDI validation on data types as defined by the EDI properties of the schema, length restrictions, empty data elements, and trailing separators.|
-|Extended Validation|If the data type is not EDI, validation is on the data element requirement and allowed repetition, enumerations, and data element length validation (min/max).|
-|Allow Leading/Trailing Zeroes|Any additional space and zero characters that are leading or trailing are retained. They are not removed.|
-|Trailing Separator Policy|Generates trailing separators on the interchange received. Options include NotAllowed, Optional, and Mandatory.|
+|メッセージの種類|EDI メッセージの種類 ([850-Purchase Order (850 - 発注書)] や [999-Implementation Acknowledgement (999 - 実装確認)] など)。|
+|EDI Validation (EDI の検証)|スキーマ、長さ制限、空のデータ要素、および末尾の区切り記号の EDI プロパティで定義されたデータ型で EDI 検証を実行します。|
+|拡張された検証|データ型が EDI でない場合は、検証はデータ要素の要件と許可された繰り返し、列挙、およびデータ要素の長さの検証 (最小/最大) で実行されます。|
+|Allow Leading/Trailing Zeroes (先頭および末尾のゼロを許可)|先頭または末尾のスペースおよびゼロの文字が保持されます。これらは削除されません。|
+|末尾の区切り記号のポリシー|受信したインターチェンジに末尾の区切り記号を生成します。[許可しない]、[省略可能]、および [必須] のオプションがあります。|
 
-### <a name="internal-settings"></a>Internal Settings
+### Internal Settings (内部設定)
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Convert implied decimal format Nn to base 10 numeric value|Converts an EDI number that is specified with the format Nn into a base-10 numeric value in the intermediate XML in the BizTalk Services Portal.|
-|Create empty XML tags if trailing separators are allowed|Select this check box to have the interchange sender include empty XML tags for trailing separators.|
-|Inbound batching processing|Split Interchange as transaction sets - suspend transaction sets on error: Parses each transaction set in an interchange into a separate XML document by applying the appropriate envelope to the transaction set. With this option, if one or more transaction sets in the interchange fail validation, then BizTalk Services suspends only those transaction sets. </br></br>Split Interchange as transaction sets - suspend interchange on error: Parses each transaction set in an interchange into a separate XML document by applying the appropriate envelope. With this option, if one or more transaction sets in the interchange fail validation, then BizTalk Services suspends the entire interchange.</br></br>Preserve Interchange - suspend transaction sets on error: Leaves the interchange intact, creating an XML document for the entire batched interchange. With this option, if onAe or more transaction sets in the interchange fail validation, then BizTalk Services suspends only those transaction sets, while continuing to process all other transaction sets.</br></br>Preserve Interchange - suspend interchange on error: Leaves the interchange intact, creating an XML document for the entire batched interchange. With this option, if one or more transaction sets in the interchange fail validation, then BizTalk Services suspends the entire interchange.</br></br>|
+|暗黙的に指定された 10 進形式 Nn を 底 10 の数値に変換する|BizTalk Services ポータルの中間 XML で、形式 Nn で指定されている EDI 番号を底 10 の数値に変換します。|
+|末尾の区切り記号が許可されている場合は空の XML タグを作成する|インターチェンジの送信者が末尾の区切り記号に空の XML タグを含めるには、このチェック ボックスをオンにします。|
+|Inbound batching processing (受信バッチ処理)|インターチェンジをトランザクション セットとして分割 - エラー発生時にトランザクション セットを中断: トランザクション セットに適切なエンベロープを適用することで、インターチェンジの各トランザクション セットを個別の XML ドキュメントで解析します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合に、BizTalk Services が失敗したトランザクション セットのみを中断します。</br></br>[インターチェンジをトランザクション セットとして分割 - エラー発生時にインターチェンジを中断]: 適切なエンベロープを適用することで、インターチェンジの各トランザクション セットを個別の XML ドキュメントで解析します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合に、BizTalk Services がインターチェンジ全体を中断します。</br></br>[インターチェンジの保存 - エラー発生時にトランザクション セットを中断]: インターチェンジをそのまま残し、バッチ インターチェンジ全体に対して XML ドキュメントを作成します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合に、BizTalk Services が失敗したトランザクション セットのみを中断し、その他のトランザクション セットの処理は継続します。</br></br>[インターチェンジの保存 - エラー発生時にインターチェンジを中断]: インターチェンジをそのまま残し、バッチ インターチェンジ全体に対して XML ドキュメントを作成します。このオプションを使用すると、インターチェンジの 1 つまたは複数のトランザクション セットが失敗した場合に、BizTalk Services がインターチェンジ全体を中断します。</br></br>|
 
-Your agreement is ready to handle incoming messages that conform to the schema you selected.
+これで選択したスキーマに準拠する受信メッセージを処理する準備ができました。
 
-To configure the settings that handle messages you send to partners:  
-11. Select **Send Settings** to configure how messages sent via this agreement are to be handled.  
+パートナーに送信するメッセージを処理する設定を構成するには:
+11. **[送信設定]** を選択し、この契約を使用して送信されたメッセージを処理する方法を構成します。
 
-The Send Settings control is divided into the following sections, including Identifiers, Acknowledgment, Schemas, Envelopes, Control Numbers, Character Sets and Separators and  Validation. 
+[Send Settings (送信の設定)] コントロールは、[Identifiers (識別子)]、[Acknowledgement (確認)]、[Schemas (スキーマ)]、[Envelopes (エンベロープ)]、[Control Numbers (コントロール番号)]、[Character Sets and Separators (文字セットと区切り文字)]、[Validation (検証)] のセクションに分かれています。
 
-Here is a view of these controls. Make the selections based on how you want to handle messages you send to partners via this agreement:   
-![](./media/app-service-logic-enterprise-integration-x12/x12-4.png)  
+これらのコントロールのビューは以下のとおりです。この契約でパートナーに送信するメッセージをどのように処理するかに基づいて選択してください。![](./media/app-service-logic-enterprise-integration-x12/x12-4.png)
 
-![](./media/app-service-logic-enterprise-integration-x12/x12-5.png)  
+![](./media/app-service-logic-enterprise-integration-x12/x12-5.png)
 
-![](./media/app-service-logic-enterprise-integration-x12/x12-6.png)  
-12. Select the **OK** button to save your settings.  
+![](./media/app-service-logic-enterprise-integration-x12/x12-6.png)
+12. **[OK]** ボタンを選択して設定を保存します。
 
-### <a name="identifiers"></a>Identifiers
-|Property|Description |
+### 識別子
+|プロパティ|説明 |
 |----|----|
-|Authorization qualifier (ISA1)|Select the Authorization qualifier value from the drop-down list.|
-|ISA2|Enter Authorization information value. If this value is other than 00, then enter a minimum of one alphanumeric character and a maximum of 10.|
-|Security qualifier (ISA3)|Select the Security qualifier value from the drop-down list.|
-|ISA4|Enter the Security information value. If this value is other than 00, for the Value (ISA4) text box, then enter a minimum of one alphanumeric value and a maximum of 10.|
+|認証修飾子 (ISA1)|ドロップダウン リストから認証修飾子値を選択します。|
+|ISA2|認証情報値を入力します。この値が 00 以外の場合は、英数字を 1 文字以上最大 10 文字で入力します。|
+|セキュリティ修飾子 (ISA3)|ドロップダウン リストからセキュリティ修飾子値を選択します。|
+|ISA4|セキュリティ情報値を入力します。値 (ISA4) テキスト ボックスのこの値が 00 以外の場合は、英数字を 1 文字以上最大 10 文字で入力します。|
 
-### <a name="acknowledgment"></a>Acknowledgment
-|Property|Description |
+### Acknowledgement (受信確認)
+|プロパティ|説明 |
 |----|----|
-|TA1 expected|Select this checkbox to return a technical (TA1) acknowledgment to the interchange sender. This setting specifies that the host partner who is sending the message requests an acknowledgement from the guest partner in the agreement. These acknowledgments are expected by the host partner based on the Receive Settings of the agreement.|
-|FA expected|Select this checkbox to return a functional (FA) acknowledgment to the interchange sender, and then select whether you want the 997 or 999 acknowledgements, based on the schema versions you are working with. These acknowledgments are expected by the host partner based on the Receive Settings of the agreement.|
-|FA Version|Select the FA version|
+|TA1 が必要|インターチェンジの送信者に技術確認 (TA1) を返す場合は、このチェックボックスをオンにします。この設定は、メッセージを送信しているホスト パートナーが契約でゲスト パートナーからの受信確認を要求していることを指定します。これらの受信確認は、契約の [受信の設定] に基づいてホスト パートナーから求められます。|
+|FA Expected (FA が必要)|インターチェンジの送信者に機能的 (FA) な受信確認を返す場合は、このチェックボックスをオンにし、使用しているスキーマのバージョンに基づいて、997 または 999 の受信確認のいずれかを選択します。これらの受信確認は、契約の [受信の設定] に基づいてホスト パートナーから求められます。|
+|FA Version (FA のバージョン)|FA のバージョンを選択します|
 
-### <a name="schemas"></a>Schemas
-|Property|Description |
+### スキーマ
+|プロパティ|説明 |
 |----|----|
-|Version|Select the X12 version|
-|Transaction Type (ST01)|Select the transaction type|
-|SCHEMA|Select the schema to use. Schemas are located in your integration account. To access your schemas, first link your integration account to your Logic app.|
+|バージョン|X12 のバージョンを選択します|
+|トランザクションの種類 (ST01)|トランザクションの種類を選択します|
+|スキーマ|使用するスキーマを選択します。スキーマは統合アカウント内にあります。スキーマにアクセスするには、まず統合アカウントをロジック アプリにリンクします。|
 
-### <a name="envelopes"></a>Envelopes
-|Property|Description |
+### エンベロープ
+|プロパティ|説明 |
 |----|----|
-|ISA11 Usage|Use this field to specify the separator in a transaction set:</br></br>Select the Standard identifier to use the decimal notation of “.” instead of the decimal notation of the incoming document in the EDI receive pipeline.</br></br>Select Repetition separator to specify the separator for repeated occurrences of a simple data element or a repeated data structure. For example, (^) is usually used as repetition separator. For HIPAA schemas, you can only use (^).</br>|
-|Repetition separator|Enter the repetition separator|
-|Control Version Number (ISA12)|Select the version of the X12 standard that is used by the BizTalk Services Portal for generating an outgoing interchange.|
-|Usage Indicator (ISA15)|Enter whether the context of an interchange is information (I), production data (P), or test data (T). The EDI receive pipeline promotes this property to the context.|
-|Schema|You can enter how the BizTalk Services Portal generates the GS and ST segments for an X12-encoded interchange that it sends to the Send Pipeline.</br></br>You can associate values of the GS1, GS2, GS3, GS4, GS5, GS7, and GS8 data elements with values of the Transaction Type, and Version/Release data elements. When the BizTalk Services Portal determines that an XML message has the values set for the Transaction Type, and Version/Release elements in a row of the grid, then it populates the GS1, GS2, GS3, GS4, GS5, GS7, and GS8 data elements in the envelope of the outgoing interchange with the values from the same row of the grid. The values of the Transaction Type, and Version/Release elements must be unique.</br></br>Optional. For GS1, select a value for the functional code from the drop-down list.</br></br>Required. For GS2, enter an alphanumeric value for the application sender with a minimum of two characters and a maximum of 15 characters.</br></br>Required. For GS3, enter an alphanumeric value for the application receiver with a minimum of two characters and a maximum of 15 characters.</br></br>Optional. For GS4, select CCYYMMDD or YYMMDD.</br></br>Optional. For GS5, select HHMM, HHMMSS, or HHMMSSdd.</br></br>Optional. For GS7, select a value for the responsible agency from the drop-down list.</br></br>Optional. For GS8, enter an alphanumeric value for the document identified with a minimum of one character and a maximum of 12 characters.</br></br>**Note**:These are the values that the BizTalk Services Portal enters in the GS fields of the interchange it is building if the Transaction Type, and Version/Release elements in the same row are a match for those associated with the interchange.|
+|ISA11 の使用法|このフィールドを使用して、トランザクション セットに区切り記号を指定します。</br></br>EDI 受信パイプラインの 10 進数表記の代わりに "." の 10 進数表記を使用する場合は、[標準識別子] を選択します。</br></br>繰り返し出現する単純なデータ要素または繰り返されるデータ構造体の区切り記号を指定するには、[繰り返し区切り記号] を選択します。たとえば、繰り返しの区切り記号としては通常、(^) が使用されます。HIPAA スキーマに対しては、(^) のみ使用できます。</br>|
+|繰り返し区切り記号|繰り返し区切り記号を入力します|
+|制御バージョン番号 (ISA12)|送信インターチェンジを生成するために、BizTalk Services ポータルで使用される X12 標準のバージョンを選択します。|
+|使用状況インジケーター (ISA15)|インターチェンジのコンテキストが情報 (I)、運用データ (P)、またはテストデータ (T) であるかどうかを入力します。EDI 受信パイプラインがこのプロパティをコンテキストに昇格させます。|
+|スキーマ|BizTalk Services ポータルが、送信パイプラインに送信する X12 でエンコードされたインターチェンジの GS および ST セグメントをどのように生成するかを入力できます。</br></br>GS1、GS2、GS3、GS4、GS5、GS7、GS8 のデータ要素を [トランザクションの種類] の値、および [バージョン/リリース] のデータ要素と関連付けることができます。BizTalk Services ポータルで、XML メッセージのグリッドの行に [トランザクションの種類] で設定された値、および [バージョン/リリース] の要素が検出されると、送信インターチェンジのエンベロープ内の GS1、GS2、GS3、GS4、GS5、GS7、GS8 のデータ要素にそのグリッドの同じ行からの値が入力されます。[トランザクションの種類] の値と [バージョン/リリース] の要素は一意である必要があります。</br></br>省略可能。GS1 では、機能コードの値をドロップダウン リストから選択します。</br></br>必須。GS2 では、アプリケーションの送信者の英数字値を 2 ～ 15 文字で入力します。</br></br>必須。GS3 では、アプリケーションの受信者の英数字値を 2 ～ 15 文字で入力します。</br></br>省略可能。GS4 では、CCYYMMDD または YYMMDD を選択します。</br></br>省略可能。GS5 では、HHMM、HHMMSS、または HHMMSSdd を選択します。</br></br>省略可能。GS7 では、担当機関の値をドロップダウン リストから選択します。</br></br>省略可能。GS8 では、識別されたドキュメントの英数字値を 1 ～ 12 文字で入力します。</br></br>**注**: これらの値は、[トランザクションの種類]、および [バージョン/リリース] の同じ行の要素が BizTalk Services ポータルが構築しているインターチェンジに関連付けられているものと一致する場合に、そのインターチェンジの GS フィールドに入力されます。|
 
-### <a name="control-numbers"></a>Control Numbers
-|Property|Description |
+### 制御番号
+|プロパティ|説明 |
 |----|----|
-|Interchange Control Number (ISA13)|Required. Enter a range of values for the interchange control number used by the BizTalk Services Portal in generating an outgoing interchange. Enter a numeric value with a minimum of 1 and a maximum of 999999999.|
-|Group Control Number (GS06)|Required. Enter the range of numbers that the BizTalk Services Portal should use for the group control number. Enter a numeric value with a minimum of one character and a maximum of nine characters.|
-|Transaction Set Control Number (ST02)|For Transaction Set Control number (ST02), enter a range of numeric values for the required middle fields, and alphanumeric values for the optional prefix and suffix. The maximum length of all four fields is nine characters.|
-|Prefix|To designate the range of transaction set control numbers used in an acknowledgment, enter values in the ACK Control number (ST02) fields. Enter a numeric value for the middle two fields, and an alphanumeric value (if desired) for the prefix and suffix fields. The middle fields are required and contain the minimum and maximum values for the control number; the prefix and suffix are optional. The maximum length for all three fields is nine characters.|
-|Suffix|To designate the range of transaction set control numbers used in an acknowledgment, enter values in the ACK Control number (ST02) fields. Enter a numeric value for the middle two fields, and an alphanumeric value (if desired) for the prefix and suffix fields. The middle fields are required and contain the minimum and maximum values for the control number; the prefix and suffix are optional. The maximum length for all three fields is nine characters.|
+|インターチェンジ制御番号 (ISA13)|必須。BizTalk Services ポータルで送信インターチェンジを生成するために使用されるインターチェンジ制御番号の値の範囲を入力します。1 ～ 999999999 の数値を入力します。|
+|グループ制御番号 (GS06)|必須。BizTalk Services ポータルがグループ制御番号として使用する番号の範囲を入力します。1 ～ 9 文字の数値を入力します。|
+|トランザクション セット制御番号 (ST02)|トランザクション セット制御番号 (ST02) には、中間の必須フィールドの数値の範囲と、オプションでプレフィックスおよびサフィックスの英数字値を入力します。4 つのフィールドの最大長は、すべて 9 文字です。|
+|Prefix (プレフィックス)|受信確認で使用されるトランザクション セット制御番号の範囲を指定するには、[確認制御番号 (ST02)] フィールドに値を入力します。中間の 2 つのフィールドに数値を、プレフィックスとサフィックスのフィールドに英数字値 (必要な場合) を入力します。中間のフィールドは必須であり、制御番号の最小値と最大値が含まれます。プレフィックスとサフィックスは省略可能です。3 つのフィールドの最大長は、すべて 9 文字です。|
+|サフィックス|受信確認で使用されるトランザクション セット制御番号の範囲を指定するには、[確認制御番号 (ST02)] フィールドに値を入力します。中間の 2 つのフィールドに数値を、プレフィックスとサフィックスのフィールドに英数字値 (必要な場合) を入力します。中間のフィールドは必須であり、制御番号の最小値と最大値が含まれます。プレフィックスとサフィックスは省略可能です。3 つのフィールドの最大長は、すべて 9 文字です。|
 
-### <a name="character-sets-and-separators"></a>Character Sets and Separators
-Other than the character set, you can enter a different set of delimiters to be used for each message type. If a character set is not specified for a given message schema, then the default character set is used.
+### Character Sets and Separators (文字セットと区切り文字)
+各メッセージ タイプで使用する文字セットや、異なるセットの区切り文字を入力できます。特定のメッセージ スキーマで文字セットが指定されていない場合は、既定の文字セットが使用されます。
 
-|Property|Description |
+|プロパティ|説明 |
 |----|----|
-|Character Set to be used|Select the X12 character set to validate the properties that you enter for the agreement.</br></br>**Note**: The BizTalk Services Portal only uses this setting to validate the values entered for the related agreement properties. The receive pipeline or send pipeline ignores this character-set property when performing run-time processing.|
-|Schema|Select the (+) symbol and select a schema from the drop-down list. For the selected schema, select the separators set to be used:</br></br>Component element separator – Enter a single character to separate composite data elements.</br></br>Data Element Separator – Enter a single character to separate simple data elements within composite data elements.</br></br></br></br>Replacement Character – Select this check box if the payload data contains characters that are also used as data, segment, or component separators. You can then enter a replacement character. When generating the outbound X12 message, all instances of separator characters in the payload data are replaced with the specified character.</br></br>Segment Terminator – Enter a single character to indicate the end of an EDI segment.</br></br>Suffix – Select the character that is used with the segment identifier. If you designate a suffix, then the segment terminator data element can be empty. If the segment terminator is left empty, then you must designate a suffix.|
+|使用する文字セット|契約に入力されるプロパティを検証する X12 文字セットを選択します。</br></br>**注**: BizTalk Services ポータルは、関連する契約のプロパティに入力された値を検証するためにのみこの設定を使用します。受信パイプラインや送信パイプラインは、実際の処理の実行時にはこの文字セット プロパティを無視します。|
+|スキーマ|(+) 記号を選択して、ドロップダウン リストからスキーマを選択します。選択したスキーマについて、使用する区切り記号のセットを選択します。</br></br>[コンポーネント要素区切り記号] - 複合データ要素を区切る単一の文字を入力します。</br></br>[データ要素区切り記号] - 複合データ要素内の単純データ要素を区切る単一の文字を入力します。</br></br></br></br>[Replacement Character (置換文字)] - ペイロード データにデータ、セグメント、またはコンポーネントの区切り記号としても使用される文字が含まれる場合は、このチェック ボックスをオンにします。その後置換文字を入力できます。X12 送信メッセージが生成されるときに、ペイロード データ内の区切り文字のすべてのインスタンスが指定した文字に置換されます。</br></br>[セグメント終端記号] - EDI セグメントの終端を示す単一の文字を入力します。</br></br>[サフィックス] - セグメント識別子と共に使用される文字を選択します。サフィックスを指定する場合は、セグメント終端記号のデータ要素が空でもかまいません。セグメント終端記号を空にする場合は、サフィックスを指定する必要があります。|
 
-### <a name="validation"></a>Validation
-|Property|Description |
+### 検証
+|プロパティ|説明 |
 |----|----|
-|Message Type|Selecting this option enables validation on the interchange receiver. This validation performs EDI validation on transaction-set data elements, validating data types, length restrictions, and empty data elements and trailing separators.|
-|EDI Validation||
-|Extended Validation|Selecting this option enables extended validation of interchanges received from the interchange sender. This includes validation of field length, optionality, and repeat count in addition to XSD data type validation. You can enable extension validation without enabling EDI validation, or vice versa.|
-|Allow leading/ trailing zeroes|Selecting this option specifies that an EDI interchange received from the party does not fail validation if a data element in an EDI interchange does not conform to its length requirement because of or trailing spaces, but does conform to its length requirement when they are removed.|
-|Trailing separator|Selecting this option specifies an EDI interchange received from the party does not fail validation if a data element in an EDI interchange does not conform to its length requirement because of leading (or trailing) zeroes or trailing spaces, but does conform to its length requirement when they are removed.</br></br>Select Not Allowed if you do not want to allow trailing delimiters and separators in an interchange received from the interchange sender. If the interchange contains trailing delimiters and separators, it is declared invalid.</br></br>Select Optional to accept interchanges with or without trailing delimiters and separators.</br></br>Select Mandatory if the received interchange must contain trailing delimiters and separators.|
+|メッセージの種類|このオプションを選択すると、インターチェンジ受信者の検証を有効にします。この検証では、データ型、長さの制限、および空のデータ要素と末尾の区切り記号を検証することで、トランザクション セットのデータ要素に対して EDI の検証を実行します。|
+|EDI Validation (EDI の検証)||
+|拡張された検証|このオプションを選択すると、インターチェンジ送信者から受信したインターチェンジの拡張された検証を有効にします。これには、XSD データ型の検証に加えて、フィールド長、省略可能性、および繰り返し回数の検証が含まれます。EDI の検証を有効にしなくても拡張された検証を有効にすることができます。また、その逆も可能です。|
+|Allow leading/ trailing zeroes (先頭および末尾のゼロを許可)|このオプションを選択すると、当事者から受け取った EDI インターチェンジのデータ要素が末尾のスペースのために長さ要件に準拠しないが、そのスペースが削除されたときに長さ要件に準拠している場合に、EDI インターチェンジの検証が失敗とみなされません。|
+|末尾の区切り記号|このオプションを選択すると、当事者から受け取った EDI インターチェンジのデータ要素が先頭の (または末尾の) ゼロや末尾のスペースのために長さ要件に準拠しないが、そのスペースが削除されたときに長さ要件に準拠している場合に、EDI インターチェンジの検証が失敗と見なされません。</br></br>インターチェンジ送信者から受信したインターチェンジで末尾の区切り記号を許可しない場合は、[許可しない] を選択します。インターチェンジに末尾の区切り記号が含まれている場合は無効と宣言されます。</br></br>末尾の区切り記号の有無に関係なくインターチェンジを受け入れる場合は、[省略可能] を選択します。</br></br>受信したインターチェンジで末尾の区切り記号を必須とする場合は、[必須] を選択します。|
 
-After you select **OK** on the open blades:  
-13. Select the **Agreements** tile on the Integration Account blade and you will see the newly added agreement listed.  
-![](./media/app-service-logic-enterprise-integration-x12/x12-7.png)   
+開いているブレードで **[OK]** を選択した後は、次のようにします。
+13. [統合アカウント] ブレード上の**[契約]** タイルを選択すると、新しく追加された契約が表示されます。![](./media/app-service-logic-enterprise-integration-x12/x12-7.png)
 
-## <a name="learn-more"></a>Learn more
-- [Learn more about the Enterprise Integration Pack](./app-service-logic-enterprise-integration-overview.md "Learn about Enterprise Integration Pack")  
+## 詳細情報
+- [Enterprise Integration Pack についての詳細情報](./app-service-logic-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0803_2016-->

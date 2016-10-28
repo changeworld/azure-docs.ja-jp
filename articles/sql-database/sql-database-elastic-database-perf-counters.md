@@ -1,6 +1,6 @@
 <properties
-    pageTitle="Performance counters for shard map manager"
-    description="ShardMapManager class and data dependent routing performance counters"
+    pageTitle="シャード マップ マネージャーのパフォーマンス カウンター"
+    description="ShardMapManager クラスとデータ依存ルーティング パフォーマンス カウンター"
     services="sql-database"
     documentationCenter=""
     manager="jhubbard"
@@ -16,67 +16,61 @@
     ms.date="05/23/2016"
     ms.author="SilviaDoomra"/>
 
+# シャード マップ マネージャーのパフォーマンス カウンター
 
-# <a name="performance-counters-for-shard-map-manager"></a>Performance counters for shard map manager
+[特にデータ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)を使用するときに、[シャード マッ プマネージャー](sql-database-elastic-scale-shard-map-management.md)のパフォーマンスをキャプチャできます。カウンターは、Microsoft.Azure.SqlDatabase.ElasticScale.Client クラスのメソッドを使用して作成されます。
 
-You can capture the performance of a [shard map manager](sql-database-elastic-scale-shard-map-management.md), especially when using [data dependent routing](sql-database-elastic-scale-data-dependent-routing.md). Counters are created with methods of the Microsoft.Azure.SqlDatabase.ElasticScale.Client class.  
+カウンターを使用して、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)操作のパフォーマンスを追跡します。これらのカウンターは、パフォーマンス モニターの [エラスティック データベース: シャード管理] カテゴリでアクセスできます。
 
-Counters are used to track the performance of [data dependent routing](sql-database-elastic-scale-data-dependent-routing.md) operations. These counters are accessible in the Performance Monitor, under the "Elastic Database: Shard Management" category.
+**最新バージョン:** [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) に移動します。「[最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード](sql-database-elastic-scale-upgrade-client-library.md)」も参照してください。
 
-**For the latest version:** Go to [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). See also [Upgrade an app to use the latest elastic database client library](sql-database-elastic-scale-upgrade-client-library.md).
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+* パフォーマンス カテゴリとカウンターを作成するには、アプリケーションをホストするコンピューター上でユーザーがローカルな **Administrators** グループの一員になっている必要があります。  
 
-* To create the performance category and counters, the user must be a part of the local **Administrators** group on the machine hosting the application.  
+* パフォーマンス カウンター インスタンスを作成し、カウンターを更新するには、ユーザーが **Administrators** グループまたは **Performance Monitor Users** グループの一員になっている必要があります。
 
-* To create a performance counter instance and update the counters, the user must be a member of either the **Administrators** or **Performance Monitor Users** group. 
+## パフォーマンス カテゴリとカウンターを作成する 
 
-## <a name="create-performance-category-and-counters"></a>Create performance category and counters 
+カウンターを作成するには、[ShardMapManagmentFactory クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx)の CreatePeformanceCategoryAndCounters メソッドを呼び出します。このメソッドは、管理者だけが実行できます。
 
-To create the counters, call the CreatePeformanceCategoryAndCounters method of the [ShardMapManagmentFactory class](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Only an administrator can execute the method: 
+	ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
-    ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
+[この](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell スクリプトを使用してメソッドを実行することもできます。このメソッドは、次のパフォーマンス カウンターを作成します。
 
-You can also use [this](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) PowerShell script to execute the method. The method creates the following performance counters:  
+* **キャッシュされたマッピング**: シャード マップ用にキャッシュされたマッピングの数。
+*  **DDR 操作数/秒**: シャード マップ用のデータ依存ルーティング操作の割合。このカウンターは、[OpenConnectionForKey()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) に対する呼び出しで宛先のシャードへの接続が成功したときに更新されます。 
+*  **マッピングのキャッシュ検索ヒット数/秒**: シャード マップでのマッピングで成功したキャッシュ検索操作の割合。 
+*  **マッピングのキャッシュ検索ミス数/秒**: シャード マップでのマッピングで失敗したキャッシュ検索操作の割合。
+*  **キャッシュに追加または更新されたマッピング数/秒**: シャード マップ用のキャッシュに追加または更新されたマッピングの割合。 
+*  **キャッシュから削除されたマッピング数/秒**: シャード マップ用のキャッシュから削除されたマッピングの割合。 
 
-* **Cached mappings**: Number of mappings cached for the shard map.
-*  **DDR operations/sec**: Rate of data dependent routing operations for the shard map. This counter is  updated when a call to [OpenConnectionForKey()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) results in a successful connection to the destination shard. 
-*  **Mapping lookup cache hits/sec**: Rate of successful cache lookup operations for mappings in the shard map. 
-*  **Mapping lookup cache misses/sec**: Rate of failed cache lookup operations for mappings in the shard map.
-*  **Mappings added or updated in cache/sec**: Rate at which mappings are being added or updated in cache for the shard map. 
-*  **Mappings removed from cache/sec**: Rate at which mappings are being removed from cache for the shard map. 
-
-Performance counters are created for each cached shard map per process.  
+パフォーマンス カウンターは、それぞれのキャッシュされたシャード マップで、プロセスごとに作成されます。
 
 
-## <a name="notes"></a>Notes
-The following events trigger the creation of the performance counters:  
+## メモ
+次のイベントは、パフォーマンス カウンターの作成をトリガーします。
 
-* Initialization of the [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) with [eager loading](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx), if the ShardMapManager contains any shard maps. These include the [GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) and the [TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) methods.
-* Successful lookup of a shard map (using [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) or [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)). 
+* [一括読み込み](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx)による [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) の初期化 (ShardMapManager にシャード マップが含まれている場合)。[GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) メソッドと [TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) メソッドを含みます。
+* シャード マップの検索の成功 ([GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx)、[GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx)、または [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx) を使用)。 
 
-* Successful creation of shard map using CreateShardMap().
+* CreateShardMap() を使用したシャード マップの作成の成功。
 
-The performance counters will be updated by all cache operations performed on the shard map and mappings. Successful removal of the shard map using DeleteShardMap()reults in deletion of the performance counters instance.  
+パフォーマンス カウンターは、シャード マップとマッピングに対して実行されるすべてのキャッシュ操作によって更新されます。DeleteShardMap () を使用してシャード マップが正常に削除されると、パフォーマンス カウンター インスタンスも削除されます。
 
-## <a name="best-practices"></a>Best practices
+## ベスト プラクティス
 
-* Creation of the performance category and counters should be performed only once before the creation of ShardMapManager object. Every execution of the command CreatePerformanceCategoryAndCounters() clears the previous counters (losing data reported by all instances) and creates new ones.  
+* パフォーマンス カテゴリとカウンターの作成は、ShardMapManager オブジェクトの作成前に 1 回だけ実行する必要があります。CreatePerformanceCategoryAndCounters() コマンドを実行するたびに前のカウンターがクリアされ (すべてのインスタンスによって報告されたデータが失われ)、新しいカウンターが作成されます。  
 
-* Performance counter instances are created per process. Any application crash or removal of a shard map from the cache will result in deletion of the performance counters instances.  
+* パフォーマンス カウンター インスタンスは、プロセスごとに作成されます。パフォーマンス カウンター インスタンスは、アプリケーションがクラッシュするか、シャード マップがキャッシュから削除されると削除されます。
 
-### <a name="see-also"></a>See also
+### 関連項目
 
-[Elastic Database features overview](sql-database-elastic-scale-introduction.md)  
+[Elastic Database 機能の概要](sql-database-elastic-scale-introduction.md)
 
 [AZURE.INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
 <!--Anchors-->
 <!--Image references-->
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0608_2016-->

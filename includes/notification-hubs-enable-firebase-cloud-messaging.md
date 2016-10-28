@@ -1,17 +1,15 @@
 
 
-1. Log in to the [Firebase console](https://firebase.google.com/console/). Create a new Firebase project if you don't already have one.
-2. After your project is created click **Add Firebase to your Android app** and follow the instructions provided.
+1. [Firebase Console](https://firebase.google.com/console/) にログインします。Firebase プロジェクトがまだない場合は、新しく作成します。
+2. プロジェクトが作成されたら、**[Add Firebase to your Android app (Android アプリに Firebase を追加する)]** をクリックし、表示される指示に従います。
 
-    ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
+	![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-add-firebase-to-android-app.png)
 
-3. In the Firebase Console, click the cog for your project and then click **Project Settings**.
+3. Firebase Console で、プロジェクトの歯車アイコンをクリックし、**[Project Settings (プロジェクト設定)]** をクリックします。
 
-    ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
+	![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
 
-4. Click the **Cloud Messaging** tab in your project settings and copy the value of the **Server key** and **Sender ID**.  These values will be used later to configure the notification hub Access Policy and your notification handler in the app.
+4. プロジェクト設定の **[Cloud Messaging (Cloud Messaging)]** タブをクリックし、**[Server key (サーバー キー)]** と **[Sender ID (送信者 ID)]** の値をコピーします。これらの値は、後でアプリケーションの通知ハブのアクセス ポリシーと通知ハンドラーを構成するために使用されます。
   
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

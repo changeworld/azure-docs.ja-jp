@@ -1,6 +1,6 @@
 <properties
-pageTitle="Add the Yammer Connector in your Logic Apps | Microsoft Azure"
-description="Overview of the Yammer Connector with REST API parameters"
+pageTitle="ロジック アプリに Yammer コネクタを追加する | Microsoft Azure"
+description="Yammer コネクタと REST API パラメーターの概要"
 services=""    
 documentationCenter=""     
 authors="msftman"    
@@ -17,189 +17,182 @@ ms.workload="na"
 ms.date="05/18/2016"
 ms.author="deonhe"/>
 
+# Yammer コネクタの使用
 
-# <a name="get-started-with-the-yammer-connector"></a>Get started with the Yammer connector
+Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。
 
-Connect to Yammer to access conversations in your enterprise network.
+>[AZURE.NOTE] 本記事は、ロジック アプリの 2015-08-01-preview スキーマ バージョンを対象としています。
 
->[AZURE.NOTE] This version of the article applies to logic apps 2015-08-01-preview schema version.
+Yammer で次のことができます。
 
-With Yammer, you can:
+- Yammer から取得したデータに基づいてビジネス フローを構築します。 
+- グループまたはフォローしているフィードで新しいメッセージが発生したときにトリガーを使用します。
+- アクションを使用し、メッセージを投稿したり、すべてのメッセージを取得したりします。また、これらのアクションで応答を取得すると、他のアクションから出力を使用できます。たとえば、新しいメッセージが表示されたら、Office 365 を使用して電子メールを送信できます。
 
-- Build your business flow based on the data you get from Yammer. 
-- Use triggers for when there is a new message in a group, or a feed your following.
-- Use actions to post a message, get all messages, and more. These actions get a response, and then make the output available for other actions. For example, when a new message appears, you can send an email using Office 365.
+ロジック アプリに操作を追加する方法については、「[ロジック アプリの作成](../app-service-logic/app-service-logic-create-a-logic-app.md)」を参照してください。
 
-To add an operation in logic apps, see [Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## トリガーとアクション
+Yammer には、次のトリガーとアクションが含まれています。
 
-## <a name="triggers-and-actions"></a>Triggers and actions
-Yammer includes the following triggers and actions. 
-
-Trigger | Actions
+トリガー | アクション
 --- | ---
-<ul><li>When there is a new message in a group</li><li>When there is a new message in my Following feed</li></ul>| <ul><li>Get all messages</li><li>Gets messages in a group</li><li>Gets the messages from my Following feed</li><li>Post message</li><li>When there is a new message in a group</li><li>When there is a new message in my Following feed</li></ul>
+<ul><li>グループに新しいメッセージがあるとき</li><li>フォローしているフィードに新しいメッセージがあるとき</li></ul>| <ul><li>すべてのメッセージを取得する</li><li>グループのメッセージを取得する</li><li>自分がフォローしているフィードからメッセージを取得する</li><li>メッセージを投稿する</li><li>グループに新しいメッセージがあるとき</li><li>自分がフォローしているフィードに新しいメッセージがあるとき</li></ul>
 
-All connectors support data in JSON and XML formats. 
+すべてのコネクタは、JSON および XML 形式のデータに対応します。
 
-## <a name="create-a-connection-to-yammer"></a>Create a connection to Yammer
-To use the Yammer connector, you first create a **connection** then provide the details for these properties: 
+## Yammer への接続を作成する
+Yammer コネクタを使用するには、最初に**接続**を作成し、以下のプロパティの詳細を指定します。
 
-|Property| Required|Description|
+|プロパティ| 必須|説明|
 | ---|---|---|
-|Token|Yes|Provide Yammer Credentials|
+|トークン|あり|Yammer 資格情報を入力します|
 
->[AZURE.INCLUDE [Steps to create a connection to Yammer](../../includes/connectors-create-api-yammer.md)]
-
-
->[AZURE.TIP] You can use this connection in other logic apps.
-
-## <a name="yammer-rest-api-reference"></a>Yammer REST API reference
-This documentation is for version: 1.0
+>[AZURE.INCLUDE [Yammer への接続を作成する手順](../../includes/connectors-create-api-yammer.md)]
 
 
-### <a name="get-all-public-messages-in-the-logged-in-user's-yammer-network"></a>Get all public messages in the logged in user's Yammer network
-Corresponds to "All" conversations in the Yammer web interface.  
-```GET: /messages.json```
+>[AZURE.TIP] 他のロジック アプリでもこの接続を使用できます。
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+## Yammer REST API リファレンス
+このドキュメントの対象バージョン: 1.0
+
+
+### ログイン ユーザーの Yammer ネットワークのすべてのパブリック メッセージを取得します。
+Yammer Web インターフェイスの "すべて" の会話に対応します。```GET: /messages.json```
+
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|older_then|integer|no|query|none|Returns messages older than the message ID specified as a numeric string. This is useful for paginating messages. For example, if you’re currently viewing 20 messages and the oldest is number 2912, you could append “?older_than=2912″ to your request to get the 20 messages prior to those you’re seeing.|
-|newer_then|integer|no|query|none|Returns messages newer than the message ID specified as a numeric string. This should be used when polling for new messages. If you’re looking at messages, and the most recent message returned is 3516, you can make a request with the parameter “?newer_than=3516″ to ensure that you do not get duplicate copies of messages already on your page.|
-|limit|integer|no|query|none|Return only the specified number of messages.|
-|page|integer|no|query|none|Get the page specified. If returned data is greater than the limit, you can use this field to access subsequent pages|
+|older\_then|integer|×|query|なし|数値文字列として指定されたメッセージ ID よりも古いメッセージを返します。これはメッセージのページネーションに便利です。たとえば、20 件のメッセージを表示しているとき、最も古いメッセージが 2912 番の場合、「?older\_than=2912」を要求に追加すると、現在表示されているメッセージより前の 20 件が取得されます。|
+|newer\_then|integer|×|query|なし|数値文字列として指定されたメッセージ ID よりも新しいメッセージを返します。新しいメッセージのポーリング時にこれを使用します。メッセージを表示しているとき、返された最も新しいメッセージが 3516 番の場合、要求に「?newer\_than=3516」というパラメーターを指定すると、ページに既に表示されているメッセージが重複して取得されることがありません。|
+|limit|integer|×|query|なし|指定した数のメッセージのみを返します。|
+|page|integer|×|query|なし|指定されたページを取得します。返されたデータが上限を超える場合、このフィールドを使用し、後続のページにアクセスできます。|
 
 
-### <a name="response"></a>Response
+### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
 |200|OK|
-|400|Bad Request|
-|408|Request Timeout|
-|429|Too Many Requests|
-|500|Internal Server Error. Unknown error occurred|
-|503|Yammer Service Unavailable|
-|504|Gateway Timeout|
-|default|Operation Failed.|
+|400|正しくない要求|
+|408|要求タイムアウト|
+|429|要求が多すぎます|
+|500|内部サーバー エラー。不明なエラーが発生しました|
+|503|Yammer サービス利用不可|
+|504|ゲートウェイ タイムアウト|
+|default|操作に失敗しました。|
 
 
-### <a name="post-a-message-to-a-group-or-all-company-feed"></a>Post a Message to a Group or All Company Feed
-If group ID is provided, message will be posted to the specified group else it will be posted in All Company Feed.    
-```POST: /messages.json``` 
+### グループまたはすべての会社フィードにメッセージを投稿する
+グループ ID が指定されている場合、メッセージは指定されたグループに投稿されます。指定されていない場合、すべての会社フィードに投稿されます。```POST: /messages.json```
 
-| Name| Data Type|Required|Located In|Default Value|Description|
+| 名前| データ型|必須|場所|既定値|説明|
 | ---|---|---|---|---|---|
-|input| |yes|body|none|Post Message Request|
+|input| |○|body|なし|メッセージの投稿要求|
 
 
-### <a name="response"></a>Response
+### Response
 
-|Name|Description|
+|名前|説明|
 |---|---|
-|201|Created|
+|201|作成日時|
 
 
 
-## <a name="object-definitions"></a>Object definitions
+## オブジェクト定義
 
-#### <a name="message:-yammer-message"></a>Message: Yammer Message
+#### メッセージ: Yammer メッセージ
 
-| Name | Data Type | Required |
+| 名前 | データ型 | 必須 |
 |---|---| --- | 
-|id|integer|no|
-|content_excerpt|string|no|
-|sender_id|integer|no|
-|replied_to_id|integer|no|
-|created_at|string|no|
-|network_id|integer|no|
-|message_type|string|no|
-|sender_type|string|no|
-|url|string|no|
-|web_url|string|no|
-|group_id|integer|no|
-|body|not defined|no|
-|thread_id|integer|no|
-|direct_message|boolean|no|
-|client_type|string|no|
-|client_url|string|no|
-|language|string|no|
-|notified_user_ids|array|no|
-|privacy|string|no|
-|liked_by|not defined|no|
-|system_message|boolean|no|
+|id|integer|×|
+|content\_excerpt|string|×|
+|sender\_id|integer|×|
+|replied\_to\_id|integer|×|
+|created\_at|string|×|
+|network\_id|integer|×|
+|message\_type|string|×|
+|sender\_type|string|×|
+|url|string|×|
+|web\_url|string|×|
+|group\_id|integer|×|
+|body|未定義|×|
+|thread\_id|integer|×|
+|direct\_message|ブール値|×|
+|client\_type|string|×|
+|client\_url|string|×|
+|言語|string|×|
+|notified\_user\_ids|array|×|
+|privacy|string|×|
+|liked\_by|未定義|×|
+|system\_message|ブール値|×|
 
-#### <a name="postoperationrequest:-represents-a-post-request-for-yammer-connector-to-post-to-yammer"></a>PostOperationRequest: Represents a post request for Yammer Connector to post to yammer
+#### PostOperationRequest: Yammer に投稿する Yammer コネクタの投稿要求を表す
 
-| Name | Data Type | Required |
+| 名前 | データ型 | 必須 |
 |---|---| --- | 
-|body|string|yes|
-|group_id|integer|no|
-|replied_to_id|integer|no|
-|direct_to_id|integer|no|
-|broadcast|boolean|no|
-|topic1|string|no|
-|topic2|string|no|
-|topic3|string|no|
-|topic4|string|no|
-|topic5|string|no|
-|topic6|string|no|
-|topic7|string|no|
-|topic8|string|no|
-|topic9|string|no|
-|topic10|string|no|
-|topic11|string|no|
-|topic12|string|no|
-|topic13|string|no|
-|topic14|string|no|
-|topic15|string|no|
-|topic16|string|no|
-|topic17|string|no|
-|topic18|string|no|
-|topic19|string|no|
-|topic20|string|no|
+|body|string|○|
+|group\_id|integer|×|
+|replied\_to\_id|integer|×|
+|direct\_to\_id|integer|×|
+|broadcast|ブール値|×|
+|topic1|string|×|
+|topic2|string|×|
+|topic3|string|×|
+|topic4|string|×|
+|topic5|string|×|
+|topic6|string|×|
+|topic7|string|×|
+|topic8|string|×|
+|topic9|string|×|
+|topic10|string|×|
+|topic11|string|×|
+|topic12|string|×|
+|topic13|string|×|
+|topic14|string|×|
+|topic15|string|×|
+|topic16|string|×|
+|topic17|string|×|
+|topic18|string|×|
+|topic19|string|×|
+|topic20|string|×|
 
-#### <a name="messagelist:-list-of-messages"></a>MessageList: List of messages
+#### MessageList: メッセージの一覧
 
-| Name | Data Type | Required |
+| 名前 | データ型 | 必須 |
 |---|---| --- | 
-|messages|array|no|
+|messages|array|×|
 
 
-#### <a name="messagebody:-message-body"></a>MessageBody: Message Body
+#### MessageBody: メッセージの本文
 
-| Name | Data Type | Required |
+| 名前 | データ型 | 必須 |
 |---|---| --- | 
-|parsed|string|no|
-|plain|string|no|
-|rich|string|no|
+|parsed|string|×|
+|plain|string|×|
+|rich|string|×|
 
-#### <a name="likedby:-liked-by"></a>LikedBy: Liked By
+#### LikedBy: いいねを付けたユーザー
 
-| Name | Data Type | Required |
+| 名前 | データ型 | 必須 |
 |---|---| --- | 
-|count|integer|no|
-|names|array|no|
+|count|integer|×|
+|names|array|×|
 
-#### <a name="yammmerentity:-liked-by"></a>YammmerEntity: Liked By
+#### YammmerEntity: いいねを付けたユーザー
 
-| Name | Data Type | Required |
+| 名前 | データ型 | 必須 |
 |---|---| --- | 
-|type|string|no|
-|id|integer|no|
-|full_name|string|no|
+|type|string|×|
+|id|integer|×|
+|full\_name|string|×|
 
 
-## <a name="next-steps"></a>Next Steps
-[Create a logic app](../app-service-logic/app-service-logic-create-a-logic-app.md).
+## 次のステップ
+[ロジック アプリを作成](../app-service-logic/app-service-logic-create-a-logic-app.md)します。
 
 [1]: ./media/connectors-create-api-yammer/connectionconfig1.png
-[2]: ./media/connectors-create-api-yammer/connectionconfig2.png 
+[2]: ./media/connectors-create-api-yammer/connectionconfig2.png
 [3]: ./media/connectors-create-api-yammer/connectionconfig3.png
 [4]: ./media/connectors-create-api-yammer/connectionconfig4.png
 [5]: ./media/connectors-create-api-yammer/connectionconfig5.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0525_2016-->

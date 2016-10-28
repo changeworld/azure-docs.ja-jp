@@ -1,22 +1,19 @@
-## <a name="incremental-and-complete-deployments"></a>Incremental and complete deployments
+## 増分デプロイと完全デプロイ
 
-By default, Resource Manager handles deployments as incremental updates to the resource group. With incremental deployment, Resource Manager:
+既定では、リソース マネージャーはデプロイメントをリソース グループへの増分更新として処理します。増分デプロイメントでは、リソース マネージャーは次の処理を行います。
 
-- **leaves unchanged** resources that exist in the resource group but are not specified in the template
-- **adds** resources that are specified in the template but do not exist in the resource group 
-- **does not re-provision** resources that exist in the resource group in the same condition defined in the template
-- **re-provisions** existing resources that have updated settings in the template
+- リソース グループに存在するが、テンプレートに指定されていないリソースを**変更せず、そのまま残します**
+- テンプレートに指定されているが、リソース グループに存在しないリソースを**追加します**
+- テンプレートに定義されている同じ条件でリソース グループに存在するリソースを**再プロビジョニングしません**
+- 既存リソースのうち、テンプレート内の設定が更新されているものを**再プロビジョニングします**
 
-With complete deployment, Resource Manager:
+完全デプロイメントでは、リソース マネージャーは次の処理を行います。
 
-- **deletes** resources that exist in the resource group but are not specified in the template
-- **adds** resources that are specified in the template but do not exist in the resource group 
-- **does not re-provision** resources that exist in the resource group in the same condition defined in the template
-- **re-provisions** existing resources that have updated settings in the template
+- リソース グループに存在するが、テンプレートに指定されていないリソースを**削除します**
+- テンプレートに指定されているが、リソース グループに存在しないリソースを**追加します**
+- テンプレートに定義されている同じ条件でリソース グループに存在するリソースを**再プロビジョニングしません**
+- 既存リソースのうち、テンプレート内の設定が更新されているものを**再プロビジョニングします**
  
-You specify the type of deployment through the **Mode** property.
+**[モード]** プロパティでデプロイメントの種類を指定します。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

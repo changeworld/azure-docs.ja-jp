@@ -1,29 +1,28 @@
-With Azure Resource Manager, you define parameters for values you want to specify when the template is deployed. The template includes a section called Parameters that contains all of the parameter values.
-You should define a parameter for those values that will vary based on the project you are deploying or based on the environment you are deploying to. Do not define parameters for values that will always stay the same. Each parameter value is used in the template to define the resources that are deployed. 
+Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。テンプレートには、すべてのパラメーター値を含む Parameters という名前のセクションがあります。これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。常に同じ値に対してはパラメーターを定義しないでください。テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
-When defining parameters, use the **allowedValues** field to specify which values a user can provide during deployment. Use the **defaultValue** field to assign a value to the parameter, if no value is provided during deployment.
+デプロイ中にユーザーが指定できる値を指定するには、パラメーターを定義するときに **allowedValues** フィールドを使用します。**defaultValue** フィールドは、デプロイ中に値が指定されなかった場合にパラメーターに割り当てる値を指定するために使用します。
 
-We will describe each parameter in the template.
+テンプレートに含まれるそれぞれのパラメーターについて説明します。
 
-### <a name="sitename"></a>siteName
+### siteName
 
-The name of the web app that you wish to create.
+作成する Web アプリの名前。
 
     "siteName":{
       "type":"string"
     }
 
-### <a name="hostingplanname"></a>hostingPlanName
+### hostingPlanName
 
-The name of the App Service plan to use for hosting the web app.
+Web アプリをホストするために使用する App Service プランの名前。
     
     "hostingPlanName":{
       "type":"string"
     }
 
-### <a name="sku"></a>sku
+### sku
 
-The pricing tier for the hosting plan.
+ホスティング プランの価格レベル。
 
     "sku": {
       "type": "string",
@@ -47,11 +46,11 @@ The pricing tier for the hosting plan.
       }
     }
 
-The template defines the values that are permitted for this parameter, and assigns a default value (S1) if no value is specified.
+テンプレートでは、このパラメーターに指定できる値を定義します。値が指定されない場合は既定値 (S1) が割り当てられます。
 
-### <a name="workersize"></a>workerSize
+### workerSize
 
-The instance size of the hosting plan (small, medium, or large).
+ホスティング プランのインスタンス サイズ (小、中、または大)。
 
     "workerSize":{
       "type":"string",
@@ -63,9 +62,5 @@ The instance size of the hosting plan (small, medium, or large).
       "defaultValue":"0"
     }
     
-The template defines the values that are permitted for this parameter (0, 1, or 2), and assigns a default value (0) if no value is specified. The values correspond to small, medium and large.
-
-
-<!--HONumber=Oct16_HO2-->
-
+テンプレートには、このパラメーターに指定できる値 (0、1、または 2) を定義します。値が指定されない場合は既定値 (0) が割り当てられます。値はそれぞれ、小、中、および大に対応しています。
 

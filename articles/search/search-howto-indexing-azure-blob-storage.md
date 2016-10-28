@@ -1,6 +1,6 @@
 <properties
-pageTitle="Indexing Azure Blob Storage with Azure Search"
-description="Learn how to index Azure Blob Storage and extract text from documents with Azure Search"
+pageTitle="Azure Blob Storage のインデックスを Azure Search で作成する"
+description="Azure Search で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について説明します。"
 services="search"
 documentationCenter=""
 authors="chaosrealm"
@@ -15,297 +15,292 @@ ms.tgt_pltfrm="na"
 ms.date="08/16/2016"
 ms.author="eugenesh" />
 
+# Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 
-# <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexing Documents in Azure Blob Storage with Azure Search
+この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。Azure Search の新しい BLOB インデクサーを使用すると、迅速かつシームレスに作成できます。
 
-This article shows how to use Azure Search to index documents (such as PDFs, Microsoft Office documents, and several other common formats) stored in Azure Blob storage. The new Azure Search blob indexer makes this process quick and seamless. 
+> [AZURE.IMPORTANT] 現在この機能はプレビュー版です。バージョン **2015-02-28-Preview** を使用した REST API でのみ利用できます。プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 
-> [AZURE.IMPORTANT] Currently this functionality is in preview. It is available only in the REST API using version **2015-02-28-Preview**. Please remember, preview APIs are intended for testing and evaluation, and should not be used in production environments.
+## サポートされるドキュメントの形式
 
-## <a name="supported-document-formats"></a>Supported document formats
-
-The blob indexer can extract text from the following document formats:
+BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
 
 - PDF
-- Microsoft Office formats: DOCX/DOC, XLSX/XLS, PPTX/PPT, MSG (Outlook emails)  
+- Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)
 - HTML
 - XML
 - ZIP
 - EML
-- Plain text files  
-- JSON (see [Indexing JSON blobs](search-howto-index-json-blobs.md) for details)
-- CSV (see [Indexing CSV blobs](search-howto-index-csv-blobs.md) for details)
+- プレーン テキスト ファイル (.txt)
+- JSON (詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
+- CSV (詳細については、[CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)に関する記事を参照)
 
-## <a name="setting-up-blob-indexing"></a>Setting up blob indexing
+## BLOB インデックスの設定
 
-To set up and configure an Azure Blob Storage indexer, you can use the Azure Search REST API to create and manage **indexers** and **data sources** as described in [this article](https://msdn.microsoft.com/library/azure/dn946891.aspx). You can also use [version 2.0-preview](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) of the .NET SDK. In the future, support for blob indexing will be added to the Azure Portal.
+Azure Blob Storage のインデクサーの設定と構成は、[こちらの記事](https://msdn.microsoft.com/library/azure/dn946891.aspx)の説明に従い、Azure Search REST API を使用して**インデクサー**と**データ ソース**を作成、管理することによって行います。[バージョン 2.0-preview](https://msdn.microsoft.com/library/mt761536%28v=azure.103%29.aspx) の .NET SDK を使用することもできます。今後、Azure ポータルに BLOB インデックス作成機能が追加される予定です。
 
-To set up an indexer, do the following three steps: create a data source, create an index, configure the indexer.
+インデクサーをセットアップするには、データ ソースの作成、インデックスの作成、インデクサーの構成の 3 つの手順を実行します。
 
-### <a name="step-1:-create-a-data-source"></a>Step 1: Create a data source
+### 手順 1: データ ソースを作成する
 
-A data source specifies which data to index, credentials needed to access the data, and policies that enable Azure Search to efficiently identify changes in the data (new, modified, or deleted rows). A data source can be used by multiple indexers in the same subscription.
+データ ソースでは、インデックスを作成するデータ、データにアクセスするために必要な資格情報、および Azure Search がデータの変更 (新しい行、変更された行、削除された行) を効率よく識別できるようにするポリシーを指定します。データ ソースは、同じサブスクリプション内の複数のインデクサーで使用できます。
 
-For blob indexing, the data source must have the following required properties: 
+BLOB インデックス作成の場合は、次の必須プロパティがデータ ソースに必要です。
 
-- **name** is the unique name of the data source within your search service. 
+- **name** は、検索サービス内のデータ ソースの一意の名前です。
 
-- **type** must be `azureblob`. 
+- **type** は `azureblob` である必要があります。
 
-- **credentials** provides the storage account connection string as the `credentials.connectionString` parameter. You can get the connection string from the Azure Portal by navigating to the desired storage account blade > **Settings** > **Keys** and use the "Primary Connection String" or "Secondary Connection String" value. Since the connection string is bound to a storage account, specifying the connection string implicitly identifies the storage account providing the data.
+- **credentials** は、ストレージ アカウントの接続文字列を `credentials.connectionString` パラメーターとして提供します。接続文字列は、Azure ポータルから取得できます。これを行うには、目的のストレージ アカウント ブレードの **[設定]** > **[キー]** に移動して、"プライマリ接続文字列" または "セカンダリ接続文字列" の値を使用します。接続文字列はストレージ アカウントにバインドされているため、接続文字列を指定することは、データを提供するストレージ アカウントを暗黙的に識別することになります。
 
-- **container** specifies a container in your storage account. By default, all blobs within the container are retrievable. If you only want to index blobs in a particular virtual directory, you can specify that directory using the optional **query** parameter. 
+- **container** は、ストレージ アカウントにあるコンテナーを指定します。既定では、コンテナー内のすべての BLOB を取得できます。特定の仮想ディレクトリにある BLOB についてのみインデックスを作成する場合は、オプションの **query** パラメーターを使用してそのディレクトリを指定できます。
 
-The following example illustrates a data source definition:
+以下にデータ ソース定義の例を示します。
 
-    POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	POST https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<my storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
-    }   
+	{
+	    "name" : "blob-datasource",
+	    "type" : "azureblob",
+	    "credentials" : { "connectionString" : "<my storage connection string>" },
+	    "container" : { "name" : "my-container", "query" : "<optional-virtual-directory-name>" }
+	}   
 
-For more on the Create Datasource API, see [Create Datasource](search-api-indexers-2015-02-28-preview.md#create-data-source).
+データ ソース作成 API の詳細については、「[データ ソースの作成](search-api-indexers-2015-02-28-preview.md#create-data-source)」をご覧ください。
 
-### <a name="step-2:-create-an-index"></a>Step 2: Create an index 
+### 手順 2: インデックスを作成する 
 
-The index specifies the fields in a document, attributes, and other constructs that shape the search experience.  
+インデックスでは、検索に使用する、ドキュメント内のフィールド、属性、およびその他の構成要素を指定します。
 
-For blob indexing, be sure that your index has a searchable `content` field for storing the blob.
+BLOB のインデックス作成の場合は、BLOB を格納するための検索可能な `content` フィールドを持つインデックスであることを確認してください。
 
-    POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
-    Content-Type: application/json
-    api-key: [admin key]
+	POST https://[service name].search.windows.net/indexes?api-version=2015-02-28
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-        "name" : "my-target-index",
-        "fields": [
-            { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
-            { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
-        ]
-    }
+	{
+  		"name" : "my-target-index",
+  		"fields": [
+    		{ "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+    		{ "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
+  		]
+	}
 
-For more on the Create Index API, see [Create Index](https://msdn.microsoft.com/library/dn798941.aspx)
+インデックス作成 API の詳細については、「[Create Index (インデックスの作成)](https://msdn.microsoft.com/library/dn798941.aspx)」をご覧ください。
 
-### <a name="step-3:-create-an-indexer"></a>Step 3: Create an indexer 
+### 手順 3: インデクサーを作成する 
 
-An indexer connects data sources with target search indexes, and provides scheduling information so that you can automate data refresh. Once the index and data source have been created, its relatively simple to create an indexer that references the data source and a target index. For example:
+インデクサーは、データ ソースをターゲットの検索インデックスに接続し、データ更新を自動化できるようにスケジュール情報を提供します。インデックスとデータ ソースを作成すると、データ ソースとターゲットのインデックスを参照するインデクサーを作成することは比較的簡単です。For example:
 
-    POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	POST https://[service name].search.windows.net/indexers?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-      "name" : "blob-indexer",
-      "dataSourceName" : "blob-datasource",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" }
-    }
+	{
+	  "name" : "blob-indexer",
+	  "dataSourceName" : "blob-datasource",
+	  "targetIndexName" : "my-target-index",
+	  "schedule" : { "interval" : "PT2H" }
+	}
 
-This indexer will run every two hours (schedule interval is set to "PT2H"). To run an  indexer every 30 minutes, set the interval to "PT30M". Shortest supported interval is 5 minutes. Schedule is optional - if omitted, an indexer runs only once when created. However, you can run an indexer on-demand at any time.   
+このインデクサーは 2 時間ごとに実行されます (スケジュールの間隔が "PT2H" に設定されています)。インデクサーを 30 分ごとに実行するには、間隔を "PT30M" に設定します。サポートされている最短の間隔は 5 分です。スケジュールは省略可能です。省略した場合、インデクサーは作成時に一度だけ実行されます。ただし、いつでもオンデマンドでインデクサーを実行できます。
 
-For more details on the Create Indexer API, check out [Create Indexer](search-api-indexers-2015-02-28-preview.md#create-indexer).
+インデクサー作成 API の詳細については、「[インデクサーの作成](search-api-indexers-2015-02-28-preview.md#create-indexer)」をご覧ください。
 
 
-## <a name="document-extraction-process"></a>Document extraction process
+## ドキュメント抽出プロセス
 
-Azure Search indexes each document (blob) as follows:
+Azure Search は、各ドキュメント (BLOB) のインデックスを次のように作成します。
 
-- The entire text content of the document is extracted into a string field named `content`. Note that we currently don't provide support for extracting multiple documents from a single blob:
-    - For example, a CSV file is indexed as a single document. If you need to treat each line in a CSV as a separate document, please vote for [this UserVoice suggestion](https://feedback.azure.com/forums/263029-azure-search/suggestions/13865325-please-treat-each-line-in-a-csv-file-as-a-separate).
-    - A compound or embedded document (such as a ZIP archive or a Word document with embedded Outlook email with a PDF attachment) is also indexed as a single document.
+- ドキュメントのテキスト コンテンツ全体が、`content` という名前の文字列フィールドに抽出されます。現時点では、1 つの BLOB から複数のドキュメントを抽出することはできません。
+	- たとえば CSV ファイルは、1 つのドキュメントとしてインデックスが作成されます。CSV 内の各行を個別のドキュメントとして扱う必要がある場合は、[こちらの UserVoice の提案](https://feedback.azure.com/forums/263029-azure-search/suggestions/13865325-please-treat-each-line-in-a-csv-file-as-a-separate)に投票してください。
+	- 複合ドキュメントや埋め込みドキュメント (PDF が添付された Outlook 電子メールを埋め込んだ Word 文書、ZIP アーカイブなど) も、1 つのドキュメントとしてインデックスが作成されます。
 
-- User-specified metadata properties present on the blob, if any, are extracted verbatim. The metadata properties can also be used to control certain aspects of the document extraction process – see [Using Custom Metadata to Control Document Extraction](#CustomMetadataControl) for more details.
+- ユーザー指定のメタデータのプロパティが BLOB に存在する場合、それらのプロパティは、そのまま抽出されます。メタデータのプロパティを使って、ドキュメント抽出プロセスをある程度制御することもできます。詳細については、「[カスタム メタデータを使ったドキュメント抽出の制御](#CustomMetadataControl)」を参照してください。
 
-- Standard blob metadata properties are extracted into the following fields:
+- 標準的な BLOB のメタデータのプロパティは、次のフィールドに抽出されます。
 
-    - **metadata\_storage\_name** (Edm.String) - the file name of the blob. For example, if you have a blob /my-container/my-folder/subfolder/resume.pdf, the value of this field is `resume.pdf`.
+	- **metadata\_storage\_name** (Edm.String) - BLOB のファイル名。たとえば、/my-container/my-folder/subfolder/resume.pdf という BLOB がある場合、このフィールドの値は `resume.pdf` になります。
 
-    - **metadata\_storage\_path** (Edm.String) - the full URI of the blob, including the storage account. For example, `https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf`
+	- **metadata\_storage\_path** (Edm.String) - ストレージ アカウントを含む、BLOB の完全な URI です。たとえば、`https://myaccount.blob.core.windows.net/my-container/my-folder/subfolder/resume.pdf` のように指定します。
 
-    - **metadata\_storage\_content\_type** (Edm.String) - content type as specified by the code you used to upload the blob. For example, `application/octet-stream`.
+	- **metadata\_storage\_content\_type** (Edm.String) - BLOB をアップロードするためのコードで指定したコンテンツ タイプ。たとえば、「`application/octet-stream`」のように入力します。
 
-    - **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - last modified timestamp for the blob. Azure Search uses this timestamp to identify changed blobs, in order to avoid re-indexing everything after the initial indexing.
+	- **metadata\_storage\_last\_modified** (Edm.DateTimeOffset) - 前回変更時の BLOB のタイムスタンプ。インデックスの初回作成後に最初から作成し直さなくても済むよう、変更された BLOB を Azure Search が特定するために、このタイムスタンプが使用されます。
 
-    - **metadata\_storage\_size** (Edm.Int64) - blob size in bytes.
+	- **metadata\_storage\_size** (Edm.Int64) - BLOB のサイズ (バイト単位)。
 
-    - **metadata\_storage\_content\_md5** (Edm.String) - MD5 hash of the blob content, if available.
+	- **metadata\_storage\_content\_md5** (Edm.String) - BLOB コンテンツの MD5 ハッシュ (利用可能な場合)。
 
-- Metadata properties specific to each document format are extracted into the fields listed [here](#ContentSpecificMetadata).
+- 各ドキュメント形式に固有のメタデータのプロパティは、[こちら](#ContentSpecificMetadata)に記載したフィールドに抽出されます。
 
-You don't need to define fields for all of the above properties in your search index - just capture the properties you need for your application. 
+検索インデックスに対し、ここに挙げたすべてのプロパティのフィールドを定義する必要はありません。実際のアプリケーションで必要となるプロパティだけを取り込んでください。
 
-> [AZURE.NOTE] Often, the field names in your existing index will be different from the field names generated during document extraction. You can use **field mappings** to map the property names provided by Azure Search to the field names in your search index. You will see an example of field mappings use below. 
+> [AZURE.NOTE] 既存のインデックス内のフィールド名が、ドキュメントの抽出過程で生成されたフィールド名と異なることは少なくありません。Azure Search によって出力されたプロパティ名は、**フィールドのマッピング**を使用して、検索インデックス内のフィールド名に対応付けることができます。フィールドのマッピングの例を次に示します。
 
-## <a name="picking-the-document-key-field-and-dealing-with-different-field-names"></a>Picking the document key field and dealing with different field names
+## ドキュメントのキー フィールドの選択と各種フィールド名の処理
 
-In Azure Search, the document key uniquely identifies a document. Every search index must have exactly one key field of type Edm.String. The key field is required for each document that is being added to the index (it is actually the only required field).  
+Azure Search では、ドキュメントがそのキーによって一意に識別されます。それぞれの検索インデックスに、Edm.String 型のキー フィールドが 1 つだけ存在している必要があります。キー フィールドは、インデックスに追加するドキュメントごとに必要となります (唯一の必須フィールド)。
    
-You should carefully consider which extracted field should map to the key field for your index. The candidates are:
+抽出されたフィールドとインデックスのキー フィールドとのマッピングは、慎重に検討する必要があります。その例を次に示します。
 
-- **metadata\_storage\_name** - this might be a convenient candidate, but note that 1) the names might not be unique, as you may have blobs with the same name in different folders, and 2) the name may contain characters that are invalid in document keys, such as dashes. You can deal with invalid characters by enabling the `base64EncodeKeys` option in the indexer properties - if you do this, remember to encode document keys when passing them in API calls such as Lookup. (For example, in .NET you can use the [UrlTokenEncode method](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) for that purpose).
+- **metadata\_storage\_name** - 名前をキーにできればそれに越したことはありませんが、1) 同じ名前の BLOB が別のフォルダーに存在し、名前が重複する可能性があること、2) ドキュメント キーに無効な文字 (ダッシュなど) が名前に含まれている可能性があることに注意する必要があります。無効な文字は、インデクサーのプロパティで `base64EncodeKeys` オプションを有効にすることによって処理することができます。その場合、API 呼び出し (Lookup など) にドキュメント キーを渡すとき、必ずエンコードしてください (たとえば、.NET であれば [UrlTokenEncode メソッド](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx)を利用できます)。
 
-- **metadata\_storage\_path** - using the full path ensures uniqueness, but the path definitely contains `/` characters that are [invalid in a document key](https://msdn.microsoft.com/library/azure/dn857353.aspx).  As above, you have the option of encoding the keys using the `base64EncodeKeys` option.
+- **metadata\_storage\_path** - 完全パスであれば一意性は保証されます。ただし、パスに使われる `/` 文字は、[ドキュメント キーでは無効](https://msdn.microsoft.com/library/azure/dn857353.aspx)です。この場合も、`base64EncodeKeys` オプションを使用してキーをエンコーディングすることができます。
 
-- If none of the options above work for you, you have the ultimate flexibility of adding a custom metadata property to the blobs. This option does, however, require your blob upload process to add that metadata property to all blobs. Since the key is a required property, all blobs that don't have that property will fail to be indexed.
+- いずれの選択肢も利用できない場合の最終的な手段として、独自にメタデータのプロパティを BLOB に追加する方法があります。ただし、この方法を選んだ場合、BLOB のアップロード プロセスで、該当するメタデータのプロパティをすべての BLOB に追加する必要があります。キーは必須のプロパティであるため、そのプロパティを持たない BLOB については、インデックスが一切作成されません。
 
-> [AZURE.IMPORTANT] If there is no explicit mapping for the key field in the index, Azure Search will automatically use `metadata_storage_path` (the second option above) as the key and enable base-64 encoding of keys.
+> [AZURE.IMPORTANT] インデックス内のキー フィールドの明示的なマッピングが存在しない場合、Azure Search は自動的に `metadata_storage_path` (上に挙げた 2 つ目の選択肢) をキーに設定し、その base-64 エンコーディングを有効にします。
 
-For this example, let's pick the `metadata_storage_name` field as the document key. Let's also assume your index has a key field named `key` and a field `fileSize` for storing the document size. To wire things up as desired, specify the following field mappings when creating or updating your indexer:
+この例では、`metadata_storage_name` フィールドをドキュメント キーにしましょう。また、既存のインデックスには、`key` という名前のキー フィールドと、ドキュメントのサイズを格納するための `fileSize` フィールドが存在するものとします。それらを適切に対応付けるために、インデクサーを作成または更新するときに、次のフィールド マッピングを指定します。
 
-    "fieldMappings" : [
-      { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key" },
-      { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
-    ]
+	"fieldMappings" : [
+	  { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key" },
+	  { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
+	]
 
-To bring this all together, here's how you can add field mappings and enable base-64 encoding of keys for an existing indexer:
+以下に示したのは、それらを反映したコードです。既存のインデクサーに対してフィールドのマッピングを追加し、キーの base-64 エンコーディングを有効にしています。
 
-    PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	PUT https://[service name].search.windows.net/indexers/blob-indexer?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-      "dataSourceName" : " blob-datasource ",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" },
-      "fieldMappings" : [
-        { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key" },
-        { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
-      ],
-      "parameters" : { "base64EncodeKeys": true }
-    }
+	{
+	  "dataSourceName" : " blob-datasource ",
+	  "targetIndexName" : "my-target-index",
+	  "schedule" : { "interval" : "PT2H" },
+	  "fieldMappings" : [
+	    { "sourceFieldName" : "metadata_storage_name", "targetFieldName" : "key" },
+	    { "sourceFieldName" : "metadata_storage_size", "targetFieldName" : "fileSize" }
+	  ],
+	  "parameters" : { "base64EncodeKeys": true }
+	}
 
-> [AZURE.NOTE] To learn more about field mappings, see [this article](search-indexer-field-mappings.md).
+> [AZURE.NOTE] フィールドのマッピングの詳細については、[こちらの記事](search-indexer-field-mappings.md)を参照してください。
 
-## <a name="incremental-indexing-and-deletion-detection"></a>Incremental indexing and deletion detection
+## インデックスの増分作成と削除の検出
 
-When you set up a blob indexer to run on a schedule, it re-indexes only the changed blobs, as determined by the blob's `LastModified` timestamp.
+スケジュールに従って実行するように BLOB のインデクサーを設定すると、その BLOB の `LastModified` タイムスタンプから判断された変更済みの BLOB のみインデックスが再構築されます。
 
-> [AZURE.NOTE] You don't have to specify a change detection policy – incremental indexing is enabled for you automatically.
+> [AZURE.NOTE] 変更検出ポリシーを独自に指定する必要はありません。インデックスの増分作成は自動的に有効になります。
 
-To indicate that certain documents must be removed from the index, you should use a soft delete strategy - instead of deleting the corresponding blobs, add a custom metadata property to indicate that they're deleted, and set up a soft deletion detection policy on the data source.
+特定のドキュメントをインデックスから削除するよう指定する場合は、論理削除方式を使用してください。つまり、該当する BLOB を削除するのではなく、それらが削除されたことを示すカスタムのメタデータ プロパティをデータ ソースに追加し、論理削除の検出ポリシーを設定します。
 
-> [AZURE.WARNING] If you just delete the blobs instead of using a deletion detection policy, corresponding documents will not be removed from the search index.
+> [AZURE.WARNING] 削除の検出ポリシーを使用せず単純に BLOB を削除した場合、検索インデックスからは、該当するドキュメントが削除されません。
 
-For example, the policy shown below will consider that a blob is deleted if it has a metadata property `IsDeleted` with the value `true`:
+たとえば、以下に示すポリシーでは、メタデータのプロパティ `IsDeleted` の値が `true` であるとき、BLOB が削除されたと見なされます。
 
-    PUT https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	PUT https://[service name].search.windows.net/datasources?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-        "name" : "blob-datasource",
-        "type" : "azureblob",
-        "credentials" : { "connectionString" : "<your storage connection string>" },
-        "container" : { "name" : "my-container", "query" : "my-folder" },
-        "dataDeletionDetectionPolicy" : {
-            "@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy",   
-            "softDeleteColumnName" : "IsDeleted",
-            "softDeleteMarkerValue" : "true"
-        }
-    }   
+	{
+	    "name" : "blob-datasource",
+	    "type" : "azureblob",
+	    "credentials" : { "connectionString" : "<your storage connection string>" },
+		"container" : { "name" : "my-container", "query" : "my-folder" },
+		"dataDeletionDetectionPolicy" : {
+			"@odata.type" :"#Microsoft.Azure.Search.SoftDeleteColumnDeletionDetectionPolicy", 	
+			"softDeleteColumnName" : "IsDeleted",
+			"softDeleteMarkerValue" : "true"
+		}
+	}   
 
 <a name="ContentSpecificMetadata"></a>
-## <a name="content-type-specific-metadata-properties"></a>Content type-specific metadata properties
+## コンテンツの種類ごとのメタデータのプロパティ
 
-The following table summarizes processing done for each document format, and describes the metadata properties extracted by Azure Search.
+以下の表は、各ドキュメント形式に関して実行される処理と、Azure Search によって抽出されるメタデータのプロパティをまとめたものです。
 
-Document format / content type | Content-type specific metadata properties | Processing details
+ドキュメントの形式/コンテンツの種類 | コンテンツの種類ごとのメタデータのプロパティ | 処理の詳細
 -------------------------------|-------------------------------------------|-------------------
-HTML (`text/html`) | `metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` | Strip HTML markup and extract text
-PDF (`application/pdf`) | `metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title`| Extract text, including embedded documents (excluding images)
-DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` | Extract text, including embedded documents
-DOC (application/msword) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` | Extract text, including embedded documents
-XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` | Extract text, including embedded documents
-XLS (application/vnd.ms-excel) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` | Extract text, including embedded documents
-PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` | Extract text, including embedded documents
-PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` | Extract text, including embedded documents
-MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | Extract text, including attachments
-ZIP (application/zip) | `metadata_content_type` | Extract text from all documents in the archive
-XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | Strip XML markup and extract text
-JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | Extract text<br/>NOTE: If you need to extract multiple document fields from a JSON blob, see [Indexing JSON blobs](search-howto-index-json-blobs.md) for details
-EML (message/rfc822) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` | Extract text, including attachments
-Plain text (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
+HTML (`text/html`) | `metadata_content_encoding`<br/>`metadata_content_type`<br/>`metadata_language`<br/>`metadata_description`<br/>`metadata_keywords`<br/>`metadata_title` | HTML マークアップを削除し、テキストを抽出します。
+PDF (`application/pdf`) | `metadata_content_type`<br/>`metadata_language`<br/>`metadata_author`<br/>`metadata_title`| テキストを抽出します。埋め込みドキュメントも対象となります (画像を除く)。
+DOCX (application/vnd.openxmlformats-officedocument.wordprocessingml.document) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` | テキストを抽出します。埋め込みドキュメントも対象となります。
+DOC (application/msword) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_character_count`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_page_count`<br/>`metadata_word_count` | テキストを抽出します。埋め込みドキュメントも対象となります。
+XLSX (application/vnd.openxmlformats-officedocument.spreadsheetml.sheet) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` | テキストを抽出します。埋め込みドキュメントも対象となります。
+XLS (application/vnd.ms-excel) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified` | テキストを抽出します。埋め込みドキュメントも対象となります。
+PPTX (application/vnd.openxmlformats-officedocument.presentationml.presentation) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` | テキストを抽出します。埋め込みドキュメントも対象となります。
+PPT (application/vnd.ms-powerpoint) | `metadata_content_type`<br/>`metadata_author`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_slide_count`<br/>`metadata_title` | テキストを抽出します。埋め込みドキュメントも対象となります。
+MSG (application/vnd.ms-outlook) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_message_bcc`<br/>`metadata_creation_date`<br/>`metadata_last_modified`<br/>`metadata_subject` | テキストを抽出します。添付ファイルも対象となります。
+ZIP (application/zip) | `metadata_content_type` | アーカイブ内のすべてのドキュメントからテキストを抽出します。
+XML (application/xml) | `metadata_content_type`</br>`metadata_content_encoding`</br> | XML マークアップを削除し、テキストを抽出します。
+JSON (application/json) | `metadata_content_type`</br>`metadata_content_encoding` | テキストを抽出します。<br/>注: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合、詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事をご覧ください。
+EML (message/rfc822) | `metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` | テキストを抽出します。添付ファイルも対象となります。
+プレーン テキスト (text/plain) | `metadata_content_type`</br>`metadata_content_encoding`</br> | 
 
 <a name="CustomMetadataControl"></a>
-## <a name="using-custom-metadata-to-control-document-extraction"></a>Using custom metadata to control document extraction
+## カスタム メタデータを使ったドキュメント抽出の制御
 
-You can add metadata properties to a blob to control certain aspects of the blob indexing and document extraction process. Currently the following properties are supported:
+BLOB のインデックス作成とドキュメント抽出プロセスは、メタデータのプロパティを BLOB に追加することによって、ある程度制御することができます。現在サポートされているプロパティは次のとおりです。
 
-Property name | Property value | Explanation
+プロパティ名 | プロパティ値 | 説明
 --------------|----------------|------------
-AzureSearch_Skip | "true" | Instructs the blob indexer to completely skip the blob; neither metadata nor content extraction will be attempted. This is useful when you want to skip certain content types, or when a particular blob fails repeatedly and interrupts the indexing process.
-AzureSearch_SkipContent | "true" | Instructs the blob indexer to only index the metadata and skip extracting content of the blob. This is useful if the blob content is not interesting, but you still want to index the metadata attached to the blob.
+AzureSearch\_Skip | "true" | BLOB を完全にスキップするようそのインデクサーに指示するプロパティです。メタデータもコンテンツも、一切抽出されません。特定のコンテンツ タイプをスキップする必要があるときに利用できます。また、特定の BLOB で何度もエラーが発生し、インデックス作成プロセスが中断されるときにも利用できます。
+AzureSearch\_SkipContent | "true" | メタデータのインデックス作成のみを行い、BLOB のコンテンツの抽出はスキップするように、BLOB インデクサーに指示します。これは、BLOB のコンテンツは重要ではないが、BLOB に関連付けられているメタデータのインデックス作成は必要である場合に便利です。
 
 <a name="IndexerParametersConfigurationControl"></a>
-## <a name="using-indexer-parameters-to-control-document-extraction"></a>Using indexer parameters to control document extraction
+## インデクサーのパラメーターを使用してドキュメントの抽出を制御する
 
-Several indexer configuration parameters are available to control which blobs, and which parts of a blob's content and metadata, will be indexed. 
+いくつかのインデクサー構成パラメーターを使用すると、どの BLOB について、また BLOB のコンテンツとメタデータのどの部分についてインデックスを作成するかを制御できます。
 
-### <a name="index-only-the-blobs-with-specific-file-extensions"></a>Index only the blobs with specific file extensions
+### 特定のファイル拡張子を持つ BLOB のみのインデックスを作成する
 
-You can index only the blobs with the file name extensions you specify by using the `indexedFileNameExtensions` indexer configuration parameter. The value is a string containing a comma-separated list of file extensions (with a leading dot). For example, to index only the .PDF and .DOCX blobs, do this: 
+`indexedFileNameExtensions` インデクサー構成パラメーターを使用すると、指定したファイル名拡張子を持つ BLOB のインデックスだけを作成できます。値は、(先頭にピリオドが付いた) ファイル拡張子のコンマ区切りの一覧を含む文字列です。たとえば、.PDF や .DOCX の BLOB のみのインデックスを作成する場合は、この操作を行います。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
-    }
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "indexedFileNameExtensions" : ".pdf,.docx" } }
+	}
 
-### <a name="exclude-blobs-with-specific-file-extensions-from-indexing"></a>Exclude blobs with specific file extensions from indexing
+### 特定のファイル拡張子を持つ BLOB をインデックス作成から除外する
 
-You can exclude blobs with specific file name extensions from indexing by using the `excludedFileNameExtensions` configuration parameter. The value is a string containing a comma-separated list of file extensions (with a leading dot). For example, to index all blobs except those with the .PNG and .JPEG extensions, do this: 
+`excludedFileNameExtensions` 構成パラメーターを使用すると、特定のファイル名拡張子を持つ BLOB をインデックス作成から除外できます。値は、(先頭にピリオドが付いた) ファイル拡張子のコンマ区切りの一覧を含む文字列です。たとえば、.PNG と .JPEG の拡張子を持つ BLOB を除くすべての BLOB のインデックスを作成する場合は、この操作を行います。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
-    }
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "excludedFileNameExtensions" : ".png,.jpeg" } }
+	}
 
-If both `indexedFileNameExtensions` and `excludedFileNameExtensions` parameters are present, Azure Search first looks at `indexedFileNameExtensions`, then at `excludedFileNameExtensions`. This means that if the same file extension is present in both lists, it will be excluded from indexing. 
+`indexedFileNameExtensions` と `excludedFileNameExtensions` の両方のパラメーターがある場合、Azure Search では最初に `indexedFileNameExtensions` を調べ、次に `excludedFileNameExtensions` を調べます。つまり、同じファイル拡張子が両方の一覧に存在する場合、インデックス作成から除外されます。
 
-### <a name="index-storage-metadata-only"></a>Index storage metadata only
+### ストレージ メタデータのみのインデックスを作成する
 
-You can index only the storage metadata and completely skip the document extraction process using the `indexStorageMetadataOnly` configuration property. This is useful when you don't need the document content, nor do you need any of the content type-specific metadata properties. To do this, set the `indexStorageMetadataOnly` property to `true`: 
+`indexStorageMetadataOnly` 構成プロパティを使用すると、ストレージ メタデータのインデックスだけを作成し、ドキュメントの抽出プロセスを完全にスキップできます。これは、ドキュメントのコンテンツも不要で、コンテンツの種類に固有のメタデータ プロパティも不要な場合に便利です。これを行うには、`indexStorageMetadataOnly` プロパティを `true` に設定します。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "indexStorageMetadataOnly" : true } }
-    }
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "indexStorageMetadataOnly" : true } }
+	}
 
-### <a name="index-both-storage-and-content-type-metadata,-but-skip-content-extraction"></a>Index both storage and content type metadata, but skip content extraction
+### ストレージとコンテンツの種類のメタデータの両方のインデックスを作成するが、コンテンツの抽出をスキップする
 
-If you need to extract all of the metadata but skip content extraction for all blobs, you can request this behavior using the indexer configuration, instead of having to add `AzureSearch_SkipContent` metadata to each blob individually. To do this, set the `skipContent` indexer configuration configuration property to `true`: 
+すべてのメタデータを抽出する必要があるが、すべての BLOB のコンテンツ抽出をスキップする場合は、`AzureSearch_SkipContent` メタデータを各 BLOB に個々に追加する代わりに、インデクサー構成を使用してこの動作を要求できます。これを行うには、`skipContent` インデクサー構成プロパティを `true` に設定します。
 
-    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
-    Content-Type: application/json
-    api-key: [admin key]
+	PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2015-02-28-Preview
+	Content-Type: application/json
+	api-key: [admin key]
 
-    {
-      ... other parts of indexer definition
-      "parameters" : { "configuration" : { "skipContent" : true } }
-    }
+	{
+	  ... other parts of indexer definition
+	  "parameters" : { "configuration" : { "skipContent" : true } }
+	}
 
-## <a name="help-us-make-azure-search-better"></a>Help us make Azure Search better
+## Azure Search の品質向上にご協力ください
 
-If you have feature requests or ideas for improvements, please reach out to us on our [UserVoice site](https://feedback.azure.com/forums/263029-azure-search/).
+ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)にぜひお寄せください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

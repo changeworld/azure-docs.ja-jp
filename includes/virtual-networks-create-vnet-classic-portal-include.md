@@ -1,39 +1,37 @@
-## <a name="how-to-create-a-vnet-in-the-azure-portal"></a>How to create a VNet in the Azure portal
+## Azure ポータルで VNet を作成する方法
 
-To create a VNet based on the scenario above, follow the steps below.
+上記のシナリオに基づいて VNet を作成するには、次の手順に従います。
 
-1. From a browser, navigate to http://manage.windowsazure.com and, if necessary, sign in with your Azure account.
-2. Click **NEW** > **NETWORK SERVICES** > **VIRTUAL NETWORK** > **CUSTOM CREATE** as shown in the figure below.
+1. ブラウザーから http://manage.windowsazure.com に移動し、必要に応じて Azure アカウントでサインインします。
+2. 次の図に示すように、[**新規**]、[**ネットワーク サービス**]、[**仮想ネットワーク**]、[**カスタム作成**] の順にクリックします。
 
-    ![Create VNet in portal](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure1.gif)
+	![ポータルでの VNet の作成](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure1.gif)
 
-3. On the **Virtual Network Details** page, type the **NAME** of the VNet, select its **LOCATION**, and then click on the arrow on the bottom right hand corner of the page to advance to step 2. The figure below shows the settings for our scenario.
+3. [**Virtual Network の詳細**] ページで VNet の [**名前**] を入力し、[**場所**] を選択してからページの右下隅にある矢印をクリックして手順 2. に進みます。次の図は、このシナリオの設定を示しています。
 
-    ![Virtual network details page](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure2.png)
+	![[Virtual Network の詳細] ページ](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure2.png)
 
-4. On the **DNS Servers and VPN Connectivity** page, specify the name and IP address for up to 9 DNS servers to use. If you do not specify a DNS server, your VNet will use the internal naming resolution resolution provided by Azure. For our scenario, we will not configure DNS servers.
-5. If you want to provide point-to-site VPN access to your VNet, enable the **Configure a point-to-site VPN** checkbox. If you do not configure a point-to-site VPN, you can add it to your VNet at any time after creation. For our scenario, we will not configure a point-to-site VPN.
-6. If you want to provide site-to-site VPN connectivity between your VNet and another VNet or your on-premises network, enable the **Configure a site-to-site VPN** checkbox and specify if you want to use **ExpressRoute** or note, and the name of the network to connect to. If you do not configure a site-to-site VPN, you can add it to your VNet at any time after creation. For our scenario, we will not configure a site-to-site VPN.
-7. Click on the arrow on the bottom right hand corner of the page to advance to step 3.The figure below shows the settings for our scenario.
+4. [**DNS サーバーおよび VPN 接続**] ページで、使用する最大 9 個の DNS サーバーの名前および IP アドレスを指定します。DNS サーバーを指定しないと、VNet では、Azure が提供する内部の名前解決が使用されます。ここでは、DNS サーバーは構成しません。
+5. VNet へのポイント対サイト VPN アクセスを可能にするには、[**ポイント対サイト VPN の構成**] チェック ボックスをオンします。ポイント対サイト VPN を構成しない場合、VNet の作成後にいつでも追加できます。ここでは、ポイント対サイト VPN は構成しません。
+6. VNet と別の VNet の間、または VNet とオンプレミス ネットワークの間にサイト間 VPN 接続を作成する場合は、[**サイト間 VPN の構成**] チェック ボックスをオンにし、**ExpressRoute** またはメモを使用するかどうか、そして接続するネットワークの名前を指定してください。サイト間 VPN を構成しない場合、VNet の作成後にいつでも追加できます。ここでは、サイト間 VPN は構成しません。
+7. ページの右下隅にある矢印をクリックして手順 3. に進みます。次の図は、このシナリオの設定を示しています。
 
-    ![DNS Servers and VPN connectivity page](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure3.png)
+	![[DNS サーバーおよび VPN 接続] ページ](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure3.png)
 
-8. On the **Virtual Network Address Spaces** page, under **STARTING IP**, click on *10.0.0.0* to change the VNet address space, and then type the starting address space you want to use. For our scenario, type *192.168.0.0*. 
-9. Under **CIDR (ADDRESS COUNT)** select the number of bits for the subnet mask. For our scenario, select *16 (65536)*.
-10. Under **SUBNETS**, click *Subnet-1* and rename the subnet if necessary. For our scenario, rename it to *FrontEnd*.
+8. [**仮想ネットワーク アドレス空間**] ページにある [**開始 IP**] で、[*10.0.0.0*] をクリックして VNet のアドレス空間を変更してから、使用するアドレス空間の開始アドレスを入力します。ここでは、「*192.168.0.0*」と入力します。
+9. [**CIDR (アドレス数)**] で、サブネット マスクのビット数を選択します。ここでは、[*16 (65536)*] を選択します。
+10. [**サブネット**] で [*Subnet-1*] をクリックし、必要に応じてサブネットの名前を変更します。ここでは、名前を *FrontEnd* に変更します。
 
-    >[AZURE.NOTE] If you click outside the name textbox for a subnet you will not be able to edit the name if the subnet again. To fix that, you need to remove the subnet by clicking on the X button to its right, then add a new subnet as described in step 13 below.
+	>[AZURE.NOTE]サブネットの名前テキスト ボックスの外側をクリックすると、サブネットの名前を再び編集することはできません。これを解決するには、右側の [X] ボタンをクリックしてサブネットを削除し、次の手順 13 の説明に従って、新しいサブネットを追加する必要があります。
 
-11. Under **STARTING IP** for the first subnet, specify the starting IP address for the subnet. For our scenario, type *192.168.1.0*.
-12. Under **CIDR (ADDRESS COUNT)** select the number of bits for the subnet mask for the first subnet. For our scenario, select *24 (256)*.
-13. Click **add subnet** to add a new subnet, if necessary. For our scenario, add a subnet and repeat steps 10 to 12 to configure the VNet as shown in the figure below.
+11. 最初のサブネットの [**開始 IP**] で、サブネットの開始 IP アドレスを指定します。ここでは、「*192.168.1.0*」と入力します。
+12. [**CIDR (アドレス数)**] で、最初のサブネットのサブネット マスクのビット数を選択します。ここでは、[*24 (256)*] を選択します。
+13. 必要に応じて [**サブネットの追加**] をクリックして、新しいサブネットを追加します。このシナリオでは、次の図に示すようにサブネットを追加し、手順 10 ～ 12 を繰り返して VNet を構成します。
 
-    ![Virtual network address spaces page](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure4.png)
+	![[仮想ネットワーク アドレス空間] ページ](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure4.png)
 
-14. Click on the check mark button on the bottom right hand corner of the page to create the VNet. After a few seconds your VNet will be shown in the list of available VNets, as shown in the figure below.
+14. ページの右下隅にあるチェック マーク ボタンをクリックすると、VNet が作成されます。数秒後、次の図に示すように、作成した VNet が利用可能な VNet の一覧に表示されます。
 
-    ![New virtual network](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure5.png)
+	![新しい仮想ネットワーク](./media/virtual-networks-create-vnet-classic-portal-include/vnet-create-portal-figure5.png)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

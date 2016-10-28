@@ -1,82 +1,57 @@
 <properties
-    pageTitle="Restore a deleted Azure SQL Database (PowerShell) | Microsoft Azure"
-    description="Restore a deleted Azure SQL Database (PowerShell)."
-    services="sql-database"
-    documentationCenter=""
-    authors="stevestein"
-    manager="jhubbard"
-    editor=""/>
+	pageTitle="削除された Azure SQL Database の復元 (PowerShell) | Microsoft Azure"
+	description="削除された Azure SQL Database の復元 (PowerShell)"
+	services="sql-database"
+	documentationCenter=""
+	authors="stevestein"
+	manager="jhubbard"
+	editor=""/>
 
 <tags
-    ms.service="sql-database"
-    ms.devlang="NA"
-    ms.date="10/12/2016"
-    ms.author="sstein"
-    ms.workload="NA"
-    ms.topic="article"
-    ms.tgt_pltfrm="NA"/>
+	ms.service="sql-database"
+	ms.devlang="NA"
+	ms.date="07/09/2016"
+	ms.author="sstein"
+	ms.workload="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"/>
 
 
-
-# <a name="restore-a-deleted-azure-sql-database-by-using-powershell"></a>Restore a deleted Azure SQL Database by using PowerShell
+# PowerShell を使用した、削除済み Azure SQL Database の復元
 
 > [AZURE.SELECTOR]
-- [Overview](sql-database-recovery-using-backups.md)
-- [Restore Deleted DB: Portal](sql-database-restore-deleted-database-portal.md)
-- [**Restore Deleted DB: PowerShell**](sql-database-restore-deleted-database-powershell.md)
+- [概要](sql-database-recovery-using-backups.md)
+- [削除されたデータベースの復元: Azure ポータル](sql-database-restore-deleted-database-portal.md)
 
-[AZURE.INCLUDE [Start your PowerShell session](../../includes/sql-database-powershell.md)]
-
-
-## <a name="get-a-list-of-deleted-databases"></a>Get a list of deleted databases
-
-```
-$resourceGroupName = "resourcegroupname"
-$sqlServerName = "servername"
-
-$DeletedDatabases = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $resourceGroupName -ServerName $sqlServerName
-```
-
-## <a name="restore-your-deleted-database-into-a-standalone-database"></a>Restore your deleted database into a standalone database
-
-Get the deleted database backup that you want to restore by using the [Get-AzureRmSqlDeletedDatabaseBackup](https://msdn.microsoft.com/library/azure/mt693387.aspx) cmdlet. Then start the restore from the deleted database backup by using the [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) cmdlet.
-
-```
-$resourceGroupName = "resourcegroupname"
-$sqlServerName = "servername"
-$databaseName = "deletedDbToRestore"
-
-$DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $resourceGroupName -ServerName $sqlServerName -DatabaseName $databaseName
-
-Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $DeletedDatabase.ResourceID -Edition "Standard" -ServiceObjectiveName "S2"
-```
+[AZURE.INCLUDE [PowerShell セッションの開始](../../includes/sql-database-powershell.md)]
 
 
-## <a name="restore-your-deleted-database-into-an-elastic-database-pool"></a>Restore your deleted database into an elastic database pool
+## スタンドアロン データベースへの削除済みデータベースの復元
 
-Get the deleted database backup that you want to restore by using the [Get-AzureRmSqlDeletedDatabaseBackup](https://msdn.microsoft.com/library/azure/mt693387.aspx) cmdlet. Then start the restore from the deleted database backup by using the [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) cmdlet.
+1. [Get-AzureRmSqlDeletedDatabaseBackup](https://msdn.microsoft.com/library/azure/mt693387.aspx) コマンドレットを使用して、復元する削除済みデータベースのバックアップを取得します。
 
-```
-$resourceGroupName = "resourcegroupname"
-$sqlServerName = "servername"
-$databaseName = "deletedDbToRestore"
+        $DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
-$DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName $resourceGroupName -ServerName $sqlServerName -DatabaseName $databaseName
+2. [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) コマンドレットを使用して、削除済みデータベースのバックアップからの復元を開始します。
 
-Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $DeletedDatabase.ResourceID –ElasticPoolName "elasticpool01"
-```
+        Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $DeletedDatabase.ResourceID -Edition "Standard" -ServiceObjectiveName "S2"
 
+## エラスティック データベース プールへの削除済みデータベースの復元
 
-## <a name="next-steps"></a>Next steps
+1. [Get-AzureRmSqlDeletedDatabaseBackup](https://msdn.microsoft.com/library/azure/mt693387.aspx) コマンドレットを使用して、復元する削除済みデータベースのバックアップを取得します。
 
-- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
-- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md)
-- To learn about using automated backups for recovery, see [restore a database from the service-initiated backups](sql-database-recovery-using-backups.md)
-- To learn about faster recovery options, see [Active-Geo-Replication](sql-database-geo-replication-overview.md)  
-- To learn about using automated backups for archiving, see [database copy](sql-database-copy.md)
+        $DeletedDatabase = Get-AzureRmSqlDeletedDatabaseBackup -ResourceGroupName "resourcegroup01" -ServerName "server01" -DatabaseName "database01"
 
+2. [Restore-AzureRmSqlDatabase](https://msdn.microsoft.com/library/azure/mt693390.aspx) コマンドレットを使用して、削除済みデータベースのバックアップからの復元を開始します。
 
+        Restore-AzureRmSqlDatabase –FromDeletedDatabaseBackup –DeletionDate $DeletedDatabase.DeletionDate -ResourceGroupName $DeletedDatabase.ResourceGroupName -ServerName $DeletedDatabase.ServerName -TargetDatabaseName "RestoredDatabase" –ResourceId $DeletedDatabase.ResourceID –ElasticPoolName "elasticpool01"
 
-<!--HONumber=Oct16_HO2-->
+## 次のステップ
 
+- ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- Azure SQL Database 自動バックアップの詳細については、「[SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)」を参照してください。
+- 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
+- より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。
+- 自動バックアップを使用したアーカイブについては、[データベースのコピー](sql-database-copy.md)に関する記事を参照してください。
 
+<!---HONumber=AcomDC_0803_2016-->

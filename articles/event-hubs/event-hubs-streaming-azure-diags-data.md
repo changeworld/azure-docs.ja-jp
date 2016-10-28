@@ -1,54 +1,53 @@
 <properties
-    pageTitle="Streaming Azure Diagnostics data in the hot path using Event Hubs | Microsoft Azure"
-    description="Illustrates how to configure Azure Diagnostics with Event Hubs from end to end, including guidance for common scenarios."
-    services="event-hubs"
-    documentationCenter="na"
-    authors="sethmanheim"
-    manager="timlt"
-    editor="" />
+	pageTitle="Event Hubs を利用し、ホット パスの Azure 診断データをストリーム配信する | Microsoft Azure"
+	description="共通シナリオのガイダンスを含む、Event Hubs で Azure 診断を構成する方法全体を説明します。"
+	services="event-hubs"
+	documentationCenter="na"
+	authors="sethmanheim"
+	manager="timlt"
+	editor="" />
 <tags
-    ms.service="event-hubs"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="na"
-    ms.date="07/14/2016"
-    ms.author="sethm" />
+	ms.service="event-hubs"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="na"
+	ms.date="07/14/2016"
+	ms.author="sethm" />
 
+# Event Hubs を利用してホット パスの Azure 診断データをストリーム配信する
 
-# <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streaming Azure Diagnostics data in the hot path by using Event Hubs
+Azure 診断では柔軟な方法でクラウド サービスの仮想マシン (VM) からメトリックとログを収集し、その結果を Azure Storage に転送できます。2016 年 3 月 (SDK 2.9) の期間から、診断を完全カスタムのデータ ソースにシンクし、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) を利用してホット パス データを数秒で転送できるようになりました。
 
-Azure Diagnostics provides flexible ways to collect metrics and logs from cloud services virtual machines (VMs) and transfer results to Azure Storage. Starting in the March 2016 (SDK 2.9) time frame, you can sink Diagnostics to completely custom data sources and transfer hot path data in seconds by using [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/).
+サポートされているデータ型:
 
-Supported data types include:
+- Windows イベント トレーシング (ETW) イベント
+- パフォーマンス カウンター
+- Windows イベント ログ
+- アプリケーション ログ
+- Azure 診断インフラストラクチャ ログ
 
-- Event Tracing for Windows (ETW) events
-- Performance counters
-- Windows event logs
-- Application logs
-- Azure Diagnostics infrastructure logs
+この記事では、Event Hubs で Azure 診断を構成する方法全体を説明します。次の一般的なシナリオ向けのガイダンスも提供しています。
 
-This article shows you how to configure Azure Diagnostics with Event Hubs from end to end. Guidance is also provided for the following common scenarios:
+- Event Hubs にシンクするログとメトリックをカスタマイズする方法
+- 各環境の構成を変更する方法
+- Event Hubs のストリーム データを表示する方法
+- 接続のトラブルシューティング方法
 
-- How to customize the logs and metrics that get sinked to Event Hubs
-- How to change configurations in each environment
-- How to view Event Hubs stream data
-- How to troubleshoot the connection  
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+Azure 診断の Event Hubs シンクは、Azure SDK 2.9 以降の Cloud Services、VM、仮想マシン スケール セット、および Service Fabric と、これに対応する Azure Tools for Visual Studio でサポートされます。
 
-Event Hubs sinking in Azure Diagnostics is supported in Cloud Services, VMs, Virtual Machine Scale Sets, and Service Fabric starting in the Azure SDK 2.9 and the corresponding Azure Tools for Visual Studio.
+- Azure 診断拡張 1.6 ([Azure SDK for .NET 2.9 以降](https://azure.microsoft.com/downloads/)では既定でこれが対象となります)
+- [Visual Studio 2013 以降](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
+- *.wadcfgx* ファイルと次のいずれかの方法の利用した Azure 診断の構成がアプリケーションに存在する
+	- Visual Studio: [Azure クラウド サービスおよび仮想マシン用の診断の構成](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
+	- Windows PowerShell: [PowerShell を使用した Azure Cloud Services での診断の有効化](../cloud-services/cloud-services-diagnostics-powershell.md)
+- 「[Event Hubs の使用](./event-hubs-csharp-ephcs-getstarted.md)」に従ってプロビジョニングされた Event Hubs 名前空間
 
-- Azure Diagnostics extension 1.6 ([Azure SDK for .NET 2.9 or later](https://azure.microsoft.com/downloads/) targets this by default)
-- [Visual Studio 2013 or later](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)
-- Existing configurations of Azure Diagnostics in an application by using a *.wadcfgx* file and one of the following methods:
-    - Visual Studio: [Configuring Diagnostics for Azure Cloud Services and Virtual Machines](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-    - Windows PowerShell: [Enable diagnostics in Azure Cloud Services using PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md)
-- Event Hubs namespace provisioned per the article, [Get started with Event Hubs](./event-hubs-csharp-ephcs-getstarted.md)
+## Azure 診断を Event Hubs シンクに接続する
 
-## <a name="connect-azure-diagnostics-to-event-hubs-sink"></a>Connect Azure Diagnostics to Event Hubs sink
-
-Azure Diagnostics always sinks logs and metrics, by default, to an Azure Storage account. An application may additionally sink to Event Hubs by adding a new **Sinks** section to the **WadCfg** element in the **PublicConfig** section of the *.wadcfgx* file. In Visual Studio, the *.wadcfgx* file is stored in the following path: **Cloud Service Project** > **Roles** >  **(RoleName)** > **diagnostics.wadcfgx** file.
+Azure 診断では常に、ログとメトリックが既定で Azure Storage アカウントにシンクされます。*.wadcfgx* ファイルの **PublicConfig** セクションの **WadCfg** 要素に新しい **Sinks** セクションを追加することで、アプリケーションを追加で Event Hubs にシンクできます。Visual Studio の場合、*.wadcfgx* ファイルは **[クラウド サービス プロジェクト]**、**[ロール]**、**[(ロール名)]**、**diagnostics.wadcfgx** ファイルに保存されています。
 
 ```
 <SinksConfig>
@@ -58,15 +57,15 @@ Azure Diagnostics always sinks logs and metrics, by default, to an Azure Storage
 </SinksConfig>
 ```
 
-In this example, the Event Hub URL is set to the fully qualified namespace of the Event Hub: Event Hubs namespace  + "/" + Event Hub name.  
+この例では、Event Hub の URL は Event Hub の完全修飾名前空間に設定されています (Event Hubs 名前空間 + "/" + Event Hub 名)。
 
-The Event Hub URL is displayed in the [Azure portal](http://go.microsoft.com/fwlink/?LinkID=213885) on the Event Hubs dashboard.  
+イベント ハブの URL は [Azure ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)の Event Hubs ダッシュボードに表示されます。
 
-The **Sink** name can be set to any valid string as long as the same value is used consistently throughout the config file.
+構成ファイルで同じ値が一貫して使用される限り、**シンク**名には任意の有効な文字列を設定できます。
 
-> [AZURE.NOTE]  There may be additional sinks, such as *applicationInsights* configured in this section. Azure Diagnostics allows one or more sinks to be defined if each sink is also declared in the **PrivateConfig** section.  
+> [AZURE.NOTE]  このセクションで構成される *applicationInsights* など、付加的なシンクが存在する場合があります。Azure 診断では、1 つまたは複数のシンクを定義できます。ただし、**PrivateConfig** セクションで各シンクを宣言する必要があります。
 
-The Event Hubs sink must also be declared and defined in the **PrivateConfig** section of the *.wadcfgx* config file.
+Event Hubs シンクは、*.wadcfgx* 構成ファイルの **PrivateConfig** セクションでも宣言し、定義する必要があります。
 
 ```
 <PrivateConfig xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration">
@@ -75,17 +74,17 @@ The Event Hubs sink must also be declared and defined in the **PrivateConfig** s
 </PrivateConfig>
 ```
 
-The `SharedAccessKeyName` value must match a Shared Access Signature (SAS) key and policy that has been defined in the **Event Hubs** namespace. Browse to the Event Hubs dashboard in the [Azure portal](https://manage.windowsazure.com), click the **Configure** tab, and set up a named policy (for example, "SendRule") that has *Send* permissions. The **StorageAccount** is also declared in **PrivateConfig**. There is no need to change values here if they are working. In this example, we leave the values empty, which is a sign that a downstream asset will set the values. For example, the *ServiceConfiguration.Cloud.cscfg* environment configuration file sets the environment-appropriate names and keys.  
+`SharedAccessKeyName` 値は、**Event Hubs** 名前空間に定義されている Shared Access Signature (SAS) のキーとポリシーに一致する必要があります。[Azure ポータル](https://manage.windowsazure.com)の Event Hubs のダッシュボードに移動し、**[構成]** タブをクリックして、*"送信"* のアクセス許可を持つ名前付きのポリシー (たとえば、"SendRule") を設定します。**StorageAccount** は **PrivateConfig** でも宣言されています。正常に動作している場合、ここでは値を変更する必要はありません。この例では、値を空のまま残しました。これはダウン ストリームの資産によって、値が設定されることを意味します。たとえば、*ServiceConfiguration.Cloud.cscfg* 環境構成ファイルによって、環境に適した名前とキーが設定されます。
 
-> [AZURE.WARNING] The Event Hubs SAS key is stored in plain text in the *.wadcfgx* file. Often, this key is checked in to source code control or is available as an asset in your build server, so you should protect it as appropriate. We recommend that you use a SAS key here with *Send only* permissions so that a malicious user can write to the Event Hub, but not listen to it or manage it.
+> [AZURE.WARNING] Event Hubs の SAS キーは、*.wadcfgx* ファイルにプレーン テキストで保存されます。多くの場合、このキーは、ソース コード管理にチェックインされるか、ビルド サーバーの資産として利用されるため、適切に保護する必要があります。ここでは、悪意のあるユーザーがイベント ハブに書き込むことはできても、リッスンしたり操作したりすることはできないように、*"送信のみ"* のアクセス許可を持つ SAS キーを使用することが推奨されます。
 
-## <a name="configure-azure-diagnostics-logs-and-metrics-to-sink-with-event-hubs"></a>Configure Azure Diagnostics logs and metrics to sink with Event Hubs
+## Azure 診断のログとメトリックを Event Hubs とシンクするように構成する
 
-As discussed earlier, all default and custom diagnostics data, that is, metrics and logs, is automatically sinked to Azure Storage in the configured intervals. With Event Hubs and any additional sink, you can specify any root or leaf node in the hierarchy to be sinked with the Event Hub. This includes ETW events, performance counters, Windows event logs, and application logs.   
+先に説明したように、診断のあらゆる既定データとカスタム データ、つまり、メトリックとログが、設定された間隔で、Azure Storage に自動的にシンクされます。Event Hubs とあらゆる付加的シンクでは、イベント ハブとシンクするルートまたはリーフ ノードを階層から指定できます。これには、ETW イベント、パフォーマンス カウンター、Windows イベント ログ、アプリケーション ログがあります。
 
-It is important to consider how many data points should actually be transferred to Event Hubs. Typically, developers transfer low-latency hot-path data that must be consumed and interpreted quickly. Systems that monitor alerts or autoscale rules are examples. A developer might also configure an alternate analysis store or search store -- for example, Azure Stream Analytics, Elasticsearch, a custom monitoring system, or a favorite monitoring system from others.
+どのくらいのデータ ポイントを Event Hubs に実際に転送するのかを考慮することが重要です。一般的に、開発者は、直ちに利用して解釈する必要がある低待機時間ホット パス データを転送します。アラートや自動スケール規則を監視するシステムがその例です。開発者は、Azure Stream Analytics、ElasticSearch、カスタム監視システム、お気に入りのサード パーティー製監視システムなど、代替の分析ストアまたは検索ストアも構成きます。
 
-The following are some example configurations.
+次に構成例をいくつか示します。
 
 ```
 <PerformanceCounters scheduledTransferPeriod="PT1M" sinks="HotPath">
@@ -100,7 +99,7 @@ The following are some example configurations.
 </PerformanceCounters>
 ```
 
-In the following example, the sink is applied to the parent **PerformanceCounters** node in the hierarchy, which means all child **PerformanceCounters** will be sent to Event Hubs.  
+次の例では、階層の親ノード **PerformanceCounters** にシンクが適用されます。つまり、すべての子 **PerformanceCounters** が Event Hubs に送信されます。
 
 ```
 <PerformanceCounters scheduledTransferPeriod="PT1M">
@@ -115,39 +114,39 @@ In the following example, the sink is applied to the parent **PerformanceCounter
 </PerformanceCounters>
 ```
 
-In the previous example, the sink is applied to only three counters: **Requests Queued**, **Requests Rejected**, and **% Processor time**.  
+前の例では、**Requests Queued**、**Requests Rejected**、**% Processor time** という 3 つのカウンターにのみシンクが適用されています。
 
-The following example shows how a developer can limit the amount of sent data to be the critical metrics that are used for this service’s health.  
+次の例は、このサービスの正常性のために使用される重要なメトリックになる送信データの量を開発者が制限する方法を示しています。
 
 ```
 <Logs scheduledTransferPeriod="PT1M" sinks="HotPath" scheduledTransferLogLevelFilter="Error" />
 ```
 
-In this example, the sink is applied to logs and is filtered only to error level trace.
+この例では、シンクはログに適用され、エラー レベル トレースのみを対象にフィルター処理されます。
 
-## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Deploy and update a Cloud Services application and diagnostics config
+## Cloud Services アプリケーションと診断構成をデプロイして更新する
 
-Visual Studio provides the easiest path to deploy the application and Event Hubs sink configuration. To view and edit the file, open the *.wadcfgx* file in Visual Studio, edit it, and save it. The path is **Cloud Service Project** > **Roles** > **(RoleName)** > **diagnostics.wadcfgx**.  
+Visual Studio には、アプリケーションと Event Hubs シンク構成をデプロイするための最も簡単な方法が用意されています。構成ファイルを表示して編集するには、Visual Studio で *.wadcfgx* ファイルを開き、編集して保存します。ファイルのパスは **[クラウド サービス プロジェクト]**、**[ロール]**、**[(ロール名)]**、**diagnostics.wadcfgx** です。
 
-At this point, all deployment and deployment update actions in Visual Studio, Visual Studio Team System, and all commands or scripts that are based on MSBuild and use the **/t:publish** target include the *.wadcfgx* in the packaging process. In addition, deployments and updates deploy the file to Azure by using the appropriate Azure Diagnostics agent extension on your VMs.
+現時点では、Visual Studio、Visual Studio Team System、MSBuild に基づき **/t:publish target** を使用するすべてのコマンドまたはスクリプトにおいて、すべてのデプロイとデプロイ更新アクションのパッケージ化プロセスに *.wadcfgx* が含まれます。さらに、デプロイと更新では、VM 上で適切な Azure 診断エージェント拡張機能を使用してファイルを Azure にデプロイします。
 
-After you deploy the application and Azure Diagnostics configuration, you will immediately see activity in the dashboard of the Event Hub. This indicates that you're ready to move on to viewing the hot-path data in the listener client or analysis tool of your choice.  
+アプリケーションと Azure 診断構成をデプロイすると、直後にイベント ハブのダッシュボードにアクティビティが表示されます。これは、選択したリスナー クライアントまたは分析ツールでホットパス データを表示できるようになったことを示します。
 
-In the following figure, the Event Hubs dashboard shows healthy sending of diagnostics data to the Event Hub starting sometime after 11 PM. That's when the application was deployed with an updated *.wadcfgx* file, and the sink was configured properly.
+次の図のイベント ハブのダッシュボードでは、午後 11 時以降のある時点から、診断データがイベント ハブへ正常に送信されていることがわかります。この時点が、更新された *.wadcfgx* ファイルを使用してアプリケーションがデプロイされ、シンクが適切に構成されたタイミングです。
 
-![][0]  
+![][0]
 
-> [AZURE.NOTE] When you make updates to the Azure Diagnostics config file (.wadcfgx), it's recommended that you push the updates to the entire application as well as the configuration by using either Visual Studio publishing, or a Windows PowerShell script.  
+> [AZURE.NOTE] Azure 診断構成ファイル (.wadcfgx) を更新する場合、Visual Studio の発行機能または Windows PowerShell スクリプトのどちらかを使用して、アプリケーション全体と構成に更新内容をプッシュすることが推奨されます。
 
-## <a name="view-hot-path-data"></a>View hot-path data
+## ホット パス データの表示
 
-As discussed previously, there are many use cases for listening to and processing Event Hubs data.
+先に説明したように、Event Hubs データのリッスンと処理にはさまざまな使用例があります。
 
-One simple approach is to create a small test console application to listen to the Event Hub and print the output stream. You can place the following code, which is explained in more detail in [Get started with Event Hubs](./event-hubs-csharp-ephcs-getstarted.md)), in a console application.  
+1 つの簡単な手法は、イベント ハブをリッスンして出力ストリームを表示する、テスト用の簡単なコンソール アプリケーションを作成することです。コンソール アプリケーションに次のコードを配置します。コードの詳細については、「[Event Hubs の使用](./event-hubs-csharp-ephcs-getstarted.md)」をご覧ください。
 
-Note that the console application must include the [Event Processor Host Nuget package](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
+コンソール アプリケーションには [EventProcessor Host Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を含める必要があるということにご注意ください。
 
-Remember to replace the values in angle brackets in the **Main** function with values for your resources.   
+**Main** 関数内の山かっこで囲まれた値を、リソースの値で必ず置換してください。
 
 ```
 //Console application code for EventHub test client
@@ -187,8 +186,8 @@ namespace EventHubListener
             foreach (EventData eventData in messages)
             {
                 string data = Encoding.UTF8.GetString(eventData.GetBytes());
-                    Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
-                        context.Lease.PartitionId, data));
+	                Console.WriteLine(string.Format("Message received.  Partition: '{0}', Data: '{1}'",
+	                    context.Lease.PartitionId, data));
 
                 foreach (var x in eventData.Properties)
                 {
@@ -230,25 +229,25 @@ namespace EventHubListener
 }
 ```
 
-## <a name="troubleshoot-event-hubs-sink"></a>Troubleshoot Event Hubs sink
+## Event Hubs シンクのトラブルシューティング
 
-- The Event Hub does not show incoming or outgoing event activity as expected.
+- イベント ハブに受信または送信イベント アクティビティが正常に表示されない。
 
-    Check that your Event Hub is successfully provisioned. All connection info in the **PrivateConfig** section of *.wadcfgx* must match the values of your resource as seen in the portal. Make sure that you have a SAS policy defined ("SendRule" in the example) in the portal and that *Send* permission is granted.  
+	イベント ハブが正しくプロビジョニングされていることを確認してください。*.wadcfgx* の **PrivateConfig** セクションのすべての接続情報は、ポータルに表示されるリソースの値に一致している必要があります。ポータルで定義された SAS ポリシー (この例では "SendRule") が割り当てられていて、*"送信"* のアクセス許可が与えられていることを確認します。
 
-- After an update, the Event Hub no longer shows incoming or outgoing event activity.
+- 更新後イベント ハブの受信または送信イベント アクティビティの表示が消える。
 
-    First, make sure that the Event Hub and configuration info is correct as explained previously. Sometimes the **PrivateConfig** is reset in a deployment update. The recommended fix is to make all changes to *.wadcfgx* in the project and then push a complete application update. If this is not possible, make sure that the diagnostics update pushes a complete **PrivateConfig** that includes the SAS key.  
+	最初に、イベント ハブと構成情報が前の説明に従っていることを確認します。デプロイの更新で **PrivateConfig** がリセットされることがあります。推奨される修正方法は、*.wadcfgx* の変更をすべてプロジェクトで行い、完全なアプリケーション更新をプッシュすることです。それができない場合は、SAS キーを含む完全な **PrivateConfig** が診断の更新によりプッシュされるようにします。
 
-- I tried the suggestions, and the Event Hub is still not working.
+- 推奨事項を試してもイベント ハブが正常に動作しない。
 
-    Try looking in the Azure Storage table that contains logs and errors for Azure Diagnostics itself: **WADDiagnosticInfrastructureLogsTable**. One option is to use a tool such as [Azure Storage Explorer](http://www.storageexplorer.com) to connect to this storage account, view this table, and add a query for TimeStamp in the last 24 hours. You can use the tool to export a .csv file and open it in an application such as Microsoft Excel. Excel makes it easy to search for calling-card strings, such as **EventHubs**, to see what error is reported.  
+	Azure 診断自体のログとエラーが含まれる Azure Storage テーブル **WADDiagnosticInfrastructureLogsTable** を確認してください。1 つの方法は、[Azure ストレージ エクスプローラー](http://www.storageexplorer.com)などのツールを利用してこのストレージ アカウントに接続して、このテーブルを表示し、過去 24 時間の TimeStamp のクエリを追加することです。ツールを使用して .csv ファイルをエクスポートし、Microsoft Excel などのアプリケーションで開くことができます。Excel を使用すると、**EventHubs** のようなコーリングカード文字列を簡単に検索して、報告されたエラーを確認できます。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-•   [Learn more about Event Hubs](https://azure.microsoft.com/services/event-hubs/)
+• [Event Hubs の詳細を確認します。](https://azure.microsoft.com/services/event-hubs/)
 
-## <a name="appendix:-complete-azure-diagnostics-configuration-file-(.wadcfgx)-example"></a>Appendix: Complete Azure Diagnostics configuration file (.wadcfgx) example
+## 付録: 完全な Azure 診断構成ファイル (.wadcfgx) の例
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -303,7 +302,7 @@ namespace EventHubListener
 </DiagnosticsConfiguration>
 ```
 
-The complementary *ServiceConfiguration.Cloud.cscfg* for this example looks like the following.
+この例の完全な *ServiceConfiguration.Cloud.cscfg* は次のようになります。
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -320,8 +319,4 @@ The complementary *ServiceConfiguration.Cloud.cscfg* for this example looks like
 <!-- Images. -->
 [0]: ./media/event-hubs-streaming-azure-diags-data/dashboard.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

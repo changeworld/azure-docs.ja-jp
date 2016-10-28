@@ -1,13 +1,10 @@
 
-| Resource  | Default limit 
+| リソース | 既定の制限 
 --- | ---
-| Zones per subscription | 100 <sup>1</sup>
-| Record sets per zone| 5000 <sup>1</sup>
-| Records per record set| 20
+| サブスクリプションあたりのゾーン数 | 100 <sup>1</sup>
+| ゾーンあたりのレコード セット数| 5000 <sup>1</sup>
+| レコード セットあたりのレコード数| 20
 
-<sup>1</sup> Contact Azure Support in case you need to increase these limits.
+<sup>1</sup> これらの制限値を大きくする必要がある場合は、Azure サポートにお問い合せください。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0413_2016-->

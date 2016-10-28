@@ -1,214 +1,209 @@
 <properties
-    pageTitle="FAQ: Azure AD Password Management | Microsoft Azure"
-    description="Frequently asked questions (FAQ) about password management in Azure AD, including password reset, registration, reports, and writeback to on-premises Active Directory ."
-    services="active-directory"
-    documentationCenter=""
-    authors="asteen"
-    manager="femila"
-    editor="curtand"/>
+	pageTitle="FAQ: Azure AD でのパスワード管理 | Microsoft Azure"
+	description="パスワードのリセット、登録、レポート、およびオンプレミスの Active Directory へのライトバックを含む、Azure AD でのパスワード管理に関してよく寄せられる質問 (FAQ) です。"
+	services="active-directory"
+	documentationCenter=""
+	authors="asteen"
+	manager="femila"
+	editor="curtand"/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/12/2016"
-    ms.author="asteen"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
+	ms.author="asteen"/>
+
+# パスワード管理に関するよく寄せられる質問 (FAQ)
+
+> [AZURE.IMPORTANT] **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+
+次に示すのは、パスワード管理に関連するあらゆる事に対してよく寄せられる質問です。
+
+回答がわからない疑問がある場合や、発生している特定の問題の解決方法を探している場合は、そのようなトピックが以下で取り上げられているかを確認してください。トピックがここで取り上げられていなくても心配はいりません。 [Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)で取り上げられていない質問については、マイクソフトにご連絡ください。できる限り早く回答いたします。
+
+この FAQ は、次のセクションに分かれています。
+
+- [**パスワード リセット登録に関する質問**](#password-reset-registration)
+- [**パスワード リセットに関する質問**](#password-reset)
+- [**パスワード管理レポートに関する質問**](#password-management-reports)
+- [**パスワード ライトバックに関する質問**](#password-writeback)
+
+## パスワード リセット登録
+ - **Q: ユーザーが自分のパスワード リセット データを登録することはできますか。**
+
+ > **A:** はい。パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (http://aka.ms/ssprsetup) で、パスワード リセットに使用する認証情報を登録できます。また、ユーザーは、アクセス パネル (http://myapps.microsoft.com) の [プロファイル] タブをクリックし、[パスワード リセットの登録] オプションをクリックして登録することもできます。パスワード リセットできるようユーザーを構成する方法については、「パスワード リセット用にユーザーを構成する方法」を参照してください。
+
+ - **Q: ユーザーの代わりにパスワード リセット データを定義することはできますか。**
+
+ > **A:** はい。DirSync、PowerShell、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)、または Office 管理ポータルを使用して実行できます。この機能の詳細については、ブログの投稿「Improved Privacy for Azure AD MFA and Password Reset Phone Numbers (Azure AD の MFA とパスワード リセット電話番号のプライバシーが向上)」および「パスワード リセットによるデータの使用方法を理解する」を参照してください。
+
+ - **Q: オンプレミスからセキュリティの質問のデータを同期できますか。**
+
+ > **A:** いいえ。現時点ではできませんが、この機能について検討中です。
+
+ - **Q: ユーザーは、他のユーザーに見られないようにデータを登録することはできますか。**
+
+ > **A:** はい。ユーザーがパスワード リセット登録ポータルを使用してデータを登録すると、そのデータは、グローバル管理者とユーザー自身のみが参照できるプライベート認証フィールドに保存されます。この機能の詳細については、ブログの投稿「Improved Privacy for Azure AD MFA and Password Reset Phone Numbers (Azure AD の MFA とパスワード リセット電話番号のプライバシーが向上)」および「パスワード リセットによるデータの使用方法を理解する」を参照してください。
+
+ - **Q: ユーザーがパスワード リセットを使用するには、そのユーザーが事前に登録されている必要がありますか。**
+
+ > **A:** いいえ。ユーザーに代わって管理者が必要な認証情報を定義している場合は、ユーザーを登録する必要はありません。適切に書式設定されたデータがディレクトリ内の該当フィールドに格納されている限り、パスワード リセットは正常に動作します。詳細については、「パスワード リセットによるデータの使用方法を理解する」を参照してください。
+
+ - **Q: ユーザーの代わりに管理者が [認証用電話]、[認証用電子メール]、または [代替の認証用電話] フィールドを同期または設定できますか。**
+
+ > **A:** 現時点ではできませんが、この機能について検討中です。
+
+ - **Q: 登録ポータルでユーザーに対して表示されるオプションはどのように決定されていますか。**
+
+ > **A:** パスワード リセット登録ポータルでは、ディレクトリの [構成] タブの [ユーザー パスワードのリセット ポリシー] セクションで、管理者がユーザーに対して有効にしたオプションのみが表示されます。つまり、管理者がオプション (たとえば、セキュリティの質問) を有効にしていない場合、ユーザーはそのオプションで登録することはできません。
+
+ - **Q: ユーザーが登録されたと見なされるのはどのタイミングですか。**
+
+ > **A:** ユーザーは、N 個以上の認証方法が定義された時点で登録されたと見なされます。ここで N は、[Microsoft Azure 管理ポータル](https://manage.windowsazure.com)で設定した認証方法の必要数を示します。詳細については、「ユーザー パスワードのリセット ポリシーのカスタマイズ」を参照してください。
 
 
-# <a name="password-management-frequently-asked-questions"></a>Password Management Frequently Asked Questions
+## パスワード リセット
 
-> [AZURE.IMPORTANT] **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
+ - **Q: パスワード リセットしてから電子メール、SMS、または電話呼び出しを受け取るまでにどのくらいの時間がかかりますか。**
 
-The following are some frequently asked questions for all things related to password management.
+ > **A:** 電子メール、SMS メッセージ、および電話呼び出しを受け取るまでにかかる時間は 1 分以内です (通常は 5 ～ 20 秒)。この時間内に通知が届かない場合は、迷惑メール フォルダーを確認してください。また、連絡用の番号または電子メールが正しいこと、およびディレクトリ内の認証データが適切に書式設定されていることも確認してください。パスワード リセットで使用する電話番号と電子メール アドレスの書式設定の詳細については、「パスワード リセットによるデータの使用方法を理解する」を参照してください。
 
-If you find yourself with a question that you don't know the answer to, or are looking for help with a particular problem you are facing, you can read on below to see if we've covered it already.  If we haven't already, don't worry! Feel free to ask any question you have that's not covered here on the [Azure AD Forums](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD) and we'll get back to you as soon as we can.
+ - **Q: パスワード リセットはどの言語に対応していますか。**
 
-This FAQ is split into the following sections:
+ > **A:** パスワード リセット UI、SMS メッセージ、音声通話は、Office 365 でサポートされているのと同じ 40 言語にローカライズされています。これらの言語は、アラビア語、ブルガリア語、簡体字中国語、繁体字中国語、クロアチア語、チェコ語、デンマーク語、オランダ語、英語、エストニア語、フィンランド語、フランス語、ドイツ語、ギリシャ語、ヘブライ語、ヒンディー語、ハンガリー語、インドネシア語、イタリア語、日本語、カザフ語、韓国語、ラトビア語、リトアニア語、マレー語 (マレーシア)、ノルウェー語 (ブークモール)、ポーランド語、ポルトガル語 (ブラジル)、ポルトガル語 (ポルトガル)、ルーマニア語、ロシア語、セルビア語 (ラテン)、スロバキア語、スロベニア語、スペイン語、スウェーデン語、タイ語、トルコ語、ウクライナ語、およびベトナム語です。
 
-- [**Questions about Password Reset Registration**](#password-reset-registration)
-- [**Questions about Password Reset**](#password-reset)
-- [**Questions about Password Management Reports**](#password-management-reports)
-- [**Questions about Password Writeback**](#password-writeback)
+ - **Q: ディレクトリの [構成] タブで組織のブランドを設定した場合、パスワード リセット エクスペリエンスのどの部分がブランド化されますか。**
 
-## <a name="password-reset-registration"></a>Password reset registration
- - **Q:  Can my users register their own password reset data?**
-
- > **A:** Yes, as long as password reset is enabled and they are licensed, they can go to the Password Reset Registration portal at http://aka.ms/ssprsetup to register their authentication information to be used with password reset. Users can also register by going to the access panel at http://myapps.microsoft.com, clicking the profile tab, and clicking the Register for Password Reset option. Learn more about how to get your users configured for password reset by reading How to get users configured for password reset.
-
- - **Q:  Can I define password reset data on behalf of my users?**
-
- > **A:** Yes, you can do so with DirSync or PowerShell, or through the [Azure Management Portal](https://manage.windowsazure.com) or Office Admin portal. Learn more about this feature on the blog post Improved Privacy for Azure AD MFA and Password Reset Phone Numbers and by reading Learn how data is used by password reset.
-
- - **Q:  Can I synchronize data for security questions from on premises?**
-
- > **A:** No, this is not possible today, but we are considering it.
-
- - **Q:  Can my users register data in such a way that other users cannot see this data?**
-
- > **A:** Yes, when users register data using the Password Reset Registration Portal it gets saved into private authentication fields that are only visible by Global Administrators and the user himself. Learn more about this feature on the blog post Improved Privacy for Azure AD MFA and Password Reset Phone Numbers and by reading Learn how data is used by password reset.
-
- - **Q:  Do my users have to be registered before they can use password reset?**
-
- > **A:** No, if you define enough authentication information on their behalf, users will not have to register. Password reset will work just fine as long as you have properly formatted data stored in the appropriate fields in the directory. Learn more about by reading Learn how data is used by password reset.
-
- - **Q:  Can I synchronize or set the Authentication Phone, Authentication Email or Alternate Authentication Phone fields on behalf of my users?**
-
- > **A:** Not currently, but we are considering enabling this capability.
-
- - **Q:  How does the registration portal know which options to show my users?**
-
- > **A:** The password reset registration portal only shows the options that you have enabled for your users under the User Password Reset Policy section of your directory’s Configure tab. This means that if you do not enable, say, security questions, then users will not be able to register for that option.
-
- - **Q:  When is a user considered registered?**
-
- > **A:** A user is considered registered when he or she has at least N pieces of authentication info defined, where N is the Number of Authentication Methods Required that you have set in the [Azure Management Portal](https://manage.windowsazure.com). To learn more, see Customizing User Password Reset Policy.
-
-
-## <a name="password-reset"></a>Password reset
-
- - **Q:  How long should I wait to receive an email, SMS, or phone call from password reset?**
-
- > **A:** Email, SMS messages, and phone calls should arrive in under 1 minute, with the normal case being 5-20 seconds. If you do not receive the notification in this timeframe, check your junk folder, that the number / email being contacted is the one you expect, and that the authentication data in the directory is correctly formatted. To learn more about formatting phone numbers and email addresses for use with password reset see Learn how data is used by password reset.
-
- - **Q:  What languages are supported by password reset?**
-
- > **A:** The password reset UI, SMS messages, and voice calls are localized in the same 40 languages that are supported in Office 365. Those are: Arabic, Bulgarian, Chinese Simplified, Chinese Traditional, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hebrew, Hindi, Hungarian, Indonesian, Italian, Japanese, Kazakh, Korean, Latvian, Lithuanian, Malay (Malaysia), Norwegian (Bokmål), Polish, Portuguese (Brazil), Portuguese (Portugal), Romanian, Russian, Serbian (Latin), Slovak, Slovenian, Spanish, Swedish, Thai, Turkish, Ukrainian, and Vietnamese.
-
- - **Q:  What parts of the password reset experience get branded when I set organizational branding in my directory’s configure tab?**
-
- > **A:** The password reset portal will show your organizational logo and will also allow you to configure the Contact your administrator link to point to a custom email or URL. Any email that gets sent by password reset will include your organization’s logo, colors (in this case red), name in the body of the email, and customized from name. See an example with all the branded elements below. To learn more, read Customizing Password Reset Look and Feel.
+ > **A:** パスワード リセット ポータルに組織のロゴが表示されるほか、管理者への連絡用リンクにカスタムの電子メールまたは URL を設定できます。パスワード リセットによって送信される電子メールには、組織のロゴ、色 (この例では赤)、電子メールの本文内の名前、カスタマイズされた <差出人> 名が使用されます。次の例では、すべてのブランド化された要素が含まれています。詳細については、「パスワード リセットの外観のカスタマイズ」を参照してください。
 
   ![][001]
 
- - **Q:  How can I educate my users about where to go to reset their passwords?**
+ - **Q: パスワードをリセットするためにアクセスする場所を、どのようにユーザーに案内すればよいですか。**
 
- > **A:** You can send your users to https://passwordreset.microsoftonline.com directly, or you can instruct them to click on the Can’t access your account link found on any School or Work ID sign in screen. You can feel free to publish these links (or create URL redirects to them) in any place that is easily accessible to your users.
+ > **A:** 直接 https://passwordreset.microsoftonline.com にアクセスするように案内するか、学校用 ID または会社用 ID のサインイン画面の "アカウントにアクセスできない場合" リンクをクリックするように案内してください。これらのリンクは、ユーザーが簡単にアクセスできる任意の場所に公開してかまいません (または、このリンクへの URL リダイレクトを作成することもできます)。
 
- - **Q:  Can I use this page from a mobile device?**
+ - **Q: モバイル デバイスからこのページを使用できますか。**
 
- > **A:** Yes, this page works on mobile devices.
+ > **A:** はい。このページは、モバイル デバイスでも使用できます。
 
- - **Q:  Do you support unlocking local active directory accounts when users reset their passwords?**
+ - **Q: ユーザーがパスワードをリセットするときに、ローカルの Active Directory アカウントのロックを解除できますか。**
 
- > **A:** Yes, when a user resets his or her password and Password Writeback has been deployed with all versions of Azure AD Connect, or versions of Azure AD Sync 1.0.0485.0222 or later, then that user’s account will be automatically unlocked when that user resets his or her password.
+ > **A:** はい。ユーザーがパスワードをリセットするときに、パスワード ライトバックにいずれかのバージョンの Azure AD Connect、または 1.0.0485.0222 以降のバージョンの Azure AD Sync がデプロイされていれば、パスワードのリセット時にユーザーのアカウントは自動的にロック解除されます。
 
- - **Q:  How can I integrate password reset directly into my user’s desktop sign-in experience?**
+ - **Q: パスワード リセットをユーザーのデスクトップ サインイン エクスペリエンスに直接統合できますか。**
 
- > **A:** This is not possible today. However, if you absolutely need this capability and are an Azure AD Premium customer, you can install Microsoft Identity Manager at no additional cost and deploy the on-premises password reset solution found therein to solve this requirement.
+ > **A:** 現時点ではできません。ただし、Azure AD Premium のお客様で、この機能がどうしても必要な場合は、追加料金なしで Microsoft Identity Manager をインストールし、そこで見つかったオンプレミス のパスワード リセット ソリューションをデプロイすれば、この要件を満たすことができます。
 
- - **Q:  Can I set different security questions for different locales?**
+ - **Q: ロケールごとに異なるセキュリティの質問を設定できますか。**
 
- > **A:** No, this is not possible today, but we are considering it.
+ > **A:** いいえ。現時点ではできませんが、この機能について検討中です。
 
- - **Q:  How many questions can we configure for the Security Questions authentication option?**
+ - **Q: セキュリティの質問の認証オプションには質問をいくつ設定できますか。**
 
- > **A:** You can configure up to 20 custom security questions in the [Azure Management Portal](https://manage.windowsazure.com).
+ > **A:** [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)では、最大 20 個のカスタムのセキュリティの質問を設定できます。
 
- - **Q:  How long may security questions be?**
+ - **Q: セキュリティの質問の長さに制限はありますか。**
 
- > **A:** Security questions may be between 3 and 200 characters long.
+ > **A:** セキュリティの質問は、3 ～ 200 文字の長さにする必要があります。
 
- - **Q:  How long may answers to security questions be?**
+ - **Q: セキュリティの質問に対する回答の長さに制限はありますか。**
 
- > **A:** Answers may be 3 to 40 characters long.
+ > **A:** 回答は、3 ～ 40 文字の長さにする必要があります。
 
- - **Q:  Are duplicate answers to security questions rejected?**
+ - **Q: セキュリティの質問に対して重複する回答は拒否されますか。**
 
- > **A:** Yes, we reject duplicate answers to security questions.
+ > **A:** はい。セキュリティの質問に対して重複する回答は拒否されます。
 
- - **Q:  May a user register more than one of the same security question?**
+ - **Q: ユーザーが同じセキュリティの質問を 2 回以上登録することはできますか。**
 
- > **A:** No, once a user registers a particular question, he or she may not register for that question a second time.
+ > **A:** いいえ。ユーザーは、特定の質問を登録した後、同じ質問を再度登録することはできません。
 
- - **Q:  Is it possible to set a minimum limit of security questions for registration and reset?**
+ - **Q: 登録用とリセット用のセキュリティの質問の個数に下限を設定できますか。**
 
- > **A:** Yes, one limit can be set for registration and another for reset. 3-5 security questions may be required for registration and 3-5 may be required for reset.
+ > **A:** はい。登録用とリセット用にそれぞれ制限を設定できます。登録用とリセット用にそれぞれ 3 ～ 5 個のセキュリティの質問が必要になるように設定できます。
 
- - **Q:  If a user has registered more than the maximum number of questions required to reset, how are security questions selected during reset?**
+ - **Q: リセットに必要な質問の最大数を超える数の質問をユーザーが登録した場合、セキュリティの質問はリセット時にどのように選択されますか。**
 
- > **A:** N security questions are selected at random out of the total number of questions a user has registered for, where N is the minimum number of questions required for password reset. For example, if a user has 5 security questions registered, but only 3 are required to reset, 3 of those 5 will be selected randomly and presented to the user at the time of reset. If the user gets the answers to the questions wrong, the selection process re-occurs to prevent question hammering.
+ > **A:** ユーザーが登録したすべてのセキュリティの質問の中から N 個の質問がランダムに選択されます (ここで N は、パスワード リセットのために必要な質問の最小数です)。たとえば、リセット操作に必要なセキュリティの質問の数が 3 つであるにもかかわらずユーザーが 5 つの質問を登録している場合、リセット時に 5 つの中から 3 つがランダムに選択されてユーザーに表示されます。ユーザーが質問の答えを間違えた場合、同じ質問が表示されるのを防ぐために、選択プロセスが再度実行されます。
 
- - **Q:  Do you prevent users from attempting password reset many times in a short time period?**
+ - **Q: 短い期間にパスワード リセットを何度も試みるユーザーへの対策は用意されていますか。**
 
- > **A:** Yes, there are several security features built into password reset. Users may only try 5 password reset attempts within an hour before being locked out for 24 hours. Users may only try to validate a phone number 5 times within an hour before being locked out for 24 hours. Users may only try a single authentication method 5 times within an hour before being locked out for 24 hours.
+ > **A:** はい。パスワード リセットにはいくつかのセキュリティ機能が組み込まれています。ユーザーが 1 時間の間に試行できるパスワード リセットの回数は 5 回に制限されており、この回数を超えるとユーザーは 24 時間ロックアウトされます。ユーザーが 1 時間の間に試行できる電話番号の確認の回数は 5 回に制限されており、この回数を超えるとユーザーは 24 時間ロックアウトされます。ユーザーが 1 時間の間に試行できる単一の認証方法の回数は 5 回に制限されており、この回数を超えるとユーザーは 24 時間ロックアウトされます。
 
- - **Q:  For how long are the email and SMS one-time passcode valid?**
+ - **Q: 電子メールと SMS のワンタイム パスコードの有効期間はどのくらいですか。**
 
- > **A:** The session lifetime for password reset is 105 minutes. This means that from the beginning of the password reset operation, the user has 105 minutes to reset his or her password. The email and SMS one-time passcode are invalid after this time period expires.
+ > **A:** パスワード リセットのセッション有効期間は 105 分です。つまり、パスワード リセット操作の開始からパスワードをリセットするまで、ユーザーに 105 分の時間が与えられます。この期間を経過すると、電子メールと SMS のワンタイム パスコードは無効になります。
 
 
-## <a name="password-management-reports"></a>Password Management reports
+## パスワード管理レポート
 
- - **Q:  How long does it take for data to show up on the password management reports?**
+ - **Q: データがパスワード管理レポートに表示されるまでにどのくらいの時間がかかりますか。**
 
- > **A:** Data should appear on the password management reports within 5-10 minutes. It some instances it may take up to an hour to appear.
+ > **A:** データは、5 ～ 10 分以内にパスワード管理レポートに表示されます。場合によっては、最大 1 時間かかることもあります。
 
- - **Q:  How can I filter the password management reports?**
+ - **Q: パスワード管理レポートをフィルター処理するにはどうすればよいですか。**
 
- > **A:** You can filter the password management reports by clicking the small magnifying glass to the extreme right of the column labels, towards the top of the report (see screenshot). If you want to do richer filtering, you can download the report to excel and create a pivot table.
+ > **A:** パスワード管理レポートをフィルター処理するには、レポート上部の列ラベルの右端にある小さな虫眼鏡アイコンをクリックします (スクリーンショットを参照してください)。より高度なフィルター処理を実行するには、レポートを Excel にダウンロードしてピボット テーブルを作成します。
 
   ![][002]
 
- - **Q: What is the maximum number of events are stored in the password management reports?**
+ - **Q: パスワード管理レポートに格納される最大イベント数はどれだけですか**
 
- > **A:** Up to 1,000 password reset or password reset registration events are stored in the password management reports.  We are working to expand this number to include more events.
+ > **A:** パスワード管理レポートには、最大で 1,000 個のパスワード リセット イベントまたはパスワード リセット登録イベントが格納されます。より多くのイベントを格納できるように、この値の拡張に取り組んでいます。
 
- - **Q:  How far back do the password management reports go?**
+ - **Q: パスワード管理レポートには何日前までの操作が表示されますか。**
 
- > **A:** The password management reports show operations occurring within the last 30 days. We are currently investigating how to make this a longer time period. For now, if you need to archive this data, you can download the reports periodically and save them in a separate location.
+ > **A:** パスワード管理レポートには、過去 30 日以内に発生した操作が表示されます。現在、この期間を長くする方法について検討中です。今のところ、このデータをアーカイブする必要がある場合は、レポートを定期的にダウンロードして別の場所に保存してください。
 
- - **Q:  Is there a maximum number of rows that can appear on the password management reports?**
+ - **Q: パスワード管理レポートに表示できる行の最大数は決まっていますか。**
 
- > **A:** Yes, a maximum of 1,000 rows may appear on either of the Password Management reports, whether they are being shown in the UI or being downloaded. We are currently investigating how to increase this limit.
+ > **A:** はい。UI に表示した場合またはダウンロードした場合のいずれでも、パスワード管理レポートに表示できる最大行数は 1,000 行です。現在、この制限を緩和する方法を検討中です。
 
- - **Q:  Is there an API to access the password reset or registration reporting data?**
+ - **Q: パスワード リセットまたは登録レポート データにアクセスする API はありますか。**
 
- > **A:** Yes, please see the following documentation to learn how you can access the password reset reporting data stream.  [Learn how to access password reset reporting events programmatically](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent).
+ > **A:** はい。パスワード リセット レポート データのストリームにアクセスする方法については、次のドキュメントを参照してください。[パスワード リセット レポート イベントにプログラムでアクセスする方法](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent)
 
-## <a name="password-writeback"></a>Password Writeback
- - **Q:  How does Password Writeback work behind the scenes?**
+## パスワード ライトバック
+ - **Q: パスワード ライトバックは、バックグラウンドでどのように動作しますか。**
 
- > **A:** See [How Password Writeback works](active-directory-passwords-learn-more.md#how-password-writeback-works) for a detailed explanation of what happens when you enable Password Writeback, as well as how data flows through the system back into your on-premises environment. See [Password Writeback security model](active-directory-passwords-learn-more.md#password-writeback-security-model) in How Password Writeback works to learn how we ensure Password Writeback is a highly secure service.
+ > **A:** パスワード ライトバックを有効にした場合の動作、およびシステム内でデータがオンプレミスの環境に戻る経路の詳細については、「[パスワード ライトバックのしくみ](active-directory-passwords-learn-more.md#how-password-writeback-works)」のページを参照してください。パスワード ライトバック サービスの高い安全性がどのように保証されているかについては、「パスワード ライトバックのしくみ」の「[パスワード ライトバックのセキュリティ モデル](active-directory-passwords-learn-more.md#password-writeback-security-model)」を参照してください。
 
- - **Q:  How long does Password Writeback take to work?  Is there a synchronization delay like with password hash sync?**
+ - **Q: パスワード ライトバックが機能するにはどれくらいの時間がかかりますか。 パスワード ハッシュ同期のような同期遅延がありますか。**
 
- > **A:** Password Writeback is instant. It is a synchronous pipeline that works fundamentally differently than password hash synchronization. Password Writeback allows users to get realtime feedback about the success of their password reset or change operation. The average time for a successful writeback of a password is under 500 ms.
+ > **A:** パスワード ライトバックは即座に実行されます。パスワード ライトバックは、パスワード ハッシュ同期とは根本的に異なる方法で動作する同期パイプラインです。パスワード ライトバックでは、ユーザーは、パスワードのリセット操作または変更操作の完了についてリアルタイムのフィードバックを受け取ります。正常なパスワード ライトバックの平均時間は 500 ミリ秒未満です。
 
- - **Q:  What types of accounts does Password Writeback work for?**
+ - **Q: パスワード ライトバックはどのような種類のアカウントで動作しますか。**
 
- > **A:** Password Writeback works for Federated and Password Hash Sync’d users.
+ > **A:** パスワード ライトバックは、フェデレーション ユーザーおよびパスワード ハッシュ同期ユーザーに対して動作します。
 
- - **Q:  Does Password Writeback enforce my domain’s password policies?**
+ - **Q: パスワード ライトバックでは、ドメインのパスワード ポリシーが適用されますか。**
 
- > **A:** Yes, Password Writeback enforces password age, history, complexity, filters and any other restriction you may put in place on passwords in your local domain.
+ > **A:** はい。パスワード ライトバックでは、ローカル ドメインのパスワードにユーザーが設定したパスワードの有効期間、履歴、複雑さ、フィルター、およびその他の制限が適用されます。
 
- - **Q:  Is Password Writeback secure?  How can I be sure I won’t get hacked?**
+ - **Q: パスワード ライトバックはセキュリティで保護されていますか。 ハッキングされないようにするにはどうすればよいですか。**
 
- > **A:** Yes, Password Writeback is extremely secure. To read more about the 4 layers of security implemented by the Password Writeback service, check out the [Password Writeback security model](active-directory-passwords-learn-more.md#password-writeback-security-model) in How Password Writeback works.
-
-
+ > **A:** はい。パスワード ライトバックは、高度なセキュリティで保護されています。パスワード ライトバック サービスによって実装される 4 層のセキュリティの詳細については、「パスワード ライトバックのしくみ」の「[パスワード ライトバックのセキュリティ モデル](active-directory-passwords-learn-more.md#password-writeback-security-model)」を参照してください。
 
 
-## <a name="links-to-password-reset-documentation"></a>Links to password reset documentation
-Below are links to all of the Azure AD Password Reset documentation pages:
 
-* **Are you here because you're having problems signing in?** If so, [here's how you can change and reset your own password](active-directory-passwords-update-your-own-password.md).
-* [**How it works**](active-directory-passwords-how-it-works.md) - learn about the six different components of the service and what each does
-* [**Getting started**](active-directory-passwords-getting-started.md) - learn how to allow you users to reset and change their cloud or on-premises passwords
-* [**Customize**](active-directory-passwords-customize.md) - learn how to customize the look & feel and behavior of the service to your organization's needs
-* [**Best practices**](active-directory-passwords-best-practices.md) - learn how to quickly deploy and effectively manage passwords in your organization
-* [**Get insights**](active-directory-passwords-get-insights.md) - learn about our integrated reporting capabilities
-* [**Troubleshooting**](active-directory-passwords-troubleshoot.md) - learn how to quickly troubleshoot problems with the service
-* [**Learn more**](active-directory-passwords-learn-more.md) - go deep into the technical details of how the service works
+
+## パスワードのリセットに関するドキュメントへのリンク
+Azure AD のパスワードのリセットに関するすべてのドキュメント ページへのリンクを以下に示します。
+
+* **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
+* [**しくみ**](active-directory-passwords-how-it-works.md) - サービスの 6 つの異なるコンポーネントとそれぞれの機能について説明します。
+* [**概要**](active-directory-passwords-getting-started.md) -ユーザーによるクラウドまたはオンプレミスのパスワードのリセットと変更を許可する方法について説明します。
+* [**カスタマイズ**](active-directory-passwords-customize.md) - 組織のニーズに合わせてサービスの外観と動作をカスタマイズする方法について説明します。
+* [**ベスト プラクティス**](active-directory-passwords-best-practices.md) - 組織内でのパスワードの迅速なデプロイと効果的な管理方法について説明します。
+* [**洞察を得る**](active-directory-passwords-get-insights.md) - 統合レポート機能について説明します。
+* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - サービスに関する問題を迅速にトラブルシューティングする方法について説明します。
+* [**詳細情報**](active-directory-passwords-learn-more.md) - サービスの機能の技術的な詳細を掘り下げます。
 
 
 [001]: ./media/active-directory-passwords-faq/001.jpg "Image_001.jpg"
 [002]: ./media/active-directory-passwords-faq/002.jpg "Image_002.jpg"
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0713_2016-->

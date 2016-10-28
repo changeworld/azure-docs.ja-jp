@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Desired State Configuration for Azure Overview | Microsoft Azure"
-   description="Overview for using the Microsoft Azure extension handler for PowerShell Desired State Configuration. Including prerequisites, architecture, cmdlets.."
+   pageTitle="Azure の Desired State Configuration の概要 | Microsoft Azure"
+   description="PowerShell Desired State Configuration の Microsoft Azure 拡張機能ハンドラーの使用に関する概要。前提条件、アーキテクチャ、コマンドレットなどについて説明します。"
    services="virtual-machines-windows"
    documentationCenter=""
    authors="zjalexander"
@@ -18,83 +18,81 @@
    ms.date="09/15/2016"
    ms.author="zachal"/>
 
-
-# <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Introduction to the Azure Desired State Configuration extension handler #
+# Azure Desired State Configuration 拡張機能ハンドラーの概要 #
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
-The Azure VM Agent and associated Extensions are part of the Microsoft Azure Infrastructure Services. VM Extensions are software components that extend the VM functionality and simplify various VM management operations. For example, the VMAccess extension can be used to reset an administrator's password, or the Custom Script extension can be used to execute a script on the VM.
+Azure VM エージェントとそれに関連付けられた拡張機能は、Microsoft Azure インフラストラクチャ サービスの一部です。VM 拡張機能は、VM の機能を拡張し、さまざまな VM の管理操作を簡略化するソフトウェア コンポーネントです。たとえば、VMAccess 拡張機能を使用すると、管理者のパスワードをリセットできます。また、カスタム スクリプト拡張機能を使用すると、VM 上でスクリプトを実行できます。
 
-This article introduces the PowerShell Desired State Configuration (DSC) Extension for Azure VMs as part of the Azure PowerShell SDK. You can use new cmdlets to upload and apply a PowerShell DSC configuration on an Azure VM enabled with the PowerShell DSC extension. The PowerShell DSC extension calls into PowerShell DSC to enact the received DSC configuration on the VM. This functionality is also available through the Azure portal.
+この記事では、Azure PowerShell SDK に含まれる、Azure VM 用 PowerShell Desired State Configuration (DSC) 拡張機能について紹介します。PowerShell DSC 拡張機能が有効になっている Azure VM で、新しいコマンドレットを使用して、PowerShell DSC 構成をアップロードして適用することができます。PowerShell DSC 拡張機能は、PowerShell DSC を呼び出して、受け取った DSC 構成を VM に適用します。この機能は、Azure ポータルを通して使用することもできます。
 
-## <a name="prerequisites"></a>Prerequisites ##
-**Local machine** To interact with the Azure VM extension, you need to use either the Azure portal or the Azure PowerShell SDK. 
+## 前提条件 ##
+**ローカル コンピューター**: Azure VM 拡張機能と対話するには、Azure Portal または Azure PowerShell SDK のいずれかを使用する必要があります。
 
-**Guest Agent** The Azure VM that will be configured by the DSC configuration needs to be an OS that supports either Windows Management Framework (WMF) 4.0 or 5.0. The full list of supported OS versions can be found at the [DSC Extension Version History](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/).
+**ゲスト エージェント**: DSC 構成で構成する Azure VM は、Windows Management Framework (WMF) 4.0 または 5.0 をサポートする OS である必要があります。サポートされている OS バージョンの詳細な一覧については、[DSC 拡張機能のバージョン履歴](https://blogs.msdn.microsoft.com/powershell/2014/11/20/release-history-for-the-azure-dsc-extension/)を参照してください。
 
-## <a name="terms-and-concepts"></a>Terms and concepts ##
-This guide presumes familiarity with the following concepts:
+## 用語と概念 ##
+このガイドでは、読者が次の概念を理解していることを想定しています。
 
-Configuration - A DSC configuration document. 
+構成 - DSC 構成ドキュメント。
 
-Node - A target for a DSC configuration. In this document, "node" always refers to an Azure VM.
+ノード - DSC 構成のターゲット。このドキュメントでは、"ノード" は常に Azure VM を指します。
 
-Configuration Data - A .psd1 file containing environmental data for a configuration
+構成データ - 構成に関する環境データが格納されている .psd1 ファイル。
 
-## <a name="architectural-overview"></a>Architectural overview ##
+## アーキテクチャの概要 ##
 
-The Azure DSC extension uses the Azure VM Agent framework to deliver, enact, and report on DSC configurations running on Azure VMs. The DSC extension expects a .zip file containing at least a configuration document, and a set of parameters provided either through the Azure PowerShell SDK or through the Azure portal.
+Azure DSC 拡張機能は、Azure VM エージェント フレームワークを使用して、Azure VM で実行される DSC 構成の配布、適用、およびレポート作成を行います。DSC 拡張機能では、1 つ以上の構成ドキュメントを含む .zip ファイルと、Azure PowerShell SDK または Azure ポータルで提供される一連のパラメーターが必要です。
 
-When the extension is called for the first time, it runs an installation process. This process installs a version of the Windows Management Framework (WMF) using the following logic:
+拡張機能は、初めて呼び出されたときに、インストール プロセスを実行します。このプロセスによって、次のロジックに従ってあるバージョンの Windows Management Framework (WMF) がインストールされます。
 
-1. If the Azure VM OS is Windows Server 2016, no action is taken. Windows Server 2016 already has the latest version of PowerShell installed.
-2. If the `wmfVersion` property is specified, that version of the WMF is installed unless it is incompatible with the VM's OS.
-3. If no `wmfVersion` property is specified, the latest applicable version of the WMF is installed.
+1. Azure VM の OS が Windows Server 2016 の場合は、処理は行われません。Windows Server 2016 では既に PowerShell の最新バージョンがインストールされてるためです。
+2. `wmfVersion` プロパティを指定した場合は、VM の OS と互換性がない場合を除いて、そのバージョンの WMF がインストールされます。
+3. `wmfVersion` プロパティを指定しなかった場合は、WMF の適用可能な最新バージョンがインストールされます。
 
-Installation of the WMF requires a reboot. After reboot, the extension downloads the .zip file specified in the `modulesUrl` property. If this location is in Azure blob storage, a SAS token can be specified in the `sasToken` property to access the file. After the .zip is downloaded and unpacked, the configuration function defined in `configurationFunction` is run to generate the MOF file. The extension then runs `Start-DscConfiguration -Force` on the generated MOF file. The extension captures output and writes it back out to the Azure Status Channel. From this point on, the DSC LCM handles monitoring and correction as normal. 
+WMF をインストールした場合は再起動が必要になります。再起動後、`modulesUrl` プロパティで指定された .zip ファイルが拡張機能によってダウンロードされます。その場所が Azure BLOB ストレージ内の場合は、`sasToken` プロパティに SAS トークンを指定すると、ファイルにアクセスできます。.zip がダウンロードされて展開された後、`configurationFunction` で定義されている構成関数が実行され、MOF ファイルが生成されます。その後、拡張機能によって、生成された MOF ファイルに対して `Start-DscConfiguration -Force` が実行されます。拡張機能は、この出力を取得して Azure の状態チャネルに書き込みます。これ以降は、DSC LCM が通常どおり監視と修正に対処します。
 
-## <a name="powershell-cmdlets"></a>PowerShell cmdlets ##
+## PowerShell コマンドレット ##
 
-PowerShell cmdlets can be used with ARM or ASM to package, publish, and monitor DSC extension deployments. The following cmdlets listed are the ASM modules, but "Azure" can be replaced with "AzureRm" to use the ARM model. For example,  `Publish-AzureVMDscConfiguration` uses ASM, where `Publish-AzureRmVMDscConfiguration` uses ARM. 
+ARM または ASM と共に PowerShell コマンドレットを使用すると、DSC 拡張機能のデプロイをパッケージ化、発行、監視できます。以下に示すコマンドレットは ASM モジュールですが、"Azure" を "AzureRm" に置き換えると ARM モデルを使用できます。たとえば、`Publish-AzureVMDscConfiguration` では ASM が使用されますが、`Publish-AzureRmVMDscConfiguration` では ARM が使用されます。
 
-`Publish-AzureVMDscConfiguration` takes in a configuration file, scans it for dependent DSC resources, and creates a .zip file containing the configuration and DSC resources needed to enact the configuration. It can also create the package locally using the `-ConfigurationArchivePath` parameter. Otherwise, it publishes the .zip file to Azure blob storage and secure it with a SAS token.
+`Publish-AzureVMDscConfiguration` は、構成ファイルを取り込み、依存する DSC リソースがあるかどうかを調べ、構成とその適用に必要な DSC リソースが含まれる .zip ファイルを作成します。また、`-ConfigurationArchivePath` パラメーターを使用して、パッケージをローカルに作成することもできます。それ以外の場合は、Azure BLOB ストレージに .zip ファイルを発行し、SAS トークンを使用して保護します。
 
-The .zip file created by this cmdlet has the .ps1 configuration script at the root of the archive folder. Resources have the module folder placed in the archive folder. 
+このコマンドレットによって作成された .zip ファイルでは、アーカイブ フォルダーのルートに .ps1 構成スクリプトがあります。リソースのモジュール フォルダーは、アーカイブ フォルダーに配置されます。
 
-`Set-AzureVMDscExtension` injects the settings needed by the PowerShell DSC extension into a VM configuration object, which can then be applied to an Azure VM with `Update-AzureVM`.
+`Set-AzureVMDscExtension` は、PowerShell DSC 拡張機能に必要な設定を VM 構成オブジェクトに挿入します。このオブジェクトは、その後、`Update-AzureVM` を使用して Azure VM に適用できます。
 
-`Get-AzureVMDscExtension` retrieves the DSC extension status of a particular VM. 
+`Get-AzureVMDscExtension` は、特定の VM の DSC 拡張機能の状態を取得します。
 
-`Get-AzureVMDscExtensionStatus` retrieves the status of the DSC configuration enacted by the DSC extension handler. This action can be performed on a single VM, or group of VMs.
+`Get-AzureVMDscExtensionStatus` は、DSC 拡張機能ハンドラーによって適用された DSC 構成の状態を取得します。この処理は、単一の VM または VM のグループに対して実行できます。
 
-`Remove-AzureVMDscExtension` removes the extension handler from a given virtual machine. This cmdlet does **not** remove the configuration, uninstall the WMF, or change the applied settings on the virtual machine. It only removes the extension handler. 
+`Remove-AzureVMDscExtension` は、特定の仮想マシンから拡張機能ハンドラーを削除します。このコマンドレットによって、構成の削除、WMF のアンインストール、または仮想マシンに適用されている設定の変更が**行われることはありません**。拡張機能ハンドラーが削除されるだけです。
 
-**Key differences in ASM and ARM cmdlets**
+**ASM コマンドレットと ARM コマンドレットの主な違い**
 
-- ARM cmdlets are synchronous. ASM cmdlets are asynchronous.
-- ResourceGroupName, VMName, ArchiveStorageAccountName, Version, and Location are all new required parameters.
-- ArchiveResourceGroupName is a new optional parameter for ARM. You can specify this parameter when your storage account belongs to a different resource group than the one where the virtual machine is created.
-- ConfigurationArchive is called ArchiveBlobName in ARM
-- ContainerName is called ArchiveContainerName in ARM
-- StorageEndpointSuffix is called ArchiveStorageEndpointSuffix in ARM
-- The AutoUpdate switch has been added to ARM to enable automatic updating of the extension handler to the latest version as and when it is available. Nnote this parameter has the potential to cause reboots on the VM when a new version of the WMF is released. 
+- ARM コマンドレットは同期的ですが、ASM コマンドレットは非同期的です。
+- ResourceGroupName、VMName、ArchiveStorageAccountName、Version、および Location はすべて、新しい必須パラメーターです。
+- ArchiveResourceGroupName は、ARM 用の新しい省略可能なパラメーターです。このパラメーターを指定できるのは、仮想マシンが作成されたリソース グループとは別のリソース グループにストレージ アカウントが属している場合です。
+- ConfigurationArchive は、ARM では ArchiveBlobName と呼ばれます。
+- ContainerName は、ARM では ArchiveContainerName と呼ばれます。
+- StorageEndpointSuffix は、ARM では ArchiveStorageEndpointSuffix と呼ばれます。
+- AutoUpdate スイッチが ARM に追加されました。これにより、最新バージョンが利用可能になると、拡張機能ハンドラーが自動的に更新されるようにできます。WMF の新しいバージョンがリリースされると、このパラメーターによって VM で再起動が生じる可能性があることに注意してください。
 
 
-## <a name="azure-portal-functionality"></a>Azure portal functionality ##
-Browse to a classic VM. Under Settings -> General click "Extensions." A new pane is created. Click "Add" and select PowerShell DSC.
+## Azure ポータルの機能 ##
+クラシック VM を参照します。[設定]、[全般] の順に移動し、[拡張機能] をクリックします。 新しいウィンドウが作成されます。[追加] をクリックし、[PowerShell DSC] を選択します。
 
-The portal needs input.
-**Configuration Modules or Script**: This field is mandatory. Requires a .ps1 file containing a configuration script, or a .zip file with a .ps1 configuration script at the root, and all dependent resources in module folders within the .zip. It can be created with the `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` cmdlet included in the Azure PowerShell SDK. The .zip file is uploaded into your user blob storage secured by a SAS token. 
+ポータルでは、入力が必要になります。**[Configuration Modules or Script (構成モジュールまたはスクリプト)]**: このフィールドは必須です。構成スクリプトを含む .ps1 ファイルか、.ps1 構成スクリプトがルートに含まれ、すべての依存リソースがモジュール フォルダーに含まれる .zip ファイルが必要です。これは、Azure PowerShell SDK に含まれている `Publish-AzureVMDscConfiguration -ConfigurationArchivePath` コマンドレットを使用して作成できます。zip ファイルは、SAS トークンによってセキュリティで保護された、ユーザーの Blob Storage にアップロードされます。
 
-**Configuration Data PSD1 File**: This field is optional. If your configuration requires a configuration data file in .psd1, use this field to select it and upload it to your user blob storage, where it is secured by a SAS token. 
+**[Configuration Data PSD1 File (構成データ PSD1 ファイル)]**: このフィールドはオプションです。.psd1 の構成データ ファイルが必要な構成では、このフィールドを使用して目的のファイルを選択し、SAS トークンによってセキュリティで保護されている、ユーザーの Blob Storage にアップロードします。
  
-**Module-Qualified Name of Configuration**: .ps1 files can have multiple configuration functions. Enter the name of the configuration .ps1 script followed by a  '\' and the name of the configuration function. For example, if your .ps1 script has the name "configuration.ps1", and the configuration is "IisInstall", you would enter: `configuration.ps1\IisInstall`
+**[構成のモジュール修飾名]**: .ps1 ファイルには、複数の構成関数を含めることができます。.ps1 構成スクリプトの名前に続けて "\" と構成関数の名前を入力します。たとえば、.ps1 スクリプトの名前が "configuration.ps1" であり、構成が "IisInstall" であれば、次のように入力します: `configuration.ps1\IisInstall`
 
-**Configuration Arguments**: If the configuration function takes arguments, enter them in here in the format `argumentName1=value1,argumentName2=value2`. Note this format is a different format than how configuration arguments are accepted through PowerShell cmdlets or Resource Manager templates. 
+**[構成引数]**: 構成関数が引数を受け取る場合は、`argumentName1=value1,argumentName2=value2` という形式でここに入力します。この形式は、PowerShell コマンドレットまたは Resource Manager テンプレートで構成引数を受け取る方法とは異なる形式であることに注意してください。
 
-## <a name="getting-started"></a>Getting started ##
+## 使用の開始 ##
 
-The Azure DSC extension takes in DSC configuration documents and enacts them on Azure VMs. A simple example of a configuration follows. Save it locally as "IisInstall.ps1":
+Azure DSC 拡張機能は、DSC 構成ドキュメントを取り込み、それを Azure VM 上で適用します。構成の簡単な例を次に示します。これを "IisInstall.ps1" という名前でローカルに保存してください。
 
 ```powershell
 configuration IISInstall 
@@ -110,7 +108,7 @@ configuration IISInstall
 }
 ```
 
-The following steps place the IisInstall.ps1 script on the specified VM, execute the configuration, and report back on status.
+次の手順では、指定した VM に IisInstall.ps1 スクリプトを配置し、構成を実行した後、その状態に関するレポートを返します。
  
 ```powershell
 #Azure PowerShell cmdlets are required
@@ -132,25 +130,20 @@ $demoVM | Update-AzureVM -Verbose
 Get-AzureVMDscExtensionStatus -VM $demovm -Verbose
 ```
 
-## <a name="logging"></a>Logging ##
+## ログの記録 ##
 
-Logs are placed in:
+ログは次の場所に記録されます。
 
-C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[Version Number]
+C:\\WindowsAzure\\Logs\\Plugins\\Microsoft.Powershell.DSC[バージョン番号]
 
-## <a name="next-steps"></a>Next steps ##
+## 次のステップ ##
 
-For more information about PowerShell DSC, [visit the PowerShell documentation center](https://msdn.microsoft.com/powershell/dsc/overview). 
+PowerShell DSC の詳細については、[PowerShell ドキュメント センター](https://msdn.microsoft.com/powershell/dsc/overview)を参照してください。
 
-Examine the [Azure Resource Manager template for the DSC extension](virtual-machines-windows-extensions-dsc-template.md
-). 
+[DSC 拡張機能用の Azure Resource Manager テンプレート](virtual-machines-windows-extensions-dsc-template.md)に関するページをご覧ください。
 
-To find additional functionality you can manage with PowerShell DSC, [browse the PowerShell gallery](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0) for more DSC resources.
+PowerShell DSC で管理できる追加機能については、[PowerShell ギャラリー](https://www.powershellgallery.com/packages?q=DscResource&x=0&y=0)で DSC リソースを検索してください。
 
-For details on passing sensitive parameters into configurations, see [Manage credentials securely with the DSC extension handler](virtual-machines-windows-extensions-dsc-credentials.md).
+機微なパラメーターを構成に渡す方法の詳細については、「[資格情報を Azure DSC 拡張機能ハンドラーに渡す](virtual-machines-windows-extensions-dsc-credentials.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

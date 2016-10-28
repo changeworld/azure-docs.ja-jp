@@ -1,55 +1,54 @@
 <properties
-    pageTitle="Azure AD v2.0 NodeJS Web App | Microsoft Azure"
-    description="How to build a Node JS web app that signs users in with both personal Microsoft Account and work or school accounts."
-    services="active-directory"
-    documentationCenter="nodejs"
-    authors="brandwe"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure AD v2.0 NodeJS Web アプリ | Microsoft Azure"
+	description="サインインに個人の Microsoft アカウントと会社/学校アカウントの両方を使用する Node JS Web アプリを構築する方法を説明します。"
+	services="active-directory"
+	documentationCenter="nodejs"
+	authors="brandwe"
+	manager="mbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
+	ms.service="active-directory"
+	ms.workload="identity"
   ms.tgt_pltfrm="na"
-    ms.devlang="javascript"
-    ms.topic="article"
-    ms.date="09/16/2016"
-    ms.author="brandwe"/>
+	ms.devlang="javascript"
+	ms.topic="article"
+	ms.date="09/16/2016"
+	ms.author="brandwe"/>
 
-
-# <a name="add-sign-in-to-a-nodejs-web-app"></a>Add sign-in to a nodeJS Web App
+# サインインを nodeJS Web アプリに追加する
 
 
 > [AZURE.NOTE]
-    Not all Azure Active Directory scenarios & features are supported by the v2.0 endpoint.  To determine if you should use the v2.0 endpoint, read about [v2.0 limitations](active-directory-v2-limitations.md).
+	Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。v2.0 エンドポイントを使用する必要があるかどうかを判断するには、[v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
 
 
-Here we'll use Passport to:
+ここでは、Passport を使用して次の操作を行います。
 
-- Sign the user into the app using Azure AD and the v2.0 endpoint.
-- Display some information about the user.
-- Sign the user out of the app.
+- Azure AD と v2.0 エンドポイントを使用するアプリにユーザーをサインインします。
+- ユーザーについての情報を表示します。
+- ユーザーをアプリからサインアウトします。
 
-**Passport** is authentication middleware for Node.js. Extremely flexible and modular, Passport can be unobtrusively dropped in to any Express-based or Resitify web application. A comprehensive set of strategies support authentication using a username and password, Facebook, Twitter, and more. We have developed a strategy for Microsoft Azure Active Directory. We will install this module and then add the Microsoft Azure Active Directory `passport-azure-ad` plug-in.
+**Passport** は Node.js 用の認証ミドルウェアです。Passport は、非常に柔軟で高度なモジュール構造をしており、任意の Express ベースまたは Resitify Web アプリケーションに、支障をきたすことなくドロップされます。包括的な認証手法セットにより、ユーザー名とパスワードを使用する認証、Facebook、Twitter などをサポートします。Microsoft Azure Active Directory 用の戦略が開発されています。ここでは、このモジュールをインストールした後、Microsoft Azure Active Directory `passport-azure-ad` プラグインを追加します。
 
-## <a name="download"></a>Download
+## ダウンロード
 
-The code for this tutorial is maintained [on GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs).  To follow along, you can [download the app's skeleton as a .zip](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip) or clone the skeleton:
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs) で管理されています。追加の参考資料として、[アプリのスケルトン (.zip) をダウンロード](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/skeleton.zip)したり、スケルトンを複製したりすることができます:
 
 ```git clone --branch skeleton https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-The completed application is provided at the end of this tutorial as well.
+完成したアプリケーションは、このチュートリアルの終わりにも示しています。
 
-## <a name="1.-register-an-app"></a>1. Register an App
-Create a new app at [apps.dev.microsoft.com](https://apps.dev.microsoft.com), or follow these [detailed steps](active-directory-v2-app-registration.md).  Make sure to:
+## 1\.アプリを登録します
+[apps.dev.microsoft.com](https://apps.dev.microsoft.com) で新しいアプリを作成するか、この[詳細な手順](active-directory-v2-app-registration.md)に従います。次のことを確認します。
 
-- Copy down the **Application Id** assigned to your app, you'll need it soon.
-- Add the **Web** platform for your app.
-- Enter the correct **Redirect URI**. The redirect URI indicates to Azure AD where authentication responses should be directed - the default for this tutorial is `http://localhost:3000/auth/openid/return`.
+- アプリに割り当てられた**アプリケーション ID** をメモしておきます。これは後で必要になります。
+- アプリの **Web** プラットフォームを追加します。
+- 適切な**リダイレクト URI** を入力します。リダイレクト URI は、認証の応答が送られる Azure AD を示します。このチュートリアルの既定値は `http://localhost:3000/auth/openid/return` です。
 
-## <a name="2.-add-pre-requisities-to-your-directory"></a>2. Add pre-requisities to your directory
+## 2\.ディレクトリに前提条件を追加する
 
-From the command-line, change directories to your root folder if not already there and run the following commands:
+コマンド ラインから、ディレクトリをルート フォルダーに移動し (まだルート フォルダーでない場合)、次のコマンドを実行します。
 
 - `npm install express`
 - `npm install ejs`
@@ -64,22 +63,22 @@ From the command-line, change directories to your root folder if not already the
 - `npm install express-session`
 - `npm install cookie-parser`
 
-- In addition, we've use `passport-azure-ad` in the skeleton of the quickstart.
+- さらに、クイック スタートのスケルトンで、プレビュー用に `passport-azure-ad` を使用しています。
 
 - `npm install passport-azure-ad`
 
 
-This will install the libraries that passport-azure-ad depend on.
+これにより、passport-azure-ad が依存するライブラリがインストールされます。
 
-## <a name="3.-set-up-your-app-to-use-the-passport-node-js-strategy"></a>3. Set up your app to use the passport-node-js strategy
-Here, we'll configure the Express middleware to use the OpenID Connect authentication protocol.  Passport will be used to issue sign-in and sign-out requests, manage the user's session, and get information about the user, amongst other things.
+## 3\.passport-node-js 戦略を使用するようにアプリを設定する
+ここでは、OpenID Connect 認証プロトコルを使用するように、Express ミドルウェアを構成します。Passport は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
 
--   To begin, open the `config.js` file in the root of the project, and enter your app's configuration values in the `exports.creds` section.
-    -   The `clientID:` is the **Application Id** assigned to your app in the registration portal.
-    -   The `returnURL` is the **Redirect URI** you entered in the portal.
-    - The `clientSecret` is the secret you generated in the portal.
+-	最初に、プロジェクトのルートにある `config.js` ファイルを開いて、`exports.creds` セクションでアプリの構成値を入力します。
+    -	`clientID:` は、登録ポータルでアプリに割り当てられた**アプリケーション ID** です。
+    -	`returnURL` は、ポータルで入力した**リダイレクト URI** です。
+    - `clientSecret` は、ポータルで生成したシークレットです。
 
-- Next open `app.js` file in the root of the proejct and add the follwing call to invoke the `OIDCStrategy` strategy that comes with `passport-azure-ad`
+- 次に、プロジェクトのルートにある `app.js` ファイルを開き、次の呼び出しを追加して、`passport-azure-ad` に付属する `OIDCStrategy` 戦略を呼び出します。
 
 
 ```JavaScript
@@ -91,7 +90,7 @@ var log = bunyan.createLogger({
 });
 ```
 
-- After that, use the strategy we just referenced to handle our login requests
+- その後、今参照した戦略を使用してログイン要求を処理します。
 
 ```JavaScript
 // Use the OIDCStrategy within Passport. (Section 2)
@@ -130,12 +129,12 @@ passport.use(new OIDCStrategy({
   }
 ));
 ```
-Passport uses a similar pattern for all it’s Strategies (Twitter, Facebook, etc.) that all Strategy writers adhere to. Looking at the strategy you see we pass it a function() that has a token and a done as the parameters. The strategy will dutifully come back to us once it does all it’s work. Once it does we’ll want to store the user and stash the token so we won’t need to ask for it again.
+Passport は、すべての戦略ライターが従うすべての戦略 (Twitter や Facebook など) に対して類似するパターンを使用します。戦略を調べると、それは、パラメーターとして token と done を持つ function() が渡されることがわかります。戦略は、その処理をすべて終えると、必ず戻ってきます。戻ったら、再度要求しなくてもいいように、ユーザーを保存し、トークンを隠します。
 
 > [AZURE.IMPORTANT]
-The code above takes any user that happens to authenticate to our server. This is known as auto registration. In production servers you wouldn’t want to let anyone in without first having them go through a registration process you decide. This is usually the pattern you see in consumer apps who allow you to register with Facebook but then ask you to fill out additional information. If this wasn’t a sample application, we could have just extracted the email from the token object that is returned and then asked them to fill out additional information. Since this is a test server we simply add them to the in-memory database.
+上記のコードでは、サーバーに認証を求めたすべてのユーザーを受け入れています。これは、自動登録と呼ばれます。運用サーバーでは、指定された登録プロセスを先に実行していないユーザーにはアクセスを許可しないように設定できます。これは、Facebook への登録は許可するが、その後で追加情報の入力を求めるコンシューマー アプリで通常見られるパターンです。これがサンプル アプリケーションでなければ、返されるトークン オブジェクトから電子メールを抽出した後、追加情報の入力を要求できます。これはテスト サーバーなので、単純にユーザーをメモリ内データベースに追加します。
 
-- Next, let's add the methods that will allow us to keep track of the logged in users as required by Passport. This includes serializing and deserializing the user's information:
+- 次に、Passport で必要な、ログオンしているユーザーの追跡を可能にするメソッドを追加します。これには、ユーザーの情報のシリアル化と逆シリアル化が含まれます。
 
 ```JavaScript
 
@@ -171,7 +170,7 @@ var findByEmail = function(email, fn) {
 
 ```
 
-- Next, let's add the code to load the express engine. Here you see we use the default /views and /routes pattern that Express provides.
+- 次に、express エンジンを読み込むコードを追加します。ここでは、Express が提供する既定の /views と /routes のパターンを使用します。
 
 ```JavaScript
 
@@ -198,7 +197,7 @@ app.configure(function() {
 
 ```
 
-- Finally, let's add the POST routes that will hand off the actual login requests to the `passport-azure-ad` engine:
+- 最後に、実際のログイン要求を `passport-azure-ad` エンジンに渡す POST ルートを追加します。
 
 ```JavaScript
 
@@ -244,11 +243,11 @@ app.post('/auth/openid/return',
   });
 ```
 
-## <a name="4.-use-passport-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>4. Use Passport to issue sign-in and sign-out requests to Azure AD
+## 4\.Passport を使用してサインイン要求とサインアウト要求を Azure AD に発行する
 
-Your app is now properly configured to communicate with the v2.0 endpoint using the OpenID Connect authentication protocol.  `passport-azure-ad` has taken care of all of the ugly details of crafting authentication messages, validating tokens from Azure AD, and maintaining user session.  All that remains is to give your users a way to sign in, sign out, and gather additional info on the logged in user.
+OpenID Connect 認証プロトコルを使用して v2.0 エンドポイントと通信するように、アプリが適切に構成されました。認証メッセージの作成、Azure AD からのトークンの検証、ユーザー セッションの維持などの細かな処理は、すべて `passport-azure-ad` が行います。残っているのは、サインインとサインアウトを行う方法をユーザーに提示することと、ログインしているユーザーに関する追加情報を収集することです。
 
-- First, lets add the default, login, account, and logout methods to our `app.js` file:
+- まず、既定のメソッド、login メソッド、account メソッド、logout メソッドを `app.js` ファイルに追加します。
 
 ```JavaScript
 
@@ -276,14 +275,14 @@ app.get('/logout', function(req, res){
 
 ```
 
--   Let's review these in detail:
-    -   The `/` route will redirect to the index.ejs view passing the user in the request (if it exists)
-    - The `/account` route will first ***ensure we are authenticated*** (we implement that below) and then pass the user in the request so that we can get additional information about the user.
-    - The `/login` route will call our azuread-openidconnect authenticator from `passport-azuread` and if that doesn't succeed will redirect the user back to /login
-    - The `/logout` will simply call the logout.ejs (and route) which clears cookies and then return the user back to index.ejs
+-	これらについて詳しく説明しましょう。
+    -	`/` ルートは、index.ejs ビューにリダイレクトして、要求内のユーザーを渡します (存在する場合)。
+    - `/account` ルートは、***ユーザーが認証されていることを確認***した後 (次で実装します)、ユーザーに関する追加情報を取得できるように、要求内のユーザーを渡します。
+    - `/login` ルートは、`passport-azuread` から azuread-openidconnect authenticator を呼び出し、これが成功しなかった場合は、ユーザーを /login にリダイレクトして戻します。
+    - `/logout` は、クッキーをクリアする logout.ejs (およびルート) を呼び出した後、ユーザーを index.ejs に返します。
 
 
-- For the last part of `app.js`, let's add the EnsureAuthenticated method that is used in `/account` above.
+- `app.js` の最後の部分に、上記の `/account` で使用される EnsureAuthenticated メソッドを追加します。
 
 ```JavaScript
 
@@ -300,7 +299,7 @@ function ensureAuthenticated(req, res, next) {
 
 ```
 
-- Finally, let's actually create the server itself in `app.js`:
+- 最後に、`app.js` でサーバー自体を実際に作成します。
 
 ```JavaScript
 
@@ -309,11 +308,11 @@ app.listen(3000);
 ```
 
 
-## <a name="5.-create-the-views-and-routes-in-express-to-display-our-user-in-the-website"></a>5. Create the views and routes in express to display our user in the website
+## 5\.Web サイトにユーザーを表示する express のビューとルートを作成する
 
-We have our `app.js` complete. Now we simply need to add the routes and views that will show the information we get to the user as well as handle the `/logout` and `/login` routes we've created.
+`app.js` が完成しました。次に実行する必要があるのは、取得した情報をユーザーに表示するルートとビューを追加し、作成した `/logout` ルートと `/login` ルートを処理することだけです。
 
-- Create the `/routes/index.js` route under the root directory.
+- ルート ディレクトリの下に `/routes/index.js` ルートを作成します。
 
 ```JavaScript
 
@@ -326,7 +325,7 @@ exports.index = function(req, res){
 };
 ```
 
-- Create the `/routes/user.js` route under the root directory
+- ルート ディレクトリの下に `/routes/user.js` ルートを作成します。
 
 ```JavaScript
 
@@ -339,27 +338,27 @@ exports.list = function(req, res){
 };
 ```
 
-These simple routes will just pass along the request to our views, including the user if present.
+これらは、要求 (存在する場合はユーザーも) をビューに渡すだけの単純なルートです。
 
-- Create the `/views/index.ejs` view under the root directory. this is a simple page that will call our login and logout methods and allow us to grab account information. Notice that we can use the conditional `if (!user)` as the user being passed through in the request is evidence we have a logged in user.
+- ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。これは login メソッドと logout メソッドを呼び出して、アカウント情報を取得できるようにする単純なページです。条件付きの `if (!user)` を使用できることに注目してください。要求でユーザーが渡されることは、ログインしているユーザーが存在していることの証拠です。
 
 ```JavaScript
 <% if (!user) { %>
-    <h2>Welcome! Please log in.</h2>
-    <a href="/login">Log In</a>
+	<h2>Welcome! Please log in.</h2>
+	<a href="/login">Log In</a>
 <% } else { %>
-    <h2>Hello, <%= user.displayName %>.</h2>
-    <a href="/account">Account Info</a></br>
-    <a href="/logout">Log Out</a>
+	<h2>Hello, <%= user.displayName %>.</h2>
+	<a href="/account">Account Info</a></br>
+	<a href="/logout">Log Out</a>
 <% } %>
 ```
 
-- Create the `/views/account.ejs` view under the root directory so that we can view additional information that `passport-azuread` has put in the user request.
+- ルート ディレクトリの下に `/views/account.ejs` ビューを作成し、`passport-azuread` がユーザー要求の中に配置された追加情報を表示できるようにします。
 
 ```Javascript
 <% if (!user) { %>
-    <h2>Welcome! Please log in.</h2>
-    <a href="/login">Log In</a>
+	<h2>Welcome! Please log in.</h2>
+	<a href="/login">Log In</a>
 <% } else { %>
 <p>displayName: <%= user.displayName %></p>
 <p>givenName: <%= user.name.givenName %></p>
@@ -373,60 +372,56 @@ These simple routes will just pass along the request to our views, including the
 <% } %>
 ```
 
-- Finally, let's make this look pretty by adding a layout. Create the '/views/layout.ejs' view under the root directory
+- 最後に、レイアウトを追加して、見やすくします。ルート ディレクトリの下に '/views/layout.ejs' ビューを作成します。
 
 ```HTML
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Passport-OpenID Example</title>
-    </head>
-    <body>
-        <% if (!user) { %>
-            <p>
-            <a href="/">Home</a> |
-            <a href="/login">Log In</a>
-            </p>
-        <% } else { %>
-            <p>
-            <a href="/">Home</a> |
-            <a href="/account">Account</a> |
-            <a href="/logout">Log Out</a>
-            </p>
-        <% } %>
-        <%- body %>
-    </body>
+	<head>
+		<title>Passport-OpenID Example</title>
+	</head>
+	<body>
+		<% if (!user) { %>
+			<p>
+			<a href="/">Home</a> |
+			<a href="/login">Log In</a>
+			</p>
+		<% } else { %>
+			<p>
+			<a href="/">Home</a> |
+			<a href="/account">Account</a> |
+			<a href="/logout">Log Out</a>
+			</p>
+		<% } %>
+		<%- body %>
+	</body>
 </html>
 ```
 
-Finally, build and run your app!
+最後に、アプリを構築して実行します。
 
-Run `node app.js` and navigate to `http://localhost:3000`
+`node app.js` を実行し、`http://localhost:3000` に移動します。
 
 
-Sign in with either a personal Microsoft Account or a work or school account, and notice how the user's identity is reflected in the /account list.  You now have a web app secured using industry standard protocols that can authenticate users with both their personal and work/school accounts.
+Microsoft の個人または職場/学校アカウントのいずれかでサインインすると、ユーザーの ID が /account リストにどのように反映されるかがわかります。これで、Web アプリが業界標準のプロトコルで保護され、個人および職場/学校アカウントの両方でユーザーを認証できるようになりました。
 
-##<a name="next-steps"></a>Next Steps
+##次のステップ
 
-For reference, the completed sample (without your configuration values) [is provided as a .zip here](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip), or you can clone it from GitHub:
+参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs/archive/complete.zip)。または、GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/AppModelv2-WebApp-OpenIDConnect-nodejs.git```
 
-You can now move onto more advanced topics.  You may want to try:
+これ以降は、さらに高度なトピックに進むことができます。次のチュートリアルを試してみてください。
 
-[Secure a node.js web api using the v2.0 endpoint >>](active-directory-v2-devquickstarts-node-api.md)
+[v2.0 エンドポイントを使用して node.js web api をセキュリティ保護する >>](active-directory-v2-devquickstarts-node-api.md)
 
-For additional resources, check out:
-- [The v2.0 developer guide >>](active-directory-appmodel-v2-overview.md)
-- [StackOverflow "azure-active-directory" tag >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
+その他のリソースについては、以下を参照してください。
+- [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)
+- [StackOverflow "azure-active-directory" タグ >>](http://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="get-security-updates-for-our-products"></a>Get security updates for our products
+## Microsoft 製品のセキュリティ更新プログラムの取得
 
-We encourage you to get notifications of when security incidents occur by visiting [this page](https://technet.microsoft.com/security/dd252948) and subscribing to Security Advisory Alerts.
+セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

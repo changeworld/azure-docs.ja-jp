@@ -1,91 +1,86 @@
 <properties
-    pageTitle="Troubleshooting Cloud Service allocation failure | Microsoft Azure"
-    description="Troubleshooting allocation failure when you deploy Cloud Services in Azure"
-    services="azure-service-management, cloud-services"
-    documentationCenter=""
-    authors="simonxjx"
-    manager="felixwu"
-    editor=""
-    tags="top-support-issue"/>
+	pageTitle="クラウド サービスの割り当てエラーのトラブルシューティング | Microsoft Azure"
+	description="Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング"
+	services="azure-service-management, cloud-services"
+	documentationCenter=""
+	authors="simonxjx"
+	manager="felixwu"
+	editor=""
+	tags="top-support-issue"/>
 
 <tags
-    ms.service="cloud-services"
-    ms.workload="na"
-    ms.tgt_pltfrm="ibiza"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="10/12/2016"
-    ms.author="v-six"/>
+	ms.service="cloud-services"
+	ms.workload="na"
+	ms.tgt_pltfrm="ibiza"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/14/2016"
+	ms.author="v-six"/>
 
 
 
+# Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
 
-# <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Troubleshooting allocation failure when you deploy Cloud Services in Azure
-
-## <a name="summary"></a>Summary
-When you deploy instances to a Cloud Service or add new web or worker role instances, Microsoft Azure allocates compute resources. You may occasionally receive errors when performing these operations even before you reach the Azure subscription limits. This article explains the causes of some of the common allocation failures and suggests possible remediation. The information may also be useful when you plan the deployment of your services.
+## 概要
+インスタンスをクラウド サービスにデプロイした場合や、新しい Web ロール インスタンスまたは worker ロール インスタンスを追加した場合に、Microsoft Azure によってコンピューティング リソースが割り当てられます。これらの操作をしているときに、Azure サブスクリプションの制限に達していなくても、エラーが発生する場合があります。この記事では、いくつかの一般的な割り当てエラーの原因を説明し、可能な改善方法を提案します。この情報は、サービスのデプロイを計画する場合にも役立ちます。
 
 [AZURE.INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
-### <a name="background-–-how-allocation-works"></a>Background – How allocation works
-The servers in Azure datacenters are partitioned into clusters. A new cloud service allocation request is attempted in multiple clusters. When the first instance is deployed to a cloud service(in either staging or production), that cloud service gets pinned to a cluster. Any further deployments for the cloud service will happen in the same cluster. In this article, we'll refer to this as "pinned to a cluster". Diagram 1 below illustrates the case of a normal allocation which is attempted in multiple clusters; Diagram 2 illustrates the case of an allocation that's pinned to Cluster 2 because that's where the existing Cloud Service CS_1 is hosted.
+### 背景情報 – 割り当てのしくみ
+Azure データセンターのサーバーは、クラスターにパーティション分割されています。複数のクラスターで、新しいクラウド サービスの割り当て要求が試みられます。最初のインスタンスを (ステージング環境または運用環境の) クラウド サービスにデプロイすると、このクラウド サービスは 1 つのクラスターに固定されます。このクラウド サービスでさらにデプロイすると、すべて同じクラスターで処理されます。この記事では、このことを "クラスターに固定されている" と言います。次の図 1 は、複数のクラスターで試行される通常の割り当てを示しています。図 2 は、クラスター 2 に固定されている割り当てを示しています。これは、既存のクラウド サービス CS\_1 がクラスター 2 でホストされているためです。
 
-![Allocation Diagram](./media/cloud-services-allocation-failure/Allocation1.png)
+![割り当ての図表](./media/cloud-services-allocation-failure/Allocation1.png)
 
-### <a name="why-allocation-failure-happens"></a>Why allocation failure happens
-When an allocation request is pinned to a cluster, there's a higher chance of failing to find free resources since the available resource pool is limited to a cluster. Furthermore, if your allocation request is pinned to a cluster but the type of resource you requested is not supported by that cluster, your request will fail even if the cluster has free resource. Diagram 3 below illustrates the case where a pinned allocation fails because the only candidate cluster does not have free resources. Diagram 4 illustrates the case where a pinned allocation fails because the only candidate cluster does not support the requested VM size, even though the cluster has free resources.
+### 割り当てエラーが発生する理由
+割り当て要求がクラスターに固定されている場合、利用可能なリソース プールが 1 つのクラスターに制限されるため、空きリソースを見つけられない可能性が高くなります。さらに、割り当て要求がクラスターに固定されていて、そのクラスターでは要求されたリソースの種類がサポートされていない場合、クラスターに空きリソースがあっても、要求は失敗します。次の図 3 は、唯一の候補であるクラスターに空きリソースがないため、固定された割り当てがエラーになる場合を示しています。図 4 は、唯一の候補であるクラスターに空きリソースがあるものの、要求された VM サイズをサポートしていないため、固定された割り当てがエラーになる場合を示しています。
 
-![Pinned Allocation Failure](./media/cloud-services-allocation-failure/Allocation2.png)
+![固定された割り当てのエラー](./media/cloud-services-allocation-failure/Allocation2.png)
 
-## <a name="troubleshooting-allocation-failure-for-cloud-services"></a>Troubleshooting allocation failure for cloud services
-### <a name="error-message"></a>Error Message
-You may see the following error message:
+## クラウド サービスの割り当てエラーのトラブルシューティング
+### エラー メッセージ
+次のようなエラー メッセージが表示されることがあります。
 
-    "Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
+	"Azure operation '{operation id}' failed with code Compute.ConstrainedAllocationFailed. Details: Allocation failed; unable to satisfy constraints in request. The requested new service deployment is bound to an Affinity Group, or it targets a Virtual Network, or there is an existing deployment under this hosted service. Any of these conditions constrains the new deployment to specific Azure resources. Please retry later or try reducing the VM size or number of role instances. Alternatively, if possible, remove the aforementioned constraints or try deploying to a different region."
 
-### <a name="common-issues"></a>Common Issues
-Here are the common allocation scenarios that cause an allocation request to be pinned to a single cluster.
+### 一般的な問題
+以下に、割り当て要求が単一のクラスターに固定される原因となる一般的な割り当てシナリオを示します。
 
-- Deploying to Staging Slot - If a cloud service has a deployment in either slot, then the entire cloud service is pinned to a specific cluster.  This means that if a deployment already exists in the production slot, then a new staging deployment can only be allocated in the same cluster as the production slot. If the cluster is nearing capacity, the request may fail.
+- ステージング スロットへのデプロイ - クラウド サービスをいずれかのスロットにデプロイすると、クラウド サービス全体が特定のクラスターに固定されます。つまり、運用スロットにデプロイが既に存在する場合、新しいステージング環境のデプロイは、運用スロットと同じクラスターにしか割り当てることができません。クラスターが限界に近づくと、要求が失敗する場合があります。
 
-- Scaling - Adding new instances to an existing cloud service must allocate in the same cluster.  Small scaling requests can usually be allocated, but not always. If the cluster is nearing capacity, the request may fail.
+- スケーリング - 既存のクラウド サービスに新しいインスタンスを追加する場合は、同じクラスターに割り当てる必要があります。通常、小規模のスケーリング要求は割り当てることができますが、常に割り当てることができるわけではありません。クラスターが限界に近づくと、要求が失敗する場合があります。
 
-- Affinity Group - A new deployment to an empty cloud service can be allocated by the fabric in any cluster in that region, unless the cloud service is pinned to an affinity group. Deployments to the same affinity group will be attempted on the same cluster. If the cluster is nearing capacity, the request may fail.
+- アフィニティ グループ - 空のクラウド サービスに新しくデプロイする場合は、クラウド サービスがアフィニティ グループに固定されている場合を除き、そのリージョン内の任意のクラスターのファブリックによって割り当てることができます。同じアフィニティ グループへのデプロイは、同じクラスターで試行されます。クラスターが限界に近づくと、要求が失敗する場合があります。
 
-- Affinity Group vNet - Older Virtual Networks were tied to affinity groups instead of regions, and cloud services in these Virtual Networks would be pinned to the affinity group cluster. Deployments to this type of virtual network will be attempted on the pinned cluster. If the cluster is nearing capacity, the request may fail.
+- アフィニティ グループ vNet - 以前の Virtual Network はリージョンではなくアフィニティ グループに関連付けられていたため、これらの仮想ネットワーク内のクラウド サービスはアフィニティ グループのクラスターに固定されました。このような仮想ネットワークへのデプロイは、固定されたクラスターで試行されます。クラスターが限界に近づくと、要求が失敗する場合があります。
 
-## <a name="solutions"></a>Solutions
+## 解決方法
 
-1. Redeploy to a new cloud service - This solution is likely to be most successful as it allows the platform to choose from all clusters in that region.
+1. 新しいクラウド サービスに再デプロイする - この解決方法ではそのリージョン内のすべてのクラスターからプラットフォームを選択できるため、成功する可能性が最も高くなります。
 
-    - Deploy the workload to a new cloud service  
+	- 新しいクラウド サービスにワークロードをデプロイします
 
-    - Update the CNAME or A record to point traffic to the new cloud service
+	- 新しいクラウド サービスへのトラフィックを指すように CNAME または A レコードを更新します
 
-    - Once zero traffic is going to the old site, you can delete the old cloud service. This solution should incur zero downtime.
+	- 以前のサイトに送信されるトラフィックが 0 個になると、以前のクラウド サービスを削除できます。この解決方法ではダウンタイムは発生しません。
 
-2. Delete both production and staging slots - This solution will preserve your existing DNS name, but will cause downtime to your application.
+2. 運用スロットとステージング スロットの両方を削除する - この解決方法では、既存の DNS 名が維持されますが、アプリケーションでダウンタイムが発生します。
 
-    - Delete the production and staging slots of an existing cloud service so that the cloud service is empty, and then
+	- 既存のクラウド サービスの運用スロットとステージング スロットを削除し、クラウド サービスを空にします。
 
-    - Create a new deployment in the existing cloud service. This will re-attempt to allocation on all clusters in the region. Ensure the cloud service is not tied to an affinity group.
+	- 次に、既存のクラウド サービスに新しいデプロイを作成します。これにより、リージョン内のすべてのクラスターで割り当てが再度試行されます。クラウド サービスがアフィニティ グループに関連付けられていないことを確認します。
 
-3. Reserved IP -  This solution will preserve your existing IP address, but will cause downtime to your application.  
+3. 予約済み IP - この解決方法では、既存の IP アドレスが維持されますが、アプリケーションでダウンタイムが発生します。
 
-    - Create a ReservedIP for your existing deployment using Powershell
+	- Powershell を使用して既存のデプロイ用の ReservedIP を作成します
 
-    ```
-    New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}
-    ```
+	```
+	New-AzureReservedIP -ReservedIPName {new reserved IP name} -Location {location} -ServiceName {existing service name}
+	```
 
-    - Follow #2 from above, making sure to specify the new ReservedIP in the service's CSCFG.
+	- 上の 2. の手順に従って、サービスの CSCFG で新しい ReservedIP を確実に指定します。
 
-4. Remove affinity group for new deployments - Affinity Groups are no longer recommended. Follow steps for #1 above to deploy a new cloud service. Ensure cloud service is not in an affinity group.
+4. 新しいデプロイのアフィニティ グループを削除する - アフィニティ グループは推奨されなくなりました。上の 1. の手順に従って、新しいクラウド サービスをデプロイしてください。クラウド サービスがアフィニティ グループ内にないことを確認します。
 
-5. Convert to a Regional Virtual Network - See [How to migrate from Affinity Groups to a Regional Virtual Network (VNet)](../virtual-network/virtual-networks-migrate-to-regional-vnet.md).
+5. リージョン Virtual Network に変換する - 「[アフィニティ グループから、リージョン Virtual Network (VNet) に移行する方法](../virtual-network/virtual-networks-migrate-to-regional-vnet.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0720_2016-->

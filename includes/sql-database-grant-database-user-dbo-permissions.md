@@ -1,29 +1,24 @@
 
 
-## <a name="grant-new-database-user-db_owner-permissions"></a>Grant new database user db_owner permissions
+## 新しいデータベース ユーザーに db\_owner 権限を付与する
 
-Use the following steps to grant an existing database user db_owner permissions
+既存のデータベース ユーザーに db\_owner 権限を付与するには、以下の手順に従います。
 
-Theses steps assume that you are connected to SQL Database in Object Explorer in SSMS and are connected to your SQL Database logical server as a server-level principal administrator or with a user account with permissions to grant user permissions. 
+ここでは、SSMS のオブジェクト エクスプローラーで SQL Database に接続していること、サーバー レベルのプリンシパル管理者として、またはユーザーに権限を付与するための権限を持ったユーザー アカウントで、SQL Database 論理サーバーに接続していることを前提としています。
 
-1. In Object Explorer, expand the Databases node and select the database with the user to which you wish to grant dbo permissions.
+1. オブジェクト エクスプローラーで [データベース] ノードを展開し、dbo アクセス許可を付与するユーザーのデータベースを選択します。
 
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)
+     ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-1.png)
 
-2. Right-click the selected database and then click **Query**.
+2. 選択したデータベースを右クリックし、**[クエリ]** をクリックします。
 
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
+     ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-create-new-database-user/sql-database-create-new-database-user-2.png)
 
-3. In the query window, edit and use the following Transact-SQL statement to grant dbo permissions to a specified user. 
+3. クエリ ウィンドウで、次の Transact-SQL ステートメントを編集して使用し、dbo アクセス許可を指定したユーザーに付与します。
 
     ```ALTER ROLE db_owner ADD MEMBER user1;
     ```
 
-     ![SQL Server Management Studio: Connect to SQL Database server](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
+     ![SQL Server Management Studio: SQL Database サーバーへの接続](./media/sql-database-grant-database-user-dbo-permissions/sql-database-grant-database-user-dbo-permissions-1.png)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0629_2016-->

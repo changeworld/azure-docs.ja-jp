@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with Thoughtworks Mingle | Microsoft Azure" 
-    description="Learn how to use Thoughtworks Mingle with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と Thoughtworks Mingle の統合 | Microsoft Azure" 
+    description="Azure Active Directory で Thoughtworks Mingle を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法を説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -14,147 +14,139 @@
     ms.date="09/11/2016" 
     ms.author="jeedes" />
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-thoughtworks-mingle"></a>Tutorial: Azure Active Directory integration with Thoughtworks Mingle
+#チュートリアル: Azure Active Directory と Thoughtworks Mingle の統合
   
-The objective of this tutorial is to show the integration of Azure and Thoughtworks Mingle.  
-The scenario outlined in this tutorial assumes that you already have the following items:
+このチュートリアルでは、Azure と Thoughtworks Mingle の統合について説明します。このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
 
--   A valid Azure subscription
--   A Thoughtworks Mingle tenant
+-   有効な Azure サブスクリプション
+-   Thoughtworks Mingle テナント
   
-The scenario outlined in this tutorial consists of the following building blocks:
+このチュートリアルで説明するシナリオは、次の要素で構成されています。
 
-1.  Enabling the application integration for Thoughtworks Mingle
-2.  Configuring single sign-on
-3.  Configuring user provisioning
-4.  Assigning users
+1.  Thoughtworks Mingle のアプリケーション統合の有効化
+2.  シングル サインオンの構成
+3.  ユーザー プロビジョニングの構成
+4.  ユーザーの割り当て
 
-![Scenario](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785150.png "Scenario")
+![シナリオ](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785150.png "シナリオ")
 
-##<a name="enabling-the-application-integration-for-thoughtworks-mingle"></a>Enabling the application integration for Thoughtworks Mingle
+##Thoughtworks Mingle のアプリケーション統合の有効化
   
-The objective of this section is to outline how to enable the application integration for Thoughtworks Mingle.
+このセクションでは、Thoughtworks Mingle のアプリケーション統合を有効にする方法を説明します。
 
-###<a name="to-enable-the-application-integration-for-thoughtworks-mingle,-perform-the-following-steps:"></a>To enable the application integration for Thoughtworks Mingle, perform the following steps:
+###Thoughtworks Mingle のアプリケーション統合を有効にするには、次の手順を実行します。
 
-1.  In the Azure classic portal, on the left navigation pane, click **Active Directory**.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
     ![Active Directory](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC700993.png "Active Directory")
 
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
 
-    ![Applications](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC700994.png "Applications")
+    ![アプリケーション](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC700994.png "アプリケーション")
 
-4.  Click **Add** at the bottom of the page.
+4.  ページの下部にある **[追加]** をクリックします。
 
-    ![Add application](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC749321.png "Add application")
+    ![アプリケーションの追加](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC749321.png "アプリケーションの追加")
 
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
 
-    ![Add an application from gallerry](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC749322.png "Add an application from gallerry")
+    ![ギャラリーからのアプリケーションの追加](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC749322.png "ギャラリーからのアプリケーションの追加")
 
-6.  In the **search box**, type **thoughtworks mingle**.
+6.  **検索ボックス**に、「**thoughtworks mingle**」と入力します。
 
-    ![Application Gallery](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785151.png "Application Gallery")
+    ![アプリケーション ギャラリー](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785151.png "アプリケーション ギャラリー")
 
-7.  In the results pane, select **Thoughtworks Mingle**, and then click **Complete** to add the application.
+7.  結果ウィンドウで **[Thoughtworks Mingle]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
 
     ![Thoughtworks Mingle](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785152.png "Thoughtworks Mingle")
 
-##<a name="configuring-single-sign-on"></a>Configuring single sign-on
+##シングル サインオンの構成
   
-The objective of this section is to outline how to enable users to authenticate to Thoughtworks Mingle with their account in Azure AD using federation based on the SAML protocol.  
-As part of this procedure, you are required to upload a certificate to Thoughtworks Mingle.
+このセクションでは、ユーザーが SAML プロトコルに基づくフェデレーションを使用して、Azure AD でのユーザーのアカウントで Thoughtworks Mingle に対する認証を行うことができるようにする方法を説明します。この手順の途中で、証明書を Thoughtworks Mingle にアップロードする必要があります。
 
-###<a name="to-configure-single-sign-on,-perform-the-following-steps:"></a>To configure single sign-on, perform the following steps:
+###シングル サインオンを構成するには、次の手順に従います。
 
-1.  In the Azure classic portal, on the **Thoughtworks Mingle **application integration page, click **Configure single sign-on** to open the **Configure Single Sign On ** dialog.
+1.  Azure クラシック ポータルの **Thoughtworks Mingle** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
     ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785153.png "Configure single sign-on")
 
-2.  On the **How would you like users to sign on to Thoughtworks Mingle** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの Thoughtworks Mingle へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
     ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785154.png "Configure single sign-on")
 
-3.  On the **Configure App URL** page, in the **Thoughtworks Mingle Tenant URL** textbox, type your URL using the following pattern "*http://company.mingle.thoughtworks.com*", and then click **Next**.
+3.  **[アプリケーション URL の構成]** ページの **[Thoughtworks Mingle テナント URL]** テキストボックスに、"http://company.mingle.thoughtworks.com*" というパターンの URL を入力し、[次へ] をクリックします。
 
-    ![Configure App URL](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785155.png "Configure App URL")
+    ![アプリケーション URL の構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785155.png "アプリケーション URL の構成")
 
-4.  On the **Configure single sign-on at Thoughtworks Mingle** page, click Download metadata, and then save it on your computer.
+4.  **[Thoughtworks Mingle でのシングル サインオンの構成]** ページで、[メタデータのダウンロード] をクリックしてメタデータをダウンロードし、コンピューターに保存します。
 
     ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785156.png "Configure single sign-on")
 
-5.  Log in to your **Thoughtworks Mingle** company site as administrator.
+5.  **Thoughtworks Mingle** 企業サイトに管理者としてログインします。
 
-6.  Click the **Admin** tab, and then, click **SSO Config**.
+6.  **[Admin]** タブをクリックし、**[SSO Config]** をクリックします。
 
-    ![SSO Config](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785157.png "SSO Config")
+    ![SSO 構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785157.png "SSO 構成")
 
-7.  In the **SSO Config** section, perform the following steps:
+7.  **[SSO Config]** セクションで、次の手順に従います。
 
-    ![SSO Config](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785158.png "SSO Config")
+    ![SSO 構成](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785158.png "SSO 構成")
 
-    1.  To upload the metadata file, click **Choose file**.
-    2.  Click **Save Changes**.
+    1.  メタデータ ファイルをアップロードするには、**[Choose file]** をクリックします。
+    2.  **[変更を保存]** をクリックします。
 
-8.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
+8.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
 
     ![Configure single sign-on](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785159.png "Configure single sign-on")
 
-##<a name="configuring-user-provisioning"></a>Configuring user provisioning
+##ユーザー プロビジョニングの構成
   
-For AAD users to be able to sign in, they must be provisioned to the Thoughtworks Mingle application using their Azure Active Directory user names.  
-In the case of Thoughtworks Mingle, provisioning is a manual task.
+AAD ユーザーがサインインできるように、Azure Active Directory ユーザー名を使用して、Thoughtworks Mingle アプリケーションにユーザーをプロビジョニングする必要があります。Thoughtworks Mingle の場合、プロビジョニングは手動で行います。
 
-###<a name="to-configure-user-provisioning,-perform-the-following-steps:"></a>To configure user provisioning, perform the following steps:
+###ユーザー プロビジョニングを構成するには、次の手順に従います。
 
-1.  Log in to your Thoughtworks Mingle company site as administrator.
+1.  Thoughtworks Mingle 企業サイトに管理者としてログインします。
 
-2.  Click **Profile**.
+2.  **[Profile]** をクリックします。
 
-    ![Your First Project](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785160.png "Your First Project")
+    ![最初のプロジェクト](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785160.png "最初のプロジェクト")
 
-3.  Click the **Admin** tab, and then click **Users**.
+3.  **[Admin]** タブをクリックし、**[Users]** をクリックします。
 
     ![Users](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785161.png "Users")
 
-4.  Click **New User**.
+4.  **[新しいユーザー]** をクリックします。
 
-    ![New User](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785162.png "New User")
+    ![新しいユーザー](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785162.png "新しいユーザー")
 
-5.  On the **New User** dialog page, perform the following steps:
+5.  **[New User]** ダイアログ ページで、次の手順に従います。
 
-    ![New User](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785163.png "New User")
+    ![新しいユーザー](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785163.png "新しいユーザー")
 
-    1.  Type the **Sign-in name**, **Display name**, **Choose password**, **Confirm password** of a valid AAD account you want to provision into the related textboxes.
-    2.  As **User type**, select **Full user**.
-    3.  Click **Create This Profile**.
+    1.  プロビジョニングする有効な AAD アカウントの **[Sign-in name]**、**[Display name]**、**[Choose password]**、**[Confirm password]** の詳細を該当するボックスに入力します。
+    2.  **[User type]** として、**[Full user]** を選択します。
+    3.  **[Create This Profile]** をクリックします。
 
->[AZURE.NOTE] You can use any other Thoughtworks Mingle user account creation tools or APIs provided by Thoughtworks Mingle to provision AAD user accounts.
+>[AZURE.NOTE] Thoughtworks Mingle から提供されている他の Thoughtworks Mingle ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 
-##<a name="assigning-users"></a>Assigning users
+##ユーザーの割り当て
   
-To test your configuration, you need to grant the Azure AD users you want to allow using your application access to it by assigning them.
+構成をテストするには、アプリケーションの使用を許可する Azure AD ユーザーを割り当てて、そのユーザーに、アプリケーションへのアクセス権を付与する必要があります。
 
-###<a name="to-assign-users-to-thoughtworks-mingle,-perform-the-following-steps:"></a>To assign users to Thoughtworks Mingle, perform the following steps:
+###ユーザーを Thoughtworks Mingle に割り当てるには、次の手順を実行します。
 
-1.  In the Azure classic portal, create a test account.
+1.  Azure クラシック ポータルで、テスト アカウントを作成します。
 
-2.  On the **Thoughtworks Mingle** application integration page, click **Assign users**.
+2.  **Thoughtworks Mingle** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
 
-    ![Assign Users](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785164.png "Assign Users")
+    ![ユーザーの割り当て](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC785164.png "ユーザーの割り当て")
 
-3.  Select your test user, click **Assign**, and then click **Yes** to confirm your assignment.
+3.  テスト ユーザーを選択し、**[割り当て]**、**[はい]** の順にクリックして、割り当てを確定します。
 
     ![Yes](./media/active-directory-saas-thoughtworks-mingle-tutorial/IC767830.png "Yes")
   
-If you want to test your single sign-on settings, open the Access Panel. For more details about the Access Panel, see [Introduction to the Access Panel](active-directory-saas-access-panel-introduction.md).
+シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。アクセス パネルの詳細については、「[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

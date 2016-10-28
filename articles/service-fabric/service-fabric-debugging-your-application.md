@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Debug your application in Visual Studio | Microsoft Azure"
-   description="Improve the reliability and performance of your services by developing and debugging them in Visual Studio on a local development cluster."
+   pageTitle="Visual Studio でアプリケーションをデバッグする | Microsoft Azure"
+   description="Visual Studio とローカル開発クラスターを使用してサービスを開発、デバッグし、サービスの信頼性とパフォーマンスを改善します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="vturecek"
@@ -16,121 +16,119 @@
    ms.date="06/21/2016"
    ms.author="vturecek;mikhegn"/>
 
+# Visual Studio による Service Fabric アプリケーションのデバッグ
 
-# <a name="debug-your-service-fabric-application-by-using-visual-studio"></a>Debug your Service Fabric application by using Visual Studio
+## ローカルの Service Fabric アプリケーションをデバッグする
 
-## <a name="debug-a-local-service-fabric-application"></a>Debug a local Service Fabric application
+ローカル コンピューターの開発クラスターで Azure Service Fabric アプリケーションをデプロイしデバッグすることにより、時間と費用を節約できます。Visual Studio では、アプリケーションをローカル クラスターにデプロイして、アプリケーションのすべてのインスタンスにデバッガーを自動的に接続できます。
 
-You can save time and money by deploying and debugging your Azure Service Fabric application in a local computer development cluster. Visual Studio can deploy the application to the local cluster and automatically connect the debugger to all instances of your application.
+1. 「[Service Fabric 開発環境の設定](service-fabric-get-started.md)」にある手順に従って、ローカル開発クラスターを開始してください。
 
-1. Start a local development cluster by following the steps in [Setting up your Service Fabric development environment](service-fabric-get-started.md).
+2. **[F5]** キーを押して、**[デバッグ]**、**[デバッグの開始]** の順にクリックします
 
-2. Press **F5** or click **Debug** > **Start Debugging**.
+    ![アプリケーションのデバッグを開始する][startdebugging]
 
-    ![Start debugging an application][startdebugging]
+3. コードにブレークポイントを設定し、**[デバッグ]** メニューのコマンドをクリックしてアプリケーションをステップ実行します。
 
-3. Set breakpoints in your code and step through the application by clicking commands in the **Debug** menu.
+    > [AZURE.NOTE] Visual Studio は、アプリケーションのすべてのインスタンスにアタッチします。コードのステップ実行中に、ブレークポイントに複数のプロセスがヒットして、同時セッションになる場合があります。ヒットしたブレークポイントを無効にし、ブレークポイントをスレッド ID の条件付きにするか、診断イベントを使用します。
 
-    > [AZURE.NOTE] Visual Studio attaches to all instances of your application. While you're stepping through code, breakpoints may get hit by multiple processes resulting in concurrent sessions. Try disabling the breakpoints after they're hit, by making each breakpoint conditional on the thread ID or by using diagnostic events.
+4. **[診断イベント]** ウィンドウが自動的に開き、診断イベントをリアルタイムで表示します。
 
-4. The **Diagnostic Events** window will automatically open so you can view diagnostic events in real-time.
+    ![リアルタイムに診断イベントを表示する][diagnosticevents]
 
-    ![View diagnostic events in real time][diagnosticevents]
+5. **[診断イベント]** ウィンドウは、Cloud Explorer で開くこともできます。**[Service Fabric]** の下で任意のノードを右クリックし、**[ストリーミング トレースを表示する]** を選択します。
 
-5. You can also open the **Diagnostic Events** window in Cloud Explorer.  Under **Service Fabric**, right-click any node and choose **View Streaming Traces**.
+    ![診断イベント ウィンドウを開く][viewdiagnosticevents]
 
-    ![Open the diagnostic events window][viewdiagnosticevents]
+    特定のサービスまたはアプリケーションにトレースをフィルター処理する場合は、そのサービスまたはアプリケーションでストリーミング トレースを有効にするだけで済みます。
 
-    If you want to filter your traces to a specific service or application, simply enable streaming traces on that specific service or application.
-
-6. The diagnostic events can be seen in the automatically generated **ServiceEventSource.cs** file and are called from application code.
+6. 診断イベントは自動的に生成される **ServiceEventSource.cs** でも確認でき、アプリケーション コードから呼び出されます。
 
     ```csharp
     ServiceEventSource.Current.ServiceMessage(this, "My ServiceMessage with a parameter {0}", result.Value.ToString());
     ```
 
-7. The **Diagnostic Events** window supports filtering, pausing, and inspecting events in real-time.  The filter is a simple string search of the event message, including its contents.
+7. **[診断イベント]** ウィンドウは、フィルター処理、一時停止、およびリアルタイムのイベント検査をサポートしています。このフィルターは、イベント メッセージとその内容の単純な文字列検索です。
 
-    ![Filter, pause and resume, or inspect events in real-time][diagnosticeventsactions]
+    ![フィルター処理、一時停止と再開、またはリアルタイムのイベント検査][diagnosticeventsactions]
 
-8. Debugging services is like debugging any other application. You will normally set Breakpoints through Visual Studio for easy debugging. Even though Reliable Collections replicate across multiple nodes, they still implement IEnumerable. This means that you can use the Results View in Visual Studio while debugging to see what you've stored inside. Simply set a breakpoint anywhere in your code.
+8. サービスのデバッグは、その他のアプリケーションのデバッグと似ています。通常 Visual Studio で簡単なデバッグ用のブレークポイントを設定できます。Reliable Collections は複数のノード間で複製されますが、IEnumerable は実装されます。これは、デバッグ中に Visual Studio の結果ビューを使用して内部保存されているものを確認できることを意味します。コードの任意の場所にブレークポイントを設定するだけです。
 
-    ![Start debugging an application][breakpoint]
+    ![アプリケーションのデバッグを開始する][breakpoint]
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## <a name="debug-a-remote-service-fabric-application"></a>Debug a remote Service Fabric application
+## リモートの Service Fabric アプリケーションをデバッグする
 
-If your Service Fabric applications are running on a Service Fabric cluster in Azure, you are able to remotely debug these, directly from Visual Studio.
+Service Fabric アプリケーションを Azure の Service Fabric クラスターで実行している場合は、Visual Studio から直接これらのアプリケーションをリモートでデバッグできます。
 
-> [AZURE.NOTE] The feature requires [Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) and [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/).    
-
-<!-- -->
-> [AZURE.WARNING] Remote debugging is meant for dev/test scenarios and not to be used in production environments, because of the impact on the running applications.
-
-1. Navigate to your cluster in **Cloud Explorer**, right-click and choose **Enable Debugging**
-
-    ![Enable remote debugging][enableremotedebugging]
-
-    This will kick-off the process of enabling the remote debugging extension on your cluster nodes, as well as required network configurations.
-
-2. Right-click the cluster node in **Cloud Explorer**, and choose **Attach Debugger**
-
-    ![Attach debugger][attachdebugger]
-
-3. In the **Attach to process** dialog, choose the process you want to debug, and click **Attach**
-
-    ![Choose process][chooseprocess]
-
-    The name of the process you want to attach to, equals the name of your service project assembly name.
-
-    The debugger will attach to all nodes running the process.
-    - In the case where you are debugging a stateless service, all instances of the service on all nodes are part of the debug session.
-    - If you are debugging a stateful service, only the primary replica of any partition will be active and therefore caught by the debugger. If the primary replica moves during the debug session, the processing of that replica will still be part of the debug session.
-    - In order to only catch relevant partitions or instances of a given service, you can use conditional breakpoints to only break a specific partition or instance.
-
-    ![Conditional breakpoint][conditionalbreakpoint]
-
-    > [AZURE.NOTE] Currently we do not support debugging a Service Fabric cluster with multiple instances of the same service executable name.
-
-4. Once you finish debugging your application, you can disable the remote debugging extension by right-clicking the cluster in **Cloud Explorer** and choose **Disable Debugging**
-
-    ![Disable remote debugging][disableremotedebugging]
-
-## <a name="streaming-traces-from-a-remote-cluster-node"></a>Streaming traces from a remote cluster node
-
-You are also able to stream traces directly from a remote cluster node to Visual Studio. This feature allows you to stream ETW trace events, produced on a Service Fabric cluster node, directly in Visual Studio.
-
-> [AZURE.NOTE] The feature requires [Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) and [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/).
+> [AZURE.NOTE] この機能には [Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) と [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/) が必要です。
 
 <!-- -->
-> [AZURE.WARNING] Streaming traces is meant for dev/test scenarios and not to be used in production environments, because of the impact on the running applications.
-> In a production scenario, you should rely on forwarding events using Azure Diagnostics.
+> [AZURE.WARNING] リモート デバッグは開発/テスト シナリオ向けであり、運用環境向けではありません。これは、実行中のアプリケーションに影響が生じるためです。
 
-1. Navigate to your cluster in **Cloud Explorer**, right-click and choose **Enable Streaming Traces**
+1. **Cloud Explorer** で目的のクラスターを右クリックし、**[デバッグの有効化]** を選択します。
 
-    ![Enable remote streaming traces][enablestreamingtraces]
+    ![リモート デバッグの有効化][enableremotedebugging]
 
-    This will kick-off the process of enabling the streaming traces extension on your cluster nodes, as well as required network configurations.
+    これにより、必要なネットワーク構成のほか、クラスター ノードでリモート デバッグ拡張機能を有効にするプロセスが開始されます。
 
-2. Expand the **Nodes** element in **Cloud Explorer**, right-click the node you want to stream traces from and choose **View Streaming Traces**
+2. **Cloud Explorer** でクラスター ノードを右クリックし、**[デバッガーのアタッチ]** を選択します。
 
-    ![View remote streaming traces][viewremotestreamingtraces]
+    ![デバッガーの接続][attachdebugger]
 
-    Repeat step 2 for as many nodes as you want to see traces from. Each nodes stream will show up in a dedicated window.
+3. **[プロセスにアタッチ]** ダイアログ ボックスで、デバッグするプロセスを選択し、**[アタッチ]** をクリックします。
 
-    You are now able to see the traces emitted by Service Fabric, and your services. If you want to filter the events to only show a specific application, simply type in the name of the application in the filter.
+    ![プロセスの選択][chooseprocess]
 
-    ![Viewing streaming traces][viewingstreamingtraces]
+    アタッチするプロセスの名前は、サービス プロジェクト アセンブリ名と同じ名前です。
 
-4. Once you are done streaming traces from your cluster, you can disable remote streaming traces, by right-clicking the cluster in **Cloud Explorer** and choose **Disable Streaming Traces**
+    デバッガーはプロセスを実行するすべてのノードにアタッチされます。
+    - ステートレス サービスをデバッグする場合は、全ノード上のサービスのすべてのインスタンスがデバッグ セッションに含まれます。
+    - ステートフル サービスをデバッグする場合は、パーティションのプライマリ レプリカのみがアクティブになり、デバッガーによってキャッチされます。デバッグ セッション中にプライマリ レプリカが移動した場合でも、そのレプリカの処理は引き続きデバッグ セッションに含まれます。
+    - 関連するパーティションまたは特定のサービスのインスタンスのみをキャッチするために、特定のパーティションまたはインスタンスのみを中断する条件付きブレークポイントを設定できます。
 
-    ![Disable remote streaming traces][disablestreamingtraces]
+    ![条件付きブレークポイント][conditionalbreakpoint]
 
-## <a name="next-steps"></a>Next steps
+    > [AZURE.NOTE] 現在、サービスの実行可能ファイル名が同名の複数のインスタンスを持つ Service Fabric クラスターのデバッグはサポートされていません。
 
-- [Test a Service Fabric service](service-fabric-testability-overview.md).
-- [Manage your Service Fabric applications in Visual Studio](service-fabric-manage-application-in-visual-studio.md).
+4. アプリケーションのデバッグが完了したら、**Cloud Explorer** でクラスターを右クリックし、**[デバッグの無効化]** を選択して、リモート デバッグ拡張機能を無効にできます。
+
+    ![リモート デバッグの無効化][disableremotedebugging]
+
+## リモート クラスター ノードからのストリーミング トレース
+
+リモート クラスター ノードから直接 Visual Studio にトレースをストリーミングすることもできます。この機能を使用すると、Service Fabric クラスター ノードで生成された ETW トレース イベントを Visual Studio で直接ストリーミングできます。
+
+> [AZURE.NOTE] この機能には [Service Fabric SDK 2.0](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-VS2015) と [Azure SDK for .NET 2.9](https://azure.microsoft.com/downloads/) が必要です。
+
+<!-- -->
+> [AZURE.WARNING] ストリーミング トレースは開発/テスト シナリオ向けであり、運用環境向けではありません。これは、実行中のアプリケーションに影響が生じるためです。運用環境のシナリオでは、Azure 診断を使用したイベント転送に頼る必要があります。
+
+1. **Cloud Explorer** で目的のクラスターを右クリックし、**[ストリーミング トレースを有効にする]** を選択します。
+
+    ![リモートのストリーミング トレースの有効化][enablestreamingtraces]
+
+    これにより、必要なネットワーク構成のほか、クラスター ノードでストリーミング トレース拡張機能を有効にするプロセスが開始されます。
+
+2. **Cloud Explorer** で **[ノード]** を展開し、ストリーミング トレースを実行するノードを右クリックし、**[ストリーミング トレースを表示する]** を選択します。
+
+    ![リモートのストリーミング トレースの表示][viewremotestreamingtraces]
+
+    トレースを表示するノードの数だけ手順 2. を繰り返します。各ノード ストリームは専用のウィンドウに表示されます。
+
+    これで、サービスと Service Fabric によって出力されるトレースを表示できるようになりました。特定のアプリケーションのみを表示するようにイベントをフィルター処理する場合は、フィルターにアプリケーション名を入力します。
+
+    ![ストリーミング トレースの表示][viewingstreamingtraces]
+
+4. クラスターからのストリーミング トレースが完了したら、リモートのストリーミング トレースを無効化できます。このためには、**Cloud Explorer** でクラスターを右クリックし、**[ストリーミング トレースを無効にする]** を選択します。
+
+    ![リモートのストリーミング トレースの無効化][disablestreamingtraces]
+
+## 次のステップ
+
+- [Service Fabric サービスのテスト](service-fabric-testability-overview.md)。
+- [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)。
 
 <!--Image references-->
 [startdebugging]: ./media/service-fabric-debugging-your-application/startdebugging.png
@@ -148,8 +146,4 @@ You are also able to stream traces directly from a remote cluster node to Visual
 [viewremotestreamingtraces]: ./media/service-fabric-debugging-your-application/viewremotestreamingtraces.png
 [disablestreamingtraces]: ./media/service-fabric-debugging-your-application/disablestreamingtraces.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0622_2016-->

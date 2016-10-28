@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Replace a PCM on your StorSimple device | Microsoft Azure"
-   description="Explains how to remove and replace the Power and Cooling Module (PCM) on your StorSimple device"
+   pageTitle="StorSimple デバイスの PCM を交換する | Microsoft Azure"
+   description="StorSimple デバイスの電源冷却モジュール (PCM) を取り外して交換する方法について説明します。"
    services="storsimple"
    documentationCenter=""
    authors="alkohli"
@@ -15,149 +15,144 @@
    ms.date="08/18/2016"
    ms.author="alkohli" />
 
+# StorSimple デバイスの電源冷却モジュールを交換する
 
-# <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Replace a Power and Cooling Module on your StorSimple device
+## Overview
 
-## <a name="overview"></a>Overview
+Microsoft Azure StorSimple デバイスの電源冷却モジュール (PCM) は、主エンクロージャと EBOD エンクロージャを通して制御される電源と冷却ファンで構成されます。各エンクロージャで認定されている PCM のモデルは 1 つだけあります。主エンクロージャでは 764 W PCM が、EBOD エンクロージャでは 580 W PCM が認定されています。主エンクロージャと EBOD エンクロージャの PCM は異なりますが、交換手順は同じです。
 
-The Power and Cooling Module (PCM) in your Microsoft Azure StorSimple device consists of a power supply and cooling fans that are controlled through the primary and EBOD enclosures. There is only one model of PCM that is certified for each enclosure. The primary enclosure is certified for a 764 W PCM and the EBOD enclosure is certified for a 580 W PCM. Although the PCMs for the primary enclosure and the EBOD enclosure are different, the replacement procedure is identical.
+このチュートリアルでは、次の方法について説明します。
 
-This tutorial explains how to:
+- PCM を取り外す
+- 交換用 PCM を取り付ける
 
-- Remove a PCM
-- Install a replacement PCM
+>[AZURE.IMPORTANT] PCM を取り外して交換する前に、「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の安全に関する情報を再確認してください。
 
->[AZURE.IMPORTANT] Before removing and replacing a PCM, review the safety information in [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+## PCM を交換する前に
 
-## <a name="before-you-replace-a-pcm"></a>Before you replace a PCM
+PCM を交換する前に、次の重要な問題に注意してください。
 
-Be aware of the following important issues before you replace your PCM:
+- PCM の電源に障害が発生した場合、問題のあるモジュールは取り付けたままにしますが、電源コードは取り外します。ファンの電力はエンクロージャから供給され、冷却は適切に続行されます。ファンに障害が発生した場合は、PCM をただちに交換する必要があります。
 
-- If the power supply of the PCM fails, leave the faulty module installed, but remove the power cord. The fan will continue to receive power from the enclosure and continue to provide proper cooling. If the fan fails, the PCM needs to be replaced immediately.
+- PCM を取り外す前に、メイン スイッチをオフにする (存在する場合) か電源コードを物理的に抜くことで、PCM の電源を切ります。これにより、電源のシャット ダウンが間もなく発生することがシステムに警告されます。
 
-- Before removing the PCM, disconnect the power from the PCM by turning off the main switch (where present) or by physically removing the power cord. This provides a warning to your system that a power shutdown is imminent.
+- システムの稼働を継続するために、障害が発生している PCM を交換する前に他の PCM が機能していることを確認します。障害が発生している PCM は、完全に動作する PCM に早急に交換する必要があります。
 
-- Make sure that the other PCM is functional for continued system operation before replacing the faulty PCM. A faulty PCM must be replaced by a fully operational PCM as soon as possible.
+- PCM モジュールの交換は数分で完了できますが、過熱状態を防ぐために障害が発生した PCM の取り外しは 10 分以内に完了する必要があります。
 
-- PCM module replacement takes only few minutes to complete, but it must be completed within 10 minutes of removing the failed PCM to prevent overheating.
-
-- Note that the replacement 764 W PCM modules shipped from the factory do not contain the backup battery module. You will need to remove the battery from your faulty PCM and then insert it into the replacement module prior to performing the replacement. For more information, see how to [remove and insert a backup battery module](storsimple-battery-replacement.md).
-
-
-## <a name="remove-a-pcm"></a>Remove a PCM
-
-Follow these instructions when you are ready to remove a Power and Cooling Module (PCM) from your Microsoft Azure StorSimple device.
-
->[AZURE.NOTE] Before you remove your PCM, verify that you have a correct replacement (764 W for the primary enclosure or 580 W for the EBOD enclosure).
-
-#### <a name="to-remove-a-pcm"></a>To remove a PCM
-
-1. In the Azure classic portal, click **Devices** > **Maintenance** > **Hardware Status**. Check the status of the PCM components under **Shared Components** to identify which PCM has failed:
-
-     - If a power supply in PCM 0 has failed, the status of **Power Supply in PCM 0** will be red.
-
-     - If a power supply in PCM 1 has failed, the status of **Power Supply in PCM 1** will be red.
-
-     - If the fan in PCM 1 has failed, the status of either **Cooling 0 for PCM 0** or **Cooling 1 for PCM 0** will be red.
-
-2. Locate the failed PCM on the back of the primary enclosure. If you are running an 8600 model, identify the primary enclosure by looking at the System Unit Identification Number shown on the front panel LED display. The default Unit ID displayed on the primary enclosure is **00**, whereas the default Unit ID displayed on the EBOD enclosure is **01**. The following diagram and table explain the front panel of the LED display.
-
-    ![System ID on front OPS panel](./media/storsimple-power-cooling-module-replacement/IC740991.png)
-
-     **Figure 1** Front panel of the device  
-
-  	|Label|Description|
-  	|:---|:-----------|
-  	|1|Mute button|
-  	|2|System power|
-  	|3|Module fault|
-  	|4|Logical fault|
-  	|5|Unit ID display|
-
-3. The monitoring indicator LEDs in the back of the primary enclosure can also be used to identify the faulty PCM. See the following diagram and table to understand how to use the LEDs to locate the faulty PCM. For example, if the LED corresponding to the **Fan Fail** is lit, the fan has failed. Likewise, if the LED corresponding to **AC Fail** is lit, the power supply has failed. 
-
-    ![Backplane of device PCM monitoring indicator LEDs](./media/storsimple-power-cooling-module-replacement/IC740992.png)
-
-     **Figure 2** Back of PCM with indicator LEDs
-
-  	|Label|Description|
-  	|:---|:-----------|
-  	|1|AC power failure|
-  	|2|Fan failure|
-  	|3|Battery fault|
-  	|4|PCM OK|
-  	|5|DC power failure|
-  	|6|Battery healthy|
-
-4. Refer to the following diagram of the back of the StorSimple device to locate the failed PCM module. PCM 0 is on the left and PCM 1 is on the right. The table that follows explains the modules.
-
-     ![Backplane of device primary enclosure modules](./media/storsimple-power-cooling-module-replacement/IC740994.png)
-
-     **Figure 3** Back of device with plug-in modules 
-
-  	|Label|Description|
-  	|:---|:-----------|
-  	|1|PCM 0|
-  	|2|PCM 1|
-  	|3|Controller 0|
-  	|4|Controller 1|
-
-5. Turn off the faulty PCM and disconnect the power supply cord. You can now remove the PCM.
-
-6. Grasp the latch and the side of the PCM handle between your thumb and forefinger, and squeeze them together to open the handle.
-
-    ![Opening PCM Handle](./media/storsimple-power-cooling-module-replacement/IC740995.png)
-
-    **Figure 4** Opening the PCM handle
-
-7. Grip the handle and remove the PCM.
-
-    ![Removing Device PCM](./media/storsimple-power-cooling-module-replacement/IC740996.png)
-
-    **Figure 5** Removing the PCM
-
-## <a name="install-a-replacement-pcm"></a>Install a replacement PCM
-
-Follow these instructions to install a PCM in your StorSimple device. Ensure that you have inserted the backup battery module prior to installing the replacement PCM (applies to 764 W PCMs only). For more information, see how to [remove and insert a backup battery module](storsimple-battery-replacement.md).
-
-#### <a name="to-install-a-pcm"></a>To install a PCM
-
-1. Verify that you have the correct replacement PCM for this enclosure. The primary enclosure needs a 764 W PCM and the EBOD enclosure needs a 580 W PCM. You should not attempt to use the 580 W PCM in the Primary enclosure, or the 764 W PCM in the EBOD enclosure. The following image shows where to identify this information on the label that is affixed to the PCM.
-
-    ![Device PCM Label](./media/storsimple-power-cooling-module-replacement/IC740973.png)
-
-    **Figure 6** PCM label
-
-2. Check for damage to the enclosure, paying particular attention to the connectors. 
-                                        
-    >[AZURE.NOTE] **Do not install the module if any connector pins are bent.**
-
-3. With the PCM handle in the open position, slide the module into the enclosure.
-
-    ![Installing Device PCM](./media/storsimple-power-cooling-module-replacement/IC740975.png)
-
-    **Figure 7** Installing the PCM
-
-4. Manually close the PCM handle. You should hear a click as the handle latch engages. 
-                                        
-    >[AZURE.NOTE] To ensure that the connector pins have engaged, you can gently tug on the handle without releasing the latch. If the PCM slides out, it implies that the latch was closed before the connectors engaged.
-
-5. Connect the power cables to the power source and to the PCM.
-
-6. Secure the strain relief bales. 
-
-7. Turn on the PCM.
-
-8. Verify that the replacement was successful: in the Azure classic portal of your StorSimple Manager service, navigate to **Devices** > **Maintenance** > **Hardware Status**. Under **Shared Components**, the status of the PCM should be green. 
-                                        
-    >[AZURE.NOTE] It may take a few minutes for the replacement PCM to completely initialize.
-
-## <a name="next-steps"></a>Next steps
-
-Learn more about [StorSimple hardware component replacement](storsimple-hardware-component-replacement.md).
+- 工場から出荷された交換用 764 W PCM モジュールには、バックアップ バッテリ モジュールが含まれていません。障害が発生している PCM からバッテリを取り外し、交換用モジュールにそのバッテリを装着してから、交換を行う必要があります。詳細については、[バックアップ バッテリ モジュールを取り外して装着する](storsimple-battery-replacement.md)方法を参照してください。
 
 
+## PCM を取り外す
 
-<!--HONumber=Oct16_HO2-->
+電源冷却モジュール (PCM) を Microsoft Azure StorSimple デバイスから取り外す準備ができたら、次の手順に従います。
 
+>[AZURE.NOTE] PCM を取り外す前に、適切な交換用 PCM (主エンクロージャでは 764 W、EBOD エンクロージャでは 580 W) を用意していることを確認します。
 
+#### PCM を取り外すには
+
+1. Azure クラシック ポータルで、**[デバイス]**、**[メンテナンス]**、**[ハードウェアの状態]** の順にクリックします。**[共有コンポーネント]** で PCM コンポーネントの状態を調べて、障害が発生している PCM を特定します。
+
+     - PCM 0 の電源で障害が発生している場合は、**PCM 0 の電源**の状態が赤色になります。
+
+     - PCM 1 の電源で障害が発生している場合は、**PCM 1 の電源**の状態が赤色になります。
+
+     - PCM 1 のファンに障害が発生した場合は、**PCM 0 の冷却装置 0**または **PCM 0 冷却装置 1** の状態が赤色になります。
+
+2. 主エンクロージャの背面で障害が発生した PCM を探します。8600 モデルを稼働させている場合は、フロント パネルの LED ディスプレイに表示されるシステム ユニット識別番号を見て、主エンクロージャを識別します。主エンクロージャに表示される既定のユニット ID は **00** であり、EBOD エンクロージャに表示される既定のユニット ID は **01** です。次の図と表で、LED ディスプレイのフロント パネルについて説明します。
+
+    ![フロント OPS パネルのシステム ID](./media/storsimple-power-cooling-module-replacement/IC740991.png)
+
+     **図 1** デバイスのフロント パネル
+
+    |ラベル|Description|
+    |:---|:-----------|
+    |1|ミュート ボタン|
+    |2|システム電源|
+    |3|モジュール障害|
+    |4|論理的な障害|
+    |5|ユニット ID ディスプレイ|
+
+3. 障害が発生している PCM を識別するために、主エンクロージャの背面にあるモニタリング インジケーター LED も使用できます。次の図と表で、LED を使用して障害のある PCM を見つける方法を理解してください。たとえば、**ファン障害**に対応する LED が点灯していれば、ファンに障害が発生しています。同様に、**AC 電源障害**に対応する LED が点灯していれば、電源に障害が発生しています。
+
+    ![デバイスの PCM モニタリング インジケーター LED のバックプレーン](./media/storsimple-power-cooling-module-replacement/IC740992.png)
+
+     **図 2** PCM 背面のインジケーター LED
+
+    |ラベル|Description|
+    |:---|:-----------|
+    |1|AC 電源障害|
+    |2|ファン障害|
+    |3|バッテリ障害|
+    |4|PCM OK|
+    |5|DC 電源障害|
+    |6|バッテリ正常|
+
+4. 次の StorSimple デバイスの背面図を参照して、障害が発生している PCM モジュールを見つけてください。PCM 0 は左側に、PCM 1 は右側に配置されています。次の表で、モジュールについて説明します。
+
+     ![デバイスの主エンクロージャ モジュールのバックプレーン](./media/storsimple-power-cooling-module-replacement/IC740994.png)
+
+     **図 3** デバイスの背面とプラグイン モジュール
+
+    |ラベル|Description|
+    |:---|:-----------|
+    |1|PCM 0|
+    |2|PCM 1|
+    |3|コントローラー 0|
+    |4|コントローラー 1|
+
+5. 障害が発生している PCM の電源を切り、電源ケーブルを抜きます。これで、PCM を取り外すことができます。
+
+6. ラッチと PCM ハンドルの側面を親指と人差し指でつまみ、強く押してハンドルを開きます。
+
+    ![PCM ハンドルを開く](./media/storsimple-power-cooling-module-replacement/IC740995.png)
+
+    **図 4** PCM ハンドルを開く
+
+7. ハンドルを握って PCM を取り外します。
+
+    ![デバイスの PCM を取り外す](./media/storsimple-power-cooling-module-replacement/IC740996.png)
+
+    **図 5** PCM を取り外す
+
+## 交換用 PCM を取り付ける
+
+StorSimple デバイスに PCM を取り付けるには次の手順に従います。交換用 PCM (764 W PCM のみが該当) を取り付ける前に、バックアップ バッテリ モジュールを装着したことを確認します。詳細については、[バックアップ バッテリ モジュールを取り外して装着する](storsimple-battery-replacement.md)方法を参照してください。
+
+#### PCM を取り付けるには
+
+1. 交換用 PCM がエンクロージャに適合した PCM であることを確認します。主エンクロージャには 764 W PCM が、EBOD エンクロージャには 580 W PCM が必要です。主エンクロージャで 580 W PCM を、EBOD エンクロージャで 764 W PCM を使用しようとしないでください。次の図に、この情報をPCM に貼付されたラベルで特定する場所を示します。
+
+    ![デバイスの PCM ラベル](./media/storsimple-power-cooling-module-replacement/IC740973.png)
+
+    **図 6** PCM ラベル
+
+2. エンクロージャが破損していないことを確認します。特にコネクタに注意します。
+										
+    >[AZURE.NOTE] **コネクタ ピンが曲がっている場合は、モジュールを取り付けないでください。**
+
+3. PCM ハンドルが開いた状態で、モジュールをエンクロージャに押し込みます。
+
+    ![デバイスの PCM を取り付ける](./media/storsimple-power-cooling-module-replacement/IC740975.png)
+
+    **図 7** PCM を取り付ける
+
+4. PCM ハンドルを手動で閉じます。ハンドルのラッチがかかると、カチッと音がします。
+										
+    >[AZURE.NOTE] コネクタ ピンがかみ合ったことを確認するために、ラッチを解放せずにハンドルをゆっくりと引くことができます。PCM が引き出されたら、コネクタがかみ合う前にラッチを閉じたことを意味します。
+
+5. 電源ケーブルを電源と PCM に接続します。
+
+6. 張力のがしベールを固定します。
+
+7. PCM の電源を入れます。
+
+8. 交換が正常に完了したことを確認します。StorSimple Manager サービスの Azure クラシック ポータルで、**[デバイス]**、**[メンテナンス]**、**[ハードウェアの状態]** の順に選択します。**[共有コンポーネント]** で、PCM の状態が緑色になっているはずです。
+										
+    >[AZURE.NOTE] 置換用 PCM が完全に初期化されるまで数分かかる場合があります。
+
+## 次のステップ
+
+「[StorSimple ハードウェア コンポーネントの交換](storsimple-hardware-component-replacement.md)」の説明を参照してください。
+
+<!---HONumber=AcomDC_0824_2016-->

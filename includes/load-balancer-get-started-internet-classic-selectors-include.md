@@ -5,7 +5,4 @@
 - [Azure CLI](load-balancer-get-started-internet-classic-cli.md)
 - [Azure Cloud Services](load-balancer-get-started-internet-classic-cloud.md)
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_1210_2015-->

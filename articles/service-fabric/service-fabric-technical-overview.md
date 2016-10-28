@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Service Fabric terminology overview | Microsoft Azure"
-   description="A terminology overview of Service Fabric. Discusses key terminology concepts and terms used in the rest of the documentation."
+   pageTitle="Service Fabric の用語の概要 | Microsoft Azure"
+   description="Service Fabric の用語の概要です。重要な用語の概念と、ドキュメントの他の部分で使用される用語について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="rwike77"
@@ -16,83 +16,78 @@
    ms.date="08/25/2016"
    ms.author="ryanwi"/>
 
+# Service Fabric の用語の概要
 
-# <a name="service-fabric-terminology-overview"></a>Service Fabric terminology overview
+Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。このトピックでは、Service Fabric 関連ドキュメントで用いられる言葉の意味を理解するうえで参考となるように、Service Fabric で用いられる用語について詳しく説明します。
 
-Service Fabric is a distributed systems platform that makes it easy to package, deploy, and manage scalable and reliable microservices. This topic details the terminology used by Service Fabric in order to understand the terms used in the documentation.
+## インフラストラクチャの概念
+**クラスター**: ネットワークで接続された一連の仮想マシンまたは物理マシン。マイクロサービスは、クラスターにデプロイして管理することになります。クラスターは多数のマシンにスケールできます。
 
-## <a name="infrastructure-concepts"></a>Infrastructure concepts
-**Cluster**: A network-connected set of virtual or physical machines into which your microservices are deployed and managed.  Clusters can scale to thousands of machines.
+**ノード**: クラスターに属しているコンピューターまたは VM を "ノード" といいます。それぞれのノードには、ノード名 (文字列) が割り当てられます。ノードには、配置プロパティなどの特性があります。それぞれのコンピューターまたは VM には、自動的に開始される Windows サービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、`Fabric.exe` と `FabricGateway.exe` の 2 つの実行可能ファイルを起動します。ノードは、この 2 つの実行可能ファイルから成ります。テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
 
-**Node**: A machine or VM that is part of a cluster is called a node. Each node is assigned a node name (a string). Nodes have characteristics such as placement properties. Each machine or VM has an auto-start Windows service, `FabricHost.exe`, which starts running upon boot and then starts two executables: `Fabric.exe` and `FabricGateway.exe`. These two executables make up the node. For testing scenarios, you can host multiple nodes on a single machine or VM by running multiple instances of `Fabric.exe` and `FabricGateway.exe`.
+## アプリケーションの概念
+**アプリケーションの種類**: 一連のサービスの種類に割り当てられる名前/バージョン。`ApplicationManifest.xml` ファイル内に定義され、アプリケーション パッケージ ディレクトリに組み込まれた後、Service Fabric クラスターのイメージ ストアにコピーされます。このアプリケーションの種類に基づいて、特定の名前のアプリケーションをクラスター内で作成することができます。
 
-## <a name="application-concepts"></a>Application concepts
-**Application Type**: The name/version assigned to a collection of service types. Defined in an `ApplicationManifest.xml` file, embedded in an application package directory, which is then copied to the Service Fabric cluster's image store. You can then create a named application from this application type within the cluster.
+詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」の記事を参照してください。
 
-Read the [Application Model](service-fabric-application-model.md) article for more information.
+**アプリケーション パッケージ**: アプリケーションの種類を定義した `ApplicationManifest.xml` ファイルが格納されるディスク上のディレクトリ。アプリケーションの種類を構成するサービスの種類ごとに、対応するサービス パッケージを参照します。アプリケーション パッケージ ディレクトリ内のファイルは、Service Fabric クラスターのイメージ ストアにコピーされます。たとえば電子メール アプリケーション タイプのアプリケーション パッケージであれば、Queue サービス パッケージやフロントエンド サービス パッケージ、データベース サービス パッケージへの参照が含まれることが考えられます。
 
-**Application Package**: A disk directory containing the application type's `ApplicationManifest.xml` file. References the service packages for each service type that makes up the application type. The files in the application package directory are copied to Service Fabric cluster's image store. For example, an application package for an email application type could contain references to a queue service package, a frontend service package, and a database service package.
+**名前付きアプリケーション**: アプリケーション パッケージがイメージ ストアにコピーされた後、アプリケーション パッケージのアプリケーションの種類を (その名前/バージョンで) 指定することにより、そのアプリケーションのインスタンスをクラスター内に作成します。アプリケーションの種類のインスタンスにはそれぞれ、URI 名が割り当てられます (例: `"fabric:/MyNamedApp"`)。1 つのアプリケーションの種類から複数の名前付きアプリケーションをクラスター内で作成することが可能です。異なるアプリケーションの種類から名前付きアプリケーションを作成することもできます。個々の名前付きアプリケーションは別々に管理され、バージョニングされます。
 
-**Named Application**: After an application package is copied to the image store, you create an instance of the application within the cluster by specifying the application package's application type (using its name/version). Each application type instance is assigned a URI name that looks like this: `"fabric:/MyNamedApp"`. Within a cluster, you can create multiple named applications from a single application type. You can also create named applications from different application types. Each named application is managed and versioned independently.      
+**サービスの種類**: サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前/バージョン。`ServiceManifest.xml` ファイル内に定義され、サービス パッケージ ディレクトリに組み込まれた後、このサービス パッケージ ディレクトリがアプリケーション パッケージの `ApplicationManifest.xml` ファイルによって参照されます。クラスターには、名前付きアプリケーションを作成した後、そのアプリケーションの種類を構成するいずれかのサービスの種類から名前付きサービスを作成することができます。サービスは、そのサービスの種類に対応する `ServiceManifest.xml` ファイルによって記述されます。
 
-**Service Type**: The name/version assigned to a service's code packages, data packages, and configuration packages. Defined in a `ServiceManifest.xml` file, embedded in a service package directory and the service package directory is then referenced by an application package's `ApplicationManifest.xml` file. Within the cluster, after creating a named application, you can create a named service from one of the application type's service types. The service type's `ServiceManifest.xml` file describes the service.
+詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」の記事を参照してください。
 
-Read the [Application Model](service-fabric-application-model.md) article for more information.
+サービスには、次の 2 種類があります。
 
-There are two types of services:
+- **ステートレス:** サービスの永続的な状態を外部ストレージ サービス (Azure Storage、Azure SQL Database、Azure DocumentDB など) に保存する場合はステートレス サービスを使用します。永続的なストレージがサービスにまったく存在しない場合は、ステートレス サービスを使用します。たとえば電卓サービスに値を渡すと、それらの値を使って計算が実行され、結果が返されます。
 
-- **Stateless:** Use a stateless service when the service's persistent state is stored in an external storage service such as Azure Storage, Azure SQL Database, or Azure DocumentDB. Use a stateless service when the service has no persistent storage at all. For example, a calculator service where values are passed to the service, a computation is performed using these values, and a result is returned.
+- **ステートフル: **Service Fabric の Reliable Collection や Reliable Actors のプログラミング モデルを介してサービスの状態を管理する場合は、ステートフル サービスを使用します。名前付きサービスを作成するときに (拡張性を得るために) 状態を分散させるパーティションの数を指定します。さらに、状態をノード間でレプリケートさせる回数を指定します。それぞれの名前付きサービスは、1 つのプライマリ レプリカと複数のセカンダリ レプリカを持ちます。名前付きサービスの状態は、プライマリ レプリカに書き込むことで変更します。その後、状態を同期させるために Service Fabric がその状態をすべてのセカンダリ レプリカにレプリケートします。Service Fabric は、プライマリ レプリカの障害を自動的に検出し、既存のセカンダリ レプリカをプライマリ レプリカに昇格させます。その後、Service Fabric は、新しいセカンダリ レプリカを作成します。
 
-- **Stateful:** Use a stateful service when you want Service Fabric to manage your service's state via its Reliable Collections or Reliable Actors programming models. Specify how many partitions you want to spread your state over (for scalability) when creating a named service. Also specify how many times to replicate your state across nodes (for reliability). Each named service has a single primary replica and multiple secondary replicas. You modify your named service's state by writing to the primary replica. Service Fabric then replicates this state to all the secondary replicas keeping your state in sync. Service Fabric automatically detects when a primary replica fails and promotes an existing secondary replica to a primary replica. Service Fabric then creates a new secondary replica.  
+**サービス パッケージ**: サービスの種類を定義した `ServiceManifest.xml` ファイルが格納されるディスク上のディレクトリ。このファイルは、特定の種類のサービスに必要なコード、静的データ、構成パッケージを参照します。サービス パッケージ ディレクトリ内のファイルは、アプリケーションの種類を定義した `ApplicationManifest.xml` ファイルから参照されます。たとえばサービス パッケージは、データベース サービスを構成するコードや静的データ、構成パッケージを参照します。
 
-**Service Package**: A disk directory containing the service type's `ServiceManifest.xml` file. This file references the code, static data, and configuration packages for the service type. The files in the service package directory are referenced by the application type's `ApplicationManifest.xml` file. For example, a service package could refer to the code, static data, and configuration packages that make up a database service.
+**名前付きサービス**: 名前付きアプリケーションを作成した後、そのいずれかのサービスの種類を (対応する名前/バージョンで) 指定することによって、特定の種類のサービスのインスタンスをクラスターに作成できます。サービスの種類のインスタンスにはそれぞれ、対応する名前付きアプリケーションの URI に従属する URI 名が割り当てられます。たとえば、名前付きサービス "MyDatabase" を名前付きアプリケーション "MyNamedApp" 内に作成した場合、`"fabric:/MyNamedApp/MyDatabase"` のような URI が割り当てられます。1 つの名前付きアプリケーションに複数の名前付きサービスを作成することができます。名前付きサービスにはそれぞれ固有のパーティション構成とインスタンス/レプリカ数を割り当てることができます。
 
-**Named Service**: After creating a named application, you can create an instance of one of its service types within the cluster by specifying the service type (using its name/version). Each service type instance is assigned a URI name scoped under its named application's URI. For example, if you create a "MyDatabase" named service within a "MyNamedApp" named application, the URI looks like: `"fabric:/MyNamedApp/MyDatabase"`. Within a named application, you can create several named services. Each named service can have its own partition scheme and instance/replica counts.
+**コード パッケージ**: 特定の種類のサービスで使用される実行可能ファイル (通常、EXE/DLL ファイル) が格納されるディスク上のディレクトリ。コード パッケージ ディレクトリ内のファイルは、サービスの種類を定義した `ServiceManifest.xml` ファイルから参照されます。名前付きサービスの作成時に、名前付きサービスを実行するために選択された 1 つまたは複数のノードにコード パッケージがコピーされます。その後、コードが実行を開始します。コード パッケージの実行可能ファイルには次の 2 種類があります。
 
-**Code Package**: A disk directory containing the service type's executable files (typically EXE/DLL files). The files in the code package directory are referenced by the service type's `ServiceManifest.xml` file. When a named service is created, the code package is copied to the one or more nodes selected to run the named service. Then the code starts running. There are two types of code package executables:
+- **ゲスト実行可能ファイル**: ホスト オペレーティング システム (Windows または Linux) 上において単体で動作する実行可能ファイル。つまりこれらの実行可能ファイルは、Service Fabric のランタイム ファイルと連動したりそれらのファイルを参照したりすることはせず、Service Fabric のプログラミング モデルを一切使用しません。これらの実行可能ファイルは、エンドポイント検出用のネーム サービスなどの Service Fabric の一部の機能を使用できません。ゲスト実行可能ファイルは、各サービス インスタンスに固有のロード メトリックを報告できません。
 
-- **Guest executables**: Executables that run as-is on the host operating system (Windows or Linux). That is, these executables do not link to or reference any Service Fabric runtime files and therefore do not use any Service Fabric programming models. These executables are unable to use some Service Fabric features such as the naming service for endpoint discovery. Guest executables cannot report load metrics specific to each service instance.
+- **サービス ホスト実行可能ファイル**: Service Fabric のランタイム ファイルと連動して Service Fabric の機能を有効にすることによって、Service Fabric のプログラミング モデルを使用する実行可能ファイルです。たとえば名前付きサービスのインスタンスが、Service Fabric のネーム サービスにエンドポイントを登録できるほか、負荷のメトリックを報告することもできます。
 
-- **Service Host Executables**: Executables that use Service Fabric programming models by linking to Service Fabric runtime files, enabling Service Fabric features. For example, a named service instance can register endpoints with Service Fabric's Naming Service and can also report load metrics.      
+**データ パッケージ**: 特定の種類のサービスで使用される読み取り専用の静的なデータ ファイル (通常、写真、サウンド、ビデオ ファイル) が格納されるディスク上のディレクトリ。データ パッケージ ディレクトリ内のファイルは、サービスの種類を定義した `ServiceManifest.xml` ファイルから参照されます。名前付きサービスの作成時に、名前付きサービスを実行するために選択された 1 つまたは複数のノードにデータ パッケージがコピーされます。コードが実行を開始し、データ ファイルにアクセスできるようになります。
 
-**Data Package**: A disk directory containing the service type's static, read-only data files (typically photo, sound, and video files). The files in the data package directory are referenced by the service type's `ServiceManifest.xml` file. When a named service is created, the data package is copied to the one or more nodes selected to run the named service.  The code starts running and can now access the data files.
+**構成パッケージ**: 特定の種類のサービスで使用される読み取り専用の静的な構成ファイル (通常、テキスト ファイル) が格納されるディスク上のディレクトリ。構成パッケージ ディレクトリ内のファイルは、サービスの種類を定義した `ServiceManifest.xml` ファイルから参照されます。名前付きサービスの作成時に、名前付きサービスを実行するために選択された 1 つまたは複数のノードに構成パッケージ内のファイルがコピーされます。その後、コードが実行を開始し、構成ファイルにアクセスできるようになります。
 
-**Configuration Package**: A disk directory containing the service type's static, read-only configuration files (typically text files). The files in the configuration package directory are referenced by the service type's `ServiceManifest.xml` file. When a named service is created, the files in the configuration package are copied to the one or more nodes selected to run the named service. Then the code starts running and can now access the configuration files.
+**パーティション構成**: パーティション構成は、名前付きサービスを作成するときに指定します。さまざまな状態を伴うサービスでは、データが複数のパーティションに分割されてクラスターのノードに分散されます。これによって名前付きサービスの状態を拡張することができます。パーティションには、ステートレスの名前付きサービスの場合はインスタンスが、ステートフルの名前付きサービスの場合はレプリカが格納されます。通常、ステートレスの名前付きサービスは内部的な状態を持たないため、割り当てられるパーティションは 1 つだけです。パーティションのインスタンスによってもたらされるのは可用性です。つまり 1 つのインスタンスで障害が発生しても他のインスタンスは正常動作を保ち、Service Fabric によって新しいインスタンスが作成されます。ステートフルの名前付きサービスでは、その状態がレプリカ内で管理されます。それぞれのパーティションが固有のレプリカ セットを持ち、すべての状態が同期されます。万一レプリカに障害が発生した場合は、Service Fabric が既存のレプリカから新しいレプリカを構築します。
 
-**Partition Scheme**: When creating a named service, you specify a partition scheme. Services with large amounts of state split the data across partitions which spreads it across the cluster's nodes. This allows your named service's state to scale. Within a partition, stateless named services have instances while stateful named services have replicas. Usually, stateless named services only ever have one partition since they have no internal state. The partition instances provide for availability; if one instance fails, other instances continue to operate normally and then Service Fabric will create a new instance. Stateful named services maintain their state within replicas and each partition has its own replica set with all the state being kept in sync. Should a replica fail, Service Fabric builds a new replica from the existing replicas.
+詳細については、「[Service Fabric Reliable Services のパーティション分割](service-fabric-concepts-partitioning.md)」をご覧ください。
 
-Read the [Partition Service Fabric reliable services](service-fabric-concepts-partitioning.md) article for more information.
+## システム サービス
+すべてのクラスターには、Service Fabric のプラットフォーム機能を提供するシステム サービスが作成されています。
 
-## <a name="system-services"></a>System services
-There are system services that are created in every cluster that provide the platform capabilities of Service Fabric.
+**ネーム サービス**: 各 Service Fabric クラスターには、サービス名をクラスター内の場所に解決するネーム サービスがあります。インターネットのクラスター用のドメイン ネーム サービス (DNS) と同じように、サービス名とプロパティを管理します。クライアントは、ネーム サービスを使用することでクラスター内の任意のノードと安全に通信して、サービス名とその場所を解決します。クライアントは、それが現在実行されている実際のコンピューターの IP アドレスとポートを取得します。障害、リソース分散、クラスターのサイズ変更などに起因してアプリケーションがクラスター内で移動されても、現在のネットワークの場所を解決可能なサービスやクライアントを開発できます。
 
-**Naming Service**: Each Service Fabric cluster has a Naming service, which resolves service names to a location in the cluster. You manage the service names and properties, similar to an internet Domain Name Service (DNS) for the cluster. Clients securely communicate with any node in the cluster using the Naming Service to resolve a service name and its location.  Clients obtain the actual machine IP address and port where it is currently running. You can develop services and clients capable of resolving the current network location despite applications being moved within the cluster for example due to failures, resource balancing, or the resizing of the cluster.
+ネーム サービスと連動して動作するクライアントおよびサービス通信 API の使用方法の詳細については、「[サービスとの通信](service-fabric-connect-and-communicate-with-services.md)」をご覧ください。
 
-Read [Communicate with services](service-fabric-connect-and-communicate-with-services.md) for more information on the client and service communication APIs that work with the Naming service.
+**イメージ ストア サービス**: 各 Service Fabric クラスターには、デプロイおよびバージョン管理されたアプリケーション パッケージが保持されるイメージ ストア サービスがあります。アプリケーション パッケージをイメージ ストアにコピーした後、そのアプリケーション パッケージに含まれているアプリケーションの種類を登録します。アプリケーションの種類をプロビジョニングした後、そのアプリケーションの種類から名前付きアプリケーションを作成します。アプリケーションの種類は、そのアプリケーションの種類から作成されているすべての名前付きアプリケーションを削除した後、イメージ ストア サービスからの登録を解除できます。
 
-**Image Store Service**: Each Service Fabric cluster has an Image Store service where deployed, versioned application packages are kept. Copy an application package to the Image Store and then register the application type contained within that application package. After the application type is provisioned, you create a named applications from it. You can unregister an application type from the Image Store service after all its named applications have been deleted.
+イメージ ストア サービスへのアプリケーションのデプロイの詳細については、「[アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)」をご覧ください。
 
-Read the [Deploy an application](service-fabric-deploy-remove-applications.md) article for more information on deploying applications to the Image store service.
+## 組み込みのプログラミング モデル
+Service Fabric のサービスを構築するにあたっては、次の .NET Framework プログラミング モデルが用意されています。
 
-## <a name="built-in-programming-models"></a>Built-in programming models
-There are .NET Framework programming models available for you to build Service Fabric services:
+**Reliable Services**: ステートレス サービスとステートフル サービスを構築するための API。ステートフル サービスの状態は、Reliable Collection (ディクショナリ、キューなど) に格納されます。他にも、Web API や Windows Communication Foundation (WCF) など、さまざまな通信スタックを組み込むことができます。
 
-**Reliable Services**: An API to build stateless and stateful services. Stateful service store their state in Reliable Collections (such as a dictionary or a queue). You also get to plug in a variety of communication stacks such as Web API and Windows Communication Foundation (WCF).
+**Reliable Actors**: 仮想アクター プログラミング モデルを使用してステートレス オブジェクトとステートフル オブジェクトを構築するための API。このモデルは、独立した計算/状態の単位が多数存在するときに適しています。このモデルは、順番に基づくスレッド モデルを採用しているため、他のアクターやサービスを呼び出すコードは避けた方が賢明です。それぞれのアクターは、すべての送信要求が完了するまで他の受信要求を処理できません。
 
-**Reliable Actors**: An API to build stateless and stateful objects through the virtual Actor programming model. This model can be useful when you have lots of independent units of computation/state. Because this model uses a turn-based threading model, it is best to avoid code that calls out to other actors or services since an individual actor cannot process other incoming requests until all its outbound requests have completed.
-
-Read the [Choose a Programming Model for your service](service-fabric-choose-framework.md) article for more information.
+詳細については、「[サービスのフレームワークを選択する](service-fabric-choose-framework.md)」をご覧ください。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>Next steps
-To learn more about Service Fabric:
+## 次のステップ
+Service Fabric の詳細については、以下の情報を参照してください。
 
-- [Overview of Service Fabric](service-fabric-overview.md)
-- [Why a microservices approach to building applications?](service-fabric-overview-microservices.md)
-- [Application scenarios](service-fabric-application-scenarios.md)
+- [Service Fabric の概要](service-fabric-overview.md)
+- [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
+- [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

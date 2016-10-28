@@ -1,101 +1,100 @@
 <properties
-    pageTitle="Manage Hadoop clusters using Azure CLI | Microsoft Azure"
-    description="How to use the Azure CLI to manage Hadoop clusters in HDIsight"
-    services="hdinsight"
-    editor="cgronlun"
-    manager="jhubbard"
-    authors="mumian"
-    tags="azure-portal"
-    documentationCenter=""/>
+	pageTitle="Azure CLI を使用した Hadoop クラスターの管理 |Microsoft Azure"
+	description="Azure CLI を使用して HDInsight で Hadoop クラスターを管理する方法"
+	services="hdinsight"
+	editor="cgronlun"
+	manager="jhubbard"
+	authors="mumian"
+	tags="azure-portal"
+	documentationCenter=""/>
 
 <tags
-    ms.service="hdinsight"
-    ms.workload="big-data"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/10/2016"
-    ms.author="jgao"/>
+	ms.service="hdinsight"
+	ms.workload="big-data"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/10/2016"
+	ms.author="jgao"/>
 
+# Azure CLI を使用した HDInsight での Hadoop クラスターの管理
 
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Manage Hadoop clusters in HDInsight using the Azure CLI
+[AZURE.INCLUDE [セレクター](../../includes/hdinsight-portal-management-selector.md)]
 
-[AZURE.INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
+[Azure コマンド ライン インターフェイス](../xplat-cli-install.md)を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。Azure CLI は Node.js で実装されます。Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
-Learn how to use the [Azure Command-line Interface](../xplat-cli-install.md) to manage Hadoop clusters in Azure HDInsight. The Azure CLI is implemented in Node.js. It can be used on any platform that supports Node.js, including Windows, Mac, and Linux.
-
-This article covers only using the Azure CLI with HDInsight. For a general guide on how to use Azure CLI, see [Install and configure Azure CLI][azure-command-line-tools].
+この記事では、HDInsight での Azure CLI の使用についてのみ説明します。Azure CLI の使用方法に関する一般的なガイドについては、「[Azure CLI のインストールと構成][azure-command-line-tools]」を参照してください。
 
 [AZURE.INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-##<a name="prerequisites"></a>Prerequisites
+##前提条件
 
-Before you begin this article, you must have the following:
+この記事を読み始める前に、次の項目を用意する必要があります。
 
-- **An Azure subscription**. See [Get Azure free trial](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-- **Azure CLI** - See [Install and configure the Azure CLI](../xplat-cli-install.md) for installation and configuration information.
-- **Connect to Azure**, using the following command:
+- **Azure サブスクリプション**。[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
+- **Azure CLI** - インストールと構成に関する情報は、[Azure CLI のインストールと構成](../xplat-cli-install.md)に関するページを参照してください。
+- 次のコマンドを使用して、**Azure に接続**します。
 
-        azure login
+		azure login
 
-    For more information on authenticating using a work or school account, see [Connect to an Azure subscription from the Azure CLI](xplat-cli-connect.md).
-    
-- **Switch to the Azure Resource Manager mode**, using the following command:
+	職場か学校のアカウントを使用した認証の詳細については、「[Azure CLI から Azure サブスクリプションへの接続する](xplat-cli-connect.md)」をご覧ください。
+	
+- 次のコマンドを使用して、**Azure リソース マネージャー モードに切り替えます**。
 
-        azure config mode arm
+		azure config mode arm
 
-To get help, use the **-h** switch.  For example:
+ヘルプを取得するには、**-h** スイッチを使用します。次に例を示します。
 
-    azure hdinsight cluster create -h
-    
-##<a name="create-clusters"></a>Create clusters
+	azure hdinsight cluster create -h
+	
+##クラスターの作成
 
-See [Create Linux-based clusters in HDInsight using the Azure CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
+「[Azure CLI を使用した HDInsight の Linux ベースのクラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)」を参照してください。
 
-##<a name="list-and-show-cluster-details"></a>List and show cluster details
-Use the following commands to list and show cluster details:
+##クラスターの一覧と詳細の表示
+クラスターの一覧と詳細を表示するには、次のコマンドを使用します。
 
-    azure hdinsight cluster list
-    azure hdinsight cluster show <Cluster Name>
+	azure hdinsight cluster list
+	azure hdinsight cluster show <Cluster Name>
 
 ![HDI.CLIListCluster][image-cli-clusterlisting]
 
 
-##<a name="delete-clusters"></a>Delete clusters
+##クラスターの削除
 
-Use the following command to delete a cluster:
+クラスターを削除するには、次のコマンドを使用します。
 
-    azure hdinsight cluster delete <Cluster Name>
+	azure hdinsight cluster delete <Cluster Name>
 
-You can also delete a cluster by deleting the resource group that contains the cluster. Please note, this will delete all the resources in the group including the default storage account.
+クラスターが含まれるリソース グループを削除して、クラスターを削除することもできます。グループを削除すると、既定のストレージ アカウントを含め、グループ内のすべてのリソースが削除されることに注意してください。
 
-    azure group delete <Resource Group Name>
+	azure group delete <Resource Group Name>
 
-##<a name="scale-clusters"></a>Scale clusters
+##クラスターのスケール
 
-To change the Hadoop cluster size:
+Hadoop クラスターのサイズを変更するには:
 
-    azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
-
-
-## <a name="enable/disable-http-access-for-a-cluster"></a>Enable/disable HTTP access for a cluster
-
-    azure hdinsight cluster enable-http-access [options] <Cluster Name> <userName> <password>
-    azure hdinsight cluster disable-http-access [options] <Cluster Name>
-
-## <a name="enable/disable-rdp-access-for-a-cluster"></a>Enable/disable RDP access for a cluster
-
-    azure hdinsight cluster enable-rdp-access [options] <Cluster Name> <rdpUserName> <rdpPassword> <rdpExpiryDate>
-    azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
+	azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
 
 
-##<a name="next-steps"></a>Next steps
-In this article, you have learned how to perform different HDInsight cluster administrative tasks. To learn more, see the following articles:
+## クラスターの HTTP アクセスの有効化/無効化
 
-* [Administer HDInsight by using the Azure Portal] [hdinsight-admin-portal]
-* [Administer HDInsight by using Azure PowerShell] [hdinsight-admin-powershell]
-* [Get started with Azure HDInsight] [hdinsight-get-started]
-* [How to use the Azure CLI] [azure-command-line-tools]
+	azure hdinsight cluster enable-http-access [options] <Cluster Name> <userName> <password>
+	azure hdinsight cluster disable-http-access [options] <Cluster Name>
+
+## クラスターの RDP アクセスの有効化/無効化
+
+  	azure hdinsight cluster enable-rdp-access [options] <Cluster Name> <rdpUserName> <rdpPassword> <rdpExpiryDate>
+  	azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
+
+
+##次のステップ
+この記事では、さまざまな HDInsight クラスター管理タスクを実行する方法について説明しました。詳細については、次の記事を参照してください。
+
+* [Azure ポータルを使用した HDInsight の管理][hdinsight-admin-portal]
+* [Azure PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
+* [Azure HDInsight の概要][hdinsight-get-started]
+* [Azure CLI の使い方][azure-command-line-tools]
 
 
 [azure-command-line-tools]: ../xplat-cli-install.md
@@ -112,10 +111,6 @@ In this article, you have learned how to perform different HDInsight cluster adm
 [image-cli-account-download-import]: ./media/hdinsight-administer-use-command-line/HDI.CLIAccountDownloadImport.png
 [image-cli-clustercreation]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreation.png
 [image-cli-clustercreation-config]: ./media/hdinsight-administer-use-command-line/HDI.CLIClusterCreationConfig.png
-[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "List and show clusters"
+[image-cli-clusterlisting]: ./media/hdinsight-administer-use-command-line/HDI.CLIListClusters.png "クラスターの一覧と表示"
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0914_2016-->

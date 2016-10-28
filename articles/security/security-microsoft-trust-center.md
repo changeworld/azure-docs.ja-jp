@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Microsoft Trust Center | Microsoft Azure"
-   description="The Microsoft Trust center provides you the information you need to be confident that the Azure platform on which you run your services is secure."
+   pageTitle="Microsoft セキュリティ センター | Microsoft Azure"
+   description="Microsoft セキュリティ センターは、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
    services="security"
    documentationCenter="na"
    authors="TomShinder"
@@ -16,30 +16,25 @@
    ms.date="08/09/2016"
    ms.author="terrylan"/>
 
+# Microsoft セキュリティ センター
 
-# <a name="microsoft-trust-center"></a>Microsoft Trust Center
+Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。Microsoft セキュリティ センターでは、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
 
-The Azure Security Information site on Azure.com gives you the information you need to plan, design, deploy, configure, and manage your cloud solutions securely. With the Microsoft Trust center, you also have the information you need to be confident that the Azure platform on which you run your services is secure.
+Azure にアプリケーションとデータを委託するときには、さまざまな疑問があるでしょう。場所はどこなのか。 だれがアクセスできるのか。 Microsoft は保護のために何をしているのか。 Microsoft が説明どおりに実行していることをどうすれば確認できるのか。
 
-We know that when you entrust your applications and data to Azure, you’re going to have questions. Where is it? Who can access it? What is Microsoft doing to protect it? How can you verify that Microsoft is doing what it says?
+そうした疑問には、答えることができます。データはお客様のものであるため、だれがアクセスできるかはお客様が決定します。どこに配置されるかは、お客様と Microsoft が共同で決定します。データの保護には、最先端のセキュリティ テクノロジや世界最高クラスの暗号化が使用されます。Microsoft のコンプライアンスは独立した監査を受け、お客様の顧客データに対する法的な要求への対処方法から Microsoft のコードのセキュリティまで、さまざまなレベルで透明性を高めています。
 
-And we have answers. Because it’s your data, you decide who has access, and you work with us to decide where it is located. To safeguard your data, we use state-of-the-art security technology and world-class cryptography. Our compliance is independently audited, and we’re transparent on many levels—from how we handle legal demands for your customer data to the security of our code.
+Microsoft セキュリティ センターでは、次のような情報を提供しています。
 
-Here's what you find at the Microsoft Trust Center:
+- [セキュリティ](https://aka.ms/tcsecurity) – すべての Microsoft クラウド サービスがどのようにセキュリティで保護されているかについて説明しています。
+- [プライバシー](https://aka.ms/tcprivacy) – Microsoft が Microsoft クラウドでお客様のデータのプライバシーを確保している方法について説明しています。
+- [コンプライアンス](https://aka.ms/tccompliance) – 個人データの収集と使用に関する国、地域、および業界固有の要件に組織が準拠できるように、Microsoft がどのような支援を行っているかを知ることができます。
+- [透明性](https://aka.ms/tctransparency) – Microsoft は、クラウドではお客様が自分のデータを管理すると考えており、データがどのように処理されるかをできるだけお客様が把握できるようにしていることを説明しています。
+- [製品とサービス](https://aka.ms/tcproductsservices) – すべての Microsoft Cloud 製品とサービスの一覧を確認できます。
+- [サービス セキュリティ ポータル](https://aka.ms/tcservicetrportal) – Microsoft クラウド サービスの独立監査レポート、リスク評価、セキュリティ ベスト プラクティス、および関連資料のコピーを入手できます。
+- [最新情報](https://aka.ms/tcwhatsnew) – Microsoft Cloud セキュリティの最新情報を確認できます。
+- [リソース](https://aka.ms/tcresources) – Microsoft セキュリティ センターにあるホワイト ペーパー、ビデオ、およびケース スタディを入手できます。
 
-- [Security](https://aka.ms/tcsecurity) – Learn how all the Microsoft Cloud services are secured.
-- [Privacy](https://aka.ms/tcprivacy) – Understand how Microsoft ensures privacy of your Data in the Microsoft cloud.
-- [Compliance](https://aka.ms/tccompliance) – Discover how Microsoft helps organizations comply with national, regional, and industry-specific requirements governing the collection and use of individuals’ data.
-- [Transparency](https://aka.ms/tctransparency) – View how Microsoft believes that you control your data in the cloud and how Microsoft helps you know as much as possible about how that data is handled.
-- [Products and Services](https://aka.ms/tcproductsservices) – See all the Microsoft Cloud products and services in one place
-- [Service Trust Portal](https://aka.ms/tcservicetrportal) – Obtain copies of independent audit reports of Microsoft cloud services, risk assessments, security best practices, and related materials.
-- [What’s New](https://aka.ms/tcwhatsnew) – Find out what’s new in Microsoft Cloud Trust
-- [Resources](https://aka.ms/tcresources) – Investigate white papers, videos, and case studies on Microsoft Trusted Cloud
+[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter)には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
 
-The [Microsoft Trust Center](https://www.microsoft.com/trustcenter) has what you need to understand what we do to secure the Microsoft Cloud.
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

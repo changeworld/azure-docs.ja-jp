@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Enable or Disabling Azure VM Monitoring"
-   description="Describes How to Enable or Disable Azure VM Monitoring"
+   pageTitle="Azure VM の監視を有効または無効にする"
+   description="Azure VM の監視を有効または無効にする方法を説明します"
    services="virtual-machines-linux"
    documentationCenter="virtual-machines"
    authors="kmouss"
@@ -16,53 +16,46 @@
    ms.date="02/08/2016"
    ms.author="kmouss"/>
    
+# Azure VM の監視を有効または無効にする
 
-# <a name="enable-or-disable-azure-vm-monitoring"></a>Enable or Disable Azure VM Monitoring
+このセクションでは、Azure で動作する仮想マシンの監視を有効または無効にする方法について説明します。既定により、[Azure ポータル](https://portal.azure.com)からデプロイされた Azure 仮想マシンでは監視が有効になり、監視グラフが 1 分間隔で提供されます。ポータルまたは Mac、Linux、Windows (Azure CLI) の Azure コマンドライン インターフェイスを使用して、監視を有効または無効にできます。
 
-This section describes how to enable or disable monitoring on Virtual machines running on Azure. By default monitoring is enabled on Azure Virtual machines if deployed from the [Azure portal](https://portal.azure.com) and monitoring graphs are provided by default with a 1-minute period. You can enable or disable monitoring using the portal or Azure Command-line Interface for Mac, Linux, and Windows (the Azure CLI). 
-
-## <a name="enable-/-disable-monitoring-through-the-azure-portal"></a>Enable / Disable Monitoring through the Azure Portal
+## Azure ポータルで監視を有効/無効にする
  
-You can enable  monitoring of your Azure VM, which provides data about your instance in 1-minute periods. (storage changes apply). Detailed diagnostics data is then available for the VM in the portal graphs or through the API. By default, Azure portal enables monitoring, but you can turn it off as described below. You can enable monitoring while the VM is running or in stopped state.
+Azure VM の監視を有効にできます。インスタンスに関するデータが 1 分間隔で提供されます (ストレージの変更が適用されます)。VM の詳細な診断データを、ポータル グラフまたは API で利用できます。Azure ポータルでは監視が既定で有効になりますが、以下で説明するようにオフにすることができます。VM が実行中でも停止状態のときでも、監視を有効にできます。
 
-- Open the Azure portal at **[https://portal.azure.com](https://portal.azure.com)**
+- Azure ポータル (**[https://portal.azure.com](https://portal.azure.com)**) を開きます。
 
-- In the left navigation, click Virtual machines.
+- 左側のナビゲーションで、[仮想マシン] をクリックします。
 
-- In the list Virtual machines, select a running or stopped instance. Virtual machine blad will open.
+- 仮想マシンのリストで、実行中または停止中のインスタンスを選択します。[仮想マシン] ブレードが開きます。
 
-- Click "All settings".
+- [すべての設定] をクリックします。
 
-- Click "Diagnostics".
+- [診断] をクリックします。
 
-- Change status to On or Off. You can also pick in this blade the level of monitoring details you would like to enable for your virtual machine.
+- ステータスをオンまたはオフに変更します。このブレードでは、仮想マシンに対して有効にする監視の詳細レベルを選択することもできます。
 
-[Azure.Note] The Diagnostics On switch is the default when you create a new virtual machine
+[Azure.Note] 新しい仮想マシンを作成すると、診断は既定でオンになります。
 
-![Enable / Disable Monitoring through the Azure Portal.][1]
+![Azure ポータルで監視を有効または無効にします。][1]
 
 
-## <a name="enable-/-disable-monitoring-with-azure-cli"></a>Enable / Disable Monitoring with Azure CLI
+## Azure CLI で監視を有効/無効にする
  
-To enable monitoring for an Azure VM.
+Azure VM の監視を有効にするには:
 
-- Create a file named such as PrivateConfig.json with the following content.
-        { "storageAccountName":"the storage account to receive data", "storageAccountKey":"the key of the account" }
-- Run the following Azure CLI command.
+- 次のような内容で、PrivateConfig.json といった名前のファイルを作成します。{ "storageAccountName":"データを受け取るストレージ アカウント", "storageAccountKey":"アカウントのキー" }
+- 次の Azure CLI コマンドを実行します。
 
         azure vm extension set myvm LinuxDiagnostic Microsoft.OSTCExtensions 2.0 --private-config-path PrivateConfig.json
 
-[Azure.Note] You can change from version 2.0 to a later version when available. 
+[Azure.Note] 使用可能な場合は、バージョン 2.0 からそれより後のバージョンに変更できます。
 
-For more details about configuring monitoring metrics and samples, visit the document - **[Using Linux Diagnostic Extension to Monitor Linux VM’s performance and diagnostic data](virtual-machines-linux-classic-diagnostic-extension.md).
+監視メトリックの構成の詳細とサンプルについては、「[Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視](virtual-machines-linux-classic-diagnostic-extension.md)」を参照してください。
 
 <!--Image references-->
 [1]: ./media/virtual-machines-linux-vm-monitoring/portal-enable-disable.png
  
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

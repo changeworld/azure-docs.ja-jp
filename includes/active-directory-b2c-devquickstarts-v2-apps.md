@@ -1,6 +1,4 @@
 > [AZURE.IMPORTANT]
-You cannot use applications registered in the **Applications** tab on the classic [Azure Management Portal](https://manage.windowsazure.com/) for this.
+従来の [Microsoft Azure 管理ポータル](https://manage.windowsazure.com/)の **[アプリケーション]** タブで登録されているアプリケーションをこのために使用することはできません。
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!----HONumber=Oct15_HO3-->

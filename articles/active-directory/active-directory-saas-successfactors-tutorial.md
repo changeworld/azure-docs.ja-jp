@@ -1,6 +1,6 @@
 <properties 
-    pageTitle="Tutorial: Azure Active Directory integration with SuccessFactors | Microsoft Azure"
-    description="Learn how to use SuccessFactors with Azure Active Directory to enable single sign-on, automated provisioning, and more!" 
+    pageTitle="チュートリアル: Azure Active Directory と SuccessFactors の統合 | Microsoft Azure"
+    description="Azure Active Directory で SuccessFactors を使用してシングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。" 
     services="active-directory" 
     authors="jeevansd"  
     documentationCenter="na" 
@@ -15,320 +15,318 @@
     ms.author="jeedes" />
 
 
-
-#<a name="tutorial:-azure-active-directory-integration-with-successfactors"></a>Tutorial: Azure Active Directory integration with SuccessFactors
+#チュートリアル: Azure Active Directory と SuccessFactors の統合
   
-The objective of this tutorial is to show you how to integrate SuccessFactors with Azure Active Directory (Azure AD).
+このチュートリアルの目的は、SuccessFactors と Azure Active Directory (Azure AD) を統合する方法を説明することです。
 
-Integrating SuccessFactors with Azure AD provides you with the following benefits:
+SuccessFactors と Azure AD の統合には、次の利点があります。
 
-- You can control in Azure AD who has access to SuccessFactors
-- You can enable your users to automatically get signed-on to SuccessFactors (Single Sign-On) with their Azure AD accounts
-- You can manage your accounts in one central location - the Azure classic portal
+- SuccessFactors にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に SuccessFactors にサインオン (シングル サインオン) できるように、設定が可能です。
+- 1 つの中央サイト (Azure クラシック ポータル) でアカウントを管理できます。
 
-If you want to know more details about SaaS app integration with Azure AD, see [What is application access and single sign-on with Azure Active Directory](active-directory-appssoaccess-whatis.md).
+SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」を参照してください。
 
-## <a name="prerequisites"></a>Prerequisites
+## 前提条件
 
-To configure Azure AD integration with SuccessFactors, you need the following items:
+SuccessFactors と Azure AD の統合を構成するには、次のものが必要です。
 
-- A valid Azure subscription
-- A tenant in SuccessFactors
-
-
-> [AZURE.NOTE] To test the steps in this tutorial, we do not recommend using a production environment.
+- 有効な Azure サブスクリプション
+- SuccessFactors のテナント
 
 
-To test the steps in this tutorial, you should follow these recommendations:
-
-- You should not use your production environment, unless this is necessary.
-- If you don't have an Azure AD trial environment, you can get a one-month trial [here](https://azure.microsoft.com/pricing/free-trial/).
+> [AZURE.NOTE] このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
 
 
-## <a name="scenario-description"></a>Scenario description
-The objective of this tutorial is to enable you to test Azure AD single sign-on in a test environment.
+このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
-The scenario outlined in this tutorial consists of two main building blocks:
-
-1. Adding SuccessFactors from the gallery
-2. Configuring and testing Azure AD single sign-on
+- 必要な場合を除き、運用環境は使用しないでください。
+- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
-## <a name="adding-successfactors-from-the-gallery"></a>Adding SuccessFactors from the gallery
-To configure the integration of SuccessFactors into Azure AD, you need to add SuccessFactors from the gallery to your list of managed SaaS apps.
+## シナリオの説明
+このチュートリアルの目的は、テスト環境で Azure AD のシングル サインオンをテストできるようにすることです。
 
-**To add SuccessFactors from the gallery, perform the following steps:**
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1.  In the Azure classic portal, on the left navigation panel, click **Active Directory**.
-
-    ![Configuring single sign-on][1]
-
-2.  From the **Directory** list, select the directory for which you want to enable directory integration.
-
-3.  To open the applications view, in the directory view, click **Applications** in the top menu.
-
-    ![Configuring single sign-on][2]
-
-4.  Click **Add** at the bottom of the page.
-
-    ![Applications][3]
-
-5.  On the **What do you want to do** dialog, click **Add an application from the gallery**.
-
-    ![Configuring single sign-on][4]
-
-6.  In the **search box**, type **SuccessFactors**.
-
-    ![Configuring single sign-on][5]
-
-7.  In the results panel, select **SuccessFactors**, and then click **Complete** to add the application.
-
-    ![Configuring single sign-on][6]
+1. ギャラリーからの SuccessFactors の追加
+2. Azure AD シングル サインオンの構成とテスト
 
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Configuring and testing Azure AD single sign-on
-The objective of this section is to show you how to configure and test Azure AD single sign-on with SuccessFactors based on a test user called "Britta Simon".
+## ギャラリーからの SuccessFactors の追加
+Azure AD への SuccessFactors の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に SuccessFactors を追加する必要があります。
 
-For single sign-on to work, Azure AD needs to know what the counterpart user in SuccessFactors to an user in Azure AD is. In other words, a link relationship between an Azure AD user and the related user in SuccessFactors needs to be established.
+**ギャラリーから SuccessFactors を追加するには、次の手順に従います。**
 
-This link relationship is established by assigning the value of the **user name** in Azure AD as the value of the **Username** in SuccessFactors.
+1.  Azure クラシック ポータルの左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
 
-To configure and test Azure AD single sign-on with SuccessFactors, you need to complete the following building blocks:
+	![シングル サインオンの構成][1]
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-single-sign-on)** - to enable your users to use this feature.
-2. **[Creating an Azure AD test user](#creating-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
-3. **[Creating a SuccessFactors test user](#creating-a-successfactors-test-user)** - to have a counterpart of Britta Simon in SuccessFactors that is linked to the Azure AD representation of her.
-4. **[Assigning the Azure AD test user](#assigning-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - to verify whether the configuration works.
+2.  **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Configuring Azure AD single sign-on
+3.  アプリケーション ビューを開くには、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
+
+    ![シングル サインオンの構成][2]
+
+4.  ページの下部にある **[追加]** をクリックします。
+
+    ![アプリケーション][3]
+
+5.  **[実行する内容]** ダイアログで、**[ギャラリーからアプリケーションを追加します]** をクリックします。
+
+    ![シングル サインオンの構成][4]
+
+6.  **検索ボックス**に、「**SuccessFactors**」と入力します。
+
+    ![シングル サインオンの構成][5]
+
+7.  結果ウィンドウで **[SuccessFactors]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
+
+    ![シングル サインオンの構成][6]
+
+
+##  Azure AD シングル サインオンの構成とテスト
+このセクションの目的は、"Britta Simon" というテスト ユーザーに基づいて、SuccessFactors で Azure AD のシングル サインオンを構成し、テストする方法について説明することです。
+
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する SuccessFactors ユーザーが Azure AD で認識されている必要があります。言い換えると、Azure AD ユーザーと SuccessFactors の関連ユーザーの間で、リンク関係が確立されている必要があります。
+
+このリンク関係は、Azure AD の **[ユーザー名]** の値を、SuccessFactors の **[Username (ユーザー名)]** の値として割り当てることで確立されます。
+
+SuccessFactors で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[SuccessFactors のテスト ユーザーの作成](#creating-a-successfactors-test-user)** - SuccessFactors で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+
+### Azure AD シングル サインオンの構成
   
-In this section, you enable Azure AD single sign-on in the classic portal and configure single sign-on in your SuccessFactors application.
+このセクションでは、クラシック ポータルで Azure AD のシングル サインオンを有効にして、SuccessFactors アプリケーションでシングル サインオンを構成します。
 
-**To configure Azure AD single sign-on with SuccessFactors, perform the following steps:**
+**SuccessFactors で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1.  In the Azure classic portal, on the **SuccessFactors** application integration page, click **Configure single sign-on** to open the **Configure Single Sign On** dialog.
+1.  Azure クラシック ポータルの **SuccessFactors** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
 
-    ![Configuring single sign-on][7]
+    ![シングル サインオンの構成][7]
 
-2.  On the **How would you like users to sign on to SuccessFactors** page, select **Microsoft Azure AD Single Sign-On**, and then click **Next**.
+2.  **[ユーザーの SuccessFactors へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。
 
-    ![Configuring single sign-on][8]
+    ![シングル サインオンの構成][8]
 
-3.  On the **Configure App URL** page, perform the following steps, and then click **Next**.
+3.  **[アプリケーション URL の構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
 
-    ![Configuring single sign-on][9]
+    ![シングル サインオンの構成][9]
 
-    a. In the **Sign On URL** textbox, type a URL using one of the following patterns: 
+    a.**[サインオン URL]** ボックスに、次のいずれかの形式で URL を入力します。
 
-  	|                                                            |
-  	| ---                                                        |
-  	| `https://<company name>.successfactors.com/<company name>` |
-  	| `https://<company name>.sapsf.com/<company name>`          |
-  	| `https://<company name>.successfactors.eu/<company name>`  |
-  	| `https://<company name>.sapsf.eu`                          |
+	| |
+	| ---                                                        |
+	| `https://<company name>.successfactors.com/<company name>` |
+	| `https://<company name>.sapsf.com/<company name>` |
+	| `https://<company name>.successfactors.eu/<company name>` |
+	| `https://<company name>.sapsf.eu` |
 
-    b. In the **Reply URL** textbox, type a URL using one of the following patterns: 
+	b.**[応答 URL]** ボックスに、次のいずれかの形式で URL を入力します。
+	
+	| |
+	| ---                                                        |
+	| `https://<company name>.successfactors.com/<company name>` |
+	| `https://<company name>.sapsf.com/<company name>` |
+	| `https://<company name>.successfactors.eu/<company name>` |
+	| `https://<company name>.sapsf.eu` |
+	| `https://<company name>.sapsf.eu/<company name>` |
+
+	c.**[次へ]** をクリックします。
+
+
+    > [AZURE.TIP] これは実際の値ではないので注意してください。実際のサインオン URL および応答 URL で値を更新する必要があります。これらの値を取得するには、[SuccessFactors サポート チーム](https://www.successfactors.com/en_us/support.html)に問い合わせてください。
+
+4.  **[SuccessFactors でのシングル サインオンの構成]** ページで **[証明書のダウンロード]** をクリックし、証明書ファイルをコンピューターにローカルで保存します。
+
+    ![シングル サインオンの構成][10]
+
+5.  別の Web ブラウザー ウィンドウで、**SuccessFactors 管理者ポータル**に管理者としてログインします。
+
+6.  **[Application Security (アプリケーションのセキュリティ)]** で **[Single Sign On Feature (シングル サインオン機能)]** に移動します。
+
+7. **[Reset Token (リセット トークン)]** に任意の値を入力し、**[Save Token (トークンの保存)]** をクリックして、SAML SSO を有効にします。
+
+	![Configuring single sign-on on app side][11]
+
+
+	> [AZURE.NOTE] この値は、単にオン/オフのスイッチとして使用されます。任意の値を保存すると、SAML SSO はオンになります。値が空白のまま保存すると、SAML SSO はオフになります。
+
+8. 次のスクリーンショットの画面に移動して次の操作を実行します。
+
+	![Configuring single sign-on on app side][12]
+
+	a.**[SAML v2 SSO]** オプションをクリックします。
     
-  	|                                                            |
-  	| ---                                                        |
-  	| `https://<company name>.successfactors.com/<company name>` |
-  	| `https://<company name>.sapsf.com/<company name>`          |
-  	| `https://<company name>.successfactors.eu/<company name>`  |
-  	| `https://<company name>.sapsf.eu`                          |
-  	| `https://<company name>.sapsf.eu/<company name>`           |
+	b.[SAML Asserting Party Name (SAML アサーティング パーティ名)] を設定します (例: SAML 発行者 + 会社名)。
 
-    c. Click **Next**. 
+	c.**[SAML Issuer (SAML 発行者)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[発行者の URL]** の値を入力します。
 
+	d.**[Require Mandatory Signature (必須の署名の要求)]** で **[Response(Customer Generated/IdP/AP) (応答 (顧客生成/IdP/AP))]** を選択します。
 
-    > [AZURE.TIP] Please note that these are not the real values. You have to update these values with the actual Sign On URL and Reply URL. To get these values, contact [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).
+	e.**[Enable SAML Flag (SAML フラグを有効にする)]** で **[Enabled (有効にする)]** を選択します。
 
-4.  On the **Configure single sign-on at SuccessFactors** page, click **Download certificate**, and then save the certificate file locally on your computer.
+	f.**[Login Request Signature(SF Generated/SP/RP) (ログイン要求署名 (SF 生成/SP/RP))]** で **[No (いいえ)]** を選択します。
 
-    ![Configuring single sign-on][10]
+	g.**[SAML Profile (SAML プロファイル)]** で **[Browser/Post Profile (Browser/Post プロファイル)]** を選択します。
 
-5.  In a different web browser window, log into your **SuccessFactors admin portal** as an administrator.
+	h.**[Enforce Certificate Valid Period (証明書の有効期間を適用する)]** で **[No (いいえ)]** を選択します。
 
-6.  Visit **Application Security** and native to **Single Sign On Feature**. 
-
-7. Place any value in the **Reset Token** and click **Save Token** to enable SAML SSO.
-
-    ![Configuring single sign-on on app side][11]
+	i.ダウンロードした証明書ファイルのコンテンツをコピーし、**[SAML Verifying Certificate (SAML で確認する証明書)]** ボックスに貼り付けます。
 
 
-    > [AZURE.NOTE] This value is just used as the on/off switch. If any value is saved, the SAML SSO is ON. If a blank value is saved the SAML SSO is OFF.
+	> [AZURE.NOTE] この証明書には、証明書の開始タグおよび終了タグが必要です。
 
-8. Native to below screenshot and perform the following actions.
+9. [SAML V2] に移動して、次の手順に従います。
 
-    ![Configuring single sign-on on app side][12]
+	![Configuring single sign-on on app side][13]
 
-    a. Select the **SAML v2 SSO** Radio Button
+	a.**[Support SP-initiated Global Logout (SP によって開始されたグローバル ログアウトのサポート)]** で **[Yes (はい)]** を選択します。
+
+	b.**[Global Logout Service URL (LogoutRequest destination) (グローバル ログアウト サービス URL (LogoutRequest の宛先))]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[リモート ログアウト URL]** の値を入力します。
+
+	c.**[Require sp must encrypt all NameID element (すべての NameID 要素で SP での暗号化を要求)]** で **[No (いいえ)]** を選択します。
+
+	d.**[NameID Format (NameID の形式)]** で **[unspecified (未指定)]** を選択します。
+
+	e.**[Enable sp initiated login (AuthnRequest) (SP によって開始されたログインを有効にする (AuthnRequest))]** で **[Yes (はい)]** を選択します。
+
+	f.**[Send request as Company-Wide issuer (全社的な発行者として要求を送信する)]** ボックスに、Azure AD アプリケーションの構成ウィザードの **[リモート ログイン URL]** の値を入力します。
+
+10.  大文字と小文字を区別しないログイン ユーザー名を作成する場合、次の手順を実行します。
+	
+	a. 下部の **[Company Settings (会社設定)]** に移動します。
+	
+	b. **[Enable Non-Case-Sensitive Username (大文字と小文字を区別しないユーザー名)]** の横のチェック ボックスをオンにします。
+
+	c. **[Save (保存)]** をクリックします。
+	
+	![Configure Single Sign-On][29]
+
+
+	> [AZURE.NOTE] これを有効にしようとすると、システムによって、重複する SAML ログイン名が作成されるかどうかが確認されます。たとえば、顧客が User1 および user1 というユーザー名を持っている場合などです。大文字と小文字の区別をしないと、これらの重複が発生します。システムによってエラー メッセージが表示され、機能は有効になりません。顧客はユーザー名の一方を、違うスペルになるように変更する必要があります。
+
+11.  Azure クラシック ポータルで、[シングル サインオンの構成の確認] を選択し、**[完了]** をクリックして **[シングル サインオンの構成]** ダイアログを閉じます。
+
+    ![アプリケーション][14]
+
+12. **[シングル サインオンの確認]** ページで **[完了]** をクリックします。
+
+	![アプリケーション][15]
+
+
+
+### Azure AD のテスト ユーザーの作成
+このセクションの目的は、クラシック ポータルで Britta Simon というテスト ユーザーを作成することです。
+
+![Azure AD ユーザーの作成][16]
+
+**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+
+1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
+
+    ![Azure AD のテスト ユーザーの作成][17]
+
+2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
+
+3. 上部のメニューで **[ユーザー]** をクリックして、ユーザーの一覧を表示します。
     
-    b. Set the SAML Asserting Party Name(e.g. SAml issuer + company name).
+	![Azure AD のテスト ユーザーの作成][18]
 
-    c. In the **SAML Issuer** textbox put the value of **Issuer URL** from Azure AD application configuration wizard.
+4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
 
-    d. Select **Response(Customer Generated/IdP/AP)** as **Require Mandatory Signature**.
+    ![Azure AD のテスト ユーザーの作成][19]
 
-    e. Select **Enabled** as **Enable SAML Flag**.
+5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    f. Select **No** as **Login Request Signature(SF Generated/SP/RP)**.
+    ![Azure AD のテスト ユーザーの作成][20]
 
-    g. Select **Browser/Post Profile** as **SAML Profile**.
+    a.[ユーザーの種類] として [組織内の新しいユーザー] を選択します。
 
-    h. Select **No** as **Enforce Certificate Valid Period**.
+    b.**[ユーザー名]** ボックスに「**BrittaSimon**」と入力します。
 
-    i. Copy the content of the downloaded certificate file, and then paste it into the **SAML Verifying Certificate** textbox.
+    c.**[次へ]** をクリックします。
 
-
-    > [AZURE.NOTE] The certificate content must have begin certificate and end certificate tags.
-
-9. Navigate to SAML V2, and then perform the following steps:
-
-    ![Configuring single sign-on on app side][13]
-
-    a. Select **Yes** as **Support SP-initiated Global Logout**.
-
-    b. In the **Global Logout Service URL (LogoutRequest destination)** textbox put the value of **Remote Logout URL** from Azure AD application configuration wizard.
-
-    c. Select **No** as **Require sp must encrypt all NameID element**.
-
-    d. Select **unspecified** as **NameID Format**.
-
-    e. Select **Yes** as **Enable sp initiated login (AuthnRequest)**.
-
-    f. In the **Send request as Company-Wide issuer** textbox put the value of **Remote Login URL** from Azure AD application configuration wizard.
-
-10.  Perform these steps if you want to make the login usernames Case Insensitive, .
+6.  **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
     
-    a.visit **Company Settings**(near the bottom).
+	![Azure AD のテスト ユーザーの作成][21]
+
+    a.**[名]** ボックスに「**Britta**」と入力します。
+
+    b.**[姓]** ボックスに「**Simon**」と入力します。
+
+    c.**[表示名]** ボックスに「**Britta Simon**」と入力します。
+
+    d.**[ロール]** 一覧で **[ユーザー]** を選択します。
+
+    e.**[次へ]** をクリックします。
+
+7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
     
-    b. select checkbox near **Enable Non-Case-Sensitive Username**.
+	![Azure AD のテスト ユーザーの作成][22]
 
-    c.Click **Save**.
+8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
     
-    ![Configure Single Sign-On][29]
+	![Azure AD のテスト ユーザーの作成][23]
 
+    a.**[新しいパスワード]** の値を書き留めます。
 
-    > [AZURE.NOTE] If you try to enable this, the system checks if it will create a duplicate SAML login name. For example if the customer has usernames User1 and user1. Taking away case sensitivity makes these duplicates. The system will give you an error message and will not enable the feature. The customer will need to change one of the usernames so it’s actually spelled different. 
-
-11.  On the Azure classic portal, select the single sign-on configuration confirmation, and then click **Complete** to close the **Configure Single Sign On** dialog.
-
-    ![Applications][14]
-
-12. On the **Single sign-on confirmation** page, click **Complete**.
-
-    ![Applications][15]
+    b.**[完了]** をクリックします。
 
 
 
-### <a name="creating-an-azure-ad-test-user"></a>Creating an Azure AD test user
-The objective of this section is to create a test user in the classic portal called Britta Simon.
-
-![Create Azure AD User][16]
-
-**To create a test user in Azure AD, perform the following steps:**
-
-1. In the **Azure classic Portal**, on the left navigation pane, click **Active Directory**.
-
-    ![Creating an Azure AD test user][17]
-
-2. From the **Directory** list, select the directory for which you want to enable directory integration.
-
-3. To display the list of users, in the menu on the top, click **Users**.
-    
-    ![Creating an Azure AD test user][18]
-
-4. To open the **Add User** dialog, in the toolbar on the bottom, click **Add User**.
-
-    ![Creating an Azure AD test user][19]
-
-5. On the **Tell us about this user** dialog page, perform the following steps:
-
-    ![Creating an Azure AD test user][20]
-
-    a. As Type Of User, select New user in your organization.
-
-    b. In the User Name **textbox**, type **BrittaSimon**.
-
-    c. Click **Next**.
-
-6.  On the **User Profile** dialog page, perform the following steps:
-    
-    ![Creating an Azure AD test user][21]
-
-    a. In the **First Name** textbox, type **Britta**.  
-
-    b. In the **Last Name** textbox, type, **Simon**.
-
-    c. In the **Display Name** textbox, type **Britta Simon**.
-
-    d. In the **Role** list, select **User**.
-
-    e. Click **Next**.
-
-7. On the **Get temporary password** dialog page, click **create**.
-    
-    ![Creating an Azure AD test user][22]
-
-8. On the **Get temporary password** dialog page, perform the following steps:
-    
-    ![Creating an Azure AD test user][23]
-
-    a. Write down the value of the **New Password**.
-
-    b. Click **Complete**.  
-
-
-
-### <a name="creating-a-successfactors-test-user"></a>Creating a SuccessFactors test user
+### SuccessFactors のテスト ユーザーの作成
   
-In order to enable Azure AD users to log into SuccessFactors, they must be provisioned into SuccessFactors.  
-In the case of SuccessFactors, provisioning is a manual task.
+Azure AD ユーザーが SuccessFactors にログインできるようにするには、ユーザーを SuccessFactors にプロビジョニングする必要があります。SuccessFactors の場合、プロビジョニングは手動で行います。
   
-To get users created in SuccessFactors, you need to contact the [SuccessFactors support team](https://www.successfactors.com/en_us/support.html).
+SuccessFactors でユーザーを作成するには、[SuccessFactors のサポート チーム](https://www.successfactors.com/en_us/support.html)に連絡する必要があります。
 
 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Assigning the Azure AD test user
+### Azure AD テスト ユーザーの割り当て
 
-The objective of this section is to enabling Britta Simon to use Azure single sign-on by granting her access to SuccessFactors.
+このセクションの目的は、Britta Simon に SuccessFactors へのアクセスを許可することで、このユーザーが Azure のシングル サインオンを使用できるようにすることです。
+	
+![ユーザーの割り当て][24]
+
+**SuccessFactors に Britta Simon を割り当てるには、次の手順に従います。**
+
+1. クラシック ポータルでアプリケーション ビューを開くために、ディレクトリ ビューでトップ メニューの **[アプリケーション]** をクリックします。
     
-![Assign User][24]
+	![ユーザーの割り当て][25]
 
-**To assign Britta Simon to SuccessFactors, perform the following steps:**
-
-1. On the classic portal, to open the applications view, in the directory view, click **Applications** in the top menu.
+2. アプリケーションの一覧で **[SuccessFactors]** を選択します。
     
-    ![Assign User][25]
+	![Configure Single Sign-On][26]
 
-2. In the applications list, select **SuccessFactors**.
+3. 上部のメニューで **[ユーザー]** をクリックします。
     
-    ![Configure Single Sign-On][26]
+	![ユーザーの割り当て][27]
 
-3. In the menu on the top, click **Users**.
+4. ユーザーの一覧で **[Britta Simon]** を選択します。
+
+5. 下部にあるツール バーで **[割り当て]** をクリックします。
     
-    ![Assign User][27]
-
-4. In the Users list, select **Britta Simon**.
-
-5. In the toolbar on the bottom, click **Assign**.
-    
-    ![Assign User][28]
+	![ユーザーの割り当て][28]
 
 
 
-### <a name="testing-single-sign-on"></a>Testing single sign-on
+### シングル サインオンのテスト
 
-The objective of this section is to test your Azure AD single sign-on configuration using the Access Panel.
+このセクションの目的は、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストすることです。
  
-When you click the SuccessFactors tile in the Access Panel, you should get automatically signed-on to your SuccessFactors application.
+アクセス パネルで [SuccessFactors] タイルをクリックすると、自動的に SuccessFactors アプリケーションにサインオンします。
 
 
-## <a name="additional-resources"></a>Additional resources
+## その他のリソース
 
-* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](active-directory-saas-tutorial-list.md)
-* [What is application access and single sign-on with Azure Active Directory?](active-directory-appssoaccess-whatis.md)
+* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
 
 <!--Image references-->
@@ -367,8 +365,4 @@ When you click the SuccessFactors tile in the Access Panel, you should get autom
 [28]: ./media/active-directory-saas-successfactors-tutorial/tutorial_general_10.png
 [29]: ./media/active-directory-saas-successfactors-tutorial/tutorial_successfactors_10.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

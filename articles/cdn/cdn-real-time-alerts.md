@@ -1,124 +1,118 @@
 <properties
-    pageTitle="Azure CDN Real-Time Alerts | Microsoft Azure"
-    description="Real-time alerts in Microsoft Azure CDN. Real-time alerts provide notifications about the performance of the endpoints in your CDN profile."
-    services="cdn"
-    documentationCenter=""
-    authors="camsoper"
-    manager="erikre"
-    editor=""/>
+	pageTitle="Azure CDN のリアルタイム アラート | Microsoft Azure"
+	description="Microsoft Azure CDN のリアルタイム アラート。リアルタイム アラートは、CDN プロファイル内のエンドポイントのパフォーマンスに関する通知を提供します。"
+	services="cdn"
+	documentationCenter=""
+	authors="camsoper"
+	manager="erikre"
+	editor=""/>
 
 <tags
-    ms.service="cdn"
-    ms.workload="tbd"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="07/12/2016"
-    ms.author="casoper"/>
+	ms.service="cdn"
+	ms.workload="tbd"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="07/12/2016"
+	ms.author="casoper"/>
 
-
-# <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Real-time alerts in Microsoft Azure CDN
+# Microsoft Azure CDN のリアルタイム アラート
 
 [AZURE.INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 
-## <a name="overview"></a>Overview
+## Overview
 
-This document explains real-time alerts in Microsoft Azure CDN. This functionality provides real-time notifications about the performance of the endpoints in your CDN profile.  You can set up email or HTTP alerts based on:
+このドキュメントでは、Microsoft Azure CDN のリアルタイム アラートについて説明します。この機能は、CDN プロファイル内のエンドポイントのパフォーマンスに関するリアルタイムの通知を提供します。次の条件に基づいて、電子メール アラートまたは HTTP アラートを設定することができます。
 
-* Bandwidth
-* Status Codes
-* Cache Statuses
-* Connections
+* 帯域幅
+* 状態コード
+* キャッシュの状態
+* 接続
 
-## <a name="creating-a-real-time-alert"></a>Creating a real-time alert
+## リアルタイム アラートの作成
 
-1. In the [Azure Portal](https://portal.azure.com), browse to your CDN profile.
+1. [Azure ポータル](https://portal.azure.com)で、CDN プロファイルに移動します。
 
-    ![CDN profile blade](./media/cdn-real-time-alerts/cdn-profile-blade.png)
+	![CDN プロファイル ブレード](./media/cdn-real-time-alerts/cdn-profile-blade.png)
 
-2. From the CDN profile blade, click the **Manage** button.
+2. CDN プロファイル ブレードで、**[管理]** をクリックします。
 
-    ![CDN profile blade manage button](./media/cdn-real-time-alerts/cdn-manage-btn.png)
+	![[CDN プロファイル] ブレードの [管理] ボタン](./media/cdn-real-time-alerts/cdn-manage-btn.png)
 
-    The CDN management portal opens.
+	CDN 管理ポータルが開きます。
 
-3. Hover over the **Analytics** tab, then hover over the **Real-Time Stats** flyout.  Click on **Real-Time Alerts**.
+3. **[分析]** タブにマウス ポインターを合わせ、次に **[リアルタイム統計情報]** フライアウトにポインターを合わせます。**[Real-Time Alerts (リアルタイム アラート)]** をクリックします。
 
-    ![CDN management portal](./media/cdn-real-time-alerts/cdn-premium-portal.png)
+	![CDN management portal](./media/cdn-real-time-alerts/cdn-premium-portal.png)
 
-    The list of existing alert configurations (if any) is displayed.
+	既存のアラートの構成の一覧が表示されます (ある場合)。
 
-4. Click the **Add Alert** button.
+4. **[アラートの追加]** ボタンをクリックします。
 
-    ![Add Alert button](./media/cdn-real-time-alerts/cdn-add-alert.png)
+	![[アラートの追加] ボタン](./media/cdn-real-time-alerts/cdn-add-alert.png)
 
-    A form for creating a new alert is displayed.
+	新しいアラートを作成するためのフォームが表示されます。
 
-    ![New Alert form](./media/cdn-real-time-alerts/cdn-new-alert.png)
+	![[新しい警告] フォーム](./media/cdn-real-time-alerts/cdn-new-alert.png)
 
-5. If you want this alert to be active when you click **Save**, check the **Alert Enabled** checkbox.
+5. **[保存]** をクリックしたときにこのアラートをアクティブにする場合は、**[有効な警告]** チェックボックスをオンします。
 
-6. Enter a descriptive name for your alert in the **Name** field.
+6. **[名前]** フィールドにアラートのわかりやすい名前を入力します。
 
-7. In the **Media Type** dropdown, select **HTTP Large Object**.
+7. **[Media Type (メディアの種類)]** ドロップダウンで、**[HTTP Large Object (HTTP ラージ オブジェクト]** を選択します。
 
-    ![Media Type with HTTP Large Object selected](./media/cdn-real-time-alerts/cdn-http-large.png)
+	![[HTTP Large Object (HTTP ラージ オブジェクト] を選択した [Media Type (メディアの種類)]](./media/cdn-real-time-alerts/cdn-http-large.png)
 
-    > [AZURE.IMPORTANT] You must select **HTTP Large Object** as the **Media Type**.  The other choices are not used by **Azure CDN from Verizon**.  Failure to select **HTTP Large Object** will cause your alert to never be triggered.
+	> [AZURE.IMPORTANT] **メディアの種類** として **[HTTP Large Object (HTTP ラージ オブジェクト]** を選択する必要があります。**Azure CDN from Verizon** では、他の選択肢は使用しません。**[HTTP Large Object (HTTP ラージ オブジェクト]** を選択しないと、アラートはトリガーされません。
 
-8. Create an **Expression** to monitor by selecting a **Metric**, **Operator**, and **Trigger value**.
+8. **[メトリック]**、**[演算子]**、および **[トリガー値]** を選択して、監視する **[式]** を作成します。
 
-    - For **Metric**, select the type of condition you want monitored.  **Bandwidth Mbps** is the amount of bandwidth usage in megabits per second.  **Total Connections** is the number of concurrent HTTP connections to our edge servers.  For definitions of the various cache statuses and status codes, see [Azure CDN Cache Status Codes](https://msdn.microsoft.com/library/mt759237.aspx) and [Azure CDN HTTP Status Codes](https://msdn.microsoft.com/library/mt759238.aspx)
-    - **Operator** is the mathematical operator that establishes the relationship between the metric and the trigger value.
-    - **Trigger Value** is the threshold value that must be met before a notification will be sent out.
+	- **[メトリック]** では、監視条件の種類を選択します。**[Bandwidth Mbps (帯域幅 Mbps)]** は、メガビット/秒単位の使用帯域幅の量です。**[合計接続数]** は、エッジ サーバーへの同時 HTTP 接続の数です。さまざまなキャッシュ ステータスとステータス コードの定義については、「[Azure CDN Cache Status Codes (Azure CDN のキャッシュ ステータス コード)](https://msdn.microsoft.com/library/mt759237.aspx)」と「[Azure CDN HTTP Status Codes (Azure CDN の HTTP ステータス コード)](https://msdn.microsoft.com/library/mt759238.aspx)」を参照してください。
+	- **[演算子]** は、メトリックとトリガー値の間のリレーションシップを確立する算術演算子です。
+	- **[トリガー値]** は、通知の送信前に満たす必要があるしきい値です。
 
-    In the below example, the expression I have created indicates that I would like to be notified when the number of 404 status codes is greater than 25.
+	以下の例で作成した式は、404 ステータス コードの数が 25 を超えたときに通知を行うことを示しています。
 
-    ![Real-time alert sample expression](./media/cdn-real-time-alerts/cdn-expression.png)
+	![リアルタイム アラートのサンプル式](./media/cdn-real-time-alerts/cdn-expression.png)
 
-9. For **Interval**, enter how frequently you would like the expression evaluated.
+9. **[間隔]** に、式を評価する頻度を入力します。
 
-10. In the **Notify on** dropdown, select when you would like to be notified when the expression is true.
-    
-    - **Condition Start** indicates that a notification will be sent when the specified condition is first detected.
-    - **Condition End** indicates that a notification will be sent when the specified condition is no longer detected. This notification can only be triggered after our network monitoring system detected that the specified condition occurred.
-    - **Continuous** indicates that a notification will be sent each time that the network monitoring system detects the specified condition. Keep in mind that the network monitoring system will only check once per interval for the specified condition.
-    - **Condition Start and End** indicates that a notification will be sent the first time that the specified condition is detected and once again when the condition is no longer detected.
+10. **[Notify on (通知タイミング)]** ドロップダウンで、式が true のときに通知を行うタイミングを選択します。
+	
+	- **[Condition Start (条件開始時)]** は、指定された条件を最初に検出したときに通知を送信することを示します。
+	- **[Condition End (条件終了時)]** は、指定された条件を検出しなくなったときに通知を送信することを示します。この通知は、ネットワーク監視システムが、指定された条件の発生を検出した後にのみトリガーすることができます。
+	- **[継続]** は、ネットワーク監視システムが指定された条件を検出するたびに通知を送信することを示します。ネットワーク監視システムは、間隔 1 回ごとに 1 回しか指定された条件をチェックしないことに注意してください。
+	- **[Condition Start and End (条件の開始時と終了時)]** は、指定された条件を最初に検出したときと、条件が検出されなくなったときに、通知を送信することを示します。
 
-11. If you want to receive notifications by email, check the **Notify by Email** checkbox.  
+11. 電子メールで通知を受信する場合は、**[Notify by Email (電子メールで通知)]** チェックボックスをオンします。
 
-    ![Notify by Email form](./media/cdn-real-time-alerts/cdn-notify-email.png)
-    
-    In the **To** field, enter the email address you where you want notifications sent. For **Subject** and **Body**, you may leave the default, or you may customize the message using the **Available keywords** list to dynamically insert alert data when the message is sent.
+	![[Notify by Email (電子メールで通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-email.png)
+	
+	**[To (宛先)]** フィールドに、通知の送信先とする電子メール アドレスを入力します。**[件名]** と **[本文]** は、既定のままにすることも、**[Available keywords (使用可能なキーワード)]** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することもできます。
 
-    > [AZURE.NOTE] You can test the email notification by clicking the **Test Notification** button, but only after the alert configuration has been saved.
+	> [AZURE.NOTE] **[テスト通知]** ボタンをクリックすることで電子メール通知をテストできますが、このテストはアラートの構成を保存した後にのみ実行できます。
 
-12. If you want notifications to be posted to a web server, check the **Notify by HTTP Post** checkbox.
+12. 通知を Web サーバーにポストする場合は、**[Notify by HTTP Post (HTTP Post で通知)]** チェックボックスをオンします。
 
-    ![Notify by HTTP Post form](./media/cdn-real-time-alerts/cdn-notify-http.png)
+	![[Notify by HTTP Post (HTTP Post で通知)] フォーム](./media/cdn-real-time-alerts/cdn-notify-http.png)
 
-    In the **Url** field, enter the URL you where you want the HTTP message posted. In the **Headers** textbox, enter the HTTP headers to be sent in the request.  For **Body** you may customize the message using the **Available keywords** list to dynamically insert alert data when the message is sent.  **Headers** and **Body** default to an XML payload similar to the below example.
+	**[URL]** フィールドに、HTTP メッセージをポストする URL を入力します。**[ヘッダー]** テキストボックスに、要求で送信する HTTP ヘッダーを入力します。**[本文]** は、**[Available keywords (使用可能なキーワード)]** ボックスの一覧を使ってメッセージをカスタマイズし、メッセージ送信時にアラート データを動的に挿入することができます。**[ヘッダー]** と **[本文]** は、既定では、以下の例のような XML ペイロードが設定されます。
 
-    ```
-    <string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-        <![CDATA[Expression=Status Code : 404 per second > 25&Metric=Status Code : 404 per second&CurrentValue=[CurrentValue]&NotificationCondition=Condition Start]]>
-    </string>
-    ```
+	```
+	<string xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+		<![CDATA[Expression=Status Code : 404 per second > 25&Metric=Status Code : 404 per second&CurrentValue=[CurrentValue]&NotificationCondition=Condition Start]]>
+	</string>
+	```
 
-    > [AZURE.NOTE] You can test the HTTP Post notification by clicking the **Test Notification** button, but only after the alert configuration has been saved.
+	> [AZURE.NOTE] **[テスト通知]** ボタンをクリックすることで HTTP Post 通知をテストできますが、このテストはアラートの構成を保存した後にのみ実行できます。
 
-13. Click the **Save** button to save your alert configuration.  If you checked **Alert Enabled** in step 5, your alert is now active.
+13. **[保存]** ボタンをクリックして、アラートの構成を保存します。手順 5 で **[有効な警告]** をオンにした場合は、ここでアラートがアクティブになります。
 
-## <a name="next-steps"></a>Next Steps
+## 次のステップ
 
-- Analyze [Real-time stats in Azure CDN](cdn-real-time-stats.md)
-- Dig deeper with [advanced HTTP reports](cdn-advanced-http-reports.md)
-- Analyze [usage patterns](cdn-analyze-usage-patterns.md)
+- [Azure CDN のリアルタイム統計情報](cdn-real-time-stats.md)を分析します。
+- [詳細な HTTP レポート](cdn-advanced-http-reports.md)について詳しく調べます。
+- [使用量パターン](cdn-analyze-usage-patterns.md)を分析します。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

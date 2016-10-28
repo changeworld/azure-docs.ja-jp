@@ -7,6 +7,4 @@
 - [Ruby](../articles/storage/storage-ruby-how-to-use-table-storage.md)
 - [Python](../articles/storage/storage-python-how-to-use-table-storage.md)
 
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=Oct15_HO3-->

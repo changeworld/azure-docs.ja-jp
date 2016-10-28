@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="View and manage StorSimple alerts | Microsoft Azure"
-   description="Describes StorSimple alert conditions and severity, how to configure alert notifications, and how to use the StorSimple Manager service to manage alerts."
+   pageTitle="StorSimple アラートの表示と管理 | Microsoft Azure"
+   description="StorSimple アラートの状態と重大度、アラート通知の構成方法、および StorSimple Manager サービスを使用してアラートを管理する方法について説明します。"
    services="storsimple"
    documentationCenter="NA"
    authors="SharS"
@@ -12,252 +12,246 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="NA"
-   ms.date="10/18/2016"
+   ms.date="06/09/2016"
    ms.author="anbacker" />
 
+# StorSimple Manager サービスを使用して StorSimple アラートを表示および管理する
 
-# <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-alerts"></a>Use the StorSimple Manager service to view and manage StorSimple alerts
+## 概要
 
-## <a name="overview"></a>Overview
+StorSimple Manager サービスの **[アラート]** タブでは、StorSimple デバイス関連のアラートをリアルタイムで確認および解除できます。このタブでは、StorSimple デバイスと Microsoft Azure StorSimple ソリューション全体の正常性の問題を一元的に監視できます。
 
-The **Alerts** tab in the StorSimple Manager service provides a way for you to review and clear StorSimple device–related alerts on a real-time basis. From this tab, you can centrally monitor the health issues of your StorSimple devices and the overall Microsoft Azure StorSimple solution.
-
-This tutorial describes common alert conditions, alert severity levels, and how to configure alert notifications. Additionally, it includes alert quick reference tables, which enable you to quickly locate a specific alert and respond appropriately.
+このチュートリアルでは、一般的なアラートの状態、アラートの重大度レベル、アラートの通知の構成方法について説明します。さらにアラートのクイック リファレンスの表もあります。この表を使用すると、アラートをすばやく特定して適切に応答できるようになります。
 
 ![Alerts page](./media/storsimple-manage-alerts/HCS_AlertsPage.png)
 
-## <a name="common-alert-conditions"></a>Common alert conditions
+## 一般的なアラートの状態
 
-Your StorSimple device generates alerts in response to a variety of conditions. The following are the most common types of alert conditions:
+StorSimple デバイスでは、さまざまな状態に応じてアラートを生成します。最も一般的な種類のアラート状態を次に示します。
 
-- **Hardware issues** – These alerts tell you about the health of your hardware. They let you know if firmware upgrades are needed, if a network interface has issues, or if there is a problem with one of your data drives.
+- **ハードウェアの問題** – これらのアラートは、ハードウェアの正常性について通知するものです。ファームウェアのアップグレードが必要な場合、ネットワーク インターフェイスに問題がある場合、データ ドライブのいずれかに問題がある場合に通知します。
 
-- **Connectivity issues** – These alerts occur when there is difficulty in transferring data. Communication issues can occur during transfer of data to and from the Azure storage account or due to lack of connectivity between the devices and the StorSimple Manager service. Communication issues are some of the hardest to fix because there are so many points of failure. You should always first verify that network connectivity and Internet access are available before continuing on to more advanced troubleshooting. For help with troubleshooting, go to [Troubleshoot with the Test-Connection cmdlet](storsimple-troubleshoot-deployment.md).
+- **接続の問題** – データ転送が困難な場合に、これらのアラートが生成されます。通信の問題は、Azure ストレージ アカウントとのデータの転送中に発生する可能性があるほか、デバイスと StorSimple Manager サービスが接続されていないことが原因で発生する場合もあります。通信の問題は、障害点が多すぎることから、最も修正が困難な問題の 1 つです。常に、より高度なトラブルシューティングに進む前に、まずネットワーク接続とインターネット アクセスがあることを確認する必要があります。トラブルシューティングのヘルプについては、「[Test-Connection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md)」を参照してください。
 
-- **Performance issues** – These alerts are caused when your system isn’t performing optimally, such as when it is under a heavy load.
+- **パフォーマンスの問題** – これらのアラートは、システムの負荷が高い場合など、システムが最適に実行されていない場合に発生します。
 
-In addition, you might see alerts related to security, updates, or job failures.
+さらに、セキュリティ、更新、ジョブの失敗に関連するアラートが表示される場合もあります。
 
-## <a name="alert-severity-levels"></a>Alert severity levels
+## アラートの重大度レベル
 
-Alerts have different severity levels, depending on the impact that the alert situation will have and the need for a response to the alert. The severity levels are:
+アラートの状況により受ける影響とアラートに対する応答の必要性に応じて、アラートにはさまざまな重大度レベルがあります。重大度レベルは次のとおりです。
 
-- **Critical** – This alert is in response to a condition that is affecting the successful performance of your system. Action is required to ensure that the StorSimple service is not interrupted.
+- **重大** – このアラートは、システムの正常なパフォーマンスに影響する状態に対する応答として発生します。StorSimple サービスが中断されないように対策が必要です。
 
-- **Warning** – This condition could become critical if not resolved. You should investigate the situation and take any action required to clear the issue.
+- **警告** – この状態が解決しない場合、"重大" に発展する可能性があります。状況を調査し、問題を解決するのに必要な対処を行う必要があります。
 
-- **Information** – This alert contains information that can be useful in tracking and managing your system.
+- **情報** – このアラートには、システムの追跡と管理に役立つ情報が含まれています。
 
-## <a name="configure-alert-settings"></a>Configure alert settings
+## アラート設定の構成
 
-You can choose whether you want to be notified by email of alert conditions for each of your StorSimple devices. Additionally, you can identify other alert notification recipients by entering their email addresses in the **Other email recipients** box, separated by semicolons.
+StorSimple デバイスごとに、アラート状態について電子メールで通知を受けるかどうかを選択できます。さらに、**[その他の電子メールの受信者]** ボックスに、セミコロンで区切って電子メール アドレスを入力することで、アラートの別の受信者を識別できます。
 
->[AZURE.NOTE] You can enter a maximum of 20 email addresses per device.
+>[AZURE.NOTE] 1 つのデバイスで入力できる電子メール アドレスは最大 20 件です。
 
-After you enable email notification for a device, members of the notification list will receive an email message each time a critical alert occurs. The messages will be sent from *storsimple-alerts-noreply@mail.windowsazure.com* and will describe the alert condition. Recipients can click **Unsubscribe** to remove themselves from the email notification list.
+デバイスの電子メール通知を有効にすると、アラート リストのメンバーは、重大なアラートが発生するたびに電子メール メッセージを受信します。メッセージは **storsimple-alerts-noreply@mail.windowsazure.com* から送信され、アラートの状態の詳細が示されます。受信者が自信を電子メール通知のリストから削除するには、**[受信登録の取り消し]** をクリックします。
 
-#### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>To enable email notification of alerts for a device
+#### デバイスのアラートに関する電子メール通知を有効にするには
 
-1. Go to **Devices** > **Configure** for the device.
+1. **[デバイス]** に移動し、そのデバイスの **[構成]** をクリックします。
 
-2. Under **Alert Settings**, set the following:
+2. **[アラートの設定]** で、次のように設定します。
 
-    1. In the **Send email notification** field, select **YES**.
+    1. **[電子メール通知の送信]** フィールドで、**[はい]** を選択します。
 
-    2. In the **Email service administrators** field, select **YES** if you wish to have the service administrator and all co-administrators receive the alert notifications.
+    2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、**[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
 
-    3. In the **Other email recipients** field, enter the email addresses of all other recipients who should receive the alert notifications. Enter names in the format *someone@somewhere.com*. Use semicolons to separate the email addresses. You can configure a maximum of 20 email addresses per device. 
+    3. **[その他の電子メールの受信者]** フィールドに、アラートの通知を受信するその他すべての受信者の電子メール アドレスを入力します。名前は **someone@somewhere.com* の形式で入力します。電子メール アドレスはセミコロンで区切ります。1 つのデバイスで構成できる電子メール アドレスは最大 20 件です。
 
         ![Alerts notification configuration](./media/storsimple-manage-alerts/AlertNotify.png)
 
-3. To send a test email notification, click the arrow icon next to **Send test email**. The StorSimple Manager service will display status messages as it forwards the test notification. 
+3. 電子メールのテスト通知を送信するには、**[テスト電子メールの送信]** の隣にある矢印アイコンをクリックします。テスト通知を転送すると、StorSimple Manager サービスに状態メッセージが表示されます。
 
-4. When the following message appears, click **OK**. 
+4. 次のメッセージが表示されたら、**[OK]** をクリックします。
 
     ![Alerts test notification email sent](./media/storsimple-manage-alerts/HCS_AlertNotificationConfig3.png)
 
-    >[AZURE.NOTE] If the test notification message can't be sent, the StorSimple Manager service will display an appropriate message. Click **OK**, wait a few minutes, and then try to send your test notification message again. 
+    >[AZURE.NOTE] テスト通知のメッセージを送信できない場合、StorSimple Manager サービスにその旨のメッセージが表示されます。**[OK]** をクリックして数分待ってから、再度テスト通知のメッセージを送信してみてください。
 
-## <a name="view-and-track-alerts"></a>View and track alerts
+## アラートの表示と追跡
 
-The StorSimple Manager service dashboard provides you with a quick glance at the number of alerts on your devices, arranged by severity level.
+StorSimple Manager サービスのダッシュボードでは、アラートが重大度レベルごとに配置され、デバイスで発生したアラートの数をひとめで確認できます。
 
 ![Alerts dashboard](./media/storsimple-manage-alerts/admin_alerts_dashboard.png)
 
-Clicking the severity level opens the **Alerts** tab. The results include only the alerts that match that severity level.
+重大度レベルをクリックすると、**[アラート]** タブが開きます。結果には、その重大度レベルに一致するアラートのみが含まれます。
 
 ![Alerts report scoped to alert type](./media/storsimple-manage-alerts/admin_alerts_scoped.png)
 
-Clicking an alert in the list provides you with additional details for the alert, including the last time the alert was reported, the number of occurrences of the alert on the device, and the recommended action to resolve the alert. If it is a hardware alert, it will also identify the hardware component.
+一覧にあるアラートをクリックすると、そのアラートが前回報告された日時、デバイスでそのアラートが発生した回数、推奨されるアラートの解決法など、追加の詳細情報が表示されます。ハードウェアのアラートがある場合は、ハードウェア コンポーネントも示されます。
 
 ![Hardware alert example](./media/storsimple-manage-alerts/admin_alerts_hardware.png)
 
-You can copy the alert details to a text file if you need to send the information to Microsoft Support. After you have followed the recommendation and resolved the alert condition on-premises, you should clear the alert from the device by selecting the alert in the **Alerts** tab and clicking **Clear**. To clear multiple alerts, select each alert, click any column except the **Alert** column, and then click **Clear** after you have selected all the alerts to be cleared. Note that some alerts are automatically cleared when the issue is resolved or when the system updates the alert with new information.
+情報を Microsoft サポートに送信する必要がある場合は、テキスト ファイルにアラートの詳細をコピーできます。推奨事項に従い、オンプレミスのアラートの状態が解決したら、**[アラート]** タブでアラートを選択してから **[クリア]** をクリックし、デバイスからアラートをクリアする必要があります。複数のアラートをクリアするには、各アラートを選択し、**[アラート]** 列以外の任意の列をクリックします。クリアするアラートをすべて選択したら、**[クリア]** をクリックします。一部のアラートは、問題が解決した場合や、システムによりアラートが新しい情報に更新された場合に、自動的にクリアされます。
 
-When you click **Clear**, you will have the opportunity to provide comments about the alert and the steps that you took to resolve the issue. Some events will be cleared by the system if another event is triggered with new information. In that case, you will see the following message.
+**[クリア]** をクリックした場合、問題を解決する際に実行した手順とアラートについてのコメントを追加できます。一部のイベントは、新しい情報で別のイベントがトリガーされると、システムによってクリアされます。その場合は、次のメッセージが表示されます。
 
 ![Clear alert message](./media/storsimple-manage-alerts/admin_alerts_system_clear.png)
 
-## <a name="sort-and-review-alerts"></a>Sort and review alerts
+## アラートの並べ替えと確認
 
-You may find it more efficient to run reports on alerts so that you can review and clear them in groups. Additionally, the **Alerts** tab can display up to 250 alerts. If you have exceeded that number of alerts, not all alerts will be displayed in the default view. You can combine the following fields to customize which alerts are displayed:
+アラートに対するレポートを実行し、それらをまとめて確認およびクリアできるため、便利です。また **[アラート]** タブには、最大 250 個のアラートを表示できます。アラートがこの数を超えている場合、既定のビューに一部のアラートが表示されません。次のフィールドを組み合わせることで、どのアラートを表示するかをカスタマイズできます。
 
-- **Status** – You can display either **Active** or **Cleared** alerts. Active alerts are still being triggered on your system, while cleared alerts have been either manually cleared by an administrator or programmatically cleared because the system updated the alert condition with new information.
+- **状態** – **[アクティブ]** または **[クリア]** 状態のアラートを表示できます。"アクティブ" のアラートは、引き続きシステムでトリガーされますが、"クリア" のアラートは、管理者によって手動でクリアされているか、プログラムによりクリアされています (システムで新しい情報によりアラートの状態が更新された場合)。
 
-- **Severity** – You can display alerts of all severity levels (critical, warning, information), or just a certain severity, such as only critical alerts.
+- **重大度** – すべての重大度レベル (重大、警告、情報) のアラートか、特定の重大度のアラートのみ (重大なアラートのみなど) を表示できます。
 
-- **Source** – You can display alerts from all sources, or limit the alerts to those that come from either the service or one or all of the devices.
+- **ソース** – すべてのソースのアラートを表示できるほか、サービスに由来するアラートや、1 つまたはすべてのデバイスに由来するアラートのみを表示することもできます。
 
-- **Time range** – By specifying the **From** and **To** dates and time stamps, you can look at alerts during the time period that you are interested in.
+- **時間の範囲** – **[開始]** と **[終了]** の日時スタンプを指定すると、関心のある期間中のアラートを見ることができます。
 
-## <a name="alerts-quick-reference"></a>Alerts quick reference
+## アラートのクイック リファレンス
 
-The following tables list some of the Microsoft Azure StorSimple alerts that you might encounter, as well as additional information and recommendations where available. StorSimple device alerts fall into one of the following categories:
+次の表に、発生する可能性がある Microsoft Azure StorSimple のアラートの一部と、追加情報および推奨事項 (提供されている場合) を一覧表示します。StorSimple デバイスのアラートは、次のいずれかのカテゴリに分けられます。
 
-- [Cloud connectivity alerts](#cloud-connectivity-alerts)
+- [クラウドの接続のアラート](#cloud-connectivity-alerts)
 
-- [Cluster alerts](#cluster-alerts)
+- [クラスターのアラート](#cluster-alerts)
 
-- [Disaster recovery alerts](#disaster-recovery-alerts)
+- [障害復旧のアラート](#disaster-recovery-alerts)
 
-- [Hardware alerts](#hardware-alerts)
+- [ハードウェアのアラート](#hardware-alerts)
 
-- [Job failure alerts](#job-failure-alerts)
+- [ジョブの失敗のアラート](#job-failure-alerts)
 
-- [Locally pinned volume alerts](#locally-pinned-volume-alerts)
+- [ローカルに固定されたボリュームのアラート](#locally-pinned-volume-alerts)
 
-- [Networking alerts](#networking-alerts)
+- [ネットワークのアラート](#networking-alerts)
 
-- [Performance alerts](#performance-alerts)
+- [パフォーマンスのアラート](#performance-alerts)
 
-- [Security alerts](#security-alerts)
+- [セキュリティのアラート](#security-alerts)
 
-- [Support package alerts](#support-package-alerts)
+- [サポート パッケージのアラート](#support-package-alerts)
 
-- [Update alerts](#update-alerts)
+- [更新のアラート](#update-alerts)
 
-### <a name="cloud-connectivity-alerts"></a>Cloud connectivity alerts
+### クラウドの接続のアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Connectivity to <*cloud credential name*> cannot be established.|Cannot connect to the storage account.|It looks like there might be a connectivity issue with your device. Please run the `Test-HcsmConnection` cmdlet from the Windows PowerShell Interface for StorSimple on your device to identify and fix the issue. If the settings are correct, the issue might be with the credentials of the storage account for which the alert was raised. In this case, use the `Test-HcsStorageAccountCredential` cmdlet to determine if there are issues that you can resolve.<ul><li>Check your network settings.</li><li>Check your storage account credentials.</li></ul>|
-|We have not received a heartbeat from your device for the last <*number*> minutes.|Cannot connect to device.|It looks like there is a connectivity issue with your device. Please use the `Test-HcsmConnection` cmdlet from the Windows PowerShell Interface for StorSimple on your device to identify and fix the issue or contact your network administrator.|
+|<*クラウドの資格情報名*> への接続を確立できません。|ストレージ アカウントに接続できません。|デバイスに接続の問題がある可能性があります。デバイスの StorSimple 用 Windows PowerShell インターフェイスから `Test-HcsmConnection` コマンドレットを実行し、問題を特定して解決してください。設定が正しい場合は、アラートが生成されたストレージ アカウントの資格情報に問題がある可能性があります。その場合は、`Test-HcsStorageAccountCredential` コマンドレットを使用して、解決できる問題があるかどうかを判断します。<ul><li>ネットワーク設定を確認します。</li><li>ストレージ アカウントの資格情報を確認します。</li></ul>|
+|<*数値*> 分前を最後にデバイスからハートビートを受け取っていません。|デバイスに接続できません。|デバイスに接続の問題があるようです。デバイスの StorSimple 用 Windows PowerShell インターフェイスから `Test-HcsmConnection` コマンドレットを使用し、問題を特定して解決するか、またはネットワーク管理者にお問い合わせください。|
 
-### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple behavior when cloud connectivity fails
+### クラウドの接続に失敗した場合の StorSimple 動作
 
-What happens if cloud connectivity fails for my StorSimple device running in production?
+実稼働環境で実行されている StorSimple デバイスでクラウドの接続に失敗するとどうなりますか。
 
-If cloud connectivity fails on your StorSimple production device, then depending on the state of your device, the following can occur: 
+実稼働環境の StorSimple デバイスでクラウドの接続に失敗すると、デバイスの状態によっては次が発生する場合があります。
 
-- **For the local data on your device**: For some time, there will be no disruption and reads will continue to be served. However, as the number of outstanding IOs increases and exceeds a limit, the reads could start to fail. 
+- **デバイスのローカル データ**: しばらくの間、中断されることはありません。読み取りは継続して行われます。ただし、処理待ち IO の数が増加して制限を超えると、読み取りが失敗する可能性があります。 
 
-    Depending on the amount of data on your device, the writes will also continue to occur for the first few hours after the disruption in the cloud connectivity. The writes will then slow down and eventually start to fail if the cloud connectivity is disrupted for several hours. (There is temporary storage on the device for data that is to be pushed to the cloud. This area is flushed when the data is sent. If connectivity fails, data in this storage area will not be pushed to the cloud, and IO will fail.)   
+	デバイスのデータ量によっては、クラウドの接続が中断された後の最初の数時間は書き込みも引き続き行われます。その後、書き込み速度が低下し、クラウドの接続が数時間中断される場合は、最終的に書き込みに失敗します。(デバイスには、クラウドにプッシュされるデータ用に一時的な記憶域があります。この領域は、データが送信されるとフラッシュされます。接続に失敗した場合、この記憶域内のデータはクラウドにプッシュされず、IO は失敗します)。
 
  
-- **For the data in the cloud**: For most cloud connectivity errors, an error is returned. Once the connectivity is restored, the IOs are resumed without the user having to bring the volume online. In rare instances, user intervention may be required to bring back the volume online from the Azure classic portal. 
+- **クラウド内のデータ**: ほとんどのクラウドの接続エラーでは、エラーが返されます。接続が復帰すると、ユーザーがボリュームをオンラインに戻さなくても IO は再開されます。まれに、Azure クラシック ポータルからボリュームをオンラインに戻すにはユーザーの介入が必要になる場合があります。
  
-- **For cloud snapshots in progress**: The operation is retried a few times within 4-5 hours and if the connectivity is not restored, the cloud snapshots will fail.
+- **進行中のクラウド スナップショット**: 4 ～ 5 時間の間、処理は数回再試行されますが、接続が復帰しないとクラウド スナップショットに失敗します。
 
 
-### <a name="cluster-alerts"></a>Cluster alerts
+### クラスターのアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Device failed over to <*device name*>.|Device is in maintenance mode.|Device failed over due to entering or exiting maintenance mode. This is normal and no action is needed. After you have acknowledged this alert, clear it from the alerts page.|
-|Device failed over to <*device name*>.|Device firmware or software was just updated.|There was a cluster failover due to an update. This is normal and no action is needed. After you have acknowledged this alert, clear it from the alerts page.|
-|Device failed over to <*device name*>.|Controller was shut down or restarted.|Device failed over because the active controller was shut down or restarted by an administrator. No action is needed. After you have acknowledged this alert, clear it from the alerts page.|
-|Device failed over to <*device name*>.|Planned failover.|Verify that this was a planned failover. After you have taken appropriate action, clear this alert from the alerts page.|
-|Device failed over to <*device name*>.|Unplanned failover.|StorSimple is built to automatically recover from unplanned failovers. If you see a large number of these alerts, contact Microsoft Support.|
-|Device failed over to <*device name*>.|Other/unknown cause.|If you see a large number of these alerts, contact Microsoft Support. After the issue is resolved, clear this alert from the alerts page.|
-|A critical device service reports status as failed.|Datapath service failure. |Contact Microsoft Support for assistance.|
-|Virtual IP address for network interface <*DATA #*> reports status as failed. |Other/unknown cause. |Sometimes temporary conditions can cause these alerts. If this is the case, then this alert will be automatically cleared after some time. If the issue persists, contact Microsoft Support.|
-|Virtual IP address for network interface <*DATA #*> reports status as failed.|Interface name: <*DATA #*> IP address <IP address> cannot be brought online because a duplicate IP address was detected on the network. |Ensure that the duplicate IP address is removed from the network or reconfigure the interface with a different IP address.|
+|デバイスが <*デバイス名*> にフェールオーバーされました。|デバイスがメンテナンス モードになっています。|デバイスでメンテナンス モードが開始または終了したためにフェールオーバーされました。これは正常な動作で、対処は必要ありません。このアラートは、確認後、アラート ページでクリアしてください。|
+|デバイスが <*デバイス名*> にフェールオーバーされました。|デバイスのファームウェアまたはソフトウェアが更新されました。|更新が原因でクラスターのフェールオーバーが発生しました。これは正常な動作で、対処は必要ありません。このアラートは、確認後、アラート ページでクリアしてください。|
+|デバイスが <*デバイス名*> にフェールオーバーされました。|コントローラーがシャットダウンまたは再起動しました。|アクティブなコントローラーが管理者によってシャットダウンまたは再起動されたために、デバイスがフェールオーバーしました。対処は必要ありません。このアラートは、確認後、アラート ページでクリアしてください。|
+|デバイスが <*デバイス名*> にフェールオーバーされました。|計画されたフェールオーバーです。|これが計画されたフェールオーバーであることを確認します。適切な処置が完了したら、このアラートをアラート ページでクリアしてください。|
+|デバイスが <*デバイス名*> にフェールオーバーされました。|計画されていないフェールオーバーです。|StorSimple は、計画されていないフェールオーバーから自動的に回復するように構築されています。これらのアラートの数が多い場合は、Microsoft サポートにお問い合わせください。|
+|デバイスが <*デバイス名*> にフェールオーバーされました。|その他の原因、または不明な原因です。|これらのアラートの数が多い場合は、Microsoft サポートにお問い合わせください。問題が解決したら、このアラートをアラート ページでクリアしてください。|
+|重要なデバイス サービスから、状態が "失敗" と報告されました。|データパス サービスのエラーです。 |Microsoft サポートに対処方法をお問い合わせください。|
+|ネットワーク インターフェイス <*DATA #*> の仮想 IP アドレスから、状態が "失敗" と報告されました。 |その他の原因、または不明な原因です。 |一時的な状況がこれらのアラートの原因になっている場合があります。その場合、しばらくするとこのアラートが自動的にクリアされます。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。|
+|ネットワーク インターフェイス <*DATA #*> の仮想 IP アドレスから、状態が "失敗" と報告されました。|重複する IP アドレスがネットワーク上で検出されたため、インターフェイス名: <*DATA #*> IP アドレス <IP address> をオンラインにできません。 |重複する IP アドレスをネットワークから削除するか、別の IP アドレスでインターフェイスを再構成します。|
 
 
-### <a name="disaster-recovery-alerts"></a>Disaster recovery alerts
+### 障害復旧のアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Recovery operations could not restore all of the settings for this service. Device configuration data is in an inconsistent state for some devices.|Data inconsistency detected after disaster recovery.|Encrypted data on the service is not synchronized with that on the device. Authorize the device <*device name*> from StorSimple Manager to start the synchronization process. Use the Windows PowerShell Interface for StorSimple to run the `Restore-HcsmEncryptedServiceData` on device <*device name*> cmdlet, providing the old password as an input to this cmdlet to restore the security profile. Then run the `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet to update the service data encryption key. After you have taken appropriate action, clear this alert from the alerts page.|
+|回復操作により、このサービスの設定をすべて復元できませんでした。デバイス構成データの状態が、一部のデバイスで一致していません。|障害復旧の後にデータの不整合が検出されました。|サービス上の暗号化されたデータはデバイス上のものと同期されていません。StorSimple Manager でデバイス <*デバイス名*> を承認して同期処理を始めてください。デバイス <*デバイス名*> で StorSimple 用 Windows PowerShell インターフェイスを使用して `Restore-HcsmEncryptedServiceData` コマンドレットを実行し、このコマンドレットに対する入力として前のパスワードを指定し、セキュリティ プロファイルをリストアします。次に、`Invoke-HcsmServiceDataEncryptionKeyChange` コマンドレットを実行し、サービス データ暗号化キーを更新します。適切な処置が完了したら、このアラートをアラート ページでクリアしてください。|
 
 
-### <a name="hardware-alerts"></a>Hardware alerts
+### ハードウェアのアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Hardware component <*component ID*> reports status as <*status*>.||Sometimes temporary conditions can cause these alerts. If so, this alert will be automatically cleared after some time. If the issue persists, contact Microsoft Support.|
-|Passive controller malfunctioning.|The passive (secondary) controller is not functioning.|Your device is operational, but one of your controllers is malfunctioning. Try restarting that controller. If the issue is not resolved, contact Microsoft Support.|
+|ハードウェア コンポーネント <*コンポーネント ID*> は状態が <*状態*> であると報告しています。||一時的な状況がこれらのアラートの原因になっている場合があります。その場合、しばらくするとこのアラートが自動的にクリアされます。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。|
+|パッシブ コントローラーが正常に動作していません。|パッシブ (セカンダリ) コント ローラーが機能していません。|デバイスは稼働していますが、コントローラーの 1 つが正常に動作していません。そのコント ローラーを再起動してください。問題が解決しない場合は、Microsoft サポートに問い合わせてください。|
 
-### <a name="job-failure-alerts"></a>Job failure alerts
+### ジョブの失敗のアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Backup of <*source volume group ID*> failed.|Backup job failed.|Connectivity issues could be preventing the backup operation from successfully completing. If there are no connectivity issues, you may have reached the maximum number of backups. Delete any backups that are no longer needed and retry the operation. After you have taken appropriate action, clear this alert from the alerts page.|
-|Clone of <*source backup element IDs*> to <*destination volume serial numbers*> failed.|Clone job failed.|Refresh the backup list to verify that the backup is still valid. If the backup is valid, it is possible that cloud connectivity issues are preventing the clone operation from successfully completing. If there are no connectivity issues, you may have reached the storage limit. Delete any backups that are no longer needed and retry the operation. After you have taken appropriate action to resolve the issue, clear this alert from the alerts page.|
-|Restore of <*source backup element IDs*> failed.|Restore job failed.|Refresh the backup list to verify that the backup is still valid. If the backup is valid, it is possible that cloud connectivity issues are preventing the restore operation from successfully completing. If there are no connectivity issues, you may have reached the storage limit. Delete any backups that are no longer needed and retry the operation. After you have taken appropriate action to resolve the issue, clear this alert from the alerts page.|
+|<*ソース ボリューム グループ ID*> のバックアップに失敗しました。|バックアップ ジョブが失敗しました。|バックアップ操作を正常に完了できない原因として、接続の問題が考えられます。接続の問題がない場合は、バックアップの最大数に達している可能性があります。不要なバックアップを削除してから、操作を再実行してください。適切な処置が完了したら、このアラートをアラート ページでクリアしてください。|
+|<*ソースのバックアップ要素 ID*> の <*移行先ボリュームのシリアル番号*> への複製に失敗しました。|複製ジョブが失敗しました。|バックアップの一覧を更新してバックアップが引き続き有効であることを確認してください。バックアップが有効な場合は、クラウドの接続問題が原因でクローン操作が正常に完了しない可能性があります。接続の問題がない場合は、ストレージの上限に達している可能性があります。不要なバックアップを削除してから、操作を再実行してください。適切な処置を行い問題が解消されたら、このアラートをアラート ページでクリアしてください。|
+|<*ソースのバックアップ要素 ID*> のリストアに失敗しました。|リストア ジョブが失敗しました。|バックアップの一覧を更新してバックアップが引き続き有効であることを確認してください。バックアップが有効な場合は、クラウドの接続問題が原因でリストア操作が正常に完了しない可能性があります。接続の問題がない場合は、ストレージの上限に達している可能性があります。不要なバックアップを削除してから、操作を再実行してください。適切な処置を行い問題が解消されたら、このアラートをアラート ページでクリアしてください。|
 
-### <a name="locally-pinned-volume-alerts"></a>Locally pinned volume alerts
+### ローカル固定ボリュームのアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Creation of local volume <*volume name*> failed.| The volume creation job has failed. <*Error message corresponding to the failed error code*>.|Connectivity issues could be preventing the space creation operation from successfully completing. Locally pinned volumes are thickly provisioned and the process of creating space involves spilling tiered volumes to the cloud. If there are no connectivity issues, you may have exhausted the local space on the device. Determine if space exists on the device before retrying this operation.|
-|Expansion of local volume <*volume name*> failed.|The volume modification job has failed due to <*error message corresponding to the failed error code*>.|Connectivity issues could be preventing the volume expansion operation from successfully completing. Locally pinned volumes are thickly provisioned and the process of extending the existing space involves spilling tiered volumes to the cloud. If there are no connectivity issues, you may have exhausted the local space on the device. Determine if space exists on the device before retrying this operation.|
-|Conversion of volume <*volume name*> failed.|The volume conversion job to convert the volume type from locally pinned to tiered failed.|Conversion of the volume from type locally pinned to tiered could not be completed. Ensure that there are no connectivity issues preventing the operation from completing successfully. For troubleshooting connectivity issues go to [Troubleshoot with the Test-HcsmConnection cmdlet](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>The original locally pinned volume has now been marked as a tiered volume since some of the data from the locally pinned volume has spilled to the cloud during the conversion. The resultant tiered volume is still occupying local space on the device that cannot be reclaimed for future local volumes.<br>Resolve any connectivity issues, clear the alert and convert this volume back to the original locally pinned volume type to ensure all the data is made available locally again.|
-|Conversion of volume <*volume name*> failed.|The volume conversion job to convert the volume type from tiered to locally pinned failed.|Conversion of the volume from type tiered to locally pinned could not be completed. Ensure that there are no connectivity issues preventing the operation from completing successfully. For troubleshooting connectivity issues go to [Troubleshoot with the Test-HcsmConnection cmdlet](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet).<br>The original tiered volume now marked as a locally pinned volume as part of the conversion process continues to have data residing in the cloud, while the thickly provisioned space on the device for this volume can no longer reclaimed for future local volumes.<br>Resolve any connectivity issues, clear the alert and convert this volume back to the original tiered volume type to ensure local space thickly provisioned on the device can be reclaimed.|
-|Nearing local space consumption for local snapshots of <*volume group name*>|Local snapshots for the backup policy might soon run out of space and be invalidated to avoid host write failures.|Frequent local snapshots alongside a high data churn in the volumes associated with this backup policy group are causing local space on the device to be consumed quickly. Delete any local snapshots that are no longer needed. Also, update your local snapshot schedules for this backup policy to take less frequent local snapshots, and ensure that cloud snapshots are taken regularly. If these actions are not taken, local space for these snapshots might soon be exhausted and the system will automatically delete them to ensure that host writes continue to be processed successfully.|
-|Local snapshots for <*volume group name*> have been invalidated.|The local snapshots for <*volume group name*> have been invalidated and then deleted because they were exceeding the local space on the device.|To ensure this does not recur in the future, review the local snapshot schedules for this backup policy and delete any local snapshots that are no longer needed. Frequent local snapshots alongside a high data churn in the volumes associated with this backup policy group might cause local space on the device to be consumed quickly.|
-|Restore of <*source backup element IDs*> failed.|The restore job has failed.|If you have locally pinned or a mix of locally pinned and tiered volumes in this backup policy, refresh the backup list to verify that the backup is still valid. If the backup is valid, it is possible that cloud connectivity issues are preventing the restore operation from successfully completing. The locally pinned volumes that were being restored as part of this snapshot group do not have all of their data downloaded to the device, and, if you have a mix of tiered and locally pinned volumes in this snapshot group, they will not be in sync with each other. To successfully complete the restore operation, take the volumes in this group offline on the host and retry the restore operation. Note that any modifications to the volume data that were performed during the restore process will be lost.|
+|ローカル ボリューム <*ボリューム名*> の作成に失敗しました。| ボリューム作成ジョブが失敗しました。<*失敗のエラー コードに対応するエラー メッセージ*>。|領域作成操作を正常に完了できない原因として、接続の問題が考えられます。ローカル固定ボリュームがシック プロビジョニングされ、領域作成のプロセスで、階層化ボリュームがクラウドにあふれます。接続の問題がない場合は、デバイスのローカル領域を使い果たした可能性があります。この操作を再試行する前に、デバイスに領域が存在することを確認してください。|
+|ローカル ボリューム <*ボリューム名*> の拡張に失敗しました。|ボリューム変更ジョブが、<*失敗のエラー コードに対応するエラー メッセージ*> のために失敗しました。|ボリューム拡張操作を正常に完了できない原因として、接続の問題が考えられます。ローカル固定ボリュームがシック プロビジョニングされ、既存の領域の拡張プロセスで、階層化ボリュームがクラウドにあふれます。接続の問題がない場合は、デバイスのローカル領域を使い果たした可能性があります。この操作を再試行する前に、デバイスに領域が存在することを確認してください。|
+|ボリューム <*ボリューム名*> の変換に失敗しました。|ボリュームの種類をローカル固定から階層化に変換するボリューム変換ジョブが失敗しました。|ローカル固定から階層化へのボリュームの種類の変換が完了できませんでした。操作の正常な完了を妨げるような接続の問題がないことを確認します。接続の問題のトラブルシューティングについては、「[Test-HcsmConnection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)」を参照してください。<br>元のローカル固定ボリュームは、ローカル固定ボリュームのデータの一部が変換中にクラウドにあふれたため、現在では階層化ボリュームとしてマークされています。結果の階層化ボリュームは、まだデバイスのローカル領域を占有しており、今後もローカル ボリュームで再利用できません。<br>すべてのデータをもう一度ローカルで使用できるようにするには、接続の問題を解決し、アラートをクリアし、このボリュームの種類を元のローカル固定ボリュームに変換し直します。|
+|ボリューム <*ボリューム名*> の変換に失敗しました。|ボリュームの種類を階層化からローカル固定に変換するボリューム変換ジョブが失敗しました。|階層化からローカル固定へのボリュームの種類の変換が完了できませんでした。操作の正常な完了を妨げるような接続の問題がないことを確認します。接続の問題のトラブルシューティングについては、「[Test-HcsmConnection コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-test-hcsmconnection-cmdlet)」を参照してください。<br>元の階層化ボリュームは、現在、変換プロセスの一環としてローカル固定ボリュームとしてマークされ、引き続きデータをクラウドに置いていますが、このボリューム用にデバイスでシック プロビジョニングされた領域は、今後ローカル ボリュームで再利用できなくなります。<br>デバイスのシック プロビジョニングされたローカル領域を再利用できるようにするには、接続の問題を解決し、アラートをクリアし、このボリュームの種類を元の階層化ボリュームに変換し直します。|
+|<*ボリューム グループ名*> のローカル スナップショットのために、ローカル領域の消費が限度に近づいています|バックアップ ポリシーのためのローカル スナップショットが、間もなく領域不足になり、ホストの書き込みエラーを避けるために無効になります。|頻繁なローカル スナップショットと、このバックアップ ポリシー グループに関連付けられているボリューム内のデータの大きな変化によって、デバイスのローカル領域が急速に消費されています。不要になったローカル スナップショットを削除してください。また、ローカル スナップショットの作成頻度が下がるようにこのバックアップ ポリシーのローカル スナップショットのスケジュールを更新し、クラウド スナップショットが定期的に作成されることを確認します。このような対処をしないと、これらのスナップショットのためのローカル領域が間もなく不足するので、ホストの書き込みが正常に処理され続けるように、システムによってスナップショットが自動的に削除されます。|
+|<*ボリューム グループ名*> のローカル スナップショットが無効になりました。|<*ボリューム グループ名*> のローカル スナップショットが、デバイスのローカル領域の容量を超えていたため、無効になり、削除されました。|今後同じことが起きないようにするには、このバックアップ ポリシーのローカル スナップショット スケジュールを見直し、不要になったローカル スナップショットを削除します。頻繁なローカル スナップショットと、このバックアップ ポリシー グループに関連付けられているボリューム内のデータの大きな変化によって、デバイスのローカル領域が急速に消費される場合があります。|
+|<*ソースのバックアップ要素 ID*> のリストアに失敗しました。|リストア ジョブが失敗しました。|このバックアップ ポリシーに、ローカル固定ボリュームか、ローカル固定と階層化を組み合わせたボリュームがある場合は、バックアップの一覧を更新して、バックアップがまだ有効であることを確認してください。バックアップが有効な場合は、クラウドの接続問題が原因でリストア操作が正常に完了しない可能性があります。このスナップショット グループの一部としてリストアされていたローカル固定ボリュームは、データのすべてをデバイスにダウンロードしません。また、このスナップショット グループに階層化とローカル固定の組み合わせのボリュームがある場合、それらのボリュームは互いに同期されません。リストア操作を正常に完了するには、ホストでこのグループのボリュームをオフラインにし、リストア操作を再試行します。リストア処理中に行われたボリューム データへの変更は失われることに注意してください。|
 
-### <a name="networking-alerts"></a>Networking alerts
+### ネットワークのアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Could not start StorSimple service(s).|Datapath error |If the problem persists, contact Microsoft Support.|
-|Duplicate IP address detected for 'Data0'.| |The system has detected a conflict for IP address '10.0.0.1'. The network resource 'Data0' on the device *<device1>* is offline. Ensure that this IP address is not used by any other entity in this network. To troubleshoot network issues, go to [Troubleshoot with the Get-NetAdapter cmdlet](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Contact your network administrator for help resolving this issue. If the problem persists, contact Microsoft Support. |
-|IPv4 (or IPv6) address for 'Data0' is offline.| |The network resource 'Data0' with IP address '10.0.0.1.' and prefix length '22' on the device *<device1>* is offline. Ensure that the switch ports to which this interface is connected are operational. To troubleshoot network issues, go to [Troubleshoot with the Get-NetAdapter cmdlet](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+|StorSimple サービスを開始できませんでした。|データパス エラー |問題が解決しない場合は、Microsoft サポートにお問い合わせください。|
+|'Data0' で、重複する IP アドレスが検出されました。| |システムによって、IP アドレス '10.0.0.1' の競合が検出されました。デバイス *<device1>* のネットワーク リソース 'Data0' がオフラインになっています。この IP アドレスが、このネットワーク内の他のエンティティによって使用されていないことを確認してください。ネットワークの問題のトラブルシューティングについては、「[Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。この問題を解決する方法については、ネットワーク管理者にお問い合わせください。問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
+|'Data0' の IPv4 (または IPv6) アドレスがオフラインです。| |デバイス *<device1>* の、IP アドレスが '10.0.0.1' でプレフィックス長が '22' のネットワーク リソース 'Data0' がオフラインになっています。このインターフェイスが接続されているスイッチ ポートが動作可能であることを確認してください。ネットワークの問題のトラブルシューティングについては、「[Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 |
  
 
-### <a name="performance-alerts"></a>Performance alerts
+### パフォーマンスのアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|The device load has exceeded <*threshold*>.|Slower than expected response times.|Your device reports utilization under a heavy input/output load. This could cause your device to not work as well as it should. Review the workloads that you have attached to the device, and determine if there are any that could be moved to another device or that are no longer necessary.<br>To understand the current status, go to [Use the StorSimple Manager service to monitor your device](storsimple-monitor-device.md)|
+|デバイスの負荷が <*しきい値*> を超えています。|応答時間が予想よりも長くかかっています。|デバイスの入出力に大きな負荷がかかっていることが報告されています。これにより、デバイスが予期したとおりには動作しない可能性があります。デバイスに割り当てたワークロードを確認して、別のデバイスに移すことのできるワークロードまたはもう必要ないワークロードがないか判断してください。<br>現在の状態を把握する方法については、「[StorSimple Manager サービスを使用してデバイスを監視する](storsimple-monitor-device.md)」を参照してください。|
 
-### <a name="security-alerts"></a>Security alerts
+### セキュリティのアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Microsoft Support session has begun.|Third-party accessed support session.|Please confirm this access is authorized. After you have taken appropriate action, clear this alert from the alerts page.|
-|Password for <*element*> will expire in <*length of time*>.|Password expiration is approaching.|Change your password before it expires.|
-|Security configuration information missing for <*element ID*>.||The volumes associated with this volume container cannot be used to replicate your StorSimple configuration. To ensure that your data is safely stored, we recommend that you delete the volume container and any volumes associated with the volume container. After you have taken appropriate action, clear this alert from the alerts page.|
-|<*number*> login attempts failed for <*element ID*>.|Multiple failed logon attempts.|Your device might be under attack or an authorized user is attempting to connect with an incorrect password.<ul><li>Contact your authorized users and verify that these attempts were from a legitimate source. If you continue to see large numbers of failed login attempts, consider disabling remote management and contacting your network administrator. After you have taken appropriate action, clear this alert from the alerts page.</li><li>Check that your Snapshot Manager instances are configured with the correct password. After you have taken appropriate action, clear this alert from the alerts page.</li></ul>For more information, go to [Change an expired device password](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password).|
-|One or more failures occurred while changing the service data encryption key.||There were errors encountered while changing the service data encryption key. After you have addressed the error conditions, run the `Invoke-HcsmServiceDataEncryptionKeyChange` cmdlet from the Windows PowerShell Interface for StorSimple on your device to update the service. If this issue persists, contact Microsoft support. After you resolve the issue, clear this alert from the alerts page.|
+|Microsoft サポート セッションが開始されました。|サード パーティがサポート セッションにアクセスしました。|アクセスが承認されたことを確認してください。適切な処置が完了したら、このアラートをアラート ページでクリアしてください。|
+|<*要素*> のパスワードの有効期限は <*時間*> 日後に切れます。|パスワードの有効期限が近づいています。|有効期限が切れる前にパスワードを変更してください。|
+|セキュリティ構成情報の <*要素 ID*> が見つかりません。||このボリューム コンテナーに関連付けられているボリュームを使用して StorSimple 構成をレプリケートすることはできません。データが安全に保管されている状態にするために、このボリューム コンテナーと、ボリューム コンテナーに関連付けられているボリュームをすべて削除することをお勧めします。適切な処置が完了したら、このアラートをアラート ページでクリアしてください。|
+|<*要素 ID*> のログイン試行に <*数値*> 回失敗しました。|ログオン試行に複数回失敗しました。|デバイスが攻撃を受けている可能性があります。または、許可されているユーザーが誤ったパスワードで接続しようとしています。<ul><li>許可されているユーザーに連絡して、正当なソースからこれらのログインが試行されていることをご確認ください。引き続きログインの失敗が大量に発生する場合は、リモート管理を無効にしてネットワーク管理者に連絡することをご検討ください。適切な処置が完了したら、このアラートをアラート ページでクリアしてください。</li><li>Snapshot Manager インスタンスで正しいパスワードが構成されていることをご確認ください。適切な処置が完了したら、このアラートをアラート ページでクリアしてください。</li></ul>詳細については、「[有効期限が切れたデバイス パスワードの変更](storsimple-snapshot-manager-manage-devices.md#change-an-expired-device-password)」を参照してください。|
+|サービス データ暗号化キーの変更時に 1 つ以上のエラーが発生しました。||サービス データ暗号化キーの変更時に発生したエラーが 1 つ以上あります。エラー状態を解決したら、デバイスの StorSimple 用 Windows PowerShell インターフェイスから `Invoke-HcsmServiceDataEncryptionKeyChange` コマンドレットを実行し、サービスを更新してください。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。問題を解決したら、このアラートをアラート ページでクリアしてください。|
 
-### <a name="support-package-alerts"></a>Support package alerts
+### サポート パッケージのアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Creation of support package failed.|StorSimple couldn't generate the package.|Retry this operation. If the issue persists, contact Microsoft Support. After you have resolved the issue, clear this alert from the alerts page.|
+|サポート パッケージを作成できませんでした。|StorSimple でパッケージを生成できませんでした。|操作を再試行してください。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。問題を解決した後で、このアラートをアラート ページでクリアしてください。|
 
-### <a name="update-alerts"></a>Update alerts
+### 更新のアラート
 
-|Alert text|Event|More information / recommended actions|
+|アラートのテキスト|イベント|追加情報 / 推奨される対処法|
 |:---|:---|:---|
-|Hotfix installed.|Software/firmware update completed.|The hotfix has been successfully installed on your device.|
-|Manual updates available.|Notification of available updates.|Use the Windows PowerShell Interface for StorSimple on your device to install these updates. <br>For more information, go to [Update your StorSimple 8000 Series device](storsimple-update-device.md).|
-|New updates available.|Notification of available updates.|You can install these updates either from the **Maintenance** page or by using the Windows PowerShell Interface for StorSimple on your device. <br>For more information, go to [Update your StorSimple 8000 Series device](storsimple-update-device.md).|
-|Failed to install updates.|Updates were not successfully installed.|Your system was not able to install the updates. You can install these updates either from the **Maintenance** page or by using the Windows PowerShell Interface for StorSimple on your device. If the issue persists, contact Microsoft Support. <br>For more information, go to [Update your StorSimple 8000 Series device](storsimple-update-device.md).|
-|Unable to automatically check for new updates.|Automatic check failed.|You can manually check for new updates from the **Maintenance** page.|
-|New WUA agent available.|Notification of available update.|Download the latest Windows Update Agent and install it from the Windows PowerShell interface.|
-|Version of firmware component <*component ID*> does not match with hardware.|Firmware update(s) were not successfully installed.|Contact Microsoft Support.|
+|修正プログラムがインストールされました。|ソフトウェアまたはファームウェアの更新が完了しました。|デバイスに修正プログラムが正しくインストールされています。|
+|手動で更新できます。|利用可能な更新の通知です。|これらの更新プログラムをインストールするには、デバイスの StorSimple 用 Windows PowerShell インターフェイスを使用します。<br>詳細については、「[StorSimple 8000 シリーズ デバイスの更新](storsimple-update-device.md)」を参照してください。|
+|新しい更新プログラムを使用できます。|利用可能な更新の通知です。|これらの更新プログラムは、**[メンテナンス]** ページからインストールするか、デバイスの StorSimple 用 Windows PowerShell インターフェイスを使用してインストールします。<br>詳細については、「[StorSimple 8000 シリーズ デバイスの更新](storsimple-update-device.md)」を参照してください。|
+|更新プログラムをインストールできませんでした。|更新プログラムが正常にインストールされませんでした。|システムで更新プログラムをインストールできませんでした。これらの更新プログラムは、**[メンテナンス]** ページからインストールするか、デバイスの StorSimple 用 Windows PowerShell インターフェイスを使用してインストールします。引き続き問題が発生する場合は、Microsoft サポートにお問い合わせください。<br>詳細については、「[StorSimple 8000 シリーズ デバイスの更新](storsimple-update-device.md)」を参照してください。|
+|新しい更新プログラムを自動的に確認できません。|自動確認に失敗しました。|新しい更新プログラムは、**[メンテナンス]** ページから手動で確認できます。|
+|新しい WUA エージェントを使用できます。|利用可能な更新の通知です。|最新の Windows Update エージェントをダウンロードして、Windows PowerShell インターフェイスからインストールします。|
+|コンポーネント <*コンポーネント ID*> のファームウェアのバージョンがハードウェアと一致しません。|ファームウェアの更新プログラムが正常にインストールされませんでした。|Microsoft サポートにお問い合わせください。|
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-Learn more about [StorSimple errors and troubleshooting an operational device](storsimple-troubleshoot-operational-device.md).
+[StorSimple エラーと運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)の詳細について確認します。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0615_2016-->

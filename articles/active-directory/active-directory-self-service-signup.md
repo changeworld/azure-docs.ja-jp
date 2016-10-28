@@ -1,240 +1,235 @@
 <properties
-    pageTitle="What is Self-Service Signup for Azure? | Microsoft Azure"
-    description="An overview self-service signup for Azure, how to manage the signup process, and how to take over a DNS domain name."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure のセルフサービス サインアップについて | Microsoft Azure"
+	description="Azure のセルフサービス サインアップの概要、サインアップ プロセスの管理方法、および DNS ドメイン名の引き継ぎ方法。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="na"
-    ms.workload="identity"
-    ms.date="08/23/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="na"
+	ms.workload="identity"
+	ms.date="08/23/2016"
+	ms.author="curtand"/>
 
 
+# Azure のセルフサービス サインアップについて
 
-# <a name="what-is-self-service-signup-for-azure?"></a>What is Self-Service Signup for Azure?
+このトピックでは、セルフサービス サインアップ プロセスのほか、DNS ドメイン名を引き継ぐ方法について説明します。
 
-This topic explains the self-service signup process and how to take over a DNS domain name.  
+## セルフサービス サインアップを使用する理由
 
-## <a name="why-use-self-service-signup?"></a>Why use self-service signup?
+- 顧客が求めるサービスを迅速に提供できる。
+- サービス提供の電子メール ベース プランを構築できる。
+- 覚えやすい職場の電子メールの別名を使用した迅速な ID 作成を可能にする、電子メール ベースのサインアップ フローを作成できる。
+- 管理されていない Azure ディレクトリを後で管理されているディレクトリにすることができ、他のサービスで再利用できる。
 
-- Get customers to services they want faster.
-- Create email-based offers for a service.
-- Create email-based signup flows which quickly allow users to create identities using their easy-to-remember work email aliases.
-- Unmanaged Azure directories can be made into managed directories later and be reused for other services.
+## 用語と定義
 
-## <a name="terms-and-definitions"></a>Terms and Definitions
++ **セルフサービス サインアップ**: ユーザーがクラウド サービスを使用するためにこの方法でサインアップすると、電子メール ドメインに基づいた ID が Azure Active Directory (Azure AD) で自動作成されます。
++ **管理されていない Azure ディレクトリ**: これは、前述の ID が作成されるディレクトリです。管理されていないディレクトリは、グローバル管理者がいないディレクトリです。
++ **電子メール検証済みユーザー**: これは Azure AD のユーザー アカウントの 1 種です。セルフサービス プランへのサインアップ後に自動作成された ID を持つユーザーは、電子メール検証済みユーザーです。電子メール検証済みユーザーは、creationmethod=EmailVerified でタグ付けされたディレクトリの通常メンバーです。
 
-+ **Self-service sign up**: This is the method by which a user signs up for a cloud service and has an identity automatically created for them in Azure Active Directory (Azure AD) based on their email domain.
-+ **Unmanaged Azure directory**: This is the directory where that identity is created. An unmanaged directory is a directory that has no global administrator.
-+ **Email-verified user**: This is a type of user account in Azure AD. A user who has an identity created automatically after signing up for a self-service offer is known as an email-verified user. An email-verified user is a regular member of a directory tagged with creationmethod=EmailVerified.
+## ユーザー エクスペリエンス
 
-## <a name="user-experience"></a>User experience
+たとえば、Dan@BellowsCollege.com という電子メールを持つユーザーが、電子メール経由で機密性の高いファイルを受信したとします。これらのファイルは、Azure Rights Management (Azure RMS) によって保護されています。しかしダンが所属するべロウズ大学は、 Azure RMS にサインアップしていないだけでなく、Active Directory RMS もデプロイしていません。この場合、ダンは個人向け RMS の無料サブスクリプションにサインアップして、保護されたファイルを参照することができます。
 
-For example, let's say a user whose email is Dan@BellowsCollege.com receives sensitive files via email. The files have been protected by Azure Rights Management (Azure RMS). But Dan's organization, Bellows College, has not signed up for Azure RMS, nor has it deployed Active Directory RMS. In this case, Dan can sign up for a free subscription to RMS for individuals in order to read the protected files.
+ダンが、BellowsCollege.com の電子メール アドレスを使用してこのセルフサービス プランにサインアップした最初のユーザーであるならば、BellowsCollege.com の管理されていないディレクトリが Azure AD に作成されます。BellowsCollege.com ドメインの他のユーザーがこのプランまたは類似のセルフサービス プランにサインアップすると、Azure にある管理されていない同じディレクトリに、電子メール検証済みアカウントが作成されます。
 
-If Dan is the first user with an email address from BellowsCollege.com to sign up for this self-service offering, then an unmanaged directory will be created for BellowsCollege.com in Azure AD. If other users from the BellowsCollege.com domain sign up for this offering or a similar self-service offering, they will also have email-verified user accounts created in the same unmanaged directory in Azure.
+## 管理者エクスペリエンス
 
-## <a name="admin-experience"></a>Admin experience
+管理されていない Azure ディレクトリの DNS ドメイン名を所有する管理者は、所有権の証明後にディレクトリを引き継ぐか、マージすることができます。次のセクションでは管理者エクスペリエンスを詳細に説明しますが、概要を以下に示します。
 
-An admin who owns the DNS domain name of an unmanaged Azure directory can take over or merge the directory after proving ownership. The next sections explain the admin experience in more detail, but here's a summary:
+- 管理されていない Azure ディレクトリを引き継ぐと、その管理されていないディレクトリのグローバル管理者になります。これは、内部の引き継ぎとも呼ばれます。
+- 管理されていない Azure ディレクトリをマージすると、その管理されていないディレクトリの DNS ドメイン名が管理対象の Azure ディレクトリに追加され、ユーザーが引き続き中断されずにサービスにアクセスできるように、ユーザーからリソースへのマッピングが作成されます。これは、外部の引き継ぎとも呼ばれます。
 
-- When you take over an unmanaged Azure directory, you simply become the global administrator of the unmanaged directory. This is sometimes called an internal takeover.
-- When you merge an unmanaged Azure directory, you add the DNS domain name of the unmanaged directory to your managed Azure directory and a mapping of users-to-resources is created so users can continue to access services without interruption. This is sometimes called an external takeover.
+## Azure Active Directory 内に作成されるもの
 
-## <a name="what-gets-created-in-azure-active-directory?"></a>What gets created in Azure Active Directory?
+#### ディレクトリ
 
-#### <a name="directory"></a>directory
+- 1 つのドメインにつき 1 つの Azure Active Directory ディレクトリが作成されます。
+- Azure AD ディレクトリにはグローバル管理者はいません。
 
-- An Azure Active Directory directory for the domain is created, one directory per domain.
-- The Azure AD directory has no global admin.
+#### Users
 
-#### <a name="users"></a>Users
+- サインアップするユーザーごとに、Azure AD ディレクトリ内にユーザー オブジェクトが作成されます。
+- 各ユーザー オブジェクトは外部としてマークされます。
+- 各ユーザーは、サインアップしたサービスにアクセスできます。
 
-- For each user who signs up, a user object is created in the Azure AD directory.
-- Each user object is marked as external.
-- Each user is given access to the service that they signed up for.
+### 所有ドメインのセルフサービス Azure AD ディレクトリの要求方法
 
-### <a name="how-do-i-claim-a-self-service-azure-ad-directory-for-a-domain-i-own?"></a>How do I claim a self-service Azure AD directory for a domain I own?
+セルフサービス Azure AD ディレクトリを要求するには、ドメイン検証を実行します。ドメイン検証では、DNS レコードの作成によってドメインを所有していることを証明できます。
 
-You can claim a self-service Azure AD directory by performing domain validation. Domain validation proves you own the domain by creating DNS records.
+Azure AD ディレクトリの DNS 引き継ぎを行うには 2 つの方法があります。
 
-There are two ways to do a DNS takeover of an Azure AD directory:
+- 内部の引き継ぎ (管理者が管理されていない Azure のディレクトリを検出し、管理対象ディレクトリに変更する)
+- 外部の引き継ぎ (管理者が管理対象 Azure ディレクトリへの新しいドメインの追加を試みる)
 
-- internal takeover (Admin discovers an unmanaged Azure directory, and wants to turn into a managed directory)
-- external takeover (Admin tries to add a new domain to their managed Azure directory)
+ユーザーがセルフサービス サインアップした後に、管理されていないディレクトリを引き継ぐか、あるいは新しいドメインを既存の管理対象ディレクトリに追加するには、ドメインを所有していることを検証する必要があります。たとえば、contoso.com という名前のドメインがあり、contoso.co.uk または contoso.uk という新しいドメインを追加する場合などにこれを実行します。
 
-You might be interested in validating that you own a domain because you are taking over an unmanaged directory after a user performed self-service signup, or you might be adding a new domain to an existing managed directory. For example, you have a domain named contoso.com and you want to add a new domain named contoso.co.uk or contoso.uk.
+## ドメインの引き継ぎについて  
 
-## <a name="what-is-domain-takeover?"></a>What is domain takeover?  
+このセクションでは、ドメインを所有していることを検証する方法を説明します。
 
-This section covers how to validate that you own a domain
+### ドメインの検証とその使用目的について
 
-### <a name="what-is-domain-validation-and-why-is-it-used?"></a>What is domain validation and why is it used?
+Azure AD のディレクトリで作業するには、DNS ドメインの所有権を検証する必要があります。ドメインを検証するとディレクトリを要求でき、セルフサービスのディレクトリを管理対象ディレクトリに昇格するか、既存の管理対象ディレクトリにマージできます。
 
-In order to perform operations on a directory, Azure AD requires that you validate ownership of the DNS domain.  Validation of the domain allows you to claim the directory and either promote the self-service directory to a managed directory, or merge the self-service directory into an existing managed directory.
+## ドメイン検証の例
 
-## <a name="examples-of-domain-validation"></a>Examples of domain validation
+ディレクトリの DNS 引き継ぎを行うには 2 つの方法があります。
 
-There are two ways to do a DNS takeover of a directory:
++ 内部の引き継ぎ (たとえば、管理者がセルフサービスおよび管理されていないディレクトリを検出して、管理対象ディレクトリに変更する)
++ 外部の引き継ぎ (たとえば、管理者が管理対象ディレクトリへの新しいドメインの追加を試みる)
 
-+ internal takeover  (For example, an admin discovers a self-service, unmanaged directory, and wants to turn into managed directory)
-+ external takeover (For example, a admin tries to add a new domain to a managed directory)
+### 内部の引き継ぎ - セルフサービスの管理されていないディレクトリを管理対象ディレクトリに昇格
 
-### <a name="internal-takeover---promote-a-self-service,-unmanaged-directory-to-be-a-managed-directory"></a>Internal Takeover - promote a self-service, unmanaged directory to be a managed directory
+内部の引き継ぎを実行すると、管理されていないディレクトリが、管理対象ディレクトリに変換されます。DNS ドメイン名の検証を完了する必要があります。このとき、DNS ゾーンに MX レコードまたは TXT レコードを作成します。この操作によって以下を実行できます。
 
-When you do internal takeover, the directory gets converted from an unmanaged directory to a managed directory. You need to complete DNS domain name validation, where you create an MX record or a TXT record in the DNS zone. That action:
++ ドメインを所有していることを検証
++ ディレクトリを管理対象にする
++ ディレクトリのグローバル管理者になる
 
-+ Validates that you own the domain
-+ Makes the directory managed
-+ Makes you the global admin of the directory
+たとえば、ベロウズ大学の IT 管理者が、この大学のユーザーたちがセルフサービス プランにサインアップしたことを知ったとします。その IT 管理者は、BellowsCollege.com という DNS 名の登録所有者として、Azure で DNS 名の所有権を検証してから、管理されていないディレクトリを引き継ぐことができます。そのディレクトリは管理対象ディレクトリになり、IT 管理者は BellowsCollege.com ディレクトリのグローバル管理者ロールに割り当てられます。
 
-Let's say an IT administrator from Bellows College discovers that users from the school have signed up for self-service offerings. As the registered owner of the DNS name BellowsCollege.com, the IT administrator can validate ownership of the DNS name in Azure and then take over the unmanaged directory. The directory then becomes a managed directory, and the IT administrator is assigned the global administrator role for the BellowsCollege.com directory.
+### 外部の引き継ぎ - セルフサービスのディレクトリを既存の管理対象ディレクトリにマージ
 
-### <a name="external-takeover---merge-a-self-service-directory-into-an-existing-managed-directory"></a>External Takeover - merge a self-service directory into an existing managed directory
+外部の引き継ぎでは、既に管理対象ディレクトリを持っているため、2 つの異なるディレクトリを所有する代わりに、すべてのユーザーとグループにその管理対象ディレクトリに参加させます。
 
-In an external takeover, you already have a managed directory and you want all users and groups from an unmanaged directory to join that managed directory, rather than own two separate directories.
+管理対象ディレクトリの管理者としてドメインを追加したとき、そのドメインに、管理されていないディレクトリが偶然関連付けられていたと考えてください。
 
-As an admin of a managed directory, you add a domain, and that domain happens to have an unmanaged directory associated with it.
+たとえば IT 管理者が、contoso.com の管理対象ディレクトリを既に所有しているとします。contoso.com は IT 管理者の所属組織に登録されています。その組織の複数ユーザーが、電子メールのドメイン名 user@contoso.co.uk を使用してセルフサービス サインアップを実行したことをその IT 管理者は知ります。これは、この組織が所有する別のドメイン名です。これらのユーザーは現在、contoso.co.uk の管理されていないディレクトリのアカウントを持っています。
 
-For example, let's say you are an IT administrator and you already have a managed directory for Contoso.com, a domain name that is registered to your organization. You discover that users from your organization have performed self-service sign up for an offering by using email domain name user@contoso.co.uk, which is another domain name that your organization owns. Those users currently have accounts in an unmanaged directory for contoso.co.uk.
+2 つのディレクトリの管理は避けたいため、 IT 管理者は contoso.co.uk の管理されていないディレクトリを、contoso.com の既存の IT 管理対象ディレクトリにマージします。
 
-You don't want to manage two separate directories, so you merge the unmanaged directory for contoso.co.uk into your existing IT managed directory for contoso.com.
+外部の引き継ぎでも、内部の引き継ぎと同じ DNS 検証プロセスに従います。異なる点は、ユーザーおよびサービスが、IT 管理対象ディレクトリに再マッピングされることです。
 
-External takeover follows the same DNS validation process as internal takeover.  Difference being: users and services are remapped to the IT managed directory.
+#### 外部の引き継ぎの実行から受ける影響について
 
-#### <a name="what's-the-impact-of-performing-an-external-takeover?"></a>What's the impact of performing an external takeover?
+外部の引き継ぎを実行すると、ユーザーからリソースへのマッピングが作成されるため、ユーザーは引き続き中断されることなくサービスにアクセスできます。個人向け RMS を含む多くのアプリケーションでは、ユーザーからリソースへのマッピングがうまく処理されるため、ユーザーはこれらのサービスに以前と同じようにアクセスできます。ユーザーからリソースへのマッピングが効果的に処理されないアプリケーションの場合は、ユーザー エクスペリエンスの低下を回避するために、外部の引き継ぎが明示的にブロックされている場合があります。
 
-With an external takeover, a mapping of users-to-resources is created so users can continue to access services without interruption. Many applications, including RMS for individuals, handle the mapping of users-to-resources well, and users can continue to access those services without change. If an application does not handle the mapping of users-to-resources effectively, external takeover may be explicitly blocked to prevent users from a poor experience.
+#### サービスごとのディレクトリ引き継ぎのサポート
 
-#### <a name="directory-takeover-support-by-service"></a>directory takeover support by service
-
-Currently the following services support takeover:
+現在、次のサービスで引き継ぎがサポートされています。
 
 - RMS
 
 
-The following services will soon be supporting takeover:
+次のサービスでは、まもなく引き継ぎがサポートされます。
 
 - PowerBI
 
-The following do not and require additional admin action to migrate user data after an external takeover.
+次のサービスでは、外部の引き継ぎの後に、ユーザー データを移行するための追加の管理操作は必要ありません。
 
-- SharePoint/OneDrive
+- SharePoint および OneDrive
 
 
-## <a name="how-to-perform-a-dns-domain-name-takeover"></a>How to perform a DNS domain name takeover
+## DNS ドメイン名の引き継ぎの実行方法
 
-You have a few options for how to perform a domain validation (and do a takeover if you wish):
+ドメイン検証 (および必要に応じて引き継ぎ) の実行方法はいくつかあります。
 
-1.  Azure Management Portal
+1.  Microsoft Azure 管理ポータル
 
-    A takeover is triggered by doing a domain addition.  If a directory already exists for the domain, you'll have the option to perform an external takeover.
+	引き継ぎは、ドメインの追加によってトリガーされます。ドメインのディレクトリが既に存在する場合は、オプションで外部の引き継ぎを実行できます。
 
-    Sign in to the Azure portal using your credentials.  Navigate to your existing directory and then to **Add domain**.
+	資格情報を使用して、Azure ポータルにサインインします。既存のディレクトリに移動し、[**ドメインの追加**] を選択します。
 
 2.  Office 365
 
-    You can use the options on the [Manage domains](https://support.office.com/article/Navigate-to-the-Office-365-Manage-domains-page-026af1f2-0e6d-4f2d-9b33-fd147420fac2/) page in Office 365 to work with your domains and DNS records. See [Verify your domain in Office 365](https://support.office.com/article/Verify-your-domain-in-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611/).
+	Office 365 の [[ドメインの管理](https://support.office.com/article/Navigate-to-the-Office-365-Manage-domains-page-026af1f2-0e6d-4f2d-9b33-fd147420fac2/)] ページにあるオプションを使用すると、ドメインと DNS レコードで作業できます。「[Office 365 でドメインを確認する](https://support.office.com/article/Verify-your-domain-in-Office-365-6383f56d-3d09-4dcb-9b41-b5f5a5efd611/)」 参照してください。
 
 3.  Windows PowerShell
 
-    The following steps are required to perform a validation using Windows PowerShell.
+	Windows PowerShell を使用して検証を実行するには、次の手順に従ってください。
 
-    Step    |   Cmdlet to use
-    ------- | -------------
-    Create a credential object | Get-Credential
-    Connect to Azure AD | Connect-MsolService
-    get a list of domains   | Get-MsolDomain
-    Create a challenge  | Get-MsolDomainVerificationDns
-    Create DNS record   | Do this on your DNS server
-    Verify the challenge    | Confirm-MsolEmailVerifiedDomain
+	手順 |	使用するコマンドレット
+	-------	| -------------
+	資格情報オブジェクトの作成 | Get-Credential
+	Azure への接続 | Connect-MsolService
+	ドメイン一覧の取得 | Get-MsolDomain
+	チャレンジの作成 | Get-MsolDomainVerificationDns
+	DNS レコードの作成 | DNS サーバー上でこれを実行
+	チャレンジの確認 | Confirm-MsolEmailVerifiedDomain
 
-For example:
+次に例を示します。
 
-1. Connect to Azure AD using the credentials that were used to respond to the self-service offering:      import-module MSOnline      $msolcred = get-credential      connect-msolservice -credential $msolcred
+1. セルフサービス プランに応答するために使用された資格情報を使用して、次のコマンドレットで import-module MSOnline $msolcred = get-credential connect-msolservice -credential $msolcred Azure AD に接続します。
 
-2. Get a list of domains:
+2. ドメイン一覧を、次のコマンドレットで取得します。
 
-    Get-MsolDomain
+	Get-MsolDomain
 
-3. Then run the Get-MsolDomainVerificationDns cmdlet to create a challenge:
+3. そして、次のように Get-MsolDomainVerificationDns コマンドレットを実行してチャレンジを作成します。
 
-    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
+	Get-MsolDomainVerificationDns –DomainName *your\_domain\_name* –Mode DnsTxtRecord
 
-    For example:
+	例:
 
-    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
+	Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
 
-4. Copy the value (the challenge) that is returned from this command.
+4. このコマンドから返される値 (チャレンジ) をコピーします。
 
-    For example:
+	次に例を示します。
 
-    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
+	MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
 
-5. In your public DNS namespace, create a DNS txt record that contains the value that you copied in the previous step.
+5. パブリック DNS 名前空間で、前の手順でコピーした値を含む DNS txt レコードを作成します。
 
-    The name for this record is the name of the parent domain, so if you create this resource record by using the DNS role from Windows Server, leave the Record name blank and just paste the value into the Text box
+	この レコードの名前は親ドメインの名前です。このリソース レコードを Windows Server の DNS ロールを使用して作成する場合は、[レコード名] を空のままにして、テキスト ボックスに値を貼り付けます。
 
-6. Run the Confirm-MsolDomain cmdlet to verify the challenge:
+6. 次のように Confirm-MsolDomain コマンドレットを実行してチャレンジを確認します。
 
-    Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
+	Confirm-MsolEmailVerifiedDomain -DomainName *your\_domain\_name*
 
-    for example:
+	例:
 
-    Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
+	Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
 
-A successful challenge returns you to the prompt without an error.
+チャレンジがクリアされると、エラーなしでプロンプトに戻ります。
 
-## <a name="how-do-i-control-self-service-settings?"></a>How do I control self-service settings?
+## セルフサービス設定の管理方法
 
-Admins have two self-service controls today. They can control:
+管理者は、セルフサービスの 2 種類の管理を実行できます。管理できる対象は次のとおりです。
 
-- Whether or not users can join the directory via email.
-- Whether or not users can license themselves for applications and services.
-
-
-### <a name="how-can-i-control-these-capabilities?"></a>How can I control these capabilities?
-
-An admin can configure these capabilities using these Azure AD cmdlet Set-MsolCompanySettings parameters:
-
-+ **AllowEmailVerifiedUsers** controls whether a user can create or join an unmanaged directory. If you set that parameter to $false, no email-verified users can join the directory.
-+ **AllowAdHocSubscriptions** controls the ability for users to perform self-service sign up. If you set that parameter to $false, no users can perform self-service signup.
+- ユーザーが電子メール経由でディレクトリに参加できるかどうか。
+- ユーザー自身がアプリケーションやサービスのライセンスを取得できるかどうか。
 
 
-### <a name="how-do-the-controls-work-together?"></a>How do the controls work together?
+### これらの機能の管理方法
 
-These two parameters can be used in conjunction to define more precise control over self-service sign up. For example, the following command will allow users to perform self-service sign up, but only if those users already have an account in Azure AD (in other words, users who would need an email-verified account to be created cannot perform self-service sign up):
+管理者は、Azure AD コマンドレット Set-MsolCompanySettings パラメータを使用してこれらの機能を構成できます。
 
-    Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
++ **AllowEmailVerifiedUsers** によって、ユーザーが管理されていないディレクトリを作成または参加できるかを管理できます。このパラメーターを $false に設定すると、電子メール検証済みのユーザーはディレクトリに参加できません。
++ **AllowAdHocSubscriptions** によって、ユーザーがセルフサービス サインアップを実行できるかどうかを管理できます。このパラメータを $false に設定すると、ユーザーはセルフサービス サインアップを実行できません。
 
-The following flowchart explains all the different combinations for these parameters and the resulting conditions for the directory and self-service sign up.
+
+### これらの管理機能の連携について
+
+これら 2 つのパラメーターを組み合わせて使用すると、セルフサービス サインアップをさらに細かく管理できるようになります。たとえば、次のコマンドによりユーザーはセルフサービス サインアップを実行できますが、 Azure AD のアカウントを既に持っている場合に限定されます (つまり、電子メール検証済みのアカウントを作成する必要があるユーザーは、セルフサービス サインアップを実行できません)。
+
+	Set-MsolCompanySettings -AllowEmailVerifiedUsers $false -AllowAdHocSubscriptions $true
+
+次のフローチャートでは、これらのパラメーターのさまざまな組み合わせと、結果として得られるディレクトリとセルフサービス サインアップの状態を示しています。
 
 ![][1]
 
-For more information and examples of how to use these parameters, see [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx).
+これらのパラメーターの使用方法についての詳細は、「[Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)」を参照してください。
 
-## <a name="see-also"></a>See Also
+## 関連項目
 
--  [How to install and configure Azure PowerShell](../powershell-install-configure.md)
+-  [Azure PowerShell のインストールと構成の方法](../powershell-install-configure.md)
 
 -  [Azure PowerShell](https://msdn.microsoft.com/library/azure/jj156055.aspx)
 
--  [Azure Cmdlet Reference](https://msdn.microsoft.com/library/azure/jj554330.aspx)
+-  [Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/azure/jj554330.aspx)
 
 -  [Set-MsolCompanySettings](https://msdn.microsoft.com/library/azure/dn194127.aspx)
 
 <!--Image references-->
 [1]: ./media/active-directory-self-service-signup/SelfServiceSignUpControls.png
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

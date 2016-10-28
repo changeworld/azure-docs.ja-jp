@@ -1,28 +1,25 @@
-After the records for your domain name have propagated, you must associate them with your Web App. Use the following steps to enable the domain names using your web browser.
+ドメイン名のレコードが反映されたら、それを Web アプリに関連付ける必要があります。Web ブラウザーを使用してドメイン名を有効にするには、次の手順を使用します。
 
-> [AZURE.NOTE] It can take some time for TXT records created in the previous steps to propagate through the DNS system. You cannot add the domain name of to your web app until the TXT record has propagated. If you are using an A record, you cannot add the A record domain name to your web app until the TXT record created in the previous step has propagated.
+> [AZURE.NOTE] 前の手順で作成された TXT レコードが DNS に反映されるまで多少の時間がかかります。TXT レコードが反映されるまで、Web アプリに対してドメイン名を追加することはできません。A レコードを使用している場合には、前の手順で作成された TXT レコードが反映されるまで、Web アプリに A レコードのドメイン名を追加することはできません。
 >
-> You can use a service such as <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> to verify that the TXT record is available.
+> <a href="http://www.digwebinterface.com/">http://www.digwebinterface.com/</a> などのサービスを使用すると、TXT レコードを利用できるかどうかを確認できます。
 
-1. In your browser, open the [Azure Portal](https://portal.azure.com).
+1. ブラウザーで、[Azure ポータル](https://portal.azure.com)を開きます。
 
-2. In the **Web Apps** tab, click the name of your web app, and then select **Custom domains**
+2. **[Web Apps]** タブで、Web アプリの名前をクリックし、**[カスタム ドメイン]** を選択します。
 
-    ![](./media/custom-dns-web-site/dncmntask-cname-6.png)
+	![](./media/custom-dns-web-site/dncmntask-cname-6.png)
 
-3. In the **Custom domains** blade, click **Add hostname**.
-    
-4. Use the **Hostname** text boxes to enter the domain names to associate with this web app.
+3. **[カスタム ドメイン]** ブレードで **[Add hostname (ホスト名の追加)]** をクリックします。
+	
+4. **[Hostname (ホスト名)]** ボックスに、この Web アプリに関連付けるドメイン名を入力します。
 
-    ![](./media/custom-dns-web-site/add-custom-domain.png)
+	![](./media/custom-dns-web-site/add-custom-domain.png)
 
-6.  Click **Validate**.
+6.  **[Validate (検証)]** をクリックします。
 
-7.  Upon clicking **Validate** Azure will kick off Domain Verification workflow. This will check for Domain ownership as well as Hostname availability and report success or detailed error with prescriptive guidence on how to fix the error.    
+7.  **[Validate (検証)]** をクリックすると、ドメインの検証ワークフローが開始されます。このワークフローは、ドメインの所有権に加えて、ホスト名を利用できるかどうかを確認して、結果 (成功またはエラー) を報告します。エラーの場合は、エラーの詳細とエラーの解決に役立つガイダンスが表示されます。
 
-At this point, you should be able to enter the custom domain name in your browser and see that it successfully takes you to your web app.
+この時点でブラウザーにカスタム ドメイン名を入力して、対象の Web アプリに正常にアクセスできることを確認できます。
 
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

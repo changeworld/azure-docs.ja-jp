@@ -1,28 +1,26 @@
 <properties
-    pageTitle="What happened to my WebJob project (Visual Studio Azure Storage connected service)? | Microsoft Azure"
-    description="Describes what happened in a Azure WebJob project after connecting to a storage account using Visual Studio connected services"
-    services="storage"
-    documentationCenter=""
-    authors="TomArcher"
-    manager="douge"
-    editor=""/>
+	pageTitle="Web ジョブ プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス) | Microsoft Azure"
+	description="Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後の、Azure Web ジョブ プロジェクトの変更点について説明します。"
+	services="storage"
+	documentationCenter=""
+	authors="TomArcher"
+	manager="douge"
+	editor=""/>
 
 <tags
-    ms.service="storage"
-    ms.workload="web"
-    ms.tgt_pltfrm="vs-what-happened"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/15/2016"
-    ms.author="tarcher"/>
+	ms.service="storage"
+	ms.workload="web"
+	ms.tgt_pltfrm="vs-what-happened"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/15/2016"
+	ms.author="tarcher"/>
 
+# Web ジョブ プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
 
-# <a name="what-happened-to-my-webjob-project-(visual-studio-azure-storage-connected-service)?"></a>What happened to my WebJob project (Visual Studio Azure Storage connected service)?
+## リファレンスの追加
 
-## <a name="references-added"></a>References Added
-
-The Azure Storage NuGet package was added to or updated in your Visual Studio project.  
-This package adds the following .NET references:
+Visual Studio プロジェクトで Azure Storage の NuGet パッケージが追加または更新されました。このパッケージは、次の .NET 参照を追加します。
 
 - **Microsoft.Data.Edm**
 - **Microsoft.Data.OData**
@@ -33,13 +31,9 @@ This package adds the following .NET references:
 - **System.Data**
 - **System.Spatial**
 
-## <a name="connection-string-for-azure-storage-added"></a>Connection string for Azure Storage added
-In the App.config file of your project, the **AzureWebJobsStorage** and **AzureWebJobsDashboard** entries were updated with the selected storage account's connection string and key.
+## Azure Storage の接続文字列の追加
+選択したストレージ アカウントの接続文字列とキーを使用して、プロジェクトの App.config ファイル内の **AzureWebJobsStorage** エントリと **AzureWebJobsDashboard** エントリが更新されました。
 
-For more information, see [Azure WebJobs documentation resources](http://go.microsoft.com/fwlink/?linkid=390226).
+詳細については、「[Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」を参照してください。
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->

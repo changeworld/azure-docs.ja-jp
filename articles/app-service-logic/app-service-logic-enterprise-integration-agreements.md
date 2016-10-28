@@ -1,74 +1,68 @@
 <properties 
-    pageTitle="Overview of partners and Enterprise Integration Pack | Microsoft Azure App Service" 
-    description="Learn how to use partners with the Enterprise Integration Pack and Logic apps" 
-    services="logic-apps" 
-    documentationCenter=".net,nodejs,java"
-    authors="msftman" 
-    manager="erikre" 
-    editor="cgronlun"/>
+	pageTitle="パートナーと Enterprise Integration Pack の概要 |Microsoft Azure App Service" 
+	description="Enterprise Integration Pack と Logic Apps を使用してパートナーを使用する方法について説明します。" 
+	services="logic-apps" 
+	documentationCenter=".net,nodejs,java"
+	authors="msftman" 
+	manager="erikre" 
+	editor="cgronlun"/>
 
 <tags 
-    ms.service="logic-apps" 
-    ms.workload="integration" 
-    ms.tgt_pltfrm="na" 
-    ms.devlang="na" 
-    ms.topic="article" 
-    ms.date="06/29/2016" 
-    ms.author="deonhe"/>
+	ms.service="logic-apps" 
+	ms.workload="integration" 
+	ms.tgt_pltfrm="na" 
+	ms.devlang="na" 
+	ms.topic="article" 
+	ms.date="06/29/2016" 
+	ms.author="deonhe"/>
 
 
+# 契約と Enterprise Integration Pack についての詳細情報
 
-# <a name="learn-about-agreements-and-enterprise-integration-pack"></a>Learn about agreements and Enterprise Integration Pack
+## Overview
+契約は企業間 (B2B) 通信に必要不可欠であり、これによりビジネス エンティティは業界標準のプロトコルを使用してシームレスに通信することができます。
 
-## <a name="overview"></a>Overview
-Agreements are the cornerstone of business-to-business (B2B) communications, allowing business entities to communicate seamlessly using industry standard protocols.  
+## 契約とは
 
-## <a name="what-is-an-agreement?"></a>What is an agreement?
+契約は、Enterprise Integration Pack に関する限り、B2B 取引先間の通信配列です。契約は、パートナーが達成したいと考えている通信に基づいており、プロトコルまたはトランスポートに固有のものです。
 
-An agreement, as far as the Enterprise Integration Pack is concerned, is a communications arrangement between B2B trading partners. An agreement is based on the communications the partners wish to achieve and is protocol or transport specific.
-
-Enterprise integration supports three protocol/transport standards:  
+エンタープライズ統合には、次の 3 つのプロトコル/トランスポート標準がサポートされています。
 
 - [AS2](./app-service-logic-enterprise-integration-as2.md)
 - [X12](./app-service-logic-enterprise-integration-x12.md)
 - [EDIFACT](./app-service-logic-enterprise-integration-edifact.md)
 
-## <a name="why-use-agreements"></a>Why use agreements
-Some of the common benefits of using agreements are:
-- Enables different organizations and businesses to be able to exchange information in a well known format.  
-- Improves efficiency when conducting B2B transactions  
-- Easy to create, manage and use them when creating enterprise integration apps  
+## 契約を使用する理由
+契約を使用する一般的な利点をいくつか次に示します。
+- さまざまな組織や事業がよく知られている形式で情報交換できることが有効です。
+- B2B トランザクションを実行する際に、効率性を改善します。
+- エンタープライズ統合アプリを作成する際に、作成、管理、および使用が簡単です。
 
-## <a name="how-to-create-agreements"></a>How to create agreements
-- [Create an AS2 agreement](./app-service-logic-enterprise-integration-as2.md)   
-- [Create an X12 agreement](./app-service-logic-enterprise-integration-x12.md)   
+## 契約の作成方法
+- [AS2 契約の作成](./app-service-logic-enterprise-integration-as2.md)
+- [X12 契約の作成](./app-service-logic-enterprise-integration-x12.md)
 
-## <a name="how-to-use-an-agreement"></a>How to use an agreement
-After creating an agreement, you can use it via the Azure portal to create [Logic apps](./app-service-logic-what-are-logic-apps.md "Learn about Logic apps") with B2B features.
+## 契約の使用方法
+契約を作成すると、Azure ポータルからこれを使用して、B2B 機能を持つ [Logic Apps](./app-service-logic-what-are-logic-apps.md "Logic Apps についての詳細情報") を作成できます。
 
-## <a name="how-to-edit-an-agreement"></a>How to edit an agreement
-You can edit any agreement by following these steps:  
-1. Select the Integration account that contains the agreement you wish to modify.  
-2. Select the **Agreements** tile  
-3. Select the agreement you wish to modify on the **Agreements** blade  
-4. Select **Edit** from the menu above   
-5. On the Edit menu that opens, make you changes then select the **OK** button to save the changes  
+## 契約の編集方法
+契約を編集するには、次の手順に従います。
+1. 変更する契約を含む統合アカウントを選択します。
+2. **[Agreements (契約)]** タイルを選択します。
+3. **[Agreements (契約)]** ブレードで変更する契約を選択します。
+4. 上部のメニューで、**[編集]** を選択します。
+5. [編集] メニューが開いたら、変更を行います。次に **[OK]** ボタンを選択し、変更を保存します。
 
-## <a name="how-to-delete-an-agreement"></a>How to delete an agreement
-You can delete any agreement by following these steps from within the integration account that contains the agreement you wish to delete:   
-1. Select the **Agreements** tile  
-2. Select the agreement you wish to delete on the **Agreements** blade  
-3. Select **Delete** from the menu above  
-4. Confirm that you really want to delete the agreement  
-5. Notice that the agreement is no longer listed on the Agreements blade  
+## 契約の削除方法
+契約を削除するには、削除する契約を含む統合アカウント内から次の手順に従います。
+1. **[Agreements (契約)]** タイルを選択します。
+2. **[Agreements (契約)]** ブレードで削除する契約を選択します。
+3. 上部のメニューで、**[削除]** を選択します。
+4. 契約を削除することを確認します。
+5. 契約が [Agreements (契約)] ブレードにリストされなくなったことに注意してください。
  
 
-## <a name="next-steps"></a>Next steps
-- [Create an AS2 agreement](./app-service-logic-enterprise-integration-as2.md)  
+## 次のステップ
+- [AS2 契約の作成](./app-service-logic-enterprise-integration-as2.md)
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

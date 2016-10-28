@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Azure Active Directory Authentication Libraries | Microsoft Azure"
-   description="The Azure AD Authentication Library (ADAL) allows client application developers to easily authenticate users to cloud or on-premises Active Directory (AD) and then obtain access tokens for securing API calls."
+   pageTitle="Azure Active Directory 認証ライブラリ | Microsoft Azure"
+   description="Azure AD 認証ライブラリ (ADAL) を使用すると、クライアント アプリケーション開発者は、クラウドまたはオンプレミスの Active Directory (AD) に対して簡単にユーザーを認証し、API 呼び出しを保護するためのアクセス トークンを取得できます。"
    services="active-directory"
    documentationCenter=""
    authors="msmbaldwin"
@@ -12,61 +12,55 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="identity"
-   ms.date="10/11/2016"
+   ms.date="09/16/2016"
    ms.author="mbaldwin" />
 
+# Azure Active Directory 認証ライブラリ
 
-# <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory Authentication Libraries
+Azure AD 認証ライブラリ (ADAL) を使用すると、クライアント アプリケーション開発者は、クラウドまたはオンプレミスの Active Directory (AD) に対して簡単にユーザーを認証し、API 呼び出しを保護するためのアクセス トークンを取得できます。ADAL には、非同期のサポート、アクセス トークンと更新トークンを格納する構成可能なトークン キャッシュ、アクセス トークンの有効期限が切れたときに更新トークンを使用できる場合のトークンの自動更新など、開発者向けに認証を容易にする多くの機能が用意されています。複雑な部分のほとんどが ADAL によって処理されるため、開発者はアプリケーションでビジネス ロジックに集中し、セキュリティの専門家でなくても簡単にリソースを保護できます。
 
-The Azure AD authentication Library (ADAL) enables client application developers to easily authenticate users to cloud or on-premises Active Directory (AD), and then obtain access tokens for securing API calls. ADAL has many features that make authentication easier for developers, such as asynchronous support, a configurable token cache that stores access tokens and refresh tokens, automatic token refresh when an access token expires and a refresh token is available, and more. By handling most of the complexity, ADAL can help a developer focus on business logic in their application and easily secure resources without being an expert on security.
+ADAL は、さまざまなプラットフォームで使用できます。
 
-ADAL is available on a variety of platforms.
-
-|Platform|Package Name|Client/Server|Download|Source Code|Documentation & Samples|
+|プラットフォーム|パッケージ名|クライアント/サーバー|ダウンロード|ソース コード|ドキュメントとサンプル|
 |---|---|---|---|---|---|
-|.NET Client, Windows Store, UWP, Xamarin iOS and Android|Active Directory  Authentication Library (ADAL) for .NET v3 |Client|[Microsoft.IdentityModel.Clients.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory)|[ADAL for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet)|[Documentation](https://docs.microsoft.com/active-directory/adal/microsoft.identitymodel.clients.activedirectory)|
-|.NET Client, Windows Store, Windows Phone 8.1 |Active Directory  Authentication Library (ADAL) for .NET v2 |Client|[Microsoft.IdentityModel.Clients.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.2)|[ADAL for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/releases/tag/v2.28.2)|[Documentation](https://docs.microsoft.com/active-directory/adal/v2/microsoft.identitymodel.clients.activedirectory)|
-|JavaScript|Active Directory Authentication Library (ADAL) for JavaScript|Client|[ADAL for JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|[ADAL for JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|Sample: [SinglePageApp-DotNet (Github)](https://github.com/AzureADSamples/SinglePageApp-DotNet)|
-|OS X, iOS|Active Directory Authentication Library (ADAL) for Objective-C|Client|[ADAL for Objective-C (CocoaPods)](https://cocoapods.org/?q=adal%20io)|[ADAL for Objective-C (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-objc)|Sample: [NativeClient-iOS (Github)](https://github.com/AzureADSamples/NativeClient-iOS)|
-|Android|Active Directory Authentication Library (ADAL) for Android|Client|[ADAL for Android (The Central Repository)](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/)|[ADAL for Android (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-android)|Sample: [NativeClient-Android (Github)](https://github.com/AzureADSamples/NativeClient-Android)|
-|Node.js|Active Directory Authentication Library (ADAL) for Node.js|Client|[ADAL for Node.js (npm)](https://www.npmjs.com/package/adal-node)|[ADAL for Node.js (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs)|Sample: [WebAPI-Nodejs (Github)](https://github.com/AzureADSamples/WebAPI-Nodejs)|
-|Node.js|Microsoft Azure Active Directory Passport authentication middleware for Node|Client|[Azure Active Directory Passport for Node.js (npm)](https://www.npmjs.com/package/passport-azure-ad)|[Azure Active Directory for Node.js (Github)](https://github.com/AzureAD/passport-azure-ad)||
-|Java|Active Directory Authentication Library (ADAL) for Java|Client|[ADAL for Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)|[ADAL for Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)||
-|.NET|Identity Protocol Extensions for the Microsoft .NET Framework 4.5|Server|[Microsoft.IdentityModel.Protocol.Extensions (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions)|[Azure AD identity model extensions for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
-|.NET|JSON Web Token Handler For the Microsoft .Net Framework 4.5|Server|[System.IdentityModel.Tokens.Jwt (NuGet)](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt)|[Azure AD identity model extensions for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
-|.NET|OWIN middleware that enables an application to use Microsoft's technology for authentication.|Server|[Microsoft.Owin.Security.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/)|[OWIN (CodePlex)](http://katanaproject.codeplex.com)||
-|.NET|OWIN middleware that enables an application to use OpenIDConnect for authentication.|Server|[Microsoft.Owin.Security.OpenIdConnect (NuGet)](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect)|[OWIN (CodePlex)](http://katanaproject.codeplex.com)|Sample: [WebApp-OpenIDConnecty-DotNet (Github)](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet)|
-|.NET|OWIN middleware that enables an application to use WS-Federation for authentication.|Server|[Microsoft.Owin.Security.WsFederation (NuGet)](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation)|[OWIN (CodePlex)](http://katanaproject.codeplex.com)|Sample: [WebApp-WSFederation-DotNet (Github)](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet)|
+|.NET クライアント、Windows ストア、Windows Phone (8.1)|Active Directory Authentication Library (ADAL) for .NET|クライアント|[Microsoft.IdentityModel.Clients.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory)|[ADAL for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet)|[ドキュメント](https://msdn.microsoft.com/library/azure/mt417579.aspx)|
+|JavaScript|Active Directory Authentication Library (ADAL) for JavaScript|クライアント|[ADAL for JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|[ADAL for JavaScript (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-js)|サンプル: [SinglePageApp-DotNet (Github)](https://github.com/AzureADSamples/SinglePageApp-DotNet)|
+|OS X、iOS|Active Directory Authentication Library (ADAL) for Objective-C|クライアント|[ADAL for Objective-C (CocoaPods)](https://cocoapods.org/?q=adal%20io)|[ADAL for Objective-C (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-objc)|サンプル: [NativeClient-iOS (Github)](https://github.com/AzureADSamples/NativeClient-iOS)|
+|Android|Active Directory Authentication Library (ADAL) for Android|クライアント|[ADAL for Android (中央リポジトリ)](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/)|[ADAL for Android (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-android)|サンプル: [NativeClient-Android (Github)](https://github.com/AzureADSamples/NativeClient-Android)|
+|Node.js|Active Directory Authentication Library (ADAL) for Node.js|クライアント|[ADAL for Node.js (npm)](https://www.npmjs.com/package/adal-node)|[ADAL for Node.js (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs)|サンプル: [WebAPI-Nodejs (Github)](https://github.com/AzureADSamples/WebAPI-Nodejs)|
+|Node.js|Node 用 Microsoft Azure Active Directory Passport 認証ミドルウェア|クライアント|[Azure Active Directory Passport for Node.js (npm)](https://www.npmjs.com/package/passport-azure-ad)|[Azure Active Directory for Node.js (Github)](https://github.com/AzureAD/passport-azure-ad)||
+|Java|Active Directory Authentication Library (ADAL) for Java|クライアント|[ADAL for Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)|[ADAL for Java (Github)](https://github.com/AzureAD/azure-activedirectory-library-for-java)||
+|.NET|Identity Protocol Extensions for the Microsoft .NET Framework 4.5|サーバー|[Microsoft.IdentityModel.Protocol.Extensions (NuGet)](https://www.nuget.org/packages/Microsoft.IdentityModel.Protocol.Extensions)|[Azure AD Identity Model Extensions for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
+|.NET|JSON Web Token Handler For the Microsoft .Net Framework 4.5|サーバー|[System.IdentityModel.Tokens.Jwt (NuGet)](https://www.nuget.org/packages/System.IdentityModel.Tokens.Jwt)|[Azure AD Identity Model Extensions for .NET (Github)](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet)||
+|.NET|アプリケーションで認証に Microsoft のテクノロジを使用できるようにするための OWIN ミドルウェア|サーバー|[Microsoft.Owin.Security.ActiveDirectory (NuGet)](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/)|[OWIN (CodePlex)](http://katanaproject.codeplex.com)||
+|.NET|アプリケーションで認証に OpenIDConnect を使用できるようにするための OWIN ミドルウェア|サーバー|[Microsoft.Owin.Security.OpenIdConnect (NuGet)](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect)|[OWIN (CodePlex)](http://katanaproject.codeplex.com)|サンプル: [WebApp-OpenIDConnecty-DotNet (Github)](https://github.com/AzureADSamples/WebApp-OpenIDConnect-DotNet)|
+|.NET|アプリケーションで認証に WS-Federation を使用できるようにするための OWIN ミドルウェア|サーバー|[Microsoft.Owin.Security.WsFederation (NuGet)](https://www.nuget.org/packages/Microsoft.Owin.Security.WsFederation)|[OWIN (CodePlex)](http://katanaproject.codeplex.com)|サンプル: [WebApp-WSFederation-DotNet (Github)](https://github.com/AzureADSamples/WebApp-WSFederation-DotNet)|
 
-## <a name="scenarios"></a>Scenarios
+## シナリオ
 
-Here are three common scenarios in which ADAL can be used for authentication.  
+ADAL を認証に使用できる 3 つの一般的なシナリオを以下に示します。
 
-### <a name="authenticating-users-of-a-client-application-to-a-remote-resource"></a>Authenticating Users of a Client Application to a Remote Resource
+### リモート リソースに対してクライアント アプリケーションのユーザーを認証する
 
-In this scenario, a developer has a client, such as a WPF application, that needs to access a remote resource secured by Azure AD, such as a web API. He has an Azure subscription, knows how to invoke the downstream web API, and knows the Azure AD tenant that the web API uses. As a result, he can use ADAL to facilitate authentication with Azure AD, either by fully delegating the authentication experience to ADAL or by explicitly handling user credentials. ADAL makes it easy to authenticate the user, obtain an access token and refresh token from Azure AD, and then use the access token to make requests to the web API.
+このシナリオでは、開発者は Azure AD によって保護されたリモート リソース (Web API など) にアクセスする必要があるクライアント (WPF アプリケーションなど) を使用しています。また、Azure サブスクリプションを持ち、ダウンストリーム Web API を呼び出す方法と、Web API が使用する Azure AD テナントを知っています。そのため、ADAL を使用して、ADAL に認証エクスペリエンスを完全に委任するか、ユーザー資格情報を明示的に処理することで、Azure AD による認証を容易にすることができます。ADAL により、ユーザーを認証し、Azure AD からアクセス トークンと更新トークンを取得し、そのアクセス トークンを使用して Web API への要求を行うことが容易になります。
 
-For a code sample that demonstrates this scenario using authentication to Azure AD, see [Native Client WPF Application to Web API](https://github.com/azureadsamples/nativeclient-dotnet).
+Azure AD に対する認証を使用してこのシナリオを実証するコード サンプルについては、[ネイティブ クライアント WPF アプリケーションと Web API](https://github.com/azureadsamples/nativeclient-dotnet) に関するページをご覧ください。
 
-### <a name="authenticating-a-server-application-to-a-remote-resource"></a>Authenticating a Server Application to a Remote Resource
+### リモート リソースに対してサーバー アプリケーションを認証する
 
-In this scenario, a developer has an application running on a server that needs to access a remote resource secured by Azure AD, such as a web API. He has an Azure subscription, knows how to invoke the downstream service, and knows the Azure AD tenant the web API uses. As a result, he can use ADAL to facilitate authentication with Azure AD by explicitly handling the application’s credentials. ADAL makes it easy to retrieve a token from Azure AD by using the application’s client credential and then use that token to make requests to the web API. ADAL also handles managing the lifetime of the access token by caching it and renewing it as necessary. For a code sample that demonstrates this scenario, see [Console Application to Web API](https://github.com/AzureADSamples/Daemon-DotNet).
+このシナリオでは、開発者は Azure AD によって保護されたリモート リソース (Web API など) にアクセスする必要がある、サーバー上で実行されるアプリケーションを使用しています。また、Azure サブスクリプションを持ち、ダウンストリーム サービスを呼び出す方法と、Web API が使用する Azure AD テナントを知っています。そのため、ADAL を使用して、アプリケーションの資格情報を明示的に処理することで、Azure AD による認証を容易にすることができます。ADAL により、アプリケーションのクライアント資格情報を使用して Azure AD からトークンを取得し、そのトークンを使用して Web API への要求を行うことが容易になります。また、ADAL はアクセス トークンをキャッシュしてその有効期間を管理し、必要に応じて更新します。このシナリオを実証するコード サンプルについては、[コンソール アプリケーションと Web API](https://github.com/AzureADSamples/Daemon-DotNet) に関するページをご覧ください。
 
-### <a name="authenticating-a-server-application-on-behalf-of-a-user-to-access-a-remote-resource"></a>Authenticating a Server Application on Behalf of a User to Access a Remote Resource
+### リモート リソースにアクセスするために、ユーザーに代わってサーバー アプリケーションを認証する
 
-In this scenario, a developer has an application running on a server that needs to access a remote resource secured by Azure AD, such as a web API. The request also needs to be made on behalf of a user in Azure AD. He has an Azure subscription, knows how to invoke the downstream web API, and knows the Azure AD tenant the service uses. Once the user is authenticated to the web application, the application can get an authorization code for the user from Azure AD. The web application can then use ADAL to obtain an access token and refresh token on behalf of a user using the authorization code and client credentials associated with the application from Azure AD. Once the web application is in possession of the access token, it can call the web API until the token expires. When the token expires, the web application can use ADAL to get a new access token by using the refresh token that was previously received.
-
-
-## <a name="see-also"></a>See Also
-
-[The Azure Active Directory developer's guide](active-directory-developers-guide.md)
-
-[Authentication scenarios for Azure Active directory](active-directory-authentication-scenarios.md)
-
-[Azure Active Directory code samples](active-directory-code-samples.md)
+このシナリオでは、開発者は Azure AD によって保護されたリモート リソース (Web API など) にアクセスする必要がある、サーバー上で実行されるアプリケーションを使用しています。また、Azure AD でユーザーに代わって要求を行う必要があります。開発者は Azure サブスクリプションを持ち、ダウンストリーム Web API を呼び出す方法と、サービスが使用する Azure AD テナントを知っています。ユーザーが Web アプリケーションに対して認証されると、アプリケーションは Azure AD からユーザーの認証コードを取得できます。その後、Web アプリケーションは、ADAL を使用して、アプリケーションに関連付けられた認証コードとクライアント資格情報を使って、ユーザーの代わりに Azure AD からアクセス トークンと更新トークンを取得できます。アクセス トークンを所有している Web アプリケーションは、トークンの有効期限が切れるまで Web API を呼び出すことができます。トークンの有効期限が切れたら、Web アプリケーションは ADAL を使用して、以前に取得した更新トークンを使って新しいアクセス トークンを取得できます。
 
 
+## 関連項目
 
-<!--HONumber=Oct16_HO2-->
+[Azure Active Directory 開発者ガイド](active-directory-developers-guide.md)
 
+[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
 
+[Azure Active Directory のコード例](active-directory-code-samples.md)
+
+<!---HONumber=AcomDC_0921_2016-->

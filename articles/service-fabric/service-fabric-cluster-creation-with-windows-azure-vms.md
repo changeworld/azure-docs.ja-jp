@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Create a standalone cluster with Azure VMs running Windows| Microsoft Azure"
-   description="Learn how to create and manage an Azure Service Fabric cluster on Azure virtual machines running Windows Server."
+   pageTitle="Windows を実行する Azure VM を使用してスタンドアロン クラスターを作成する | Microsoft Azure"
+   description="Windows Server を実行する Azure 仮想マシン上で Azure Service Fabric クラスターを作成および管理する方法について説明します。"
    services="service-fabric"
    documentationCenter=".net"
    authors="dsk-2015"
@@ -18,20 +18,19 @@
 
 
 
+# Windows Server を実行する Azure 仮想マシンを使用して、3 ノードのスタンドアロン Service Fabric クラスターを作成する
 
-# <a name="create-a-three-node-standalone-service-fabric-cluster-with-azure-virtual-machines-running-windows-server"></a>Create a three node standalone Service Fabric cluster with Azure virtual machines running Windows Server
-
-This article describe how to create a cluster on Windows-based Azure virtual machines (VMs), using the standalone Service Fabric installer for Windows Server. This is a special case of [Create and manage a cluster running on Windows Server](service-fabric-cluster-creation-for-windows-server.md) where the VMs are [Azure VMs running Windows Server](../virtual-machines/virtual-machines-windows-hero-tutorial.md), however you are not creating [an Azure cloud-based Service Fabric cluster](service-fabric-cluster-creation-via-portal.md). The difference is that the standalone Service Fabric cluster created by the following steps is entirely managed by you, while the Azure cloud-based Service Fabric clusters are managed and upgraded by the Service Fabric resource provider.
+この記事では、Windows Server のスタンドアロン Service Fabric インストーラーを使用して、Windows ベースの Azure 仮想マシン (VM) でクラスターを作成する方法について説明します。これは、[Windows Server を実行する Azure VM](../virtual-machines/virtual-machines-windows-hero-tutorial.md) が VM となっている [Windows Server 上で実行されるクラスターを作成および管理する](service-fabric-cluster-creation-for-windows-server.md)特殊なケースですが、[Azure クラウド ベースの Service Fabric クラスター](service-fabric-cluster-creation-via-portal.md)は作成しません。異なる点は、Azure クラウド ベースの Service Fabric クラスターは Service Fabric リソースプロバイダーによって管理およびアップグレードされるのに対して、次の手順で作成するスタンドアロン Service Fabric クラスターは、完全に自分で管理するということです。
 
 
-## <a name="steps-to-create-the-standalone-cluster"></a>Steps to create the standalone cluster
+## スタンドアロン クラスターを作成する手順
 
-1. Sign in to the Azure portal and create a new Windows Server 2012 R2 Datacenter VM in a resource group. Read the article [Create a Windows VM in the Azure portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md) for more details.
-2. Add a couple more Windows Server 2012 R2 Datacenter VMs to the same resource group. Ensure that each of the VMs has the same administrator user name and password when created. Once created you should see all three VMs in the same virtual network.
-3. Connect to each of the VMs and turn off the Windows Firewall using the [Server Manager, Local Server dashboard](https://technet.microsoft.com/library/jj134147.aspx). This ensures that the network traffic can communicate between the machines. While connected to each machine, get the IP address by opening a command prompt and typing `ipconfig`. Alternatively you can see the IP address of each machine by selecting the virtual network resource for the resource group in the Azure portal.
-4. Connect to one of the VMs and test that you can ping the other two VMs successfully.
-5. Connect to one of the VMs and [download the standalone Service Fabric package for Windows Server](http://go.microsoft.com/fwlink/?LinkId=730690) into a new folder on the machine and extract the package.
-6. Open the *ClusterConfig.Unsecure.MultiMachine.json* file in Notepad and edit each node with the three IP addresses of the machines. Change the cluster name at the top and save the file.  A partial example of the cluster manifest is shown below.
+1. Azure ポータルにサインインし、リソース グループに新しい Windows Server 2012 R2 Datacenter VM を作成します。詳細については、[Azure ポータルでの Windows VM の作成に関する記事](../virtual-machines/virtual-machines-windows-hero-tutorial.md)を参照してください。
+2. 同じリソース グループに Windows Server 2012 R2 Datacenter VM をさらに 2 つ追加します。作成時に各 VM には同じ管理者ユーザー名とパスワードを使用するようにしてください。3 つの VM は、作成されると、すべて同じ仮想ネットワーク内に表示されます。
+3. 各 VM に接続し、[サーバー マネージャーの [ローカル サーバー] ダッシュボード](https://technet.microsoft.com/library/jj134147.aspx)を使用して Windows ファイアウォールを無効にします。これにより、ネットワーク トラフィックをマシン間でやり取りできるようになります。各マシンに接続中に、コマンド プロンプトを開いて `ipconfig` と入力し、IP アドレスを取得します。または、Azure ポータルでそのリソース グループの仮想ネットワーク リソースを選択すると、各マシンの IP アドレスを確認することもできます。
+4. いずれかの VM に接続し、他の 2 台の VM に正常に ping を実行できるかどうかをテストします。
+5. いずれかの VM に接続し、[Windows Server 用のスタンドアロン Service Fabric パッケージをマシンの新しいフォルダーにダウンロードして](http://go.microsoft.com/fwlink/?LinkId=730690)、そのパッケージを解凍します。
+6. メモ帳で *ClusterConfig.Unsecure.MultiMachine.json* ファイルを開き、3 つのマシンの IP アドレスで各ノードを編集します。上部にあるクラスター名を変更し、ファイルを保存します。クラスター マニフェストの部分的な例を次に示します。
 
     ```
     {
@@ -41,7 +40,7 @@ This article describe how to create a cluster on Windows-based Azure virtual mac
         "nodes": [
         {
             "nodeName": "vm0",
-            "metadata": "Replace the localhost with valid IP address or FQDN below",
+        	"metadata": "Replace the localhost with valid IP address or FQDN below",
             "iPAddress": "10.7.0.5",
             "nodeTypeRef": "NodeType0",
             "faultDomain": "fd:/dc1/r0",
@@ -49,7 +48,7 @@ This article describe how to create a cluster on Windows-based Azure virtual mac
         },
         {
             "nodeName": "vm1",
-            "metadata": "Replace the localhost with valid IP address or FQDN below",
+        	"metadata": "Replace the localhost with valid IP address or FQDN below",
             "iPAddress": "10.7.0.4",
             "nodeTypeRef": "NodeType0",
             "faultDomain": "fd:/dc2/r0",
@@ -57,7 +56,7 @@ This article describe how to create a cluster on Windows-based Azure virtual mac
         },
         {
             "nodeName": "vm2",
-            "metadata": "Replace the localhost with valid IP address or FQDN below",
+        	"metadata": "Replace the localhost with valid IP address or FQDN below",
             "iPAddress": "10.7.0.6",
             "nodeTypeRef": "NodeType0",
             "faultDomain": "fd:/dc3/r0",
@@ -66,24 +65,20 @@ This article describe how to create a cluster on Windows-based Azure virtual mac
     ],
     ```
 
-7. Open a [PowerShell ISE window](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise). Navigate to the folder where you extracted the downloaded standalone installer package and saved the cluster manifest file. Run the following PowerShell command.
+7. [PowerShell ISE ウィンドウ](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)を開きます。ダウンロードしたスタンドアロンのインストーラー パッケージを展開して、クラスター マニフェスト ファイルを保存したフォルダーに移動します。次の PowerShell コマンドを実行します。
 
     ```
     .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -MicrosoftServiceFabricCabFilePath .\MicrosoftAzureServiceFabric.cab
     ```
 
-8. You should see the PowerShell run, connect to each machine and create a cluster. After about a minute, you can check if the cluster is operational by connecting to the Service Fabric Explorer on one of the machine's IP address e.g. by using `http://10.7.0.5:19080/Explorer/index.html`. Since this is a standalone cluster using Azure VMs, to make it secure you will have to [deploy certificates to the Azure VMs](service-fabric-windows-cluster-x509-security.md) or set up one of the machines as a [Windows Server Active Directory (AD) controller for Windows authentication](service-fabric-windows-cluster-windows-security.md), just like you would do on premises.
+8. PowerShell が実行され、各マシンに接続してクラスターが作成されることを確認できます。約 1 分後に、いずれかのマシンの IP アドレス (例: `http://10.7.0.5:19080/Explorer/index.html` を使用) で Service Fabric Explorer に接続すると、クラスターが動作可能かどうかを確認できます。これは Azure VM を使用するスタンドアロン クラスターであるため、このクラスターをセキュリティで保護する場合は、[証明書を Azure VM にデプロイする](service-fabric-windows-cluster-x509-security.md)か、オンプレミスの場合と同様に、いずれかのマシンを [Windows 認証用の Windows Server Active Directory (AD) コントローラー](service-fabric-windows-cluster-windows-security.md)としてセットアップする必要があります。
 
 
-## <a name="next-steps"></a>Next steps
-- [Create standalone Service Fabric clusters on Windows Server or Linux](service-fabric-deploy-anywhere.md)
-- [Add or remove nodes to a standalone Service Fabric cluster](service-fabric-cluster-windows-server-add-remove-nodes.md)
-- [Configuration settings for standalone Windows cluster](service-fabric-cluster-manifest.md)
-- [Secure a standalone cluster on Windows using Windows security](service-fabric-windows-cluster-windows-security.md)
-- [Secure a standalone cluster on Windows using X509 certificates](service-fabric-windows-cluster-x509-security.md)
+## 次のステップ
+- [Windows Server または Linux でのスタンドアロン Service Fabric クラスターの作成](service-fabric-deploy-anywhere.md)
+- [スタンドアロン Service Fabric クラスターでノードを追加または削除する](service-fabric-cluster-windows-server-add-remove-nodes.md)
+- [スタンドアロン Windows クラスターの構成設定](service-fabric-cluster-manifest.md)
+- [Windows 上のスタンドアロン クラスターを Windows セキュリティで保護する](service-fabric-windows-cluster-windows-security.md)
+- [X.509 証明書を使用した Windows でのスタンドアロン クラスターの保護](service-fabric-windows-cluster-x509-security.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

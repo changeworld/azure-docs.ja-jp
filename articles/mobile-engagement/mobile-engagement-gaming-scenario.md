@@ -1,69 +1,67 @@
 <properties 
-    pageTitle="Azure Mobile Engagement implementation for Gaming App"
-    description="Gaming app scenario to implement Azure Mobile Engagement" 
-    services="mobile-engagement" 
-    documentationCenter="mobile" 
-    authors="piyushjo"
-    manager="dwrede"
-    editor=""/>
+	pageTitle="ゲーム アプリでの Azure Mobile Engagement の実装"
+	description="Azure Mobile Engagement を実装するためのゲーム アプリのシナリオ" 
+	services="mobile-engagement" 
+	documentationCenter="mobile" 
+	authors="piyushjo"
+	manager="dwrede"
+	editor=""/>
 
 <tags
-    ms.service="mobile-engagement"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.tgt_pltfrm="mobile-multiple"
-    ms.workload="mobile" 
-    ms.date="08/19/2016"
-    ms.author="piyushjo"/>
+	ms.service="mobile-engagement"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.tgt_pltfrm="mobile-multiple"
+	ms.workload="mobile" 
+	ms.date="08/19/2016"
+	ms.author="piyushjo"/>
 
+#ゲーム アプリで Mobile Engagement を実装する
 
-#<a name="implement-mobile-engagement-with-gaming-app"></a>Implement Mobile Engagement with Gaming App
+## Overview
 
-## <a name="overview"></a>Overview
+ゲームのスタートアップが、新しい釣りベースのロールプレイング/戦略ゲーム アプリを立ち上げました。このゲームは発売から 6 か月が経過しています。ゲームは大成功し、数百万ものダウンロードがあり、他のスタートアップのゲーム アプリと比べ、リテンション期間が非常に長くなっています。四半期ごとのレビュー会議で、関係者はユーザー 1 人あたりの平均収益 (ARPU) を向上させる必要があることに同意しました。特別プランとしてゲーム内のプレミアム パッケージが提供されています。このゲーム パックにより、ユーザーはゲームで使用する釣り糸やルアーなどの道具の外観や性能をアップグレードできるようになります。しかし、パッケージの売上は非常に低いです。そこで、分析ツールを使用してカスタマー エクスペリエンスを分析し、セグメント化を細分化して売上を向上させるエンゲージメント プログラムを開発することにしました。
 
-A gaming start-up has launched a new fishing based role-play/strategy game app. The game has been up and running for 6 months. This game is a huge success, and it has millions of downloads and the retention is very high compared to other start-up game apps. At the quarterly review meeting, stakeholders agree they need to increase average revenue per user (ARPU). Premium in-game packages are available as special offers. These game packs allow users to upgrade the appearance and performance of their fishing lines and lures or tackles in the game. However, package sales are very low. So they decide first to analyze the customer experience with an analytics tool, and then to develop an engagement program to increase sales using advanced segmentation.
+「[Azure Mobile Engagement - 概要とベスト プラクティス](mobile-engagement-getting-started-best-practices.md)」に基づき、エンゲージメント戦略を構築します。
 
-Based on the [Azure Mobile Engagement - Getting Started Guide with Best practices](mobile-engagement-getting-started-best-practices.md) they build an engagement strategy.
+##目標と KPI
 
-##<a name="objectives-and-kpis"></a>Objectives and KPIs
+ゲームの主要な関係者で顔合わせをします。全員が、プレミアム パッケージの売上を 15% 上げるという 1 つの大きな目標に合意しています。この目標の進捗を測定して推進するため、次のようなビジネスの主要業績評価指標 (KPI) を作成します。
 
-Key stakeholders for the game meet. All agree on one main objective - to increase premium package sales by 15%. They create Business Key Performance Indicators (KPIs) to measure and drive this objective
+* このパッケージが購入されているのは、ゲームのどのレベルか。
+* ユーザーごと、セッションごと、週ごと、月ごとの収益はどれくらいか。
+* 人気の購入タイプは何か。
 
-* On which level of the game are these packages purchased?
-* What is the revenue per user, per session, per week, and per month?
-* What are the favorite purchase types?
+[概要](mobile-engagement-getting-started-best-practices.md)のパート 1 で目標と KPI の定義方法を説明しています。
 
-Part 1 of the [Getting Started Guide](mobile-engagement-getting-started-best-practices.md) explains how to define the objectives and KPIs. 
+ビジネスの KPI が定義されたことで、モバイル製品マネージャーがエンゲージメント KPI を作成し、新しいユーザーの傾向とリテンション期間を決定します。
 
-With the Business KPIs now defined, the Mobile Product Manager creates Engagement KPIs to determine new user trends and retention.
+* 毎日、2 日ごと、週ごと、月ごと、3 か月ごとの間隔でリテンション期間と使用状況を監視
+* アクティブなユーザー数
+* ストアでのアプリの評価
 
-* Monitor retention and use across the following intervals: daily, every 2 days, weekly, monthly and every 3 months
-* Active user counts
-* The app rating in the store
+IT チームからの推奨事項に基づき、次の質問に答えるためのテクニカル KPI が追加されました。
 
-Based on recommendations from the IT team, the following technical KPIs were added to answer the following questions:
+* ユーザー パス (どのページにアクセスされているか、そのページにユーザーがどれくらい滞在したか)
+* セッションごとに発生したクラッシュまたはバグの数
+* ユーザーが実行している OS のバージョン
+* ユーザーの画面の平均サイズ
+* ユーザーが使用するインターネット接続の種類
 
-* What is my user path (which page is visited, how much time users spend on it)
-* Number of crashes or bugs encountered per session
-* What OS versions are my users running?
-* What is the average size of screen for my users?
-* What kind of internet connectivity do my users have?
+モバイル製品マネージャーが、必要なデータと、それがプレイブックのどこにあるかを KPI ごとに指定します。
 
-For each KPI the Mobile Product Manager specifies the data she needs and where it is located in her playbook.
+## エンゲージメント プログラムおよび統合
 
-## <a name="engagement-program-and-integration"></a>Engagement program and integration
+プログラムの責任者であるモバイル プロジェクト ディレクターは、高度なエンゲージメント プログラムを構築する前に、ユーザーがいつどのように製品を消費するかについて深く理解しておく必要があります。
 
-Before building an advanced engagement program, the Mobile Project Director in charge of the project should have a deep understanding of how and when products are consumed by the users.
+3 か月後、モバイル プロジェクト ディレクターは、アプリ内のプッシュ通知による売上を強化するための十分なデータを収集しました。次のことがわかりました。
 
-After 3 months, the Mobile Project Director has collected enough data to enhance his in-app push notification sales. He learns that:
+* 最初の購入は、一般的にレベル 14 で行われる。そのうち 90% が、$3 の新しい伝説の武器の購入である。
+* そのうち 80% で、購入を行ったユーザーが引き続き製品を使い続け、購入も行っている。
+* レベル 20 をクリアしたユーザーは週に $10 以上費やすようになる。
+* ユーザーは、レベル 16、24、および 32 でプレミアム パッケージを購入する傾向がある。
 
-* The first purchase generally happens at the level 14. For 90% of those cases, the purchase is new legendary weapons for $3.
-* In 80 % of those cases, users who have made a purchase, continue with the product and make more purchases.
-* Users who have passed the level 20, start to spend more than $10/week.
-* Users tend to buy premium packages at level 16, 24 and 32.
-
-Thanks to this analysis the Mobile Project Director decides to create specific push notification sequences to increase in app sales. He creates three push sequences which he calls: Welcome program, Sales Program, and Inactive Program. For more information refer to the [Playbooks](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)
-    ![][1]
+この分析により、モバイル プロジェクト ディレクターは、アプリの売上を強化するための特定のプッシュ通知シーケンスを作成することにしました。彼は、スタート時プログラム、セールス プログラムおよび非アクティブ プログラムを呼び出す 3 つのプッシュ シーケンスを作成します。詳しくは、[プレイブック](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)を参照してください。![][1]
 
 <!--Image references-->
 
@@ -71,8 +69,4 @@ Thanks to this analysis the Mobile Project Director decides to create specific p
 
 <!--Link references-->
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0824_2016-->

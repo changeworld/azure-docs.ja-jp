@@ -1,79 +1,78 @@
 <properties
-    pageTitle="Azure Active Directory B2C | Microsoft Azure"
-    description="How to build a Windows desktop application that includes sign-in, sign-up, and profile management by using Azure Active Directory B2C."
-    services="active-directory-b2c"
-    documentationCenter=".net"
-    authors="dstrockis"
-    manager="mbaldwin"
-    editor=""/>
+	pageTitle="Azure Active Directory B2C | Microsoft Azure"
+	description="Azure Active Directory B2C を使用してサインイン、サインアップ、プロファイル管理を行う Windows デスクトップ アプリケーションを構築する方法。"
+	services="active-directory-b2c"
+	documentationCenter=".net"
+	authors="dstrockis"
+	manager="msmbaldwin"
+	editor=""/>
 
 <tags
-    ms.service="active-directory-b2c"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="dotnet"
-    ms.topic="article"
-    ms.date="07/22/2016"
-    ms.author="dastrock"/>
+	ms.service="active-directory-b2c"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="dotnet"
+	ms.topic="article"
+	ms.date="07/22/2016"
+	ms.author="dastrock"/>
 
+# Azure AD B2C: Windows デスクトップ アプリを作成する
 
-# <a name="azure-ad-b2c:-build-a-windows-desktop-app"></a>Azure AD B2C: Build a Windows desktop app
+Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
 
-By using Azure Active Directory (Azure AD) B2C, you can add powerful self-service identity management features to your desktop app in a few short steps. This article will show you how to create a .NET Windows Presentation Foundation (WPF) "to-do list" app that includes user sign-up, sign-in, and profile management. The app will include support for sign-up and sign-in by using a user name or email. It will also include support for sign-up and sign-in by using social accounts such as Facebook and Google.
+## Azure AD B2C ディレクトリの取得
 
-## <a name="get-an-azure-ad-b2c-directory"></a>Get an Azure AD B2C directory
+Azure AD B2C を使用するには、ディレクトリ (つまり、テナント) を作成しておく必要があります。ディレクトリは、ユーザー、アプリ、グループなどをすべて格納するためのコンテナーです。まだディレクトリを作成していない場合は、先に進む前に [B2C ディレクトリを作成](active-directory-b2c-get-started.md)してください。
 
-Before you can use Azure AD B2C, you must create a directory, or tenant.  A directory is a container for all of your users, apps, groups, and more. If you don't have one already, [create a B2C directory](active-directory-b2c-get-started.md) before you continue in this guide.
+## アプリケーションの作成
 
-## <a name="create-an-application"></a>Create an application
+次に、B2C ディレクトリにアプリを作成する必要があります。これにより、アプリと安全に通信するために必要な情報を Azure AD に提供します。アプリを作成するには、[こちらの手順](active-directory-b2c-app-registration.md)に従ってください。次を行ってください。
 
-Next, you need to create an app in your B2C directory. This gives Azure AD information that it needs to securely communicate with your app. To create an app, follow [these instructions](active-directory-b2c-app-registration.md).  Be sure to:
-
-- Include a **native client** in the application.
-- Copy the **Redirect URI** `urn:ietf:wg:oauth:2.0:oob`. It is the default URL for this code sample.
-- Copy the **Application ID** that is assigned to your app. You will need it later.
+- アプリケーションに**ネイティブ クライアント**を含めます。
+- **[リダイレクト URI]** (`urn:ietf:wg:oauth:2.0:oob`) をコピーします。これはこのサンプル コードで使用する既定の URL です。
+- アプリに割り当てられた**アプリケーション ID** をコピーしておきます。この情報は後で必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
-## <a name="create-your-policies"></a>Create your policies
+## ポリシーの作成
 
-In Azure AD B2C, every user experience is defined by a [policy](active-directory-b2c-reference-policies.md). This code sample contains three identity experiences: sign up, sign in, and edit profile. You need to create a policy for each type, as described in the [policy reference article](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy). When you create the three policies, be sure to:
+Azure AD B2C では、すべてのユーザー エクスペリエンスが[ポリシー](active-directory-b2c-reference-policies.md)によって定義されます。このコード サンプルには、3 つの ID エクスペリエンス (サインアップ、サインイン、プロファイル編集) が含まれています。[ポリシーについてのリファレンス記事](active-directory-b2c-reference-policies.md#how-to-create-a-sign-up-policy)で説明されているように、種類ごとにポリシーを作成する必要があります。3 つのポリシーを作成するときは、以下の点に注意してください。
 
-- Choose either **User ID sign-up** or **Email sign-up** in the identity providers blade.
-- Choose **Display name** and other sign-up attributes in your sign-up policy.
-- Choose **Display name** and **Object ID** claims as application claims for every policy. You can choose other claims as well.
-- Copy the **Name** of each policy after you create it. It should have the prefix `b2c_1_`.  You'll need these policy names later.
+- ID プロバイダーのブレードで、**[User ID sign-up (ユーザー ID サインアップ)]** または **[Email sign-up (電子メール サインアップ)]** を選択します。
+- サインアップ ポリシーで、**[表示名]** と他のサインアップ属性を選択します。
+- すべてのポリシーで、アプリケーション要求として **[表示名]** 要求と **[オブジェクト ID]** 要求を選択します。その他のクレームも選択できます。
+- ポリシーの作成後、各ポリシーの**名前**をコピーしておきます。名前には、`b2c_1_` というプレフィックスが付加されています。これらのポリシー名は後で必要になります。
 
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-policy](../../includes/active-directory-b2c-devquickstarts-policy.md)]
 
-After you have successfully created the three policies, you're ready to build your app.
+3 つのポリシーの作成が正常に完了したら、いつでもアプリをビルドできます。
 
-## <a name="download-the-code"></a>Download the code
+## コードのダウンロード
 
-The code for this tutorial [is maintained on GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet). To build the sample as you go, you can [download a skeleton project as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip). You can also clone the skeleton:
+このチュートリアルのコードは、[GitHub](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet) で管理されています。手順に従ってサンプルをビルドする場合は、[スケルトン プロジェクトを .zip ファイルとしてダウンロード](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/skeleton.zip)できます。スケルトンを複製することもできます。
 
 ```
 git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git
 ```
 
-The completed app is also [available as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) or on the `complete` branch of the same repository.
+また、完成済みのアプリも、[.zip ファイルとして入手する](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)か、同じリポジトリの `complete` ブランチで入手できます。
 
-After you download the sample code, open the Visual Studio .sln file to get started. The `TaskClient` project is the WPF desktop application that the user interacts with. For the purposes of this tutorial, it calls a back-end task web API, hosted in Azure, that stores each user's to-do list.  You do not need to build the web API, we already have it running for you.
+サンプル コードをダウンロードした後、Visual Studio の .sln ファイルを開いて作業を開始します。`TaskClient` プロジェクトは、ユーザーと対話する WPF デスクトップ アプリケーションです。このチュートリアルでは、Azure でホストされ、各ユーザーの To-Do List を格納しているバックエンド タスク Web API を、TaskClient プロジェクトで呼び出します。この Web API については既に実行中のものを用意しているため、作成する必要はありません。
 
-To learn how a web API securely authenticates requests by using Azure AD B2C, check out the [web API getting started article](active-directory-b2c-devquickstarts-api-dotnet.md).
+Azure AD B2C を使用して、Web API で要求を安全に認証する方法については、[Web API の概要についての記事](active-directory-b2c-devquickstarts-api-dotnet.md)を参照してください。
 
-## <a name="execute-policies"></a>Execute policies
-Your app communicates with Azure AD B2C by sending authentication messages that specify the policy they want to execute as part of the HTTP request. For .NET desktop applications, you can use the preview Microsoft Authentication Library (MSAL) to send OAuth 2.0 authentication messages, execute policies, and get tokens that call web APIs.
+## ポリシーの実行
+アプリは、認証メッセージを送信することで、Azure AD B2C と通信します。このとき、HTTP 要求の一環として実行するポリシーを指定します。.NET デスクトップ アプリケーションでは、プレビュー版の Microsoft Authentication Library (MSAL) を使用して OAuth 2.0 認証メッセージを送信し、ポリシーを実行して、Web API を呼び出すトークンを取得できます。
 
-### <a name="install-msal"></a>Install MSAL
-Add MSAL to the `TaskClient` project by using the Visual Studio Package Manager Console.
+### MSAL をインストールする
+Visual Studio Package Manager Console を使用して、MSAL を `TaskClient` プロジェクトに追加します。
 
 ```
 PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
-### <a name="enter-your-b2c-details"></a>Enter your B2C details
-Open the file `Globals.cs` and replace each of the property values with your own. This class is used throughout `TaskClient` to reference commonly used values.
+### B2C の詳細情報を入力する
+`Globals.cs` ファイルを開き、各プロパティ値を実際の値に置き換えます。このクラスは、共通に使用される値を参照するために `TaskClient` 全体で使用されます。
 
 ```C#
 public static class Globals
@@ -94,8 +93,8 @@ public static class Globals
 [AZURE.INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 
-### <a name="create-the-publicclientapplication"></a>Create the PublicClientApplication
-The primary class of MSAL is `PublicClientApplication`. This class represents your application in the Azure AD B2C system. When the app initalizes, create an instance of `PublicClientApplication` in `MainWindow.xaml.cs`. This can be used throughout the window.
+### PublicClientApplication を作成する
+MSAL のプライマリ クラスは `PublicClientApplication` です。このクラスは、Azure AD B2C システム内のアプリケーションを表します。アプリの初期化時に、`MainWindow.xaml.cs` 内の `PublicClientApplication` のインスタンスを作成します。これは、ウィンドウ全体で使用できます。
 
 ```C#
 protected async override void OnInitialized(EventArgs e)
@@ -112,8 +111,8 @@ protected async override void OnInitialized(EventArgs e)
     ...
 ```
 
-### <a name="initiate-a-sign-up-flow"></a>Initiate a sign-up flow
-When a user opts to signs up, you want to initiate a sign-up flow that uses the sign-up policy you created. By using MSAL, you just call `pca.AcquireTokenAsync(...)`. The parameters you pass to `AcquireTokenAsync(...)` determine which token you receive, the policy used in the authentication request, and more.
+### サインアップ フローを開始する
+ユーザーがサインアップを選択した場合、作成したサインアップ ポリシーを使用するサインアップ フローを開始します。MSAL を使用するので、`pca.AcquireTokenAsync(...)` を呼び出すだけです。`AcquireTokenAsync(...)` に渡すパラメーターにより、受け取るトークン、認証要求で使用されるポリシーなどが決まります。
 
 ```C#
 private async void SignUp(object sender, RoutedEventArgs e)
@@ -163,40 +162,40 @@ private async void SignUp(object sender, RoutedEventArgs e)
 }
 ```
 
-### <a name="initiate-a-sign-in-flow"></a>Initiate a sign-in flow
-You can initiate a sign-in flow in the same way that you initiate a sign-up flow. When a user signs in, make the same call to MSAL, this time by using your sign-in policy:
+### サインイン フローを開始する
+サインアップ フローの開始と同じ方法で、サインイン フローを開始できます。ユーザーがサインインしたら、MSAL に対して同じ呼び出しを行いますが、ここではサインイン ポリシーを使用します。
 
 ```C#
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
-    AuthenticationResult result = null;
-    try
-    {
-        result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
+	AuthenticationResult result = null;
+	try
+	{
+		result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
                     string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
                     Globals.signInPolicy);
-        ...
+		...
 ```
 
-### <a name="initiate-an-edit-profile-flow"></a>Initiate an edit-profile flow
-Again, you can execute an edit-profile policy in the same fashion:
+### プロファイル編集フローを開始する
+ここでも、同じ方法でプロファイル編集ポリシーを実行できます。
 
 ```C#
 private async void EditProfile(object sender, RoutedEventArgs e)
 {
-    AuthenticationResult result = null;
-    try
-    {
-        result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
+	AuthenticationResult result = null;
+	try
+	{
+		result = await pca.AcquireTokenAsync(new string[] { Globals.clientId },
                     string.Empty, UiOptions.ForceLogin, null, null, Globals.authority,
                     Globals.editProfilePolicy);
 ```
 
-In all of these cases, MSAL either returns a token in `AuthenticationResult` or throws an exception. Each time you get a token from MSAL, you can use the `AuthenticationResult.User` object to update the user data in the app, such as the UI. ADAL also caches the token for use in other parts of the application.
+いずれの場合も、MSAL は `AuthenticationResult` でトークンを返すか、または例外をスローします。MSAL からトークンを取得するたびに、`AuthenticationResult.User` オブジェクトを使用して、アプリ内のユーザー データ (UI など) を更新できます。ADAL は、アプリケーションの他の部分で使用するために、トークンのキャッシュも行います。
 
 
-### <a name="check-for-tokens-on-app-start"></a>Check for tokens on app start
-You can also use MSAL to keep track of the user's sign-in state.  In this app, we want the user to remain signed in even after they close the app & re-open it.  Back inside the `OnInitialized` override, use MSAL's `AcquireTokenSilent` method to check for cached tokens:
+### アプリの起動時にトークンを確認する
+MSAL は、ユーザーのサインイン状態の追跡にも使用することができます。このアプリでは、ユーザーがアプリを閉じて再度開いたときにも、ユーザーのサインイン状態をそのまま維持する必要があります。`OnInitialized` オーバーライド内に戻り、キャッシュされたトークンを確認するために MSAL の `AcquireTokenSilent` メソッドを使用します。
 
 ```C#
 AuthenticationResult result = null;
@@ -234,8 +233,8 @@ catch (MsalException ex)
 }
 ```
 
-## <a name="call-the-task-api"></a>Call the task API
-You have now used MSAL to execute policies and get tokens.  When you want to use one these tokens to call the task API, you can again use MSAL's `AcquireTokenSilent` method to check for cached tokens:
+## タスク API を呼び出す
+ここまでは、ポリシーを実行してトークンを取得するために MSAL を使用しました。取得したトークンのいずれかを使用してタスク API を呼び出す場合は、ここでも MSAL の `AcquireTokenSilent` メソッドを使用して、キャッシュされたトークンを確認します。
 
 ```C#
 private async void GetTodoList()
@@ -277,23 +276,23 @@ private async void GetTodoList()
 
         return;
     }
-    ...
+	...
 ```
 
-When the call to `AcquireTokenSilentAsync(...)` succeeds and a token is found in the cache, you can add the token to the `Authorization` header of the HTTP request. The task web API will use this header to authenticate the request to read the user's to-do list:
+`AcquireTokenSilentAsync(...)` の呼び出しが成功し、トークンがキャッシュ内に見つかった場合、トークンを HTTP 要求の `Authorization` ヘッダーに追加します。タスク Web API では、このヘッダーを使用してユーザーの To-Do List の読み取り要求を認証します。
 
 ```C#
-    ...
-    // Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
+	...
+	// Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
 
     // Call the To Do list service.
     HttpResponseMessage response = await httpClient.GetAsync(Globals.taskServiceUrl + "/api/tasks");
-    ...
+	...
 ```
 
-## <a name="sign-the-user-out"></a>Sign the user out
-Finally, you can use MSAL to end a user's session with the app when the user selects **Sign out**.  When using MSAL, this is accomplished by clearing all of the tokens from the token cache:
+## ユーザーのサインアウト
+ユーザーが**サインアウト**を選択した場合は、MSAL を使用して、アプリでのユーザーのセッションを終了することができます。MSAL を使用してこの処理を実現するには、トークン キャッシュからすべてのトークンをクリアします。
 
 ```C#
 private void SignOut(object sender, RoutedEventArgs e)
@@ -314,31 +313,27 @@ private void SignOut(object sender, RoutedEventArgs e)
 }
 ```
 
-## <a name="run-the-sample-app"></a>Run the sample app
+## サンプル アプリを実行する
 
-Finally, build and run the sample.  Sign up for the app by using an email address or user name. Sign out and sign back in as the same user. Edit that user's profile. Sign out and sign up by using a different user.
+最後に、サンプルをビルドして実行します。電子メール アドレスまたはユーザー名を使用して、アプリにサインアップします。サインアウトし、同じユーザーとしてもう一度サインインします。そのユーザーのプロファイルを編集します。サインアウトし、別のユーザーとしてサインアップします。
 
-## <a name="add-social-idps"></a>Add social IDPs
+## ソーシャル IDP を追加する
 
-Currently, the app supports only user sign-up and sign-in that use **local accounts**. These are accounts stored in your B2C directory that use a user name and password. By using Azure AD B2C, you can add support for other identity providers (IDPs) without changing any of your code.
+現時点では、このアプリは**ローカル アカウント**を使用したユーザーのサインアップとサインインのみをサポートしています。これらは、ユーザー名とパスワードを使用する B2C ディレクトリに格納されているアカウントです。Azure AD B2C を使用すると、コードを変更せずに、その他の ID プロバイダー (IDP) のサポートを追加することができます。
 
-To add social IDPs to your app, begin by following the detailed instructions in these articles. For each IDP you want to support, you need to register an application in that system and obtain a client ID.
+ソーシャル IDP をアプリに追加するには、まず、以下の記事に記載されている詳細な手順に従います。サポートする IDP ごとに、そのシステムでアプリケーションを登録してクライアント ID を取得する必要があります。
 
-- [Set up Facebook as an IDP](active-directory-b2c-setup-fb-app.md)
-- [Set up Google as an IDP](active-directory-b2c-setup-goog-app.md)
-- [Set up Amazon as an IDP](active-directory-b2c-setup-amzn-app.md)
-- [Set up LinkedIn as an IDP](active-directory-b2c-setup-li-app.md)
+- [Facebook を IDP として設定する](active-directory-b2c-setup-fb-app.md)
+- [Google を IDP として設定する](active-directory-b2c-setup-goog-app.md)
+- [Amazon を IDP として設定する](active-directory-b2c-setup-amzn-app.md)
+- [LinkedIn を IDP として設定する](active-directory-b2c-setup-li-app.md)
 
-After you add the identity providers to your B2C directory, you need to edit each of your three policies to include the new IDPs, as described in the [policy reference article](active-directory-b2c-reference-policies.md). After you save your policies, run the app again. You should see the new IDPs added as sign-in and sign-up options in each of your identity experiences.
+ID プロバイダーを B2C ディレクトリに追加した後、3 つのポリシーをそれぞれ編集し、[ポリシーに関するリファレンス記事](active-directory-b2c-reference-policies.md)で説明されているように、新しい IDP を加える必要があります。ポリシーを保存した後、再度アプリを実行します。各 ID エクスペリエンスに、サインインおよびサインアップの選択肢として新しい IDP が追加されていることがわかります。
 
-You can experiment with your policies and observe the effects on your sample app. Add or remove IDPs, manipulate application claims, or change sign-up attributes. Experiment until you can see how policies, authentication requests, and MSAL tie together.
+いろいろなポリシーを試して、サンプル アプリへの影響を確認できます。ID を追加または削除したり、アプリケーションの要求を操作したり、サインアップ属性を変更してみます。ポリシー、認証要求、および MSAL が互いにどのように結び付いているか理解できるまで、いろいろ試してみてください。
 
-For reference, the completed sample [is provided as a .zip file](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip). You can also clone it from GitHub:
+参照用に、完成したサンプルが[ここに .zip ファイルとして提供されています](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip)。GitHub から複製することもできます。
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0727_2016-->

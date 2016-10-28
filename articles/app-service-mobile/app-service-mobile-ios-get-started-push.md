@@ -1,60 +1,59 @@
 <properties
-    pageTitle="Add Push Notifications to iOS App with Azure  Mobile Apps"
-    description="Learn how to use Azure Mobile Apps to send push notifications to your iOS app."
-    services="app-service\mobile"
-    documentationCenter="ios"
-    manager="yochayk"
-    editor=""
-    authors="yuaxu"/>
+	pageTitle="Azure Mobile Apps を使用した、iOS アプリへのプッシュ通知の追加"
+	description="Azure Mobile Apps を使用して iOS アプリにプッシュ通知を送信する方法について説明します。"
+	services="app-service\mobile"
+	documentationCenter="ios"
+	manager="dwrede"
+	editor=""
+	authors="krisragh"/>
 
 <tags
-    ms.service="app-service-mobile"
-    ms.workload="mobile"
-    ms.tgt_pltfrm="mobile-ios"
-    ms.devlang="objective-c"
-    ms.topic="article"
-    ms.date="10/01/2016"
-    ms.author="yuaxu"/>
+	ms.service="app-service-mobile"
+	ms.workload="mobile"
+	ms.tgt_pltfrm="mobile-ios"
+	ms.devlang="objective-c"
+	ms.topic="article"
+	ms.date="06/28/2016"
+	ms.author="krisragh"/>
 
 
-
-# <a name="add-push-notifications-to-your-ios-app"></a>Add Push Notifications to your iOS App
+# iOS アプリへのプッシュ通知の追加
 
 [AZURE.INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
 
-## <a name="overview"></a>Overview
-In this tutorial, you add push notifications to the [iOS quick start] project so that every time a record is inserted, a push notification is sent. This tutorial is based on the [iOS quick start] tutorial, which you must complete first. If you do not use the downloaded quick start server project, you must add the push notification extension package to your project. For more information about server extension packages, see [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
+## 概要
+このチュートリアルでは、[iOS クイック スタート] プロジェクトにプッシュ通知を追加して、レコードが挿入されるたびにプッシュ通知が送信されるようにします。最初に、このチュートリアルの基になっている [iOS のクイック スタート] チュートリアルを完了しておく必要があります。ダウンロードしたクイック スタートのサーバー プロジェクトを使用しない場合は、プッシュ通知拡張機能パッケージをプロジェクトに追加する必要があります。サーバーの拡張機能パッケージの詳細については、「[Work with the .NET backend server SDK for Azure Mobile Apps (Azure Mobile Apps 用の .NET バックエンド サーバー SDK を操作する)](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)」を参照してください。
 
-The [iOS simulator does not support push notifications](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html), so for this tutorial, you need a physical iOS device and an [Apple Developer Program membership](https://developer.apple.com/programs/ios/).
+[iOS シミュレーターはプッシュ通知をサポートしない](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/iOS_Simulator_Guide/TestingontheiOSSimulator.html)ため、このチュートリアルでは物理的な iOS デバイスと [Apple Developer Program メンバーシップ](https://developer.apple.com/programs/ios/)が必要です。
 
-##<a name="<a-name="create-hub"></a>create-a-notification-hub"></a><a name="create-hub"></a>Create a Notification Hub
+##<a name="create-hub"></a>通知ハブを作成する
 
 [AZURE.INCLUDE [app-service-mobile-create-notification-hub](../../includes/app-service-mobile-create-notification-hub.md)]
 
-## <a name="<a-id="register"></a>register-app-for-push-notifications"></a><a id="register"></a>Register app for push notifications
+## <a id="register"></a>アプリをプッシュ通知用に登録する
 
-[AZURE.INCLUDE [Enable Apple Push Notifications](../../includes/enable-apple-push-notifications.md)]
+[AZURE.INCLUDE [Apple プッシュ通知を有効にする](../../includes/enable-apple-push-notifications.md)]
 
-## <a name="configure-azure-to-send-push-notifications"></a>Configure Azure to send push notifications
+## プッシュ通知を送信するように Azure を構成する
 
 [AZURE.INCLUDE [app-service-mobile-apns-configure-push](../../includes/app-service-mobile-apns-configure-push.md)]
 
-##<a name="<a-id="update-server"></a>update-server-project-to-send-push-notifications"></a><a id="update-server"></a>Update server project to send push notifications
+##<a id="update-server"></a>サーバー プロジェクトを更新してプッシュ通知を送信する
 
 [AZURE.INCLUDE [app-service-mobile-dotnet-backend-configure-push-apns](../../includes/app-service-mobile-dotnet-backend-configure-push-apns.md)]
 
-## <a name="<a-id="add-push"></a>add-push-notifications-to-app"></a><a id="add-push"></a>Add push notifications to app
+## <a id="add-push"></a>プッシュ通知をアプリに追加する
 
 [AZURE.INCLUDE [app-service-mobile-add-push-notifications-to-ios-app.md](../../includes/app-service-mobile-add-push-notifications-to-ios-app.md)]
 
-## <a name="<a-id="test"></a>test-push-notifications-in-app"></a><a id="test"></a>Test push notifications in app
+## <a id="test"></a>アプリでプッシュ通知をテストする
 
-[AZURE.INCLUDE [Test Push Notifications in App](../../includes/test-push-notifications-in-app.md)]
+[AZURE.INCLUDE [アプリでプッシュ通知をテストする](../../includes/test-push-notifications-in-app.md)]
 
-##<a name="<a-id="more"></a>more"></a><a id="more"></a>More
+##<a id="more"></a>詳細
 
-* Templates give you flexibility to send cross-platform pushes and localized pushes. [How to Use iOS Client Library for Azure Mobile Apps](app-service-mobile-ios-how-to-use-client-library.md#templates) shows you how to register templates.
-* Tags allow you to target segmented customers with pushes. [Work with the .NET backend server SDK for Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags) shows you how to add tags to a device installation.
+* テンプレートを利用すれば、プラットフォーム間のプッシュやローカライズされたプッシュを柔軟に送信できます。テンプレートの登録方法は「[Azure Mobile Services 向け iOS クライアント ライブラリの使用方法](app-service-mobile-ios-how-to-use-client-library.md#templates)」に記載されています。
+* タグを利用すれば、特定の区分に属する顧客にプッシュで的を絞ることができます。デバイス インストールにタグを追加する方法は「[Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#tags)」に記載されています。
 
 <!-- Anchors.  -->
 [Generate iOS certificate signing request]: #certificates
@@ -69,10 +68,7 @@ The [iOS simulator does not support push notifications](https://developer.apple.
 <!-- Images. -->
 
 <!-- URLs. -->
-[iOS quick start]: app-service-mobile-ios-get-started.md
+[iOS のクイック スタート]: app-service-mobile-ios-get-started.md
+[iOS クイック スタート]: app-service-mobile-ios-get-started.md
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0706_2016-->

@@ -1,6 +1,6 @@
 <properties
-   pageTitle="Unsupported in Azure SQL Database T-SQL | Microsoft Azure"
-   description="Transact-SQL statements that are less than fully supported in Azure SQL Database"
+   pageTitle="Azure SQL Database でサポートされない T-SQL | Microsoft Azure"
+   description="Azure SQL Database では完全にサポートされない Transact-SQL ステートメント"
    services="sql-database"
    documentationCenter=""
    authors="BYHAM"
@@ -17,99 +17,93 @@
    ms.date="08/30/2016"
    ms.author="rick.byham@microsoft.com"/>
 
+# Azure SQL Database の Transact-SQL の相違点
 
-# <a name="azure-sql-database-transact-sql-differences"></a>Azure SQL Database Transact-SQL differences
 
+アプリケーションが依存する Transact-SQL 機能の大半は、Microsoft SQL Server と Azure SQL Database の両方でサポートされます。アプリケーションに対してサポートされる機能の一部を次に示します。
 
-Most of the Transact-SQL features that applications depend on are supported in both Microsoft SQL Server and Azure SQL Database. A partial list of supported features for applications follows:
+- データ型。
+- 演算子。
+- 文字列、算術、論理、およびカーソルに関連する機能。
 
-- Data types.
-- Operators.
-- String, arithmetic, logical, and cursor functions.
-
-However, Azure SQL Database is designed to isolate features from any dependency on the **master** database. As a consequence many server-level activities are inappropriate for SQL Database and are unsupported. Features that are deprecated in SQL Server are generally not supported in SQL Database.
+ただし、Azure SQL Database は、**マスター** データベースへの依存から機能を分離するように設計されています。その結果、サーバー レベルの多くのアクティビティは SQL Database には不適切であり、サポートされません。通常、SQL Server で廃止になった機能は SQL Database でサポートされません。
 
 > [AZURE.NOTE]
-> This topic discusses the features that are available with SQL Database when upgraded to the current version; SQL Database V12. For more information about V12, see [SQL Database V12 What's New](sql-database-v12-whats-new.md).
+このトピックでは、最新バージョン SQL Database V12 にアップグレードする際、SQL Database で利用できる機能について説明します。V12 に関する詳細については、「[SQL Database V12 の新機能](sql-database-v12-whats-new.md)」を参照してください。
 
-The following sections list features that are partially supported, and the features that are completely unsupported.
+次のセクションでは、一部サポートされている機能と、完全にサポートされていない機能を示します。
 
 
-## <a name="features-partially-supported-in-sql-database-v12"></a>Features partially supported in SQL Database V12
+## SQL Database V12 で部分的にサポートされる機能
 
-SQL Database V12 supports some but not all the arguments that exist in the corresponding SQL Server 2016 Transact-SQL statements. For example, the CREATE PROCEDURE statement is available however all the options of CREATE PROCEDURE are not available. Refer to the linked syntax topics for details about the supported areas of each statement.
+SQL Database V12 では、該当 SQL Server 2016 Transact-SQL ステートメントに存在する引数の全部ではなく一部がサポートされています。たとえば、CREATE PROCEDURE ステートメントは利用できますが、CREATE PROCEDURE のすべてのオプションを利用できるわけではありません。各ステートメントのサポートされる領域については、リンクされている構文トピックを参照してください。
 
-- Databases: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx )/[ALTER](https://msdn.microsoft.com/library/ms174269.aspx)
-- DMVs are generally available for features that are available.
-- Functions: [CREATE](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER FUNCTION](https://msdn.microsoft.com/library/ms186967.aspx)
-- [KILL](https://msdn.microsoft.com/library/ms173730.aspx) 
-- Logins: [CREATE](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
-- Stored procedures: [CREATE](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
-- Tables: [CREATE](https://msdn.microsoft.com/library/dn305849.aspx)/[ALTER](https://msdn.microsoft.com/library/ms190273.aspx)
-- Types (custom): [CREATE TYPE](https://msdn.microsoft.com/library/ms175007.aspx)
-- Users: [CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
-- Views: [CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
+- データベース: [CREATE](https://msdn.microsoft.com/library/dn268335.aspx)/[ALTER](https://msdn.microsoft.com/library/ms174269.aspx)
+- DMV は一般的に利用できる機能で利用できます。
+- 関数: [CREATE](https://msdn.microsoft.com/library/ms186755.aspx)/[ALTER FUNCTION](https://msdn.microsoft.com/library/ms186967.aspx)
+- [KILL](https://msdn.microsoft.com/library/ms173730.aspx)
+- ログイン: [CREATE](https://msdn.microsoft.com/library/ms189751.aspx)/[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)
+- ストアド プロシージャ: [CREATE](https://msdn.microsoft.com/library/ms187926.aspx)/[ALTER PROCEDURE](https://msdn.microsoft.com/library/ms189762.aspx)
+- テーブル: [CREATE](https://msdn.microsoft.com/library/dn305849.aspx)/[ALTER](https://msdn.microsoft.com/library/ms190273.aspx)
+- タイプ (カスタム): [CREATE TYPE](https://msdn.microsoft.com/library/ms175007.aspx)
+- ユーザー: [CREATE](https://msdn.microsoft.com/library/ms173463.aspx)/[ALTER USER](https://msdn.microsoft.com/library/ms176060.aspx)
+- ビュー: [CREATE](https://msdn.microsoft.com/library/ms187956.aspx)/[ALTER VIEW](https://msdn.microsoft.com/library/ms173846.aspx)
 
-## <a name="features-not-supported-in-sql-database"></a>Features not supported in SQL Database
+## SQL Database でサポートされていない機能
 
-- Collation of system objects
-- Connection related: Endpoint statements, ORIGINAL_DB_NAME. SQL Database does not support Windows authentication, but does support the similar Azure Active Directory authentication. Some authentication types require the latest version of SSMS. For more information, see [Connecting to SQL Database or SQL Data Warehouse By Using Azure Active Directory Authentication](sql-database-aad-authentication.md).
-- Cross database queries using three or four part names. (Read-only cross-database queries are supported by using [elastic database query](sql-database-elastic-query-overview.md).)
-- Cross database ownership chaining, TRUSTWORTHY setting
-- Data Collector
-- Database Diagrams
-- Database Mail
-- DATABASEPROPERTY (use DATABASEPROPERTYEX instead)
-- EXECUTE AS logins
-- Encryption: extensible key management
-- Eventing: events, event notifications, query notifications
-- Features related to database file placement, size, and database files that are automatically managed by Microsoft Azure.
-- Features that relate to high availability, which is managed through your Microsoft Azure account: backup, restore, AlwaysOn, database mirroring, log shipping, recovery modes. For more information, see Azure SQL Database Backup and Restore.
-- Features that rely upon the log reader running on SQL Database: Push Replication, Change Data Capture.
-- Features that rely upon the SQL Server Agent or the MSDB database: jobs, alerts, operators, Policy-Based Management, database mail, central management servers.
+- システム オブジェクトの照合順序
+- 関連接続: エンドポイント ステートメント、ORIGINAL\_DB\_NAMESQL データベースは Windows 認証をサポートしませんが、同様の Azure Active Directory 認証をサポートします。いくつかの認証の種類には、最新バージョン の SSMS が必要です。詳細については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」を参照してください。
+- 3 部構成または 4 部構成の名前を使用したデータベース間クエリ (読み取り専用のデータベース間クエリは、[エラスティック データベース クエリ](sql-database-elastic-query-overview.md)を使用してサポートされます)。
+- データベース間での所有権の継承、TRUSTWORTHY 設定
+- データ コレクター
+- データベース ダイアグラム
+- データベース メール
+- DATABASEPROPERTY (代わりに DATABASEPROPERTYEX を使用)
+- EXECUTE AS ログイン
+- 暗号化: 拡張可能キー管理
+- イベント: イベント、イベント通知、クエリ通知
+- Microsoft Azure により自動的に管理されるデータベース ファイル置換、サイズ、データベース ファイルに関連する機能。
+- Microsoft Azure アカウントを使用して管理される高可用性に関連する機能: バックアップ、復元、AlwaysOn、データベース ミラーリング、ログ配布、復旧モード。詳細については、「Azure SQL Database のバックアップと復元」を参照してください。
+- SQL Database で実行されているログ リーダーに依存する機能: プッシュ レプリケーション、変更データ キャプチャ。
+- SQL Server Agent または MSDB データベースに依存する機能: ジョブ、警告、演算子、ポリシーベースの管理、データベース メール、中央管理サーバー。
 - FILESTREAM
-- Functions: fn_get_sql, fn_virtualfilestats, fn_virtualservernodes
-- Global temporary tables
-- Hardware-related server settings: memory, worker threads, CPU affinity, trace flags, etc. Use service levels instead.
-- HAS_DBACCESS
+- 関数: fn\_get\_sql, fn\_virtualfilestats、fn\_virtualservernodes
+- グローバル一時テーブル
+- ハードウェア関連のサーバー設定: メモリ、ワーカー スレッド、CPU アフィニティ、トレース フラグなど。代わりにサービス レベルを使用します。
+- HAS\_DBACCESS
 - KILL STATS JOB
-- Linked servers, OPENQUERY, OPENROWSET, OPENDATASOURCE, BULK INSERT, and four-part names
-- Master/target servers
-- .NET Framework [CLR integration with SQL Server](http://msdn.microsoft.com/library/ms254963.aspx)
-- Resource governor
-- Semantic search
-- Server credentials. Use database scoped credentials instead.
-- Sever-level items: Server roles, IS_SRVROLEMEMBER, sys.login_token. Server level permissions are not available though some are replaced by database-level permissions. Some server-level DMVs are not available though some are replaced by database-level DMVs.
-- Serverless express: localdb, user instances
-- Service broker
-- SET REMOTE_PROC_TRANSACTIONS
+- リンク サーバー、OPENQUERY、OPENROWSET、OPENDATASOURCE、BULK INSERT、3 つまたは 4 つの部品名
+- マスター/対象サーバー
+- .NET framework の [ CLR と SQL Server の統合](http://msdn.microsoft.com/library/ms254963.aspx)
+- リソース ガバナー
+- セマンティック検索
+- サーバー資格情報。代わりに データベース スコープの資格情報を使用してください。
+- サーバーレベル項目: サーバー ロール、IS\_SRVROLEMEMBER、sys.login\_token。サーバーレベルのアクセス許可は利用できません。ただし、一部がデータベースレベルのアクセス許可で置換されます。一部のサーバーレベルの DMV は利用できません。ただし、一部がデータベースレベルの DMV で置換されます。
+- サーバーレスの高速: localdb、ユーザー インスタンス
+- Service Broker
+- SET REMOTE\_PROC\_TRANSACTIONS
 - SHUTDOWN
-- sp_addmessage
-- sp_configure options and RECONFIGURE. Some options are available using [ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx).
-- sp_helpuser
-- sp_migrate_user_to_contained
-- SQL Server audit. Use SQL Database auditing instead.
-- SQL Server Profiler
-- SQL Server trace
-- Trace flags. Some trace flag items have been moved to compatibility modes.
-- Transact-SQL debugging
-- Triggers: Server-scoped or logon triggers
-- USE statement: To change the database context to a different database, you must make a new connection to the new database.
+- sp\_addmessage
+- sp\_configure オプションと RECONFIGURE。一部のオプションは、[ALTER DATABASE SCOPED CONFIGURATION](https://msdn.microsoft.com/library/mt629158.aspx) で使用できます。
+- sp\_helpuser
+- sp\_migrate\_user\_to\_contained
+- SQL Server 監査。代わりに SQL Database 監査を使用してください。
+- SQL Server プロファイラー
+- SQL Server トレース
+- トレース フラグ。トレース フラグのいくつかの項目は、互換性モードに移動されました。
+- Transact-SQL デバッグ
+- トリガー: サーバー スコープ トリガーまたはログオン トリガー
+- USE ステートメント: データベース コンテキストを別のデータベースに変更するには、新しいデータベースへの接続を新たに確立する必要があります。
 
 
-## <a name="full-transact-sql-reference"></a>Full Transact-SQL reference
+## 完全 Transact-SQL リファレンス
 
-For more information about Transact-SQL grammar, usage, and examples, see [Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx) in SQL Server Books Online. 
+Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「[Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx)」を参照してください。
 
-### <a name="about-the-"applies-to"-tags"></a>About the "Applies to" tags
+### 「適用先」タグについて
 
-The Transact-SQL reference includes topics related to SQL Server versions 2008 to the present. Below the topic title there is an icon bar, listing the four SQL Server platforms, and indicating applicability. For example, availability groups were introduced in SQL Server 2012. The [CREATE AVAILABILTY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) topic indicates that the statement applies to **SQL Server (starting with 2012). The statement does not apply to SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse, or Parallel Data Warehouse.
+TRANSACT-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連するトピックが含まれています。トピック タイトルの下に、4 つの SQL Server プラットフォームを一覧表示して、適用性を示すアイコン バーがあります。たとえば、可用性グループは SQL Server 2012 で導入されました。[可用性グループの作成](https://msdn.microsoft.com/library/ff878399.aspx)トピックでは、そのステートメントが** SQL Server (2012 年以降) に適用されることが示されます 。ステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、または並列データ ウェアハウスには適用されません。
 
-In some cases, the general subject of a topic can be used in a product, but there are minor differences between products. The differences are indicated at midpoints in the topic as appropriate.
+場合によっては、トピックの一般的な項目を製品で使用できますが、製品の間には若干の違いがあります。相違点は、必要に応じてトピックの中で指示されます。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0831_2016-->

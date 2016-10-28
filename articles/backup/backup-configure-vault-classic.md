@@ -1,234 +1,229 @@
 <properties
-    pageTitle="Back up a Windows server or client to Azure using the classic deployment model | Microsoft Azure"
-    description="Backup Windows servers or clients to Azure by creating a backup vault, downloading credentials, installing the backup agent, and completing an initial backup of your files and folders."
-    services="backup"
-    documentationCenter=""
-    authors="markgalioto"
-    manager="cfreeman"
-    editor=""
-    keywords="backup vault; back up a Windows server; backup windows;"/>
+	pageTitle="クラシック デプロイメント モデルを使用して Windows サーバーまたはクライアントを Azure にバックアップする | Microsoft Azure"
+	description="バックアップ コンテナーの作成、資格情報のダウンロード、Backup エージェントのインストール、およびファイルとフォルダーの初回バックアップの完了によって、Windows サーバーまたはクライアントを Azure にバックアップします。"
+	services="backup"
+	documentationCenter=""
+	authors="markgalioto"
+	manager="cfreeman"
+	editor=""
+	keywords="バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;"/>
 
 <tags
-    ms.service="backup"
-    ms.workload="storage-backup-recovery"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/08/2016"
-    ms.author="jimpark; trinadhk; markgal"/>
+	ms.service="backup"
+	ms.workload="storage-backup-recovery"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/08/2016"
+	ms.author="jimpark; trinadhk; markgal"/>
 
 
-
-# <a name="back-up-a-windows-server-or-client-to-azure-using-the-classic-deployment-model"></a>Back up a Windows server or client to Azure using the classic deployment model
+# クラシック デプロイメント モデルを使用して Windows サーバーまたはクライアントを Azure にバックアップする
 
 > [AZURE.SELECTOR]
-- [Classic portal](backup-configure-vault-classic.md)
-- [Azure portal](backup-configure-vault.md)
+- [クラシック ポータル](backup-configure-vault-classic.md)
+- [Azure ポータル](backup-configure-vault.md)
 
-This article covers the procedures that you need to follow to prepare your environment and back up a Windows server (or client) to Azure. It also covers considerations for deploying your backup solution. If you're interested in trying Azure Backup for the first time, this article quickly walks you through the process.
+この記事では、環境を準備し、Windows サーバー (またはクライアント) を Azure にバックアップするための手順について説明します。また、バックアップ ソリューションのデプロイに関する考慮事項についても説明します。Azure Backup を初めて使用してみる場合は、この記事ですばやく操作を実習できます。
 
-![Create vault](./media/backup-configure-vault-classic/initial-backup-process.png)
+![コンテナーの作成](./media/backup-configure-vault-classic/initial-backup-process.png)
 
->[AZURE.IMPORTANT] Azure has two different deployment models for creating and working with resources: Resource Manager and classic. This article covers using the classic deployment model. Microsoft recommends that most new deployments use the Resource Manager model.
+>[AZURE.IMPORTANT] Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。この記事では、クラシック デプロイ モデルの使用方法について説明します。最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
-## <a name="before-you-start"></a>Before you start
-To back up a server or client to Azure, you need an Azure account. If you don't have one, you can create a [free account](https://azure.microsoft.com/free/) in just a couple of minutes.
+## 開始する前に
+サーバー (またはクライアント) を Azure にバックアップするには、Azure アカウントが必要です。アカウントがない場合は、[無料アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
 
-## <a name="step-1:-create-a-backup-vault"></a>Step 1: Create a backup vault
-To back up files and folders from a server or client, you need to create a backup vault in the geographic region where you want to store the data.
+## 手順 1: バックアップ コンテナーを作成する
+サーバーまたはクライアントのファイルとフォルダーをバックアップするには、データを保存するリージョンにバックアップ コンテナーを作成する必要があります。
 
-### <a name="to-create-a-backup-vault"></a>To create a backup vault
+### バックアップ資格情報コンテナーを作成するには
 
-1. Sign in to [the classic portal](https://manage.windowsazure.com/).
+1. [クラシック ポータル](https://manage.windowsazure.com/)にサインインします。
 
-2. Click **New** > **Data Services** > **Recovery Services** > **Backup Vault**, and then choose **Quick Create**.
+2. **[新規]**、**[Data Services]**、**[Recovery Services]**、**[バックアップ コンテナー]** の順にクリックして、**[簡易作成]** を選択します。
 
-3. For the **Name** parameter, enter a friendly name for the backup vault. Type a name that contains between 2 and 50 characters. It must start with a letter, and can contain only letters, numbers, and hyphens. This name needs to be unique for each subscription.
+3. **[名前]** パラメーターについては、バックアップ コンテナーの表示名を入力します。2 ～ 50 文字の名前を入力します。名前の先頭にはアルファベットを使用する必要があります。また、名前に使用できるのはアルファベット、数字、ハイフンのみです。この名前は、サブスクリプションごとに一意である必要があります。
 
-4. For the **Region** parameter, select the geographic region for the backup vault. This choice determines the geographic region where your backup data is sent. By choosing a geographic region that's close to your location, you can reduce network latency when backing up to Azure.
+4. **[リージョン]** パラメーターについては、バックアップ資格情報コンテナーの地理的リージョンを選択します。この選択により、バックアップ データの送信先となるリージョンが決まります。自分の場所から近いリージョンを選択することによって、Azure にバックアップする際のネットワーク待機時間を短縮できます。
 
-5. Click **Create Vault**.
+5. **[資格情報コンテナーの作成]** をクリックします。
 
-    ![Create a backup vault](./media/backup-configure-vault-classic/demo-vault-name.png)
+    ![バックアップ資格情報コンテナーの作成](./media/backup-configure-vault-classic/demo-vault-name.png)
 
-    It can take a while for the backup vault to be created. To check the status, monitor the notifications at the bottom of the classic portal.
+    バックアップ資格情報コンテナーが作成されるまで時間がかかることがあります。状態を確認するには、クラシック ポータルの下部にある通知を監視します。
 
-    After the backup vault has been created, you'll see a message saying that the vault has been successfully created. It also appears as **Active** in the **Recovery Services** resource list.
+    バックアップ コンテナーが作成された後、コンテナーが正常に作成されたことを示すメッセージが表示されます。また、**[Recovery Services]** のリソースの一覧に **[アクティブ]** と表示されます。
 
-    ![Creating vault status](./media/backup-configure-vault-classic/recovery-services-select-vault.png)
+    ![Creating Vault status](./media/backup-configure-vault-classic/recovery-services-select-vault.png)
 
-4. Select the storage redundancy option by following the steps described here.
+4. ここで説明する手順に従って、ストレージ冗長オプションを選択します。
 
-    >[AZURE.IMPORTANT] The best time to identify your storage redundancy option is right after vault creation and before any machines are registered to the vault. After an item has been registered to the vault, the storage redundancy option is locked and cannot be modified.
+    >[AZURE.IMPORTANT] ストレージ冗長オプションを識別する最適なタイミングは、コンテナーの作成直後かつ、いずれかのコンピューターがコンテナーに登録される前です。項目がコンテナーに登録されたら、ストレージ冗長オプションはロックされ、変更できなくなります。
 
-    If you are using Azure as a primary backup storage endpoint (for example, you are backing up to Azure from a Windows server), consider picking (the default) [geo-redundant storage](../storage/storage-redundancy.md#geo-redundant-storage) option.
+    プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合 (たとえば、Windows サーバーから Azure にバックアップする場合)、[geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage) オプション (既定値) の選択を検討する必要があります。
 
-    If you are using Azure as a tertiary backup storage endpoint (for example, you are using System Center Data Protection Manager to store a local backup copy on-premises and using Azure for long-term retention needs), consider choosing [locally redundant storage](../storage/storage-redundancy.md#locally-redundant-storage). This brings down the cost of storing data in Azure, while providing a lower level of durability for your data that might be acceptable for tertiary copies.
+    Azure を第 3 のバックアップ ストレージ エンドポイントとして使用している場合 (オンプレミスのローカル バックアップ コピーには System Center Data Protection Manager を使用し、Azure は長期のリテンション期間に使用する場合など) は、[ローカル冗長ストレージ](../storage/storage-redundancy.md#locally-redundant-storage)の選択を検討します。これにより、Azure でデータを格納するためのコストは削減されますが、データの持続性レベルは低くなります。これは、第 3 のコピーとしてなら許容される可能性があります。
 
-    **To select the storage redundancy option:**
+    **ストレージ冗長オプションを選択するには:**
 
-    a. Click the vault you just created.
+    a.作成したコンテナーをクリックします。
 
-    b. On the Quick Start page, select **Configure**.
+    b.[クイック スタート] ページで、**[構成]** をクリックします。
 
-    ![Configure vault status](./media/backup-configure-vault-classic/configure-vault.png)
+    ![Configure Vault status](./media/backup-configure-vault-classic/configure-vault.png)
 
-    c. Choose the appropriate storage redundancy option.
+    c.適切なストレージ冗長オプションを選択します。
 
-    If you select **Locally Redundant**, you need to click **Save** (because **Geo-Redundant** is the default option).
+    **[geo 冗長]** が既定のオプションであるため、**[ローカル冗長]** を選択した場合は **[保存]** をクリックする必要があります。
 
-    d. In the left navigation pane, click **Recovery Services** to return to the list of resources for Recovery Services.
+    d.左側のナビゲーション ウィンドウで **[Recovery Services]** をクリックして、[Recovery Services] のリソースの一覧に戻ります。
 
-## <a name="step-2:-download-the-vault-credential-file"></a>Step 2: Download the vault credential file
-The on-premises machine needs to be authenticated with a backup vault before it can back up data to Azure. The authentication is achieved through *vault credentials*. The vault credential file is downloaded through a secure channel from the classic portal. The certificate private key does not persist in the portal or the service.
+## 手順 2: コンテナーの資格情報ファイルをダウンロードする
+データを Azure にバックアップする前に、オンプレミスのコンピューターをバックアップ コンテナーで認証する必要があります。認証は*コンテナーの資格情報*を使用して実行されます。資格情報コンテナーの資格情報ファイルは、セキュリティで保護されたチャネルを介してクラシック ポータルからダウンロードされます。証明書の秘密キーは、ポータルやサービスには保持されません。
 
-Learn more about [using vault credentials to authenticate with the Backup service](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file).
+[コンテナーの資格情報を使用した Backup サービスでの認証](backup-introduction-to-azure-backup.md#what-is-the-vault-credential-file)の詳細を参照してください。
 
-### <a name="to-download-the-vault-credential-file-to-a-local-machine"></a>To download the vault credential file to a local machine
+### コンテナーの資格情報ファイルをローカル コンピューターにダウンロードするには
 
-1. In the left navigation pane, click **Recovery Services**, and then select the backup vault that you created.
+1. 左側のナビゲーション ウィンドウで **[Recovery Services]** をクリックし、作成したバックアップ コンテナーを選択します。
 
     ![IR complete](./media/backup-configure-vault-classic/rs-left-nav.png)
 
-2.  On the Quick Start page, click **Download vault credentials**.
+2.  [クイック スタート] ページで **[資格情報コンテナーの資格情報のダウンロード]** をクリックします。
 
-    The classic portal generates a vault credential by using a combination of the vault name and the current date. The vault credentials file is used only during the registration workflow and expires after 48 hours.
+    コンテナーの名前と現在の日付の組み合わせを使用して、コンテナーの資格情報が生成されます。コンテナーの資格情報ファイルは登録ワークフロー中しか使用されず、48 時間後に期限切れとなります。
 
-    The vault credential file can be downloaded from the portal.
+    コンテナーの資格情報ファイルはポータルからダウンロードできます。
 
-3. Click **Save** to download the vault credential file to the Downloads folder of the local account. You can also select **Save As** from the **Save** menu to specify a location for the vault credential file.
+3. **[保存]** をクリックしてコンテナーの資格情報ファイルをローカル アカウントのダウンロード フォルダーにダウンロードします。**[保存]** メニューの **[名前を付けて保存]** を選択して、コンテナーの資格情報ファイルの保存先を指定することもできます。
 
-    >[AZURE.NOTE] Make sure the vault credential file is saved in a location that can be accessed from your machine. If it is stored in a file share or server message block, verify that you have the permissions to access it.
+    >[AZURE.NOTE] コンテナーの資格情報ファイルは、ご自身のコンピューターからアクセスできる場所に保存してください。ファイル共有またはサーバー メッセージ ブロックに保存する場合は、そこへのアクセス許可が付与されていることを確認してください。
 
-## <a name="step-3:-download,-install,-and-register-the-backup-agent"></a>Step 3: Download, install, and register the Backup agent
-After you create the backup vault and download the vault credential file, an agent must be installed on each of your Windows machines.
+## 手順 3: Backup エージェントをダウンロード、インストール、および登録する
+バックアップ コンテナーを作成し、コンテナーの資格情報ファイルをダウンロードした後は、各 Windows コンピューターにエージェントをインストールする必要があります。
 
-### <a name="to-download,-install,-and-register-the-agent"></a>To download, install, and register the agent
+### エージェントをダウンロード、インストール、登録するには
 
-1. Click **Recovery Services**, and then select the backup vault that you want to register with a server.
+1. **[Recovery Services]** をクリックし、サーバーに登録するバックアップ コンテナーを選択します。
 
-2. On the Quick Start page, click the agent **Agent for Windows Server or System Center Data Protection Manager or Windows client**. Then click **Save**.
+2. [クイック スタート] ページで、**[Windows Server、System Center Data Protection Manager、Windows クライアント向けエージェント]** をクリックします。その後、**[保存]** をクリックします。
 
-    ![Save agent](./media/backup-configure-vault-classic/agent.png)
+    ![エージェントの保存](./media/backup-configure-vault-classic/agent.png)
 
-3. After the MARSagentinstaller.exe file has downloaded, click **Run** (or double-click **MARSAgentInstaller.exe** from the saved location).
+3. MARSagentinstaller.exe ファイルのダウンロードが完了したら、**[実行]** をクリック (または保存場所から **MARSAgentInstaller.exe** をダブルクリック) します。
 
-4. Choose the installation folder and cache folder that are required for the agent, and then click **Next**. The cache location you specify must have free space equal to at least 5 percent of the backup data.
+4. エージェントに必要なインストール フォルダーとキャッシュ フォルダーを選択し、**[次へ]** をクリックします。キャッシュ フォルダーとして指定する場所には、バックアップ データの 5% 以上の空き領域が必要です。
 
-5. You can continue to connect to the Internet through the default proxy settings.          If you use a proxy server to connect to the Internet, on the Proxy Configuration page, select the **Use custom proxy settings** check box, and then enter the proxy server details. If you use an authenticated proxy, enter the user name and password details, and then click **Next**.
+5. 既定のプロキシ設定でインターネットに引き続き接続できます。プロキシ サーバーを使用してインターネットに接続する場合、[プロキシ構成] 画面で **[カスタムのプロキシ設定を使用します]** チェック ボックスをオンにし、プロキシ サーバーの詳細を入力します。認証済みのプロキシを使用する場合は、ユーザー名とパスワードの詳細を入力し、**[次へ]** をクリックします。
 
-7. Click **Install** to begin the agent installation. The Backup agent installs .NET Framework 4.5 and Windows PowerShell (if it’s not already installed) to complete the installation.
+7. **[インストール]** をクリックして、エージェントのインストールを開始します。Backup エージェントは、.NET Framework 4.5 と Windows PowerShell を (まだインストールされていない場合は) インストールして、インストールを完了します。
 
-8. After the agent is installed, click **Proceed to Registration** to continue with the workflow.
+8. エージェントがインストールされたら、**[登録処理を続行]** をクリックして、ワークフローを続行します。
 
-9. On the Vault Identification page, browse to and select the vault credential file that you previously downloaded.
+9. ダウンロードしておいたコンテナーの資格情報ファイルを [資格情報コンテナーの識別] 画面で参照して選択します。
 
-    The vault credential file is valid for only 48 hours after it’s downloaded from the portal. If you encounter an error on this page (such as “Vault credentials file provided has expired”), sign in to the portal and download the vault credential file again.
+    コンテナーの資格情報ファイルは (ポータルからダウンロード後) 48 時間のみ有効です。このページでエラー ("指定されたコンテナーの資格情報ファイルは期限切れです。" など) が発生した場合は、ポータルにサインインし、コンテナーの資格情報ファイルを再度ダウンロードします。
 
-    Ensure that the vault credential file is available in a location that can be accessed by the setup application. If you encounter access-related errors, copy the vault credential file to a temporary location on the same machine and retry the operation.
+    セットアップ アプリケーションがアクセスできる場所に、コンテナーの資格情報ファイルがあることを確認します。アクセス関連のエラーが発生した場合は、コンテナーの資格情報ファイルを同じコンピューターの一時的な場所にコピーし、操作をやり直してください。
 
-    If you encounter a vault credential error such as “Invalid vault credentials provided," the file is damaged or does not have the latest credentials associated with the recovery service. Retry the operation after downloading a new vault credential file from the portal. This error can also occur if a user clicks the **Download vault credential** option several times in quick succession. In this case, only the last vault credential file is valid.
+    コンテナーの資格情報に関するエラー ("無効なコンテナーの資格情報が指定されました。" など) が発生した場合、ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません。ポータルから新しい資格情報コンテナーの資格情報ファイルをダウンロードしてから操作をやり直してください。このエラーは、ユーザーが **[コンテナー資格情報のダウンロード]** オプションを連続で複数回クリックした場合にも発生することがあります。この場合、最後のコンテナーの資格情報ファイルだけが有効です。
 
-9. On the Encryption Setting page, you can either generate a passphrase or provide a passphrase (with a minimum of 16 characters). Remember to save the passphrase in a secure location.
+9. [暗号化の設定] ページで、パスフレーズを生成するか、パスフレーズを (最小 16 文字で) 指定することができます。必ず安全な場所にパスフレーズを保存してください。
 
-10. Click **Finish**. The Register Server Wizard registers the server with Backup.
+10. **[完了]** をクリックします。サーバーの登録ウィザードで、サーバーを Backup に登録します。
 
-    >[AZURE.WARNING] If you lose or forget the passphrase, Microsoft cannot help you recover the backup data. You own the encryption passphrase, and Microsoft does not have visibility into the passphrase that you use. Save the file in a secure location because it will be required during a recovery operation.
+    >[AZURE.WARNING] パスフレーズを紛失または忘れた場合、Microsoft はバックアップ データの回復を支援することはできません。暗号化のパスフレーズはユーザーが所有しており、Microsoft はユーザーが使用するパスフレーズを確認できません。回復操作中に必要になるため、ファイルは安全な場所に保存してください。
 
-11. After the encryption key is set, leave the **Launch Microsoft Azure Recovery Services Agent** check box selected, and then click **Close**.
+11. 暗号化キーが設定されたら、**[Microsoft Azure Recovery Services Agent の起動]** チェック ボックスをオンのままにし、**[閉じる]** をクリックします。
 
-## <a name="step-4:-complete-the-initial-backup"></a>Step 4: Complete the initial backup
+## 手順 4: 初回バックアップを完了する
 
-The initial backup includes two key tasks:
+初回バックアップには、次の 2 つの主要なタスクが含まれています。
 
-- Creating the backup schedule
-- Backing up files and folders for the first time
+- バックアップ スケジュールの構成
+- 初回のファイルとフォルダーのバックアップ
 
-After the backup policy completes the initial backup, it creates backup points that you can use if you need to recover the data. The backup policy does this based on the schedule that you define.
+バックアップ ポリシーによって、初回のバックアップが完了すると、データの回復が必要な場合に使用できるバックアップ ポイントが作成されます。この操作は、ユーザーが定義したスケジュールに基づいて実行されます。
 
-### <a name="to-schedule-the-backup"></a>To schedule the backup
+### バックアップのスケジュールを設定するには
 
-1. Open the Microsoft Azure Backup agent. (It will open automatically if you left the **Launch Microsoft Azure Recovery Services Agent** check box selected when you closed the Register Server Wizard.) You can find it by searching your machine for **Microsoft Azure Backup**.
+1. Microsoft Azure Backup エージェントを開きます (サーバーの登録ウィザードの終了時に **[Microsoft Azure Recovery Services Agent の起動]** チェック ボックスをオンのままにした場合は、自動的に開きます)。 エージェントは、コンピューターで **Microsoft Azure Backup** を検索すると見つかります。
 
     ![Launch the Azure Backup agent](./media/backup-configure-vault-classic/snap-in-search.png)
 
-2. In the Backup agent, click **Schedule Backup**.
+2. Backup エージェントで、**[バックアップのスケジュール]** をクリックします。
 
     ![Schedule a Windows Server backup](./media/backup-configure-vault-classic/schedule-backup-close.png)
 
-3. On the Getting started page of the Schedule Backup Wizard, click **Next**.
+3. バックアップのスケジュール ウィザードの [作業の開始] ページで、**[次へ]** をクリックします。
 
-4. On the Select Items to Backup page, click **Add Items**.
+4. [バックアップする項目の選択] 画面で、**[項目の追加]** をクリックします。
 
-5. Select the files and folders that you want to back up, and then click **Okay**.
+5. バックアップするファイルとフォルダーを選択し、**[OK]** をクリックします。
 
-6. Click **Next**.
+6. **[次へ]** をクリックします。
 
-7. On the **Specify Backup Schedule** page, specify the **backup schedule** and click **Next**.
+7. **[バックアップ スケジュールの選択]** ページで**バックアップ スケジュール**を指定し、**[次へ]** をクリックします。
 
-    You can schedule daily (at a maximum rate of three times per day) or weekly backups.
+    毎日 (1 日に最大 3 回) または毎週のバックアップをスケジュールすることができます。
 
-    ![Items for Windows Server Backup](./media/backup-configure-vault-classic/specify-backup-schedule-close.png)
+    ![Windows Server のバックアップ項目](./media/backup-configure-vault-classic/specify-backup-schedule-close.png)
 
-    >[AZURE.NOTE] For more information about how to specify the backup schedule, see the article [Use Azure Backup to replace your tape infrastructure](backup-azure-backup-cloud-as-tape.md).
+    >[AZURE.NOTE] バックアップ スケジュールを指定する方法の詳細については、「[Azure Backup を使用してテープのインフラストラクチャを置換する](backup-azure-backup-cloud-as-tape.md)」を参照してください。
 
-8. On the **Select Retention Policy** page, select the **Retention Policy** for the backup copy.
+8. **[保持ポリシーの選択]** ページで、バックアップ コピーの**保持ポリシー**を選択します。
 
-    The retention policy specifies the duration for which the backup will be stored. Rather than just specifying a “flat policy” for all backup points, you can specify different retention policies based on when the backup occurs. You can modify the daily, weekly, monthly, and yearly retention policies to meet your needs.
+    保有ポリシーは、バックアップを格納する必要がある期間を指定します。すべてのバックアップ ポイントに "同じポリシー" を指定するのでなく、バックアップが実行されるタイミングに基づいて異なる保持ポリシーを指定できます。必要に応じて、日、週、月、および年単位で保有ポリシーを変更できます。
 
-9. On the Choose Initial Backup Type page, choose the initial backup type. Leave the option **Automatically over the network** selected, and then click **Next**.
+9. [初期バックアップの種類の選択] ページで、初期バックアップの種類を選択します。**[自動でネットワーク経由]** オプションが選択された状態のままにし、**[次へ]** をクリックします。
 
-    You can back up automatically over the network, or you can back up offline. The remainder of this article describes the process for backing up automatically. If you prefer to do an offline backup, review the article [Offline backup workflow in Azure Backup](backup-azure-backup-import-export.md) for additional information.
+    ネットワーク経由で自動的にバックアップことも、オフラインでバックアップすることもできます。この記事の残りの部分では、自動バックアップのプロセスについて説明します。オフライン バックアップを実行する場合は、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」で詳細を確認してください。
 
-10. On the Confirmation page, review the information, and then click **Finish**.
+10. [確認] ページで情報を確認し、**[完了]** をクリックします。
 
-11. After the wizard finishes creating the backup schedule, click **Close**.
+11. ウィザードでバックアップ スケジュールの作成が完了したら、**[閉じる]** をクリックします。
 
-### <a name="enable-network-throttling-(optional)"></a>Enable network throttling (optional)
+### ネットワーク調整の有効化 (オプション)
 
-The Backup agent provides network throttling. Throttling controls how network bandwidth is used during data transfer. This control can be helpful if you need to back up data during work hours but do not want the backup process to interfere with other Internet traffic. Throttling applies to back up and restore activities.
+Backup エージェントは、ネットワーク調整を提供します。調整では、データ転送中にネットワーク帯域幅をどのように使用するかを制御します。データのバックアップを業務時間中に行う必要があり、バックアップ処理が他のインターネット トラフィックに影響を与えないようにする場合などに、この制御は便利です。調整はバックアップと復元のアクティビティに適用されます。
 
-**To enable network throttling**
+**ネットワーク調整を有効にするには**
 
-1. In the Backup agent, click **Change Properties**.
+1. Backup エージェントで、**[プロパティの変更]** をクリックします。
 
     ![Change properties](./media/backup-configure-vault-classic/change-properties.png)
 
-2. On the **Throttling** tab, select the **Enable internet bandwidth usage throttling for backup operations** check box.
+2. **[スロットル]** タブで、**[バックアップ操作用のインターネット使用帯域幅のスロットルを有効にする]** チェック ボックスをオンにします。
 
-    ![Network throttling](./media/backup-configure-vault-classic/throttling-dialog.png)
+    ![ネットワークのスロットル](./media/backup-configure-vault-classic/throttling-dialog.png)
 
-3. After you have enabled throttling, specify the allowed bandwidth for backup data transfer during **Work hours** and **Non-work hours**.
+3. スロットルを有効にした後、**[作業時間]** と **[作業時間外]** で、バックアップ データ転送のために許可される帯域幅を指定します。
 
-    The bandwidth values begin at 512 kilobits per second (Kbps) and can go up to 1,023 megabytes per second (MBps). You can also designate the start and finish for **Work hours**, and which days of the week are considered work days. Hours outside of designated work hours are considered non-work hours.
+    帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。また、**[作業時間]** の開始および終了時刻や、作業日と見なされる曜日も指定できます。指定した作業時間以外の時間は、作業時間外と見なされます。
 
-4. Click **OK**.
+4. **[OK]** をクリックします。
 
-### <a name="to-back-up-now"></a>To back up now
+### 今すぐバックアップするには
 
-1. In the Backup agent, click **Back Up Now** to complete the initial seeding over the network.
+1. Backup エージェントで **[今すぐバックアップ]** をクリックして、ネットワーク経由での最初のシード処理を完了します。
 
-    ![Windows Server backup now](./media/backup-configure-vault-classic/backup-now.png)
+    ![Windows Server を今すぐバックアップする](./media/backup-configure-vault-classic/backup-now.png)
 
-2. On the Confirmation page, review the settings that the Back Up Now Wizard will use to back up the machine. Then click **Back Up**.
+2. [確認] ページで、今すぐバックアップ ウィザードによってコンピューターのバックアップに使用される設定を確認します。次に、**[バックアップ]** をクリックします。
 
-3. Click **Close** to close the wizard. If you do this before the backup process finishes, the wizard continues to run in the background.
+3. **[閉じる]** をクリックしてウィザードを閉じます。バックアップ プロセスが完了する前にウィザードを閉じても、ウィザードはバックグラウンドで引き続き実行されます。
 
-After the initial backup is completed, the **Job completed** status appears in the Backup console.
+初回バックアップが完了すると、**[ジョブは完了しました]** 状態が Backup コンソールに表示されます。
 
 ![IR complete](./media/backup-configure-vault-classic/ircomplete.png)
 
-## <a name="next-steps"></a>Next steps
-- Sign up for a [free Azure account](https://azure.microsoft.com/free/).
+## 次のステップ
+- [無料の Azure アカウント](https://azure.microsoft.com/free/)にサインアップします。
 
-For additional information about backing up VMs or other workloads, see:
+VM や他のワークロードのバックアップの詳細については、以下を参照してください。
 
-- [Back up IaaS VMs](backup-azure-vms-prepare.md)
-- [Back up workloads to Azure with Microsoft Azure Backup Server](backup-azure-microsoft-azure-backup.md)
-- [Back up workloads to Azure with DPM](backup-azure-dpm-introduction.md)
+- [IaaS VM のバックアップ](backup-azure-vms-prepare.md)
+- [Azure Backup Server を使用してワークロードをバックアップするための準備](backup-azure-microsoft-azure-backup.md)
+- [DPM を使用して Azure へのワークロードをバックアップするための準備](backup-azure-dpm-introduction.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0810_2016-->

@@ -1,155 +1,151 @@
 <properties
-    pageTitle="Assigning administrator roles in Azure Active Directory | Microsoft Azure"
-    description="Explains what administrator roles are available with Azure Active Directory and how to assign them."
-    services="active-directory"
-    documentationCenter=""
-    authors="curtand"
-    manager="femila"
-    editor=""/>
+	pageTitle="Azure Active Directory の管理者ロールの割り当て | Microsoft Azure"
+	description="Azure Active Directory で管理者ロールが使用できる機能と、管理者ロールを割り当てる方法について説明します。"
+	services="active-directory"
+	documentationCenter=""
+	authors="curtand"
+	manager="femila"
+	editor=""/>
 
 <tags
-    ms.service="active-directory"
-    ms.workload="identity"
-    ms.tgt_pltfrm="na"
-    ms.devlang="na"
-    ms.topic="article"
-    ms.date="08/31/2016"
-    ms.author="curtand"/>
+	ms.service="active-directory"
+	ms.workload="identity"
+	ms.tgt_pltfrm="na"
+	ms.devlang="na"
+	ms.topic="article"
+	ms.date="08/31/2016"
+	ms.author="curtand"/>
+
+# Azure Active Directory での管理者ロールの割り当て
+
+Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。これらの管理者は、Azure ポータルまたは Azure クラシック ポータルでさまざまな機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、あるいは Windows PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
+
+次の管理者ロールを使用できます。
 
 
-# <a name="assigning-administrator-roles-in-azure-active-directory"></a>Assigning administrator roles in Azure Active Directory
+- **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
 
-Using Azure Active Directory (Azure AD), you can designate separate administrators to serve different functions. These administrators will have access to various features in the Azure portal or Azure classic portal and, depending on their role, will be able to create or edit users, assign administrative roles to others, reset user passwords, manage user licenses, and manage domains, among other things. A user who is assigned an admin role will have the same permissions across all of the cloud services that your organization has subscribed to, regardless of whether you assign the role in the Office 365 portal, or in the Azure classic portal, or by using the Azure AD module for Windows PowerShell.
+- **全体管理者/会社の管理者**: すべての管理機能にアクセスできます。Azure アカウントにサインアップしたユーザーがグローバル管理者になります。他の管理者ロールを割り当てることができるのはグローバル管理者だけです。会社に複数のグローバル管理者が存在してかまいません。
 
-The following administrator roles are available:
+	> [AZURE.NOTE] Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。[Azure ポータル](https://portal.azure.com)では、"全体管理者" になります。
 
+- **コンプライアンス管理者**:
 
-- **Billing administrator**: Makes purchases, manages subscriptions, manages support tickets, and monitors service health.
+- **CRM サービス管理者**: このロールが割り当てられたユーザーは、Microsoft CRM Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
 
-- **Global administrator / Company Administrator**: Has access to all administrative features. The person who signs up for the Azure account becomes a global administrator. Only global administrators can assign other administrator roles. There can be more than one global administrator at your company.
+- **カスタマー ロックボックス アクセスの承認者**: ロックボックス サービスが有効になっている場合、このロールが割り当てられたユーザーは、Microsoft のエンジニアによる会社情報へのアクセス要求を承認できます。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
 
-    > [AZURE.NOTE] In Microsoft Graph API, Azure AD Graph API, and Azure AD PowerShell, this role is identified as "Company Administrator". It is "Global Administrator" in the [Azure portal](https://portal.azure.com).
+- **デバイス管理者**: このロールが割り当てられたユーザーは、Azure Active Directory に参加しているすべての Windows 10 デバイスで管理者になります。
 
-- **Compliance administrator**:
+- **ディレクトリ リーダー**: これは、[同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。このロールをユーザーに割り当てることはできません。
 
-- **CRM Service administrator**: Users with this role have global permissions within Microsoft CRM Online, when the service is present. More information at [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US).”
+- **ディレクトリ同期アカウント**: 使用しないでください。このロールは、自動的に Azure AD Connect サービスに割り当てられます。他の用途に使用するためのものではなく、他の用途ではサポートされていません。
 
-- **Customer LockBox access approver**: When the LockBox service is enabled, users with this role can approve requests for Microsoft engineers to access company information. More information at [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US).”
+- **ディレクトリ ライター**: これは、[同意フレームワーク](active-directory-integrating-applications.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。このロールをユーザーに割り当てることはできません。
 
-- **Device administrators**: Users with this role become Administrators on all Windows 10 devices that are joined to Azure Active Directory.”
+- **Exchange サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
 
-- **Directory readers**: This is a legacy role that is to be assigned to applications that do not support the [Consent Framework](active-directory-integrating-applications.md). It should not be assigned to any users.
+- **Intune サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
 
-- **Directory synchronization accounts**: Do not use. This role is automatically assigned to the Azure AD Connect service, and is not intended or supported for any other use.
+- **Skype for Business サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。このロールは、以前は **Lync サービス管理者**ロールと呼ばれていました。
 
-- **Directory writers**: This is a legacy role that is to be assigned to applications that do not support the [Consent Framework](active-directory-integrating-applications.md). It should not be assigned to any users.
+- **パスワード管理者/ヘルプデスク管理者**: パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
 
-- **Exchange service administrator**: Users with this role have global permissions within Microsoft Exchange Online, when the service is present. More information at [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US).”
+	> [AZURE.NOTE] Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。
 
-- **Intune service administrator**: Users with this role have global permissions within Microsoft Intune Online, when the service is present. More information at [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US).
+- **SharePoint サービス管理者**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。詳細については、「[Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=ja-JP&rs=ja-JP&ad=US)」をご覧ください。
 
-- **Skype for Business service administrator**: Users with this role have global permissions within Microsoft Skype for Business, when the service is present. More information at [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US). This role was referred to previously as the **Lync service administrator** role.
+- **サービス管理者**: サービス要求の管理とサービス正常性の監視を行います。
 
-- **Password administrator/Helpdesk administrator**: Resets passwords, manages service requests, and monitors service health. Password administrators can reset passwords only for users and other password administrators.
+	> [AZURE.NOTE]
+	> サービス管理者のロールをユーザーに割り当てるには、グローバル管理者がまずサービスで管理権限をユーザーに割り当て、次に Azure クラシック ポータルでサービス管理者ロールをそのユーザーに割り当ててください。
 
-    > [AZURE.NOTE] In Microsoft Graph API, Azure AD Graph API and Azure AD PowerShell, this role is identified as "Helpdesk Administrator".
+- **ユーザー アカウント管理者**: パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。ユーザー管理の管理者の権限には、いくつかの制限が適用されます。たとえば、この管理者は、グローバル管理者を削除することも、他の管理者を作成することもできません。また、課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることもできません。
 
-- **SharePoint service administrator**: Users with this role have global permissions within Microsoft SharePoint Online, when the service is present. More information at [About Office 365 admin roles](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-US&ad=US).
+- **セキュリティ リーダー**: Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、および Office 365 のセキュリティ/ コンプライアンス センターの各種セキュリティ機能に対する読み取り専用アクセス権を持ちます。
 
-- **Service administrator**: Manages service requests and monitors service health.
+- **セキュリティ管理者**: 同じサービス (Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、Office 365 セキュリティ/コンプライアンス センター) について、**セキュリティ リーダー** ロールのすべての読み取り専用アクセス権に加えて、さまざまな管理権限を持ちます。
 
-    > [AZURE.NOTE] To assign the service administrator role to a user, the global administrator must first assign administrative permissions to the user in the service, such as Exchange Online, and then assign the service administrator role to the user in the Azure classic portal.
+## 管理者の権限
 
-- **User account administrator**: Resets passwords, monitors service health, and manages user accounts, user groups, and service requests. Some limitations apply to the permissions of a user management administrator. For example, they cannot delete a global administrator or create other administrators. Also, they cannot reset passwords for billing, global, and service administrators.
+### 課金管理者
 
-- **Security reader**: Read-only access to a number of security features of Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health, and Office 365 Security & Compliance Center.
-
-- **Security administrator**: All of the read-only permissions of the **Security reader** role, plus a number of additional administrative permissions for the same services: Identity Protection Center, Privileged Identity Management, Monitor Office 365 Service Health, and Office 365 Security & Compliance Center.
-
-## <a name="administrator-permissions"></a>Administrator permissions
-
-### <a name="billing-administrator"></a>Billing administrator
-
-Can do | Cannot do
+できること | できないこと
 ------------- | -------------
-<p>View company and user information</p><p>Manage Office support tickets</p><p>Perform billing and purchasing operations for Office products</p> | <p>Reset user passwords</p><p>Create and manage user views</p><p>Create, edit, and delete users and groups, and manage user licenses</p><p>Manage domains</p><p>Manage company information</p><p>Delegate administrative roles to others</p><p>Use directory synchronization</p><p>View reports</p>
+<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金操作と購入操作の実行</p> | <p>ユーザー パスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>レポートの表示</p>
 
-### <a name="global-administrator"></a>Global administrator
+### グローバル管理者
 
-Can do | Cannot do
+できること | できないこと
 ------------- | -------------
-<p>View company and user information</p><p>Manage Office support tickets</p><p>Perform billing and purchasing operations for Office products</p> <p>Reset user passwords</p><p>Create and manage user views</p><p>Create, edit, and delete users and groups, and manage user licenses</p><p>Manage domains</p><p>Manage company information</p><p>Delegate administrative roles to others</p><p>Use directory synchronization</p><p>Enable or disable multi-factor authentication</p><p>View reports</p> | N/A
+<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金操作と購入操作の実行</p> <p>ユーザー パスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>レポートの表示</p> | 該当なし
 
-### <a name="password-administrator"></a>Password administrator
+### パスワード管理者
 
-Can do | Cannot do
+できること | できないこと
 ------------- | -------------
-<p>View company and user information</p><p>Manage Office support tickets</p><p>Reset user passwords</p> | <p>Perform billing and purchasing operations for Office products</p><p>Create and manage user views</p><p>Create, edit, and delete users and groups, and manage user licenses</p><p>Manage domains</p><p>Manage company information</p><p>Delegate administrative roles to others</p><p>Use directory synchronization</p><p>View reports</p>
+<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>ユーザー パスワードのリセット</p> | <p>Office 製品の課金操作と購入操作の実行</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>レポートの表示</p>
 
-### <a name="service-administrator"></a>Service administrator
+### サービス管理者
 
-Can do | Cannot do
+できること | できないこと
 ------------- | -------------
-<p>View company and user information</p><p>Manage Office support tickets</p> | <p>Reset user passwords</p><p>Perform billing and purchasing operations for Office products</p><p>Create and manage user views</p><p>Create, edit, and delete users and groups, and manage user licenses</p><p>Manage domains</p><p>Manage company information</p><p>Delegate administrative roles to others</p><p>Use directory synchronization</p><p>View reports</p>
+<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p> | <p>ユーザー パスワードのリセット</p><p>Office 製品の課金操作と購入操作の実行</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>レポートの表示</p>
 
-### <a name="user-administrator"></a>User administrator
+### ユーザー管理者
 
-Can do | Cannot do
+できること | できないこと
 ------------- | -------------
-<p>View company and user information</p><p>Manage Office support tickets</p><p>Reset user passwords, with limitations. He or she cannot reset passwords for billing, global, and service administrators.</p><p>Create and manage user views</p><p>Create, edit, and delete users and groups, and manage user licenses, with limitations. He or she cannot delete a global administrator or create other administrators.</p> | <p>Perform billing and purchasing operations for Office products</p><p>Manage domains</p><p>Manage company information</p><p>Delegate administrative roles to others</p><p>Use directory synchronization</p><p>Enable or disable multi-factor authentication</p><p>View reports</p>
+<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>ユーザー パスワードのリセット (制限付き)。課金管理者、グローバル管理者、サービス管理者のパスワードをリセットすることはできません。</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理 (制限付き)。グローバル管理者を削除することも、他の管理者を作成することもできません。</p> | <p>Office 製品の課金操作と購入操作の実行</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>レポートの表示</p>
 
-### <a name="security-reader"></a>Security Reader
+### セキュリティ リーダー
 
-In | Can do
+[ | できること
 ------------- | -------------
-Identity Protection Center | Read all security reports and settings information for security features<ul><li>Anti-spam<li>Encryption<li>Data loss prevention<li>Anti-malware<li>Advanced threat protection<li>Anti-phishing<li>Mailflow rules
-Privileged Identity Management | <p>Has read-only access to all information surfaced in Azure AD PIM: Policies and reports for Azure AD role assignments, security reviews and in the future read access to policy data and reports for scenarios besides Azure AD role assignment.<p>**Cannot** sign up for Azure AD PIM or make any changes to it. In PIM's portal or via PowerShell, someone in this role can activate additional roles (for example, Global Admin or Privileged Role Administrator), if the user is a candidate for them.
-<p>Monitor Office 365 Service Health</p><p>Office 365 Security & Compliance Center</p> | <ul><li>Read and manage alerts<li>Read security policies<li>Read threat intelligence, Cloud App Discovery, and Quarantine in Search and Investigate<li>Read all reports
+Identity Protection Center | 各セキュリティ機能の全セキュリティ レポートと設定情報の閲覧<ul><li>スパム対策<li>暗号化<li>データ損失防止<li>マルウェア対策<li>Advanced Threat Protection<li>フィッシング詐欺対策<li>メールフロー ルール
+Privileged Identity Management | <p>Azure AD PIM に表示される、Azure AD ロール割り当てに関するポリシーとレポート、セキュリティ レビューのすべての情報に対する読み取り専用アクセス権を持ちます。また、将来的には、Azure AD ロール割り当て以外のシナリオのポリシー データとレポートに対する読み取りアクセス権も付与される予定です。<p>Azure AD PIM へのサインアップおよび Azure AD PIM の変更を行うことは**できません**。このロールのユーザーは、追加のロール (グローバル管理者や特権ロール管理者など) の資格を持っている場合、PIM のポータルまたは PowerShell からそのロールを有効化することができます。
+<p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター</p> | <ul><li>アラートの閲覧および管理<li>セキュリティ ポリシーの閲覧<li>検索調査における脅威インテリジェンス情報、Cloud App Discovery、および検査の閲覧<li>全レポートの閲覧
 
-### <a name="security-administrator"></a>Security Administrator
+### セキュリティ管理者
 
-In | Can do
+[ | できること
 ------------- | -------------
-Identity Protection Center | <ul><li>All permissions of the Security Reader role.<li>Additionally, the ability to perform all IPC operations except for resetting passwords.
-Privileged Identity Management | <ul><li>All permissions of the Security Reader role.<li>**Cannot** manage Azure AD role memberships or settings.
-<p>Monitor Office 365 Service Health</p><p>Office 365 Security & Compliance Center | <ul><li>All permissions of the Security Reader role.<li>Can configure all settings in the Advanced Threat Protection feature (malware & virus protection, malicious URL config, URL tracing, etc.).
+Identity Protection Center | <ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>さらに、パスワードのリセットを除く IPC のすべての操作を行うことができます。
+Privileged Identity Management | <ul><li>セキュリティ リーダーのすべての権限を持ちます。<li>Azure AD ロールのメンバーシップまたは設定を管理することは**できません**。
+<p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター | <ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>Advanced Threat Protection 機能 (マルウェアおよびウイルス防止、悪意のある URL の構成、URL 追跡など) のすべての設定を構成することができます。
 
-## <a name="details-about-the-global-administrator-role"></a>Details about the global administrator role
+## グローバル管理者ロールの詳細
 
-The global administrator has access to all administrative features. By default, the person who signs up for an Azure subscription is assigned the global administrator role for the directory. Only global administrators can assign other administrator roles.
+グローバル管理者は、すべての管理機能にアクセスできます。既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリのグローバル管理者ロールが割り当てられます。他の管理者ロールを割り当てることができるのはグローバル管理者だけです。
 
-## <a name="assign-or-remove-administrator-roles"></a>Assign or remove administrator roles
+## 管理者ロールの割り当てまたは削除
 
-1. In the [Azure classic portal](https://manage.windowsazure.com), click **Active Directory**, and then click the name of your organization’s directory.
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]** をクリックし、組織のディレクトリの名前をクリックします。
 
-2. On the **Users** page, click the display name of the user you want to edit.
+2. **[ユーザー]** ページで、編集するユーザーの表示名をクリックします。
 
-3. In the **Organizational Role** list, select the administrator role that you want to assign to this user, or select **User** if you want to remove an existing administrator role.
+3. **[組織のロール]** リストで、このユーザーに割り当てる管理者ロールを選択します。既存の管理者ロールを削除する場合は、**[ユーザー]** を選択します。
 
-4. In the **Alternate Email Address** box, type an email address. This email address is used for important notifications, including password self-reset, so the user must be able to access the email account whether or not the user can access Azure.
+4. **[連絡用電子メール アドレス]** ボックスに、電子メール アドレスを入力します。この電子メール アドレスは、パスワードのセルフリセットなどの重要な通知に使用されるので、ユーザーは、Azure にアクセスできるかどうかにかかわらず、この電子メール アカウントにアクセスできる必要があります。
 
-5. Select **Allow** or **Block** to specify whether to allow the user to sign in and access services.
+5. **[許可]** または **[ブロック]** を選択して、サービスへのサインインとアクセスをユーザーに許可するかどうかを指定します。
 
-6. Specify a location from the **Usage Location** drop-down list.
+6. **[利用場所]** ボックスの一覧で場所を指定します。
 
-7. When you have finished, click **Save**.
+7. 操作が完了したら、**[保存]** をクリックします。
 
-## <a name="next-steps"></a>Next steps
+## 次のステップ
 
-- To learn more about how to change administrators for an Azure subscription, see [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md)
+- Azure サブスクリプションの管理者を変更する方法の詳細については、「[Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)」を参照してください。
 
-- To learn more about how resource access is controlled in Microsoft Azure, see [Understanding resource access in Azure](active-directory-understanding-resource-access.md)
+- Microsoft Azure でリソース アクセスを制御する方法の詳細については、「[Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)」を参照してください。
 
-- For more information on how Azure Active Directory relates to your Azure subscription, see [How Azure subscriptions are associated with Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+- Azure Active Directory と Azure サブスクリプションの関係の詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
-- [Manage users](active-directory-create-users.md)
+- [ユーザーの管理](active-directory-create-users.md)
 
-- [Manage passwords](active-directory-manage-passwords.md)
+- [パスワードの管理](active-directory-manage-passwords.md)
 
-- [Manage groups](active-directory-manage-groups.md)
+- [グループの管理](active-directory-manage-groups.md)
 
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0921_2016-->

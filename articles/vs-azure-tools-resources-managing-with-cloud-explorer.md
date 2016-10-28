@@ -1,6 +1,6 @@
 <properties 
-   pageTitle="Managing Azure resources with Cloud Explorer | Microsoft Azure"
-   description="Learn how to use Cloud Explorer to browse and manage Azure resources within Visual Studio."
+   pageTitle="クラウド エクスプローラーを使用した Azure リソースの管理 | Microsoft Azure"
+   description="クラウド エクスプローラーを使用し、Visual Studio 内で Azure リソースを参照および管理する方法について説明します。"
    services="visual-studio-online"
    documentationCenter="na"
    authors="TomArcher"
@@ -15,90 +15,84 @@
    ms.date="08/15/2016"
    ms.author="tarcher" />
 
+# クラウド エクスプローラーを使用した Azure リソースの管理
 
-# <a name="managing-azure-resources-with-cloud-explorer"></a>Managing Azure resources with Cloud Explorer
+##Overview
 
-##<a name="overview"></a>Overview
+クラウド エクスプローラーは、Visual Studio IDE 内で Azure リソースをより簡単かつ迅速に参照および管理できるように設計されています。たとえば、クラウド エクスプローラーを使用して、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)またはブラウザーで Web アプリを開いたり、デバッガーをアタッチしたりできます。また、BLOB コンテナーのプロパティを表示し、BLOB コンテナー エディターで開くことができます。
 
-Cloud Explorer is designed to let you more easily and quickly browse and manage your Azure resources within the Visual Studio IDE. You can, for example, use it to open a Web app in the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) or in a browser, or attach a debugger to it, or you can view the properties of a blob container and open it in the Blob Container Editor.
+クラウド エクスプローラーは、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)と同様に、Azure Resource Manager スタックを基盤としています。これは、リソース (Azure リソース グループなど) および Azure サービス (Logic Apps や API Apps など) を認識し、[ロールベースのアクセス制御](./active-directory/role-based-access-control-configure.md) (RBAC) をサポートします。追加または変更された Azure リソースを表示するには、クラウド エクスプローラーのツール バーの **[更新]** を選択します。
 
-Cloud Explorer is built on the Azure resource manager stack, just like the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). It understands resources such as Azure resource groups and Azure services such as Logic apps and API apps, and it supports [role-based access control](./active-directory/role-based-access-control-configure.md) (RBAC). To see Azure resources that have been added or changed, choose the **Refresh** button on the Cloud Explorer toolbar.
+クラウド エクスプローラーは、Visual Studio Tools for Azure SDK 2.7 の一部としてインストールされます。
 
-Cloud Explorer is installed as part of the Visual Studio Tools for Azure SDK 2.7. 
+## 前提条件
 
-## <a name="prerequisites"></a>Prerequisites
+- Visual Studio 2015 RTM。
 
-- Visual Studio 2015 RTM.
+- Visual Studio Tools for Azure SDK。
+- クラウド エクスプローラーに Azure リソースを表示するには、Azure アカウントを所有していて、そのアカウントにログインしている必要もあります。お持ちでない場合でも、数分でアカウントを作成できます。MSDN サブスクリプションをお持ちの場合は、「[MSDN サブスクライバー向けの Azure の特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」を参照してください。それ以外の場合は、[無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)に関するページをご覧ください。
 
-- The Visual Studio Tools for Azure SDK. 
-- You must also have an Azure account and be logged into it to view Azure resources in Cloud Explorer. If you don't have one, you can create an account in just a couple of minutes. If you have an MSDN subscription, see [Azure Benefit for MSDN Subscribers](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). Otherwise, see [create a free trial account](https://azure.microsoft.com/pricing/free-trial/).
+- クラウド エクスプローラーが表示されていない場合は、メニュー バーの **[表示]**、**[その他のウィンドウ]**、**[クラウド エクスプローラー]** の順にクリックすると表示できます。
 
-- If Cloud Explorer isn't visible, you can view it by choosing **View**, **Other Windows,** **Cloud Explorer** on the menu bar.
+## Azure アカウントと Azure サブスクリプションの管理
 
-## <a name="manage-azure-accounts-and-subscriptions"></a>Manage Azure accounts and subscriptions
+クラウド エクスプローラーで Azure リソースを表示するには、1 つ以上の有効なサブスクリプションを持つ Azure アカウントにログインする必要があります。複数の Azure アカウントがある場合は、クラウド エクスプローラーでそれらを追加し、クラウド エクスプローラーのリソース ビューに追加するサブスクリプションを選択します。
 
-To see your Azure resources in Cloud Explorer, you need to log in to an Azure account with one or more active subscriptions. If you have more than one Azure account, you can add them in Cloud Explorer and then choose the subscriptions you want to include in the Cloud Explorer resource view.
+これまでに Azure を使用したことがない場合または必要なアカウントを Visual Studio に追加していない場合は、この操作を行うように求められます。
 
-If you haven't used Azure before, or you haven't added the necessary accounts to Visual Studio, you'll be prompted to do so.
+## Azure アカウントをクラウド エクスプローラーに追加するには
 
-## <a name="to-add-azure-accounts-to-cloud-explorer"></a>To add Azure accounts to Cloud Explorer
+1. クラウド エクスプローラーのツール バーの [設定] アイコンを選択します。
 
-1. Choose the Settings icon on the Cloud Explorer toolbar.
-
-1. Choose the **Add an account** link. Log into the Azure account whose resources you want to browse. The account you just added should be selected in the account picker dropdown list. The subscriptions for that account appear under the account entry.
+1. **[アカウントの追加]** リンクを選択します。参照するリソースを所有する Azure アカウントにログインします。ここで追加したアカウントは、アカウントを選択するドロップダウン リストで選択する必要があります。選択したアカウントのサブスクリプションが、アカウント項目の下に表示されます。
 
     ![Adding Azure subscriptions](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC819514.png)
 
     ![Choosing Azure subscriptions](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC819515.png)
 
-1. Select the check boxes for the account subscriptions you want to browse and then choose the **Apply** button.
+1. 参照するアカウントのサブスクリプションのチェック ボックスをオンにし、**[適用]** をクリックします。
 
-    The Azure resources for the selected subscriptions appear in Cloud Explorer.
+    選択したサブスクリプションの Azure リソースがクラウド エクスプローラーに表示されます。
 
-## <a name="to-remove-an-azure-account"></a>To remove an Azure account
+## Azure アカウントを削除するには
 
-1. Choose **File**, **Account Settings** on the menu bar.
+1. メニュー バーの **[ファイル]**、**[アカウントの設定]** の順に選択します。
 
-1. In the **All Accounts** section of the **Account Settings** dialog box, choose the **Remove** command next to the account you want to remove. Note that this command only removes the account from Visual Studio–it doesn't affect the Azure account itself.
+1. **[アカウントの設定]** ダイアログ ボックスの **[すべてのアカウント]** セクションで、削除するアカウントの横にある **[削除]** コマンドを選択します。このコマンドは、Visual Studio からアカウントを削除するだけです。Azure アカウント自体には影響しません。
 
-## <a name="view-resource-types-or-groups"></a>View resource types or groups
+## リソースの種類またはグループの表示
 
-To view your Azure resources, you can choose either **Resource Types** or **Resource Groups** view.
+Azure リソースを表示するには、**[リソースの種類]** ビューまたは **[リソース グループ]** ビューを選択します。
 
 ![Resource view dropdown](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC819516.png)
 
-- **Resource Types** view, which is also the common view used on the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040), shows your Azure resources categorized by their type, such as web apps, storage accounts and virtual machines. This is similar to how Azure resources appear in Server Explorer.
+- **[リソースの種類]** ビューは、[Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で使用される一般的なビューでもあり、Web アプリ、ストレージ アカウント、仮想マシンなどの Azure リソースが種類ごとに表示されます。これは、サーバー エクスプローラーで Azure リソースが表示されるしくみに似ています。
 
-- Resource Groups view categorizes Azure resources by the Azure resource group they're associated with.
+- [リソース グループ] ビューでは、Azure リソースが、関連付けられている Azure リソース グループで分類されます。
 
  
-    A resource group is a bundle of Azure resources, typically used by a specific application. To learn more about Azure resource groups, see [Azure Resource Manager Overview](./resource-group-overview.md).
+	リソース グループとは Azure リソースの集まりで、通常は特定のアプリケーションで使用されます。Azure リソース グループの詳細については、「[Azure リソース マネージャーの概要](./resource-group-overview.md)」を参照してください。
 
-## <a name="view-and-navigate-resources"></a>View and navigate resources
+## リソースの表示および移動
 
-To navigate to an Azure resource and view its information in Cloud Explorer, expand the item's type or associated resource group and then choose the resource. When you choose a resource, information appears in the two tabs at the bottom of Cloud Explorer.
+クラウド エクスプローラーで Azure リソースに移動してその情報を表示するには、項目の種類または関連付けられているリソース グループを展開して、リソースを選択します。リソースを選択すると、クラウド エクスプローラーの下部にある 2 つのタブに情報が表示されます。
 
 ![Choose a resource view](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC819517.png)
 
-- The **Actions** tab shows the actions you can take in Cloud Explorer for the selected resource. You can also see available actions on the shortcut menu of the resource.
+- **[アクション]** タブには、選択したリソースに対してクラウド エクスプローラーで実行できるアクションが表示されます。リソースのショートカット メニューには、使用可能なアクションも表示されます。
 
-- The **Properties** tab shows the properties of the resource, such as its type, locale and resource group it's associated with.
+- **[プロパティ]** タブには、リソースのプロパティ (種類、ロケール、関連付けられているリソース グループなど) が表示されます。
 
-Every resource has the action **Open in portal**. When you choose this action, Cloud Explorer displays the selected resource in the [Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040). This feature is particularly handy for navigating to deeply-nested resources.
+すべてのリソースには、**[ポータルで開く]** というアクションがあります。このアクションを選択すると、選択したリソースが [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)で表示されます。この機能は、深く入れ子になったリソースまで移動する場合に特に便利です。
 
-Additional actions and property values may also appear based on the Azure resource. For example, web apps and logic apps also have the actions **Open in browser** and **Attach debugger** in addition to **Open in portal**. Actions to open editors appear when you choose a storage account blob, queue, or table. Azure apps have **URL** and **Status** properties, while storage resources have key and connection string properties.
+その他のアクションやプロパティ値も、Azure リソースに基づいて表示される場合があります。たとえば、Web Apps と Logic Apps には、**[ポータルで開く]** に加えて、**[ブラウザーで開く]** と **[デバッガーのアタッチ]** というアクションもあります。エディターを開くアクションは、ストレージ アカウントの BLOB、キュー、またはテーブルを選択すると表示されます。Azure アプリには **URL** と**状態**プロパティがあるのに対し、ストレージ リソースにはキーと接続文字列のプロパティがあります。
 
-## <a name="search-resources"></a>Search resources
+## リソースの検索
 
-To locate resources with a specific name in your Azure account subscriptions, enter the name in the Search box in Cloud Explorer.
+Azure アカウントのサブスクリプションで特定の名前のリソースを検索するには、クラウド エクスプローラーの検索ボックスに名前を入力します。
 
 ![Finding resources in Cloud Explorer](./media/vs-azure-tools-resources-managing-with-cloud-explorer/IC820394.png)
 
-As you enter characters in the Search box, only resources that match those characters appear in the resource tree.
+検索ボックスに文字を入力すると、その文字に一致するリソースのみがリソース ツリーに表示されます。
 
-
-
-
-<!--HONumber=Oct16_HO2-->
-
-
+<!---HONumber=AcomDC_0817_2016-->
