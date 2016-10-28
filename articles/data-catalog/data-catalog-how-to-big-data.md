@@ -1,20 +1,21 @@
 <properties
-   pageTitle=""ビッグ データ" のデータ ソースを操作する方法 | Microsoft Azure"
-   description="Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの "ビッグ データ" のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。"
-   services="data-catalog"
-   documentationCenter=""
-   authors="steelanddata"
-   manager="NA"
-   editor=""
-   tags=""/>
+	pageTitle="ビッグ データ" のデータ ソースを操作する方法 | Microsoft Azure"
+	description="Azure Blob Storage、Azure Data Lake、Hadoop HDFS などの "ビッグ データ" のデータ ソースと共に Azure Data Catalog を使用するためのパターンを説明する、操作方法に関する記事。"
+	services="data-catalog"
+	documentationCenter=""
+	authors="steelanddata"
+	manager="NA"
+	editor=""
+	tags=""/>
+
 <tags
-   ms.service="data-catalog"
-   ms.devlang="NA"
-   ms.topic="article"
-   ms.tgt_pltfrm="NA"
-   ms.workload="data-catalog"
-   ms.date="10/04/2016"
-   ms.author="maroche"/>
+	ms.service="data-catalog"
+	ms.devlang="NA"
+	ms.topic="article"
+	ms.tgt_pltfrm="NA"
+	ms.workload="data-catalog"
+	ms.date="10/04/2016"
+	ms.author="maroche"/>
 
 
 
@@ -71,6 +72,6 @@
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
