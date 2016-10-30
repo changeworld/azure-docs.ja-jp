@@ -3,7 +3,7 @@
     description="PowerShell を使用して Notification Hubs の作成と管理を自動化する方法" 
     services="notification-hubs" 
     documentationCenter="" 
-    authors="wesmc7777" 
+    authors="ysxu" 
     manager="erikre" 
     editor="" />
 
@@ -14,7 +14,7 @@
     ms.devlang="na" 
     ms.topic="article" 
     ms.date="06/29/2016" 
-    ms.author="wesmc"/>
+    ms.author="yuaxu"/>
 
 
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell を使用した Notification Hubs のデプロイと管理

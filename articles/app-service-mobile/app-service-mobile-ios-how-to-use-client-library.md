@@ -3,7 +3,7 @@
     description="Azure Mobile Apps 向け iOS SDK の使用方法"
     services="app-service\mobile"
     documentationCenter="ios"
-    authors="yuaxu"
+    authors="ysxu"
     manager="yochayk"
     editor=""/>
 

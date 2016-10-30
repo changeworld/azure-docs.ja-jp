@@ -1,123 +1,136 @@
 <properties
-	pageTitle="Linux VM に関する FAQ | Microsoft Azure"
-	description="Resource Manager モデルで作成された Linux 仮想マシンについてよく寄せられる質問への回答を示します。"
-	services="virtual-machines-linux"
-	documentationCenter=""
-	authors="cynthn"
-	manager="timlt"
-	editor=""
-	tags="azure-resource-management"/>
+    pageTitle="FAQ for Linux VMs | Microsoft Azure"
+    description="Provides answers to some of the common questions about Linux virtual machines created with the Resource Manager model."
+    services="virtual-machines-linux"
+    documentationCenter=""
+    authors="cynthn"
+    manager="timlt"
+    editor=""
+    tags="azure-resource-management"/>
 
 <tags
-	ms.service="virtual-machines-linux"
-	ms.workload="infrastructure-services"
-	ms.tgt_pltfrm="vm-linux"
-	ms.devlang="na"
-	ms.topic="article"
-	ms.date="08/16/2016"
-	ms.author="cynthn"/>
-
-# Linux 仮想マシンについてのよく寄せられる質問 
-
-この記事では、Resource Manager デプロイ モデルを使用して Azure で作成された Linux 仮想マシンについてよく寄せられる質問に回答します。このトピックの Windows バージョンについては、「[Frequently asked question about Windows Virtual Machines (Windows 仮想マシンについてのよく寄せられる質問)](virtual-machines-windows-faq.md)」を参照してください。
-
-## Azure VM では何を実行できますか。
-
-すべてのサブスクライバーは、Azure 仮想マシンでサーバー ソフトウェアを実行できます。詳細については、「[Azure での動作保証済み Linux ディストリビューション](virtual-machines-linux-endorsed-distros.md)」を参照してください。
+    ms.service="virtual-machines-linux"
+    ms.workload="infrastructure-services"
+    ms.tgt_pltfrm="vm-linux"
+    ms.devlang="na"
+    ms.topic="article"
+    ms.date="08/16/2016"
+    ms.author="cynthn"/>
 
 
-## 仮想マシンではどれくらいのストレージ容量を使用できますか。
+# <a name="frequently-asked-question-about-linux-virtual-machines"></a>Frequently asked question about Linux Virtual Machines
 
-各データ ディスクで最大 1 TB (テラバイト) を利用できます。使用できるデータ ディスクの数は、仮想マシンのサイズによって決まります。詳細については、「[仮想マシンのサイズ](virtual-machines-linux-sizes.md)」を参照してください。
+This article addresses some common questions about Linux virtual machines created in Azure using the Resource Manager deployment model. For the Windows version of this topic, see [Frequently asked question about Windows Virtual Machines](virtual-machines-windows-faq.md)
 
-Azure のストレージ アカウントでは、オペレーティング システム ディスクと任意のデータ ディスクのストレージを利用できます。各ディスクは、実際には .vhd ファイルであり、ページ BLOB として保存されます。価格の詳細については、「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)」を参照してください。
+## <a name="what-can-i-run-on-an-azure-vm?"></a>What can I run on an Azure VM?
 
-
-## 仮想マシンへのアクセス方法を教えてください。
-
-Secure Shell (SSH) を使用して、仮想マシンにログオンするためのリモート接続を確立します。[Windows から](virtual-machines-linux-ssh-from-windows.md)接続する手順、または [Linux および Mac から](virtual-machines-linux-mac-create-ssh-keys.md)接続する手順を参照します。SSH では、既定で最大 10 の同時接続が可能です。この接続数は構成ファイルを編集することで増やすことができます。
+All subscribers can run server software on an Azure virtual machine. For more information, see [Linux on Azure-Endorsed Distributions](virtual-machines-linux-endorsed-distros.md)
 
 
-問題がある場合は、[Secure Shell (SSH) 接続のトラブルシューティング](virtual-machines-linux-troubleshoot-ssh-connection.md)に関する記事を参照してください。
+## <a name="how-much-storage-can-i-use-with-a-virtual-machine?"></a>How much storage can I use with a virtual machine?
+
+Each data disk can be up to 1 TB. The number of data disks you can use depends on the size of the virtual machine. For details, see [Sizes for Virtual Machines](virtual-machines-linux-sizes.md).
+
+An Azure storage account provides storage for the operating system disk and any data disks. Each disk is a .vhd file stored as a page blob. For pricing details, see [Storage Pricing Details](https://azure.microsoft.com/pricing/details/storage/).
 
 
-## データの格納時に一時ディスク (/dev/sdb2) を使用できますか。
+## <a name="how-can-i-access-my-virtual-machine?"></a>How can I access my virtual machine?
 
-データの格納に一時ディスク (/dev/sdb1) を使用しないでください。一時ディスクは一時的なストレージでしかなく、データ損失の発生時にデータを復旧できない恐れがあります。
-
-
-## 既存の Azure VM をコピーまたは複製できますか。
-
-はい。詳細については、「[Resource Manager デプロイ モデルで Linux 仮想マシンのコピーを作成する方法](virtual-machines-linux-copy-vm.md)」を参照してください。
+Establish a remote connection to log on to the virtual machine, using Secure Shell (SSH). See the instructions on how to connect [from Windows](virtual-machines-linux-ssh-from-windows.md) or [from Linux and Mac](virtual-machines-linux-mac-create-ssh-keys.md). By default, SSH allows a maximum of 10 concurrent connections. You can increase this number by editing the configuration file.
 
 
-## Azure Resource Manager でカナダ中部およびカナダ東部のリージョンが表示されない理由を教えてください。
-
-カナダ中部およびカナダ東部の 2 つの新しいリージョンは、既存の Azure サブスクリプションで仮想マシンを作成した場合、自動的には登録されません。Azure Resource Manager を使用してこれら以外の任意のリージョンに Azure ポータルから仮想マシンをデプロイすると、この登録は自動的に行われます。その他の任意の Azure リージョンに仮想マシンがデプロイされると、新しいリージョンを後続の仮想マシンで使用できるようになります。
+If you’re having problems, check out [Troubleshoot Secure Shell (SSH) connections](virtual-machines-linux-troubleshoot-ssh-connection.md).
 
 
-## VM の作成後、NIC を VM に追加できますか。
+## <a name="can-i-use-the-temporary-disk-(/dev/sdb1)-to-store-data?"></a>Can I use the temporary disk (/dev/sdb1) to store data?
 
-いいえ。NIC を追加できるのは VM の作成時のみです。
-
-
-## コンピューター名の要件はありますか。
-
-はい。コンピューター名は最大 64 文字の長さまで指定できます。リソースの名前付けの詳細については、「[インフラストラクチャの名前付けガイドライン](virtual-machines-linux-infrastructure-naming-guidelines.md)」を参照してください。
+Don't use the temporary disk (/dev/sdb1) to store data. It is only there for temporary storage. You risk losing data that can’t be recovered.
 
 
-## VM を作成する際のユーザー名の要件は何ですか。
+## <a name="can-i-copy-or-clone-an-existing-azure-vm?"></a>Can I copy or clone an existing Azure VM?
 
-ユーザー名は 1 ～ 64 文字の長さにする必要があります。
+Yes. For instructions, see [How to create a copy of a Linux virtual machine in the Resource Manager deployment model](virtual-machines-linux-copy-vm.md).
 
-次のユーザー名を指定することはできません。
+
+## <a name="why-am-i-not-seeing-canada-central-and-canada-east-regions-through-azure-resource-manager?"></a>Why am I not seeing Canada Central and Canada East regions through Azure Resource Manager?
+
+The two new regions of Canada Central and Canada East are not automatically registered for virtual machine creation for existing Azure subscriptions. This registration is done automatically when a virtual machine is deployed through the Azure portal to any other region using Azure Resource Manager. After a virtual machine is deployed to any other Azure region, the new regions should be available for subsequent virtual machines.
+
+
+## <a name="can-i-add-a-nic-to-my-vm-after-it's-created?"></a>Can I add a NIC to my VM after it's created?
+
+No. Adding a NIC can only be done at creation time.
+
+
+## <a name="are-there-any-computer-name-requirements?"></a>Are there any computer name requirements?
+
+Yes. The computer name can be a maximum of 64 characters in length. See [Infrastructure naming guidelines](virtual-machines-linux-infrastructure-naming-guidelines.md) for more information around naming your resources.
+
+
+## <a name="what-are-the-username-requirements-when-creating-a-vm?"></a>What are the username requirements when creating a VM?
+
+Usernames must be 1 - 64 characters in length.
+
+The following usernames are not allowed:
 
 <table>
-	<tr>
-		<td style="text-align:center">administrator </td><td style="text-align:center"> 管理者 </td><td style="text-align:center"> ユーザー </td><td style="text-align:center"> user1</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">backup </td><td style="text-align:center"> console </td><td style="text-align:center"> david </td><td style="text-align:center"> guest</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">john </td><td style="text-align:center"> owner </td><td style="text-align:center"> root </td><td style="text-align:center"> server</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">sql </td><td style="text-align:center"> support </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
-	</tr>
+    <tr>
+        <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> user </td><td style="text-align:center"> user1</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> user3</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">backup </td><td style="text-align:center"> console </td><td style="text-align:center"> david </td><td style="text-align:center"> guest</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">john </td><td style="text-align:center"> owner </td><td style="text-align:center"> root </td><td style="text-align:center"> server</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">sql </td><td style="text-align:center"> support </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
+    </tr>
 </table>
 
 
-## VM を作成する際のパスワードの要件は何ですか。
+## <a name="what-are-the-password-requirements-when-creating-a-vm?"></a>What are the password requirements when creating a VM?
 
-パスワードは 6 ～ 72 文字の長さにし、次の 4 つの複雑性要件のうち 3 つを満たしている必要があります。
+Passwords must be 6 - 72 characters in length and meet 3 out of the following 4 complexity requirements:
 
-- 小文字を含む
-- 大文字を含む
-- 数字を含む
-- 特殊文字を含む ([\\W\_] に一致する正規表現)
+- Have lower characters
+- Have upper characters
+- Have a digit
+- Have a special character (Regex match [\W_])
 
-次のパスワードを指定することはできません。
+The following passwords are not allowed:
 
 <table>
-	<tr>
-		<td style="text-align:center">abc@123</td><td style="text-align:center">P@$$w0rd</td><td style="text-align:center">P@ssw0rd</td><td style="text-align:center">P@ssword123</td><td style="text-align:center">Pa$$word</td>
-	</tr>
-	<tr>
-		<td style="text-align:center">pass@word1</td><td style="text-align:center">Password!</td><td style="text-align:center">Password1</td><td style="text-align:center">Password22</td><td style="text-align:center">iloveyou!</td>
-	</tr>
+    <tr>
+        <td style="text-align:center">abc@123</td>
+        <td style="text-align:center">P@$$w0rd</td>
+        <td style="text-align:center">P@ssw0rd</td>
+        <td style="text-align:center">P@ssword123</td>
+        <td style="text-align:center">Pa$$word</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">pass@word1</td>
+        <td style="text-align:center">Password!</td>
+        <td style="text-align:center">Password1</td>
+        <td style="text-align:center">Password22</td>
+        <td style="text-align:center">iloveyou!</td>
+    </tr>
 </table>
 
-<!---HONumber=AcomDC_0831_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

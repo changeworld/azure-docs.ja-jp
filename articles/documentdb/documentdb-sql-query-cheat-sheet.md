@@ -1,46 +1,51 @@
 <properties 
-	pageTitle="DocumentDB SQL チート シート PDF | Microsoft Azure" 
-	description="DocumentDB の SQL 構文を使用して NoSQL データベースの JSON ドキュメントに対してクエリを実行する際に役立つ、印刷可能な SQL チート シート PDF - SQL クイック リファレンス" 
-	keywords="sql チート シート, sql チート シート pdf, sql クエリ チート シート"
-	services="documentdb" 
-	documentationCenter="" 
-	authors="mimig1" 
-	manager="jhubbard" 
-	editor="monicar"/>
+    pageTitle="DocumentDB SQL cheat sheet PDF | Microsoft Azure" 
+    description="Printable SQL cheat sheet PDF that helps you use DocumentDB's SQL syntax to query JSON documents in its NoSQL database - SQL quick reference" 
+    keywords="sql cheat sheet, sql cheat sheet pdf, sql query cheat sheet"
+    services="documentdb" 
+    documentationCenter="" 
+    authors="mimig1" 
+    manager="jhubbard" 
+    editor="monicar"/>
 
 <tags 
-	ms.service="documentdb" 
-	ms.workload="data-services" 
-	ms.tgt_pltfrm="na" 
-	ms.devlang="na" 
-	ms.topic="article" 
-	ms.date="07/29/2016" 
-	ms.author="mimig"/>
+    ms.service="documentdb" 
+    ms.workload="data-services" 
+    ms.tgt_pltfrm="na" 
+    ms.devlang="na" 
+    ms.topic="article" 
+    ms.date="10/26/2016" 
+    ms.author="mimig"/>
 
-# DocumentDB SQL クエリのチート シート PDF
 
-**DocumentDB SQL クエリのチート シート**は印刷が簡単な PDF リファレンス シートで共通のデータベース クエリ、キーワード、組み込み関数、演算子を表示します。これを利用すれば、DocumentDB データのクエリを簡単に記述できます。
+# <a name="documentdb-sql-query-cheat-sheet-pdf"></a>DocumentDB SQL query cheat sheet PDF
 
-DocumentDB は [SQL](documentdb-sql-query.md) を利用した JSON ドキュメントのリレーショナル クエリ、階層クエリ、空間クエリにサポートしています。標準 ANSI-SQL のキーワードと演算子に加え、DocumentDB は JavaScript のユーザー定義関数 (UDF)、JavaScript 演算子、さまざまな組み込み関数に対応しています。
+The **DocumentDB SQL Query Cheat Sheet** helps you quickly write queries for DocumentDB data by displaying common  database queries, keywords, built-in functions, and operators in an easy to print PDF reference sheet. 
 
-## DocumentDB SQL クエリのチート シート PDF のダウンロード
+DocumentDB supports relational, hierarchical,  and spatial querying of JSON documents using [SQL](documentdb-sql-query.md) without specifying a schema or secondary indexes. In addition to the standard ANSI-SQL keywords and operators, DocumentDB supports JavaScript user defined functions (UDFs), JavaScript operators, and a multitude of built-in functions.
 
-SQL クエリ チート シートをダウンロードし、それをクイック リファレンスとして利用し、クエリを短時間で記述します。SQL チート シート PDF には 2 つのサンプル JSON ドキュメントからデータを取得するための共通クエリが表示されます。片面 SQL クエリ チート シートをページ レター サイズ (8.5 x 11 インチ) で印刷し、手元に置いておくことができます。
+## <a name="download-the-documentdb-sql-query-cheat-sheet-pdf"></a>Download the DocumentDB SQL query cheat sheet PDF
 
-**SQL チート シートはここでダウンロードします: [Microsoft Azure DocumentDB SQL のチート シート](http://go.microsoft.com/fwlink/?LinkId=623215)**
+Write your queries faster by downloading the SQL query cheat sheet and using it as a quick reference. The SQL cheat sheet PDF shows common queries used to retrieve data from two example JSON documents. To keep it nearby, you can print the single-sided SQL query cheat sheet in page letter size (8.5 x 11 in.).
 
-![DocumentDB SQL クエリ チート シート: DocumentDB によってサポートされる SQL 構文のクイック リファレンス PDF - SQL チート シート、SQL チート シート PDF、SQL クイック リファレンス][cheat-sheet]
+**Download the SQL cheat sheet here: [Microsoft Azure DocumentDB SQL cheat sheet](http://go.microsoft.com/fwlink/?LinkId=623215)**
+
+![DocumentDB SQL query cheat sheet: A quick reference PDF to the SQL syntax supported by DocumentDB - SQL cheat sheet, SQL cheat sheet PDF, SQL quick reference][cheat-sheet]
 
 [cheat-sheet]: ./media/documentdb-sql-query-cheat-sheet/microsoft-documentdb-sql-query-cheat-sheet-v4.png
 
 
-## SQL クエリの記述に関するその他のヘルプ
+## <a name="more-help-with-writing-sql-queries"></a>More help with writing SQL queries
 
-- DocumentDB で利用できるクエリ オプションのチュートリアルについては、「[DocumentDB のクエリ](documentdb-sql-query.md)」を参照してください。
-- 関連リファレンス ドキュメントについては、「[DocumentDB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
+- For a walk through of the query options available in DocumentDB, see [Query DocumentDB](documentdb-sql-query.md).
+- For the related reference documentation, see [DocumentDB SQL Query Language](https://msdn.microsoft.com/library/azure/dn782250.aspx).
 
-## リリース ノート
+## <a name="release-notes"></a>Release notes
 
-TOP を含めるために 2016 年 7 月 29 日に更新されました。
+Updated on 7/29/2016 to include TOP.
 
-<!---HONumber=AcomDC_0803_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

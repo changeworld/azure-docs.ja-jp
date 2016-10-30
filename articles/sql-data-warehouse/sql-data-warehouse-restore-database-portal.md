@@ -16,7 +16,8 @@
    ms.date="09/21/2016"
    ms.author="lakshmir;barbkess;sonyama"/>
 
-# Azure SQL Data Warehouse の復元 (ポータル)
+
+# <a name="restore-an-azure-sql-data-warehouse-(portal)"></a>Azure SQL Data Warehouse の復元 (ポータル)
 
 > [AZURE.SELECTOR]
 - [概要][]
@@ -26,16 +27,16 @@
 
 この記事では、Azure ポータルを使用して Azure SQL Data Warehouse を復元する方法について説明します。
 
-## 開始する前に
+## <a name="before-you-begin"></a>開始する前に
 
-**DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL server に残っていることを確認してください。必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][]に関するトピックをご覧ください。
+**DTU 容量を確認します。**  各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL Data Warehouse を復元する前に、データベースの復元に必要な量の DTU クォータがSQL server に残っていることを確認してください。 必要な DTU を計算する方法と DTU を要求する方法については、 [DTU クォータの変更の要求][]に関するトピックをご覧ください。
 
 
-## アクティブまたは一時停止中のデータベースを復元する
+## <a name="restore-an-active-or-paused-database"></a>アクティブまたは一時停止中のデータベースを復元する
 
 データベースを復元するには:
 
-1. [Azure ポータル][]にログインします
+1.  [Azure ポータル][]
 2. 画面の左側にある **[参照]** をクリックし、**[SQL Server]** を選択します
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
@@ -47,27 +48,27 @@
 4. 復元する SQL Data Warehouse を見つけて選択します
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-select-active-dw.png)
-5. Data Warehouse ブレードの上部にある **[復元]** をクリックします
+5. Data Warehouse ブレードの上部にある **[復元]**
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-select-restore-from-active.png)
 
-6. 新しい**データベース名**を指定します
-7. 最新の**復元ポイント**を選択します
-    1. 最新の復元ポイントを選択していることを確認します。復元ポイントは UTC で表示されるため、表示される既定のオプションが最新の復元ポイントではない場合があります。
+6. 新しい **データベース名**
+7. 最新の **復元ポイント**
+    1. 最新の復元ポイントを選択していることを確認します。  復元ポイントは UTC で表示されるため、表示される既定のオプションが最新の復元ポイントではない場合があります。
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-restore-blade-from-active.png)
 
-8. **[OK]** をクリックします。
-9. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます
+8.  **[OK]**
+9. データベースの復元処理が開始され、 **[通知]**
 
->[AZURE.NOTE] 復元が完了したら、「[復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
+>[AZURE.NOTE] 復元が完了したら、「 [復旧後のデータベースの構成][]」の手順に従って、復旧されたデータベースを構成できます。
 
 
-## 削除されたデータベースの復元
+## <a name="restore-a-deleted-database"></a>削除されたデータベースの復元
 
 削除されたデータベースを復元するには:
 
-1. [Azure ポータル][]にログインします
+1.  [Azure ポータル][]
 2. 画面の左側にある **[参照]** をクリックし、**[SQL Server]** を選択します
     
     ![](./media/sql-data-warehouse-restore-database-portal/01-browse-for-sql-server.png)
@@ -85,17 +86,17 @@
     
     ![](./media/sql-data-warehouse-restore-database-portal/02-select-deleted-dw.png)
 
-7. 新しい**データベース名**を指定します
+7. 新しい **データベース名**
     
     ![](./media/sql-data-warehouse-restore-database-portal/02-restore-blade-from-deleted.png)
     
-8. **[OK]** をクリックします。
-9. データベースの復元処理が開始され、**[通知]** を使用して処理を監視することができます
+8.  **[OK]**
+9. データベースの復元処理が開始され、 **[通知]**
 
->[AZURE.NOTE] 復元が完了した後にデータベースを構成する方法については、「[復旧後のデータベースの構成][]」を参照してください。
+>[AZURE.NOTE] 復元が完了した後にデータベースを構成する方法については、「 [復旧後のデータベースの構成][]」を参照してください。 
 
-## 次のステップ
-Azure SQL Database の各エディションのビジネス継続性機能については、[Azure SQL Database のビジネス継続性の概要][]に関するページをご覧ください。
+## <a name="next-steps"></a>次のステップ
+Azure SQL Database の各エディションのビジネス継続性機能については、 [Azure SQL Database のビジネス継続性の概要][]に関するページをご覧ください。
 
 <!--Image references-->
 
@@ -115,4 +116,8 @@ Azure SQL Database の各エディションのビジネス継続性機能につ�
 <!--Other Web references-->
 [Azure ポータル]: https://portal.azure.com/
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

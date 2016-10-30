@@ -1,6 +1,6 @@
 <properties
-   pageTitle="ポータルを使用して Application Gateway のパスベース ルールを作成する | Microsoft Azure"
-   description="ポータルを使用して Application Gateway のパスベース ルールを作成する方法を説明します"
+   pageTitle="Create a Path-based rule for an application gateway by using the portal | Microsoft Azure"
+   description="Learn how to create a Path-based rule for an application gateway by using the portal"
    services="application-gateway"
    documentationCenter="na"
    authors="georgewallace"
@@ -14,74 +14,77 @@
    ms.topic="article"
    ms.tgt_pltfrm="na"
    ms.workload="infrastructure-services"
-   ms.date="08/18/2016"
+   ms.date="10/25/2016"
    ms.author="gwallace" />
 
-# ポータルを使用して Application Gateway のパスベース ルールを作成する
+
+# <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-portal"></a>Create a Path-based rule for an application gateway by using the portal
 
 > [AZURE.SELECTOR]
-- [Azure ポータル](application-gateway-create-url-route-portal.md)
-- [Azure Resource Manager の PowerShell](application-gateway-create-url-route-arm-ps.md)
+- [Azure portal](application-gateway-create-url-route-portal.md)
+- [Azure Resource Manager PowerShell](application-gateway-create-url-route-arm-ps.md)
 
-URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートの関連付けを行うことができます。Application Gateway の URL 一覧に対して構成されたバックエンド プールへのルートがあるかどうかを調べ、定義されたバックエンド プールにネットワーク トラフィックを送信します。URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
+URL Path-based routing enables you to associate routes based on the URL path of Http request. It checks if there is a route to a back-end pool configured for the URL lists in Application Gateway and send the network traffic to the defined back-end pool. A common use for URL-based routing is to load balance requests for different content types to different back-end server pools.
 
-URL ベースのルーティングでは、新しいルールの種類が Application Gateway に導入されています。Application Gateway には、基本ルールとパスベース ルールという 2 つのルールの種類があります。基本ルールは、バックエンド プールに対してラウンドロビン サービスを提供します。一方、パスベース ルールはラウンドロビン サービスに加えて、バックエンド プールを選択しながら要求 URL のパス パターンも考慮に入れます。
+URL-based routing introduces a new rule type to application gateway. Application gateway has two rule types: basic and Path-Based rules. Basic rule type provides round-robin service for the back-end pools while Path-Based rules in addition to round robin distribution, also takes path pattern of the request URL into account while choosing the backend pool.
 
+## <a name="scenario"></a>Scenario
 
+The following scenario goes through creating a Path-based rule in an existing application gateway.
+The scenario assumes that you have already followed the steps to [Create an Application Gateway](application-gateway-create-gateway-portal.md).
 
-## シナリオ
+![url route][scenario]
 
-次のシナリオでは、既存の Application Gateway に、パスベース ルールを作成します。このシナリオでは、[アプリケーション ゲートウェイの作成](application-gateway-create-gateway-portal.md)に関する手順を既に実行したことを前提としています。
+## <a name="<a-name="createrule"></a>create-the-path-based-rule"></a><a name="createrule"></a>Create the Path-based rule
 
-![url ルート][scenario]
+A Path-based rule requires its own listener, before creating the rule be sure to verify you have an available listener to use.
 
-## <a name="createrule"></a>パスベース ルールを作成する
+### <a name="step-1"></a>Step 1
 
-パスベース ルールには独自のリスナーが必要です。ルールを作成する前に、使用する利用可能なリスナーがあることを確認します。
+Navigate to http://portal.azure.com and select an existing application gateway. Click **Rules**
 
-### 手順 1
+![Application Gateway overview][1]
 
-http://portal.azure.com に移動し、既存のアプリケーション ゲートウェイを選択します。**[ルール]** をクリックします。
+### <a name="step-2"></a>Step 2
 
-![Application Gateway の概要][1]
+Click **Path-based** button to add a new Path-based rule.
 
-### 手順 2.
+### <a name="step-3"></a>Step 3
 
-**[Path-based (パスベース)]** ボタンをクリックして、新しいパスベース ルールを追加します。
+The **Add path-based rule** blade has two sections. The first section is where you defined the listener, the name of the rule and the default path settings. The default path settings are for routes that do not fall under the custom path-based route. The second section of the **Add path-based rule** blade is where you define the path-based rules themselves.
 
-### 手順 3.
+**Basic Settings**
 
-**[Add path-based rule (パスベース ルールの追加)]** ブレードには 2 つのセクションがあります。最初のセクションでは、リスナー、ルールの名前、既定のパス設定を定義しました。既定のパス設定は、カスタムのパスベース ルートに分類されないルートのための設定です。**[Add path-based rule (パスベース ルールの追加)]** ブレードの 2 番目のセクションでは、パスベース ルールそのものを定義します。
+- **Name** - This is a friendly name to the rule that is accessible in the portal.
+- **Listener** - This is the listener that is used for the rule.
+- **Default backend pool** - This setting is the setting that defines the back-end to be used for the default rule
+- **Default HTTP settings** - This setting is the setting that defines the HTTP settings to be used for the default rule.
 
-**基本設定**
+**Path-based rules**
 
-- **名前** - ポータルでアクセス可能なルールのフレンドリ名です。
-- **リスナー** - ルールで使用するリスナーです。
-- **Default backend pool (既定のバックエンド プール)** - 既定のルールで使用するバックエンドを定義する設定です。
-- **Default HTTP settings (既定の HTTP 設定)** - 既定のルールで使用する HTTP 設定を定義する設定です。
+- **Name** - This is a friendly name to path-based rule.
+- **Paths** - This setting defines the path the rule will look for when forwarding traffic
+- **Backend Pool** - This setting is the setting that defines the back-end to be used for the rule
+- **HTTP setting** - This setting is the setting that defines the HTTP settings to be used for the rule.
 
-**パスベース ルール**
+>[AZURE.IMPORTANT] Paths: The list of path patterns to match. Each must start with / and the only place a "\*" is allowed is at the end. Valid examples are /xyz, /xyz* or /xyz/*.  
 
-- **名前** - パスベース ルールのフレンドリ名です。
-- **パス** - トラフィックを転送するときに、ルールで検索するパスを定義します。
-- **バックエンド プール** - ルールで使用するバックエンドを定義する設定です。
-- **HTTP setting (HTTP 設定)** - ルールで使用する HTTP 設定を定義する設定です。
+![Add path-based rule blade with information filled out][2]
 
->[AZURE.IMPORTANT] パス: 照合するパス パターンの一覧です。それぞれ / で始まる必要があり、"*" が許可されるのは末尾だけです。有効な例としては /xyz、/xyz*、または /xyz/* があります。
+Adding a path-based rule to an existing application gateway is an easy process through the portal. Once a path-based rule has been created, it can be edited to add additional rules easily. 
 
-![情報を入力した [Add path-based rule (パスベース ルールの追加)] ブレード][2]
+![adding additional path-based rules][3]
 
-既存の Application Gateway へのパスベース ルールの追加は、ポータルを使うと簡単にできます。パスベース ルールを作成したら、編集して追加のルールを簡単に追加できます。
+## <a name="next-steps"></a>Next steps
 
-![追加のパスベース ルールの追加][3]
-
-## 次のステップ
-
-Azure Application Gateway で SSL オフロードを構成する方法を学習するには、[SSL オフロードの構成](application-gateway-ssl-portal.md)に関するページを参照してください。
+To learn how to configure SSL Offloading with Azure Application Gateway see [Configure SSL Offload](application-gateway-ssl-portal.md)
 
 [1]: ./media/application-gateway-create-url-route-portal/figure1.png
 [2]: ./media/application-gateway-create-url-route-portal/figure2.png
 [3]: ./media/application-gateway-create-url-route-portal/figure3.png
 [scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
 
-<!---HONumber=AcomDC_0824_2016-->
+
+<!--HONumber=Oct16_HO2-->
+
+

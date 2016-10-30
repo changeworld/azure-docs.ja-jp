@@ -16,21 +16,22 @@
    ms.date="07/07/2016"
    ms.author="danlep"/>
 
-# HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
 
-HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワークロード用に完全な HPC クラスターを Azure 仮想マシンにデプロイします。このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、別途指定した Windows コンピューティング リソースとから成ります。Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「[HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)」をご覧ください。Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。例については、「[Create an HPC cluster (HPC クラスターを作成する)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)」および「[Create an HPC cluster with custom compute node image (カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する)](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)」を参照してください。
+# <a name="create-a-windows-high-performance-computing-(hpc)-cluster-with-the-hpc-pack-iaas-deployment-script"></a>HPC Pack IaaS デプロイ スクリプトを使用し、Windows VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する
+
+HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワークロード用に完全な HPC クラスターを Azure 仮想マシンにデプロイします。 このクラスターは、Windows Server と Microsoft HPC Pack を実行する Active Directory に参加するヘッド ノードと、別途指定した Windows コンピューティング リソースとから成ります。 Linux ワークロード用に Azure で HPC Pack クラスターをデプロイする必要がある場合は、「 [HPC Pack IaaS デプロイ スクリプトを使用し、Linux VM でハイ パフォーマンス コンピューティング (HPC) クラスターを作成する](virtual-machines-linux-classic-hpcpack-cluster-powershell-script.md)」をご覧ください。 Azure リソース マネージャーのテンプレートを使用して HPC Pack クラスターをデプロイすることもできます。 例については、「[Create an HPC cluster](https://azure.microsoft.com/documentation/templates/create-hpc-cluster/)」 (HPC クラスターを作成する) および「[Create an HPC cluster with custom compute node image](https://azure.microsoft.com/documentation/templates/create-hpc-cluster-custom-image/)」 (カスタム コンピューティング ノード イメージを使用して HPC クラスターを作成する) を参照してください。
 
 [AZURE.INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-classic-include.md)]
 
 [AZURE.INCLUDE [virtual-machines-common-classic-hpcpack-cluster-powershell-script](../../includes/virtual-machines-common-classic-hpcpack-cluster-powershell-script.md)]
 
-## サンプル構成ファイル
+## <a name="example-configuration-files"></a>サンプル構成ファイル
 
 次の例のサブスクリプション ID (サブスクリプション名)、アカウント名、サービス名には、実際の値を使用してください。
 
-### 例 1
+### <a name="example-1"></a>例 1
 
-次の構成ファイルでは、ローカル データベースを持つヘッド ノードを 1 つと Windows Server 2012 R2 オペレーティング システムを実行しているコンピューティング ノードを 5 つ含む HPC Pack クラスターがデプロイされます。すべてのクラウド サービスは米国西部の場所に直接作成されます。ヘッド ノードはドメイン フォレストのドメイン コントローラーとして機能します。
+次の構成ファイルでは、ローカル データベースを持つヘッド ノードを 1 つと Windows Server 2012 R2 オペレーティング システムを実行しているコンピューティング ノードを 5 つ含む HPC Pack クラスターがデプロイされます。 すべてのクラウド サービスは米国西部の場所に直接作成されます。 ヘッド ノードはドメイン フォレストのドメイン コントローラーとして機能します。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -66,9 +67,10 @@ HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワ�
 </IaaSClusterConfig>
 ```
 
-### 例 2
+### <a name="example-2"></a>例 2
 
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターにはローカル データベースを持つヘッド ノードが 1 つあり、BGInfo VM 拡張機能が適用されたコンピューティング ノードが 12 あります。Windows 更新プログラムの自動インストールはドメイン フォレストのすべての VM で無効です。すべてのクラウド サービスは東アジアの場所に直接作成されます。コンピューティング ノードは、3 つのクラウド サービスと 3 つのストレージ アカウント (_MyHPCCNService01_ と _mycnstorage01_ の _MyHPCCN-0001_ ～ _MyHPCCN-0005_、_MyHPCCNService02_ と _mycnstorage02_ の _MyHPCCN-0006_ ～ _MyHPCCN0010_、_MyHPCCNService03_ と _mycnstorage03_ の _MyHPCCN-0011_ ～ _MyHPCCN-0012_) で作成されます。コンピューティング ノードはコンピューティング ノードからキャプチャされた既存のプライベート イメージから作成されます。自動拡大縮小サービスは既定の拡大縮小間隔で有効になっています。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターにはローカル データベースを持つヘッド ノードが 1 つあり、BGInfo VM 拡張機能が適用されたコンピューティング ノードが 12 あります。
+Windows 更新プログラムの自動インストールはドメイン フォレストのすべての VM で無効です。 すべてのクラウド サービスは東アジアの場所に直接作成されます。 コンピューティング ノードは、3 つのクラウド サービスと 3 つのストレージ アカウント (_MyHPCCNService01_ と _mycnstorage01_ の _MyHPCCN-0001_ ～ _MyHPCCN-0005_、_MyHPCCNService02_ と _mycnstorage02_ の _MyHPCCN-0006_ ～ _MyHPCCN0010_、_MyHPCCNService03_ と _mycnstorage03_ の _MyHPCCN-0011_ ～ _MyHPCCN-0012_) で作成されます。 コンピューティング ノードはコンピューティング ノードからキャプチャされた既存のプライベート イメージから作成されます。 自動拡大縮小サービスは既定の拡大縮小間隔で有効になっています。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -130,9 +132,9 @@ HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワ�
 
 ```
 
-### 例 3
+### <a name="example-3"></a>例 3
 
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターには、ヘッド ノードが 1 つ、500 GB データ ディスクのデータベース サーバーが 1 つ、Windows Server 2012 R2 オペレーティング システムを実行するブローカー ノードが 2 つ、Windows Server 2012 R2 オペレーティング システムを実行するコンピューティング ノードが 5 つ含まれています。クラウド サービス MyHPCCNService は、アフィニティ グループ *MyIBAffinityGroup* で作成されます。その他のクラウド サービスはすべて、アフィニティ グループ *MyAffinityGroup* で作成されます。HPC ジョブ スケジューラ REST API と HPC Web ポータルはヘッド ノードで有効になっています。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターには、ヘッド ノードが 1 つ、500 GB データ ディスクのデータベース サーバーが 1 つ、Windows Server 2012 R2 オペレーティング システムを実行するブローカー ノードが 2 つ、Windows Server 2012 R2 オペレーティング システムを実行するコンピューティング ノードが 5 つ含まれています。 クラウド サービス MyHPCCNService は、アフィニティ グループ *MyIBAffinityGroup* で作成されます。その他のクラウド サービスはすべて、アフィニティ グループ *MyAffinityGroup* で作成されます。 HPC ジョブ スケジューラ REST API と HPC Web ポータルはヘッド ノードで有効になっています。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -186,9 +188,9 @@ HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワ�
 
 
 
-### 例 4
+### <a name="example-4"></a>例 4
 
-次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。このクラスターには、ローカル データベースを持つヘッド ノードが 1 つ含まれます。2 つの Azure ノード テンプレートが作成されます。Azure ノード テンプレート _AzureTemplate1_ に対して、中サイズの Azure ノードが 3 つ作成されます。ヘッド ノードが構成されると、スクリプト ファイルがヘッド ノードで実行されます。
+次の構成ファイルでは、既存のドメイン フォレストで HPC Pack クラスターが展開されます。 このクラスターには、ローカル データベースを持つヘッド ノードが 1 つ含まれます。2 つの Azure ノード テンプレートが作成されます。Azure ノード テンプレート _AzureTemplate1_ に対して、中サイズの Azure ノードが 3 つ作成されます。 ヘッド ノードが構成されると、スクリプト ファイルがヘッド ノードで実行されます。
 
 ```
 <?xml version="1.0" encoding="utf-8" ?>
@@ -254,27 +256,33 @@ HPC Pack IaaS デプロイ PowerShell スクリプトを実行し、Windows ワ�
 </IaaSClusterConfig>
 ```
 
-## トラブルシューティング
+## <a name="troubleshooting"></a>トラブルシューティング
 
 
-* **「VNet が存在しない」エラー** - 1 つサブスクリプションの下でスクリプトを実行して Azure で複数のクラスターを同時にデプロイするとき、「VNet *VNet\_Name* が存在しない」というエラーで 1 つまたは複数のデプロイが失敗することがあります。このエラーが発生した場合、失敗したデプロイに対してスクリプトを再び実行してください。
+* **“VNet が存在しない” エラー** - 1 つサブスクリプションの下でスクリプトを実行して Azure で複数のクラスターを同時にデプロイするとき、“VNet *VNet\_Name* が存在しない” というエラーで 1 つまたは複数のデプロイが失敗することがあります。
+このエラーが発生した場合、失敗したデプロイに対してスクリプトを再び実行してください。
 
-* **Azure Virtual Network からインターネットにアクセスできない** - デプロイ スクリプトを利用し、新しいドメイン コントローラーを含むクラスターを作成する場合、あるいは手動でヘッド ノード VM をドメイン コントローラーに昇格する場合、VM をインターネットに接続できないことがあります。この問題は、フォワーダー DNS サーバーがドメイン コントローラーで自動的に構成されるとき、このフォワーダー DNS サーバーが適切に解決しない場合に発生することがあります。
+* **Azure Virtual Network からインターネットにアクセスできない** - デプロイ スクリプトを利用し、新しいドメイン コントローラーを含むクラスターを作成する場合、あるいは手動でヘッド ノード VM をドメイン コントローラーに昇格する場合、VM をインターネットに接続できないことがあります。 この問題は、フォワーダー DNS サーバーがドメイン コントローラーで自動的に構成されるとき、このフォワーダー DNS サーバーが適切に解決しない場合に発生することがあります。
 
-    この問題を回避するには、ドメイン コントローラーにログオンし、フォワーダー構成設定を削除するか、有効なフォワーダー DNS サーバーを構成します。この設定を構成するには、サーバー マネージャーで、**[ツール]** > **[DNS]** をクリックして DNS マネージャーを開き、**[フォワーダー]** をダブルクリックします。
+    この問題を回避するには、ドメイン コントローラーにログオンし、フォワーダー構成設定を削除するか、有効なフォワーダー DNS サーバーを構成します。 この設定を構成するには、サーバー マネージャーで、**[ツール]**  >
+     **[DNS]** をクリックして DNS マネージャーを開き、**[フォワーダー]** をダブルクリックします。
 
-* **コンピューティング集中型 VM から RDMA ネットワークにアクセスできない** - A8 や A9 などの RDMA 対応サイズを使用し、Windows Server コンピューティング ノードまたはブローカー ノード VM を追加する場合、これらの VM を RDMA アプリケーション ネットワークに接続できないことがあります。この問題が発生する原因の 1 つとして、VM がクラスターに追加されたとき、HpcVmDrivers 拡張機能が適切にインストールされていないことがあります。たとえば、拡張機能のインストールが途中で止まります。
+* **コンピューティング集中型 VM から RDMA ネットワークにアクセスできない** - A8 や A9 などの RDMA 対応サイズを使用し、Windows Server コンピューティング ノードまたはブローカー ノード VM を追加する場合、これらの VM を RDMA アプリケーション ネットワークに接続できないことがあります。 この問題が発生する原因の 1 つとして、VM がクラスターに追加されたとき、HpcVmDrivers 拡張機能が適切にインストールされていないことがあります。 たとえば、拡張機能のインストールが途中で止まります。
 
-    この問題を回避するには、最初に VM の拡張機能の状態を確認します。拡張機能が適切にインストールされていない場合、HPC クラスターからノードを削除し、ノードを再度追加してみます。たとえば、ヘッド ノードで Add-HpcIaaSNode.ps1 スクリプトを実行し、コンピューティング ノード VM を追加できます。
+    この問題を回避するには、最初に VM の拡張機能の状態を確認します。 拡張機能が適切にインストールされていない場合、HPC クラスターからノードを削除し、ノードを再度追加してみます。 たとえば、ヘッド ノードで Add-HpcIaaSNode.ps1 スクリプトを実行し、コンピューティング ノード VM を追加できます。
     
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
-* クラスターでテスト ワークロードを実行してみます。たとえば、HPC Pack [ファースト ステップ ガイド](https://technet.microsoft.com/library/jj884144)を参照してください。
+* クラスターでテスト ワークロードを実行してみます。 たとえば、HPC Pack [ファースト ステップ ガイド](https://technet.microsoft.com/library/jj884144)を参照してください。
 
-* クラスターのデプロイ スクリプトを作成して HPC ワークロードを実行するチュートリアルについては、「[Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-windows-excel-cluster-hpcpack.md)」をご覧ください。
+* クラスターのデプロイ スクリプトを作成して HPC ワークロードを実行するチュートリアルについては、「 [Azure で HPC Pack クラスターを開始して Excel と SOA ワークロードを実行する](virtual-machines-windows-excel-cluster-hpcpack.md)」をご覧ください。
 
-* HPC Pack のツールを試し、作成したクラスターからコンピューティング ノードを開始、停止、追加、削除してください。「[Manage compute nodes in an HPC Pack cluster in Azure (Azure の HPC Pack クラスターでコンピューティング ノードを管理する)](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md)」をご覧ください。
+* HPC Pack のツールを試し、作成したクラスターからコンピューティング ノードを開始、停止、追加、削除してください。 「 [Manage compute nodes in an HPC Pack cluster in Azure (Azure の HPC Pack クラスターでコンピューティング ノードを管理する)](virtual-machines-windows-classic-hpcpack-cluster-node-manage.md)」をご覧ください。
 
-* ローカル コンピューターからクラスターにジョブを送信するための設定については、「[オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](virtual-machines-windows-hpcpack-cluster-submit-jobs.md)」を参照してください。
+* ローカル コンピューターからクラスターにジョブを送信するための設定については、「 [オンプレミス コンピューターから Azure にデプロイされた HPC Pack クラスターに HPC ジョブを送信する](virtual-machines-windows-hpcpack-cluster-submit-jobs.md)」を参照してください。
 
-<!---HONumber=AcomDC_0928_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

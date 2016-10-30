@@ -1,5 +1,5 @@
 <properties
-    pageTitle="BizTalk Services の管理および開発タスク一覧 | Microsoft Azure" 
+    pageTitle="BizTalk Services の管理および開発タスク一覧 | Microsoft Azure"
     description="Azure BizTalk Services のデプロイ向けの計画およびジョブ支援"
     services="biztalk-services"
     documentationCenter=""
@@ -24,7 +24,7 @@ Microsoft Azure BizTalk Services を使用する場合、考慮する必要が�
 
 |手順|責任者|タスク|関連リンク|
 |----|----|----|----|
-1.|管理者|Microsoft アカウントまたは組織アカウントを使用して、Microsoft Azure のサブスクリプションを作成します|[Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)|
+|1.|管理者|Microsoft アカウントまたは組織アカウントを使用して、Microsoft Azure のサブスクリプションを作成します|[Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)|
 |2.|管理者|BizTalk サービスの作成またはプロビジョニング|[Azure クラシック ポータルを使用して BizTalk サービスを作成する](http://go.microsoft.com/fwlink/p/?LinkID=302280)|
 |3.|管理者|個人または会社の BizTalk Services のデプロイを登録します。|[BizTalk Services ポータルでの BizTalk サービス デプロイの登録と更新](https://msdn.microsoft.com/library/azure/hh689837.aspx)|
 |4.|管理者|アプリケーションが BizTalk Adapter サービスを使用してオンプレミス基幹業務 (LOB) システムに接続しているか、キューまたはトピック ターゲットを使用している場合に適用されます。  Azure Service Bus 名前空間を作成します。 この名前空間、Service Bus の発行者名、および Service Bus の発行者キー値を開発者に伝えます。|「[方法: Service Bus サービス名前空間を作成または変更する](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」および「[発行者名および発行者キー値の取得](biztalk-issuer-name-issuer-key.md)」|

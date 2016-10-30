@@ -1,10 +1,10 @@
 <properties
-   pageTitle="Azure Marketplace 向けの仮想マシン イメージの作成 | Microsoft Azure"
-   description="顧客が購入できるように Azure Marketplace 向けの仮想マシン イメージを作成する方法について詳しく説明します。"
+   pageTitle="Creating a virtual machine image for the Azure Marketplace | Microsoft Azure"
+   description="Detailed instructions on how to create a virtual machine image for the Azure Marketplace for others to purchase."
    services="Azure Marketplace"
    documentationCenter=""
    authors="HannibalSII"
-   manager=""
+   manager="hascipio"
    editor=""/>
 
 <tags
@@ -16,176 +16,177 @@
    ms.date="07/13/2016"
    ms.author="hascipio; v-divte"/>
 
-# Azure Marketplace 向け仮想マシン イメージ作成ガイド
 
-この記事 (**手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。VHD は SKU の基礎です。プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。この記事では、両方のシナリオについて説明します。このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
+# <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Guide to create a virtual machine image for the Azure Marketplace
 
-## 1\.プランと SKU の定義
+This article, **Step 2**, walks you through preparing the virtual hard disks (VHDs) that you will deploy to the Azure Marketplace. Your VHDs are the foundation of your SKU. The process differs depending on whether you are providing a Linux-based or Windows-based SKU. This article covers both scenarios. This process can be performed in parallel with [Account creation and registration][link-acct-creation].
 
-このセクションでは、プランおよびそれと関連付けられている SKU の定義について説明します。
+## <a name="1.-define-offers-and-skus"></a>1. Define Offers and SKUs
 
-プランは、そのプランに属するすべての SKU の "親" です。複数のプランを定義できます。プランをどのように構成するかは、それぞれの状況によって異なります。プランをステージングにプッシュすると、そのすべての SKU も一緒にプッシュされます。URL に表示されるため、SKU の ID を慎重に検討します。
+In this section, you learn to define the offers and their associated SKUs.
+
+An offer is a "parent" to all of its SKUs. You can have multiple offers. How you decide to structure your offers is up to you. When an offer is pushed to staging, it is pushed along with all of its SKUs. Carefully consider your SKU identifiers, because they will be visible in the URL:
 
 - Azure.com: http://azure.microsoft.com/marketplace/partners/{PartnerNamespace}/{OfferIdentifier}-{SKUidentifier}
 
-- Azure プレビュー ポータル: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}
+- Azure preview portal: https://portal.azure.com/#gallery/{PublisherNamespace}.{OfferIdentifier}{SKUIDdentifier}  
 
-SKU は、VM イメージの取引名です。VM イメージには、1 個のオペレーティング システム ディスクと 0 個以上のデータ ディスクが含まれます。これは、仮想マシンに欠かせない完全なストレージ プロファイルです。ディスクごとに 1 つの VHD が必要です。空のデータ ディスクにも VHD を作成する必要があります。
+A SKU is the commercial name for a VM image. A VM image contains one operating system disk and zero or more data disks. It is essentially the complete storage profile for a virtual machine. One VHD is needed per disk. Even blank data disks require a VHD to be created.
 
-どのオペレーティング システムを使っているかにかかわらず、SKU に必要な最小数のデータ ディスクのみを追加します。顧客はデプロイメント時にイメージの一部であるディスクを削除できませんが、必要に応じて、デプロイメント中またはデプロイメント後にディスクを追加できます。
+Regardless of which operating system you use, add only the minimum number of data disks needed by the SKU. Customers cannot remove disks that are part of an image at the time of deployment but can always add disks during or after deployment if they need them.
 
->[AZURE.IMPORTANT] **新しいイメージ バージョンでディスク数を変更しないでください。** イメージでデータ ディスクを再構成する必要がある場合は、新しい SKU を定義します。新しいイメージ バージョンを異なるディスク数で発行すると、自動スケール、ARM テンプレートを使用したソリューションの自動デプロイメントなどのシナリオで、その新しいイメージ バージョンに基づく新しいデプロイメントが破損する可能性があります。
+>[AZURE.IMPORTANT] **Do not change disk count in a new image version.** If you must reconfigure Data disks in the image, define a new SKU. Publishing a new image version with different disk counts will have the potential of breaking new deployment based on the new image version in cases of auto-scaling, automatic deployments of solutions through ARM templates and other scenarios.
 
-### 1\.1 プランの追加
+### <a name="1.1-add-an-offer"></a>1.1 Add an offer
 
-1. 販売者アカウントを使用して、[発行ポータル][link-pubportal]にサインインします。
-2. 発行ポータルの **[Virtual Machines]** タブを選択します。フィールドにプラン名を入力します。通常、プラン名は Azure Marketplace で販売する計画の製品またはサービスの名前です。
-3. **[作成]** を選択します。
+1. Sign in to the [Publishing Portal][link-pubportal] by using your seller account.
+2. Select the **Virtual Machines** tab of the Publishing Portal. In the prompted entry field, enter your offer name. The offer name is typically the name of the product or service that you plan to sell in the Azure Marketplace.
+3. Select **Create**.
 
-### 1\.2 SKU の定義
-プランを追加した後、SKU を定義および特定する必要があります。複数のプランを作成し、各プランに複数の SKU を定義できます。プランをステージングにプッシュすると、そのすべての SKU も一緒にプッシュされます。
+### <a name="1.2-define-a-sku"></a>1.2 Define a SKU
+After you have added an offer, you need to define and identify your SKUs. You can have multiple offers, and each offer can have multiple SKUs under it. When an offer is pushed to staging, it is pushed along with all of its SKUs.
 
-1. **SKU を追加します。** SKU には ID が必要です。これは、URL で使用します。ID は、発行プロファイル内で一意である必要がありますが、他の発行元との ID の競合が発生するリスクはありません。
+1. **Add a SKU.** The SKU requires an identifier, which is used in the URL. The identifier must be unique within your publishing profile, but there is no risk of identifier collision with other publishers.
 
-    > [AZURE.NOTE] プランと SKU の ID は、Marketplace でプランの URL に表示されます。
+    > [AZURE.NOTE] The offer and SKU identifiers are displayed in the offer URL in the Marketplace.
 
-2. **SKU の概要説明を追加します。** 概要説明は顧客に表示されるので、読みやすくする必要があります。この情報は、"ステージングにプッシュ" フェーズまでロックする必要はありません。それまでは、自由に編集できます。
-3. Windows ベースの SKU を使用する場合、表示されたリンクに従って、Windows Server の承認されたバージョンを取得します。
+2. **Add a summary description for your SKU.** Summary descriptions are visible to customers, so you should make them easily readable. This information does not need to be locked until the "Push to Staging" phase. Until then, you are free to edit it.
+3. If you are using Windows-based SKUs, follow the suggested links to acquire the approved versions of Windows Server.
 
-## 2\.Azure と互換性のある VHD の作成 (Linux ベース)
-このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。詳細な手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md)」を参照してください。
+## <a name="2.-create-an-azure-compatible-vhd-(linux-based)"></a>2. Create an Azure-compatible VHD (Linux-based)
+This section focuses on best practices for creating a Linux-based VM image for the Azure Marketplace. For a step-by-step walkthrough, refer to the following documentation: [Creating and Uploading a Virtual Hard Disk that Contains the Linux Operating System](../virtual-machines/virtual-machines-linux-classic-create-upload-vhd.md)
 
-## 3\.Azure と互換性のある VHD の作成 (Windows ベース)
-このセクションでは、Azure Marketplace 用の Windows Server に基づいて SKU を作成するためのステップについて説明します。
+## <a name="3.-create-an-azure-compatible-vhd-(windows-based)"></a>3. Create an Azure-compatible VHD (Windows-based)
+This section focuses on the steps to create a SKU based on Windows Server for the Azure Marketplace.
 
-### 3\.1 正しい基本 VHD を使用していることの確認
-VM イメージのオペレーティング システム VHD は、Azure 承認の基本イメージに基づいている必要があります (Windows Server、SQL Server など)。
+### <a name="3.1-ensure-that-you-are-using-the-correct-base-vhds"></a>3.1 Ensure that you are using the correct base VHDs
+The operating system VHD for your VM image must be based on an Azure-approved base image that contains Windows Server or SQL Server.
 
-始めに、[Microsoft Azure ポータル][link-azure-portal]にある次のイメージのいずれかから VM を作成します。
+To begin, create a VM from one of the following images, located at the [Microsoft Azure portal][link-azure-portal]:
 
-- Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2]、[2012 Datacenter][link-datactr-2012]、[2008 R2 SP1][link-datactr-2008-r2])
-- SQL Server 2014 ([Enterprise][link-sql-2014-ent]、[Standard][link-sql-2014-std]、[Web][link-sql-2014-web])
-- SQL Server 2012 SP2 ([Enterprise][link-sql-2012-ent]、[Standard][link-sql-2012-std]、[Web][link-sql-2012-web])
+- Windows Server ([2012 R2 Datacenter][link-datactr-2012-r2], [2012 Datacenter][link-datactr-2012], [2008 R2 SP1][link-datactr-2008-r2])
+- SQL Server 2014 ([Enterprise][link-sql-2014-ent], [Standard][link-sql-2014-std], [Web][link-sql-2014-web])
+- SQL Server 2012 SP2 ([Enterprise][link-sql-2012-ent], [Standard][link-sql-2012-std], [Web][link-sql-2012-web])
 
-これらのリンクは、SKU ページの発行ポータルにもあります。
+These links can also be found in the Publishing Portal under the SKU page.
 
-> [AZURE.TIP] 現行の Azure ポータルまたは PowerShell を使用している場合は、2014 年 9 月 8 日以降に発行された Windows Server イメージが承認されます。
-
-
-### 3\.2 Windows ベースの VM の作成
-Microsoft Azure ポータルから承認された基本イメージに基づいて、簡単な数ステップ実行して VM を作成できます。大まかな手順を以下に示します。
-
-1. 基本イメージ ページで、**[仮想マシンの作成]** を選択して新しい [Microsoft Azure ポータル][link-azure-portal]に移動します。
-
-    ![図][img-acom-1]
-
-2. 使用する Azure サブスクリプションの Microsoft アカウントとパスワードでポータルにサインインします。
-3. プロンプトに従って、選択した基本イメージを使って VM を作成します。ホスト名 (コンピューターの名前)、ユーザー名 (管理者として登録された)、VM のパスワードを入力する必要があります。
-
-    ![図][img-portal-vm-create]
-
-4. デプロイする VM のサイズを選択します。
-
-    a.VHD をオンプレミスで開発する場合は、サイズの選択は必要ありません。小さいサイズの VM を使用することを検討してください。
-
-    b.Azure でイメージを開発する場合は、選択したイメージに推奨される VM サイズを使用することを検討してください。
-
-    c.価格情報については、ポータルに表示される**推奨される価格レベル**のセレクターを参照してください。発行元が指定できるサイズとして、3 つのサイズが推奨されています。(この場合、発行元はマイクロソフト。)
-
-    ![図][img-portal-vm-size]
-
-5. プロパティを設定します。
-
-    a.迅速にデプロイするには、**[オプションの構成]** と **[リソース グループ]** のプロパティの既定値をそのまま使用します。
-
-    b.必要に応じて、**[ストレージ アカウント]** でオペレーティング システム VHD を格納するストレージのアカウントを選択できます。
-
-    c.必要に応じて、**[リソース グループ]** で VM を配置する論理グループを選択できます。
-6. デプロイメントの **[場所]** を選択します。
-
-    a.VHD をオンプレミスで開発する場合は、後でイメージを Azure にアップロードするため、場所を指定する必要はありません。
-
-    b.Azure でイメージで開発する場合は、最初から US ベースの Microsoft Azure リージョンのいずれかを使用することを検討してください。これにより認定でイメージを送信した際に、お客様に代わりマイクロソフトが実行することで VHD コピー プロセスが高速化されます。
-
-    ![図][img-portal-vm-location]
-
-7. **[作成]** をクリックします。VM がデプロイを開始します。数分でデプロイメントが完了し、SKU のイメージの作成を開始できます。
-
-### 3\.3 クラウドでの VHD の開発
-リモート デスクトップ プロトコル (RDP) を使用してクラウドで VHD を開発することを強くお勧めします。プロビジョニングではユーザー名とパスワードを指定して RDP に接続します。
-
-> [AZURE.IMPORTANT] オンプレミスで VHD を開発する場合は (推奨されません)、「[Creating a virtual machine image on-premises (オンプレミスでの仮想マシン イメージの作成)](marketplace-publishing-vm-image-creation-on-premise.md)」を参照してください。クラウドで開発する場合は、VHD をダウンロードする必要はありません。
+> [AZURE.TIP] If you are using the current Azure portal or PowerShell, Windows Server images published on September 8, 2014 and later are approved.
 
 
-**[Microsoft Azure ポータル][link-azure-portal]を使用した RDP 経由の接続**
+### <a name="3.2-create-your-windows-based-vm"></a>3.2 Create your Windows-based VM
+From the Microsoft Azure portal, you can create your VM based on an approved base image in just a few simple steps. The following is an overview of the process:
 
-1. **[参照]**、**VM** の順に選択します。
-2. [仮想マシン] ブレードが開きます。接続する VM が実行していることを確認し、デプロイ済み VM の一覧からその VM を選択します。
-3. ブレードが開き、選択した VM の詳細が表示されます。上部で、**[接続]** をクリックします。
-4. プロビジョニング時に指定したユーザー名とパスワードを入力するように求められます。
+1. From the base image page, select **Create Virtual Machine** to be directed to the new [Microsoft Azure portal][link-azure-portal].
 
-**PowerShell を使用した RDP 経由の接続**
+    ![drawing][img-acom-1]
 
-リモート デスクトップ ファイルをローカル マシンにダウンロードするには、[Get-AzureRemoteDesktopFile コマンドレット][link-technet-2]を使用します。このコマンドレットを使用するには、サービス名と VM 名が必要です。[Microsoft Azure ポータル][link-azure-portal]から VM を作成した場合は、この情報を [VM プロパティ] で探すことができます。
+2. Sign in to the portal with the Microsoft account and password for the Azure subscription you want to use.
+3. Follow the prompts to create a VM by using the base image you have selected. You need to provide a host name (name of the computer), user name (registered as an administrator), and password for the VM.
 
-1. Microsoft Azure ポータルで **[参照]**、**VM** の順に選択します。
-2. [仮想マシン] ブレードが開きます。デプロイした VM を選択します。
-3. ブレードが開き、選択した VM の詳細が表示されます。
-4. **[プロパティ]** をクリックします。
-5. ドメイン名の最初の部分はサービス名です。ホスト名は、VM の名前です。
+    ![drawing][img-portal-vm-create]
 
-    ![図][img-portal-vm-rdp]
+4. Select the size of the VM to deploy:
 
-6. 作成した VM の RDP ファイルを管理者のローカル デスクトップにダウンロードするコマンドレットは次のとおりです。
+    a.  If you plan to develop the VHD on-premises, the size does not matter. Consider using one of the smaller VMs.
+
+    b.  If you plan to develop the image in Azure, consider using one of the recommended VM sizes for the selected image.
+
+    c.  For pricing information, refer to the **Recommended pricing tiers** selector displayed on the portal. It will provide the three recommended sizes provided by the publisher. (In this case, the publisher is Microsoft.)
+
+    ![drawing][img-portal-vm-size]
+
+5. Set properties:
+
+    a.  For quick deployment, you can leave the default values for the properties under **Optional Configuration** and **Resource Group**.
+
+    b.  Under **Storage Account**, you can optionally select the storage account in which the operating system VHD will be stored.
+
+    c.  Under **Resource Group**, you can optionally select the logical group in which to place the VM.
+6. Select the **Location** for deployment:
+
+    a.  If you plan to develop the VHD on-premises, the location does not matter because you will upload the image to Azure later.
+
+    b.  If you plan to develop the image in Azure, consider using one of the US-based Microsoft Azure regions from the beginning. This speeds up the VHD copying process that Microsoft performs on your behalf when you submit your image for certification.
+
+    ![drawing][img-portal-vm-location]
+
+7. Click **Create**. The VM starts to deploy. Within minutes, you will have a successful deployment and can begin to create the image for your SKU.
+
+### <a name="3.3-develop-your-vhd-in-the-cloud"></a>3.3 Develop your VHD in the cloud
+We strongly recommend that you develop your VHD in the cloud by using Remote Desktop Protocol (RDP). You connect to RDP with the user name and password specified during provisioning.
+
+> [AZURE.IMPORTANT] If you develop your VHD on-premises (which is not recommended), see [Creating a virtual machine image on-premises](marketplace-publishing-vm-image-creation-on-premise.md). Downloading your VHD is not necessary if you are developing in the cloud.
+
+
+**Connect via RDP using the [Microsoft Azure portal][link-azure-portal]**
+
+1. Select **Browse** > **VMs**.
+2. The Virtual machines blade opens. Ensure that the VM that you want to connect with is running, and then select it from the list of deployed VMs.
+3. A blade opens that describes the selected VM. At the top, click **Connect**.
+4. You are prompted to enter the user name and password that you specified during provisioning.
+
+**Connect via RDP using PowerShell**
+
+To download a remote desktop file to a local machine, use the [Get-AzureRemoteDesktopFile cmdlet][link-technet-2]. In order to use this cmdlet, you need to know the name of the service and name of the VM. If you created the VM from the [Microsoft Azure portal][link-azure-portal], you can find this information under VM properties:
+
+1. In the Microsoft Azure portal, select **Browse** > **VMs**.
+2. The Virtual machines blade opens. Select the VM that you deployed.
+3. A blade opens that describes the selected VM.
+4. Click **Properties**.
+5. The first portion of the domain name is the service name. The host name is the VM name.
+
+    ![drawing][img-portal-vm-rdp]
+
+6. The cmdlet to download the RDP file for the created VM to the administrator's local desktop is as follows.
 
         Get‐AzureRemoteDesktopFile ‐ServiceName “baseimagevm‐6820cq00” ‐Name “BaseImageVM” –LocalPath “C:\Users\Administrator\Desktop\BaseImageVM.rdp”
 
-RDP について詳しくは、MSDN の記事「[RDP または SSH を使用した Azure 仮想マシンへの接続](http://msdn.microsoft.com/library/azure/dn535788.aspx)」をご覧ください。
+More information about RDP can be found on MSDN in the article [Connect to an Azure VM with RDP or SSH](http://msdn.microsoft.com/library/azure/dn535788.aspx).
 
-**VM の構成と SKU の作成**
+**Configure a VM and create your SKU**
 
-オペレーティング システム VHD がダウンロードされた後、Hyper-V を使って、SKU の作成を開始するように VM を構成します。詳細な手順については、TechNet リンク「[Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
+After the operating system VHD is downloaded, use Hyper­V and configure a VM to begin creating your SKU. Detailed steps can be found at the following TechNet link: [Install Hyper­V and Configure a VM](http://technet.microsoft.com/library/hh846766.aspx).
 
-### 3\.4 適切な VHD サイズの選択
-VM イメージ内の Windows オペレーティング システム VHD は、128 GB 固定形式 VHD として作成する必要があります。
+### <a name="3.4-choose-the-correct-vhd-size"></a>3.4 Choose the correct VHD size
+The Windows operating system VHD in your VM image should be created as a 128-GB fixed-format VHD.  
 
-物理サイズが 128 GB 未満の場合、VHD が疎になります。Windows と SQL Server の基本イメージがこれらの要件を既に満たしている場合は、取得された VHD の形式またはサイズを変更しないでください。
+If the physical size is less than 128 GB, the VHD should be sparse. The base Windows and SQL Server images provided already meet these requirements, so do not change the format or the size of the VHD obtained.  
 
-データ ディスクは 1 TB にすることができます。ディスク サイズを決めるときに、顧客はデプロイメント時にイメージ内の VHD をサイズ変更できないことに注意してください。データ ディスク VHD は固定形式の VHD として作成する必要があります。また、疎にする必要もあります。データ ディスクは空にすることも、データを含むこともできます。
+Data disks can be as large as 1 TB. When deciding on the disk size, remember that customers cannot resize VHDs within an image at the time of deployment. Data disk VHDs should be created as a fixed-format VHD. They should also be sparse. Data disks can be empty or contain data.
 
 
-### 3\.5 最新の Windows 更新プログラムのインストール
-基本イメージには、発行日の時点における最新の更新プログラムが含まれています。作成したオペレーティング システム VHD を発行する前に、Windows Update が実行されていること、すべての最新の "重要な" セキュリティ更新プログラムがインストールされていることを確認してください。
+### <a name="3.5-install-the-latest-windows-patches"></a>3.5 Install the latest Windows patches
+The base images contain the latest patches up to their published date. Before publishing the operating system VHD you have created, ensure that Windows Update has been run and that all the latest Critical and Important security updates have been installed.
 
-### 3\.6 必要に応じて追加の構成およびタスクのスケジュールを実行
-追加の構成が必要な場合は、デプロイ後に最終的な変更が VM に反映されるように、起動時にスケジュールされたタスクを使用することを検討してください。
+### <a name="3.6-perform-additional-configuration-and-schedule-tasks-as-necessary"></a>3.6 Perform additional configuration and schedule tasks as necessary
+If additional configuration is needed, consider using a scheduled task that runs at startup to make any final changes to the VM after it has been deployed:
 
-- 実行が正常に完了したら、タスクが自動的に削除されるように設定するのがベスト プラクティスです。
-- ドライブ C または D は常設の唯一のドライブであるため、構成はこれら以外を使用して設定するようにしてください。ドライブ C はオペレーティング システム ディスクで、ドライブ D は一時的なローカル ディスクです。
+- It is a best practice to have the task delete itself upon successful execution.
+- No configuration should rely on drives other than drives C or D, because these are the only two drives that are always guaranteed to exist. Drive C is the operating system disk, and drive D is the temporary local disk.
 
-### 3\.7 イメージの汎用化
-Azure Marketplace のすべてのイメージは汎用的な方法で再利用できる必要があります。つまり、オペレーティング システム VHD を一般化する必要があります。
+### <a name="3.7-generalize-the-image"></a>3.7 Generalize the image
+All images in the Azure Marketplace must be reusable in a generic fashion. In other words, the operating system VHD must be generalized:
 
-- Windows では、イメージが "sysprep 済み" で、**sysprep** コマンドをサポートしない構成を設定しないことが必要です。
-- ディレクトリ %windir%\\System32\\Sysprep から次のコマンドを実行できます。
+- For Windows, the image should be "sysprepped," and no configurations should be done that do not support the **sysprep** command.
+- You can run the following command from the directory %windir%\System32\Sysprep.
 
         sysprep.exe /generalize /oobe /shutdown
 
-  OS を sysprep する方法のガイダンスについては、MSDN 記事「[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md)」の手順を参照してください。
+  Guidance on how to sysprep the operating system is provided in Step of the following MSDN article: [Create and upload a Windows Server VHD to Azure](../virtual-machines/virtual-machines-windows-classic-createupload-vhd.md).
 
-## 4\.VHD からの VM のデプロイ
-VHD (汎用化されたオペレーティング システム VHD および 0 個以上のデータ ディスク VHD) を Azure ストレージ アカウントにアップロードした後、これらをユーザー VM イメージとして登録できます。その後、そのイメージをテストできます。オペレーティング システム VHD は汎用化されるため、VHD URL を指定して VM を直接デプロイすることはできません。
+## <a name="4.-deploy-a-vm-from-your-vhds"></a>4. Deploy a VM from your VHDs
+After you have uploaded your VHDs (the generalized operating system VHD and zero or more data disk VHDs) to an Azure storage account, you can register them as a user VM image. Then you can test that image. Note that because your operating system VHD is generalized, you cannot directly deploy the VM by providing the VHD URL.
 
-VM イメージの詳細については、次のブログを参照してください。
+To learn more about VM images, review the following blog posts:
 
-- [VM イメージ](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [VM Image PowerShell How To (VM イメージ PowerShell ハウツー)](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
-- [Azure のバーチャル マシン イメージについて](https://msdn.microsoft.com/library/azure/dn790290.aspx)
+- [VM Image](https://azure.microsoft.com/blog/vm-image-blog-post/)
+- [VM Image PowerShell How To](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
+- [About VM images in Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### 4\.1 ユーザー VM イメージの作成
-SKU からユーザー VM イメージを作成して複数の VM のデプロイを開始するには、[VM イメージ作成 Rest API](http://msdn.microsoft.com/library/azure/dn775054.aspx) を使用して VHD を VM イメージとして登録する必要があります。
+### <a name="4.1-create-a-user-vm-image"></a>4.1 Create a user VM image
+To create a user VM image from your SKU to begin deploying multiple VMs, you need to use the [Create VM Image Rest API](http://msdn.microsoft.com/library/azure/dn775054.aspx) to register VHDs as a VM image.
 
-PowerShell から VM イメージを作成するには、**Invoke-WebRequest** コマンドレットを使用します。次の PowerShell スクリプトは、単一のオペレーティング システム ディスクおよびデータ ディスクを使って VM イメージを作成する方法を示しています。サブスクリプションと PowerShell セッションが既に設定されている必要があることに注意してください。
+You can use the **Invoke-WebRequest** cmdlet to create a VM image from PowerShell. The following PowerShell script shows how to create a VM image with an operating system disk and one data disk. Note that a subscription and the PowerShell session should already be set up.
 
         # Image Parameters to Specify
         $ImageName=’ENTER-YOUR-OWN-IMAGE-NAME-HERE’
@@ -234,15 +235,15 @@ PowerShell から VM イメージを作成するには、**Invoke-WebRequest** �
         $response2.RawContent
 
 
-このスクリプトを実行すると、ImageName パラメーターに指定した名前 myVMImage でユーザー VM イメージが作成されます。これは、1 つのオペレーティング システム ディスクと 1 つのデータ ディスクから成ります。
+By running this script, you create a user VM image with the name you provided to the ImageName parameter, myVMImage. It consists of one operating system disk and one data disk.
 
-この API は非同期処理を実行し、202 "Accepted" コードで応答します。VM イメージが作成されたことを確認するには、クエリを実行して処理の状態を問い合わせる必要があります。返される応答内の x-ms-request-id は処理 ID です。この ID を次の $opId に設定する必要があります。
+This API is an asynchronous operation and responds with a 202 "Accepted" code. In order to see whether the VM image has been created, you need to query for operation status. The x-ms-request-id in the return response is the operation ID. This ID should be set in $opId below.
 
         $opId = #Fill In With Operation ID
         $uri2 = $SrvMngtEndPoint + "/" + $SubId + "/" + "operations" + "/" + "opId"
         $response2 = Invoke‐WebRequest ‐Uri $uri2 ‐ContentType "application/xml" ‐Certificate $certificate ‐Headers $headers ‐Method GET
 
-VM イメージ作成 API を使用して、オペレーティング システム VHD や追加の空のデータ ディスクから VM イメージを作成するには (このディスクの VHD を作成していない場合)、次のスクリプトを使用します。
+To create a VM image from an operating system VHD and an additional empty data disks (you do not have the VHD for this disk created) by using the Create VM Image API, use the following script.
 
         # Image Parameters to Specify
         $ImageName=’myVMImage’
@@ -292,15 +293,15 @@ VM イメージ作成 API を使用して、オペレーティング システ�
         echo "Not Accepted"
         }
 
-このスクリプトを実行すると、ImageName パラメーターに指定した名前 myVMImage でユーザー VM イメージが作成されます。これは、1 つのオペレーティング システム ディスクと 1 つのデータ ディスクから成ります。
+By running this script, you create a user VM image with the name you provided to the ImageName parameter, myVMImage. It consists of one operating system disk and one data disk.
 
-この API は非同期処理を実行し、202 "Accepted" コードで応答します。VM イメージが作成されたことを確認するには、クエリを実行して処理の状態を問い合わせる必要があります。返される応答内の x-ms-request-id は処理 ID です。この ID を次の $opId に設定する必要があります。
+This API is an asynchronous operation and responds with a 202 "Accepted" code. In order to see whether the VM image has been created, you need to query for operation status.  The x-ms-request-id in the return response is the operation ID. This ID should be set in $opId below.
 
         $opId = #Fill In With Operation ID
         $uri2 = $SrvMngtEndPoint + "/" + $SubId + "/" + "operations" + "/" + "$opId"
         $response2 = Invoke-WebRequest -Uri $uri2 -ContentType "application/xml" Certificate $certificate -Headers $headers -Method GET
 
-VM イメージ作成 API を使用して、オペレーティング システム VHD や追加の空のデータ ディスクから VM イメージを作成するには (このディスクの VHD を作成していない場合)、次のスクリプトを使用します。
+To create a VM image from an operating system VHD and an additional empty data disks (you do not have the VHD for this disk created) by using the Create VM Image API, use the following script.
 
         # Image Parameters to Specify
         $ImageName=’myVMImage’
@@ -345,28 +346,28 @@ VM イメージ作成 API を使用して、オペレーティング システ�
         { echo "Not Accepted"
         }
 
-このスクリプトを実行すると、ImageName パラメーターに指定した名前 myVMImage でユーザー VM イメージが作成されます。これは、渡した VHD をベースとした 1 つのオペレーティング システム ディスクと 1 つの空の 32 GB データ ディスクから成ります。
+By running this script, you create a user VM image with the name you provided to the ImageName parameter, myVMImage.  It consists of one operating system disk, based on the VHD you passed, and one empty 32-GB data disk.
 
-### 4\.2 ユーザー VM イメージからの VM のデプロイ
-ユーザー VM イメージから VM をデプロイするには、既存の [Azure ポータル](https://manage.windowsazure.com)または PowerShell を使用します。
+### <a name="4.2-deploy-a-vm-from-a-user-vm-image"></a>4.2 Deploy a VM from a user VM image
+To deploy a VM from a user VM image, you can use the current [Azure portal](https://manage.windowsazure.com) or PowerShell.
 
-**現在の Azure ポータルからの VM のデプロイ**
+**Deploy a VM from the current Azure portal**
 
-1. **[新規]** > **[Compute]** > **[仮想マシン]** > **[ギャラリーから]** の順に移動します。
+1. Go to **New** > **Compute** > **Virtual machine** > **From gallery**.
 
-    ![図][img-manage-vm-new]
+    ![drawing][img-manage-vm-new]
 
-2. **[マイ イメージ]** に移動し、VM のデプロイ元の VM イメージを選択します。
-  1. **[マイ イメージ]** ビューにはオペレーティング システム イメージと VM イメージの両方が表示されるため、イメージを選択する際には注意が必要です。
-  2. ほとんどの VM イメージに 1 つ以上のディスクが含まれるため、ディスクの数に注目すると、デプロイするイメージの種類を特定する際に役立ちます。ただし、**[ディスク数]** が 1 に設定された、オペレーティング システム ディスクが 1 つのみの VM イメージを選択することもできます。
+2. Go to **My images**, and then select the VM image from which to deploy a VM:
+  1. Pay close attention to which image you select, because the **My images** view lists both operating system images and VM images.
+  2. Looking at the number of disks can help determine what type of image you are deploying, because the majority of VM images have more than one disk. However, it is still possible to have a VM image with only a single operating system disk, which would then have **Number of disks** set to 1.
 
-    ![図][img-manage-vm-select]
+    ![drawing][img-manage-vm-select]
 
-3. VM 作成ウィザードに従って、VM 名、VM サイズ、場所、ユーザー名、パスワードを指定します。
+3. Follow the VM creation wizard and specify the VM name, VM size, location, user name, and password.
 
-**PowerShell からの VM のデプロイ**
+**Deploy a VM from PowerShell**
 
-作成したばかりの汎用化された VM イメージから大規模な VM をデプロイするには、次のコマンドレットを使用します。
+To deploy a large VM from the generalized VM image just created, you can use the following cmdlets.
 
     $img = Get‐AzureVMImage ‐ImageName "myVMImage"
     $user = "user123"
@@ -374,199 +375,203 @@ VM イメージ作成 API を使用して、オペレーティング システ�
     $myVM = New‐AzureVMConfig ‐Name "VMImageVM" ‐InstanceSize "Large" ‐ImageName $img.ImageName | Add‐AzureProvisioningConfig ‐Windows ‐AdminUsername $user ‐Password $pass
     New‐AzureVM ‐ServiceName "VMImageCloudService" ‐VMs $myVM ‐Location "West US" ‐WaitForBoot
 
-## 5\.VM イメージの証明書の取得
-Azure Marketplace 用の VM イメージを準備するための次のステップは、イメージの認定です。
+## <a name="5.-obtain-certification-for-your-vm-image"></a>5. Obtain certification for your VM image
+The next step in preparing your VM image for the Azure Marketplace is to have it certified.
 
-このプロセスには、特別な認定ツールの実行、検証結果の Azure コンテナー (VHD が配置された) へのアップロード、プランの追加、SKU の定義、認定のための VM イメージの送信などがあります。
+This process includes running a special certification tool, uploading the verification results to the Azure container where your VHDs reside, adding an offer, defining your SKU, and submitting your VM image for certification.
 
-### 5\.1 Azure 認定用の認定テスト ツールのダウンロードと実行
-認定ツールを、ユーザー VM イメージからプロビジョニングされた実行中の VM で実行して、VM イメージが Microsoft Azure と互換性があることを証明します。VHD の準備に関するガイダンスと要件を満たしているかどうかを検証します。ツールの出力の互換性レポートを、認定要求のときに発行ポータルにアップロードする必要があります。
+### <a name="5.1-download-and-run-the-certification-test-tool-for-azure-certified"></a>5.1 Download and run the Certification Test Tool for Azure Certified
+The certification tool runs on a running VM, provisioned from your user VM image, to ensure that the VM image is compatible with Microsoft Azure. It will verify that the guidance and requirements about preparing your VHD have been met. The output of the tool is a compatibility report, which should be uploaded on the Publishing Portal while requesting certification.
 
-認定ツールは、Windows および Linux VM の両方で使用できます。Windows ベースの VM には PowerShell から接続し、Linux VM には SSH.Net から接続します。
+The certification tool can be used with both Windows and Linux VMs. It connects to Windows-based VMs via PowerShell and connects to Linux VMs via SSH.Net:
 
-1. 最初に、[Microsoft ダウンロード サイト][link-msft-download]で認定ツールをダウンロードします。
-2. 認定ツールを開き、**[新規テストの開始]** ボタンをクリックします。
-3. **[テスト情報]** 画面で、実行するテストの名前を入力します。
-4. Linux VM か Windows VM かを選択します。選択内容に基づいて、後続のオプションを選択します。
+1. First, download the certification tool at the [Microsoft download site][link-msft-download].
+2. Open the certification tool, and then click the **Start New Test** button.
+3. From the **Test Information** screen, enter a name for the test run.
+4. Choose whether your VM is on Linux or Windows. Depending on which you choose, select the subsequent options.
 
-### **Linux VM イメージへの認定ツールの接続**
+### <a name="**connect-the-certification-tool-to-a-linux-vm-image**"></a>**Connect the certification tool to a Linux VM image**
 
-1. SSH 認証モード (パスワードまたはキー ファイル) を選択します。
-2. パスワード ベースの認証を使う場合は、ドメイン ネーム システム (DNS) 名、ユーザー名、およびパスワードを入力します。
-3. キー ファイル認証を使う場合は、DNS 名、ユーザー名、および秘密キーの場所を入力します。
+1. Select the SSH authentication mode: password or key file.
+2. If using password-­based authentication, enter the Domain Name System (DNS) name, user name, and password.
+3. If using key file authentication, enter the DNS name, user name, and private key location.
 
-  ![Linux VM イメージのパスワード認証][img-cert-vm-pswd-lnx]
+  ![Password authentication of Linux VM Image][img-cert-vm-pswd-lnx]
 
-  ![Linux VM イメージのキー ファイル認証][img-cert-vm-key-lnx]
+  ![Key file authentication of Linux VM Image][img-cert-vm-key-lnx]
 
-### **Windows ベースの VM イメージへの認定ツールの接続**
+### <a name="**connect-the-certification-tool-to-a-windows-based-vm-image**"></a>**Connect the certification tool to a Windows-based VM image**
 
-1. 完全修飾 VM DNS 名 (MyVMName.Cloudapp.net など) を入力します。
-2. ユーザー名とパスワードを入力します。
+1. Enter the fully qualified VM DNS name (for example, MyVMName.Cloudapp.net).
+2. Enter the user name and password.
 
-  ![Windows VM イメージのパスワード認証][img-cert-vm-pswd-win]
+  ![Password authentication of Windows VM Image][img-cert-vm-pswd-win]
 
-Linux または Windows ベースの VM イメージに適したオプションを選択した後、**[接続のテスト]** を選択して、SSH.Net または PowerShell にテスト用の有効な接続が確立されたことを確認します。接続が確立された後、**[次へ]** をクリックしてテストを開始します。
+After you have selected the correct options for your Linux or Windows-based VM image, select **Test Connection** to ensure that SSH.Net or PowerShell has a valid connection for testing purposes. After a connection is established, select **Next** to start the test.
 
-テストが完了すると、各テスト要素の結果 (合格/不合格/警告) が届きます。
+When the test is complete, you will receive the results (Pass/Fail/Warning) for each test element.
 
-![Linux VM イメージのテスト ケース][img-cert-vm-test-lnx]
+![Test cases for Linux VM Image][img-cert-vm-test-lnx]
 
-![Windows VM イメージのテスト ケース][img-cert-vm-test-win]
+![Test cases for Windows VM Image][img-cert-vm-test-win]
 
-いずれかのテストが失敗した場合、イメージは認定されません。その場合は、要件を確認し、必要な変更を行います。
+If any of the tests fail, your image will not be certified. If this occurs, review the requirements and make any necessary changes.
 
-自動テストが済むと、アンケート画面で VM イメージへの追加入力を求められます。質問に回答し、**[次へ]** をクリックします。
+After the automated test, you are asked to provide additional input on your VM image via a questionnaire screen.  Complete the questions, and then select **Next**.
 
-![認定ツールのアンケート][img-cert-vm-questionnaire]
+![Certification Tool Questionnaire][img-cert-vm-questionnaire]
 
-![認定ツールのアンケート][img-cert-vm-questionnaire-2]
+![Certification Tool Questionnaire][img-cert-vm-questionnaire-2]
 
-アンケートに回答した後は、Linux VM イメージの SSH アクセス情報や、失敗した評価の説明などの他の情報を提供できます。実行されたテスト ケースのテスト結果とログ ファイルおよびアンケートへの回答をダウンロードできます。VHD と同じコンテナーに結果を保存します。
+After you have completed the questionnaire, you can provide additional information such as SSH access information for the Linux VM image and an explanation for any failed assessments. You can download the test results and log files for the executed test cases in addition to your answers to the questionnaire. Save the results in the same container as your VHDs.
 
-![認定テスト結果の保存][img-cert-vm-results]
+![Save certification test results][img-cert-vm-results]
 
-### 5\.2 VM イメージの Shared Access Signature の URI の取得
+### <a name="5.2-get-the-shared-access-signature-uri-for-your-vm-images"></a>5.2 Get the shared access signature URI for your VM images
 
-発行プロセスにおいて、SKU として作成した各 VHD にリンクされた Uniform Resource Identifier (URI) を指定します。マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。そのため、VHD ごとに Shared Access Signature URI を作成する必要があります。これは、発行ポータルの **[イメージ]** タブに入力する URI です。
+During the publishing process, you specify the uniform resource identifiers (URIs) that lead to each of the VHDs you have created for your SKU. Microsoft needs access to these VHDs during the certification process. Therefore, you need to create a shared access signature URI for each VHD. This is the URI that should be entered in the **Images** tab in the Publishing Portal.
 
-作成した Shared Access Signature URI は次の要件を満たす必要があります。
+The shared access signature URI created should adhere to the following requirements:
 
-- VHD の Shared Access Signature URI の作成時に、一覧表示および読み取りアクセス許可が付与されていること。書き込みまたは削除アクセス権を付与しないでください。
-- アクセス許可の期間は、Shared Access Signature URI の作成時から最低 7 営業日数必要です。
-- クロックスキューによるエラーを回避するには、時刻を現在の時刻の 15 分前に指定します。
+- When generating shared access signature URIs for your VHDs, List and Read­ permissions are sufficient. Do not provide Write or Delete access.
+- The duration for access should be a minimum of seven business days from when the shared access signature URI is created.
+- To avoid immediate errors due to clock skews, specify a time 15 minutes before the current time.
 
-Shared Access Signature URI を作成するには、「[共有アクセス署名、パート 1:SAS モデルについて][link-azure-1]」および「[パート 2: Azure BLOB サービスによる SAS の作成および使用][link-azure-2]」に記載された手順を使用できます。
+To create a shared access signature URI, you can follow the instructions provided in [Shared access signatures, Part 1: Understanding the SAS model][link-azure-1] and [Shared access signatures, Part 2: Create and use a SAS with the Azure Blob service][link-azure-2].
 
-コードを使用して共有アクセス キーを生成する代わりに、[Azure Storage エクスプローラー][link-azure-codeplex]などのストレージ ツールを使用することもできます。
+Instead of generating a shared access key by using code, you can also use storage tools, such as [Azure Storage Explorer][link-azure-codeplex].
 
-**Azure Storage エクスプローラーを使用した共有アクセス キーの生成**
+**Use Azure Storage Explorer to generate a shared access key**
 
-1. [Azure Storage エクスプローラー][link-azure-codeplex] 6 以降を CodePlex からダウンロードします。
-2. インストールした後、アプリケーションを開きます。
-3. **[アカウントの追加]** をクリックします。
+1. Download [Azure Storage Explorer][link-azure-codeplex] 6 and above from CodePlex.
+2. After it is installed, open the application.
+3. Click **Add Account**.
 
-    ![図][img-azstg-add]
+    ![drawing][img-azstg-add]
 
-4. ストレージ アカウント名、ストレージ アカウント キー、およびストレージ エンドポイントのドメインを指定します。**[HTTPS の使用]** は選択しないでください。
+4. Specify the storage account name, storage account key, and storage endpoints domain. Don’t select **Use HTTPS**.
 
-    ![図][img-azstg-setup-1]
+    ![drawing][img-azstg-setup-1]
 
-5. Azure Storage エクスプローラーは特定のストレージ アカウントに接続されています。ストレージ アカウント内のすべてのコンテナーの表示が開始されます。オペレーティング システム ディスクの VHD ファイルを (シナリオによってはデータ ディスクも) コピーしたコンテナーを選択します。
+5. Azure Storage Explorer is now connected to your specific storage account. It will start showing all the containers within the storage account. Select the container where you have copied the operating system disk VHD file (also data disks if they are applicable for your scenario).
 
-    ![図][img-azstg-setup-2]
+    ![drawing][img-azstg-setup-2]
 
-6. BLOB コンテナーを選択すると、Azure Storage エクスプローラーはコンテナー内のファイルの表示を始めます。送信する必要があるイメージ ファイル (.vhd) を選択します。
+6. After selecting the blob container, Azure Storage Explorer starts showing the files within the container. Select the image file (.vhd) that needs to be submitted.
 
-    ![図][img-azstg-setup-3]
+    ![drawing][img-azstg-setup-3]
 
-7. コンテナーで .vhd ファイルを選択した後、**[セキュリティ]** タブをクリックします。
+7. After selecting the .vhd file in the container, click the **Security** tab.
 
-    ![図][img-azstg-setup-4]
+    ![drawing][img-azstg-setup-4]
 
-8. **[BLOB コンテナーのセキュリティ]** ダイアログ ボックスで、**[アクセス レベル]** タブの既定の設定はそのままにして、**[Shared Access Signature]** タブをクリックします。
+8. In the **Blob Container Security** dialog box, leave the defaults on the **Access Level** tab, and then click the **Shared Access Signatures** tab.
 
-    ![図][img-azstg-setup-5]
+    ![drawing][img-azstg-setup-5]
 
-9. 次の手順に従って、.vhd イメージの Shared Access Signature URI を生成します。
+9. Follow the steps below to generate a shared access signature URI for the .vhd image:
 
-    ![図][img-azstg-setup-6]
+    ![drawing][img-azstg-setup-6]
 
-    a.**[アクセス許可開始]**: UTC 時刻を保護するため、現在の日付の前日を選択します。たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
+    a.  **Access permitted from**: To safeguard for UTC time, select the day before the current date. For example, if the current date is October 6, 2014, select 10/5/2014.
 
-    b.**[アクセス許可終了]**: **[アクセス許可開始]** の日付より少なくとも 7 ～ 8 日後の日付を選択します。
+    b.  **Access permitted to**: Select a date that is at least 7 to 8 days after the **Access permitted from** date.
 
-    c.**[許可する操作]**: **[一覧]** および **[読み取り]** アクセス許可を選択します。
+    c.  **Actions permitted**: Select the **List** and **Read** permissions.
 
-    d..vhd ファイルを正しく選択した場合、**[アクセスする BLOB 名]** の下に拡張子 .vhd の付いたファイルが表示されます。
+    d.  If you have selected your .vhd file correctly, then your file appears in **Blob name to access** with extension .vhd.
 
-    e.**[署名の生成]** をクリックします。
+    e.  Click **Generate Signature**.
 
-    f.**[このコンテナーの生成された Shared Access Signature URI]** で、上の図で強調表示されている部分について以下をチェックします。
+    f.  In **Generated Shared Access Signature URI of this container**, check for the following as highlighted above:
 
-    - 	URL の先頭が "https" でないことを確認します。
-    - 	イメージ ファイル名および ".vhd" が URI に含まれることを確認します。
-    - 	署名の末尾に "=rl" があることを確認します。これは、読み取りおよび一覧アクセスが正常に提供されたことを示します。
+    -   Make sure that the URL doesn't start with "https".
+    -   Make sure that your image file name and ".vhd" are in the URI.
+    -   At the end of the signature, make sure that "=rl" appears. This demonstrates that Read and List access was provided successfully.
 
-    g.生成された Shared Access Signature URI が動作することを確認するには、**[ブラウザーでテスト]** をクリックします。ダウンロード プロセスが開始します。
-10. Shared Access Signature URI をコピーします。この URI を発行ポータルに貼り付けます。
-11. SKU 内の各 VHD に対してこれらのステップを繰り返します。
+    g.  To ensure that the generated shared access signature URI works, click **Test in Browser**. It should start the download process.
+10. Copy the shared access signature URI. This is the URI to paste into the Publishing Portal.
+11. Repeat these steps for each VHD in the SKU.
 
-### 5\.3 VM イメージに関する情報の指定と発行ポータルでの証明書の要求
-プランと SKU を作成した後は、その SKU に関連するイメージの詳細を入力する必要があります。
+### <a name="5.3-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 Provide information about the VM image and request certification in the Publishing Portal
+After you have created your offer and SKU, you should enter the image details associated with that SKU:
 
-1. [発行ポータル][link-pubportal]に移動し、販売者アカウントでサインインします。
-2. **[VM イメージ]** タブを選択します。
-3. ページの上部に一覧表示された ID はプラン ID で、SKU ID ではありません。
-4. **[SKU]** セクションでプロパティを入力します。
-5. **[オペレーティング システム ファミリ]** でオペレーティング システム VHD に関連付けられたオペレーティング システムの種類をクリックします。
-6. **[オペレーティング システム]** ボックスにオペレーティング システムの詳細を入力します。オペレーティング システム ファミリ、種類、バージョン、更新の形式で記載してください。たとえば、「Windows Server Datacenter 2014 R2」などと入力します。
-7. 最大 6 個の推奨される仮想マシン サイズを選択します。これらは、イメージの購入およびデプロイ時に Azure ポータルの [価格レベル] ブレードで顧客に表示されるものです。**これらは単なる推奨サイズです。顧客はイメージに指定されたディスクを収容できる任意の VM サイズを選択できます。**
-8. バージョンを入力します。バージョン フィールドには、製品とその更新プログラムを識別するためのセマンティック バージョンがカプセル化されています。
-  -	バージョンの形式は X.Y.Z で、X、Y、Z は整数です。
-  -	異なる SKU のイメージは、メジャー バージョンおよびマイナー バージョンが異なっていてもかまいません。
-  -	SKU 内のバージョンはパッチ バージョン (X.Y.Z の Z) が変化する増分変更のみでなければなりません。
-9. **[OS VHD URL]** ボックスに、オペレーティング システム VHD に対して作成した Shared Access Signature URI を入力します。
-10. この SKU に関連付けられたデータ ディスクがある場合は、デプロイメント時のこのデータ ディスクのマウント先である論理ユニット番号 (LUN) を選択します。
-11. **[LUN X VHD URL]** ボックスに、最初のデータ VHD に対して作成した Shared Access Signature URI を入力します。
+1. Go to the [Publishing Portal][link-pubportal], and then sign in with your seller account.
+2. Select the **VM images** tab.
+3. The identifier listed at the top of the page is actually the offer identifier and not the SKU identifier.
+4. Fill out the properties under the **SKUs** section.
+5. Under **Operating system family**, click the operating system type associated with the operating system VHD.
+6. In the **Operating system** box, describe the operating system. Consider a format such as operating system family, type, version, and updates. An example is "Windows Server Datacenter 2014 R2."
+7. Select up to six recommended virtual machine sizes. These are recommendations that get displayed to the customer in the Pricing tier blade in the Azure Portal when they decide to purchase and deploy your image. **These are only recommendations. The customer is able to select any VM size that accommodates the disks specified in your image.**
+8. Enter the version. The version field encapsulates a semantic version to identify the product and its updates:
+  - Versions should be of the form X.Y.Z, where X, Y, and Z are integers.
+  - Images in different SKUs can have different major and minor versions.
+  - Versions within a SKU should only be incremental changes, which increase the patch version (Z from X.Y.Z).
+9. In the **OS VHD URL** box, enter the shared access signature URI created for the operating system VHD.
+10. If there are data disks associated with this SKU, select the logical unit number (LUN) to which you would like this data disk to be mounted upon deployment.
+11. In the **LUN X VHD URL** box, enter the shared access signature URI created for the first data VHD.
 
-    ![図](media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-3.png)
+    ![drawing](media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-3.png)
 
-## 次のステップ
-SKU の詳細について入力が完了したら、[Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging]のページに進むことができます。発行プロセスのそのステップでは、**ステップ 3: ステージングでの VM プランのテスト**の前に必要なマーケティング コンテンツ、価格、その他の情報を提供します。ステップ 3 では、プランを Azure Marketplace にデプロイして一般に公開して購入できるようにする前にさまざまなユース ケース シナリオをテストします。
+## <a name="next-step"></a>Next step
+After you are done with the SKU details, you can move forward to the [Azure Marketplace marketing content guide][link-pushstaging]. In that step of the publishing process, you provide the marketing content, pricing, and other information necessary prior to **Step 3: Testing your VM offer in staging**, where you test various use-case scenarios before deploying the offer to the Azure Marketplace for public visibility and purchase.  
 
-## 関連項目
-- [概要: Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
+## <a name="see-also"></a>See also
+- [Getting started: How to publish an offer to the Azure Marketplace](marketplace-publishing-getting-started.md)
 
-[img-acom-1]: media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
-[img-portal-vm-size]: media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png
-[img-portal-vm-create]: media/marketplace-publishing-vm-image-creation/vm-image-portal-create-vm.png
-[img-portal-vm-location]: media/marketplace-publishing-vm-image-creation/vm-image-portal-location.png
-[img-portal-vm-rdp]: media/marketplace-publishing-vm-image-creation/vm-image-portal-rdp.png
-[img-azstg-add]: media/marketplace-publishing-vm-image-creation/vm-image-storage-add.png
-[img-azstg-setup-1]: media/marketplace-publishing-vm-image-creation/vm-image-storage-setup.png
-[img-azstg-setup-2]: media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-2.png
-[img-azstg-setup-3]: media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-3.png
-[img-azstg-setup-4]: media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-4.png
-[img-azstg-setup-5]: media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-5.png
-[img-azstg-setup-6]: media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-6.png
-[img-manage-vm-new]: media/marketplace-publishing-vm-image-creation/vm-image-manage-new.png
-[img-manage-vm-select]: media/marketplace-publishing-vm-image-creation/vm-image-manage-select.png
-[img-cert-vm-key-lnx]: media/marketplace-publishing-vm-image-creation/vm-image-certification-keyfile-linux.png
-[img-cert-vm-pswd-lnx]: media/marketplace-publishing-vm-image-creation/vm-image-certification-password-linux.png
-[img-cert-vm-pswd-win]: media/marketplace-publishing-vm-image-creation/vm-image-certification-password-win.png
-[img-cert-vm-test-lnx]: media/marketplace-publishing-vm-image-creation/vm-image-certification-test-sample-linux.png
-[img-cert-vm-test-win]: media/marketplace-publishing-vm-image-creation/vm-image-certification-test-sample-win.png
-[img-cert-vm-results]: media/marketplace-publishing-vm-image-creation/vm-image-certification-results.png
-[img-cert-vm-questionnaire]: media/marketplace-publishing-vm-image-creation/vm-image-certification-questionnaire.png
-[img-cert-vm-questionnaire-2]: media/marketplace-publishing-vm-image-creation/vm-image-certification-questionnaire-2.png
-[img-pubportal-vm-skus]: media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus.png
-[img-pubportal-vm-skus-2]: media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-2.png
+[img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png
+[img-portal-vm-size]:media/marketplace-publishing-vm-image-creation/vm-image-portal-size.png
+[img-portal-vm-create]:media/marketplace-publishing-vm-image-creation/vm-image-portal-create-vm.png
+[img-portal-vm-location]:media/marketplace-publishing-vm-image-creation/vm-image-portal-location.png
+[img-portal-vm-rdp]:media/marketplace-publishing-vm-image-creation/vm-image-portal-rdp.png
+[img-azstg-add]:media/marketplace-publishing-vm-image-creation/vm-image-storage-add.png
+[img-azstg-setup-1]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup.png
+[img-azstg-setup-2]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-2.png
+[img-azstg-setup-3]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-3.png
+[img-azstg-setup-4]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-4.png
+[img-azstg-setup-5]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-5.png
+[img-azstg-setup-6]:media/marketplace-publishing-vm-image-creation/vm-image-storage-setup-6.png
+[img-manage-vm-new]:media/marketplace-publishing-vm-image-creation/vm-image-manage-new.png
+[img-manage-vm-select]:media/marketplace-publishing-vm-image-creation/vm-image-manage-select.png
+[img-cert-vm-key-lnx]:media/marketplace-publishing-vm-image-creation/vm-image-certification-keyfile-linux.png
+[img-cert-vm-pswd-lnx]:media/marketplace-publishing-vm-image-creation/vm-image-certification-password-linux.png
+[img-cert-vm-pswd-win]:media/marketplace-publishing-vm-image-creation/vm-image-certification-password-win.png
+[img-cert-vm-test-lnx]:media/marketplace-publishing-vm-image-creation/vm-image-certification-test-sample-linux.png
+[img-cert-vm-test-win]:media/marketplace-publishing-vm-image-creation/vm-image-certification-test-sample-win.png
+[img-cert-vm-results]:media/marketplace-publishing-vm-image-creation/vm-image-certification-results.png
+[img-cert-vm-questionnaire]:media/marketplace-publishing-vm-image-creation/vm-image-certification-questionnaire.png
+[img-cert-vm-questionnaire-2]:media/marketplace-publishing-vm-image-creation/vm-image-certification-questionnaire-2.png
+[img-pubportal-vm-skus]:media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus.png
+[img-pubportal-vm-skus-2]:media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-2.png
 
-[link-pushstaging]: marketplace-publishing-push-to-staging.md
-[link-github-waagent]: https://github.com/Azure/WALinuxAgent
-[link-azure-codeplex]: https://azurestorageexplorer.codeplex.com/
+[link-pushstaging]:marketplace-publishing-push-to-staging.md
+[link-github-waagent]:https://github.com/Azure/WALinuxAgent
+[link-azure-codeplex]:https://azurestorageexplorer.codeplex.com/
 [link-azure-2]: ../storage/storage-dotnet-shared-access-signature-part-2.md
 [link-azure-1]: ../storage/storage-dotnet-shared-access-signature-part-1.md
-[link-msft-download]: http://www.microsoft.com/download/details.aspx?id=44299
-[link-technet-3]: https://technet.microsoft.com/library/hh846766.aspx
-[link-technet-2]: https://msdn.microsoft.com/library/dn495261.aspx
-[link-azure-portal]: https://portal.azure.com
-[link-pubportal]: https://publish.windowsazure.com
-[link-sql-2014-ent]: http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014enterprisewindowsserver2012r2/
-[link-sql-2014-std]: http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014standardwindowsserver2012r2/
-[link-sql-2014-web]: http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014webwindowsserver2012r2/
-[link-sql-2012-ent]: http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2enterprisewindowsserver2012/
-[link-sql-2012-std]: http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2standardwindowsserver2012/
-[link-sql-2012-web]: http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2webwindowsserver2012/
-[link-datactr-2012-r2]: http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/
-[link-datactr-2012]: http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
-[link-datactr-2008-r2]: http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
-[link-acct-creation]: marketplace-publishing-accounts-creation-registration.md
-[link-technet-1]: https://technet.microsoft.com/library/hh848454.aspx
-[link-azure-vm-2]: ./virtual-machines-linux-agent-user-guide/
-[link-openssl]: https://www.openssl.org/
-[link-intsvc]: http://www.microsoft.com/download/details.aspx?id=41554
-[link-python]: https://www.python.org/
+[link-msft-download]:http://www.microsoft.com/download/details.aspx?id=44299
+[link-technet-3]:https://technet.microsoft.com/library/hh846766.aspx
+[link-technet-2]:https://msdn.microsoft.com/library/dn495261.aspx
+[link-azure-portal]:https://portal.azure.com
+[link-pubportal]:https://publish.windowsazure.com
+[link-sql-2014-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014enterprisewindowsserver2012r2/
+[link-sql-2014-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014standardwindowsserver2012r2/
+[link-sql-2014-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2014webwindowsserver2012r2/
+[link-sql-2012-ent]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2enterprisewindowsserver2012/
+[link-sql-2012-std]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2standardwindowsserver2012/
+[link-sql-2012-web]:http://azure.microsoft.com/marketplace/partners/microsoft/sqlserver2012sp2webwindowsserver2012/
+[link-datactr-2012-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/
+[link-datactr-2012]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/
+[link-datactr-2008-r2]:http://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/
+[link-acct-creation]:marketplace-publishing-accounts-creation-registration.md
+[link-technet-1]:https://technet.microsoft.com/library/hh848454.aspx
+[link-azure-vm-2]:./virtual-machines-linux-agent-user-guide/
+[link-openssl]:https://www.openssl.org/
+[link-intsvc]:http://www.microsoft.com/download/details.aspx?id=41554
+[link-python]:https://www.python.org/
 
-<!---HONumber=AcomDC_0713_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

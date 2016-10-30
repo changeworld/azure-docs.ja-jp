@@ -3,7 +3,7 @@
     description="Azure Mobile Apps 向け Android クライアント SDK の使用方法。"
     services="app-service\mobile"
     documentationCenter="android"
-    authors="yuaxu"
+    authors="ysxu"
     manager="erikre"
     editor=""/>
 

@@ -1,10 +1,10 @@
 <properties
-    pageTitle="Logic Apps のログ記録とエラー処理 | Microsoft Azure"
-    description="Logic Apps を使用した高度なエラー処理とログ記録について実際の使用例を紹介しています。"
+    pageTitle="Logging and error handling in Logic Apps | Microsoft Azure"
+    description="View a real-life use case of advanced error handling and logging with Logic Apps"
     keywords=""
     services="logic-apps"
     authors="hedidin"
-    manager=""
+    manager="anneta"
     editor=""
     documentationCenter=""/>
 
@@ -17,41 +17,44 @@
     ms.date="07/29/2016"
     ms.author="b-hoedid"/>
 
-# Logic Apps のログ記録とエラー処理
 
-この記事では、ロジック アプリを拡張して例外処理への対応を強化する方法について説明します。Logic Apps における例外処理とエラー処理への対応状況を実際的な見地から明らかにしていきます。
+# <a name="logging-and-error-handling-in-logic-apps"></a>Logging and error handling in Logic Apps
 
->[AZURE.NOTE] Microsoft Azure App Service の現行バージョンの Logic Apps 機能には、アクションに対する応答の標準テンプレートが用意されています。これには、内部的な検証と、API アプリから返されるエラー応答の両方が含まれます。
+This article describes how you can extend a logic app to better support exception handling. It is a real-life use case and our answer to the question of, "Does Logic Apps support exception and error handling?"
 
-## ユース ケースとシナリオの概要
+>[AZURE.NOTE] The current version of the Logic Apps feature of Microsoft Azure App Service provides a standard template for action responses.
+>This includes both internal validation and error responses returned from an API app.
 
-この記事で扱うユース ケースは次のとおりです。以前ある有名な医療機関から、Azure ソリューションの開発を依頼されたことがあります。Microsoft Dynamics CRM Online を使って患者ポータルを作成することが目的です。Dynamics CRM Online の患者ポータルと Salesforce の間で予約レコードを送信する必要がありました。すべての患者レコードに [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) 標準を使うよう依頼されました。
+## <a name="overview-of-the-use-case-and-scenario"></a>Overview of the use case and scenario
 
-このプロジェクトには、主に 2 つの要件がありました。
+The following story is the use case for this article.
+A well-known healthcare organization engaged us to develop an Azure solution that would create a patient portal by using Microsoft Dynamics CRM Online. They needed to send appointment records between the Dynamics CRM Online patient portal and Salesforce.  We were asked to use the [HL7 FHIR](http://www.hl7.org/implement/standards/fhir/) standard for all patient records.
 
- -  Dynamics CRM Online ポータルから送信されたレコードを記録するメソッド
- -  ワークフロー内で発生したエラーを確認する手段
+The project had two major requirements:  
+
+ -  A method to log records sent from the Dynamics CRM Online portal
+ -  A way to view any errors that occurred within the workflow
 
 
-## 問題の解決方法
+## <a name="how-we-solved-the-problem"></a>How we solved the problem
 
->[AZURE.TIP] [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/ "Integration User Group") のサイトでプロジェクトの概要ビデオをご覧いただけます。
+>[AZURE.TIP] You can view a high-level video of the project at the [Integration User Group](http://www.integrationusergroup.com/do-logic-apps-support-error-handling/ "Integration User Group").
 
-ここでは、[Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") をログとエラーのレコードを格納するリポジトリとして選びました (DocumentDB では、レコードはドキュメントと呼ばれます)。Logic Apps にはあらゆる応答の標準テンプレートが用意されています。そのためカスタム スキーマを作成する必要はないだろうと考えました。場合によっては、エラー レコードとログ レコードの**挿入**と**クエリ**を行う API アプリを作成することもできます。また、それぞれのスキーマを API アプリ内で定義してもかまいません。
+We chose [Azure DocumentDB](https://azure.microsoft.com/services/documentdb/ "Azure DocumentDB") as a repository for the log and error records (DocumentDB refers to records as documents). Because Logic Apps has a standard template for all responses, we would not have to create a custom schema. We could create an API app to **Insert** and **Query** for both error and log records. We could also define a schema for each within the API app.  
 
-もう 1 つの要件は、特定の日付を越えたらレコードを消去するというものでした。DocumentDB には [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "有効期限") (TTL) というプロパティがあり、レコードごと、またはコレクションに対して **Time to Live** 値を設定することができます。これにより、DocumentDB から手動でレコードを削除する手間が省かれました。
+Another requirement was to purge records after a certain date. DocumentDB has a property called  [Time to Live](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Time to Live") (TTL), which allowed us to set a **Time to Live** value for each record or collection. This eliminated the need to manually delete records in DocumentDB.
 
-### ロジック アプリの作成
+### <a name="creation-of-the-logic-app"></a>Creation of the logic app
 
-最初に行うことは、ロジック アプリを作成してデザイナーに読み込むことです。この例では、親子のロジック アプリを使用しています。親の方は、既に作成済みであると仮定して、子のロジック アプリを 1 つ作成します。
+The first step is to create the logic app and load it in the designer. In this example, we are using parent-child logic apps. Let's assume that we have already created the parent and are going to create one child logic app.
 
-Dynamics CRM Online から送信されたレコードのログを記録することになります。最初から順に見ていきましょう。子のロジック アプリは親のロジック アプリによってトリガーされるので、要求トリガーを使用する必要があります。
+Because we are going to be logging the record coming out of Dynamics CRM Online, let's start at the top. We need to use a Request trigger because the parent logic app triggers this child.
 
-> [AZURE.IMPORTANT] このチュートリアルの作業を行うためには、DocumentDB データベースと 2 つのコレクション (ログとエラー) を作成する必要があります。
+> [AZURE.IMPORTANT] To complete this tutorial, you will need to create a DocumentDB database and two collections (Logging and Errors).
 
-### ロジック アプリのトリガー
+### <a name="logic-app-trigger"></a>Logic app trigger
 
-要求トリガーを次の例のように使用します。
+We are using a Request trigger as shown in the following example.
 
 ```` json
 "triggers": {
@@ -89,35 +92,37 @@ Dynamics CRM Online から送信されたレコードのログを記録するこ
 ````
 
 
-### 手順
+### <a name="steps"></a>Steps
 
-Dynamics CRM Online ポータルから送信された患者レコードのソース (要求) を記録する必要があります。
+We need to log the source (request) of the patient record from the Dynamics CRM Online portal.
 
-1. まず Dynamics CRM Online から新しい予約レコードを取得する必要があります。CRM から取得したトリガーによって、**CRM 患者 ID**、**レコード タイプ**、**更新/新規** (新しいレコードか更新されたレコードかを表すブール値)、**Salesforce ID** が得られます。**Salesforce ID** は更新時にのみ使用されるので、null の場合もあります。CRM レコードは、CRM **患者 ID** と**レコードの種類**を使用して取得します。
-1. 次に、DocumentDB API アプリの **InsertLogEntry** 操作を追加する必要があります (下図)。
+1. We need to get a new appointment record from Dynamics CRM Online.
+    The trigger coming from CRM provides us with the **CRM PatentId**, **record type**, **New or Updated Record** (new or update Boolean value), and **SalesforceId**. The **SalesforceId** can be null because it's only used for an update.
+    We will get the CRM record by using the CRM **PatientID** and the **Record Type**.
+1. Next, we need to add our DocumentDB API app **InsertLogEntry** operation as shown in the following figures.
 
 
-#### ログ エントリ挿入のデザイナー ビュー
+#### <a name="insert-log-entry-designer-view"></a>Insert log entry designer view
 
 ![Insert Log Entry](./media/app-service-logic-scenario-error-and-exception-handling/lognewpatient.png)
 
-#### エラー エントリ挿入のデザイナー ビュー
+#### <a name="insert-error-entry-designer-view"></a>Insert error entry designer view
 ![Insert Log Entry](./media/app-service-logic-scenario-error-and-exception-handling/insertlogentry.png)
 
-#### レコード作成エラーのチェック
+#### <a name="check-for-create-record-failure"></a>Check for create record failure
 
-![条件](./media/app-service-logic-scenario-error-and-exception-handling/condition.png)
+![Condition](./media/app-service-logic-scenario-error-and-exception-handling/condition.png)
 
 
-## ロジック アプリのソース コード
+## <a name="logic-app-source-code"></a>Logic app source code
 
->[AZURE.NOTE]  以降に示したコードは、あくまでサンプルです。このチュートリアルは、現在運用段階の実装がベースになっているため、**Source Node** の値に、予約のスケジューリングに関連するプロパティが表示されない場合があります。
+>[AZURE.NOTE]  The following are samples only. Because this tutorial is based on an implementation currently in production, the value of a **Source Node** might not display properties that are related to scheduling an appointment.
 
-### ログの記録
-以下に示したのは、ログ処理の方法を示すロジック アプリのコード サンプルです。
+### <a name="logging"></a>Logging
+The following logic app code sample shows how to handle logging.
 
-#### ログ エントリ
-これはログ エントリを挿入するための、ロジック アプリのソース コードです。
+#### <a name="log-entry"></a>Log entry
+This is the logic app source code for inserting a log entry.
 
 ``` json
 "InsertLogEntry": {
@@ -143,72 +148,72 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 }
 ```
 
-#### ログ要求
+#### <a name="log-request"></a>Log request
 
-これは、API アプリにポストされるログ要求メッセージです。
+This is the log request message posted to the API app.
 
 ``` json
     {
     "uri": "https://.../api/Log",
     "method": "post",
     "body": {
-	    "date": "Fri, 10 Jun 2016 22:31:56 GMT",
-	    "operation": "New Patient",
-	    "patientId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
-	    "providerId": "",
-	    "source": "{"Pragma":"no-cache","x-ms-request-id":"e750c9a9-bd48-44c4-bbba-1688b6f8a132","OData-Version":"4.0","Cache-Control":"no-cache","Date":"Fri, 10 Jun 2016 22:31:56 GMT","Set-Cookie":"ARRAffinity=785f4334b5e64d2db0b84edcc1b84f1bf37319679aefce206b51510e56fd9770;Path=/;Domain=127.0.0.1","Server":"Microsoft-IIS/8.0,Microsoft-HTTPAPI/2.0","X-AspNet-Version":"4.0.30319","X-Powered-By":"ASP.NET","Content-Length":"1935","Content-Type":"application/json; odata.metadata=minimal; odata.streaming=true","Expires":"-1"}"
-    	}
+        "date": "Fri, 10 Jun 2016 22:31:56 GMT",
+        "operation": "New Patient",
+        "patientId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
+        "providerId": "",
+        "source": "{\"Pragma\":\"no-cache\",\"x-ms-request-id\":\"e750c9a9-bd48-44c4-bbba-1688b6f8a132\",\"OData-Version\":\"4.0\",\"Cache-Control\":\"no-cache\",\"Date\":\"Fri, 10 Jun 2016 22:31:56 GMT\",\"Set-Cookie\":\"ARRAffinity=785f4334b5e64d2db0b84edcc1b84f1bf37319679aefce206b51510e56fd9770;Path=/;Domain=127.0.0.1\",\"Server\":\"Microsoft-IIS/8.0,Microsoft-HTTPAPI/2.0\",\"X-AspNet-Version\":\"4.0.30319\",\"X-Powered-By\":\"ASP.NET\",\"Content-Length\":\"1935\",\"Content-Type\":\"application/json; odata.metadata=minimal; odata.streaming=true\",\"Expires\":\"-1\"}"
+        }
     }
 
 ```
 
 
-#### ログ応答
+#### <a name="log-response"></a>Log response
 
-これは、API アプリからのログ応答メッセージです。
+This is the log response message from the API app.
 
 ``` json
 {
     "statusCode": 200,
     "headers": {
-	    "Pragma": "no-cache",
-	    "Cache-Control": "no-cache",
-	    "Date": "Fri, 10 Jun 2016 22:32:17 GMT",
-	    "Server": "Microsoft-IIS/8.0",
-	    "X-AspNet-Version": "4.0.30319",
-	    "X-Powered-By": "ASP.NET",
-	    "Content-Length": "964",
-	    "Content-Type": "application/json; charset=utf-8",
-	    "Expires": "-1"
+        "Pragma": "no-cache",
+        "Cache-Control": "no-cache",
+        "Date": "Fri, 10 Jun 2016 22:32:17 GMT",
+        "Server": "Microsoft-IIS/8.0",
+        "X-AspNet-Version": "4.0.30319",
+        "X-Powered-By": "ASP.NET",
+        "Content-Length": "964",
+        "Content-Type": "application/json; charset=utf-8",
+        "Expires": "-1"
     },
     "body": {
-	    "ttl": 2592000,
-	    "id": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0_1465597937",
-	    "_rid": "XngRAOT6IQEHAAAAAAAAAA==",
-	    "_self": "dbs/XngRAA==/colls/XngRAOT6IQE=/docs/XngRAOT6IQEHAAAAAAAAAA==/",
-	    "_ts": 1465597936,
-	    "_etag": ""0400fc2f-0000-0000-0000-575b3ff00000"",
-	    "patientID": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
-	    "timestamp": "2016-06-10T22:31:56Z",
-	    "source": "{"Pragma":"no-cache","x-ms-request-id":"e750c9a9-bd48-44c4-bbba-1688b6f8a132","OData-Version":"4.0","Cache-Control":"no-cache","Date":"Fri, 10 Jun 2016 22:31:56 GMT","Set-Cookie":"ARRAffinity=785f4334b5e64d2db0b84edcc1b84f1bf37319679aefce206b51510e56fd9770;Path=/;Domain=127.0.0.1","Server":"Microsoft-IIS/8.0,Microsoft-HTTPAPI/2.0","X-AspNet-Version":"4.0.30319","X-Powered-By":"ASP.NET","Content-Length":"1935","Content-Type":"application/json; odata.metadata=minimal; odata.streaming=true","Expires":"-1"}",
-	    "operation": "New Patient",
-	    "salesforceId": "",
-	    "expired": false
+        "ttl": 2592000,
+        "id": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0_1465597937",
+        "_rid": "XngRAOT6IQEHAAAAAAAAAA==",
+        "_self": "dbs/XngRAA==/colls/XngRAOT6IQE=/docs/XngRAOT6IQEHAAAAAAAAAA==/",
+        "_ts": 1465597936,
+        "_etag": "\"0400fc2f-0000-0000-0000-575b3ff00000\"",
+        "patientID": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
+        "timestamp": "2016-06-10T22:31:56Z",
+        "source": "{\"Pragma\":\"no-cache\",\"x-ms-request-id\":\"e750c9a9-bd48-44c4-bbba-1688b6f8a132\",\"OData-Version\":\"4.0\",\"Cache-Control\":\"no-cache\",\"Date\":\"Fri, 10 Jun 2016 22:31:56 GMT\",\"Set-Cookie\":\"ARRAffinity=785f4334b5e64d2db0b84edcc1b84f1bf37319679aefce206b51510e56fd9770;Path=/;Domain=127.0.0.1\",\"Server\":\"Microsoft-IIS/8.0,Microsoft-HTTPAPI/2.0\",\"X-AspNet-Version\":\"4.0.30319\",\"X-Powered-By\":\"ASP.NET\",\"Content-Length\":\"1935\",\"Content-Type\":\"application/json; odata.metadata=minimal; odata.streaming=true\",\"Expires\":\"-1\"}",
+        "operation": "New Patient",
+        "salesforceId": "",
+        "expired": false
     }
 }
 
 ```
 
-それでは、エラー処理の手順を見ていきましょう。
+Now let's look at the error handling steps.
 
 
-### エラー処理
+### <a name="error-handling"></a>Error handling
 
-以下の Logic Apps のコード サンプルは、エラー処理を実装する方法を示しています。
+The following Logic Apps code sample shows how you can implement error handling.
 
-#### エラー レコードの作成
+#### <a name="create-error-record"></a>Create error record
 
-これはエラー レコードを作成するための、Logic Apps のソース コードです。
+This is the Logic Apps source code for creating an error record.
 
 ``` json
 "actions": {
@@ -240,10 +245,10 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
             "Create_NewPatientRecord": ["Failed" ]
         }
     }
-}  	       
+}          
 ```
 
-#### DocumentDB へのエラーの挿入 (要求)
+#### <a name="insert-error-into-documentdb--request"></a>Insert error into DocumentDB--request
 
 ``` json
 
@@ -260,13 +265,13 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
         "severity": 4,
         "salesforceId": "",
         "update": false,
-        "source": "{"Account_Class_vod__c":"PRAC","Account_Status_MED__c":"I","CRM_HUB_ID__c":"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0","Credentials_vod__c","DTC_ID_MED__c":"","Fax":"","FirstName":"A","Gender_vod__c":"","IMS_ID__c":"","LastName":"BAILEY","MasterID_mp__c":"","C_ID_MED__c":"851588","Middle_vod__c":"","NPI_vod__c":"","PDRP_MED__c":false,"PersonDoNotCall":false,"PersonEmail":"","PersonHasOptedOutOfEmail":false,"PersonHasOptedOutOfFax":false,"PersonMobilePhone":"","Phone":"","Practicing_Specialty__c":"FM - FAMILY MEDICINE","Primary_City__c":"","Primary_State__c":"","Primary_Street_Line2__c":"","Primary_Street__c":"","Primary_Zip__c":"","RecordTypeId":"012U0000000JaPWIA0","Request_Date__c":"2016-06-10T22:31:55.9647467Z","ONY_ID__c":"","Specialty_1_vod__c":"","Suffix_vod__c":"","Website":""}",
+        "source": "{\"Account_Class_vod__c\":\"PRAC\",\"Account_Status_MED__c\":\"I\",\"CRM_HUB_ID__c\":\"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0\",\"Credentials_vod__c\",\"DTC_ID_MED__c\":\"\",\"Fax\":\"\",\"FirstName\":\"A\",\"Gender_vod__c\":\"\",\"IMS_ID__c\":\"\",\"LastName\":\"BAILEY\",\"MasterID_mp__c\":\"\",\"C_ID_MED__c\":\"851588\",\"Middle_vod__c\":\"\",\"NPI_vod__c\":\"\",\"PDRP_MED__c\":false,\"PersonDoNotCall\":false,\"PersonEmail\":\"\",\"PersonHasOptedOutOfEmail\":false,\"PersonHasOptedOutOfFax\":false,\"PersonMobilePhone\":\"\",\"Phone\":\"\",\"Practicing_Specialty__c\":\"FM - FAMILY MEDICINE\",\"Primary_City__c\":\"\",\"Primary_State__c\":\"\",\"Primary_Street_Line2__c\":\"\",\"Primary_Street__c\":\"\",\"Primary_Zip__c\":\"\",\"RecordTypeId\":\"012U0000000JaPWIA0\",\"Request_Date__c\":\"2016-06-10T22:31:55.9647467Z\",\"ONY_ID__c\":\"\",\"Specialty_1_vod__c\":\"\",\"Suffix_vod__c\":\"\",\"Website\":\"\"}",
         "statusCode": "400"
     }
 }
 ```
 
-#### DocumentDB へのエラーの挿入 (応答)
+#### <a name="insert-error-into-documentdb--response"></a>Insert error into DocumentDB--response
 
 
 ``` json
@@ -288,14 +293,14 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
         "_rid": "sQx2APhVzAA8AAAAAAAAAA==",
         "_self": "dbs/sQx2AA==/colls/sQx2APhVzAA=/docs/sQx2APhVzAA8AAAAAAAAAA==/",
         "_ts": 1465597912,
-        "_etag": ""0c00eaac-0000-0000-0000-575b3fdc0000"",
+        "_etag": "\"0c00eaac-0000-0000-0000-575b3fdc0000\"",
         "prescriberId": "6b115f6d-a7ee-e511-80f5-3863bb2eb2d0",
         "timestamp": "2016-06-10T22:31:57.3651027Z",
         "action": "New_Patient",
         "salesforceId": "",
         "update": false,
         "body": "CRM failed to complete task: Message: duplicate value found: CRM_HUB_ID__c duplicates value on record with id: 001U000001c83gK",
-        "source": "{"Account_Class_vod__c":"PRAC","Account_Status_MED__c":"I","CRM_HUB_ID__c":"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0","Credentials_vod__c":"DO - Degree level is DO","DTC_ID_MED__c":"","Fax":"","FirstName":"A","Gender_vod__c":"","IMS_ID__c":"","LastName":"BAILEY","MterID_mp__c":"","Medicis_ID_MED__c":"851588","Middle_vod__c":"","NPI_vod__c":"","PDRP_MED__c":false,"PersonDoNotCall":false,"PersonEmail":"","PersonHasOptedOutOfEmail":false,"PersonHasOptedOutOfFax":false,"PersonMobilePhone":"","Phone":"","Practicing_Specialty__c":"FM - FAMILY MEDICINE","Primary_City__c":"","Primary_State__c":"","Primary_Street_Line2__c":"","Primary_Street__c":"","Primary_Zip__c":"","RecordTypeId":"012U0000000JaPWIA0","Request_Date__c":"2016-06-10T22:31:55.9647467Z","XXXXXXX":"","Specialty_1_vod__c":"","Suffix_vod__c":"","Website":""}",
+        "source": "{\"Account_Class_vod__c\":\"PRAC\",\"Account_Status_MED__c\":\"I\",\"CRM_HUB_ID__c\":\"6b115f6d-a7ee-e511-80f5-3863bb2eb2d0\",\"Credentials_vod__c\":\"DO - Degree level is DO\",\"DTC_ID_MED__c\":\"\",\"Fax\":\"\",\"FirstName\":\"A\",\"Gender_vod__c\":\"\",\"IMS_ID__c\":\"\",\"LastName\":\"BAILEY\",\"MterID_mp__c\":\"\",\"Medicis_ID_MED__c\":\"851588\",\"Middle_vod__c\":\"\",\"NPI_vod__c\":\"\",\"PDRP_MED__c\":false,\"PersonDoNotCall\":false,\"PersonEmail\":\"\",\"PersonHasOptedOutOfEmail\":false,\"PersonHasOptedOutOfFax\":false,\"PersonMobilePhone\":\"\",\"Phone\":\"\",\"Practicing_Specialty__c\":\"FM - FAMILY MEDICINE\",\"Primary_City__c\":\"\",\"Primary_State__c\":\"\",\"Primary_Street_Line2__c\":\"\",\"Primary_Street__c\":\"\",\"Primary_Zip__c\":\"\",\"RecordTypeId\":\"012U0000000JaPWIA0\",\"Request_Date__c\":\"2016-06-10T22:31:55.9647467Z\",\"XXXXXXX\":\"\",\"Specialty_1_vod__c\":\"\",\"Suffix_vod__c\":\"\",\"Website\":\"\"}",
         "code": 400,
         "errors": null,
         "isError": true,
@@ -306,7 +311,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 }
 ```
 
-#### Salesforce のエラー応答
+#### <a name="salesforce-error-response"></a>Salesforce error response
 
 ``` json
 {
@@ -335,11 +340,11 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 
 ```
 
-### 親ロジック アプリに応答を返す
+### <a name="returning-the-response-back-to-the-parent-logic-app"></a>Returning the response back to the parent logic app
 
-応答を受け取ったら、それを親ロジック アプリに渡します。
+After you have the response, you can pass it back to the parent logic app.
 
-#### 親ロジック アプリに成功応答を返す
+#### <a name="return-success-response-to-the-parent-logic-app"></a>Return success response to the parent logic app
 
 ``` json
 "SuccessResponse": {
@@ -352,7 +357,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
             "status": "Success"
     },
     "headers": {
-    "	Content-type": "application/json",
+    "   Content-type": "application/json",
         "x-ms-date": "@utcnow()"
     },
     "statusCode": 200
@@ -361,7 +366,7 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 }
 ```
 
-#### 親ロジック アプリにエラー応答を返す
+#### <a name="return-error-response-to-the-parent-logic-app"></a>Return error response to the parent logic app
 
 ``` json
 "ErrorResponse": {
@@ -385,52 +390,53 @@ Dynamics CRM Online ポータルから送信された患者レコードのソー
 ```
 
 
-## DocumentDB リポジトリとポータル
+## <a name="documentdb-repository-and-portal"></a>DocumentDB repository and portal
 
-ソリューションの機能は、[DocumentDB](https://azure.microsoft.com/services/documentdb) を使って拡張されています。
+Our solution added additional capabilities with [DocumentDB](https://azure.microsoft.com/services/documentdb).
 
-### エラー管理ポータル
+### <a name="error-management-portal"></a>Error management portal
 
-エラーを表示するには、DocumentDB からエラー レコードを取得して表示する MVC Web アプリを作成します。現在のバージョンでは、**一覧表示**、**詳細表示**、**編集**、**削除**の各操作が含まれます。
+To view the errors, you can create an MVC web app to display the error records from DocumentDB. **List**, **Details**, **Edit**, and **Delete** operations are included in the current version.
 
-> [AZURE.NOTE] 編集操作について: DocumentDB では、ドキュメント全体の置き換えが実行されます。**一覧表示**と**詳細表示**に示したレコードは、あくまでサンプルです。実際の患者予約レコードではありません。
+> [AZURE.NOTE] Edit operation: DocumentDB does a replace of the entire document.
+> The records shown in the **List** and **Detail** views are samples only. They are not actual patient appointment records.
 
-これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
+Following are examples of our MVC app details created with the previously described approach.
 
-#### エラー管理一覧
+#### <a name="error-management-list"></a>Error management list
 
-![エラー一覧](./media/app-service-logic-scenario-error-and-exception-handling/errorlist.png)
+![Error List](./media/app-service-logic-scenario-error-and-exception-handling/errorlist.png)
 
-#### エラー管理の詳細表示
+#### <a name="error-management-detail-view"></a>Error management detail view
 
 ![Error Details](./media/app-service-logic-scenario-error-and-exception-handling/errordetails.png)
 
-### ログの管理ポータル
+### <a name="log-management-portal"></a>Log management portal
 
-ログを表示するために、MVC Web アプリも作成しました。これまでに説明した方法で作成した MVC アプリのサンプルの詳細を以下に示します。
+To view the logs, we also created an MVC web app.  Following are examples of our MVC app details created with the previously described approach.
 
-#### ログ詳細表示サンプル
+#### <a name="sample-log-detail-view"></a>Sample log detail view
 
 ![Log Detail View](./media/app-service-logic-scenario-error-and-exception-handling/samplelogdetail.png)
 
-### API アプリの詳細
+### <a name="api-app-details"></a>API app details
 
-#### Logic Apps 例外管理 API
+#### <a name="logic-apps-exception-management-api"></a>Logic Apps exception management API
 
-Microsoft がソース コードを公開している、Logic Apps 例外管理 API アプリには、次の機能が備わっています。
+Our open-source Logic Apps exception management API app provides the following functionality.
 
-コントローラーは 2 つ存在します。
+There are two controllers:
 
-- **ErrorController** は、DocumentDB コレクションにエラー レコード (ドキュメント) を挿入します。
-- **LogController** は、DocumentDB コレクションにログ レコード (ドキュメント) を挿入します。
+- **ErrorController** inserts an error record (document) in a DocumentDB collection.
+- **LogController** Inserts a log record (document) in a DocumentDB collection.
 
-> [AZURE.TIP] どちらのコントローラーも `async Task<dynamic>` 操作を使用しています。操作を実行時に解決できるので、DocumentDB スキーマを操作の本体に作成することができます。
+> [AZURE.TIP] Both controllers use `async Task<dynamic>` operations. This allows operations to be resolved at runtime, so we can create the DocumentDB schema in the body of the operation.
 
-DocumentDB 内の各ドキュメントには、一意の ID が割り当てられている必要があります。ここでは `PatientId` を使用し、Unix のタイムスタンプ値 (double) に変換したタイムスタンプを追加しています。小数桁を除外するために切り詰め処理を行っています。
+Every document in DocumentDB must have a unique ID. We are using `PatientId` and adding a timestamp that is converted to a Unix timestamp value (double). We truncate it to remove the fractional value.
 
-エラー コントローラー API のソース コードは、[GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) からご覧いただけます。
+You can view the source code of our error controller API [from GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs).
 
-この API は、ロジック アプリから次の構文を使用して呼び出します。
+We call the API from a logic app by using the following syntax.
 
 ``` json
  "actions": {
@@ -463,21 +469,25 @@ DocumentDB 内の各ドキュメントには、一意の ID が割り当てら�
  }
 ```
 
-前のコード サンプルの式は、*Create\_NewPatientRecord* ステータスが **Failed** であるかどうかをチェックしています。
+The expression in the preceding code sample is checking for the *Create_NewPatientRecord* status of **Failed**.
 
-## 概要
+## <a name="summary"></a>Summary
 
-- ログ処理とエラー処理は、ロジック アプリで簡単に実装できます。
-- ログ レコードとエラー レコード (ドキュメント) のリポジトリとしては、DocumentDB を使用できます。
-- ログ レコードとエラー レコードを表示するためのポータルは MVC を使用して作成できます。
+- You can easily implement logging and error handling in a logic app.
+- You can use DocumentDB as the repository for log and error records (documents).
+- You can use MVC to create a portal to display log and error records.
 
-### ソース コード
-Logic Apps 例外管理 API アプリケーションのソース コードは、こちらの [GitHub リポジトリ](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic Apps 例外管理 API")からご覧いただけます。
+### <a name="source-code"></a>Source code
+The source code for the Logic Apps exception management API application is available in this [GitHub repository](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi "Logic App Exception Management API").
 
 
-## 次のステップ
-- [さらに他の Logic Apps の例とシナリオを見る](app-service-logic-examples-and-scenarios.md)
-- [Logic Apps の監視ツールについて学習する](app-service-logic-monitor-your-logic-apps.md)
-- [ロジック アプリの自動デプロイ テンプレートを作成する](app-service-logic-create-deploy-template.md)
+## <a name="next-steps"></a>Next steps
+- [View more Logic Apps examples and scenarios](app-service-logic-examples-and-scenarios.md)
+- [Learn about Logic Apps monitoring tools](app-service-logic-monitor-your-logic-apps.md)
+- [Create a Logic App automated deployment template](app-service-logic-create-deploy-template.md)
 
-<!---HONumber=AcomDC_0817_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

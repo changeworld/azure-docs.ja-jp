@@ -1,127 +1,133 @@
 <properties
-	pageTitle="Web Apps 用 Azure Mobile Engagement の使用 | Microsoft Azure"
-	description="Web Apps の分析とプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。"
-	services="mobile-engagement"
-	documentationCenter="Mobile"
-	authors="piyushjo"
-	manager=""
-	editor="" />
+    pageTitle="Get started with Azure Mobile Engagement for Web Apps | Microsoft Azure"
+    description="Learn how to use Azure Mobile Engagement with analytics and push notifications for Web Apps."
+    services="mobile-engagement"
+    documentationCenter="Mobile"
+    authors="piyushjo"
+    manager="erikre"
+    editor="" />
 
 <tags
-	ms.service="mobile-engagement"
-	ms.workload="mobile"
-	ms.tgt_pltfrm="na"
-	ms.devlang="js"
-	ms.topic="hero-article"
-	ms.date="06/01/2016"
-	ms.author="piyushjo" />
+    ms.service="mobile-engagement"
+    ms.workload="mobile"
+    ms.tgt_pltfrm="na"
+    ms.devlang="js"
+    ms.topic="hero-article"
+    ms.date="06/01/2016"
+    ms.author="piyushjo" />
 
-# Web Apps 用 Azure Mobile Engagement の使用
+
+# <a name="get-started-with-azure-mobile-engagement-for-web-apps"></a>Get started with Azure Mobile Engagement for Web Apps
 
 [AZURE.INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-このトピックでは、Azure Mobile Engagement を使用して Web アプリの使用状況を把握する方法について説明します。
+This topic shows you how to use Azure Mobile Engagement to understand your Web App usage.
 
-このチュートリアルには、次のものが必要です。
+This tutorial requires the following:
 
-+ Visual Studio 2015 またはその他の任意のエディター
++ Visual Studio 2015 or any other editor of your choice
 + [Web SDK](http://aka.ms/P7b453) 
 
-この Web SDK はプレビュー段階です。現時点でのサポート対象は分析のみで、ブラウザーまたはアプリ内のプッシュ通知の送信にはまだ対応していません。
+This Web SDK is in Preview and only supports Analytics at the moment and doesn't support sending browser or in-app push notifications yet. 
 
-> [AZURE.NOTE] このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fja-JP%2Fdocumentation%2Farticles%2Fmobile-engagement-web-app-get-started)を参照してください。
+> [AZURE.NOTE] To complete this tutorial, you must have an active Azure account. If you don't have an account, you can create a free trial account in just a couple of minutes. For details, see [Azure Free Trial](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-web-app-get-started).
 
-##Web アプリ用に Mobile Engagement を設定する
+##<a name="setup-mobile-engagement-for-your-web-app"></a>Setup Mobile Engagement for your Web app
 
-[AZURE.INCLUDE [ポータルで Mobile Engagement アプリを作成する](../../includes/mobile-engagement-create-app-in-portal-new.md)]
+[AZURE.INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-##<a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+##<a name="<a-id="connecting-app"></a>connect-your-app-to-the-mobile-engagement-backend"></a><a id="connecting-app"></a>Connect your app to the Mobile Engagement backend
 
-このチュートリアルでは、データを収集するために必要な最小限のセットである "基本的な統合" について説明します。
+This tutorial presents a "basic integration," which is the minimal set required to collect data.
 
-統合方法を示すために Visual Studio で基本的な Web アプリを作成しますが、Visual Studio 以外で作成された Web アプリケーションを使用して手順を進めることもできます。
+We will create a basic web app with Visual Studio to demonstrate the integration though you can follow the steps with any web application created outside of Visual Studio also. 
 
-###新しい Web アプリの作成
+###<a name="create-a-new-web-app"></a>Create a new Web App
 
-次の手順では、以前のバージョンの Visual Studio と類似した手順で、Visual Studio 2015 を使用します。
+The following steps assume the use of Visual Studio 2015 though the steps are similar in earlier versions of Visual Studio. 
 
-1. Visual Studio を起動し、**ホーム**画面で **[新しいプロジェクト]** を選択します。
+1. Start Visual Studio, and in the **Home** screen, select **New Project**.
 
-2. ポップアップ ウィンドウで、**[Web]**、**[ASP.Net Web アプリケーション]** の順に選択します。アプリの **[名前]**、**[場所]**、**[ソリューション名]** を入力し、**[OK]** をクリックします。
+2. In the pop-up, select **Web** -> **ASP.Net Web Application**. Fill in the app **Name**, **Location** and  **Solution name**, and then click **OK**.
 
-3. **[テンプレートを選択する]** ポップアップで、**[ASP.Net 4.5 Templates]** の下にある **[Empty]** を選択し、**[OK]** をクリックします。
+3. In the **Select a template** popup, select **Empty** under **ASP.Net 4.5 Templates** and click **OK**. 
 
-これで、Azure Mobile Engagement Web SDK を統合する新しい空の Web アプリ プロジェクトが作成されました。
+You have now created a new blank Web App project into which we will integrate the Azure Mobile Engagement Web SDK.
 
-###アプリを Mobile Engagement のバックエンドに接続する
+###<a name="connect-your-app-to-mobile-engagement-backend"></a>Connect your app to Mobile Engagement backend
 
-1. ソリューションに **javascript** という名前の新しいフォルダーを作成し、そのフォルダーに Web SDK JS ファイルの **azure-engagement.js** を追加します。 
+1. Create a new folder called **javascript** in your solution and add the Web SDK JS file **azure-engagement.js** into it. 
 
-2. この javascript フォルダーに、次のコードを含む **main.js** という名前の新しいファイルを追加します。接続文字列を忘れずに更新してください。この `azureEngagement` オブジェクトは Web SDK メソッドへのアクセスに使用されます。
+2. Add a new file called **main.js** in this javascript folder with the following code. Make sure to update the connection string. This `azureEngagement` object will be used to access Web SDK methods. 
 
-		var azureEngagement = {
-		    debug: true,
-		    connectionString: 'xxxxx'
-		};
+        var azureEngagement = {
+            debug: true,
+            connectionString: 'xxxxx'
+        };
 
-	![Visual Studio with js files][1]
+    ![Visual Studio with js files][1]
 
-##リアルタイム監視を有効にする
+##<a name="enable-real-time-monitoring"></a>Enable real-time monitoring
 
-データの送信を開始してユーザーがアクティブであることを確認するには、少なくとも 1 つのアクティビティを Mobile Engagement のバックエンドに送信する必要があります。Web アプリにおけるアクティビティとは Web ページです。
+In order to start sending data and ensuring that the users are active, you must send at least one Activity to the Mobile Engagement backend. An activity in the context of a web app is a web page. 
 
-1. ソリューションに **home.html** という名前の新しいページを作成し、それを Web アプリの開始ページとして設定します。 
-2. 次のコードを body タグ内に追加し、前の手順で追加した 2 つの javascript をこのページに含めます。 
+1. Create a new page called **home.html** in your solution and set it as the starting page for your web app. 
+2. Include the two javascripts we added earlier in this page by adding the following within the body tag. 
 
-	    <script type="text/javascript" src="javascript/main.js"></script>
-	    <script type="text/javascript" src="javascript/azure-engagement.js"></script>
+        <script type="text/javascript" src="javascript/main.js"></script>
+        <script type="text/javascript" src="javascript/azure-engagement.js"></script>
 
-3. EngagementAgent の `startActivity` メソッドを呼び出すように body タグを更新します。
-		
-		<body onload="engagement.agent.startActivity('Home')">
+3. Update the body tag to call EngagementAgent's `startActivity` method
+        
+        <body onload="engagement.agent.startActivity('Home')">
 
-4. **home.html** は次にようになります。
-		
-		<html>
-		<head>
-			...
-		</head>
-		<body onload="engagement.agent.startActivity('Home')">
-		    <script type="text/javascript" src="javascript/main.js"></script>
-		    <script type="text/javascript" src="javascript/azure-engagement.js"></script>
-		</body>
-		</html>
+4. Here is what your **home.html** will look like
+        
+        <html>
+        <head>
+            ...
+        </head>
+        <body onload="engagement.agent.startActivity('Home')">
+            <script type="text/javascript" src="javascript/main.js"></script>
+            <script type="text/javascript" src="javascript/azure-engagement.js"></script>
+        </body>
+        </html>
 
-##リアルタイム監視を使用してアプリを接続する
+##<a name="connect-app-with-real-time-monitoring"></a>Connect app with real-time monitoring
 
-[AZURE.INCLUDE [リアルタイム監視を使用してアプリを接続する](../../includes/mobile-engagement-connect-app-with-monitor.md)]
+[AZURE.INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
 ![][2]
 
-##分析を拡張する
+##<a name="extend-analytics"></a>Extend analytics
 
-現在 Web SDK で提供されており、分析に使用できるすべてのメソッドを以下に示します。
+Here are all the methods currently available with Web SDK that you can use for analytics:
 
-1. アクティビティ/Web ページ:
+1. Activities/Web pages:
 
-		engagement.agent.startActivity(name);
-		engagement.agent.endActivity();
+        engagement.agent.startActivity(name);
+        engagement.agent.endActivity();
 
-2. イベント
-		
-		engagement.agent.sendEvent(name, extras);
+2. Events
+        
+        engagement.agent.sendEvent(name, extras);
 
-3. エラー
+3. Errors
 
-		engagement.agent.sendError(name, extras);
+        engagement.agent.sendError(name, extras);
 
-4. ジョブ
+4. Jobs
 
-		engagement.agent.startJob(name);
-		engagement.agent.endJob(name);
+        engagement.agent.startJob(name);
+        engagement.agent.endJob(name);
 
 <!-- Images. -->
 [1]: ./media/mobile-engagement-web-app-get-started/visual-studio-solution-js.png
 [2]: ./media/mobile-engagement-web-app-get-started/session.png
 
-<!-----HONumber=AcomDC_0615_2016-->
+
+
+
+<!--HONumber=Oct16_HO2-->
+
+

@@ -4,7 +4,7 @@
     keywords="ソーシャル メディア アプリ"
     services="documentdb" 
     authors="ealsur" 
-    manager="" 
+    manager="jhubbard" 
     editor="" 
     documentationCenter=""/>
 
