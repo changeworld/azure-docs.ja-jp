@@ -53,9 +53,9 @@
 
 6.  譲渡先のユーザーは、リンクをクリックして指示に従います (支払情報の入力など)。
 
-    ![First subscription transfer web page](./media/billing-subscription-transfer/image4.png)
+    ![First subscription transfer web page](./media/billing-subscription-transfer/image4.PNG)
 
-    ![Second subscription transfer web page](./media/billing-subscription-transfer/image5.png)
+    ![Second subscription transfer web page](./media/billing-subscription-transfer/image5.PNG)
 
 7. 成功です。 サブスクリプションが譲渡されました。
 
@@ -135,6 +135,6 @@
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 

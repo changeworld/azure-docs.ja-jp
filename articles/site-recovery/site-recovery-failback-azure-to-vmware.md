@@ -39,7 +39,7 @@
 
 このアーキテクチャは、プロセス サーバーが Azure 上にあり、VPN または ExpressRoute 接続のいずれかがある場合に使用します。
 
-![VPN のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.png)
+![VPN のアーキテクチャ ダイアグラム](./media/site-recovery-failback-azure-to-vmware-classic/architecture2.PNG)
 
 ポートの一覧とフェールバック アーキテクチャ ダイアグラムについては、次の図をご覧ください。
 
@@ -265,6 +265,6 @@ VPN 接続または Azure ExpressRoute を使用してフェールバックで�
 
 
 
-<!--HONumber=Oct16_HO2-->
+<!---HONumber=Oct16_HO2-->
 
 
