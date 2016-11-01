@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""
    tags="azure-sql-data-warehouse"/>
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/13/2016"
+   ms.date="10/31/2016"
    ms.author="mausher;barbkess"/>
 
 
@@ -50,7 +50,7 @@ Azure Data Factory を理解するには、 [Azure Data Factory の概要][]に�
 
    + **AZCopy**: サンプル データをローカル クライアントから Azure Storage BLOB にコピーするには、AZCopy が必要です。 インストールの手順については、 [AZCopy のドキュメント][]を参照してください。
 
-## <a name="step-1:-copy-sample-data-to-azure-storage-blob"></a>手順 1: サンプル データを Azure Storage BLOB にコピーする
+## <a name="step-1-copy-sample-data-to-azure-storage-blob"></a>手順 1: サンプル データを Azure Storage BLOB にコピーする
 
 すべてのピースが揃ったら、サンプル データを Azure Storage BLOB にいつでもコピーすることができます。
 
@@ -63,13 +63,13 @@ Azure Data Factory を理解するには、 [Azure Data Factory の概要][]に�
     ````
 
 
-## <a name="step-2:-connect-resources-to-azure-data-factory"></a>手順 2: Azure Data Factory にリソースを接続する
+## <a name="step-2-connect-resources-to-azure-data-factory"></a>手順 2: Azure Data Factory にリソースを接続する
 
 これでデータの準備ができたので、Azure Data Factory パイプラインを作成して、データを Azure Storage BLOB から SQL Data Warehouse に移動することができます。
 
 そのためには、まず、 [Azure ポータル][] を開き、左側のメニューで対象のデータ ファクトリを選択します。
 
-### <a name="step-2.1:-create-linked-service"></a>手順 2.1: リンクされたサービスを作成する
+### <a name="step-21-create-linked-service"></a>手順 2.1: リンクされたサービスを作成する
 
 Azure ストレージ アカウントと SQL Data Warehouse をデータ ファクトリにリンクします。  
 
@@ -90,7 +90,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
     }
     ```
 
-### <a name="step-2.2:-define-the-dataset"></a>手順 2.2: データ ソースを定義する
+### <a name="step-22-define-the-dataset"></a>手順 2.2: データ ソースを定義する
 
 リンクされたサービスを作成した後は、データ セットを定義する必要があります。  これは、ストレージからデータ ウェアハウスに移動するデータの構造を定義することを意味します。  作成に関する詳しい情報を得ることができます。
 
@@ -148,7 +148,7 @@ Azure ストレージ アカウントと SQL Data Warehouse をデータ ファ�
     }
     ```
 
-## <a name="step-3:-create-and-run-your-pipeline"></a>手順 3: パイプラインを作成して実行する
+## <a name="step-3-create-and-run-your-pipeline"></a>手順 3: パイプラインを作成して実行する
 
 最後に、Azure Data Factory でパイプラインを設定して実行します。  これは、実際のデータの移動を実行する操作です。  SQL Data Warehouse と Azure Data Factory で実行できるすべての操作については、[こちら][Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動]を参照してください。
 

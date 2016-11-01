@@ -12,7 +12,7 @@
     ms.tgt_pltfrm="na" 
     ms.devlang="na" 
     ms.topic="article" 
-    ms.date="09/07/2016" 
+    ms.date="10/31/2016" 
     ms.author="tamram"/>
 
 
@@ -130,7 +130,7 @@ Azure ストレージ アカウントのリソースをアドレス指定する�
     Queue Service: http://127.0.0.1:10001/<account-name>/<resource-path>
     Table Service: http://127.0.0.1:10002/<account-name>/<resource-path>
 
-### <a name="addressing-the-account-secondary-with-ra-grs"></a>RA-GRS を使用した、アカウントのセカンダリ拠点のアドレス指定
+### <a name="addressing-the-account-secondary-with-ragrs"></a>RA-GRS を使用した、アカウントのセカンダリ拠点のアドレス指定
 
 Version 3.1 以降では、ストレージ エミュレーター アカウントで読み取りアクセスの geo 冗長レプリケーション (RA-GRS) がサポートされます。 クラウド内のストレージ リソースとローカル エミュレーター内のストレージ リソースの場合、2 次拠点にアクセスするにはアカウント名に -secondary を付加します。 たとえば、ストレージ エミュレーターで読み取り専用の 2 次拠点を使用して BLOB にアクセスするには、次のアドレスを使用します。
 
@@ -138,7 +138,7 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 > [AZURE.NOTE] ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。 詳細については、「 [.NET 用の Microsoft Azure Storage クライアント ライブラリ](https://msdn.microsoft.com/library/azure/dn261237.aspx) 」を参照してください。
 
-## <a name="storage-emulator-command-line-tool-reference"></a>ストレージ エミュレーター コマンド ライン ツールのリファレンス
+## <a name="storage-emulator-commandline-tool-reference"></a>ストレージ エミュレーター コマンド ライン ツールのリファレンス
 
 バージョン 3.0 からは、ストレージ エミュレーターの起動時にコマンド ライン ウィンドウがポップアップ表示されます。 このコマンド ライン ウィンドウを使用して、エミュレーターを起動または停止したり、状態のクエリやその他の操作を実行したりします。
 
@@ -206,11 +206,11 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 ## <a name="storage-emulator-release-notes"></a>ストレージ エミュレーター リリース ノート
 
-### <a name="version-4.5"></a>バージョン 4.5
+### <a name="version-45"></a>バージョン 4.5
 
 - バックアップ データベースの名前が変更された場合に、ストレージ エミュレーターの初期化とインストールが失敗する原因となったバグを修正しました。
 
-### <a name="version-4.4"></a>バージョン 4.4
+### <a name="version-44"></a>バージョン 4.4
 
 - ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2015-12-11 がサポートされるようになりました。
 
@@ -220,15 +220,15 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - 最大および最小 DateTime 値が不適切なタイム ゾーンで報告される場合があるバグを修正しました。
 
-### <a name="version-4.3"></a>バージョン 4.3
+### <a name="version-43"></a>バージョン 4.3
 
 - ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2015-07-08 がサポートされるようになりました。
 
-### <a name="version-4.2"></a>バージョン 4.2
+### <a name="version-42"></a>バージョン 4.2
 
 - ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2015-04-05 がサポートされるようになりました。
 
-### <a name="version-4.1"></a>Version 4.1
+### <a name="version-41"></a>Version 4.1
 
 - ストレージ エミュレーターでは、新しい追加 BLOB 機能を除く BLOB、Queue、Table サービス エンドポイント上のストレージ サービスのバージョン 2015-02-21 がサポートされるようになりました。 
 
@@ -236,19 +236,19 @@ Version 3.1 以降では、ストレージ エミュレーター アカウント
 
 - 競争状態のバグが原因となる同時マージ操作時のテーブル エンティティ データの間違いが修正されました。
 
-### <a name="version-4.0"></a>Version 4.0
+### <a name="version-40"></a>Version 4.0
 
 - ストレージ エミュレーターの実行可能ファイルの名前が *AzureStorageEmulator.exe*に変更されました。
 
-### <a name="version-3.2"></a>Version 3.2
+### <a name="version-32"></a>Version 3.2
 
 - ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2014-02-14 がサポートされるようになりました。 File サービス エンドポイントは、ストレージ エミュレーターでは現在サポートされていません。 バージョン 2014-02-14 の詳細については、 [Azure Storage サービスのバージョン管理](https://msdn.microsoft.com/library/azure/dd894041.aspx) に関するページを参照してください。
 
-### <a name="version-3.1"></a>Version 3.1
+### <a name="version-31"></a>Version 3.1
 
 - 読み取りアクセス地理冗長ストレージ (RA-GRS) が、ストレージ エミュレーターでサポートされるようになりました。 Get Blob Service Stats、Get Queue Service Stats、および Get Table Service Stats API は、アカウントのセカンダリ拠点でサポートされており、常に LastSyncTime 応答要素の値を、基になる SQL データベースに準じた現在時刻として返します。 ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。 詳細については、.NET リファレンス用の Microsoft Azure Storage クライアント ライブラリを参照してください。
 
-### <a name="version-3.0"></a>Version 3.0
+### <a name="version-30"></a>Version 3.0
 
 - Azure ストレージ エミュレーターが、コンピューティング エミュレーターと同じパッケージには同梱されないようになりました。
 

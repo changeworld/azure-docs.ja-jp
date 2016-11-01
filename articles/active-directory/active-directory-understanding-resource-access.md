@@ -3,7 +3,7 @@
     description="このトピックでは、完全な Azure ポータルでのサブスクリプション管理者によるリソース アクセス制御の概念について説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 

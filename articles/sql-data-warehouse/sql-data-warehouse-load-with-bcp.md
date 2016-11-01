@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/10/2016"
-   ms.author="mausher;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="mausher;barbkess"/>
 
 
 
@@ -57,7 +57,7 @@ bcp では次のことができます。
 
 このチュートリアルでは、Azure SQL Data Warehouse でテーブルを作成し、そのデータをテーブルにインポートします。
 
-### <a name="step-1:-create-a-table-in-azure-sql-data-warehouse"></a>手順 1: Azure SQL Data Warehouse でテーブルを作成する
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>手順 1: Azure SQL Data Warehouse でテーブルを作成する
 
 コマンド プロンプトで sqlcmd を使用して次のクエリを実行し、インスタンスにテーブルを作成します。
 
@@ -79,7 +79,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 >[AZURE.NOTE] SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
 
-### <a name="step-2:-create-a-source-data-file"></a>手順 2: ソース データ ファイルを作成する
+### <a name="step-2-create-a-source-data-file"></a>手順 2: ソース データ ファイルを作成する
 
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。
 
@@ -100,7 +100,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 > [AZURE.NOTE] bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。 bcp.exe を使用する場合は、ASCII ファイルまたは UTF-16 エンコード ファイルを使用してください。
 
-### <a name="step-3:-connect-and-import-the-data"></a>手順 3: データに接続し、インポートする
+### <a name="step-3-connect-and-import-the-data"></a>手順 3: データに接続し、インポートする
 bcp を使用して、次のコマンドでデータに接続し、インポートできます。値は適宜置き換えて使用してください。
 
 ```sql
@@ -130,7 +130,7 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-### <a name="step-4:-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しくロードしたデータの統計を作成する
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しくロードしたデータの統計を作成する
 
 Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。 クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の詳細については、開発トピック グループの「 [統計][] 」トピックを参照してください。 この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
 
@@ -147,7 +147,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ## <a name="export-data-from-sql-data-warehouse"></a>SQL Data Warehouse からのデータのエクスポート
 このチュートリアルでは SQL Data Warehouse 内のテーブルからデータ ファイルを作成します。 上記で作成したデータを DimDate2_export.txt という名前の新しいデータ ファイルにエクスポートします。
 
-### <a name="step-1:-export-the-data"></a>手順 1: データをエクスポートする
+### <a name="step-1-export-the-data"></a>手順 1: データをエクスポートする
 
 bcp ユーティリティを使用して、次のコマンドでデータに接続し、エクスポートできます。値は適宜置き換えて使用してください。
 

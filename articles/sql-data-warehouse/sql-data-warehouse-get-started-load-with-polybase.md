@@ -13,8 +13,8 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/10/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
 
@@ -45,11 +45,11 @@
     ![Azure Storage Tools](./media/sql-data-warehouse-get-started-load-with-polybase/install-azcopy.png)
 
 
-## <a name="step-1:-add-sample-data-to-azure-blob-storage"></a>手順 1: Azure Blob Storage にサンプル データを追加する
+## <a name="step-1-add-sample-data-to-azure-blob-storage"></a>手順 1: Azure Blob Storage にサンプル データを追加する
 
 データを読み込むには、Azure Blob Storage にサンプル データを配置する必要があります。 この手順では、Azure Storage BLOB にサンプル データを設定します。 その後、PolyBase を使用して、このサンプル データを SQL Data Warehouse データベースに読み込みます。
 
-### <a name="a.-prepare-a-sample-text-file"></a>A. サンプル テキスト ファイルを準備する
+### <a name="a-prepare-a-sample-text-file"></a>A. サンプル テキスト ファイルを準備する
 
 サンプル テキスト ファイルを準備するには:
 
@@ -70,7 +70,7 @@
 20150101,1,3
 ```
 
-### <a name="b.-find-your-blob-service-endpoint"></a>B. BLOB サービス エンドポイントを検索する
+### <a name="b-find-your-blob-service-endpoint"></a>B. BLOB サービス エンドポイントを検索する
 
 BLOB サービス エンドポイントを検索するには:
 
@@ -84,7 +84,7 @@ BLOB サービス エンドポイントを検索するには:
 
     ![Blob service endpoint](./media/sql-data-warehouse-get-started-load-with-polybase/blob-service.png)
 
-### <a name="c.-find-your-azure-storage-key"></a>C. Azure ストレージ キーを検索する
+### <a name="c-find-your-azure-storage-key"></a>C. Azure ストレージ キーを検索する
 
 Azure ストレージ キーを検索するには:
 
@@ -95,7 +95,7 @@ Azure ストレージ キーを検索するには:
 
     ![Copy Azure storage key](./media/sql-data-warehouse-get-started-load-with-polybase/access-key.png)
 
-### <a name="d.-copy-the-sample-file-to-azure-blob-storage"></a>D. サンプル ファイルを Azure Blob Storage にコピーする
+### <a name="d-copy-the-sample-file-to-azure-blob-storage"></a>D. サンプル ファイルを Azure Blob Storage にコピーする
 
 Azure Blob Storage にデータをコピーするには:
 
@@ -113,7 +113,7 @@ Azure Blob Storage にデータをコピーするには:
 
 「 [AzCopy コマンド ライン ユーティリティの概要][]」も参照してください。
 
-### <a name="e.-explore-your-blob-storage-container"></a>E. Blob Storage コンテナーを調べる
+### <a name="e-explore-your-blob-storage-container"></a>E. Blob Storage コンテナーを調べる
 
 Blob Storage にアップロードしたファイルを表示するには:
 
@@ -126,7 +126,7 @@ Blob Storage にアップロードしたファイルを表示するには:
     ![View Azure storage blob](./media/sql-data-warehouse-get-started-load-with-polybase/view-blob.png)
 
 
-## <a name="step-2:-create-an-external-table-for-the-sample-data"></a>手順 2: サンプル データ用の外部テーブルを作成する
+## <a name="step-2-create-an-external-table-for-the-sample-data"></a>手順 2: サンプル データ用の外部テーブルを作成する
 
 このセクションでは、サンプル データを定義する外部テーブルを作成します。
 
@@ -216,7 +216,7 @@ Visual Studio の SQL Server オブジェクト エクスプローラーで、�
 
 ![View external table](./media/sql-data-warehouse-get-started-load-with-polybase/external-table.png)
 
-## <a name="step-3:-load-data-into-sql-data-warehouse"></a>手順 3: SQL Data Warehouse にデータを読み込む
+## <a name="step-3-load-data-into-sql-data-warehouse"></a>手順 3: SQL Data Warehouse にデータを読み込む
 
 外部テーブルが作成されたので、新しいテーブルにデータを読み込むか、既存のテーブルに挿入することができます。
 
@@ -236,7 +236,7 @@ AS
 SELECT * FROM [dbo].[DimDate2External];
 ```
 
-## <a name="step-4:-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しく読み込んだデータの統計を作成する
+## <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しく読み込んだデータの統計を作成する
 
 SQL Data Warehouse は、統計の自動作成または自動更新を行いません。 そのため、高いクエリ パフォーマンスを実現するには、最初の読み込み後に各テーブルの各列についての統計を作成することが重要です。 また、データが大幅に変更された後で統計を更新することも重要です。
 

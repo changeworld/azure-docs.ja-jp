@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="barbkess"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,24 +13,24 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/10/2016"
+   ms.date="10/31/2016"
    ms.author="barbkess"/>
 
 
 
-# <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-(mpp)"></a>Distributed data and distributed tables for Massively Parallel Processing (MPP)
+# <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>Distributed data and distributed tables for Massively Parallel Processing (MPP)
 
 Learn how user data is distributed in Azure SQL Data Warehouse and Parallel Data Warehouse, which are Microsoft's Massively Parallel Processing (MPP) systems. Designing your data warehouse to use distributed data effectively helps you to achieve the query processing benefits of the MPP architecture. A few database design choices can have a significant impact on improving query performance.  
 
 >[AZURE.NOTE] Azure SQL Data Warehouse and Parallel Data Warehouse use the same Massively Parallel Processing (MPP) design, but they have a few differences because of the underlying platform. SQL Data Warehouse is a Platform as a Service (PaaS) that runs on Azure. Parallel Data Warehouse runs on Analytics Platform System (APS) which is an on-premises appliance that runs on Windows Server.
 
-## <a name="what-is-distributed-data?"></a>What is distributed data?
+## <a name="what-is-distributed-data"></a>What is distributed data?
 
 In SQL Data Warehouse and Parallel Data Warehouse, distributed data refers to user data that is stored in multiple locations across the MPP system. Each of those locations functions as an independent storage and processing unit that runs queries on its portion of the data. Distributed data is fundamental to running queries in parallel to achieve high query performance.
 
 To distribute data, the data warehouse assigns each row of a user table to one distributed location.  You can distribute tables with a hash-distribution method or a round-robin method. The distribution method is specified in the CREATE TABLE statement. 
 
-## <a name="hash-distributed-tables"></a>Hash-distributed tables
+## <a name="hashdistributed-tables"></a>Hash-distributed tables
   
 The following diagram illustrates how a full (non-distributed table) gets stored as a hash-distributed table. A deterministic function assigns each row to belong to one distribution. In the table definition, one of the columns is designated as the distribution column. The hash function uses the value in the distribution column to assign each row to a distribution.
 
@@ -44,7 +44,7 @@ There are performance considerations for the selection of a distribution column,
   
 -   The number of table rows per distribution varies as shown by the different sizes of tables.
 
-## <a name="round-robin-distributed-tables"></a>Round-robin distributed tables
+## <a name="roundrobin-distributed-tables"></a>Round-robin distributed tables
 
 A round-robin distributed table distributes the rows by assigning each row to a distribution in a sequential manner. It is quick to load data into a round-robin table, but query performance might be slower.  Joining a round-robin table usually requires reshuffling the rows to enable the query to produce an accurate result, which takes time.
 
@@ -52,7 +52,7 @@ A round-robin distributed table distributes the rows by assigning each row to a 
 
 Each distributed location is called a distribution. When a query runs in parallel, each distribution performs a SQL query on its portion of the data. SQL Data Warehouse uses SQL Database to run the query. Parallel Data Warehouse uses SQL Server to run the query. This shared-nothing architecture design is fundamental to achieving scale-out parallel computing.
 
-### <a name="can-i-view-the-distributions?"></a>Can I view the distributions?
+### <a name="can-i-view-the-distributions"></a>Can I view the distributions?
 
 Each distribution has a distribution ID and is visible in system views that pertain to SQL Data Warehouse and Parallel Data Warehouse. You can use the distribution ID to troubleshoot query performance and other problems. For a list of the system views, see the [MPP system view](sql-data-warehouse-reference-tsql-statements.md).
 
@@ -64,11 +64,11 @@ A distribution is the basic unit for storing distributed data and processing par
 
 -   SQL Data Warehouse has a fixed number of 60 distributions and a flexible number of Compute nodes. The Compute nodes are implemented with Azure computing and storage resources. The number of Compute nodes can change according to the backend service workload and the computing capacity (DWUs) you specify for the data warehouse. When the number of Compute nodes changes, the number of distributions per Compute node also changes. 
 
-### <a name="can-i-view-the-compute-nodes?"></a>Can I view the Compute nodes?
+### <a name="can-i-view-the-compute-nodes"></a>Can I view the Compute nodes?
 
 Each Compute node has a node ID and is visible in system views that pertain to SQL Data Warehouse and Parallel Data Warehouse.  You can see the Compute node by looking for the node_id column in system views whose names begin with sys.pdw_nodes. For a list of the system views, see the [MPP system view](sql-data-warehouse-reference-tsql-statements.md).
 
-## <a name="<a-name="replicated"></a>replicated-tables-for-parallel-data-warehouse"></a><a name="Replicated"></a>Replicated Tables for Parallel Data Warehouse 
+## <a name="a-namereplicatedareplicated-tables-for-parallel-data-warehouse"></a><a name="Replicated"></a>Replicated Tables for Parallel Data Warehouse 
   
 Applies to: Parallel Data Warehouse
 

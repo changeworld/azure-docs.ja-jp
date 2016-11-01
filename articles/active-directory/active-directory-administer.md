@@ -3,7 +3,7 @@
     description="Azure AD テナントの概要、および Azure Active Directory で Azure を管理する方法を説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     writer="markvi"
     manager="femila"
     editor=""/>
@@ -20,7 +20,7 @@
 
 # <a name="administer-your-azure-ad-directory"></a>Azure AD ディレクトリの管理
 
-## <a name="what-is-an-azure-ad-tenant?"></a>Azure AD テナントとは
+## <a name="what-is-an-azure-ad-tenant"></a>Azure AD テナントとは
 
 物理的なワークスペースでは、テナントはビルを占めているグループまたは会社と定義できます。 たとえば、組織がビルのオフィス スペースを所有しているとします。 このビルは、他の複数の組織が面している通りにある場合があります。 組織はそのビルのテナントと考えることができます。 このビルは組織の資産であり、セキュリティを提供し、ビジネスを安全に行うことができるようにします。 また、ビルは通りで他の企業から切り離されています。 これにより、組織とその資産は他の組織から分離されます。
 
@@ -30,7 +30,7 @@
 
 ![Azure Active Directory の管理][1]
 
-## <a name="how-can-i-get-an-azure-ad-directory?"></a>Azure AD ディレクトリを取得する方法
+## <a name="how-can-i-get-an-azure-ad-directory"></a>Azure AD ディレクトリを取得する方法
 
 Azure AD は、ほとんどの Microsoft クラウド サービスの背後にある、次のようなコア ディレクトリおよび ID 管理機能を提供します。
 
@@ -66,7 +66,7 @@ Microsoft クラウド サービスのサブスクリプションをまだ持っ
 - [Office 365](http://products.office.com/business/compare-office-365-for-business-plans/)
 - [Microsoft Intune](https://account.manage.microsoft.com/Signup/MainSignUp.aspx?OfferId=40BE278A-DFD1-470a-9EF7-9F2596EA7FF9&ali=1)
 
-### <a name="manage-an-azure-provisioned-default-directory"></a>Azure によってプロビジョニングされた既定のディレクトリを管理する
+### <a name="manage-an-azureprovisioned-default-directory"></a>Azure によってプロビジョニングされた既定のディレクトリを管理する
 
 現在は、Azure にサインアップするとディレクトリが自動的に作成され、そのディレクトリにサブスクリプションが関連付けられます。 ただし、Azure に最初にサインアップしたのが 2013 年 10 月より前の場合、ディレクトリは自動的には作成されませんでした。 その場合、Azure がアカウントの既定のディレクトリをプロビジョニングすることによって、アカウントに対して "バックフィル" が実行された可能性があります。 サブスクリプションは、その既定のディレクトリに関連付けられています。
 
@@ -95,7 +95,7 @@ Azure AD を使用するのにコストは一切かかりません。 ディレ�
 これらのサービスのいずれかのコンテキストでサインインしているときに、いずれかのポータル (またはコマンドレット) を使用して組織のデータを変更した場合、このデータはサブスクライブしている Microsoft クラウド サービス間で共有されるため、そのサービスのコンテキストで次回サインインしたときに、他のポータルでも変更が表示されます。
 たとえば、Office 365 管理センターを使用して、ユーザーがサインインできないようにブロックした場合、そのユーザーは組織が現在サブスクライブしている他のどのサービスにもサインインできなくなります。 Microsoft Intune アカウント ポータルのコンテキストで、その同じユーザーのアカウントを取得すると、そのユーザーがブロックされていることがわかります。
 
-## <a name="how-can-i-add-and-manage-multiple-directories?"></a>複数のディレクトリを追加および管理する方法
+## <a name="how-can-i-add-and-manage-multiple-directories"></a>複数のディレクトリを追加および管理する方法
 
 Azure AD ディレクトリは、Microsoft Azure 管理ポータルで追加できます。 左側で **[Active Directory]** 拡張機能を選択し、**[追加]** をクリックします。
 
@@ -115,7 +115,7 @@ Azure AD ディレクトリは、Microsoft Azure 管理ポータルで追加で�
 
 他の Azure リソースとは異なり、ディレクトリは Azure サブスクリプションの子リソースではないことにも注意してください。 そのため、Azure サブスクリプションを取り消したり、期限切れを許可した場合でも、Azure AD PowerShell、Azure Graph API、または Office 365 管理センターなどの他のインターフェイスを使用して、ディレクトリ データに引き続きアクセスできます。 また、ディレクトリに別のサブスクリプションを関連付けることもできます。
 
-## <a name="how-can-i-delete-an-azure-ad-directory?"></a>Azure AD ディレクトリを削除する方法
+## <a name="how-can-i-delete-an-azure-ad-directory"></a>Azure AD ディレクトリを削除する方法
 グローバル管理者は、ポータルから Azure AD ディレクトリを削除できます。 ディレクトリを削除すると、そのディレクトリに含まれるリソースもすべて削除されます。そのため、ディレクトリを削除する前に、そのディレクトリが不要であることを確認する必要があります。
 
 > [AZURE.NOTE]

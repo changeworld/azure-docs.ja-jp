@@ -1,6 +1,6 @@
 <properties
-   pageTitle="SQL Server から Azure SQL Data Warehouse へのデータの読み込み (PolyBase) | Microsoft Azure"
-   description="bcp を使用して SQL Server からフラット ファイルにデータをエクスポートし、AZCopy を使用してデータを Azure Blob Storage にインポートし、PolyBase を使用してデータを Azure SQL Data Warehouse に取り込みます。"
+   pageTitle="Load data from SQL Server into Azure SQL Data Warehouse (PolyBase) | Microsoft Azure"
+   description="Uses bcp to export data from SQL Server to flat files, AZCopy to import data to Azure blob storage, and PolyBase to ingest the data into Azure SQL Data Warehouse."
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="ckarst"
@@ -13,32 +13,33 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="06/30/2016"
-   ms.author="cakarst;barbkess;sonyama"/>
+   ms.date="10/31/2016"
+   ms.author="cakarst;barbkess"/>
 
 
-# SQL Server から Azure SQL Data Warehouse へのデータの読み込み (AZCopy)
 
-SQL Server から Azure Blob Storage にデータを読み込むには、bcp および AZCopy コマンド ライン ユーティリティを使用します。その後、データを Azure SQL Data Warehouse に読み込むには、PolyBase または Azure Data Factory を使用します。
+# <a name="load-data-from-sql-server-into-azure-sql-data-warehouse-azcopy"></a>Load data from SQL Server into Azure SQL Data Warehouse (AZCopy)
+
+Use bcp and AZCopy command-line utilities to load data from SQL Server to Azure blob storage. Then use PolyBase or Azure Data Factory to load the data into Azure SQL Data Warehouse. 
 
 
-## 前提条件
+## <a name="prerequisites"></a>Prerequisites
 
-このチュートリアルを進めるには、次が必要です。
+To step through this tutorial, you need:
 
-- SQL Data Warehouse データベース
-- インストールされた bcp コマンド ライン ユーティリティ
-- インストールされた SQLCMD コマンド ライン ユーティリティ
+- A SQL Data Warehouse database
+- The bcp command line utility installed
+- The SQLCMD command line utility installed
 
->[AZURE.NOTE] bcp および sqlcmd ユーティリティは [Microsoft ダウンロード センター][]からダウンロードできます。
+>[AZURE.NOTE] You can download the bcp and sqlcmd utilities from the [Microsoft Download Center][].
 
-## SQL Data Warehouse へのデータのインポート
+## <a name="import-data-into-sql-data-warehouse"></a>Import data into SQL Data Warehouse
 
-このチュートリアルでは、Azure SQL Data Warehouse でテーブルを作成し、そのデータをテーブルにインポートします。
+In this tutorial, you will create a table in Azure SQL Data Warehouse and import data into the table.
 
-### 手順 1: Azure SQL Data Warehouse でテーブルを作成する
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>Step 1: Create a table in Azure SQL Data Warehouse
 
-コマンド プロンプトで sqlcmd を使用して次のクエリを実行し、インスタンスにテーブルを作成します。
+From a command prompt, use sqlcmd to run the following query to create a table on your instance:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -56,11 +57,11 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
->[AZURE.NOTE] SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][]に関する記事または [CREATE TABLE 構文][]に関するページを参照してください。
+>[AZURE.NOTE] See [Table Overview][] or [CREATE TABLE syntax][] for more information about creating a table on SQL Data Warehouse and the  options available in the WITH clause.
 
-### 手順 2: ソース データ ファイルを作成する
+### <a name="step-2-create-a-source-data-file"></a>Step 2: Create a source data file
 
-メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\\Temp\\DimDate2.txt)。
+Open Notepad and copy the following lines of data into a new text file and then save this file to your local temp directory, C:\Temp\DimDate2.txt.
 
 ```
 20150301,1,3
@@ -77,22 +78,22 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 20150101,1,3
 ```
 
-> [AZURE.NOTE] bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。bcp.exe を使用する場合は、ASCII ファイルまたは UTF-16 エンコード ファイルを使用してください。
+> [AZURE.NOTE] It is important to remember that bcp.exe does not support the UTF-8 file encoding. Please use ASCII files or UTF-16 encoded files when using bcp.exe.
 
-### 手順 3: データに接続し、インポートする
-bcp を使用して、次のコマンドでデータに接続し、インポートできます。値は適宜置き換えて使用してください。
+### <a name="step-3-connect-and-import-the-data"></a>Step 3: Connect and import the data
+Using bcp, you can connect and import the data using the following command replacing the values as appropriate:
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t  ','
 ```
 
-sqlcmd を使用して次のクエリを実行すると、データが読み込まれたかどうかを確認することができます。
+You can verify the data was loaded by running the following query using sqlcmd:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-これにより、次の結果が得られます。
+This should return the following results:
 
 DateId |CalendarQuarter |FiscalQuarter
 ----------- |--------------- |-------------
@@ -109,11 +110,11 @@ DateId |CalendarQuarter |FiscalQuarter
 20151101 |4 |2
 20151201 |4 |2
 
-### 手順 4: 新しくロードしたデータの統計を作成する
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>Step 4: Create Statistics on your newly loaded data
 
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。統計の詳細については、開発トピック グループの[統計][]に関するトピックを参照してください。この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
+Azure SQL Data Warehouse does not yet support auto create or auto update statistics. In order to get the best performance from your queries, it's important that statistics be created on all columns of all tables after the first load or any substantial changes occur in the data. For a detailed explanation of statistics, see the [Statistics][] topic in the Develop group of topics. Below is a quick example of how to create statistics on the tabled loaded in this example
 
-sqlcmd プロンプトから次の CREATE STATISTICS ステートメントを実行します。
+Execute the following CREATE STATISTICS statements from a sqlcmd prompt:
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -123,17 +124,17 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-## SQL Data Warehouse からのデータのエクスポート
-このチュートリアルでは SQL Data Warehouse 内のテーブルからデータ ファイルを作成します。上記で作成したデータを DimDate2\_export.txt という名前の新しいデータ ファイルにエクスポートします。
+## <a name="export-data-from-sql-data-warehouse"></a>Export data from SQL Data Warehouse
+In this tutorial, you will create a data file from a table in SQL Data Warehouse. We will export the data we created above to a new data file called DimDate2_export.txt.
 
-### 手順 1: データをエクスポートする
+### <a name="step-1-export-the-data"></a>Step 1: Export the data
 
-bcp ユーティリティを使用して、次のコマンドでデータに接続し、エクスポートできます。値は適宜置き換えて使用してください。
+Using the bcp utility, you can connect and export data using the following command replacing the values as appropriate:
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-新しいファイルを開き、データが正しくエクスポートされたことを確認できます。ファイル内のデータは、次のテキストと一致する必要があります。
+You can verify the data was exported correctly by opening the new file. The data in the file should match the text below:
 
 ```
 20150301,1,3
@@ -150,25 +151,30 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 20150101,1,3
 ```
 
->[AZURE.NOTE] 分散システムの性質上、データの順序は SQL Data Warehouse データベース全体で異なる場合があります。別の方法として、bcp の **queryout** 関数を使用して、テーブル全体をエクスポートするのではなく、クエリによる抽出を記述することもできます。
+>[AZURE.NOTE] Due to the nature of distributed systems, the data order may not be the same across SQL Data Warehouse databases. Another option is to use the **queryout** function of bcp to write a query extract rather than export the entire table.
 
-## 次のステップ
-読み込みの概要については、「[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)][]」を参照してください。開発に関するその他のヒントについては、「[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)][]」をご覧ください。
+## <a name="next-steps"></a>Next steps
+For an overview of loading, see [Load data into SQL Data Warehouse][].
+For more development tips, see [SQL Data Warehouse development overview][].
 
 <!--Image references-->
 
 <!--Article references-->
 
-[Load data into SQL Data Warehouse (SQL Data Warehouse へのデータの読み込み)]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview (SQL Data Warehouse の開発の概要)]: ./sql-data-warehouse-overview-develop.md
-[テーブルの概要]: ./sql-data-warehouse-tables-overview.md
-[統計]: ./sql-data-warehouse-tables-statistics.md
+[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
+[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
+[Table Overview]: ./sql-data-warehouse-tables-overview.md
+[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
 [bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE 構文]: https://msdn.microsoft.com/library/mt203953.aspx
+[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
 
 <!--Other Web references-->
-[Microsoft ダウンロード センター]: https://www.microsoft.com/download/details.aspx?id=36433
+[Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
 
-<!---HONumber=AcomDC_0907_2016-->
+
+
+<!--HONumber=Oct16_HO2-->
+
+

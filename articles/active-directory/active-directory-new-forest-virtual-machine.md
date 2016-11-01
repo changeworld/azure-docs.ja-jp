@@ -4,7 +4,7 @@
     services="active-directory, virtual-network"
     keywords="Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ  "
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     tags=""/>
 
@@ -34,7 +34,7 @@
 このシナリオでは、外部ユーザーは、ドメインに参加しているサーバーで稼働するアプリケーションにアクセスする必要があります。 アプリケーション サーバーを実行する VM およびドメイン コントローラーを実行する VM は、Azure Virtual Network の専用のクラウド サービスにインストールされます。 また、フォールト トレランス向上のため、可用性セットにも含まれます。
 
 ![Azure Virtual Network の仮想マシンでの Active Directory フォレスト][1] 7
-## <a name="how-does-this-differ-from-on-premises?"></a>オンプレミスの場合との違い
+## <a name="how-does-this-differ-from-onpremises"></a>オンプレミスの場合との違い
 
 ドメイン コントローラーのオンプレミスへのインストールと Azure へのインストールにそれほど大きな違いはありません。 主な違いを次の表に示します。
 

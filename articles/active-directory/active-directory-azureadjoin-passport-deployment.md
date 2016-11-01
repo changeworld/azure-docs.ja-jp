@@ -4,7 +4,7 @@
     services="active-directory"
     documentationCenter=""
     keywords="Microsoft Passport、Microsoft Windows Hello for Business デプロイの構成"
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""
     tags="azure-classic-portal"/>

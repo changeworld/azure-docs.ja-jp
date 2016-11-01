@@ -3,8 +3,8 @@
    description="DMV を利用してワークロードを監視するについて説明します。"
    services="sql-data-warehouse"
    documentationCenter="NA"
-   authors="sonyam"
-   manager="barbkess"
+   authors="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.topic="article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/08/2016"
-   ms.author="sonyama;barbkess"/>
+   ms.date="10/31/2016"
+   ms.author="barbkess"/>
 
 
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
@@ -46,7 +46,7 @@ SQL Data Warehouse で実行されるすべてのクエリは、[sys.dm_pdw_exec
 
 クエリ実行プラン、および特定のクエリの実行時間を調査するには、次の手順に従います。
 
-### <a name="step-1:-identify-the-query-you-wish-to-investigate"></a>手順 1: 調査するクエリを特定する
+### <a name="step-1-identify-the-query-you-wish-to-investigate"></a>手順 1: 調査するクエリを特定する
 
 ```sql
 -- Monitor active queries
@@ -82,7 +82,7 @@ OPTION (LABEL = 'My Query')
 ;
 ```
 
-### <a name="step-2:-investigate-the-query-plan"></a>手順 2: クエリ プランを調査する
+### <a name="step-2-investigate-the-query-plan"></a>手順 2: クエリ プランを調査する
 
 要求 ID を使用して、[sys.dm_pdw_request_steps][] からクエリの分散 SQL (DSQL) プランを取得します。
 
@@ -102,7 +102,7 @@ DSQL プランに予想よりも時間がかかる場合は、多くの DSQL 手
 - 手順 3a の **SQL 操作**(OnOperation、RemoteOperation、ReturnOperation) に進みます。
 - 手順 3b の **Data Movement 操作**(ShuffleMoveOperation、BroadcastMoveOperation、TrimMoveOperation、PartitionMoveOperation、MoveOperation、CopyOperation) に進みます。
 
-### <a name="step-3a:-investigate-sql-on-the-distributed-databases"></a>手順 3a: 分散データベースでの SQL を調査する
+### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>手順 3a: 分散データベースでの SQL を調査する
 
 要求 ID と手順インデックスを使用して、[sys.dm_pdw_sql_requests][] から詳細情報を取得します。これには、配布されたすべてのデータベースに対するクエリの実行情報が含まれます。
 
@@ -123,7 +123,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
-### <a name="step-3b:-investigate-data-movement-on-the-distributed-databases"></a>手順 3b: 分散データベース上のデータ移動を調査する
+### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>手順 3b: 分散データベース上のデータ移動を調査する
 
 要求 ID と手順インデックスを利用し、[sys.dm_pdw_dms_workers][] から各配布で実行されているデータ移動手順に関する情報を取得します。
 

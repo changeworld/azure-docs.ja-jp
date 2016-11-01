@@ -3,7 +3,7 @@
     description="職場または学校アカウントを使用して、組織の内部設置型 ID と Azure AD の間の効率性を既に強化した既存のユーザー アカウント、ポリシー、設定、または内部設置型サーバー デプロイを利用する方法について説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 

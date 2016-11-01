@@ -3,7 +3,7 @@
     description="Azure AD Connect Sync のユーザーと連絡先について説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -18,7 +18,7 @@
 
 
 
-# <a name="azure-ad-connect-sync:-understanding-users-and-contacts"></a>Azure AD Connect Sync: ユーザーと連絡先について
+# <a name="azure-ad-connect-sync-understanding-users-and-contacts"></a>Azure AD Connect Sync: ユーザーと連絡先について
 
 複数の Active Directory フォレストを使用することになる理由はさまざまあり、複数の異なるデプロイ トポロジがあります。 一般的なモデルとしては、アカウント リソース デプロイ、合併や買収の後で GAL 同期が行われたフォレストなどがあります。 ただし、純粋なモデルがある一方で、ハイブリッド モデルも一般的です。 Azure AD Connect Sync の既定の構成では特殊なモデルを想定しませんが、インストール ガイドにおけるユーザーの一致の選択方法によっては、異なる動作が見られることもあります。
 

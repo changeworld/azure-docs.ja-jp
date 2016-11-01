@@ -4,7 +4,7 @@
     services="active-directory"
     keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -27,7 +27,7 @@
 
 次のセクションでは、Identity Protection で報告される脆弱性の概要を示します。
 
-## <a name="multi-factor-authentication-registration-not-configured"></a>多要素認証の登録が構成されていない 
+## <a name="multifactor-authentication-registration-not-configured"></a>多要素認証の登録が構成されていない 
 
 この脆弱性は、組織内の Azure Multi-Factor Authentication のデプロイの制御に役立ちます。 
 

@@ -3,7 +3,7 @@
     description="Azure AD Connect Sync の技術的概念について説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -18,7 +18,7 @@
 
 
 
-# <a name="azure-ad-connect-sync:-technical-concepts"></a>Azure AD Connect Sync: 技術的概念
+# <a name="azure-ad-connect-sync-technical-concepts"></a>Azure AD Connect Sync: 技術的概念
 この記事は、 [アーキテクチャの理解](active-directory-aadconnectsync-technical-concepts.md)に関するトピックの概要です。
 
 Azure AD Connect Sync は、堅牢なメタディレクトリ同期プラットフォームを基盤としています。

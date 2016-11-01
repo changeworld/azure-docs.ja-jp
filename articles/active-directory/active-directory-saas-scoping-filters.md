@@ -3,7 +3,7 @@
     description="スコープ フィルターを使用して、自動ユーザー プロビジョニングをサポートするアプリ内のオブジェクトが、ビジネス要件を満たしていないのに実際にプロビジョニングされてしまうことを防ぐ方法について説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -18,7 +18,7 @@
 
 
 
-# <a name="attribute-based-app-provisioning-with-scoping-filters"></a>スコープ フィルターを使用する属性ベースのアプリ プロビジョニング
+# <a name="attributebased-app-provisioning-with-scoping-filters"></a>スコープ フィルターを使用する属性ベースのアプリ プロビジョニング
 
 このセクションでは、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
 

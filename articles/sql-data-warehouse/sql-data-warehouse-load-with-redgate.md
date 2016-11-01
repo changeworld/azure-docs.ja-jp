@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter="NA"
    authors="twounder"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,7 +13,7 @@
    ms.topic="get-started-article"
    ms.tgt_pltfrm="NA"
    ms.workload="data-services"
-   ms.date="10/13/2016"
+   ms.date="10/31/2016"
    ms.author="mausher;barbkess"/>
 
 
@@ -41,17 +41,17 @@ Before starting this tutorial, you need to have:
 
 > [AZURE.NOTE] Performance is improved if the storage account and the data warehouse are created in the same region.
 
-## <a name="step-1:-sign-in-to-data-platform-studio-with-your-azure-account"></a>Step 1: Sign in to Data Platform Studio with your Azure account
+## <a name="step-1-sign-in-to-data-platform-studio-with-your-azure-account"></a>Step 1: Sign in to Data Platform Studio with your Azure account
 Open your web browser and navigate to the [Data Platform Studio](https://www.dataplatformstudio.com/) website. Sign in with the same Azure account that you used to create the storage account and data warehouse. If your email address is associated with both a work or school account and a Microsoft account, be sure to choose the account that has access to your resources.
 
 > [AZURE.NOTE] If this is your first time using Data Platform Studio, you are asked to grant the application permission to manage your Azure resources.
 
-## <a name="step-2:-start-the-import-wizard"></a>Step 2: Start the Import Wizard
+## <a name="step-2-start-the-import-wizard"></a>Step 2: Start the Import Wizard
 From the DPS main screen, select the Import to Azure SQL Data Warehouse link to start the import wizard.
 
 ![][1]
 
-## <a name="step-3:-install-the-data-platform-studio-gateway"></a>Step 3: Install the Data Platform Studio Gateway
+## <a name="step-3-install-the-data-platform-studio-gateway"></a>Step 3: Install the Data Platform Studio Gateway
 To connect to your on-premise SQL Server database, you need to install the DPS Gateway. The gateway is a client agent that provides access to your on-premise environment, extracts the data, and uploads it to your storage account. Your data never passes through Redgate’s servers. To install the Gateway:
 
 1.  Click the **Create Gateway** link
@@ -63,28 +63,28 @@ To connect to your on-premise SQL Server database, you need to install the DPS G
 
 Once installed, the Gateway status changes to Connected and you can select Next.
 
-## <a name="step-4:-identify-the-source-database"></a>Step 4: Identify the source database
+## <a name="step-4-identify-the-source-database"></a>Step 4: Identify the source database
 In the *Enter Server Name* textbox, enter the name of the server that hosts your database and select **Next**. Then, from the drop-down menu, select the database you want to import data from.
 
 ![][3]
 
 DPS inspects the selected database for tables to import. By default, DPS imports all the tables in the database. You can select or deselect tables by expanding the All Tables link. Select the Next button to move forward.
 
-## <a name="step-5:-choose-a-storage-account-to-stage-the-data"></a>Step 5: Choose a storage account to stage the data
+## <a name="step-5-choose-a-storage-account-to-stage-the-data"></a>Step 5: Choose a storage account to stage the data
 DPS prompts you for a location to stage the data. Choose an existing storage account from your subscription and select **Next**.
 
 > [AZURE.NOTE] DPS will create a new blob container in the chosen storage account and use a distinct folder for each import.
 
 ![][4]
 
-## <a name="step-6:-select-a-data-warehouse"></a>Step 6: Select a data warehouse
+## <a name="step-6-select-a-data-warehouse"></a>Step 6: Select a data warehouse
 Next, you select an online [Azure SQL Data Warehouse](http://aka.ms/sqldw) database to import the data into. Once you've selected your database, you need to enter the credentials to connect to the database and select **Next**.
 
 ![][5]
 
 > [AZURE.NOTE] DPS merges the source data tables into the data warehouse. DPS warns you if the table name requires it to overwrite existing tables in the data warehouse. You may optionally delete any existing objects in the data warehouse by ticking Delete all existing objects before import.
 
-## <a name="step-7:-import-the-data"></a>Step 7: Import the data
+## <a name="step-7-import-the-data"></a>Step 7: Import the data
 DPS confirms that you would like to import the data. Simply click the Start import button to begin the data import.
 
 ![][6]

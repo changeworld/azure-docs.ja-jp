@@ -3,7 +3,7 @@
     description="アクセス パネルの各種構成 (Web ブラウザー、Android アプリ、iPhone および iPad アプリ) を使用して、割り当てられている SaaS アプリにアクセスするする方法について説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -150,13 +150,13 @@ Azure 管理者がディレクトリのアカウントを使用して Microsoft 
 
 ユーザーは、Office 365 アプリケーションのアプリケーション タイルをクリックすると、アプリケーションにリダイレクトされ自動的にサインインされます。
 
-### <a name="microsoft-and-third-party-applications-configured-with-federation-based-sso"></a>フェデレーション ベースの SSO で構成されたマイクロソフトとサード パーティのアプリケーション
+### <a name="microsoft-and-thirdparty-applications-configured-with-federationbased-sso"></a>フェデレーション ベースの SSO で構成されたマイクロソフトとサード パーティのアプリケーション
 
 これらは、管理者がシングル サインオン モードを "*Azure AD のシングル サインオン*" に設定することで、Microsoft Azure 管理ポータルの Active Directory セクションに追加したアプリケーションです。 ユーザーには、管理者によって明示的にアクセス権が付与されてい場合にのみ、これらのアプリケーションが表示されます。
 
 ユーザーは、これらのアプリケーションの 1 つのアプリケーション タイルをクリックすると、アプリケーションにリダイレクトされ自動的にサインインされます。
 
-### <a name="password-based-sso-without-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングなし)
+### <a name="passwordbased-sso-without-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングなし)
 
 これらは、管理者がシングル サインオン モードを "*パスワードベースのシングル サインオン*" に設定することで、Microsoft Azure 管理ポータルの Active Directory セクションに追加したアプリケーションです。 <br> ディレクトリ内のすべてのユーザーに、このモードで構成されているすべてのアプリケーションが表示されます。
 
@@ -166,7 +166,7 @@ Azure 管理者がディレクトリのアカウントを使用して Microsoft 
 
 ユーザーは、ターゲットのサードパーティのアプリケーションでユーザーの資格情報を変更した場合は、Azure AD に格納されている資格情報も更新する必要があります。 資格情報を更新するには、ユーザーは、アプリケーション タイル右下のアイコンを選択し、[資格情報の更新] を選択して、そのアプリケーションのユーザー名とパスワードを再入力する必要があります。
 
-### <a name="password-based-sso-with-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングあり)
+### <a name="passwordbased-sso-with-identity-provisioning"></a>パスワード ベースの SSO (ID プロビジョニングあり)
 
 これらは、管理者がシングル サインオン モードを "*パスワードベースのシングル サインオン*" に設定し、ID プロビジョニングを設定することで、Microsoft Azure 管理ポータルの Active Directory セクションに追加したアプリケーションです。
 

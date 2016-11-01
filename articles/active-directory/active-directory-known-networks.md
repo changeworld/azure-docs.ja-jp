@@ -3,7 +3,7 @@
     description="既知のネットワークを構成すると、"複数の地域からのサインイン" レポートおよび "疑わしいアクティビティを示す IP アドレスからのサインイン" レポートに、組織が所有する IP アドレスが含まれないようにすることができます。" 
     services="active-directory" 
     documentationCenter="" 
-    authors="markusvi" 
+    authors="MarkusVi" 
     manager="femila"  
     editor=""/>
 
@@ -33,7 +33,7 @@ Azure Active Directory のアクセスおよび使用状況レポートを使用
 こうした場合に誤解を招くセキュリティ レポートが生成されないようにするには、組織の パブリック IP アドレスの一覧に既知の IP アドレス範囲を追加する必要があります。    
 
 
-###<a name="to-add-your-organization’s-public-ip-address-ranges,-perform-the-following-steps:"></a>組織のパブリック IP アドレス範囲を追加するには、次の手順に従います。 
+###<a name="to-add-your-organizations-public-ip-address-ranges-perform-the-following-steps"></a>組織のパブリック IP アドレス範囲を追加するには、次の手順に従います。 
 
 1.  [Microsoft Azure 管理ポータル](https://manage.windowsazure.com)にサインインします。
 

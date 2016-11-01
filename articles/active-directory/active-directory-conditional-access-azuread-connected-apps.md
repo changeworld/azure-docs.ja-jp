@@ -3,7 +3,7 @@
     description="Azure AD の条件付きアクセスを使用すると、アプリケーションごとの Multi-Factor Authentication のアクセス規則と、信頼されたネットワークにないユーザーのアクセスをブロックする機能を構成できます。 "
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -32,7 +32,7 @@
 
 * フェデレーション テナントでは、Multi-Factor Authentication を有効にする必要があります。
 
-## <a name="configure-per-application-access-rules"></a>アプリケーションごとのアクセス規則の構成
+## <a name="configure-perapplication-access-rules"></a>アプリケーションごとのアクセス規則の構成
 
 ここでは、アプリケーションごとのアクセス規則を構成する方法について説明します。
 
@@ -78,7 +78,7 @@
 
 アクセス規則は、ユーザーが OAuth 2.0、OpenID Connect、SAML、または WS-Federation を使用するフェデレーション アプリケーションにアクセスした場合に評価されます。 また、OAuth 2.0 と OpenID Connect でアクセス トークンを取得するために更新トークンが使用されたときにもアクセス規則が評価されます。 更新トークンの使用時にポリシーの評価が失敗すると、**invalid_grant** エラーが返されます。これは、ユーザーがクライアントに対して再認証する必要があることを示します。
 
-###<a name="configure-federation-services-to-provide-multi-factor-authentication"></a>Multi-Factor Authentication を実現するためのフェデレーション サービスの構成
+###<a name="configure-federation-services-to-provide-multifactor-authentication"></a>Multi-Factor Authentication を実現するためのフェデレーション サービスの構成
 
 フェデレーション テナントでは、MFA が Azure Active Directory またはオンプレミスの AD FS サーバーによって実行される場合があります。
 

@@ -3,7 +3,7 @@
     description="IT 管理者は、ドメイン参加済みの Windows デバイスをサイレント モードで自動的に Azure Active Directory (Azure AD) に登録できます。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -17,7 +17,7 @@
     ms.author="markvi"/>
 
 
-# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domain-joined-devices"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
+# <a name="automatic-device-registration-with-azure-active-directory-for-windows-domainjoined-devices"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録
 
 IT 管理者は、ドメイン参加済みの Windows デバイスをサイレント モードで自動的に Azure Active Directory (Azure AD) に登録できます。 これは、デバイスに基づいて条件付きでアクセスを許可するポリシーを Office 365 アプリケーションまたは AD FS によってオンプレミスで管理されているアプリケーションに対して構成している場合に役立ちます。 デバイス登録のシナリオの詳細については、「 [Azure Active Directory Device Registration の概要](active-directory-conditional-access-device-registration-overview.md)」を参照してください。
 
@@ -82,7 +82,7 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 | enterpriseregistration.contoso.com        | CNAME | enterpriseregistration.windows.net |
 | enterpriseregistration.region.contoso.com | CNAME | enterpriseregistration.windows.net |
 
-##<a name="configure-automatic-device-registration-for-windows-7-and-windows-8.1-domain-joined-devices"></a>Windows 7 および Windows 8.1 のドメイン参加済みデバイスの自動デバイス登録を構成する
+##<a name="configure-automatic-device-registration-for-windows-7-and-windows-81-domain-joined-devices"></a>Windows 7 および Windows 8.1 のドメイン参加済みデバイスの自動デバイス登録を構成する
 
 以下のリンクを参照して、Windows 7 および Windows 8.1 のドメイン参加済みデバイスの自動デバイス登録を構成します。 続行する前に、上記の前提条件が満たされているようにしてください。
 

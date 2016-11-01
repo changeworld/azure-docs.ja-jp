@@ -4,7 +4,7 @@
     services="active-directory"
     keywords="Azure Active Directory Identity Protection, Cloud App Discovery, アプリケーションの管理, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -37,7 +37,7 @@
 他のリスク イベントは、安全な方法でシミュレートすることはできません。
 
 
-### <a name="sign-ins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
+### <a name="signins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
 
 このリスク イベントの種類は、匿名プロキシ IP アドレスとして識別されている IP アドレスからのサインインにユーザーが成功したことを示します。 このようなプロキシは、自分のデバイスの IP アドレスを隠したいユーザーによって使用され、悪意のある目的で使用される場合があります。
 
@@ -50,7 +50,7 @@
 5 分以内に Identity Protection ダッシュボードにサインインが表示されます。 
 
 
-###<a name="sign-ins-from-unfamiliar-locations"></a>未知の場所からのサインイン
+###<a name="signins-from-unfamiliar-locations"></a>未知の場所からのサインイン
 
 未知の場所のリスクはリアルタイム サインイン評価メカニズムであり、過去のサインインの場所 (IP、緯度/経度、ASN) を考慮して、新規/未知の場所を決定します。 システムは、ユーザーの以前の IP、緯度/経度、および ASN を保存し、それを "既知の" 場所と見なします。 サインインの場所が既存の場所のいずれとも一致しない場合、そのサインインの場所は未知と見なされます。
 
@@ -138,7 +138,7 @@ Azure Active Directory Identity Protection:
 <br>
 
  
-##<a name="sign-in-risk"></a>サインイン リスク
+##<a name="signin-risk"></a>サインイン リスク
 
  
 **サインイン リスクをテストするには、次の手順を実行します。**

@@ -2,7 +2,7 @@
     pageTitle="Android の証明書ベースの認証の使用 | Microsoft Azure" 
     description="Android デバイスでソリューションの証明書ベースの認証を構成する方法について説明します。" 
     services="active-directory" 
-    authors="markusvi"  
+    authors="MarkusVi"  
     documentationCenter="na" 
     manager="femila"/>
 <tags 
@@ -17,7 +17,7 @@
 
 
 
-# <a name="get-started-with-certificate-based-authentication-on-android---public-preview"></a>Android の証明書ベースの認証の使用 - パブリック プレビュー  
+# <a name="get-started-with-certificate-based-authentication-on-android-public-preview"></a>Android の証明書ベースの認証の使用 - パブリック プレビュー  
 
 > [AZURE.SELECTOR]
 - [iOS](active-directory-certificate-based-authentication-ios.md)

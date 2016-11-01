@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter=""
    authors="byham"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""
    tags=""/>
 
@@ -15,7 +15,7 @@
    ms.tgt_pltfrm="na"
    ms.workload="data-management"
    ms.date="09/24/2016"
-   ms.author="rickbyh;barbkess;sonyama"/>
+   ms.author="rickbyh;barbkess"/>
 
 
 # <a name="authentication-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse への認証
@@ -46,7 +46,7 @@ SQL Data Warehouse に接続するには、次の情報を提供する必要が�
 
 > [AZURE.NOTE] 接続目的でデータベースを切り替えるための TRANSACT-SQL ステートメント **USE MyDatabase;** はサポートされていません。 SSDT を使用した SQL Data Warehouse への接続に関するガイダンスは、 [Visual Studio を使用したクエリ][] に関する記事をご覧ください。
 
-## <a name="azure-active-directory-(aad)-authentication"></a>Azure Active Directory (AAD) 認証
+## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (AAD) 認証
 
 [Azure Active Directory][Azure Active Directory] 認証は、Azure Active Directory (Azure AD) の ID を使用して Microsoft Azure SQL Data Warehouse に接続するメカニズムです。 Azure Active Directory 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所で SQL Data Warehouse ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。 
 

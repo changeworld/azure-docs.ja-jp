@@ -4,7 +4,7 @@
    services="sql-data-warehouse"
    documentationCenter=""
    authors="ronortloff"
-   manager="barbkess"
+   manager="jhubbard"
    editor=""/>
 
 <tags
@@ -13,8 +13,8 @@
    ms.tgt_pltfrm="na"
    ms.devlang="na"
    ms.topic="article"
-   ms.date="09/24/2016" 
-   ms.author="rortloff;barbkess;sonyama"/>
+   ms.date="10/31/2016" 
+   ms.author="rortloff;barbkess"/>
 
 
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
@@ -31,7 +31,7 @@ SQL Data Warehouse の監査により、Azure Storage アカウントの監査�
 + [データベースに対する監査を設定する]
 + [監査ログとレポートを分析する]
 
-##<a name="<a-id="subheading-1"></a>azure-sql-data-warehouse-database-auditing-basics"></a><a id="subheading-1"></a>Azure SQL Data Warehouse データベース監査の基本
+##<a name="a-idsubheading1aazure-sql-data-warehouse-database-auditing-basics"></a><a id="subheading-1"></a>Azure SQL Data Warehouse データベース監査の基本
 
 
 SQL Data Warehouse データベース監査により、以下のことが可能になります。
@@ -61,7 +61,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 監査をセットアップする前に、 ["ダウンレベル クライアント"](sql-data-warehouse-auditing-downlevel-clients.md)を使用しているかどうかを確認します。
 
 
-##<a name="<a-id="subheading-2"></a>set-up-auditing-for-your-database"></a><a id="subheading-2"></a>データベースに対する監査を設定する
+##<a name="a-idsubheading2aset-up-auditing-for-your-database"></a><a id="subheading-2"></a>データベースに対する監査を設定する
 
 1. <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>を開きます。
 
@@ -92,7 +92,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 9. **[OK]**をクリックします。
 
 
-##<a name="<a-id="subheading-3">analyze-audit-logs-and-reports</a>"></a><a id="subheading-3">監査ログとレポートを分析する</a>
+##<a name="a-idsubheading3analyze-audit-logs-and-reportsa"></a><a id="subheading-3">監査ログとレポートを分析する</a>
 
 監査ログは、設定時に選択した Azure ストレージ アカウントで、 **SQLDBAuditLogs** というプレフィックスを使用してストア テーブルのコレクションに集計されます。 <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure ストレージ エクスプローラー</a>などのツールを使用してログ ファイルを表示できます。
 
@@ -105,11 +105,11 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 ![][5]
 
 
-##<a name="<a-id="subheading-4">practices-for-usage-in-production</a>"></a><a id="subheading-4">運用環境での使用手法</a>
+##<a name="a-idsubheading4practices-for-usage-in-productiona"></a><a id="subheading-4">運用環境での使用手法</a>
 このセクションでは、上のスクリーン キャプチャーについて説明します。 <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>または<a href= "https://manage.windowsazure.com/" target="_bank">従来の Azure クラシック ポータル</a>を使用できます。
 
 
-##<a name="<a-id="subheading-5"></a>storage-key-regeneration"></a><a id="subheading-5"></a>ストレージ キーの再生成
+##<a name="a-idsubheading5astorage-key-regeneration"></a><a id="subheading-5"></a>ストレージ キーの再生成
 
 運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 鍵を最新の情報に更新する場合は、ポリシーを再度保存する必要があります。 このプロセスは次のとおりです。
 
@@ -122,7 +122,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 4. ストレージの UI に戻り、 **セカンダリ アクセス キー** を *再生成* (次のキー更新サイクルの準備として) します。
 
-##<a name="<a-id="subheading-6"></a>automation"></a><a id="subheading-6"></a>Automation
+##<a name="a-idsubheading6aautomation"></a><a id="subheading-6"></a>Automation
 Azure SQL Database で監査を構成する際、使用できる PowerShell コマンドレットがいくつかあります。 auditing コマンドレットにアクセスにするには、Azure リソース マネージャー モードで PowerShell を実行する必要があります。
 
 > [AZURE.NOTE] [Azure リソース マネージャー](https://msdn.microsoft.com/library/dn654592.aspx) モジュールは、現在プレビュー段階にあります。 Azure モジュールと同じ管理機能を提供しないことがあります。

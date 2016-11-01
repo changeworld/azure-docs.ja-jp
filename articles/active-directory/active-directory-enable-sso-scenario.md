@@ -3,7 +3,7 @@
     description="この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。"
     services="active-directory"
     documentationCenter=""
-    authors="markusvi"
+    authors="MarkusVi"
     manager="femila"
     editor=""/>
 
@@ -116,7 +116,7 @@ SSO のプロセスは 2 つの手順で構成されます。
 
 Azure AD を使用することで、個別またはルール駆動型の割り当てを使用してアプリケーションへのアクセスを管理できます。 組織の適切なユーザーにアクセス管理を委任して、管理を最適化し、ヘルプ デスクの負荷を軽減することもできます。
 
-## <a name="on-premises-applications"></a>オンプレミスのアプリケーション
+## <a name="onpremises-applications"></a>オンプレミスのアプリケーション
 
 組み込みアプリケーション プロキシを使用してユーザーにオンプレミスのアプリケーションを発行でき、最新のクラウド アプリケーションに対する一貫性のあるアクセス エクスペリエンスと、Azure AD の監視、レポート、およびセキュリティの機能がもたらすメリットの両方を得ることができます。
 
